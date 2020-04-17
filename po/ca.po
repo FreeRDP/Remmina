@@ -7,13 +7,14 @@
 # anonymous <noreply@weblate.org>, 2019.
 # Allan Nordhøy <epost@anotheragency.no>, 2019, 2020.
 # Aroa Taha <Naturameuocat@protonmail.com>, 2019.
+# Ecron <ecron_89@hotmail.com>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-04-14 22:18+0000\n"
-"PO-Revision-Date: 2020-03-26 12:46+0000\n"
-"Last-Translator: Joan Montané <joan@montane.cat>\n"
+"PO-Revision-Date: 2020-04-17 07:22+0000\n"
+"Last-Translator: Ecron <ecron_89@hotmail.com>\n"
 "Language-Team: Catalan <https://hosted.weblate.org/projects/remmina/remmina/"
 "ca/>\n"
 "Language: ca\n"
@@ -21,21 +22,20 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.0-dev\n"
+"X-Generator: Weblate 4.0.1-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
 
 #: src/remmina_protocol_widget.c:275
 msgid "Connect via SSH from a new terminal"
-msgstr "Connecta’t a través de SSH des d’un nou terminal"
+msgstr "Connecta a través de SSH des d’un terminal nou"
 
 #: src/remmina_protocol_widget.c:281
-#, fuzzy
 msgid "Open SFTP transfer…"
-msgstr "Obre una transferència SFTP"
+msgstr "Obre una transferència SFTP…"
 
 #: src/remmina_protocol_widget.c:309
 msgid "Executing external commands…"
-msgstr "Executant comandaments externes …"
+msgstr "S'estan executant ordres externes…"
 
 #: src/remmina_protocol_widget.c:316
 #, c-format
@@ -55,18 +55,18 @@ msgstr "S’està esperant una connexió SSH entrant al port %i…"
 #: src/remmina_protocol_widget.c:978
 #, c-format
 msgid "The \"%s\" command is not available on the SSH server."
-msgstr "No s’ha trobat l’ordre «%s» al servidor SSH"
+msgstr "L’ordre «%s» no es troba disponible al servidor SSH."
 
 #: src/remmina_protocol_widget.c:982
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run the \"%s\" command on the SSH server (status = %i)."
-msgstr "No s’ha pogut executar l’ordre %s al servidor SSH (estat = %i)."
+msgstr "No s’ha pogut executar l’ordre «%s» al servidor SSH (estat = %i)."
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_protocol_widget.c:990
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run command. %s"
-msgstr "No s’ha pogut executar l’ordre: %s"
+msgstr "No s’ha pogut executar l’ordre. %s"
 
 #: src/remmina_protocol_widget.c:1058
 #, c-format
@@ -120,7 +120,7 @@ msgstr "Empremta nova:"
 
 #: src/remmina_protocol_widget.c:1524
 msgid "Accept changed certificate?"
-msgstr "Voleu acceptar el certificat canviat?"
+msgstr "Voleu acceptar el certificat modificat?"
 
 #: src/remmina_protocol_widget.c:1666
 #, c-format
@@ -144,7 +144,7 @@ msgstr "Primer instal·leu el connector del protocol %s."
 #: src/remmina_exec.c:320
 #, c-format
 msgid "Plugin %s is not registered."
-msgstr "El connector %s no està enregistrat."
+msgstr "El connector %s no està registrat."
 
 #: src/remmina_pref_dialog.c:83 src/remmina_file_editor.c:497
 #: data/ui/remmina_preferences.glade:234
@@ -157,7 +157,7 @@ msgstr "Configura les resolucions disponibles"
 
 #: src/remmina_pref_dialog.c:132
 msgid "Recent lists cleared."
-msgstr "S’ha netejat la llista dels recents."
+msgstr "S’ha esborrat la llista dels recents."
 
 #: src/remmina_pref_dialog.c:143 src/rcw.c:1875
 #: data/ui/remmina_preferences.glade:249 data/ui/remmina_preferences.glade:259
@@ -171,7 +171,7 @@ msgstr "Configura les pulsacions de tecles"
 #. TRANSLATORS: Do not translate libsodium, is the name of a library
 #: src/remmina_pref_dialog.c:443
 msgid "libsodium >= 1.9.0 is required to use master password"
-msgstr "Per a usar la contrasenya mestra es requereix libsodium >= 1.9.0"
+msgstr "Per a usar la contrasenya mestra cal el libsodium >= 1.9.0"
 
 #: src/remmina_ssh_plugin.c:441
 #, c-format
@@ -285,10 +285,19 @@ msgid ""
 "  • %g is substituted with Remmina profile group name\n"
 "  • %d is substituted with local datetime in iso8601 format\n"
 msgstr ""
+"El nom del fitxer pot utilitzar els espais reservats següents:\n"
+"\n"
+"  • %h se substitueix amb el nom del servidor.\n"
+"  • %t se substitueix amb el nom del servidor SSH.\n"
+"  • %u se substitueix amb el nom d'usuari.\n"
+"  • %U se substitueix amb el nom d'usuari SSH.\n"
+"  • %p se substitueix amb el nom del perfil del Remmina.\n"
+"  • %g se substitueix amb el nom del perfil del grup del Remmina.\n"
+"  • %d se substitueix amb la data local en format iso8601.\n"
 
 #: src/remmina_ssh_plugin.c:1051
 msgid "Terminal color scheme"
-msgstr "Esquema de color de terminal"
+msgstr "Esquema de color del terminal"
 
 #: src/remmina_ssh_plugin.c:1052
 msgid "Character set"
@@ -296,7 +305,7 @@ msgstr "Joc de caràcters"
 
 #: src/remmina_ssh_plugin.c:1053 src/remmina_sftp_plugin.c:328
 msgid "SSH Proxy Command"
-msgstr ""
+msgstr "Ordre del servidor intermediari SSH"
 
 #: src/remmina_ssh_plugin.c:1054
 msgid "KEX (Key Exchange) algorithms"
@@ -308,16 +317,15 @@ msgstr "Xifrat simètric entre client i servidor"
 
 #: src/remmina_ssh_plugin.c:1056
 msgid "Preferred server host key types"
-msgstr ""
+msgstr "Tipus de clau preferides del servidor amfitrió"
 
 #: src/remmina_ssh_plugin.c:1057
-#, fuzzy
 msgid "Folder for SSH session log"
-msgstr "Ha fallat en iniciar la sessió SSH: %s"
+msgstr "Carpeta per al registre de la sessió SSH"
 
 #: src/remmina_ssh_plugin.c:1058
 msgid "Filename for SSH session log"
-msgstr "Nom de fitxer del registre de sessions SSH"
+msgstr "Nom de fitxer del registre de la sessió SSH"
 
 #: src/remmina_ssh_plugin.c:1059
 msgid "Log SSH session when exiting Remmina"
@@ -325,7 +333,7 @@ msgstr "Registra la sessió SSH en sortir del Remmina"
 
 #: src/remmina_ssh_plugin.c:1060
 msgid "Audible terminal bell"
-msgstr ""
+msgstr "Timbre audible del terminal"
 
 #: src/remmina_ssh_plugin.c:1061
 #, fuzzy
