@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2020-04-20 09:36+0000\n"
+"POT-Creation-Date: 2020-04-20 10:10+0000\n"
 "PO-Revision-Date: 2020-03-23 03:49+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -131,7 +131,7 @@ msgid "Could not authenticate, attempting reconnection…"
 msgstr "Authentifizierung fehlgeschlagen. Versuche erneut zu verbinden…"
 
 #: src/remmina_protocol_widget.c:1753 src/remmina_file_editor.c:408
-#: src/remmina_file_editor.c:883 data/ui/remmina_main.glade:565
+#: src/remmina_file_editor.c:883 data/ui/remmina_main.glade:571
 msgid "Server"
 msgstr "Server"
 
@@ -215,7 +215,7 @@ msgstr "Öffentlicher Schlüssel (automatisch)"
 msgid "Kerberos (GSSAPI)"
 msgstr "Kerberos (GSSAPI)"
 
-#: src/remmina_ssh_plugin.c:999 data/ui/remmina_main.glade:267
+#: src/remmina_ssh_plugin.c:999 data/ui/remmina_main.glade:273
 msgid "Copy"
 msgstr "Kopieren"
 
@@ -453,7 +453,7 @@ msgstr "Vom Server herunterladen"
 msgid "Upload to server"
 msgstr "Zum Server hochladen"
 
-#: src/remmina_ftp_client.c:790 data/ui/remmina_main.glade:287
+#: src/remmina_ftp_client.c:790 data/ui/remmina_main.glade:293
 msgid "Delete"
 msgstr "Löschen"
 
@@ -474,7 +474,7 @@ msgid "User"
 msgstr "Benutzer"
 
 #: src/remmina_ftp_client.c:930 src/remmina_file_editor.c:1470
-#: data/ui/remmina_main.glade:551 data/ui/remmina_mpc.glade:115
+#: data/ui/remmina_main.glade:557 data/ui/remmina_mpc.glade:115
 msgid "Group"
 msgstr "Gruppe"
 
@@ -582,7 +582,7 @@ msgstr ""
 msgid "Open Main Window"
 msgstr "Hauptfenster öffnen"
 
-#: src/remmina_icon.c:144 data/ui/remmina_main.glade:343
+#: src/remmina_icon.c:144 data/ui/remmina_main.glade:349
 msgid "_Preferences"
 msgstr "_Einstellungen"
 
@@ -594,7 +594,7 @@ msgstr "_Über"
 msgid "Enable Service Discovery"
 msgstr "Erkennungsdienst aktivieren"
 
-#: src/remmina_icon.c:172 data/ui/remmina_main.glade:494
+#: src/remmina_icon.c:172 data/ui/remmina_main.glade:500
 msgid "_Quit"
 msgstr "_Beenden"
 
@@ -670,7 +670,7 @@ msgstr "Alle Tastatureingaben abfangen"
 msgid "Preferences"
 msgstr "Einstellungen"
 
-#: src/rcw.c:2257 src/rcw.c:2258 data/ui/remmina_main.glade:297
+#: src/rcw.c:2257 src/rcw.c:2258 data/ui/remmina_main.glade:303
 msgid "Tools"
 msgstr "Werkzeuge"
 
@@ -725,7 +725,7 @@ msgstr "Einstellung"
 msgid "Secret"
 msgstr "Geheimnis"
 
-#: src/remmina_plugin_manager.c:446 data/ui/remmina_main.glade:414
+#: src/remmina_plugin_manager.c:446 data/ui/remmina_main.glade:420
 msgid "Plugins"
 msgstr "Plugins"
 
@@ -735,7 +735,7 @@ msgid "_OK"
 msgstr "_Ok"
 
 #: src/remmina_plugin_manager.c:464 src/remmina_file_editor.c:1445
-#: plugins/nx/nx_session_manager.c:204 data/ui/remmina_main.glade:529
+#: plugins/nx/nx_session_manager.c:204 data/ui/remmina_main.glade:535
 msgid "Name"
 msgstr "Bezeichnung"
 
@@ -772,7 +772,7 @@ msgstr ""
 "Import fehlgeschlagen:\n"
 "%s"
 
-#: src/remmina_main.c:956 data/ui/remmina_main.glade:374
+#: src/remmina_main.c:956 data/ui/remmina_main.glade:380
 msgid "Import"
 msgstr "Importieren"
 
@@ -1363,7 +1363,7 @@ msgid "Use the current settings as the default for all new connection profiles"
 msgstr ""
 "Die aktuellen Einstellungen als Standard für alle neuen Profile verwenden"
 
-#: src/remmina_file_editor.c:1333 data/ui/remmina_main.glade:250
+#: src/remmina_file_editor.c:1333 data/ui/remmina_main.glade:256
 msgid "Connect"
 msgstr "Verbinden"
 
@@ -2330,7 +2330,7 @@ msgstr ""
 msgid "Do not show this message again"
 msgstr "Diese Nachricht nicht mehr anzeigen"
 
-#: data/ui/remmina_about.glade:30 data/ui/remmina_main.glade:485
+#: data/ui/remmina_about.glade:30 data/ui/remmina_main.glade:491
 msgid "About"
 msgstr "Über"
 
@@ -2338,89 +2338,116 @@ msgstr "Über"
 msgid "Website"
 msgstr "Webseite"
 
-#: data/ui/remmina_main.glade:74
+#: data/ui/remmina_main.glade:35
+#, fuzzy
+msgid "Hide or show the search bar"
+msgstr "Zeige Suchleiste"
+
+#: data/ui/remmina_main.glade:41
+#, fuzzy
+msgid "Add a new connection profile"
+msgstr "Neues Verbindungsprofil erstellen"
+
+#: data/ui/remmina_main.glade:47
+msgid "Show the Remmina changelog."
+msgstr ""
+
+#: data/ui/remmina_main.glade:53
+msgid "Switch from grouped to list view"
+msgstr ""
+
+#: data/ui/remmina_main.glade:78
 msgid "New connection profile"
 msgstr "Neues Verbindungsprofil"
 
-#: data/ui/remmina_main.glade:86
+#: data/ui/remmina_main.glade:90
 msgid "Show search bar"
 msgstr "Zeige Suchleiste"
 
-#: data/ui/remmina_main.glade:125
+#: data/ui/remmina_main.glade:123
+#, fuzzy
+msgid "Remmina main menu"
+msgstr "Remmina Daten-Ordner"
+
+#: data/ui/remmina_main.glade:130
 msgid "Actions"
 msgstr "Aktionen"
 
-#: data/ui/remmina_main.glade:139
+#: data/ui/remmina_main.glade:144
 msgid "Toggle view"
 msgstr "Schalte Ansicht um"
 
-#: data/ui/remmina_main.glade:187
+#: data/ui/remmina_main.glade:175
+msgid "Select the protocol to use with the quick connect bar."
+msgstr ""
+
+#: data/ui/remmina_main.glade:193
 msgid "Search string or server name/IP address for “Quick Connect”"
 msgstr "Suchbegriff, Servername oder IP‐Adresse für \"Quick Connect\""
 
-#: data/ui/remmina_main.glade:191 data/ui/remmina_main.glade:193
+#: data/ui/remmina_main.glade:197 data/ui/remmina_main.glade:199
 msgid "Server name or IP address"
 msgstr "Servername oder IP‐Adresse"
 
-#: data/ui/remmina_main.glade:192 data/ui/remmina_main.glade:194
+#: data/ui/remmina_main.glade:198 data/ui/remmina_main.glade:200
 #: data/ui/remmina_preferences.glade:214
 msgid "Clear"
 msgstr "Leeren"
 
-#: data/ui/remmina_main.glade:277
+#: data/ui/remmina_main.glade:283
 msgid "Edit"
 msgstr "Bearbeiten"
 
-#: data/ui/remmina_main.glade:307
+#: data/ui/remmina_main.glade:313
 msgid "Collapse all"
 msgstr "Alle zuklappen"
 
-#: data/ui/remmina_main.glade:317
+#: data/ui/remmina_main.glade:323
 msgid "Expand all"
 msgstr "Alle aufklappen"
 
-#: data/ui/remmina_main.glade:354
+#: data/ui/remmina_main.glade:360
 msgid "Multi password changer"
 msgstr "Mehrfach Passwortwechsler"
 
-#: data/ui/remmina_main.glade:364
+#: data/ui/remmina_main.glade:370
 msgid "Debugging"
 msgstr "Debuggen"
 
-#: data/ui/remmina_main.glade:384
+#: data/ui/remmina_main.glade:390
 msgid "Export"
 msgstr "Exportieren"
 
-#: data/ui/remmina_main.glade:394
+#: data/ui/remmina_main.glade:400
 msgid "News"
 msgstr "Neuigkeiten"
 
-#: data/ui/remmina_main.glade:404
+#: data/ui/remmina_main.glade:410
 msgid "Set as default remote desktop client"
 msgstr "Als Standard Desktop-Client einstellen"
 
-#: data/ui/remmina_main.glade:431
+#: data/ui/remmina_main.glade:437
 msgid "Homepage"
 msgstr "Homepage"
 
-#: data/ui/remmina_main.glade:441
+#: data/ui/remmina_main.glade:447
 msgid "Donations"
 msgstr "Spenden"
 
-#: data/ui/remmina_main.glade:451
+#: data/ui/remmina_main.glade:457
 msgid "Wiki"
 msgstr "Wiki"
 
 #. Remmina community website
-#: data/ui/remmina_main.glade:461
+#: data/ui/remmina_main.glade:467
 msgid "Online Community"
 msgstr "Online Gemeinschaft"
 
-#: data/ui/remmina_main.glade:579
+#: data/ui/remmina_main.glade:585
 msgid "Plugin"
 msgstr "Plugin"
 
-#: data/ui/remmina_main.glade:593
+#: data/ui/remmina_main.glade:599
 msgid "Last used"
 msgstr "Zuletzt benutzt"
 
@@ -2455,19 +2482,27 @@ msgstr ""
 "remmina__stats_8c.html#details\" title=\"Remmina Benutzungsstatistiken"
 "\">anonyme</a></b> Benutzungsstatistiken an remmina.org"
 
-#: data/ui/remmina_news.glade:133
+#: data/ui/remmina_news.glade:120
+msgid "Enable anonymous statistics"
+msgstr ""
+
+#: data/ui/remmina_news.glade:134
 msgid "Make Remmina the default Remote Desktop Client"
 msgstr "Remmina als Standard Desktop-Client festlegen"
 
-#: data/ui/remmina_news.glade:142
+#: data/ui/remmina_news.glade:143
 msgid "Apply"
 msgstr "Anwenden"
 
-#: data/ui/remmina_news.glade:166
+#: data/ui/remmina_news.glade:147
+msgid "Allow Remmina to automatically open .rdp and .remmina files."
+msgstr ""
+
+#: data/ui/remmina_news.glade:168
 msgid "<big>Important settings</big>"
 msgstr "<big>Wichtige Einstellungen</big>"
 
-#: data/ui/remmina_news.glade:192
+#: data/ui/remmina_news.glade:194
 msgid ""
 "<span>\n"
 "<b>You are great for using copylefted libre software, <a href=\"https://"
@@ -2482,7 +2517,7 @@ msgstr ""
 "noch besser zu machen.</b>\n"
 "</span>\n"
 
-#: data/ui/remmina_news.glade:212
+#: data/ui/remmina_news.glade:214
 msgid "<big>Contribute</big>"
 msgstr "<big>Beitragen</big>"
 
