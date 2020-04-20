@@ -38,6 +38,7 @@ apps:
       - pulseaudio
       - ssh-keys
       - ssh-public-keys
+      - removable-media
 
   winpr-makecert:
     command: winpr-makecert
@@ -153,6 +154,7 @@ parts:
       - vim
       - xauth
       - xterm
+      - openssh-client
     configflags:
       - -DCMAKE_BUILD_TYPE=Release
       - -DWITH_FREERDP3=OFF
