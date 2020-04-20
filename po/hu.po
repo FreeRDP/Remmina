@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2020-04-20 10:10+0000\n"
+"POT-Creation-Date: 2020-04-20 12:13+0000\n"
 "PO-Revision-Date: 2020-03-24 20:31+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/remmina/"
@@ -74,7 +74,7 @@ msgstr "Csatlakozás ehhez: „%s”…"
 #: src/remmina_protocol_widget.c:1424 src/remmina_protocol_widget.c:1443
 #: src/remmina_ssh_plugin.c:920 src/remmina_sftp_plugin.c:291
 #: src/remmina_sftp_plugin.c:324 src/remmina_file_editor.c:927
-#: plugins/www/www_plugin.c:863 plugins/rdp/rdp_plugin.c:1994
+#: plugins/www/www_plugin.c:863 plugins/rdp/rdp_plugin.c:2011
 #: data/ui/remmina_unlock.glade:116 data/ui/remmina_mpc.glade:236
 #: data/ui/remmina_preferences.glade:1533
 msgid "Password"
@@ -252,7 +252,7 @@ msgstr "Ö_sszes kijelölése"
 #: src/remmina_ssh_plugin.c:1019 src/remmina_message_panel.c:330
 #: src/remmina_sftp_plugin.c:323 src/remmina_file_editor.c:918
 #: plugins/www/www_plugin.c:862 plugins/vnc/vnc_plugin.c:1832
-#: plugins/vnc/vnc_plugin.c:1852 plugins/rdp/rdp_plugin.c:1993
+#: plugins/vnc/vnc_plugin.c:1852 plugins/rdp/rdp_plugin.c:2010
 #: plugins/nx/nx_plugin.c:721 data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr ""
@@ -278,7 +278,7 @@ msgid "Password to unlock private key"
 msgstr ""
 
 #: src/remmina_ssh_plugin.c:1024 plugins/xdmcp/xdmcp_plugin.c:370
-#: plugins/rdp/rdp_plugin.c:2023 plugins/nx/nx_plugin.c:725
+#: plugins/rdp/rdp_plugin.c:2040 plugins/nx/nx_plugin.c:725
 msgid "Startup program"
 msgstr "Induló program"
 
@@ -462,7 +462,7 @@ msgid "Go to parent folder"
 msgstr "Ugrás a szülő mappára"
 
 #: src/remmina_ftp_client.c:763 plugins/vnc/vnc_plugin.c:1889
-#: plugins/rdp/rdp_plugin.c:2060
+#: plugins/rdp/rdp_plugin.c:2077
 msgid "Refresh"
 msgstr "Frissítés"
 
@@ -508,11 +508,11 @@ msgstr "Csoport"
 msgid "Permission"
 msgstr "Jogosultság"
 
-#: src/remmina_ftp_client.c:988 plugins/rdp/rdp_plugin.c:1949
+#: src/remmina_ftp_client.c:988 plugins/rdp/rdp_plugin.c:1966
 msgid "Remote"
 msgstr "Távoli"
 
-#: src/remmina_ftp_client.c:995 plugins/rdp/rdp_plugin.c:1945
+#: src/remmina_ftp_client.c:995 plugins/rdp/rdp_plugin.c:1962
 msgid "Local"
 msgstr "Helyi"
 
@@ -965,7 +965,7 @@ msgstr "Igen"
 msgid "No"
 msgstr "Nem"
 
-#: src/remmina_message_panel.c:391 plugins/rdp/rdp_plugin.c:1995
+#: src/remmina_message_panel.c:391 plugins/rdp/rdp_plugin.c:2012
 #: data/ui/remmina_mpc.glade:172
 msgid "Domain"
 msgstr "Tartomány"
@@ -1349,7 +1349,7 @@ msgstr "Alagút a loopback címen keresztül"
 msgid "Same server at port %i"
 msgstr "Ugyanazon kiszolgáló a(z) %i porton"
 
-#: src/remmina_file_editor.c:902 plugins/rdp/rdp_plugin.c:2024
+#: src/remmina_file_editor.c:902 plugins/rdp/rdp_plugin.c:2041
 msgid "Startup path"
 msgstr "Induló útvonal"
 
@@ -1587,22 +1587,22 @@ msgstr "16 bites színmélység"
 msgid "True color (32 bpp)"
 msgstr "32 bites színmélység"
 
-#: plugins/vnc/vnc_plugin.c:1812 plugins/rdp/rdp_plugin.c:1934
+#: plugins/vnc/vnc_plugin.c:1812 plugins/rdp/rdp_plugin.c:1951
 #: plugins/rdp/rdp_settings.c:269 plugins/nx/nx_plugin.c:701
 msgid "Poor (fastest)"
 msgstr "Gyenge (leggyorsabb)"
 
-#: plugins/vnc/vnc_plugin.c:1813 plugins/rdp/rdp_plugin.c:1935
+#: plugins/vnc/vnc_plugin.c:1813 plugins/rdp/rdp_plugin.c:1952
 #: plugins/rdp/rdp_settings.c:271 plugins/nx/nx_plugin.c:702
 msgid "Medium"
 msgstr "Közepes"
 
-#: plugins/vnc/vnc_plugin.c:1814 plugins/rdp/rdp_plugin.c:1936
+#: plugins/vnc/vnc_plugin.c:1814 plugins/rdp/rdp_plugin.c:1953
 #: plugins/rdp/rdp_settings.c:273 plugins/nx/nx_plugin.c:703
 msgid "Good"
 msgstr "Jó"
 
-#: plugins/vnc/vnc_plugin.c:1815 plugins/rdp/rdp_plugin.c:1937
+#: plugins/vnc/vnc_plugin.c:1815 plugins/rdp/rdp_plugin.c:1954
 #: plugins/rdp/rdp_settings.c:275 plugins/nx/nx_plugin.c:704
 msgid "Best (slowest)"
 msgstr "Legjobb (leglassabb)"
@@ -1616,7 +1616,7 @@ msgid "Color depth"
 msgstr "Színmélység"
 
 #: plugins/vnc/vnc_plugin.c:1835 plugins/vnc/vnc_plugin.c:1855
-#: plugins/rdp/rdp_plugin.c:2013 plugins/nx/nx_plugin.c:724
+#: plugins/rdp/rdp_plugin.c:2030 plugins/nx/nx_plugin.c:724
 msgid "Quality"
 msgstr "Minőség"
 
@@ -1656,7 +1656,7 @@ msgid "Open Chat…"
 msgstr "Csevegés megnyitása…"
 
 #: plugins/vnc/vnc_plugin.c:1891 plugins/spice/spice_plugin.c:472
-#: plugins/xdmcp/xdmcp_plugin.c:381 plugins/rdp/rdp_plugin.c:2063
+#: plugins/xdmcp/xdmcp_plugin.c:381 plugins/rdp/rdp_plugin.c:2080
 #: plugins/nx/nx_plugin.c:751
 msgid "Send Ctrl+Alt+Delete"
 msgstr "Ctrl+Alt+Delete küldése"
@@ -1708,7 +1708,7 @@ msgstr "TLS titkosítás használata"
 msgid "Server CA certificate"
 msgstr "Kiszolgáló CA tanúsítvány"
 
-#: plugins/spice/spice_plugin.c:440 plugins/rdp/rdp_plugin.c:1998
+#: plugins/spice/spice_plugin.c:440 plugins/rdp/rdp_plugin.c:2015
 msgid "Share folder"
 msgstr "Mappa megosztása"
 
@@ -1720,7 +1720,7 @@ msgstr "Hangcsatorna engedélyezése"
 msgid "Resize guest to match window size"
 msgstr "Vendég átméretezése az ablakmérethez"
 
-#: plugins/spice/spice_plugin.c:459 plugins/rdp/rdp_plugin.c:2037
+#: plugins/spice/spice_plugin.c:459 plugins/rdp/rdp_plugin.c:2054
 msgid "Share smartcard"
 msgstr "Intelligens kártya megosztása"
 
@@ -1783,7 +1783,7 @@ msgstr "16 bites színmélység"
 msgid "True colour (24 bit)"
 msgstr "24 bites színmélység"
 
-#: plugins/xdmcp/xdmcp_plugin.c:369 plugins/rdp/rdp_plugin.c:1997
+#: plugins/xdmcp/xdmcp_plugin.c:369 plugins/rdp/rdp_plugin.c:2014
 #, fuzzy
 msgid "Colour depth"
 msgstr "Színmélység"
@@ -1823,17 +1823,17 @@ msgstr "Leválasztott ablak"
 msgid "Remmina simple terminal"
 msgstr "Remmina értesítő ikon"
 
-#: plugins/rdp/rdp_plugin.c:578
+#: plugins/rdp/rdp_plugin.c:580
 #, fuzzy
 msgid "Enter RDP authentication credentials"
 msgstr "Adja meg a hitelesítő adatokat"
 
-#: plugins/rdp/rdp_plugin.c:640
+#: plugins/rdp/rdp_plugin.c:642
 #, fuzzy
 msgid "Enter RDP gateway authentication credentials"
 msgstr "Adja meg a hitelesítő adatokat"
 
-#: plugins/rdp/rdp_plugin.c:1508
+#: plugins/rdp/rdp_plugin.c:1525
 #, fuzzy, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
@@ -1842,7 +1842,7 @@ msgstr ""
 "A(z) %s RDP-kiszolgálóhoz hozzáférés meghiúsult.\n"
 "A fiók ki lett zárva."
 
-#: plugins/rdp/rdp_plugin.c:1515
+#: plugins/rdp/rdp_plugin.c:1532
 #, fuzzy, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
@@ -1851,7 +1851,7 @@ msgstr ""
 "A(z) %s RDP-kiszolgálóhoz hozzáférés meghiúsult.\n"
 "A fiók lejárt."
 
-#: plugins/rdp/rdp_plugin.c:1522
+#: plugins/rdp/rdp_plugin.c:1539
 #, fuzzy, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
@@ -1860,7 +1860,7 @@ msgstr ""
 "A(z) %s RDP-kiszolgálóhoz hozzáférés meghiúsult.\n"
 "A jelszó lejárt."
 
-#: plugins/rdp/rdp_plugin.c:1529
+#: plugins/rdp/rdp_plugin.c:1546
 #, fuzzy, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
@@ -1869,7 +1869,7 @@ msgstr ""
 "A(z) %s RDP-kiszolgálóhoz hozzáférés meghiúsult.\n"
 "A fiók tiltott."
 
-#: plugins/rdp/rdp_plugin.c:1535
+#: plugins/rdp/rdp_plugin.c:1552
 #, fuzzy, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
@@ -1878,7 +1878,7 @@ msgstr ""
 "A(z) %s RDP-kiszolgálóhoz hozzáférés meghiúsult.\n"
 "A felhasználónak nincs elengendő jogosultsága."
 
-#: plugins/rdp/rdp_plugin.c:1543
+#: plugins/rdp/rdp_plugin.c:1560
 #, fuzzy, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
@@ -1887,7 +1887,7 @@ msgstr ""
 "A(z) %s RDP-kiszolgálóhoz hozzáférés meghiúsult.\n"
 "A fiókon korlátozások vannak."
 
-#: plugins/rdp/rdp_plugin.c:1551
+#: plugins/rdp/rdp_plugin.c:1568
 #, fuzzy, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
@@ -1896,17 +1896,17 @@ msgstr ""
 "A(z) %s RDP-kiszolgálóhoz hozzáférés meghiúsult.\n"
 "A felhasználónak módosítania kell a jelszavát a kapcsolódás előtt."
 
-#: plugins/rdp/rdp_plugin.c:1556
+#: plugins/rdp/rdp_plugin.c:1573
 #, fuzzy, c-format
 msgid "Lost connection to the RDP server \"%s\"."
 msgstr "Nem lehet a(z) %s RDP-kiszolgálóhoz kapcsolódni."
 
-#: plugins/rdp/rdp_plugin.c:1559
+#: plugins/rdp/rdp_plugin.c:1576
 #, fuzzy, c-format
 msgid "Could not find the address for the RDP server \"%s\"."
 msgstr "A(z) %s RDP-kiszolgáló címe nem található."
 
-#: plugins/rdp/rdp_plugin.c:1563
+#: plugins/rdp/rdp_plugin.c:1580
 #, fuzzy, c-format
 msgid ""
 "Could not connect to the RDP server \"%s\" via TLS. Check that client and "
@@ -1915,111 +1915,111 @@ msgstr ""
 "Hiba a(z) %s RDP-kiszolgálóhoz kapcsolódáskor. A TLS-kapcsolat meghiúsult. "
 "Ellenőrizze, hogy az ügyfél és a kiszolgáló támogat-e közös TLS verziót."
 
-#: plugins/rdp/rdp_plugin.c:1566
+#: plugins/rdp/rdp_plugin.c:1583
 #, fuzzy, c-format
 msgid "Unable to establish a connection to the RDP server \"%s\"."
 msgstr "A(z) %s RDP-kiszolgálóhoz kapcsolódás nem lehetséges."
 
-#: plugins/rdp/rdp_plugin.c:1574
+#: plugins/rdp/rdp_plugin.c:1591
 #, fuzzy, c-format
 msgid "Cannot connect to the RDP server \"%s\"."
 msgstr "Nem lehet a(z) %s RDP-kiszolgálóhoz kapcsolódni."
 
-#: plugins/rdp/rdp_plugin.c:1577
+#: plugins/rdp/rdp_plugin.c:1594
 #, fuzzy
 msgid "Could not start libfreerdp-gdi."
 msgstr "Nem készíthető elő a libfreerdp gdi"
 
-#: plugins/rdp/rdp_plugin.c:1580
+#: plugins/rdp/rdp_plugin.c:1597
 #, c-format
 msgid ""
 "You requested a H.264 GFX mode for the server \"%s\", but your libfreerdp "
 "does not support H.264. Please use a non-AVC colour depth setting."
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:1587
+#: plugins/rdp/rdp_plugin.c:1604
 #, fuzzy, c-format
 msgid "The \"%s\" server refused the connection."
 msgstr "A(z) %s kiszolgáló megtagadta a kapcsolatot."
 
-#: plugins/rdp/rdp_plugin.c:1592
+#: plugins/rdp/rdp_plugin.c:1609
 #, c-format
 msgid ""
 "The Remote Desktop Gateway \"%s\" denied the user \"%s\\%s\" access due to "
 "policy."
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:1602
+#: plugins/rdp/rdp_plugin.c:1619
 #, fuzzy, c-format
 msgid "Cannot connect to the \"%s\" RDP server."
 msgstr "Nem lehet a(z) %s RDP-kiszolgálóhoz kapcsolódni."
 
-#: plugins/rdp/rdp_plugin.c:1919
+#: plugins/rdp/rdp_plugin.c:1936
 msgid "GFX AVC444 (32 bpp)"
 msgstr "GFX AVC444 (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:1920
+#: plugins/rdp/rdp_plugin.c:1937
 msgid "GFX AVC420 (32 bpp)"
 msgstr "GFX AVC420 (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:1921
+#: plugins/rdp/rdp_plugin.c:1938
 msgid "GFX RFX (32 bpp)"
 msgstr "GFX RFX (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:1922
+#: plugins/rdp/rdp_plugin.c:1939
 msgid "RemoteFX (32 bpp)"
 msgstr "RemoteFX (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:1923
+#: plugins/rdp/rdp_plugin.c:1940
 #, fuzzy
 msgid "True colour (32 bpp)"
 msgstr "32 bites színmélység"
 
-#: plugins/rdp/rdp_plugin.c:1924
+#: plugins/rdp/rdp_plugin.c:1941
 #, fuzzy
 msgid "True colour (24 bpp)"
 msgstr "24 bites színmélység"
 
-#: plugins/rdp/rdp_plugin.c:1925
+#: plugins/rdp/rdp_plugin.c:1942
 #, fuzzy
 msgid "High colour (16 bpp)"
 msgstr "16 bites színmélység"
 
-#: plugins/rdp/rdp_plugin.c:1926
+#: plugins/rdp/rdp_plugin.c:1943
 #, fuzzy
 msgid "High colour (15 bpp)"
 msgstr "15 bites színmélység"
 
-#: plugins/rdp/rdp_plugin.c:1927
+#: plugins/rdp/rdp_plugin.c:1944
 #, fuzzy
 msgid "256 colours (8 bpp)"
 msgstr "256 szín"
 
-#: plugins/rdp/rdp_plugin.c:1944 data/ui/remmina_preferences.glade:658
+#: plugins/rdp/rdp_plugin.c:1961 data/ui/remmina_preferences.glade:658
 msgid "Off"
 msgstr "Ki"
 
-#: plugins/rdp/rdp_plugin.c:1946
+#: plugins/rdp/rdp_plugin.c:1963
 msgid "Local - low quality"
 msgstr "Helyi – alacsony minőség"
 
-#: plugins/rdp/rdp_plugin.c:1947
+#: plugins/rdp/rdp_plugin.c:1964
 msgid "Local - medium quality"
 msgstr "Helyi – közepes minőség"
 
-#: plugins/rdp/rdp_plugin.c:1948
+#: plugins/rdp/rdp_plugin.c:1965
 msgid "Local - high quality"
 msgstr "Helyi – magas minőség"
 
-#: plugins/rdp/rdp_plugin.c:1956
+#: plugins/rdp/rdp_plugin.c:1973
 msgid "Negotiate"
 msgstr "Tárgyalás"
 
-#: plugins/rdp/rdp_plugin.c:1972
+#: plugins/rdp/rdp_plugin.c:1989
 msgid "2600 (Windows XP),7601 (Windows Vista/7),9600 (Windows 8 and newer)"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:1975
+#: plugins/rdp/rdp_plugin.c:1992
 msgid ""
 "Used i.a. by Terminal services in SmartCard channel to distinguish client "
 "capabilities:\n"
@@ -2030,193 +2030,193 @@ msgid ""
 "SCardGetDeviceTypeId()"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2014
+#: plugins/rdp/rdp_plugin.c:2031
 msgid "Sound"
 msgstr "Hang"
 
-#: plugins/rdp/rdp_plugin.c:2015 data/ui/remmina_preferences.glade:1602
+#: plugins/rdp/rdp_plugin.c:2032 data/ui/remmina_preferences.glade:1602
 msgid "Security"
 msgstr "Biztonság"
 
-#: plugins/rdp/rdp_plugin.c:2016
+#: plugins/rdp/rdp_plugin.c:2033
 msgid "Gateway transport type"
 msgstr "Átjáró átviteltípusa"
 
-#: plugins/rdp/rdp_plugin.c:2017
+#: plugins/rdp/rdp_plugin.c:2034
 #, fuzzy
 msgid "Remote Desktop Gateway server"
 msgstr "RD átjáró kiszolgáló"
 
-#: plugins/rdp/rdp_plugin.c:2018
+#: plugins/rdp/rdp_plugin.c:2035
 #, fuzzy
 msgid "Remote Desktop Gateway username"
 msgstr "RD átjáró felhasználóneve"
 
-#: plugins/rdp/rdp_plugin.c:2019
+#: plugins/rdp/rdp_plugin.c:2036
 #, fuzzy
 msgid "Remote Desktop Gateway password"
 msgstr "RD átjáró jelszava"
 
-#: plugins/rdp/rdp_plugin.c:2020
+#: plugins/rdp/rdp_plugin.c:2037
 #, fuzzy
 msgid "Remote Desktop Gateway domain"
 msgstr "RD átjáró tartománya"
 
-#: plugins/rdp/rdp_plugin.c:2021
+#: plugins/rdp/rdp_plugin.c:2038
 msgid "Client name"
 msgstr "Ügyfélnév"
 
-#: plugins/rdp/rdp_plugin.c:2022
+#: plugins/rdp/rdp_plugin.c:2039
 #, fuzzy
 msgid "Client build"
 msgstr "Ügyfélnév"
 
-#: plugins/rdp/rdp_plugin.c:2025
+#: plugins/rdp/rdp_plugin.c:2042
 msgid "Load balance info"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2026
+#: plugins/rdp/rdp_plugin.c:2043
 msgid "Override printer drivers"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2026
+#: plugins/rdp/rdp_plugin.c:2043
 msgid ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2027
+#: plugins/rdp/rdp_plugin.c:2044
 msgid "Local serial name"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2027
+#: plugins/rdp/rdp_plugin.c:2044
 msgid "COM1, COM2, etc."
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2028
+#: plugins/rdp/rdp_plugin.c:2045
 msgid "Local serial driver"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2028
+#: plugins/rdp/rdp_plugin.c:2045
 msgid "Serial"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2029
+#: plugins/rdp/rdp_plugin.c:2046
 msgid "Local serial path"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2029
+#: plugins/rdp/rdp_plugin.c:2046
 msgid "/dev/ttyS0, /dev/ttyS1, etc."
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2030
+#: plugins/rdp/rdp_plugin.c:2047
 msgid "Local parallel name"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2031
+#: plugins/rdp/rdp_plugin.c:2048
 msgid "Local parallel device"
-msgstr ""
-
-#: plugins/rdp/rdp_plugin.c:2032
-#, fuzzy
-msgid "Smartcard name"
-msgstr "Intelligens kártya neve"
-
-#: plugins/rdp/rdp_plugin.c:2033
-msgid "Share printers"
-msgstr ""
-
-#: plugins/rdp/rdp_plugin.c:2034
-msgid "Share serial ports"
-msgstr ""
-
-#: plugins/rdp/rdp_plugin.c:2035
-msgid "(SELinux) permissive mode for serial ports"
-msgstr ""
-
-#: plugins/rdp/rdp_plugin.c:2036
-msgid "Share parallel ports"
-msgstr ""
-
-#: plugins/rdp/rdp_plugin.c:2038
-msgid "Redirect local microphone"
-msgstr "Helyi mikrofon átirányítása"
-
-#: plugins/rdp/rdp_plugin.c:2039
-#, fuzzy
-msgid "Turn off clipboard sync"
-msgstr "Vágólap-szinkronizálás tiltása"
-
-#: plugins/rdp/rdp_plugin.c:2040
-msgid "Ignore certificate"
-msgstr "Tanúsítvány mellőzése"
-
-#: plugins/rdp/rdp_plugin.c:2041
-msgid "Use the old license workflow"
-msgstr ""
-
-#: plugins/rdp/rdp_plugin.c:2041
-msgid "It disables CAL and hwId is set to 0"
-msgstr ""
-
-#: plugins/rdp/rdp_plugin.c:2042
-#, fuzzy
-msgid "Turn off password storing"
-msgstr "Jelszótárolás letiltása"
-
-#: plugins/rdp/rdp_plugin.c:2043
-msgid "Attach to console (2003/2003 R2)"
-msgstr "Csatolás konzolhoz (Windows 2003 / 2003 R2)"
-
-#: plugins/rdp/rdp_plugin.c:2044
-msgid "Turn off fast-path"
-msgstr ""
-
-#: plugins/rdp/rdp_plugin.c:2045
-#, fuzzy
-msgid "Server detection using Remote Desktop Gateway"
-msgstr "Kiszolgálóészlelés RD átjáró használatával"
-
-#: plugins/rdp/rdp_plugin.c:2047
-msgid "Use system proxy settings"
 msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:2049
 #, fuzzy
+msgid "Smartcard name"
+msgstr "Intelligens kártya neve"
+
+#: plugins/rdp/rdp_plugin.c:2050
+msgid "Share printers"
+msgstr ""
+
+#: plugins/rdp/rdp_plugin.c:2051
+msgid "Share serial ports"
+msgstr ""
+
+#: plugins/rdp/rdp_plugin.c:2052
+msgid "(SELinux) permissive mode for serial ports"
+msgstr ""
+
+#: plugins/rdp/rdp_plugin.c:2053
+msgid "Share parallel ports"
+msgstr ""
+
+#: plugins/rdp/rdp_plugin.c:2055
+msgid "Redirect local microphone"
+msgstr "Helyi mikrofon átirányítása"
+
+#: plugins/rdp/rdp_plugin.c:2056
+#, fuzzy
+msgid "Turn off clipboard sync"
+msgstr "Vágólap-szinkronizálás tiltása"
+
+#: plugins/rdp/rdp_plugin.c:2057
+msgid "Ignore certificate"
+msgstr "Tanúsítvány mellőzése"
+
+#: plugins/rdp/rdp_plugin.c:2058
+msgid "Use the old license workflow"
+msgstr ""
+
+#: plugins/rdp/rdp_plugin.c:2058
+msgid "It disables CAL and hwId is set to 0"
+msgstr ""
+
+#: plugins/rdp/rdp_plugin.c:2059
+#, fuzzy
+msgid "Turn off password storing"
+msgstr "Jelszótárolás letiltása"
+
+#: plugins/rdp/rdp_plugin.c:2060
+msgid "Attach to console (2003/2003 R2)"
+msgstr "Csatolás konzolhoz (Windows 2003 / 2003 R2)"
+
+#: plugins/rdp/rdp_plugin.c:2061
+msgid "Turn off fast-path"
+msgstr ""
+
+#: plugins/rdp/rdp_plugin.c:2062
+#, fuzzy
+msgid "Server detection using Remote Desktop Gateway"
+msgstr "Kiszolgálóészlelés RD átjáró használatával"
+
+#: plugins/rdp/rdp_plugin.c:2064
+msgid "Use system proxy settings"
+msgstr ""
+
+#: plugins/rdp/rdp_plugin.c:2066
+#, fuzzy
 msgid "Turn off automatic reconnection"
 msgstr "Automatikus újrakapcsolódás letiltása"
 
-#: plugins/rdp/rdp_plugin.c:2050
+#: plugins/rdp/rdp_plugin.c:2067
 #, fuzzy
 msgid "Relax order checks"
 msgstr "Sorrendellenőrzések lazítása"
 
-#: plugins/rdp/rdp_plugin.c:2051
+#: plugins/rdp/rdp_plugin.c:2068
 #, fuzzy
 msgid "Glyph cache"
 msgstr "Szimbólum-gyorsítótár"
 
-#: plugins/rdp/rdp_plugin.c:2052
+#: plugins/rdp/rdp_plugin.c:2069
 msgid "Enable multitransport protocol (UDP)"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2052
+#: plugins/rdp/rdp_plugin.c:2069
 msgid "Using the UDP protocol may improve perfromance"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2076
+#: plugins/rdp/rdp_plugin.c:2093
 msgid "RDP - Remote Desktop Protocol"
 msgstr "RDP – Távoli asztal protokoll"
 
-#: plugins/rdp/rdp_plugin.c:2099
+#: plugins/rdp/rdp_plugin.c:2116
 msgid "RDP - RDP File Handler"
 msgstr "RDP – RDP fájlleíró"
 
-#: plugins/rdp/rdp_plugin.c:2114
+#: plugins/rdp/rdp_plugin.c:2131
 msgid "RDP - Preferences"
 msgstr "RDP – Beállítások"
 
-#: plugins/rdp/rdp_plugin.c:2167
+#: plugins/rdp/rdp_plugin.c:2184
 msgid "Export connection in Windows .rdp file format"
 msgstr "Kapcsolat exportálása Windows .rdp fájlformátumba"
 
