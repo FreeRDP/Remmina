@@ -466,6 +466,15 @@ static void remmina_plugin_www_init(RemminaProtocolWidget *gp)
 	webkit_settings_set_enable_write_console_messages_to_stdout(gpdata->settings, TRUE);
 #endif
 
+	/* allow-file-access-from-file-urls */
+	webkit_settings_set_allow_file_access_from_file_urls(gpdata->settings, TRUE);
+	/* allow-modal-dialogs */
+	webkit_settings_set_allow_modal_dialogs(gpdata->settings, TRUE);
+	/* enable-caret-browsing */
+	webkit_settings_set_enable_caret_browsing(gpdata->settings, TRUE);
+	/* enable-html5-database */
+	webkit_settings_set_enable_html5_database(gpdata->settings, TRUE);
+
 	/* user-agent. */
 	if (remmina_plugin_service->file_get_string(remminafile, "user-agent")) {
 		gchar *useragent = g_strdup(remmina_plugin_service->file_get_string(remminafile, "user-agent"));
@@ -508,6 +517,13 @@ static void remmina_plugin_www_init(RemminaProtocolWidget *gp)
 	if (remmina_plugin_service->file_get_int(remminafile, "ignore-tls-errors", FALSE)) {
 		webkit_web_context_set_tls_errors_policy(gpdata->context, WEBKIT_TLS_ERRORS_POLICY_IGNORE);
 		g_info("Ignore TLS errors");
+	}
+	if (remmina_plugin_service->file_get_string(remminafile, "proxy-url")) {
+		gchar *proxyurl = g_strdup(remmina_plugin_service->file_get_string(remminafile, "proxy-url"));
+		WebKitNetworkProxySettings *proxy_settings = webkit_network_proxy_settings_new (proxyurl, NULL);
+		webkit_web_context_set_network_proxy_settings(gpdata->context, WEBKIT_NETWORK_PROXY_MODE_CUSTOM, proxy_settings);
+		webkit_network_proxy_settings_free(proxy_settings);
+		g_free(proxyurl);
 	}
 
 	webkit_web_context_set_automation_allowed(gpdata->context, TRUE);
@@ -876,6 +892,7 @@ static const RemminaProtocolSetting remmina_plugin_www_basic_settings[] =
 static const RemminaProtocolSetting remmina_plugin_www_advanced_settings[] =
 {
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,  "user-agent",		    N_("User agent"),		       FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,  "proxy-url",		    N_("Proxy URL"),		       FALSE, NULL, N_("Ex. https://myproxy.com, socks://mysocks:1080") },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "enable-java",		    N_("Turn on Java support"),	       TRUE,  NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "enable-smooth-scrolling",   N_("Turn on smooth scrolling"),     TRUE,  NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "enable-spatial-navigation", N_("Turn on spatial navigation"),   TRUE,  NULL, NULL },
