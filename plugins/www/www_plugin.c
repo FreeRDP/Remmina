@@ -466,6 +466,15 @@ static void remmina_plugin_www_init(RemminaProtocolWidget *gp)
 	webkit_settings_set_enable_write_console_messages_to_stdout(gpdata->settings, TRUE);
 #endif
 
+	/* allow-file-access-from-file-urls */
+	webkit_settings_set_allow_file_access_from_file_urls(gpdata->settings, TRUE);
+	/* allow-modal-dialogs */
+	webkit_settings_set_allow_modal_dialogs(gpdata->settings, TRUE);
+	/* enable-caret-browsing */
+	webkit_settings_set_enable_caret_browsing(gpdata->settings, TRUE);
+	/* enable-html5-database */
+	webkit_settings_set_enable_html5_database(gpdata->settings, TRUE);
+
 	/* user-agent. */
 	if (remmina_plugin_service->file_get_string(remminafile, "user-agent")) {
 		gchar *useragent = g_strdup(remmina_plugin_service->file_get_string(remminafile, "user-agent"));
