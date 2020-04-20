@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2020-04-20 09:36+0000\n"
+"POT-Creation-Date: 2020-04-20 10:10+0000\n"
 "PO-Revision-Date: 2020-03-27 10:03+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/remmina/"
@@ -131,7 +131,7 @@ msgid "Could not authenticate, attempting reconnection…"
 msgstr "Не можу автентифікуватись. Ще одна спроба…"
 
 #: src/remmina_protocol_widget.c:1753 src/remmina_file_editor.c:408
-#: src/remmina_file_editor.c:883 data/ui/remmina_main.glade:565
+#: src/remmina_file_editor.c:883 data/ui/remmina_main.glade:571
 msgid "Server"
 msgstr "Сервер"
 
@@ -215,7 +215,7 @@ msgstr "Відкритий ключ (автоматично)"
 msgid "Kerberos (GSSAPI)"
 msgstr "Kerberos (GSSAPI)"
 
-#: src/remmina_ssh_plugin.c:999 data/ui/remmina_main.glade:267
+#: src/remmina_ssh_plugin.c:999 data/ui/remmina_main.glade:273
 msgid "Copy"
 msgstr "Копіювати"
 
@@ -459,7 +459,7 @@ msgstr "Звантажити з сервера"
 msgid "Upload to server"
 msgstr "Вивантажити на сервер"
 
-#: src/remmina_ftp_client.c:790 data/ui/remmina_main.glade:287
+#: src/remmina_ftp_client.c:790 data/ui/remmina_main.glade:293
 msgid "Delete"
 msgstr "Видалити"
 
@@ -480,7 +480,7 @@ msgid "User"
 msgstr "Користувач"
 
 #: src/remmina_ftp_client.c:930 src/remmina_file_editor.c:1470
-#: data/ui/remmina_main.glade:551 data/ui/remmina_mpc.glade:115
+#: data/ui/remmina_main.glade:557 data/ui/remmina_mpc.glade:115
 msgid "Group"
 msgstr "Група"
 
@@ -588,7 +588,7 @@ msgstr ""
 msgid "Open Main Window"
 msgstr "Відкрити головне вікно"
 
-#: src/remmina_icon.c:144 data/ui/remmina_main.glade:343
+#: src/remmina_icon.c:144 data/ui/remmina_main.glade:349
 msgid "_Preferences"
 msgstr "_Налаштування"
 
@@ -600,7 +600,7 @@ msgstr "_Про програму"
 msgid "Enable Service Discovery"
 msgstr "Ввімкнути службу виявлення серверів"
 
-#: src/remmina_icon.c:172 data/ui/remmina_main.glade:494
+#: src/remmina_icon.c:172 data/ui/remmina_main.glade:500
 msgid "_Quit"
 msgstr "_Вийти"
 
@@ -675,7 +675,7 @@ msgstr "Передавати на віддалений комп'ютер буд�
 msgid "Preferences"
 msgstr "Налаштування"
 
-#: src/rcw.c:2257 src/rcw.c:2258 data/ui/remmina_main.glade:297
+#: src/rcw.c:2257 src/rcw.c:2258 data/ui/remmina_main.glade:303
 msgid "Tools"
 msgstr "Інструменти"
 
@@ -729,7 +729,7 @@ msgstr "Налаштування"
 msgid "Secret"
 msgstr "Таємно"
 
-#: src/remmina_plugin_manager.c:446 data/ui/remmina_main.glade:414
+#: src/remmina_plugin_manager.c:446 data/ui/remmina_main.glade:420
 msgid "Plugins"
 msgstr "Додатки"
 
@@ -739,7 +739,7 @@ msgid "_OK"
 msgstr "_Гаразд"
 
 #: src/remmina_plugin_manager.c:464 src/remmina_file_editor.c:1445
-#: plugins/nx/nx_session_manager.c:204 data/ui/remmina_main.glade:529
+#: plugins/nx/nx_session_manager.c:204 data/ui/remmina_main.glade:535
 msgid "Name"
 msgstr "Ім'я"
 
@@ -777,7 +777,7 @@ msgstr ""
 "Неможливо імпортувати:\n"
 "%s"
 
-#: src/remmina_main.c:956 data/ui/remmina_main.glade:374
+#: src/remmina_main.c:956 data/ui/remmina_main.glade:380
 msgid "Import"
 msgstr "Імпортувати"
 
@@ -1363,7 +1363,7 @@ msgstr ""
 "Використовувати поточні налаштування як типові для всіх нових профілів "
 "з'єднань"
 
-#: src/remmina_file_editor.c:1333 data/ui/remmina_main.glade:250
+#: src/remmina_file_editor.c:1333 data/ui/remmina_main.glade:256
 msgid "Connect"
 msgstr "Підключити"
 
@@ -2327,7 +2327,7 @@ msgstr ""
 msgid "Do not show this message again"
 msgstr "Не показувати це сповіщення знову"
 
-#: data/ui/remmina_about.glade:30 data/ui/remmina_main.glade:485
+#: data/ui/remmina_about.glade:30 data/ui/remmina_main.glade:491
 msgid "About"
 msgstr "Про"
 
@@ -2335,89 +2335,116 @@ msgstr "Про"
 msgid "Website"
 msgstr "Сайт"
 
-#: data/ui/remmina_main.glade:74
+#: data/ui/remmina_main.glade:35
+#, fuzzy
+msgid "Hide or show the search bar"
+msgstr "Показати рядок пошуку"
+
+#: data/ui/remmina_main.glade:41
+#, fuzzy
+msgid "Add a new connection profile"
+msgstr "Створити новий профіль з'єднання"
+
+#: data/ui/remmina_main.glade:47
+msgid "Show the Remmina changelog."
+msgstr ""
+
+#: data/ui/remmina_main.glade:53
+msgid "Switch from grouped to list view"
+msgstr ""
+
+#: data/ui/remmina_main.glade:78
 msgid "New connection profile"
 msgstr "Профіль нового з'єднання"
 
-#: data/ui/remmina_main.glade:86
+#: data/ui/remmina_main.glade:90
 msgid "Show search bar"
 msgstr "Показати рядок пошуку"
 
-#: data/ui/remmina_main.glade:125
+#: data/ui/remmina_main.glade:123
+#, fuzzy
+msgid "Remmina main menu"
+msgstr "Директорія даних Remmina"
+
+#: data/ui/remmina_main.glade:130
 msgid "Actions"
 msgstr "Дії"
 
-#: data/ui/remmina_main.glade:139
+#: data/ui/remmina_main.glade:144
 msgid "Toggle view"
 msgstr "Перемкнути вигляд"
 
-#: data/ui/remmina_main.glade:187
+#: data/ui/remmina_main.glade:175
+msgid "Select the protocol to use with the quick connect bar."
+msgstr ""
+
+#: data/ui/remmina_main.glade:193
 msgid "Search string or server name/IP address for “Quick Connect”"
 msgstr "Рядок пошуку чи ім'я сервера/IP для \"Швидкого з'єднання\""
 
-#: data/ui/remmina_main.glade:191 data/ui/remmina_main.glade:193
+#: data/ui/remmina_main.glade:197 data/ui/remmina_main.glade:199
 msgid "Server name or IP address"
 msgstr "Ім'я сервера чи IP адреса"
 
-#: data/ui/remmina_main.glade:192 data/ui/remmina_main.glade:194
+#: data/ui/remmina_main.glade:198 data/ui/remmina_main.glade:200
 #: data/ui/remmina_preferences.glade:214
 msgid "Clear"
 msgstr "Очистити"
 
-#: data/ui/remmina_main.glade:277
+#: data/ui/remmina_main.glade:283
 msgid "Edit"
 msgstr "Редагувати"
 
-#: data/ui/remmina_main.glade:307
+#: data/ui/remmina_main.glade:313
 msgid "Collapse all"
 msgstr "Згорнути все"
 
-#: data/ui/remmina_main.glade:317
+#: data/ui/remmina_main.glade:323
 msgid "Expand all"
 msgstr "Розгорнути все"
 
-#: data/ui/remmina_main.glade:354
+#: data/ui/remmina_main.glade:360
 msgid "Multi password changer"
 msgstr "Зміна багатьох паролів"
 
-#: data/ui/remmina_main.glade:364
+#: data/ui/remmina_main.glade:370
 msgid "Debugging"
 msgstr "Діагностика"
 
-#: data/ui/remmina_main.glade:384
+#: data/ui/remmina_main.glade:390
 msgid "Export"
 msgstr "Експорт"
 
-#: data/ui/remmina_main.glade:394
+#: data/ui/remmina_main.glade:400
 msgid "News"
 msgstr "Новини"
 
-#: data/ui/remmina_main.glade:404
+#: data/ui/remmina_main.glade:410
 msgid "Set as default remote desktop client"
 msgstr "Зробити типовим клієнтом віддалених стільниць"
 
-#: data/ui/remmina_main.glade:431
+#: data/ui/remmina_main.glade:437
 msgid "Homepage"
 msgstr "Домашня сторінка"
 
-#: data/ui/remmina_main.glade:441
+#: data/ui/remmina_main.glade:447
 msgid "Donations"
 msgstr "Пожертви"
 
-#: data/ui/remmina_main.glade:451
+#: data/ui/remmina_main.glade:457
 msgid "Wiki"
 msgstr "Вікі"
 
 #. Remmina community website
-#: data/ui/remmina_main.glade:461
+#: data/ui/remmina_main.glade:467
 msgid "Online Community"
 msgstr "Он-лайн Спільнота"
 
-#: data/ui/remmina_main.glade:579
+#: data/ui/remmina_main.glade:585
 msgid "Plugin"
 msgstr "Додаток"
 
-#: data/ui/remmina_main.glade:593
+#: data/ui/remmina_main.glade:599
 msgid "Last used"
 msgstr "Використано востаннє"
 
@@ -2452,19 +2479,27 @@ msgstr ""
 "remmina__stats_8c.html#details\" title=\"Статистику використання Remmina"
 "\">анонімну</a></b> статистику до remmina.org"
 
-#: data/ui/remmina_news.glade:133
+#: data/ui/remmina_news.glade:120
+msgid "Enable anonymous statistics"
+msgstr ""
+
+#: data/ui/remmina_news.glade:134
 msgid "Make Remmina the default Remote Desktop Client"
 msgstr "Зробити Remmina типовим клієнтом віддаленої стільниці"
 
-#: data/ui/remmina_news.glade:142
+#: data/ui/remmina_news.glade:143
 msgid "Apply"
 msgstr "Застосувати"
 
-#: data/ui/remmina_news.glade:166
+#: data/ui/remmina_news.glade:147
+msgid "Allow Remmina to automatically open .rdp and .remmina files."
+msgstr ""
+
+#: data/ui/remmina_news.glade:168
 msgid "<big>Important settings</big>"
 msgstr "<big>Важливі налаштування</big>"
 
-#: data/ui/remmina_news.glade:192
+#: data/ui/remmina_news.glade:194
 msgid ""
 "<span>\n"
 "<b>You are great for using copylefted libre software, <a href=\"https://"
@@ -2479,7 +2514,7 @@ msgstr ""
 "стимулювати програмувати ще краще в майбутньому.</b>\n"
 "</span>\n"
 
-#: data/ui/remmina_news.glade:212
+#: data/ui/remmina_news.glade:214
 msgid "<big>Contribute</big>"
 msgstr "<big>Внесок</big>"
 
