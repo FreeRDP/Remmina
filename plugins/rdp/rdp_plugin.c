@@ -49,6 +49,8 @@
 #include <pthread.h>
 #include <time.h>
 #include <cairo/cairo-xlib.h>
+#include <freerdp/addin.h>
+#include <freerdp/settings.h>
 #include <freerdp/freerdp.h>
 #include <freerdp/constants.h>
 #include <freerdp/client/cliprdr.h>
@@ -791,17 +793,32 @@ static void remmina_rdp_main_loop(RemminaProtocolWidget *gp)
 int remmina_rdp_load_static_channel_addin(rdpChannels *channels, rdpSettings *settings, char *name, void *data)
 {
 	TRACE_CALL(__func__);
-	void *entry;
+	PVIRTUALCHANNELENTRY entry = NULL;
+	PVIRTUALCHANNELENTRYEX entryEx = NULL;
+	entryEx = (PVIRTUALCHANNELENTRYEX)(void*)freerdp_load_channel_addin_entry(
+	    name, NULL, NULL, FREERDP_ADDIN_CHANNEL_STATIC | FREERDP_ADDIN_CHANNEL_ENTRYEX);
 
-	entry = freerdp_load_channel_addin_entry(name, NULL, NULL, FREERDP_ADDIN_CHANNEL_STATIC);
-	if (entry) {
-		if (freerdp_channels_client_load(channels, settings, entry, data) == 0) {
+	if (!entryEx)
+		entry = freerdp_load_channel_addin_entry(name, NULL, NULL, FREERDP_ADDIN_CHANNEL_STATIC);
+
+	if (entryEx)
+	{
+		if (freerdp_channels_client_load_ex(channels, settings, entryEx, data) == 0)
+		{
 			fprintf(stderr, "loading channel %s\n", name);
-			return 0;
+			return TRUE;
+		}
+	}
+	else if (entry)
+	{
+		if (freerdp_channels_client_load(channels, settings, entry, data) == 0)
+		{
+			fprintf(stderr, "loading channel %s\n", name);
+			return TRUE;
 		}
 	}
 
-	return -1;
+	return FALSE;
 }
 
 gchar *remmina_rdp_find_prdriver(char *smap, char *prn)
