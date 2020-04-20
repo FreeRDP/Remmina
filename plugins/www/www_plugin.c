@@ -509,6 +509,13 @@ static void remmina_plugin_www_init(RemminaProtocolWidget *gp)
 		webkit_web_context_set_tls_errors_policy(gpdata->context, WEBKIT_TLS_ERRORS_POLICY_IGNORE);
 		g_info("Ignore TLS errors");
 	}
+	if (remmina_plugin_service->file_get_string(remminafile, "proxy-url")) {
+		gchar *proxyurl = g_strdup(remmina_plugin_service->file_get_string(remminafile, "proxy-url"));
+		WebKitNetworkProxySettings *proxy_settings = webkit_network_proxy_settings_new (proxyurl, NULL);
+		webkit_web_context_set_network_proxy_settings(gpdata->context, WEBKIT_NETWORK_PROXY_MODE_CUSTOM, proxy_settings);
+		webkit_network_proxy_settings_free(proxy_settings);
+		g_free(proxyurl);
+	}
 
 	webkit_web_context_set_automation_allowed(gpdata->context, TRUE);
 	webkit_settings_set_javascript_can_open_windows_automatically(gpdata->settings, TRUE);
@@ -876,6 +883,7 @@ static const RemminaProtocolSetting remmina_plugin_www_basic_settings[] =
 static const RemminaProtocolSetting remmina_plugin_www_advanced_settings[] =
 {
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,  "user-agent",		    N_("User agent"),		       FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,  "proxy-url",		    N_("Proxy URL"),		       FALSE, NULL, N_("Ex. https://myproxy.com, socks://mysocks:1080") },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "enable-java",		    N_("Turn on Java support"),	       TRUE,  NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "enable-smooth-scrolling",   N_("Turn on smooth scrolling"),     TRUE,  NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "enable-spatial-navigation", N_("Turn on spatial navigation"),   TRUE,  NULL, NULL },
