@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2020-04-20 12:13+0000\n"
+"POT-Creation-Date: 2020-04-20 14:56+0000\n"
 "PO-Revision-Date: 2020-03-02 08:53+0000\n"
 "Last-Translator: 玉堂白鹤 <yjwork@qq.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -75,7 +75,7 @@ msgstr "通过 SSH 连接到 %s …"
 #: src/remmina_protocol_widget.c:1424 src/remmina_protocol_widget.c:1443
 #: src/remmina_ssh_plugin.c:920 src/remmina_sftp_plugin.c:291
 #: src/remmina_sftp_plugin.c:324 src/remmina_file_editor.c:927
-#: plugins/www/www_plugin.c:863 plugins/rdp/rdp_plugin.c:2011
+#: plugins/www/www_plugin.c:879 plugins/rdp/rdp_plugin.c:2011
 #: data/ui/remmina_unlock.glade:116 data/ui/remmina_mpc.glade:236
 #: data/ui/remmina_preferences.glade:1533
 msgid "Password"
@@ -241,7 +241,7 @@ msgstr "全选(_S)"
 
 #: src/remmina_ssh_plugin.c:1019 src/remmina_message_panel.c:330
 #: src/remmina_sftp_plugin.c:323 src/remmina_file_editor.c:918
-#: plugins/www/www_plugin.c:862 plugins/vnc/vnc_plugin.c:1832
+#: plugins/www/www_plugin.c:878 plugins/vnc/vnc_plugin.c:1832
 #: plugins/vnc/vnc_plugin.c:1852 plugins/rdp/rdp_plugin.c:2010
 #: plugins/nx/nx_plugin.c:721 data/ui/remmina_mpc.glade:144
 msgid "Username"
@@ -642,7 +642,7 @@ msgstr "缩放时填满客户端窗口"
 msgid "Turn off scaling to avoid screenshot distortion."
 msgstr "关闭缩放比例以避免屏幕截图失真。"
 
-#: src/rcw.c:2051 plugins/www/www_plugin.c:831
+#: src/rcw.c:2051 plugins/www/www_plugin.c:847
 msgid "Screenshot taken"
 msgstr "截屏"
 
@@ -1428,56 +1428,64 @@ msgstr "异步执行"
 msgid "File downloaded"
 msgstr "文件已下载"
 
-#: plugins/www/www_plugin.c:550
+#: plugins/www/www_plugin.c:566
 msgid "Enter WWW authentication credentials"
 msgstr "输入 WWW 身份验证凭据"
 
-#: plugins/www/www_plugin.c:861
+#: plugins/www/www_plugin.c:877
 msgid "URL"
 msgstr "网址"
 
-#: plugins/www/www_plugin.c:861
+#: plugins/www/www_plugin.c:877
 msgid "http://address or https://address"
 msgstr "http://address 或 https://address"
 
-#: plugins/www/www_plugin.c:878
+#: plugins/www/www_plugin.c:894
 msgid "User agent"
 msgstr "使用代理"
 
-#: plugins/www/www_plugin.c:879
+#: plugins/www/www_plugin.c:895
+msgid "Proxy URL"
+msgstr ""
+
+#: plugins/www/www_plugin.c:895
+msgid "Ex. https://myproxy.com, socks://mysocks:1080"
+msgstr ""
+
+#: plugins/www/www_plugin.c:896
 msgid "Turn on Java support"
 msgstr "启用 Java 支持"
 
-#: plugins/www/www_plugin.c:880
+#: plugins/www/www_plugin.c:897
 msgid "Turn on smooth scrolling"
 msgstr "启用平滑滚动"
 
-#: plugins/www/www_plugin.c:881
+#: plugins/www/www_plugin.c:898
 msgid "Turn on spatial navigation"
 msgstr ""
 
-#: plugins/www/www_plugin.c:882
+#: plugins/www/www_plugin.c:899
 msgid "Turn on plugin support"
 msgstr "打开插件支持"
 
-#: plugins/www/www_plugin.c:883
+#: plugins/www/www_plugin.c:900
 msgid "Turn on WebGL support"
 msgstr "打开 WebGL 支持"
 
-#: plugins/www/www_plugin.c:884
+#: plugins/www/www_plugin.c:901
 msgid "Turn on HTML5 audio support"
 msgstr "开启 HTML5 音频支持"
 
-#: plugins/www/www_plugin.c:885
+#: plugins/www/www_plugin.c:902
 msgid "Ignore TLS errors"
 msgstr "忽略 TLS 错误"
 
-#: plugins/www/www_plugin.c:886
+#: plugins/www/www_plugin.c:903
 #, fuzzy
 msgid "No password storage"
 msgstr "禁用密码保存"
 
-#: plugins/www/www_plugin.c:888
+#: plugins/www/www_plugin.c:905
 msgid "Turn on Web Inspector"
 msgstr "打开 Web 检查器"
 
