@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-04-14 22:18+0000\n"
-"PO-Revision-Date: 2020-04-17 23:05+0000\n"
+"PO-Revision-Date: 2020-04-23 14:11+0000\n"
 "Last-Translator: Ecron <ecron_89@hotmail.com>\n"
 "Language-Team: Catalan <https://hosted.weblate.org/projects/remmina/remmina/"
 "ca/>\n"
@@ -965,11 +965,11 @@ msgstr "Fitxer CRL CA"
 
 #: src/remmina_message_panel.c:569
 msgid "Client Certificate File"
-msgstr ""
+msgstr "Fitxer de certificat de client"
 
 #: src/remmina_message_panel.c:591
 msgid "Client Certificate Key"
-msgstr ""
+msgstr "Clau de certificat de client"
 
 #: src/remmina_sftp_plugin.c:304
 msgid "Show Hidden Files"
@@ -977,7 +977,7 @@ msgstr "Mostra els fitxers ocults"
 
 #: src/remmina_sftp_plugin.c:306
 msgid "Overwrite all"
-msgstr ""
+msgstr "Sobreescriu-ho tot"
 
 #: src/remmina_sftp_plugin.c:337
 msgid "SFTP - Secure File Transfer"
@@ -985,48 +985,50 @@ msgstr "SFTP - Transferència segura de fitxers"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:213 src/remmina_ssh.c:407
-#, fuzzy, c-format
+#, c-format
 msgid "Could not authenticate with SSH password. %s"
-msgstr "Ha fallat en iniciar la sessió SSH: %s"
+msgstr "No s'ha pogut autenticar amb la contrasenya SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:234 src/remmina_ssh.c:260 src/remmina_ssh.c:269
 #: src/remmina_ssh.c:417 src/remmina_ssh.c:430
 #, c-format
 msgid "Could not authenticate with public SSH key. %s"
-msgstr ""
+msgstr "No s'ha pogut autenticar amb la clau pública SSH. %s"
 
 #: src/remmina_ssh.c:235
 msgid "SSH Key file not yet set."
-msgstr "No s’ha creat la clau pública SSH."
+msgstr "Encara no s'ha definit el fitxer de la clau SSH."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:246
 #, c-format
 msgid "Public SSH key cannot be imported. %s"
-msgstr ""
+msgstr "No es pot importar la clau pública SHH. %s"
 
 #: src/remmina_ssh.c:255
 msgid "SSH passphrase is empty, it should not be."
-msgstr ""
+msgstr "La contrasenya SSH és buida, i no ho hauria de ser."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:289
 #, c-format
 msgid "Could not authenticate automatically with public SSH key. %s"
 msgstr ""
+"No s'ha pogut autenticar de manera automàtica amb la clau pública SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:307
 #, c-format
 msgid "Could not authenticate with public SSH key using SSH agent. %s"
 msgstr ""
+"No s'ha pogut autenticar amb la clau pública SSH utilitzant l'agent SHH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:327
 #, c-format
 msgid "Could not authenticate with SSH Kerberos/GSSAPI. %s"
-msgstr ""
+msgstr "No s'ha pogut autenticar amb el SSH del Kerberos/GSSAPI. %s"
 
 #: src/remmina_ssh.c:357
 msgid "The public SSH key changed!"
@@ -1036,19 +1038,20 @@ msgstr "La clau pública SSH ha canviat!"
 #: src/remmina_ssh.c:509
 #, c-format
 msgid "Could not fetch the server's public SSH key. %s"
-msgstr ""
+msgstr "No s'ha pogut recuperar la clau pública SSH del servidor. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:516
-#, fuzzy, c-format
+#, c-format
 msgid "Could not fetch public SSH key. %s"
-msgstr "Ha fallat la connexió amb túnel SSH amb el destí: %s"
+msgstr "No s'ha pogut recuperar la clau pública SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:524
-#, fuzzy, c-format
+#, c-format
 msgid "Could not fetch checksum for public SSH key. %s"
-msgstr "No s’ha pogut comprovar la llista d’amfitrions SSH coneguts: %s"
+msgstr ""
+"No s'ha pogut recuperar la suma de verificació de la clau pública SSH. %s"
 
 #: src/remmina_ssh.c:537
 msgid "The server is unknown. The public key fingerprint is:"
@@ -1059,22 +1062,21 @@ msgid "Do you trust the new public key?"
 msgstr "Confieu en la clau pública nova?"
 
 #: src/remmina_ssh.c:542
-#, fuzzy
 msgid ""
 "Warning: The server has changed its public key. This means either you are "
 "under attack,\n"
 "or the administrator has changed the key. The new public key fingerprint is:"
 msgstr ""
-"ATENCIÓ: El servidor ha canviat la seva clau pública. Això significa que o "
+"ATENCIÓ: El servidor ha canviat la seva clau pública. Això significa que, o "
 "esteu sota un atac,\n"
 "o l’administrador ha canviat la clau. L’empremta digital de la clau pública "
 "nova és:"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:567
-#, fuzzy, c-format
+#, c-format
 msgid "Could not check list of known SSH hosts. %s"
-msgstr "No s’ha pogut comprovar la llista d’amfitrions SSH coneguts: %s"
+msgstr "No s’ha pogut verificar la llista d’amfitrions SSH coneguts. %s"
 
 #: src/remmina_ssh.c:576
 msgid "SSH password"
@@ -1082,7 +1084,7 @@ msgstr "Contrasenya SSH"
 
 #: src/remmina_ssh.c:583 src/remmina_ssh.c:621
 msgid "SSH private key passphrase"
-msgstr "Paraula de pas de la clau privada SSH"
+msgstr "Contrasenya de la clau privada SSH"
 
 #: src/remmina_ssh.c:588
 msgid "SSH Kerberos/GSSAPI"
@@ -1090,50 +1092,50 @@ msgstr "SSH Kerberos/GSSAPI"
 
 #: src/remmina_ssh.c:618 src/remmina_ssh.c:641
 msgid "SSH tunnel credentials"
-msgstr ""
+msgstr "Credencials del túnel SSH"
 
 #: src/remmina_ssh.c:618 src/remmina_ssh.c:641 plugins/nx/nx_plugin.c:202
 msgid "SSH credentials"
-msgstr ""
+msgstr "Credencials SSH"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:789
-#, fuzzy, c-format
+#, c-format
 msgid "Could not start SSH session. %s"
-msgstr "Ha fallat en iniciar la sessió SSH: %s"
+msgstr "No s'ha pogut començar la sessió SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1170 src/remmina_ssh.c:1233
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create channel. %s"
-msgstr "No s'ha pogut crear el canal: %s"
+msgstr "No s'ha pogut crear el canal. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1181
-#, fuzzy, c-format
+#, c-format
 msgid "Could not connect to SSH tunnel. %s"
-msgstr "Ha fallat la connexió amb túnel SSH amb el destí: %s"
+msgstr "No s'ha pogut connectar al túnel SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1248 src/remmina_ssh.c:1873
-#, fuzzy, c-format
+#, c-format
 msgid "Could not open channel. %s"
-msgstr "No s'ha pogut obrir el canal: %s"
+msgstr "No s'ha pogut obrir el canal. %s"
 
 #: src/remmina_ssh.c:1254
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run %s on SSH server."
-msgstr "Ha fallat l’execució de %s al servidor SSH."
+msgstr "No s'ha pogut executar %s al servidor SSH."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1292 src/remmina_ssh.c:1313 src/remmina_ssh.c:1322
-#, fuzzy, c-format
+#, c-format
 msgid "Could not request port forwarding. %s"
-msgstr "Ha fallat la petició de reenviament de port: %s"
+msgstr "No s'ha pogut demanar el reenviament del port. %s"
 
 #: src/remmina_ssh.c:1357
 msgid "The server did not respond."
-msgstr ""
+msgstr "El servidor no ha respost."
 
 #: src/remmina_ssh.c:1400
 #, c-format
@@ -1142,37 +1144,37 @@ msgstr "No s'ha pogut connectar al port local %i."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1450
-#, fuzzy, c-format
+#, c-format
 msgid "Could not write to SSH channel. %s"
-msgstr "No s'ha pogut crear el canal: %s"
+msgstr "No s'ha pogut escriure en el canal SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1457
-#, fuzzy, c-format
+#, c-format
 msgid "Could not read from tunnel listening socket. %s"
-msgstr "No s’ha pogut llegir a partir del sòcol de recepció del túnel: %s"
+msgstr "No s’ha pogut llegir el sòcol de recepció del túnel. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1477
-#, fuzzy, c-format
+#, c-format
 msgid "Could not poll SSH channel. %s"
-msgstr "No s'ha pogut obrir el canal: %s"
+msgstr "No s'ha pogut sondar el canal SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1484
-#, fuzzy, c-format
+#, c-format
 msgid "Could not read SSH channel in a non-blocking way. %s"
-msgstr "No s’ha pogut executar «ssh_channel_read_nonblocking()»: %s"
+msgstr "No s'ha pogut llegir el canal SSH d'una manera no blocant. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1503
-#, fuzzy, c-format
+#, c-format
 msgid "Could not send data to tunnel listening socket. %s"
-msgstr "No s’ha pogut enviar dades al sòcol de recepció del túnel: %s"
+msgstr "No s’ha pogut enviar dades al sòcol de recepció del túnel. %s"
 
 #: src/remmina_ssh.c:1605
 msgid "Assign a destination port."
-msgstr ""
+msgstr "Assigna un port de destinació."
 
 #: src/remmina_ssh.c:1612
 msgid "Could not create socket."
@@ -1183,41 +1185,40 @@ msgid "Could not bind server socket to local port."
 msgstr "No s’ha pogut vincular el sòcol del servidor al port local."
 
 #: src/remmina_ssh.c:1628
-#, fuzzy
 msgid "Could not listen to local port."
-msgstr "No s'ha pogut connectar al port local %i."
+msgstr "No s'ha pogut escoltar el port local."
 
 #. TRANSLATORS: Do not translate pthread
 #: src/remmina_ssh.c:1638 src/remmina_ssh.c:1655 src/remmina_ssh.c:1690
 msgid "Could not start pthread."
-msgstr ""
+msgstr "No s'ha pogut iniciar el pthread."
 
 #. TRANSLATORS: Do not translate pthread
 #: src/remmina_ssh.c:1672
 msgid "Failed to initialize pthread."
-msgstr ""
+msgstr "No s'ha pogut inicialitzar el pthread."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1783
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create SFTP session. %s"
-msgstr "No s’ha pogut crear la sessió SFTP: %s"
+msgstr "No s’ha pogut crear la sessió SFTP. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1788
-#, fuzzy, c-format
+#, c-format
 msgid "Could not start SFTP session. %s"
-msgstr "Ha fallat en iniciar la sessió SSH: %s"
+msgstr "No s'ha pogut començar la sessió SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1903
 #, fuzzy, c-format
 msgid "Could not request shell. %s"
-msgstr "No s'ha pogut crear el canal: %s"
+msgstr "No s'ha pogut demanar el shell. %s"
 
 #: src/remmina_ssh.c:1996
 msgid "Could not create PTY device."
-msgstr ""
+msgstr "No s'ha pogut crear el dispositiu PTY."
 
 #: src/remmina_file_editor.c:74
 #, fuzzy
@@ -1247,6 +1248,18 @@ msgid ""
 "connecting.\n"
 "</big></tt>"
 msgstr ""
+"<tt><big>• ordre en arguments de CAMÍ %h\n"
+"• /camí/a/enlloc -opcions %h %u\n"
+"• %h es substitueix pel nom del servidor\n"
+"• %t es substitueix pel nom del servidor SSH\n"
+"• %u es substitueix pel nom d'usuari\n"
+"• %U es substitueix pel nom d'usuari SSH\n"
+"• %p es substitueix pel nom del perfil del Remmina\n"
+"• %g es substitueix pel nom del perfil del grupo del Remmina\n"
+"• %d es substitueix per la data i hora local en format ISO8601\n"
+"No l'executeu al rerefons si voleu que l'ordre s'executi abans que es faci "
+"la connexió.\n"
+"</big></tt>"
 
 #: src/remmina_file_editor.c:95
 #, fuzzy
@@ -1276,7 +1289,7 @@ msgstr "_Obre"
 #: src/remmina_file_editor.c:432
 #, c-format
 msgid "Browse the network to find a %s server"
-msgstr "Exploreu la xarxa per cercar un servidor %s"
+msgstr "Exploreu la xarxa per a trobar un servidor %s"
 
 #: src/remmina_file_editor.c:533
 msgid "Resolution"
@@ -1304,16 +1317,16 @@ msgstr "Túnel SSH"
 
 #: src/remmina_file_editor.c:840
 msgid "Enable SSH tunnel"
-msgstr "Habilita el túnel SSH"
+msgstr "Activa el túnel SSH"
 
 #: src/remmina_file_editor.c:847
 msgid "Tunnel via loopback address"
-msgstr "Túnel a través de l’adreça de bucle tancat"
+msgstr "Túnel a través d'una adreça de bucle tancat"
 
 #: src/remmina_file_editor.c:856
 #, c-format
 msgid "Same server at port %i"
-msgstr "Mateix servidor en el port %i"
+msgstr "El mateix servidor en el port %i"
 
 #: src/remmina_file_editor.c:902 plugins/rdp/rdp_plugin.c:2012
 msgid "Startup path"
@@ -1324,13 +1337,12 @@ msgid "SSH Authentication"
 msgstr "Autenticació SSH"
 
 #: src/remmina_file_editor.c:921
-#, fuzzy
 msgid "SSH agent (automatic)"
 msgstr "Agent SSH (automàtic)"
 
 #: src/remmina_file_editor.c:1006
 msgid "Turn on \"Autostart\" for this profile"
-msgstr ""
+msgstr "Activa l'«inici automàtic» en aquest perfil"
 
 #: src/remmina_file_editor.c:1014
 msgid "Basic"
