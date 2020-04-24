@@ -173,12 +173,18 @@ parts:
       set -eu
       snapcraftctl build
       mkdir -pv $SNAPCRAFT_PART_INSTALL/meta/gui/
-      cp ../src/data/desktop/scalable/apps/org.remmina.Remmina.svg $SNAPCRAFT_PART_INSTALL/meta/gui/remmina.svg
+      cp $SNAPCRAFT_PART_INSTALL/snap/$SNAPCRAFT_PROJECT_NAME/current/usr/share/icons/hicolor/scalable/apps/org.remmina.Remmina.svg $SNAPCRAFT_PART_INSTALL/meta/gui/icon.svg
+      cp -r $SNAPCRAFT_PART_INSTALL/snap/$SNAPCRAFT_PROJECT_NAME/current/usr/share/icons $SNAPCRAFT_PART_INSTALL/meta/gui/
+      for i in `find $SNAPCRAFT_PART_INSTALL/meta/gui/icons -name "*.svg" -o -name "*.png"`
+      do
+        mv $i "`dirname $i`/snap.$SNAPCRAFT_PROJECT_NAME.`basename $i`"
+      done
+      sed --in-place '\|<id>org.remmina.Remmina.desktop</id>|a<icon type="stock">snap.remmina.org.remmina.Remmina</icon>' $SNAPCRAFT_PART_INSTALL/snap/$SNAPCRAFT_PROJECT_NAME/current/usr/share/metainfo/org.remmina.Remmina.appdata.xml
     override-prime: |
       set -eu
       snapcraftctl prime
       # Fix application icon lookup
-      sed --in-place 's|^Icon=.*|Icon=\${SNAP}/meta/gui/remmina.svg|' usr/share/applications/org.remmina.Remmina.desktop
+      sed --in-place 's|^Icon=.*|Icon=snap.remmina.org.remmina.Remmina|' usr/share/applications/org.remmina.Remmina.desktop
 
   app:
     plugin: nil
