@@ -655,7 +655,7 @@ void remmina_public_send_notification(const gchar *notification_id,
 	g_object_unref(notification);
 }
 
-/* Replaces all occurences of search in a new copy of string by replacement. */
+/* Replaces all occurrences of search in a new copy of string by replacement. */
 gchar* remmina_public_str_replace(const gchar *string, const gchar *search, const gchar *replacement)
 {
 	TRACE_CALL(__func__);
@@ -677,7 +677,7 @@ gchar* remmina_public_str_replace(const gchar *string, const gchar *search, cons
 	return str;
 }
 
-/* Replaces all occurences of search in a new copy of string by replacement
+/* Replaces all occurrences of search in a new copy of string by replacement
  * and overwrites the original string */
 gchar* remmina_public_str_replace_in_place(gchar *string, const gchar *search, const gchar *replacement)
 {
@@ -702,7 +702,7 @@ int remmina_public_split_resolution_string(const char *resolution_string, int *w
 }
 
 /* Return TRUE if current gtk version library in use is greater or equal than
- * the requered major.minor.micro */
+ * the required major.minor.micro */
 gboolean remmina_gtk_check_version(guint major, guint minor, guint micro)
 {
 	guint rtmajor, rtminor, rtmicro;

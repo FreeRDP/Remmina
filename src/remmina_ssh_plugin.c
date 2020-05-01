@@ -338,7 +338,7 @@ void remmina_plugin_ssh_vte_terminal_set_encoding_and_pty(VteTerminal *terminal,
 	vte_terminal_set_delete_binding(terminal, VTE_ERASE_DELETE_SEQUENCE);
 
 #if VTE_CHECK_VERSION(0, 38, 0)
-	/* vte_pty_new_foreig expect master FD, see https://bugzilla.gnome.org/show_bug.cgi?id=765382 */
+	/* vte_pty_new_foreign expect master FD, see https://bugzilla.gnome.org/show_bug.cgi?id=765382 */
 	vte_terminal_set_pty(terminal, vte_pty_new_foreign_sync(master, NULL, NULL));
 #else
 	vte_terminal_set_pty(terminal, master);
@@ -800,7 +800,7 @@ remmina_plugin_ssh_init(RemminaProtocolWidget *gp)
 }
 
 /**
- * Initialize the the main window properties and the pthread.
+ * Initialize the main window properties and the pthread.
  *
  * The call of this function is a requirement of remmina_protocol_widget_open_connection_real().
  * @return TRUE
@@ -853,7 +853,7 @@ remmina_plugin_ssh_close_connection(RemminaProtocolWidget *gp)
 }
 
 /**
- * Not used by the the plugin.
+ * Not used by the plugin.
  *
  * @return Always TRUE
  */
@@ -1096,7 +1096,7 @@ static RemminaProtocolPlugin remmina_plugin_ssh =
 /*
  * this function is used for
  * - inserting into the list to became a sorted list [g_list_insert_sorted()]
- * - checking the list to avoid doublicate entries [g_list_find_custom()]
+ * - checking the list to avoid duplicate entries [g_list_find_custom()]
  */
 static gint
 compare(gconstpointer a, gconstpointer b)
@@ -1113,7 +1113,7 @@ remmina_ssh_plugin_load_terminal_palettes(gpointer *ssh_terminal_palette_new)
 	GList *files = NULL;
 	unsigned int rec_size = 0;
 	/*
-	 * count number of (all) files to reserve enought memory
+	 * count number of (all) files to reserve enough memory
 	 */
 	/* /usr/local/share/remmina */
 	const gchar *const *dirs = g_get_system_data_dirs();

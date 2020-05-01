@@ -33,7 +33,7 @@
  */
 
 /* Some utils taken form remmina_utils
-* TODO: use directhly remmina_utils */
+* TODO: use directly remmina_utils */
 
 #pragma once
 

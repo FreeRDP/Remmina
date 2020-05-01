@@ -211,7 +211,7 @@ guint remmina_utils_string_replace_all(GString *haystack, const gchar *needle, c
 
 /**
  * Strip \n, \t and \" from a given string.
- * This function is particulary useful with g_spawn_command_line_sync that does
+ * This function is particularly useful with g_spawn_command_line_sync that does
  * not strip control characters from the output.
  * @warning the result should be freed.
  * @param a string.
@@ -244,7 +244,7 @@ gchar *remmina_utils_string_strip(const gchar *s)
  * Once found, read the file in and figure out which distribution.
  *
  * @param filename The file path of a Linux distribution release file.
- * @param distroSize The size of the distribition name.
+ * @param distroSize The size of the distribution name.
  * @param distro The full distro name.
  * @return Returns a string containing distro information verbatium from /etc/xxx-release (distro). Use g_free to free the string.
  *
@@ -425,7 +425,7 @@ GHashTable* remmina_utils_get_etc_release()
 }
 
 /**
- * A sample function to show how use the other fOS releated functions.
+ * A sample function to show how use the other fOS related functions.
  * @return a semicolon separated OS data like in "uname -srm".
  */
 const gchar* remmina_utils_get_os_info()

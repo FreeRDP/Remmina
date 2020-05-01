@@ -324,9 +324,9 @@ JsonNode *remmina_stats_get_os_info()
 
 /**
  * Gets the following user environment:
- *   - Gets the user’s locale (or NULL by default) coresponding to LC_ALL.
+ *   - Gets the user’s locale (or NULL by default) corresponding to LC_ALL.
  *
- * @return a Json Node structure containg the user’s environment.
+ * @return a Json Node structure containing the user’s environment.
  */
 JsonNode *remmina_stats_get_user_env()
 {
@@ -678,7 +678,7 @@ static void remmina_profiles_get_data(RemminaFile *remminafile, gpointer user_da
  * | SPICE  |  20171122 |
  * | SSH    |  20180111 |
  *
- * @return a Json Node structure containg the protocol usage statistics.
+ * @return a Json Node structure containing the protocol usage statistics.
  *
  */
 JsonNode *remmina_stats_get_profiles()
@@ -750,7 +750,7 @@ JsonNode *remmina_stats_get_profiles()
 /**
  * Add a json member ACTIVESECRETPLUGIN which shows the current secret plugin in use by remmina.
  *
- * @return a Json Node structure containg the secret plugin in use
+ * @return a Json Node structure containing the secret plugin in use
  *
  */
 JsonNode *remmina_stats_get_secret_plugin()
@@ -779,7 +779,7 @@ JsonNode *remmina_stats_get_secret_plugin()
 /**
  * Add a json member HASMASTERPASSWORD which shows the status of the master password.
  *
- * @return a Json Node structure containg the status of the master password
+ * @return a Json Node structure containing the status of the master password
  *
  */
 JsonNode *remmina_stats_get_master_password_status()
@@ -809,7 +809,7 @@ JsonNode *remmina_stats_get_master_password_status()
 /**
  * Add a json member KIOSK which shows the status of the kiosk.
  *
- * @return a Json Node structure containg the status of the master password
+ * @return a Json Node structure containing the status of the master password
  *
  */
 JsonNode *remmina_stats_get_kiosk_mode()

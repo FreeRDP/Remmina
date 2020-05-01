@@ -172,7 +172,7 @@ static void remmina_plugin_vnc_event_free_all(RemminaProtocolWidget *gp)
 	RemminaPluginVncEvent *event;
 
 	/* This is called from main thread after plugin thread has
-	 * been closed, so no queue locking is nessesary here */
+	 * been closed, so no queue locking is necessary here */
 	while ((event = g_queue_pop_head(gpdata->vnc_event_queue)) != NULL)
 		remmina_plugin_vnc_event_free(event);
 }

@@ -54,7 +54,7 @@ typedef struct _RemminaPluginVncData {
 	gboolean		connected;
 	/* Whether the vnc process is running */
 	gboolean		running;
-	/* Whether the initialzation calls the authentication process */
+	/* Whether the initialization calls the authentication process */
 	gboolean		auth_called;
 	/* Whether it is the first attempt for authentication. Only first attempt will try to use cached credentials */
 	gboolean		auth_first;
