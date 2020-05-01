@@ -341,7 +341,7 @@ int main(int argc, char *argv[])
 
 
 	app_id = g_application_id_is_valid(REMMINA_APP_ID) ? REMMINA_APP_ID : NULL;
-	app = gtk_application_new(app_id, G_APPLICATION_HANDLES_COMMAND_LINE);
+	app = gtk_application_new(app_id, G_APPLICATION_HANDLES_COMMAND_LINE | G_APPLICATION_CAN_OVERRIDE_APP_ID);
 #if !GTK_CHECK_VERSION(4, 0, 0) /* This is not needed anymore starting from GTK 4 */
 	g_set_prgname(app_id);
 #endif
