@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-04-14 22:18+0000\n"
-"PO-Revision-Date: 2020-05-01 14:12+0000\n"
+"PO-Revision-Date: 2020-05-01 14:18+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/remmina/remmina/"
 "pl/>\n"
@@ -618,7 +618,7 @@ msgstr "Klient zdalnego pulpitu Remmina"
 #, c-format
 msgid ""
 "Are you sure you want to close %i active connections in the current window?"
-msgstr "Czy jesteś pewien, że chcesz zamknąć % aktywnych połączeń w tym oknie?"
+msgstr "Czy jesteś pewien, że chcesz zamknąć %i aktywnych połączeń w tym oknie?"
 
 #: src/rcw.c:1351
 msgid "Viewport fullscreen mode"
@@ -1010,12 +1010,14 @@ msgstr "Nie można automatycznie uwierzytelnić z publicznym kluczem SSH. %s"
 #, c-format
 msgid "Could not authenticate with public SSH key using SSH agent. %s"
 msgstr ""
+"Nie można uwierzytelnić przy pomocy publicznego klucza SSH używając klienta "
+"SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:327
 #, c-format
 msgid "Could not authenticate with SSH Kerberos/GSSAPI. %s"
-msgstr ""
+msgstr "Nie można uwierzytelnić z SSH Kerberos/GSSAPI. %s"
 
 #: src/remmina_ssh.c:357
 msgid "The public SSH key changed!"
@@ -1053,6 +1055,9 @@ msgid ""
 "under attack,\n"
 "or the administrator has changed the key. The new public key fingerprint is:"
 msgstr ""
+"Ostrzeżenie: serwer zmienił swój klucz publiczny. To oznacza, że jesteś "
+"atakowany\n"
+"lub administrator zmienił klucz. Nowy odcisk klucza publicznego to:"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:567
@@ -1070,7 +1075,7 @@ msgstr "Hasło klucza prywatnego SSH"
 
 #: src/remmina_ssh.c:588
 msgid "SSH Kerberos/GSSAPI"
-msgstr ""
+msgstr "SSH Kerberos/GSSAPI"
 
 #: src/remmina_ssh.c:618 src/remmina_ssh.c:641
 msgid "SSH tunnel credentials"
@@ -1200,7 +1205,7 @@ msgstr "Nie udało się rozpocząć sesji sftp: %s"
 
 #: src/remmina_ssh.c:1996
 msgid "Could not create PTY device."
-msgstr ""
+msgstr "Nie udało się stworzyć urządzenia PTY."
 
 #: src/remmina_file_editor.c:74
 msgid ""
@@ -1252,7 +1257,7 @@ msgstr "Wybór serwera zdalnego pulpitu"
 
 #: src/remmina_file_editor.c:371
 msgid "_Open"
-msgstr ""
+msgstr "_Otwórz"
 
 #: src/remmina_file_editor.c:432
 #, c-format
@@ -1339,7 +1344,8 @@ msgstr "Zapisz jako Domyślny"
 
 #: src/remmina_file_editor.c:1325
 msgid "Use the current settings as the default for all new connection profiles"
-msgstr "Użyj aktualnych ustawień jako domyślnych dla wszystkich nowych profili"
+msgstr ""
+"Użyj obecnych ustawień jako domyślnych dla wszystkich nowych profili połączeń"
 
 #: src/remmina_file_editor.c:1333 data/ui/remmina_main.glade:250
 msgid "Connect"
