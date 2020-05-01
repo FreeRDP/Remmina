@@ -557,7 +557,7 @@ static void rcw_keyboard_grab(RemminaConnectionWindow *cnnwin)
 		 * the widget is hidden:
 		 * https://gitlab.gnome.org/GNOME/gtk/commit/726ad5a5ae7c4f167e8dd454cd7c250821c400ab
 		 * The bugfix will be released with GTK 3.24.
-		 * Also pease note that the newer gdk_seat_grab() is still calling gdk_device_grab().
+		 * Also please note that the newer gdk_seat_grab() is still calling gdk_device_grab().
 		 *
 		 * Warning: gdk_seat_grab() will call XGrabKeyboard() or XIGrabDevice()
 		 * which in turn will generate a core X input event FocusOut and FocusIn
@@ -3156,7 +3156,7 @@ rcw_on_notebook_create_window(GtkNotebook *notebook, GtkWidget *page, gint x, gi
 	cnnobj = (RemminaConnectionObject *)g_object_get_data(G_OBJECT(page), "cnnobj");
 
 	if (!dstcnnwin) {
-		/* Drop is directed to a new rcw: create a new scrolled window to accomodate
+		/* Drop is directed to a new rcw: create a new scrolled window to accommodate
 		 * the dropped connectionand move our cnnobj there. Width and
 		 * height of the new window are cloned from the current window */
 		srctag = (gchar *)g_object_get_data(G_OBJECT(srccnnwin), "tag");
@@ -3765,7 +3765,7 @@ void rco_on_disconnect(RemminaProtocolWidget *gp, gpointer data)
 	if (remmina_protocol_widget_has_error(gp)) {
 		/* We cannot close window immediately, but we must show a message panel */
 		RemminaMessagePanel *mp;
-		/* Destroy scrolled_contaner (and viewport) and all its children the plugin created
+		/* Destroy scrolled_container (and viewport) and all its children the plugin created
 		 * on it, so they will not receive GUI signals */
 		if (cnnobj->scrolled_container) {
 			gtk_widget_destroy(cnnobj->scrolled_container);

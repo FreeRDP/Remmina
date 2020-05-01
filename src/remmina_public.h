@@ -108,9 +108,9 @@ void remmina_public_gtk_widget_reparent(GtkWidget *widget, GtkContainer *contain
 void remmina_public_send_notification(const gchar *notification_id, const gchar *notification_title, const gchar *notification_message);
 /* Validate the inserted value for a new resolution */
 gboolean remmina_public_resolution_validation_func(const gchar *new_str, gchar **error);
-/* Replaces all occurences of search in a new copy of string by replacement. */
+/* Replaces all occurrences of search in a new copy of string by replacement. */
 gchar *remmina_public_str_replace(const gchar *string, const gchar *search, const gchar *replacement);
-/* Replaces all occurences of search in a new copy of string by replacement
+/* Replaces all occurrences of search in a new copy of string by replacement
  * and overwrites the original string */
 gchar *remmina_public_str_replace_in_place(gchar *string, const gchar *search, const gchar *replacement);
 int remmina_public_split_resolution_string(const char *resolution_string, int *w, int *h);

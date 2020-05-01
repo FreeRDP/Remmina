@@ -1048,7 +1048,7 @@ static gboolean remmina_main_quickconnect(void)
 	gchar *qcp;
 
 
-	/* Save quick connect protocol if different from the previuous one */
+	/* Save quick connect protocol if different from the previous one */
 	qcp = gtk_combo_box_text_get_active_text(remminamain->combo_quick_connect_protocol);
 	if (qcp && strcmp(qcp, remmina_pref.last_quickconnect_protocol) != 0) {
 		g_free(remmina_pref.last_quickconnect_protocol);
@@ -1232,7 +1232,7 @@ static void remmina_main_init(void)
 			gtk_window_maximize(remminamain->window);
 		}
 	}
-	/* Honor global peferences Search Bar visibility */
+	/* Honor global preferences Search Bar visibility */
 	if (remmina_pref.hide_searchbar)
 		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(RM_GET_OBJECT("search_toggle")), FALSE);
 

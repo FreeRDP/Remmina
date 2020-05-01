@@ -1879,7 +1879,7 @@ remmina_ssh_shell_thread(gpointer data)
 	ssh_channel_request_pty(channel);
 
 	/* ssh_channel_request_x11 works but I do not know yet how to use the
-	 * channel. At the momonet I leave the code here, commented, for future
+	 * channel. At the moment I leave the code here, commented, for future
 	 * investigations.
 	 */
 	//screen = gdk_x11_screen_get_screen_number(gdk_screen_get_default());
