@@ -1957,7 +1957,7 @@ static gpointer gwtransp_list[] =
 };
 
 static gchar clientbuild_list[] =
-	N_("2600 (Windows XP),7601 (Windows Vista/7),9600 (Windows 8 and newer)");
+	N_("2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 and newer)");
 
 static gchar clientbuild_tooltip[] =
 	N_("Used i.a. by Terminal services in SmartCard channel to distinguish client capabilities:\n"
