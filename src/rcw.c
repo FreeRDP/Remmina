@@ -144,6 +144,8 @@ struct _RemminaConnectionWindowPriv {
 	gboolean					hostkey_activated;
 	gboolean					hostkey_used;
 
+	gboolean					pointer_entered;
+
 	RemminaConnectionWindowOnDeleteConfirmMode	on_delete_confirm_mode;
 };
 
@@ -2093,6 +2095,9 @@ static void rcw_toolbar_grab(GtkWidget *widget, RemminaConnectionWindow *cnnwin)
 		printf("DEBUG_KB_GRABBING: Grabbing for button\n");
 #endif
 		rcw_keyboard_grab(cnnobj->cnnwin);
+		if (cnnobj->cnnwin->priv->pointer_entered) {
+			rcw_pointer_grab(cnnobj->cnnwin);
+		}
 	} else {
 		rcw_kp_ungrab(cnnobj->cnnwin);
 	}
@@ -2482,6 +2487,8 @@ static gboolean rco_leave_protocol_widget(GtkWidget *widget, GdkEventCrossing *e
 	printf("\n");
 #endif
 
+	cnnobj->cnnwin->priv->pointer_entered = FALSE;
+
 	/* Ungrab only if the leave is due to normal mouse motion */
 	if (event->mode == GDK_CROSSING_NORMAL)
 		rcw_kp_ungrab(cnnobj->cnnwin);
@@ -2494,13 +2501,22 @@ gboolean rco_enter_protocol_widget(GtkWidget *widget, GdkEventCrossing *event,
 				   RemminaConnectionObject *cnnobj)
 {
 	TRACE_CALL(__func__);
+	gboolean active;
+
+#ifdef DEBUG_KB_GRABBING
+	printf("DEBUG_KB_GRABBING: %s: enter event received\n", __func__);
+#endif
+
 	RemminaConnectionWindowPriv *priv = cnnobj->cnnwin->priv;
 	if (!priv->sticky && event->mode == GDK_CROSSING_NORMAL) {
 		rcw_floating_toolbar_show(cnnobj->cnnwin, FALSE);
 	}
 
+	priv->pointer_entered = TRUE;
+
 	/* Check if we need pointer grabbing */
-	if (remmina_file_get_int(cnnobj->remmina_file, "keyboard_grab", FALSE)) {
+	active = gtk_window_is_active(GTK_WINDOW(cnnobj->cnnwin));
+	if (remmina_file_get_int(cnnobj->remmina_file, "keyboard_grab", FALSE) && active) {
 		rcw_keyboard_grab(cnnobj->cnnwin);
 		rcw_pointer_grab(cnnobj->cnnwin);
 	}
@@ -2515,8 +2531,18 @@ static void rcw_focus_in(RemminaConnectionWindow *cnnwin)
 
 	if (!(cnnobj = rcw_get_visible_cnnobj(cnnwin))) return;
 
-	if (cnnobj && cnnobj->connected && remmina_file_get_int(cnnobj->remmina_file, "keyboard_grab", FALSE))
+	if (cnnobj && cnnobj->connected && remmina_file_get_int(cnnobj->remmina_file, "keyboard_grab", FALSE)) {
+#if DEBUG_KB_GRABBING
+		printf("DEBUG_KB_GRABBING: Received focus in and grabbing enabled, requesting kb grab\n");
+#endif
 		rcw_keyboard_grab(cnnobj->cnnwin);
+		if (cnnobj->cnnwin->priv->pointer_entered) {
+#if DEBUG_KB_GRABBING
+			printf("DEBUG_KB_GRABBING:   requesting also pointer grab, because of pointer_entered\n");
+#endif
+			rcw_pointer_grab(cnnobj->cnnwin);
+		}
+	}
 }
 
 static void rcw_focus_out(RemminaConnectionWindow *cnnwin)
@@ -2776,6 +2802,7 @@ static void rcw_init(RemminaConnectionWindow *cnnwin)
 	priv->floating_toolbar_opacity = 1.0;
 	priv->kbcaptured = FALSE;
 	priv->pointer_captured = FALSE;
+	priv->pointer_entered = FALSE;
 	priv->fss_view_mode = VIEWPORT_FULLSCREEN_MODE;
 	priv->ss_width = 640;
 	priv->ss_height = 480;
