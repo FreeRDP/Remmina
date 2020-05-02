@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-04-14 22:18+0000\n"
-"PO-Revision-Date: 2020-05-02 13:05+0000\n"
+"PO-Revision-Date: 2020-05-02 15:24+0000\n"
 "Last-Translator: Szylu <chipolade@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/remmina/remmina/"
 "pl/>\n"
@@ -288,13 +288,14 @@ msgid ""
 "  • %d is substituted with local datetime in iso8601 format\n"
 msgstr ""
 "Nazwa pliku może używać następujących symboli:\n"
+"\n"
 "  • %h można zastąpić nazwą serwera\n"
 "  • %t można zastąpić nazwą serwera SSH\n"
 "  • %u można zastąpić nazwą użytkownika\n"
 "  • %U można zastąpić nazwą użytkownika SSH\n"
 "  • %p można zastąpić nazwą profilu Remminy\n"
 "  • %g można zastąpić nazwą grupy profili Remminy\n"
-"  • %d można zastąpić lokalnym czasem w formacie iso8601"
+"  • %d można zastąpić lokalnym czasem w formacie iso8601\n"
 
 #: src/remmina_ssh_plugin.c:1051
 msgid "Terminal color scheme"
@@ -1185,12 +1186,12 @@ msgstr ""
 #. TRANSLATORS: Do not translate pthread
 #: src/remmina_ssh.c:1638 src/remmina_ssh.c:1655 src/remmina_ssh.c:1690
 msgid "Could not start pthread."
-msgstr ""
+msgstr "Nie udało się uruchomić pthread."
 
 #. TRANSLATORS: Do not translate pthread
 #: src/remmina_ssh.c:1672
 msgid "Failed to initialize pthread."
-msgstr ""
+msgstr "Nie udało się zainicjować pthread."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1783
@@ -1611,7 +1612,7 @@ msgstr "Wyślij Ctrl+Alt+Delete"
 
 #: plugins/vnc/vnc_plugin.h:41
 msgid "Remmina VNC Plugin"
-msgstr ""
+msgstr "Wtyczka VNC do Remminy"
 
 #: plugins/vnc/vnc_plugin.h:46
 msgid "Remmina VNC listener Plugin"
@@ -1672,7 +1673,9 @@ msgstr "Udostępnij smartcard"
 
 #: plugins/spice/spice_plugin.c:482
 msgid "SPICE - Simple Protocol for Independent Computing Environments"
-msgstr "SPICE - Simple Protocol for Independent Computing Environments"
+msgstr ""
+"SPICE - Simple Protocol for Independent Computing Environments (Prosty "
+"Protokół dla Niezależnych Środowisk Obliczeniowych)"
 
 #: plugins/spice/spice_plugin_file_transfer.c:82
 msgid "File Transfers"
@@ -1773,7 +1776,7 @@ msgstr "Wprowadź dane uwierzytelniające RDP"
 
 #: plugins/rdp/rdp_plugin.c:640
 msgid "Enter RDP gateway authentication credentials"
-msgstr ""
+msgstr "Wprowadź dane uwierzytelniające dla bramki RDP"
 
 #: plugins/rdp/rdp_plugin.c:1496
 #, c-format
@@ -2368,7 +2371,7 @@ msgstr ""
 
 #: data/ui/remmina_main.glade:404
 msgid "Set as default remote desktop client"
-msgstr ""
+msgstr "Ustaw jako domyślny klient pulpitu zdalnego"
 
 #: data/ui/remmina_main.glade:431
 msgid "Homepage"
@@ -2608,6 +2611,8 @@ msgid ""
 "Set a custom filename for your Remmina connection profiles, using a "
 "formatting string."
 msgstr ""
+"Ustaw niestandardową nazwę pliku dla swoich profili połączeń, używając ciągu "
+"formatującego."
 
 #: data/ui/remmina_preferences.glade:483
 msgid "Profile filename template"
@@ -2900,7 +2905,7 @@ msgstr "Jasne kolory"
 
 #: data/ui/remmina_preferences.glade:1876
 msgid "Load colour theme"
-msgstr ""
+msgstr "Załaduj motyw kolorystyczny"
 
 #: data/ui/remmina_preferences.glade:1917
 msgid ""
