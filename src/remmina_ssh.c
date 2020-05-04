@@ -891,7 +891,7 @@ remmina_ssh_init_from_file(RemminaSSH *ssh, RemminaFile *remminafile, gboolean i
 		remmina_public_get_server_port(server, 0, &ssh->server, NULL);
 	}
 
-	g_debug("[SSH] %s initialized ssh struct from file with ssh->server = %s and ssh->port = %d", __func__, ssh->server, ssh->port);
+	g_debug("[SSH] %s initialized SSH struct from file with ssh->server = %s and SSH->port = %d", __func__, ssh->server, ssh->port);
 
 	ssh->user = g_strdup(username ? username : g_get_user_name());
 	ssh->password = NULL;
@@ -1669,7 +1669,7 @@ remmina_ssh_tunnel_xport(RemminaSSHTunnel *tunnel, gboolean bindlocalhost)
 
 	if (pthread_create(&tunnel->thread, NULL, remmina_ssh_tunnel_main_thread, tunnel)) {
 		// TRANSLATORS: Do not translate pthread
-		remmina_ssh_set_application_error(REMMINA_SSH(tunnel), _("Failed to initialize pthread."));
+		remmina_ssh_set_application_error(REMMINA_SSH(tunnel), _("Could not start pthread."));
 		tunnel->thread = 0;
 		return FALSE;
 	}
