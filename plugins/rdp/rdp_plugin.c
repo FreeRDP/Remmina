@@ -1396,8 +1396,8 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 	}
 
 	if (remmina_plugin_service->file_get_int(remminafile, "passwordispin", FALSE))
-		/* Option works only combined with Username and Domain, because freerdp
-		 * doesn’t know anything about information on smartcard */
+		/* Option works only combined with Username and Domain, because FreeRDP
+		 * doesn’t know anything about info on smart card */
 		rfi->settings->PasswordIsSmartcardPin = TRUE;
 
 	/* /serial[:<name>[,<path>[,<driver>[,permissive]]]] */
@@ -1960,8 +1960,8 @@ static gchar clientbuild_list[] =
 	N_("2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 and newer)");
 
 static gchar clientbuild_tooltip[] =
-	N_("Used i.a. by Terminal services in SmartCard channel to distinguish client capabilities:\n"
-	   "  • < 4034: Windows XP base smartcard functions\n"
+	N_("Used i.a. by terminal services in smart card channel to distinguish client capabilities:\n"
+	   "  • < 4034: Windows XP base smart card functions\n"
 	   "  • 4034-7064: Windows Vista/7: SCardReadCache(), SCardWriteCache(),\n"
 	   "    SCardGetTransmitCount()\n"
 	   "  • >= 7065: Windows 8 and newer: SCardGetReaderIcon(), SCardGetDeviceTypeId()");
@@ -2017,12 +2017,12 @@ static const RemminaProtocolSetting remmina_rdp_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "serialpath",		    N_("Local serial path"),				 FALSE, NULL,	       N_("/dev/ttyS0, /dev/ttyS1, etc.")									      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "parallelname",	    N_("Local parallel name"),				 FALSE, NULL,	       NULL													      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "parallelpath",	    N_("Local parallel device"),			 FALSE, NULL,	       NULL													      },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "smartcardname",	    N_("Smartcard name"),				 FALSE, NULL,	       NULL													      },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "smartcardname",	    N_("Name of smart card"),				 FALSE, NULL,	       NULL													      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "shareprinter",	    N_("Share printers"),				 TRUE,	NULL,	       NULL													      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "shareserial",	    N_("Share serial ports"),				 TRUE,	NULL,	       NULL													      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "serialpermissive",	    N_("(SELinux) permissive mode for serial ports"),			 TRUE,	NULL,	       NULL													      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "shareparallel",	    N_("Share parallel ports"),				 TRUE,	NULL,	       NULL													      },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "sharesmartcard",	    N_("Share smartcard"),				 TRUE,	NULL,	       NULL													      },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "sharesmartcard",	    N_("Share a smart card"),				 TRUE,	NULL,	       NULL													      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "microphone",		    N_("Redirect local microphone"),			 TRUE,	NULL,	       NULL													      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "disableclipboard",	    N_("Turn off clipboard sync"),			 TRUE,	NULL,	       NULL													      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "cert_ignore",	    N_("Ignore certificate"),				 TRUE,	NULL,	       NULL													      },
