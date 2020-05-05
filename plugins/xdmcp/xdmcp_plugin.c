@@ -94,7 +94,7 @@ static gboolean remmina_plugin_xdmcp_start_xephyr(RemminaProtocolWidget *gp)
 
 	gpdata->display = remmina_get_available_xdisplay();
 	if (gpdata->display == 0) {
-		remmina_plugin_service->protocol_plugin_set_error(gp, _("Run out of available local X display number."));
+		remmina_plugin_service->protocol_plugin_set_error(gp, _("Ran out of available local X display numbers."));
 		return FALSE;
 	}
 
@@ -279,7 +279,7 @@ static gboolean remmina_plugin_xdmcp_open_connection(RemminaProtocolWidget *gp)
 	if (remmina_plugin_service->file_get_int(remminafile, "ssh_tunnel_enabled", FALSE)) {
 		if (pthread_create(&gpdata->thread, NULL, remmina_plugin_xdmcp_main_thread, gp)) {
 			remmina_plugin_service->protocol_plugin_set_error(gp,
-				"Failed to initialize pthread. Falling back to non-thread mode…");
+				"Could not start pthread. Using non-threaded mode instead…");
 			gpdata->thread = 0;
 			return FALSE;
 		}else  {
@@ -312,7 +312,7 @@ static gboolean remmina_plugin_xdmcp_close_connection(RemminaProtocolWidget *gp)
 	return FALSE;
 }
 
-/* Send Ctrl+Alt+Del keys keystrokes to the plugin socket widget */
+/* Send Ctrl+Alt+Del keystrokes to the plugin socket widget */
 static void remmina_plugin_xdmcp_send_ctrlaltdel(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
