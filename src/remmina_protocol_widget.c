@@ -923,7 +923,7 @@ gboolean remmina_protocol_widget_start_reverse_tunnel(RemminaProtocolWidget *gp,
 	if (!(tunnel = remmina_protocol_widget_init_tunnel(gp)))
 		return FALSE;
 
-	msg = g_strdup_printf(_("Awaiting incoming SSH connection at port %i…"), remmina_file_get_int(gp->priv->remmina_file, "listenport", 0));
+	msg = g_strdup_printf(_("Awaiting incoming SSH connection on port %i…"), remmina_file_get_int(gp->priv->remmina_file, "listenport", 0));
 	mp = remmina_protocol_widget_mpprogress(gp->cnnobj, msg, cancel_start_reverse_tunnel_cb, NULL);
 	g_free(msg);
 
@@ -1439,7 +1439,7 @@ gint remmina_protocol_widget_panel_authuserpwd_ssh_tunnel(RemminaProtocolWidget 
 	username = remmina_file_get_string(remminafile, "ssh_tunnel_username");
 	password = remmina_file_get_string(remminafile, "ssh_tunnel_password");
 
-	return remmina_protocol_widget_dialog(RPWDT_AUTH, gp, pflags, _("Type in username and password for SSH."), username,
+	return remmina_protocol_widget_dialog(RPWDT_AUTH, gp, pflags, _("Type in SSH username and password."), username,
 					      password, NULL, _("Password"));
 }
 
