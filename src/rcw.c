@@ -2503,7 +2503,7 @@ gboolean rco_enter_protocol_widget(GtkWidget *widget, GdkEventCrossing *event,
 	TRACE_CALL(__func__);
 	gboolean active;
 
-#ifdef DEBUG_KB_GRABBING
+#if DEBUG_KB_GRABBING
 	printf("DEBUG_KB_GRABBING: %s: enter event received\n", __func__);
 #endif
 
