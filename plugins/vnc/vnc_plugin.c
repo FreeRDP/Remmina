@@ -1197,7 +1197,7 @@ static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 		cl->appData.useRemoteCursor = (
 			remmina_plugin_service->file_get_int(remminafile, "showcursor", FALSE) ? FALSE : TRUE);
 
-		remmina_plugin_vnc_update_quality(cl, remmina_plugin_service->file_get_int(remminafile, "quality", 0));
+		remmina_plugin_vnc_update_quality(cl, remmina_plugin_service->file_get_int(remminafile, "quality", 9));
 		remmina_plugin_vnc_update_colordepth(cl, colordepth);
 		SetFormatAndEncodings(cl);
 
@@ -1800,19 +1800,19 @@ static void remmina_plugin_vnc_init(RemminaProtocolWidget *gp)
 /* Array of key/value pairs for color depths */
 static gpointer colordepth_list[] =
 {
-	"8",  N_("256 colors (8 bpp)"),
-	"16", N_("High color (16 bpp)"),
 	"32", N_("True color (32 bpp)"),
+	"16", N_("High color (16 bpp)"),
+	"8",  N_("256 colors (8 bpp)"),
 	NULL
 };
 
 /* Array of key/value pairs for quality selection */
 static gpointer quality_list[] =
 {
-	"0", N_("Poor (fastest)"),
-	"1", N_("Medium"),
-	"2", N_("Good"),
 	"9", N_("Best (slowest)"),
+	"2", N_("Good"),
+	"1", N_("Medium"),
+	"0", N_("Poor (fastest)"),
 	NULL
 };
 
