@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-04-14 22:18+0000\n"
-"PO-Revision-Date: 2020-05-07 21:45+0000\n"
+"PO-Revision-Date: 2020-05-08 10:01+0000\n"
 "Last-Translator: Szylu <chipolade@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/remmina/remmina/"
 "pl/>\n"
@@ -203,7 +203,7 @@ msgstr "Zapisz sesję do pliku"
 #: src/remmina_ssh_plugin.c:921 src/remmina_sftp_plugin.c:292
 #: src/remmina_file_editor.c:362 src/remmina_file_editor.c:369
 msgid "SSH identity file"
-msgstr ""
+msgstr "Plik identyfikujący dla SSH"
 
 #: src/remmina_ssh_plugin.c:922 src/remmina_sftp_plugin.c:293
 msgid "SSH agent"
@@ -262,7 +262,6 @@ msgstr "Typ uwierzytelnienia"
 
 #: src/remmina_ssh_plugin.c:1022 src/remmina_sftp_plugin.c:326
 #: plugins/nx/nx_plugin.c:720
-#, fuzzy
 msgid "Identity file"
 msgstr "Plik tożsamości"
 
@@ -319,7 +318,6 @@ msgid "Symmetric cipher client to server"
 msgstr "Symetrycznie szyfrujący klient do serwera"
 
 #: src/remmina_ssh_plugin.c:1056
-#, fuzzy
 msgid "Preferred server host key types"
 msgstr "Preferowane typy kluczy hosta serwera"
 
@@ -348,7 +346,6 @@ msgid "Don't remember passwords"
 msgstr "Nie zapamiętuj haseł"
 
 #: src/remmina_ssh_plugin.c:1063
-#, fuzzy
 msgid "Strict host key checking"
 msgstr "Ścisłe sprawdzanie klucza hosta"
 
@@ -608,9 +605,8 @@ msgid "_About"
 msgstr "_Informacje"
 
 #: src/remmina_icon.c:159
-#, fuzzy
 msgid "Enable Service Discovery"
-msgstr "Wykrywanie usług"
+msgstr "Uruchom Wykrywanie usług"
 
 #: src/remmina_icon.c:172 data/ui/remmina_main.glade:494
 msgid "_Quit"
@@ -636,9 +632,8 @@ msgstr ""
 "Czy jesteś pewien, że chcesz zamknąć %i aktywnych połączeń w tym oknie?"
 
 #: src/rcw.c:1351
-#, fuzzy
 msgid "Viewport fullscreen mode"
-msgstr "Tryb pełnoekranowy okna obrazu"
+msgstr "Tryb pełnoekranowy okna"
 
 #: src/rcw.c:1359 data/ui/remmina_preferences.glade:586
 msgid "Scrolled fullscreen"
@@ -1250,6 +1245,17 @@ msgid ""
 "connecting.\n"
 "</big></tt>"
 msgstr ""
+"<tt><big>• polecenie w PATH args %h\n"
+"• /path/to/foo -options %h %u\n"
+"• %h zastępuje nazwę serwera\n"
+"• %t zastępuje nazwę serwera SSH\n"
+"• %u zastępuje nazwę użytkownika\n"
+"• %U zastępuje nazwę użytkownika SSH\n"
+"• %p zastępuje nazwę profilu Remminy\n"
+"• %g zastępuje nazwę grupy profili Remminy\n"
+"• %d zastępuje lokalny czas w formacie iso8601\n"
+"Nie uruchamiaj w tle, jeśli chcesz wykonać polecenie przed połączeniem.\n"
+"</big></tt>"
 
 #: src/remmina_file_editor.c:95
 msgid ""
@@ -1675,7 +1681,7 @@ msgstr "Włącz kanał audio"
 
 #: plugins/spice/spice_plugin.c:458 plugins/spice/spice_plugin.c:470
 msgid "Resize guest to match window size"
-msgstr ""
+msgstr "Zmień rozmiar okna u gościa, aby dopasować rozmiar"
 
 #: plugins/spice/spice_plugin.c:459 plugins/rdp/rdp_plugin.c:2025
 msgid "Share smartcard"
@@ -1979,6 +1985,13 @@ msgid ""
 "  • >= 7065: Windows 8 and newer: SCardGetReaderIcon(), "
 "SCardGetDeviceTypeId()"
 msgstr ""
+"Używane m.in. przez usługi terminalowe w kanale SmartCard umożliwiającym "
+"rozróżnienie możliwości klienta:\n"
+"  • < 4034: podstawowe funkcje SmartCard w systemie Windows XP\n"
+"  • 4034-7064: Windows Vista/7: SCardReadCache(), SCardWriteCache(),\n"
+"    SCardGetTransmitCount()\n"
+"  • >= 7065: Windows 8 oraz nowsze: SCardGetReaderIcon(), "
+"SCardGetDeviceTypeId()"
 
 #: plugins/rdp/rdp_plugin.c:2002
 msgid "Sound"
@@ -2458,6 +2471,12 @@ msgid ""
 "donation</a>, to make us happy, and further make the program better.</b>\n"
 "</span>\n"
 msgstr ""
+"<span>\n"
+"<b>Jesteś świetny korzystając z wolnego oprogramowania (na licencji copyleft)"
+", <a href=\"https://remmina.org/donations/\" title=\"Awesome Remmina "
+"donations\">wesprzyj nas darowizną</a>, aby nas uszczęśliwić i ulepszyć "
+"program w przyszłości.</b>\n"
+"</span>\n"
 
 #: data/ui/remmina_news.glade:212
 msgid "<big>Contribute</big>"
