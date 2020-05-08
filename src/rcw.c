@@ -2007,7 +2007,7 @@ static void rcw_toolbar_screenshot(GtkWidget *widget, RemminaConnectionWindow *c
 		// Transfer the PixBuf in the main clipboard selection
 		if (!remmina_pref.deny_screenshot_clipboard)
 			gtk_clipboard_set_image(c, screenshot);
-		// Prepare the destination cairo surface.
+		// Prepare the destination Cairo surface.
 		surface = cairo_image_surface_create(CAIRO_FORMAT_RGB24, width, height);
 		cr = cairo_create(surface);
 
@@ -2246,7 +2246,7 @@ rcw_create_toolbar(RemminaConnectionWindow *cnnwin, gint mode)
 
 	toolitem = gtk_toggle_tool_button_new();
 	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-preferences-system-symbolic");
-	gtk_tool_item_set_tooltip_text(toolitem, _("Preferences"));
+	gtk_tool_item_set_tooltip_text(toolitem, _("_Preferences"));
 	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
 	gtk_widget_show(GTK_WIDGET(toolitem));
 	g_signal_connect(G_OBJECT(toolitem), "toggled", G_CALLBACK(rcw_toolbar_preferences), cnnwin);
@@ -2254,7 +2254,7 @@ rcw_create_toolbar(RemminaConnectionWindow *cnnwin, gint mode)
 
 	toolitem = gtk_toggle_tool_button_new();
 	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-system-run-symbolic");
-	gtk_tool_button_set_label(GTK_TOOL_BUTTON(toolitem), _("Tools"));
+	gtk_tool_button_set_label(GTK_TOOL_BUTTON(toolitem), _("_Tools"));
 	gtk_tool_item_set_tooltip_text(toolitem, _("Tools"));
 	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
 	gtk_widget_show(GTK_WIDGET(toolitem));
