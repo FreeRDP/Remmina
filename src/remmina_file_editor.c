@@ -1003,7 +1003,7 @@ static void remmina_file_editor_create_all_settings(RemminaFileEditor *gfe)
 
 	static const RemminaProtocolSetting autostart_settings[] =
 	{
-		{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "enable-autostart", N_("Turn on \"Autostart\" for this profile"), FALSE, NULL, NULL },
+		{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "enable-autostart", N_("Autostart this profile"), FALSE, NULL, NULL },
 		{ REMMINA_PROTOCOL_SETTING_TYPE_END,   NULL,		   NULL,					 FALSE, NULL, NULL }
 	};
 
