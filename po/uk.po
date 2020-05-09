@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-04-14 22:18+0000\n"
-"PO-Revision-Date: 2020-05-09 13:51+0000\n"
+"PO-Revision-Date: 2020-05-09 14:08+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/remmina/"
 "remmina/uk/>\n"
@@ -19,8 +19,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
+"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 4.1-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:04+0000\n"
 
@@ -703,7 +703,7 @@ msgstr "Файл «%s» пошкоджено, неможливо прочита�
 
 #: src/rcw.c:3984
 msgid "Warning: This plugin requires GtkSocket, but it’s not available."
-msgstr "Увага: цей додаток потребує GtkSocket, але він не доступний."
+msgstr "Увага: цей додаток потребує GtkSocket, але він недоступний."
 
 #: src/remmina_plugin_manager.c:70 src/remmina_file_editor.c:1488
 msgid "Protocol"
@@ -727,7 +727,7 @@ msgstr "Налаштування"
 
 #: src/remmina_plugin_manager.c:70
 msgid "Secret"
-msgstr "Таємно"
+msgstr "Захист"
 
 #: src/remmina_plugin_manager.c:446 data/ui/remmina_main.glade:414
 msgid "Plugins"
@@ -766,7 +766,7 @@ msgstr[2] "Усього %i записів."
 #: src/remmina_main.c:829
 #, c-format
 msgid "Are you sure you want to delete \"%s\"?"
-msgstr "Впевнені, що бажаєте видалити „%s“?"
+msgstr "Впевнені, що бажаєте вилучити «%s»?"
 
 #: src/remmina_main.c:929
 #, c-format
@@ -774,7 +774,7 @@ msgid ""
 "Unable to import:\n"
 "%s"
 msgstr ""
-"Неможливо імпортувати:\n"
+"Не вдалося імпортувати:\n"
 "%s"
 
 #: src/remmina_main.c:956 data/ui/remmina_main.glade:374
@@ -787,11 +787,11 @@ msgstr "_Зберегти"
 
 #: src/remmina_main.c:986
 msgid "This protocol does not support exporting."
-msgstr "Цей протокол не підтримує експорт."
+msgstr "У цьому протоколі не передбачено експортування."
 
 #: src/remmina_main.c:1227
 msgid "Remmina Kiosk"
-msgstr "Remmina Кіоск"
+msgstr "Remmina-Кіоск"
 
 #: src/remmina_key_chooser.h:38
 msgid "Shift+"
@@ -825,13 +825,13 @@ msgstr "<Жодна>"
 #: src/remmina_sftp_client.c:173
 #, c-format
 msgid "Could not create the folder \"%s\"."
-msgstr "Не можу створити директорію «%s»."
+msgstr "Не вдалося створити теку «%s»."
 
 #. TRANSLATORS: The placeholder %s is a file path
 #: src/remmina_sftp_client.c:181 src/remmina_sftp_client.c:202
 #, c-format
 msgid "Could not create the file \"%s\"."
-msgstr "Не можу створити файл «%s»."
+msgstr "Не вдалося створити файл «%s»."
 
 #. TRANSLATORS: The placeholders %s are a file path, and an error message.
 #: src/remmina_sftp_client.c:220
@@ -842,38 +842,38 @@ msgstr "Помилка під час спроби відкрити файл «%s
 #: src/remmina_sftp_client.c:242
 #, c-format
 msgid "Could not save the file \"%s\"."
-msgstr "Не можу зберегти файл «%s»."
+msgstr "Не вдалося зберегти файл «%s»."
 
 #: src/remmina_sftp_client.c:281 src/remmina_sftp_client.c:698
 #: src/remmina_sftp_client.c:761
 #, c-format
 msgid "Could not open the folder \"%s\". %s"
-msgstr "Помилка відкриття теки «%s». %s"
+msgstr "Не вдалося відкрити теку «%s». %s"
 
 #: src/remmina_sftp_client.c:385
 #, c-format
 msgid "Could not create the folder \"%s\" on the server. %s"
-msgstr "Помилка створення теки «%s» на сервері. %s"
+msgstr "Не вдалося створити теку «%s» на сервері. %s"
 
 #: src/remmina_sftp_client.c:413 src/remmina_sftp_client.c:435
 #, c-format
 msgid "Could not create the file \"%s\" on the server. %s"
-msgstr "Помилка під час спроби створити файл «%s» на сервері. %s"
+msgstr "Не вдалося створити файл «%s» на сервері. %s"
 
 #: src/remmina_sftp_client.c:456
 #, c-format
 msgid "Could not open the file \"%s\"."
-msgstr "Помилка під час спроби відкрити файл «%s»."
+msgstr "Не вдалося відкрити файл «%s»."
 
 #: src/remmina_sftp_client.c:476
 #, c-format
 msgid "Could not write to the file \"%s\" on the server. %s"
-msgstr "Помилка під час спроби записати дані до файла «%s» на сервері. %s"
+msgstr "Не вдалося записати дані до файла «%s» на сервері. %s"
 
 #: src/remmina_sftp_client.c:716
 #, c-format
 msgid "Could not read from the folder. %s"
-msgstr "Помилка читання з теки. %s"
+msgstr "Не вдалося виконати читання з теки. %s"
 
 #: src/remmina_sftp_client.c:823
 msgid "Are you sure you want to cancel the file transfer in progress?"
@@ -882,7 +882,7 @@ msgstr "Ви впевнені, що бажаєте скасувати поточ
 #: src/remmina_sftp_client.c:857
 #, c-format
 msgid "Could not delete \"%s\". %s"
-msgstr "Не вдалось видалити «%s». %s"
+msgstr "Не вдалося вилучити «%s». %s"
 
 #: src/remmina_sftp_client.c:938
 msgid "The file exists already"
@@ -979,7 +979,7 @@ msgstr "SFTP — Захищена передача файлів"
 #: src/remmina_ssh.c:213 src/remmina_ssh.c:407
 #, c-format
 msgid "Could not authenticate with SSH password. %s"
-msgstr "Автентифікація за паролем не вдалась для SSH. %s"
+msgstr "Не вдалося пройти розпізнавання за паролем SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:234 src/remmina_ssh.c:260 src/remmina_ssh.c:269
@@ -990,7 +990,7 @@ msgstr "Не вдалося пройти розпізнавання за від�
 
 #: src/remmina_ssh.c:235
 msgid "SSH Key file not yet set."
-msgstr "Ключовий файл SSH ще не встановлено."
+msgstr "Файл ключа SSH ще не встановлено."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:246
@@ -1046,7 +1046,7 @@ msgstr "Не вдалося отримати контрольну суму дл�
 
 #: src/remmina_ssh.c:537
 msgid "The server is unknown. The public key fingerprint is:"
-msgstr "Невідомий сервер. Відкритий ключ відбитків пальців:"
+msgstr "Невідомий сервер. Відбиток відкритого ключа:"
 
 #: src/remmina_ssh.c:539 src/remmina_ssh.c:545
 msgid "Do you trust the new public key?"
@@ -1058,7 +1058,7 @@ msgid ""
 "under attack,\n"
 "or the administrator has changed the key. The new public key fingerprint is:"
 msgstr ""
-"Лишенько: Сервер змінив свій відкритий ключ. Це означає, що вас атаковано,\n"
+"Увага: на сервері змінено відкритий ключ. Це означає, що вас атаковано,\n"
 "або ж адміністратор змінив ключ. Новий відбиток відкритого ключа:"
 
 #. TRANSLATORS: The placeholder %s is an error message
