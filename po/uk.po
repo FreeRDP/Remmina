@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-04-14 22:18+0000\n"
-"PO-Revision-Date: 2020-05-07 21:45+0000\n"
+"PO-Revision-Date: 2020-05-09 13:01+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/remmina/"
 "remmina/uk/>\n"
@@ -19,8 +19,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
+"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 4.1-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:04+0000\n"
 
@@ -124,7 +124,7 @@ msgstr "Прийняти змінений сертифікат?"
 #: src/remmina_protocol_widget.c:1666
 #, c-format
 msgid "Listening on port %i for an incoming %s connection…"
-msgstr "Прослуховування порту %i на вхідне %s підключення…"
+msgstr "Очікуємо на порті %i на вхідне з'єднання %s…"
 
 #: src/remmina_protocol_widget.c:1691
 msgid "Could not authenticate, attempting reconnection…"
@@ -510,7 +510,7 @@ msgstr "Показати «Про програму»"
 msgid ""
 "Connect to desktop described in file (.remmina or type supported by plugin)"
 msgstr ""
-"Підключитись до стільниці описаної у файлі (.remmina або розширенням, що "
+"З'єднатися із стільницею, яку описано у файлі (.remmina або розширенням, що "
 "підтримується додатком)"
 
 #. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
@@ -519,8 +519,8 @@ msgid ""
 "Edit desktop connection described in file (.remmina or type supported by "
 "plugin)"
 msgstr ""
-"Редагувати підключення до стільниці описаної у файлі (.remmina чи іншим, що "
-"підтримується додатком)"
+"Редагувати з'єднання зі стільницею, яку описано у файлі (.remmina чи іншим, "
+"що підтримується додатком)"
 
 #. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
 #: src/remmina.c:93
@@ -741,7 +741,7 @@ msgstr "_Гаразд"
 #: src/remmina_plugin_manager.c:464 src/remmina_file_editor.c:1445
 #: plugins/nx/nx_session_manager.c:204 data/ui/remmina_main.glade:529
 msgid "Name"
-msgstr "Ім'я"
+msgstr "Назва"
 
 #: src/remmina_plugin_manager.c:470 plugins/nx/nx_session_manager.c:183
 msgid "Type"
@@ -759,9 +759,9 @@ msgstr "Версія"
 #, c-format
 msgid "Total %i item."
 msgid_plural "Total %i items."
-msgstr[0] "Усього %i підключення."
-msgstr[1] "Усього %i підключення."
-msgstr[2] "Усього %i підключень."
+msgstr[0] "Усього %i запис."
+msgstr[1] "Усього %i записи."
+msgstr[2] "Усього %i записів."
 
 #: src/remmina_main.c:829
 #, c-format
@@ -904,7 +904,7 @@ msgstr "Перезаписати"
 #: data/ui/remmina_spinner.glade:9 data/ui/remmina_key_chooser.glade:8
 #: data/ui/remmina_key_chooser.glade:9
 msgid "_Cancel"
-msgstr "_Відмінити"
+msgstr "_Скасувати"
 
 #: src/remmina_sftp_client.c:952
 msgid "Question"
@@ -1365,11 +1365,11 @@ msgstr ""
 
 #: src/remmina_file_editor.c:1333 data/ui/remmina_main.glade:250
 msgid "Connect"
-msgstr "Підключити"
+msgstr "З'єднатися"
 
 #: src/remmina_file_editor.c:1336
 msgid "_Save and Connect"
-msgstr "_Зберегти та підключити"
+msgstr "_Зберегти та з'єднатися"
 
 #: src/remmina_file_editor.c:1459
 msgid "Quick Connect"
@@ -2321,7 +2321,7 @@ msgstr "Не показувати це сповіщення знову"
 
 #: data/ui/remmina_about.glade:30 data/ui/remmina_main.glade:485
 msgid "About"
-msgstr "Про"
+msgstr "Про програму"
 
 #: data/ui/remmina_about.glade:40
 msgid "Website"
@@ -2403,7 +2403,7 @@ msgstr "Вікі"
 #. Remmina community website
 #: data/ui/remmina_main.glade:461
 msgid "Online Community"
-msgstr "Он-лайн Спільнота"
+msgstr "Інтернет-спільнота"
 
 #: data/ui/remmina_main.glade:579
 msgid "Plugin"
@@ -2624,7 +2624,7 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:467
 msgid "Prevent screenshots from entering clipboard"
-msgstr "Заборонити копіювання знімків до буферу"
+msgstr "Заборонити копіювання знімків до буфера"
 
 #: data/ui/remmina_preferences.glade:479
 msgid ""
@@ -2892,11 +2892,11 @@ msgstr "Рядків зворотньої прокрутки"
 
 #: data/ui/remmina_preferences.glade:1702
 msgid "Shortcut for copying to clipboard"
-msgstr "Комбінація клавіш для копіювання до буферу обміну"
+msgstr "Комбінація клавіш для копіювання до буфера обміну"
 
 #: data/ui/remmina_preferences.glade:1715
 msgid "Shortcut for pasting from clipboard"
-msgstr "Комбінація для вставки з буферу обміну"
+msgstr "Комбінація для вставки з буфера обміну"
 
 #: data/ui/remmina_preferences.glade:1728
 msgid "Select all shortcuts"
