@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-04-14 22:18+0000\n"
-"PO-Revision-Date: 2020-05-09 13:01+0000\n"
+"PO-Revision-Date: 2020-05-09 13:44+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/remmina/"
 "remmina/uk/>\n"
@@ -19,8 +19,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
+"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 4.1-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:04+0000\n"
 
@@ -44,7 +44,7 @@ msgstr "Встановлення з'єднання з «%s»…"
 #: src/remmina_protocol_widget.c:745 src/remmina_protocol_widget.c:863
 #, c-format
 msgid "Connecting to \"%s\" via SSH…"
-msgstr "Встановлення з'єднання з '%s' через SSH…"
+msgstr "Встановлення з'єднання з «%s» через SSH…"
 
 #: src/remmina_protocol_widget.c:926
 #, c-format
@@ -91,15 +91,15 @@ msgstr "Параметри сертифіката:"
 
 #: src/remmina_protocol_widget.c:1499 src/remmina_protocol_widget.c:1520
 msgid "Subject:"
-msgstr "Тема:"
+msgstr "Призначення:"
 
 #: src/remmina_protocol_widget.c:1500 src/remmina_protocol_widget.c:1521
 msgid "Issuer:"
-msgstr "Джерело:"
+msgstr "Видавець:"
 
 #: src/remmina_protocol_widget.c:1501
 msgid "Fingerprint:"
-msgstr "Відбиток пальця:"
+msgstr "Відбиток:"
 
 #: src/remmina_protocol_widget.c:1502
 msgid "Accept certificate?"
@@ -111,11 +111,11 @@ msgstr "Сертифікат змінено! Детальніше:"
 
 #: src/remmina_protocol_widget.c:1522
 msgid "Old fingerprint:"
-msgstr "Старий відбиток пальця:"
+msgstr "Старий відбиток:"
 
 #: src/remmina_protocol_widget.c:1523
 msgid "New fingerprint:"
-msgstr "Новий відбиток пальця:"
+msgstr "Новий відбиток:"
 
 #: src/remmina_protocol_widget.c:1524
 msgid "Accept changed certificate?"
@@ -128,7 +128,7 @@ msgstr "Очікуємо на порті %i на вхідне з'єднання 
 
 #: src/remmina_protocol_widget.c:1691
 msgid "Could not authenticate, attempting reconnection…"
-msgstr "Не можу автентифікуватись. Ще одна спроба…"
+msgstr "Не вдалося пройти розпізнавання. Ще одна спроба…"
 
 #: src/remmina_protocol_widget.c:1753 src/remmina_file_editor.c:408
 #: src/remmina_file_editor.c:883 data/ui/remmina_main.glade:565
@@ -138,7 +138,7 @@ msgstr "Сервер"
 #: src/remmina_protocol_widget.c:1770
 #, c-format
 msgid "Install the %s protocol plugin first."
-msgstr "Спочатку встановіть модуль протоколу %s."
+msgstr "Спочатку встановіть додаток протоколу %s."
 
 #: src/remmina_exec.c:320
 #, c-format
@@ -148,7 +148,7 @@ msgstr "Додаток %s не зареєстровано."
 #: src/remmina_pref_dialog.c:83 src/remmina_file_editor.c:497
 #: data/ui/remmina_preferences.glade:234
 msgid "Resolutions"
-msgstr "Роздільна здатність"
+msgstr "Роздільні здатності"
 
 #: src/remmina_pref_dialog.c:83 src/remmina_file_editor.c:497
 msgid "Configure the available resolutions"
@@ -170,7 +170,7 @@ msgstr "Налаштування комбінацій клавіш"
 #. TRANSLATORS: Do not translate libsodium, is the name of a library
 #: src/remmina_pref_dialog.c:443
 msgid "libsodium >= 1.9.0 is required to use master password"
-msgstr "libsodium >= 1.9.0 потрібен для використання майстер-паролю"
+msgstr "libsodium >= 1.9.0 потрібен для використання майстер-пароля"
 
 #: src/remmina_ssh_plugin.c:441
 #, c-format
@@ -204,7 +204,7 @@ msgstr "Файл ідентифікації SSH"
 
 #: src/remmina_ssh_plugin.c:922 src/remmina_sftp_plugin.c:293
 msgid "SSH agent"
-msgstr "SSH агент"
+msgstr "SSH-агент"
 
 #: src/remmina_ssh_plugin.c:923 src/remmina_sftp_plugin.c:294
 #: src/remmina_file_editor.c:940
@@ -233,7 +233,7 @@ msgstr "_Вставити"
 
 #: src/remmina_ssh_plugin.c:1001
 msgid "Select all"
-msgstr "Обрати все"
+msgstr "Вибрати все"
 
 #: src/remmina_ssh_plugin.c:1001
 msgid "_Select all"
@@ -260,7 +260,7 @@ msgstr "Тип автентифікації"
 #: src/remmina_ssh_plugin.c:1022 src/remmina_sftp_plugin.c:326
 #: plugins/nx/nx_plugin.c:720
 msgid "Identity file"
-msgstr "Ідентифікувати файл"
+msgstr "Файл профілю"
 
 #: src/remmina_ssh_plugin.c:1023 src/remmina_sftp_plugin.c:327
 #: src/remmina_file_editor.c:949
@@ -316,7 +316,7 @@ msgstr "Симетричне шифрування клієнта до серве
 
 #: src/remmina_ssh_plugin.c:1056
 msgid "Preferred server host key types"
-msgstr "Бажані тип ключів сервера основної системи"
+msgstr "Бажані типи ключів сервера основної системи"
 
 #: src/remmina_ssh_plugin.c:1057
 msgid "Folder for SSH session log"
@@ -344,7 +344,7 @@ msgstr "Не запам'ятовувати паролі"
 
 #: src/remmina_ssh_plugin.c:1063
 msgid "Strict host key checking"
-msgstr "Сувора перевірка ключів вузла"
+msgstr "Строга перевірка ключів вузла"
 
 #: src/remmina_ssh_plugin.c:1077
 msgid "SSH - Secure Shell"
@@ -368,11 +368,11 @@ msgstr "Скидаю паролі, будь ласка, зачекайте…"
 
 #: src/remmina_mpchange.c:327
 msgid "The multi password changer requires a secrecy plugin.\n"
-msgstr "Зміна багатьох паролів потребує додатку шифрування.\n"
+msgstr "Зміна багатьох паролів потребує додатка шифрування.\n"
 
 #: src/remmina_mpchange.c:330
 msgid "The multi password changer requires a secrecy service.\n"
-msgstr "Зміна багатьох паролів потребує сервісу секретності.\n"
+msgstr "Зміна багатьох паролів потребує служби захисту даних.\n"
 
 #: src/remmina_mpchange.c:409
 #, c-format
@@ -384,7 +384,7 @@ msgstr[2] "%d паролів змінено."
 
 #: src/remmina_public.c:639
 msgid "Please enter format 'widthxheight'."
-msgstr "Будь ласка, введіть у форматі „ширинаxвисота“."
+msgstr "Будь ласка, введіть у форматі «ширинаxвисота»."
 
 #. TRANSLATORS: translator-credits should be replaced with a formatted list of translators in your own language
 #: src/remmina_about.c:54
@@ -400,15 +400,15 @@ msgstr ""
 
 #: src/remmina_ftp_client.c:388
 msgid "Choose download location"
-msgstr "Вибрати місце для звантаження"
+msgstr "Виберіть місце для отримання даних"
 
 #: src/remmina_ftp_client.c:528
 msgid "Are you sure to delete the selected files on server?"
-msgstr "Ви дійсно хочете видалити вибрані файли з сервера?"
+msgstr "Ви дійсно хочете вилучити вибрані файли з сервера?"
 
 #: src/remmina_ftp_client.c:585
 msgid "Choose a file to upload"
-msgstr "Оберіть файл для вивантаження"
+msgstr "Виберіть файл для вивантаження"
 
 #: src/remmina_ftp_client.c:592
 msgid "Upload folder"
@@ -416,7 +416,7 @@ msgstr "Вивантажити теку"
 
 #: src/remmina_ftp_client.c:648 src/remmina_ftp_client.c:770
 msgid "Download"
-msgstr "Звантаження"
+msgstr "Отримання"
 
 #: src/remmina_ftp_client.c:655 src/remmina_ftp_client.c:781
 msgid "Upload"
@@ -424,7 +424,7 @@ msgstr "Вивантаження"
 
 #: src/remmina_ftp_client.c:662
 msgid "_Delete"
-msgstr "_Видалити"
+msgstr "_Вилучити"
 
 #: src/remmina_ftp_client.c:749
 msgid "Home"
@@ -436,11 +436,11 @@ msgstr "Перейти до домашньої теки"
 
 #: src/remmina_ftp_client.c:756
 msgid "Up"
-msgstr "Догори"
+msgstr "Вище"
 
 #: src/remmina_ftp_client.c:758
 msgid "Go to parent folder"
-msgstr "На одну теку вверх"
+msgstr "На одну теку вище"
 
 #: src/remmina_ftp_client.c:763 plugins/vnc/vnc_plugin.c:1889
 #: plugins/rdp/rdp_plugin.c:2047
@@ -453,7 +453,7 @@ msgstr "Оновити поточну теку"
 
 #: src/remmina_ftp_client.c:772
 msgid "Download from server"
-msgstr "Звантажити з сервера"
+msgstr "Отримати з сервера"
 
 #: src/remmina_ftp_client.c:783
 msgid "Upload to server"
