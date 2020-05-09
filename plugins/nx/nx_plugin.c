@@ -740,7 +740,7 @@ static const RemminaProtocolSetting remmina_plugin_nx_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableclipboard",	 N_("Disable clipboard sync"),	 FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableencryption",	 N_("Disable encryption"),	 FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "showcursor",		 N_("Use local cursor"),	 FALSE, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disablepasswordstoring", N_("Disable password storing"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disablepasswordstoring", N_("Forget passwords after use"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END,   NULL,			 NULL,				 FALSE, NULL, NULL }
 };
 
@@ -748,7 +748,7 @@ static const RemminaProtocolSetting remmina_plugin_nx_advanced_settings[] =
  * The last element of the array must be REMMINA_PROTOCOL_FEATURE_TYPE_END. */
 static const RemminaProtocolFeature remmina_plugin_nx_features[] =
 {
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_PLUGIN_NX_FEATURE_TOOL_SENDCTRLALTDEL, N_("Send Ctrl+Alt+Delete"), NULL, NULL },
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_PLUGIN_NX_FEATURE_TOOL_SENDCTRLALTDEL, N_("Send Ctrl+Alt+Del"), NULL, NULL },
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_GTKSOCKET, REMMINA_PLUGIN_NX_FEATURE_GTKSOCKET,	    NULL,	   NULL,	NULL},
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_END,  0,					     NULL,			 NULL, NULL }
 };
