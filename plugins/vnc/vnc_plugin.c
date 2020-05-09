@@ -422,6 +422,7 @@ static void remmina_plugin_vnc_update_colordepth(rfbClient *cl, gint colordepth)
 		cl->format.greenShift = 5;
 		cl->format.redMax = 31;
 		cl->format.redShift = 11;
+		cl->format.trueColour = 1;
 		break;
 	case 32:
 	default:
@@ -433,6 +434,7 @@ static void remmina_plugin_vnc_update_colordepth(rfbClient *cl, gint colordepth)
 		cl->format.blueMax = 0xff;
 		cl->format.redMax = 0xff;
 		cl->format.greenMax = 0xff;
+		cl->format.trueColour = 1;
 		break;
 	}
 	rfbClientLog ("colordepth          = %d\n", colordepth);
@@ -440,6 +442,7 @@ static void remmina_plugin_vnc_update_colordepth(rfbClient *cl, gint colordepth)
 	rfbClientLog ("format.bitsPerPixel = %d\n", cl->format.bitsPerPixel);
 	rfbClientLog ("format.blueShift    = %d\n", cl->format.blueShift);
 	rfbClientLog ("format.redShift     = %d\n", cl->format.redShift);
+	rfbClientLog ("format.trueColour   = %d\n", cl->format.trueColour);
 	rfbClientLog ("format.greenShift   = %d\n", cl->format.greenShift);
 	rfbClientLog ("format.blueMax      = %d\n", cl->format.blueMax);
 	rfbClientLog ("format.redMax       = %d\n", cl->format.redMax);
