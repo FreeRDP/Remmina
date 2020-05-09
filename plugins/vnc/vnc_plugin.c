@@ -116,6 +116,17 @@ static void onMainThread_schedule_callback_and_wait(struct onMainThread_cb_data 
 	pthread_mutex_destroy(&d->mu);
 }
 
+/**
+   Function check_for_endianness() returns 1, if architecture
+   is little endian, 0 in case of big endian.
+ */
+static gboolean check_for_endianness()
+{
+  unsigned int x = 1;
+  char *c = (char*) &x;
+  return (int)*c;
+}
+
 static void remmina_plugin_vnc_event_push(RemminaProtocolWidget *gp, gint event_type, gpointer p1, gpointer p2, gpointer p3)
 {
 	TRACE_CALL(__func__);
@@ -398,6 +409,7 @@ static void remmina_plugin_vnc_update_quality(rfbClient *cl, gint quality)
 static void remmina_plugin_vnc_update_colordepth(rfbClient *cl, gint colordepth)
 {
 	TRACE_CALL(__func__);
+
 	cl->format.depth = colordepth;
 	cl->format.bigEndian = 0;
 	cl->appData.requestedDepth = colordepth;
@@ -437,6 +449,8 @@ static void remmina_plugin_vnc_update_colordepth(rfbClient *cl, gint colordepth)
 		cl->format.trueColour = 1;
 		break;
 	}
+	cl->format.bigEndian = check_for_endianness()?TRUE:FALSE;
+
 	rfbClientLog ("colordepth          = %d\n", colordepth);
 	rfbClientLog ("format.depth        = %d\n", cl->format.depth);
 	rfbClientLog ("format.bitsPerPixel = %d\n", cl->format.bitsPerPixel);
@@ -447,6 +461,7 @@ static void remmina_plugin_vnc_update_colordepth(rfbClient *cl, gint colordepth)
 	rfbClientLog ("format.blueMax      = %d\n", cl->format.blueMax);
 	rfbClientLog ("format.redMax       = %d\n", cl->format.redMax);
 	rfbClientLog ("format.greenMax     = %d\n", cl->format.greenMax);
+	rfbClientLog ("format.bigEndian    = %d\n", cl->format.bigEndian);
 }
 
 static rfbBool remmina_plugin_vnc_rfb_allocfb(rfbClient *cl)
