@@ -1800,9 +1800,9 @@ static void remmina_plugin_vnc_init(RemminaProtocolWidget *gp)
 /* Array of key/value pairs for color depths */
 static gpointer colordepth_list[] =
 {
-	"8",  N_("256 colors (8 bpp)"),
-	"16", N_("High color (16 bpp)"),
-	"32", N_("True color (32 bpp)"),
+	"8",  N_("256 colours (8 bpp)"),
+	"16", N_("High colour (16 bpp)"),
+	"32", N_("True colour (32 bpp)"),
 	NULL
 };
 
