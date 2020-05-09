@@ -380,7 +380,7 @@ static void remmina_plugin_vnc_update_quality(rfbClient *cl, gint quality)
 	switch (quality) {
 	case 9:
 		cl->appData.useBGR233 = 0;
-		cl->appData.encodingsString = "tight copyrect zlib hextile raw";
+		cl->appData.encodingsString = "copyrect zlib hextile raw";
 		cl->appData.compressLevel = 1;
 		cl->appData.qualityLevel = 9;
 		break;
@@ -411,8 +411,10 @@ static void remmina_plugin_vnc_update_colordepth(rfbClient *cl, gint colordepth)
 	TRACE_CALL(__func__);
 
 	cl->format.depth = colordepth;
-	cl->format.bigEndian = 0;
 	cl->appData.requestedDepth = colordepth;
+
+	cl->format.trueColour = 1;
+	cl->format.bigEndian = check_for_endianness()?FALSE:TRUE;
 
 	switch (colordepth) {
 	case 8:
@@ -426,15 +428,14 @@ static void remmina_plugin_vnc_update_colordepth(rfbClient *cl, gint colordepth)
 		cl->format.redShift = 0;
 		break;
 	case 16:
-		//cl->format.depth = 16;
+		cl->format.depth = 15;
 		cl->format.bitsPerPixel = 16;
-		cl->format.blueMax = 31;
-		cl->format.blueShift = 0;
-		cl->format.greenMax = 63;
-		cl->format.greenShift = 5;
-		cl->format.redMax = 31;
 		cl->format.redShift = 11;
-		cl->format.trueColour = 1;
+		cl->format.greenShift = 6;
+		cl->format.blueShift = 1;
+		cl->format.redMax = 31;
+		cl->format.greenMax = 31;
+		cl->format.blueMax = 31;
 		break;
 	case 32:
 	default:
@@ -446,10 +447,8 @@ static void remmina_plugin_vnc_update_colordepth(rfbClient *cl, gint colordepth)
 		cl->format.blueMax = 0xff;
 		cl->format.redMax = 0xff;
 		cl->format.greenMax = 0xff;
-		cl->format.trueColour = 1;
 		break;
 	}
-	cl->format.bigEndian = check_for_endianness()?TRUE:FALSE;
 
 	rfbClientLog ("colordepth          = %d\n", colordepth);
 	rfbClientLog ("format.depth        = %d\n", cl->format.depth);
@@ -1139,6 +1138,7 @@ static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 	rfbClientLog = rfbClientErr = remmina_plugin_vnc_rfb_output;
 
 	gint colordepth = remmina_plugin_service->file_get_int(remminafile, "colordepth", 32);
+	gint quality = remmina_plugin_service->file_get_int(remminafile, "quality", 9);
 
 	while (gpdata->connected) {
 		gpdata->auth_called = FALSE;
@@ -1150,6 +1150,7 @@ static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 			break;
 		}
 
+		/* int bitsPerSample,int samplesPerPixel, int bytesPerPixel */
 		switch (colordepth) {
 		case 8:
 			cl = rfbGetClient(2, 3, 1);
@@ -1215,8 +1216,16 @@ static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 		cl->appData.useRemoteCursor = (
 			remmina_plugin_service->file_get_int(remminafile, "showcursor", FALSE) ? FALSE : TRUE);
 
-		remmina_plugin_vnc_update_quality(cl, remmina_plugin_service->file_get_int(remminafile, "quality", 9));
+		remmina_plugin_vnc_update_quality(cl, quality);
 		remmina_plugin_vnc_update_colordepth(cl, colordepth);
+		if ((cl->format.depth == 8) && (quality == 9))
+			cl->appData.encodingsString = "copyrect zlib hextile raw";
+		else if ((cl->format.depth == 8) && (quality == 2))
+			cl->appData.encodingsString = "zrle ultra copyrect hextile zlib corre rre raw";
+		else if ((cl->format.depth == 8) && (quality == 1))
+			cl->appData.encodingsString = "zrle ultra copyrect hextile zlib corre rre raw";
+		else if ((cl->format.depth == 8) && (quality == 0))
+			cl->appData.encodingsString = "zrle ultra copyrect hextile zlib corre rre raw";
 		SetFormatAndEncodings(cl);
 
 		if (remmina_plugin_service->file_get_int(remminafile, "disableencryption", FALSE)) {
