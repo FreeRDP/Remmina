@@ -2027,7 +2027,7 @@ static const RemminaProtocolSetting remmina_rdp_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "disableclipboard",	    N_("Turn off clipboard sync"),			 TRUE,	NULL,	       NULL													      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "cert_ignore",	    N_("Ignore certificate"),				 TRUE,	NULL,	       NULL													      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "old-license",	    N_("Use the old license workflow"),				 TRUE,	NULL,	       N_("It disables CAL and hwId is set to 0")													      },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "disablepasswordstoring", N_("Turn off password storing"),			 TRUE,	NULL,	       NULL													      },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "disablepasswordstoring", N_("Forget passwords after use"),			 TRUE,	NULL,	       NULL													      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "console",		    N_("Attach to console (2003/2003 R2)"),		 TRUE,	NULL,	       NULL													      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "disable_fastpath",	    N_("Turn off fast-path"),				 TRUE,	NULL,	       NULL													      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "gateway_usage",	    N_("Server detection using Remote Desktop Gateway"), TRUE,	NULL,	       NULL													      },
