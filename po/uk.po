@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-04-14 22:18+0000\n"
-"PO-Revision-Date: 2020-05-09 14:08+0000\n"
+"PO-Revision-Date: 2020-05-09 14:57+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/remmina/"
 "remmina/uk/>\n"
@@ -19,8 +19,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
+"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 4.1-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:04+0000\n"
 
@@ -1065,7 +1065,7 @@ msgstr ""
 #: src/remmina_ssh.c:567
 #, c-format
 msgid "Could not check list of known SSH hosts. %s"
-msgstr "Не вдалось перевірити список відомих вузлів SSH. %s"
+msgstr "Не вдалося перевірити список відомих вузлів SSH. %s"
 
 #: src/remmina_ssh.c:576
 msgid "SSH password"
@@ -1073,7 +1073,7 @@ msgstr "Пароль SSH"
 
 #: src/remmina_ssh.c:583 src/remmina_ssh.c:621
 msgid "SSH private key passphrase"
-msgstr "Ключова фраза закритого ключа SSH"
+msgstr "Пароль до закритого ключа SSH"
 
 #: src/remmina_ssh.c:588
 msgid "SSH Kerberos/GSSAPI"
@@ -1081,11 +1081,11 @@ msgstr "SSH Kerberos/GSSAPI"
 
 #: src/remmina_ssh.c:618 src/remmina_ssh.c:641
 msgid "SSH tunnel credentials"
-msgstr "Дані SSH тунелю"
+msgstr "Реєстраційні дані SSH-тунелю"
 
 #: src/remmina_ssh.c:618 src/remmina_ssh.c:641 plugins/nx/nx_plugin.c:202
 msgid "SSH credentials"
-msgstr "Дані автентифікації SSH"
+msgstr "Реєстраційні дані SSH"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:789
@@ -1114,7 +1114,7 @@ msgstr "Не вдалося відкрити канал. %s"
 #: src/remmina_ssh.c:1254
 #, c-format
 msgid "Could not run %s on SSH server."
-msgstr "Не вдалося виконати „%s“ на SSH-сервері."
+msgstr "Не вдалося виконати «%s» на SSH-сервері."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1292 src/remmina_ssh.c:1313 src/remmina_ssh.c:1322
@@ -1286,7 +1286,7 @@ msgstr "Роздільна здатність"
 
 #: src/remmina_file_editor.c:540
 msgid "Use initial window size"
-msgstr "Використовувати вихідний розмір вікна"
+msgstr "Використовувати початковий розмір вікна"
 
 #: src/remmina_file_editor.c:544
 msgid "Use client resolution"
@@ -1302,7 +1302,7 @@ msgstr "Розкладка клавіатури"
 
 #: src/remmina_file_editor.c:839
 msgid "SSH Tunnel"
-msgstr "SSH Тунель"
+msgstr "SSH-тунель"
 
 #: src/remmina_file_editor.c:840
 msgid "Enable SSH tunnel"
@@ -1331,7 +1331,7 @@ msgstr "Агент SSH (автоматично)"
 
 #: src/remmina_file_editor.c:1006
 msgid "Turn on \"Autostart\" for this profile"
-msgstr "Ввімкнути \"Автозапуск\" для цього профілю"
+msgstr "Ввімкнути «Автозапуск» для цього профілю"
 
 #: src/remmina_file_editor.c:1014
 msgid "Basic"
@@ -1347,7 +1347,7 @@ msgstr "Автозапуск"
 
 #: src/remmina_file_editor.c:1248
 msgid "Default settings saved."
-msgstr "Стандартні налаштування збережено."
+msgstr "Типові налаштування збережено."
 
 #: src/remmina_file_editor.c:1318
 msgid "Remote Desktop Preference"
@@ -1378,7 +1378,7 @@ msgstr "Швидке з'єднання"
 #: src/remmina_file_editor.c:1483
 #, c-format
 msgid "Use '%s' as subgroup delimiter"
-msgstr "Використовувати „%s“ як роздільник підгруп"
+msgstr "Використовувати «%s» як роздільник підгруп"
 
 #: src/remmina_file_editor.c:1502
 msgid "Pre-command"
@@ -1391,7 +1391,7 @@ msgstr "Після-команда"
 #: src/remmina_file_editor.c:1585 src/remmina_file_editor.c:1603
 #, c-format
 msgid "Could not find the file \"%s\"."
-msgstr "Не можу знайти файл «%s»."
+msgstr "Не вдалося знайти файл «%s»."
 
 #: src/remmina_chat_window.c:178
 #, c-format
@@ -1419,7 +1419,7 @@ msgid ""
 "Warning: Running a command synchronously may cause Remmina not to respond.\n"
 "Do you really want to continue?"
 msgstr ""
-"Увага: Синхронне виконання команд може спричинити те, що Remmina не "
+"Увага: синхронне виконання команд може спричинити те, що Remmina не "
 "відповідатиме.\n"
 "Справді бажаєте продовжити?"
 
@@ -1433,7 +1433,7 @@ msgstr "Асинхронне виконання"
 
 #: plugins/www/www_plugin.c:97
 msgid "File downloaded"
-msgstr "Файл завантажено"
+msgstr "Файл отримано"
 
 #: plugins/www/www_plugin.c:550
 msgid "Enter WWW authentication credentials"
@@ -1441,7 +1441,7 @@ msgstr "Введіть дані автентифікації WWW"
 
 #: plugins/www/www_plugin.c:861
 msgid "URL"
-msgstr "URL"
+msgstr "Адреса"
 
 #: plugins/www/www_plugin.c:861
 msgid "http://address or https://address"
@@ -1449,7 +1449,7 @@ msgstr "http://адреса або https://адреса"
 
 #: plugins/www/www_plugin.c:878
 msgid "User agent"
-msgstr "Клієнт (User agent)"
+msgstr "Агент користувача"
 
 #: plugins/www/www_plugin.c:879
 msgid "Turn on Java support"
@@ -1461,7 +1461,7 @@ msgstr "Увімкнути плавне гортання"
 
 #: plugins/www/www_plugin.c:881
 msgid "Turn on spatial navigation"
-msgstr "Ввімкнути просторову навігацію"
+msgstr "Увімкнути просторову навігацію"
 
 #: plugins/www/www_plugin.c:882
 msgid "Turn on plugin support"
@@ -1473,7 +1473,7 @@ msgstr "Увімкнути підтримку WebGL"
 
 #: plugins/www/www_plugin.c:884
 msgid "Turn on HTML5 audio support"
-msgstr "Увімкнути підтримку HTML5 аудіо"
+msgstr "Увімкнути підтримку HTML5-аудіо"
 
 #: plugins/www/www_plugin.c:885
 msgid "Ignore TLS errors"
@@ -1505,16 +1505,16 @@ msgstr "Введіть пароль VNC"
 
 #: plugins/vnc/vnc_plugin.c:787
 msgid "Enter VNC authentication credentials"
-msgstr "Введіть дані авторизації VNC"
+msgstr "Введіть дані для розпізнавання у VNC"
 
 #: plugins/vnc/vnc_plugin.c:890
 msgid "Unable to connect to VNC server"
-msgstr "При з'єднанні з VNC-сервером виникла помилка"
+msgstr "Не вдалося встановити з'єднання із сервером VNC"
 
 #: plugins/vnc/vnc_plugin.c:891
 #, c-format
 msgid "Couldn’t convert '%s' to host address"
-msgstr "Неможливо визначити ІР адресу сервера '%s'"
+msgstr "Не вдалося перетворити «%s» на адресу вузла"
 
 #: plugins/vnc/vnc_plugin.c:892
 #, c-format
@@ -1536,15 +1536,15 @@ msgstr "Спробуйте знову після ввімкнення шифру
 
 #: plugins/vnc/vnc_plugin.c:1803
 msgid "256 colors (8 bpp)"
-msgstr "256 кольорів (8 bpp)"
+msgstr "256 кольорів (8 біт/піксель)"
 
 #: plugins/vnc/vnc_plugin.c:1804
 msgid "High color (16 bpp)"
-msgstr "Якісний колір (16dpp)"
+msgstr "Якісний колір (16 біт/піксель)"
 
 #: plugins/vnc/vnc_plugin.c:1805
 msgid "True color (32 bpp)"
-msgstr "Справжній колір (34 bpp)"
+msgstr "Справжній колір (34 біт/піксель)"
 
 #: plugins/vnc/vnc_plugin.c:1812 plugins/rdp/rdp_plugin.c:1922
 #: plugins/rdp/rdp_settings.c:269 plugins/nx/nx_plugin.c:701
@@ -1559,12 +1559,12 @@ msgstr "Середня"
 #: plugins/vnc/vnc_plugin.c:1814 plugins/rdp/rdp_plugin.c:1924
 #: plugins/rdp/rdp_settings.c:273 plugins/nx/nx_plugin.c:703
 msgid "Good"
-msgstr "Працездатна"
+msgstr "Добра"
 
 #: plugins/vnc/vnc_plugin.c:1815 plugins/rdp/rdp_plugin.c:1925
 #: plugins/rdp/rdp_settings.c:275 plugins/nx/nx_plugin.c:704
 msgid "Best (slowest)"
-msgstr "Найкраще (найповільніше)"
+msgstr "Найкраща (найповільніше)"
 
 #: plugins/vnc/vnc_plugin.c:1831
 msgid "Repeater"
