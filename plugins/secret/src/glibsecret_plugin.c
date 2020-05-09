@@ -185,7 +185,7 @@ gboolean remmina_plugin_glibsecret_init()
 static RemminaSecretPlugin remmina_plugin_glibsecret =
 { REMMINA_PLUGIN_TYPE_SECRET,
   "glibsecret",
-  N_("Secure password storing in the GNOME keyring"),
+  N_("Secured password storage in the GNOME keyring"),
   NULL,
   VERSION,
   2000,
