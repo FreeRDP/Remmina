@@ -1950,6 +1950,9 @@ static void rcw_toolbar_screenshot(GtkWidget *widget, RemminaConnectionWindow *c
 	// We will take a screenshot of the currently displayed RemminaProtocolWidget.
 	gp = REMMINA_PROTOCOL_WIDGET(cnnobj->proto);
 
+	gchar *denyclip = remmina_pref_get_value("deny_screenshot_clipboard");
+	g_debug ("deny_screenshot_clipboard is set to %s", denyclip);
+
 	GtkClipboard *c = gtk_clipboard_get(GDK_SELECTION_CLIPBOARD);
 	// Ask the plugin if it can give us a screenshot
 	if (remmina_protocol_widget_plugin_screenshot(gp, &rpsd)) {
@@ -1972,7 +1975,7 @@ static void rcw_toolbar_screenshot(GtkWidget *widget, RemminaConnectionWindow *c
 
 		srcsurface = cairo_image_surface_create_for_data(rpsd.buffer, cairo_format, width, height, stride);
 		// Transfer the PixBuf in the main clipboard selection
-		if (!remmina_pref.deny_screenshot_clipboard)
+		if (denyclip && (g_strcmp0 (denyclip, "true")))
 			gtk_clipboard_set_image(c, gdk_pixbuf_get_from_surface(
 							srcsurface, 0, 0, width, height));
 		surface = cairo_image_surface_create(CAIRO_FORMAT_RGB24, width, height);
@@ -2007,7 +2010,7 @@ static void rcw_toolbar_screenshot(GtkWidget *widget, RemminaConnectionWindow *c
 			g_print("gdk_pixbuf_get_from_window failed\n");
 
 		// Transfer the PixBuf in the main clipboard selection
-		if (!remmina_pref.deny_screenshot_clipboard)
+		if (denyclip && (g_strcmp0 (denyclip, "true")))
 			gtk_clipboard_set_image(c, screenshot);
 		// Prepare the destination Cairo surface.
 		surface = cairo_image_surface_create(CAIRO_FORMAT_RGB24, width, height);

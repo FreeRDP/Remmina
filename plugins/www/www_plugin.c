@@ -813,13 +813,6 @@ static void remmina_plugin_www_save_snapshot(GObject *object, GAsyncResult *resu
 	if (screenshot == NULL)
 		g_debug("WWW: gdk_pixbuf_get_from_surface failed");
 
-	// Transfer the PixBuf in the main clipboard selection
-	gchar *value = remmina_plugin_service->pref_get_value("deny_screenshot_clipboard");
-	if (value && value == FALSE) {
-		GtkClipboard *c = gtk_clipboard_get(GDK_SELECTION_CLIPBOARD);
-		gtk_clipboard_set_image(c, screenshot);
-	}
-
 	pngstr = g_string_new(g_strdup_printf("%s/%s.png",
 					      remmina_plugin_service->pref_get_value("screenshot_path"),
 					      remmina_plugin_service->pref_get_value("screenshot_name")));
