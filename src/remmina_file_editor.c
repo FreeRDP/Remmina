@@ -1513,7 +1513,7 @@ GtkWidget *remmina_file_editor_new_from_file(RemminaFile *remminafile)
 	priv->precommand_entry = widget;
 	cs = remmina_file_get_string(remminafile, "precommand");
 	gtk_entry_set_text(GTK_ENTRY(widget), cs ? cs : "");
-	gtk_entry_set_placeholder_text(GTK_ENTRY(widget), _("command %h %u %t %U %p %g --option");
+	gtk_entry_set_placeholder_text(GTK_ENTRY(widget), _("command %h %u %t %U %p %g --option"));
 	gtk_widget_set_tooltip_markup(widget, _(cmd_tips));
 
 	/* POST connection command */
@@ -1531,7 +1531,7 @@ GtkWidget *remmina_file_editor_new_from_file(RemminaFile *remminafile)
 	priv->postcommand_entry = widget;
 	cs = remmina_file_get_string(remminafile, "postcommand");
 	gtk_entry_set_text(GTK_ENTRY(widget), cs ? cs : "");
-	gtk_entry_set_placeholder_text(GTK_ENTRY(widget), _("/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g");
+	gtk_entry_set_placeholder_text(GTK_ENTRY(widget), _("/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"));
 	gtk_widget_set_tooltip_markup(widget, _(cmd_tips));
 
 	/* Create the "Preference" frame */
