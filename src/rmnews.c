@@ -170,7 +170,7 @@ static gboolean rmnews_dialog_deleted(GtkButton *btn, gpointer user_data)
 	TRACE_CALL(__func__);
 	gtk_widget_destroy(GTK_WIDGET(rmnews_news_dialog->dialog));
 	rmnews_news_dialog->dialog = NULL;
-	g_free(rmnews_news_dialog->dialog);
+	g_free(rmnews_news_dialog);
 	rmnews_news_dialog = NULL;
 
 	return FALSE;
