@@ -229,7 +229,7 @@ static UINT remmina_rdp_cliprdr_server_format_list(CliprdrClientContext* context
 	TRACE_CALL(__func__);
 
 	/* Called when a user do a "Copy" on the server: we collect all formats
-	 * the server send us and then setup the local clipboard with the appropiate
+	 * the server send us and then setup the local clipboard with the appropriate
 	 * targets to request server data */
 
 	RemminaPluginRdpUiObject* ui;

@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2020-04-14 22:18+0000\n"
-"PO-Revision-Date: 2020-04-28 01:11+0000\n"
+"POT-Creation-Date: 2020-05-08 07:41+0000\n"
+"PO-Revision-Date: 2020-04-15 21:14+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/remmina/remmina/"
 "sv/>\n"
@@ -74,7 +74,7 @@ msgstr "Ansluter till %s via SSH…"
 #: src/remmina_protocol_widget.c:1424 src/remmina_protocol_widget.c:1443
 #: src/remmina_ssh_plugin.c:920 src/remmina_sftp_plugin.c:291
 #: src/remmina_sftp_plugin.c:324 src/remmina_file_editor.c:927
-#: plugins/www/www_plugin.c:863 plugins/rdp/rdp_plugin.c:1982
+#: plugins/www/www_plugin.c:879 plugins/rdp/rdp_plugin.c:2014
 #: data/ui/remmina_unlock.glade:116 data/ui/remmina_mpc.glade:236
 #: data/ui/remmina_preferences.glade:1533
 msgid "Password"
@@ -132,7 +132,7 @@ msgid "Could not authenticate, attempting reconnection…"
 msgstr "Autentisering misslyckades. Försöker återansluta…"
 
 #: src/remmina_protocol_widget.c:1753 src/remmina_file_editor.c:408
-#: src/remmina_file_editor.c:883 data/ui/remmina_main.glade:565
+#: src/remmina_file_editor.c:883 data/ui/remmina_main.glade:571
 msgid "Server"
 msgstr "Server"
 
@@ -159,7 +159,7 @@ msgstr "Konfigurera tillgängliga upplösningar"
 msgid "Recent lists cleared."
 msgstr "Senaste listorna tömdes."
 
-#: src/remmina_pref_dialog.c:143 src/rcw.c:1875
+#: src/remmina_pref_dialog.c:143 src/rcw.c:1877
 #: data/ui/remmina_preferences.glade:249 data/ui/remmina_preferences.glade:259
 msgid "Keystrokes"
 msgstr "Tangenttryck"
@@ -222,7 +222,7 @@ msgstr "Publik nyckel (automatisk)"
 msgid "Kerberos (GSSAPI)"
 msgstr "Kerberos (GSSAPI)"
 
-#: src/remmina_ssh_plugin.c:999 data/ui/remmina_main.glade:267
+#: src/remmina_ssh_plugin.c:999 data/ui/remmina_main.glade:273
 msgid "Copy"
 msgstr "Kopiera"
 
@@ -248,8 +248,8 @@ msgstr "_Välj alt"
 
 #: src/remmina_ssh_plugin.c:1019 src/remmina_message_panel.c:330
 #: src/remmina_sftp_plugin.c:323 src/remmina_file_editor.c:918
-#: plugins/www/www_plugin.c:862 plugins/vnc/vnc_plugin.c:1832
-#: plugins/vnc/vnc_plugin.c:1852 plugins/rdp/rdp_plugin.c:1981
+#: plugins/www/www_plugin.c:878 plugins/vnc/vnc_plugin.c:1832
+#: plugins/vnc/vnc_plugin.c:1852 plugins/rdp/rdp_plugin.c:2013
 #: plugins/nx/nx_plugin.c:721 data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr "Användarnamn"
@@ -276,7 +276,7 @@ msgid "Password to unlock private key"
 msgstr "Lösenord for upplåsning av privat nyckel"
 
 #: src/remmina_ssh_plugin.c:1024 plugins/xdmcp/xdmcp_plugin.c:370
-#: plugins/rdp/rdp_plugin.c:2011 plugins/nx/nx_plugin.c:725
+#: plugins/rdp/rdp_plugin.c:2043 plugins/nx/nx_plugin.c:725
 msgid "Startup program"
 msgstr "Uppstartsprogram"
 
@@ -467,7 +467,7 @@ msgid "Go to parent folder"
 msgstr "Gå till föräldramapp"
 
 #: src/remmina_ftp_client.c:763 plugins/vnc/vnc_plugin.c:1889
-#: plugins/rdp/rdp_plugin.c:2047
+#: plugins/rdp/rdp_plugin.c:2081
 msgid "Refresh"
 msgstr "Uppdatera"
 
@@ -483,7 +483,7 @@ msgstr "Ladda ner från server"
 msgid "Upload to server"
 msgstr "Ladda upp till server"
 
-#: src/remmina_ftp_client.c:790 data/ui/remmina_main.glade:287
+#: src/remmina_ftp_client.c:790 data/ui/remmina_main.glade:293
 #, fuzzy
 msgid "Delete"
 msgstr "Radera"
@@ -505,8 +505,8 @@ msgstr "Storlek"
 msgid "User"
 msgstr "Användare"
 
-#: src/remmina_ftp_client.c:930 src/remmina_file_editor.c:1470
-#: data/ui/remmina_main.glade:551 data/ui/remmina_mpc.glade:115
+#: src/remmina_ftp_client.c:930 src/remmina_file_editor.c:1481
+#: data/ui/remmina_main.glade:557 data/ui/remmina_mpc.glade:115
 msgid "Group"
 msgstr "Grupp"
 
@@ -514,11 +514,11 @@ msgstr "Grupp"
 msgid "Permission"
 msgstr "Rättighet"
 
-#: src/remmina_ftp_client.c:988 plugins/rdp/rdp_plugin.c:1937
+#: src/remmina_ftp_client.c:988 plugins/rdp/rdp_plugin.c:1969
 msgid "Remote"
 msgstr "Fjärr"
 
-#: src/remmina_ftp_client.c:995 plugins/rdp/rdp_plugin.c:1933
+#: src/remmina_ftp_client.c:995 plugins/rdp/rdp_plugin.c:1965
 msgid "Local"
 msgstr "Lokal"
 
@@ -526,12 +526,12 @@ msgstr "Lokal"
 msgid "Progress"
 msgstr "Förlopp"
 
-#. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
+#. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:84
 msgid "Show 'About'"
 msgstr "Vis \"Om\""
 
-#. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
+#. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:86 src/remmina.c:88
 #, fuzzy
 msgid ""
@@ -540,7 +540,7 @@ msgstr ""
 "Koppla till skrivbord beskriven i fil (.remmina eller type som stöds av "
 "tillägg)"
 
-#. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
+#. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:90
 #, fuzzy
 msgid ""
@@ -550,65 +550,65 @@ msgstr ""
 "Redigera skrivbordstillknytning beskrivit i filen (.remmina eller typ "
 "stöttat av tillägg)"
 
-#. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
+#. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:93
 msgid "Start in kiosk mode"
 msgstr "Starta i kioskläge"
 
-#. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
+#. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:95
 msgid "Create new connection profile"
 msgstr "Skapa en ny anslutningsprofil"
 
-#. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
+#. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:97
 msgid "Show preferences"
 msgstr "Visa inställningar"
 
-#. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
+#. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:99
 msgid "Run a plugin"
 msgstr "Kör ett plugin"
 
-#. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
+#. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:101
 msgid "Quit"
 msgstr "Avsluta"
 
-#. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
+#. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:103
 #, fuzzy
 msgid "Use default server name (for --new)"
 msgstr "Använd förvald servernamn (för --new)"
 
-#. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
+#. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:105
 #, fuzzy
 msgid "Use default protocol (for --new)"
 msgstr "Använd förvald protokoll (för --new)"
 
-#. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
+#. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:107
 msgid "Start in tray"
 msgstr "Starta i systemkorgen"
 
-#. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
+#. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:109
 msgid "Show the application version"
 msgstr "Visa programversionen"
 
-#. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
+#. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:111
 msgid "Show version of the application and its plugins"
 msgstr "Visa version av programmet och tillhörande programtillegg"
 
-#. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
+#. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:113
 #, fuzzy
 msgid "Modify connection profile (requires --set-option)"
 msgstr "Ändra anslutningsprofil, (kräver --set-option)"
 
-#. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
+#. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:115
 #, fuzzy
 msgid "Set one or more profile settings, to be used with --update-profile"
@@ -618,7 +618,7 @@ msgstr "Sett en eller flera profilinställningar, for bruk med --update-profile"
 msgid "Open Main Window"
 msgstr "Öppna huvudfönstret"
 
-#: src/remmina_icon.c:144 data/ui/remmina_main.glade:343
+#: src/remmina_icon.c:144 data/ui/remmina_main.glade:349
 #, fuzzy
 msgid "_Preferences"
 msgstr "_Inställningar"
@@ -631,7 +631,7 @@ msgstr "_Om"
 msgid "Enable Service Discovery"
 msgstr "Aktivera tjänsteidentifiering"
 
-#: src/remmina_icon.c:172 data/ui/remmina_main.glade:494
+#: src/remmina_icon.c:172 data/ui/remmina_main.glade:500
 msgid "_Quit"
 msgstr "_Avslut"
 
@@ -647,7 +647,7 @@ msgstr "Anslut till fjärrskrivbord med panelmenyn"
 msgid "Remmina Remote Desktop Client"
 msgstr "Remmina - Klient för fjärrskrivbord"
 
-#: src/rcw.c:638
+#: src/rcw.c:640
 #, fuzzy, c-format
 msgid ""
 "Are you sure you want to close %i active connections in the current window?"
@@ -655,95 +655,95 @@ msgstr ""
 "Det finns %i aktiva anslutningar i aktuellt fönster. Är du säker på att du "
 "vill stänga?"
 
-#: src/rcw.c:1351
+#: src/rcw.c:1353
 msgid "Viewport fullscreen mode"
 msgstr "Vyport i helskärmsläge"
 
-#: src/rcw.c:1359 data/ui/remmina_preferences.glade:586
+#: src/rcw.c:1361 data/ui/remmina_preferences.glade:586
 msgid "Scrolled fullscreen"
 msgstr "Rullad fullskärmsvisning"
 
-#: src/rcw.c:1444
+#: src/rcw.c:1446
 msgid "Keep aspect ratio when scaled"
 msgstr "Behåll bildförhållande när det skalas"
 
-#: src/rcw.c:1452
+#: src/rcw.c:1454
 msgid "Fill client window when scaled"
 msgstr "Fyll i klientfönstret när det skalas"
 
-#: src/rcw.c:1991
+#: src/rcw.c:1993
 #, fuzzy
 msgid "Turn off scaling to avoid screenshot distortion."
 msgstr "Stäng av skalning for att undgå skärmdumpsförvrängning."
 
-#: src/rcw.c:2051 plugins/www/www_plugin.c:831
+#: src/rcw.c:2053 plugins/www/www_plugin.c:847
 msgid "Screenshot taken"
 msgstr "Skärmdump tagit"
 
-#: src/rcw.c:2125
+#: src/rcw.c:2130
 msgid "Resize the window to fit in remote resolution"
 msgstr "Justera fönstrets storlek för att passa upplösningen på fjärrdatorn"
 
-#: src/rcw.c:2136
+#: src/rcw.c:2141
 msgid "Toggle fullscreen mode"
 msgstr "Fullskärmsläge av/på"
 
-#: src/rcw.c:2181 data/ui/remmina_preferences.glade:930
+#: src/rcw.c:2186 data/ui/remmina_preferences.glade:930
 msgid "Switch tab pages"
 msgstr "Växla flikar"
 
-#: src/rcw.c:2195
+#: src/rcw.c:2200
 #, fuzzy
 msgid "Toggle dynamic resolution update"
 msgstr "Växla uppdatering av dynamisk upplösning"
 
-#: src/rcw.c:2205
+#: src/rcw.c:2210
 msgid "Toggle scaled mode"
 msgstr "Växla skalat läge"
 
-#: src/rcw.c:2240
+#: src/rcw.c:2245
 msgid "Grab all keyboard events"
 msgstr "Fånga alla tangentbordshändelser"
 
-#: src/rcw.c:2249
+#: src/rcw.c:2254
 msgid "Preferences"
 msgstr "Inställningar"
 
-#: src/rcw.c:2257 src/rcw.c:2258 data/ui/remmina_main.glade:297
+#: src/rcw.c:2262 src/rcw.c:2263 data/ui/remmina_main.glade:303
 msgid "Tools"
 msgstr "Verktyg"
 
-#: src/rcw.c:2270
+#: src/rcw.c:2275
 #, fuzzy
 msgid "Duplicate current connection"
 msgstr "Duplicera nuvarande tillkoppling"
 
-#: src/rcw.c:2281 data/ui/remmina_preferences.glade:1124
+#: src/rcw.c:2286 data/ui/remmina_preferences.glade:1124
 #: data/ui/remmina_preferences.glade:1134
 #, fuzzy
 msgid "Screenshot"
 msgstr "Skärmdump"
 
-#: src/rcw.c:2289 data/ui/remmina_preferences.glade:1033
+#: src/rcw.c:2294 data/ui/remmina_preferences.glade:1033
 msgid "Minimize window"
 msgstr "Minimera fönster"
 
-#: src/rcw.c:2298 data/ui/remmina_preferences.glade:1064
+#: src/rcw.c:2303 data/ui/remmina_preferences.glade:1064
 msgid "Disconnect"
 msgstr "Koppla ner"
 
-#: src/rcw.c:3820
+#: src/rcw.c:3847
 #, c-format
 msgid "The file \"%s\" is corrupted, unreadable, or could not be found."
 msgstr "Filen \"%s\" är skadat, oläsbar, eller hittades inte."
 
-#: src/rcw.c:3984
+#: src/rcw.c:4011
 #, fuzzy
 msgid "Warning: This plugin requires GtkSocket, but it’s not available."
 msgstr ""
 "Varning: Detta tillägget kräver, GtkSocket, men det finns inte tillgängligt."
 
-#: src/remmina_plugin_manager.c:70 src/remmina_file_editor.c:1488
+#: src/remmina_plugin_manager.c:70 src/remmina_file_editor.c:1499
 msgid "Protocol"
 msgstr "Protokoll"
 
@@ -767,7 +767,7 @@ msgstr "Inställning"
 msgid "Secret"
 msgstr "Hemlighet"
 
-#: src/remmina_plugin_manager.c:446 data/ui/remmina_main.glade:414
+#: src/remmina_plugin_manager.c:446 data/ui/remmina_main.glade:420
 msgid "Plugins"
 msgstr "Tilläggsprogram"
 
@@ -776,8 +776,8 @@ msgstr "Tilläggsprogram"
 msgid "_OK"
 msgstr "_OK"
 
-#: src/remmina_plugin_manager.c:464 src/remmina_file_editor.c:1445
-#: plugins/nx/nx_session_manager.c:204 data/ui/remmina_main.glade:529
+#: src/remmina_plugin_manager.c:464 src/remmina_file_editor.c:1456
+#: plugins/nx/nx_session_manager.c:204 data/ui/remmina_main.glade:535
 msgid "Name"
 msgstr "Namn"
 
@@ -814,11 +814,11 @@ msgstr ""
 "Kunde inte importera:\n"
 "%s"
 
-#: src/remmina_main.c:956 data/ui/remmina_main.glade:374
+#: src/remmina_main.c:956 data/ui/remmina_main.glade:380
 msgid "Import"
 msgstr "Importera"
 
-#: src/remmina_main.c:979 src/remmina_file_editor.c:1328
+#: src/remmina_main.c:979 src/remmina_file_editor.c:1339
 msgid "_Save"
 msgstr "_Spara"
 
@@ -935,17 +935,13 @@ msgstr "Skriv över"
 
 #: src/remmina_sftp_client.c:943 src/remmina_message_panel.c:457
 #: src/remmina_message_panel.c:629 src/remmina_file_editor.c:161
-#: src/remmina_file_editor.c:370 src/remmina_file_editor.c:1320
+#: src/remmina_file_editor.c:370 src/remmina_file_editor.c:1331
 #: plugins/spice/spice_plugin_file_transfer.c:84
 #: plugins/nx/nx_session_manager.c:156 data/ui/remmina_spinner.glade:8
 #: data/ui/remmina_spinner.glade:9 data/ui/remmina_key_chooser.glade:8
 #: data/ui/remmina_key_chooser.glade:9
 msgid "_Cancel"
 msgstr "_Avbryt"
-
-#: src/remmina_sftp_client.c:952
-msgid "Question"
-msgstr "Fråga"
 
 #: src/remmina_sftp_client.c:960
 msgid "The following file already exists in the target folder:"
@@ -971,7 +967,7 @@ msgstr "Ja"
 msgid "No"
 msgstr "Nej"
 
-#: src/remmina_message_panel.c:391 plugins/rdp/rdp_plugin.c:1983
+#: src/remmina_message_panel.c:391 plugins/rdp/rdp_plugin.c:2015
 #: data/ui/remmina_mpc.glade:172
 msgid "Domain"
 msgstr "Domän"
@@ -1364,7 +1360,7 @@ msgstr "Tunnel via loopback-adress"
 msgid "Same server at port %i"
 msgstr "Samma server på port %i"
 
-#: src/remmina_file_editor.c:902 plugins/rdp/rdp_plugin.c:2012
+#: src/remmina_file_editor.c:902 plugins/rdp/rdp_plugin.c:2044
 msgid "Startup path"
 msgstr "Uppstartssökväg"
 
@@ -1377,69 +1373,69 @@ msgstr "SSH-autentisering"
 msgid "SSH agent (automatic)"
 msgstr "SSH-agent (automatisk)"
 
-#: src/remmina_file_editor.c:1006
+#: src/remmina_file_editor.c:1017
 #, fuzzy
 msgid "Turn on \"Autostart\" for this profile"
 msgstr "Aktivera autostart för denna profilen"
 
-#: src/remmina_file_editor.c:1014
+#: src/remmina_file_editor.c:1025
 msgid "Basic"
 msgstr "Grundläggande"
 
-#: src/remmina_file_editor.c:1020
+#: src/remmina_file_editor.c:1031
 msgid "Advanced"
 msgstr "Avancerad"
 
-#: src/remmina_file_editor.c:1025
+#: src/remmina_file_editor.c:1036
 msgid "Autostart"
 msgstr "Automatiskt start"
 
-#: src/remmina_file_editor.c:1248
+#: src/remmina_file_editor.c:1259
 msgid "Default settings saved."
 msgstr "Standardinställningar sparade."
 
-#: src/remmina_file_editor.c:1318
+#: src/remmina_file_editor.c:1329
 msgid "Remote Desktop Preference"
 msgstr "Inställningar för fjärrskrivbord"
 
-#: src/remmina_file_editor.c:1324
+#: src/remmina_file_editor.c:1335
 msgid "Save as Default"
 msgstr "Spara som förval"
 
-#: src/remmina_file_editor.c:1325
+#: src/remmina_file_editor.c:1336
 #, fuzzy
 msgid "Use the current settings as the default for all new connection profiles"
 msgstr ""
 "Använd nuvarande inställningar som förval for alla nya anslutningsprofiler"
 
-#: src/remmina_file_editor.c:1333 data/ui/remmina_main.glade:250
+#: src/remmina_file_editor.c:1344 data/ui/remmina_main.glade:256
 msgid "Connect"
 msgstr "Ansluta"
 
-#: src/remmina_file_editor.c:1336
+#: src/remmina_file_editor.c:1347
 msgid "_Save and Connect"
 msgstr "_Spara och anslut"
 
-#: src/remmina_file_editor.c:1459
+#: src/remmina_file_editor.c:1470
 msgid "Quick Connect"
 msgstr "Snabbanslutning"
 
-#: src/remmina_file_editor.c:1483
+#: src/remmina_file_editor.c:1494
 #, c-format
 msgid "Use '%s' as subgroup delimiter"
 msgstr "Använd '%s' som avgränsare för undergrupper"
 
-#: src/remmina_file_editor.c:1502
+#: src/remmina_file_editor.c:1513
 #, fuzzy
 msgid "Pre-command"
 msgstr "Förhandskommando"
 
-#: src/remmina_file_editor.c:1520
+#: src/remmina_file_editor.c:1531
 #, fuzzy
 msgid "Post-command"
 msgstr "Efterföljande kommando"
 
-#: src/remmina_file_editor.c:1585 src/remmina_file_editor.c:1603
+#: src/remmina_file_editor.c:1596 src/remmina_file_editor.c:1614
 #, fuzzy, c-format
 msgid "Could not find the file \"%s\"."
 msgstr "Fann inte filen \"%s\"."
@@ -1483,7 +1479,7 @@ msgstr "Kommando"
 
 #: plugins/exec/exec_plugin.c:265
 #, fuzzy
-msgid "Asynchrounous execution"
+msgid "Asynchronous execution"
 msgstr "Asynkron körning"
 
 #: plugins/www/www_plugin.c:97
@@ -1491,64 +1487,72 @@ msgstr "Asynkron körning"
 msgid "File downloaded"
 msgstr "Fil nerladdad"
 
-#: plugins/www/www_plugin.c:550
+#: plugins/www/www_plugin.c:566
 #, fuzzy
 msgid "Enter WWW authentication credentials"
 msgstr "Skriv in WWW-identitetbekräftelses uppgifter"
 
-#: plugins/www/www_plugin.c:861
+#: plugins/www/www_plugin.c:877
 #, fuzzy
 msgid "URL"
 msgstr "Internetadress"
 
-#: plugins/www/www_plugin.c:861
+#: plugins/www/www_plugin.c:877
 msgid "http://address or https://address"
 msgstr "http://adress eller https://adress"
 
-#: plugins/www/www_plugin.c:878
+#: plugins/www/www_plugin.c:894
 #, fuzzy
 msgid "User agent"
 msgstr "Använderagent"
 
-#: plugins/www/www_plugin.c:879
+#: plugins/www/www_plugin.c:895
+msgid "Proxy URL"
+msgstr ""
+
+#: plugins/www/www_plugin.c:895
+msgid "Ex. https://myproxy.com, socks://mysocks:1080"
+msgstr ""
+
+#: plugins/www/www_plugin.c:896
 #, fuzzy
 msgid "Turn on Java support"
 msgstr "Aktivera Java-stöd"
 
-#: plugins/www/www_plugin.c:880
+#: plugins/www/www_plugin.c:897
 msgid "Turn on smooth scrolling"
 msgstr "Aktivera mjuk rullning"
 
-#: plugins/www/www_plugin.c:881
+#: plugins/www/www_plugin.c:898
 #, fuzzy
 msgid "Turn on spatial navigation"
 msgstr "Aktivera rumnavigation"
 
-#: plugins/www/www_plugin.c:882
+#: plugins/www/www_plugin.c:899
 #, fuzzy
 msgid "Turn on plugin support"
 msgstr "Aktivera stöd for tillägg"
 
-#: plugins/www/www_plugin.c:883
+#: plugins/www/www_plugin.c:900
 msgid "Turn on WebGL support"
 msgstr "Aktivera WebGL-stöd"
 
-#: plugins/www/www_plugin.c:884
+#: plugins/www/www_plugin.c:901
 #, fuzzy
 msgid "Turn on HTML5 audio support"
 msgstr "Aktivera stöd for HTML5-ljud"
 
-#: plugins/www/www_plugin.c:885
+#: plugins/www/www_plugin.c:902
 #, fuzzy
 msgid "Ignore TLS errors"
 msgstr "Ignorera TLS-fel"
 
-#: plugins/www/www_plugin.c:886
+#: plugins/www/www_plugin.c:903
 #, fuzzy
 msgid "No password storage"
 msgstr "Inget lösenord lagras"
 
-#: plugins/www/www_plugin.c:888
+#: plugins/www/www_plugin.c:905
 msgid "Turn on Web Inspector"
 msgstr "Aktivera nätinspektör"
 
@@ -1605,8 +1609,9 @@ msgid "Please retry after turning on encryption for this profile."
 msgstr "Prova aktivera kryptering for denna profilen."
 
 #: plugins/vnc/vnc_plugin.c:1803
-msgid "256 colors (8 bpp)"
-msgstr "256 färger (8 bpp)"
+#, fuzzy
+msgid "True color (32 bpp)"
+msgstr "Sannolika färger (32 bpp)"
 
 #: plugins/vnc/vnc_plugin.c:1804
 #, fuzzy
@@ -1614,29 +1619,28 @@ msgid "High color (16 bpp)"
 msgstr "Högt färgspektrum (16 bpp)"
 
 #: plugins/vnc/vnc_plugin.c:1805
-#, fuzzy
-msgid "True color (32 bpp)"
-msgstr "Sannolika färger (32 bpp)"
+msgid "256 colors (8 bpp)"
+msgstr "256 färger (8 bpp)"
 
-#: plugins/vnc/vnc_plugin.c:1812 plugins/rdp/rdp_plugin.c:1922
-#: plugins/rdp/rdp_settings.c:269 plugins/nx/nx_plugin.c:701
-msgid "Poor (fastest)"
-msgstr "Låg (snabbast)"
+#: plugins/vnc/vnc_plugin.c:1812 plugins/rdp/rdp_plugin.c:1957
+#: plugins/rdp/rdp_settings.c:275 plugins/nx/nx_plugin.c:704
+msgid "Best (slowest)"
+msgstr "Bäst (långsammast)"
 
-#: plugins/vnc/vnc_plugin.c:1813 plugins/rdp/rdp_plugin.c:1923
-#: plugins/rdp/rdp_settings.c:271 plugins/nx/nx_plugin.c:702
-msgid "Medium"
-msgstr "Medel"
-
-#: plugins/vnc/vnc_plugin.c:1814 plugins/rdp/rdp_plugin.c:1924
+#: plugins/vnc/vnc_plugin.c:1813 plugins/rdp/rdp_plugin.c:1956
 #: plugins/rdp/rdp_settings.c:273 plugins/nx/nx_plugin.c:703
 msgid "Good"
 msgstr "Bra"
 
-#: plugins/vnc/vnc_plugin.c:1815 plugins/rdp/rdp_plugin.c:1925
-#: plugins/rdp/rdp_settings.c:275 plugins/nx/nx_plugin.c:704
-msgid "Best (slowest)"
-msgstr "Bäst (långsammast)"
+#: plugins/vnc/vnc_plugin.c:1814 plugins/rdp/rdp_plugin.c:1955
+#: plugins/rdp/rdp_settings.c:271 plugins/nx/nx_plugin.c:702
+msgid "Medium"
+msgstr "Medel"
+
+#: plugins/vnc/vnc_plugin.c:1815 plugins/rdp/rdp_plugin.c:1954
+#: plugins/rdp/rdp_settings.c:269 plugins/nx/nx_plugin.c:701
+msgid "Poor (fastest)"
+msgstr "Låg (snabbast)"
 
 #: plugins/vnc/vnc_plugin.c:1831
 #, fuzzy
@@ -1648,7 +1652,7 @@ msgid "Color depth"
 msgstr "Färgdjup"
 
 #: plugins/vnc/vnc_plugin.c:1835 plugins/vnc/vnc_plugin.c:1855
-#: plugins/rdp/rdp_plugin.c:2001 plugins/nx/nx_plugin.c:724
+#: plugins/rdp/rdp_plugin.c:2033 plugins/nx/nx_plugin.c:724
 msgid "Quality"
 msgstr "Kvalitet"
 
@@ -1688,7 +1692,7 @@ msgid "Open Chat…"
 msgstr "Öppna chatt…"
 
 #: plugins/vnc/vnc_plugin.c:1891 plugins/spice/spice_plugin.c:472
-#: plugins/xdmcp/xdmcp_plugin.c:381 plugins/rdp/rdp_plugin.c:2050
+#: plugins/xdmcp/xdmcp_plugin.c:381 plugins/rdp/rdp_plugin.c:2084
 #: plugins/nx/nx_plugin.c:751
 #, fuzzy
 msgid "Send Ctrl+Alt+Delete"
@@ -1747,7 +1751,7 @@ msgstr "Använd TLS-kryptering"
 msgid "Server CA certificate"
 msgstr "Serverns CA-certifikat"
 
-#: plugins/spice/spice_plugin.c:440 plugins/rdp/rdp_plugin.c:1986
+#: plugins/spice/spice_plugin.c:440 plugins/rdp/rdp_plugin.c:2018
 msgid "Share folder"
 msgstr "Dela mapp"
 
@@ -1761,7 +1765,7 @@ msgstr "Aktivera ljudkanal"
 msgid "Resize guest to match window size"
 msgstr "Anpassa gäst till fönsterstorlek"
 
-#: plugins/spice/spice_plugin.c:459 plugins/rdp/rdp_plugin.c:2025
+#: plugins/spice/spice_plugin.c:459 plugins/rdp/rdp_plugin.c:2058
 #, fuzzy
 msgid "Share smartcard"
 msgstr "Del smartkort"
@@ -1831,7 +1835,7 @@ msgstr "Högt färgspektrum (16 bit)"
 msgid "True colour (24 bit)"
 msgstr "Sannolika färger (24 bit)"
 
-#: plugins/xdmcp/xdmcp_plugin.c:369 plugins/rdp/rdp_plugin.c:1985
+#: plugins/xdmcp/xdmcp_plugin.c:369 plugins/rdp/rdp_plugin.c:2017
 #, fuzzy
 msgid "Colour depth"
 msgstr "Färgdjup"
@@ -1873,17 +1877,17 @@ msgstr "Lösrivit fönster"
 msgid "Remmina simple terminal"
 msgstr "Enkel Remmina-terminal"
 
-#: plugins/rdp/rdp_plugin.c:578
+#: plugins/rdp/rdp_plugin.c:580
 #, fuzzy
 msgid "Enter RDP authentication credentials"
 msgstr "Skriv i RDP-identitetsbekfäftelsesdetaljer"
 
-#: plugins/rdp/rdp_plugin.c:640
+#: plugins/rdp/rdp_plugin.c:642
 #, fuzzy
 msgid "Enter RDP gateway authentication credentials"
 msgstr "Skriv i identitetsbekfäftelsesdetaljer for RDP-gateway"
 
-#: plugins/rdp/rdp_plugin.c:1496
+#: plugins/rdp/rdp_plugin.c:1528
 #, fuzzy, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
@@ -1892,7 +1896,7 @@ msgstr ""
 "Fann inte adress till RDP-servern \"%s\".\n"
 "Konto utelåst."
 
-#: plugins/rdp/rdp_plugin.c:1503
+#: plugins/rdp/rdp_plugin.c:1535
 #, fuzzy, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
@@ -1901,7 +1905,7 @@ msgstr ""
 "Fick inte tillgång til RDP-servern \"%s\".\n"
 "Konto utlöpt."
 
-#: plugins/rdp/rdp_plugin.c:1510
+#: plugins/rdp/rdp_plugin.c:1542
 #, fuzzy, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
@@ -1910,7 +1914,7 @@ msgstr ""
 "Fick inte tillgång till RDP-servern \"%s\".\n"
 "Lösenordet har löpt ut."
 
-#: plugins/rdp/rdp_plugin.c:1517
+#: plugins/rdp/rdp_plugin.c:1549
 #, fuzzy, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
@@ -1919,7 +1923,7 @@ msgstr ""
 "Fick inte tillgång till RDP-servern \"%s\".\n"
 "Konto avstängd."
 
-#: plugins/rdp/rdp_plugin.c:1523
+#: plugins/rdp/rdp_plugin.c:1555
 #, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
@@ -1928,7 +1932,7 @@ msgstr ""
 "Fick inte tilgång til RDP-servern \"%s\".\n"
 "Manglar användarrättigheter."
 
-#: plugins/rdp/rdp_plugin.c:1531
+#: plugins/rdp/rdp_plugin.c:1563
 #, fuzzy, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
@@ -1937,7 +1941,7 @@ msgstr ""
 "Fann inte adress til RDP-servern %s.\n"
 "Konto begränsad."
 
-#: plugins/rdp/rdp_plugin.c:1539
+#: plugins/rdp/rdp_plugin.c:1571
 #, fuzzy, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
@@ -1946,17 +1950,17 @@ msgstr ""
 "Fick inte tilgång til RDP-servern \"%s\".\n"
 "Ändra användarlösenord innan du anslutar."
 
-#: plugins/rdp/rdp_plugin.c:1544
+#: plugins/rdp/rdp_plugin.c:1576
 #, fuzzy, c-format
 msgid "Lost connection to the RDP server \"%s\"."
 msgstr "Tappade kopplingen til RDP-servern \"%s\"."
 
-#: plugins/rdp/rdp_plugin.c:1547
+#: plugins/rdp/rdp_plugin.c:1579
 #, fuzzy, c-format
 msgid "Could not find the address for the RDP server \"%s\"."
 msgstr "Fann inte adress til RDP-servern %s."
 
-#: plugins/rdp/rdp_plugin.c:1551
+#: plugins/rdp/rdp_plugin.c:1583
 #, fuzzy, c-format
 msgid ""
 "Could not connect to the RDP server \"%s\" via TLS. Check that client and "
@@ -1965,22 +1969,22 @@ msgstr ""
 "Misslyckades ansluta til RDP-servern \"%s\" via TLS. Kolla att klienten och "
 "servern har stöd for en fälles TLS-versjon."
 
-#: plugins/rdp/rdp_plugin.c:1554
+#: plugins/rdp/rdp_plugin.c:1586
 #, fuzzy, c-format
 msgid "Unable to establish a connection to the RDP server \"%s\"."
 msgstr "Kunde inte etablera anslutning til RDP-server %s."
 
-#: plugins/rdp/rdp_plugin.c:1562
+#: plugins/rdp/rdp_plugin.c:1594
 #, c-format
 msgid "Cannot connect to the RDP server \"%s\"."
 msgstr "Kunde inte koppla upp mot RDP-servern \"%s\"."
 
-#: plugins/rdp/rdp_plugin.c:1565
+#: plugins/rdp/rdp_plugin.c:1597
 #, fuzzy
 msgid "Could not start libfreerdp-gdi."
 msgstr "Kunde inte starta pthread."
 
-#: plugins/rdp/rdp_plugin.c:1568
+#: plugins/rdp/rdp_plugin.c:1600
 #, fuzzy, c-format
 msgid ""
 "You requested a H.264 GFX mode for the server \"%s\", but your libfreerdp "
@@ -1989,12 +1993,12 @@ msgstr ""
 "Du begärde ett H.264 GFX-läge för servern \"%s\", men ditt libfreerdp stöder "
 "inte H.264. Använd en färgdjupsinställning som inte är AVC."
 
-#: plugins/rdp/rdp_plugin.c:1575
+#: plugins/rdp/rdp_plugin.c:1607
 #, fuzzy, c-format
 msgid "The \"%s\" server refused the connection."
 msgstr "\"%s\"-tjänaren avslog tillknytningen."
 
-#: plugins/rdp/rdp_plugin.c:1580
+#: plugins/rdp/rdp_plugin.c:1612
 #, fuzzy, c-format
 msgid ""
 "The Remote Desktop Gateway \"%s\" denied the user \"%s\\%s\" access due to "
@@ -2003,78 +2007,77 @@ msgstr ""
 "Fjärrskrivbordskörsporten \"%s\" bortviftade användaren \"%s\\%s\" som följe "
 "av politiksbefogade."
 
-#: plugins/rdp/rdp_plugin.c:1590
+#: plugins/rdp/rdp_plugin.c:1622
 #, fuzzy, c-format
 msgid "Cannot connect to the \"%s\" RDP server."
 msgstr "Kunde inte koppla upp mot RDP-servern \"%s\"."
 
-#: plugins/rdp/rdp_plugin.c:1907
+#: plugins/rdp/rdp_plugin.c:1939
 msgid "GFX AVC444 (32 bpp)"
 msgstr "GFX AVC444 (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:1908
+#: plugins/rdp/rdp_plugin.c:1940
 msgid "GFX AVC420 (32 bpp)"
 msgstr "GFX AVC420 (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:1909
+#: plugins/rdp/rdp_plugin.c:1941
 msgid "GFX RFX (32 bpp)"
 msgstr "GFX RFX (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:1910
+#: plugins/rdp/rdp_plugin.c:1942
 msgid "RemoteFX (32 bpp)"
 msgstr "RemoteFX (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:1911
+#: plugins/rdp/rdp_plugin.c:1943
 #, fuzzy
 msgid "True colour (32 bpp)"
 msgstr "256 färger (8 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:1912
+#: plugins/rdp/rdp_plugin.c:1944
 #, fuzzy
 msgid "True colour (24 bpp)"
 msgstr "Sannolika färger (24 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:1913
+#: plugins/rdp/rdp_plugin.c:1945
 #, fuzzy
 msgid "High colour (16 bpp)"
 msgstr "Högt färgspektrum (16 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:1914
+#: plugins/rdp/rdp_plugin.c:1946
 #, fuzzy
 msgid "High colour (15 bpp)"
 msgstr "Högt färgspektrum (15 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:1915
+#: plugins/rdp/rdp_plugin.c:1947
 #, fuzzy
 msgid "256 colours (8 bpp)"
 msgstr "256 färger (8 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:1932 data/ui/remmina_preferences.glade:658
+#: plugins/rdp/rdp_plugin.c:1964 data/ui/remmina_preferences.glade:658
 msgid "Off"
 msgstr "Av"
 
-#: plugins/rdp/rdp_plugin.c:1934
+#: plugins/rdp/rdp_plugin.c:1966
 msgid "Local - low quality"
 msgstr "Lokal - låg kvalitet"
 
-#: plugins/rdp/rdp_plugin.c:1935
+#: plugins/rdp/rdp_plugin.c:1967
 msgid "Local - medium quality"
 msgstr "Lokal - medelkvalitet"
 
-#: plugins/rdp/rdp_plugin.c:1936
+#: plugins/rdp/rdp_plugin.c:1968
 msgid "Local - high quality"
 msgstr "Lokal - hög kvalitet"
 
-#: plugins/rdp/rdp_plugin.c:1944
+#: plugins/rdp/rdp_plugin.c:1976
 msgid "Negotiate"
 msgstr "Förhandla"
 
-#: plugins/rdp/rdp_plugin.c:1960
+#: plugins/rdp/rdp_plugin.c:1992
 msgid "2600 (Windows XP),7601 (Windows Vista/7),9600 (Windows 8 and newer)"
 msgstr "2600 (Windows XP),7601 (Windows Vista/7),9600 (Windows 8 och nyare)"
 
-#: plugins/rdp/rdp_plugin.c:1963
-#, fuzzy
+#: plugins/rdp/rdp_plugin.c:1995
 msgid ""
 "Used i.a. by Terminal services in SmartCard channel to distinguish client "
 "capabilities:\n"
@@ -2091,57 +2094,57 @@ msgstr ""
 "  • >= 7065: Windows 8 och nyare: SCardGetReaderIcon(), "
 "SCardGetDeviceTypeId()"
 
-#: plugins/rdp/rdp_plugin.c:2002
+#: plugins/rdp/rdp_plugin.c:2034
 msgid "Sound"
 msgstr "Ljud"
 
-#: plugins/rdp/rdp_plugin.c:2003 data/ui/remmina_preferences.glade:1602
+#: plugins/rdp/rdp_plugin.c:2035 data/ui/remmina_preferences.glade:1602
 msgid "Security"
 msgstr "Säkerhet"
 
-#: plugins/rdp/rdp_plugin.c:2004
+#: plugins/rdp/rdp_plugin.c:2036
 msgid "Gateway transport type"
 msgstr "Körsportstransporttyp"
 
-#: plugins/rdp/rdp_plugin.c:2005
+#: plugins/rdp/rdp_plugin.c:2037
 #, fuzzy
 msgid "Remote Desktop Gateway server"
 msgstr "Server for fjärrskrivbordskörsport"
 
-#: plugins/rdp/rdp_plugin.c:2006
+#: plugins/rdp/rdp_plugin.c:2038
 #, fuzzy
 msgid "Remote Desktop Gateway username"
 msgstr "Användarnamn for fjärrskrivbord"
 
-#: plugins/rdp/rdp_plugin.c:2007
+#: plugins/rdp/rdp_plugin.c:2039
 #, fuzzy
 msgid "Remote Desktop Gateway password"
 msgstr "Lösenord för fjärrskrivbordskörsport"
 
-#: plugins/rdp/rdp_plugin.c:2008
+#: plugins/rdp/rdp_plugin.c:2040
 msgid "Remote Desktop Gateway domain"
 msgstr "Domän för fjärrskrivbordskörsport"
 
-#: plugins/rdp/rdp_plugin.c:2009
+#: plugins/rdp/rdp_plugin.c:2041
 msgid "Client name"
 msgstr "Klientnamn"
 
-#: plugins/rdp/rdp_plugin.c:2010
+#: plugins/rdp/rdp_plugin.c:2042
 #, fuzzy
 msgid "Client build"
 msgstr "Klientnamn"
 
-#: plugins/rdp/rdp_plugin.c:2013
+#: plugins/rdp/rdp_plugin.c:2045
 #, fuzzy
 msgid "Load balance info"
 msgstr "Lastbalanseringsinfo"
 
-#: plugins/rdp/rdp_plugin.c:2014
+#: plugins/rdp/rdp_plugin.c:2046
 #, fuzzy
 msgid "Override printer drivers"
 msgstr "Överstyra skrivardrivrytiner"
 
-#: plugins/rdp/rdp_plugin.c:2014
+#: plugins/rdp/rdp_plugin.c:2046
 msgid ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
@@ -2149,143 +2152,155 @@ msgstr ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
 
-#: plugins/rdp/rdp_plugin.c:2015
+#: plugins/rdp/rdp_plugin.c:2047
 #, fuzzy
 msgid "Local serial name"
 msgstr "Lokalt seriellnamn"
 
-#: plugins/rdp/rdp_plugin.c:2015
+#: plugins/rdp/rdp_plugin.c:2047
 msgid "COM1, COM2, etc."
 msgstr "COM1, COM2, osv."
 
-#: plugins/rdp/rdp_plugin.c:2016
+#: plugins/rdp/rdp_plugin.c:2048
 #, fuzzy
 msgid "Local serial driver"
 msgstr "Lokal serielldrivrutin"
 
-#: plugins/rdp/rdp_plugin.c:2016
+#: plugins/rdp/rdp_plugin.c:2048
 #, fuzzy
 msgid "Serial"
 msgstr "Seriell"
 
-#: plugins/rdp/rdp_plugin.c:2017
+#: plugins/rdp/rdp_plugin.c:2049
 #, fuzzy
 msgid "Local serial path"
 msgstr "Lokalt seriellspår"
 
-#: plugins/rdp/rdp_plugin.c:2017
+#: plugins/rdp/rdp_plugin.c:2049
 msgid "/dev/ttyS0, /dev/ttyS1, etc."
 msgstr "/dev/ttyS0, /dev/ttyS1, etc."
 
-#: plugins/rdp/rdp_plugin.c:2018
+#: plugins/rdp/rdp_plugin.c:2050
 #, fuzzy
 msgid "Local parallel name"
 msgstr "Lokalt parallellnamn"
 
-#: plugins/rdp/rdp_plugin.c:2019
+#: plugins/rdp/rdp_plugin.c:2051
 #, fuzzy
 msgid "Local parallel device"
 msgstr "Lokal parallellenhet"
 
-#: plugins/rdp/rdp_plugin.c:2020
+#: plugins/rdp/rdp_plugin.c:2052
 #, fuzzy
 msgid "Smartcard name"
 msgstr "Del smartkort"
 
-#: plugins/rdp/rdp_plugin.c:2021
+#: plugins/rdp/rdp_plugin.c:2053
+msgid "Prefer IPv6 AAA record over IPv4 A record"
+msgstr ""
+
+#: plugins/rdp/rdp_plugin.c:2054
 #, fuzzy
 msgid "Share printers"
 msgstr "Dela skrivare"
 
-#: plugins/rdp/rdp_plugin.c:2022
+#: plugins/rdp/rdp_plugin.c:2055
 #, fuzzy
 msgid "Share serial ports"
 msgstr "Dela seriellportar"
 
-#: plugins/rdp/rdp_plugin.c:2023
+#: plugins/rdp/rdp_plugin.c:2056
 msgid "(SELinux) permissive mode for serial ports"
 msgstr "(SELinux) tillförlitlig modus for seriellportar"
 
-#: plugins/rdp/rdp_plugin.c:2024
+#: plugins/rdp/rdp_plugin.c:2057
 msgid "Share parallel ports"
 msgstr "Dela parallellporter"
 
-#: plugins/rdp/rdp_plugin.c:2026
+#: plugins/rdp/rdp_plugin.c:2059
 #, fuzzy
 msgid "Redirect local microphone"
 msgstr "Vidarebefordra lokal mikrofon"
 
-#: plugins/rdp/rdp_plugin.c:2027
+#: plugins/rdp/rdp_plugin.c:2060
 #, fuzzy
 msgid "Turn off clipboard sync"
 msgstr "Inaktivera synkronisering av urklipp"
 
-#: plugins/rdp/rdp_plugin.c:2028
+#: plugins/rdp/rdp_plugin.c:2061
 #, fuzzy
 msgid "Ignore certificate"
 msgstr "Ignorera certifikat"
 
-#: plugins/rdp/rdp_plugin.c:2029
+#: plugins/rdp/rdp_plugin.c:2062
 msgid "Use the old license workflow"
 msgstr "Använd arbetesflöd frän gammal licens"
 
-#: plugins/rdp/rdp_plugin.c:2029
+#: plugins/rdp/rdp_plugin.c:2062
 #, fuzzy
 msgid "It disables CAL and hwId is set to 0"
 msgstr "Det stänger av CAL, och hwld sättas till 0"
 
-#: plugins/rdp/rdp_plugin.c:2030
+#: plugins/rdp/rdp_plugin.c:2063
 #, fuzzy
 msgid "Turn off password storing"
 msgstr "Inget lösenord lagras"
 
-#: plugins/rdp/rdp_plugin.c:2031
+#: plugins/rdp/rdp_plugin.c:2064
 msgid "Attach to console (2003/2003 R2)"
 msgstr "Anslut till konsoll (Windows 2003 / 2003 R2)"
 
-#: plugins/rdp/rdp_plugin.c:2032
+#: plugins/rdp/rdp_plugin.c:2065
 #, fuzzy
 msgid "Turn off fast-path"
 msgstr "Stäng av fast-path"
 
-#: plugins/rdp/rdp_plugin.c:2033
+#: plugins/rdp/rdp_plugin.c:2066
 #, fuzzy
 msgid "Server detection using Remote Desktop Gateway"
 msgstr "Serverdetektering med fjärrskrivbordskörsport"
 
-#: plugins/rdp/rdp_plugin.c:2035
+#: plugins/rdp/rdp_plugin.c:2068
 #, fuzzy
 msgid "Use system proxy settings"
 msgstr "Använd systemproxyinställningar"
 
-#: plugins/rdp/rdp_plugin.c:2037
+#: plugins/rdp/rdp_plugin.c:2070
 msgid "Turn off automatic reconnection"
 msgstr "Stäng av automatisk återanslutning"
 
-#: plugins/rdp/rdp_plugin.c:2038
+#: plugins/rdp/rdp_plugin.c:2071
 msgid "Relax order checks"
 msgstr "Avslappad kontroll av ordning"
 
-#: plugins/rdp/rdp_plugin.c:2039
+#: plugins/rdp/rdp_plugin.c:2072
 #, fuzzy
 msgid "Glyph cache"
 msgstr "Tekn-cache"
 
-#: plugins/rdp/rdp_plugin.c:2063
+#: plugins/rdp/rdp_plugin.c:2073
+msgid "Enable multitransport protocol (UDP)"
+msgstr ""
+
+#: plugins/rdp/rdp_plugin.c:2073
+msgid "Using the UDP protocol may improve performance"
+msgstr ""
+
+#: plugins/rdp/rdp_plugin.c:2097
 #, fuzzy
 msgid "RDP - Remote Desktop Protocol"
 msgstr "RDP - Fjärrskrivbordsprotokoll"
 
-#: plugins/rdp/rdp_plugin.c:2086
+#: plugins/rdp/rdp_plugin.c:2120
 #, fuzzy
 msgid "RDP - RDP File Handler"
 msgstr "RDP - RDP-filhantering"
 
-#: plugins/rdp/rdp_plugin.c:2101
+#: plugins/rdp/rdp_plugin.c:2135
 msgid "RDP - Preferences"
 msgstr "RDP - Inställningar"
 
-#: plugins/rdp/rdp_plugin.c:2154
+#: plugins/rdp/rdp_plugin.c:2188
 msgid "Export connection in Windows .rdp file format"
 msgstr "Exportera anslutning som Windows .rdp"
 
@@ -2465,7 +2480,7 @@ msgstr ""
 msgid "Do not show this message again"
 msgstr "Inte vis detta meddelande igjen"
 
-#: data/ui/remmina_about.glade:30 data/ui/remmina_main.glade:485
+#: data/ui/remmina_about.glade:30 data/ui/remmina_main.glade:491
 #, fuzzy
 msgid "About"
 msgstr "Om"
@@ -2474,104 +2489,131 @@ msgstr "Om"
 msgid "Website"
 msgstr "Hemsida"
 
-#: data/ui/remmina_main.glade:74
+#: data/ui/remmina_main.glade:35
+#, fuzzy
+msgid "Hide or show the search bar"
+msgstr "Visa sökfält"
+
+#: data/ui/remmina_main.glade:41
+#, fuzzy
+msgid "Add a new connection profile"
+msgstr "Skapa en ny anslutningsprofil"
+
+#: data/ui/remmina_main.glade:47
+msgid "Show the Remmina changelog."
+msgstr ""
+
+#: data/ui/remmina_main.glade:53
+msgid "Switch from grouped to list view"
+msgstr ""
+
+#: data/ui/remmina_main.glade:78
 msgid "New connection profile"
 msgstr "Ny anslutningsprofil"
 
-#: data/ui/remmina_main.glade:86
+#: data/ui/remmina_main.glade:90
 #, fuzzy
 msgid "Show search bar"
 msgstr "Visa sökfält"
 
-#: data/ui/remmina_main.glade:125
+#: data/ui/remmina_main.glade:123
+#, fuzzy
+msgid "Remmina main menu"
+msgstr "Remmina-datamapp"
+
+#: data/ui/remmina_main.glade:130
 msgid "Actions"
 msgstr "Handlingar"
 
-#: data/ui/remmina_main.glade:139
+#: data/ui/remmina_main.glade:144
 #, fuzzy
 msgid "Toggle view"
 msgstr "Växla vyn"
 
-#: data/ui/remmina_main.glade:187
+#: data/ui/remmina_main.glade:175
+msgid "Select the protocol to use with the quick connect bar."
+msgstr ""
+
+#: data/ui/remmina_main.glade:193
 #, fuzzy
 msgid "Search string or server name/IP address for “Quick Connect”"
 msgstr "Söksträng eller servernamn / IP-adress for \"Snabbanslutning\""
 
-#: data/ui/remmina_main.glade:191 data/ui/remmina_main.glade:193
+#: data/ui/remmina_main.glade:197 data/ui/remmina_main.glade:199
 #, fuzzy
 msgid "Server name or IP address"
 msgstr "Servernamn eller IP-adress"
 
-#: data/ui/remmina_main.glade:192 data/ui/remmina_main.glade:194
+#: data/ui/remmina_main.glade:198 data/ui/remmina_main.glade:200
 #: data/ui/remmina_preferences.glade:214
 msgid "Clear"
 msgstr "Töm"
 
-#: data/ui/remmina_main.glade:277
+#: data/ui/remmina_main.glade:283
 #, fuzzy
 msgid "Edit"
 msgstr "Redigera"
 
-#: data/ui/remmina_main.glade:307
+#: data/ui/remmina_main.glade:313
 #, fuzzy
 msgid "Collapse all"
 msgstr "Vik allt upp"
 
-#: data/ui/remmina_main.glade:317
+#: data/ui/remmina_main.glade:323
 #, fuzzy
 msgid "Expand all"
 msgstr "Utöka alt"
 
-#: data/ui/remmina_main.glade:354
+#: data/ui/remmina_main.glade:360
 #, fuzzy
 msgid "Multi password changer"
 msgstr "Multilösenordsväkslare"
 
-#: data/ui/remmina_main.glade:364
+#: data/ui/remmina_main.glade:370
 #, fuzzy
 msgid "Debugging"
 msgstr "Felsökning"
 
-#: data/ui/remmina_main.glade:384
+#: data/ui/remmina_main.glade:390
 #, fuzzy
 msgid "Export"
 msgstr "Exportera"
 
-#: data/ui/remmina_main.glade:394
+#: data/ui/remmina_main.glade:400
 msgid "News"
 msgstr "Nyheter"
 
-#: data/ui/remmina_main.glade:404
+#: data/ui/remmina_main.glade:410
 #, fuzzy
 msgid "Set as default remote desktop client"
 msgstr "Sett som förvald fjärrskrivbordsklient"
 
-#: data/ui/remmina_main.glade:431
+#: data/ui/remmina_main.glade:437
 #, fuzzy
 msgid "Homepage"
 msgstr "Hemsida"
 
-#: data/ui/remmina_main.glade:441
+#: data/ui/remmina_main.glade:447
 #, fuzzy
 msgid "Donations"
 msgstr "Donationer"
 
-#: data/ui/remmina_main.glade:451
+#: data/ui/remmina_main.glade:457
 msgid "Wiki"
 msgstr "Wiki"
 
 #. Remmina community website
-#: data/ui/remmina_main.glade:461
+#: data/ui/remmina_main.glade:467
 #, fuzzy
 msgid "Online Community"
 msgstr "Nätbaserad gemenskap"
 
-#: data/ui/remmina_main.glade:579
+#: data/ui/remmina_main.glade:585
 #, fuzzy
 msgid "Plugin"
 msgstr "Tillägg"
 
-#: data/ui/remmina_main.glade:593
+#: data/ui/remmina_main.glade:599
 #, fuzzy
 msgid "Last used"
 msgstr "Senast använd"
@@ -2610,20 +2652,28 @@ msgstr ""
 "remmina__stats_8c.html#details\" title=\"Remmina-bruksstatistik\">anonym</"
 "a></b> statistik til remmina.org"
 
-#: data/ui/remmina_news.glade:133
+#: data/ui/remmina_news.glade:120
+msgid "Enable anonymous statistics"
+msgstr ""
+
+#: data/ui/remmina_news.glade:134
 msgid "Make Remmina the default Remote Desktop Client"
 msgstr "Gör Remmina till standardklient för fjärrskrivbord"
 
-#: data/ui/remmina_news.glade:142
+#: data/ui/remmina_news.glade:143
 msgid "Apply"
 msgstr "Använd"
 
-#: data/ui/remmina_news.glade:166
+#: data/ui/remmina_news.glade:147
+msgid "Allow Remmina to automatically open .rdp and .remmina files."
+msgstr ""
+
+#: data/ui/remmina_news.glade:168
 #, fuzzy
 msgid "<big>Important settings</big>"
 msgstr "<big>Viktiga inställningar</big>"
 
-#: data/ui/remmina_news.glade:192
+#: data/ui/remmina_news.glade:194
 msgid ""
 "<span>\n"
 "<b>You are great for using copylefted libre software, <a href=\"https://"
@@ -2638,7 +2688,7 @@ msgstr ""
 "programmet. </b>\n"
 "</span>\n"
 
-#: data/ui/remmina_news.glade:212
+#: data/ui/remmina_news.glade:214
 #, fuzzy
 msgid "<big>Contribute</big>"
 msgstr "<big>Bidra</big>"

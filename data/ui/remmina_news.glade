@@ -117,6 +117,7 @@
                           <object class="GtkSwitch" id="rmnews_stats_switch">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
+                            <property name="tooltip_text" translatable="yes">Enable anonymous statistics</property>
                             <property name="halign">start</property>
                             <signal name="notify::active" handler="rmnews_stats_switch_state_set_cb" swapped="no"/>
                           </object>
@@ -143,6 +144,7 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
+                            <property name="tooltip_text" translatable="yes">Allow Remmina to automatically open .rdp and .remmina files.</property>
                             <property name="halign">start</property>
                             <signal name="clicked" handler="rmnews_defaultcl_on_click" swapped="no"/>
                           </object>

@@ -144,6 +144,8 @@ struct _RemminaConnectionWindowPriv {
 	gboolean					hostkey_activated;
 	gboolean					hostkey_used;
 
+	gboolean					pointer_entered;
+
 	RemminaConnectionWindowOnDeleteConfirmMode	on_delete_confirm_mode;
 };
 
@@ -557,7 +559,7 @@ static void rcw_keyboard_grab(RemminaConnectionWindow *cnnwin)
 		 * the widget is hidden:
 		 * https://gitlab.gnome.org/GNOME/gtk/commit/726ad5a5ae7c4f167e8dd454cd7c250821c400ab
 		 * The bugfix will be released with GTK 3.24.
-		 * Also pease note that the newer gdk_seat_grab() is still calling gdk_device_grab().
+		 * Also please note that the newer gdk_seat_grab() is still calling gdk_device_grab().
 		 *
 		 * Warning: gdk_seat_grab() will call XGrabKeyboard() or XIGrabDevice()
 		 * which in turn will generate a core X input event FocusOut and FocusIn
@@ -2093,6 +2095,9 @@ static void rcw_toolbar_grab(GtkWidget *widget, RemminaConnectionWindow *cnnwin)
 		printf("DEBUG_KB_GRABBING: Grabbing for button\n");
 #endif
 		rcw_keyboard_grab(cnnobj->cnnwin);
+		if (cnnobj->cnnwin->priv->pointer_entered) {
+			rcw_pointer_grab(cnnobj->cnnwin);
+		}
 	} else {
 		rcw_kp_ungrab(cnnobj->cnnwin);
 	}
@@ -2482,6 +2487,8 @@ static gboolean rco_leave_protocol_widget(GtkWidget *widget, GdkEventCrossing *e
 	printf("\n");
 #endif
 
+	cnnobj->cnnwin->priv->pointer_entered = FALSE;
+
 	/* Ungrab only if the leave is due to normal mouse motion */
 	if (event->mode == GDK_CROSSING_NORMAL)
 		rcw_kp_ungrab(cnnobj->cnnwin);
@@ -2494,13 +2501,22 @@ gboolean rco_enter_protocol_widget(GtkWidget *widget, GdkEventCrossing *event,
 				   RemminaConnectionObject *cnnobj)
 {
 	TRACE_CALL(__func__);
+	gboolean active;
+
+#if DEBUG_KB_GRABBING
+	printf("DEBUG_KB_GRABBING: %s: enter event received\n", __func__);
+#endif
+
 	RemminaConnectionWindowPriv *priv = cnnobj->cnnwin->priv;
 	if (!priv->sticky && event->mode == GDK_CROSSING_NORMAL) {
 		rcw_floating_toolbar_show(cnnobj->cnnwin, FALSE);
 	}
 
+	priv->pointer_entered = TRUE;
+
 	/* Check if we need pointer grabbing */
-	if (remmina_file_get_int(cnnobj->remmina_file, "keyboard_grab", FALSE)) {
+	active = gtk_window_is_active(GTK_WINDOW(cnnobj->cnnwin));
+	if (remmina_file_get_int(cnnobj->remmina_file, "keyboard_grab", FALSE) && active) {
 		rcw_keyboard_grab(cnnobj->cnnwin);
 		rcw_pointer_grab(cnnobj->cnnwin);
 	}
@@ -2515,8 +2531,18 @@ static void rcw_focus_in(RemminaConnectionWindow *cnnwin)
 
 	if (!(cnnobj = rcw_get_visible_cnnobj(cnnwin))) return;
 
-	if (cnnobj && cnnobj->connected && remmina_file_get_int(cnnobj->remmina_file, "keyboard_grab", FALSE))
+	if (cnnobj && cnnobj->connected && remmina_file_get_int(cnnobj->remmina_file, "keyboard_grab", FALSE)) {
+#if DEBUG_KB_GRABBING
+		printf("DEBUG_KB_GRABBING: Received focus in and grabbing enabled, requesting kb grab\n");
+#endif
 		rcw_keyboard_grab(cnnobj->cnnwin);
+		if (cnnobj->cnnwin->priv->pointer_entered) {
+#if DEBUG_KB_GRABBING
+			printf("DEBUG_KB_GRABBING:   requesting also pointer grab, because of pointer_entered\n");
+#endif
+			rcw_pointer_grab(cnnobj->cnnwin);
+		}
+	}
 }
 
 static void rcw_focus_out(RemminaConnectionWindow *cnnwin)
@@ -2776,6 +2802,7 @@ static void rcw_init(RemminaConnectionWindow *cnnwin)
 	priv->floating_toolbar_opacity = 1.0;
 	priv->kbcaptured = FALSE;
 	priv->pointer_captured = FALSE;
+	priv->pointer_entered = FALSE;
 	priv->fss_view_mode = VIEWPORT_FULLSCREEN_MODE;
 	priv->ss_width = 640;
 	priv->ss_height = 480;
@@ -3156,7 +3183,7 @@ rcw_on_notebook_create_window(GtkNotebook *notebook, GtkWidget *page, gint x, gi
 	cnnobj = (RemminaConnectionObject *)g_object_get_data(G_OBJECT(page), "cnnobj");
 
 	if (!dstcnnwin) {
-		/* Drop is directed to a new rcw: create a new scrolled window to accomodate
+		/* Drop is directed to a new rcw: create a new scrolled window to accommodate
 		 * the dropped connectionand move our cnnobj there. Width and
 		 * height of the new window are cloned from the current window */
 		srctag = (gchar *)g_object_get_data(G_OBJECT(srccnnwin), "tag");
@@ -3765,7 +3792,7 @@ void rco_on_disconnect(RemminaProtocolWidget *gp, gpointer data)
 	if (remmina_protocol_widget_has_error(gp)) {
 		/* We cannot close window immediately, but we must show a message panel */
 		RemminaMessagePanel *mp;
-		/* Destroy scrolled_contaner (and viewport) and all its children the plugin created
+		/* Destroy scrolled_container (and viewport) and all its children the plugin created
 		 * on it, so they will not receive GUI signals */
 		if (cnnobj->scrolled_container) {
 			gtk_widget_destroy(cnnobj->scrolled_container);

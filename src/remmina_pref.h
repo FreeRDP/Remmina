@@ -37,7 +37,7 @@
 #pragma once
 
 /*
- * Remmina Perference Loader
+ * Remmina Preference Loader
  */
 
 G_BEGIN_DECLS

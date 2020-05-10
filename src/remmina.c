@@ -80,38 +80,38 @@ gboolean kioskmode;
 
 static GOptionEntry remmina_options[] =
 {
-	// TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
+	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 	{ "about",	      'a',  0,			  G_OPTION_ARG_NONE,	       NULL, N_("Show \'About\'"),								     NULL	},
-	// TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
+	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 	{ "connect",	      'c',  0,			  G_OPTION_ARG_FILENAME,       NULL, N_("Connect to desktop described in file (.remmina or type supported by plugin)"),	     "FILE"	},
-	// TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
+	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 	{ G_OPTION_REMAINING, '\0', 0,			  G_OPTION_ARG_FILENAME_ARRAY, NULL, N_("Connect to desktop described in file (.remmina or type supported by plugin)"),	     "FILE"	},
-	// TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
+	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 	{ "edit",	      'e',  0,			  G_OPTION_ARG_FILENAME,       NULL, N_("Edit desktop connection described in file (.remmina or type supported by plugin)"), "FILE"	},
 	{ "help",	      '?',  G_OPTION_FLAG_HIDDEN, G_OPTION_ARG_NONE,	       NULL, NULL,										     NULL	},
-	// TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
+	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 	{ "kiosk",	      'k',  0,			  G_OPTION_ARG_NONE,	       NULL, N_("Start in kiosk mode"),							     NULL	},
-	// TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
+	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 	{ "new",	      'n',  0,			  G_OPTION_ARG_NONE,	       NULL, N_("Create new connection profile"),						     NULL	},
-	// TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
+	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 	{ "pref",	      'p',  0,			  G_OPTION_ARG_STRING,	       NULL, N_("Show preferences"),						     "PAGENR"	},
-	// TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
+	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 	{ "plugin",	      'x',  0,			  G_OPTION_ARG_STRING,	       NULL, N_("Run a plugin"),								     "PLUGIN"	},
-	// TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
+	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 	{ "quit",	      'q',  0,			  G_OPTION_ARG_NONE,	       NULL, N_("Quit"),							     NULL	},
-	// TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
+	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 	{ "server",	      's',  0,			  G_OPTION_ARG_STRING,	       NULL, N_("Use default server name (for --new)"),						     "SERVER"	},
-	// TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
+	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 	{ "protocol",	      't',  0,			  G_OPTION_ARG_STRING,	       NULL, N_("Use default protocol (for --new)"),						     "PROTOCOL" },
-	// TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
+	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 	{ "icon",	      'i',  0,			  G_OPTION_ARG_NONE,	       NULL, N_("Start in tray"),								     NULL	},
-	// TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
+	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 	{ "version",	      'v',  0,			  G_OPTION_ARG_NONE,	       NULL, N_("Show the application version"),						     NULL	},
-	// TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
+	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 	{ "full-version",     'V',  0,			  G_OPTION_ARG_NONE,	       NULL, N_("Show version of the application and its plugins"),		     NULL	},
-	// TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
+	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 	{ "update-profile",   0,    0,			  G_OPTION_ARG_FILENAME,       NULL, N_("Modify connection profile (requires --set-option)"),			     NULL	},
-	// TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
+	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 	{ "set-option",	      0,    0,			  G_OPTION_ARG_STRING_ARRAY,   NULL, N_("Set one or more profile settings, to be used with --update-profile"),		     NULL	},
 	{ NULL }
 };
@@ -341,7 +341,7 @@ int main(int argc, char *argv[])
 
 
 	app_id = g_application_id_is_valid(REMMINA_APP_ID) ? REMMINA_APP_ID : NULL;
-	app = gtk_application_new(app_id, G_APPLICATION_HANDLES_COMMAND_LINE);
+	app = gtk_application_new(app_id, G_APPLICATION_HANDLES_COMMAND_LINE | G_APPLICATION_CAN_OVERRIDE_APP_ID);
 #if !GTK_CHECK_VERSION(4, 0, 0) /* This is not needed anymore starting from GTK 4 */
 	g_set_prgname(app_id);
 #endif

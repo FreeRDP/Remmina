@@ -262,7 +262,7 @@ static gboolean remmina_plugin_exec_close(RemminaProtocolWidget *gp)
 static const RemminaProtocolSetting remmina_plugin_exec_basic_settings[] =
 {
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	"execcommand",  N_("Command"),  FALSE,  NULL,   NULL},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"runasync", N_("Asynchrounous execution"),  FALSE,  NULL,   NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"runasync", N_("Asynchronous execution"),  FALSE,  NULL,   NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	NULL,	    NULL,	    FALSE,  NULL,   NULL }
 };
 

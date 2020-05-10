@@ -951,7 +951,7 @@ void remmina_rdp_event_update_scale(RemminaProtocolWidget* gp)
 		remmina_rdp_event_create_cairo_surface(rfi);
 	}
 
-	/* Send gdi->width and gdi->height obtanied from remote server to gp plugin,
+	/* Send gdi->width and gdi->height obtained from remote server to gp plugin,
 	 * so they will be saved when closing connection */
 	if (width != gdi->width)
 		remmina_plugin_service->protocol_plugin_set_width(gp, gdi->width);

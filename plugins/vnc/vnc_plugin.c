@@ -116,6 +116,17 @@ static void onMainThread_schedule_callback_and_wait(struct onMainThread_cb_data 
 	pthread_mutex_destroy(&d->mu);
 }
 
+/**
+   Function check_for_endianness() returns 1, if architecture
+   is little endian, 0 in case of big endian.
+ */
+static gboolean check_for_endianness()
+{
+  unsigned int x = 1;
+  char *c = (char*) &x;
+  return (int)*c;
+}
+
 static void remmina_plugin_vnc_event_push(RemminaProtocolWidget *gp, gint event_type, gpointer p1, gpointer p2, gpointer p3)
 {
 	TRACE_CALL(__func__);
@@ -172,7 +183,7 @@ static void remmina_plugin_vnc_event_free_all(RemminaProtocolWidget *gp)
 	RemminaPluginVncEvent *event;
 
 	/* This is called from main thread after plugin thread has
-	 * been closed, so no queue locking is nessesary here */
+	 * been closed, so no queue locking is necessary here */
 	while ((event = g_queue_pop_head(gpdata->vnc_event_queue)) != NULL)
 		remmina_plugin_vnc_event_free(event);
 }
@@ -369,7 +380,7 @@ static void remmina_plugin_vnc_update_quality(rfbClient *cl, gint quality)
 	switch (quality) {
 	case 9:
 		cl->appData.useBGR233 = 0;
-		cl->appData.encodingsString = "tight copyrect zlib hextile raw";
+		cl->appData.encodingsString = "copyrect zlib hextile raw";
 		cl->appData.compressLevel = 1;
 		cl->appData.qualityLevel = 9;
 		break;
@@ -398,9 +409,12 @@ static void remmina_plugin_vnc_update_quality(rfbClient *cl, gint quality)
 static void remmina_plugin_vnc_update_colordepth(rfbClient *cl, gint colordepth)
 {
 	TRACE_CALL(__func__);
+
 	cl->format.depth = colordepth;
-	cl->format.bigEndian = 0;
 	cl->appData.requestedDepth = colordepth;
+
+	cl->format.trueColour = 1;
+	cl->format.bigEndian = check_for_endianness()?FALSE:TRUE;
 
 	switch (colordepth) {
 	case 8:
@@ -414,14 +428,14 @@ static void remmina_plugin_vnc_update_colordepth(rfbClient *cl, gint colordepth)
 		cl->format.redShift = 0;
 		break;
 	case 16:
-		//cl->format.depth = 16;
+		cl->format.depth = 15;
 		cl->format.bitsPerPixel = 16;
-		cl->format.blueMax = 31;
-		cl->format.blueShift = 0;
-		cl->format.greenMax = 63;
-		cl->format.greenShift = 5;
-		cl->format.redMax = 31;
 		cl->format.redShift = 11;
+		cl->format.greenShift = 6;
+		cl->format.blueShift = 1;
+		cl->format.redMax = 31;
+		cl->format.greenMax = 31;
+		cl->format.blueMax = 31;
 		break;
 	case 32:
 	default:
@@ -435,15 +449,18 @@ static void remmina_plugin_vnc_update_colordepth(rfbClient *cl, gint colordepth)
 		cl->format.greenMax = 0xff;
 		break;
 	}
+
 	rfbClientLog ("colordepth          = %d\n", colordepth);
 	rfbClientLog ("format.depth        = %d\n", cl->format.depth);
 	rfbClientLog ("format.bitsPerPixel = %d\n", cl->format.bitsPerPixel);
 	rfbClientLog ("format.blueShift    = %d\n", cl->format.blueShift);
 	rfbClientLog ("format.redShift     = %d\n", cl->format.redShift);
+	rfbClientLog ("format.trueColour   = %d\n", cl->format.trueColour);
 	rfbClientLog ("format.greenShift   = %d\n", cl->format.greenShift);
 	rfbClientLog ("format.blueMax      = %d\n", cl->format.blueMax);
 	rfbClientLog ("format.redMax       = %d\n", cl->format.redMax);
 	rfbClientLog ("format.greenMax     = %d\n", cl->format.greenMax);
+	rfbClientLog ("format.bigEndian    = %d\n", cl->format.bigEndian);
 }
 
 static rfbBool remmina_plugin_vnc_rfb_allocfb(rfbClient *cl)
@@ -1121,6 +1138,7 @@ static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 	rfbClientLog = rfbClientErr = remmina_plugin_vnc_rfb_output;
 
 	gint colordepth = remmina_plugin_service->file_get_int(remminafile, "colordepth", 32);
+	gint quality = remmina_plugin_service->file_get_int(remminafile, "quality", 9);
 
 	while (gpdata->connected) {
 		gpdata->auth_called = FALSE;
@@ -1132,6 +1150,7 @@ static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 			break;
 		}
 
+		/* int bitsPerSample,int samplesPerPixel, int bytesPerPixel */
 		switch (colordepth) {
 		case 8:
 			cl = rfbGetClient(2, 3, 1);
@@ -1197,8 +1216,16 @@ static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 		cl->appData.useRemoteCursor = (
 			remmina_plugin_service->file_get_int(remminafile, "showcursor", FALSE) ? FALSE : TRUE);
 
-		remmina_plugin_vnc_update_quality(cl, remmina_plugin_service->file_get_int(remminafile, "quality", 0));
+		remmina_plugin_vnc_update_quality(cl, quality);
 		remmina_plugin_vnc_update_colordepth(cl, colordepth);
+		if ((cl->format.depth == 8) && (quality == 9))
+			cl->appData.encodingsString = "copyrect zlib hextile raw";
+		else if ((cl->format.depth == 8) && (quality == 2))
+			cl->appData.encodingsString = "zrle ultra copyrect hextile zlib corre rre raw";
+		else if ((cl->format.depth == 8) && (quality == 1))
+			cl->appData.encodingsString = "zrle ultra copyrect hextile zlib corre rre raw";
+		else if ((cl->format.depth == 8) && (quality == 0))
+			cl->appData.encodingsString = "zrle ultra copyrect hextile zlib corre rre raw";
 		SetFormatAndEncodings(cl);
 
 		if (remmina_plugin_service->file_get_int(remminafile, "disableencryption", FALSE)) {
@@ -1800,19 +1827,19 @@ static void remmina_plugin_vnc_init(RemminaProtocolWidget *gp)
 /* Array of key/value pairs for color depths */
 static gpointer colordepth_list[] =
 {
-	"8",  N_("256 colours (8 bpp)"),
-	"16", N_("High colour (16 bpp)"),
-	"32", N_("True colour (32 bpp)"),
+	"32", N_("True color (32 bpp)"),
+	"16", N_("High color (16 bpp)"),
+	"8",  N_("256 colors (8 bpp)"),
 	NULL
 };
 
 /* Array of key/value pairs for quality selection */
 static gpointer quality_list[] =
 {
-	"0", N_("Poor (fastest)"),
-	"1", N_("Medium"),
-	"2", N_("Good"),
 	"9", N_("Best (slowest)"),
+	"2", N_("Good"),
+	"1", N_("Medium"),
+	"0", N_("Poor (fastest)"),
 	NULL
 };
 

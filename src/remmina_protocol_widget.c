@@ -1102,14 +1102,14 @@ void remmina_protocol_widget_set_display(RemminaProtocolWidget *gp, gint display
 gint remmina_protocol_widget_get_profile_remote_width(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
-	/* Returns the width of remote desktop as choosen by the user profile */
+	/* Returns the width of remote desktop as chosen by the user profile */
 	return gp->priv->profile_remote_width;
 }
 
 gint remmina_protocol_widget_get_profile_remote_height(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
-	/* Returns the height of remote desktop as choosen by the user profile */
+	/* Returns the height of remote desktop as chosen by the user profile */
 	return gp->priv->profile_remote_height;
 }
 

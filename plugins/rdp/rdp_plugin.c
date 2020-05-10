@@ -49,6 +49,8 @@
 #include <pthread.h>
 #include <time.h>
 #include <cairo/cairo-xlib.h>
+#include <freerdp/addin.h>
+#include <freerdp/settings.h>
 #include <freerdp/freerdp.h>
 #include <freerdp/constants.h>
 #include <freerdp/client/cliprdr.h>
@@ -791,17 +793,32 @@ static void remmina_rdp_main_loop(RemminaProtocolWidget *gp)
 int remmina_rdp_load_static_channel_addin(rdpChannels *channels, rdpSettings *settings, char *name, void *data)
 {
 	TRACE_CALL(__func__);
-	void *entry;
+	PVIRTUALCHANNELENTRY entry = NULL;
+	PVIRTUALCHANNELENTRYEX entryEx = NULL;
+	entryEx = (PVIRTUALCHANNELENTRYEX)(void*)freerdp_load_channel_addin_entry(
+	    name, NULL, NULL, FREERDP_ADDIN_CHANNEL_STATIC | FREERDP_ADDIN_CHANNEL_ENTRYEX);
 
-	entry = freerdp_load_channel_addin_entry(name, NULL, NULL, FREERDP_ADDIN_CHANNEL_STATIC);
-	if (entry) {
-		if (freerdp_channels_client_load(channels, settings, entry, data) == 0) {
+	if (!entryEx)
+		entry = freerdp_load_channel_addin_entry(name, NULL, NULL, FREERDP_ADDIN_CHANNEL_STATIC);
+
+	if (entryEx)
+	{
+		if (freerdp_channels_client_load_ex(channels, settings, entryEx, data) == 0)
+		{
 			fprintf(stderr, "loading channel %s\n", name);
-			return 0;
+			return TRUE;
+		}
+	}
+	else if (entry)
+	{
+		if (freerdp_channels_client_load(channels, settings, entry, data) == 0)
+		{
+			fprintf(stderr, "loading channel %s\n", name);
+			return TRUE;
 		}
 	}
 
-	return -1;
+	return FALSE;
 }
 
 gchar *remmina_rdp_find_prdriver(char *smap, char *prn)
@@ -1075,7 +1092,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 
 	/**
 	 * Proxy support
-	 * Proxy settings are hidden at the moment as an advanced feauture
+	 * Proxy settings are hidden at the moment as an advanced feature
 	 */
 	gchar *proxy_type = g_strdup(remmina_plugin_service->file_get_string(remminafile, "proxy_type"));
 	gchar *proxy_username = g_strdup(remmina_plugin_service->file_get_string(remminafile, "proxy_username"));
@@ -1336,6 +1353,9 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 		freerdp_client_add_dynamic_channel(rfi->settings, count, p);
 	}
 
+	if (remmina_plugin_service->file_get_int(remminafile, "preferipv6", FALSE) ? TRUE : FALSE)
+		rfi->settings->PreferIPv6OverIPv4 = TRUE;
+
 	rfi->settings->RedirectClipboard = (remmina_plugin_service->file_get_int(remminafile, "disableclipboard", FALSE) ? FALSE : TRUE);
 
 	cs = remmina_plugin_service->file_get_string(remminafile, "sharefolder");
@@ -1449,6 +1469,18 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 			parallel->Path = _strdup(dp);
 
 		freerdp_device_collection_add(rfi->settings, (RDPDR_DEVICE *)parallel);
+	}
+
+	/**
+	 * multitransport enables RDP8 UDP support
+	 */
+	if (remmina_plugin_service->file_get_int(remminafile, "multitransport", FALSE)) {
+		rfi->settings->DeviceRedirection = TRUE;
+		rfi->settings->SupportMultitransport = TRUE;
+		rfi->settings->MultitransportFlags =
+			(TRANSPORT_TYPE_UDP_FECR | TRANSPORT_TYPE_UDP_FECL | TRANSPORT_TYPE_UDP_PREFERRED);
+	} else {
+		rfi->settings->MultitransportFlags = 0;
 	}
 
 	/* If needed, force interactive authentication by deleting all authentication fields,
@@ -2007,7 +2039,7 @@ static const RemminaProtocolSetting remmina_rdp_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "gateway_password",	    N_("Remote Desktop Gateway password"),		 FALSE, NULL,	       NULL													      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "gateway_domain",	    N_("Remote Desktop Gateway domain"),		 FALSE, NULL,	       NULL													      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "clientname",		    N_("Client name"),					 FALSE, NULL,	       NULL													      },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_COMBO,	  "clientbuild",		    N_("Client build"),					 FALSE, clientbuild_list,	       clientbuild_tooltip													      },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_COMBO,	  "clientbuild",	    N_("Client build"),					 FALSE, clientbuild_list,	       clientbuild_tooltip									      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "exec",		    N_("Startup program"),				 FALSE, NULL,	       NULL													      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "execpath",		    N_("Startup path"),					 FALSE, NULL,	       NULL													      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "loadbalanceinfo",	    N_("Load balance info"),				 FALSE, NULL,	       NULL													      },
@@ -2018,9 +2050,10 @@ static const RemminaProtocolSetting remmina_rdp_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "parallelname",	    N_("Local parallel name"),				 FALSE, NULL,	       NULL													      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "parallelpath",	    N_("Local parallel device"),			 FALSE, NULL,	       NULL													      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "smartcardname",	    N_("Name of smart card"),				 FALSE, NULL,	       NULL													      },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "preferipv6",	    	    N_("Prefer IPv6 AAA record over IPv4 A record"),	 TRUE,	NULL,	       NULL													      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "shareprinter",	    N_("Share printers"),				 TRUE,	NULL,	       NULL													      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "shareserial",	    N_("Share serial ports"),				 TRUE,	NULL,	       NULL													      },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "serialpermissive",	    N_("(SELinux) permissive mode for serial ports"),			 TRUE,	NULL,	       NULL													      },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "serialpermissive",	    N_("(SELinux) permissive mode for serial ports"),	 TRUE,	NULL,	       NULL													      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "shareparallel",	    N_("Share parallel ports"),				 TRUE,	NULL,	       NULL													      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "sharesmartcard",	    N_("Share a smart card"),				 TRUE,	NULL,	       NULL													      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "microphone",		    N_("Redirect local microphone"),			 TRUE,	NULL,	       NULL													      },
@@ -2037,6 +2070,7 @@ static const RemminaProtocolSetting remmina_rdp_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "disableautoreconnect",   N_("Turn off automatic reconnection"),		 TRUE,	NULL,	       NULL													      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "relax-order-checks",	    N_("Relax order checks"),				 TRUE,	NULL,	       NULL													      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "glyph-cache",	    N_("Glyph cache"),					 TRUE,	NULL,	       NULL													      },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "multitransport",	    N_("Enable multitransport protocol (UDP)"),		 TRUE,	NULL,	       N_("Using the UDP protocol may improve performance")							      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	  NULL,			    NULL,						 FALSE, NULL,	       NULL													      }
 };
 
