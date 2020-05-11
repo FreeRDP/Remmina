@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the remmina package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
 # Antenore Gatta <antenore@simbiosi.org>, 2019.
-# Manuela Silva <mmsrs@sky.com>, 2019.
+# Manuela Silva <mmsrs@sky.com>, 2019, 2020.
 # anonymous <noreply@weblate.org>, 2019.
 # Allan Nordhøy <epost@anotheragency.no>, 2020.
 msgid ""
@@ -12,7 +12,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-05-19 09:20+0000\n"
 "PO-Revision-Date: 2020-03-24 20:31+0000\n"
-"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"Last-Translator: Manuela Silva <mmsrs@sky.com>\n"
 "Language-Team: Portuguese (Portugal) <https://hosted.weblate.org/projects/"
 "remmina/remmina/pt_PT/>\n"
 "Language: pt_PT\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.0-dev\n"
+"X-Generator: Weblate 4.1-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
 
 #: src/remmina_protocol_widget.c:275
@@ -47,19 +47,20 @@ msgid "Connecting to \"%s\" via SSH…"
 msgstr "A estabelecer ligação a '%s'…"
 
 #: src/remmina_protocol_widget.c:926
-#, fuzzy, c-format
+#, c-format
 msgid "Awaiting incoming SSH connection on port %i…"
-msgstr "A aguardar pela receção de um túnel SSH na porta %i"
+msgstr "A aguardar pela receção de ligação SSH na porta %i…"
 
 #: src/remmina_protocol_widget.c:978
-#, fuzzy, c-format
+#, c-format
 msgid "The \"%s\" command is not available on the SSH server."
-msgstr "Comando %s não encontrado no servidor SSH"
+msgstr "O comando %s não está disponível no servidor SSH."
 
 #: src/remmina_protocol_widget.c:982
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run the \"%s\" command on the SSH server (status = %i)."
-msgstr "Comando %s falhou no servidor SSH (estado = %i)"
+msgstr ""
+"Não foi possível executar o comando \"%s\" no servidor SSH (estado = %i)."
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_protocol_widget.c:990
@@ -347,7 +348,7 @@ msgstr ""
 
 #: src/remmina_ssh_plugin.c:1078
 msgid "SSH - Secure Shell"
-msgstr "SSH - Secure Shell"
+msgstr "SSH - Consola Segura"
 
 #: src/remmina_applet_menu_item.c:121
 msgid "Discovered"
@@ -510,6 +511,8 @@ msgstr ""
 msgid ""
 "Connect to desktop described in file (.remmina or type supported by plugin)"
 msgstr ""
+"Ligar ao ambiente de trabalho descrito no ficheiro (.remmina ou digite o "
+"tipo suportado pelo ''plug-in'')"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:90
@@ -606,11 +609,11 @@ msgstr "Applet Reminna"
 
 #: src/remmina_icon.c:359 src/remmina_icon.c:541
 msgid "Connect to remote desktops through the applet menu"
-msgstr "Ligar às áreas de trabalho remotas através do menu da applet"
+msgstr "Ligar aos ambientes de trabalho remotos através do menu da ''applet''"
 
 #: src/remmina_icon.c:480 src/remmina_icon.c:481 src/remmina_main.c:1228
 msgid "Remmina Remote Desktop Client"
-msgstr "Cliente de Ambiente de Trabalho Remoto Remmina"
+msgstr "Remmina - Cliente de Ambiente de Trabalho Remoto"
 
 #: src/rcw.c:640
 #, fuzzy, c-format
@@ -760,9 +763,9 @@ msgstr[0] "i% item total."
 msgstr[1] "%i itens totais."
 
 #: src/remmina_main.c:831
-#, fuzzy, c-format
+#, c-format
 msgid "Are you sure you want to delete \"%s\"?"
-msgstr "Tem a certeza que quer eliminar '%s'"
+msgstr "Tem a certeza que deseja eliminar \"%s\"?"
 
 #: src/remmina_main.c:931
 #, c-format
@@ -787,7 +790,7 @@ msgstr "Este protocolo não suporta exportação."
 
 #: src/remmina_main.c:1230
 msgid "Remmina Kiosk"
-msgstr ""
+msgstr "Remmina - Quiosque"
 
 #: src/remmina_key_chooser.h:38
 msgid "Shift+"
@@ -819,15 +822,15 @@ msgstr ""
 
 #. TRANSLATORS: The placeholder %s is a directory path
 #: src/remmina_sftp_client.c:173
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create the folder \"%s\"."
-msgstr "Falha na criação de sessão sftp: %s"
+msgstr "Não foi possível criar a pasta: \"%s\"."
 
 #. TRANSLATORS: The placeholder %s is a file path
 #: src/remmina_sftp_client.c:181 src/remmina_sftp_client.c:202
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create the file \"%s\"."
-msgstr "Falha na criação de sessão sftp: %s"
+msgstr "Não foi possível criar o ficheiro: \"%s\"."
 
 #. TRANSLATORS: The placeholders %s are a file path, and an error message.
 #: src/remmina_sftp_client.c:220
@@ -836,9 +839,9 @@ msgid "Could not open the file \"%s\" on the server. %s"
 msgstr "Erro ao abrir o ficheiro %s no servidor. %s"
 
 #: src/remmina_sftp_client.c:242
-#, fuzzy, c-format
+#, c-format
 msgid "Could not save the file \"%s\"."
-msgstr "Falha na criação de sessão sftp: %s"
+msgstr "Não foi possível guardar o ficheiro: \"%s\"."
 
 #: src/remmina_sftp_client.c:281 src/remmina_sftp_client.c:698
 #: src/remmina_sftp_client.c:761
@@ -857,9 +860,9 @@ msgid "Could not create the file \"%s\" on the server. %s"
 msgstr "Erro ao criar o ficheiro %s no servidor. %s"
 
 #: src/remmina_sftp_client.c:456
-#, fuzzy, c-format
+#, c-format
 msgid "Could not open the file \"%s\"."
-msgstr "Falha na criação de sessão sftp: %s"
+msgstr "Não foi possível abrir o ficheiro: \"%s\"."
 
 #: src/remmina_sftp_client.c:476
 #, fuzzy, c-format
@@ -872,9 +875,9 @@ msgid "Could not read from the folder. %s"
 msgstr "Falha na criação de sessão sftp: %s"
 
 #: src/remmina_sftp_client.c:823
-#, fuzzy
 msgid "Are you sure you want to cancel the file transfer in progress?"
-msgstr "Tem a certeza que quer eliminar '%s'"
+msgstr ""
+"Tem a certeza que deseja cancelar a transferência de ficheiro em progresso?"
 
 #: src/remmina_sftp_client.c:857
 #, fuzzy, c-format
@@ -1229,7 +1232,6 @@ msgid ""
 msgstr ""
 
 #: src/remmina_file_editor.c:95
-#, fuzzy
 msgid ""
 "<tt><big>Supported formats\n"
 "• :port\n"
@@ -1239,13 +1241,15 @@ msgid ""
 "• username@server:port (SSH protocol only)</big></tt>"
 msgstr ""
 "<tt><big>Formatos suportados\n"
-"* servidor\n"
-"* servidor:porta\n"
-"* [servidor]:porta</big></tt>"
+"• :porta\n"
+"• servidor\n"
+"• servidor:porta\n"
+"• [servidor]:porta\n"
+"• username@server:port (apenas protocolo SSH)</big></tt>"
 
 #: src/remmina_file_editor.c:159
 msgid "Choose a Remote Desktop Server"
-msgstr "Escolha um Servidor de Acesso Remoto"
+msgstr "Escolher um Servidor de Ambiente de Trabalho Remoto"
 
 #: src/remmina_file_editor.c:371
 msgid "_Open"
@@ -1328,7 +1332,7 @@ msgstr "Configurações predefinidas guardadas."
 
 #: src/remmina_file_editor.c:1329
 msgid "Remote Desktop Preference"
-msgstr "Preferências de Acesso Remoto"
+msgstr "Preferências do Ambiente de Trabalho Remoto"
 
 #: src/remmina_file_editor.c:1335
 msgid "Save as Default"
@@ -1533,11 +1537,11 @@ msgstr ""
 
 #: plugins/vnc/vnc_plugin.c:1827
 msgid "True color (32 bpp)"
-msgstr "True color (32 bpp)"
+msgstr "Core verdadeira (32 bpp)"
 
 #: plugins/vnc/vnc_plugin.c:1828
 msgid "High color (16 bpp)"
-msgstr "High color (16 bpp)"
+msgstr "Cor Alta (16 bpp)"
 
 #: plugins/vnc/vnc_plugin.c:1829
 msgid "256 colors (8 bpp)"
@@ -1637,18 +1641,17 @@ msgid "Enter SPICE password"
 msgstr "Palavra-passe SSH"
 
 #: plugins/spice/spice_plugin.c:274
-#, fuzzy, c-format
+#, c-format
 msgid "Disconnected from the SPICE server \"%s\"."
-msgstr "Não foi possível ligar ao servidor RDP %s"
+msgstr "Desligado do servidor SPICE \"%s\"."
 
 #: plugins/spice/spice_plugin.c:290
 msgid "TLS connection error."
 msgstr ""
 
 #: plugins/spice/spice_plugin.c:296
-#, fuzzy
 msgid "Connection to the SPICE server dropped."
-msgstr "Não foi possível ligar ao servidor RDP %s"
+msgstr "Ligação interrompida com o servidor RDP."
 
 #: plugins/spice/spice_plugin.c:438
 msgid "Use TLS encryption"
@@ -1784,32 +1787,40 @@ msgid "Enter RDP gateway authentication credentials"
 msgstr "Inserir ficheiros de autenticação de certificado"
 
 #: plugins/rdp/rdp_plugin.c:1532
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
 "Account locked out."
-msgstr "Comando %s não encontrado no servidor SSH"
+msgstr ""
+"Não foi possível aceder ao servidor RDP: \"%s\".\n"
+"Conta bloqueada."
 
 #: plugins/rdp/rdp_plugin.c:1539
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
 "Account expired."
-msgstr "Comando %s não encontrado no servidor SSH"
+msgstr ""
+"Não foi possível aceder ao servidor RDP: \"%s\".\n"
+"Conta expirada."
 
 #: plugins/rdp/rdp_plugin.c:1546
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
 "Password expired."
-msgstr "Comando %s não encontrado no servidor SSH"
+msgstr ""
+"Não foi possível aceder ao servidor RDP: \"%s\".\n"
+"Palavra-passe expirada."
 
 #: plugins/rdp/rdp_plugin.c:1553
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
 "Account disabled."
-msgstr "Comando %s não encontrado no servidor SSH"
+msgstr ""
+"Não foi possível aceder ao servidor RDP: \"%s\".\n"
+"Conta desativada."
 
 #: plugins/rdp/rdp_plugin.c:1559
 #, c-format
@@ -1817,13 +1828,17 @@ msgid ""
 "Could not access the RDP server \"%s\".\n"
 "Insufficient user privileges."
 msgstr ""
+"Não foi possível aceder ao servidor RDP: \"%s\".\n"
+"Privilégios de utilizador insuficientes."
 
 #: plugins/rdp/rdp_plugin.c:1567
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
 "Account restricted."
-msgstr "Comando %s não encontrado no servidor SSH"
+msgstr ""
+"Não foi possível aceder ao servidor RDP: \"%s\".\n"
+"Conta restrita."
 
 #: plugins/rdp/rdp_plugin.c:1575
 #, c-format
@@ -1831,16 +1846,18 @@ msgid ""
 "Could not access the RDP server \"%s\".\n"
 "Change user password before connecting."
 msgstr ""
+"Não foi possível aceder ao servidor RDP: \"%s\".\n"
+"Altere a palavra-passe do utilizador antes de ligar."
 
 #: plugins/rdp/rdp_plugin.c:1580
-#, fuzzy, c-format
+#, c-format
 msgid "Lost connection to the RDP server \"%s\"."
-msgstr "Não foi possível ligar ao servidor RDP %s"
+msgstr "Ligação perdida para o servidor RDP \"%s\"."
 
 #: plugins/rdp/rdp_plugin.c:1583
-#, fuzzy, c-format
+#, c-format
 msgid "Could not find the address for the RDP server \"%s\"."
-msgstr "Comando %s não encontrado no servidor SSH"
+msgstr "Não foi possível encontrar o endereço para o no servidor SSH \"%s\"."
 
 #: plugins/rdp/rdp_plugin.c:1587
 #, c-format
@@ -1848,6 +1865,8 @@ msgid ""
 "Could not connect to the RDP server \"%s\" via TLS. Check that client and "
 "server support a common TLS version."
 msgstr ""
+"Não foi possível ligar ao servidor RDP \"%s\" via TLS. verifique se o "
+"cliente e o servidor suportam uma versão TLS comum."
 
 #: plugins/rdp/rdp_plugin.c:1590
 #, fuzzy, c-format
@@ -1859,11 +1878,11 @@ msgstr "Não foi possível ligar ao servidor RDP %s"
 #: plugins/rdp/rdp_plugin.c:1598
 #, fuzzy, c-format
 msgid "Cannot connect to the RDP server \"%s\"."
-msgstr "Não foi possível ligar ao servidor RDP %s"
+msgstr "Não é possível ligar ao servidor RDP \"%s\"."
 
 #: plugins/rdp/rdp_plugin.c:1601
 msgid "Could not start libfreerdp-gdi."
-msgstr ""
+msgstr "Não foi possível iniciar libfreerdp-gdi."
 
 #: plugins/rdp/rdp_plugin.c:1604
 #, c-format
@@ -1885,9 +1904,9 @@ msgid ""
 msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:1626
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot connect to the \"%s\" RDP server."
-msgstr "Não foi possível ligar ao servidor RDP %s"
+msgstr "Não é possível ligar ao servidor RDP \"%s\"."
 
 #: plugins/rdp/rdp_plugin.c:1943
 msgid "GFX AVC444 (32 bpp)"
@@ -1997,95 +2016,92 @@ msgid "Gateway transport type"
 msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:2042
-#, fuzzy
 msgid "Remote Desktop Gateway server"
-msgstr "Preferências de Acesso Remoto"
+msgstr "Preferências deo Ambiente de Trabalho Remoto"
 
 #: plugins/rdp/rdp_plugin.c:2043
-#, fuzzy
 msgid "Remote Desktop Gateway username"
-msgstr "Preferências de Acesso Remoto"
+msgstr "Nome de utilizador do Acesso do Ambiente de Trabalho Remoto"
 
 #: plugins/rdp/rdp_plugin.c:2044
-#, fuzzy
 msgid "Remote Desktop Gateway password"
-msgstr "Preferências de Acesso Remoto"
+msgstr "Palavra-passe de Acesso do Ambiente de Trabalho Remoto"
 
 #: plugins/rdp/rdp_plugin.c:2045
-#, fuzzy
 msgid "Remote Desktop Gateway domain"
-msgstr "Preferências de Acesso Remoto"
+msgstr "Domínio de Acesso do Ambiente de Trabalho Remoto"
 
 #: plugins/rdp/rdp_plugin.c:2046
 msgid "Client name"
 msgstr "Nome do cliente"
 
 #: plugins/rdp/rdp_plugin.c:2047
-#, fuzzy
 msgid "Client build"
-msgstr "Nome do cliente"
+msgstr "Compilação do cliente"
 
 #: plugins/rdp/rdp_plugin.c:2050
 msgid "Load balance info"
-msgstr ""
+msgstr "Carregar informação de balanço"
 
 #: plugins/rdp/rdp_plugin.c:2051
 msgid "Override printer drivers"
-msgstr ""
+msgstr "Substituir controladores de impressora"
 
 #: plugins/rdp/rdp_plugin.c:2051
 msgid ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
 msgstr ""
+"\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":\""
+"Canon MF410 Series UFR II\""
 
 #: plugins/rdp/rdp_plugin.c:2052
 msgid "Local serial name"
-msgstr ""
+msgstr "Nome de série local"
 
 #: plugins/rdp/rdp_plugin.c:2052
 msgid "COM1, COM2, etc."
-msgstr ""
+msgstr "COM1, COM2, etc."
 
 #: plugins/rdp/rdp_plugin.c:2053
 msgid "Local serial driver"
-msgstr ""
+msgstr "Controlador de série local"
 
 #: plugins/rdp/rdp_plugin.c:2053
 msgid "Serial"
-msgstr ""
+msgstr "Série"
 
 #: plugins/rdp/rdp_plugin.c:2054
 msgid "Local serial path"
-msgstr ""
+msgstr "Caminho de série local"
 
 #: plugins/rdp/rdp_plugin.c:2054
 msgid "/dev/ttyS0, /dev/ttyS1, etc."
-msgstr ""
+msgstr "/dev/ttyS0, /dev/ttyS1, etc."
 
 #: plugins/rdp/rdp_plugin.c:2055
 msgid "Local parallel name"
-msgstr ""
+msgstr "Nome paralelo local"
 
 #: plugins/rdp/rdp_plugin.c:2056
 msgid "Local parallel device"
-msgstr ""
+msgstr "Dispositivo paralelo local"
 
 #: plugins/rdp/rdp_plugin.c:2057
 msgid "Name of smart card"
-msgstr ""
+msgstr "Nome do cartão inteligente"
 
 #: plugins/rdp/rdp_plugin.c:2058
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
-msgstr ""
+msgstr "Preferir gravação AAAA de IPv6 sobre gravação A de IPv4"
 
 #: plugins/rdp/rdp_plugin.c:2059
 msgid "Share printers"
-msgstr ""
+msgstr "Partilhar impressoras"
 
 #: plugins/rdp/rdp_plugin.c:2060
 msgid "Share serial ports"
-msgstr ""
+msgstr "Partilhar portas de série"
 
 #: plugins/rdp/rdp_plugin.c:2061
 msgid "(SELinux) permissive mode for serial ports"
@@ -2093,24 +2109,23 @@ msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:2062
 msgid "Share parallel ports"
-msgstr ""
+msgstr "Partilhar portas paralelas"
 
 #: plugins/rdp/rdp_plugin.c:2063
 msgid "Share a smart card"
-msgstr ""
+msgstr "Partilhar um cartão inteligente"
 
 #: plugins/rdp/rdp_plugin.c:2064
 msgid "Redirect local microphone"
-msgstr ""
+msgstr "Redirecionar microfone local"
 
 #: plugins/rdp/rdp_plugin.c:2065
-#, fuzzy
 msgid "Turn off clipboard sync"
 msgstr "Desativar sincronização da área de transferência"
 
 #: plugins/rdp/rdp_plugin.c:2066
 msgid "Ignore certificate"
-msgstr ""
+msgstr "Ignorar certificado"
 
 #: plugins/rdp/rdp_plugin.c:2067
 msgid "Use the old license workflow"
@@ -2146,19 +2161,19 @@ msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:2077
 msgid "Glyph cache"
-msgstr ""
+msgstr "Cache Glyph"
 
 #: plugins/rdp/rdp_plugin.c:2078
 msgid "Enable multitransport protocol (UDP)"
-msgstr ""
+msgstr "Ativar protocolo multitransporte (UDP)"
 
 #: plugins/rdp/rdp_plugin.c:2078
 msgid "Using the UDP protocol may improve performance"
-msgstr ""
+msgstr "Utilizar o protocolo UDP poderá melhorar o desempenho"
 
 #: plugins/rdp/rdp_plugin.c:2102
 msgid "RDP - Remote Desktop Protocol"
-msgstr "RDP - Remote Desktop Protocol"
+msgstr "RDP - Protocolo de Ambiente de Trabalho Remoto"
 
 #: plugins/rdp/rdp_plugin.c:2125
 msgid "RDP - RDP File Handler"
@@ -2178,11 +2193,11 @@ msgstr "<Detectar Automaticamente>"
 
 #: plugins/rdp/rdp_settings.c:233
 msgid "<Not set>"
-msgstr ""
+msgstr "<Não definido>"
 
 #: plugins/rdp/rdp_settings.c:267
 msgid "<Choose a quality level to edit…>"
-msgstr ""
+msgstr "<Escolha um nível de qualidade para editar…>"
 
 #: plugins/rdp/rdp_settings.c:418
 msgid "Keyboard layout"
@@ -2190,15 +2205,15 @@ msgstr "Disposição do teclado"
 
 #: plugins/rdp/rdp_settings.c:443
 msgid "Use client keyboard mapping"
-msgstr "Usar mapeamento de teclado do cliente"
+msgstr "Utilizar mapeamento de teclado do cliente"
 
 #: plugins/rdp/rdp_settings.c:453
 msgid "Quality settings"
-msgstr ""
+msgstr "Definições de qualidade"
 
 #: plugins/rdp/rdp_settings.c:473
 msgid "Wallpaper"
-msgstr "Papel de parede"
+msgstr "Fundo"
 
 #: plugins/rdp/rdp_settings.c:480
 msgid "Window drag"
@@ -2245,14 +2260,13 @@ msgid "Desktop orientation"
 msgstr ""
 
 #: plugins/rdp/rdp_event.c:302
-#, fuzzy, c-format
+#, c-format
 msgid "Reconnection attempt %d of %d…"
-msgstr "A estabelecer ligação a '%s'…"
+msgstr "Tentativa de religação %d de %d…"
 
 #: plugins/nx/nx_session_manager.c:98
-#, fuzzy
 msgid "Terminating…"
-msgstr "A terminar"
+msgstr "A terminar…"
 
 #: plugins/nx/nx_session_manager.c:143
 #, fuzzy, c-format
@@ -2337,7 +2351,7 @@ msgstr ""
 
 #: data/ui/remmina_about.glade:30 data/ui/remmina_main.glade:491
 msgid "About"
-msgstr "About"
+msgstr "Sobre"
 
 #: data/ui/remmina_about.glade:34
 msgid ""
@@ -2531,6 +2545,8 @@ msgstr ""
 #: data/ui/remmina_mpc.glade:14
 msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
 msgstr ""
+"<span weight='bold' size='larger'>Alteração de Múltiplas Palavras-"
+"passe</span>"
 
 #: data/ui/remmina_mpc.glade:32
 msgid "Change"
@@ -2575,7 +2591,7 @@ msgstr "Nome de utilizador"
 
 #: data/ui/remmina_preferences.glade:41
 msgid "Remmina Preferences"
-msgstr ""
+msgstr "Remmina - Preferências"
 
 #: data/ui/remmina_preferences.glade:99
 msgid "Double-click action"
@@ -3090,7 +3106,7 @@ msgstr ""
 
 #: data/ui/remmina_key_chooser.glade:23
 msgid "Choose a new key"
-msgstr ""
+msgstr "Escolha um novo código"
 
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
