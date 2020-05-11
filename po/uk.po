@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-05-11 06:49+0000\n"
-"PO-Revision-Date: 2020-03-27 10:03+0000\n"
+"PO-Revision-Date: 2020-05-11 07:40+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/remmina/"
 "remmina/uk/>\n"
@@ -19,8 +19,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
+"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 4.1-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:04+0000\n"
 
@@ -47,9 +47,9 @@ msgid "Connecting to \"%s\" via SSH…"
 msgstr "Встановлення з'єднання з «%s» через SSH…"
 
 #: src/remmina_protocol_widget.c:926
-#, fuzzy, c-format
+#, c-format
 msgid "Awaiting incoming SSH connection on port %i…"
-msgstr "Очікування вхідного SSH-тунелю на порті %i…"
+msgstr "Очікування вхідного SSH-з'єднання на порті %i…"
 
 #: src/remmina_protocol_widget.c:978
 #, c-format
@@ -82,7 +82,6 @@ msgid "Password"
 msgstr "Пароль"
 
 #: src/remmina_protocol_widget.c:1442
-#, fuzzy
 msgid "Type in SSH username and password."
 msgstr "Введіть ім'я користувача та пароль для SSH."
 
@@ -672,9 +671,8 @@ msgid "Grab all keyboard events"
 msgstr "Передавати на віддалений комп'ютер будь-яке натискання клавіш"
 
 #: src/rcw.c:2265
-#, fuzzy
 msgid "_Tools"
-msgstr "Інструменти"
+msgstr "І_нструменти"
 
 #: src/rcw.c:2266 data/ui/remmina_main.glade:303
 msgid "Tools"
@@ -1323,9 +1321,8 @@ msgid "SSH agent (automatic)"
 msgstr "Агент SSH (автоматично)"
 
 #: src/remmina_file_editor.c:1017
-#, fuzzy
 msgid "Autostart this profile"
-msgstr "Ввімкнути «Автозапуск» для цього профілю"
+msgstr "Автоматично запускати цей профіль"
 
 #: src/remmina_file_editor.c:1025
 msgid "Basic"
@@ -1380,7 +1377,7 @@ msgstr "Перед-команда"
 
 #: src/remmina_file_editor.c:1527
 msgid "command %h %u %t %U %p %g --option"
-msgstr ""
+msgstr "команда %h %u %t %U %p %g --параметр"
 
 #: src/remmina_file_editor.c:1531
 msgid "Post-command"
@@ -1388,7 +1385,7 @@ msgstr "Після-команда"
 
 #: src/remmina_file_editor.c:1545
 msgid "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
-msgstr ""
+msgstr "/шлях/до/команди -параметр1 аргумент %h %u %t -параметр2 %U %p %g"
 
 #: src/remmina_file_editor.c:1596 src/remmina_file_editor.c:1614
 #, c-format
@@ -1459,7 +1456,7 @@ msgstr "Адреса проксі"
 
 #: plugins/www/www_plugin.c:888
 msgid "E.g. https://example.org, socks://mysocks:1080"
-msgstr ""
+msgstr "Приклад: https://example.org, socks://mysocks:1080"
 
 #: plugins/www/www_plugin.c:889
 msgid "Turn on Java support"
@@ -1492,9 +1489,8 @@ msgstr "Ігнорувати помилки TLS"
 #: plugins/www/www_plugin.c:896 plugins/vnc/vnc_plugin.c:1903
 #: plugins/spice/spice_plugin.c:456 plugins/rdp/rdp_plugin.c:2063
 #: plugins/nx/nx_plugin.c:740
-#, fuzzy
 msgid "Forget passwords after use"
-msgstr "Немає сховища паролів"
+msgstr "Забути паролі після використання"
 
 #: plugins/www/www_plugin.c:898
 msgid "Turn on Web Inspector"
@@ -1505,12 +1501,10 @@ msgid "Remmina web-browser plugin"
 msgstr "Додаток веббраузера Remmina"
 
 #: plugins/secret/src/glibsecret_plugin.c:188
-#, fuzzy
 msgid "Secured password storage in the GNOME keyring"
-msgstr "Безпечне зберігання паролів у зв'язці ключів GNOME"
+msgstr "Безпечне зберігання паролів у в'язці ключів GNOME"
 
 #: plugins/tool_hello_world/plugin_config.h:40
-#, fuzzy
 msgid "Hello, World!"
 msgstr "Привіт, світе!"
 
@@ -1687,9 +1681,8 @@ msgid "Resize guest to match window size"
 msgstr "Змінити розмір гостя, для відповідності розміру вашого вікна"
 
 #: plugins/spice/spice_plugin.c:459
-#, fuzzy
 msgid "Share smart card"
-msgstr "Надати доступ до смарткартки"
+msgstr "Надати доступ до смарт-картки"
 
 #: plugins/spice/spice_plugin.c:482
 msgid "SPICE - Simple Protocol for Independent Computing Environments"
@@ -1718,9 +1711,8 @@ msgid "The %s file has been transferred"
 msgstr "Файл %s було передано"
 
 #: plugins/xdmcp/xdmcp_plugin.c:97
-#, fuzzy
 msgid "Ran out of available local X display numbers."
-msgstr "Скінчились наявні номери для локального X-дисплея."
+msgstr "Скінчились наявні номери для локальних X-дисплеїв."
 
 #: plugins/xdmcp/xdmcp_plugin.c:264 plugins/nx/nx_plugin.c:605
 #, c-format
@@ -1974,12 +1966,10 @@ msgid "Negotiate"
 msgstr "Узгодити"
 
 #: plugins/rdp/rdp_plugin.c:1992
-#, fuzzy
 msgid "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 and newer)"
-msgstr "2600 (Windows XP),7601 (Windows Vista/7),9600 (Windows 8 та новіша)"
+msgstr "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 та новіша)"
 
 #: plugins/rdp/rdp_plugin.c:1995
-#, fuzzy
 msgid ""
 "Used i.a. by terminal services in smart card channel to distinguish client "
 "capabilities:\n"
@@ -2083,13 +2073,12 @@ msgid "Local parallel device"
 msgstr "Локальний паралельний пристрій"
 
 #: plugins/rdp/rdp_plugin.c:2052
-#, fuzzy
 msgid "Name of smart card"
-msgstr "Надати доступ до смарткартки"
+msgstr "Назва смарт-картки"
 
 #: plugins/rdp/rdp_plugin.c:2053
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
-msgstr ""
+msgstr "Пріоритет запису AAAA IPv6 над записом A IPv4"
 
 #: plugins/rdp/rdp_plugin.c:2054
 msgid "Share printers"
@@ -2108,9 +2097,8 @@ msgid "Share parallel ports"
 msgstr "Зробити паралельні порти загальнодоступними"
 
 #: plugins/rdp/rdp_plugin.c:2058
-#, fuzzy
 msgid "Share a smart card"
-msgstr "Надати доступ до смарткартки"
+msgstr "Надати доступ до смарт-картки"
 
 #: plugins/rdp/rdp_plugin.c:2059
 msgid "Redirect local microphone"
@@ -2266,7 +2254,7 @@ msgid "Terminating…"
 msgstr "Перериваємо…"
 
 #: plugins/nx/nx_session_manager.c:143
-#, fuzzy, c-format
+#, c-format
 msgid "NX sessions on %s"
 msgstr "Сеанси NX на %s"
 
@@ -2303,16 +2291,14 @@ msgid "Enter NX authentication credentials"
 msgstr "Введіть дані автентифікації NX"
 
 #: plugins/nx/nx_plugin.c:748
-#, fuzzy
 msgid "Send Ctrl+Alt+Del"
-msgstr "Надіслати Ctrl+Alt+Delete"
+msgstr "Надіслати Ctrl+Alt+Del"
 
 #: plugins/nx/nx_plugin.c:758
 msgid "NX - NX Technology"
 msgstr "Технологія NX - NX"
 
 #: plugins/kwallet/src/kwallet_plugin_main.c:118
-#, fuzzy
 msgid "Secured password storage in KWallet"
 msgstr "Безпечне сховище паролів у KWallet"
 
@@ -2364,6 +2350,11 @@ msgid ""
 "More details in COPYING\n"
 "    "
 msgstr ""
+"\n"
+"© Antenore Gatta, Giovanni Panozzo, 2014–2020.\n"
+"© Vic Lee, 2009–2014\n"
+"Докладніше про це у файлі COPYING\n"
+"    "
 
 #: data/ui/remmina_about.glade:40
 msgid "Website"
@@ -2452,7 +2443,6 @@ msgid "News"
 msgstr "Новини"
 
 #: data/ui/remmina_main.glade:410 data/ui/remmina_news.glade:134
-#, fuzzy
 msgid "Make Remmina your default remote desktop client"
 msgstr "Зробити Remmina типовим клієнтом віддаленої стільниці"
 
@@ -2470,9 +2460,8 @@ msgstr "Вікі"
 
 #. Remmina community website
 #: data/ui/remmina_main.glade:467
-#, fuzzy
 msgid "Community"
-msgstr "Інтернет-спільнота"
+msgstr "Спільнота"
 
 #: data/ui/remmina_main.glade:585
 msgid "Plugin"
@@ -2526,12 +2515,10 @@ msgid "Allow Remmina to automatically open .rdp and .remmina files."
 msgstr "Дозволити Remmina автоматично відкривати файли .rdp та .remmina."
 
 #: data/ui/remmina_news.glade:168
-#, fuzzy
 msgid "<big>Take part</big>"
-msgstr "<big>Фінансова підтримка</big>"
+msgstr "<big>Взяти участь</big>"
 
 #: data/ui/remmina_news.glade:194
-#, fuzzy
 msgid ""
 "<span>\n"
 "<b>You have our gratitude in choosing copylefted libre software, <a href="
@@ -2541,9 +2528,9 @@ msgid ""
 msgstr ""
 "<span>\n"
 "<b>Якщо ви в захваті від використання вільного програмного забезпечення, <a "
-"href=\"https://remmina.org/donations/\" title=\"Неймовірні пожертви Remmina"
-"\">підтримайте нас фінансово</a>, аби зробити нас ще щасливішими та "
-"стимулювати програмувати ще краще в майбутньому.</b>\n"
+"href=\"https://remmina.org/donations/\" title=\"Чудові пожертви Remmina\">"
+"підтримайте нас фінансово</a>, аби зробити нас ще щасливішими та стимулювати "
+"програмувати ще краще в майбутньому.</b>\n"
 "</span>\n"
 
 #: data/ui/remmina_news.glade:214
@@ -2640,9 +2627,8 @@ msgid "Screen resolutions"
 msgstr "Роздільна здатність екрана"
 
 #: data/ui/remmina_preferences.glade:280
-#, fuzzy
 msgid "Folder for screenshots"
-msgstr "Тека журналу сеансу SSH"
+msgstr "Тека для знімків вікон"
 
 #: data/ui/remmina_preferences.glade:292
 msgid "Choose a folder to save screenshots from Remmina in."
@@ -2654,12 +2640,11 @@ msgstr "Вибір теки"
 
 #: data/ui/remmina_preferences.glade:305
 msgid "Set up"
-msgstr ""
+msgstr "Налаштувати"
 
 #: data/ui/remmina_preferences.glade:326
-#, fuzzy
 msgid "Screenshot filenames"
-msgstr "Назва файла знімка екрана"
+msgstr "Назви файлів знімків екрана"
 
 #: data/ui/remmina_preferences.glade:338
 msgid ""
@@ -2691,9 +2676,8 @@ msgid "Remember last view mode"
 msgstr "Запам'ятовувати останній режим перегляду"
 
 #: data/ui/remmina_preferences.glade:418 data/ui/remmina_preferences.glade:422
-#, fuzzy
 msgid "Send anonymous statistics to remmina.org"
-msgstr "Надсилати статистику до remmina.org"
+msgstr "Надсилати анонімну статистику до remmina.org"
 
 #: data/ui/remmina_preferences.glade:462
 msgid "Only save generated screenshots, don't copy them to clipboard."
@@ -2762,27 +2746,23 @@ msgstr "Повноекранний"
 
 #: data/ui/remmina_preferences.glade:603
 msgid "Tabs"
-msgstr ""
+msgstr "Вкладки"
 
 #: data/ui/remmina_preferences.glade:618
-#, fuzzy
 msgid "By group"
-msgstr "Вкладки за групами"
+msgstr "За групами"
 
 #: data/ui/remmina_preferences.glade:619
-#, fuzzy
 msgid "By protocols"
-msgstr "Вкладки за протоколами"
+msgstr "За протоколами"
 
 #: data/ui/remmina_preferences.glade:620
-#, fuzzy
 msgid "Per connection"
-msgstr "Відкрити з'єднання"
+msgstr "На з'єднання"
 
 #: data/ui/remmina_preferences.glade:621
-#, fuzzy
 msgid "None"
-msgstr "<Жодна>"
+msgstr "Немає"
 
 #: data/ui/remmina_preferences.glade:632
 msgid "Fullscreen on the same screen as the connection window"
@@ -2879,23 +2859,23 @@ msgstr "Видобути з ~/.ssh/config"
 
 #: data/ui/remmina_preferences.glade:1257
 msgid "No logging at all"
-msgstr ""
+msgstr "Не вести журналу взагалі"
 
 #: data/ui/remmina_preferences.glade:1258
 msgid "Rare conditions or warnings"
-msgstr ""
+msgstr "Рідкісні умови або попередження"
 
 #: data/ui/remmina_preferences.glade:1259
 msgid "API-accessible entrypoints"
-msgstr ""
+msgstr "Доступні з програмного інтерфейсу точки входу"
 
 #: data/ui/remmina_preferences.glade:1260
 msgid "Lower level protocol info, packet level"
-msgstr ""
+msgstr "Дані низькорівневого протоколу на рівні пакетів"
 
 #: data/ui/remmina_preferences.glade:1261
 msgid "Function entering and leaving"
-msgstr ""
+msgstr "Вхід і вихід з функцій"
 
 #: data/ui/remmina_preferences.glade:1277
 msgid "SSH log level"
@@ -3009,9 +2989,8 @@ msgid "Bright colours"
 msgstr "Яскраві кольори"
 
 #: data/ui/remmina_preferences.glade:1876
-#, fuzzy
 msgid "Colour theme"
-msgstr "Завантажити схему кольорів"
+msgstr "Тема кольорів"
 
 #: data/ui/remmina_preferences.glade:1917
 msgid ""
