@@ -7,6 +7,7 @@
 # anonymous <noreply@weblate.org>, 2019.
 # Giovanni Panozzo <giovanni@panozzo.it>, 2020.
 # Jeannette L <j.lavoie@net-c.ca>, 2020.
+# Roberto Bellingeri <bellingeri@netguru.it>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
@@ -21,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.0.2-dev\n"
+"X-Generator: Weblate 4.1-dev\n"
 "X-Launchpad-Export-Date: 2011-01-18 05:16+0000\n"
 
 #: src/remmina_protocol_widget.c:275
@@ -358,7 +359,7 @@ msgstr "Scoperto"
 
 #: src/remmina_applet_menu_item.c:126
 msgid "New Connection"
-msgstr "Nuova connessione"
+msgstr "Nuova Connessione"
 
 #: src/remmina_mpchange.c:234
 msgid "The passwords do not match"
@@ -788,7 +789,7 @@ msgstr "Questo protocollo non supporta l’export."
 
 #: src/remmina_main.c:1227
 msgid "Remmina Kiosk"
-msgstr "Avviare Remmina in modo Chiosco"
+msgstr "Remmina Chiosco"
 
 #: src/remmina_key_chooser.h:38
 msgid "Shift+"
@@ -1215,7 +1216,6 @@ msgstr ""
 "* [server]:porta</big></tt>"
 
 #: src/remmina_file_editor.c:81
-#, fuzzy
 msgid ""
 "<tt><big>• command in PATH args %h\n"
 "• /path/to/foo -options %h %u\n"
@@ -1230,17 +1230,17 @@ msgid ""
 "connecting.\n"
 "</big></tt>"
 msgstr ""
-"<tt><big>• Il nome del file può utilizzare i seguenti segnaposto\n"
-"\n"
+"<tt><big>• comando negli argomenti del PERCORSO %h\n"
+"• /path/to/foo -options %h %u\n"
 "• %h viene sostituito con il nome del server\n"
 "• %t viene sostituito con il nome del server SSH\n"
-"• %u viene sostituito con il nome utente\n"
-"• %U viene sostituito con il nome utente SSH\n"
-"• %p viene sostituito con il nome del profilo\n"
-"• %g viene sostituito con il nome del gruppo del profilo di Remmina\n"
+"• %u è sostituito con il nome utente\n"
+"• %U è sostituito con il nome utente SSH\n"
+"• %p è sostituito con il nome del profilo Remmina\n"
+"• %g viene sostituito con il nome del gruppo di profili Remmina\n"
 "• %d è sostituito con l'ora locale in formato iso8601\n"
-"Non eseguire in background se si desidera che il comando venga completato "
-"prima di connettersi.\n"
+"Non eseguire in background se si desidera che il comando venga eseguito "
+"della connessione.\n"
 "</big></tt>"
 
 #: src/remmina_file_editor.c:95
@@ -1427,7 +1427,6 @@ msgid "Command"
 msgstr "Comando"
 
 #: plugins/exec/exec_plugin.c:265
-#, fuzzy
 msgid "Asynchronous execution"
 msgstr "Esecuzione asincrona"
 
@@ -1453,7 +1452,7 @@ msgstr "Agente utente"
 
 #: plugins/www/www_plugin.c:888
 msgid "Proxy URL"
-msgstr ""
+msgstr "URL proxy"
 
 #: plugins/www/www_plugin.c:888
 msgid "E.g. https://example.org, socks://mysocks:1080"
@@ -2162,11 +2161,11 @@ msgstr "Cache glifi"
 
 #: plugins/rdp/rdp_plugin.c:2073
 msgid "Enable multitransport protocol (UDP)"
-msgstr ""
+msgstr "Abilita protocollo multitransport (UDP)"
 
 #: plugins/rdp/rdp_plugin.c:2073
 msgid "Using the UDP protocol may improve performance"
-msgstr ""
+msgstr "L'uso del protocollo UDP può migliorare le prestazioni"
 
 #: plugins/rdp/rdp_plugin.c:2097
 msgid "RDP - Remote Desktop Protocol"
@@ -2370,22 +2369,20 @@ msgid "Website"
 msgstr "Sito Web"
 
 #: data/ui/remmina_main.glade:35
-#, fuzzy
 msgid "Hide or show the search bar"
-msgstr "Mostra barra di ricerca"
+msgstr "Nascondi o mostra la barra di ricerca"
 
 #: data/ui/remmina_main.glade:41
-#, fuzzy
 msgid "Add a new connection profile"
 msgstr "Crea un nuovo profilo di connessione"
 
 #: data/ui/remmina_main.glade:47
 msgid "Show the Remmina changelog."
-msgstr ""
+msgstr "Mostra il changelog di Remmina."
 
 #: data/ui/remmina_main.glade:53
 msgid "Switch from grouped to list view"
-msgstr ""
+msgstr "Passa dalla vista raggruppata alla vista elenco"
 
 #: data/ui/remmina_main.glade:78
 msgid "New connection profile"
@@ -2396,9 +2393,8 @@ msgid "Show search bar"
 msgstr "Mostra barra di ricerca"
 
 #: data/ui/remmina_main.glade:123
-#, fuzzy
 msgid "Remmina main menu"
-msgstr "Cartella dati Remmina"
+msgstr "Menu principale di Remmina"
 
 #: data/ui/remmina_main.glade:130
 msgid "Actions"
@@ -2411,6 +2407,7 @@ msgstr "Cambia vista"
 #: data/ui/remmina_main.glade:175
 msgid "Select the protocol to use with the quick connect bar."
 msgstr ""
+"Seleziona il protocollo da utilizzare con la barra di connessione rapida."
 
 #: data/ui/remmina_main.glade:193
 msgid "Search string or server name/IP address for “Quick Connect”"
@@ -2518,7 +2515,7 @@ msgstr ""
 
 #: data/ui/remmina_news.glade:120
 msgid "Enable anonymous statistics"
-msgstr ""
+msgstr "Abilita statistiche anonime"
 
 #: data/ui/remmina_news.glade:143
 msgid "Apply"
@@ -2526,7 +2523,7 @@ msgstr "Applica"
 
 #: data/ui/remmina_news.glade:147
 msgid "Allow Remmina to automatically open .rdp and .remmina files."
-msgstr ""
+msgstr "Consenti a Remmina di aprire automaticamente i file .rdp e .remmina."
 
 #: data/ui/remmina_news.glade:168
 #, fuzzy
@@ -2554,7 +2551,7 @@ msgstr "<big>Contribuisci</big>"
 
 #: data/ui/remmina_mpc.glade:14
 msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
-msgstr "<span weight='bold' size='larger'>Cambio password multiplo</span>"
+msgstr "<span weight='bold' size='larger'>Cambio Password Multiplo</span>"
 
 #: data/ui/remmina_mpc.glade:32
 msgid "Change"
@@ -3124,7 +3121,7 @@ msgstr "Sposta giù"
 
 #: data/ui/remmina_key_chooser.glade:23
 msgid "Choose a new key"
-msgstr "Sciegli un nuovo tasto"
+msgstr "Scegli un nuovo tasto"
 
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
