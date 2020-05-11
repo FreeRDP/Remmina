@@ -105,7 +105,7 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">start</property>
-                            <property name="label" translatable="yes">Send &lt;b&gt;&lt;a href="https://remmina.gitlab.io/remminadoc.gitlab.io/remmina__stats_8c.html#details" title="Remmina usage statistics"&gt;anonymous&lt;/a&gt;&lt;/b&gt; statistics to remmina.org</property>
+                            <property name="label" translatable="yes">Send &lt;b&gt;&lt;a href="https://remmina.gitlab.io/remminadoc.gitlab.io/remmina__stats_8c.html#details" title="Remmina usage statistics"&gt;anonymous&lt;/a&gt;&lt;/b&gt; statistics</property>
                             <property name="use_markup">True</property>
                           </object>
                           <packing>
@@ -117,7 +117,7 @@
                           <object class="GtkSwitch" id="rmnews_stats_switch">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
-                            <property name="tooltip_text" translatable="yes">Enable anonymous statistics</property>
+                            <property name="tooltip_text" translatable="yes">Send anonymous statistics</property>
                             <property name="halign">start</property>
                             <signal name="notify::active" handler="rmnews_stats_switch_state_set_cb" swapped="no"/>
                           </object>
@@ -131,7 +131,7 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">start</property>
-                            <property name="label" translatable="yes">Make Remmina your default remote desktop client</property>
+                            <property name="label" translatable="yes">Use as default remote desktop client</property>
                           </object>
                           <packing>
                             <property name="left_attach">0</property>
