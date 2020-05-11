@@ -2679,7 +2679,7 @@ static gboolean rcw_on_configure(GtkWidget *widget, GdkEventConfigure *event,
 		cnnwin->priv->acs_eventsourceid = 0;
 	}
 
-	if (cnnwin && gtk_widget_get_window(GTK_WIDGET(cnnwin))
+	if (gtk_widget_get_window(GTK_WIDGET(cnnwin))
 	    && cnnwin->priv->view_mode == SCROLLED_WINDOW_MODE)
 		/* Under Gnome shell we receive this configure_event BEFORE a window
 		 * is really unmaximized, so we must read its new state and dimensions
