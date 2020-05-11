@@ -354,10 +354,7 @@ static gboolean remmina_plugin_nx_start_session(RemminaProtocolWidget *gp)
 
 	if (s1 && s2) {
 		ret = remmina_nx_session_login(nx, s1, s2);
-	}else  {
-		g_free(s1);
-		g_free(s2);
-
+	} else {
 		gchar *s_username, *s_password;
 
 		disablepasswordstoring = remmina_plugin_nx_service->file_get_int(remminafile, "disablepasswordstoring", FALSE);

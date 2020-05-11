@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2020-05-08 07:41+0000\n"
+"POT-Creation-Date: 2020-05-11 06:29+0000\n"
 "PO-Revision-Date: 2020-04-15 21:14+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/remmina/"
@@ -45,8 +45,8 @@ msgid "Connecting to \"%s\" via SSH…"
 msgstr "Kobler til «%s» via SSH…"
 
 #: src/remmina_protocol_widget.c:926
-#, c-format
-msgid "Awaiting incoming SSH connection at port %i…"
+#, fuzzy, c-format
+msgid "Awaiting incoming SSH connection on port %i…"
 msgstr "Venter på innkommende SSH-tilkobling på port %i …"
 
 #: src/remmina_protocol_widget.c:978
@@ -73,14 +73,15 @@ msgstr "Kobler til «%s» via SSH…"
 #: src/remmina_protocol_widget.c:1424 src/remmina_protocol_widget.c:1443
 #: src/remmina_ssh_plugin.c:920 src/remmina_sftp_plugin.c:291
 #: src/remmina_sftp_plugin.c:324 src/remmina_file_editor.c:927
-#: plugins/www/www_plugin.c:879 plugins/rdp/rdp_plugin.c:2014
+#: plugins/www/www_plugin.c:872 plugins/rdp/rdp_plugin.c:2014
 #: data/ui/remmina_unlock.glade:116 data/ui/remmina_mpc.glade:236
 #: data/ui/remmina_preferences.glade:1533
 msgid "Password"
 msgstr "Passord"
 
 #: src/remmina_protocol_widget.c:1442
-msgid "Type in username and password for SSH."
+#, fuzzy
+msgid "Type in SSH username and password."
 msgstr "Skriv inn brukernavn og passord for SSH."
 
 #: src/remmina_protocol_widget.c:1498
@@ -144,7 +145,6 @@ msgid "Plugin %s is not registered."
 msgstr "Tillegget «%s» er ikke registrert."
 
 #: src/remmina_pref_dialog.c:83 src/remmina_file_editor.c:497
-#: data/ui/remmina_preferences.glade:234
 msgid "Resolutions"
 msgstr "Oppløsninger"
 
@@ -240,15 +240,15 @@ msgstr "_Velg alt"
 
 #: src/remmina_ssh_plugin.c:1019 src/remmina_message_panel.c:330
 #: src/remmina_sftp_plugin.c:323 src/remmina_file_editor.c:918
-#: plugins/www/www_plugin.c:878 plugins/vnc/vnc_plugin.c:1832
-#: plugins/vnc/vnc_plugin.c:1852 plugins/rdp/rdp_plugin.c:2013
-#: plugins/nx/nx_plugin.c:721 data/ui/remmina_mpc.glade:144
+#: plugins/www/www_plugin.c:871 plugins/vnc/vnc_plugin.c:1859
+#: plugins/vnc/vnc_plugin.c:1879 plugins/rdp/rdp_plugin.c:2013
+#: plugins/nx/nx_plugin.c:718 data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr "Brukernavn"
 
-#: src/remmina_ssh_plugin.c:1020 plugins/vnc/vnc_plugin.c:1833
-#: plugins/vnc/vnc_plugin.c:1853 plugins/spice/spice_plugin.c:437
-#: plugins/nx/nx_plugin.c:722
+#: src/remmina_ssh_plugin.c:1020 plugins/vnc/vnc_plugin.c:1860
+#: plugins/vnc/vnc_plugin.c:1880 plugins/spice/spice_plugin.c:437
+#: plugins/nx/nx_plugin.c:719
 msgid "User password"
 msgstr "Brukerpassord"
 
@@ -257,7 +257,7 @@ msgid "Authentication type"
 msgstr "Identitetsbekreftelsestype"
 
 #: src/remmina_ssh_plugin.c:1022 src/remmina_sftp_plugin.c:326
-#: plugins/nx/nx_plugin.c:720
+#: plugins/nx/nx_plugin.c:717
 msgid "Identity file"
 msgstr "Identitetsfil"
 
@@ -267,7 +267,7 @@ msgid "Password to unlock private key"
 msgstr "Passord for opplåsing av privat nøkkel"
 
 #: src/remmina_ssh_plugin.c:1024 plugins/xdmcp/xdmcp_plugin.c:370
-#: plugins/rdp/rdp_plugin.c:2043 plugins/nx/nx_plugin.c:725
+#: plugins/rdp/rdp_plugin.c:2043 plugins/nx/nx_plugin.c:722
 msgid "Startup program"
 msgstr "Oppstartsprogram"
 
@@ -448,7 +448,7 @@ msgstr "Oppover"
 msgid "Go to parent folder"
 msgstr "Gå til foreldremappe"
 
-#: src/remmina_ftp_client.c:763 plugins/vnc/vnc_plugin.c:1889
+#: src/remmina_ftp_client.c:763 plugins/vnc/vnc_plugin.c:1916
 #: plugins/rdp/rdp_plugin.c:2081
 msgid "Refresh"
 msgstr "Oppdater"
@@ -596,7 +596,7 @@ msgstr "Sett én eller flere profilinnstillinger, for bruk med --update-profile"
 msgid "Open Main Window"
 msgstr "Åpne hovedvindu"
 
-#: src/remmina_icon.c:144 data/ui/remmina_main.glade:349
+#: src/remmina_icon.c:144 src/rcw.c:2257 data/ui/remmina_main.glade:349
 msgid "_Preferences"
 msgstr "_Innstillinger"
 
@@ -650,69 +650,70 @@ msgstr "Behold sideforhold når skalert"
 msgid "Fill client window when scaled"
 msgstr "Fyll klientvindu når skalert"
 
-#: src/rcw.c:1993
+#: src/rcw.c:1996
 msgid "Turn off scaling to avoid screenshot distortion."
 msgstr "Skru av skalering for å unngå fordreining av skjermavbildninger."
 
-#: src/rcw.c:2053 plugins/www/www_plugin.c:847
+#: src/rcw.c:2056 plugins/www/www_plugin.c:840
 msgid "Screenshot taken"
 msgstr "Skjermavbildning utført"
 
-#: src/rcw.c:2130
+#: src/rcw.c:2133
 msgid "Resize the window to fit in remote resolution"
 msgstr "Tilpass vindustørrelsen slik at den passer med ekstern oppløsning"
 
-#: src/rcw.c:2141
+#: src/rcw.c:2144
 msgid "Toggle fullscreen mode"
 msgstr "Slå av/på fullskjermmodus"
 
-#: src/rcw.c:2186 data/ui/remmina_preferences.glade:930
+#: src/rcw.c:2189 data/ui/remmina_preferences.glade:930
 msgid "Switch tab pages"
 msgstr "Bytt mellom fanesider"
 
-#: src/rcw.c:2200
+#: src/rcw.c:2203
 msgid "Toggle dynamic resolution update"
 msgstr "Veksle dynamisk oppløsningsoppdatering"
 
-#: src/rcw.c:2210
+#: src/rcw.c:2213
 msgid "Toggle scaled mode"
 msgstr "Skru av/på skalert modus"
 
-#: src/rcw.c:2245
+#: src/rcw.c:2248
 msgid "Grab all keyboard events"
 msgstr "Fang alle tastaturtastetrykk"
 
-#: src/rcw.c:2254
-msgid "Preferences"
-msgstr "Innstillinger"
+#: src/rcw.c:2265
+#, fuzzy
+msgid "_Tools"
+msgstr "Verktøy"
 
-#: src/rcw.c:2262 src/rcw.c:2263 data/ui/remmina_main.glade:303
+#: src/rcw.c:2266 data/ui/remmina_main.glade:303
 msgid "Tools"
 msgstr "Verktøy"
 
-#: src/rcw.c:2275
+#: src/rcw.c:2278
 msgid "Duplicate current connection"
 msgstr "Dupliser nåværende tilkobling"
 
-#: src/rcw.c:2286 data/ui/remmina_preferences.glade:1124
+#: src/rcw.c:2289 data/ui/remmina_preferences.glade:1124
 #: data/ui/remmina_preferences.glade:1134
 msgid "Screenshot"
 msgstr "Skjermavbildning"
 
-#: src/rcw.c:2294 data/ui/remmina_preferences.glade:1033
+#: src/rcw.c:2297 data/ui/remmina_preferences.glade:1033
 msgid "Minimize window"
 msgstr "Minimer vindu"
 
-#: src/rcw.c:2303 data/ui/remmina_preferences.glade:1064
+#: src/rcw.c:2306 data/ui/remmina_preferences.glade:1064
 msgid "Disconnect"
 msgstr "Koble fra"
 
-#: src/rcw.c:3847
+#: src/rcw.c:3850
 #, fuzzy, c-format
 msgid "The file \"%s\" is corrupted, unreadable, or could not be found."
 msgstr "Filen \"%s\" er skadet, kan ikke leses, eller ble ikke funnet."
 
-#: src/rcw.c:4011
+#: src/rcw.c:4014
 msgid "Warning: This plugin requires GtkSocket, but it’s not available."
 msgstr ""
 "Advarsel: Dette programtillegget krever GtkSocket, men det er ikke "
@@ -1192,14 +1193,10 @@ msgid "Could not listen to local port."
 msgstr "Kunne ikke lytte til lokal port."
 
 #. TRANSLATORS: Do not translate pthread
-#: src/remmina_ssh.c:1638 src/remmina_ssh.c:1655 src/remmina_ssh.c:1690
+#: src/remmina_ssh.c:1638 src/remmina_ssh.c:1655 src/remmina_ssh.c:1672
+#: src/remmina_ssh.c:1690
 msgid "Could not start pthread."
 msgstr "Klarte ikke å starte pthread."
-
-#. TRANSLATORS: Do not translate pthread
-#: src/remmina_ssh.c:1672
-msgid "Failed to initialize pthread."
-msgstr "Klarte ikke å igangsette pthread."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1783
@@ -1347,7 +1344,7 @@ msgstr "SSH-agent (automatisk)"
 
 #: src/remmina_file_editor.c:1017
 #, fuzzy
-msgid "Turn on \"Autostart\" for this profile"
+msgid "Autostart this profile"
 msgstr "Skru på autostart for denne profilen"
 
 #: src/remmina_file_editor.c:1025
@@ -1403,10 +1400,18 @@ msgstr "Bruk «%s» som skilletegn for undergrupper"
 msgid "Pre-command"
 msgstr "Forhåndskommando"
 
+#: src/remmina_file_editor.c:1527
+msgid "command %h %u %t %U %p %g --option"
+msgstr ""
+
 #: src/remmina_file_editor.c:1531
 #, fuzzy
 msgid "Post-command"
 msgstr "Etterfølgende kommando"
+
+#: src/remmina_file_editor.c:1545
+msgid "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
+msgstr ""
 
 #: src/remmina_file_editor.c:1596 src/remmina_file_editor.c:1614
 #, c-format
@@ -1460,59 +1465,62 @@ msgstr "Fil nedlastet"
 msgid "Enter WWW authentication credentials"
 msgstr "Skriv inn WWW-identitetsbekreftelsesdetaljer"
 
-#: plugins/www/www_plugin.c:877
+#: plugins/www/www_plugin.c:870
 msgid "URL"
 msgstr "Nettadresse"
 
-#: plugins/www/www_plugin.c:877
+#: plugins/www/www_plugin.c:870
 msgid "http://address or https://address"
 msgstr "http://adresse eller https://adresse"
 
-#: plugins/www/www_plugin.c:894
+#: plugins/www/www_plugin.c:887
 msgid "User agent"
 msgstr "Brukeragent"
 
-#: plugins/www/www_plugin.c:895
+#: plugins/www/www_plugin.c:888
 msgid "Proxy URL"
 msgstr ""
 
-#: plugins/www/www_plugin.c:895
+#: plugins/www/www_plugin.c:888
 msgid "Ex. https://myproxy.com, socks://mysocks:1080"
 msgstr ""
 
-#: plugins/www/www_plugin.c:896
+#: plugins/www/www_plugin.c:889
 msgid "Turn on Java support"
 msgstr "Skru på Java-støtte"
 
-#: plugins/www/www_plugin.c:897
+#: plugins/www/www_plugin.c:890
 msgid "Turn on smooth scrolling"
 msgstr "Skru på myk rulling"
 
-#: plugins/www/www_plugin.c:898
+#: plugins/www/www_plugin.c:891
 msgid "Turn on spatial navigation"
 msgstr "Skru på romnavigering"
 
-#: plugins/www/www_plugin.c:899
+#: plugins/www/www_plugin.c:892
 msgid "Turn on plugin support"
 msgstr "Skru på programtilleggsstøtte"
 
-#: plugins/www/www_plugin.c:900
+#: plugins/www/www_plugin.c:893
 msgid "Turn on WebGL support"
 msgstr "Skru på WebGL-støtte"
 
-#: plugins/www/www_plugin.c:901
+#: plugins/www/www_plugin.c:894
 msgid "Turn on HTML5 audio support"
 msgstr "Skru på HTML5-lydstøtte"
 
-#: plugins/www/www_plugin.c:902
+#: plugins/www/www_plugin.c:895
 msgid "Ignore TLS errors"
 msgstr "Ignorer TLS-feil"
 
-#: plugins/www/www_plugin.c:903
-msgid "No password storage"
+#: plugins/www/www_plugin.c:896 plugins/vnc/vnc_plugin.c:1903
+#: plugins/spice/spice_plugin.c:456 plugins/rdp/rdp_plugin.c:2063
+#: plugins/nx/nx_plugin.c:740
+#, fuzzy
+msgid "Forget passwords after use"
 msgstr "Ingen passordslagring"
 
-#: plugins/www/www_plugin.c:905
+#: plugins/www/www_plugin.c:898
 #, fuzzy
 msgid "Turn on Web Inspector"
 msgstr "Skru på vev-inspektør"
@@ -1524,132 +1532,127 @@ msgstr "Remmina-nettleserprogramtillegg"
 
 #: plugins/secret/src/glibsecret_plugin.c:188
 #, fuzzy
-msgid "Secure password storing in the GNOME keyring"
+msgid "Secured password storage in the GNOME keyring"
 msgstr "Sikker passordslagring i GNOME-nøkkelringen"
 
 #: plugins/tool_hello_world/plugin_config.h:40
-msgid "Hello World!"
+#, fuzzy
+msgid "Hello, World!"
 msgstr "Hei verden!"
 
-#: plugins/vnc/vnc_plugin.c:734
+#: plugins/vnc/vnc_plugin.c:751
 msgid "Enter VNC password"
 msgstr "Skriv inn VNC-passord"
 
-#: plugins/vnc/vnc_plugin.c:787
+#: plugins/vnc/vnc_plugin.c:804
 msgid "Enter VNC authentication credentials"
 msgstr "Skriv inn VNC-identitetsbekreftelsesdetaljer"
 
-#: plugins/vnc/vnc_plugin.c:890
+#: plugins/vnc/vnc_plugin.c:907
 msgid "Unable to connect to VNC server"
 msgstr "Klarte ikke å koble til VNC-tjener"
 
-#: plugins/vnc/vnc_plugin.c:891
+#: plugins/vnc/vnc_plugin.c:908
 #, c-format
 msgid "Couldn’t convert '%s' to host address"
 msgstr "Klarte ikke å konvertere «%s» til vertsadresse"
 
-#: plugins/vnc/vnc_plugin.c:892
+#: plugins/vnc/vnc_plugin.c:909
 #, c-format
 msgid "VNC connection failed: %s"
 msgstr "Feil ved VNC-tilkobling: %s"
 
-#: plugins/vnc/vnc_plugin.c:893
+#: plugins/vnc/vnc_plugin.c:910
 msgid "Your connection has been rejected."
 msgstr "Tilkoblingen ble nektet."
 
-#: plugins/vnc/vnc_plugin.c:919
+#: plugins/vnc/vnc_plugin.c:936
 #, c-format
 msgid "The VNC server requested an unknown authentication method. %s"
 msgstr "VNC-tjeneren forespurte en ukjent identitetsbekreftelsesmetode. %s"
 
-#: plugins/vnc/vnc_plugin.c:921
+#: plugins/vnc/vnc_plugin.c:938
 #, fuzzy
 msgid "Please retry after turning on encryption for this profile."
 msgstr "Skru på kryptering for denne profilen og prøv igjen."
 
-#: plugins/vnc/vnc_plugin.c:1803
+#: plugins/vnc/vnc_plugin.c:1830
 msgid "True color (32 bpp)"
 msgstr "Sann fargeoppløsning (32 bpp)"
 
-#: plugins/vnc/vnc_plugin.c:1804
+#: plugins/vnc/vnc_plugin.c:1831
 msgid "High color (16 bpp)"
 msgstr "Høy fargeoppløsning (16 bpp)"
 
-#: plugins/vnc/vnc_plugin.c:1805
+#: plugins/vnc/vnc_plugin.c:1832
 msgid "256 colors (8 bpp)"
 msgstr "256 farger (8 bpp)"
 
-#: plugins/vnc/vnc_plugin.c:1812 plugins/rdp/rdp_plugin.c:1957
-#: plugins/rdp/rdp_settings.c:275 plugins/nx/nx_plugin.c:704
+#: plugins/vnc/vnc_plugin.c:1839 plugins/rdp/rdp_plugin.c:1957
+#: plugins/rdp/rdp_settings.c:275 plugins/nx/nx_plugin.c:701
 msgid "Best (slowest)"
 msgstr "Høyeste kvalitet (treigest)"
 
-#: plugins/vnc/vnc_plugin.c:1813 plugins/rdp/rdp_plugin.c:1956
-#: plugins/rdp/rdp_settings.c:273 plugins/nx/nx_plugin.c:703
+#: plugins/vnc/vnc_plugin.c:1840 plugins/rdp/rdp_plugin.c:1956
+#: plugins/rdp/rdp_settings.c:273 plugins/nx/nx_plugin.c:700
 msgid "Good"
 msgstr "God"
 
-#: plugins/vnc/vnc_plugin.c:1814 plugins/rdp/rdp_plugin.c:1955
-#: plugins/rdp/rdp_settings.c:271 plugins/nx/nx_plugin.c:702
+#: plugins/vnc/vnc_plugin.c:1841 plugins/rdp/rdp_plugin.c:1955
+#: plugins/rdp/rdp_settings.c:271 plugins/nx/nx_plugin.c:699
 msgid "Medium"
 msgstr "Middels"
 
-#: plugins/vnc/vnc_plugin.c:1815 plugins/rdp/rdp_plugin.c:1954
-#: plugins/rdp/rdp_settings.c:269 plugins/nx/nx_plugin.c:701
+#: plugins/vnc/vnc_plugin.c:1842 plugins/rdp/rdp_plugin.c:1954
+#: plugins/rdp/rdp_settings.c:269 plugins/nx/nx_plugin.c:698
 msgid "Poor (fastest)"
 msgstr "Lav kvalitet (raskest)"
 
-#: plugins/vnc/vnc_plugin.c:1831
+#: plugins/vnc/vnc_plugin.c:1858
 msgid "Repeater"
 msgstr "Reléstasjon"
 
-#: plugins/vnc/vnc_plugin.c:1834 plugins/vnc/vnc_plugin.c:1854
+#: plugins/vnc/vnc_plugin.c:1861 plugins/vnc/vnc_plugin.c:1881
 msgid "Color depth"
 msgstr "Fargedybde"
 
-#: plugins/vnc/vnc_plugin.c:1835 plugins/vnc/vnc_plugin.c:1855
-#: plugins/rdp/rdp_plugin.c:2033 plugins/nx/nx_plugin.c:724
+#: plugins/vnc/vnc_plugin.c:1862 plugins/vnc/vnc_plugin.c:1882
+#: plugins/rdp/rdp_plugin.c:2033 plugins/nx/nx_plugin.c:721
 msgid "Quality"
 msgstr "Kvalitet"
 
-#: plugins/vnc/vnc_plugin.c:1851
+#: plugins/vnc/vnc_plugin.c:1878
 msgid "Listen on port"
 msgstr "Lytt til port"
 
-#: plugins/vnc/vnc_plugin.c:1871
+#: plugins/vnc/vnc_plugin.c:1898
 msgid "Show remote cursor"
 msgstr "Vis ekstern peker"
 
-#: plugins/vnc/vnc_plugin.c:1872 plugins/vnc/vnc_plugin.c:1887
+#: plugins/vnc/vnc_plugin.c:1899 plugins/vnc/vnc_plugin.c:1914
 #: plugins/spice/spice_plugin.c:460 plugins/spice/spice_plugin.c:469
 msgid "View only"
 msgstr "Kun vis"
 
-#: plugins/vnc/vnc_plugin.c:1873 plugins/spice/spice_plugin.c:455
-#: plugins/spice/spice_plugin.c:471 plugins/nx/nx_plugin.c:740
+#: plugins/vnc/vnc_plugin.c:1900 plugins/spice/spice_plugin.c:455
+#: plugins/spice/spice_plugin.c:471 plugins/nx/nx_plugin.c:737
 msgid "Disable clipboard sync"
 msgstr "Skru av synkronisering av utklippstavle"
 
-#: plugins/vnc/vnc_plugin.c:1874 plugins/nx/nx_plugin.c:741
+#: plugins/vnc/vnc_plugin.c:1901 plugins/nx/nx_plugin.c:738
 msgid "Disable encryption"
 msgstr "Skru av kryptering"
 
-#: plugins/vnc/vnc_plugin.c:1875 plugins/vnc/vnc_plugin.c:1888
+#: plugins/vnc/vnc_plugin.c:1902 plugins/vnc/vnc_plugin.c:1915
 msgid "Disable server input"
 msgstr "Skru av tjener-inndata"
 
-#: plugins/vnc/vnc_plugin.c:1876 plugins/spice/spice_plugin.c:456
-#: plugins/nx/nx_plugin.c:743
-msgid "Disable password storing"
-msgstr "Skru av passordslagring"
-
-#: plugins/vnc/vnc_plugin.c:1890
+#: plugins/vnc/vnc_plugin.c:1917
 msgid "Open Chat…"
 msgstr "Åpne sludrevindu …"
 
-#: plugins/vnc/vnc_plugin.c:1891 plugins/spice/spice_plugin.c:472
+#: plugins/vnc/vnc_plugin.c:1918 plugins/spice/spice_plugin.c:472
 #: plugins/xdmcp/xdmcp_plugin.c:381 plugins/rdp/rdp_plugin.c:2084
-#: plugins/nx/nx_plugin.c:751
 msgid "Send Ctrl+Alt+Delete"
 msgstr "Send Ctrl+Alt+Delete"
 
@@ -1712,9 +1715,9 @@ msgstr "Skru på lydkanal"
 msgid "Resize guest to match window size"
 msgstr "Tilpass gjest til vinduets størrelse"
 
-#: plugins/spice/spice_plugin.c:459 plugins/rdp/rdp_plugin.c:2058
+#: plugins/spice/spice_plugin.c:459
 #, fuzzy
-msgid "Share smartcard"
+msgid "Share smart card"
 msgstr "Del smartkort"
 
 #: plugins/spice/spice_plugin.c:482
@@ -1745,10 +1748,10 @@ msgstr "%s-filen har blitt overført"
 
 #: plugins/xdmcp/xdmcp_plugin.c:97
 #, fuzzy
-msgid "Run out of available local X display number."
+msgid "Ran out of available local X display numbers."
 msgstr "Slapp opp for tilgjengelige nummer for lokale X-skjermer."
 
-#: plugins/xdmcp/xdmcp_plugin.c:264 plugins/nx/nx_plugin.c:608
+#: plugins/xdmcp/xdmcp_plugin.c:264 plugins/nx/nx_plugin.c:605
 #, fuzzy, c-format
 msgid ""
 "The protocol \"%s\" is unavailable because GtkSocket only works under X.Org."
@@ -1782,7 +1785,7 @@ msgstr "Sann fargeoppløsning (24 bit)"
 msgid "Colour depth"
 msgstr "Fargedybde"
 
-#: plugins/xdmcp/xdmcp_plugin.c:371 plugins/nx/nx_plugin.c:742
+#: plugins/xdmcp/xdmcp_plugin.c:371 plugins/nx/nx_plugin.c:739
 msgid "Use local cursor"
 msgstr "Bruk lokal peker"
 
@@ -2011,15 +2014,15 @@ msgstr "Forhandle"
 
 #: plugins/rdp/rdp_plugin.c:1992
 #, fuzzy
-msgid "2600 (Windows XP),7601 (Windows Vista/7),9600 (Windows 8 and newer)"
+msgid "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 and newer)"
 msgstr "2600 (Windows XP),7601 (Windows Vista/7),9600 (Windows 8 og nyere)"
 
 #: plugins/rdp/rdp_plugin.c:1995
 #, fuzzy
 msgid ""
-"Used i.a. by Terminal services in SmartCard channel to distinguish client "
+"Used i.a. by terminal services in smart card channel to distinguish client "
 "capabilities:\n"
-"  • < 4034: Windows XP base smartcard functions\n"
+"  • < 4034: Windows XP base smart card functions\n"
 "  • 4034-7064: Windows Vista/7: SCardReadCache(), SCardWriteCache(),\n"
 "    SCardGetTransmitCount()\n"
 "  • >= 7065: Windows 8 and newer: SCardGetReaderIcon(), "
@@ -2125,11 +2128,11 @@ msgstr "Lokal parallell-enhet"
 
 #: plugins/rdp/rdp_plugin.c:2052
 #, fuzzy
-msgid "Smartcard name"
-msgstr "Smartkortnavn"
+msgid "Name of smart card"
+msgstr "Del smartkort"
 
 #: plugins/rdp/rdp_plugin.c:2053
-msgid "Prefer IPv6 AAA record over IPv4 A record"
+msgid "Prefer IPv6 AAAA record over IPv4 A record"
 msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:2054
@@ -2147,6 +2150,11 @@ msgstr "(SELinux) tilforlatelig modus for serielle porter"
 #: plugins/rdp/rdp_plugin.c:2057
 msgid "Share parallel ports"
 msgstr "Del parallellporter"
+
+#: plugins/rdp/rdp_plugin.c:2058
+#, fuzzy
+msgid "Share a smart card"
+msgstr "Del smartkort"
 
 #: plugins/rdp/rdp_plugin.c:2059
 msgid "Redirect local microphone"
@@ -2169,10 +2177,6 @@ msgstr "Bruk arbeidsflyt fra gammel lisens"
 #, fuzzy
 msgid "It disables CAL and hwId is set to 0"
 msgstr "Det skrur av CAL, og hwld settes til 0"
-
-#: plugins/rdp/rdp_plugin.c:2063
-msgid "Turn off password storing"
-msgstr "Skru av passordslagring"
 
 #: plugins/rdp/rdp_plugin.c:2064
 msgid "Attach to console (2003/2003 R2)"
@@ -2315,8 +2319,8 @@ msgid "Terminating…"
 msgstr "Avslutter …"
 
 #: plugins/nx/nx_session_manager.c:143
-#, c-format
-msgid "NX Sessions on %s"
+#, fuzzy, c-format
+msgid "NX sessions on %s"
 msgstr "NX-økter på %s"
 
 #: plugins/nx/nx_session_manager.c:147
@@ -2347,18 +2351,23 @@ msgstr "Status"
 msgid "Password for private SSH key"
 msgstr "Passord for privat SSH-nøkkel"
 
-#: plugins/nx/nx_plugin.c:367
+#: plugins/nx/nx_plugin.c:364
 #, fuzzy
 msgid "Enter NX authentication credentials"
 msgstr "Skriv inn NX-identitetsbekreftelsesdetaljer"
 
-#: plugins/nx/nx_plugin.c:761
+#: plugins/nx/nx_plugin.c:748
+#, fuzzy
+msgid "Send Ctrl+Alt+Del"
+msgstr "Send Ctrl+Alt+Delete"
+
+#: plugins/nx/nx_plugin.c:758
 msgid "NX - NX Technology"
 msgstr "NX - NX-teknologi"
 
 #: plugins/kwallet/src/kwallet_plugin_main.c:118
 #, fuzzy
-msgid "Secure passwords storage in KWallet"
+msgid "Secured password storage in KWallet"
 msgstr "Sikker passordslagring i KDE-lommeboken"
 
 #: plugins/telepathy/telepathy_channel_handler.c:237
@@ -2399,6 +2408,15 @@ msgstr "Ikke vis denne meldingen igjen"
 #: data/ui/remmina_about.glade:30 data/ui/remmina_main.glade:491
 msgid "About"
 msgstr "Om"
+
+#: data/ui/remmina_about.glade:34
+msgid ""
+"\n"
+"Copyright © 2014–2020 Antenore Gatta, Giovanni Panozzo.\n"
+"Copyright © 2009–2014 Vic Lee\n"
+"More details in COPYING\n"
+"    "
+msgstr ""
 
 #: data/ui/remmina_about.glade:40
 msgid "Website"
@@ -2493,10 +2511,10 @@ msgstr "Eksporter"
 msgid "News"
 msgstr "Nyheter"
 
-#: data/ui/remmina_main.glade:410
+#: data/ui/remmina_main.glade:410 data/ui/remmina_news.glade:134
 #, fuzzy
-msgid "Set as default remote desktop client"
-msgstr "Sett som forvalgt fjernskrivebordsklient"
+msgid "Make Remmina your default remote desktop client"
+msgstr "Gjør Remmina til forvalgt klient for eksterne skrivebord"
 
 #: data/ui/remmina_main.glade:437
 msgid "Homepage"
@@ -2512,7 +2530,8 @@ msgstr "Wiki"
 
 #. Remmina community website
 #: data/ui/remmina_main.glade:467
-msgid "Online Community"
+#, fuzzy
+msgid "Community"
 msgstr "Nettbasert gemenskap"
 
 #: data/ui/remmina_main.glade:585
@@ -2531,10 +2550,9 @@ msgstr "Lås opp"
 msgid "Unlock Remmina"
 msgstr "Lås opp Remmina"
 
-#: data/ui/remmina_unlock.glade:128
-#, fuzzy
-msgid "Master password secret key"
-msgstr "Hemmelig nøkkel for hovedpassord"
+#: data/ui/remmina_unlock.glade:128 data/ui/remmina_preferences.glade:1435
+msgid "Master password"
+msgstr "Hovedpassord"
 
 #: data/ui/remmina_spinner.glade:29 data/ui/remmina_key_chooser.glade:38
 #: data/ui/remmina_key_chooser.glade:53
@@ -2559,11 +2577,6 @@ msgstr ""
 msgid "Enable anonymous statistics"
 msgstr ""
 
-#: data/ui/remmina_news.glade:134
-#, fuzzy
-msgid "Make Remmina the default Remote Desktop Client"
-msgstr "Gjør Remmina til forvalgt klient for eksterne skrivebord"
-
 #: data/ui/remmina_news.glade:143
 msgid "Apply"
 msgstr "Bruk"
@@ -2573,8 +2586,9 @@ msgid "Allow Remmina to automatically open .rdp and .remmina files."
 msgstr ""
 
 #: data/ui/remmina_news.glade:168
-msgid "<big>Important settings</big>"
-msgstr "<big>Viktige innstillinger</big>"
+#, fuzzy
+msgid "<big>Take part</big>"
+msgstr "<big>Bidra</big>"
 
 #: data/ui/remmina_news.glade:194
 msgid ""
@@ -2686,10 +2700,14 @@ msgstr "Stegdistanse for automatisk rulling"
 msgid "Maximal amount of recent items"
 msgstr "Maks. antall nylige elementer"
 
+#: data/ui/remmina_preferences.glade:234
+msgid "Screen resolutions"
+msgstr "Skjermoppløsninger"
+
 #: data/ui/remmina_preferences.glade:280
 #, fuzzy
-msgid "Screenshot folder"
-msgstr "Skjermavbildningsmappe"
+msgid "Folder for screenshots"
+msgstr "Kunne ikke starte SSH-økt. %s"
 
 #: data/ui/remmina_preferences.glade:292
 #, fuzzy
@@ -2702,11 +2720,12 @@ msgid "Select a folder"
 msgstr "Velg en mappe"
 
 #: data/ui/remmina_preferences.glade:305
-msgid "Screen resolutions"
-msgstr "Skjermoppløsninger"
+msgid "Set up"
+msgstr ""
 
 #: data/ui/remmina_preferences.glade:326
-msgid "Screenshot filename"
+#, fuzzy
+msgid "Screenshot filenames"
 msgstr "Skjermavbildningsfilnavn"
 
 #: data/ui/remmina_preferences.glade:338
@@ -2741,12 +2760,9 @@ msgstr "Husk siste visningsmodus for hver tilkobling"
 msgid "Remember last view mode"
 msgstr "Husk siste visningsmodus"
 
-#: data/ui/remmina_preferences.glade:418
-msgid "Send periodic usage statistics to Remmina developers"
-msgstr "Send periodisk bruksstatistikk til Remmina-utviklerne"
-
-#: data/ui/remmina_preferences.glade:422
-msgid "Send statistics to remmina.org"
+#: data/ui/remmina_preferences.glade:418 data/ui/remmina_preferences.glade:422
+#, fuzzy
+msgid "Send anonymous statistics to remmina.org"
 msgstr "Send statistikk til remmina.org"
 
 #: data/ui/remmina_preferences.glade:462
@@ -2786,10 +2802,6 @@ msgstr ""
 "\n"
 "\n"
 
-#: data/ui/remmina_preferences.glade:504
-msgid "%G_%P_%N_%h"
-msgstr "%G_%P_%N_%h"
-
 #: data/ui/remmina_preferences.glade:518
 msgid "Options"
 msgstr "Innstillinger"
@@ -2820,24 +2832,28 @@ msgid "Viewport fullscreen"
 msgstr "Fullskjermsvisning for visningsområde"
 
 #: data/ui/remmina_preferences.glade:603
-msgid "Tabbed interface"
-msgstr "Fanebasert grensesnitt"
+msgid "Tabs"
+msgstr ""
 
 #: data/ui/remmina_preferences.glade:618
-msgid "Tab by groups"
+#, fuzzy
+msgid "By group"
 msgstr "Faner i grupper"
 
 #: data/ui/remmina_preferences.glade:619
-msgid "Tab by protocols"
+#, fuzzy
+msgid "By protocols"
 msgstr "Faner basert på protokoller"
 
 #: data/ui/remmina_preferences.glade:620
-msgid "Tab all connections"
-msgstr "Faner for alle tilknytninger"
+#, fuzzy
+msgid "Per connection"
+msgstr "Åpne tilkobling"
 
 #: data/ui/remmina_preferences.glade:621
-msgid "No tabs"
-msgstr "Ingen faner"
+#, fuzzy
+msgid "None"
+msgstr "<Ingen>"
 
 #: data/ui/remmina_preferences.glade:632
 msgid "Fullscreen on the same screen as the connection window"
@@ -2936,24 +2952,24 @@ msgid "Parse ~/.ssh/config"
 msgstr "Fortolk ~/.ssh.config"
 
 #: data/ui/remmina_preferences.glade:1257
-msgid "SSH_LOG_NOLOG"
-msgstr "SSH_LOG_NOLOG"
+msgid "No logging at all"
+msgstr ""
 
 #: data/ui/remmina_preferences.glade:1258
-msgid "SSH_LOG_RARE"
-msgstr "SSH_LOG_RARE"
+msgid "Rare conditions or warnings"
+msgstr ""
 
 #: data/ui/remmina_preferences.glade:1259
-msgid "SSH_LOG_ENTRY"
-msgstr "SSH_LOG_ENTRY"
+msgid "API-accessible entrypoints"
+msgstr ""
 
 #: data/ui/remmina_preferences.glade:1260
-msgid "SSH_LOG_PACKET"
-msgstr "SSH_LOG_PACKET"
+msgid "Lower level protocol info, packet level"
+msgstr ""
 
 #: data/ui/remmina_preferences.glade:1261
-msgid "SSH_LOG_FUNCTIONS"
-msgstr "SSH_LOG_FUNCTIONS"
+msgid "Function entering and leaving"
+msgstr ""
 
 #: data/ui/remmina_preferences.glade:1277
 msgid "SSH log level"
@@ -2994,10 +3010,6 @@ msgstr ""
 #: data/ui/remmina_preferences.glade:1413
 msgid "SSH options"
 msgstr "SSH-valgmuligheter"
-
-#: data/ui/remmina_preferences.glade:1435
-msgid "Master password"
-msgstr "Hovedpassord"
 
 #: data/ui/remmina_preferences.glade:1450
 #: data/ui/remmina_preferences.glade:1466
@@ -3078,7 +3090,7 @@ msgstr "Lyse farger"
 
 #: data/ui/remmina_preferences.glade:1876
 #, fuzzy
-msgid "Load colour theme"
+msgid "Colour theme"
 msgstr "Last inn fargedrakt"
 
 #: data/ui/remmina_preferences.glade:1917
@@ -3193,8 +3205,9 @@ msgid "Add"
 msgstr "Legg til"
 
 #: data/ui/remmina_string_list.glade:20 data/ui/remmina_string_list.glade:137
-msgid "Remove"
-msgstr "Fjern"
+#: data/ui/remmina_key_chooser.glade:14 data/ui/remmina_key_chooser.glade:15
+msgid "_Remove"
+msgstr "_Fjern"
 
 #: data/ui/remmina_string_list.glade:26 data/ui/remmina_string_list.glade:116
 msgid "Move up"
@@ -3203,10 +3216,6 @@ msgstr "Flytt oppover"
 #: data/ui/remmina_string_list.glade:32 data/ui/remmina_string_list.glade:95
 msgid "Move down"
 msgstr "Flytt nedover"
-
-#: data/ui/remmina_key_chooser.glade:14 data/ui/remmina_key_chooser.glade:15
-msgid "_Remove"
-msgstr "_Fjern"
 
 #: data/ui/remmina_key_chooser.glade:23
 msgid "Choose a new key"
