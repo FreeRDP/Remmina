@@ -106,26 +106,8 @@ parts:
       - -usr/lib/cmake
       - -usr/lib/pkgconfig
 
-  # Remove this (and use again libssh-dev) once libssh-0.8 is available in distro
-  libssh-0-8:
-    plugin: cmake
-    source: "https://git.libssh.org/projects/libssh.git/snapshot/libssh-0.8.1.tar.gz"
-    configflags:
-      - -DCMAKE_BUILD_TYPE:STRING=Release
-      - -DWITH_GSSAPI=ON
-      - -DWITH_NACL=0
-      - -DWITH_EXAMPLES:BOOL=OFF
-      # XXX: This is an hack to have a kind of bind-mount with absolute prefix.
-      - -DCMAKE_INSTALL_PREFIX=/snap/$SNAPCRAFT_PROJECT_NAME/current/usr
-    organize:
-      snap/remmina/current: .
-
-    prime:
-      - ./**/libssh*.so.*
-
   remmina:
     after:
-      - libssh-0-8
       - freerdp
     plugin: cmake
     source: .
@@ -148,6 +130,8 @@ parts:
       - libxkbfile-dev
       - libwebkit2gtk-4.0-dev
     stage-packages:
+      - libgpm2
+      - libssh-4
       - libusb-1.0-0
       - libzvbi0
       - suckless-tools
