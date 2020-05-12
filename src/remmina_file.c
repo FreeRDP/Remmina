@@ -500,9 +500,9 @@ gchar *remmina_file_format_properties(RemminaFile *remminafile, const gchar *set
 
 	fmt_str = g_string_new(setting);
 	remmina_utils_string_replace_all(fmt_str, "%h", remmina_file_get_string(remminafile, "server"));
-	remmina_utils_string_replace_all(fmt_str, "%t", remmina_file_get_string(remminafile, "ssh_server"));
+	remmina_utils_string_replace_all(fmt_str, "%t", remmina_file_get_string(remminafile, "ssh_tunnel_server"));
 	remmina_utils_string_replace_all(fmt_str, "%u", remmina_file_get_string(remminafile, "username"));
-	remmina_utils_string_replace_all(fmt_str, "%U", remmina_file_get_string(remminafile, "ssh_username"));
+	remmina_utils_string_replace_all(fmt_str, "%U", remmina_file_get_string(remminafile, "ssh_tunnel_username"));
 	remmina_utils_string_replace_all(fmt_str, "%p", remmina_file_get_string(remminafile, "name"));
 	remmina_utils_string_replace_all(fmt_str, "%g", remmina_file_get_string(remminafile, "group"));
 
