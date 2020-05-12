@@ -61,8 +61,6 @@ static void wait_for_child(GPid pid, gint script_retval, gpointer data)
 	 * remmina connection.
 	 * Adding a delay here could be a (not good) solution, or we should
 	 * monitor each child opened, but it could be quit tricky and messy */
-
-	g_free(pcspinner);
 }
 
 GtkDialog* remmina_ext_exec_new(RemminaFile* remminafile, const char *remmina_ext_exec_type)
@@ -83,10 +81,10 @@ GtkDialog* remmina_ext_exec_new(RemminaFile* remminafile, const char *remmina_ex
 	if (remmina_ext_exec_type != NULL && (
 				strcmp(remmina_ext_exec_type, pre) |
 				strcmp(remmina_ext_exec_type, post) )) {
-		cmd = remmina_file_get_string(remminafile, remmina_ext_exec_type);
-	}else{
+		cmd = g_strdup(remmina_file_get_string(remminafile, remmina_ext_exec_type));
+		g_debug("[%s] %s", remmina_ext_exec_type, cmd);
+	} else
 		return FALSE;
-	}
 
 	cmd = remmina_file_format_properties(remminafile, cmd);
 	if (*cmd != 0) {
