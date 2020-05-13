@@ -87,6 +87,7 @@ GtkDialog* remmina_ext_exec_new(RemminaFile* remminafile, const char *remmina_ex
 		return FALSE;
 
 	cmd = remmina_file_format_properties(remminafile, cmd);
+	g_debug("[%s] updated to: %s", remmina_ext_exec_type, cmd);
 	if (*cmd != 0) {
 
 		pcspinner = g_new(PCon_Spinner, 1);
