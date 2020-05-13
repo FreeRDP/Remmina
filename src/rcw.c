@@ -1278,6 +1278,9 @@ static void rcw_switch_viewmode(RemminaConnectionWindow *cnnwin, int newmode)
 			 * status before self destruction of cnnwin */
 			newwin->priv->fss_view_mode = old_mode;
 	}
+
+	/* Prevent unreleased hostkey from old window to be released here */
+	newwin->priv->hostkey_used = TRUE;
 }
 
 
@@ -3372,6 +3375,11 @@ static void rcw_create_overlay_ftb_overlay(RemminaConnectionWindow *cnnwin)
 	gtk_drag_source_set(GTK_WIDGET(priv->overlay_ftb_overlay), GDK_BUTTON1_MASK,
 			    dnd_targets_ftb, sizeof dnd_targets_ftb / sizeof *dnd_targets_ftb, GDK_ACTION_MOVE);
 	g_signal_connect_after(GTK_WIDGET(priv->overlay_ftb_overlay), "drag-begin", G_CALLBACK(rcw_ftb_drag_begin), cnnwin);
+
+	if (remmina_pref.fullscreen_toolbar_visibility == FLOATING_TOOLBAR_VISIBILITY_DISABLE) {
+		/* toolbar in fullscreenmode disbled, hide everityhg */
+		gtk_widget_hide(fr);
+	}
 }
 
 
@@ -3480,14 +3488,12 @@ RemminaConnectionWindow *rcw_create_fullscreen(GtkWindow *old, gint view_mode)
 	cnnwin->priv->fss_view_mode = view_mode;
 
 	/* Create the floating toolbar */
-	if (remmina_pref.fullscreen_toolbar_visibility != FLOATING_TOOLBAR_VISIBILITY_DISABLE) {
-		rcw_create_overlay_ftb_overlay(cnnwin);
-		/* Add drag and drop capabilities to the drop/dest target for floating toolbar */
-		gtk_drag_dest_set(GTK_WIDGET(cnnwin->priv->overlay), GTK_DEST_DEFAULT_MOTION | GTK_DEST_DEFAULT_HIGHLIGHT,
-				  dnd_targets_ftb, sizeof dnd_targets_ftb / sizeof *dnd_targets_ftb, GDK_ACTION_MOVE);
-		gtk_drag_dest_set_track_motion(GTK_WIDGET(cnnwin->priv->notebook), TRUE);
-		g_signal_connect(GTK_WIDGET(cnnwin->priv->overlay), "drag-drop", G_CALLBACK(rcw_ftb_drag_drop), cnnwin);
-	}
+	rcw_create_overlay_ftb_overlay(cnnwin);
+	/* Add drag and drop capabilities to the drop/dest target for floating toolbar */
+	gtk_drag_dest_set(GTK_WIDGET(cnnwin->priv->overlay), GTK_DEST_DEFAULT_MOTION | GTK_DEST_DEFAULT_HIGHLIGHT,
+			  dnd_targets_ftb, sizeof dnd_targets_ftb / sizeof *dnd_targets_ftb, GDK_ACTION_MOVE);
+	gtk_drag_dest_set_track_motion(GTK_WIDGET(cnnwin->priv->notebook), TRUE);
+	g_signal_connect(GTK_WIDGET(cnnwin->priv->overlay), "drag-drop", G_CALLBACK(rcw_ftb_drag_drop), cnnwin);
 
 	gtk_widget_show(GTK_WIDGET(cnnwin));
 	GtkWindowGroup * wingrp = gtk_window_group_new ();
