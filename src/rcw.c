@@ -1278,6 +1278,9 @@ static void rcw_switch_viewmode(RemminaConnectionWindow *cnnwin, int newmode)
 			 * status before self destruction of cnnwin */
 			newwin->priv->fss_view_mode = old_mode;
 	}
+
+	/* Prevent unreleased hostkey from old window to be released here */
+	newwin->priv->hostkey_used = TRUE;
 }
 
 
