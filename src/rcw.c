@@ -1184,7 +1184,7 @@ static void nb_set_current_page(GtkNotebook *notebook, GtkWidget *page)
 
 static void nb_migrate_page_content(GtkWidget *frompage, GtkWidget *topage)
 {
-	/* Migrate a single connection tab from a nothebook to another one */
+	/* Migrate a single connection tab from a notebook to another one */
 	GList *lst, *l;
 	RemminaConnectionObject *cnnobj;
 
@@ -3670,7 +3670,10 @@ static gboolean rcw_hostkey_func(RemminaProtocolWidget *gp, guint keyval, gboole
 			}
 		}
 	}
-	priv->hostkey_activated = FALSE;
+	/* If a keypress makes the current cnnobj to move to another window,
+	 * priv is now invalid. So we can no longer use priv here */
+	cnnobj->cnnwin->priv->hostkey_activated = FALSE;
+
 	/* Trap all key presses when hostkey is pressed */
 	return TRUE;
 }
