@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-05-11 08:21+0000\n"
-"PO-Revision-Date: 2020-03-26 23:49+0000\n"
+"PO-Revision-Date: 2020-05-14 15:29+0000\n"
 "Last-Translator: scootergrisen <scootergrisen@gmail.com>\n"
 "Language-Team: Danish <https://hosted.weblate.org/projects/remmina/remmina/"
 "da/>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.0.2-dev\n"
+"X-Generator: Weblate 4.1-dev\n"
 
 #: src/remmina_protocol_widget.c:275
 msgid "Connect via SSH from a new terminal"
@@ -44,9 +44,9 @@ msgid "Connecting to \"%s\" via SSH…"
 msgstr "Opretter forbindelse til \"%s\" via SSH …"
 
 #: src/remmina_protocol_widget.c:926
-#, fuzzy, c-format
+#, c-format
 msgid "Awaiting incoming SSH connection on port %i…"
-msgstr "Venter på en indgående SSH-forbindelse på port %i …"
+msgstr "Afventer indgående SSH-forbindelse på port %i …"
 
 #: src/remmina_protocol_widget.c:978
 #, c-format
@@ -81,7 +81,7 @@ msgstr "Adgangskode"
 #: src/remmina_protocol_widget.c:1442
 #, fuzzy
 msgid "Type in SSH username and password."
-msgstr "Skriv in brugernavn og adgangskode for SSH."
+msgstr "Skriv brugernavn og adgangskode for SSH."
 
 #: src/remmina_protocol_widget.c:1498
 msgid "Certificate details:"
@@ -665,9 +665,8 @@ msgid "Grab all keyboard events"
 msgstr "Fang alle tastetryk"
 
 #: src/rcw.c:2265
-#, fuzzy
 msgid "_Tools"
-msgstr "Værktøjer"
+msgstr "_Værktøjer"
 
 #: src/rcw.c:2266 data/ui/remmina_main.glade:303
 msgid "Tools"
@@ -1315,7 +1314,7 @@ msgstr "SSH-agent (automatisk)"
 #: src/remmina_file_editor.c:1017
 #, fuzzy
 msgid "Autostart this profile"
-msgstr "Aktivér \"Automatisk start\" for denne profil"
+msgstr "Automatisk start af profilen"
 
 #: src/remmina_file_editor.c:1025
 msgid "Basic"
@@ -1369,8 +1368,9 @@ msgid "Pre-command"
 msgstr "Kommando før"
 
 #: src/remmina_file_editor.c:1527
+#, fuzzy
 msgid "command %h %u %t %U %p %g --option"
-msgstr ""
+msgstr "kommando %h %u %t %U %p %g --valg"
 
 #: src/remmina_file_editor.c:1531
 msgid "Post-command"
@@ -1378,7 +1378,7 @@ msgstr "Kommando efter"
 
 #: src/remmina_file_editor.c:1545
 msgid "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
-msgstr ""
+msgstr "/sti/til/kommando -alt1 arg %h %u %t -alt2 %U %p %g"
 
 #: src/remmina_file_editor.c:1596 src/remmina_file_editor.c:1614
 #, c-format
@@ -1446,11 +1446,12 @@ msgstr "Brugeragent"
 
 #: plugins/www/www_plugin.c:888
 msgid "Proxy URL"
-msgstr ""
+msgstr "Proxy-URL"
 
 #: plugins/www/www_plugin.c:888
+#, fuzzy
 msgid "E.g. https://example.org, socks://mysocks:1080"
-msgstr ""
+msgstr "F.eks. https://eksempel.dk, socks://mysocks:1080"
 
 #: plugins/www/www_plugin.c:889
 msgid "Turn on Java support"
@@ -2079,7 +2080,7 @@ msgstr "Del smartcard"
 
 #: plugins/rdp/rdp_plugin.c:2053
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
-msgstr ""
+msgstr "Foretræk IPv6 AAAA-fortegnelse over IPv4-fortegnelse"
 
 #: plugins/rdp/rdp_plugin.c:2054
 msgid "Share printers"
@@ -2152,11 +2153,12 @@ msgstr "Glyf-mellemlager"
 
 #: plugins/rdp/rdp_plugin.c:2073
 msgid "Enable multitransport protocol (UDP)"
-msgstr ""
+msgstr "Anvend multitransportprotokol"
 
 #: plugins/rdp/rdp_plugin.c:2073
+#, fuzzy
 msgid "Using the UDP protocol may improve performance"
-msgstr ""
+msgstr "Brug af UDP-protokol kan øge ydelsen"
 
 #: plugins/rdp/rdp_plugin.c:2097
 msgid "RDP - Remote Desktop Protocol"
@@ -2353,6 +2355,11 @@ msgid ""
 "More details in COPYING\n"
 "    "
 msgstr ""
+"\n"
+"Ophavsret © 2014–2020 Antenore Gatta, Giovanni Panozzo.\n"
+"Ophavsret © 2009–2014 Vic Lee\n"
+"Flere detaljer i COPYING\n"
+"    "
 
 #: data/ui/remmina_about.glade:40
 msgid "Website"
@@ -2369,12 +2376,13 @@ msgid "Add a new connection profile"
 msgstr "Opret ny forbindelsesprofil"
 
 #: data/ui/remmina_main.glade:47
+#, fuzzy
 msgid "Show the Remmina changelog."
-msgstr ""
+msgstr "Vis Remmina-erindringsbog"
 
 #: data/ui/remmina_main.glade:53
 msgid "Switch from grouped to list view"
-msgstr ""
+msgstr "Skift fra gruppered til listevisning"
 
 #: data/ui/remmina_main.glade:70
 #, fuzzy
@@ -2403,8 +2411,9 @@ msgid "Toggle view"
 msgstr "Visning til/fra"
 
 #: data/ui/remmina_main.glade:175
+#, fuzzy
 msgid "Select the protocol to use with the quick connect bar."
-msgstr ""
+msgstr "Vælg protokol at bruge med hurtigforbindelsesfeltet."
 
 #: data/ui/remmina_main.glade:193
 msgid "Search string or server name/IP address for “Quick Connect”"
@@ -2511,15 +2520,16 @@ msgstr ""
 
 #: data/ui/remmina_news.glade:120
 msgid "Enable anonymous statistics"
-msgstr ""
+msgstr "Skru på anonym statistik"
 
 #: data/ui/remmina_news.glade:143
 msgid "Apply"
 msgstr "Anvend"
 
 #: data/ui/remmina_news.glade:147
+#, fuzzy
 msgid "Allow Remmina to automatically open .rdp and .remmina files."
-msgstr ""
+msgstr "Tillad Remmina at åbne .rdp- og .remmina-filer automatisk"
 
 #: data/ui/remmina_news.glade:168
 #, fuzzy
@@ -2649,7 +2659,7 @@ msgstr "Vælg en mappe"
 
 #: data/ui/remmina_preferences.glade:305
 msgid "Set up"
-msgstr ""
+msgstr "Indstil"
 
 #: data/ui/remmina_preferences.glade:326
 #, fuzzy
@@ -2757,7 +2767,7 @@ msgstr "Visningsområde fuldskærm"
 
 #: data/ui/remmina_preferences.glade:603
 msgid "Tabs"
-msgstr ""
+msgstr "Faneeblade"
 
 #: data/ui/remmina_preferences.glade:618
 #, fuzzy
@@ -2873,24 +2883,28 @@ msgid "Parse ~/.ssh/config"
 msgstr "Fortolk ~/.ssh/config"
 
 #: data/ui/remmina_preferences.glade:1257
+#, fuzzy
 msgid "No logging at all"
-msgstr ""
+msgstr "Ingen bogføring"
 
 #: data/ui/remmina_preferences.glade:1258
 msgid "Rare conditions or warnings"
-msgstr ""
+msgstr "Sjældne betingelser og advarsler"
 
 #: data/ui/remmina_preferences.glade:1259
+#, fuzzy
 msgid "API-accessible entrypoints"
-msgstr ""
+msgstr "API-tilgængelige indgangspunkter"
 
 #: data/ui/remmina_preferences.glade:1260
+#, fuzzy
 msgid "Lower level protocol info, packet level"
-msgstr ""
+msgstr "Lavniveauprotokolinfo, pakkeniveau"
 
 #: data/ui/remmina_preferences.glade:1261
+#, fuzzy
 msgid "Function entering and leaving"
-msgstr ""
+msgstr "Brug og afslutning af funktioner"
 
 #: data/ui/remmina_preferences.glade:1277
 msgid "SSH log level"
