@@ -6,13 +6,14 @@
 # Allan Nordhøy <epost@anotheragency.no>, 2019, 2020.
 # Oliver <websites@posteo.de>, 2020.
 # Jeannette L <j.lavoie@net-c.ca>, 2020.
+# Milo Ivir <mail@milotype.de>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-05-11 08:21+0000\n"
-"PO-Revision-Date: 2020-05-11 12:50+0000\n"
-"Last-Translator: Johannes Weberhofer <jweberhofer@weberhofer.at>\n"
+"PO-Revision-Date: 2020-05-15 20:41+0000\n"
+"Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/remmina/remmina/"
 "de/>\n"
 "Language: de\n"
@@ -33,7 +34,7 @@ msgstr "SFTP-Dateiübertragung starten…"
 
 #: src/remmina_protocol_widget.c:309
 msgid "Executing external commands…"
-msgstr "Externe Kommandos ausführen…"
+msgstr "Externe Befehle ausführen…"
 
 #: src/remmina_protocol_widget.c:316
 #, c-format
@@ -53,20 +54,20 @@ msgstr "Warte auf eingehende Verbindung an Port %i…"
 #: src/remmina_protocol_widget.c:978
 #, c-format
 msgid "The \"%s\" command is not available on the SSH server."
-msgstr "Das „%s“-Kommando ist auf dem SSH-Server nicht verfügbar."
+msgstr "Der „%s“-Befehl ist auf dem SSH-Server nicht verfügbar."
 
 #: src/remmina_protocol_widget.c:982
 #, c-format
 msgid "Could not run the \"%s\" command on the SSH server (status = %i)."
 msgstr ""
-"Das „%s“-Kommando konnte auf dem SSH-Server nicht ausgeführt werden (Status "
-"== %i)."
+"Der „%s“-Befehl konnte auf dem SSH-Server nicht ausgeführt werden (Status == "
+"%i)."
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_protocol_widget.c:990
 #, c-format
 msgid "Could not run command. %s"
-msgstr "Kommando kann nicht ausführt werden: %s"
+msgstr "Befehl kann nicht ausgeführt werden: %s"
 
 #: src/remmina_protocol_widget.c:1058
 #, c-format
@@ -305,7 +306,7 @@ msgstr "Zeichensatz"
 
 #: src/remmina_ssh_plugin.c:1054 src/remmina_sftp_plugin.c:328
 msgid "SSH Proxy Command"
-msgstr "SSH Proxy Kommando"
+msgstr "SSH Proxy Befehl"
 
 #: src/remmina_ssh_plugin.c:1055
 msgid "KEX (Key Exchange) algorithms"
@@ -1231,7 +1232,7 @@ msgid ""
 "connecting.\n"
 "</big></tt>"
 msgstr ""
-"<tt><big>* Kommando in PATH Argumenten %h\n"
+"<tt><big>• Befehl in PATH Argumenten %h\n"
 "• /pfad/zu/kommando -optionen %h %u\n"
 "• %h wird durch den Servernamen ersetzt\n"
 "• %t wird durch den SSH Servernamen ersetzt\n"
@@ -1240,8 +1241,8 @@ msgstr ""
 "• %p wird durch den Remmina Profilnamen ersetzt\n"
 "• %g wird durch den Remmina Profil‐Gruppennamen ersetzt\n"
 "• %d wird durch das lokale Datum im ISO-8601 Format ersetzt\n"
-"Starten Sie nicht im Hintergrund, wenn Sie das Kommando vor der Verbindung "
-"starten wollen.\n"
+"Nicht im Hintergrund starten, wenn der Befehl vor der Verbindung starten "
+"soll.\n"
 "</big></tt>"
 
 #: src/remmina_file_editor.c:95
@@ -1374,15 +1375,15 @@ msgstr "Benutze '%s' als Untergruppenteiler"
 
 #: src/remmina_file_editor.c:1513
 msgid "Pre-command"
-msgstr "Vorangestelltes Kommando"
+msgstr "Befehl vor dem Aufbau"
 
 #: src/remmina_file_editor.c:1527
 msgid "command %h %u %t %U %p %g --option"
-msgstr "befehl %h %u %t %U %p %g --option"
+msgstr "Befehl %h %u %t %U %p %g --option"
 
 #: src/remmina_file_editor.c:1531
 msgid "Post-command"
-msgstr "Späteres Kommando"
+msgstr "Befehl nach dem Schließen"
 
 #: src/remmina_file_editor.c:1545
 msgid "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
@@ -1408,24 +1409,24 @@ msgstr "_Leeren"
 
 #: plugins/exec/exec_plugin_config.h:41
 msgid "Execute a command"
-msgstr "Ein Kommando ausführen"
+msgstr "Einen Befehl ausführen"
 
 #: plugins/exec/exec_plugin.c:158
 msgid "You did not set any command to be executed"
-msgstr "Sie haben kein Kommando zur Ausführung angegeben"
+msgstr "Es ist kein auszuführender Befehl angegeben"
 
 #: plugins/exec/exec_plugin.c:204
 msgid ""
 "Warning: Running a command synchronously may cause Remmina not to respond.\n"
 "Do you really want to continue?"
 msgstr ""
-"Achtung: Synchrones Ausführen eines Kommandos kann zur Blockade von Remmina "
+"Achtung: Synchrones Ausführen eines Befehls kann zur Blockade von Remmina "
 "führen.\n"
-"Möchten Sie wirklich fortsetzen?"
+"Wirklich fortsetzen?"
 
 #: plugins/exec/exec_plugin.c:264
 msgid "Command"
-msgstr "Kommando"
+msgstr "Befehl"
 
 #: plugins/exec/exec_plugin.c:265
 msgid "Asynchronous execution"
@@ -1772,7 +1773,7 @@ msgstr "Terminal Emulator"
 
 #: plugins/st/st_plugin.c:238
 msgid "Command to be executed"
-msgstr "Auszuführendes Kommando"
+msgstr "Auszuführender Befehl"
 
 #: plugins/st/st_plugin.c:253
 msgid "Detached window"
@@ -2357,7 +2358,7 @@ msgstr ""
 "Features wie das Speichern von Passwörtern in Ihren Schlüsselbund oder die "
 "RPD-Druckerfreigabe zu nutzen, öffnen Sie bitte die Systemsteuerung und "
 "geben Sie Remmina die benötigten Berechtigungen. Alternativ können Sie die "
-"folgenden Kommandos in ein Terminal‐Fenster eingeben:"
+"folgenden Befehle in ein Terminal‐Fenster eingeben:"
 
 #: data/ui/remmina_snap_info_dialog.glade:82
 msgid "Do not show this message again"
