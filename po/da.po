@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-05-11 08:21+0000\n"
-"PO-Revision-Date: 2020-05-14 15:29+0000\n"
+"PO-Revision-Date: 2020-05-15 20:41+0000\n"
 "Last-Translator: scootergrisen <scootergrisen@gmail.com>\n"
 "Language-Team: Danish <https://hosted.weblate.org/projects/remmina/remmina/"
 "da/>\n"
@@ -79,7 +79,6 @@ msgid "Password"
 msgstr "Adgangskode"
 
 #: src/remmina_protocol_widget.c:1442
-#, fuzzy
 msgid "Type in SSH username and password."
 msgstr "Skriv brugernavn og adgangskode for SSH."
 
@@ -1312,7 +1311,6 @@ msgid "SSH agent (automatic)"
 msgstr "SSH-agent (automatisk)"
 
 #: src/remmina_file_editor.c:1017
-#, fuzzy
 msgid "Autostart this profile"
 msgstr "Automatisk start af profilen"
 
@@ -1368,9 +1366,8 @@ msgid "Pre-command"
 msgstr "Kommando før"
 
 #: src/remmina_file_editor.c:1527
-#, fuzzy
 msgid "command %h %u %t %U %p %g --option"
-msgstr "kommando %h %u %t %U %p %g --valg"
+msgstr "kommando %h %u %t %U %p %g --tilvalg"
 
 #: src/remmina_file_editor.c:1531
 msgid "Post-command"
@@ -1420,9 +1417,8 @@ msgid "Command"
 msgstr "Kommando"
 
 #: plugins/exec/exec_plugin.c:265
-#, fuzzy
 msgid "Asynchronous execution"
-msgstr "Ikke-synkroniseret udførsel"
+msgstr "Asynkron kørsel"
 
 #: plugins/www/www_plugin.c:97
 msgid "File downloaded"
@@ -1451,7 +1447,7 @@ msgstr "Proxy-URL"
 #: plugins/www/www_plugin.c:888
 #, fuzzy
 msgid "E.g. https://example.org, socks://mysocks:1080"
-msgstr "F.eks. https://eksempel.dk, socks://mysocks:1080"
+msgstr "F.eks. https://eksempel.dk, socks://minesokler:1080"
 
 #: plugins/www/www_plugin.c:889
 msgid "Turn on Java support"
@@ -1499,7 +1495,7 @@ msgstr "Remmina-webbrowserplugin"
 #: plugins/secret/src/glibsecret_plugin.c:188
 #, fuzzy
 msgid "Secured password storage in the GNOME keyring"
-msgstr "Gem adgangskode sikkert i GNOME-nøgleringen"
+msgstr "Sikret adgangskode gemt i GNOME-nøgleringen"
 
 #: plugins/tool_hello_world/plugin_config.h:40
 #, fuzzy
@@ -1679,7 +1675,6 @@ msgid "Resize guest to match window size"
 msgstr "Tilpas gæst til vinduets størrelse"
 
 #: plugins/spice/spice_plugin.c:459
-#, fuzzy
 msgid "Share smart card"
 msgstr "Del smartcard"
 
@@ -1710,7 +1705,6 @@ msgid "The %s file has been transferred"
 msgstr "%s-filen er blevet overføret"
 
 #: plugins/xdmcp/xdmcp_plugin.c:97
-#, fuzzy
 msgid "Ran out of available local X display numbers."
 msgstr "Løb tør for tilgængelige tal til lokalt X-display."
 
@@ -1967,9 +1961,8 @@ msgid "Negotiate"
 msgstr "Forhandl"
 
 #: plugins/rdp/rdp_plugin.c:1992
-#, fuzzy
 msgid "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 and newer)"
-msgstr "2600 (Windows XP),7601 (Windows Vista/7),9600 (Windows 8 og nyere)"
+msgstr "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 og nyere)"
 
 #: plugins/rdp/rdp_plugin.c:1995
 #, fuzzy
@@ -1982,7 +1975,7 @@ msgid ""
 "  • >= 7065: Windows 8 and newer: SCardGetReaderIcon(), "
 "SCardGetDeviceTypeId()"
 msgstr ""
-"Bruges bl.a. af Terminal-tjenester i SmartCard-kanal til at skelne mellem "
+"Bruges bl.a. af terminaltjenester i smartcard-kanal til at skelne mellem "
 "klientformåenheder:\n"
 "  • < 4034: Windows XP grundlæggende smartcard-funktioner\n"
 "  • 4034-7064: Windows Vista/7: SCardReadCache(), SCardWriteCache(),\n"
@@ -2074,9 +2067,8 @@ msgid "Local parallel device"
 msgstr "Enhed for lokal parallel"
 
 #: plugins/rdp/rdp_plugin.c:2052
-#, fuzzy
 msgid "Name of smart card"
-msgstr "Del smartcard"
+msgstr "Navn på smartcard"
 
 #: plugins/rdp/rdp_plugin.c:2053
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
@@ -2099,9 +2091,8 @@ msgid "Share parallel ports"
 msgstr "Del parallelle porte"
 
 #: plugins/rdp/rdp_plugin.c:2058
-#, fuzzy
 msgid "Share a smart card"
-msgstr "Del smartcard"
+msgstr "Del et smartcard"
 
 #: plugins/rdp/rdp_plugin.c:2059
 msgid "Redirect local microphone"
@@ -2156,9 +2147,8 @@ msgid "Enable multitransport protocol (UDP)"
 msgstr "Anvend multitransportprotokol"
 
 #: plugins/rdp/rdp_plugin.c:2073
-#, fuzzy
 msgid "Using the UDP protocol may improve performance"
-msgstr "Brug af UDP-protokol kan øge ydelsen"
+msgstr "Brug af UDP-protokol kan forbedre ydelsen"
 
 #: plugins/rdp/rdp_plugin.c:2097
 msgid "RDP - Remote Desktop Protocol"
@@ -2258,7 +2248,7 @@ msgid "Terminating…"
 msgstr "Afslutter …"
 
 #: plugins/nx/nx_session_manager.c:143
-#, fuzzy, c-format
+#, c-format
 msgid "NX sessions on %s"
 msgstr "NX-sessioner på %s"
 
@@ -2295,9 +2285,8 @@ msgid "Enter NX authentication credentials"
 msgstr "Indtast loginoplysninger for NX-autentifikation"
 
 #: plugins/nx/nx_plugin.c:748
-#, fuzzy
 msgid "Send Ctrl+Alt+Del"
-msgstr "Send Ctrl+Alt+Delete"
+msgstr "Send Ctrl+Alt+Del"
 
 #: plugins/nx/nx_plugin.c:758
 msgid "NX - NX Technology"
@@ -2306,7 +2295,7 @@ msgstr "NX - NX-teknologi"
 #: plugins/kwallet/src/kwallet_plugin_main.c:118
 #, fuzzy
 msgid "Secured password storage in KWallet"
-msgstr "Adgangskoder gemmes sikkert i KWallet"
+msgstr "Sikret adgangskode gemt i KWallet"
 
 #: plugins/telepathy/telepathy_channel_handler.c:237
 #, c-format
@@ -2366,28 +2355,24 @@ msgid "Website"
 msgstr "Websted"
 
 #: data/ui/remmina_main.glade:35
-#, fuzzy
 msgid "Hide or show the search bar"
-msgstr "Vis søgelinje"
+msgstr "Skjul eller vis søgelinjen"
 
 #: data/ui/remmina_main.glade:41
-#, fuzzy
 msgid "Add a new connection profile"
-msgstr "Opret ny forbindelsesprofil"
+msgstr "Tilføj en ny forbindelsesprofil"
 
 #: data/ui/remmina_main.glade:47
-#, fuzzy
 msgid "Show the Remmina changelog."
-msgstr "Vis Remmina-erindringsbog"
+msgstr "Vis Remminas ærindringslog."
 
 #: data/ui/remmina_main.glade:53
 msgid "Switch from grouped to list view"
 msgstr "Skift fra gruppered til listevisning"
 
 #: data/ui/remmina_main.glade:70
-#, fuzzy
 msgid "Remote Desktop Client"
-msgstr "Remmina-fjernskrivebordsklient"
+msgstr "Fjernskrivebordsklient"
 
 #: data/ui/remmina_main.glade:78
 msgid "New connection profile"
@@ -2398,9 +2383,8 @@ msgid "Show search bar"
 msgstr "Vis søgelinje"
 
 #: data/ui/remmina_main.glade:123
-#, fuzzy
 msgid "Remmina main menu"
-msgstr "Remmina-datamappe"
+msgstr "Remminas hovedmenu"
 
 #: data/ui/remmina_main.glade:130
 msgid "Actions"
@@ -2411,9 +2395,8 @@ msgid "Toggle view"
 msgstr "Visning til/fra"
 
 #: data/ui/remmina_main.glade:175
-#, fuzzy
 msgid "Select the protocol to use with the quick connect bar."
-msgstr "Vælg protokol at bruge med hurtigforbindelsesfeltet."
+msgstr "Vælg den protokol som skal bruges med hurtigforbindelseslinjen."
 
 #: data/ui/remmina_main.glade:193
 msgid "Search string or server name/IP address for “Quick Connect”"
@@ -2457,7 +2440,6 @@ msgid "News"
 msgstr "Nyheder"
 
 #: data/ui/remmina_main.glade:410 data/ui/remmina_news.glade:134
-#, fuzzy
 msgid "Make Remmina your default remote desktop client"
 msgstr "Gør Remmina til standardfjernskrivebordsklienten"
 
@@ -2475,9 +2457,8 @@ msgstr "Wiki"
 
 #. Remmina community website
 #: data/ui/remmina_main.glade:467
-#, fuzzy
 msgid "Community"
-msgstr "Onlinefællesskab"
+msgstr "Fællesskab"
 
 #: data/ui/remmina_main.glade:585
 msgid "Plugin"
@@ -2529,12 +2510,12 @@ msgstr "Anvend"
 #: data/ui/remmina_news.glade:147
 #, fuzzy
 msgid "Allow Remmina to automatically open .rdp and .remmina files."
-msgstr "Tillad Remmina at åbne .rdp- og .remmina-filer automatisk"
+msgstr "Tillad Remmina at åbne .rdp- og .remmina-filer automatisk."
 
 #: data/ui/remmina_news.glade:168
 #, fuzzy
 msgid "<big>Take part</big>"
-msgstr "<big>Bidrag</big>"
+msgstr "<big>Deltag</big>"
 
 #: data/ui/remmina_news.glade:194
 #, fuzzy
@@ -2645,9 +2626,8 @@ msgid "Screen resolutions"
 msgstr "Skærmopløsninger"
 
 #: data/ui/remmina_preferences.glade:280
-#, fuzzy
 msgid "Folder for screenshots"
-msgstr "Mappe til SSH-sessionens log"
+msgstr "Mappe til skærmbilleder"
 
 #: data/ui/remmina_preferences.glade:292
 msgid "Choose a folder to save screenshots from Remmina in."
@@ -2664,7 +2644,7 @@ msgstr "Indstil"
 #: data/ui/remmina_preferences.glade:326
 #, fuzzy
 msgid "Screenshot filenames"
-msgstr "Filnavn for skærmbillede"
+msgstr "Filnavne til skærmbillede"
 
 #: data/ui/remmina_preferences.glade:338
 msgid ""
@@ -2697,9 +2677,8 @@ msgid "Remember last view mode"
 msgstr "Husk sidste visningstilstand"
 
 #: data/ui/remmina_preferences.glade:418 data/ui/remmina_preferences.glade:422
-#, fuzzy
 msgid "Send anonymous statistics to remmina.org"
-msgstr "Send statistik til remmina.org"
+msgstr "Send anonym statistik til remmina.org"
 
 #: data/ui/remmina_preferences.glade:462
 msgid "Only save generated screenshots, don't copy them to clipboard."
@@ -2770,24 +2749,20 @@ msgid "Tabs"
 msgstr "Faneeblade"
 
 #: data/ui/remmina_preferences.glade:618
-#, fuzzy
 msgid "By group"
-msgstr "Faneblad efter grupper"
+msgstr "Efter gruppe"
 
 #: data/ui/remmina_preferences.glade:619
-#, fuzzy
 msgid "By protocols"
-msgstr "Faneblad efter protokoller"
+msgstr "Efter protokoller"
 
 #: data/ui/remmina_preferences.glade:620
-#, fuzzy
 msgid "Per connection"
-msgstr "Åbn forbindelse"
+msgstr "Pr. forbindelse"
 
 #: data/ui/remmina_preferences.glade:621
-#, fuzzy
 msgid "None"
-msgstr "<ingen>"
+msgstr "Ingen"
 
 #: data/ui/remmina_preferences.glade:632
 msgid "Fullscreen on the same screen as the connection window"
@@ -2885,7 +2860,7 @@ msgstr "Fortolk ~/.ssh/config"
 #: data/ui/remmina_preferences.glade:1257
 #, fuzzy
 msgid "No logging at all"
-msgstr "Ingen bogføring"
+msgstr "Ingen logning"
 
 #: data/ui/remmina_preferences.glade:1258
 msgid "Rare conditions or warnings"
@@ -3017,9 +2992,8 @@ msgid "Bright colours"
 msgstr "Lyse farver"
 
 #: data/ui/remmina_preferences.glade:1876
-#, fuzzy
 msgid "Colour theme"
-msgstr "Indlæs farveskema"
+msgstr "Farvestema"
 
 #: data/ui/remmina_preferences.glade:1917
 msgid ""
