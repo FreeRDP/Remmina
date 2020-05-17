@@ -8,13 +8,15 @@
 # Ryunosuke Toda <toda.ryunosuke@gmail.com>, 2020.
 # FeLvi_zzz <felvi.zzz.coffee@gmail.com>, 2020.
 # Antenore Gatta <antenore@simbiosi.org>, 2020.
+# YAMADA Shinichirou <yamada_strong_yamada_nice_64bit@yahoo.co.jp>, 2020.
+# Anonymous <noreply@weblate.org>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-05-11 08:21+0000\n"
-"PO-Revision-Date: 2020-05-15 20:41+0000\n"
-"Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
+"PO-Revision-Date: 2020-05-17 20:22+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/remmina/remmina/"
 "ja/>\n"
 "Language: ja\n"
@@ -27,11 +29,11 @@ msgstr ""
 
 #: src/remmina_protocol_widget.c:275
 msgid "Connect via SSH from a new terminal"
-msgstr "新しいターミナルからSSHで接続"
+msgstr "新しいターミナルから SSH で接続"
 
 #: src/remmina_protocol_widget.c:281
 msgid "Open SFTP transfer…"
-msgstr "SFTP を開く…"
+msgstr "SFTP 転送を開く…"
 
 #: src/remmina_protocol_widget.c:309
 msgid "Executing external commands…"
@@ -40,27 +42,27 @@ msgstr "外部コマンドの実行…"
 #: src/remmina_protocol_widget.c:316
 #, c-format
 msgid "Connecting to \"%s\"…"
-msgstr "'%s' に接続中…"
+msgstr "\"%s\" に接続中…"
 
 #: src/remmina_protocol_widget.c:745 src/remmina_protocol_widget.c:863
 #, c-format
 msgid "Connecting to \"%s\" via SSH…"
-msgstr "SSHで '%s' に接続中…"
+msgstr "SSH で \"%s\" に接続中…"
 
 #: src/remmina_protocol_widget.c:926
-#, fuzzy, c-format
+#, c-format
 msgid "Awaiting incoming SSH connection on port %i…"
-msgstr "ポート %i で SSH 接続を待っています…"
+msgstr "ポート %i で SSH 接続を待ち受け中…"
 
 #: src/remmina_protocol_widget.c:978
 #, c-format
 msgid "The \"%s\" command is not available on the SSH server."
-msgstr "SSH サーバー上にコマンド %s は見つかりませんでした。"
+msgstr "SSH サーバー上にコマンド \"%s\" は見つかりませんでした。"
 
 #: src/remmina_protocol_widget.c:982
 #, c-format
 msgid "Could not run the \"%s\" command on the SSH server (status = %i)."
-msgstr "SSH サーバー上でのコマンド %s に失敗しました(ステータス = %i)。"
+msgstr "SSH サーバー上でコマンド \"%s\" を実行できませんでした (ステータス = %i)。"
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_protocol_widget.c:990
@@ -71,7 +73,7 @@ msgstr "コマンドを実行できませんでした: %s"
 #: src/remmina_protocol_widget.c:1058
 #, c-format
 msgid "Connecting to %s via SSH…"
-msgstr "SSHで '%s' に接続中…"
+msgstr "SSH で %s に接続中…"
 
 #: src/remmina_protocol_widget.c:1424 src/remmina_protocol_widget.c:1443
 #: src/remmina_ssh_plugin.c:920 src/remmina_sftp_plugin.c:291
@@ -83,7 +85,6 @@ msgid "Password"
 msgstr "パスワード"
 
 #: src/remmina_protocol_widget.c:1442
-#, fuzzy
 msgid "Type in SSH username and password."
 msgstr "SSH のユーザー名とパスワードを入力してください。"
 
@@ -93,11 +94,11 @@ msgstr "証明書の詳細:"
 
 #: src/remmina_protocol_widget.c:1499 src/remmina_protocol_widget.c:1520
 msgid "Subject:"
-msgstr "Subject:"
+msgstr ""
 
 #: src/remmina_protocol_widget.c:1500 src/remmina_protocol_widget.c:1521
 msgid "Issuer:"
-msgstr "Issuer:"
+msgstr "発行者:"
 
 #: src/remmina_protocol_widget.c:1501
 msgid "Fingerprint:"
@@ -121,16 +122,16 @@ msgstr "新しいフィンガープリント:"
 
 #: src/remmina_protocol_widget.c:1524
 msgid "Accept changed certificate?"
-msgstr "証明書を受け入れますか?"
+msgstr "変更された証明書を受け入れますか?"
 
 #: src/remmina_protocol_widget.c:1666
 #, c-format
 msgid "Listening on port %i for an incoming %s connection…"
-msgstr "ポート %i への %s 接続を待機しています…"
+msgstr "ポート %i への %s 接続をリッスン中…"
 
 #: src/remmina_protocol_widget.c:1691
 msgid "Could not authenticate, attempting reconnection…"
-msgstr "認証に失敗しました。再接続しています…"
+msgstr "認証できませんでした。再接続しています…"
 
 #: src/remmina_protocol_widget.c:1753 src/remmina_file_editor.c:408
 #: src/remmina_file_editor.c:883 data/ui/remmina_main.glade:571
@@ -157,7 +158,7 @@ msgstr "利用可能な解像度の設定"
 
 #: src/remmina_pref_dialog.c:132
 msgid "Recent lists cleared."
-msgstr "リモートリストを消しました。"
+msgstr "リモートリストを消去しました。"
 
 #: src/remmina_pref_dialog.c:143 src/rcw.c:1877
 #: data/ui/remmina_preferences.glade:249 data/ui/remmina_preferences.glade:259
@@ -179,9 +180,8 @@ msgid "Error: %s"
 msgstr "エラー: %s"
 
 #: src/remmina_ssh_plugin.c:458
-#, fuzzy
 msgid "Terminal content saved in"
-msgstr "ターミナルの配色"
+msgstr ""
 
 #: src/remmina_ssh_plugin.c:512
 msgid "Select All (Host + A)"
@@ -202,12 +202,11 @@ msgstr "セッションをファイルに保存"
 #: src/remmina_ssh_plugin.c:921 src/remmina_sftp_plugin.c:292
 #: src/remmina_file_editor.c:362 src/remmina_file_editor.c:369
 msgid "SSH identity file"
-msgstr "SSH秘密鍵ファイル"
+msgstr "SSH 秘密鍵ファイル"
 
 #: src/remmina_ssh_plugin.c:922 src/remmina_sftp_plugin.c:293
-#, fuzzy
 msgid "SSH agent"
-msgstr "SSH agent"
+msgstr "SSH エージェント"
 
 #: src/remmina_ssh_plugin.c:923 src/remmina_sftp_plugin.c:294
 #: src/remmina_file_editor.c:940
@@ -248,13 +247,13 @@ msgstr "すべて選択(_S)"
 #: plugins/vnc/vnc_plugin.c:1879 plugins/rdp/rdp_plugin.c:2013
 #: plugins/nx/nx_plugin.c:718 data/ui/remmina_mpc.glade:144
 msgid "Username"
-msgstr "ユーザーネーム"
+msgstr "ユーザー名"
 
 #: src/remmina_ssh_plugin.c:1020 plugins/vnc/vnc_plugin.c:1860
 #: plugins/vnc/vnc_plugin.c:1880 plugins/spice/spice_plugin.c:437
 #: plugins/nx/nx_plugin.c:719
 msgid "User password"
-msgstr "パスワード"
+msgstr "ユーザーパスワード"
 
 #: src/remmina_ssh_plugin.c:1021 src/remmina_sftp_plugin.c:325
 msgid "Authentication type"
@@ -290,12 +289,12 @@ msgstr ""
 "ファイル名には次のプレースホルダを使用できます。\n"
 "\n"
 "%h : サーバー名\n"
-"%t : SSHサーバー名\n"
+"%t : SSH サーバー名\n"
 "%u : ユーザー名\n"
-"%U : SSHユーザー名\n"
-"%p : Remminaのプロフィール名\n"
-"%g : Remminaのプロフィールグループ名\n"
-"%d : iso8601形式の現地日時\n"
+"%U : SSH ユーザー名\n"
+"%p : Remmina のプロフィール名\n"
+"%g : Remmina のプロフィールグループ名\n"
+"%d : iso8601 形式のローカル日時\n"
 
 #: src/remmina_ssh_plugin.c:1051
 msgid "Terminal color scheme"
@@ -307,7 +306,7 @@ msgstr "文字コード"
 
 #: src/remmina_ssh_plugin.c:1053 src/remmina_sftp_plugin.c:328
 msgid "SSH Proxy Command"
-msgstr "SSH プロキシ コマンド"
+msgstr "SSH プロキシコマンド"
 
 #: src/remmina_ssh_plugin.c:1054
 msgid "KEX (Key Exchange) algorithms"
@@ -319,11 +318,11 @@ msgstr ""
 
 #: src/remmina_ssh_plugin.c:1056
 msgid "Preferred server host key types"
-msgstr ""
+msgstr "優先するサーバーホスト鍵の種類"
 
 #: src/remmina_ssh_plugin.c:1057
 msgid "Folder for SSH session log"
-msgstr "SSH セッションログのフォルダ"
+msgstr "SSH セッションログのフォルダー"
 
 #: src/remmina_ssh_plugin.c:1058
 msgid "Filename for SSH session log"
@@ -331,11 +330,11 @@ msgstr "SSH セッションログのファイル名"
 
 #: src/remmina_ssh_plugin.c:1059
 msgid "Log SSH session when exiting Remmina"
-msgstr "Remmina を終了するときにSSH session ログを保存する"
+msgstr "Remmina を終了するときに SSH セッションログを保存する"
 
 #: src/remmina_ssh_plugin.c:1060
 msgid "Audible terminal bell"
-msgstr ""
+msgstr "ターミナルのビープ音"
 
 #: src/remmina_ssh_plugin.c:1061
 msgid "SSH compression"
@@ -3067,4 +3066,4 @@ msgstr ""
 
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
-msgstr ""
+msgstr "新しいキーを押してください…"
