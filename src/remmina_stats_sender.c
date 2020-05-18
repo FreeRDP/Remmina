@@ -88,15 +88,15 @@ static void soup_callback(SoupSession *session, SoupMessage *msg, gpointer user_
 	g_free(s);
 
 	if (msg->status_code != 200) {
-		remmina_log_printf("HTTP status error sending stats: %d\n",msg->status_code);
+		remmina_debug("HTTP status error sending stats: %d\n", msg->status_code);
 		return;
 	}
 
 	passed = FALSE;
 	sb = soup_message_body_flatten(msg->response_body);
-	remmina_log_printf("STATS script response: %.40s\n", sb->data);
+	remmina_debug("STATS script response: %.40s\n", sb->data);
 	if (strncmp(sb->data, "200 ", 4) != 0) {
-		remmina_log_printf("STATS http upload error from server side script: %s\n", sb->data);
+		remmina_debug("STATS http upload error from server side script: %s\n", sb->data);
 	} else {
 		passed = TRUE;
 	}
@@ -195,8 +195,7 @@ static gboolean remmina_stats_collector_done(gpointer data)
 	json_generator_set_root(g, n);
 	json_node_unref(n);
 	unenc_s = json_generator_to_data(g, NULL);	// unenc_s=serialized stats
-	remmina_log_printf("STATS upload: JSON data%s\n", unenc_s);
-	g_debug("STATS upload: JSON data%s\n", unenc_s);
+	remmina_debug("STATS upload: JSON data%s\n", unenc_s);
 	g_object_unref(g);
 
 	/* Now encrypt "s" with remminastats public key */
@@ -253,7 +252,7 @@ static gboolean remmina_stats_collector_done(gpointer data)
 			SOUP_MEMORY_COPY, enc_s, strlen(enc_s));
 		soup_session_queue_message(ss, msg, soup_callback, enc_s);
 
-		remmina_log_printf("STATS upload: Starting upload to url %s\n", PERIODIC_UPLOAD_URL);
+		remmina_debug("STATS upload: Starting upload to url %s\n", PERIODIC_UPLOAD_URL);
 	}
 
 	json_node_unref(n);

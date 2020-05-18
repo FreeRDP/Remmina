@@ -939,17 +939,14 @@ static void remmina_plugin_vnc_rfb_output(const char *format, ...)
 					 NULL);
 			g_snprintf(vnc_error, MAX_ERROR_LENGTH, ff, p);
 			g_free(ff);
-		} else {
+		} else
 			g_snprintf(vnc_error, MAX_ERROR_LENGTH, _(f), p);
-		}
-	} else {
+	} else
 		g_vsnprintf(vnc_error, MAX_ERROR_LENGTH, _(f), args);
-	}
 	g_free(f);
 	va_end(args);
 
-	remmina_plugin_service->log_printf("[VNC] %s\n", vnc_error);
-	g_debug("[VNC] %s", vnc_error);
+	remmina_plugin_service->debug("VNC returned: %s", vnc_error);
 }
 
 static void remmina_plugin_vnc_chat_on_send(RemminaProtocolWidget *gp, const gchar *text)

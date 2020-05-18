@@ -345,7 +345,7 @@ remmina_file_load(const gchar *filename)
 	if (g_file_test(filename, G_FILE_TEST_IS_REGULAR | G_FILE_TEST_EXISTS)) {
 		if (!g_key_file_load_from_file(gkeyfile, filename, G_KEY_FILE_NONE, NULL)) {
 			g_key_file_free(gkeyfile);
-			g_debug("Unable to load remmina profile file %s: g_key_file_load_from_file() returned NULL.\n", filename);
+			remmina_debug ("Unable to load remmina profile file %s: g_key_file_load_from_file() returned NULL.\n", filename);
 			return NULL;
 		}
 	}
@@ -411,7 +411,7 @@ remmina_file_load(const gchar *filename)
 
 		}
 	} else {
-		g_debug("Unable to load remmina profile file %s: cannot find key name= in section remmina.\n", filename);
+		remmina_debug ("Unable to load remmina profile file %s: cannot find key name= in section remmina.\n", filename);
 		remminafile = NULL;
 	}
 
@@ -578,7 +578,7 @@ void remmina_file_save(RemminaFile *remminafile)
 	if ((gkeyfile = remmina_file_get_keyfile(remminafile)) == NULL)
 		return;
 
-	g_debug("Saving profile");
+	remmina_debug ("Saving profile");
 	/* get disablepasswordstoring */
 	nopasswdsave = remmina_file_get_int(remminafile, "disablepasswordstoring", 0);
 	/* Identify the protocol plugin and get pointers to its RemminaProtocolSetting structs */
@@ -598,7 +598,7 @@ void remmina_file_save(RemminaFile *remminafile)
 		if (remmina_plugin_manager_is_encrypted_setting(protocol_plugin, key)) {
 			if (remminafile->filename && g_strcmp0(remminafile->filename, remmina_pref_file)) {
 				if (secret_service_available && nopasswdsave == 0) {
-					g_debug ("We have a secret and disablepasswordstoring=0");
+					remmina_debug ("We have a secret and disablepasswordstoring=0");
 					if (value && value[0]) {
 						if (g_strcmp0(value, ".") != 0)
 							secret_plugin->store_password(remminafile, key, value);
@@ -608,7 +608,7 @@ void remmina_file_save(RemminaFile *remminafile)
 						secret_plugin->delete_password(remminafile, key);
 					}
 				} else {
-					g_debug ("We have a password and disablepasswordstoring=0");
+					remmina_debug ("We have a password and disablepasswordstoring=0");
 					if (value && value[0] && nopasswdsave == 0) {
 						s = remmina_crypt_encrypt(value);
 						g_key_file_set_string(gkeyfile, KEYFILE_GROUP_REMMINA, key, s);
@@ -620,7 +620,7 @@ void remmina_file_save(RemminaFile *remminafile)
 				if (secret_service_available && nopasswdsave == 1) {
 					if (value && value[0]) {
 						if (g_strcmp0(value, ".") != 0) {
-							g_debug ("Deleting the secret in the keyring as disablepasswordstoring=1");
+							remmina_debug ("Deleting the secret in the keyring as disablepasswordstoring=1");
 							secret_plugin->delete_password(remminafile, key);
 							g_key_file_set_string(gkeyfile, KEYFILE_GROUP_REMMINA, key, ".");
 						}
@@ -644,7 +644,7 @@ void remmina_file_save(RemminaFile *remminafile)
 	content = g_key_file_to_data(gkeyfile, &length, NULL);
 
 	if (g_file_set_contents(remminafile->filename, content, length, &err)) {
-		g_debug("Profile saved");
+		remmina_debug ("Profile saved");
 	} else {
 		g_warning("Remmina connection profile cannot be saved, with error %d (%s)", err->code, err->message);
 	}
@@ -845,17 +845,17 @@ remmina_file_touch(RemminaFile *remminafile)
 
 	if ((r = stat(remminafile->filename, &st)) < 0) {
 		if (errno != ENOENT)
-			remmina_log_printf("stat %s:", remminafile->filename);
+			remmina_debug("stat %s:", remminafile->filename);
 	} else if (!r) {
 		times[0] = st.st_atim;
 		times[1] = st.st_mtim;
 		if (utimensat(AT_FDCWD, remminafile->filename, times, 0) < 0)
-			remmina_log_printf("utimensat %s:", remminafile->filename);
+			remmina_debug("utimensat %s:", remminafile->filename);
 		return;
 	}
 
 	if ((fd = open(remminafile->filename, O_CREAT | O_EXCL, 0644)) < 0)
-		remmina_log_printf("open %s:", remminafile->filename);
+		remmina_debug("open %s:", remminafile->filename);
 	close(fd);
 
 	remmina_file_touch(remminafile);

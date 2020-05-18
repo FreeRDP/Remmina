@@ -111,7 +111,7 @@ static void remmina_plugin_exec_init(RemminaProtocolWidget *gp)
 	TRACE_CALL(__func__);
 	RemminaPluginExecData *gpdata;
 
-	remmina_plugin_service->log_printf("[%s] Plugin init\n", PLUGIN_NAME);
+	remmina_plugin_service->debug("[%s] Plugin init", PLUGIN_NAME);
 
 	gpdata = g_new0(RemminaPluginExecData, 1);
 	g_object_set_data_full(G_OBJECT(gp), "plugin-data", gpdata, g_free);
@@ -148,7 +148,7 @@ static gboolean remmina_plugin_exec_run(RemminaProtocolWidget *gp)
 	GtkDialog *dialog;
 	GIOChannel *out_ch, *err_ch;
 
-	remmina_plugin_service->log_printf("[%s] Plugin run\n", PLUGIN_NAME);
+	remmina_plugin_service->debug("[%s] Plugin run", PLUGIN_NAME);
 	RemminaPluginExecData *gpdata = GET_PLUGIN_DATA(gp);
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
@@ -169,7 +169,7 @@ static gboolean remmina_plugin_exec_run(RemminaProtocolWidget *gp)
 	}
 
 	if (remmina_plugin_service->file_get_int(remminafile, "runasync", FALSE)) {
-		remmina_plugin_service->log_printf("[%s] Run Async\n", PLUGIN_NAME);
+		remmina_plugin_service->debug("[%s] Run Async", PLUGIN_NAME);
 		g_spawn_async_with_pipes(   NULL,
 				argv,
 				NULL,
@@ -214,7 +214,7 @@ static gboolean remmina_plugin_exec_run(RemminaProtocolWidget *gp)
 				break;
 		}
 		gtk_widget_destroy(GTK_WIDGET(dialog));
-		remmina_plugin_service->log_printf("[%s] Run Sync\n", PLUGIN_NAME);
+		remmina_plugin_service->debug("[%s] Run Sync", PLUGIN_NAME);
 		g_spawn_sync (NULL,				    // CWD or NULL
 				argv,
 				NULL,				    // ENVP or NULL
@@ -227,7 +227,7 @@ static gboolean remmina_plugin_exec_run(RemminaProtocolWidget *gp)
 				NULL,				    // Exit status
 				&error);
 		if (!error) {
-			remmina_plugin_service->log_printf("[%s] Command executed\n", PLUGIN_NAME);
+			remmina_plugin_service->debug("[%s] Command executed", PLUGIN_NAME);
 			gtk_text_buffer_set_text (gpdata->log_buffer, stdout_buffer, -1);
 		}else  {
 			g_warning("Command %s exited with error: %s\n", cmd, error->message);
@@ -245,7 +245,7 @@ static gboolean remmina_plugin_exec_run(RemminaProtocolWidget *gp)
 static gboolean remmina_plugin_exec_close(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
-	remmina_plugin_service->log_printf("[%s] Plugin close\n", PLUGIN_NAME);
+	remmina_plugin_service->debug("[%s] Plugin close", PLUGIN_NAME);
 	remmina_plugin_service->protocol_plugin_signal_connection_closed(gp);
 	return FALSE;
 }

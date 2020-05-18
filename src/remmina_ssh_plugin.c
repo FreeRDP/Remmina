@@ -46,6 +46,7 @@
 #include <vte/vte.h>
 #include <locale.h>
 #include <langinfo.h>
+#include "remmina_log.h"
 #include "remmina_public.h"
 #include "remmina_plugin_manager.h"
 #include "remmina_ssh.h"
@@ -263,7 +264,7 @@ remmina_plugin_ssh_main_thread(gpointer data)
 
 		while (1) {
 			if (!remmina_ssh_init_session(ssh)) {
-				g_debug("[SSH] init session error: %s\n", ssh->error);
+				remmina_debug("init session error: %s", ssh->error);
 				remmina_plugin_service->protocol_plugin_set_error(gp, "%s", ssh->error);
 				break;
 			}

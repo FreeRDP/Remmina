@@ -331,7 +331,7 @@ static gboolean remmina_plugin_nx_start_session(RemminaProtocolWidget *gp)
 	remmina_nx_session_set_encryption(nx,
 		remmina_plugin_nx_service->file_get_int(remminafile, "disableencryption", FALSE) ? 0 : 1);
 	remmina_nx_session_set_localport(nx, remmina_plugin_nx_service->pref_get_sshtunnel_port());
-	remmina_nx_session_set_log_callback(nx, remmina_plugin_nx_service->log_printf);
+	remmina_nx_session_set_log_callback(nx, remmina_plugin_nx_service->debug);
 
 	s2 = remmina_plugin_nx_service->protocol_plugin_start_direct_tunnel(gp, 22, FALSE);
 	if (s2 == NULL) {

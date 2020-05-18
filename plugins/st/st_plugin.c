@@ -67,7 +67,7 @@ static void remmina_plugin_st_on_plug_added(GtkSocket *socket, RemminaProtocolWi
 	TRACE_CALL(__func__);
 	RemminaPluginData *gpdata;
 	gpdata = (RemminaPluginData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
-	remmina_plugin_service->log_printf("[%s] Plugin plug added on socket %d\n", PLUGIN_NAME, gpdata->socket_id);
+	remmina_plugin_service->debug("[%s] Plugin plug added on socket %d", PLUGIN_NAME, gpdata->socket_id);
 	remmina_plugin_service->protocol_plugin_signal_connection_opened(gp);
 	return;
 }
@@ -75,14 +75,14 @@ static void remmina_plugin_st_on_plug_added(GtkSocket *socket, RemminaProtocolWi
 static void remmina_plugin_st_on_plug_removed(GtkSocket *socket, RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
-	remmina_plugin_service->log_printf("[%s] Plugin plug removed\n", PLUGIN_NAME);
+	remmina_plugin_service->debug("[%s] Plugin plug removed", PLUGIN_NAME);
 	remmina_plugin_service->protocol_plugin_signal_connection_closed(gp);
 }
 
 static void remmina_plugin_st_init(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
-	remmina_plugin_service->log_printf("[%s] Plugin init\n", PLUGIN_NAME);
+	remmina_plugin_service->debug("[%s] Plugin init", PLUGIN_NAME);
 	RemminaPluginData *gpdata;
 
 	gpdata = g_new0(RemminaPluginData, 1);
@@ -99,7 +99,7 @@ static void remmina_plugin_st_init(RemminaProtocolWidget *gp)
 static gboolean remmina_plugin_st_open_connection(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
-	remmina_plugin_service->log_printf("[%s] Plugin open connection\n", PLUGIN_NAME);
+	remmina_plugin_service->debug("[%s] Plugin open connection", PLUGIN_NAME);
 #define ADD_ARGUMENT(name, value) \
 	{ \
 		argv[argc] = g_strdup(name); \
@@ -176,7 +176,7 @@ static gboolean remmina_plugin_st_open_connection(RemminaProtocolWidget *gp)
 	ADD_ARGUMENT(NULL, NULL);
 	// Retrieve the whole command line
 	command_line = g_strjoinv(g_strdup(" "), (gchar **)&argv_debug[0]);
-	remmina_plugin_service->log_printf("[%s] starting %s\n", PLUGIN_NAME, command_line);
+	remmina_plugin_service->debug("[%s] starting %s", PLUGIN_NAME, command_line);
 	// Execute the external process st
 	g_spawn_command_line_async(command_line, &error);
 	g_free(command_line);
@@ -195,7 +195,7 @@ static gboolean remmina_plugin_st_open_connection(RemminaProtocolWidget *gp)
 	}
 	// Show attached window socket ID
 	if (!remmina_plugin_service->file_get_int(remminafile, "detached", FALSE)) {
-		remmina_plugin_service->log_printf("[%s] attached window to socket %d\n",
+		remmina_plugin_service->debug("[%s] attached window to socket %d",
 				PLUGIN_NAME, gpdata->socket_id);
 		return TRUE;
 	}
@@ -208,7 +208,7 @@ static gboolean remmina_plugin_st_open_connection(RemminaProtocolWidget *gp)
 static gboolean remmina_plugin_st_close_connection(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
-	remmina_plugin_service->log_printf("[%s] Plugin close connection\n", PLUGIN_NAME);
+	remmina_plugin_service->debug("[%s] Plugin close connection", PLUGIN_NAME);
 	remmina_plugin_service->protocol_plugin_signal_connection_closed(gp);
 	return FALSE;
 }

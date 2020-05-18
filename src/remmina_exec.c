@@ -41,6 +41,7 @@
 #include <stdlib.h>
 #include "remmina.h"
 #include "remmina_main.h"
+#include "remmina_log.h"
 #include "remmina_pref.h"
 #include "remmina_widget_pool.h"
 #include "remmina_unlock.h"
@@ -205,7 +206,7 @@ static void remmina_exec_autostart_cb(RemminaFile *remminafile, gpointer user_da
 	TRACE_CALL(__func__);
 
 	if (remmina_file_get_int(remminafile, "enable-autostart", FALSE)) {
-		g_debug ("Profile %s is set to autostart", remminafile->filename);
+		remmina_debug ("Profile %s is set to autostart", remminafile->filename);
 		rcw_open_from_filename(remminafile->filename);
 	}
 
