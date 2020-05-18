@@ -1961,7 +1961,7 @@ static void rcw_toolbar_screenshot(GtkWidget *widget, RemminaConnectionWindow *c
 	if (remmina_protocol_widget_plugin_screenshot(gp, &rpsd)) {
 		// Good, we have a screenshot from the plugin !
 
-		remmina_log_printf("Screenshot from plugin: w=%d h=%d bpp=%d bytespp=%d\n",
+		remmina_debug("Screenshot from plugin: w=%d h=%d bpp=%d bytespp=%d\n",
 				   rpsd.width, rpsd.height, rpsd.bitsPerPixel, rpsd.bytesPerPixel);
 
 		width = rpsd.width;
@@ -2853,11 +2853,11 @@ static gboolean rcw_map_event_fullscreen(GtkWidget *widget, GdkEvent *event, gpo
 			gtk_window_fullscreen_on_monitor(GTK_WINDOW(widget), gtk_window_get_screen(GTK_WINDOW(widget)),
 							 target_monitor);
 	} else {
-		remmina_log_print("Fullscreen managed by WM or by the user, as per settings");
+		remmina_debug("Fullscreen managed by WM or by the user, as per settings");
 		gtk_window_fullscreen(GTK_WINDOW(widget));
 	}
 #else
-	remmina_log_print("Cannot fullscreen on a specific monitor, feature available from GTK 3.18");
+	remmina_debug("Cannot fullscreen on a specific monitor, feature available from GTK 3.18");
 	gtk_window_fullscreen(GTK_WINDOW(widget));
 #endif
 

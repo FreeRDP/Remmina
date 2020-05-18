@@ -443,7 +443,7 @@ static gint remmina_nx_session_parse_response(RemminaNXSession *nx)
 
 	while ((line = remmina_nx_session_get_line(nx)) != NULL) {
 		if (nx->log_callback)
-			nx->log_callback("[NX] %s\n", line);
+			nx->log_callback(line);
 
 		status = remmina_nx_session_parse_line(nx, line, &p);
 		if (status == 500) {
@@ -480,7 +480,7 @@ static gint remmina_nx_session_parse_response(RemminaNXSession *nx)
 		status = nx->status;
 	} else {
 		if (nx->log_callback)
-			nx->log_callback("[NX] %s\n", pos);
+			nx->log_callback(pos);
 		nx->response_pos += 8;
 	}
 	nx->status = -1;

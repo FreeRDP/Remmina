@@ -76,7 +76,6 @@ static GtkWidget *log_window = NULL;
 static gboolean remmina_log_on_keypress(GtkWidget *widget, GdkEvent *event, gpointer user_data)
 {
 	TRACE_CALL(__func__);
-	// RemminaLogWindow *logwin = (RemminaLogWindow*)user_data;
 	GdkEventKey *e = (GdkEventKey *)event;
 
 	if (!log_window)
@@ -186,6 +185,31 @@ void remmina_log_print(const gchar *text)
 		return;
 
 	IDLE_ADD(remmina_log_print_real, g_strdup(text));
+}
+
+/**
+ * Print a string in the Remmina Debug Windows and in the terminal.
+ * The string will be visible in the terminal if G_MESSAGES_DEBUG=all
+ */
+void remmina_debug(const gchar *fmt, ...)
+{
+	/* IMPORTANT: DO NOT USE TRACES IN THIS FUNCION */
+	/* DO NOT USE TRACE_CALL(__func__); */
+
+	va_list args;
+	gchar *text;
+	va_start(args, fmt);
+	text = g_strdup_vprintf(fmt, args);
+	va_end(args);
+	g_autofree gchar *buf = g_strconcat("(", fun, ") - ", text, NULL);
+
+	g_debug ("%s", g_strdup(buf));
+
+	buf = g_strconcat (buf, "\n", NULL);
+
+	if (!log_window)
+		return;
+	IDLE_ADD(remmina_log_print_real, g_strdup(buf));
 }
 
 void remmina_log_printf(const gchar *fmt, ...)

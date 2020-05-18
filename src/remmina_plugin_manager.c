@@ -236,6 +236,7 @@ RemminaPluginService remmina_plugin_manager_service =
 	remmina_pref_get_ssh_parseconfig,
 	remmina_pref_keymap_get_keyval,
 
+	remmina_debug,
 	remmina_log_print,
 	remmina_log_printf,
 

@@ -84,7 +84,7 @@ static void remmina_plugin_glibsecret_unlock_secret_service()
 	if (secretservice && defaultcollection) {
 		if (secret_collection_get_locked(defaultcollection)) {
 			lbl = secret_collection_get_label(defaultcollection);
-			remmina_plugin_service->log_printf("[glibsecret] requesting unlock of the default '%s' collection\n", lbl);
+			remmina_plugin_service->debug("Requesting unlock of the default '%s' collection", lbl);
 			objects = g_list_append(NULL, defaultcollection);
 			secret_service_unlock_sync(secretservice, objects, NULL, &ul, &error);
 			g_list_free(objects);
@@ -108,9 +108,9 @@ void remmina_plugin_glibsecret_store_password(RemminaFile *remminafile, const gc
 		NULL, &r, "filename", path, "key", key, NULL);
 	g_free(s);
 	if (r == NULL) {
-		remmina_plugin_service->log_printf("[glibsecret] password \"%s\" saved for file %s\n", key, path);
+		remmina_plugin_service->debug("Password \"%s\" saved for file %s\n", key, path);
 	}else  {
-		remmina_plugin_service->log_printf("[glibsecret] password \"%s\" cannot be saved for file %s\n", key, path);
+		remmina_plugin_service->debug("Password \"%s\" cannot be saved for file %s\n", key, path);
 		g_error_free(r);
 	}
 }
@@ -127,12 +127,11 @@ remmina_plugin_glibsecret_get_password(RemminaFile *remminafile, const gchar *ke
 	path = remmina_plugin_service->file_get_path(remminafile);
 	password = secret_password_lookup_sync(&remmina_file_secret_schema, NULL, &r, "filename", path, "key", key, NULL);
 	if (r == NULL) {
-		// remmina_plugin_service->log_printf("[glibsecret] found password for file %s\n", path);
 		p = g_strdup(password);
 		secret_password_free(password);
 		return p;
 	}else  {
-		remmina_plugin_service->log_printf("[glibsecret] password cannot be found for file %s\n", path);
+		remmina_plugin_service->debug("Password cannot be found for file %s\n", path);
 		return NULL;
 	}
 }
@@ -145,11 +144,10 @@ void remmina_plugin_glibsecret_delete_password(RemminaFile *remminafile, const g
 
 	path = remmina_plugin_service->file_get_path(remminafile);
 	secret_password_clear_sync(&remmina_file_secret_schema, NULL, &r, "filename", path, "key", key, NULL);
-	if (r == NULL) {
-		remmina_plugin_service->log_printf("[glibsecret] password \"%s\" deleted for file %s\n", key, path);
-	}else  {
-		remmina_plugin_service->log_printf("[glibsecret] password \"%s\" cannot be deleted for file %s\n", key, path);
-	}
+	if (r == NULL)
+		remmina_plugin_service->debug("password \"%s\" deleted for file %s", key, path);
+	else
+		remmina_plugin_service->debug("password \"%s\" cannot be deleted for file %s", key, path);
 }
 
 gboolean remmina_plugin_glibsecret_init()
