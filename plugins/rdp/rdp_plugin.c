@@ -1277,10 +1277,15 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 		rfi->settings->TlsSecurity = False;
 		rfi->settings->NlaSecurity = True;
 		rfi->settings->ExtSecurity = False;
-	}
+	} else if (g_strcmp0(cs, "ext") == 0) {
+		rfi->settings->RdpSecurity = False;
+		rfi->settings->TlsSecurity = False;
+		rfi->settings->NlaSecurity = False;
+		rfi->settings->ExtSecurity = True;
+	} else
+		/* This is "-nego" switch of xfreerdp */
+		rfi->settings->NegotiateSecurityLayer = True;
 
-	/* This is "-nego" switch of xfreerdp */
-	rfi->settings->NegotiateSecurityLayer = True;
 
 	rfi->settings->CompressionEnabled = True;
 	if (remmina_plugin_service->file_get_int(remminafile, "disable_fastpath", FALSE)) {
@@ -1582,7 +1587,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 										  _("Could not connect to the RDP server \"%s\" via TLS. Check that client and server support a common TLS version."), rfi->settings->ServerHostname);
 				break;
 			case FREERDP_ERROR_SECURITY_NEGO_CONNECT_FAILED:
-				remmina_plugin_service->protocol_plugin_set_error(gp, _("Unable to establish a connection to the RDP server \"%s\"."), rfi->settings->ServerHostname);
+				remmina_plugin_service->protocol_plugin_set_error(gp, _("Unable to establish a connection to the RDP server. Check \"Security protocol negotiation\" \"%s\"."), rfi->settings->ServerHostname);
 				break;
 #ifdef FREERDP_ERROR_POST_CONNECT_FAILED
 			case FREERDP_ERROR_POST_CONNECT_FAILED:
@@ -1972,10 +1977,11 @@ static gpointer sound_list[] =
 /* Array of key/value pairs for security */
 static gpointer security_list[] =
 {
-	"",    N_("Negotiate"),
-	"nla", "NLA",
-	"tls", "TLS",
-	"rdp", "RDP",
+	"",    N_("Negotiate protocol security"),
+	"nla", N_("NLA protocol security"),
+	"tls", N_("TLS protocol security"),
+	"rdp", N_("RDP protocol security"),
+	"ext", N_("NLA extended protocol security"),
 	NULL
 };
 
@@ -2031,7 +2037,7 @@ static const RemminaProtocolSetting remmina_rdp_advanced_settings[] =
 {
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "quality",		    N_("Quality"),					 FALSE, quality_list,  NULL													      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "sound",		    N_("Sound"),					 FALSE, sound_list,    NULL													      },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "security",		    N_("Security"),					 FALSE, security_list, NULL													      },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "security",		    N_("Security protocol negotiation"),		 FALSE, security_list, NULL													      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "gwtransp",		    N_("Gateway transport type"),			 FALSE, gwtransp_list, NULL													      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "gateway_server",	    N_("Remote Desktop Gateway server"),		 FALSE, NULL,	       NULL													      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "gateway_username",	    N_("Remote Desktop Gateway username"),		 FALSE, NULL,	       NULL													      },
