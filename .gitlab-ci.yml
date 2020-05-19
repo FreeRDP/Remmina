@@ -52,9 +52,10 @@ ubuntu:devel:
   only:
     refs:
       - master
+      - tags
+      - merge_requests
       - web
       - schedules
-      - merge_requests
 
 appimage:build:
   # image: ubuntu:devel
@@ -104,15 +105,18 @@ flatpak:test:
   script:
     - /bin/sh -xe ./flatpak/flatpak-build.sh
   artifacts:
+    name: "$CI_MERGE_REQUEST_ID-flatpak"
     paths:
       - flatpak/${BUNDLE}
     expire_in: 10 days
+    expose_as: 'Testing flatpak download'
   cache:
     paths:
       - flatpak/.flatpak-builder/cache
   only:
     refs:
-      - master
+      - tags
+      - merge_requests
       - web
       - schedules
 
@@ -138,7 +142,8 @@ snap:build:
     expire_in: 10 days
   only:
     refs:
-      - master
+      - tags
+      - merge_requests
       - web
       - schedules
 trigger_build:
