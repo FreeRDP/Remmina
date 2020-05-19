@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2020-05-19 09:20+0000\n"
+"POT-Creation-Date: 2020-05-19 11:19+0000\n"
 "PO-Revision-Date: 2020-03-24 20:31+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -18,8 +18,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
-"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 4.1-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:25+0000\n"
 
@@ -1002,7 +1002,8 @@ msgstr "Neuspjela automatska autentifikacija s javnim SSH ključem. %s"
 #: src/remmina_ssh.c:307
 #, c-format
 msgid "Could not authenticate with public SSH key using SSH agent. %s"
-msgstr "Neuspjela autentifikacija s javnim SSH ključem koristeći SSH agenta. %s"
+msgstr ""
+"Neuspjela autentifikacija s javnim SSH ključem koristeći SSH agenta. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:327
@@ -2450,7 +2451,7 @@ msgstr "Izvezi"
 msgid "News"
 msgstr "Novosti"
 
-#: data/ui/remmina_main.glade:410 data/ui/remmina_news.glade:134
+#: data/ui/remmina_main.glade:410
 msgid "Make Remmina your default remote desktop client"
 msgstr "Postavi Remmina kao standardni klijent udaljenog računala"
 
@@ -2501,18 +2502,25 @@ msgid "Please wait…"
 msgstr "Pričekaj …"
 
 #: data/ui/remmina_news.glade:108
+#, fuzzy
 msgid ""
 "Send <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
 "remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
-"\">anonymous</a></b> statistics to remmina.org"
+"\">anonymous</a></b> statistics"
 msgstr ""
 "Šalji <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
 "remmina__stats_8c.html#details\" title=\"statistiku o korištenju programa "
 "Remmina\">anonimnu</a></b> statistiku na remmina.org"
 
 #: data/ui/remmina_news.glade:120
-msgid "Enable anonymous statistics"
+#, fuzzy
+msgid "Send anonymous statistics"
 msgstr "Aktiviraj anonimnu statistiku"
+
+#: data/ui/remmina_news.glade:134
+#, fuzzy
+msgid "Use as default remote desktop client"
+msgstr "Postavi Remmina kao standardni klijent udaljenog računala"
 
 #: data/ui/remmina_news.glade:143
 msgid "Apply"
@@ -2535,8 +2543,8 @@ msgid ""
 "</span>\n"
 msgstr ""
 "<span>\n"
-"<b>Zahvaljujemo se, što koristiš copylefted slobodan softver. <a href=\""
-"https://remmina.org/donations/\" title=\"Remmina donacije\">Donacije nas "
+"<b>Zahvaljujemo se, što koristiš copylefted slobodan softver. <a href="
+"\"https://remmina.org/donations/\" title=\"Remmina donacije\">Donacije nas "
 "također raduju</a> te pomažu poboljšati razvoj programa Remmina.</b>\n"
 "</span>\n"
 
@@ -2683,7 +2691,8 @@ msgid "Remember last view mode"
 msgstr "Zapamti zadnji način prikaza"
 
 #: data/ui/remmina_preferences.glade:418 data/ui/remmina_preferences.glade:422
-msgid "Send anonymous statistics to remmina.org"
+#, fuzzy
+msgid "Send anonymous statistics for use on https://remmina.org/remmina-stats"
 msgstr "Šalji anonimnu statistiku na remmina.org"
 
 #: data/ui/remmina_preferences.glade:462
