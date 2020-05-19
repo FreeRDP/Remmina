@@ -5,13 +5,14 @@
 # anonymous <noreply@weblate.org>, 2019.
 # Barbul Gergő <barbul.gergo@stud.u-szeged.hu>, 2020.
 # Jeannette L <j.lavoie@net-c.ca>, 2020.
+# J. Lavoie <j.lavoie@net-c.ca>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-05-11 08:21+0000\n"
-"PO-Revision-Date: 2020-04-15 21:14+0000\n"
-"Last-Translator: Barbul Gergő <barbul.gergo@stud.u-szeged.hu>\n"
+"PO-Revision-Date: 2020-05-19 09:30+0000\n"
+"Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
 "Language-Team: English (United Kingdom) <https://hosted.weblate.org/projects/"
 "remmina/remmina/en_GB/>\n"
 "Language: en_GB\n"
@@ -19,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.0.2-dev\n"
+"X-Generator: Weblate 4.1-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:25+0000\n"
 
 #: src/remmina_protocol_widget.c:275
@@ -45,9 +46,9 @@ msgid "Connecting to \"%s\" via SSH…"
 msgstr "Connecting to ‘%s’ via SSH…"
 
 #: src/remmina_protocol_widget.c:926
-#, fuzzy, c-format
+#, c-format
 msgid "Awaiting incoming SSH connection on port %i…"
-msgstr "Awaiting incoming SSH connection at port %i…"
+msgstr "Awaiting incoming SSH connection on port %i…"
 
 #: src/remmina_protocol_widget.c:978
 #, c-format
@@ -80,9 +81,8 @@ msgid "Password"
 msgstr "Password"
 
 #: src/remmina_protocol_widget.c:1442
-#, fuzzy
 msgid "Type in SSH username and password."
-msgstr "Type in username and password for SSH."
+msgstr "Type in SSH username and password."
 
 #: src/remmina_protocol_widget.c:1498
 msgid "Certificate details:"
@@ -604,7 +604,7 @@ msgid "Remmina Remote Desktop Client"
 msgstr "Remmina Remote Desktop Client"
 
 #: src/rcw.c:640
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Are you sure you want to close %i active connections in the current window?"
 msgstr ""
@@ -659,9 +659,8 @@ msgid "Grab all keyboard events"
 msgstr "Grab all keyboard events"
 
 #: src/rcw.c:2265
-#, fuzzy
 msgid "_Tools"
-msgstr "Tools"
+msgstr "_Tools"
 
 #: src/rcw.c:2266 data/ui/remmina_main.glade:303
 msgid "Tools"
@@ -1306,9 +1305,8 @@ msgid "SSH agent (automatic)"
 msgstr "SSH agent (automatic)"
 
 #: src/remmina_file_editor.c:1017
-#, fuzzy
 msgid "Autostart this profile"
-msgstr "Turn on ‘Autostart’ for this profile"
+msgstr "Autostart this profile"
 
 #: src/remmina_file_editor.c:1025
 msgid "Basic"
@@ -1362,7 +1360,7 @@ msgstr "Pre-command"
 
 #: src/remmina_file_editor.c:1527
 msgid "command %h %u %t %U %p %g --option"
-msgstr ""
+msgstr "command %h %u %t %U %p %g --option"
 
 #: src/remmina_file_editor.c:1531
 msgid "Post-command"
@@ -1370,7 +1368,7 @@ msgstr "Post-command"
 
 #: src/remmina_file_editor.c:1545
 msgid "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
-msgstr ""
+msgstr "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
 
 #: src/remmina_file_editor.c:1596 src/remmina_file_editor.c:1614
 #, c-format
@@ -1412,7 +1410,7 @@ msgstr "Command"
 
 #: plugins/exec/exec_plugin.c:265
 msgid "Asynchronous execution"
-msgstr ""
+msgstr "Asynchronous execution"
 
 #: plugins/www/www_plugin.c:97
 msgid "File downloaded"
@@ -1436,18 +1434,17 @@ msgstr "User agent"
 
 #: plugins/www/www_plugin.c:888
 msgid "Proxy URL"
-msgstr ""
+msgstr "Proxy URL"
 
 #: plugins/www/www_plugin.c:888
 msgid "E.g. https://example.org, socks://mysocks:1080"
-msgstr ""
+msgstr "E.g. https://example.org, socks://mysocks:1080"
 
 #: plugins/www/www_plugin.c:889
 msgid "Turn on Java support"
 msgstr "Turn on Java support"
 
 #: plugins/www/www_plugin.c:890
-#, fuzzy
 msgid "Turn on smooth scrolling"
 msgstr "Turn on smooth scrolling"
 
@@ -1474,9 +1471,8 @@ msgstr "Ignore TLS errors"
 #: plugins/www/www_plugin.c:896 plugins/vnc/vnc_plugin.c:1903
 #: plugins/spice/spice_plugin.c:456 plugins/rdp/rdp_plugin.c:2063
 #: plugins/nx/nx_plugin.c:740
-#, fuzzy
 msgid "Forget passwords after use"
-msgstr "No password storage"
+msgstr "Forget passwords after use"
 
 #: plugins/www/www_plugin.c:898
 msgid "Turn on Web Inspector"
@@ -1487,14 +1483,12 @@ msgid "Remmina web-browser plugin"
 msgstr "Remmina web-browser plugin"
 
 #: plugins/secret/src/glibsecret_plugin.c:188
-#, fuzzy
 msgid "Secured password storage in the GNOME keyring"
-msgstr "Secure password storing in the GNOME keyring"
+msgstr "Secured password storage in the GNOME keyring"
 
 #: plugins/tool_hello_world/plugin_config.h:40
-#, fuzzy
 msgid "Hello, World!"
-msgstr "Hello World!"
+msgstr "Hello, World!"
 
 #: plugins/vnc/vnc_plugin.c:751
 msgid "Enter VNC password"
@@ -1669,9 +1663,8 @@ msgid "Resize guest to match window size"
 msgstr "Resize guest to match window size"
 
 #: plugins/spice/spice_plugin.c:459
-#, fuzzy
 msgid "Share smart card"
-msgstr "Share smartcard"
+msgstr "Share smart card"
 
 #: plugins/spice/spice_plugin.c:482
 msgid "SPICE - Simple Protocol for Independent Computing Environments"
@@ -1700,9 +1693,8 @@ msgid "The %s file has been transferred"
 msgstr "The %s file has been transferred"
 
 #: plugins/xdmcp/xdmcp_plugin.c:97
-#, fuzzy
 msgid "Ran out of available local X display numbers."
-msgstr "Run out of available local X display number."
+msgstr "Ran out of available local X display numbers."
 
 #: plugins/xdmcp/xdmcp_plugin.c:264 plugins/nx/nx_plugin.c:605
 #, c-format
@@ -1732,7 +1724,6 @@ msgid "True colour (24 bit)"
 msgstr "True colour (24 bit)"
 
 #: plugins/xdmcp/xdmcp_plugin.c:369 plugins/rdp/rdp_plugin.c:2017
-#, fuzzy
 msgid "Colour depth"
 msgstr "Colour depth"
 
@@ -1777,7 +1768,7 @@ msgid "Enter RDP gateway authentication credentials"
 msgstr "Enter RDP gateway authentication credentials"
 
 #: plugins/rdp/rdp_plugin.c:1528
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
 "Account locked out."
@@ -1786,14 +1777,16 @@ msgstr ""
 "Account locked out."
 
 #: plugins/rdp/rdp_plugin.c:1535
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
 "Account expired."
-msgstr "Command %s not found on SSH server"
+msgstr ""
+"Could not access the RDP server ‘%s’.\n"
+"Account expired."
 
 #: plugins/rdp/rdp_plugin.c:1542
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
 "Password expired."
@@ -1802,7 +1795,7 @@ msgstr ""
 "Password expired."
 
 #: plugins/rdp/rdp_plugin.c:1549
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
 "Account disabled."
@@ -1820,7 +1813,7 @@ msgstr ""
 "Insufficient user privileges."
 
 #: plugins/rdp/rdp_plugin.c:1563
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
 "Account restricted."
@@ -1838,12 +1831,12 @@ msgstr ""
 "Change user password before connecting."
 
 #: plugins/rdp/rdp_plugin.c:1576
-#, fuzzy, c-format
+#, c-format
 msgid "Lost connection to the RDP server \"%s\"."
 msgstr "Lost connection to the RDP server ‘%s’."
 
 #: plugins/rdp/rdp_plugin.c:1579
-#, fuzzy, c-format
+#, c-format
 msgid "Could not find the address for the RDP server \"%s\"."
 msgstr "Could not find the address for the RDP server ‘%s’."
 
@@ -1857,12 +1850,12 @@ msgstr ""
 "server support a common TLS version."
 
 #: plugins/rdp/rdp_plugin.c:1586
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to establish a connection to the RDP server \"%s\"."
 msgstr "Unable to establish a connection to the RDP server ‘%s’."
 
 #: plugins/rdp/rdp_plugin.c:1594
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot connect to the RDP server \"%s\"."
 msgstr "Cannot connect to the RDP server ‘%s’."
 
@@ -1894,7 +1887,7 @@ msgstr ""
 "policy."
 
 #: plugins/rdp/rdp_plugin.c:1622
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot connect to the \"%s\" RDP server."
 msgstr "Cannot connect to the ‘%s’ RDP server."
 
@@ -1915,27 +1908,22 @@ msgid "RemoteFX (32 bpp)"
 msgstr "RemoteFX (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:1943
-#, fuzzy
 msgid "True colour (32 bpp)"
 msgstr "True colour (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:1944
-#, fuzzy
 msgid "True colour (24 bpp)"
 msgstr "True colour (24 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:1945
-#, fuzzy
 msgid "High colour (16 bpp)"
 msgstr "High colour (16 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:1946
-#, fuzzy
 msgid "High colour (15 bpp)"
 msgstr "High colour (15 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:1947
-#, fuzzy
 msgid "256 colours (8 bpp)"
 msgstr "256 colours (8 bpp)"
 
@@ -1960,12 +1948,10 @@ msgid "Negotiate"
 msgstr "Negotiate"
 
 #: plugins/rdp/rdp_plugin.c:1992
-#, fuzzy
 msgid "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 and newer)"
-msgstr "2600 (Windows XP),7601 (Windows Vista/7),9600 (Windows 8 and newer)"
+msgstr "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 and newer)"
 
 #: plugins/rdp/rdp_plugin.c:1995
-#, fuzzy
 msgid ""
 "Used i.a. by terminal services in smart card channel to distinguish client "
 "capabilities:\n"
@@ -1975,9 +1961,9 @@ msgid ""
 "  • >= 7065: Windows 8 and newer: SCardGetReaderIcon(), "
 "SCardGetDeviceTypeId()"
 msgstr ""
-"Used i.a. by Terminal services in SmartCard channel to distinguish client "
+"Used i.a. by terminal services in smart card channel to distinguish client "
 "capabilities:\n"
-"  • < 4034: Windows XP base smartcard functions\n"
+"  • < 4034: Windows XP base smart card functions\n"
 "  • 4034-7064: Windows Vista/7: SCardReadCache(), SCardWriteCache(),\n"
 "    SCardGetTransmitCount()\n"
 "  • >= 7065: Windows 8 and newer: SCardGetReaderIcon(), "
@@ -1996,22 +1982,18 @@ msgid "Gateway transport type"
 msgstr "Gateway transport type"
 
 #: plugins/rdp/rdp_plugin.c:2037
-#, fuzzy
 msgid "Remote Desktop Gateway server"
 msgstr "Remote Desktop Gateway server"
 
 #: plugins/rdp/rdp_plugin.c:2038
-#, fuzzy
 msgid "Remote Desktop Gateway username"
 msgstr "Remote Desktop Gateway username"
 
 #: plugins/rdp/rdp_plugin.c:2039
-#, fuzzy
 msgid "Remote Desktop Gateway password"
 msgstr "Remote Desktop Gateway password"
 
 #: plugins/rdp/rdp_plugin.c:2040
-#, fuzzy
 msgid "Remote Desktop Gateway domain"
 msgstr "Remote Desktop Gateway domain"
 
@@ -2020,7 +2002,6 @@ msgid "Client name"
 msgstr "Client name"
 
 #: plugins/rdp/rdp_plugin.c:2042
-#, fuzzy
 msgid "Client build"
 msgstr "Client build"
 
@@ -2073,13 +2054,12 @@ msgid "Local parallel device"
 msgstr "Local parallel device"
 
 #: plugins/rdp/rdp_plugin.c:2052
-#, fuzzy
 msgid "Name of smart card"
-msgstr "Share smartcard"
+msgstr "Name of smart card"
 
 #: plugins/rdp/rdp_plugin.c:2053
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
-msgstr ""
+msgstr "Prefer IPv6 AAAA record over IPv4 A record"
 
 #: plugins/rdp/rdp_plugin.c:2054
 msgid "Share printers"
@@ -2098,16 +2078,14 @@ msgid "Share parallel ports"
 msgstr "Share parallel ports"
 
 #: plugins/rdp/rdp_plugin.c:2058
-#, fuzzy
 msgid "Share a smart card"
-msgstr "Share smartcard"
+msgstr "Share a smart card"
 
 #: plugins/rdp/rdp_plugin.c:2059
 msgid "Redirect local microphone"
 msgstr "Redirect local microphone"
 
 #: plugins/rdp/rdp_plugin.c:2060
-#, fuzzy
 msgid "Turn off clipboard sync"
 msgstr "Turn off clipboard sync"
 
@@ -2132,7 +2110,6 @@ msgid "Turn off fast-path"
 msgstr "Turn off fast-path"
 
 #: plugins/rdp/rdp_plugin.c:2066
-#, fuzzy
 msgid "Server detection using Remote Desktop Gateway"
 msgstr "Server detection using Remote Desktop Gateway"
 
@@ -2154,11 +2131,11 @@ msgstr "Glyph cache"
 
 #: plugins/rdp/rdp_plugin.c:2073
 msgid "Enable multitransport protocol (UDP)"
-msgstr ""
+msgstr "Enable multitransport protocol (UDP)"
 
 #: plugins/rdp/rdp_plugin.c:2073
 msgid "Using the UDP protocol may improve performance"
-msgstr ""
+msgstr "Using the UDP protocol may improve performance"
 
 #: plugins/rdp/rdp_plugin.c:2097
 msgid "RDP - Remote Desktop Protocol"
@@ -2258,9 +2235,9 @@ msgid "Terminating…"
 msgstr "Terminating…"
 
 #: plugins/nx/nx_session_manager.c:143
-#, fuzzy, c-format
+#, c-format
 msgid "NX sessions on %s"
-msgstr "NX Sessions on %s"
+msgstr "NX sessions on %s"
 
 #: plugins/nx/nx_session_manager.c:147
 msgid "Attach"
@@ -2295,18 +2272,16 @@ msgid "Enter NX authentication credentials"
 msgstr "Enter NX authentication credentials"
 
 #: plugins/nx/nx_plugin.c:748
-#, fuzzy
 msgid "Send Ctrl+Alt+Del"
-msgstr "Send Ctrl+Alt+Delete"
+msgstr "Send Ctrl+Alt+Del"
 
 #: plugins/nx/nx_plugin.c:758
 msgid "NX - NX Technology"
 msgstr "NX - NX Technology"
 
 #: plugins/kwallet/src/kwallet_plugin_main.c:118
-#, fuzzy
 msgid "Secured password storage in KWallet"
-msgstr "Secure passwords storage in KWallet"
+msgstr "Secured password storage in KWallet"
 
 #: plugins/telepathy/telepathy_channel_handler.c:237
 #, c-format
@@ -2355,6 +2330,11 @@ msgid ""
 "More details in COPYING\n"
 "    "
 msgstr ""
+"\n"
+"Copyright © 2014–2020 Antenore Gatta, Giovanni Panozzo.\n"
+"Copyright © 2009–2014 Vic Lee\n"
+"More details in COPYING\n"
+"    "
 
 #: data/ui/remmina_about.glade:40
 msgid "Website"
@@ -2362,28 +2342,25 @@ msgstr "Website"
 
 #: data/ui/remmina_main.glade:35
 msgid "Hide or show the search bar"
-msgstr ""
+msgstr "Hide or show the search bar"
 
 #: data/ui/remmina_main.glade:41
-#, fuzzy
 msgid "Add a new connection profile"
-msgstr "VNC connection failed: %s"
+msgstr "Add a new connection profile"
 
 #: data/ui/remmina_main.glade:47
 msgid "Show the Remmina changelog."
-msgstr ""
+msgstr "Show the Remmina changelog."
 
 #: data/ui/remmina_main.glade:53
 msgid "Switch from grouped to list view"
-msgstr ""
+msgstr "Switch from grouped to list view"
 
 #: data/ui/remmina_main.glade:70
-#, fuzzy
 msgid "Remote Desktop Client"
-msgstr "Remmina Remote Desktop Client"
+msgstr "Remote Desktop Client"
 
 #: data/ui/remmina_main.glade:78
-#, fuzzy
 msgid "New connection profile"
 msgstr "New connection profile"
 
@@ -2392,9 +2369,8 @@ msgid "Show search bar"
 msgstr "Show search bar"
 
 #: data/ui/remmina_main.glade:123
-#, fuzzy
 msgid "Remmina main menu"
-msgstr "Remmina Applet"
+msgstr "Remmina main menu"
 
 #: data/ui/remmina_main.glade:130
 msgid "Actions"
@@ -2406,7 +2382,7 @@ msgstr "Toggle view"
 
 #: data/ui/remmina_main.glade:175
 msgid "Select the protocol to use with the quick connect bar."
-msgstr ""
+msgstr "Select the protocol to use with the quick connect bar."
 
 #: data/ui/remmina_main.glade:193
 msgid "Search string or server name/IP address for “Quick Connect”"
@@ -2450,9 +2426,8 @@ msgid "News"
 msgstr "News"
 
 #: data/ui/remmina_main.glade:410 data/ui/remmina_news.glade:134
-#, fuzzy
 msgid "Make Remmina your default remote desktop client"
-msgstr "Make Remmina the default Remote Desktop Client"
+msgstr "Make Remmina your default remote desktop client"
 
 #: data/ui/remmina_main.glade:437
 msgid "Homepage"
@@ -2468,9 +2443,8 @@ msgstr "Wiki"
 
 #. Remmina community website
 #: data/ui/remmina_main.glade:467
-#, fuzzy
 msgid "Community"
-msgstr "Online Community"
+msgstr "Community"
 
 #: data/ui/remmina_main.glade:585
 msgid "Plugin"
@@ -2513,7 +2487,7 @@ msgstr ""
 
 #: data/ui/remmina_news.glade:120
 msgid "Enable anonymous statistics"
-msgstr ""
+msgstr "Enable anonymous statistics"
 
 #: data/ui/remmina_news.glade:143
 msgid "Apply"
@@ -2521,15 +2495,13 @@ msgstr "Apply"
 
 #: data/ui/remmina_news.glade:147
 msgid "Allow Remmina to automatically open .rdp and .remmina files."
-msgstr ""
+msgstr "Allow Remmina to automatically open .rdp and .remmina files."
 
 #: data/ui/remmina_news.glade:168
-#, fuzzy
 msgid "<big>Take part</big>"
-msgstr "<big>Contribute</big>"
+msgstr "<big>Take part</big>"
 
 #: data/ui/remmina_news.glade:194
-#, fuzzy
 msgid ""
 "<span>\n"
 "<b>You have our gratitude in choosing copylefted libre software, <a href="
@@ -2538,9 +2510,9 @@ msgid ""
 "</span>\n"
 msgstr ""
 "<span>\n"
-"<b>You are great for using copylefted libre software, <a href=\"https://"
-"remmina.org/donations/\" title=\"Awesome Remmina donations\">throw in a "
-"donation</a>, to make us happy, and further make the program better.</b>\n"
+"<b>You have our gratitude in choosing copylefted libre software, <a href=\""
+"https://remmina.org/donations/\" title=\"Awesome Remmina donations\">"
+"donations also make us happy</a>, and further help improve Remmina.</b>\n"
 "</span>\n"
 
 #: data/ui/remmina_news.glade:214
@@ -2637,9 +2609,8 @@ msgid "Screen resolutions"
 msgstr "Screen resolutions"
 
 #: data/ui/remmina_preferences.glade:280
-#, fuzzy
 msgid "Folder for screenshots"
-msgstr "Folder for SSH session log"
+msgstr "Folder for screenshots"
 
 #: data/ui/remmina_preferences.glade:292
 msgid "Choose a folder to save screenshots from Remmina in."
@@ -2651,12 +2622,11 @@ msgstr "Select a folder"
 
 #: data/ui/remmina_preferences.glade:305
 msgid "Set up"
-msgstr ""
+msgstr "Set up"
 
 #: data/ui/remmina_preferences.glade:326
-#, fuzzy
 msgid "Screenshot filenames"
-msgstr "Screenshot filename"
+msgstr "Screenshot filenames"
 
 #: data/ui/remmina_preferences.glade:338
 msgid ""
@@ -2690,9 +2660,8 @@ msgid "Remember last view mode"
 msgstr "Remember last view mode"
 
 #: data/ui/remmina_preferences.glade:418 data/ui/remmina_preferences.glade:422
-#, fuzzy
 msgid "Send anonymous statistics to remmina.org"
-msgstr "Send statistics to remmina.org"
+msgstr "Send anonymous statistics to remmina.org"
 
 #: data/ui/remmina_preferences.glade:462
 msgid "Only save generated screenshots, don't copy them to clipboard."
@@ -2760,27 +2729,23 @@ msgstr "Viewport fullscreen"
 
 #: data/ui/remmina_preferences.glade:603
 msgid "Tabs"
-msgstr ""
+msgstr "Tabs"
 
 #: data/ui/remmina_preferences.glade:618
-#, fuzzy
 msgid "By group"
-msgstr "Tab by groups"
+msgstr "By group"
 
 #: data/ui/remmina_preferences.glade:619
-#, fuzzy
 msgid "By protocols"
-msgstr "Tab by protocols"
+msgstr "By protocols"
 
 #: data/ui/remmina_preferences.glade:620
-#, fuzzy
 msgid "Per connection"
-msgstr "Open connection"
+msgstr "Per connection"
 
 #: data/ui/remmina_preferences.glade:621
-#, fuzzy
 msgid "None"
-msgstr "<None>"
+msgstr "None"
 
 #: data/ui/remmina_preferences.glade:632
 msgid "Fullscreen on the same screen as the connection window"
@@ -2877,23 +2842,23 @@ msgstr "Parse ~/.ssh/config"
 
 #: data/ui/remmina_preferences.glade:1257
 msgid "No logging at all"
-msgstr ""
+msgstr "No logging at all"
 
 #: data/ui/remmina_preferences.glade:1258
 msgid "Rare conditions or warnings"
-msgstr ""
+msgstr "Rare conditions or warnings"
 
 #: data/ui/remmina_preferences.glade:1259
 msgid "API-accessible entrypoints"
-msgstr ""
+msgstr "API-accessible entrypoints"
 
 #: data/ui/remmina_preferences.glade:1260
 msgid "Lower level protocol info, packet level"
-msgstr ""
+msgstr "Lower level protocol info, packet level"
 
 #: data/ui/remmina_preferences.glade:1261
 msgid "Function entering and leaving"
-msgstr ""
+msgstr "Function entering and leaving"
 
 #: data/ui/remmina_preferences.glade:1277
 msgid "SSH log level"
@@ -3004,9 +2969,8 @@ msgid "Bright colours"
 msgstr "Bright colours"
 
 #: data/ui/remmina_preferences.glade:1876
-#, fuzzy
 msgid "Colour theme"
-msgstr "Load colour theme"
+msgstr "Colour theme"
 
 #: data/ui/remmina_preferences.glade:1917
 msgid ""
