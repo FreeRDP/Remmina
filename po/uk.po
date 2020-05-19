@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-05-19 11:19+0000\n"
-"PO-Revision-Date: 2020-05-15 20:41+0000\n"
+"PO-Revision-Date: 2020-05-19 11:53+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/remmina/"
 "remmina/uk/>\n"
@@ -1867,11 +1867,13 @@ msgstr ""
 "підтримує поточну версію TLS."
 
 #: plugins/rdp/rdp_plugin.c:1590
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Unable to establish a connection to the RDP server. Check \"Security "
 "protocol negotiation\" \"%s\"."
-msgstr "Не вдалося встановити з'єднання із сервером RDP «%s»."
+msgstr ""
+"Не вдалося встановити з'єднання із сервером RDP. Перевірте, чи вказано для "
+"«Узгодження протоколу захисту» «%s»."
 
 #: plugins/rdp/rdp_plugin.c:1598
 #, c-format
@@ -1965,26 +1967,23 @@ msgstr "Місцевий — висока якість"
 
 #: plugins/rdp/rdp_plugin.c:1980
 msgid "Negotiate protocol security"
-msgstr ""
+msgstr "Узгоджувати захист протоколу"
 
 #: plugins/rdp/rdp_plugin.c:1981
-#, fuzzy
 msgid "NLA protocol security"
-msgstr "Вкладки за протоколами"
+msgstr "Захист протоколу NLA"
 
 #: plugins/rdp/rdp_plugin.c:1982
-#, fuzzy
 msgid "TLS protocol security"
-msgstr "Вкладки за протоколами"
+msgstr "Захист протоколу TLS"
 
 #: plugins/rdp/rdp_plugin.c:1983
-#, fuzzy
 msgid "RDP protocol security"
-msgstr "Вкладки за протоколами"
+msgstr "Захист протоколу RDP"
 
 #: plugins/rdp/rdp_plugin.c:1984
 msgid "NLA extended protocol security"
-msgstr ""
+msgstr "Захист розширеного протоколу NLA"
 
 #: plugins/rdp/rdp_plugin.c:1997
 msgid "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 and newer)"
@@ -2015,7 +2014,7 @@ msgstr "Звук"
 
 #: plugins/rdp/rdp_plugin.c:2040
 msgid "Security protocol negotiation"
-msgstr ""
+msgstr "Узгодження протоколу захисту"
 
 #: plugins/rdp/rdp_plugin.c:2041
 msgid "Gateway transport type"
@@ -2518,25 +2517,22 @@ msgid "Please wait…"
 msgstr "Будь ласка, зачекайте…"
 
 #: data/ui/remmina_news.glade:108
-#, fuzzy
 msgid ""
 "Send <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
 "remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
 "\">anonymous</a></b> statistics"
 msgstr ""
 "Надсилати <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-"remmina__stats_8c.html#details\" title=\"Статистику використання Remmina"
-"\">анонімну</a></b> статистику до remmina.org"
+"remmina__stats_8c.html#details\" title=\"Статистика використання Remmina"
+"\">анонімну</a></b> статистику"
 
 #: data/ui/remmina_news.glade:120
-#, fuzzy
 msgid "Send anonymous statistics"
-msgstr "Увімкнути анонімну статистику"
+msgstr "Надсилати анонімну статистику"
 
 #: data/ui/remmina_news.glade:134
-#, fuzzy
 msgid "Use as default remote desktop client"
-msgstr "Зробити Remmina типовим клієнтом віддалених стільниць"
+msgstr "Використовувати як типовий клієнт віддалених стільниць"
 
 #: data/ui/remmina_news.glade:143
 msgid "Apply"
@@ -2708,9 +2704,10 @@ msgid "Remember last view mode"
 msgstr "Запам'ятовувати останній режим перегляду"
 
 #: data/ui/remmina_preferences.glade:418 data/ui/remmina_preferences.glade:422
-#, fuzzy
 msgid "Send anonymous statistics for use on https://remmina.org/remmina-stats"
-msgstr "Надсилати анонімну статистику до remmina.org"
+msgstr ""
+"Надсилати анонімну статистику щодо використання на https://remmina.org/"
+"remmina-stats"
 
 #: data/ui/remmina_preferences.glade:462
 msgid "Only save generated screenshots, don't copy them to clipboard."
