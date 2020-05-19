@@ -159,13 +159,13 @@ fi
 
 mv remmina.temp.pot remmina.pot
 
-for i in *.po; do
-	msgmerge --backup=off --update "$i" remmina.pot
-done
-
-for i in "$REMMINATOP"/po/*.po ; do
-	TMPF=/tmp/f$$.txt
-	sed '/^#~/d' "$i" > "$TMPF"
-	awk 'BEGIN{bl=0}/^$/{bl++;if(bl==1)print;else next}/^..*$/{bl=0;print}' $TMPF >| "$i"
-	rm $TMPF
-done
+#for i in *.po; do
+#	msgmerge --backup=off --update "$i" remmina.pot
+#done
+#
+#for i in "$REMMINATOP"/po/*.po ; do
+#	TMPF=/tmp/f$$.txt
+#	sed '/^#~/d' "$i" > "$TMPF"
+#	awk 'BEGIN{bl=0}/^$/{bl++;if(bl==1)print;else next}/^..*$/{bl=0;print}' $TMPF >| "$i"
+#	rm $TMPF
+#done
