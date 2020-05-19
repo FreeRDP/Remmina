@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2020-05-11 08:21+0000\n"
+"POT-Creation-Date: 2020-05-19 09:20+0000\n"
 "PO-Revision-Date: 2020-05-18 02:52+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -62,7 +62,8 @@ msgstr "SSH サーバー上にコマンド \"%s\" は見つかりませんでし
 #: src/remmina_protocol_widget.c:982
 #, c-format
 msgid "Could not run the \"%s\" command on the SSH server (status = %i)."
-msgstr "SSH サーバー上でコマンド \"%s\" を実行できませんでした (ステータス = %i)。"
+msgstr ""
+"SSH サーバー上でコマンド \"%s\" を実行できませんでした (ステータス = %i)。"
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_protocol_widget.c:990
@@ -180,7 +181,6 @@ msgid "Error: %s"
 msgstr "エラー: %s"
 
 #: src/remmina_ssh_plugin.c:459
-#, fuzzy
 msgid "Terminal content saved in"
 msgstr ""
 
@@ -346,7 +346,7 @@ msgstr "SSH 圧縮"
 msgid "Don't remember passwords"
 msgstr "パスワードを保存しない"
 
-#: src/remmina_ssh_plugin.c:1063
+#: src/remmina_ssh_plugin.c:1064
 msgid "Strict host key checking"
 msgstr "厳密なホスト鍵チェック"
 
@@ -516,14 +516,18 @@ msgstr "'Remmina について' を表示する"
 #: src/remmina.c:86 src/remmina.c:88
 msgid ""
 "Connect to desktop described in file (.remmina or type supported by plugin)"
-msgstr "ファイルに記載されたデスクトップに接続する (.remmina またはプラグインが対応しているファイル形式)"
+msgstr ""
+"ファイルに記載されたデスクトップに接続する (.remmina またはプラグインが対応し"
+"ているファイル形式)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:90
 msgid ""
 "Edit desktop connection described in file (.remmina or type supported by "
 "plugin)"
-msgstr "ファイルに記載されたデスクトップを編集する (.remmina またはプラグインが対応しているファイル形式)"
+msgstr ""
+"ファイルに記載されたデスクトップを編集する (.remmina またはプラグインが対応し"
+"ているファイル形式)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:93
@@ -642,7 +646,8 @@ msgstr "拡大縮小時にクライアントウィンドウ全体に表示"
 
 #: src/rcw.c:1999
 msgid "Turn off scaling to avoid screenshot distortion."
-msgstr "スクリーンショットが歪まないようにしたい場合は拡大縮小をオフにしてください。"
+msgstr ""
+"スクリーンショットが歪まないようにしたい場合は拡大縮小をオフにしてください。"
 
 #: src/rcw.c:2059 plugins/www/www_plugin.c:840
 msgid "Screenshot taken"
@@ -701,7 +706,8 @@ msgstr "切断"
 #: src/rcw.c:3859
 #, c-format
 msgid "The file \"%s\" is corrupted, unreadable, or could not be found."
-msgstr "ファイル \"%s\" は壊れているか、読み取り不可か、または見つかりませんでした。"
+msgstr ""
+"ファイル \"%s\" は壊れているか、読み取り不可か、または見つかりませんでした。"
 
 #: src/rcw.c:4023
 msgid "Warning: This plugin requires GtkSocket, but it’s not available."
@@ -1053,7 +1059,8 @@ msgid ""
 "or the administrator has changed the key. The new public key fingerprint is:"
 msgstr ""
 "注意: サーバーの公開鍵が変更されています。これは攻撃を受けているか、\n"
-"管理者が鍵を変更したのかのどちらかを意味しています。新しい公開鍵のフィンガープリント:"
+"管理者が鍵を変更したのかのどちらかを意味しています。新しい公開鍵のフィンガー"
+"プリント:"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:567
@@ -1100,7 +1107,7 @@ msgid "Could not connect to SSH tunnel. %s"
 msgstr "SSH トンネルに接続できませんでした: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1248 src/remmina_ssh.c:1873
+#: src/remmina_ssh.c:1251 src/remmina_ssh.c:1876
 #, c-format
 msgid "Could not open channel. %s"
 msgstr "チャンネルを開けませんでした: %s"
@@ -1701,7 +1708,8 @@ msgstr ""
 #, c-format
 msgid ""
 "The protocol \"%s\" is unavailable because GtkSocket only works under X.Org."
-msgstr "GtkSocket は X.Org でのみ動作するため、プロトコル \"%s\" は利用できません。"
+msgstr ""
+"GtkSocket は X.Org でのみ動作するため、プロトコル \"%s\" は利用できません。"
 
 #: plugins/xdmcp/xdmcp_plugin.c:348
 msgid "Default"
@@ -1847,7 +1855,8 @@ msgid ""
 "Could not connect to the RDP server \"%s\" via TLS. Check that client and "
 "server support a common TLS version."
 msgstr ""
-"RDP サーバー \"%s\" に TLS で接続できませんでした。クライアントとサーバーがサポートしている TLS のバージョンを確認してください。"
+"RDP サーバー \"%s\" に TLS で接続できませんでした。クライアントとサーバーがサ"
+"ポートしている TLS のバージョンを確認してください。"
 
 #: plugins/rdp/rdp_plugin.c:1590
 #, fuzzy, c-format
@@ -2400,7 +2409,8 @@ msgstr "クイック接続バーで使用するプロトコルを選択してく
 
 #: data/ui/remmina_main.glade:193
 msgid "Search string or server name/IP address for “Quick Connect”"
-msgstr "検索する文字列か、クイック接続する IP アドレス/サーバー名を入力してください"
+msgstr ""
+"検索する文字列か、クイック接続する IP アドレス/サーバー名を入力してください"
 
 #: data/ui/remmina_main.glade:197 data/ui/remmina_main.glade:199
 msgid "Server name or IP address"
@@ -2496,7 +2506,8 @@ msgid ""
 "\">anonymous</a></b> statistics to remmina.org"
 msgstr ""
 "remmina.org に<b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-"remmina__stats_8c.html#details\" title=\"Remmina の使用統計\">匿名</a></b>で統計を送信する"
+"remmina__stats_8c.html#details\" title=\"Remmina の使用統計\">匿名</a></b>で"
+"統計を送信する"
 
 #: data/ui/remmina_news.glade:120
 msgid "Enable anonymous statistics"
@@ -2508,7 +2519,8 @@ msgstr "適用"
 
 #: data/ui/remmina_news.glade:147
 msgid "Allow Remmina to automatically open .rdp and .remmina files."
-msgstr "Remmina が .rdp ファイルと .remmina ファイルを自動的に開くことを許可します。"
+msgstr ""
+"Remmina が .rdp ファイルと .remmina ファイルを自動的に開くことを許可します。"
 
 #: data/ui/remmina_news.glade:168
 msgid "<big>Take part</big>"
@@ -2523,9 +2535,10 @@ msgid ""
 "</span>\n"
 msgstr ""
 "<span>\n"
-"<b>コピーレフトで自由なソフトウェアを選択していただき、ありがとうございます。Remmina の更なる改良をご希望の場合は、<a href=\""
-"https://remmina.org/donations/\" title=\"素晴らしい Remmina に寄付を\""
-">寄付</a>をしていただけると幸いです。</b>\n"
+"<b>コピーレフトで自由なソフトウェアを選択していただき、ありがとうございます。"
+"Remmina の更なる改良をご希望の場合は、<a href=\"https://remmina.org/"
+"donations/\" title=\"素晴らしい Remmina に寄付を\">寄付</a>をしていただけると"
+"幸いです。</b>\n"
 "</span>\n"
 
 #: data/ui/remmina_news.glade:214
@@ -2686,7 +2699,9 @@ msgstr "スクリーンショットがクリップボードに入るのを防ぐ
 msgid ""
 "Set a custom filename for your Remmina connection profiles, using a "
 "formatting string."
-msgstr "フォーマット指定子を使用して Remmina 接続プロファイルのカスタムファイル名を設定します。"
+msgstr ""
+"フォーマット指定子を使用して Remmina 接続プロファイルのカスタムファイル名を設"
+"定します。"
 
 #: data/ui/remmina_preferences.glade:483
 msgid "Profile filename template"
@@ -2987,8 +3002,9 @@ msgid ""
 "Choose a colour scheme file. Usually available in /usr/share/remmina/theme. "
 "https://github.com/mbadolato/iTerm2-Color-Schemes has more details."
 msgstr ""
-"カラースキームファイルを選択します。利用可能なものは通常 /usr/share/remmina/theme にあります。https://github."
-"com/mbadolato/iTerm2-Color-Schemes には、より多くのカラースキームがあります。"
+"カラースキームファイルを選択します。利用可能なものは通常 /usr/share/remmina/"
+"theme にあります。https://github.com/mbadolato/iTerm2-Color-Schemes には、よ"
+"り多くのカラースキームがあります。"
 
 #: data/ui/remmina_preferences.glade:1920
 msgid "Pick a terminal colouring file"
