@@ -1,5 +1,26 @@
 # Changelog
 
+## 1.4.4
+[full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.3...1.4.4)
+
+* RDP Plugin - Adding UDP support, implements #2153 [!2038](https://gitlab.com/Remmina/Remmina/merge_requests/2038) *@antenore*
+* Adding proxy and local storage support [!2039](https://gitlab.com/Remmina/Remmina/merge_requests/2039) *@antenore*
+* RDP option to prefer IPv6 AAAA record over IPv4 A records [!2040](https://gitlab.com/Remmina/Remmina/merge_requests/2040) *@antenore*
+* Snap: Install icons system-wide and use them [!2042](https://gitlab.com/Remmina/Remmina/merge_requests/2042) *@ed10vi*
+* Allow users to override the app ID [!2044](https://gitlab.com/Remmina/Remmina/merge_requests/2044) *@garymoon*
+* Use icon name instead of localizable string in gtk_image_new_from_icon_name() [!2045](https://gitlab.com/Remmina/Remmina/merge_requests/2045) *@yurchor*
+* Fix minor typos [!2046](https://gitlab.com/Remmina/Remmina/merge_requests/2046) *@yurchor*
+* Don't grab when window has no focus, issue #2165 [!2047](https://gitlab.com/Remmina/Remmina/merge_requests/2047) *@giox069*
+* SSH tunnel and VNC fixes [!2048](https://gitlab.com/Remmina/Remmina/merge_requests/2048) *@antenore*
+* Adding explicitely trueColour in the client format structure. Fixes #2181 and #810 [!2049](https://gitlab.com/Remmina/Remmina/merge_requests/2049) *@antenore*
+* Code refactoring. [!2050](https://gitlab.com/Remmina/Remmina/merge_requests/2050) *@antenore*
+* Extract subtitle for translation [!2051](https://gitlab.com/Remmina/Remmina/merge_requests/2051) *@yurchor*
+* [SSH] Connection pre/post command not replacing SSH tunnel parameters [!2053](https://gitlab.com/Remmina/Remmina/merge_requests/2053) *@antenore*
+* SNAP: Remove libssh, available in distro [!2052](https://gitlab.com/Remmina/Remmina/merge_requests/2052) *@ed10vi*
+* remmina shortcuts not working if fullscreen toolbar is set to off [!2054](https://gitlab.com/Remmina/Remmina/merge_requests/2054) *@giox069*
+* Adding remmina_debug function to simplify log reporting [!2055](https://gitlab.com/Remmina/Remmina/merge_requests/2055) *@antenore*
+* Removing OnlyShowIn as deprecated in the latest freedesktop spec. Closes #2198 [!2056](https://gitlab.com/Remmina/Remmina/merge_requests/2056) *@antenore*
+
 ## 1.4.3
 [full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.2...1.4.3)
 
