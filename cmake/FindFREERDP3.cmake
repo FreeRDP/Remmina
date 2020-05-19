@@ -19,7 +19,7 @@
 
 find_package(PkgConfig)
 if(PKG_CONFIG_FOUND)
-    pkg_check_modules(PC_FREERDP3 freerdp3>=${FREERDP_REQUIRED_VERSIONSTRING})
+    pkg_check_modules(PC_FREERDP3 freerdp3>=3.0.0})
 endif()
 
 set(FREERDP3_DEFINITIONS ${PC_FREERDP3_CFLAGS_OTHER})

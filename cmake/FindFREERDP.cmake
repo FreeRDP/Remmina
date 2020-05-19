@@ -19,7 +19,7 @@
 
 find_package(PkgConfig)
 if(PKG_CONFIG_FOUND)
-	pkg_check_modules(PC_FREERDP freerdp2>=${FREERDP_REQUIRED_VERSIONSTRING})
+	pkg_check_modules(PC_FREERDP freerdp2>=2.0.0)
 endif()
 
 set(FREERDP_DEFINITIONS ${PC_FREERDP_CFLAGS_OTHER})
