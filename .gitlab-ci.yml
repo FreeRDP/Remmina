@@ -105,9 +105,10 @@ flatpak:test:
   script:
     - /bin/sh -xe ./flatpak/flatpak-build.sh
   artifacts:
-    expose_as: 'Testing flatpak package'
+    expose_as: "Download flatpak from the flatpak artifact folder"
     paths:
-      - flatpak/${BUNDLE}
+      - flatpak/$BUNDLE
+      - flatpak/
     expire_in: 10 days
   cache:
     paths:
