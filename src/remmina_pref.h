@@ -169,6 +169,8 @@ typedef struct _RemminaPref {
 	guint			vte_shortcutkey_copy;
 	guint			vte_shortcutkey_paste;
 	guint			vte_shortcutkey_select_all;
+	guint			vte_shortcutkey_increase_font;
+	guint			vte_shortcutkey_decrease_font;
 	/* In View menu */
 	gboolean		hide_toolbar;
 	gboolean		small_toolbutton;
