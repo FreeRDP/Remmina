@@ -639,6 +639,19 @@ void remmina_pref_init(void)
 	else
 		remmina_pref.vte_shortcutkey_select_all = GDK_KEY_a;
 
+	if (g_key_file_has_key(gkeyfile, "remmina_pref", "vte_shortcutkey_increase_font", NULL))
+		remmina_pref.vte_shortcutkey_increase_font = g_key_file_get_integer(gkeyfile, "remmina_pref", "vte_shortcutkey_increase_font",
+			NULL);
+	else
+		remmina_pref.vte_shortcutkey_increase_font = GDK_KEY_Page_Up;
+
+	if (g_key_file_has_key(gkeyfile, "remmina_pref", "vte_shortcutkey_decrease_font", NULL))
+		remmina_pref.vte_shortcutkey_decrease_font = g_key_file_get_integer(gkeyfile, "remmina_pref", "vte_shortcutkey_decrease_font",
+			NULL);
+	else
+		remmina_pref.vte_shortcutkey_decrease_font = GDK_KEY_Page_Down;
+
+
 	/* If we have a color scheme file, we switch to it, GIO will merge it in the
 	 * remmina.pref file */
 	if (g_file_test(remmina_colors_file, G_FILE_TEST_IS_REGULAR)) {
