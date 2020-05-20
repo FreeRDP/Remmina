@@ -234,32 +234,34 @@ static void rmnews_get_url_cb(SoupSession *session, SoupMessage *msg, gpointer d
 	FILE *output_file = NULL;
 	gchar *filesha = NULL;
 	gchar *filesha_after = NULL;
-	GTimeVal t;
+	GDateTime *gdt;
+	gint64 unixts;
 
 	g_info("Status code %d", msg->status_code);
 
 	name = soup_message_get_uri(msg)->path;
 
+	gdt = g_date_time_new_now_utc();
+	unixts = g_date_time_to_unix(gdt);
+	g_date_time_unref(gdt);
+
 	if (SOUP_STATUS_IS_CLIENT_ERROR(msg->status_code)) {
 		g_info("Status 404 - Release file not available");
-		g_get_current_time(&t);
-		remmina_pref.periodic_rmnews_last_get = t.tv_sec;
+		remmina_pref.periodic_rmnews_last_get = unixts;
 		remmina_pref_save();
 		return;
 	}
 
 	if (SOUP_STATUS_IS_SERVER_ERROR(msg->status_code)) {
 		g_info("Server not available");
-		g_get_current_time(&t);
-		remmina_pref.periodic_rmnews_last_get = t.tv_sec;
+		remmina_pref.periodic_rmnews_last_get = unixts;
 		remmina_pref_save();
 		return;
 	}
 
 	if (SOUP_STATUS_IS_TRANSPORT_ERROR(msg->status_code)) {
 		g_info("Transport Error");
-		g_get_current_time(&t);
-		remmina_pref.periodic_rmnews_last_get = t.tv_sec;
+		remmina_pref.periodic_rmnews_last_get = unixts;
 		remmina_pref_save();
 		return;
 	}
@@ -271,8 +273,7 @@ static void rmnews_get_url_cb(SoupSession *session, SoupMessage *msg, gpointer d
 			g_warning("%s: %d %s (0x%x)\n", name, msg->status_code, msg->reason_phrase, flags);
 		else
 			g_warning("%s: %d %s (no handshake status)\n", name, msg->status_code, msg->reason_phrase);
-		g_get_current_time(&t);
-		remmina_pref.periodic_rmnews_last_get = t.tv_sec;
+		remmina_pref.periodic_rmnews_last_get = unixts;
 		remmina_pref_save();
 		return;
 	} else if (SOUP_STATUS_IS_TRANSPORT_ERROR(msg->status_code)) {
@@ -295,8 +296,7 @@ static void rmnews_get_url_cb(SoupSession *session, SoupMessage *msg, gpointer d
 			g_free(uri_string);
 			soup_uri_free(uri);
 		}
-		g_get_current_time(&t);
-		remmina_pref.periodic_rmnews_last_get = t.tv_sec;
+		remmina_pref.periodic_rmnews_last_get = unixts;
 		remmina_pref_save();
 		return;
 	} else if (SOUP_STATUS_IS_SUCCESSFUL(msg->status_code)) {
@@ -311,15 +311,13 @@ static void rmnews_get_url_cb(SoupSession *session, SoupMessage *msg, gpointer d
 			output_file = fopen(output_file_path, "w");
 			if (!output_file) {
 				g_printerr("Error trying to create file %s.\n", output_file_path);
-				g_get_current_time(&t);
-				remmina_pref.periodic_rmnews_last_get = t.tv_sec;
+				remmina_pref.periodic_rmnews_last_get = unixts;
 				remmina_pref_save();
 				return;
 			}
 		} else {
 			g_warning("Cannot open output file for writing, because output_file_path is NULL");
-			g_get_current_time(&t);
-			remmina_pref.periodic_rmnews_last_get = t.tv_sec;
+			remmina_pref.periodic_rmnews_last_get = unixts;
 			remmina_pref_save();
 			return;
 		}
@@ -341,8 +339,7 @@ static void rmnews_get_url_cb(SoupSession *session, SoupMessage *msg, gpointer d
 				if (!kioskmode  && kioskmode == FALSE)
 					rmnews_show_news(parent);
 			} else {
-				g_get_current_time(&t);
-				remmina_pref.periodic_rmnews_last_get = t.tv_sec;
+				remmina_pref.periodic_rmnews_last_get = unixts;
 			}
 			/* Increase counter with number of successful GETs */
 			remmina_pref.periodic_rmnews_get_count = remmina_pref.periodic_rmnews_get_count + 1;
@@ -502,12 +499,15 @@ void rmnews_get_news()
 static gboolean rmnews_periodic_check(gpointer user_data)
 {
 	TRACE_CALL(__func__);
-	GTimeVal t;
+	GDateTime *gdt;
+	gint64 unixts;
 	glong next = 0;
 
 	srand(time(NULL));
 
-	g_get_current_time(&t);
+	gdt = g_date_time_new_now_utc();
+	unixts = g_date_time_to_unix(gdt);
+	g_date_time_unref(gdt);
 
 	/* if remmina_pref is not writable ... */
 	if (remmina_pref_is_rw() == FALSE && remmina_pref.periodic_rmnews_last_get == 0) {
@@ -515,12 +515,12 @@ static gboolean rmnews_periodic_check(gpointer user_data)
 		/* We randmoly set periodic_rmnews_last_get to a a day between today
 		 * and 7 days ago */
 		g_debug ("Setting a random periodic_rmnews_last_get");
-		remmina_pref.periodic_rmnews_last_get = t.tv_sec - eweekdays[randidx];
+		remmina_pref.periodic_rmnews_last_get = unixts - eweekdays[randidx];
 	}
 	g_debug ("periodic_rmnews_last_get is %ld", remmina_pref.periodic_rmnews_last_get);
 
 	next = remmina_pref.periodic_rmnews_last_get + RMNEWS_INTERVAL_SEC;
-	if (t.tv_sec > next || (t.tv_sec < remmina_pref.periodic_rmnews_last_get && t.tv_sec > 1514764800))
+	if (unixts > next || (unixts < remmina_pref.periodic_rmnews_last_get && unixts > 1514764800))
 		rmnews_get_news();
 	return G_SOURCE_CONTINUE;
 }
