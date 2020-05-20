@@ -947,7 +947,7 @@ static void remmina_plugin_vnc_rfb_output(const char *format, ...)
 	g_free(f);
 	va_end(args);
 
-	remmina_plugin_service->debug("VNC returned: %s", vnc_error);
+	remmina_plugin_service->_debug("VNC returned: %s", vnc_error);
 }
 
 static void remmina_plugin_vnc_chat_on_send(RemminaProtocolWidget *gp, const gchar *text)

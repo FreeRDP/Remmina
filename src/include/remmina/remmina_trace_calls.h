@@ -35,16 +35,11 @@
 
 #pragma once
 
+#ifdef  WITH_TRACE_CALLS
 #include <gtk/gtk.h>
 
-extern char *fun; /* function name externalized to be used everywhere */
-#define UNUSED(expr) do { (void)(expr); } while (0)
-
-#ifdef  WITH_TRACE_CALLS
 #define TRACE_CALL(text) \
 	{ \
-		fun = g_strdup (text); \
-		UNUSED(fun); \
 		GDateTime *datetime = g_date_time_new_now_local(); \
 		gchar *sfmtdate = g_date_time_format(datetime, "%x %X"); \
 		g_print("%s Trace calls: %s\n", sfmtdate, text); \
@@ -52,9 +47,5 @@ extern char *fun; /* function name externalized to be used everywhere */
 		g_date_time_unref(datetime); \
 	}
 #else
-#define TRACE_CALL(text) \
-	{ \
-		fun = g_strdup (text); \
-		UNUSED(fun); \
-	}
+#define TRACE_CALL(text)
 #endif  /* _WITH_TRACE_CALLS_ */

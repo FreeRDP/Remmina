@@ -190,10 +190,10 @@ RemminaPluginService remmina_plugin_manager_service =
 	remmina_protocol_widget_start_xport_tunnel,
 	remmina_protocol_widget_set_display,
 	remmina_protocol_widget_signal_connection_closed,
-    remmina_protocol_widget_signal_connection_opened,
-    remmina_protocol_widget_update_align,
-    remmina_protocol_widget_unlock_dynres,
-    remmina_protocol_widget_desktop_resize,
+	remmina_protocol_widget_signal_connection_opened,
+	remmina_protocol_widget_update_align,
+	remmina_protocol_widget_unlock_dynres,
+	remmina_protocol_widget_desktop_resize,
 	remmina_protocol_widget_panel_auth,
 	remmina_protocol_widget_panel_new_certificate,
 	remmina_protocol_widget_panel_changed_certificate,
@@ -236,7 +236,7 @@ RemminaPluginService remmina_plugin_manager_service =
 	remmina_pref_get_ssh_parseconfig,
 	remmina_pref_keymap_get_keyval,
 
-	remmina_debug,
+	_remmina_debug,
 	remmina_log_print,
 	remmina_log_printf,
 

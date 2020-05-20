@@ -66,8 +66,6 @@ static RemminaMain *remminamain;
 
 #define RM_GET_OBJECT(object_name) gtk_builder_get_object(remminamain->builder, object_name)
 
-char *fun = "main"; /* just setting the initial value of the calling function name, that is set in the remmina_trace */
-
 enum {
 	PROTOCOL_COLUMN,
 	NAME_COLUMN,
