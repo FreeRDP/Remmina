@@ -1954,7 +1954,7 @@ static void rcw_toolbar_screenshot(GtkWidget *widget, RemminaConnectionWindow *c
 	gp = REMMINA_PROTOCOL_WIDGET(cnnobj->proto);
 
 	gchar *denyclip = remmina_pref_get_value("deny_screenshot_clipboard");
-	g_debug ("deny_screenshot_clipboard is set to %s", denyclip);
+	remmina_debug ("deny_screenshot_clipboard is set to %s", denyclip);
 
 	GtkClipboard *c = gtk_clipboard_get(GDK_SELECTION_CLIPBOARD);
 	// Ask the plugin if it can give us a screenshot
@@ -3724,7 +3724,7 @@ void rco_on_connect(RemminaProtocolWidget *gp, RemminaConnectionObject *cnnobj)
 
 	gchar *last_success;
 
-	g_debug("Connect signal emitted");
+	remmina_debug("Connect signal emitted");
 	GDateTime *date = g_date_time_new_now_utc();
 
 	/* This signal handler is called by a plugin when it’s correctly connected
@@ -3746,12 +3746,12 @@ void rco_on_connect(RemminaProtocolWidget *gp, RemminaConnectionObject *cnnobj)
 		remmina_pref_add_recent(remmina_file_get_string(cnnobj->remmina_file, "protocol"),
 					remmina_file_get_string(cnnobj->remmina_file, "server"));
 	if (remmina_pref.periodic_usage_stats_permitted) {
-		g_debug("Stats are allowed, we save the last successful connection date");
+		remmina_debug("Stats are allowed, we save the last successful connection date");
 		remmina_file_set_string(cnnobj->remmina_file, "last_success", last_success);
-		g_debug("Last connection was made on %s.", last_success);
+		remmina_debug("Last connection was made on %s.", last_success);
 	}
 
-	g_debug("Saving credentials");
+	remmina_debug("Saving credentials");
 	/* Save credentials */
 	remmina_file_save(cnnobj->remmina_file);
 
@@ -3760,7 +3760,7 @@ void rco_on_connect(RemminaProtocolWidget *gp, RemminaConnectionObject *cnnobj)
 
 	rco_update_toolbar(cnnobj);
 
-	g_debug("Trying to present the window");
+	remmina_debug("Trying to present the window");
 	/* Try to present window */
 	cnnobj->cnnwin->priv->dwp_eventsourceid = g_timeout_add(200, rcw_delayed_window_present, (gpointer)cnnobj->cnnwin);
 }
@@ -3778,7 +3778,7 @@ void rco_on_disconnect(RemminaProtocolWidget *gp, gpointer data)
 	RemminaConnectionWindowPriv *priv = cnnobj->cnnwin->priv;
 	GtkWidget *pparent;
 
-	g_debug("Disconnect signal received on RemminaProtocolWidget");
+	remmina_debug("Disconnect signal received on RemminaProtocolWidget");
 	/* Detach the protocol widget from the notebook now, or we risk that a
 	 * window delete will destroy cnnobj->proto before we complete disconnection.
 	 */
@@ -3814,10 +3814,10 @@ void rco_on_disconnect(RemminaProtocolWidget *gp, gpointer data)
 		mp = remmina_message_panel_new();
 		remmina_message_panel_setup_message(mp, remmina_protocol_widget_get_error_message(gp), cb_lasterror_confirmed, gp);
 		rco_show_message_panel(gp->cnnobj, mp);
-		g_debug("Could not disconnect");
+		remmina_debug("Could not disconnect");
 	} else {
 		rco_closewin(gp);
-		g_debug("Disconnected");
+		remmina_debug("Disconnected");
 	}
 }
 
