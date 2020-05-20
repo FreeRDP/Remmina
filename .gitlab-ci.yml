@@ -105,20 +105,20 @@ flatpak:test:
   script:
     - /bin/sh -xe ./flatpak/flatpak-build.sh
   artifacts:
-    name: "$CI_MERGE_REQUEST_ID-flatpak"
+    expose_as: 'Testing flatpak package'
     paths:
       - flatpak/${BUNDLE}
     expire_in: 10 days
-    expose_as: 'Testing flatpak download'
   cache:
     paths:
       - flatpak/.flatpak-builder/cache
+      - flatpak/.flatpak-builder/downloads
+      - flatpak/.flatpak-builder/git
   only:
-    refs:
-      - tags
-      - merge_requests
-      - web
-      - schedules
+    - merge_requests
+    - tags
+    - web
+    - schedules
 
 snap:build:
   image: ubuntudesktop/gnome-3-28-1804

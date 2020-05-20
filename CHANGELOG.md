@@ -17,9 +17,11 @@
 * Extract subtitle for translation [!2051](https://gitlab.com/Remmina/Remmina/merge_requests/2051) *@yurchor*
 * [SSH] Connection pre/post command not replacing SSH tunnel parameters [!2053](https://gitlab.com/Remmina/Remmina/merge_requests/2053) *@antenore*
 * SNAP: Remove libssh, available in distro [!2052](https://gitlab.com/Remmina/Remmina/merge_requests/2052) *@ed10vi*
-* remmina shortcuts not working if fullscreen toolbar is set to off [!2054](https://gitlab.com/Remmina/Remmina/merge_requests/2054) *@giox069*
+*  2189 [!2054](https://gitlab.com/Remmina/Remmina/merge_requests/2054) *@giox069*
 * Adding remmina_debug function to simplify log reporting [!2055](https://gitlab.com/Remmina/Remmina/merge_requests/2055) *@antenore*
 * Removing OnlyShowIn as deprecated in the latest freedesktop spec. Closes #2198 [!2056](https://gitlab.com/Remmina/Remmina/merge_requests/2056) *@antenore*
+* Cleaning up glib deprecations [!2058](https://gitlab.com/Remmina/Remmina/merge_requests/2058) *@antenore*
+
 
 ## 1.4.3
 [full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.2...1.4.3)
