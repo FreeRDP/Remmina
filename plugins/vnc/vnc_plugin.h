@@ -67,7 +67,7 @@ typedef struct _RemminaPluginVncData {
 	guint			queuedraw_handler;
 
 	gulong			clipboard_handler;
-	GTimeVal		clipboard_timer;
+	GDateTime		*clipboard_timer;
 
 	cairo_surface_t *	queuecursor_surface;
 	gint			queuecursor_x, queuecursor_y;
