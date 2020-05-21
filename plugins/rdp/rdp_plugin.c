@@ -2180,8 +2180,8 @@ G_MODULE_EXPORT gboolean remmina_plugin_entry(RemminaPluginService *service)
 						  (vermin == FREERDP_REQUIRED_MINOR && verrev < FREERDP_REQUIRED_REVISION)))) {
 		g_printf("Upgrade your FreeRDP library version from %d.%d.%d to at least libfreerdp %d.%d.%d "
 			 "to run the RDP plugin.\n",
-			 FREERDP_REQUIRED_MAJOR, FREERDP_REQUIRED_MINOR, FREERDP_REQUIRED_REVISION,
-			 vermaj, vermin, verrev);
+			 vermaj, vermin, verrev,
+			 FREERDP_REQUIRED_MAJOR, FREERDP_REQUIRED_MINOR, FREERDP_REQUIRED_REVISION);
 		return FALSE;
 	}
 
