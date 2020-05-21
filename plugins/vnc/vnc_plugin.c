@@ -51,6 +51,7 @@
 #define GET_PLUGIN_DATA(gp) (RemminaPluginVncData *)g_object_get_data(G_OBJECT(gp), "plugin-data")
 
 static RemminaPluginService *remmina_plugin_service = NULL;
+#define remmina_plugin_debug(fmt, ...) remmina_plugin_service->_remmina_debug(__func__, fmt __VA_OPT__(,) __VA_ARGS__)
 
 static int dot_cursor_x_hot = 2;
 static int dot_cursor_y_hot = 2;
@@ -947,7 +948,7 @@ static void remmina_plugin_vnc_rfb_output(const char *format, ...)
 	g_free(f);
 	va_end(args);
 
-	remmina_plugin_service->_debug("VNC returned: %s", vnc_error);
+	remmina_plugin_debug("VNC returned: %s", vnc_error);
 }
 
 static void remmina_plugin_vnc_chat_on_send(RemminaProtocolWidget *gp, const gchar *text)
