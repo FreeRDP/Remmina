@@ -39,7 +39,7 @@
 
 G_BEGIN_DECLS
 
-#define remmina_debug(fmt, ...) _remmina_debug(__func__, fmt, ##__VA_ARGS__)
+#define REMMINA_DEBUG(fmt, ...) _remmina_debug(__func__, fmt, ##__VA_ARGS__)
 
 void remmina_log_start(void);
 gboolean remmina_log_running(void);

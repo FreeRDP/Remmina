@@ -1954,14 +1954,14 @@ static void rcw_toolbar_screenshot(GtkWidget *widget, RemminaConnectionWindow *c
 	gp = REMMINA_PROTOCOL_WIDGET(cnnobj->proto);
 
 	gchar *denyclip = remmina_pref_get_value("deny_screenshot_clipboard");
-	remmina_debug ("deny_screenshot_clipboard is set to %s", denyclip);
+	REMMINA_DEBUG ("deny_screenshot_clipboard is set to %s", denyclip);
 
 	GtkClipboard *c = gtk_clipboard_get(GDK_SELECTION_CLIPBOARD);
 	// Ask the plugin if it can give us a screenshot
 	if (remmina_protocol_widget_plugin_screenshot(gp, &rpsd)) {
 		// Good, we have a screenshot from the plugin !
 
-		remmina_debug("Screenshot from plugin: w=%d h=%d bpp=%d bytespp=%d\n",
+		REMMINA_DEBUG("Screenshot from plugin: w=%d h=%d bpp=%d bytespp=%d\n",
 				   rpsd.width, rpsd.height, rpsd.bitsPerPixel, rpsd.bytesPerPixel);
 
 		width = rpsd.width;
@@ -2853,11 +2853,11 @@ static gboolean rcw_map_event_fullscreen(GtkWidget *widget, GdkEvent *event, gpo
 			gtk_window_fullscreen_on_monitor(GTK_WINDOW(widget), gtk_window_get_screen(GTK_WINDOW(widget)),
 							 target_monitor);
 	} else {
-		remmina_debug("Fullscreen managed by WM or by the user, as per settings");
+		REMMINA_DEBUG("Fullscreen managed by WM or by the user, as per settings");
 		gtk_window_fullscreen(GTK_WINDOW(widget));
 	}
 #else
-	remmina_debug("Cannot fullscreen on a specific monitor, feature available from GTK 3.18");
+	REMMINA_DEBUG("Cannot fullscreen on a specific monitor, feature available from GTK 3.18");
 	gtk_window_fullscreen(GTK_WINDOW(widget));
 #endif
 
@@ -3724,7 +3724,7 @@ void rco_on_connect(RemminaProtocolWidget *gp, RemminaConnectionObject *cnnobj)
 
 	gchar *last_success;
 
-	remmina_debug("Connect signal emitted");
+	REMMINA_DEBUG("Connect signal emitted");
 	GDateTime *date = g_date_time_new_now_utc();
 
 	/* This signal handler is called by a plugin when it’s correctly connected
@@ -3746,12 +3746,12 @@ void rco_on_connect(RemminaProtocolWidget *gp, RemminaConnectionObject *cnnobj)
 		remmina_pref_add_recent(remmina_file_get_string(cnnobj->remmina_file, "protocol"),
 					remmina_file_get_string(cnnobj->remmina_file, "server"));
 	if (remmina_pref.periodic_usage_stats_permitted) {
-		remmina_debug("Stats are allowed, we save the last successful connection date");
+		REMMINA_DEBUG("Stats are allowed, we save the last successful connection date");
 		remmina_file_set_string(cnnobj->remmina_file, "last_success", last_success);
-		remmina_debug("Last connection was made on %s.", last_success);
+		REMMINA_DEBUG("Last connection was made on %s.", last_success);
 	}
 
-	remmina_debug("Saving credentials");
+	REMMINA_DEBUG("Saving credentials");
 	/* Save credentials */
 	remmina_file_save(cnnobj->remmina_file);
 
@@ -3760,7 +3760,7 @@ void rco_on_connect(RemminaProtocolWidget *gp, RemminaConnectionObject *cnnobj)
 
 	rco_update_toolbar(cnnobj);
 
-	remmina_debug("Trying to present the window");
+	REMMINA_DEBUG("Trying to present the window");
 	/* Try to present window */
 	cnnobj->cnnwin->priv->dwp_eventsourceid = g_timeout_add(200, rcw_delayed_window_present, (gpointer)cnnobj->cnnwin);
 }
@@ -3778,7 +3778,7 @@ void rco_on_disconnect(RemminaProtocolWidget *gp, gpointer data)
 	RemminaConnectionWindowPriv *priv = cnnobj->cnnwin->priv;
 	GtkWidget *pparent;
 
-	remmina_debug("Disconnect signal received on RemminaProtocolWidget");
+	REMMINA_DEBUG("Disconnect signal received on RemminaProtocolWidget");
 	/* Detach the protocol widget from the notebook now, or we risk that a
 	 * window delete will destroy cnnobj->proto before we complete disconnection.
 	 */
@@ -3814,10 +3814,10 @@ void rco_on_disconnect(RemminaProtocolWidget *gp, gpointer data)
 		mp = remmina_message_panel_new();
 		remmina_message_panel_setup_message(mp, remmina_protocol_widget_get_error_message(gp), cb_lasterror_confirmed, gp);
 		rco_show_message_panel(gp->cnnobj, mp);
-		remmina_debug("Could not disconnect");
+		REMMINA_DEBUG("Could not disconnect");
 	} else {
 		rco_closewin(gp);
-		remmina_debug("Disconnected");
+		REMMINA_DEBUG("Disconnected");
 	}
 }
 

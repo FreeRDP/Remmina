@@ -190,7 +190,7 @@ void remmina_log_print(const gchar *text)
 /**
  * Print a string in the Remmina Debug Windows and in the terminal.
  * The string will be visible in the terminal if G_MESSAGES_DEBUG=all
- * Variadic function of remmina_debug
+ * Variadic function of REMMINA_DEBUG
  */
 void _remmina_debug(const gchar *fun, const gchar *fmt, ...)
 {

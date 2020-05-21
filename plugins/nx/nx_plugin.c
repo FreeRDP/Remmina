@@ -314,7 +314,7 @@ static void remmina_plugin_nx_log_callback(const gchar *fmt, ...)
 	va_list args;
 	va_start(args, fmt);
 	vsnprintf(buffer, sizeof(buffer), fmt, args);
-	remmina_plugin_debug(buffer);
+	REMMINA_PLUGIN_DEBUG(buffer);
 	va_end(args);
 }
 
