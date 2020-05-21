@@ -270,7 +270,7 @@ remmina_plugin_ssh_main_thread(gpointer data)
 
 		while (1) {
 			if (!remmina_ssh_init_session(ssh)) {
-				remmina_debug("init session error: %s", ssh->error);
+				REMMINA_DEBUG("init session error: %s", ssh->error);
 				remmina_plugin_service->protocol_plugin_set_error(gp, "%s", ssh->error);
 				break;
 			}

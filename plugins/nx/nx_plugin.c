@@ -36,6 +36,7 @@
 
 #include <errno.h>
 #include <pthread.h>
+#include <stdarg.h>
 #include "common/remmina_plugin.h"
 #include <gtk/gtkx.h>
 #include <time.h>
@@ -307,6 +308,17 @@ static gint remmina_plugin_nx_wait_signal(RemminaPluginNxData *gpdata)
 	return (gint)dummy;
 }
 
+static void remmina_plugin_nx_log_callback(const gchar *fmt, ...)
+{
+	char buffer[256];
+	va_list args;
+	va_start(args, fmt);
+	vsnprintf(buffer, sizeof(buffer), fmt, args);
+	REMMINA_PLUGIN_DEBUG(buffer);
+	va_end(args);
+}
+
+
 static gboolean remmina_plugin_nx_start_session(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
@@ -331,7 +343,7 @@ static gboolean remmina_plugin_nx_start_session(RemminaProtocolWidget *gp)
 	remmina_nx_session_set_encryption(nx,
 		remmina_plugin_nx_service->file_get_int(remminafile, "disableencryption", FALSE) ? 0 : 1);
 	remmina_nx_session_set_localport(nx, remmina_plugin_nx_service->pref_get_sshtunnel_port());
-	remmina_nx_session_set_log_callback(nx, remmina_plugin_nx_service->debug);
+	remmina_nx_session_set_log_callback(nx, remmina_plugin_nx_log_callback);
 
 	s2 = remmina_plugin_nx_service->protocol_plugin_start_direct_tunnel(gp, 22, FALSE);
 	if (s2 == NULL) {

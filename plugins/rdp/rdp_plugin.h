@@ -66,6 +66,7 @@ typedef struct rf_context rfContext;
 #define DEFAULT_QUALITY_9       0x80
 
 extern RemminaPluginService *remmina_plugin_service;
+#define REMMINA_PLUGIN_DEBUG(fmt, ...) remmina_plugin_service->_remmina_debug(__func__, fmt, ##__VA_ARGS__)
 
 struct rf_clipboard {
 	rfContext *		rfi;

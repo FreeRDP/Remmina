@@ -46,13 +46,13 @@ static RemminaPluginService *remmina_plugin_service = NULL;
 static void remmina_plugin_tool_init(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
-	remmina_plugin_service->debug("[%s] Plugin init", PLUGIN_NAME);
+	remmina_plugin_service->_debug("[%s] Plugin init", PLUGIN_NAME);
 }
 
 static gboolean remmina_plugin_tool_open_connection(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
-	remmina_plugin_service->debug("[%s] Plugin open connection", PLUGIN_NAME);
+	remmina_plugin_service->_debug("[%s] Plugin open connection", PLUGIN_NAME);
 
 	GtkDialog *dialog;
 	dialog = GTK_DIALOG(gtk_message_dialog_new(NULL, GTK_DIALOG_MODAL | GTK_DIALOG_USE_HEADER_BAR,
@@ -65,7 +65,7 @@ static gboolean remmina_plugin_tool_open_connection(RemminaProtocolWidget *gp)
 static gboolean remmina_plugin_tool_close_connection(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
-	remmina_plugin_service->debug("[%s] Plugin close connection", PLUGIN_NAME);
+	remmina_plugin_service->_debug("[%s] Plugin close connection", PLUGIN_NAME);
 	remmina_plugin_service->protocol_plugin_emit_signal(gp, "disconnect");
 	return FALSE;
 }

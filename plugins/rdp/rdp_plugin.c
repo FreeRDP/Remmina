@@ -190,14 +190,14 @@ static gboolean remmina_rdp_tunnel_init(RemminaProtocolWidget *gp)
 	gint port;
 
 	rfContext *rfi = GET_PLUGIN_DATA(gp);
-	remmina_plugin_service->debug("Tunnel init");
+	REMMINA_PLUGIN_DEBUG("Tunnel init");
 	hostport = remmina_plugin_service->protocol_plugin_start_direct_tunnel(gp, 3389, FALSE);
 	if (hostport == NULL)
 		return FALSE;
 
 	remmina_plugin_service->get_server_port(hostport, 3389, &host, &port);
 
-	remmina_plugin_service->debug("protocol_plugin_start_direct_tunnel() returned %s", hostport);
+	REMMINA_PLUGIN_DEBUG("protocol_plugin_start_direct_tunnel() returned %s", hostport);
 
 	cert_host = host;
 	cert_port = port;
@@ -217,7 +217,7 @@ static gboolean remmina_rdp_tunnel_init(RemminaProtocolWidget *gp)
 		}
 	}
 
-	remmina_plugin_service->debug("Tunnel has been optionally initialized. Now connecting to %s:%d", host, port);
+	REMMINA_PLUGIN_DEBUG("Tunnel has been optionally initialized. Now connecting to %s:%d", host, port);
 
 	if (cert_host != host) g_free(cert_host);
 	g_free(host);
@@ -254,7 +254,7 @@ BOOL rf_auto_reconnect(rfContext *rfi)
 	}
 
 	/* A network disconnect was detected and we should try to reconnect */
-	remmina_plugin_service->debug("[%s] network disconnection detected, initiating reconnection attempt",
+	REMMINA_PLUGIN_DEBUG("[%s] network disconnection detected, initiating reconnection attempt",
 					   rfi->settings->ServerHostname);
 
 	ui = g_new0(RemminaPluginRdpUiObject, 1);
@@ -272,13 +272,13 @@ BOOL rf_auto_reconnect(rfContext *rfi)
 	while (TRUE) {
 		/* Quit retrying if max retries has been exceeded */
 		if (rfi->reconnect_nattempt++ >= rfi->reconnect_maxattempts) {
-			remmina_plugin_service->debug("[%s] maximum number of reconnection attempts exceeded.",
+			REMMINA_PLUGIN_DEBUG("[%s] maximum number of reconnection attempts exceeded.",
 							   rfi->settings->ServerHostname);
 			break;
 		}
 
 		/* Attempt the next reconnect */
-		remmina_plugin_service->debug("[%s] reconnection, attempt #%d of %d",
+		REMMINA_PLUGIN_DEBUG("[%s] reconnection, attempt #%d of %d",
 						   rfi->settings->ServerHostname, rfi->reconnect_nattempt, rfi->reconnect_maxattempts);
 
 		ui = g_new0(RemminaPluginRdpUiObject, 1);
@@ -289,12 +289,12 @@ BOOL rf_auto_reconnect(rfContext *rfi)
 
 		/* Reconnect the SSH tunnel, if needed */
 		if (!remmina_rdp_tunnel_init(rfi->protocol_widget)) {
-			remmina_plugin_service->debug("[%s] unable to recreate tunnel with remmina_rdp_tunnel_init.",
+			REMMINA_PLUGIN_DEBUG("[%s] unable to recreate tunnel with remmina_rdp_tunnel_init.",
 							   rfi->settings->ServerHostname);
 		} else {
 			if (freerdp_reconnect(rfi->instance)) {
 				/* Reconnection is successful */
-				remmina_plugin_service->debug("[%s] reconnected.", rfi->settings->ServerHostname);
+				REMMINA_PLUGIN_DEBUG("[%s] reconnected.", rfi->settings->ServerHostname);
 				rfi->is_reconnecting = FALSE;
 				return TRUE;
 			}
@@ -786,7 +786,7 @@ static void remmina_rdp_main_loop(RemminaProtocolWidget *gp)
 		}
 	}
 	freerdp_disconnect(rfi->instance);
-	remmina_plugin_service->debug("RDP client disconnected");
+	REMMINA_PLUGIN_DEBUG("RDP client disconnected");
 }
 
 int remmina_rdp_load_static_channel_addin(rdpChannels *channels, rdpSettings *settings, char *name, void *data)
@@ -925,24 +925,24 @@ int remmina_rdp_set_printers(void *user_data, unsigned flags, cups_dest_t *dest)
 	printer = (RDPDR_PRINTER *)calloc(1, sizeof(RDPDR_PRINTER));
 
 	printer->Type = RDPDR_DTYP_PRINT;
-	remmina_plugin_service->debug("Printer Type: %d", printer->Type);
+	REMMINA_PLUGIN_DEBUG("Printer Type: %d", printer->Type);
 
 	rfi->settings->RedirectPrinters = TRUE;
 	remmina_rdp_load_static_channel_addin(channels, rfi->settings, "rdpdr", rfi->settings);
 
-	remmina_plugin_service->debug("Destination: %s", dest->name);
+	REMMINA_PLUGIN_DEBUG("Destination: %s", dest->name);
 	if (!(printer->Name = _strdup(dest->name))) {
 		free(printer);
 		return 1;
 	}
 
-	remmina_plugin_service->debug("Printer Name: %s", printer->Name);
+	REMMINA_PLUGIN_DEBUG("Printer Name: %s", printer->Name);
 
 	if (s) {
 		gchar *d = remmina_rdp_find_prdriver(strdup(s), printer->Name);
 		if (d) {
 			printer->DriverName = strdup(d);
-			remmina_plugin_service->debug("Printer DriverName set to: %s", printer->DriverName);
+			REMMINA_PLUGIN_DEBUG("Printer DriverName set to: %s", printer->DriverName);
 			g_free(d);
 		} else {
 			/**
@@ -960,7 +960,7 @@ int remmina_rdp_set_printers(void *user_data, unsigned flags, cups_dest_t *dest)
 		printer->DriverName = _strdup(model);
 	}
 
-	remmina_plugin_service->debug("Printer Driver: %s", printer->DriverName);
+	REMMINA_PLUGIN_DEBUG("Printer Driver: %s", printer->DriverName);
 	if (!freerdp_device_collection_add(rfi->settings, (RDPDR_DEVICE *)printer)) {
 		free(printer->DriverName);
 		free(printer->Name);
@@ -1010,7 +1010,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 
 #if defined(PROXY_TYPE_IGNORE)
 	if (!remmina_plugin_service->file_get_int(remminafile, "useproxyenv", FALSE) ? TRUE : FALSE) {
-		remmina_plugin_service->debug("Not using system proxy settings");
+		REMMINA_PLUGIN_DEBUG("Not using system proxy settings");
 		rfi->settings->ProxyType = PROXY_TYPE_IGNORE;
 	}
 #endif
@@ -1098,11 +1098,11 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 	gchar *proxy_password = g_strdup(remmina_plugin_service->file_get_string(remminafile, "proxy_password"));
 	gchar *proxy_hostname = g_strdup(remmina_plugin_service->file_get_string(remminafile, "proxy_hostname"));
 	gint proxy_port = remmina_plugin_service->file_get_int(remminafile, "proxy_port", 80);
-	remmina_plugin_service->debug("proxy_type: %s", proxy_type);
-	remmina_plugin_service->debug("proxy_username: %s", proxy_username);
-	remmina_plugin_service->debug("proxy_password: %s", proxy_password);
-	remmina_plugin_service->debug("proxy_hostname: %s", proxy_hostname);
-	remmina_plugin_service->debug("proxy_port: %d", proxy_port);
+	REMMINA_PLUGIN_DEBUG("proxy_type: %s", proxy_type);
+	REMMINA_PLUGIN_DEBUG("proxy_username: %s", proxy_username);
+	REMMINA_PLUGIN_DEBUG("proxy_password: %s", proxy_password);
+	REMMINA_PLUGIN_DEBUG("proxy_hostname: %s", proxy_hostname);
+	REMMINA_PLUGIN_DEBUG("proxy_port: %d", proxy_port);
 	if (proxy_type && proxy_hostname) {
 		if (g_strcmp0(proxy_type, "no_proxy") == 0)
 			rfi->settings->ProxyType = PROXY_TYPE_IGNORE;
@@ -1112,7 +1112,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 			rfi->settings->ProxyType = PROXY_TYPE_SOCKS;
 		else
 			g_warning("Invalid proxy protocol, at the moment only no_proxy, HTTP and SOCKS5 are supported");
-		remmina_plugin_service->debug("ProxyType set to: %d", rfi->settings->ProxyType);
+		REMMINA_PLUGIN_DEBUG("ProxyType set to: %d", rfi->settings->ProxyType);
 		rfi->settings->ProxyHostname = proxy_hostname;
 		if (proxy_username)
 			rfi->settings->ProxyUsername = proxy_username;
@@ -1391,12 +1391,12 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 
 	if (remmina_plugin_service->file_get_int(remminafile, "shareprinter", FALSE)) {
 #ifdef HAVE_CUPS
-		remmina_plugin_service->debug("Sharing printers");
+		REMMINA_PLUGIN_DEBUG("Sharing printers");
 		if (cupsEnumDests(CUPS_DEST_FLAGS_NONE, 1000, NULL, 0, 0, remmina_rdp_set_printers, rfi))
-			remmina_plugin_service->debug("All printers have been shared");
+			REMMINA_PLUGIN_DEBUG("All printers have been shared");
 
 		else
-			remmina_plugin_service->debug("Cannot share printers, are there any available?");
+			REMMINA_PLUGIN_DEBUG("Cannot share printers, are there any available?");
 
 #endif /* HAVE_CUPS */
 	}
@@ -1829,7 +1829,7 @@ static gboolean remmina_rdp_close_connection(RemminaProtocolWidget *gp)
 
 
 	if (rfi && rfi->clipboard.srv_clip_data_wait == SCDW_BUSY_WAIT) {
-		remmina_plugin_service->debug("[RDP] requesting clipboard transfer to abort");
+		REMMINA_PLUGIN_DEBUG("[RDP] requesting clipboard transfer to abort");
 		/* Allow clipboard transfer from server to terminate */
 		rfi->clipboard.srv_clip_data_wait = SCDW_ABORTING;
 		usleep(100000);
@@ -1920,10 +1920,10 @@ static gboolean remmina_rdp_get_screenshot(RemminaProtocolWidget *gp, RemminaPlu
 
 	szmem = gdi->width * gdi->height * bytesPerPixel;
 
-	remmina_plugin_service->debug("allocating %zu bytes for a full screenshot", szmem);
+	REMMINA_PLUGIN_DEBUG("allocating %zu bytes for a full screenshot", szmem);
 	rpsd->buffer = malloc(szmem);
 	if (!rpsd->buffer) {
-		remmina_plugin_service->debug("could not set aside %zu bytes for a full screenshot", szmem);
+		REMMINA_PLUGIN_DEBUG("could not set aside %zu bytes for a full screenshot", szmem);
 		return FALSE;
 	}
 	rpsd->width = gdi->width;
@@ -2180,8 +2180,8 @@ G_MODULE_EXPORT gboolean remmina_plugin_entry(RemminaPluginService *service)
 						  (vermin == FREERDP_REQUIRED_MINOR && verrev < FREERDP_REQUIRED_REVISION)))) {
 		g_printf("Upgrade your FreeRDP library version from %d.%d.%d to at least libfreerdp %d.%d.%d "
 			 "to run the RDP plugin.\n",
-			 FREERDP_REQUIRED_MAJOR, FREERDP_REQUIRED_MINOR, FREERDP_REQUIRED_REVISION,
-			 vermaj, vermin, verrev);
+			 vermaj, vermin, verrev,
+			 FREERDP_REQUIRED_MAJOR, FREERDP_REQUIRED_MINOR, FREERDP_REQUIRED_REVISION);
 		return FALSE;
 	}
 

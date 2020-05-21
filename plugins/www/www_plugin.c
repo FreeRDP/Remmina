@@ -70,7 +70,7 @@ typedef struct _RemminaPluginWWWData {
 	gboolean			formauthenticated;
 } RemminaPluginWWWData;
 
-static RemminaPluginService *remmina_plugin_service = NULL;
+RemminaPluginService *remmina_plugin_service = NULL;
 
 void remmina_plugin_www_download_started(WebKitWebContext *context,
 					 WebKitDownload *download, RemminaProtocolWidget *gp)
@@ -86,13 +86,13 @@ void remmina_plugin_www_download_started(WebKitWebContext *context,
 void remmina_plugin_www_response_received(WebKitDownload *download, GParamSpec *ps, RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
-	remmina_plugin_service->debug("Download response received");
+	REMMINA_PLUGIN_DEBUG("Download response received");
 }
 
 void remmina_plugin_www_notify_download(WebKitDownload *download, gchar *destination, RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
-	remmina_plugin_service->debug("Download is finished");
+	REMMINA_PLUGIN_DEBUG("Download is finished");
 	const gchar *dest = webkit_download_get_destination(download);
 	www_utils_send_notification("www-plugin-download-completed-id", _("File downloaded"), dest);
 	//download(gp, webkit_download_get_response(download));
@@ -128,7 +128,7 @@ static gboolean remmina_plugin_www_decide_policy_cb(
 void remmina_plugin_www_decide_nav(WebKitPolicyDecision *decision, RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
-	remmina_plugin_service->debug("Policy decision navigation");
+	REMMINA_PLUGIN_DEBUG("Policy decision navigation");
 	const gchar *url = NULL;
 	WebKitNavigationAction *a =
 		webkit_navigation_policy_decision_get_navigation_action(
@@ -136,25 +136,25 @@ void remmina_plugin_www_decide_nav(WebKitPolicyDecision *decision, RemminaProtoc
 
 	switch (webkit_navigation_action_get_navigation_type(a)) {
 	case WEBKIT_NAVIGATION_TYPE_LINK_CLICKED:
-		remmina_plugin_service->debug("WEBKIT_NAVIGATION_TYPE_LINK_CLICKED");
+		REMMINA_PLUGIN_DEBUG("WEBKIT_NAVIGATION_TYPE_LINK_CLICKED");
 		url = webkit_uri_request_get_uri(
 			webkit_navigation_action_get_request(a));
-		remmina_plugin_service->debug("url is %s ", url);
+		REMMINA_PLUGIN_DEBUG("url is %s ", url);
 		break;
 	case WEBKIT_NAVIGATION_TYPE_FORM_SUBMITTED:
-		remmina_plugin_service->debug("WEBKIT_NAVIGATION_TYPE_FORM_SUBMITTED");
+		REMMINA_PLUGIN_DEBUG("WEBKIT_NAVIGATION_TYPE_FORM_SUBMITTED");
 		break;
 	case WEBKIT_NAVIGATION_TYPE_BACK_FORWARD:
-		remmina_plugin_service->debug("WEBKIT_NAVIGATION_TYPE_BACK_FORWARD");
+		REMMINA_PLUGIN_DEBUG("WEBKIT_NAVIGATION_TYPE_BACK_FORWARD");
 		break;
 	case WEBKIT_NAVIGATION_TYPE_RELOAD:
-		remmina_plugin_service->debug("WEBKIT_NAVIGATION_TYPE_RELOAD");
+		REMMINA_PLUGIN_DEBUG("WEBKIT_NAVIGATION_TYPE_RELOAD");
 		break;
 	case WEBKIT_NAVIGATION_TYPE_FORM_RESUBMITTED:
-		remmina_plugin_service->debug("WEBKIT_NAVIGATION_TYPE_FORM_RESUBMITTED");
+		REMMINA_PLUGIN_DEBUG("WEBKIT_NAVIGATION_TYPE_FORM_RESUBMITTED");
 		break;
 	case WEBKIT_NAVIGATION_TYPE_OTHER:
-		remmina_plugin_service->debug("WEBKIT_NAVIGATION_TYPE_OTHER");
+		REMMINA_PLUGIN_DEBUG("WEBKIT_NAVIGATION_TYPE_OTHER");
 		break;
 	default:
 		/* Do not navigate to links with a "_blank" target (popup) */
@@ -174,7 +174,7 @@ void remmina_plugin_www_decide_nav(WebKitPolicyDecision *decision, RemminaProtoc
 void remmina_plugin_www_on_create(WebKitWebView *webview, WebKitNavigationAction *a, RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
-	remmina_plugin_service->debug("New web-view");
+	REMMINA_PLUGIN_DEBUG("New web-view");
 
 	const gchar *url = NULL;
 
@@ -183,52 +183,52 @@ void remmina_plugin_www_on_create(WebKitWebView *webview, WebKitNavigationAction
 
 	switch (webkit_navigation_action_get_navigation_type(a)) {
 	case WEBKIT_NAVIGATION_TYPE_LINK_CLICKED:
-		remmina_plugin_service->debug("WEBKIT_NAVIGATION_TYPE_LINK_CLICKED");
+		REMMINA_PLUGIN_DEBUG("WEBKIT_NAVIGATION_TYPE_LINK_CLICKED");
 		url = webkit_uri_request_get_uri(
 			webkit_navigation_action_get_request(a));
-		remmina_plugin_service->debug("Downloading url %s ", url);
+		REMMINA_PLUGIN_DEBUG("Downloading url %s ", url);
 		WebKitDownload *d = webkit_web_view_download_uri(gpdata->webview, url);
 
 		break;
 	case WEBKIT_NAVIGATION_TYPE_FORM_SUBMITTED:
-		remmina_plugin_service->debug("WEBKIT_NAVIGATION_TYPE_FORM_SUBMITTED");
+		REMMINA_PLUGIN_DEBUG("WEBKIT_NAVIGATION_TYPE_FORM_SUBMITTED");
 		break;
 	case WEBKIT_NAVIGATION_TYPE_BACK_FORWARD:
-		remmina_plugin_service->debug("WEBKIT_NAVIGATION_TYPE_BACK_FORWARD");
+		REMMINA_PLUGIN_DEBUG("WEBKIT_NAVIGATION_TYPE_BACK_FORWARD");
 		break;
 	case WEBKIT_NAVIGATION_TYPE_RELOAD:
-		remmina_plugin_service->debug("WEBKIT_NAVIGATION_TYPE_RELOAD");
+		REMMINA_PLUGIN_DEBUG("WEBKIT_NAVIGATION_TYPE_RELOAD");
 		break;
 	case WEBKIT_NAVIGATION_TYPE_FORM_RESUBMITTED:
-		remmina_plugin_service->debug("WEBKIT_NAVIGATION_TYPE_FORM_RESUBMITTED");
+		REMMINA_PLUGIN_DEBUG("WEBKIT_NAVIGATION_TYPE_FORM_RESUBMITTED");
 		/* Filter domains here */
 		/* If the value of “mouse-button” is not 0, then the navigation was triggered by a mouse event.
 		 * test for link clicked but no button ? */
 		url = webkit_uri_request_get_uri(
 			webkit_navigation_action_get_request(a));
-		remmina_plugin_service->debug("Trying to open url: %s", url);
+		REMMINA_PLUGIN_DEBUG("Trying to open url: %s", url);
 		webkit_web_view_load_uri(gpdata->webview, url);
 		break;
 	case WEBKIT_NAVIGATION_TYPE_OTHER:         /* fallthrough */
-		remmina_plugin_service->debug("WEBKIT_NAVIGATION_TYPE_OTHER");
+		REMMINA_PLUGIN_DEBUG("WEBKIT_NAVIGATION_TYPE_OTHER");
 		/* Filter domains here */
 		/* If the value of “mouse-button” is not 0, then the navigation was triggered by a mouse event.
 		 * test for link clicked but no button ? */
 		url = webkit_uri_request_get_uri(
 			webkit_navigation_action_get_request(a));
-		remmina_plugin_service->debug("Trying to open url: %s", url);
+		REMMINA_PLUGIN_DEBUG("Trying to open url: %s", url);
 		webkit_web_view_load_uri(gpdata->webview, url);
 		break;
 	default:
 		break;
 	}
-	remmina_plugin_service->debug("WEBKIT_NAVIGATION_TYPE is %d", webkit_navigation_action_get_navigation_type(a));
+	REMMINA_PLUGIN_DEBUG("WEBKIT_NAVIGATION_TYPE is %d", webkit_navigation_action_get_navigation_type(a));
 }
 
 void remmina_plugin_www_decide_newwin(WebKitPolicyDecision *decision, RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
-	remmina_plugin_service->debug("Policy decision new window");
+	REMMINA_PLUGIN_DEBUG("Policy decision new window");
 
 	const gchar *url = NULL;
 
@@ -241,54 +241,54 @@ void remmina_plugin_www_decide_newwin(WebKitPolicyDecision *decision, RemminaPro
 
 	switch (webkit_navigation_action_get_navigation_type(a)) {
 	case WEBKIT_NAVIGATION_TYPE_LINK_CLICKED:
-		remmina_plugin_service->debug("WEBKIT_NAVIGATION_TYPE_LINK_CLICKED");
+		REMMINA_PLUGIN_DEBUG("WEBKIT_NAVIGATION_TYPE_LINK_CLICKED");
 		url = webkit_uri_request_get_uri(
 			webkit_navigation_action_get_request(a));
-		remmina_plugin_service->debug("Downloading url %s ", url);
+		REMMINA_PLUGIN_DEBUG("Downloading url %s ", url);
 		WebKitDownload *d = webkit_web_view_download_uri(gpdata->webview, url);
 
 
 		break;
 	case WEBKIT_NAVIGATION_TYPE_FORM_SUBMITTED:
-		remmina_plugin_service->debug("WEBKIT_NAVIGATION_TYPE_FORM_SUBMITTED");
+		REMMINA_PLUGIN_DEBUG("WEBKIT_NAVIGATION_TYPE_FORM_SUBMITTED");
 		break;
 	case WEBKIT_NAVIGATION_TYPE_BACK_FORWARD:
-		remmina_plugin_service->debug("WEBKIT_NAVIGATION_TYPE_BACK_FORWARD");
+		REMMINA_PLUGIN_DEBUG("WEBKIT_NAVIGATION_TYPE_BACK_FORWARD");
 		break;
 	case WEBKIT_NAVIGATION_TYPE_RELOAD:
-		remmina_plugin_service->debug("WEBKIT_NAVIGATION_TYPE_RELOAD");
+		REMMINA_PLUGIN_DEBUG("WEBKIT_NAVIGATION_TYPE_RELOAD");
 		break;
 	case WEBKIT_NAVIGATION_TYPE_FORM_RESUBMITTED:
-		remmina_plugin_service->debug("WEBKIT_NAVIGATION_TYPE_FORM_RESUBMITTED");
+		REMMINA_PLUGIN_DEBUG("WEBKIT_NAVIGATION_TYPE_FORM_RESUBMITTED");
 		/* Filter domains here */
 		/* If the value of “mouse-button” is not 0, then the navigation was triggered by a mouse event.
 		 * test for link clicked but no button ? */
 		url = webkit_uri_request_get_uri(
 			webkit_navigation_action_get_request(a));
-		remmina_plugin_service->debug("Trying to open url: %s", url);
+		REMMINA_PLUGIN_DEBUG("Trying to open url: %s", url);
 		webkit_web_view_load_uri(gpdata->webview, url);
 		break;
 	case WEBKIT_NAVIGATION_TYPE_OTHER:         /* fallthrough */
-		remmina_plugin_service->debug("WEBKIT_NAVIGATION_TYPE_OTHER");
+		REMMINA_PLUGIN_DEBUG("WEBKIT_NAVIGATION_TYPE_OTHER");
 		/* Filter domains here */
 		/* If the value of “mouse-button” is not 0, then the navigation was triggered by a mouse event.
 		 * test for link clicked but no button ? */
 		url = webkit_uri_request_get_uri(
 			webkit_navigation_action_get_request(a));
-		remmina_plugin_service->debug("Trying to open url: %s", url);
+		REMMINA_PLUGIN_DEBUG("Trying to open url: %s", url);
 		webkit_web_view_load_uri(gpdata->webview, url);
 		break;
 	default:
 		break;
 	}
-	remmina_plugin_service->debug("WEBKIT_NAVIGATION_TYPE is %d", webkit_navigation_action_get_navigation_type(a));
+	REMMINA_PLUGIN_DEBUG("WEBKIT_NAVIGATION_TYPE is %d", webkit_navigation_action_get_navigation_type(a));
 
 	webkit_policy_decision_ignore(decision);
 }
 gboolean remmina_plugin_www_decide_resource(WebKitPolicyDecision *decision, RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
-	remmina_plugin_service->debug("Policy decision resource");
+	REMMINA_PLUGIN_DEBUG("Policy decision resource");
 	WebKitResponsePolicyDecision *response_decision =
 		WEBKIT_RESPONSE_POLICY_DECISION(decision);
 	WebKitURIResponse *response =
@@ -305,7 +305,7 @@ gboolean remmina_plugin_www_decide_resource(WebKitPolicyDecision *decision, Remm
 
 	mime_type = webkit_uri_response_get_mime_type(response);
 
-	remmina_plugin_service->debug("The media type is %s", mime_type);
+	REMMINA_PLUGIN_DEBUG("The media type is %s", mime_type);
 
 	/* If WebKit can't handle the media type, start the download
 	 * process */
@@ -329,7 +329,7 @@ gboolean remmina_plugin_www_decide_resource(WebKitPolicyDecision *decision, Remm
 	else if (!strncmp(mime_type, "application/octet-stream", 6))
 		type = WWW_WEB_VIEW_DOCUMENT_OCTET_STREAM;
 
-	remmina_plugin_service->debug("Document type is %i", type);
+	REMMINA_PLUGIN_DEBUG("Document type is %i", type);
 
 	/* FIXME: Maybe it makes more sense to have an API to query the media
 	 * type when the load of a page starts than doing this here.
@@ -395,7 +395,7 @@ static gboolean remmina_plugin_www_load_failed_tls_cb(WebKitWebView *webview,
 {
 	TRACE_CALL(__func__);
 	/* Avoid failing if certificate is not good. TODO: Add widgets to let the user decide */
-	remmina_plugin_service->debug("Ignoring certificate and return TRUE");
+	REMMINA_PLUGIN_DEBUG("Ignoring certificate and return TRUE");
 	return TRUE;
 }
 
@@ -424,7 +424,7 @@ static void remmina_plugin_www_init(RemminaProtocolWidget *gp)
 				PLUGIN_NAME,
 				NULL);
 	cache_dir = g_build_path("/", datapath, "cache", NULL);
-	remmina_plugin_service->debug("WWW data path is %s", datapath);
+	REMMINA_PLUGIN_DEBUG("WWW data path is %s", datapath);
 
 	if (datapath) {
 		gchar *indexeddb_dir = g_build_filename(datapath, "indexeddb", NULL);
@@ -616,7 +616,7 @@ static void remmina_plugin_www_form_auth(WebKitWebView *webview,
 
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
-	remmina_plugin_service->debug("load-changed emitted");
+	REMMINA_PLUGIN_DEBUG("load-changed emitted");
 
 
 	const gchar *const *dirs = g_get_system_data_dirs();
@@ -643,10 +643,10 @@ static void remmina_plugin_www_form_auth(WebKitWebView *webview,
 
 	switch (load_event) {
 	case WEBKIT_LOAD_STARTED:
-		remmina_plugin_service->debug("Load started");
+		REMMINA_PLUGIN_DEBUG("Load started");
 		break;
 	case WEBKIT_LOAD_REDIRECTED:
-		remmina_plugin_service->debug("Load redirected");
+		REMMINA_PLUGIN_DEBUG("Load redirected");
 		break;
 	case WEBKIT_LOAD_COMMITTED:
 		/* The load is being performed. Current URI is
@@ -654,18 +654,18 @@ static void remmina_plugin_www_form_auth(WebKitWebView *webview,
 		 * load is requested or a navigation within the
 		 * same page is performed
 		 * uri = webkit_web_view_get_uri (webview); */
-		remmina_plugin_service->debug("Load committed");
+		REMMINA_PLUGIN_DEBUG("Load committed");
 		break;
 	case WEBKIT_LOAD_FINISHED:
 		/* Load finished, we can now set user/password
 		 * in the HTML form */
-		remmina_plugin_service->debug("Load finished");
+		REMMINA_PLUGIN_DEBUG("Load finished");
 		if (gpdata && gpdata->formauthenticated == TRUE)
 			break;
 
 		if (remmina_plugin_service->file_get_string(remminafile, "username") ||
 		    remmina_plugin_service->file_get_string(remminafile, "password")) {
-			remmina_plugin_service->debug("Authentication is enabled");
+			REMMINA_PLUGIN_DEBUG("Authentication is enabled");
 			if (www_js_file) {
 				error = NULL;
 				if (g_file_get_contents(www_js_file, &s_js, NULL, &error)) {
@@ -681,7 +681,7 @@ static void remmina_plugin_www_form_auth(WebKitWebView *webview,
 					if (!s_js || s_js[0] == '\0') {
 						break;
 					} else {
-						remmina_plugin_service->debug("Trying to send this JavaScript: %s", s_js);
+						REMMINA_PLUGIN_DEBUG("Trying to send this JavaScript: %s", s_js);
 						webkit_web_view_run_javascript(
 								webview,
 								s_js,
@@ -692,10 +692,10 @@ static void remmina_plugin_www_form_auth(WebKitWebView *webview,
 					}
 				} else {
 					if (error) {
-						remmina_plugin_service->debug("Unable to read file: %s\n", error->message);
+						REMMINA_PLUGIN_DEBUG("Unable to read file: %s\n", error->message);
 						g_error_free(error);
 					} else {
-						remmina_plugin_service->debug("Unable to read file. No error returned from glib.\n");
+						REMMINA_PLUGIN_DEBUG("Unable to read file. No error returned from glib.\n");
 					}
 				}
 			}
@@ -749,7 +749,7 @@ static gboolean remmina_plugin_www_open_connection(RemminaProtocolWidget *gp)
 
 	if (remmina_plugin_service->file_get_string(remminafile, "username") ||
 	    remmina_plugin_service->file_get_string(remminafile, "password")) {
-		remmina_plugin_service->debug("Authentication is enabled");
+		REMMINA_PLUGIN_DEBUG("Authentication is enabled");
 		remmina_plugin_www_on_auth(gpdata->webview, NULL, gp);
 	}
 
@@ -811,7 +811,7 @@ static void remmina_plugin_www_save_snapshot(GObject *object, GAsyncResult *resu
 
 	screenshot = gdk_pixbuf_get_from_surface(surface, 0, 0, width, height);
 	if (screenshot == NULL)
-		remmina_plugin_service->debug("WWW: gdk_pixbuf_get_from_surface failed");
+		REMMINA_PLUGIN_DEBUG("WWW: gdk_pixbuf_get_from_surface failed");
 
 	pngstr = g_string_new(g_strdup_printf("%s/%s.png",
 					      remmina_plugin_service->pref_get_value("screenshot_path"),
@@ -833,7 +833,7 @@ static void remmina_plugin_www_save_snapshot(GObject *object, GAsyncResult *resu
 				     g_strdup_printf("%f", g_date_time_get_seconds(date)));
 	g_date_time_unref(date);
 	pngname = g_string_free(pngstr, FALSE);
-	remmina_plugin_service->debug("Saving screenshot as %s", pngname);
+	REMMINA_PLUGIN_DEBUG("Saving screenshot as %s", pngname);
 
 	cairo_surface_write_to_png(surface, pngname);
 	if (g_file_test(pngname, G_FILE_TEST_EXISTS))

@@ -35,12 +35,16 @@
 
 #pragma once
 
+#include <stdarg.h>
+
 G_BEGIN_DECLS
+
+#define REMMINA_DEBUG(fmt, ...) _remmina_debug(__func__, fmt, ##__VA_ARGS__)
 
 void remmina_log_start(void);
 gboolean remmina_log_running(void);
 void remmina_log_print(const gchar *text);
-void remmina_debug(const gchar *fmt, ...);
+void _remmina_debug(const gchar *fun, const gchar *fmt, ...);
 void remmina_log_printf(const gchar *fmt, ...);
 
 G_END_DECLS

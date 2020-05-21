@@ -206,7 +206,7 @@ static void remmina_exec_autostart_cb(RemminaFile *remminafile, gpointer user_da
 	TRACE_CALL(__func__);
 
 	if (remmina_file_get_int(remminafile, "enable-autostart", FALSE)) {
-		remmina_debug ("Profile %s is set to autostart", remminafile->filename);
+		REMMINA_DEBUG ("Profile %s is set to autostart", remminafile->filename);
 		rcw_open_from_filename(remminafile->filename);
 	}
 

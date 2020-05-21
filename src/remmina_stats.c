@@ -466,9 +466,9 @@ JsonNode *remmina_stats_get_wm_name()
 	/** We try to get the Gnome SHELL version */
 	wmver = remmina_sysinfo_get_gnome_shell_version();
 	if (!wmver || wmver[0] == '\0') {
-		remmina_debug("Gnome Shell not found");
+		REMMINA_DEBUG("Gnome Shell not found");
 	}else {
-		remmina_debug("Gnome Shell version: %s\n", wmver);
+		REMMINA_DEBUG("Gnome Shell version: %s\n", wmver);
 		json_builder_add_string_value(b, "Gnome Shell");
 		json_builder_set_member_name(b, "gnome_shell_ver");
 		json_builder_add_string_value(b, wmver);
@@ -479,10 +479,10 @@ JsonNode *remmina_stats_get_wm_name()
 	wmname = remmina_sysinfo_get_wm_name();
 	if (!wmname || wmname[0] == '\0') {
 		/** When everything else fails with set the WM name to NULL **/
-		remmina_debug("Cannot determine the Window Manger name");
+		REMMINA_DEBUG("Cannot determine the Window Manger name");
 		json_builder_add_string_value(b, "n/a");
 	}else {
-		remmina_debug("Window Manger names %s", wmname);
+		REMMINA_DEBUG("Window Manger names %s", wmname);
 		json_builder_add_string_value(b, wmname);
 	}
 	g_free(wmname);

@@ -76,5 +76,6 @@ typedef struct _RemminaPluginNxData {
 } RemminaPluginNxData;
 
 extern RemminaPluginService *remmina_plugin_nx_service;
+#define REMMINA_PLUGIN_DEBUG(fmt, ...) remmina_plugin_nx_service->_remmina_debug(__func__, fmt, ##__VA_ARGS__)
 
 G_END_DECLS

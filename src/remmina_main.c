@@ -66,8 +66,6 @@ static RemminaMain *remminamain;
 
 #define RM_GET_OBJECT(object_name) gtk_builder_get_object(remminamain->builder, object_name)
 
-char *fun = "main"; /* just setting the initial value of the calling function name, that is set in the remmina_trace */
-
 enum {
 	PROTOCOL_COLUMN,
 	NAME_COLUMN,
@@ -1222,7 +1220,7 @@ static void remmina_main_init(void)
 	int i, qcp_idx, qcp_actidx;
 	char *name;
 
-	remmina_debug ("Initializing the Remmina main window");
+	REMMINA_DEBUG ("Initializing the Remmina main window");
 	remminamain->priv->expanded_group = remmina_string_array_new_from_string(remmina_pref.expanded_group);
 	if (!kioskmode && kioskmode == FALSE) {
 		gtk_window_set_title(remminamain->window, _("Remmina Remote Desktop Client"));

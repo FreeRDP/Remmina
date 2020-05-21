@@ -134,7 +134,7 @@ void rmnews_defaultcl_on_click()
 			g_warning ("Failed to set '%s' as the default application for secondary content type '%s': %s",
 					g_app_info_get_name (info), supported_mime_types[i], error->message);
 		else
-			remmina_debug ("Set '%s' as the default application for '%s'",
+			REMMINA_DEBUG ("Set '%s' as the default application for '%s'",
 					g_app_info_get_name (info),
 					supported_mime_types[i]);
 	}
@@ -398,7 +398,7 @@ void rmnews_get_url(const char *url)
 	msg = soup_message_new("GET", url);
 	soup_message_set_flags(msg, SOUP_MESSAGE_NO_REDIRECT);
 
-	remmina_debug("Fetching %s", url);
+	REMMINA_DEBUG("Fetching %s", url);
 
 	g_object_ref(msg);
 	soup_session_queue_message(session, msg, rmnews_get_url_cb, NULL);
@@ -432,10 +432,10 @@ void rmnews_get_news()
 	}
 
 	fd = g_open (output_file_path, O_RDWR|O_CREAT, S_IRUSR|S_IWUSR);
-	remmina_debug ("Returned %d while creating %s", fd, output_file_path);
+	REMMINA_DEBUG ("Returned %d while creating %s", fd, output_file_path);
 	/* If we cannot create the remmina_news file, we avoid connections */
 	if (fd < 0) {
-		remmina_debug ("Cannot store the remmina news file");
+		REMMINA_DEBUG ("Cannot store the remmina news file");
 		return;
 	}
 	g_close(fd, NULL);
@@ -460,7 +460,7 @@ void rmnews_get_news()
 	g_object_unref(logger);
 
 	gchar *lang = remmina_utils_get_lang();
-	remmina_debug("Language %s", lang);
+	REMMINA_DEBUG("Language %s", lang);
 
 	uid = rmnews_get_uid();
 
@@ -515,10 +515,10 @@ static gboolean rmnews_periodic_check(gpointer user_data)
 		gint randidx = rand() % 7;
 		/* We randmoly set periodic_rmnews_last_get to a a day between today
 		 * and 7 days ago */
-		remmina_debug ("Setting a random periodic_rmnews_last_get");
+		REMMINA_DEBUG ("Setting a random periodic_rmnews_last_get");
 		remmina_pref.periodic_rmnews_last_get = unixts - eweekdays[randidx];
 	}
-	remmina_debug ("periodic_rmnews_last_get is %ld", remmina_pref.periodic_rmnews_last_get);
+	REMMINA_DEBUG ("periodic_rmnews_last_get is %ld", remmina_pref.periodic_rmnews_last_get);
 
 	next = remmina_pref.periodic_rmnews_last_get + RMNEWS_INTERVAL_SEC;
 	if (unixts > next || (unixts < remmina_pref.periodic_rmnews_last_get && unixts > 1514764800))

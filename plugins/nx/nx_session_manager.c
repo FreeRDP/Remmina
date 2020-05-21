@@ -113,7 +113,7 @@ void remmina_nx_session_manager_on_row_activated(GtkTreeView *tree, GtkTreePath 
 {
 	TRACE_CALL(__func__);
 	RemminaPluginNxData *gpdata = GET_PLUGIN_DATA(gp);
-	remmina_plugin_nx_service->debug("Default response_id %d",
+	REMMINA_PLUGIN_DEBUG("Default response_id %d",
 		gpdata->default_response);
 
 	if (gpdata->default_response >= 0) {

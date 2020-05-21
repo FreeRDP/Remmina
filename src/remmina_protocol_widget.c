@@ -555,7 +555,7 @@ void remmina_protocol_widget_send_keystrokes(RemminaProtocolWidget *gp, GtkMenuI
 gboolean remmina_protocol_widget_plugin_screenshot(RemminaProtocolWidget *gp, RemminaPluginScreenshotData *rpsd)
 {
 	if (!gp->priv->plugin->get_plugin_screenshot) {
-		remmina_debug("plugin screenshot function is not implemented, using core Remmina functionality");
+		REMMINA_DEBUG("plugin screenshot function is not implemented, using core Remmina functionality");
 		return FALSE;
 	}
 
@@ -748,14 +748,14 @@ static RemminaSSHTunnel* remmina_protocol_widget_init_tunnel(RemminaProtocolWidg
 	g_free(msg);
 
 	if (!remmina_ssh_init_session(REMMINA_SSH(tunnel))) {
-		remmina_debug ("%s Cannot init SSH session with tunnel struct", __func__);
+		REMMINA_DEBUG ("%s Cannot init SSH session with tunnel struct", __func__);
 		remmina_protocol_widget_set_error(gp, REMMINA_SSH(tunnel)->error);
 		remmina_ssh_tunnel_free(tunnel);
 		return NULL;
 	}
 
 	ret = remmina_ssh_auth_gui(REMMINA_SSH(tunnel), gp, gp->priv->remmina_file);
-	remmina_debug ("Tunnel auth returned %d", ret);
+	REMMINA_DEBUG ("Tunnel auth returned %d", ret);
 	if (ret != REMMINA_SSH_AUTH_SUCCESS) {
 		if (ret != REMMINA_SSH_AUTH_USERCANCEL)
 			remmina_protocol_widget_set_error(gp, REMMINA_SSH(tunnel)->error);
@@ -855,7 +855,7 @@ gchar *remmina_protocol_widget_start_direct_tunnel(RemminaProtocolWidget *gp, gi
 	if (!tunnel) {
 		g_free(srv_host);
 		g_free(ssh_tunnel_host);
-		remmina_debug ("%s remmina_protocol_widget_init_tunnel failed with error is %s",
+		REMMINA_DEBUG ("%s remmina_protocol_widget_init_tunnel failed with error is %s",
 				 __func__, remmina_protocol_widget_get_error_message(gp));
 		return NULL;
 	}

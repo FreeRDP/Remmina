@@ -190,11 +190,11 @@ void remmina_log_print(const gchar *text)
 /**
  * Print a string in the Remmina Debug Windows and in the terminal.
  * The string will be visible in the terminal if G_MESSAGES_DEBUG=all
+ * Variadic function of REMMINA_DEBUG
  */
-void remmina_debug(const gchar *fmt, ...)
+void _remmina_debug(const gchar *fun, const gchar *fmt, ...)
 {
-	/* IMPORTANT: DO NOT USE TRACES IN THIS FUNCION */
-	/* DO NOT USE TRACE_CALL(__func__); */
+	TRACE_CALL(__func__);
 
 	va_list args;
 	gchar *text;

@@ -308,8 +308,7 @@ gchar* remmina_utils_get_lang()
 const gchar* remmina_utils_get_kernel_name()
 {
 	TRACE_CALL(__func__);
-	if (u.sysname)
-		return u.sysname;
+	return u.sysname;
 }
 
 const gchar* remmina_utils_get_kernel_release()
@@ -319,8 +318,7 @@ const gchar* remmina_utils_get_kernel_release()
  */
 {
 	TRACE_CALL(__func__);
-	if (u.release)
-		return u.release;
+	return u.release;
 }
 
 /**
@@ -330,8 +328,7 @@ const gchar* remmina_utils_get_kernel_release()
 const gchar* remmina_utils_get_kernel_arch()
 {
 	TRACE_CALL(__func__);
-	if (u.machine)
-		return u.machine;
+	return u.machine;
 }
 
 /**
