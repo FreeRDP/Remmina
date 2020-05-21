@@ -56,7 +56,7 @@ typedef struct _RemminaPluginExecData {
 } RemminaPluginExecData;
 
 static RemminaPluginService *remmina_plugin_service = NULL;
-#define remmina_plugin_debug(fmt, ...) remmina_plugin_service->_remmina_debug(__func__, fmt __VA_OPT__(,) __VA_ARGS__)
+#define remmina_plugin_debug(fmt, ...) remmina_plugin_service->_remmina_debug(__func__, fmt, ##__VA_ARGS__)
 
 
 	static void

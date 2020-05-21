@@ -48,7 +48,7 @@ typedef enum {
 } WWWWebViewDocumentType;
 
 extern RemminaPluginService *remmina_plugin_service;
-#define remmina_plugin_debug(fmt, ...) remmina_plugin_service->_remmina_debug(__func__, fmt __VA_OPT__(,) __VA_ARGS__)
+#define remmina_plugin_debug(fmt, ...) remmina_plugin_service->_remmina_debug(__func__, fmt, ##__VA_ARGS__)
 
 
 G_BEGIN_DECLS
