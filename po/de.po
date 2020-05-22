@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-05-20 00:14+0200\n"
-"PO-Revision-Date: 2020-05-20 21:51+0000\n"
+"PO-Revision-Date: 2020-05-22 13:00+0000\n"
 "Last-Translator: Johannes Weberhofer <jweberhofer@weberhofer.at>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/remmina/remmina/"
 "de/>\n"
@@ -625,7 +625,7 @@ msgstr "Tunnel über Loopback‐Adresse"
 #: src/remmina_file_editor.c:856
 #, c-format
 msgid "Same server at port %i"
-msgstr "Server auf Port %i"
+msgstr "Zielserver auf Port %i"
 
 #: src/remmina_file_editor.c:902 plugins/rdp/rdp_plugin.c:2050
 msgid "Startup path"
@@ -641,7 +641,7 @@ msgstr "SSH-Agent (automatisch)"
 
 #: src/remmina_file_editor.c:1017
 msgid "Autostart this profile"
-msgstr "Starte diese Profil automatisch"
+msgstr "Dieses Profil automatisch starten"
 
 #: src/remmina_file_editor.c:1025
 msgid "Basic"
@@ -661,7 +661,7 @@ msgstr "Standard‐Einstellungen wurden gespeichert."
 
 #: src/remmina_file_editor.c:1329
 msgid "Remote Desktop Preference"
-msgstr "Vorgabe für entfernte Arbeitsflächen"
+msgstr "Verbindungseinstellungen"
 
 #: src/remmina_file_editor.c:1335
 msgid "Save as Default"
@@ -670,7 +670,7 @@ msgstr "Als Standard speichern"
 #: src/remmina_file_editor.c:1336
 msgid "Use the current settings as the default for all new connection profiles"
 msgstr ""
-"Die aktuellen Einstellungen als Standard für alle neuen Profile verwenden"
+"Die aktuellen Einstellungen als Vorgabe für alle neuen Profile verwenden"
 
 #: src/remmina_file_editor.c:1339 src/remmina_main.c:981
 msgid "_Save"
@@ -1455,7 +1455,7 @@ msgstr "Qualität"
 #: plugins/nx/nx_plugin.c:737 plugins/vnc/vnc_plugin.c:1897
 #: plugins/spice/spice_plugin.c:455 plugins/spice/spice_plugin.c:471
 msgid "Disable clipboard sync"
-msgstr "Abgleich der Zwischenablage abschalten"
+msgstr "Zwischenablage nicht abgleichen"
 
 #: plugins/nx/nx_plugin.c:738 plugins/vnc/vnc_plugin.c:1898
 msgid "Disable encryption"
@@ -1555,8 +1555,8 @@ msgstr ""
 #: plugins/vnc/vnc_plugin.c:938
 msgid "Please retry after turning on encryption for this profile."
 msgstr ""
-"Bitte schalten Sie die Verschlüsselung für das Profil ein, und versuchen Sie "
-"es nochmals."
+"Bitte schalten Sie die Verschlüsselung für das Profil ein und probieren Sie "
+"nocheinmal."
 
 #: plugins/vnc/vnc_plugin.c:1827
 msgid "True color (32 bpp)"
@@ -1580,7 +1580,7 @@ msgstr "Farbtiefe"
 
 #: plugins/vnc/vnc_plugin.c:1875
 msgid "Listen on port"
-msgstr "Auf Port hören"
+msgstr "Auf Port lauschen"
 
 #: plugins/vnc/vnc_plugin.c:1895
 msgid "Show remote cursor"
@@ -1826,7 +1826,7 @@ msgstr "Gast an Fenstergröße anpassen"
 
 #: plugins/spice/spice_plugin.c:459
 msgid "Share smart card"
-msgstr "Smartcard teilen"
+msgstr "Smartcard freigeben"
 
 #: plugins/spice/spice_plugin.c:482
 msgid "SPICE - Simple Protocol for Independent Computing Environments"
@@ -2250,11 +2250,11 @@ msgstr "Smartcard Name"
 
 #: plugins/rdp/rdp_plugin.c:2059
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
-msgstr "IPv6 AAAA Eintrag gegenüber IPv4 A Eintrag"
+msgstr "IPv6 Eintrag AAAA gegenüber IPv4 A bevorzugen"
 
 #: plugins/rdp/rdp_plugin.c:2060
 msgid "Share printers"
-msgstr "Drucker teilen"
+msgstr "Drucker freigeben"
 
 #: plugins/rdp/rdp_plugin.c:2061
 msgid "Share serial ports"
@@ -2274,11 +2274,11 @@ msgstr "Smartcard teilen"
 
 #: plugins/rdp/rdp_plugin.c:2065
 msgid "Redirect local microphone"
-msgstr "Lokales Mikrofon teilen"
+msgstr "Lokales Mikrofon freigeben"
 
 #: plugins/rdp/rdp_plugin.c:2066
 msgid "Turn off clipboard sync"
-msgstr "Abgleich der Zwischenablage abschalten"
+msgstr "Zwischenablage nicht abgleichen"
 
 #: plugins/rdp/rdp_plugin.c:2067
 msgid "Ignore certificate"
@@ -2310,7 +2310,7 @@ msgstr "Proxy-Einstellungen des Systems verwenden"
 
 #: plugins/rdp/rdp_plugin.c:2076
 msgid "Turn off automatic reconnection"
-msgstr "Automatisches Wiederherstellen der Verbindung deaktivieren"
+msgstr "Deaktiviere das automatische Wiederherstellen von Verbindungen"
 
 #: plugins/rdp/rdp_plugin.c:2077
 msgid "Relax order checks"
@@ -2704,8 +2704,8 @@ msgid ""
 "The folder where connection profiles are saved, it defaults to the "
 "XDG_USER_DATA"
 msgstr ""
-"Der Ordner zum Speichern der Verbindungsprofile. Vorgabe ist der Wert aus "
-"XDG_USER_DATA"
+"Der Ordner zum Speichern der Verbindungseinstellungen. Vorgabe ist der Wert "
+"aus XDG_USER_DATA"
 
 #. The folder where profiles are saved
 #: data/ui/remmina_preferences.glade:361
@@ -2728,8 +2728,7 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:462
 msgid "Only save generated screenshots, don't copy them to clipboard."
-msgstr ""
-"Bildschirmfotos nur speichern und nicht in die Zwischenablage kopieren."
+msgstr "Bildschirmfotos speichern aber nicht in die Zwischenablage kopieren."
 
 #: data/ui/remmina_preferences.glade:467
 msgid "Prevent screenshots from entering clipboard"

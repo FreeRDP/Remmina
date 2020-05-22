@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-05-20 00:14+0200\n"
-"PO-Revision-Date: 2020-05-15 20:41+0000\n"
+"PO-Revision-Date: 2020-05-22 13:00+0000\n"
 "Last-Translator: scootergrisen <scootergrisen@gmail.com>\n"
 "Language-Team: Danish <https://hosted.weblate.org/projects/remmina/remmina/"
 "da/>\n"
@@ -1456,9 +1456,8 @@ msgstr "Brug lokal markør"
 #: plugins/nx/nx_plugin.c:740 plugins/vnc/vnc_plugin.c:1900
 #: plugins/www/www_plugin.c:896 plugins/spice/spice_plugin.c:456
 #: plugins/rdp/rdp_plugin.c:2069
-#, fuzzy
 msgid "Forget passwords after use"
-msgstr "Ingen lagring af adgangskode"
+msgstr "Gem adgangskoder efter anvendelse"
 
 #: plugins/nx/nx_plugin.c:748
 msgid "Send Ctrl+Alt+Del"
@@ -1619,9 +1618,8 @@ msgid "Proxy URL"
 msgstr "Proxy-URL"
 
 #: plugins/www/www_plugin.c:888
-#, fuzzy
 msgid "E.g. https://example.org, socks://mysocks:1080"
-msgstr "F.eks. https://eksempel.dk, socks://minesokler:1080"
+msgstr "F.eks. https://eksempel.org, socks://minesokler:1080"
 
 #: plugins/www/www_plugin.c:889
 msgid "Turn on Java support"
@@ -1712,9 +1710,8 @@ msgid "Detached window"
 msgstr "Løsrevet vindue"
 
 #: plugins/kwallet/src/kwallet_plugin_main.c:118
-#, fuzzy
 msgid "Secured password storage in KWallet"
-msgstr "Sikret adgangskode gemt i KWallet"
+msgstr "Sikret adgangskodeopbevaring i KWallet"
 
 #: plugins/exec/exec_plugin_config.h:41
 msgid "Execute a command"
@@ -1838,9 +1835,8 @@ msgid "Desktop sharing invitation"
 msgstr "Invitation til skrivebordsdeling"
 
 #: plugins/secret/src/glibsecret_plugin.c:186
-#, fuzzy
 msgid "Secured password storage in the GNOME keyring"
-msgstr "Sikret adgangskode gemt i GNOME-nøgleringen"
+msgstr "Sikret adgangskodeopbevaring i GNOME-nøgleringen"
 
 #: plugins/rdp/rdp_settings.c:200
 msgid "<Auto detect>"
@@ -2011,11 +2007,13 @@ msgstr ""
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:1591
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Unable to establish a connection to the RDP server. Check \"Security "
 "protocol negotiation\" \"%s\"."
-msgstr "Kan ikke etablere en forbindelse til RDP-serveren \"%s\"."
+msgstr ""
+"Kan ikke etablere en forbindelse til RDP-serveren. Tjek \"Forhandling af "
+"sikkerhedsprotokol\" \"%s\"."
 
 #: plugins/rdp/rdp_plugin.c:1599
 #, c-format
@@ -2108,32 +2106,26 @@ msgid "Local - high quality"
 msgstr "Lokal - høj kvalitet"
 
 #: plugins/rdp/rdp_plugin.c:1981
-#, fuzzy
-#| msgid "Automatic lock interval"
 msgid "Automatically negotiate"
-msgstr "Interval for automatisk låsning"
+msgstr "Forhandl automatisk"
 
 #: plugins/rdp/rdp_plugin.c:1982
-#, fuzzy
 msgid "NLA protocol security"
-msgstr "Faneblad efter protokoller"
+msgstr "Sikkerhed for NLA-protokol"
 
 #: plugins/rdp/rdp_plugin.c:1983
-#, fuzzy
 msgid "TLS protocol security"
-msgstr "Faneblad efter protokoller"
+msgstr "Sikkerhed for TLS-protokol"
 
 #: plugins/rdp/rdp_plugin.c:1984
-#, fuzzy
 msgid "RDP protocol security"
-msgstr "Faneblad efter protokoller"
+msgstr "Sikkerhed for RDP-protokol"
 
 #: plugins/rdp/rdp_plugin.c:1985
 msgid "NLA extended protocol security"
 msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:1998
-#, fuzzy
 msgid "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 and newer)"
 msgstr "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 og nyere)"
 
@@ -2161,7 +2153,7 @@ msgstr "Lyd"
 
 #: plugins/rdp/rdp_plugin.c:2041
 msgid "Security protocol negotiation"
-msgstr ""
+msgstr "Forhandling af sikkerhedsprotokol"
 
 #: plugins/rdp/rdp_plugin.c:2042
 msgid "Gateway transport type"
@@ -2240,7 +2232,6 @@ msgid "Local parallel device"
 msgstr "Enhed for lokal parallel"
 
 #: plugins/rdp/rdp_plugin.c:2058
-#, fuzzy
 msgid "Name of smart card"
 msgstr "Navn på smartcard"
 
@@ -2265,7 +2256,6 @@ msgid "Share parallel ports"
 msgstr "Del parallelle porte"
 
 #: plugins/rdp/rdp_plugin.c:2064
-#, fuzzy
 msgid "Share a smart card"
 msgstr "Del et smartcard"
 
@@ -2576,21 +2566,18 @@ msgstr ""
 "\">anonym</a></b> statistik til remmina.org"
 
 #: data/ui/remmina_news.glade:120
-#, fuzzy
 msgid "Send anonymous statistics"
-msgstr "Skru på anonym statistik"
+msgstr "Send anonym statistik"
 
 #: data/ui/remmina_news.glade:134
-#, fuzzy
 msgid "Use as default remote desktop client"
-msgstr "Gør Remmina til standardfjernskrivebordsklienten"
+msgstr "Brug som standardfjernskrivebordsklient"
 
 #: data/ui/remmina_news.glade:143
 msgid "Apply"
 msgstr "Anvend"
 
 #: data/ui/remmina_news.glade:147
-#, fuzzy
 msgid "Allow Remmina to automatically open .rdp and .remmina files."
 msgstr "Tillad Remmina at åbne .rdp- og .remmina-filer automatisk."
 
@@ -2683,9 +2670,8 @@ msgid "Set up"
 msgstr "Indstil"
 
 #: data/ui/remmina_preferences.glade:326
-#, fuzzy
 msgid "Screenshot filenames"
-msgstr "Filnavne til skærmbillede"
+msgstr "Filnavne til skærmbilleder"
 
 #: data/ui/remmina_preferences.glade:338
 msgid ""
@@ -2718,9 +2704,8 @@ msgid "Remember last view mode"
 msgstr "Husk sidste visningstilstand"
 
 #: data/ui/remmina_preferences.glade:418 data/ui/remmina_preferences.glade:422
-#, fuzzy
 msgid "Send anonymous statistics for use on https://remmina.org/remmina-stats"
-msgstr "Send anonym statistik til remmina.org"
+msgstr "Send anonym statistik til brug på https://remmina.org/remmina-stats"
 
 #: data/ui/remmina_preferences.glade:462
 msgid "Only save generated screenshots, don't copy them to clipboard."
@@ -2900,9 +2885,8 @@ msgid "Parse ~/.ssh/config"
 msgstr "Fortolk ~/.ssh/config"
 
 #: data/ui/remmina_preferences.glade:1257
-#, fuzzy
 msgid "No logging at all"
-msgstr "Ingen logning"
+msgstr "Ingen logning overhovedet"
 
 #: data/ui/remmina_preferences.glade:1258
 msgid "Rare conditions or warnings"
