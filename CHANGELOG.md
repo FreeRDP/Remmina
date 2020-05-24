@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.4.5
+[full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.4...1.4.5)
+
+* SSH plugin - adding font resize - closes #2201 [!2059](https://gitlab.com/Remmina/Remmina/merge_requests/2059) *@antenore*
+* Fixing keyboard grabbing issues with screenshot tool [!2062](https://gitlab.com/Remmina/Remmina/merge_requests/2062) *@giox069*
+* Refactoring remmina_debug to avoid memory leaks and overhead, should fix #2202 [!2061](https://gitlab.com/Remmina/Remmina/merge_requests/2061) *@antenore*
+* Using directory only to expose artifacts [!2060](https://gitlab.com/Remmina/Remmina/merge_requests/2060) *@antenore*
+
 ## 1.4.4
 [full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.3...1.4.4)
 
