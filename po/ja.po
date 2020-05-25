@@ -15,9 +15,9 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-05-24 21:54+0000\n"
-"PO-Revision-Date: 2020-05-20 21:51+0000\n"
-"Last-Translator: YAMADA Shinichirou <yamada_strong_yamada_nice_64bit@yahoo."
-"co.jp>\n"
+"PO-Revision-Date: 2020-05-25 13:31+0000\n"
+"Last-Translator: YAMADA Shinichirou <yamada_strong_yamada_nice_64bit@yahoo.co"
+".jp>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/remmina/remmina/"
 "ja/>\n"
 "Language: ja\n"
@@ -203,11 +203,11 @@ msgstr "セッションをファイルに保存"
 
 #: src/remmina_ssh_plugin.c:537
 msgid "Increase font size (Host + Page_Up)"
-msgstr ""
+msgstr "フォントサイズを拡大 (Host + Page_Up)"
 
 #: src/remmina_ssh_plugin.c:538
 msgid "Decrease font size (Host + Page_Down)"
-msgstr ""
+msgstr "フォントサイズを縮小 (Host + Page_Down)"
 
 #: src/remmina_ssh_plugin.c:958 src/remmina_sftp_plugin.c:292
 #: src/remmina_file_editor.c:362 src/remmina_file_editor.c:369
@@ -253,19 +253,19 @@ msgstr "すべて選択(_S)"
 
 #: src/remmina_ssh_plugin.c:1039 data/ui/remmina_preferences.glade:2179
 msgid "Increase font size"
-msgstr ""
+msgstr "フォントサイズを拡大"
 
 #: src/remmina_ssh_plugin.c:1039
 msgid "_Increase font size"
-msgstr ""
+msgstr "フォントサイズを拡大(_I)"
 
 #: src/remmina_ssh_plugin.c:1040 data/ui/remmina_preferences.glade:2191
 msgid "Decrease font size"
-msgstr ""
+msgstr "フォントサイズを縮小"
 
 #: src/remmina_ssh_plugin.c:1040
 msgid "_Decrease font size"
-msgstr ""
+msgstr "フォントサイズを縮小(_D)"
 
 #: src/remmina_ssh_plugin.c:1058 src/remmina_message_panel.c:330
 #: src/remmina_sftp_plugin.c:323 src/remmina_file_editor.c:918
@@ -396,11 +396,11 @@ msgstr "パスワードをリセットしています。お待ちください…
 
 #: src/remmina_mpchange.c:327
 msgid "The multi password changer requires a secrecy plugin.\n"
-msgstr ""
+msgstr "マルチパスワードチェンジャーは秘匿プラグインが必要です。\n"
 
 #: src/remmina_mpchange.c:330
 msgid "The multi password changer requires a secrecy service.\n"
-msgstr ""
+msgstr "マルチパスワードチェンジャーは秘匿サービスが必要です。\n"
 
 #: src/remmina_mpchange.c:409
 #, c-format
@@ -1258,6 +1258,17 @@ msgid ""
 "connecting.\n"
 "</big></tt>"
 msgstr ""
+"<tt><big>• パスの通ったコマンド 引数 %h\n"
+"• /path/to/foo -オプション %h %u\n"
+"• %h : サーバー名\n"
+"• %t : SSH サーバー名\n"
+"• %u : ユーザー名\n"
+"• %U : SSH ユーザー名\n"
+"• %p : Remmina のプロファイル名\n"
+"• %g : Remmina のプロファイルグループ名\n"
+"• %d : iso8601 形式のローカル日時\n"
+"接続する前にコマンドを実行させたい場合はバックグラウンドで実行しないでください。\n"
+"</big></tt>"
 
 #: src/remmina_file_editor.c:95
 msgid ""
@@ -1392,7 +1403,7 @@ msgstr "接続前実行コマンド"
 
 #: src/remmina_file_editor.c:1527
 msgid "command %h %u %t %U %p %g --option"
-msgstr ""
+msgstr "コマンド %h %u %t %U %p %g --オプション"
 
 #: src/remmina_file_editor.c:1531
 msgid "Post-command"
@@ -1400,7 +1411,7 @@ msgstr "接続後実行コマンド"
 
 #: src/remmina_file_editor.c:1545
 msgid "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
-msgstr ""
+msgstr "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
 
 #: src/remmina_file_editor.c:1596 src/remmina_file_editor.c:1614
 #, c-format
@@ -1785,7 +1796,7 @@ msgstr "実行するコマンド"
 
 #: plugins/st/st_plugin.c:254
 msgid "Detached window"
-msgstr ""
+msgstr "独立したウィンドウ"
 
 #: plugins/st/st_plugin_config.h:43
 msgid "Remmina simple terminal"
@@ -1906,6 +1917,8 @@ msgid ""
 "You requested a H.264 GFX mode for the server \"%s\", but your libfreerdp "
 "does not support H.264. Please use a non-AVC colour depth setting."
 msgstr ""
+"サーバー \"%s\" のために H.264 GFX モードを要求しましたが、libfreerdp が H.264 をサポートしていません。AVC "
+"ではない色深度設定を使用してください。"
 
 #: plugins/rdp/rdp_plugin.c:1612
 #, c-format
@@ -1917,7 +1930,7 @@ msgstr "サーバー \"%s\" が接続を拒否しました。"
 msgid ""
 "The Remote Desktop Gateway \"%s\" denied the user \"%s\\%s\" access due to "
 "policy."
-msgstr ""
+msgstr "リモートデスクトップゲートウェイ \"%s\" はポリシーにより、ユーザー \"%s\\%s\" のアクセスを拒否しました。"
 
 #: plugins/rdp/rdp_plugin.c:1627
 #, c-format
@@ -2348,6 +2361,9 @@ msgid ""
 "appropriate permissions to Remmina. As an alternative you can enter the "
 "following commands in a terminal window:"
 msgstr ""
+"システム上で実行している Remmina は SNAP パッケージだと思われます。キーリングへのパスワードの保存や RDP "
+"プリンター共有といった重要な機能へのアクセスを有効にするには、ソフトウェアセンターを開いて Remmina "
+"に適切な権限を付与してください。また、次のコマンドを実行するという方法もあります:"
 
 #: data/ui/remmina_snap_info_dialog.glade:82
 msgid "Do not show this message again"
