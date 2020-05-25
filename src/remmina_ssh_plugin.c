@@ -530,12 +530,12 @@ void remmina_plugin_ssh_popup_ui(RemminaProtocolWidget *gp)
 	/* Context menu for slection and clipboard */
 	GtkWidget *menu = gtk_menu_new();
 
-	GtkWidget *select_all = gtk_menu_item_new_with_label(_("Select All (Host + A)"));
-	GtkWidget *copy = gtk_menu_item_new_with_label(_("Copy (host + C)"));
-	GtkWidget *paste = gtk_menu_item_new_with_label(_("Paste (host + V)"));
+	GtkWidget *select_all = gtk_menu_item_new_with_label(_("Select All (host+A)"));
+	GtkWidget *copy = gtk_menu_item_new_with_label(_("Copy (host+C)"));
+	GtkWidget *paste = gtk_menu_item_new_with_label(_("Paste (host+V)"));
 	GtkWidget *save = gtk_menu_item_new_with_label(_("Save session to file"));
-	GtkWidget *font_incr = gtk_menu_item_new_with_label(_("Increase font size (Host + Page_Up)"));
-	GtkWidget *font_decr = gtk_menu_item_new_with_label(_("Decrease font size (Host + Page_Down)"));
+	GtkWidget *font_incr = gtk_menu_item_new_with_label(_("Increase font size (host+Page Up)"));
+	GtkWidget *font_decr = gtk_menu_item_new_with_label(_("Decrease font size (host+Page Down)"));
 
 	gtk_menu_shell_append(GTK_MENU_SHELL(menu), select_all);
 	gtk_menu_shell_append(GTK_MENU_SHELL(menu), copy);
@@ -619,7 +619,7 @@ remmina_plugin_ssh_init(RemminaProtocolWidget *gp)
 	/*
 	 * custom colors reside inside of the 'theme' subdir of the remmina config folder (.config/remmina/theme)
 	 * with the file extension '.colors'. The name of the colorfile came from the menu (see below)
-	 * sideeffect: it is possible to overwrite the standard colors with a dedicated colorfile like
+	 * sideeffect: It is possible to overwrite the standard colours with a dedicated colourfile like
 	 * '0.colors' for GRUVBOX, '1.colors' for TANGO and so on
 	 */
 	const gchar *color_name = remmina_plugin_service->file_get_string(remminafile, "ssh_color_scheme");
