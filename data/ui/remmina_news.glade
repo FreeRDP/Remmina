@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.22.1 -->
+<!-- Generated with glade 3.22.2 -->
 <interface>
   <requires lib="gtk+" version="3.20"/>
+  <!-- interface-license-type gplv2 -->
+  <!-- interface-name Remmina news widget -->
+  <!-- interface-description A widget that show the release notes and some quick settings -->
+  <!-- interface-copyright Antenore Gatta and Giovanni Panozzo -->
+  <!-- interface-authors Antenore Gatta and Giovanni Panozzo -->
   <object class="GtkDialog" id="RemminaNewsDialog">
     <property name="can_focus">False</property>
     <property name="hexpand">True</property>
@@ -63,6 +68,17 @@
                       <object class="GtkLabel" id="rmnews_label">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">&lt;big&gt;&lt;b&gt;The news are disabled&lt;/b&gt;&lt;/big&gt;
+
+
+&lt;span&gt;
+&lt;a href="https://gitlab.com/Remmina/Remmina/-/tags/" title="&lt;i&gt;Remmina&lt;/i&gt; release notes"&gt;Read the release notes&lt;/a&gt;.
+&lt;/span&gt;
+
+
+&lt;span&gt;
+Be aware that if you enable the news you agree that Remmina connects to &lt;a href="https://remmina.org/news/remmina_news.php" title="Remmina news script"&gt;our server&lt;/a&gt; in order to gather the release notes. 
+&lt;/span&gt;</property>
                         <property name="use_markup">True</property>
                         <property name="wrap">True</property>
                         <property name="wrap_mode">word-char</property>
@@ -101,7 +117,7 @@
                         <property name="row_spacing">6</property>
                         <property name="column_spacing">6</property>
                         <child>
-                          <object class="GtkLabel">
+                          <object class="GtkLabel" id="rmnews_allow_stats_label">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">start</property>
@@ -110,7 +126,7 @@
                           </object>
                           <packing>
                             <property name="left_attach">0</property>
-                            <property name="top_attach">0</property>
+                            <property name="top_attach">1</property>
                           </packing>
                         </child>
                         <child>
@@ -123,7 +139,7 @@
                           </object>
                           <packing>
                             <property name="left_attach">1</property>
-                            <property name="top_attach">0</property>
+                            <property name="top_attach">1</property>
                           </packing>
                         </child>
                         <child>
@@ -135,7 +151,7 @@
                           </object>
                           <packing>
                             <property name="left_attach">0</property>
-                            <property name="top_attach">1</property>
+                            <property name="top_attach">2</property>
                           </packing>
                         </child>
                         <child>
@@ -150,7 +166,33 @@
                           </object>
                           <packing>
                             <property name="left_attach">1</property>
-                            <property name="top_attach">1</property>
+                            <property name="top_attach">2</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel" id="rmnews_allow_news_label">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="halign">start</property>
+                            <property name="label" translatable="yes">Allow news from &lt;a href="https://remmina.org" title="Remmina news site"&gt;remmina.org&lt;/a&gt;</property>
+                            <property name="use_markup">True</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">0</property>
+                            <property name="top_attach">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkSwitch" id="rmnews_news_switch">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="tooltip_text" translatable="yes">Send anonymous statistics</property>
+                            <property name="halign">start</property>
+                            <signal name="notify" handler="rmnews_news_switch_state_set_cb" swapped="no"/>
+                          </object>
+                          <packing>
+                            <property name="left_attach">1</property>
+                            <property name="top_attach">0</property>
                           </packing>
                         </child>
                       </object>

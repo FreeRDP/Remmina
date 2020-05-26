@@ -349,6 +349,7 @@ static void rmnews_get_url_cb(SoupSession *session, SoupMessage *msg, gpointer d
 	}
 	g_object_unref(msg);
 }
+
 /**
  * Try to get a unique system+user ID to identify this remmina user
  * and avoid some duplicated task, especially on news management
@@ -387,7 +388,6 @@ gchar *rmnews_get_uid()
 
 	return uid;
 }
-
 
 void rmnews_get_url(const char *url)
 {
