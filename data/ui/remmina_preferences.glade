@@ -419,7 +419,8 @@ Author: Antenore Gatta
                     <property name="halign">start</property>
                     <property name="margin_left">18</property>
                     <property name="hexpand">False</property>
-                    <property name="label" translatable="yes">Send anonymous statistics for use on https://remmina.org/remmina-stats</property>
+                    <property name="label" translatable="yes">Send anonymous statistics for use on &lt;a href="https://remmina.org/remmina-stats" title="Remmina stats site"&gt;remmina.org&lt;/a&gt;</property>
+                    <property name="use_markup">True</property>
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
@@ -438,38 +439,6 @@ Author: Antenore Gatta
                     <property name="left_attach">1</property>
                     <property name="top_attach">11</property>
                     <property name="width">2</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkSwitch" id="switch_options_deny_screenshot_clipboard">
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="halign">start</property>
-                    <property name="valign">center</property>
-                    <property name="margin_right">18</property>
-                    <property name="margin_bottom">18</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">12</property>
-                    <property name="width">2</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel" id="label_options_deny_screenshot_clipboard">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="tooltip_text" translatable="yes">Only save generated screenshots, don't copy them to clipboard.</property>
-                    <property name="halign">start</property>
-                    <property name="margin_left">18</property>
-                    <property name="margin_bottom">18</property>
-                    <property name="hexpand">False</property>
-                    <property name="label" translatable="yes">Prevent screenshots from entering clipboard</property>
-                    <property name="justify">right</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">12</property>
                   </packing>
                 </child>
                 <child>
@@ -506,6 +475,68 @@ Author: Antenore Gatta
                   <packing>
                     <property name="left_attach">1</property>
                     <property name="top_attach">1</property>
+                    <property name="width">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="label_options_deny_screenshot_clipboard">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="tooltip_text" translatable="yes">Only save generated screenshots, don't copy them to clipboard.</property>
+                    <property name="halign">start</property>
+                    <property name="margin_left">18</property>
+                    <property name="margin_bottom">18</property>
+                    <property name="hexpand">False</property>
+                    <property name="label" translatable="yes">Prevent screenshots from entering clipboard</property>
+                    <property name="justify">right</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">13</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkSwitch" id="switch_options_deny_screenshot_clipboard">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="halign">start</property>
+                    <property name="valign">center</property>
+                    <property name="margin_right">18</property>
+                    <property name="margin_bottom">18</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">13</property>
+                    <property name="width">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="label_permit_news">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="tooltip_text" translatable="yes">Send anonymous statistics for use on https://remmina.org/remmina-stats</property>
+                    <property name="halign">start</property>
+                    <property name="margin_left">18</property>
+                    <property name="hexpand">False</property>
+                    <property name="label" translatable="yes">Fetch news from &lt;a href="https://remmina.org" title="Remmina news site"&gt;remmina.org&lt;/a&gt;</property>
+                    <property name="use_markup">True</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">12</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkSwitch" id="switch_permit_news">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="halign">start</property>
+                    <property name="valign">center</property>
+                    <property name="margin_right">18</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">12</property>
                     <property name="width">2</property>
                   </packing>
                 </child>

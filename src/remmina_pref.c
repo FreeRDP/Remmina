@@ -677,6 +677,17 @@ void remmina_pref_init(void)
 	else
 		remmina_pref.periodic_usage_stats_uuid_prefix = NULL;
 
+	/** RMNEWS_ENABLE_NEWS is equal to 0 (FALSE) when compiled with -DWiTH_NEWS=OFF,
+	 * otherwise is value is 1 (TRUE), that is the default value
+	 */
+	if (RMNEWS_ENABLE_NEWS == 0)
+		remmina_pref.periodic_news_permitted = RMNEWS_ENABLE_NEWS;
+	else if (g_key_file_has_key(gkeyfile, "remmina_news", "periodic_news_permitted", NULL))
+		remmina_pref.periodic_news_permitted = g_key_file_get_boolean(gkeyfile, "remmina_news", "periodic_news_permitted", NULL);
+	else
+		remmina_pref.periodic_news_permitted = RMNEWS_ENABLE_NEWS;
+
+
 	if (g_key_file_has_key(gkeyfile, "remmina_news", "periodic_rmnews_last_get", NULL))
 		remmina_pref.periodic_rmnews_last_get = g_key_file_get_int64(gkeyfile, "remmina_news", "periodic_rmnews_last_get", NULL);
 	else
@@ -828,6 +839,7 @@ gboolean remmina_pref_save(void)
 	g_key_file_set_int64(gkeyfile, "usage_stats", "periodic_usage_stats_last_sent", remmina_pref.periodic_usage_stats_last_sent);
 	g_key_file_set_string(gkeyfile, "usage_stats", "periodic_usage_stats_uuid_prefix",
 			remmina_pref.periodic_usage_stats_uuid_prefix ? remmina_pref.periodic_usage_stats_uuid_prefix : "");
+	g_key_file_set_boolean(gkeyfile, "remmina_news", "periodic_news_permitted", remmina_pref.periodic_news_permitted);
 	g_key_file_set_int64(gkeyfile, "remmina_news", "periodic_rmnews_last_get", remmina_pref.periodic_rmnews_last_get);
 	g_key_file_set_integer(gkeyfile, "remmina_news", "periodic_rmnews_get_count", remmina_pref.periodic_rmnews_get_count);
 	g_key_file_set_string(gkeyfile, "remmina_news", "periodic_rmnews_uuid_prefix",

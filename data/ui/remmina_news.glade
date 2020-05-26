@@ -68,16 +68,22 @@
                       <object class="GtkLabel" id="rmnews_label">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">&lt;big&gt;&lt;b&gt;The news are disabled&lt;/b&gt;&lt;/big&gt;
+                        <property name="margin_left">18</property>
+                        <property name="margin_right">18</property>
+                        <property name="margin_top">18</property>
+                        <property name="margin_bottom">18</property>
+                        <property name="label" translatable="yes">&lt;big&gt;&lt;b&gt;The news are turned off&lt;/b&gt;&lt;/big&gt;
 
+&lt;span&gt;
+Turning on news means the program connects to a Remmina server to download the release notes. 
+&lt;/span&gt;
+
+&lt;span&gt;
+Version checking can be activated only at compile time.
+&lt;/span&gt;
 
 &lt;span&gt;
 &lt;a href="https://gitlab.com/Remmina/Remmina/-/tags/" title="&lt;i&gt;Remmina&lt;/i&gt; release notes"&gt;Read the release notes&lt;/a&gt;.
-&lt;/span&gt;
-
-
-&lt;span&gt;
-Be aware that if you enable the news you agree that Remmina connects to &lt;a href="https://remmina.org/news/remmina_news.php" title="Remmina news script"&gt;our server&lt;/a&gt; in order to gather the release notes. 
 &lt;/span&gt;</property>
                         <property name="use_markup">True</property>
                         <property name="wrap">True</property>
@@ -174,7 +180,7 @@ Be aware that if you enable the news you agree that Remmina connects to &lt;a hr
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="halign">start</property>
-                            <property name="label" translatable="yes">Allow news from &lt;a href="https://remmina.org" title="Remmina news site"&gt;remmina.org&lt;/a&gt;</property>
+                            <property name="label" translatable="yes">Fetch news from &lt;a href="https://remmina.org" title="Remmina news site"&gt;remmina.org&lt;/a&gt;</property>
                             <property name="use_markup">True</property>
                           </object>
                           <packing>

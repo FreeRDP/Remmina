@@ -205,6 +205,7 @@ typedef struct _RemminaPref {
 	gchar *			last_success;
 
 	/* Remmina news */
+	gboolean		periodic_news_permitted;
 	glong			periodic_rmnews_last_get;
 	glong			periodic_rmnews_get_count;
 	gchar *			periodic_rmnews_uuid_prefix;
