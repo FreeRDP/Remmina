@@ -683,7 +683,6 @@ gchar* remmina_public_str_replace_in_place(gchar *string, const gchar *search, c
 {
 	TRACE_CALL(__func__);
 	gchar *new_string = remmina_public_str_replace(string, search, replacement);
-	g_free(string);
 	string = g_strdup(new_string);
 	return string;
 }
