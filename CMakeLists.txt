@@ -337,6 +337,17 @@ if(WITH_TRACE_CALLS)
     add_definitions(-DWITH_TRACE_CALLS)
 endif()
 
+option(WITH_NEWS "Disable online version checking" ON)
+if(WITH_NEWS)
+    message(STATUS "Enabling version check connecting to remmina.org")
+    add_definitions(-DWITH_NEWS)
+    set(RMNEWS_ENABLE_NEWS 1)
+else()
+    message(STATUS "Disabling version check connecting to remmina.org")
+    set(RMNEWS_ENABLE_NEWS 0)
+endif()
+
+
 option(WITH_MANPAGES "Build with MANPAGES" ON)
 if(WITH_MANPAGES)
     message(STATUS "Enabling man pages.")

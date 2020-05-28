@@ -90,15 +90,15 @@ static GOptionEntry remmina_options[] =
 	{ "edit",	      'e',  0,			  G_OPTION_ARG_FILENAME,       NULL, N_("Edit desktop connection described in file (.remmina or type supported by plugin)"), "FILE"	},
 	{ "help",	      '?',  G_OPTION_FLAG_HIDDEN, G_OPTION_ARG_NONE,	       NULL, NULL,										     NULL	},
 	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-	{ "kiosk",	      'k',  0,			  G_OPTION_ARG_NONE,	       NULL, N_("Start in kiosk mode"),							     NULL	},
+	{ "kiosk",	      'k',  0,			  G_OPTION_ARG_NONE,	       NULL, N_("Start in kiosk mode"),								     NULL	},
 	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 	{ "new",	      'n',  0,			  G_OPTION_ARG_NONE,	       NULL, N_("Create new connection profile"),						     NULL	},
 	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-	{ "pref",	      'p',  0,			  G_OPTION_ARG_STRING,	       NULL, N_("Show preferences"),						     "PAGENR"	},
+	{ "pref",	      'p',  0,			  G_OPTION_ARG_STRING,	       NULL, N_("Show preferences"),								     "PAGENR"	},
 	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 	{ "plugin",	      'x',  0,			  G_OPTION_ARG_STRING,	       NULL, N_("Run a plugin"),								     "PLUGIN"	},
 	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-	{ "quit",	      'q',  0,			  G_OPTION_ARG_NONE,	       NULL, N_("Quit"),							     NULL	},
+	{ "quit",	      'q',  0,			  G_OPTION_ARG_NONE,	       NULL, N_("Quit"),									     NULL	},
 	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 	{ "server",	      's',  0,			  G_OPTION_ARG_STRING,	       NULL, N_("Use default server name (for --new)"),						     "SERVER"	},
 	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
@@ -108,9 +108,9 @@ static GOptionEntry remmina_options[] =
 	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 	{ "version",	      'v',  0,			  G_OPTION_ARG_NONE,	       NULL, N_("Show the application version"),						     NULL	},
 	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-	{ "full-version",     'V',  0,			  G_OPTION_ARG_NONE,	       NULL, N_("Show version of the application and its plugins"),		     NULL	},
+	{ "full-version",     'V',  0,			  G_OPTION_ARG_NONE,	       NULL, N_("Show version of the application and its plugins"),				     NULL	},
 	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-	{ "update-profile",   0,    0,			  G_OPTION_ARG_FILENAME,       NULL, N_("Modify connection profile (requires --set-option)"),			     NULL	},
+	{ "update-profile",   0,    0,			  G_OPTION_ARG_FILENAME,       NULL, N_("Modify connection profile (requires --set-option)"),				     NULL	},
 	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 	{ "set-option",	      0,    0,			  G_OPTION_ARG_STRING_ARRAY,   NULL, N_("Set one or more profile settings, to be used with --update-profile"),		     NULL	},
 	{ NULL }
@@ -249,12 +249,11 @@ static void remmina_on_startup(GApplication *app)
 	/* Check for secret plugin and service initialization and show console warnings if
 	 * something is missing */
 	secret_plugin = remmina_plugin_manager_get_secret_plugin();
-	if (!secret_plugin) {
+	if (!secret_plugin)
 		g_print("Warning: Remmina is running without a secret plugin. Passwords will be saved in a less secure way.\n");
-	} else {
+	else
 		if (!secret_plugin->is_service_available())
 			g_print("Warning: Remmina is running with a secrecy plugin, but it cannot connect to a secrecy service.\n");
-	}
 
 	remmina_exec_command(REMMINA_COMMAND_AUTOSTART, NULL);
 }
@@ -305,7 +304,7 @@ int main(int argc, char *argv[])
 	const gchar *app_id;
 	int status;
 
-	g_unsetenv ("GDK_CORE_DEVICE_EVENTS");
+	g_unsetenv("GDK_CORE_DEVICE_EVENTS");
 
 	/* Enable wayland backend only after GTK 3.22.27 or the clipboard
 	 * will not work. See GTK bug 790031 */
@@ -322,7 +321,7 @@ int main(int argc, char *argv[])
 
 #ifdef HAVE_LIBGCRYPT
 # if GCRYPT_VERSION_NUMBER < 0x010600
-    gcry_error_t e;
+	gcry_error_t e;
 	if (!gcrypt_thread_initialized) {
 		if ((e = gcry_control(GCRYCTL_SET_THREAD_CBS, &gcry_threads_pthread)) != GPG_ERR_NO_ERROR)
 			return -1;

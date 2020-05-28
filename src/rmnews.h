@@ -43,6 +43,7 @@ typedef struct _RemminaNewsDialog {
 	GtkSwitch *	rmnews_stats_switch;
 	GtkLabel *	rmnews_defaultcl_label;
 	GtkButton *	rmnews_defaultcl_button;
+	GtkSwitch *	rmnews_news_switch;
 
 	gint		retval;
 } RemminaNewsDialog;

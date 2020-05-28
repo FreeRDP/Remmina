@@ -60,7 +60,7 @@
 #include "remmina_sysinfo.h"
 #include "rmnews.h"
 
-#define ARR_SIZE(arr) ( sizeof((arr)) / sizeof((arr[0])) )
+#define ARR_SIZE(arr) (sizeof((arr)) / sizeof((arr[0])))
 /* Neas file buffer */
 #define READ_BUFFER_LEN 1024
 /* Timers */
@@ -81,12 +81,12 @@ static const gchar *output_file_path = NULL;
 
 static
 const gchar *supported_mime_types[] = {
-  "x-scheme-handler/rdp",
-  "x-scheme-handler/spice",
-  "x-scheme-handler/vnc",
-  "x-scheme-handler/remmina",
-  "application/x-remmina",
-  NULL
+	"x-scheme-handler/rdp",
+	"x-scheme-handler/spice",
+	"x-scheme-handler/vnc",
+	"x-scheme-handler/remmina",
+	"application/x-remmina",
+	NULL
 };
 
 gint eweekdays[7] = {
@@ -99,19 +99,32 @@ gint eweekdays[7] = {
 	604800
 };
 
+void rmnews_news_switch_state_set_cb()
+{
+	TRACE_CALL(__func__);
+	if (rmnews_news_dialog->rmnews_news_switch && \
+	    gtk_switch_get_active(rmnews_news_dialog->rmnews_news_switch)) {
+		remmina_pref.periodic_news_permitted = TRUE;
+		if (remmina_pref_save())
+			remmina_stats_sender_schedule();
+	} else {
+		remmina_pref.periodic_news_permitted = FALSE;
+		remmina_pref_save();
+	}
+}
+
 void rmnews_stats_switch_state_set_cb()
 {
 	TRACE_CALL(__func__);
-	if (gtk_switch_get_active(rmnews_news_dialog->rmnews_stats_switch)) {
+	if (rmnews_news_dialog->rmnews_stats_switch \
+	    && gtk_switch_get_active(rmnews_news_dialog->rmnews_stats_switch)) {
 		remmina_pref.periodic_usage_stats_permitted = TRUE;
-		if (remmina_pref_save()) {
+		if (remmina_pref_save())
 			remmina_stats_sender_schedule();
-		}
 	} else {
 		remmina_pref.periodic_usage_stats_permitted = FALSE;
 		remmina_pref_save();
 	}
-
 }
 
 void rmnews_defaultcl_on_click()
@@ -120,23 +133,23 @@ void rmnews_defaultcl_on_click()
 	g_autoptr(GError) error = NULL;
 	GDesktopAppInfo *desktop_info;
 	GAppInfo *info = NULL;
-	g_autofree gchar *id = g_strconcat (REMMINA_APP_ID, ".desktop", NULL);
+	g_autofree gchar *id = g_strconcat(REMMINA_APP_ID, ".desktop", NULL);
 	int i;
 
-	desktop_info = g_desktop_app_info_new (id);
+	desktop_info = g_desktop_app_info_new(id);
 	if (!desktop_info)
 		return;
 
-	info = G_APP_INFO (desktop_info);
+	info = G_APP_INFO(desktop_info);
 
 	for (i = 0; supported_mime_types[i]; i++) {
-		if (!g_app_info_set_as_default_for_type (info, supported_mime_types[i], &error))
-			g_warning ("Failed to set '%s' as the default application for secondary content type '%s': %s",
-					g_app_info_get_name (info), supported_mime_types[i], error->message);
+		if (!g_app_info_set_as_default_for_type(info, supported_mime_types[i], &error))
+			g_warning("Failed to set '%s' as the default application for secondary content type '%s': %s",
+				  g_app_info_get_name(info), supported_mime_types[i], error->message);
 		else
-			REMMINA_DEBUG ("Set '%s' as the default application for '%s'",
-					g_app_info_get_name (info),
-					supported_mime_types[i]);
+			REMMINA_DEBUG("Set '%s' as the default application for '%s'",
+				      g_app_info_get_name(info),
+				      supported_mime_types[i]);
 	}
 }
 
@@ -159,11 +172,11 @@ static gchar *rmnews_get_file_contents(gchar *path)
 static void rmnews_close_clicked(GtkButton *btn, gpointer user_data)
 {
 	TRACE_CALL(__func__);
-	gtk_widget_destroy(GTK_WIDGET(rmnews_news_dialog->dialog));
+	if (rmnews_news_dialog->dialog)
+		gtk_widget_destroy(GTK_WIDGET(rmnews_news_dialog->dialog));
 	rmnews_news_dialog->dialog = NULL;
 	g_free(rmnews_news_dialog);
 	rmnews_news_dialog = NULL;
-
 }
 
 static gboolean rmnews_dialog_deleted(GtkButton *btn, gpointer user_data)
@@ -191,19 +204,27 @@ void rmnews_show_news(GtkWindow *parent)
 	rmnews_news_dialog->rmnews_label = GTK_LABEL(GET_OBJ("rmnews_label"));
 	//rmnews_news_dialog->rmnews_stats_label = GTK_LABEL(GET_OBJ("rmnews_stats_label"));
 	rmnews_news_dialog->rmnews_stats_switch = GTK_SWITCH(GET_OBJ("rmnews_stats_switch"));
-	if (remmina_pref.periodic_usage_stats_permitted == TRUE) {
+	if (remmina_pref.periodic_usage_stats_permitted == 1)
 		gtk_switch_set_active(rmnews_news_dialog->rmnews_stats_switch, TRUE);
-	}
 	rmnews_news_dialog->rmnews_defaultcl_label = GTK_LABEL(GET_OBJ("rmnews_defaultcl_label"));
 	rmnews_news_dialog->rmnews_defaultcl_button = GTK_BUTTON(GET_OBJ("rmnews_defaultcl_switch"));
+	rmnews_news_dialog->rmnews_news_switch = GTK_SWITCH(GET_OBJ("rmnews_news_switch"));
+	if (remmina_pref.periodic_news_permitted == 1)
+		gtk_switch_set_active(rmnews_news_dialog->rmnews_news_switch, TRUE);
+	else
+		gtk_switch_set_active(rmnews_news_dialog->rmnews_news_switch, FALSE);
+	gtk_widget_set_sensitive(GTK_WIDGET(rmnews_news_dialog->rmnews_news_switch), RMNEWS_ENABLE_NEWS);
+
 	rmnews_news_dialog->rmnews_button_close = GTK_BUTTON(GET_OBJ("rmnews_button_close"));
 	gtk_widget_set_can_default(GTK_WIDGET(rmnews_news_dialog->rmnews_button_close), TRUE);
 	gtk_widget_grab_default(GTK_WIDGET(rmnews_news_dialog->rmnews_button_close));
 
-	gchar *contents = rmnews_get_file_contents(g_strdup(output_file_path));
-	if (contents) {
-		gtk_label_set_markup(rmnews_news_dialog->rmnews_label, contents);
-		g_free(contents);
+	if (remmina_pref.periodic_news_permitted == 1) {
+		gchar *contents = rmnews_get_file_contents(g_strdup(output_file_path));
+		if (contents) {
+			gtk_label_set_markup(rmnews_news_dialog->rmnews_label, contents);
+			g_free(contents);
+		}
 	}
 
 	g_signal_connect(rmnews_news_dialog->rmnews_button_close, "clicked",
@@ -221,9 +242,7 @@ void rmnews_show_news(GtkWindow *parent)
 	gtk_window_present(GTK_WINDOW(rmnews_news_dialog->dialog));
 	if (parent)
 		gtk_window_set_transient_for(GTK_WINDOW(rmnews_news_dialog->dialog), parent);
-	gtk_window_set_modal (GTK_WINDOW(rmnews_news_dialog->dialog), TRUE);
-
-
+	gtk_window_set_modal(GTK_WINDOW(rmnews_news_dialog->dialog), TRUE);
 }
 
 static void rmnews_get_url_cb(SoupSession *session, SoupMessage *msg, gpointer data)
@@ -324,7 +343,7 @@ static void rmnews_get_url_cb(SoupSession *session, SoupMessage *msg, gpointer d
 		}
 
 
-		sb = soup_message_body_flatten (msg->response_body);
+		sb = soup_message_body_flatten(msg->response_body);
 		if (output_file) {
 			fwrite(sb->data, 1, sb->length, output_file);
 
@@ -337,7 +356,7 @@ static void rmnews_get_url_cb(SoupSession *session, SoupMessage *msg, gpointer d
 				g_info("SHA1 differs, we show the news and reset the counter");
 				remmina_pref.periodic_rmnews_last_get = 0;
 				GtkWindow *parent = remmina_main_get_window();
-				if (!kioskmode  && kioskmode == FALSE)
+				if (!kioskmode && kioskmode == FALSE)
 					rmnews_show_news(parent);
 			} else {
 				remmina_pref.periodic_rmnews_last_get = unixts;
@@ -349,11 +368,12 @@ static void rmnews_get_url_cb(SoupSession *session, SoupMessage *msg, gpointer d
 	}
 	g_object_unref(msg);
 }
+
 /**
  * Try to get a unique system+user ID to identify this remmina user
  * and avoid some duplicated task, especially on news management
  * @return a string
-  * @warning The returned string must be freed with g_free.
+ * @warning The returned string must be freed with g_free.
  */
 gchar *rmnews_get_uid()
 {
@@ -378,8 +398,8 @@ gchar *rmnews_get_uid()
 	uname = g_get_user_name();
 	hname = g_get_host_name();
 	chs = g_checksum_new(G_CHECKSUM_SHA256);
-	g_checksum_update(chs, (const guchar*)uname, strlen(uname));
-	g_checksum_update(chs, (const guchar*)hname, strlen(hname));
+	g_checksum_update(chs, (const guchar *)uname, strlen(uname));
+	g_checksum_update(chs, (const guchar *)hname, strlen(hname));
 	uid_suffix = g_checksum_get_string(chs);
 
 	uid = g_strdup_printf("02-%s-%.10s", remmina_pref.periodic_rmnews_uuid_prefix, uid_suffix);
@@ -387,7 +407,6 @@ gchar *rmnews_get_uid()
 
 	return uid;
 }
-
 
 void rmnews_get_url(const char *url)
 {
@@ -425,17 +444,17 @@ void rmnews_get_news()
 	g_info("Output file set to %s", output_file_path);
 
 	if (remmina_pref.periodic_rmnews_last_get == 0 &&
-			remmina_pref.periodic_rmnews_get_count == 0) {
-		g_file_set_contents (output_file_path, "", 0, NULL);
+	    remmina_pref.periodic_rmnews_get_count == 0) {
+		g_file_set_contents(output_file_path, "", 0, NULL);
 		/* Just a symolic date */
 		remmina_pref.periodic_rmnews_last_get = 191469343000;
 	}
 
-	fd = g_open (output_file_path, O_RDWR|O_CREAT, S_IRUSR|S_IWUSR);
-	REMMINA_DEBUG ("Returned %d while creating %s", fd, output_file_path);
+	fd = g_open(output_file_path, O_RDWR | O_CREAT, S_IRUSR | S_IWUSR);
+	REMMINA_DEBUG("Returned %d while creating %s", fd, output_file_path);
 	/* If we cannot create the remmina_news file, we avoid connections */
 	if (fd < 0) {
-		REMMINA_DEBUG ("Cannot store the remmina news file");
+		REMMINA_DEBUG("Cannot store the remmina news file");
 		return;
 	}
 	g_close(fd, NULL);
@@ -466,10 +485,9 @@ void rmnews_get_news()
 
 	sa = FALSE;
 	if (remmina_pref.periodic_usage_stats_permitted &&
-		remmina_pref.periodic_usage_stats_uuid_prefix != NULL &&
-		remmina_pref.periodic_usage_stats_uuid_prefix[0] != 0) {
+	    remmina_pref.periodic_usage_stats_uuid_prefix != NULL &&
+	    remmina_pref.periodic_usage_stats_uuid_prefix[0] != 0)
 		sa = TRUE;
-	}
 
 	if (stat("/etc/machine-id", &sb) == 0)
 		sprintf(mage, "%ld", (long)(time(NULL) - sb.st_mtim.tv_sec));
@@ -479,19 +497,19 @@ void rmnews_get_news()
 	sprintf(gcount, "%ld", remmina_pref.periodic_rmnews_get_count);
 
 	rmnews_get_url(g_strconcat(REMMINA_URL,
-				"news/remmina_news.php?lang=",
-				lang,
-				"&ver="
-				VERSION,
-				"&uid=",
-				uid,
-				"&sa=",
-				sa ? "1" : "0",
-				"&mage=",
-				mage,
-				"&gcount=",
-				gcount,
-				NULL));
+				   "news/remmina_news.php?lang=",
+				   lang,
+				   "&ver="
+				   VERSION,
+				   "&uid=",
+				   uid,
+				   "&sa=",
+				   sa ? "1" : "0",
+				   "&mage=",
+				   mage,
+				   "&gcount=",
+				   gcount,
+				   NULL));
 
 	g_free(uid);
 	g_object_unref(session);
@@ -515,14 +533,27 @@ static gboolean rmnews_periodic_check(gpointer user_data)
 		gint randidx = rand() % 7;
 		/* We randmoly set periodic_rmnews_last_get to a a day between today
 		 * and 7 days ago */
-		REMMINA_DEBUG ("Setting a random periodic_rmnews_last_get");
+		REMMINA_DEBUG("Setting a random periodic_rmnews_last_get");
 		remmina_pref.periodic_rmnews_last_get = unixts - eweekdays[randidx];
 	}
-	REMMINA_DEBUG ("periodic_rmnews_last_get is %ld", remmina_pref.periodic_rmnews_last_get);
+	REMMINA_DEBUG("periodic_rmnews_last_get is %ld", remmina_pref.periodic_rmnews_last_get);
 
+	if (remmina_pref.periodic_news_permitted == 0 && remmina_pref.periodic_rmnews_get_count < 1) {
+		remmina_pref.periodic_rmnews_last_get =
+			(remmina_pref.periodic_rmnews_last_get > 1514764800 ? remmina_pref.periodic_rmnews_last_get : 0);
+		remmina_pref_save();
+	}
 	next = remmina_pref.periodic_rmnews_last_get + RMNEWS_INTERVAL_SEC;
-	if (unixts > next || (unixts < remmina_pref.periodic_rmnews_last_get && unixts > 1514764800))
-		rmnews_get_news();
+	if (unixts > next || (unixts < remmina_pref.periodic_rmnews_last_get && unixts > 1514764800)) {
+		REMMINA_DEBUG("remmina_pref.periodic_news_permitted is %d", remmina_pref.periodic_news_permitted);
+		if (remmina_pref.periodic_news_permitted == 1) {
+			rmnews_get_news();
+		} else if (remmina_pref.periodic_rmnews_get_count == 0) {
+			rmnews_show_news(remmina_main_get_window());
+			remmina_pref.periodic_rmnews_get_count = 1;
+			remmina_pref_save();
+		}
+	}
 	return G_SOURCE_CONTINUE;
 }
 
