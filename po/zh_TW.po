@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2020-05-27 08:18+0200\n"
+"POT-Creation-Date: 2020-05-28 12:30+0200\n"
 "PO-Revision-Date: 2020-05-19 11:55+0000\n"
 "Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
 "Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
@@ -523,8 +523,8 @@ msgstr "取消"
 
 #: src/remmina_message_panel.c:199 data/ui/remmina_string_list.glade:8
 #: data/ui/remmina_string_list.glade:9 data/ui/remmina_string_list.glade:63
-#: data/ui/remmina_preferences.glade:33 data/ui/remmina_preferences.glade:34
-#: data/ui/remmina_preferences.glade:60 data/ui/remmina_news.glade:33
+#: data/ui/remmina_news.glade:33 data/ui/remmina_preferences.glade:33
+#: data/ui/remmina_preferences.glade:34 data/ui/remmina_preferences.glade:60
 msgid "Close"
 msgstr "關閉"
 
@@ -727,10 +727,6 @@ msgstr "驗證失敗。正試著重新連接…"
 #, c-format
 msgid "Install the %s protocol plugin first."
 msgstr "請先安裝 %s 協定插件。"
-
-#: src/remmina_public.c:639
-msgid "Please enter format 'widthxheight'."
-msgstr "請輸入格式「寬x高」。"
 
 #. TRANSLATORS: The placeholder %s is a directory path
 #: src/remmina_sftp_client.c:173
@@ -1328,19 +1324,6 @@ msgstr "嚴格的主機金鑰檢查"
 msgid "SSH - Secure Shell"
 msgstr "SSH - 安全Shell連接"
 
-#: src/remmina_pref_dialog.c:132
-msgid "Recent lists cleared."
-msgstr "已清除最近使用清單。"
-
-#: src/remmina_pref_dialog.c:143
-msgid "Configure the keystrokes"
-msgstr "設定自訂快速鍵"
-
-#. TRANSLATORS: Do not translate libsodium, is the name of a library
-#: src/remmina_pref_dialog.c:447
-msgid "libsodium >= 1.9.0 is required to use master password"
-msgstr "需要 libsodium 版本 >= 1.9.0 才能使用主密碼"
-
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:84
 msgid "Show 'About'"
@@ -1419,6 +1402,23 @@ msgstr "修改連線設定檔（需要 --set-option）"
 #: src/remmina.c:115
 msgid "Set one or more profile settings, to be used with --update-profile"
 msgstr "設定一個或多個連線設定，與 --update-profile 一起使用"
+
+#: src/remmina_pref_dialog.c:132
+msgid "Recent lists cleared."
+msgstr "已清除最近使用清單。"
+
+#: src/remmina_pref_dialog.c:143
+msgid "Configure the keystrokes"
+msgstr "設定自訂快速鍵"
+
+#. TRANSLATORS: Do not translate libsodium, is the name of a library
+#: src/remmina_pref_dialog.c:447
+msgid "libsodium >= 1.9.0 is required to use master password"
+msgstr "需要 libsodium 版本 >= 1.9.0 才能使用主密碼"
+
+#: src/remmina_public.c:639
+msgid "Please enter format 'widthxheight'."
+msgstr "請輸入格式「寬x高」。"
 
 #: plugins/tool_hello_world/plugin_config.h:40
 #, fuzzy
@@ -2621,6 +2621,92 @@ msgstr "解鎖 Remmina"
 msgid "Master password"
 msgstr "主密碼"
 
+#: data/ui/remmina_news.glade:75
+msgid ""
+"<big><b>The news are turned off</b></big>\n"
+"\n"
+"<span>\n"
+"Turning on news means the program connects to a Remmina server to download "
+"the release notes. \n"
+"</span>\n"
+"\n"
+"<span>\n"
+"Version checking can only be activated at compile time.\n"
+"</span>\n"
+"\n"
+"<span>\n"
+"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"<i>Remmina</"
+"i> release notes\"><i>Visit the website to read the release notes</i></a>.\n"
+"</span>"
+msgstr ""
+
+#. The star (*) is a reference to privacy consent
+#: data/ui/remmina_news.glade:130 data/ui/remmina_preferences.glade:533
+#, fuzzy
+msgid ""
+"Send <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
+"remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
+"\">anonymous</a></b> statistics. (*)"
+msgstr ""
+"傳送<b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
+"remmina__stats_8c.html#details\" title=\"Remmina usage statistics\">匿名</"
+"a></b>統計資料給 remmina.org"
+
+#: data/ui/remmina_news.glade:142 data/ui/remmina_news.glade:195
+#, fuzzy
+msgid "Send anonymous statistics"
+msgstr "傳送統計資料至 remmina.org"
+
+#: data/ui/remmina_news.glade:156
+#, fuzzy
+msgid "Use as default remote desktop client"
+msgstr "將 Remmina 設為預設遠端桌面客戶端"
+
+#: data/ui/remmina_news.glade:165
+msgid "Apply"
+msgstr "套用"
+
+#: data/ui/remmina_news.glade:169
+msgid "Allow Remmina to automatically open .rdp and .remmina files."
+msgstr ""
+
+#. The star (*) is a reference to privacy consent
+#: data/ui/remmina_news.glade:183 data/ui/remmina_preferences.glade:548
+msgid ""
+"Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
+"\">remmina.org</a> (*)"
+msgstr ""
+
+#: data/ui/remmina_news.glade:208 data/ui/remmina_preferences.glade:515
+msgid ""
+"* Enabling statistics and/or news you consent to send and fetch data to/from "
+"remmina.org"
+msgstr ""
+
+#: data/ui/remmina_news.glade:231
+#, fuzzy
+msgid "<big>Take part</big>"
+msgstr "<big>提供貢獻</big>"
+
+#: data/ui/remmina_news.glade:257
+#, fuzzy
+msgid ""
+"<span>\n"
+"<b>You have our gratitude in choosing copylefted libre software, <a href="
+"\"https://remmina.org/donations/\" title=\"Awesome Remmina donations"
+"\">donations also make us happy</a>, and further help improve Remmina.</b>\n"
+"</span>\n"
+msgstr ""
+"<span>\n"
+"<b>Remmina 是由無畏的貢獻者們在他們的閒暇時間所開發的，加入勇者們的行列，<a "
+"href=\"https://remmina.org/donations/\" title=\"贊助 Remmina\">贊助我們的英雄"
+"們！</a></b>\n"
+"</span>\n"
+
+#: data/ui/remmina_news.glade:277
+msgid "<big>Contribute</big>"
+msgstr "<big>提供貢獻</big>"
+
 #: data/ui/remmina_preferences.glade:41
 msgid "Remmina Preferences"
 msgstr "Remmina 偏好設定"
@@ -2757,31 +2843,6 @@ msgstr "僅將螢幕截圖儲存為檔案，不要存入剪貼簿。"
 #: data/ui/remmina_preferences.glade:474
 msgid "Prevent screenshots from entering clipboard"
 msgstr "拒絕將螢幕截圖存入剪貼簿"
-
-#: data/ui/remmina_preferences.glade:515 data/ui/remmina_news.glade:208
-msgid ""
-"* Enabling statistics and/or news you consent to send and fetch data to/from "
-"remmina.org"
-msgstr ""
-
-#. The star (*) is a reference to privacy consent
-#: data/ui/remmina_preferences.glade:533 data/ui/remmina_news.glade:130
-#, fuzzy
-msgid ""
-"Send <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-"remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
-"\">anonymous</a></b> statistics. (*)"
-msgstr ""
-"傳送<b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-"remmina__stats_8c.html#details\" title=\"Remmina usage statistics\">匿名</"
-"a></b>統計資料給 remmina.org"
-
-#. The star (*) is a reference to privacy consent
-#: data/ui/remmina_preferences.glade:548 data/ui/remmina_news.glade:183
-msgid ""
-"Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
-"\">remmina.org</a> (*)"
-msgstr ""
 
 #: data/ui/remmina_preferences.glade:562
 msgid "Options"
@@ -3177,67 +3238,6 @@ msgstr "前景色"
 #: data/ui/remmina_preferences.glade:2285
 msgid "Terminal"
 msgstr "終端機"
-
-#: data/ui/remmina_news.glade:75
-msgid ""
-"<big><b>The news are turned off</b></big>\n"
-"\n"
-"<span>\n"
-"Turning on news means the program connects to a Remmina server to download "
-"the release notes. \n"
-"</span>\n"
-"\n"
-"<span>\n"
-"Version checking can be activated only at compile time.\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"<i>Remmina</"
-"i> release notes\">Read the release notes</a>.\n"
-"</span>"
-msgstr ""
-
-#: data/ui/remmina_news.glade:142 data/ui/remmina_news.glade:195
-#, fuzzy
-msgid "Send anonymous statistics"
-msgstr "傳送統計資料至 remmina.org"
-
-#: data/ui/remmina_news.glade:156
-#, fuzzy
-msgid "Use as default remote desktop client"
-msgstr "將 Remmina 設為預設遠端桌面客戶端"
-
-#: data/ui/remmina_news.glade:165
-msgid "Apply"
-msgstr "套用"
-
-#: data/ui/remmina_news.glade:169
-msgid "Allow Remmina to automatically open .rdp and .remmina files."
-msgstr ""
-
-#: data/ui/remmina_news.glade:231
-#, fuzzy
-msgid "<big>Take part</big>"
-msgstr "<big>提供貢獻</big>"
-
-#: data/ui/remmina_news.glade:257
-#, fuzzy
-msgid ""
-"<span>\n"
-"<b>You have our gratitude in choosing copylefted libre software, <a href="
-"\"https://remmina.org/donations/\" title=\"Awesome Remmina donations"
-"\">donations also make us happy</a>, and further help improve Remmina.</b>\n"
-"</span>\n"
-msgstr ""
-"<span>\n"
-"<b>Remmina 是由無畏的貢獻者們在他們的閒暇時間所開發的，加入勇者們的行列，<a "
-"href=\"https://remmina.org/donations/\" title=\"贊助 Remmina\">贊助我們的英雄"
-"們！</a></b>\n"
-"</span>\n"
-
-#: data/ui/remmina_news.glade:277
-msgid "<big>Contribute</big>"
-msgstr "<big>提供貢獻</big>"
 
 #, fuzzy
 #~ msgid ""

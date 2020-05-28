@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2020-05-27 08:18+0200\n"
+"POT-Creation-Date: 2020-05-28 12:30+0200\n"
 "PO-Revision-Date: 2020-04-15 21:14+0000\n"
 "Last-Translator: Justin Song <mcsong@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -515,8 +515,8 @@ msgstr "취소"
 
 #: src/remmina_message_panel.c:199 data/ui/remmina_string_list.glade:8
 #: data/ui/remmina_string_list.glade:9 data/ui/remmina_string_list.glade:63
-#: data/ui/remmina_preferences.glade:33 data/ui/remmina_preferences.glade:34
-#: data/ui/remmina_preferences.glade:60 data/ui/remmina_news.glade:33
+#: data/ui/remmina_news.glade:33 data/ui/remmina_preferences.glade:33
+#: data/ui/remmina_preferences.glade:34 data/ui/remmina_preferences.glade:60
 msgid "Close"
 msgstr "닫기"
 
@@ -717,10 +717,6 @@ msgstr "인증할 수 없습니다, 다시 접속 중…"
 #, c-format
 msgid "Install the %s protocol plugin first."
 msgstr "먼저 %s 프로토콜 플러그인을 설치하세요."
-
-#: src/remmina_public.c:639
-msgid "Please enter format 'widthxheight'."
-msgstr "'가로x세로' 형태로 입력하세요."
 
 #. TRANSLATORS: The placeholder %s is a directory path
 #: src/remmina_sftp_client.c:173
@@ -1320,19 +1316,6 @@ msgstr "엄격한 호스트 키 확인"
 msgid "SSH - Secure Shell"
 msgstr "SSH - 보안 쉘"
 
-#: src/remmina_pref_dialog.c:132
-msgid "Recent lists cleared."
-msgstr "최근 목록을 지웠습니다."
-
-#: src/remmina_pref_dialog.c:143
-msgid "Configure the keystrokes"
-msgstr "키스트로크 설정"
-
-#. TRANSLATORS: Do not translate libsodium, is the name of a library
-#: src/remmina_pref_dialog.c:447
-msgid "libsodium >= 1.9.0 is required to use master password"
-msgstr "마스터 비밀번호를 사용하려면 libsodium> = 1.9.0이 필요합니다"
-
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:84
 msgid "Show 'About'"
@@ -1410,6 +1393,23 @@ msgstr "연결 프로필 수정 (--set-option 필요)"
 #: src/remmina.c:115
 msgid "Set one or more profile settings, to be used with --update-profile"
 msgstr "--update-profile 을 사용해서 사용할 하나 이상의 프로필 설정"
+
+#: src/remmina_pref_dialog.c:132
+msgid "Recent lists cleared."
+msgstr "최근 목록을 지웠습니다."
+
+#: src/remmina_pref_dialog.c:143
+msgid "Configure the keystrokes"
+msgstr "키스트로크 설정"
+
+#. TRANSLATORS: Do not translate libsodium, is the name of a library
+#: src/remmina_pref_dialog.c:447
+msgid "libsodium >= 1.9.0 is required to use master password"
+msgstr "마스터 비밀번호를 사용하려면 libsodium> = 1.9.0이 필요합니다"
+
+#: src/remmina_public.c:639
+msgid "Please enter format 'widthxheight'."
+msgstr "'가로x세로' 형태로 입력하세요."
 
 #: plugins/tool_hello_world/plugin_config.h:40
 #, fuzzy
@@ -2612,6 +2612,92 @@ msgstr "레미나 잠금 해제"
 msgid "Master password"
 msgstr "마스터 비밀번호"
 
+#: data/ui/remmina_news.glade:75
+msgid ""
+"<big><b>The news are turned off</b></big>\n"
+"\n"
+"<span>\n"
+"Turning on news means the program connects to a Remmina server to download "
+"the release notes. \n"
+"</span>\n"
+"\n"
+"<span>\n"
+"Version checking can only be activated at compile time.\n"
+"</span>\n"
+"\n"
+"<span>\n"
+"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"<i>Remmina</"
+"i> release notes\"><i>Visit the website to read the release notes</i></a>.\n"
+"</span>"
+msgstr ""
+
+#. The star (*) is a reference to privacy consent
+#: data/ui/remmina_news.glade:130 data/ui/remmina_preferences.glade:533
+#, fuzzy
+msgid ""
+"Send <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
+"remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
+"\">anonymous</a></b> statistics. (*)"
+msgstr ""
+"전송 <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
+"remmina__stats_8c.html#details\" title=\"Remmina usage statistics\">익명</"
+"a></b> remmina.org에 사용량"
+
+#: data/ui/remmina_news.glade:142 data/ui/remmina_news.glade:195
+#, fuzzy
+msgid "Send anonymous statistics"
+msgstr "remmina.org에 사용량 보내기"
+
+#: data/ui/remmina_news.glade:156
+#, fuzzy
+msgid "Use as default remote desktop client"
+msgstr "레미나를 기본 원격 데스크톱 클라이언트로 설정"
+
+#: data/ui/remmina_news.glade:165
+msgid "Apply"
+msgstr "적용"
+
+#: data/ui/remmina_news.glade:169
+msgid "Allow Remmina to automatically open .rdp and .remmina files."
+msgstr ""
+
+#. The star (*) is a reference to privacy consent
+#: data/ui/remmina_news.glade:183 data/ui/remmina_preferences.glade:548
+msgid ""
+"Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
+"\">remmina.org</a> (*)"
+msgstr ""
+
+#: data/ui/remmina_news.glade:208 data/ui/remmina_preferences.glade:515
+msgid ""
+"* Enabling statistics and/or news you consent to send and fetch data to/from "
+"remmina.org"
+msgstr ""
+
+#: data/ui/remmina_news.glade:231
+#, fuzzy
+msgid "<big>Take part</big>"
+msgstr "<big>기여</big>"
+
+#: data/ui/remmina_news.glade:257
+#, fuzzy
+msgid ""
+"<span>\n"
+"<b>You have our gratitude in choosing copylefted libre software, <a href="
+"\"https://remmina.org/donations/\" title=\"Awesome Remmina donations"
+"\">donations also make us happy</a>, and further help improve Remmina.</b>\n"
+"</span>\n"
+msgstr ""
+"<span>\n"
+"<b>카피 레프트인 리브레(libre) 소프트웨어를 사용하는 것이 좋습니다, <a href="
+"\"https://remmina.org/donations/\" title=\"Awesome Remmina donations\">기부"
+"해 주세요</a>, 기부는 프로그램을 더 좋게 만들고 행복하게 합니다.</b>\n"
+"</span>\n"
+
+#: data/ui/remmina_news.glade:277
+msgid "<big>Contribute</big>"
+msgstr "<big>기여</big>"
+
 #: data/ui/remmina_preferences.glade:41
 msgid "Remmina Preferences"
 msgstr "레미나 환경 설정"
@@ -2747,31 +2833,6 @@ msgstr "생성한 스크린샷 만 저장하고, 클립 보드에 복사하지 �
 #: data/ui/remmina_preferences.glade:474
 msgid "Prevent screenshots from entering clipboard"
 msgstr "스크린샷이 클립 보드에 추가되지 않도록 제한"
-
-#: data/ui/remmina_preferences.glade:515 data/ui/remmina_news.glade:208
-msgid ""
-"* Enabling statistics and/or news you consent to send and fetch data to/from "
-"remmina.org"
-msgstr ""
-
-#. The star (*) is a reference to privacy consent
-#: data/ui/remmina_preferences.glade:533 data/ui/remmina_news.glade:130
-#, fuzzy
-msgid ""
-"Send <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-"remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
-"\">anonymous</a></b> statistics. (*)"
-msgstr ""
-"전송 <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-"remmina__stats_8c.html#details\" title=\"Remmina usage statistics\">익명</"
-"a></b> remmina.org에 사용량"
-
-#. The star (*) is a reference to privacy consent
-#: data/ui/remmina_preferences.glade:548 data/ui/remmina_news.glade:183
-msgid ""
-"Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
-"\">remmina.org</a> (*)"
-msgstr ""
 
 #: data/ui/remmina_preferences.glade:562
 msgid "Options"
@@ -3146,67 +3207,6 @@ msgstr "전경 색"
 #: data/ui/remmina_preferences.glade:2285
 msgid "Terminal"
 msgstr "터미널"
-
-#: data/ui/remmina_news.glade:75
-msgid ""
-"<big><b>The news are turned off</b></big>\n"
-"\n"
-"<span>\n"
-"Turning on news means the program connects to a Remmina server to download "
-"the release notes. \n"
-"</span>\n"
-"\n"
-"<span>\n"
-"Version checking can be activated only at compile time.\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"<i>Remmina</"
-"i> release notes\">Read the release notes</a>.\n"
-"</span>"
-msgstr ""
-
-#: data/ui/remmina_news.glade:142 data/ui/remmina_news.glade:195
-#, fuzzy
-msgid "Send anonymous statistics"
-msgstr "remmina.org에 사용량 보내기"
-
-#: data/ui/remmina_news.glade:156
-#, fuzzy
-msgid "Use as default remote desktop client"
-msgstr "레미나를 기본 원격 데스크톱 클라이언트로 설정"
-
-#: data/ui/remmina_news.glade:165
-msgid "Apply"
-msgstr "적용"
-
-#: data/ui/remmina_news.glade:169
-msgid "Allow Remmina to automatically open .rdp and .remmina files."
-msgstr ""
-
-#: data/ui/remmina_news.glade:231
-#, fuzzy
-msgid "<big>Take part</big>"
-msgstr "<big>기여</big>"
-
-#: data/ui/remmina_news.glade:257
-#, fuzzy
-msgid ""
-"<span>\n"
-"<b>You have our gratitude in choosing copylefted libre software, <a href="
-"\"https://remmina.org/donations/\" title=\"Awesome Remmina donations"
-"\">donations also make us happy</a>, and further help improve Remmina.</b>\n"
-"</span>\n"
-msgstr ""
-"<span>\n"
-"<b>카피 레프트인 리브레(libre) 소프트웨어를 사용하는 것이 좋습니다, <a href="
-"\"https://remmina.org/donations/\" title=\"Awesome Remmina donations\">기부"
-"해 주세요</a>, 기부는 프로그램을 더 좋게 만들고 행복하게 합니다.</b>\n"
-"</span>\n"
-
-#: data/ui/remmina_news.glade:277
-msgid "<big>Contribute</big>"
-msgstr "<big>기여</big>"
 
 #, fuzzy
 #~ msgid ""
