@@ -539,7 +539,8 @@ static gboolean rmnews_periodic_check(gpointer user_data)
 	REMMINA_DEBUG("periodic_rmnews_last_get is %ld", remmina_pref.periodic_rmnews_last_get);
 
 	if (remmina_pref.periodic_news_permitted == 0 && remmina_pref.periodic_rmnews_get_count < 1) {
-		remmina_pref.periodic_rmnews_last_get = 0;
+		remmina_pref.periodic_rmnews_last_get =
+			(remmina_pref.periodic_rmnews_last_get > 1514764800 ? remmina_pref.periodic_rmnews_last_get : 0);
 		remmina_pref_save();
 	}
 	next = remmina_pref.periodic_rmnews_last_get + RMNEWS_INTERVAL_SEC;
