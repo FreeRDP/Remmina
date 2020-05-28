@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2020-05-28 12:30+0200\n"
+"POT-Creation-Date: 2020-05-28 18:33+0200\n"
 "PO-Revision-Date: 2020-05-19 11:55+0000\n"
 "Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -527,8 +527,8 @@ msgstr "取消"
 
 #: src/remmina_message_panel.c:199 data/ui/remmina_string_list.glade:8
 #: data/ui/remmina_string_list.glade:9 data/ui/remmina_string_list.glade:63
-#: data/ui/remmina_news.glade:33 data/ui/remmina_preferences.glade:33
-#: data/ui/remmina_preferences.glade:34 data/ui/remmina_preferences.glade:60
+#: data/ui/remmina_preferences.glade:33 data/ui/remmina_preferences.glade:34
+#: data/ui/remmina_preferences.glade:60 data/ui/remmina_news.glade:33
 msgid "Close"
 msgstr "关闭"
 
@@ -2599,86 +2599,6 @@ msgstr "解锁 Remmina"
 msgid "Master password"
 msgstr "主控密码"
 
-#: data/ui/remmina_news.glade:75
-msgid ""
-"<big><b>The news are turned off</b></big>\n"
-"\n"
-"<span>\n"
-"Turning on news means the program connects to a Remmina server to download "
-"the release notes. \n"
-"</span>\n"
-"\n"
-"<span>\n"
-"Version checking can only be activated at compile time.\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"<i>Remmina</"
-"i> release notes\"><i>Visit the website to read the release notes</i></a>.\n"
-"</span>"
-msgstr ""
-
-#. The star (*) is a reference to privacy consent
-#: data/ui/remmina_news.glade:130 data/ui/remmina_preferences.glade:533
-#, fuzzy
-msgid ""
-"Send <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-"remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
-"\">anonymous</a></b> statistics. (*)"
-msgstr ""
-"发送 <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-"remmina__stats_8c.html#details\" title=\"Remmina usage statistics\">匿名</"
-"a></b> 统计到 remmina.org"
-
-#: data/ui/remmina_news.glade:142 data/ui/remmina_news.glade:195
-#, fuzzy
-msgid "Send anonymous statistics"
-msgstr "将统计信息发送到 remmina.org"
-
-#: data/ui/remmina_news.glade:156
-#, fuzzy
-msgid "Use as default remote desktop client"
-msgstr "将 Remmina 设置为默认的远程桌面客户端"
-
-#: data/ui/remmina_news.glade:165
-msgid "Apply"
-msgstr "应用"
-
-#: data/ui/remmina_news.glade:169
-msgid "Allow Remmina to automatically open .rdp and .remmina files."
-msgstr ""
-
-#. The star (*) is a reference to privacy consent
-#: data/ui/remmina_news.glade:183 data/ui/remmina_preferences.glade:548
-msgid ""
-"Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
-"\">remmina.org</a> (*)"
-msgstr ""
-
-#: data/ui/remmina_news.glade:208 data/ui/remmina_preferences.glade:515
-msgid ""
-"* Enabling statistics and/or news you consent to send and fetch data to/from "
-"remmina.org"
-msgstr ""
-
-#: data/ui/remmina_news.glade:231
-#, fuzzy
-msgid "<big>Take part</big>"
-msgstr "<big>贡献</big>"
-
-#: data/ui/remmina_news.glade:257
-msgid ""
-"<span>\n"
-"<b>You have our gratitude in choosing copylefted libre software, <a href="
-"\"https://remmina.org/donations/\" title=\"Awesome Remmina donations"
-"\">donations also make us happy</a>, and further help improve Remmina.</b>\n"
-"</span>\n"
-msgstr ""
-
-#: data/ui/remmina_news.glade:277
-msgid "<big>Contribute</big>"
-msgstr "<big>贡献</big>"
-
 #: data/ui/remmina_preferences.glade:41
 msgid "Remmina Preferences"
 msgstr "Remmina 首选项"
@@ -2814,6 +2734,31 @@ msgstr "只保存生成的截图，不要复制到剪贴板。"
 #: data/ui/remmina_preferences.glade:474
 msgid "Prevent screenshots from entering clipboard"
 msgstr "阻止截图进入剪贴板"
+
+#: data/ui/remmina_preferences.glade:515 data/ui/remmina_news.glade:208
+msgid ""
+"* By enabling statistics and/or news you consent to send and fetch data to/"
+"from remmina.org"
+msgstr ""
+
+#. The star (*) is a reference to privacy consent
+#: data/ui/remmina_preferences.glade:533 data/ui/remmina_news.glade:130
+#, fuzzy
+msgid ""
+"Send <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
+"remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
+"\">anonymous</a></b> statistics. (*)"
+msgstr ""
+"发送 <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
+"remmina__stats_8c.html#details\" title=\"Remmina usage statistics\">匿名</"
+"a></b> 统计到 remmina.org"
+
+#. The star (*) is a reference to privacy consent
+#: data/ui/remmina_preferences.glade:548 data/ui/remmina_news.glade:183
+msgid ""
+"Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
+"\">remmina.org</a> (*)"
+msgstr ""
 
 #: data/ui/remmina_preferences.glade:562
 msgid "Options"
@@ -3192,6 +3137,61 @@ msgstr "前景色"
 #: data/ui/remmina_preferences.glade:2285
 msgid "Terminal"
 msgstr "终端"
+
+#: data/ui/remmina_news.glade:75
+msgid ""
+"<big><b>The news are turned off</b></big>\n"
+"\n"
+"<span>\n"
+"Turning on news means the program connects to a Remmina server to download "
+"the release notes.\n"
+"</span>\n"
+"\n"
+"<span>\n"
+"Version checking can only be activated at compile time.\n"
+"</span>\n"
+"\n"
+"<span>\n"
+"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"<i>Remmina</"
+"i> release notes\"><i>Visit the website to read the release notes</i></a>.\n"
+"</span>"
+msgstr ""
+
+#: data/ui/remmina_news.glade:142 data/ui/remmina_news.glade:195
+#, fuzzy
+msgid "Send anonymous statistics"
+msgstr "将统计信息发送到 remmina.org"
+
+#: data/ui/remmina_news.glade:156
+#, fuzzy
+msgid "Use as default remote desktop client"
+msgstr "将 Remmina 设置为默认的远程桌面客户端"
+
+#: data/ui/remmina_news.glade:165
+msgid "Apply"
+msgstr "应用"
+
+#: data/ui/remmina_news.glade:169
+msgid "Allow Remmina to automatically open .rdp and .remmina files."
+msgstr ""
+
+#: data/ui/remmina_news.glade:231
+#, fuzzy
+msgid "<big>Take part</big>"
+msgstr "<big>贡献</big>"
+
+#: data/ui/remmina_news.glade:257
+msgid ""
+"<span>\n"
+"<b>You have our gratitude in choosing copylefted libre software, <a href="
+"\"https://remmina.org/donations/\" title=\"Awesome Remmina donations"
+"\">donations also make us happy</a>, and further help improve Remmina.</b>\n"
+"</span>\n"
+msgstr ""
+
+#: data/ui/remmina_news.glade:277
+msgid "<big>Contribute</big>"
+msgstr "<big>贡献</big>"
 
 #, fuzzy
 #~ msgid ""
