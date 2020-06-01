@@ -622,6 +622,11 @@ static GtkWidget *remmina_file_editor_create_textarea(RemminaFileEditor *gfe, Gt
 
 	widget = gtk_text_view_new();
 	view = GTK_TEXT_VIEW (widget);
+	gtk_text_view_set_wrap_mode (GTK_TEXT_VIEW (view), GTK_WRAP_WORD);
+	gtk_text_view_set_top_margin (GTK_TEXT_VIEW (view), 20);
+	gtk_text_view_set_bottom_margin (GTK_TEXT_VIEW (view), 20);
+	gtk_text_view_set_left_margin (GTK_TEXT_VIEW (view), 20);
+	gtk_text_view_set_right_margin (GTK_TEXT_VIEW (view), 20);
 	gtk_text_view_set_monospace(view, TRUE);
 	if (value) {
 		buffer = gtk_text_view_get_buffer (view);
@@ -631,6 +636,7 @@ static GtkWidget *remmina_file_editor_create_textarea(RemminaFileEditor *gfe, Gt
 	}
 	gtk_widget_show(widget);
 	gtk_widget_set_hexpand(widget, TRUE);
+	gtk_widget_set_size_request (GTK_WIDGET(view), 320, 300);
 	gtk_grid_attach(GTK_GRID(grid), widget, 0, row, 1, 1);
 	return widget;
 }
