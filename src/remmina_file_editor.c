@@ -611,6 +611,36 @@ static GtkWidget *remmina_file_editor_create_text(RemminaFileEditor *gfe, GtkWid
 	return widget;
 }
 
+static GtkWidget *remmina_file_editor_create_textarea(RemminaFileEditor *gfe, GtkWidget *grid,
+						  gint row, gint col, const gchar *label, const gchar *value)
+{
+	TRACE_CALL(__func__);
+	GtkWidget *widget;
+	GtkTextView *view;
+	GtkTextBuffer *buffer;
+	GtkTextIter start;
+
+	widget = gtk_text_view_new();
+	view = GTK_TEXT_VIEW (widget);
+	gtk_text_view_set_wrap_mode (GTK_TEXT_VIEW (view), GTK_WRAP_WORD);
+	gtk_text_view_set_top_margin (GTK_TEXT_VIEW (view), 20);
+	gtk_text_view_set_bottom_margin (GTK_TEXT_VIEW (view), 20);
+	gtk_text_view_set_left_margin (GTK_TEXT_VIEW (view), 20);
+	gtk_text_view_set_right_margin (GTK_TEXT_VIEW (view), 20);
+	gtk_text_view_set_monospace(view, TRUE);
+	if (value) {
+		buffer = gtk_text_view_get_buffer (view);
+		gtk_text_buffer_set_text (buffer, value, -1);
+		gtk_text_buffer_get_start_iter (buffer, &start);
+		gtk_text_buffer_place_cursor(buffer, &start);
+	}
+	gtk_widget_show(widget);
+	gtk_widget_set_hexpand(widget, TRUE);
+	gtk_widget_set_size_request (GTK_WIDGET(view), 320, 300);
+	gtk_grid_attach(GTK_GRID(grid), widget, 0, row, 1, 1);
+	return widget;
+}
+
 static GtkWidget *remmina_file_editor_create_select(RemminaFileEditor *gfe, GtkWidget *grid,
 						    gint row, gint col, const gchar *label, const gpointer *list, const gchar *value)
 {
@@ -712,7 +742,7 @@ static void remmina_file_editor_create_settings(RemminaFileEditor *gfe, GtkWidge
 	gint grid_column = 0;
 	gchar **strarr;
 	gchar *setting_name;
-
+	const gchar *escaped;
 
 	while (settings->type != REMMINA_PROTOCOL_SETTING_TYPE_END) {
 		setting_name = (gchar *)(remmina_plugin_manager_get_canonical_setting_name(settings));
@@ -751,6 +781,15 @@ static void remmina_file_editor_create_settings(RemminaFileEditor *gfe, GtkWidge
 			g_hash_table_insert(priv->setting_widgets, setting_name, widget);
 			if (settings->opt2)
 				gtk_widget_set_tooltip_text(widget, (const gchar *)settings->opt2);
+			grid_row++;
+			break;
+
+		case REMMINA_PROTOCOL_SETTING_TYPE_TEXTAREA:
+			escaped = remmina_file_get_string(priv->remmina_file, setting_name);
+			escaped = g_uri_unescape_string (escaped, NULL);
+			widget = remmina_file_editor_create_textarea(gfe, grid, grid_row, 0,
+								 g_dgettext(priv->plugin->domain, settings->label), escaped);
+			g_hash_table_insert(priv->setting_widgets, setting_name, widget);
 			grid_row++;
 			break;
 
@@ -1018,6 +1057,12 @@ static void remmina_file_editor_create_all_settings(RemminaFileEditor *gfe)
 		{ REMMINA_PROTOCOL_SETTING_TYPE_END,   NULL,		   NULL,					 FALSE, NULL, NULL }
 	};
 
+	static const RemminaProtocolSetting notes_settings[] =
+	{
+		{ REMMINA_PROTOCOL_SETTING_TYPE_TEXTAREA, "notes_text", NULL, FALSE, NULL, NULL },
+		{ REMMINA_PROTOCOL_SETTING_TYPE_END,   NULL,		   NULL, FALSE, NULL, NULL }
+	};
+
 	remmina_file_editor_create_notebook_container(gfe);
 
 	/* The Basic tab */
@@ -1038,6 +1083,10 @@ static void remmina_file_editor_create_all_settings(RemminaFileEditor *gfe)
 
 	/* The SSH tab */
 	remmina_file_editor_create_ssh_tunnel_tab(gfe, priv->plugin->ssh_setting);
+
+	/* Notes tab */
+	grid = remmina_file_editor_create_notebook_tab(gfe, NULL, _("Notes"), 1, 1);
+	remmina_file_editor_create_settings(gfe, grid, notes_settings);
 }
 
 static void remmina_file_editor_protocol_combo_on_changed(GtkComboBox *combo, RemminaFileEditor *gfe)
@@ -1153,11 +1202,22 @@ static void remmina_file_editor_update_settings(RemminaFileEditor *gfe)
 	RemminaFileEditorPriv *priv = gfe->priv;
 	GHashTableIter iter;
 	gpointer key, value;
+	GtkTextBuffer *buffer;
+	gchar *escaped, *unescaped;
+	GtkTextIter start, end;
 
 	g_hash_table_iter_init(&iter, priv->setting_widgets);
 	while (g_hash_table_iter_next(&iter, &key, &value)) {
 		if (GTK_IS_ENTRY(value)) {
 			remmina_file_set_string(priv->remmina_file, (gchar *)key, gtk_entry_get_text(GTK_ENTRY(value)));
+		} else if (GTK_IS_TEXT_VIEW(value)) {
+			buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(value));
+			gtk_text_buffer_get_start_iter (buffer, &start);
+			gtk_text_buffer_get_end_iter (buffer, &end);
+			unescaped = gtk_text_buffer_get_text(buffer, &start, &end, FALSE);
+			escaped = g_uri_escape_string (unescaped, NULL, TRUE);
+			remmina_file_set_string(priv->remmina_file, (gchar *)key, escaped);
+			g_free(escaped);
 		} else if (GTK_IS_COMBO_BOX(value)) {
 			remmina_file_set_string_ref(priv->remmina_file, (gchar *)key,
 						    remmina_public_combo_get_active_text(GTK_COMBO_BOX(value)));
