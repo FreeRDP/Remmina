@@ -8,13 +8,14 @@
 # anonymous <noreply@weblate.org>, 2019.
 # Allan Nordhøy <epost@anotheragency.no>, 2020.
 # Antenore Gatta <antenore@simbiosi.org>, 2020.
+# Matthijs van der Graaf <mvdgraaf@gmail.com>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-05-28 18:33+0200\n"
-"PO-Revision-Date: 2020-05-19 11:55+0000\n"
-"Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
+"PO-Revision-Date: 2020-06-01 21:24+0000\n"
+"Last-Translator: Matthijs van der Graaf <mvdgraaf@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/remmina/remmina/nl/"
 ">\n"
 "Language: nl\n"
@@ -1882,12 +1883,12 @@ msgid "SPICE - Simple Protocol for Independent Computing Environments"
 msgstr ""
 
 #: plugins/telepathy/telepathy_channel_handler.c:237
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%s wants to share their desktop.\n"
 "Do you accept?"
 msgstr ""
-"%s wil zijn of haar bureaublad met u delen.\n"
+"%s wil zijn bureaublad met u delen.\n"
 "Wilt u deze uitnodiging accepteren?"
 
 #: plugins/telepathy/telepathy_channel_handler.c:240
@@ -1914,9 +1915,8 @@ msgid "Enter RDP authentication credentials"
 msgstr "Voer verificatiegegevens in"
 
 #: plugins/rdp/rdp_plugin.c:641
-#, fuzzy
 msgid "Enter RDP gateway authentication credentials"
-msgstr "Voer verificatiegegevens in"
+msgstr "Voer RDP-gateway verificatiegegevens in"
 
 #: plugins/rdp/rdp_plugin.c:1532
 #, c-format
@@ -1960,6 +1960,8 @@ msgid ""
 "Could not access the RDP server \"%s\".\n"
 "Insufficient user privileges."
 msgstr ""
+"Kan geen toegang krijgen tot de RDP-server \"%s\".\n"
+"Onvoldoende gebruikersrechten."
 
 #: plugins/rdp/rdp_plugin.c:1567
 #, c-format
@@ -1976,6 +1978,8 @@ msgid ""
 "Could not access the RDP server \"%s\".\n"
 "Change user password before connecting."
 msgstr ""
+"Kan geen toegang krijgen tot de RDP-server \"%s\".\n"
+"Wijzig het wachtwoord van de gebruiker voordat u verbinding maakt."
 
 #: plugins/rdp/rdp_plugin.c:1580
 #, c-format
@@ -1993,6 +1997,8 @@ msgid ""
 "Could not connect to the RDP server \"%s\" via TLS. Check that client and "
 "server support a common TLS version."
 msgstr ""
+"Kan geen verbinding maken met de RDP-server \"%s\" via TLS. Controleer of de "
+"client en de server een gemeenschappelijke TLS-versie ondersteunen."
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:1591
@@ -2008,9 +2014,8 @@ msgid "Cannot connect to the RDP server \"%s\"."
 msgstr "Kan geen verbinding maken met de RDP-server \"%s\"."
 
 #: plugins/rdp/rdp_plugin.c:1602
-#, fuzzy
 msgid "Could not start libfreerdp-gdi."
-msgstr "Kan pthread niet initialiseren."
+msgstr "Kon libfreerdp-gdi niet starten."
 
 #: plugins/rdp/rdp_plugin.c:1605
 #, c-format
@@ -2022,7 +2027,7 @@ msgstr ""
 #: plugins/rdp/rdp_plugin.c:1612
 #, c-format
 msgid "The \"%s\" server refused the connection."
-msgstr ""
+msgstr "De server \"%s\" weigerde de verbinding."
 
 #: plugins/rdp/rdp_plugin.c:1617
 #, c-format
@@ -2030,6 +2035,8 @@ msgid ""
 "The Remote Desktop Gateway \"%s\" denied the user \"%s\\%s\" access due to "
 "policy."
 msgstr ""
+"De Remote Desktop Gateway \"%s\" weigerde de gebruiker \"%s\\%s\" door het "
+"toegangsbeleid."
 
 #: plugins/rdp/rdp_plugin.c:1627
 #, c-format
@@ -2095,26 +2102,23 @@ msgstr "Lokaal - hoge kwaliteit"
 
 #: plugins/rdp/rdp_plugin.c:1981
 msgid "Automatically negotiate"
-msgstr ""
+msgstr "Automatisch onderhandelen"
 
 #: plugins/rdp/rdp_plugin.c:1982
-#, fuzzy
 msgid "NLA protocol security"
-msgstr "Protocol"
+msgstr "NLA-protocolbeveiliging"
 
 #: plugins/rdp/rdp_plugin.c:1983
-#, fuzzy
 msgid "TLS protocol security"
-msgstr "Protocol"
+msgstr "TLS-protocolbeveiliging"
 
 #: plugins/rdp/rdp_plugin.c:1984
-#, fuzzy
 msgid "RDP protocol security"
-msgstr "Protocol"
+msgstr "RDP-protocolbeveiliging"
 
 #: plugins/rdp/rdp_plugin.c:1985
 msgid "NLA extended protocol security"
-msgstr ""
+msgstr "Uitgebreide NLA-protocolbeveiliging"
 
 #: plugins/rdp/rdp_plugin.c:1998
 msgid "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 and newer)"
@@ -2137,7 +2141,7 @@ msgstr "Geluid"
 
 #: plugins/rdp/rdp_plugin.c:2041
 msgid "Security protocol negotiation"
-msgstr ""
+msgstr "Beveiligingsprotocol onderhandeling"
 
 #: plugins/rdp/rdp_plugin.c:2042
 msgid "Gateway transport type"
@@ -2149,19 +2153,16 @@ msgid "Remote Desktop Gateway server"
 msgstr "Voorkeuren voor bureaublad op afstand"
 
 #: plugins/rdp/rdp_plugin.c:2044
-#, fuzzy
 msgid "Remote Desktop Gateway username"
-msgstr "Voorkeuren voor bureaublad op afstand"
+msgstr "Bureaublad op afstand gebruikersnaam"
 
 #: plugins/rdp/rdp_plugin.c:2045
-#, fuzzy
 msgid "Remote Desktop Gateway password"
-msgstr "Voorkeuren voor bureaublad op afstand"
+msgstr "Bureaublad op afstand wachtwoord"
 
 #: plugins/rdp/rdp_plugin.c:2046
-#, fuzzy
 msgid "Remote Desktop Gateway domain"
-msgstr "Voorkeuren voor bureaublad op afstand"
+msgstr "Bureaublad op afstand domein"
 
 #: plugins/rdp/rdp_plugin.c:2047
 msgid "Client name"
@@ -2228,7 +2229,7 @@ msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:2060
 msgid "Share printers"
-msgstr ""
+msgstr "Deel printers"
 
 #: plugins/rdp/rdp_plugin.c:2061
 msgid "Share serial ports"
