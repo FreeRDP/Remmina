@@ -1341,15 +1341,25 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 		rfi->settings->RemoteConsoleAudio = FALSE;
 	}
 
-	const gchar *opts = remmina_plugin_service->file_get_string(remminafile, "microphone");
-	if (opts != NULL && opts[0] != '\0') {
+	cs = remmina_plugin_service->file_get_string(remminafile, "microphone");
+	if (cs != NULL && cs[0] != '\0') {
 		char **p;
 		size_t count;
 
-		p = CommandLineParseCommaSeparatedValuesEx("audin", g_strdup(opts), &count);
+		p = CommandLineParseCommaSeparatedValuesEx("audin", g_strdup(cs), &count);
 
 		freerdp_client_add_dynamic_channel(rfi->settings, count, p);
 		rfi->settings->AudioCapture = TRUE;
+		g_free(p);
+	}
+
+	cs = remmina_plugin_service->file_get_string(remminafile, "usb");
+	if (cs != NULL && cs[0] != '\0') {
+		char **p;
+		size_t count;
+		p = CommandLineParseCommaSeparatedValuesEx("urbdrc", g_strdup(cs), &count);
+		freerdp_client_add_dynamic_channel(rfi->settings, count, p);
+		g_free(p);
 	}
 
 	if (remmina_plugin_service->file_get_int(remminafile, "preferipv6", FALSE) ? TRUE : FALSE)
@@ -1999,11 +2009,18 @@ static gchar clientbuild_tooltip[] =
 	   "    SCardGetTransmitCount()\n"
 	   "  • >= 7065: Windows 8 and newer: SCardGetReaderIcon(), SCardGetDeviceTypeId()");
 static gchar microphone_tooltip[] =
-	N_("Audio input redirection option examples:\n"
-	   "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
+	N_("Audio input redirection option usage:\n"
+	   "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,][channel:<channel>] Audio input (microphone)\n"
 	   "  • format:1\n"
 	   "  • sys:oss,dev:1,format:1\n"
 	   "  • sys:alsa");
+
+static gchar usb_tooltip[] =
+	N_("USB device redirection options usage:\n"
+	   "  • [dbg,][id:<vid>:<pid>#...,][addr:<bus>:<addr>#...,][auto]\n"
+	   "  • auto\n"
+	   "  • id:054c:0268#4669:6e6b,addr:04:0c");
+
 
 /* Array of RemminaProtocolSetting for basic settings.
  * Each item is composed by:
@@ -2052,6 +2069,7 @@ static const RemminaProtocolSetting remmina_rdp_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "execpath",		    N_("Startup path"),					 FALSE, NULL,		  NULL														 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "loadbalanceinfo",	    N_("Load balance info"),				 FALSE, NULL,		  NULL														 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "printer_overrides",	    N_("Override printer drivers"),			 FALSE, NULL,		  N_("\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":\"Canon MF410 Series UFR II\"") },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "usb",		    N_("USB device redirection"),			 TRUE,	NULL,		  usb_tooltip												 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "serialname",		    N_("Local serial name"),				 FALSE, NULL,		  N_("COM1, COM2, etc.")											 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "serialdriver",	    N_("Local serial driver"),				 FALSE, NULL,		  N_("Serial")													 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "serialpath",		    N_("Local serial path"),				 FALSE, NULL,		  N_("/dev/ttyS0, /dev/ttyS1, etc.")										 },
