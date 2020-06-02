@@ -59,6 +59,7 @@
 #include <freerdp/error.h>
 #include <freerdp/event.h>
 #include <winpr/memory.h>
+#include <winpr/cmdline.h>
 #include <ctype.h>
 
 #ifdef HAVE_CUPS
@@ -255,7 +256,7 @@ BOOL rf_auto_reconnect(rfContext *rfi)
 
 	/* A network disconnect was detected and we should try to reconnect */
 	REMMINA_PLUGIN_DEBUG("[%s] network disconnection detected, initiating reconnection attempt",
-					   rfi->settings->ServerHostname);
+			     rfi->settings->ServerHostname);
 
 	ui = g_new0(RemminaPluginRdpUiObject, 1);
 	ui->type = REMMINA_RDP_UI_RECONNECT_PROGRESS;
@@ -273,13 +274,13 @@ BOOL rf_auto_reconnect(rfContext *rfi)
 		/* Quit retrying if max retries has been exceeded */
 		if (rfi->reconnect_nattempt++ >= rfi->reconnect_maxattempts) {
 			REMMINA_PLUGIN_DEBUG("[%s] maximum number of reconnection attempts exceeded.",
-							   rfi->settings->ServerHostname);
+					     rfi->settings->ServerHostname);
 			break;
 		}
 
 		/* Attempt the next reconnect */
 		REMMINA_PLUGIN_DEBUG("[%s] reconnection, attempt #%d of %d",
-						   rfi->settings->ServerHostname, rfi->reconnect_nattempt, rfi->reconnect_maxattempts);
+				     rfi->settings->ServerHostname, rfi->reconnect_nattempt, rfi->reconnect_maxattempts);
 
 		ui = g_new0(RemminaPluginRdpUiObject, 1);
 		ui->type = REMMINA_RDP_UI_RECONNECT_PROGRESS;
@@ -290,7 +291,7 @@ BOOL rf_auto_reconnect(rfContext *rfi)
 		/* Reconnect the SSH tunnel, if needed */
 		if (!remmina_rdp_tunnel_init(rfi->protocol_widget)) {
 			REMMINA_PLUGIN_DEBUG("[%s] unable to recreate tunnel with remmina_rdp_tunnel_init.",
-							   rfi->settings->ServerHostname);
+					     rfi->settings->ServerHostname);
 		} else {
 			if (freerdp_reconnect(rfi->instance)) {
 				/* Reconnection is successful */
@@ -658,11 +659,10 @@ static BOOL remmina_rdp_gw_authenticate(freerdp *instance, char **username, char
 		remmina_plugin_service->file_set_string(remminafile, "gateway_domain", s_domain);
 
 		save = remmina_plugin_service->protocol_plugin_init_get_savepassword(gp);
-		if (save) {
+		if (save)
 			remmina_plugin_service->file_set_string(remminafile, "gateway_password", s_password);
-		} else {
+		else
 			remmina_plugin_service->file_set_string(remminafile, "gateway_password", NULL);
-		}
 
 		if (s_username) g_free(s_username);
 		if (s_password) g_free(s_password);
@@ -728,7 +728,6 @@ static void remmina_rdp_post_disconnect(freerdp *instance)
 					      (pChannelDisconnectedEventHandler)remmina_rdp_OnChannelDisconnectedEventHandler);
 
 	/* The remaining cleanup will be continued on main thread by complete_cleanup_on_main_thread() */
-
 }
 
 static void remmina_rdp_main_loop(RemminaProtocolWidget *gp)
@@ -794,24 +793,19 @@ int remmina_rdp_load_static_channel_addin(rdpChannels *channels, rdpSettings *se
 	TRACE_CALL(__func__);
 	PVIRTUALCHANNELENTRY entry = NULL;
 	PVIRTUALCHANNELENTRYEX entryEx = NULL;
-	entryEx = (PVIRTUALCHANNELENTRYEX)(void*)freerdp_load_channel_addin_entry(
-	    name, NULL, NULL, FREERDP_ADDIN_CHANNEL_STATIC | FREERDP_ADDIN_CHANNEL_ENTRYEX);
+	entryEx = (PVIRTUALCHANNELENTRYEX)(void *)freerdp_load_channel_addin_entry(
+		name, NULL, NULL, FREERDP_ADDIN_CHANNEL_STATIC | FREERDP_ADDIN_CHANNEL_ENTRYEX);
 
 	if (!entryEx)
 		entry = freerdp_load_channel_addin_entry(name, NULL, NULL, FREERDP_ADDIN_CHANNEL_STATIC);
 
-	if (entryEx)
-	{
-		if (freerdp_channels_client_load_ex(channels, settings, entryEx, data) == 0)
-		{
+	if (entryEx) {
+		if (freerdp_channels_client_load_ex(channels, settings, entryEx, data) == 0) {
 			fprintf(stderr, "loading channel %s\n", name);
 			return TRUE;
 		}
-	}
-	else if (entry)
-	{
-		if (freerdp_channels_client_load(channels, settings, entry, data) == 0)
-		{
+	} else if (entry) {
+		if (freerdp_channels_client_load(channels, settings, entry, data) == 0) {
 			fprintf(stderr, "loading channel %s\n", name);
 			return TRUE;
 		}
@@ -1181,7 +1175,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 				    remmina_plugin_service->file_get_string(remminafile, "gatewayaccesstoken"));
 #else
 	rfi->settings->GatewayAccessToken = g_strdup(
-			remmina_plugin_service->file_get_string(remminafile, "gatewayaccesstoken"));
+		remmina_plugin_service->file_get_string(remminafile, "gatewayaccesstoken"));
 #endif
 
 	rfi->settings->AuthenticationLevel = remmina_plugin_service->file_get_int(
@@ -1204,10 +1198,9 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 	rfi->settings->ClientHostname[FREERDP_CLIENTHOSTNAME_LEN - 1] = 0;
 
 	/* Client Build number is optional, if not specified defaults to 0, allow for comments to appear after number */
-	if ((cs=remmina_plugin_service->file_get_string(remminafile, "clientbuild"))) {
+	if ((cs = remmina_plugin_service->file_get_string(remminafile, "clientbuild")))
 		if (*cs)
 			rfi->settings->ClientBuild = strtoul(cs, NULL, 0);
-	}
 
 
 	if (remmina_plugin_service->file_get_string(remminafile, "loadbalanceinfo")) {
@@ -1282,9 +1275,10 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 		rfi->settings->TlsSecurity = False;
 		rfi->settings->NlaSecurity = False;
 		rfi->settings->ExtSecurity = True;
-	} else
+	} else {
 		/* This is "-nego" switch of xfreerdp */
 		rfi->settings->NegotiateSecurityLayer = True;
+	}
 
 
 	rfi->settings->CompressionEnabled = True;
@@ -1347,15 +1341,45 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 		rfi->settings->RemoteConsoleAudio = FALSE;
 	}
 
-	if (remmina_plugin_service->file_get_int(remminafile, "microphone", FALSE) ? TRUE : FALSE) {
-		char *p[1];
-		int count;
+	cs = remmina_plugin_service->file_get_string(remminafile, "microphone");
+	if (cs != NULL && cs[0] != '\0') {
+		char **p;
+		size_t count;
 
-		count = 1;
-		p[0] = "audin";
+		p = CommandLineParseCommaSeparatedValuesEx("audin", g_strdup(cs), &count);
 
 		freerdp_client_add_dynamic_channel(rfi->settings, count, p);
+		rfi->settings->AudioCapture = TRUE;
+		g_free(p);
 	}
+
+	cs = remmina_plugin_service->file_get_string(remminafile, "usb");
+	if (cs != NULL && cs[0] != '\0') {
+		char **p;
+		size_t count;
+		p = CommandLineParseCommaSeparatedValuesEx("urbdrc", g_strdup(cs), &count);
+		freerdp_client_add_dynamic_channel(rfi->settings, count, p);
+		g_free(p);
+	}
+
+	cs = remmina_plugin_service->file_get_string(remminafile, "vc");
+	if (cs != NULL && cs[0] != '\0') {
+		char **p;
+		size_t count;
+		p = CommandLineParseCommaSeparatedValues(g_strdup(cs), &count);
+		freerdp_client_add_static_channel(rfi->settings, count, p);
+		g_free(p);
+	}
+
+	cs = remmina_plugin_service->file_get_string(remminafile, "dvc");
+	if (cs != NULL && cs[0] != '\0') {
+		char **p;
+		size_t count;
+		p = CommandLineParseCommaSeparatedValues(g_strdup(cs), &count);
+		freerdp_client_add_dynamic_channel(rfi->settings, count, p);
+		g_free(p);
+	}
+
 
 	if (remmina_plugin_service->file_get_int(remminafile, "preferipv6", FALSE) ? TRUE : FALSE)
 		rfi->settings->PreferIPv6OverIPv4 = TRUE;
@@ -1713,7 +1737,7 @@ static gpointer remmina_rdp_main_thread(gpointer data)
 	pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, NULL);
 	CANCEL_ASYNC
 
-	gp = (RemminaProtocolWidget *)data;
+		gp = (RemminaProtocolWidget *)data;
 	rfi = GET_PLUGIN_DATA(gp);
 
 	rfi->attempt_interactive_authentication = FALSE;
@@ -1791,7 +1815,7 @@ static gboolean remmina_rdp_open_connection(RemminaProtocolWidget *gp)
 	p = profile_name;
 	strcpy(thname, "RemmRDP:");
 	nthname = strlen(thname);
-	while((c = *p) != 0 && nthname < sizeof(thname) - 1 ) {
+	while ((c = *p) != 0 && nthname < sizeof(thname) - 1) {
 		if (isalnum(c))
 			thname[nthname++] = c;
 		p++;
@@ -2000,9 +2024,24 @@ static gchar clientbuild_list[] =
 static gchar clientbuild_tooltip[] =
 	N_("Used i.a. by terminal services in smart card channel to distinguish client capabilities:\n"
 	   "  • < 4034: Windows XP base smart card functions\n"
-	   "  • 4034-7064: Windows Vista/7: SCardReadCache(), SCardWriteCache(),\n"
-	   "    SCardGetTransmitCount()\n"
-	   "  • >= 7065: Windows 8 and newer: SCardGetReaderIcon(), SCardGetDeviceTypeId()");
+	   "  • 4034-7064: Windows Vista/7: SCardReadCache(),\n"
+	   "    SCardWriteCache(), SCardGetTransmitCount()\n"
+	   "  • >= 7065: Windows 8 and newer: SCardGetReaderIcon(),\n"
+	   "    SCardGetDeviceTypeId()");
+static gchar microphone_tooltip[] =
+	N_("Audio input redirection option usage:\n"
+	   "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
+	   "    [channel:<channel>] Audio input (microphone)\n"
+	   "  • format:1\n"
+	   "  • sys:oss,dev:1,format:1\n"
+	   "  • sys:alsa");
+
+static gchar usb_tooltip[] =
+	N_("USB device redirection options usage:\n"
+	   "  • [dbg,][id:<vid>:<pid>#...,][addr:<bus>:<addr>#...,][auto]\n"
+	   "  • auto\n"
+	   "  • id:054c:0268#4669:6e6b,addr:04:0c");
+
 
 /* Array of RemminaProtocolSetting for basic settings.
  * Each item is composed by:
@@ -2015,14 +2054,14 @@ static gchar clientbuild_tooltip[] =
  */
 static const RemminaProtocolSetting remmina_rdp_basic_settings[] =
 {
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER,	    "server",	   NULL,		FALSE, NULL,		NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "username",	   N_("Username"),	FALSE, NULL,		NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD,   "password",	   N_("Password"), FALSE, NULL,		NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "domain",	   N_("Domain"),	FALSE, NULL,		NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION, "resolution",  NULL,		FALSE, NULL,		NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	    "colordepth",  N_("Colour depth"),	FALSE, colordepth_list, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_FOLDER,	    "sharefolder", N_("Share folder"),	FALSE, NULL,		NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	    NULL,	   NULL,		FALSE, NULL,		NULL }
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER,	    "server",	   NULL,	       FALSE, NULL,	       NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "username",	   N_("Username"),     FALSE, NULL,	       NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD,   "password",	   N_("Password"),     FALSE, NULL,	       NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "domain",	   N_("Domain"),       FALSE, NULL,	       NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION, "resolution",  NULL,	       FALSE, NULL,	       NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	    "colordepth",  N_("Colour depth"), FALSE, colordepth_list, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_FOLDER,	    "sharefolder", N_("Share folder"), FALSE, NULL,	       NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	    NULL,	   NULL,	       FALSE, NULL,	       NULL }
 };
 
 /* Array of RemminaProtocolSetting for advanced settings.
@@ -2036,48 +2075,51 @@ static const RemminaProtocolSetting remmina_rdp_basic_settings[] =
  */
 static const RemminaProtocolSetting remmina_rdp_advanced_settings[] =
 {
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "quality",		    N_("Quality"),					 FALSE, quality_list,  NULL													      },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "sound",		    N_("Sound"),					 FALSE, sound_list,    NULL													      },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "security",		    N_("Security protocol negotiation"),		 FALSE, security_list, NULL													      },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "gwtransp",		    N_("Gateway transport type"),			 FALSE, gwtransp_list, NULL													      },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "gateway_server",	    N_("Remote Desktop Gateway server"),		 FALSE, NULL,	       NULL													      },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "gateway_username",	    N_("Remote Desktop Gateway username"),		 FALSE, NULL,	       NULL													      },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "gateway_password",	    N_("Remote Desktop Gateway password"),		 FALSE, NULL,	       NULL													      },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "gateway_domain",	    N_("Remote Desktop Gateway domain"),		 FALSE, NULL,	       NULL													      },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "clientname",		    N_("Client name"),					 FALSE, NULL,	       NULL													      },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_COMBO,	  "clientbuild",	    N_("Client build"),					 FALSE, clientbuild_list,	       clientbuild_tooltip									      },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "exec",		    N_("Startup program"),				 FALSE, NULL,	       NULL													      },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "execpath",		    N_("Startup path"),					 FALSE, NULL,	       NULL													      },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "loadbalanceinfo",	    N_("Load balance info"),				 FALSE, NULL,	       NULL													      },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "printer_overrides",	    N_("Override printer drivers"),			 FALSE, NULL,	       N_("\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":\"Canon MF410 Series UFR II\"") },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "serialname",		    N_("Local serial name"),				 FALSE, NULL,	       N_("COM1, COM2, etc.")											      },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "serialdriver",	    N_("Local serial driver"),				 FALSE, NULL,	       N_("Serial")												      },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "serialpath",		    N_("Local serial path"),				 FALSE, NULL,	       N_("/dev/ttyS0, /dev/ttyS1, etc.")									      },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "parallelname",	    N_("Local parallel name"),				 FALSE, NULL,	       NULL													      },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "parallelpath",	    N_("Local parallel device"),			 FALSE, NULL,	       NULL													      },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "smartcardname",	    N_("Name of smart card"),				 FALSE, NULL,	       NULL													      },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "preferipv6",	    	    N_("Prefer IPv6 AAAA record over IPv4 A record"),	 TRUE,	NULL,	       NULL													      },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "shareprinter",	    N_("Share printers"),				 TRUE,	NULL,	       NULL													      },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "shareserial",	    N_("Share serial ports"),				 TRUE,	NULL,	       NULL													      },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "serialpermissive",	    N_("(SELinux) permissive mode for serial ports"),	 TRUE,	NULL,	       NULL													      },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "shareparallel",	    N_("Share parallel ports"),				 TRUE,	NULL,	       NULL													      },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "sharesmartcard",	    N_("Share a smart card"),				 TRUE,	NULL,	       NULL													      },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "microphone",		    N_("Redirect local microphone"),			 TRUE,	NULL,	       NULL													      },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "disableclipboard",	    N_("Turn off clipboard sync"),			 TRUE,	NULL,	       NULL													      },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "cert_ignore",	    N_("Ignore certificate"),				 TRUE,	NULL,	       NULL													      },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "old-license",	    N_("Use the old license workflow"),				 TRUE,	NULL,	       N_("It disables CAL and hwId is set to 0")													      },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "disablepasswordstoring", N_("Forget passwords after use"),			 TRUE,	NULL,	       NULL													      },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "console",		    N_("Attach to console (2003/2003 R2)"),		 TRUE,	NULL,	       NULL													      },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "disable_fastpath",	    N_("Turn off fast-path"),				 TRUE,	NULL,	       NULL													      },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "gateway_usage",	    N_("Server detection using Remote Desktop Gateway"), TRUE,	NULL,	       NULL													      },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "quality",		    N_("Quality"),					 FALSE, quality_list,	  NULL														 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "security",		    N_("Security protocol negotiation"),		 FALSE, security_list,	  NULL														 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "gwtransp",		    N_("Gateway transport type"),			 FALSE, gwtransp_list,	  NULL														 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "sound",		    N_("Sound"),					 FALSE, sound_list,	  NULL														 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "microphone",		    N_("Redirect local microphone"),			 TRUE,	NULL,		  microphone_tooltip												 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "gateway_server",	    N_("Remote Desktop Gateway server"),		 FALSE, NULL,		  NULL														 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "gateway_username",	    N_("Remote Desktop Gateway username"),		 FALSE, NULL,		  NULL														 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "gateway_password",	    N_("Remote Desktop Gateway password"),		 FALSE, NULL,		  NULL														 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "gateway_domain",	    N_("Remote Desktop Gateway domain"),		 FALSE, NULL,		  NULL														 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "clientname",		    N_("Client name"),					 FALSE, NULL,		  NULL														 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_COMBO,	  "clientbuild",	    N_("Client build"),					 FALSE, clientbuild_list, clientbuild_tooltip												 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "exec",		    N_("Startup program"),				 FALSE, NULL,		  NULL														 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "execpath",		    N_("Startup path"),					 FALSE, NULL,		  NULL														 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "loadbalanceinfo",	    N_("Load balance info"),				 FALSE, NULL,		  NULL														 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "printer_overrides",	    N_("Override printer drivers"),			 FALSE, NULL,		  N_("\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":\"Canon MF410 Series UFR II\"") },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "usb",		    N_("USB device redirection"),			 TRUE,	NULL,		  usb_tooltip													 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "serialname",		    N_("Local serial name"),				 FALSE, NULL,		  N_("COM1, COM2, etc.")											 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "serialdriver",	    N_("Local serial driver"),				 FALSE, NULL,		  N_("Serial")													 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "serialpath",		    N_("Local serial path"),				 FALSE, NULL,		  N_("/dev/ttyS0, /dev/ttyS1, etc.")										 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "parallelname",	    N_("Local parallel name"),				 FALSE, NULL,		  NULL														 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "parallelpath",	    N_("Local parallel device"),			 FALSE, NULL,		  NULL														 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "smartcardname",	    N_("Name of smart card"),				 FALSE, NULL,		  NULL														 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "dvc",		    N_("Dynamic virtual channel"),			 FALSE, NULL,		  N_("<channel>[,<options>]")											 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "vc",			    N_("Static virtual channel"),			 FALSE, NULL,		  N_("<channel>[,<options>]")											 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "preferipv6",		    N_("Prefer IPv6 AAAA record over IPv4 A record"),	 TRUE,	NULL,		  NULL														 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "shareprinter",	    N_("Share printers"),				 TRUE,	NULL,		  NULL														 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "shareserial",	    N_("Share serial ports"),				 TRUE,	NULL,		  NULL														 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "serialpermissive",	    N_("(SELinux) permissive mode for serial ports"),	 TRUE,	NULL,		  NULL														 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "shareparallel",	    N_("Share parallel ports"),				 TRUE,	NULL,		  NULL														 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "sharesmartcard",	    N_("Share a smart card"),				 TRUE,	NULL,		  NULL														 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "disableclipboard",	    N_("Turn off clipboard sync"),			 TRUE,	NULL,		  NULL														 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "cert_ignore",	    N_("Ignore certificate"),				 TRUE,	NULL,		  NULL														 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "old-license",	    N_("Use the old license workflow"),			 TRUE,	NULL,		  N_("It disables CAL and hwId is set to 0")									 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "disablepasswordstoring", N_("Forget passwords after use"),			 TRUE,	NULL,		  NULL														 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "console",		    N_("Attach to console (2003/2003 R2)"),		 TRUE,	NULL,		  NULL														 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "disable_fastpath",	    N_("Turn off fast-path"),				 TRUE,	NULL,		  NULL														 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "gateway_usage",	    N_("Server detection using Remote Desktop Gateway"), TRUE,	NULL,		  NULL														 },
 #if defined(PROXY_TYPE_IGNORE)
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "useproxyenv",	    N_("Use system proxy settings"),			 TRUE,	NULL,	       NULL													      },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "useproxyenv",	    N_("Use system proxy settings"),			 TRUE,	NULL,		  NULL														 },
 #endif
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "disableautoreconnect",   N_("Turn off automatic reconnection"),		 TRUE,	NULL,	       NULL													      },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "relax-order-checks",	    N_("Relax order checks"),				 TRUE,	NULL,	       NULL													      },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "glyph-cache",	    N_("Glyph cache"),					 TRUE,	NULL,	       NULL													      },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "multitransport",	    N_("Enable multitransport protocol (UDP)"),		 TRUE,	NULL,	       N_("Using the UDP protocol may improve performance")							      },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	  NULL,			    NULL,						 FALSE, NULL,	       NULL													      }
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "disableautoreconnect",   N_("Turn off automatic reconnection"),		 TRUE,	NULL,		  NULL														 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "relax-order-checks",	    N_("Relax order checks"),				 TRUE,	NULL,		  NULL														 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "glyph-cache",	    N_("Glyph cache"),					 TRUE,	NULL,		  NULL														 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "multitransport",	    N_("Enable multitransport protocol (UDP)"),		 TRUE,	NULL,		  N_("Using the UDP protocol may improve performance")								 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	  NULL,			    NULL,						 FALSE, NULL,		  NULL														 }
 };
 
 /* Array for available features.
