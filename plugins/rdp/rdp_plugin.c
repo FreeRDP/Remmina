@@ -2024,12 +2024,13 @@ static gchar clientbuild_list[] =
 static gchar clientbuild_tooltip[] =
 	N_("Used i.a. by terminal services in smart card channel to distinguish client capabilities:\n"
 	   "  • < 4034: Windows XP base smart card functions\n"
-	   "  • 4034-7064: Windows Vista/7: SCardReadCache(), SCardWriteCache(),\n"
-	   "    SCardGetTransmitCount()\n"
-	   "  • >= 7065: Windows 8 and newer: SCardGetReaderIcon(), SCardGetDeviceTypeId()");
+	   "  • 4034-7064: Windows Vista/7: SCardReadCache(),\n"
+	   "    SCardWriteCache(), SCardGetTransmitCount()\n"
+	   "  • >= 7065: Windows 8 and newer: SCardGetReaderIcon(),\n"
+	   "    SCardGetDeviceTypeId()");
 static gchar microphone_tooltip[] =
 	N_("Audio input redirection option usage:\n"
-	   "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]i\n"
+	   "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
 	   "    [channel:<channel>] Audio input (microphone)\n"
 	   "  • format:1\n"
 	   "  • sys:oss,dev:1,format:1\n"
