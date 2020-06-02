@@ -698,7 +698,6 @@ static GtkWidget *remmina_file_editor_create_check(RemminaFileEditor *gfe, GtkWi
 	GtkWidget *widget;
 	widget = gtk_check_button_new_with_label(label);
 	gtk_widget_show(widget);
-	gtk_grid_set_row_spacing(GTK_GRID(grid), 1);
 	gtk_grid_attach(GTK_GRID(grid), widget, top, row, 1, 1);
 
 	if (value)
