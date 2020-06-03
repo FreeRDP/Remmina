@@ -61,8 +61,7 @@ typedef struct _RemminaSFTPClient {
 	pthread_t		thread;
 	gint			taskid;
 	gboolean		thread_abort;
-	RemminaProtocolWidget *gp;
-
+	RemminaProtocolWidget * gp;
 } RemminaSFTPClient;
 
 typedef struct _RemminaSFTPClientClass {

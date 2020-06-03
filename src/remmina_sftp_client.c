@@ -177,7 +177,7 @@ remmina_sftp_client_thread_download_file(RemminaSFTPClient *client, RemminaSFTP 
 
 	local_file = g_fopen(local_path, "ab");
 	if (!local_file) {
-			// TRANSLATORS: The placeholder %s is a file path
+		// TRANSLATORS: The placeholder %s is a file path
 		remmina_sftp_client_thread_set_error(client, task, _("Could not create the file \"%s\"."), local_path);
 		return FALSE;
 	}
@@ -918,6 +918,10 @@ remmina_sftp_client_confirm_resume(RemminaSFTPClient *client, const gchar *path)
 	if (remmina_ftp_client_get_overwrite_status(REMMINA_FTP_CLIENT(client)))
 		return GTK_RESPONSE_ACCEPT;
 
+	/* Always reply APPLY if resume was already set */
+	if (remmina_ftp_client_get_resume_status(REMMINA_FTP_CLIENT(client)))
+		return GTK_RESPONSE_APPLY;
+
 	if (!remmina_masterthread_exec_is_main_thread()) {
 		/* Allow the execution of this function from a non main thread */
 		RemminaMTExecData *d;
@@ -991,38 +995,38 @@ remmina_sftp_client_open(RemminaSFTPClient *client, RemminaSFTP *sftp)
 }
 
 /*
-GtkWidget *
-remmina_sftp_client_new_init(RemminaSFTP *sftp)
-{
-	TRACE_CALL(__func__);
-	GdkDisplay *display;
-	GtkWidget *client;
-	GtkWidget *dialog;
-
-	display = gdk_display_get_default();
-	client = remmina_sftp_client_new();
-
-
-	SET_CURSOR(gdk_cursor_new_for_display(display, GDK_WATCH));
-	gdk_display_flush(display);
-
-	if (!remmina_ssh_init_session(REMMINA_SSH(sftp)) ||
-	    remmina_ssh_auth(REMMINA_SSH(sftp), NULL, NULL, NULL) != REMMINA_SSH_AUTH_SUCCESS ||
-	    !remmina_sftp_open(sftp)) {
-		dialog = gtk_message_dialog_new(GTK_WINDOW(gtk_widget_get_toplevel(client)),
-						GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
-						(REMMINA_SSH(sftp))->error, NULL);
-		gtk_dialog_run(GTK_DIALOG(dialog));
-		gtk_widget_destroy(dialog);
-		gtk_widget_destroy(client);
-		return NULL;
-	}
-
-	SET_CURSOR(NULL);
-
-	g_idle_add((GSourceFunc)remmina_sftp_client_refresh, client);
-	return client;
-}
-*/
+ * GtkWidget *
+ * remmina_sftp_client_new_init(RemminaSFTP *sftp)
+ * {
+ *      TRACE_CALL(__func__);
+ *      GdkDisplay *display;
+ *      GtkWidget *client;
+ *      GtkWidget *dialog;
+ *
+ *      display = gdk_display_get_default();
+ *      client = remmina_sftp_client_new();
+ *
+ *
+ *      SET_CURSOR(gdk_cursor_new_for_display(display, GDK_WATCH));
+ *      gdk_display_flush(display);
+ *
+ *      if (!remmina_ssh_init_session(REMMINA_SSH(sftp)) ||
+ *          remmina_ssh_auth(REMMINA_SSH(sftp), NULL, NULL, NULL) != REMMINA_SSH_AUTH_SUCCESS ||
+ *          !remmina_sftp_open(sftp)) {
+ *              dialog = gtk_message_dialog_new(GTK_WINDOW(gtk_widget_get_toplevel(client)),
+ *                                              GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
+ *                                              (REMMINA_SSH(sftp))->error, NULL);
+ *              gtk_dialog_run(GTK_DIALOG(dialog));
+ *              gtk_widget_destroy(dialog);
+ *              gtk_widget_destroy(client);
+ *              return NULL;
+ *      }
+ *
+ *      SET_CURSOR(NULL);
+ *
+ *      g_idle_add((GSourceFunc)remmina_sftp_client_refresh, client);
+ *      return client;
+ * }
+ */
 
 #endif
