@@ -44,6 +44,7 @@
 #include "remmina_applet_menu_item.h"
 #include "remmina_applet_menu.h"
 #include "remmina_file_manager.h"
+#include "remmina_pref.h"
 #include "remmina/remmina_trace_calls.h"
 
 G_DEFINE_TYPE( RemminaAppletMenu, remmina_applet_menu, GTK_TYPE_MENU)
@@ -248,6 +249,9 @@ void remmina_applet_menu_populate(RemminaAppletMenu *menu)
 	GDir *dir;
 	gchar *remmina_data_dir;
 	const gchar *name;
+	gint count = 0;
+
+	gboolean new_ontop = remmina_pref.applet_new_ontop;
 
 	remmina_data_dir = remmina_file_get_datadir();
 	dir = g_dir_open(remmina_data_dir, 0, NULL);
@@ -262,9 +266,19 @@ void remmina_applet_menu_populate(RemminaAppletMenu *menu)
 			if (menuitem != NULL) {
 				remmina_applet_menu_add_item(menu, REMMINA_APPLET_MENU_ITEM(menuitem));
 				gtk_widget_show(menuitem);
+				count++;
 			}
 		}
 		g_dir_close(dir);
+		if (count > 0) {
+			/* Separator */
+			menuitem = gtk_separator_menu_item_new();
+			gtk_widget_show(menuitem);
+			if (new_ontop)
+				gtk_menu_shell_prepend(GTK_MENU_SHELL(menu), menuitem);
+			else
+				gtk_menu_shell_append(GTK_MENU_SHELL(menu), menuitem);
+		}
 	}
 	g_free(remmina_data_dir);
 }
