@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-06-03 07:16+0200\n"
-"PO-Revision-Date: 2020-06-02 14:35+0000\n"
+"PO-Revision-Date: 2020-06-03 14:20+0000\n"
 "Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/remmina/remmina/"
 "it/>\n"
@@ -1330,39 +1330,31 @@ msgstr "Mappatura tastiera"
 
 #: src/remmina_file_editor.c:881
 msgid "Behavior"
-msgstr ""
+msgstr "Comportamento"
 
 #: src/remmina_file_editor.c:884
-#, fuzzy
-#| msgid "Execute a command"
 msgid "Execute a Command"
 msgstr "Esegui un comando"
 
 #: src/remmina_file_editor.c:888
-#, fuzzy
-#| msgid "Per connection"
 msgid "Before connecting"
-msgstr "Per connessione"
+msgstr "Prima di connettersi"
 
 #: src/remmina_file_editor.c:890
 msgid "command %h %u %t %U %p %g --option"
 msgstr "comando %h %u %u %t %U %p %p %g --opzione"
 
 #: src/remmina_file_editor.c:895
-#, fuzzy
-#| msgid "Per connection"
 msgid "After connecting"
-msgstr "Per connessione"
+msgstr "Dopo la connessione"
 
 #: src/remmina_file_editor.c:897
 msgid "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
 msgstr "/path/al/comando -opt1 arg %h %u %t -opt2 %U %p %p %g"
 
 #: src/remmina_file_editor.c:901
-#, fuzzy
-#| msgid "Start"
 msgid "Startup"
-msgstr "Avvia"
+msgstr "Avviare"
 
 #: src/remmina_file_editor.c:904
 msgid "Autostart this profile"
@@ -2184,15 +2176,6 @@ msgstr ""
 "recenti)"
 
 #: plugins/rdp/rdp_plugin.c:2025
-#, fuzzy
-#| msgid ""
-#| "Used i.a. by terminal services in smart card channel to distinguish "
-#| "client capabilities:\n"
-#| "  • < 4034: Windows XP base smart card functions\n"
-#| "  • 4034-7064: Windows Vista/7: SCardReadCache(), SCardWriteCache(),\n"
-#| "    SCardGetTransmitCount()\n"
-#| "  • >= 7065: Windows 8 and newer: SCardGetReaderIcon(), "
-#| "SCardGetDeviceTypeId()"
 msgid ""
 "Used i.a. by terminal services in smart card channel to distinguish client "
 "capabilities:\n"
@@ -2205,10 +2188,10 @@ msgstr ""
 "Utilizzato tra l'altro da Servizi terminal nel canale SmartCard per "
 "distinguere le funzionalità client:\n"
 "   • fino a 4034: Funzioni per le smart card di base di Windows XP\n"
-"   • da 4034 a 7064: Windows Vista/7: SCardReadCache(), SCardWriteCache(), \n"
-"     SCardGetTransmitCount()\n"
-"   • da 7065: Windows 8 e più recenti: SCardGetReaderIcon(), "
-"SCardGetDeviceTypeId()"
+"   • da 4034 a 7064: Windows Vista/7: SCardReadCache(),\n"
+"      SCardWriteCache(), SCardGetTransmitCount()\n"
+"   • da 7065: Windows 8 e più recenti: SCardGetReaderIcon(),\n"
+"     SCardGetDeviceTypeId()"
 
 #: plugins/rdp/rdp_plugin.c:2032
 msgid ""
@@ -2219,6 +2202,12 @@ msgid ""
 "  • sys:oss,dev:1,format:1\n"
 "  • sys:alsa"
 msgstr ""
+"Utilizzo dell'opzione di reindirizzamento dell'ingresso audio:\n"
+"  • [sys: <sys>,] [dev: <dev>,] [format: <format>,] [rate: <rate>,]\n"
+"    [channel: <channel>] Ingresso audio (microfono)\n"
+"  • format: 1\n"
+"  • sys: oss, dev: 1, format: 1\n"
+"  • sys: alsa"
 
 #: plugins/rdp/rdp_plugin.c:2040
 msgid ""
@@ -2227,6 +2216,10 @@ msgid ""
 "  • auto\n"
 "  • id:054c:0268#4669:6e6b,addr:04:0c"
 msgstr ""
+"Utilizzo delle opzioni di reindirizzamento dei dispositivi USB:\n"
+"  • [dbg,][id:<vid>:<pid>,...,][addr:<bus>:<addr>,...,][auto]\n"
+"  • auto\n"
+"  • id:054c:0268-4669:6e6b,addr:04:0c"
 
 #: plugins/rdp/rdp_plugin.c:2079
 msgid "Security protocol negotiation"
@@ -2284,10 +2277,8 @@ msgstr ""
 "Nome completo del driver di stampa, ad esempio Samsung CLX-3300 Series PS"
 
 #: plugins/rdp/rdp_plugin.c:2093
-#, fuzzy
-#| msgid "Select USB devices for redirection"
 msgid "USB device redirection"
-msgstr "Seleziona i dispositivi USB per il reindirizzamento"
+msgstr "Reindirizzamento dei dispositivi USB"
 
 #: plugins/rdp/rdp_plugin.c:2094
 msgid "Local serial name"
@@ -2327,15 +2318,15 @@ msgstr "Nome della smart card"
 
 #: plugins/rdp/rdp_plugin.c:2100
 msgid "Dynamic virtual channel"
-msgstr ""
+msgstr "Canale virtuale dinamico"
 
 #: plugins/rdp/rdp_plugin.c:2100 plugins/rdp/rdp_plugin.c:2101
 msgid "<channel>[,<options>]"
-msgstr ""
+msgstr "<canale>[,<opzioni>]"
 
 #: plugins/rdp/rdp_plugin.c:2101
 msgid "Static virtual channel"
-msgstr ""
+msgstr "Canale virtuale statico"
 
 #: plugins/rdp/rdp_plugin.c:2102
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
@@ -3209,24 +3200,6 @@ msgid "Terminal"
 msgstr "Terminale"
 
 #: data/ui/remmina_news.glade:75
-#, fuzzy
-#| msgid ""
-#| "<big><b>The news are turned off</b></big>\n"
-#| "\n"
-#| "<span>\n"
-#| "Turning on news means the program connects to a Remmina server to "
-#| "download the release notes.\n"
-#| "</span>\n"
-#| "\n"
-#| "<span>\n"
-#| "Version checking can only be activated at compile time.\n"
-#| "</span>\n"
-#| "\n"
-#| "<span>\n"
-#| "<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title="
-#| "\"<i>Remmina</i> release notes\"><i>Visit the website to read the release "
-#| "notes</i></a>.\n"
-#| "</span>"
 msgid ""
 "<big><b>The news are turned off</b></big>\n"
 "\n"
@@ -3246,21 +3219,21 @@ msgid ""
 msgstr ""
 "<big> <b> Le notizie sono disattivate </b> </big>\n"
 "\n"
-"<Span>\n"
+"<span>\n"
 "Attivare le notizie significa che il programma si connette a un server "
 "Remmina per scaricare le note di rilascio.\n"
-"</ Span>\n"
+"</span>\n"
 "\n"
-"<Span>\n"
+"<span>\n"
 "Il controllo della versione può essere attivato solo al momento della "
 "compilazione.\n"
-"</ Span>\n"
+"</span>\n"
 "\n"
-"<Span>\n"
-"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"<i> Remmina </"
-"i> note di rilascio \"> <i> Visita il sito Web per leggere le note di "
-"rilascio </ i> </a>.\n"
-"</ Span>"
+"<span>\n"
+"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
+"release notes\"> <i> Visita il sito Web per leggere le note di rilascio </i> "
+"</a>.\n"
+"</span>"
 
 #: data/ui/remmina_news.glade:142 data/ui/remmina_news.glade:195
 msgid "Send anonymous statistics"
