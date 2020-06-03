@@ -6,13 +6,14 @@
 # hopyres <hopyres@gmail.com>, 2020.
 # Andrei Stepanov <adem4ik@gmail.com>, 2020.
 # Konstantin <konstantin.pastbin@gmail.com>, 2020.
+# Lesya Novaselskaya <mesnevi@airpost.net>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-06-03 20:09+0000\n"
-"PO-Revision-Date: 2020-06-03 20:05+0000\n"
-"Last-Translator: Konstantin <konstantin.pastbin@gmail.com>\n"
+"PO-Revision-Date: 2020-06-03 21:57+0000\n"
+"Last-Translator: Lesya Novaselskaya <mesnevi@airpost.net>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/remmina/remmina/"
 "ru/>\n"
 "Language: ru\n"
@@ -655,7 +656,7 @@ msgstr "Клиент удалённого рабочего стола Remmina"
 #, c-format
 msgid ""
 "Are you sure you want to close %i active connections in the current window?"
-msgstr "Вы действительно хотите закрыть %i активных подключений в этом окне?"
+msgstr "Хотите закрыть %i активных подключений в этом окне?"
 
 #: src/rcw.c:1372
 msgid "Viewport fullscreen mode"
@@ -1330,8 +1331,6 @@ msgid "Behavior"
 msgstr "Поведение"
 
 #: src/remmina_file_editor.c:884
-#, fuzzy
-#| msgid "Execute a command"
 msgid "Execute a Command"
 msgstr "Выполнить команду"
 
@@ -2066,6 +2065,12 @@ msgid ""
 "  • sys:oss,dev:1,format:1\n"
 "  • sys:alsa"
 msgstr ""
+"Параметры перенаправления аудиовхода:\n"
+"  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
+"    [channel:<channel>] Аудиовход (микрофон)\n"
+"  • format:1\n"
+"  • sys:oss,dev:1,format:1\n"
+"  • sys:alsa"
 
 #: plugins/rdp/rdp_plugin.c:2040
 msgid ""
@@ -2074,6 +2079,10 @@ msgid ""
 "  • auto\n"
 "  • id:054c:0268#4669:6e6b,addr:04:0c"
 msgstr ""
+"Параметры перенаправления USB устройств:\n"
+"  • [dbg,][id:<vid>:<pid>#...,][addr:<bus>:<addr>#...,][auto]\n"
+"  • auto\n"
+"  • id:054c:0268#4669:6e6b,addr:04:0c"
 
 #: plugins/rdp/rdp_plugin.c:2079
 msgid "Security protocol negotiation"
@@ -2176,7 +2185,6 @@ msgid "Dynamic virtual channel"
 msgstr "Динамический виртуальный канал"
 
 #: plugins/rdp/rdp_plugin.c:2100 plugins/rdp/rdp_plugin.c:2101
-#, fuzzy
 msgid "<channel>[,<options>]"
 msgstr "<channel>[,<options>]"
 
