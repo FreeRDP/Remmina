@@ -15,9 +15,9 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-06-03 07:16+0200\n"
-"PO-Revision-Date: 2020-06-02 14:35+0000\n"
-"Last-Translator: YAMADA Shinichirou <yamada_strong_yamada_nice_64bit@yahoo."
-"co.jp>\n"
+"PO-Revision-Date: 2020-06-03 20:05+0000\n"
+"Last-Translator: YAMADA Shinichirou <yamada_strong_yamada_nice_64bit@yahoo.co"
+".jp>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/remmina/remmina/"
 "ja/>\n"
 "Language: ja\n"
@@ -1335,39 +1335,31 @@ msgstr "キーボードマッピング"
 
 #: src/remmina_file_editor.c:881
 msgid "Behavior"
-msgstr ""
+msgstr "挙動"
 
 #: src/remmina_file_editor.c:884
-#, fuzzy
-#| msgid "Execute a command"
 msgid "Execute a Command"
 msgstr "コマンドの実行"
 
 #: src/remmina_file_editor.c:888
-#, fuzzy
-#| msgid "Per connection"
 msgid "Before connecting"
-msgstr "接続ごと"
+msgstr "接続前"
 
 #: src/remmina_file_editor.c:890
 msgid "command %h %u %t %U %p %g --option"
 msgstr "コマンド %h %u %t %U %p %g --オプション"
 
 #: src/remmina_file_editor.c:895
-#, fuzzy
-#| msgid "Per connection"
 msgid "After connecting"
-msgstr "接続ごと"
+msgstr "接続後"
 
 #: src/remmina_file_editor.c:897
 msgid "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
 msgstr "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
 
 #: src/remmina_file_editor.c:901
-#, fuzzy
-#| msgid "Start"
 msgid "Startup"
-msgstr "開始"
+msgstr "起動時"
 
 #: src/remmina_file_editor.c:904
 msgid "Autostart this profile"
@@ -2203,6 +2195,12 @@ msgid ""
 "  • sys:oss,dev:1,format:1\n"
 "  • sys:alsa"
 msgstr ""
+"音声入力のリダイレクトオプションの使用方法:\n"
+"  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
+"    [channel:<channel>] 音声入力 (マイク)\n"
+"  • format:1\n"
+"  • sys:oss,dev:1,format:1\n"
+"  • sys:alsa"
 
 #: plugins/rdp/rdp_plugin.c:2040
 msgid ""
@@ -2211,6 +2209,10 @@ msgid ""
 "  • auto\n"
 "  • id:054c:0268#4669:6e6b,addr:04:0c"
 msgstr ""
+"USB デバイスのリダイレクトオプションの使用方法:\n"
+"  • [dbg,][id:<vid>:<pid>#...,][addr:<bus>:<addr>#...,][auto]\n"
+"  • auto\n"
+"  • id:054c:0268#4669:6e6b,addr:04:0c"
 
 #: plugins/rdp/rdp_plugin.c:2079
 msgid "Security protocol negotiation"
@@ -2269,10 +2271,8 @@ msgstr ""
 "\"Canon MF410 Series UFR II\""
 
 #: plugins/rdp/rdp_plugin.c:2093
-#, fuzzy
-#| msgid "Select USB devices for redirection"
 msgid "USB device redirection"
-msgstr "リダイレクトする USB デバイスを選択"
+msgstr "USB デバイスのリダイレクト"
 
 #: plugins/rdp/rdp_plugin.c:2094
 msgid "Local serial name"
@@ -2312,15 +2312,15 @@ msgstr "スマートカードの名前"
 
 #: plugins/rdp/rdp_plugin.c:2100
 msgid "Dynamic virtual channel"
-msgstr ""
+msgstr "動的仮想チャンネル (DVC)"
 
 #: plugins/rdp/rdp_plugin.c:2100 plugins/rdp/rdp_plugin.c:2101
 msgid "<channel>[,<options>]"
-msgstr ""
+msgstr "<チャンネル>[,<オプション>]"
 
 #: plugins/rdp/rdp_plugin.c:2101
 msgid "Static virtual channel"
-msgstr ""
+msgstr "静的仮想チャンネル (SVC)"
 
 #: plugins/rdp/rdp_plugin.c:2102
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
@@ -3183,24 +3183,6 @@ msgid "Terminal"
 msgstr "端末"
 
 #: data/ui/remmina_news.glade:75
-#, fuzzy
-#| msgid ""
-#| "<big><b>The news are turned off</b></big>\n"
-#| "\n"
-#| "<span>\n"
-#| "Turning on news means the program connects to a Remmina server to "
-#| "download the release notes.\n"
-#| "</span>\n"
-#| "\n"
-#| "<span>\n"
-#| "Version checking can only be activated at compile time.\n"
-#| "</span>\n"
-#| "\n"
-#| "<span>\n"
-#| "<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title="
-#| "\"<i>Remmina</i> release notes\"><i>Visit the website to read the release "
-#| "notes</i></a>.\n"
-#| "</span>"
 msgid ""
 "<big><b>The news are turned off</b></big>\n"
 "\n"
@@ -3221,8 +3203,7 @@ msgstr ""
 "<big><b>ニュースはオフになっています</b></big>\n"
 "\n"
 "<span>\n"
-"ニュースをオンにすると、リリースノートをダウンロードするために Remmina のサー"
-"バーに接続します。\n"
+"ニュースをオンにすると、リリースノートをダウンロードするために Remmina のサーバーに接続します。\n"
 "</span>\n"
 "\n"
 "<span>\n"
@@ -3230,8 +3211,8 @@ msgstr ""
 "</span>\n"
 "\n"
 "<span>\n"
-"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"<i>Remmina</"
-"i> のリリースノート\"><i>ウェブサイトでリリースノートを読む</i></a>.\n"
+"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
+"のリリースノート\"><i>ウェブサイトでリリースノートを読む</i></a>\n"
 "</span>"
 
 #: data/ui/remmina_news.glade:142 data/ui/remmina_news.glade:195
