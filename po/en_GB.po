@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2020-06-02 16:24+0200\n"
+"POT-Creation-Date: 2020-06-03 07:16+0200\n"
 "PO-Revision-Date: 2020-06-02 14:35+0000\n"
 "Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
 "Language-Team: English (United Kingdom) <https://hosted.weblate.org/projects/"
@@ -136,7 +136,7 @@ msgstr "Size"
 msgid "User"
 msgstr "User"
 
-#: src/remmina_ftp_client.c:930 src/remmina_file_editor.c:1541
+#: src/remmina_ftp_client.c:930 src/remmina_file_editor.c:1592
 #: data/ui/remmina_main.glade:557 data/ui/remmina_mpc.glade:115
 msgid "Group"
 msgstr "Group"
@@ -242,7 +242,7 @@ msgstr ""
 msgid "Import"
 msgstr "Import"
 
-#: src/remmina_main.c:979 src/remmina_file_editor.c:1399
+#: src/remmina_main.c:979 src/remmina_file_editor.c:1450
 msgid "_Save"
 msgstr "_Save"
 
@@ -275,7 +275,7 @@ msgid "No"
 msgstr "No"
 
 #: src/remmina_message_panel.c:330 src/remmina_sftp_plugin.c:323
-#: src/remmina_ssh_plugin.c:1058 src/remmina_file_editor.c:957
+#: src/remmina_ssh_plugin.c:1058 src/remmina_file_editor.c:1003
 #: plugins/nx/nx_plugin.c:730 plugins/vnc/vnc_plugin.c:1858
 #: plugins/vnc/vnc_plugin.c:1878 plugins/www/www_plugin.c:871
 #: plugins/rdp/rdp_plugin.c:2058 data/ui/remmina_mpc.glade:144
@@ -292,13 +292,13 @@ msgid "Save password"
 msgstr "Save password"
 
 #: src/remmina_message_panel.c:452 src/remmina_message_panel.c:621
-#: src/remmina_plugin_manager.c:447 src/remmina_file_editor.c:162
+#: src/remmina_plugin_manager.c:447 src/remmina_file_editor.c:164
 msgid "_OK"
 msgstr "_OK"
 
 #: src/remmina_message_panel.c:457 src/remmina_message_panel.c:629
-#: src/remmina_sftp_client.c:943 src/remmina_file_editor.c:161
-#: src/remmina_file_editor.c:370 src/remmina_file_editor.c:1391
+#: src/remmina_sftp_client.c:943 src/remmina_file_editor.c:163
+#: src/remmina_file_editor.c:372 src/remmina_file_editor.c:1442
 #: plugins/nx/nx_session_manager.c:156
 #: plugins/spice/spice_plugin_file_transfer.c:84
 #: data/ui/remmina_key_chooser.glade:8 data/ui/remmina_key_chooser.glade:9
@@ -349,7 +349,7 @@ msgid_plural "%d passwords changed."
 msgstr[0] "%d password changed."
 msgstr[1] "%d passwords changed."
 
-#: src/remmina_plugin_manager.c:70 src/remmina_file_editor.c:1559
+#: src/remmina_plugin_manager.c:70 src/remmina_file_editor.c:1610
 msgid "Protocol"
 msgstr "Protocol"
 
@@ -377,7 +377,7 @@ msgstr "Secret"
 msgid "Plugins"
 msgstr "Plugins"
 
-#: src/remmina_plugin_manager.c:465 src/remmina_file_editor.c:1516
+#: src/remmina_plugin_manager.c:465 src/remmina_file_editor.c:1567
 #: plugins/nx/nx_session_manager.c:204 data/ui/remmina_main.glade:535
 msgid "Name"
 msgstr "Name"
@@ -444,7 +444,7 @@ msgstr "Connecting to %s via SSH…"
 
 #: src/remmina_protocol_widget.c:1424 src/remmina_protocol_widget.c:1443
 #: src/remmina_sftp_plugin.c:291 src/remmina_sftp_plugin.c:324
-#: src/remmina_ssh_plugin.c:957 src/remmina_file_editor.c:966
+#: src/remmina_ssh_plugin.c:957 src/remmina_file_editor.c:1012
 #: plugins/www/www_plugin.c:872 plugins/rdp/rdp_plugin.c:2059
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_unlock.glade:116
 #: data/ui/remmina_preferences.glade:1577
@@ -500,8 +500,8 @@ msgstr "Listening on port %i for an incoming %s connection…"
 msgid "Could not authenticate, attempting reconnection…"
 msgstr "Could not authenticate, attempting reconnection…"
 
-#: src/remmina_protocol_widget.c:1753 src/remmina_file_editor.c:408
-#: src/remmina_file_editor.c:922 data/ui/remmina_main.glade:571
+#: src/remmina_protocol_widget.c:1753 src/remmina_file_editor.c:410
+#: src/remmina_file_editor.c:968 data/ui/remmina_main.glade:571
 msgid "Server"
 msgstr "Server"
 
@@ -590,7 +590,7 @@ msgid "The following file already exists in the target folder:"
 msgstr "The following file already exists in the target folder:"
 
 #: src/remmina_sftp_plugin.c:292 src/remmina_ssh_plugin.c:958
-#: src/remmina_file_editor.c:362 src/remmina_file_editor.c:369
+#: src/remmina_file_editor.c:364 src/remmina_file_editor.c:371
 msgid "SSH identity file"
 msgstr "SSH identity file"
 
@@ -599,7 +599,7 @@ msgid "SSH agent"
 msgstr "SSH agent"
 
 #: src/remmina_sftp_plugin.c:294 src/remmina_ssh_plugin.c:960
-#: src/remmina_file_editor.c:979
+#: src/remmina_file_editor.c:1025
 msgid "Public key (automatic)"
 msgstr "Public key (automatic)"
 
@@ -625,7 +625,7 @@ msgid "Identity file"
 msgstr "Identity file"
 
 #: src/remmina_sftp_plugin.c:327 src/remmina_ssh_plugin.c:1062
-#: src/remmina_file_editor.c:988
+#: src/remmina_file_editor.c:1034
 msgid "Password to unlock private key"
 msgstr "Password to unlock private key"
 
@@ -1199,11 +1199,11 @@ msgstr "Modify connection profile (requires --set-option)"
 msgid "Set one or more profile settings, to be used with --update-profile"
 msgstr "Set one or more profile settings, to be used with --update-profile"
 
-#: src/remmina_pref_dialog.c:83 src/remmina_file_editor.c:497
+#: src/remmina_pref_dialog.c:83 src/remmina_file_editor.c:499
 msgid "Resolutions"
 msgstr "Resolutions"
 
-#: src/remmina_pref_dialog.c:83 src/remmina_file_editor.c:497
+#: src/remmina_pref_dialog.c:83 src/remmina_file_editor.c:499
 msgid "Configure the available resolutions"
 msgstr "Configure the available resolutions"
 
@@ -1280,139 +1280,155 @@ msgstr ""
 "• [server]:port\n"
 "• username@server:port (SSH protocol only)</big></tt>"
 
-#: src/remmina_file_editor.c:159
+#: src/remmina_file_editor.c:161
 msgid "Choose a Remote Desktop Server"
 msgstr "Choose a Remote Desktop Server"
 
-#: src/remmina_file_editor.c:371
+#: src/remmina_file_editor.c:373
 msgid "_Open"
 msgstr "_Open"
 
-#: src/remmina_file_editor.c:432
+#: src/remmina_file_editor.c:434
 #, c-format
 msgid "Browse the network to find a %s server"
 msgstr "Browse the network to find a %s server"
 
-#: src/remmina_file_editor.c:533
+#: src/remmina_file_editor.c:535
 msgid "Resolution"
 msgstr "Resolution"
 
-#: src/remmina_file_editor.c:540
+#: src/remmina_file_editor.c:542
 msgid "Use initial window size"
 msgstr "Use initial window size"
 
-#: src/remmina_file_editor.c:544
+#: src/remmina_file_editor.c:546
 msgid "Use client resolution"
 msgstr "Use client resolution"
 
-#: src/remmina_file_editor.c:555 src/remmina_file_editor.c:903
+#: src/remmina_file_editor.c:557 src/remmina_file_editor.c:949
 msgid "Custom"
 msgstr "Custom"
 
-#: src/remmina_file_editor.c:771
+#: src/remmina_file_editor.c:781
 msgid "Keyboard mapping"
 msgstr "Keyboard mapping"
 
-#: src/remmina_file_editor.c:878
+#: src/remmina_file_editor.c:881
+msgid "Behavior"
+msgstr ""
+
+#: src/remmina_file_editor.c:884
+#, fuzzy
+#| msgid "Execute a command"
+msgid "Execute a Command"
+msgstr "Execute a command"
+
+#: src/remmina_file_editor.c:888
+#, fuzzy
+#| msgid "Per connection"
+msgid "Before connecting"
+msgstr "Per connection"
+
+#: src/remmina_file_editor.c:890
+msgid "command %h %u %t %U %p %g --option"
+msgstr "command %h %u %t %U %p %g --option"
+
+#: src/remmina_file_editor.c:895
+#, fuzzy
+#| msgid "Per connection"
+msgid "After connecting"
+msgstr "Per connection"
+
+#: src/remmina_file_editor.c:897
+msgid "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
+msgstr "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
+
+#: src/remmina_file_editor.c:901
+#, fuzzy
+#| msgid "Start"
+msgid "Startup"
+msgstr "Start"
+
+#: src/remmina_file_editor.c:904
+msgid "Autostart this profile"
+msgstr "Autostart this profile"
+
+#: src/remmina_file_editor.c:924
 msgid "SSH Tunnel"
 msgstr "SSH Tunnel"
 
-#: src/remmina_file_editor.c:879
+#: src/remmina_file_editor.c:925
 msgid "Enable SSH tunnel"
 msgstr "Enable SSH tunnel"
 
-#: src/remmina_file_editor.c:886
+#: src/remmina_file_editor.c:932
 msgid "Tunnel via loopback address"
 msgstr "Tunnel via loopback address"
 
-#: src/remmina_file_editor.c:895
+#: src/remmina_file_editor.c:941
 #, c-format
 msgid "Same server at port %i"
 msgstr "Same server at port %i"
 
-#: src/remmina_file_editor.c:941 plugins/rdp/rdp_plugin.c:2090
+#: src/remmina_file_editor.c:987 plugins/rdp/rdp_plugin.c:2090
 msgid "Startup path"
 msgstr "Startup path"
 
-#: src/remmina_file_editor.c:950
+#: src/remmina_file_editor.c:996
 msgid "SSH Authentication"
 msgstr "SSH Authentication"
 
-#: src/remmina_file_editor.c:960
+#: src/remmina_file_editor.c:1006
 msgid "SSH agent (automatic)"
 msgstr "SSH agent (automatic)"
 
-#: src/remmina_file_editor.c:1056
-msgid "Autostart this profile"
-msgstr "Autostart this profile"
-
-#: src/remmina_file_editor.c:1070
+#: src/remmina_file_editor.c:1110
 msgid "Basic"
 msgstr "Basic"
 
-#: src/remmina_file_editor.c:1076
+#: src/remmina_file_editor.c:1116
 msgid "Advanced"
 msgstr "Advanced"
 
-#: src/remmina_file_editor.c:1081
-msgid "Autostart"
-msgstr "Autostart"
-
-#: src/remmina_file_editor.c:1088
+#: src/remmina_file_editor.c:1127
 msgid "Notes"
 msgstr "Notes"
 
-#: src/remmina_file_editor.c:1319
+#: src/remmina_file_editor.c:1370
 msgid "Default settings saved."
 msgstr "Default settings saved."
 
-#: src/remmina_file_editor.c:1389
+#: src/remmina_file_editor.c:1440
 msgid "Remote Desktop Preference"
 msgstr "Remote Desktop Preference"
 
-#: src/remmina_file_editor.c:1395
+#: src/remmina_file_editor.c:1446
 msgid "Save as Default"
 msgstr "Save as Default"
 
-#: src/remmina_file_editor.c:1396
+#: src/remmina_file_editor.c:1447
 msgid "Use the current settings as the default for all new connection profiles"
 msgstr ""
 "Use the current settings as the default for all new connection profiles"
 
-#: src/remmina_file_editor.c:1404 data/ui/remmina_main.glade:256
+#: src/remmina_file_editor.c:1455 data/ui/remmina_main.glade:256
 msgid "Connect"
 msgstr "Connect"
 
-#: src/remmina_file_editor.c:1407
+#: src/remmina_file_editor.c:1458
 msgid "_Save and Connect"
 msgstr "_Save and Connect"
 
-#: src/remmina_file_editor.c:1530
+#: src/remmina_file_editor.c:1581
 msgid "Quick Connect"
 msgstr "Quick Connect"
 
-#: src/remmina_file_editor.c:1554
+#: src/remmina_file_editor.c:1605
 #, c-format
 msgid "Use '%s' as subgroup delimiter"
 msgstr "Use '%s' as subgroup delimiter"
 
-#: src/remmina_file_editor.c:1573
-msgid "Pre-command"
-msgstr "Pre-command"
-
-#: src/remmina_file_editor.c:1587
-msgid "command %h %u %t %U %p %g --option"
-msgstr "command %h %u %t %U %p %g --option"
-
-#: src/remmina_file_editor.c:1591
-msgid "Post-command"
-msgstr "Post-command"
-
-#: src/remmina_file_editor.c:1605
-msgid "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
-msgstr "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
-
-#: src/remmina_file_editor.c:1656 src/remmina_file_editor.c:1674
+#: src/remmina_file_editor.c:1671 src/remmina_file_editor.c:1689
 #, c-format
 msgid "Could not find the file \"%s\"."
 msgstr "Could not find the file ‘%s’."
@@ -3168,6 +3184,24 @@ msgid "Terminal"
 msgstr "Terminal"
 
 #: data/ui/remmina_news.glade:75
+#, fuzzy
+#| msgid ""
+#| "<big><b>The news are turned off</b></big>\n"
+#| "\n"
+#| "<span>\n"
+#| "Turning on news means the program connects to a Remmina server to "
+#| "download the release notes.\n"
+#| "</span>\n"
+#| "\n"
+#| "<span>\n"
+#| "Version checking can only be activated at compile time.\n"
+#| "</span>\n"
+#| "\n"
+#| "<span>\n"
+#| "<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title="
+#| "\"<i>Remmina</i> release notes\"><i>Visit the website to read the release "
+#| "notes</i></a>.\n"
+#| "</span>"
 msgid ""
 "<big><b>The news are turned off</b></big>\n"
 "\n"
@@ -3181,8 +3215,8 @@ msgid ""
 "</span>\n"
 "\n"
 "<span>\n"
-"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"<i>Remmina</"
-"i> release notes\"><i>Visit the website to read the release notes</i></a>.\n"
+"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
+"release notes\"><i>Visit the website to read the release notes</i></a>.\n"
 "</span>"
 msgstr ""
 "<big><b>The news are turned off</b></big>\n"
@@ -3238,6 +3272,15 @@ msgstr ""
 #: data/ui/remmina_news.glade:277
 msgid "<big>Contribute</big>"
 msgstr "<big>Contribute</big>"
+
+#~ msgid "Autostart"
+#~ msgstr "Autostart"
+
+#~ msgid "Pre-command"
+#~ msgstr "Pre-command"
+
+#~ msgid "Post-command"
+#~ msgstr "Post-command"
 
 #~ msgid ""
 #~ "Send anonymous statistics for use on https://remmina.org/remmina-stats"

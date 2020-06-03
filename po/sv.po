@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2020-06-02 16:24+0200\n"
+"POT-Creation-Date: 2020-06-03 07:16+0200\n"
 "PO-Revision-Date: 2020-05-21 21:33+0000\n"
 "Last-Translator: theschitz <alex@theschitz.se>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -148,7 +148,7 @@ msgstr "Storlek"
 msgid "User"
 msgstr "Användare"
 
-#: src/remmina_ftp_client.c:930 src/remmina_file_editor.c:1541
+#: src/remmina_ftp_client.c:930 src/remmina_file_editor.c:1592
 #: data/ui/remmina_main.glade:557 data/ui/remmina_mpc.glade:115
 msgid "Group"
 msgstr "Grupp"
@@ -255,7 +255,7 @@ msgstr ""
 msgid "Import"
 msgstr "Importera"
 
-#: src/remmina_main.c:979 src/remmina_file_editor.c:1399
+#: src/remmina_main.c:979 src/remmina_file_editor.c:1450
 msgid "_Save"
 msgstr "_Spara"
 
@@ -288,7 +288,7 @@ msgid "No"
 msgstr "Nej"
 
 #: src/remmina_message_panel.c:330 src/remmina_sftp_plugin.c:323
-#: src/remmina_ssh_plugin.c:1058 src/remmina_file_editor.c:957
+#: src/remmina_ssh_plugin.c:1058 src/remmina_file_editor.c:1003
 #: plugins/nx/nx_plugin.c:730 plugins/vnc/vnc_plugin.c:1858
 #: plugins/vnc/vnc_plugin.c:1878 plugins/www/www_plugin.c:871
 #: plugins/rdp/rdp_plugin.c:2058 data/ui/remmina_mpc.glade:144
@@ -305,13 +305,13 @@ msgid "Save password"
 msgstr "Spara lösenord"
 
 #: src/remmina_message_panel.c:452 src/remmina_message_panel.c:621
-#: src/remmina_plugin_manager.c:447 src/remmina_file_editor.c:162
+#: src/remmina_plugin_manager.c:447 src/remmina_file_editor.c:164
 msgid "_OK"
 msgstr "_OK"
 
 #: src/remmina_message_panel.c:457 src/remmina_message_panel.c:629
-#: src/remmina_sftp_client.c:943 src/remmina_file_editor.c:161
-#: src/remmina_file_editor.c:370 src/remmina_file_editor.c:1391
+#: src/remmina_sftp_client.c:943 src/remmina_file_editor.c:163
+#: src/remmina_file_editor.c:372 src/remmina_file_editor.c:1442
 #: plugins/nx/nx_session_manager.c:156
 #: plugins/spice/spice_plugin_file_transfer.c:84
 #: data/ui/remmina_key_chooser.glade:8 data/ui/remmina_key_chooser.glade:9
@@ -364,7 +364,7 @@ msgid_plural "%d passwords changed."
 msgstr[0] "%d lösenord ändrat."
 msgstr[1] "%d lösenord ändrades."
 
-#: src/remmina_plugin_manager.c:70 src/remmina_file_editor.c:1559
+#: src/remmina_plugin_manager.c:70 src/remmina_file_editor.c:1610
 msgid "Protocol"
 msgstr "Protokoll"
 
@@ -392,7 +392,7 @@ msgstr "Hemlighet"
 msgid "Plugins"
 msgstr "Tilläggsprogram"
 
-#: src/remmina_plugin_manager.c:465 src/remmina_file_editor.c:1516
+#: src/remmina_plugin_manager.c:465 src/remmina_file_editor.c:1567
 #: plugins/nx/nx_session_manager.c:204 data/ui/remmina_main.glade:535
 msgid "Name"
 msgstr "Namn"
@@ -460,7 +460,7 @@ msgstr "Ansluter till %s via SSH…"
 
 #: src/remmina_protocol_widget.c:1424 src/remmina_protocol_widget.c:1443
 #: src/remmina_sftp_plugin.c:291 src/remmina_sftp_plugin.c:324
-#: src/remmina_ssh_plugin.c:957 src/remmina_file_editor.c:966
+#: src/remmina_ssh_plugin.c:957 src/remmina_file_editor.c:1012
 #: plugins/www/www_plugin.c:872 plugins/rdp/rdp_plugin.c:2059
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_unlock.glade:116
 #: data/ui/remmina_preferences.glade:1577
@@ -519,8 +519,8 @@ msgstr "Lyssnar på port %i efter en inkommande %s-anslutning…"
 msgid "Could not authenticate, attempting reconnection…"
 msgstr "Autentisering misslyckades. Försöker återansluta…"
 
-#: src/remmina_protocol_widget.c:1753 src/remmina_file_editor.c:408
-#: src/remmina_file_editor.c:922 data/ui/remmina_main.glade:571
+#: src/remmina_protocol_widget.c:1753 src/remmina_file_editor.c:410
+#: src/remmina_file_editor.c:968 data/ui/remmina_main.glade:571
 msgid "Server"
 msgstr "Server"
 
@@ -609,7 +609,7 @@ msgid "The following file already exists in the target folder:"
 msgstr "Följande fil finns redan i målmappan:"
 
 #: src/remmina_sftp_plugin.c:292 src/remmina_ssh_plugin.c:958
-#: src/remmina_file_editor.c:362 src/remmina_file_editor.c:369
+#: src/remmina_file_editor.c:364 src/remmina_file_editor.c:371
 #, fuzzy
 msgid "SSH identity file"
 msgstr "SSH-identitetsfil"
@@ -619,7 +619,7 @@ msgid "SSH agent"
 msgstr "SSH-agent"
 
 #: src/remmina_sftp_plugin.c:294 src/remmina_ssh_plugin.c:960
-#: src/remmina_file_editor.c:979
+#: src/remmina_file_editor.c:1025
 msgid "Public key (automatic)"
 msgstr "Publik nyckel (automatisk)"
 
@@ -645,7 +645,7 @@ msgid "Identity file"
 msgstr "Identitetsfil"
 
 #: src/remmina_sftp_plugin.c:327 src/remmina_ssh_plugin.c:1062
-#: src/remmina_file_editor.c:988
+#: src/remmina_file_editor.c:1034
 msgid "Password to unlock private key"
 msgstr "Lösenord för att låsa upp privat nyckel"
 
@@ -1260,11 +1260,11 @@ msgstr "Ändra anslutningsprofil, (kräver --set-option)"
 msgid "Set one or more profile settings, to be used with --update-profile"
 msgstr "Sett en eller flera profilinställningar, for bruk med --update-profile"
 
-#: src/remmina_pref_dialog.c:83 src/remmina_file_editor.c:497
+#: src/remmina_pref_dialog.c:83 src/remmina_file_editor.c:499
 msgid "Resolutions"
 msgstr "Upplösningar"
 
-#: src/remmina_pref_dialog.c:83 src/remmina_file_editor.c:497
+#: src/remmina_pref_dialog.c:83 src/remmina_file_editor.c:499
 msgid "Configure the available resolutions"
 msgstr "Konfigurera tillgängliga upplösningar"
 
@@ -1341,147 +1341,158 @@ msgstr ""
 "* [server]:port\n"
 "* användarnavn@server:port (endast SSH-protokoll)</big></tt>"
 
-#: src/remmina_file_editor.c:159
+#: src/remmina_file_editor.c:161
 msgid "Choose a Remote Desktop Server"
 msgstr "Välj en server för fjärrskrivbordet"
 
-#: src/remmina_file_editor.c:371
+#: src/remmina_file_editor.c:373
 msgid "_Open"
 msgstr "_Öppna"
 
-#: src/remmina_file_editor.c:432
+#: src/remmina_file_editor.c:434
 #, c-format
 msgid "Browse the network to find a %s server"
 msgstr "Bläddra i nätverket för att hitta en %s-server"
 
-#: src/remmina_file_editor.c:533
+#: src/remmina_file_editor.c:535
 msgid "Resolution"
 msgstr "Upplösning"
 
-#: src/remmina_file_editor.c:540
+#: src/remmina_file_editor.c:542
 #, fuzzy
 msgid "Use initial window size"
 msgstr "Använd initial fönsterstorlek"
 
-#: src/remmina_file_editor.c:544
+#: src/remmina_file_editor.c:546
 msgid "Use client resolution"
 msgstr "Använd klientens upplösning"
 
-#: src/remmina_file_editor.c:555 src/remmina_file_editor.c:903
+#: src/remmina_file_editor.c:557 src/remmina_file_editor.c:949
 msgid "Custom"
 msgstr "Anpassad"
 
-#: src/remmina_file_editor.c:771
+#: src/remmina_file_editor.c:781
 msgid "Keyboard mapping"
 msgstr "Tangentbordslayout"
 
-#: src/remmina_file_editor.c:878
-msgid "SSH Tunnel"
-msgstr "SSH-tunnel"
+#: src/remmina_file_editor.c:881
+msgid "Behavior"
+msgstr ""
 
-#: src/remmina_file_editor.c:879
-msgid "Enable SSH tunnel"
-msgstr "Aktivera SSH-tunnel"
+#: src/remmina_file_editor.c:884
+#, fuzzy
+msgid "Execute a Command"
+msgstr "Kör en kommando"
 
-#: src/remmina_file_editor.c:886
-msgid "Tunnel via loopback address"
-msgstr "Tunnel via loopback-adress"
+#: src/remmina_file_editor.c:888
+#, fuzzy
+msgid "Before connecting"
+msgstr "Öppna tillkoppling"
+
+#: src/remmina_file_editor.c:890
+#, fuzzy
+msgid "command %h %u %t %U %p %g --option"
+msgstr "kommando %h %u %t %U %p %g --val"
 
 #: src/remmina_file_editor.c:895
-#, c-format
-msgid "Same server at port %i"
-msgstr "Samma server på port %i"
-
-#: src/remmina_file_editor.c:941 plugins/rdp/rdp_plugin.c:2090
-msgid "Startup path"
-msgstr "Uppstartssökväg"
-
-#: src/remmina_file_editor.c:950
-msgid "SSH Authentication"
-msgstr "SSH-autentisering"
-
-#: src/remmina_file_editor.c:960
 #, fuzzy
-msgid "SSH agent (automatic)"
-msgstr "SSH-agent (automatisk)"
+msgid "After connecting"
+msgstr "Öppna tillkoppling"
 
-#: src/remmina_file_editor.c:1056
+#: src/remmina_file_editor.c:897
+#, fuzzy
+msgid "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
+msgstr "/genväg/till/kommando -opt1 arg %h %u %t -opt2 %U %p %g"
+
+#: src/remmina_file_editor.c:901
+#, fuzzy
+#| msgid "Start"
+msgid "Startup"
+msgstr "Starta"
+
+#: src/remmina_file_editor.c:904
 #, fuzzy
 msgid "Autostart this profile"
 msgstr "Aktivera autostart för denna profilen"
 
-#: src/remmina_file_editor.c:1070
+#: src/remmina_file_editor.c:924
+msgid "SSH Tunnel"
+msgstr "SSH-tunnel"
+
+#: src/remmina_file_editor.c:925
+msgid "Enable SSH tunnel"
+msgstr "Aktivera SSH-tunnel"
+
+#: src/remmina_file_editor.c:932
+msgid "Tunnel via loopback address"
+msgstr "Tunnel via loopback-adress"
+
+#: src/remmina_file_editor.c:941
+#, c-format
+msgid "Same server at port %i"
+msgstr "Samma server på port %i"
+
+#: src/remmina_file_editor.c:987 plugins/rdp/rdp_plugin.c:2090
+msgid "Startup path"
+msgstr "Uppstartssökväg"
+
+#: src/remmina_file_editor.c:996
+msgid "SSH Authentication"
+msgstr "SSH-autentisering"
+
+#: src/remmina_file_editor.c:1006
+#, fuzzy
+msgid "SSH agent (automatic)"
+msgstr "SSH-agent (automatisk)"
+
+#: src/remmina_file_editor.c:1110
 msgid "Basic"
 msgstr "Grundläggande"
 
-#: src/remmina_file_editor.c:1076
+#: src/remmina_file_editor.c:1116
 msgid "Advanced"
 msgstr "Avancerad"
 
-#: src/remmina_file_editor.c:1081
-msgid "Autostart"
-msgstr "Automatiskt start"
-
-#: src/remmina_file_editor.c:1088
+#: src/remmina_file_editor.c:1127
 msgid "Notes"
 msgstr ""
 
-#: src/remmina_file_editor.c:1319
+#: src/remmina_file_editor.c:1370
 msgid "Default settings saved."
 msgstr "Standardinställningar sparade."
 
-#: src/remmina_file_editor.c:1389
+#: src/remmina_file_editor.c:1440
 msgid "Remote Desktop Preference"
 msgstr "Inställningar för fjärrskrivbord"
 
-#: src/remmina_file_editor.c:1395
+#: src/remmina_file_editor.c:1446
 msgid "Save as Default"
 msgstr "Spara som förval"
 
-#: src/remmina_file_editor.c:1396
+#: src/remmina_file_editor.c:1447
 #, fuzzy
 msgid "Use the current settings as the default for all new connection profiles"
 msgstr ""
 "Använd nuvarande inställningar som förval for alla nya anslutningsprofiler"
 
-#: src/remmina_file_editor.c:1404 data/ui/remmina_main.glade:256
+#: src/remmina_file_editor.c:1455 data/ui/remmina_main.glade:256
 msgid "Connect"
 msgstr "Ansluta"
 
-#: src/remmina_file_editor.c:1407
+#: src/remmina_file_editor.c:1458
 msgid "_Save and Connect"
 msgstr "_Spara och anslut"
 
-#: src/remmina_file_editor.c:1530
+#: src/remmina_file_editor.c:1581
 msgid "Quick Connect"
 msgstr "Snabbanslutning"
 
-#: src/remmina_file_editor.c:1554
+#: src/remmina_file_editor.c:1605
 #, c-format
 msgid "Use '%s' as subgroup delimiter"
 msgstr "Använd '%s' som avgränsare för undergrupper"
 
-#: src/remmina_file_editor.c:1573
-#, fuzzy
-msgid "Pre-command"
-msgstr "Förhandskommando"
-
-#: src/remmina_file_editor.c:1587
-#, fuzzy
-msgid "command %h %u %t %U %p %g --option"
-msgstr "kommando %h %u %t %U %p %g --val"
-
-#: src/remmina_file_editor.c:1591
-#, fuzzy
-msgid "Post-command"
-msgstr "Efterföljande kommando"
-
-#: src/remmina_file_editor.c:1605
-#, fuzzy
-msgid "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
-msgstr "/genväg/till/kommando -opt1 arg %h %u %t -opt2 %U %p %g"
-
-#: src/remmina_file_editor.c:1656 src/remmina_file_editor.c:1674
+#: src/remmina_file_editor.c:1671 src/remmina_file_editor.c:1689
 #, fuzzy, c-format
 msgid "Could not find the file \"%s\"."
 msgstr "Fann inte filen \"%s\"."
@@ -3472,8 +3483,8 @@ msgid ""
 "</span>\n"
 "\n"
 "<span>\n"
-"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"<i>Remmina</"
-"i> release notes\"><i>Visit the website to read the release notes</i></a>.\n"
+"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
+"release notes\"><i>Visit the website to read the release notes</i></a>.\n"
 "</span>"
 msgstr ""
 
@@ -3521,6 +3532,17 @@ msgstr ""
 #, fuzzy
 msgid "<big>Contribute</big>"
 msgstr "<big>Bidra</big>"
+
+#~ msgid "Autostart"
+#~ msgstr "Automatiskt start"
+
+#, fuzzy
+#~ msgid "Pre-command"
+#~ msgstr "Förhandskommando"
+
+#, fuzzy
+#~ msgid "Post-command"
+#~ msgstr "Efterföljande kommando"
 
 #, fuzzy
 #~ msgid ""
