@@ -144,5 +144,8 @@ void remmina_ftp_task_free(RemminaFTPTask *task);
 /* Get/Set Set overwrite_all status */
 void remmina_ftp_client_set_overwrite_status(RemminaFTPClient *client, gboolean status);
 gboolean remmina_ftp_client_get_overwrite_status(RemminaFTPClient *client);
+/* Get/Set Set resume_all status */
+void remmina_ftp_client_set_resume_status(RemminaFTPClient *client, gboolean status);
+gboolean remmina_ftp_client_get_resume_status(RemminaFTPClient *client);
 
 G_END_DECLS

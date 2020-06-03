@@ -48,17 +48,19 @@
 #include "remmina_protocol_widget.h"
 #include "remmina_sftp_plugin.h"
 
-#define REMMINA_PLUGIN_SFTP_FEATURE_PREF_SHOW_HIDDEN   1
-#define REMMINA_PLUGIN_SFTP_FEATURE_PREF_OVERWRITE_ALL 2
+#define   REMMINA_PLUGIN_SFTP_FEATURE_PREF_SHOW_HIDDEN     1
+#define   REMMINA_PLUGIN_SFTP_FEATURE_PREF_OVERWRITE_ALL   2
+#define   REMMINA_PLUGIN_SFTP_FEATURE_PREF_RESUME_ALL      3
 
 #define REMMINA_PLUGIN_SFTP_FEATURE_PREF_OVERWRITE_ALL_KEY "overwrite_all"
+#define REMMINA_PLUGIN_SFTP_FEATURE_PREF_RESUME_ALL_KEY    "resume_all"
 
 #define GET_PLUGIN_DATA(gp) (RemminaPluginSftpData *)g_object_get_data(G_OBJECT(gp), "plugin-data");
 
 typedef struct _RemminaPluginSftpData {
 	RemminaSFTPClient *	client;
-	pthread_t	thread;
-	RemminaSFTP *	sftp;
+	pthread_t		thread;
+	RemminaSFTP *		sftp;
 } RemminaPluginSftpData;
 
 static RemminaPluginService *remmina_plugin_service = NULL;
@@ -96,7 +98,7 @@ remmina_plugin_sftp_main_thread(gpointer data)
 	pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, NULL);
 	CANCEL_ASYNC
 
-	gpdata = GET_PLUGIN_DATA(gp);
+		gpdata = GET_PLUGIN_DATA(gp);
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
 	/* we may need to open a new tunnel too */
@@ -197,6 +199,9 @@ remmina_plugin_sftp_init(RemminaProtocolWidget *gp)
 	remmina_ftp_client_set_overwrite_status(REMMINA_FTP_CLIENT(gpdata->client),
 						remmina_plugin_service->file_get_int(remminafile,
 										     REMMINA_PLUGIN_SFTP_FEATURE_PREF_OVERWRITE_ALL_KEY, FALSE));
+	remmina_ftp_client_set_resume_status(REMMINA_FTP_CLIENT(gpdata->client),
+						remmina_plugin_service->file_get_int(remminafile,
+										     REMMINA_PLUGIN_SFTP_FEATURE_PREF_RESUME_ALL_KEY, FALSE));
 
 	remmina_plugin_service->protocol_plugin_register_hostkey(gp, GTK_WIDGET(gpdata->client));
 
@@ -282,6 +287,10 @@ remmina_plugin_sftp_call_feature(RemminaProtocolWidget *gp, const RemminaProtoco
 		remmina_ftp_client_set_overwrite_status(REMMINA_FTP_CLIENT(gpdata->client),
 							remmina_plugin_service->file_get_int(remminafile,
 											     REMMINA_PLUGIN_SFTP_FEATURE_PREF_OVERWRITE_ALL_KEY, FALSE));
+	case REMMINA_PLUGIN_SFTP_FEATURE_PREF_RESUME_ALL:
+		remmina_ftp_client_set_resume_status(REMMINA_FTP_CLIENT(gpdata->client),
+							remmina_plugin_service->file_get_int(remminafile,
+											     REMMINA_PLUGIN_SFTP_FEATURE_PREF_RESUME_ALL_KEY, FALSE));
 		return;
 	}
 }
@@ -301,11 +310,13 @@ static gpointer ssh_auth[] =
 static const RemminaProtocolFeature remmina_plugin_sftp_features[] =
 {
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_PREF, REMMINA_PLUGIN_SFTP_FEATURE_PREF_SHOW_HIDDEN,   GINT_TO_POINTER(REMMINA_PROTOCOL_FEATURE_PREF_CHECK), "showhidden",
-	  N_("Show Hidden Files") },
+		N_("Show Hidden Files") },
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_PREF, REMMINA_PLUGIN_SFTP_FEATURE_PREF_OVERWRITE_ALL, GINT_TO_POINTER(REMMINA_PROTOCOL_FEATURE_PREF_CHECK),
-	  REMMINA_PLUGIN_SFTP_FEATURE_PREF_OVERWRITE_ALL_KEY, N_("Overwrite all") },
+		REMMINA_PLUGIN_SFTP_FEATURE_PREF_OVERWRITE_ALL_KEY, N_("Overwrite all files") },
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_PREF, REMMINA_PLUGIN_SFTP_FEATURE_PREF_RESUME_ALL, GINT_TO_POINTER(REMMINA_PROTOCOL_FEATURE_PREF_CHECK),
+		REMMINA_PLUGIN_SFTP_FEATURE_PREF_RESUME_ALL_KEY, N_("Resume all files transfer") },
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_END,  0,					      NULL,						    NULL,
-	  NULL }
+		NULL }
 };
 
 /* Array of RemminaProtocolSetting for basic settings.
@@ -319,14 +330,14 @@ static const RemminaProtocolFeature remmina_plugin_sftp_features[] =
  */
 static const RemminaProtocolSetting remmina_sftp_basic_settings[] =
 {
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER,	  "server",	   		NULL,			  FALSE, "_sftp-ssh._tcp", NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "username",  		N_("Username"),		  FALSE, NULL,		   NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "password",		N_("Password"),	  FALSE, NULL,		   NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "ssh_auth",	    N_("Authentication type"),	  FALSE, ssh_auth,	   NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_FILE,	  "ssh_privatekey", N_("Identity file"),	  FALSE, NULL,		   NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "ssh_passphrase", N_("Password to unlock private key"), FALSE, NULL,		   NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "ssh_proxycommand",	  N_("SSH Proxy Command"),		      FALSE, NULL,		   NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	  NULL,		    NULL,			  FALSE, NULL,		   NULL }
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER,	  "server",	      NULL,				    FALSE, "_sftp-ssh._tcp", NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "username",	      N_("Username"),			    FALSE, NULL,	     NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "password",	      N_("Password"),			    FALSE, NULL,	     NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "ssh_auth",	      N_("Authentication type"),	    FALSE, ssh_auth,	     NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_FILE,	  "ssh_privatekey",   N_("Identity file"),		    FALSE, NULL,	     NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "ssh_passphrase",   N_("Password to unlock private key"), FALSE, NULL,	     NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "ssh_proxycommand", N_("SSH Proxy Command"),		    FALSE, NULL,	     NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	  NULL,		      NULL,				    FALSE, NULL,	     NULL }
 };
 
 /* Protocol plugin definition and features */
