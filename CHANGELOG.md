@@ -1,15 +1,29 @@
 # Changelog
 
-## 1.4.5
-[full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.4...1.4.5)
+## v1.4.6
+[full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.5...v1.4.6)
+
+* Hotkey language fixed [!2064](https://gitlab.com/Remmina/Remmina/merge_requests/2064) *@kingu*
+* TRANSLATION file for l10n [!2065](https://gitlab.com/Remmina/Remmina/merge_requests/2065) *@kingu*
+* Fetch news from remmina.org optional [!2066](https://gitlab.com/Remmina/Remmina/merge_requests/2066) *@antenore*
+* allow saving notes in connection profile [!2067](https://gitlab.com/Remmina/Remmina/merge_requests/2067) *@juarez.rudsatz*
+* RDP: Improving hardware option parsing [!2068](https://gitlab.com/Remmina/Remmina/merge_requests/2068) *@antenore*
+* Rearranged widgets in a new Behavior tab [!2069](https://gitlab.com/Remmina/Remmina/merge_requests/2069) *@juarez.rudsatz*
+* Add separator only when there are saved profiles. Fixes #1914 [!2070](https://gitlab.com/Remmina/Remmina/merge_requests/2070) *@antenore*
+* Implementing resume all for FTP file transfer, should fix #2210 [!2072](https://gitlab.com/Remmina/Remmina/merge_requests/2072) *@antenore*
+* Spelling: Overwrite all file transfers [!2073](https://gitlab.com/Remmina/Remmina/merge_requests/2073) *@kingu*
+* Spelling: Options for redirection x2, -: [!2074](https://gitlab.com/Remmina/Remmina/merge_requests/2074) *@kingu*
+
+## v1.4.5
+[full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.4...v1.4.5)
 
 * SSH plugin - adding font resize - closes #2201 [!2059](https://gitlab.com/Remmina/Remmina/merge_requests/2059) *@antenore*
 * Fixing keyboard grabbing issues with screenshot tool [!2062](https://gitlab.com/Remmina/Remmina/merge_requests/2062) *@giox069*
 * Refactoring remmina_debug to avoid memory leaks and overhead, should fix #2202 [!2061](https://gitlab.com/Remmina/Remmina/merge_requests/2061) *@antenore*
 * Using directory only to expose artifacts [!2060](https://gitlab.com/Remmina/Remmina/merge_requests/2060) *@antenore*
 
-## 1.4.4
-[full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.3...1.4.4)
+## v1.4.4
+[full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.3...v1.4.4)
 
 * RDP Plugin - Adding UDP support, implements #2153 [!2038](https://gitlab.com/Remmina/Remmina/merge_requests/2038) *@antenore*
 * Adding proxy and local storage support [!2039](https://gitlab.com/Remmina/Remmina/merge_requests/2039) *@antenore*
@@ -31,8 +45,8 @@
 * Cleaning up glib deprecations [!2058](https://gitlab.com/Remmina/Remmina/merge_requests/2058) *@antenore*
 
 
-## 1.4.3
-[full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.2...1.4.3)
+## v1.4.3
+[full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.2...v1.4.3)
 
 * KB grabbing fixes (mostly for Wayland) [!2036](https://gitlab.com/Remmina/Remmina/merge_requests/2036) *@giox069*
 * Adding Freerdp 3 compile option and using FreeRDP tag 2.0.0 as default [!2034](https://gitlab.com/Remmina/Remmina/merge_requests/2034) *@antenore*
@@ -58,8 +72,8 @@
 * Translated using Weblate (German) by Johannes Weberhofer <jweberhofer@weberhofer.at>
 * Translated using Weblate (Czech) by Pavel Borecki <pavel.borecki@gmail.com>
 
-## 1.4.2
-[full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.1...1.4.2)
+## v1.4.2
+[full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.1...v1.4.2)
 
 * Spelling: Doublespace removed [!2011](https://gitlab.com/Remmina/Remmina/merge_requests/2011) *@kingu*
 * Adds ClientBuild settings to RDP plugin to specify client version build number [!2012](https://gitlab.com/Remmina/Remmina/merge_requests/2012) *@mskalski*
@@ -83,14 +97,14 @@
 * THANKS reworked [!2031](https://gitlab.com/Remmina/Remmina/merge_requests/2031) *@kingu*
 * Merge weblate translations in master [!2032](https://gitlab.com/Remmina/Remmina/merge_requests/2032) *@antenore*
 
-## 1.4.1
-[full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.0...1.4.1)
+## v1.4.1
+[full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.0...v1.4.1)
 
 * SSH fixes, should fix #2094 [!2009](https://gitlab.com/Remmina/Remmina/merge_requests/2009) *@giox069*
 * Update remmina_filezilla_sftp.sh [!2010](https://gitlab.com/Remmina/Remmina/merge_requests/2010) *@greenfoxua*
 
-## 1.4.0
-[full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.3.10...1.4.0)
+## v1.4.0
+[full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.3.10...v1.4.0)
 
 * Rdp clipboard fixes [!2007](https://gitlab.com/Remmina/Remmina/merge_requests/2007) *@giox069*
 * Ssh authentication fixes [!2006](https://gitlab.com/Remmina/Remmina/merge_requests/2006) *@giox069*
