@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-06-04 04:54+0000\n"
-"PO-Revision-Date: 2020-06-03 05:03+0000\n"
+"PO-Revision-Date: 2020-06-04 11:38+0000\n"
 "Last-Translator: Johannes Weberhofer <jweberhofer@weberhofer.at>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/remmina/remmina/"
 "de/>\n"
@@ -984,16 +984,12 @@ msgid "Show Hidden Files"
 msgstr "Versteckte Dateien anzeigen"
 
 #: src/remmina_sftp_plugin.c:315
-#, fuzzy
-#| msgid "Overwrite all"
 msgid "Overwrite all files"
-msgstr "Alles überschreiben"
+msgstr "Alle Dateien überschreiben"
 
 #: src/remmina_sftp_plugin.c:317
-#, fuzzy
-#| msgid "File Transfers"
 msgid "Resume all file transfers"
-msgstr "Dateiübertragung"
+msgstr "Alle Dateiübertragungen wiederaufnehmen"
 
 #: src/remmina_sftp_plugin.c:348
 msgid "SFTP - Secure File Transfer"
@@ -1328,37 +1324,29 @@ msgstr "Tastaturlayout"
 
 #: src/remmina_file_editor.c:881
 msgid "Behavior"
-msgstr ""
+msgstr "Verhalten"
 
 #: src/remmina_file_editor.c:884
-#, fuzzy
-#| msgid "Execute a command"
 msgid "Execute a Command"
 msgstr "Einen Befehl ausführen"
 
 #: src/remmina_file_editor.c:888
-#, fuzzy
-#| msgid "Per connection"
 msgid "Before connecting"
-msgstr "Nach Verbindung"
+msgstr "Vor Verbindungsaufbau"
 
 #: src/remmina_file_editor.c:890
 msgid "command %h %u %t %U %p %g --option"
 msgstr "Befehl %h %u %t %U %p %g --option"
 
 #: src/remmina_file_editor.c:895
-#, fuzzy
-#| msgid "Per connection"
 msgid "After connecting"
-msgstr "Nach Verbindung"
+msgstr "Nach Verbindungsaufbau"
 
 #: src/remmina_file_editor.c:897
 msgid "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
 msgstr "/pfad/zu/befehl -opt1 arg %h %u %t -opt2 %U %p %g"
 
 #: src/remmina_file_editor.c:901
-#, fuzzy
-#| msgid "Start"
 msgid "Startup"
 msgstr "Starten"
 
@@ -2062,20 +2050,12 @@ msgstr ""
 "Wird von Terminal-Services im Smartcard-Channel verwendet, um Fähigkeiten "
 "des Clients zu erkennen.\n"
 "  • < 4034: Windows XP basierte Smartcard Funktionen\n"
-"  • 4034-7064: Windows Vista/7: SCardReadCache(), SCardWriteCache(), "
-"SCardGetTransmitCount()\n"
-"  • >= 7065: Windows 8 und neuer: SCardGetReaderIcon(), "
-"SCardGetDeviceTypeId()"
+"  • 4034-7064: Windows Vista/7: SCardReadCache(),\n"
+"    SCardWriteCache(), SCardGetTransmitCount()\n"
+"  • >= 7065: Windows 8 und neuer: SCardGetReaderIcon(),\n"
+"     SCardGetDeviceTypeId()"
 
 #: plugins/rdp/rdp_plugin.c:2032
-#, fuzzy
-#| msgid ""
-#| "Audio input redirection option usage:\n"
-#| "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
-#| "    [channel:<channel>] Audio input (microphone)\n"
-#| "  • format:1\n"
-#| "  • sys:oss,dev:1,format:1\n"
-#| "  • sys:alsa"
 msgid ""
 "Options for redirection of audio input:\n"
 "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
@@ -2084,7 +2064,7 @@ msgid ""
 "  • sys:oss,dev:1,format:1\n"
 "  • sys:alsa"
 msgstr ""
-"Verwendung der Optionen des Audio-Eingangs:\n"
+"Optionen zur Umleitung des Audio-Eingangs:\n"
 "  • [sys:<sys>,][dev:<dev>,][format:<Format>,][rate:<Rate>,]\n"
 "    [channel:<channel>] Audio Eingang(Mikrofon)\n"
 "  • Format:1\n"
@@ -2092,19 +2072,13 @@ msgstr ""
 "  • sys:alsa"
 
 #: plugins/rdp/rdp_plugin.c:2040
-#, fuzzy
-#| msgid ""
-#| "USB device redirection options usage:\n"
-#| "  • [dbg,][id:<vid>:<pid>#...,][addr:<bus>:<addr>#...,][auto]\n"
-#| "  • auto\n"
-#| "  • id:054c:0268#4669:6e6b,addr:04:0c"
 msgid ""
 "Options for redirection of USB device:\n"
 "  • [dbg,][id:<vid>:<pid>#…,][addr:<bus>:<addr>#…,][auto]\n"
 "  • auto\n"
 "  • id:054c:0268#4669:6e6b,addr:04:0c"
 msgstr ""
-"Verwendung der Optionen des USB-Umleitung:\n"
+"Optionen zur USB Umleitung:\n"
 "  • [dbg,][id:<vid>:<pid>#...,][addr:<bus>:<addr>#...,][auto]\n"
 "  • auto\n"
 "  • id:054c:0268#4669:6e6b,addr:04:0c"
@@ -2634,24 +2608,6 @@ msgid "Please wait…"
 msgstr "Bitte warten Sie…"
 
 #: data/ui/remmina_news.glade:75
-#, fuzzy
-#| msgid ""
-#| "<big><b>The news are turned off</b></big>\n"
-#| "\n"
-#| "<span>\n"
-#| "Turning on news means the program connects to a Remmina server to "
-#| "download the release notes.\n"
-#| "</span>\n"
-#| "\n"
-#| "<span>\n"
-#| "Version checking can only be activated at compile time.\n"
-#| "</span>\n"
-#| "\n"
-#| "<span>\n"
-#| "<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title="
-#| "\"<i>Remmina</i> release notes\"><i>Visit the website to read the release "
-#| "notes</i></a>.\n"
-#| "</span>"
 msgid ""
 "<big><b>The news are turned off</b></big>\n"
 "\n"
@@ -2681,8 +2637,8 @@ msgstr ""
 "</span>\n"
 "\n"
 "<span>\n"
-"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"<i>Remmina</"
-"i> rVersionsinformationen\"><i>Besuchen Sie die Webseite um die "
+"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
+"Versionsinformationen\"><i>Besuchen Sie die Webseite um die "
 "Versionsinformationen zu lesen</i></a>.\n"
 "</span>"
 
