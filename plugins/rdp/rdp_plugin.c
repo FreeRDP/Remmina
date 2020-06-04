@@ -2029,7 +2029,7 @@ static gchar clientbuild_tooltip[] =
 	   "  • >= 7065: Windows 8 and newer: SCardGetReaderIcon(),\n"
 	   "    SCardGetDeviceTypeId()");
 static gchar microphone_tooltip[] =
-	N_("Audio input redirection option usage:\n"
+	N_("Options for redirection of audio input:\n"
 	   "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
 	   "    [channel:<channel>] Audio input (microphone)\n"
 	   "  • format:1\n"
@@ -2037,8 +2037,8 @@ static gchar microphone_tooltip[] =
 	   "  • sys:alsa");
 
 static gchar usb_tooltip[] =
-	N_("USB device redirection options usage:\n"
-	   "  • [dbg,][id:<vid>:<pid>#...,][addr:<bus>:<addr>#...,][auto]\n"
+	N_("Options for redirection of USB device:\n"
+	   "  • [dbg,][id:<vid>:<pid>#…,][addr:<bus>:<addr>#…,][auto]\n"
 	   "  • auto\n"
 	   "  • id:054c:0268#4669:6e6b,addr:04:0c");
 
@@ -2262,7 +2262,7 @@ G_MODULE_EXPORT gboolean remmina_plugin_entry(RemminaPluginService *service)
 	}
 
 	snprintf(remmina_plugin_rdp_version, sizeof(remmina_plugin_rdp_version),
-		 "RDP plugin: %s (Git %s), Compiled with libfreerdp: %s (%s), Running with libfreerdp: %s (rev %s), H.264: %s",
+		 "RDP plugin: %s (Git %s), Compiled with libfreerdp %s (%s), Running with libfreerdp %s (rev %s), H.264 %s",
 		 VERSION, REMMINA_GIT_REVISION,
 		 FREERDP_VERSION_FULL, GIT_REVISION,
 		 freerdp_get_version_string(),
