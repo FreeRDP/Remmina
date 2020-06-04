@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-06-04 04:54+0000\n"
-"PO-Revision-Date: 2020-06-03 05:03+0000\n"
+"PO-Revision-Date: 2020-06-04 20:59+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/remmina/remmina/cs/"
 ">\n"
@@ -988,16 +988,12 @@ msgid "Show Hidden Files"
 msgstr "Zobrazit skryté soubory"
 
 #: src/remmina_sftp_plugin.c:315
-#, fuzzy
-#| msgid "Overwrite all"
 msgid "Overwrite all files"
-msgstr "Přepsat vše"
+msgstr "Přepsat všechny soubory"
 
 #: src/remmina_sftp_plugin.c:317
-#, fuzzy
-#| msgid "File Transfers"
 msgid "Resume all file transfers"
-msgstr "Přenos souborů"
+msgstr "Znovu spustit všechny přenosy souborů"
 
 #: src/remmina_sftp_plugin.c:348
 msgid "SFTP - Secure File Transfer"
@@ -1327,39 +1323,31 @@ msgstr "Mapování klávesnice"
 
 #: src/remmina_file_editor.c:881
 msgid "Behavior"
-msgstr ""
+msgstr "Chování"
 
 #: src/remmina_file_editor.c:884
-#, fuzzy
-#| msgid "Execute a command"
 msgid "Execute a Command"
 msgstr "Vykonat příkaz"
 
 #: src/remmina_file_editor.c:888
-#, fuzzy
-#| msgid "Per connection"
 msgid "Before connecting"
-msgstr "Podle spojení"
+msgstr "Před připojením"
 
 #: src/remmina_file_editor.c:890
 msgid "command %h %u %t %U %p %g --option"
 msgstr "příkaz %h %u %t %U %p %g --volba"
 
 #: src/remmina_file_editor.c:895
-#, fuzzy
-#| msgid "Per connection"
 msgid "After connecting"
-msgstr "Podle spojení"
+msgstr "Po připojení"
 
 #: src/remmina_file_editor.c:897
 msgid "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
 msgstr "/popis/umisteni/prikaz -volba1 argument %h %u %t -volba2 %U %p %g"
 
 #: src/remmina_file_editor.c:901
-#, fuzzy
-#| msgid "Start"
 msgid "Startup"
-msgstr "Zahájit"
+msgstr "Spuštění"
 
 #: src/remmina_file_editor.c:904
 msgid "Autostart this profile"
@@ -2070,6 +2058,12 @@ msgid ""
 "  • sys:oss,dev:1,format:1\n"
 "  • sys:alsa"
 msgstr ""
+"Volby pro přesměrování zvukového výstupu:\n"
+"  • [sys:<sys>,][dev:<dev>,][format:<formát>,][rate:<bit_rychlost>,]\n"
+"    [channel:<kanál>] Audio input (microphone)\n"
+"  • format:1\n"
+"  • sys:oss,dev:1,format:1\n"
+"  • sys:alsa"
 
 #: plugins/rdp/rdp_plugin.c:2040
 msgid ""
@@ -2078,6 +2072,10 @@ msgid ""
 "  • auto\n"
 "  • id:054c:0268#4669:6e6b,addr:04:0c"
 msgstr ""
+"Volby pro přesměrování USB zařízení:\n"
+"  • [dbg,][id:<vid>:<pid>#…,][addr:<bus>:<addr>#…,][auto]\n"
+"  • auto\n"
+"  • id:054c:0268#4669:6e6b,addr:04:0c"
 
 #: plugins/rdp/rdp_plugin.c:2079
 msgid "Security protocol negotiation"
@@ -2136,10 +2134,8 @@ msgstr ""
 "\"Canon MF410 Series UFR II\""
 
 #: plugins/rdp/rdp_plugin.c:2093
-#, fuzzy
-#| msgid "Select USB devices for redirection"
 msgid "USB device redirection"
-msgstr "Vyberte USB zařízení, které přesměrovat"
+msgstr "Přesměrování USB zařízení"
 
 #: plugins/rdp/rdp_plugin.c:2094
 msgid "Local serial name"
@@ -2179,15 +2175,15 @@ msgstr "Název čipové karty"
 
 #: plugins/rdp/rdp_plugin.c:2100
 msgid "Dynamic virtual channel"
-msgstr ""
+msgstr "Dynamický virtuální kanál"
 
 #: plugins/rdp/rdp_plugin.c:2100 plugins/rdp/rdp_plugin.c:2101
 msgid "<channel>[,<options>]"
-msgstr ""
+msgstr "<kanál>[,<volby>]"
 
 #: plugins/rdp/rdp_plugin.c:2101
 msgid "Static virtual channel"
-msgstr ""
+msgstr "Statický virtuální kanál"
 
 #: plugins/rdp/rdp_plugin.c:2102
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
@@ -2605,24 +2601,6 @@ msgid "Please wait…"
 msgstr "Čekejte…"
 
 #: data/ui/remmina_news.glade:75
-#, fuzzy
-#| msgid ""
-#| "<big><b>The news are turned off</b></big>\n"
-#| "\n"
-#| "<span>\n"
-#| "Turning on news means the program connects to a Remmina server to "
-#| "download the release notes.\n"
-#| "</span>\n"
-#| "\n"
-#| "<span>\n"
-#| "Version checking can only be activated at compile time.\n"
-#| "</span>\n"
-#| "\n"
-#| "<span>\n"
-#| "<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title="
-#| "\"<i>Remmina</i> release notes\"><i>Visit the website to read the release "
-#| "notes</i></a>.\n"
-#| "</span>"
 msgid ""
 "<big><b>The news are turned off</b></big>\n"
 "\n"
@@ -2654,7 +2632,7 @@ msgstr ""
 "\n"
 "<span>\n"
 "<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Poznámky k "
-"vydání <i>Remmina</i>\"><i>Poznámky k vydání naleznete na webových "
+"vydání Remmina\"><i>Poznámky k vydání naleznete na webových "
 "stránkách</i></a>.\n"
 "</span>"
 
