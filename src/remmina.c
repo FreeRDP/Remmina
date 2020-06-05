@@ -83,26 +83,29 @@ static GOptionEntry remmina_options[] =
 	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 	{ "about",	      'a',  0,			  G_OPTION_ARG_NONE,	       NULL, N_("Show \'About\'"),								     NULL	},
 	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-	{ "connect",	      'c',  0,			  G_OPTION_ARG_FILENAME,       NULL, N_("Connect to desktop described in file (.remmina or type supported by plugin)"),	     "FILE"	},
+	{ "connect",	      'c',  0,			  G_OPTION_ARG_FILENAME_ARRAY, NULL, N_("Connect to desktop described in file (.remmina or type supported by plugin)"),	     N_("FILE")	},
 	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-	{ G_OPTION_REMAINING, '\0', 0,			  G_OPTION_ARG_FILENAME_ARRAY, NULL, N_("Connect to desktop described in file (.remmina or type supported by plugin)"),	     "FILE"	},
+	{ G_OPTION_REMAINING, '\0', 0,			  G_OPTION_ARG_FILENAME_ARRAY, NULL, N_("Connect to desktop described in file (.remmina or type supported by plugin)"),	     N_("FILE")	},
 	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-	{ "edit",	      'e',  0,			  G_OPTION_ARG_FILENAME,       NULL, N_("Edit desktop connection described in file (.remmina or type supported by plugin)"), "FILE"	},
+	{ "edit",	      'e',  0,			  G_OPTION_ARG_FILENAME_ARRAY, NULL, N_("Edit desktop connection described in file (.remmina or type supported by plugin)"), N_("FILE")	},
 	{ "help",	      '?',  G_OPTION_FLAG_HIDDEN, G_OPTION_ARG_NONE,	       NULL, NULL,										     NULL	},
 	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 	{ "kiosk",	      'k',  0,			  G_OPTION_ARG_NONE,	       NULL, N_("Start in kiosk mode"),								     NULL	},
 	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 	{ "new",	      'n',  0,			  G_OPTION_ARG_NONE,	       NULL, N_("Create new connection profile"),						     NULL	},
 	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-	{ "pref",	      'p',  0,			  G_OPTION_ARG_STRING,	       NULL, N_("Show preferences"),								     "PAGENR"	},
+	{ "pref",	      'p',  0,			  G_OPTION_ARG_STRING,	       NULL, N_("Show preferences"),								     N_("PAGENR")	},
+#if 0
+	/* This option was used mainly for telepathy, let's keep it if we will need it in the future */
 	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-	{ "plugin",	      'x',  0,			  G_OPTION_ARG_STRING,	       NULL, N_("Run a plugin"),								     "PLUGIN"	},
+	//{ "plugin",	      'x',  0,			  G_OPTION_ARG_STRING,	       NULL, N_("Run a plugin"),								     N_("PLUGIN")	},
+#endif
 	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 	{ "quit",	      'q',  0,			  G_OPTION_ARG_NONE,	       NULL, N_("Quit"),									     NULL	},
 	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-	{ "server",	      's',  0,			  G_OPTION_ARG_STRING,	       NULL, N_("Use default server name (for --new)"),						     "SERVER"	},
+	{ "server",	      's',  0,			  G_OPTION_ARG_STRING,	       NULL, N_("Use default server name (for --new)"),						     N_("SERVER")	},
 	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-	{ "protocol",	      't',  0,			  G_OPTION_ARG_STRING,	       NULL, N_("Use default protocol (for --new)"),						     "PROTOCOL" },
+	{ "protocol",	      't',  0,			  G_OPTION_ARG_STRING,	       NULL, N_("Use default protocol (for --new)"),						     N_("PROTOCOL") },
 	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 	{ "icon",	      'i',  0,			  G_OPTION_ARG_NONE,	       NULL, N_("Start in tray"),								     NULL	},
 	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
@@ -136,6 +139,7 @@ static gint remmina_on_command_line(GApplication *app, GApplicationCommandLine *
 	gboolean executed = FALSE;
 	GVariantDict *opts;
 	gchar *str;
+	const gchar **files;
 	const gchar **remaining_args;
 	gchar *protocol;
 	gchar *server;
@@ -158,13 +162,15 @@ static gint remmina_on_command_line(GApplication *app, GApplicationCommandLine *
 		executed = TRUE;
 	}
 
-	/** @todo This should be a G_OPTION_ARG_FILENAME_ARRAY (^aay) so that
-	 * we can implement multi profile connection:
-	 *    https://gitlab.com/Remmina/Remmina/issues/915
+	/** @warning To be used like -c FILE -c FILE -c FILE …
+	 *
 	 */
-	if (g_variant_dict_lookup(opts, "connect", "^ay", &str)) {
-		remmina_exec_command(REMMINA_COMMAND_CONNECT, g_strdup(str));
-		g_free(str);
+	if (g_variant_dict_lookup(opts, "connect", "^aay", &files)) {
+		if (files)
+			for (gint i = 0; files[i]; i++) {
+				g_debug ("Connecting to: %s", files[i]);
+				remmina_exec_command(REMMINA_COMMAND_CONNECT, files[i]);
+			}
 		executed = TRUE;
 	}
 
@@ -174,9 +180,14 @@ static gint remmina_on_command_line(GApplication *app, GApplicationCommandLine *
 		executed = TRUE;
 	}
 
-	if (g_variant_dict_lookup(opts, "edit", "^ay", &str)) {
-		remmina_exec_command(REMMINA_COMMAND_EDIT, str);
-		g_free(str);
+	if (g_variant_dict_lookup(opts, "edit", "^aay", &files)) {
+		if (files)
+			for (gint i = 0; files[i]; i++) {
+				g_debug ("Editing file: %s", files[i]);
+				remmina_exec_command(REMMINA_COMMAND_EDIT, files[i]);
+			}
+		//remmina_exec_command(REMMINA_COMMAND_EDIT, str);
+		//g_free(str);
 		executed = TRUE;
 	}
 
