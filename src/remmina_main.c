@@ -79,37 +79,37 @@ enum {
 
 static
 const gchar *supported_mime_types[] = {
-  "x-scheme-handler/rdp",
-  "x-scheme-handler/spice",
-  "x-scheme-handler/vnc",
-  "x-scheme-handler/remmina",
-  "application/x-remmina",
-  NULL
+	"x-scheme-handler/rdp",
+	"x-scheme-handler/spice",
+	"x-scheme-handler/vnc",
+	"x-scheme-handler/remmina",
+	"application/x-remmina",
+	NULL
 };
 
 static GActionEntry main_actions[] = {
-	{   "about",       remmina_main_on_action_application_about,         NULL, NULL, NULL },
-	{   "news",        remmina_main_on_action_application_news,          NULL, NULL, NULL },
-	{   "default",     remmina_main_on_action_application_default,       NULL, NULL, NULL },
-	{   "mpchange",    remmina_main_on_action_application_mpchange,      NULL, NULL, NULL },
-	{   "plugins",     remmina_main_on_action_application_plugins,       NULL, NULL, NULL },
-	{   "preferences", remmina_main_on_action_application_preferences,   NULL, NULL, NULL },
-	{   "quit",        remmina_main_on_action_application_quit,          NULL, NULL, NULL },
-	{   "connect",     remmina_main_on_action_connection_connect,        NULL, NULL, NULL },
-	{   "copy",        remmina_main_on_action_connection_copy,           NULL, NULL, NULL },
-	{   "delete",      remmina_main_on_action_connection_delete,         NULL, NULL, NULL },
-	{   "edit",        remmina_main_on_action_connection_edit,           NULL, NULL, NULL },
-	{   "exttools",    remmina_main_on_action_connection_external_tools, NULL, NULL, NULL },
-	{   "new",         remmina_main_on_action_connection_new,            NULL, NULL, NULL },
-	{   "community",   remmina_main_on_action_help_community,            NULL, NULL, NULL },
-	{   "debug",       remmina_main_on_action_help_debug,                NULL, NULL, NULL },
-	{   "donations",   remmina_main_on_action_help_donations,            NULL, NULL, NULL },
-	{   "homepage",    remmina_main_on_action_help_homepage,             NULL, NULL, NULL },
-	{   "wiki",        remmina_main_on_action_help_wiki,                 NULL, NULL, NULL },
-	{   "export",      remmina_main_on_action_tools_export,              NULL, NULL, NULL },
-	{   "import",      remmina_main_on_action_tools_import,              NULL, NULL, NULL },
-	{   "expand",      remmina_main_on_action_expand,                    NULL, NULL, NULL },
-	{   "collapse",    remmina_main_on_action_collapse,                    NULL, NULL, NULL },
+	{ "about",	 remmina_main_on_action_application_about,	   NULL, NULL, NULL },
+	{ "news",	 remmina_main_on_action_application_news,	   NULL, NULL, NULL },
+	{ "default",	 remmina_main_on_action_application_default,	   NULL, NULL, NULL },
+	{ "mpchange",	 remmina_main_on_action_application_mpchange,	   NULL, NULL, NULL },
+	{ "plugins",	 remmina_main_on_action_application_plugins,	   NULL, NULL, NULL },
+	{ "preferences", remmina_main_on_action_application_preferences,   NULL, NULL, NULL },
+	{ "quit",	 remmina_main_on_action_application_quit,	   NULL, NULL, NULL },
+	{ "connect",	 remmina_main_on_action_connection_connect,	   NULL, NULL, NULL },
+	{ "copy",	 remmina_main_on_action_connection_copy,	   NULL, NULL, NULL },
+	{ "delete",	 remmina_main_on_action_connection_delete,	   NULL, NULL, NULL },
+	{ "edit",	 remmina_main_on_action_connection_edit,	   NULL, NULL, NULL },
+	{ "exttools",	 remmina_main_on_action_connection_external_tools, NULL, NULL, NULL },
+	{ "new",	 remmina_main_on_action_connection_new,		   NULL, NULL, NULL },
+	{ "community",	 remmina_main_on_action_help_community,		   NULL, NULL, NULL },
+	{ "debug",	 remmina_main_on_action_help_debug,		   NULL, NULL, NULL },
+	{ "donations",	 remmina_main_on_action_help_donations,		   NULL, NULL, NULL },
+	{ "homepage",	 remmina_main_on_action_help_homepage,		   NULL, NULL, NULL },
+	{ "wiki",	 remmina_main_on_action_help_wiki,		   NULL, NULL, NULL },
+	{ "export",	 remmina_main_on_action_tools_export,		   NULL, NULL, NULL },
+	{ "import",	 remmina_main_on_action_tools_import,		   NULL, NULL, NULL },
+	{ "expand",	 remmina_main_on_action_expand,			   NULL, NULL, NULL },
+	{ "collapse",	 remmina_main_on_action_collapse,		   NULL, NULL, NULL },
 };
 
 static GtkTargetEntry remmina_drop_types[] =
@@ -131,7 +131,7 @@ static void remmina_main_save_size(void)
 	if ((gdk_window_get_state(gtk_widget_get_window(GTK_WIDGET(remminamain->window))) & GDK_WINDOW_STATE_MAXIMIZED) == 0) {
 		gtk_window_get_size(remminamain->window, &remmina_pref.main_width, &remmina_pref.main_height);
 		remmina_pref.main_maximize = FALSE;
-	}else {
+	} else {
 		remmina_pref.main_maximize = TRUE;
 	}
 }
@@ -154,12 +154,11 @@ static void remmina_main_save_expanded_group(void)
 {
 	TRACE_CALL(__func__);
 	if (GTK_IS_TREE_STORE(remminamain->priv->file_model)) {
-		if (remminamain->priv->expanded_group) {
+		if (remminamain->priv->expanded_group)
 			remmina_string_array_free(remminamain->priv->expanded_group);
-		}
 		remminamain->priv->expanded_group = remmina_string_array_new();
 		gtk_tree_view_map_expanded_rows(remminamain->tree_files_list,
-			(GtkTreeViewMappingFunc)remmina_main_save_expanded_group_func, NULL);
+						(GtkTreeViewMappingFunc)remmina_main_save_expanded_group_func, NULL);
 	}
 }
 
@@ -254,7 +253,7 @@ static void remmina_main_show_snap_welcome()
 	int result;
 	static gboolean shown_once = FALSE;
 	gboolean need_snap_interface_connections = FALSE;
-	GtkWidget* dsa;
+	GtkWidget *dsa;
 	RemminaSecretPlugin *remmina_secret_plugin;
 
 	if (shown_once)
@@ -292,7 +291,6 @@ static void remmina_main_show_snap_welcome()
 			g_object_unref(dlgbuilder);
 		}
 	}
-
 }
 #endif
 
@@ -313,17 +311,19 @@ static gboolean remmina_main_selection_func(GtkTreeSelection *selection, GtkTree
 
 	remmina_main_clear_selection_data();
 
-	gtk_tree_model_get(model, &iter, NAME_COLUMN, &remminamain->priv->selected_name, FILENAME_COLUMN,
-		&remminamain->priv->selected_filename, -1);
+	gtk_tree_model_get(model, &iter,
+			NAME_COLUMN, &remminamain->priv->selected_name,
+			FILENAME_COLUMN, &remminamain->priv->selected_filename,
+			-1);
 
 	context_id = gtk_statusbar_get_context_id(remminamain->statusbar_main, "status");
 	gtk_statusbar_pop(remminamain->statusbar_main, context_id);
 	if (remminamain->priv->selected_filename) {
 		g_snprintf(buf, sizeof(buf), "%s (%s)", remminamain->priv->selected_name, remminamain->priv->selected_filename);
 		gtk_statusbar_push(remminamain->statusbar_main, context_id, buf);
-	}else {
+	} else
 		gtk_statusbar_push(remminamain->statusbar_main, context_id, remminamain->priv->selected_name);
-	}
+
 	return TRUE;
 }
 
@@ -333,19 +333,19 @@ static void remmina_main_load_file_list_callback(RemminaFile *remminafile, gpoin
 	GtkTreeIter iter;
 	GtkListStore *store;
 	store = GTK_LIST_STORE(user_data);
-	gchar* datetime;
+	gchar *datetime;
 
 	datetime = remmina_file_get_datetime(remminafile);
 	gtk_list_store_append(store, &iter);
 	gtk_list_store_set(store, &iter,
-		PROTOCOL_COLUMN,    remmina_file_get_icon_name(remminafile),
-		NAME_COLUMN,        remmina_file_get_string(remminafile, "name"),
-		GROUP_COLUMN,       remmina_file_get_string(remminafile, "group"),
-		SERVER_COLUMN,      remmina_file_get_string(remminafile, "server"),
-		PLUGIN_COLUMN,      remmina_file_get_string(remminafile, "protocol"),
-		DATE_COLUMN,        datetime,
-		FILENAME_COLUMN,    remmina_file_get_filename(remminafile),
-		-1);
+			   PROTOCOL_COLUMN, remmina_file_get_icon_name(remminafile),
+			   NAME_COLUMN, remmina_file_get_string(remminafile, "name"),
+			   GROUP_COLUMN, remmina_file_get_string(remminafile, "group"),
+			   SERVER_COLUMN, remmina_file_get_string(remminafile, "server"),
+			   PLUGIN_COLUMN, remmina_file_get_string(remminafile, "protocol"),
+			   DATE_COLUMN, datetime,
+			   FILENAME_COLUMN, remmina_file_get_filename(remminafile),
+			   -1);
 	g_free(datetime);
 }
 
@@ -358,20 +358,19 @@ static gboolean remmina_main_load_file_tree_traverse(GNode *node, GtkTreeStore *
 
 	iter = NULL;
 	if (node->data) {
-		data = (RemminaGroupData*)node->data;
+		data = (RemminaGroupData *)node->data;
 		iter = g_new0(GtkTreeIter, 1);
 		gtk_tree_store_append(store, iter, parent);
 		gtk_tree_store_set(store, iter,
-			PROTOCOL_COLUMN,    "folder-symbolic",
-			NAME_COLUMN,        data->name,
-			GROUP_COLUMN,       data->group,
-			DATE_COLUMN,        data->datetime,
-			FILENAME_COLUMN,    NULL,
-			-1);
+				   PROTOCOL_COLUMN, "folder-symbolic",
+				   NAME_COLUMN, data->name,
+				   GROUP_COLUMN, data->group,
+				   DATE_COLUMN, data->datetime,
+				   FILENAME_COLUMN, NULL,
+				   -1);
 	}
-	for (child = g_node_first_child(node); child; child = g_node_next_sibling(child)) {
+	for (child = g_node_first_child(node); child; child = g_node_next_sibling(child))
 		remmina_main_load_file_tree_traverse(child, store, iter);
-	}
 	g_free(iter);
 	return FALSE;
 }
@@ -405,9 +404,8 @@ static void remmina_main_expand_group_traverse(GtkTreeIter *iter)
 				gtk_tree_view_expand_row(remminamain->tree_files_list, path, FALSE);
 				gtk_tree_path_free(path);
 			}
-			if (gtk_tree_model_iter_children(tree, &child, iter)) {
+			if (gtk_tree_model_iter_children(tree, &child, iter))
 				remmina_main_expand_group_traverse(&child);
-			}
 		}
 		g_free(group);
 		g_free(filename);
@@ -421,9 +419,8 @@ static void remmina_main_expand_group(void)
 	TRACE_CALL(__func__);
 	GtkTreeIter iter;
 
-	if (gtk_tree_model_get_iter_first(remminamain->priv->file_model_sort, &iter)) {
+	if (gtk_tree_model_get_iter_first(remminamain->priv->file_model_sort, &iter))
 		remmina_main_expand_group_traverse(&iter);
-	}
 }
 
 static gboolean remmina_main_load_file_tree_find(GtkTreeModel *tree, GtkTreeIter *iter, const gchar *match_group)
@@ -460,27 +457,26 @@ static void remmina_main_load_file_tree_callback(RemminaFile *remminafile, gpoin
 	GtkTreeIter iter, child;
 	GtkTreeStore *store;
 	gboolean found;
-	gchar* datetime;
+	gchar *datetime;
 
 	store = GTK_TREE_STORE(user_data);
 
 	found = FALSE;
-	if (gtk_tree_model_get_iter_first(GTK_TREE_MODEL(store), &iter)) {
+	if (gtk_tree_model_get_iter_first(GTK_TREE_MODEL(store), &iter))
 		found = remmina_main_load_file_tree_find(GTK_TREE_MODEL(store), &iter,
-			remmina_file_get_string(remminafile, "group"));
-	}
+							 remmina_file_get_string(remminafile, "group"));
 
 	datetime = remmina_file_get_datetime(remminafile);
 	gtk_tree_store_append(store, &child, (found ? &iter : NULL));
 	gtk_tree_store_set(store, &child,
-		PROTOCOL_COLUMN, remmina_file_get_icon_name(remminafile),
-		NAME_COLUMN,     remmina_file_get_string(remminafile, "name"),
-		GROUP_COLUMN,    remmina_file_get_string(remminafile, "group"),
-		SERVER_COLUMN,   remmina_file_get_string(remminafile, "server"),
-		PLUGIN_COLUMN,   remmina_file_get_string(remminafile, "protocol"),
-		DATE_COLUMN,     datetime,
-		FILENAME_COLUMN, remmina_file_get_filename(remminafile),
-		-1);
+			   PROTOCOL_COLUMN, remmina_file_get_icon_name(remminafile),
+			   NAME_COLUMN, remmina_file_get_string(remminafile, "name"),
+			   GROUP_COLUMN, remmina_file_get_string(remminafile, "group"),
+			   SERVER_COLUMN, remmina_file_get_string(remminafile, "server"),
+			   PLUGIN_COLUMN, remmina_file_get_string(remminafile, "protocol"),
+			   DATE_COLUMN, datetime,
+			   FILENAME_COLUMN, remmina_file_get_filename(remminafile),
+			   -1);
 	g_free(datetime);
 }
 
@@ -506,13 +502,13 @@ static gboolean remmina_main_filter_visible_func(GtkTreeModel *model, GtkTreeIte
 	text = g_ascii_strdown(gtk_entry_get_text(remminamain->entry_quick_connect_server), -1);
 	if (text && text[0]) {
 		gtk_tree_model_get(model, iter,
-			PROTOCOL_COLUMN, &protocol,
-			NAME_COLUMN, &name,
-			GROUP_COLUMN, &group,
-			SERVER_COLUMN, &server,
-			PLUGIN_COLUMN, &plugin,
-			DATE_COLUMN, &date,
-			-1);
+				   PROTOCOL_COLUMN, &protocol,
+				   NAME_COLUMN, &name,
+				   GROUP_COLUMN, &group,
+				   SERVER_COLUMN, &server,
+				   PLUGIN_COLUMN, &plugin,
+				   DATE_COLUMN, &date,
+				   -1);
 		if (g_strcmp0(protocol, "folder-symbolic") != 0) {
 			s = g_ascii_strdown(name ? name : "", -1);
 			g_free(name);
@@ -559,7 +555,7 @@ static void remmina_main_select_file(const gchar *filename)
 		g_free(item_filename);
 		if (cmp == 0) {
 			gtk_tree_selection_select_iter(gtk_tree_view_get_selection(remminamain->tree_files_list),
-				&iter);
+						       &iter);
 			path = gtk_tree_model_get_path(remminamain->priv->file_model_sort, &iter);
 			gtk_tree_view_scroll_to_cell(remminamain->tree_files_list, path, NULL, TRUE, 0.5, 0.0);
 			gtk_tree_path_free(path);
@@ -629,14 +625,14 @@ static void remmina_main_load_files()
 	/* Create a sorted filtered model based on newmodel and apply it to the TreeView */
 	remminamain->priv->file_model_filter = gtk_tree_model_filter_new(remminamain->priv->file_model, NULL);
 	gtk_tree_model_filter_set_visible_func(GTK_TREE_MODEL_FILTER(remminamain->priv->file_model_filter),
-		(GtkTreeModelFilterVisibleFunc)remmina_main_filter_visible_func, NULL, NULL);
+					       (GtkTreeModelFilterVisibleFunc)remmina_main_filter_visible_func, NULL, NULL);
 	remminamain->priv->file_model_sort = gtk_tree_model_sort_new_with_model(remminamain->priv->file_model_filter);
-	gtk_tree_sortable_set_sort_column_id( GTK_TREE_SORTABLE(remminamain->priv->file_model_sort),
-		remmina_pref.main_sort_column_id,
-		remmina_pref.main_sort_order);
+	gtk_tree_sortable_set_sort_column_id(GTK_TREE_SORTABLE(remminamain->priv->file_model_sort),
+					     remmina_pref.main_sort_column_id,
+					     remmina_pref.main_sort_order);
 	gtk_tree_view_set_model(remminamain->tree_files_list, remminamain->priv->file_model_sort);
 	g_signal_connect(G_OBJECT(remminamain->priv->file_model_sort), "sort-column-changed",
-		G_CALLBACK(remmina_main_file_model_on_sort), NULL);
+			 G_CALLBACK(remmina_main_file_model_on_sort), NULL);
 	remmina_main_expand_group();
 	/* Select the file previously selected */
 	if (save_selected_filename) {
@@ -722,7 +718,6 @@ void remmina_main_on_action_application_mpchange(GSimpleAction *action, GVariant
 
 	if (remminafile != NULL)
 		remmina_file_free(remminafile);
-
 }
 
 void remmina_main_on_action_connection_new(GSimpleAction *action, GVariant *param, gpointer data)
@@ -742,11 +737,10 @@ void remmina_main_on_action_connection_new(GSimpleAction *action, GVariant *para
 
 void remmina_main_on_search_toggle()
 {
-	if (gtk_toggle_button_get_active(remminamain->search_toggle)) {
+	if (gtk_toggle_button_get_active(remminamain->search_toggle))
 		gtk_search_bar_set_search_mode(remminamain->search_bar, TRUE);
-	} else {
+	else
 		gtk_search_bar_set_search_mode(remminamain->search_bar, FALSE);
-	}
 }
 
 void remmina_main_on_view_toggle()
@@ -786,9 +780,8 @@ void remmina_main_on_action_connection_copy(GSimpleAction *action, GVariant *par
 		gtk_widget_show(widget);
 	}
 	/* Select the file previously selected */
-	if (remminamain->priv->selected_filename) {
+	if (remminamain->priv->selected_filename)
 		remmina_main_select_file(remminamain->priv->selected_filename);
-	}
 }
 
 void remmina_main_on_action_connection_edit(GSimpleAction *action, GVariant *param, gpointer data)
@@ -808,9 +801,8 @@ void remmina_main_on_action_connection_edit(GSimpleAction *action, GVariant *par
 		gtk_widget_show(widget);
 	}
 /* Select the file previously selected */
-	if (remminamain->priv->selected_filename) {
+	if (remminamain->priv->selected_filename)
 		remmina_main_select_file(remminamain->priv->selected_filename);
-	}
 }
 
 void remmina_main_on_action_connection_delete(GSimpleAction *action, GVariant *param, gpointer data)
@@ -826,7 +818,7 @@ void remmina_main_on_action_connection_delete(GSimpleAction *action, GVariant *p
 		return;
 
 	dialog = gtk_message_dialog_new(remminamain->window, GTK_DIALOG_MODAL, GTK_MESSAGE_QUESTION, GTK_BUTTONS_YES_NO,
-		_("Are you sure you want to delete \"%s\"?"), remminamain->priv->selected_name);
+					_("Are you sure you want to delete \"%s\"?"), remminamain->priv->selected_name);
 	if (gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_YES) {
 		delfilename = g_strdup(remminamain->priv->selected_filename);
 		remmina_file_delete(delfilename);
@@ -854,23 +846,23 @@ void remmina_main_on_action_application_default(GSimpleAction *action, GVariant 
 	g_autoptr(GError) error = NULL;
 	GDesktopAppInfo *desktop_info;
 	GAppInfo *info = NULL;
-	g_autofree gchar *id = g_strconcat (REMMINA_APP_ID, ".desktop", NULL);
+	g_autofree gchar *id = g_strconcat(REMMINA_APP_ID, ".desktop", NULL);
 	int i;
 
-	desktop_info = g_desktop_app_info_new (id);
+	desktop_info = g_desktop_app_info_new(id);
 	if (!desktop_info)
 		return;
 
-	info = G_APP_INFO (desktop_info);
+	info = G_APP_INFO(desktop_info);
 
 	for (i = 0; supported_mime_types[i]; i++) {
-		if (!g_app_info_set_as_default_for_type (info, supported_mime_types[i], &error))
-			g_warning ("Failed to set '%s' as the default application for secondary content type '%s': %s",
-					g_app_info_get_name (info), supported_mime_types[i], error->message);
+		if (!g_app_info_set_as_default_for_type(info, supported_mime_types[i], &error))
+			g_warning("Failed to set '%s' as the default application for secondary content type '%s': %s",
+				  g_app_info_get_name(info), supported_mime_types[i], error->message);
 		else
-			g_debug ("Set '%s' as the default application for '%s'",
-					g_app_info_get_name (info),
-					supported_mime_types[i]);
+			g_debug("Set '%s' as the default application for '%s'",
+				g_app_info_get_name(info),
+				supported_mime_types[i]);
 	}
 }
 
@@ -878,7 +870,7 @@ void remmina_main_on_action_application_quit(GSimpleAction *action, GVariant *pa
 {
 	// Called by quit signal in remmina_main.glade
 	TRACE_CALL(__func__);
-	g_debug ("Quit intercept");
+	g_debug("Quit intercept");
 	remmina_application_condexit(REMMINA_CONDEXIT_ONQUIT);
 }
 
@@ -906,13 +898,13 @@ static void remmina_main_import_file_list(GSList *files)
 	err = g_string_new(NULL);
 	imported = FALSE;
 	for (element = files; element; element = element->next) {
-		path = (gchar*)element->data;
+		path = (gchar *)element->data;
 		plugin = remmina_plugin_manager_get_import_file_handler(path);
 		if (plugin && (remminafile = plugin->import_func(path)) != NULL && remmina_file_get_string(remminafile, "name")) {
 			remmina_file_generate_filename(remminafile);
 			remmina_file_save(remminafile);
 			imported = TRUE;
-		}else {
+		} else {
 			g_string_append(err, path);
 			g_string_append_c(err, '\n');
 		}
@@ -926,14 +918,13 @@ static void remmina_main_import_file_list(GSList *files)
 	if (err->len > 0) {
 		// TRANSLATORS: The placeholder %s is an error message
 		dlg = gtk_message_dialog_new(remminamain->window, GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
-			_("Unable to import:\n%s"), err->str);
+					     _("Unable to import:\n%s"), err->str);
 		g_signal_connect(G_OBJECT(dlg), "response", G_CALLBACK(gtk_widget_destroy), NULL);
 		gtk_widget_show(dlg);
 	}
 	g_string_free(err, TRUE);
-	if (imported) {
+	if (imported)
 		remmina_main_load_files();
-	}
 }
 
 static void remmina_main_action_tools_import_on_response(GtkDialog *dialog, gint response_id, gpointer user_data)
@@ -954,7 +945,7 @@ void remmina_main_on_action_tools_import(GSimpleAction *action, GVariant *param,
 	GtkWidget *dialog;
 
 	dialog = gtk_file_chooser_dialog_new(_("Import"), remminamain->window, GTK_FILE_CHOOSER_ACTION_OPEN, "Import",
-		GTK_RESPONSE_ACCEPT, NULL);
+					     GTK_RESPONSE_ACCEPT, NULL);
 	gtk_file_chooser_set_select_multiple(GTK_FILE_CHOOSER(dialog), TRUE);
 	g_signal_connect(G_OBJECT(dialog), "response", G_CALLBACK(remmina_main_action_tools_import_on_response), NULL);
 	gtk_widget_show(dialog);
@@ -976,14 +967,13 @@ void remmina_main_on_action_tools_export(GSimpleAction *action, GVariant *param,
 	plugin = remmina_plugin_manager_get_export_file_handler(remminafile);
 	if (plugin) {
 		dialog = gtk_file_chooser_dialog_new(plugin->export_hints, remminamain->window,
-			GTK_FILE_CHOOSER_ACTION_SAVE, _("_Save"), GTK_RESPONSE_ACCEPT, NULL);
-		if (gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_ACCEPT) {
+						     GTK_FILE_CHOOSER_ACTION_SAVE, _("_Save"), GTK_RESPONSE_ACCEPT, NULL);
+		if (gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_ACCEPT)
 			plugin->export_func(remminafile, gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(dialog)));
-		}
 		gtk_widget_destroy(dialog);
-	}else {
+	} else {
 		dialog = gtk_message_dialog_new(remminamain->window, GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
-			_("This protocol does not support exporting."));
+						_("This protocol does not support exporting."));
 		g_signal_connect(G_OBJECT(dialog), "response", G_CALLBACK(gtk_widget_destroy), NULL);
 		gtk_widget_show(dialog);
 	}
@@ -1043,8 +1033,8 @@ void remmina_main_on_action_application_news(GSimpleAction *action, GVariant *pa
 static gboolean remmina_main_quickconnect(void)
 {
 	TRACE_CALL(__func__);
-	RemminaFile* remminafile;
-	gchar* server;
+	RemminaFile *remminafile;
+	gchar *server;
 	gchar *qcp;
 
 
@@ -1085,16 +1075,16 @@ void remmina_main_quick_search_enter(GtkWidget *widget, gpointer user_data)
 		gtk_editable_select_region(GTK_EDITABLE(remminamain->entry_quick_connect_server), 0, -1);
 }
 
-void remmina_main_on_action_collapse (GSimpleAction *action, GVariant *param, gpointer data)
+void remmina_main_on_action_collapse(GSimpleAction *action, GVariant *param, gpointer data)
 {
 	TRACE_CALL(__func__);
-	gtk_tree_view_collapse_all (remminamain->tree_files_list);
+	gtk_tree_view_collapse_all(remminamain->tree_files_list);
 }
 
-void remmina_main_on_action_expand (GSimpleAction *action, GVariant *param, gpointer data)
+void remmina_main_on_action_expand(GSimpleAction *action, GVariant *param, gpointer data)
 {
 	TRACE_CALL(__func__);
-	gtk_tree_view_expand_all (remminamain->tree_files_list);
+	gtk_tree_view_expand_all(remminamain->tree_files_list);
 }
 
 /* Handle double click on a row in the connections list */
@@ -1122,12 +1112,10 @@ gboolean remmina_main_file_list_on_button_press(GtkWidget *widget, GdkEventButto
 	if (event->button == MOUSE_BUTTON_RIGHT) {
 		if (!kioskmode && kioskmode == FALSE)
 #if GTK_CHECK_VERSION(3, 22, 0)
-			gtk_menu_popup_at_pointer(GTK_MENU(remminamain->menu_popup), (GdkEvent*)event);
+			gtk_menu_popup_at_pointer(GTK_MENU(remminamain->menu_popup), (GdkEvent *)event);
 #else
 			gtk_menu_popup(remminamain->menu_popup, NULL, NULL, NULL, NULL, event->button, event->time);
 #endif
-
-
 	}
 	return FALSE;
 }
@@ -1139,8 +1127,8 @@ gboolean remmina_main_file_list_on_key_press(GtkWidget *widget, GdkEventKey *eve
 	if (event->keyval == GDK_KEY_Menu) {
 #if GTK_CHECK_VERSION(3, 22, 0)
 		gtk_menu_popup_at_widget(GTK_MENU(remminamain->menu_popup), widget,
-			GDK_GRAVITY_CENTER, GDK_GRAVITY_CENTER,
-			(GdkEvent*)event);
+					 GDK_GRAVITY_CENTER, GDK_GRAVITY_CENTER,
+					 (GdkEvent *)event);
 #else
 		gtk_menu_popup(remminamain->menu_popup, NULL, NULL, NULL, NULL, 0, event->time);
 #endif
@@ -1151,9 +1139,8 @@ gboolean remmina_main_file_list_on_key_press(GtkWidget *widget, GdkEventKey *eve
 void remmina_main_quick_search_on_icon_press(GtkEntry *entry, GtkEntryIconPosition icon_pos, GdkEvent *event, gpointer user_data)
 {
 	TRACE_CALL(__func__);
-	if (icon_pos == GTK_ENTRY_ICON_SECONDARY) {
+	if (icon_pos == GTK_ENTRY_ICON_SECONDARY)
 		gtk_entry_set_text(entry, "");
-	}
 }
 
 void remmina_main_quick_search_on_changed(GtkEditable *editable, gpointer user_data)
@@ -1184,7 +1171,7 @@ void remmina_main_on_drag_data_received(GtkWidget *widget, GdkDragContext *drag_
 	GSList *files = NULL;
 	gint i;
 
-	uris = g_uri_list_extract_uris((const gchar*)gtk_selection_data_get_data(data));
+	uris = g_uri_list_extract_uris((const gchar *)gtk_selection_data_get_data(data));
 	for (i = 0; uris[i]; i++) {
 		if (strncmp(uris[i], "file://", 7) != 0)
 			continue;
@@ -1198,7 +1185,7 @@ void remmina_main_on_drag_data_received(GtkWidget *widget, GdkDragContext *drag_
 static gboolean remmina_main_add_tool_plugin(gchar *name, RemminaPlugin *plugin, gpointer user_data)
 {
 	TRACE_CALL(__func__);
-	RemminaToolPlugin *tool_plugin = (RemminaToolPlugin*)plugin;
+	RemminaToolPlugin *tool_plugin = (RemminaToolPlugin *)plugin;
 	GtkWidget *menuitem = gtk_menu_item_new_with_label(plugin->description);
 
 	gtk_widget_show(menuitem);
@@ -1220,22 +1207,20 @@ static void remmina_main_init(void)
 	int i, qcp_idx, qcp_actidx;
 	char *name;
 
-	REMMINA_DEBUG ("Initializing the Remmina main window");
+	REMMINA_DEBUG("Initializing the Remmina main window");
 	remminamain->priv->expanded_group = remmina_string_array_new_from_string(remmina_pref.expanded_group);
-	if (!kioskmode && kioskmode == FALSE) {
+	if (!kioskmode && kioskmode == FALSE)
 		gtk_window_set_title(remminamain->window, _("Remmina Remote Desktop Client"));
-	}else {
+	else
 		gtk_window_set_title(remminamain->window, _("Remmina Kiosk"));
-	}
 	if (!kioskmode && kioskmode == FALSE) {
 		gtk_window_set_default_size(remminamain->window, remmina_pref.main_width, remmina_pref.main_height);
-		if (remmina_pref.main_maximize) {
+		if (remmina_pref.main_maximize)
 			gtk_window_maximize(remminamain->window);
-		}
 	}
 	/* Honor global preferences Search Bar visibility */
 	if (remmina_pref.hide_searchbar)
-		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(RM_GET_OBJECT("search_toggle")), FALSE);
+		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(RM_GET_OBJECT("search_toggle")), FALSE);
 
 	/* Add a GtkMenuItem to the Tools menu for each plugin of type REMMINA_PLUGIN_TYPE_TOOL */
 	remmina_plugin_manager_for_each_plugin(REMMINA_PLUGIN_TYPE_TOOL, remmina_main_add_tool_plugin, remminamain);
@@ -1248,7 +1233,7 @@ static void remmina_main_init(void)
 			gtk_combo_box_text_append(remminamain->combo_quick_connect_protocol, name, name);
 			if (remmina_pref.last_quickconnect_protocol != NULL && strcmp(name, remmina_pref.last_quickconnect_protocol) == 0)
 				qcp_actidx = qcp_idx;
-			qcp_idx ++;
+			qcp_idx++;
 		}
 	}
 	gtk_combo_box_set_active(GTK_COMBO_BOX(remminamain->combo_quick_connect_protocol), qcp_actidx);
@@ -1287,7 +1272,7 @@ void remmina_main_on_show(GtkWidget *w, gpointer user_data)
 }
 
 /* RemminaMain instance */
-GtkWidget* remmina_main_new(void)
+GtkWidget *remmina_main_new(void)
 {
 	TRACE_CALL(__func__);
 	GSimpleActionGroup *actions;
@@ -1344,10 +1329,10 @@ GtkWidget* remmina_main_new(void)
 	/* Accelerators */
 	accel_group = gtk_accel_group_new();
 	gtk_window_add_accel_group(remminamain->window, accel_group);
-	gtk_accel_group_connect (accel_group, GDK_KEY_Q, GDK_CONTROL_MASK, 0,
-			g_cclosure_new_swap (G_CALLBACK (remmina_main_on_action_application_quit), NULL, NULL));
-	gtk_accel_group_connect (accel_group, GDK_KEY_P, GDK_CONTROL_MASK, 0,
-			g_cclosure_new_swap (G_CALLBACK (remmina_main_on_action_application_preferences), NULL, NULL));
+	gtk_accel_group_connect(accel_group, GDK_KEY_Q, GDK_CONTROL_MASK, 0,
+				g_cclosure_new_swap(G_CALLBACK(remmina_main_on_action_application_quit), NULL, NULL));
+	gtk_accel_group_connect(accel_group, GDK_KEY_P, GDK_CONTROL_MASK, 0,
+				g_cclosure_new_swap(G_CALLBACK(remmina_main_on_action_application_preferences), NULL, NULL));
 
 	/* Connect signals */
 	gtk_builder_connect_signals(remminamain->builder, NULL);
@@ -1356,7 +1341,7 @@ GtkWidget* remmina_main_new(void)
 	return GTK_WIDGET(remminamain->window);
 }
 
-GtkWindow* remmina_main_get_window()
+GtkWindow *remmina_main_get_window()
 {
 	if (!remminamain)
 		return NULL;
@@ -1375,13 +1360,13 @@ void remmina_main_update_file_datetime(RemminaFile *file)
 	remmina_main_load_files();
 }
 
-void remmina_main_show_warning_dialog(const gchar* message)
+void remmina_main_show_warning_dialog(const gchar *message)
 {
-	GtkWidget* dialog;
+	GtkWidget *dialog;
 
 	if (remminamain->window) {
 		dialog = gtk_message_dialog_new(remminamain->window, GTK_DIALOG_MODAL, GTK_MESSAGE_WARNING, GTK_BUTTONS_CLOSE,
-			message, g_get_application_name());
+						message, g_get_application_name());
 		gtk_dialog_run(GTK_DIALOG(dialog));
 		gtk_widget_destroy(dialog);
 	}
