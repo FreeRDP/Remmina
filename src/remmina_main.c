@@ -311,17 +311,19 @@ static gboolean remmina_main_selection_func(GtkTreeSelection *selection, GtkTree
 
 	remmina_main_clear_selection_data();
 
-	gtk_tree_model_get(model, &iter, NAME_COLUMN, &remminamain->priv->selected_name, FILENAME_COLUMN,
-			   &remminamain->priv->selected_filename, -1);
+	gtk_tree_model_get(model, &iter,
+			NAME_COLUMN, &remminamain->priv->selected_name,
+			FILENAME_COLUMN, &remminamain->priv->selected_filename,
+			-1);
 
 	context_id = gtk_statusbar_get_context_id(remminamain->statusbar_main, "status");
 	gtk_statusbar_pop(remminamain->statusbar_main, context_id);
 	if (remminamain->priv->selected_filename) {
 		g_snprintf(buf, sizeof(buf), "%s (%s)", remminamain->priv->selected_name, remminamain->priv->selected_filename);
 		gtk_statusbar_push(remminamain->statusbar_main, context_id, buf);
-	} else {
+	} else
 		gtk_statusbar_push(remminamain->statusbar_main, context_id, remminamain->priv->selected_name);
-	}
+
 	return TRUE;
 }
 
