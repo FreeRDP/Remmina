@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-06-04 04:54+0000\n"
-"PO-Revision-Date: 2020-06-04 20:59+0000\n"
+"PO-Revision-Date: 2020-06-05 21:48+0000\n"
 "Last-Translator: Francisco Javier <xiscodroid@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/remmina/remmina/"
 "es/>\n"
@@ -1550,7 +1550,6 @@ msgid "Remmina web-browser plugin"
 msgstr "Complemento para el navegador de Remmina"
 
 #: plugins/secret/src/glibsecret_plugin.c:188
-#, fuzzy
 msgid "Secured password storage in the GNOME keyring"
 msgstr "Almacenamiento seguro de contraseñas en el llavero de GNOME"
 
@@ -1925,7 +1924,7 @@ msgid ""
 "Unable to establish a connection to the RDP server. Check \"Security "
 "protocol negotiation\" \"%s\"."
 msgstr ""
-"No se pudo establecer una conexión RDP con el servidor «%s». Marque "
+"No se pudo establecer una conexión RDP con el servidor \"%s\". Compruebe la "
 "\"Negociación de protocolo de seguridad\""
 
 #: plugins/rdp/rdp_plugin.c:1623
@@ -2629,28 +2628,41 @@ msgid ""
 "release notes\"><i>Visit the website to read the release notes</i></a>.\n"
 "</span>"
 msgstr ""
+"<big><b>Las noticias están desactivadas</b></big>\n"
+"\n"
+"<span>\n"
+"Activar las noticias hace que el programa se conecte al servidor de Remmina "
+"para descargar las novedades de la versión.\n"
+"</span>\n"
+"\n"
+"<span>\n"
+"La comprobación de versión solo puede activarse en tiempo de compilación.\n"
+"</span>\n"
+"\n"
+"<span>\n"
+"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Novedades de "
+"la versión de Remmina\"><i>Visita la web de Remmina para leer las novedades "
+"de la versión</i></a>.\n"
+"</span>"
 
 #. The star (*) is a reference to privacy consent
 #: data/ui/remmina_news.glade:130 data/ui/remmina_preferences.glade:533
-#, fuzzy
 msgid ""
 "Send <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
 "remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
 "\">anonymous</a></b> statistics. (*)"
 msgstr ""
 "Enviar estadísticas <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab."
-"io/remmina__stats_8c.html#details\" title=\"estadísticas de uso de Remmina"
-"\">anónimas</a></b> a remmina.org"
+"io/remmina__stats_8c.html#details\" title=\"estadísticas de uso de Remmina\""
+">anónimas</a></b> a remmina.org"
 
 #: data/ui/remmina_news.glade:142 data/ui/remmina_news.glade:195
-#, fuzzy
 msgid "Send anonymous statistics"
-msgstr "Enviar estadísticas a remmina.org"
+msgstr "Enviar estadísticas anónimas"
 
 #: data/ui/remmina_news.glade:156
-#, fuzzy
 msgid "Use as default remote desktop client"
-msgstr "Hacer que Remmina sea el cliente de escritorios remotos predeterminado"
+msgstr "Usar como cliente de escritorio remoto predeterminado"
 
 #: data/ui/remmina_news.glade:165
 msgid "Apply"
@@ -2658,7 +2670,7 @@ msgstr "Aplicar"
 
 #: data/ui/remmina_news.glade:169
 msgid "Allow Remmina to automatically open .rdp and .remmina files."
-msgstr ""
+msgstr "Permitir a Remmina abir archivos .rdp y .remmina automáticamente."
 
 #. The star (*) is a reference to privacy consent
 #: data/ui/remmina_news.glade:183 data/ui/remmina_preferences.glade:548
@@ -2666,20 +2678,22 @@ msgid ""
 "Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
 "\">remmina.org</a> (*)"
 msgstr ""
+"Descargar las novedades desde <a href=\"https://remmina.org\" title=\"web de "
+"noticias de Remmina\">remmina.org</a> (*)"
 
 #: data/ui/remmina_news.glade:208 data/ui/remmina_preferences.glade:515
 msgid ""
 "* By enabling statistics and/or news you consent to send and fetch data to/"
 "from remmina.org"
 msgstr ""
+"* Al activar las estadisticas y/o noticias, se aprueba enviar y recibir "
+"datos de remmina.org"
 
 #: data/ui/remmina_news.glade:231
-#, fuzzy
 msgid "<big>Take part</big>"
 msgstr "<big>Contribuir</big>"
 
 #: data/ui/remmina_news.glade:257
-#, fuzzy
 msgid ""
 "<span>\n"
 "<b>You have our gratitude in choosing copylefted libre software, <a href="
@@ -2689,8 +2703,8 @@ msgid ""
 msgstr ""
 "<span>\n"
 "<b>Agradecemos que utilice software libre. <a href=\"https://remmina.org/"
-"donations/\" title=\"Donaciones para Remmina\">Su donativo</a> nos hará "
-"felices y ayudará a mejorar el programa.</b>\n"
+"donations/\" title=\"Donaciones para Remmina\">Su donativo nos hará felices</"
+"a> y ayudará a mejorar el programa.</b>\n"
 "</span>\n"
 
 #: data/ui/remmina_news.glade:277
@@ -2788,9 +2802,8 @@ msgid "Screen resolutions"
 msgstr "Resoluciones de pantalla"
 
 #: data/ui/remmina_preferences.glade:280
-#, fuzzy
 msgid "Folder for screenshots"
-msgstr "Carpeta para la sesión SSH"
+msgstr "Carpeta para capturas de pantalla"
 
 #: data/ui/remmina_preferences.glade:292
 msgid "Choose a folder to save screenshots from Remmina in."
@@ -2802,10 +2815,9 @@ msgstr "Seleccione una carpeta"
 
 #: data/ui/remmina_preferences.glade:305
 msgid "Set up"
-msgstr ""
+msgstr "Establecer"
 
 #: data/ui/remmina_preferences.glade:326
-#, fuzzy
 msgid "Screenshot filenames"
 msgstr "Nombre del archivo de captura de pantalla"
 
@@ -2907,27 +2919,23 @@ msgstr "Visor a pantalla completa"
 
 #: data/ui/remmina_preferences.glade:647
 msgid "Tabs"
-msgstr ""
+msgstr "Pestañas"
 
 #: data/ui/remmina_preferences.glade:662
-#, fuzzy
 msgid "By group"
-msgstr "Pestañas por grupos"
+msgstr "Por grupos"
 
 #: data/ui/remmina_preferences.glade:663
-#, fuzzy
 msgid "By protocols"
-msgstr "Pestañas por protocolos"
+msgstr "Por protocolos"
 
 #: data/ui/remmina_preferences.glade:664
-#, fuzzy
 msgid "Per connection"
-msgstr "Abrir una conexión"
+msgstr "Por conexión"
 
 #: data/ui/remmina_preferences.glade:665
-#, fuzzy
 msgid "None"
-msgstr "<Ninguna>"
+msgstr "Ninguna"
 
 #: data/ui/remmina_preferences.glade:676
 msgid "Fullscreen on the same screen as the connection window"
@@ -3024,23 +3032,23 @@ msgstr "Analizar ~/.ssh/config"
 
 #: data/ui/remmina_preferences.glade:1301
 msgid "No logging at all"
-msgstr ""
+msgstr "Ningún registro"
 
 #: data/ui/remmina_preferences.glade:1302
 msgid "Rare conditions or warnings"
-msgstr ""
+msgstr "Condiciones raras o advertencias"
 
 #: data/ui/remmina_preferences.glade:1303
 msgid "API-accessible entrypoints"
-msgstr ""
+msgstr "Entradas API-accessible"
 
 #: data/ui/remmina_preferences.glade:1304
 msgid "Lower level protocol info, packet level"
-msgstr ""
+msgstr "Información de protocolo de nivel inferior, nivel de paquete"
 
 #: data/ui/remmina_preferences.glade:1305
 msgid "Function entering and leaving"
-msgstr ""
+msgstr "Entrada y salida de función"
 
 #: data/ui/remmina_preferences.glade:1321
 msgid "SSH log level"
@@ -3133,8 +3141,6 @@ msgstr "Seleccionar todos los atajos"
 #: data/ui/remmina_preferences.glade:1822
 #: data/ui/remmina_preferences.glade:2249
 #: data/ui/remmina_preferences.glade:2266
-#, fuzzy
-#| msgid "(Host key +)"
 msgid "(Host key+)"
 msgstr "(Tecla anfitrión +)"
 
@@ -3147,9 +3153,8 @@ msgid "Allow bold text"
 msgstr "Permitir texto en negrita"
 
 #: data/ui/remmina_preferences.glade:1891
-#, fuzzy
 msgid "Colour theme"
-msgstr "Cargar tema de color"
+msgstr "Tema de color"
 
 #: data/ui/remmina_preferences.glade:1902
 msgid ""
