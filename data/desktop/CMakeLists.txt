@@ -141,57 +141,61 @@ install(
     DESTINATION "${CMAKE_INSTALL_FULL_BINDIR}"
     PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ GROUP_EXECUTE GROUP_READ WORLD_READ WORLD_EXECUTE
     )
-# Kiosk Session Files
-install(
-    FILES remmina-gnome-xsession.desktop
-    DESTINATION ${CMAKE_INSTALL_PREFIX}/share/xsessions
-    RENAME remmina-gnome.desktop
-    PERMISSIONS OWNER_WRITE OWNER_READ GROUP_READ WORLD_READ
-    )
-install(
-    FILES remmina-gnome.desktop
-    DESTINATION ${CMAKE_INSTALL_PREFIX}/share/applications
-    RENAME remmina-gnome.desktop
-    PERMISSIONS OWNER_WRITE OWNER_READ GROUP_READ WORLD_READ
-    )
-install(
-    FILES remmina-gnome.session
-    DESTINATION ${CMAKE_INSTALL_PREFIX}/share/gnome-session/sessions
-    RENAME remmina-gnome.session
-    PERMISSIONS OWNER_WRITE OWNER_READ GROUP_READ WORLD_READ
-    )
-install(
-    FILES remmina-gnome
-    DESTINATION ${CMAKE_INSTALL_PREFIX}/bin
-    RENAME remmina-gnome
-    PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ GROUP_EXECUTE GROUP_READ
-    WORLD_EXECUTE WORLD_READ
-    )
-
 if(WITH_MANPAGES)
-    install(
-        FILES remmina-gnome.1
-        DESTINATION ${CMAKE_INSTALL_FULL_MANDIR}/man1
-        )
-endif()
-
-install(
-    FILES gnome-session-remmina
-    DESTINATION ${CMAKE_INSTALL_PREFIX}/bin
-    RENAME gnome-session-remmina
-    PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ GROUP_EXECUTE GROUP_READ
-    WORLD_EXECUTE WORLD_READ
-    )
-
-if(WITH_MANPAGES)
-    install(
-        FILES gnome-session-remmina.1
-        DESTINATION ${CMAKE_INSTALL_FULL_MANDIR}/man1
-        )
     install(
         FILES remmina-file-wrapper.1
         DESTINATION ${CMAKE_INSTALL_FULL_MANDIR}/man1
         )
+endif()
+
+# Kiosk Session Files
+option(WITH_KIOSK_SESSION "Enable Kiosk desktop session files" OFF)
+if(WITH_KIOSK_SESSION)
+    message(STATUS "Kiosk desktop session files will be installed")
+    install(
+        FILES remmina-gnome-xsession.desktop
+        DESTINATION ${CMAKE_INSTALL_PREFIX}/share/xsessions
+        RENAME remmina-gnome.desktop
+        PERMISSIONS OWNER_WRITE OWNER_READ GROUP_READ WORLD_READ
+        )
+    install(
+        FILES remmina-gnome.desktop
+        DESTINATION ${CMAKE_INSTALL_PREFIX}/share/applications
+        RENAME remmina-gnome.desktop
+        PERMISSIONS OWNER_WRITE OWNER_READ GROUP_READ WORLD_READ
+        )
+    install(
+        FILES remmina-gnome.session
+        DESTINATION ${CMAKE_INSTALL_PREFIX}/share/gnome-session/sessions
+        RENAME remmina-gnome.session
+        PERMISSIONS OWNER_WRITE OWNER_READ GROUP_READ WORLD_READ
+        )
+    install(
+        FILES remmina-gnome
+        DESTINATION ${CMAKE_INSTALL_PREFIX}/bin
+        RENAME remmina-gnome
+        PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ GROUP_EXECUTE GROUP_READ
+        WORLD_EXECUTE WORLD_READ
+        )
+    install(
+        FILES gnome-session-remmina
+        DESTINATION ${CMAKE_INSTALL_PREFIX}/bin
+        RENAME gnome-session-remmina
+        PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ GROUP_EXECUTE GROUP_READ
+        WORLD_EXECUTE WORLD_READ
+        )
+    if(WITH_MANPAGES)
+        install(
+            FILES remmina-gnome.1
+            DESTINATION ${CMAKE_INSTALL_FULL_MANDIR}/man1
+            )
+        install(
+            FILES gnome-session-remmina.1
+            DESTINATION ${CMAKE_INSTALL_FULL_MANDIR}/man1
+            )
+    endif()
+else()
+    message(STATUS "Kiosk desktop session files won't be installed")
 endif()
 
 # XML mime types
