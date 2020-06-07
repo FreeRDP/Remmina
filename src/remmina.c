@@ -94,7 +94,7 @@ static GOptionEntry remmina_options[] =
 	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 	{ "new",	      'n',  0,			  G_OPTION_ARG_NONE,	       NULL, N_("Create new connection profile"),						     NULL	},
 	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-	{ "pref",	      'p',  0,			  G_OPTION_ARG_STRING,	       NULL, N_("Show preferences"),								     N_("PAGENR")	},
+	{ "pref",	      'p',  0,			  G_OPTION_ARG_STRING,	       NULL, N_("Show preferences"),								     N_("TABINDEX")	},
 #if 0
 	/* This option was used mainly for telepathy, let's keep it if we will need it in the future */
 	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
