@@ -65,7 +65,7 @@ Comment[sk]=Pripojenie k vzdialeným pracovným plochám
 Comment[sv]=Anslut till fjärrskrivbord
 Comment[th]=เชื่อมต่อไปยังพื้นโต๊ะระยะไกล
 Comment[tr]=Uzak masaüstlerine bağlan
-Comment[uk]=Приєднатися до віддаленого комп’ютера
+Comment[uk]=З'єднатися із віддаленим комп'ютером
 Comment[zh_CN]=连接到远程桌面
 TryExec=remmina-file-wrapper
 Exec=remmina-file-wrapper %U
@@ -98,7 +98,7 @@ Name[ru]=Создать профиль нового соединения
 Name[sk]=Vytvoriť nový profil pripojenia
 Name[sv]=Skapa en ny anslutningsprofil
 Name[tr]=Yeni Bir Bağlantı Profili Oluştur
-Name[uk]=Створити новий профіль з’єднання
+Name[uk]=Створити новий профіль з'єднання
 Name[zh_CN]=新建连接配置
 Exec=@REMMINA_BINARY_PATH@ --new
 
@@ -108,6 +108,7 @@ Name=Start Remmina in Kiosk mode
 Name[da]=Start Remmina i kiosk-tilstand
 Name[fr]=Démarrer Remmina en mode Kiosque
 Name[it]=Avvia Remmina in modo Chiosco
+Name[uk]=Запустити Remmina у режимі кіоску
 Exec=@REMMINA_BINARY_PATH@ --kiosk
 
 [Desktop Action Tray]
@@ -130,10 +131,11 @@ Name[ru]=Сворачивать Remmina после запуска
 Name[sk]=Spustiť program Remmina minimalizovaný
 Name[sv]=Starta Remmina minimerat
 Name[tr]=Remmina'yı Küçültülmüş Başlat
-Name[uk]=Запустити Rammina у системному лотку
+Name[uk]=Запустити Remmina у системному лотку
 Name[zh_CN]=启动后自动最小化
 Exec=@REMMINA_BINARY_PATH@ --icon
 
 [Desktop Action Quit]
 Name=Quit
+Name[uk]=Вийти
 Exec=@REMMINA_BINARY_PATH@ --quit
