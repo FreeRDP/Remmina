@@ -15,9 +15,9 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-06-05 21:53+0000\n"
-"PO-Revision-Date: 2020-06-06 23:14+0000\n"
-"Last-Translator: YAMADA Shinichirou <yamada_strong_yamada_nice_64bit@yahoo."
-"co.jp>\n"
+"PO-Revision-Date: 2020-06-07 16:01+0000\n"
+"Last-Translator: YAMADA Shinichirou <yamada_strong_yamada_nice_64bit@yahoo.co"
+".jp>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/remmina/remmina/"
 "ja/>\n"
 "Language: ja\n"
@@ -1765,7 +1765,7 @@ msgstr "%s が転送されました"
 
 #: plugins/xdmcp/xdmcp_plugin.c:97
 msgid "Ran out of available local X display numbers."
-msgstr ""
+msgstr "利用可能なローカル X ディスプレイ番号が不足しています。"
 
 #: plugins/xdmcp/xdmcp_plugin.c:264 plugins/nx/nx_plugin.c:617
 #, c-format
@@ -2053,6 +2053,12 @@ msgid ""
 "  • >= 7065: Windows 8 and newer: SCardGetReaderIcon(),\n"
 "    SCardGetDeviceTypeId()"
 msgstr ""
+"主にクライアントの機能を区別するために、スマートカードチャンネルのターミナルサービスによって使用されます:\n"
+"  • < 4034: Windows XP ベースのスマートカード関数\n"
+"  • 4034-7064: Windows Vista/7: SCardReadCache(),\n"
+"    SCardWriteCache(), SCardGetTransmitCount()\n"
+"  • >= 7065: Windows 8 以降: SCardGetReaderIcon(),\n"
+"    SCardGetDeviceTypeId()"
 
 #: plugins/rdp/rdp_plugin.c:2032
 msgid ""
@@ -2931,7 +2937,7 @@ msgstr "なし"
 
 #: data/ui/remmina_preferences.glade:676
 msgid "Fullscreen on the same screen as the connection window"
-msgstr ""
+msgstr "接続ウィンドウを同じスクリーン上に全画面表示する"
 
 #: data/ui/remmina_preferences.glade:700
 msgid "Peeking"
