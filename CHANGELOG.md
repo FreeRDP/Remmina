@@ -13,6 +13,12 @@
 * Implementing resume all for FTP file transfer, should fix #2210 [!2072](https://gitlab.com/Remmina/Remmina/merge_requests/2072) *@antenore*
 * Spelling: Overwrite all file transfers [!2073](https://gitlab.com/Remmina/Remmina/merge_requests/2073) *@kingu*
 * Spelling: Options for redirection x2, -: [!2074](https://gitlab.com/Remmina/Remmina/merge_requests/2074) *@kingu*
+* Edit or connect using multiple profile files from the command line [!2075](https://gitlab.com/Remmina/Remmina/merge_requests/2075) *@antenore*
+* Desktop session files for Remmina kiosk are optional [!2076](https://gitlab.com/Remmina/Remmina/merge_requests/2076) *@antenore*
+* Update Ukrainian translation for the desktop file [!2077](https://gitlab.com/Remmina/Remmina/merge_requests/2077) *@yurchor*
+* Remove 'translatable="yes"' from the fake label in remmina_spinner.glade [!2079](https://gitlab.com/Remmina/Remmina/merge_requests/2079) *@yurchor*
+* Remove 'translatable="yes"' from the fake label [!2078](https://gitlab.com/Remmina/Remmina/merge_requests/2078) *@yurchor*
+* Feat/lebowski [!2080](https://gitlab.com/Remmina/Remmina/merge_requests/2080) *@antenore*
 
 ## v1.4.5
 [full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.4...v1.4.5)
