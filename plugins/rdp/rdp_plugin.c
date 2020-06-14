@@ -92,6 +92,103 @@ static char remmina_rdp_plugin_default_drive_name[] = "RemminaDisk";
 
 static BOOL gfx_h264_available = FALSE;
 
+/* Compatibility: these functions have been introduced with https://github.com/FreeRDP/FreeRDP/commit/8c5d96784d
+ * and are missing on older FreeRDP, so we add them here.
+ * They should be removed from here after all distributed versions of FreeRDP (libwinpr) will have
+ * CommandLineParseCommaSeparatedValuesEx() onboard.
+ *
+ * (C) Copyright goes to the FreeRDP authors.
+ */
+static char** remmina_rdp_CommandLineParseCommaSeparatedValuesEx(const char* name, const char* list, size_t* count)
+{
+	char** p;
+	char* str;
+	size_t nArgs;
+	size_t index;
+	size_t nCommas;
+	size_t prefix, len;
+	nCommas = 0;
+
+	if (count == NULL)
+		return NULL;
+
+	*count = 0;
+
+	if (!list)
+	{
+		if (name)
+		{
+			size_t len = strlen(name);
+			p = (char**)calloc(2UL + len, sizeof(char*));
+
+			if (p)
+			{
+				char* dst = (char*)&p[1];
+				p[0] = dst;
+				sprintf_s(dst, len + 1, "%s", name);
+				*count = 1;
+				return p;
+			}
+		}
+
+		return NULL;
+	}
+
+	{
+		const char* it = list;
+
+		while ((it = strchr(it, ',')) != NULL)
+		{
+			it++;
+			nCommas++;
+		}
+	}
+
+	nArgs = nCommas + 1;
+
+	if (name)
+		nArgs++;
+
+	prefix = (nArgs + 1UL) * sizeof(char*);
+	len = strlen(list);
+	p = (char**)calloc(len + prefix + 1, sizeof(char*));
+
+	if (!p)
+		return NULL;
+
+	str = &((char*)p)[prefix];
+	memcpy(str, list, len);
+
+	if (name)
+		p[0] = (char*)name;
+
+	for (index = name ? 1 : 0; index < nArgs; index++)
+	{
+		char* comma = strchr(str, ',');
+		p[index] = str;
+
+		if (comma)
+		{
+			str = comma + 1;
+			*comma = '\0';
+		}
+	}
+
+	*count = nArgs;
+	return p;
+}
+
+static char** remmina_rdp_CommandLineParseCommaSeparatedValues(const char* list, size_t* count)
+{
+	return remmina_rdp_CommandLineParseCommaSeparatedValuesEx(NULL, list, count);
+}
+
+/*
+ * End of CommandLineParseCommaSeparatedValuesEx() compatibility and copyright
+ */
+
+
+
 static BOOL rf_process_event_queue(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
@@ -1346,7 +1443,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 		char **p;
 		size_t count;
 
-		p = CommandLineParseCommaSeparatedValuesEx("audin", g_strdup(cs), &count);
+		p = remmina_rdp_CommandLineParseCommaSeparatedValuesEx("audin", g_strdup(cs), &count);
 
 		freerdp_client_add_dynamic_channel(rfi->settings, count, p);
 		rfi->settings->AudioCapture = TRUE;
@@ -1357,7 +1454,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 	if (cs != NULL && cs[0] != '\0') {
 		char **p;
 		size_t count;
-		p = CommandLineParseCommaSeparatedValuesEx("urbdrc", g_strdup(cs), &count);
+		p = remmina_rdp_CommandLineParseCommaSeparatedValuesEx("urbdrc", g_strdup(cs), &count);
 		freerdp_client_add_dynamic_channel(rfi->settings, count, p);
 		g_free(p);
 	}
@@ -1366,7 +1463,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 	if (cs != NULL && cs[0] != '\0') {
 		char **p;
 		size_t count;
-		p = CommandLineParseCommaSeparatedValues(g_strdup(cs), &count);
+		p = remmina_rdp_CommandLineParseCommaSeparatedValues(g_strdup(cs), &count);
 		freerdp_client_add_static_channel(rfi->settings, count, p);
 		g_free(p);
 	}
@@ -1375,7 +1472,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 	if (cs != NULL && cs[0] != '\0') {
 		char **p;
 		size_t count;
-		p = CommandLineParseCommaSeparatedValues(g_strdup(cs), &count);
+		p = remmina_rdp_CommandLineParseCommaSeparatedValues(g_strdup(cs), &count);
 		freerdp_client_add_dynamic_channel(rfi->settings, count, p);
 		g_free(p);
 	}
