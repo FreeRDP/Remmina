@@ -42,17 +42,18 @@
 #include <gdk/gdkx.h>
 
 static RemminaPluginService *remmina_plugin_service = NULL;
+#define REMMINA_PLUGIN_DEBUG(fmt, ...) remmina_plugin_service->_remmina_debug(__func__, fmt, ##__VA_ARGS__)
 
 static void remmina_plugin_tool_init(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
-	remmina_plugin_service->_debug("[%s] Plugin init", PLUGIN_NAME);
+	REMMINA_PLUGIN_DEBUG("[%s] Plugin init", PLUGIN_NAME);
 }
 
 static gboolean remmina_plugin_tool_open_connection(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
-	remmina_plugin_service->_debug("[%s] Plugin open connection", PLUGIN_NAME);
+	REMMINA_PLUGIN_DEBUG("[%s] Plugin open connection", PLUGIN_NAME);
 
 	GtkDialog *dialog;
 	dialog = GTK_DIALOG(gtk_message_dialog_new(NULL, GTK_DIALOG_MODAL | GTK_DIALOG_USE_HEADER_BAR,
@@ -65,7 +66,7 @@ static gboolean remmina_plugin_tool_open_connection(RemminaProtocolWidget *gp)
 static gboolean remmina_plugin_tool_close_connection(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
-	remmina_plugin_service->_debug("[%s] Plugin close connection", PLUGIN_NAME);
+	REMMINA_PLUGIN_DEBUG("[%s] Plugin close connection", PLUGIN_NAME);
 	remmina_plugin_service->protocol_plugin_emit_signal(gp, "disconnect");
 	return FALSE;
 }
