@@ -2099,7 +2099,7 @@ static gpointer sound_list[] =
 /* Array of key/value pairs for security */
 static gpointer security_list[] =
 {
-	"",    N_("Automatically negotiate"),
+	"",    N_("Automatic negotiation"),
 	"nla", N_("NLA protocol security"),
 	"tls", N_("TLS protocol security"),
 	"rdp", N_("RDP protocol security"),
