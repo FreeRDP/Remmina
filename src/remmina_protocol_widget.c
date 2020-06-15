@@ -478,7 +478,6 @@ void remmina_protocol_widget_send_keystrokes(RemminaProtocolWidget *gp, GtkMenuI
 	guint *keyvals;
 	gint i;
 	GdkKeymap *keymap = gdk_keymap_get_for_display(gdk_display_get_default());
-	gchar *iter = keystrokes;
 	gunichar character;
 	guint keyval;
 	GdkKeymapKey *keys;
@@ -503,10 +502,13 @@ void remmina_protocol_widget_send_keystrokes(RemminaProtocolWidget *gp, GtkMenuI
 	if (remmina_protocol_widget_plugin_receives_keystrokes(gp)) {
 		/* Replace special characters */
 		for (i = 0; keystrokes_replaces[i].replace; i++) {
-			remmina_public_str_replace_in_place(keystrokes,
+			REMMINA_DEBUG("Keystrokes before replacement is \'%s\'", keystrokes);
+			keystrokes = g_strdup(remmina_public_str_replace_in_place(keystrokes,
 							    keystrokes_replaces[i].search,
-							    keystrokes_replaces[i].replace);
+							    keystrokes_replaces[i].replace));
+			REMMINA_DEBUG("Keystrokes after replacement is \'%s\'", keystrokes);
 		}
+		gchar *iter =  g_strdup(keystrokes);
 		keyvals = (guint *)g_malloc(strlen(keystrokes));
 		while (TRUE) {
 			/* Process each character in the keystrokes */
