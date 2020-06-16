@@ -38,12 +38,12 @@
  * @author Antenore Gatta and Giovanni Panozzo
  * @date 12 Feb 2018
  *
- * When Remmina starts asks the user if she/he wants to share some usage statistics
+ * When Remmina starts asks the user to share some usage statistics
  * with the Remmina developers. As per the opt-in model
  * (https://en.wikipedia.org/wiki/Opt-in_email), without the consent of the user,
- * none of these data will be collected.
- * Additionally a user can asks, at any moment, that any data linked to his/her
- * profiles to be deleted, and he/she can change the Remmina settings to stop
+ * no data will be collected.
+ * Additionally a user can ask, at any moment, that any data linked to their
+ * profile to be deleted, and can change the Remmina settings to stop
  * collecting and sharing usage statistics.
  *
  * All the data are encrypted at client side using RSA, through the OpenSSL
@@ -127,7 +127,7 @@
  *  - Protocols used
  *  - Last time each protocol has been used (globally).
  *
- * @see http://www.remmina.org/wp for more information.
+ * @see https://www.remmina.org/wp for more info.
  */
 
 
@@ -326,7 +326,7 @@ JsonNode *remmina_stats_get_os_info()
  * Gets the following user environment:
  *   - Gets the user’s locale (or NULL by default) corresponding to LC_ALL.
  *
- * @return a Json Node structure containing the user’s environment.
+ * @return a JSON Node structure containing the user’s environment.
  */
 JsonNode *remmina_stats_get_user_env()
 {
@@ -375,7 +375,7 @@ JsonNode *remmina_stats_get_version()
 #endif
 
 	/**
-	 * Detect if we are running under Flatpak
+	 * Detect if Remmina is running under Flatpak
 	 */
 	json_builder_set_member_name(b, "flatpak_build");
 	/* Flatpak sandbox should contain the file ${XDG_RUNTIME_DIR}/flatpak-info */
@@ -463,13 +463,13 @@ JsonNode *remmina_stats_get_wm_name()
 
 	json_builder_set_member_name(b, "window_manager");
 
-	/** We try to get the Gnome SHELL version */
+	/** We try to get the GNOME Shell version */
 	wmver = remmina_sysinfo_get_gnome_shell_version();
 	if (!wmver || wmver[0] == '\0') {
-		REMMINA_DEBUG("Gnome Shell not found");
+		REMMINA_DEBUG("GNOME Shell not found");
 	}else {
-		REMMINA_DEBUG("Gnome Shell version: %s\n", wmver);
-		json_builder_add_string_value(b, "Gnome Shell");
+		REMMINA_DEBUG("GNOME Shell version: %s\n", wmver);
+		json_builder_add_string_value(b, "GNOME Shell");
 		json_builder_set_member_name(b, "gnome_shell_ver");
 		json_builder_add_string_value(b, wmver);
 		goto end;
@@ -479,10 +479,10 @@ JsonNode *remmina_stats_get_wm_name()
 	wmname = remmina_sysinfo_get_wm_name();
 	if (!wmname || wmname[0] == '\0') {
 		/** When everything else fails with set the WM name to NULL **/
-		REMMINA_DEBUG("Cannot determine the Window Manger name");
+		REMMINA_DEBUG("Cannot determine the window manger name");
 		json_builder_add_string_value(b, "n/a");
 	}else {
-		REMMINA_DEBUG("Window Manger names %s", wmname);
+		REMMINA_DEBUG("Window manger names %s", wmname);
 		json_builder_add_string_value(b, wmname);
 	}
 	g_free(wmname);
@@ -659,7 +659,7 @@ static void remmina_profiles_get_data(RemminaFile *remminafile, gpointer user_da
 }
 
 /**
- * Add a json member profile_count with a child for each protocol used by the user.
+ * Add a JSON member profile_count with a child for each protocol used by the user.
  * Count how many profiles are in use and for each protocol in use counts of how many
  * profiles that uses such protocol.
  *
@@ -678,7 +678,7 @@ static void remmina_profiles_get_data(RemminaFile *remminafile, gpointer user_da
  * | SPICE  |  20171122 |
  * | SSH    |  20180111 |
  *
- * @return a Json Node structure containing the protocol usage statistics.
+ * @return a JSON Node structure containing the protocol usage statistics.
  *
  */
 JsonNode *remmina_stats_get_profiles()
@@ -748,9 +748,9 @@ JsonNode *remmina_stats_get_profiles()
 }
 
 /**
- * Add a json member ACTIVESECRETPLUGIN which shows the current secret plugin in use by remmina.
+ * Add a JSON member ACTIVESECRETPLUGIN which shows the current secret plugin in use by Remmina.
  *
- * @return a Json Node structure containing the secret plugin in use
+ * @return a JSON Node structure containing the secret plugin in use
  *
  */
 JsonNode *remmina_stats_get_secret_plugin()
@@ -777,9 +777,9 @@ JsonNode *remmina_stats_get_secret_plugin()
 }
 
 /**
- * Add a json member HASMASTERPASSWORD which shows the status of the master password.
+ * Add a JSON member HASMASTERPASSWORD which shows the status of the master password.
  *
- * @return a Json Node structure containing the status of the master password
+ * @return a JSON Node structure containing the status of the master password
  *
  */
 JsonNode *remmina_stats_get_master_password_status()
@@ -809,7 +809,7 @@ JsonNode *remmina_stats_get_master_password_status()
 /**
  * Add a json member KIOSK which shows the status of the kiosk.
  *
- * @return a Json Node structure containing the status of the master password
+ * @return a JSON Node structure containing the status of the master password
  *
  */
 JsonNode *remmina_stats_get_kiosk_mode()
@@ -839,7 +839,7 @@ JsonNode *remmina_stats_get_kiosk_mode()
 
 
 /**
- * Get all statistics in json format to send periodically to the PHP server.
+ * Get all statistics in JSON format to send periodically to the PHP server.
  * The caller should free the returned buffer with g_free()
  * @warning This function is usually executed on a dedicated thread,
  * not on the main thread.
