@@ -80,8 +80,8 @@ gboolean remmina_sysinfo_is_appindicator_available()
 }
 
 /**
- * Query DBUS to get gnome shell version.
- * @return the gnome shell version as a string or NULL if error or no gnome shell found.
+ * Query DBUS to get GNOME Shell version.
+ * @return the GNOME Shell version as a string or NULL if error or no GNOME Shell found.
  * @warning The returned string must be freed with g_free.
  */
 gchar *remmina_sysinfo_get_gnome_shell_version()
@@ -123,7 +123,7 @@ gchar *remmina_sysinfo_get_gnome_shell_version()
 }
 
 /**
- * Query environment variables to get the Window manager name..
+ * Query environment variables to get the Window manager name.
  * @return a string composed by XDG_CURRENT_DESKTOP and GDMSESSION as a string
  * or \0 if nothing has been found.
  * @warning The returned string must be freed with g_free.

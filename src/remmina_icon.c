@@ -381,7 +381,7 @@ gboolean remmina_icon_is_available(void)
 	if (remmina_pref.disable_tray_icon)
 		return FALSE;
 
-	/* Special treatmen under Gnome Shell */
+	/* Special treatmen under GNOME Shell */
 	if ((gsversion = remmina_sysinfo_get_gnome_shell_version()) != NULL) {
 		if (sscanf(gsversion, "%u.%u", &gsv_maj, &gsv_min) == 2)
 			gsv_seq = gsv_maj << 16 | gsv_min << 8;
@@ -391,17 +391,17 @@ gboolean remmina_icon_is_available(void)
 
 		gshell_has_legacyTray = FALSE;
 		if (gsv_seq >= 0x031000 && gsv_seq <= 0x031800)
-			/* Gnome shell from 3.16 to 3.24, Status Icon (GtkStatusIcon) is visible on the drawer
+			/* GNOME Shell from 3.16 to 3.24, Status Icon (GtkStatusIcon) is visible in the drawer
 			 * at the bottom left of the screen */
 			gshell_has_legacyTray = TRUE;
 
 
 #ifdef HAVE_LIBAPPINDICATOR
-		/** Gnome Shell with compiled in LIBAPPINDICATOR:
+		/** GNOME Shell with compiled in LIBAPPINDICATOR:
 		 * ensure have also a working appindicator extension available.
 		 */
 		if (remmina_sysinfo_is_appindicator_available())
-			/* No libappindicator extension for gnome shell, no remmina_icon */
+			/* No libappindicator extension for GNOME Shell, no remmina_icon */
 			return TRUE;
 		else if (gshell_has_legacyTray)
 			return TRUE;
@@ -409,12 +409,12 @@ gboolean remmina_icon_is_available(void)
 			return FALSE;
 
 #endif
-		/* Gnome Shell without LIBAPPINDICATOR */
+		/* GNOME Shell without LIBAPPINDICATOR */
 		if (gshell_has_legacyTray)
 			return TRUE;
 		else
-			/* Gnome shell < 3.16, Status Icon (GtkStatusIcon) is hidden
-			 * on the message tray */
+			/* GNOME Shell < 3.16, Status Icon (GtkStatusIcon) is hidden
+			 * in the message tray */
 			return FALSE;
 	}
 	return TRUE;
@@ -441,9 +441,9 @@ void remmina_icon_init(void)
 	if (sni_supported) {
 		strcat(msg, "your desktop does support it");
 #ifdef HAVE_LIBAPPINDICATOR
-		strcat(msg, " and libappindicator is compiled in remmina. Good!");
+		strcat(msg, " and libappindicator is compiled in Remmina. Good.");
 #else
-		strcat(msg, ", but you did not compile remmina with cmake’s -DWITH_APPINDICATOR=on");
+		strcat(msg, ", but you did not compile Remmina with CMake’s -DWITH_APPINDICATOR=on");
 #endif
 	} else {
 #ifdef HAVE_LIBAPPINDICATOR
@@ -457,7 +457,7 @@ void remmina_icon_init(void)
 
 	remmina_icon.gsversion = remmina_sysinfo_get_gnome_shell_version();
 	if (remmina_icon.gsversion != NULL)
-		printf("Running under Gnome Shell version %s\n", remmina_icon.gsversion);
+		printf("Running under GNOME Shell version %s\n", remmina_icon.gsversion);
 
 	if (!remmina_icon.icon && !remmina_pref.disable_tray_icon) {
 #ifdef HAVE_LIBAPPINDICATOR

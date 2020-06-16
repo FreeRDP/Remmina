@@ -2781,7 +2781,7 @@ static gboolean rcw_on_configure(GtkWidget *widget, GdkEventConfigure *event,
 
 	if (gtk_widget_get_window(GTK_WIDGET(cnnwin))
 	    && cnnwin->priv->view_mode == SCROLLED_WINDOW_MODE)
-		/* Under Gnome shell we receive this configure_event BEFORE a window
+		/* Under GNOME Shell we receive this configure_event BEFORE a window
 		 * is really unmaximized, so we must read its new state and dimensions
 		 * later, not now */
 		cnnwin->priv->acs_eventsourceid = g_timeout_add(500, rcw_after_configure_scrolled, cnnobj);
@@ -3796,7 +3796,7 @@ static gboolean rcw_hostkey_func(RemminaProtocolWidget *gp, guint keyval, gboole
 	 * priv is now invalid. So we can no longer use priv here */
 	cnnobj->cnnwin->priv->hostkey_activated = FALSE;
 
-	/* Trap all key presses when hostkey is pressed */
+	/* Trap all keypresses when hostkey is pressed */
 	return TRUE;
 }
 
@@ -3864,7 +3864,7 @@ void rco_on_connect(RemminaProtocolWidget *gp, RemminaConnectionObject *cnnobj)
 	if (remmina_pref.periodic_usage_stats_permitted) {
 		REMMINA_DEBUG("Stats are allowed, we save the last successful connection date");
 		remmina_file_set_string(cnnobj->remmina_file, "last_success", last_success);
-		REMMINA_DEBUG("Last connection was made on %s.", last_success);
+		REMMINA_DEBUG("Last connection made on %s.", last_success);
 	}
 
 	REMMINA_DEBUG("Saving credentials");
@@ -3999,7 +3999,7 @@ static void rpw_size_allocated_on_connection(GtkWidget *w, GdkRectangle *allocat
 	/* Disconnect signal handler to avoid to be called again after a normal resize */
 	g_signal_handler_disconnect(w, gp->cnnobj->deferred_open_size_allocate_handler);
 
-	/* Allow extra 100ms for size allocation (do we really need it?) */
+	/* Allow extra 100 ms for size allocation (do we really need it?) */
 	g_timeout_add(100, open_connection_last_stage, gp);
 
 	return;
@@ -4045,7 +4045,7 @@ GtkWidget *rcw_open_from_file_full(RemminaFile *remminafile, GCallback disconnec
 						GTK_MESSAGE_ERROR, GTK_BUTTONS_CLOSE, "%s", msg);
 		gtk_dialog_run(GTK_DIALOG(dialog));
 		gtk_widget_destroy(dialog);
-		/* We should destroy cnnobj->proto and cnnobj now… ToDo: fix this leak */
+		/* We should destroy cnnobj->proto and cnnobj now… TODO: Fix this leak */
 		return NULL;
 	}
 
@@ -4147,7 +4147,7 @@ GtkWidget *rcw_open_from_file_full(RemminaFile *remminafile, GCallback disconnec
 
 	if (remmina_protocol_widget_has_error((RemminaProtocolWidget *)cnnobj->proto)) {
 		printf("OK, an error occurred in initializing the protocol plugin before connecting. The error is %s.\n"
-		       "ToDo: Put this string as error to show", remmina_protocol_widget_get_error_message((RemminaProtocolWidget *)cnnobj->proto));
+		       "TODO: Put this string as an error to show", remmina_protocol_widget_get_error_message((RemminaProtocolWidget *)cnnobj->proto));
 		return cnnobj->proto;
 	}
 
