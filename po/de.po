@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-06-15 20:27+0000\n"
-"PO-Revision-Date: 2020-06-08 09:08+0000\n"
+"PO-Revision-Date: 2020-06-16 15:49+0000\n"
 "Last-Translator: Johannes Weberhofer <jweberhofer@weberhofer.at>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/remmina/remmina/"
 "de/>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.1-dev\n"
+"X-Generator: Weblate 4.1.1-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
 
 #: src/remmina_protocol_widget.c:275
@@ -44,12 +44,12 @@ msgstr "Verbinden zu \"%s\"…"
 #: src/remmina_protocol_widget.c:747 src/remmina_protocol_widget.c:865
 #, c-format
 msgid "Connecting to \"%s\" via SSH…"
-msgstr "Stelle SSH-Verbindung zu \"%s\" her…"
+msgstr "SSH-Verbindung zu \"%s\" herstellen…"
 
 #: src/remmina_protocol_widget.c:928
 #, c-format
 msgid "Awaiting incoming SSH connection on port %i…"
-msgstr "Warte auf eine eingehende Verbindung an Port %i…"
+msgstr "Auf eingehende Verbindung an Port %i warten…"
 
 #: src/remmina_protocol_widget.c:980
 #, c-format
@@ -60,8 +60,8 @@ msgstr "Der Befehl \"%s\" ist auf dem SSH-Server nicht verfügbar."
 #, c-format
 msgid "Could not run the \"%s\" command on the SSH server (status = %i)."
 msgstr ""
-"Der Befehl \"%s\" konnte auf dem SSH-Server nicht ausgeführt werden. Status: "
-"%i."
+"Der Befehl \"%s\" konnte auf dem SSH-Server nicht ausgeführt werden (Status "
+"= %i)."
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_protocol_widget.c:992
@@ -113,7 +113,7 @@ msgstr "Das Zertifikat hat sich verändert! Details:"
 
 #: src/remmina_protocol_widget.c:1524
 msgid "Old fingerprint:"
-msgstr "Alter Fingerabrdruck:"
+msgstr "Alter Fingerabdruck:"
 
 #: src/remmina_protocol_widget.c:1525
 msgid "New fingerprint:"
@@ -126,7 +126,7 @@ msgstr "Geändertes Zertifikat akzeptieren?"
 #: src/remmina_protocol_widget.c:1668
 #, c-format
 msgid "Listening on port %i for an incoming %s connection…"
-msgstr "Lausche auf Port %i auf eine eingehende %s‐Verbindung…"
+msgstr "Warte auf Port %i auf eine eingehende %s‐Verbindung…"
 
 #: src/remmina_protocol_widget.c:1693
 msgid "Could not authenticate, attempting reconnection…"
@@ -2025,10 +2025,8 @@ msgid "Local - high quality"
 msgstr "Lokal – Hohe Qualität"
 
 #: plugins/rdp/rdp_plugin.c:2102
-#, fuzzy
-#| msgid "Automatically negotiate"
 msgid "Automatic negotiation"
-msgstr "Automatisch erkennen"
+msgstr "Automatische Erkennung"
 
 #: plugins/rdp/rdp_plugin.c:2103
 msgid "NLA protocol security"
