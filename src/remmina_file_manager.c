@@ -278,6 +278,7 @@ GNode *remmina_file_manager_get_group_tree(void)
 	TRACE_CALL(__func__);
 	gchar filename[MAX_PATH_LEN];
 	GDir *dir;
+	g_autofree gchar *datadir = NULL;
 	const gchar *name;
 	RemminaFile *remminafile;
 	const gchar *group;
@@ -285,14 +286,15 @@ GNode *remmina_file_manager_get_group_tree(void)
 
 	root = g_node_new(NULL);
 
-	dir = g_dir_open(remmina_file_get_datadir(), 0, NULL);
+	datadir = g_strdup(remmina_file_get_datadir());
+	dir = g_dir_open(datadir, 0, NULL);
 
 	if (dir == NULL)
 		return root;
 	while ((name = g_dir_read_name(dir)) != NULL) {
 		if (!g_str_has_suffix(name, ".remmina"))
 			continue;
-		g_snprintf(filename, MAX_PATH_LEN, "%s/%s", remmina_file_get_datadir(), name);
+		g_snprintf(filename, MAX_PATH_LEN, "%s/%s", datadir, name);
 		remminafile = remmina_file_load(filename);
 		if (remminafile) {
 			group = remmina_file_get_string(remminafile, "group");

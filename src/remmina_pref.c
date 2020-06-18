@@ -75,7 +75,7 @@ static void remmina_pref_gen_secret(void)
 	gint i;
 	GDateTime *gtime;
 	GKeyFile *gkeyfile;
-	gchar *content;
+	g_autofree gchar *content = NULL;
 	gsize length;
 
 	gtime = g_date_time_new_now_utc();
@@ -93,7 +93,6 @@ static void remmina_pref_gen_secret(void)
 	g_file_set_contents(remmina_pref_file, content, length, NULL);
 
 	g_key_file_free(gkeyfile);
-	g_free(content);
 }
 
 static guint remmina_pref_get_keyval_from_str(const gchar *str)
@@ -120,7 +119,7 @@ static void remmina_pref_init_keymap(void)
 	gchar **keys;
 	gchar **kptr;
 	gsize nkeys;
-	gchar *value;
+	g_autofree gchar *value = NULL;
 	guint *table;
 	guint *tableptr;
 	guint k1, k2;
@@ -153,7 +152,6 @@ static void remmina_pref_init_keymap(void)
 			if (k1) {
 				value = g_key_file_get_string(gkeyfile, *gptr, *kptr, NULL);
 				k2 = remmina_pref_get_keyval_from_str(value);
-				g_free(value);
 				*tableptr++ = k1;
 				*tableptr++ = k2;
 			}
@@ -225,9 +223,9 @@ void remmina_pref_init(void)
 	gchar *remmina_dir;
 	const gchar *filename = "remmina.pref";
 	const gchar *colors_filename = "remmina.colors";
-	gchar *remmina_colors_file;
+	g_autofree gchar *remmina_colors_file = NULL;
 	GDir *dir;
-	gchar *legacy = ".remmina";
+	const gchar *legacy = ".remmina";
 	int i;
 
 	remmina_dir = g_build_path("/", g_get_user_config_dir(), "remmina", NULL);
@@ -736,7 +734,7 @@ gboolean remmina_pref_save(void)
 	}
 	GKeyFile *gkeyfile;
 	GError *error = NULL;
-	gchar *content;
+	g_autofree gchar *content = NULL;
 	gsize length;
 
 	gkeyfile = g_key_file_new();
@@ -853,11 +851,9 @@ gboolean remmina_pref_save(void)
 		g_warning("remmina_pref_save error: %s", error->message);
 		g_clear_error(&error);
 		g_key_file_free(gkeyfile);
-		g_free(content);
 		return FALSE;
 	}
 	g_key_file_free(gkeyfile);
-	g_free(content);
 	return TRUE;
 }
 
@@ -867,8 +863,8 @@ void remmina_pref_add_recent(const gchar *protocol, const gchar *server)
 	RemminaStringArray *array;
 	GKeyFile *gkeyfile;
 	gchar key[20];
-	gchar *val;
-	gchar *content;
+	g_autofree gchar *val = NULL;
+	g_autofree gchar *content = NULL;
 	gsize length;
 
 	if (remmina_pref.recent_maximum <= 0 || server == NULL || server[0] == 0)
@@ -891,13 +887,11 @@ void remmina_pref_add_recent(const gchar *protocol, const gchar *server)
 	/* Save */
 	val = remmina_string_array_to_string(array);
 	g_key_file_set_string(gkeyfile, "remmina_pref", key, val);
-	g_free(val);
 
 	content = g_key_file_to_data(gkeyfile, &length, NULL);
 	g_file_set_contents(remmina_pref_file, content, length, NULL);
 
 	g_key_file_free(gkeyfile);
-	g_free(content);
 }
 
 gchar *
@@ -906,7 +900,7 @@ remmina_pref_get_recent(const gchar *protocol)
 	TRACE_CALL(__func__);
 	GKeyFile *gkeyfile;
 	gchar key[20];
-	gchar *val;
+	gchar *val = NULL;
 
 	gkeyfile = g_key_file_new();
 
@@ -926,7 +920,7 @@ void remmina_pref_clear_recent(void)
 	GKeyFile *gkeyfile;
 	gchar **keys;
 	gint i;
-	gchar *content;
+	g_autofree gchar *content = NULL;
 	gsize length;
 
 	gkeyfile = g_key_file_new();
@@ -944,7 +938,6 @@ void remmina_pref_clear_recent(void)
 	g_file_set_contents(remmina_pref_file, content, length, NULL);
 
 	g_key_file_free(gkeyfile);
-	g_free(content);
 }
 
 guint remmina_pref_keymap_get_keyval(const gchar *keymap, guint keyval)
@@ -1061,7 +1054,7 @@ gchar *remmina_pref_get_value(const gchar *key)
 {
 	TRACE_CALL(__func__);
 	GKeyFile *gkeyfile;
-	gchar *value;
+	gchar *value = NULL;
 
 	gkeyfile = g_key_file_new();
 	g_key_file_load_from_file(gkeyfile, remmina_pref_file, G_KEY_FILE_NONE, NULL);
