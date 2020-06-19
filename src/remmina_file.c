@@ -410,6 +410,7 @@ remmina_file_load(const gchar *filename)
 			upgrade_sshkeys_202001(remminafile);
 
 		}
+		g_strfreev(keys);
 	} else {
 		REMMINA_DEBUG ("Unable to load remmina profile file %s: cannot find key name= in section remmina.\n", filename);
 		remminafile = NULL;

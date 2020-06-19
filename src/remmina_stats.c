@@ -554,7 +554,7 @@ static void remmina_profiles_get_data(RemminaFile *remminafile, gpointer user_da
 
 	gint count = 0;
 	gpointer pcount, kpo;
-	gpointer pdate, kdo;
+	gpointer pdate;
 	gchar *hday, *hmonth, *hyear;
 	gchar *pday, *pmonth, *pyear;
 
@@ -593,7 +593,7 @@ static void remmina_profiles_get_data(RemminaFile *remminafile, gpointer user_da
 		}
 		g_hash_table_replace(pdata->proto_count, g_strdup(pdata->protocol), GINT_TO_POINTER(count));
 		pdate = NULL;
-		if (g_hash_table_lookup_extended(pdata->proto_date, pdata->protocol, &kdo, &pdate)) {
+		if (g_hash_table_lookup_extended(pdata->proto_date, pdata->protocol, NULL, &pdate)) {
 
 			pdata_gdate = NULL;
 			if (pdate && strlen(pdate) >= 6) {
@@ -640,7 +640,7 @@ static void remmina_profiles_get_data(RemminaFile *remminafile, gpointer user_da
 				g_debug("All dates are NULL, replacing date in the hashtable");
 				g_hash_table_replace(pdata->proto_date, g_strdup(pdata->protocol), NULL);
 			}
-		}else {
+		} else {
 			/** If there is not the protocol in the hash, we add it */
 			/** If the date in the profile is not NULL we use it */
 			if (pdata->pdatestr) {

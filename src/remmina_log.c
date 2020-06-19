@@ -201,15 +201,17 @@ void _remmina_debug(const gchar *fun, const gchar *fmt, ...)
 	va_start(args, fmt);
 	text = g_strdup_vprintf(fmt, args);
 	va_end(args);
+
 	g_autofree gchar *buf = g_strconcat("(", fun, ") - ", text, NULL);
 
-	g_debug ("%s", g_strdup(buf));
+	g_debug ("%s", buf);
 
-	buf = g_strconcat (buf, "\n", NULL);
+	/* freed in remmina_log_print_real */
+	gchar *bufn = g_strconcat(buf, "\n", NULL);
 
 	if (!log_window)
 		return;
-	IDLE_ADD(remmina_log_print_real, g_strdup(buf));
+	IDLE_ADD(remmina_log_print_real, bufn);
 }
 
 void remmina_log_printf(const gchar *fmt, ...)
