@@ -1,5 +1,15 @@
 # Changelog
 
+## v1.4.7
+[full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.6...v1.4.7)
+
+* Allow compilation with libwinpr (freerdp) pre commit 8c5d96784d [!2083](https://gitlab.com/Remmina/Remmina/merge_requests/2083) *@giox069*
+* Bug fixing v1.4.6 [!2082](https://gitlab.com/Remmina/Remmina/merge_requests/2082) *@antenore*
+* Spelling: Automatic negotiation [!2084](https://gitlab.com/Remmina/Remmina/merge_requests/2084) *@kingu*
+* Spelling: GNOME Shell, opt-in desc, comments [!2085](https://gitlab.com/Remmina/Remmina/merge_requests/2085) *@kingu*
+* Memory leaks fixes [!2086](https://gitlab.com/Remmina/Remmina/merge_requests/2086) *@antenore*
+* RDP: Replacing deprecated freerdp function VeryfyCertificate [!2087](https://gitlab.com/Remmina/Remmina/merge_requests/2087) *@antenore*
+
 ## v1.4.6
 [full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.5...v1.4.6)
 
