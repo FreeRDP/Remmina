@@ -773,6 +773,25 @@ static BOOL remmina_rdp_gw_authenticate(freerdp *instance, char **username, char
 	return True;
 }
 
+static DWORD remmina_rdp_verify_certificate_ex(freerdp* instance, const char* host, UINT16 port,
+                                       const char* common_name, const char* subject,
+                                       const char* issuer, const char* fingerprint, DWORD flags)
+{
+	TRACE_CALL(__func__);
+	gint status;
+	rfContext *rfi;
+	RemminaProtocolWidget *gp;
+
+	rfi = (rfContext *)instance->context;
+	gp = rfi->protocol_widget;
+
+	status = remmina_plugin_service->protocol_plugin_init_certificate(gp, subject, issuer, fingerprint);
+
+	if (status == GTK_RESPONSE_OK)
+		return 1;
+
+	return 0;
+}
 
 static DWORD remmina_rdp_verify_certificate(freerdp *instance, const char *common_name, const char *subject,
 					    const char *issuer, const char *fingerprint, BOOL host_mismatch)
@@ -792,6 +811,29 @@ static DWORD remmina_rdp_verify_certificate(freerdp *instance, const char *commo
 
 	return 0;
 }
+
+static DWORD remmina_rdp_verify_changed_certificate_ex(freerdp* instance, const char* host, UINT16 port,
+                                               const char* common_name, const char* subject,
+                                               const char* issuer, const char* fingerprint,
+                                               const char* old_subject, const char* old_issuer,
+                                               const char* old_fingerprint, DWORD flags)
+{
+	TRACE_CALL(__func__);
+	gint status;
+	rfContext *rfi;
+	RemminaProtocolWidget *gp;
+
+	rfi = (rfContext *)instance->context;
+	gp = rfi->protocol_widget;
+
+	status = remmina_plugin_service->protocol_plugin_changed_certificate(gp, subject, issuer, fingerprint, old_fingerprint);
+
+	if (status == GTK_RESPONSE_OK)
+		return 1;
+
+	return 0;
+}
+
 static DWORD remmina_rdp_verify_changed_certificate(freerdp *instance,
 						    const char *common_name, const char *subject, const char *issuer,
 						    const char *new_fingerprint, const char *old_subject, const char *old_issuer, const char *old_fingerprint)
@@ -1863,8 +1905,10 @@ static void remmina_rdp_init(RemminaProtocolWidget *gp)
 	instance->PostDisconnect = remmina_rdp_post_disconnect;
 	instance->Authenticate = remmina_rdp_authenticate;
 	instance->GatewayAuthenticate = remmina_rdp_gw_authenticate;
-	instance->VerifyCertificate = remmina_rdp_verify_certificate;
-	instance->VerifyChangedCertificate = remmina_rdp_verify_changed_certificate;
+	//instance->VerifyCertificate = remmina_rdp_verify_certificate;
+	instance->VerifyCertificateEx = remmina_rdp_verify_certificate_ex;
+	//instance->VerifyChangedCertificate = remmina_rdp_verify_changed_certificate;
+	instance->VerifyChangedCertificateEx = remmina_rdp_verify_changed_certificate_ex;
 
 	instance->ContextSize = sizeof(rfContext);
 	freerdp_context_new(instance);
