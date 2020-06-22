@@ -171,8 +171,11 @@ void remmina_main_save_before_destroy()
 	TRACE_CALL(__func__);
 	if (!remminamain || !remminamain->window)
 		return;
+
 	remmina_main_save_size();
 	remmina_main_save_expanded_group();
+	g_free(remmina_pref.expanded_group);
+	remmina_pref.expanded_group = remmina_string_array_to_string(remminamain->priv->expanded_group);
 	remmina_pref_save();
 }
 
@@ -185,8 +188,6 @@ void remmina_main_destroy()
 			gtk_widget_destroy(GTK_WIDGET(remminamain->window));
 
 		g_object_unref(remminamain->builder);
-		g_free(remmina_pref.expanded_group);
-		remmina_pref.expanded_group = remmina_string_array_to_string(remminamain->priv->expanded_group);
 		remmina_string_array_free(remminamain->priv->expanded_group);
 		remminamain->priv->expanded_group = NULL;
 		if (remminamain->priv->file_model)
@@ -215,8 +216,6 @@ gboolean remmina_main_on_delete_event(GtkWidget *widget, GdkEvent *event, gpoint
 	TRACE_CALL(__func__);
 	remmina_main_save_before_destroy();
 
-	/* Forget the main window: it has been deleted */
-	remminamain->window = NULL;
 	g_idle_add(remmina_main_dexit, NULL);
 
 	return FALSE;
@@ -240,10 +239,6 @@ void remmina_main_on_destroy_event()
 	TRACE_CALL(__func__);
 
 	if (remminamain) {
-		/* Schedule remminamain object destruction after
-		 * GTK will finish to destroy the main window */
-		if (remminamain->window)
-			remmina_main_save_before_destroy();
 		/* Invalidate remminamain->window to avoid multiple destructions */
 		remminamain->window = NULL;
 		/* Destroy remminamain struct, later. We can't destroy
