@@ -93,14 +93,15 @@ struct _RemminaMainPriv {
 
 G_BEGIN_DECLS
 
-/* Create the main Remmina window */
+/* Create the remminamain struct and the remmina main Remmina window */
 GtkWidget *remmina_main_new(void);
-/* Get the current main window or NULL if not initialized */
+/* Get the current main GTK window or NULL if not initialized */
 GtkWindow *remmina_main_get_window(void);
 
 void remmina_main_update_file_datetime(RemminaFile *file);
 
 void remmina_main_destroy(void);
+void remmina_main_on_destroy_event(void);
 void remmina_main_save_before_destroy(void);
 
 void remmina_main_show_warning_dialog(const gchar *message);

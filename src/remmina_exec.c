@@ -98,6 +98,9 @@ void remmina_exec_exitremmina()
 	/* Remove systray menu */
 	remmina_icon_destroy();
 
+	/* close/destroy main window struct and window */
+	remmina_main_destroy();
+
 	/* Exit from Remmina */
 	g_application_quit(g_application_get_default());
 }

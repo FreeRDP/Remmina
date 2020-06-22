@@ -58,7 +58,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
     <property name="can_focus">False</property>
     <property name="icon_name">org.remmina.Remmina</property>
     <signal name="delete-event" handler="remmina_main_on_delete_event" swapped="no"/>
-    <signal name="destroy" handler="remmina_main_destroy" swapped="no"/>
+    <signal name="destroy" handler="remmina_main_on_destroy_event" swapped="no"/>
     <signal name="drag-data-received" handler="remmina_main_on_drag_data_received" swapped="no"/>
     <signal name="show" handler="remmina_main_on_show" swapped="no"/>
     <signal name="window-state-event" handler="remmina_main_on_window_state_event" swapped="no"/>
