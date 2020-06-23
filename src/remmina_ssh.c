@@ -1156,8 +1156,12 @@ remmina_ssh_tunnel_accept_local_connection(RemminaSSHTunnel *tunnel, gboolean bl
 
 	/* Accept a local connection */
 	sock = accept(tunnel->server_sock, NULL, NULL);
-	if (sock < 0)
-		REMMINA_SSH(tunnel)->error = g_strdup("Local socket not accepted");
+	if (sock < 0) {
+		if (blocking) {
+			g_free(REMMINA_SSH(tunnel)->error);
+			REMMINA_SSH(tunnel)->error = g_strdup("Local socket not accepted");
+		}
+	}
 
 	return sock;
 }

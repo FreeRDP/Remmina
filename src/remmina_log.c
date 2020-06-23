@@ -203,14 +203,17 @@ void _remmina_debug(const gchar *fun, const gchar *fmt, ...)
 	va_end(args);
 
 	g_autofree gchar *buf = g_strconcat("(", fun, ") - ", text, NULL);
+	g_free(text);
 
 	g_debug ("%s", buf);
 
 	/* freed in remmina_log_print_real */
 	gchar *bufn = g_strconcat(buf, "\n", NULL);
 
-	if (!log_window)
+	if (!log_window) {
+		free(bufn);
 		return;
+	}
 	IDLE_ADD(remmina_log_print_real, bufn);
 }
 
