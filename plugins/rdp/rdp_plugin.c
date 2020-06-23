@@ -1049,7 +1049,6 @@ int remmina_rdp_set_printers(void *user_data, unsigned flags, cups_dest_t *dest)
 	 * 		dest->options);
 	 * @endcode
 	 */
-	const char *model = NULL;
 
 	RemminaFile *remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 	const gchar *s = remmina_plugin_service->file_get_string(remminafile, "printer_overrides");
@@ -1089,8 +1088,7 @@ int remmina_rdp_set_printers(void *user_data, unsigned flags, cups_dest_t *dest)
 		}
 	} else {
 		/* We set to a default driver*/
-		model = _strdup("MS Publisher Imagesetter");
-		printer->DriverName = _strdup(model);
+		printer->DriverName = _strdup("MS Publisher Imagesetter");
 	}
 
 	REMMINA_PLUGIN_DEBUG("Printer Driver: %s", printer->DriverName);
