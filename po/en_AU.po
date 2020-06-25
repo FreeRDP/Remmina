@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-06-23 21:37+0000\n"
-"PO-Revision-Date: 2020-06-02 14:35+0000\n"
+"PO-Revision-Date: 2020-06-25 01:41+0000\n"
 "Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
 "Language-Team: English (Australia) <https://hosted.weblate.org/projects/"
 "remmina/remmina/en_AU/>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.1-dev\n"
+"X-Generator: Weblate 4.2-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:25+0000\n"
 
 #: src/remmina_protocol_widget.c:275
@@ -527,7 +527,7 @@ msgstr ""
 
 #: src/remmina.c:86 src/remmina.c:88 src/remmina.c:90
 msgid "FILE"
-msgstr ""
+msgstr "FILE"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:90
@@ -555,7 +555,7 @@ msgstr "Show preferences"
 
 #: src/remmina.c:97
 msgid "TABINDEX"
-msgstr ""
+msgstr "TABINDEX"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:104
@@ -569,7 +569,7 @@ msgstr "Use default server name (for --new)"
 
 #: src/remmina.c:106
 msgid "SERVER"
-msgstr ""
+msgstr "SERVER"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:108
@@ -578,7 +578,7 @@ msgstr "Use default protocol (for --new)"
 
 #: src/remmina.c:108
 msgid "PROTOCOL"
-msgstr ""
+msgstr "PROTOCOL"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:110
@@ -984,16 +984,12 @@ msgid "Show Hidden Files"
 msgstr "Show Hidden Files"
 
 #: src/remmina_sftp_plugin.c:315
-#, fuzzy
-#| msgid "Overwrite all"
 msgid "Overwrite all files"
-msgstr "Overwrite all"
+msgstr "Overwrite all files"
 
 #: src/remmina_sftp_plugin.c:317
-#, fuzzy
-#| msgid "File Transfers"
 msgid "Resume all file transfers"
-msgstr "File Transfers"
+msgstr "Resume all file transfers"
 
 #: src/remmina_sftp_plugin.c:348
 msgid "SFTP - Secure File Transfer"
@@ -1319,39 +1315,31 @@ msgstr "Keyboard mapping"
 
 #: src/remmina_file_editor.c:881
 msgid "Behavior"
-msgstr ""
+msgstr "Behaviour"
 
 #: src/remmina_file_editor.c:884
-#, fuzzy
-#| msgid "Execute a command"
 msgid "Execute a Command"
 msgstr "Execute a command"
 
 #: src/remmina_file_editor.c:888
-#, fuzzy
-#| msgid "Per connection"
 msgid "Before connecting"
-msgstr "Per connection"
+msgstr "Before connecting"
 
 #: src/remmina_file_editor.c:890
 msgid "command %h %u %t %U %p %g --option"
 msgstr "command %h %u %t %U %p %g --option"
 
 #: src/remmina_file_editor.c:895
-#, fuzzy
-#| msgid "Per connection"
 msgid "After connecting"
-msgstr "Per connection"
+msgstr "After connecting"
 
 #: src/remmina_file_editor.c:897
 msgid "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
 msgstr "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
 
 #: src/remmina_file_editor.c:901
-#, fuzzy
-#| msgid "Start"
 msgid "Startup"
-msgstr "Start"
+msgstr "Start-up"
 
 #: src/remmina_file_editor.c:904
 msgid "Autostart this profile"
@@ -2011,10 +1999,8 @@ msgid "Local - high quality"
 msgstr "Local - high quality"
 
 #: plugins/rdp/rdp_plugin.c:2144
-#, fuzzy
-#| msgid "Automatically negotiate"
 msgid "Automatic negotiation"
-msgstr "Automatically negotiate"
+msgstr "Automatic negotiation"
 
 #: plugins/rdp/rdp_plugin.c:2145
 msgid "NLA protocol security"
@@ -2037,15 +2023,6 @@ msgid "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 and newer)"
 msgstr "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 and newer)"
 
 #: plugins/rdp/rdp_plugin.c:2164
-#, fuzzy
-#| msgid ""
-#| "Used i.a. by terminal services in smart card channel to distinguish "
-#| "client capabilities:\n"
-#| "  • < 4034: Windows XP base smart card functions\n"
-#| "  • 4034-7064: Windows Vista/7: SCardReadCache(), SCardWriteCache(),\n"
-#| "    SCardGetTransmitCount()\n"
-#| "  • >= 7065: Windows 8 and newer: SCardGetReaderIcon(), "
-#| "SCardGetDeviceTypeId()"
 msgid ""
 "Used i.a. by terminal services in smart card channel to distinguish client "
 "capabilities:\n"
@@ -2058,10 +2035,10 @@ msgstr ""
 "Used i.a. by terminal services in smart card channel to distinguish client "
 "capabilities:\n"
 "  • < 4034: Windows XP base smart card functions\n"
-"  • 4034-7064: Windows Vista/7: SCardReadCache(), SCardWriteCache(),\n"
-"    SCardGetTransmitCount()\n"
-"  • >= 7065: Windows 8 and newer: SCardGetReaderIcon(), "
-"SCardGetDeviceTypeId()"
+"  • 4034-7064: Windows Vista/7: SCardReadCache(),\n"
+"    SCardWriteCache(), SCardGetTransmitCount()\n"
+"  • >= 7065: Windows 8 and newer: SCardGetReaderIcon(),\n"
+"    SCardGetDeviceTypeId()"
 
 #: plugins/rdp/rdp_plugin.c:2171
 msgid ""
@@ -2072,6 +2049,12 @@ msgid ""
 "  • sys:oss,dev:1,format:1\n"
 "  • sys:alsa"
 msgstr ""
+"Options for redirection of audio input:\n"
+"  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
+"    [channel:<channel>] Audio input (microphone)\n"
+"  • format:1\n"
+"  • sys:oss,dev:1,format:1\n"
+"  • sys:alsa"
 
 #: plugins/rdp/rdp_plugin.c:2179
 msgid ""
@@ -2080,6 +2063,10 @@ msgid ""
 "  • auto\n"
 "  • id:054c:0268#4669:6e6b,addr:04:0c"
 msgstr ""
+"Options for redirection of USB device:\n"
+"  • [dbg,][id:<vid>:<pid>#…,][addr:<bus>:<addr>#…,][auto]\n"
+"  • auto\n"
+"  • id:054c:0268#4669:6e6b,addr:04:0c"
 
 #: plugins/rdp/rdp_plugin.c:2218
 msgid "Security protocol negotiation"
@@ -2138,10 +2125,8 @@ msgstr ""
 "\"Canon MF410 Series UFR II\""
 
 #: plugins/rdp/rdp_plugin.c:2232
-#, fuzzy
-#| msgid "Select USB devices for redirection"
 msgid "USB device redirection"
-msgstr "Select USB devices for redirection"
+msgstr "USB device redirection"
 
 #: plugins/rdp/rdp_plugin.c:2233
 msgid "Local serial name"
@@ -2181,15 +2166,15 @@ msgstr "Name of smart card"
 
 #: plugins/rdp/rdp_plugin.c:2239
 msgid "Dynamic virtual channel"
-msgstr ""
+msgstr "Dynamic virtual channel"
 
 #: plugins/rdp/rdp_plugin.c:2239 plugins/rdp/rdp_plugin.c:2240
 msgid "<channel>[,<options>]"
-msgstr ""
+msgstr "<channel>[,<options>]"
 
 #: plugins/rdp/rdp_plugin.c:2240
 msgid "Static virtual channel"
-msgstr ""
+msgstr "Static virtual channel"
 
 #: plugins/rdp/rdp_plugin.c:2241
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
@@ -2601,24 +2586,6 @@ msgid "Please wait…"
 msgstr "Please wait…"
 
 #: data/ui/remmina_news.glade:75
-#, fuzzy
-#| msgid ""
-#| "<big><b>The news are turned off</b></big>\n"
-#| "\n"
-#| "<span>\n"
-#| "Turning on news means the program connects to a Remmina server to "
-#| "download the release notes.\n"
-#| "</span>\n"
-#| "\n"
-#| "<span>\n"
-#| "Version checking can only be activated at compile time.\n"
-#| "</span>\n"
-#| "\n"
-#| "<span>\n"
-#| "<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title="
-#| "\"<i>Remmina</i> release notes\"><i>Visit the website to read the release "
-#| "notes</i></a>.\n"
-#| "</span>"
 msgid ""
 "<big><b>The news are turned off</b></big>\n"
 "\n"
@@ -2648,8 +2615,8 @@ msgstr ""
 "</span>\n"
 "\n"
 "<span>\n"
-"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"<i>Remmina</"
-"i> release notes\"><i>Visit the website to read the release notes</i></a>.\n"
+"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
+"release notes\"><i>Visit the website to read the release notes</i></a>.\n"
 "</span>"
 
 #. The star (*) is a reference to privacy consent
@@ -2702,14 +2669,6 @@ msgstr "<big>Take part</big>"
 
 #. Pay attention to thr quoting charachters as they may break the pango layout. If in doubt and cannot test, copy and paste the symbols from the English string.
 #: data/ui/remmina_news.glade:257
-#, fuzzy
-#| msgid ""
-#| "<span>\n"
-#| "<b>You have our gratitude in choosing copylefted libre software, <a href="
-#| "\"https://remmina.org/donations/\" title=\"Awesome Remmina donations"
-#| "\">donations also make us happy</a>, and further help improve Remmina.</"
-#| "b>\n"
-#| "</span>\n"
 msgid ""
 "<span>\n"
 "<b>You have our gratitude in choosing copylefted libre software, <a href="
@@ -2720,8 +2679,9 @@ msgid ""
 msgstr ""
 "<span>\n"
 "<b>You have our gratitude in choosing copylefted libre software, <a href="
-"\"https://remmina.org/donations/\" title=\"Awesome Remmina donations"
-"\">donations also make us happy</a>, and further help improve Remmina.</b>\n"
+"\"https://remmina.org/donations/\" title=\"Where’s the money, Lebowski? "
+"‘blblblblblb’\">donations also make us happy</a>, and further help improve "
+"Remmina.</b>\n"
 "</span>\n"
 
 #: data/ui/remmina_news.glade:277
