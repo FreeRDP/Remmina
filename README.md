@@ -1,4 +1,5 @@
 [![](https://img.shields.io/liberapay/receives/Remmina.svg?logo=liberapay)](https://liberapay.com/Remmina/donate)
+[![](https://img.shields.io/liberapay/patrons/remmina.svg?logo=liberapay)](https://liberapay.com/Remmina/donate)
 [![Build Status](https://gitlab.com/Remmina/Remmina/badges/master/pipeline.svg)](https://gitlab.com/Remmina/Remmina/pipelines)
 [![Translation status](https://hosted.weblate.org/widgets/remmina/-/remmina/svg-badge.svg)](https://hosted.weblate.org/engage/remmina/?utm_source=widget)
 [![remmina](https://snapcraft.io//remmina/badge.svg)](https://snapcraft.io/remmina)
