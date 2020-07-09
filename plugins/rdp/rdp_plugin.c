@@ -295,6 +295,9 @@ static gboolean remmina_rdp_tunnel_init(RemminaProtocolWidget *gp)
 
 	remmina_plugin_service->get_server_port(hostport, 3389, &host, &port);
 
+	if (host[0] == 0)
+		return FALSE;
+
 	REMMINA_PLUGIN_DEBUG("protocol_plugin_start_direct_tunnel() returned %s", hostport);
 
 	cert_host = host;
@@ -1942,7 +1945,7 @@ static gboolean remmina_rdp_open_connection(RemminaProtocolWidget *gp)
 
 	if (pthread_create(&rfi->remmina_plugin_thread, NULL, remmina_rdp_main_thread, gp)) {
 		remmina_plugin_service->protocol_plugin_set_error(gp, "%s",
-								  "Could not start pthread. Falling back to non-thread mode…");
+								  "Could not start pthread.");
 
 		rfi->remmina_plugin_thread = 0;
 
@@ -1953,11 +1956,15 @@ static gboolean remmina_rdp_open_connection(RemminaProtocolWidget *gp)
 	profile_name = remmina_plugin_service->file_get_string(remminafile, "name");
 	p = profile_name;
 	strcpy(thname, "RemmRDP:");
-	nthname = strlen(thname);
-	while ((c = *p) != 0 && nthname < sizeof(thname) - 1) {
-		if (isalnum(c))
-			thname[nthname++] = c;
-		p++;
+	if (p != NULL) {
+		nthname = strlen(thname);
+		while ((c = *p) != 0 && nthname < sizeof(thname) - 1) {
+			if (isalnum(c))
+				thname[nthname++] = c;
+			p++;
+		}
+	} else {
+		strcat(thname, "<NONAM>");
 	}
 	thname[nthname] = 0;
 #if defined(__linux__)
