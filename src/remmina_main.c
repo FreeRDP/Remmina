@@ -35,6 +35,7 @@
  */
 
 #include "config.h"
+#include <ctype.h>
 #include <gio/gio.h>
 #include <gio/gdesktopappinfo.h>
 #include <gdk/gdkkeysyms.h>
@@ -1043,11 +1044,23 @@ void remmina_main_on_action_application_news(GSimpleAction *action, GVariant *pa
 	remmina_pref_save();
 };
 
+static gboolean is_empty(const gchar *s)
+{
+	if (s == NULL)
+		return TRUE;
+	while (*s != 0) {
+		if (!isspace((unsigned char)*s))
+			return FALSE;
+		s++;
+	}
+	return TRUE;
+}
+
 static gboolean remmina_main_quickconnect(void)
 {
 	TRACE_CALL(__func__);
 	RemminaFile *remminafile;
-	gchar *server;
+	const gchar *server;
 	gchar *qcp;
 
 
@@ -1060,13 +1073,14 @@ static gboolean remmina_main_quickconnect(void)
 	}
 
 	remminafile = remmina_file_new();
-	server = g_strdup(gtk_entry_get_text(remminamain->entry_quick_connect_server));
+	server = gtk_entry_get_text(remminamain->entry_quick_connect_server);
+	if (is_empty(server))
+		return FALSE;
 
 	remmina_file_set_string(remminafile, "sound", "off");
 	remmina_file_set_string(remminafile, "server", server);
 	remmina_file_set_string(remminafile, "name", server);
 	remmina_file_set_string(remminafile, "protocol", qcp);
-	g_free(server);
 
 	rcw_open_from_file(remminafile);
 
