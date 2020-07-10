@@ -1520,7 +1520,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 	int vermaj, vermin, verrev;
 	freerdp_get_version(&vermaj, &vermin, &verrev);
 
-#if FREERDP_CHECK_VERSION(2, 0, 0)
+#if FREERDP_CHECK_VERSION(2, 1, 0)
 	cs = remmina_plugin_service->file_get_string(remminafile, "timeout");
 	if (cs != NULL && cs[0] != '\0') {
 		const gchar *endptr = NULL;
