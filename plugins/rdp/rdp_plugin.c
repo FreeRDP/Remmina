@@ -1517,6 +1517,14 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 		g_free(p);
 	}
 
+	cs = remmina_plugin_service->file_get_string(remminafile, "timeout");
+	if (cs != NULL && cs[0] != '\0') {
+		const gchar *endptr = NULL;
+		guint64 val = g_ascii_strtoull (cs, (gchar **) &endptr, 10);
+		if (val > 600000 || val <= 0)
+			val = 600000;
+		rfi->settings->TcpAckTimeout = (UINT32)val;
+	}
 
 	if (remmina_plugin_service->file_get_int(remminafile, "preferipv6", FALSE) ? TRUE : FALSE)
 		rfi->settings->PreferIPv6OverIPv4 = TRUE;
@@ -2181,6 +2189,11 @@ static gchar usb_tooltip[] =
 	   "  • auto\n"
 	   "  • id:054c:0268#4669:6e6b,addr:04:0c");
 
+static gchar timeout_tooltip[] =
+	N_("Advanced setting for high latency links:\n"
+	   "Adjust connection timeout, use if you encounter timeout failures with your connection.\n"
+	   "The highest possible value is 600000 ms (10 minutes)\n");
+
 
 /* Array of RemminaProtocolSetting for basic settings.
  * Each item is composed by:
@@ -2219,6 +2232,7 @@ static const RemminaProtocolSetting remmina_rdp_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "gwtransp",		    N_("Gateway transport type"),			 FALSE, gwtransp_list,	  NULL														 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "sound",		    N_("Sound"),					 FALSE, sound_list,	  NULL														 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "microphone",		    N_("Redirect local microphone"),			 TRUE,	NULL,		  microphone_tooltip												 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "timeout",		    N_("Connection timeout in ms"),			 TRUE,	NULL,		  timeout_tooltip												 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "gateway_server",	    N_("Remote Desktop Gateway server"),		 FALSE, NULL,		  NULL														 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "gateway_username",	    N_("Remote Desktop Gateway username"),		 FALSE, NULL,		  NULL														 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "gateway_password",	    N_("Remote Desktop Gateway password"),		 FALSE, NULL,		  NULL														 },
