@@ -1517,6 +1517,10 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 		g_free(p);
 	}
 
+	int vermaj, vermin, verrev;
+	freerdp_get_version(&vermaj, &vermin, &verrev);
+
+#if FREERDP_CHECK_VERSION(2, 0, 0)
 	cs = remmina_plugin_service->file_get_string(remminafile, "timeout");
 	if (cs != NULL && cs[0] != '\0') {
 		const gchar *endptr = NULL;
@@ -1525,6 +1529,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 			val = 600000;
 		rfi->settings->TcpAckTimeout = (UINT32)val;
 	}
+#endif
 
 	if (remmina_plugin_service->file_get_int(remminafile, "preferipv6", FALSE) ? TRUE : FALSE)
 		rfi->settings->PreferIPv6OverIPv4 = TRUE;

@@ -51,6 +51,23 @@
 
 #include <winpr/clipboard.h>
 
+/**
+ * FREERDP_CHECK_VERSION:
+ * @major: major version (e.g. 2 for version 2.1.0)
+ * @minor: minor version (e.g. 0 for version 2.1.0)
+ * @release: release version (e.g. 0 for version 2.1.0)
+ *
+ * Returns %TRUE if the version of the FRERDDP header files
+ * is the same as or newer than the passed-in version.
+ *
+ * Returns: %TRUE if FREERDP headers are new enough
+ */
+
+#define FREERDP_CHECK_VERSION(major,minor,release)                                  \
+	(FREERDP_VERSION_MAJOR > (major) ||                                       \
+	 (FREERDP_VERSION_MAJOR == (major) && FREERDP_VERSION_MINOR > (minor)) || \
+	 (FREERDP_VERSION_MAJOR == (major) && FREERDP_VERSION_MINOR == (minor) && \
+	  FREERDP_VERSION_RELEASE >= (release)))
 
 /* Constants to workaround FreeRDP issue #5417 (min resolution in AVC mode) */
 #define AVC_MIN_DESKTOP_WIDTH 642
