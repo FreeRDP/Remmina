@@ -1,0 +1,28 @@
+From 62530e2d9dab999d1c5ddd1368d67c599dccd580 Mon Sep 17 00:00:00 2001
+From: Armin Novak <armin.novak@thincast.com>
+Date: Tue, 23 Jun 2020 09:24:35 +0200
+Subject: [PATCH 03/34] Fixed #6298: Mask CACHED_BRUSH when checking brush
+ style
+
+(cherry picked from commit ce1a9d8d1969ecbb4d24b9f4812654638a44abc2)
+---
+ libfreerdp/core/orders.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/libfreerdp/core/orders.c b/libfreerdp/core/orders.c
+index dc4e51a87..537e69426 100644
+--- a/libfreerdp/core/orders.c
++++ b/libfreerdp/core/orders.c
+@@ -139,7 +139,8 @@ static BYTE get_bmf_bpp(UINT32 bmf, BOOL* pValid)
+ {
+ 	if (pValid)
+ 		*pValid = TRUE;
+-	switch (bmf)
++	/* Mask out highest bit */
++	switch (bmf & (~CACHED_BRUSH))
+ 	{
+ 		case 1:
+ 			return 1;
+-- 
+2.25.4
+
