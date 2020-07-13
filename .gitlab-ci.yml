@@ -85,7 +85,7 @@ appimage:build:
     name: "Remmina-x86_64.AppImage"
     expose_as: "Download AppImage"
     paths:
-      - $BUILD_FOLDER/Remmina-x86_64.AppImage
+      - build/Remmina-x86_64.AppImage
     expire_in: 7 days
   only:
     refs:
@@ -110,9 +110,9 @@ flatpak:test:
   script:
     - /bin/sh -xe ./flatpak/flatpak-build.sh
   artifacts:
-    expose_as: "Download flatpak from the flatpak artifact folder"
+    expose_as: "Download the flatpak"
     paths:
-      - flatpak/$BUNDLE
+      - flatpak/remmina-dev.flatpak
     expire_in: 7 days
   cache:
     paths:
