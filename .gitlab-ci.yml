@@ -110,7 +110,7 @@ flatpak:test:
   script:
     - /bin/sh -xe ./flatpak/flatpak-build.sh
   artifacts:
-    expose_as: "Download flatpak from the flatpak artifact folder"
+    expose_as: "Download the flatpak"
     paths:
       - flatpak/remmina-dev.flatpak
     expire_in: 7 days
