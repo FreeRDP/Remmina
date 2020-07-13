@@ -48,18 +48,10 @@ apps:
     command: winpr-hash
 
 parts:
-  patches:
-    source: snap/patches
-    plugin: dump
-    prime:
-      - -*
   freerdp:
-    after:
-      - patches
     plugin: cmake
     source: https://github.com/FreeRDP/FreeRDP.git
     source-tag: 2.1.2
-    prepare: git apply $SNAPCRAFT_STAGE/0003-Fixed-6298-Mask-CACHED_BRUSH-when-checking-brush-sty.patch
     source-depth: 1
     build-packages:
       - build-essential
