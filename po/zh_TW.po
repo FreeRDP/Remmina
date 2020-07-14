@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2020-07-10 17:42+0000\n"
+"POT-Creation-Date: 2020-07-14 07:25+0000\n"
 "PO-Revision-Date: 2020-05-19 11:55+0000\n"
 "Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
 "Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
@@ -139,7 +139,7 @@ msgstr "伺服器"
 msgid "Install the %s protocol plugin first."
 msgstr "請先安裝 %s 協定插件。"
 
-#: src/remmina_exec.c:324
+#: src/remmina_exec.c:490
 #, c-format
 msgid "Plugin %s is not registered."
 msgstr "外掛 %s 尚未註冊。"
@@ -527,14 +527,30 @@ msgid "Show 'About'"
 msgstr "顯示「關於」對話框"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:86 src/remmina.c:88
+#: src/remmina.c:86
+#, fuzzy
+#| msgid ""
+#| "Connect to desktop described in file (.remmina or type supported by "
+#| "plugin)"
 msgid ""
-"Connect to desktop described in file (.remmina or type supported by plugin)"
+"Connect either to a desktop described in a file (.remmina or a filetype "
+"supported by a plugin) or a supported URI (RDP, VNC or SPICE)"
 msgstr "連接到檔案描述的桌面（.remmina 或外掛支援的檔案類型）"
 
 #: src/remmina.c:86 src/remmina.c:88 src/remmina.c:90
 msgid "FILE"
 msgstr ""
+
+#. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
+#: src/remmina.c:88
+#, fuzzy
+#| msgid ""
+#| "Connect to desktop described in file (.remmina or type supported by "
+#| "plugin)"
+msgid ""
+"Connect to a desktop described in a file (.remmina or a type supported by a "
+"plugin)"
+msgstr "連接到檔案描述的桌面（.remmina 或外掛支援的檔案類型）"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:90
@@ -610,6 +626,12 @@ msgstr "修改連線設定檔（需要 --set-option）"
 #: src/remmina.c:118
 msgid "Set one or more profile settings, to be used with --update-profile"
 msgstr "設定一個或多個連線設定，與 --update-profile 一起使用"
+
+#: src/remmina.c:119
+#, fuzzy
+#| msgid "Enter VNC password"
+msgid "Encrypt a password"
+msgstr "輸入 VNC 密碼"
 
 #: src/remmina_icon.c:139
 msgid "Open Main Window"

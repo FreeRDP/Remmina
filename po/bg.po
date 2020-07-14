@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2020-07-10 17:42+0000\n"
+"POT-Creation-Date: 2020-07-14 07:25+0000\n"
 "PO-Revision-Date: 2020-05-19 11:55+0000\n"
 "Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
 "Language-Team: Bulgarian <https://hosted.weblate.org/projects/remmina/"
@@ -140,7 +140,7 @@ msgstr "Сървър"
 msgid "Install the %s protocol plugin first."
 msgstr "Инсталирайте добавката(plugin) за %s протокола."
 
-#: src/remmina_exec.c:324
+#: src/remmina_exec.c:490
 #, c-format
 msgid "Plugin %s is not registered."
 msgstr "Приставката %s не е регистрирана."
@@ -537,9 +537,14 @@ msgid "Show 'About'"
 msgstr "Относно Remmina"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:86 src/remmina.c:88
+#: src/remmina.c:86
+#, fuzzy
+#| msgid ""
+#| "Connect to desktop described in file (.remmina or type supported by "
+#| "plugin)"
 msgid ""
-"Connect to desktop described in file (.remmina or type supported by plugin)"
+"Connect either to a desktop described in a file (.remmina or a filetype "
+"supported by a plugin) or a supported URI (RDP, VNC or SPICE)"
 msgstr ""
 "Свързване към отдалечено работно място посредством конфигурация описана във "
 "файл (.remmina или друг вид файлове поддържани от приставки(plugins))"
@@ -547,6 +552,19 @@ msgstr ""
 #: src/remmina.c:86 src/remmina.c:88 src/remmina.c:90
 msgid "FILE"
 msgstr ""
+
+#. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
+#: src/remmina.c:88
+#, fuzzy
+#| msgid ""
+#| "Connect to desktop described in file (.remmina or type supported by "
+#| "plugin)"
+msgid ""
+"Connect to a desktop described in a file (.remmina or a type supported by a "
+"plugin)"
+msgstr ""
+"Свързване към отдалечено работно място посредством конфигурация описана във "
+"файл (.remmina или друг вид файлове поддържани от приставки(plugins))"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:90
@@ -627,6 +645,11 @@ msgid "Set one or more profile settings, to be used with --update-profile"
 msgstr ""
 "Настройване на един или повече Remmina профили, да се използва заедно с --"
 "update-profile"
+
+#: src/remmina.c:119
+#, fuzzy
+msgid "Encrypt a password"
+msgstr "Запазване на паролата"
 
 #: src/remmina_icon.c:139
 msgid "Open Main Window"

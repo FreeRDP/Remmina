@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2020-07-10 17:42+0000\n"
+"POT-Creation-Date: 2020-07-14 07:25+0000\n"
 "PO-Revision-Date: 2020-04-15 21:14+0000\n"
 "Last-Translator: Justin Song <mcsong@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -139,7 +139,7 @@ msgstr "서버"
 msgid "Install the %s protocol plugin first."
 msgstr "먼저 %s 프로토콜 플러그인을 설치하세요."
 
-#: src/remmina_exec.c:324
+#: src/remmina_exec.c:490
 #, c-format
 msgid "Plugin %s is not registered."
 msgstr "%s 는 등록되지 않은 플러그인 입니다."
@@ -525,14 +525,30 @@ msgid "Show 'About'"
 msgstr "'정보' 보기"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:86 src/remmina.c:88
+#: src/remmina.c:86
+#, fuzzy
+#| msgid ""
+#| "Connect to desktop described in file (.remmina or type supported by "
+#| "plugin)"
 msgid ""
-"Connect to desktop described in file (.remmina or type supported by plugin)"
+"Connect either to a desktop described in a file (.remmina or a filetype "
+"supported by a plugin) or a supported URI (RDP, VNC or SPICE)"
 msgstr "파일에 기술한 데스크톱에 연결(.remmina 또는 플러그인이 지원하는 유형)"
 
 #: src/remmina.c:86 src/remmina.c:88 src/remmina.c:90
 msgid "FILE"
 msgstr ""
+
+#. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
+#: src/remmina.c:88
+#, fuzzy
+#| msgid ""
+#| "Connect to desktop described in file (.remmina or type supported by "
+#| "plugin)"
+msgid ""
+"Connect to a desktop described in a file (.remmina or a type supported by a "
+"plugin)"
+msgstr "파일에 기술한 데스크톱에 연결(.remmina 또는 플러그인이 지원하는 유형)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:90
@@ -607,6 +623,12 @@ msgstr "연결 프로필 수정 (--set-option 필요)"
 #: src/remmina.c:118
 msgid "Set one or more profile settings, to be used with --update-profile"
 msgstr "--update-profile 을 사용해서 사용할 하나 이상의 프로필 설정"
+
+#: src/remmina.c:119
+#, fuzzy
+#| msgid "Enter VNC password"
+msgid "Encrypt a password"
+msgstr "VNC 비밀번호 입력"
 
 #: src/remmina_icon.c:139
 msgid "Open Main Window"

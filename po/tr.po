@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2020-07-10 17:42+0000\n"
+"POT-Creation-Date: 2020-07-14 07:25+0000\n"
 "PO-Revision-Date: 2020-07-12 20:41+0000\n"
 "Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -143,7 +143,7 @@ msgstr "Sunucu"
 msgid "Install the %s protocol plugin first."
 msgstr "Önce %s iletişim kuralı eklentisini kurun."
 
-#: src/remmina_exec.c:324
+#: src/remmina_exec.c:490
 #, c-format
 msgid "Plugin %s is not registered."
 msgstr "Eklenti %s kayıtlı değil."
@@ -526,9 +526,14 @@ msgid "Show 'About'"
 msgstr "'Hakkında'yı göster"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:86 src/remmina.c:88
+#: src/remmina.c:86
+#, fuzzy
+#| msgid ""
+#| "Connect to desktop described in file (.remmina or type supported by "
+#| "plugin)"
 msgid ""
-"Connect to desktop described in file (.remmina or type supported by plugin)"
+"Connect either to a desktop described in a file (.remmina or a filetype "
+"supported by a plugin) or a supported URI (RDP, VNC or SPICE)"
 msgstr ""
 "Dosyada açıklanan masaüstüne bağlan (.remmina veya eklenti tarafından "
 "desteklenen tür)"
@@ -536,6 +541,19 @@ msgstr ""
 #: src/remmina.c:86 src/remmina.c:88 src/remmina.c:90
 msgid "FILE"
 msgstr "DOSYA"
+
+#. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
+#: src/remmina.c:88
+#, fuzzy
+#| msgid ""
+#| "Connect to desktop described in file (.remmina or type supported by "
+#| "plugin)"
+msgid ""
+"Connect to a desktop described in a file (.remmina or a type supported by a "
+"plugin)"
+msgstr ""
+"Dosyada açıklanan masaüstüne bağlan (.remmina veya eklenti tarafından "
+"desteklenen tür)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:90
@@ -613,6 +631,12 @@ msgstr "Bağlantı profilini düzenle (--set-option gerektirir)"
 msgid "Set one or more profile settings, to be used with --update-profile"
 msgstr ""
 "--update-profile ile kullanılacak bir veya daha fazla profil ayarını yap"
+
+#: src/remmina.c:119
+#, fuzzy
+#| msgid "Enter VNC password"
+msgid "Encrypt a password"
+msgstr "VNC parolası girin"
 
 #: src/remmina_icon.c:139
 msgid "Open Main Window"

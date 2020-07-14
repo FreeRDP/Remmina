@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2020-07-10 17:42+0000\n"
+"POT-Creation-Date: 2020-07-14 07:25+0000\n"
 "PO-Revision-Date: 2020-05-28 16:33+0000\n"
 "Last-Translator: Osoitz <oelkoro@gmail.com>\n"
 "Language-Team: Basque <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -138,7 +138,7 @@ msgstr "Zerbitzaria"
 msgid "Install the %s protocol plugin first."
 msgstr ""
 
-#: src/remmina_exec.c:324
+#: src/remmina_exec.c:490
 #, c-format
 msgid "Plugin %s is not registered."
 msgstr "%s plugina ez dago erregistratuta."
@@ -519,13 +519,21 @@ msgid "Show 'About'"
 msgstr ""
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:86 src/remmina.c:88
+#: src/remmina.c:86
 msgid ""
-"Connect to desktop described in file (.remmina or type supported by plugin)"
+"Connect either to a desktop described in a file (.remmina or a filetype "
+"supported by a plugin) or a supported URI (RDP, VNC or SPICE)"
 msgstr ""
 
 #: src/remmina.c:86 src/remmina.c:88 src/remmina.c:90
 msgid "FILE"
+msgstr ""
+
+#. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
+#: src/remmina.c:88
+msgid ""
+"Connect to a desktop described in a file (.remmina or a type supported by a "
+"plugin)"
 msgstr ""
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
@@ -601,6 +609,12 @@ msgstr ""
 #: src/remmina.c:118
 msgid "Set one or more profile settings, to be used with --update-profile"
 msgstr ""
+
+#: src/remmina.c:119
+#, fuzzy
+#| msgid "Repeat the password"
+msgid "Encrypt a password"
+msgstr "Errepikatu pasahitza"
 
 #: src/remmina_icon.c:139
 msgid "Open Main Window"

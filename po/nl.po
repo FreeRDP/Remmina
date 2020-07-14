@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2020-07-10 17:42+0000\n"
+"POT-Creation-Date: 2020-07-14 07:25+0000\n"
 "PO-Revision-Date: 2020-06-01 21:24+0000\n"
 "Last-Translator: Matthijs van der Graaf <mvdgraaf@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/remmina/remmina/nl/"
@@ -143,7 +143,7 @@ msgstr "Server"
 msgid "Install the %s protocol plugin first."
 msgstr "Installeer eerst de %s-protocolplugin."
 
-#: src/remmina_exec.c:324
+#: src/remmina_exec.c:490
 #, c-format
 msgid "Plugin %s is not registered."
 msgstr "Plug-in %s is niet geregistreerd."
@@ -543,9 +543,14 @@ msgid "Show 'About'"
 msgstr "Toon 'Over'"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:86 src/remmina.c:88
+#: src/remmina.c:86
+#, fuzzy
+#| msgid ""
+#| "Connect to desktop described in file (.remmina or type supported by "
+#| "plugin)"
 msgid ""
-"Connect to desktop described in file (.remmina or type supported by plugin)"
+"Connect either to a desktop described in a file (.remmina or a filetype "
+"supported by a plugin) or a supported URI (RDP, VNC or SPICE)"
 msgstr ""
 "Verbinding maken met bureaublad beschreven in bestand (.remmina of type "
 "ondersteund door plug-in)"
@@ -553,6 +558,19 @@ msgstr ""
 #: src/remmina.c:86 src/remmina.c:88 src/remmina.c:90
 msgid "FILE"
 msgstr ""
+
+#. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
+#: src/remmina.c:88
+#, fuzzy
+#| msgid ""
+#| "Connect to desktop described in file (.remmina or type supported by "
+#| "plugin)"
+msgid ""
+"Connect to a desktop described in a file (.remmina or a type supported by a "
+"plugin)"
+msgstr ""
+"Verbinding maken met bureaublad beschreven in bestand (.remmina of type "
+"ondersteund door plug-in)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:90
@@ -629,6 +647,11 @@ msgstr "Verbindingsprofiel wijzigen (vereist ook --set-option)"
 #: src/remmina.c:118
 msgid "Set one or more profile settings, to be used with --update-profile"
 msgstr ""
+
+#: src/remmina.c:119
+#, fuzzy
+msgid "Encrypt a password"
+msgstr "Wachtwoord onthouden"
 
 #: src/remmina_icon.c:139
 msgid "Open Main Window"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Remmina v1.4.6\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2020-07-10 17:42+0000\n"
+"POT-Creation-Date: 2020-07-14 07:25+0000\n"
 "PO-Revision-Date: 2020-07-06 06:11+0000\n"
 "Last-Translator: Jwtiyar Nariman <jwtiyar@gmail.com>\n"
 "Language-Team: Central Kurdish <https://hosted.weblate.org/projects/remmina/"
@@ -135,7 +135,7 @@ msgstr "ڕاژە"
 msgid "Install the %s protocol plugin first."
 msgstr "پێوەکراوی پرۆتۆکۆڵی %s دامەزرێنە یەکەمجار."
 
-#: src/remmina_exec.c:324
+#: src/remmina_exec.c:490
 #, c-format
 msgid "Plugin %s is not registered."
 msgstr "پێوەکراوی %s تۆمار نەکراوە."
@@ -510,9 +510,14 @@ msgid "Show 'About'"
 msgstr "‘دەربارە’ پیشان بدە"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:86 src/remmina.c:88
+#: src/remmina.c:86
+#, fuzzy
+#| msgid ""
+#| "Connect to desktop described in file (.remmina or type supported by "
+#| "plugin)"
 msgid ""
-"Connect to desktop described in file (.remmina or type supported by plugin)"
+"Connect either to a desktop described in a file (.remmina or a filetype "
+"supported by a plugin) or a supported URI (RDP, VNC or SPICE)"
 msgstr ""
 "پەیوەندی بکە بە ڕوومێز کە پێناسکراوە لە ناو پەڕگە ( .remmina , یان جۆرێک کە "
 "پشتگیری دەکرێت لە لایەن پێوەکراوەوە)"
@@ -520,6 +525,19 @@ msgstr ""
 #: src/remmina.c:86 src/remmina.c:88 src/remmina.c:90
 msgid "FILE"
 msgstr "پەڕگە"
+
+#. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
+#: src/remmina.c:88
+#, fuzzy
+#| msgid ""
+#| "Connect to desktop described in file (.remmina or type supported by "
+#| "plugin)"
+msgid ""
+"Connect to a desktop described in a file (.remmina or a type supported by a "
+"plugin)"
+msgstr ""
+"پەیوەندی بکە بە ڕوومێز کە پێناسکراوە لە ناو پەڕگە ( .remmina , یان جۆرێک کە "
+"پشتگیری دەکرێت لە لایەن پێوەکراوەوە)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:90
@@ -597,6 +615,12 @@ msgstr "پرۆفایلی پەیوەندی دەستکاریبکە (پێویستی
 msgid "Set one or more profile settings, to be used with --update-profile"
 msgstr ""
 "یەک یان زیاتر لە ڕێکخستنی پرۆفایل دابنێ، کە بەکاردێت لەگەڵ —update-profile"
+
+#: src/remmina.c:119
+#, fuzzy
+#| msgid "Enter VNC password"
+msgid "Encrypt a password"
+msgstr "وشەی تێپەڕبوونی VNC بنووسە"
 
 #: src/remmina_icon.c:139
 msgid "Open Main Window"

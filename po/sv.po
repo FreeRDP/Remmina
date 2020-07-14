@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2020-07-10 17:42+0000\n"
+"POT-Creation-Date: 2020-07-14 07:25+0000\n"
 "PO-Revision-Date: 2020-05-21 21:33+0000\n"
 "Last-Translator: theschitz <alex@theschitz.se>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -144,7 +144,7 @@ msgstr "Server"
 msgid "Install the %s protocol plugin first."
 msgstr "Installera %s-protokolltillägget först."
 
-#: src/remmina_exec.c:324
+#: src/remmina_exec.c:490
 #, c-format
 msgid "Plugin %s is not registered."
 msgstr "Tillägg %s är inte registrerat."
@@ -556,10 +556,11 @@ msgid "Show 'About'"
 msgstr "Vis \"Om\""
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:86 src/remmina.c:88
+#: src/remmina.c:86
 #, fuzzy
 msgid ""
-"Connect to desktop described in file (.remmina or type supported by plugin)"
+"Connect either to a desktop described in a file (.remmina or a filetype "
+"supported by a plugin) or a supported URI (RDP, VNC or SPICE)"
 msgstr ""
 "Koppla till skrivbord beskriven i fil (.remmina eller type som stöds av "
 "tillägg)"
@@ -567,6 +568,16 @@ msgstr ""
 #: src/remmina.c:86 src/remmina.c:88 src/remmina.c:90
 msgid "FILE"
 msgstr ""
+
+#. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
+#: src/remmina.c:88
+#, fuzzy
+msgid ""
+"Connect to a desktop described in a file (.remmina or a type supported by a "
+"plugin)"
+msgstr ""
+"Koppla till skrivbord beskriven i fil (.remmina eller type som stöds av "
+"tillägg)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:90
@@ -648,6 +659,11 @@ msgstr "Ändra anslutningsprofil, (kräver --set-option)"
 #, fuzzy
 msgid "Set one or more profile settings, to be used with --update-profile"
 msgstr "Sett en eller flera profilinställningar, for bruk med --update-profile"
+
+#: src/remmina.c:119
+#, fuzzy
+msgid "Encrypt a password"
+msgstr "Spara lösenord"
 
 #: src/remmina_icon.c:139
 msgid "Open Main Window"

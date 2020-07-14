@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2020-07-10 17:42+0000\n"
+"POT-Creation-Date: 2020-07-14 07:25+0000\n"
 "PO-Revision-Date: 2020-07-13 14:05+0000\n"
 "Last-Translator: 玉堂白鹤 <yjwork@qq.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -140,7 +140,7 @@ msgstr "服务器"
 msgid "Install the %s protocol plugin first."
 msgstr "请先安装 %s 协议插件。"
 
-#: src/remmina_exec.c:324
+#: src/remmina_exec.c:490
 #, c-format
 msgid "Plugin %s is not registered."
 msgstr "插件 %s 未注册。"
@@ -522,14 +522,30 @@ msgid "Show 'About'"
 msgstr "显示关于对话框"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:86 src/remmina.c:88
+#: src/remmina.c:86
+#, fuzzy
+#| msgid ""
+#| "Connect to desktop described in file (.remmina or type supported by "
+#| "plugin)"
 msgid ""
-"Connect to desktop described in file (.remmina or type supported by plugin)"
+"Connect either to a desktop described in a file (.remmina or a filetype "
+"supported by a plugin) or a supported URI (RDP, VNC or SPICE)"
 msgstr "连接到文件描述的桌面（.remmina 或插件支持的类型）"
 
 #: src/remmina.c:86 src/remmina.c:88 src/remmina.c:90
 msgid "FILE"
 msgstr "文件"
+
+#. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
+#: src/remmina.c:88
+#, fuzzy
+#| msgid ""
+#| "Connect to desktop described in file (.remmina or type supported by "
+#| "plugin)"
+msgid ""
+"Connect to a desktop described in a file (.remmina or a type supported by a "
+"plugin)"
+msgstr "连接到文件描述的桌面（.remmina 或插件支持的类型）"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:90
@@ -604,6 +620,12 @@ msgstr "修改连接配置文件(需要 --set-option)"
 #: src/remmina.c:118
 msgid "Set one or more profile settings, to be used with --update-profile"
 msgstr "设置一个或多个配置文件设置，用于 --update-profile"
+
+#: src/remmina.c:119
+#, fuzzy
+#| msgid "Enter VNC password"
+msgid "Encrypt a password"
+msgstr "输入 VNC 密码"
 
 #: src/remmina_icon.c:139
 msgid "Open Main Window"
@@ -1888,7 +1910,9 @@ msgstr "无法找到 RDP 服务器 \"%s\" 的地址。"
 msgid ""
 "Could not connect to the RDP server \"%s\" via TLS. Check that client and "
 "server support a common TLS version."
-msgstr "连接到 RDP 服务器 \"%s\" 时出错。TLS 连接失败。请检查客户端和服务器是否支持通用 TLS 版本。"
+msgstr ""
+"连接到 RDP 服务器 \"%s\" 时出错。TLS 连接失败。请检查客户端和服务器是否支持通"
+"用 TLS 版本。"
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:1768
@@ -2599,8 +2623,8 @@ msgstr ""
 "</span>\n"
 "\n"
 "<span>\n"
-"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina 发行说明\""
-"><i>访问网站以阅读发行说明</i></a>。\n"
+"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina 发行说"
+"明\"><i>访问网站以阅读发行说明</i></a>。\n"
 "</span>"
 
 #. The star (*) is a reference to privacy consent
@@ -2611,7 +2635,8 @@ msgid ""
 "\">anonymous</a></b> statistics. (*)"
 msgstr ""
 "发送 <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-"remmina__stats_8c.html#details\" title=\"Remmina 使用统计\">匿名</a></b> 统计。 (*)"
+"remmina__stats_8c.html#details\" title=\"Remmina 使用统计\">匿名</a></b> 统"
+"计。 (*)"
 
 #: data/ui/remmina_news.glade:142 data/ui/remmina_news.glade:195
 msgid "Send anonymous statistics"
@@ -2642,7 +2667,9 @@ msgstr ""
 msgid ""
 "* By enabling statistics and/or news you consent to send and fetch data to/"
 "from remmina.org"
-msgstr "* 通过启用统计信息和(或)新闻，您同意向 remmina.org 发送数据或从 remmina.org 获取数据"
+msgstr ""
+"* 通过启用统计信息和(或)新闻，您同意向 remmina.org 发送数据或从 remmina.org "
+"获取数据"
 
 #: data/ui/remmina_news.glade:231
 msgid "<big>Take part</big>"
