@@ -47,7 +47,7 @@ Show help options
 .It Fl a
 Show about dialog
 .It Fl c, -connect\fR=\fIFILE\fR
-Directly connect to desktop using options described by file, file type can be either .remmina or one supported by a file import capable plugin
+Connect directly either to a desktop using options described in a file, or a supported URI (RDP, VNC or SPICE). The filetype can be ".remmina" or one supported by a plugin capable of importing files
 .It Fl e, -edit\fR=\fIFILE\fR
 Open and edit desktop connection using options described by file, file type can be either .remmina or one supported by a file import capable plugin
 .It Fl k, -kiosk\fR
@@ -72,6 +72,8 @@ Show the application's version
 Modify connection profile, require also \-\-set\-option
 .It --set-option \fIOPTION[=VALUE]\fR
 Set one or more profile settings, to be used with \-\-update\-profile
+.It --encrypt-password\fR
+Encrypt a password
 .It --display\fR=\fIDISPLAY\fR
 X display to use
 .El
@@ -81,6 +83,26 @@ To connect using an exisitng connection profile use:
 .RS
 .nf
 \fBremmina -c FILE.remmina\fP
+.fi
+.RE
+.Lp
+To quick connect using a URI:
+.RS
+.nf
+remmina -c rdp://username:password@server
+remmina -c rdp://domain\\\\username@server
+remmina -c vnc://username@server
+remmina -c vnc://server?VncUsername=username
+remmina -c spice://server
+
+To quick connect using a URI along with an encrypted password:
+remmina -c rdp://username:encrypted-password@server
+remmina -c vnc://username:encrypted-password@server
+remmina -c vnc://server?VncUsername=username\\&VncPassword=encrypted-password
+
+To encrypt a password for use with a URI:
+remmina --encrypt-password
+
 .fi
 .RE
 .Lp

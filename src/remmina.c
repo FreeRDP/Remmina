@@ -83,9 +83,9 @@ static GOptionEntry remmina_options[] =
 	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 	{ "about",	      'a',  0,			  G_OPTION_ARG_NONE,	       NULL, N_("Show \'About\'"),								     NULL	},
 	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-	{ "connect",	      'c',  0,			  G_OPTION_ARG_FILENAME_ARRAY, NULL, N_("Connect to desktop described in file (.remmina or type supported by plugin)"),	     N_("FILE")	},
+	{ "connect",	      'c',  0,			  G_OPTION_ARG_FILENAME_ARRAY, NULL, N_("Connect either to a desktop described in a file (.remmina or a filetype supported by a plugin) or a supported URI (RDP, VNC or SPICE)"),	     N_("FILE")	},
 	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-	{ G_OPTION_REMAINING, '\0', 0,			  G_OPTION_ARG_FILENAME_ARRAY, NULL, N_("Connect to desktop described in file (.remmina or type supported by plugin)"),	     N_("FILE")	},
+	{ G_OPTION_REMAINING, '\0', 0,			  G_OPTION_ARG_FILENAME_ARRAY, NULL, N_("Connect to a desktop described in a file (.remmina or a type supported by a plugin)"),	     N_("FILE")	},
 	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 	{ "edit",	      'e',  0,			  G_OPTION_ARG_FILENAME_ARRAY, NULL, N_("Edit desktop connection described in file (.remmina or type supported by plugin)"), N_("FILE")	},
 	{ "help",	      '?',  G_OPTION_FLAG_HIDDEN, G_OPTION_ARG_NONE,	       NULL, NULL,										     NULL	},
@@ -116,6 +116,7 @@ static GOptionEntry remmina_options[] =
 	{ "update-profile",   0,    0,			  G_OPTION_ARG_FILENAME,       NULL, N_("Modify connection profile (requires --set-option)"),				     NULL	},
 	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 	{ "set-option",	      0,    0,			  G_OPTION_ARG_STRING_ARRAY,   NULL, N_("Set one or more profile settings, to be used with --update-profile"),		     NULL	},
+	{ "encrypt-password", 0,    0,			  G_OPTION_ARG_NONE,	       NULL, N_("Encrypt a password"),												  NULL		 },
 	{ NULL }
 };
 
@@ -224,6 +225,12 @@ static gint remmina_on_command_line(GApplication *app, GApplicationCommandLine *
 	if (g_variant_dict_lookup_value(opts, "icon", NULL)) {
 		remmina_exec_command(REMMINA_COMMAND_NONE, NULL);
 		executed = TRUE;
+	}
+
+	if (g_variant_dict_lookup_value(opts, "encrypt-password", NULL)) {
+		remmina_exec_command(REMMINA_COMMAND_ENCRYPT_PASSWORD, NULL);
+		executed = TRUE;
+		status = 1;
 	}
 
 	if (!executed)
