@@ -57,6 +57,7 @@ parts:
       current_dir=$PWD
       cd "$SNAPCRAFT_PART_SRC"
       git apply --verbose "$SNAPCRAFT_STAGE/0003-Fixed-6298-Mask-CACHED_BRUSH-when-checking-brush-sty.patch"
+      git apply --verbose "$SNAPCRAFT_STAGE/0001-Fix-seeking-in-Cache-Brush-and-other-Secondary-Drawi.patch"
       cd "$current_dir"
       snapcraftctl build
     build-packages:
