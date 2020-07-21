@@ -51,15 +51,15 @@ parts:
   freerdp:
     plugin: cmake
     source: https://github.com/FreeRDP/FreeRDP.git
-    source-tag: 2.1.2
+    source-tag: 2.2.0
     source-depth: 1
-    override-build: |
-      current_dir=$PWD
-      cd "$SNAPCRAFT_PART_SRC"
-      git apply --verbose "$SNAPCRAFT_STAGE/0003-Fixed-6298-Mask-CACHED_BRUSH-when-checking-brush-sty.patch"
-      git apply --verbose "$SNAPCRAFT_STAGE/0001-Fix-seeking-in-Cache-Brush-and-other-Secondary-Drawi.patch"
-      cd "$current_dir"
-      snapcraftctl build
+    # override-build: |
+    #   current_dir=$PWD
+    #   cd "$SNAPCRAFT_PART_SRC"
+    #   git apply --verbose "$SNAPCRAFT_STAGE/0003-Fixed-6298-Mask-CACHED_BRUSH-when-checking-brush-sty.patch"
+    #   git apply --verbose "$SNAPCRAFT_STAGE/0001-Fix-seeking-in-Cache-Brush-and-other-Secondary-Drawi.patch"
+    #   cd "$current_dir"
+    #   snapcraftctl build
     build-packages:
       - build-essential
       - libasound2-dev
@@ -113,14 +113,14 @@ parts:
       - -usr/include
       - -usr/lib/cmake
       - -usr/lib/pkgconfig
-    after:
-      - patches
+      # after:
+      # - patches
 
-  patches:
-    source: snap/local/patches
-    plugin: dump
-    prime:
-      - -*
+    # patches:
+    #   source: snap/local/patches
+    #   plugin: dump
+    #   prime:
+    #     - -*
 
   remmina:
     after:
