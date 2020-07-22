@@ -277,6 +277,16 @@ remmina_plugin_ssh_main_thread(gpointer data)
 
 			ret = remmina_ssh_auth_gui(ssh, gp, remminafile);
 			if (ret != REMMINA_SSH_AUTH_SUCCESS) {
+				if(ret == REMMINA_SSH_AUTH_RECONNECT) {
+					if (ssh->session) {
+						ssh_disconnect(ssh->session);
+						ssh_free(ssh->session);
+						ssh->session = NULL;
+					}
+					g_free(ssh->callback);
+					continue;
+				}
+
 				if (ret != REMMINA_SSH_AUTH_USERCANCEL)
 					remmina_plugin_service->protocol_plugin_set_error(gp, "%s", ssh->error);
 				break;
