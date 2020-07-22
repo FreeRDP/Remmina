@@ -42,6 +42,9 @@ case "$@" in
     *vnc:*)
         "$REMMINA" "${@}"
         ;;
+    *ssh:*)
+        "$REMMINA" "${@}"
+        ;;
     *remmina:*)
         "$REMMINA" "${@#remmina:\/\/}"
         ;;

@@ -83,7 +83,7 @@ static GOptionEntry remmina_options[] =
 	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 	{ "about",	      'a',  0,			  G_OPTION_ARG_NONE,	       NULL, N_("Show \'About\'"),								     NULL	},
 	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-	{ "connect",	      'c',  0,			  G_OPTION_ARG_FILENAME_ARRAY, NULL, N_("Connect either to a desktop described in a file (.remmina or a filetype supported by a plugin) or a supported URI (RDP, VNC or SPICE)"),	     N_("FILE")	},
+	{ "connect",	      'c',  0,			  G_OPTION_ARG_FILENAME_ARRAY, NULL, N_("Connect either to a desktop described in a file (.remmina or a filetype supported by a plugin) or a supported URI (RDP, VNC, SSH or SPICE)"),	     N_("FILE")	},
 	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 	{ G_OPTION_REMAINING, '\0', 0,			  G_OPTION_ARG_FILENAME_ARRAY, NULL, N_("Connect to a desktop described in a file (.remmina or a type supported by a plugin)"),	     N_("FILE")	},
 	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
