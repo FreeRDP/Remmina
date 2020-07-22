@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-07-14 07:25+0000\n"
-"PO-Revision-Date: 2020-06-16 15:49+0000\n"
+"PO-Revision-Date: 2020-07-22 23:40+0000\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/remmina/remmina/"
 "es/>\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.1.1-dev\n"
+"X-Generator: Weblate 4.2-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
 
 #: src/remmina_protocol_widget.c:275
@@ -539,16 +539,12 @@ msgstr "Mostrar «Acerca de»"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:86
-#, fuzzy
-#| msgid ""
-#| "Connect to desktop described in file (.remmina or type supported by "
-#| "plugin)"
 msgid ""
 "Connect either to a desktop described in a file (.remmina or a filetype "
 "supported by a plugin) or a supported URI (RDP, VNC or SPICE)"
 msgstr ""
-"Conectar con escritorio descrito en archivo (.remmina o tipo admitido por "
-"complemento)"
+"Conectar o con el escritorio descrito en un archivo (.remmina o un tipo "
+"admitido por un complemento) o con un URI admitido (RDP, VNC o SPICE)"
 
 #: src/remmina.c:86 src/remmina.c:88 src/remmina.c:90
 msgid "FILE"
@@ -556,16 +552,12 @@ msgstr "ARCHIVO"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:88
-#, fuzzy
-#| msgid ""
-#| "Connect to desktop described in file (.remmina or type supported by "
-#| "plugin)"
 msgid ""
 "Connect to a desktop described in a file (.remmina or a type supported by a "
 "plugin)"
 msgstr ""
-"Conectar con escritorio descrito en archivo (.remmina o tipo admitido por "
-"complemento)"
+"Conectar con el escritorio descrito en un archivo (.remmina o un tipo "
+"admitido por un complemento)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:90
@@ -573,8 +565,8 @@ msgid ""
 "Edit desktop connection described in file (.remmina or type supported by "
 "plugin)"
 msgstr ""
-"Editar conexión de escritorio descrita en archivo (.remmina o tipo admitido "
-"por complemento)"
+"Editar la conexión de escritorio descrita en un archivo (.remmina o un tipo "
+"admitido por un complemento)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:93
@@ -646,10 +638,8 @@ msgstr ""
 "--update-profile"
 
 #: src/remmina.c:119
-#, fuzzy
-#| msgid "Enter VNC password"
 msgid "Encrypt a password"
-msgstr "Introducir clave de VNC"
+msgstr "Cifrar una contraseña"
 
 #: src/remmina_icon.c:139
 msgid "Open Main Window"
@@ -2130,6 +2120,10 @@ msgid ""
 "connection.\n"
 "The highest possible value is 600000 ms (10 minutes)\n"
 msgstr ""
+"Configuración avanzada para enlaces de latencia alta:\n"
+"Ajuste el tiempo de espera de la conexión para evitar errores de tiempo "
+"agotado.\n"
+"El valor máximo posible es de 600000 ms (10 minutos)\n"
 
 #: plugins/rdp/rdp_plugin.c:2243
 msgid "Security protocol negotiation"
@@ -2148,10 +2142,8 @@ msgid "Redirect local microphone"
 msgstr "Redirigir el micrófono local"
 
 #: plugins/rdp/rdp_plugin.c:2247
-#, fuzzy
-#| msgid "Connecting to \"%s\"…"
 msgid "Connection timeout in ms"
-msgstr "Conectando con «%s»…"
+msgstr "Tiempo de espera de conexión en ms"
 
 #: plugins/rdp/rdp_plugin.c:2248
 msgid "Remote Desktop Gateway server"
