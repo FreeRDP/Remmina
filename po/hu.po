@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2020-07-14 07:25+0000\n"
+"POT-Creation-Date: 2020-07-22 23:44+0000\n"
 "PO-Revision-Date: 2020-07-19 19:41+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/remmina/"
@@ -72,8 +72,8 @@ msgid "Connecting to %s via SSH…"
 msgstr "Csatlakozás ehhez: „%s” SSH-val…"
 
 #: src/remmina_protocol_widget.c:1426 src/remmina_protocol_widget.c:1445
-#: src/remmina_ssh_plugin.c:957 src/remmina_sftp_plugin.c:300
-#: src/remmina_sftp_plugin.c:335 src/remmina_file_editor.c:1012
+#: src/remmina_ssh_plugin.c:967 src/remmina_sftp_plugin.c:309
+#: src/remmina_sftp_plugin.c:344 src/remmina_file_editor.c:1012
 #: plugins/www/www_plugin.c:872 plugins/rdp/rdp_plugin.c:2223
 #: data/ui/remmina_unlock.glade:116 data/ui/remmina_mpc.glade:236
 #: data/ui/remmina_preferences.glade:1577
@@ -139,7 +139,7 @@ msgstr "Kiszolgáló"
 msgid "Install the %s protocol plugin first."
 msgstr "Telepítse a %s protokoll bővítményt először."
 
-#: src/remmina_exec.c:490
+#: src/remmina_exec.c:464
 #, c-format
 msgid "Plugin %s is not registered."
 msgstr "A(z) „%s” bővítmény nincs regisztrálva."
@@ -170,131 +170,131 @@ msgstr "Billentyűleütések beállítása"
 msgid "libsodium >= 1.9.0 is required to use master password"
 msgstr "libsodium >= 1.9.0 szükséges master password használathoz"
 
-#: src/remmina_ssh_plugin.c:462
+#: src/remmina_ssh_plugin.c:472
 #, c-format
 msgid "Error: %s"
 msgstr "Hiba: %s"
 
-#: src/remmina_ssh_plugin.c:479
+#: src/remmina_ssh_plugin.c:489
 msgid "Terminal content saved in"
 msgstr "Terminál tartalma mentve ide:"
 
-#: src/remmina_ssh_plugin.c:533
+#: src/remmina_ssh_plugin.c:543
 msgid "Select All (host+A)"
 msgstr "Ö_sszes kijelölése (host+A)"
 
-#: src/remmina_ssh_plugin.c:534
+#: src/remmina_ssh_plugin.c:544
 msgid "Copy (host+C)"
 msgstr "Másolás (host+C)"
 
-#: src/remmina_ssh_plugin.c:535
+#: src/remmina_ssh_plugin.c:545
 msgid "Paste (host+V)"
 msgstr "Beillesztés (host+V)"
 
-#: src/remmina_ssh_plugin.c:536
+#: src/remmina_ssh_plugin.c:546
 msgid "Save session to file"
 msgstr "Munkamenet mentése fájlba"
 
-#: src/remmina_ssh_plugin.c:537
+#: src/remmina_ssh_plugin.c:547
 msgid "Increase font size (host+Page Up)"
 msgstr "Betűméret növelése (host+Page Up)"
 
-#: src/remmina_ssh_plugin.c:538
+#: src/remmina_ssh_plugin.c:548
 msgid "Decrease font size (host+Page Down)"
 msgstr "Betűméret csökkentése (host+Page Down)"
 
-#: src/remmina_ssh_plugin.c:958 src/remmina_sftp_plugin.c:301
+#: src/remmina_ssh_plugin.c:968 src/remmina_sftp_plugin.c:310
 #: src/remmina_file_editor.c:364 src/remmina_file_editor.c:371
 msgid "SSH identity file"
 msgstr "SSH személyazonosság fájl"
 
-#: src/remmina_ssh_plugin.c:959 src/remmina_sftp_plugin.c:302
+#: src/remmina_ssh_plugin.c:969 src/remmina_sftp_plugin.c:311
 msgid "SSH agent"
 msgstr "SSH ügynök"
 
-#: src/remmina_ssh_plugin.c:960 src/remmina_sftp_plugin.c:303
+#: src/remmina_ssh_plugin.c:970 src/remmina_sftp_plugin.c:312
 #: src/remmina_file_editor.c:1025
 msgid "Public key (automatic)"
 msgstr "Nyilvános kulcs (automatikus)"
 
-#: src/remmina_ssh_plugin.c:961 src/remmina_sftp_plugin.c:304
+#: src/remmina_ssh_plugin.c:971 src/remmina_sftp_plugin.c:313
 msgid "Kerberos (GSSAPI)"
 msgstr "Kerberos (GSSAPI)"
 
-#: src/remmina_ssh_plugin.c:1036 data/ui/remmina_main.glade:273
+#: src/remmina_ssh_plugin.c:1046 data/ui/remmina_main.glade:273
 msgid "Copy"
 msgstr "Másolás"
 
-#: src/remmina_ssh_plugin.c:1036
+#: src/remmina_ssh_plugin.c:1046
 msgid "_Copy"
 msgstr "_Másolás"
 
-#: src/remmina_ssh_plugin.c:1037
+#: src/remmina_ssh_plugin.c:1047
 msgid "Paste"
 msgstr "Beillesztés"
 
-#: src/remmina_ssh_plugin.c:1037
+#: src/remmina_ssh_plugin.c:1047
 msgid "_Paste"
 msgstr "_Beillesztés"
 
-#: src/remmina_ssh_plugin.c:1038
+#: src/remmina_ssh_plugin.c:1048
 msgid "Select all"
 msgstr "Összes kijelölése"
 
-#: src/remmina_ssh_plugin.c:1038
+#: src/remmina_ssh_plugin.c:1048
 msgid "_Select all"
 msgstr "Ö_sszes kijelölése"
 
-#: src/remmina_ssh_plugin.c:1039 data/ui/remmina_preferences.glade:2223
+#: src/remmina_ssh_plugin.c:1049 data/ui/remmina_preferences.glade:2223
 msgid "Increase font size"
 msgstr "Betűméret növelése"
 
-#: src/remmina_ssh_plugin.c:1039
+#: src/remmina_ssh_plugin.c:1049
 msgid "_Increase font size"
 msgstr "Betűméret _növelése"
 
-#: src/remmina_ssh_plugin.c:1040 data/ui/remmina_preferences.glade:2235
+#: src/remmina_ssh_plugin.c:1050 data/ui/remmina_preferences.glade:2235
 msgid "Decrease font size"
 msgstr "Betűméret csökkentése"
 
-#: src/remmina_ssh_plugin.c:1040
+#: src/remmina_ssh_plugin.c:1050
 msgid "_Decrease font size"
 msgstr "Betűméret _csökkentése"
 
-#: src/remmina_ssh_plugin.c:1058 src/remmina_message_panel.c:330
-#: src/remmina_sftp_plugin.c:334 src/remmina_file_editor.c:1003
+#: src/remmina_ssh_plugin.c:1068 src/remmina_message_panel.c:330
+#: src/remmina_sftp_plugin.c:343 src/remmina_file_editor.c:1003
 #: plugins/www/www_plugin.c:871 plugins/vnc/vnc_plugin.c:1858
 #: plugins/vnc/vnc_plugin.c:1878 plugins/rdp/rdp_plugin.c:2222
 #: plugins/nx/nx_plugin.c:730 data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr "Felhasználónév"
 
-#: src/remmina_ssh_plugin.c:1059 plugins/vnc/vnc_plugin.c:1859
+#: src/remmina_ssh_plugin.c:1069 plugins/vnc/vnc_plugin.c:1859
 #: plugins/vnc/vnc_plugin.c:1879 plugins/spice/spice_plugin.c:437
 #: plugins/nx/nx_plugin.c:731
 msgid "User password"
 msgstr "Felhasználó jelszava"
 
-#: src/remmina_ssh_plugin.c:1060 src/remmina_sftp_plugin.c:336
+#: src/remmina_ssh_plugin.c:1070 src/remmina_sftp_plugin.c:345
 msgid "Authentication type"
 msgstr "Hitelesítési típus"
 
-#: src/remmina_ssh_plugin.c:1061 src/remmina_sftp_plugin.c:337
+#: src/remmina_ssh_plugin.c:1071 src/remmina_sftp_plugin.c:346
 #: plugins/nx/nx_plugin.c:729
 msgid "Identity file"
 msgstr "Személyazonosító fájl"
 
-#: src/remmina_ssh_plugin.c:1062 src/remmina_sftp_plugin.c:338
+#: src/remmina_ssh_plugin.c:1072 src/remmina_sftp_plugin.c:347
 #: src/remmina_file_editor.c:1034
 msgid "Password to unlock private key"
 msgstr "Privát kulcs jelszava"
 
-#: src/remmina_ssh_plugin.c:1063 plugins/xdmcp/xdmcp_plugin.c:370
+#: src/remmina_ssh_plugin.c:1073 plugins/xdmcp/xdmcp_plugin.c:370
 #: plugins/rdp/rdp_plugin.c:2254 plugins/nx/nx_plugin.c:734
 msgid "Startup program"
 msgstr "Induló program"
 
-#: src/remmina_ssh_plugin.c:1068
+#: src/remmina_ssh_plugin.c:1078
 msgid ""
 "The filename can use the following placeholders:\n"
 "\n"
@@ -316,59 +316,59 @@ msgstr ""
 "  • %g kicserélésre kerül a Remmina csoport profil névvel\n"
 "  • %d kicserélésre kerül a helyi datetime-mal iso8601 formában\n"
 
-#: src/remmina_ssh_plugin.c:1090
+#: src/remmina_ssh_plugin.c:1100
 msgid "Terminal color scheme"
 msgstr "Terminál színsémája"
 
-#: src/remmina_ssh_plugin.c:1091
+#: src/remmina_ssh_plugin.c:1101
 msgid "Character set"
 msgstr "Karakterkészlet"
 
-#: src/remmina_ssh_plugin.c:1092 src/remmina_sftp_plugin.c:339
+#: src/remmina_ssh_plugin.c:1102 src/remmina_sftp_plugin.c:348
 msgid "SSH Proxy Command"
 msgstr "SSH-proxy parancs"
 
-#: src/remmina_ssh_plugin.c:1093
+#: src/remmina_ssh_plugin.c:1103
 msgid "KEX (Key Exchange) algorithms"
 msgstr "KEX (kulcscsere) algoritmus"
 
-#: src/remmina_ssh_plugin.c:1094
+#: src/remmina_ssh_plugin.c:1104
 msgid "Symmetric cipher client to server"
 msgstr "Szimmetrikus titkosítás az ügyfél és a kiszolgáló között"
 
-#: src/remmina_ssh_plugin.c:1095
+#: src/remmina_ssh_plugin.c:1105
 msgid "Preferred server host key types"
 msgstr "Előnyben részesített kiszolgáló kulcstípusok"
 
-#: src/remmina_ssh_plugin.c:1096
+#: src/remmina_ssh_plugin.c:1106
 msgid "Folder for SSH session log"
 msgstr "Az SSH munkamenet log mappája"
 
-#: src/remmina_ssh_plugin.c:1097
+#: src/remmina_ssh_plugin.c:1107
 msgid "Filename for SSH session log"
 msgstr "SSH munkamenet napló fájlneve"
 
-#: src/remmina_ssh_plugin.c:1098
+#: src/remmina_ssh_plugin.c:1108
 msgid "Log SSH session when exiting Remmina"
 msgstr "Az SSH kapcsolat logolása a Remmina-ból kilépéskor"
 
-#: src/remmina_ssh_plugin.c:1099
+#: src/remmina_ssh_plugin.c:1109
 msgid "Audible terminal bell"
 msgstr "Hallható terminál csengő"
 
-#: src/remmina_ssh_plugin.c:1100
+#: src/remmina_ssh_plugin.c:1110
 msgid "SSH compression"
 msgstr "SSH tömörítés"
 
-#: src/remmina_ssh_plugin.c:1101
+#: src/remmina_ssh_plugin.c:1111
 msgid "Don't remember passwords"
 msgstr "Ne jegyezze meg a jelszavakat"
 
-#: src/remmina_ssh_plugin.c:1102
+#: src/remmina_ssh_plugin.c:1112
 msgid "Strict host key checking"
 msgstr "Szigorú kiszolgáló kulcs ellenőrzés"
 
-#: src/remmina_ssh_plugin.c:1116
+#: src/remmina_ssh_plugin.c:1126
 msgid "SSH - Secure Shell"
 msgstr "SSH – Biztonságos parancsértelmező"
 
@@ -538,7 +538,7 @@ msgstr "Névjegy megjelenítése"
 #| "plugin)"
 msgid ""
 "Connect either to a desktop described in a file (.remmina or a filetype "
-"supported by a plugin) or a supported URI (RDP, VNC or SPICE)"
+"supported by a plugin) or a supported URI (RDP, VNC, SSH or SPICE)"
 msgstr ""
 "Kapcsolódás egy fájl által leírt távoli asztalhoz (.remmina vagy bővítmény "
 "által támogatott típusú)"
@@ -1018,23 +1018,23 @@ msgstr "Ügyféltanúsítvány-fájl"
 msgid "Client Certificate Key"
 msgstr "Ügyféltanúsítvány-kulcs"
 
-#: src/remmina_sftp_plugin.c:313
+#: src/remmina_sftp_plugin.c:322
 msgid "Show Hidden Files"
 msgstr "Rejtett fájlok megjelenítése"
 
-#: src/remmina_sftp_plugin.c:315
+#: src/remmina_sftp_plugin.c:324
 #, fuzzy
 #| msgid "Overwrite all"
 msgid "Overwrite all files"
 msgstr "Mindet felülírja"
 
-#: src/remmina_sftp_plugin.c:317
+#: src/remmina_sftp_plugin.c:326
 #, fuzzy
 #| msgid "File Transfers"
 msgid "Resume all file transfers"
 msgstr "Fájlátvitelek"
 
-#: src/remmina_sftp_plugin.c:348
+#: src/remmina_sftp_plugin.c:357
 msgid "SFTP - Secure File Transfer"
 msgstr "SFTP – Biztonságos fájlátvitel"
 
@@ -1090,32 +1090,32 @@ msgid "The public SSH key changed!"
 msgstr "Az SSH publikus kulcs megváltozott!"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:509
+#: src/remmina_ssh.c:510
 #, c-format
 msgid "Could not fetch the server's public SSH key. %s"
 msgstr "Nem sikerül lekérni a szerver publikus kulcsát. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:516
+#: src/remmina_ssh.c:517
 #, c-format
 msgid "Could not fetch public SSH key. %s"
 msgstr "Nem sikerült lekérni az SSH publikus kulcsát. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:524
+#: src/remmina_ssh.c:525
 #, c-format
 msgid "Could not fetch checksum for public SSH key. %s"
 msgstr "Nem sikerült lekérni az SSH publikus kulcsot. %s"
 
-#: src/remmina_ssh.c:537
+#: src/remmina_ssh.c:538
 msgid "The server is unknown. The public key fingerprint is:"
 msgstr "A kiszolgáló ismeretlen. A nyilvános kulcs ujjlenyomata:"
 
-#: src/remmina_ssh.c:539 src/remmina_ssh.c:545
+#: src/remmina_ssh.c:540 src/remmina_ssh.c:546
 msgid "Do you trust the new public key?"
 msgstr "Megbízik az új nyilvános kulcsban?"
 
-#: src/remmina_ssh.c:542
+#: src/remmina_ssh.c:543
 msgid ""
 "Warning: The server has changed its public key. This means either you are "
 "under attack,\n"
@@ -1127,146 +1127,146 @@ msgstr ""
 "ujjlenyomata:"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:567
+#: src/remmina_ssh.c:568
 #, c-format
 msgid "Could not check list of known SSH hosts. %s"
 msgstr "Nem sikerült ellenőrizni az ismert SSH kiszolgálók listáját. %s"
 
-#: src/remmina_ssh.c:576
+#: src/remmina_ssh.c:577
 msgid "SSH password"
 msgstr "SSH-jelszó"
 
-#: src/remmina_ssh.c:583 src/remmina_ssh.c:621
+#: src/remmina_ssh.c:584 src/remmina_ssh.c:622
 msgid "SSH private key passphrase"
 msgstr "Személyes SSH-kulcs jelszava"
 
-#: src/remmina_ssh.c:588
+#: src/remmina_ssh.c:589
 msgid "SSH Kerberos/GSSAPI"
 msgstr "SSH Kerberos/GSSAPI"
 
-#: src/remmina_ssh.c:618 src/remmina_ssh.c:641
+#: src/remmina_ssh.c:619 src/remmina_ssh.c:644
 msgid "SSH tunnel credentials"
 msgstr "SSH alagút hitelesítő adatok"
 
-#: src/remmina_ssh.c:618 src/remmina_ssh.c:641 plugins/nx/nx_plugin.c:203
+#: src/remmina_ssh.c:619 src/remmina_ssh.c:644 plugins/nx/nx_plugin.c:203
 msgid "SSH credentials"
 msgstr "SSH hitelesítő adatok"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:792
+#: src/remmina_ssh.c:814
 #, c-format
 msgid "Could not start SSH session. %s"
 msgstr "Nem sikerült elindítani az SSH-kapcsolatot. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1177 src/remmina_ssh.c:1240
+#: src/remmina_ssh.c:1199 src/remmina_ssh.c:1262
 #, c-format
 msgid "Could not create channel. %s"
 msgstr "Nem sikerült létrehozni csatornát. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1188
+#: src/remmina_ssh.c:1210
 #, c-format
 msgid "Could not connect to SSH tunnel. %s"
 msgstr "Nem sikerült kapcsolódni az SSH-alagúthoz. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1255 src/remmina_ssh.c:1880
+#: src/remmina_ssh.c:1277 src/remmina_ssh.c:1902
 #, c-format
 msgid "Could not open channel. %s"
 msgstr "Nem sikerült csatornát nyitni. %s"
 
-#: src/remmina_ssh.c:1261
+#: src/remmina_ssh.c:1283
 #, c-format
 msgid "Could not run %s on SSH server."
 msgstr "Nem sikerült a(z) %s futtatása az SSH-kiszolgálón."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1299 src/remmina_ssh.c:1320 src/remmina_ssh.c:1329
+#: src/remmina_ssh.c:1321 src/remmina_ssh.c:1342 src/remmina_ssh.c:1351
 #, c-format
 msgid "Could not request port forwarding. %s"
 msgstr "Nem sikerült a porttovábbítás kérése. %s"
 
-#: src/remmina_ssh.c:1364
+#: src/remmina_ssh.c:1386
 msgid "The server did not respond."
 msgstr "A szerver nem válaszolt."
 
-#: src/remmina_ssh.c:1407
+#: src/remmina_ssh.c:1429
 #, c-format
 msgid "Cannot connect to local port %i."
 msgstr "Sikertelen a csatlakozás a helyi %i portra."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1457
+#: src/remmina_ssh.c:1479
 #, c-format
 msgid "Could not write to SSH channel. %s"
 msgstr "Nem sikerült az SSh csatornába írni. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1464
+#: src/remmina_ssh.c:1486
 #, c-format
 msgid "Could not read from tunnel listening socket. %s"
 msgstr "Nem sikerült olvasni az alagút figyelő socketből. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1484
+#: src/remmina_ssh.c:1506
 #, c-format
 msgid "Could not poll SSH channel. %s"
 msgstr "Nem sikerült pollolni az SSH csatornát. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1491
+#: src/remmina_ssh.c:1513
 #, c-format
 msgid "Could not read SSH channel in a non-blocking way. %s"
 msgstr "Nem sikerült olvasni az SSH csatornából nem-blokkoló módon. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1510
+#: src/remmina_ssh.c:1532
 #, c-format
 msgid "Could not send data to tunnel listening socket. %s"
 msgstr "Nem sikerült adatot küldeni az alagút socketjéhez. %s"
 
-#: src/remmina_ssh.c:1612
+#: src/remmina_ssh.c:1634
 msgid "Assign a destination port."
 msgstr "Adjon meg egy célportot."
 
-#: src/remmina_ssh.c:1619
+#: src/remmina_ssh.c:1641
 msgid "Could not create socket."
 msgstr "Sikertelen a socket létrehozása."
 
-#: src/remmina_ssh.c:1629
+#: src/remmina_ssh.c:1651
 msgid "Could not bind server socket to local port."
 msgstr "Sikertelen a socket helyi porthoz kötése."
 
-#: src/remmina_ssh.c:1635
+#: src/remmina_ssh.c:1657
 msgid "Could not listen to local port."
 msgstr "Nem lehetséges a helyi port hallgatása."
 
 #. TRANSLATORS: Do not translate pthread
-#: src/remmina_ssh.c:1645 src/remmina_ssh.c:1662 src/remmina_ssh.c:1679
-#: src/remmina_ssh.c:1697
+#: src/remmina_ssh.c:1667 src/remmina_ssh.c:1684 src/remmina_ssh.c:1701
+#: src/remmina_ssh.c:1719
 msgid "Could not start pthread."
 msgstr "Pthread indítása sikertelen."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1790
+#: src/remmina_ssh.c:1812
 #, c-format
 msgid "Could not create SFTP session. %s"
 msgstr "Nem sikerült létrehozni az SFTP kapcsolatot. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1795
+#: src/remmina_ssh.c:1817
 #, c-format
 msgid "Could not start SFTP session. %s"
 msgstr "Nem sikerült elindítani az SFTP kapcsolatot. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1910
+#: src/remmina_ssh.c:1932
 #, c-format
 msgid "Could not request shell. %s"
 msgstr "Nem sikerült shell-t kérni. %s"
 
-#: src/remmina_ssh.c:2003
+#: src/remmina_ssh.c:2025
 msgid "Could not create PTY device."
 msgstr "Nem lehetséges PTY eszköz létrehozása."
 
@@ -2688,8 +2688,8 @@ msgstr ""
 "\n"
 "<span>\n"
 "<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
-"kiadási napló\"><i>Látogassa meg a weboldalt a kiadási napló "
-"elolvasásához</i></a>.\n"
+"kiadási napló\"><i>Látogassa meg a weboldalt a kiadási napló elolvasásához</"
+"i></a>.\n"
 "</span>"
 
 #. The star (*) is a reference to privacy consent
