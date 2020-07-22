@@ -216,27 +216,148 @@ static void remmina_exec_autostart_cb(RemminaFile *remminafile, gpointer user_da
 
 }
 
-void remmina_exec_command(RemminaCommandType command, const gchar* data)
+static void remmina_exec_connect(const gchar *data)
 {
 	TRACE_CALL(__func__);
-	gchar *s1;
-	gchar *s2;
-	gchar *p;
+
+	gchar *protocol;
 	gchar **protocolserver;
+	gchar *server;
+	RemminaFile *remminafile;
 	gchar **userat;
 	gchar **userpass;
+	gchar *user;
+	gchar *password;
 	gchar **domainuser;
 	gchar **serverquery;
 	gchar **querystring;
 	gchar **querystringpart;
 	gchar **querystringpartkv;
-	gchar *protocol;
-	gchar *server;
-	gchar *user;
-	gchar *password;
 	gchar *value;
 	gchar *temp;
-	RemminaFile *remminafile;
+
+	protocol = NULL;
+	if (strncmp("rdp://", data, 6) == 0 || strncmp("RDP://", data, 6) == 0)
+		protocol = "RDP";
+	else if (strncmp("vnc://", data, 6) == 0 || strncmp("VNC://", data, 6) == 0)
+		protocol = "VNC";
+	else if (strncmp("ssh://", data, 6) == 0 || strncmp("SSH://", data, 6) == 0)
+		protocol = "SSH";
+	else if (strncmp("spice://", data, 8) == 0 || strncmp("SPICE://", data, 8) == 0)
+		protocol = "SPICE";
+
+	if (protocol == NULL) {
+		rcw_open_from_filename(data);
+		return;
+	}
+
+	protocolserver = g_strsplit(data, "://", 2);
+	server = g_strdup(protocolserver[1]);
+
+	// Support loading .remmina files using handler
+	if ((temp = strrchr(server, '.')) != NULL && g_strcmp0(temp + 1, "remmina") == 0) {
+		g_strfreev(protocolserver);
+		temp = g_uri_unescape_string(server, NULL);
+		g_free(server);
+		server = temp;
+		rcw_open_from_filename(server);
+		return;
+	}
+
+	remminafile = remmina_file_new();
+
+	// Check for username@server
+	if ((strcmp(protocol, "RDP") == 0 || strcmp(protocol, "VNC") == 0 || strcmp(protocol, "SSH") == 0) && strstr(server, "@") != NULL) {
+		userat = g_strsplit(server, "@", 2);
+
+		// Check for username:password
+		if (strstr(userat[0], ":") != NULL) {
+			userpass = g_strsplit(userat[0], ":", 2);
+			user = g_uri_unescape_string(userpass[0], NULL);
+			password = g_uri_unescape_string(userpass[1], NULL);
+
+			// Try to decrypt the password field if it contains =
+			temp = password != NULL && strrchr(password, '=') != NULL ? remmina_crypt_decrypt(password) : NULL;
+			if (temp != NULL) {
+				g_free(password);
+				password = temp;
+			}
+			remmina_file_set_string(remminafile, "password", password);
+			g_free(password);
+			g_strfreev(userpass);
+		} else {
+			user = g_uri_unescape_string(userat[0], NULL);
+		}
+
+		// Check for domain\user for RDP connections
+		if (strcmp(protocol, "RDP") == 0 && strstr(user, "\\") != NULL) {
+			domainuser = g_strsplit(user, "\\", 2);
+			remmina_file_set_string(remminafile, "domain", domainuser[0]);
+			g_free(user);
+			user = g_strdup(domainuser[1]);
+		}
+
+		remmina_file_set_string(remminafile, "username", user);
+		g_free(user);
+		g_free(server);
+		server = g_strdup(userat[1]);
+		g_strfreev(userat);
+	}
+
+	if (strcmp(protocol, "VNC") == 0 && strstr(server, "?") != NULL) {
+		// https://tools.ietf.org/html/rfc7869
+		// VncUsername, VncPassword and ColorLevel supported for vnc-params
+
+		// Check for query string parameters
+		serverquery = g_strsplit(server, "?", 2);
+		querystring = g_strsplit(serverquery[1], "&", -1);
+		for (querystringpart = querystring; *querystringpart; querystringpart++) {
+			if (strstr(*querystringpart, "=") == NULL)
+				continue;
+			querystringpartkv = g_strsplit(*querystringpart, "=", 2);
+			value = g_uri_unescape_string(querystringpartkv[1], NULL);
+			if (strcmp(querystringpartkv[0], "VncPassword") == 0) {
+				// Try to decrypt password field if it contains =
+				temp = value != NULL && strrchr(value, '=') != NULL ? remmina_crypt_decrypt(value) : NULL;
+				if (temp != NULL) {
+					g_free(value);
+					value = temp;
+				}
+				remmina_file_set_string(remminafile, "password", value);
+			} else if (strcmp(querystringpartkv[0], "VncUsername") == 0) {
+				remmina_file_set_string(remminafile, "username", value);
+			} else if (strcmp(querystringpartkv[0], "ColorLevel") == 0) {
+				remmina_file_set_string(remminafile, "colordepth", value);
+			}
+			g_free(value);
+			g_strfreev(querystringpartkv);
+		}
+		g_strfreev(querystring);
+		g_free(server);
+		server = g_strdup(serverquery[0]);
+		g_strfreev(serverquery);
+	}
+
+	// Unescape server
+	temp = g_uri_unescape_string(server, NULL);
+	g_free(server);
+	server = temp;
+
+	remmina_file_set_string(remminafile, "server", server);
+	remmina_file_set_string(remminafile, "name", server);
+	remmina_file_set_string(remminafile, "sound", "off");
+	remmina_file_set_string(remminafile, "protocol", protocol);
+	g_free(server);
+	g_strfreev(protocolserver);
+	rcw_open_from_file(remminafile);
+}
+
+void remmina_exec_command(RemminaCommandType command, const gchar* data)
+{
+	TRACE_CALL(__func__);
+	gchar *s1;
+	gchar *s2;
+	gchar *temp;
 	GtkWidget *widget;
 	GtkWindow *mainwindow;
 	GtkDialog *prefdialog;
@@ -293,154 +414,7 @@ void remmina_exec_command(RemminaCommandType command, const gchar* data)
 		 * we can implement multi profile connection:
 		 *    https://gitlab.com/Remmina/Remmina/issues/915
 		 */
-		protocol = NULL;
-		if (strncmp("rdp://", data, 6) == 0 || strncmp("RDP://", data, 6) == 0)
-			protocol = "RDP";
-		else if (strncmp("vnc://", data, 6) == 0 || strncmp("VNC://", data, 6) == 0)
-			protocol = "VNC";
-		else if (strncmp("spice://", data, 8) == 0 || strncmp("SPICE://", data, 8) == 0)
-			protocol = "SPICE";
-
-		if (protocol != NULL) {
-			protocolserver = g_strsplit(data, "://", 2);
-			server = g_strdup(protocolserver[1]);
-
-			// Support loading .remmina files using handler
-			if ((p = strrchr(server, '.')) != NULL && g_strcmp0(p + 1, "remmina") == 0) {
-				g_strfreev(protocolserver);
-				temp = g_uri_unescape_string(server, NULL);
-				g_free(server);
-				server = temp;
-				rcw_open_from_filename(server);
-				break;
-			}
-
-			remminafile = remmina_file_new();
-
-			if (strcmp(protocol, "RDP") == 0) {
-				// https://tools.ietf.org/html/rfc3986
-				// "rdp://" [ userinfo "@" ] host [ ":" port ]
-
-				// Check for username@server
-				if (strstr(server, "@") != NULL) {
-					userat = g_strsplit(server, "@", 2);
-
-					// Check for username:password
-					if (strstr(userat[0], ":") != NULL) {
-						userpass = g_strsplit(userat[0], ":", 2);
-						user = g_uri_unescape_string(userpass[0], NULL);
-						password = g_uri_unescape_string(userpass[1], NULL);
-
-						// Try to decrypt the password field if it contains =
-						temp = password != NULL && strrchr(password, '=') != NULL ? remmina_crypt_decrypt(password) : NULL;
-						if (temp != NULL) {
-							g_free(password);
-							password = temp;
-						}
-						remmina_file_set_string(remminafile, "password", password);
-						g_free(password);
-						g_strfreev(userpass);
-					} else {
-						user = g_uri_unescape_string(userat[0], NULL);
-					}
-
-					// Check for domain\user
-					if (strstr(user, "\\") != NULL) {
-						domainuser = g_strsplit(user, "\\", 2);
-						remmina_file_set_string(remminafile, "domain", domainuser[0]);
-						g_free(user);
-						user = g_strdup(domainuser[1]);
-					}
-
-					remmina_file_set_string(remminafile, "username", user);
-					g_free(user);
-					g_free(server);
-					server = g_strdup(userat[1]);
-					g_strfreev(userat);
-				}
-			} else if (strcmp(protocol, "VNC") == 0) {
-				// https://tools.ietf.org/html/rfc7869
-				// VncUsername, VncPassword and ColorLevel supported for vnc-params
-				// "vnc://" [ userinfo "@" ] [ host [ ":" port ] ] [ "?" [ vnc-params ] ]
-
-				// Check for username@server
-				if (strstr(server, "@") != NULL) {
-					userat = g_strsplit(server, "@", 2);
-
-					// Check for username:password
-					if (strstr(userat[0], ":") != NULL) {
-						userpass = g_strsplit(userat[0], ":", 2);
-						user = g_uri_unescape_string(userpass[0], NULL);
-						remmina_file_set_string(remminafile, "username", user);
-						g_free(user);
-						password = g_uri_unescape_string(userpass[1], NULL);
-
-						// Try to decrypt password field if it contains =
-						temp = password != NULL && strrchr(password, '=') != NULL ? remmina_crypt_decrypt(password) : NULL;
-						if (temp != NULL) {
-							g_free(password);
-							password = temp;
-						}
-						remmina_file_set_string(remminafile, "password", password);
-						g_free(password);
-						g_strfreev(userpass);
-					} else {
-						user = g_uri_unescape_string(userat[0], NULL);
-						remmina_file_set_string(remminafile, "username", user);
-						g_free(user);
-					}
-					g_free(server);
-					server = g_strdup(userat[1]);
-					g_strfreev(userat);
-				}
-
-				// Check for query string parameters
-				if (strstr(server, "?") != NULL) {
-					serverquery = g_strsplit(server, "?", 2);
-					querystring = g_strsplit(serverquery[1], "&", -1);
-					for (querystringpart = querystring; *querystringpart; querystringpart++) {
-						if (strstr(*querystringpart, "=") != NULL) {
-							querystringpartkv = g_strsplit(*querystringpart, "=", 2);
-							value = g_uri_unescape_string(querystringpartkv[1], NULL);
-							if (strcmp(querystringpartkv[0], "VncPassword") == 0) {
-								// Try to decrypt password field if it contains =
-								temp = value != NULL && strrchr(value, '=') != NULL ? remmina_crypt_decrypt(value) : NULL;
-								if (temp != NULL) {
-									g_free(value);
-									value = temp;
-								}
-								remmina_file_set_string(remminafile, "password", value);
-							} else if (strcmp(querystringpartkv[0], "VncUsername") == 0) {
-								remmina_file_set_string(remminafile, "username", value);
-							} else if (strcmp(querystringpartkv[0], "ColorLevel") == 0) {
-								remmina_file_set_string(remminafile, "colordepth", value);
-							}
-							g_free(value);
-							g_strfreev(querystringpartkv);
-						}
-					}
-					g_strfreev(querystring);
-					g_free(server);
-					server = g_strdup(serverquery[0]);
-					g_strfreev(serverquery);
-				}
-			}
-
-			// Unescape server
-			temp = g_uri_unescape_string(server, NULL);
-			g_free(server);
-			server = temp;
-
-			remmina_file_set_string(remminafile, "server", server);
-			remmina_file_set_string(remminafile, "name", server);
-			remmina_file_set_string(remminafile, "sound", "off");
-			remmina_file_set_string(remminafile, "protocol", protocol);
-			g_free(server);
-			g_strfreev(protocolserver);
-			rcw_open_from_file(remminafile);
-		} else {
-			rcw_open_from_filename(data);
-		}
+		remmina_exec_connect(data);
 		break;
 
 	case REMMINA_COMMAND_EDIT:
