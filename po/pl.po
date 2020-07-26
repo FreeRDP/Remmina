@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-07-22 23:44+0000\n"
-"PO-Revision-Date: 2020-06-20 22:41+0000\n"
+"PO-Revision-Date: 2020-07-26 09:41+0000\n"
 "Last-Translator: Szylu <chipolade@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/remmina/remmina/"
 "pl/>\n"
@@ -538,16 +538,12 @@ msgstr "Pokaż „O programie”"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:86
-#, fuzzy
-#| msgid ""
-#| "Connect to desktop described in file (.remmina or type supported by "
-#| "plugin)"
 msgid ""
 "Connect either to a desktop described in a file (.remmina or a filetype "
 "supported by a plugin) or a supported URI (RDP, VNC, SSH or SPICE)"
 msgstr ""
-"Połącz z komputerem opisanym w pliku (.remmina lub typ wspierany przez "
-"wtyczkę)"
+"Połącz się z pulpitem opisanym w pliku (.remmina lub typ pliku obsługiwany "
+"przez wtyczkę) lub obsługiwanym identyfikatorem URI (RDP, VNC, SSH lub SPICE)"
 
 #: src/remmina.c:86 src/remmina.c:88 src/remmina.c:90
 msgid "FILE"
@@ -555,10 +551,6 @@ msgstr "PLIK"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:88
-#, fuzzy
-#| msgid ""
-#| "Connect to desktop described in file (.remmina or type supported by "
-#| "plugin)"
 msgid ""
 "Connect to a desktop described in a file (.remmina or a type supported by a "
 "plugin)"
@@ -645,10 +637,8 @@ msgstr ""
 "profile"
 
 #: src/remmina.c:119
-#, fuzzy
-#| msgid "Enter VNC password"
 msgid "Encrypt a password"
-msgstr "Wprowadź hasło do VNC"
+msgstr "Zaszyfruj hasło"
 
 #: src/remmina_icon.c:139
 msgid "Open Main Window"
@@ -2125,6 +2115,10 @@ msgid ""
 "connection.\n"
 "The highest possible value is 600000 ms (10 minutes)\n"
 msgstr ""
+"Zaawansowane ustawienia dla łączy o dużym opóźnieniu:\n"
+"Dostosuj limit czasu połączenia, użyj, jeśli napotkasz awarie limitu czasu "
+"połączenia.\n"
+"Najwyższa możliwa wartość to 600000 ms (10 minut)\n"
 
 #: plugins/rdp/rdp_plugin.c:2243
 msgid "Security protocol negotiation"
@@ -2143,10 +2137,8 @@ msgid "Redirect local microphone"
 msgstr "Przekieruj mikrofon lokalny"
 
 #: plugins/rdp/rdp_plugin.c:2247
-#, fuzzy
-#| msgid "Connecting to \"%s\"…"
 msgid "Connection timeout in ms"
-msgstr "Nawiązywanie połączenia z „%s”…"
+msgstr "Limit czasu połączenia w ms"
 
 #: plugins/rdp/rdp_plugin.c:2248
 msgid "Remote Desktop Gateway server"
