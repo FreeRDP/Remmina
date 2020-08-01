@@ -545,7 +545,7 @@ static gboolean remmina_rdp_event_on_scroll(GtkWidget* widget, GdkEventScroll* e
 		flag = PTR_FLAGS_WHEEL | PTR_FLAGS_WHEEL_NEGATIVE | 0x0088;
 		break;
 
-#ifdef GDK_SCROLL_SMOOTH
+#if GTK_CHECK_VERSION(3, 4, 0)
 	case GDK_SCROLL_SMOOTH:
 		if (event->delta_y < 0)
 			flag = PTR_FLAGS_WHEEL | 0x0078;
@@ -755,8 +755,13 @@ void remmina_rdp_event_init(RemminaProtocolWidget* gp)
 	gtk_widget_show(rfi->drawing_area);
 	gtk_container_add(GTK_CONTAINER(gp), rfi->drawing_area);
 
-	gtk_widget_add_events(rfi->drawing_area, GDK_POINTER_MOTION_MASK | GDK_BUTTON_PRESS_MASK
-		| GDK_BUTTON_RELEASE_MASK | GDK_KEY_PRESS_MASK | GDK_KEY_RELEASE_MASK | GDK_SCROLL_MASK | GDK_FOCUS_CHANGE_MASK);
+	gtk_widget_add_events(rfi->drawing_area, GDK_POINTER_MOTION_MASK 
+		| GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK 
+		| GDK_KEY_PRESS_MASK | GDK_KEY_RELEASE_MASK 
+#if GTK_CHECK_VERSION(3,4,0)
+		| GDK_SMOOTH_SCROLL_MASK 
+#endif
+		| GDK_SCROLL_MASK | GDK_FOCUS_CHANGE_MASK);
 	gtk_widget_set_can_focus(rfi->drawing_area, TRUE);
 
 	remmina_plugin_service->protocol_plugin_register_hostkey(gp, rfi->drawing_area);

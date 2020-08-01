@@ -1401,7 +1401,7 @@ static gboolean remmina_plugin_vnc_on_scroll(GtkWidget *widget, GdkEventScroll *
 	case GDK_SCROLL_RIGHT:
 		mask = (1 << 6);
 		break;
-#ifdef GDK_SCROLL_SMOOTH
+#if GTK_CHECK_VERSION(3, 4, 0)
 	case GDK_SCROLL_SMOOTH:
 		if (event->delta_y < 0)
 			mask = (1 << 3);
@@ -1799,8 +1799,13 @@ static void remmina_plugin_vnc_init(RemminaProtocolWidget *gp)
 
 	gtk_widget_add_events(
 		gpdata->drawing_area,
-		GDK_POINTER_MOTION_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK | GDK_KEY_PRESS_MASK
-		| GDK_KEY_RELEASE_MASK | GDK_SCROLL_MASK);
+		GDK_POINTER_MOTION_MASK | GDK_BUTTON_PRESS_MASK 
+		| GDK_BUTTON_RELEASE_MASK | GDK_KEY_PRESS_MASK
+		| GDK_KEY_RELEASE_MASK 
+#if GTK_CHECK_VERSION(3, 4, 0)
+		| GDK_SMOOTH_SCROLL_MASK
+#endif
+		| GDK_SCROLL_MASK);
 	gtk_widget_set_can_focus(gpdata->drawing_area, TRUE);
 
 
