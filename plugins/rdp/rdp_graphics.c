@@ -188,7 +188,7 @@ BOOL rf_Pointer_New(rdpContext* context, rdpPointer* pointer)
 	RemminaPluginRdpUiObject* ui;
 	rfContext* rfi = (rfContext*)context;
 
-	if ((pointer->andMaskData != 0) && (pointer->xorMaskData != 0)) {
+	if (pointer->xorMaskData != 0) {
 		ui = g_new0(RemminaPluginRdpUiObject, 1);
 		ui->type = REMMINA_RDP_UI_CURSOR;
 		ui->cursor.context = context;
