@@ -1170,6 +1170,12 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 		rfi->settings->RemoteFxCodec = TRUE;
 		rfi->settings->SupportGraphicsPipeline = FALSE;
 		rfi->settings->ColorDepth = 32;
+	} else if (rfi->settings->ColorDepth == 63) {
+		/* /gfx (RFX Progressive) (Win8) */
+		rfi->settings->ColorDepth = 32;
+		rfi->settings->SupportGraphicsPipeline = TRUE;
+		rfi->settings->GfxH264 = FALSE;
+		rfi->settings->GfxAVC444 = FALSE;
 	} else if (rfi->settings->ColorDepth == 64) {
 		/* /gfx:rfx (Win8) */
 		rfi->settings->ColorDepth = 32;
@@ -2128,6 +2134,7 @@ static gpointer colordepth_list[] =
 	"66", N_("GFX AVC444 (32 bpp)"),
 	"65", N_("GFX AVC420 (32 bpp)"),
 	"64", N_("GFX RFX (32 bpp)"),
+	"63", N_("GFX RFX Progressive (32 bpp)"),
 	"0",  N_("RemoteFX (32 bpp)"),
 	"32", N_("True colour (32 bpp)"),
 	"24", N_("True colour (24 bpp)"),
