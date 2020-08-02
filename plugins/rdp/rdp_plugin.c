@@ -1157,7 +1157,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 	if (remmina_plugin_service->file_get_int(remminafile, "ssh_tunnel_enabled", FALSE))
 		rfi->settings->AutoReconnectionEnabled = FALSE;
 
-	rfi->settings->ColorDepth = remmina_plugin_service->file_get_int(remminafile, "colordepth", 66);
+	rfi->settings->ColorDepth = remmina_plugin_service->file_get_int(remminafile, "colordepth", 99);
 
 	rfi->settings->SoftwareGdi = TRUE;
 
@@ -1189,12 +1189,19 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 		rfi->settings->SupportGraphicsPipeline = TRUE;
 		rfi->settings->GfxH264 = TRUE;
 		rfi->settings->GfxAVC444 = FALSE;
-	} else if (rfi->settings->ColorDepth >= 66) {
+	} else if (rfi->settings->ColorDepth == 66) {
 		/* /gfx:avc444 (Win10) */
 		rfi->settings->ColorDepth = 32;
 		rfi->settings->SupportGraphicsPipeline = TRUE;
 		rfi->settings->GfxH264 = TRUE;
 		rfi->settings->GfxAVC444 = TRUE;
+	} else if (rfi->settings->ColorDepth == 99) {
+		/* Automatic (Let the server choose its best format) */
+		rfi->settings->ColorDepth = 32;
+		rfi->settings->RemoteFxCodec = TRUE;
+		rfi->settings->SupportGraphicsPipeline = TRUE;
+		rfi->settings->GfxH264 = gfx_h264_available;
+		rfi->settings->GfxAVC444 = gfx_h264_available;
 	}
 
 	rfi->settings->DesktopWidth = remmina_plugin_service->get_profile_remote_width(gp);
@@ -2131,6 +2138,7 @@ static gboolean remmina_rdp_get_screenshot(RemminaProtocolWidget *gp, RemminaPlu
 static gpointer colordepth_list[] =
 {
 	/* 1st one is the default in a new install */
+	"99", N_("Automatic (32 bpp) (Server chooses its best format)"),
 	"66", N_("GFX AVC444 (32 bpp)"),
 	"65", N_("GFX AVC420 (32 bpp)"),
 	"64", N_("GFX RFX (32 bpp)"),
