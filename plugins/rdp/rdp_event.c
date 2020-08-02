@@ -1009,12 +1009,12 @@ static BOOL remmina_rdp_event_create_cursor(RemminaProtocolWidget* gp, RemminaPl
 	cairo_surface_t* surface;
 	UINT8* data = malloc(pointer->width * pointer->height * 4);
 
-	if (freerdp_image_copy_from_pointer_data(
+	if (!freerdp_image_copy_from_pointer_data(
 		    (BYTE*)data, PIXEL_FORMAT_BGRA32,
 		    pointer->width * 4, 0, 0, pointer->width, pointer->height,
 		    pointer->xorMaskData, pointer->lengthXorMask,
 		    pointer->andMaskData, pointer->lengthAndMask,
-		    pointer->xorBpp, &(ui->cursor.context->gdi->palette)) < 0) {
+		    pointer->xorBpp, &(ui->cursor.context->gdi->palette))) {
 		free(data);
 		return FALSE;
 	}
