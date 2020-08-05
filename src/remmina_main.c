@@ -1060,7 +1060,8 @@ static gboolean remmina_main_quickconnect(void)
 {
 	TRACE_CALL(__func__);
 	RemminaFile *remminafile;
-	const gchar *server;
+	gchar *server;
+	gchar *server_trimmed;
 	gchar *qcp;
 
 
@@ -1073,14 +1074,23 @@ static gboolean remmina_main_quickconnect(void)
 	}
 
 	remminafile = remmina_file_new();
-	server = gtk_entry_get_text(remminamain->entry_quick_connect_server);
+	server = g_strdup(gtk_entry_get_text(remminamain->entry_quick_connect_server));
 	if (is_empty(server))
 		return FALSE;
+
+	/* check if server is an IP address and trim whitespace if so */
+	server_trimmed = g_strdup(server);
+	g_strstrip(server_trimmed);
+
+	if (g_hostname_is_ip_address(server_trimmed))
+		g_stpcpy(server, server_trimmed);
 
 	remmina_file_set_string(remminafile, "sound", "off");
 	remmina_file_set_string(remminafile, "server", server);
 	remmina_file_set_string(remminafile, "name", server);
 	remmina_file_set_string(remminafile, "protocol", qcp);
+	g_free(server);
+	g_free(server_trimmed);
 
 	rcw_open_from_file(remminafile);
 
