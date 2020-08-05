@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-08-02 21:31+0000\n"
-"PO-Revision-Date: 2020-06-16 15:49+0000\n"
+"PO-Revision-Date: 2020-08-05 20:01+0000\n"
 "Last-Translator: Andika Triwidada <andika@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/remmina/"
 "remmina/id/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.1.1-dev\n"
+"X-Generator: Weblate 4.2-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
 
 #: src/remmina_protocol_widget.c:275
@@ -523,27 +523,20 @@ msgstr "Tampilkan 'Tentang'"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:86
-#, fuzzy
-#| msgid ""
-#| "Connect to desktop described in file (.remmina or type supported by "
-#| "plugin)"
 msgid ""
 "Connect either to a desktop described in a file (.remmina or a filetype "
 "supported by a plugin) or a supported URI (RDP, VNC, SSH or SPICE)"
 msgstr ""
 "Menyambung ke desktop yang dijelaskan dalam berkas (.remmina atau tipe yang "
-"didukung oleh pengaya)"
+"didukung oleh pengaya) atau suatu URI yang didukung (RDP, VNC, SSH, atau "
+"SPICE)"
 
 #: src/remmina.c:86 src/remmina.c:88 src/remmina.c:90
 msgid "FILE"
-msgstr ""
+msgstr "BERKAS"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:88
-#, fuzzy
-#| msgid ""
-#| "Connect to desktop described in file (.remmina or type supported by "
-#| "plugin)"
 msgid ""
 "Connect to a desktop described in a file (.remmina or a type supported by a "
 "plugin)"
@@ -577,7 +570,7 @@ msgstr "Tampilkan preferensi"
 
 #: src/remmina.c:97
 msgid "TABINDEX"
-msgstr ""
+msgstr "TABINDEX"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:104
@@ -591,7 +584,7 @@ msgstr "Gunakan nama server baku (untuk --new)"
 
 #: src/remmina.c:106
 msgid "SERVER"
-msgstr ""
+msgstr "SERVER"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:108
@@ -600,7 +593,7 @@ msgstr "Gunakan protokol baku (untuk --new)"
 
 #: src/remmina.c:108
 msgid "PROTOCOL"
-msgstr ""
+msgstr "PROTOKOL"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:110
@@ -630,10 +623,8 @@ msgstr ""
 "profile"
 
 #: src/remmina.c:119
-#, fuzzy
-#| msgid "Enter VNC password"
 msgid "Encrypt a password"
-msgstr "Masukkan kata sandi VNC"
+msgstr "Enkripsi kata sandi"
 
 #: src/remmina_icon.c:139
 msgid "Open Main Window"
@@ -1981,7 +1972,7 @@ msgstr "Tidak bisa menyambung ke server RDP \"%s\"."
 
 #: plugins/rdp/rdp_plugin.c:2141
 msgid "Automatic (32 bpp) (Server chooses its best format)"
-msgstr ""
+msgstr "Otomatis (32 bpp) (Server memilih format terbaik)"
 
 #: plugins/rdp/rdp_plugin.c:2142
 msgid "GFX AVC444 (32 bpp)"
@@ -1996,10 +1987,8 @@ msgid "GFX RFX (32 bpp)"
 msgstr "GFX RFX (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2145
-#, fuzzy
-#| msgid "GFX RFX (32 bpp)"
 msgid "GFX RFX Progressive (32 bpp)"
-msgstr "GFX RFX (32 bpp)"
+msgstr "GFX RFX Progresif (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2146
 msgid "RemoteFX (32 bpp)"
@@ -2120,6 +2109,10 @@ msgid ""
 "connection.\n"
 "The highest possible value is 600000 ms (10 minutes)\n"
 msgstr ""
+"Setelan tingkat lanjut untuk tautan latensi tinggi:\n"
+"Menyesuaikan batas waktu sambungan, gunakan jika Anda mengalami kegagalan "
+"waktu habis dengan sambungan Anda.\n"
+"Nilai tertinggi yang mungkin adalah 600000 ms (10 menit)\n"
 
 #: plugins/rdp/rdp_plugin.c:2259
 msgid "Security protocol negotiation"
@@ -2138,10 +2131,8 @@ msgid "Redirect local microphone"
 msgstr "Mengalihkan mikrofon lokal"
 
 #: plugins/rdp/rdp_plugin.c:2263
-#, fuzzy
-#| msgid "Connecting to \"%s\"…"
 msgid "Connection timeout in ms"
-msgstr "Menyambung ke \"%s\"…"
+msgstr "Batas waktu koneksi dalam ms"
 
 #: plugins/rdp/rdp_plugin.c:2264
 msgid "Remote Desktop Gateway server"
@@ -2713,14 +2704,6 @@ msgstr "<big>Ikut terlibat</big>"
 
 #. Pay attention to thr quoting charachters as they may break the pango layout. If in doubt and cannot test, copy and paste the symbols from the English string.
 #: data/ui/remmina_news.glade:257
-#, fuzzy
-#| msgid ""
-#| "<span>\n"
-#| "<b>You have our gratitude in choosing copylefted libre software, <a href="
-#| "\"https://remmina.org/donations/\" title=\"Awesome Remmina donations"
-#| "\">donations also make us happy</a>, and further help improve Remmina.</"
-#| "b>\n"
-#| "</span>\n"
 msgid ""
 "<span>\n"
 "<b>You have our gratitude in choosing copylefted libre software, <a href="
@@ -2730,10 +2713,10 @@ msgid ""
 "</span>\n"
 msgstr ""
 "<span>\n"
-"<b>Terima kasih telah memilih perangkat lunak libre copyleft, <a href="
-"\"https://remmina.org/donations/\" title=\"Donasi yang Hebat untuk Remmina"
-"\">sumbangan juga membuat kami senang</a>, dan membantu memperbaiki Remmina."
-"</b>\n"
+"<b>Terima kasih telah memilih perangkat lunak libre copyleft, <a href=\"https"
+"://remmina.org/donations/\" title=\"Mana uangnya, Lebowski? 'blblblblb'\""
+">sumbangan juga membuat kami senang</a>, dan membantu memperbaiki "
+"Remmina.</b>\n"
 "</span>\n"
 
 #: data/ui/remmina_news.glade:277
