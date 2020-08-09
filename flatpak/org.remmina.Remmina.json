@@ -158,10 +158,11 @@
                 "-DWITH_GSTREAMER:BOOL=OFF",
                 "-DWITH_FFMPEG:BOOL=ON",
                 "-DWITH_CHANNELS:BOOL=ON",
-                "-DSTATIC_CHANNELS:BOOL=OFF",
+                "-DBUILTIN_CHANNELS:BOOL=ON",
                 "-DWITH_CUPS:BOOL=ON",
                 "-DWITH_PCSC:BOOL=ON",
-                "-DWITH_JPEG:BOOL=ON"
+                "-DWITH_JPEG:BOOL=ON",
+                "-DWITH_LIBSYSTEMD:BOOL=OFF"
             ],
             "sources": [
                 {
@@ -185,6 +186,8 @@
                         }
                     ]
                 },
+                /* libusb-1.0 has been forced as a dependency for FreeRDP */
+                "shared-modules/libusb/libusb.json"
             ]
         },
         {
