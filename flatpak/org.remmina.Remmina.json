@@ -151,15 +151,17 @@
             "config-opts": [
                 "-DCMAKE_BUILD_TYPE:STRING=Release",
                 "-DCMAKE_INSTALL_LIBDIR:PATH=lib",
+                "-DWITH_WAYLAND:BOOL=ON",
                 "-DWITH_CLIENT:BOOL=OFF",
-                "-DWITH_CUPS:BOOL=ON",
-                "-DWITH_JPEG:BOOL=ON",
-                "-DWITH_MANPAGES:BOOL=OFF",
-                "-DWITH_OPENH264:BOOL=ON",
-                "-DWITH_OSS:BOOL=OFF",
-                "-DWITH_PCSC:BOOL=ON",
+                "-DWITH_SERVER:BOOL=OFF",
                 "-DWITH_PULSE:BOOL=ON",
-                "-DWITH_SERVER:BOOL=OFF"
+                "-DWITH_GSTREAMER:BOOL=OFF",
+                "-DWITH_FFMPEG:BOOL=ON",
+                "-DWITH_CHANNELS:BOOL=ON",
+                "-DSTATIC_CHANNELS:BOOL=OFF",
+                "-DWITH_CUPS:BOOL=ON",
+                "-DWITH_PCSC:BOOL=ON",
+                "-DWITH_JPEG:BOOL=ON"
             ],
             "sources": [
                 {
@@ -445,6 +447,7 @@
             "config-opts": [
                 "-DCMAKE_BUILD_TYPE:STRING=Release",
                 "-DCMAKE_INSTALL_LIBDIR:PATH=lib",
+                "-DWITH_FREERDP3:BOOL=OFF",
                 "-DWITH_MANPAGES:BOOL=OFF"
             ],
             "sources": [
