@@ -74,6 +74,7 @@ appimage:build:
     #- wget https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage --directory-prefix=$BUILD_FOLDER/
     - wget https://artifacts.assassinate-you.net/artifactory/list/linuxdeploy/travis-456/linuxdeploy-x86_64.AppImage --directory-prefix=$BUILD_FOLDER/
     - wget https://github.com/linuxdeploy/linuxdeploy-plugin-appimage/releases/download/continuous/linuxdeploy-plugin-appimage-x86_64.AppImage --directory-prefix=$BUILD_FOLDER/
+    - wget https://raw.githubusercontent.com/linuxdeploy/linuxdeploy-plugin-gtk/master/linuxdeploy-plugin-gtk.sh --directory-prefix=$BUILD_FOLDER/
     - chmod +x $BUILD_FOLDER/*AppImage
     - export OUTPUT="Remmina-x86_64.AppImage"
     - cd $BUILD_FOLDER && ./linuxdeploy-x86_64.AppImage --appimage-extract
@@ -81,7 +82,7 @@ appimage:build:
     - export UPDATE_INFORMATION="gh-releases-zsync|AppImage|appimaged|continuous|appimaged*$ARCH*.AppImage.zsync"
     - export SIGN=1
     - export VERBOSE=1
-    - linuxdeploy/AppRun --appdir AppDir --output appimage
+    - linuxdeploy/AppRun --appdir AppDir --plugin gtk --output appimage
 
   artifacts:
     name: "Remmina-x86_64.AppImage"
