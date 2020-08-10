@@ -292,7 +292,7 @@ static void remmina_main_show_snap_welcome()
 		dsa = GTK_WIDGET(gtk_builder_get_object(dlgbuilder, "dontshowagain"));
 		if (dlgbuilder) {
 			parent = remmina_main_get_window();
-			dlg = GTK_WIDGET(gtk_builder_get_object(dlgbuilder, "snapwarndlg"));
+			dlg = GTK_WIDGET(gtk_builder_get_object(dlgbuilder, "SnapInfoDlg"));
 			if (parent)
 				gtk_window_set_transient_for(GTK_WINDOW(dlg), parent);
 			gtk_builder_connect_signals(dlgbuilder, NULL);
