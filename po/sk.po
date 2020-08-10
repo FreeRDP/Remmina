@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2020-08-05 20:05+0000\n"
+"POT-Creation-Date: 2020-08-10 22:22+0000\n"
 "PO-Revision-Date: 2020-03-27 14:28+0000\n"
 "Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -983,10 +983,11 @@ msgstr "Nasledovný súbor už existuje v cieľovom priečinku:"
 msgid "Cancel"
 msgstr "Zrušiť"
 
-#: src/remmina_message_panel.c:199 data/ui/remmina_news.glade:33
-#: data/ui/remmina_preferences.glade:33 data/ui/remmina_preferences.glade:34
-#: data/ui/remmina_preferences.glade:60 data/ui/remmina_string_list.glade:8
-#: data/ui/remmina_string_list.glade:9 data/ui/remmina_string_list.glade:63
+#: src/remmina_message_panel.c:199 data/ui/remmina_snap_info_dialog.glade:28
+#: data/ui/remmina_news.glade:33 data/ui/remmina_preferences.glade:33
+#: data/ui/remmina_preferences.glade:34 data/ui/remmina_preferences.glade:60
+#: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
+#: data/ui/remmina_string_list.glade:63
 msgid "Close"
 msgstr "Zavrieť"
 
@@ -2509,12 +2510,28 @@ msgstr "Pozvanie na sprístupnenie pracovnej plochy"
 msgid "Telepathy - Desktop Sharing"
 msgstr "Telepathy - Sprístupnenie pracovnej plochy"
 
-#: data/ui/remmina_snap_info_dialog.glade:46
+#: data/ui/remmina_snap_info_dialog.glade:71
 msgid ""
-"It seems that Remmina is running on your system as a SNAP package. To enable "
-"access to some important features, like password saving in your keyring and "
-"RDP printer sharing, please open your software center and give the "
-"appropriate permissions to Remmina. As an alternative you can enter the "
+"<big><b>Remmina SNAP package</b></big>\n"
+"\n"
+"<span>\n"
+"It seems that Remmina is running on your system as a SNAP package.\n"
+"Some Remmina functionalities needs your intervention to work properly\n"
+"</span> \n"
+msgstr ""
+
+#: data/ui/remmina_snap_info_dialog.glade:120
+#, fuzzy
+#| msgid ""
+#| "It seems that Remmina is running on your system as a SNAP package. To "
+#| "enable access to some important features, like password saving in your "
+#| "keyring and RDP printer sharing, please open your software center and "
+#| "give the appropriate permissions to Remmina. As an alternative you can "
+#| "enter the following commands in a terminal window:"
+msgid ""
+"To enable access to some important features, like password saving in your "
+"keyring and RDP printer sharing, please open your software center and give "
+"the appropriate permissions to Remmina. As an alternative you can enter the "
 "following commands in a terminal window:"
 msgstr ""
 "Zdá sa, že aplikácia Remmina je vo vašom systéme spustená ako balík SNAP. "
@@ -2523,7 +2540,29 @@ msgstr ""
 "otvorte vášho správcu softvéru a udeľte patričné oprávnenia aplikácii "
 "Remmina. Alebo môžete zadať nasledovné príkazy do okna terminálu:"
 
-#: data/ui/remmina_snap_info_dialog.glade:82
+#: data/ui/remmina_snap_info_dialog.glade:166
+#, fuzzy
+#| msgid "Permission"
+msgid "<big>Permissions</big>"
+msgstr "Oprávnenie"
+
+#: data/ui/remmina_snap_info_dialog.glade:201
+msgid ""
+"SNAP packages runs confined from the rest of the system, therefore by "
+"default, Remmina profiles will be saved inside the SNAP file system, but you "
+"can still set an alternative PATH in the general preferences."
+msgstr ""
+
+#: data/ui/remmina_snap_info_dialog.glade:221
+msgid "Change the Remmina profiles PATH"
+msgstr ""
+
+#: data/ui/remmina_snap_info_dialog.glade:260
+#, fuzzy
+msgid "<big>Snap settings</big>"
+msgstr "<big>Prispejte</big>"
+
+#: data/ui/remmina_snap_info_dialog.glade:273
 msgid "Do not show this message again"
 msgstr "Nezobrazovať túto správu znovu"
 

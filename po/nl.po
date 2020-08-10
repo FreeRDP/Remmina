@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2020-08-05 20:05+0000\n"
+"POT-Creation-Date: 2020-08-10 22:22+0000\n"
 "PO-Revision-Date: 2020-06-01 21:24+0000\n"
 "Last-Translator: Matthijs van der Graaf <mvdgraaf@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/remmina/remmina/nl/"
@@ -987,10 +987,11 @@ msgstr "Het volgende bstand bestaat al in de doelmap:"
 msgid "Cancel"
 msgstr "Annuleren"
 
-#: src/remmina_message_panel.c:199 data/ui/remmina_news.glade:33
-#: data/ui/remmina_preferences.glade:33 data/ui/remmina_preferences.glade:34
-#: data/ui/remmina_preferences.glade:60 data/ui/remmina_string_list.glade:8
-#: data/ui/remmina_string_list.glade:9 data/ui/remmina_string_list.glade:63
+#: src/remmina_message_panel.c:199 data/ui/remmina_snap_info_dialog.glade:28
+#: data/ui/remmina_news.glade:33 data/ui/remmina_preferences.glade:33
+#: data/ui/remmina_preferences.glade:34 data/ui/remmina_preferences.glade:60
+#: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
+#: data/ui/remmina_string_list.glade:63
 msgid "Close"
 msgstr "Sluiten"
 
@@ -2506,16 +2507,46 @@ msgstr "Uitnodiging tot delen bureaublad"
 msgid "Telepathy - Desktop Sharing"
 msgstr "Telepathy - Bureaublad delen"
 
-#: data/ui/remmina_snap_info_dialog.glade:46
+#: data/ui/remmina_snap_info_dialog.glade:71
 msgid ""
-"It seems that Remmina is running on your system as a SNAP package. To enable "
-"access to some important features, like password saving in your keyring and "
-"RDP printer sharing, please open your software center and give the "
-"appropriate permissions to Remmina. As an alternative you can enter the "
+"<big><b>Remmina SNAP package</b></big>\n"
+"\n"
+"<span>\n"
+"It seems that Remmina is running on your system as a SNAP package.\n"
+"Some Remmina functionalities needs your intervention to work properly\n"
+"</span> \n"
+msgstr ""
+
+#: data/ui/remmina_snap_info_dialog.glade:120
+msgid ""
+"To enable access to some important features, like password saving in your "
+"keyring and RDP printer sharing, please open your software center and give "
+"the appropriate permissions to Remmina. As an alternative you can enter the "
 "following commands in a terminal window:"
 msgstr ""
 
-#: data/ui/remmina_snap_info_dialog.glade:82
+#: data/ui/remmina_snap_info_dialog.glade:166
+#, fuzzy
+#| msgid "Permission"
+msgid "<big>Permissions</big>"
+msgstr "Rechten"
+
+#: data/ui/remmina_snap_info_dialog.glade:201
+msgid ""
+"SNAP packages runs confined from the rest of the system, therefore by "
+"default, Remmina profiles will be saved inside the SNAP file system, but you "
+"can still set an alternative PATH in the general preferences."
+msgstr ""
+
+#: data/ui/remmina_snap_info_dialog.glade:221
+msgid "Change the Remmina profiles PATH"
+msgstr ""
+
+#: data/ui/remmina_snap_info_dialog.glade:260
+msgid "<big>Snap settings</big>"
+msgstr ""
+
+#: data/ui/remmina_snap_info_dialog.glade:273
 msgid "Do not show this message again"
 msgstr ""
 
