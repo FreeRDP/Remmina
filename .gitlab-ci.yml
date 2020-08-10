@@ -72,10 +72,10 @@ appimage:build:
     - make VERBOSE=1 -C $BUILD_FOLDER install DESTDIR=AppDir
     # Temporary using old binaries as there's an opened bug https://github.com/linuxdeploy/linuxdeploy/issues/143
     #- wget https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage --directory-prefix=$BUILD_FOLDER/
-    - wget https://artifacts.assassinate-you.net/artifactory/list/linuxdeploy/travis-456/linuxdeploy-x86_64.AppImage --directory-prefix=$BUILD_FOLDER/
-    - wget https://github.com/linuxdeploy/linuxdeploy-plugin-appimage/releases/download/continuous/linuxdeploy-plugin-appimage-x86_64.AppImage --directory-prefix=$BUILD_FOLDER/
-    - wget https://raw.githubusercontent.com/linuxdeploy/linuxdeploy-plugin-gtk/master/linuxdeploy-plugin-gtk.sh --directory-prefix=$BUILD_FOLDER/
-    - chmod +x $BUILD_FOLDER/*AppImage
+    - wget -c https://artifacts.assassinate-you.net/artifactory/list/linuxdeploy/travis-456/linuxdeploy-x86_64.AppImage --directory-prefix=$BUILD_FOLDER/
+    - wget -c https://github.com/linuxdeploy/linuxdeploy-plugin-appimage/releases/download/continuous/linuxdeploy-plugin-appimage-x86_64.AppImage --directory-prefix=$BUILD_FOLDER/
+    - wget -c https://raw.githubusercontent.com/linuxdeploy/linuxdeploy-plugin-gtk/master/linuxdeploy-plugin-gtk.sh --directory-prefix=$BUILD_FOLDER/
+    - chmod +x $BUILD_FOLDER/*AppImage $BUILD_FOLDER/*sh
     - export OUTPUT="Remmina-x86_64.AppImage"
     - cd $BUILD_FOLDER && ./linuxdeploy-x86_64.AppImage --appimage-extract
     - mv squashfs-root/ linuxdeploy/
