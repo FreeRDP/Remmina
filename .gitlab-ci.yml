@@ -82,7 +82,8 @@ appimage:build:
     - export UPDATE_INFORMATION="gh-releases-zsync|AppImage|appimaged|continuous|appimaged*$ARCH*.AppImage.zsync"
     - export SIGN=1
     - export VERBOSE=1
-    - linuxdeploy/AppRun --appdir AppDir --plugin gtk --output appimage
+    #- linuxdeploy/AppRun --appdir AppDir --plugin gtk --output appimage
+    - linuxdeploy/AppRun --appdir AppDir --output appimage
 
   artifacts:
     name: "Remmina-x86_64.AppImage"
