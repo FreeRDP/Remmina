@@ -45,8 +45,17 @@
         /* Query GNOME Shell version (to display systray icon if supported) */
         "--talk-name=org.gnome.Shell",
         /* Local network host discovery */
-        "--system-talk-name=org.freedesktop.Avahi"
+        "--system-talk-name=org.freedesktop.Avahi",
+        /* Allow rw access to download folder */
+        "--filesystem=xdg-download"
     ],
+    "add-build-extensions": {
+      "org.freedesktop.Platform.ffmpeg-full": {
+        "directory": "lib/ffmpeg",
+        "version": "19.08",
+        "add-ld-path": "."
+      }
+    },
     "modules": [
         "shared-modules/dbus-glib/dbus-glib-0.110.json",
         "shared-modules/libappindicator/libappindicator-gtk3-12.10.json",
@@ -157,6 +166,7 @@
                 "-DWITH_PULSE:BOOL=ON",
                 "-DWITH_GSTREAMER:BOOL=OFF",
                 "-DWITH_FFMPEG:BOOL=ON",
+                "-DWITH_DSP_FFMPEG:BOOL=ON",
                 "-DWITH_CHANNELS:BOOL=ON",
                 "-DBUILTIN_CHANNELS:BOOL=ON",
                 "-DWITH_CUPS:BOOL=ON",
