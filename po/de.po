@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-08-11 12:27+0000\n"
-"PO-Revision-Date: 2020-08-09 12:35+0000\n"
-"Last-Translator: Oliver <websites@posteo.de>\n"
+"PO-Revision-Date: 2020-08-11 15:23+0000\n"
+"Last-Translator: Johannes Weberhofer <jweberhofer@weberhofer.at>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/remmina/remmina/"
 "de/>\n"
 "Language: de\n"
@@ -544,8 +544,8 @@ msgid ""
 "Connect to a desktop described in a file (.remmina or a type supported by a "
 "plugin)"
 msgstr ""
-"Verbindung zu Desktop herstellen, der in einer Datei (.remmina oder Plugin-"
-"spezifisch) definiert ist"
+"Verbindung zu einem über eine Datei (.remmina oder Plugin-spezifisch) "
+"definierten Desktop herstellen"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:90
@@ -627,7 +627,7 @@ msgstr ""
 
 #: src/remmina.c:119
 msgid "Encrypt a password"
-msgstr "Passwort verschlüsseln"
+msgstr "Ein Passwort verschlüsseln"
 
 #: src/remmina_icon.c:139
 msgid "Open Main Window"
@@ -2138,10 +2138,8 @@ msgid "Gateway transport type"
 msgstr "Gateway-Transport Type"
 
 #: plugins/rdp/rdp_plugin.c:2282
-#, fuzzy
-#| msgid "SSH log level"
 msgid "FreeRDP log level"
-msgstr "SSH Log‐Einstellung"
+msgstr "FreeRDP Log‐Einstellung"
 
 #: plugins/rdp/rdp_plugin.c:2283
 msgid "Sound"
@@ -2495,32 +2493,29 @@ msgid ""
 "Some Remmina functionalities need your intervention to work properly\n"
 "</span>\n"
 msgstr ""
+"<big><b>Remmina Snap-Paket</b></big>\n"
+"\n"
+"<span>\n"
+"Remmina läuft offensichtlich als Snap-Paket.\n"
+"Einige Remmina-Funktionen benötigen Ihren Eingriff, um richtig zu "
+"funktionieren.\n"
+"</span>\n"
 
 #: data/ui/remmina_snap_info_dialog.glade:120
-#, fuzzy
-#| msgid ""
-#| "It seems that Remmina is running on your system as a SNAP package. To "
-#| "enable access to some important features, like password saving in your "
-#| "keyring and RDP printer sharing, please open your software center and "
-#| "give the appropriate permissions to Remmina. As an alternative you can "
-#| "enter the following commands in a terminal window:"
 msgid ""
 "To enable access to some important features, like password saving in your "
 "keyring and RDP printer sharing, please open your software center and give "
 "the appropriate permissions to Remmina. As an alternative you can enter the "
 "following commands in a terminal window:"
 msgstr ""
-"Es scheint, dass Remmina auf Ihrem System als SNAP‐Paket läuft. Um wichtige "
-"Features wie das Speichern von Passwörtern in Ihren Schlüsselbund oder die "
-"RPD-Druckerfreigabe zu nutzen, öffnen Sie bitte die Systemsteuerung und "
-"geben Sie Remmina die benötigten Berechtigungen. Alternativ können Sie die "
-"folgenden Befehle in ein Terminal‐Fenster eingeben:"
+"Um wichtige Features wie das Speichern von Passwörtern in Ihren "
+"Schlüsselbund oder die RPD-Druckerfreigabe zu nutzen, öffnen Sie bitte die "
+"Systemsteuerung und geben Sie Remmina die benötigten Berechtigungen. "
+"Alternativ können Sie die folgenden Befehle in ein Terminal‐Fenster eingeben:"
 
 #: data/ui/remmina_snap_info_dialog.glade:166
-#, fuzzy
-#| msgid "Permission"
 msgid "<big>Permissions</big>"
-msgstr "Rechte"
+msgstr "<big>Berechtigungen</big>"
 
 #: data/ui/remmina_snap_info_dialog.glade:201
 msgid ""
@@ -2528,16 +2523,18 @@ msgid ""
 "default, Remmina profiles will be saved inside the Snap file system, but you "
 "can still set an alternative PATH in the general preferences."
 msgstr ""
+"Snap-Pakete laufen getrennt vom Rest des Systems. Daher werden Remmina-"
+"Profile standardmäßig innerhalb des Snap-Dateisystems gespeichert. Ein "
+"alternativer Pfad kann jedoch in den generellen Remmina-Einstellungen "
+"festgelegt werden."
 
 #: data/ui/remmina_snap_info_dialog.glade:221
 msgid "Change the Remmina profiles PATH"
-msgstr ""
+msgstr "Ändern des Remmina Profil-Ordners"
 
 #: data/ui/remmina_snap_info_dialog.glade:260
-#, fuzzy
-#| msgid "<big>Take part</big>"
 msgid "<big>Snap settings</big>"
-msgstr "<big>Beitragen</big>"
+msgstr "<big>Snap-Einstellungen</big>"
 
 #: data/ui/remmina_snap_info_dialog.glade:273
 msgid "Do not show this message again"
