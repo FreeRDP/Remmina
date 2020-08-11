@@ -64,6 +64,7 @@ appimage:build:
   stage: build
   before_script:
     - apt-get update -qq
+    - apt-get install -q -y librsvg2-2 librsvg2-bin librsvg2-common librsvg2-dev
 
   script:
     - mkdir $BUILD_FOLDER
@@ -82,8 +83,8 @@ appimage:build:
     - export UPDATE_INFORMATION="gh-releases-zsync|AppImage|appimaged|continuous|appimaged*$ARCH*.AppImage.zsync"
     - export SIGN=1
     - export VERBOSE=1
-    #- linuxdeploy/AppRun --appdir AppDir --plugin gtk --output appimage
-    - linuxdeploy/AppRun --appdir AppDir --output appimage
+    - linuxdeploy/AppRun --appdir AppDir --plugin gtk --output appimage
+    # - linuxdeploy/AppRun --appdir AppDir --output appimage
 
   artifacts:
     name: "Remmina-x86_64.AppImage"
