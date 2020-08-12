@@ -15,9 +15,9 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-08-11 12:27+0000\n"
-"PO-Revision-Date: 2020-08-05 20:01+0000\n"
-"Last-Translator: YAMADA Shinichirou <yamada_strong_yamada_nice_64bit@yahoo."
-"co.jp>\n"
+"PO-Revision-Date: 2020-08-12 06:29+0000\n"
+"Last-Translator: YAMADA Shinichirou <yamada_strong_yamada_nice_64bit@yahoo.co"
+".jp>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/remmina/remmina/"
 "ja/>\n"
 "Language: ja\n"
@@ -129,7 +129,7 @@ msgstr "変更された証明書を受け入れますか?"
 #: src/remmina_protocol_widget.c:1668
 #, c-format
 msgid "Listening on port %i for an incoming %s connection…"
-msgstr "ポート %i への %s 受信接続をリッスン中…"
+msgstr "ポート %i への %s 接続を待ち受け中…"
 
 #: src/remmina_protocol_widget.c:1693
 msgid "Could not authenticate, attempting reconnection…"
@@ -1235,7 +1235,7 @@ msgstr "サーバーソケットをローカルポートにバインドできま
 
 #: src/remmina_ssh.c:1657
 msgid "Could not listen to local port."
-msgstr "ローカルポートをリッスンできませんでした。"
+msgstr "ローカルポートを開けませんでした。"
 
 #. TRANSLATORS: Do not translate pthread
 #: src/remmina_ssh.c:1667 src/remmina_ssh.c:1684 src/remmina_ssh.c:1701
@@ -1827,7 +1827,7 @@ msgstr "最初のセッションより後のセッションは切断する"
 
 #: plugins/xdmcp/xdmcp_plugin.c:373
 msgid "Listen for TCP connections"
-msgstr "TCP 接続をリッスンする"
+msgstr "TCP 接続を待ち受ける"
 
 #: plugins/xdmcp/xdmcp_plugin.c:391
 msgid "XDMCP - X Remote Session"
@@ -2136,10 +2136,8 @@ msgid "Gateway transport type"
 msgstr "ゲートウェイのトランスポートの種類"
 
 #: plugins/rdp/rdp_plugin.c:2282
-#, fuzzy
-#| msgid "SSH log level"
 msgid "FreeRDP log level"
-msgstr "SSH のログレベル"
+msgstr "FreeRDP のログレベル"
 
 #: plugins/rdp/rdp_plugin.c:2283
 msgid "Sound"
@@ -2493,31 +2491,26 @@ msgid ""
 "Some Remmina functionalities need your intervention to work properly\n"
 "</span>\n"
 msgstr ""
+"<big><b>Remmina の Snap パッケージ</b></big>\n"
+"\n"
+"<span>\n"
+"このシステム上で実行している Remmina は Snap 版だと思われます。\n"
+"Remmina のいくつかの機能を正常に動作させるには設定の変更が必要です。\n"
+"</span>\n"
 
 #: data/ui/remmina_snap_info_dialog.glade:120
-#, fuzzy
-#| msgid ""
-#| "It seems that Remmina is running on your system as a SNAP package. To "
-#| "enable access to some important features, like password saving in your "
-#| "keyring and RDP printer sharing, please open your software center and "
-#| "give the appropriate permissions to Remmina. As an alternative you can "
-#| "enter the following commands in a terminal window:"
 msgid ""
 "To enable access to some important features, like password saving in your "
 "keyring and RDP printer sharing, please open your software center and give "
 "the appropriate permissions to Remmina. As an alternative you can enter the "
 "following commands in a terminal window:"
 msgstr ""
-"システム上で実行している Remmina は SNAP パッケージだと思われます。キーリング"
-"へのパスワードの保存や RDP プリンター共有といった重要な機能へのアクセスを有効"
-"にするには、ソフトウェアセンターを開いて Remmina に適切な権限を付与してくださ"
-"い。また、次のコマンドを実行するという方法もあります:"
+"キーリングへのパスワードの保存や RDP プリンター共有といった重要な機能へのアクセスを有効にするには、ソフトウェアセンターを開いて Remmina "
+"に適切な権限を付与してください。また、次のコマンドを実行する方法もあります:"
 
 #: data/ui/remmina_snap_info_dialog.glade:166
-#, fuzzy
-#| msgid "Permission"
 msgid "<big>Permissions</big>"
-msgstr "権限"
+msgstr "<big>権限</big>"
 
 #: data/ui/remmina_snap_info_dialog.glade:201
 msgid ""
@@ -2525,16 +2518,16 @@ msgid ""
 "default, Remmina profiles will be saved inside the Snap file system, but you "
 "can still set an alternative PATH in the general preferences."
 msgstr ""
+"Snap パッケージはシステムから隔離された制限のある状態で実行されるため、初期設定では、Remmina のプロファイルは Snap "
+"ファイルシステム内に保存されますが、代替 PATH を設定することで保存先を変更できます。"
 
 #: data/ui/remmina_snap_info_dialog.glade:221
 msgid "Change the Remmina profiles PATH"
-msgstr ""
+msgstr "Remmina のプロファイルの PATH の変更"
 
 #: data/ui/remmina_snap_info_dialog.glade:260
-#, fuzzy
-#| msgid "<big>Take part</big>"
 msgid "<big>Snap settings</big>"
-msgstr "<big>参加</big>"
+msgstr "<big>Snap の設定</big>"
 
 #: data/ui/remmina_snap_info_dialog.glade:273
 msgid "Do not show this message again"
