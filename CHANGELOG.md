@@ -1,5 +1,22 @@
 # Changelog
 
+## v1.4.8
+[full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.8...HEAD)
+
+* Adding timout option for RDP connections. [!2091](https://gitlab.com/Remmina/Remmina/merge_requests/2091) *@antenore*
+* Avoid quickconnect to empty hostnames. Fixes #2240. [!2092](https://gitlab.com/Remmina/Remmina/merge_requests/2092) *@giox069*
+* Using full paths instead of variables [!2094](https://gitlab.com/Remmina/Remmina/merge_requests/2094) *@antenore*
+* Add support for quick connecting to RDP, VNC and SPICE from the command line [!2093](https://gitlab.com/Remmina/Remmina/merge_requests/2093) *@espentveit*
+* Add SSH support to the protocol handler [!2095](https://gitlab.com/Remmina/Remmina/merge_requests/2095) *@espentveit*
+* Restart SSH session when user has provided new username or password to allow for changing SSH user [!2096](https://gitlab.com/Remmina/Remmina/merge_requests/2096) *@espentveit*
+* Use </image> inline with AppStream 0.12 specification. [!2097](https://gitlab.com/Remmina/Remmina/merge_requests/2097) *@ghost1*
+* Enabled GDK_SCROLL_SMOOTH for RDP/VNC [!2098](https://gitlab.com/Remmina/Remmina/merge_requests/2098) *@kenansun0*
+* Some fixes for the RDP backend [!2099](https://gitlab.com/Remmina/Remmina/merge_requests/2099) *@pnowack*
+* Trim white from ip addresses input into quick connect bar [!2100](https://gitlab.com/Remmina/Remmina/merge_requests/2100) *@daxkelson*
+* Enhancing the SNAP info dialog box [!2102](https://gitlab.com/Remmina/Remmina/merge_requests/2102) *@antenore*
+* Adding FreeRDP log level setting [!2103](https://gitlab.com/Remmina/Remmina/merge_requests/2103) *@antenore*
+* Patron tally badge added to README [!2090](https://gitlab.com/Remmina/Remmina/merge_requests/2090) *@kingu*
+
 ## v1.4.7
 [full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.6...v1.4.7)
 
