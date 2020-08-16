@@ -11,13 +11,14 @@
 # Nikita Epifanov <nikgreens@protonmail.com>, 2020.
 # Daniel <dan.ef1999@gmail.com>, 2020.
 # Allan Nordhøy <epost@anotheragency.no>, 2020.
+# Alexey Napalkov <flynbit@gmail.com>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-08-14 12:35+0000\n"
-"PO-Revision-Date: 2020-08-14 00:10+0000\n"
-"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"PO-Revision-Date: 2020-08-16 12:05+0000\n"
+"Last-Translator: Alexey Napalkov <flynbit@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/remmina/remmina/"
 "ru/>\n"
 "Language: ru\n"
@@ -546,16 +547,12 @@ msgstr "Показать \"О программе\""
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:86
-#, fuzzy
-#| msgid ""
-#| "Connect to desktop described in file (.remmina or type supported by "
-#| "plugin)"
 msgid ""
 "Connect either to a desktop described in a file (.remmina or a filetype "
 "supported by a plugin) or a supported URI (RDP, VNC, SSH or SPICE)"
 msgstr ""
 "Подключиться к рабочему столу, описанному в файле (.remmina или тип файла, "
-"поддерживаемый модулем)"
+"поддерживаемый модулем), или к поддерживаему URI (RDP, VNC, SSH или SPICE)"
 
 #: src/remmina.c:86 src/remmina.c:88 src/remmina.c:90
 msgid "FILE"
@@ -563,10 +560,6 @@ msgstr "ФАЙЛ"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:88
-#, fuzzy
-#| msgid ""
-#| "Connect to desktop described in file (.remmina or type supported by "
-#| "plugin)"
 msgid ""
 "Connect to a desktop described in a file (.remmina or a type supported by a "
 "plugin)"
@@ -653,8 +646,6 @@ msgstr ""
 "update-profile"
 
 #: src/remmina.c:119
-#, fuzzy
-#| msgid "Enter VNC password"
 msgid "Encrypt a password"
 msgstr "Зашифровать пароль"
 
@@ -2008,7 +1999,7 @@ msgstr "Невозможно подключиться к RDP серверу \"%s
 
 #: plugins/rdp/rdp_plugin.c:2148
 msgid "Automatic (32 bpp) (Server chooses its best format)"
-msgstr ""
+msgstr "Автоматически (32 бит/пиксель) (Сервер выбирает лучший формат)"
 
 #: plugins/rdp/rdp_plugin.c:2149
 msgid "GFX AVC444 (32 bpp)"
@@ -2023,10 +2014,8 @@ msgid "GFX RFX (32 bpp)"
 msgstr "GFX RFX (32 бит/пиксель)"
 
 #: plugins/rdp/rdp_plugin.c:2152
-#, fuzzy
-#| msgid "GFX RFX (32 bpp)"
 msgid "GFX RFX Progressive (32 bpp)"
-msgstr "GFX RFX (32 бит/пиксель)"
+msgstr "GFX RFX Прогрессивный (32 бит/пиксель)"
 
 #: plugins/rdp/rdp_plugin.c:2153
 msgid "RemoteFX (32 bpp)"
@@ -2069,8 +2058,6 @@ msgid "Local - high quality"
 msgstr "Локальный - высокое качество"
 
 #: plugins/rdp/rdp_plugin.c:2201
-#, fuzzy
-#| msgid "Automatically negotiate"
 msgid "Automatic negotiation"
 msgstr "Согласовывать автоматически"
 
@@ -2161,10 +2148,8 @@ msgid "Gateway transport type"
 msgstr "Тип транспорта шлюза"
 
 #: plugins/rdp/rdp_plugin.c:2282
-#, fuzzy
-#| msgid "SSH log level"
 msgid "FreeRDP log level"
-msgstr "Уровень лога SSH"
+msgstr "Уровень лога FreeRDP"
 
 #: plugins/rdp/rdp_plugin.c:2283
 msgid "Sound"
@@ -2175,10 +2160,8 @@ msgid "Redirect local microphone"
 msgstr "Перенаправлять локальный микрофон"
 
 #: plugins/rdp/rdp_plugin.c:2285
-#, fuzzy
-#| msgid "Connecting to \"%s\"…"
 msgid "Connection timeout in ms"
-msgstr "Подключение к \"%s\"…"
+msgstr "Тайм-аут соединения в мс"
 
 #: plugins/rdp/rdp_plugin.c:2286
 msgid "Remote Desktop Gateway server"
@@ -2520,30 +2503,27 @@ msgid ""
 "Some Remmina functionalities need your intervention to work properly\n"
 "</span>\n"
 msgstr ""
+"<big><b>Snap-пакет Remmina</b></big>\n"
+"\n"
+"<span>\n"
+"Кажется, Remmina работает в вашей системе как Snap-пакет.\n"
+"Некоторые функции Remmina требуют вашего вмешательства для правильной "
+"работы\n"
+"</span>\n"
 
 #: data/ui/remmina_snap_info_dialog.glade:120
-#, fuzzy
-#| msgid ""
-#| "It seems that Remmina is running on your system as a SNAP package. To "
-#| "enable access to some important features, like password saving in your "
-#| "keyring and RDP printer sharing, please open your software center and "
-#| "give the appropriate permissions to Remmina. As an alternative you can "
-#| "enter the following commands in a terminal window:"
 msgid ""
 "To enable access to some important features, like password saving in your "
 "keyring and RDP printer sharing, please open your software center and give "
 "the appropriate permissions to Remmina. As an alternative you can enter the "
 "following commands in a terminal window:"
 msgstr ""
-"Похоже, что Remmina запущена в вашей системе в качестве SNAP пакета. Что бы "
-"включить доступ к некоторым важным возможностям, как сохранение пароля в "
-"хранилище ключей и доступ к принтеру через RDP, пожалуйста откройте ваш "
+"Чтобы включить доступ к некоторым важным возможностям, как сохранение пароля "
+"в хранилище ключей и доступ к принтеру через RDP, пожалуйста откройте ваш "
 "центр управления программами и дайте Remmina необходимые разрешения. В "
 "качестве альтернативы, вы можете ввести следующие команды в терминал:"
 
 #: data/ui/remmina_snap_info_dialog.glade:166
-#, fuzzy
-#| msgid "Permission"
 msgid "<big>Permissions</big>"
 msgstr "<big>Уровень допуска</big>"
 
@@ -2553,16 +2533,17 @@ msgid ""
 "default, Remmina profiles will be saved inside the Snap file system, but you "
 "can still set an alternative PATH in the general preferences."
 msgstr ""
+"Пакеты Snap запускаются изолированно от остальной системы, поэтому по "
+"умолчанию профили Remmina будут сохраняться в файловой системе Snap, но вы "
+"все равно можете установить альтернативный PATH в общих настройках."
 
 #: data/ui/remmina_snap_info_dialog.glade:221
 msgid "Change the Remmina profiles PATH"
-msgstr ""
+msgstr "Изменить путь PATH профилей Remmina"
 
 #: data/ui/remmina_snap_info_dialog.glade:260
-#, fuzzy
-#| msgid "<big>Take part</big>"
 msgid "<big>Snap settings</big>"
-msgstr "<big>Принять участие</big>"
+msgstr "<big>Snap настройки</big>"
 
 #: data/ui/remmina_snap_info_dialog.glade:273
 msgid "Do not show this message again"
