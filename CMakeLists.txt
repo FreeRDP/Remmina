@@ -299,6 +299,7 @@ add_custom_target(uninstall
 find_required_package(GTK)
 
 set(CMAKE_THREAD_PREFER_PTHREAD TRUE)
+
 find_package(Threads REQUIRED)
 if(NOT CMAKE_USE_PTHREADS_INIT)
     message(FATAL_ERROR "pthreads thread library not found")
