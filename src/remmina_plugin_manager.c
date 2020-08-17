@@ -68,6 +68,9 @@ static RemminaSecretPlugin *remmina_secret_plugin = NULL;
 static const gchar *remmina_plugin_type_name[] =
 { N_("Protocol"), N_("Entry"), N_("File"), N_("Tool"), N_("Preference"), N_("Secret"), NULL };
 
+
+GPtrArray* remmina_plugin_loaders = NULL;
+
 static gint remmina_plugin_manager_compare_func(RemminaPlugin **a, RemminaPlugin **b)
 {
 	TRACE_CALL(__func__);
@@ -166,8 +169,6 @@ gboolean remmina_gtksocket_available()
 	return available;
 }
 
-
-
 RemminaPluginService remmina_plugin_manager_service =
 {
 	remmina_plugin_manager_register_plugin,
@@ -248,34 +249,32 @@ RemminaPluginService remmina_plugin_manager_service =
 	remmina_gtksocket_available,
 	remmina_protocol_widget_get_profile_remote_width,
 	remmina_protocol_widget_get_profile_remote_height
-
 };
 
-static void remmina_plugin_manager_load_plugin(const gchar *name)
+typedef struct {
+	const gchar* filetype;
+	const gchar* name;
+} RemminaPluginLoaderArgs;
+
+const char *get_filename_ext(const char *filename) {
+    const char *dot = strrchr(filename, '.');
+    if(!dot || dot == filename) return "";
+    return dot + 1;
+}
+
+static void remmina_plugin_manager_use_loader(const RemminaPluginLoader* loader, const RemminaPluginLoaderArgs* args) {
+	if (g_str_equal(loader->filetype, args->filetype)) {
+		loader->func(&remmina_plugin_manager_service, args->name);
+	}
+}
+
+static void remmina_plugin_manager_load_plugin(char *name)
 {
-	TRACE_CALL(__func__);
-	GModule *module;
-	RemminaPluginEntryFunc entry;
-
-	module = g_module_open(name, G_MODULE_BIND_LAZY | G_MODULE_BIND_LOCAL);
-
-	if (!module) {
-		g_print("Could not load plugin: %s.\n", name);
-		g_print("Error: %s\n", g_module_error());
-		return;
-	}
-
-	if (!g_module_symbol(module, "remmina_plugin_entry", (gpointer*)&entry)) {
-		g_print("Could not locate plugin entry: %s.\n", name);
-		return;
-	}
-
-	if (!entry(&remmina_plugin_manager_service)) {
-		g_print("Plugin entry returned false: %s.\n", name);
-		return;
-	}
-
-	/* We don’t close the module because we will need it throughout the process lifetime */
+	const char* ext = get_filename_ext(name);
+	RemminaPluginLoaderArgs args;
+	args.filetype = ext;
+	args.name = name;
+	g_ptr_array_foreach(remmina_plugin_loaders, (GFunc)remmina_plugin_manager_use_loader, &args);
 }
 
 static gint compare_secret_plugin_init_order(gconstpointer a, gconstpointer b)
@@ -292,7 +291,7 @@ static gint compare_secret_plugin_init_order(gconstpointer a, gconstpointer b)
 	return 0;
 }
 
-void remmina_plugin_manager_init(void)
+void remmina_plugin_manager_init()
 {
 	TRACE_CALL(__func__);
 	GDir *dir;
@@ -311,14 +310,16 @@ void remmina_plugin_manager_init(void)
 		return;
 	}
 
+	g_print("Load modules from %s\n", REMMINA_RUNTIME_PLUGINDIR);
 	dir = g_dir_open(REMMINA_RUNTIME_PLUGINDIR, 0, NULL);
+
 	if (dir == NULL)
 		return;
 	while ((name = g_dir_read_name(dir)) != NULL) {
 		if ((ptr = strrchr(name, '.')) == NULL)
 			continue;
 		ptr++;
-		if (g_strcmp0(ptr, G_MODULE_SUFFIX) != 0)
+		if (g_strcmp0(ptr, G_MODULE_SUFFIX) != 0 && g_strcmp0(ptr, "py"))
 			continue;
 		fullpath = g_strdup_printf(REMMINA_RUNTIME_PLUGINDIR "/%s", name);
 		remmina_plugin_manager_load_plugin(fullpath);
@@ -354,6 +355,16 @@ void remmina_plugin_manager_init(void)
 	}
 
 	g_slist_free(secret_plugins);
+}
+
+void remmina_plugin_manager_add_loader(char *filetype, RemminaPluginLoaderFunc func) {
+	if (!remmina_plugin_loaders)
+		remmina_plugin_loaders = g_ptr_array_new();
+
+	RemminaPluginLoader* loader = (RemminaPluginLoader*)malloc(sizeof(RemminaPluginLoader*));
+	loader->filetype = filetype;
+	loader->func = func;
+	g_ptr_array_add(remmina_plugin_loaders, loader);
 }
 
 RemminaPlugin* remmina_plugin_manager_get_plugin(RemminaPluginType type, const gchar *name)

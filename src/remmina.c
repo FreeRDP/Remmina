@@ -49,6 +49,8 @@
 #include "remmina_main.h"
 #include "remmina_masterthread_exec.h"
 #include "remmina_plugin_manager.h"
+#include "remmina_plugin_native.h"
+#include "remmina_plugin_python.h"
 #include "remmina_pref.h"
 #include "remmina_public.h"
 #include "remmina_sftp_plugin.h"
@@ -354,7 +356,12 @@ int main(int argc, char *argv[])
 	/* Initialize some Remmina parts needed also on a local instance for correct handle-local-options */
 	remmina_pref_init();
 	remmina_file_manager_init();
+	
+	remmina_plugin_manager_add_loader("so", remmina_plugin_native_load);
+	remmina_plugin_manager_add_loader("py", remmina_plugin_python_load);
+
 	remmina_plugin_manager_init();
+	
 
 
 	app_id = g_application_id_is_valid(REMMINA_APP_ID) ? REMMINA_APP_ID : NULL;
