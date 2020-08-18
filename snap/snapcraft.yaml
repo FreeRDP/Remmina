@@ -21,7 +21,8 @@ apps:
     # be broken when setting up wayland env so we disable it
     environment:
       DISABLE_WAYLAND: "1"
-    command: usr/bin/remmina
+      LD_LIBRARY_PATH: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/pulseaudio
+    command: bin/pawrap $SNAP/usr/bin/remmina
     extensions: [gnome-3-28]
     common-id: org.remmina.Remmina.desktop
     plugs:
@@ -35,11 +36,14 @@ apps:
       - network-bind
       - opengl
       - password-manager-service
-      - pulseaudio
+      - audio-playback
+      - audio-record
       - ssh-keys
       - ssh-public-keys
       - removable-media
       - unity7
+      - wayland
+      - desktop
 
   winpr-makecert:
     command: winpr-makecert
@@ -48,6 +52,9 @@ apps:
     command: winpr-hash
 
 parts:
+  pawrap:
+    plugin: dump
+    source: snap/local/files/
   freerdp:
     plugin: cmake
     source: https://github.com/FreeRDP/FreeRDP.git
@@ -247,58 +254,83 @@ parts:
       - libwebkit2gtk-4.0-37
       - libjavascriptcoregtk-4.0-18
       - libusb-1.0-0
+      - pulseaudio
+      - pulseaudio-utils
+      - libsndfile1
+      - libxcb1
+      - libasyncns0
+      - libflac8
+      - libvorbisenc2
+      - libxau6
+      - libxdmcp6
+      - libogg0
+      - libvorbis0a
+      # Needed for the example .wav files for testing purposes
+      - alsa-utils
 
     override-build: |
       set -ex
       snapcraftctl build
     stage:
       - usr/bin/gtk3-demo
-      - usr/lib/*/libavahi*.so.*
+      - usr/lib/*/libFLAC.so*
+      - usr/lib/*/libXau.so*
+      - usr/lib/*/libXdmcp.so*
       - usr/lib/*/libappindicator3.so.*
-      - usr/lib/*/libindicator3.so.*
-      - usr/lib/*/libgdbm.so.*
-      - usr/lib/*/libdbusmenu-gtk3.so.*
-      - usr/lib/*/libdbusmenu-glib.so.*
-      - usr/lib/*/libxkbfile.so.*
-      - usr/lib/*/libspice-client-gtk-3.0.so.*
-      - usr/lib/*/libvncclient.so.*
+      - usr/lib/*/libasyncns.so*
+      - usr/lib/*/libavahi*.so.*
       - usr/lib/*/libavcodec.so.*
-      - usr/lib/*/libspice-client-glib-2.0.so.*
       - usr/lib/*/libavutil.so.*
-      - usr/lib/*/libopus.so.*
-      - usr/lib/*/libswresample.so.*
-      - usr/lib/*/libpulse-mainloop-glib.so.*
-      - usr/lib/*/libcrystalhd.so.*
       - usr/lib/*/libcacard.so.*
-      - usr/lib/*/libva.so.*
-      - usr/lib/*/libxvidcore.so.*
-      - usr/lib/*/libusbredirhost.so.*
-      - usr/lib/*/libx265.so.*
-      - usr/lib/*/libusbredirparser.so.*
-      - usr/lib/*/libx264.so.*
-      - usr/lib/*/libphodav-2.0.so.*
-      - usr/lib/*/libwebpmux.so.*
+      - usr/lib/*/libcrystalhd.so.*
+      - usr/lib/*/libdbusmenu-glib.so.*
+      - usr/lib/*/libdbusmenu-gtk3.so.*
+      - usr/lib/*/libgdbm.so.*
+      - usr/lib/*/libgomp.so.*
+      - usr/lib/*/libgsm.so.*
+      - usr/lib/*/libindicator3.so.*
+      - usr/lib/*/libmp3lame.so.*
+      - usr/lib/*/libnspr4.so
       - usr/lib/*/libnss3.so
       - usr/lib/*/libnssutil3.so
-      - usr/lib/*/libwavpack.so.*
-      - usr/lib/*/libnspr4.so
-      - usr/lib/*/libplds4.so
-      - usr/lib/*/libplc4.so
-      - usr/lib/*/libvpx.so.*
-      - usr/lib/*/libtwolame.so.*
-      - usr/lib/*/libtheoraenc.so.*
-      - usr/lib/*/libtheoradec.so.*
-      - usr/lib/*/libspeex.so.*
-      - usr/lib/*/libsnappy.so.*
-      - usr/lib/*/libshine.so.*
-      - usr/lib/*/libsodium.so.*
-      - usr/lib/*/libopenjp2.so.*
-      - usr/lib/*/libmp3lame.so.*
-      - usr/lib/*/libgsm.so.*
-      - usr/lib/*/libvdpau.so.*
-      - usr/lib/*/libva-x11.so.*
-      - usr/lib/*/libthai.so.*
-      - usr/lib/*/libsoxr.so.*
-      - usr/lib/*/libva-drm.so.*
       - usr/lib/*/libnuma.so.*
-      - usr/lib/*/libgomp.so.*
+      - usr/lib/*/libogg.so*
+      - usr/lib/*/libopenjp2.so.*
+      - usr/lib/*/libopus.so.*
+      - usr/lib/*/libphodav-2.0.so.*
+      - usr/lib/*/libplc4.so
+      - usr/lib/*/libplds4.so
+      - usr/lib/*/libpulse-mainloop-glib.so.*
+      - usr/lib/*/libpulse-simple.so*
+      - usr/lib/*/libpulse.so*
+      - usr/lib/*/libshine.so.*
+      - usr/lib/*/libsnappy.so.*
+      - usr/lib/*/libsndfile.so*
+      - usr/lib/*/libsodium.so.*
+      - usr/lib/*/libsoxr.so.*
+      - usr/lib/*/libspeex.so.*
+      - usr/lib/*/libspice-client-glib-2.0.so.*
+      - usr/lib/*/libspice-client-gtk-3.0.so.*
+      - usr/lib/*/libswresample.so.*
+      - usr/lib/*/libthai.so.*
+      - usr/lib/*/libtheoradec.so.*
+      - usr/lib/*/libtheoraenc.so.*
+      - usr/lib/*/libtwolame.so.*
+      - usr/lib/*/libusbredirhost.so.*
+      - usr/lib/*/libusbredirparser.so.*
+      - usr/lib/*/libva-drm.so.*
+      - usr/lib/*/libva-x11.so.*
+      - usr/lib/*/libva.so.*
+      - usr/lib/*/libvdpau.so.*
+      - usr/lib/*/libvncclient.so.*
+      - usr/lib/*/libvorbis.so.*
+      - usr/lib/*/libvorbisenc.so*
+      - usr/lib/*/libvpx.so.*
+      - usr/lib/*/libwavpack.so.*
+      - usr/lib/*/libwebpmux.so.*
+      - usr/lib/*/libx264.so.*
+      - usr/lib/*/libx265.so.*
+      - usr/lib/*/libxcb.so*
+      - usr/lib/*/libxkbfile.so.*
+      - usr/lib/*/libxvidcore.so.*
+      - usr/lib/*/pulseaudio/libpulsecommon-8.0.so*
