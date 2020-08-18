@@ -1,0 +1,18 @@
+#!/bin/sh
+set -e
+
+if [ -n "$XDG_RUNTIME_DIR" ] && [ ! -d "$XDG_RUNTIME_DIR" ]; then
+    # shellcheck disable=SC2174
+    mkdir -m 700 -p "$XDG_RUNTIME_DIR"
+fi
+
+papath="$XDG_RUNTIME_DIR/../pulse/native"
+if [ -e /var/run/pulse/native ] ; then
+    papath="/var/run/pulse/native"
+elif [ ! -e "$papath" ]; then
+    echo "Cannot not find '$papath'"
+    exit 1
+fi
+
+export PULSE_SERVER="unix:$papath"
+exec "$@"
