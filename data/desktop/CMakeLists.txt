@@ -154,19 +154,19 @@ if(WITH_KIOSK_SESSION)
     message(STATUS "Kiosk desktop session files will be installed")
     install(
         FILES remmina-gnome-xsession.desktop
-        DESTINATION ${CMAKE_INSTALL_PREFIX}/share/xsessions
+        DESTINATION ${REMMINA_DATADIR}/xsessions
         RENAME remmina-gnome.desktop
         PERMISSIONS OWNER_WRITE OWNER_READ GROUP_READ WORLD_READ
         )
     install(
         FILES remmina-gnome.desktop
-        DESTINATION ${CMAKE_INSTALL_PREFIX}/share/applications
+        DESTINATION ${REMMINA_DATADIR}/applications
         RENAME remmina-gnome.desktop
         PERMISSIONS OWNER_WRITE OWNER_READ GROUP_READ WORLD_READ
         )
     install(
         FILES remmina-gnome.session
-        DESTINATION ${CMAKE_INSTALL_PREFIX}/share/gnome-session/sessions
+        DESTINATION ${REMMINA_DATADIR}/gnome-session/sessions
         RENAME remmina-gnome.session
         PERMISSIONS OWNER_WRITE OWNER_READ GROUP_READ WORLD_READ
         )
