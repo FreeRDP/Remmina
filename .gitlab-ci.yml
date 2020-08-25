@@ -1,5 +1,5 @@
 ---
-image: remmina/ubuntu:18.04
+image: registry.gitlab.com/remmina/remmina/ubuntu:18.04
 
 stages:
   - build
@@ -100,7 +100,7 @@ appimage:build:
     - schedules
 
 flatpak:test:
-  image: remmina/ubuntu:18.04
+  image: registry.gitlab.com/remmina/remmina/ubuntu:18.04
   stage: build
   variables:
     BUNDLE: "remmina-dev.flatpak"
