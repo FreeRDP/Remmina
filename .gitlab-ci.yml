@@ -60,11 +60,10 @@ ubuntu:devel:
 appimage:build:
   # image: ubuntu:devel
   # stage: cross_environment
-  image: remmina/ubuntu:16.04
+  image: registry.gitlab.com/remmina/remmina/ubuntu:16.04
   stage: build
   before_script:
     - apt-get update -qq
-    - apt-get install -q -y librsvg2-2 librsvg2-bin librsvg2-common librsvg2-dev
 
   script:
     - mkdir $BUILD_FOLDER
@@ -110,7 +109,6 @@ flatpak:test:
     - apt-get update -qq
     - add-apt-repository $FLATPAK_PPA -y
     - apt-get update -qq
-    - apt-get install -y -qq flatpak-builder flatpak build-essential git-core
     - flatpak --user remote-add --if-not-exists flathub $FLATHUB_REPO
   script:
     - /bin/sh -xe ./flatpak/flatpak-build.sh
