@@ -109,6 +109,7 @@ flatpak:test:
     - apt-get update -qq
     - add-apt-repository $FLATPAK_PPA -y
     - apt-get update -qq
+    - apt-get install -y -qq flatpak-builder flatpak build-essential git-core
     - flatpak --user remote-add --if-not-exists flathub $FLATHUB_REPO
   script:
     - /bin/sh -xe ./flatpak/flatpak-build.sh
