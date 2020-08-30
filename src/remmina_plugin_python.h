@@ -36,7 +36,7 @@
 
 #pragma once
 
-#include "remmina_plugin_manager.h"
+#include "remmina/plugin.h"
 
 G_BEGIN_DECLS
 

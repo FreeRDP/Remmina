@@ -304,7 +304,8 @@ void remmina_plugin_manager_init()
 	GSList *sple;
 
 	remmina_plugin_table = g_ptr_array_new();
-
+	remmina_plugin_python_init();
+	
 	if (!g_module_supported()) {
 		g_print("Dynamic loading of plugins is not supported on this platform!\n");
 		return;
