@@ -36,4 +36,4 @@
 
 #pragma once
 
-
+PyTypeObject* remmina_plugin_python_plugin_create(void);
