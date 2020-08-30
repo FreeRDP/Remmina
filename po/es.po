@@ -9,13 +9,14 @@
 # Francisco Javier <xiscodroid@gmail.com>, 2019, 2020.
 # Juan Ignacio Cherrutti <juancherru@gmail.com>, 2020.
 # Juan de la Fuente <jmdelafuente22@gmail.com>, 2020.
+# Scoopity Whoop <Scoo0p@yandex.com>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2020-08-14 12:35+0000\n"
-"PO-Revision-Date: 2020-08-14 00:10+0000\n"
-"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"POT-Creation-Date: 2020-08-29 17:11+0000\n"
+"PO-Revision-Date: 2020-08-30 18:23+0000\n"
+"Last-Translator: Scoopity Whoop <Scoo0p@yandex.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/remmina/remmina/"
 "es/>\n"
 "Language: es\n"
@@ -23,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.2-dev\n"
+"X-Generator: Weblate 4.2.1-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
 
 #: src/remmina_protocol_widget.c:275
@@ -539,16 +540,13 @@ msgstr "Mostrar «Acerca de»"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:86
-#, fuzzy
-#| msgid ""
-#| "Connect either to a desktop described in a file (.remmina or a filetype "
-#| "supported by a plugin) or a supported URI (RDP, VNC or SPICE)"
 msgid ""
 "Connect either to a desktop described in a file (.remmina or a filetype "
 "supported by a plugin) or a supported URI (RDP, VNC, SSH or SPICE)"
 msgstr ""
-"Conectar o con el escritorio descrito en un archivo (.remmina o un tipo "
-"admitido por un complemento) o con un URI admitido (RDP, VNC o SPICE)"
+"Conéctate a un escritorio descrito en un archivo (.remmina o un tipo de "
+"archivo soportado por un plugin) o a una URI soportada (RDP, VNC, SSH o "
+"SPICE)"
 
 #: src/remmina.c:86 src/remmina.c:88 src/remmina.c:90
 msgid "FILE"
@@ -1997,7 +1995,7 @@ msgstr "No se pudo conectar con el servidor RDP «%s»."
 
 #: plugins/rdp/rdp_plugin.c:2148
 msgid "Automatic (32 bpp) (Server chooses its best format)"
-msgstr ""
+msgstr "Automático (32 bpp) (El servidor elige el mejor formato)"
 
 #: plugins/rdp/rdp_plugin.c:2149
 msgid "GFX AVC444 (32 bpp)"
@@ -2012,10 +2010,8 @@ msgid "GFX RFX (32 bpp)"
 msgstr "GFX RFX (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2152
-#, fuzzy
-#| msgid "GFX RFX (32 bpp)"
 msgid "GFX RFX Progressive (32 bpp)"
-msgstr "GFX RFX (32 bpp)"
+msgstr "GFX RFX Progresivo(32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2153
 msgid "RemoteFX (32 bpp)"
@@ -2149,10 +2145,8 @@ msgid "Gateway transport type"
 msgstr "Tipo de transporte de puerta de enlace"
 
 #: plugins/rdp/rdp_plugin.c:2282
-#, fuzzy
-#| msgid "SSH log level"
 msgid "FreeRDP log level"
-msgstr "Nivel de registro SSH"
+msgstr "Nivel de registro FreeRDP"
 
 #: plugins/rdp/rdp_plugin.c:2283
 msgid "Sound"
@@ -2498,57 +2492,71 @@ msgid "Telepathy - Desktop Sharing"
 msgstr "Telepathy - Compartir escritorio"
 
 #: data/ui/remmina_snap_info_dialog.glade:71
+#, fuzzy
+#| msgid ""
+#| "<big><b>Remmina Snap package</b></big>\n"
+#| "\n"
+#| "<span>\n"
+#| "It seems that Remmina is running on your system as a Snap package.\n"
+#| "Some Remmina functionalities need your intervention to work properly\n"
+#| "</span>\n"
 msgid ""
 "<big><b>Remmina Snap package</b></big>\n"
 "\n"
 "<span>\n"
-"It seems that Remmina is running on your system as a Snap package.\n"
-"Some Remmina functionalities need your intervention to work properly\n"
+"Remmina is running on your system as a Snap package.\n"
+"Some Remmina functions need to be set up to work properly.\n"
 "</span>\n"
 msgstr ""
+"<big><b>Paquete Remmina Snap</b></big>\n"
+"\n"
+"<span>\n"
+"Parece que Remmina se ejecuta en su sistema como un paquete Snap.\n"
+"Algunas funcionalidades de Remmina necesitan su intervención para funcionar "
+"correctamente\n"
+"</span>\n"
 
 #: data/ui/remmina_snap_info_dialog.glade:120
-#, fuzzy
-#| msgid ""
-#| "It seems that Remmina is running on your system as a SNAP package. To "
-#| "enable access to some important features, like password saving in your "
-#| "keyring and RDP printer sharing, please open your software center and "
-#| "give the appropriate permissions to Remmina. As an alternative you can "
-#| "enter the following commands in a terminal window:"
 msgid ""
 "To enable access to some important features, like password saving in your "
 "keyring and RDP printer sharing, please open your software center and give "
 "the appropriate permissions to Remmina. As an alternative you can enter the "
 "following commands in a terminal window:"
 msgstr ""
-"Parece que Remmina está ejecutándose en el sistema como un paquete snap. "
-"Para activar el acceso a determinadas funcionalidades importantes tales como "
-"el guardado de contraseñas en el llavero y la compartición de impresoras por "
-"RDP, abra el centro de software y otorgue los permisos pertinentes a "
-"Remmina. Alternativamente, ejecute estas órdenes en un terminal:"
+"Para permitir el acceso a algunas características importantes, como guardar "
+"la contraseña en su llavero y compartir la impresora RDP, por favor abra su "
+"centro de software y dé los permisos apropiados a Remmina. Como alternativa, "
+"puede introducir los siguientes comandos en una ventana de terminal:"
 
 #: data/ui/remmina_snap_info_dialog.glade:166
-#, fuzzy
-#| msgid "Permission"
 msgid "<big>Permissions</big>"
-msgstr "<big>Permiso</big>"
+msgstr "<big>Permisos</big>"
 
 #: data/ui/remmina_snap_info_dialog.glade:201
+#, fuzzy
+#| msgid ""
+#| "Snap packages runs confined from the rest of the system, therefore by "
+#| "default, Remmina profiles will be saved inside the Snap file system, but "
+#| "you can still set an alternative PATH in the general preferences."
 msgid ""
-"Snap packages runs confined from the rest of the system, therefore by "
-"default, Remmina profiles will be saved inside the Snap file system, but you "
-"can still set an alternative PATH in the general preferences."
+"Since Snap packages run confined from the rest of the system, Remmina "
+"profiles are saved inside the Snap file system by default. You can change "
+"the location in the Remmina preferences."
 msgstr ""
+"Los paquetes de Snap se ejecutan de forma confinada desde el resto del "
+"sistema, por lo tanto, por defecto, los perfiles de Remmina se guardarán "
+"dentro del sistema de archivos de Snap, pero aún se puede establecer un PATH "
+"alternativo en las preferencias generales."
 
 #: data/ui/remmina_snap_info_dialog.glade:221
-msgid "Change the Remmina profiles PATH"
-msgstr ""
+#, fuzzy
+#| msgid "Change the Remmina profiles PATH"
+msgid "Change where Remmina profiles are stored"
+msgstr "Cambiar el PATH de los perfiles de Remmina"
 
 #: data/ui/remmina_snap_info_dialog.glade:260
-#, fuzzy
-#| msgid "<big>Take part</big>"
 msgid "<big>Snap settings</big>"
-msgstr "<big>Contribuir</big>"
+msgstr "<big>Ajustes de Snap</big>"
 
 #: data/ui/remmina_snap_info_dialog.glade:273
 msgid "Do not show this message again"

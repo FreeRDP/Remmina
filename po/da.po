@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2020-08-14 12:35+0000\n"
-"PO-Revision-Date: 2020-08-14 00:09+0000\n"
-"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"POT-Creation-Date: 2020-08-29 17:11+0000\n"
+"PO-Revision-Date: 2020-08-30 18:23+0000\n"
+"Last-Translator: scootergrisen <scootergrisen@gmail.com>\n"
 "Language-Team: Danish <https://hosted.weblate.org/projects/remmina/remmina/"
 "da/>\n"
 "Language: da\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.2-dev\n"
+"X-Generator: Weblate 4.2.1-dev\n"
 
 #: src/remmina_protocol_widget.c:275
 msgid "Connect via SSH from a new terminal"
@@ -1974,7 +1974,7 @@ msgstr "Kan ikke oprette forbindelse til RDP-serveren \"%s\"."
 
 #: plugins/rdp/rdp_plugin.c:2148
 msgid "Automatic (32 bpp) (Server chooses its best format)"
-msgstr ""
+msgstr "Automatisk (32 bpp) (serveren vælger sit bedste format)"
 
 #: plugins/rdp/rdp_plugin.c:2149
 msgid "GFX AVC444 (32 bpp)"
@@ -1989,10 +1989,8 @@ msgid "GFX RFX (32 bpp)"
 msgstr "GFX RFX (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2152
-#, fuzzy
-#| msgid "GFX RFX (32 bpp)"
 msgid "GFX RFX Progressive (32 bpp)"
-msgstr "GFX RFX (32 bpp)"
+msgstr "GFX RFX progressiv (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2153
 msgid "RemoteFX (32 bpp)"
@@ -2111,6 +2109,10 @@ msgid ""
 "connection.\n"
 "The highest possible value is 600000 ms (10 minutes)\n"
 msgstr ""
+"Avanceret indstilling til links med høj forsinkelse:\n"
+"Juster forbindelsens timeout, brug hvis du støder på fejl ved timeout med "
+"din forbindelse.\n"
+"Den højeste mulige værdi er 600000 ms (10 minutter)\n"
 
 #: plugins/rdp/rdp_plugin.c:2280
 msgid "Security protocol negotiation"
@@ -2121,10 +2123,8 @@ msgid "Gateway transport type"
 msgstr "Gateway transporttype"
 
 #: plugins/rdp/rdp_plugin.c:2282
-#, fuzzy
-#| msgid "SSH log level"
 msgid "FreeRDP log level"
-msgstr "SSH-logniveau"
+msgstr "FreeRDP-logniveau"
 
 #: plugins/rdp/rdp_plugin.c:2283
 msgid "Sound"
@@ -2470,31 +2470,38 @@ msgid "Telepathy - Desktop Sharing"
 msgstr "Telepathy - Skrivebordsdeling"
 
 #: data/ui/remmina_snap_info_dialog.glade:71
+#, fuzzy
+#| msgid ""
+#| "<big><b>Remmina Snap package</b></big>\n"
+#| "\n"
+#| "<span>\n"
+#| "It seems that Remmina is running on your system as a Snap package.\n"
+#| "Some Remmina functionalities need your intervention to work properly\n"
+#| "</span>\n"
 msgid ""
 "<big><b>Remmina Snap package</b></big>\n"
 "\n"
 "<span>\n"
-"It seems that Remmina is running on your system as a Snap package.\n"
-"Some Remmina functionalities need your intervention to work properly\n"
+"Remmina is running on your system as a Snap package.\n"
+"Some Remmina functions need to be set up to work properly.\n"
 "</span>\n"
 msgstr ""
+"<big><b>Remmina Snap-pakke</b></big>\n"
+"\n"
+"<span>\n"
+"Det ser ud til at Remmina kører på dit system som en Snap-pakke.\n"
+"Nogle Remmina-funktionaliteter har brug for din indblanding for at virke "
+"korrekt\n"
+"</span>\n"
 
 #: data/ui/remmina_snap_info_dialog.glade:120
-#, fuzzy
-#| msgid ""
-#| "It seems that Remmina is running on your system as a SNAP package. To "
-#| "enable access to some important features, like password saving in your "
-#| "keyring and RDP printer sharing, please open your software center and "
-#| "give the appropriate permissions to Remmina. As an alternative you can "
-#| "enter the following commands in a terminal window:"
 msgid ""
 "To enable access to some important features, like password saving in your "
 "keyring and RDP printer sharing, please open your software center and give "
 "the appropriate permissions to Remmina. As an alternative you can enter the "
 "following commands in a terminal window:"
 msgstr ""
-"Det ser ud til at Remmina kører på dit system som en SNAP-pakke. For at "
-"aktivere adgang til nogle vigtige funktionaliteter såsom at gemme "
+"For at aktivere adgang til nogle vigtige funktionaliteter såsom at gemme "
 "adgangskoder i din nøglering og RDP-printerdeling, så åbn venligst dit "
 "softwarecenter og giv Remmina de rette tilladelser. Alternativt kan du "
 "indtaste følgende kommandoer i et terminalvindue:"
@@ -2504,21 +2511,29 @@ msgid "<big>Permissions</big>"
 msgstr "<big>Tilladelse</big>"
 
 #: data/ui/remmina_snap_info_dialog.glade:201
+#, fuzzy
+#| msgid ""
+#| "Snap packages runs confined from the rest of the system, therefore by "
+#| "default, Remmina profiles will be saved inside the Snap file system, but "
+#| "you can still set an alternative PATH in the general preferences."
 msgid ""
-"Snap packages runs confined from the rest of the system, therefore by "
-"default, Remmina profiles will be saved inside the Snap file system, but you "
-"can still set an alternative PATH in the general preferences."
+"Since Snap packages run confined from the rest of the system, Remmina "
+"profiles are saved inside the Snap file system by default. You can change "
+"the location in the Remmina preferences."
 msgstr ""
+"Snap-pakker kører separat fra resten af systemet. Remmina-profiler gemmes "
+"derfor som standard i Snap-filsystemet, men du kan stadigvæk indstille en "
+"alternativ PATH i de generelle præferencer."
 
 #: data/ui/remmina_snap_info_dialog.glade:221
-msgid "Change the Remmina profiles PATH"
-msgstr ""
+#, fuzzy
+#| msgid "Change the Remmina profiles PATH"
+msgid "Change where Remmina profiles are stored"
+msgstr "Ændr Remmina-profilernes PATH"
 
 #: data/ui/remmina_snap_info_dialog.glade:260
-#, fuzzy
-#| msgid "<big>Take part</big>"
 msgid "<big>Snap settings</big>"
-msgstr "<big>Vær med</big>"
+msgstr "<big>Indstillinger for Snap</big>"
 
 #: data/ui/remmina_snap_info_dialog.glade:273
 msgid "Do not show this message again"
