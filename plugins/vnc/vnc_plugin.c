@@ -1374,6 +1374,19 @@ static gboolean remmina_plugin_vnc_on_button(GtkWidget *widget, GdkEventButton *
 	return TRUE;
 }
 
+static gint delta_to_mask(float delta, float *accum, gint mask_plus, gint mask_minus)
+{
+	*accum += delta;
+	if (*accum >= 1.0) {
+		*accum = 0.0;
+		return mask_plus;
+	} else if (*accum <= -1.0) {
+		*accum = 0.0;
+		return mask_minus;
+	}
+	return 0;
+}
+
 static gboolean remmina_plugin_vnc_on_scroll(GtkWidget *widget, GdkEventScroll *event, RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
@@ -1391,26 +1404,27 @@ static gboolean remmina_plugin_vnc_on_scroll(GtkWidget *widget, GdkEventScroll *
 	switch (event->direction) {
 	case GDK_SCROLL_UP:
 		mask = (1 << 3);
+		gpdata->scroll_y_accumulator = 0;
 		break;
 	case GDK_SCROLL_DOWN:
 		mask = (1 << 4);
+		gpdata->scroll_y_accumulator = 0;
 		break;
 	case GDK_SCROLL_LEFT:
 		mask = (1 << 5);
+		gpdata->scroll_x_accumulator = 0;
 		break;
 	case GDK_SCROLL_RIGHT:
 		mask = (1 << 6);
+		gpdata->scroll_x_accumulator = 0;
 		break;
 #if GTK_CHECK_VERSION(3, 4, 0)
 	case GDK_SCROLL_SMOOTH:
-		if (event->delta_y < 0)
-			mask = (1 << 3);
-		if (event->delta_y > 0)
-			mask = (1 << 4);
-		if (event->delta_x < 0)
-			mask = (1 << 5);
-		if (event->delta_x > 0)
-			mask = (1 << 6);
+		/* RFB does not seems to support SMOOTH scroll, so we accumulate GTK delta requested
+		 * up to 1.0 and then send a normal RFB wheel scroll when the accumulator reaches 1.0 */
+		mask = delta_to_mask(event->delta_y, &(gpdata->scroll_y_accumulator), (1 << 4), (1 << 3));
+		mask |= delta_to_mask(event->delta_x, &(gpdata->scroll_x_accumulator), (1 << 6), (1 << 5));
+		printf("delta_y=%f mask=%d y_acc=%f\n", event->delta_y, mask, gpdata->scroll_y_accumulator);
 		if (!mask)
 			return FALSE;
 		break;
@@ -1475,6 +1489,9 @@ static gboolean remmina_plugin_vnc_on_key(GtkWidget *widget, GdkEventKey *event,
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 	if (remmina_plugin_service->file_get_int(remminafile, "viewonly", FALSE))
 		return FALSE;
+
+	gpdata->scroll_x_accumulator = 0;
+	gpdata->scroll_y_accumulator = 0;
 
 	/* When sending key release, try first to find out a previously sent keyval
 	 * to workaround bugs like https://bugs.freedesktop.org/show_bug.cgi?id=7430 */
@@ -1799,9 +1816,9 @@ static void remmina_plugin_vnc_init(RemminaProtocolWidget *gp)
 
 	gtk_widget_add_events(
 		gpdata->drawing_area,
-		GDK_POINTER_MOTION_MASK | GDK_BUTTON_PRESS_MASK 
+		GDK_POINTER_MOTION_MASK | GDK_BUTTON_PRESS_MASK
 		| GDK_BUTTON_RELEASE_MASK | GDK_KEY_PRESS_MASK
-		| GDK_KEY_RELEASE_MASK 
+		| GDK_KEY_RELEASE_MASK
 #if GTK_CHECK_VERSION(3, 4, 0)
 		| GDK_SMOOTH_SCROLL_MASK
 #endif

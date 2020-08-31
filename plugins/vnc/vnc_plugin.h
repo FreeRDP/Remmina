@@ -86,6 +86,9 @@ typedef struct _RemminaPluginVncData {
 
 	pthread_t		thread;
 	pthread_mutex_t		buffer_mutex;
+
+	float		scroll_x_accumulator, scroll_y_accumulator;
+
 } RemminaPluginVncData;
 
 enum {
