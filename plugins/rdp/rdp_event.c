@@ -532,27 +532,38 @@ static gboolean remmina_rdp_event_on_scroll(GtkWidget* widget, GdkEventScroll* e
 	TRACE_CALL(__func__);
 	gint flag;
 	RemminaPluginRdpEvent rdp_event = { 0 };
+	float windows_delta;
 
 	flag = 0;
 	rdp_event.type = REMMINA_RDP_EVENT_TYPE_MOUSE;
 
+	/* See [MS-RDPBCGR] TS_POINTER_EVENT and WM_MOUSEWHEEL message */
+
 	switch (event->direction) {
+
 	case GDK_SCROLL_UP:
-		flag = PTR_FLAGS_WHEEL | 0x0078;
+		flag = PTR_FLAGS_WHEEL | 0x0078;  // 120 is one scroll unit defined in WM_MOUSEWHEEL
 		break;
 
 	case GDK_SCROLL_DOWN:
-		flag = PTR_FLAGS_WHEEL | PTR_FLAGS_WHEEL_NEGATIVE | 0x0088;
+		flag = PTR_FLAGS_WHEEL | 0x0188;  // -120 (one scroll unit) in 9 bits two's complement
 		break;
 
 #if GTK_CHECK_VERSION(3, 4, 0)
 	case GDK_SCROLL_SMOOTH:
-		if (event->delta_y < 0)
-			flag = PTR_FLAGS_WHEEL | 0x0078;
-		if (event->delta_y > 0)
-			flag = PTR_FLAGS_WHEEL | PTR_FLAGS_WHEEL_NEGATIVE | 0x0088;
-		if (!flag)
+
+		if (event->delta_y == 0.0)
 			return FALSE;
+
+		windows_delta = event->delta_y * -120;
+
+		if (windows_delta > 255)
+			windows_delta = 255;
+		if (windows_delta < -256)
+			windows_delta = -256;
+
+		flag = PTR_FLAGS_WHEEL | ((short)windows_delta & WheelRotationMask);
+
 		break;
 #endif
 
@@ -755,11 +766,11 @@ void remmina_rdp_event_init(RemminaProtocolWidget* gp)
 	gtk_widget_show(rfi->drawing_area);
 	gtk_container_add(GTK_CONTAINER(gp), rfi->drawing_area);
 
-	gtk_widget_add_events(rfi->drawing_area, GDK_POINTER_MOTION_MASK 
-		| GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK 
-		| GDK_KEY_PRESS_MASK | GDK_KEY_RELEASE_MASK 
+	gtk_widget_add_events(rfi->drawing_area, GDK_POINTER_MOTION_MASK
+		| GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK
+		| GDK_KEY_PRESS_MASK | GDK_KEY_RELEASE_MASK
 #if GTK_CHECK_VERSION(3,4,0)
-		| GDK_SMOOTH_SCROLL_MASK 
+		| GDK_SMOOTH_SCROLL_MASK
 #endif
 		| GDK_SCROLL_MASK | GDK_FOCUS_CHANGE_MASK);
 	gtk_widget_set_can_focus(rfi->drawing_area, TRUE);
