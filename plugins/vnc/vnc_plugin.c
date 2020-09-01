@@ -1424,7 +1424,6 @@ static gboolean remmina_plugin_vnc_on_scroll(GtkWidget *widget, GdkEventScroll *
 		 * up to 1.0 and then send a normal RFB wheel scroll when the accumulator reaches 1.0 */
 		mask = delta_to_mask(event->delta_y, &(gpdata->scroll_y_accumulator), (1 << 4), (1 << 3));
 		mask |= delta_to_mask(event->delta_x, &(gpdata->scroll_x_accumulator), (1 << 6), (1 << 5));
-		printf("delta_y=%f mask=%d y_acc=%f\n", event->delta_y, mask, gpdata->scroll_y_accumulator);
 		if (!mask)
 			return FALSE;
 		break;
