@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-09-01 06:29+0000\n"
-"PO-Revision-Date: 2020-08-30 18:23+0000\n"
+"PO-Revision-Date: 2020-09-11 22:29+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/remmina/"
 "remmina/nb_NO/>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.2.1-dev\n"
+"X-Generator: Weblate 4.3-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
 
 #: src/remmina_protocol_widget.c:275
@@ -644,10 +644,8 @@ msgid "Set one or more profile settings, to be used with --update-profile"
 msgstr "Sett én eller flere profilinnstillinger, for bruk med --update-profile"
 
 #: src/remmina.c:119
-#, fuzzy
-#| msgid "Enter VNC password"
 msgid "Encrypt a password"
-msgstr "Skriv inn VNC-passord"
+msgstr "Krypter et passord"
 
 #: src/remmina_icon.c:139
 msgid "Open Main Window"
@@ -1383,18 +1381,16 @@ msgid "Execute a Command"
 msgstr "Kjør en kommando"
 
 #: src/remmina_file_editor.c:888
-#, fuzzy
 msgid "Before connecting"
-msgstr "Åpne tilkobling"
+msgstr "Før tilkobling"
 
 #: src/remmina_file_editor.c:890
 msgid "command %h %u %t %U %p %g --option"
 msgstr "kommando %h %u %t %U %p %g --valg"
 
 #: src/remmina_file_editor.c:895
-#, fuzzy
 msgid "After connecting"
-msgstr "Åpne tilkobling"
+msgstr "Etter tilkobling"
 
 #: src/remmina_file_editor.c:897
 msgid "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
@@ -2013,9 +2009,9 @@ msgstr ""
 "ikke H.264. Bruk en innstilling som ikke er AVC-fargedybde."
 
 #: plugins/rdp/rdp_plugin.c:1810
-#, fuzzy, c-format
+#, c-format
 msgid "The \"%s\" server refused the connection."
-msgstr "Tjeneren %s avslo tilkoblingen."
+msgstr "\"%s\"-tjeneren avslo tilkoblingen."
 
 #: plugins/rdp/rdp_plugin.c:1815
 #, fuzzy, c-format
@@ -2046,10 +2042,8 @@ msgid "GFX RFX (32 bpp)"
 msgstr "GFX RFX (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2152
-#, fuzzy
-#| msgid "GFX RFX (32 bpp)"
 msgid "GFX RFX Progressive (32 bpp)"
-msgstr "GFX RFX (32 bpp)"
+msgstr "GFX RFX-progressiv (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2153
 msgid "RemoteFX (32 bpp)"
@@ -2097,8 +2091,6 @@ msgid "Local - high quality"
 msgstr "Lokalt - høy kvalitet"
 
 #: plugins/rdp/rdp_plugin.c:2201
-#, fuzzy
-#| msgid "Automatically negotiate"
 msgid "Automatic negotiation"
 msgstr "Automatisk forhandling"
 
@@ -2194,10 +2186,8 @@ msgid "Gateway transport type"
 msgstr "Portner-transporttype"
 
 #: plugins/rdp/rdp_plugin.c:2282
-#, fuzzy
-#| msgid "SSH log level"
 msgid "FreeRDP log level"
-msgstr "SSH-loggingsnivå"
+msgstr "FreeRDP-loggingsnivå"
 
 #: plugins/rdp/rdp_plugin.c:2283
 msgid "Sound"
@@ -2581,21 +2571,13 @@ msgstr ""
 "</span>\n"
 
 #: data/ui/remmina_snap_info_dialog.glade:120
-#, fuzzy
-#| msgid ""
-#| "It seems that Remmina is running on your system as a SNAP package. To "
-#| "enable access to some important features, like password saving in your "
-#| "keyring and RDP printer sharing, please open your software center and "
-#| "give the appropriate permissions to Remmina. As an alternative you can "
-#| "enter the following commands in a terminal window:"
 msgid ""
 "To enable access to some important features, like password saving in your "
 "keyring and RDP printer sharing, please open your software center and give "
 "the appropriate permissions to Remmina. As an alternative you can enter the "
 "following commands in a terminal window:"
 msgstr ""
-"Det later til at Remmina kjører på systemet ditt som en SNAP-pakke. For å "
-"skru på tilgang til noen viktige funksjoner, som passordslagring i "
+"For å skru på tilgang til noen viktige funksjoner, som passordslagring i "
 "nøkkelringen din og RDP-skriverdeling, åpne programvaresenteret ditt og "
 "innvilg tilstrekkelige tilganger til Remmina. Alternativt kan du skrive "
 "følgende kommandoer i terminalen:"
@@ -2605,29 +2587,22 @@ msgid "<big>Permissions</big>"
 msgstr "<big>Rettigheter</big>"
 
 #: data/ui/remmina_snap_info_dialog.glade:201
-#, fuzzy
-#| msgid ""
-#| "Snap packages runs confined from the rest of the system, therefore by "
-#| "default, Remmina profiles will be saved inside the Snap file system, but "
-#| "you can still set an alternative PATH in the general preferences."
 msgid ""
 "Since Snap packages run confined from the rest of the system, Remmina "
 "profiles are saved inside the Snap file system by default. You can change "
 "the location in the Remmina preferences."
 msgstr ""
-"Snap-pakker kjører isolert fra resten av systemet, derfor vil Remmina-"
-"profiler lagres i Snap-filsystemet som forvalg, men du kan sette alternativ "
-"sti i hovedinnstillingene."
+"Siden Snap-pakker kjører isolert fra resten av systemet, lagres Remmina-"
+"profiler i Snap-filsystemet som forvalg. Du kan endre plasseringen i Remmina-"
+"innstillingene."
 
 #: data/ui/remmina_snap_info_dialog.glade:221
-#, fuzzy
 msgid "Change where Remmina profiles are stored"
-msgstr "Endre Remmina profil-PATH"
+msgstr "Endre hvor Remmina-profiler lagres"
 
 #: data/ui/remmina_snap_info_dialog.glade:260
-#, fuzzy
 msgid "<big>Snap settings</big>"
-msgstr "<big>Bidra</big>"
+msgstr "<big>Snap-innstillinger</big>"
 
 #: data/ui/remmina_snap_info_dialog.glade:273
 msgid "Do not show this message again"
@@ -2656,9 +2631,8 @@ msgid "Website"
 msgstr "Nettside"
 
 #: data/ui/remmina_main.glade:35
-#, fuzzy
 msgid "Hide or show the search bar"
-msgstr "Vis søkefelt"
+msgstr "Skjul eller vis søkefeltet"
 
 #: data/ui/remmina_main.glade:41
 #, fuzzy
@@ -2674,9 +2648,8 @@ msgid "Switch from grouped to list view"
 msgstr "Bytt fra gruppe- til listevisning"
 
 #: data/ui/remmina_main.glade:70
-#, fuzzy
 msgid "Remote Desktop Client"
-msgstr "Remmina-klient for eksterne skrivebord"
+msgstr "Klient for eksterne skrivebord"
 
 #: data/ui/remmina_main.glade:78
 msgid "New connection profile"
@@ -2688,9 +2661,8 @@ msgid "Show search bar"
 msgstr "Vis søkefelt"
 
 #: data/ui/remmina_main.glade:123
-#, fuzzy
 msgid "Remmina main menu"
-msgstr "Remmina-datamappe"
+msgstr "Remmina-hovedmeny"
 
 #: data/ui/remmina_main.glade:130
 msgid "Actions"
@@ -2768,9 +2740,8 @@ msgstr "Wiki"
 
 #. Remmina community website
 #: data/ui/remmina_main.glade:467
-#, fuzzy
 msgid "Community"
-msgstr "Nettbasert gemenskap"
+msgstr "Gemenskap"
 
 #: data/ui/remmina_main.glade:588
 msgid "Plugin"
@@ -2832,15 +2803,14 @@ msgstr ""
 
 #. The star (*) is a reference to privacy consent
 #: data/ui/remmina_news.glade:130 data/ui/remmina_preferences.glade:533
-#, fuzzy
 msgid ""
 "Send <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
 "remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
 "\">anonymous</a></b> statistics. (*)"
 msgstr ""
 "Send <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-"remmina__stats_8c.html#details\" title=\"Remmina-bruksstatistikk\">anonym</"
-"a></b> statistikk til remmina.org"
+"remmina__stats_8c.html#details\" title=\"Remmina-bruksstatistikk\""
+">anonym</a></b> statistikk. (*)"
 
 #: data/ui/remmina_news.glade:142 data/ui/remmina_news.glade:195
 #, fuzzy
@@ -2848,9 +2818,8 @@ msgid "Send anonymous statistics"
 msgstr "Send anonym statistikk"
 
 #: data/ui/remmina_news.glade:156
-#, fuzzy
 msgid "Use as default remote desktop client"
-msgstr "Gjør Remmina til forvalgt klient for eksterne skrivebord"
+msgstr "Bruk som forvalgt klient for eksterne skrivebord"
 
 #: data/ui/remmina_news.glade:165
 msgid "Apply"
@@ -2878,9 +2847,8 @@ msgstr ""
 "hente data til/fra remmina.org"
 
 #: data/ui/remmina_news.glade:231
-#, fuzzy
 msgid "<big>Take part</big>"
-msgstr "<big>Bidra</big>"
+msgstr "<big>Vær med</big>"
 
 #. Pay attention to thr quoting charachters as they may break the pango layout. If in doubt and cannot test, copy and paste the symbols from the English string.
 #: data/ui/remmina_news.glade:257
@@ -2922,9 +2890,8 @@ msgid "Confirm password"
 msgstr "Bekreft passord"
 
 #: data/ui/remmina_mpc.glade:294
-#, fuzzy
 msgid "Set new password"
-msgstr "Lagre passord"
+msgstr "Sett nytt passord"
 
 #. A column table with multiple check-boxes
 #: data/ui/remmina_mpc.glade:331
@@ -2933,13 +2900,11 @@ msgid "Select"
 msgstr "Velg"
 
 #: data/ui/remmina_mpc.glade:343
-#, fuzzy
 msgctxt "Multi password changer table"
 msgid "Name"
 msgstr "Navn"
 
 #: data/ui/remmina_mpc.glade:354
-#, fuzzy
 msgctxt "Multi password changer table"
 msgid "Group"
 msgstr "Gruppe"
@@ -3000,9 +2965,8 @@ msgid "Screen resolutions"
 msgstr "Skjermoppløsninger"
 
 #: data/ui/remmina_preferences.glade:280
-#, fuzzy
 msgid "Folder for screenshots"
-msgstr "Kunne ikke starte SSH-økt. %s"
+msgstr "Mappe for skjermavbildninger"
 
 #: data/ui/remmina_preferences.glade:292
 #, fuzzy
@@ -3010,7 +2974,6 @@ msgid "Choose a folder to save screenshots from Remmina in."
 msgstr "Velg mappe å lagre skjermavbildninger fra Remmina i."
 
 #: data/ui/remmina_preferences.glade:295
-#, fuzzy
 msgid "Select a folder"
 msgstr "Velg en mappe"
 
@@ -3127,14 +3090,12 @@ msgid "Tabs"
 msgstr "Faner"
 
 #: data/ui/remmina_preferences.glade:662
-#, fuzzy
 msgid "By group"
-msgstr "Faner i grupper"
+msgstr "Etter gruppe"
 
 #: data/ui/remmina_preferences.glade:663
-#, fuzzy
 msgid "By protocols"
-msgstr "Faner basert på protokoller"
+msgstr "Etter protokoller"
 
 #: data/ui/remmina_preferences.glade:664
 msgid "Per connection"
