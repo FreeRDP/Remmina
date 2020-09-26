@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-09-01 06:29+0000\n"
-"PO-Revision-Date: 2020-09-19 23:39+0000\n"
+"PO-Revision-Date: 2020-09-26 19:41+0000\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/remmina/remmina/"
 "es/>\n"
@@ -2298,7 +2298,7 @@ msgstr "Anexar a consola (Windows 2003/2003 R2)"
 
 #: plugins/rdp/rdp_plugin.c:2316
 msgid "Turn off fast-path"
-msgstr "Desactivar fast-path"
+msgstr "Desactivar método rápido"
 
 #: plugins/rdp/rdp_plugin.c:2317
 msgid "Server detection using Remote Desktop Gateway"
@@ -2330,15 +2330,15 @@ msgstr "Usar el protocolo UDP podría mejorar el rendimiento"
 
 #: plugins/rdp/rdp_plugin.c:2348
 msgid "RDP - Remote Desktop Protocol"
-msgstr "RDP - Protocolo de escritorio remoto"
+msgstr "RDP. Protocolo de escritorio remoto"
 
 #: plugins/rdp/rdp_plugin.c:2371
 msgid "RDP - RDP File Handler"
-msgstr "RDP - Manejador de archivos RDP"
+msgstr "RDP. Operario de archivos RDP"
 
 #: plugins/rdp/rdp_plugin.c:2386
 msgid "RDP - Preferences"
-msgstr "RDP - Preferencias"
+msgstr "RDP. Preferencias"
 
 #: plugins/rdp/rdp_plugin.c:2439
 msgid "Export connection in Windows .rdp file format"
@@ -2394,7 +2394,7 @@ msgstr "Parpadeo del cursor"
 
 #: plugins/rdp/rdp_settings.c:515
 msgid "Font smoothing"
-msgstr "Suavizado de tipografía"
+msgstr "Suavizado tipográfico"
 
 #: plugins/rdp/rdp_settings.c:522
 msgid "Composition"
@@ -2419,7 +2419,7 @@ msgstr "Orientación de escritorio"
 #: plugins/rdp/rdp_event.c:302
 #, c-format
 msgid "Reconnection attempt %d of %d…"
-msgstr "Reconectando... Intento %d de %d…"
+msgstr "Intento de reconexión %d de %d…"
 
 #: plugins/nx/nx_session_manager.c:98
 msgid "Terminating…"
@@ -2468,7 +2468,7 @@ msgstr "Enviar Ctrl+Alt+Supr"
 
 #: plugins/nx/nx_plugin.c:770
 msgid "NX - NX Technology"
-msgstr "NX - Tecnología NX"
+msgstr "NX. Tecnología NX"
 
 #: plugins/kwallet/src/kwallet_plugin_main.c:118
 msgid "Secured password storage in KWallet"
@@ -2489,7 +2489,7 @@ msgstr "Invitación para compartir el escritorio"
 
 #: plugins/telepathy/telepathy_plugin.c:57
 msgid "Telepathy - Desktop Sharing"
-msgstr "Telepathy - Compartir escritorio"
+msgstr "Telepathy. Compartición de escritorio"
 
 #: data/ui/remmina_snap_info_dialog.glade:71
 msgid ""
@@ -2515,36 +2515,29 @@ msgid ""
 "the appropriate permissions to Remmina. As an alternative you can enter the "
 "following commands in a terminal window:"
 msgstr ""
-"Para permitir el acceso a algunas características importantes, como guardar "
-"la contraseña en su llavero y compartir la impresora RDP, por favor abra su "
+"Para acceder a determinadas funciones importantes tales como el guardado de "
+"contraseñas en el llavero y la compartición de impresoras por RDP, abra el "
 "centro de software y dé los permisos apropiados a Remmina. Como alternativa, "
-"puede introducir los siguientes comandos en una ventana de terminal:"
+"puede introducir las órdenes siguientes en una ventana de terminal:"
 
 #: data/ui/remmina_snap_info_dialog.glade:166
 msgid "<big>Permissions</big>"
 msgstr "<big>Permisos</big>"
 
 #: data/ui/remmina_snap_info_dialog.glade:201
-#, fuzzy
-#| msgid ""
-#| "Snap packages runs confined from the rest of the system, therefore by "
-#| "default, Remmina profiles will be saved inside the Snap file system, but "
-#| "you can still set an alternative PATH in the general preferences."
 msgid ""
 "Since Snap packages run confined from the rest of the system, Remmina "
 "profiles are saved inside the Snap file system by default. You can change "
 "the location in the Remmina preferences."
 msgstr ""
-"Los paquetes de Snap se ejecutan de forma confinada desde el resto del "
-"sistema, por lo tanto, por defecto, los perfiles de Remmina se guardarán "
-"dentro del sistema de archivos de Snap, pero aún se puede establecer un PATH "
-"alternativo en las preferencias generales."
+"Como los paquetes «snap» se ejecutan separadamente del resto del sistema, "
+"los perfiles de Remmina se guardan de manera predeterminada dentro del "
+"sistema de archivos del «snap». Puede cambiar la ubicación en las "
+"preferencias de Remmina."
 
 #: data/ui/remmina_snap_info_dialog.glade:221
-#, fuzzy
-#| msgid "Change the Remmina profiles PATH"
 msgid "Change where Remmina profiles are stored"
-msgstr "Cambiar el PATH de los perfiles de Remmina"
+msgstr "Cambiar la ubicación de los perfiles de Remmina"
 
 #: data/ui/remmina_snap_info_dialog.glade:260
 msgid "<big>Snap settings</big>"
@@ -2663,7 +2656,7 @@ msgstr "Expandir todo"
 
 #: data/ui/remmina_main.glade:410
 msgid "Make Remmina your default remote desktop client"
-msgstr "Hacer que Remmina sea el cliente de escritorio remoto predeterminado"
+msgstr "Hacer que Remmina sea el cliente de escritorios remotos predeterminado"
 
 #: data/ui/remmina_main.glade:437
 msgid "Homepage"
@@ -2727,8 +2720,8 @@ msgstr ""
 "<big><b>Las noticias están desactivadas</b></big>\n"
 "\n"
 "<span>\n"
-"Activar las noticias hace que el programa se conecte al servidor de Remmina "
-"para descargar las novedades de la versión.\n"
+"Activar las noticias hace que el programa se conecte con el servidor de "
+"Remmina para descargar las novedades de la versión.\n"
 "</span>\n"
 "\n"
 "<span>\n"
@@ -2737,8 +2730,8 @@ msgstr ""
 "\n"
 "<span>\n"
 "<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Novedades de "
-"la versión de Remmina\"><i>Visita la web de Remmina para leer las novedades "
-"de la versión</i></a>.\n"
+"la versión de Remmina\"><i>Visite el sitio web para leer las novedades de la "
+"versión</i></a>.\n"
 "</span>"
 
 #. The star (*) is a reference to privacy consent
