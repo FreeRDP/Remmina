@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the Remmina package.
 # Allan Nordhøy <epost@anotheragency.no>, 2020.
 # Jwtiyar Nariman <jwtiyar@gmail.com>, 2020.
+# Kurd As <kurd68587@gmail.com>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: Remmina v1.4.6\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-09-01 06:29+0000\n"
-"PO-Revision-Date: 2020-09-16 21:36+0000\n"
-"Last-Translator: Jwtiyar Nariman <jwtiyar@gmail.com>\n"
+"PO-Revision-Date: 2020-09-28 13:41+0000\n"
+"Last-Translator: Kurd As <kurd68587@gmail.com>\n"
 "Language-Team: Central Kurdish <https://hosted.weblate.org/projects/remmina/"
 "remmina/ckb/>\n"
 "Language: ckb\n"
@@ -302,6 +303,15 @@ msgid ""
 "  • %g is substituted with Remmina profile group name\n"
 "  • %d is substituted with local datetime in iso8601 format\n"
 msgstr ""
+"ناوی فایلەکە دەتوانێت ئەم جێراگرانەی خوارەوە بەکار بێنیت:\n"
+"\n"
+"• %h جێگرەوە کراوە لەگەڵ ناوی سێرڤەرەکە\n"
+"  • %t جێگرەوە کراوە لەگەڵ ناوی سێرڤەری SSH\n"
+"  • %u جێگرەوەکراوە لەگەڵ ناوی بەکارهێنەر\n"
+"  • %U جێگرەوەکراوە لەگەڵ ناوی بەکارهێنەری SSH\n"
+"  • %p جێگرەوەکراوە لەگەڵ ناوی پرۆفایلی ڕێمینا\n"
+"  • %g جێگرەوە کراوە لەگەڵ ناوی گروپی پرۆفایلی ڕێمینا\n"
+"  • %d جێگرەوە کراوە لەگەڵ کاتی بەروار بە فۆرماتی iso8601\n"
 
 #: src/remmina_ssh_plugin.c:1100
 msgid "Terminal color scheme"
@@ -321,7 +331,7 @@ msgstr "ئەلگۆریتمی KEX (Key Exchange)"
 
 #: src/remmina_ssh_plugin.c:1104
 msgid "Symmetric cipher client to server"
-msgstr ""
+msgstr "کڕیاری سیفەری سیفەری هاوسێ بۆ سێرڤەر"
 
 #: src/remmina_ssh_plugin.c:1105
 msgid "Preferred server host key types"
@@ -609,7 +619,7 @@ msgstr ""
 
 #: src/remmina.c:119
 msgid "Encrypt a password"
-msgstr ""
+msgstr "وشەی نهێنی بڕەمزێنە"
 
 #: src/remmina_icon.c:139
 msgid "Open Main Window"
@@ -1067,7 +1077,7 @@ msgstr "نەتوانرا کلیلی گشتی بەدەستبهێنرێت. %s"
 #: src/remmina_ssh.c:525
 #, c-format
 msgid "Could not fetch checksum for public SSH key. %s"
-msgstr ""
+msgstr "نەیتوانی چێکسوم بۆ کلیلی گشتی SSH بهاێت. %s"
 
 #: src/remmina_ssh.c:538
 msgid "The server is unknown. The public key fingerprint is:"
@@ -1083,6 +1093,9 @@ msgid ""
 "under attack,\n"
 "or the administrator has changed the key. The new public key fingerprint is:"
 msgstr ""
+"ئاگاداری: ڕاژەکارەکە کلیلی گشتی گۆڕیوە. ئەمە مانای ئەوەیە یان تۆ لەژێر "
+"هێرشدایت\n"
+"یان بەڕێوەبەر کلیلەکەی گۆڕیوە. پەنجەمۆری کلیلی گشتی نوێ ئەوەیە:"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:568
@@ -1255,6 +1268,17 @@ msgid ""
 "connecting.\n"
 "</big></tt>"
 msgstr ""
+"<tt><big>• فەرمان لە PATH %h\n"
+"• /path/to/foo-options %h %u\n"
+"• %h جێگرەوە کراوە لەگەڵ ناوی سێرڤەرەکە\n"
+"• %t جێگرەوە کراوە لەگەڵ ناوی سێرڤەری SSH\n"
+"• %u جێگرەوەکراوە لەگەڵ ناوی بەکارهێنەر\n"
+"• %U جێگرەوەکراوە لەگەڵ ناوی بەکارهێنەری SSH\n"
+"• %p جێگرەوەکراوە لەگەڵ ناوی پرۆفایلی ڕێمینا\n"
+"• %g جێگرەوە کراوە لەگەڵ ناوی گروپی پرۆفایلی ڕێمینا\n"
+"• %d جێگرەوە کراوە لەگەڵ کاتی بەروار بە فۆرماتی iso8601\n"
+"ڕامەدە لە پاشبنەما ئەگەر دەتەوێت فەرمانەکە جێبەجێ بکرێت پێش پەیوەندیکردن.\n"
+"</big></tt>"
 
 #: src/remmina_file_editor.c:95
 msgid ""
@@ -1807,7 +1831,7 @@ msgstr "ڕێپێدانەکانی RDP بنووسە"
 
 #: plugins/rdp/rdp_plugin.c:742
 msgid "Enter RDP gateway authentication credentials"
-msgstr ""
+msgstr "بڕواپێدانەکانی ڕەسەنایەتی سەلماندنی دەروازە (RDP) تێبنووسە"
 
 #: plugins/rdp/rdp_plugin.c:1730
 #, c-format
@@ -1815,6 +1839,8 @@ msgid ""
 "Could not access the RDP server \"%s\".\n"
 "Account locked out."
 msgstr ""
+"نەیتوانی دەستگەیشتن بە سێرڤەری RDP \"%s\".\n"
+"ئەژمێرەکە داخراوە"
 
 #: plugins/rdp/rdp_plugin.c:1737
 #, c-format
@@ -1886,6 +1912,8 @@ msgid ""
 "Could not connect to the RDP server \"%s\" via TLS. Check that client and "
 "server support a common TLS version."
 msgstr ""
+"نەیتوانی پەیوەندی بکات بە سێرڤەری RDP \"%s\" لە ڕێگەی TLS. پشکنینی ئەو کڕیار "
+"و سێرڤەرە پشتگیری ڤێرژنی TLS ی هاوبەش دەکات."
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:1789
@@ -1926,6 +1954,8 @@ msgid ""
 "The Remote Desktop Gateway \"%s\" denied the user \"%s\\%s\" access due to "
 "policy."
 msgstr ""
+"دەروازەی دێسکتۆپی دوور \"%s\" بەکارهێنەرەکەی ڕەت کردەوە \"%s\\%s\" بەهۆی "
+"سیاسەتەوە."
 
 #: plugins/rdp/rdp_plugin.c:1825
 #, c-format
@@ -1934,7 +1964,7 @@ msgstr "ناتوانرێت پەیوەندی بکرێت بە RDP ڕاژەی “%s
 
 #: plugins/rdp/rdp_plugin.c:2148
 msgid "Automatic (32 bpp) (Server chooses its best format)"
-msgstr ""
+msgstr "خۆکار (32 bpp) (سێرڤەر باشترین فۆرماتی خۆی هەڵدەبژێرێت)"
 
 #: plugins/rdp/rdp_plugin.c:2149
 msgid "GFX AVC444 (32 bpp)"
@@ -1949,10 +1979,8 @@ msgid "GFX RFX (32 bpp)"
 msgstr "‫GFX RFX (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2152
-#, fuzzy
-#| msgid "GFX RFX (32 bpp)"
 msgid "GFX RFX Progressive (32 bpp)"
-msgstr "‫GFX RFX (32 bpp)"
+msgstr "GFX RFX پێشکەوتنخواز (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2153
 msgid "RemoteFX (32 bpp)"
@@ -2028,6 +2056,12 @@ msgid ""
 "  • >= 7065: Windows 8 and newer: SCardGetReaderIcon(),\n"
 "    SCardGetDeviceTypeId()"
 msgstr ""
+"i.a. بەکارهاتووە لەلایەن خزمەتگوزاریەکانی تێرمیناڵ لە کەناڵی سمارت کارد بۆ "
+"جیاکردنەوەی تواناکانی کڕیار:\n"
+"  • < 4034: Windows XP base smart card functions • 4034-7064: Windows Vista/"
+"7: SCardReadCache(), SCardWriteCache(), SCardGetTransmitCount() • > = 7065: "
+"Windows 8 and newer: SCardGetReaderIcon(),\n"
+"    SCardGetDeviceTypeId()"
 
 #: plugins/rdp/rdp_plugin.c:2228
 msgid ""
@@ -2038,6 +2072,12 @@ msgid ""
 "  • sys:oss,dev:1,format:1\n"
 "  • sys:alsa"
 msgstr ""
+"هەڵبژاردنەکان بۆ ئاراستەکردنەوەی تێکردنی دەنگ:\n"
+"  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
+"    [کەناڵ:<channel>] تێکردنی دەنگی (مایکرۆفۆن)\n"
+"  • فۆرمات:1\n"
+"  • sys:oss,dev:1,format:1\n"
+"  • sys:alsa"
 
 #: plugins/rdp/rdp_plugin.c:2236
 msgid ""
@@ -2046,6 +2086,10 @@ msgid ""
 "  • auto\n"
 "  • id:054c:0268#4669:6e6b,addr:04:0c"
 msgstr ""
+"هەڵبژاردنەکان بۆ ئاراستەکردنەوەی ئامێری USB:\n"
+"  • [dbg,][id:<vid>:<pid>#...][addr:<bus>:<addr>#...][auto]\n"
+"  • خۆکار\n"
+"  • ناسنامە:054c:0268#4669:6e6b,addr:04:0c"
 
 #: plugins/rdp/rdp_plugin.c:2242
 msgid ""
@@ -2054,6 +2098,10 @@ msgid ""
 "connection.\n"
 "The highest possible value is 600000 ms (10 minutes)\n"
 msgstr ""
+"ڕێکبەندەکانی پێشکەوتوو بۆ لینکی شاردنەوی بەرز:\n"
+"ڕێککردنی کاتی پەیوەندیکردن، بەکاربێنە ئەگەر تووشی شکستی کاتی دەرچوون بووی "
+"لەگەڵ گرێدانەکەت.\n"
+"بەرزترین بەهای گونجاو 600000 ms (10 خولەک)\n"
 
 #: plugins/rdp/rdp_plugin.c:2280
 msgid "Security protocol negotiation"
@@ -2223,7 +2271,7 @@ msgstr "ڕێڕەوی خێرا بکوژێنەوە"
 
 #: plugins/rdp/rdp_plugin.c:2317
 msgid "Server detection using Remote Desktop Gateway"
-msgstr ""
+msgstr "دۆزینەوەی سێرڤەر بە بەکارهێنانی دەروازەی دێسکتۆپ لە دوورەوە"
 
 #: plugins/rdp/rdp_plugin.c:2319
 msgid "Use system proxy settings"
@@ -2235,7 +2283,7 @@ msgstr "دووبارە پەیوەندیکردنەوە ناچالاک بکە"
 
 #: plugins/rdp/rdp_plugin.c:2322
 msgid "Relax order checks"
-msgstr ""
+msgstr "پشکنینی داواکاری پشوو"
 
 #: plugins/rdp/rdp_plugin.c:2323
 msgid "Glyph cache"
@@ -2422,6 +2470,13 @@ msgid ""
 "Some Remmina functions need to be set up to work properly.\n"
 "</span>\n"
 msgstr ""
+"<big><b> گورزەی سناپ </b></big>\n"
+"\n"
+"<span>\n"
+"Remmina کاردەکات لەسەر سیستەمەکەت وەک گورزەی سناپ.\n"
+"هەندێک لە کارەکانی ڕێمینا پێویستە بۆ کارکردن بە شێوەیەکی دروست ئامادە بکرێت."
+"\n"
+"</span>\n"
 
 #: data/ui/remmina_snap_info_dialog.glade:120
 msgid ""
@@ -2430,6 +2485,10 @@ msgid ""
 "the appropriate permissions to Remmina. As an alternative you can enter the "
 "following commands in a terminal window:"
 msgstr ""
+"بۆ بەتواناکردنی دەستگەیشتن بە هەندێک تایبەتمەندی گرنگ، وەک پاشەکەوتکردنی "
+"نهێنوشە لە کلیلی و هاوبەشیکردنی چاپکەر RDP، تکایە ناوەندی سۆفتوێرەکەت بکەوە "
+"و ڕێپێدانی گونجاو بە ڕێممینا بدە. وەک جێگرەوەیەک دەتوانیت ئەم داواکاریانە "
+"داخڵ بکەیت لە پەنجەرەی تێرمیناڵ:"
 
 #: data/ui/remmina_snap_info_dialog.glade:166
 msgid "<big>Permissions</big>"
@@ -2441,10 +2500,13 @@ msgid ""
 "profiles are saved inside the Snap file system by default. You can change "
 "the location in the Remmina preferences."
 msgstr ""
+"لە کاتی بەڕێوەبردنی گورزەکانی Snap کە لە باقی سیستەمەکە سنووردارن، "
+"پرۆفایلەکانی Remmina لە ناو سیستەمی فایلی Snap بە شێوەی بنەڕەت هەڵدەگیرێت. "
+"دەتوانی شوێنەکە بگۆڕیت لە پەسەندکراوەکانی ڕێمینا."
 
 #: data/ui/remmina_snap_info_dialog.glade:221
 msgid "Change where Remmina profiles are stored"
-msgstr ""
+msgstr "گۆڕینی ئەو شوێنەی پرۆفایلەکانی ڕێمینا خەزن کراون"
 
 #: data/ui/remmina_snap_info_dialog.glade:260
 msgid "<big>Snap settings</big>"
@@ -2522,7 +2584,7 @@ msgstr "پرۆتۆکۆل هەڵبژێرە بۆ ئەوەی بەکاربێت بۆ 
 
 #: data/ui/remmina_main.glade:193
 msgid "Search string or server name/IP address for “Quick Connect”"
-msgstr ""
+msgstr "بگەڕێ لە زنجیرە یان ناوی سێرڤەر/ناونیشانی IP بۆ \"پەیوەندی خێرا\""
 
 #: data/ui/remmina_main.glade:197 data/ui/remmina_main.glade:199
 msgid "Server name or IP address"
@@ -2869,6 +2931,12 @@ msgid ""
 "\n"
 "\n"
 msgstr ""
+"%G ناوی گروپ (بە شێوەیەکی خۆکار دەگۆڕدرێت بۆ -\n"
+"%P ناوی پرۆتۆکۆل\n"
+"%N ناوی پەیوەندی\n"
+"%h ناوی خانەخوێ/IP\n"
+"\n"
+"\n"
 
 #: data/ui/remmina_preferences.glade:469
 msgid "Only save generated screenshots, don't copy them to clipboard."
@@ -3030,7 +3098,7 @@ msgstr "مەرجی دەگمەن یان ئاگادارکردنەوە"
 
 #: data/ui/remmina_preferences.glade:1303
 msgid "API-accessible entrypoints"
-msgstr ""
+msgstr "API-چوونەژوورەوەی بەردەستە"
 
 #: data/ui/remmina_preferences.glade:1304
 msgid "Lower level protocol info, packet level"
@@ -3059,6 +3127,8 @@ msgstr "چرکەی نێوان هەر پشکنینێکی زیندوو(کارا)."
 msgid ""
 "Number of keepalive probes sent via TCP connection before it is dropped."
 msgstr ""
+"ژمارەی پشکنەری زیندوو کە لە ڕێگەی پەیوەندی TCP ەوە دەنێردرێن پێش ئەوەی "
+"دابەزێتەوە."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
 #: data/ui/remmina_preferences.glade:1436
@@ -3076,7 +3146,7 @@ msgstr "هەڵبژاردەکانی SSH"
 #: data/ui/remmina_preferences.glade:1494
 #: data/ui/remmina_preferences.glade:1510
 msgid "Use secret key authentication for some widgets"
-msgstr ""
+msgstr "سەلماندنی کلیلە نهێنیەکان بەکاربهێنە بۆ هەندێک ویجیت"
 
 #: data/ui/remmina_preferences.glade:1516
 msgid "Use master password"
@@ -3108,7 +3178,7 @@ msgstr "جۆرەپیتی تێڕمیناڵ"
 
 #: data/ui/remmina_preferences.glade:1680
 msgid "Scrollback lines"
-msgstr ""
+msgstr "هێڵەکانی سکرۆڵباک"
 
 #: data/ui/remmina_preferences.glade:1746
 msgid "Shortcut for copying to clipboard"
