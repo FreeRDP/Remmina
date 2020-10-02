@@ -1081,9 +1081,11 @@ static gboolean remmina_main_quickconnect(void)
 	/* check if server is an IP address and trim whitespace if so */
 	server_trimmed = g_strdup(server);
 	g_strstrip(server_trimmed);
-
-	if (g_hostname_is_ip_address(server_trimmed))
-		g_stpcpy(server, server_trimmed);
+	gchar **strings = g_strsplit(server_trimmed, ":", 2);
+	if (strings[0]!=NULL) {
+		if (g_hostname_is_ip_address(strings[0]))
+			g_stpcpy(server, server_trimmed);
+	}
 
 	remmina_file_set_string(remminafile, "sound", "off");
 	remmina_file_set_string(remminafile, "server", server);
