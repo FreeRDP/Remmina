@@ -44,6 +44,7 @@ ubuntu:devel:
   stage: build
   before_script:
     - apt-get update -qq
+    - apt-get install -y -qq libpcre2-8-0 libpcre2-dev
 
   script:
     - mkdir $BUILD_FOLDER
@@ -60,10 +61,11 @@ ubuntu:devel:
 appimage:build:
   # image: ubuntu:devel
   # stage: cross_environment
-  image: registry.gitlab.com/remmina/remmina/ubuntu:16.04
+  image: registry.gitlab.com/remmina/remmina/ubuntu:18.04
   stage: build
   before_script:
     - apt-get update -qq
+    - apt-get install -y -qq libpcre2-8-0 libpcre2-dev wget
 
   script:
     - mkdir $BUILD_FOLDER
@@ -93,8 +95,6 @@ appimage:build:
     expire_in: 7 days
   only:
     refs:
-    - merge_requests
-    - tags
     - web
     - schedules
 

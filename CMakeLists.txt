@@ -48,6 +48,7 @@ include(FindOptionalPackage)
 include(ConfigOptions)
 include(GtkUpdateIconCache)
 include(CheckHasModule)
+include(FindPCRE2)
 
 if(NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE "Release")
