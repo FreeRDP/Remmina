@@ -222,6 +222,12 @@ if(GTK3_FOUND)
 	endif()
 endif()
 
+include(FindPCRE2)
+if (NOT PCRE2_FOUND)
+    message(FATAL_ERROR "require pcre2")
+endif ()
+include_directories(${PCRE2_INCLUDE_DIRS})
+
 add_subdirectory(external_tools)
 
 install(TARGETS remmina DESTINATION ${CMAKE_INSTALL_BINDIR})

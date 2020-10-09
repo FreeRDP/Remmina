@@ -43,6 +43,8 @@
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
 #include <gio/gio.h>
+#include <glib-object.h>
+#include <gobject/gvaluecollector.h>
 #include <vte/vte.h>
 #include <locale.h>
 #include <langinfo.h>
@@ -55,11 +57,16 @@
 #include "remmina_ssh_plugin.h"
 #include "remmina_masterthread_exec.h"
 
+#define PCRE2_CODE_UNIT_WIDTH 8
+#include <pcre2.h>
+
+
 #define REMMINA_PLUGIN_SSH_FEATURE_TOOL_COPY  1
 #define REMMINA_PLUGIN_SSH_FEATURE_TOOL_PASTE 2
 #define REMMINA_PLUGIN_SSH_FEATURE_TOOL_SELECT_ALL 3
 #define REMMINA_PLUGIN_SSH_FEATURE_TOOL_INCREASE_FONT 4
 #define REMMINA_PLUGIN_SSH_FEATURE_TOOL_DECREASE_FONT 5
+#define REMMINA_PLUGIN_SSH_FEATURE_TOOL_SEARCH 6
 
 #define GET_PLUGIN_DATA(gp) (RemminaPluginSshData *)g_object_get_data(G_OBJECT(gp), "plugin-data");
 
@@ -200,6 +207,29 @@ static struct {
 
 
 /** The SSH plugin implementation */
+typedef struct _RemminaSshSearch {
+        GtkWidget* parent;
+
+	GtkBuilder* builder;
+	GtkWidget* window;
+        GtkWidget* search_entry;
+        GtkWidget* search_prev_button;
+        GtkWidget* search_next_button;
+        GtkWidget* close_button;
+        GtkToggleButton* match_case_checkbutton;
+        GtkToggleButton* entire_word_checkbutton;
+        GtkToggleButton* regex_checkbutton;
+        GtkToggleButton* wrap_around_checkbutton;
+        GtkWidget* reveal_button;
+        GtkWidget* revealer;
+
+        //VteTerminal *terminal;
+        gboolean regex_caseless;
+        gboolean has_regex;
+        gchar* regex_pattern;
+
+} RemminaSshSearch;
+
 typedef struct _RemminaPluginSshData {
 	RemminaSSHShell *	shell;
 	GFile *			vte_session_file;
@@ -208,8 +238,12 @@ typedef struct _RemminaPluginSshData {
 	const GdkRGBA *		palette;
 
 	pthread_t		thread;
+
+	RemminaSshSearch *  search_widget;
 } RemminaPluginSshData;
 
+
+#define GET_OBJECT(object_name) gtk_builder_get_object(search_widget->builder, object_name)
 
 static RemminaPluginService *remmina_plugin_service = NULL;
 
@@ -343,12 +377,6 @@ void remmina_plugin_ssh_vte_terminal_set_encoding_and_pty(VteTerminal *terminal,
 
 	setlocale(LC_ALL, "");
 	if (codeset && codeset[0] != '\0') {
-#if VTE_CHECK_VERSION(0, 38, 0)
-		vte_terminal_set_encoding(terminal, codeset, NULL);
-#else
-		vte_terminal_set_emulation(terminal, "xterm");
-		vte_terminal_set_encoding(terminal, codeset);
-#endif
 	}
 
 	vte_terminal_set_backspace_binding(terminal, VTE_ERASE_ASCII_DELETE);
@@ -504,6 +532,206 @@ static void remmina_ssh_keystroke(RemminaProtocolWidget *gp, const guint keystro
 	return;
 }
 
+
+/* regex */
+
+static void jit_regex(VteRegex* regex, char const* pattern)
+{
+	TRACE_CALL(__func__);
+        GError *error;
+        if (!vte_regex_jit(regex, PCRE2_JIT_COMPLETE, &error) ||
+            !vte_regex_jit(regex, PCRE2_JIT_PARTIAL_SOFT, &error)) {
+                if (!g_error_matches(error, VTE_REGEX_ERROR, -45 /* PCRE2_ERROR_JIT_BADOPTION: JIT not supported */))
+                        REMMINA_DEBUG("JITing regex \"%s\" failed: %s\n", pattern, error->message);
+        }
+}
+
+static VteRegex* compile_regex_for_search(char const* pattern, gboolean caseless, GError** error)
+{
+	TRACE_CALL(__func__);
+        uint32_t flags = PCRE2_UTF | PCRE2_NO_UTF_CHECK | PCRE2_MULTILINE;
+        if (caseless)
+                flags |= PCRE2_CASELESS;
+
+        VteRegex *regex = vte_regex_new_for_search(pattern, strlen(pattern), flags, error);
+        if (regex != NULL)
+                jit_regex(regex, pattern);
+
+        return regex;
+}
+
+static void
+remmina_search_widget_update_sensitivity(RemminaSshSearch* search_widget)
+{
+	TRACE_CALL(__func__);
+        gboolean can_search = search_widget->has_regex;
+
+        gtk_widget_set_sensitive(search_widget->search_next_button, can_search);
+        gtk_widget_set_sensitive(search_widget->search_prev_button, can_search);
+}
+
+static void
+remmina_search_widget_update_regex(RemminaPluginSshData* gpdata)
+{
+	TRACE_CALL(__func__);
+	GError *error = NULL;
+
+	RemminaSshSearch *search_widget = gpdata->search_widget;
+        char const* search_text = gtk_entry_get_text(GTK_ENTRY(search_widget->search_entry));
+        gboolean caseless = gtk_toggle_button_get_active(search_widget->match_case_checkbutton) == FALSE;
+
+        char* pattern;
+        if (gtk_toggle_button_get_active(search_widget->regex_checkbutton))
+                pattern = g_strdup(search_text);
+        else
+                pattern = g_regex_escape_string(search_text, -1);
+
+        if (gtk_toggle_button_get_active(search_widget->regex_checkbutton)) {
+                char* tmp = g_strdup_printf("\\b%s\\b", pattern);
+                g_free(pattern);
+                pattern = tmp;
+        }
+
+        if (caseless == search_widget->regex_caseless &&
+            g_strcmp0(pattern, search_widget->regex_pattern) == 0)
+                return;
+
+        search_widget->regex_caseless = caseless;
+        g_free(search_widget->regex_pattern);
+        search_widget->regex_pattern = NULL;
+
+        if (search_text[0] != '\0') {
+		REMMINA_DEBUG("Search text is: %s", search_text);
+                VteRegex *regex = compile_regex_for_search(pattern, caseless, &error);
+                vte_terminal_search_set_regex(VTE_TERMINAL(gpdata->vte), regex, 0);
+                if (regex != NULL)
+                        vte_regex_unref(regex);
+
+                if (!error) {
+                        search_widget->has_regex = TRUE;
+                        search_widget->regex_pattern = pattern; /* adopt */
+                        pattern = NULL; /* adopted */
+                        gtk_widget_set_tooltip_text(search_widget->search_entry, NULL);
+                } else {
+                        search_widget->has_regex = FALSE;
+			REMMINA_DEBUG ("Regex not set, cannot search");
+                        gtk_widget_set_tooltip_text(search_widget->search_entry, error->message);
+                }
+        }
+
+        g_free(pattern);
+        g_free(error);
+
+        remmina_search_widget_update_sensitivity(search_widget);
+}
+
+static void
+remmina_search_widget_wrap_around_toggled(GtkToggleButton* button, RemminaPluginSshData* gpdata)
+{
+	TRACE_CALL(__func__);
+
+        vte_terminal_search_set_wrap_around(VTE_TERMINAL(gpdata->vte), gtk_toggle_button_get_active(button));
+}
+
+static void
+remmina_search_widget_search_forward(RemminaPluginSshData* gpdata)
+{
+	TRACE_CALL(__func__);
+
+	RemminaSshSearch *search_sidget = gpdata->search_widget;
+        if (!search_sidget->has_regex)
+                return;
+        vte_terminal_search_find_next(VTE_TERMINAL(gpdata->vte));
+}
+
+static void
+remmina_search_widget_search_backward(RemminaPluginSshData* gpdata)
+{
+	TRACE_CALL(__func__);
+
+	RemminaSshSearch *search_sidget = gpdata->search_widget;
+        if (!search_sidget->has_regex)
+                return;
+        vte_terminal_search_find_previous(VTE_TERMINAL(gpdata->vte));
+}
+
+GtkWidget * remmina_plugin_pop_search_new (GtkWidget *relative_to, RemminaProtocolWidget *gp)
+{
+	TRACE_CALL(__func__);
+	RemminaPluginSshData *gpdata = GET_PLUGIN_DATA(gp);
+
+	gpdata->search_widget = g_new0(RemminaSshSearch, 1);
+	RemminaSshSearch *search_widget = gpdata->search_widget;
+
+        search_widget->regex_caseless = FALSE;
+        search_widget->has_regex = FALSE;
+        search_widget->regex_pattern = NULL;
+
+	search_widget->builder = remmina_public_gtk_builder_new_from_file("remmina_search.glade");
+	search_widget->window = GTK_WIDGET(GET_OBJECT("RemminaSearchWidget"));
+        search_widget->search_entry = GTK_WIDGET(GET_OBJECT("search_entry"));
+        search_widget->search_prev_button = GTK_WIDGET(GET_OBJECT("search_prev_button"));
+        search_widget->search_next_button = GTK_WIDGET(GET_OBJECT("search_next_button"));
+        search_widget->close_button = GTK_WIDGET(GET_OBJECT("close_button"));
+        search_widget->match_case_checkbutton = GTK_TOGGLE_BUTTON(GET_OBJECT("match_case_checkbutton"));
+        search_widget->entire_word_checkbutton = GTK_TOGGLE_BUTTON(GET_OBJECT("entire_word_checkbutton"));
+        search_widget->regex_checkbutton = GTK_TOGGLE_BUTTON(GET_OBJECT("regex_checkbutton"));
+        search_widget->wrap_around_checkbutton = GTK_TOGGLE_BUTTON(GET_OBJECT("wrap_around_checkbutton"));
+        search_widget->reveal_button = GTK_WIDGET(GET_OBJECT("reveal_button"));
+        search_widget->revealer = GTK_WIDGET(GET_OBJECT("revealer"));
+
+	gtk_widget_set_can_default (search_widget->search_next_button, TRUE);
+	gtk_widget_grab_default (search_widget->search_next_button);
+
+	gtk_entry_set_activates_default (GTK_ENTRY(search_widget->search_entry), TRUE);
+
+	/* Connect signals */
+	gtk_builder_connect_signals(search_widget->builder, NULL);
+
+        g_signal_connect_swapped(search_widget->close_button, "clicked", G_CALLBACK(gtk_widget_destroy), GTK_WIDGET(search_widget->window));
+
+        g_object_bind_property(search_widget->reveal_button, "active",
+                               search_widget->revealer, "reveal-child",
+                               G_BINDING_DEFAULT | G_BINDING_SYNC_CREATE);
+
+        g_signal_connect_swapped(search_widget->search_entry, "next-match", G_CALLBACK(remmina_search_widget_search_forward), gpdata);
+        g_signal_connect_swapped(search_widget->search_entry, "previous-match", G_CALLBACK(remmina_search_widget_search_backward), gpdata);
+        g_signal_connect_swapped(search_widget->search_entry, "search-changed", G_CALLBACK(remmina_search_widget_update_regex), gpdata);
+
+        g_signal_connect_swapped(search_widget->search_next_button,"clicked", G_CALLBACK(remmina_search_widget_search_forward), gpdata);
+        g_signal_connect_swapped(search_widget->search_prev_button,"clicked", G_CALLBACK(remmina_search_widget_search_backward), gpdata);
+
+        g_signal_connect_swapped(search_widget->match_case_checkbutton,"toggled", G_CALLBACK(remmina_search_widget_update_regex), gpdata);
+        g_signal_connect_swapped(search_widget->entire_word_checkbutton,"toggled", G_CALLBACK(remmina_search_widget_update_regex), gpdata);
+        g_signal_connect_swapped(search_widget->regex_checkbutton,"toggled", G_CALLBACK(remmina_search_widget_update_regex), gpdata);
+        g_signal_connect_swapped(search_widget->match_case_checkbutton, "toggled", G_CALLBACK(remmina_search_widget_update_regex), gpdata);
+
+        g_signal_connect(search_widget->wrap_around_checkbutton, "toggled", G_CALLBACK(remmina_search_widget_wrap_around_toggled), gpdata);
+
+        remmina_search_widget_update_sensitivity(search_widget);
+	return search_widget->window;
+
+}
+
+void remmina_plugin_pop_search (GtkMenuItem *menuitem, RemminaProtocolWidget *gp)
+{
+	TRACE_CALL(__func__);
+	RemminaPluginSshData *gpdata = GET_PLUGIN_DATA(gp);
+
+	GtkWindow *parent = NULL;
+
+	REMMINA_DEBUG ("Before popover");
+	GtkWidget *window = remmina_plugin_pop_search_new (gpdata->vte, gp);
+	GtkWidget *toplevel = gtk_widget_get_toplevel (gpdata->vte);
+	if (GTK_IS_WINDOW (toplevel)) {
+		parent = GTK_WINDOW(toplevel);
+		gtk_window_set_transient_for (GTK_WINDOW(window), parent);
+		gtk_window_set_position (GTK_WINDOW(window), GTK_WIN_POS_CENTER_ON_PARENT);
+	}
+	gtk_widget_show(window);
+	REMMINA_DEBUG ("After popover");
+}
+
 gboolean
 remmina_ssh_plugin_popup_menu(GtkWidget *widget, GdkEvent *event, GtkWidget *menu)
 {
@@ -546,6 +774,7 @@ void remmina_plugin_ssh_popup_ui(RemminaProtocolWidget *gp)
 	GtkWidget *save = gtk_menu_item_new_with_label(_("Save session to file"));
 	GtkWidget *font_incr = gtk_menu_item_new_with_label(_("Increase font size (host+Page Up)"));
 	GtkWidget *font_decr = gtk_menu_item_new_with_label(_("Decrease font size (host+Page Down)"));
+	GtkWidget *find_text = gtk_menu_item_new_with_label(_("Find text (host+G)"));
 
 	gtk_menu_shell_append(GTK_MENU_SHELL(menu), select_all);
 	gtk_menu_shell_append(GTK_MENU_SHELL(menu), copy);
@@ -553,6 +782,7 @@ void remmina_plugin_ssh_popup_ui(RemminaProtocolWidget *gp)
 	gtk_menu_shell_append(GTK_MENU_SHELL(menu), save);
 	gtk_menu_shell_append(GTK_MENU_SHELL(menu), font_incr);
 	gtk_menu_shell_append(GTK_MENU_SHELL(menu), font_decr);
+	gtk_menu_shell_append(GTK_MENU_SHELL(menu), find_text);
 
 	g_signal_connect(G_OBJECT(gpdata->vte), "button_press_event",
 			 G_CALLBACK(remmina_ssh_plugin_popup_menu), menu);
@@ -569,6 +799,8 @@ void remmina_plugin_ssh_popup_ui(RemminaProtocolWidget *gp)
 			 G_CALLBACK(remmina_plugin_ssh_vte_increase_font), gpdata->vte);
 	g_signal_connect(G_OBJECT(font_decr), "activate",
 			 G_CALLBACK(remmina_plugin_ssh_vte_decrease_font), gpdata->vte);
+	g_signal_connect(G_OBJECT(find_text), "activate",
+			 G_CALLBACK(remmina_plugin_pop_search), gp);
 
 	gtk_widget_show_all(menu);
 }
@@ -613,7 +845,7 @@ remmina_plugin_ssh_init(RemminaProtocolWidget *gp)
 	g_signal_connect(G_OBJECT(hbox), "focus-in-event", G_CALLBACK(remmina_plugin_ssh_on_focus_in), gp);
 
 	vte = vte_terminal_new();
-	gtk_widget_show(vte);
+	//gtk_widget_show(vte);
 	vte_terminal_set_size(VTE_TERMINAL(vte), 80, 25);
 	vte_terminal_set_scroll_on_keystroke(VTE_TERMINAL(vte), TRUE);
 #if !VTE_CHECK_VERSION(0, 38, 0)
@@ -836,6 +1068,7 @@ remmina_plugin_ssh_init(RemminaProtocolWidget *gp)
 	gpdata->vte_session_file = g_file_new_for_path(fp);
 
 	remmina_plugin_ssh_popup_ui(gp);
+	gtk_widget_show_all(hbox);
 }
 
 /**
@@ -957,6 +1190,8 @@ remmina_plugin_ssh_call_feature(RemminaProtocolWidget *gp, const RemminaProtocol
 	case REMMINA_PLUGIN_SSH_FEATURE_TOOL_DECREASE_FONT:
 		vte_terminal_set_font_scale(VTE_TERMINAL(gpdata->vte),
 				vte_terminal_get_font_scale(VTE_TERMINAL(gpdata->vte))-SCALE_FACTOR);
+	case REMMINA_PLUGIN_SSH_FEATURE_TOOL_SEARCH:
+			remmina_plugin_pop_search(NULL, gp);
 		return;
 	}
 }
@@ -1048,6 +1283,7 @@ static RemminaProtocolFeature remmina_plugin_ssh_features[] =
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_PLUGIN_SSH_FEATURE_TOOL_SELECT_ALL, N_("Select all"), N_("_Select all"), NULL },
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_PLUGIN_SSH_FEATURE_TOOL_INCREASE_FONT, N_("Increase font size"), N_("_Increase font size"), NULL },
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_PLUGIN_SSH_FEATURE_TOOL_DECREASE_FONT, N_("Decrease font size"), N_("_Decrease font size"), NULL },
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_PLUGIN_SSH_FEATURE_TOOL_SEARCH, N_("Find text"), N_("_Find text"), NULL },
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_END,  0,					  NULL,		    NULL,	       NULL }
 };
 
@@ -1255,6 +1491,7 @@ remmina_ssh_plugin_register(void)
 	remmina_plugin_ssh_features[2].opt3 = GUINT_TO_POINTER(remmina_pref.vte_shortcutkey_select_all);
 	remmina_plugin_ssh_features[3].opt3 = GUINT_TO_POINTER(remmina_pref.vte_shortcutkey_increase_font);
 	remmina_plugin_ssh_features[4].opt3 = GUINT_TO_POINTER(remmina_pref.vte_shortcutkey_decrease_font);
+	remmina_plugin_ssh_features[5].opt3 = GUINT_TO_POINTER(remmina_pref.vte_shortcutkey_search_text);
 
 	remmina_plugin_service = &remmina_plugin_manager_service;
 

@@ -646,6 +646,12 @@ void remmina_pref_init(void)
 	else
 		remmina_pref.vte_shortcutkey_decrease_font = GDK_KEY_Page_Down;
 
+	if (g_key_file_has_key(gkeyfile, "remmina_pref", "vte_shortcutkey_search_text", NULL))
+		remmina_pref.vte_shortcutkey_search_text = g_key_file_get_integer(gkeyfile, "remmina_pref", "vte_shortcutkey_search_text",
+										    NULL);
+	else
+		remmina_pref.vte_shortcutkey_search_text = GDK_KEY_g;
+
 
 	/* If we have a color scheme file, we switch to it, GIO will merge it in the
 	 * remmina.pref file */
