@@ -4,27 +4,27 @@ if not hasattr(sys, 'argv'):
     sys.argv = ['']
 
 import remmina
+import gi
+gi.require_version("Gtk", "3.0")
+from gi.repository import Gtk, GLib
+import psutil
 
-class HelloPlugin(remmina.Plugin):
+class HelloPlugin(remmina.ProtocolPlugin):
     def __init__(self):
-        self.type = remmina.PLUGIN_TYPE_PROTOCOL
-        self.name = "Hello"
-        self.description = "Just a Plugin saying hello :)"
-        self.version = "1.0"
-        self.appicon = ""
-        self.service = None
-        self.protocol_setting = None
+        super().__init__("Hello", "Just a Plugin saying hello :)", "1.0", "")
 
     def init(self, service):
         self.service = service
-        service.log_printf("[%s]: Plugin init\n" % self.name)
+        print("Init!")
+        self.show_gui()
+        super.init()
 
     def open_connection(self):
-        service.log_printf("[%s]: Plugin open connection\n" % self.name)
-
+        self.service.log_printf("[%s]: Plugin open connection\n" % self.name)
+        super.open_connection()
 
     def close_connection(self):
-        service.log_printf("[%s]: Plugin close connection\n" % self.name)
+        self.service.log_printf("[%s]: Plugin close connection\n" % self.name)
 
     def query_feature(self):
         pass
@@ -38,12 +38,18 @@ class HelloPlugin(remmina.Plugin):
     def get_plugin_screenshot(self):
         pass
 
-print("import gi")
-import gi
-gi.require_version("Gtk", "3.0")
-from gi.repository import Gtk
+    def show_gui(self):
+        self.window = Gtk.Window(title="Hello World")
+        self.lblMemUsage = Gtk.Label(label="CPU Usage: ")
+        self.window.add(self.lblMemUsage)
+        self.window.show_all()
+        self.window.connect("destroy", Gtk.main_quit)
+        GLib.timeout_add_seconds(1, self.threaded_mem_usage)
+        Gtk.main()
 
-window = Gtk.Window(title="Hello World")
-window.show()
-window.connect("destroy", Gtk.main_quit)
-Gtk.main()
+    def threaded_mem_usage(self):
+        self.lblMemUsage.set_text("CPU Usage: %s" % psutil.cpu_percent())
+        return True
+
+myPlugin = HelloPlugin()
+#myPlugin.show_gui()

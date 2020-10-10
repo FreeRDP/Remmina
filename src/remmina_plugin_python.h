@@ -41,5 +41,6 @@
 G_BEGIN_DECLS
 
 gboolean remmina_plugin_python_load(RemminaPluginService* service, const char* name);
+void remmina_plugin_python_init(void);
 
 G_END_DECLS

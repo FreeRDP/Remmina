@@ -320,7 +320,8 @@ void remmina_plugin_manager_init()
 		if ((ptr = strrchr(name, '.')) == NULL)
 			continue;
 		ptr++;
-		if (g_strcmp0(ptr, G_MODULE_SUFFIX) != 0 && g_strcmp0(ptr, "py"))
+		// TODO: Iterate plugin loaders to find out at runtime if we support it
+		if (g_strcmp0(ptr, G_MODULE_SUFFIX) != 0 && !remmina_plugin_manager_supported(ptr))
 			continue;
 		fullpath = g_strdup_printf(REMMINA_RUNTIME_PLUGINDIR "/%s", name);
 		remmina_plugin_manager_load_plugin(fullpath);
@@ -356,6 +357,21 @@ void remmina_plugin_manager_init()
 	}
 
 	g_slist_free(secret_plugins);
+}
+
+gboolean remmina_plugin_manager_supported(const char *filetype) {
+	TRACE_CALL(__func__);
+	RemminaPluginLoader *loader;
+	gint i;
+
+	for (i = 0; i < remmina_plugin_loaders->len; i++) {
+		loader = (RemminaPluginLoader*)g_ptr_array_index(remmina_plugin_loaders, i);
+		if (g_strcmp0(loader->filetype, filetype) == 0) {
+			g_print("Plugin type %s for %s is supported!\n", filetype, loader->filetype);
+			return TRUE;
+		}
+	}
+	return FALSE;
 }
 
 void remmina_plugin_manager_add_loader(char *filetype, RemminaPluginLoaderFunc func) {

@@ -75,7 +75,7 @@ PyMODINIT_FUNC remmina_plugin_python_module_initialize(void) {
             builtin = (PyTypeObject*)g_ptr_array_index(remmina_python_module_object_table, i);
             if (builtin) {
                 Py_INCREF(builtin);
-                if (PyModule_AddObject(module_instance, "Plugin", (PyObject*)builtin)) {
+                if (PyModule_AddObject(module_instance, "ProtocolPlugin", (PyObject*)builtin)) {
                     printf("%s: Error initializing\n", builtin->tp_name);
                     Py_INCREF(builtin);
                 }

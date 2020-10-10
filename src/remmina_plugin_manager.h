@@ -65,6 +65,7 @@ typedef struct {
     RemminaPluginLoaderFunc func;
 }  RemminaPluginLoader;
 
+gboolean remmina_plugin_manager_supported(const char *filetype);
 void remmina_plugin_manager_add_loader(char *filetype, RemminaPluginLoaderFunc func);
 
 G_END_DECLS
