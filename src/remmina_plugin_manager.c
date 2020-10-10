@@ -136,8 +136,8 @@ static gboolean remmina_plugin_manager_register_plugin(RemminaPlugin *plugin)
 {
 	TRACE_CALL(__func__);
 	if (plugin->type == REMMINA_PLUGIN_TYPE_SECRET) {
-		g_print("Remmina plugin %s (type=%s) has registered but not yet initialized/activated. "
-			"Initialization order is %d.\n", plugin->name,
+		g_print("Remmina plugin %s (type=%s) has been registered, but is not yet initialized/activated. "
+			"The initialization order is %d.\n", plugin->name,
 			_(remmina_plugin_type_name[plugin->type]),
 			((RemminaSecretPlugin*)plugin)->init_order);
 	}
@@ -260,13 +260,13 @@ static void remmina_plugin_manager_load_plugin(const gchar *name)
 	module = g_module_open(name, G_MODULE_BIND_LAZY | G_MODULE_BIND_LOCAL);
 
 	if (!module) {
-		g_print("Failed to load plugin: %s.\n", name);
+		g_print("Could not load plugin: %s.\n", name);
 		g_print("Error: %s\n", g_module_error());
 		return;
 	}
 
 	if (!g_module_symbol(module, "remmina_plugin_entry", (gpointer*)&entry)) {
-		g_print("Failed to locate plugin entry: %s.\n", name);
+		g_print("Could not locate plugin entry: %s.\n", name);
 		return;
 	}
 
@@ -307,7 +307,7 @@ void remmina_plugin_manager_init(void)
 	remmina_plugin_table = g_ptr_array_new();
 
 	if (!g_module_supported()) {
-		g_print("Dynamic loading of plugins is not supported in this platform!\n");
+		g_print("Dynamic loading of plugins is not supported on this platform!\n");
 		return;
 	}
 
@@ -345,7 +345,7 @@ void remmina_plugin_manager_init(void)
 	while(sple != NULL) {
 		sp = (RemminaSecretPlugin*)sple->data;
 		if (sp->init()) {
-			g_print("Secret plugin %s has been successfully initialized and will be your default secret plugin\n",
+			g_print("The %s secret plugin  has been initialized and it will be your default secret plugin\n",
 				sp->name);
 			remmina_secret_plugin = sp;
 			break;
