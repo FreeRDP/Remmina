@@ -53,11 +53,13 @@ G_BEGIN_DECLS
 #define REMMINA_PROTOCOL_WIDGET_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS((obj), REMMINA_TYPE_PROTOCOL_WIDGET, RemminaProtocolWidgetClass))
 
 typedef struct _RemminaProtocolWidgetPriv RemminaProtocolWidgetPriv;
+typedef struct _RemminaProtocolPlugin RemminaProtocolPlugin;
 
 struct _RemminaProtocolWidget {
 	GtkEventBox			event_box;
 	RemminaConnectionObject *	cnnobj;
 	RemminaProtocolWidgetPriv *	priv;
+	RemminaProtocolPlugin * plugin;
 };
 
 struct _RemminaProtocolWidgetClass {

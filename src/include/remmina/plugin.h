@@ -36,6 +36,7 @@
 
 #pragma once
 
+#include <stdarg.h>
 #include <remmina/types.h>
 #include "remmina/remmina_trace_calls.h"
 
@@ -58,6 +59,7 @@ typedef struct _RemminaPlugin {
 	const gchar *		version;
 } RemminaPlugin;
 
+typedef struct _RemminaProtocolPlugin _RemminaProtocolPlugin;
 typedef struct _RemminaProtocolPlugin {
 	RemminaPluginType		type;
 	const gchar *			name;

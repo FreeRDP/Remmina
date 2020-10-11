@@ -183,6 +183,7 @@ if(${CMAKE_C_COMPILER_ID} STREQUAL "Clang")
         endif()
     endif()
 endif()
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -w")
 
 check_include_files(sys/socket.h HAVE_SYS_SOCKET_H)
 check_include_files(arpa/inet.h HAVE_ARPA_INET_H)

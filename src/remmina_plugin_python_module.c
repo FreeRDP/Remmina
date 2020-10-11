@@ -12,14 +12,32 @@
 static GPtrArray* remmina_python_module_object_table = NULL;
 static GPtrArray* remmina_python_module_member_table = NULL;
 
+static PyObject* remmina_plugin_python_log_printf_wrapper(PyObject* self, PyObject* n) {
+    PyObject* fmt = NULL;
+    if (!PyArg_ParseTuple(n, "S", &fmt)) {
+        g_print("Failed to load.\n");
+        PyErr_Print();
+        return NULL;
+    }
+    
+    remmina_log_printf(fmt);
+
+    return NULL;
+}
+
+static PyMethodDef remmina_python_module_type_methods[] = {
+	{"log_print", (PyCFunction)remmina_plugin_python_log_printf_wrapper,  METH_VARARGS, NULL },
+    {NULL}  /* Sentinel */
+};
 
 static PyModuleDef remmina_python_module_type = {
     PyModuleDef_HEAD_INIT,
-    "remmina",
-    "Remmina API.",
-    -1,
-    NULL
+    .m_name = "remmina",
+    .m_doc = "Remmina API.",
+    .m_size = -1,
+    .m_methods = remmina_python_module_type_methods
 };
+
 
 /**
  * 
