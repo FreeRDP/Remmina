@@ -7,13 +7,14 @@
 # anonymous <noreply@weblate.org>, 2019.
 # 玉堂白鹤 <yjwork@qq.com>, 2020.
 # Antenore Gatta <antenore@simbiosi.org>, 2020.
+# Eric <spice2wolf@gmail.com>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-10-09 13:48+0000\n"
-"PO-Revision-Date: 2020-09-11 22:29+0000\n"
-"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"PO-Revision-Date: 2020-10-11 08:07+0000\n"
+"Last-Translator: Eric <spice2wolf@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "remmina/remmina/zh_Hans/>\n"
 "Language: zh_CN\n"
@@ -205,10 +206,8 @@ msgid "Decrease font size (host+Page Down)"
 msgstr "减小字体大小 (host+Page Down)"
 
 #: src/remmina_ssh_plugin.c:777
-#, fuzzy
-#| msgid "Paste (host+V)"
 msgid "Find text (host+G)"
-msgstr "粘贴 (host+V)"
+msgstr "寻找文本 (host+G)"
 
 #: src/remmina_ssh_plugin.c:1203 src/remmina_sftp_plugin.c:310
 #: src/remmina_file_editor.c:364 src/remmina_file_editor.c:371
@@ -537,14 +536,10 @@ msgstr "显示关于对话框"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:86
-#, fuzzy
-#| msgid ""
-#| "Connect to desktop described in file (.remmina or type supported by "
-#| "plugin)"
 msgid ""
 "Connect either to a desktop described in a file (.remmina or a filetype "
 "supported by a plugin) or a supported URI (RDP, VNC, SSH or SPICE)"
-msgstr "连接到文件描述的桌面（.remmina 或插件支持的类型）"
+msgstr "连接到文件(.remmina或插件支持的文件类型)描述的桌面，或支持的URI (RDP、VNC、SSH或SPICE)"
 
 #: src/remmina.c:86 src/remmina.c:88 src/remmina.c:90
 msgid "FILE"
@@ -552,10 +547,6 @@ msgstr "文件"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:88
-#, fuzzy
-#| msgid ""
-#| "Connect to desktop described in file (.remmina or type supported by "
-#| "plugin)"
 msgid ""
 "Connect to a desktop described in a file (.remmina or a type supported by a "
 "plugin)"
@@ -636,10 +627,8 @@ msgid "Set one or more profile settings, to be used with --update-profile"
 msgstr "设置一个或多个配置文件设置，用于 --update-profile"
 
 #: src/remmina.c:119
-#, fuzzy
-#| msgid "Enter VNC password"
 msgid "Encrypt a password"
-msgstr "输入 VNC 密码"
+msgstr "加密一个密码"
 
 #: src/remmina_icon.c:139
 msgid "Open Main Window"
@@ -1210,9 +1199,9 @@ msgstr "无法以非阻塞方式读取SSH通道。%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1532
-#, fuzzy, c-format
+#, c-format
 msgid "Could not send data to tunnel listening socket. %s"
-msgstr "读取隧道侦听套接字返回错误：%s"
+msgstr "无法发送数据到隧道监听套接字。%s"
 
 #: src/remmina_ssh.c:1634
 msgid "Assign a destination port."
@@ -1989,10 +1978,8 @@ msgid "GFX RFX (32 bpp)"
 msgstr "GFX RFX（32 bpp）"
 
 #: plugins/rdp/rdp_plugin.c:2152
-#, fuzzy
-#| msgid "GFX RFX (32 bpp)"
 msgid "GFX RFX Progressive (32 bpp)"
-msgstr "GFX RFX（32 bpp）"
+msgstr "GFX RFX Progressive (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2153
 msgid "RemoteFX (32 bpp)"
@@ -2039,28 +2026,24 @@ msgid "Automatic negotiation"
 msgstr "自动协商"
 
 #: plugins/rdp/rdp_plugin.c:2202
-#, fuzzy
 msgid "NLA protocol security"
-msgstr "协议标签"
+msgstr "NLA 协议安全"
 
 #: plugins/rdp/rdp_plugin.c:2203
-#, fuzzy
 msgid "TLS protocol security"
-msgstr "协议标签"
+msgstr "TLS协议安全"
 
 #: plugins/rdp/rdp_plugin.c:2204
-#, fuzzy
 msgid "RDP protocol security"
-msgstr "协议标签"
+msgstr "RDP协议安全"
 
 #: plugins/rdp/rdp_plugin.c:2205
 msgid "NLA extended protocol security"
 msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:2218
-#, fuzzy
 msgid "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 and newer)"
-msgstr "2600 (Windows XP),7601 (Windows Vista/7),9600 (Windows 8 更高版本)"
+msgstr "2600 (Windows XP),7601 (Windows Vista/7),9600 (Windows 8 及更高版本)"
 
 #: plugins/rdp/rdp_plugin.c:2221
 msgid ""
@@ -2108,8 +2091,6 @@ msgid "Gateway transport type"
 msgstr "网关传输类型"
 
 #: plugins/rdp/rdp_plugin.c:2282
-#, fuzzy
-#| msgid "SSH log level"
 msgid "FreeRDP log level"
 msgstr "FreeRDP 日志级别"
 
@@ -2499,20 +2480,16 @@ msgid ""
 msgstr ""
 
 #: data/ui/remmina_snap_info_dialog.glade:120
-#, fuzzy
 msgid ""
 "To enable access to some important features, like password saving in your "
 "keyring and RDP printer sharing, please open your software center and give "
 "the appropriate permissions to Remmina. As an alternative you can enter the "
 "following commands in a terminal window:"
 msgstr ""
-"似乎 Remmina 作为 SNAP 包运行在您的系统上。要启用对密钥环中的密码保存和 RDP "
-"打印机共享等重要功能的访问，请打开软件中心并为 Remmina 授予相应权限。您也可以"
-"在终端窗口中输入以下命令："
+"要访问一些重要的功能，如在您的密匙环保存密码和RDP打印机共享，请打开您的软件中心，并给予Remmina适当的权限。作为替代办法，您可以在终端窗口中输入以"
+"下命令:"
 
 #: data/ui/remmina_snap_info_dialog.glade:166
-#, fuzzy
-#| msgid "Permission"
 msgid "<big>Permissions</big>"
 msgstr "<big>权限</big>"
 
@@ -2528,10 +2505,8 @@ msgid "Change where Remmina profiles are stored"
 msgstr ""
 
 #: data/ui/remmina_snap_info_dialog.glade:260
-#, fuzzy
-#| msgid "<big>Take part</big>"
 msgid "<big>Snap settings</big>"
-msgstr "<big>参加</big>"
+msgstr "<big>Snap 设置</big>"
 
 #: data/ui/remmina_snap_info_dialog.glade:273
 msgid "Do not show this message again"
@@ -3141,13 +3116,10 @@ msgstr "丢弃连接之前 TCP 应发送的最大 keepalive 探测数。"
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
 #: data/ui/remmina_preferences.glade:1436
-#, fuzzy
 msgid ""
 "Amount of milliseconds to attempt acknowledging data before closing the "
 "corresponding TCP connection forcibly."
-msgstr ""
-"它指定在 TCP 强制关闭相应连接之前传输数据可能保持未确认的最长时间（以毫秒为单"
-"位）。"
+msgstr "强制关闭相应的TCP连接之前尝试确认数据的毫秒数。"
 
 #: data/ui/remmina_preferences.glade:1457
 msgid "SSH options"
@@ -3208,8 +3180,6 @@ msgstr "全选快捷键"
 #: data/ui/remmina_preferences.glade:2248
 #: data/ui/remmina_preferences.glade:2265
 #: data/ui/remmina_preferences.glade:2295
-#, fuzzy
-#| msgid "(Host key +)"
 msgid "(Host key+)"
 msgstr "(Host key+)"
 
