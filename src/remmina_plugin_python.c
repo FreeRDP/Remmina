@@ -17,8 +17,7 @@
 void remmina_plugin_python_init(void) {
     TRACE_CALL(__FUNC__);
     // Initialize Python environment
-    PyTypeObject* plugin_object = remmina_plugin_python_plugin_create();
-    remmina_plugin_python_module_register_object(plugin_object);
+    remmina_plugin_python_module_register_object(remmina_plugin_python_plugin_create());
     remmina_plugin_python_module_init();
 
     Py_Initialize();

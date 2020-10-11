@@ -37,3 +37,4 @@
 #pragma once
 
 PyTypeObject* remmina_plugin_python_plugin_create(void);
+PyTypeObject* remmina_plugin_manager_service_create(void);
