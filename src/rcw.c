@@ -4178,6 +4178,9 @@ GtkWidget *rcw_open_from_file_full(RemminaFile *remminafile, GCallback disconnec
 	return cnnobj->proto;
 }
 
+GtkWindow* rcw_get_gtkwindow(RemminaConnectionObject *cnnobj) { return &cnnobj->cnnwin->window; }
+GtkWidget* rcw_get_gtkviewport(RemminaConnectionObject *cnnobj) { return cnnobj->viewport; }
+
 void rcw_set_delete_confirm_mode(RemminaConnectionWindow *cnnwin, RemminaConnectionWindowOnDeleteConfirmMode mode)
 {
 	TRACE_CALL(__func__);

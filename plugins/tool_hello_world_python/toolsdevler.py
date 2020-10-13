@@ -9,22 +9,52 @@ gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, GLib
 import psutil
 
-class HelloPlugin(remmina.ProtocolPlugin):
+class HelloPlugin:
     def __init__(self):
-        super().__init__("Hello", "Just a Plugin saying hello :)", "1.0", "")
+        self.name = "Hello"
+        self.type = "protocol"
+        self.description = "Hello World!"
+        self.version  = "1.0"
+        self.icon_name = "remmina-tool"
+        self.icon_name_ssh = "remmina-tool"
+        self.btn = Gtk.Button(label="Hello!")
+        self.btn.connect("clicked", self.callback_add, "hello")
+        pass
 
-    def init(self, service):
-        self.service = service
+    def callback_add(self, widget, data):
+        print("Click :)")
+
+    def name(self):
+        return "Hello"
+
+    def init(self):
         print("Init!")
-        self.show_gui()
-        super.init()
+        return True
 
-    def open_connection(self):
-        self.service.log_printf("[%s]: Plugin open connection\n" % self.name)
-        super.open_connection()
 
-    def close_connection(self):
-        self.service.log_printf("[%s]: Plugin close connection\n" % self.name)
+    def open_connection(self, viewport):
+        print("open_connection!")
+        def foreach_child(child):
+            child.add(self.btn)
+            self.btn.show()
+        viewport.foreach(foreach_child)
+        print("Connected!")
+        
+        remmina.log_print("[%s]: Plugin open connection\n" % self.name)
+        return True
+
+    def draw(self, widget, cr, color):
+        cr.rectangle(0, 0, 100, 100)
+        cr.set_source_rgb(color[0], color[1], color[2])
+        cr.fill()
+        cr.queue_draw_area(0, 0, 100, 100)
+
+        return True
+
+    def close_connection(self, viewport):
+        print("close_connection!")
+        remmina.log_print("[%s]: Plugin close connection\n" % self.name)
+        return True
 
     def query_feature(self):
         pass
@@ -38,18 +68,5 @@ class HelloPlugin(remmina.ProtocolPlugin):
     def get_plugin_screenshot(self):
         pass
 
-    def show_gui(self):
-        self.window = Gtk.Window(title="Hello World")
-        self.lblMemUsage = Gtk.Label(label="CPU Usage: ")
-        self.window.add(self.lblMemUsage)
-        self.window.show_all()
-        self.window.connect("destroy", Gtk.main_quit)
-        GLib.timeout_add_seconds(1, self.threaded_mem_usage)
-        Gtk.main()
-
-    def threaded_mem_usage(self):
-        self.lblMemUsage.set_text("CPU Usage: %s" % psutil.cpu_percent())
-        return True
-
 myPlugin = HelloPlugin()
-#myPlugin.show_gui()
+remmina.register_plugin(myPlugin)

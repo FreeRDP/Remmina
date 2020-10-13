@@ -77,10 +77,14 @@ void rcw_open_from_file(RemminaFile *remminafile);
 gboolean rcw_delete(RemminaConnectionWindow *cnnwin);
 void rcw_set_delete_confirm_mode(RemminaConnectionWindow *cnnwin, RemminaConnectionWindowOnDeleteConfirmMode mode);
 GtkWidget *rcw_open_from_file_full(RemminaFile *remminafile, GCallback disconnect_cb, gpointer data, guint *handler);
+GtkWindow* rcw_get_gtkwindow(RemminaConnectionObject *cnnobj);
+GtkWidget* rcw_get_gtkviewport(RemminaConnectionObject *cnnobj);
 
 void rco_destroy_message_panel(RemminaConnectionObject *cnnobj, RemminaMessagePanel *mp);
 void rco_show_message_panel(RemminaConnectionObject *cnnobj, RemminaMessagePanel *mp);
 void rco_get_monitor_geometry(RemminaConnectionObject *cnnobj, GdkRectangle *sz);
+
+
 
 #define MESSAGE_PANEL_SPINNER 0x00000001
 #define MESSAGE_PANEL_OKBUTTON 0x00000002
