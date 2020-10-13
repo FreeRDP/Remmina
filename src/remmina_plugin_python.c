@@ -7,22 +7,23 @@
 
 #define PY_SSIZE_T_CLEAN
 #include <Python.h>
+#include "pygobject.h"
 #include "structmember.h"
 
 #include "remmina_plugin_python.h"
 #include "remmina_plugin_python_module.h"
-#include "remmina_plugin_python_plugin.h"
 
 
 void remmina_plugin_python_init(void) {
     TRACE_CALL(__FUNC__);
     // Initialize Python environment
-    remmina_plugin_python_module_register_object(remmina_plugin_python_plugin_create());
     remmina_plugin_python_module_init();
 
     Py_Initialize();
     PyRun_SimpleString("import sys");
     PyRun_SimpleString("sys.path.append('" REMMINA_RUNTIME_PLUGINDIR "')");
+
+    pygobject_init(-1, -1, -1);
 }
 
 int basename_no_ext(const char* in, char** out) {
