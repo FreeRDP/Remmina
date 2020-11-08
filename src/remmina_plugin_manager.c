@@ -53,6 +53,8 @@
 #include "remmina_widget_pool.h"
 #include "rcw.h"
 #include "remmina_plugin_manager.h"
+#include "remmina_plugin_native.h"
+#include "remmina_plugin_python.h"
 #include "remmina_public.h"
 #include "remmina_masterthread_exec.h"
 #include "remmina/remmina_trace_calls.h"
@@ -67,9 +69,6 @@ static RemminaSecretPlugin *remmina_secret_plugin = NULL;
 
 static const gchar *remmina_plugin_type_name[] =
 { N_("Protocol"), N_("Entry"), N_("File"), N_("Tool"), N_("Preference"), N_("Secret"), NULL };
-
-
-GPtrArray* remmina_plugin_loaders = NULL;
 
 static gint remmina_plugin_manager_compare_func(RemminaPlugin **a, RemminaPlugin **b)
 {
@@ -251,30 +250,24 @@ RemminaPluginService remmina_plugin_manager_service =
 	remmina_protocol_widget_get_profile_remote_height
 };
 
-typedef struct {
-	const gchar* filetype;
-	const gchar* name;
-} RemminaPluginLoaderArgs;
-
 const char *get_filename_ext(const char *filename) {
-    const char *dot = strrchr(filename, '.');
+	const char* last = strrchr(filename, '/');
+    const char *dot = strrchr(last, '.');
     if(!dot || dot == filename) return "";
     return dot + 1;
 }
 
-static void remmina_plugin_manager_use_loader(const RemminaPluginLoader* loader, const RemminaPluginLoaderArgs* args) {
-	if (g_str_equal(loader->filetype, args->filetype)) {
-		loader->func(&remmina_plugin_manager_service, args->name);
-	}
-}
-
-static void remmina_plugin_manager_load_plugin(char *name)
+static void remmina_plugin_manager_load_plugin(const gchar *name)
 {
 	const char* ext = get_filename_ext(name);
-	RemminaPluginLoaderArgs args;
-	args.filetype = ext;
-	args.name = name;
-	g_ptr_array_foreach(remmina_plugin_loaders, (GFunc)remmina_plugin_manager_use_loader, &args);
+
+	if (g_str_equal(G_MODULE_SUFFIX, ext)) {
+		remmina_plugin_native_load(&remmina_plugin_manager_service, name);
+	} else if (g_str_equal("py", ext)) {
+		remmina_plugin_python_load(&remmina_plugin_manager_service, name);
+	} else {
+		g_print("%s: Skip unsupported file type '%s'\n", name, ext);
+	}
 }
 
 static gint compare_secret_plugin_init_order(gconstpointer a, gconstpointer b)
@@ -321,7 +314,7 @@ void remmina_plugin_manager_init()
 			continue;
 		ptr++;
 		// TODO: Iterate plugin loaders to find out at runtime if we support it
-		if (g_strcmp0(ptr, G_MODULE_SUFFIX) != 0 && !remmina_plugin_manager_supported(ptr))
+		if (!remmina_plugin_manager_loader_supported(ptr))
 			continue;
 		fullpath = g_strdup_printf(REMMINA_RUNTIME_PLUGINDIR "/%s", name);
 		remmina_plugin_manager_load_plugin(fullpath);
@@ -359,29 +352,9 @@ void remmina_plugin_manager_init()
 	g_slist_free(secret_plugins);
 }
 
-gboolean remmina_plugin_manager_supported(const char *filetype) {
+gboolean remmina_plugin_manager_loader_supported(const char *filetype) {
 	TRACE_CALL(__func__);
-	RemminaPluginLoader *loader;
-	gint i;
-
-	for (i = 0; i < remmina_plugin_loaders->len; i++) {
-		loader = (RemminaPluginLoader*)g_ptr_array_index(remmina_plugin_loaders, i);
-		if (g_strcmp0(loader->filetype, filetype) == 0) {
-			g_print("Plugin type %s for %s is supported!\n", filetype, loader->filetype);
-			return TRUE;
-		}
-	}
-	return FALSE;
-}
-
-void remmina_plugin_manager_add_loader(char *filetype, RemminaPluginLoaderFunc func) {
-	if (!remmina_plugin_loaders)
-		remmina_plugin_loaders = g_ptr_array_new();
-
-	RemminaPluginLoader* loader = (RemminaPluginLoader*)malloc(sizeof(RemminaPluginLoader*));
-	loader->filetype = filetype;
-	loader->func = func;
-	g_ptr_array_add(remmina_plugin_loaders, loader);
+	return g_str_equal("py", filetype) || g_str_equal(G_MODULE_SUFFIX, filetype);
 }
 
 RemminaPlugin* remmina_plugin_manager_get_plugin(RemminaPluginType type, const gchar *name)
