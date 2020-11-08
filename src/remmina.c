@@ -339,9 +339,6 @@ int main(int argc, char *argv[])
 	/* Initialize some Remmina parts needed also on a local instance for correct handle-local-options */
 	remmina_pref_init();
 	remmina_file_manager_init();
-	
-	remmina_plugin_manager_add_loader("so", remmina_plugin_native_load);
-	remmina_plugin_manager_add_loader("py", remmina_plugin_python_load);
 
 	remmina_plugin_manager_init();
 	
