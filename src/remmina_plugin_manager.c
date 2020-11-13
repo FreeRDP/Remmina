@@ -57,7 +57,6 @@
 #include "remmina_masterthread_exec.h"
 #include "remmina/remmina_trace_calls.h"
 
-
 static GPtrArray* remmina_plugin_table = NULL;
 
 /* A GHashTable of GHashTables where to store the names of the encrypted settings */
