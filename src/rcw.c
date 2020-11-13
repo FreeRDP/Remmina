@@ -2064,7 +2064,7 @@ static void rcw_toolbar_screenshot(GtkWidget *widget, RemminaConnectionWindow *c
 	remmina_utils_string_replace_all(pngstr, "%M",
 					 g_strdup_printf("%d", g_date_time_get_minute(date)));
 	remmina_utils_string_replace_all(pngstr, "%S",
-					 g_strdup_printf("%f", g_date_time_get_seconds(date)));
+					 g_strdup_printf("%d", g_date_time_get_second(date)));
 	g_date_time_unref(date);
 	pngname = g_string_free(pngstr, FALSE);
 
@@ -3486,8 +3486,8 @@ static void rcw_create_overlay_ftb_overlay(RemminaConnectionWindow *cnnwin)
 	g_signal_connect(G_OBJECT(priv->overlay_ftb_overlay), "enter-notify-event", G_CALLBACK(rcw_floating_toolbar_on_enter), cnnwin);
 	g_signal_connect(G_OBJECT(priv->overlay_ftb_overlay), "scroll-event", G_CALLBACK(rcw_floating_toolbar_on_scroll), cnnwin);
 	gtk_widget_add_events(
-		GTK_WIDGET(priv->overlay_ftb_overlay), 
-		GDK_SCROLL_MASK 
+		GTK_WIDGET(priv->overlay_ftb_overlay),
+		GDK_SCROLL_MASK
 #if GTK_CHECK_VERSION(3, 4, 0)
 		| GDK_SMOOTH_SCROLL_MASK
 #endif

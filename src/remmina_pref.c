@@ -750,7 +750,7 @@ gboolean remmina_pref_save(void)
 	g_key_file_set_string(gkeyfile, "remmina_pref", "datadir_path", remmina_pref.datadir_path);
 	g_key_file_set_string(gkeyfile, "remmina_pref", "remmina_file_name", remmina_pref.remmina_file_name);
 	g_key_file_set_string(gkeyfile, "remmina_pref", "screenshot_path", remmina_pref.screenshot_path);
-	g_key_file_set_string(gkeyfile, "remmina_pref", "remmina_file_name", remmina_pref.remmina_file_name);
+	g_key_file_set_string(gkeyfile, "remmina_pref", "screenshot_name", remmina_pref.screenshot_name);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "deny_screenshot_clipboard", remmina_pref.deny_screenshot_clipboard);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "save_view_mode", remmina_pref.save_view_mode);
 #if SODIUM_VERSION_INT >= 90200
