@@ -100,7 +100,12 @@ gboolean remmina_plugin_python_load(RemminaPluginService* service, const char* n
     basename_no_ext(name, &filename);
     PyObject *plugin_name = PyUnicode_DecodeFSDefault(filename);
     free(filename);
-
+    
+    wchar_t* program_name = NULL;
+    Py_ssize_t len = PyUnicode_AsWideChar(plugin_name, program_name, 0);
+    program_name = malloc(sizeof(wchar_t)*len);
+    PyUnicode_AsWideChar(plugin_name, program_name, len);
+    PySys_SetArgv(1, &program_name);
     if (!PyImport_Import(plugin_name)) {
         g_print("Failed to load python plugin file: \"%s\"\n", name);
         PyErr_Print();

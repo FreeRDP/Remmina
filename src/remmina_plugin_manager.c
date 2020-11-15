@@ -310,7 +310,6 @@ void remmina_plugin_manager_init()
 		if ((ptr = strrchr(name, '.')) == NULL)
 			continue;
 		ptr++;
-		// TODO: Iterate plugin loaders to find out at runtime if we support it
 		if (!remmina_plugin_manager_loader_supported(ptr))
 			continue;
 		fullpath = g_strdup_printf(REMMINA_RUNTIME_PLUGINDIR "/%s", name);
