@@ -83,6 +83,8 @@ list(APPEND REMMINA_SRCS
 	"remmina_plugin_python.h"
 	"remmina_plugin_python_module.c"
 	"remmina_plugin_python_module.h"
+	"remmina_plugin_python_remmina.c"
+	"remmina_plugin_python_remmina.h"
 	"remmina_ext_exec.c"
 	"remmina_ext_exec.h"
 	"remmina_pref.c"
