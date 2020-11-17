@@ -746,54 +746,8 @@ static PyObject* remmina_protocol_widget_get_profile_remote_width_wrapper(PyObje
  * by the PyModuleDef (describing the module) instance below.
  */
 static PyMethodDef remmina_python_module_type_methods[] = {
-    // @TODO: Add all functions from RemminaPluginService
 	{"register_plugin", (PyCFunction)remmina_register_plugin_wrapper,  METH_O, NULL },
 	{"log_print", (PyCFunction)remmina_plugin_python_log_printf_wrapper,  METH_VARARGS, NULL },
-	{"protocol_widget_get_width", (PyCFunction)remmina_protocol_widget_get_width_wrapper},
-	{"protocol_widget_set_width", (PyCFunction)remmina_protocol_widget_set_width_wrapper},
-	{"protocol_widget_get_height", (PyCFunction)remmina_protocol_widget_get_height_wrapper},
-	{"protocol_widget_set_height", (PyCFunction)remmina_protocol_widget_set_height_wrapper},
-	{"protocol_widget_get_current_scale_mode", (PyCFunction)remmina_protocol_widget_get_current_scale_mode_wrapper},
-	{"protocol_widget_get_expand", (PyCFunction)remmina_protocol_widget_get_expand_wrapper},
-	{"protocol_widget_set_expand", (PyCFunction)remmina_protocol_widget_set_expand_wrapper},
-	{"protocol_widget_has_error", (PyCFunction)remmina_protocol_widget_has_error_wrapper},
-	{"protocol_widget_set_error", (PyCFunction)remmina_protocol_widget_set_error_wrapper},
-	{"protocol_widget_is_closed", (PyCFunction)remmina_protocol_widget_is_closed_wrapper},
-	{"protocol_widget_get_file", (PyCFunction)remmina_protocol_widget_get_file_wrapper},
-	{"protocol_widget_emit_signal", (PyCFunction)remmina_protocol_widget_emit_signal_wrapper},
-	{"protocol_widget_register_hostkey", (PyCFunction)remmina_protocol_widget_register_hostkey_wrapper},
-	{"protocol_widget_start_direct_tunnel", (PyCFunction)remmina_protocol_widget_start_direct_tunnel_wrapper},
-	{"protocol_widget_start_reverse_tunnel", (PyCFunction)remmina_protocol_widget_start_reverse_tunnel_wrapper},
-	{"protocol_widget_start_xport_tunnel", (PyCFunction)remmina_protocol_widget_start_xport_tunnel_wrapper},
-	{"protocol_widget_set_display", (PyCFunction)remmina_protocol_widget_set_display_wrapper},
-	{"protocol_widget_signal_connection_closed", (PyCFunction)remmina_protocol_widget_signal_connection_closed_wrapper},
-    {"protocol_widget_signal_connection_opened", (PyCFunction)remmina_protocol_widget_signal_connection_opened_wrapper},
-    {"protocol_widget_update_align", (PyCFunction)remmina_protocol_widget_update_align_wrapper},
-    {"protocol_widget_unlock_dynres", (PyCFunction)remmina_protocol_widget_unlock_dynres_wrapper},
-    {"protocol_widget_desktop_resize", (PyCFunction)remmina_protocol_widget_desktop_resize_wrapper},
-	{"protocol_widget_panel_auth", (PyCFunction)remmina_protocol_widget_panel_auth_wrapper},
-	{"protocol_widget_panel_new_certificate", (PyCFunction)remmina_protocol_widget_panel_new_certificate_wrapper},
-	{"protocol_widget_panel_changed_certificate", (PyCFunction)remmina_protocol_widget_panel_changed_certificate_wrapper},
-	{"protocol_widget_get_username", (PyCFunction)remmina_protocol_widget_get_username_wrapper},
-	{"protocol_widget_get_password", (PyCFunction)remmina_protocol_widget_get_password_wrapper},
-	{"protocol_widget_get_domain", (PyCFunction)remmina_protocol_widget_get_domain_wrapper},
-	{"protocol_widget_get_savepassword", (PyCFunction)remmina_protocol_widget_get_savepassword_wrapper},
-	{"protocol_widget_panel_authx509", (PyCFunction)remmina_protocol_widget_panel_authx509_wrapper},
-	{"protocol_widget_get_cacert", (PyCFunction)remmina_protocol_widget_get_cacert_wrapper},
-	{"protocol_widget_get_cacrl", (PyCFunction)remmina_protocol_widget_get_cacrl_wrapper},
-	{"protocol_widget_get_clientcert", (PyCFunction)remmina_protocol_widget_get_clientcert_wrapper},
-	{"protocol_widget_get_clientkey", (PyCFunction)remmina_protocol_widget_get_clientkey_wrapper},
-	{"protocol_widget_save_cred", (PyCFunction)remmina_protocol_widget_save_cred_wrapper},
-	{"protocol_widget_panel_show_listen", (PyCFunction)remmina_protocol_widget_panel_show_listen_wrapper},
-	{"protocol_widget_panel_show_retry", (PyCFunction)remmina_protocol_widget_panel_show_retry_wrapper},
-	{"protocol_widget_panel_show", (PyCFunction)remmina_protocol_widget_panel_show_wrapper},
-	{"protocol_widget_panel_hide", (PyCFunction)remmina_protocol_widget_panel_hide_wrapper},
-	{"protocol_widget_ssh_exec", (PyCFunction)remmina_protocol_widget_ssh_exec_wrapper},
-	{"protocol_widget_chat_open", (PyCFunction)remmina_protocol_widget_chat_open_wrapper},
-	{"protocol_widget_chat_close", (PyCFunction)remmina_protocol_widget_chat_close_wrapper},
-	{"protocol_widget_chat_receive", (PyCFunction)remmina_protocol_widget_chat_receive_wrapper},
-	{"protocol_widget_send_keys_signals", (PyCFunction)remmina_protocol_widget_send_keys_signals_wrapper},
-
 	{"get_datadir", (PyCFunction)remmina_file_get_datadir_wrapper},
 
 	{"file_new", (PyCFunction)remmina_file_new_wrapper},
@@ -953,6 +907,7 @@ static PyObject* remmina_register_plugin_wrapper(PyObject* self, PyObject* plugi
  */
 static PyObject* remmina_protocol_widget_get_width_wrapper(PyObject* self, PyObject* plugin)
 {
+
     return Py_None;
 }
 
