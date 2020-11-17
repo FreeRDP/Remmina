@@ -169,7 +169,6 @@ gboolean remmina_gtksocket_available()
 
 RemminaPluginService remmina_plugin_manager_service =
 {
-	remmina_plugin_manager_register_plugin,
 	remmina_protocol_widget_get_width,
 	remmina_protocol_widget_set_width,
 	remmina_protocol_widget_get_height,
