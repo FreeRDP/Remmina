@@ -749,16 +749,8 @@ static PyMethodDef remmina_python_module_type_methods[] = {
 	{"register_plugin", (PyCFunction)remmina_register_plugin_wrapper,  METH_O, NULL },
 	{"log_print", (PyCFunction)remmina_plugin_python_log_printf_wrapper,  METH_VARARGS, NULL },
 	{"get_datadir", (PyCFunction)remmina_file_get_datadir_wrapper},
-
 	{"file_new", (PyCFunction)remmina_file_new_wrapper},
-	{"file_get_filename", (PyCFunction)remmina_file_get_filename_wrapper},
-	{"file_set_string", (PyCFunction)remmina_file_set_string_wrapper},
-	{"file_get_string", (PyCFunction)remmina_file_get_string_wrapper},
-	{"file_get_secret", (PyCFunction)remmina_file_get_secret_wrapper},
-	{"file_set_int", (PyCFunction)remmina_file_set_int_wrapper},
-	{"file_get_int", (PyCFunction)remmina_file_get_int_wrapper},
-	{"file_unsave_passwords", (PyCFunction)remmina_file_unsave_passwords_wrapper},
-
+    
 	{"pref_set_value", (PyCFunction)remmina_pref_set_value_wrapper},
 	{"pref_get_value", (PyCFunction)remmina_pref_get_value_wrapper},
 	{"pref_get_scale_quality", (PyCFunction)remmina_pref_get_scale_quality_wrapper},
@@ -850,46 +842,46 @@ static PyObject* remmina_plugin_python_log_printf_wrapper(PyObject* self, PyObje
  * @param self    Is always NULL since it is a static function of the 'remmina' module
  * @param plugin  An instance of a Python plugin class.
  */
-static PyObject* remmina_register_plugin_wrapper(PyObject* self, PyObject* pluginInstance)
+static PyObject* remmina_register_plugin_wrapper(PyObject* self, PyObject* plugin_instance)
 {
 	TRACE_CALL(__func__);
-    if (pluginInstance) {
-         if (!remmina_plugin_python_check_mandatory_member(pluginInstance, "name")
-            || !remmina_plugin_python_check_mandatory_member(pluginInstance, "version")) {
+    if (plugin_instance) {
+         if (!remmina_plugin_python_check_mandatory_member(plugin_instance, "name")
+            || !remmina_plugin_python_check_mandatory_member(plugin_instance, "version")) {
             return NULL;
         }
 
         /* Protocol plugin definition and features */
         RemminaPlugin* remmina_plugin = NULL;
         
-        const gchar* pluginType = PyUnicode_AsUTF8(PyObject_GetAttrString(pluginInstance, "type"));
+        const gchar* pluginType = PyUnicode_AsUTF8(PyObject_GetAttrString(plugin_instance, "type"));
 
         if (g_str_equal(pluginType, "protocol")) {
-            remmina_plugin_python_create_protocol_plugin(pluginInstance);
+            remmina_plugin_python_create_protocol_plugin(plugin_instance);
         } else if (g_str_equal(pluginType, "entry")) {
-            remmina_plugin_python_create_entry_plugin(pluginInstance);
+            remmina_plugin_python_create_entry_plugin(plugin_instance);
         } else if (g_str_equal(pluginType, "file")) {
-            remmina_plugin_python_create_file_plugin(pluginInstance);
+            remmina_plugin_python_create_file_plugin(plugin_instance);
         } else if (g_str_equal(pluginType, "tool")) {
-            remmina_plugin_python_create_tool_plugin(pluginInstance);
+            remmina_plugin_python_create_tool_plugin(plugin_instance);
         } else if (g_str_equal(pluginType, "pref")) {
-            remmina_plugin_python_create_pref_plugin(pluginInstance);
+            remmina_plugin_python_create_pref_plugin(plugin_instance);
         } else if (g_str_equal(pluginType, "secret")) {
-            remmina_plugin_python_create_secret_plugin(pluginInstance);
+            remmina_plugin_python_create_secret_plugin(plugin_instance);
         } else {
             g_printerr("Unknown plugin type: %s\n", pluginType);
         }
 
         if (remmina_plugin) {
-            g_ptr_array_add(remmina_plugin_registry, pluginInstance);
+            g_ptr_array_add(remmina_plugin_registry, plugin_instance);
             remmina_plugin_manager_service.register_plugin((RemminaPlugin *)remmina_plugin);
 
             PyPlugin* plugin = (PyPlugin*)malloc(sizeof(PyPlugin));
-            plugin->protocolPlugin = remmina_plugin;
-            plugin->pythonInstance = pluginInstance;
+            plugin->protocol_plugin = remmina_plugin;
+            plugin->generic_plugin = remmina_plugin;
+            plugin->pythonInstance = plugin_instance;
             plugin->gp = malloc(sizeof(PyRemminaProtocolWidget));
             plugin->gp->gp = NULL;
-            plugin->gp->viewport = NULL;
             g_ptr_array_add(remmina_plugin_registry, plugin);
         }
     }
@@ -1793,4 +1785,20 @@ static PyObject* remmina_protocol_widget_get_profile_remote_heigh_wrapper(PyObje
 static PyObject* remmina_protocol_widget_get_profile_remote_width_wrapper(PyObject* self, PyObject* plugin)
 {
     return Py_None;
+}
+
+static gboolean remmina_plugin_equal(gconstpointer lhs, gconstpointer rhs)
+{
+    return g_str_equal(((PyPlugin*)lhs)->generic_plugin->name, ((gchar*)rhs));
+}
+
+PyPlugin* remmina_plugin_python_module_get_plugin(RemminaProtocolWidget* gp)
+{
+    guint index = 0;
+    if (g_ptr_array_find_with_equal_func(remmina_plugin_registry, gp->plugin->name, remmina_plugin_equal, &index)) {
+        return (PyPlugin*) g_ptr_array_index(remmina_plugin_registry, index);
+    } else {
+        g_printerr("[%s:%s]: No plugin named %s!\n", __FILE__, __LINE__, gp->plugin->name);
+        return NULL;
+    }
 }

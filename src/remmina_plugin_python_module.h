@@ -39,3 +39,10 @@
 void remmina_plugin_python_module_init();
 void remmina_plugin_python_module_register_object(PyTypeObject* object);
 void remmina_plugin_python_module_register_member(PyMemberDef* member);
+RemminaPlugin* remmina_plugin_python_create_protocol_plugin(PyObject* pluginInstance);
+RemminaPlugin* remmina_plugin_python_create_entry_plugin(PyObject* pluginInstance);
+RemminaPlugin* remmina_plugin_python_create_file_plugin(PyObject* pluginInstance);
+RemminaPlugin* remmina_plugin_python_create_tool_plugin(PyObject* pluginInstance);
+RemminaPlugin* remmina_plugin_python_create_pref_plugin(PyObject* pluginInstance);
+RemminaPlugin* remmina_plugin_python_create_secret_plugin(PyObject* pluginInstance);
+gboolean remmina_plugin_python_check_mandatory_member(PyObject* instance, const gchar* member);

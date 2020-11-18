@@ -56,12 +56,13 @@ typedef struct {
 typedef struct { 
     PyObject *pythonInstance;
     
-    RemminaProtocolPlugin *protocolPlugin;
-    RemminaFilePlugin* filePlugin;
-    RemminaSecretPlugin* secretPlugin;
-    RemminaToolPlugin* toolPlugin;
-    RemminaEntryPlugin* entryPlugin;
-    RemminaPrefPlugin* prefPlugin;
+    RemminaProtocolPlugin *protocol_plugin;
+    RemminaFilePlugin* file_plugin;
+    RemminaSecretPlugin* secret_plugin;
+    RemminaToolPlugin* tool_plugin;
+    RemminaEntryPlugin* entry_plugin;
+    RemminaPrefPlugin* pref_plugin;
+    RemminaPlugin* generic_plugin;
     
     PyRemminaProtocolWidget *gp;
 } PyPlugin;
