@@ -104,101 +104,57 @@
 static void remmina_protocol_init_wrapper(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
-    PyPlugin* plugin = remmina_plugin_python_module_get_plugin(gp);
-    plugin->gp->gp = gp;
-    plugin->gp->viewport = pygobject_new(G_OBJECT(remmina_protocol_widget_gtkviewport(gp->gp)));
-    PyObject_CallMethod(plugin->pythonInstance, "init", "O", plugin);
+    PyPlugin* py_plugin = remmina_plugin_python_module_get_plugin(gp);
+    py_plugin->gp->gp = gp;
 }
 
-static PyObject* remmina_protocol_open_connection_executor_result = NULL;
-static void remmina_protocol_open_connection_executor(PyPlugin* plugin, RemminaProtocolWidget *gp)
-{
-	TRACE_CALL(__func__);
-    if (g_str_equal(plugin->protocolPlugin->name, gp->plugin->name)) {
-        remmina_protocol_open_connection_executor_result = PyObject_CallMethod(plugin->pythonInstance, "open_connection", "O", plugin);
-    }
-}
 static gboolean remmina_protocol_open_connection_wrapper(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
     remmina_plugin_manager_service.protocol_plugin_signal_connection_opened(gp);
-    g_ptr_array_foreach(remmina_plugin_registry, (GFunc)remmina_protocol_open_connection_executor, gp);
-    return remmina_protocol_open_connection_executor_result == Py_True;
+    PyPlugin* py_plugin = remmina_plugin_python_module_get_plugin(gp);
+    PyObject* result = PyObject_CallMethod(py_plugin, "open_connection", "O", py_plugin->gp);
+    return result == Py_True;
 }
 
-static PyObject* remmina_protocol_close_connection_executor_result = NULL;
-static void remmina_protocol_close_connection_executor(PyPlugin* plugin, RemminaProtocolWidget *gp)
-{
-	TRACE_CALL(__func__);
-    if (g_str_equal(plugin->protocolPlugin->name, gp->plugin->name)) {
-        remmina_protocol_close_connection_executor_result = PyObject_CallMethod(plugin->pythonInstance, "close_connection", "O", plugin);
-    }
-}
 static gboolean remmina_protocol_close_connection_wrapper(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
-    g_ptr_array_foreach(remmina_plugin_registry, (GFunc)remmina_protocol_close_connection_executor, gp);
-    return remmina_protocol_close_connection_executor_result == Py_True;
+    PyPlugin* py_plugin = remmina_plugin_python_module_get_plugin(gp);
+    PyObject* result = PyObject_CallMethod(py_plugin, "close_connection", "O", py_plugin->gp);
+    return result == Py_True;
 }
 
-static PyObject* remmina_protocol_query_feature_executor_result = NULL;
-static void remmina_protocol_query_feature_executor(PyPlugin* plugin, RemminaProtocolWidget *gp)
-{
-	TRACE_CALL(__func__);
-    if (g_str_equal(plugin->protocolPlugin->name, gp->plugin->name)) {
-        remmina_protocol_query_feature_executor_result = PyObject_CallMethod(plugin->pythonInstance, "query_feature", "O", plugin);
-    }
-}
 static gboolean remmina_protocol_query_feature_wrapper(RemminaProtocolPlugin* plugin, RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
 {
 	TRACE_CALL(__func__);
-    g_ptr_array_foreach(remmina_plugin_registry, (GFunc)remmina_protocol_query_feature_executor, gp);
-    return remmina_protocol_query_feature_executor_result == Py_True;
-}
-
-static void remmina_protocol_call_feature_executor(PyPlugin* plugin, RemminaProtocolWidget *gp)
-{
-	TRACE_CALL(__func__);
-    if (g_str_equal(plugin->protocolPlugin->name, gp->plugin->name)) {
-        PyObject_CallMethod(plugin->pythonInstance, "call_feature", "O", plugin);
-    }
+    PyPlugin* py_plugin = remmina_plugin_python_module_get_plugin(gp);
+    PyObject* result = PyObject_CallMethod(py_plugin, "query_feature", "O", py_plugin->gp);
+    return result == Py_True;
 }
 static void remmina_protocol_call_feature_wrapper(RemminaProtocolPlugin* plugin, RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
 {
 	TRACE_CALL(__func__);
-    g_ptr_array_foreach(remmina_plugin_registry, (GFunc)remmina_protocol_call_feature_executor, gp);
-}
-
-static void remmina_protocol_send_keystrokes_executor(PyPlugin* plugin, RemminaProtocolWidget *gp)
-{
-	TRACE_CALL(__func__);
-    if (g_str_equal(plugin->protocolPlugin->name, gp->plugin->name)) {
-        PyObject_CallMethod(plugin->pythonInstance, "send_keystrokes", "O", plugin);
-    }
+    PyPlugin* py_plugin = remmina_plugin_python_module_get_plugin(gp);
+    PyObject* result = PyObject_CallMethod(py_plugin, "call_feature", "O", py_plugin->gp);
 }
 static void remmina_protocol_send_keytrokes_wrapper(RemminaProtocolPlugin* plugin, RemminaProtocolWidget *gp, const guint keystrokes[], const gint keylen)
 {
 	TRACE_CALL(__func__);
-    g_ptr_array_foreach(remmina_plugin_registry, (GFunc)remmina_protocol_send_keystrokes_executor, gp);
+    PyPlugin* py_plugin = remmina_plugin_python_module_get_plugin(gp);
+    PyObject* result = PyObject_CallMethod(py_plugin, "send_keystrokes", "O", py_plugin->gp);
 }
 
 
-static PyObject* remmina_protocol_get_plugin_screenshot_executor_result = NULL;
-static void remmina_protocol_get_plugin_screenshot_executor(PyPlugin* plugin, RemminaProtocolWidget *gp)
-{
-	TRACE_CALL(__func__);
-    if (g_str_equal(plugin->protocolPlugin->name, gp->plugin->name)) {
-        remmina_protocol_get_plugin_screenshot_executor_result = PyObject_CallMethod(plugin->pythonInstance, "get_plugin_screenshot", "O", plugin);
-    }
-}
 static gboolean remmina_protocol_get_plugin_screenshot_wrapper(RemminaProtocolPlugin* plugin, RemminaProtocolWidget *gp, RemminaPluginScreenshotData *rpsd)
 {
 	TRACE_CALL(__func__);
-    g_ptr_array_foreach(remmina_plugin_registry, (GFunc)remmina_protocol_get_plugin_screenshot_executor, gp);
-    return remmina_protocol_get_plugin_screenshot_executor_result == Py_True;
+    PyPlugin* py_plugin = remmina_plugin_python_module_get_plugin(gp);
+    PyObject* result = PyObject_CallMethod(py_plugin, "get_plugin_screenshot", "O", py_plugin->gp);
+    return result == Py_True;
 }
 
-static RemminaPlugin* remmina_plugin_python_create_protocol_plugin(PyObject* pluginInstance)
+RemminaPlugin* remmina_plugin_python_create_protocol_plugin(PyObject* pluginInstance)
 {
         RemminaProtocolPlugin* remmina_plugin = (RemminaProtocolPlugin*)malloc(sizeof(RemminaProtocolPlugin));
         
@@ -232,28 +188,28 @@ static RemminaPlugin* remmina_plugin_python_create_protocol_plugin(PyObject* plu
         return remmina_plugin;
 }
 
-static RemminaPlugin* remmina_plugin_python_create_entry_plugin(pluginInstance)
+RemminaPlugin* remmina_plugin_python_create_entry_plugin(pluginInstance)
 {
 
 }
-static RemminaPlugin* remmina_plugin_python_create_file_plugin(pluginInstance)
+RemminaPlugin* remmina_plugin_python_create_file_plugin(pluginInstance)
 {
 
 }
-static RemminaPlugin* remmina_plugin_python_create_tool_plugin(pluginInstance)
+RemminaPlugin* remmina_plugin_python_create_tool_plugin(pluginInstance)
 {
 
 }
-static RemminaPlugin* remmina_plugin_python_create_pref_plugin(pluginInstance)
+RemminaPlugin* remmina_plugin_python_create_pref_plugin(pluginInstance)
 {
 
 }
-static RemminaPlugin* remmina_plugin_python_create_secret_plugin(pluginInstance)
+RemminaPlugin* remmina_plugin_python_create_secret_plugin(pluginInstance)
 {
 
 }
 
-static gboolean remmina_plugin_python_check_mandatory_member(PyObject* instance, const gchar* member)
+gboolean remmina_plugin_python_check_mandatory_member(PyObject* instance, const gchar* member)
 {
     if (PyObject_HasAttrString(instance, "name"))
         return TRUE;
