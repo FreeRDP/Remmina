@@ -857,17 +857,17 @@ static PyObject* remmina_register_plugin_wrapper(PyObject* self, PyObject* plugi
         const gchar* pluginType = PyUnicode_AsUTF8(PyObject_GetAttrString(plugin_instance, "type"));
 
         if (g_str_equal(pluginType, "protocol")) {
-            remmina_plugin_python_create_protocol_plugin(plugin_instance);
+            remmina_plugin = remmina_plugin_python_create_protocol_plugin(plugin_instance);
         } else if (g_str_equal(pluginType, "entry")) {
-            remmina_plugin_python_create_entry_plugin(plugin_instance);
+            remmina_plugin = remmina_plugin_python_create_entry_plugin(plugin_instance);
         } else if (g_str_equal(pluginType, "file")) {
-            remmina_plugin_python_create_file_plugin(plugin_instance);
+            remmina_plugin = remmina_plugin_python_create_file_plugin(plugin_instance);
         } else if (g_str_equal(pluginType, "tool")) {
-            remmina_plugin_python_create_tool_plugin(plugin_instance);
+            remmina_plugin = remmina_plugin_python_create_tool_plugin(plugin_instance);
         } else if (g_str_equal(pluginType, "pref")) {
-            remmina_plugin_python_create_pref_plugin(plugin_instance);
+            remmina_plugin = remmina_plugin_python_create_pref_plugin(plugin_instance);
         } else if (g_str_equal(pluginType, "secret")) {
-            remmina_plugin_python_create_secret_plugin(plugin_instance);
+            remmina_plugin = remmina_plugin_python_create_secret_plugin(plugin_instance);
         } else {
             g_printerr("Unknown plugin type: %s\n", pluginType);
         }

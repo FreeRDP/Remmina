@@ -583,14 +583,14 @@ static PyObject* protocol_widget_ssh_exec(PyRemminaProtocolWidget* self, PyObjec
 	return Py_None;
 }
 
-static void _on_send_callback_wrapper(RemminaProtocolWidget *gp, const gchar *text)
+static gboolean _on_send_callback_wrapper(RemminaProtocolWidget *gp, const gchar *text)
 {
 	PyPlugin* plugin = remmina_plugin_python_module_get_plugin(gp);
 	PyObject* result = PyObject_CallMethod(plugin, "on_send", "Os", gp, text);
 	return PyObject_IsTrue(result);
 }
 
-static void _on_destroy_callback_wrapper(RemminaProtocolWidget *gp)
+static gboolean _on_destroy_callback_wrapper(RemminaProtocolWidget *gp)
 {
 	PyPlugin* plugin = remmina_plugin_python_module_get_plugin(gp);
 	PyObject* result = PyObject_CallMethod(plugin, "on_destroy", "O", gp);
