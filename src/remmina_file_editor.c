@@ -901,7 +901,7 @@ static void remmina_file_editor_create_behavior_tab(RemminaFileEditor *gfe)
 	remmina_public_create_group(GTK_GRID(grid), _("Startup"), 4, 1, 2);
 
 	/* Autostart profile option */
-	remmina_file_editor_create_check(gfe, grid, 6, 1, _("Autostart this profile"),
+	priv->behavior_autostart_check = remmina_file_editor_create_check(gfe, grid, 6, 1, _("Autostart this profile"),
 							remmina_file_get_int(priv->remmina_file, "enable-autostart", FALSE));
 }
 
