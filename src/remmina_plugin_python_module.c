@@ -40,11 +40,11 @@
  * @author Mathias Winterhalter
  * @date 14.10.2020
  *
- * The RemminaPluginService provides an API for plugins to interact with Remmina. The
- * module called 'remmina' forwards this interface to make it accessible for Python
- * scripts.
+ * This file acts as a broker between Remmina and the Python plugins. It abstracts the communication flow
+ * over the RemminaPluginService and redirects calls to the correct Python plugin. The PyRemminaProtocolWidget
+ * takes care of providing the API inside the Python script.
  *
- * This is an example of a minimal protocol plugin:
+ * This is a minimal example of the usage of the remmina protocol widget API:
  *  
  * @code
  * import remmina
@@ -57,31 +57,11 @@
  *      self.icon_name = ""
  *      self.icon_name_ssh = ""
  *
- *  def init(self, handle):
- *      print("This is getting logged to the standard output of Remmina.")
- *      remmina.log_print("For debugging purposes it would be better to log the output to the %s window %s!" % ("debug", ":)"))
- *      self.init_your_stuff(handle)
- * 
- *  def open_connection(self, handle):
- *      if not self.connect():
- *          remmina.log_print("Error! Can not connect...")
- *          return False
- *          
- *      remmina.remmina_signal_connected(handle)
- *      remmina.log_print("Connection established!")
- *      return True
- *      
- * 
- *  def close_connection(self, handle):
- *      self.disconnect()
- *      return True
- * 
- * plugin = MyProtocol()
- * remmina.register_plugin(plugin)
+ *  def init(self, protocol_widget):
+ *      print("Protocol widget dimensions: %d x %d" % (protocol_widget.get_width(), protocol_widget.get_height()))
+ * ...
  * @endcode
  * 
- * 
- *
  * @see http://www.remmina.org/wp for more information.
  */
 
@@ -99,15 +79,26 @@
 #include "remmina_protocol_widget.h"
 
 /**
+ * @brief Handles the initialization of the Python plugin.
+ * @details This function prepares the plugin structure and calls the init method of the
+ * plugin Python class.
  * 
+ * @param   gp  The protocol widget used by the plugin.
  */
 static void remmina_protocol_init_wrapper(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
     PyPlugin* py_plugin = remmina_plugin_python_module_get_plugin(gp);
     py_plugin->gp->gp = gp;
+    PyObject_CallMethod(py_plugin, "init", "O", py_plugin->gp);
 }
 
+/**
+ * @brief 
+ * @details
+ * 
+ * @param   gp  The protocol widget used by the plugin.
+ */
 static gboolean remmina_protocol_open_connection_wrapper(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
@@ -117,6 +108,12 @@ static gboolean remmina_protocol_open_connection_wrapper(RemminaProtocolWidget *
     return result == Py_True;
 }
 
+/**
+ * @brief 
+ * @details
+ * 
+ * @param   gp  The protocol widget used by the plugin.
+ */
 static gboolean remmina_protocol_close_connection_wrapper(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
@@ -125,6 +122,12 @@ static gboolean remmina_protocol_close_connection_wrapper(RemminaProtocolWidget 
     return result == Py_True;
 }
 
+/**
+ * @brief 
+ * @details
+ * 
+ * @param   gp  The protocol widget used by the plugin.
+ */
 static gboolean remmina_protocol_query_feature_wrapper(RemminaProtocolPlugin* plugin, RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
 {
 	TRACE_CALL(__func__);
@@ -132,12 +135,26 @@ static gboolean remmina_protocol_query_feature_wrapper(RemminaProtocolPlugin* pl
     PyObject* result = PyObject_CallMethod(py_plugin, "query_feature", "O", py_plugin->gp);
     return result == Py_True;
 }
+
+/**
+ * @brief 
+ * @details
+ * 
+ * @param   gp  The protocol widget used by the plugin.
+ */
 static void remmina_protocol_call_feature_wrapper(RemminaProtocolPlugin* plugin, RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
 {
 	TRACE_CALL(__func__);
     PyPlugin* py_plugin = remmina_plugin_python_module_get_plugin(gp);
     PyObject* result = PyObject_CallMethod(py_plugin, "call_feature", "O", py_plugin->gp);
 }
+
+/**
+ * @brief 
+ * @details
+ * 
+ * @param   gp  The protocol widget used by the plugin.
+ */
 static void remmina_protocol_send_keytrokes_wrapper(RemminaProtocolPlugin* plugin, RemminaProtocolWidget *gp, const guint keystrokes[], const gint keylen)
 {
 	TRACE_CALL(__func__);
@@ -145,7 +162,12 @@ static void remmina_protocol_send_keytrokes_wrapper(RemminaProtocolPlugin* plugi
     PyObject* result = PyObject_CallMethod(py_plugin, "send_keystrokes", "O", py_plugin->gp);
 }
 
-
+/**
+ * @brief 
+ * @details
+ * 
+ * @param   gp  The protocol widget used by the plugin.
+ */
 static gboolean remmina_protocol_get_plugin_screenshot_wrapper(RemminaProtocolPlugin* plugin, RemminaProtocolWidget *gp, RemminaPluginScreenshotData *rpsd)
 {
 	TRACE_CALL(__func__);
@@ -185,6 +207,7 @@ RemminaPlugin* remmina_plugin_python_create_protocol_plugin(PyObject* pluginInst
         remmina_plugin->call_feature = remmina_protocol_call_feature_wrapper ;             // Call a feature
         remmina_plugin->send_keystrokes = remmina_protocol_send_keytrokes_wrapper;                                      // Send a keystroke
         remmina_plugin->get_plugin_screenshot = remmina_protocol_get_plugin_screenshot_wrapper;                                // Screenshot support unavailable
+
         return remmina_plugin;
 }
 
@@ -207,13 +230,4 @@ RemminaPlugin* remmina_plugin_python_create_pref_plugin(pluginInstance)
 RemminaPlugin* remmina_plugin_python_create_secret_plugin(pluginInstance)
 {
 
-}
-
-gboolean remmina_plugin_python_check_mandatory_member(PyObject* instance, const gchar* member)
-{
-    if (PyObject_HasAttrString(instance, "name"))
-        return TRUE;
-
-    g_printerr("Missing mandatory member in Python plugin instance: %s\n", member);
-    return FALSE;
 }

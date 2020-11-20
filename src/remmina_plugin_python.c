@@ -63,12 +63,84 @@
 #include "remmina_plugin_python.h"
 #include "remmina_plugin_python_module.h"
 
+/**
+ * @brief Extracts the filename without extention from a path.
+ * 
+ * @param   in  The string to extract the filename from
+ * @param   out The resulting filename without extention (must point to allocated memory).
+ * 
+ * @return  The length of the filename extracted.
+ */
+static int basename_no_ext(const char* in, char** out);
+
+/**
+ * 
+ */
+void remmina_plugin_python_init(void) {
+    TRACE_CALL(__FUNC__);
+
+    remmina_plugin_python_module_init();
+
+    Py_Initialize();
+
+    // Tell the Python engine where to look for Python scripts.
+    PyRun_SimpleString("import sys");
+    PyRun_SimpleString("sys.path.append('" REMMINA_RUNTIME_PLUGINDIR "')");
+
+    pygobject_init(-1, -1, -1);
+}
+
+gboolean remmina_plugin_python_load(RemminaPluginService* service, const gchar* name) {
+    TRACE_CALL(__FUNC__);
+    
+    gchar* filename = NULL;
+    if (basename_no_ext(name, &filename) == 0) {
+        g_printerr("[%s:%s]: %s can not extract filename from name!\n", __FILE__, __LINE__, name);
+        return FALSE;
+    }
+
+    PyObject *plugin_name = PyUnicode_DecodeFSDefault(filename);
+    free(filename);
+    
+    if (!plugin_name) {
+        g_printerr("[%s:%s]: Error converting plugin file name to PyUnicode!\n", __FILE__, __LINE__);
+        return FALSE;
+    }
+
+    wchar_t* program_name = NULL;
+    Py_ssize_t len = PyUnicode_AsWideChar(plugin_name, program_name, 0);
+    program_name = malloc(sizeof(wchar_t)*len);
+    if (!program_name) {
+        g_printerr("[%s:%s]: Failed allocating %d bytes!\n", __FILE__, __LINE__, (sizeof(wchar_t)*len));
+        return FALSE;
+    }
+    
+    PyUnicode_AsWideChar(plugin_name, program_name, len);
+
+    // This line works around the issue that in Python the sys.argv array is empty. This causes several problems since
+    // many rely on the fact that the program name is set in sys.argv[0].
+    PySys_SetArgv(1, &program_name);
+
+    if (PyImport_Import(plugin_name)) {
+        return TRUE;
+    }
+
+    g_print("Failed to load python plugin file: \"%s\"\n", name);
+    PyErr_Print();
+    return FALSE;
+}
+
+
 static int basename_no_ext(const char* in, char** out) {
     const char* base = strrchr(in, '/');
-    if (base) base++;
+    if (base) {
+        base++;
+    }
     
     const char* base_end = strrchr(base, '.');
-    if (!base_end) base_end = base + strlen(base);
+    if (!base_end) {
+        base_end = base + strlen(base);
+    }
     
     int length = base_end - base;
     int memsize = sizeof(char*) * ((length) + 1);
@@ -78,39 +150,4 @@ static int basename_no_ext(const char* in, char** out) {
     (*out)[length] = '\0';
 
     return length;
-}
-
-void remmina_plugin_python_init(void) {
-    TRACE_CALL(__FUNC__);
-
-    remmina_plugin_python_module_init();
-
-    Py_Initialize();
-
-    PyRun_SimpleString("import sys");
-    PyRun_SimpleString("sys.path.append('" REMMINA_RUNTIME_PLUGINDIR "')");
-
-    pygobject_init(-1, -1, -1);
-}
-
-gboolean remmina_plugin_python_load(RemminaPluginService* service, const char* name) {
-    TRACE_CALL(__FUNC__);
-    
-    char* filename = NULL;
-    basename_no_ext(name, &filename);
-    PyObject *plugin_name = PyUnicode_DecodeFSDefault(filename);
-    free(filename);
-    
-    wchar_t* program_name = NULL;
-    Py_ssize_t len = PyUnicode_AsWideChar(plugin_name, program_name, 0);
-    program_name = malloc(sizeof(wchar_t)*len);
-    PyUnicode_AsWideChar(plugin_name, program_name, len);
-    PySys_SetArgv(1, &program_name);
-    if (!PyImport_Import(plugin_name)) {
-        g_print("Failed to load python plugin file: \"%s\"\n", name);
-        PyErr_Print();
-        return FALSE;
-    }
-
-    return TRUE;
 }
