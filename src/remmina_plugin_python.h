@@ -40,7 +40,20 @@
 
 G_BEGIN_DECLS
 
-gboolean remmina_plugin_python_load(RemminaPluginService* service, const char* name);
+/**
+ * @brief Initializes the Python plugin loaders.
+ * @details This does not load any plugins but initializes globals and the Python engine itself.
+ */
 void remmina_plugin_python_init(void);
+
+/**
+ * @brief Loads a plugin from the Remmina plugin folder with the given name.
+ * 
+ * @param   service     The instance of the service providing an API between Remmina and its plugins.
+ * @param   filename    The filename of the plugin to load.
+ * 
+ * @return  TRUE on success, FALSE otherwise.
+ */
+gboolean remmina_plugin_python_load(RemminaPluginService* service, const gchar* filename);
 
 G_END_DECLS
