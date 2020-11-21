@@ -77,9 +77,24 @@ typedef struct rf_context rfContext;
 
 #define GET_PLUGIN_DATA(gp) (rfContext *)g_object_get_data(G_OBJECT(gp), "plugin-data")
 
+/* Performance Flags, from freerdp source
+ * PERF_FLAG_NONE 0x00000000
+ * PERF_DISABLE_WALLPAPER 0x00000001
+ * PERF_DISABLE_FULLWINDOWDRAG 0x00000002
+ * PERF_DISABLE_MENUANIMATIONS 0x00000004
+ * PERF_DISABLE_THEMING 0x00000008
+ * PERF_DISABLE_CURSOR_SHADOW 0x00000020
+ * PERF_DISABLE_CURSORSETTINGS 0x00000040
+ * PERF_ENABLE_FONT_SMOOTHING 0x00000080
+ * PERF_ENABLE_DESKTOP_COMPOSITION 0x00000100
+ */
+/* Poor (default) - all disabled */
 #define DEFAULT_QUALITY_0       0x6f
+/* Medium - only THEMING, CURSOR_SHADOW and CURSORSETTINGS enabled, all other disabled */
 #define DEFAULT_QUALITY_1       0x07
+/* Good - WALLPAPER, FONT_SMOOTHING, DESKTOP_COMPOSITION disabled, all other enabled */
 #define DEFAULT_QUALITY_2       0x01
+/* Best - DESKTOP_COMPOSITION disabled, all other enabled */
 #define DEFAULT_QUALITY_9       0x80
 
 extern RemminaPluginService *remmina_plugin_service;
