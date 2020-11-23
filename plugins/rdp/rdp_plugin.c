@@ -1513,6 +1513,11 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 		WLog_SetStringLogLevel(root, cs);
 	}
 
+	cs = remmina_plugin_service->file_get_string(remminafile, "freerdp_log_filters");
+	if (cs != NULL && cs[0] != '\0') {
+		WLog_AddStringLogFilters(cs);
+	}
+
 
 	cs = remmina_plugin_service->file_get_string(remminafile, "usb");
 	if (cs != NULL && cs[0] != '\0') {
@@ -2280,6 +2285,7 @@ static const RemminaProtocolSetting remmina_rdp_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "security",		    N_("Security protocol negotiation"),		 FALSE, security_list,	  NULL														 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "gwtransp",		    N_("Gateway transport type"),			 FALSE, gwtransp_list,	  NULL														 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "freerdp_log_level",	    N_("FreeRDP log level"),			 	FALSE, log_level,	  NULL														 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "freerdp_log_filters",		    N_("FreeRDP log filters"),			 FALSE, NULL,		  N_("tag:level[,tag:level[,...]]")											 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "sound",		    N_("Sound"),					 FALSE, sound_list,	  NULL														 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "microphone",		    N_("Redirect local microphone"),			 TRUE,	NULL,		  microphone_tooltip												 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "timeout",		    N_("Connection timeout in ms"),			 TRUE,	NULL,		  timeout_tooltip												 },
