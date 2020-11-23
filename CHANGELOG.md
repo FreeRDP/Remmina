@@ -1,7 +1,27 @@
 # Changelog
 
+## v1.4.9
+[full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.8...v1.4.9)
+
+* Snap Pulseaudio integration [!2106](https://gitlab.com/Remmina/Remmina/merge_requests/2106) *@antenore*
+* Updated color schemes from iTerm2-Color-Schemes [!2107](https://gitlab.com/Remmina/Remmina/merge_requests/2107) *@antenore*
+* Use previously defined DATADIR to install Kiosk files [!2108](https://gitlab.com/Remmina/Remmina/merge_requests/2108) *@kapsh*
+* Snap language simplified [!2110](https://gitlab.com/Remmina/Remmina/merge_requests/2110) *@kingu*
+* RDP and VNC: Fix smooth scrolling when abs(delta) < 1.0, see issue #2273 [!2111](https://gitlab.com/Remmina/Remmina/merge_requests/2111) *@giox069*
+* Alexander Kapshuna added to remmina_about.glade [!2109](https://gitlab.com/Remmina/Remmina/merge_requests/2109) *@kingu*
+* remmina_main_quickconnect: recognize ip when textbox has ip:port in it, and strip whitespaces [!2112](https://gitlab.com/Remmina/Remmina/merge_requests/2112) *@bwack*
+* Implementing text search in the SSH plugin [!2113](https://gitlab.com/Remmina/Remmina/merge_requests/2113) *@antenore*
+* Spelling: Plugin manager language reworked [!2114](https://gitlab.com/Remmina/Remmina/merge_requests/2114) *@kingu*
+* Save screenshot_name and use correct seconds format [!2115](https://gitlab.com/Remmina/Remmina/merge_requests/2115) *@antenore*
+* Resolve "Autostart checkbox setting not saved" [!2116](https://gitlab.com/Remmina/Remmina/merge_requests/2116) *@antenore*
+* rdp: document freerdp Performance Flags setted by quality setting [!2117](https://gitlab.com/Remmina/Remmina/merge_requests/2117) *@Fantu*
+* Resolve "Terminal general preferences are not saved" [!2119](https://gitlab.com/Remmina/Remmina/merge_requests/2119) *@antenore*
+* Resolve "Type in FindFREERDP3.cmake" [!2120](https://gitlab.com/Remmina/Remmina/merge_requests/2120) *@antenore*
+* rdp: add freerdp log filters setting [!2118](https://gitlab.com/Remmina/Remmina/merge_requests/2118) *@Fantu*
+* Resolve "Extra underline character in "_Preferences" tooptip text" [!2121](https://gitlab.com/Remmina/Remmina/merge_requests/2121) *@antenore*
+
 ## v1.4.8
-[full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.8...HEAD)
+[full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.7...v1.4.8)
 
 * Adding timout option for RDP connections. [!2091](https://gitlab.com/Remmina/Remmina/merge_requests/2091) *@antenore*
 * Avoid quickconnect to empty hostnames. Fixes #2240. [!2092](https://gitlab.com/Remmina/Remmina/merge_requests/2092) *@giox069*
