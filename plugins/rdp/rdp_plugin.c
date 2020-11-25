@@ -719,6 +719,7 @@ static BOOL remmina_rdp_gw_authenticate(freerdp *instance, char **username, char
 	RemminaProtocolWidget *gp;
 	gboolean save;
 	gboolean disablepasswordstoring;
+	gboolean basecredforgw;
 	RemminaFile *remminafile;
 
 	rfi = (rfContext *)instance->context;
@@ -728,14 +729,26 @@ static BOOL remmina_rdp_gw_authenticate(freerdp *instance, char **username, char
 	if (!remmina_plugin_service->file_get_string(remminafile, "gateway_server"))
 		return False;
 	disablepasswordstoring = remmina_plugin_service->file_get_int(remminafile, "disablepasswordstoring", FALSE);
+	basecredforgw = remmina_plugin_service->file_get_int(remminafile, "base-cred-for-gw", FALSE);
 
-	ret = remmina_plugin_service->protocol_plugin_init_auth(gp,
+	if (basecredforgw) {
+		ret = remmina_plugin_service->protocol_plugin_init_auth(gp,
+								(disablepasswordstoring ? 0 : REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD) | REMMINA_MESSAGE_PANEL_FLAG_USERNAME | REMMINA_MESSAGE_PANEL_FLAG_DOMAIN,
+								_("Enter RDP authentication credentials"),
+								remmina_plugin_service->file_get_string(remminafile, "username"),
+								remmina_plugin_service->file_get_string(remminafile, "password"),
+								remmina_plugin_service->file_get_string(remminafile, "domain"),
+								NULL);
+	} else {
+		ret = remmina_plugin_service->protocol_plugin_init_auth(gp,
 								(disablepasswordstoring ? 0 : REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD) | REMMINA_MESSAGE_PANEL_FLAG_USERNAME | REMMINA_MESSAGE_PANEL_FLAG_DOMAIN,
 								_("Enter RDP gateway authentication credentials"),
 								remmina_plugin_service->file_get_string(remminafile, "gateway_username"),
 								remmina_plugin_service->file_get_string(remminafile, "gateway_password"),
 								remmina_plugin_service->file_get_string(remminafile, "gateway_domain"),
 								NULL);
+	}
+
 
 	if (ret == GTK_RESPONSE_OK) {
 		s_username = remmina_plugin_service->protocol_plugin_init_get_username(gp);
@@ -747,14 +760,23 @@ static BOOL remmina_rdp_gw_authenticate(freerdp *instance, char **username, char
 		s_domain = remmina_plugin_service->protocol_plugin_init_get_domain(gp);
 		if (s_domain) rfi->settings->GatewayDomain = strdup(s_domain);
 
-		remmina_plugin_service->file_set_string(remminafile, "gateway_username", s_username);
-		remmina_plugin_service->file_set_string(remminafile, "gateway_domain", s_domain);
-
 		save = remmina_plugin_service->protocol_plugin_init_get_savepassword(gp);
-		if (save)
-			remmina_plugin_service->file_set_string(remminafile, "gateway_password", s_password);
-		else
-			remmina_plugin_service->file_set_string(remminafile, "gateway_password", NULL);
+
+		if (basecredforgw) {
+			remmina_plugin_service->file_set_string(remminafile, "username", s_username);
+			remmina_plugin_service->file_set_string(remminafile, "domain", s_domain);
+			if (save)
+				remmina_plugin_service->file_set_string(remminafile, "password", s_password);
+			else
+				remmina_plugin_service->file_set_string(remminafile, "password", NULL);
+		} else {
+			remmina_plugin_service->file_set_string(remminafile, "gateway_username", s_username);
+			remmina_plugin_service->file_set_string(remminafile, "gateway_domain", s_domain);
+			if (save)
+				remmina_plugin_service->file_set_string(remminafile, "gateway_password", s_password);
+			else
+				remmina_plugin_service->file_set_string(remminafile, "gateway_password", NULL);
+		}
 
 		if (s_username) g_free(s_username);
 		if (s_password) g_free(s_password);
@@ -1309,6 +1331,13 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 			rfi->settings->ProxyPassword = proxy_password;
 		if (proxy_port)
 			rfi->settings->ProxyPort = proxy_port;
+	}
+
+	if (remmina_plugin_service->file_get_int(remminafile, "base-cred-for-gw", FALSE)){
+		// Reset gateway credentials
+		remmina_plugin_service->file_set_string(remminafile, "gateway_username", NULL);
+		remmina_plugin_service->file_set_string(remminafile, "gateway_domain", NULL);
+		remmina_plugin_service->file_set_string(remminafile, "gateway_password", NULL);
 	}
 
 	/* Remote Desktop Gateway server address */
@@ -2444,6 +2473,7 @@ static const RemminaProtocolSetting remmina_rdp_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "relax-order-checks",	    N_("Relax order checks"),				 TRUE,	NULL,		  NULL														 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "glyph-cache",	    N_("Glyph cache"),					 TRUE,	NULL,		  NULL														 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "multitransport",	    N_("Enable multitransport protocol (UDP)"),		 TRUE,	NULL,		  N_("Using the UDP protocol may improve performance")								 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "base-cred-for-gw",	    N_("Use base credentials for gateway too"),					 TRUE,	NULL,		  NULL														 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	  NULL,			    NULL,						 FALSE, NULL,		  NULL														 }
 };
 
