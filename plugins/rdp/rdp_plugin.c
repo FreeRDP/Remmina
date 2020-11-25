@@ -1497,14 +1497,20 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 
 	cs = remmina_plugin_service->file_get_string(remminafile, "microphone");
 	if (cs != NULL && cs[0] != '\0') {
-		char **p;
-		size_t count;
+		if (g_strcmp0(cs, "0") == 0) {
+			REMMINA_PLUGIN_DEBUG("\"microphone\" was set to 0, setting to \"\"");
+			remmina_plugin_service->file_set_string(remminafile, "microphone", "");
+		} else {
+			REMMINA_PLUGIN_DEBUG("microphone set to %s", cs);
+			char **p;
+			size_t count;
 
-		p = remmina_rdp_CommandLineParseCommaSeparatedValuesEx("audin", g_strdup(cs), &count);
+			p = remmina_rdp_CommandLineParseCommaSeparatedValuesEx("audin", g_strdup(cs), &count);
 
-		freerdp_client_add_dynamic_channel(rfi->settings, count, p);
-		rfi->settings->AudioCapture = TRUE;
-		g_free(p);
+			freerdp_client_add_dynamic_channel(rfi->settings, count, p);
+			rfi->settings->AudioCapture = TRUE;
+			g_free(p);
+		}
 	}
 
 	cs = remmina_plugin_service->file_get_string(remminafile, "freerdp_log_level");
