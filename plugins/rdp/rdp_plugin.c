@@ -740,14 +740,14 @@ static BOOL remmina_rdp_gw_authenticate(freerdp *instance, char **username, char
 	basecredforgw = remmina_plugin_service->file_get_int(remminafile, "base-cred-for-gw", FALSE);
 
 	if (basecredforgw) {
-		s_username = remmina_plugin_service->file_get_string(remminafile, "username");
-		s_password = remmina_plugin_service->file_get_string(remminafile, "domain");
-		s_domain = remmina_plugin_service->file_get_string(remminafile, "password");
+		s_username = strdup(remmina_plugin_service->file_get_string(remminafile, "username"));
+		s_password = strdup(remmina_plugin_service->file_get_string(remminafile, "domain"));
+		s_domain = strdup(remmina_plugin_service->file_get_string(remminafile, "password"));
 		title_string = _("Enter RDP authentication credentials");
 	} else {
-		s_username = remmina_plugin_service->file_get_string(remminafile, "gateway_username");
-		s_password = remmina_plugin_service->file_get_string(remminafile, "gateway_domain");
-		s_domain = remmina_plugin_service->file_get_string(remminafile, "gateway_password");
+		s_username = strdup(remmina_plugin_service->file_get_string(remminafile, "gateway_username"));
+		s_password = strdup(remmina_plugin_service->file_get_string(remminafile, "gateway_domain"));
+		s_domain = strdup(remmina_plugin_service->file_get_string(remminafile, "gateway_password"));
 		title_string = _("Enter RDP gateway authentication credentials");
 	}
 
@@ -850,26 +850,6 @@ static DWORD remmina_rdp_verify_changed_certificate_ex(freerdp* instance, const 
 	gp = rfi->protocol_widget;
 
 	status = remmina_plugin_service->protocol_plugin_changed_certificate(gp, subject, issuer, fingerprint, old_fingerprint);
-
-	if (status == GTK_RESPONSE_OK)
-		return 1;
-
-	return 0;
-}
-
-static DWORD remmina_rdp_verify_changed_certificate(freerdp *instance,
-						    const char *common_name, const char *subject, const char *issuer,
-						    const char *new_fingerprint, const char *old_subject, const char *old_issuer, const char *old_fingerprint)
-{
-	TRACE_CALL(__func__);
-	gint status;
-	rfContext *rfi;
-	RemminaProtocolWidget *gp;
-
-	rfi = (rfContext *)instance->context;
-	gp = rfi->protocol_widget;
-
-	status = remmina_plugin_service->protocol_plugin_changed_certificate(gp, subject, issuer, new_fingerprint, old_fingerprint);
 
 	if (status == GTK_RESPONSE_OK)
 		return 1;
@@ -2008,7 +1988,7 @@ static gboolean remmina_rdp_open_connection(RemminaProtocolWidget *gp)
 	RemminaFile *remminafile;
 	const gchar *profile_name, *p;
 	gchar thname[16], c;
-	gint nthname;
+	gint nthname = 0;
 
 	rfi->scale = remmina_plugin_service->remmina_protocol_widget_get_current_scale_mode(gp);
 
@@ -2028,7 +2008,7 @@ static gboolean remmina_rdp_open_connection(RemminaProtocolWidget *gp)
 	profile_name = remmina_plugin_service->file_get_string(remminafile, "name");
 	p = profile_name;
 	strcpy(thname, "RemmRDP:");
-	if (p != NULL) {
+	if (!p) {
 		nthname = strlen(thname);
 		while ((c = *p) != 0 && nthname < sizeof(thname) - 1) {
 			if (isalnum(c))
