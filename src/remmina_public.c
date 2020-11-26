@@ -646,13 +646,24 @@ void remmina_public_send_notification(const gchar *notification_id,
 {
 	TRACE_CALL(__func__);
 
-	GNotification *notification = g_notification_new(notification_title);
-	g_notification_set_body(notification, notification_message);
+	g_autoptr(GNotification) n = NULL;
+	gint priority = G_NOTIFICATION_PRIORITY_NORMAL;
+
+	n = g_notification_new(notification_title);
+	g_notification_set_body(n, notification_message);
+	if (g_strcmp0 (notification_id, "remmina-security-trust-all-id") == 0) {
+		g_debug ("remmina_public_send_notification: We got a remmina-security-trust-all-id notification");
+		priority = G_NOTIFICATION_PRIORITY_HIGH;
+		/** parameter 5 is the tab index for the security tab in the preferences
+		 * TODO: Do not hardcode the parameter
+		 * TODO: Do not hardcode implement DBus interface correctly of this won't work*/
+		g_notification_set_default_action_and_target (n, "app.preferences", "i", 5);
+		g_notification_add_button_with_target (n, _("Change security settings"), "app.preferences", "i", 5);
+	}
 #if GLIB_CHECK_VERSION(2, 42, 0)
-	g_notification_set_priority(notification, G_NOTIFICATION_PRIORITY_NORMAL);
+	g_notification_set_priority(n, priority);
 #endif
-	g_application_send_notification(g_application_get_default(), notification_id, notification);
-	g_object_unref(notification);
+	g_application_send_notification(g_application_get_default(), notification_id, n);
 }
 
 /* Replaces all occurrences of search in a new copy of string by replacement. */

@@ -88,25 +88,28 @@ const gchar *supported_mime_types[] = {
 	NULL
 };
 
-static GActionEntry main_actions[] = {
+static GActionEntry app_actions[] = {
 	{ "about",	 remmina_main_on_action_application_about,	   NULL, NULL, NULL },
 	{ "news",	 remmina_main_on_action_application_news,	   NULL, NULL, NULL },
 	{ "default",	 remmina_main_on_action_application_default,	   NULL, NULL, NULL },
 	{ "mpchange",	 remmina_main_on_action_application_mpchange,	   NULL, NULL, NULL },
 	{ "plugins",	 remmina_main_on_action_application_plugins,	   NULL, NULL, NULL },
-	{ "preferences", remmina_main_on_action_application_preferences,   NULL, NULL, NULL },
+	{ "preferences", remmina_main_on_action_application_preferences,   "i", NULL, NULL },
 	{ "quit",	 remmina_main_on_action_application_quit,	   NULL, NULL, NULL },
+	{ "debug",	 remmina_main_on_action_help_debug,		   NULL, NULL, NULL },
+	{ "community",	 remmina_main_on_action_help_community,		   NULL, NULL, NULL },
+	{ "donations",	 remmina_main_on_action_help_donations,		   NULL, NULL, NULL },
+	{ "homepage",	 remmina_main_on_action_help_homepage,		   NULL, NULL, NULL },
+	{ "wiki",	 remmina_main_on_action_help_wiki,		   NULL, NULL, NULL },
+};
+
+static GActionEntry main_actions[] = {
 	{ "connect",	 remmina_main_on_action_connection_connect,	   NULL, NULL, NULL },
 	{ "copy",	 remmina_main_on_action_connection_copy,	   NULL, NULL, NULL },
 	{ "delete",	 remmina_main_on_action_connection_delete,	   NULL, NULL, NULL },
 	{ "edit",	 remmina_main_on_action_connection_edit,	   NULL, NULL, NULL },
 	{ "exttools",	 remmina_main_on_action_connection_external_tools, NULL, NULL, NULL },
 	{ "new",	 remmina_main_on_action_connection_new,		   NULL, NULL, NULL },
-	{ "community",	 remmina_main_on_action_help_community,		   NULL, NULL, NULL },
-	{ "debug",	 remmina_main_on_action_help_debug,		   NULL, NULL, NULL },
-	{ "donations",	 remmina_main_on_action_help_donations,		   NULL, NULL, NULL },
-	{ "homepage",	 remmina_main_on_action_help_homepage,		   NULL, NULL, NULL },
-	{ "wiki",	 remmina_main_on_action_help_wiki,		   NULL, NULL, NULL },
 	{ "export",	 remmina_main_on_action_tools_export,		   NULL, NULL, NULL },
 	{ "import",	 remmina_main_on_action_tools_import,		   NULL, NULL, NULL },
 	{ "expand",	 remmina_main_on_action_expand,			   NULL, NULL, NULL },
@@ -847,9 +850,19 @@ void remmina_main_on_action_connection_delete(GSimpleAction *action, GVariant *p
 void remmina_main_on_action_application_preferences(GSimpleAction *action, GVariant *param, gpointer data)
 {
 	TRACE_CALL(__func__);
+
+	REMMINA_DEBUG ("Opening the preferences");
+	gint32 tab_num;
+	if (param) {
+		REMMINA_DEBUG ("Parameter passed to preferences of type %s", g_variant_get_type_string(param));
+		tab_num = g_variant_get_int32 (param);
+		REMMINA_DEBUG ("We got a parameter for the preferences: %d", tab_num);
+	} else
+		tab_num = 0;
+
 	if (remmina_unlock_new(remminamain->window) == 0)
 		return;
-	GtkDialog *dialog = remmina_pref_dialog_new(0, remminamain->window);
+	GtkDialog *dialog = remmina_pref_dialog_new(tab_num, remminamain->window);
 	gtk_dialog_run(dialog);
 	gtk_widget_destroy(GTK_WIDGET(dialog));
 }
@@ -1362,6 +1375,8 @@ GtkWidget *remmina_main_new(void)
 	remminamain->statusbar_main = GTK_STATUSBAR(RM_GET_OBJECT("statusbar_main"));
 	/* Non widget objects */
 	actions = g_simple_action_group_new();
+	g_action_map_add_action_entries(G_ACTION_MAP(actions), app_actions, G_N_ELEMENTS(app_actions), remminamain->window);
+	gtk_widget_insert_action_group(GTK_WIDGET(remminamain->window), "app", G_ACTION_GROUP(actions));
 	g_action_map_add_action_entries(G_ACTION_MAP(actions), main_actions, G_N_ELEMENTS(main_actions), remminamain->window);
 	gtk_widget_insert_action_group(GTK_WIDGET(remminamain->window), "main", G_ACTION_GROUP(actions));
 	g_object_unref(actions);

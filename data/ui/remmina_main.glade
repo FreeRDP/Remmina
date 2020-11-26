@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.22.2 
+<!-- Generated with glade 3.36.0 
 
 Remmina - The GTK+ Remmina Remote Desktop Client
 Copyright (C) Antenore Gatta & Giovanni Panozzo 2014-2020
@@ -62,96 +62,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
     <signal name="drag-data-received" handler="remmina_main_on_drag_data_received" swapped="no"/>
     <signal name="show" handler="remmina_main_on_show" swapped="no"/>
     <signal name="window-state-event" handler="remmina_main_on_window_state_event" swapped="no"/>
-    <child type="titlebar">
-      <object class="GtkHeaderBar" id="main_headerbar">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="title">Remmina</property>
-        <property name="subtitle" translatable="yes">Remote Desktop Client</property>
-        <property name="spacing">10</property>
-        <property name="show_close_button">True</property>
-        <child>
-          <object class="GtkButton" id="button_new">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="tooltip_text" translatable="yes">New connection profile</property>
-            <property name="halign">start</property>
-            <property name="image">image_new</property>
-            <property name="always_show_image">True</property>
-            <signal name="clicked" handler="remmina_main_on_action_connection_new" swapped="no"/>
-          </object>
-        </child>
-        <child>
-          <object class="GtkToggleButton" id="search_toggle">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">False</property>
-            <property name="tooltip_text" translatable="yes">Show search bar</property>
-            <property name="image">find_toggle_image</property>
-            <property name="active">True</property>
-            <signal name="toggled" handler="remmina_main_on_search_toggle" swapped="no"/>
-          </object>
-          <packing>
-            <property name="position">1</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="button_news">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="action_name">main.news</property>
-            <property name="image">image_news</property>
-            <property name="always_show_image">True</property>
-          </object>
-          <packing>
-            <property name="position">3</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkMenuButton" id="menu_header_button">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="popup">menu_popup_full</property>
-            <property name="use_popover">False</property>
-            <child>
-              <object class="GtkImage" id="image_menu">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="yes">Remmina main menu</property>
-                <property name="icon_name">open-menu-symbolic</property>
-                <property name="icon_size">1</property>
-              </object>
-            </child>
-            <child internal-child="accessible">
-              <object class="AtkObject" id="menu_header_button-atkobject">
-                <property name="AtkObject::accessible-name" translatable="yes">Actions</property>
-              </object>
-            </child>
-          </object>
-          <packing>
-            <property name="pack_type">end</property>
-            <property name="position">1</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkToggleButton" id="view_toggle_button">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">False</property>
-            <property name="tooltip_text" translatable="yes">Toggle view</property>
-            <property name="image">view_toggle_icon</property>
-            <signal name="toggled" handler="remmina_main_on_view_toggle" swapped="no"/>
-          </object>
-          <packing>
-            <property name="pack_type">end</property>
-            <property name="position">2</property>
-          </packing>
-        </child>
-      </object>
-    </child>
     <child>
       <object class="GtkBox" id="box_main">
         <property name="visible">True</property>
@@ -345,7 +255,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                         <property name="visible">True</property>
                         <property name="app_paintable">True</property>
                         <property name="can_focus">False</property>
-                        <property name="action_name">main.preferences</property>
+                        <property name="action_name">app.preferences</property>
+                        <property name="action_target">0</property>
                         <property name="label" translatable="yes">_Preferences</property>
                         <property name="use_underline">True</property>
                         <accelerator key="p" signal="activate" modifiers="GDK_CONTROL_MASK"/>
@@ -356,7 +267,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                         <property name="visible">True</property>
                         <property name="app_paintable">True</property>
                         <property name="can_focus">False</property>
-                        <property name="action_name">main.mpchange</property>
+                        <property name="action_name">app.mpchange</property>
                         <property name="label" translatable="yes">Multi password changer</property>
                         <property name="use_underline">True</property>
                       </object>
@@ -366,7 +277,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                         <property name="visible">True</property>
                         <property name="app_paintable">True</property>
                         <property name="can_focus">False</property>
-                        <property name="action_name">main.debug</property>
+                        <property name="action_name">app.debug</property>
                         <property name="label" translatable="yes">Debugging</property>
                         <property name="use_underline">True</property>
                       </object>
@@ -396,7 +307,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                         <property name="visible">True</property>
                         <property name="app_paintable">True</property>
                         <property name="can_focus">False</property>
-                        <property name="action_name">main.news</property>
+                        <property name="action_name">app.news</property>
                         <property name="label" translatable="yes">News</property>
                         <property name="use_underline">True</property>
                       </object>
@@ -406,7 +317,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                         <property name="visible">True</property>
                         <property name="app_paintable">True</property>
                         <property name="can_focus">False</property>
-                        <property name="action_name">main.default</property>
+                        <property name="action_name">app.default</property>
                         <property name="label" translatable="yes">Make Remmina your default remote desktop client</property>
                         <property name="use_underline">True</property>
                       </object>
@@ -416,7 +327,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                         <property name="visible">True</property>
                         <property name="app_paintable">True</property>
                         <property name="can_focus">False</property>
-                        <property name="action_name">main.plugins</property>
+                        <property name="action_name">app.plugins</property>
                         <property name="label" translatable="yes">Plugins</property>
                         <property name="use_underline">True</property>
                       </object>
@@ -433,7 +344,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                         <property name="visible">True</property>
                         <property name="app_paintable">True</property>
                         <property name="can_focus">False</property>
-                        <property name="action_name">main.homepage</property>
+                        <property name="action_name">app.homepage</property>
                         <property name="label" translatable="yes">Homepage</property>
                         <property name="use_underline">True</property>
                       </object>
@@ -443,7 +354,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                         <property name="visible">True</property>
                         <property name="app_paintable">True</property>
                         <property name="can_focus">False</property>
-                        <property name="action_name">main.donations</property>
+                        <property name="action_name">app.donations</property>
                         <property name="label" translatable="yes">Donations</property>
                         <property name="use_underline">True</property>
                       </object>
@@ -453,7 +364,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                         <property name="visible">True</property>
                         <property name="app_paintable">True</property>
                         <property name="can_focus">False</property>
-                        <property name="action_name">main.wiki</property>
+                        <property name="action_name">app.wiki</property>
                         <property name="label" translatable="yes">Wiki</property>
                         <property name="use_underline">True</property>
                       </object>
@@ -463,7 +374,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                         <property name="visible">True</property>
                         <property name="app_paintable">True</property>
                         <property name="can_focus">False</property>
-                        <property name="action_name">main.community</property>
+                        <property name="action_name">app.community</property>
                         <property name="label" translatable="yes" comments="Remmina community website">Community</property>
                         <property name="use_underline">True</property>
                       </object>
@@ -487,7 +398,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                         <property name="visible">True</property>
                         <property name="app_paintable">True</property>
                         <property name="can_focus">False</property>
-                        <property name="action_name">main.about</property>
+                        <property name="action_name">app.about</property>
                         <property name="label" translatable="yes">About</property>
                       </object>
                     </child>
@@ -496,7 +407,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                         <property name="visible">True</property>
                         <property name="app_paintable">True</property>
                         <property name="can_focus">False</property>
-                        <property name="action_name">main.quit</property>
+                        <property name="action_name">app.quit</property>
                         <property name="label" translatable="yes">_Quit</property>
                         <property name="use_underline">True</property>
                         <accelerator key="q" signal="activate" modifiers="GDK_CONTROL_MASK"/>
@@ -631,6 +542,96 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
+            <property name="position">3</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+    <child type="titlebar">
+      <object class="GtkHeaderBar" id="main_headerbar">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="title">Remmina</property>
+        <property name="subtitle" translatable="yes">Remote Desktop Client</property>
+        <property name="spacing">10</property>
+        <property name="show_close_button">True</property>
+        <child>
+          <object class="GtkButton" id="button_new">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="tooltip_text" translatable="yes">New connection profile</property>
+            <property name="halign">start</property>
+            <property name="action_name">main.new</property>
+            <property name="image">image_new</property>
+            <property name="always_show_image">True</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkMenuButton" id="menu_header_button">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="popup">menu_popup_full</property>
+            <property name="use_popover">False</property>
+            <child>
+              <object class="GtkImage" id="image_menu">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="tooltip_text" translatable="yes">Remmina main menu</property>
+                <property name="icon_name">open-menu-symbolic</property>
+                <property name="icon_size">1</property>
+              </object>
+            </child>
+            <child internal-child="accessible">
+              <object class="AtkObject" id="menu_header_button-atkobject">
+                <property name="AtkObject::accessible-name" translatable="yes">Actions</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="pack_type">end</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkToggleButton" id="search_toggle">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="tooltip_text" translatable="yes">Show search bar</property>
+            <property name="image">find_toggle_image</property>
+            <property name="active">True</property>
+            <signal name="toggled" handler="remmina_main_on_search_toggle" swapped="no"/>
+          </object>
+          <packing>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkToggleButton" id="view_toggle_button">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="tooltip_text" translatable="yes">Toggle view</property>
+            <property name="image">view_toggle_icon</property>
+            <signal name="toggled" handler="remmina_main_on_view_toggle" swapped="no"/>
+          </object>
+          <packing>
+            <property name="pack_type">end</property>
+            <property name="position">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="button_news">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="action_name">app.news</property>
+            <property name="image">image_news</property>
+            <property name="always_show_image">True</property>
+          </object>
+          <packing>
             <property name="position">3</property>
           </packing>
         </child>
