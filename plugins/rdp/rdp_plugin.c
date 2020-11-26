@@ -1117,6 +1117,90 @@ static void remmina_rdp_send_ctrlaltdel(RemminaProtocolWidget *gp)
 								  keys, G_N_ELEMENTS(keys), GDK_KEY_PRESS | GDK_KEY_RELEASE);
 }
 
+static gboolean remmina_rdp_set_connection_type(rdpSettings* settings, guint32 type)
+{
+	settings->ConnectionType = type;
+
+	if (type == CONNECTION_TYPE_MODEM)
+	{
+		settings->DisableWallpaper = TRUE;
+		settings->AllowFontSmoothing = FALSE;
+		settings->AllowDesktopComposition = FALSE;
+		settings->DisableFullWindowDrag = TRUE;
+		settings->DisableMenuAnims = TRUE;
+		settings->DisableThemes = TRUE;
+	}
+	else if (type == CONNECTION_TYPE_BROADBAND_LOW)
+	{
+		settings->DisableWallpaper = TRUE;
+		settings->AllowFontSmoothing = FALSE;
+		settings->AllowDesktopComposition = FALSE;
+		settings->DisableFullWindowDrag = TRUE;
+		settings->DisableMenuAnims = TRUE;
+		settings->DisableThemes = FALSE;
+	}
+	else if (type == CONNECTION_TYPE_SATELLITE)
+	{
+		settings->DisableWallpaper = TRUE;
+		settings->AllowFontSmoothing = FALSE;
+		settings->AllowDesktopComposition = TRUE;
+		settings->DisableFullWindowDrag = TRUE;
+		settings->DisableMenuAnims = TRUE;
+		settings->DisableThemes = FALSE;
+	}
+	else if (type == CONNECTION_TYPE_BROADBAND_HIGH)
+	{
+		settings->DisableWallpaper = TRUE;
+		settings->AllowFontSmoothing = FALSE;
+		settings->AllowDesktopComposition = TRUE;
+		settings->DisableFullWindowDrag = TRUE;
+		settings->DisableMenuAnims = TRUE;
+		settings->DisableThemes = FALSE;
+	}
+	else if (type == CONNECTION_TYPE_WAN)
+	{
+		settings->DisableWallpaper = FALSE;
+		settings->AllowFontSmoothing = TRUE;
+		settings->AllowDesktopComposition = TRUE;
+		settings->DisableFullWindowDrag = FALSE;
+		settings->DisableMenuAnims = FALSE;
+		settings->DisableThemes = FALSE;
+	}
+	else if (type == CONNECTION_TYPE_LAN)
+	{
+		settings->DisableWallpaper = FALSE;
+		settings->AllowFontSmoothing = TRUE;
+		settings->AllowDesktopComposition = TRUE;
+		settings->DisableFullWindowDrag = FALSE;
+		settings->DisableMenuAnims = FALSE;
+		settings->DisableThemes = FALSE;
+	}
+	else if (type == CONNECTION_TYPE_AUTODETECT)
+	{
+		settings->DisableWallpaper = FALSE;
+		settings->AllowFontSmoothing = TRUE;
+		settings->AllowDesktopComposition = TRUE;
+		settings->DisableFullWindowDrag = FALSE;
+		settings->DisableMenuAnims = FALSE;
+		settings->DisableThemes = FALSE;
+		settings->NetworkAutoDetect = TRUE;
+
+		/* Automatically activate GFX and RFX codec support */
+#ifdef WITH_GFX_H264
+		settings->GfxAVC444 = TRUE;
+		settings->GfxH264 = TRUE;
+#endif
+		settings->RemoteFxCodec = TRUE;
+		settings->SupportGraphicsPipeline = TRUE;
+	}
+	else
+	{
+		return FALSE;
+	}
+
+	return TRUE;
+}
+
 static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
@@ -1402,6 +1486,31 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 		}
 	}
 	g_free(value);
+
+	if ((cs = remmina_plugin_service->file_get_string(remminafile, "network")))
+	{
+		guint32 type = 0;
+
+		if (g_strcmp0(cs, "modem") == 0)
+			type = CONNECTION_TYPE_MODEM;
+		else if (g_strcmp0(cs, "broadband") == 0)
+			type = CONNECTION_TYPE_BROADBAND_HIGH;
+		else if (g_strcmp0(cs, "broadband-low") == 0)
+			type = CONNECTION_TYPE_BROADBAND_LOW;
+		else if (g_strcmp0(cs, "broadband-high") == 0)
+			type = CONNECTION_TYPE_BROADBAND_HIGH;
+		else if (g_strcmp0(cs, "wan") == 0)
+			type = CONNECTION_TYPE_WAN;
+		else if (g_strcmp0(cs, "lan") == 0)
+			type = CONNECTION_TYPE_LAN;
+		else if ((g_strcmp0(cs, "autodetect") == 0))
+			type = CONNECTION_TYPE_AUTODETECT;
+		else
+			type = CONNECTION_TYPE_AUTODETECT;
+
+		if (!remmina_rdp_set_connection_type(rfi->settings, type))
+			REMMINA_PLUGIN_DEBUG ("Cannot set network settings");
+	}
 
 	/* PerformanceFlags bitmask need also to be splitted into BOOL variables
 	 * like rfi->settings->DisableWallpaper, rfi->settings->AllowFontSmoothing…
@@ -2201,6 +2310,19 @@ static gpointer quality_list[] =
 	NULL
 };
 
+/* Array of key/value pairs for quality selection */
+static gpointer network_list[] =
+{
+	"autodetect",	    N_("Autodetect"),
+	"modem",	    N_("Modem"),
+	"broadband-low",    N_("Low performance broadband"),
+	"satellite",	    N_("Satellite"),
+	"broadband-high",   N_("High performance broadband"),
+	"wan",		    N_("WAN"),
+	"lan",		    N_("LAN"),
+	NULL
+};
+
 /* Array of key/value pairs for sound options */
 static gpointer sound_list[] =
 {
@@ -2261,6 +2383,11 @@ static gchar timeout_tooltip[] =
 	   "Adjust connection timeout, use if you encounter timeout failures with your connection.\n"
 	   "The highest possible value is 600000 ms (10 minutes)\n");
 
+static gchar network_tooltip[] =
+	N_("Network type selection:\n"
+	   "It is advised to use autodetect.\n"
+	   "If autodetect fails choose the most appropriate in the list.\n");
+
 
 /* Array of RemminaProtocolSetting for basic settings.
  * Each item is composed by:
@@ -2279,6 +2406,7 @@ static const RemminaProtocolSetting remmina_rdp_basic_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "domain",	   N_("Domain"),       FALSE, NULL,	       NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION, "resolution",  NULL,	       FALSE, NULL,	       NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	    "colordepth",  N_("Colour depth"), FALSE, colordepth_list, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	    "network",  N_("Network connection type"), FALSE, network_list, network_tooltip },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_FOLDER,	    "sharefolder", N_("Share folder"), FALSE, NULL,	       NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	    NULL,	   NULL,	       FALSE, NULL,	       NULL }
 };
