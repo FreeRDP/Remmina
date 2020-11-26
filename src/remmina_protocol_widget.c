@@ -1494,6 +1494,12 @@ gint remmina_protocol_widget_panel_new_certificate(RemminaProtocolWidget *gp, co
 	gchar *s;
 	int rc;
 
+	if (remmina_pref_get_boolean("trust_all")) {
+		/* For compatibility with plugin API: The plugin expects GTK_RESPONSE_OK when user confirms new cert */
+		remmina_public_send_notification("remmina-security-trust-all-id", _("Fingerprint automatically accepted"), fingerprint);
+		rc = GTK_RESPONSE_OK;
+		return rc;
+	}
 	// For markup see https://developer.gnome.org/pygtk/stable/pango-markup-language.html
 	s = g_strdup_printf(
 		"<big>%s</big>\n\n%s %s\n%s %s\n%s %s\n\n<big>%s</big>",
@@ -1515,6 +1521,12 @@ gint remmina_protocol_widget_panel_changed_certificate(RemminaProtocolWidget *gp
 	gchar *s;
 	int rc;
 
+	if (remmina_pref_get_boolean("trust_all")) {
+		/* For compatibility with plugin API: The plugin expects GTK_RESPONSE_OK when user confirms new cert */
+		remmina_public_send_notification("remmina-security-trust-all-id", _("Fingerprint automatically accepted"), new_fingerprint);
+		rc = GTK_RESPONSE_OK;
+		return rc;
+	}
 	// For markup see https://developer.gnome.org/pygtk/stable/pango-markup-language.html
 	s = g_strdup_printf(
 		"<big>%s</big>\n\n%s %s\n%s %s\n%s %s\n%s %s\n\n<big>%s</big>",

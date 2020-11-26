@@ -296,6 +296,10 @@ void remmina_pref_init(void)
 	else
 		remmina_pref.unlock_password = g_strdup("");
 
+	if (g_key_file_has_key(gkeyfile, "remmina_pref", "trust_all", NULL))
+		remmina_pref.trust_all = g_key_file_get_boolean(gkeyfile, "remmina_pref", "trust_all", NULL);
+	else
+		remmina_pref.trust_all = FALSE;
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "fullscreen_on_auto", NULL))
 		remmina_pref.fullscreen_on_auto = g_key_file_get_boolean(gkeyfile, "remmina_pref", "fullscreen_on_auto", NULL);
@@ -762,6 +766,7 @@ gboolean remmina_pref_save(void)
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "unlock_timeout", 0);
 	g_key_file_set_string(gkeyfile, "remmina_pref", "unlock_password", g_strdup(""));
 #endif
+	g_key_file_set_boolean(gkeyfile, "remmina_pref", "trust_all", remmina_pref.trust_all);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "floating_toolbar_placement", remmina_pref.floating_toolbar_placement);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "toolbar_placement", remmina_pref.toolbar_placement);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "prevent_snap_welcome_message", remmina_pref.prevent_snap_welcome_message);
