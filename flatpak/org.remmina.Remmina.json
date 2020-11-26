@@ -1,7 +1,7 @@
 {
     "app-id": "org.remmina.Remmina",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "3.36",
+    "runtime-version": "3.38",
     "sdk": "org.gnome.Sdk",
     "command": "remmina",
     "cleanup": [
@@ -53,18 +53,23 @@
         /* Allow rw access to download folder */
         "--filesystem=xdg-download"
     ],
-    "add-build-extensions": {
-      "org.freedesktop.Platform.ffmpeg-full": {
-        "directory": "lib/ffmpeg",
-        "version": "19.08",
-        "add-ld-path": "."
-      }
+    "add-extensions": {
+        "org.freedesktop.Platform.ffmpeg-full": {
+            "directory": "lib/ffmpeg",
+            "version": "20.08",
+            "add-ld-path": ".",
+            "no-autodownload": false,
+            "autodelete": false
+        }
     },
+    "cleanup-commands": [
+        "mkdir -p /app/lib/ffmpeg"
+    ],
     "modules": [
         "shared-modules/dbus-glib/dbus-glib-0.110.json",
         "shared-modules/libappindicator/libappindicator-gtk3-12.10.json",
         {
-            "name" : "vte",
+            "name": "vte",
             "buildsystem" : "meson",
             "build-options" : {
                 "env" : {
@@ -130,24 +135,24 @@
         },
         {
             /**
-             * For smartcard support
-             */
-             "name": "pcsc",
-             "config-opts": [
-                 "--disable-libsystemd",
-                 "--enable-pic",
-                 "--disable-libusb",
-                 "--enable-shared",
-                 "--with-systemdsystemunitdir=/app/lib/systemd/"
-             ],
-             "sources": [
-                 {
-                     "type": "git",
-                     "url": "https://github.com/LudovicRousseau/PCSC.git",
-                     "tag": "pcsc-1.9.0",
-                     "commit": "e796a0f12fbefa459bff0d25e27089615fa91f21"
-                 }
-             ]
+            * For smartcard support
+            */
+            "name": "pcsc",
+            "config-opts": [
+                "--disable-libsystemd",
+                "--enable-pic",
+                "--disable-libusb",
+                "--enable-shared",
+                "--with-systemdsystemunitdir=/app/lib/systemd/"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/LudovicRousseau/PCSC.git",
+                    "tag": "pcsc-1.9.0",
+                    "commit": "e796a0f12fbefa459bff0d25e27089615fa91f21"
+                }
+            ]
         },
         {
             "name": "freerdp",
@@ -189,8 +194,8 @@
             "modules": [
                 {
                     /**
-                     * libfreerdp uses xprop to try to detect keyboard layout
-                     */
+                    * libfreerdp uses xprop to try to detect keyboard layout
+                    */
                     "name": "xprop",
                     "sources": [
                         {
@@ -200,23 +205,8 @@
                         }
                     ]
                 },
-                {
-                    /**
-                    * libusb-1.0 has been forced as a dependency for FreeRDP
-                    */
-                    "name": "libusb",
-                    "sources": [
-                        {
-                            "type": "archive",
-                            "url": "https://github.com/libusb/libusb/releases/download/v1.0.23/libusb-1.0.23.tar.bz2",
-                            "sha256": "db11c06e958a82dac52cf3c65cb4dd2c3f339c8a988665110e0d24d19312ad8d"
-                        }
-                    ],
-                    "config-opts": [
-                        "--disable-udev"
-                    ]
-                }
-
+                /* libusb-1.0 has been forced as a dependency for FreeRDP */
+                "shared-modules/libusb/libusb.json"
             ]
         },
         {
@@ -240,8 +230,8 @@
             "modules": [
                 {
                     /**
-                     * For smartcard support
-                     */
+                    * For smartcard support
+                    */
                     "name": "libcacard",
                     "config-opts": [
                         "--enable-pcsc"
@@ -270,8 +260,8 @@
                 },
                 {
                     /**
-                     * For webdav (shared folder) support
-                     */
+                    * For webdav (shared folder) support
+                    */
                     "name": "phodav",
                     "buildsystem": "meson",
                     "cleanup": [
@@ -331,8 +321,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://www.libssh.org/files/0.9/libssh-0.9.4.tar.xz",
-                    "sha256": "150897a569852ac05aac831dc417a7ba8e610c86ca2e0154a99c6ade2486226b"
+                    "url": "https://www.libssh.org/files/0.9/libssh-0.9.5.tar.xz",
+                    "sha256": "acffef2da98e761fc1fd9c4fddde0f3af60ab44c4f5af05cd1b2d60a3fa08718"
                 }
             ],
             "modules": [
@@ -384,18 +374,18 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/LibVNC/libvncserver/archive/LibVNCServer-0.9.12.tar.gz",
-                    "sha256": "33cbbb4e15bb390f723c311b323cef4a43bcf781984f92d92adda3243a116136"
+                    "url": "https://github.com/LibVNC/libvncserver/archive/LibVNCServer-0.9.13.tar.gz",
+                    "sha256": "0ae5bb9175dc0a602fe85c1cf591ac47ee5247b87f2bf164c16b05f87cbfa81a"
                 }
             ]
         },
         {
             /**
-             * Xephyr version 1.17.0 and later don't work fine with GtkSocket,
-             * therefore we remain at version 1.16.4:
-             *   - https://gitlab.com//Remmina//Remmina//issues//366
-             *   - https://bugs.freedesktop.org//show_bug.cgi?id=91700
-             */
+            * Xephyr version 1.17.0 and later don't work fine with GtkSocket,
+            * therefore we remain at version 1.16.4:
+            *   - https://gitlab.com//Remmina//Remmina//issues//366
+            *   - https://bugs.freedesktop.org//show_bug.cgi?id=91700
+            */
             "name": "xephyr",
             "config-opts": [
                 "--enable-kdrive",
@@ -462,7 +452,9 @@
             ],
             "config-opts": [
                 "-DCMAKE_BUILD_TYPE:STRING=Release",
+                "-DWITH_NEWS:BOOL=ON",
                 "-DCMAKE_INSTALL_LIBDIR:PATH=lib",
+                "-DWITH_FREERDP3:BOOL=OFF",
                 "-DWITH_MANPAGES:BOOL=OFF"
             ],
             "sources": [
