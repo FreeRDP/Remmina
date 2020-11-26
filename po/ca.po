@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2020-11-26 13:19+0000\n"
+"POT-Creation-Date: 2020-11-26 14:28+0000\n"
 "PO-Revision-Date: 2020-10-14 12:26+0000\n"
 "Last-Translator: Ecron <ecron_89@hotmail.com>\n"
 "Language-Team: Catalan <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -80,7 +80,7 @@ msgstr "S’està connectant a «%s» mitjançant SSH…"
 #: src/remmina_sftp_plugin.c:344 src/remmina_file_editor.c:1012
 #: plugins/www/www_plugin.c:872 plugins/rdp/rdp_plugin.c:2298
 #: data/ui/remmina_unlock.glade:116 data/ui/remmina_mpc.glade:236
-#: data/ui/remmina_preferences.glade:1577
+#: data/ui/remmina_preferences.glade:1584
 msgid "Password"
 msgstr "Contrasenya"
 
@@ -88,57 +88,61 @@ msgstr "Contrasenya"
 msgid "Type in SSH username and password."
 msgstr "Escriviu el nom d'usuari SSH i la contrasenya."
 
-#: src/remmina_protocol_widget.c:1500
+#: src/remmina_protocol_widget.c:1499 src/remmina_protocol_widget.c:1526
+msgid "Fingerprint automatically accepted"
+msgstr ""
+
+#: src/remmina_protocol_widget.c:1506
 msgid "Certificate details:"
 msgstr "Detalls del certificat:"
 
-#: src/remmina_protocol_widget.c:1501 src/remmina_protocol_widget.c:1522
+#: src/remmina_protocol_widget.c:1507 src/remmina_protocol_widget.c:1534
 msgid "Subject:"
 msgstr "Assumpte:"
 
-#: src/remmina_protocol_widget.c:1502 src/remmina_protocol_widget.c:1523
+#: src/remmina_protocol_widget.c:1508 src/remmina_protocol_widget.c:1535
 msgid "Issuer:"
 msgstr "Emissor:"
 
-#: src/remmina_protocol_widget.c:1503
+#: src/remmina_protocol_widget.c:1509
 msgid "Fingerprint:"
 msgstr "Empremta digital:"
 
-#: src/remmina_protocol_widget.c:1504
+#: src/remmina_protocol_widget.c:1510
 msgid "Accept certificate?"
 msgstr "Voleu acceptar el certificat?"
 
-#: src/remmina_protocol_widget.c:1521
+#: src/remmina_protocol_widget.c:1533
 msgid "The certificate changed! Details:"
 msgstr "El certificat ha canviat! Detalls:"
 
-#: src/remmina_protocol_widget.c:1524
+#: src/remmina_protocol_widget.c:1536
 msgid "Old fingerprint:"
 msgstr "Empremta anterior:"
 
-#: src/remmina_protocol_widget.c:1525
+#: src/remmina_protocol_widget.c:1537
 msgid "New fingerprint:"
 msgstr "Empremta nova:"
 
-#: src/remmina_protocol_widget.c:1526
+#: src/remmina_protocol_widget.c:1538
 msgid "Accept changed certificate?"
 msgstr "Voleu acceptar el certificat modificat?"
 
-#: src/remmina_protocol_widget.c:1668
+#: src/remmina_protocol_widget.c:1680
 #, c-format
 msgid "Listening on port %i for an incoming %s connection…"
 msgstr "S’està escoltant al port %i una connexió d’entrada %s…"
 
-#: src/remmina_protocol_widget.c:1693
+#: src/remmina_protocol_widget.c:1705
 msgid "Could not authenticate, attempting reconnection…"
 msgstr "Ha fallat l’autenticació. S’està intentant reconnectar…"
 
-#: src/remmina_protocol_widget.c:1755 src/remmina_file_editor.c:410
-#: src/remmina_file_editor.c:968 data/ui/remmina_main.glade:574
+#: src/remmina_protocol_widget.c:1767 src/remmina_file_editor.c:410
+#: src/remmina_file_editor.c:968 data/ui/remmina_main.glade:485
 msgid "Server"
 msgstr "Servidor"
 
-#: src/remmina_protocol_widget.c:1772
+#: src/remmina_protocol_widget.c:1784
 #, c-format
 msgid "Install the %s protocol plugin first."
 msgstr "Primer instal·leu el connector del protocol %s."
@@ -161,7 +165,7 @@ msgid "Recent lists cleared."
 msgstr "S’ha esborrat la llista dels recents."
 
 #: src/remmina_pref_dialog.c:143 src/rcw.c:1896
-#: data/ui/remmina_preferences.glade:249 data/ui/remmina_preferences.glade:259
+#: data/ui/remmina_preferences.glade:246 data/ui/remmina_preferences.glade:256
 msgid "Keystrokes"
 msgstr "Pulsacions de tecles"
 
@@ -170,7 +174,7 @@ msgid "Configure the keystrokes"
 msgstr "Configura les pulsacions de tecles"
 
 #. TRANSLATORS: Do not translate libsodium, is the name of a library
-#: src/remmina_pref_dialog.c:448
+#: src/remmina_pref_dialog.c:449
 msgid "libsodium >= 1.9.0 is required to use master password"
 msgstr "Per a usar la contrasenya mestra cal el libsodium >= 1.9.0"
 
@@ -229,7 +233,7 @@ msgstr "Clau pública (automàtic)"
 msgid "Kerberos (GSSAPI)"
 msgstr "Kerberos (GSSAPI)"
 
-#: src/remmina_ssh_plugin.c:1281 data/ui/remmina_main.glade:273
+#: src/remmina_ssh_plugin.c:1281 data/ui/remmina_main.glade:183
 msgid "Copy"
 msgstr "Copia"
 
@@ -253,7 +257,7 @@ msgstr "Selecciona-ho tot"
 msgid "_Select all"
 msgstr "_Selecciona-ho tot"
 
-#: src/remmina_ssh_plugin.c:1284 data/ui/remmina_preferences.glade:2221
+#: src/remmina_ssh_plugin.c:1284 data/ui/remmina_preferences.glade:2283
 msgid "Increase font size"
 msgstr "Augmenta la mida de la lletra"
 
@@ -261,7 +265,7 @@ msgstr "Augmenta la mida de la lletra"
 msgid "_Increase font size"
 msgstr "_Augmenta la mida de la lletra"
 
-#: src/remmina_ssh_plugin.c:1285 data/ui/remmina_preferences.glade:2234
+#: src/remmina_ssh_plugin.c:1285 data/ui/remmina_preferences.glade:2296
 msgid "Decrease font size"
 msgstr "Redueix la mida de la lletra"
 
@@ -426,6 +430,12 @@ msgstr[1] "S'han canviat %d contrasenyes."
 msgid "Please enter format 'widthxheight'."
 msgstr "Introduïu les dades en format «ampladaxaltura»."
 
+#: src/remmina_public.c:661
+#, fuzzy
+#| msgid "Quality settings"
+msgid "Change security settings"
+msgstr "Configuració de qualitat"
+
 #. TRANSLATORS: translator-credits should be replaced with a formatted list of translators in your own language
 #: src/remmina_about.c:54
 msgid "translator-credits"
@@ -498,7 +508,7 @@ msgstr "Baixa del servidor"
 msgid "Upload to server"
 msgstr "Puja al servidor"
 
-#: src/remmina_ftp_client.c:791 data/ui/remmina_main.glade:293
+#: src/remmina_ftp_client.c:791 data/ui/remmina_main.glade:203
 msgid "Delete"
 msgstr "Suprimeix"
 
@@ -519,7 +529,7 @@ msgid "User"
 msgstr "Usuari"
 
 #: src/remmina_ftp_client.c:948 src/remmina_file_editor.c:1592
-#: data/ui/remmina_main.glade:560 data/ui/remmina_mpc.glade:115
+#: data/ui/remmina_main.glade:471 data/ui/remmina_mpc.glade:115
 msgid "Group"
 msgstr "Grup"
 
@@ -652,7 +662,7 @@ msgstr "Xifra una contrasenya"
 msgid "Open Main Window"
 msgstr "Obre la finestra principal"
 
-#: src/remmina_icon.c:144 data/ui/remmina_main.glade:349
+#: src/remmina_icon.c:144 data/ui/remmina_main.glade:260
 msgid "_Preferences"
 msgstr "_Preferències"
 
@@ -664,7 +674,7 @@ msgstr "_Quant a"
 msgid "Enable Service Discovery"
 msgstr "Activa el descobriment de serveis"
 
-#: src/remmina_icon.c:171 data/ui/remmina_main.glade:500
+#: src/remmina_icon.c:171 data/ui/remmina_main.glade:411
 msgid "_Quit"
 msgstr "_Surt"
 
@@ -676,7 +686,7 @@ msgstr "Miniaplicació del Remmina"
 msgid "Connect to remote desktops through the applet menu"
 msgstr "Connecta amb escriptoris remots mitjançant el menú de la miniaplicació"
 
-#: src/remmina_icon.c:473 src/remmina_icon.c:474 src/remmina_main.c:1252
+#: src/remmina_icon.c:473 src/remmina_icon.c:474 src/remmina_main.c:1265
 msgid "Remmina Remote Desktop Client"
 msgstr "Client d’escriptori remot Remmina"
 
@@ -690,7 +700,7 @@ msgstr "Segur que voleu tancar %i connexions actives a la finestra actual?"
 msgid "Viewport fullscreen mode"
 msgstr "Pantalla completa"
 
-#: src/rcw.c:1380 data/ui/remmina_preferences.glade:630
+#: src/rcw.c:1380 data/ui/remmina_preferences.glade:628
 msgid "Scrolled fullscreen"
 msgstr "Pantalla completa amb desplaçament"
 
@@ -745,7 +755,7 @@ msgstr "_Preferències"
 msgid "_Tools"
 msgstr "_Eines"
 
-#: src/rcw.c:2285 data/ui/remmina_main.glade:303
+#: src/rcw.c:2285 data/ui/remmina_main.glade:213
 msgid "Tools"
 msgstr "Eines"
 
@@ -799,7 +809,7 @@ msgstr "Preferència"
 msgid "Secret"
 msgstr "Secret"
 
-#: src/remmina_plugin_manager.c:446 data/ui/remmina_main.glade:420
+#: src/remmina_plugin_manager.c:446 data/ui/remmina_main.glade:331
 msgid "Plugins"
 msgstr "Connectors"
 
@@ -809,7 +819,7 @@ msgid "_OK"
 msgstr "_D'acord"
 
 #: src/remmina_plugin_manager.c:464 src/remmina_file_editor.c:1567
-#: plugins/nx/nx_session_manager.c:204 data/ui/remmina_main.glade:538
+#: plugins/nx/nx_session_manager.c:204 data/ui/remmina_main.glade:449
 msgid "Name"
 msgstr "Nom"
 
@@ -825,19 +835,19 @@ msgstr "Descripció"
 msgid "Version"
 msgstr "Versió"
 
-#: src/remmina_main.c:657
+#: src/remmina_main.c:660
 #, c-format
 msgid "Total %i item."
 msgid_plural "Total %i items."
 msgstr[0] "%i element en total."
 msgstr[1] "%i elements en total."
 
-#: src/remmina_main.c:835
+#: src/remmina_main.c:838
 #, c-format
 msgid "Are you sure you want to delete \"%s\"?"
 msgstr "Segur que voleu suprimir «%s»?"
 
-#: src/remmina_main.c:935
+#: src/remmina_main.c:948
 #, c-format
 msgid ""
 "Unable to import:\n"
@@ -846,19 +856,19 @@ msgstr ""
 "No s’ha pogut importar:\n"
 "%s"
 
-#: src/remmina_main.c:961 data/ui/remmina_main.glade:380
+#: src/remmina_main.c:974 data/ui/remmina_main.glade:291
 msgid "Import"
 msgstr "Importa"
 
-#: src/remmina_main.c:984 src/remmina_file_editor.c:1450
+#: src/remmina_main.c:997 src/remmina_file_editor.c:1450
 msgid "_Save"
 msgstr "_Desa"
 
-#: src/remmina_main.c:990
+#: src/remmina_main.c:1003
 msgid "This protocol does not support exporting."
 msgstr "Aquest protocol no admet l’exportació."
 
-#: src/remmina_main.c:1254
+#: src/remmina_main.c:1267
 msgid "Remmina Kiosk"
 msgstr "Quiosc Remmina"
 
@@ -986,7 +996,7 @@ msgstr "Cancel·la"
 
 #: src/remmina_message_panel.c:199 data/ui/remmina_snap_info_dialog.glade:28
 #: data/ui/remmina_news.glade:33 data/ui/remmina_preferences.glade:33
-#: data/ui/remmina_preferences.glade:34 data/ui/remmina_preferences.glade:60
+#: data/ui/remmina_preferences.glade:34 data/ui/remmina_preferences.glade:57
 #: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
 #: data/ui/remmina_string_list.glade:63
 msgid "Close"
@@ -1458,7 +1468,7 @@ msgstr ""
 "Usa la configuració actual com a predeterminada per a tots els perfils de "
 "connexió nous"
 
-#: src/remmina_file_editor.c:1455 data/ui/remmina_main.glade:256
+#: src/remmina_file_editor.c:1455 data/ui/remmina_main.glade:166
 msgid "Connect"
 msgstr "Connecta"
 
@@ -2048,7 +2058,7 @@ msgstr "Color alt (15 bpp)"
 msgid "256 colours (8 bpp)"
 msgstr "256 colors (8 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2227 data/ui/remmina_preferences.glade:702
+#: plugins/rdp/rdp_plugin.c:2227 data/ui/remmina_preferences.glade:700
 msgid "Off"
 msgstr "Desactiva"
 
@@ -2601,7 +2611,7 @@ msgstr "<big>Configuració Snap</big>"
 msgid "Do not show this message again"
 msgstr "No tornis a mostrar aquest missatge"
 
-#: data/ui/remmina_about.glade:30 data/ui/remmina_main.glade:491
+#: data/ui/remmina_about.glade:30 data/ui/remmina_main.glade:402
 msgid "About"
 msgstr "Quant a"
 
@@ -2639,104 +2649,104 @@ msgstr "Mostra el registre de canvis del Remmina."
 msgid "Switch from grouped to list view"
 msgstr "Commuta la vista de grups en una de llista"
 
-#: data/ui/remmina_main.glade:70
-msgid "Remote Desktop Client"
-msgstr "Client d’escriptori remot"
-
-#: data/ui/remmina_main.glade:78
-msgid "New connection profile"
-msgstr "Perfil nou de connexió"
-
-#: data/ui/remmina_main.glade:90
-msgid "Show search bar"
-msgstr "Mostra la barra de cerca"
-
-#: data/ui/remmina_main.glade:123
-msgid "Remmina main menu"
-msgstr "Menú principal del Remmina"
-
-#: data/ui/remmina_main.glade:130
-msgid "Actions"
-msgstr "Accions"
-
-#: data/ui/remmina_main.glade:144
-msgid "Toggle view"
-msgstr "Commuta la visualització"
-
-#: data/ui/remmina_main.glade:175
+#: data/ui/remmina_main.glade:85
 msgid "Select the protocol to use with the quick connect bar."
 msgstr "Seleccioneu el protocol a utilitzar amb la barra de connexió ràpida."
 
-#: data/ui/remmina_main.glade:193
+#: data/ui/remmina_main.glade:103
 msgid "Search string or server name/IP address for “Quick Connect”"
 msgstr ""
 "Cerqueu una cadena o un nom de servidor/adreça IP per a una connexió ràpida"
 
-#: data/ui/remmina_main.glade:197 data/ui/remmina_main.glade:199
+#: data/ui/remmina_main.glade:107 data/ui/remmina_main.glade:109
 msgid "Server name or IP address"
 msgstr "Nom de servidor o adreça IP"
 
-#: data/ui/remmina_main.glade:198 data/ui/remmina_main.glade:200
-#: data/ui/remmina_preferences.glade:214
+#: data/ui/remmina_main.glade:108 data/ui/remmina_main.glade:110
+#: data/ui/remmina_preferences.glade:211
 msgid "Clear"
 msgstr "Esborra"
 
-#: data/ui/remmina_main.glade:283
+#: data/ui/remmina_main.glade:193
 msgid "Edit"
 msgstr "Edita"
 
-#: data/ui/remmina_main.glade:313
+#: data/ui/remmina_main.glade:223
 msgid "Collapse all"
 msgstr "Contrau-ho tot"
 
-#: data/ui/remmina_main.glade:323
+#: data/ui/remmina_main.glade:233
 msgid "Expand all"
 msgstr "Expandeix-ho tot"
 
-#: data/ui/remmina_main.glade:360
+#: data/ui/remmina_main.glade:271
 msgid "Multi password changer"
 msgstr "Canviador de contrasenyes múltiples"
 
-#: data/ui/remmina_main.glade:370
+#: data/ui/remmina_main.glade:281
 msgid "Debugging"
 msgstr "Depuració"
 
-#: data/ui/remmina_main.glade:390
+#: data/ui/remmina_main.glade:301
 msgid "Export"
 msgstr "Exporta"
 
-#: data/ui/remmina_main.glade:400
+#: data/ui/remmina_main.glade:311
 msgid "News"
 msgstr "Novetats"
 
-#: data/ui/remmina_main.glade:410
+#: data/ui/remmina_main.glade:321
 msgid "Make Remmina your default remote desktop client"
 msgstr "Fes del Remmina el client d’escriptori remot predeterminat"
 
-#: data/ui/remmina_main.glade:437
+#: data/ui/remmina_main.glade:348
 msgid "Homepage"
 msgstr "Lloc web"
 
-#: data/ui/remmina_main.glade:447
+#: data/ui/remmina_main.glade:358
 msgid "Donations"
 msgstr "Donatius"
 
-#: data/ui/remmina_main.glade:457
+#: data/ui/remmina_main.glade:368
 msgid "Wiki"
 msgstr "Wiki"
 
 #. Remmina community website
-#: data/ui/remmina_main.glade:467
+#: data/ui/remmina_main.glade:378
 msgid "Community"
 msgstr "Comunitat"
 
-#: data/ui/remmina_main.glade:588
+#: data/ui/remmina_main.glade:499
 msgid "Plugin"
 msgstr "Connector"
 
-#: data/ui/remmina_main.glade:602
+#: data/ui/remmina_main.glade:513
 msgid "Last used"
 msgstr "Darrer ús"
+
+#: data/ui/remmina_main.glade:555
+msgid "Remote Desktop Client"
+msgstr "Client d’escriptori remot"
+
+#: data/ui/remmina_main.glade:563
+msgid "New connection profile"
+msgstr "Perfil nou de connexió"
+
+#: data/ui/remmina_main.glade:581
+msgid "Remmina main menu"
+msgstr "Menú principal del Remmina"
+
+#: data/ui/remmina_main.glade:588
+msgid "Actions"
+msgstr "Accions"
+
+#: data/ui/remmina_main.glade:602
+msgid "Show search bar"
+msgstr "Mostra la barra de cerca"
+
+#: data/ui/remmina_main.glade:616
+msgid "Toggle view"
+msgstr "Commuta la visualització"
 
 #: data/ui/remmina_unlock.glade:60
 msgid "Unlock"
@@ -2746,7 +2756,7 @@ msgstr "Desbloca"
 msgid "Unlock Remmina"
 msgstr "Desblocatge del Remmina"
 
-#: data/ui/remmina_unlock.glade:128 data/ui/remmina_preferences.glade:1479
+#: data/ui/remmina_unlock.glade:128 data/ui/remmina_preferences.glade:1481
 msgid "Master password"
 msgstr "Contrasenya mestra"
 
@@ -2790,7 +2800,7 @@ msgstr ""
 "</span>"
 
 #. The star (*) is a reference to privacy consent
-#: data/ui/remmina_news.glade:130 data/ui/remmina_preferences.glade:533
+#: data/ui/remmina_news.glade:130 data/ui/remmina_preferences.glade:530
 msgid ""
 "Send <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
 "remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
@@ -2817,7 +2827,7 @@ msgid "Allow Remmina to automatically open .rdp and .remmina files."
 msgstr "Permet al Remmina obrir de manera automàtica fitxers .rdp i .remmina."
 
 #. The star (*) is a reference to privacy consent
-#: data/ui/remmina_news.glade:183 data/ui/remmina_preferences.glade:548
+#: data/ui/remmina_news.glade:183 data/ui/remmina_preferences.glade:545
 msgid ""
 "Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
 "\">remmina.org</a> (*)"
@@ -2825,7 +2835,7 @@ msgstr ""
 "Recull novetats de <a href=\"https://remmina.org\" title=\"Remmina news site"
 "\">remmina.org</a> (*)"
 
-#: data/ui/remmina_news.glade:208 data/ui/remmina_preferences.glade:515
+#: data/ui/remmina_news.glade:208 data/ui/remmina_preferences.glade:512
 msgid ""
 "* By enabling statistics and/or news you consent to send and fetch data to/"
 "from remmina.org"
@@ -2904,71 +2914,71 @@ msgstr "Domini o nom d’usuari"
 msgid "Remmina Preferences"
 msgstr "Preferències del Remmina"
 
-#: data/ui/remmina_preferences.glade:99
+#: data/ui/remmina_preferences.glade:96
 msgid "Double-click action"
 msgstr "Acció en fer doble clic"
 
-#: data/ui/remmina_preferences.glade:113
+#: data/ui/remmina_preferences.glade:110
 msgid "Open connection"
 msgstr "Obre una connexió"
 
-#: data/ui/remmina_preferences.glade:114
+#: data/ui/remmina_preferences.glade:111
 msgid "Edit settings"
 msgstr "Edita la configuració"
 
-#: data/ui/remmina_preferences.glade:130
+#: data/ui/remmina_preferences.glade:127
 msgid "Scaling quality"
 msgstr "Qualitat d'escala"
 
-#: data/ui/remmina_preferences.glade:144
+#: data/ui/remmina_preferences.glade:141
 msgid "Nearest"
 msgstr "El més proper"
 
-#: data/ui/remmina_preferences.glade:145
+#: data/ui/remmina_preferences.glade:142
 msgid "Tiles"
 msgstr "Tessel·les"
 
-#: data/ui/remmina_preferences.glade:146
+#: data/ui/remmina_preferences.glade:143
 msgid "Bilinear"
 msgstr "Bilineal"
 
-#: data/ui/remmina_preferences.glade:147
+#: data/ui/remmina_preferences.glade:144
 msgid "Hyper"
 msgstr "Híper"
 
-#: data/ui/remmina_preferences.glade:163
+#: data/ui/remmina_preferences.glade:160
 msgid "Step size for auto scroll"
 msgstr "Mida del pas del desplaçament automàtic"
 
-#: data/ui/remmina_preferences.glade:191
+#: data/ui/remmina_preferences.glade:188
 msgid "Maximal amount of recent items"
 msgstr "Quantitat màxima d'elements recents"
 
-#: data/ui/remmina_preferences.glade:234
+#: data/ui/remmina_preferences.glade:231
 msgid "Screen resolutions"
 msgstr "Resolucions de pantalla"
 
-#: data/ui/remmina_preferences.glade:280
+#: data/ui/remmina_preferences.glade:277
 msgid "Folder for screenshots"
 msgstr "Carpeta per a les captures de pantalla"
 
-#: data/ui/remmina_preferences.glade:292
+#: data/ui/remmina_preferences.glade:289
 msgid "Choose a folder to save screenshots from Remmina in."
 msgstr "Trieu una carpeta per a desar les captures de pantalla del Remmina."
 
-#: data/ui/remmina_preferences.glade:295
+#: data/ui/remmina_preferences.glade:292
 msgid "Select a folder"
 msgstr "Seleccioneu una carpeta"
 
-#: data/ui/remmina_preferences.glade:305
+#: data/ui/remmina_preferences.glade:302
 msgid "Set up"
 msgstr "Configura"
 
-#: data/ui/remmina_preferences.glade:326
+#: data/ui/remmina_preferences.glade:323
 msgid "Screenshot filenames"
 msgstr "Nom de fitxer per a captures de pantalla"
 
-#: data/ui/remmina_preferences.glade:338
+#: data/ui/remmina_preferences.glade:335
 msgid ""
 "%p Profile name\n"
 "%h Server name/IP\n"
@@ -2978,7 +2988,7 @@ msgstr ""
 "%h Nom del servidor/IP\n"
 "%Y Ant, %m Mes, %d Dia, %H Hora, %M Minut, %S Segons (hora UTC)\n"
 
-#: data/ui/remmina_preferences.glade:356
+#: data/ui/remmina_preferences.glade:353
 msgid ""
 "The folder where connection profiles are saved, it defaults to the "
 "XDG_USER_DATA"
@@ -2987,20 +2997,20 @@ msgstr ""
 "XDG_USER_DATA"
 
 #. The folder where profiles are saved
-#: data/ui/remmina_preferences.glade:361
+#: data/ui/remmina_preferences.glade:358
 msgid "Remmina data folder"
 msgstr "Carpeta de dades del Remmina"
 
-#: data/ui/remmina_preferences.glade:388
+#: data/ui/remmina_preferences.glade:385
 msgid "Remember last view mode for each connection"
 msgstr "Recorda el darrer mode de visualització de cada connexió"
 
 #. The star (*) is a reference to privacy consent
-#: data/ui/remmina_preferences.glade:392
+#: data/ui/remmina_preferences.glade:389
 msgid "Remember last view mode"
 msgstr "Recorda el darrer mode de visualització"
 
-#: data/ui/remmina_preferences.glade:432
+#: data/ui/remmina_preferences.glade:429
 msgid ""
 "Set a custom filename for your Remmina connection profiles, using a "
 "formatting string."
@@ -3008,11 +3018,11 @@ msgstr ""
 "Estableix un nom de fitxer personalitzat per als perfils de connexió del "
 "Remmina, utilitzant una cadena de format."
 
-#: data/ui/remmina_preferences.glade:436
+#: data/ui/remmina_preferences.glade:433
 msgid "Profile filename template"
 msgstr "Plantilla del fitxer del nom de perfil"
 
-#: data/ui/remmina_preferences.glade:448
+#: data/ui/remmina_preferences.glade:445
 msgid ""
 "%G Group name (slash will be converted to - automatically)\n"
 "%P Protocol name\n"
@@ -3028,112 +3038,112 @@ msgstr ""
 "\n"
 "\n"
 
-#: data/ui/remmina_preferences.glade:469
+#: data/ui/remmina_preferences.glade:466
 msgid "Only save generated screenshots, don't copy them to clipboard."
 msgstr ""
 "Desa les captures de pantalla generades sense copiar-les al porta-retalls."
 
-#: data/ui/remmina_preferences.glade:474
+#: data/ui/remmina_preferences.glade:471
 msgid "Prevent screenshots from entering clipboard"
 msgstr "Evita que les captures entren al porta-retalls"
 
-#: data/ui/remmina_preferences.glade:562
+#: data/ui/remmina_preferences.glade:559
 msgid "Options"
 msgstr "Opcions"
 
-#: data/ui/remmina_preferences.glade:576
+#: data/ui/remmina_preferences.glade:574
 msgid "Always show tabs"
 msgstr "Sempre mostra les pestanyes"
 
-#: data/ui/remmina_preferences.glade:593
+#: data/ui/remmina_preferences.glade:591
 msgid "Hide the toolbar shown in the tabbed interface"
 msgstr "Amaga la barra d’eines de la interfície amb pestanyes"
 
-#: data/ui/remmina_preferences.glade:614
+#: data/ui/remmina_preferences.glade:612
 msgid "Default view mode"
 msgstr "Mode de visualització per defecte"
 
-#: data/ui/remmina_preferences.glade:628
+#: data/ui/remmina_preferences.glade:626
 msgid "Automatic"
 msgstr "Automàtic"
 
-#: data/ui/remmina_preferences.glade:629
+#: data/ui/remmina_preferences.glade:627
 msgid "Scrolled window"
 msgstr "Finestra amb desplaçament"
 
-#: data/ui/remmina_preferences.glade:631
+#: data/ui/remmina_preferences.glade:629
 msgid "Viewport fullscreen"
 msgstr "Visor a pantalla completa"
 
-#: data/ui/remmina_preferences.glade:647
+#: data/ui/remmina_preferences.glade:645
 msgid "Tabs"
 msgstr "Pestanyes"
 
-#: data/ui/remmina_preferences.glade:662
+#: data/ui/remmina_preferences.glade:660
 msgid "By group"
 msgstr "Per grup"
 
-#: data/ui/remmina_preferences.glade:663
+#: data/ui/remmina_preferences.glade:661
 msgid "By protocols"
 msgstr "Per protocols"
 
-#: data/ui/remmina_preferences.glade:664
+#: data/ui/remmina_preferences.glade:662
 msgid "Per connection"
 msgstr "Per connexió"
 
-#: data/ui/remmina_preferences.glade:665
+#: data/ui/remmina_preferences.glade:663
 msgid "None"
 msgstr "Cap"
 
-#: data/ui/remmina_preferences.glade:676
+#: data/ui/remmina_preferences.glade:674
 msgid "Fullscreen on the same screen as the connection window"
 msgstr "Pantalla completa en la mateixa pantalla que la finestra de connexió"
 
-#: data/ui/remmina_preferences.glade:700
+#: data/ui/remmina_preferences.glade:698
 msgid "Peeking"
 msgstr "Furtiva"
 
-#: data/ui/remmina_preferences.glade:701
+#: data/ui/remmina_preferences.glade:699
 msgid "Hidden"
 msgstr "Oculta"
 
-#: data/ui/remmina_preferences.glade:717
+#: data/ui/remmina_preferences.glade:715
 msgid "Fullscreen toolbar visibility"
 msgstr "Visibilitat de la barra d'eines en pantalla completa"
 
-#: data/ui/remmina_preferences.glade:727
+#: data/ui/remmina_preferences.glade:725
 msgid "Hide the search bar shown in the main window"
 msgstr "Amaga la barra de cerca a la finestra principal"
 
-#: data/ui/remmina_preferences.glade:751
+#: data/ui/remmina_preferences.glade:749
 msgid "Appearance"
 msgstr "Aparença"
 
-#: data/ui/remmina_preferences.glade:766
+#: data/ui/remmina_preferences.glade:765
 msgid "Show new connection on top of the menu"
 msgstr "Mostra la connexió nova al capdamunt del menú"
 
-#: data/ui/remmina_preferences.glade:784
+#: data/ui/remmina_preferences.glade:783
 msgid "Hide total count shown in the group menu"
 msgstr "Amaga el recompte total del menú del grup"
 
-#: data/ui/remmina_preferences.glade:801
+#: data/ui/remmina_preferences.glade:800
 msgid "No tray icon"
 msgstr "Sense icona a l'àrea de notificació"
 
-#: data/ui/remmina_preferences.glade:819
+#: data/ui/remmina_preferences.glade:818
 msgid "Start in tray upon user login"
 msgstr "Inicia a la safata en iniciar la sessió"
 
-#: data/ui/remmina_preferences.glade:837
+#: data/ui/remmina_preferences.glade:836
 msgid "Dark tray icon"
 msgstr "Icona fosca a l'àrea de notificació"
 
-#: data/ui/remmina_preferences.glade:841
+#: data/ui/remmina_preferences.glade:840
 msgid "Improves contrast if you have a light panel."
 msgstr "Millora el contrast si teniu un panell clar."
 
-#: data/ui/remmina_preferences.glade:862
+#: data/ui/remmina_preferences.glade:861
 msgid "Applet"
 msgstr "Miniaplicació"
 
@@ -3170,52 +3180,52 @@ msgstr "Mode de només visualització"
 msgid "Keyboard"
 msgstr "Teclat"
 
-#: data/ui/remmina_preferences.glade:1253
+#: data/ui/remmina_preferences.glade:1254
 msgid "Local SSH port"
 msgstr "Port SSH local"
 
-#: data/ui/remmina_preferences.glade:1277
+#: data/ui/remmina_preferences.glade:1278
 msgid "Parse ~/.ssh/config"
 msgstr "Analitza ~/.ssh/config"
 
-#: data/ui/remmina_preferences.glade:1301
+#: data/ui/remmina_preferences.glade:1302
 msgid "No logging at all"
 msgstr "Sense inici de sessió"
 
-#: data/ui/remmina_preferences.glade:1302
+#: data/ui/remmina_preferences.glade:1303
 msgid "Rare conditions or warnings"
 msgstr "Condicions o alertes estranyes"
 
-#: data/ui/remmina_preferences.glade:1303
+#: data/ui/remmina_preferences.glade:1304
 msgid "API-accessible entrypoints"
 msgstr "Punts d'entrada accessibles per l'API"
 
-#: data/ui/remmina_preferences.glade:1304
+#: data/ui/remmina_preferences.glade:1305
 msgid "Lower level protocol info, packet level"
 msgstr "Informació de protocol de baix nivell, nivell de paquet"
 
-#: data/ui/remmina_preferences.glade:1305
+#: data/ui/remmina_preferences.glade:1306
 msgid "Function entering and leaving"
 msgstr "Funció en entrar i sortir"
 
-#: data/ui/remmina_preferences.glade:1321
+#: data/ui/remmina_preferences.glade:1322
 msgid "SSH log level"
 msgstr "Nivell de registre SSH"
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1388
+#: data/ui/remmina_preferences.glade:1389
 msgid "Seconds of connection idleness before TCP keepalive probes are sent."
 msgstr ""
 "Segons d'inactivitat de connexió abans que s'enviïn les sondes «keepalive» "
 "del TCP."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1404
+#: data/ui/remmina_preferences.glade:1405
 msgid "Seconds between each keepalive probe."
 msgstr "Segons entre cada sonda «keepalive»."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1420
+#: data/ui/remmina_preferences.glade:1421
 msgid ""
 "Number of keepalive probes sent via TCP connection before it is dropped."
 msgstr ""
@@ -3223,7 +3233,7 @@ msgstr ""
 "s'abandoni."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1436
+#: data/ui/remmina_preferences.glade:1437
 msgid ""
 "Amount of milliseconds to attempt acknowledging data before closing the "
 "corresponding TCP connection forcibly."
@@ -3231,81 +3241,96 @@ msgstr ""
 "Quantitat de mil·lisegons per a reconèixer les dades abans que es tanqui "
 "forçosament la connexió TCP corresponent."
 
-#: data/ui/remmina_preferences.glade:1457
+#: data/ui/remmina_preferences.glade:1458
 msgid "SSH options"
 msgstr "Opcions SSH"
 
-#: data/ui/remmina_preferences.glade:1494
-#: data/ui/remmina_preferences.glade:1510
+#: data/ui/remmina_preferences.glade:1496
+#: data/ui/remmina_preferences.glade:1513
+#: data/ui/remmina_preferences.glade:1685
 msgid "Use secret key authentication for some widgets"
 msgstr "Utilitza l'autentificació de clau secreta per a alguns ginys"
 
-#: data/ui/remmina_preferences.glade:1516
+#: data/ui/remmina_preferences.glade:1520
 msgid "Use master password"
 msgstr "Utilitza la contrasenya mestra"
 
-#: data/ui/remmina_preferences.glade:1529
+#: data/ui/remmina_preferences.glade:1533
 msgid "Automatic lock interval"
 msgstr "Interval de blocatge automàtic"
 
-#: data/ui/remmina_preferences.glade:1540
+#: data/ui/remmina_preferences.glade:1544
 msgid "Master password validity in seconds"
 msgstr "Validesa de la contrasenya mestra en segons"
 
-#: data/ui/remmina_preferences.glade:1560
+#: data/ui/remmina_preferences.glade:1566
 msgid "File encryption"
 msgstr "Xifratge de fitxers"
 
-#: data/ui/remmina_preferences.glade:1590
+#: data/ui/remmina_preferences.glade:1598
 msgid "Repeat the password"
 msgstr "Repetiu la contrasenya"
 
-#: data/ui/remmina_preferences.glade:1646
+#: data/ui/remmina_preferences.glade:1653
+#, fuzzy
+#| msgid "Accept changed certificate?"
+msgid "Fingerprinters and certificates"
+msgstr "Voleu acceptar el certificat modificat?"
+
+#: data/ui/remmina_preferences.glade:1668
+msgid "Automatically accept all fingerprinters and certificates"
+msgstr ""
+
+#: data/ui/remmina_preferences.glade:1674
+msgid "Trust all fingerprinters and certificates"
+msgstr ""
+
+#: data/ui/remmina_preferences.glade:1707
 msgid "Security"
 msgstr "Seguretat"
 
-#: data/ui/remmina_preferences.glade:1667
+#: data/ui/remmina_preferences.glade:1729
 msgid "Terminal font"
 msgstr "Tipus de lletra del terminal"
 
-#: data/ui/remmina_preferences.glade:1680
+#: data/ui/remmina_preferences.glade:1742
 msgid "Scrollback lines"
 msgstr "Línies de desplaçament cap enrere"
 
-#: data/ui/remmina_preferences.glade:1746
+#: data/ui/remmina_preferences.glade:1808
 msgid "Shortcut for copying to clipboard"
 msgstr "Drecera per a copiar al porta-retalls"
 
-#: data/ui/remmina_preferences.glade:1759
+#: data/ui/remmina_preferences.glade:1821
 msgid "Shortcut for pasting from clipboard"
 msgstr "Drecera per a enganxar del porta-retalls"
 
-#: data/ui/remmina_preferences.glade:1772
+#: data/ui/remmina_preferences.glade:1834
 msgid "Select all shortcuts"
 msgstr "Selecciona totes les dreceres"
 
-#: data/ui/remmina_preferences.glade:1786
-#: data/ui/remmina_preferences.glade:1803
-#: data/ui/remmina_preferences.glade:1820
-#: data/ui/remmina_preferences.glade:2248
-#: data/ui/remmina_preferences.glade:2265
-#: data/ui/remmina_preferences.glade:2295
+#: data/ui/remmina_preferences.glade:1848
+#: data/ui/remmina_preferences.glade:1865
+#: data/ui/remmina_preferences.glade:1882
+#: data/ui/remmina_preferences.glade:2310
+#: data/ui/remmina_preferences.glade:2327
+#: data/ui/remmina_preferences.glade:2357
 msgid "(Host key+)"
 msgstr "(Tecla d’amfitrió+)"
 
-#: data/ui/remmina_preferences.glade:1836
+#: data/ui/remmina_preferences.glade:1898
 msgid "Use default system font"
 msgstr "Utilitza el tipus de lletra del sistema"
 
-#: data/ui/remmina_preferences.glade:1874
+#: data/ui/remmina_preferences.glade:1936
 msgid "Allow bold text"
 msgstr "Permet text en negreta"
 
-#: data/ui/remmina_preferences.glade:1888
+#: data/ui/remmina_preferences.glade:1950
 msgid "Colour theme"
 msgstr "Tema de color"
 
-#: data/ui/remmina_preferences.glade:1899
+#: data/ui/remmina_preferences.glade:1961
 msgid ""
 "Choose a colour scheme file. Usually available in /usr/share/remmina/theme. "
 "https://github.com/mbadolato/iTerm2-Color-Schemes has more details."
@@ -3314,102 +3339,102 @@ msgstr ""
 "remmina/theme. Hi ha més detalls a https://github.com/mbadolato/iTerm2-Color-"
 "Schemes."
 
-#: data/ui/remmina_preferences.glade:1902
+#: data/ui/remmina_preferences.glade:1964
 msgid "Pick a terminal colouring file"
 msgstr "Trieu un fitxer de color per al terminal"
 
-#: data/ui/remmina_preferences.glade:1917
+#: data/ui/remmina_preferences.glade:1979
 msgid "Bright colours"
 msgstr "Colors vius"
 
-#: data/ui/remmina_preferences.glade:1929
+#: data/ui/remmina_preferences.glade:1991
 msgid "Pick a light black colour"
 msgstr "Trieu un color negre clar"
 
-#: data/ui/remmina_preferences.glade:1941
+#: data/ui/remmina_preferences.glade:2003
 msgid "Pick a light red colour"
 msgstr "Trieu un color vermell clar"
 
-#: data/ui/remmina_preferences.glade:1953
+#: data/ui/remmina_preferences.glade:2015
 msgid "Pick a bright green colour"
 msgstr "Trieu un color verd clar"
 
-#: data/ui/remmina_preferences.glade:1965
+#: data/ui/remmina_preferences.glade:2027
 msgid "Pick a bright yellow colour"
 msgstr "Trieu un color groc clar"
 
-#: data/ui/remmina_preferences.glade:1977
+#: data/ui/remmina_preferences.glade:2039
 msgid "Pick a bright blue colour"
 msgstr "Trieu un color blau clar"
 
-#: data/ui/remmina_preferences.glade:1989
+#: data/ui/remmina_preferences.glade:2051
 msgid "Pick a light magenta colour"
 msgstr "Trieu un color magenta clar"
 
-#: data/ui/remmina_preferences.glade:2001
+#: data/ui/remmina_preferences.glade:2063
 msgid "Pick a light cyan colour"
 msgstr "Trieu un color cian clar"
 
-#: data/ui/remmina_preferences.glade:2014
+#: data/ui/remmina_preferences.glade:2076
 msgid "Pick a light white colour"
 msgstr "Trieu un color blanc clar"
 
-#: data/ui/remmina_preferences.glade:2026
+#: data/ui/remmina_preferences.glade:2088
 msgid "Pick a black colour"
 msgstr "Trieu un color negre"
 
-#: data/ui/remmina_preferences.glade:2038
+#: data/ui/remmina_preferences.glade:2100
 msgid "Pick a red colour"
 msgstr "Trieu un color vermell"
 
-#: data/ui/remmina_preferences.glade:2050
+#: data/ui/remmina_preferences.glade:2112
 msgid "Pick a green colour"
 msgstr "Trieu un color verd"
 
-#: data/ui/remmina_preferences.glade:2062
+#: data/ui/remmina_preferences.glade:2124
 msgid "Pick a yellow colour"
 msgstr "Trieu un color groc"
 
-#: data/ui/remmina_preferences.glade:2074
+#: data/ui/remmina_preferences.glade:2136
 msgid "Pick a blue colour"
 msgstr "Trieu un color blau"
 
-#: data/ui/remmina_preferences.glade:2086
+#: data/ui/remmina_preferences.glade:2148
 msgid "Pick a magenta colour"
 msgstr "Trieu un color magenta"
 
-#: data/ui/remmina_preferences.glade:2098
+#: data/ui/remmina_preferences.glade:2160
 msgid "Pick a cyan colour"
 msgstr "Trieu un color cian"
 
-#: data/ui/remmina_preferences.glade:2111
+#: data/ui/remmina_preferences.glade:2173
 msgid "Pick a white colour"
 msgstr "Trieu un color blanc"
 
-#: data/ui/remmina_preferences.glade:2124
+#: data/ui/remmina_preferences.glade:2186
 msgid "Normal colours"
 msgstr "Colors normals"
 
-#: data/ui/remmina_preferences.glade:2137
-#: data/ui/remmina_preferences.glade:2151
+#: data/ui/remmina_preferences.glade:2199
+#: data/ui/remmina_preferences.glade:2213
 msgid "Cursor colour"
 msgstr "Color del cursor"
 
-#: data/ui/remmina_preferences.glade:2165
-#: data/ui/remmina_preferences.glade:2179
+#: data/ui/remmina_preferences.glade:2227
+#: data/ui/remmina_preferences.glade:2241
 msgid "Background colour"
 msgstr "Color de fons"
 
-#: data/ui/remmina_preferences.glade:2194
-#: data/ui/remmina_preferences.glade:2208
+#: data/ui/remmina_preferences.glade:2256
+#: data/ui/remmina_preferences.glade:2270
 msgid "Foreground colour"
 msgstr "Color de primer pla"
 
-#: data/ui/remmina_preferences.glade:2281
+#: data/ui/remmina_preferences.glade:2343
 msgid "Search text"
 msgstr "Cerca text"
 
-#: data/ui/remmina_preferences.glade:2421
+#: data/ui/remmina_preferences.glade:2483
 msgid "Terminal"
 msgstr "Terminal"
 
