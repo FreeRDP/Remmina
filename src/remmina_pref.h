@@ -116,10 +116,6 @@ typedef struct _RemminaPref {
 	gboolean		deny_screenshot_clipboard;
 	const gchar *		screenshot_name;
 	gboolean		save_view_mode;
-	gboolean		use_master_password;
-	const gchar *		unlock_password;
-	const gchar *		unlock_repassword;
-	gint			unlock_timeout;
 	gint			default_action;
 	gint			scale_quality;
 	gint			auto_scroll_step;
@@ -161,6 +157,12 @@ typedef struct _RemminaPref {
 	guint			shortcutkey_minimize;
 	guint			shortcutkey_disconnect;
 	guint			shortcutkey_toolbar;
+	/* In RemminaPrefDialog security tab */
+	gboolean		use_master_password;
+	const gchar *		unlock_password;
+	const gchar *		unlock_repassword;
+	gint			unlock_timeout;
+	gboolean		trust_all;
 	/* In RemminaPrefDialog terminal tab */
 	gchar *			vte_font;
 	gboolean		vte_allow_bold_text;
