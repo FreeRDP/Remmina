@@ -1,161 +1,134 @@
----
+# You can override the included template(s) by including variable overrides
+# See https://docs.gitlab.com/ee/user/application_security/sast/#customizing-the-sast-settings
+# Note that environment variables can be set in several places
+# See https://docs.gitlab.com/ee/ci/variables/#priority-of-environment-variables
 image: registry.gitlab.com/remmina/remmina/ubuntu:18.04
-
 stages:
-  - build
-# - flatpak_build
-
+- build
+- test
 variables:
   GIT_SUBMODULE_STRATEGY: recursive
   BUILD_FOLDER: build
-  DEB_PPA: "ppa:remmina-ppa-team/remmina-next"
-  FREERDP_DAILY_PPA: "ppa:remmina-ppa-team/freerdp-daily"
-  DOCKER_IMAGE: "ubuntu:bionic"
+  DEB_PPA: ppa:remmina-ppa-team/remmina-next
+  FREERDP_DAILY_PPA: ppa:remmina-ppa-team/freerdp-daily
+  DOCKER_IMAGE: ubuntu:bionic
   CMAKE_BUILD_OPTIONS: "-DCMAKE_BUILD_TYPE=Release -DWITH_APPINDICATOR=on -DWITH_FREERDP3=OFF"
   FLATPAK_ARCH: x86_64
-
 before_script:
-  - mkdir -p .flatpak-builder/cache
-
-#raspbian:test:
-#  services:
-#    - docker:dind
-#  tags:
-#    - arm
-#  image: raspbian/stretch
-#  stage: build
-#  before_script:
-#    - apt-get update -qq
-#
-#  script:
-#    - mkdir $BUILD_FOLDER
-#    - cmake -B$BUILD_FOLDER -H. $CMAKE_BUILD_OPTIONS
-#    - make VERBOSE=1 -C $BUILD_FOLDER
-#  only:
-#    - web
-
-# TODO: We should create a job for each distro and test the compile correcthly
-#       but _only_ if triggered at certain conditions (releases, tag, etc)
-#       http://docs.gitlab.com/ee/ci/yaml/README.html#only-and-except-simplified
-# This is an example for Ubuntu
+- mkdir -p .flatpak-builder/cache
 ubuntu:devel:
-  # image: ubuntu:devel
-  # stage: cross_environment
   stage: build
   before_script:
-    - apt-get update -qq
-    - apt-get install -y -qq libpcre2-8-0 libpcre2-dev
-
+  - apt-get update -qq
+  - apt-get install -y -qq libpcre2-8-0 libpcre2-dev
   script:
-    - mkdir $BUILD_FOLDER
-    - cmake -B$BUILD_FOLDER -H. $CMAKE_BUILD_OPTIONS
-    - make VERBOSE=1 -C $BUILD_FOLDER
+  - mkdir $BUILD_FOLDER
+  - cmake -B$BUILD_FOLDER -H. $CMAKE_BUILD_OPTIONS
+  - make VERBOSE=1 -C $BUILD_FOLDER
   only:
     refs:
-      - master
-      - tags
-      - merge_requests
-      - web
-      - schedules
-
+    - master
+    - tags
+    - merge_requests
+    - web
+    - schedules
 appimage:build:
-  # image: ubuntu:devel
-  # stage: cross_environment
   image: registry.gitlab.com/remmina/remmina/ubuntu:18.04
   stage: build
   before_script:
-    - apt-get update -qq
-    - apt-get install -y -qq libpcre2-8-0 libpcre2-dev wget
-
+  - apt-get update -qq
+  - apt-get install -y -qq libpcre2-8-0 libpcre2-dev wget
   script:
-    - mkdir $BUILD_FOLDER
-    - cmake -B$BUILD_FOLDER -H. $CMAKE_BUILD_OPTIONS -DCMAKE_INSTALL_PREFIX=/usr
-    - make VERBOSE=1 -C $BUILD_FOLDER
-    - make VERBOSE=1 -C $BUILD_FOLDER install DESTDIR=AppDir
-    # Temporary using old binaries as there's an opened bug https://github.com/linuxdeploy/linuxdeploy/issues/143
-    #- wget https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage --directory-prefix=$BUILD_FOLDER/
-    - wget -c https://artifacts.assassinate-you.net/artifactory/list/linuxdeploy/travis-456/linuxdeploy-x86_64.AppImage --directory-prefix=$BUILD_FOLDER/
-    - wget -c https://github.com/linuxdeploy/linuxdeploy-plugin-appimage/releases/download/continuous/linuxdeploy-plugin-appimage-x86_64.AppImage --directory-prefix=$BUILD_FOLDER/
-    - wget -c https://raw.githubusercontent.com/linuxdeploy/linuxdeploy-plugin-gtk/master/linuxdeploy-plugin-gtk.sh --directory-prefix=$BUILD_FOLDER/
-    - chmod +x $BUILD_FOLDER/*AppImage $BUILD_FOLDER/*sh
-    - export OUTPUT="Remmina-x86_64.AppImage"
-    - cd $BUILD_FOLDER && ./linuxdeploy-x86_64.AppImage --appimage-extract
-    - mv squashfs-root/ linuxdeploy/
-    - export UPDATE_INFORMATION="gh-releases-zsync|AppImage|appimaged|continuous|appimaged*$ARCH*.AppImage.zsync"
-    - export SIGN=1
-    - export VERBOSE=1
-    - linuxdeploy/AppRun --appdir AppDir --plugin gtk --output appimage
-    # - linuxdeploy/AppRun --appdir AppDir --output appimage
-
+  - mkdir $BUILD_FOLDER
+  - cmake -B$BUILD_FOLDER -H. $CMAKE_BUILD_OPTIONS -DCMAKE_INSTALL_PREFIX=/usr
+  - make VERBOSE=1 -C $BUILD_FOLDER
+  - make VERBOSE=1 -C $BUILD_FOLDER install DESTDIR=AppDir
+  - wget -c https://artifacts.assassinate-you.net/artifactory/list/linuxdeploy/travis-456/linuxdeploy-x86_64.AppImage
+    --directory-prefix=$BUILD_FOLDER/
+  - wget -c https://github.com/linuxdeploy/linuxdeploy-plugin-appimage/releases/download/continuous/linuxdeploy-plugin-appimage-x86_64.AppImage
+    --directory-prefix=$BUILD_FOLDER/
+  - wget -c https://raw.githubusercontent.com/linuxdeploy/linuxdeploy-plugin-gtk/master/linuxdeploy-plugin-gtk.sh
+    --directory-prefix=$BUILD_FOLDER/
+  - chmod +x $BUILD_FOLDER/*AppImage $BUILD_FOLDER/*sh
+  - export OUTPUT="Remmina-x86_64.AppImage"
+  - cd $BUILD_FOLDER && ./linuxdeploy-x86_64.AppImage --appimage-extract
+  - mv squashfs-root/ linuxdeploy/
+  - export UPDATE_INFORMATION="gh-releases-zsync|AppImage|appimaged|continuous|appimaged*$ARCH*.AppImage.zsync"
+  - export SIGN=1
+  - export VERBOSE=1
+  - linuxdeploy/AppRun --appdir AppDir --plugin gtk --output appimage
   artifacts:
-    name: "Remmina-x86_64.AppImage"
-    expose_as: "Download AppImage"
+    name: Remmina-x86_64.AppImage
+    expose_as: Download AppImage
     paths:
-      - build/Remmina-x86_64.AppImage
+    - build/Remmina-x86_64.AppImage
     expire_in: 7 days
   only:
     refs:
     - web
     - schedules
-
 flatpak:test:
   image: registry.gitlab.com/remmina/remmina/ubuntu:18.04
   stage: build
   variables:
-    BUNDLE: "remmina-dev.flatpak"
-    FLATPAK_PPA: "ppa:alexlarsson/flatpak"
-    FLATHUB_REPO: "https://flathub.org/repo/flathub.flatpakrepo"
+    BUNDLE: remmina-dev.flatpak
+    FLATPAK_PPA: ppa:alexlarsson/flatpak
+    FLATHUB_REPO: https://flathub.org/repo/flathub.flatpakrepo
   before_script:
-    - apt-get update -qq
-    - add-apt-repository $FLATPAK_PPA -y
-    - apt-get update -qq
-    - apt-get install -y -qq flatpak-builder flatpak build-essential git-core
-    - flatpak --user remote-add --if-not-exists flathub $FLATHUB_REPO
+  - apt-get update -qq
+  - add-apt-repository $FLATPAK_PPA -y
+  - apt-get update -qq
+  - apt-get install -y -qq flatpak-builder flatpak build-essential git-core
+  - flatpak --user remote-add --if-not-exists flathub $FLATHUB_REPO
   script:
-    - /bin/sh -xe ./flatpak/flatpak-build.sh
+  - "/bin/sh -xe ./flatpak/flatpak-build.sh"
   artifacts:
-    expose_as: "Download the flatpak"
+    expose_as: Download the flatpak
     paths:
-      - flatpak/remmina-dev.flatpak
+    - flatpak/remmina-dev.flatpak
     expire_in: 7 days
   cache:
     paths:
-      - flatpak/.flatpak-builder/cache
-      - flatpak/.flatpak-builder/downloads
-      - flatpak/.flatpak-builder/git
+    - flatpak/.flatpak-builder/cache
+    - flatpak/.flatpak-builder/downloads
+    - flatpak/.flatpak-builder/git
   only:
-    - merge_requests
-    - tags
-    - web
-    - schedules
-
+  - merge_requests
+  - tags
+  - web
+  - schedules
 snap:build:
   image: ubuntudesktop/gnome-3-28-1804
   stage: build
   script:
-    - export LC_ALL=C.UTF-8
-    - export LANG=C.UTF-8
-    - export SNAP_ARCH=amd64
-    - export SNAPCRAFT_BUILD_INFO=1
-    - apt-get -y update
-    - snapcraft --destructive-mode
-    - |
-       if [ "$CI_COMMIT_REF_NAME" = "master" ]; then
-         echo $SNAPCRAFT_LOGIN | snapcraft login --with -
-         snapcraft push remmina*.snap --release edge
-         snapcraft logout
-       fi
+  - export LC_ALL=C.UTF-8
+  - export LANG=C.UTF-8
+  - export SNAP_ARCH=amd64
+  - export SNAPCRAFT_BUILD_INFO=1
+  - apt-get -y update
+  - snapcraft --destructive-mode
+  - |
+    if [ "$CI_COMMIT_REF_NAME" = "master" ]; then
+      echo $SNAPCRAFT_LOGIN | snapcraft login --with -
+      snapcraft push remmina*.snap --release edge
+      snapcraft logout
+    fi
   allow_failure: false
   artifacts:
-    paths: ['./*.snap']
+    paths:
+    - "./*.snap"
     expire_in: 10 days
   only:
     refs:
-      - tags
-      - merge_requests
-      - web
-      - schedules
+    - tags
+    - merge_requests
+    - web
+    - schedules
 trigger_build:
   stage: build
   script:
-    - "curl -X POST -F token=$CITOKEN -F ref=master https://gitlab.com/api/v4/projects/10530342/trigger/pipeline"
+  - curl -X POST -F token=$CITOKEN -F ref=master https://gitlab.com/api/v4/projects/10530342/trigger/pipeline
+sast:
+  stage: test
+include:
+- template: Security/SAST.gitlab-ci.yml
