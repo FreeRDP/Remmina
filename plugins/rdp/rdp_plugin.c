@@ -1578,6 +1578,20 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 		}
 	}
 
+	cs = remmina_plugin_service->file_get_string(remminafile, "audio-output");
+	if (cs != NULL && cs[0] != '\0') {
+		REMMINA_PLUGIN_DEBUG("audio output set to %s", cs);
+		char **p;
+		size_t count;
+
+		p = remmina_rdp_CommandLineParseCommaSeparatedValuesEx("rdpsnd", g_strdup(cs), &count);
+		gboolean status = freerdp_client_add_static_channel(rfi->settings, count, p);
+		if (status == 0)
+			status = freerdp_client_add_dynamic_channel(rfi->settings, count, p);
+		g_free(p);
+	}
+
+
 	cs = remmina_plugin_service->file_get_string(remminafile, "freerdp_log_level");
 	if (cs != NULL && cs[0] != '\0') {
 		wLog *root = WLog_GetRoot();
@@ -2312,13 +2326,25 @@ static gchar clientbuild_tooltip[] =
 	   "    SCardWriteCache(), SCardGetTransmitCount()\n"
 	   "  • >= 7065: Windows 8 and newer: SCardGetReaderIcon(),\n"
 	   "    SCardGetDeviceTypeId()");
+
 static gchar microphone_tooltip[] =
 	N_("Options for redirection of audio input:\n"
 	   "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
 	   "    [channel:<channel>] Audio input (microphone)\n"
+	   "  • sys:pulse\n"
 	   "  • format:1\n"
 	   "  • sys:oss,dev:1,format:1\n"
 	   "  • sys:alsa");
+
+static gchar audio_tooltip[] =
+	N_("Options for redirection of audio ouput:\n"
+	   "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
+	   "    [channel:<channel>] Audio output\n"
+	   "  • sys:pulse\n"
+	   "  • format:1\n"
+	   "  • sys:oss,dev:1,format:1\n"
+	   "  • sys:alsa");
+
 
 static gchar usb_tooltip[] =
 	N_("Options for redirection of USB device:\n"
@@ -2376,6 +2402,7 @@ static const RemminaProtocolSetting remmina_rdp_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "freerdp_log_level",	    N_("FreeRDP log level"),				 FALSE, log_level,	  NULL														 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "freerdp_log_filters",    N_("FreeRDP log filters"),				 FALSE, NULL,		  N_("tag:level[,tag:level[,…]]")										 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "sound",		    N_("Sound"),					 FALSE, sound_list,	  NULL														 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "audio-output",	    N_("Redirect local audio output"),			 TRUE,	NULL,		  audio_tooltip												 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "microphone",		    N_("Redirect local microphone"),			 TRUE,	NULL,		  microphone_tooltip												 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "timeout",		    N_("Connection timeout in ms"),			 TRUE,	NULL,		  timeout_tooltip												 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "gateway_server",	    N_("Remote Desktop Gateway server"),		 FALSE, NULL,		  NULL														 },
