@@ -26,25 +26,32 @@ apps:
     extensions: [gnome-3-28]
     common-id: org.remmina.Remmina.desktop
     plugs:
+      - alsa
+      - audio-playback
+      - audio-record
       - avahi-observe
       - browser-support
       - cups-control
+      - desktop
+      - desktop-legacy
       - gsettings
       - home
+      - media-hub
       - mount-observe
       - network
       - network-bind
       - opengl
+      - optical-drive
       - password-manager-service
-      - audio-playback
       - pulseaudio
-      - audio-record
+      - raw-usb
+      - removable-media
+      - screen-inhibit-control
       - ssh-keys
       - ssh-public-keys
-      - removable-media
       - unity7
       - wayland
-      - desktop
+      - x11
 
   winpr-makecert:
     command: winpr-makecert
@@ -95,6 +102,8 @@ parts:
       - libxtst-dev
       - libxv-dev
       - libavresample-dev
+      - libgstreamer1.0-dev
+      - libgstreamer-plugins-base1.0-dev
     stage-packages:
       - libusb-1.0-0
       - libzvbi0
@@ -256,6 +265,7 @@ parts:
       - libwebkit2gtk-4.0-37
       - libjavascriptcoregtk-4.0-18
       - libusb-1.0-0
+      - libpulse0
       - pulseaudio
       - pulseaudio-utils
       - libsndfile1
@@ -268,6 +278,17 @@ parts:
       - libogg0
       - libvorbis0a
       - libpcre2-8-0
+      - libgstreamer1.0-0
+      - libgstreamer-plugins-base1.0-0
+      - gstreamer1.0-alsa
+      - gstreamer1.0-pulseaudio
+      - gstreamer1.0-plugins-base
+      - gstreamer1.0-plugins-good
+      - gstreamer1.0-plugins-bad
+      - gstreamer1.0-plugins-ugly
+      - gstreamer1.0-libav
+      - dbus-x11
+      - xdg-user-dirs
       # Needed for the example .wav files for testing purposes
       - alsa-utils
 
