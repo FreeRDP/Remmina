@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2020-11-26 23:13+0000\n"
+"POT-Creation-Date: 2020-11-27 08:40+0000\n"
 "PO-Revision-Date: 2020-10-22 06:35+0000\n"
 "Last-Translator: Artem <KovalevArtem.ru@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -164,23 +164,35 @@ msgstr "Разрешения"
 msgid "Configure the available resolutions"
 msgstr "Настройка доступных разрешений"
 
-#: src/remmina_pref_dialog.c:132
+#: src/remmina_pref_dialog.c:135
 msgid "Recent lists cleared."
 msgstr "Списки истории очищены."
 
-#: src/remmina_pref_dialog.c:143 src/rcw.c:1896
+#: src/remmina_pref_dialog.c:146 src/rcw.c:1896
 #: data/ui/remmina_preferences.glade:246 data/ui/remmina_preferences.glade:256
 msgid "Keystrokes"
 msgstr "Комбинации клавиш"
 
-#: src/remmina_pref_dialog.c:143
+#: src/remmina_pref_dialog.c:146
 msgid "Configure the keystrokes"
 msgstr "Настройка комбинации клавиш"
 
 #. TRANSLATORS: Do not translate libsodium, is the name of a library
-#: src/remmina_pref_dialog.c:449
+#: src/remmina_pref_dialog.c:452
 msgid "libsodium >= 1.9.0 is required to use master password"
 msgstr "libsodium 1.9.0 (или старше) требуется для использования мастер-пароля"
+
+#: src/remmina_pref_dialog.c:736
+#, fuzzy
+#| msgid "Pick a terminal colouring file"
+msgid "Picking a terminal colouring file replaces the file: "
+msgstr "Выбор файла цветовой схемы терминала"
+
+#: src/remmina_pref_dialog.c:740
+msgid ""
+"This file is used as custom terminal colour scheme in the advanced profile "
+"TAB"
+msgstr ""
 
 #: src/remmina_ssh_plugin.c:500
 #, c-format
@@ -263,7 +275,7 @@ msgstr "Выбрать все"
 msgid "_Select all"
 msgstr "_Выбрать все"
 
-#: src/remmina_ssh_plugin.c:1284 data/ui/remmina_preferences.glade:2283
+#: src/remmina_ssh_plugin.c:1284 data/ui/remmina_preferences.glade:2287
 msgid "Increase font size"
 msgstr "Увеличить шрифт"
 
@@ -271,7 +283,7 @@ msgstr "Увеличить шрифт"
 msgid "_Increase font size"
 msgstr "_Увеличить шрифт"
 
-#: src/remmina_ssh_plugin.c:1285 data/ui/remmina_preferences.glade:2296
+#: src/remmina_ssh_plugin.c:1285 data/ui/remmina_preferences.glade:2300
 msgid "Decrease font size"
 msgstr "Уменьшить шрифт"
 
@@ -3356,40 +3368,40 @@ msgstr "Шрифт терминала"
 msgid "Scrollback lines"
 msgstr "Лимит обратной прокрутки строк"
 
-#: data/ui/remmina_preferences.glade:1808
+#: data/ui/remmina_preferences.glade:1809
 msgid "Shortcut for copying to clipboard"
 msgstr "Комбинация копирования в буфер обмена"
 
-#: data/ui/remmina_preferences.glade:1821
+#: data/ui/remmina_preferences.glade:1822
 msgid "Shortcut for pasting from clipboard"
 msgstr "Комбинация вставки из буфера обмена"
 
-#: data/ui/remmina_preferences.glade:1834
+#: data/ui/remmina_preferences.glade:1835
 msgid "Select all shortcuts"
 msgstr "Комбинация Выбрать все"
 
-#: data/ui/remmina_preferences.glade:1848
-#: data/ui/remmina_preferences.glade:1865
-#: data/ui/remmina_preferences.glade:1882
-#: data/ui/remmina_preferences.glade:2310
-#: data/ui/remmina_preferences.glade:2327
-#: data/ui/remmina_preferences.glade:2357
+#: data/ui/remmina_preferences.glade:1849
+#: data/ui/remmina_preferences.glade:1867
+#: data/ui/remmina_preferences.glade:1885
+#: data/ui/remmina_preferences.glade:2314
+#: data/ui/remmina_preferences.glade:2332
+#: data/ui/remmina_preferences.glade:2363
 msgid "(Host key+)"
 msgstr "(клавиша Host+)"
 
-#: data/ui/remmina_preferences.glade:1898
+#: data/ui/remmina_preferences.glade:1902
 msgid "Use default system font"
 msgstr "Использовать системный шрифт"
 
-#: data/ui/remmina_preferences.glade:1936
+#: data/ui/remmina_preferences.glade:1940
 msgid "Allow bold text"
 msgstr "Разрешить жирный текст"
 
-#: data/ui/remmina_preferences.glade:1950
+#: data/ui/remmina_preferences.glade:1954
 msgid "Colour theme"
 msgstr "Цветовая схема"
 
-#: data/ui/remmina_preferences.glade:1961
+#: data/ui/remmina_preferences.glade:1965
 msgid ""
 "Choose a colour scheme file. Usually available in /usr/share/remmina/theme. "
 "https://github.com/mbadolato/iTerm2-Color-Schemes has more details."
@@ -3398,102 +3410,102 @@ msgstr ""
 "share/remmina/theme. Справка https://github.com/mbadolato/iTerm2-Color-"
 "Schemes."
 
-#: data/ui/remmina_preferences.glade:1964
+#: data/ui/remmina_preferences.glade:1968
 msgid "Pick a terminal colouring file"
 msgstr "Выбор файла цветовой схемы терминала"
 
-#: data/ui/remmina_preferences.glade:1979
+#: data/ui/remmina_preferences.glade:1983
 msgid "Bright colours"
 msgstr "Яркие цвета"
 
-#: data/ui/remmina_preferences.glade:1991
+#: data/ui/remmina_preferences.glade:1995
 msgid "Pick a light black colour"
 msgstr "Выбрать цвет для светло-чёрного"
 
-#: data/ui/remmina_preferences.glade:2003
+#: data/ui/remmina_preferences.glade:2007
 msgid "Pick a light red colour"
 msgstr "Выбрать цвет для светло-красного"
 
-#: data/ui/remmina_preferences.glade:2015
+#: data/ui/remmina_preferences.glade:2019
 msgid "Pick a bright green colour"
 msgstr "Выбрать цвет для ярко зелёного"
 
-#: data/ui/remmina_preferences.glade:2027
+#: data/ui/remmina_preferences.glade:2031
 msgid "Pick a bright yellow colour"
 msgstr "Выбрать цвет для ярко жёлтого"
 
-#: data/ui/remmina_preferences.glade:2039
+#: data/ui/remmina_preferences.glade:2043
 msgid "Pick a bright blue colour"
 msgstr "Выбрать цвет для голубого"
 
-#: data/ui/remmina_preferences.glade:2051
+#: data/ui/remmina_preferences.glade:2055
 msgid "Pick a light magenta colour"
 msgstr "Выбрать цвет для светло-фуксинового"
 
-#: data/ui/remmina_preferences.glade:2063
+#: data/ui/remmina_preferences.glade:2067
 msgid "Pick a light cyan colour"
 msgstr "Выбрать цвет для светло-цианового"
 
-#: data/ui/remmina_preferences.glade:2076
+#: data/ui/remmina_preferences.glade:2080
 msgid "Pick a light white colour"
 msgstr "Выбрать цвет для светло-белого"
 
-#: data/ui/remmina_preferences.glade:2088
+#: data/ui/remmina_preferences.glade:2092
 msgid "Pick a black colour"
 msgstr "Выбрать цвет для чёрного"
 
-#: data/ui/remmina_preferences.glade:2100
+#: data/ui/remmina_preferences.glade:2104
 msgid "Pick a red colour"
 msgstr "Выбрать цвет для красного"
 
-#: data/ui/remmina_preferences.glade:2112
+#: data/ui/remmina_preferences.glade:2116
 msgid "Pick a green colour"
 msgstr "Выбрать цвет для зелёного"
 
-#: data/ui/remmina_preferences.glade:2124
+#: data/ui/remmina_preferences.glade:2128
 msgid "Pick a yellow colour"
 msgstr "Выбрать цвет для жёлтого"
 
-#: data/ui/remmina_preferences.glade:2136
+#: data/ui/remmina_preferences.glade:2140
 msgid "Pick a blue colour"
 msgstr "Выбрать цвет для синего"
 
-#: data/ui/remmina_preferences.glade:2148
+#: data/ui/remmina_preferences.glade:2152
 msgid "Pick a magenta colour"
 msgstr "Выбрать цвет для фуксинового"
 
-#: data/ui/remmina_preferences.glade:2160
+#: data/ui/remmina_preferences.glade:2164
 msgid "Pick a cyan colour"
 msgstr "Выбрать цвет для цианового"
 
-#: data/ui/remmina_preferences.glade:2173
+#: data/ui/remmina_preferences.glade:2177
 msgid "Pick a white colour"
 msgstr "Выбрать цвет для белого"
 
-#: data/ui/remmina_preferences.glade:2186
+#: data/ui/remmina_preferences.glade:2190
 msgid "Normal colours"
 msgstr "Обычные цвета"
 
-#: data/ui/remmina_preferences.glade:2199
-#: data/ui/remmina_preferences.glade:2213
+#: data/ui/remmina_preferences.glade:2203
+#: data/ui/remmina_preferences.glade:2217
 msgid "Cursor colour"
 msgstr "Цвет курсора"
 
-#: data/ui/remmina_preferences.glade:2227
-#: data/ui/remmina_preferences.glade:2241
+#: data/ui/remmina_preferences.glade:2231
+#: data/ui/remmina_preferences.glade:2245
 msgid "Background colour"
 msgstr "Цвет заднего плана"
 
-#: data/ui/remmina_preferences.glade:2256
-#: data/ui/remmina_preferences.glade:2270
+#: data/ui/remmina_preferences.glade:2260
+#: data/ui/remmina_preferences.glade:2274
 msgid "Foreground colour"
 msgstr "Цвет переднего плана"
 
-#: data/ui/remmina_preferences.glade:2343
+#: data/ui/remmina_preferences.glade:2349
 msgid "Search text"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:2483
+#: data/ui/remmina_preferences.glade:2382
 msgid "Terminal"
 msgstr "Терминал"
 
