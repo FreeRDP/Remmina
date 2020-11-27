@@ -116,8 +116,11 @@ void remmina_pref_on_color_scheme_selected(GtkWidget *widget, gpointer user_data
 			NULL,
 			NULL);
 		/* Here we should reinitialize the widget */
+		gtk_file_chooser_set_file (remmina_pref_dialog->button_term_cs, source, NULL);
 	}
 	g_free(sourcepath);
+	g_free(remmina_dir);
+	g_free(destpath);
 	g_object_unref(source);
 }
 
@@ -725,8 +728,20 @@ GtkDialog* remmina_pref_dialog_new(gint default_tab, GtkWindow *parent)
 	remmina_pref_dialog->colorbutton_color15 = GTK_COLOR_BUTTON(GET_OBJECT("colorbutton_color15"));
 #if defined (HAVE_LIBSSH) && defined (HAVE_LIBVTE)
 #if VTE_CHECK_VERSION(0, 38, 0)
+	const gchar *remmina_dir;
+	gchar *destpath;
+	remmina_dir = g_build_path( "/", g_get_user_config_dir(), "remmina", NULL);
+	destpath = g_strdup_printf("%s/remmina.colors", remmina_dir);
 	remmina_pref_dialog->button_term_cs = GTK_FILE_CHOOSER(GET_OBJECT("button_term_cs"));
+	const gchar *fc_tooltip_text = g_strconcat (_("Picking a terminal colouring file replaces the file: "),
+			"\n",
+			destpath,
+			"\n",
+			_("This file is used as custom terminal colour scheme in the advanced profile TAB"),
+			NULL);
+	gtk_widget_set_tooltip_text (GTK_WIDGET(remmina_pref_dialog->button_term_cs), fc_tooltip_text);
 	gtk_file_chooser_set_current_folder( GTK_FILE_CHOOSER(remmina_pref_dialog->button_term_cs), REMMINA_RUNTIME_TERM_CS_DIR);
+	g_free(destpath);
 #endif
 #endif
 

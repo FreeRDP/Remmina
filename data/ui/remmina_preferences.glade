@@ -1748,11 +1748,11 @@ Author: Antenore Gatta
                 </child>
                 <child>
                   <object class="GtkFontButton" id="fontbutton_terminal_font">
+                    <property name="width_request">200</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
-                    <property name="halign">start</property>
-                    <property name="margin_right">18</property>
+                    <property name="margin_end">18</property>
                     <property name="margin_top">18</property>
                     <property name="font">Sans 12</property>
                     <property name="preview_text"/>
@@ -1787,10 +1787,11 @@ Author: Antenore Gatta
                 </child>
                 <child>
                   <object class="GtkEntry" id="entry_scrollback_lines">
+                    <property name="width_request">200</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="halign">start</property>
-                    <property name="margin_right">18</property>
+                    <property name="margin_end">18</property>
                     <property name="max_length">5</property>
                   </object>
                   <packing>
@@ -1841,52 +1842,55 @@ Author: Antenore Gatta
                 <child>
                   <object class="GtkButton" id="button_keyboard_copy">
                     <property name="label">Copy</property>
-                    <property name="width_request">100</property>
+                    <property name="width_request">200</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
                     <property name="tooltip_text" translatable="yes">(Host key+)</property>
-                    <property name="margin_right">18</property>
+                    <property name="halign">start</property>
+                    <property name="margin_end">18</property>
                     <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
                     <property name="top_attach">4</property>
-                    <property name="width">2</property>
+                    <property name="width">8</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkButton" id="button_keyboard_paste">
                     <property name="label">Paste</property>
-                    <property name="width_request">100</property>
+                    <property name="width_request">200</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
                     <property name="tooltip_text" translatable="yes">(Host key+)</property>
-                    <property name="margin_right">18</property>
+                    <property name="halign">start</property>
+                    <property name="margin_end">18</property>
                     <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
                     <property name="top_attach">5</property>
-                    <property name="width">2</property>
+                    <property name="width">8</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkButton" id="button_keyboard_select_all">
                     <property name="label">Select_all</property>
-                    <property name="width_request">100</property>
+                    <property name="width_request">200</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
                     <property name="tooltip_text" translatable="yes">(Host key+)</property>
-                    <property name="margin_right">18</property>
+                    <property name="halign">start</property>
+                    <property name="margin_end">18</property>
                     <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
                     <property name="top_attach">6</property>
-                    <property name="width">2</property>
+                    <property name="width">8</property>
                   </packing>
                 </child>
                 <child>
@@ -1959,7 +1963,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="tooltip_text" translatable="yes">Choose a colour scheme file. Usually available in /usr/share/remmina/theme. https://github.com/mbadolato/iTerm2-Color-Schemes has more details.</property>
-                    <property name="margin_right">18</property>
+                    <property name="margin_end">18</property>
                     <property name="margin_bottom">18</property>
                     <property name="title" translatable="yes">Pick a terminal colouring file</property>
                     <signal name="file-set" handler="remmina_pref_on_color_scheme_selected" swapped="no"/>
@@ -2072,7 +2076,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
-                    <property name="margin_right">18</property>
+                    <property name="margin_end">18</property>
                     <property name="title" translatable="yes">Pick a light white colour</property>
                   </object>
                   <packing>
@@ -2169,7 +2173,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
-                    <property name="margin_right">18</property>
+                    <property name="margin_end">18</property>
                     <property name="title" translatable="yes">Pick a white colour</property>
                   </object>
                   <packing>
@@ -2209,7 +2213,7 @@ Author: Antenore Gatta
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
                     <property name="halign">start</property>
-                    <property name="margin_right">18</property>
+                    <property name="margin_end">18</property>
                     <property name="title" translatable="yes">Cursor colour</property>
                   </object>
                   <packing>
@@ -2237,7 +2241,7 @@ Author: Antenore Gatta
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
                     <property name="halign">start</property>
-                    <property name="margin_right">18</property>
+                    <property name="margin_end">18</property>
                     <property name="title" translatable="yes">Background colour</property>
                   </object>
                   <packing>
@@ -2252,7 +2256,7 @@ Author: Antenore Gatta
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
                     <property name="halign">start</property>
-                    <property name="margin_right">18</property>
+                    <property name="margin_end">18</property>
                     <property name="title" translatable="yes">Foreground colour</property>
                   </object>
                   <packing>
@@ -2303,35 +2307,37 @@ Author: Antenore Gatta
                 <child>
                   <object class="GtkButton" id="button_keyboard_increase_font">
                     <property name="label">Increase</property>
-                    <property name="width_request">100</property>
+                    <property name="width_request">200</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
                     <property name="tooltip_text" translatable="yes">(Host key+)</property>
-                    <property name="margin_right">18</property>
+                    <property name="halign">start</property>
+                    <property name="margin_end">18</property>
                     <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
                     <property name="top_attach">7</property>
-                    <property name="width">2</property>
+                    <property name="width">8</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkButton" id="button_keyboard_decrease_font">
                     <property name="label">Decrease</property>
-                    <property name="width_request">100</property>
+                    <property name="width_request">200</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
                     <property name="tooltip_text" translatable="yes">(Host key+)</property>
-                    <property name="margin_right">18</property>
+                    <property name="halign">start</property>
+                    <property name="margin_end">18</property>
                     <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
                     <property name="top_attach">8</property>
-                    <property name="width">2</property>
+                    <property name="width">8</property>
                   </packing>
                 </child>
                 <child>
@@ -2350,126 +2356,19 @@ Author: Antenore Gatta
                 <child>
                   <object class="GtkButton" id="button_keyboard_search_text">
                     <property name="label">Search</property>
-                    <property name="width_request">100</property>
+                    <property name="width_request">200</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
                     <property name="tooltip_text" translatable="yes">(Host key+)</property>
-                    <property name="margin_right">18</property>
+                    <property name="halign">start</property>
+                    <property name="margin_end">18</property>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
                     <property name="top_attach">9</property>
-                    <property name="width">2</property>
+                    <property name="width">8</property>
                   </packing>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
                 </child>
               </object>
               <packing>
