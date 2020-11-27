@@ -2358,7 +2358,7 @@ static gchar clientbuild_list[] =
 	N_("2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 and newer)");
 
 static gchar clientbuild_tooltip[] =
-	N_("Used i.a. by terminal services in smart card channel to distinguish client capabilities:\n"
+	N_("Used i.a. by terminal services in a smart card channel to distinguish client capabilities:\n"
 	   "  • < 4034: Windows XP base smart card functions\n"
 	   "  • 4034-7064: Windows Vista/7: SCardReadCache(),\n"
 	   "    SCardWriteCache(), SCardGetTransmitCount()\n"
@@ -2380,13 +2380,13 @@ static gchar usb_tooltip[] =
 
 static gchar timeout_tooltip[] =
 	N_("Advanced setting for high latency links:\n"
-	   "Adjust connection timeout, use if you encounter timeout failures with your connection.\n"
-	   "The highest possible value is 600000 ms (10 minutes)\n");
+	   "Adjusts the connection timeout. Use if your connection times out.\n"
+	   "The highest possible value is 600000 ms (10 minutes).\n");
 
 static gchar network_tooltip[] =
 	N_("Network type selection:\n"
-	   "It is advised to use autodetect.\n"
-	   "If autodetect fails choose the most appropriate in the list.\n");
+	   "Using autodetection is advised.\n"
+	   "If \"Autodetect\" fails, choose the most appropriate option in the list.\n");
 
 
 /* Array of RemminaProtocolSetting for basic settings.
@@ -2426,7 +2426,7 @@ static const RemminaProtocolSetting remmina_rdp_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "security",		    N_("Security protocol negotiation"),		 FALSE, security_list,	  NULL														 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "gwtransp",		    N_("Gateway transport type"),			 FALSE, gwtransp_list,	  NULL														 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "freerdp_log_level",	    N_("FreeRDP log level"),			 	FALSE, log_level,	  NULL														 },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "freerdp_log_filters",		    N_("FreeRDP log filters"),			 FALSE, NULL,		  N_("tag:level[,tag:level[,...]]")											 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "freerdp_log_filters",		    N_("FreeRDP log filters"),			 FALSE, NULL,		  N_("tag:level[,tag:level[,…]]")											 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "sound",		    N_("Sound"),					 FALSE, sound_list,	  NULL														 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "microphone",		    N_("Redirect local microphone"),			 TRUE,	NULL,		  microphone_tooltip												 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "timeout",		    N_("Connection timeout in ms"),			 TRUE,	NULL,		  timeout_tooltip												 },
@@ -2469,7 +2469,7 @@ static const RemminaProtocolSetting remmina_rdp_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "relax-order-checks",	    N_("Relax order checks"),				 TRUE,	NULL,		  NULL														 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "glyph-cache",	    N_("Glyph cache"),					 TRUE,	NULL,		  NULL														 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "multitransport",	    N_("Enable multitransport protocol (UDP)"),		 TRUE,	NULL,		  N_("Using the UDP protocol may improve performance")								 },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "base-cred-for-gw",	    N_("Use base credentials also for Gateway"),					 TRUE,	NULL,		  NULL														 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "base-cred-for-gw",	    N_("Use base credentials for gateway too"),					 TRUE,	NULL,		  NULL														 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	  NULL,			    NULL,						 FALSE, NULL,		  NULL														 }
 };
 
