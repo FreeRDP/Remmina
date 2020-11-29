@@ -5,6 +5,10 @@ grade: stable
 confinement: strict
 base: core18
 
+environment:
+  DISABLE_WAYLAND: "1"
+  LD_LIBRARY_PATH: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/pulseaudio
+
 layout:
   /usr/lib/$SNAPCRAFT_ARCH_TRIPLET/webkit2gtk-4.0:
     bind: $SNAP/gnome-platform/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/webkit2gtk-4.0
@@ -19,9 +23,6 @@ apps:
   remmina:
     # desktop-launch (used under the covers in gnome-3-28 extension) seems to
     # be broken when setting up wayland env so we disable it
-    environment:
-      DISABLE_WAYLAND: "1"
-      LD_LIBRARY_PATH: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/pulseaudio
     command: bin/pawrap $SNAP/usr/bin/remmina
     extensions: [gnome-3-28]
     common-id: org.remmina.Remmina.desktop
@@ -43,7 +44,6 @@ apps:
       - opengl
       - optical-drive
       - password-manager-service
-      - pulseaudio
       - raw-usb
       - removable-media
       - screen-inhibit-control
@@ -63,7 +63,36 @@ parts:
   pawrap:
     plugin: dump
     source: snap/local/files/
+  pulse-utils:
+    plugin: nil
+    stage-packages:
+      - pulseaudio
+      - pulseaudio-utils
+      - libsndfile1
+      - libxcb1
+      - libasyncns0
+      - libflac8
+      - libvorbisenc2
+      - libxau6
+      - libxdmcp6
+      - libogg0
+      - libvorbis0a
+    prime:
+      - usr/lib/*/pulseaudio/libpulsecommon-8.0.so*
+      - usr/lib/*/libpulse.so*
+      - usr/lib/*/libpulse-simple.so*
+      - usr/lib/*/libsndfile.so*
+      - usr/lib/*/libxcb.so*
+      - usr/lib/*/libasyncns.so*
+      - usr/lib/*/libFLAC.so*
+      - usr/lib/*/libvorbisenc.so*
+      - usr/lib/*/libXau.so*
+      - usr/lib/*/libXdmcp.so*
+      - usr/lib/*/libogg.so*
+      - usr/lib/*/libvorbis.so.*
   freerdp:
+    after:
+      - pulse-utils
     plugin: cmake
     source: https://github.com/FreeRDP/FreeRDP.git
     source-tag: 2.2.0
@@ -289,8 +318,6 @@ parts:
       - gstreamer1.0-libav
       - dbus-x11
       - xdg-user-dirs
-      # Needed for the example .wav files for testing purposes
-      - alsa-utils
 
     override-build: |
       set -ex
