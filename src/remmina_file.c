@@ -508,7 +508,7 @@ gchar *remmina_file_format_properties(RemminaFile *remminafile, const gchar *set
 	remmina_utils_string_replace_all(fmt_str, "%g", remmina_file_get_string(remminafile, "group"));
 
 	now = g_date_time_new_now_local ();
-	date_str = g_date_time_format(now, "YYYY-MM-DDTHH-MM-SSZ");
+	date_str = g_date_time_format(now, "%FT%TZ");
 	remmina_utils_string_replace_all(fmt_str, "%d", date_str);
 	g_free(date_str);
 
