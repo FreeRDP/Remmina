@@ -188,7 +188,6 @@ typedef enum {
 	REMMINA_RDP_UI_CONNECTED,
 	REMMINA_RDP_UI_RECONNECT_PROGRESS,
 	REMMINA_RDP_UI_CURSOR,
-	REMMINA_RDP_UI_RFX,
 	REMMINA_RDP_UI_NOCODEC,
 	REMMINA_RDP_UI_CLIPBOARD,
 	REMMINA_RDP_UI_EVENT
@@ -295,7 +294,6 @@ struct rf_context {
 	RDP_PLUGIN_DATA		drdynvc_data[5];
 	gchar			rdpsnd_options[20];
 
-	RFX_CONTEXT *		rfx_context;
 	gboolean		rdpgfxchan;
 
 	gboolean		connected;

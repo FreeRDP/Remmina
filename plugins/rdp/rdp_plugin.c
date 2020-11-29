@@ -569,14 +569,6 @@ static BOOL remmina_rdp_pre_connect(freerdp *instance)
 	settings->BitmapCacheEnabled = True;
 	settings->OffscreenSupportLevel = True;
 
-	if (settings->RemoteFxCodec == True) {
-		settings->FrameAcknowledge = False;
-		settings->LargePointerFlag = True;
-		settings->PerformanceFlags = PERF_FLAG_NONE;
-
-		rfi->rfx_context = rfx_context_new(FALSE);
-	}
-
 	PubSub_SubscribeChannelConnected(instance->context->pubSub,
 					 (pChannelConnectedEventHandler)remmina_rdp_OnChannelConnectedEventHandler);
 	PubSub_SubscribeChannelDisconnected(instance->context->pubSub,
@@ -1946,11 +1938,6 @@ static void rfi_uninit(rfContext *rfi)
 		}
 	}
 
-
-	if (rfi->rfx_context) {
-		rfx_context_free(rfi->rfx_context);
-		rfi->rfx_context = NULL;
-	}
 	if (instance) {
 		RDP_CLIENT_ENTRY_POINTS *pEntryPoints = instance->pClientEntryPoints;
 		if (pEntryPoints)
