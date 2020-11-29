@@ -852,10 +852,6 @@ void remmina_rdp_event_free_event(RemminaProtocolWidget* gp, RemminaPluginRdpUiO
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
 
 	switch (obj->type) {
-	case REMMINA_RDP_UI_RFX:
-		rfx_message_free(rfi->rfx_context, obj->rfx.message);
-		break;
-
 	case REMMINA_RDP_UI_NOCODEC:
 		free(obj->nocodec.bitmap);
 		break;
