@@ -81,15 +81,6 @@ static void remmina_rdp_file_import_field(RemminaFile *remminafile, const gchar 
 			remmina_plugin_service->file_set_string(remminafile, "sound", "remote");
 			break;
 		}
-	} else if (g_strcmp0(key, "audiocapturemode") == 0) {
-		switch (atoi(value)) {
-		case 0:
-			remmina_plugin_service->file_set_string(remminafile, "microphone", "");
-			break;
-		case 1:
-			remmina_plugin_service->file_set_string(remminafile, "microphone", "sys:pulse");
-			break;
-		}
 	} else if (g_strcmp0(key, "redirectprinters") == 0) {
 		remmina_plugin_service->file_set_int(remminafile, "shareprinter", (atoi(value) == 1));
 	} else if (g_strcmp0(key, "redirectsmartcard") == 0) {
