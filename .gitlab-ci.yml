@@ -35,6 +35,7 @@ ubuntu:devel:
 appimage:build:
   image: registry.gitlab.com/remmina/remmina/ubuntu:18.04
   stage: build
+  only: [chat]
   before_script:
   - apt-get update -qq
   - apt-get install -y -qq libpcre2-8-0 libpcre2-dev wget
@@ -63,9 +64,6 @@ appimage:build:
     paths:
     - build/Remmina-x86_64.AppImage
     expire_in: 7 days
-  only:
-    refs:
-    - chat
 flatpak:test:
   image: registry.gitlab.com/remmina/remmina/ubuntu:18.04
   stage: build
