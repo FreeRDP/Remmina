@@ -849,7 +849,6 @@ void remmina_rdp_event_init(RemminaProtocolWidget* gp)
 void remmina_rdp_event_free_event(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* obj)
 {
 	TRACE_CALL(__func__);
-	rfContext* rfi = GET_PLUGIN_DATA(gp);
 
 	switch (obj->type) {
 	case REMMINA_RDP_UI_NOCODEC:

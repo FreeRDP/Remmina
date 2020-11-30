@@ -557,10 +557,8 @@ BOOL rf_keyboard_set_ime_status(rdpContext *context, UINT16 imeId, UINT32 imeSta
 static BOOL remmina_rdp_pre_connect(freerdp *instance)
 {
 	TRACE_CALL(__func__);
-	rfContext *rfi;
 	ALIGN64 rdpSettings *settings;
 
-	rfi = (rfContext *)instance->context;
 	settings = instance->settings;
 
 	settings->OsMajorType = OSMAJORTYPE_UNIX;
