@@ -7,7 +7,7 @@ base: core18
 
 environment:
   DISABLE_WAYLAND: "1"
-  LD_LIBRARY_PATH: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/pulseaudio
+  LD_LIBRARY_PATH: $LD_LIBRARY_PATH:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/pulseaudio
 
 layout:
   /usr/lib/$SNAPCRAFT_ARCH_TRIPLET/webkit2gtk-4.0:
@@ -77,6 +77,7 @@ parts:
       - libxdmcp6
       - libogg0
       - libvorbis0a
+      - libpulse0
     prime:
       - usr/lib/*/pulseaudio/libpulsecommon-8.0.so*
       - usr/lib/*/libpulse.so*
