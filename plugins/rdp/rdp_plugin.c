@@ -557,10 +557,8 @@ BOOL rf_keyboard_set_ime_status(rdpContext *context, UINT16 imeId, UINT32 imeSta
 static BOOL remmina_rdp_pre_connect(freerdp *instance)
 {
 	TRACE_CALL(__func__);
-	rfContext *rfi;
 	ALIGN64 rdpSettings *settings;
 
-	rfi = (rfContext *)instance->context;
 	settings = instance->settings;
 
 	settings->OsMajorType = OSMAJORTYPE_UNIX;
@@ -568,14 +566,6 @@ static BOOL remmina_rdp_pre_connect(freerdp *instance)
 
 	settings->BitmapCacheEnabled = True;
 	settings->OffscreenSupportLevel = True;
-
-	if (settings->RemoteFxCodec == True) {
-		settings->FrameAcknowledge = False;
-		settings->LargePointerFlag = True;
-		settings->PerformanceFlags = PERF_FLAG_NONE;
-
-		rfi->rfx_context = rfx_context_new(FALSE);
-	}
 
 	PubSub_SubscribeChannelConnected(instance->context->pubSub,
 					 (pChannelConnectedEventHandler)remmina_rdp_OnChannelConnectedEventHandler);
@@ -1975,11 +1965,6 @@ static void rfi_uninit(rfContext *rfi)
 		}
 	}
 
-
-	if (rfi->rfx_context) {
-		rfx_context_free(rfi->rfx_context);
-		rfi->rfx_context = NULL;
-	}
 	if (instance) {
 		RDP_CLIENT_ENTRY_POINTS *pEntryPoints = instance->pClientEntryPoints;
 		if (pEntryPoints)
