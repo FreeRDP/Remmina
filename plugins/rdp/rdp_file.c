@@ -267,7 +267,8 @@ gboolean remmina_rdp_file_export_channel(RemminaFile *remminafile, FILE *fp)
 	fprintf(fp, "alternate shell:s:%s\r\n", cs ? cs : "");
 	cs = remmina_plugin_service->file_get_string(remminafile, "execpath");
 	fprintf(fp, "shell working directory:s:%s\r\n", cs ? cs : "");
-	fprintf(fp, "gatewayhostname:s:\r\n");
+	cs = remmina_plugin_service->file_get_string(remminafile, "gateway_server");
+	fprintf(fp, "gatewayhostname:s:%s\r\n", cs ? cs : "");
 	fprintf(fp, "gatewayusagemethod:i:4\r\n");
 	fprintf(fp, "gatewaycredentialssource:i:4\r\n");
 	fprintf(fp, "gatewayprofileusagemethod:i:0\r\n");
