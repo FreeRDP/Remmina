@@ -65,8 +65,7 @@ appimage:build:
     expire_in: 7 days
   only:
     refs:
-    - web
-    - schedules
+    - chat
 flatpak:test:
   image: registry.gitlab.com/remmina/remmina/ubuntu:18.04
   stage: build
