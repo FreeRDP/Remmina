@@ -5,10 +5,6 @@ grade: stable
 confinement: strict
 base: core18
 
-environment:
-  DISABLE_WAYLAND: "1"
-  LD_LIBRARY_PATH: $LD_LIBRARY_PATH:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/pulseaudio
-
 layout:
   /usr/lib/$SNAPCRAFT_ARCH_TRIPLET/webkit2gtk-4.0:
     bind: $SNAP/gnome-platform/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/webkit2gtk-4.0
@@ -21,9 +17,7 @@ slots:
 
 apps:
   remmina:
-    # desktop-launch (used under the covers in gnome-3-28 extension) seems to
-    # be broken when setting up wayland env so we disable it
-    command: bin/pawrap $SNAP/usr/bin/remmina
+    command: bin/remmina
     extensions: [gnome-3-28]
     common-id: org.remmina.Remmina.desktop
     plugs:
@@ -66,8 +60,6 @@ parts:
   pulse-utils:
     plugin: nil
     stage-packages:
-      - pulseaudio
-      - pulseaudio-utils
       - libsndfile1
       - libxcb1
       - libasyncns0
@@ -78,19 +70,6 @@ parts:
       - libogg0
       - libvorbis0a
       - libpulse0
-    prime:
-      - usr/lib/*/pulseaudio/libpulsecommon-8.0.so*
-      - usr/lib/*/libpulse.so*
-      - usr/lib/*/libpulse-simple.so*
-      - usr/lib/*/libsndfile.so*
-      - usr/lib/*/libxcb.so*
-      - usr/lib/*/libasyncns.so*
-      - usr/lib/*/libFLAC.so*
-      - usr/lib/*/libvorbisenc.so*
-      - usr/lib/*/libXau.so*
-      - usr/lib/*/libXdmcp.so*
-      - usr/lib/*/libogg.so*
-      - usr/lib/*/libvorbis.so.*
   freerdp:
     after:
       - pulse-utils
@@ -319,70 +298,3 @@ parts:
       - gstreamer1.0-libav
       - dbus-x11
       - xdg-user-dirs
-
-    override-build: |
-      set -ex
-      snapcraftctl build
-    stage:
-      - usr/bin/gtk3-demo
-      - usr/lib/*/libFLAC.so*
-      - usr/lib/*/libXau.so*
-      - usr/lib/*/libXdmcp.so*
-      - usr/lib/*/libappindicator3.so.*
-      - usr/lib/*/libasyncns.so*
-      - usr/lib/*/libavahi*.so.*
-      - usr/lib/*/libavcodec.so.*
-      - usr/lib/*/libavutil.so.*
-      - usr/lib/*/libcacard.so.*
-      - usr/lib/*/libcrystalhd.so.*
-      - usr/lib/*/libdbusmenu-glib.so.*
-      - usr/lib/*/libdbusmenu-gtk3.so.*
-      - usr/lib/*/libgdbm.so.*
-      - usr/lib/*/libgomp.so.*
-      - usr/lib/*/libgsm.so.*
-      - usr/lib/*/libindicator3.so.*
-      - usr/lib/*/libmp3lame.so.*
-      - usr/lib/*/libnspr4.so
-      - usr/lib/*/libnss3.so
-      - usr/lib/*/libnssutil3.so
-      - usr/lib/*/libnuma.so.*
-      - usr/lib/*/libogg.so*
-      - usr/lib/*/libopenjp2.so.*
-      - usr/lib/*/libopus.so.*
-      - usr/lib/*/libphodav-2.0.so.*
-      - usr/lib/*/libplc4.so
-      - usr/lib/*/libplds4.so
-      - usr/lib/*/libpulse-mainloop-glib.so.*
-      - usr/lib/*/libpulse-simple.so*
-      - usr/lib/*/libpulse.so*
-      - usr/lib/*/libshine.so.*
-      - usr/lib/*/libsnappy.so.*
-      - usr/lib/*/libsndfile.so*
-      - usr/lib/*/libsodium.so.*
-      - usr/lib/*/libsoxr.so.*
-      - usr/lib/*/libspeex.so.*
-      - usr/lib/*/libspice-client-glib-2.0.so.*
-      - usr/lib/*/libspice-client-gtk-3.0.so.*
-      - usr/lib/*/libswresample.so.*
-      - usr/lib/*/libthai.so.*
-      - usr/lib/*/libtheoradec.so.*
-      - usr/lib/*/libtheoraenc.so.*
-      - usr/lib/*/libtwolame.so.*
-      - usr/lib/*/libusbredirhost.so.*
-      - usr/lib/*/libusbredirparser.so.*
-      - usr/lib/*/libva-drm.so.*
-      - usr/lib/*/libva-x11.so.*
-      - usr/lib/*/libva.so.*
-      - usr/lib/*/libvdpau.so.*
-      - usr/lib/*/libvncclient.so.*
-      - usr/lib/*/libvorbis.so.*
-      - usr/lib/*/libvorbisenc.so*
-      - usr/lib/*/libvpx.so.*
-      - usr/lib/*/libwavpack.so.*
-      - usr/lib/*/libwebpmux.so.*
-      - usr/lib/*/libx264.so.*
-      - usr/lib/*/libx265.so.*
-      - usr/lib/*/libxcb.so*
-      - usr/lib/*/libxkbfile.so.*
-      - usr/lib/*/libxvidcore.so.*
-      - usr/lib/*/pulseaudio/libpulsecommon-8.0.so*
