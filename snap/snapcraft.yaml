@@ -298,3 +298,21 @@ parts:
       - gstreamer1.0-libav
       - dbus-x11
       - xdg-user-dirs
+  cleanup:
+    after: [pawrap, pulse-utils, freerdp, remmina, app]  # Make this part run last; list all your other parts here
+    plugin: nil
+    build-snaps: [gnome-3-28-1804, gtk-common-themes]  # List all content-snaps you're using here
+    override-prime: |
+      set -eux
+      for snap in "gnome-3-28-1804" "gtk-common-themes"; do  # List all content-snaps you're using here
+        cd "/snap/$snap/current"
+        [ -d "lib" ] && find ./lib -type f,l -exec rm -f "$SNAPCRAFT_PRIME/lib/{}" "$SNAPCRAFT_PRIME/usr/lib/{}" \;
+        [ -d "usr/lib" ] && find ./usr/lib -type f,l -exec rm -f "$SNAPCRAFT_PRIME/lib/{}" "$SNAPCRAFT_PRIME/usr/lib/{}" \;
+        [ -d "share" ] && find ./share -type f,l -exec rm -f "$SNAPCRAFT_PRIME/share/{}" "$SNAPCRAFT_PRIME/usr/share/{}" \;
+        [ -d "usr/share" ] && find ./usr/share -type f,l -exec rm -f "$SNAPCRAFT_PRIME/share/{}" "$SNAPCRAFT_PRIME/usr/share/{}" \;
+      done
+      for CRUFT in bug lintian man; do
+        rm -rf $SNAPCRAFT_PRIME/usr/share/$CRUFT
+      done
+      find $SNAPCRAFT_PRIME/usr/share/doc/ -type f -not -name 'copyright' -delete
+      find $SNAPCRAFT_PRIME/usr/share -type d -empty -delete
