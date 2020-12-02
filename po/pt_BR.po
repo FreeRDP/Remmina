@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-11-30 12:50+0000\n"
-"PO-Revision-Date: 2020-11-27 23:12+0000\n"
+"PO-Revision-Date: 2020-12-02 10:29+0000\n"
 "Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "remmina/remmina/pt_BR/>\n"
@@ -2150,14 +2150,6 @@ msgstr ""
 "    SCardGetDeviceTypeId()"
 
 #: plugins/rdp/rdp_plugin.c:2345
-#, fuzzy
-#| msgid ""
-#| "Options for redirection of audio input:\n"
-#| "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
-#| "    [channel:<channel>] Audio input (microphone)\n"
-#| "  • format:1\n"
-#| "  • sys:oss,dev:1,format:1\n"
-#| "  • sys:alsa"
 msgid ""
 "Options for redirection of audio input:\n"
 "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
@@ -2170,19 +2162,12 @@ msgstr ""
 "Opções para redirecionamento de entrada de áudio:\n"
 "  • [sys:<sys>,][dev:<disp>,][format:<formato>,][rate:<taxa>,]\n"
 "    [channel:<canal>] entrada de áudio (microfone)\n"
+"  • sys:pulse\n"
 "  • format:1\n"
 "  • sys:oss,dev:1,format:1\n"
 "  • sys:alsa"
 
 #: plugins/rdp/rdp_plugin.c:2354
-#, fuzzy
-#| msgid ""
-#| "Options for redirection of audio input:\n"
-#| "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
-#| "    [channel:<channel>] Audio input (microphone)\n"
-#| "  • format:1\n"
-#| "  • sys:oss,dev:1,format:1\n"
-#| "  • sys:alsa"
 msgid ""
 "Options for redirection of audio ouput:\n"
 "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
@@ -2192,9 +2177,10 @@ msgid ""
 "  • sys:oss,dev:1,format:1\n"
 "  • sys:alsa"
 msgstr ""
-"Opções para redirecionamento de entrada de áudio:\n"
+"Opções para redirecionamento de saída de áudio:\n"
 "  • [sys:<sys>,][dev:<disp>,][format:<formato>,][rate:<taxa>,]\n"
-"    [channel:<canal>] entrada de áudio (microfone)\n"
+"    [channel:<canal>] saída de áudio\n"
+"  • sys:pulse\n"
 "  • format:1\n"
 "  • sys:oss,dev:1,format:1\n"
 "  • sys:alsa"
@@ -2261,10 +2247,8 @@ msgid "Sound"
 msgstr "Som"
 
 #: plugins/rdp/rdp_plugin.c:2419
-#, fuzzy
-#| msgid "Redirect local microphone"
 msgid "Redirect local audio output"
-msgstr "Redirecionar microfone local"
+msgstr "Redirecionar saída de áudio local"
 
 #: plugins/rdp/rdp_plugin.c:2420
 msgid "Redirect local microphone"
@@ -2443,10 +2427,8 @@ msgid "Using the UDP protocol may improve performance"
 msgstr "O uso do protocolo UDP pode melhorar o desempenho"
 
 #: plugins/rdp/rdp_plugin.c:2461
-#, fuzzy
-#| msgid "Use base credentials also for Gateway"
 msgid "Use base credentials for gateway too"
-msgstr "Use credenciais base também para Gateway"
+msgstr "Use credenciais base para gateway também"
 
 #: plugins/rdp/rdp_plugin.c:2485
 msgid "RDP - Remote Desktop Protocol"
