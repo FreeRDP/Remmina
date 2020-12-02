@@ -54,9 +54,6 @@ apps:
     command: winpr-hash
 
 parts:
-  pawrap:
-    plugin: dump
-    source: snap/local/files/
   pulse-utils:
     plugin: nil
     stage-packages:
@@ -111,8 +108,6 @@ parts:
       - libxtst-dev
       - libxv-dev
       - libavresample-dev
-      - libgstreamer1.0-dev
-      - libgstreamer-plugins-base1.0-dev
     stage-packages:
       - libusb-1.0-0
       - libzvbi0
@@ -287,19 +282,10 @@ parts:
       - libogg0
       - libvorbis0a
       - libpcre2-8-0
-      - libgstreamer1.0-0
-      - libgstreamer-plugins-base1.0-0
-      - gstreamer1.0-alsa
-      - gstreamer1.0-pulseaudio
-      - gstreamer1.0-plugins-base
-      - gstreamer1.0-plugins-good
-      - gstreamer1.0-plugins-bad
-      - gstreamer1.0-plugins-ugly
-      - gstreamer1.0-libav
       - dbus-x11
       - xdg-user-dirs
   cleanup:
-    after: [pawrap, pulse-utils, freerdp, remmina]  # Make this part run last; list all your other parts here
+    after: [pulse-utils, freerdp, remmina, app]  # Make this part run last; list all your other parts here
     plugin: nil
     build-snaps: [core18, gnome-3-28-1804, gtk-common-themes]  # List all content-snaps you're using here
     override-prime: |
