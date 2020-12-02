@@ -299,9 +299,9 @@ parts:
       - dbus-x11
       - xdg-user-dirs
   cleanup:
-    after: [pawrap, pulse-utils, freerdp, remmina, app]  # Make this part run last; list all your other parts here
+    after: [pawrap, pulse-utils, freerdp, remmina]  # Make this part run last; list all your other parts here
     plugin: nil
-    build-snaps: [gnome-3-28-1804, gtk-common-themes]  # List all content-snaps you're using here
+    build-snaps: [core18, gnome-3-28-1804, gtk-common-themes]  # List all content-snaps you're using here
     override-prime: |
       set -eux
       for snap in "gnome-3-28-1804" "gtk-common-themes"; do  # List all content-snaps you're using here
