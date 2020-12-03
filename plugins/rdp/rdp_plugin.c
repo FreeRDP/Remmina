@@ -1613,13 +1613,18 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 
 	cs = remmina_plugin_service->file_get_string(remminafile, "freerdp_log_level");
 	if (cs != NULL && cs[0] != '\0') {
-		wLog *root = WLog_GetRoot();
-		WLog_SetStringLogLevel(root, cs);
-	}
+		REMMINA_PLUGIN_DEBUG ("Log level set to to %s", cs);
+	} else
+		cs = g_strdup ("INFO");
+	wLog *root = WLog_GetRoot();
+	WLog_SetStringLogLevel(root, cs);
 
 	cs = remmina_plugin_service->file_get_string(remminafile, "freerdp_log_filters");
-	if (cs != NULL && cs[0] != '\0')
+	if (cs != NULL && cs[0] != '\0') {
+		REMMINA_PLUGIN_DEBUG ("Log filters set to to %s", cs);
 		WLog_AddStringLogFilters(cs);
+	} else
+		WLog_AddStringLogFilters(NULL);
 
 
 	cs = remmina_plugin_service->file_get_string(remminafile, "usb");
