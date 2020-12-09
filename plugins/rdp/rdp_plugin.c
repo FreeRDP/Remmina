@@ -82,7 +82,9 @@
 #define REMMINA_RDP_FEATURE_SCALE                2
 #define REMMINA_RDP_FEATURE_UNFOCUS              3
 #define REMMINA_RDP_FEATURE_TOOL_SENDCTRLALTDEL  4
-#define REMMINA_RDP_FEATURE_DYNRESUPDATE                 5
+#define REMMINA_RDP_FEATURE_DYNRESUPDATE         5
+
+#define REMMINA_CONNECTION_TYPE_NONE		 0
 
 /* Some string settings of FreeRDP are preallocated buffers of N bytes */
 #define FREERDP_CLIENTHOSTNAME_LEN      32
@@ -1163,9 +1165,10 @@ static gboolean remmina_rdp_set_connection_type(rdpSettings *settings, guint32 t
 #endif
 		settings->RemoteFxCodec = TRUE;
 		settings->SupportGraphicsPipeline = TRUE;
-	} else {
+	} else if (type == REMMINA_CONNECTION_TYPE_NONE) {
 		return FALSE;
-	}
+	} else
+		return FALSE;
 
 	return TRUE;
 }
@@ -1473,11 +1476,13 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 			type = CONNECTION_TYPE_LAN;
 		else if ((g_strcmp0(cs, "autodetect") == 0))
 			type = CONNECTION_TYPE_AUTODETECT;
+		else if ((g_strcmp0(cs, "none") == 0))
+			type = REMMINA_CONNECTION_TYPE_NONE;
 		else
-			type = CONNECTION_TYPE_AUTODETECT;
+			type = REMMINA_CONNECTION_TYPE_NONE;
 
 		if (!remmina_rdp_set_connection_type(rfi->settings, type))
-			REMMINA_PLUGIN_DEBUG("Cannot set network settings");
+			REMMINA_PLUGIN_DEBUG("Network settings not set");
 	}
 
 	/* PerformanceFlags bitmask need also to be splitted into BOOL variables
@@ -2294,6 +2299,7 @@ static gpointer quality_list[] =
 /* Array of key/value pairs for quality selection */
 static gpointer network_list[] =
 {
+	"none",		  N_("None"),
 	"autodetect",	  N_("Autodetect"),
 	"modem",	  N_("Modem"),
 	"broadband-low",  N_("Low performance broadband"),
@@ -2377,7 +2383,7 @@ static gchar timeout_tooltip[] =
 	   "The highest possible value is 600000 ms (10 minutes).\n");
 
 static gchar network_tooltip[] =
-	N_("Network type selection:\n"
+	N_("Performance optimisations based on the network connection type:\n"
 	   "Using autodetection is advised.\n"
 	   "If \"Autodetect\" fails, choose the most appropriate option in the list.\n");
 
