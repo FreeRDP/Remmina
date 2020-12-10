@@ -449,6 +449,8 @@ static UINT remmina_rdp_cliprdr_server_format_data_response(CliprdrClientContext
 		}
 	}
 
+	REMMINA_PLUGIN_DEBUG("clibpoard data arrived form server, signalling main GTK thread that we have some data.");
+
 	pthread_mutex_lock(&clipboard->transfer_clip_mutex);
 	pthread_cond_signal(&clipboard->transfer_clip_cond);
 	if (clipboard->srv_clip_data_wait == SCDW_BUSY_WAIT) {
