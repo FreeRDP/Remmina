@@ -619,7 +619,8 @@ CLIPRDR_FORMAT_LIST *remmina_rdp_cliprdr_get_client_format_list(RemminaProtocolW
 	if (result)
 		g_free(targets);
 
-	retp->pFormatList.msgFlags = CB_RESPONSE_OK;
+	retp->pFormatList.msgType = CB_FORMAT_LIST;
+	retp->pFormatList.msgFlags = 0;
 
 	return (CLIPRDR_FORMAT_LIST *)retp;
 }
