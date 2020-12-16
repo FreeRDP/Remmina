@@ -191,6 +191,7 @@ RemminaPluginService remmina_plugin_manager_service =
 	remmina_protocol_widget_signal_connection_closed,
 	remmina_protocol_widget_signal_connection_opened,
 	remmina_protocol_widget_update_align,
+	remmina_protocol_widget_lock_dynres,
 	remmina_protocol_widget_unlock_dynres,
 	remmina_protocol_widget_desktop_resize,
 	remmina_protocol_widget_panel_auth,

@@ -38,7 +38,7 @@
 
 enum {
 	REMMINA_PLUGIN_SPICE_FEATURE_PREF_VIEWONLY = 1,
-	REMMINA_PLUGIN_SPICE_FEATURE_PREF_RESIZEGUEST,
+	REMMINA_PLUGIN_SPICE_FEATURE_DYNRESUPDATE,
 	REMMINA_PLUGIN_SPICE_FEATURE_PREF_DISABLECLIPBOARD,
 	REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTDEL,
 	REMMINA_PLUGIN_SPICE_FEATURE_TOOL_USBREDIR,
@@ -49,8 +49,9 @@ static RemminaPluginService *remmina_plugin_service = NULL;
 
 static void remmina_plugin_spice_channel_new_cb(SpiceSession *, SpiceChannel *, RemminaProtocolWidget *);
 static void remmina_plugin_spice_main_channel_event_cb(SpiceChannel *, SpiceChannelEvent, RemminaProtocolWidget *);
+static void remmina_plugin_spice_agent_connected_event_cb(SpiceChannel *, RemminaProtocolWidget *);
 static void remmina_plugin_spice_display_ready_cb(GObject *, GParamSpec *, RemminaProtocolWidget *);
-static void remmina_plugin_spice_update_scale(RemminaProtocolWidget *);
+static void remmina_plugin_spice_update_scale_mode(RemminaProtocolWidget *);
 
 void remmina_plugin_spice_select_usb_devices(RemminaProtocolWidget *);
 #ifdef SPICE_GTK_CHECK_VERSION
@@ -151,6 +152,9 @@ static gboolean remmina_plugin_spice_close_connection(RemminaProtocolWidget *gp)
 		g_signal_handlers_disconnect_by_func(gpdata->main_channel,
 			G_CALLBACK(remmina_plugin_spice_main_channel_event_cb),
 			gp);
+		g_signal_handlers_disconnect_by_func(gpdata->main_channel,
+			G_CALLBACK(remmina_plugin_spice_agent_connected_event_cb),
+			gp);
 	}
 
 	if (gpdata->session) {
@@ -186,6 +190,10 @@ static void remmina_plugin_spice_channel_new_cb(SpiceSession *session, SpiceChan
 		g_signal_connect(channel,
 			"channel-event",
 			G_CALLBACK(remmina_plugin_spice_main_channel_event_cb),
+			gp);
+		g_signal_connect(channel,
+			"main-agent-update",
+			G_CALLBACK(remmina_plugin_spice_agent_connected_event_cb),
 			gp);
 #ifdef SPICE_GTK_CHECK_VERSION
 #  if SPICE_GTK_CHECK_VERSION(0, 31, 0)
@@ -301,12 +309,27 @@ static void remmina_plugin_spice_main_channel_event_cb(SpiceChannel *channel, Sp
 	}
 }
 
+void remmina_plugin_spice_agent_connected_event_cb(SpiceChannel *channel, RemminaProtocolWidget *gp)
+{
+	TRACE_CALL(__func__);
+	gboolean connected;
+
+	g_object_get(channel,
+		"agent-connected", &connected,
+		NULL);
+
+	if (connected) {
+		remmina_plugin_service->protocol_plugin_unlock_dynres(gp);
+	} else {
+		remmina_plugin_service->protocol_plugin_lock_dynres(gp);
+	}
+}
+
 static void remmina_plugin_spice_display_ready_cb(GObject *display, GParamSpec *param_spec, RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
 
 	gboolean ready;
-	RemminaFile *remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
 	g_object_get(display, "ready", &ready, NULL);
 
@@ -315,9 +338,10 @@ static void remmina_plugin_spice_display_ready_cb(GObject *display, GParamSpec *
 			G_CALLBACK(remmina_plugin_spice_display_ready_cb),
 			gp);
 
+		RemminaScaleMode scaleMode = remmina_plugin_service->remmina_protocol_widget_get_current_scale_mode(gp);
 		g_object_set(display,
-			"scaling", (remmina_plugin_service->remmina_protocol_widget_get_current_scale_mode(gp) != REMMINA_PROTOCOL_WIDGET_SCALE_MODE_NONE),
-			"resize-guest", remmina_plugin_service->file_get_int(remminafile, "resizeguest", FALSE),
+			"scaling", (scaleMode  == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_SCALED),
+			"resize-guest", (scaleMode == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_DYNRES),
 			NULL);
 		gtk_container_add(GTK_CONTAINER(gp), GTK_WIDGET(display));
 		gtk_widget_show(GTK_WIDGET(display));
@@ -351,18 +375,20 @@ static void remmina_plugin_spice_send_ctrlaltdel(RemminaProtocolWidget *gp)
 	remmina_plugin_spice_keystroke(gp, keys, G_N_ELEMENTS(keys));
 }
 
-static void remmina_plugin_spice_update_scale(RemminaProtocolWidget *gp)
+static void remmina_plugin_spice_update_scale_mode(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
 
-	gint scale, width, height;
+	gint width, height;
 	RemminaPluginSpiceData *gpdata = GET_PLUGIN_DATA(gp);
-	RemminaFile *remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
+	RemminaScaleMode scaleMode = remmina_plugin_service->remmina_protocol_widget_get_current_scale_mode(gp);
 
-	scale = remmina_plugin_service->file_get_int(remminafile, "scale", FALSE);
-	g_object_set(gpdata->display, "scaling", scale, NULL);
+	g_object_set(gpdata->display,
+		"scaling", (scaleMode  == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_SCALED),
+		"resize-guest", (scaleMode == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_DYNRES),
+		NULL);
 
-	if (scale) {
+	if (scaleMode != REMMINA_PROTOCOL_WIDGET_SCALE_MODE_NONE) {
 		/* In scaled mode, the SpiceDisplay will get its dimensions from its parent */
 		gtk_widget_set_size_request(GTK_WIDGET(gpdata->display), -1, -1 );
 	}else {
@@ -396,20 +422,15 @@ static void remmina_plugin_spice_call_feature(RemminaProtocolWidget *gp, const R
 			remmina_plugin_service->file_get_int(remminafile, "viewonly", FALSE),
 			NULL);
 		break;
-	case REMMINA_PLUGIN_SPICE_FEATURE_PREF_RESIZEGUEST:
-		g_object_set(gpdata->display,
-			"resize-guest",
-			remmina_plugin_service->file_get_int(remminafile, "resizeguest", TRUE),
-			NULL);
-		break;
 	case REMMINA_PLUGIN_SPICE_FEATURE_PREF_DISABLECLIPBOARD:
 		g_object_set(gpdata->gtk_session,
 			"auto-clipboard",
 			!remmina_plugin_service->file_get_int(remminafile, "disableclipboard", FALSE),
 			NULL);
 		break;
+	case REMMINA_PLUGIN_SPICE_FEATURE_DYNRESUPDATE:
 	case REMMINA_PLUGIN_SPICE_FEATURE_SCALE:
-		remmina_plugin_spice_update_scale(gp);
+		remmina_plugin_spice_update_scale_mode(gp);
 		break;
 	case REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTDEL:
 		remmina_plugin_spice_send_ctrlaltdel(gp);
@@ -455,7 +476,6 @@ static const RemminaProtocolSetting remmina_plugin_spice_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"disableclipboard",	    N_("Disable clipboard sync"),		TRUE,	NULL,	NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"disablepasswordstoring",   N_("Forget passwords after use"),		TRUE,	NULL,	NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"enableaudio",		    N_("Enable audio channel"),			TRUE,	NULL,	NULL},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"resizeguest",		    N_("Resize guest to match window size"),	TRUE,	NULL,	NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"sharesmartcard",	    N_("Share smart card"),			TRUE,	NULL,	NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"viewonly",		    N_("View only"),				TRUE,	NULL,	NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	NULL,			    NULL,					TRUE,	NULL,	NULL}
@@ -465,15 +485,15 @@ static const RemminaProtocolSetting remmina_plugin_spice_advanced_settings[] =
  * The last element of the array must be REMMINA_PROTOCOL_FEATURE_TYPE_END. */
 static const RemminaProtocolFeature remmina_plugin_spice_features[] =
 {
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_PREF,  REMMINA_PLUGIN_SPICE_FEATURE_PREF_VIEWONLY,	    GINT_TO_POINTER(REMMINA_PROTOCOL_FEATURE_PREF_CHECK),	   "viewonly",
-	  N_("View only")					},
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_PREF,  REMMINA_PLUGIN_SPICE_FEATURE_PREF_RESIZEGUEST,	    GINT_TO_POINTER(REMMINA_PROTOCOL_FEATURE_PREF_CHECK),	   "resizeguest",	N_("Resize guest to match window size")},
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_PREF,  REMMINA_PLUGIN_SPICE_FEATURE_PREF_VIEWONLY,	    GINT_TO_POINTER(REMMINA_PROTOCOL_FEATURE_PREF_CHECK),	   "viewonly",	  N_("View only")},
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_PREF,  REMMINA_PLUGIN_SPICE_FEATURE_PREF_DISABLECLIPBOARD,  GINT_TO_POINTER(REMMINA_PROTOCOL_FEATURE_PREF_CHECK),	   "disableclipboard",	N_("Disable clipboard sync")},
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,  REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTDEL,    N_("Send Ctrl+Alt+Delete"),					   NULL,		NULL},
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,  REMMINA_PLUGIN_SPICE_FEATURE_TOOL_USBREDIR,	    N_("Select USB devices for redirection"),			   NULL,		NULL},
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_DYNRESUPDATE,  REMMINA_PLUGIN_SPICE_FEATURE_DYNRESUPDATE,	    NULL,	   NULL,	NULL},
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_SCALE, REMMINA_PLUGIN_SPICE_FEATURE_SCALE,		    NULL,							   NULL,		NULL},
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_END,   0,						    NULL,							   NULL,		NULL}
 };
+
 
 static RemminaProtocolPlugin remmina_plugin_spice =
 {
@@ -512,3 +532,4 @@ remmina_plugin_entry(RemminaPluginService *service)
 
 	return TRUE;
 }
+

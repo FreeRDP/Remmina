@@ -67,6 +67,7 @@ struct _RemminaProtocolWidgetClass {
 	void			(*disconnect)(RemminaProtocolWidget *gp);
 	void			(*desktop_resize)(RemminaProtocolWidget *gp);
 	void			(*update_align)(RemminaProtocolWidget *gp);
+	void			(*lock_dynres)(RemminaProtocolWidget *gp);
 	void			(*unlock_dynres)(RemminaProtocolWidget *gp);
 };
 
@@ -98,6 +99,7 @@ void remmina_protocol_widget_close_connection(RemminaProtocolWidget *gp);
 void remmina_protocol_widget_signal_connection_closed(RemminaProtocolWidget *gp);
 void remmina_protocol_widget_signal_connection_opened(RemminaProtocolWidget *gp);
 void remmina_protocol_widget_update_align(RemminaProtocolWidget *gp);
+void remmina_protocol_widget_lock_dynres(RemminaProtocolWidget *gp);
 void remmina_protocol_widget_unlock_dynres(RemminaProtocolWidget *gp);
 void remmina_protocol_widget_desktop_resize(RemminaProtocolWidget *gp);
 void remmina_protocol_widget_grab_focus(RemminaProtocolWidget *gp);
