@@ -388,7 +388,7 @@ static RemminaScaleMode get_current_allowed_scale_mode(RemminaConnectionObject *
 	scalemode = remmina_protocol_widget_get_current_scale_mode(REMMINA_PROTOCOL_WIDGET(cnnobj->proto));
 
 	plugin_has_dynres = remmina_protocol_widget_query_feature_by_type(REMMINA_PROTOCOL_WIDGET(cnnobj->proto),
-									  REMMINA_PROTOCOL_FEATURE_TYPE_SCALE);
+									  REMMINA_PROTOCOL_FEATURE_TYPE_DYNRESUPDATE);
 
 	plugin_can_scale = remmina_protocol_widget_query_feature_by_type(REMMINA_PROTOCOL_WIDGET(cnnobj->proto),
 									 REMMINA_PROTOCOL_FEATURE_TYPE_SCALE);
@@ -3958,6 +3958,14 @@ void rco_on_update_align(RemminaProtocolWidget *gp, gpointer data)
 	remmina_protocol_widget_update_alignment(cnnobj);
 }
 
+void rco_on_lock_dynres(RemminaProtocolWidget *gp, gpointer data)
+{
+	TRACE_CALL(__func__);
+	RemminaConnectionObject *cnnobj = gp->cnnobj;
+	cnnobj->dynres_unlocked = FALSE;
+	rco_update_toolbar(cnnobj);
+}
+
 void rco_on_unlock_dynres(RemminaProtocolWidget *gp, gpointer data)
 {
 	TRACE_CALL(__func__);
@@ -4125,6 +4133,7 @@ GtkWidget *rcw_open_from_file_full(RemminaFile *remminafile, GCallback disconnec
 	g_signal_connect(G_OBJECT(cnnobj->proto), "disconnect", G_CALLBACK(rco_on_disconnect), NULL);
 	g_signal_connect(G_OBJECT(cnnobj->proto), "desktop-resize", G_CALLBACK(rco_on_desktop_resize), NULL);
 	g_signal_connect(G_OBJECT(cnnobj->proto), "update-align", G_CALLBACK(rco_on_update_align), NULL);
+	g_signal_connect(G_OBJECT(cnnobj->proto), "lock-dynres", G_CALLBACK(rco_on_lock_dynres), NULL);
 	g_signal_connect(G_OBJECT(cnnobj->proto), "unlock-dynres", G_CALLBACK(rco_on_unlock_dynres), NULL);
 
 	if (!remmina_pref.save_view_mode)

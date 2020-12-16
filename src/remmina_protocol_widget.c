@@ -114,6 +114,7 @@ enum {
 	DISCONNECT_SIGNAL,
 	DESKTOP_RESIZE_SIGNAL,
 	UPDATE_ALIGN_SIGNAL,
+	LOCK_DYNRES_SIGNAL,
 	UNLOCK_DYNRES_SIGNAL,
 	LAST_SIGNAL
 };
@@ -141,6 +142,9 @@ static void remmina_protocol_widget_class_init(RemminaProtocolWidgetClass *klass
 	remmina_protocol_widget_signals[UPDATE_ALIGN_SIGNAL] = g_signal_new("update-align", G_TYPE_FROM_CLASS(klass),
 									    G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION, G_STRUCT_OFFSET(RemminaProtocolWidgetClass, update_align), NULL, NULL,
 									    g_cclosure_marshal_VOID__VOID, G_TYPE_NONE, 0);
+	remmina_protocol_widget_signals[LOCK_DYNRES_SIGNAL] = g_signal_new("lock-dynres", G_TYPE_FROM_CLASS(klass),
+									     G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION, G_STRUCT_OFFSET(RemminaProtocolWidgetClass, lock_dynres), NULL, NULL,
+									     g_cclosure_marshal_VOID__VOID, G_TYPE_NONE, 0);
 	remmina_protocol_widget_signals[UNLOCK_DYNRES_SIGNAL] = g_signal_new("unlock-dynres", G_TYPE_FROM_CLASS(klass),
 									     G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION, G_STRUCT_OFFSET(RemminaProtocolWidgetClass, unlock_dynres), NULL, NULL,
 									     g_cclosure_marshal_VOID__VOID, G_TYPE_NONE, 0);
@@ -398,12 +402,27 @@ void remmina_protocol_widget_update_align(RemminaProtocolWidget *gp)
 	g_idle_add(update_align, (gpointer)gp);
 }
 
+static gboolean lock_dynres(gpointer data)
+{
+	TRACE_CALL(__func__);
+	RemminaProtocolWidget *gp = (RemminaProtocolWidget *)data;
+	g_signal_emit_by_name(G_OBJECT(gp), "lock-dynres");
+	return G_SOURCE_REMOVE;
+}
+
 static gboolean unlock_dynres(gpointer data)
 {
 	TRACE_CALL(__func__);
 	RemminaProtocolWidget *gp = (RemminaProtocolWidget *)data;
 	g_signal_emit_by_name(G_OBJECT(gp), "unlock-dynres");
 	return G_SOURCE_REMOVE;
+}
+
+void remmina_protocol_widget_lock_dynres(RemminaProtocolWidget *gp)
+{
+	/* Called by the plugin to do updates on rcw */
+	TRACE_CALL(__func__);
+	g_idle_add(lock_dynres, (gpointer)gp);
 }
 
 void remmina_protocol_widget_unlock_dynres(RemminaProtocolWidget *gp)
