@@ -5,7 +5,6 @@
 
 * Resolve "RDP Black Screen on connection" [!2123](https://gitlab.com/Remmina/Remmina/merge_requests/2123) *@antenore*
 * Correctly importing and exporting audiocapturemode, closes #2349 [!2124](https://gitlab.com/Remmina/Remmina/merge_requests/2124) *@antenore*
-* [RFC] rdp: add Use base credential for RD gateway authentication [!2125](https://gitlab.com/Remmina/Remmina/merge_requests/2125) *@Fantu*
 * Resolve "Auto accept changes to fingerprints and auto accept certificates" [!2126](https://gitlab.com/Remmina/Remmina/merge_requests/2126) *@antenore*
 * "Fingerprinters" corrected to "fingerprints". [!2127](https://gitlab.com/Remmina/Remmina/merge_requests/2127) *@kingu*
 * Implementing network type option [!2128](https://gitlab.com/Remmina/Remmina/merge_requests/2128) *@antenore*
@@ -16,14 +15,13 @@
 * Set .gitlab-ci.yml to enable or configure SAST [!2134](https://gitlab.com/Remmina/Remmina/merge_requests/2134) *@antenore*
 * Adding missing components in the snap [!2133](https://gitlab.com/Remmina/Remmina/merge_requests/2133) *@antenore*
 * Fixing pulseaudio LD_LIBRARY_PATH and staging PA libraries [!2136](https://gitlab.com/Remmina/Remmina/merge_requests/2136) *@antenore*
-* [RFC][v2] RDP: Add Use base credential for RD gateway authentication [!2135](https://gitlab.com/Remmina/Remmina/merge_requests/2135) *@Fantu*
 * fix incorrect name date log sessions ssh [!2137](https://gitlab.com/Remmina/Remmina/merge_requests/2137) *@acendrou*
 * Resolve "Strange padding in main window" [!2138](https://gitlab.com/Remmina/Remmina/merge_requests/2138) *@antenore*
 * Remove legacy rfx code [!2139](https://gitlab.com/Remmina/Remmina/merge_requests/2139) *@antenore*
 * Resolve "RDP export features does not properly include gatewayhostname" [!2140](https://gitlab.com/Remmina/Remmina/merge_requests/2140) *@antenore*
 * Fixing snap's pulseaudio and wayland issues [!2142](https://gitlab.com/Remmina/Remmina/merge_requests/2142) *@antenore*
 * RDP log filters keep previous value across connections [!2143](https://gitlab.com/Remmina/Remmina/merge_requests/2143) *@antenore*
-* [RFC][v2] RDP: Add Use base credential for RD gateway authentication [!2135](https://gitlab.com/Remmina/Remmina/merge_requests/2135) *@Fantu*
+* RDP: Add Use base credential for RD gateway authentication [!2135](https://gitlab.com/Remmina/Remmina/merge_requests/2135) *@Fantu*
 * Emit warning if libkf5wallet missing but required by -DWITH_KF5WALLET=ON [!2144](https://gitlab.com/Remmina/Remmina/merge_requests/2144) *@giox069*
 * Do not activate performance optimisations based on network type unless explicitly requested. [!2145](https://gitlab.com/Remmina/Remmina/merge_requests/2145) *@antenore*
 
