@@ -99,8 +99,8 @@ typedef struct _RemminaProtocolSetting {
 	const gchar *			name;
 	const gchar *			label;
 	gboolean			compact;
-	const gpointer			opt1;
-	const gpointer			opt2;
+	gpointer			opt1;
+	gpointer			opt2;
 } RemminaProtocolSetting;
 
 typedef enum {

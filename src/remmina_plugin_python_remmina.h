@@ -67,6 +67,8 @@ typedef struct {
     PyRemminaProtocolWidget *gp;
 } PyPlugin;
 
+
+
 /**
  * @brief Initializes the 'remmina' module in the Python engine.
  */
@@ -79,3 +81,5 @@ void remmina_plugin_python_module_init(void);
  * that, this function can be used to retrieve the very plugin instance owning the given RemminaProtocolWidget.
  */
 PyPlugin* remmina_plugin_python_module_get_plugin(RemminaProtocolWidget* gp);
+
+void ToRemminaProtocolSetting(RemminaProtocolSetting* dest, PyObject* setting);
