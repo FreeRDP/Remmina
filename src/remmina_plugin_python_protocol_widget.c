@@ -102,6 +102,8 @@
 
 #include "remmina_plugin_python_protocol_widget.h"
 
+// -- Python Type -> RemminaWidget
+
 static PyObject* protocol_widget_get_viewport(PyRemminaProtocolWidget* self, PyObject* args);
 static PyObject* protocol_widget_get_width(PyRemminaProtocolWidget* self, PyObject* args);
 static PyObject* protocol_widget_set_width(PyRemminaProtocolWidget* self, PyObject* args);

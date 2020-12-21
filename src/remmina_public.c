@@ -67,6 +67,9 @@ remmina_public_create_combo_entry(const gchar *text, const gchar *def, gboolean 
 	gchar *buf, *ptr1, *ptr2;
 	gint i;
 
+	g_print("text: %s\n", text);
+	g_print("def: %s\n", def);
+
 	combo = gtk_combo_box_text_new_with_entry();
 	found = FALSE;
 

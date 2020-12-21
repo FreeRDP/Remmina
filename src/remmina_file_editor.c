@@ -713,7 +713,6 @@ static void remmina_file_editor_create_settings(RemminaFileEditor *gfe, GtkWidge
 	gchar **strarr;
 	gchar *setting_name;
 
-
 	while (settings->type != REMMINA_PROTOCOL_SETTING_TYPE_END) {
 		setting_name = (gchar *)(remmina_plugin_manager_get_canonical_setting_name(settings));
 		switch (settings->type) {
