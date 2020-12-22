@@ -185,7 +185,6 @@ if(${CMAKE_C_COMPILER_ID} STREQUAL "Clang")
     endif()
   endif()
 endif()
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -w")
 
 check_include_files(sys/socket.h HAVE_SYS_SOCKET_H)
 check_include_files(arpa/inet.h HAVE_ARPA_INET_H)
@@ -304,7 +303,6 @@ add_custom_target(uninstall "${CMAKE_COMMAND}" -P
 find_required_package(GTK)
 
 set(CMAKE_THREAD_PREFER_PTHREAD TRUE)
-
 find_package(Threads REQUIRED)
 if(NOT CMAKE_USE_PTHREADS_INIT)
   message(FATAL_ERROR "pthreads thread library not found")
