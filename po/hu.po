@@ -6,13 +6,14 @@
 # Antenore Gatta <antenore@simbiosi.org>, 2020.
 # Allan Nordhøy <epost@anotheragency.no>, 2020.
 # Viktor Varga <viktor.varga@gmail.com>, 2020.
+# Marczis István <marczisi@yahoo.com>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-12-16 21:54+0000\n"
-"PO-Revision-Date: 2020-09-11 22:29+0000\n"
-"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"PO-Revision-Date: 2020-12-22 17:06+0000\n"
+"Last-Translator: Marczis István <marczisi@yahoo.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/remmina/"
 "remmina/hu/>\n"
 "Language: hu\n"
@@ -20,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.3-dev\n"
+"X-Generator: Weblate 4.4-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
 
 #: src/remmina_protocol_widget.c:279
@@ -86,7 +87,7 @@ msgstr "Adja meg az SSH felhasználónevet és jelszót."
 
 #: src/remmina_protocol_widget.c:1518 src/remmina_protocol_widget.c:1545
 msgid "Fingerprint automatically accepted"
-msgstr ""
+msgstr "Az ujjlenyomat automatikusan elfogadásra kerül"
 
 #: src/remmina_protocol_widget.c:1525
 msgid "Certificate details:"
@@ -286,11 +287,12 @@ msgstr "Betűméret _csökkentése"
 
 #: src/remmina_ssh_plugin.c:1286
 msgid "Find text"
-msgstr ""
+msgstr "Szöveg keresése"
 
 #: src/remmina_ssh_plugin.c:1286
+#, fuzzy
 msgid "_Find text"
-msgstr ""
+msgstr "_Szöveg keresése"
 
 #: src/remmina_ssh_plugin.c:1304 src/remmina_message_panel.c:330
 #: src/remmina_sftp_plugin.c:343 src/remmina_file_editor.c:1003
@@ -582,7 +584,7 @@ msgstr ""
 
 #: src/remmina.c:86 src/remmina.c:88 src/remmina.c:90
 msgid "FILE"
-msgstr ""
+msgstr "FÁJL"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:88
@@ -1404,7 +1406,7 @@ msgstr "Billentyűzetkiosztás"
 
 #: src/remmina_file_editor.c:881
 msgid "Behavior"
-msgstr ""
+msgstr "Viselkedés"
 
 #: src/remmina_file_editor.c:884
 #, fuzzy
@@ -1481,7 +1483,7 @@ msgstr "Speciális"
 
 #: src/remmina_file_editor.c:1127
 msgid "Notes"
-msgstr ""
+msgstr "Jegyzetek"
 
 #: src/remmina_file_editor.c:1370
 msgid "Default settings saved."
@@ -2044,7 +2046,7 @@ msgstr "Nem lehet a(z) %s RDP-kiszolgálóhoz kapcsolódni."
 
 #: plugins/rdp/rdp_plugin.c:2261
 msgid "Automatic (32 bpp) (Server chooses its best format)"
-msgstr ""
+msgstr "Automatikus (32 bpp) (A szerver a legjobb formátumot választja)"
 
 #: plugins/rdp/rdp_plugin.c:2262
 msgid "GFX AVC444 (32 bpp)"
@@ -2100,27 +2102,27 @@ msgstr "<Automatikus felismerés>"
 
 #: plugins/rdp/rdp_plugin.c:2304
 msgid "Modem"
-msgstr ""
+msgstr "Modem"
 
 #: plugins/rdp/rdp_plugin.c:2305
 msgid "Low performance broadband"
-msgstr ""
+msgstr "Alacsony sávszélesség"
 
 #: plugins/rdp/rdp_plugin.c:2306
 msgid "Satellite"
-msgstr ""
+msgstr "Műhold"
 
 #: plugins/rdp/rdp_plugin.c:2307
 msgid "High performance broadband"
-msgstr ""
+msgstr "Nagy sávszélesség"
 
 #: plugins/rdp/rdp_plugin.c:2308
 msgid "WAN"
-msgstr ""
+msgstr "WAN"
 
 #: plugins/rdp/rdp_plugin.c:2309
 msgid "LAN"
-msgstr ""
+msgstr "LAN"
 
 #: plugins/rdp/rdp_plugin.c:2316 data/ui/remmina_preferences.glade:700
 msgid "Off"
@@ -2226,6 +2228,10 @@ msgid ""
 "Adjusts the connection timeout. Use if your connection times out.\n"
 "The highest possible value is 600000 ms (10 minutes).\n"
 msgstr ""
+"Speciális beállítás a nagy késleltetésű kapcsolatokhoz:\n"
+"A kapcsolat időtúllépésének beállítása. Használja, ha a kapcsolat túllépi az "
+"időtúllépési időt.\n"
+"A lehető legmagasabb érték 600000 ms (10 perc).\n"
 
 #: plugins/rdp/rdp_plugin.c:2386
 msgid ""
@@ -2233,6 +2239,10 @@ msgid ""
 "Using autodetection is advised.\n"
 "If \"Autodetect\" fails, choose the most appropriate option in the list.\n"
 msgstr ""
+"Teljesítményoptimalizálás a hálózati kapcsolat típusa alapján:\n"
+"Az automatikus észlelés használata javasolt.\n"
+"Ha az \"Automatikus észlelés\" sikertelen, válassza ki a legmegfelelőbb "
+"lehetőséget a listában.\n"
 
 #: plugins/rdp/rdp_plugin.c:2408
 #, fuzzy
@@ -2368,7 +2378,7 @@ msgstr "Intelligens kártya neve"
 
 #: plugins/rdp/rdp_plugin.c:2450
 msgid "Dynamic virtual channel"
-msgstr ""
+msgstr "Dinamikus virtuális csatorna"
 
 #: plugins/rdp/rdp_plugin.c:2450 plugins/rdp/rdp_plugin.c:2451
 msgid "<channel>[,<options>]"
@@ -2376,7 +2386,7 @@ msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:2451
 msgid "Static virtual channel"
-msgstr ""
+msgstr "Statikus virtuális csatorna"
 
 #: plugins/rdp/rdp_plugin.c:2452
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
@@ -2421,7 +2431,7 @@ msgstr "Letiltja a CAL-t és a hwId beállításra kerül 0-ra"
 
 #: plugins/rdp/rdp_plugin.c:2462
 msgid "Attach to console (2003/2003 R2)"
-msgstr "Csatolás konzolhoz (Windows 2003 / 2003 R2)"
+msgstr "Csatolás konzolhoz (Windows 2003/2003 R2)"
 
 #: plugins/rdp/rdp_plugin.c:2463
 msgid "Turn off fast-path"
@@ -2457,7 +2467,7 @@ msgstr "Az UDP protokoll használata növelheti a teljesítményt,"
 
 #: plugins/rdp/rdp_plugin.c:2472
 msgid "Use base credentials for gateway too"
-msgstr ""
+msgstr "Használjon alap hitelesítő adatokat az átjáróhoz is"
 
 #: plugins/rdp/rdp_plugin.c:2496
 msgid "RDP - Remote Desktop Protocol"
@@ -2624,27 +2634,27 @@ msgstr "Telepathy – Asztalmegosztás"
 
 #: data/ui/remmina_search.glade:61 data/ui/remmina_search_popover.glade:56
 msgid "Search"
-msgstr ""
+msgstr "Keresés"
 
 #: data/ui/remmina_search.glade:75 data/ui/remmina_search_popover.glade:70
 msgid "Search for previous occurrence"
-msgstr ""
+msgstr "Előző előfordulás keresése"
 
 #: data/ui/remmina_search.glade:98 data/ui/remmina_search_popover.glade:93
 msgid "Search for next occurrence"
-msgstr ""
+msgstr "Következő előfordulás keresése"
 
 #: data/ui/remmina_search.glade:130 data/ui/remmina_search_popover.glade:125
 msgid "Toggle search options"
-msgstr ""
+msgstr "Keresési beállítások be- és bekapcsolása"
 
 #: data/ui/remmina_search.glade:191 data/ui/remmina_search_popover.glade:186
 msgid "_Match case"
-msgstr ""
+msgstr "_Kis- és nagybetű érzékeny"
 
 #: data/ui/remmina_search.glade:208 data/ui/remmina_search_popover.glade:203
 msgid "Match _entire word only"
-msgstr ""
+msgstr "Csak _egész szóra keres"
 
 #: data/ui/remmina_search.glade:225 data/ui/remmina_search_popover.glade:220
 msgid "Match as _regular expression"
@@ -2663,6 +2673,12 @@ msgid ""
 "Some Remmina functions need to be set up to work properly.\n"
 "</span>\n"
 msgstr ""
+"<big> <b> Remmina Snap csomag</b></big>\n"
+"\n"
+"<span>\n"
+"A Remmina snap csomagként fut a rendszeren.\n"
+"Néhány Remmina funkciót be kell állítani a megfelelő működéshez.\n"
+"</span>\n"
 
 #: data/ui/remmina_snap_info_dialog.glade:120
 #, fuzzy
@@ -2696,10 +2712,13 @@ msgid ""
 "profiles are saved inside the Snap file system by default. You can change "
 "the location in the Remmina preferences."
 msgstr ""
+"Mivel a Snap csomagok a rendszer többi részétől elzárva futnak, a Remmina "
+"profilokat alapértelmezés szerint a Snap fájlrendszer menti. A helyet a "
+"Remmina beállításokban módosíthatja."
 
 #: data/ui/remmina_snap_info_dialog.glade:222
 msgid "Change where Remmina profiles are stored"
-msgstr ""
+msgstr "A Remmina-profilok tárolási helyének módosítása"
 
 #: data/ui/remmina_snap_info_dialog.glade:261
 #, fuzzy
@@ -3540,7 +3559,7 @@ msgstr "Előtér szín"
 
 #: data/ui/remmina_preferences.glade:2349
 msgid "Search text"
-msgstr ""
+msgstr "Szöveg keresése"
 
 #: data/ui/remmina_preferences.glade:2382
 msgid "Terminal"
