@@ -277,18 +277,21 @@ remmina_plugin_ssh_main_thread(gpointer data)
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
 	/* we may need to open a new tunnel */
+	REMMINA_DEBUG ("Tentatively create an SSH tunnel");
 	hostport = remmina_plugin_service->protocol_plugin_start_direct_tunnel(gp, 22, FALSE);
 	if (hostport == NULL) {
 		remmina_plugin_service->protocol_plugin_signal_connection_closed(gp);
 		return NULL;
 	}
+	REMMINA_DEBUG ("protocol_plugin_start_direct_tunnel returned hostport: %s", hostport);
 
 	ssh = g_object_get_data(G_OBJECT(gp), "user-data");
 	if (ssh) {
-		/* Create SSH shell connection based on existing SSH session */
-
+		REMMINA_DEBUG ("Creating SSH shell based on existing SSH session");
 		shell = remmina_ssh_shell_new_from_ssh(ssh);
+		REMMINA_DEBUG ("Calling remmina_public_get_server_port");
 		remmina_plugin_service->get_server_port(hostport, 22, &ssh->tunnel_entrance_host, &ssh->tunnel_entrance_port);
+		REMMINA_DEBUG ("tunnel_entrance_host: %s, tunnel_entrance_port: %d", ssh->tunnel_entrance_host, ssh->tunnel_entrance_port);
 
 		if (remmina_ssh_init_session(REMMINA_SSH(shell)) &&
 		    remmina_ssh_auth(REMMINA_SSH(shell), NULL, gp, remminafile) == REMMINA_SSH_AUTH_SUCCESS &&
@@ -298,9 +301,12 @@ remmina_plugin_ssh_main_thread(gpointer data)
 	} else {
 
 		/* New SSH Shell connection */
+		REMMINA_DEBUG ("Creating SSH shell based on a new SSH session");
 		shell = remmina_ssh_shell_new_from_file(remminafile);
 		ssh = REMMINA_SSH(shell);
+		REMMINA_DEBUG ("Calling remmina_public_get_server_port");
 		remmina_plugin_service->get_server_port(hostport, 22, &ssh->tunnel_entrance_host, &ssh->tunnel_entrance_port);
+		REMMINA_DEBUG ("tunnel_entrance_host: %s, tunnel_entrance_port: %d", ssh->tunnel_entrance_host, ssh->tunnel_entrance_port);
 
 		while (1) {
 			if (!remmina_ssh_init_session(ssh)) {

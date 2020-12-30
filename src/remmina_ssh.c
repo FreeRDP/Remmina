@@ -287,7 +287,7 @@ remmina_ssh_auth_auto_pubkey(RemminaSSH *ssh, RemminaProtocolWidget *gp, Remmina
 	if (ret != SSH_AUTH_SUCCESS) {
 		// TRANSLATORS: The placeholder %s is an error message
 		remmina_ssh_set_error(ssh, _("Could not authenticate automatically with public SSH key. %s"));
-		g_debug("Cannot authenticate automatically with public SSH key. Error is %s", ssh->error);
+		REMMINA_DEBUG("Cannot authenticate automatically with public SSH key. Error is %s", ssh->error);
 		return REMMINA_SSH_AUTH_AUTHFAILED_RETRY_AFTER_PROMPT;
 	}
 
@@ -393,14 +393,14 @@ remmina_ssh_auth(RemminaSSH *ssh, const gchar *password, RemminaProtocolWidget *
 			rv = remmina_ssh_auth_password(ssh);
 			if (rv != REMMINA_SSH_AUTH_SUCCESS)
 				return rv;
-			g_debug("SSH using remmina_ssh_auth_password");
+			REMMINA_DEBUG("SSH using remmina_ssh_auth_password");
 		}
 		if (!ssh->authenticated && (method & SSH_AUTH_METHOD_INTERACTIVE)) {
 			/* SSH server is requesting us to do interactive auth. */
 			rv = remmina_ssh_auth_interactive(ssh);
 			if (rv != REMMINA_SSH_AUTH_SUCCESS)
 				return rv;
-			g_debug("SSH using remmina_ssh_auth_interactive");
+			REMMINA_DEBUG("SSH using remmina_ssh_auth_interactive");
 		}
 		if (!ssh->authenticated) {
 			// The real error here should be: "The SSH server %s:%d does not support password or interactive authentication"
@@ -508,14 +508,14 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *re
 		if (ssh_get_server_publickey(ssh->session, &server_pubkey) != SSH_OK) {
 			// TRANSLATORS: The placeholder %s is an error message
 			remmina_ssh_set_error(ssh, _("Could not fetch the server\'s public SSH key. %s"));
-			g_debug("ssh_get_server_publickey() has failed");
+			REMMINA_DEBUG("ssh_get_server_publickey() has failed");
 			return REMMINA_SSH_AUTH_FATAL_ERROR;
 		}
 #else
 		if (ssh_get_publickey(ssh->session, &server_pubkey) != SSH_OK) {
 			// TRANSLATORS: The placeholder %s is an error message
 			remmina_ssh_set_error(ssh, _("Could not fetch public SSH key. %s"));
-			g_debug("ssh_get_publickey() has failed");
+			REMMINA_DEBUG("ssh_get_publickey() has failed");
 			return REMMINA_SSH_AUTH_FATAL_ERROR;
 		}
 #endif
@@ -523,7 +523,7 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *re
 			ssh_key_free(server_pubkey);
 			// TRANSLATORS: The placeholder %s is an error message
 			remmina_ssh_set_error(ssh, _("Could not fetch checksum for public SSH key. %s"));
-			g_debug("ssh_get_publickey_hash() has failed");
+			REMMINA_DEBUG("ssh_get_publickey_hash() has failed");
 			return REMMINA_SSH_AUTH_FATAL_ERROR;
 		}
 		ssh_key_free(server_pubkey);
@@ -566,7 +566,7 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *re
 	default:
 		// TRANSLATORS: The placeholder %s is an error message
 		remmina_ssh_set_error(ssh, _("Could not check list of known SSH hosts. %s"));
-		g_debug("Could not check list of known SSH hosts");
+		REMMINA_DEBUG("Could not check list of known SSH hosts");
 		return REMMINA_SSH_AUTH_FATAL_ERROR;
 	}
 
@@ -635,7 +635,7 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *re
 		} else if (remmina_ssh_auth_type == REMMINA_SSH_AUTH_PASSWORD) {
 			/* Ask for user credentials. Username cannot be changed here,
 			 * because we already sent it when opening the connection */
-			g_debug("Showing panel for password\n");
+			REMMINA_DEBUG("Showing panel for password\n");
 			current_user = g_strdup(remmina_file_get_string(remminafile, ssh->is_tunnel ? "ssh_tunnel_username" : "username"));
 			ret = remmina_protocol_widget_panel_auth(gp,
 								 (disablepasswordstoring ? 0 : REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD)
@@ -654,7 +654,7 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *re
 					remmina_file_set_string(remminafile, pwdfkey, current_pwd);
 				else
 					remmina_file_set_string(remminafile, pwdfkey, NULL);
-				
+
 				if(!ssh->is_tunnel) {
 					g_free(current_user);
 					current_user = remmina_protocol_widget_get_username(gp);
@@ -744,14 +744,13 @@ remmina_ssh_init_session(RemminaSSH *ssh)
 	if (ssh->is_tunnel) {
 		ssh_options_set(ssh->session, SSH_OPTIONS_HOST, ssh->server);
 		ssh_options_set(ssh->session, SSH_OPTIONS_PORT, &ssh->port);
+		REMMINA_DEBUG("Setting SSH_OPTIONS_HOST to %s and SSH_OPTIONS_PORT to %d", ssh->server, ssh->port);
 	} else {
 		ssh_options_set(ssh->session, SSH_OPTIONS_HOST, ssh->tunnel_entrance_host);
 		ssh_options_set(ssh->session, SSH_OPTIONS_PORT, &ssh->tunnel_entrance_port);
 		REMMINA_DEBUG("Setting SSH_OPTIONS_HOST to %s and SSH_OPTIONS_PORT to %d", ssh->tunnel_entrance_host, ssh->tunnel_entrance_port);
 	}
 
-	if (*ssh->user != 0)
-		ssh_options_set(ssh->session, SSH_OPTIONS_USER, ssh->user);
 	if (ssh->privkeyfile && *ssh->privkeyfile != 0) {
 		rc = ssh_options_set(ssh->session, SSH_OPTIONS_IDENTITY, ssh->privkeyfile);
 		if (rc == 0)
@@ -763,37 +762,6 @@ remmina_ssh_init_session(RemminaSSH *ssh)
 #ifdef SNAP_BUILD
 	ssh_options_set(ssh->session, SSH_OPTIONS_SSH_DIR, g_strdup_printf("%s/.ssh", g_getenv("SNAP_USER_COMMON")));
 #endif
-	rc = ssh_options_set(ssh->session, SSH_OPTIONS_KEY_EXCHANGE, ssh->kex_algorithms);
-	if (rc == 0)
-		REMMINA_DEBUG("SSH_OPTIONS_KEY_EXCHANGE is now %s", ssh->kex_algorithms);
-	else
-		REMMINA_DEBUG("SSH_OPTIONS_KEY_EXCHANGE does not have a valid value. %s", ssh->kex_algorithms);
-	rc = ssh_options_set(ssh->session, SSH_OPTIONS_CIPHERS_C_S, ssh->ciphers);
-	if (rc == 0)
-		REMMINA_DEBUG("SSH_OPTIONS_CIPHERS_C_S has been set to %s", ssh->ciphers);
-	else
-		REMMINA_DEBUG("SSH_OPTIONS_CIPHERS_C_S does not have a valid value. %s", ssh->ciphers);
-	rc = ssh_options_set(ssh->session, SSH_OPTIONS_HOSTKEYS, ssh->hostkeytypes);
-	if (rc == 0)
-		REMMINA_DEBUG("SSH_OPTIONS_HOSTKEYS is now %s", ssh->hostkeytypes);
-	else
-		REMMINA_DEBUG("SSH_OPTIONS_HOSTKEYS does not have a valid value. %s", ssh->hostkeytypes);
-	rc = ssh_options_set(ssh->session, SSH_OPTIONS_PROXYCOMMAND, ssh->proxycommand);
-	if (rc == 0)
-		REMMINA_DEBUG("SSH_OPTIONS_PROXYCOMMAND is now %s", ssh->proxycommand);
-	else
-		REMMINA_DEBUG("SSH_OPTIONS_PROXYCOMMAND does not have a valid value. %s", ssh->proxycommand);
-	rc = ssh_options_set(ssh->session, SSH_OPTIONS_STRICTHOSTKEYCHECK, &ssh->stricthostkeycheck);
-	if (rc == 0)
-		REMMINA_DEBUG("SSH_OPTIONS_STRICTHOSTKEYCHECK is now %d", ssh->stricthostkeycheck);
-	else
-		REMMINA_DEBUG("SSH_OPTIONS_STRICTHOSTKEYCHECK does not have a valid value. %d", ssh->stricthostkeycheck);
-	rc = ssh_options_set(ssh->session, SSH_OPTIONS_COMPRESSION, ssh->compression);
-	if (rc == 0)
-		REMMINA_DEBUG("SSH_OPTIONS_COMPRESSION is now %s", ssh->compression);
-	else
-		REMMINA_DEBUG("SSH_OPTIONS_COMPRESSION does not have a valid value. %s", ssh->compression);
-
 	ssh_callbacks_init(ssh->callback);
 	if (remmina_log_running()) {
 		verbosity = remmina_pref.ssh_loglevel;
@@ -806,8 +774,105 @@ remmina_ssh_init_session(RemminaSSH *ssh)
 	ssh_set_callbacks(ssh->session, ssh->callback);
 
 	/* As the latest parse the ~/.ssh/config file */
-	if (remmina_pref.ssh_parseconfig)
-		ssh_options_parse_config(ssh->session, NULL);
+	if (g_strcmp0(ssh->tunnel_entrance_host, "127.0.0.1") == 0) {
+		REMMINA_DEBUG ("SSH_OPTIONS_HOST temporary set to the destination host as ssh->tunnel_entrance_host is 127.0.0.1,");
+		ssh_options_set(ssh->session, SSH_OPTIONS_HOST, ssh->server);
+	}
+	if (remmina_pref.ssh_parseconfig) {
+		if (ssh_options_parse_config(ssh->session, NULL) == 0)
+			REMMINA_DEBUG ("ssh_config have been correctly parsed");
+		else
+			REMMINA_DEBUG ("Cannot parse ssh_config: %s", ssh_get_error(ssh->session));
+	}
+	if (g_strcmp0(ssh->tunnel_entrance_host, "127.0.0.1") == 0) {
+		REMMINA_DEBUG ("Setting SSH_OPTIONS_HOST to ssh->tunnel_entrance_host is 127.0.0.1,");
+		ssh_options_set(ssh->session, SSH_OPTIONS_HOST, ssh->tunnel_entrance_host);
+	}
+	gchar *parsed_config;
+	rc = ssh_options_get (ssh->session, SSH_OPTIONS_USER, &parsed_config);
+	if (rc == SSH_OK) {
+		ssh->user = g_strdup (parsed_config);
+		ssh_string_free_char (parsed_config);
+	} else
+		REMMINA_DEBUG ("Parsing ssh_config for SSH_OPTIONS_USER returned an error: %s", ssh_get_error(ssh->session));
+	ssh_options_set(ssh->session, SSH_OPTIONS_USER, ssh->user);
+	REMMINA_DEBUG("SSH_OPTIONS_USER is now %s", ssh->user);
+
+	/* SSH_OPTIONS_PROXYCOMMAND */
+	rc = ssh_options_get (ssh->session, SSH_OPTIONS_PROXYCOMMAND, &parsed_config);
+	if (rc == SSH_OK) {
+		ssh->proxycommand = g_strdup (parsed_config);
+		ssh_string_free_char (parsed_config);
+	} else
+		REMMINA_DEBUG ("Parsing ssh_config for SSH_OPTIONS_PROXYCOMMAND returned an error: %s", ssh_get_error(ssh->session));
+	rc = ssh_options_set(ssh->session, SSH_OPTIONS_PROXYCOMMAND, ssh->proxycommand);
+	if (rc == 0)
+		REMMINA_DEBUG("SSH_OPTIONS_PROXYCOMMAND is now %s", ssh->proxycommand);
+	else
+		REMMINA_DEBUG("SSH_OPTIONS_PROXYCOMMAND does not have a valid value. %s", ssh->proxycommand);
+
+	/* SSH_OPTIONS_HOSTKEYS */
+	rc = ssh_options_get (ssh->session, SSH_OPTIONS_HOSTKEYS, &parsed_config);
+	if (rc == SSH_OK) {
+		ssh->hostkeytypes = g_strdup (parsed_config);
+		ssh_string_free_char (parsed_config);
+	} else
+		REMMINA_DEBUG ("Parsing ssh_config for SSH_OPTIONS_HOSTKEYS returned an error: %s", ssh_get_error(ssh->session));
+	rc = ssh_options_set(ssh->session, SSH_OPTIONS_HOSTKEYS, ssh->hostkeytypes);
+	if (rc == 0)
+		REMMINA_DEBUG("SSH_OPTIONS_HOSTKEYS is now %s", ssh->hostkeytypes);
+	else
+		REMMINA_DEBUG("SSH_OPTIONS_HOSTKEYS does not have a valid value. %s", ssh->hostkeytypes);
+
+	/* SSH_OPTIONS_KEY_EXCHANGE */
+	rc = ssh_options_get (ssh->session, SSH_OPTIONS_KEY_EXCHANGE, &parsed_config);
+	if (rc == SSH_OK) {
+		ssh->kex_algorithms = g_strdup (parsed_config);
+		ssh_string_free_char (parsed_config);
+	} else
+		REMMINA_DEBUG ("Parsing ssh_config for SSH_OPTIONS_KEY_EXCHANGE returned an error: %s", ssh_get_error(ssh->session));
+	rc = ssh_options_set(ssh->session, SSH_OPTIONS_KEY_EXCHANGE, ssh->kex_algorithms);
+	if (rc == 0)
+		REMMINA_DEBUG("SSH_OPTIONS_KEY_EXCHANGE is now %s", ssh->kex_algorithms);
+	else
+		REMMINA_DEBUG("SSH_OPTIONS_KEY_EXCHANGE does not have a valid value. %s", ssh->kex_algorithms);
+
+	/* SSH_OPTIONS_CIPHERS_C_S */
+	rc = ssh_options_get (ssh->session, SSH_OPTIONS_CIPHERS_C_S, &parsed_config);
+	if (rc == SSH_OK) {
+		ssh->ciphers = g_strdup (parsed_config);
+		ssh_string_free_char (parsed_config);
+	} else
+		REMMINA_DEBUG ("Parsing ssh_config for SSH_OPTIONS_CIPHERS_C_S returned an error: %s", ssh_get_error(ssh->session));
+	rc = ssh_options_set(ssh->session, SSH_OPTIONS_CIPHERS_C_S, ssh->ciphers);
+	if (rc == 0)
+		REMMINA_DEBUG("SSH_OPTIONS_CIPHERS_C_S has been set to %s", ssh->ciphers);
+	else
+		REMMINA_DEBUG("SSH_OPTIONS_CIPHERS_C_S does not have a valid value. %s", ssh->ciphers);
+	/* SSH_OPTIONS_STRICTHOSTKEYCHECK */
+	rc = ssh_options_get (ssh->session, SSH_OPTIONS_STRICTHOSTKEYCHECK, &parsed_config);
+	if (rc == SSH_OK) {
+		ssh->stricthostkeycheck = g_strdup (parsed_config);
+		ssh_string_free_char (parsed_config);
+	} else
+		REMMINA_DEBUG ("Parsing ssh_config for SSH_OPTIONS_STRICTHOSTKEYCHECK returned an error: %s", ssh_get_error(ssh->session));
+	rc = ssh_options_set(ssh->session, SSH_OPTIONS_STRICTHOSTKEYCHECK, &ssh->stricthostkeycheck);
+	if (rc == 0)
+		REMMINA_DEBUG("SSH_OPTIONS_STRICTHOSTKEYCHECK is now %d", ssh->stricthostkeycheck);
+	else
+		REMMINA_DEBUG("SSH_OPTIONS_STRICTHOSTKEYCHECK does not have a valid value. %d", ssh->stricthostkeycheck);
+	/* SSH_OPTIONS_COMPRESSION */
+	rc = ssh_options_get (ssh->session, SSH_OPTIONS_COMPRESSION, &parsed_config);
+	if (rc == SSH_OK) {
+		ssh->compression = g_strdup (parsed_config);
+		ssh_string_free_char (parsed_config);
+	} else
+		REMMINA_DEBUG ("Parsing ssh_config for SSH_OPTIONS_COMPRESSION returned an error: %s", ssh_get_error(ssh->session));
+	rc = ssh_options_set(ssh->session, SSH_OPTIONS_COMPRESSION, ssh->compression);
+	if (rc == 0)
+		REMMINA_DEBUG("SSH_OPTIONS_COMPRESSION is now %s", ssh->compression);
+	else
+		REMMINA_DEBUG("SSH_OPTIONS_COMPRESSION does not have a valid value. %s", ssh->compression);
 
 	if (ssh_connect(ssh->session)) {
 		// TRANSLATORS: The placeholder %s is an error message
@@ -892,33 +957,41 @@ remmina_ssh_init_from_file(RemminaSSH *ssh, RemminaFile *remminafile, gboolean i
 
 	/* The ssh->server and ssh->port values */
 	if (is_tunnel) {
+		REMMINA_DEBUG ("We are initializing an SSH tunnel session");
 		server = remmina_file_get_string(remminafile, "ssh_tunnel_server");
 		if (server == NULL || server[0] == 0) {
 			// ssh_tunnel_server empty or invalid, we are opening a tunnel, it means that "Same server at port 22" has been selected
 			server = remmina_file_get_string(remminafile, "server");
 			if (server == NULL || server[0] == 0)
 				server = "localhost";
+			REMMINA_DEBUG ("Calling remmina_public_get_server_port");
 			remmina_public_get_server_port(server, 22, &ssh->server, &ssh->port);
 			ssh->port = 22;
 		} else {
+			REMMINA_DEBUG ("Calling remmina_public_get_server_port");
 			remmina_public_get_server_port(server, 22, &ssh->server, &ssh->port);
 		}
+		REMMINA_DEBUG ("server:port = %s, server = %s, port = %d", server, ssh->server, ssh->port);
 	} else {
+		REMMINA_DEBUG ("We are initializing an SSH session");
 		server = remmina_file_get_string(remminafile, "server");
 		if (server == NULL || server[0] == 0)
 			server = "localhost";
+		REMMINA_DEBUG ("Calling remmina_public_get_server_port");
 		remmina_public_get_server_port(server, 22, &ssh->server, &ssh->port);
+		REMMINA_DEBUG ("server:port = %s, server = %s, port = %d", server, ssh->server, ssh->port);
 	}
 
 	if (ssh->server[0] == '\0') {
 		g_free(ssh->server);
 		// ???
+		REMMINA_DEBUG ("Calling remmina_public_get_server_port");
 		remmina_public_get_server_port(server, 0, &ssh->server, NULL);
 	}
 
 	REMMINA_DEBUG("Initialized SSH struct from file with ssh->server = %s and SSH->port = %d", ssh->server, ssh->port);
 
-	ssh->user = g_strdup(username ? username : g_get_user_name());
+	ssh->user = g_strdup(username ? username : NULL);
 	ssh->password = NULL;
 	ssh->auth = remmina_file_get_int(remminafile, is_tunnel ? "ssh_tunnel_auth" : "ssh_auth", 0);
 	ssh->charset = g_strdup(remmina_file_get_string(remminafile, "ssh_charset"));
@@ -930,10 +1003,22 @@ remmina_ssh_init_from_file(RemminaSSH *ssh, RemminaFile *remminafile, gboolean i
 	gint c = remmina_file_get_int(remminafile, is_tunnel ? "ssh_tunnel_compression" : "ssh_compression", 0);
 	ssh->compression = (c == 1) ? "yes" : "no";
 
+	REMMINA_DEBUG("ssh->user: %s", ssh->user);
+	REMMINA_DEBUG("ssh->password: %s", ssh->password);
+	REMMINA_DEBUG("ssh->auth: %d", ssh->auth);
+	REMMINA_DEBUG("ssh->charset: %s", ssh->charset);
+	REMMINA_DEBUG("ssh->kex_algorithms: %s", ssh->kex_algorithms);
+	REMMINA_DEBUG("ssh->ciphers: %s", ssh->ciphers);
+	REMMINA_DEBUG("ssh->hostkeytypes: %s", ssh->hostkeytypes);
+	REMMINA_DEBUG("ssh->proxycommand: %s", ssh->proxycommand);
+	REMMINA_DEBUG("ssh->stricthostkeycheck: %s", ssh->stricthostkeycheck);
+	REMMINA_DEBUG("ssh->compression: %s", ssh->compression);
+
 	/* Public/Private keys */
 	s = (privatekey ? g_strdup(privatekey) : remmina_ssh_find_identity());
 	if (s) {
 		ssh->privkeyfile = remmina_ssh_identity_path(s);
+		REMMINA_DEBUG("ssh->privkeyfile: %s", ssh->compression);
 		g_free(s);
 	} else {
 		ssh->privkeyfile = NULL;
@@ -954,7 +1039,7 @@ remmina_ssh_init_from_ssh(RemminaSSH *ssh, const RemminaSSH *ssh_src)
 	ssh->is_tunnel = ssh_src->is_tunnel;
 	ssh->server = g_strdup(ssh_src->server);
 	ssh->port = ssh_src->port;
-	ssh->user = g_strdup(ssh_src->user);
+	ssh->user = g_strdup(ssh_src->user ? ssh_src->user : NULL);
 	ssh->auth = ssh_src->auth;
 	ssh->password = g_strdup(ssh_src->password);
 	ssh->passphrase = g_strdup(ssh_src->passphrase);
@@ -1201,7 +1286,7 @@ remmina_ssh_tunnel_create_forward_channel(RemminaSSHTunnel *tunnel)
 	}
 
 	/* Request the SSH server to connect to the destination */
-	g_debug("SSH tunnel destination is %s", tunnel->dest);
+	REMMINA_DEBUG("SSH tunnel destination is %s", tunnel->dest);
 	if (ssh_channel_open_forward(channel, tunnel->dest, tunnel->port, "127.0.0.1", 0) != SSH_OK) {
 		ssh_channel_close(channel);
 		ssh_channel_send_eof(channel);
