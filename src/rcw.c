@@ -591,16 +591,15 @@ gboolean rcw_delete(RemminaConnectionWindow *cnnwin)
 
 	if (cnnwin->priv->on_delete_confirm_mode != RCW_ONDELETE_NOCONFIRM) {
 		n = gtk_notebook_get_n_pages(notebook);
-		dialog = gtk_message_dialog_new(GTK_WINDOW(cnnwin), GTK_DIALOG_MODAL, GTK_MESSAGE_QUESTION,
-						GTK_BUTTONS_YES_NO,
-						ngettext(
-							"Are you sure you want to close the active connection in the current window?",
-							"Are you sure you want to close %i active connections in the current window?",
-							n));
-		i = gtk_dialog_run(GTK_DIALOG(dialog));
-		gtk_widget_destroy(dialog);
-		if (i != GTK_RESPONSE_YES)
-			return FALSE;
+		if (n > 1) {
+			dialog = gtk_message_dialog_new(GTK_WINDOW(cnnwin), GTK_DIALOG_MODAL, GTK_MESSAGE_QUESTION,
+							GTK_BUTTONS_YES_NO,
+							_("Are you sure you want to close %i active connections in the current window?"), n);
+			i = gtk_dialog_run(GTK_DIALOG(dialog));
+			gtk_widget_destroy(dialog);
+			if (i != GTK_RESPONSE_YES)
+				return FALSE;
+		}
 	}
 	rcw_close_all_connections(cnnwin);
 
