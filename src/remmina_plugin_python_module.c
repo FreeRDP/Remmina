@@ -1,8 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2009-2011 Vic Lee
- * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
- * Copyright (C) 2016-2021 Antenore Gatta, Giovanni Panozzo
+ * Copyright (C) 2014-2021 Antenore Gatta, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -43,8 +41,8 @@
  * This file acts as a broker between Remmina and the Python plugins. It abstracts the communication flow
  * over the RemminaPluginService and redirects calls to the correct Python plugin. The PyRemminaProtocolWidget
  * takes care of providing the API inside the Python script.
- *  
- * 
+ *
+ *
  * @see http://www.remmina.org/wp for more information.
  */
 
@@ -65,7 +63,7 @@
  * @brief Handles the initialization of the Python plugin.
  * @details This function prepares the plugin structure and calls the init method of the
  * plugin Python class.
- * 
+ *
  * @param   gp  The protocol widget used by the plugin.
  */
 static void remmina_protocol_init_wrapper(RemminaProtocolWidget *gp)
@@ -77,9 +75,9 @@ static void remmina_protocol_init_wrapper(RemminaProtocolWidget *gp)
 }
 
 /**
- * @brief 
+ * @brief
  * @details
- * 
+ *
  * @param   gp  The protocol widget used by the plugin.
  */
 static gboolean remmina_protocol_open_connection_wrapper(RemminaProtocolWidget *gp)
@@ -92,9 +90,9 @@ static gboolean remmina_protocol_open_connection_wrapper(RemminaProtocolWidget *
 }
 
 /**
- * @brief 
+ * @brief
  * @details
- * 
+ *
  * @param   gp  The protocol widget used by the plugin.
  */
 static gboolean remmina_protocol_close_connection_wrapper(RemminaProtocolWidget *gp)
@@ -106,9 +104,9 @@ static gboolean remmina_protocol_close_connection_wrapper(RemminaProtocolWidget 
 }
 
 /**
- * @brief 
+ * @brief
  * @details
- * 
+ *
  * @param   gp  The protocol widget used by the plugin.
  */
 static gboolean remmina_protocol_query_feature_wrapper(RemminaProtocolPlugin* plugin, RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
@@ -120,9 +118,9 @@ static gboolean remmina_protocol_query_feature_wrapper(RemminaProtocolPlugin* pl
 }
 
 /**
- * @brief 
+ * @brief
  * @details
- * 
+ *
  * @param   gp  The protocol widget used by the plugin.
  */
 static void remmina_protocol_call_feature_wrapper(RemminaProtocolPlugin* plugin, RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
@@ -133,9 +131,9 @@ static void remmina_protocol_call_feature_wrapper(RemminaProtocolPlugin* plugin,
 }
 
 /**
- * @brief 
+ * @brief
  * @details
- * 
+ *
  * @param   gp  The protocol widget used by the plugin.
  */
 static void remmina_protocol_send_keytrokes_wrapper(RemminaProtocolPlugin* plugin, RemminaProtocolWidget *gp, const guint keystrokes[], const gint keylen)
@@ -146,9 +144,9 @@ static void remmina_protocol_send_keytrokes_wrapper(RemminaProtocolPlugin* plugi
 }
 
 /**
- * @brief 
+ * @brief
  * @details
- * 
+ *
  * @param   gp  The protocol widget used by the plugin.
  */
 static gboolean remmina_protocol_get_plugin_screenshot_wrapper(RemminaProtocolPlugin* plugin, RemminaProtocolWidget *gp, RemminaPluginScreenshotData *rpsd)
@@ -172,7 +170,7 @@ static long GetEnumOrDefault(PyObject* instance, gchar* constant_name, long def)
 RemminaPlugin* remmina_plugin_python_create_protocol_plugin(PyObject* pluginInstance)
 {
         RemminaProtocolPlugin* remmina_plugin = (RemminaProtocolPlugin*)malloc(sizeof(RemminaProtocolPlugin));
-        
+
         if(!PyObject_HasAttrString(pluginInstance, "icon_name_ssh")) {
             g_printerr("Error creating Remmina plugin. Python plugin instance is missing member: icon_name_ssh\n");
             return NULL;
@@ -197,7 +195,7 @@ RemminaPlugin* remmina_plugin_python_create_protocol_plugin(PyObject* pluginInst
             g_printerr("Error creating Remmina plugin. Python plugin instance is missing member: ssh_setting\n");
             return NULL;
         }
-       
+
         remmina_plugin->type = REMMINA_PLUGIN_TYPE_PROTOCOL;
         remmina_plugin->name = PyUnicode_AsUTF8(PyObject_GetAttrString(pluginInstance, "name"));                                               // Name
         remmina_plugin->description = PyUnicode_AsUTF8(PyObject_GetAttrString(pluginInstance, "description"));             // Description
@@ -205,7 +203,7 @@ RemminaPlugin* remmina_plugin_python_create_protocol_plugin(PyObject* pluginInst
         remmina_plugin->version = PyUnicode_AsUTF8(PyObject_GetAttrString(pluginInstance, "version"));                                           // Version number
         remmina_plugin->icon_name = PyUnicode_AsUTF8(PyObject_GetAttrString(pluginInstance, "icon_name"));                         // Icon for normal connection
         remmina_plugin->icon_name_ssh = PyUnicode_AsUTF8(PyObject_GetAttrString(pluginInstance, "icon_name_ssh"));                     // Icon for SSH connection
-        
+
         PyObject* basic_settings_list = PyObject_GetAttrString(pluginInstance, "basic_settings");
         Py_ssize_t len = PyList_Size(basic_settings_list);
         if (len) {
@@ -219,7 +217,7 @@ RemminaPlugin* remmina_plugin_python_create_protocol_plugin(PyObject* pluginInst
         } else {
             remmina_plugin->basic_settings = NULL;
         }
-        
+
         PyObject* advanced_settings_list = PyObject_GetAttrString(pluginInstance, "advanced_settings");
         len = PyList_Size(advanced_settings_list);
         if (len) {
@@ -233,8 +231,8 @@ RemminaPlugin* remmina_plugin_python_create_protocol_plugin(PyObject* pluginInst
         } else {
             remmina_plugin->advanced_settings = NULL;
         }
-        
-        
+
+
         PyObject* features_list = PyObject_GetAttrString(pluginInstance, "features");
         len = PyList_Size(features_list);
         if (len) {

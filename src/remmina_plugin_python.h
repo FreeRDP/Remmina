@@ -1,8 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2010 Vic Lee
- * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
- * Copyright (C) 2016-2021 Antenore Gatta, Giovanni Panozzo
+ * Copyright (C) 2014-2021 Antenore Gatta, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -48,10 +46,10 @@ void remmina_plugin_python_init(void);
 
 /**
  * @brief Loads a plugin from the Remmina plugin folder with the given name.
- * 
+ *
  * @param   service     The instance of the service providing an API between Remmina and its plugins.
  * @param   filename    The filename of the plugin to load.
- * 
+ *
  * @return  TRUE on success, FALSE otherwise.
  */
 gboolean remmina_plugin_python_load(RemminaPluginService* service, const gchar* filename);

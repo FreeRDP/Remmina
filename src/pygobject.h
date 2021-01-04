@@ -1,4 +1,38 @@
 /* -*- Mode: C; c-basic-offset: 4 -*- */
+/*
+ * Remmina - The GTK+ Remote Desktop Client
+ * Copyright (C) 2016-2021 Antenore Gatta, Giovanni Panozzo
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA  02110-1301, USA.
+ *
+ *  In addition, as a special exception, the copyright holders give
+ *  permission to link the code of portions of this program with the
+ *  OpenSSL library under certain conditions as described in each
+ *  individual source file, and distribute linked combinations
+ *  including the two.
+ *  You must obey the GNU General Public License in all respects
+ *  for all of the code used other than OpenSSL. *  If you modify
+ *  file(s) with this exception, you may extend this exception to your
+ *  version of the file(s), but you are not obligated to do so. *  If you
+ *  do not wish to do so, delete this exception statement from your
+ *  version. *  If you delete this exception statement from all source
+ *  files in the program, then also delete it here.
+ *
+ */
+
 #ifndef _PYGOBJECT_H_
 #define _PYGOBJECT_H_
 
@@ -34,7 +68,7 @@ typedef struct {
     GObject *obj;
     PyObject *inst_dict; /* the instance dictionary -- must be last */
     PyObject *weakreflist; /* list of weak references */
-    
+
       /*< private >*/
       /* using union to preserve ABI compatibility (structure size
        * must not change) */
@@ -83,7 +117,7 @@ typedef PyTypeObject * (*PyGTypeRegistrationFunction) (const gchar *name,
 						       gpointer data);
 
 struct _PyGObject_Functions {
-    /* 
+    /*
      * All field names in here are considered private,
      * use the macros below instead, which provides stability
      */
@@ -149,11 +183,11 @@ struct _PyGObject_Functions {
                                        GParameter  *params,
                                        guint       *nparams,
                                        PyObject   **py_args);
-    PyObject *(* param_gvalue_as_pyobject) (const GValue* gvalue, 
+    PyObject *(* param_gvalue_as_pyobject) (const GValue* gvalue,
                                             gboolean copy_boxed,
 					    const GParamSpec* pspec);
-    int (* gvalue_from_param_pyobject) (GValue* value, 
-                                        PyObject* py_obj, 
+    int (* gvalue_from_param_pyobject) (GValue* value,
+                                        PyObject* py_obj,
 					const GParamSpec* pspec);
     PyTypeObject *enum_type;
     PyObject *(*enum_add)(PyObject *module,
@@ -161,7 +195,7 @@ struct _PyGObject_Functions {
 			  const char *strip_prefix,
 			  GType gtype);
     PyObject* (*enum_from_gtype)(GType gtype, int value);
-    
+
     PyTypeObject *flags_type;
     PyObject *(*flags_add)(PyObject *module,
 			   const char *type_name_,
@@ -174,7 +208,7 @@ struct _PyGObject_Functions {
 
     int       (*gil_state_ensure) (void);
     void      (*gil_state_release) (int flag);
-    
+
     void      (*register_class_init) (GType gtype, PyGClassInitFunc class_init);
     void      (*register_interface_info) (GType gtype, const GInterfaceInfo *info);
     void      (*closure_set_exception_handler) (GClosure *closure, PyClosureExceptionHandler handler);
@@ -187,7 +221,7 @@ struct _PyGObject_Functions {
 				      gpointer data);
     gboolean  (*gerror_exception_check) (GError **error);
     PyObject* (*option_group_new) (GOptionGroup *group);
-    GType (* type_from_object_strict) (PyObject *obj, gboolean strict);    
+    GType (* type_from_object_strict) (PyObject *obj, gboolean strict);
 };
 
 #ifndef _INSIDE_PYGOBJECT_
@@ -277,11 +311,11 @@ struct _PyGObject_Functions *_PyGObject_API;
  * @req_major: minimum version major number, or -1
  * @req_minor: minimum version minor number, or -1
  * @req_micro: minimum version micro number, or -1
- * 
+ *
  * Imports and initializes the 'gobject' python module.  Can
  * optionally check for a required minimum version if @req_major,
  * @req_minor, and @req_micro are all different from -1.
- * 
+ *
  * Returns: a new reference to the gobject module on success, NULL in
  * case of failure (and raises ImportError).
  **/
@@ -289,7 +323,7 @@ static inline PyObject *
 pygobject_init(int req_major, int req_minor, int req_micro)
 {
     PyObject *gobject, *cobject;
-    
+
     gobject = PyImport_ImportModule("gi._gobject");
     if (!gobject) {
         if (PyErr_Occurred())

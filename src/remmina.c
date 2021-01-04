@@ -1,8 +1,6 @@
 /*
  * Remmina - The GTK Remote Desktop Client
- * Copyright (C) 2009-2010 Vic Lee
- * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
- * Copyright (C) 2016-2021 Antenore Gatta, Giovanni Panozzo
+ * Copyright (C) 2014-2021 Antenore Gatta, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -358,7 +356,7 @@ int main(int argc, char *argv[])
 	remmina_file_manager_init();
 
 	remmina_plugin_manager_init();
-	
+
 
 
 	app_id = g_application_id_is_valid(REMMINA_APP_ID) ? REMMINA_APP_ID : NULL;

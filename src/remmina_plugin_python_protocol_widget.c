@@ -1,8 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2009-2011 Vic Lee
- * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
- * Copyright (C) 2016-2021 Antenore Gatta, Giovanni Panozzo
+ * Copyright (C) 2014-2021 Antenore Gatta, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -45,10 +43,10 @@
  * scripts.
  *
  * This is an example of a minimal protocol plugin:
- *  
+ *
  * @code
  * import remmina
- * 
+ *
  * class MyProtocol:
  *  def __init__(self):
  *      self.name = "MyProtocol"
@@ -61,26 +59,26 @@
  *      print("This is getting logged to the standard output of Remmina.")
  *      remmina.log_print("For debugging purposes it would be better to log the output to the %s window %s!" % ("debug", ":)"))
  *      self.init_your_stuff(handle)
- * 
+ *
  *  def open_connection(self, handle):
  *      if not self.connect():
  *          remmina.log_print("Error! Can not connect...")
  *          return False
- *          
+ *
  *      remmina.remmina_signal_connected(handle)
  *      remmina.log_print("Connection established!")
  *      return True
- *      
- * 
+ *
+ *
  *  def close_connection(self, handle):
  *      self.disconnect()
  *      return True
- * 
+ *
  * plugin = MyProtocol()
  * remmina.register_plugin(plugin)
  * @endcode
- * 
- * 
+ *
+ *
  *
  * @see http://www.remmina.org/wp for more information.
  */
@@ -380,7 +378,7 @@ static PyObject* protocol_widget_start_direct_tunnel(PyRemminaProtocolWidget* se
 
 	gint default_port;
 	gboolean port_plus;
-	
+
 	if (args && PyArg_ParseTuple(args, "ii", &default_port, &port_plus)) {
 		return Py_BuildValue("s", remmina_protocol_widget_start_direct_tunnel(self->gp, default_port, port_plus));
 	} else {
@@ -412,7 +410,7 @@ static gboolean xport_tunnel_init(RemminaProtocolWidget *gp, gint remotedisplay,
 }
 
 static PyObject* protocol_widget_start_xport_tunnel(PyRemminaProtocolWidget* self, PyObject* args)
-{	
+{
 	TRACE_CALL(__func__);
 	SELF_CHECK();
 
@@ -485,7 +483,7 @@ static PyObject* protocol_widget_panel_auth(PyRemminaProtocolWidget* self, PyObj
 
 	gint pflags = 0;
 	gchar* title, default_username, default_password, default_domain, password_prompt;
-	
+
 	if (PyArg_ParseTuple(args, "isssss", &pflags, &title, &default_username, &default_password, &default_domain, &password_prompt)) {
 		if (pflags != REMMINA_MESSAGE_PANEL_FLAG_USERNAME
 			&& pflags != REMMINA_MESSAGE_PANEL_FLAG_USERNAME_READONLY
@@ -508,7 +506,7 @@ static PyObject* protocol_widget_panel_new_certificate(PyRemminaProtocolWidget* 
 	TRACE_CALL(__func__);
 	SELF_CHECK();
 	gchar* subject, issuer, fingerprint;
-	
+
 	if (PyArg_ParseTuple(args, "sss", &subject, &issuer, &fingerprint)) {
 		remmina_protocol_widget_panel_new_certificate(self->gp, subject, issuer, fingerprint);
 	} else {
@@ -523,7 +521,7 @@ static PyObject* protocol_widget_panel_changed_certificate(PyRemminaProtocolWidg
 	TRACE_CALL(__func__);
 	SELF_CHECK();
 	gchar* subject, issuer, new_fingerprint, old_fingerprint;
-	
+
 	if (PyArg_ParseTuple(args, "sss", &subject, &issuer, &new_fingerprint, &old_fingerprint)) {
 		remmina_protocol_widget_panel_changed_certificate(self->gp, subject, issuer, new_fingerprint, old_fingerprint);
 	} else {
@@ -619,7 +617,7 @@ static PyObject* protocol_widget_panel_show_listen(PyRemminaProtocolWidget* self
 	TRACE_CALL(__func__);
 	SELF_CHECK();
 	gint port = 0;
-	
+
 	if (PyArg_ParseTuple(args, "i", &port)) {
 		remmina_protocol_widget_panel_show_listen(self->gp, port);
 	} else {
@@ -662,7 +660,7 @@ static PyObject* protocol_widget_ssh_exec(PyRemminaProtocolWidget* self, PyObjec
 	SELF_CHECK();
 	gboolean wait;
 	gchar* cmd;
-	
+
 	if (PyArg_ParseTuple(args, "ps", &wait, &cmd)) {
 		remmina_protocol_widget_ssh_exec(self->gp, wait, cmd);
 	} else {
@@ -690,7 +688,7 @@ static PyObject* protocol_widget_chat_open(PyRemminaProtocolWidget* self, PyObje
 {
 	TRACE_CALL(__func__);
 	SELF_CHECK();
-	
+
 	if (var_name, PyUnicode_Check(var_name)) {
 		remmina_protocol_widget_chat_open(self->gp, PyUnicode_AsUTF8(var_name), _on_send_callback_wrapper, _on_destroy_callback_wrapper);
 	} else {
@@ -715,7 +713,7 @@ static PyObject* protocol_widget_chat_receive(PyRemminaProtocolWidget* self, PyO
 	TRACE_CALL(__func__);
 	SELF_CHECK();
 	gchar* text;
-	
+
 	if (PyArg_ParseTuple(args, "s", &text)) {
 		remmina_protocol_widget_chat_receive(self->gp, text);
 	} else {
@@ -733,7 +731,7 @@ static PyObject* protocol_widget_send_keys_signals(PyRemminaProtocolWidget* self
 	gchar* keyvals;
 	int length;
 	GdkEventType event_type;
-	
+
 	if (PyArg_ParseTuple(args, "sii", &keyvals, &length, &event_type)) {
 		if (event_type < GDK_NOTHING || event_type >= GDK_EVENT_LAST) {
 			g_printerr("send_keys_signals(keyvals, length, event_type): "
