@@ -36,36 +36,50 @@
 
 #pragma once
 
-#include "remmina/plugin.h"
-
-G_BEGIN_DECLS
-
-typedef gboolean (*RemminaPluginFunc)(gchar *name, RemminaPlugin *plugin, gpointer data);
-
-void remmina_plugin_manager_init(void);
-RemminaPlugin *remmina_plugin_manager_get_plugin(RemminaPluginType type, const gchar *name);
-gboolean remmina_plugin_manager_query_feature_by_type(RemminaPluginType ptype, const gchar *name, RemminaProtocolFeatureType ftype);
-void remmina_plugin_manager_for_each_plugin(RemminaPluginType type, RemminaPluginFunc func, gpointer data);
-void remmina_plugin_manager_show(GtkWindow *parent);
-void remmina_plugin_manager_for_each_plugin_stdout(RemminaPluginType type, RemminaPluginFunc func, gpointer data);
-void remmina_plugin_manager_show_stdout();
-RemminaFilePlugin *remmina_plugin_manager_get_import_file_handler(const gchar *file);
-RemminaFilePlugin *remmina_plugin_manager_get_export_file_handler(RemminaFile *remminafile);
-RemminaSecretPlugin *remmina_plugin_manager_get_secret_plugin(void);
-const gchar *remmina_plugin_manager_get_canonical_setting_name(const RemminaProtocolSetting *setting);
-gboolean remmina_plugin_manager_is_encrypted_setting(RemminaProtocolPlugin *pp, const char *setting);
-gboolean remmina_gtksocket_available();
-
-extern RemminaPluginService remmina_plugin_manager_service;
-
-typedef gboolean (*RemminaPluginLoaderFunc)(RemminaPluginService*, const gchar* name);
-
+/**
+ * @brief The Python abstraction of the protocol widget struct.
+ * 
+ * @details This struct is responsible to provide the same accessibility to the protocol widget for Python as for
+ * native plugins.
+ */
 typedef struct {
-    char* filetype;
-    RemminaPluginLoaderFunc func;
-}  RemminaPluginLoader;
+    PyObject_HEAD
+    RemminaProtocolWidget* gp;
+} PyRemminaProtocolWidget;
 
-gboolean remmina_plugin_manager_supported(const char *filetype);
-void remmina_plugin_manager_add_loader(char *filetype, RemminaPluginLoaderFunc func);
+/**
+ * @brief Maps an instance of a Python plugin to a Remmina one.
+ * 
+ * @details This is used to map a Python plugin instance to the Remmina plugin one. Also instance specific data as the
+ * protocol widget are stored in this struct.
+ */
+typedef struct { 
+    PyObject *pythonInstance;
+    
+    RemminaProtocolPlugin *protocol_plugin;
+    RemminaFilePlugin* file_plugin;
+    RemminaSecretPlugin* secret_plugin;
+    RemminaToolPlugin* tool_plugin;
+    RemminaEntryPlugin* entry_plugin;
+    RemminaPrefPlugin* pref_plugin;
+    RemminaPlugin* generic_plugin;
+    
+    PyRemminaProtocolWidget *gp;
+} PyPlugin;
 
-G_END_DECLS
+
+
+/**
+ * @brief Initializes the 'remmina' module in the Python engine.
+ */
+void remmina_plugin_python_module_init(void);
+
+/**
+ * @brief Returns a pointer to the Python instance, mapped to the RemminaProtocolWidget or null if not found.
+ * 
+ * @details Remmina expects this callback function to be part of one plugin, which is the reason no instance information is explicitly passed. To bridge
+ * that, this function can be used to retrieve the very plugin instance owning the given RemminaProtocolWidget.
+ */
+PyPlugin* remmina_plugin_python_module_get_plugin(RemminaProtocolWidget* gp);
+
+void ToRemminaProtocolSetting(RemminaProtocolSetting* dest, PyObject* setting);

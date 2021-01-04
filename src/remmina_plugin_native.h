@@ -36,36 +36,12 @@
 
 #pragma once
 
-#include "remmina/plugin.h"
+#include "remmina_plugin_manager.h"
 
 G_BEGIN_DECLS
 
-typedef gboolean (*RemminaPluginFunc)(gchar *name, RemminaPlugin *plugin, gpointer data);
+typedef gboolean (*RemminaPluginMain)(gchar *name);
 
-void remmina_plugin_manager_init(void);
-RemminaPlugin *remmina_plugin_manager_get_plugin(RemminaPluginType type, const gchar *name);
-gboolean remmina_plugin_manager_query_feature_by_type(RemminaPluginType ptype, const gchar *name, RemminaProtocolFeatureType ftype);
-void remmina_plugin_manager_for_each_plugin(RemminaPluginType type, RemminaPluginFunc func, gpointer data);
-void remmina_plugin_manager_show(GtkWindow *parent);
-void remmina_plugin_manager_for_each_plugin_stdout(RemminaPluginType type, RemminaPluginFunc func, gpointer data);
-void remmina_plugin_manager_show_stdout();
-RemminaFilePlugin *remmina_plugin_manager_get_import_file_handler(const gchar *file);
-RemminaFilePlugin *remmina_plugin_manager_get_export_file_handler(RemminaFile *remminafile);
-RemminaSecretPlugin *remmina_plugin_manager_get_secret_plugin(void);
-const gchar *remmina_plugin_manager_get_canonical_setting_name(const RemminaProtocolSetting *setting);
-gboolean remmina_plugin_manager_is_encrypted_setting(RemminaProtocolPlugin *pp, const char *setting);
-gboolean remmina_gtksocket_available();
-
-extern RemminaPluginService remmina_plugin_manager_service;
-
-typedef gboolean (*RemminaPluginLoaderFunc)(RemminaPluginService*, const gchar* name);
-
-typedef struct {
-    char* filetype;
-    RemminaPluginLoaderFunc func;
-}  RemminaPluginLoader;
-
-gboolean remmina_plugin_manager_supported(const char *filetype);
-void remmina_plugin_manager_add_loader(char *filetype, RemminaPluginLoaderFunc func);
+gboolean remmina_plugin_native_load(RemminaPluginService* service, const char* name);
 
 G_END_DECLS

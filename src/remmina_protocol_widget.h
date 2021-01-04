@@ -53,11 +53,13 @@ G_BEGIN_DECLS
 #define REMMINA_PROTOCOL_WIDGET_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS((obj), REMMINA_TYPE_PROTOCOL_WIDGET, RemminaProtocolWidgetClass))
 
 typedef struct _RemminaProtocolWidgetPriv RemminaProtocolWidgetPriv;
+typedef struct _RemminaProtocolPlugin RemminaProtocolPlugin;
 
 struct _RemminaProtocolWidget {
 	GtkEventBox			event_box;
 	RemminaConnectionObject *	cnnobj;
 	RemminaProtocolWidgetPriv *	priv;
+	RemminaProtocolPlugin * plugin;
 };
 
 struct _RemminaProtocolWidgetClass {
@@ -73,6 +75,9 @@ struct _RemminaProtocolWidgetClass {
 
 GType remmina_protocol_widget_get_type(void)
 G_GNUC_CONST;
+
+GtkWindow* remmina_protocol_widget_get_gtkwindow(RemminaProtocolWidget *gp);
+GtkWidget* remmina_protocol_widget_gtkviewport(RemminaProtocolWidget *gp);
 
 GtkWidget *remmina_protocol_widget_new(void);
 void remmina_protocol_widget_setup(RemminaProtocolWidget *gp, RemminaFile *remminafile, RemminaConnectionObject *cnnobj);

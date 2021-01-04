@@ -1808,9 +1808,18 @@ void remmina_protocol_widget_setup(RemminaProtocolWidget *gp, RemminaFile *remmi
 		return;
 	}
 	gp->priv->plugin = plugin;
+	gp->plugin = plugin;
 
 	gp->priv->scalemode = remmina_file_get_int(gp->priv->remmina_file, "scale", FALSE);
 	gp->priv->scaler_expand = remmina_file_get_int(gp->priv->remmina_file, "scaler_expand", FALSE);
+}
+
+GtkWindow* remmina_protocol_widget_get_gtkwindow(RemminaProtocolWidget *gp) {
+	return rcw_get_gtkwindow(gp->cnnobj);
+}
+
+GtkWidget *remmina_protocol_widget_gtkviewport(RemminaProtocolWidget *gp) {
+	return rcw_get_gtkviewport(gp->cnnobj);
 }
 
 GtkWidget *remmina_protocol_widget_new(void)
