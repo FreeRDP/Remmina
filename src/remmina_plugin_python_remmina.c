@@ -1,3 +1,37 @@
+/*
+ * Remmina - The GTK+ Remote Desktop Client
+ * Copyright (C) 2016-2021 Antenore Gatta, Giovanni Panozzo
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA  02110-1301, USA.
+ *
+ *  In addition, as a special exception, the copyright holders give
+ *  permission to link the code of portions of this program with the
+ *  OpenSSL library under certain conditions as described in each
+ *  individual source file, and distribute linked combinations
+ *  including the two.
+ *  You must obey the GNU General Public License in all respects
+ *  for all of the code used other than OpenSSL. *  If you modify
+ *  file(s) with this exception, you may extend this exception to your
+ *  version of the file(s), but you are not obligated to do so. *  If you
+ *  do not wish to do so, delete this exception statement from your
+ *  version. *  If you delete this exception statement from all source
+ *  files in the program, then also delete it here.
+ *
+ */
+
 #include <glib.h>
 #include <gtk/gtk.h>
 #define PY_SSIZE_T_CLEAN
@@ -18,27 +52,27 @@
 GPtrArray *remmina_plugin_registry = NULL;
 
 /**
- * 
+ *
  */
 gboolean remmina_plugin_python_check_mandatory_member(PyObject* instance, const gchar* member);
 
 /**
  * @brief Wraps the log_printf function of RemminaPluginService.
- * 
+ *
  * @details This function is only called by the Python engine! There is only one argument
  * since Python offers an inline string formatting which renders any formatting capabilities
  * redundant.
- * 
+ *
  * @param self    Is always NULL since it is a static function of the 'remmina' module
- * @param msg     The message to print.         
+ * @param msg     The message to print.
  */
 static PyObject* remmina_plugin_python_log_printf_wrapper(PyObject* self, PyObject* msg);
 
 /**
  * @brief Accepts an instance of a Python class representing a Remmina plugin.
- * 
+ *
  * @details This function is only called by the Python engine!
- * 
+ *
  * @param self    Is always NULL since it is a static function of the 'remmina' module
  * @param plugin  An instance of a Python plugin class.
  */
@@ -46,189 +80,189 @@ static PyObject* remmina_register_plugin_wrapper(PyObject* self, PyObject* plugi
 
 /**
  * @brief Retrieves the viewport of the current connection window if available.
- * 
+ *
  * @details This function is only called by the Python engine!
- * 
+ *
  * @param self    Is always NULL since it is a static function of the 'remmina' module
  * @param plugin  The handle to retrieve the RemminaConnectionWidget
  */
 static PyObject* remmina_plugin_python_get_viewport(PyObject* self, PyObject* handle);
 
 /**
- * @brief 
- * 
- * @details 
- * 
+ * @brief
+ *
+ * @details
+ *
  * @param self    Is always NULL since it is a static function of the 'remmina' module
  * @param plugin  The handle to retrieve the RemminaConnectionWidget
  */
 static PyObject* remmina_file_get_datadir_wrapper(PyObject* self, PyObject* plugin);
 
 /**
- * @brief 
- * 
- * @details 
- * 
+ * @brief
+ *
+ * @details
+ *
  * @param self    Is always NULL since it is a static function of the 'remmina' module
  * @param plugin  The handle to retrieve the RemminaConnectionWidget
  */
 static PyObject* remmina_file_new_wrapper(PyObject* self, PyObject* plugin);
 
 /**
- * @brief 
- * 
- * @details 
- * 
+ * @brief
+ *
+ * @details
+ *
  * @param self    Is always NULL since it is a static function of the 'remmina' module
  * @param plugin  The handle to retrieve the RemminaConnectionWidget
  */
 static PyObject* remmina_pref_set_value_wrapper(PyObject* self, PyObject* plugin);
 
 /**
- * @brief 
- * 
- * @details 
- * 
+ * @brief
+ *
+ * @details
+ *
  * @param self    Is always NULL since it is a static function of the 'remmina' module
  * @param plugin  The handle to retrieve the RemminaConnectionWidget
  */
 static PyObject* remmina_pref_get_value_wrapper(PyObject* self, PyObject* plugin);
 
 /**
- * @brief 
- * 
- * @details 
- * 
+ * @brief
+ *
+ * @details
+ *
  * @param self    Is always NULL since it is a static function of the 'remmina' module
  * @param plugin  The handle to retrieve the RemminaConnectionWidget
  */
 static PyObject* remmina_pref_get_scale_quality_wrapper(PyObject* self, PyObject* plugin);
 
 /**
- * @brief 
- * 
- * @details 
- * 
+ * @brief
+ *
+ * @details
+ *
  * @param self    Is always NULL since it is a static function of the 'remmina' module
  * @param plugin  The handle to retrieve the RemminaConnectionWidget
  */
 static PyObject* remmina_pref_get_sshtunnel_port_wrapper(PyObject* self, PyObject* plugin);
 
 /**
- * @brief 
- * 
- * @details 
- * 
+ * @brief
+ *
+ * @details
+ *
  * @param self    Is always NULL since it is a static function of the 'remmina' module
  * @param plugin  The handle to retrieve the RemminaConnectionWidget
  */
 static PyObject* remmina_pref_get_ssh_loglevel_wrapper(PyObject* self, PyObject* plugin);
 
 /**
- * @brief 
- * 
- * @details 
- * 
+ * @brief
+ *
+ * @details
+ *
  * @param self    Is always NULL since it is a static function of the 'remmina' module
  * @param plugin  The handle to retrieve the RemminaConnectionWidget
  */
 static PyObject* remmina_pref_get_ssh_parseconfig_wrapper(PyObject* self, PyObject* plugin);
 
 /**
- * @brief 
- * 
- * @details 
- * 
+ * @brief
+ *
+ * @details
+ *
  * @param self    Is always NULL since it is a static function of the 'remmina' module
  * @param plugin  The handle to retrieve the RemminaConnectionWidget
  */
 static PyObject* remmina_pref_keymap_get_keyval_wrapper(PyObject* self, PyObject* plugin);
 
 /**
- * @brief 
- * 
- * @details 
- * 
+ * @brief
+ *
+ * @details
+ *
  * @param self    Is always NULL since it is a static function of the 'remmina' module
  * @param plugin  The handle to retrieve the RemminaConnectionWidget
  */
 static PyObject* remmina_log_print_wrapper(PyObject* self, PyObject* plugin);
 
 /**
- * @brief 
- * 
- * @details 
- * 
+ * @brief
+ *
+ * @details
+ *
  * @param self    Is always NULL since it is a static function of the 'remmina' module
  * @param plugin  The handle to retrieve the RemminaConnectionWidget
  */
 static PyObject* remmina_log_printf_wrapper(PyObject* self, PyObject* plugin);
 
 /**
- * @brief 
- * 
- * @details 
- * 
+ * @brief
+ *
+ * @details
+ *
  * @param self    Is always NULL since it is a static function of the 'remmina' module
  * @param plugin  The handle to retrieve the RemminaConnectionWidget
  */
 static PyObject* remmina_widget_pool_register_wrapper(PyObject* self, PyObject* plugin);
 
 /**
- * @brief 
- * 
- * @details 
- * 
+ * @brief
+ *
+ * @details
+ *
  * @param self    Is always NULL since it is a static function of the 'remmina' module
  * @param plugin  The handle to retrieve the RemminaConnectionWidget
  */
 static PyObject* rcw_open_from_file_full_wrapper(PyObject* self, PyObject* plugin);
 
 /**
- * @brief 
- * 
- * @details 
- * 
+ * @brief
+ *
+ * @details
+ *
  * @param self    Is always NULL since it is a static function of the 'remmina' module
  * @param plugin  The handle to retrieve the RemminaConnectionWidget
  */
 static PyObject* remmina_public_get_server_port_wrapper(PyObject* self, PyObject* plugin);
 
 /**
- * @brief 
- * 
- * @details 
- * 
+ * @brief
+ *
+ * @details
+ *
  * @param self    Is always NULL since it is a static function of the 'remmina' module
  * @param plugin  The handle to retrieve the RemminaConnectionWidget
  */
 static PyObject* remmina_masterthread_exec_is_main_thread_wrapper(PyObject* self, PyObject* plugin);
 
 /**
- * @brief 
- * 
- * @details 
- * 
+ * @brief
+ *
+ * @details
+ *
  * @param self    Is always NULL since it is a static function of the 'remmina' module
  * @param plugin  The handle to retrieve the RemminaConnectionWidget
  */
 static PyObject* remmina_gtksocket_available_wrapper(PyObject* self, PyObject* plugin);
 
 /**
- * @brief 
- * 
- * @details 
- * 
+ * @brief
+ *
+ * @details
+ *
  * @param self    Is always NULL since it is a static function of the 'remmina' module
  * @param plugin  The handle to retrieve the RemminaConnectionWidget
  */
 static PyObject* remmina_protocol_widget_get_profile_remote_heigh_wrapper(PyObject* self, PyObject* plugin);
 
 /**
- * @brief 
- * 
- * @details 
- * 
+ * @brief
+ *
+ * @details
+ *
  * @param self    Is always NULL since it is a static function of the 'remmina' module
  * @param plugin  The handle to retrieve the RemminaConnectionWidget
  */
@@ -236,7 +270,7 @@ static PyObject* remmina_protocol_widget_get_profile_remote_width_wrapper(PyObje
 
 /**
  * @brief The functions of the remmina module.
- * 
+ *
  * @details If any function has to be added this is the place to do it. This list is referenced
  * by the PyModuleDef (describing the module) instance below.
  */
@@ -245,7 +279,7 @@ static PyMethodDef remmina_python_module_type_methods[] = {
 	{"log_print", (PyCFunction)remmina_plugin_python_log_printf_wrapper,  METH_VARARGS, NULL },
 	{"get_datadir", (PyCFunction)remmina_file_get_datadir_wrapper},
 	{"file_new", (PyCFunction)remmina_file_new_wrapper},
-    
+
 	{"pref_set_value", (PyCFunction)remmina_pref_set_value_wrapper},
 	{"pref_get_value", (PyCFunction)remmina_pref_get_value_wrapper},
 	{"pref_get_scale_quality", (PyCFunction)remmina_pref_get_scale_quality_wrapper},
@@ -322,7 +356,7 @@ static int python_protocol_setting_init(PyRemminaProtocolSetting *self, PyObject
                                     ,&self->opt1
                                     ,&self->opt2))
         return -1;
-    
+
     Py_ssize_t len = PyUnicode_GetLength(label);
     if (len == 0) {
         self->label = "";
@@ -405,7 +439,7 @@ static PyObject* python_protocol_feature_new(PyTypeObject * type, PyObject* kws,
 static int python_protocol_feature_init(PyRemminaProtocolFeature *self, PyObject *args, PyObject *kwds)
 {
     static char *kwlist[] = { "type", "id", "opt1", "opt2", "opt3", NULL };
-    
+
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "|llOOO", kwlist
                                     ,&self->type
                                     ,&self->id
@@ -502,7 +536,7 @@ static PyMODINIT_FUNC remmina_plugin_python_module_initialize(void)
 
 /**
  * @brief Initializes all globals and registers the 'remmina' module in the Python engine.
- * @details This 
+ * @details This
  */
 void remmina_plugin_python_module_init(void)
 {
@@ -552,7 +586,7 @@ static PyObject* remmina_register_plugin_wrapper(PyObject* self, PyObject* plugi
         /* Protocol plugin definition and features */
         RemminaPlugin* remmina_plugin = NULL;
         gboolean is_protocol_plugin = FALSE;
-        
+
         const gchar* pluginType = PyUnicode_AsUTF8(PyObject_GetAttrString(plugin_instance, "type"));
 
         if (g_str_equal(pluginType, "protocol")) {
@@ -593,7 +627,7 @@ static PyObject* remmina_register_plugin_wrapper(PyObject* self, PyObject* plugi
             g_ptr_array_add(remmina_plugin_registry, plugin);
         }
     }
-        
+
     return Py_None;
 }
 
@@ -703,7 +737,7 @@ static PyObject* remmina_protocol_widget_get_profile_remote_width_wrapper(PyObje
 
 static gboolean remmina_plugin_equal(gconstpointer lhs, gconstpointer rhs)
 {
-    if (lhs && ((PyPlugin*)lhs)->generic_plugin && rhs) 
+    if (lhs && ((PyPlugin*)lhs)->generic_plugin && rhs)
         return g_str_equal(((PyPlugin*)lhs)->generic_plugin->name, ((gchar*)rhs));
     else
         return lhs == rhs;
@@ -735,7 +769,7 @@ static void GetGeneric(PyObject* field, gpointer* target)
     Py_INCREF(field);
     if (PyUnicode_Check(field)) {
         Py_ssize_t len = PyUnicode_GetLength(field);
-        
+
         if (len == 0) {
             *target = "";
         } else {
@@ -744,7 +778,7 @@ static void GetGeneric(PyObject* field, gpointer* target)
             memcpy(tmp, PyUnicode_AsUTF8(field), len);
             *target = tmp;
         }
-        
+
     } else if (PyLong_Check(field)) {
         *target = malloc(sizeof(long));
         *target = PyLong_AsLong(field);
@@ -753,7 +787,7 @@ static void GetGeneric(PyObject* field, gpointer* target)
         if (len) {
             gpointer* dest = (gpointer*)malloc(sizeof(gpointer) * (len + 1));
             memset(dest, 0, sizeof(gpointer) * (len + 1));
-            
+
             for (Py_ssize_t i = 0; i < len; ++i) {
                 PyObject* item = PyTuple_GetItem(field, i);
                 GetGeneric(item, dest + i);

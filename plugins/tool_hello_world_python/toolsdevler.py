@@ -39,7 +39,7 @@ class HelloPlugin:
             self.btn.show()
         viewport.foreach(foreach_child)
         print("Connected!")
-        
+
         remmina.log_print("[%s]: Plugin open connection\n" % self.name)
         return True
 

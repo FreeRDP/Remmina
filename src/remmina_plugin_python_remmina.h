@@ -1,8 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2010 Vic Lee
- * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
- * Copyright (C) 2016-2020 Antenore Gatta, Giovanni Panozzo
+ * Copyright (C) 2014-2021 Antenore Gatta, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -38,7 +36,7 @@
 
 /**
  * @brief The Python abstraction of the protocol widget struct.
- * 
+ *
  * @details This struct is responsible to provide the same accessibility to the protocol widget for Python as for
  * native plugins.
  */
@@ -49,13 +47,13 @@ typedef struct {
 
 /**
  * @brief Maps an instance of a Python plugin to a Remmina one.
- * 
+ *
  * @details This is used to map a Python plugin instance to the Remmina plugin one. Also instance specific data as the
  * protocol widget are stored in this struct.
  */
-typedef struct { 
+typedef struct {
     PyObject *pythonInstance;
-    
+
     RemminaProtocolPlugin *protocol_plugin;
     RemminaFilePlugin* file_plugin;
     RemminaSecretPlugin* secret_plugin;
@@ -63,7 +61,7 @@ typedef struct {
     RemminaEntryPlugin* entry_plugin;
     RemminaPrefPlugin* pref_plugin;
     RemminaPlugin* generic_plugin;
-    
+
     PyRemminaProtocolWidget *gp;
 } PyPlugin;
 
@@ -76,7 +74,7 @@ void remmina_plugin_python_module_init(void);
 
 /**
  * @brief Returns a pointer to the Python instance, mapped to the RemminaProtocolWidget or null if not found.
- * 
+ *
  * @details Remmina expects this callback function to be part of one plugin, which is the reason no instance information is explicitly passed. To bridge
  * that, this function can be used to retrieve the very plugin instance owning the given RemminaProtocolWidget.
  */
