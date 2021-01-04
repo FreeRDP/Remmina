@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-04 06:14+0000\n"
+"POT-Creation-Date: 2021-01-04 08:14+0000\n"
 "PO-Revision-Date: 2020-12-10 22:33+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/remmina/"
@@ -560,12 +560,12 @@ msgid "Progress"
 msgstr "Поступ"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:86
+#: src/remmina.c:84
 msgid "Show 'About'"
 msgstr "Показати «Про програму»"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:88
+#: src/remmina.c:86
 msgid ""
 "Connect either to a desktop described in a file (.remmina or a filetype "
 "supported by a plugin) or a supported URI (RDP, VNC, SSH or SPICE)"
@@ -573,12 +573,12 @@ msgstr ""
 "З'єднатися зі стільницею, яку описано у файлі (.remmina або суфіксом, що "
 "підтримується додатком) або підтримуваною адресою (RDP, VNC, SSH або SPICE)"
 
-#: src/remmina.c:88 src/remmina.c:90 src/remmina.c:92
+#: src/remmina.c:86 src/remmina.c:88 src/remmina.c:90
 msgid "FILE"
 msgstr "ФАЙЛ"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:90
+#: src/remmina.c:88
 msgid ""
 "Connect to a desktop described in a file (.remmina or a type supported by a "
 "plugin)"
@@ -587,7 +587,7 @@ msgstr ""
 "підтримується додатком)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:92
+#: src/remmina.c:90
 msgid ""
 "Edit desktop connection described in file (.remmina or type supported by "
 "plugin)"
@@ -596,75 +596,75 @@ msgstr ""
 "що підтримується додатком)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:95
+#: src/remmina.c:93
 msgid "Start in kiosk mode"
 msgstr "Запустити в режимі кіоску"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:97
+#: src/remmina.c:95
 msgid "Create new connection profile"
 msgstr "Створити новий профіль з'єднання"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:99
+#: src/remmina.c:97
 msgid "Show preferences"
 msgstr "Показати налаштування"
 
-#: src/remmina.c:99
+#: src/remmina.c:97
 msgid "TABINDEX"
 msgstr "ІНДЕКС_ВКЛАДКИ"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:106
+#: src/remmina.c:104
 msgid "Quit"
 msgstr "Вийти"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:108
+#: src/remmina.c:106
 msgid "Use default server name (for --new)"
 msgstr "Використовувати типову назву сервера (для --new)"
 
-#: src/remmina.c:108
+#: src/remmina.c:106
 msgid "SERVER"
 msgstr "СЕРВЕР"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:110
+#: src/remmina.c:108
 msgid "Use default protocol (for --new)"
 msgstr "Використовувати типовий протокол (для --new)"
 
-#: src/remmina.c:110
+#: src/remmina.c:108
 msgid "PROTOCOL"
 msgstr "ПРОТОКОЛ"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:112
+#: src/remmina.c:110
 msgid "Start in tray"
 msgstr "Запустити у лотку"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:114
+#: src/remmina.c:112
 msgid "Show the application version"
 msgstr "Показати версію програми"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:116
+#: src/remmina.c:114
 msgid "Show version of the application and its plugins"
 msgstr "Показати версію програми та додатків до неї"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:118
+#: src/remmina.c:116
 msgid "Modify connection profile (requires --set-option)"
 msgstr "Змінити профіль з'єднання (потребує --set-option)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:120
+#: src/remmina.c:118
 msgid "Set one or more profile settings, to be used with --update-profile"
 msgstr ""
 "Вкажіть одне чи більше налаштувань профілів, які буде використано з --update-"
 "profile"
 
-#: src/remmina.c:121
+#: src/remmina.c:119
 msgid "Encrypt a password"
 msgstr "Зашифрувати пароль"
 
@@ -2689,9 +2689,16 @@ msgid "About"
 msgstr "Про програму"
 
 #: data/ui/remmina_about.glade:34
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "Copyright © 2014–2020 Antenore Gatta, Giovanni Panozzo.\n"
+#| "Copyright © 2009–2014 Vic Lee\n"
+#| "More details in COPYING\n"
+#| "    "
 msgid ""
 "\n"
-"Copyright © 2014–2020 Antenore Gatta, Giovanni Panozzo.\n"
+"Copyright © 2014–2021 Antenore Gatta, Giovanni Panozzo.\n"
 "Copyright © 2009–2014 Vic Lee\n"
 "More details in COPYING\n"
 "    "
