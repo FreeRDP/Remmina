@@ -20,7 +20,7 @@ ubuntu:devel:
   stage: build
   before_script:
   - apt-get update -qq
-  - apt-get install -y -qq libpcre2-8-0 libpcre2-dev
+  - apt-get install -y -qq libpcre2-8-0 libpcre2-dev python3 python3-dev
   script:
   - mkdir $BUILD_FOLDER
   - cmake -B$BUILD_FOLDER -H. $CMAKE_BUILD_OPTIONS
@@ -38,7 +38,7 @@ appimage:build:
   only: [chat]
   before_script:
   - apt-get update -qq
-  - apt-get install -y -qq libpcre2-8-0 libpcre2-dev wget
+  - apt-get install -y -qq libpcre2-8-0 libpcre2-dev wget python3 python3-dev
   script:
   - mkdir $BUILD_FOLDER
   - cmake -B$BUILD_FOLDER -H. $CMAKE_BUILD_OPTIONS -DCMAKE_INSTALL_PREFIX=/usr
