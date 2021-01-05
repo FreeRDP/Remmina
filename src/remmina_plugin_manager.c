@@ -54,7 +54,9 @@
 #include "rcw.h"
 #include "remmina_plugin_manager.h"
 #include "remmina_plugin_native.h"
+#ifdef WITH_PYTHONLIBS
 #include "remmina_plugin_python.h"
+#endif
 #include "remmina_public.h"
 #include "remmina_masterthread_exec.h"
 #include "remmina/remmina_trace_calls.h"
@@ -264,7 +266,11 @@ static void remmina_plugin_manager_load_plugin(const gchar *name)
 	if (g_str_equal(G_MODULE_SUFFIX, ext)) {
 		remmina_plugin_native_load(&remmina_plugin_manager_service, name);
 	} else if (g_str_equal("py", ext)) {
+#ifdef WITH_PYTHONLIBS
 		remmina_plugin_python_load(&remmina_plugin_manager_service, name);
+#else
+		REMMINA_DEBUG("Python support not compiled, cannot load Python plugins");
+#endif
 	} else {
 		g_print("%s: Skip unsupported file type '%s'\n", name, ext);
 	}
@@ -297,8 +303,10 @@ void remmina_plugin_manager_init()
 	GSList *sple;
 
 	remmina_plugin_table = g_ptr_array_new();
+#ifdef WITH_PYTHONLIBS
 	remmina_plugin_python_init();
-	
+#endif
+
 	if (!g_module_supported()) {
 		g_print("Dynamic loading of plugins is not supported on this platform!\n");
 		return;

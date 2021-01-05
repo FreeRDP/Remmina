@@ -79,16 +79,6 @@ list(APPEND REMMINA_SRCS
 	"remmina_plugin_manager.h"
 	"remmina_plugin_native.c"
 	"remmina_plugin_native.h"
-	"remmina_plugin_python.c"
-	"remmina_plugin_python.h"
-	"remmina_plugin_python_module.c"
-	"remmina_plugin_python_module.h"
-	"remmina_plugin_python_remmina.c"
-	"remmina_plugin_python_remmina.h"
-	"remmina_plugin_python_protocol_widget.c"
-	"remmina_plugin_python_protocol_widget.h"
-	"remmina_plugin_python_remmina_file.c"
-	"remmina_plugin_python_remmina_file.h"
 	"remmina_ext_exec.c"
 	"remmina_ext_exec.h"
 	"remmina_pref.c"
@@ -139,13 +129,47 @@ list(APPEND REMMINA_SRCS
 	"remmina_stats_sender.h"
 	)
 
+option(WITH_PYTHONLIBS "Enable Python plugins support" OFF)
+if(WITH_PYTHONLIBS)
+	message(STATUS "Python plugins support enabled")
+	find_suggested_package(PythonLibs)
+	if(PythonLibs_FOUND)
+		message(STATUS "Python libs found, Python support enabled")
+		add_definitions(-DWITH_PYTHONLIBS)
+		list(FIND REMMINA_SRCS "remmina_exec.c" SRCINDEX)
+		message(DEBUG "remmina_exec.c found at index: " ${SRCINDEX})
+		# Index calculated at "remmina_exec.c" position (43 as of today)
+		list(INSERT REMMINA_SRCS ${SRCINDEX}
+			"remmina_plugin_python.c"
+			"remmina_plugin_python.h"
+			"remmina_plugin_python_module.c"
+			"remmina_plugin_python_module.h"
+			"remmina_plugin_python_remmina.c"
+			"remmina_plugin_python_remmina.h"
+			"remmina_plugin_python_protocol_widget.c"
+			"remmina_plugin_python_protocol_widget.h"
+			"remmina_plugin_python_remmina_file.c"
+			"remmina_plugin_python_remmina_file.h"
+			)
+	else()
+		message(STATUS "Python plugins support enabled, but Python libs not found")
+	endif()
+else()
+  message(STATUS "Python plugins support disabled")
+endif()
+
+message(DEBUG "Source list set to: " ${REMMINA_SRCS})
+
 add_executable(remmina ${REMMINA_SRCS})
 include_directories(${GTK_INCLUDE_DIRS} ${gio_INCLUDE_DIRS} ${gio-unix_INCLUDE_DIRS})
 target_link_libraries(remmina ${GTK_LIBRARIES})
 
-find_package(PythonLibs REQUIRED)
-include_directories(${PYTHON_INCLUDE_DIRS})
-target_link_libraries(remmina ${PYTHON_LIBRARIES})
+if(WITH_PYTHONLIBS)
+	if(PythonLibs_FOUND)
+		include_directories(${PYTHON_INCLUDE_DIRS})
+		target_link_libraries(remmina ${PYTHON_LIBRARIES})
+	endif()
+endif()
 
 if(WITH_MANPAGES)
 	install(FILES remmina.1 DESTINATION ${CMAKE_INSTALL_FULL_MANDIR}/man1)
