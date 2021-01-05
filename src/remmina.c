@@ -48,7 +48,9 @@
 #include "remmina_masterthread_exec.h"
 #include "remmina_plugin_manager.h"
 #include "remmina_plugin_native.h"
+#ifdef WITH_PYTHONLIBS
 #include "remmina_plugin_python.h"
+#endif
 #include "remmina_pref.h"
 #include "remmina_public.h"
 #include "remmina_sftp_plugin.h"
