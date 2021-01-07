@@ -117,9 +117,11 @@ typedef struct _RemminaPrefDialog {
 	GtkButton *		button_keyboard_decrease_font;
 	GtkButton *		button_keyboard_search_text;
 	GtkLabel *		label_terminal_cursor_color;
+	GtkLabel *		label_terminal_bold_color;
 	GtkLabel *		label_terminal_normal_colors;
 	GtkLabel *		label_terminal_bright_colors;
 	GtkColorButton *	colorbutton_cursor;
+	GtkColorButton *	colorbutton_bold;
 	GtkColorButton *	colorbutton_color0;
 	GtkColorButton *	colorbutton_color1;
 	GtkColorButton *	colorbutton_color2;

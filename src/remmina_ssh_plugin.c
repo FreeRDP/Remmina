@@ -444,7 +444,13 @@ remmina_plugin_ssh_set_vte_pref(RemminaProtocolWidget *gp)
 				      pango_font_description_from_string(remmina_pref.vte_font));
 #endif
 	}
+
+#if VTE_CHECK_VERSION (0, 51, 3)
+	REMMINA_DEBUG ("Using vte_terminal_set_bold_is_bright instead of vte_terminal_set_allow_bold as deprecated");
+	vte_terminal_set_bold_is_bright(VTE_TERMINAL(gpdata->vte), remmina_pref.vte_allow_bold_text);
+#else
 	vte_terminal_set_allow_bold(VTE_TERMINAL(gpdata->vte), remmina_pref.vte_allow_bold_text);
+#endif
 	if (remmina_pref.vte_lines > 0)
 		vte_terminal_set_scrollback_lines(VTE_TERMINAL(gpdata->vte), remmina_pref.vte_lines);
 }
@@ -863,6 +869,7 @@ remmina_plugin_ssh_init(RemminaProtocolWidget *gp)
 #if VTE_CHECK_VERSION(0, 38, 0)
 	GdkRGBA cp[PALETTE_SIZE];
 	GdkRGBA cursor_color;
+	GdkRGBA bold_color;
 
 	/*
 	 * custom colors reside inside of the 'theme' subdir of the remmina config folder (.config/remmina/theme)
@@ -915,6 +922,7 @@ remmina_plugin_ssh_init(RemminaProtocolWidget *gp)
 		gdk_rgba_parse(&foreground_color, color_pref.foreground);
 		gdk_rgba_parse(&background_color, color_pref.background);
 		gdk_rgba_parse(&cursor_color, color_pref.cursor);
+		gdk_rgba_parse(&bold_color, color_pref.bold);
 
 		gdk_rgba_parse(&cp[0], color_pref.color0);
 		gdk_rgba_parse(&cp[1], color_pref.color1);
@@ -948,42 +956,49 @@ remmina_plugin_ssh_init(RemminaProtocolWidget *gp)
 			gdk_rgba_parse(&foreground_color, "#ffffff");
 			gdk_rgba_parse(&background_color, "#000000");
 			gdk_rgba_parse(&cursor_color, "#ffffff");
+			gdk_rgba_parse(&bold_color, "#ffffff");
 			remminavte.palette = linux_palette;
 			break;
 		case TANGO:
 			gdk_rgba_parse(&foreground_color, "#eeeeec");
 			gdk_rgba_parse(&background_color, "#2e3436");
 			gdk_rgba_parse(&cursor_color, "#8ae234");
+			gdk_rgba_parse(&bold_color, "#eeeeec");
 			remminavte.palette = tango_palette;
 			break;
 		case GRUVBOX:
 			gdk_rgba_parse(&foreground_color, "#ebdbb2");
 			gdk_rgba_parse(&background_color, "#282828");
 			gdk_rgba_parse(&cursor_color, "#d3869b");
+			gdk_rgba_parse(&bold_color, "#ffffff");
 			remminavte.palette = gruvbox_palette;
 			break;
 		case SOLARIZED_DARK:
 			gdk_rgba_parse(&foreground_color, "#839496");
 			gdk_rgba_parse(&background_color, "#002b36");
 			gdk_rgba_parse(&cursor_color, "#93a1a1");
+			gdk_rgba_parse(&bold_color, "#819090");
 			remminavte.palette = solarized_dark_palette;
 			break;
 		case SOLARIZED_LIGHT:
 			gdk_rgba_parse(&foreground_color, "#657b83");
 			gdk_rgba_parse(&background_color, "#fdf6e3");
 			gdk_rgba_parse(&cursor_color, "#586e75");
+			gdk_rgba_parse(&bold_color, "#475b62");
 			remminavte.palette = solarized_light_palette;
 			break;
 		case XTERM:
 			gdk_rgba_parse(&foreground_color, "#000000");
 			gdk_rgba_parse(&background_color, "#ffffff");
 			gdk_rgba_parse(&cursor_color, "#000000");
+			gdk_rgba_parse(&bold_color, "#000000");
 			remminavte.palette = xterm_palette;
 			break;
 		case CUSTOM:
 			gdk_rgba_parse(&foreground_color, remmina_pref.color_pref.foreground);
 			gdk_rgba_parse(&background_color, remmina_pref.color_pref.background);
 			gdk_rgba_parse(&cursor_color, remmina_pref.color_pref.cursor);
+			gdk_rgba_parse(&bold_color, remmina_pref.color_pref.bold);
 
 			gdk_rgba_parse(&cp[0], remmina_pref.color_pref.color0);
 			gdk_rgba_parse(&cp[1], remmina_pref.color_pref.color1);
@@ -1021,6 +1036,8 @@ remmina_plugin_ssh_init(RemminaProtocolWidget *gp)
 	vte_terminal_set_color_foreground(VTE_TERMINAL(vte), &foreground_color);
 	vte_terminal_set_color_background(VTE_TERMINAL(vte), &background_color);
 	vte_terminal_set_color_cursor(VTE_TERMINAL(vte), &cursor_color);
+	vte_terminal_set_color_bold(VTE_TERMINAL(vte), &bold_color);
+
 #else
 	/* VTE <= 2.90 doesn’t support GdkRGBA so we must convert GdkRGBA to GdkColor */
 	foreground_gdkcolor.red = (guint16)(foreground_color.red * 0xFFFF);

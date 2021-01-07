@@ -89,6 +89,7 @@ typedef struct _RemminaColorPref {
 	/* Color palette for VTE terminal */
 	gchar * background;
 	gchar * cursor;
+	gchar * bold;
 	gchar * foreground;
 	gchar * color0;
 	gchar * color1;
