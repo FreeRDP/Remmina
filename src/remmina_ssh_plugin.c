@@ -444,7 +444,11 @@ remmina_plugin_ssh_set_vte_pref(RemminaProtocolWidget *gp)
 				      pango_font_description_from_string(remmina_pref.vte_font));
 #endif
 	}
+#if VTE_CHECK_VERSION(0, 50, 0)
+	REMMINA_DEBUG ("vte_terminal_set_allow_bold not set as deprecated");
+#else
 	vte_terminal_set_allow_bold(VTE_TERMINAL(gpdata->vte), remmina_pref.vte_allow_bold_text);
+#endif
 	if (remmina_pref.vte_lines > 0)
 		vte_terminal_set_scrollback_lines(VTE_TERMINAL(gpdata->vte), remmina_pref.vte_lines);
 }
