@@ -44,6 +44,32 @@
 #include <cairo/cairo-xlib.h>
 #include <freerdp/locale/keyboard.h>
 
+static gboolean remmina_rdp_event_on_map (GtkWindow *window, GdkEvent  *event, RemminaProtocolWidget* gp)
+{
+	TRACE_CALL(__func__);
+	rfContext* rfi = GET_PLUGIN_DATA(gp);
+	rdpGdi* gdi;
+	gdi = ((rdpContext *)rfi)->gdi;
+
+	REMMINA_PLUGIN_DEBUG("Map event received, disabling TS_SUPPRESS_OUTPUT_PDU ");
+	gdi_send_suppress_output(gdi, FALSE);
+
+	return FALSE;
+}
+
+static gboolean remmina_rdp_event_on_unmap (GtkWindow *window, GdkEvent  *event, RemminaProtocolWidget* gp)
+{
+	TRACE_CALL(__func__);
+	rfContext* rfi = GET_PLUGIN_DATA(gp);
+	rdpGdi* gdi;
+	gdi = ((rdpContext *)rfi)->gdi;
+
+	REMMINA_PLUGIN_DEBUG("Unmap event received, enabling TS_SUPPRESS_OUTPUT_PDU ");
+	gdi_send_suppress_output(gdi, TRUE);
+
+	return FALSE;
+}
+
 static gboolean remmina_rdp_event_on_focus_in(GtkWidget* widget, GdkEventKey* event, RemminaProtocolWidget* gp)
 {
 	TRACE_CALL(__func__);
@@ -812,6 +838,10 @@ void remmina_rdp_event_init(RemminaProtocolWidget* gp)
 		G_CALLBACK(remmina_rdp_event_on_key), gp);
 	g_signal_connect(G_OBJECT(rfi->drawing_area), "focus-in-event",
 		G_CALLBACK(remmina_rdp_event_on_focus_in), gp);
+	g_signal_connect(G_OBJECT(gtk_widget_get_toplevel(rfi->drawing_area)), "map-event",
+		G_CALLBACK(remmina_rdp_event_on_map), gp);
+	g_signal_connect(G_OBJECT(gtk_widget_get_toplevel(rfi->drawing_area)), "unmap-event",
+		G_CALLBACK(remmina_rdp_event_on_unmap), gp);
 
 	if (!remmina_plugin_service->file_get_int(remminafile, "disableclipboard", FALSE)) {
 		clipboard = gtk_widget_get_clipboard(rfi->drawing_area, GDK_SELECTION_CLIPBOARD);
@@ -850,8 +880,6 @@ void remmina_rdp_event_init(RemminaProtocolWidget* gp)
 #endif
 }
 
-
-
 void remmina_rdp_event_free_event(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* obj)
 {
 	TRACE_CALL(__func__);
@@ -867,7 +895,6 @@ void remmina_rdp_event_free_event(RemminaProtocolWidget* gp, RemminaPluginRdpUiO
 
 	g_free(obj);
 }
-
 
 void remmina_rdp_event_uninit(RemminaProtocolWidget* gp)
 {
