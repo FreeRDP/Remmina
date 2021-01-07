@@ -10,13 +10,14 @@
 # Ecron <ecron_89@hotmail.com>, 2020.
 # Antenore Gatta <antenore@simbiosi.org>, 2020.
 # BennyBeat <bennybeat@gmail.com>, 2020.
+# Gil Obradors <gil.obradors@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-05 11:40+0000\n"
-"PO-Revision-Date: 2020-10-14 12:26+0000\n"
-"Last-Translator: Ecron <ecron_89@hotmail.com>\n"
+"POT-Creation-Date: 2021-01-07 10:32+0000\n"
+"PO-Revision-Date: 2021-01-07 10:32+0000\n"
+"Last-Translator: Gil Obradors <gil.obradors@gmail.com>\n"
 "Language-Team: Catalan <https://hosted.weblate.org/projects/remmina/remmina/"
 "ca/>\n"
 "Language: ca\n"
@@ -24,7 +25,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.3-dev\n"
+"X-Generator: Weblate 4.4.1-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
 
 #: src/remmina_protocol_widget.c:279
@@ -90,7 +91,7 @@ msgstr "Escriviu el nom d'usuari SSH i la contrasenya."
 
 #: src/remmina_protocol_widget.c:1520 src/remmina_protocol_widget.c:1547
 msgid "Fingerprint automatically accepted"
-msgstr ""
+msgstr "Empremta digital acceptada automàticament"
 
 #: src/remmina_protocol_widget.c:1527
 msgid "Certificate details:"
@@ -179,10 +180,8 @@ msgid "libsodium >= 1.9.0 is required to use master password"
 msgstr "Per a usar la contrasenya mestra cal el libsodium >= 1.9.0"
 
 #: src/remmina_pref_dialog.c:736
-#, fuzzy
-#| msgid "Pick a terminal colouring file"
 msgid "Picking a terminal colouring file replaces the file: "
-msgstr "Trieu un fitxer de color per al terminal"
+msgstr "Trieu un fitxer de color per al terminal: "
 
 #: src/remmina_pref_dialog.c:740
 msgid ""
@@ -190,6 +189,9 @@ msgid ""
 "\"Advanced\" tab of terminal connections and editable in the \"Terminal\" "
 "tab in the settings."
 msgstr ""
+"Aquest fitxer conté els esquemes de personalització de colors de terminal "
+"configurables des de la pestanya \"Avançada\" de les connexions del terminal "
+"i editable en la pestanya \"Terminal\" de les configuracions."
 
 #: src/remmina_ssh_plugin.c:506
 #, c-format
@@ -444,10 +446,8 @@ msgid "Please enter format 'widthxheight'."
 msgstr "Introduïu les dades en format «ampladaxaltura»."
 
 #: src/remmina_public.c:646
-#, fuzzy
-#| msgid "Quality settings"
 msgid "Change security settings"
-msgstr "Configuració de qualitat"
+msgstr "Canvia configuracions de seguretat"
 
 #. TRANSLATORS: translator-credits should be replaced with a formatted list of translators in your own language
 #: src/remmina_about.c:54
@@ -759,10 +759,8 @@ msgid "Grab all keyboard events"
 msgstr "Captura tots els esdeveniments del teclat"
 
 #: src/rcw.c:2276
-#, fuzzy
-#| msgid "_Preferences"
 msgid "Preferences"
-msgstr "_Preferències"
+msgstr "Preferències"
 
 #: src/rcw.c:2284
 msgid "_Tools"
@@ -1468,10 +1466,8 @@ msgid "Default settings saved."
 msgstr "S’han desat els paràmetres predeterminats."
 
 #: src/remmina_file_editor.c:1440
-#, fuzzy
-#| msgid "New connection profile"
 msgid "Remote Connection Profile"
-msgstr "Perfil nou de connexió"
+msgstr "Perfil de connexió remota"
 
 #: src/remmina_file_editor.c:1446
 msgid "Save as Default"
@@ -2081,27 +2077,27 @@ msgstr "<Detecta automàticament>"
 
 #: plugins/rdp/rdp_plugin.c:2304
 msgid "Modem"
-msgstr ""
+msgstr "Modem"
 
 #: plugins/rdp/rdp_plugin.c:2305
 msgid "Low performance broadband"
-msgstr ""
+msgstr "Ample de banda de baix rendiment"
 
 #: plugins/rdp/rdp_plugin.c:2306
 msgid "Satellite"
-msgstr ""
+msgstr "Satèlit"
 
 #: plugins/rdp/rdp_plugin.c:2307
 msgid "High performance broadband"
-msgstr ""
+msgstr "Ample de banda d'alt rendiment"
 
 #: plugins/rdp/rdp_plugin.c:2308
 msgid "WAN"
-msgstr ""
+msgstr "WAN"
 
 #: plugins/rdp/rdp_plugin.c:2309
 msgid "LAN"
-msgstr ""
+msgstr "LAN"
 
 #: plugins/rdp/rdp_plugin.c:2316 data/ui/remmina_preferences.glade:700
 msgid "Off"
@@ -2171,14 +2167,6 @@ msgstr ""
 "    SCardGetDeviceTypeId()"
 
 #: plugins/rdp/rdp_plugin.c:2356
-#, fuzzy
-#| msgid ""
-#| "Options for redirection of audio input:\n"
-#| "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
-#| "    [channel:<channel>] Audio input (microphone)\n"
-#| "  • format:1\n"
-#| "  • sys:oss,dev:1,format:1\n"
-#| "  • sys:alsa"
 msgid ""
 "Options for redirection of audio input:\n"
 "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
@@ -2191,19 +2179,12 @@ msgstr ""
 "Opcions d'entrada d'àudio:\n"
 "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
 "    [channel:<channel>] Entrada d'àudio (micròfon)\n"
+"  • sys:pulse  \n"
 "  • format:1\n"
 "  • sys:oss,dev:1,format:1\n"
 "  • sys:alsa"
 
 #: plugins/rdp/rdp_plugin.c:2365
-#, fuzzy
-#| msgid ""
-#| "Options for redirection of audio input:\n"
-#| "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
-#| "    [channel:<channel>] Audio input (microphone)\n"
-#| "  • format:1\n"
-#| "  • sys:oss,dev:1,format:1\n"
-#| "  • sys:alsa"
 msgid ""
 "Options for redirection of audio ouput:\n"
 "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
@@ -2213,9 +2194,10 @@ msgid ""
 "  • sys:oss,dev:1,format:1\n"
 "  • sys:alsa"
 msgstr ""
-"Opcions d'entrada d'àudio:\n"
+"Opcions de sortida d'àudio:\n"
 "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
-"    [channel:<channel>] Entrada d'àudio (micròfon)\n"
+"    [channel:<channel>] Sortida d'àudio\n"
+"  • sys:pulse\n"
 "  • format:1\n"
 "  • sys:oss,dev:1,format:1\n"
 "  • sys:alsa"
@@ -2233,21 +2215,15 @@ msgstr ""
 "  • id:054c:0268#4669:6e6b,addr:04:0c"
 
 #: plugins/rdp/rdp_plugin.c:2381
-#, fuzzy
-#| msgid ""
-#| "Advanced setting for high latency links:\n"
-#| "Adjust connection timeout, use if you encounter timeout failures with "
-#| "your connection.\n"
-#| "The highest possible value is 600000 ms (10 minutes)\n"
 msgid ""
 "Advanced setting for high latency links:\n"
 "Adjusts the connection timeout. Use if your connection times out.\n"
 "The highest possible value is 600000 ms (10 minutes).\n"
 msgstr ""
 "Opcions avançades per a enllaços amb latència elevada:\n"
-"Ajusteu el temps d'espera de la connexió, en cas que trobeu errors a la "
-"vostra connexió.\n"
-"El valor possible més alt és 600000 ms (10 minuts)\n"
+"Ajusteu el temps d'espera de la connexió. Utilitza-ho si esgota el temps de "
+"connexió.\n"
+"El valor possible més alt és 600000 ms (10 minuts).\n"
 
 #: plugins/rdp/rdp_plugin.c:2386
 msgid ""
@@ -2255,12 +2231,13 @@ msgid ""
 "Using autodetection is advised.\n"
 "If \"Autodetect\" fails, choose the most appropriate option in the list.\n"
 msgstr ""
+"Optimitzacions basades en el tipus de connexió de xarxa:\n"
+"Autodetecció recomanada.\n"
+"Si l'autodetecció falla escull la més apropiada.\n"
 
 #: plugins/rdp/rdp_plugin.c:2408
-#, fuzzy
-#| msgid "New connection profile"
 msgid "Network connection type"
-msgstr "Perfil nou de connexió"
+msgstr "Tipus de connexió"
 
 #: plugins/rdp/rdp_plugin.c:2425
 msgid "Security protocol negotiation"
@@ -2275,24 +2252,20 @@ msgid "FreeRDP log level"
 msgstr "Nivell de registre FreeRDP"
 
 #: plugins/rdp/rdp_plugin.c:2428
-#, fuzzy
-#| msgid "FreeRDP log level"
 msgid "FreeRDP log filters"
-msgstr "Nivell de registre FreeRDP"
+msgstr "filters registre FreeRDP"
 
 #: plugins/rdp/rdp_plugin.c:2428
 msgid "tag:level[,tag:level[,…]]"
-msgstr ""
+msgstr "tag:nivell[,etiqueta:nivell[,...]]"
 
 #: plugins/rdp/rdp_plugin.c:2429
 msgid "Sound"
 msgstr "So"
 
 #: plugins/rdp/rdp_plugin.c:2430
-#, fuzzy
-#| msgid "Redirect local microphone"
 msgid "Redirect local audio output"
-msgstr "Redirigeix el micròfon local"
+msgstr "Redirigeix la sortida de so local"
 
 #: plugins/rdp/rdp_plugin.c:2431
 msgid "Redirect local microphone"
@@ -2472,7 +2445,7 @@ msgstr "L'ús del protocol UDP podria millorar el rendiment"
 
 #: plugins/rdp/rdp_plugin.c:2472
 msgid "Use base credentials for gateway too"
-msgstr ""
+msgstr "Utilitza les credencials base també per la porta d'enllaç"
 
 #: plugins/rdp/rdp_plugin.c:2496
 msgid "RDP - Remote Desktop Protocol"
@@ -2562,7 +2535,7 @@ msgstr "% de factor d’escala de dispositiu"
 msgid "Desktop orientation"
 msgstr "Orientació de l’escriptori"
 
-#: plugins/rdp/rdp_event.c:302
+#: plugins/rdp/rdp_event.c:328
 #, c-format
 msgid "Reconnection attempt %d of %d…"
 msgstr "Intent de reconnexió %d de %d…"
@@ -2728,13 +2701,6 @@ msgid "About"
 msgstr "Quant a"
 
 #: data/ui/remmina_about.glade:34
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Copyright © 2014–2020 Antenore Gatta, Giovanni Panozzo.\n"
-#| "Copyright © 2009–2014 Vic Lee\n"
-#| "More details in COPYING\n"
-#| "    "
 msgid ""
 "\n"
 "Copyright © 2014–2021 Antenore Gatta, Giovanni Panozzo.\n"
@@ -2743,7 +2709,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"Copyright © 2014–2020 Antenore Gatta, Giovanni Panozzo.\n"
+"Copyright © 2014–2021 Antenore Gatta, Giovanni Panozzo.\n"
 "Copyright © 2009–2014 Vic Lee\n"
 "Més detalls al COPYING\n"
 "    "
@@ -3387,22 +3353,16 @@ msgid "Repeat the password"
 msgstr "Repetiu la contrasenya"
 
 #: data/ui/remmina_preferences.glade:1653
-#, fuzzy
-#| msgid "Accept changed certificate?"
 msgid "Fingerprints and certificates"
-msgstr "Voleu acceptar el certificat modificat?"
+msgstr "Empremtes digitals i certificats"
 
 #: data/ui/remmina_preferences.glade:1668
-#, fuzzy
-#| msgid "Accept changed certificate?"
 msgid "Automatically accept all fingerprints and certificates"
-msgstr "Voleu acceptar el certificat modificat?"
+msgstr "Automàticament accepta les empremtes i certificats digitals."
 
 #: data/ui/remmina_preferences.glade:1674
-#, fuzzy
-#| msgid "Accept changed certificate?"
 msgid "Trust all fingerprints and certificates"
-msgstr "Voleu acceptar el certificat modificat?"
+msgstr "Confia amb totes les empremtes i certificats digitals"
 
 #: data/ui/remmina_preferences.glade:1707
 msgid "Security"
