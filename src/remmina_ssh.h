@@ -83,6 +83,7 @@ typedef struct _RemminaSSH {
 	gchar *		passphrase;
 
 	gboolean	is_tunnel;
+	gboolean	is_multiauth;
 	gchar *		tunnel_entrance_host;
 	gint		tunnel_entrance_port;
 
@@ -104,6 +105,8 @@ gboolean remmina_ssh_init_session(RemminaSSH *ssh);
 
 enum remmina_ssh_auth_result {
 	REMMINA_SSH_AUTH_SUCCESS,
+	REMMINA_SSH_AUTH_PARTIAL,
+	REMMINA_SSH_AUTH_AGAIN,
 	REMMINA_SSH_AUTH_AUTHFAILED_RETRY_AFTER_PROMPT,
 	REMMINA_SSH_AUTH_USERCANCEL,
 	REMMINA_SSH_AUTH_FATAL_ERROR,
