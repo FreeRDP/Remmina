@@ -47,6 +47,11 @@ enum {
 
 static RemminaPluginService *remmina_plugin_service = NULL;
 
+#ifdef WITH_GSTREAMER
+#include <gst/gst.h>
+static gboolean gstreamerAvailable = FALSE;
+#endif // WITH_GSTREAMER
+
 static void remmina_plugin_spice_channel_new_cb(SpiceSession *, SpiceChannel *, RemminaProtocolWidget *);
 static void remmina_plugin_spice_main_channel_event_cb(SpiceChannel *, SpiceChannelEvent, RemminaProtocolWidget *);
 static void remmina_plugin_spice_agent_connected_event_cb(SpiceChannel *, RemminaProtocolWidget *);
@@ -334,6 +339,11 @@ static void remmina_plugin_spice_display_ready_cb(GObject *display, GParamSpec *
 	g_object_get(display, "ready", &ready, NULL);
 
 	if (ready) {
+		SpiceVideoCodecType videocodec;
+		SpiceImageCompression imagecompression;
+		RemminaPluginSpiceData *gpdata = GET_PLUGIN_DATA(gp);
+		RemminaFile *remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
+
 		g_signal_handlers_disconnect_by_func(display,
 			G_CALLBACK(remmina_plugin_spice_display_ready_cb),
 			gp);
@@ -343,6 +353,41 @@ static void remmina_plugin_spice_display_ready_cb(GObject *display, GParamSpec *
 			"scaling", (scaleMode  == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_SCALED),
 			"resize-guest", (scaleMode == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_DYNRES),
 			NULL);
+
+#ifdef WITH_GSTREAMER
+		videocodec = remmina_plugin_service->file_get_int(remminafile, "videocodec", 0);
+		if (videocodec) {
+			GError *err = NULL;
+			guint i;
+
+			GArray *preferred_codecs = g_array_sized_new(FALSE, FALSE,
+				sizeof(gint),
+				(SPICE_VIDEO_CODEC_TYPE_ENUM_END - 1));
+
+			g_array_append_val(preferred_codecs, videocodec);
+			/*for (i = SPICE_VIDEO_CODEC_TYPE_MJPEG; i < SPICE_VIDEO_CODEC_TYPE_ENUM_END; ++i) {
+				if (i != videocodec) {
+					g_array_append_val(preferred_codecs, i);
+				}
+			}*/
+
+			if (!spice_display_channel_change_preferred_video_codec_types(SPICE_CHANNEL(gpdata->display_channel),
+					(gint *) preferred_codecs->data,
+					1, //preferred_codecs->len,
+					&err)) {
+				g_warning("Setting preferred video codecs failed: %s", err->message);
+				g_error_free(err);
+			}
+
+			g_clear_pointer(&preferred_codecs, g_array_unref);
+		}
+#endif // WITH_GSTREAMER
+		imagecompression = remmina_plugin_service->file_get_int(remminafile, "imagecompression", 0);
+		if (imagecompression) {
+			spice_display_channel_change_preferred_compression(SPICE_CHANNEL(gpdata->display_channel),
+				imagecompression);
+		}
+
 		gtk_container_add(GTK_CONTAINER(gp), GTK_WIDGET(display));
 		gtk_widget_show(GTK_WIDGET(display));
 
@@ -443,6 +488,38 @@ static void remmina_plugin_spice_call_feature(RemminaProtocolWidget *gp, const R
 	}
 }
 
+#ifdef WITH_GSTREAMER
+/* Array of key/value pairs for prefered video codec
+ * Key - SpiceVideoCodecType (spice/enums.h)
+ */
+static gpointer videocodec_list[] =
+{
+	"0",	N_("Default"),
+	"1",	"mjpeg",
+	"2",	"vp8",
+	"3",	"h264",
+	"4",	"vp9",
+	"5",	"h265",
+	NULL
+};
+#endif // WITH_GSTREAMER
+
+/* Array of key/value pairs for prefered video codec
+ * Key - SpiceImageCompression (spice/enums.h)
+ */
+static gpointer imagecompression_list[] =
+{
+	"0",	N_("Default"),
+	"1",	N_("Off"),
+	"2",	N_("Auto GLz"),
+	"3",	N_("Auto Lz"),
+	"4",	"QUIC",
+	"5",	"GLz",
+	"6",	"Lz",
+	"7",	"Lz4",
+	NULL
+};
+
 /* Array of RemminaProtocolSetting for basic settings.
  * Each item is composed by:
  * a) RemminaProtocolSettingType for setting type
@@ -473,6 +550,10 @@ static const RemminaProtocolSetting remmina_plugin_spice_basic_settings[] =
  */
 static const RemminaProtocolSetting remmina_plugin_spice_advanced_settings[] =
 {
+#ifdef WITH_GSTREAMER
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	"videocodec",	N_("Prefered video codec"),		  FALSE, videocodec_list, NULL},
+#endif // WITH_GSTREAMER
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	"imagecompression",	N_("Image compression"),		  FALSE, imagecompression_list, NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"disableclipboard",	    N_("Disable clipboard sync"),		TRUE,	NULL,	NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"disablepasswordstoring",   N_("Forget passwords after use"),		TRUE,	NULL,	NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"enableaudio",		    N_("Enable audio channel"),			TRUE,	NULL,	NULL},
@@ -530,6 +611,13 @@ remmina_plugin_entry(RemminaPluginService *service)
 		return FALSE;
 	}
 
+#ifdef WITH_GSTREAMER
+	GError *err = NULL;
+	gstreamerAvailable = gst_init_check(NULL, NULL, &err);
+	if (!gstreamerAvailable) {
+		g_warning("Could not initialize GStreamer: %s", err ? err->message : "unknown error occurred");
+	}
+#endif // WITH_GSTREAMER
 	return TRUE;
 }
 
