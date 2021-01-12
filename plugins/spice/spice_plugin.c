@@ -49,8 +49,8 @@ static RemminaPluginService *remmina_plugin_service = NULL;
 
 #ifdef WITH_GSTREAMER
 #include <gst/gst.h>
-static gboolean gstreamer_available = FALSE;
 #endif // WITH_GSTREAMER
+static gboolean gstreamer_available = FALSE;
 
 static void remmina_plugin_spice_channel_new_cb(SpiceSession *, SpiceChannel *, RemminaProtocolWidget *);
 static void remmina_plugin_spice_main_channel_event_cb(SpiceChannel *, SpiceChannelEvent, RemminaProtocolWidget *);
@@ -354,7 +354,6 @@ static void remmina_plugin_spice_display_ready_cb(GObject *display, GParamSpec *
 			"resize-guest", (scaleMode == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_DYNRES),
 			NULL);
 
-#ifdef WITH_GSTREAMER
 		videocodec = remmina_plugin_service->file_get_int(remminafile, "videocodec", 0);
 		if (videocodec) {
 			GError *err = NULL;
@@ -365,15 +364,15 @@ static void remmina_plugin_spice_display_ready_cb(GObject *display, GParamSpec *
 				(SPICE_VIDEO_CODEC_TYPE_ENUM_END - 1));
 
 			g_array_append_val(preferred_codecs, videocodec);
-			/*for (i = SPICE_VIDEO_CODEC_TYPE_MJPEG; i < SPICE_VIDEO_CODEC_TYPE_ENUM_END; ++i) {
+			for (i = SPICE_VIDEO_CODEC_TYPE_MJPEG; i < SPICE_VIDEO_CODEC_TYPE_ENUM_END; ++i) {
 				if (i != videocodec) {
 					g_array_append_val(preferred_codecs, i);
 				}
-			}*/
+			}
 
 			if (!spice_display_channel_change_preferred_video_codec_types(SPICE_CHANNEL(gpdata->display_channel),
 					(gint *) preferred_codecs->data,
-					1, //preferred_codecs->len,
+					preferred_codecs->len,
 					&err)) {
 				g_warning("Setting preferred video codecs failed: %s", err->message);
 				g_error_free(err);
@@ -381,7 +380,6 @@ static void remmina_plugin_spice_display_ready_cb(GObject *display, GParamSpec *
 
 			g_clear_pointer(&preferred_codecs, g_array_unref);
 		}
-#endif // WITH_GSTREAMER
 
 		imagecompression = remmina_plugin_service->file_get_int(remminafile, "imagecompression", 0);
 		if (imagecompression) {
