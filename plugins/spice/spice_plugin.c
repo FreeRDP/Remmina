@@ -49,7 +49,7 @@ static RemminaPluginService *remmina_plugin_service = NULL;
 
 #ifdef WITH_GSTREAMER
 #include <gst/gst.h>
-static gboolean gstreamerAvailable = FALSE;
+static gboolean gstreamer_available = FALSE;
 #endif // WITH_GSTREAMER
 
 static void remmina_plugin_spice_channel_new_cb(SpiceSession *, SpiceChannel *, RemminaProtocolWidget *);
@@ -382,6 +382,7 @@ static void remmina_plugin_spice_display_ready_cb(GObject *display, GParamSpec *
 			g_clear_pointer(&preferred_codecs, g_array_unref);
 		}
 #endif // WITH_GSTREAMER
+
 		imagecompression = remmina_plugin_service->file_get_int(remminafile, "imagecompression", 0);
 		if (imagecompression) {
 			spice_display_channel_change_preferred_compression(SPICE_CHANNEL(gpdata->display_channel),
@@ -511,12 +512,12 @@ static gpointer imagecompression_list[] =
 {
 	"0",	N_("Default"),
 	"1",	N_("Off"),
-	"2",	N_("Auto GLz"),
-	"3",	N_("Auto Lz"),
-	"4",	"QUIC",
-	"5",	"GLz",
-	"6",	"Lz",
-	"7",	"Lz4",
+	"2",	N_("Auto GLZ"),
+	"3",	N_("Auto LZ"),
+	"4",	"Quic",
+	"5",	"GLZ",
+	"6",	"LZ",
+	"7",	"LZ4",
 	NULL
 };
 
@@ -551,9 +552,9 @@ static const RemminaProtocolSetting remmina_plugin_spice_basic_settings[] =
 static const RemminaProtocolSetting remmina_plugin_spice_advanced_settings[] =
 {
 #ifdef WITH_GSTREAMER
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	"videocodec",	N_("Prefered video codec"),		  FALSE, videocodec_list, NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	"videocodec",	N_("Prefered video codec"),		FALSE, videocodec_list, NULL},
 #endif // WITH_GSTREAMER
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	"imagecompression",	N_("Image compression"),		  FALSE, imagecompression_list, NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	"imagecompression",	N_("Prefered image compression"),		FALSE, imagecompression_list, NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"disableclipboard",	    N_("Disable clipboard sync"),		TRUE,	NULL,	NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"disablepasswordstoring",   N_("Forget passwords after use"),		TRUE,	NULL,	NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"enableaudio",		    N_("Enable audio channel"),			TRUE,	NULL,	NULL},
@@ -598,6 +599,58 @@ static RemminaProtocolPlugin remmina_plugin_spice =
 	NULL                                                                    // No screenshot support available
 };
 
+void remmina_plugin_spice_remove_list_option(gpointer *option_list, const gchar *option_to_remove) {
+	gpointer *src, *dst;
+
+	TRACE_CALL(__func__);
+
+	dst = src = option_list;
+	while (*src) {
+		if (strcmp(*src, option_to_remove) != 0) {
+			if (dst != src) {
+				*dst = *src;
+				*(dst + 1) = *(src + 1);
+			}
+			dst += 2;
+		}
+		src += 2;
+	}
+	*dst = NULL;
+}
+
+gboolean remmina_plugin_spice_is_lz4_supported() {
+	gboolean result = FALSE;
+	GOptionContext *context;
+	GOptionGroup *spiceGroup;
+	gchar *spiceHelp, *line;
+	gchar **spiceHelpLines;
+
+	TRACE_CALL(__func__);
+
+	spiceGroup = spice_get_option_group();
+	context = g_option_context_new("- spice client test application");
+	g_option_context_add_group(context, spiceGroup);
+
+	spiceHelp = g_option_context_get_help(context, FALSE, spiceGroup);
+	spiceHelpLines = g_strsplit(spiceHelp, "\n", -1);
+
+	for (line = spiceHelpLines[0]; line != NULL; ++line) {
+		if (g_strrstr(line, "spice-preferred-compression")) {
+			if (g_strrstr(line, ",lz4,")) {
+				result = TRUE;
+			}
+
+			break;
+		}
+	}
+
+	g_option_context_free(context);
+	g_strfreev(spiceHelpLines);
+	g_free(spiceHelp);
+
+	return result;
+}
+
 G_MODULE_EXPORT gboolean
 remmina_plugin_entry(RemminaPluginService *service)
 {
@@ -607,17 +660,37 @@ remmina_plugin_entry(RemminaPluginService *service)
 	bindtextdomain(GETTEXT_PACKAGE, REMMINA_RUNTIME_LOCALEDIR);
 	bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
 
+#ifdef WITH_GSTREAMER
+	GError *error = NULL;
+	gstreamer_available = gst_init_check(NULL, NULL, &error);
+	if (!gstreamer_available) {
+		g_warning("Could not initialize GStreamer: %s", error ? error->message : "unknown error occurred");
+		g_error_free(error);
+	}
+#endif // WITH_GSTREAMER
+
+	if (!gstreamer_available) {
+		char key_str[10];
+		sprintf(key_str, "%d", SPICE_VIDEO_CODEC_TYPE_VP8);
+		remmina_plugin_spice_remove_list_option(videocodec_list, key_str);
+		sprintf(key_str, "%d", SPICE_VIDEO_CODEC_TYPE_VP9);
+		remmina_plugin_spice_remove_list_option(videocodec_list, key_str);
+		sprintf(key_str, "%d", SPICE_VIDEO_CODEC_TYPE_H264);
+		remmina_plugin_spice_remove_list_option(videocodec_list, key_str);
+		sprintf(key_str, "%d", SPICE_VIDEO_CODEC_TYPE_H265);
+		remmina_plugin_spice_remove_list_option(videocodec_list, key_str);
+	}
+
+	if (!remmina_plugin_spice_is_lz4_supported()) {
+		char key_str[10];
+		sprintf(key_str, "%d", SPICE_IMAGE_COMPRESSION_LZ4);
+		remmina_plugin_spice_remove_list_option(imagecompression_list, key_str);
+	}
+
 	if (!service->register_plugin((RemminaPlugin*)&remmina_plugin_spice)) {
 		return FALSE;
 	}
 
-#ifdef WITH_GSTREAMER
-	GError *err = NULL;
-	gstreamerAvailable = gst_init_check(NULL, NULL, &err);
-	if (!gstreamerAvailable) {
-		g_warning("Could not initialize GStreamer: %s", err ? err->message : "unknown error occurred");
-	}
-#endif // WITH_GSTREAMER
 	return TRUE;
 }
 
