@@ -489,7 +489,6 @@ static void remmina_plugin_spice_call_feature(RemminaProtocolWidget *gp, const R
 	}
 }
 
-#ifdef WITH_GSTREAMER
 /* Array of key/value pairs for prefered video codec
  * Key - SpiceVideoCodecType (spice/enums.h)
  */
@@ -503,7 +502,6 @@ static gpointer videocodec_list[] =
 	"5",	"h265",
 	NULL
 };
-#endif // WITH_GSTREAMER
 
 /* Array of key/value pairs for prefered video codec
  * Key - SpiceImageCompression (spice/enums.h)
@@ -551,9 +549,7 @@ static const RemminaProtocolSetting remmina_plugin_spice_basic_settings[] =
  */
 static const RemminaProtocolSetting remmina_plugin_spice_advanced_settings[] =
 {
-#ifdef WITH_GSTREAMER
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	"videocodec",	N_("Prefered video codec"),		FALSE, videocodec_list, NULL},
-#endif // WITH_GSTREAMER
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	"imagecompression",	N_("Prefered image compression"),		FALSE, imagecompression_list, NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"disableclipboard",	    N_("Disable clipboard sync"),		TRUE,	NULL,	NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"disablepasswordstoring",   N_("Forget passwords after use"),		TRUE,	NULL,	NULL},
