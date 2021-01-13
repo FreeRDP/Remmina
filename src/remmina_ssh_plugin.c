@@ -1233,7 +1233,17 @@ remmina_plugin_ssh_call_feature(RemminaProtocolWidget *gp, const RemminaProtocol
 	}
 }
 
-/** Array of key/value pairs for SSH auth type*/
+/** Array of key/value pairs for SSH auth type
+ * libssh methods:
+ *
+ * #define SSH_AUTH_METHOD_UNKNOWN     0x0000u
+ * #define SSH_AUTH_METHOD_NONE        0x0001u
+ * #define SSH_AUTH_METHOD_PASSWORD    0x0002u
+ * #define SSH_AUTH_METHOD_PUBLICKEY   0x0004u
+ * #define SSH_AUTH_METHOD_HOSTBASED   0x0008u
+ * #define SSH_AUTH_METHOD_INTERACTIVE 0x0010u
+ * #define SSH_AUTH_METHOD_GSSAPI_MIC  0x0020u
+ */
 static gpointer ssh_auth[] =
 {
 	"0", N_("Password"),
