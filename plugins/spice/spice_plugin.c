@@ -45,7 +45,7 @@ enum {
 	REMMINA_PLUGIN_SPICE_FEATURE_SCALE
 };
 
-static RemminaPluginService *remmina_plugin_service = NULL;
+RemminaPluginService *remmina_plugin_service = NULL;
 
 static void remmina_plugin_spice_channel_new_cb(SpiceSession *, SpiceChannel *, RemminaProtocolWidget *);
 static void remmina_plugin_spice_main_channel_event_cb(SpiceChannel *, SpiceChannelEvent, RemminaProtocolWidget *);
@@ -377,7 +377,7 @@ static void remmina_plugin_spice_display_ready_cb(GObject *display, GParamSpec *
 					(gint *) preferred_codecs->data,
 					preferred_codecs->len,
 					&err)) {
-				g_warning("Setting preferred video codecs failed: %s", err->message);
+				REMMINA_PLUGIN_DEBUG("Setting preferred video codecs failed: %s", err->message);
 				g_error_free(err);
 			}
 
