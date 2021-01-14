@@ -71,14 +71,6 @@ static void remmina_plugin_spice_init(RemminaProtocolWidget *gp)
 	g_object_set_data_full(G_OBJECT(gp), "plugin-data", gpdata, g_free);
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
-	if (remmina_plugin_service->file_get_int(remminafile, "disableadaptivestreaming", FALSE)) {
-		g_setenv("SPICE_DISABLE_ADAPTIVE_STREAMING", "1", TRUE);
-	}
-
-	if (remmina_plugin_service->file_get_int(remminafile, "disablegstvideooverlay", FALSE)) {
-		g_setenv("DISABLE_GSTVIDEOOVERLAY", "1", TRUE);
-	}
-
 	gpdata->session = spice_session_new();
 	g_signal_connect(gpdata->session,
 		"channel-new",
@@ -183,6 +175,12 @@ static gboolean remmina_plugin_spice_close_connection(RemminaProtocolWidget *gp)
 	return FALSE;
 }
 
+static gboolean remmina_plugin_spice_disable_gst_overlay(SpiceChannel *channel, void* pipeline_ptr, RemminaProtocolWidget *gp)
+{
+	g_signal_stop_emission_by_name(channel, "gst-video-overlay");
+	return FALSE;
+}
+
 static void remmina_plugin_spice_channel_new_cb(SpiceSession *session, SpiceChannel *channel, RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
@@ -221,6 +219,14 @@ static void remmina_plugin_spice_channel_new_cb(SpiceSession *session, SpiceChan
 			G_CALLBACK(remmina_plugin_spice_display_ready_cb),
 			gp);
 		remmina_plugin_spice_display_ready_cb(G_OBJECT(gpdata->display), NULL, gp);
+
+		if (remmina_plugin_service->file_get_int(remminafile, "disablegstvideooverlay", FALSE)) {
+			g_signal_connect(channel,
+				"gst-video-overlay",
+				G_CALLBACK(remmina_plugin_spice_disable_gst_overlay),
+				gp);
+		}
+
 	}
 
 	if (SPICE_IS_PLAYBACK_CHANNEL(channel)) {
@@ -520,10 +526,6 @@ static gpointer imagecompression_list[] =
 	NULL
 };
 
-static gchar disableadaptivestreaming_tooltip[] =
-	N_("Disable automatic video bitrate adjustment\n"
-	"depending on changes in network connection load, CPU load (host or client), etc.\n");
-
 static gchar disablegstvideooverlay_tooltip[] =
 	N_("Disable video overlay if videos are not displayed properly.\n");
 
@@ -558,8 +560,7 @@ static const RemminaProtocolSetting remmina_plugin_spice_basic_settings[] =
 static const RemminaProtocolSetting remmina_plugin_spice_advanced_settings[] =
 {
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	"videocodec",	    N_("Prefered video codec"),		FALSE, videocodec_list, NULL},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"disableadaptivestreaming",	    N_("Disable Adaptive Video Streaming"),		TRUE,	NULL,	disableadaptivestreaming_tooltip},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"disablegstvideooverlay",	    N_("Disable Gstreamer Overlay"),		TRUE,	NULL,	disablegstvideooverlay_tooltip},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"disablegstvideooverlay",	    N_("Disable Gstreamer Overlay"),		FALSE,	NULL,	disablegstvideooverlay_tooltip},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	"imagecompression",	    N_("Prefered image compression"),		FALSE, imagecompression_list, NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"disableclipboard",	    N_("Disable clipboard sync"),		TRUE,	NULL,	NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"disablepasswordstoring",   N_("Forget passwords after use"),		TRUE,	NULL,	NULL},
