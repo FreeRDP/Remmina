@@ -47,11 +47,6 @@ enum {
 
 static RemminaPluginService *remmina_plugin_service = NULL;
 
-#ifdef WITH_GSTREAMER
-#include <gst/gst.h>
-#endif // WITH_GSTREAMER
-static gboolean gstreamer_available = FALSE;
-
 static void remmina_plugin_spice_channel_new_cb(SpiceSession *, SpiceChannel *, RemminaProtocolWidget *);
 static void remmina_plugin_spice_main_channel_event_cb(SpiceChannel *, SpiceChannelEvent, RemminaProtocolWidget *);
 static void remmina_plugin_spice_agent_connected_event_cb(SpiceChannel *, RemminaProtocolWidget *);
@@ -547,8 +542,8 @@ static const RemminaProtocolSetting remmina_plugin_spice_basic_settings[] =
  */
 static const RemminaProtocolSetting remmina_plugin_spice_advanced_settings[] =
 {
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	"videocodec",	N_("Prefered video codec"),		FALSE, videocodec_list, NULL},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	"imagecompression",	N_("Prefered image compression"),		FALSE, imagecompression_list, NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	"videocodec",	    N_("Prefered video codec"),		FALSE, videocodec_list, NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	"imagecompression",	    N_("Prefered image compression"),		FALSE, imagecompression_list, NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"disableclipboard",	    N_("Disable clipboard sync"),		TRUE,	NULL,	NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"disablepasswordstoring",   N_("Forget passwords after use"),		TRUE,	NULL,	NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"enableaudio",		    N_("Enable audio channel"),			TRUE,	NULL,	NULL},
@@ -653,27 +648,6 @@ remmina_plugin_entry(RemminaPluginService *service)
 
 	bindtextdomain(GETTEXT_PACKAGE, REMMINA_RUNTIME_LOCALEDIR);
 	bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
-
-#ifdef WITH_GSTREAMER
-	GError *error = NULL;
-	gstreamer_available = gst_init_check(NULL, NULL, &error);
-	if (!gstreamer_available) {
-		g_warning("Could not initialize GStreamer: %s", error ? error->message : "unknown error occurred");
-		g_error_free(error);
-	}
-#endif // WITH_GSTREAMER
-
-	if (!gstreamer_available) {
-		char key_str[10];
-		sprintf(key_str, "%d", SPICE_VIDEO_CODEC_TYPE_VP8);
-		remmina_plugin_spice_remove_list_option(videocodec_list, key_str);
-		sprintf(key_str, "%d", SPICE_VIDEO_CODEC_TYPE_VP9);
-		remmina_plugin_spice_remove_list_option(videocodec_list, key_str);
-		sprintf(key_str, "%d", SPICE_VIDEO_CODEC_TYPE_H264);
-		remmina_plugin_spice_remove_list_option(videocodec_list, key_str);
-		sprintf(key_str, "%d", SPICE_VIDEO_CODEC_TYPE_H265);
-		remmina_plugin_spice_remove_list_option(videocodec_list, key_str);
-	}
 
 	if (!remmina_plugin_spice_is_lz4_supported()) {
 		char key_str[10];

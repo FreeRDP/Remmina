@@ -36,17 +36,12 @@ set(REMMINA_PLUGIN_SPICE_SRCS
         spice_plugin_usb.c
         )
 
-find_suggested_package(GSTREAMER)
-if(GSTREAMER_FOUND)
-	add_definitions(-DWITH_GSTREAMER)
-endif()
-
 add_library(remmina-plugin-spice ${REMMINA_PLUGIN_SPICE_SRCS})
 set_target_properties(remmina-plugin-spice PROPERTIES PREFIX "")
 set_target_properties(remmina-plugin-spice PROPERTIES NO_SONAME 1)
 
-include_directories(${REMMINA_COMMON_INCLUDE_DIRS} ${SPICE_INCLUDE_DIRS} ${GSTREAMER_INCLUDE_DIR})
-target_link_libraries(remmina-plugin-spice ${REMMINA_COMMON_LIBRARIES} ${SPICE_LIBRARIES} ${GSTREAMER_LIBRARY})
+include_directories(${REMMINA_COMMON_INCLUDE_DIRS} ${SPICE_INCLUDE_DIRS})
+target_link_libraries(remmina-plugin-spice ${REMMINA_COMMON_LIBRARIES} ${SPICE_LIBRARIES})
 
 install(TARGETS remmina-plugin-spice DESTINATION ${REMMINA_PLUGINDIR})
 
