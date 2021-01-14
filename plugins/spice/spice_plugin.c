@@ -520,6 +520,13 @@ static gpointer imagecompression_list[] =
 	NULL
 };
 
+static gchar disableadaptivestreaming_tooltip[] =
+	N_("Disable automatic video bitrate adjustment\n"
+	"depending on changes in network connection load, CPU load (host or client), etc.\n");
+
+static gchar disablegstvideooverlay_tooltip[] =
+	N_("Disable video overlay if videos are not displayed properly.\n");
+
 /* Array of RemminaProtocolSetting for basic settings.
  * Each item is composed by:
  * a) RemminaProtocolSettingType for setting type
@@ -551,8 +558,8 @@ static const RemminaProtocolSetting remmina_plugin_spice_basic_settings[] =
 static const RemminaProtocolSetting remmina_plugin_spice_advanced_settings[] =
 {
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	"videocodec",	    N_("Prefered video codec"),		FALSE, videocodec_list, NULL},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"disableadaptivestreaming",	    N_("Disable Adaptive Video Streaming"),		TRUE,	NULL,	NULL},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"disablegstvideooverlay",	    N_("Disable Gstreamer Overlay"),		TRUE,	NULL,	NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"disableadaptivestreaming",	    N_("Disable Adaptive Video Streaming"),		TRUE,	NULL,	disableadaptivestreaming_tooltip},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"disablegstvideooverlay",	    N_("Disable Gstreamer Overlay"),		TRUE,	NULL,	disablegstvideooverlay_tooltip},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	"imagecompression",	    N_("Prefered image compression"),		FALSE, imagecompression_list, NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"disableclipboard",	    N_("Disable clipboard sync"),		TRUE,	NULL,	NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"disablepasswordstoring",   N_("Forget passwords after use"),		TRUE,	NULL,	NULL},
