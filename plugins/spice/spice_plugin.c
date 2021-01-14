@@ -71,6 +71,14 @@ static void remmina_plugin_spice_init(RemminaProtocolWidget *gp)
 	g_object_set_data_full(G_OBJECT(gp), "plugin-data", gpdata, g_free);
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
+	if (remmina_plugin_service->file_get_int(remminafile, "disableadaptivestreaming", FALSE)) {
+		g_setenv("SPICE_DISABLE_ADAPTIVE_STREAMING", "1", TRUE);
+	}
+
+	if (remmina_plugin_service->file_get_int(remminafile, "disablegstvideooverlay", FALSE)) {
+		g_setenv("DISABLE_GSTVIDEOOVERLAY", "1", TRUE);
+	}
+
 	gpdata->session = spice_session_new();
 	g_signal_connect(gpdata->session,
 		"channel-new",
@@ -543,6 +551,8 @@ static const RemminaProtocolSetting remmina_plugin_spice_basic_settings[] =
 static const RemminaProtocolSetting remmina_plugin_spice_advanced_settings[] =
 {
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	"videocodec",	    N_("Prefered video codec"),		FALSE, videocodec_list, NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"disableadaptivestreaming",	    N_("Disable Adaptive Video Streaming"),		TRUE,	NULL,	NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"disablegstvideooverlay",	    N_("Disable Gstreamer Overlay"),		TRUE,	NULL,	NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	"imagecompression",	    N_("Prefered image compression"),		FALSE, imagecompression_list, NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"disableclipboard",	    N_("Disable clipboard sync"),		TRUE,	NULL,	NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"disablepasswordstoring",   N_("Forget passwords after use"),		TRUE,	NULL,	NULL},
