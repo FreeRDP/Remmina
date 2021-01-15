@@ -367,7 +367,7 @@ static const RemminaProtocolSetting remmina_plugin_xdmcp_basic_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER,	    "server",	     NULL,					 FALSE, NULL,		 NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION, "resolution",	     NULL,					 FALSE, NULL,		 NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	    "colordepth",    N_("Colour depth"),				 FALSE, colordepth_list, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "exec",	     N_("Startup program"),			 FALSE, NULL,		 NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "exec",	     N_("Start-up program"),			 FALSE, NULL,		 NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "showcursor",    N_("Use local cursor"),			 FALSE, NULL,		 NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "once",	     N_("Disconnect after first session"),	 FALSE, NULL,		 NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "listen_on_tcp", N_("Listen for TCP connections"), FALSE, NULL,		 NULL },

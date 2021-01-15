@@ -898,7 +898,7 @@ static void remmina_file_editor_create_behavior_tab(RemminaFileEditor *gfe)
 	gtk_widget_set_tooltip_markup(widget, _(cmd_tips));
 
 	/* Startup frame */
-	remmina_public_create_group(GTK_GRID(grid), _("Startup"), 4, 1, 2);
+	remmina_public_create_group(GTK_GRID(grid), _("Start-up"), 4, 1, 2);
 
 	/* Autostart profile option */
 	priv->behavior_autostart_check = remmina_file_editor_create_check(gfe, grid, 6, 1, _("Autostart this profile"),
@@ -984,7 +984,7 @@ static void remmina_file_editor_create_ssh_tunnel_tab(RemminaFileEditor *gfe, Re
 	p = remmina_public_combo_get_active_text(GTK_COMBO_BOX(priv->protocol_combo));
 	if (ssh_setting == REMMINA_PROTOCOL_SSH_SETTING_SFTP) {
 		widget = remmina_file_editor_create_text(gfe, grid, row + 8, 1,
-							 _("Startup path"), NULL);
+							 _("Start-up path"), NULL);
 		cs = remmina_file_get_string(priv->remmina_file, "execpath");
 		gtk_entry_set_text(GTK_ENTRY(widget), cs ? cs : "");
 		g_hash_table_insert(priv->setting_widgets, "execpath", widget);
