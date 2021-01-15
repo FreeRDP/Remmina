@@ -73,17 +73,12 @@ static void remmina_pref_gen_secret(void)
 	TRACE_CALL(__func__);
 	guchar s[32];
 	gint i;
-	GDateTime *gtime;
 	GKeyFile *gkeyfile;
 	g_autofree gchar *content = NULL;
 	gsize length;
 
-	gtime = g_date_time_new_now_utc();
-	srand(g_date_time_to_unix(gtime));
-	g_date_time_unref(gtime);
-
 	for (i = 0; i < 32; i++)
-		s[i] = (guchar)(rand() % 256);
+		s[i] = (guchar)(randombytes_uniform(257));
 	remmina_pref.secret = g_base64_encode(s, 32);
 
 	gkeyfile = g_key_file_new();
