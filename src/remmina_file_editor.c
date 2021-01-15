@@ -64,10 +64,10 @@ static const gchar *charset_list = "ASCII,BIG5,"
 				   "CP1251,CP1252,CP1253,CP1254,CP1255,CP1256,"
 				   "CP1257,CP1258,"
 				   "EUC-JP,EUC-KR,GBK,"
-				   "ISO-8859-1,ISO-8859-2,ISO-8859-3,ISO-8859-4,"
-				   "ISO-8859-5,ISO-8859-6,ISO-8859-7,ISO-8859-8,"
-				   "ISO-8859-9,ISO-8859-10,ISO-8859-11,ISO-8859-12,"
-				   "ISO-8859-13,ISO-8859-14,ISO-8859-15,ISO-8859-16,"
+				   "ISO 8859-1,ISO 8859-2,ISO 8859-3,ISO 8859-4,"
+				   "ISO 8859-5,ISO 8859-6,ISO 8859-7,ISO 8859-8,"
+				   "ISO 8859-9,ISO 8859-10,ISO 8859-11,ISO 8859-12,"
+				   "ISO 8859-13,ISO 8859-14,ISO 8859-15,ISO 8859-16,"
 				   "KOI8-R,SJIS,UTF-8";
 #endif
 
@@ -87,7 +87,7 @@ static const gchar *cmd_tips = N_("<tt><big>"
 				  "• %U is substituted with the SSH username\n"
 				  "• %p is substituted with Remmina profile name\n"
 				  "• %g is substituted with Remmina profile group name\n"
-				  "• %d is substituted with local datetime in iso8601 format\n"
+				  "• %d is substituted with local date and time in ISO 8601 format\n"
 				  "Do not run in background if you want the command to be executed before connecting.\n"
 				  "</big></tt>");
 
