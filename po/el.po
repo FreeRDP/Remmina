@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-15 13:32+0000\n"
+"POT-Creation-Date: 2021-01-15 16:14+0000\n"
 "PO-Revision-Date: 2020-10-28 16:14+0000\n"
 "Last-Translator: GChr <gchr.dev+github@gmail.com>\n"
 "Language-Team: Greek <https://hosted.weblate.org/projects/remmina/remmina/el/"
@@ -74,7 +74,7 @@ msgstr "Γίνεται σύνδεση με '%s'…"
 
 #: src/remmina_protocol_widget.c:1447 src/remmina_protocol_widget.c:1466
 #: src/remmina_ssh_plugin.c:1258 src/remmina_sftp_plugin.c:309
-#: src/remmina_sftp_plugin.c:344 src/remmina_file_editor.c:1012
+#: src/remmina_sftp_plugin.c:344 src/remmina_file_editor.c:998
 #: plugins/www/www_plugin.c:872 plugins/rdp/rdp_plugin.c:2404
 #: data/ui/remmina_unlock.glade:116 data/ui/remmina_mpc.glade:236
 #: data/ui/remmina_preferences.glade:1584
@@ -139,8 +139,8 @@ msgstr "Αναμονή στη θύρα %i για μια εισερχόμενη %
 msgid "Could not authenticate, attempting reconnection…"
 msgstr "Αποτυχία ελέγχου ταυτότητας. Προσπάθεια επανασύνδεσης…"
 
-#: src/remmina_protocol_widget.c:1788 src/remmina_file_editor.c:410
-#: src/remmina_file_editor.c:968 data/ui/remmina_main.glade:485
+#: src/remmina_protocol_widget.c:1788 src/remmina_file_editor.c:396
+#: src/remmina_file_editor.c:954 data/ui/remmina_main.glade:485
 msgid "Server"
 msgstr "Εξυπηρετητής"
 
@@ -154,11 +154,11 @@ msgstr "Εγκαταστήστε πρώτα το plugin πρωτοκόλλου %
 msgid "Plugin %s is not registered."
 msgstr "Το πρόσθετο %s δεν έχει καταχωρηθεί."
 
-#: src/remmina_pref_dialog.c:83 src/remmina_file_editor.c:499
+#: src/remmina_pref_dialog.c:83 src/remmina_file_editor.c:485
 msgid "Resolutions"
 msgstr "Αναλύσεις"
 
-#: src/remmina_pref_dialog.c:83 src/remmina_file_editor.c:499
+#: src/remmina_pref_dialog.c:83 src/remmina_file_editor.c:485
 msgid "Configure the available resolutions"
 msgstr "Διαμορφώστε τις διαθέσιμες αναλύσεις"
 
@@ -233,7 +233,7 @@ msgstr "Εύρεση κειμένου (host+G)"
 
 #: src/remmina_ssh_plugin.c:1259 src/remmina_ssh_plugin.c:1363
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:346
-#: src/remmina_file_editor.c:364 src/remmina_file_editor.c:371
+#: src/remmina_file_editor.c:350 src/remmina_file_editor.c:357
 #: plugins/nx/nx_plugin.c:729
 msgid "SSH identity file"
 msgstr "Αρχείο ταυτότητας SSH"
@@ -243,7 +243,7 @@ msgid "SSH agent"
 msgstr "Πράκτορας SSH"
 
 #: src/remmina_ssh_plugin.c:1261 src/remmina_sftp_plugin.c:312
-#: src/remmina_file_editor.c:1025
+#: src/remmina_file_editor.c:1011
 msgid "Public key (automatic)"
 msgstr "Δημόσιο κλειδί (αυτόματα)"
 
@@ -300,7 +300,7 @@ msgid "_Find text"
 msgstr "_Εύρεση κειμένου"
 
 #: src/remmina_ssh_plugin.c:1360 src/remmina_message_panel.c:330
-#: src/remmina_sftp_plugin.c:343 src/remmina_file_editor.c:1003
+#: src/remmina_sftp_plugin.c:343 src/remmina_file_editor.c:989
 #: plugins/www/www_plugin.c:871 plugins/vnc/vnc_plugin.c:1879
 #: plugins/vnc/vnc_plugin.c:1899 plugins/rdp/rdp_plugin.c:2403
 #: plugins/nx/nx_plugin.c:730 data/ui/remmina_mpc.glade:144
@@ -318,7 +318,7 @@ msgid "Authentication type"
 msgstr "Τύπος ελέγχου ταυτότητας"
 
 #: src/remmina_ssh_plugin.c:1364 src/remmina_sftp_plugin.c:347
-#: src/remmina_file_editor.c:1034
+#: src/remmina_file_editor.c:1020
 msgid "Password to unlock private key"
 msgstr "Κωδικός πρόσβασης για ξεκλείδωμα ιδιωτικού κλειδιού"
 
@@ -549,7 +549,7 @@ msgstr "Μέγεθος"
 msgid "User"
 msgstr "Χρήστης"
 
-#: src/remmina_ftp_client.c:948 src/remmina_file_editor.c:1592
+#: src/remmina_ftp_client.c:948 src/remmina_file_editor.c:1578
 #: data/ui/remmina_main.glade:471 data/ui/remmina_mpc.glade:115
 msgid "Group"
 msgstr "Ομάδα"
@@ -817,7 +817,7 @@ msgstr ""
 msgid "Warning: This plugin requires GtkSocket, but it’s not available."
 msgstr ""
 
-#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1610
+#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1596
 msgid "Protocol"
 msgstr "Πρωτόκολο"
 
@@ -846,11 +846,11 @@ msgid "Plugins"
 msgstr "Πρόσθετες λειτουργίες"
 
 #: src/remmina_plugin_manager.c:455 src/remmina_message_panel.c:452
-#: src/remmina_message_panel.c:621 src/remmina_file_editor.c:164
+#: src/remmina_message_panel.c:621 src/remmina_file_editor.c:150
 msgid "_OK"
 msgstr "_OK"
 
-#: src/remmina_plugin_manager.c:473 src/remmina_file_editor.c:1567
+#: src/remmina_plugin_manager.c:473 src/remmina_file_editor.c:1553
 #: plugins/nx/nx_session_manager.c:204 data/ui/remmina_main.glade:449
 msgid "Name"
 msgstr "Όνομα"
@@ -892,7 +892,7 @@ msgstr ""
 msgid "Import"
 msgstr "Εισαγωγή"
 
-#: src/remmina_main.c:997 src/remmina_file_editor.c:1450
+#: src/remmina_main.c:997 src/remmina_file_editor.c:1436
 msgid "_Save"
 msgstr "_Αποθήκευση"
 
@@ -1010,8 +1010,8 @@ msgid "Overwrite"
 msgstr "Αντικατάσταση"
 
 #: src/remmina_sftp_client.c:947 src/remmina_message_panel.c:457
-#: src/remmina_message_panel.c:629 src/remmina_file_editor.c:163
-#: src/remmina_file_editor.c:372 src/remmina_file_editor.c:1442
+#: src/remmina_message_panel.c:629 src/remmina_file_editor.c:149
+#: src/remmina_file_editor.c:358 src/remmina_file_editor.c:1428
 #: plugins/spice/spice_plugin_file_transfer.c:84
 #: plugins/nx/nx_session_manager.c:156 data/ui/remmina_spinner.glade:8
 #: data/ui/remmina_spinner.glade:9 data/ui/remmina_key_chooser.glade:8
@@ -1160,35 +1160,35 @@ msgid "Could not authenticate with keyboard-interactive. %s"
 msgstr "Δεν ήταν δυνατός ο έλεγχος ταυτότητας με δημόσιο κλειδί SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:735
+#: src/remmina_ssh.c:733
 #, c-format
 msgid "Could not fetch the server's public SSH key. %s"
 msgstr ""
 "Δεν ήταν δυνατή η ανάκτηση του δημόσιου κλειδιού SSH του διακομιστή. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:742
+#: src/remmina_ssh.c:740
 #, c-format
 msgid "Could not fetch public SSH key. %s"
 msgstr "Δεν ήταν δυνατή η ανάκτηση δημόσιου κλειδιού SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:750
+#: src/remmina_ssh.c:748
 #, fuzzy, c-format
 #| msgid "Could not fetch checksum for public SSH key. %s"
 msgid "Could not fetch checksum of the public SSH key. %s"
 msgstr "Δεν ήταν δυνατή η ανάκτηση του checksum για δημόσιο κλειδί SSH. %s"
 
-#: src/remmina_ssh.c:763
+#: src/remmina_ssh.c:761
 msgid "The server is unknown. The public key fingerprint is:"
 msgstr ""
 "Ο εξυπηρετητής είναι άγνωστος. Το αποτύπωμα του δημοσίου κλειδιού είναι:"
 
-#: src/remmina_ssh.c:765 src/remmina_ssh.c:771
+#: src/remmina_ssh.c:763 src/remmina_ssh.c:769
 msgid "Do you trust the new public key?"
 msgstr "Εμπιστεύεστε το νέο δημόσιο κλειδί;"
 
-#: src/remmina_ssh.c:768
+#: src/remmina_ssh.c:766
 #, fuzzy
 msgid ""
 "Warning: The server has changed its public key. This means you are either "
@@ -1201,158 +1201,158 @@ msgstr ""
 "κλειδιού είναι:"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:793
+#: src/remmina_ssh.c:791
 #, fuzzy, c-format
 msgid "Could not check list of known SSH hosts. %s"
 msgstr "Αποτυχία εκκίνησης της συνεδρίας SSH: %s"
 
-#: src/remmina_ssh.c:802
+#: src/remmina_ssh.c:800
 msgid "SSH password"
 msgstr "Κωδικός SSH"
 
-#: src/remmina_ssh.c:809 src/remmina_ssh.c:852
+#: src/remmina_ssh.c:807 src/remmina_ssh.c:850
 msgid "SSH private key passphrase"
 msgstr "Κωδικός για το Ιδιωτικό κλειδί SSH"
 
-#: src/remmina_ssh.c:814
+#: src/remmina_ssh.c:812
 msgid "SSH Kerberos/GSSAPI"
 msgstr ""
 
-#: src/remmina_ssh.c:819
+#: src/remmina_ssh.c:817
 msgid "Enter TOTP/OTP/2FA code"
 msgstr ""
 
-#: src/remmina_ssh.c:848 src/remmina_ssh.c:874
+#: src/remmina_ssh.c:846 src/remmina_ssh.c:872
 msgid "SSH tunnel credentials"
 msgstr ""
 
-#: src/remmina_ssh.c:848 src/remmina_ssh.c:874 plugins/nx/nx_plugin.c:203
+#: src/remmina_ssh.c:846 src/remmina_ssh.c:872 plugins/nx/nx_plugin.c:203
 msgid "SSH credentials"
 msgstr ""
 
-#: src/remmina_ssh.c:925
+#: src/remmina_ssh.c:923
 msgid "Keyboard interactive login, TOTP/OTP/2FA"
 msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1145
+#: src/remmina_ssh.c:1143
 #, fuzzy, c-format
 msgid "Could not start SSH session. %s"
 msgstr "Αποτυχία εκκίνησης της συνεδρίας SSH: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1548 src/remmina_ssh.c:1611
+#: src/remmina_ssh.c:1546 src/remmina_ssh.c:1609
 #, fuzzy, c-format
 msgid "Could not create channel. %s"
 msgstr "Αποτυχία δημιουργίας συνεδρίας sftp: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1559
+#: src/remmina_ssh.c:1557
 #, fuzzy, c-format
 msgid "Could not connect to SSH tunnel. %s"
 msgstr "Aποτυχία σύνδεσης στον προορισμό του SSH tunnel: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1626 src/remmina_ssh.c:2250
+#: src/remmina_ssh.c:1624 src/remmina_ssh.c:2248
 #, fuzzy, c-format
 msgid "Could not open channel. %s"
 msgstr "Αποτυχία δημιουργίας συνεδρίας sftp: %s"
 
-#: src/remmina_ssh.c:1632
+#: src/remmina_ssh.c:1630
 #, c-format
 msgid "Could not run %s on SSH server."
 msgstr "Αποτυχία εκτέλεσης του %s στον εξυπηρετητή SSH."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1670 src/remmina_ssh.c:1691 src/remmina_ssh.c:1700
+#: src/remmina_ssh.c:1668 src/remmina_ssh.c:1689 src/remmina_ssh.c:1698
 #, fuzzy, c-format
 msgid "Could not request port forwarding. %s"
 msgstr "Αποτυχία αίτησης port forwarding: %s"
 
-#: src/remmina_ssh.c:1735
+#: src/remmina_ssh.c:1733
 msgid "The server did not respond."
 msgstr ""
 
-#: src/remmina_ssh.c:1778
+#: src/remmina_ssh.c:1776
 #, c-format
 msgid "Cannot connect to local port %i."
 msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1828
+#: src/remmina_ssh.c:1826
 #, fuzzy, c-format
 msgid "Could not write to SSH channel. %s"
 msgstr "Αποτυχία δημιουργίας συνεδρίας sftp: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1835
+#: src/remmina_ssh.c:1833
 #, fuzzy, c-format
 msgid "Could not read from tunnel listening socket. %s"
 msgstr "Αποτυχία δημιουργίας συνεδρίας sftp: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1855
+#: src/remmina_ssh.c:1853
 #, fuzzy, c-format
 msgid "Could not poll SSH channel. %s"
 msgstr "Αποτυχία δημιουργίας συνεδρίας sftp: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1862
+#: src/remmina_ssh.c:1860
 #, fuzzy, c-format
 msgid "Could not read SSH channel in a non-blocking way. %s"
 msgstr "Αποτυχία δημιουργίας συνεδρίας sftp: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1881
+#: src/remmina_ssh.c:1879
 #, fuzzy, c-format
 msgid "Could not send data to tunnel listening socket. %s"
 msgstr "Aποτυχία σύνδεσης στον προορισμό του SSH tunnel: %s"
 
-#: src/remmina_ssh.c:1983
+#: src/remmina_ssh.c:1981
 msgid "Assign a destination port."
 msgstr ""
 
-#: src/remmina_ssh.c:1990
+#: src/remmina_ssh.c:1988
 msgid "Could not create socket."
 msgstr ""
 
-#: src/remmina_ssh.c:2000
+#: src/remmina_ssh.c:1998
 msgid "Could not bind server socket to local port."
 msgstr ""
 
-#: src/remmina_ssh.c:2006
+#: src/remmina_ssh.c:2004
 msgid "Could not listen to local port."
 msgstr ""
 
 #. TRANSLATORS: Do not translate pthread
-#: src/remmina_ssh.c:2016 src/remmina_ssh.c:2033 src/remmina_ssh.c:2050
-#: src/remmina_ssh.c:2068
+#: src/remmina_ssh.c:2014 src/remmina_ssh.c:2031 src/remmina_ssh.c:2048
+#: src/remmina_ssh.c:2066
 msgid "Could not start pthread."
 msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2160
+#: src/remmina_ssh.c:2158
 #, fuzzy, c-format
 msgid "Could not create SFTP session. %s"
 msgstr "Αποτυχία δημιουργίας συνεδρίας sftp: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2165
+#: src/remmina_ssh.c:2163
 #, fuzzy, c-format
 msgid "Could not start SFTP session. %s"
 msgstr "Αποτυχία εκκίνησης της συνεδρίας SSH: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2280
+#: src/remmina_ssh.c:2278
 #, fuzzy, c-format
 msgid "Could not request shell. %s"
 msgstr "Αποτυχία δημιουργίας συνεδρίας sftp: %s"
 
-#: src/remmina_ssh.c:2373
+#: src/remmina_ssh.c:2371
 msgid "Could not create PTY device."
 msgstr ""
 
-#: src/remmina_file_editor.c:74
+#: src/remmina_file_editor.c:60
 msgid ""
 "<tt><big>Supported formats\n"
 "• server\n"
@@ -1364,7 +1364,7 @@ msgstr ""
 "* εξυπηρετητής:πόρτα\n"
 "* [εξυπηρετητής]:πόρτα</big></tt>"
 
-#: src/remmina_file_editor.c:81
+#: src/remmina_file_editor.c:67
 #, fuzzy
 msgid ""
 "<tt><big>• command in PATH args %h\n"
@@ -1391,7 +1391,7 @@ msgstr ""
 "  • %g αντικαθίσταται με το όνομα της ομάδας προφίλ Remmina\n"
 "  • %d αντικαθίσταται με τοπική ημερομηνία/ώρα σε μορφή ISO8601\n"
 
-#: src/remmina_file_editor.c:95
+#: src/remmina_file_editor.c:81
 msgid ""
 "<tt><big>Supported formats\n"
 "• :port\n"
@@ -1405,154 +1405,154 @@ msgstr ""
 "* εξυπηρετητής:πόρτα\n"
 "* [εξυπηρετητής]:πόρτα</big></tt>"
 
-#: src/remmina_file_editor.c:161
+#: src/remmina_file_editor.c:147
 msgid "Choose a Remote Desktop Server"
 msgstr "Επιλογή Εξυπηρετητή Απομακρυσμένης Σύνδεσης"
 
-#: src/remmina_file_editor.c:373
+#: src/remmina_file_editor.c:359
 msgid "_Open"
 msgstr "_Άνοιγμα"
 
-#: src/remmina_file_editor.c:434
+#: src/remmina_file_editor.c:420
 #, c-format
 msgid "Browse the network to find a %s server"
 msgstr "Αναζητήστε στο δίκτυο για να βρείτε έναν διακομιστή %s"
 
-#: src/remmina_file_editor.c:535
+#: src/remmina_file_editor.c:521
 msgid "Resolution"
 msgstr "Ανάλυση"
 
-#: src/remmina_file_editor.c:542
+#: src/remmina_file_editor.c:528
 msgid "Use initial window size"
 msgstr ""
 
-#: src/remmina_file_editor.c:546
+#: src/remmina_file_editor.c:532
 msgid "Use client resolution"
 msgstr "Χρησιμοποίησε μέγεθος ανάλυσης πελάτη"
 
-#: src/remmina_file_editor.c:557 src/remmina_file_editor.c:949
+#: src/remmina_file_editor.c:543 src/remmina_file_editor.c:935
 msgid "Custom"
 msgstr "Προσαρμοσμένο"
 
-#: src/remmina_file_editor.c:781
+#: src/remmina_file_editor.c:767
 msgid "Keyboard mapping"
 msgstr "Αντιστοίχιση Πληκτρολογίου"
 
-#: src/remmina_file_editor.c:881
+#: src/remmina_file_editor.c:867
 msgid "Behavior"
 msgstr ""
 
-#: src/remmina_file_editor.c:884
+#: src/remmina_file_editor.c:870
 msgid "Execute a Command"
 msgstr ""
 
-#: src/remmina_file_editor.c:888
+#: src/remmina_file_editor.c:874
 #, fuzzy
 msgid "Before connecting"
 msgstr "Νέα σύνδεση"
 
-#: src/remmina_file_editor.c:890
+#: src/remmina_file_editor.c:876
 msgid "command %h %u %t %U %p %g --option"
 msgstr ""
 
-#: src/remmina_file_editor.c:895
+#: src/remmina_file_editor.c:881
 #, fuzzy
 msgid "After connecting"
 msgstr "Νέα σύνδεση"
 
-#: src/remmina_file_editor.c:897
+#: src/remmina_file_editor.c:883
 msgid "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
 msgstr ""
 
-#: src/remmina_file_editor.c:901
+#: src/remmina_file_editor.c:887
 #, fuzzy
 #| msgid "Start"
 msgid "Start-up"
 msgstr "Έναρξη"
 
-#: src/remmina_file_editor.c:904
+#: src/remmina_file_editor.c:890
 msgid "Auto-start this profile"
 msgstr ""
 
-#: src/remmina_file_editor.c:924
+#: src/remmina_file_editor.c:910
 msgid "SSH Tunnel"
 msgstr ""
 
-#: src/remmina_file_editor.c:925
+#: src/remmina_file_editor.c:911
 msgid "Enable SSH tunnel"
 msgstr "Ενεργοποίηση SSH Tunnel"
 
-#: src/remmina_file_editor.c:932
+#: src/remmina_file_editor.c:918
 msgid "Tunnel via loopback address"
 msgstr "Tunnel μέσω διεύθυνσης loopback"
 
-#: src/remmina_file_editor.c:941
+#: src/remmina_file_editor.c:927
 #, c-format
 msgid "Same server at port %i"
 msgstr "Ο ίδιος εξυπηρετητής στην πόρτα %i"
 
-#: src/remmina_file_editor.c:987 plugins/rdp/rdp_plugin.c:2440
+#: src/remmina_file_editor.c:973 plugins/rdp/rdp_plugin.c:2440
 #, fuzzy
 #| msgid "Startup path"
 msgid "Start-up path"
 msgstr "Διαδρομή Εκκίνησης"
 
-#: src/remmina_file_editor.c:996
+#: src/remmina_file_editor.c:982
 msgid "SSH Authentication"
 msgstr "Πιστοποίηση SSH"
 
-#: src/remmina_file_editor.c:1006
+#: src/remmina_file_editor.c:992
 #, fuzzy
 msgid "SSH agent (automatic)"
 msgstr "Δημόσιο κλειδί (αυτόματα)"
 
-#: src/remmina_file_editor.c:1110
+#: src/remmina_file_editor.c:1096
 msgid "Basic"
 msgstr "Βασικό"
 
-#: src/remmina_file_editor.c:1116
+#: src/remmina_file_editor.c:1102
 msgid "Advanced"
 msgstr "Προχωρημένο"
 
-#: src/remmina_file_editor.c:1127
+#: src/remmina_file_editor.c:1113
 msgid "Notes"
 msgstr ""
 
-#: src/remmina_file_editor.c:1370
+#: src/remmina_file_editor.c:1356
 msgid "Default settings saved."
 msgstr "Αποθηκεύτηκαν οι προεπιλεγμένες ρυθμίσεις."
 
-#: src/remmina_file_editor.c:1440
+#: src/remmina_file_editor.c:1426
 #, fuzzy
 msgid "Remote Connection Profile"
 msgstr "Αποτυχία σύνδεσης VNC: %s"
 
-#: src/remmina_file_editor.c:1446
+#: src/remmina_file_editor.c:1432
 msgid "Save as Default"
 msgstr ""
 
-#: src/remmina_file_editor.c:1447
+#: src/remmina_file_editor.c:1433
 msgid "Use the current settings as the default for all new connection profiles"
 msgstr ""
 
-#: src/remmina_file_editor.c:1455 data/ui/remmina_main.glade:166
+#: src/remmina_file_editor.c:1441 data/ui/remmina_main.glade:166
 msgid "Connect"
 msgstr ""
 
-#: src/remmina_file_editor.c:1458
+#: src/remmina_file_editor.c:1444
 msgid "_Save and Connect"
 msgstr ""
 
-#: src/remmina_file_editor.c:1581
+#: src/remmina_file_editor.c:1567
 msgid "Quick Connect"
 msgstr "Γρήγορη Σύνδεση"
 
-#: src/remmina_file_editor.c:1605
+#: src/remmina_file_editor.c:1591
 #, c-format
 msgid "Use '%s' as subgroup delimiter"
 msgstr "Χρήση '%s' ως υποομάδα οριοθέτη"
 
-#: src/remmina_file_editor.c:1671 src/remmina_file_editor.c:1689
+#: src/remmina_file_editor.c:1657 src/remmina_file_editor.c:1675
 #, c-format
 msgid "Could not find the file \"%s\"."
 msgstr ""

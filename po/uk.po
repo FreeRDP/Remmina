@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-15 13:32+0000\n"
-"PO-Revision-Date: 2021-01-15 13:32+0000\n"
+"POT-Creation-Date: 2021-01-15 16:14+0000\n"
+"PO-Revision-Date: 2021-01-15 16:14+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/remmina/"
 "remmina/uk/>\n"
@@ -74,7 +74,7 @@ msgstr "Встановлення з'єднання з %s крізь SSH…"
 
 #: src/remmina_protocol_widget.c:1447 src/remmina_protocol_widget.c:1466
 #: src/remmina_ssh_plugin.c:1258 src/remmina_sftp_plugin.c:309
-#: src/remmina_sftp_plugin.c:344 src/remmina_file_editor.c:1012
+#: src/remmina_sftp_plugin.c:344 src/remmina_file_editor.c:998
 #: plugins/www/www_plugin.c:872 plugins/rdp/rdp_plugin.c:2404
 #: data/ui/remmina_unlock.glade:116 data/ui/remmina_mpc.glade:236
 #: data/ui/remmina_preferences.glade:1584
@@ -134,8 +134,8 @@ msgstr "Очікуємо на порту %i на вхідне з'єднання 
 msgid "Could not authenticate, attempting reconnection…"
 msgstr "Не вдалося пройти розпізнавання. Ще одна спроба…"
 
-#: src/remmina_protocol_widget.c:1788 src/remmina_file_editor.c:410
-#: src/remmina_file_editor.c:968 data/ui/remmina_main.glade:485
+#: src/remmina_protocol_widget.c:1788 src/remmina_file_editor.c:396
+#: src/remmina_file_editor.c:954 data/ui/remmina_main.glade:485
 msgid "Server"
 msgstr "Сервер"
 
@@ -149,11 +149,11 @@ msgstr "Спочатку встановіть додаток протоколу 
 msgid "Plugin %s is not registered."
 msgstr "Додаток %s не зареєстровано."
 
-#: src/remmina_pref_dialog.c:83 src/remmina_file_editor.c:499
+#: src/remmina_pref_dialog.c:83 src/remmina_file_editor.c:485
 msgid "Resolutions"
 msgstr "Роздільні здатності"
 
-#: src/remmina_pref_dialog.c:83 src/remmina_file_editor.c:499
+#: src/remmina_pref_dialog.c:83 src/remmina_file_editor.c:485
 msgid "Configure the available resolutions"
 msgstr "Налаштування доступних роздільних здатностей"
 
@@ -229,7 +229,7 @@ msgstr "Знайти текст (Host + G)"
 
 #: src/remmina_ssh_plugin.c:1259 src/remmina_ssh_plugin.c:1363
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:346
-#: src/remmina_file_editor.c:364 src/remmina_file_editor.c:371
+#: src/remmina_file_editor.c:350 src/remmina_file_editor.c:357
 #: plugins/nx/nx_plugin.c:729
 msgid "SSH identity file"
 msgstr "Файл ідентифікації SSH"
@@ -239,7 +239,7 @@ msgid "SSH agent"
 msgstr "SSH-агент"
 
 #: src/remmina_ssh_plugin.c:1261 src/remmina_sftp_plugin.c:312
-#: src/remmina_file_editor.c:1025
+#: src/remmina_file_editor.c:1011
 msgid "Public key (automatic)"
 msgstr "Відкритий ключ (автоматично)"
 
@@ -296,7 +296,7 @@ msgid "_Find text"
 msgstr "З_найти текст"
 
 #: src/remmina_ssh_plugin.c:1360 src/remmina_message_panel.c:330
-#: src/remmina_sftp_plugin.c:343 src/remmina_file_editor.c:1003
+#: src/remmina_sftp_plugin.c:343 src/remmina_file_editor.c:989
 #: plugins/www/www_plugin.c:871 plugins/vnc/vnc_plugin.c:1879
 #: plugins/vnc/vnc_plugin.c:1899 plugins/rdp/rdp_plugin.c:2403
 #: plugins/nx/nx_plugin.c:730 data/ui/remmina_mpc.glade:144
@@ -314,7 +314,7 @@ msgid "Authentication type"
 msgstr "Тип автентифікації"
 
 #: src/remmina_ssh_plugin.c:1364 src/remmina_sftp_plugin.c:347
-#: src/remmina_file_editor.c:1034
+#: src/remmina_file_editor.c:1020
 msgid "Password to unlock private key"
 msgstr "Пароль розблокування закритого ключа"
 
@@ -535,7 +535,7 @@ msgstr "Розмір"
 msgid "User"
 msgstr "Користувач"
 
-#: src/remmina_ftp_client.c:948 src/remmina_file_editor.c:1592
+#: src/remmina_ftp_client.c:948 src/remmina_file_editor.c:1578
 #: data/ui/remmina_main.glade:471 data/ui/remmina_mpc.glade:115
 msgid "Group"
 msgstr "Група"
@@ -790,7 +790,7 @@ msgstr "Файл «%s» пошкоджено, неможливо прочита�
 msgid "Warning: This plugin requires GtkSocket, but it’s not available."
 msgstr "Увага: цей додаток потребує GtkSocket, але цей сокет недоступний."
 
-#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1610
+#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1596
 msgid "Protocol"
 msgstr "Протокол"
 
@@ -819,11 +819,11 @@ msgid "Plugins"
 msgstr "Додатки"
 
 #: src/remmina_plugin_manager.c:455 src/remmina_message_panel.c:452
-#: src/remmina_message_panel.c:621 src/remmina_file_editor.c:164
+#: src/remmina_message_panel.c:621 src/remmina_file_editor.c:150
 msgid "_OK"
 msgstr "_Гаразд"
 
-#: src/remmina_plugin_manager.c:473 src/remmina_file_editor.c:1567
+#: src/remmina_plugin_manager.c:473 src/remmina_file_editor.c:1553
 #: plugins/nx/nx_session_manager.c:204 data/ui/remmina_main.glade:449
 msgid "Name"
 msgstr "Назва"
@@ -866,7 +866,7 @@ msgstr ""
 msgid "Import"
 msgstr "Імпортувати"
 
-#: src/remmina_main.c:997 src/remmina_file_editor.c:1450
+#: src/remmina_main.c:997 src/remmina_file_editor.c:1436
 msgid "_Save"
 msgstr "_Зберегти"
 
@@ -982,8 +982,8 @@ msgid "Overwrite"
 msgstr "Перезаписати"
 
 #: src/remmina_sftp_client.c:947 src/remmina_message_panel.c:457
-#: src/remmina_message_panel.c:629 src/remmina_file_editor.c:163
-#: src/remmina_file_editor.c:372 src/remmina_file_editor.c:1442
+#: src/remmina_message_panel.c:629 src/remmina_file_editor.c:149
+#: src/remmina_file_editor.c:358 src/remmina_file_editor.c:1428
 #: plugins/spice/spice_plugin_file_transfer.c:84
 #: plugins/nx/nx_session_manager.c:156 data/ui/remmina_spinner.glade:8
 #: data/ui/remmina_spinner.glade:9 data/ui/remmina_key_chooser.glade:8
@@ -1062,10 +1062,9 @@ msgid "SFTP - Secure File Transfer"
 msgstr "SFTP — Захищене передавання файлів"
 
 #: src/remmina_ssh.c:236
-#, fuzzy, c-format
-#| msgid "Could not authenticate with SSH password. %s"
+#, c-format
 msgid "Could not authenticate with TOTP/OTP/2FA. %s"
-msgstr "Не вдалося пройти розпізнавання за паролем SSH. %s"
+msgstr "Не вдалося пройти розпізнавання на основі TOTP, OTP або 2FA. %s"
 
 #: src/remmina_ssh.c:295 src/remmina_ssh.c:568
 #, c-format
@@ -1118,44 +1117,42 @@ msgid "The public SSH key changed!"
 msgstr "Змінено відкритий ключ SSH!"
 
 #: src/remmina_ssh.c:571
-#, fuzzy, c-format
-#| msgid "Could not authenticate with SSH password. %s"
+#, c-format
 msgid "Could not authenticate with password. %s"
-msgstr "Не вдалося пройти розпізнавання за паролем SSH. %s"
+msgstr "Не вдалося пройти розпізнавання за паролем. %s"
 
 #: src/remmina_ssh.c:606
-#, fuzzy, c-format
-#| msgid "Could not authenticate with public SSH key. %s"
+#, c-format
 msgid "Could not authenticate with keyboard-interactive. %s"
-msgstr "Не вдалося пройти розпізнавання за відкритим ключем SSH. %s"
+msgstr "Не вдалося пройти інтерактивне розпізнавання з клавіатурою. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:735
+#: src/remmina_ssh.c:733
 #, c-format
 msgid "Could not fetch the server's public SSH key. %s"
 msgstr "Не вдалося отримати відкритий ключ сервера SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:742
+#: src/remmina_ssh.c:740
 #, c-format
 msgid "Could not fetch public SSH key. %s"
 msgstr "Не вдалося отримати відкритий ключ SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:750
+#: src/remmina_ssh.c:748
 #, c-format
 msgid "Could not fetch checksum of the public SSH key. %s"
 msgstr "Не вдалося отримати контрольну суму відкритого ключа SSH. %s"
 
-#: src/remmina_ssh.c:763
+#: src/remmina_ssh.c:761
 msgid "The server is unknown. The public key fingerprint is:"
 msgstr "Невідомий сервер. Відбиток відкритого ключа:"
 
-#: src/remmina_ssh.c:765 src/remmina_ssh.c:771
+#: src/remmina_ssh.c:763 src/remmina_ssh.c:769
 msgid "Do you trust the new public key?"
 msgstr "Ви довіряєте новому відкритому ключу?"
 
-#: src/remmina_ssh.c:768
+#: src/remmina_ssh.c:766
 msgid ""
 "Warning: The server has changed its public key. This means you are either "
 "under attack,\n"
@@ -1165,103 +1162,103 @@ msgstr ""
 "або ж адміністратор змінив ключ. Новий відбиток відкритого ключа:"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:793
+#: src/remmina_ssh.c:791
 #, c-format
 msgid "Could not check list of known SSH hosts. %s"
 msgstr "Не вдалося перевірити список відомих вузлів SSH. %s"
 
-#: src/remmina_ssh.c:802
+#: src/remmina_ssh.c:800
 msgid "SSH password"
 msgstr "Пароль SSH"
 
-#: src/remmina_ssh.c:809 src/remmina_ssh.c:852
+#: src/remmina_ssh.c:807 src/remmina_ssh.c:850
 msgid "SSH private key passphrase"
 msgstr "Пароль до закритого ключа SSH"
 
-#: src/remmina_ssh.c:814
+#: src/remmina_ssh.c:812
 msgid "SSH Kerberos/GSSAPI"
 msgstr "SSH Kerberos/GSSAPI"
 
-#: src/remmina_ssh.c:819
+#: src/remmina_ssh.c:817
 msgid "Enter TOTP/OTP/2FA code"
-msgstr ""
+msgstr "Введіть код TOTP, OTP або 2FA"
 
-#: src/remmina_ssh.c:848 src/remmina_ssh.c:874
+#: src/remmina_ssh.c:846 src/remmina_ssh.c:872
 msgid "SSH tunnel credentials"
 msgstr "Реєстраційні дані SSH-тунелю"
 
-#: src/remmina_ssh.c:848 src/remmina_ssh.c:874 plugins/nx/nx_plugin.c:203
+#: src/remmina_ssh.c:846 src/remmina_ssh.c:872 plugins/nx/nx_plugin.c:203
 msgid "SSH credentials"
 msgstr "Реєстраційні дані SSH"
 
-#: src/remmina_ssh.c:925
+#: src/remmina_ssh.c:923
 msgid "Keyboard interactive login, TOTP/OTP/2FA"
-msgstr ""
+msgstr "Інтерактивний вхід з клавіатури, TOTP/OTP/2FA"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1145
+#: src/remmina_ssh.c:1143
 #, c-format
 msgid "Could not start SSH session. %s"
 msgstr "Не вдалося розпочати сеанс SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1548 src/remmina_ssh.c:1611
+#: src/remmina_ssh.c:1546 src/remmina_ssh.c:1609
 #, c-format
 msgid "Could not create channel. %s"
 msgstr "Не вдалося створити канал. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1559
+#: src/remmina_ssh.c:1557
 #, c-format
 msgid "Could not connect to SSH tunnel. %s"
 msgstr "Не вдалося встановити з'єднання із тунелем SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1626 src/remmina_ssh.c:2250
+#: src/remmina_ssh.c:1624 src/remmina_ssh.c:2248
 #, c-format
 msgid "Could not open channel. %s"
 msgstr "Не вдалося відкрити канал. %s"
 
-#: src/remmina_ssh.c:1632
+#: src/remmina_ssh.c:1630
 #, c-format
 msgid "Could not run %s on SSH server."
 msgstr "Не вдалося виконати «%s» на SSH-сервері."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1670 src/remmina_ssh.c:1691 src/remmina_ssh.c:1700
+#: src/remmina_ssh.c:1668 src/remmina_ssh.c:1689 src/remmina_ssh.c:1698
 #, c-format
 msgid "Could not request port forwarding. %s"
 msgstr "Не вдалося надіслати запит щодо переспрямовування порту. %s"
 
-#: src/remmina_ssh.c:1735
+#: src/remmina_ssh.c:1733
 msgid "The server did not respond."
 msgstr "Сервер не відповідає."
 
-#: src/remmina_ssh.c:1778
+#: src/remmina_ssh.c:1776
 #, c-format
 msgid "Cannot connect to local port %i."
 msgstr "Не вдалося встановити з'єднання із локальним портом %i."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1828
+#: src/remmina_ssh.c:1826
 #, c-format
 msgid "Could not write to SSH channel. %s"
 msgstr "Не вдалося виконати запис до каналу SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1835
+#: src/remmina_ssh.c:1833
 #, c-format
 msgid "Could not read from tunnel listening socket. %s"
 msgstr "Не вдалося прочитати дані з сокета очікування на дані тунелю. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1855
+#: src/remmina_ssh.c:1853
 #, c-format
 msgid "Could not poll SSH channel. %s"
 msgstr "Не вдалося опитати канал SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1862
+#: src/remmina_ssh.c:1860
 #, c-format
 msgid "Could not read SSH channel in a non-blocking way. %s"
 msgstr ""
@@ -1269,56 +1266,56 @@ msgstr ""
 "блокування. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1881
+#: src/remmina_ssh.c:1879
 #, c-format
 msgid "Could not send data to tunnel listening socket. %s"
 msgstr "Не вдалося надіслати дані до сокета очікування на дані тунелю. %s"
 
-#: src/remmina_ssh.c:1983
+#: src/remmina_ssh.c:1981
 msgid "Assign a destination port."
 msgstr "Вкажіть порт призначення."
 
-#: src/remmina_ssh.c:1990
+#: src/remmina_ssh.c:1988
 msgid "Could not create socket."
 msgstr "Не вдалося створити сокет."
 
-#: src/remmina_ssh.c:2000
+#: src/remmina_ssh.c:1998
 msgid "Could not bind server socket to local port."
 msgstr "Не вдалося прив'язати сокет сервера до локального порту."
 
-#: src/remmina_ssh.c:2006
+#: src/remmina_ssh.c:2004
 msgid "Could not listen to local port."
 msgstr "Не вдалося розпочати очікування даних на локальному порту."
 
 #. TRANSLATORS: Do not translate pthread
-#: src/remmina_ssh.c:2016 src/remmina_ssh.c:2033 src/remmina_ssh.c:2050
-#: src/remmina_ssh.c:2068
+#: src/remmina_ssh.c:2014 src/remmina_ssh.c:2031 src/remmina_ssh.c:2048
+#: src/remmina_ssh.c:2066
 msgid "Could not start pthread."
 msgstr "Не вдалося запустити pthread."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2160
+#: src/remmina_ssh.c:2158
 #, c-format
 msgid "Could not create SFTP session. %s"
 msgstr "Не вдалося створити сеанс SFTP. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2165
+#: src/remmina_ssh.c:2163
 #, c-format
 msgid "Could not start SFTP session. %s"
 msgstr "Не вдалося розпочати сеанс SFTP. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2280
+#: src/remmina_ssh.c:2278
 #, c-format
 msgid "Could not request shell. %s"
 msgstr "Не вдалося створити запит щодо командної оболонки. %s"
 
-#: src/remmina_ssh.c:2373
+#: src/remmina_ssh.c:2371
 msgid "Could not create PTY device."
 msgstr "Не вдалося створити PTY-пристрій."
 
-#: src/remmina_file_editor.c:74
+#: src/remmina_file_editor.c:60
 msgid ""
 "<tt><big>Supported formats\n"
 "• server\n"
@@ -1330,7 +1327,7 @@ msgstr ""
 "* сервер:порт\n"
 "* [сервер]:порт</big></tt>"
 
-#: src/remmina_file_editor.c:81
+#: src/remmina_file_editor.c:67
 msgid ""
 "<tt><big>• command in PATH args %h\n"
 "• /path/to/foo -options %h %u\n"
@@ -1358,7 +1355,7 @@ msgstr ""
 "перед з'єднанням.\n"
 "</big></tt>"
 
-#: src/remmina_file_editor.c:95
+#: src/remmina_file_editor.c:81
 msgid ""
 "<tt><big>Supported formats\n"
 "• :port\n"
@@ -1374,148 +1371,148 @@ msgstr ""
 "• [сервер]:порт\n"
 "• користувач@сервер:порт (Лише для протоколу SSH )</big></tt>"
 
-#: src/remmina_file_editor.c:161
+#: src/remmina_file_editor.c:147
 msgid "Choose a Remote Desktop Server"
 msgstr "Виберіть сервер віддалених стільниць"
 
-#: src/remmina_file_editor.c:373
+#: src/remmina_file_editor.c:359
 msgid "_Open"
 msgstr "_Відкрити"
 
-#: src/remmina_file_editor.c:434
+#: src/remmina_file_editor.c:420
 #, c-format
 msgid "Browse the network to find a %s server"
 msgstr "Провести огляд мережі для пошуку сервера %s"
 
-#: src/remmina_file_editor.c:535
+#: src/remmina_file_editor.c:521
 msgid "Resolution"
 msgstr "Роздільна здатність"
 
-#: src/remmina_file_editor.c:542
+#: src/remmina_file_editor.c:528
 msgid "Use initial window size"
 msgstr "Використовувати початковий розмір вікна"
 
-#: src/remmina_file_editor.c:546
+#: src/remmina_file_editor.c:532
 msgid "Use client resolution"
 msgstr "Використовувати роздільну здатність клієнта"
 
-#: src/remmina_file_editor.c:557 src/remmina_file_editor.c:949
+#: src/remmina_file_editor.c:543 src/remmina_file_editor.c:935
 msgid "Custom"
 msgstr "Нетиповий"
 
-#: src/remmina_file_editor.c:781
+#: src/remmina_file_editor.c:767
 msgid "Keyboard mapping"
 msgstr "Розкладка клавіатури"
 
-#: src/remmina_file_editor.c:881
+#: src/remmina_file_editor.c:867
 msgid "Behavior"
 msgstr "Поведінка"
 
-#: src/remmina_file_editor.c:884
+#: src/remmina_file_editor.c:870
 msgid "Execute a Command"
 msgstr "Виконати команду"
 
-#: src/remmina_file_editor.c:888
+#: src/remmina_file_editor.c:874
 msgid "Before connecting"
 msgstr "До з'єднання"
 
-#: src/remmina_file_editor.c:890
+#: src/remmina_file_editor.c:876
 msgid "command %h %u %t %U %p %g --option"
 msgstr "команда %h %u %t %U %p %g --параметр"
 
-#: src/remmina_file_editor.c:895
+#: src/remmina_file_editor.c:881
 msgid "After connecting"
 msgstr "Після з'єднання"
 
-#: src/remmina_file_editor.c:897
+#: src/remmina_file_editor.c:883
 msgid "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
 msgstr "/шлях/до/команди -параметр1 аргумент %h %u %t -параметр2 %U %p %g"
 
-#: src/remmina_file_editor.c:901
+#: src/remmina_file_editor.c:887
 msgid "Start-up"
 msgstr "Запуск"
 
-#: src/remmina_file_editor.c:904
+#: src/remmina_file_editor.c:890
 msgid "Auto-start this profile"
 msgstr "Автоматично запускати цей профіль"
 
-#: src/remmina_file_editor.c:924
+#: src/remmina_file_editor.c:910
 msgid "SSH Tunnel"
 msgstr "SSH-тунель"
 
-#: src/remmina_file_editor.c:925
+#: src/remmina_file_editor.c:911
 msgid "Enable SSH tunnel"
 msgstr "Увімкнути SSH-тунель"
 
-#: src/remmina_file_editor.c:932
+#: src/remmina_file_editor.c:918
 msgid "Tunnel via loopback address"
 msgstr "Тунелювання через петльову адресу"
 
-#: src/remmina_file_editor.c:941
+#: src/remmina_file_editor.c:927
 #, c-format
 msgid "Same server at port %i"
 msgstr "Цей же сервер на порту %i"
 
-#: src/remmina_file_editor.c:987 plugins/rdp/rdp_plugin.c:2440
+#: src/remmina_file_editor.c:973 plugins/rdp/rdp_plugin.c:2440
 msgid "Start-up path"
 msgstr "Шлях до програми"
 
-#: src/remmina_file_editor.c:996
+#: src/remmina_file_editor.c:982
 msgid "SSH Authentication"
 msgstr "Автентифікація SSH"
 
-#: src/remmina_file_editor.c:1006
+#: src/remmina_file_editor.c:992
 msgid "SSH agent (automatic)"
 msgstr "Агент SSH (автоматично)"
 
-#: src/remmina_file_editor.c:1110
+#: src/remmina_file_editor.c:1096
 msgid "Basic"
 msgstr "Базовий"
 
-#: src/remmina_file_editor.c:1116
+#: src/remmina_file_editor.c:1102
 msgid "Advanced"
 msgstr "Додатково"
 
-#: src/remmina_file_editor.c:1127
+#: src/remmina_file_editor.c:1113
 msgid "Notes"
 msgstr "Нотатки"
 
-#: src/remmina_file_editor.c:1370
+#: src/remmina_file_editor.c:1356
 msgid "Default settings saved."
 msgstr "Типові налаштування збережено."
 
-#: src/remmina_file_editor.c:1440
+#: src/remmina_file_editor.c:1426
 msgid "Remote Connection Profile"
 msgstr "Профіль віддаленого з'єднання"
 
-#: src/remmina_file_editor.c:1446
+#: src/remmina_file_editor.c:1432
 msgid "Save as Default"
 msgstr "Зберегти як типовий"
 
-#: src/remmina_file_editor.c:1447
+#: src/remmina_file_editor.c:1433
 msgid "Use the current settings as the default for all new connection profiles"
 msgstr ""
 "Використовувати поточні налаштування як типові для всіх нових профілів "
 "з'єднань"
 
-#: src/remmina_file_editor.c:1455 data/ui/remmina_main.glade:166
+#: src/remmina_file_editor.c:1441 data/ui/remmina_main.glade:166
 msgid "Connect"
 msgstr "З'єднатися"
 
-#: src/remmina_file_editor.c:1458
+#: src/remmina_file_editor.c:1444
 msgid "_Save and Connect"
 msgstr "_Зберегти та з'єднатися"
 
-#: src/remmina_file_editor.c:1581
+#: src/remmina_file_editor.c:1567
 msgid "Quick Connect"
 msgstr "Швидке з'єднання"
 
-#: src/remmina_file_editor.c:1605
+#: src/remmina_file_editor.c:1591
 #, c-format
 msgid "Use '%s' as subgroup delimiter"
 msgstr "Використовувати «%s» як роздільник підгруп"
 
-#: src/remmina_file_editor.c:1671 src/remmina_file_editor.c:1689
+#: src/remmina_file_editor.c:1657 src/remmina_file_editor.c:1675
 #, c-format
 msgid "Could not find the file \"%s\"."
 msgstr "Не вдалося знайти файл «%s»."

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-15 13:32+0000\n"
+"POT-Creation-Date: 2021-01-15 16:14+0000\n"
 "PO-Revision-Date: 2020-09-11 22:29+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -72,7 +72,7 @@ msgstr "SSH로 '%s'에 연결하는 중…"
 
 #: src/remmina_protocol_widget.c:1447 src/remmina_protocol_widget.c:1466
 #: src/remmina_ssh_plugin.c:1258 src/remmina_sftp_plugin.c:309
-#: src/remmina_sftp_plugin.c:344 src/remmina_file_editor.c:1012
+#: src/remmina_sftp_plugin.c:344 src/remmina_file_editor.c:998
 #: plugins/www/www_plugin.c:872 plugins/rdp/rdp_plugin.c:2404
 #: data/ui/remmina_unlock.glade:116 data/ui/remmina_mpc.glade:236
 #: data/ui/remmina_preferences.glade:1584
@@ -133,8 +133,8 @@ msgstr "%s 연결을 위해서 %i 포트에서 대기 중…"
 msgid "Could not authenticate, attempting reconnection…"
 msgstr "인증할 수 없습니다, 다시 접속 중…"
 
-#: src/remmina_protocol_widget.c:1788 src/remmina_file_editor.c:410
-#: src/remmina_file_editor.c:968 data/ui/remmina_main.glade:485
+#: src/remmina_protocol_widget.c:1788 src/remmina_file_editor.c:396
+#: src/remmina_file_editor.c:954 data/ui/remmina_main.glade:485
 msgid "Server"
 msgstr "서버"
 
@@ -148,11 +148,11 @@ msgstr "먼저 %s 프로토콜 플러그인을 설치하세요."
 msgid "Plugin %s is not registered."
 msgstr "%s 는 등록되지 않은 플러그인 입니다."
 
-#: src/remmina_pref_dialog.c:83 src/remmina_file_editor.c:499
+#: src/remmina_pref_dialog.c:83 src/remmina_file_editor.c:485
 msgid "Resolutions"
 msgstr "해상도"
 
-#: src/remmina_pref_dialog.c:83 src/remmina_file_editor.c:499
+#: src/remmina_pref_dialog.c:83 src/remmina_file_editor.c:485
 msgid "Configure the available resolutions"
 msgstr "사용할 수 있는 해상도 설정"
 
@@ -234,7 +234,7 @@ msgstr "붙여넣기 (host + V)"
 
 #: src/remmina_ssh_plugin.c:1259 src/remmina_ssh_plugin.c:1363
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:346
-#: src/remmina_file_editor.c:364 src/remmina_file_editor.c:371
+#: src/remmina_file_editor.c:350 src/remmina_file_editor.c:357
 #: plugins/nx/nx_plugin.c:729
 msgid "SSH identity file"
 msgstr "SSH 인증 키 파일"
@@ -244,7 +244,7 @@ msgid "SSH agent"
 msgstr "SSH 에이전트"
 
 #: src/remmina_ssh_plugin.c:1261 src/remmina_sftp_plugin.c:312
-#: src/remmina_file_editor.c:1025
+#: src/remmina_file_editor.c:1011
 msgid "Public key (automatic)"
 msgstr "공개 키 (자동)"
 
@@ -301,7 +301,7 @@ msgid "_Find text"
 msgstr ""
 
 #: src/remmina_ssh_plugin.c:1360 src/remmina_message_panel.c:330
-#: src/remmina_sftp_plugin.c:343 src/remmina_file_editor.c:1003
+#: src/remmina_sftp_plugin.c:343 src/remmina_file_editor.c:989
 #: plugins/www/www_plugin.c:871 plugins/vnc/vnc_plugin.c:1879
 #: plugins/vnc/vnc_plugin.c:1899 plugins/rdp/rdp_plugin.c:2403
 #: plugins/nx/nx_plugin.c:730 data/ui/remmina_mpc.glade:144
@@ -319,7 +319,7 @@ msgid "Authentication type"
 msgstr "인증 유형"
 
 #: src/remmina_ssh_plugin.c:1364 src/remmina_sftp_plugin.c:347
-#: src/remmina_file_editor.c:1034
+#: src/remmina_file_editor.c:1020
 msgid "Password to unlock private key"
 msgstr "개인 키 잠금 해제 비밀번호"
 
@@ -545,7 +545,7 @@ msgstr "크기"
 msgid "User"
 msgstr "사용자"
 
-#: src/remmina_ftp_client.c:948 src/remmina_file_editor.c:1592
+#: src/remmina_ftp_client.c:948 src/remmina_file_editor.c:1578
 #: data/ui/remmina_main.glade:471 data/ui/remmina_mpc.glade:115
 msgid "Group"
 msgstr "그룹"
@@ -804,7 +804,7 @@ msgstr "\"%s\" 파일이 손상 또는 읽을 수 없거나 찾을 수 없습니
 msgid "Warning: This plugin requires GtkSocket, but it’s not available."
 msgstr "경고: 이 플러그인에는 GtkSocket이 필요하지만 사용할 수 없습니다."
 
-#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1610
+#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1596
 msgid "Protocol"
 msgstr "프로토콜"
 
@@ -833,11 +833,11 @@ msgid "Plugins"
 msgstr "부가 기능"
 
 #: src/remmina_plugin_manager.c:455 src/remmina_message_panel.c:452
-#: src/remmina_message_panel.c:621 src/remmina_file_editor.c:164
+#: src/remmina_message_panel.c:621 src/remmina_file_editor.c:150
 msgid "_OK"
 msgstr "_OK"
 
-#: src/remmina_plugin_manager.c:473 src/remmina_file_editor.c:1567
+#: src/remmina_plugin_manager.c:473 src/remmina_file_editor.c:1553
 #: plugins/nx/nx_session_manager.c:204 data/ui/remmina_main.glade:449
 msgid "Name"
 msgstr "이름"
@@ -878,7 +878,7 @@ msgstr ""
 msgid "Import"
 msgstr "가져오기"
 
-#: src/remmina_main.c:997 src/remmina_file_editor.c:1450
+#: src/remmina_main.c:997 src/remmina_file_editor.c:1436
 msgid "_Save"
 msgstr "_저장"
 
@@ -994,8 +994,8 @@ msgid "Overwrite"
 msgstr "덮어쓰기"
 
 #: src/remmina_sftp_client.c:947 src/remmina_message_panel.c:457
-#: src/remmina_message_panel.c:629 src/remmina_file_editor.c:163
-#: src/remmina_file_editor.c:372 src/remmina_file_editor.c:1442
+#: src/remmina_message_panel.c:629 src/remmina_file_editor.c:149
+#: src/remmina_file_editor.c:358 src/remmina_file_editor.c:1428
 #: plugins/spice/spice_plugin_file_transfer.c:84
 #: plugins/nx/nx_session_manager.c:156 data/ui/remmina_spinner.glade:8
 #: data/ui/remmina_spinner.glade:9 data/ui/remmina_key_chooser.glade:8
@@ -1145,33 +1145,33 @@ msgid "Could not authenticate with keyboard-interactive. %s"
 msgstr "공개 SSH 키로 인증 할 수 없습니다. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:735
+#: src/remmina_ssh.c:733
 #, c-format
 msgid "Could not fetch the server's public SSH key. %s"
 msgstr "서버의 공개 SSH 키를 가져올 수 없습니다. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:742
+#: src/remmina_ssh.c:740
 #, c-format
 msgid "Could not fetch public SSH key. %s"
 msgstr "SSH 공개 키를 가져올 수 없습니다. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:750
+#: src/remmina_ssh.c:748
 #, fuzzy, c-format
 #| msgid "Could not fetch checksum for public SSH key. %s"
 msgid "Could not fetch checksum of the public SSH key. %s"
 msgstr "SSH 공개 키에 대한 체크섬을 가져올 수 없습니다. %s"
 
-#: src/remmina_ssh.c:763
+#: src/remmina_ssh.c:761
 msgid "The server is unknown. The public key fingerprint is:"
 msgstr "알려지지 않은 서버. 공중 키의 지문은:"
 
-#: src/remmina_ssh.c:765 src/remmina_ssh.c:771
+#: src/remmina_ssh.c:763 src/remmina_ssh.c:769
 msgid "Do you trust the new public key?"
 msgstr "새 공중 키를 믿을 수 있습니까?"
 
-#: src/remmina_ssh.c:768
+#: src/remmina_ssh.c:766
 #, fuzzy
 #| msgid ""
 #| "Warning: The server has changed its public key. This means either you are "
@@ -1187,158 +1187,158 @@ msgstr ""
 "또는 관리자가 키를 변경한 것입니다. 새 공개 키 지문은:"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:793
+#: src/remmina_ssh.c:791
 #, c-format
 msgid "Could not check list of known SSH hosts. %s"
 msgstr "알려진 SSH 호스트 목록을 확인할 수 없습니다. %s"
 
-#: src/remmina_ssh.c:802
+#: src/remmina_ssh.c:800
 msgid "SSH password"
 msgstr "SSH 열쇠글"
 
-#: src/remmina_ssh.c:809 src/remmina_ssh.c:852
+#: src/remmina_ssh.c:807 src/remmina_ssh.c:850
 msgid "SSH private key passphrase"
 msgstr "SSH 개인 키 암호"
 
-#: src/remmina_ssh.c:814
+#: src/remmina_ssh.c:812
 msgid "SSH Kerberos/GSSAPI"
 msgstr "SSH 커베로스/GSSAPI"
 
-#: src/remmina_ssh.c:819
+#: src/remmina_ssh.c:817
 msgid "Enter TOTP/OTP/2FA code"
 msgstr ""
 
-#: src/remmina_ssh.c:848 src/remmina_ssh.c:874
+#: src/remmina_ssh.c:846 src/remmina_ssh.c:872
 msgid "SSH tunnel credentials"
 msgstr "SSH 터널 자격"
 
-#: src/remmina_ssh.c:848 src/remmina_ssh.c:874 plugins/nx/nx_plugin.c:203
+#: src/remmina_ssh.c:846 src/remmina_ssh.c:872 plugins/nx/nx_plugin.c:203
 msgid "SSH credentials"
 msgstr "SSH 자격 증명"
 
-#: src/remmina_ssh.c:925
+#: src/remmina_ssh.c:923
 msgid "Keyboard interactive login, TOTP/OTP/2FA"
 msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1145
+#: src/remmina_ssh.c:1143
 #, c-format
 msgid "Could not start SSH session. %s"
 msgstr "SSH 세션을 시작하지 못 했습니다. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1548 src/remmina_ssh.c:1611
+#: src/remmina_ssh.c:1546 src/remmina_ssh.c:1609
 #, c-format
 msgid "Could not create channel. %s"
 msgstr "채널을 만들 수 없습니다. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1559
+#: src/remmina_ssh.c:1557
 #, c-format
 msgid "Could not connect to SSH tunnel. %s"
 msgstr "SSH 터널링으로 연결할 수 없습니다. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1626 src/remmina_ssh.c:2250
+#: src/remmina_ssh.c:1624 src/remmina_ssh.c:2248
 #, c-format
 msgid "Could not open channel. %s"
 msgstr "채널을 열 수 없습니다. %s"
 
-#: src/remmina_ssh.c:1632
+#: src/remmina_ssh.c:1630
 #, c-format
 msgid "Could not run %s on SSH server."
 msgstr "SSH 서버에서 %s 을(를) 실행할 수 없습니다."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1670 src/remmina_ssh.c:1691 src/remmina_ssh.c:1700
+#: src/remmina_ssh.c:1668 src/remmina_ssh.c:1689 src/remmina_ssh.c:1698
 #, c-format
 msgid "Could not request port forwarding. %s"
 msgstr "포트 포워딩을 요청할 수 없습니다. %s"
 
-#: src/remmina_ssh.c:1735
+#: src/remmina_ssh.c:1733
 msgid "The server did not respond."
 msgstr "서버가 응답하지 않습니다."
 
-#: src/remmina_ssh.c:1778
+#: src/remmina_ssh.c:1776
 #, c-format
 msgid "Cannot connect to local port %i."
 msgstr "로컬 포트 %i 에 연결할 수 없습니다."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1828
+#: src/remmina_ssh.c:1826
 #, c-format
 msgid "Could not write to SSH channel. %s"
 msgstr "SSH 채널에 쓸 수 없습니다. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1835
+#: src/remmina_ssh.c:1833
 #, c-format
 msgid "Could not read from tunnel listening socket. %s"
 msgstr "터널 수신 소켓에서 읽을 수 없습니다. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1855
+#: src/remmina_ssh.c:1853
 #, c-format
 msgid "Could not poll SSH channel. %s"
 msgstr "SSH 채널을 폴링 할 수 없습니다. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1862
+#: src/remmina_ssh.c:1860
 #, c-format
 msgid "Could not read SSH channel in a non-blocking way. %s"
 msgstr "논 블럭 방식으로 SSH 채널을 읽을 수 없습니다. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1881
+#: src/remmina_ssh.c:1879
 #, c-format
 msgid "Could not send data to tunnel listening socket. %s"
 msgstr "터널 수신 소켓에 데이터를 전송할 수 없습니다. %s"
 
-#: src/remmina_ssh.c:1983
+#: src/remmina_ssh.c:1981
 msgid "Assign a destination port."
 msgstr "목적지 포트를 할당하세요."
 
-#: src/remmina_ssh.c:1990
+#: src/remmina_ssh.c:1988
 msgid "Could not create socket."
 msgstr "소켓을 생성할 수 없습니다."
 
-#: src/remmina_ssh.c:2000
+#: src/remmina_ssh.c:1998
 msgid "Could not bind server socket to local port."
 msgstr "서버 소켓을 로컬 포트에 바인딩 할 수 없습니다."
 
-#: src/remmina_ssh.c:2006
+#: src/remmina_ssh.c:2004
 msgid "Could not listen to local port."
 msgstr "로컬 포트에 리스닝할 수 없습니다."
 
 #. TRANSLATORS: Do not translate pthread
-#: src/remmina_ssh.c:2016 src/remmina_ssh.c:2033 src/remmina_ssh.c:2050
-#: src/remmina_ssh.c:2068
+#: src/remmina_ssh.c:2014 src/remmina_ssh.c:2031 src/remmina_ssh.c:2048
+#: src/remmina_ssh.c:2066
 msgid "Could not start pthread."
 msgstr "스레드를 시작할 수 없습니다."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2160
+#: src/remmina_ssh.c:2158
 #, c-format
 msgid "Could not create SFTP session. %s"
 msgstr "SFTP 세션을 만들 수 없습니다. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2165
+#: src/remmina_ssh.c:2163
 #, c-format
 msgid "Could not start SFTP session. %s"
 msgstr "SSH 세션을 시작할 수 없습니다. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2280
+#: src/remmina_ssh.c:2278
 #, c-format
 msgid "Could not request shell. %s"
 msgstr "쉘을 요청할 수 없습니다. %s"
 
-#: src/remmina_ssh.c:2373
+#: src/remmina_ssh.c:2371
 msgid "Could not create PTY device."
 msgstr "PTY 기기를 생성할 수 없습니다."
 
-#: src/remmina_file_editor.c:74
+#: src/remmina_file_editor.c:60
 msgid ""
 "<tt><big>Supported formats\n"
 "• server\n"
@@ -1350,7 +1350,7 @@ msgstr ""
 "• 서버:포트\n"
 "• [서버]:포트</big></tt>"
 
-#: src/remmina_file_editor.c:81
+#: src/remmina_file_editor.c:67
 #, fuzzy
 #| msgid ""
 #| "<tt><big>• command in PATH args %h\n"
@@ -1391,7 +1391,7 @@ msgstr ""
 "연결하기 전에 명령을 실행하려면 백그라운드에서 실행하지 마세요. \n"
 "</big></tt>"
 
-#: src/remmina_file_editor.c:95
+#: src/remmina_file_editor.c:81
 msgid ""
 "<tt><big>Supported formats\n"
 "• :port\n"
@@ -1407,157 +1407,157 @@ msgstr ""
 "• [서버]:포트\n"
 "• 사용자 이름@서버:포트 (SSH 프로토콜 전용)</big></tt>"
 
-#: src/remmina_file_editor.c:161
+#: src/remmina_file_editor.c:147
 msgid "Choose a Remote Desktop Server"
 msgstr "원격 데스크탑 서버 선택"
 
-#: src/remmina_file_editor.c:373
+#: src/remmina_file_editor.c:359
 msgid "_Open"
 msgstr "_열기"
 
-#: src/remmina_file_editor.c:434
+#: src/remmina_file_editor.c:420
 #, c-format
 msgid "Browse the network to find a %s server"
 msgstr "네트워크에서 %s 서버 찾아보기"
 
-#: src/remmina_file_editor.c:535
+#: src/remmina_file_editor.c:521
 msgid "Resolution"
 msgstr "해상도"
 
-#: src/remmina_file_editor.c:542
+#: src/remmina_file_editor.c:528
 msgid "Use initial window size"
 msgstr "초기 윈도 크기 사용"
 
-#: src/remmina_file_editor.c:546
+#: src/remmina_file_editor.c:532
 msgid "Use client resolution"
 msgstr "클라이언트 해상도에 맞춤"
 
-#: src/remmina_file_editor.c:557 src/remmina_file_editor.c:949
+#: src/remmina_file_editor.c:543 src/remmina_file_editor.c:935
 msgid "Custom"
 msgstr "사용자 정의"
 
-#: src/remmina_file_editor.c:781
+#: src/remmina_file_editor.c:767
 msgid "Keyboard mapping"
 msgstr "사용자키 지정"
 
-#: src/remmina_file_editor.c:881
+#: src/remmina_file_editor.c:867
 msgid "Behavior"
 msgstr ""
 
-#: src/remmina_file_editor.c:884
+#: src/remmina_file_editor.c:870
 #, fuzzy
 #| msgid "Execute a command"
 msgid "Execute a Command"
 msgstr "명령 실행"
 
-#: src/remmina_file_editor.c:888
+#: src/remmina_file_editor.c:874
 #, fuzzy
 msgid "Before connecting"
 msgstr "연결 시작"
 
-#: src/remmina_file_editor.c:890
+#: src/remmina_file_editor.c:876
 msgid "command %h %u %t %U %p %g --option"
 msgstr ""
 
-#: src/remmina_file_editor.c:895
+#: src/remmina_file_editor.c:881
 #, fuzzy
 msgid "After connecting"
 msgstr "연결 시작"
 
-#: src/remmina_file_editor.c:897
+#: src/remmina_file_editor.c:883
 msgid "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
 msgstr ""
 
-#: src/remmina_file_editor.c:901
+#: src/remmina_file_editor.c:887
 #, fuzzy
 #| msgid "Start"
 msgid "Start-up"
 msgstr "시작"
 
-#: src/remmina_file_editor.c:904
+#: src/remmina_file_editor.c:890
 #, fuzzy
 msgid "Auto-start this profile"
 msgstr "프로필에 대해 \"자동 시작\" 키기"
 
-#: src/remmina_file_editor.c:924
+#: src/remmina_file_editor.c:910
 msgid "SSH Tunnel"
 msgstr "SSH 터널"
 
-#: src/remmina_file_editor.c:925
+#: src/remmina_file_editor.c:911
 msgid "Enable SSH tunnel"
 msgstr "SSH 암호화 사용"
 
-#: src/remmina_file_editor.c:932
+#: src/remmina_file_editor.c:918
 msgid "Tunnel via loopback address"
 msgstr "반향(=반송) 주소를 통한 터널링"
 
-#: src/remmina_file_editor.c:941
+#: src/remmina_file_editor.c:927
 #, c-format
 msgid "Same server at port %i"
 msgstr "포트 %i와 같은 서버"
 
-#: src/remmina_file_editor.c:987 plugins/rdp/rdp_plugin.c:2440
+#: src/remmina_file_editor.c:973 plugins/rdp/rdp_plugin.c:2440
 #, fuzzy
 #| msgid "Startup path"
 msgid "Start-up path"
 msgstr "시작 프로그램 경로"
 
-#: src/remmina_file_editor.c:996
+#: src/remmina_file_editor.c:982
 msgid "SSH Authentication"
 msgstr "SSH 확인"
 
-#: src/remmina_file_editor.c:1006
+#: src/remmina_file_editor.c:992
 msgid "SSH agent (automatic)"
 msgstr "SSH 에이전트 (자동)"
 
-#: src/remmina_file_editor.c:1110
+#: src/remmina_file_editor.c:1096
 msgid "Basic"
 msgstr "기본 설정"
 
-#: src/remmina_file_editor.c:1116
+#: src/remmina_file_editor.c:1102
 msgid "Advanced"
 msgstr "고급 설정"
 
-#: src/remmina_file_editor.c:1127
+#: src/remmina_file_editor.c:1113
 msgid "Notes"
 msgstr ""
 
-#: src/remmina_file_editor.c:1370
+#: src/remmina_file_editor.c:1356
 msgid "Default settings saved."
 msgstr "기본 설정으로 저장됨."
 
-#: src/remmina_file_editor.c:1440
+#: src/remmina_file_editor.c:1426
 #, fuzzy
 #| msgid "New connection profile"
 msgid "Remote Connection Profile"
 msgstr "새 연결 프로필"
 
-#: src/remmina_file_editor.c:1446
+#: src/remmina_file_editor.c:1432
 msgid "Save as Default"
 msgstr "기본값으로 저장"
 
-#: src/remmina_file_editor.c:1447
+#: src/remmina_file_editor.c:1433
 msgid "Use the current settings as the default for all new connection profiles"
 msgstr "모든 새 연결 프로필의 기본값으로 현재 설정 사용"
 
-#: src/remmina_file_editor.c:1455 data/ui/remmina_main.glade:166
+#: src/remmina_file_editor.c:1441 data/ui/remmina_main.glade:166
 msgid "Connect"
 msgstr "연결"
 
-#: src/remmina_file_editor.c:1458
+#: src/remmina_file_editor.c:1444
 msgid "_Save and Connect"
 msgstr "_저장 및 연결"
 
-#: src/remmina_file_editor.c:1581
+#: src/remmina_file_editor.c:1567
 msgid "Quick Connect"
 msgstr "빠른 접속"
 
-#: src/remmina_file_editor.c:1605
+#: src/remmina_file_editor.c:1591
 #, c-format
 msgid "Use '%s' as subgroup delimiter"
 msgstr "'%s' 하위그룹 구분자 사용"
 
-#: src/remmina_file_editor.c:1671 src/remmina_file_editor.c:1689
+#: src/remmina_file_editor.c:1657 src/remmina_file_editor.c:1675
 #, c-format
 msgid "Could not find the file \"%s\"."
 msgstr "\"%s\" 파일을 찾을 수 없습니다."
