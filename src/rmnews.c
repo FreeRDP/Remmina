@@ -523,12 +523,9 @@ static gboolean rmnews_periodic_check(gpointer user_data)
 	gint64 unixts;
 	glong next = 0;
 
-	//srand(time(NULL));
-
 	gdt = g_date_time_new_now_utc();
 	unixts = g_date_time_to_unix(gdt);
 	g_date_time_unref(gdt);
-
 
 	/* if remmina_pref is not writable ... */
 	if (remmina_pref_is_rw() == FALSE && remmina_pref.periodic_rmnews_last_get == 0) {
@@ -538,7 +535,7 @@ static gboolean rmnews_periodic_check(gpointer user_data)
 		REMMINA_DEBUG("Setting a random periodic_rmnews_last_get to %d - %d", unixts, eweekdays[randidx]);
 		remmina_pref.periodic_rmnews_last_get = unixts - eweekdays[randidx];
 	}
-	REMMINA_DEBUG("periodic_rmnews_last_get is %ld", remmina_pref.periodic_rmnews_last_get);
+	//REMMINA_DEBUG("periodic_rmnews_last_get is %ld", remmina_pref.periodic_rmnews_last_get);
 
 	if (remmina_pref.periodic_news_permitted == 0 && remmina_pref.periodic_rmnews_get_count < 1) {
 		remmina_pref.periodic_rmnews_last_get =
