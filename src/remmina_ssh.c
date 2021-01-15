@@ -283,6 +283,7 @@ remmina_ssh_auth_password(RemminaSSH *ssh)
 	case SSH_AUTH_AGAIN:
 		//In nonblocking mode, you've got to call this again later.
 		REMMINA_DEBUG("Authenticated with SSH password, Requested to authenticate again.  %s", ssh->error);
+		ssh->authenticated = FALSE;
 		return REMMINA_SSH_AUTH_AGAIN;
 		break;
 	case SSH_AUTH_DENIED:
@@ -365,6 +366,7 @@ remmina_ssh_auth_pubkey(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile 
 	case SSH_AUTH_AGAIN:
 		//In nonblocking mode, you've got to call this again later.
 		REMMINA_DEBUG("Authenticated with public SSH key, Requested to authenticate again.  %s", ssh->error);
+		ssh->authenticated = FALSE;
 		return REMMINA_SSH_AUTH_AUTHFAILED_RETRY_AFTER_PROMPT;
 		break;
 	case SSH_AUTH_DENIED:
@@ -386,11 +388,9 @@ remmina_ssh_auth_auto_pubkey(RemminaSSH *ssh, RemminaProtocolWidget *gp, Remmina
 
 	gint ret;
 
-	ret = ssh_userauth_publickey_auto(ssh->session, NULL, (ssh->passphrase ? ssh->passphrase : ""));
+	ret = ssh_userauth_publickey_auto(ssh->session, NULL, (ssh->passphrase ? ssh->passphrase : NULL));
 	REMMINA_DEBUG("Authentication with public SSH key returned: %d", ret);
 
-	ssh->authenticated = TRUE;
-	return REMMINA_SSH_AUTH_SUCCESS;
 	switch (ret) {
 	case SSH_AUTH_PARTIAL:
 		if (ssh->password) {
@@ -411,6 +411,7 @@ remmina_ssh_auth_auto_pubkey(RemminaSSH *ssh, RemminaProtocolWidget *gp, Remmina
 	case SSH_AUTH_AGAIN:
 		//In nonblocking mode, you've got to call this again later.
 		REMMINA_DEBUG("Authenticated with public SSH key, Requested to authenticate again.  %s", ssh->error);
+		ssh->authenticated = FALSE;
 		return REMMINA_SSH_AUTH_AUTHFAILED_RETRY_AFTER_PROMPT;
 		break;
 	case SSH_AUTH_DENIED:
@@ -945,11 +946,11 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *re
 		REMMINA_DEBUG("Authentication attempt n° %d returned %d", attempt + 2, ret);
 	}
 
-	g_free(current_pwd);
+	g_free(current_pwd); current_pwd = NULL;
 
 	/* After attempting the max number of times, REMMINA_SSH_AUTH_AUTHFAILED_RETRY_AFTER_PROMPT
 	 * becomes REMMINA_SSH_AUTH_FATAL_ERROR */
-	if (ret == REMMINA_SSH_AUTH_AUTHFAILED_RETRY_AFTER_PROMPT) {
+	if (ret == REMMINA_SSH_AUTH_AUTHFAILED_RETRY_AFTER_PROMPT || ret == REMMINA_SSH_AUTH_AGAIN) {
 		REMMINA_DEBUG("SSH Authentication failed");
 		ret = REMMINA_SSH_AUTH_FATAL_ERROR;
 	}
