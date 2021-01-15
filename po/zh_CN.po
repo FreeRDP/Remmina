@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-14 22:47+0000\n"
+"POT-Creation-Date: 2021-01-15 07:05+0000\n"
 "PO-Revision-Date: 2021-01-07 10:32+0000\n"
 "Last-Translator: Eric <spice2wolf@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -299,7 +299,7 @@ msgid "Username"
 msgstr "用户名"
 
 #: src/remmina_ssh_plugin.c:1328 plugins/vnc/vnc_plugin.c:1880
-#: plugins/vnc/vnc_plugin.c:1900 plugins/spice/spice_plugin.c:458
+#: plugins/vnc/vnc_plugin.c:1900 plugins/spice/spice_plugin.c:544
 #: plugins/nx/nx_plugin.c:731
 msgid "User password"
 msgstr "用户密码"
@@ -1564,7 +1564,7 @@ msgid "Ignore TLS errors"
 msgstr "忽略 TLS 错误"
 
 #: plugins/www/www_plugin.c:896 plugins/vnc/vnc_plugin.c:1923
-#: plugins/spice/spice_plugin.c:477 plugins/rdp/rdp_plugin.c:2461
+#: plugins/spice/spice_plugin.c:566 plugins/rdp/rdp_plugin.c:2461
 #: plugins/nx/nx_plugin.c:752
 msgid "Forget passwords after use"
 msgstr "使用后忘记密码"
@@ -1674,12 +1674,12 @@ msgid "Show remote cursor"
 msgstr "显示远程光标"
 
 #: plugins/vnc/vnc_plugin.c:1919 plugins/vnc/vnc_plugin.c:1934
-#: plugins/spice/spice_plugin.c:480 plugins/spice/spice_plugin.c:488
+#: plugins/spice/spice_plugin.c:569 plugins/spice/spice_plugin.c:577
 msgid "View only"
 msgstr "仅查看"
 
-#: plugins/vnc/vnc_plugin.c:1920 plugins/spice/spice_plugin.c:476
-#: plugins/spice/spice_plugin.c:489 plugins/nx/nx_plugin.c:749
+#: plugins/vnc/vnc_plugin.c:1920 plugins/spice/spice_plugin.c:565
+#: plugins/spice/spice_plugin.c:578 plugins/nx/nx_plugin.c:749
 msgid "Disable clipboard sync"
 msgstr "禁用剪贴板同步"
 
@@ -1695,7 +1695,7 @@ msgstr "禁止服务器端输入"
 msgid "Open Chat…"
 msgstr "打开聊天…"
 
-#: plugins/vnc/vnc_plugin.c:1938 plugins/spice/spice_plugin.c:490
+#: plugins/vnc/vnc_plugin.c:1938 plugins/spice/spice_plugin.c:579
 #: plugins/xdmcp/xdmcp_plugin.c:381 plugins/rdp/rdp_plugin.c:2483
 msgid "Send Ctrl+Alt+Delete"
 msgstr "发送 Ctrl+Alt+Delete"
@@ -1708,7 +1708,7 @@ msgstr "Remmina VNC 插件"
 msgid "Remmina VNC listener Plugin"
 msgstr "Remmina VNC 侦听插件"
 
-#: plugins/spice/spice_plugin_usb.c:51 plugins/spice/spice_plugin.c:491
+#: plugins/spice/spice_plugin_usb.c:51 plugins/spice/spice_plugin.c:580
 msgid "Select USB devices for redirection"
 msgstr "选择 USB 设备以转发"
 
@@ -1720,44 +1720,82 @@ msgstr "关闭(_C)"
 msgid "USB redirection error"
 msgstr "USB 转发错误"
 
-#: plugins/spice/spice_plugin.c:247
+#: plugins/spice/spice_plugin.c:261
 msgid "Enter SPICE password"
 msgstr "输入 SPICE 密码"
 
-#: plugins/spice/spice_plugin.c:282
+#: plugins/spice/spice_plugin.c:296
 #, c-format
 msgid "Disconnected from the SPICE server \"%s\"."
 msgstr "从 SPICE 服务器 \"%s\" 断开连接。"
 
-#: plugins/spice/spice_plugin.c:298
+#: plugins/spice/spice_plugin.c:312
 msgid "TLS connection error."
 msgstr "TLS 连接错误。"
 
-#: plugins/spice/spice_plugin.c:304
+#: plugins/spice/spice_plugin.c:318
 msgid "Connection to the SPICE server dropped."
 msgstr "与 SPICE 服务器的连接断开。"
 
-#: plugins/spice/spice_plugin.c:459
+#: plugins/spice/spice_plugin.c:504 plugins/spice/spice_plugin.c:518
+#: plugins/xdmcp/xdmcp_plugin.c:348
+msgid "Default"
+msgstr "默认值"
+
+#: plugins/spice/spice_plugin.c:519 plugins/rdp/rdp_plugin.c:2316
+#: data/ui/remmina_preferences.glade:700
+msgid "Off"
+msgstr "关"
+
+#: plugins/spice/spice_plugin.c:520
+msgid "Auto GLZ"
+msgstr ""
+
+#: plugins/spice/spice_plugin.c:521
+msgid "Auto LZ"
+msgstr ""
+
+#: plugins/spice/spice_plugin.c:530
+msgid "Disable video overlay if videos are not displayed properly.\n"
+msgstr ""
+
+#: plugins/spice/spice_plugin.c:545
 msgid "Use TLS encryption"
 msgstr "使用 TLS 加密"
 
-#: plugins/spice/spice_plugin.c:460
+#: plugins/spice/spice_plugin.c:546
 msgid "Server CA certificate"
 msgstr "服务器 CA 证书"
 
-#: plugins/spice/spice_plugin.c:461 plugins/rdp/rdp_plugin.c:2409
+#: plugins/spice/spice_plugin.c:547 plugins/rdp/rdp_plugin.c:2409
 msgid "Share folder"
 msgstr "共享目录"
 
-#: plugins/spice/spice_plugin.c:478
+#: plugins/spice/spice_plugin.c:562
+#, fuzzy
+#| msgid "Preference"
+msgid "Prefered video codec"
+msgstr "首选项"
+
+#: plugins/spice/spice_plugin.c:563
+#, fuzzy
+#| msgid "Disable server input"
+msgid "Disable Gstreamer Overlay"
+msgstr "禁止服务器端输入"
+
+#: plugins/spice/spice_plugin.c:564
+msgid "Prefered image compression"
+msgstr ""
+
+#: plugins/spice/spice_plugin.c:567
 msgid "Enable audio channel"
 msgstr "启用音频通道"
 
-#: plugins/spice/spice_plugin.c:479
+#: plugins/spice/spice_plugin.c:568
 msgid "Share smart card"
 msgstr "共享智能卡"
 
-#: plugins/spice/spice_plugin.c:502
+#: plugins/spice/spice_plugin.c:591
 msgid "SPICE - Simple Protocol for Independent Computing Environments"
 msgstr "SPICE - 独立计算环境的简单协议"
 
@@ -1792,10 +1830,6 @@ msgstr "用完可用的本地 X 显示编号。"
 msgid ""
 "The protocol \"%s\" is unavailable because GtkSocket only works under X.Org."
 msgstr "协议 \"%s\" 不可用，因为 GtkSocket 仅在 X.Org 下工作。"
-
-#: plugins/xdmcp/xdmcp_plugin.c:348
-msgid "Default"
-msgstr "默认值"
 
 #: plugins/xdmcp/xdmcp_plugin.c:349
 msgid "Grayscale"
@@ -2057,10 +2091,6 @@ msgstr ""
 #: plugins/rdp/rdp_plugin.c:2309
 msgid "LAN"
 msgstr ""
-
-#: plugins/rdp/rdp_plugin.c:2316 data/ui/remmina_preferences.glade:700
-msgid "Off"
-msgstr "关"
 
 #: plugins/rdp/rdp_plugin.c:2318
 msgid "Local - low quality"

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-14 22:47+0000\n"
+"POT-Creation-Date: 2021-01-15 07:05+0000\n"
 "PO-Revision-Date: 2020-08-14 00:10+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/remmina/remmina/nl/"
@@ -309,7 +309,7 @@ msgid "Username"
 msgstr "Gebruikersnaam"
 
 #: src/remmina_ssh_plugin.c:1328 plugins/vnc/vnc_plugin.c:1880
-#: plugins/vnc/vnc_plugin.c:1900 plugins/spice/spice_plugin.c:458
+#: plugins/vnc/vnc_plugin.c:1900 plugins/spice/spice_plugin.c:544
 #: plugins/nx/nx_plugin.c:731
 msgid "User password"
 msgstr "Gebruikerswachtwoord"
@@ -1628,7 +1628,7 @@ msgid "Ignore TLS errors"
 msgstr ""
 
 #: plugins/www/www_plugin.c:896 plugins/vnc/vnc_plugin.c:1923
-#: plugins/spice/spice_plugin.c:477 plugins/rdp/rdp_plugin.c:2461
+#: plugins/spice/spice_plugin.c:566 plugins/rdp/rdp_plugin.c:2461
 #: plugins/nx/nx_plugin.c:752
 #, fuzzy
 msgid "Forget passwords after use"
@@ -1742,12 +1742,12 @@ msgid "Show remote cursor"
 msgstr "Muisaanwijzer op afstand tonen"
 
 #: plugins/vnc/vnc_plugin.c:1919 plugins/vnc/vnc_plugin.c:1934
-#: plugins/spice/spice_plugin.c:480 plugins/spice/spice_plugin.c:488
+#: plugins/spice/spice_plugin.c:569 plugins/spice/spice_plugin.c:577
 msgid "View only"
 msgstr "Alleen bekijken"
 
-#: plugins/vnc/vnc_plugin.c:1920 plugins/spice/spice_plugin.c:476
-#: plugins/spice/spice_plugin.c:489 plugins/nx/nx_plugin.c:749
+#: plugins/vnc/vnc_plugin.c:1920 plugins/spice/spice_plugin.c:565
+#: plugins/spice/spice_plugin.c:578 plugins/nx/nx_plugin.c:749
 msgid "Disable clipboard sync"
 msgstr "Klembord-synchronisatie uitschakelen"
 
@@ -1763,7 +1763,7 @@ msgstr "Serveruitvoer uitschakelen"
 msgid "Open Chat…"
 msgstr "Chat openen…"
 
-#: plugins/vnc/vnc_plugin.c:1938 plugins/spice/spice_plugin.c:490
+#: plugins/vnc/vnc_plugin.c:1938 plugins/spice/spice_plugin.c:579
 #: plugins/xdmcp/xdmcp_plugin.c:381 plugins/rdp/rdp_plugin.c:2483
 msgid "Send Ctrl+Alt+Delete"
 msgstr ""
@@ -1776,7 +1776,7 @@ msgstr ""
 msgid "Remmina VNC listener Plugin"
 msgstr ""
 
-#: plugins/spice/spice_plugin_usb.c:51 plugins/spice/spice_plugin.c:491
+#: plugins/spice/spice_plugin_usb.c:51 plugins/spice/spice_plugin.c:580
 msgid "Select USB devices for redirection"
 msgstr ""
 
@@ -1788,45 +1788,83 @@ msgstr ""
 msgid "USB redirection error"
 msgstr ""
 
-#: plugins/spice/spice_plugin.c:247
+#: plugins/spice/spice_plugin.c:261
 #, fuzzy
 msgid "Enter SPICE password"
 msgstr "SSH-wachtwoord"
 
-#: plugins/spice/spice_plugin.c:282
+#: plugins/spice/spice_plugin.c:296
 #, c-format
 msgid "Disconnected from the SPICE server \"%s\"."
 msgstr "Losgekoppeld van de SPICE server \"%s\"."
 
-#: plugins/spice/spice_plugin.c:298
+#: plugins/spice/spice_plugin.c:312
 msgid "TLS connection error."
 msgstr ""
 
-#: plugins/spice/spice_plugin.c:304
+#: plugins/spice/spice_plugin.c:318
 msgid "Connection to the SPICE server dropped."
 msgstr "Verbinding met de SPICE-server is verbroken."
 
-#: plugins/spice/spice_plugin.c:459
+#: plugins/spice/spice_plugin.c:504 plugins/spice/spice_plugin.c:518
+#: plugins/xdmcp/xdmcp_plugin.c:348
+msgid "Default"
+msgstr "Standaard"
+
+#: plugins/spice/spice_plugin.c:519 plugins/rdp/rdp_plugin.c:2316
+#: data/ui/remmina_preferences.glade:700
+msgid "Off"
+msgstr "Uit"
+
+#: plugins/spice/spice_plugin.c:520
+msgid "Auto GLZ"
+msgstr ""
+
+#: plugins/spice/spice_plugin.c:521
+msgid "Auto LZ"
+msgstr ""
+
+#: plugins/spice/spice_plugin.c:530
+msgid "Disable video overlay if videos are not displayed properly.\n"
+msgstr ""
+
+#: plugins/spice/spice_plugin.c:545
 msgid "Use TLS encryption"
 msgstr ""
 
-#: plugins/spice/spice_plugin.c:460
+#: plugins/spice/spice_plugin.c:546
 msgid "Server CA certificate"
 msgstr ""
 
-#: plugins/spice/spice_plugin.c:461 plugins/rdp/rdp_plugin.c:2409
+#: plugins/spice/spice_plugin.c:547 plugins/rdp/rdp_plugin.c:2409
 msgid "Share folder"
 msgstr "Gedeelde map"
 
-#: plugins/spice/spice_plugin.c:478
+#: plugins/spice/spice_plugin.c:562
+#, fuzzy
+#| msgid "Preference"
+msgid "Prefered video codec"
+msgstr "Voorkeur"
+
+#: plugins/spice/spice_plugin.c:563
+#, fuzzy
+#| msgid "Disable server input"
+msgid "Disable Gstreamer Overlay"
+msgstr "Serveruitvoer uitschakelen"
+
+#: plugins/spice/spice_plugin.c:564
+msgid "Prefered image compression"
+msgstr ""
+
+#: plugins/spice/spice_plugin.c:567
 msgid "Enable audio channel"
 msgstr ""
 
-#: plugins/spice/spice_plugin.c:479
+#: plugins/spice/spice_plugin.c:568
 msgid "Share smart card"
 msgstr ""
 
-#: plugins/spice/spice_plugin.c:502
+#: plugins/spice/spice_plugin.c:591
 msgid "SPICE - Simple Protocol for Independent Computing Environments"
 msgstr ""
 
@@ -1861,10 +1899,6 @@ msgstr ""
 msgid ""
 "The protocol \"%s\" is unavailable because GtkSocket only works under X.Org."
 msgstr ""
-
-#: plugins/xdmcp/xdmcp_plugin.c:348
-msgid "Default"
-msgstr "Standaard"
 
 #: plugins/xdmcp/xdmcp_plugin.c:349
 msgid "Grayscale"
@@ -2142,10 +2176,6 @@ msgstr ""
 #: plugins/rdp/rdp_plugin.c:2309
 msgid "LAN"
 msgstr ""
-
-#: plugins/rdp/rdp_plugin.c:2316 data/ui/remmina_preferences.glade:700
-msgid "Off"
-msgstr "Uit"
 
 #: plugins/rdp/rdp_plugin.c:2318
 msgid "Local - low quality"

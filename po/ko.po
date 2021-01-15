@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-14 22:47+0000\n"
+"POT-Creation-Date: 2021-01-15 07:05+0000\n"
 "PO-Revision-Date: 2020-09-11 22:29+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -307,7 +307,7 @@ msgid "Username"
 msgstr "사용자명"
 
 #: src/remmina_ssh_plugin.c:1328 plugins/vnc/vnc_plugin.c:1880
-#: plugins/vnc/vnc_plugin.c:1900 plugins/spice/spice_plugin.c:458
+#: plugins/vnc/vnc_plugin.c:1900 plugins/spice/spice_plugin.c:544
 #: plugins/nx/nx_plugin.c:731
 msgid "User password"
 msgstr "사용자 비밀번호"
@@ -1598,7 +1598,7 @@ msgid "Ignore TLS errors"
 msgstr "TLS 에러 무시"
 
 #: plugins/www/www_plugin.c:896 plugins/vnc/vnc_plugin.c:1923
-#: plugins/spice/spice_plugin.c:477 plugins/rdp/rdp_plugin.c:2461
+#: plugins/spice/spice_plugin.c:566 plugins/rdp/rdp_plugin.c:2461
 #: plugins/nx/nx_plugin.c:752
 #, fuzzy
 msgid "Forget passwords after use"
@@ -1711,12 +1711,12 @@ msgid "Show remote cursor"
 msgstr "원격 커서 보기"
 
 #: plugins/vnc/vnc_plugin.c:1919 plugins/vnc/vnc_plugin.c:1934
-#: plugins/spice/spice_plugin.c:480 plugins/spice/spice_plugin.c:488
+#: plugins/spice/spice_plugin.c:569 plugins/spice/spice_plugin.c:577
 msgid "View only"
 msgstr "뷰 전용"
 
-#: plugins/vnc/vnc_plugin.c:1920 plugins/spice/spice_plugin.c:476
-#: plugins/spice/spice_plugin.c:489 plugins/nx/nx_plugin.c:749
+#: plugins/vnc/vnc_plugin.c:1920 plugins/spice/spice_plugin.c:565
+#: plugins/spice/spice_plugin.c:578 plugins/nx/nx_plugin.c:749
 msgid "Disable clipboard sync"
 msgstr "클립 보드 동기화 비활성화"
 
@@ -1732,7 +1732,7 @@ msgstr "서버 입력 비활성화"
 msgid "Open Chat…"
 msgstr "대화창 열기…"
 
-#: plugins/vnc/vnc_plugin.c:1938 plugins/spice/spice_plugin.c:490
+#: plugins/vnc/vnc_plugin.c:1938 plugins/spice/spice_plugin.c:579
 #: plugins/xdmcp/xdmcp_plugin.c:381 plugins/rdp/rdp_plugin.c:2483
 msgid "Send Ctrl+Alt+Delete"
 msgstr "Ctrl+Alt+Delete 전송"
@@ -1745,7 +1745,7 @@ msgstr "레미나 VNC 플러그인"
 msgid "Remmina VNC listener Plugin"
 msgstr "레미나 VNC 리스너 플러그인"
 
-#: plugins/spice/spice_plugin_usb.c:51 plugins/spice/spice_plugin.c:491
+#: plugins/spice/spice_plugin_usb.c:51 plugins/spice/spice_plugin.c:580
 msgid "Select USB devices for redirection"
 msgstr "리디렉션 할 USB 기기 선택"
 
@@ -1757,45 +1757,83 @@ msgstr "_종료"
 msgid "USB redirection error"
 msgstr "USB 리디렉션 에러"
 
-#: plugins/spice/spice_plugin.c:247
+#: plugins/spice/spice_plugin.c:261
 msgid "Enter SPICE password"
 msgstr "SPICE 비밀번호를 입력하세요"
 
-#: plugins/spice/spice_plugin.c:282
+#: plugins/spice/spice_plugin.c:296
 #, c-format
 msgid "Disconnected from the SPICE server \"%s\"."
 msgstr "SPICE 서버 \"%s\"와 연결이 끊어졌습니다."
 
-#: plugins/spice/spice_plugin.c:298
+#: plugins/spice/spice_plugin.c:312
 msgid "TLS connection error."
 msgstr "TLS 연결 에러."
 
-#: plugins/spice/spice_plugin.c:304
+#: plugins/spice/spice_plugin.c:318
 msgid "Connection to the SPICE server dropped."
 msgstr "SPICE 서버에 대한 연결이 끊어졌습니다."
 
-#: plugins/spice/spice_plugin.c:459
+#: plugins/spice/spice_plugin.c:504 plugins/spice/spice_plugin.c:518
+#: plugins/xdmcp/xdmcp_plugin.c:348
+msgid "Default"
+msgstr "기본값"
+
+#: plugins/spice/spice_plugin.c:519 plugins/rdp/rdp_plugin.c:2316
+#: data/ui/remmina_preferences.glade:700
+msgid "Off"
+msgstr "끄기"
+
+#: plugins/spice/spice_plugin.c:520
+msgid "Auto GLZ"
+msgstr ""
+
+#: plugins/spice/spice_plugin.c:521
+msgid "Auto LZ"
+msgstr ""
+
+#: plugins/spice/spice_plugin.c:530
+msgid "Disable video overlay if videos are not displayed properly.\n"
+msgstr ""
+
+#: plugins/spice/spice_plugin.c:545
 msgid "Use TLS encryption"
 msgstr "TLS 암호화 사용"
 
-#: plugins/spice/spice_plugin.c:460
+#: plugins/spice/spice_plugin.c:546
 msgid "Server CA certificate"
 msgstr "서버 CA 인증서"
 
-#: plugins/spice/spice_plugin.c:461 plugins/rdp/rdp_plugin.c:2409
+#: plugins/spice/spice_plugin.c:547 plugins/rdp/rdp_plugin.c:2409
 msgid "Share folder"
 msgstr "공유 폴더"
 
-#: plugins/spice/spice_plugin.c:478
+#: plugins/spice/spice_plugin.c:562
+#, fuzzy
+#| msgid "Preference"
+msgid "Prefered video codec"
+msgstr "설정"
+
+#: plugins/spice/spice_plugin.c:563
+#, fuzzy
+#| msgid "Disable server input"
+msgid "Disable Gstreamer Overlay"
+msgstr "서버 입력 비활성화"
+
+#: plugins/spice/spice_plugin.c:564
+msgid "Prefered image compression"
+msgstr ""
+
+#: plugins/spice/spice_plugin.c:567
 msgid "Enable audio channel"
 msgstr "오디오 채널 활성화"
 
-#: plugins/spice/spice_plugin.c:479
+#: plugins/spice/spice_plugin.c:568
 #, fuzzy
 msgid "Share smart card"
 msgstr "스마트 카드 공유"
 
-#: plugins/spice/spice_plugin.c:502
+#: plugins/spice/spice_plugin.c:591
 msgid "SPICE - Simple Protocol for Independent Computing Environments"
 msgstr ""
 "스파이스(SPICE) - Simple Protocol for Independent Computing Environments"
@@ -1833,10 +1871,6 @@ msgid ""
 "The protocol \"%s\" is unavailable because GtkSocket only works under X.Org."
 msgstr ""
 "GtkSocket은 X.Org에서만 동작하기에 \"%s\" 프로토콜을 사용할 수 없습니다."
-
-#: plugins/xdmcp/xdmcp_plugin.c:348
-msgid "Default"
-msgstr "기본값"
 
 #: plugins/xdmcp/xdmcp_plugin.c:349
 msgid "Grayscale"
@@ -2111,10 +2145,6 @@ msgstr ""
 #: plugins/rdp/rdp_plugin.c:2309
 msgid "LAN"
 msgstr ""
-
-#: plugins/rdp/rdp_plugin.c:2316 data/ui/remmina_preferences.glade:700
-msgid "Off"
-msgstr "끄기"
 
 #: plugins/rdp/rdp_plugin.c:2318
 msgid "Local - low quality"

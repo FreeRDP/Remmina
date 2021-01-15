@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Remmina v1.4.10\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-14 22:47+0000\n"
+"POT-Creation-Date: 2021-01-15 07:05+0000\n"
 "PO-Revision-Date: 2021-01-10 21:16+0000\n"
 "Last-Translator: Kristijan Fremen Velkovski <me@krisfremen.com>\n"
 "Language-Team: Macedonian <https://hosted.weblate.org/projects/remmina/"
@@ -292,7 +292,7 @@ msgid "Username"
 msgstr ""
 
 #: src/remmina_ssh_plugin.c:1328 plugins/vnc/vnc_plugin.c:1880
-#: plugins/vnc/vnc_plugin.c:1900 plugins/spice/spice_plugin.c:458
+#: plugins/vnc/vnc_plugin.c:1900 plugins/spice/spice_plugin.c:544
 #: plugins/nx/nx_plugin.c:731
 msgid "User password"
 msgstr ""
@@ -1520,7 +1520,7 @@ msgid "Ignore TLS errors"
 msgstr ""
 
 #: plugins/www/www_plugin.c:896 plugins/vnc/vnc_plugin.c:1923
-#: plugins/spice/spice_plugin.c:477 plugins/rdp/rdp_plugin.c:2461
+#: plugins/spice/spice_plugin.c:566 plugins/rdp/rdp_plugin.c:2461
 #: plugins/nx/nx_plugin.c:752
 msgid "Forget passwords after use"
 msgstr ""
@@ -1630,12 +1630,12 @@ msgid "Show remote cursor"
 msgstr ""
 
 #: plugins/vnc/vnc_plugin.c:1919 plugins/vnc/vnc_plugin.c:1934
-#: plugins/spice/spice_plugin.c:480 plugins/spice/spice_plugin.c:488
+#: plugins/spice/spice_plugin.c:569 plugins/spice/spice_plugin.c:577
 msgid "View only"
 msgstr ""
 
-#: plugins/vnc/vnc_plugin.c:1920 plugins/spice/spice_plugin.c:476
-#: plugins/spice/spice_plugin.c:489 plugins/nx/nx_plugin.c:749
+#: plugins/vnc/vnc_plugin.c:1920 plugins/spice/spice_plugin.c:565
+#: plugins/spice/spice_plugin.c:578 plugins/nx/nx_plugin.c:749
 msgid "Disable clipboard sync"
 msgstr ""
 
@@ -1651,7 +1651,7 @@ msgstr ""
 msgid "Open Chat…"
 msgstr ""
 
-#: plugins/vnc/vnc_plugin.c:1938 plugins/spice/spice_plugin.c:490
+#: plugins/vnc/vnc_plugin.c:1938 plugins/spice/spice_plugin.c:579
 #: plugins/xdmcp/xdmcp_plugin.c:381 plugins/rdp/rdp_plugin.c:2483
 msgid "Send Ctrl+Alt+Delete"
 msgstr ""
@@ -1664,7 +1664,7 @@ msgstr ""
 msgid "Remmina VNC listener Plugin"
 msgstr ""
 
-#: plugins/spice/spice_plugin_usb.c:51 plugins/spice/spice_plugin.c:491
+#: plugins/spice/spice_plugin_usb.c:51 plugins/spice/spice_plugin.c:580
 msgid "Select USB devices for redirection"
 msgstr ""
 
@@ -1676,44 +1676,78 @@ msgstr ""
 msgid "USB redirection error"
 msgstr ""
 
-#: plugins/spice/spice_plugin.c:247
+#: plugins/spice/spice_plugin.c:261
 msgid "Enter SPICE password"
 msgstr ""
 
-#: plugins/spice/spice_plugin.c:282
+#: plugins/spice/spice_plugin.c:296
 #, c-format
 msgid "Disconnected from the SPICE server \"%s\"."
 msgstr ""
 
-#: plugins/spice/spice_plugin.c:298
+#: plugins/spice/spice_plugin.c:312
 msgid "TLS connection error."
 msgstr ""
 
-#: plugins/spice/spice_plugin.c:304
+#: plugins/spice/spice_plugin.c:318
 msgid "Connection to the SPICE server dropped."
 msgstr ""
 
-#: plugins/spice/spice_plugin.c:459
+#: plugins/spice/spice_plugin.c:504 plugins/spice/spice_plugin.c:518
+#: plugins/xdmcp/xdmcp_plugin.c:348
+msgid "Default"
+msgstr ""
+
+#: plugins/spice/spice_plugin.c:519 plugins/rdp/rdp_plugin.c:2316
+#: data/ui/remmina_preferences.glade:700
+msgid "Off"
+msgstr ""
+
+#: plugins/spice/spice_plugin.c:520
+msgid "Auto GLZ"
+msgstr ""
+
+#: plugins/spice/spice_plugin.c:521
+msgid "Auto LZ"
+msgstr ""
+
+#: plugins/spice/spice_plugin.c:530
+msgid "Disable video overlay if videos are not displayed properly.\n"
+msgstr ""
+
+#: plugins/spice/spice_plugin.c:545
 msgid "Use TLS encryption"
 msgstr ""
 
-#: plugins/spice/spice_plugin.c:460
+#: plugins/spice/spice_plugin.c:546
 msgid "Server CA certificate"
 msgstr ""
 
-#: plugins/spice/spice_plugin.c:461 plugins/rdp/rdp_plugin.c:2409
+#: plugins/spice/spice_plugin.c:547 plugins/rdp/rdp_plugin.c:2409
 msgid "Share folder"
 msgstr ""
 
-#: plugins/spice/spice_plugin.c:478
+#: plugins/spice/spice_plugin.c:562
+msgid "Prefered video codec"
+msgstr ""
+
+#: plugins/spice/spice_plugin.c:563
+msgid "Disable Gstreamer Overlay"
+msgstr ""
+
+#: plugins/spice/spice_plugin.c:564
+msgid "Prefered image compression"
+msgstr ""
+
+#: plugins/spice/spice_plugin.c:567
 msgid "Enable audio channel"
 msgstr ""
 
-#: plugins/spice/spice_plugin.c:479
+#: plugins/spice/spice_plugin.c:568
 msgid "Share smart card"
 msgstr ""
 
-#: plugins/spice/spice_plugin.c:502
+#: plugins/spice/spice_plugin.c:591
 msgid "SPICE - Simple Protocol for Independent Computing Environments"
 msgstr ""
 
@@ -1747,10 +1781,6 @@ msgstr ""
 #, c-format
 msgid ""
 "The protocol \"%s\" is unavailable because GtkSocket only works under X.Org."
-msgstr ""
-
-#: plugins/xdmcp/xdmcp_plugin.c:348
-msgid "Default"
 msgstr ""
 
 #: plugins/xdmcp/xdmcp_plugin.c:349
@@ -1994,10 +2024,6 @@ msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:2309
 msgid "LAN"
-msgstr ""
-
-#: plugins/rdp/rdp_plugin.c:2316 data/ui/remmina_preferences.glade:700
-msgid "Off"
 msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:2318
