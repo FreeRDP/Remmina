@@ -726,7 +726,7 @@ static gpointer quality_list[] =
 static const RemminaProtocolSetting remmina_plugin_nx_basic_settings[] =
 {
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER,	    "server",	     NULL,		    FALSE, NULL,		    NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_FILE,	    "nx_privatekey", N_("Identity file"),   FALSE, NULL,		    NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_FILE,	    "nx_privatekey", N_("SSH identity file"),   FALSE, NULL,		    NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "username",	     N_("Username"),	    FALSE, NULL,		    NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD,   "password",	     N_("User password"),   FALSE, NULL,		    NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION, "resolution",    NULL,		    FALSE, GINT_TO_POINTER(1),	    NULL },

@@ -232,7 +232,7 @@ remmina_ssh_auth_pubkey(RemminaSSH *ssh)
 	if (ssh->privkeyfile == NULL) {
 		// TRANSLATORS: The placeholder %s is an error message
 		ssh->error = g_strdup_printf(_("Could not authenticate with public SSH key. %s"),
-					     _("SSH Key file not yet set."));
+					     _("SSH identity file not selected."));
 		return REMMINA_SSH_AUTH_FATAL_ERROR;
 	}
 
@@ -252,7 +252,7 @@ remmina_ssh_auth_pubkey(RemminaSSH *ssh)
 	if (ssh_pki_import_privkey_file(ssh->privkeyfile, (ssh->passphrase ? ssh->passphrase : ""),
 					NULL, NULL, &key) != SSH_OK) {
 		if (ssh->passphrase == NULL || ssh->passphrase[0] == '\0') {
-			remmina_ssh_set_error(ssh, _("SSH passphrase is empty, it should not be."));
+			remmina_ssh_set_error(ssh, _("No saved SSH passphrase supplied. Asking user to enter it."));
 			return REMMINA_SSH_AUTH_AUTHFAILED_RETRY_AFTER_PROMPT;
 		}
 
@@ -267,7 +267,7 @@ remmina_ssh_auth_pubkey(RemminaSSH *ssh)
 	if (ret != SSH_AUTH_SUCCESS) {
 		// TRANSLATORS: The placeholder %s is an error message
 		remmina_ssh_set_error(ssh, _("Could not authenticate with public SSH key. %s"));
-		REMMINA_DEBUG("Cannot authenticate with public SSH key. Error is %s", ssh->error);
+		REMMINA_DEBUG("Cannot authenticate with public SSH key. %s", ssh->error);
 		return REMMINA_SSH_AUTH_AUTHFAILED_RETRY_AFTER_PROMPT;
 	}
 
@@ -287,7 +287,7 @@ remmina_ssh_auth_auto_pubkey(RemminaSSH *ssh, RemminaProtocolWidget *gp, Remmina
 	if (ret != SSH_AUTH_SUCCESS) {
 		// TRANSLATORS: The placeholder %s is an error message
 		remmina_ssh_set_error(ssh, _("Could not authenticate automatically with public SSH key. %s"));
-		REMMINA_DEBUG("Cannot authenticate automatically with public SSH key. Error is %s", ssh->error);
+		REMMINA_DEBUG("Cannot authenticate automatically with public SSH key. %s", ssh->error);
 		return REMMINA_SSH_AUTH_AUTHFAILED_RETRY_AFTER_PROMPT;
 	}
 
@@ -522,7 +522,7 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *re
 		if (ssh_get_publickey_hash(server_pubkey, SSH_PUBLICKEY_HASH_MD5, &pubkey, &len) != 0) {
 			ssh_key_free(server_pubkey);
 			// TRANSLATORS: The placeholder %s is an error message
-			remmina_ssh_set_error(ssh, _("Could not fetch checksum for public SSH key. %s"));
+			remmina_ssh_set_error(ssh, _("Could not fetch checksum of the public SSH key. %s"));
 			REMMINA_DEBUG("ssh_get_publickey_hash() has failed");
 			return REMMINA_SSH_AUTH_FATAL_ERROR;
 		}
@@ -540,7 +540,7 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *re
 						  _("Do you trust the new public key?"));
 		} else {
 			message = g_strdup_printf("%s\n%s\n\n%s",
-						  _("Warning: The server has changed its public key. This means either you are under attack,\n"
+						  _("Warning: The server has changed its public key. This means you are either under attack,\n"
 						    "or the administrator has changed the key. The new public key fingerprint is:"),
 						  keyname,
 						  _("Do you trust the new public key?"));
