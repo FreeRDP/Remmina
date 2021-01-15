@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-15 07:05+0000\n"
+"POT-Creation-Date: 2021-01-15 07:10+0000\n"
 "PO-Revision-Date: 2020-09-06 13:36+0000\n"
 "Last-Translator: WaldiS <sto@tutanota.de>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -2018,10 +2018,13 @@ msgstr ""
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:1907
-#, c-format
+#, fuzzy, c-format
+#| msgid ""
+#| "Unable to establish a connection to the RDP server. Check \"Security "
+#| "protocol negotiation\" \"%s\"."
 msgid ""
-"Unable to establish a connection to the RDP server. Check \"Security "
-"protocol negotiation\" \"%s\"."
+"Unable to establish a connection to the RDP server \"%s\". Check \"Security "
+"protocol negotiation\"."
 msgstr ""
 "Nie można nawiązać połączenia z serwerem RDP. Sprawdź „Negocjacja protokołu "
 "bezpieczeństwa” „%s”."
@@ -3140,9 +3143,12 @@ msgstr ""
 "%Y Rok, %m Miesiąc, %d Dzień, %H Godzina, %M Minuta, %S Sekundy (czas UTC)\n"
 
 #: data/ui/remmina_preferences.glade:353
+#, fuzzy
+#| msgid ""
+#| "The folder where connection profiles are saved, it defaults to the "
+#| "XDG_USER_DATA"
 msgid ""
-"The folder where connection profiles are saved, it defaults to the "
-"XDG_USER_DATA"
+"The folder connection profiles are saved in, it defaults to the XDG_USER_DATA"
 msgstr ""
 "Folder, w którym zapisywane są profile połączeń, domyślnie jest to "
 "XDG_USER_DATA"
@@ -3153,7 +3159,9 @@ msgid "Remmina data folder"
 msgstr "Folder danych Remminy"
 
 #: data/ui/remmina_preferences.glade:385
-msgid "Remember last view mode for each connection"
+#, fuzzy
+#| msgid "Remember last view mode for each connection"
+msgid "Remember last view for each connection"
 msgstr "Zapamiętaj ostatni tryb widoku dla każdego połączenia"
 
 #. The star (*) is a reference to privacy consent
@@ -3170,8 +3178,8 @@ msgstr ""
 "formatującego."
 
 #: data/ui/remmina_preferences.glade:433
-msgid "Profile filename template"
-msgstr "Szablon nazwy pliku profilu"
+msgid "Template for profile filenames"
+msgstr ""
 
 #: data/ui/remmina_preferences.glade:445
 msgid ""
@@ -3210,7 +3218,9 @@ msgid "Hide the toolbar shown in the tabbed interface"
 msgstr "Ukryj pasek narzędzi pokazany w interfejsie z kartami"
 
 #: data/ui/remmina_preferences.glade:612
-msgid "Default view mode"
+#, fuzzy
+#| msgid "Default view mode"
+msgid "Default view"
 msgstr "Domyślny tryb widoku"
 
 #: data/ui/remmina_preferences.glade:626
@@ -3234,7 +3244,9 @@ msgid "By group"
 msgstr "Grupami"
 
 #: data/ui/remmina_preferences.glade:661
-msgid "By protocols"
+#, fuzzy
+#| msgid "By protocols"
+msgid "By protocol"
 msgstr "Protokołami"
 
 #: data/ui/remmina_preferences.glade:662
@@ -3625,6 +3637,9 @@ msgstr "Wybierz nowy klawisz"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "Proszę nacisnąć nowy klawisz…"
+
+#~ msgid "Profile filename template"
+#~ msgstr "Szablon nazwy pliku profilu"
 
 #~ msgid "Allow bold text"
 #~ msgstr "Zezwalaj na pogrubiony tekst"

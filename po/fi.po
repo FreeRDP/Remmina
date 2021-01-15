@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-15 07:05+0000\n"
+"POT-Creation-Date: 2021-01-15 07:10+0000\n"
 "PO-Revision-Date: 2020-09-11 22:29+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -2033,10 +2033,13 @@ msgstr ""
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:1907
-#, c-format
+#, fuzzy, c-format
+#| msgid ""
+#| "Unable to establish a connection to the RDP server. Check \"Security "
+#| "protocol negotiation\" \"%s\"."
 msgid ""
-"Unable to establish a connection to the RDP server. Check \"Security "
-"protocol negotiation\" \"%s\"."
+"Unable to establish a connection to the RDP server \"%s\". Check \"Security "
+"protocol negotiation\"."
 msgstr ""
 "Yhteyttä RDP-palvelimeen ei voi luoda. Valitse \"Tarkista Suojausprotokollan "
 "neuvottelu\" \"%s\"."
@@ -3118,9 +3121,12 @@ msgstr ""
 "aika)\n"
 
 #: data/ui/remmina_preferences.glade:353
+#, fuzzy
+#| msgid ""
+#| "The folder where connection profiles are saved, it defaults to the "
+#| "XDG_USER_DATA"
 msgid ""
-"The folder where connection profiles are saved, it defaults to the "
-"XDG_USER_DATA"
+"The folder connection profiles are saved in, it defaults to the XDG_USER_DATA"
 msgstr ""
 "Kansio, johon yhteysprofiilit tallennetaan, sen oletusarvo on XDG_USER_DATA"
 
@@ -3130,7 +3136,9 @@ msgid "Remmina data folder"
 msgstr "Remminan datakansio"
 
 #: data/ui/remmina_preferences.glade:385
-msgid "Remember last view mode for each connection"
+#, fuzzy
+#| msgid "Remember last view mode for each connection"
+msgid "Remember last view for each connection"
 msgstr "Muista kunkin yhteyden viimeinen näkymätila"
 
 #. The star (*) is a reference to privacy consent
@@ -3147,8 +3155,8 @@ msgstr ""
 "avulla."
 
 #: data/ui/remmina_preferences.glade:433
-msgid "Profile filename template"
-msgstr "Profiilitiedoston malli"
+msgid "Template for profile filenames"
+msgstr ""
 
 #: data/ui/remmina_preferences.glade:445
 msgid ""
@@ -3187,7 +3195,9 @@ msgid "Hide the toolbar shown in the tabbed interface"
 msgstr "Piilota työkalurivi välilehtinäkymässä"
 
 #: data/ui/remmina_preferences.glade:612
-msgid "Default view mode"
+#, fuzzy
+#| msgid "Default view mode"
+msgid "Default view"
 msgstr "Oletusarvoinen näkymätila"
 
 #: data/ui/remmina_preferences.glade:626
@@ -3211,7 +3221,9 @@ msgid "By group"
 msgstr "Ryhmien mukaan"
 
 #: data/ui/remmina_preferences.glade:661
-msgid "By protocols"
+#, fuzzy
+#| msgid "By protocols"
+msgid "By protocol"
 msgstr "Protokollan mukaan"
 
 #: data/ui/remmina_preferences.glade:662
@@ -3605,6 +3617,9 @@ msgstr "Valitse uusi näppäin"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "Paina uutta näppäintä…"
+
+#~ msgid "Profile filename template"
+#~ msgstr "Profiilitiedoston malli"
 
 #~ msgid "Allow bold text"
 #~ msgstr "Salli lihavoitu teksti"

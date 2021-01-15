@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-15 07:05+0000\n"
+"POT-Creation-Date: 2021-01-15 07:10+0000\n"
 "PO-Revision-Date: 2021-01-14 22:47+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -1981,10 +1981,13 @@ msgstr ""
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:1907
-#, c-format
+#, fuzzy, c-format
+#| msgid ""
+#| "Unable to establish a connection to the RDP server. Check \"Security "
+#| "protocol negotiation\" \"%s\"."
 msgid ""
-"Unable to establish a connection to the RDP server. Check \"Security "
-"protocol negotiation\" \"%s\"."
+"Unable to establish a connection to the RDP server \"%s\". Check \"Security "
+"protocol negotiation\"."
 msgstr ""
 "לא ניתן ליצור התחברות לשרת ה־RDP‏. יש לסמן את „משא ומתן על פרוטוקול "
 "אבטחה” „%s”."
@@ -3059,9 +3062,12 @@ msgstr ""
 "%Y שנה, %m חודש, %d יום, %H שעות, %M דקות, %S שניות (אזור זמן UTC)\n"
 
 #: data/ui/remmina_preferences.glade:353
+#, fuzzy
+#| msgid ""
+#| "The folder where connection profiles are saved, it defaults to the "
+#| "XDG_USER_DATA"
 msgid ""
-"The folder where connection profiles are saved, it defaults to the "
-"XDG_USER_DATA"
+"The folder connection profiles are saved in, it defaults to the XDG_USER_DATA"
 msgstr "התיקייה בה נשמרים פרופילי החיבורים, בררת המחדל מכוונת אל XDG_USER_DATA"
 
 #. The folder where profiles are saved
@@ -3070,7 +3076,9 @@ msgid "Remmina data folder"
 msgstr "תיקיית הנתונים של Remmina"
 
 #: data/ui/remmina_preferences.glade:385
-msgid "Remember last view mode for each connection"
+#, fuzzy
+#| msgid "Remember last view mode for each connection"
+msgid "Remember last view for each connection"
 msgstr "לזכור את מצב התצוגה האחרונה לכל התחברות"
 
 #. The star (*) is a reference to privacy consent
@@ -3086,8 +3094,8 @@ msgstr ""
 "להגדיר שם קובץ מותאם אישית לפרופילים שלך ב־Remmina באמצעות מחרוזת עיצוב."
 
 #: data/ui/remmina_preferences.glade:433
-msgid "Profile filename template"
-msgstr "תבנית שם קובץ פרופיל"
+msgid "Template for profile filenames"
+msgstr ""
 
 #: data/ui/remmina_preferences.glade:445
 msgid ""
@@ -3126,7 +3134,9 @@ msgid "Hide the toolbar shown in the tabbed interface"
 msgstr "להסתיר את סרגל הכלים שמופיע במנשק המופרד ללשוניות"
 
 #: data/ui/remmina_preferences.glade:612
-msgid "Default view mode"
+#, fuzzy
+#| msgid "Default view mode"
+msgid "Default view"
 msgstr "מצב תצוגה כבררת מחדל"
 
 #: data/ui/remmina_preferences.glade:626
@@ -3150,7 +3160,9 @@ msgid "By group"
 msgstr "לפי קבוצה"
 
 #: data/ui/remmina_preferences.glade:661
-msgid "By protocols"
+#, fuzzy
+#| msgid "By protocols"
+msgid "By protocol"
 msgstr "לפי פרוטוקולים"
 
 #: data/ui/remmina_preferences.glade:662
@@ -3533,6 +3545,9 @@ msgstr "נא לבחור מפתח חדש"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "נא ללחוץ על המקש החדש…"
+
+#~ msgid "Profile filename template"
+#~ msgstr "תבנית שם קובץ פרופיל"
 
 #~ msgid ""
 #~ "Sets whether the SGR 1 attribute also switches to the bright counterpart "

@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-15 07:05+0000\n"
+"POT-Creation-Date: 2021-01-15 07:10+0000\n"
 "PO-Revision-Date: 2021-01-14 22:47+0000\n"
 "Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -1995,10 +1995,13 @@ msgstr ""
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:1907
-#, c-format
+#, fuzzy, c-format
+#| msgid ""
+#| "Unable to establish a connection to the RDP server. Check \"Security "
+#| "protocol negotiation\" \"%s\"."
 msgid ""
-"Unable to establish a connection to the RDP server. Check \"Security "
-"protocol negotiation\" \"%s\"."
+"Unable to establish a connection to the RDP server \"%s\". Check \"Security "
+"protocol negotiation\"."
 msgstr ""
 "RDP sunucusuna bağlantı kurulamıyor. Gözden geçirin: \"Güvenlik iletişim "
 "kuralı uzlaşımı\" \"%s\"."
@@ -3075,9 +3078,12 @@ msgstr ""
 "%Y Yıl, %m Ay, %d Gün, %H Saat, %M Dakika, %S Saniye (UTC zamanı)\n"
 
 #: data/ui/remmina_preferences.glade:353
+#, fuzzy
+#| msgid ""
+#| "The folder where connection profiles are saved, it defaults to the "
+#| "XDG_USER_DATA"
 msgid ""
-"The folder where connection profiles are saved, it defaults to the "
-"XDG_USER_DATA"
+"The folder connection profiles are saved in, it defaults to the XDG_USER_DATA"
 msgstr ""
 "Bağlantı profillerinin kaydedildiği klasör, öntanımlı olarak XDG_USER_DATA"
 
@@ -3087,7 +3093,9 @@ msgid "Remmina data folder"
 msgstr "Remmina veri klasörü"
 
 #: data/ui/remmina_preferences.glade:385
-msgid "Remember last view mode for each connection"
+#, fuzzy
+#| msgid "Remember last view mode for each connection"
+msgid "Remember last view for each connection"
 msgstr "Her bağlantı için son görüntüleme biçimini hatırla"
 
 #. The star (*) is a reference to privacy consent
@@ -3104,8 +3112,8 @@ msgstr ""
 "özel bir dosya adı belirleyin."
 
 #: data/ui/remmina_preferences.glade:433
-msgid "Profile filename template"
-msgstr "Profil dosya adı şablonu"
+msgid "Template for profile filenames"
+msgstr ""
 
 #: data/ui/remmina_preferences.glade:445
 msgid ""
@@ -3144,7 +3152,9 @@ msgid "Hide the toolbar shown in the tabbed interface"
 msgstr "Sekmeli arayüzde gösterilen araç çubuğunu gizle"
 
 #: data/ui/remmina_preferences.glade:612
-msgid "Default view mode"
+#, fuzzy
+#| msgid "Default view mode"
+msgid "Default view"
 msgstr "Öntanımlı görünüm kipi"
 
 #: data/ui/remmina_preferences.glade:626
@@ -3168,7 +3178,9 @@ msgid "By group"
 msgstr "Kümelere göre"
 
 #: data/ui/remmina_preferences.glade:661
-msgid "By protocols"
+#, fuzzy
+#| msgid "By protocols"
+msgid "By protocol"
 msgstr "İletişim kurallarına göre"
 
 #: data/ui/remmina_preferences.glade:662
@@ -3559,6 +3571,9 @@ msgstr "Yeni tuş seç"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "Lütfen yeni tuşa basın…"
+
+#~ msgid "Profile filename template"
+#~ msgstr "Profil dosya adı şablonu"
 
 #~ msgid "Allow bold text"
 #~ msgstr "Kalın metne izin ver"

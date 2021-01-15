@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-15 07:05+0000\n"
+"POT-Creation-Date: 2021-01-15 07:10+0000\n"
 "PO-Revision-Date: 2021-01-14 22:47+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -1992,10 +1992,13 @@ msgstr ""
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:1907
-#, c-format
+#, fuzzy, c-format
+#| msgid ""
+#| "Unable to establish a connection to the RDP server. Check \"Security "
+#| "protocol negotiation\" \"%s\"."
 msgid ""
-"Unable to establish a connection to the RDP server. Check \"Security "
-"protocol negotiation\" \"%s\"."
+"Unable to establish a connection to the RDP server \"%s\". Check \"Security "
+"protocol negotiation\"."
 msgstr ""
 "Nemoguće uspostavljenje veze s RDP poslužiteljem. Provjeri „Razmjena "
 "sigurnosnog protokola” „%s”."
@@ -3073,9 +3076,12 @@ msgstr ""
 "%Y godina, %m mjesec, %d dan, %H sat, %M minuta, %S sekunda (UTC vrijeme)\n"
 
 #: data/ui/remmina_preferences.glade:353
+#, fuzzy
+#| msgid ""
+#| "The folder where connection profiles are saved, it defaults to the "
+#| "XDG_USER_DATA"
 msgid ""
-"The folder where connection profiles are saved, it defaults to the "
-"XDG_USER_DATA"
+"The folder connection profiles are saved in, it defaults to the XDG_USER_DATA"
 msgstr "Mapa za spremanje profila veza. Standardno se spremaju u XDG_USER_DATA"
 
 #. The folder where profiles are saved
@@ -3084,7 +3090,9 @@ msgid "Remmina data folder"
 msgstr "Mapa za Remmina podatke"
 
 #: data/ui/remmina_preferences.glade:385
-msgid "Remember last view mode for each connection"
+#, fuzzy
+#| msgid "Remember last view mode for each connection"
+msgid "Remember last view for each connection"
 msgstr "Zapamti zadnji način prikaza za svaku vezu"
 
 #. The star (*) is a reference to privacy consent
@@ -3101,8 +3109,8 @@ msgstr ""
 "za formatiranje."
 
 #: data/ui/remmina_preferences.glade:433
-msgid "Profile filename template"
-msgstr "Predložak za imena datoteka profila"
+msgid "Template for profile filenames"
+msgstr ""
 
 #: data/ui/remmina_preferences.glade:445
 msgid ""
@@ -3141,7 +3149,9 @@ msgid "Hide the toolbar shown in the tabbed interface"
 msgstr "Sakrij alatnu traku u sučelju kartica"
 
 #: data/ui/remmina_preferences.glade:612
-msgid "Default view mode"
+#, fuzzy
+#| msgid "Default view mode"
+msgid "Default view"
 msgstr "Standardni način prikaza"
 
 #: data/ui/remmina_preferences.glade:626
@@ -3165,7 +3175,9 @@ msgid "By group"
 msgstr "Prema grupama"
 
 #: data/ui/remmina_preferences.glade:661
-msgid "By protocols"
+#, fuzzy
+#| msgid "By protocols"
+msgid "By protocol"
 msgstr "Prema protokolu"
 
 #: data/ui/remmina_preferences.glade:662
@@ -3555,6 +3567,9 @@ msgstr "Odaberi novu tipku"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "Pritisni novu tipku …"
+
+#~ msgid "Profile filename template"
+#~ msgstr "Predložak za imena datoteka profila"
 
 #~ msgid "Allow bold text"
 #~ msgstr "Dopusti podebljani tekst"

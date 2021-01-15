@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-15 07:05+0000\n"
+"POT-Creation-Date: 2021-01-15 07:10+0000\n"
 "PO-Revision-Date: 2021-01-13 16:14+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/remmina/"
@@ -2056,8 +2056,8 @@ msgstr ""
 #: plugins/rdp/rdp_plugin.c:1907
 #, fuzzy, c-format
 msgid ""
-"Unable to establish a connection to the RDP server. Check \"Security "
-"protocol negotiation\" \"%s\"."
+"Unable to establish a connection to the RDP server \"%s\". Check \"Security "
+"protocol negotiation\"."
 msgstr "Kunne ikke etablere tilkobling til RDP-tjener %s."
 
 #: plugins/rdp/rdp_plugin.c:1915
@@ -3215,8 +3215,7 @@ msgstr ""
 #: data/ui/remmina_preferences.glade:353
 #, fuzzy
 msgid ""
-"The folder where connection profiles are saved, it defaults to the "
-"XDG_USER_DATA"
+"The folder connection profiles are saved in, it defaults to the XDG_USER_DATA"
 msgstr ""
 "Dette er mappen tilkoblingsprofiler lagres i, som forvalg XDG_USER_DATA"
 
@@ -3227,7 +3226,7 @@ msgstr "Remmina-datamappe"
 
 #: data/ui/remmina_preferences.glade:385
 #, fuzzy
-msgid "Remember last view mode for each connection"
+msgid "Remember last view for each connection"
 msgstr "Husk siste visningsmodus for hver tilkobling"
 
 #. The star (*) is a reference to privacy consent
@@ -3244,8 +3243,8 @@ msgstr ""
 "av en formateringsstreng."
 
 #: data/ui/remmina_preferences.glade:433
-msgid "Profile filename template"
-msgstr "Mal for profilfilnavn"
+msgid "Template for profile filenames"
+msgstr ""
 
 #: data/ui/remmina_preferences.glade:445
 #, fuzzy
@@ -3285,7 +3284,9 @@ msgid "Hide the toolbar shown in the tabbed interface"
 msgstr "Skjul verktøylinje vist i fanebasert grensesnitt"
 
 #: data/ui/remmina_preferences.glade:612
-msgid "Default view mode"
+#, fuzzy
+#| msgid "Default view mode"
+msgid "Default view"
 msgstr "Forvalgt visningsmodus"
 
 #: data/ui/remmina_preferences.glade:626
@@ -3310,7 +3311,9 @@ msgid "By group"
 msgstr "Etter gruppe"
 
 #: data/ui/remmina_preferences.glade:661
-msgid "By protocols"
+#, fuzzy
+#| msgid "By protocols"
+msgid "By protocol"
 msgstr "Etter protokoller"
 
 #: data/ui/remmina_preferences.glade:662
@@ -3731,6 +3734,9 @@ msgstr "Velg en ny tast"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "Trykk på den nye tasten…"
+
+#~ msgid "Profile filename template"
+#~ msgstr "Mal for profilfilnavn"
 
 #~ msgid "Allow bold text"
 #~ msgstr "Tillat fet tekst"

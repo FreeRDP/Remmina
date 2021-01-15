@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-15 07:05+0000\n"
+"POT-Creation-Date: 2021-01-15 07:10+0000\n"
 "PO-Revision-Date: 2021-01-10 21:16+0000\n"
 "Last-Translator: YAMADA Shinichirou <yamada_strong_yamada_nice_64bit@yahoo."
 "co.jp>\n"
@@ -2009,10 +2009,13 @@ msgstr ""
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:1907
-#, c-format
+#, fuzzy, c-format
+#| msgid ""
+#| "Unable to establish a connection to the RDP server. Check \"Security "
+#| "protocol negotiation\" \"%s\"."
 msgid ""
-"Unable to establish a connection to the RDP server. Check \"Security "
-"protocol negotiation\" \"%s\"."
+"Unable to establish a connection to the RDP server \"%s\". Check \"Security "
+"protocol negotiation\"."
 msgstr ""
 "RDP サーバーへの接続を確立できません。\"セキュリティプロトコルのネゴシエー"
 "ション\" \"%s\" を確認してください。"
@@ -3091,9 +3094,12 @@ msgstr ""
 "%Y 年, %m 月, %d 日, %H 時, %M 分, %S 秒 (UTC)\n"
 
 #: data/ui/remmina_preferences.glade:353
+#, fuzzy
+#| msgid ""
+#| "The folder where connection profiles are saved, it defaults to the "
+#| "XDG_USER_DATA"
 msgid ""
-"The folder where connection profiles are saved, it defaults to the "
-"XDG_USER_DATA"
+"The folder connection profiles are saved in, it defaults to the XDG_USER_DATA"
 msgstr "接続プロファイルが保存されるフォルダー (規定は XDG_USER_DATA)"
 
 #. The folder where profiles are saved
@@ -3102,7 +3108,9 @@ msgid "Remmina data folder"
 msgstr "Remmina のデータフォルダー"
 
 #: data/ui/remmina_preferences.glade:385
-msgid "Remember last view mode for each connection"
+#, fuzzy
+#| msgid "Remember last view mode for each connection"
+msgid "Remember last view for each connection"
 msgstr "接続時に前回の表示モードを使用する"
 
 #. The star (*) is a reference to privacy consent
@@ -3119,8 +3127,8 @@ msgstr ""
 "定します。"
 
 #: data/ui/remmina_preferences.glade:433
-msgid "Profile filename template"
-msgstr "プロファイルのファイル名テンプレート"
+msgid "Template for profile filenames"
+msgstr ""
 
 #: data/ui/remmina_preferences.glade:445
 msgid ""
@@ -3159,7 +3167,9 @@ msgid "Hide the toolbar shown in the tabbed interface"
 msgstr "タブ付きのインターフェースに表示されているツールバーを隠す"
 
 #: data/ui/remmina_preferences.glade:612
-msgid "Default view mode"
+#, fuzzy
+#| msgid "Default view mode"
+msgid "Default view"
 msgstr "既定の表示モード"
 
 #: data/ui/remmina_preferences.glade:626
@@ -3183,7 +3193,9 @@ msgid "By group"
 msgstr "グループごと"
 
 #: data/ui/remmina_preferences.glade:661
-msgid "By protocols"
+#, fuzzy
+#| msgid "By protocols"
+msgid "By protocol"
 msgstr "プロトコルごと"
 
 #: data/ui/remmina_preferences.glade:662
@@ -3561,6 +3573,9 @@ msgstr "新しいキーを選択"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "新しいキーを押してください…"
+
+#~ msgid "Profile filename template"
+#~ msgstr "プロファイルのファイル名テンプレート"
 
 #~ msgid "Allow bold text"
 #~ msgstr "太文字を許可する"

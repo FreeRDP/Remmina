@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-15 07:05+0000\n"
+"POT-Creation-Date: 2021-01-15 07:10+0000\n"
 "PO-Revision-Date: 2020-12-09 12:29+0000\n"
 "Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -2007,10 +2007,13 @@ msgstr ""
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:1907
-#, c-format
+#, fuzzy, c-format
+#| msgid ""
+#| "Unable to establish a connection to the RDP server. Check \"Security "
+#| "protocol negotiation\" \"%s\"."
 msgid ""
-"Unable to establish a connection to the RDP server. Check \"Security "
-"protocol negotiation\" \"%s\"."
+"Unable to establish a connection to the RDP server \"%s\". Check \"Security "
+"protocol negotiation\"."
 msgstr ""
 "Nie je možné vytvoriť pripojenie k serveru RDP. Skontrolujte voľbu „Dohoda "
 "bezpečnostného protokolu“ „%s“."
@@ -3131,9 +3134,12 @@ msgstr ""
 "%Y Rok, %m Mesiac, %d Deň, %H Hodina, %M Minúta, %S Sekundy (čas UTC)\n"
 
 #: data/ui/remmina_preferences.glade:353
+#, fuzzy
+#| msgid ""
+#| "The folder where connection profiles are saved, it defaults to the "
+#| "XDG_USER_DATA"
 msgid ""
-"The folder where connection profiles are saved, it defaults to the "
-"XDG_USER_DATA"
+"The folder connection profiles are saved in, it defaults to the XDG_USER_DATA"
 msgstr ""
 "Priečinok, kde sú uložené profily pripojení, podľa predvoleného nástroja "
 "XDG_USER_DATA"
@@ -3144,7 +3150,9 @@ msgid "Remmina data folder"
 msgstr "Priečinok údajov aplikácie Remmina"
 
 #: data/ui/remmina_preferences.glade:385
-msgid "Remember last view mode for each connection"
+#, fuzzy
+#| msgid "Remember last view mode for each connection"
+msgid "Remember last view for each connection"
 msgstr "Zapamätá si posledný režim zobrazenia pre každé pripojenie"
 
 #. The star (*) is a reference to privacy consent
@@ -3161,8 +3169,8 @@ msgstr ""
 "použitím formátovacieho reťazca."
 
 #: data/ui/remmina_preferences.glade:433
-msgid "Profile filename template"
-msgstr "Šablóna názvu súboru profilu"
+msgid "Template for profile filenames"
+msgstr ""
 
 #: data/ui/remmina_preferences.glade:445
 msgid ""
@@ -3202,7 +3210,9 @@ msgid "Hide the toolbar shown in the tabbed interface"
 msgstr "Skryť panel nástrojov zobrazený v rozhraní s kartami"
 
 #: data/ui/remmina_preferences.glade:612
-msgid "Default view mode"
+#, fuzzy
+#| msgid "Default view mode"
+msgid "Default view"
 msgstr "Predvolený režim zobrazenia"
 
 #: data/ui/remmina_preferences.glade:626
@@ -3226,7 +3236,9 @@ msgid "By group"
 msgstr "Podľa skupín"
 
 #: data/ui/remmina_preferences.glade:661
-msgid "By protocols"
+#, fuzzy
+#| msgid "By protocols"
+msgid "By protocol"
 msgstr "Podľa protokolov"
 
 #: data/ui/remmina_preferences.glade:662
@@ -3615,6 +3627,9 @@ msgstr "Výber nového kľúča"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "Prosím, stlačte nový kláves…"
+
+#~ msgid "Profile filename template"
+#~ msgstr "Šablóna názvu súboru profilu"
 
 #~ msgid "Allow bold text"
 #~ msgstr "Povoliť tučný text"
