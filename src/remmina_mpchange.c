@@ -342,7 +342,7 @@ static gboolean remmina_file_multipasswd_changer_mt(gpointer d)
 
 	bu = remmina_public_gtk_builder_new_from_file("remmina_mpc.glade");
 	if (!bu) {
-		REMMINA_DEBUG("Unable to load the multiple password changer glade file interface\n");
+		REMMINA_DEBUG("Unable to load the multiple password changer Glade file interface\n");
 		return FALSE;
 	}
 
