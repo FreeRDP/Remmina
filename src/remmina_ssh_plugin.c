@@ -267,6 +267,7 @@ remmina_plugin_ssh_main_thread(gpointer data)
 	RemminaSSH *ssh;
 	RemminaSSHShell *shell = NULL;
 	gboolean cont = FALSE;
+	gboolean partial = FALSE;
 	gchar *hostport;
 	gint ret;
 
@@ -309,39 +310,61 @@ remmina_plugin_ssh_main_thread(gpointer data)
 		REMMINA_DEBUG ("tunnel_entrance_host: %s, tunnel_entrance_port: %d", ssh->tunnel_entrance_host, ssh->tunnel_entrance_port);
 
 		while (1) {
-			if (!remmina_ssh_init_session(ssh)) {
-				REMMINA_DEBUG("init session error: %s", ssh->error);
-				remmina_plugin_service->protocol_plugin_set_error(gp, "%s", ssh->error);
-				break;
+			if (!partial) {
+				if (!remmina_ssh_init_session(ssh)) {
+					REMMINA_DEBUG("init session error: %s", ssh->error);
+					remmina_plugin_service->protocol_plugin_set_error(gp, "%s", ssh->error);
+					// exit the loop here: OK
+					break;
+				}
 			}
 
 			ret = remmina_ssh_auth_gui(ssh, gp, remminafile);
-			if (ret != REMMINA_SSH_AUTH_SUCCESS) {
-				if(ret == REMMINA_SSH_AUTH_RECONNECT) {
+			switch (ret) {
+				case REMMINA_SSH_AUTH_SUCCESS:
+					REMMINA_DEBUG ("Authentication success");
+					if (!remmina_ssh_shell_open(shell, (RemminaSSHExitFunc)
+								remmina_plugin_service->protocol_plugin_signal_connection_closed, gp)) {
+						remmina_plugin_service->protocol_plugin_set_error(gp, "%s", ssh->error);
+						break;
+					}
+					break;
+				case REMMINA_SSH_AUTH_PARTIAL:
+					REMMINA_DEBUG ("Continue with the next auth method");
+					partial = TRUE;
+					// Continue the loop: OK
+					continue;
+					break;
+				case REMMINA_SSH_AUTH_RECONNECT:
+					REMMINA_DEBUG ("Reconnecting...");
 					if (ssh->session) {
 						ssh_disconnect(ssh->session);
 						ssh_free(ssh->session);
 						ssh->session = NULL;
 					}
 					g_free(ssh->callback);
+					// Continue the loop: OK
 					continue;
-				}
-
-				if (ret != REMMINA_SSH_AUTH_USERCANCEL)
+					break;
+				case REMMINA_SSH_AUTH_USERCANCEL:
+					REMMINA_DEBUG ("Interrupted by the user");
+					// TODO: exit the loop here: OK
+					goto BREAK;
+					break;
+				default:
+					REMMINA_DEBUG ("Error during the authentication: %s", ssh->error);
 					remmina_plugin_service->protocol_plugin_set_error(gp, "%s", ssh->error);
-				break;
+					// TODO: exit the loop here: OK
+					goto BREAK;
 			}
 
-			if (!remmina_ssh_shell_open(shell, (RemminaSSHExitFunc)
-						    remmina_plugin_service->protocol_plugin_signal_connection_closed, gp)) {
-				remmina_plugin_service->protocol_plugin_set_error(gp, "%s", ssh->error);
-				break;
-			}
 
 			cont = TRUE;
 			break;
 		}
 	}
+
+BREAK:REMMINA_DEBUG("Authentication terminted with exit status %d", ret);
 
 	g_free(hostport);
 
@@ -1219,7 +1242,17 @@ remmina_plugin_ssh_call_feature(RemminaProtocolWidget *gp, const RemminaProtocol
 	}
 }
 
-/** Array of key/value pairs for SSH auth type*/
+/** Array of key/value pairs for SSH auth type
+ * libssh methods:
+ *
+ * #define SSH_AUTH_METHOD_UNKNOWN     0x0000u
+ * #define SSH_AUTH_METHOD_NONE        0x0001u
+ * #define SSH_AUTH_METHOD_PASSWORD    0x0002u
+ * #define SSH_AUTH_METHOD_PUBLICKEY   0x0004u
+ * #define SSH_AUTH_METHOD_HOSTBASED   0x0008u
+ * #define SSH_AUTH_METHOD_INTERACTIVE 0x0010u
+ * #define SSH_AUTH_METHOD_GSSAPI_MIC  0x0020u
+ */
 static gpointer ssh_auth[] =
 {
 	"0", N_("Password"),
