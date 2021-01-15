@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-15 07:47+0000\n"
+"POT-Creation-Date: 2021-01-15 07:55+0000\n"
 "PO-Revision-Date: 2020-09-11 22:29+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -334,6 +334,17 @@ msgid "Start-up program"
 msgstr "시작 프로그램"
 
 #: src/remmina_ssh_plugin.c:1337
+#, fuzzy
+#| msgid ""
+#| "The filename can use the following placeholders:\n"
+#| "\n"
+#| "  • %h is substituted with the server name\n"
+#| "  • %t is substituted with the SSH server name\n"
+#| "  • %u is substituted with the username\n"
+#| "  • %U is substituted with the SSH username\n"
+#| "  • %p is substituted with Remmina profile name\n"
+#| "  • %g is substituted with Remmina profile group name\n"
+#| "  • %d is substituted with local datetime in iso8601 format\n"
 msgid ""
 "The filename can use the following placeholders:\n"
 "\n"
@@ -343,7 +354,7 @@ msgid ""
 "  • %U is substituted with the SSH username\n"
 "  • %p is substituted with Remmina profile name\n"
 "  • %g is substituted with Remmina profile group name\n"
-"  • %d is substituted with local datetime in iso8601 format\n"
+"  • %d is substituted with local date and time in ISO 8601 format\n"
 msgstr ""
 "아래의 지시자를 사용해서 파일 이름을 사용할 수 있다:\n"
 "\n"
@@ -1310,6 +1321,20 @@ msgstr ""
 "• [서버]:포트</big></tt>"
 
 #: src/remmina_file_editor.c:81
+#, fuzzy
+#| msgid ""
+#| "<tt><big>• command in PATH args %h\n"
+#| "• /path/to/foo -options %h %u\n"
+#| "• %h is substituted with the server name\n"
+#| "• %t is substituted with the SSH server name\n"
+#| "• %u is substituted with the username\n"
+#| "• %U is substituted with the SSH username\n"
+#| "• %p is substituted with Remmina profile name\n"
+#| "• %g is substituted with Remmina profile group name\n"
+#| "• %d is substituted with local datetime in iso8601 format\n"
+#| "Do not run in background if you want the command to be executed before "
+#| "connecting.\n"
+#| "</big></tt>"
 msgid ""
 "<tt><big>• command in PATH args %h\n"
 "• /path/to/foo -options %h %u\n"
@@ -1319,7 +1344,7 @@ msgid ""
 "• %U is substituted with the SSH username\n"
 "• %p is substituted with Remmina profile name\n"
 "• %g is substituted with Remmina profile group name\n"
-"• %d is substituted with local datetime in iso8601 format\n"
+"• %d is substituted with local date and time in ISO 8601 format\n"
 "Do not run in background if you want the command to be executed before "
 "connecting.\n"
 "</big></tt>"
@@ -1421,7 +1446,7 @@ msgstr "시작"
 
 #: src/remmina_file_editor.c:904
 #, fuzzy
-msgid "Autostart this profile"
+msgid "Auto-start this profile"
 msgstr "프로필에 대해 \"자동 시작\" 키기"
 
 #: src/remmina_file_editor.c:924
@@ -2123,7 +2148,7 @@ msgstr "<없음>"
 #: plugins/rdp/rdp_plugin.c:2303
 #, fuzzy
 #| msgid "<Auto detect>"
-msgid "Autodetect"
+msgid "Auto-detect"
 msgstr "<자동 구성>"
 
 #: plugins/rdp/rdp_plugin.c:2304
@@ -2250,8 +2275,8 @@ msgstr ""
 #: plugins/rdp/rdp_plugin.c:2386
 msgid ""
 "Performance optimisations based on the network connection type:\n"
-"Using autodetection is advised.\n"
-"If \"Autodetect\" fails, choose the most appropriate option in the list.\n"
+"Using auto-detection is advised.\n"
+"If \"Auto-detect\" fails, choose the most appropriate option in the list.\n"
 msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:2408
@@ -2503,7 +2528,9 @@ msgid "Export connection in Windows .rdp file format"
 msgstr "윈도 .rdp 파일로 연결 내보내기"
 
 #: plugins/rdp/rdp_settings.c:200
-msgid "<Auto detect>"
+#, fuzzy
+#| msgid "<Auto detect>"
+msgid "<Auto-detect>"
 msgstr "<자동 구성>"
 
 #: plugins/rdp/rdp_settings.c:233
@@ -3057,7 +3084,9 @@ msgid "Hyper"
 msgstr "하이퍼"
 
 #: data/ui/remmina_preferences.glade:160
-msgid "Step size for auto scroll"
+#, fuzzy
+#| msgid "Step size for auto scroll"
+msgid "Step size for auto-scroll"
 msgstr "자동 스크롤 단위 크기"
 
 #: data/ui/remmina_preferences.glade:188

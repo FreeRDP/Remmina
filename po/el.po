@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-15 07:47+0000\n"
+"POT-Creation-Date: 2021-01-15 07:55+0000\n"
 "PO-Revision-Date: 2020-10-28 16:14+0000\n"
 "Last-Translator: GChr <gchr.dev+github@gmail.com>\n"
 "Language-Team: Greek <https://hosted.weblate.org/projects/remmina/remmina/el/"
@@ -343,7 +343,7 @@ msgid ""
 "  • %U is substituted with the SSH username\n"
 "  • %p is substituted with Remmina profile name\n"
 "  • %g is substituted with Remmina profile group name\n"
-"  • %d is substituted with local datetime in iso8601 format\n"
+"  • %d is substituted with local date and time in ISO 8601 format\n"
 msgstr ""
 "Το όνομα αρχείου μπορεί να χρησιμοποιήσει τα ακόλουθα σύμβολα κράτησης "
 "θέσης:\n"
@@ -1341,6 +1341,7 @@ msgstr ""
 "* [εξυπηρετητής]:πόρτα</big></tt>"
 
 #: src/remmina_file_editor.c:81
+#, fuzzy
 msgid ""
 "<tt><big>• command in PATH args %h\n"
 "• /path/to/foo -options %h %u\n"
@@ -1350,11 +1351,21 @@ msgid ""
 "• %U is substituted with the SSH username\n"
 "• %p is substituted with Remmina profile name\n"
 "• %g is substituted with Remmina profile group name\n"
-"• %d is substituted with local datetime in iso8601 format\n"
+"• %d is substituted with local date and time in ISO 8601 format\n"
 "Do not run in background if you want the command to be executed before "
 "connecting.\n"
 "</big></tt>"
 msgstr ""
+"Το όνομα αρχείου μπορεί να χρησιμοποιήσει τα ακόλουθα σύμβολα κράτησης "
+"θέσης:\n"
+"\n"
+"• %h αντικαθίσταται με το όνομα του διακομιστή\n"
+"  • %t αντικαθίσταται με το όνομα του διακομιστή SSH\n"
+"  • %u αντικαθίσταται με το όνομα χρήστη\n"
+"  • %U αντικαθίσταται με το όνομα χρήστη SSH\n"
+"  • %p αντικαθίσταται με το όνομα προφίλ Remmina\n"
+"  • %g αντικαθίσταται με το όνομα της ομάδας προφίλ Remmina\n"
+"  • %d αντικαθίσταται με τοπική ημερομηνία/ώρα σε μορφή ISO8601\n"
 
 #: src/remmina_file_editor.c:95
 msgid ""
@@ -1436,7 +1447,7 @@ msgid "Start-up"
 msgstr "Έναρξη"
 
 #: src/remmina_file_editor.c:904
-msgid "Autostart this profile"
+msgid "Auto-start this profile"
 msgstr ""
 
 #: src/remmina_file_editor.c:924
@@ -2128,7 +2139,7 @@ msgstr ""
 #: plugins/rdp/rdp_plugin.c:2303
 #, fuzzy
 #| msgid "<Auto detect>"
-msgid "Autodetect"
+msgid "Auto-detect"
 msgstr "<Αυτόματος εντοπισμός>"
 
 #: plugins/rdp/rdp_plugin.c:2304
@@ -2247,8 +2258,8 @@ msgstr ""
 #: plugins/rdp/rdp_plugin.c:2386
 msgid ""
 "Performance optimisations based on the network connection type:\n"
-"Using autodetection is advised.\n"
-"If \"Autodetect\" fails, choose the most appropriate option in the list.\n"
+"Using auto-detection is advised.\n"
+"If \"Auto-detect\" fails, choose the most appropriate option in the list.\n"
 msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:2408
@@ -2485,7 +2496,9 @@ msgid "Export connection in Windows .rdp file format"
 msgstr "Εξαγωγή σύνδεσης σε τύπο αρχείου .rdp των Windows"
 
 #: plugins/rdp/rdp_settings.c:200
-msgid "<Auto detect>"
+#, fuzzy
+#| msgid "<Auto detect>"
+msgid "<Auto-detect>"
 msgstr "<Αυτόματος εντοπισμός>"
 
 #: plugins/rdp/rdp_settings.c:233
@@ -3015,7 +3028,7 @@ msgid "Hyper"
 msgstr ""
 
 #: data/ui/remmina_preferences.glade:160
-msgid "Step size for auto scroll"
+msgid "Step size for auto-scroll"
 msgstr ""
 
 #: data/ui/remmina_preferences.glade:188

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-15 07:47+0000\n"
+"POT-Creation-Date: 2021-01-15 07:55+0000\n"
 "PO-Revision-Date: 2020-09-11 22:29+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
@@ -330,6 +330,20 @@ msgid "Start-up program"
 msgstr "啟動程式"
 
 #: src/remmina_ssh_plugin.c:1337
+#, fuzzy
+#| msgid ""
+#| "<tt><big>• command in PATH args %h\n"
+#| "• /path/to/foo -options %h %u\n"
+#| "• %h is substituted with the server name\n"
+#| "• %t is substituted with the SSH server name\n"
+#| "• %u is substituted with the username\n"
+#| "• %U is substituted with the SSH username\n"
+#| "• %p is substituted with Remmina profile name\n"
+#| "• %g is substituted with Remmina profile group name\n"
+#| "• %d is substituted with local datetime in iso8601 format\n"
+#| "Do not run in background if you want the command to be executed before "
+#| "connecting.\n"
+#| "</big></tt>"
 msgid ""
 "The filename can use the following placeholders:\n"
 "\n"
@@ -339,8 +353,18 @@ msgid ""
 "  • %U is substituted with the SSH username\n"
 "  • %p is substituted with Remmina profile name\n"
 "  • %g is substituted with Remmina profile group name\n"
-"  • %d is substituted with local datetime in iso8601 format\n"
+"  • %d is substituted with local date and time in ISO 8601 format\n"
 msgstr ""
+"<tt><big>* PATH 引數中的指令 %h\n"
+"* /path/to/foo -options %h %u\n"
+"* %h 會被替換為伺服器名\n"
+"* %t 會被替換為 SSH 伺服器名\n"
+"* %u 會被替換為使用者名稱\n"
+"* %U 會被替換為 SSH 使用者名稱\n"
+"* %p 會被替換為 Remmina 連線設定檔名稱\n"
+"* %P 會被替換為 Remmina 連線設定檔群組名稱\n"
+"如果想在連線前執行指令，請不要在背景執行。\n"
+"</big></tt>"
 
 #: src/remmina_ssh_plugin.c:1359
 msgid "Terminal color scheme"
@@ -1315,6 +1339,20 @@ msgstr ""
 "* [伺服器]:連接埠</big></tt>"
 
 #: src/remmina_file_editor.c:81
+#, fuzzy
+#| msgid ""
+#| "<tt><big>• command in PATH args %h\n"
+#| "• /path/to/foo -options %h %u\n"
+#| "• %h is substituted with the server name\n"
+#| "• %t is substituted with the SSH server name\n"
+#| "• %u is substituted with the username\n"
+#| "• %U is substituted with the SSH username\n"
+#| "• %p is substituted with Remmina profile name\n"
+#| "• %g is substituted with Remmina profile group name\n"
+#| "• %d is substituted with local datetime in iso8601 format\n"
+#| "Do not run in background if you want the command to be executed before "
+#| "connecting.\n"
+#| "</big></tt>"
 msgid ""
 "<tt><big>• command in PATH args %h\n"
 "• /path/to/foo -options %h %u\n"
@@ -1324,7 +1362,7 @@ msgid ""
 "• %U is substituted with the SSH username\n"
 "• %p is substituted with Remmina profile name\n"
 "• %g is substituted with Remmina profile group name\n"
-"• %d is substituted with local datetime in iso8601 format\n"
+"• %d is substituted with local date and time in ISO 8601 format\n"
 "Do not run in background if you want the command to be executed before "
 "connecting.\n"
 "</big></tt>"
@@ -1424,7 +1462,7 @@ msgid "Start-up"
 msgstr "啟動"
 
 #: src/remmina_file_editor.c:904
-msgid "Autostart this profile"
+msgid "Auto-start this profile"
 msgstr ""
 
 #: src/remmina_file_editor.c:924
@@ -2132,7 +2170,7 @@ msgstr "<無>"
 #: plugins/rdp/rdp_plugin.c:2303
 #, fuzzy
 #| msgid "<Auto detect>"
-msgid "Autodetect"
+msgid "Auto-detect"
 msgstr "<自動偵測>"
 
 #: plugins/rdp/rdp_plugin.c:2304
@@ -2251,8 +2289,8 @@ msgstr ""
 #: plugins/rdp/rdp_plugin.c:2386
 msgid ""
 "Performance optimisations based on the network connection type:\n"
-"Using autodetection is advised.\n"
-"If \"Autodetect\" fails, choose the most appropriate option in the list.\n"
+"Using auto-detection is advised.\n"
+"If \"Auto-detect\" fails, choose the most appropriate option in the list.\n"
 msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:2408
@@ -2499,7 +2537,9 @@ msgid "Export connection in Windows .rdp file format"
 msgstr "以 Windows .rdp 檔案格式匯出連線"
 
 #: plugins/rdp/rdp_settings.c:200
-msgid "<Auto detect>"
+#, fuzzy
+#| msgid "<Auto detect>"
+msgid "<Auto-detect>"
 msgstr "<自動偵測>"
 
 #: plugins/rdp/rdp_settings.c:233
@@ -3058,7 +3098,9 @@ msgid "Hyper"
 msgstr "Hyper"
 
 #: data/ui/remmina_preferences.glade:160
-msgid "Step size for auto scroll"
+#, fuzzy
+#| msgid "Step size for auto scroll"
+msgid "Step size for auto-scroll"
 msgstr "自動捲動步進大小"
 
 #: data/ui/remmina_preferences.glade:188

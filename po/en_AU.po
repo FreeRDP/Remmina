@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-15 07:47+0000\n"
+"POT-Creation-Date: 2021-01-15 07:55+0000\n"
 "PO-Revision-Date: 2020-10-11 08:07+0000\n"
 "Last-Translator: Rob Pearson <rob.dunedin@gmail.com>\n"
 "Language-Team: English (Australia) <https://hosted.weblate.org/projects/"
@@ -326,6 +326,17 @@ msgid "Start-up program"
 msgstr "Start-up program"
 
 #: src/remmina_ssh_plugin.c:1337
+#, fuzzy
+#| msgid ""
+#| "The filename can use the following placeholders:\n"
+#| "\n"
+#| "  • %h is substituted with the server name\n"
+#| "  • %t is substituted with the SSH server name\n"
+#| "  • %u is substituted with the username\n"
+#| "  • %U is substituted with the SSH username\n"
+#| "  • %p is substituted with Remmina profile name\n"
+#| "  • %g is substituted with Remmina profile group name\n"
+#| "  • %d is substituted with local datetime in iso8601 format\n"
 msgid ""
 "The filename can use the following placeholders:\n"
 "\n"
@@ -335,7 +346,7 @@ msgid ""
 "  • %U is substituted with the SSH username\n"
 "  • %p is substituted with Remmina profile name\n"
 "  • %g is substituted with Remmina profile group name\n"
-"  • %d is substituted with local datetime in iso8601 format\n"
+"  • %d is substituted with local date and time in ISO 8601 format\n"
 msgstr ""
 "The filename can use the following placeholders:\n"
 "\n"
@@ -1299,6 +1310,20 @@ msgstr ""
 "• [server]:port</big></tt>"
 
 #: src/remmina_file_editor.c:81
+#, fuzzy
+#| msgid ""
+#| "<tt><big>• command in PATH args %h\n"
+#| "• /path/to/foo -options %h %u\n"
+#| "• %h is substituted with the server name\n"
+#| "• %t is substituted with the SSH server name\n"
+#| "• %u is substituted with the username\n"
+#| "• %U is substituted with the SSH username\n"
+#| "• %p is substituted with Remmina profile name\n"
+#| "• %g is substituted with Remmina profile group name\n"
+#| "• %d is substituted with local datetime in iso8601 format\n"
+#| "Do not run in background if you want the command to be executed before "
+#| "connecting.\n"
+#| "</big></tt>"
 msgid ""
 "<tt><big>• command in PATH args %h\n"
 "• /path/to/foo -options %h %u\n"
@@ -1308,7 +1333,7 @@ msgid ""
 "• %U is substituted with the SSH username\n"
 "• %p is substituted with Remmina profile name\n"
 "• %g is substituted with Remmina profile group name\n"
-"• %d is substituted with local datetime in iso8601 format\n"
+"• %d is substituted with local date and time in ISO 8601 format\n"
 "Do not run in background if you want the command to be executed before "
 "connecting.\n"
 "</big></tt>"
@@ -1406,7 +1431,9 @@ msgid "Start-up"
 msgstr "Start-up"
 
 #: src/remmina_file_editor.c:904
-msgid "Autostart this profile"
+#, fuzzy
+#| msgid "Autostart this profile"
+msgid "Auto-start this profile"
 msgstr "Autostart this profile"
 
 #: src/remmina_file_editor.c:924
@@ -2098,7 +2125,7 @@ msgstr "None"
 #: plugins/rdp/rdp_plugin.c:2303
 #, fuzzy
 #| msgid "<Auto detect>"
-msgid "Autodetect"
+msgid "Auto-detect"
 msgstr "<Auto detect>"
 
 #: plugins/rdp/rdp_plugin.c:2304
@@ -2270,8 +2297,8 @@ msgstr ""
 #: plugins/rdp/rdp_plugin.c:2386
 msgid ""
 "Performance optimisations based on the network connection type:\n"
-"Using autodetection is advised.\n"
-"If \"Autodetect\" fails, choose the most appropriate option in the list.\n"
+"Using auto-detection is advised.\n"
+"If \"Auto-detect\" fails, choose the most appropriate option in the list.\n"
 msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:2408
@@ -2509,7 +2536,9 @@ msgid "Export connection in Windows .rdp file format"
 msgstr "Export connection in Windows .rdp file format"
 
 #: plugins/rdp/rdp_settings.c:200
-msgid "<Auto detect>"
+#, fuzzy
+#| msgid "<Auto detect>"
+msgid "<Auto-detect>"
 msgstr "<Auto detect>"
 
 #: plugins/rdp/rdp_settings.c:233
@@ -3081,7 +3110,9 @@ msgid "Hyper"
 msgstr "Hyper"
 
 #: data/ui/remmina_preferences.glade:160
-msgid "Step size for auto scroll"
+#, fuzzy
+#| msgid "Step size for auto scroll"
+msgid "Step size for auto-scroll"
 msgstr "Step size for auto scroll"
 
 #: data/ui/remmina_preferences.glade:188

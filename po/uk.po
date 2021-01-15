@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-15 07:47+0000\n"
+"POT-Creation-Date: 2021-01-15 07:55+0000\n"
 "PO-Revision-Date: 2021-01-15 07:47+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/remmina/"
@@ -329,6 +329,17 @@ msgid "Start-up program"
 msgstr "Запускати програму"
 
 #: src/remmina_ssh_plugin.c:1337
+#, fuzzy
+#| msgid ""
+#| "The filename can use the following placeholders:\n"
+#| "\n"
+#| "  • %h is substituted with the server name\n"
+#| "  • %t is substituted with the SSH server name\n"
+#| "  • %u is substituted with the username\n"
+#| "  • %U is substituted with the SSH username\n"
+#| "  • %p is substituted with Remmina profile name\n"
+#| "  • %g is substituted with Remmina profile group name\n"
+#| "  • %d is substituted with local datetime in iso8601 format\n"
 msgid ""
 "The filename can use the following placeholders:\n"
 "\n"
@@ -338,7 +349,7 @@ msgid ""
 "  • %U is substituted with the SSH username\n"
 "  • %p is substituted with Remmina profile name\n"
 "  • %g is substituted with Remmina profile group name\n"
-"  • %d is substituted with local datetime in iso8601 format\n"
+"  • %d is substituted with local date and time in ISO 8601 format\n"
 msgstr ""
 "Для назв файлів передбачено такі замінники:\n"
 "\n"
@@ -1312,6 +1323,20 @@ msgstr ""
 "* [сервер]:порт</big></tt>"
 
 #: src/remmina_file_editor.c:81
+#, fuzzy
+#| msgid ""
+#| "<tt><big>• command in PATH args %h\n"
+#| "• /path/to/foo -options %h %u\n"
+#| "• %h is substituted with the server name\n"
+#| "• %t is substituted with the SSH server name\n"
+#| "• %u is substituted with the username\n"
+#| "• %U is substituted with the SSH username\n"
+#| "• %p is substituted with Remmina profile name\n"
+#| "• %g is substituted with Remmina profile group name\n"
+#| "• %d is substituted with local datetime in iso8601 format\n"
+#| "Do not run in background if you want the command to be executed before "
+#| "connecting.\n"
+#| "</big></tt>"
 msgid ""
 "<tt><big>• command in PATH args %h\n"
 "• /path/to/foo -options %h %u\n"
@@ -1321,7 +1346,7 @@ msgid ""
 "• %U is substituted with the SSH username\n"
 "• %p is substituted with Remmina profile name\n"
 "• %g is substituted with Remmina profile group name\n"
-"• %d is substituted with local datetime in iso8601 format\n"
+"• %d is substituted with local date and time in ISO 8601 format\n"
 "Do not run in background if you want the command to be executed before "
 "connecting.\n"
 "</big></tt>"
@@ -1419,7 +1444,9 @@ msgid "Start-up"
 msgstr "Запуск"
 
 #: src/remmina_file_editor.c:904
-msgid "Autostart this profile"
+#, fuzzy
+#| msgid "Autostart this profile"
+msgid "Auto-start this profile"
 msgstr "Автоматично запускати цей профіль"
 
 #: src/remmina_file_editor.c:924
@@ -2103,7 +2130,9 @@ msgid "None"
 msgstr "Немає"
 
 #: plugins/rdp/rdp_plugin.c:2303
-msgid "Autodetect"
+#, fuzzy
+#| msgid "Autodetect"
+msgid "Auto-detect"
 msgstr "Автовиявлення"
 
 #: plugins/rdp/rdp_plugin.c:2304
@@ -2245,10 +2274,15 @@ msgstr ""
 "Найбільшим можливим значенням є 600000 мс (10 хвилин)\n"
 
 #: plugins/rdp/rdp_plugin.c:2386
+#, fuzzy
+#| msgid ""
+#| "Performance optimisations based on the network connection type:\n"
+#| "Using autodetection is advised.\n"
+#| "If \"Autodetect\" fails, choose the most appropriate option in the list.\n"
 msgid ""
 "Performance optimisations based on the network connection type:\n"
-"Using autodetection is advised.\n"
-"If \"Autodetect\" fails, choose the most appropriate option in the list.\n"
+"Using auto-detection is advised.\n"
+"If \"Auto-detect\" fails, choose the most appropriate option in the list.\n"
 msgstr ""
 "Оптимізація швидкодії на основі типу з'єднання у мережі:\n"
 "Рекомендуємо скористатися автоматичним виявленням.\n"
@@ -2483,7 +2517,9 @@ msgid "Export connection in Windows .rdp file format"
 msgstr "Експортувати з'єднання у форматі файлів Windows .rdp"
 
 #: plugins/rdp/rdp_settings.c:200
-msgid "<Auto detect>"
+#, fuzzy
+#| msgid "<Auto detect>"
+msgid "<Auto-detect>"
 msgstr "<Автоматичне виявлення>"
 
 #: plugins/rdp/rdp_settings.c:233
@@ -3053,7 +3089,9 @@ msgid "Hyper"
 msgstr "Гіпер"
 
 #: data/ui/remmina_preferences.glade:160
-msgid "Step size for auto scroll"
+#, fuzzy
+#| msgid "Step size for auto scroll"
+msgid "Step size for auto-scroll"
 msgstr "Крок автоматичного гортання"
 
 #: data/ui/remmina_preferences.glade:188
