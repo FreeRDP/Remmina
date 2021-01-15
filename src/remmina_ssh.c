@@ -169,7 +169,7 @@ remmina_ssh_auth_interactive(RemminaSSH *ssh)
 	gint ret;
 	gint n;
 	gint i;
-	const gchar *name,*instruction;
+	const gchar *name, *instruction;
 	//gchar *prompt,*ptr;
 
 	ret = SSH_AUTH_ERROR;
@@ -185,15 +185,15 @@ remmina_ssh_auth_interactive(RemminaSSH *ssh)
 	ret = ssh_userauth_kbdint(ssh->session, NULL, NULL);
 	while (ret == SSH_AUTH_INFO) {
 		name = ssh_userauth_kbdint_getname(ssh->session);
-		if(strlen(name) > 0)
-			REMMINA_DEBUG ("SSH kbd-interactive name: %s", name);
+		if (strlen(name) > 0)
+			REMMINA_DEBUG("SSH kbd-interactive name: %s", name);
 		else
-			REMMINA_DEBUG ("SSH kbd-interactive name is empty");
+			REMMINA_DEBUG("SSH kbd-interactive name is empty");
 		instruction = ssh_userauth_kbdint_getinstruction(ssh->session);
-		if(strlen(instruction) > 0)
-			REMMINA_DEBUG ("SSH kbd-interactive instruction: %s", instruction);
+		if (strlen(instruction) > 0)
+			REMMINA_DEBUG("SSH kbd-interactive instruction: %s", instruction);
 		else
-			REMMINA_DEBUG ("SSH kbd-interactive instruction is empty");
+			REMMINA_DEBUG("SSH kbd-interactive instruction is empty");
 		n = ssh_userauth_kbdint_getnprompts(ssh->session);
 		for (i = 0; i < n; i++)
 			ssh_userauth_kbdint_setanswer(ssh->session, i, ssh->password);
@@ -203,39 +203,39 @@ remmina_ssh_auth_interactive(RemminaSSH *ssh)
 
 	REMMINA_DEBUG("ssh_userauth_kbdint returned %d", ret);
 	switch (ret) {
-		case SSH_AUTH_PARTIAL:
-			if (ssh->password) {
-				g_free(ssh->password);
-				ssh->password = NULL;
-			}
-			//You've been partially authenticated, you still have to use another method
-			REMMINA_DEBUG("Authenticated with SSH keyboard interactive. Another method is required. %d", ret);
-			ssh->is_multiauth = TRUE;
-			return REMMINA_SSH_AUTH_PARTIAL;
-			break;
-		case SSH_AUTH_SUCCESS:
-			//Authentication success
-			ssh->authenticated = TRUE;
-			REMMINA_DEBUG("Authenticated with SSH keyboard interactive. %s", ssh->error);
-			return REMMINA_SSH_AUTH_SUCCESS;
-			break;
-		case SSH_AUTH_INFO:
-			//The server asked some questions. Use ssh_userauth_kbdint_getnprompts() and such.
-			REMMINA_DEBUG("Authenticating aagin with SSH keyboard interactive??? %s", ssh->error);
-			break;
-		case SSH_AUTH_AGAIN:
-			//In nonblocking mode, you've got to call this again later.
-			REMMINA_DEBUG("Authenticated with keyboard interactive, Requested to authenticate again.  %s", ssh->error);
-			return REMMINA_SSH_AUTH_AUTHFAILED_RETRY_AFTER_PROMPT;
-			break;
-		case SSH_AUTH_DENIED:
-		case SSH_AUTH_ERROR:
-		default:
-			//A serious error happened
-			ssh->authenticated = FALSE;
-			remmina_ssh_set_error(ssh, _("Could not authenticate with TOTP/OTP/2FA. %s"));
-			REMMINA_DEBUG("Cannot authenticate with TOTP/OTP/2FA. Error is %s", ssh->error);
-			return REMMINA_SSH_AUTH_AUTHFAILED_RETRY_AFTER_PROMPT;
+	case SSH_AUTH_PARTIAL:
+		if (ssh->password) {
+			g_free(ssh->password);
+			ssh->password = NULL;
+		}
+		//You've been partially authenticated, you still have to use another method
+		REMMINA_DEBUG("Authenticated with SSH keyboard interactive. Another method is required. %d", ret);
+		ssh->is_multiauth = TRUE;
+		return REMMINA_SSH_AUTH_PARTIAL;
+		break;
+	case SSH_AUTH_SUCCESS:
+		//Authentication success
+		ssh->authenticated = TRUE;
+		REMMINA_DEBUG("Authenticated with SSH keyboard interactive. %s", ssh->error);
+		return REMMINA_SSH_AUTH_SUCCESS;
+		break;
+	case SSH_AUTH_INFO:
+		//The server asked some questions. Use ssh_userauth_kbdint_getnprompts() and such.
+		REMMINA_DEBUG("Authenticating aagin with SSH keyboard interactive??? %s", ssh->error);
+		break;
+	case SSH_AUTH_AGAIN:
+		//In nonblocking mode, you've got to call this again later.
+		REMMINA_DEBUG("Authenticated with keyboard interactive, Requested to authenticate again.  %s", ssh->error);
+		return REMMINA_SSH_AUTH_AUTHFAILED_RETRY_AFTER_PROMPT;
+		break;
+	case SSH_AUTH_DENIED:
+	case SSH_AUTH_ERROR:
+	default:
+		//A serious error happened
+		ssh->authenticated = FALSE;
+		remmina_ssh_set_error(ssh, _("Could not authenticate with TOTP/OTP/2FA. %s"));
+		REMMINA_DEBUG("Cannot authenticate with TOTP/OTP/2FA. Error is %s", ssh->error);
+		return REMMINA_SSH_AUTH_AUTHFAILED_RETRY_AFTER_PROMPT;
 	}
 	ssh->authenticated = FALSE;
 	return REMMINA_SSH_AUTH_FATAL_ERROR;
@@ -505,12 +505,12 @@ remmina_ssh_auth(RemminaSSH *ssh, const gchar *password, RemminaProtocolWidget *
 	 * method = ssh_userauth_list(ssh->session, NULL);
 	 *
 	 * #define SSH_AUTH_METHOD_UNKNOWN     0x0000u
-         * #define SSH_AUTH_METHOD_NONE        0x0001u
-         * #define SSH_AUTH_METHOD_PASSWORD    0x0002u
-         * #define SSH_AUTH_METHOD_PUBLICKEY   0x0004u
-         * #define SSH_AUTH_METHOD_HOSTBASED   0x0008u
-         * #define SSH_AUTH_METHOD_INTERACTIVE 0x0010u
-         * #define SSH_AUTH_METHOD_GSSAPI_MIC  0x0020u
+	 * #define SSH_AUTH_METHOD_NONE        0x0001u
+	 * #define SSH_AUTH_METHOD_PASSWORD    0x0002u
+	 * #define SSH_AUTH_METHOD_PUBLICKEY   0x0004u
+	 * #define SSH_AUTH_METHOD_HOSTBASED   0x0008u
+	 * #define SSH_AUTH_METHOD_INTERACTIVE 0x0010u
+	 * #define SSH_AUTH_METHOD_GSSAPI_MIC  0x0020u
 	 *
 	 * And than test both the method and the option selected by the user
 	 */
@@ -686,9 +686,7 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *re
 	gchar *message;
 	gchar *current_pwd;
 	gchar *current_user;
-	const gchar *name;
 	const gchar *instruction;
-	gint nprompts;
 	gint ret;
 	size_t len;
 	guchar *pubkey;
@@ -795,7 +793,7 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *re
 		return REMMINA_SSH_AUTH_FATAL_ERROR;
 	}
 
-	enum { REMMINA_SSH_AUTH_PASSWORD, REMMINA_SSH_AUTH_PKPASSPHRASE, REMMINA_SSH_AUTH_KRBTOKEN, REMMINA_SSH_AUTH_KBDINTERACTIVE} remmina_ssh_auth_type;
+	enum { REMMINA_SSH_AUTH_PASSWORD, REMMINA_SSH_AUTH_PKPASSPHRASE, REMMINA_SSH_AUTH_KRBTOKEN, REMMINA_SSH_AUTH_KBDINTERACTIVE } remmina_ssh_auth_type;
 
 	switch (ssh->auth) {
 	case SSH_AUTH_PASSWORD:
@@ -894,7 +892,7 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *re
 						ssh->user = NULL;
 					}
 					ssh->user = g_strdup(current_user);
-					if (ssh->password != NULL){
+					if (ssh->password != NULL) {
 						g_free(ssh->password);
 						ssh->password = NULL;
 					}
@@ -920,13 +918,13 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *re
 			 * password_prompt
 			 */
 			ret = remmina_protocol_widget_panel_auth(
-					gp,
-					0,
-					_("Keyboard interactive login, TOTP/OTP/2FA"),
-					NULL,
-					NULL,
-					NULL,
-					instruction);
+				gp,
+				0,
+				_("Keyboard interactive login, TOTP/OTP/2FA"),
+				NULL,
+				NULL,
+				NULL,
+				instruction);
 			if (ret == GTK_RESPONSE_OK) {
 				g_free(current_pwd);
 				current_pwd = remmina_protocol_widget_get_password(gp);

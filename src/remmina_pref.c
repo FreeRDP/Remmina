@@ -648,7 +648,7 @@ void remmina_pref_init(void)
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "vte_shortcutkey_search_text", NULL))
 		remmina_pref.vte_shortcutkey_search_text = g_key_file_get_integer(gkeyfile, "remmina_pref", "vte_shortcutkey_search_text",
-										    NULL);
+										  NULL);
 	else
 		remmina_pref.vte_shortcutkey_search_text = GDK_KEY_g;
 
