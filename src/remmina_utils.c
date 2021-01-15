@@ -45,6 +45,7 @@
 #include <glib/gi18n.h>
 #include <glib/gstdio.h>
 #include <gio/gio.h>
+#include "remmina_sodium.h"
 #include "remmina/remmina_trace_calls.h"
 
 /** Returns @c TRUE if @a ptr is @c NULL or @c *ptr is @c FALSE. */
@@ -508,26 +509,19 @@ gchar* remmina_sha1_file (const gchar *filename)
 gchar* remmina_gen_random_uuid()
 {
 	TRACE_CALL(__func__);
-	GRand *rand;
-	GDateTime *gdt;
 	gchar *result;
 	int i;
 	static char alpha[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
 	result = g_malloc0(15);
 
-    gdt = g_date_time_new_now_utc();
-    rand = g_rand_new_with_seed((guint32)g_date_time_to_unix(gdt));
-    g_date_time_unref(gdt);
-
 	for (i = 0; i < 7; i++) {
-		result[i] = alpha[g_rand_int_range(rand, 0, sizeof(alpha) - 1)];
+		result[i] = alpha[randombytes_uniform(sizeof(alpha))];
 	}
 
 	for (i = 0; i < 7; i++) {
-		result[i + 7] = alpha[g_rand_int_range(rand, 0, sizeof(alpha) - 1)];
+		result[i + 7] = alpha[randombytes_uniform(sizeof(alpha))];
 	}
-	g_rand_free(rand);
 
 	return result;
 }
