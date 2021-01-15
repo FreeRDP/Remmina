@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-15 09:21+0000\n"
+"POT-Creation-Date: 2021-01-15 12:20+0000\n"
 "PO-Revision-Date: 2020-11-02 22:27+0000\n"
 "Last-Translator: Bruno <bruno199723@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -230,8 +230,10 @@ msgstr "Disminuir tamaño de fuente (host+AvPag)"
 msgid "Find text (host+G)"
 msgstr "Buscar texto (host+G)"
 
-#: src/remmina_ssh_plugin.c:1226 src/remmina_sftp_plugin.c:310
+#: src/remmina_ssh_plugin.c:1226 src/remmina_ssh_plugin.c:1330
+#: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:346
 #: src/remmina_file_editor.c:364 src/remmina_file_editor.c:371
+#: plugins/nx/nx_plugin.c:729
 msgid "SSH identity file"
 msgstr "Archivo de identidad SSH"
 
@@ -313,11 +315,6 @@ msgstr "Contraseña de usuario"
 #: src/remmina_ssh_plugin.c:1329 src/remmina_sftp_plugin.c:345
 msgid "Authentication type"
 msgstr "Tipo de autenticación"
-
-#: src/remmina_ssh_plugin.c:1330 src/remmina_sftp_plugin.c:346
-#: plugins/nx/nx_plugin.c:729
-msgid "Identity file"
-msgstr "Archivo de identidad"
 
 #: src/remmina_ssh_plugin.c:1331 src/remmina_sftp_plugin.c:347
 #: src/remmina_file_editor.c:1034
@@ -1106,7 +1103,9 @@ msgid "Could not authenticate with public SSH key. %s"
 msgstr "No se pudo autentificar con la clave pública SSH. %s"
 
 #: src/remmina_ssh.c:235
-msgid "SSH Key file not yet set."
+#, fuzzy
+#| msgid "SSH Key file not yet set."
+msgid "SSH identity file not selected."
 msgstr "Aún no se ha definido un archivo de clave SSH."
 
 #. TRANSLATORS: The placeholder %s is an error message
@@ -1116,8 +1115,8 @@ msgid "Public SSH key cannot be imported. %s"
 msgstr "No se puede importar la clave pública SSH. %s"
 
 #: src/remmina_ssh.c:255
-msgid "SSH passphrase is empty, it should not be."
-msgstr "La frase de contraseña de SSH está vacía; no debería ser así."
+msgid "No saved SSH passphrase supplied. Asking user to enter it."
+msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:289
@@ -1156,8 +1155,9 @@ msgstr "Falló la conexión al túnel SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:525
-#, c-format
-msgid "Could not fetch checksum for public SSH key. %s"
+#, fuzzy, c-format
+#| msgid "Could not fetch checksum for public SSH key. %s"
+msgid "Could not fetch checksum of the public SSH key. %s"
 msgstr ""
 "No se pudo recuperar la suma de comprobación de la clave pública SSH. %s"
 
@@ -1170,8 +1170,14 @@ msgid "Do you trust the new public key?"
 msgstr "¿Confía en la clave pública nueva?"
 
 #: src/remmina_ssh.c:543
+#, fuzzy
+#| msgid ""
+#| "Warning: The server has changed its public key. This means either you are "
+#| "under attack,\n"
+#| "or the administrator has changed the key. The new public key fingerprint "
+#| "is:"
 msgid ""
-"Warning: The server has changed its public key. This means either you are "
+"Warning: The server has changed its public key. This means you are either "
 "under attack,\n"
 "or the administrator has changed the key. The new public key fingerprint is:"
 msgstr ""
@@ -3673,6 +3679,12 @@ msgstr "Elija una tecla nueva"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "Oprima la tecla nueva…"
+
+#~ msgid "Identity file"
+#~ msgstr "Archivo de identidad"
+
+#~ msgid "SSH passphrase is empty, it should not be."
+#~ msgstr "La frase de contraseña de SSH está vacía; no debería ser así."
 
 #~ msgid "True color (32 bpp)"
 #~ msgstr "Color verdadero (32 bpp)"

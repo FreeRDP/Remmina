@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-15 09:21+0000\n"
+"POT-Creation-Date: 2021-01-15 12:20+0000\n"
 "PO-Revision-Date: 2020-09-11 22:29+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -232,8 +232,10 @@ msgstr ""
 msgid "Find text (host+G)"
 msgstr "붙여넣기 (host + V)"
 
-#: src/remmina_ssh_plugin.c:1226 src/remmina_sftp_plugin.c:310
+#: src/remmina_ssh_plugin.c:1226 src/remmina_ssh_plugin.c:1330
+#: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:346
 #: src/remmina_file_editor.c:364 src/remmina_file_editor.c:371
+#: plugins/nx/nx_plugin.c:729
 msgid "SSH identity file"
 msgstr "SSH 인증 키 파일"
 
@@ -315,11 +317,6 @@ msgstr "사용자 비밀번호"
 #: src/remmina_ssh_plugin.c:1329 src/remmina_sftp_plugin.c:345
 msgid "Authentication type"
 msgstr "인증 유형"
-
-#: src/remmina_ssh_plugin.c:1330 src/remmina_sftp_plugin.c:346
-#: plugins/nx/nx_plugin.c:729
-msgid "Identity file"
-msgstr "인증 키 파일"
 
 #: src/remmina_ssh_plugin.c:1331 src/remmina_sftp_plugin.c:347
 #: src/remmina_file_editor.c:1034
@@ -1094,7 +1091,9 @@ msgid "Could not authenticate with public SSH key. %s"
 msgstr "공개 SSH 키로 인증 할 수 없습니다. %s"
 
 #: src/remmina_ssh.c:235
-msgid "SSH Key file not yet set."
+#, fuzzy
+#| msgid "SSH Key file not yet set."
+msgid "SSH identity file not selected."
 msgstr "SSH 키 파일이 아직 없음."
 
 #. TRANSLATORS: The placeholder %s is an error message
@@ -1104,8 +1103,8 @@ msgid "Public SSH key cannot be imported. %s"
 msgstr "공개 SSH 키를 가져올 수 없습니다. %s"
 
 #: src/remmina_ssh.c:255
-msgid "SSH passphrase is empty, it should not be."
-msgstr "SSH 암호가 비었습니다."
+msgid "No saved SSH passphrase supplied. Asking user to enter it."
+msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:289
@@ -1143,8 +1142,9 @@ msgstr "SSH 공개 키를 가져올 수 없습니다. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:525
-#, c-format
-msgid "Could not fetch checksum for public SSH key. %s"
+#, fuzzy, c-format
+#| msgid "Could not fetch checksum for public SSH key. %s"
+msgid "Could not fetch checksum of the public SSH key. %s"
 msgstr "SSH 공개 키에 대한 체크섬을 가져올 수 없습니다. %s"
 
 #: src/remmina_ssh.c:538
@@ -1156,8 +1156,14 @@ msgid "Do you trust the new public key?"
 msgstr "새 공중 키를 믿을 수 있습니까?"
 
 #: src/remmina_ssh.c:543
+#, fuzzy
+#| msgid ""
+#| "Warning: The server has changed its public key. This means either you are "
+#| "under attack,\n"
+#| "or the administrator has changed the key. The new public key fingerprint "
+#| "is:"
 msgid ""
-"Warning: The server has changed its public key. This means either you are "
+"Warning: The server has changed its public key. This means you are either "
 "under attack,\n"
 "or the administrator has changed the key. The new public key fingerprint is:"
 msgstr ""
@@ -3613,6 +3619,12 @@ msgstr "새 키 선택"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "새 키를 누르세요…"
+
+#~ msgid "Identity file"
+#~ msgstr "인증 키 파일"
+
+#~ msgid "SSH passphrase is empty, it should not be."
+#~ msgstr "SSH 암호가 비었습니다."
 
 #~ msgid "True color (32 bpp)"
 #~ msgstr "실제 색감 (32 bpp)"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-15 09:21+0000\n"
+"POT-Creation-Date: 2021-01-15 12:20+0000\n"
 "PO-Revision-Date: 2020-09-11 22:29+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
@@ -228,8 +228,10 @@ msgstr ""
 msgid "Find text (host+G)"
 msgstr "貼上（Host+v）"
 
-#: src/remmina_ssh_plugin.c:1226 src/remmina_sftp_plugin.c:310
+#: src/remmina_ssh_plugin.c:1226 src/remmina_ssh_plugin.c:1330
+#: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:346
 #: src/remmina_file_editor.c:364 src/remmina_file_editor.c:371
+#: plugins/nx/nx_plugin.c:729
 msgid "SSH identity file"
 msgstr "SSH 身份檔案"
 
@@ -311,11 +313,6 @@ msgstr "使用者密碼"
 #: src/remmina_ssh_plugin.c:1329 src/remmina_sftp_plugin.c:345
 msgid "Authentication type"
 msgstr "認證類型"
-
-#: src/remmina_ssh_plugin.c:1330 src/remmina_sftp_plugin.c:346
-#: plugins/nx/nx_plugin.c:729
-msgid "Identity file"
-msgstr "辨識身份檔"
 
 #: src/remmina_ssh_plugin.c:1331 src/remmina_sftp_plugin.c:347
 #: src/remmina_file_editor.c:1034
@@ -1109,7 +1106,9 @@ msgid "Could not authenticate with public SSH key. %s"
 msgstr ""
 
 #: src/remmina_ssh.c:235
-msgid "SSH Key file not yet set."
+#, fuzzy
+#| msgid "SSH Key file not yet set."
+msgid "SSH identity file not selected."
 msgstr "尚未設定 SSH 密鑰檔案。"
 
 #. TRANSLATORS: The placeholder %s is an error message
@@ -1119,7 +1118,7 @@ msgid "Public SSH key cannot be imported. %s"
 msgstr "無法匯入 SSH 公鑰：%s"
 
 #: src/remmina_ssh.c:255
-msgid "SSH passphrase is empty, it should not be."
+msgid "No saved SSH passphrase supplied. Asking user to enter it."
 msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
@@ -1160,7 +1159,7 @@ msgstr "無法連接 SSH 通道目的地：%s"
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:525
 #, fuzzy, c-format
-msgid "Could not fetch checksum for public SSH key. %s"
+msgid "Could not fetch checksum of the public SSH key. %s"
 msgstr "未能啟動 SSH 作業階段：%s"
 
 #: src/remmina_ssh.c:538
@@ -1174,7 +1173,7 @@ msgstr "您信任新的公鑰嗎？"
 #: src/remmina_ssh.c:543
 #, fuzzy
 msgid ""
-"Warning: The server has changed its public key. This means either you are "
+"Warning: The server has changed its public key. This means you are either "
 "under attack,\n"
 "or the administrator has changed the key. The new public key fingerprint is:"
 msgstr ""
@@ -3649,6 +3648,9 @@ msgstr "選擇一個新按鍵"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "請按下新按鍵…"
+
+#~ msgid "Identity file"
+#~ msgstr "辨識身份檔"
 
 #~ msgid "True color (32 bpp)"
 #~ msgstr "真彩 (32 bpp)"

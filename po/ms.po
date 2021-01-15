@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-15 09:21+0000\n"
+"POT-Creation-Date: 2021-01-15 12:20+0000\n"
 "PO-Revision-Date: 2020-08-14 00:10+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Malay <https://hosted.weblate.org/projects/remmina/remmina/ms/"
@@ -227,8 +227,10 @@ msgstr ""
 msgid "Find text (host+G)"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1226 src/remmina_sftp_plugin.c:310
+#: src/remmina_ssh_plugin.c:1226 src/remmina_ssh_plugin.c:1330
+#: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:346
 #: src/remmina_file_editor.c:364 src/remmina_file_editor.c:371
+#: plugins/nx/nx_plugin.c:729
 msgid "SSH identity file"
 msgstr ""
 
@@ -310,11 +312,6 @@ msgstr ""
 #: src/remmina_ssh_plugin.c:1329 src/remmina_sftp_plugin.c:345
 msgid "Authentication type"
 msgstr ""
-
-#: src/remmina_ssh_plugin.c:1330 src/remmina_sftp_plugin.c:346
-#: plugins/nx/nx_plugin.c:729
-msgid "Identity file"
-msgstr "Fail identiti"
 
 #: src/remmina_ssh_plugin.c:1331 src/remmina_sftp_plugin.c:347
 #: src/remmina_file_editor.c:1034
@@ -1068,7 +1065,9 @@ msgid "Could not authenticate with public SSH key. %s"
 msgstr ""
 
 #: src/remmina_ssh.c:235
-msgid "SSH Key file not yet set."
+#, fuzzy
+#| msgid "SSH Key file not yet set."
+msgid "SSH identity file not selected."
 msgstr "Fail Kunci SSh belum lagi ditetapkan."
 
 #. TRANSLATORS: The placeholder %s is an error message
@@ -1078,7 +1077,7 @@ msgid "Public SSH key cannot be imported. %s"
 msgstr ""
 
 #: src/remmina_ssh.c:255
-msgid "SSH passphrase is empty, it should not be."
+msgid "No saved SSH passphrase supplied. Asking user to enter it."
 msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
@@ -1118,7 +1117,7 @@ msgstr "Gagal menyambung ke destinasi terowong SSH: %s"
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:525
 #, fuzzy, c-format
-msgid "Could not fetch checksum for public SSH key. %s"
+msgid "Could not fetch checksum of the public SSH key. %s"
 msgstr "Gagal memulakan sesi SSH: %s"
 
 #: src/remmina_ssh.c:538
@@ -1132,7 +1131,7 @@ msgstr "Anda percaya kunci awam baru?"
 #: src/remmina_ssh.c:543
 #, fuzzy
 msgid ""
-"Warning: The server has changed its public key. This means either you are "
+"Warning: The server has changed its public key. This means you are either "
 "under attack,\n"
 "or the administrator has changed the key. The new public key fingerprint is:"
 msgstr ""
@@ -3466,6 +3465,9 @@ msgstr ""
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr ""
+
+#~ msgid "Identity file"
+#~ msgstr "Fail identiti"
 
 #~ msgid "True color (32 bpp)"
 #~ msgstr "Warna sebenar (32 bpp)"

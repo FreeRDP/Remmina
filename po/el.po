@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-15 09:21+0000\n"
+"POT-Creation-Date: 2021-01-15 12:20+0000\n"
 "PO-Revision-Date: 2020-10-28 16:14+0000\n"
 "Last-Translator: GChr <gchr.dev+github@gmail.com>\n"
 "Language-Team: Greek <https://hosted.weblate.org/projects/remmina/remmina/el/"
@@ -231,8 +231,10 @@ msgstr "Μείωση μεγέθους γραμματοσειράς (host+Page Do
 msgid "Find text (host+G)"
 msgstr "Εύρεση κειμένου (host+G)"
 
-#: src/remmina_ssh_plugin.c:1226 src/remmina_sftp_plugin.c:310
+#: src/remmina_ssh_plugin.c:1226 src/remmina_ssh_plugin.c:1330
+#: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:346
 #: src/remmina_file_editor.c:364 src/remmina_file_editor.c:371
+#: plugins/nx/nx_plugin.c:729
 msgid "SSH identity file"
 msgstr "Αρχείο ταυτότητας SSH"
 
@@ -314,11 +316,6 @@ msgstr "Κωδικός Χρήστη"
 #: src/remmina_ssh_plugin.c:1329 src/remmina_sftp_plugin.c:345
 msgid "Authentication type"
 msgstr "Τύπος ελέγχου ταυτότητας"
-
-#: src/remmina_ssh_plugin.c:1330 src/remmina_sftp_plugin.c:346
-#: plugins/nx/nx_plugin.c:729
-msgid "Identity file"
-msgstr "Αρχείο Ταυτότητας"
 
 #: src/remmina_ssh_plugin.c:1331 src/remmina_sftp_plugin.c:347
 #: src/remmina_file_editor.c:1034
@@ -1106,7 +1103,9 @@ msgid "Could not authenticate with public SSH key. %s"
 msgstr "Δεν ήταν δυνατός ο έλεγχος ταυτότητας με δημόσιο κλειδί SSH. %s"
 
 #: src/remmina_ssh.c:235
-msgid "SSH Key file not yet set."
+#, fuzzy
+#| msgid "SSH Key file not yet set."
+msgid "SSH identity file not selected."
 msgstr "Δεν έχει οριστεί ακόμα το αρχείο κλειδί του SSH."
 
 #. TRANSLATORS: The placeholder %s is an error message
@@ -1116,8 +1115,8 @@ msgid "Public SSH key cannot be imported. %s"
 msgstr "Δεν είναι δυνατή η εισαγωγή δημόσιου κλειδιού SSH. %s"
 
 #: src/remmina_ssh.c:255
-msgid "SSH passphrase is empty, it should not be."
-msgstr "Η φράση πρόσβασης SSH είναι κενή, δεν πρέπει να είναι."
+msgid "No saved SSH passphrase supplied. Asking user to enter it."
+msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:289
@@ -1159,8 +1158,9 @@ msgstr "Δεν ήταν δυνατή η ανάκτηση δημόσιου κλε
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:525
-#, c-format
-msgid "Could not fetch checksum for public SSH key. %s"
+#, fuzzy, c-format
+#| msgid "Could not fetch checksum for public SSH key. %s"
+msgid "Could not fetch checksum of the public SSH key. %s"
 msgstr "Δεν ήταν δυνατή η ανάκτηση του checksum για δημόσιο κλειδί SSH. %s"
 
 #: src/remmina_ssh.c:538
@@ -1175,7 +1175,7 @@ msgstr "Εμπιστεύεστε το νέο δημόσιο κλειδί;"
 #: src/remmina_ssh.c:543
 #, fuzzy
 msgid ""
-"Warning: The server has changed its public key. This means either you are "
+"Warning: The server has changed its public key. This means you are either "
 "under attack,\n"
 "or the administrator has changed the key. The new public key fingerprint is:"
 msgstr ""
@@ -3531,6 +3531,12 @@ msgstr ""
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr ""
+
+#~ msgid "Identity file"
+#~ msgstr "Αρχείο Ταυτότητας"
+
+#~ msgid "SSH passphrase is empty, it should not be."
+#~ msgstr "Η φράση πρόσβασης SSH είναι κενή, δεν πρέπει να είναι."
 
 #~ msgid "True color (32 bpp)"
 #~ msgstr "Ρεαλιστικό χρώμα (32 bpp)"

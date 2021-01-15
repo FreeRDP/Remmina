@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-15 09:21+0000\n"
+"POT-Creation-Date: 2021-01-15 12:20+0000\n"
 "PO-Revision-Date: 2021-01-14 22:47+0000\n"
 "Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -229,8 +229,10 @@ msgstr "Yazı tipi boyutunu alçalt (ana makine+Page Down)"
 msgid "Find text (host+G)"
 msgstr "Metin bul (ana makine+G)"
 
-#: src/remmina_ssh_plugin.c:1226 src/remmina_sftp_plugin.c:310
+#: src/remmina_ssh_plugin.c:1226 src/remmina_ssh_plugin.c:1330
+#: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:346
 #: src/remmina_file_editor.c:364 src/remmina_file_editor.c:371
+#: plugins/nx/nx_plugin.c:729
 msgid "SSH identity file"
 msgstr "SSH kimlik dosyası"
 
@@ -312,11 +314,6 @@ msgstr "Kullanıcı parolası"
 #: src/remmina_ssh_plugin.c:1329 src/remmina_sftp_plugin.c:345
 msgid "Authentication type"
 msgstr "Kimlik doğrulama türü"
-
-#: src/remmina_ssh_plugin.c:1330 src/remmina_sftp_plugin.c:346
-#: plugins/nx/nx_plugin.c:729
-msgid "Identity file"
-msgstr "Kimlik dosyası"
 
 #: src/remmina_ssh_plugin.c:1331 src/remmina_sftp_plugin.c:347
 #: src/remmina_file_editor.c:1034
@@ -1083,7 +1080,9 @@ msgid "Could not authenticate with public SSH key. %s"
 msgstr "Genel SSH anahtarıyla kimlik doğrulanamadı. %s"
 
 #: src/remmina_ssh.c:235
-msgid "SSH Key file not yet set."
+#, fuzzy
+#| msgid "SSH Key file not yet set."
+msgid "SSH identity file not selected."
 msgstr "SSH anahtar dosyası belirtilmemiş."
 
 #. TRANSLATORS: The placeholder %s is an error message
@@ -1093,8 +1092,8 @@ msgid "Public SSH key cannot be imported. %s"
 msgstr "Genel SSH anahtarı alınamıyor. %s"
 
 #: src/remmina_ssh.c:255
-msgid "SSH passphrase is empty, it should not be."
-msgstr "SSH parolası boş olmamalıdır."
+msgid "No saved SSH passphrase supplied. Asking user to enter it."
+msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:289
@@ -1132,8 +1131,9 @@ msgstr "Genel SSH anahtarı alınamadı. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:525
-#, c-format
-msgid "Could not fetch checksum for public SSH key. %s"
+#, fuzzy, c-format
+#| msgid "Could not fetch checksum for public SSH key. %s"
+msgid "Could not fetch checksum of the public SSH key. %s"
 msgstr "Genel SSH anahtarı için sağlama toplamı alınamadı. %s"
 
 #: src/remmina_ssh.c:538
@@ -1145,8 +1145,14 @@ msgid "Do you trust the new public key?"
 msgstr "Yeni genel anahtara güveniyor musunuz?"
 
 #: src/remmina_ssh.c:543
+#, fuzzy
+#| msgid ""
+#| "Warning: The server has changed its public key. This means either you are "
+#| "under attack,\n"
+#| "or the administrator has changed the key. The new public key fingerprint "
+#| "is:"
 msgid ""
-"Warning: The server has changed its public key. This means either you are "
+"Warning: The server has changed its public key. This means you are either "
 "under attack,\n"
 "or the administrator has changed the key. The new public key fingerprint is:"
 msgstr ""
@@ -3606,6 +3612,12 @@ msgstr "Yeni tuş seç"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "Lütfen yeni tuşa basın…"
+
+#~ msgid "Identity file"
+#~ msgstr "Kimlik dosyası"
+
+#~ msgid "SSH passphrase is empty, it should not be."
+#~ msgstr "SSH parolası boş olmamalıdır."
 
 #~ msgid "True color (32 bpp)"
 #~ msgstr "Gerçek renk (32 bit)"

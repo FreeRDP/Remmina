@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-15 09:21+0000\n"
+"POT-Creation-Date: 2021-01-15 12:20+0000\n"
 "PO-Revision-Date: 2020-11-11 12:29+0000\n"
 "Last-Translator: Mohammed Anas "
 "<6daf084a-8eaf-40fb-86c7-8500077c3b69@anonaddy.me>\n"
@@ -227,8 +227,10 @@ msgstr ""
 msgid "Find text (host+G)"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1226 src/remmina_sftp_plugin.c:310
+#: src/remmina_ssh_plugin.c:1226 src/remmina_ssh_plugin.c:1330
+#: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:346
 #: src/remmina_file_editor.c:364 src/remmina_file_editor.c:371
+#: plugins/nx/nx_plugin.c:729
 msgid "SSH identity file"
 msgstr "ملف هوية SSH"
 
@@ -310,11 +312,6 @@ msgstr "كلمة سر المستخدم"
 #: src/remmina_ssh_plugin.c:1329 src/remmina_sftp_plugin.c:345
 msgid "Authentication type"
 msgstr "أسلوب المصادقة"
-
-#: src/remmina_ssh_plugin.c:1330 src/remmina_sftp_plugin.c:346
-#: plugins/nx/nx_plugin.c:729
-msgid "Identity file"
-msgstr "ملف الهوية"
 
 #: src/remmina_ssh_plugin.c:1331 src/remmina_sftp_plugin.c:347
 #: src/remmina_file_editor.c:1034
@@ -1064,8 +1061,10 @@ msgid "Could not authenticate with public SSH key. %s"
 msgstr ""
 
 #: src/remmina_ssh.c:235
-msgid "SSH Key file not yet set."
-msgstr ""
+#, fuzzy
+#| msgid "SSH identity file"
+msgid "SSH identity file not selected."
+msgstr "ملف هوية SSH"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:246
@@ -1074,7 +1073,7 @@ msgid "Public SSH key cannot be imported. %s"
 msgstr ""
 
 #: src/remmina_ssh.c:255
-msgid "SSH passphrase is empty, it should not be."
+msgid "No saved SSH passphrase supplied. Asking user to enter it."
 msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
@@ -1114,7 +1113,7 @@ msgstr ""
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:525
 #, c-format
-msgid "Could not fetch checksum for public SSH key. %s"
+msgid "Could not fetch checksum of the public SSH key. %s"
 msgstr ""
 
 #: src/remmina_ssh.c:538
@@ -1127,7 +1126,7 @@ msgstr "هل تثق في المفتاح العمومي الجديد؟"
 
 #: src/remmina_ssh.c:543
 msgid ""
-"Warning: The server has changed its public key. This means either you are "
+"Warning: The server has changed its public key. This means you are either "
 "under attack,\n"
 "or the administrator has changed the key. The new public key fingerprint is:"
 msgstr ""
@@ -3398,6 +3397,9 @@ msgstr "اختر زرًّا جديدًا"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "رجاءًا اضغط الزر الجديد…"
+
+#~ msgid "Identity file"
+#~ msgstr "ملف الهوية"
 
 #~ msgid "Color depth"
 #~ msgstr "عمق الألوان"

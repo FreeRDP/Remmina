@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-15 09:21+0000\n"
+"POT-Creation-Date: 2021-01-15 12:20+0000\n"
 "PO-Revision-Date: 2021-01-07 10:32+0000\n"
 "Last-Translator: Eric <spice2wolf@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -224,8 +224,10 @@ msgstr "减小字体大小 (host+Page Down)"
 msgid "Find text (host+G)"
 msgstr "寻找文本 (host+G)"
 
-#: src/remmina_ssh_plugin.c:1226 src/remmina_sftp_plugin.c:310
+#: src/remmina_ssh_plugin.c:1226 src/remmina_ssh_plugin.c:1330
+#: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:346
 #: src/remmina_file_editor.c:364 src/remmina_file_editor.c:371
+#: plugins/nx/nx_plugin.c:729
 msgid "SSH identity file"
 msgstr "SSH 私钥文件"
 
@@ -307,11 +309,6 @@ msgstr "用户密码"
 #: src/remmina_ssh_plugin.c:1329 src/remmina_sftp_plugin.c:345
 msgid "Authentication type"
 msgstr "认证类型"
-
-#: src/remmina_ssh_plugin.c:1330 src/remmina_sftp_plugin.c:346
-#: plugins/nx/nx_plugin.c:729
-msgid "Identity file"
-msgstr "私钥文件"
 
 #: src/remmina_ssh_plugin.c:1331 src/remmina_sftp_plugin.c:347
 #: src/remmina_file_editor.c:1034
@@ -1084,7 +1081,9 @@ msgid "Could not authenticate with public SSH key. %s"
 msgstr "无法使用公共SSH密钥进行身份验证。%s"
 
 #: src/remmina_ssh.c:235
-msgid "SSH Key file not yet set."
+#, fuzzy
+#| msgid "SSH Key file not yet set."
+msgid "SSH identity file not selected."
 msgstr "未设置私钥文件。"
 
 #. TRANSLATORS: The placeholder %s is an error message
@@ -1094,8 +1093,8 @@ msgid "Public SSH key cannot be imported. %s"
 msgstr "无法导入公共 SSH 密钥。%s"
 
 #: src/remmina_ssh.c:255
-msgid "SSH passphrase is empty, it should not be."
-msgstr "SSH 密码为空，但它不应为空。"
+msgid "No saved SSH passphrase supplied. Asking user to enter it."
+msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:289
@@ -1133,8 +1132,9 @@ msgstr "无法获取公共SSH密钥。%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:525
-#, c-format
-msgid "Could not fetch checksum for public SSH key. %s"
+#, fuzzy, c-format
+#| msgid "Could not fetch checksum for public SSH key. %s"
+msgid "Could not fetch checksum of the public SSH key. %s"
 msgstr "无法获取公共SSH密钥的校验和。%s"
 
 #: src/remmina_ssh.c:538
@@ -1146,8 +1146,14 @@ msgid "Do you trust the new public key?"
 msgstr "您信任新的公钥吗？"
 
 #: src/remmina_ssh.c:543
+#, fuzzy
+#| msgid ""
+#| "Warning: The server has changed its public key. This means either you are "
+#| "under attack,\n"
+#| "or the administrator has changed the key. The new public key fingerprint "
+#| "is:"
 msgid ""
-"Warning: The server has changed its public key. This means either you are "
+"Warning: The server has changed its public key. This means you are either "
 "under attack,\n"
 "or the administrator has changed the key. The new public key fingerprint is:"
 msgstr ""
@@ -3524,6 +3530,12 @@ msgstr "选择一个新按键"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "请按下新按键…"
+
+#~ msgid "Identity file"
+#~ msgstr "私钥文件"
+
+#~ msgid "SSH passphrase is empty, it should not be."
+#~ msgstr "SSH 密码为空，但它不应为空。"
 
 #~ msgid "True color (32 bpp)"
 #~ msgstr "真彩色（32 位）"

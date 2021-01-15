@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-15 09:21+0000\n"
+"POT-Creation-Date: 2021-01-15 12:20+0000\n"
 "PO-Revision-Date: 2020-08-31 20:03+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/remmina/remmina/cs/"
@@ -226,8 +226,10 @@ msgstr "Zmenšit velikost písma (host+Page Down)"
 msgid "Find text (host+G)"
 msgstr "Vložit (host+V)"
 
-#: src/remmina_ssh_plugin.c:1226 src/remmina_sftp_plugin.c:310
+#: src/remmina_ssh_plugin.c:1226 src/remmina_ssh_plugin.c:1330
+#: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:346
 #: src/remmina_file_editor.c:364 src/remmina_file_editor.c:371
+#: plugins/nx/nx_plugin.c:729
 msgid "SSH identity file"
 msgstr "soubor s identitou pro SSH"
 
@@ -309,11 +311,6 @@ msgstr "Heslo k uživatelskému účtu"
 #: src/remmina_ssh_plugin.c:1329 src/remmina_sftp_plugin.c:345
 msgid "Authentication type"
 msgstr "Typ ověřování se"
-
-#: src/remmina_ssh_plugin.c:1330 src/remmina_sftp_plugin.c:346
-#: plugins/nx/nx_plugin.c:729
-msgid "Identity file"
-msgstr "Soubor s identitou"
 
 #: src/remmina_ssh_plugin.c:1331 src/remmina_sftp_plugin.c:347
 #: src/remmina_file_editor.c:1034
@@ -1096,7 +1093,9 @@ msgid "Could not authenticate with public SSH key. %s"
 msgstr "Nedaří se ověřit pomocí veřejné části SSH klíče: %s"
 
 #: src/remmina_ssh.c:235
-msgid "SSH Key file not yet set."
+#, fuzzy
+#| msgid "SSH Key file not yet set."
+msgid "SSH identity file not selected."
 msgstr "Soubor s SSH klíčem doposud nebyl nastaven."
 
 #. TRANSLATORS: The placeholder %s is an error message
@@ -1106,8 +1105,8 @@ msgid "Public SSH key cannot be imported. %s"
 msgstr "Veřejný klíč SSH se nepodařilo naimportovat: %s"
 
 #: src/remmina_ssh.c:255
-msgid "SSH passphrase is empty, it should not be."
-msgstr "SSH heslová fráze není vyplněná a měla by být vyplněná."
+msgid "No saved SSH passphrase supplied. Asking user to enter it."
+msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:289
@@ -1147,8 +1146,9 @@ msgstr "Nepodařilo se stáhnout si veřejnou část SSH klíče: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:525
-#, c-format
-msgid "Could not fetch checksum for public SSH key. %s"
+#, fuzzy, c-format
+#| msgid "Could not fetch checksum for public SSH key. %s"
+msgid "Could not fetch checksum of the public SSH key. %s"
 msgstr ""
 "Nepodařilo se stáhnout si kontrolní součet pro veřejnou část SSH klíče: %s"
 
@@ -1161,8 +1161,14 @@ msgid "Do you trust the new public key?"
 msgstr "Důvěřujete novému veřejnému klíči?"
 
 #: src/remmina_ssh.c:543
+#, fuzzy
+#| msgid ""
+#| "Warning: The server has changed its public key. This means either you are "
+#| "under attack,\n"
+#| "or the administrator has changed the key. The new public key fingerprint "
+#| "is:"
 msgid ""
-"Warning: The server has changed its public key. This means either you are "
+"Warning: The server has changed its public key. This means you are either "
 "under attack,\n"
 "or the administrator has changed the key. The new public key fingerprint is:"
 msgstr ""
@@ -3680,6 +3686,12 @@ msgstr "Zvolte novou klávesu"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "Stiskněte novou klávesu…"
+
+#~ msgid "Identity file"
+#~ msgstr "Soubor s identitou"
+
+#~ msgid "SSH passphrase is empty, it should not be."
+#~ msgstr "SSH heslová fráze není vyplněná a měla by být vyplněná."
 
 #~ msgid "True color (32 bpp)"
 #~ msgstr "True color (32 bit/px)"

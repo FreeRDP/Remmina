@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-15 09:21+0000\n"
-"PO-Revision-Date: 2021-01-15 09:21+0000\n"
+"POT-Creation-Date: 2021-01-15 12:20+0000\n"
+"PO-Revision-Date: 2021-01-15 12:20+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/remmina/remmina/"
 "he/>\n"
@@ -221,8 +221,10 @@ msgstr "ה_קטנת גופן (מארח+PageDown)"
 msgid "Find text (host+G)"
 msgstr "איתור טקסט (מארח+G)"
 
-#: src/remmina_ssh_plugin.c:1226 src/remmina_sftp_plugin.c:310
+#: src/remmina_ssh_plugin.c:1226 src/remmina_ssh_plugin.c:1330
+#: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:346
 #: src/remmina_file_editor.c:364 src/remmina_file_editor.c:371
+#: plugins/nx/nx_plugin.c:729
 msgid "SSH identity file"
 msgstr "קובץ זהות SSH"
 
@@ -304,11 +306,6 @@ msgstr "ססמת משתמש"
 #: src/remmina_ssh_plugin.c:1329 src/remmina_sftp_plugin.c:345
 msgid "Authentication type"
 msgstr "סוג אימות"
-
-#: src/remmina_ssh_plugin.c:1330 src/remmina_sftp_plugin.c:346
-#: plugins/nx/nx_plugin.c:729
-msgid "Identity file"
-msgstr "קובץ זהות"
 
 #: src/remmina_ssh_plugin.c:1331 src/remmina_sftp_plugin.c:347
 #: src/remmina_file_editor.c:1034
@@ -1060,7 +1057,9 @@ msgid "Could not authenticate with public SSH key. %s"
 msgstr "לא ניתן להזדהות עם מפתח ה־SSH הציבורי. %s"
 
 #: src/remmina_ssh.c:235
-msgid "SSH Key file not yet set."
+#, fuzzy
+#| msgid "SSH Key file not yet set."
+msgid "SSH identity file not selected."
 msgstr "קובץ ה־SSH לא הוגדר עדיין."
 
 #. TRANSLATORS: The placeholder %s is an error message
@@ -1070,8 +1069,8 @@ msgid "Public SSH key cannot be imported. %s"
 msgstr "לא ניתן לייבא את מפתח ה־SSH הציבורי. %s"
 
 #: src/remmina_ssh.c:255
-msgid "SSH passphrase is empty, it should not be."
-msgstr "מילת הצופן של ה־SSH ריקה, היא לא אמורה להיות."
+msgid "No saved SSH passphrase supplied. Asking user to enter it."
+msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:289
@@ -1109,8 +1108,9 @@ msgstr "לא ניתן לקבל את מפתח ה־SSH הציבורי. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:525
-#, c-format
-msgid "Could not fetch checksum for public SSH key. %s"
+#, fuzzy, c-format
+#| msgid "Could not fetch checksum for public SSH key. %s"
+msgid "Could not fetch checksum of the public SSH key. %s"
 msgstr "לא ניתן לקבל מחרוזת חישוב למפתח SSH ציבורי. %s"
 
 #: src/remmina_ssh.c:538
@@ -1122,8 +1122,14 @@ msgid "Do you trust the new public key?"
 msgstr "המפתח הציבורי החדש מהימן בעיניך?"
 
 #: src/remmina_ssh.c:543
+#, fuzzy
+#| msgid ""
+#| "Warning: The server has changed its public key. This means either you are "
+#| "under attack,\n"
+#| "or the administrator has changed the key. The new public key fingerprint "
+#| "is:"
 msgid ""
-"Warning: The server has changed its public key. This means either you are "
+"Warning: The server has changed its public key. This means you are either "
 "under attack,\n"
 "or the administrator has changed the key. The new public key fingerprint is:"
 msgstr ""
@@ -1688,14 +1694,12 @@ msgid "Turn off clipboard sync"
 msgstr "השבתת סנכרון לוח הגזירים"
 
 #: plugins/vnc/vnc_plugin.c:1921
-#, fuzzy
-#| msgid "Use TLS encryption"
 msgid "Turn off encryption"
-msgstr "להשתמש בהצפנת TLS"
+msgstr "כיבוי הצפנה"
 
 #: plugins/vnc/vnc_plugin.c:1922 plugins/vnc/vnc_plugin.c:1935
 msgid "Prevent local interaction on the server"
-msgstr ""
+msgstr "מניעת אינטראקציה מקומית בשרת"
 
 #: plugins/vnc/vnc_plugin.c:1937
 msgid "Open Chat…"
@@ -3515,6 +3519,12 @@ msgstr "נא לבחור מפתח חדש"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "נא ללחוץ על המקש החדש…"
+
+#~ msgid "Identity file"
+#~ msgstr "קובץ זהות"
+
+#~ msgid "SSH passphrase is empty, it should not be."
+#~ msgstr "מילת הצופן של ה־SSH ריקה, היא לא אמורה להיות."
 
 #~ msgid "True color (32 bpp)"
 #~ msgstr "צבע אמתי (‎32 bpp)"
