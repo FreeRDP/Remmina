@@ -45,7 +45,7 @@ enum {
 	REMMINA_PLUGIN_SPICE_FEATURE_SCALE
 };
 
-static RemminaPluginService *remmina_plugin_service = NULL;
+RemminaPluginService *remmina_plugin_service = NULL;
 
 static void remmina_plugin_spice_channel_new_cb(SpiceSession *, SpiceChannel *, RemminaProtocolWidget *);
 static void remmina_plugin_spice_main_channel_event_cb(SpiceChannel *, SpiceChannelEvent, RemminaProtocolWidget *);
@@ -175,6 +175,12 @@ static gboolean remmina_plugin_spice_close_connection(RemminaProtocolWidget *gp)
 	return FALSE;
 }
 
+static gboolean remmina_plugin_spice_disable_gst_overlay(SpiceChannel *channel, void* pipeline_ptr, RemminaProtocolWidget *gp)
+{
+	g_signal_stop_emission_by_name(channel, "gst-video-overlay");
+	return FALSE;
+}
+
 static void remmina_plugin_spice_channel_new_cb(SpiceSession *session, SpiceChannel *channel, RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
@@ -213,6 +219,14 @@ static void remmina_plugin_spice_channel_new_cb(SpiceSession *session, SpiceChan
 			G_CALLBACK(remmina_plugin_spice_display_ready_cb),
 			gp);
 		remmina_plugin_spice_display_ready_cb(G_OBJECT(gpdata->display), NULL, gp);
+
+		if (remmina_plugin_service->file_get_int(remminafile, "disablegstvideooverlay", FALSE)) {
+			g_signal_connect(channel,
+				"gst-video-overlay",
+				G_CALLBACK(remmina_plugin_spice_disable_gst_overlay),
+				gp);
+		}
+
 	}
 
 	if (SPICE_IS_PLAYBACK_CHANNEL(channel)) {
@@ -334,6 +348,11 @@ static void remmina_plugin_spice_display_ready_cb(GObject *display, GParamSpec *
 	g_object_get(display, "ready", &ready, NULL);
 
 	if (ready) {
+		SpiceVideoCodecType videocodec;
+		SpiceImageCompression imagecompression;
+		RemminaPluginSpiceData *gpdata = GET_PLUGIN_DATA(gp);
+		RemminaFile *remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
+
 		g_signal_handlers_disconnect_by_func(display,
 			G_CALLBACK(remmina_plugin_spice_display_ready_cb),
 			gp);
@@ -343,6 +362,40 @@ static void remmina_plugin_spice_display_ready_cb(GObject *display, GParamSpec *
 			"scaling", (scaleMode  == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_SCALED),
 			"resize-guest", (scaleMode == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_DYNRES),
 			NULL);
+
+		videocodec = remmina_plugin_service->file_get_int(remminafile, "videocodec", 0);
+		if (videocodec) {
+			GError *err = NULL;
+			guint i;
+
+			GArray *preferred_codecs = g_array_sized_new(FALSE, FALSE,
+				sizeof(gint),
+				(SPICE_VIDEO_CODEC_TYPE_ENUM_END - 1));
+
+			g_array_append_val(preferred_codecs, videocodec);
+			for (i = SPICE_VIDEO_CODEC_TYPE_MJPEG; i < SPICE_VIDEO_CODEC_TYPE_ENUM_END; ++i) {
+				if (i != videocodec) {
+					g_array_append_val(preferred_codecs, i);
+				}
+			}
+
+			if (!spice_display_channel_change_preferred_video_codec_types(SPICE_CHANNEL(gpdata->display_channel),
+					(gint *) preferred_codecs->data,
+					preferred_codecs->len,
+					&err)) {
+				REMMINA_PLUGIN_DEBUG("Setting preferred video codecs failed: %s", err->message);
+				g_error_free(err);
+			}
+
+			g_clear_pointer(&preferred_codecs, g_array_unref);
+		}
+
+		imagecompression = remmina_plugin_service->file_get_int(remminafile, "imagecompression", 0);
+		if (imagecompression) {
+			spice_display_channel_change_preferred_compression(SPICE_CHANNEL(gpdata->display_channel),
+				imagecompression);
+		}
+
 		gtk_container_add(GTK_CONTAINER(gp), GTK_WIDGET(display));
 		gtk_widget_show(GTK_WIDGET(display));
 
@@ -443,6 +496,39 @@ static void remmina_plugin_spice_call_feature(RemminaProtocolWidget *gp, const R
 	}
 }
 
+/* Array of key/value pairs for prefered video codec
+ * Key - SpiceVideoCodecType (spice/enums.h)
+ */
+static gpointer videocodec_list[] =
+{
+	"0",	N_("Default"),
+	"1",	"mjpeg",
+	"2",	"vp8",
+	"3",	"h264",
+	"4",	"vp9",
+	"5",	"h265",
+	NULL
+};
+
+/* Array of key/value pairs for prefered video codec
+ * Key - SpiceImageCompression (spice/enums.h)
+ */
+static gpointer imagecompression_list[] =
+{
+	"0",	N_("Default"),
+	"1",	N_("Off"),
+	"2",	N_("Auto GLZ"),
+	"3",	N_("Auto LZ"),
+	"4",	"Quic",
+	"5",	"GLZ",
+	"6",	"LZ",
+	"7",	"LZ4",
+	NULL
+};
+
+static gchar disablegstvideooverlay_tooltip[] =
+	N_("Disable video overlay if videos are not displayed properly.\n");
+
 /* Array of RemminaProtocolSetting for basic settings.
  * Each item is composed by:
  * a) RemminaProtocolSettingType for setting type
@@ -473,6 +559,9 @@ static const RemminaProtocolSetting remmina_plugin_spice_basic_settings[] =
  */
 static const RemminaProtocolSetting remmina_plugin_spice_advanced_settings[] =
 {
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	"videocodec",	    N_("Prefered video codec"),		FALSE, videocodec_list, NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"disablegstvideooverlay",	    N_("Disable Gstreamer Overlay"),		FALSE,	NULL,	disablegstvideooverlay_tooltip},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	"imagecompression",	    N_("Prefered image compression"),		FALSE, imagecompression_list, NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"disableclipboard",	    N_("Disable clipboard sync"),		TRUE,	NULL,	NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"disablepasswordstoring",   N_("Forget passwords after use"),		TRUE,	NULL,	NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"enableaudio",		    N_("Enable audio channel"),			TRUE,	NULL,	NULL},
@@ -517,6 +606,58 @@ static RemminaProtocolPlugin remmina_plugin_spice =
 	NULL                                                                    // No screenshot support available
 };
 
+void remmina_plugin_spice_remove_list_option(gpointer *option_list, const gchar *option_to_remove) {
+	gpointer *src, *dst;
+
+	TRACE_CALL(__func__);
+
+	dst = src = option_list;
+	while (*src) {
+		if (strcmp(*src, option_to_remove) != 0) {
+			if (dst != src) {
+				*dst = *src;
+				*(dst + 1) = *(src + 1);
+			}
+			dst += 2;
+		}
+		src += 2;
+	}
+	*dst = NULL;
+}
+
+gboolean remmina_plugin_spice_is_lz4_supported() {
+	gboolean result = FALSE;
+	GOptionContext *context;
+	GOptionGroup *spiceGroup;
+	gchar *spiceHelp, *line;
+	gchar **spiceHelpLines;
+
+	TRACE_CALL(__func__);
+
+	spiceGroup = spice_get_option_group();
+	context = g_option_context_new("- spice client test application");
+	g_option_context_add_group(context, spiceGroup);
+
+	spiceHelp = g_option_context_get_help(context, FALSE, spiceGroup);
+	spiceHelpLines = g_strsplit(spiceHelp, "\n", -1);
+
+	for (line = spiceHelpLines[0]; line != NULL; ++line) {
+		if (g_strrstr(line, "spice-preferred-compression")) {
+			if (g_strrstr(line, ",lz4,")) {
+				result = TRUE;
+			}
+
+			break;
+		}
+	}
+
+	g_option_context_free(context);
+	g_strfreev(spiceHelpLines);
+	g_free(spiceHelp);
+
+	return result;
+}
+
 G_MODULE_EXPORT gboolean
 remmina_plugin_entry(RemminaPluginService *service)
 {
@@ -525,6 +666,12 @@ remmina_plugin_entry(RemminaPluginService *service)
 
 	bindtextdomain(GETTEXT_PACKAGE, REMMINA_RUNTIME_LOCALEDIR);
 	bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
+
+	if (!remmina_plugin_spice_is_lz4_supported()) {
+		char key_str[10];
+		sprintf(key_str, "%d", SPICE_IMAGE_COMPRESSION_LZ4);
+		remmina_plugin_spice_remove_list_option(imagecompression_list, key_str);
+	}
 
 	if (!service->register_plugin((RemminaPlugin*)&remmina_plugin_spice)) {
 		return FALSE;

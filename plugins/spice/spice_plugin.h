@@ -50,6 +50,9 @@
 
 #define GET_PLUGIN_DATA(gp) (RemminaPluginSpiceData *)g_object_get_data(G_OBJECT(gp), "plugin-data")
 
+extern RemminaPluginService *remmina_plugin_service;
+#define REMMINA_PLUGIN_DEBUG(fmt, ...) remmina_plugin_service->_remmina_debug(__func__, fmt, ##__VA_ARGS__)
+
 typedef struct _RemminaPluginSpiceData {
 	SpiceAudio *		audio;
 	SpiceDisplay *		display;
