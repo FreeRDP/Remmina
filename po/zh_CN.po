@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-15 07:55+0000\n"
+"POT-Creation-Date: 2021-01-15 09:21+0000\n"
 "PO-Revision-Date: 2021-01-07 10:32+0000\n"
 "Last-Translator: Eric <spice2wolf@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -1666,16 +1666,16 @@ msgstr "VNC服务器请求了未知的身份验证方法。 %s"
 msgid "Please retry after turning on encryption for this profile."
 msgstr "在此配置文件上启用加密后，请重试。"
 
-#: plugins/vnc/vnc_plugin.c:1850
-msgid "True color (32 bpp)"
+#: plugins/vnc/vnc_plugin.c:1850 plugins/rdp/rdp_plugin.c:2267
+msgid "True colour (32 bpp)"
 msgstr "真彩色（32 位）"
 
-#: plugins/vnc/vnc_plugin.c:1851
-msgid "High color (16 bpp)"
+#: plugins/vnc/vnc_plugin.c:1851 plugins/rdp/rdp_plugin.c:2269
+msgid "High colour (16 bpp)"
 msgstr "增强色（16 位）"
 
-#: plugins/vnc/vnc_plugin.c:1852
-msgid "256 colors (8 bpp)"
+#: plugins/vnc/vnc_plugin.c:1852 plugins/rdp/rdp_plugin.c:2271
+msgid "256 colours (8 bpp)"
 msgstr "256 色（8 位）"
 
 #: plugins/vnc/vnc_plugin.c:1859 plugins/rdp/rdp_plugin.c:2295
@@ -1703,7 +1703,8 @@ msgid "Repeater"
 msgstr "中继器"
 
 #: plugins/vnc/vnc_plugin.c:1881 plugins/vnc/vnc_plugin.c:1901
-msgid "Color depth"
+#: plugins/xdmcp/xdmcp_plugin.c:369 plugins/rdp/rdp_plugin.c:2407
+msgid "Colour depth"
 msgstr "色深"
 
 #: plugins/vnc/vnc_plugin.c:1882 plugins/vnc/vnc_plugin.c:1902
@@ -1724,18 +1725,19 @@ msgstr "显示远程光标"
 msgid "View only"
 msgstr "仅查看"
 
-#: plugins/vnc/vnc_plugin.c:1920 plugins/spice/spice_plugin.c:565
-#: plugins/spice/spice_plugin.c:578 plugins/nx/nx_plugin.c:749
-msgid "Disable clipboard sync"
+#: plugins/vnc/vnc_plugin.c:1920 plugins/rdp/rdp_plugin.c:2458
+msgid "Turn off clipboard sync"
 msgstr "禁用剪贴板同步"
 
-#: plugins/vnc/vnc_plugin.c:1921 plugins/nx/nx_plugin.c:750
-msgid "Disable encryption"
-msgstr "禁用加密"
+#: plugins/vnc/vnc_plugin.c:1921
+#, fuzzy
+#| msgid "Use TLS encryption"
+msgid "Turn off encryption"
+msgstr "使用 TLS 加密"
 
 #: plugins/vnc/vnc_plugin.c:1922 plugins/vnc/vnc_plugin.c:1935
-msgid "Disable server input"
-msgstr "禁止服务器端输入"
+msgid "Prevent local interaction on the server"
+msgstr ""
 
 #: plugins/vnc/vnc_plugin.c:1937
 msgid "Open Chat…"
@@ -1833,6 +1835,11 @@ msgstr "禁止服务器端输入"
 msgid "Prefered image compression"
 msgstr ""
 
+#: plugins/spice/spice_plugin.c:565 plugins/spice/spice_plugin.c:578
+#: plugins/nx/nx_plugin.c:749
+msgid "Disable clipboard sync"
+msgstr "禁用剪贴板同步"
+
 #: plugins/spice/spice_plugin.c:567
 msgid "Enable audio channel"
 msgstr "启用音频通道"
@@ -1892,10 +1899,6 @@ msgstr "增强色（16 位）"
 #: plugins/xdmcp/xdmcp_plugin.c:352
 msgid "True colour (24 bit)"
 msgstr "真彩色（24 位）"
-
-#: plugins/xdmcp/xdmcp_plugin.c:369 plugins/rdp/rdp_plugin.c:2407
-msgid "Colour depth"
-msgstr "色深"
 
 #: plugins/xdmcp/xdmcp_plugin.c:371 plugins/nx/nx_plugin.c:751
 msgid "Use local cursor"
@@ -2089,25 +2092,13 @@ msgstr "GFX RFX Progressive (32 bpp)"
 msgid "RemoteFX (32 bpp)"
 msgstr "RemoteFX（32 位）"
 
-#: plugins/rdp/rdp_plugin.c:2267
-msgid "True colour (32 bpp)"
-msgstr "真彩色（32 位）"
-
 #: plugins/rdp/rdp_plugin.c:2268
 msgid "True colour (24 bpp)"
 msgstr "真彩色（24 位）"
 
-#: plugins/rdp/rdp_plugin.c:2269
-msgid "High colour (16 bpp)"
-msgstr "增强色（16 位）"
-
 #: plugins/rdp/rdp_plugin.c:2270
 msgid "High colour (15 bpp)"
 msgstr "增强色（15 位）"
-
-#: plugins/rdp/rdp_plugin.c:2271
-msgid "256 colours (8 bpp)"
-msgstr "256 色（8 位）"
 
 #: plugins/rdp/rdp_plugin.c:2302 data/ui/remmina_preferences.glade:663
 msgid "None"
@@ -2390,10 +2381,6 @@ msgstr "共享并口"
 msgid "Share a smart card"
 msgstr "共享智能卡"
 
-#: plugins/rdp/rdp_plugin.c:2458
-msgid "Turn off clipboard sync"
-msgstr "禁用剪贴板同步"
-
 #: plugins/rdp/rdp_plugin.c:2459
 msgid "Ignore certificate"
 msgstr "忽略证书"
@@ -2581,6 +2568,10 @@ msgstr "私人 SSH 密钥的密码"
 #: plugins/nx/nx_plugin.c:376
 msgid "Enter NX authentication credentials"
 msgstr "输入 NX 验证凭据"
+
+#: plugins/nx/nx_plugin.c:750
+msgid "Disable encryption"
+msgstr "禁用加密"
 
 #: plugins/nx/nx_plugin.c:760
 msgid "Send Ctrl+Alt+Del"
@@ -3533,6 +3524,21 @@ msgstr "选择一个新按键"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "请按下新按键…"
+
+#~ msgid "True color (32 bpp)"
+#~ msgstr "真彩色（32 位）"
+
+#~ msgid "High color (16 bpp)"
+#~ msgstr "增强色（16 位）"
+
+#~ msgid "256 colors (8 bpp)"
+#~ msgstr "256 色（8 位）"
+
+#~ msgid "Color depth"
+#~ msgstr "色深"
+
+#~ msgid "Disable server input"
+#~ msgstr "禁止服务器端输入"
 
 #~ msgid "Profile filename template"
 #~ msgstr "配置文件名模板"

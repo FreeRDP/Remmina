@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Remmina v1.3.6\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-15 07:55+0000\n"
+"POT-Creation-Date: 2021-01-15 09:21+0000\n"
 "PO-Revision-Date: 2020-08-14 00:10+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Occidental <https://hosted.weblate.org/projects/remmina/"
@@ -1625,16 +1625,19 @@ msgstr ""
 msgid "Please retry after turning on encryption for this profile."
 msgstr ""
 
-#: plugins/vnc/vnc_plugin.c:1850
-msgid "True color (32 bpp)"
+#: plugins/vnc/vnc_plugin.c:1850 plugins/rdp/rdp_plugin.c:2267
+#, fuzzy
+msgid "True colour (32 bpp)"
 msgstr "Fidel color (32 bpp)"
 
-#: plugins/vnc/vnc_plugin.c:1851
-msgid "High color (16 bpp)"
+#: plugins/vnc/vnc_plugin.c:1851 plugins/rdp/rdp_plugin.c:2269
+#, fuzzy
+msgid "High colour (16 bpp)"
 msgstr "Opulent color (16 bpp)"
 
-#: plugins/vnc/vnc_plugin.c:1852
-msgid "256 colors (8 bpp)"
+#: plugins/vnc/vnc_plugin.c:1852 plugins/rdp/rdp_plugin.c:2271
+#, fuzzy
+msgid "256 colours (8 bpp)"
 msgstr "256 colores (8 bpp)"
 
 #: plugins/vnc/vnc_plugin.c:1859 plugins/rdp/rdp_plugin.c:2295
@@ -1662,7 +1665,9 @@ msgid "Repeater"
 msgstr ""
 
 #: plugins/vnc/vnc_plugin.c:1881 plugins/vnc/vnc_plugin.c:1901
-msgid "Color depth"
+#: plugins/xdmcp/xdmcp_plugin.c:369 plugins/rdp/rdp_plugin.c:2407
+#, fuzzy
+msgid "Colour depth"
 msgstr "Profundore de color"
 
 #: plugins/vnc/vnc_plugin.c:1882 plugins/vnc/vnc_plugin.c:1902
@@ -1683,17 +1688,18 @@ msgstr ""
 msgid "View only"
 msgstr "Vider solmen"
 
-#: plugins/vnc/vnc_plugin.c:1920 plugins/spice/spice_plugin.c:565
-#: plugins/spice/spice_plugin.c:578 plugins/nx/nx_plugin.c:749
-msgid "Disable clipboard sync"
+#: plugins/vnc/vnc_plugin.c:1920 plugins/rdp/rdp_plugin.c:2458
+msgid "Turn off clipboard sync"
 msgstr "Desactivar li sincronisation del Paperiere"
 
-#: plugins/vnc/vnc_plugin.c:1921 plugins/nx/nx_plugin.c:750
-msgid "Disable encryption"
-msgstr ""
+#: plugins/vnc/vnc_plugin.c:1921
+#, fuzzy
+#| msgid "Use TLS encryption"
+msgid "Turn off encryption"
+msgstr "Usar ciffration TLS"
 
 #: plugins/vnc/vnc_plugin.c:1922 plugins/vnc/vnc_plugin.c:1935
-msgid "Disable server input"
+msgid "Prevent local interaction on the server"
 msgstr ""
 
 #: plugins/vnc/vnc_plugin.c:1937
@@ -1789,6 +1795,11 @@ msgstr ""
 msgid "Prefered image compression"
 msgstr ""
 
+#: plugins/spice/spice_plugin.c:565 plugins/spice/spice_plugin.c:578
+#: plugins/nx/nx_plugin.c:749
+msgid "Disable clipboard sync"
+msgstr "Desactivar li sincronisation del Paperiere"
+
 #: plugins/spice/spice_plugin.c:567
 msgid "Enable audio channel"
 msgstr ""
@@ -1852,11 +1863,6 @@ msgstr "Opulent color (16 bits)"
 #, fuzzy
 msgid "True colour (24 bit)"
 msgstr "Fidel color (24 bits)"
-
-#: plugins/xdmcp/xdmcp_plugin.c:369 plugins/rdp/rdp_plugin.c:2407
-#, fuzzy
-msgid "Colour depth"
-msgstr "Profundore de color"
 
 #: plugins/xdmcp/xdmcp_plugin.c:371 plugins/nx/nx_plugin.c:751
 msgid "Use local cursor"
@@ -2033,30 +2039,15 @@ msgstr "GFX RFX (32 bpp)"
 msgid "RemoteFX (32 bpp)"
 msgstr "RemoteFX (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2267
-#, fuzzy
-msgid "True colour (32 bpp)"
-msgstr "Fidel color (32 bpp)"
-
 #: plugins/rdp/rdp_plugin.c:2268
 #, fuzzy
 msgid "True colour (24 bpp)"
 msgstr "Fidel color (24 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2269
-#, fuzzy
-msgid "High colour (16 bpp)"
-msgstr "Opulent color (16 bpp)"
-
 #: plugins/rdp/rdp_plugin.c:2270
 #, fuzzy
 msgid "High colour (15 bpp)"
 msgstr "Opulent color (15 bpp)"
-
-#: plugins/rdp/rdp_plugin.c:2271
-#, fuzzy
-msgid "256 colours (8 bpp)"
-msgstr "256 colores (8 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2302 data/ui/remmina_preferences.glade:663
 #, fuzzy
@@ -2350,10 +2341,6 @@ msgstr ""
 msgid "Share a smart card"
 msgstr "Partir un smartcarte"
 
-#: plugins/rdp/rdp_plugin.c:2458
-msgid "Turn off clipboard sync"
-msgstr "Desactivar li sincronisation del Paperiere"
-
 #: plugins/rdp/rdp_plugin.c:2459
 msgid "Ignore certificate"
 msgstr "Ignorar li certificate"
@@ -2540,6 +2527,10 @@ msgstr ""
 
 #: plugins/nx/nx_plugin.c:376
 msgid "Enter NX authentication credentials"
+msgstr ""
+
+#: plugins/nx/nx_plugin.c:750
+msgid "Disable encryption"
 msgstr ""
 
 #: plugins/nx/nx_plugin.c:760
@@ -3491,6 +3482,18 @@ msgstr "Selecter un nov clave"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr ""
+
+#~ msgid "True color (32 bpp)"
+#~ msgstr "Fidel color (32 bpp)"
+
+#~ msgid "High color (16 bpp)"
+#~ msgstr "Opulent color (16 bpp)"
+
+#~ msgid "256 colors (8 bpp)"
+#~ msgstr "256 colores (8 bpp)"
+
+#~ msgid "Color depth"
+#~ msgstr "Profundore de color"
 
 #~ msgid "Allow bold text"
 #~ msgstr "Permisser grass textu"

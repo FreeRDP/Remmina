@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-15 07:55+0000\n"
+"POT-Creation-Date: 2021-01-15 09:21+0000\n"
 "PO-Revision-Date: 2020-11-11 12:29+0000\n"
 "Last-Translator: Mohammed Anas "
 "<6daf084a-8eaf-40fb-86c7-8500077c3b69@anonaddy.me>\n"
@@ -1608,16 +1608,16 @@ msgstr ""
 msgid "Please retry after turning on encryption for this profile."
 msgstr ""
 
-#: plugins/vnc/vnc_plugin.c:1850
-msgid "True color (32 bpp)"
+#: plugins/vnc/vnc_plugin.c:1850 plugins/rdp/rdp_plugin.c:2267
+msgid "True colour (32 bpp)"
 msgstr ""
 
-#: plugins/vnc/vnc_plugin.c:1851
-msgid "High color (16 bpp)"
+#: plugins/vnc/vnc_plugin.c:1851 plugins/rdp/rdp_plugin.c:2269
+msgid "High colour (16 bpp)"
 msgstr ""
 
-#: plugins/vnc/vnc_plugin.c:1852
-msgid "256 colors (8 bpp)"
+#: plugins/vnc/vnc_plugin.c:1852 plugins/rdp/rdp_plugin.c:2271
+msgid "256 colours (8 bpp)"
 msgstr ""
 
 #: plugins/vnc/vnc_plugin.c:1859 plugins/rdp/rdp_plugin.c:2295
@@ -1645,8 +1645,9 @@ msgid "Repeater"
 msgstr ""
 
 #: plugins/vnc/vnc_plugin.c:1881 plugins/vnc/vnc_plugin.c:1901
-msgid "Color depth"
-msgstr "عمق الألوان"
+#: plugins/xdmcp/xdmcp_plugin.c:369 plugins/rdp/rdp_plugin.c:2407
+msgid "Colour depth"
+msgstr "عمق اللون"
 
 #: plugins/vnc/vnc_plugin.c:1882 plugins/vnc/vnc_plugin.c:1902
 #: plugins/rdp/rdp_plugin.c:2424 plugins/nx/nx_plugin.c:733
@@ -1666,17 +1667,16 @@ msgstr ""
 msgid "View only"
 msgstr ""
 
-#: plugins/vnc/vnc_plugin.c:1920 plugins/spice/spice_plugin.c:565
-#: plugins/spice/spice_plugin.c:578 plugins/nx/nx_plugin.c:749
-msgid "Disable clipboard sync"
+#: plugins/vnc/vnc_plugin.c:1920 plugins/rdp/rdp_plugin.c:2458
+msgid "Turn off clipboard sync"
 msgstr ""
 
-#: plugins/vnc/vnc_plugin.c:1921 plugins/nx/nx_plugin.c:750
-msgid "Disable encryption"
+#: plugins/vnc/vnc_plugin.c:1921
+msgid "Turn off encryption"
 msgstr ""
 
 #: plugins/vnc/vnc_plugin.c:1922 plugins/vnc/vnc_plugin.c:1935
-msgid "Disable server input"
+msgid "Prevent local interaction on the server"
 msgstr ""
 
 #: plugins/vnc/vnc_plugin.c:1937
@@ -1773,6 +1773,11 @@ msgstr ""
 msgid "Prefered image compression"
 msgstr ""
 
+#: plugins/spice/spice_plugin.c:565 plugins/spice/spice_plugin.c:578
+#: plugins/nx/nx_plugin.c:749
+msgid "Disable clipboard sync"
+msgstr ""
+
 #: plugins/spice/spice_plugin.c:567
 msgid "Enable audio channel"
 msgstr "تنشيط القناة الصوتية"
@@ -1832,10 +1837,6 @@ msgstr "ألوان عالية (16 بت)"
 #: plugins/xdmcp/xdmcp_plugin.c:352
 msgid "True colour (24 bit)"
 msgstr "ألوان حقيقية (24 بت)"
-
-#: plugins/xdmcp/xdmcp_plugin.c:369 plugins/rdp/rdp_plugin.c:2407
-msgid "Colour depth"
-msgstr "عمق اللون"
 
 #: plugins/xdmcp/xdmcp_plugin.c:371 plugins/nx/nx_plugin.c:751
 msgid "Use local cursor"
@@ -2010,24 +2011,12 @@ msgstr ""
 msgid "RemoteFX (32 bpp)"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2267
-msgid "True colour (32 bpp)"
-msgstr ""
-
 #: plugins/rdp/rdp_plugin.c:2268
 msgid "True colour (24 bpp)"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2269
-msgid "High colour (16 bpp)"
-msgstr ""
-
 #: plugins/rdp/rdp_plugin.c:2270
 msgid "High colour (15 bpp)"
-msgstr ""
-
-#: plugins/rdp/rdp_plugin.c:2271
-msgid "256 colours (8 bpp)"
 msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:2302 data/ui/remmina_preferences.glade:663
@@ -2309,10 +2298,6 @@ msgstr ""
 msgid "Share a smart card"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2458
-msgid "Turn off clipboard sync"
-msgstr ""
-
 #: plugins/rdp/rdp_plugin.c:2459
 msgid "Ignore certificate"
 msgstr ""
@@ -2497,6 +2482,10 @@ msgstr "الكلمة السرية لمفتاح SSH الخاص"
 
 #: plugins/nx/nx_plugin.c:376
 msgid "Enter NX authentication credentials"
+msgstr ""
+
+#: plugins/nx/nx_plugin.c:750
+msgid "Disable encryption"
 msgstr ""
 
 #: plugins/nx/nx_plugin.c:760
@@ -3409,6 +3398,9 @@ msgstr "اختر زرًّا جديدًا"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "رجاءًا اضغط الزر الجديد…"
+
+#~ msgid "Color depth"
+#~ msgstr "عمق الألوان"
 
 #~ msgid "button"
 #~ msgstr "زر"

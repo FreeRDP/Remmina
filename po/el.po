@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-15 07:55+0000\n"
+"POT-Creation-Date: 2021-01-15 09:21+0000\n"
 "PO-Revision-Date: 2020-10-28 16:14+0000\n"
 "Last-Translator: GChr <gchr.dev+github@gmail.com>\n"
 "Language-Team: Greek <https://hosted.weblate.org/projects/remmina/remmina/el/"
@@ -1685,16 +1685,19 @@ msgstr ""
 msgid "Please retry after turning on encryption for this profile."
 msgstr ""
 
-#: plugins/vnc/vnc_plugin.c:1850
-msgid "True color (32 bpp)"
+#: plugins/vnc/vnc_plugin.c:1850 plugins/rdp/rdp_plugin.c:2267
+#, fuzzy
+msgid "True colour (32 bpp)"
 msgstr "Ρεαλιστικό χρώμα (32 bpp)"
 
-#: plugins/vnc/vnc_plugin.c:1851
-msgid "High color (16 bpp)"
+#: plugins/vnc/vnc_plugin.c:1851 plugins/rdp/rdp_plugin.c:2269
+#, fuzzy
+msgid "High colour (16 bpp)"
 msgstr "Χρώμα υψηλής ποιότητας (16 bpp)"
 
-#: plugins/vnc/vnc_plugin.c:1852
-msgid "256 colors (8 bpp)"
+#: plugins/vnc/vnc_plugin.c:1852 plugins/rdp/rdp_plugin.c:2271
+#, fuzzy
+msgid "256 colours (8 bpp)"
 msgstr "256 χρώματα (8 bpp)"
 
 #: plugins/vnc/vnc_plugin.c:1859 plugins/rdp/rdp_plugin.c:2295
@@ -1722,7 +1725,9 @@ msgid "Repeater"
 msgstr "Επαναλήπτης"
 
 #: plugins/vnc/vnc_plugin.c:1881 plugins/vnc/vnc_plugin.c:1901
-msgid "Color depth"
+#: plugins/xdmcp/xdmcp_plugin.c:369 plugins/rdp/rdp_plugin.c:2407
+#, fuzzy
+msgid "Colour depth"
 msgstr "Βάθος χρώματος"
 
 #: plugins/vnc/vnc_plugin.c:1882 plugins/vnc/vnc_plugin.c:1902
@@ -1743,18 +1748,19 @@ msgstr "Προβολή απομακρυσμένου δείκτη ποντικι�
 msgid "View only"
 msgstr "Μόνο προβολή"
 
-#: plugins/vnc/vnc_plugin.c:1920 plugins/spice/spice_plugin.c:565
-#: plugins/spice/spice_plugin.c:578 plugins/nx/nx_plugin.c:749
-msgid "Disable clipboard sync"
+#: plugins/vnc/vnc_plugin.c:1920 plugins/rdp/rdp_plugin.c:2458
+#, fuzzy
+msgid "Turn off clipboard sync"
 msgstr "Απενεργοποίηση συγχρονισμού προχείρου"
 
-#: plugins/vnc/vnc_plugin.c:1921 plugins/nx/nx_plugin.c:750
-msgid "Disable encryption"
-msgstr "Απενεργοποίηση κρυπτογράφησης"
+#: plugins/vnc/vnc_plugin.c:1921
+#, fuzzy
+msgid "Turn off encryption"
+msgstr "Απενεργοποίηση συγχρονισμού προχείρου"
 
 #: plugins/vnc/vnc_plugin.c:1922 plugins/vnc/vnc_plugin.c:1935
-msgid "Disable server input"
-msgstr "Απενεργοποίηση εισόδου εξυπηρετητή"
+msgid "Prevent local interaction on the server"
+msgstr ""
 
 #: plugins/vnc/vnc_plugin.c:1937
 msgid "Open Chat…"
@@ -1853,6 +1859,11 @@ msgstr "Απενεργοποίηση εισόδου εξυπηρετητή"
 msgid "Prefered image compression"
 msgstr ""
 
+#: plugins/spice/spice_plugin.c:565 plugins/spice/spice_plugin.c:578
+#: plugins/nx/nx_plugin.c:749
+msgid "Disable clipboard sync"
+msgstr "Απενεργοποίηση συγχρονισμού προχείρου"
+
 #: plugins/spice/spice_plugin.c:567
 msgid "Enable audio channel"
 msgstr ""
@@ -1915,11 +1926,6 @@ msgstr "Χρώμα υψηλής ποιότητας (16 bit)"
 #, fuzzy
 msgid "True colour (24 bit)"
 msgstr "Ρεαλιστικό χρώμα (24 bit)"
-
-#: plugins/xdmcp/xdmcp_plugin.c:369 plugins/rdp/rdp_plugin.c:2407
-#, fuzzy
-msgid "Colour depth"
-msgstr "Βάθος χρώματος"
 
 #: plugins/xdmcp/xdmcp_plugin.c:371 plugins/nx/nx_plugin.c:751
 msgid "Use local cursor"
@@ -2107,30 +2113,15 @@ msgstr ""
 msgid "RemoteFX (32 bpp)"
 msgstr "RemoteFX (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2267
-#, fuzzy
-msgid "True colour (32 bpp)"
-msgstr "Ρεαλιστικό χρώμα (32 bpp)"
-
 #: plugins/rdp/rdp_plugin.c:2268
 #, fuzzy
 msgid "True colour (24 bpp)"
 msgstr "Ρεαλιστικό χρώμα (24 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2269
-#, fuzzy
-msgid "High colour (16 bpp)"
-msgstr "Χρώμα υψηλής ποιότητας (16 bpp)"
-
 #: plugins/rdp/rdp_plugin.c:2270
 #, fuzzy
 msgid "High colour (15 bpp)"
 msgstr "Χρώμα υψηλής ποιότητας (15 bpp)"
-
-#: plugins/rdp/rdp_plugin.c:2271
-#, fuzzy
-msgid "256 colours (8 bpp)"
-msgstr "256 χρώματα (8 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2302 data/ui/remmina_preferences.glade:663
 msgid "None"
@@ -2422,11 +2413,6 @@ msgstr ""
 msgid "Share a smart card"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2458
-#, fuzzy
-msgid "Turn off clipboard sync"
-msgstr "Απενεργοποίηση συγχρονισμού προχείρου"
-
 #: plugins/rdp/rdp_plugin.c:2459
 msgid "Ignore certificate"
 msgstr ""
@@ -2614,6 +2600,10 @@ msgstr ""
 #: plugins/nx/nx_plugin.c:376
 msgid "Enter NX authentication credentials"
 msgstr ""
+
+#: plugins/nx/nx_plugin.c:750
+msgid "Disable encryption"
+msgstr "Απενεργοποίηση κρυπτογράφησης"
 
 #: plugins/nx/nx_plugin.c:760
 msgid "Send Ctrl+Alt+Del"
@@ -3541,6 +3531,21 @@ msgstr ""
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr ""
+
+#~ msgid "True color (32 bpp)"
+#~ msgstr "Ρεαλιστικό χρώμα (32 bpp)"
+
+#~ msgid "High color (16 bpp)"
+#~ msgstr "Χρώμα υψηλής ποιότητας (16 bpp)"
+
+#~ msgid "256 colors (8 bpp)"
+#~ msgstr "256 χρώματα (8 bpp)"
+
+#~ msgid "Color depth"
+#~ msgstr "Βάθος χρώματος"
+
+#~ msgid "Disable server input"
+#~ msgstr "Απενεργοποίηση εισόδου εξυπηρετητή"
 
 #~ msgid "Remote Desktop Preference"
 #~ msgstr "Επιλογές Απομακρυσμένης Σύνδεσης"

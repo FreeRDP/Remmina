@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-15 07:55+0000\n"
+"POT-Creation-Date: 2021-01-15 09:21+0000\n"
 "PO-Revision-Date: 2020-08-31 20:03+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/remmina/remmina/cs/"
@@ -1689,16 +1689,16 @@ msgstr "VNC server vyžádal neznámou metodu ověřování se: %s"
 msgid "Please retry after turning on encryption for this profile."
 msgstr "Zapněte v tomto profilu šifrování a zkuste to znovu."
 
-#: plugins/vnc/vnc_plugin.c:1850
-msgid "True color (32 bpp)"
+#: plugins/vnc/vnc_plugin.c:1850 plugins/rdp/rdp_plugin.c:2267
+msgid "True colour (32 bpp)"
 msgstr "True color (32 bit/px)"
 
-#: plugins/vnc/vnc_plugin.c:1851
-msgid "High color (16 bpp)"
+#: plugins/vnc/vnc_plugin.c:1851 plugins/rdp/rdp_plugin.c:2269
+msgid "High colour (16 bpp)"
 msgstr "High color (16 bit/px)"
 
-#: plugins/vnc/vnc_plugin.c:1852
-msgid "256 colors (8 bpp)"
+#: plugins/vnc/vnc_plugin.c:1852 plugins/rdp/rdp_plugin.c:2271
+msgid "256 colours (8 bpp)"
 msgstr "256 barev (8 bit/px)"
 
 #: plugins/vnc/vnc_plugin.c:1859 plugins/rdp/rdp_plugin.c:2295
@@ -1726,7 +1726,8 @@ msgid "Repeater"
 msgstr "Opakovač"
 
 #: plugins/vnc/vnc_plugin.c:1881 plugins/vnc/vnc_plugin.c:1901
-msgid "Color depth"
+#: plugins/xdmcp/xdmcp_plugin.c:369 plugins/rdp/rdp_plugin.c:2407
+msgid "Colour depth"
 msgstr "Barevná hloubka"
 
 #: plugins/vnc/vnc_plugin.c:1882 plugins/vnc/vnc_plugin.c:1902
@@ -1747,18 +1748,19 @@ msgstr "Zobrazit vzdálený kurzor"
 msgid "View only"
 msgstr "Pouze prohlížení"
 
-#: plugins/vnc/vnc_plugin.c:1920 plugins/spice/spice_plugin.c:565
-#: plugins/spice/spice_plugin.c:578 plugins/nx/nx_plugin.c:749
-msgid "Disable clipboard sync"
+#: plugins/vnc/vnc_plugin.c:1920 plugins/rdp/rdp_plugin.c:2458
+msgid "Turn off clipboard sync"
 msgstr "Nesynchronizovat obsah schránky"
 
-#: plugins/vnc/vnc_plugin.c:1921 plugins/nx/nx_plugin.c:750
-msgid "Disable encryption"
-msgstr "Nešifrovat"
+#: plugins/vnc/vnc_plugin.c:1921
+#, fuzzy
+#| msgid "Use TLS encryption"
+msgid "Turn off encryption"
+msgstr "Použít TLS šifrování"
 
 #: plugins/vnc/vnc_plugin.c:1922 plugins/vnc/vnc_plugin.c:1935
-msgid "Disable server input"
-msgstr "Vypnout klávesnici a myš na straně serveru"
+msgid "Prevent local interaction on the server"
+msgstr ""
 
 #: plugins/vnc/vnc_plugin.c:1937
 msgid "Open Chat…"
@@ -1856,6 +1858,11 @@ msgstr "Vypnout klávesnici a myš na straně serveru"
 msgid "Prefered image compression"
 msgstr ""
 
+#: plugins/spice/spice_plugin.c:565 plugins/spice/spice_plugin.c:578
+#: plugins/nx/nx_plugin.c:749
+msgid "Disable clipboard sync"
+msgstr "Nesynchronizovat obsah schránky"
+
 #: plugins/spice/spice_plugin.c:567
 msgid "Enable audio channel"
 msgstr "Přenášet zvuk"
@@ -1916,10 +1923,6 @@ msgstr "High color (16 bitů)"
 #: plugins/xdmcp/xdmcp_plugin.c:352
 msgid "True colour (24 bit)"
 msgstr "True color (24 bitů)"
-
-#: plugins/xdmcp/xdmcp_plugin.c:369 plugins/rdp/rdp_plugin.c:2407
-msgid "Colour depth"
-msgstr "Barevná hloubka"
 
 #: plugins/xdmcp/xdmcp_plugin.c:371 plugins/nx/nx_plugin.c:751
 msgid "Use local cursor"
@@ -2117,25 +2120,13 @@ msgstr "GFX RFX progresivní (32 bit/px)"
 msgid "RemoteFX (32 bpp)"
 msgstr "RemoteFX (32 bit/px)"
 
-#: plugins/rdp/rdp_plugin.c:2267
-msgid "True colour (32 bpp)"
-msgstr "True color (32 bit/px)"
-
 #: plugins/rdp/rdp_plugin.c:2268
 msgid "True colour (24 bpp)"
 msgstr "True color (24 bit/px)"
 
-#: plugins/rdp/rdp_plugin.c:2269
-msgid "High colour (16 bpp)"
-msgstr "High color (16 bit/px)"
-
 #: plugins/rdp/rdp_plugin.c:2270
 msgid "High colour (15 bpp)"
 msgstr "High color (15 bit/px)"
-
-#: plugins/rdp/rdp_plugin.c:2271
-msgid "256 colours (8 bpp)"
-msgstr "256 barev (8 bit/px)"
 
 #: plugins/rdp/rdp_plugin.c:2302 data/ui/remmina_preferences.glade:663
 msgid "None"
@@ -2482,10 +2473,6 @@ msgstr "Sdílet paralelní porty"
 msgid "Share a smart card"
 msgstr "Sdílet čipovou kartu"
 
-#: plugins/rdp/rdp_plugin.c:2458
-msgid "Turn off clipboard sync"
-msgstr "Nesynchronizovat obsah schránky"
-
 #: plugins/rdp/rdp_plugin.c:2459
 msgid "Ignore certificate"
 msgstr "Ignorovat certifikát"
@@ -2673,6 +2660,10 @@ msgstr "Heslo pro soukromou část SSH klíče"
 #: plugins/nx/nx_plugin.c:376
 msgid "Enter NX authentication credentials"
 msgstr "Zadejte přihlašovací údaje pro NX"
+
+#: plugins/nx/nx_plugin.c:750
+msgid "Disable encryption"
+msgstr "Nešifrovat"
 
 #: plugins/nx/nx_plugin.c:760
 msgid "Send Ctrl+Alt+Del"
@@ -3689,6 +3680,21 @@ msgstr "Zvolte novou klávesu"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "Stiskněte novou klávesu…"
+
+#~ msgid "True color (32 bpp)"
+#~ msgstr "True color (32 bit/px)"
+
+#~ msgid "High color (16 bpp)"
+#~ msgstr "High color (16 bit/px)"
+
+#~ msgid "256 colors (8 bpp)"
+#~ msgstr "256 barev (8 bit/px)"
+
+#~ msgid "Color depth"
+#~ msgstr "Barevná hloubka"
+
+#~ msgid "Disable server input"
+#~ msgstr "Vypnout klávesnici a myš na straně serveru"
 
 #~ msgid "Profile filename template"
 #~ msgstr "Šablona názvu souborů se šablonou"

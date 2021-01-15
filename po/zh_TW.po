@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-15 07:55+0000\n"
+"POT-Creation-Date: 2021-01-15 09:21+0000\n"
 "PO-Revision-Date: 2020-09-11 22:29+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
@@ -1706,16 +1706,19 @@ msgstr ""
 msgid "Please retry after turning on encryption for this profile."
 msgstr "請在此連線設定檔上啟用加密後重試"
 
-#: plugins/vnc/vnc_plugin.c:1850
-msgid "True color (32 bpp)"
+#: plugins/vnc/vnc_plugin.c:1850 plugins/rdp/rdp_plugin.c:2267
+#, fuzzy
+msgid "True colour (32 bpp)"
 msgstr "真彩 (32 bpp)"
 
-#: plugins/vnc/vnc_plugin.c:1851
-msgid "High color (16 bpp)"
+#: plugins/vnc/vnc_plugin.c:1851 plugins/rdp/rdp_plugin.c:2269
+#, fuzzy
+msgid "High colour (16 bpp)"
 msgstr "高彩 (16bpp)"
 
-#: plugins/vnc/vnc_plugin.c:1852
-msgid "256 colors (8 bpp)"
+#: plugins/vnc/vnc_plugin.c:1852 plugins/rdp/rdp_plugin.c:2271
+#, fuzzy
+msgid "256 colours (8 bpp)"
 msgstr "256 色 (8 bpp)"
 
 #: plugins/vnc/vnc_plugin.c:1859 plugins/rdp/rdp_plugin.c:2295
@@ -1743,7 +1746,9 @@ msgid "Repeater"
 msgstr "中繼器"
 
 #: plugins/vnc/vnc_plugin.c:1881 plugins/vnc/vnc_plugin.c:1901
-msgid "Color depth"
+#: plugins/xdmcp/xdmcp_plugin.c:369 plugins/rdp/rdp_plugin.c:2407
+#, fuzzy
+msgid "Colour depth"
 msgstr "色彩深度"
 
 #: plugins/vnc/vnc_plugin.c:1882 plugins/vnc/vnc_plugin.c:1902
@@ -1764,18 +1769,19 @@ msgstr "顯示遠端游標"
 msgid "View only"
 msgstr "僅檢視"
 
-#: plugins/vnc/vnc_plugin.c:1920 plugins/spice/spice_plugin.c:565
-#: plugins/spice/spice_plugin.c:578 plugins/nx/nx_plugin.c:749
-msgid "Disable clipboard sync"
-msgstr "停用剪贴簿同步"
+#: plugins/vnc/vnc_plugin.c:1920 plugins/rdp/rdp_plugin.c:2458
+msgid "Turn off clipboard sync"
+msgstr "關閉剪貼簿同步"
 
-#: plugins/vnc/vnc_plugin.c:1921 plugins/nx/nx_plugin.c:750
-msgid "Disable encryption"
-msgstr "停用加密"
+#: plugins/vnc/vnc_plugin.c:1921
+#, fuzzy
+#| msgid "Use TLS encryption"
+msgid "Turn off encryption"
+msgstr "使用 TLS 加密"
 
 #: plugins/vnc/vnc_plugin.c:1922 plugins/vnc/vnc_plugin.c:1935
-msgid "Disable server input"
-msgstr "停用伺服器輸入"
+msgid "Prevent local interaction on the server"
+msgstr ""
 
 #: plugins/vnc/vnc_plugin.c:1937
 msgid "Open Chat…"
@@ -1874,6 +1880,11 @@ msgstr "停用伺服器輸入"
 msgid "Prefered image compression"
 msgstr ""
 
+#: plugins/spice/spice_plugin.c:565 plugins/spice/spice_plugin.c:578
+#: plugins/nx/nx_plugin.c:749
+msgid "Disable clipboard sync"
+msgstr "停用剪贴簿同步"
+
 #: plugins/spice/spice_plugin.c:567
 msgid "Enable audio channel"
 msgstr "啟用音效頻道"
@@ -1938,11 +1949,6 @@ msgstr "高彩 (16 位元)"
 #, fuzzy
 msgid "True colour (24 bit)"
 msgstr "真彩 (24 位元)"
-
-#: plugins/xdmcp/xdmcp_plugin.c:369 plugins/rdp/rdp_plugin.c:2407
-#, fuzzy
-msgid "Colour depth"
-msgstr "色彩深度"
 
 #: plugins/xdmcp/xdmcp_plugin.c:371 plugins/nx/nx_plugin.c:751
 msgid "Use local cursor"
@@ -2137,30 +2143,15 @@ msgstr "GFX RFX (32 bpp)"
 msgid "RemoteFX (32 bpp)"
 msgstr "RemoteFX (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2267
-#, fuzzy
-msgid "True colour (32 bpp)"
-msgstr "真彩 (32 bpp)"
-
 #: plugins/rdp/rdp_plugin.c:2268
 #, fuzzy
 msgid "True colour (24 bpp)"
 msgstr "真彩 (24 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2269
-#, fuzzy
-msgid "High colour (16 bpp)"
-msgstr "高彩 (16bpp)"
-
 #: plugins/rdp/rdp_plugin.c:2270
 #, fuzzy
 msgid "High colour (15 bpp)"
 msgstr "高彩 (15 bpp)"
-
-#: plugins/rdp/rdp_plugin.c:2271
-#, fuzzy
-msgid "256 colours (8 bpp)"
-msgstr "256 色 (8 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2302 data/ui/remmina_preferences.glade:663
 #, fuzzy
@@ -2462,10 +2453,6 @@ msgstr "共享並列埠"
 msgid "Share a smart card"
 msgstr "共享 smartcard"
 
-#: plugins/rdp/rdp_plugin.c:2458
-msgid "Turn off clipboard sync"
-msgstr "關閉剪貼簿同步"
-
 #: plugins/rdp/rdp_plugin.c:2459
 msgid "Ignore certificate"
 msgstr "忽略憑證"
@@ -2655,6 +2642,10 @@ msgstr ""
 #: plugins/nx/nx_plugin.c:376
 msgid "Enter NX authentication credentials"
 msgstr "輸入 NX 驗證身分資料"
+
+#: plugins/nx/nx_plugin.c:750
+msgid "Disable encryption"
+msgstr "停用加密"
 
 #: plugins/nx/nx_plugin.c:760
 #, fuzzy
@@ -3658,6 +3649,21 @@ msgstr "選擇一個新按鍵"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "請按下新按鍵…"
+
+#~ msgid "True color (32 bpp)"
+#~ msgstr "真彩 (32 bpp)"
+
+#~ msgid "High color (16 bpp)"
+#~ msgstr "高彩 (16bpp)"
+
+#~ msgid "256 colors (8 bpp)"
+#~ msgstr "256 色 (8 bpp)"
+
+#~ msgid "Color depth"
+#~ msgstr "色彩深度"
+
+#~ msgid "Disable server input"
+#~ msgstr "停用伺服器輸入"
 
 #~ msgid "Profile filename template"
 #~ msgstr "設定檔檔案名稱範本"

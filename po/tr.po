@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-15 07:55+0000\n"
+"POT-Creation-Date: 2021-01-15 09:21+0000\n"
 "PO-Revision-Date: 2021-01-14 22:47+0000\n"
 "Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -1671,17 +1671,17 @@ msgstr "VNC sunucusu bilinmeyen bir kimlik doğrulama yöntemi istedi. %s"
 msgid "Please retry after turning on encryption for this profile."
 msgstr "Lütfen bu profil için şifrelemeyi açtıktan sonra tekrar deneyin."
 
-#: plugins/vnc/vnc_plugin.c:1850
-msgid "True color (32 bpp)"
-msgstr "Gerçek renk (32 bit)"
+#: plugins/vnc/vnc_plugin.c:1850 plugins/rdp/rdp_plugin.c:2267
+msgid "True colour (32 bpp)"
+msgstr "Gerçek renk (32 bpp)"
 
-#: plugins/vnc/vnc_plugin.c:1851
-msgid "High color (16 bpp)"
-msgstr "Yüksek renk (16 bit)"
+#: plugins/vnc/vnc_plugin.c:1851 plugins/rdp/rdp_plugin.c:2269
+msgid "High colour (16 bpp)"
+msgstr "Yüksek renk (16 bpp)"
 
-#: plugins/vnc/vnc_plugin.c:1852
-msgid "256 colors (8 bpp)"
-msgstr "256 renk (8 bit)"
+#: plugins/vnc/vnc_plugin.c:1852 plugins/rdp/rdp_plugin.c:2271
+msgid "256 colours (8 bpp)"
+msgstr "256 renk (8 bpp)"
 
 #: plugins/vnc/vnc_plugin.c:1859 plugins/rdp/rdp_plugin.c:2295
 #: plugins/rdp/rdp_settings.c:275 plugins/nx/nx_plugin.c:713
@@ -1708,7 +1708,8 @@ msgid "Repeater"
 msgstr "Tekrarlayıcı"
 
 #: plugins/vnc/vnc_plugin.c:1881 plugins/vnc/vnc_plugin.c:1901
-msgid "Color depth"
+#: plugins/xdmcp/xdmcp_plugin.c:369 plugins/rdp/rdp_plugin.c:2407
+msgid "Colour depth"
 msgstr "Renk derinliği"
 
 #: plugins/vnc/vnc_plugin.c:1882 plugins/vnc/vnc_plugin.c:1902
@@ -1729,18 +1730,19 @@ msgstr "Uzaktaki imleci göster"
 msgid "View only"
 msgstr "Yalnızca görüntüle"
 
-#: plugins/vnc/vnc_plugin.c:1920 plugins/spice/spice_plugin.c:565
-#: plugins/spice/spice_plugin.c:578 plugins/nx/nx_plugin.c:749
-msgid "Disable clipboard sync"
-msgstr "Pano eşitlemeyi etkisizleştir"
+#: plugins/vnc/vnc_plugin.c:1920 plugins/rdp/rdp_plugin.c:2458
+msgid "Turn off clipboard sync"
+msgstr "Pano eşzamanlamayı kapat"
 
-#: plugins/vnc/vnc_plugin.c:1921 plugins/nx/nx_plugin.c:750
-msgid "Disable encryption"
-msgstr "Şifrelemeyi devre dışı bırak"
+#: plugins/vnc/vnc_plugin.c:1921
+#, fuzzy
+#| msgid "Use TLS encryption"
+msgid "Turn off encryption"
+msgstr "TLS şifreleme kullan"
 
 #: plugins/vnc/vnc_plugin.c:1922 plugins/vnc/vnc_plugin.c:1935
-msgid "Disable server input"
-msgstr "Sunucu girdisini etkisizleştir"
+msgid "Prevent local interaction on the server"
+msgstr ""
 
 #: plugins/vnc/vnc_plugin.c:1937
 msgid "Open Chat…"
@@ -1838,6 +1840,11 @@ msgstr "Sunucu girdisini etkisizleştir"
 msgid "Prefered image compression"
 msgstr ""
 
+#: plugins/spice/spice_plugin.c:565 plugins/spice/spice_plugin.c:578
+#: plugins/nx/nx_plugin.c:749
+msgid "Disable clipboard sync"
+msgstr "Pano eşitlemeyi etkisizleştir"
+
 #: plugins/spice/spice_plugin.c:567
 msgid "Enable audio channel"
 msgstr "Ses kanalını etkinleştir"
@@ -1899,10 +1906,6 @@ msgstr "Yüksek renk (16 bit)"
 #: plugins/xdmcp/xdmcp_plugin.c:352
 msgid "True colour (24 bit)"
 msgstr "Gerçek renk (24 bit)"
-
-#: plugins/xdmcp/xdmcp_plugin.c:369 plugins/rdp/rdp_plugin.c:2407
-msgid "Colour depth"
-msgstr "Renk derinliği"
 
 #: plugins/xdmcp/xdmcp_plugin.c:371 plugins/nx/nx_plugin.c:751
 msgid "Use local cursor"
@@ -2101,25 +2104,13 @@ msgstr "GFX RFX Aşamalı (32 bit)"
 msgid "RemoteFX (32 bpp)"
 msgstr "RemoteFX (32 bit)"
 
-#: plugins/rdp/rdp_plugin.c:2267
-msgid "True colour (32 bpp)"
-msgstr "Gerçek renk (32 bpp)"
-
 #: plugins/rdp/rdp_plugin.c:2268
 msgid "True colour (24 bpp)"
 msgstr "Gerçek renk (24 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2269
-msgid "High colour (16 bpp)"
-msgstr "Yüksek renk (16 bpp)"
-
 #: plugins/rdp/rdp_plugin.c:2270
 msgid "High colour (15 bpp)"
 msgstr "Yüksek renk (15 bpp)"
-
-#: plugins/rdp/rdp_plugin.c:2271
-msgid "256 colours (8 bpp)"
-msgstr "256 renk (8 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2302 data/ui/remmina_preferences.glade:663
 msgid "None"
@@ -2438,10 +2429,6 @@ msgstr "Paralel bağlantı noktası paylaş"
 msgid "Share a smart card"
 msgstr "Akıllı kartı paylaş"
 
-#: plugins/rdp/rdp_plugin.c:2458
-msgid "Turn off clipboard sync"
-msgstr "Pano eşzamanlamayı kapat"
-
 #: plugins/rdp/rdp_plugin.c:2459
 msgid "Ignore certificate"
 msgstr "Sertifikayı yoksay"
@@ -2629,6 +2616,10 @@ msgstr "Özel SSH anahtarı için parola"
 #: plugins/nx/nx_plugin.c:376
 msgid "Enter NX authentication credentials"
 msgstr "NX kimlik doğrulama bilgilerini girin"
+
+#: plugins/nx/nx_plugin.c:750
+msgid "Disable encryption"
+msgstr "Şifrelemeyi devre dışı bırak"
 
 #: plugins/nx/nx_plugin.c:760
 msgid "Send Ctrl+Alt+Del"
@@ -3615,6 +3606,21 @@ msgstr "Yeni tuş seç"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "Lütfen yeni tuşa basın…"
+
+#~ msgid "True color (32 bpp)"
+#~ msgstr "Gerçek renk (32 bit)"
+
+#~ msgid "High color (16 bpp)"
+#~ msgstr "Yüksek renk (16 bit)"
+
+#~ msgid "256 colors (8 bpp)"
+#~ msgstr "256 renk (8 bit)"
+
+#~ msgid "Color depth"
+#~ msgstr "Renk derinliği"
+
+#~ msgid "Disable server input"
+#~ msgstr "Sunucu girdisini etkisizleştir"
 
 #~ msgid "Profile filename template"
 #~ msgstr "Profil dosya adı şablonu"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-15 07:55+0000\n"
+"POT-Creation-Date: 2021-01-15 09:21+0000\n"
 "PO-Revision-Date: 2021-01-14 22:47+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -1670,16 +1670,16 @@ msgstr "VNC poslužitelj je zatražio nepoznat način ovjere. %s"
 msgid "Please retry after turning on encryption for this profile."
 msgstr "Pokušaj ponovo nakon uključivanja šifriranja za ovaj profil."
 
-#: plugins/vnc/vnc_plugin.c:1850
-msgid "True color (32 bpp)"
-msgstr "True color (32 bpp)"
+#: plugins/vnc/vnc_plugin.c:1850 plugins/rdp/rdp_plugin.c:2267
+msgid "True colour (32 bpp)"
+msgstr "True colour (32 bpp)"
 
-#: plugins/vnc/vnc_plugin.c:1851
-msgid "High color (16 bpp)"
-msgstr "High color (16 bpp)"
+#: plugins/vnc/vnc_plugin.c:1851 plugins/rdp/rdp_plugin.c:2269
+msgid "High colour (16 bpp)"
+msgstr "High colour (16 bpp)"
 
-#: plugins/vnc/vnc_plugin.c:1852
-msgid "256 colors (8 bpp)"
+#: plugins/vnc/vnc_plugin.c:1852 plugins/rdp/rdp_plugin.c:2271
+msgid "256 colours (8 bpp)"
 msgstr "256 boja (8 bpp)"
 
 #: plugins/vnc/vnc_plugin.c:1859 plugins/rdp/rdp_plugin.c:2295
@@ -1707,7 +1707,8 @@ msgid "Repeater"
 msgstr "Ponavljač"
 
 #: plugins/vnc/vnc_plugin.c:1881 plugins/vnc/vnc_plugin.c:1901
-msgid "Color depth"
+#: plugins/xdmcp/xdmcp_plugin.c:369 plugins/rdp/rdp_plugin.c:2407
+msgid "Colour depth"
 msgstr "Dubina boja"
 
 #: plugins/vnc/vnc_plugin.c:1882 plugins/vnc/vnc_plugin.c:1902
@@ -1728,18 +1729,19 @@ msgstr "Prikaži udaljeni pokazivač"
 msgid "View only"
 msgstr "Samo gledaj"
 
-#: plugins/vnc/vnc_plugin.c:1920 plugins/spice/spice_plugin.c:565
-#: plugins/spice/spice_plugin.c:578 plugins/nx/nx_plugin.c:749
-msgid "Disable clipboard sync"
-msgstr "Deaktiviraj sinkronizaciju međuspremnika"
+#: plugins/vnc/vnc_plugin.c:1920 plugins/rdp/rdp_plugin.c:2458
+msgid "Turn off clipboard sync"
+msgstr "Isključi sinkroniziranje međuspremnika"
 
-#: plugins/vnc/vnc_plugin.c:1921 plugins/nx/nx_plugin.c:750
-msgid "Disable encryption"
-msgstr "Deaktiviraj šifriranje"
+#: plugins/vnc/vnc_plugin.c:1921
+#, fuzzy
+#| msgid "Use TLS encryption"
+msgid "Turn off encryption"
+msgstr "Koristi TLS šifriranje"
 
 #: plugins/vnc/vnc_plugin.c:1922 plugins/vnc/vnc_plugin.c:1935
-msgid "Disable server input"
-msgstr "Deaktiviraj unos na poslužitelju"
+msgid "Prevent local interaction on the server"
+msgstr ""
 
 #: plugins/vnc/vnc_plugin.c:1937
 msgid "Open Chat…"
@@ -1837,6 +1839,11 @@ msgstr "Deaktiviraj unos na poslužitelju"
 msgid "Prefered image compression"
 msgstr ""
 
+#: plugins/spice/spice_plugin.c:565 plugins/spice/spice_plugin.c:578
+#: plugins/nx/nx_plugin.c:749
+msgid "Disable clipboard sync"
+msgstr "Deaktiviraj sinkronizaciju međuspremnika"
+
 #: plugins/spice/spice_plugin.c:567
 msgid "Enable audio channel"
 msgstr "Aktiviraj kanal zvuka"
@@ -1896,10 +1903,6 @@ msgstr "High colour (16 bit)"
 #: plugins/xdmcp/xdmcp_plugin.c:352
 msgid "True colour (24 bit)"
 msgstr "True colour (24 bit)"
-
-#: plugins/xdmcp/xdmcp_plugin.c:369 plugins/rdp/rdp_plugin.c:2407
-msgid "Colour depth"
-msgstr "Dubina boja"
 
 #: plugins/xdmcp/xdmcp_plugin.c:371 plugins/nx/nx_plugin.c:751
 msgid "Use local cursor"
@@ -2097,25 +2100,13 @@ msgstr "GFX RFX Progressive (32 bpp)"
 msgid "RemoteFX (32 bpp)"
 msgstr "RemoteFX (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2267
-msgid "True colour (32 bpp)"
-msgstr "True colour (32 bpp)"
-
 #: plugins/rdp/rdp_plugin.c:2268
 msgid "True colour (24 bpp)"
 msgstr "True colour (24 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2269
-msgid "High colour (16 bpp)"
-msgstr "High colour (16 bpp)"
-
 #: plugins/rdp/rdp_plugin.c:2270
 msgid "High colour (15 bpp)"
 msgstr "High colour (15 bpp)"
-
-#: plugins/rdp/rdp_plugin.c:2271
-msgid "256 colours (8 bpp)"
-msgstr "256 boja (8 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2302 data/ui/remmina_preferences.glade:663
 msgid "None"
@@ -2436,10 +2427,6 @@ msgstr "Dijeli paralelne ulaze"
 msgid "Share a smart card"
 msgstr "Dijeli pametnu karticu"
 
-#: plugins/rdp/rdp_plugin.c:2458
-msgid "Turn off clipboard sync"
-msgstr "Isključi sinkroniziranje međuspremnika"
-
 #: plugins/rdp/rdp_plugin.c:2459
 msgid "Ignore certificate"
 msgstr "Zanemari vjerodajnicu"
@@ -2627,6 +2614,10 @@ msgstr "Lozinka za privatni SSH ključ"
 #: plugins/nx/nx_plugin.c:376
 msgid "Enter NX authentication credentials"
 msgstr "Upiši podatke za autentifikaciju na NX"
+
+#: plugins/nx/nx_plugin.c:750
+msgid "Disable encryption"
+msgstr "Deaktiviraj šifriranje"
 
 #: plugins/nx/nx_plugin.c:760
 msgid "Send Ctrl+Alt+Del"
@@ -3611,6 +3602,21 @@ msgstr "Odaberi novu tipku"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "Pritisni novu tipku …"
+
+#~ msgid "True color (32 bpp)"
+#~ msgstr "True color (32 bpp)"
+
+#~ msgid "High color (16 bpp)"
+#~ msgstr "High color (16 bpp)"
+
+#~ msgid "256 colors (8 bpp)"
+#~ msgstr "256 boja (8 bpp)"
+
+#~ msgid "Color depth"
+#~ msgstr "Dubina boja"
+
+#~ msgid "Disable server input"
+#~ msgstr "Deaktiviraj unos na poslužitelju"
 
 #~ msgid "Profile filename template"
 #~ msgstr "Predložak za imena datoteka profila"

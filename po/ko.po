@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-15 07:55+0000\n"
+"POT-Creation-Date: 2021-01-15 09:21+0000\n"
 "PO-Revision-Date: 2020-09-11 22:29+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -1686,16 +1686,19 @@ msgstr "VNC 서버가 알 수 없는 인증 방법을 요청했습니다. %s"
 msgid "Please retry after turning on encryption for this profile."
 msgstr "프로필의 암호화를 키신 후에 다시 시도하세요."
 
-#: plugins/vnc/vnc_plugin.c:1850
-msgid "True color (32 bpp)"
+#: plugins/vnc/vnc_plugin.c:1850 plugins/rdp/rdp_plugin.c:2267
+#, fuzzy
+msgid "True colour (32 bpp)"
 msgstr "실제 색감 (32 bpp)"
 
-#: plugins/vnc/vnc_plugin.c:1851
-msgid "High color (16 bpp)"
+#: plugins/vnc/vnc_plugin.c:1851 plugins/rdp/rdp_plugin.c:2269
+#, fuzzy
+msgid "High colour (16 bpp)"
 msgstr "고화질 (16 bpp)"
 
-#: plugins/vnc/vnc_plugin.c:1852
-msgid "256 colors (8 bpp)"
+#: plugins/vnc/vnc_plugin.c:1852 plugins/rdp/rdp_plugin.c:2271
+#, fuzzy
+msgid "256 colours (8 bpp)"
 msgstr "256 색 (8 bpp)"
 
 #: plugins/vnc/vnc_plugin.c:1859 plugins/rdp/rdp_plugin.c:2295
@@ -1723,8 +1726,10 @@ msgid "Repeater"
 msgstr "리피터"
 
 #: plugins/vnc/vnc_plugin.c:1881 plugins/vnc/vnc_plugin.c:1901
-msgid "Color depth"
-msgstr "색 심도"
+#: plugins/xdmcp/xdmcp_plugin.c:369 plugins/rdp/rdp_plugin.c:2407
+#, fuzzy
+msgid "Colour depth"
+msgstr "색 심도(Color depth)"
 
 #: plugins/vnc/vnc_plugin.c:1882 plugins/vnc/vnc_plugin.c:1902
 #: plugins/rdp/rdp_plugin.c:2424 plugins/nx/nx_plugin.c:733
@@ -1744,18 +1749,20 @@ msgstr "원격 커서 보기"
 msgid "View only"
 msgstr "뷰 전용"
 
-#: plugins/vnc/vnc_plugin.c:1920 plugins/spice/spice_plugin.c:565
-#: plugins/spice/spice_plugin.c:578 plugins/nx/nx_plugin.c:749
-msgid "Disable clipboard sync"
-msgstr "클립 보드 동기화 비활성화"
+#: plugins/vnc/vnc_plugin.c:1920 plugins/rdp/rdp_plugin.c:2458
+#, fuzzy
+msgid "Turn off clipboard sync"
+msgstr "클립보드 동기화 끄기"
 
-#: plugins/vnc/vnc_plugin.c:1921 plugins/nx/nx_plugin.c:750
-msgid "Disable encryption"
-msgstr "암호화 비활성화"
+#: plugins/vnc/vnc_plugin.c:1921
+#, fuzzy
+#| msgid "Use TLS encryption"
+msgid "Turn off encryption"
+msgstr "TLS 암호화 사용"
 
 #: plugins/vnc/vnc_plugin.c:1922 plugins/vnc/vnc_plugin.c:1935
-msgid "Disable server input"
-msgstr "서버 입력 비활성화"
+msgid "Prevent local interaction on the server"
+msgstr ""
 
 #: plugins/vnc/vnc_plugin.c:1937
 msgid "Open Chat…"
@@ -1853,6 +1860,11 @@ msgstr "서버 입력 비활성화"
 msgid "Prefered image compression"
 msgstr ""
 
+#: plugins/spice/spice_plugin.c:565 plugins/spice/spice_plugin.c:578
+#: plugins/nx/nx_plugin.c:749
+msgid "Disable clipboard sync"
+msgstr "클립 보드 동기화 비활성화"
+
 #: plugins/spice/spice_plugin.c:567
 msgid "Enable audio channel"
 msgstr "오디오 채널 활성화"
@@ -1916,11 +1928,6 @@ msgstr "고화질 (16 비트)"
 #: plugins/xdmcp/xdmcp_plugin.c:352
 msgid "True colour (24 bit)"
 msgstr "천연색 (24 비트)"
-
-#: plugins/xdmcp/xdmcp_plugin.c:369 plugins/rdp/rdp_plugin.c:2407
-#, fuzzy
-msgid "Colour depth"
-msgstr "색 심도(Color depth)"
 
 #: plugins/xdmcp/xdmcp_plugin.c:371 plugins/nx/nx_plugin.c:751
 msgid "Use local cursor"
@@ -2115,30 +2122,15 @@ msgstr "GFX RFX (32 bpp)"
 msgid "RemoteFX (32 bpp)"
 msgstr "리모트FX (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2267
-#, fuzzy
-msgid "True colour (32 bpp)"
-msgstr "실제 색감 (32 bpp)"
-
 #: plugins/rdp/rdp_plugin.c:2268
 #, fuzzy
 msgid "True colour (24 bpp)"
 msgstr "실제 색감 (24 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2269
-#, fuzzy
-msgid "High colour (16 bpp)"
-msgstr "고화질 (16 bpp)"
-
 #: plugins/rdp/rdp_plugin.c:2270
 #, fuzzy
 msgid "High colour (15 bpp)"
 msgstr "고화질 (15 bpp)"
-
-#: plugins/rdp/rdp_plugin.c:2271
-#, fuzzy
-msgid "256 colours (8 bpp)"
-msgstr "256 색 (8 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2302 data/ui/remmina_preferences.glade:663
 #, fuzzy
@@ -2454,11 +2446,6 @@ msgstr "병렬(parallel) 포트 공유"
 msgid "Share a smart card"
 msgstr "스마트 카드 공유"
 
-#: plugins/rdp/rdp_plugin.c:2458
-#, fuzzy
-msgid "Turn off clipboard sync"
-msgstr "클립보드 동기화 끄기"
-
 #: plugins/rdp/rdp_plugin.c:2459
 msgid "Ignore certificate"
 msgstr "인증서 무시"
@@ -2646,6 +2633,10 @@ msgstr "SSH 개인 키 비밀번호"
 #: plugins/nx/nx_plugin.c:376
 msgid "Enter NX authentication credentials"
 msgstr "NX 인증 정보를 입력하세요"
+
+#: plugins/nx/nx_plugin.c:750
+msgid "Disable encryption"
+msgstr "암호화 비활성화"
 
 #: plugins/nx/nx_plugin.c:760
 #, fuzzy
@@ -3622,6 +3613,21 @@ msgstr "새 키 선택"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "새 키를 누르세요…"
+
+#~ msgid "True color (32 bpp)"
+#~ msgstr "실제 색감 (32 bpp)"
+
+#~ msgid "High color (16 bpp)"
+#~ msgstr "고화질 (16 bpp)"
+
+#~ msgid "256 colors (8 bpp)"
+#~ msgstr "256 색 (8 bpp)"
+
+#~ msgid "Color depth"
+#~ msgstr "색 심도"
+
+#~ msgid "Disable server input"
+#~ msgstr "서버 입력 비활성화"
 
 #~ msgid "Profile filename template"
 #~ msgstr "프로필 파일 이름 템플릿"

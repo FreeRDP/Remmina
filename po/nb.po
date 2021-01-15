@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-15 07:55+0000\n"
+"POT-Creation-Date: 2021-01-15 09:21+0000\n"
 "PO-Revision-Date: 2021-01-13 16:14+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/remmina/"
@@ -1707,16 +1707,19 @@ msgstr "VNC-tjeneren forespurte en ukjent identitetsbekreftelsesmetode. %s"
 msgid "Please retry after turning on encryption for this profile."
 msgstr "Skru på kryptering for denne profilen og prøv igjen."
 
-#: plugins/vnc/vnc_plugin.c:1850
-msgid "True color (32 bpp)"
+#: plugins/vnc/vnc_plugin.c:1850 plugins/rdp/rdp_plugin.c:2267
+#, fuzzy
+msgid "True colour (32 bpp)"
 msgstr "Sann fargeoppløsning (32 bpp)"
 
-#: plugins/vnc/vnc_plugin.c:1851
-msgid "High color (16 bpp)"
+#: plugins/vnc/vnc_plugin.c:1851 plugins/rdp/rdp_plugin.c:2269
+#, fuzzy
+msgid "High colour (16 bpp)"
 msgstr "Høy fargeoppløsning (16 bpp)"
 
-#: plugins/vnc/vnc_plugin.c:1852
-msgid "256 colors (8 bpp)"
+#: plugins/vnc/vnc_plugin.c:1852 plugins/rdp/rdp_plugin.c:2271
+#, fuzzy
+msgid "256 colours (8 bpp)"
 msgstr "256 farger (8 bpp)"
 
 #: plugins/vnc/vnc_plugin.c:1859 plugins/rdp/rdp_plugin.c:2295
@@ -1744,7 +1747,8 @@ msgid "Repeater"
 msgstr "Reléstasjon"
 
 #: plugins/vnc/vnc_plugin.c:1881 plugins/vnc/vnc_plugin.c:1901
-msgid "Color depth"
+#: plugins/xdmcp/xdmcp_plugin.c:369 plugins/rdp/rdp_plugin.c:2407
+msgid "Colour depth"
 msgstr "Fargedybde"
 
 #: plugins/vnc/vnc_plugin.c:1882 plugins/vnc/vnc_plugin.c:1902
@@ -1765,18 +1769,19 @@ msgstr "Vis ekstern peker"
 msgid "View only"
 msgstr "Kun vis"
 
-#: plugins/vnc/vnc_plugin.c:1920 plugins/spice/spice_plugin.c:565
-#: plugins/spice/spice_plugin.c:578 plugins/nx/nx_plugin.c:749
-msgid "Disable clipboard sync"
-msgstr "Skru av synkronisering av utklippstavle"
+#: plugins/vnc/vnc_plugin.c:1920 plugins/rdp/rdp_plugin.c:2458
+msgid "Turn off clipboard sync"
+msgstr "Skru av utklippstavlesynkronisering"
 
-#: plugins/vnc/vnc_plugin.c:1921 plugins/nx/nx_plugin.c:750
-msgid "Disable encryption"
-msgstr "Skru av kryptering"
+#: plugins/vnc/vnc_plugin.c:1921
+#, fuzzy
+#| msgid "Use TLS encryption"
+msgid "Turn off encryption"
+msgstr "Bruk TLS-kryptering"
 
 #: plugins/vnc/vnc_plugin.c:1922 plugins/vnc/vnc_plugin.c:1935
-msgid "Disable server input"
-msgstr "Skru av tjener-inndata"
+msgid "Prevent local interaction on the server"
+msgstr ""
 
 #: plugins/vnc/vnc_plugin.c:1937
 msgid "Open Chat…"
@@ -1875,6 +1880,11 @@ msgstr "Skru av tjener-inndata"
 msgid "Prefered image compression"
 msgstr ""
 
+#: plugins/spice/spice_plugin.c:565 plugins/spice/spice_plugin.c:578
+#: plugins/nx/nx_plugin.c:749
+msgid "Disable clipboard sync"
+msgstr "Skru av synkronisering av utklippstavle"
+
 #: plugins/spice/spice_plugin.c:567
 msgid "Enable audio channel"
 msgstr "Skru på lydkanal"
@@ -1940,10 +1950,6 @@ msgstr "Høy fargeoppløsning (16 bit)"
 #, fuzzy
 msgid "True colour (24 bit)"
 msgstr "Sann fargeoppløsning (24 bit)"
-
-#: plugins/xdmcp/xdmcp_plugin.c:369 plugins/rdp/rdp_plugin.c:2407
-msgid "Colour depth"
-msgstr "Fargedybde"
 
 #: plugins/xdmcp/xdmcp_plugin.c:371 plugins/nx/nx_plugin.c:751
 msgid "Use local cursor"
@@ -2138,30 +2144,15 @@ msgstr "GFX RFX-progressiv (32 bpp)"
 msgid "RemoteFX (32 bpp)"
 msgstr "Eksterne effekter (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2267
-#, fuzzy
-msgid "True colour (32 bpp)"
-msgstr "Sann fargeoppløsning (32 bpp)"
-
 #: plugins/rdp/rdp_plugin.c:2268
 #, fuzzy
 msgid "True colour (24 bpp)"
 msgstr "Sann fargeoppløsning (24 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2269
-#, fuzzy
-msgid "High colour (16 bpp)"
-msgstr "Høy fargeoppløsning (16 bpp)"
-
 #: plugins/rdp/rdp_plugin.c:2270
 #, fuzzy
 msgid "High colour (15 bpp)"
 msgstr "Høy fargeoppløsning (15 bpp)"
-
-#: plugins/rdp/rdp_plugin.c:2271
-#, fuzzy
-msgid "256 colours (8 bpp)"
-msgstr "256 farger (8 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2302 data/ui/remmina_preferences.glade:663
 msgid "None"
@@ -2516,10 +2507,6 @@ msgstr "Del parallellporter"
 msgid "Share a smart card"
 msgstr "Del smartkort"
 
-#: plugins/rdp/rdp_plugin.c:2458
-msgid "Turn off clipboard sync"
-msgstr "Skru av utklippstavlesynkronisering"
-
 #: plugins/rdp/rdp_plugin.c:2459
 msgid "Ignore certificate"
 msgstr "Ignorer sertifikat"
@@ -2718,6 +2705,10 @@ msgstr "Passord for privat SSH-nøkkel"
 #, fuzzy
 msgid "Enter NX authentication credentials"
 msgstr "Skriv inn NX-identitetsbekreftelsesdetaljer"
+
+#: plugins/nx/nx_plugin.c:750
+msgid "Disable encryption"
+msgstr "Skru av kryptering"
 
 #: plugins/nx/nx_plugin.c:760
 #, fuzzy
@@ -3761,6 +3752,21 @@ msgstr "Velg en ny tast"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "Trykk på den nye tasten…"
+
+#~ msgid "True color (32 bpp)"
+#~ msgstr "Sann fargeoppløsning (32 bpp)"
+
+#~ msgid "High color (16 bpp)"
+#~ msgstr "Høy fargeoppløsning (16 bpp)"
+
+#~ msgid "256 colors (8 bpp)"
+#~ msgstr "256 farger (8 bpp)"
+
+#~ msgid "Color depth"
+#~ msgstr "Fargedybde"
+
+#~ msgid "Disable server input"
+#~ msgstr "Skru av tjener-inndata"
 
 #~ msgid "Profile filename template"
 #~ msgstr "Mal for profilfilnavn"

@@ -7,7 +7,7 @@
 # anonymous <noreply@weblate.org>, 2019.
 # Giovanni Panozzo <giovanni@panozzo.it>, 2020.
 # Jeannette L <j.lavoie@net-c.ca>, 2020.
-# Roberto Bellingeri <bellingeri@netguru.it>, 2020.
+# Roberto Bellingeri <bellingeri@netguru.it>, 2020, 2021.
 # Marco Ciampa <ciampix@posteo.net>, 2020.
 # random r <epsilin@yopmail.com>, 2020, 2021.
 # Fabio Fantoni <fantonifabio@tiscali.it>, 2020.
@@ -15,9 +15,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-15 07:55+0000\n"
-"PO-Revision-Date: 2021-01-13 16:14+0000\n"
-"Last-Translator: random r <epsilin@yopmail.com>\n"
+"POT-Creation-Date: 2021-01-15 09:21+0000\n"
+"PO-Revision-Date: 2021-01-15 09:21+0000\n"
+"Last-Translator: Roberto Bellingeri <bellingeri@netguru.it>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/remmina/remmina/"
 "it/>\n"
 "Language: it\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.4.1-dev\n"
+"X-Generator: Weblate 4.5-dev\n"
 "X-Launchpad-Export-Date: 2011-01-18 05:16+0000\n"
 
 #: src/remmina_protocol_widget.c:279
@@ -335,17 +335,6 @@ msgid "Start-up program"
 msgstr "Programma all’avvio"
 
 #: src/remmina_ssh_plugin.c:1337
-#, fuzzy
-#| msgid ""
-#| "The filename can use the following placeholders:\n"
-#| "\n"
-#| "  • %h is substituted with the server name\n"
-#| "  • %t is substituted with the SSH server name\n"
-#| "  • %u is substituted with the username\n"
-#| "  • %U is substituted with the SSH username\n"
-#| "  • %p is substituted with Remmina profile name\n"
-#| "  • %g is substituted with Remmina profile group name\n"
-#| "  • %d is substituted with local datetime in iso8601 format\n"
 msgid ""
 "The filename can use the following placeholders:\n"
 "\n"
@@ -365,7 +354,7 @@ msgstr ""
 "• %U viene sostituito con il nome utente SSH\n"
 "• %p viene sostituito con il nome del profilo\n"
 "• %g viene sostituito con il nome del gruppo del profilo di Remmina\n"
-"• %d è sostituito con l'ora locale in formato iso8601\n"
+"• %d è sostituito con la data e l'ora locale in formato ISO 8601\n"
 
 #: src/remmina_ssh_plugin.c:1359
 msgid "Terminal color scheme"
@@ -1323,20 +1312,6 @@ msgstr ""
 "* [server]:porta</big></tt>"
 
 #: src/remmina_file_editor.c:81
-#, fuzzy
-#| msgid ""
-#| "<tt><big>• command in PATH args %h\n"
-#| "• /path/to/foo -options %h %u\n"
-#| "• %h is substituted with the server name\n"
-#| "• %t is substituted with the SSH server name\n"
-#| "• %u is substituted with the username\n"
-#| "• %U is substituted with the SSH username\n"
-#| "• %p is substituted with Remmina profile name\n"
-#| "• %g is substituted with Remmina profile group name\n"
-#| "• %d is substituted with local datetime in iso8601 format\n"
-#| "Do not run in background if you want the command to be executed before "
-#| "connecting.\n"
-#| "</big></tt>"
 msgid ""
 "<tt><big>• command in PATH args %h\n"
 "• /path/to/foo -options %h %u\n"
@@ -1359,7 +1334,7 @@ msgstr ""
 "• %U è sostituito con il nome utente SSH\n"
 "• %p è sostituito con il nome del profilo Remmina\n"
 "• %g viene sostituito con il nome del gruppo di profili Remmina\n"
-"• %d è sostituito con l'ora locale in formato iso8601\n"
+"• %d è sostituito con la data e l'ora locale in formato ISO 8601\n"
 "Non eseguire in background se si desidera che il comando venga eseguito "
 "della connessione.\n"
 "</big></tt>"
@@ -1444,10 +1419,8 @@ msgid "Start-up"
 msgstr "Avviare"
 
 #: src/remmina_file_editor.c:904
-#, fuzzy
-#| msgid "Autostart this profile"
 msgid "Auto-start this profile"
-msgstr "Attiva \"Avvio automatico\" per questo profilo"
+msgstr "Avvia automaticamente questo profilo"
 
 #: src/remmina_file_editor.c:924
 msgid "SSH Tunnel"
@@ -1681,16 +1654,16 @@ msgstr "Il server VNC ha richiesto un metodo di autenticazione sconosciuto. %s"
 msgid "Please retry after turning on encryption for this profile."
 msgstr "Riprovare dopo aver attivato la crittografia per questo profilo."
 
-#: plugins/vnc/vnc_plugin.c:1850
-msgid "True color (32 bpp)"
+#: plugins/vnc/vnc_plugin.c:1850 plugins/rdp/rdp_plugin.c:2267
+msgid "True colour (32 bpp)"
 msgstr "Truecolor (32 bpp)"
 
-#: plugins/vnc/vnc_plugin.c:1851
-msgid "High color (16 bpp)"
+#: plugins/vnc/vnc_plugin.c:1851 plugins/rdp/rdp_plugin.c:2269
+msgid "High colour (16 bpp)"
 msgstr "Highcolor (16 bpp)"
 
-#: plugins/vnc/vnc_plugin.c:1852
-msgid "256 colors (8 bpp)"
+#: plugins/vnc/vnc_plugin.c:1852 plugins/rdp/rdp_plugin.c:2271
+msgid "256 colours (8 bpp)"
 msgstr "256 colori (8 bpp)"
 
 #: plugins/vnc/vnc_plugin.c:1859 plugins/rdp/rdp_plugin.c:2295
@@ -1718,7 +1691,8 @@ msgid "Repeater"
 msgstr "Ripetitore"
 
 #: plugins/vnc/vnc_plugin.c:1881 plugins/vnc/vnc_plugin.c:1901
-msgid "Color depth"
+#: plugins/xdmcp/xdmcp_plugin.c:369 plugins/rdp/rdp_plugin.c:2407
+msgid "Colour depth"
 msgstr "Profondità colore"
 
 #: plugins/vnc/vnc_plugin.c:1882 plugins/vnc/vnc_plugin.c:1902
@@ -1739,18 +1713,19 @@ msgstr "Visualizzare il cursore remoto"
 msgid "View only"
 msgstr "Solo visualizzazione"
 
-#: plugins/vnc/vnc_plugin.c:1920 plugins/spice/spice_plugin.c:565
-#: plugins/spice/spice_plugin.c:578 plugins/nx/nx_plugin.c:749
-msgid "Disable clipboard sync"
-msgstr "Disabilitare la sincronizzazione degli appunti"
+#: plugins/vnc/vnc_plugin.c:1920 plugins/rdp/rdp_plugin.c:2458
+msgid "Turn off clipboard sync"
+msgstr "Disattivare la sincronizzazione degli Appunti"
 
-#: plugins/vnc/vnc_plugin.c:1921 plugins/nx/nx_plugin.c:750
-msgid "Disable encryption"
-msgstr "Disabilitare la cifratura"
+#: plugins/vnc/vnc_plugin.c:1921
+#, fuzzy
+#| msgid "Use TLS encryption"
+msgid "Turn off encryption"
+msgstr "Usa cifratura TLS"
 
 #: plugins/vnc/vnc_plugin.c:1922 plugins/vnc/vnc_plugin.c:1935
-msgid "Disable server input"
-msgstr "Disabilitare l’input del server"
+msgid "Prevent local interaction on the server"
+msgstr ""
 
 #: plugins/vnc/vnc_plugin.c:1937
 msgid "Open Chat…"
@@ -1810,15 +1785,17 @@ msgstr "Inattivo"
 
 #: plugins/spice/spice_plugin.c:520
 msgid "Auto GLZ"
-msgstr ""
+msgstr "Auto GLZ"
 
 #: plugins/spice/spice_plugin.c:521
 msgid "Auto LZ"
-msgstr ""
+msgstr "Auto LZ"
 
 #: plugins/spice/spice_plugin.c:530
 msgid "Disable video overlay if videos are not displayed properly.\n"
 msgstr ""
+"Disabilita il video overlay se i video non vengono visualizzati "
+"correttamente.\n"
 
 #: plugins/spice/spice_plugin.c:545
 msgid "Use TLS encryption"
@@ -1833,20 +1810,21 @@ msgid "Share folder"
 msgstr "Cartella condivisa"
 
 #: plugins/spice/spice_plugin.c:562
-#, fuzzy
-#| msgid "Preference"
 msgid "Prefered video codec"
-msgstr "Preferenza"
+msgstr "Codec video preferito"
 
 #: plugins/spice/spice_plugin.c:563
-#, fuzzy
-#| msgid "Disable server input"
 msgid "Disable Gstreamer Overlay"
-msgstr "Disabilitare l’input del server"
+msgstr "Disabilita Gstreamer Overlay"
 
 #: plugins/spice/spice_plugin.c:564
 msgid "Prefered image compression"
-msgstr ""
+msgstr "Compressione dell'immagine preferita"
+
+#: plugins/spice/spice_plugin.c:565 plugins/spice/spice_plugin.c:578
+#: plugins/nx/nx_plugin.c:749
+msgid "Disable clipboard sync"
+msgstr "Disabilitare la sincronizzazione degli appunti"
 
 #: plugins/spice/spice_plugin.c:567
 msgid "Enable audio channel"
@@ -1909,10 +1887,6 @@ msgstr "Highcolor (16 bit)"
 #: plugins/xdmcp/xdmcp_plugin.c:352
 msgid "True colour (24 bit)"
 msgstr "Truecolor (24 bit)"
-
-#: plugins/xdmcp/xdmcp_plugin.c:369 plugins/rdp/rdp_plugin.c:2407
-msgid "Colour depth"
-msgstr "Profondità colore"
 
 #: plugins/xdmcp/xdmcp_plugin.c:371 plugins/nx/nx_plugin.c:751
 msgid "Use local cursor"
@@ -2038,16 +2012,13 @@ msgstr ""
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:1907
-#, fuzzy, c-format
-#| msgid ""
-#| "Unable to establish a connection to the RDP server. Check \"Security "
-#| "protocol negotiation\" \"%s\"."
+#, c-format
 msgid ""
 "Unable to establish a connection to the RDP server \"%s\". Check \"Security "
 "protocol negotiation\"."
 msgstr ""
-"Impossibile stabilire una connessione al server RDP. Controllare "
-"\"Negoziazione del protocollo di sicurezza\" \"%s\"."
+"Impossibile stabilire una connessione al server RDP \"%s\". Controllare "
+"\"Negoziazione del protocollo di sicurezza\"."
 
 #: plugins/rdp/rdp_plugin.c:1915
 #, c-format
@@ -2111,33 +2082,19 @@ msgstr "GFX RFX Progressivo (32 bpp)"
 msgid "RemoteFX (32 bpp)"
 msgstr "RemoteFX (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2267
-msgid "True colour (32 bpp)"
-msgstr "Truecolor (32 bpp)"
-
 #: plugins/rdp/rdp_plugin.c:2268
 msgid "True colour (24 bpp)"
 msgstr "Truecolor (24 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2269
-msgid "High colour (16 bpp)"
-msgstr "Highcolor (16 bpp)"
-
 #: plugins/rdp/rdp_plugin.c:2270
 msgid "High colour (15 bpp)"
 msgstr "Highcolor (15 bpp)"
-
-#: plugins/rdp/rdp_plugin.c:2271
-msgid "256 colours (8 bpp)"
-msgstr "256 colori (8 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2302 data/ui/remmina_preferences.glade:663
 msgid "None"
 msgstr "Nessuno"
 
 #: plugins/rdp/rdp_plugin.c:2303
-#, fuzzy
-#| msgid "Autodetect"
 msgid "Auto-detect"
 msgstr "Rilevamento automatico"
 
@@ -2281,11 +2238,6 @@ msgstr ""
 "Il valore più alto possibile è 600000 ms (10 minuti).\n"
 
 #: plugins/rdp/rdp_plugin.c:2386
-#, fuzzy
-#| msgid ""
-#| "Performance optimisations based on the network connection type:\n"
-#| "Using autodetection is advised.\n"
-#| "If \"Autodetect\" fails, choose the most appropriate option in the list.\n"
 msgid ""
 "Performance optimisations based on the network connection type:\n"
 "Using auto-detection is advised.\n"
@@ -2451,10 +2403,6 @@ msgstr "Condividi porte parallele"
 msgid "Share a smart card"
 msgstr "Condividere una smart card"
 
-#: plugins/rdp/rdp_plugin.c:2458
-msgid "Turn off clipboard sync"
-msgstr "Disattivare la sincronizzazione degli Appunti"
-
 #: plugins/rdp/rdp_plugin.c:2459
 msgid "Ignore certificate"
 msgstr "Ignora il certificato"
@@ -2524,8 +2472,6 @@ msgid "Export connection in Windows .rdp file format"
 msgstr "Esporta la connessione nel formato .rdp di Windows"
 
 #: plugins/rdp/rdp_settings.c:200
-#, fuzzy
-#| msgid "<Auto detect>"
 msgid "<Auto-detect>"
 msgstr "<Rilevamento automatico>"
 
@@ -2643,6 +2589,10 @@ msgstr "Password per la chiave SSH privata"
 msgid "Enter NX authentication credentials"
 msgstr "Immettere le credenziali di autenticazione NX"
 
+#: plugins/nx/nx_plugin.c:750
+msgid "Disable encryption"
+msgstr "Disabilitare la cifratura"
+
 #: plugins/nx/nx_plugin.c:760
 msgid "Send Ctrl+Alt+Del"
 msgstr "Inviare Ctrl+Alt+Canc"
@@ -2702,7 +2652,7 @@ msgstr "Cerca per _espressioni regolari"
 
 #: data/ui/remmina_search.glade:242 data/ui/remmina_search_popover.glade:237
 msgid "_Wrap around"
-msgstr ""
+msgstr "_Ricomincia"
 
 #: data/ui/remmina_snap_info_dialog.glade:71
 msgid ""
@@ -3097,8 +3047,6 @@ msgid "Hyper"
 msgstr "Iper-interpolazione"
 
 #: data/ui/remmina_preferences.glade:160
-#, fuzzy
-#| msgid "Step size for auto scroll"
 msgid "Step size for auto-scroll"
 msgstr "Dimensione del passo per lo scorrimento automatico"
 
@@ -3157,10 +3105,8 @@ msgid "Remmina data folder"
 msgstr "Cartella dati Remmina"
 
 #: data/ui/remmina_preferences.glade:385
-#, fuzzy
-#| msgid "Remember last view mode for each connection"
 msgid "Remember last view for each connection"
-msgstr "Ricordare l’ultima modalità di visualizzazione per ogni connessione"
+msgstr "Ricorda l’ultima visualizzazione per ogni connessione"
 
 #. The star (*) is a reference to privacy consent
 #: data/ui/remmina_preferences.glade:389
@@ -3177,7 +3123,7 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:433
 msgid "Template for profile filenames"
-msgstr ""
+msgstr "Modello per i nomi dei file del profilo"
 
 #: data/ui/remmina_preferences.glade:445
 msgid ""
@@ -3216,10 +3162,8 @@ msgid "Hide the toolbar shown in the tabbed interface"
 msgstr "Nascondere la barra degli strumenti mostrata nell'interfaccia a schede"
 
 #: data/ui/remmina_preferences.glade:612
-#, fuzzy
-#| msgid "Default view mode"
 msgid "Default view"
-msgstr "Modalità di visualizzazione predefinita"
+msgstr "Visualizzazione predefinita"
 
 #: data/ui/remmina_preferences.glade:626
 msgid "Automatic"
@@ -3242,10 +3186,8 @@ msgid "By group"
 msgstr "Per gruppo"
 
 #: data/ui/remmina_preferences.glade:661
-#, fuzzy
-#| msgid "By protocols"
 msgid "By protocol"
-msgstr "Per protocolli"
+msgstr "Per protocollo"
 
 #: data/ui/remmina_preferences.glade:662
 msgid "Per connection"
@@ -3477,18 +3419,12 @@ msgid "Use default system font"
 msgstr "Utilizzare font di sistema predefinito"
 
 #: data/ui/remmina_preferences.glade:1926
-#, fuzzy
-#| msgid ""
-#| "Sets whether the SGR 1 attribute also switches to the bright counterpart "
-#| "of the first 8 palette colors, in addition to making them bold (legacy "
-#| "behavior) or if SGR 1 only enables bold and leaves the color intact."
 msgid ""
 "Selecting \\\"SGR 1\\\" also switches to the bright counterparts of the "
 "first 8 palette colours (in addition to making text bold)."
 msgstr ""
-"Imposta se l'attributo SGR 1 passa anche alla controparte chiara dei primi 8 "
-"colori della palette, oltre a renderli in grassetto (comportamento "
-"obsoleto), o se SGR 1 attiva solo il grassetto e lascia inviariato il colore."
+"Selezionando \\\"SGR 1\\\" si passa anche alle controparti luminose dei "
+"primi 8 colori della tavolozza (oltre a rendere il testo in grassetto)."
 
 #: data/ui/remmina_preferences.glade:1941
 msgid "Allow using bright colours with bold text"
@@ -3635,6 +3571,21 @@ msgstr "Scegli un nuovo tasto"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "Premere un nuovo tasto prego…"
+
+#~ msgid "True color (32 bpp)"
+#~ msgstr "Truecolor (32 bpp)"
+
+#~ msgid "High color (16 bpp)"
+#~ msgstr "Highcolor (16 bpp)"
+
+#~ msgid "256 colors (8 bpp)"
+#~ msgstr "256 colori (8 bpp)"
+
+#~ msgid "Color depth"
+#~ msgstr "Profondità colore"
+
+#~ msgid "Disable server input"
+#~ msgstr "Disabilitare l’input del server"
 
 #~ msgid "Profile filename template"
 #~ msgstr "Modello del nome file del profilo"

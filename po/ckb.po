@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Remmina v1.4.6\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-15 07:55+0000\n"
+"POT-Creation-Date: 2021-01-15 09:21+0000\n"
 "PO-Revision-Date: 2021-01-13 16:14+0000\n"
 "Last-Translator: Kurd As <kurd68587@gmail.com>\n"
 "Language-Team: Kurdish (Central) <https://hosted.weblate.org/projects/"
@@ -1663,16 +1663,16 @@ msgid "Please retry after turning on encryption for this profile."
 msgstr ""
 "تکایە دووبارە هەوڵ بدەرەوە دووای چالاک کردنی نهێنیکردن بۆ ئەم پرۆفایلە."
 
-#: plugins/vnc/vnc_plugin.c:1850
-msgid "True color (32 bpp)"
+#: plugins/vnc/vnc_plugin.c:1850 plugins/rdp/rdp_plugin.c:2267
+msgid "True colour (32 bpp)"
 msgstr "ڕەنگی ڕاستەقینە (32 bpp)"
 
-#: plugins/vnc/vnc_plugin.c:1851
-msgid "High color (16 bpp)"
+#: plugins/vnc/vnc_plugin.c:1851 plugins/rdp/rdp_plugin.c:2269
+msgid "High colour (16 bpp)"
 msgstr "ڕەنگی بەرز (16 bpp)"
 
-#: plugins/vnc/vnc_plugin.c:1852
-msgid "256 colors (8 bpp)"
+#: plugins/vnc/vnc_plugin.c:1852 plugins/rdp/rdp_plugin.c:2271
+msgid "256 colours (8 bpp)"
 msgstr "٢٥٦ ڕەنگ (8 bpp)"
 
 #: plugins/vnc/vnc_plugin.c:1859 plugins/rdp/rdp_plugin.c:2295
@@ -1700,8 +1700,9 @@ msgid "Repeater"
 msgstr "دووبارەکەرەوە"
 
 #: plugins/vnc/vnc_plugin.c:1881 plugins/vnc/vnc_plugin.c:1901
-msgid "Color depth"
-msgstr "قوڵی ڕنگ"
+#: plugins/xdmcp/xdmcp_plugin.c:369 plugins/rdp/rdp_plugin.c:2407
+msgid "Colour depth"
+msgstr "قوڵی ڕەنگ"
 
 #: plugins/vnc/vnc_plugin.c:1882 plugins/vnc/vnc_plugin.c:1902
 #: plugins/rdp/rdp_plugin.c:2424 plugins/nx/nx_plugin.c:733
@@ -1721,18 +1722,19 @@ msgstr "دیارکەری لەدوور پیشان بدە"
 msgid "View only"
 msgstr "تەنها پیشاندان"
 
-#: plugins/vnc/vnc_plugin.c:1920 plugins/spice/spice_plugin.c:565
-#: plugins/spice/spice_plugin.c:578 plugins/nx/nx_plugin.c:749
-msgid "Disable clipboard sync"
-msgstr "هاوکەتگەری لەبەرگرتنەوە ناچالاک بکە"
+#: plugins/vnc/vnc_plugin.c:1920 plugins/rdp/rdp_plugin.c:2458
+msgid "Turn off clipboard sync"
+msgstr "کوژاندنەوەی هاوکاتگەری شوێنی لەبەرگیراوەکان"
 
-#: plugins/vnc/vnc_plugin.c:1921 plugins/nx/nx_plugin.c:750
-msgid "Disable encryption"
-msgstr "بەنهێنیکردن ناچالاک بکە"
+#: plugins/vnc/vnc_plugin.c:1921
+#, fuzzy
+#| msgid "Use TLS encryption"
+msgid "Turn off encryption"
+msgstr "نهێنیکردنی TLS بەکاربێنە"
 
 #: plugins/vnc/vnc_plugin.c:1922 plugins/vnc/vnc_plugin.c:1935
-msgid "Disable server input"
-msgstr "تێخستنی ڕاژە ناچالاک بکە"
+msgid "Prevent local interaction on the server"
+msgstr ""
 
 #: plugins/vnc/vnc_plugin.c:1937
 msgid "Open Chat…"
@@ -1830,6 +1832,11 @@ msgstr "تێخستنی ڕاژە ناچالاک بکە"
 msgid "Prefered image compression"
 msgstr ""
 
+#: plugins/spice/spice_plugin.c:565 plugins/spice/spice_plugin.c:578
+#: plugins/nx/nx_plugin.c:749
+msgid "Disable clipboard sync"
+msgstr "هاوکەتگەری لەبەرگرتنەوە ناچالاک بکە"
+
 #: plugins/spice/spice_plugin.c:567
 msgid "Enable audio channel"
 msgstr "کەناڵی دەنگ چالاک بکە"
@@ -1889,10 +1896,6 @@ msgstr "ڕەنگی بەرز (16 بت)"
 #: plugins/xdmcp/xdmcp_plugin.c:352
 msgid "True colour (24 bit)"
 msgstr "ڕەنگی ڕاستەقینە (24 بت)"
-
-#: plugins/xdmcp/xdmcp_plugin.c:369 plugins/rdp/rdp_plugin.c:2407
-msgid "Colour depth"
-msgstr "قوڵی ڕەنگ"
 
 #: plugins/xdmcp/xdmcp_plugin.c:371 plugins/nx/nx_plugin.c:751
 msgid "Use local cursor"
@@ -2090,25 +2093,13 @@ msgstr "GFX RFX پێشکەوتنخواز (32 bpp)"
 msgid "RemoteFX (32 bpp)"
 msgstr "‫RemoteFX (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2267
-msgid "True colour (32 bpp)"
-msgstr "ڕەنگی ڕاستەقینە (32 bpp)"
-
 #: plugins/rdp/rdp_plugin.c:2268
 msgid "True colour (24 bpp)"
 msgstr "ڕەنگی ڕاستەقینە (24 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2269
-msgid "High colour (16 bpp)"
-msgstr "ڕەنگی بەرز (16 bpp)"
-
 #: plugins/rdp/rdp_plugin.c:2270
 msgid "High colour (15 bpp)"
 msgstr "ڕەنگی بەرز (15 bpp)"
-
-#: plugins/rdp/rdp_plugin.c:2271
-msgid "256 colours (8 bpp)"
-msgstr "٢٥٦ ڕەنگ (8 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2302 data/ui/remmina_preferences.glade:663
 msgid "None"
@@ -2425,10 +2416,6 @@ msgstr "پۆرتە هاوڕێکەکان بڵاوەپێبکە"
 msgid "Share a smart card"
 msgstr "کارتی زیرەک بڵاوەپێبکە"
 
-#: plugins/rdp/rdp_plugin.c:2458
-msgid "Turn off clipboard sync"
-msgstr "کوژاندنەوەی هاوکاتگەری شوێنی لەبەرگیراوەکان"
-
 #: plugins/rdp/rdp_plugin.c:2459
 msgid "Ignore certificate"
 msgstr "بڕوانامە فەرامۆش بکە"
@@ -2616,6 +2603,10 @@ msgstr "وشەی تێپەڕبوون بۆ کلیلی تایبەتی SSH"
 #: plugins/nx/nx_plugin.c:376
 msgid "Enter NX authentication credentials"
 msgstr "ڕێگەپێدانەکانی NX بنووسە"
+
+#: plugins/nx/nx_plugin.c:750
+msgid "Disable encryption"
+msgstr "بەنهێنیکردن ناچالاک بکە"
 
 #: plugins/nx/nx_plugin.c:760
 msgid "Send Ctrl+Alt+Del"
@@ -3599,6 +3590,21 @@ msgstr "کلیلێکی نوێ هەڵبژێرە"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "تکایە پەنجە بنی بە دوگمەیەکی تر…"
+
+#~ msgid "True color (32 bpp)"
+#~ msgstr "ڕەنگی ڕاستەقینە (32 bpp)"
+
+#~ msgid "High color (16 bpp)"
+#~ msgstr "ڕەنگی بەرز (16 bpp)"
+
+#~ msgid "256 colors (8 bpp)"
+#~ msgstr "٢٥٦ ڕەنگ (8 bpp)"
+
+#~ msgid "Color depth"
+#~ msgstr "قوڵی ڕنگ"
+
+#~ msgid "Disable server input"
+#~ msgstr "تێخستنی ڕاژە ناچالاک بکە"
 
 #~ msgid "Profile filename template"
 #~ msgstr "داڕێژەی ناوی پەڕگەی پرۆفایلی"

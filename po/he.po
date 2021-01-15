@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-15 07:55+0000\n"
-"PO-Revision-Date: 2021-01-14 22:47+0000\n"
+"POT-Creation-Date: 2021-01-15 09:21+0000\n"
+"PO-Revision-Date: 2021-01-15 09:21+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/remmina/remmina/"
 "he/>\n"
@@ -317,23 +317,10 @@ msgstr "ססמה לשחרור מפתח פרטי"
 
 #: src/remmina_ssh_plugin.c:1332 plugins/xdmcp/xdmcp_plugin.c:370
 #: plugins/rdp/rdp_plugin.c:2439 plugins/nx/nx_plugin.c:734
-#, fuzzy
-#| msgid "Startup program"
 msgid "Start-up program"
 msgstr "תכנית להתחלה"
 
 #: src/remmina_ssh_plugin.c:1337
-#, fuzzy
-#| msgid ""
-#| "The filename can use the following placeholders:\n"
-#| "\n"
-#| "  • %h is substituted with the server name\n"
-#| "  • %t is substituted with the SSH server name\n"
-#| "  • %u is substituted with the username\n"
-#| "  • %U is substituted with the SSH username\n"
-#| "  • %p is substituted with Remmina profile name\n"
-#| "  • %g is substituted with Remmina profile group name\n"
-#| "  • %d is substituted with local datetime in iso8601 format\n"
 msgid ""
 "The filename can use the following placeholders:\n"
 "\n"
@@ -353,7 +340,7 @@ msgstr ""
 "  • ‎%U מוחלף בשם המשתמש ל־ SSH\n"
 "  • ‎%p מוחלף בשם הפרופיל ב־Remmina\n"
 "  • ‎%g מוחלף בשם קבוצת הפרופילים ב־Remmina\n"
-"  • ‎%d מוחלף בתאריךשעה המקומיים  בתצורת iso8601\n"
+"  • ‎%d מוחלף בתאריך ובשעה המקומיים בתצורת ISO 8601\n"
 
 #: src/remmina_ssh_plugin.c:1359
 msgid "Terminal color scheme"
@@ -1301,20 +1288,6 @@ msgstr ""
 "• [server]:port</big></tt>"
 
 #: src/remmina_file_editor.c:81
-#, fuzzy
-#| msgid ""
-#| "<tt><big>• command in PATH args %h\n"
-#| "• /path/to/foo -options %h %u\n"
-#| "• %h is substituted with the server name\n"
-#| "• %t is substituted with the SSH server name\n"
-#| "• %u is substituted with the username\n"
-#| "• %U is substituted with the SSH username\n"
-#| "• %p is substituted with Remmina profile name\n"
-#| "• %g is substituted with Remmina profile group name\n"
-#| "• %d is substituted with local datetime in iso8601 format\n"
-#| "Do not run in background if you want the command to be executed before "
-#| "connecting.\n"
-#| "</big></tt>"
 msgid ""
 "<tt><big>• command in PATH args %h\n"
 "• /path/to/foo -options %h %u\n"
@@ -1337,7 +1310,7 @@ msgstr ""
 "• %U מוחלף בשם המשתמש ב־SSH\n"
 "• %p מוחלף בשם בפרופיל ב־Remmina\n"
 "• %g מוחלף בשם קבוצת הפרופילים ב־Remmina\n"
-"• %d מוחלף בתאריךשעה המקומיים בתצורת iso8601\n"
+"• %d מוחלף בתאריך ובשעה המקומיים בתצורת ISO 8601\n"
 "לא להריץ ברקע אם ברצונך שהפקודה תופעל בטרם ההתחברות.\n"
 "</big></tt>"
 
@@ -1415,14 +1388,10 @@ msgid "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
 msgstr "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
 
 #: src/remmina_file_editor.c:901
-#, fuzzy
-#| msgid "Startup"
 msgid "Start-up"
 msgstr "הפעלה"
 
 #: src/remmina_file_editor.c:904
-#, fuzzy
-#| msgid "Autostart this profile"
 msgid "Auto-start this profile"
 msgstr "התחלת הפרופיל הזה אוטומטית"
 
@@ -1444,8 +1413,6 @@ msgid "Same server at port %i"
 msgstr "אותו שרת בפתחה %i"
 
 #: src/remmina_file_editor.c:987 plugins/rdp/rdp_plugin.c:2440
-#, fuzzy
-#| msgid "Startup path"
 msgid "Start-up path"
 msgstr "נתיב להתחלה"
 
@@ -1657,16 +1624,16 @@ msgstr "שרת ה־VNC ביקש שיטת אימות בלתי מוכרת. %s"
 msgid "Please retry after turning on encryption for this profile."
 msgstr "נא לנסות שוב לאחר הפעלת הצפנה על הפרופיל הזה."
 
-#: plugins/vnc/vnc_plugin.c:1850
-msgid "True color (32 bpp)"
+#: plugins/vnc/vnc_plugin.c:1850 plugins/rdp/rdp_plugin.c:2267
+msgid "True colour (32 bpp)"
 msgstr "צבע אמתי (‎32 bpp)"
 
-#: plugins/vnc/vnc_plugin.c:1851
-msgid "High color (16 bpp)"
+#: plugins/vnc/vnc_plugin.c:1851 plugins/rdp/rdp_plugin.c:2269
+msgid "High colour (16 bpp)"
 msgstr "צבע איכותי (‎16 bpp)"
 
-#: plugins/vnc/vnc_plugin.c:1852
-msgid "256 colors (8 bpp)"
+#: plugins/vnc/vnc_plugin.c:1852 plugins/rdp/rdp_plugin.c:2271
+msgid "256 colours (8 bpp)"
 msgstr "256 צבעים (‏‎8 bpp)"
 
 #: plugins/vnc/vnc_plugin.c:1859 plugins/rdp/rdp_plugin.c:2295
@@ -1694,7 +1661,8 @@ msgid "Repeater"
 msgstr "ממסר"
 
 #: plugins/vnc/vnc_plugin.c:1881 plugins/vnc/vnc_plugin.c:1901
-msgid "Color depth"
+#: plugins/xdmcp/xdmcp_plugin.c:369 plugins/rdp/rdp_plugin.c:2407
+msgid "Colour depth"
 msgstr "עומק צבעים"
 
 #: plugins/vnc/vnc_plugin.c:1882 plugins/vnc/vnc_plugin.c:1902
@@ -1715,18 +1683,19 @@ msgstr "הצגת הסמן המרוחק"
 msgid "View only"
 msgstr "צפייה בלבד"
 
-#: plugins/vnc/vnc_plugin.c:1920 plugins/spice/spice_plugin.c:565
-#: plugins/spice/spice_plugin.c:578 plugins/nx/nx_plugin.c:749
-msgid "Disable clipboard sync"
-msgstr "נטרול סנכרון לוח הגזירים"
+#: plugins/vnc/vnc_plugin.c:1920 plugins/rdp/rdp_plugin.c:2458
+msgid "Turn off clipboard sync"
+msgstr "השבתת סנכרון לוח הגזירים"
 
-#: plugins/vnc/vnc_plugin.c:1921 plugins/nx/nx_plugin.c:750
-msgid "Disable encryption"
-msgstr "נטרול הצפנה"
+#: plugins/vnc/vnc_plugin.c:1921
+#, fuzzy
+#| msgid "Use TLS encryption"
+msgid "Turn off encryption"
+msgstr "להשתמש בהצפנת TLS"
 
 #: plugins/vnc/vnc_plugin.c:1922 plugins/vnc/vnc_plugin.c:1935
-msgid "Disable server input"
-msgstr "השבתת קלט השרת"
+msgid "Prevent local interaction on the server"
+msgstr ""
 
 #: plugins/vnc/vnc_plugin.c:1937
 msgid "Open Chat…"
@@ -1786,15 +1755,15 @@ msgstr "כבוי"
 
 #: plugins/spice/spice_plugin.c:520
 msgid "Auto GLZ"
-msgstr ""
+msgstr "GLZ אוטומטי"
 
 #: plugins/spice/spice_plugin.c:521
 msgid "Auto LZ"
-msgstr ""
+msgstr "LZ אוטומטי"
 
 #: plugins/spice/spice_plugin.c:530
 msgid "Disable video overlay if videos are not displayed properly.\n"
-msgstr ""
+msgstr "להשבית שכבת על של וידאו אם הוא לא מוצג כראוי.\n"
 
 #: plugins/spice/spice_plugin.c:545
 msgid "Use TLS encryption"
@@ -1809,20 +1778,21 @@ msgid "Share folder"
 msgstr "שיתוף תיקייה"
 
 #: plugins/spice/spice_plugin.c:562
-#, fuzzy
-#| msgid "Preference"
 msgid "Prefered video codec"
-msgstr "העדפה"
+msgstr "מפענח וידאו מועדף"
 
 #: plugins/spice/spice_plugin.c:563
-#, fuzzy
-#| msgid "Disable server input"
 msgid "Disable Gstreamer Overlay"
-msgstr "השבתת קלט השרת"
+msgstr "השבתת שכבת על של GStreamer"
 
 #: plugins/spice/spice_plugin.c:564
 msgid "Prefered image compression"
-msgstr ""
+msgstr "דחיסת תמונה מועדפת"
+
+#: plugins/spice/spice_plugin.c:565 plugins/spice/spice_plugin.c:578
+#: plugins/nx/nx_plugin.c:749
+msgid "Disable clipboard sync"
+msgstr "נטרול סנכרון לוח הגזירים"
 
 #: plugins/spice/spice_plugin.c:567
 msgid "Enable audio channel"
@@ -1885,10 +1855,6 @@ msgstr "צבע איכותי (‎16 סיביות)"
 #: plugins/xdmcp/xdmcp_plugin.c:352
 msgid "True colour (24 bit)"
 msgstr "צבע אמתי (‎24 סיביות)"
-
-#: plugins/xdmcp/xdmcp_plugin.c:369 plugins/rdp/rdp_plugin.c:2407
-msgid "Colour depth"
-msgstr "עומק צבעים"
 
 #: plugins/xdmcp/xdmcp_plugin.c:371 plugins/nx/nx_plugin.c:751
 msgid "Use local cursor"
@@ -2014,16 +1980,13 @@ msgstr ""
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:1907
-#, fuzzy, c-format
-#| msgid ""
-#| "Unable to establish a connection to the RDP server. Check \"Security "
-#| "protocol negotiation\" \"%s\"."
+#, c-format
 msgid ""
 "Unable to establish a connection to the RDP server \"%s\". Check \"Security "
 "protocol negotiation\"."
 msgstr ""
-"לא ניתן ליצור התחברות לשרת ה־RDP‏. יש לסמן את „משא ומתן על פרוטוקול "
-"אבטחה” „%s”."
+"לא ניתן ליצור התחברות לשרת ה־RDP‏ „%s”. יש לסמן את „משא ומתן על פרוטוקול "
+"אבטחה”."
 
 #: plugins/rdp/rdp_plugin.c:1915
 #, c-format
@@ -2086,35 +2049,21 @@ msgstr "GFX RFX תהליכי (32 סיביות לפיקסל)"
 msgid "RemoteFX (32 bpp)"
 msgstr "RemoteFX (‎32 סיביות לפיקסל)"
 
-#: plugins/rdp/rdp_plugin.c:2267
-msgid "True colour (32 bpp)"
-msgstr "צבע אמתי (‎32 bpp)"
-
 #: plugins/rdp/rdp_plugin.c:2268
 msgid "True colour (24 bpp)"
 msgstr "צבע אמתי (‎24 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2269
-msgid "High colour (16 bpp)"
-msgstr "צבע איכותי (‎16 bpp)"
-
 #: plugins/rdp/rdp_plugin.c:2270
 msgid "High colour (15 bpp)"
 msgstr "צבע איכותי (‎15 bpp)"
-
-#: plugins/rdp/rdp_plugin.c:2271
-msgid "256 colours (8 bpp)"
-msgstr "256 צבעים (‏‎8 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2302 data/ui/remmina_preferences.glade:663
 msgid "None"
 msgstr "בלי"
 
 #: plugins/rdp/rdp_plugin.c:2303
-#, fuzzy
-#| msgid "Autodetect"
 msgid "Auto-detect"
-msgstr "התחברות אוטומטית"
+msgstr "זיהוי אוטומטי"
 
 #: plugins/rdp/rdp_plugin.c:2304
 msgid "Modem"
@@ -2253,11 +2202,6 @@ msgstr ""
 "הערך הגבוה ביותר המותר הוא 600000 מילישניות שהם 10 דקות.\n"
 
 #: plugins/rdp/rdp_plugin.c:2386
-#, fuzzy
-#| msgid ""
-#| "Performance optimisations based on the network connection type:\n"
-#| "Using autodetection is advised.\n"
-#| "If \"Autodetect\" fails, choose the most appropriate option in the list.\n"
 msgid ""
 "Performance optimisations based on the network connection type:\n"
 "Using auto-detection is advised.\n"
@@ -2423,10 +2367,6 @@ msgstr "שיתוף פתחות טוריות"
 msgid "Share a smart card"
 msgstr "שיתוף כרטיס חכם"
 
-#: plugins/rdp/rdp_plugin.c:2458
-msgid "Turn off clipboard sync"
-msgstr "השבתת סנכרון לוח הגזירים"
-
 #: plugins/rdp/rdp_plugin.c:2459
 msgid "Ignore certificate"
 msgstr "התעלמות מאישור"
@@ -2496,8 +2436,6 @@ msgid "Export connection in Windows .rdp file format"
 msgstr "ייצוא החיבור בתצורת ‎.rdp עבור Windows"
 
 #: plugins/rdp/rdp_settings.c:200
-#, fuzzy
-#| msgid "<Auto detect>"
 msgid "<Auto-detect>"
 msgstr "<זיהוי אוטומטי>"
 
@@ -2614,6 +2552,10 @@ msgstr "ססמה למפתח SSH פרטי"
 #: plugins/nx/nx_plugin.c:376
 msgid "Enter NX authentication credentials"
 msgstr "נא להקליד פרטי אימות ל־NX"
+
+#: plugins/nx/nx_plugin.c:750
+msgid "Disable encryption"
+msgstr "נטרול הצפנה"
 
 #: plugins/nx/nx_plugin.c:760
 msgid "Send Ctrl+Alt+Del"
@@ -3062,8 +3004,6 @@ msgid "Hyper"
 msgstr "היפר"
 
 #: data/ui/remmina_preferences.glade:160
-#, fuzzy
-#| msgid "Step size for auto scroll"
 msgid "Step size for auto-scroll"
 msgstr "גודל צעד לגלילה אוטומטית"
 
@@ -3106,10 +3046,6 @@ msgstr ""
 "%Y שנה, %m חודש, %d יום, %H שעות, %M דקות, %S שניות (אזור זמן UTC)\n"
 
 #: data/ui/remmina_preferences.glade:353
-#, fuzzy
-#| msgid ""
-#| "The folder where connection profiles are saved, it defaults to the "
-#| "XDG_USER_DATA"
 msgid ""
 "The folder connection profiles are saved in, it defaults to the XDG_USER_DATA"
 msgstr "התיקייה בה נשמרים פרופילי החיבורים, בררת המחדל מכוונת אל XDG_USER_DATA"
@@ -3120,10 +3056,8 @@ msgid "Remmina data folder"
 msgstr "תיקיית הנתונים של Remmina"
 
 #: data/ui/remmina_preferences.glade:385
-#, fuzzy
-#| msgid "Remember last view mode for each connection"
 msgid "Remember last view for each connection"
-msgstr "לזכור את מצב התצוגה האחרונה לכל התחברות"
+msgstr "לזכור את התצוגה האחרונה לכל התחברות"
 
 #. The star (*) is a reference to privacy consent
 #: data/ui/remmina_preferences.glade:389
@@ -3139,7 +3073,7 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:433
 msgid "Template for profile filenames"
-msgstr ""
+msgstr "תבנית לשמות קובצי פרופילים"
 
 #: data/ui/remmina_preferences.glade:445
 msgid ""
@@ -3178,10 +3112,8 @@ msgid "Hide the toolbar shown in the tabbed interface"
 msgstr "להסתיר את סרגל הכלים שמופיע במנשק המופרד ללשוניות"
 
 #: data/ui/remmina_preferences.glade:612
-#, fuzzy
-#| msgid "Default view mode"
 msgid "Default view"
-msgstr "מצב תצוגה כבררת מחדל"
+msgstr "תצוגת בררת מחדל"
 
 #: data/ui/remmina_preferences.glade:626
 msgid "Automatic"
@@ -3204,10 +3136,8 @@ msgid "By group"
 msgstr "לפי קבוצה"
 
 #: data/ui/remmina_preferences.glade:661
-#, fuzzy
-#| msgid "By protocols"
 msgid "By protocol"
-msgstr "לפי פרוטוקולים"
+msgstr "לפי פרוטוקול"
 
 #: data/ui/remmina_preferences.glade:662
 msgid "Per connection"
@@ -3434,16 +3364,12 @@ msgid "Use default system font"
 msgstr "להשתמש בגופן בררת המחדל של המערכת"
 
 #: data/ui/remmina_preferences.glade:1926
-#, fuzzy
-#| msgid ""
-#| "Switches to the bright counterparts of the first 8 palette colors with "
-#| "the SGR 1 attribute, (in addition to only making them bold."
 msgid ""
 "Selecting \\\"SGR 1\\\" also switches to the bright counterparts of the "
 "first 8 palette colours (in addition to making text bold)."
 msgstr ""
-"מחליף למקבילות הבהירות של 8 הצבעים שבערכת הצבעים עם המאפיין SGR 1 (בנוסף "
-"להדגשתם בלבד)."
+"בחירה ב־„SGR 1” מחליפה גם למקבילות הבהירות של 8 הצבעים הראשונים בערכה (בנוסף "
+"להדגשת הטקסט)."
 
 #: data/ui/remmina_preferences.glade:1941
 msgid "Allow using bright colours with bold text"
@@ -3589,6 +3515,21 @@ msgstr "נא לבחור מפתח חדש"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "נא ללחוץ על המקש החדש…"
+
+#~ msgid "True color (32 bpp)"
+#~ msgstr "צבע אמתי (‎32 bpp)"
+
+#~ msgid "High color (16 bpp)"
+#~ msgstr "צבע איכותי (‎16 bpp)"
+
+#~ msgid "256 colors (8 bpp)"
+#~ msgstr "256 צבעים (‏‎8 bpp)"
+
+#~ msgid "Color depth"
+#~ msgstr "עומק צבעים"
+
+#~ msgid "Disable server input"
+#~ msgstr "השבתת קלט השרת"
 
 #~ msgid "Profile filename template"
 #~ msgstr "תבנית שם קובץ פרופיל"
