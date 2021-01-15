@@ -2300,7 +2300,7 @@ static gpointer quality_list[] =
 static gpointer network_list[] =
 {
 	"none",		  N_("None"),
-	"autodetect",	  N_("Autodetect"),
+	"autodetect",	  N_("Auto-detect"),
 	"modem",	  N_("Modem"),
 	"broadband-low",  N_("Low performance broadband"),
 	"satellite",	  N_("Satellite"),
@@ -2384,8 +2384,8 @@ static gchar timeout_tooltip[] =
 
 static gchar network_tooltip[] =
 	N_("Performance optimisations based on the network connection type:\n"
-	   "Using autodetection is advised.\n"
-	   "If \"Autodetect\" fails, choose the most appropriate option in the list.\n");
+	   "Using auto-detection is advised.\n"
+	   "If \"Auto-detect\" fails, choose the most appropriate option in the list.\n");
 
 
 /* Array of RemminaProtocolSetting for basic settings.
