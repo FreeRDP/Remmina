@@ -630,7 +630,6 @@ gboolean remmina_plugin_spice_is_lz4_supported() {
 	GOptionContext *context;
 	GOptionGroup *spiceGroup;
 	gchar *spiceHelp;
-	gchar **spiceHelpLines, **line;
 
 	TRACE_CALL(__func__);
 
@@ -640,6 +639,7 @@ gboolean remmina_plugin_spice_is_lz4_supported() {
 
 	spiceHelp = g_option_context_get_help(context, FALSE, spiceGroup);
 	if (g_strcmp0(spiceHelp, "") != 0) {
+		gchar **spiceHelpLines, **line;
 		spiceHelpLines = g_strsplit(spiceHelp, "\n", -1);
 
 		for (line = spiceHelpLines; *line != NULL; ++line) {
@@ -652,9 +652,9 @@ gboolean remmina_plugin_spice_is_lz4_supported() {
 			}
 		}
 
-		g_option_context_free(context);
 		g_strfreev(spiceHelpLines);
 	}
+	g_option_context_free(context);
 	g_free(spiceHelp);
 
 	return result;
