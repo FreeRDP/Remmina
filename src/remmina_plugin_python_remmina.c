@@ -370,7 +370,7 @@ static PyTypeObject python_protocol_setting_type = {
 
 typedef struct {
     PyObject_HEAD
-	RemminaProtocolFeatureType* type;
+	RemminaProtocolFeatureType type;
 	gint id;
 	PyObject* opt1;
 	PyObject* opt2;
