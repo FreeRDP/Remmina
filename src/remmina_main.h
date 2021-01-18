@@ -127,5 +127,6 @@ void remmina_main_on_action_tools_export(GSimpleAction *action, GVariant *param,
 void remmina_main_on_action_tools_import(GSimpleAction *action, GVariant *param, gpointer data);
 void remmina_main_on_action_expand(GSimpleAction *action, GVariant *param, gpointer data);
 void remmina_main_on_action_collapse(GSimpleAction *action, GVariant *param, gpointer data);
+void remmina_main_on_action_search_toggle(GSimpleAction *action, GVariant *param, gpointer data);
 
 G_END_DECLS
