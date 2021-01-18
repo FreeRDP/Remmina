@@ -7,7 +7,7 @@
 # anonymous <noreply@weblate.org>, 2019.
 # Allan Nordhøy <epost@anotheragency.no>, 2019, 2020.
 # Aroa Taha <Naturameuocat@protonmail.com>, 2019.
-# Ecron <ecron_89@hotmail.com>, 2020.
+# Ecron <ecron_89@hotmail.com>, 2020, 2021.
 # Antenore Gatta <antenore@simbiosi.org>, 2020.
 # BennyBeat <bennybeat@gmail.com>, 2020.
 # Gil Obradors <gil.obradors@gmail.com>, 2021.
@@ -15,9 +15,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-15 16:14+0000\n"
-"PO-Revision-Date: 2021-01-07 10:32+0000\n"
-"Last-Translator: Gil Obradors <gil.obradors@gmail.com>\n"
+"POT-Creation-Date: 2021-01-18 16:15+0000\n"
+"PO-Revision-Date: 2021-01-18 16:16+0000\n"
+"Last-Translator: Ecron <ecron_89@hotmail.com>\n"
 "Language-Team: Catalan <https://hosted.weblate.org/projects/remmina/remmina/"
 "ca/>\n"
 "Language: ca\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.4.1-dev\n"
+"X-Generator: Weblate 4.5-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
 
 #: src/remmina_protocol_widget.c:279
@@ -323,23 +323,10 @@ msgstr "Contrasenya per a desblocar la clau privada"
 
 #: src/remmina_ssh_plugin.c:1365 plugins/xdmcp/xdmcp_plugin.c:370
 #: plugins/rdp/rdp_plugin.c:2439 plugins/nx/nx_plugin.c:734
-#, fuzzy
-#| msgid "Startup program"
 msgid "Start-up program"
 msgstr "Programa d’inici"
 
 #: src/remmina_ssh_plugin.c:1370
-#, fuzzy
-#| msgid ""
-#| "The filename can use the following placeholders:\n"
-#| "\n"
-#| "  • %h is substituted with the server name\n"
-#| "  • %t is substituted with the SSH server name\n"
-#| "  • %u is substituted with the username\n"
-#| "  • %U is substituted with the SSH username\n"
-#| "  • %p is substituted with Remmina profile name\n"
-#| "  • %g is substituted with Remmina profile group name\n"
-#| "  • %d is substituted with local datetime in iso8601 format\n"
 msgid ""
 "The filename can use the following placeholders:\n"
 "\n"
@@ -359,7 +346,7 @@ msgstr ""
 "  • %U se substitueix amb el nom d'usuari SSH.\n"
 "  • %p se substitueix amb el nom del perfil del Remmina.\n"
 "  • %g se substitueix amb el nom del perfil del grup del Remmina.\n"
-"  • %d se substitueix amb la data local en format iso8601.\n"
+"  • %d se substitueix amb la data i hora local en format ISO 8601.\n"
 
 #: src/remmina_ssh_plugin.c:1392
 msgid "Terminal color scheme"
@@ -709,7 +696,7 @@ msgstr "Miniaplicació del Remmina"
 msgid "Connect to remote desktops through the applet menu"
 msgstr "Connecta amb escriptoris remots mitjançant el menú de la miniaplicació"
 
-#: src/remmina_icon.c:473 src/remmina_icon.c:474 src/remmina_main.c:1265
+#: src/remmina_icon.c:473 src/remmina_icon.c:474 src/remmina_main.c:1280
 msgid "Remmina Remote Desktop Client"
 msgstr "Client d’escriptori remot Remmina"
 
@@ -856,19 +843,19 @@ msgstr "Descripció"
 msgid "Version"
 msgstr "Versió"
 
-#: src/remmina_main.c:660
+#: src/remmina_main.c:661
 #, c-format
 msgid "Total %i item."
 msgid_plural "Total %i items."
 msgstr[0] "%i element en total."
 msgstr[1] "%i elements en total."
 
-#: src/remmina_main.c:838
+#: src/remmina_main.c:842
 #, c-format
 msgid "Are you sure you want to delete \"%s\"?"
 msgstr "Segur que voleu suprimir «%s»?"
 
-#: src/remmina_main.c:948
+#: src/remmina_main.c:952
 #, c-format
 msgid ""
 "Unable to import:\n"
@@ -877,19 +864,19 @@ msgstr ""
 "No s’ha pogut importar:\n"
 "%s"
 
-#: src/remmina_main.c:974 data/ui/remmina_main.glade:291
+#: src/remmina_main.c:978 data/ui/remmina_main.glade:291
 msgid "Import"
 msgstr "Importa"
 
-#: src/remmina_main.c:997 src/remmina_file_editor.c:1436
+#: src/remmina_main.c:1001 src/remmina_file_editor.c:1436
 msgid "_Save"
 msgstr "_Desa"
 
-#: src/remmina_main.c:1003
+#: src/remmina_main.c:1007
 msgid "This protocol does not support exporting."
 msgstr "Aquest protocol no admet l’exportació."
 
-#: src/remmina_main.c:1267
+#: src/remmina_main.c:1282
 msgid "Remmina Kiosk"
 msgstr "Quiosc Remmina"
 
@@ -1077,10 +1064,9 @@ msgid "SFTP - Secure File Transfer"
 msgstr "SFTP - Transferència segura de fitxers"
 
 #: src/remmina_ssh.c:236
-#, fuzzy, c-format
-#| msgid "Could not authenticate with SSH password. %s"
+#, c-format
 msgid "Could not authenticate with TOTP/OTP/2FA. %s"
-msgstr "No s'ha pogut autenticar amb la contrasenya SSH. %s"
+msgstr "No s'ha pogut autenticar amb TOTP/OTP/2FA. %s"
 
 #: src/remmina_ssh.c:295 src/remmina_ssh.c:568
 #, c-format
@@ -1095,10 +1081,8 @@ msgid "Could not authenticate with public SSH key. %s"
 msgstr "No s'ha pogut autenticar amb la clau pública SSH. %s"
 
 #: src/remmina_ssh.c:316
-#, fuzzy
-#| msgid "SSH Key file not yet set."
 msgid "SSH identity file not selected."
-msgstr "Encara no s'ha definit el fitxer de la clau SSH."
+msgstr "No s'ha seleccionat el fitxer d'identitat SSH."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:327
@@ -1109,6 +1093,8 @@ msgstr "No es pot importar la clau pública SHH. %s"
 #: src/remmina_ssh.c:336
 msgid "No saved SSH passphrase supplied. Asking user to enter it."
 msgstr ""
+"No hi ha cap contrasenya SSH desada. Es demana a l'usuari que l'hi "
+"introdueixi."
 
 #: src/remmina_ssh.c:423
 #, c-format
@@ -1134,16 +1120,14 @@ msgid "The public SSH key changed!"
 msgstr "La clau pública SSH ha canviat!"
 
 #: src/remmina_ssh.c:571
-#, fuzzy, c-format
-#| msgid "Could not authenticate with SSH password. %s"
+#, c-format
 msgid "Could not authenticate with password. %s"
-msgstr "No s'ha pogut autenticar amb la contrasenya SSH. %s"
+msgstr "No s'ha pogut autenticar amb contrasenya. %s"
 
 #: src/remmina_ssh.c:606
-#, fuzzy, c-format
-#| msgid "Could not authenticate with public SSH key. %s"
+#, c-format
 msgid "Could not authenticate with keyboard-interactive. %s"
-msgstr "No s'ha pogut autenticar amb la clau pública SSH. %s"
+msgstr "No s'ha pogut autenticar amb teclat interactiu. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:733
@@ -1159,8 +1143,7 @@ msgstr "No s'ha pogut recuperar la clau pública SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:748
-#, fuzzy, c-format
-#| msgid "Could not fetch checksum for public SSH key. %s"
+#, c-format
 msgid "Could not fetch checksum of the public SSH key. %s"
 msgstr ""
 "No s'ha pogut recuperar la suma de verificació de la clau pública SSH. %s"
@@ -1174,12 +1157,6 @@ msgid "Do you trust the new public key?"
 msgstr "Confieu en la clau pública nova?"
 
 #: src/remmina_ssh.c:766
-#, fuzzy
-#| msgid ""
-#| "Warning: The server has changed its public key. This means either you are "
-#| "under attack,\n"
-#| "or the administrator has changed the key. The new public key fingerprint "
-#| "is:"
 msgid ""
 "Warning: The server has changed its public key. This means you are either "
 "under attack,\n"
@@ -1210,7 +1187,7 @@ msgstr "SSH Kerberos/GSSAPI"
 
 #: src/remmina_ssh.c:817
 msgid "Enter TOTP/OTP/2FA code"
-msgstr ""
+msgstr "Introduïu el codi TOTP/OTP/2FA"
 
 #: src/remmina_ssh.c:846 src/remmina_ssh.c:872
 msgid "SSH tunnel credentials"
@@ -1222,7 +1199,7 @@ msgstr "Credencials SSH"
 
 #: src/remmina_ssh.c:923
 msgid "Keyboard interactive login, TOTP/OTP/2FA"
-msgstr ""
+msgstr "Inici amb teclat interactiu, TOTP/OTP/2FA"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1143
@@ -1355,20 +1332,6 @@ msgstr ""
 "* [servidor]:port</big></tt>"
 
 #: src/remmina_file_editor.c:67
-#, fuzzy
-#| msgid ""
-#| "<tt><big>• command in PATH args %h\n"
-#| "• /path/to/foo -options %h %u\n"
-#| "• %h is substituted with the server name\n"
-#| "• %t is substituted with the SSH server name\n"
-#| "• %u is substituted with the username\n"
-#| "• %U is substituted with the SSH username\n"
-#| "• %p is substituted with Remmina profile name\n"
-#| "• %g is substituted with Remmina profile group name\n"
-#| "• %d is substituted with local datetime in iso8601 format\n"
-#| "Do not run in background if you want the command to be executed before "
-#| "connecting.\n"
-#| "</big></tt>"
 msgid ""
 "<tt><big>• command in PATH args %h\n"
 "• /path/to/foo -options %h %u\n"
@@ -1385,13 +1348,13 @@ msgid ""
 msgstr ""
 "<tt><big>• ordre en arguments de CAMÍ %h\n"
 "• /camí/a/enlloc -opcions %h %u\n"
-"• %h es substitueix pel nom del servidor\n"
-"• %t es substitueix pel nom del servidor SSH\n"
-"• %u es substitueix pel nom d'usuari\n"
-"• %U es substitueix pel nom d'usuari SSH\n"
-"• %p es substitueix pel nom del perfil del Remmina\n"
-"• %g es substitueix pel nom del perfil del grupo del Remmina\n"
-"• %d es substitueix per la data i hora local en format ISO8601\n"
+"• %h se substitueix pel nom del servidor\n"
+"• %t se substitueix pel nom del servidor SSH\n"
+"• %u se substitueix pel nom d'usuari\n"
+"• %U se substitueix pel nom d'usuari SSH\n"
+"• %p se substitueix pel nom del perfil del Remmina\n"
+"• %g se substitueix pel nom del perfil del grup del Remmina\n"
+"• %d se substitueix per la data i hora local en format ISO 8601\n"
 "No l'executeu al rerefons si voleu que l'ordre s'executi abans que es faci "
 "la connexió.\n"
 "</big></tt>"
@@ -1470,14 +1433,10 @@ msgid "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
 msgstr "/camí/a/l'ordre -opció1 argument %h %u %t -opció2 %U %p %g"
 
 #: src/remmina_file_editor.c:887
-#, fuzzy
-#| msgid "Startup"
 msgid "Start-up"
-msgstr "Inicia"
+msgstr "Inici"
 
 #: src/remmina_file_editor.c:890
-#, fuzzy
-#| msgid "Autostart this profile"
 msgid "Auto-start this profile"
 msgstr "Inicia de manera automàtica aquest perfil"
 
@@ -1499,8 +1458,6 @@ msgid "Same server at port %i"
 msgstr "El mateix servidor en el port %i"
 
 #: src/remmina_file_editor.c:973 plugins/rdp/rdp_plugin.c:2440
-#, fuzzy
-#| msgid "Startup path"
 msgid "Start-up path"
 msgstr "Camí d’inici"
 
@@ -1779,14 +1736,12 @@ msgid "Turn off clipboard sync"
 msgstr "Desactiva la sincronització del porta-retalls"
 
 #: plugins/vnc/vnc_plugin.c:1921
-#, fuzzy
-#| msgid "Use TLS encryption"
 msgid "Turn off encryption"
-msgstr "Utilitza el xifratge TLS"
+msgstr "Desactiva el xifratge"
 
 #: plugins/vnc/vnc_plugin.c:1922 plugins/vnc/vnc_plugin.c:1935
 msgid "Prevent local interaction on the server"
-msgstr ""
+msgstr "Evita la interacció local en el servidor"
 
 #: plugins/vnc/vnc_plugin.c:1937
 msgid "Open Chat…"
@@ -1846,15 +1801,16 @@ msgstr "Desactiva"
 
 #: plugins/spice/spice_plugin.c:520
 msgid "Auto GLZ"
-msgstr ""
+msgstr "Auto GLZ"
 
 #: plugins/spice/spice_plugin.c:521
 msgid "Auto LZ"
-msgstr ""
+msgstr "Auto LZ"
 
 #: plugins/spice/spice_plugin.c:530
 msgid "Disable video overlay if videos are not displayed properly.\n"
 msgstr ""
+"Desactiva la superposició de vídeos si aquests no es mostren correctament.\n"
 
 #: plugins/spice/spice_plugin.c:545
 msgid "Use TLS encryption"
@@ -1869,20 +1825,16 @@ msgid "Share folder"
 msgstr "Comparteix una carpeta"
 
 #: plugins/spice/spice_plugin.c:562
-#, fuzzy
-#| msgid "Preference"
 msgid "Prefered video codec"
-msgstr "Preferència"
+msgstr "Còdec de vídeo preferit"
 
 #: plugins/spice/spice_plugin.c:563
-#, fuzzy
-#| msgid "Disable server input"
 msgid "Disable Gstreamer Overlay"
-msgstr "Desactiva l’entrada del servidor"
+msgstr "Desactiva la superposició del Gstreamer"
 
 #: plugins/spice/spice_plugin.c:564
 msgid "Prefered image compression"
-msgstr ""
+msgstr "Compressió d'imatge preferida"
 
 #: plugins/spice/spice_plugin.c:565 plugins/spice/spice_plugin.c:578
 #: plugins/nx/nx_plugin.c:749
@@ -2075,16 +2027,13 @@ msgstr ""
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:1907
-#, fuzzy, c-format
-#| msgid ""
-#| "Unable to establish a connection to the RDP server. Check \"Security "
-#| "protocol negotiation\" \"%s\"."
+#, c-format
 msgid ""
 "Unable to establish a connection to the RDP server \"%s\". Check \"Security "
 "protocol negotiation\"."
 msgstr ""
-"No s'ha pogut establir una connexió amb el servidor RDP. Comproveu la "
-"«Negociació del protocol de seguretat» «%s»."
+"No s'ha pogut establir una connexió amb el servidor RDP «%s». Comproveu la "
+"«Negociació del protocol de seguretat»."
 
 #: plugins/rdp/rdp_plugin.c:1915
 #, c-format
@@ -2161,14 +2110,12 @@ msgid "None"
 msgstr "Cap"
 
 #: plugins/rdp/rdp_plugin.c:2303
-#, fuzzy
-#| msgid "<Auto detect>"
 msgid "Auto-detect"
-msgstr "<Detecta automàticament>"
+msgstr "Detecta automàticament"
 
 #: plugins/rdp/rdp_plugin.c:2304
 msgid "Modem"
-msgstr "Modem"
+msgstr "Mòdem"
 
 #: plugins/rdp/rdp_plugin.c:2305
 msgid "Low performance broadband"
@@ -2227,15 +2174,6 @@ msgid "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 and newer)"
 msgstr "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 i més nous)"
 
 #: plugins/rdp/rdp_plugin.c:2348
-#, fuzzy
-#| msgid ""
-#| "Used i.a. by terminal services in smart card channel to distinguish "
-#| "client capabilities:\n"
-#| "  • < 4034: Windows XP base smart card functions\n"
-#| "  • 4034-7064: Windows Vista/7: SCardReadCache(),\n"
-#| "    SCardWriteCache(), SCardGetTransmitCount()\n"
-#| "  • >= 7065: Windows 8 and newer: SCardGetReaderIcon(),\n"
-#| "    SCardGetDeviceTypeId()"
 msgid ""
 "Used i.a. by terminal services in a smart card channel to distinguish client "
 "capabilities:\n"
@@ -2245,8 +2183,8 @@ msgid ""
 "  • >= 7065: Windows 8 and newer: SCardGetReaderIcon(),\n"
 "    SCardGetDeviceTypeId()"
 msgstr ""
-"Utilitzat p. ex. pels serveis del terminal al canal de targeta intel·ligent "
-"per a distingir capacitats del client:\n"
+"Utilitzat p. ex. pels serveis del terminal a un canal de targeta "
+"intel·ligent per a distingir capacitats del client:\n"
 "  • < 4034: funcions de targeta intel·ligent basades en Windows XP\n"
 "  • 4034-7064: Windows Vista/7: SCardReadCache(),\n"
 "    SCardWriteCache(), SCardGetTransmitCount()\n"
@@ -2313,19 +2251,14 @@ msgstr ""
 "El valor possible més alt és 600000 ms (10 minuts).\n"
 
 #: plugins/rdp/rdp_plugin.c:2386
-#, fuzzy
-#| msgid ""
-#| "Performance optimisations based on the network connection type:\n"
-#| "Using autodetection is advised.\n"
-#| "If \"Autodetect\" fails, choose the most appropriate option in the list.\n"
 msgid ""
 "Performance optimisations based on the network connection type:\n"
 "Using auto-detection is advised.\n"
 "If \"Auto-detect\" fails, choose the most appropriate option in the list.\n"
 msgstr ""
-"Optimitzacions basades en el tipus de connexió de xarxa:\n"
-"Autodetecció recomanada.\n"
-"Si l'autodetecció falla escull la més apropiada.\n"
+"Optimitzacions de rendiment basades en el tipus de connexió de xarxa:\n"
+"Es recomana usar l'autodetecció.\n"
+"Si l'autodetecció falla, trieu l'opció més apropiada en la llista.\n"
 
 #: plugins/rdp/rdp_plugin.c:2408
 msgid "Network connection type"
@@ -2552,8 +2485,6 @@ msgid "Export connection in Windows .rdp file format"
 msgstr "Exporta la connexió en el format .rdp de Windows"
 
 #: plugins/rdp/rdp_settings.c:200
-#, fuzzy
-#| msgid "<Auto detect>"
 msgid "<Auto-detect>"
 msgstr "<Detecta automàticament>"
 
@@ -3126,8 +3057,6 @@ msgid "Hyper"
 msgstr "Híper"
 
 #: data/ui/remmina_preferences.glade:160
-#, fuzzy
-#| msgid "Step size for auto scroll"
 msgid "Step size for auto-scroll"
 msgstr "Mida del pas del desplaçament automàtic"
 
@@ -3170,10 +3099,6 @@ msgstr ""
 "%Y Ant, %m Mes, %d Dia, %H Hora, %M Minut, %S Segons (hora UTC)\n"
 
 #: data/ui/remmina_preferences.glade:353
-#, fuzzy
-#| msgid ""
-#| "The folder where connection profiles are saved, it defaults to the "
-#| "XDG_USER_DATA"
 msgid ""
 "The folder connection profiles are saved in, it defaults to the XDG_USER_DATA"
 msgstr ""
@@ -3186,10 +3111,8 @@ msgid "Remmina data folder"
 msgstr "Carpeta de dades del Remmina"
 
 #: data/ui/remmina_preferences.glade:385
-#, fuzzy
-#| msgid "Remember last view mode for each connection"
 msgid "Remember last view for each connection"
-msgstr "Recorda el darrer mode de visualització de cada connexió"
+msgstr "Recorda l'última visualització de cada connexió"
 
 #. The star (*) is a reference to privacy consent
 #: data/ui/remmina_preferences.glade:389
@@ -3206,7 +3129,7 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:433
 msgid "Template for profile filenames"
-msgstr ""
+msgstr "Plantilla per als noms de fitxers de perfil"
 
 #: data/ui/remmina_preferences.glade:445
 msgid ""
@@ -3246,10 +3169,8 @@ msgid "Hide the toolbar shown in the tabbed interface"
 msgstr "Amaga la barra d’eines de la interfície amb pestanyes"
 
 #: data/ui/remmina_preferences.glade:612
-#, fuzzy
-#| msgid "Default view mode"
 msgid "Default view"
-msgstr "Mode de visualització per defecte"
+msgstr "Visualització per defecte"
 
 #: data/ui/remmina_preferences.glade:626
 msgid "Automatic"
@@ -3272,10 +3193,8 @@ msgid "By group"
 msgstr "Per grup"
 
 #: data/ui/remmina_preferences.glade:661
-#, fuzzy
-#| msgid "By protocols"
 msgid "By protocol"
-msgstr "Per protocols"
+msgstr "Per protocol"
 
 #: data/ui/remmina_preferences.glade:662
 msgid "Per connection"
@@ -3463,7 +3382,7 @@ msgstr "Empremtes digitals i certificats"
 
 #: data/ui/remmina_preferences.glade:1668
 msgid "Automatically accept all fingerprints and certificates"
-msgstr "Automàticament accepta les empremtes i certificats digitals."
+msgstr "Accepta automàticament totes les empremtes i certificats"
 
 #: data/ui/remmina_preferences.glade:1674
 msgid "Trust all fingerprints and certificates"
@@ -3511,10 +3430,12 @@ msgid ""
 "Selecting \\\"SGR 1\\\" also switches to the bright counterparts of the "
 "first 8 palette colours (in addition to making text bold)."
 msgstr ""
+"Si se selecciona \\«SGR 1\\», també es canviarà a les versions clares de les "
+"primeres 8 paletes de colors (a més de fer el text en negreta)."
 
 #: data/ui/remmina_preferences.glade:1941
 msgid "Allow using bright colours with bold text"
-msgstr ""
+msgstr "Permet usar colors clars amb text en negreta"
 
 #: data/ui/remmina_preferences.glade:1955
 msgid "Colour theme"
@@ -3626,10 +3547,8 @@ msgid "Search text"
 msgstr "Cerca text"
 
 #: data/ui/remmina_preferences.glade:2379
-#, fuzzy
-#| msgid "Normal colours"
 msgid "Bold colour"
-msgstr "Colors normals"
+msgstr "Color en negreta"
 
 #: data/ui/remmina_preferences.glade:2410
 msgid "Terminal"

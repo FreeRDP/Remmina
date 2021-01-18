@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-15 16:14+0000\n"
-"PO-Revision-Date: 2021-01-14 22:47+0000\n"
+"POT-Creation-Date: 2021-01-18 16:15+0000\n"
+"PO-Revision-Date: 2021-01-18 16:16+0000\n"
 "Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "remmina/remmina/pt_BR/>\n"
@@ -317,23 +317,10 @@ msgstr "Senha para desbloquear a chave privada"
 
 #: src/remmina_ssh_plugin.c:1365 plugins/xdmcp/xdmcp_plugin.c:370
 #: plugins/rdp/rdp_plugin.c:2439 plugins/nx/nx_plugin.c:734
-#, fuzzy
-#| msgid "Startup program"
 msgid "Start-up program"
 msgstr "Programa de inicialização"
 
 #: src/remmina_ssh_plugin.c:1370
-#, fuzzy
-#| msgid ""
-#| "The filename can use the following placeholders:\n"
-#| "\n"
-#| "  • %h is substituted with the server name\n"
-#| "  • %t is substituted with the SSH server name\n"
-#| "  • %u is substituted with the username\n"
-#| "  • %U is substituted with the SSH username\n"
-#| "  • %p is substituted with Remmina profile name\n"
-#| "  • %g is substituted with Remmina profile group name\n"
-#| "  • %d is substituted with local datetime in iso8601 format\n"
 msgid ""
 "The filename can use the following placeholders:\n"
 "\n"
@@ -353,7 +340,7 @@ msgstr ""
 "* %U é substituído pelo o nome do usuário SSH\n"
 "* %p é substituído pelo o nome do perfil Remmina\n"
 "* %g é substituído pelo nome de grupo de perfis Remmina\n"
-"* %d é substituído pela data e hora local no formato iso8601\n"
+"* %d é substituído pela data e hora local no formato ISO 8601\n"
 
 #: src/remmina_ssh_plugin.c:1392
 msgid "Terminal color scheme"
@@ -707,7 +694,7 @@ msgstr "Miniaplicativo do Remmina"
 msgid "Connect to remote desktops through the applet menu"
 msgstr "Conecte a áreas de trabalho remotas através do miniaplicativo"
 
-#: src/remmina_icon.c:473 src/remmina_icon.c:474 src/remmina_main.c:1265
+#: src/remmina_icon.c:473 src/remmina_icon.c:474 src/remmina_main.c:1280
 msgid "Remmina Remote Desktop Client"
 msgstr "Cliente de área de trabalho remota Remmina"
 
@@ -853,19 +840,19 @@ msgstr "Descrição"
 msgid "Version"
 msgstr "Versão"
 
-#: src/remmina_main.c:660
+#: src/remmina_main.c:661
 #, c-format
 msgid "Total %i item."
 msgid_plural "Total %i items."
 msgstr[0] "Total de %i item."
 msgstr[1] "Total de %i itens."
 
-#: src/remmina_main.c:838
+#: src/remmina_main.c:842
 #, c-format
 msgid "Are you sure you want to delete \"%s\"?"
 msgstr "Tem certeza que deseja excluir \"%s\"?"
 
-#: src/remmina_main.c:948
+#: src/remmina_main.c:952
 #, c-format
 msgid ""
 "Unable to import:\n"
@@ -874,19 +861,19 @@ msgstr ""
 "Impossível importar:\n"
 "%s"
 
-#: src/remmina_main.c:974 data/ui/remmina_main.glade:291
+#: src/remmina_main.c:978 data/ui/remmina_main.glade:291
 msgid "Import"
 msgstr "Importar"
 
-#: src/remmina_main.c:997 src/remmina_file_editor.c:1436
+#: src/remmina_main.c:1001 src/remmina_file_editor.c:1436
 msgid "_Save"
 msgstr "_Salvar"
 
-#: src/remmina_main.c:1003
+#: src/remmina_main.c:1007
 msgid "This protocol does not support exporting."
 msgstr "Este protocolo não possui suporte a exportação."
 
-#: src/remmina_main.c:1267
+#: src/remmina_main.c:1282
 msgid "Remmina Kiosk"
 msgstr "Quiosque de Remmina"
 
@@ -1075,10 +1062,9 @@ msgid "SFTP - Secure File Transfer"
 msgstr "SFTP - Transferência segura de arquivos"
 
 #: src/remmina_ssh.c:236
-#, fuzzy, c-format
-#| msgid "Could not authenticate with SSH password. %s"
+#, c-format
 msgid "Could not authenticate with TOTP/OTP/2FA. %s"
-msgstr "Não foi possível autenticar com senha SSH. %s"
+msgstr "Não foi possível autenticar com TOTP/OTP/2FA. %s"
 
 #: src/remmina_ssh.c:295 src/remmina_ssh.c:568
 #, c-format
@@ -1093,10 +1079,8 @@ msgid "Could not authenticate with public SSH key. %s"
 msgstr "Não foi possível autenticar com chave pública SSH. %s"
 
 #: src/remmina_ssh.c:316
-#, fuzzy
-#| msgid "SSH Key file not yet set."
 msgid "SSH identity file not selected."
-msgstr "Arquivo de chave SSH não foi configurado ainda."
+msgstr "Arquivo de identidade SSH não selecionado."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:327
@@ -1106,7 +1090,7 @@ msgstr "A chave pública SSH não pôde ser importada. %s"
 
 #: src/remmina_ssh.c:336
 msgid "No saved SSH passphrase supplied. Asking user to enter it."
-msgstr ""
+msgstr "Nenhuma senha SSH salva fornecida. Pedindo ao usuário para inseri-la."
 
 #: src/remmina_ssh.c:423
 #, c-format
@@ -1131,10 +1115,9 @@ msgid "The public SSH key changed!"
 msgstr "A chave pública SSH foi alterada!"
 
 #: src/remmina_ssh.c:571
-#, fuzzy, c-format
-#| msgid "Could not authenticate with SSH password. %s"
+#, c-format
 msgid "Could not authenticate with password. %s"
-msgstr "Não foi possível autenticar com senha SSH. %s"
+msgstr "Não foi possível autenticar com senha. %s"
 
 #: src/remmina_ssh.c:606
 #, fuzzy, c-format

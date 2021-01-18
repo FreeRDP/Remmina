@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-15 16:14+0000\n"
-"PO-Revision-Date: 2021-01-14 22:47+0000\n"
+"POT-Creation-Date: 2021-01-18 16:15+0000\n"
+"PO-Revision-Date: 2021-01-18 16:16+0000\n"
 "Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/remmina/remmina/"
 "tr/>\n"
@@ -90,7 +90,7 @@ msgstr "SSH için kullanıcı adı ve parolayı yazın."
 
 #: src/remmina_protocol_widget.c:1520 src/remmina_protocol_widget.c:1547
 msgid "Fingerprint automatically accepted"
-msgstr "Parmak izi otomatik olarak kabul edildi"
+msgstr "Parmak izi kendiliğinden kabul edildi"
 
 #: src/remmina_protocol_widget.c:1527
 msgid "Certificate details:"
@@ -322,23 +322,10 @@ msgstr "Özel anahtarın kilidini açmak için parola"
 
 #: src/remmina_ssh_plugin.c:1365 plugins/xdmcp/xdmcp_plugin.c:370
 #: plugins/rdp/rdp_plugin.c:2439 plugins/nx/nx_plugin.c:734
-#, fuzzy
-#| msgid "Startup program"
 msgid "Start-up program"
 msgstr "Başlangıç programı"
 
 #: src/remmina_ssh_plugin.c:1370
-#, fuzzy
-#| msgid ""
-#| "The filename can use the following placeholders:\n"
-#| "\n"
-#| "  • %h is substituted with the server name\n"
-#| "  • %t is substituted with the SSH server name\n"
-#| "  • %u is substituted with the username\n"
-#| "  • %U is substituted with the SSH username\n"
-#| "  • %p is substituted with Remmina profile name\n"
-#| "  • %g is substituted with Remmina profile group name\n"
-#| "  • %d is substituted with local datetime in iso8601 format\n"
 msgid ""
 "The filename can use the following placeholders:\n"
 "\n"
@@ -358,7 +345,7 @@ msgstr ""
 "  • %U SSH kullanıcı adı ile değiştirilir\n"
 "  • %p Remmina profil adı ile değiştirilir\n"
 "  • %g Remmina profil kümesi adı ile değiştirilir\n"
-"  • %d iso8601 biçiminde yerel tarih ile değiştirilir\n"
+"  • %d ISO 8601 biçiminde yerel tarih ve saat ile değiştirilir\n"
 
 #: src/remmina_ssh_plugin.c:1392
 msgid "Terminal color scheme"
@@ -699,7 +686,7 @@ msgstr "Remmina Küçük Uygulama"
 msgid "Connect to remote desktops through the applet menu"
 msgstr "Uzak masaüstüne küçük uygulama menüsü ile bağlan"
 
-#: src/remmina_icon.c:473 src/remmina_icon.c:474 src/remmina_main.c:1265
+#: src/remmina_icon.c:473 src/remmina_icon.c:474 src/remmina_main.c:1280
 msgid "Remmina Remote Desktop Client"
 msgstr "Remmina Uzak Masaüstü İstemcisi"
 
@@ -846,19 +833,19 @@ msgstr "Açıklama"
 msgid "Version"
 msgstr "Sürüm"
 
-#: src/remmina_main.c:660
+#: src/remmina_main.c:661
 #, c-format
 msgid "Total %i item."
 msgid_plural "Total %i items."
 msgstr[0] "Toplam %i öge."
 msgstr[1] "Toplam %i öge."
 
-#: src/remmina_main.c:838
+#: src/remmina_main.c:842
 #, c-format
 msgid "Are you sure you want to delete \"%s\"?"
 msgstr "\"%s\"i silmek istediğinizden emin misiniz?"
 
-#: src/remmina_main.c:948
+#: src/remmina_main.c:952
 #, c-format
 msgid ""
 "Unable to import:\n"
@@ -867,19 +854,19 @@ msgstr ""
 "İçeri aktarılamıyor:\n"
 "%s"
 
-#: src/remmina_main.c:974 data/ui/remmina_main.glade:291
+#: src/remmina_main.c:978 data/ui/remmina_main.glade:291
 msgid "Import"
 msgstr "İçeri Aktar"
 
-#: src/remmina_main.c:997 src/remmina_file_editor.c:1436
+#: src/remmina_main.c:1001 src/remmina_file_editor.c:1436
 msgid "_Save"
 msgstr "_Kaydet"
 
-#: src/remmina_main.c:1003
+#: src/remmina_main.c:1007
 msgid "This protocol does not support exporting."
 msgstr "Bu iletişim kuralı dışarı çıkartmayı desteklemiyor."
 
-#: src/remmina_main.c:1267
+#: src/remmina_main.c:1282
 msgid "Remmina Kiosk"
 msgstr "Remmina Kiosk"
 
@@ -1067,10 +1054,9 @@ msgid "SFTP - Secure File Transfer"
 msgstr "SFTP - Güvenli Dosya Aktarımı"
 
 #: src/remmina_ssh.c:236
-#, fuzzy, c-format
-#| msgid "Could not authenticate with SSH password. %s"
+#, c-format
 msgid "Could not authenticate with TOTP/OTP/2FA. %s"
-msgstr "SSH parolası ile kimlik doğrulanamadı. %s"
+msgstr "TOTP/OTP/2FA ile kimlik doğrulanamadı. %s"
 
 #: src/remmina_ssh.c:295 src/remmina_ssh.c:568
 #, c-format
@@ -1085,10 +1071,8 @@ msgid "Could not authenticate with public SSH key. %s"
 msgstr "Genel SSH anahtarıyla kimlik doğrulanamadı. %s"
 
 #: src/remmina_ssh.c:316
-#, fuzzy
-#| msgid "SSH Key file not yet set."
 msgid "SSH identity file not selected."
-msgstr "SSH anahtar dosyası belirtilmemiş."
+msgstr "SSH kimlik dosyası seçilmemiş."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:327
@@ -1098,7 +1082,7 @@ msgstr "Genel SSH anahtarı alınamıyor. %s"
 
 #: src/remmina_ssh.c:336
 msgid "No saved SSH passphrase supplied. Asking user to enter it."
-msgstr ""
+msgstr "Kayıtlı SSH parolası sağlanmadı. Kullanıcının girmesi isteniyor."
 
 #: src/remmina_ssh.c:423
 #, c-format
@@ -1122,10 +1106,9 @@ msgid "The public SSH key changed!"
 msgstr "Genel SSH anahtarı değişti!"
 
 #: src/remmina_ssh.c:571
-#, fuzzy, c-format
-#| msgid "Could not authenticate with SSH password. %s"
+#, c-format
 msgid "Could not authenticate with password. %s"
-msgstr "SSH parolası ile kimlik doğrulanamadı. %s"
+msgstr "Parolayla kimlik doğrulanamadı. %s"
 
 #: src/remmina_ssh.c:606
 #, fuzzy, c-format
@@ -1147,10 +1130,9 @@ msgstr "Genel SSH anahtarı alınamadı. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:748
-#, fuzzy, c-format
-#| msgid "Could not fetch checksum for public SSH key. %s"
+#, c-format
 msgid "Could not fetch checksum of the public SSH key. %s"
-msgstr "Genel SSH anahtarı için sağlama toplamı alınamadı. %s"
+msgstr "Genel SSH anahtarının sağlama toplamı alınamadı. %s"
 
 #: src/remmina_ssh.c:761
 msgid "The server is unknown. The public key fingerprint is:"
@@ -1161,12 +1143,6 @@ msgid "Do you trust the new public key?"
 msgstr "Yeni genel anahtara güveniyor musunuz?"
 
 #: src/remmina_ssh.c:766
-#, fuzzy
-#| msgid ""
-#| "Warning: The server has changed its public key. This means either you are "
-#| "under attack,\n"
-#| "or the administrator has changed the key. The new public key fingerprint "
-#| "is:"
 msgid ""
 "Warning: The server has changed its public key. This means you are either "
 "under attack,\n"
@@ -1196,7 +1172,7 @@ msgstr "SSH Kerberos/GSSAPI"
 
 #: src/remmina_ssh.c:817
 msgid "Enter TOTP/OTP/2FA code"
-msgstr ""
+msgstr "TOTP/OTP/2FA kodu gir"
 
 #: src/remmina_ssh.c:846 src/remmina_ssh.c:872
 msgid "SSH tunnel credentials"
@@ -1341,20 +1317,6 @@ msgstr ""
 "* [sunucu]:bağlantınoktası</big></tt>"
 
 #: src/remmina_file_editor.c:67
-#, fuzzy
-#| msgid ""
-#| "<tt><big>• command in PATH args %h\n"
-#| "• /path/to/foo -options %h %u\n"
-#| "• %h is substituted with the server name\n"
-#| "• %t is substituted with the SSH server name\n"
-#| "• %u is substituted with the username\n"
-#| "• %U is substituted with the SSH username\n"
-#| "• %p is substituted with Remmina profile name\n"
-#| "• %g is substituted with Remmina profile group name\n"
-#| "• %d is substituted with local datetime in iso8601 format\n"
-#| "Do not run in background if you want the command to be executed before "
-#| "connecting.\n"
-#| "</big></tt>"
 msgid ""
 "<tt><big>• command in PATH args %h\n"
 "• /path/to/foo -options %h %u\n"
@@ -1369,15 +1331,15 @@ msgid ""
 "connecting.\n"
 "</big></tt>"
 msgstr ""
-"<tt><big>• PATH'deki komut argümanlar %h\n"
-"• /foo/konumu -seçenekler %h %u\n"
+"<tt><big>• PATH argümanlarındaki komut %h\n"
+"• /path/to/foo -options %h %u\n"
 "• %h sunucu adı ile değiştirilir\n"
 "• %t SSH sunucu adı ile değiştirilir\n"
 "• %u kullanıcı adı ile değiştirilir\n"
 "• %U SSH kullanıcı adı ile değiştirilir\n"
 "• %p Remmina profil adı ile değiştirilir\n"
 "• %g Remmina profil kümesi adı ile değiştirilir\n"
-"• %d iso8601 biçiminde yerel tarih ile değiştirilir\n"
+"• %d ISO 8601 biçiminde yerel tarih ve saat ile değiştirilir\n"
 "Komutun bağlanmadan önce yürütülmesini istiyorsanız arka planda "
 "çalıştırmayın\n"
 "</big></tt>"
@@ -1457,16 +1419,12 @@ msgid "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
 msgstr "/komutun/yolu -seçenek1 argüman %h %u %t -seçenek2 %U %p %g"
 
 #: src/remmina_file_editor.c:887
-#, fuzzy
-#| msgid "Startup"
 msgid "Start-up"
 msgstr "Başlangıç"
 
 #: src/remmina_file_editor.c:890
-#, fuzzy
-#| msgid "Autostart this profile"
 msgid "Auto-start this profile"
-msgstr "Bu profili otomatik başlat"
+msgstr "Bu profili kendiliğinden başlat"
 
 #: src/remmina_file_editor.c:910
 msgid "SSH Tunnel"
@@ -1486,8 +1444,6 @@ msgid "Same server at port %i"
 msgstr "%i bağlantı noktasında aynı sunucu"
 
 #: src/remmina_file_editor.c:973 plugins/rdp/rdp_plugin.c:2440
-#, fuzzy
-#| msgid "Startup path"
 msgid "Start-up path"
 msgstr "Başlangıç yolu"
 
@@ -1765,10 +1721,8 @@ msgid "Turn off clipboard sync"
 msgstr "Pano eşzamanlamayı kapat"
 
 #: plugins/vnc/vnc_plugin.c:1921
-#, fuzzy
-#| msgid "Use TLS encryption"
 msgid "Turn off encryption"
-msgstr "TLS şifreleme kullan"
+msgstr "Şifrelemeyi kapat"
 
 #: plugins/vnc/vnc_plugin.c:1922 plugins/vnc/vnc_plugin.c:1935
 msgid "Prevent local interaction on the server"
@@ -1832,15 +1786,15 @@ msgstr "Kapalı"
 
 #: plugins/spice/spice_plugin.c:520
 msgid "Auto GLZ"
-msgstr ""
+msgstr "Oto GLZ"
 
 #: plugins/spice/spice_plugin.c:521
 msgid "Auto LZ"
-msgstr ""
+msgstr "Oto LZ"
 
 #: plugins/spice/spice_plugin.c:530
 msgid "Disable video overlay if videos are not displayed properly.\n"
-msgstr ""
+msgstr "Videolar düzgün gösterilmiyorsa video kaplamayı devre dışı bırak.\n"
 
 #: plugins/spice/spice_plugin.c:545
 msgid "Use TLS encryption"
@@ -1855,20 +1809,16 @@ msgid "Share folder"
 msgstr "Klasör paylaş"
 
 #: plugins/spice/spice_plugin.c:562
-#, fuzzy
-#| msgid "Preference"
 msgid "Prefered video codec"
-msgstr "Tercih"
+msgstr "Yeğlenen video çözücü"
 
 #: plugins/spice/spice_plugin.c:563
-#, fuzzy
-#| msgid "Disable server input"
 msgid "Disable Gstreamer Overlay"
-msgstr "Sunucu girdisini etkisizleştir"
+msgstr "Gstreamer kaplamayı devre dışı bırak"
 
 #: plugins/spice/spice_plugin.c:564
 msgid "Prefered image compression"
-msgstr ""
+msgstr "Yeğlenen resim sıkıştırma"
 
 #: plugins/spice/spice_plugin.c:565 plugins/spice/spice_plugin.c:578
 #: plugins/nx/nx_plugin.c:749
@@ -2061,16 +2011,13 @@ msgstr ""
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:1907
-#, fuzzy, c-format
-#| msgid ""
-#| "Unable to establish a connection to the RDP server. Check \"Security "
-#| "protocol negotiation\" \"%s\"."
+#, c-format
 msgid ""
 "Unable to establish a connection to the RDP server \"%s\". Check \"Security "
 "protocol negotiation\"."
 msgstr ""
-"RDP sunucusuna bağlantı kurulamıyor. Gözden geçirin: \"Güvenlik iletişim "
-"kuralı uzlaşımı\" \"%s\"."
+"\"%s\" RDP sunucusuna bağlantı kurulamıyor. Gözden geçirin: \"Güvenlik "
+"iletişim kuralı uzlaşımı\"."
 
 #: plugins/rdp/rdp_plugin.c:1915
 #, c-format
@@ -2112,7 +2059,7 @@ msgstr "\"%s\" RDP sunucusuna bağlanılamıyor."
 
 #: plugins/rdp/rdp_plugin.c:2261
 msgid "Automatic (32 bpp) (Server chooses its best format)"
-msgstr "Otomatik (32 bit) (Sunucu en iyi biçimini seçer)"
+msgstr "Kendiliğinden (32 bit) (Sunucu en iyi biçimini seçer)"
 
 #: plugins/rdp/rdp_plugin.c:2262
 msgid "GFX AVC444 (32 bpp)"
@@ -2147,10 +2094,8 @@ msgid "None"
 msgstr "Yok"
 
 #: plugins/rdp/rdp_plugin.c:2303
-#, fuzzy
-#| msgid "Autodetect"
 msgid "Auto-detect"
-msgstr "Otomatik algıla"
+msgstr "Kendiliğinden algıla"
 
 #: plugins/rdp/rdp_plugin.c:2304
 msgid "Modem"
@@ -2289,19 +2234,14 @@ msgstr ""
 "En yüksek olası değer 600000 milisaniyedir (10 dakika)\n"
 
 #: plugins/rdp/rdp_plugin.c:2386
-#, fuzzy
-#| msgid ""
-#| "Performance optimisations based on the network connection type:\n"
-#| "Using autodetection is advised.\n"
-#| "If \"Autodetect\" fails, choose the most appropriate option in the list.\n"
 msgid ""
 "Performance optimisations based on the network connection type:\n"
 "Using auto-detection is advised.\n"
 "If \"Auto-detect\" fails, choose the most appropriate option in the list.\n"
 msgstr ""
 "Ağ bağlantı türüne göre performans iyileştirmeleri:\n"
-"Otomatik algılamanın kullanılması tavsiye edilir.\n"
-"\"Otomatik algıla\" başarısız olursa, listeden en uygun seçeneği seçin.\n"
+"Kendiliğinden algılamanın kullanılması önerilir.\n"
+"\"Kendiliğinden algıla\" başarısız olursa, listeden en uygununu seçin.\n"
 
 #: plugins/rdp/rdp_plugin.c:2408
 msgid "Network connection type"
@@ -2528,10 +2468,8 @@ msgid "Export connection in Windows .rdp file format"
 msgstr "Bağlantıyı Windows .rdp dosya biçiminde dışarı aktar"
 
 #: plugins/rdp/rdp_settings.c:200
-#, fuzzy
-#| msgid "<Auto detect>"
 msgid "<Auto-detect>"
-msgstr "<Kendiliğinden sapta>"
+msgstr "<Kendiliğinden algıla>"
 
 #: plugins/rdp/rdp_settings.c:233
 msgid "<Not set>"
@@ -2977,7 +2915,7 @@ msgstr "Onayla"
 
 #: data/ui/remmina_news.glade:169
 msgid "Allow Remmina to automatically open .rdp and .remmina files."
-msgstr "Remmina .rdp ve .remmina dosyalarını otomatik olarak açabilsin."
+msgstr "Remmina, .rdp ve .remmina dosyalarını kendiliğinden açabilsin."
 
 #. The star (*) is a reference to privacy consent
 #: data/ui/remmina_news.glade:183 data/ui/remmina_preferences.glade:545
@@ -3099,8 +3037,6 @@ msgid "Hyper"
 msgstr "Yüksek"
 
 #: data/ui/remmina_preferences.glade:160
-#, fuzzy
-#| msgid "Step size for auto scroll"
 msgid "Step size for auto-scroll"
 msgstr "Kendiliğinden kaydırma için adım boyutu"
 
@@ -3143,10 +3079,6 @@ msgstr ""
 "%Y Yıl, %m Ay, %d Gün, %H Saat, %M Dakika, %S Saniye (UTC zamanı)\n"
 
 #: data/ui/remmina_preferences.glade:353
-#, fuzzy
-#| msgid ""
-#| "The folder where connection profiles are saved, it defaults to the "
-#| "XDG_USER_DATA"
 msgid ""
 "The folder connection profiles are saved in, it defaults to the XDG_USER_DATA"
 msgstr ""
@@ -3158,10 +3090,8 @@ msgid "Remmina data folder"
 msgstr "Remmina veri klasörü"
 
 #: data/ui/remmina_preferences.glade:385
-#, fuzzy
-#| msgid "Remember last view mode for each connection"
 msgid "Remember last view for each connection"
-msgstr "Her bağlantı için son görüntüleme biçimini hatırla"
+msgstr "Her bağlantı için son görünümü anımsa"
 
 #. The star (*) is a reference to privacy consent
 #: data/ui/remmina_preferences.glade:389
@@ -3178,7 +3108,7 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:433
 msgid "Template for profile filenames"
-msgstr ""
+msgstr "Profil dosya adları için şablon"
 
 #: data/ui/remmina_preferences.glade:445
 msgid ""
@@ -3217,10 +3147,8 @@ msgid "Hide the toolbar shown in the tabbed interface"
 msgstr "Sekmeli arayüzde gösterilen araç çubuğunu gizle"
 
 #: data/ui/remmina_preferences.glade:612
-#, fuzzy
-#| msgid "Default view mode"
 msgid "Default view"
-msgstr "Öntanımlı görünüm kipi"
+msgstr "Öntanımlı görünüm"
 
 #: data/ui/remmina_preferences.glade:626
 msgid "Automatic"
@@ -3243,10 +3171,8 @@ msgid "By group"
 msgstr "Kümelere göre"
 
 #: data/ui/remmina_preferences.glade:661
-#, fuzzy
-#| msgid "By protocols"
 msgid "By protocol"
-msgstr "İletişim kurallarına göre"
+msgstr "İletişim kuralına göre"
 
 #: data/ui/remmina_preferences.glade:662
 msgid "Per connection"
@@ -3434,7 +3360,7 @@ msgstr "Parmak izleri ve sertifikalar"
 
 #: data/ui/remmina_preferences.glade:1668
 msgid "Automatically accept all fingerprints and certificates"
-msgstr "Tüm parmak izlerini ve sertifikaları otomatik olarak kabul et"
+msgstr "Tüm parmak izlerini ve sertifikaları kendiliğinden kabul et"
 
 #: data/ui/remmina_preferences.glade:1674
 msgid "Trust all fingerprints and certificates"
