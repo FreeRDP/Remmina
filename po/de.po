@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-20 12:08+0000\n"
+"POT-Creation-Date: 2021-01-20 22:37+0000\n"
 "PO-Revision-Date: 2021-01-15 16:14+0000\n"
 "Last-Translator: Johannes Weberhofer <jweberhofer@weberhofer.at>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -1063,14 +1063,14 @@ msgstr "SFTP - Sichere Dateiübertragung"
 msgid "Could not authenticate with TOTP/OTP/2FA. %s"
 msgstr "Konnte mit TOTP/OTP/2FA nicht anmelden: %s"
 
-#: src/remmina_ssh.c:295 src/remmina_ssh.c:568
+#: src/remmina_ssh.c:295 src/remmina_ssh.c:622
 #, c-format
 msgid "Could not authenticate with SSH password. %s"
 msgstr "Konnte mit dem SSH-Passwort nicht anmelden: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:315 src/remmina_ssh.c:341 src/remmina_ssh.c:378
-#: src/remmina_ssh.c:638 src/remmina_ssh.c:651
+#: src/remmina_ssh.c:692
 #, c-format
 msgid "Could not authenticate with public SSH key. %s"
 msgstr ""
@@ -1099,59 +1099,66 @@ msgstr ""
 "Kann mit dem öffentlichen SSH-Schlüssel nicht automatisch authentifizieren. "
 "%s"
 
-#. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:439
-#, c-format
-msgid "Could not authenticate with public SSH key using SSH agent. %s"
+#: src/remmina_ssh.c:468
+#, fuzzy, c-format
+#| msgid "Could not authenticate automatically with public SSH key. %s"
+msgid "Could not authenticate automatically with SSH agent. %s"
 msgstr ""
-"Kann mit dem öffentlichen SSH-Schlüssel nicht via SSH-Agent "
-"authentifizieren. %s"
+"Kann mit dem öffentlichen SSH-Schlüssel nicht automatisch authentifizieren. "
+"%s"
 
-#. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:459
-#, c-format
-msgid "Could not authenticate with SSH Kerberos/GSSAPI. %s"
+#: src/remmina_ssh.c:514 src/remmina_ssh.c:802
+#, fuzzy, c-format
+#| msgid "Could not authenticate with SSH Kerberos/GSSAPI. %s"
+msgid "Could not authenticate with SSH GSSAPI/Kerberos. %s"
 msgstr "Kann mit SSH Kerberos/GSSAPI authentifizieren. %s"
 
-#: src/remmina_ssh.c:489
+#: src/remmina_ssh.c:543
 msgid "The public SSH key changed!"
 msgstr "Der öffentliche SSH‐Schlüssel hat sich geändert!"
 
-#: src/remmina_ssh.c:603
+#: src/remmina_ssh.c:657
 #, c-format
 msgid "Could not authenticate with keyboard-interactive. %s"
 msgstr "Authentifizierung über Tastatureingabe ist fehlgeschlagen. %s"
 
+#: src/remmina_ssh.c:759
+#, fuzzy, c-format
+#| msgid "Could not authenticate with public SSH key. %s"
+msgid "Could not authenticate with automatic public SSH key. %s"
+msgstr ""
+"Authentifizierung mit dem öffentlichen SSH-Schlüssel funktioniert nicht. %s"
+
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:730
+#: src/remmina_ssh.c:867
 #, c-format
 msgid "Could not fetch the server's public SSH key. %s"
 msgstr ""
 "Der öffentliche SSH-Schlüssel des Servers kann nicht gelesen werden. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:737
+#: src/remmina_ssh.c:874
 #, c-format
 msgid "Could not fetch public SSH key. %s"
 msgstr "Kann den öffentlichen SSH-Schlüssel nicht lesen: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:745
+#: src/remmina_ssh.c:882
 #, c-format
 msgid "Could not fetch checksum of the public SSH key. %s"
 msgstr ""
 "Die Prüfsumme des öffentlichen SSH-Schlüssels kann nicht gelesen werden. %s"
 
-#: src/remmina_ssh.c:758
+#: src/remmina_ssh.c:895
 msgid "The server is unknown. The public key fingerprint is:"
 msgstr ""
 "Der Server ist unbekannt. Der Fingerabdruck des öffentlichen Schlüssels ist:"
 
-#: src/remmina_ssh.c:760 src/remmina_ssh.c:766
+#: src/remmina_ssh.c:897 src/remmina_ssh.c:903
 msgid "Do you trust the new public key?"
 msgstr "Vertrauen Sie dem neuen öffentlichen Schlüssel?"
 
-#: src/remmina_ssh.c:763
+#: src/remmina_ssh.c:900
 msgid ""
 "Warning: The server has changed its public key. This means you are either "
 "under attack,\n"
@@ -1163,154 +1170,154 @@ msgstr ""
 "Fingerprint des neuen öffentliche Schlüssel ist:"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:788
+#: src/remmina_ssh.c:925
 #, c-format
 msgid "Could not check list of known SSH hosts. %s"
 msgstr "Die Liste der bekannten SSH-Server kann nicht geprüft werden: %s"
 
-#: src/remmina_ssh.c:797
+#: src/remmina_ssh.c:934
 msgid "SSH password"
 msgstr "SSH‐Passwort"
 
-#: src/remmina_ssh.c:804 src/remmina_ssh.c:847
+#: src/remmina_ssh.c:941 src/remmina_ssh.c:984
 msgid "SSH private key passphrase"
 msgstr "SSH‐Passphrase für privaten Schlüssel"
 
-#: src/remmina_ssh.c:809
+#: src/remmina_ssh.c:946
 msgid "SSH Kerberos/GSSAPI"
 msgstr "SSH Kerberos/GSSAPI"
 
-#: src/remmina_ssh.c:814
+#: src/remmina_ssh.c:951
 msgid "Enter TOTP/OTP/2FA code"
 msgstr "Geben Sie den TOTP/OTP/2FA Code ein"
 
-#: src/remmina_ssh.c:843 src/remmina_ssh.c:869
+#: src/remmina_ssh.c:980 src/remmina_ssh.c:1006
 msgid "SSH tunnel credentials"
 msgstr "SSH‐Tunnel Anmeldedaten"
 
-#: src/remmina_ssh.c:843 src/remmina_ssh.c:869 plugins/nx/nx_plugin.c:203
+#: src/remmina_ssh.c:980 src/remmina_ssh.c:1006 plugins/nx/nx_plugin.c:203
 msgid "SSH credentials"
 msgstr "SSH‐Anmeldeinformationen"
 
-#: src/remmina_ssh.c:920
+#: src/remmina_ssh.c:1057
 msgid "Keyboard interactive login, TOTP/OTP/2FA"
 msgstr "Login über Tastatur, TOTP/OTP/2FA"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1140
+#: src/remmina_ssh.c:1277
 #, c-format
 msgid "Could not start SSH session. %s"
 msgstr "Die SSH‐Verbindung kann nicht gestartet werden: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1543 src/remmina_ssh.c:1606
+#: src/remmina_ssh.c:1680 src/remmina_ssh.c:1743
 #, c-format
 msgid "Could not create channel. %s"
 msgstr "Der Kanal kann nicht erzeugt werden: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1554
+#: src/remmina_ssh.c:1691
 #, c-format
 msgid "Could not connect to SSH tunnel. %s"
 msgstr "Kann zum SSH‐Tunnel nicht verbinden: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1621 src/remmina_ssh.c:2245
+#: src/remmina_ssh.c:1758 src/remmina_ssh.c:2382
 #, c-format
 msgid "Could not open channel. %s"
 msgstr "Das Öffnen des Kanals ist fehlgeschlagen: %s"
 
-#: src/remmina_ssh.c:1627
+#: src/remmina_ssh.c:1764
 #, c-format
 msgid "Could not run %s on SSH server."
 msgstr "Kann %s auf dem SSH-Server nicht ausführen."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1665 src/remmina_ssh.c:1686 src/remmina_ssh.c:1695
+#: src/remmina_ssh.c:1802 src/remmina_ssh.c:1823 src/remmina_ssh.c:1832
 #, c-format
 msgid "Could not request port forwarding. %s"
 msgstr "Portweiterleitung kann nicht eingerichtet werden: %s"
 
-#: src/remmina_ssh.c:1730
+#: src/remmina_ssh.c:1867
 msgid "The server did not respond."
 msgstr "Der Server hat nicht geantwortet."
 
-#: src/remmina_ssh.c:1773
+#: src/remmina_ssh.c:1910
 #, c-format
 msgid "Cannot connect to local port %i."
 msgstr "Kann nicht zum lokalen Port %i verbinden."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1823
+#: src/remmina_ssh.c:1960
 #, c-format
 msgid "Could not write to SSH channel. %s"
 msgstr "Der SSH-Kanal kann nicht geschrieben werden: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1830
+#: src/remmina_ssh.c:1967
 #, c-format
 msgid "Could not read from tunnel listening socket. %s"
 msgstr "Vom Tunnel-Listening‐Socket kann nicht gelesen werden: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1850
+#: src/remmina_ssh.c:1987
 #, c-format
 msgid "Could not poll SSH channel. %s"
 msgstr "Das Abfragen des SSH-Kanals ist fehlgeschlagen: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1857
+#: src/remmina_ssh.c:1994
 #, c-format
 msgid "Could not read SSH channel in a non-blocking way. %s"
 msgstr "Kann SSH-Kanal nicht blockierend öffnen: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1876
+#: src/remmina_ssh.c:2013
 #, c-format
 msgid "Could not send data to tunnel listening socket. %s"
 msgstr "Kann keine Daten zum Listening‐Socket des Tunnels senden: %s"
 
-#: src/remmina_ssh.c:1978
+#: src/remmina_ssh.c:2115
 msgid "Assign a destination port."
 msgstr "Ziel-Port zuweisen."
 
-#: src/remmina_ssh.c:1985
+#: src/remmina_ssh.c:2122
 msgid "Could not create socket."
 msgstr "Konnte den Socket nicht erzeugen."
 
-#: src/remmina_ssh.c:1995
+#: src/remmina_ssh.c:2132
 msgid "Could not bind server socket to local port."
 msgstr "Kann den Server-Socket nicht mit dem lokalen Port %i verbinden."
 
-#: src/remmina_ssh.c:2001
+#: src/remmina_ssh.c:2138
 msgid "Could not listen to local port."
 msgstr "Kann am lokalen Port nicht lauschen."
 
 #. TRANSLATORS: Do not translate pthread
-#: src/remmina_ssh.c:2011 src/remmina_ssh.c:2028 src/remmina_ssh.c:2045
-#: src/remmina_ssh.c:2063
+#: src/remmina_ssh.c:2148 src/remmina_ssh.c:2165 src/remmina_ssh.c:2182
+#: src/remmina_ssh.c:2200
 msgid "Could not start pthread."
 msgstr "Kann pthread nicht starten."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2155
+#: src/remmina_ssh.c:2292
 #, c-format
 msgid "Could not create SFTP session. %s"
 msgstr "SFTP‐Sitzung kann nicht erzeugt werden: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2160
+#: src/remmina_ssh.c:2297
 #, c-format
 msgid "Could not start SFTP session. %s"
 msgstr "SFTP-Verbindung kann nicht gestartet werden: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2275
+#: src/remmina_ssh.c:2412
 #, c-format
 msgid "Could not request shell. %s"
 msgstr "Shell kann nicht angefordert werden: %s"
 
-#: src/remmina_ssh.c:2368
+#: src/remmina_ssh.c:2505
 msgid "Could not create PTY device."
 msgstr "Kann das PTY‐Gerät nicht öffnen."
 
@@ -3578,6 +3585,11 @@ msgstr "Wählen Sie eine neue Taste"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "Bitte drücken Sie die neue Taste…"
+
+#~ msgid "Could not authenticate with public SSH key using SSH agent. %s"
+#~ msgstr ""
+#~ "Kann mit dem öffentlichen SSH-Schlüssel nicht via SSH-Agent "
+#~ "authentifizieren. %s"
 
 #~ msgid "Could not authenticate with password. %s"
 #~ msgstr "Passwortanmeldung ist fehlgeschlagen. %s"

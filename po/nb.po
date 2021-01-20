@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-20 12:08+0000\n"
-"PO-Revision-Date: 2021-01-18 16:16+0000\n"
+"POT-Creation-Date: 2021-01-20 22:37+0000\n"
+"PO-Revision-Date: 2021-01-20 22:37+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/remmina/"
 "remmina/nb_NO/>\n"
@@ -181,11 +181,15 @@ msgid "Picking a terminal colouring file replaces the file: "
 msgstr "Velg en terminalfargeleggingsfil"
 
 #: src/remmina_pref_dialog.c:748
+#, fuzzy
 msgid ""
 "This file contains the \"Custom\" terminal colour scheme selectable from the "
 "\"Advanced\" tab of terminal connections and editable in the \"Terminal\" "
 "tab in the settings."
 msgstr ""
+"Denne filen inneholder «Egendefinert» terminalfargepalett som kan velges fra "
+"«Avansert»-fanen for terminaltilkoblinger og redigerbare i «Terminal»-fanen "
+"i innstillingene."
 
 #: src/remmina_ssh_plugin.c:535
 #, c-format
@@ -1090,14 +1094,14 @@ msgstr "SFTP - sikker filoverføring"
 msgid "Could not authenticate with TOTP/OTP/2FA. %s"
 msgstr "Kunne ikke identitetsbekrefte med SSH-passord. %s"
 
-#: src/remmina_ssh.c:295 src/remmina_ssh.c:568
+#: src/remmina_ssh.c:295 src/remmina_ssh.c:622
 #, c-format
 msgid "Could not authenticate with SSH password. %s"
 msgstr "Kunne ikke identitetsbekrefte med SSH-passord. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:315 src/remmina_ssh.c:341 src/remmina_ssh.c:378
-#: src/remmina_ssh.c:638 src/remmina_ssh.c:651
+#: src/remmina_ssh.c:692
 #, c-format
 msgid "Could not authenticate with public SSH key. %s"
 msgstr "Kunne ikke identitetsbekrefte med offentlig SSH-nøkkel. %s"
@@ -1124,58 +1128,62 @@ msgstr "Inget lagret SSH-passord angitt. Forespør bruker om å skrive det inn."
 msgid "Could not authenticate automatically with public SSH key. %s"
 msgstr "Kunne ikke identitetsbekrefte automatisk med offentlig SSH-nøkkel. %s"
 
-#. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:439
+#: src/remmina_ssh.c:468
 #, fuzzy, c-format
-msgid "Could not authenticate with public SSH key using SSH agent. %s"
-msgstr ""
-"Kunne ikke identitetsbekrefte med offentlig SSH-nøkkel ved bruj av SSH-"
-"agent. %s"
+#| msgid "Could not authenticate automatically with public SSH key. %s"
+msgid "Could not authenticate automatically with SSH agent. %s"
+msgstr "Kunne ikke identitetsbekrefte automatisk med offentlig SSH-nøkkel. %s"
 
-#. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:459
-#, c-format
-msgid "Could not authenticate with SSH Kerberos/GSSAPI. %s"
+#: src/remmina_ssh.c:514 src/remmina_ssh.c:802
+#, fuzzy, c-format
+#| msgid "Could not authenticate with SSH Kerberos/GSSAPI. %s"
+msgid "Could not authenticate with SSH GSSAPI/Kerberos. %s"
 msgstr "Kunne ikke identitetsbekrefte med Kerberos/GSSAPI. %s"
 
-#: src/remmina_ssh.c:489
+#: src/remmina_ssh.c:543
 msgid "The public SSH key changed!"
 msgstr "Den offentlige SSH-nøkkelen endret seg!"
 
-#: src/remmina_ssh.c:603
+#: src/remmina_ssh.c:657
 #, fuzzy, c-format
 #| msgid "Could not authenticate with public SSH key. %s"
 msgid "Could not authenticate with keyboard-interactive. %s"
 msgstr "Kunne ikke identitetsbekrefte med offentlig SSH-nøkkel. %s"
 
+#: src/remmina_ssh.c:759
+#, fuzzy, c-format
+#| msgid "Could not authenticate with public SSH key. %s"
+msgid "Could not authenticate with automatic public SSH key. %s"
+msgstr "Kunne ikke identitetsbekrefte med offentlig SSH-nøkkel. %s"
+
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:730
+#: src/remmina_ssh.c:867
 #, c-format
 msgid "Could not fetch the server's public SSH key. %s"
 msgstr "Kunne ikke hente tjenerens offentlige SSH-nøkkel. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:737
+#: src/remmina_ssh.c:874
 #, fuzzy, c-format
 msgid "Could not fetch public SSH key. %s"
 msgstr "Klarte ikke å koble til SSH-tunnelmålet: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:745
+#: src/remmina_ssh.c:882
 #, fuzzy, c-format
 #| msgid "Could not fetch checksum for public SSH key. %s"
 msgid "Could not fetch checksum of the public SSH key. %s"
 msgstr "Kunne ikke hente sjekksum for offentlig SSH-nøkkel. %s"
 
-#: src/remmina_ssh.c:758
+#: src/remmina_ssh.c:895
 msgid "The server is unknown. The public key fingerprint is:"
 msgstr "Tjeneren er ukjent. Fingeravtrykket av den offentlige nøkkelen er:"
 
-#: src/remmina_ssh.c:760 src/remmina_ssh.c:766
+#: src/remmina_ssh.c:897 src/remmina_ssh.c:903
 msgid "Do you trust the new public key?"
 msgstr "Stoler du på den nye offentlige nøkkelen?"
 
-#: src/remmina_ssh.c:763
+#: src/remmina_ssh.c:900
 #, fuzzy
 msgid ""
 "Warning: The server has changed its public key. This means you are either "
@@ -1188,155 +1196,155 @@ msgstr ""
 "offentlige nøkkelen er:"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:788
+#: src/remmina_ssh.c:925
 #, c-format
 msgid "Could not check list of known SSH hosts. %s"
 msgstr "Kunne ikke sjekke liste over kjente SSH-verter. %s"
 
-#: src/remmina_ssh.c:797
+#: src/remmina_ssh.c:934
 msgid "SSH password"
 msgstr "SSH-passord"
 
-#: src/remmina_ssh.c:804 src/remmina_ssh.c:847
+#: src/remmina_ssh.c:941 src/remmina_ssh.c:984
 msgid "SSH private key passphrase"
 msgstr "Passord for SSH-privatnøkkel"
 
-#: src/remmina_ssh.c:809
+#: src/remmina_ssh.c:946
 msgid "SSH Kerberos/GSSAPI"
 msgstr "SSH Kerberos/GSSAPI"
 
-#: src/remmina_ssh.c:814
+#: src/remmina_ssh.c:951
 msgid "Enter TOTP/OTP/2FA code"
 msgstr "Skriv inn TOTP/OTP/2FA-kode"
 
-#: src/remmina_ssh.c:843 src/remmina_ssh.c:869
+#: src/remmina_ssh.c:980 src/remmina_ssh.c:1006
 #, fuzzy
 msgid "SSH tunnel credentials"
 msgstr "SSH-identitetbekreftelsesdetaljer"
 
-#: src/remmina_ssh.c:843 src/remmina_ssh.c:869 plugins/nx/nx_plugin.c:203
+#: src/remmina_ssh.c:980 src/remmina_ssh.c:1006 plugins/nx/nx_plugin.c:203
 msgid "SSH credentials"
 msgstr "SSH-identitetbekreftelsesdetaljer"
 
-#: src/remmina_ssh.c:920
+#: src/remmina_ssh.c:1057
 msgid "Keyboard interactive login, TOTP/OTP/2FA"
 msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1140
+#: src/remmina_ssh.c:1277
 #, fuzzy, c-format
 msgid "Could not start SSH session. %s"
 msgstr "Kunne ikke starte SSH-økt. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1543 src/remmina_ssh.c:1606
+#: src/remmina_ssh.c:1680 src/remmina_ssh.c:1743
 #, c-format
 msgid "Could not create channel. %s"
 msgstr "Kunne ikke opprette kanal. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1554
+#: src/remmina_ssh.c:1691
 #, c-format
 msgid "Could not connect to SSH tunnel. %s"
 msgstr "Klarte ikke å koble til SSH-tunnelmålet. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1621 src/remmina_ssh.c:2245
+#: src/remmina_ssh.c:1758 src/remmina_ssh.c:2382
 #, c-format
 msgid "Could not open channel. %s"
 msgstr "Klarte ikke å åpne kanal. %s"
 
-#: src/remmina_ssh.c:1627
+#: src/remmina_ssh.c:1764
 #, fuzzy, c-format
 msgid "Could not run %s on SSH server."
 msgstr "Klarte ikke å kjøre «%s» på SSH-tjeneren."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1665 src/remmina_ssh.c:1686 src/remmina_ssh.c:1695
+#: src/remmina_ssh.c:1802 src/remmina_ssh.c:1823 src/remmina_ssh.c:1832
 #, c-format
 msgid "Could not request port forwarding. %s"
 msgstr "Klarte ikke å be om videresending av porter. %s"
 
-#: src/remmina_ssh.c:1730
+#: src/remmina_ssh.c:1867
 msgid "The server did not respond."
 msgstr "Tjeneren svarte ikke."
 
-#: src/remmina_ssh.c:1773
+#: src/remmina_ssh.c:1910
 #, c-format
 msgid "Cannot connect to local port %i."
 msgstr "Kan ikke koble til lokal port %i."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1823
+#: src/remmina_ssh.c:1960
 #, c-format
 msgid "Could not write to SSH channel. %s"
 msgstr "Klarte ikke å skrive til SSH-kanal. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1830
+#: src/remmina_ssh.c:1967
 #, c-format
 msgid "Could not read from tunnel listening socket. %s"
 msgstr "Kunne ikke lese fra tunnel-lyttesocket. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1850
+#: src/remmina_ssh.c:1987
 #, fuzzy, c-format
 msgid "Could not poll SSH channel. %s"
 msgstr "Kunne ikke prøve SSH-kanal. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1857
+#: src/remmina_ssh.c:1994
 #, c-format
 msgid "Could not read SSH channel in a non-blocking way. %s"
 msgstr "Kunne ikke lese SSH-kanal på ikke-blokkerende vis. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1876
+#: src/remmina_ssh.c:2013
 #, c-format
 msgid "Could not send data to tunnel listening socket. %s"
 msgstr "Kunne ikke sende data til tunnel-lyttesocket. %s"
 
-#: src/remmina_ssh.c:1978
+#: src/remmina_ssh.c:2115
 msgid "Assign a destination port."
 msgstr "Tildel en målport."
 
-#: src/remmina_ssh.c:1985
+#: src/remmina_ssh.c:2122
 msgid "Could not create socket."
 msgstr "Klarte ikke å opprette socket."
 
-#: src/remmina_ssh.c:1995
+#: src/remmina_ssh.c:2132
 msgid "Could not bind server socket to local port."
 msgstr "Kunne ikke binde tjenersocket til lokal port."
 
-#: src/remmina_ssh.c:2001
+#: src/remmina_ssh.c:2138
 msgid "Could not listen to local port."
 msgstr "Kunne ikke lytte til lokal port."
 
 #. TRANSLATORS: Do not translate pthread
-#: src/remmina_ssh.c:2011 src/remmina_ssh.c:2028 src/remmina_ssh.c:2045
-#: src/remmina_ssh.c:2063
+#: src/remmina_ssh.c:2148 src/remmina_ssh.c:2165 src/remmina_ssh.c:2182
+#: src/remmina_ssh.c:2200
 msgid "Could not start pthread."
 msgstr "Klarte ikke å starte pthread."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2155
+#: src/remmina_ssh.c:2292
 #, c-format
 msgid "Could not create SFTP session. %s"
 msgstr "Klarte ikke å opprette SFTP-økt. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2160
+#: src/remmina_ssh.c:2297
 #, c-format
 msgid "Could not start SFTP session. %s"
 msgstr "Kunne ikke starte SFTP-økt. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2275
+#: src/remmina_ssh.c:2412
 #, c-format
 msgid "Could not request shell. %s"
 msgstr "Kunne ikke forespørre skall. %s"
 
-#: src/remmina_ssh.c:2368
+#: src/remmina_ssh.c:2505
 msgid "Could not create PTY device."
 msgstr "Klarte ikke å opprette PTY-enhet."
 
@@ -1869,7 +1877,7 @@ msgstr ""
 
 #: plugins/spice/spice_plugin.c:530
 msgid "Disable video overlay if videos are not displayed properly.\n"
-msgstr ""
+msgstr "Skru av video-overlag hvis videoer ikke vises riktig.\n"
 
 #: plugins/spice/spice_plugin.c:545
 msgid "Use TLS encryption"
@@ -1897,7 +1905,7 @@ msgstr "Skru av tjener-inndata"
 
 #: plugins/spice/spice_plugin.c:564
 msgid "Prefered image compression"
-msgstr ""
+msgstr "Foretrukken bildekomprimering"
 
 #: plugins/spice/spice_plugin.c:565 plugins/spice/spice_plugin.c:578
 #: plugins/nx/nx_plugin.c:749
@@ -3774,6 +3782,12 @@ msgstr "Velg en ny tast"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "Trykk på den nye tasten…"
+
+#, fuzzy
+#~ msgid "Could not authenticate with public SSH key using SSH agent. %s"
+#~ msgstr ""
+#~ "Kunne ikke identitetsbekrefte med offentlig SSH-nøkkel ved bruj av SSH-"
+#~ "agent. %s"
 
 #, fuzzy
 #~| msgid "Could not authenticate with SSH password. %s"
