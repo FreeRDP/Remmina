@@ -532,43 +532,40 @@ remmina_ssh_auth(RemminaSSH *ssh, const gchar *password, RemminaProtocolWidget *
 		if (ssh->authenticated)
 			return REMMINA_SSH_AUTH_SUCCESS;
 		if (method & SSH_AUTH_METHOD_PASSWORD) {
-			rv = remmina_ssh_auth_password(ssh);
 			REMMINA_DEBUG("SSH using remmina_ssh_auth_password");
+			rv = remmina_ssh_auth_password(ssh);
 		}
 		if (!ssh->authenticated && (method & SSH_AUTH_METHOD_INTERACTIVE)) {
 			/* SSH server is requesting us to do interactive auth. */
 			REMMINA_DEBUG("SSH using remmina_ssh_auth_interactive after password has failed");
 			rv = remmina_ssh_auth_interactive(ssh);
 		}
-		if (rv != REMMINA_SSH_AUTH_SUCCESS)
-			return rv;
 		if (rv == REMMINA_SSH_AUTH_PARTIAL) {
+			if (ssh->password) {
+				g_free(ssh->password);
+				ssh->password = NULL;
+			}
 			switch (ssh_userauth_list(ssh->session, NULL)) {
-			case SSH_AUTH_METHOD_PASSWORD:
-				ssh->auth = SSH_AUTH_PASSWORD;
-				break;
-			case SSH_AUTH_METHOD_PUBLICKEY:
-				ssh->auth = SSH_AUTH_PUBLICKEY;
-				break;
-			case SSH_AUTH_METHOD_HOSTBASED:
-				REMMINA_DEBUG("Host based auth method not implemented: %d", ssh->auth);
-				break;
-			case SSH_AUTH_METHOD_INTERACTIVE:
-				ssh->auth = SSH_AUTH_KBDINTERACTIVE;
-				//REMMINA_DEBUG("Interactve auth method not implemented: %d", ssh->auth);
-				break;
-			case SSH_AUTH_METHOD_UNKNOWN:
-			default:
-				REMMINA_DEBUG("User auth method not supported: %d", ssh->auth);
-				return REMMINA_SSH_AUTH_FATAL_ERROR;
+				case SSH_AUTH_METHOD_PASSWORD:
+					ssh->auth = SSH_AUTH_PASSWORD;
+					break;
+				case SSH_AUTH_METHOD_PUBLICKEY:
+					ssh->auth = SSH_AUTH_PUBLICKEY;
+					break;
+				case SSH_AUTH_METHOD_HOSTBASED:
+					REMMINA_DEBUG("Host based auth method not implemented: %d", ssh->auth);
+					break;
+				case SSH_AUTH_METHOD_INTERACTIVE:
+					ssh->auth = SSH_AUTH_KBDINTERACTIVE;
+					//REMMINA_DEBUG("Interactve auth method not implemented: %d", ssh->auth);
+					break;
+				case SSH_AUTH_METHOD_UNKNOWN:
+				default:
+					REMMINA_DEBUG("User auth method not supported: %d", ssh->auth);
+					return REMMINA_SSH_AUTH_FATAL_ERROR;
 			}
 		}
-		if (!ssh->authenticated) {
-			// The real error here should be: "The SSH server %s:%d does not support password or interactive authentication"
-			ssh->error = g_strdup_printf(_("Could not authenticate with SSH password. %s"), "");
-			break;
-		}
-		ssh->error = g_strdup_printf(_("Could not authenticate with password. %s"), "");
+		ssh->error = g_strdup_printf(_("Could not authenticate with SSH password. %s"), "");
 		return rv;
 		break;
 
