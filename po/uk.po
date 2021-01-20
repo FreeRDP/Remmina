@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-18 16:15+0000\n"
+"POT-Creation-Date: 2021-01-20 12:08+0000\n"
 "PO-Revision-Date: 2021-01-15 16:14+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/remmina/"
@@ -1073,7 +1073,7 @@ msgstr "Не вдалося пройти розпізнавання за пар�
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:315 src/remmina_ssh.c:341 src/remmina_ssh.c:378
-#: src/remmina_ssh.c:641 src/remmina_ssh.c:654
+#: src/remmina_ssh.c:638 src/remmina_ssh.c:651
 #, c-format
 msgid "Could not authenticate with public SSH key. %s"
 msgstr "Не вдалося пройти розпізнавання за відкритим ключем SSH. %s"
@@ -1116,43 +1116,38 @@ msgstr "Не вдалося пройти розпізнавання за доп�
 msgid "The public SSH key changed!"
 msgstr "Змінено відкритий ключ SSH!"
 
-#: src/remmina_ssh.c:571
-#, c-format
-msgid "Could not authenticate with password. %s"
-msgstr "Не вдалося пройти розпізнавання за паролем. %s"
-
-#: src/remmina_ssh.c:606
+#: src/remmina_ssh.c:603
 #, c-format
 msgid "Could not authenticate with keyboard-interactive. %s"
 msgstr "Не вдалося пройти інтерактивне розпізнавання з клавіатурою. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:733
+#: src/remmina_ssh.c:730
 #, c-format
 msgid "Could not fetch the server's public SSH key. %s"
 msgstr "Не вдалося отримати відкритий ключ сервера SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:740
+#: src/remmina_ssh.c:737
 #, c-format
 msgid "Could not fetch public SSH key. %s"
 msgstr "Не вдалося отримати відкритий ключ SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:748
+#: src/remmina_ssh.c:745
 #, c-format
 msgid "Could not fetch checksum of the public SSH key. %s"
 msgstr "Не вдалося отримати контрольну суму відкритого ключа SSH. %s"
 
-#: src/remmina_ssh.c:761
+#: src/remmina_ssh.c:758
 msgid "The server is unknown. The public key fingerprint is:"
 msgstr "Невідомий сервер. Відбиток відкритого ключа:"
 
-#: src/remmina_ssh.c:763 src/remmina_ssh.c:769
+#: src/remmina_ssh.c:760 src/remmina_ssh.c:766
 msgid "Do you trust the new public key?"
 msgstr "Ви довіряєте новому відкритому ключу?"
 
-#: src/remmina_ssh.c:766
+#: src/remmina_ssh.c:763
 msgid ""
 "Warning: The server has changed its public key. This means you are either "
 "under attack,\n"
@@ -1162,103 +1157,103 @@ msgstr ""
 "або ж адміністратор змінив ключ. Новий відбиток відкритого ключа:"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:791
+#: src/remmina_ssh.c:788
 #, c-format
 msgid "Could not check list of known SSH hosts. %s"
 msgstr "Не вдалося перевірити список відомих вузлів SSH. %s"
 
-#: src/remmina_ssh.c:800
+#: src/remmina_ssh.c:797
 msgid "SSH password"
 msgstr "Пароль SSH"
 
-#: src/remmina_ssh.c:807 src/remmina_ssh.c:850
+#: src/remmina_ssh.c:804 src/remmina_ssh.c:847
 msgid "SSH private key passphrase"
 msgstr "Пароль до закритого ключа SSH"
 
-#: src/remmina_ssh.c:812
+#: src/remmina_ssh.c:809
 msgid "SSH Kerberos/GSSAPI"
 msgstr "SSH Kerberos/GSSAPI"
 
-#: src/remmina_ssh.c:817
+#: src/remmina_ssh.c:814
 msgid "Enter TOTP/OTP/2FA code"
 msgstr "Введіть код TOTP, OTP або 2FA"
 
-#: src/remmina_ssh.c:846 src/remmina_ssh.c:872
+#: src/remmina_ssh.c:843 src/remmina_ssh.c:869
 msgid "SSH tunnel credentials"
 msgstr "Реєстраційні дані SSH-тунелю"
 
-#: src/remmina_ssh.c:846 src/remmina_ssh.c:872 plugins/nx/nx_plugin.c:203
+#: src/remmina_ssh.c:843 src/remmina_ssh.c:869 plugins/nx/nx_plugin.c:203
 msgid "SSH credentials"
 msgstr "Реєстраційні дані SSH"
 
-#: src/remmina_ssh.c:923
+#: src/remmina_ssh.c:920
 msgid "Keyboard interactive login, TOTP/OTP/2FA"
 msgstr "Інтерактивний вхід з клавіатури, TOTP/OTP/2FA"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1143
+#: src/remmina_ssh.c:1140
 #, c-format
 msgid "Could not start SSH session. %s"
 msgstr "Не вдалося розпочати сеанс SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1546 src/remmina_ssh.c:1609
+#: src/remmina_ssh.c:1543 src/remmina_ssh.c:1606
 #, c-format
 msgid "Could not create channel. %s"
 msgstr "Не вдалося створити канал. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1557
+#: src/remmina_ssh.c:1554
 #, c-format
 msgid "Could not connect to SSH tunnel. %s"
 msgstr "Не вдалося встановити з'єднання із тунелем SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1624 src/remmina_ssh.c:2248
+#: src/remmina_ssh.c:1621 src/remmina_ssh.c:2245
 #, c-format
 msgid "Could not open channel. %s"
 msgstr "Не вдалося відкрити канал. %s"
 
-#: src/remmina_ssh.c:1630
+#: src/remmina_ssh.c:1627
 #, c-format
 msgid "Could not run %s on SSH server."
 msgstr "Не вдалося виконати «%s» на SSH-сервері."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1668 src/remmina_ssh.c:1689 src/remmina_ssh.c:1698
+#: src/remmina_ssh.c:1665 src/remmina_ssh.c:1686 src/remmina_ssh.c:1695
 #, c-format
 msgid "Could not request port forwarding. %s"
 msgstr "Не вдалося надіслати запит щодо переспрямовування порту. %s"
 
-#: src/remmina_ssh.c:1733
+#: src/remmina_ssh.c:1730
 msgid "The server did not respond."
 msgstr "Сервер не відповідає."
 
-#: src/remmina_ssh.c:1776
+#: src/remmina_ssh.c:1773
 #, c-format
 msgid "Cannot connect to local port %i."
 msgstr "Не вдалося встановити з'єднання із локальним портом %i."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1826
+#: src/remmina_ssh.c:1823
 #, c-format
 msgid "Could not write to SSH channel. %s"
 msgstr "Не вдалося виконати запис до каналу SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1833
+#: src/remmina_ssh.c:1830
 #, c-format
 msgid "Could not read from tunnel listening socket. %s"
 msgstr "Не вдалося прочитати дані з сокета очікування на дані тунелю. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1853
+#: src/remmina_ssh.c:1850
 #, c-format
 msgid "Could not poll SSH channel. %s"
 msgstr "Не вдалося опитати канал SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1860
+#: src/remmina_ssh.c:1857
 #, c-format
 msgid "Could not read SSH channel in a non-blocking way. %s"
 msgstr ""
@@ -1266,52 +1261,52 @@ msgstr ""
 "блокування. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1879
+#: src/remmina_ssh.c:1876
 #, c-format
 msgid "Could not send data to tunnel listening socket. %s"
 msgstr "Не вдалося надіслати дані до сокета очікування на дані тунелю. %s"
 
-#: src/remmina_ssh.c:1981
+#: src/remmina_ssh.c:1978
 msgid "Assign a destination port."
 msgstr "Вкажіть порт призначення."
 
-#: src/remmina_ssh.c:1988
+#: src/remmina_ssh.c:1985
 msgid "Could not create socket."
 msgstr "Не вдалося створити сокет."
 
-#: src/remmina_ssh.c:1998
+#: src/remmina_ssh.c:1995
 msgid "Could not bind server socket to local port."
 msgstr "Не вдалося прив'язати сокет сервера до локального порту."
 
-#: src/remmina_ssh.c:2004
+#: src/remmina_ssh.c:2001
 msgid "Could not listen to local port."
 msgstr "Не вдалося розпочати очікування даних на локальному порту."
 
 #. TRANSLATORS: Do not translate pthread
-#: src/remmina_ssh.c:2014 src/remmina_ssh.c:2031 src/remmina_ssh.c:2048
-#: src/remmina_ssh.c:2066
+#: src/remmina_ssh.c:2011 src/remmina_ssh.c:2028 src/remmina_ssh.c:2045
+#: src/remmina_ssh.c:2063
 msgid "Could not start pthread."
 msgstr "Не вдалося запустити pthread."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2158
+#: src/remmina_ssh.c:2155
 #, c-format
 msgid "Could not create SFTP session. %s"
 msgstr "Не вдалося створити сеанс SFTP. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2163
+#: src/remmina_ssh.c:2160
 #, c-format
 msgid "Could not start SFTP session. %s"
 msgstr "Не вдалося розпочати сеанс SFTP. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2278
+#: src/remmina_ssh.c:2275
 #, c-format
 msgid "Could not request shell. %s"
 msgstr "Не вдалося створити запит щодо командної оболонки. %s"
 
-#: src/remmina_ssh.c:2371
+#: src/remmina_ssh.c:2368
 msgid "Could not create PTY device."
 msgstr "Не вдалося створити PTY-пристрій."
 
@@ -3573,6 +3568,9 @@ msgstr "Виберіть нову клавішу"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "Будь ласка, натисніть нову клавішу…"
+
+#~ msgid "Could not authenticate with password. %s"
+#~ msgstr "Не вдалося пройти розпізнавання за паролем. %s"
 
 #~ msgid "Identity file"
 #~ msgstr "Файл профілю"

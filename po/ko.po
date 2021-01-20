@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-18 16:15+0000\n"
+"POT-Creation-Date: 2021-01-20 12:08+0000\n"
 "PO-Revision-Date: 2020-09-11 22:29+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -1090,7 +1090,7 @@ msgstr "SSH 비밀번호로 인증 할 수 없습니다. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:315 src/remmina_ssh.c:341 src/remmina_ssh.c:378
-#: src/remmina_ssh.c:641 src/remmina_ssh.c:654
+#: src/remmina_ssh.c:638 src/remmina_ssh.c:651
 #, c-format
 msgid "Could not authenticate with public SSH key. %s"
 msgstr "공개 SSH 키로 인증 할 수 없습니다. %s"
@@ -1132,46 +1132,40 @@ msgstr "SSH 커베로스/GSSAPI로 인증 할 수 없습니다. %s"
 msgid "The public SSH key changed!"
 msgstr "공개 SSH 키가 변경되었습니다!"
 
-#: src/remmina_ssh.c:571
-#, fuzzy, c-format
-#| msgid "Could not authenticate with SSH password. %s"
-msgid "Could not authenticate with password. %s"
-msgstr "SSH 비밀번호로 인증 할 수 없습니다. %s"
-
-#: src/remmina_ssh.c:606
+#: src/remmina_ssh.c:603
 #, fuzzy, c-format
 #| msgid "Could not authenticate with public SSH key. %s"
 msgid "Could not authenticate with keyboard-interactive. %s"
 msgstr "공개 SSH 키로 인증 할 수 없습니다. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:733
+#: src/remmina_ssh.c:730
 #, c-format
 msgid "Could not fetch the server's public SSH key. %s"
 msgstr "서버의 공개 SSH 키를 가져올 수 없습니다. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:740
+#: src/remmina_ssh.c:737
 #, c-format
 msgid "Could not fetch public SSH key. %s"
 msgstr "SSH 공개 키를 가져올 수 없습니다. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:748
+#: src/remmina_ssh.c:745
 #, fuzzy, c-format
 #| msgid "Could not fetch checksum for public SSH key. %s"
 msgid "Could not fetch checksum of the public SSH key. %s"
 msgstr "SSH 공개 키에 대한 체크섬을 가져올 수 없습니다. %s"
 
-#: src/remmina_ssh.c:761
+#: src/remmina_ssh.c:758
 msgid "The server is unknown. The public key fingerprint is:"
 msgstr "알려지지 않은 서버. 공중 키의 지문은:"
 
-#: src/remmina_ssh.c:763 src/remmina_ssh.c:769
+#: src/remmina_ssh.c:760 src/remmina_ssh.c:766
 msgid "Do you trust the new public key?"
 msgstr "새 공중 키를 믿을 수 있습니까?"
 
-#: src/remmina_ssh.c:766
+#: src/remmina_ssh.c:763
 #, fuzzy
 #| msgid ""
 #| "Warning: The server has changed its public key. This means either you are "
@@ -1187,154 +1181,154 @@ msgstr ""
 "또는 관리자가 키를 변경한 것입니다. 새 공개 키 지문은:"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:791
+#: src/remmina_ssh.c:788
 #, c-format
 msgid "Could not check list of known SSH hosts. %s"
 msgstr "알려진 SSH 호스트 목록을 확인할 수 없습니다. %s"
 
-#: src/remmina_ssh.c:800
+#: src/remmina_ssh.c:797
 msgid "SSH password"
 msgstr "SSH 열쇠글"
 
-#: src/remmina_ssh.c:807 src/remmina_ssh.c:850
+#: src/remmina_ssh.c:804 src/remmina_ssh.c:847
 msgid "SSH private key passphrase"
 msgstr "SSH 개인 키 암호"
 
-#: src/remmina_ssh.c:812
+#: src/remmina_ssh.c:809
 msgid "SSH Kerberos/GSSAPI"
 msgstr "SSH 커베로스/GSSAPI"
 
-#: src/remmina_ssh.c:817
+#: src/remmina_ssh.c:814
 msgid "Enter TOTP/OTP/2FA code"
 msgstr ""
 
-#: src/remmina_ssh.c:846 src/remmina_ssh.c:872
+#: src/remmina_ssh.c:843 src/remmina_ssh.c:869
 msgid "SSH tunnel credentials"
 msgstr "SSH 터널 자격"
 
-#: src/remmina_ssh.c:846 src/remmina_ssh.c:872 plugins/nx/nx_plugin.c:203
+#: src/remmina_ssh.c:843 src/remmina_ssh.c:869 plugins/nx/nx_plugin.c:203
 msgid "SSH credentials"
 msgstr "SSH 자격 증명"
 
-#: src/remmina_ssh.c:923
+#: src/remmina_ssh.c:920
 msgid "Keyboard interactive login, TOTP/OTP/2FA"
 msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1143
+#: src/remmina_ssh.c:1140
 #, c-format
 msgid "Could not start SSH session. %s"
 msgstr "SSH 세션을 시작하지 못 했습니다. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1546 src/remmina_ssh.c:1609
+#: src/remmina_ssh.c:1543 src/remmina_ssh.c:1606
 #, c-format
 msgid "Could not create channel. %s"
 msgstr "채널을 만들 수 없습니다. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1557
+#: src/remmina_ssh.c:1554
 #, c-format
 msgid "Could not connect to SSH tunnel. %s"
 msgstr "SSH 터널링으로 연결할 수 없습니다. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1624 src/remmina_ssh.c:2248
+#: src/remmina_ssh.c:1621 src/remmina_ssh.c:2245
 #, c-format
 msgid "Could not open channel. %s"
 msgstr "채널을 열 수 없습니다. %s"
 
-#: src/remmina_ssh.c:1630
+#: src/remmina_ssh.c:1627
 #, c-format
 msgid "Could not run %s on SSH server."
 msgstr "SSH 서버에서 %s 을(를) 실행할 수 없습니다."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1668 src/remmina_ssh.c:1689 src/remmina_ssh.c:1698
+#: src/remmina_ssh.c:1665 src/remmina_ssh.c:1686 src/remmina_ssh.c:1695
 #, c-format
 msgid "Could not request port forwarding. %s"
 msgstr "포트 포워딩을 요청할 수 없습니다. %s"
 
-#: src/remmina_ssh.c:1733
+#: src/remmina_ssh.c:1730
 msgid "The server did not respond."
 msgstr "서버가 응답하지 않습니다."
 
-#: src/remmina_ssh.c:1776
+#: src/remmina_ssh.c:1773
 #, c-format
 msgid "Cannot connect to local port %i."
 msgstr "로컬 포트 %i 에 연결할 수 없습니다."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1826
+#: src/remmina_ssh.c:1823
 #, c-format
 msgid "Could not write to SSH channel. %s"
 msgstr "SSH 채널에 쓸 수 없습니다. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1833
+#: src/remmina_ssh.c:1830
 #, c-format
 msgid "Could not read from tunnel listening socket. %s"
 msgstr "터널 수신 소켓에서 읽을 수 없습니다. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1853
+#: src/remmina_ssh.c:1850
 #, c-format
 msgid "Could not poll SSH channel. %s"
 msgstr "SSH 채널을 폴링 할 수 없습니다. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1860
+#: src/remmina_ssh.c:1857
 #, c-format
 msgid "Could not read SSH channel in a non-blocking way. %s"
 msgstr "논 블럭 방식으로 SSH 채널을 읽을 수 없습니다. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1879
+#: src/remmina_ssh.c:1876
 #, c-format
 msgid "Could not send data to tunnel listening socket. %s"
 msgstr "터널 수신 소켓에 데이터를 전송할 수 없습니다. %s"
 
-#: src/remmina_ssh.c:1981
+#: src/remmina_ssh.c:1978
 msgid "Assign a destination port."
 msgstr "목적지 포트를 할당하세요."
 
-#: src/remmina_ssh.c:1988
+#: src/remmina_ssh.c:1985
 msgid "Could not create socket."
 msgstr "소켓을 생성할 수 없습니다."
 
-#: src/remmina_ssh.c:1998
+#: src/remmina_ssh.c:1995
 msgid "Could not bind server socket to local port."
 msgstr "서버 소켓을 로컬 포트에 바인딩 할 수 없습니다."
 
-#: src/remmina_ssh.c:2004
+#: src/remmina_ssh.c:2001
 msgid "Could not listen to local port."
 msgstr "로컬 포트에 리스닝할 수 없습니다."
 
 #. TRANSLATORS: Do not translate pthread
-#: src/remmina_ssh.c:2014 src/remmina_ssh.c:2031 src/remmina_ssh.c:2048
-#: src/remmina_ssh.c:2066
+#: src/remmina_ssh.c:2011 src/remmina_ssh.c:2028 src/remmina_ssh.c:2045
+#: src/remmina_ssh.c:2063
 msgid "Could not start pthread."
 msgstr "스레드를 시작할 수 없습니다."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2158
+#: src/remmina_ssh.c:2155
 #, c-format
 msgid "Could not create SFTP session. %s"
 msgstr "SFTP 세션을 만들 수 없습니다. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2163
+#: src/remmina_ssh.c:2160
 #, c-format
 msgid "Could not start SFTP session. %s"
 msgstr "SSH 세션을 시작할 수 없습니다. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2278
+#: src/remmina_ssh.c:2275
 #, c-format
 msgid "Could not request shell. %s"
 msgstr "쉘을 요청할 수 없습니다. %s"
 
-#: src/remmina_ssh.c:2371
+#: src/remmina_ssh.c:2368
 msgid "Could not create PTY device."
 msgstr "PTY 기기를 생성할 수 없습니다."
 
@@ -3643,6 +3637,11 @@ msgstr "새 키 선택"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "새 키를 누르세요…"
+
+#, fuzzy
+#~| msgid "Could not authenticate with SSH password. %s"
+#~ msgid "Could not authenticate with password. %s"
+#~ msgstr "SSH 비밀번호로 인증 할 수 없습니다. %s"
 
 #~ msgid "Identity file"
 #~ msgstr "인증 키 파일"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-18 16:15+0000\n"
+"POT-Creation-Date: 2021-01-20 12:08+0000\n"
 "PO-Revision-Date: 2020-08-14 00:10+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -1069,7 +1069,7 @@ msgstr "Eșec la pornirea sesiunii SSH: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:315 src/remmina_ssh.c:341 src/remmina_ssh.c:378
-#: src/remmina_ssh.c:641 src/remmina_ssh.c:654
+#: src/remmina_ssh.c:638 src/remmina_ssh.c:651
 #, c-format
 msgid "Could not authenticate with public SSH key. %s"
 msgstr ""
@@ -1111,43 +1111,38 @@ msgstr ""
 msgid "The public SSH key changed!"
 msgstr ""
 
-#: src/remmina_ssh.c:571
-#, fuzzy, c-format
-msgid "Could not authenticate with password. %s"
-msgstr "Eșec la pornirea sesiunii SSH: %s"
-
-#: src/remmina_ssh.c:606
+#: src/remmina_ssh.c:603
 #, fuzzy, c-format
 msgid "Could not authenticate with keyboard-interactive. %s"
 msgstr "Eșec la pornirea sesiunii SSH: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:733
+#: src/remmina_ssh.c:730
 #, c-format
 msgid "Could not fetch the server's public SSH key. %s"
 msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:740
+#: src/remmina_ssh.c:737
 #, fuzzy, c-format
 msgid "Could not fetch public SSH key. %s"
 msgstr "Eșec la conectarea la destinația tunelului SSH: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:748
+#: src/remmina_ssh.c:745
 #, fuzzy, c-format
 msgid "Could not fetch checksum of the public SSH key. %s"
 msgstr "Eșec la pornirea sesiunii SSH: %s"
 
-#: src/remmina_ssh.c:761
+#: src/remmina_ssh.c:758
 msgid "The server is unknown. The public key fingerprint is:"
 msgstr "Serverul nu este cunoscut. Amprenta cheii publice este:"
 
-#: src/remmina_ssh.c:763 src/remmina_ssh.c:769
+#: src/remmina_ssh.c:760 src/remmina_ssh.c:766
 msgid "Do you trust the new public key?"
 msgstr "Aveți încredere în cheia publică nouă?"
 
-#: src/remmina_ssh.c:766
+#: src/remmina_ssh.c:763
 #, fuzzy
 msgid ""
 "Warning: The server has changed its public key. This means you are either "
@@ -1159,154 +1154,154 @@ msgstr ""
 "ori administratorul a schimbat cheia. Amprenta nouă a cheii publice este:"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:791
+#: src/remmina_ssh.c:788
 #, fuzzy, c-format
 msgid "Could not check list of known SSH hosts. %s"
 msgstr "Eșec la pornirea sesiunii SSH: %s"
 
-#: src/remmina_ssh.c:800
+#: src/remmina_ssh.c:797
 msgid "SSH password"
 msgstr "Parola SSH"
 
-#: src/remmina_ssh.c:807 src/remmina_ssh.c:850
+#: src/remmina_ssh.c:804 src/remmina_ssh.c:847
 msgid "SSH private key passphrase"
 msgstr "Fraza parolă pentru cheia privată SSH"
 
-#: src/remmina_ssh.c:812
+#: src/remmina_ssh.c:809
 msgid "SSH Kerberos/GSSAPI"
 msgstr ""
 
-#: src/remmina_ssh.c:817
+#: src/remmina_ssh.c:814
 msgid "Enter TOTP/OTP/2FA code"
 msgstr ""
 
-#: src/remmina_ssh.c:846 src/remmina_ssh.c:872
+#: src/remmina_ssh.c:843 src/remmina_ssh.c:869
 msgid "SSH tunnel credentials"
 msgstr ""
 
-#: src/remmina_ssh.c:846 src/remmina_ssh.c:872 plugins/nx/nx_plugin.c:203
+#: src/remmina_ssh.c:843 src/remmina_ssh.c:869 plugins/nx/nx_plugin.c:203
 msgid "SSH credentials"
 msgstr ""
 
-#: src/remmina_ssh.c:923
+#: src/remmina_ssh.c:920
 msgid "Keyboard interactive login, TOTP/OTP/2FA"
 msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1143
+#: src/remmina_ssh.c:1140
 #, fuzzy, c-format
 msgid "Could not start SSH session. %s"
 msgstr "Eșec la pornirea sesiunii SSH: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1546 src/remmina_ssh.c:1609
+#: src/remmina_ssh.c:1543 src/remmina_ssh.c:1606
 #, fuzzy, c-format
 msgid "Could not create channel. %s"
 msgstr "Eșec la crearea unei sesiuni sftp: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1557
+#: src/remmina_ssh.c:1554
 #, fuzzy, c-format
 msgid "Could not connect to SSH tunnel. %s"
 msgstr "Eșec la conectarea la destinația tunelului SSH: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1624 src/remmina_ssh.c:2248
+#: src/remmina_ssh.c:1621 src/remmina_ssh.c:2245
 #, fuzzy, c-format
 msgid "Could not open channel. %s"
 msgstr "Eșec la crearea unei sesiuni sftp: %s"
 
-#: src/remmina_ssh.c:1630
+#: src/remmina_ssh.c:1627
 #, fuzzy, c-format
 msgid "Could not run %s on SSH server."
 msgstr "Eșec la executarea %s pe serverul SSH."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1668 src/remmina_ssh.c:1689 src/remmina_ssh.c:1698
+#: src/remmina_ssh.c:1665 src/remmina_ssh.c:1686 src/remmina_ssh.c:1695
 #, fuzzy, c-format
 msgid "Could not request port forwarding. %s"
 msgstr "Eșec la solicitarea de port forwarding: %s"
 
-#: src/remmina_ssh.c:1733
+#: src/remmina_ssh.c:1730
 msgid "The server did not respond."
 msgstr ""
 
-#: src/remmina_ssh.c:1776
+#: src/remmina_ssh.c:1773
 #, c-format
 msgid "Cannot connect to local port %i."
 msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1826
+#: src/remmina_ssh.c:1823
 #, fuzzy, c-format
 msgid "Could not write to SSH channel. %s"
 msgstr "Eșec la crearea unei sesiuni sftp: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1833
+#: src/remmina_ssh.c:1830
 #, fuzzy, c-format
 msgid "Could not read from tunnel listening socket. %s"
 msgstr "Eșec la crearea unei sesiuni sftp: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1853
+#: src/remmina_ssh.c:1850
 #, fuzzy, c-format
 msgid "Could not poll SSH channel. %s"
 msgstr "Eșec la crearea unei sesiuni sftp: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1860
+#: src/remmina_ssh.c:1857
 #, fuzzy, c-format
 msgid "Could not read SSH channel in a non-blocking way. %s"
 msgstr "Eșec la crearea unei sesiuni sftp: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1879
+#: src/remmina_ssh.c:1876
 #, fuzzy, c-format
 msgid "Could not send data to tunnel listening socket. %s"
 msgstr "Eșec la conectarea la destinația tunelului SSH: %s"
 
-#: src/remmina_ssh.c:1981
+#: src/remmina_ssh.c:1978
 msgid "Assign a destination port."
 msgstr ""
 
-#: src/remmina_ssh.c:1988
+#: src/remmina_ssh.c:1985
 msgid "Could not create socket."
 msgstr ""
 
-#: src/remmina_ssh.c:1998
+#: src/remmina_ssh.c:1995
 msgid "Could not bind server socket to local port."
 msgstr ""
 
-#: src/remmina_ssh.c:2004
+#: src/remmina_ssh.c:2001
 msgid "Could not listen to local port."
 msgstr ""
 
 #. TRANSLATORS: Do not translate pthread
-#: src/remmina_ssh.c:2014 src/remmina_ssh.c:2031 src/remmina_ssh.c:2048
-#: src/remmina_ssh.c:2066
+#: src/remmina_ssh.c:2011 src/remmina_ssh.c:2028 src/remmina_ssh.c:2045
+#: src/remmina_ssh.c:2063
 msgid "Could not start pthread."
 msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2158
+#: src/remmina_ssh.c:2155
 #, fuzzy, c-format
 msgid "Could not create SFTP session. %s"
 msgstr "Eșec la crearea unei sesiuni sftp: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2163
+#: src/remmina_ssh.c:2160
 #, fuzzy, c-format
 msgid "Could not start SFTP session. %s"
 msgstr "Eșec la pornirea sesiunii SSH: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2278
+#: src/remmina_ssh.c:2275
 #, fuzzy, c-format
 msgid "Could not request shell. %s"
 msgstr "Eșec la crearea unei sesiuni sftp: %s"
 
-#: src/remmina_ssh.c:2371
+#: src/remmina_ssh.c:2368
 msgid "Could not create PTY device."
 msgstr ""
 
@@ -3492,6 +3487,10 @@ msgstr ""
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Could not authenticate with password. %s"
+#~ msgstr "Eșec la pornirea sesiunii SSH: %s"
 
 #~ msgid "Identity file"
 #~ msgstr "Fișier identitate"
