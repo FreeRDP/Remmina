@@ -1845,34 +1845,34 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 #ifdef FREERDP_ERROR_CONNECT_ACCOUNT_LOCKED_OUT
 			case FREERDP_ERROR_CONNECT_ACCOUNT_LOCKED_OUT:
 #endif
-				remmina_plugin_service->protocol_plugin_set_error(gp, _("Could not access the RDP server \"%s\".\nAccount locked out."),
+				remmina_plugin_service->protocol_plugin_set_error(gp, _("Could not access the RDP server “%s”.\nAccount locked out."),
 										  rfi->settings->ServerHostname);
 				break;
 			case STATUS_ACCOUNT_EXPIRED:
 #ifdef FREERDP_ERROR_CONNECT_ACCOUNT_EXPIRED
 			case FREERDP_ERROR_CONNECT_ACCOUNT_EXPIRED:
 #endif
-				remmina_plugin_service->protocol_plugin_set_error(gp, _("Could not access the RDP server \"%s\".\nAccount expired."),
+				remmina_plugin_service->protocol_plugin_set_error(gp, _("Could not access the RDP server “%s”.\nAccount expired."),
 										  rfi->settings->ServerHostname);
 				break;
 			case STATUS_PASSWORD_EXPIRED:
 #ifdef FREERDP_ERROR_CONNECT_PASSWORD_EXPIRED
 			case FREERDP_ERROR_CONNECT_PASSWORD_EXPIRED:
 #endif
-				remmina_plugin_service->protocol_plugin_set_error(gp, _("Could not access the RDP server \"%s\".\nPassword expired."),
+				remmina_plugin_service->protocol_plugin_set_error(gp, _("Could not access the RDP server “%s”.\nPassword expired."),
 										  rfi->settings->ServerHostname);
 				break;
 			case STATUS_ACCOUNT_DISABLED:
 #ifdef FREERDP_ERROR_CONNECT_ACCOUNT_DISABLED
 			case FREERDP_ERROR_CONNECT_ACCOUNT_DISABLED:
 #endif
-				remmina_plugin_service->protocol_plugin_set_error(gp, _("Could not access the RDP server \"%s\".\nAccount disabled."),
+				remmina_plugin_service->protocol_plugin_set_error(gp, _("Could not access the RDP server “%s”.\nAccount disabled."),
 										  rfi->settings->ServerHostname);
 				break;
 #ifdef FREERDP_ERROR_SERVER_INSUFFICIENT_PRIVILEGES
 			/* https://msdn.microsoft.com/en-us/library/ee392247.aspx */
 			case FREERDP_ERROR_SERVER_INSUFFICIENT_PRIVILEGES:
-				remmina_plugin_service->protocol_plugin_set_error(gp, _("Could not access the RDP server \"%s\".\nInsufficient user privileges."),
+				remmina_plugin_service->protocol_plugin_set_error(gp, _("Could not access the RDP server “%s”.\nInsufficient user privileges."),
 										  rfi->settings->ServerHostname);
 				break;
 #endif
@@ -1880,7 +1880,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 #ifdef FREERDP_ERROR_CONNECT_ACCOUNT_RESTRICTION
 			case FREERDP_ERROR_CONNECT_ACCOUNT_RESTRICTION:
 #endif
-				remmina_plugin_service->protocol_plugin_set_error(gp, _("Could not access the RDP server \"%s\".\nAccount restricted."),
+				remmina_plugin_service->protocol_plugin_set_error(gp, _("Could not access the RDP server “%s”.\nAccount restricted."),
 										  rfi->settings->ServerHostname);
 				break;
 
@@ -1888,23 +1888,23 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 #ifdef FREERDP_ERROR_CONNECT_PASSWORD_MUST_CHANGE
 			case FREERDP_ERROR_CONNECT_PASSWORD_MUST_CHANGE:
 #endif
-				remmina_plugin_service->protocol_plugin_set_error(gp, _("Could not access the RDP server \"%s\".\nChange user password before connecting."),
+				remmina_plugin_service->protocol_plugin_set_error(gp, _("Could not access the RDP server “%s”.\nChange user password before connecting."),
 										  rfi->settings->ServerHostname);
 				break;
 
 			case FREERDP_ERROR_CONNECT_FAILED:
-				remmina_plugin_service->protocol_plugin_set_error(gp, _("Lost connection to the RDP server \"%s\"."), rfi->settings->ServerHostname);
+				remmina_plugin_service->protocol_plugin_set_error(gp, _("Lost connection to the RDP server “%s”."), rfi->settings->ServerHostname);
 				break;
 			case FREERDP_ERROR_DNS_NAME_NOT_FOUND:
-				remmina_plugin_service->protocol_plugin_set_error(gp, _("Could not find the address for the RDP server \"%s\"."), rfi->settings->ServerHostname);
+				remmina_plugin_service->protocol_plugin_set_error(gp, _("Could not find the address for the RDP server “%s”."), rfi->settings->ServerHostname);
 				break;
 			case FREERDP_ERROR_TLS_CONNECT_FAILED:
 				remmina_plugin_service->protocol_plugin_set_error(gp,
-										  _("Could not connect to the RDP server \"%s\" via TLS. Check that client and server support a common TLS version."), rfi->settings->ServerHostname);
+										  _("Could not connect to the RDP server “%s” via TLS. Check that client and server support a common TLS version."), rfi->settings->ServerHostname);
 				break;
 			case FREERDP_ERROR_SECURITY_NEGO_CONNECT_FAILED:
 				// TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
-				remmina_plugin_service->protocol_plugin_set_error(gp, _("Unable to establish a connection to the RDP server \"%s\". Check \"Security protocol negotiation\"."), rfi->settings->ServerHostname);
+				remmina_plugin_service->protocol_plugin_set_error(gp, _("Unable to establish a connection to the RDP server “%s”. Check \"Security protocol negotiation\"."), rfi->settings->ServerHostname);
 				break;
 #ifdef FREERDP_ERROR_POST_CONNECT_FAILED
 			case FREERDP_ERROR_POST_CONNECT_FAILED:
@@ -1912,25 +1912,25 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 				switch (rfi->postconnect_error) {
 				case REMMINA_POSTCONNECT_ERROR_OK:
 					/* We should never come here */
-					remmina_plugin_service->protocol_plugin_set_error(gp, _("Cannot connect to the RDP server \"%s\"."), rfi->settings->ServerHostname);
+					remmina_plugin_service->protocol_plugin_set_error(gp, _("Cannot connect to the RDP server “%s”."), rfi->settings->ServerHostname);
 					break;
 				case REMMINA_POSTCONNECT_ERROR_GDI_INIT:
 					remmina_plugin_service->protocol_plugin_set_error(gp, _("Could not start libfreerdp-gdi."));
 					break;
 				case REMMINA_POSTCONNECT_ERROR_NO_H264:
-					remmina_plugin_service->protocol_plugin_set_error(gp, _("You requested a H.264 GFX mode for the server \"%s\", but your libfreerdp does not support H.264. Please use a non-AVC colour depth setting."), rfi->settings->ServerHostname);
+					remmina_plugin_service->protocol_plugin_set_error(gp, _("You requested a H.264 GFX mode for the server “%s”, but your libfreerdp does not support H.264. Please use a non-AVC colour depth setting."), rfi->settings->ServerHostname);
 					break;
 				}
 				break;
 #endif
 #ifdef FREERDP_ERROR_SERVER_DENIED_CONNECTION
 			case FREERDP_ERROR_SERVER_DENIED_CONNECTION:
-				remmina_plugin_service->protocol_plugin_set_error(gp, _("The \"%s\" server refused the connection."), rfi->settings->ServerHostname);
+				remmina_plugin_service->protocol_plugin_set_error(gp, _("The “%s” server refused the connection."), rfi->settings->ServerHostname);
 				break;
 #endif
 			case 0x800759DB:
 				// E_PROXY_NAP_ACCESSDENIED https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-tsgu/84cd92e4-592c-4219-95d8-18021ac654b0
-				remmina_plugin_service->protocol_plugin_set_error(gp, _("The Remote Desktop Gateway \"%s\" denied the user \"%s\\%s\" access due to policy."),
+				remmina_plugin_service->protocol_plugin_set_error(gp, _("The Remote Desktop Gateway “%s” denied the user \"%s\\%s\" access due to policy."),
 										  rfi->settings->GatewayHostname, rfi->settings->GatewayDomain, rfi->settings->GatewayUsername);
 				break;
 
@@ -1940,7 +1940,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 
 			default:
 				g_printf("libfreerdp returned code is %08X\n", e);
-				remmina_plugin_service->protocol_plugin_set_error(gp, _("Cannot connect to the \"%s\" RDP server."), rfi->settings->ServerHostname);
+				remmina_plugin_service->protocol_plugin_set_error(gp, _("Cannot connect to the “%s” RDP server."), rfi->settings->ServerHostname);
 				break;
 			}
 		}

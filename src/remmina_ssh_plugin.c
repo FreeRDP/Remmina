@@ -531,8 +531,7 @@ remmina_plugin_ssh_vte_save_session(GtkMenuItem *menuitem, RemminaProtocolWidget
 
 	if (err != NULL) {
 		// TRANSLATORS: %s is a placeholder for an error message
-		widget = gtk_message_dialog_new(NULL, GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
-						_("Error: %s"), err->message);
+		widget = gtk_message_dialog_new(NULL, GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK, _("Error: %s"), err->message);
 		g_signal_connect(G_OBJECT(widget), "response", G_CALLBACK(gtk_widget_destroy), NULL);
 		gtk_widget_show(widget);
 		return;
@@ -577,7 +576,7 @@ static void jit_regex(VteRegex* regex, char const* pattern)
         if (!vte_regex_jit(regex, PCRE2_JIT_COMPLETE, &error) ||
             !vte_regex_jit(regex, PCRE2_JIT_PARTIAL_SOFT, &error)) {
                 if (!g_error_matches(error, VTE_REGEX_ERROR, -45 /* PCRE2_ERROR_JIT_BADOPTION: JIT not supported */))
-                        REMMINA_DEBUG("JITing regex \"%s\" failed: %s\n", pattern, error->message);
+                        REMMINA_DEBUG("JITing regex “%s” failed: %s\n", pattern, error->message);
         }
 }
 

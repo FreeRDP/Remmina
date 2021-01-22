@@ -123,7 +123,7 @@ gboolean remmina_plugin_python_load(RemminaPluginService* service, const gchar* 
         return TRUE;
     }
 
-    g_print("Failed to load python plugin file: \"%s\"\n", name);
+    g_print("Failed to load python plugin file: “%s”\n", name);
     PyErr_Print();
     return FALSE;
 }

@@ -350,9 +350,10 @@ static void remmina_icon_create_autostart_file(void)
 
 	gkeyfile = g_key_file_new();
 	g_key_file_set_string(gkeyfile, "Desktop Entry", "Version", "1.0");
+	// TRANSLATORS: Applet name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
 	g_key_file_set_string(gkeyfile, "Desktop Entry", "Name", _("Remmina Applet"));
-	g_key_file_set_string(gkeyfile, "Desktop Entry", "Comment",
-			      _("Connect to remote desktops through the applet menu"));
+	// TRANSLATORS: Applet comment/description as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
+	g_key_file_set_string(gkeyfile, "Desktop Entry", "Comment", _("Connect to remote desktops through the applet menu"));
 	g_key_file_set_string(gkeyfile, "Desktop Entry", "Icon", REMMINA_APP_ID);
 	g_key_file_set_string(gkeyfile, "Desktop Entry", "Exec", "remmina -i");
 	g_key_file_set_boolean(gkeyfile, "Desktop Entry", "Terminal", FALSE);
@@ -528,9 +529,10 @@ void remmina_icon_set_autostart(gboolean autostart)
 	if (b != autostart) {
 		g_key_file_set_boolean(gkeyfile, "Desktop Entry", "Hidden", !autostart);
 		/* Refresh it in case translation is updated */
+		// TRANSLATORS: Applet Name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
 		g_key_file_set_string(gkeyfile, "Desktop Entry", "Name", _("Remmina Applet"));
-		g_key_file_set_string(gkeyfile, "Desktop Entry", "Comment",
-				      _("Connect to remote desktops through the applet menu"));
+		// TRANSLATORS: Applet comment/description as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
+		g_key_file_set_string(gkeyfile, "Desktop Entry", "Comment", _("Connect to remote desktops through the applet menu"));
 		remmina_icon_save_autostart_file(gkeyfile);
 	}
 	g_key_file_free(gkeyfile);
