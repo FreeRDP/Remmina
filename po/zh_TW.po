@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-20 22:37+0000\n"
+"POT-Creation-Date: 2021-01-22 08:51+0000\n"
 "PO-Revision-Date: 2020-09-11 22:29+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
@@ -36,12 +36,13 @@ msgstr "執行外部指令…"
 
 #: src/remmina_protocol_widget.c:320
 #, fuzzy, c-format
-msgid "Connecting to \"%s\"…"
+msgid "Connecting to “%s”…"
 msgstr "正連接至「%s」…"
 
 #: src/remmina_protocol_widget.c:766 src/remmina_protocol_widget.c:884
 #, fuzzy, c-format
-msgid "Connecting to \"%s\" via SSH…"
+#| msgid "Connecting to %s via SSH…"
+msgid "Connecting to “%s” via SSH…"
 msgstr "正在以 SSH 連接 %s …"
 
 #: src/remmina_protocol_widget.c:947
@@ -51,12 +52,12 @@ msgstr "正在於 %i 連接埠等待傳入的 SSH 連線…"
 
 #: src/remmina_protocol_widget.c:999
 #, fuzzy, c-format
-msgid "The \"%s\" command is not available on the SSH server."
+msgid "The “%s” command is not available on the SSH server."
 msgstr "SSH 伺服器找不到 %s 指令"
 
 #: src/remmina_protocol_widget.c:1003
 #, fuzzy, c-format
-msgid "Could not run the \"%s\" command on the SSH server (status = %i)."
+msgid "Could not run the “%s” command on the SSH server (status = %i)."
 msgstr "無法於 SSH 伺服器執行 %s 指令 (狀態 = %i)。"
 
 #. TRANSLATORS: %s is a placeholder for an error message
@@ -71,7 +72,7 @@ msgid "Connecting to %s via SSH…"
 msgstr "正在以 SSH 連接 %s …"
 
 #: src/remmina_protocol_widget.c:1447 src/remmina_protocol_widget.c:1466
-#: src/remmina_ssh_plugin.c:1258 src/remmina_sftp_plugin.c:309
+#: src/remmina_ssh_plugin.c:1257 src/remmina_sftp_plugin.c:309
 #: src/remmina_sftp_plugin.c:344 src/remmina_file_editor.c:998
 #: plugins/www/www_plugin.c:872 plugins/rdp/rdp_plugin.c:2404
 #: data/ui/remmina_unlock.glade:116 data/ui/remmina_mpc.glade:236
@@ -186,117 +187,118 @@ msgid ""
 "tab in the settings."
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:535
+#. TRANSLATORS: %s is a placeholder for an error message
+#: src/remmina_ssh_plugin.c:534
 #, c-format
 msgid "Error: %s"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:552
+#: src/remmina_ssh_plugin.c:551
 #, fuzzy
 msgid "Terminal content saved in"
 msgstr "終端機內容儲存在"
 
-#: src/remmina_ssh_plugin.c:806
+#: src/remmina_ssh_plugin.c:805
 #, fuzzy
 msgid "Select All (host+A)"
 msgstr "選擇全部（Host+a）"
 
-#: src/remmina_ssh_plugin.c:807
+#: src/remmina_ssh_plugin.c:806
 #, fuzzy
 msgid "Copy (host+C)"
 msgstr "複製（Host+c）"
 
-#: src/remmina_ssh_plugin.c:808
+#: src/remmina_ssh_plugin.c:807
 #, fuzzy
 msgid "Paste (host+V)"
 msgstr "貼上（Host+v）"
 
-#: src/remmina_ssh_plugin.c:809
+#: src/remmina_ssh_plugin.c:808
 msgid "Save session to file"
 msgstr "將工作階段儲存至檔案"
 
-#: src/remmina_ssh_plugin.c:810
+#: src/remmina_ssh_plugin.c:809
 msgid "Increase font size (host+Page Up)"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:811
+#: src/remmina_ssh_plugin.c:810
 msgid "Decrease font size (host+Page Down)"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:812
+#: src/remmina_ssh_plugin.c:811
 #, fuzzy
 msgid "Find text (host+G)"
 msgstr "貼上（Host+v）"
 
-#: src/remmina_ssh_plugin.c:1259 src/remmina_ssh_plugin.c:1363
+#: src/remmina_ssh_plugin.c:1258 src/remmina_ssh_plugin.c:1362
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:346
 #: src/remmina_file_editor.c:350 src/remmina_file_editor.c:357
 #: plugins/nx/nx_plugin.c:729
 msgid "SSH identity file"
 msgstr "SSH 身份檔案"
 
-#: src/remmina_ssh_plugin.c:1260 src/remmina_sftp_plugin.c:311
+#: src/remmina_ssh_plugin.c:1259 src/remmina_sftp_plugin.c:311
 msgid "SSH agent"
 msgstr "SSH 代理"
 
-#: src/remmina_ssh_plugin.c:1261 src/remmina_sftp_plugin.c:312
+#: src/remmina_ssh_plugin.c:1260 src/remmina_sftp_plugin.c:312
 #: src/remmina_file_editor.c:1011
 msgid "Public key (automatic)"
 msgstr "公鑰 (自動)"
 
-#: src/remmina_ssh_plugin.c:1262 src/remmina_sftp_plugin.c:313
+#: src/remmina_ssh_plugin.c:1261 src/remmina_sftp_plugin.c:313
 msgid "Kerberos (GSSAPI)"
 msgstr "Kerberos (GSSAPI)"
 
-#: src/remmina_ssh_plugin.c:1337 data/ui/remmina_main.glade:183
+#: src/remmina_ssh_plugin.c:1336 data/ui/remmina_main.glade:183
 msgid "Copy"
 msgstr "複製"
 
-#: src/remmina_ssh_plugin.c:1337
+#: src/remmina_ssh_plugin.c:1336
 msgid "_Copy"
 msgstr "複製(_C)"
 
-#: src/remmina_ssh_plugin.c:1338
+#: src/remmina_ssh_plugin.c:1337
 msgid "Paste"
 msgstr "貼上"
 
-#: src/remmina_ssh_plugin.c:1338
+#: src/remmina_ssh_plugin.c:1337
 msgid "_Paste"
 msgstr "貼上(_C)"
 
-#: src/remmina_ssh_plugin.c:1339
+#: src/remmina_ssh_plugin.c:1338
 msgid "Select all"
 msgstr "全選"
 
-#: src/remmina_ssh_plugin.c:1339
+#: src/remmina_ssh_plugin.c:1338
 msgid "_Select all"
 msgstr "全選(_S)"
 
-#: src/remmina_ssh_plugin.c:1340 data/ui/remmina_preferences.glade:2288
+#: src/remmina_ssh_plugin.c:1339 data/ui/remmina_preferences.glade:2288
 msgid "Increase font size"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1340
+#: src/remmina_ssh_plugin.c:1339
 msgid "_Increase font size"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1341 data/ui/remmina_preferences.glade:2301
+#: src/remmina_ssh_plugin.c:1340 data/ui/remmina_preferences.glade:2301
 msgid "Decrease font size"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1341
+#: src/remmina_ssh_plugin.c:1340
 msgid "_Decrease font size"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1342
+#: src/remmina_ssh_plugin.c:1341
 msgid "Find text"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1342
+#: src/remmina_ssh_plugin.c:1341
 msgid "_Find text"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1360 src/remmina_message_panel.c:330
+#: src/remmina_ssh_plugin.c:1359 src/remmina_message_panel.c:330
 #: src/remmina_sftp_plugin.c:343 src/remmina_file_editor.c:989
 #: plugins/www/www_plugin.c:871 plugins/vnc/vnc_plugin.c:1879
 #: plugins/vnc/vnc_plugin.c:1899 plugins/rdp/rdp_plugin.c:2403
@@ -304,29 +306,29 @@ msgstr ""
 msgid "Username"
 msgstr "使用者名稱"
 
-#: src/remmina_ssh_plugin.c:1361 plugins/vnc/vnc_plugin.c:1880
+#: src/remmina_ssh_plugin.c:1360 plugins/vnc/vnc_plugin.c:1880
 #: plugins/vnc/vnc_plugin.c:1900 plugins/spice/spice_plugin.c:544
 #: plugins/nx/nx_plugin.c:731
 msgid "User password"
 msgstr "使用者密碼"
 
-#: src/remmina_ssh_plugin.c:1362 src/remmina_sftp_plugin.c:345
+#: src/remmina_ssh_plugin.c:1361 src/remmina_sftp_plugin.c:345
 msgid "Authentication type"
 msgstr "認證類型"
 
-#: src/remmina_ssh_plugin.c:1364 src/remmina_sftp_plugin.c:347
+#: src/remmina_ssh_plugin.c:1363 src/remmina_sftp_plugin.c:347
 #: src/remmina_file_editor.c:1020
 msgid "Password to unlock private key"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1365 plugins/xdmcp/xdmcp_plugin.c:370
+#: src/remmina_ssh_plugin.c:1364 plugins/xdmcp/xdmcp_plugin.c:370
 #: plugins/rdp/rdp_plugin.c:2439 plugins/nx/nx_plugin.c:734
 #, fuzzy
 #| msgid "Startup program"
 msgid "Start-up program"
 msgstr "啟動程式"
 
-#: src/remmina_ssh_plugin.c:1370
+#: src/remmina_ssh_plugin.c:1369
 #, fuzzy
 #| msgid ""
 #| "<tt><big>• command in PATH args %h\n"
@@ -363,64 +365,64 @@ msgstr ""
 "如果想在連線前執行指令，請不要在背景執行。\n"
 "</big></tt>"
 
-#: src/remmina_ssh_plugin.c:1392
+#: src/remmina_ssh_plugin.c:1391
 msgid "Terminal color scheme"
 msgstr "終端機配色"
 
-#: src/remmina_ssh_plugin.c:1393
+#: src/remmina_ssh_plugin.c:1392
 msgid "Character set"
 msgstr "字集"
 
-#: src/remmina_ssh_plugin.c:1394 src/remmina_sftp_plugin.c:348
+#: src/remmina_ssh_plugin.c:1393 src/remmina_sftp_plugin.c:348
 msgid "SSH Proxy Command"
 msgstr "SSH 代理伺服器指令"
 
-#: src/remmina_ssh_plugin.c:1395
+#: src/remmina_ssh_plugin.c:1394
 msgid "KEX (Key Exchange) algorithms"
 msgstr "KEX（金鑰交換）演算法"
 
-#: src/remmina_ssh_plugin.c:1396
+#: src/remmina_ssh_plugin.c:1395
 msgid "Symmetric cipher client to server"
 msgstr "對稱加密用戶端到伺服器"
 
-#: src/remmina_ssh_plugin.c:1397
+#: src/remmina_ssh_plugin.c:1396
 msgid "Preferred server host key types"
 msgstr "偏好的伺服器主機金鑰類型"
 
-#: src/remmina_ssh_plugin.c:1398
+#: src/remmina_ssh_plugin.c:1397
 #, fuzzy
 msgid "Folder for SSH session log"
 msgstr "未能啟動 SSH 作業階段：%s"
 
-#: src/remmina_ssh_plugin.c:1399
+#: src/remmina_ssh_plugin.c:1398
 #, fuzzy
 msgid "Filename for SSH session log"
 msgstr "在離開時啟用 SSH 作業階段紀錄"
 
-#: src/remmina_ssh_plugin.c:1400
+#: src/remmina_ssh_plugin.c:1399
 msgid "Log SSH session when exiting Remmina"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1401
+#: src/remmina_ssh_plugin.c:1400
 #, fuzzy
 msgid "Audible terminal bell"
 msgstr "啟用終端機鈴聲"
 
-#: src/remmina_ssh_plugin.c:1402
+#: src/remmina_ssh_plugin.c:1401
 #, fuzzy
 msgid "SSH compression"
 msgstr "啟用 SSH 壓縮"
 
-#: src/remmina_ssh_plugin.c:1403
+#: src/remmina_ssh_plugin.c:1402
 #, fuzzy
 msgid "Don't remember passwords"
 msgstr "確認密碼"
 
-#: src/remmina_ssh_plugin.c:1404
+#: src/remmina_ssh_plugin.c:1403
 msgid "Strict host key checking"
 msgstr "嚴格的主機金鑰檢查"
 
-#: src/remmina_ssh_plugin.c:1418
+#: src/remmina_ssh_plugin.c:1417
 msgid "SSH - Secure Shell"
 msgstr "SSH - 安全Shell連接"
 
@@ -711,15 +713,18 @@ msgstr "開啟服務偵測功能"
 msgid "_Quit"
 msgstr "離開(_Q)"
 
-#: src/remmina_icon.c:353 src/remmina_icon.c:531
+#. TRANSLATORS: Applet name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
+#. TRANSLATORS: Applet Name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
+#: src/remmina_icon.c:354 src/remmina_icon.c:533
 msgid "Remmina Applet"
 msgstr "Remmina 面板小程式"
 
-#: src/remmina_icon.c:355 src/remmina_icon.c:533
+#. TRANSLATORS: Applet comment/description as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
+#: src/remmina_icon.c:356 src/remmina_icon.c:535
 msgid "Connect to remote desktops through the applet menu"
 msgstr "通過小程式選單快速連接到遠端桌面"
 
-#: src/remmina_icon.c:473 src/remmina_icon.c:474 src/remmina_main.c:1280
+#: src/remmina_icon.c:474 src/remmina_icon.c:475 src/remmina_main.c:1280
 msgid "Remmina Remote Desktop Client"
 msgstr "Remmina 遠端桌面客戶端"
 
@@ -811,7 +816,7 @@ msgstr "斷開連接"
 
 #: src/rcw.c:3989
 #, fuzzy, c-format
-msgid "The file \"%s\" is corrupted, unreadable, or could not be found."
+msgid "The file “%s” is corrupted, unreadable, or could not be found."
 msgstr "檔案 %s 已毀損，無法讀取或找不到檔案"
 
 #: src/rcw.c:4154
@@ -876,7 +881,7 @@ msgstr[0] "共 %i 項。"
 
 #: src/remmina_main.c:842
 #, fuzzy, c-format
-msgid "Are you sure you want to delete \"%s\"?"
+msgid "Are you sure you want to delete “%s”?"
 msgstr "確定要刪除「%s」？"
 
 #: src/remmina_main.c:952
@@ -935,50 +940,50 @@ msgstr "<無>"
 #. TRANSLATORS: The placeholder %s is a directory path
 #: src/remmina_sftp_client.c:173
 #, fuzzy, c-format
-msgid "Could not create the folder \"%s\"."
+msgid "Could not create the folder “%s”."
 msgstr "無法開啟通道：%s"
 
 #. TRANSLATORS: The placeholder %s is a file path
 #: src/remmina_sftp_client.c:181 src/remmina_sftp_client.c:202
 #, fuzzy, c-format
-msgid "Could not create the file \"%s\"."
+msgid "Could not create the file “%s”."
 msgstr "無法開啟通道：%s"
 
 #. TRANSLATORS: The placeholders %s are a file path, and an error message.
 #: src/remmina_sftp_client.c:220
 #, fuzzy, c-format
-msgid "Could not open the file \"%s\" on the server. %s"
+msgid "Could not open the file “%s” on the server. %s"
 msgstr "無法開啟通道：%s"
 
 #: src/remmina_sftp_client.c:242
 #, fuzzy, c-format
-msgid "Could not save the file \"%s\"."
+msgid "Could not save the file “%s”."
 msgstr "無法開啟通道：%s"
 
 #: src/remmina_sftp_client.c:281 src/remmina_sftp_client.c:698
 #: src/remmina_sftp_client.c:761
 #, fuzzy, c-format
-msgid "Could not open the folder \"%s\". %s"
+msgid "Could not open the folder “%s”. %s"
 msgstr "無法開啟通道：%s"
 
 #: src/remmina_sftp_client.c:385
 #, fuzzy, c-format
-msgid "Could not create the folder \"%s\" on the server. %s"
+msgid "Could not create the folder “%s” on the server. %s"
 msgstr "在伺服器建立資料夾 %s 時發生錯誤。%s"
 
 #: src/remmina_sftp_client.c:413 src/remmina_sftp_client.c:435
 #, fuzzy, c-format
-msgid "Could not create the file \"%s\" on the server. %s"
+msgid "Could not create the file “%s” on the server. %s"
 msgstr "在伺服器建立檔案 %s 時發生錯誤。%s"
 
 #: src/remmina_sftp_client.c:456
 #, fuzzy, c-format
-msgid "Could not open the file \"%s\"."
+msgid "Could not open the file “%s”."
 msgstr "無法開啟通道：%s"
 
 #: src/remmina_sftp_client.c:476
 #, fuzzy, c-format
-msgid "Could not write to the file \"%s\" on the server. %s"
+msgid "Could not write to the file “%s” on the server. %s"
 msgstr "在伺服器寫入檔案 %s 時發生錯誤。%s"
 
 #: src/remmina_sftp_client.c:716
@@ -993,7 +998,7 @@ msgstr "確定要刪除「%s」？"
 
 #: src/remmina_sftp_client.c:857
 #, fuzzy, c-format
-msgid "Could not delete \"%s\". %s"
+msgid "Could not delete “%s”. %s"
 msgstr "無法開啟通道：%s"
 
 #: src/remmina_sftp_client.c:942
@@ -1564,7 +1569,7 @@ msgstr "使用「%s」作為子群組分隔符"
 
 #: src/remmina_file_editor.c:1657 src/remmina_file_editor.c:1675
 #, fuzzy, c-format
-msgid "Could not find the file \"%s\"."
+msgid "Could not find the file “%s”."
 msgstr "無法開啟通道：%s"
 
 #: src/remmina_chat_window.c:178
@@ -1836,7 +1841,7 @@ msgstr "輸入 SPICE 密碼"
 
 #: plugins/spice/spice_plugin.c:296
 #, fuzzy, c-format
-msgid "Disconnected from the SPICE server \"%s\"."
+msgid "Disconnected from the SPICE server “%s”."
 msgstr "已中斷與 SPICE 伺服器的連線 %s。"
 
 #: plugins/spice/spice_plugin.c:312
@@ -1946,7 +1951,7 @@ msgstr "本機可用的 X 顯示編號已用盡。"
 #: plugins/xdmcp/xdmcp_plugin.c:264 plugins/nx/nx_plugin.c:617
 #, fuzzy, c-format
 msgid ""
-"The protocol \"%s\" is unavailable because GtkSocket only works under X.Org."
+"The protocol “%s” is unavailable because GtkSocket only works under X.Org."
 msgstr "協定 %s 不可用，因為 GtkSocket 僅能在 X.Org 下使用"
 
 #: plugins/xdmcp/xdmcp_plugin.c:349
@@ -2012,7 +2017,7 @@ msgstr "輸入 RDP 閘道驗證身分資料"
 #: plugins/rdp/rdp_plugin.c:1848
 #, fuzzy, c-format
 msgid ""
-"Could not access the RDP server \"%s\".\n"
+"Could not access the RDP server “%s”.\n"
 "Account locked out."
 msgstr ""
 "存取 RDP 伺服器 %s 失敗。\n"
@@ -2021,7 +2026,7 @@ msgstr ""
 #: plugins/rdp/rdp_plugin.c:1855
 #, fuzzy, c-format
 msgid ""
-"Could not access the RDP server \"%s\".\n"
+"Could not access the RDP server “%s”.\n"
 "Account expired."
 msgstr ""
 "存取 RDP 伺服器 %s 失敗。\n"
@@ -2030,7 +2035,7 @@ msgstr ""
 #: plugins/rdp/rdp_plugin.c:1862
 #, fuzzy, c-format
 msgid ""
-"Could not access the RDP server \"%s\".\n"
+"Could not access the RDP server “%s”.\n"
 "Password expired."
 msgstr ""
 "存取 RDP 伺服器 %s 失敗。\n"
@@ -2039,7 +2044,7 @@ msgstr ""
 #: plugins/rdp/rdp_plugin.c:1869
 #, fuzzy, c-format
 msgid ""
-"Could not access the RDP server \"%s\".\n"
+"Could not access the RDP server “%s”.\n"
 "Account disabled."
 msgstr ""
 "存取 RDP 伺服器 %s 失敗。\n"
@@ -2048,7 +2053,7 @@ msgstr ""
 #: plugins/rdp/rdp_plugin.c:1875
 #, fuzzy, c-format
 msgid ""
-"Could not access the RDP server \"%s\".\n"
+"Could not access the RDP server “%s”.\n"
 "Insufficient user privileges."
 msgstr ""
 "存取 RDP 伺服器 %s 失敗。\n"
@@ -2057,7 +2062,7 @@ msgstr ""
 #: plugins/rdp/rdp_plugin.c:1883
 #, fuzzy, c-format
 msgid ""
-"Could not access the RDP server \"%s\".\n"
+"Could not access the RDP server “%s”.\n"
 "Account restricted."
 msgstr ""
 "存取 RDP 伺服器 %s 失敗。\n"
@@ -2066,7 +2071,7 @@ msgstr ""
 #: plugins/rdp/rdp_plugin.c:1891
 #, fuzzy, c-format
 msgid ""
-"Could not access the RDP server \"%s\".\n"
+"Could not access the RDP server “%s”.\n"
 "Change user password before connecting."
 msgstr ""
 "存取 RDP 伺服器 %s 失敗。\n"
@@ -2074,18 +2079,18 @@ msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:1896
 #, fuzzy, c-format
-msgid "Lost connection to the RDP server \"%s\"."
+msgid "Lost connection to the RDP server “%s”."
 msgstr "無法連線至 RDP 伺服器 %s。"
 
 #: plugins/rdp/rdp_plugin.c:1899
 #, fuzzy, c-format
-msgid "Could not find the address for the RDP server \"%s\"."
+msgid "Could not find the address for the RDP server “%s”."
 msgstr "無法找到 RDP 伺服器位置 %s。"
 
 #: plugins/rdp/rdp_plugin.c:1903
 #, fuzzy, c-format
 msgid ""
-"Could not connect to the RDP server \"%s\" via TLS. Check that client and "
+"Could not connect to the RDP server “%s” via TLS. Check that client and "
 "server support a common TLS version."
 msgstr ""
 "連線至 RDP 伺服器 %s 發生錯誤。TLS 連線失敗。請檢查客戶端與伺服器是否支援通用"
@@ -2095,13 +2100,13 @@ msgstr ""
 #: plugins/rdp/rdp_plugin.c:1907
 #, fuzzy, c-format
 msgid ""
-"Unable to establish a connection to the RDP server \"%s\". Check \"Security "
+"Unable to establish a connection to the RDP server “%s”. Check \"Security "
 "protocol negotiation\"."
 msgstr "無法建立至 RDP 伺服器 %s 的連線。"
 
 #: plugins/rdp/rdp_plugin.c:1915
 #, fuzzy, c-format
-msgid "Cannot connect to the RDP server \"%s\"."
+msgid "Cannot connect to the RDP server “%s”."
 msgstr "無法連線至 RDP 伺服器 %s。"
 
 #: plugins/rdp/rdp_plugin.c:1918
@@ -2112,27 +2117,27 @@ msgstr "無法啟動 pthread。"
 #: plugins/rdp/rdp_plugin.c:1921
 #, fuzzy, c-format
 msgid ""
-"You requested a H.264 GFX mode for the server \"%s\", but your libfreerdp "
-"does not support H.264. Please use a non-AVC colour depth setting."
+"You requested a H.264 GFX mode for the server “%s”, but your libfreerdp does "
+"not support H.264. Please use a non-AVC colour depth setting."
 msgstr ""
 "要求了於 %s 伺服器使用 H.264 GFX 模式，但您的 libfreerdp 並不支援 H.264。請使"
 "用非 AVC 的色彩深度設定。"
 
 #: plugins/rdp/rdp_plugin.c:1928
 #, fuzzy, c-format
-msgid "The \"%s\" server refused the connection."
+msgid "The “%s” server refused the connection."
 msgstr "伺服器 %s 拒絕連線。"
 
 #: plugins/rdp/rdp_plugin.c:1933
 #, fuzzy, c-format
 msgid ""
-"The Remote Desktop Gateway \"%s\" denied the user \"%s\\%s\" access due to "
+"The Remote Desktop Gateway “%s” denied the user \"%s\\%s\" access due to "
 "policy."
 msgstr "基於政策，遠端桌面閘道 %s 拒絕了使用者 %s\\%s 的存取。"
 
 #: plugins/rdp/rdp_plugin.c:1943
 #, fuzzy, c-format
-msgid "Cannot connect to the \"%s\" RDP server."
+msgid "Cannot connect to the “%s” RDP server."
 msgstr "無法連線至 RDP 伺服器 %s。"
 
 #: plugins/rdp/rdp_plugin.c:2261
@@ -3498,8 +3503,8 @@ msgstr "使用系統預設字型"
 
 #: data/ui/remmina_preferences.glade:1926
 msgid ""
-"Selecting \\\"SGR 1\\\" also switches to the bright counterparts of the "
-"first 8 palette colours (in addition to making text bold)."
+"Selecting “SGR 1” also switches to the bright counterparts of the first 8 "
+"palette colours (in addition to making text bold)."
 msgstr ""
 
 #: data/ui/remmina_preferences.glade:1941
@@ -3667,6 +3672,10 @@ msgstr "選擇一個新按鍵"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "請按下新按鍵…"
+
+#, fuzzy
+#~ msgid "Connecting to \"%s\" via SSH…"
+#~ msgstr "正在以 SSH 連接 %s …"
 
 #, fuzzy
 #~ msgid "Could not authenticate with password. %s"

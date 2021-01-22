@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-20 22:37+0000\n"
+"POT-Creation-Date: 2021-01-22 08:51+0000\n"
 "PO-Revision-Date: 2020-10-14 12:26+0000\n"
 "Last-Translator: Ecron <ecron_89@hotmail.com>\n"
 "Language-Team: Valencian <https://hosted.weblate.org/projects/remmina/"
@@ -35,14 +35,16 @@ msgid "Executing external commands…"
 msgstr "S'estan executant ordres externes…"
 
 #: src/remmina_protocol_widget.c:320
-#, c-format
-msgid "Connecting to \"%s\"…"
+#, fuzzy, c-format
+#| msgid "Connecting to \"%s\"…"
+msgid "Connecting to “%s”…"
 msgstr "S’està connectant a «%s»…"
 
 #: src/remmina_protocol_widget.c:766 src/remmina_protocol_widget.c:884
-#, c-format
-msgid "Connecting to \"%s\" via SSH…"
-msgstr "S’està connectant a «%s» a través de SSH…"
+#, fuzzy, c-format
+#| msgid "Connecting to %s via SSH…"
+msgid "Connecting to “%s” via SSH…"
+msgstr "S’està connectant a «%s» mitjançant SSH…"
 
 #: src/remmina_protocol_widget.c:947
 #, c-format
@@ -50,13 +52,15 @@ msgid "Awaiting incoming SSH connection on port %i…"
 msgstr "S’està esperant una connexió SSH entrant al port %i…"
 
 #: src/remmina_protocol_widget.c:999
-#, c-format
-msgid "The \"%s\" command is not available on the SSH server."
+#, fuzzy, c-format
+#| msgid "The \"%s\" command is not available on the SSH server."
+msgid "The “%s” command is not available on the SSH server."
 msgstr "L’ordre «%s» no està disponible al servidor SSH."
 
 #: src/remmina_protocol_widget.c:1003
-#, c-format
-msgid "Could not run the \"%s\" command on the SSH server (status = %i)."
+#, fuzzy, c-format
+#| msgid "Could not run the \"%s\" command on the SSH server (status = %i)."
+msgid "Could not run the “%s” command on the SSH server (status = %i)."
 msgstr "No s’ha pogut executar l’ordre «%s» al servidor SSH (estat = %i)."
 
 #. TRANSLATORS: %s is a placeholder for an error message
@@ -71,7 +75,7 @@ msgid "Connecting to %s via SSH…"
 msgstr "S’està connectant a «%s» mitjançant SSH…"
 
 #: src/remmina_protocol_widget.c:1447 src/remmina_protocol_widget.c:1466
-#: src/remmina_ssh_plugin.c:1258 src/remmina_sftp_plugin.c:309
+#: src/remmina_ssh_plugin.c:1257 src/remmina_sftp_plugin.c:309
 #: src/remmina_sftp_plugin.c:344 src/remmina_file_editor.c:998
 #: plugins/www/www_plugin.c:872 plugins/rdp/rdp_plugin.c:2404
 #: data/ui/remmina_unlock.glade:116 data/ui/remmina_mpc.glade:236
@@ -186,112 +190,113 @@ msgid ""
 "tab in the settings."
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:535
+#. TRANSLATORS: %s is a placeholder for an error message
+#: src/remmina_ssh_plugin.c:534
 #, c-format
 msgid "Error: %s"
 msgstr "Error: %s"
 
-#: src/remmina_ssh_plugin.c:552
+#: src/remmina_ssh_plugin.c:551
 msgid "Terminal content saved in"
 msgstr "El contingut del terminal s'ha guardat en"
 
-#: src/remmina_ssh_plugin.c:806
+#: src/remmina_ssh_plugin.c:805
 msgid "Select All (host+A)"
 msgstr "Selecciona-ho tot (amfitrió+A)"
 
-#: src/remmina_ssh_plugin.c:807
+#: src/remmina_ssh_plugin.c:806
 msgid "Copy (host+C)"
 msgstr "Copia (amfitrió+C)"
 
-#: src/remmina_ssh_plugin.c:808
+#: src/remmina_ssh_plugin.c:807
 msgid "Paste (host+V)"
 msgstr "Apega (amfitrió+V)"
 
-#: src/remmina_ssh_plugin.c:809
+#: src/remmina_ssh_plugin.c:808
 msgid "Save session to file"
 msgstr "Guarda la sessió en el fitxer"
 
-#: src/remmina_ssh_plugin.c:810
+#: src/remmina_ssh_plugin.c:809
 msgid "Increase font size (host+Page Up)"
 msgstr "Augmenta la grandària de la lletra (amfitrió+AvPàg)"
 
-#: src/remmina_ssh_plugin.c:811
+#: src/remmina_ssh_plugin.c:810
 msgid "Decrease font size (host+Page Down)"
 msgstr "Redueix la grandària de la lletra (amfitrió+RePàg)"
 
-#: src/remmina_ssh_plugin.c:812
+#: src/remmina_ssh_plugin.c:811
 msgid "Find text (host+G)"
 msgstr "Troba text (amfitrió+G)"
 
-#: src/remmina_ssh_plugin.c:1259 src/remmina_ssh_plugin.c:1363
+#: src/remmina_ssh_plugin.c:1258 src/remmina_ssh_plugin.c:1362
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:346
 #: src/remmina_file_editor.c:350 src/remmina_file_editor.c:357
 #: plugins/nx/nx_plugin.c:729
 msgid "SSH identity file"
 msgstr "Fitxer d'identitat SSH"
 
-#: src/remmina_ssh_plugin.c:1260 src/remmina_sftp_plugin.c:311
+#: src/remmina_ssh_plugin.c:1259 src/remmina_sftp_plugin.c:311
 msgid "SSH agent"
 msgstr "Agent SSH"
 
-#: src/remmina_ssh_plugin.c:1261 src/remmina_sftp_plugin.c:312
+#: src/remmina_ssh_plugin.c:1260 src/remmina_sftp_plugin.c:312
 #: src/remmina_file_editor.c:1011
 msgid "Public key (automatic)"
 msgstr "Clau pública (automàtic)"
 
-#: src/remmina_ssh_plugin.c:1262 src/remmina_sftp_plugin.c:313
+#: src/remmina_ssh_plugin.c:1261 src/remmina_sftp_plugin.c:313
 msgid "Kerberos (GSSAPI)"
 msgstr "Kerberos (GSSAPI)"
 
-#: src/remmina_ssh_plugin.c:1337 data/ui/remmina_main.glade:183
+#: src/remmina_ssh_plugin.c:1336 data/ui/remmina_main.glade:183
 msgid "Copy"
 msgstr "Copia"
 
-#: src/remmina_ssh_plugin.c:1337
+#: src/remmina_ssh_plugin.c:1336
 msgid "_Copy"
 msgstr "_Copia"
 
-#: src/remmina_ssh_plugin.c:1338
+#: src/remmina_ssh_plugin.c:1337
 msgid "Paste"
 msgstr "Apega"
 
-#: src/remmina_ssh_plugin.c:1338
+#: src/remmina_ssh_plugin.c:1337
 msgid "_Paste"
 msgstr "_Apega"
 
-#: src/remmina_ssh_plugin.c:1339
+#: src/remmina_ssh_plugin.c:1338
 msgid "Select all"
 msgstr "Selecciona-ho tot"
 
-#: src/remmina_ssh_plugin.c:1339
+#: src/remmina_ssh_plugin.c:1338
 msgid "_Select all"
 msgstr "_Selecciona-ho tot"
 
-#: src/remmina_ssh_plugin.c:1340 data/ui/remmina_preferences.glade:2288
+#: src/remmina_ssh_plugin.c:1339 data/ui/remmina_preferences.glade:2288
 msgid "Increase font size"
 msgstr "Augmenta la grandària de la lletra"
 
-#: src/remmina_ssh_plugin.c:1340
+#: src/remmina_ssh_plugin.c:1339
 msgid "_Increase font size"
 msgstr "_Augmenta la grandària de la lletra"
 
-#: src/remmina_ssh_plugin.c:1341 data/ui/remmina_preferences.glade:2301
+#: src/remmina_ssh_plugin.c:1340 data/ui/remmina_preferences.glade:2301
 msgid "Decrease font size"
 msgstr "Reduïx la grandària de la lletra"
 
-#: src/remmina_ssh_plugin.c:1341
+#: src/remmina_ssh_plugin.c:1340
 msgid "_Decrease font size"
 msgstr "_Redueix la grandària de la lletra"
 
-#: src/remmina_ssh_plugin.c:1342
+#: src/remmina_ssh_plugin.c:1341
 msgid "Find text"
 msgstr "Troba text"
 
-#: src/remmina_ssh_plugin.c:1342
+#: src/remmina_ssh_plugin.c:1341
 msgid "_Find text"
 msgstr "_Troba text"
 
-#: src/remmina_ssh_plugin.c:1360 src/remmina_message_panel.c:330
+#: src/remmina_ssh_plugin.c:1359 src/remmina_message_panel.c:330
 #: src/remmina_sftp_plugin.c:343 src/remmina_file_editor.c:989
 #: plugins/www/www_plugin.c:871 plugins/vnc/vnc_plugin.c:1879
 #: plugins/vnc/vnc_plugin.c:1899 plugins/rdp/rdp_plugin.c:2403
@@ -299,29 +304,29 @@ msgstr "_Troba text"
 msgid "Username"
 msgstr "Nom d'usuari"
 
-#: src/remmina_ssh_plugin.c:1361 plugins/vnc/vnc_plugin.c:1880
+#: src/remmina_ssh_plugin.c:1360 plugins/vnc/vnc_plugin.c:1880
 #: plugins/vnc/vnc_plugin.c:1900 plugins/spice/spice_plugin.c:544
 #: plugins/nx/nx_plugin.c:731
 msgid "User password"
 msgstr "Contrasenya de l'usuari"
 
-#: src/remmina_ssh_plugin.c:1362 src/remmina_sftp_plugin.c:345
+#: src/remmina_ssh_plugin.c:1361 src/remmina_sftp_plugin.c:345
 msgid "Authentication type"
 msgstr "Tipus d'autenticació"
 
-#: src/remmina_ssh_plugin.c:1364 src/remmina_sftp_plugin.c:347
+#: src/remmina_ssh_plugin.c:1363 src/remmina_sftp_plugin.c:347
 #: src/remmina_file_editor.c:1020
 msgid "Password to unlock private key"
 msgstr "Contrasenya per a desbloquejar la clau privada"
 
-#: src/remmina_ssh_plugin.c:1365 plugins/xdmcp/xdmcp_plugin.c:370
+#: src/remmina_ssh_plugin.c:1364 plugins/xdmcp/xdmcp_plugin.c:370
 #: plugins/rdp/rdp_plugin.c:2439 plugins/nx/nx_plugin.c:734
 #, fuzzy
 #| msgid "Startup program"
 msgid "Start-up program"
 msgstr "Programa d’inici"
 
-#: src/remmina_ssh_plugin.c:1370
+#: src/remmina_ssh_plugin.c:1369
 #, fuzzy
 #| msgid ""
 #| "The filename can use the following placeholders:\n"
@@ -354,59 +359,59 @@ msgstr ""
 "  • %g se substituïx amb el nom del perfil del grup del Remmina.\n"
 "  • %d se substituïx amb la data local en format iso8601.\n"
 
-#: src/remmina_ssh_plugin.c:1392
+#: src/remmina_ssh_plugin.c:1391
 msgid "Terminal color scheme"
 msgstr "Esquema de color del terminal"
 
-#: src/remmina_ssh_plugin.c:1393
+#: src/remmina_ssh_plugin.c:1392
 msgid "Character set"
 msgstr "Joc de caràcters"
 
-#: src/remmina_ssh_plugin.c:1394 src/remmina_sftp_plugin.c:348
+#: src/remmina_ssh_plugin.c:1393 src/remmina_sftp_plugin.c:348
 msgid "SSH Proxy Command"
 msgstr "Ordre del servidor intermediari SSH"
 
-#: src/remmina_ssh_plugin.c:1395
+#: src/remmina_ssh_plugin.c:1394
 msgid "KEX (Key Exchange) algorithms"
 msgstr "Algoritmes KEX (intercanvi de claus)"
 
-#: src/remmina_ssh_plugin.c:1396
+#: src/remmina_ssh_plugin.c:1395
 msgid "Symmetric cipher client to server"
 msgstr "Xifrat simètric entre client i servidor"
 
-#: src/remmina_ssh_plugin.c:1397
+#: src/remmina_ssh_plugin.c:1396
 msgid "Preferred server host key types"
 msgstr "Tipus de clau preferits del servidor amfitrió"
 
-#: src/remmina_ssh_plugin.c:1398
+#: src/remmina_ssh_plugin.c:1397
 msgid "Folder for SSH session log"
 msgstr "Carpeta per al registre de la sessió SSH"
 
-#: src/remmina_ssh_plugin.c:1399
+#: src/remmina_ssh_plugin.c:1398
 msgid "Filename for SSH session log"
 msgstr "Nom de fitxer del registre de la sessió SSH"
 
-#: src/remmina_ssh_plugin.c:1400
+#: src/remmina_ssh_plugin.c:1399
 msgid "Log SSH session when exiting Remmina"
 msgstr "Registra la sessió SSH en eixir del Remmina"
 
-#: src/remmina_ssh_plugin.c:1401
+#: src/remmina_ssh_plugin.c:1400
 msgid "Audible terminal bell"
 msgstr "Timbre audible del terminal"
 
-#: src/remmina_ssh_plugin.c:1402
+#: src/remmina_ssh_plugin.c:1401
 msgid "SSH compression"
 msgstr "Compressió SSH"
 
-#: src/remmina_ssh_plugin.c:1403
+#: src/remmina_ssh_plugin.c:1402
 msgid "Don't remember passwords"
 msgstr "No recordes les contrasenyes"
 
-#: src/remmina_ssh_plugin.c:1404
+#: src/remmina_ssh_plugin.c:1403
 msgid "Strict host key checking"
 msgstr "Comprovació estricta de la clau de l'amfitrió"
 
-#: src/remmina_ssh_plugin.c:1418
+#: src/remmina_ssh_plugin.c:1417
 msgid "SSH - Secure Shell"
 msgstr "SSH - Shell segur"
 
@@ -693,15 +698,18 @@ msgstr "Activa el descobriment de serveis"
 msgid "_Quit"
 msgstr "_Ix"
 
-#: src/remmina_icon.c:353 src/remmina_icon.c:531
+#. TRANSLATORS: Applet name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
+#. TRANSLATORS: Applet Name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
+#: src/remmina_icon.c:354 src/remmina_icon.c:533
 msgid "Remmina Applet"
 msgstr "Miniaplicació del Remmina"
 
-#: src/remmina_icon.c:355 src/remmina_icon.c:533
+#. TRANSLATORS: Applet comment/description as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
+#: src/remmina_icon.c:356 src/remmina_icon.c:535
 msgid "Connect to remote desktops through the applet menu"
 msgstr "Connecta amb escriptoris remots mitjançant el menú de la miniaplicació"
 
-#: src/remmina_icon.c:473 src/remmina_icon.c:474 src/remmina_main.c:1280
+#: src/remmina_icon.c:474 src/remmina_icon.c:475 src/remmina_main.c:1280
 msgid "Remmina Remote Desktop Client"
 msgstr "Client d’escriptori remot Remmina"
 
@@ -794,8 +802,9 @@ msgid "Disconnect"
 msgstr "Desconnecta"
 
 #: src/rcw.c:3989
-#, c-format
-msgid "The file \"%s\" is corrupted, unreadable, or could not be found."
+#, fuzzy, c-format
+#| msgid "The file \"%s\" is corrupted, unreadable, or could not be found."
+msgid "The file “%s” is corrupted, unreadable, or could not be found."
 msgstr "El fitxer «%s» està malmés, no es pot llegir, o no s’ha trobat."
 
 #: src/rcw.c:4154
@@ -860,8 +869,9 @@ msgstr[0] "%i element en total."
 msgstr[1] "%i elements en total."
 
 #: src/remmina_main.c:842
-#, c-format
-msgid "Are you sure you want to delete \"%s\"?"
+#, fuzzy, c-format
+#| msgid "Are you sure you want to delete \"%s\"?"
+msgid "Are you sure you want to delete “%s”?"
 msgstr "Segur que voleu eliminar «%s»?"
 
 #: src/remmina_main.c:952
@@ -919,51 +929,60 @@ msgstr "<Cap>"
 
 #. TRANSLATORS: The placeholder %s is a directory path
 #: src/remmina_sftp_client.c:173
-#, c-format
-msgid "Could not create the folder \"%s\"."
+#, fuzzy, c-format
+#| msgid "Could not create the folder \"%s\"."
+msgid "Could not create the folder “%s”."
 msgstr "No s'ha pogut crear la carpeta: «%s»."
 
 #. TRANSLATORS: The placeholder %s is a file path
 #: src/remmina_sftp_client.c:181 src/remmina_sftp_client.c:202
-#, c-format
-msgid "Could not create the file \"%s\"."
+#, fuzzy, c-format
+#| msgid "Could not create the file \"%s\"."
+msgid "Could not create the file “%s”."
 msgstr "No s'ha pogut crear el fitxer «%s»."
 
 #. TRANSLATORS: The placeholders %s are a file path, and an error message.
 #: src/remmina_sftp_client.c:220
-#, c-format
-msgid "Could not open the file \"%s\" on the server. %s"
+#, fuzzy, c-format
+#| msgid "Could not open the file \"%s\" on the server. %s"
+msgid "Could not open the file “%s” on the server. %s"
 msgstr "No s'ha pogut obrir el fitxer «%s» al servidor. %s"
 
 #: src/remmina_sftp_client.c:242
-#, c-format
-msgid "Could not save the file \"%s\"."
+#, fuzzy, c-format
+#| msgid "Could not save the file \"%s\"."
+msgid "Could not save the file “%s”."
 msgstr "No s'ha pogut guardar el fitxer «%s»."
 
 #: src/remmina_sftp_client.c:281 src/remmina_sftp_client.c:698
 #: src/remmina_sftp_client.c:761
-#, c-format
-msgid "Could not open the folder \"%s\". %s"
+#, fuzzy, c-format
+#| msgid "Could not open the folder \"%s\". %s"
+msgid "Could not open the folder “%s”. %s"
 msgstr "No s'ha pogut obrir la carpeta «%s». %s"
 
 #: src/remmina_sftp_client.c:385
-#, c-format
-msgid "Could not create the folder \"%s\" on the server. %s"
+#, fuzzy, c-format
+#| msgid "Could not create the folder \"%s\" on the server. %s"
+msgid "Could not create the folder “%s” on the server. %s"
 msgstr "No s'ha pogut crear la carpeta «%s» al servidor. %s"
 
 #: src/remmina_sftp_client.c:413 src/remmina_sftp_client.c:435
-#, c-format
-msgid "Could not create the file \"%s\" on the server. %s"
+#, fuzzy, c-format
+#| msgid "Could not create the file \"%s\" on the server. %s"
+msgid "Could not create the file “%s” on the server. %s"
 msgstr "No s'ha pogut crear el fitxer «%s» al servidor. %s"
 
 #: src/remmina_sftp_client.c:456
-#, c-format
-msgid "Could not open the file \"%s\"."
+#, fuzzy, c-format
+#| msgid "Could not open the file \"%s\"."
+msgid "Could not open the file “%s”."
 msgstr "No s'ha pogut obrir el fitxer «%s»."
 
 #: src/remmina_sftp_client.c:476
-#, c-format
-msgid "Could not write to the file \"%s\" on the server. %s"
+#, fuzzy, c-format
+#| msgid "Could not write to the file \"%s\" on the server. %s"
+msgid "Could not write to the file “%s” on the server. %s"
 msgstr "No s'ha pogut escriure al fitxer «%s» al servidor. %s"
 
 #: src/remmina_sftp_client.c:716
@@ -976,8 +995,9 @@ msgid "Are you sure you want to cancel the file transfer in progress?"
 msgstr "Segur que voleu cancel·lar la transferència en curs?"
 
 #: src/remmina_sftp_client.c:857
-#, c-format
-msgid "Could not delete \"%s\". %s"
+#, fuzzy, c-format
+#| msgid "Could not delete \"%s\". %s"
+msgid "Could not delete “%s”. %s"
 msgstr "No s'ha pogut eliminar «%s». %s"
 
 #: src/remmina_sftp_client.c:942
@@ -1556,8 +1576,9 @@ msgid "Use '%s' as subgroup delimiter"
 msgstr "Usa «%s» com a delimitador de subgrups"
 
 #: src/remmina_file_editor.c:1657 src/remmina_file_editor.c:1675
-#, c-format
-msgid "Could not find the file \"%s\"."
+#, fuzzy, c-format
+#| msgid "Could not find the file \"%s\"."
+msgid "Could not find the file “%s”."
 msgstr "No s'ha pogut trobar el fitxer «%s»."
 
 #: src/remmina_chat_window.c:178
@@ -1818,8 +1839,9 @@ msgid "Enter SPICE password"
 msgstr "Introduïu la contrasenya SPICE"
 
 #: plugins/spice/spice_plugin.c:296
-#, c-format
-msgid "Disconnected from the SPICE server \"%s\"."
+#, fuzzy, c-format
+#| msgid "Disconnected from the SPICE server \"%s\"."
+msgid "Disconnected from the SPICE server “%s”."
 msgstr "S'ha desconnectat del servidor SPICE «%s»."
 
 #: plugins/spice/spice_plugin.c:312
@@ -1924,9 +1946,12 @@ msgid "Ran out of available local X display numbers."
 msgstr "Ja no queden nombres de disposició X locals disponibles."
 
 #: plugins/xdmcp/xdmcp_plugin.c:264 plugins/nx/nx_plugin.c:617
-#, c-format
+#, fuzzy, c-format
+#| msgid ""
+#| "The protocol \"%s\" is unavailable because GtkSocket only works under X."
+#| "Org."
 msgid ""
-"The protocol \"%s\" is unavailable because GtkSocket only works under X.Org."
+"The protocol “%s” is unavailable because GtkSocket only works under X.Org."
 msgstr ""
 "El protocol «%s» no està disponible perquè el GtkSocket només funciona amb "
 "l’X.org."
@@ -1988,82 +2013,108 @@ msgid "Enter RDP gateway authentication credentials"
 msgstr "Introduïu les credencials d'autenticació de la passarel·la RDP"
 
 #: plugins/rdp/rdp_plugin.c:1848
-#, c-format
+#, fuzzy, c-format
+#| msgid ""
+#| "Could not access the RDP server \"%s\".\n"
+#| "Account locked out."
 msgid ""
-"Could not access the RDP server \"%s\".\n"
+"Could not access the RDP server “%s”.\n"
 "Account locked out."
 msgstr ""
 "No s'ha pogut accedir al servidor RDP «%s».\n"
 "S'ha blocat el compte."
 
 #: plugins/rdp/rdp_plugin.c:1855
-#, c-format
+#, fuzzy, c-format
+#| msgid ""
+#| "Could not access the RDP server \"%s\".\n"
+#| "Account expired."
 msgid ""
-"Could not access the RDP server \"%s\".\n"
+"Could not access the RDP server “%s”.\n"
 "Account expired."
 msgstr ""
 "No s'ha pogut accedir al servidor RDP «%s».\n"
 "El compte ha caducat."
 
 #: plugins/rdp/rdp_plugin.c:1862
-#, c-format
+#, fuzzy, c-format
+#| msgid ""
+#| "Could not access the RDP server \"%s\".\n"
+#| "Password expired."
 msgid ""
-"Could not access the RDP server \"%s\".\n"
+"Could not access the RDP server “%s”.\n"
 "Password expired."
 msgstr ""
 "No s'ha pogut accedir al servidor RDP «%s».\n"
 "La contrasenya ha caducat."
 
 #: plugins/rdp/rdp_plugin.c:1869
-#, c-format
+#, fuzzy, c-format
+#| msgid ""
+#| "Could not access the RDP server \"%s\".\n"
+#| "Account disabled."
 msgid ""
-"Could not access the RDP server \"%s\".\n"
+"Could not access the RDP server “%s”.\n"
 "Account disabled."
 msgstr ""
 "No s'ha pogut accedir al servidor RDP «%s».\n"
 "S'ha desactivat el compte."
 
 #: plugins/rdp/rdp_plugin.c:1875
-#, c-format
+#, fuzzy, c-format
+#| msgid ""
+#| "Could not access the RDP server \"%s\".\n"
+#| "Insufficient user privileges."
 msgid ""
-"Could not access the RDP server \"%s\".\n"
+"Could not access the RDP server “%s”.\n"
 "Insufficient user privileges."
 msgstr ""
 "No s'ha pogut accedir al servidor RDP «%s».\n"
 "L'usuari no té prou privilegis."
 
 #: plugins/rdp/rdp_plugin.c:1883
-#, c-format
+#, fuzzy, c-format
+#| msgid ""
+#| "Could not access the RDP server \"%s\".\n"
+#| "Account restricted."
 msgid ""
-"Could not access the RDP server \"%s\".\n"
+"Could not access the RDP server “%s”.\n"
 "Account restricted."
 msgstr ""
 "No s'ha pogut accedir al servidor RDP «%s».\n"
 "S'ha restringit el compte."
 
 #: plugins/rdp/rdp_plugin.c:1891
-#, c-format
+#, fuzzy, c-format
+#| msgid ""
+#| "Could not access the RDP server \"%s\".\n"
+#| "Change user password before connecting."
 msgid ""
-"Could not access the RDP server \"%s\".\n"
+"Could not access the RDP server “%s”.\n"
 "Change user password before connecting."
 msgstr ""
 "No s'ha pogut accedir al servidor RDP «%s».\n"
 "Canvieu la contrasenya abans de connectar."
 
 #: plugins/rdp/rdp_plugin.c:1896
-#, c-format
-msgid "Lost connection to the RDP server \"%s\"."
+#, fuzzy, c-format
+#| msgid "Lost connection to the RDP server \"%s\"."
+msgid "Lost connection to the RDP server “%s”."
 msgstr "S'ha perdut la connexió amb el servidor RDP «%s»."
 
 #: plugins/rdp/rdp_plugin.c:1899
-#, c-format
-msgid "Could not find the address for the RDP server \"%s\"."
+#, fuzzy, c-format
+#| msgid "Could not find the address for the RDP server \"%s\"."
+msgid "Could not find the address for the RDP server “%s”."
 msgstr "No s'ha pogut trobar l'adreça del servidor RDP «%s»."
 
 #: plugins/rdp/rdp_plugin.c:1903
-#, c-format
+#, fuzzy, c-format
+#| msgid ""
+#| "Could not connect to the RDP server \"%s\" via TLS. Check that client and "
+#| "server support a common TLS version."
 msgid ""
-"Could not connect to the RDP server \"%s\" via TLS. Check that client and "
+"Could not connect to the RDP server “%s” via TLS. Check that client and "
 "server support a common TLS version."
 msgstr ""
 "No s'ha pogut connectar al servidor RDP «%s» a través de TLS. Comproveu que "
@@ -2076,15 +2127,16 @@ msgstr ""
 #| "Unable to establish a connection to the RDP server. Check \"Security "
 #| "protocol negotiation\" \"%s\"."
 msgid ""
-"Unable to establish a connection to the RDP server \"%s\". Check \"Security "
+"Unable to establish a connection to the RDP server “%s”. Check \"Security "
 "protocol negotiation\"."
 msgstr ""
 "No s'ha pogut establir una connexió amb el servidor RDP. Comproveu la "
 "«Negociació del protocol de seguretat» «%s»."
 
 #: plugins/rdp/rdp_plugin.c:1915
-#, c-format
-msgid "Cannot connect to the RDP server \"%s\"."
+#, fuzzy, c-format
+#| msgid "Cannot connect to the RDP server \"%s\"."
+msgid "Cannot connect to the RDP server “%s”."
 msgstr "No es pot connectar al servidor RDP «%s»."
 
 #: plugins/rdp/rdp_plugin.c:1918
@@ -2092,32 +2144,40 @@ msgid "Could not start libfreerdp-gdi."
 msgstr "No s'ha pogut iniciar el libfreerdp-gdi."
 
 #: plugins/rdp/rdp_plugin.c:1921
-#, c-format
+#, fuzzy, c-format
+#| msgid ""
+#| "You requested a H.264 GFX mode for the server \"%s\", but your libfreerdp "
+#| "does not support H.264. Please use a non-AVC colour depth setting."
 msgid ""
-"You requested a H.264 GFX mode for the server \"%s\", but your libfreerdp "
-"does not support H.264. Please use a non-AVC colour depth setting."
+"You requested a H.264 GFX mode for the server “%s”, but your libfreerdp does "
+"not support H.264. Please use a non-AVC colour depth setting."
 msgstr ""
 "Heu sol·licitat el mode H.264 GFX per al servidor «%s», però el vostre "
 "libfreerdp no és compatible amb l'H.264. Useu un paràmetre de profunditat de "
 "color que no siga l'AVC."
 
 #: plugins/rdp/rdp_plugin.c:1928
-#, c-format
-msgid "The \"%s\" server refused the connection."
+#, fuzzy, c-format
+#| msgid "The \"%s\" server refused the connection."
+msgid "The “%s” server refused the connection."
 msgstr "El servidor «%s» ha rebutjat la connexió."
 
 #: plugins/rdp/rdp_plugin.c:1933
-#, c-format
+#, fuzzy, c-format
+#| msgid ""
+#| "The Remote Desktop Gateway \"%s\" denied the user \"%s\\%s\" access due "
+#| "to policy."
 msgid ""
-"The Remote Desktop Gateway \"%s\" denied the user \"%s\\%s\" access due to "
+"The Remote Desktop Gateway “%s” denied the user \"%s\\%s\" access due to "
 "policy."
 msgstr ""
 "La passarel·la de l'escriptori remot «%s» ha denegat l'accés a l'usuari «%s\\"
 "%s» a causa de la política."
 
 #: plugins/rdp/rdp_plugin.c:1943
-#, c-format
-msgid "Cannot connect to the \"%s\" RDP server."
+#, fuzzy, c-format
+#| msgid "Cannot connect to the \"%s\" RDP server."
+msgid "Cannot connect to the “%s” RDP server."
 msgstr "No es pot connectar al servidor RDP «%s»."
 
 #: plugins/rdp/rdp_plugin.c:2261
@@ -3535,8 +3595,8 @@ msgstr "Usa el tipus de lletra del sistema"
 
 #: data/ui/remmina_preferences.glade:1926
 msgid ""
-"Selecting \\\"SGR 1\\\" also switches to the bright counterparts of the "
-"first 8 palette colours (in addition to making text bold)."
+"Selecting “SGR 1” also switches to the bright counterparts of the first 8 "
+"palette colours (in addition to making text bold)."
 msgstr ""
 
 #: data/ui/remmina_preferences.glade:1941
@@ -3686,6 +3746,9 @@ msgstr "Trieu una altra tecla"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "Premeu la tecla nova…"
+
+#~ msgid "Connecting to \"%s\" via SSH…"
+#~ msgstr "S’està connectant a «%s» a través de SSH…"
 
 #~ msgid "Could not authenticate with public SSH key using SSH agent. %s"
 #~ msgstr ""

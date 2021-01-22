@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-20 22:37+0000\n"
+"POT-Creation-Date: 2021-01-22 08:51+0000\n"
 "PO-Revision-Date: 2021-01-20 12:08+0000\n"
 "Last-Translator: YAMADA Shinichirou <yamada_strong_yamada_nice_64bit@yahoo."
 "co.jp>\n"
@@ -42,14 +42,16 @@ msgid "Executing external commands…"
 msgstr "外部コマンドの実行…"
 
 #: src/remmina_protocol_widget.c:320
-#, c-format
-msgid "Connecting to \"%s\"…"
+#, fuzzy, c-format
+#| msgid "Connecting to \"%s\"…"
+msgid "Connecting to “%s”…"
 msgstr "\"%s\" に接続中…"
 
 #: src/remmina_protocol_widget.c:766 src/remmina_protocol_widget.c:884
-#, c-format
-msgid "Connecting to \"%s\" via SSH…"
-msgstr "SSH で \"%s\" に接続中…"
+#, fuzzy, c-format
+#| msgid "Connecting to %s via SSH…"
+msgid "Connecting to “%s” via SSH…"
+msgstr "SSH で %s に接続中…"
 
 #: src/remmina_protocol_widget.c:947
 #, c-format
@@ -57,13 +59,15 @@ msgid "Awaiting incoming SSH connection on port %i…"
 msgstr "ポート %i で SSH 接続を待ち受け中…"
 
 #: src/remmina_protocol_widget.c:999
-#, c-format
-msgid "The \"%s\" command is not available on the SSH server."
+#, fuzzy, c-format
+#| msgid "The \"%s\" command is not available on the SSH server."
+msgid "The “%s” command is not available on the SSH server."
 msgstr "\"%s\" コマンドは SSH サーバー上で利用できません。"
 
 #: src/remmina_protocol_widget.c:1003
-#, c-format
-msgid "Could not run the \"%s\" command on the SSH server (status = %i)."
+#, fuzzy, c-format
+#| msgid "Could not run the \"%s\" command on the SSH server (status = %i)."
+msgid "Could not run the “%s” command on the SSH server (status = %i)."
 msgstr ""
 "SSH サーバー上で \"%s\" コマンドを実行できませんでした (ステータス = %i)。"
 
@@ -79,7 +83,7 @@ msgid "Connecting to %s via SSH…"
 msgstr "SSH で %s に接続中…"
 
 #: src/remmina_protocol_widget.c:1447 src/remmina_protocol_widget.c:1466
-#: src/remmina_ssh_plugin.c:1258 src/remmina_sftp_plugin.c:309
+#: src/remmina_ssh_plugin.c:1257 src/remmina_sftp_plugin.c:309
 #: src/remmina_sftp_plugin.c:344 src/remmina_file_editor.c:998
 #: plugins/www/www_plugin.c:872 plugins/rdp/rdp_plugin.c:2404
 #: data/ui/remmina_unlock.glade:116 data/ui/remmina_mpc.glade:236
@@ -194,112 +198,113 @@ msgstr ""
 "このファイルには、端末接続の［詳細設定］タブから選択でき、設定の［端末］タブ"
 "で編集できる［カスタム］端末の配色が含まれています。"
 
-#: src/remmina_ssh_plugin.c:535
+#. TRANSLATORS: %s is a placeholder for an error message
+#: src/remmina_ssh_plugin.c:534
 #, c-format
 msgid "Error: %s"
 msgstr "エラー: %s"
 
-#: src/remmina_ssh_plugin.c:552
+#: src/remmina_ssh_plugin.c:551
 msgid "Terminal content saved in"
 msgstr "端末の内容を次の場所に保存しました:"
 
-#: src/remmina_ssh_plugin.c:806
+#: src/remmina_ssh_plugin.c:805
 msgid "Select All (host+A)"
 msgstr "すべて選択 (host+A)"
 
-#: src/remmina_ssh_plugin.c:807
+#: src/remmina_ssh_plugin.c:806
 msgid "Copy (host+C)"
 msgstr "コピー (host+C)"
 
-#: src/remmina_ssh_plugin.c:808
+#: src/remmina_ssh_plugin.c:807
 msgid "Paste (host+V)"
 msgstr "貼り付け (host+V)"
 
-#: src/remmina_ssh_plugin.c:809
+#: src/remmina_ssh_plugin.c:808
 msgid "Save session to file"
 msgstr "セッションをファイルに保存"
 
-#: src/remmina_ssh_plugin.c:810
+#: src/remmina_ssh_plugin.c:809
 msgid "Increase font size (host+Page Up)"
 msgstr "フォントサイズを拡大 (host+Page Up)"
 
-#: src/remmina_ssh_plugin.c:811
+#: src/remmina_ssh_plugin.c:810
 msgid "Decrease font size (host+Page Down)"
 msgstr "フォントサイズを縮小 (host+Page Down)"
 
-#: src/remmina_ssh_plugin.c:812
+#: src/remmina_ssh_plugin.c:811
 msgid "Find text (host+G)"
 msgstr "文字列を検索 (host+G)"
 
-#: src/remmina_ssh_plugin.c:1259 src/remmina_ssh_plugin.c:1363
+#: src/remmina_ssh_plugin.c:1258 src/remmina_ssh_plugin.c:1362
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:346
 #: src/remmina_file_editor.c:350 src/remmina_file_editor.c:357
 #: plugins/nx/nx_plugin.c:729
 msgid "SSH identity file"
 msgstr "SSH 秘密鍵ファイル"
 
-#: src/remmina_ssh_plugin.c:1260 src/remmina_sftp_plugin.c:311
+#: src/remmina_ssh_plugin.c:1259 src/remmina_sftp_plugin.c:311
 msgid "SSH agent"
 msgstr "SSH エージェント"
 
-#: src/remmina_ssh_plugin.c:1261 src/remmina_sftp_plugin.c:312
+#: src/remmina_ssh_plugin.c:1260 src/remmina_sftp_plugin.c:312
 #: src/remmina_file_editor.c:1011
 msgid "Public key (automatic)"
 msgstr "公開鍵 (自動)"
 
-#: src/remmina_ssh_plugin.c:1262 src/remmina_sftp_plugin.c:313
+#: src/remmina_ssh_plugin.c:1261 src/remmina_sftp_plugin.c:313
 msgid "Kerberos (GSSAPI)"
 msgstr "Kerberos (GSSAPI)"
 
-#: src/remmina_ssh_plugin.c:1337 data/ui/remmina_main.glade:183
+#: src/remmina_ssh_plugin.c:1336 data/ui/remmina_main.glade:183
 msgid "Copy"
 msgstr "コピー"
 
-#: src/remmina_ssh_plugin.c:1337
+#: src/remmina_ssh_plugin.c:1336
 msgid "_Copy"
 msgstr "コピー(_C)"
 
-#: src/remmina_ssh_plugin.c:1338
+#: src/remmina_ssh_plugin.c:1337
 msgid "Paste"
 msgstr "貼り付け"
 
-#: src/remmina_ssh_plugin.c:1338
+#: src/remmina_ssh_plugin.c:1337
 msgid "_Paste"
 msgstr "貼り付け(_P)"
 
-#: src/remmina_ssh_plugin.c:1339
+#: src/remmina_ssh_plugin.c:1338
 msgid "Select all"
 msgstr "すべて選択"
 
-#: src/remmina_ssh_plugin.c:1339
+#: src/remmina_ssh_plugin.c:1338
 msgid "_Select all"
 msgstr "すべて選択(_S)"
 
-#: src/remmina_ssh_plugin.c:1340 data/ui/remmina_preferences.glade:2288
+#: src/remmina_ssh_plugin.c:1339 data/ui/remmina_preferences.glade:2288
 msgid "Increase font size"
 msgstr "フォントサイズを拡大"
 
-#: src/remmina_ssh_plugin.c:1340
+#: src/remmina_ssh_plugin.c:1339
 msgid "_Increase font size"
 msgstr "フォントサイズを拡大(_I)"
 
-#: src/remmina_ssh_plugin.c:1341 data/ui/remmina_preferences.glade:2301
+#: src/remmina_ssh_plugin.c:1340 data/ui/remmina_preferences.glade:2301
 msgid "Decrease font size"
 msgstr "フォントサイズを縮小"
 
-#: src/remmina_ssh_plugin.c:1341
+#: src/remmina_ssh_plugin.c:1340
 msgid "_Decrease font size"
 msgstr "フォントサイズを縮小(_D)"
 
-#: src/remmina_ssh_plugin.c:1342
+#: src/remmina_ssh_plugin.c:1341
 msgid "Find text"
 msgstr "文字列を検索"
 
-#: src/remmina_ssh_plugin.c:1342
+#: src/remmina_ssh_plugin.c:1341
 msgid "_Find text"
 msgstr "文字列を検索(_F)"
 
-#: src/remmina_ssh_plugin.c:1360 src/remmina_message_panel.c:330
+#: src/remmina_ssh_plugin.c:1359 src/remmina_message_panel.c:330
 #: src/remmina_sftp_plugin.c:343 src/remmina_file_editor.c:989
 #: plugins/www/www_plugin.c:871 plugins/vnc/vnc_plugin.c:1879
 #: plugins/vnc/vnc_plugin.c:1899 plugins/rdp/rdp_plugin.c:2403
@@ -307,27 +312,27 @@ msgstr "文字列を検索(_F)"
 msgid "Username"
 msgstr "ユーザー名"
 
-#: src/remmina_ssh_plugin.c:1361 plugins/vnc/vnc_plugin.c:1880
+#: src/remmina_ssh_plugin.c:1360 plugins/vnc/vnc_plugin.c:1880
 #: plugins/vnc/vnc_plugin.c:1900 plugins/spice/spice_plugin.c:544
 #: plugins/nx/nx_plugin.c:731
 msgid "User password"
 msgstr "ユーザーパスワード"
 
-#: src/remmina_ssh_plugin.c:1362 src/remmina_sftp_plugin.c:345
+#: src/remmina_ssh_plugin.c:1361 src/remmina_sftp_plugin.c:345
 msgid "Authentication type"
 msgstr "認証方式"
 
-#: src/remmina_ssh_plugin.c:1364 src/remmina_sftp_plugin.c:347
+#: src/remmina_ssh_plugin.c:1363 src/remmina_sftp_plugin.c:347
 #: src/remmina_file_editor.c:1020
 msgid "Password to unlock private key"
 msgstr "秘密鍵のロックを解除するパスワード"
 
-#: src/remmina_ssh_plugin.c:1365 plugins/xdmcp/xdmcp_plugin.c:370
+#: src/remmina_ssh_plugin.c:1364 plugins/xdmcp/xdmcp_plugin.c:370
 #: plugins/rdp/rdp_plugin.c:2439 plugins/nx/nx_plugin.c:734
 msgid "Start-up program"
 msgstr "起動プログラム"
 
-#: src/remmina_ssh_plugin.c:1370
+#: src/remmina_ssh_plugin.c:1369
 msgid ""
 "The filename can use the following placeholders:\n"
 "\n"
@@ -349,59 +354,59 @@ msgstr ""
 "%g : Remmina のプロファイルグループ名\n"
 "%d : ISO 8601 形式のローカル日時\n"
 
-#: src/remmina_ssh_plugin.c:1392
+#: src/remmina_ssh_plugin.c:1391
 msgid "Terminal color scheme"
 msgstr "端末の配色"
 
-#: src/remmina_ssh_plugin.c:1393
+#: src/remmina_ssh_plugin.c:1392
 msgid "Character set"
 msgstr "文字コード"
 
-#: src/remmina_ssh_plugin.c:1394 src/remmina_sftp_plugin.c:348
+#: src/remmina_ssh_plugin.c:1393 src/remmina_sftp_plugin.c:348
 msgid "SSH Proxy Command"
 msgstr "SSH プロキシコマンド"
 
-#: src/remmina_ssh_plugin.c:1395
+#: src/remmina_ssh_plugin.c:1394
 msgid "KEX (Key Exchange) algorithms"
 msgstr "KEX (鍵交換) アルゴリズム"
 
-#: src/remmina_ssh_plugin.c:1396
+#: src/remmina_ssh_plugin.c:1395
 msgid "Symmetric cipher client to server"
 msgstr "共通鍵暗号 (client-to-server)"
 
-#: src/remmina_ssh_plugin.c:1397
+#: src/remmina_ssh_plugin.c:1396
 msgid "Preferred server host key types"
 msgstr "優先するサーバーホスト鍵の種類"
 
-#: src/remmina_ssh_plugin.c:1398
+#: src/remmina_ssh_plugin.c:1397
 msgid "Folder for SSH session log"
 msgstr "SSH セッションログのフォルダー"
 
-#: src/remmina_ssh_plugin.c:1399
+#: src/remmina_ssh_plugin.c:1398
 msgid "Filename for SSH session log"
 msgstr "SSH セッションログのファイル名"
 
-#: src/remmina_ssh_plugin.c:1400
+#: src/remmina_ssh_plugin.c:1399
 msgid "Log SSH session when exiting Remmina"
 msgstr "Remmina を終了するときに SSH セッションログを保存する"
 
-#: src/remmina_ssh_plugin.c:1401
+#: src/remmina_ssh_plugin.c:1400
 msgid "Audible terminal bell"
 msgstr "端末ベルを鳴らす"
 
-#: src/remmina_ssh_plugin.c:1402
+#: src/remmina_ssh_plugin.c:1401
 msgid "SSH compression"
 msgstr "SSH 圧縮"
 
-#: src/remmina_ssh_plugin.c:1403
+#: src/remmina_ssh_plugin.c:1402
 msgid "Don't remember passwords"
 msgstr "パスワードを保存しない"
 
-#: src/remmina_ssh_plugin.c:1404
+#: src/remmina_ssh_plugin.c:1403
 msgid "Strict host key checking"
 msgstr "厳密なホスト鍵チェック"
 
-#: src/remmina_ssh_plugin.c:1418
+#: src/remmina_ssh_plugin.c:1417
 msgid "SSH - Secure Shell"
 msgstr "SSH - セキュアシェル"
 
@@ -695,15 +700,18 @@ msgstr "サービスの検出を有効にする"
 msgid "_Quit"
 msgstr "終了(_Q)"
 
-#: src/remmina_icon.c:353 src/remmina_icon.c:531
+#. TRANSLATORS: Applet name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
+#. TRANSLATORS: Applet Name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
+#: src/remmina_icon.c:354 src/remmina_icon.c:533
 msgid "Remmina Applet"
 msgstr "Remmina アプレット"
 
-#: src/remmina_icon.c:355 src/remmina_icon.c:533
+#. TRANSLATORS: Applet comment/description as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
+#: src/remmina_icon.c:356 src/remmina_icon.c:535
 msgid "Connect to remote desktops through the applet menu"
 msgstr "アプレットメニューからリモートデスクトップに接続する"
 
-#: src/remmina_icon.c:473 src/remmina_icon.c:474 src/remmina_main.c:1280
+#: src/remmina_icon.c:474 src/remmina_icon.c:475 src/remmina_main.c:1280
 msgid "Remmina Remote Desktop Client"
 msgstr "Remmina リモートデスクトップクライアント"
 
@@ -793,8 +801,9 @@ msgid "Disconnect"
 msgstr "切断"
 
 #: src/rcw.c:3989
-#, c-format
-msgid "The file \"%s\" is corrupted, unreadable, or could not be found."
+#, fuzzy, c-format
+#| msgid "The file \"%s\" is corrupted, unreadable, or could not be found."
+msgid "The file “%s” is corrupted, unreadable, or could not be found."
 msgstr ""
 "ファイル \"%s\" は壊れているか、読み取り不可か、または見つかりませんでした。"
 
@@ -859,8 +868,9 @@ msgid_plural "Total %i items."
 msgstr[0] "合計 %i 個のアイテム"
 
 #: src/remmina_main.c:842
-#, c-format
-msgid "Are you sure you want to delete \"%s\"?"
+#, fuzzy, c-format
+#| msgid "Are you sure you want to delete \"%s\"?"
+msgid "Are you sure you want to delete “%s”?"
 msgstr "本当に \"%s\" を削除しますか?"
 
 #: src/remmina_main.c:952
@@ -918,51 +928,60 @@ msgstr "<なし>"
 
 #. TRANSLATORS: The placeholder %s is a directory path
 #: src/remmina_sftp_client.c:173
-#, c-format
-msgid "Could not create the folder \"%s\"."
+#, fuzzy, c-format
+#| msgid "Could not create the folder \"%s\"."
+msgid "Could not create the folder “%s”."
 msgstr "フォルダー \"%s\" を作成できませんでした。"
 
 #. TRANSLATORS: The placeholder %s is a file path
 #: src/remmina_sftp_client.c:181 src/remmina_sftp_client.c:202
-#, c-format
-msgid "Could not create the file \"%s\"."
+#, fuzzy, c-format
+#| msgid "Could not create the file \"%s\"."
+msgid "Could not create the file “%s”."
 msgstr "\"%s\" を作成できませんでした。"
 
 #. TRANSLATORS: The placeholders %s are a file path, and an error message.
 #: src/remmina_sftp_client.c:220
-#, c-format
-msgid "Could not open the file \"%s\" on the server. %s"
+#, fuzzy, c-format
+#| msgid "Could not open the file \"%s\" on the server. %s"
+msgid "Could not open the file “%s” on the server. %s"
 msgstr "サーバー上で \"%s\" を開けませんでした: %s"
 
 #: src/remmina_sftp_client.c:242
-#, c-format
-msgid "Could not save the file \"%s\"."
+#, fuzzy, c-format
+#| msgid "Could not save the file \"%s\"."
+msgid "Could not save the file “%s”."
 msgstr "\"%s\" を保存できませんでした。"
 
 #: src/remmina_sftp_client.c:281 src/remmina_sftp_client.c:698
 #: src/remmina_sftp_client.c:761
-#, c-format
-msgid "Could not open the folder \"%s\". %s"
+#, fuzzy, c-format
+#| msgid "Could not open the folder \"%s\". %s"
+msgid "Could not open the folder “%s”. %s"
 msgstr "フォルダー \"%s\" を開けませんでした: %s"
 
 #: src/remmina_sftp_client.c:385
-#, c-format
-msgid "Could not create the folder \"%s\" on the server. %s"
+#, fuzzy, c-format
+#| msgid "Could not create the folder \"%s\" on the server. %s"
+msgid "Could not create the folder “%s” on the server. %s"
 msgstr "サーバー上にフォルダー \"%s\" を作成できませんでした: %s"
 
 #: src/remmina_sftp_client.c:413 src/remmina_sftp_client.c:435
-#, c-format
-msgid "Could not create the file \"%s\" on the server. %s"
+#, fuzzy, c-format
+#| msgid "Could not create the file \"%s\" on the server. %s"
+msgid "Could not create the file “%s” on the server. %s"
 msgstr "サーバー上に \"%s\" を作成できませんでした: %s"
 
 #: src/remmina_sftp_client.c:456
-#, c-format
-msgid "Could not open the file \"%s\"."
+#, fuzzy, c-format
+#| msgid "Could not open the file \"%s\"."
+msgid "Could not open the file “%s”."
 msgstr "\"%s\" を開けませんでした。"
 
 #: src/remmina_sftp_client.c:476
-#, c-format
-msgid "Could not write to the file \"%s\" on the server. %s"
+#, fuzzy, c-format
+#| msgid "Could not write to the file \"%s\" on the server. %s"
+msgid "Could not write to the file “%s” on the server. %s"
 msgstr "サーバー上の \"%s\" に書き込めませんでした: %s"
 
 #: src/remmina_sftp_client.c:716
@@ -975,8 +994,9 @@ msgid "Are you sure you want to cancel the file transfer in progress?"
 msgstr "本当に実行中のファイル転送をキャンセルしますか?"
 
 #: src/remmina_sftp_client.c:857
-#, c-format
-msgid "Could not delete \"%s\". %s"
+#, fuzzy, c-format
+#| msgid "Could not delete \"%s\". %s"
+msgid "Could not delete “%s”. %s"
 msgstr "\"%s\" を削除できませんでした: %s"
 
 #: src/remmina_sftp_client.c:942
@@ -1519,8 +1539,9 @@ msgid "Use '%s' as subgroup delimiter"
 msgstr "サブグループの区切り文字には '%s' を使用してください"
 
 #: src/remmina_file_editor.c:1657 src/remmina_file_editor.c:1675
-#, c-format
-msgid "Could not find the file \"%s\"."
+#, fuzzy, c-format
+#| msgid "Could not find the file \"%s\"."
+msgid "Could not find the file “%s”."
 msgstr "\"%s\" が見つかりませんでした。"
 
 #: src/remmina_chat_window.c:178
@@ -1778,8 +1799,9 @@ msgid "Enter SPICE password"
 msgstr "SPICE パスワードを入力してください"
 
 #: plugins/spice/spice_plugin.c:296
-#, c-format
-msgid "Disconnected from the SPICE server \"%s\"."
+#, fuzzy, c-format
+#| msgid "Disconnected from the SPICE server \"%s\"."
+msgid "Disconnected from the SPICE server “%s”."
 msgstr "SPICE サーバー \"%s\" から切断されました。"
 
 #: plugins/spice/spice_plugin.c:312
@@ -1880,9 +1902,12 @@ msgid "Ran out of available local X display numbers."
 msgstr "利用可能なローカル X ディスプレイ番号が不足しています。"
 
 #: plugins/xdmcp/xdmcp_plugin.c:264 plugins/nx/nx_plugin.c:617
-#, c-format
+#, fuzzy, c-format
+#| msgid ""
+#| "The protocol \"%s\" is unavailable because GtkSocket only works under X."
+#| "Org."
 msgid ""
-"The protocol \"%s\" is unavailable because GtkSocket only works under X.Org."
+"The protocol “%s” is unavailable because GtkSocket only works under X.Org."
 msgstr ""
 "GtkSocket は X.Org でのみ動作するため、プロトコル \"%s\" は利用できません。"
 
@@ -1943,82 +1968,108 @@ msgid "Enter RDP gateway authentication credentials"
 msgstr "RDP ゲートウェイ認証資格情報を入力してください"
 
 #: plugins/rdp/rdp_plugin.c:1848
-#, c-format
+#, fuzzy, c-format
+#| msgid ""
+#| "Could not access the RDP server \"%s\".\n"
+#| "Account locked out."
 msgid ""
-"Could not access the RDP server \"%s\".\n"
+"Could not access the RDP server “%s”.\n"
 "Account locked out."
 msgstr ""
 "RDP サーバー \"%s\" にアクセスできませんでした。\n"
 "アカウントがロックアウトされました。"
 
 #: plugins/rdp/rdp_plugin.c:1855
-#, c-format
+#, fuzzy, c-format
+#| msgid ""
+#| "Could not access the RDP server \"%s\".\n"
+#| "Account expired."
 msgid ""
-"Could not access the RDP server \"%s\".\n"
+"Could not access the RDP server “%s”.\n"
 "Account expired."
 msgstr ""
 "RDP サーバー \"%s\" にアクセスできませんでした。\n"
 "アカウントが期限切れです。"
 
 #: plugins/rdp/rdp_plugin.c:1862
-#, c-format
+#, fuzzy, c-format
+#| msgid ""
+#| "Could not access the RDP server \"%s\".\n"
+#| "Password expired."
 msgid ""
-"Could not access the RDP server \"%s\".\n"
+"Could not access the RDP server “%s”.\n"
 "Password expired."
 msgstr ""
 "RDP サーバー \"%s\" にアクセスできませんでした。\n"
 "パスワードが期限切れです。"
 
 #: plugins/rdp/rdp_plugin.c:1869
-#, c-format
+#, fuzzy, c-format
+#| msgid ""
+#| "Could not access the RDP server \"%s\".\n"
+#| "Account disabled."
 msgid ""
-"Could not access the RDP server \"%s\".\n"
+"Could not access the RDP server “%s”.\n"
 "Account disabled."
 msgstr ""
 "RDP サーバー \"%s\" にアクセスできませんでした。\n"
 "アカウントが無効です。"
 
 #: plugins/rdp/rdp_plugin.c:1875
-#, c-format
+#, fuzzy, c-format
+#| msgid ""
+#| "Could not access the RDP server \"%s\".\n"
+#| "Insufficient user privileges."
 msgid ""
-"Could not access the RDP server \"%s\".\n"
+"Could not access the RDP server “%s”.\n"
 "Insufficient user privileges."
 msgstr ""
 "RDP サーバー \"%s\" にアクセスできませんでした。\n"
 "ユーザーの権限が不足しています。"
 
 #: plugins/rdp/rdp_plugin.c:1883
-#, c-format
+#, fuzzy, c-format
+#| msgid ""
+#| "Could not access the RDP server \"%s\".\n"
+#| "Account restricted."
 msgid ""
-"Could not access the RDP server \"%s\".\n"
+"Could not access the RDP server “%s”.\n"
 "Account restricted."
 msgstr ""
 "RDP サーバー \"%s\" にアクセスできませんでした。\n"
 "アカウントが制限されています。"
 
 #: plugins/rdp/rdp_plugin.c:1891
-#, c-format
+#, fuzzy, c-format
+#| msgid ""
+#| "Could not access the RDP server \"%s\".\n"
+#| "Change user password before connecting."
 msgid ""
-"Could not access the RDP server \"%s\".\n"
+"Could not access the RDP server “%s”.\n"
 "Change user password before connecting."
 msgstr ""
 "RDP サーバー \"%s\" にアクセスできませんでした。\n"
 "接続する前にユーザーパスワードを変更してください。"
 
 #: plugins/rdp/rdp_plugin.c:1896
-#, c-format
-msgid "Lost connection to the RDP server \"%s\"."
+#, fuzzy, c-format
+#| msgid "Lost connection to the RDP server \"%s\"."
+msgid "Lost connection to the RDP server “%s”."
 msgstr "RDP サーバー \"%s\" への接続がロストしました。"
 
 #: plugins/rdp/rdp_plugin.c:1899
-#, c-format
-msgid "Could not find the address for the RDP server \"%s\"."
+#, fuzzy, c-format
+#| msgid "Could not find the address for the RDP server \"%s\"."
+msgid "Could not find the address for the RDP server “%s”."
 msgstr "RDP サーバー \"%s\" のアドレスが見つかりませんでした。"
 
 #: plugins/rdp/rdp_plugin.c:1903
-#, c-format
+#, fuzzy, c-format
+#| msgid ""
+#| "Could not connect to the RDP server \"%s\" via TLS. Check that client and "
+#| "server support a common TLS version."
 msgid ""
-"Could not connect to the RDP server \"%s\" via TLS. Check that client and "
+"Could not connect to the RDP server “%s” via TLS. Check that client and "
 "server support a common TLS version."
 msgstr ""
 "RDP サーバー \"%s\" に TLS で接続できませんでした。クライアントとサーバーがサ"
@@ -2026,17 +2077,21 @@ msgstr ""
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:1907
-#, c-format
+#, fuzzy, c-format
+#| msgid ""
+#| "Unable to establish a connection to the RDP server \"%s\". Check "
+#| "\"Security protocol negotiation\"."
 msgid ""
-"Unable to establish a connection to the RDP server \"%s\". Check \"Security "
+"Unable to establish a connection to the RDP server “%s”. Check \"Security "
 "protocol negotiation\"."
 msgstr ""
 "RDP サーバー \"%s\" への接続を確立できません。\"セキュリティプロトコルのネゴ"
 "シエーション\" を確認してください。"
 
 #: plugins/rdp/rdp_plugin.c:1915
-#, c-format
-msgid "Cannot connect to the RDP server \"%s\"."
+#, fuzzy, c-format
+#| msgid "Cannot connect to the RDP server \"%s\"."
+msgid "Cannot connect to the RDP server “%s”."
 msgstr "RDP サーバー \"%s\" に接続できません。"
 
 #: plugins/rdp/rdp_plugin.c:1918
@@ -2044,31 +2099,39 @@ msgid "Could not start libfreerdp-gdi."
 msgstr "libfreerdp-gdi を開始できませんでした。"
 
 #: plugins/rdp/rdp_plugin.c:1921
-#, c-format
+#, fuzzy, c-format
+#| msgid ""
+#| "You requested a H.264 GFX mode for the server \"%s\", but your libfreerdp "
+#| "does not support H.264. Please use a non-AVC colour depth setting."
 msgid ""
-"You requested a H.264 GFX mode for the server \"%s\", but your libfreerdp "
-"does not support H.264. Please use a non-AVC colour depth setting."
+"You requested a H.264 GFX mode for the server “%s”, but your libfreerdp does "
+"not support H.264. Please use a non-AVC colour depth setting."
 msgstr ""
 "サーバー \"%s\" のために H.264 GFX モードを要求しましたが、libfreerdp が "
 "H.264 をサポートしていません。AVC ではない色深度設定を使用してください。"
 
 #: plugins/rdp/rdp_plugin.c:1928
-#, c-format
-msgid "The \"%s\" server refused the connection."
+#, fuzzy, c-format
+#| msgid "The \"%s\" server refused the connection."
+msgid "The “%s” server refused the connection."
 msgstr "サーバー \"%s\" が接続を拒否しました。"
 
 #: plugins/rdp/rdp_plugin.c:1933
-#, c-format
+#, fuzzy, c-format
+#| msgid ""
+#| "The Remote Desktop Gateway \"%s\" denied the user \"%s\\%s\" access due "
+#| "to policy."
 msgid ""
-"The Remote Desktop Gateway \"%s\" denied the user \"%s\\%s\" access due to "
+"The Remote Desktop Gateway “%s” denied the user \"%s\\%s\" access due to "
 "policy."
 msgstr ""
 "リモートデスクトップゲートウェイ \"%s\" はポリシーにより、ユーザー \"%s\\%s"
 "\" のアクセスを拒否しました。"
 
 #: plugins/rdp/rdp_plugin.c:1943
-#, c-format
-msgid "Cannot connect to the \"%s\" RDP server."
+#, fuzzy, c-format
+#| msgid "Cannot connect to the \"%s\" RDP server."
+msgid "Cannot connect to the “%s” RDP server."
 msgstr "\"%s\" RDP サーバーに接続できません。"
 
 #: plugins/rdp/rdp_plugin.c:2261
@@ -3415,9 +3478,13 @@ msgid "Use default system font"
 msgstr "既定のシステムフォントを使用する"
 
 #: data/ui/remmina_preferences.glade:1926
+#, fuzzy
+#| msgid ""
+#| "Selecting \\\"SGR 1\\\" also switches to the bright counterparts of the "
+#| "first 8 palette colours (in addition to making text bold)."
 msgid ""
-"Selecting \\\"SGR 1\\\" also switches to the bright counterparts of the "
-"first 8 palette colours (in addition to making text bold)."
+"Selecting “SGR 1” also switches to the bright counterparts of the first 8 "
+"palette colours (in addition to making text bold)."
 msgstr ""
 "\\\"SGR 1\\\" を選択してもテキストが太くなり、パレットの最初の 8 つの色がそれ"
 "ぞれ、より明るいものに切り替わります。"
@@ -3567,6 +3634,9 @@ msgstr "新しいキーを選択"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "新しいキーを押してください…"
+
+#~ msgid "Connecting to \"%s\" via SSH…"
+#~ msgstr "SSH で \"%s\" に接続中…"
 
 #~ msgid "Could not authenticate with public SSH key using SSH agent. %s"
 #~ msgstr "SSH エージェントを使用して公開 SSH 鍵で認証できませんでした: %s"
