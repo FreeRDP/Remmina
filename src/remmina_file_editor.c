@@ -1654,7 +1654,7 @@ GtkWidget *remmina_file_editor_new_copy(const gchar *filename)
 		return remmina_file_editor_new_from_file(remminafile);
 	} else {
 		dialog = gtk_message_dialog_new(NULL, GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_CLOSE,
-						_("Could not find the file \"%s\"."), filename);
+						_("Could not find the file “%s”."), filename);
 		gtk_dialog_run(GTK_DIALOG(dialog));
 		gtk_widget_destroy(dialog);
 		return NULL;
@@ -1672,7 +1672,7 @@ GtkWidget *remmina_file_editor_new_from_filename(const gchar *filename)
 		return remmina_file_editor_new_from_file(remminafile);
 	} else {
 		dialog = gtk_message_dialog_new(NULL, GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_CLOSE,
-						_("Could not find the file \"%s\"."), filename);
+						_("Could not find the file “%s”."), filename);
 		gtk_dialog_run(GTK_DIALOG(dialog));
 		gtk_widget_destroy(dialog);
 		return NULL;

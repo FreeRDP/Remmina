@@ -488,7 +488,7 @@ remmina_file_get_secret(RemminaFile *remminafile, const gchar *setting)
 
 	/* This function is in the RemminaPluginService table, we cannot remove it
 	 * without breaking plugin API */
-	g_warning("remmina_file_get_secret(remminafile,\"%s\") is deprecated and must not be called. Use remmina_file_get_string() and do not deallocate returned memory.\n", setting);
+	g_warning("remmina_file_get_secret(remminafile,“%s”) is deprecated and must not be called. Use remmina_file_get_string() and do not deallocate returned memory.\n", setting);
 	return g_strdup(remmina_file_get_string(remminafile, setting));
 }
 

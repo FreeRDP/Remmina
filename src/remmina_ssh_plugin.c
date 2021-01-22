@@ -577,7 +577,7 @@ static void jit_regex(VteRegex* regex, char const* pattern)
         if (!vte_regex_jit(regex, PCRE2_JIT_COMPLETE, &error) ||
             !vte_regex_jit(regex, PCRE2_JIT_PARTIAL_SOFT, &error)) {
                 if (!g_error_matches(error, VTE_REGEX_ERROR, -45 /* PCRE2_ERROR_JIT_BADOPTION: JIT not supported */))
-                        REMMINA_DEBUG("JITing regex \"%s\" failed: %s\n", pattern, error->message);
+                        REMMINA_DEBUG("JITing regex “%s” failed: %s\n", pattern, error->message);
         }
 }
 

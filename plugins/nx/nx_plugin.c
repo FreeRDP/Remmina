@@ -614,7 +614,7 @@ static gboolean remmina_plugin_nx_open_connection(RemminaProtocolWidget *gp)
 
 	if (!remmina_plugin_nx_service->gtksocket_available()) {
 		remmina_plugin_nx_service->protocol_plugin_set_error(gp,
-			_("The protocol \"%s\" is unavailable because GtkSocket only works under X.Org."),
+			_("The protocol “%s” is unavailable because GtkSocket only works under X.Org."),
 			remmina_plugin_nx.name);
 		return FALSE;
 	}
@@ -812,7 +812,7 @@ remmina_plugin_entry(RemminaPluginService *service)
 			s = strchr(remmina_kbtype, ',');
 			if (s)
 				*s = '\0';
-			/* g_print("NX: Detected \"%s\" keyboard type\n", remmina_kbtype); */
+			/* g_print("NX: Detected “%s” keyboard type\n", remmina_kbtype); */
 		}
 		XCloseDisplay(dpy);
 	}

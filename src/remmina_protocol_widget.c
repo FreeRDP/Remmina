@@ -317,7 +317,7 @@ void remmina_protocol_widget_open_connection(RemminaProtocolWidget *gp)
 	rco_destroy_message_panel(gp->cnnobj, mp);
 
 	name = remmina_file_get_string(gp->priv->remmina_file, "name");
-	s = g_strdup_printf(_("Connecting to \"%s\"…"), (name ? name : "*"));
+	s = g_strdup_printf(_("Connecting to “%s”…"), (name ? name : "*"));
 
 	mp = remmina_message_panel_new();
 	remmina_message_panel_setup_progress(mp, s, cancel_open_connection_cb, gp);
@@ -762,8 +762,8 @@ static RemminaSSHTunnel* remmina_protocol_widget_init_tunnel(RemminaProtocolWidg
 
 	tunnel = remmina_ssh_tunnel_new_from_file(gp->priv->remmina_file);
 
-	REMMINA_DEBUG ("Creating SSH tunnel to \"%s\" via SSH…", REMMINA_SSH(tunnel)->server);
-	msg = g_strdup_printf(_("Connecting to \"%s\" via SSH…"), REMMINA_SSH(tunnel)->server);
+	REMMINA_DEBUG ("Creating SSH tunnel to “%s” via SSH…", REMMINA_SSH(tunnel)->server);
+	msg = g_strdup_printf(_("Connecting to “%s” via SSH…"), REMMINA_SSH(tunnel)->server);
 
 	mp = remmina_protocol_widget_mpprogress(gp->cnnobj, msg, cancel_init_tunnel_cb, NULL);
 	g_free(msg);
@@ -881,7 +881,7 @@ gchar *remmina_protocol_widget_start_direct_tunnel(RemminaProtocolWidget *gp, gi
 		return NULL;
 	}
 
-	msg = g_strdup_printf(_("Connecting to \"%s\" via SSH…"), server);
+	msg = g_strdup_printf(_("Connecting to “%s” via SSH…"), server);
 	mp = remmina_protocol_widget_mpprogress(gp->cnnobj, msg, cancel_start_direct_tunnel_cb, NULL);
 	g_free(msg);
 
@@ -996,11 +996,11 @@ gboolean remmina_protocol_widget_ssh_exec(RemminaProtocolWidget *gp, gboolean wa
 				break;
 			case 127:
 				remmina_ssh_set_application_error(REMMINA_SSH(tunnel),
-								  _("The \"%s\" command is not available on the SSH server."), cmd);
+								  _("The “%s” command is not available on the SSH server."), cmd);
 				break;
 			default:
 				remmina_ssh_set_application_error(REMMINA_SSH(tunnel),
-								  _("Could not run the \"%s\" command on the SSH server (status = %i)."), cmd, status);
+								  _("Could not run the “%s” command on the SSH server (status = %i)."), cmd, status);
 				break;
 			}
 		} else {
