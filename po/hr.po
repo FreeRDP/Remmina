@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-01-22 08:51+0000\n"
-"PO-Revision-Date: 2021-01-18 16:16+0000\n"
+"PO-Revision-Date: 2021-01-24 01:32+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/remmina/remmina/"
 "hr/>\n"
@@ -36,16 +36,14 @@ msgid "Executing external commands…"
 msgstr "Pokretanje vanjskih naredbi …"
 
 #: src/remmina_protocol_widget.c:320
-#, fuzzy, c-format
-#| msgid "Connecting to \"%s\"…"
+#, c-format
 msgid "Connecting to “%s”…"
-msgstr "Povezivanje s „%s” …"
+msgstr "Povezivanje na „%s” …"
 
 #: src/remmina_protocol_widget.c:766 src/remmina_protocol_widget.c:884
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connecting to “%s” via SSH…"
-msgstr "Povezivanje s %s putem SSH …"
+msgstr "Povezivanje na „%s” putem SSH …"
 
 #: src/remmina_protocol_widget.c:947
 #, c-format
@@ -53,14 +51,12 @@ msgid "Awaiting incoming SSH connection on port %i…"
 msgstr "Čekanje na dolaznu SSH vezu na ulazu %i …"
 
 #: src/remmina_protocol_widget.c:999
-#, fuzzy, c-format
-#| msgid "The \"%s\" command is not available on the SSH server."
+#, c-format
 msgid "The “%s” command is not available on the SSH server."
-msgstr "Naredba „%s” nije dostupna na SSH poslužitelju."
+msgstr "„%s” naredba nije dostupna na SSH poslužitelju."
 
 #: src/remmina_protocol_widget.c:1003
-#, fuzzy, c-format
-#| msgid "Could not run the \"%s\" command on the SSH server (status = %i)."
+#, c-format
 msgid "Could not run the “%s” command on the SSH server (status = %i)."
 msgstr "Neuspjelo pokretanje „%s” naredbe na SSH poslužitelju (stanje = %i)."
 
@@ -784,8 +780,7 @@ msgid "Disconnect"
 msgstr "Prekini vezu"
 
 #: src/rcw.c:3989
-#, fuzzy, c-format
-#| msgid "The file \"%s\" is corrupted, unreadable, or could not be found."
+#, c-format
 msgid "The file “%s” is corrupted, unreadable, or could not be found."
 msgstr "Datoteka „%s” je oštećena, nečitljiva ili nije pronađena."
 
@@ -852,8 +847,7 @@ msgstr[1] "Ukupno %i stavke."
 msgstr[2] "Ukupno %i stavki."
 
 #: src/remmina_main.c:842
-#, fuzzy, c-format
-#| msgid "Are you sure you want to delete \"%s\"?"
+#, c-format
 msgid "Are you sure you want to delete “%s”?"
 msgstr "Stvarno želiš trajno izbrisati „%s”?"
 
@@ -912,59 +906,50 @@ msgstr "<Nijedna>"
 
 #. TRANSLATORS: The placeholder %s is a directory path
 #: src/remmina_sftp_client.c:173
-#, fuzzy, c-format
-#| msgid "Could not create the folder \"%s\"."
+#, c-format
 msgid "Could not create the folder “%s”."
 msgstr "Neuspjelo stvaranje mape „%s”."
 
 #. TRANSLATORS: The placeholder %s is a file path
 #: src/remmina_sftp_client.c:181 src/remmina_sftp_client.c:202
-#, fuzzy, c-format
-#| msgid "Could not create the file \"%s\"."
+#, c-format
 msgid "Could not create the file “%s”."
 msgstr "Neuspjelo stvaranje datoteke „%s”."
 
 #. TRANSLATORS: The placeholders %s are a file path, and an error message.
 #: src/remmina_sftp_client.c:220
-#, fuzzy, c-format
-#| msgid "Could not open the file \"%s\" on the server. %s"
+#, c-format
 msgid "Could not open the file “%s” on the server. %s"
 msgstr "Neuspjelo otvaranje datoteke „%s” na poslužitelju. %s"
 
 #: src/remmina_sftp_client.c:242
-#, fuzzy, c-format
-#| msgid "Could not save the file \"%s\"."
+#, c-format
 msgid "Could not save the file “%s”."
 msgstr "Neuspjelo spremanje datoteke „%s”."
 
 #: src/remmina_sftp_client.c:281 src/remmina_sftp_client.c:698
 #: src/remmina_sftp_client.c:761
-#, fuzzy, c-format
-#| msgid "Could not open the folder \"%s\". %s"
+#, c-format
 msgid "Could not open the folder “%s”. %s"
 msgstr "Neuspjelo otvaranje mape „%s”. %s"
 
 #: src/remmina_sftp_client.c:385
-#, fuzzy, c-format
-#| msgid "Could not create the folder \"%s\" on the server. %s"
+#, c-format
 msgid "Could not create the folder “%s” on the server. %s"
 msgstr "Neuspjelo stvaranje mape „%s” na poslužitelju. %s"
 
 #: src/remmina_sftp_client.c:413 src/remmina_sftp_client.c:435
-#, fuzzy, c-format
-#| msgid "Could not create the file \"%s\" on the server. %s"
+#, c-format
 msgid "Could not create the file “%s” on the server. %s"
 msgstr "Neuspjelo stvaranje datoteke „%s” na poslužitelju. %s"
 
 #: src/remmina_sftp_client.c:456
-#, fuzzy, c-format
-#| msgid "Could not open the file \"%s\"."
+#, c-format
 msgid "Could not open the file “%s”."
 msgstr "Neuspjelo otvaranje datoteke „%s”."
 
 #: src/remmina_sftp_client.c:476
-#, fuzzy, c-format
-#| msgid "Could not write to the file \"%s\" on the server. %s"
+#, c-format
 msgid "Could not write to the file “%s” on the server. %s"
 msgstr "Neuspjelo pisanje u datoteku „%s” na poslužitelju. %s"
 
@@ -978,8 +963,7 @@ msgid "Are you sure you want to cancel the file transfer in progress?"
 msgstr "Stvarno želiš prekinuti trenutačni prijenos datoteke?"
 
 #: src/remmina_sftp_client.c:857
-#, fuzzy, c-format
-#| msgid "Could not delete \"%s\". %s"
+#, c-format
 msgid "Could not delete “%s”. %s"
 msgstr "Neuspjelo brisanje „%s”: %s"
 
@@ -1112,16 +1096,14 @@ msgid "Could not authenticate automatically with public SSH key. %s"
 msgstr "Neuspjela automatska autentifikacija s javnim SSH ključem. %s"
 
 #: src/remmina_ssh.c:468
-#, fuzzy, c-format
-#| msgid "Could not authenticate automatically with public SSH key. %s"
+#, c-format
 msgid "Could not authenticate automatically with SSH agent. %s"
-msgstr "Neuspjela automatska autentifikacija s javnim SSH ključem. %s"
+msgstr "Neuspjela automatska autentifikacija sa SSH agentom. %s"
 
 #: src/remmina_ssh.c:514 src/remmina_ssh.c:802
-#, fuzzy, c-format
-#| msgid "Could not authenticate with SSH Kerberos/GSSAPI. %s"
+#, c-format
 msgid "Could not authenticate with SSH GSSAPI/Kerberos. %s"
-msgstr "Neuspjela autentifikacija sa SSH Kerberos/GSSAPI. %s"
+msgstr "Neuspjela autentifikacija sa SSH GSSAPI/Kerberos. %s"
 
 #: src/remmina_ssh.c:543
 msgid "The public SSH key changed!"
@@ -1133,10 +1115,9 @@ msgid "Could not authenticate with keyboard-interactive. %s"
 msgstr "Neuspjela autentifikacija tipkovnicom. %s"
 
 #: src/remmina_ssh.c:759
-#, fuzzy, c-format
-#| msgid "Could not authenticate with public SSH key. %s"
+#, c-format
 msgid "Could not authenticate with automatic public SSH key. %s"
-msgstr "Neuspjela autentifikacija s javnim SSH ključem. %s"
+msgstr "Neuspjela autentifikacija s automatskim javnim SSH ključem. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:867
@@ -1521,8 +1502,7 @@ msgid "Use '%s' as subgroup delimiter"
 msgstr "Koristi „%s” kao razdjeljivač podgrupa"
 
 #: src/remmina_file_editor.c:1657 src/remmina_file_editor.c:1675
-#, fuzzy, c-format
-#| msgid "Could not find the file \"%s\"."
+#, c-format
 msgid "Could not find the file “%s”."
 msgstr "Datoteka „%s” nije pronađena."
 
@@ -1781,8 +1761,7 @@ msgid "Enter SPICE password"
 msgstr "Upiši lozinku za SPICE"
 
 #: plugins/spice/spice_plugin.c:296
-#, fuzzy, c-format
-#| msgid "Disconnected from the SPICE server \"%s\"."
+#, c-format
 msgid "Disconnected from the SPICE server “%s”."
 msgstr "Prekinuta veza sa SPICE poslužiteljem „%s”."
 
@@ -1886,10 +1865,7 @@ msgid "Ran out of available local X display numbers."
 msgstr "Ponestalo je dostupnih brojeva lokalnog X ekrana."
 
 #: plugins/xdmcp/xdmcp_plugin.c:264 plugins/nx/nx_plugin.c:617
-#, fuzzy, c-format
-#| msgid ""
-#| "The protocol \"%s\" is unavailable because GtkSocket only works under X."
-#| "Org."
+#, c-format
 msgid ""
 "The protocol “%s” is unavailable because GtkSocket only works under X.Org."
 msgstr "Protokol „%s” je nedostupan, jer GtkSocket radi samo pod X.Org-om."
@@ -1951,10 +1927,7 @@ msgid "Enter RDP gateway authentication credentials"
 msgstr "Upiši podatke za autentifikaciju na RDP pristupnik"
 
 #: plugins/rdp/rdp_plugin.c:1848
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not access the RDP server \"%s\".\n"
-#| "Account locked out."
+#, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account locked out."
@@ -1963,10 +1936,7 @@ msgstr ""
 "Račun je zaključan."
 
 #: plugins/rdp/rdp_plugin.c:1855
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not access the RDP server \"%s\".\n"
-#| "Account expired."
+#, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account expired."
@@ -1975,10 +1945,7 @@ msgstr ""
 "Račun je istekao."
 
 #: plugins/rdp/rdp_plugin.c:1862
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not access the RDP server \"%s\".\n"
-#| "Password expired."
+#, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Password expired."
@@ -1987,10 +1954,7 @@ msgstr ""
 "Lozinka je istekla."
 
 #: plugins/rdp/rdp_plugin.c:1869
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not access the RDP server \"%s\".\n"
-#| "Account disabled."
+#, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account disabled."
@@ -1999,10 +1963,7 @@ msgstr ""
 "Račun je deaktiviran."
 
 #: plugins/rdp/rdp_plugin.c:1875
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not access the RDP server \"%s\".\n"
-#| "Insufficient user privileges."
+#, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Insufficient user privileges."
@@ -2011,10 +1972,7 @@ msgstr ""
 "Nedovoljne korisničke dozvole."
 
 #: plugins/rdp/rdp_plugin.c:1883
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not access the RDP server \"%s\".\n"
-#| "Account restricted."
+#, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account restricted."
@@ -2023,10 +1981,7 @@ msgstr ""
 "Račun je ograničen."
 
 #: plugins/rdp/rdp_plugin.c:1891
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not access the RDP server \"%s\".\n"
-#| "Change user password before connecting."
+#, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Change user password before connecting."
@@ -2035,22 +1990,17 @@ msgstr ""
 "Promijeni korisničku lozinku prije povezivanja."
 
 #: plugins/rdp/rdp_plugin.c:1896
-#, fuzzy, c-format
-#| msgid "Lost connection to the RDP server \"%s\"."
+#, c-format
 msgid "Lost connection to the RDP server “%s”."
 msgstr "Izgubljena veza s RDP poslužiteljem „%s”."
 
 #: plugins/rdp/rdp_plugin.c:1899
-#, fuzzy, c-format
-#| msgid "Could not find the address for the RDP server \"%s\"."
+#, c-format
 msgid "Could not find the address for the RDP server “%s”."
 msgstr "Neuspjelo pronalaženje adrese za RDP poslužitelj „%s”."
 
 #: plugins/rdp/rdp_plugin.c:1903
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not connect to the RDP server \"%s\" via TLS. Check that client and "
-#| "server support a common TLS version."
+#, c-format
 msgid ""
 "Could not connect to the RDP server “%s” via TLS. Check that client and "
 "server support a common TLS version."
@@ -2060,10 +2010,7 @@ msgstr ""
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:1907
-#, fuzzy, c-format
-#| msgid ""
-#| "Unable to establish a connection to the RDP server \"%s\". Check "
-#| "\"Security protocol negotiation\"."
+#, c-format
 msgid ""
 "Unable to establish a connection to the RDP server “%s”. Check \"Security "
 "protocol negotiation\"."
@@ -2072,8 +2019,7 @@ msgstr ""
 "sigurnosnog protokola”."
 
 #: plugins/rdp/rdp_plugin.c:1915
-#, fuzzy, c-format
-#| msgid "Cannot connect to the RDP server \"%s\"."
+#, c-format
 msgid "Cannot connect to the RDP server “%s”."
 msgstr "Nije moguće povezati se s RDP poslužiteljem „%s”."
 
@@ -2082,10 +2028,7 @@ msgid "Could not start libfreerdp-gdi."
 msgstr "Neuspjelo pokretanje libfreerdp-gdi."
 
 #: plugins/rdp/rdp_plugin.c:1921
-#, fuzzy, c-format
-#| msgid ""
-#| "You requested a H.264 GFX mode for the server \"%s\", but your libfreerdp "
-#| "does not support H.264. Please use a non-AVC colour depth setting."
+#, c-format
 msgid ""
 "You requested a H.264 GFX mode for the server “%s”, but your libfreerdp does "
 "not support H.264. Please use a non-AVC colour depth setting."
@@ -2094,16 +2037,12 @@ msgstr ""
 "biblioteka ne podržava H.264. Koristi postavke ne-AVC dubine boja."
 
 #: plugins/rdp/rdp_plugin.c:1928
-#, fuzzy, c-format
-#| msgid "The \"%s\" server refused the connection."
+#, c-format
 msgid "The “%s” server refused the connection."
 msgstr "Poslužitelj „%s” je odbio vezu."
 
 #: plugins/rdp/rdp_plugin.c:1933
-#, fuzzy, c-format
-#| msgid ""
-#| "The Remote Desktop Gateway \"%s\" denied the user \"%s\\%s\" access due "
-#| "to policy."
+#, c-format
 msgid ""
 "The Remote Desktop Gateway “%s” denied the user \"%s\\%s\" access due to "
 "policy."
@@ -2112,8 +2051,7 @@ msgstr ""
 "zbog pravila pristupa."
 
 #: plugins/rdp/rdp_plugin.c:1943
-#, fuzzy, c-format
-#| msgid "Cannot connect to the \"%s\" RDP server."
+#, c-format
 msgid "Cannot connect to the “%s” RDP server."
 msgstr "Nije moguće povezivanje s „%s” RDP poslužiteljem."
 
@@ -3466,10 +3404,6 @@ msgid "Use default system font"
 msgstr "Koristi standardni font sustava"
 
 #: data/ui/remmina_preferences.glade:1926
-#, fuzzy
-#| msgid ""
-#| "Selecting \\\"SGR 1\\\" also switches to the bright counterparts of the "
-#| "first 8 palette colours (in addition to making text bold)."
 msgid ""
 "Selecting “SGR 1” also switches to the bright counterparts of the first 8 "
 "palette colours (in addition to making text bold)."

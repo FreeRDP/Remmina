@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-01-22 08:51+0000\n"
-"PO-Revision-Date: 2021-01-15 16:14+0000\n"
+"PO-Revision-Date: 2021-01-24 01:32+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/remmina/"
 "remmina/uk/>\n"
@@ -37,16 +37,14 @@ msgid "Executing external commands…"
 msgstr "Виконання зовнішніх команд…"
 
 #: src/remmina_protocol_widget.c:320
-#, fuzzy, c-format
-#| msgid "Connecting to \"%s\"…"
+#, c-format
 msgid "Connecting to “%s”…"
 msgstr "Встановлення з'єднання з «%s»…"
 
 #: src/remmina_protocol_widget.c:766 src/remmina_protocol_widget.c:884
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connecting to “%s” via SSH…"
-msgstr "Встановлення з'єднання з %s крізь SSH…"
+msgstr "Встановлення з'єднання з «%s» крізь SSH…"
 
 #: src/remmina_protocol_widget.c:947
 #, c-format
@@ -54,14 +52,12 @@ msgid "Awaiting incoming SSH connection on port %i…"
 msgstr "Очікування вхідного SSH-з'єднання на порту %i…"
 
 #: src/remmina_protocol_widget.c:999
-#, fuzzy, c-format
-#| msgid "The \"%s\" command is not available on the SSH server."
+#, c-format
 msgid "The “%s” command is not available on the SSH server."
 msgstr "На SSH-сервері не можна скористатися командою «%s»."
 
 #: src/remmina_protocol_widget.c:1003
-#, fuzzy, c-format
-#| msgid "Could not run the \"%s\" command on the SSH server (status = %i)."
+#, c-format
 msgid "Could not run the “%s” command on the SSH server (status = %i)."
 msgstr "Не вдалось виконати команду «%s» на SSH-сервері (стан = %i)."
 
@@ -790,8 +786,7 @@ msgid "Disconnect"
 msgstr "Від'єднатися"
 
 #: src/rcw.c:3989
-#, fuzzy, c-format
-#| msgid "The file \"%s\" is corrupted, unreadable, or could not be found."
+#, c-format
 msgid "The file “%s” is corrupted, unreadable, or could not be found."
 msgstr "Файл «%s» пошкоджено, неможливо прочитати або не знайдено."
 
@@ -858,8 +853,7 @@ msgstr[1] "Усього %i записи."
 msgstr[2] "Усього %i записів."
 
 #: src/remmina_main.c:842
-#, fuzzy, c-format
-#| msgid "Are you sure you want to delete \"%s\"?"
+#, c-format
 msgid "Are you sure you want to delete “%s”?"
 msgstr "Впевнені, що бажаєте вилучити «%s»?"
 
@@ -918,59 +912,50 @@ msgstr "<Жодна>"
 
 #. TRANSLATORS: The placeholder %s is a directory path
 #: src/remmina_sftp_client.c:173
-#, fuzzy, c-format
-#| msgid "Could not create the folder \"%s\"."
+#, c-format
 msgid "Could not create the folder “%s”."
 msgstr "Не вдалося створити теку «%s»."
 
 #. TRANSLATORS: The placeholder %s is a file path
 #: src/remmina_sftp_client.c:181 src/remmina_sftp_client.c:202
-#, fuzzy, c-format
-#| msgid "Could not create the file \"%s\"."
+#, c-format
 msgid "Could not create the file “%s”."
 msgstr "Не вдалося створити файл «%s»."
 
 #. TRANSLATORS: The placeholders %s are a file path, and an error message.
 #: src/remmina_sftp_client.c:220
-#, fuzzy, c-format
-#| msgid "Could not open the file \"%s\" on the server. %s"
+#, c-format
 msgid "Could not open the file “%s” on the server. %s"
 msgstr "Помилка під час спроби відкрити файл «%s» на сервері. %s"
 
 #: src/remmina_sftp_client.c:242
-#, fuzzy, c-format
-#| msgid "Could not save the file \"%s\"."
+#, c-format
 msgid "Could not save the file “%s”."
 msgstr "Не вдалося зберегти файл «%s»."
 
 #: src/remmina_sftp_client.c:281 src/remmina_sftp_client.c:698
 #: src/remmina_sftp_client.c:761
-#, fuzzy, c-format
-#| msgid "Could not open the folder \"%s\". %s"
+#, c-format
 msgid "Could not open the folder “%s”. %s"
 msgstr "Не вдалося відкрити теку «%s». %s"
 
 #: src/remmina_sftp_client.c:385
-#, fuzzy, c-format
-#| msgid "Could not create the folder \"%s\" on the server. %s"
+#, c-format
 msgid "Could not create the folder “%s” on the server. %s"
 msgstr "Не вдалося створити теку «%s» на сервері. %s"
 
 #: src/remmina_sftp_client.c:413 src/remmina_sftp_client.c:435
-#, fuzzy, c-format
-#| msgid "Could not create the file \"%s\" on the server. %s"
+#, c-format
 msgid "Could not create the file “%s” on the server. %s"
 msgstr "Не вдалося створити файл «%s» на сервері. %s"
 
 #: src/remmina_sftp_client.c:456
-#, fuzzy, c-format
-#| msgid "Could not open the file \"%s\"."
+#, c-format
 msgid "Could not open the file “%s”."
 msgstr "Не вдалося відкрити файл «%s»."
 
 #: src/remmina_sftp_client.c:476
-#, fuzzy, c-format
-#| msgid "Could not write to the file \"%s\" on the server. %s"
+#, c-format
 msgid "Could not write to the file “%s” on the server. %s"
 msgstr "Не вдалося записати дані до файла «%s» на сервері. %s"
 
@@ -984,8 +969,7 @@ msgid "Are you sure you want to cancel the file transfer in progress?"
 msgstr "Ви впевнені, що бажаєте скасувати поточне перенесення файла?"
 
 #: src/remmina_sftp_client.c:857
-#, fuzzy, c-format
-#| msgid "Could not delete \"%s\". %s"
+#, c-format
 msgid "Could not delete “%s”. %s"
 msgstr "Не вдалося вилучити «%s». %s"
 
@@ -1119,17 +1103,14 @@ msgstr ""
 "Не вдалося пройти автоматичне розпізнавання за відкритим ключем SSH. %s"
 
 #: src/remmina_ssh.c:468
-#, fuzzy, c-format
-#| msgid "Could not authenticate automatically with public SSH key. %s"
+#, c-format
 msgid "Could not authenticate automatically with SSH agent. %s"
-msgstr ""
-"Не вдалося пройти автоматичне розпізнавання за відкритим ключем SSH. %s"
+msgstr "Не вдалося пройти автоматичне розпізнавання за допомогою агента SSH. %s"
 
 #: src/remmina_ssh.c:514 src/remmina_ssh.c:802
-#, fuzzy, c-format
-#| msgid "Could not authenticate with SSH Kerberos/GSSAPI. %s"
+#, c-format
 msgid "Could not authenticate with SSH GSSAPI/Kerberos. %s"
-msgstr "Не вдалося пройти розпізнавання за допомогою SSH Kerberos/GSSAPI. %s"
+msgstr "Не вдалося пройти розпізнавання за допомогою SSH GSSAPI/Kerberos. %s"
 
 #: src/remmina_ssh.c:543
 msgid "The public SSH key changed!"
@@ -1141,10 +1122,9 @@ msgid "Could not authenticate with keyboard-interactive. %s"
 msgstr "Не вдалося пройти інтерактивне розпізнавання з клавіатурою. %s"
 
 #: src/remmina_ssh.c:759
-#, fuzzy, c-format
-#| msgid "Could not authenticate with public SSH key. %s"
+#, c-format
 msgid "Could not authenticate with automatic public SSH key. %s"
-msgstr "Не вдалося пройти розпізнавання за відкритим ключем SSH. %s"
+msgstr "Не вдалося пройти автоматичне розпізнавання за відкритим ключем SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:867
@@ -1533,8 +1513,7 @@ msgid "Use '%s' as subgroup delimiter"
 msgstr "Використовувати «%s» як роздільник підгруп"
 
 #: src/remmina_file_editor.c:1657 src/remmina_file_editor.c:1675
-#, fuzzy, c-format
-#| msgid "Could not find the file \"%s\"."
+#, c-format
 msgid "Could not find the file “%s”."
 msgstr "Не вдалося знайти файл «%s»."
 
@@ -1794,8 +1773,7 @@ msgid "Enter SPICE password"
 msgstr "Введіть пароль SPICE"
 
 #: plugins/spice/spice_plugin.c:296
-#, fuzzy, c-format
-#| msgid "Disconnected from the SPICE server \"%s\"."
+#, c-format
 msgid "Disconnected from the SPICE server “%s”."
 msgstr "Від'єднано від сервера SPICE «%s»."
 
@@ -1898,10 +1876,7 @@ msgid "Ran out of available local X display numbers."
 msgstr "Скінчились доступні номери для локальних X-дисплеїв."
 
 #: plugins/xdmcp/xdmcp_plugin.c:264 plugins/nx/nx_plugin.c:617
-#, fuzzy, c-format
-#| msgid ""
-#| "The protocol \"%s\" is unavailable because GtkSocket only works under X."
-#| "Org."
+#, c-format
 msgid ""
 "The protocol “%s” is unavailable because GtkSocket only works under X.Org."
 msgstr "Протокол «%s» недоступний, оскільки GtkSocket працює тільки під X.Org."
@@ -1963,10 +1938,7 @@ msgid "Enter RDP gateway authentication credentials"
 msgstr "Введіть дані розпізнавання на шлюзі RDP"
 
 #: plugins/rdp/rdp_plugin.c:1848
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not access the RDP server \"%s\".\n"
-#| "Account locked out."
+#, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account locked out."
@@ -1975,10 +1947,7 @@ msgstr ""
 "Обліковий запис заблоковано."
 
 #: plugins/rdp/rdp_plugin.c:1855
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not access the RDP server \"%s\".\n"
-#| "Account expired."
+#, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account expired."
@@ -1987,10 +1956,7 @@ msgstr ""
 "Вичерпано термін дії облікового запису."
 
 #: plugins/rdp/rdp_plugin.c:1862
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not access the RDP server \"%s\".\n"
-#| "Password expired."
+#, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Password expired."
@@ -1999,10 +1965,7 @@ msgstr ""
 "Вичерпано термін дії пароля."
 
 #: plugins/rdp/rdp_plugin.c:1869
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not access the RDP server \"%s\".\n"
-#| "Account disabled."
+#, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account disabled."
@@ -2011,10 +1974,7 @@ msgstr ""
 "Обліковий запис вимкнено."
 
 #: plugins/rdp/rdp_plugin.c:1875
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not access the RDP server \"%s\".\n"
-#| "Insufficient user privileges."
+#, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Insufficient user privileges."
@@ -2023,10 +1983,7 @@ msgstr ""
 "Недостатні права доступу користувача."
 
 #: plugins/rdp/rdp_plugin.c:1883
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not access the RDP server \"%s\".\n"
-#| "Account restricted."
+#, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account restricted."
@@ -2035,10 +1992,7 @@ msgstr ""
 "Обліковий запис із обмеженим доступом."
 
 #: plugins/rdp/rdp_plugin.c:1891
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not access the RDP server \"%s\".\n"
-#| "Change user password before connecting."
+#, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Change user password before connecting."
@@ -2047,22 +2001,17 @@ msgstr ""
 "Змініть пароль перед з'єднанням."
 
 #: plugins/rdp/rdp_plugin.c:1896
-#, fuzzy, c-format
-#| msgid "Lost connection to the RDP server \"%s\"."
+#, c-format
 msgid "Lost connection to the RDP server “%s”."
 msgstr "Втрачено з'єднання із сервером RDP «%s»."
 
 #: plugins/rdp/rdp_plugin.c:1899
-#, fuzzy, c-format
-#| msgid "Could not find the address for the RDP server \"%s\"."
+#, c-format
 msgid "Could not find the address for the RDP server “%s”."
 msgstr "Не вдалося знайти адресу сервера RDP «%s»."
 
 #: plugins/rdp/rdp_plugin.c:1903
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not connect to the RDP server \"%s\" via TLS. Check that client and "
-#| "server support a common TLS version."
+#, c-format
 msgid ""
 "Could not connect to the RDP server “%s” via TLS. Check that client and "
 "server support a common TLS version."
@@ -2072,20 +2021,16 @@ msgstr ""
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:1907
-#, fuzzy, c-format
-#| msgid ""
-#| "Unable to establish a connection to the RDP server \"%s\". Check "
-#| "\"Security protocol negotiation\"."
+#, c-format
 msgid ""
 "Unable to establish a connection to the RDP server “%s”. Check \"Security "
 "protocol negotiation\"."
 msgstr ""
-"Не вдалося встановити з'єднання із сервером RDP «%s». Перевірте, чи вказано "
-"«Узгодження протоколу захисту»."
+"Не вдалося встановити з'єднання із сервером RDP «%s». Перевірте, чи вказано «"
+"Узгодження протоколу захисту»."
 
 #: plugins/rdp/rdp_plugin.c:1915
-#, fuzzy, c-format
-#| msgid "Cannot connect to the RDP server \"%s\"."
+#, c-format
 msgid "Cannot connect to the RDP server “%s”."
 msgstr "Не вдалося встановити з'єднання із сервером RDP «%s»."
 
@@ -2094,10 +2039,7 @@ msgid "Could not start libfreerdp-gdi."
 msgstr "Не вдалося запустити libfreerdp-gdi."
 
 #: plugins/rdp/rdp_plugin.c:1921
-#, fuzzy, c-format
-#| msgid ""
-#| "You requested a H.264 GFX mode for the server \"%s\", but your libfreerdp "
-#| "does not support H.264. Please use a non-AVC colour depth setting."
+#, c-format
 msgid ""
 "You requested a H.264 GFX mode for the server “%s”, but your libfreerdp does "
 "not support H.264. Please use a non-AVC colour depth setting."
@@ -2107,16 +2049,12 @@ msgstr ""
 "без глибини кольорів AVC."
 
 #: plugins/rdp/rdp_plugin.c:1928
-#, fuzzy, c-format
-#| msgid "The \"%s\" server refused the connection."
+#, c-format
 msgid "The “%s” server refused the connection."
 msgstr "Сервер «%s» відхилив з'єднання."
 
 #: plugins/rdp/rdp_plugin.c:1933
-#, fuzzy, c-format
-#| msgid ""
-#| "The Remote Desktop Gateway \"%s\" denied the user \"%s\\%s\" access due "
-#| "to policy."
+#, c-format
 msgid ""
 "The Remote Desktop Gateway “%s” denied the user \"%s\\%s\" access due to "
 "policy."
@@ -2125,8 +2063,7 @@ msgstr ""
 "встановлені правила."
 
 #: plugins/rdp/rdp_plugin.c:1943
-#, fuzzy, c-format
-#| msgid "Cannot connect to the \"%s\" RDP server."
+#, c-format
 msgid "Cannot connect to the “%s” RDP server."
 msgstr "Не вдалося встановити з'єднання із сервером RDP «%s»."
 
@@ -3484,10 +3421,6 @@ msgid "Use default system font"
 msgstr "Використовувати системний шрифт"
 
 #: data/ui/remmina_preferences.glade:1926
-#, fuzzy
-#| msgid ""
-#| "Selecting \\\"SGR 1\\\" also switches to the bright counterparts of the "
-#| "first 8 palette colours (in addition to making text bold)."
 msgid ""
 "Selecting “SGR 1” also switches to the bright counterparts of the first 8 "
 "palette colours (in addition to making text bold)."

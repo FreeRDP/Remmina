@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-01-22 08:51+0000\n"
-"PO-Revision-Date: 2021-01-15 16:14+0000\n"
+"PO-Revision-Date: 2021-01-24 01:32+0000\n"
 "Last-Translator: Johannes Weberhofer <jweberhofer@weberhofer.at>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/remmina/remmina/"
 "de/>\n"
@@ -37,16 +37,14 @@ msgid "Executing external commands…"
 msgstr "Externe Befehle ausführen…"
 
 #: src/remmina_protocol_widget.c:320
-#, fuzzy, c-format
-#| msgid "Connecting to \"%s\"…"
+#, c-format
 msgid "Connecting to “%s”…"
-msgstr "Verbinden zu \"%s\"…"
+msgstr "Verbinden zu „%s“…"
 
 #: src/remmina_protocol_widget.c:766 src/remmina_protocol_widget.c:884
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connecting to “%s” via SSH…"
-msgstr "SSH-Verbindung zu %s wird hergestellt…"
+msgstr "SSH-Verbindung herstellen zu„ %s“…"
 
 #: src/remmina_protocol_widget.c:947
 #, c-format
@@ -54,17 +52,15 @@ msgid "Awaiting incoming SSH connection on port %i…"
 msgstr "Auf eingehende Verbindung an Port %i warten…"
 
 #: src/remmina_protocol_widget.c:999
-#, fuzzy, c-format
-#| msgid "The \"%s\" command is not available on the SSH server."
+#, c-format
 msgid "The “%s” command is not available on the SSH server."
-msgstr "Der Befehl \"%s\" ist auf dem SSH-Server nicht verfügbar."
+msgstr "Das „%s“ Kommando ist auf dem SSH-Server nicht verfügbar."
 
 #: src/remmina_protocol_widget.c:1003
-#, fuzzy, c-format
-#| msgid "Could not run the \"%s\" command on the SSH server (status = %i)."
+#, c-format
 msgid "Could not run the “%s” command on the SSH server (status = %i)."
 msgstr ""
-"Der Befehl \"%s\" konnte auf dem SSH-Server nicht ausgeführt werden (Status "
+"Das „%s“ Kommando konnte auf dem SSH-Server nicht ausgeführt werden (Status "
 "= %i)."
 
 #. TRANSLATORS: %s is a placeholder for an error message
@@ -787,8 +783,7 @@ msgid "Disconnect"
 msgstr "Verbindung trennen"
 
 #: src/rcw.c:3989
-#, fuzzy, c-format
-#| msgid "The file \"%s\" is corrupted, unreadable, or could not be found."
+#, c-format
 msgid "The file “%s” is corrupted, unreadable, or could not be found."
 msgstr "Die Datei „%s“ ist ungültig, unlesbar oder wurde nicht gefunden."
 
@@ -855,8 +850,7 @@ msgstr[0] "%i Objekt insgesamt."
 msgstr[1] "%i Objekte insgesamt."
 
 #: src/remmina_main.c:842
-#, fuzzy, c-format
-#| msgid "Are you sure you want to delete \"%s\"?"
+#, c-format
 msgid "Are you sure you want to delete “%s”?"
 msgstr "Soll „%s“ wirklich gelöscht werden?"
 
@@ -915,59 +909,50 @@ msgstr "<Keine>"
 
 #. TRANSLATORS: The placeholder %s is a directory path
 #: src/remmina_sftp_client.c:173
-#, fuzzy, c-format
-#| msgid "Could not create the folder \"%s\"."
+#, c-format
 msgid "Could not create the folder “%s”."
 msgstr "Der Ordner „%s“ kann nicht erstellt werden."
 
 #. TRANSLATORS: The placeholder %s is a file path
 #: src/remmina_sftp_client.c:181 src/remmina_sftp_client.c:202
-#, fuzzy, c-format
-#| msgid "Could not create the file \"%s\"."
+#, c-format
 msgid "Could not create the file “%s”."
 msgstr "Die Datei „%s“ kann nicht erstellt werden."
 
 #. TRANSLATORS: The placeholders %s are a file path, and an error message.
 #: src/remmina_sftp_client.c:220
-#, fuzzy, c-format
-#| msgid "Could not open the file \"%s\" on the server. %s"
+#, c-format
 msgid "Could not open the file “%s” on the server. %s"
-msgstr "Die Datei „%s“ kann am Server nicht geöffnet werden: %s"
+msgstr "Die Datei „%s“ kann am Server nicht geöffnet werden. %s"
 
 #: src/remmina_sftp_client.c:242
-#, fuzzy, c-format
-#| msgid "Could not save the file \"%s\"."
+#, c-format
 msgid "Could not save the file “%s”."
 msgstr "Die Datei „%s“ kann nicht gespeichert werden."
 
 #: src/remmina_sftp_client.c:281 src/remmina_sftp_client.c:698
 #: src/remmina_sftp_client.c:761
-#, fuzzy, c-format
-#| msgid "Could not open the folder \"%s\". %s"
+#, c-format
 msgid "Could not open the folder “%s”. %s"
-msgstr "Kann den Ordner „%s“ nicht öffnen: %s"
+msgstr "Kann den Ordner „%s“ nicht öffnen. %s"
 
 #: src/remmina_sftp_client.c:385
-#, fuzzy, c-format
-#| msgid "Could not create the folder \"%s\" on the server. %s"
+#, c-format
 msgid "Could not create the folder “%s” on the server. %s"
-msgstr "Der Ordner „%s“ kann auf dem Server: nicht erstellt werden %s"
+msgstr "Der Ordner „%s“ kann auf dem Server nicht erstellt werden. %s"
 
 #: src/remmina_sftp_client.c:413 src/remmina_sftp_client.c:435
-#, fuzzy, c-format
-#| msgid "Could not create the file \"%s\" on the server. %s"
+#, c-format
 msgid "Could not create the file “%s” on the server. %s"
 msgstr "Die Datei „%s“ kann am Server nicht erstellt werden. %s"
 
 #: src/remmina_sftp_client.c:456
-#, fuzzy, c-format
-#| msgid "Could not open the file \"%s\"."
+#, c-format
 msgid "Could not open the file “%s”."
 msgstr "Die Datei „%s“ kann nicht geöffnet werden."
 
 #: src/remmina_sftp_client.c:476
-#, fuzzy, c-format
-#| msgid "Could not write to the file \"%s\" on the server. %s"
+#, c-format
 msgid "Could not write to the file “%s” on the server. %s"
 msgstr "Die Datei „%s“ kann am Server nicht geschrieben werden. %s"
 
@@ -981,10 +966,9 @@ msgid "Are you sure you want to cancel the file transfer in progress?"
 msgstr "Soll die aktuelle Dateiübertragung wirklich abgebrochen werden?"
 
 #: src/remmina_sftp_client.c:857
-#, fuzzy, c-format
-#| msgid "Could not delete \"%s\". %s"
+#, c-format
 msgid "Could not delete “%s”. %s"
-msgstr "Konte „%s“ nicht löschen: %s"
+msgstr "Kann „%s“ nicht löschen. %s"
 
 #: src/remmina_sftp_client.c:942
 msgid "The file exists already"
@@ -1120,18 +1104,14 @@ msgstr ""
 "%s"
 
 #: src/remmina_ssh.c:468
-#, fuzzy, c-format
-#| msgid "Could not authenticate automatically with public SSH key. %s"
+#, c-format
 msgid "Could not authenticate automatically with SSH agent. %s"
-msgstr ""
-"Kann mit dem öffentlichen SSH-Schlüssel nicht automatisch authentifizieren. "
-"%s"
+msgstr "Kann mit dem öffentlichen SSH-Schlüssel nicht anmelden. %s"
 
 #: src/remmina_ssh.c:514 src/remmina_ssh.c:802
-#, fuzzy, c-format
-#| msgid "Could not authenticate with SSH Kerberos/GSSAPI. %s"
+#, c-format
 msgid "Could not authenticate with SSH GSSAPI/Kerberos. %s"
-msgstr "Kann mit SSH Kerberos/GSSAPI authentifizieren. %s"
+msgstr "Kann mit SSH GSSAPI/Kerberos nicht anmelden. %s"
 
 #: src/remmina_ssh.c:543
 msgid "The public SSH key changed!"
@@ -1143,11 +1123,9 @@ msgid "Could not authenticate with keyboard-interactive. %s"
 msgstr "Authentifizierung über Tastatureingabe ist fehlgeschlagen. %s"
 
 #: src/remmina_ssh.c:759
-#, fuzzy, c-format
-#| msgid "Could not authenticate with public SSH key. %s"
+#, c-format
 msgid "Could not authenticate with automatic public SSH key. %s"
-msgstr ""
-"Authentifizierung mit dem öffentlichen SSH-Schlüssel funktioniert nicht. %s"
+msgstr "Anmeldung mit dem öffentlichen SSH-Schlüssel funktioniert nicht. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:867
@@ -1538,8 +1516,7 @@ msgid "Use '%s' as subgroup delimiter"
 msgstr "Benutze '%s' als Untergruppenteiler"
 
 #: src/remmina_file_editor.c:1657 src/remmina_file_editor.c:1675
-#, fuzzy, c-format
-#| msgid "Could not find the file \"%s\"."
+#, c-format
 msgid "Could not find the file “%s”."
 msgstr "Kann die Datei „%s“ nicht finden."
 
@@ -1802,8 +1779,7 @@ msgid "Enter SPICE password"
 msgstr "SPICE Passwort eingeben"
 
 #: plugins/spice/spice_plugin.c:296
-#, fuzzy, c-format
-#| msgid "Disconnected from the SPICE server \"%s\"."
+#, c-format
 msgid "Disconnected from the SPICE server “%s”."
 msgstr "Vom SPICE-Server „%s“ getrennt."
 
@@ -1906,10 +1882,7 @@ msgid "Ran out of available local X display numbers."
 msgstr "Es sind keine lokalen X-Display Nummern mehr verfügbar."
 
 #: plugins/xdmcp/xdmcp_plugin.c:264 plugins/nx/nx_plugin.c:617
-#, fuzzy, c-format
-#| msgid ""
-#| "The protocol \"%s\" is unavailable because GtkSocket only works under X."
-#| "Org."
+#, c-format
 msgid ""
 "The protocol “%s” is unavailable because GtkSocket only works under X.Org."
 msgstr ""
@@ -1973,22 +1946,16 @@ msgid "Enter RDP gateway authentication credentials"
 msgstr "RDP-Gateway - Authentifizierunginformationen eingeben"
 
 #: plugins/rdp/rdp_plugin.c:1848
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not access the RDP server \"%s\".\n"
-#| "Account locked out."
+#, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account locked out."
 msgstr ""
 "Zugang zum RDP-Server „%s“ ist fehlgeschlagen.\n"
-"Das Konto ist ausgesperrt."
+"Das Konto ist gesperrt."
 
 #: plugins/rdp/rdp_plugin.c:1855
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not access the RDP server \"%s\".\n"
-#| "Account expired."
+#, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account expired."
@@ -1997,10 +1964,7 @@ msgstr ""
 "Das Konto ist abgelaufen."
 
 #: plugins/rdp/rdp_plugin.c:1862
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not access the RDP server \"%s\".\n"
-#| "Password expired."
+#, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Password expired."
@@ -2009,10 +1973,7 @@ msgstr ""
 "Das Passwort ist abgelaufen."
 
 #: plugins/rdp/rdp_plugin.c:1869
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not access the RDP server \"%s\".\n"
-#| "Account disabled."
+#, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account disabled."
@@ -2021,10 +1982,7 @@ msgstr ""
 "Das Konto ist inaktiv."
 
 #: plugins/rdp/rdp_plugin.c:1875
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not access the RDP server \"%s\".\n"
-#| "Insufficient user privileges."
+#, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Insufficient user privileges."
@@ -2033,10 +1991,7 @@ msgstr ""
 "Der Benutzer hat unzureichende Berechtigungen."
 
 #: plugins/rdp/rdp_plugin.c:1883
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not access the RDP server \"%s\".\n"
-#| "Account restricted."
+#, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account restricted."
@@ -2045,10 +2000,7 @@ msgstr ""
 "Das Konto ist eingeschränkt."
 
 #: plugins/rdp/rdp_plugin.c:1891
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not access the RDP server \"%s\".\n"
-#| "Change user password before connecting."
+#, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Change user password before connecting."
@@ -2057,45 +2009,36 @@ msgstr ""
 "Ändern Sie das Passwort vor der Verbindung."
 
 #: plugins/rdp/rdp_plugin.c:1896
-#, fuzzy, c-format
-#| msgid "Lost connection to the RDP server \"%s\"."
+#, c-format
 msgid "Lost connection to the RDP server “%s”."
-msgstr "Verbindung zum RDP-Server „%s“ ist verloren gegangen."
+msgstr "Verbindung zum RDP-Server „%s“ ist abgebrochen."
 
 #: plugins/rdp/rdp_plugin.c:1899
-#, fuzzy, c-format
-#| msgid "Could not find the address for the RDP server \"%s\"."
+#, c-format
 msgid "Could not find the address for the RDP server “%s”."
 msgstr "Kann die Adresse des RDP-Servers „%s“ nicht finden."
 
 #: plugins/rdp/rdp_plugin.c:1903
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not connect to the RDP server \"%s\" via TLS. Check that client and "
-#| "server support a common TLS version."
+#, c-format
 msgid ""
 "Could not connect to the RDP server “%s” via TLS. Check that client and "
 "server support a common TLS version."
 msgstr ""
-"Kann nicht via TLS zum RDP-Server verbinden %s. Stellen Sie sicher, dass Ihr "
-"Server und Ihr Client eine gemeinsame TLS-Version unterstützen."
+"Kann via TLS nicht zum RDP-Server verbinden %s. Stellen Sie sicher, dass "
+"Server und Client eine gemeinsame TLS-Version unterstützen."
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:1907
-#, fuzzy, c-format
-#| msgid ""
-#| "Unable to establish a connection to the RDP server \"%s\". Check "
-#| "\"Security protocol negotiation\"."
+#, c-format
 msgid ""
 "Unable to establish a connection to the RDP server “%s”. Check \"Security "
 "protocol negotiation\"."
 msgstr ""
-"Kann nicht zum RDP-Server \"%s\" verbinden. Überprüfen Sie die Einstellung "
+"Kann zum RDP-Server \"%s\" nicht verbinden. Überprüfen Sie die Einstellung "
 "\"Aushandlung des Sicherheitsprotokolls\"."
 
 #: plugins/rdp/rdp_plugin.c:1915
-#, fuzzy, c-format
-#| msgid "Cannot connect to the RDP server \"%s\"."
+#, c-format
 msgid "Cannot connect to the RDP server “%s”."
 msgstr "Kann zum RDP-Server „%s“ nicht verbinden."
 
@@ -2104,29 +2047,22 @@ msgid "Could not start libfreerdp-gdi."
 msgstr "Kann libfreerdp-gdi nicht starten."
 
 #: plugins/rdp/rdp_plugin.c:1921
-#, fuzzy, c-format
-#| msgid ""
-#| "You requested a H.264 GFX mode for the server \"%s\", but your libfreerdp "
-#| "does not support H.264. Please use a non-AVC colour depth setting."
+#, c-format
 msgid ""
 "You requested a H.264 GFX mode for the server “%s”, but your libfreerdp does "
 "not support H.264. Please use a non-AVC colour depth setting."
 msgstr ""
-"Sie haben für Server %s den H.264 GFX Modus angefordert. Ihre Version von "
-"libfreerdp unterstützt diesen Modus nicht. Bitte wählen Sie keine eine nicht-"
-"AVC-Farbtiefe aus."
+"Sie haben für Server %s einen H.264 GFX Modus angefordert. Ihre Version von "
+"libfreerdp unterstützt diesen Modus nicht. Bitte wählen Sie keine AVC "
+"Farbtiefe."
 
 #: plugins/rdp/rdp_plugin.c:1928
-#, fuzzy, c-format
-#| msgid "The \"%s\" server refused the connection."
+#, c-format
 msgid "The “%s” server refused the connection."
 msgstr "Der Server „%s“ hat die Verbindung abgewiesen."
 
 #: plugins/rdp/rdp_plugin.c:1933
-#, fuzzy, c-format
-#| msgid ""
-#| "The Remote Desktop Gateway \"%s\" denied the user \"%s\\%s\" access due "
-#| "to policy."
+#, c-format
 msgid ""
 "The Remote Desktop Gateway “%s” denied the user \"%s\\%s\" access due to "
 "policy."
@@ -2135,8 +2071,7 @@ msgstr ""
 "Richtlinie abgelehnt."
 
 #: plugins/rdp/rdp_plugin.c:1943
-#, fuzzy, c-format
-#| msgid "Cannot connect to the \"%s\" RDP server."
+#, c-format
 msgid "Cannot connect to the “%s” RDP server."
 msgstr "Kann zum RDP Server „%s“ nicht verbinden."
 
@@ -3496,16 +3431,12 @@ msgid "Use default system font"
 msgstr "Benutze die Systemschrift"
 
 #: data/ui/remmina_preferences.glade:1926
-#, fuzzy
-#| msgid ""
-#| "Selecting \\\"SGR 1\\\" also switches to the bright counterparts of the "
-#| "first 8 palette colours (in addition to making text bold)."
 msgid ""
 "Selecting “SGR 1” also switches to the bright counterparts of the first 8 "
 "palette colours (in addition to making text bold)."
 msgstr ""
-"Die Auswahl von \\\"SGR 1\\\" stellt die ersten acht Palettenfarbennicht "
-"zusätzlich zur fetten Darstellung auch hell dar."
+"Die Auswahl von „SGR 1“ stellt die ersten acht Palettenfarben zusätzlich zur "
+"fetten Darstellung auch hell dar."
 
 #: data/ui/remmina_preferences.glade:1941
 msgid "Allow using bright colours with bold text"
