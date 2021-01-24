@@ -49,6 +49,10 @@ static gboolean remmina_rdp_event_on_map (GtkWindow *window, GdkEvent  *event, R
 	TRACE_CALL(__func__);
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
 	rdpGdi* gdi;
+
+	if (rfi == NULL)
+		return false;
+
 	gdi = ((rdpContext *)rfi)->gdi;
 
 	REMMINA_PLUGIN_DEBUG("Map event received, disabling TS_SUPPRESS_OUTPUT_PDU ");
@@ -62,6 +66,10 @@ static gboolean remmina_rdp_event_on_unmap (GtkWindow *window, GdkEvent  *event,
 	TRACE_CALL(__func__);
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
 	rdpGdi* gdi;
+
+	if (rfi == NULL)
+		return false;
+
 	gdi = ((rdpContext *)rfi)->gdi;
 
 	REMMINA_PLUGIN_DEBUG("Unmap event received, enabling TS_SUPPRESS_OUTPUT_PDU ");
