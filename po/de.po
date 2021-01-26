@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-24 13:25+0000\n"
-"PO-Revision-Date: 2021-01-24 01:32+0000\n"
+"POT-Creation-Date: 2021-01-26 23:43+0000\n"
+"PO-Revision-Date: 2021-01-26 23:43+0000\n"
 "Last-Translator: Johannes Weberhofer <jweberhofer@weberhofer.at>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/remmina/remmina/"
 "de/>\n"
@@ -170,12 +170,13 @@ msgstr "Tastenschläge"
 
 #: src/remmina_pref_dialog.c:146
 msgid "Configure the keystrokes"
-msgstr "Konfigurieren Sie die Tastenschläge"
+msgstr "Konfigurieren Sie die Tastenanschläge"
 
 #. TRANSLATORS: Do not translate libsodium, is the name of a library
 #: src/remmina_pref_dialog.c:454
 msgid "libsodium >= 1.9.0 is required to use master password"
-msgstr "libsodium >= 1.9.0 wird benötigt, um das Master-Passwort zu setzten"
+msgstr ""
+"libsodium >= 1.9.0 wird benötigt, um ein Master-Passwort verwenden zu können"
 
 #: src/remmina_pref_dialog.c:744
 msgid "Picking a terminal colouring file replaces the file: "
@@ -1831,7 +1832,9 @@ msgid "Prefered video codec"
 msgstr "Bevorzugter Video-Codec"
 
 #: plugins/spice/spice_plugin.c:563
-msgid "Disable Gstreamer Overlay"
+#, fuzzy
+#| msgid "Disable Gstreamer Overlay"
+msgid "Turn off GStreamer overlay"
 msgstr "Gstreamer Overlay deaktivieren"
 
 #: plugins/spice/spice_plugin.c:564
@@ -1839,8 +1842,9 @@ msgid "Prefered image compression"
 msgstr "Bevorzugte Bild-Kompression"
 
 #: plugins/spice/spice_plugin.c:565 plugins/spice/spice_plugin.c:578
-#: plugins/nx/nx_plugin.c:749
-msgid "Disable clipboard sync"
+#, fuzzy
+#| msgid "Turn off clipboard sync"
+msgid "No clipboard sync"
 msgstr "Zwischenablage nicht abgleichen"
 
 #: plugins/spice/spice_plugin.c:567
@@ -2603,6 +2607,10 @@ msgstr "Passwort für den privaten SSH-Schlüssel"
 #: plugins/nx/nx_plugin.c:376
 msgid "Enter NX authentication credentials"
 msgstr "Geben Sie die Anmeldedaten zur NX-Authentifizierung ein"
+
+#: plugins/nx/nx_plugin.c:749
+msgid "Disable clipboard sync"
+msgstr "Zwischenablage nicht abgleichen"
 
 #: plugins/nx/nx_plugin.c:750
 msgid "Disable encryption"

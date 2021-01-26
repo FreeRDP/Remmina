@@ -13,13 +13,14 @@
 # Allan Nordhøy <epost@anotheragency.no>, 2020.
 # Alexey Napalkov <flynbit@gmail.com>, 2020.
 # Дубовский Алексей Георгиевич <1100dag@norgau.com>, 2020.
+# Dmitriy Q <krotesk@mail.ru>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-24 13:25+0000\n"
-"PO-Revision-Date: 2020-12-13 22:29+0000\n"
-"Last-Translator: Дубовский Алексей Георгиевич <1100dag@norgau.com>\n"
+"POT-Creation-Date: 2021-01-26 23:43+0000\n"
+"PO-Revision-Date: 2021-01-26 23:43+0000\n"
+"Last-Translator: Dmitriy Q <krotesk@mail.ru>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/remmina/remmina/"
 "ru/>\n"
 "Language: ru\n"
@@ -28,7 +29,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.4-dev\n"
+"X-Generator: Weblate 4.5-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
 "X-Poedit-Flags-xgettext: --add-comments\n"
 
@@ -309,7 +310,7 @@ msgstr "Найти текст"
 
 #: src/remmina_ssh_plugin.c:1341
 msgid "_Find text"
-msgstr ""
+msgstr "_Найти текст"
 
 #: src/remmina_ssh_plugin.c:1359 src/remmina_message_panel.c:330
 #: src/remmina_sftp_plugin.c:343 src/remmina_file_editor.c:989
@@ -1150,7 +1151,7 @@ msgstr "Публичный ключ SSH не может быть импорти�
 
 #: src/remmina_ssh.c:336
 msgid "No saved SSH passphrase supplied. Asking user to enter it."
-msgstr ""
+msgstr "Нет сохраненных парольных фраз SSH. Запрос пользователя на её ввод."
 
 #: src/remmina_ssh.c:423
 #, c-format
@@ -1248,7 +1249,7 @@ msgstr "SSH Kerberos/GSSAPI"
 
 #: src/remmina_ssh.c:951
 msgid "Enter TOTP/OTP/2FA code"
-msgstr ""
+msgstr "Введите код TOTP/OTP/2FA"
 
 #: src/remmina_ssh.c:980 src/remmina_ssh.c:1006
 msgid "SSH tunnel credentials"
@@ -1260,7 +1261,7 @@ msgstr "Данные идентификации SSH"
 
 #: src/remmina_ssh.c:1057
 msgid "Keyboard interactive login, TOTP/OTP/2FA"
-msgstr ""
+msgstr "Интерактивный клавиатурный вход в систему, TOTP/OTP/2FA"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1277
@@ -1827,7 +1828,7 @@ msgstr "Использовать шифрование TLS"
 
 #: plugins/vnc/vnc_plugin.c:1922 plugins/vnc/vnc_plugin.c:1935
 msgid "Prevent local interaction on the server"
-msgstr ""
+msgstr "Запретить локальное взаимодействие на сервере"
 
 #: plugins/vnc/vnc_plugin.c:1937
 msgid "Open Chat…"
@@ -1888,15 +1889,15 @@ msgstr "Выключен"
 
 #: plugins/spice/spice_plugin.c:520
 msgid "Auto GLZ"
-msgstr ""
+msgstr "Авто GLZ"
 
 #: plugins/spice/spice_plugin.c:521
 msgid "Auto LZ"
-msgstr ""
+msgstr "Авто LZ"
 
 #: plugins/spice/spice_plugin.c:530
 msgid "Disable video overlay if videos are not displayed properly.\n"
-msgstr ""
+msgstr "Отключить наложение видео если видео отображается неправильно.\n"
 
 #: plugins/spice/spice_plugin.c:545
 msgid "Use TLS encryption"
@@ -1919,7 +1920,7 @@ msgstr "Настройка"
 #: plugins/spice/spice_plugin.c:563
 #, fuzzy
 #| msgid "Disable server input"
-msgid "Disable Gstreamer Overlay"
+msgid "Turn off GStreamer overlay"
 msgstr "Отключить ввод на сервере"
 
 #: plugins/spice/spice_plugin.c:564
@@ -1927,8 +1928,9 @@ msgid "Prefered image compression"
 msgstr ""
 
 #: plugins/spice/spice_plugin.c:565 plugins/spice/spice_plugin.c:578
-#: plugins/nx/nx_plugin.c:749
-msgid "Disable clipboard sync"
+#, fuzzy
+#| msgid "Turn off clipboard sync"
+msgid "No clipboard sync"
 msgstr "Отключить синхронизацию буфера обмена"
 
 #: plugins/spice/spice_plugin.c:567
@@ -2767,6 +2769,10 @@ msgstr "Пароль закрытого ключа SSH"
 #: plugins/nx/nx_plugin.c:376
 msgid "Enter NX authentication credentials"
 msgstr "Введите данные авторизации NX"
+
+#: plugins/nx/nx_plugin.c:749
+msgid "Disable clipboard sync"
+msgstr "Отключить синхронизацию буфера обмена"
 
 #: plugins/nx/nx_plugin.c:750
 msgid "Disable encryption"

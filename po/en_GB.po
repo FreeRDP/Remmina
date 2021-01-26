@@ -8,13 +8,13 @@
 # Allan Nordhøy <epost@anotheragency.no>, 2020.
 # J. Lavoie <j.lavoie@net-c.ca>, 2020.
 # Rob Pearson <rob.dunedin@gmail.com>, 2020.
-# Andi Chandler <andi@gowling.com>, 2020.
+# Andi Chandler <andi@gowling.com>, 2020, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-24 13:25+0000\n"
-"PO-Revision-Date: 2020-11-24 15:22+0000\n"
+"POT-Creation-Date: 2021-01-26 23:43+0000\n"
+"PO-Revision-Date: 2021-01-26 23:43+0000\n"
 "Last-Translator: Andi Chandler <andi@gowling.com>\n"
 "Language-Team: English (United Kingdom) <https://hosted.weblate.org/projects/"
 "remmina/remmina/en_GB/>\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.4-dev\n"
+"X-Generator: Weblate 4.5-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:25+0000\n"
 
 #: src/remmina_protocol_widget.c:279
@@ -39,14 +39,12 @@ msgid "Executing external commands…"
 msgstr "Executing external commands…"
 
 #: src/remmina_protocol_widget.c:320
-#, fuzzy, c-format
-#| msgid "Connecting to \"%s\"…"
+#, c-format
 msgid "Connecting to “%s”…"
 msgstr "Connecting to \"%s\"…"
 
 #: src/remmina_protocol_widget.c:766 src/remmina_protocol_widget.c:884
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connecting to “%s” via SSH…"
 msgstr "Connecting to %s via SSH…"
 
@@ -56,14 +54,12 @@ msgid "Awaiting incoming SSH connection on port %i…"
 msgstr "Awaiting incoming SSH connection on port %i…"
 
 #: src/remmina_protocol_widget.c:999
-#, fuzzy, c-format
-#| msgid "The \"%s\" command is not available on the SSH server."
+#, c-format
 msgid "The “%s” command is not available on the SSH server."
 msgstr "The ‘%s’ command is not available on the SSH server."
 
 #: src/remmina_protocol_widget.c:1003
-#, fuzzy, c-format
-#| msgid "Could not run the \"%s\" command on the SSH server (status = %i)."
+#, c-format
 msgid "Could not run the “%s” command on the SSH server (status = %i)."
 msgstr "Could not run the ‘%s’ command on the SSH server (status = %i)."
 
@@ -93,7 +89,7 @@ msgstr "Type in SSH username and password."
 
 #: src/remmina_protocol_widget.c:1520 src/remmina_protocol_widget.c:1547
 msgid "Fingerprint automatically accepted"
-msgstr ""
+msgstr "Fingerprint automatically accepted"
 
 #: src/remmina_protocol_widget.c:1527
 msgid "Certificate details:"
@@ -193,6 +189,9 @@ msgid ""
 "\"Advanced\" tab of terminal connections and editable in the \"Terminal\" "
 "tab in the settings."
 msgstr ""
+"This file contains the \"Custom\" terminal colour scheme selectable from the "
+"\"Advanced\" tab of terminal connections and editable in the \"Terminal\" "
+"tab in the settings."
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_ssh_plugin.c:534
@@ -1116,7 +1115,7 @@ msgstr "Public SSH key cannot be imported. %s"
 
 #: src/remmina_ssh.c:336
 msgid "No saved SSH passphrase supplied. Asking user to enter it."
-msgstr ""
+msgstr "No saved SSH passphrase supplied. Asking user to enter it."
 
 #: src/remmina_ssh.c:423
 #, c-format
@@ -1214,7 +1213,7 @@ msgstr "SSH Kerberos/GSSAPI"
 
 #: src/remmina_ssh.c:951
 msgid "Enter TOTP/OTP/2FA code"
-msgstr ""
+msgstr "Enter TOTP/OTP/2FA code"
 
 #: src/remmina_ssh.c:980 src/remmina_ssh.c:1006
 msgid "SSH tunnel credentials"
@@ -1226,7 +1225,7 @@ msgstr "SSH credentials"
 
 #: src/remmina_ssh.c:1057
 msgid "Keyboard interactive login, TOTP/OTP/2FA"
-msgstr ""
+msgstr "Keyboard interactive login, TOTP/OTP/2FA"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1277
@@ -1791,7 +1790,7 @@ msgstr "Use TLS encryption"
 
 #: plugins/vnc/vnc_plugin.c:1922 plugins/vnc/vnc_plugin.c:1935
 msgid "Prevent local interaction on the server"
-msgstr ""
+msgstr "Prevent local interaction on the server"
 
 #: plugins/vnc/vnc_plugin.c:1937
 msgid "Open Chat…"
@@ -1852,15 +1851,15 @@ msgstr "Off"
 
 #: plugins/spice/spice_plugin.c:520
 msgid "Auto GLZ"
-msgstr ""
+msgstr "Auto GLZ"
 
 #: plugins/spice/spice_plugin.c:521
 msgid "Auto LZ"
-msgstr ""
+msgstr "Auto LZ"
 
 #: plugins/spice/spice_plugin.c:530
 msgid "Disable video overlay if videos are not displayed properly.\n"
-msgstr ""
+msgstr "Disable video overlay if videos are not displayed properly.\n"
 
 #: plugins/spice/spice_plugin.c:545
 msgid "Use TLS encryption"
@@ -1883,17 +1882,18 @@ msgstr "Preference"
 #: plugins/spice/spice_plugin.c:563
 #, fuzzy
 #| msgid "Disable server input"
-msgid "Disable Gstreamer Overlay"
+msgid "Turn off GStreamer overlay"
 msgstr "Disable server input"
 
 #: plugins/spice/spice_plugin.c:564
 msgid "Prefered image compression"
-msgstr ""
+msgstr "Preferred image compression"
 
 #: plugins/spice/spice_plugin.c:565 plugins/spice/spice_plugin.c:578
-#: plugins/nx/nx_plugin.c:749
-msgid "Disable clipboard sync"
-msgstr "Disable clipboard sync"
+#, fuzzy
+#| msgid "Turn off clipboard sync"
+msgid "No clipboard sync"
+msgstr "Turn off clipboard sync"
 
 #: plugins/spice/spice_plugin.c:567
 msgid "Enable audio channel"
@@ -2210,27 +2210,27 @@ msgstr "<Auto detect>"
 
 #: plugins/rdp/rdp_plugin.c:2304
 msgid "Modem"
-msgstr ""
+msgstr "Modem"
 
 #: plugins/rdp/rdp_plugin.c:2305
 msgid "Low performance broadband"
-msgstr ""
+msgstr "Low performance broadband"
 
 #: plugins/rdp/rdp_plugin.c:2306
 msgid "Satellite"
-msgstr ""
+msgstr "Satellite"
 
 #: plugins/rdp/rdp_plugin.c:2307
 msgid "High performance broadband"
-msgstr ""
+msgstr "High performance broadband"
 
 #: plugins/rdp/rdp_plugin.c:2308
 msgid "WAN"
-msgstr ""
+msgstr "WAN"
 
 #: plugins/rdp/rdp_plugin.c:2309
 msgid "LAN"
-msgstr ""
+msgstr "LAN"
 
 #: plugins/rdp/rdp_plugin.c:2318
 msgid "Local - low quality"
@@ -2380,6 +2380,9 @@ msgid ""
 "Using auto-detection is advised.\n"
 "If \"Auto-detect\" fails, choose the most appropriate option in the list.\n"
 msgstr ""
+"Performance optimisations based on the network connection type:\n"
+"Using auto-detection is advised.\n"
+"If \"Auto-detect\" fails, choose the most appropriate option in the list.\n"
 
 #: plugins/rdp/rdp_plugin.c:2408
 #, fuzzy
@@ -2593,7 +2596,7 @@ msgstr "Using the UDP protocol may improve performance"
 
 #: plugins/rdp/rdp_plugin.c:2472
 msgid "Use base credentials for gateway too"
-msgstr ""
+msgstr "Use base credentials for gateway too"
 
 #: plugins/rdp/rdp_plugin.c:2496
 msgid "RDP - Remote Desktop Protocol"
@@ -2730,6 +2733,10 @@ msgstr "Password for private SSH key"
 #: plugins/nx/nx_plugin.c:376
 msgid "Enter NX authentication credentials"
 msgstr "Enter NX authentication credentials"
+
+#: plugins/nx/nx_plugin.c:749
+msgid "Disable clipboard sync"
+msgstr "Disable clipboard sync"
 
 #: plugins/nx/nx_plugin.c:750
 msgid "Disable encryption"
@@ -3270,7 +3277,7 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:433
 msgid "Template for profile filenames"
-msgstr ""
+msgstr "Template for profile filenames"
 
 #: data/ui/remmina_preferences.glade:445
 msgid ""
@@ -3577,10 +3584,12 @@ msgid ""
 "Selecting “SGR 1” also switches to the bright counterparts of the first 8 "
 "palette colours (in addition to making text bold)."
 msgstr ""
+"Selecting “SGR 1” also switches to the bright counterparts of the first 8 "
+"palette colours (in addition to making text bold)."
 
 #: data/ui/remmina_preferences.glade:1941
 msgid "Allow using bright colours with bold text"
-msgstr ""
+msgstr "Allow using bright colours with bold text"
 
 #: data/ui/remmina_preferences.glade:1955
 msgid "Colour theme"
