@@ -376,7 +376,7 @@ int main(int argc, char *argv[])
 	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 	g_application_set_option_context_description (G_APPLICATION(app),
 			_("Examples:\n"
-				"To connect using an exisitng connection profile use:\n"
+				"To connect using an existing connection profile use:\n"
 				"\n"
 				"\tremmina -c FILE.remmina\n"
 				"\n"
