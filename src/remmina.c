@@ -322,6 +322,7 @@ int main(int argc, char *argv[])
 	TRACE_CALL(__func__);
 	GtkApplication *app;
 	const gchar *app_id;
+	gchar *summary;
 	int status;
 
 	g_unsetenv("GDK_CORE_DEVICE_EVENTS");
@@ -366,11 +367,46 @@ int main(int argc, char *argv[])
 #if !GTK_CHECK_VERSION(4, 0, 0) /* This is not needed anymore starting from GTK 4 */
 	g_set_prgname(app_id);
 #endif
+	g_application_add_main_option_entries(G_APPLICATION(app), remmina_options);
+	summary = g_strdup_printf ("%s %s", app_id, VERSION);
+	g_application_set_option_context_summary (G_APPLICATION(app), summary);
+	g_free(summary);
+	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
+	g_application_set_option_context_parameter_string (G_APPLICATION(app), _("- or protocol://username:encryptedpassword@host:port"));
+	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
+	g_application_set_option_context_description (G_APPLICATION(app),
+			_("Examples:\n"
+				"To connect using an exisitng connection profile use:\n"
+				"\n"
+				"\tremmina -c FILE.remmina\n"
+				"\n"
+				"To quick connect using a URI:\n"
+				"\n"
+				"\tremmina -c rdp://username@server\n"
+				"\tremmina -c rdp://domain\\\\username@server\n"
+				"\tremmina -c vnc://username@server\n"
+				"\tremmina -c vnc://server?VncUsername=username\n"
+				"\tremmina -c ssh://user@server\n"
+				"\tremmina -c spice://server\n"
+				"\n"
+				"To quick connect using a URI along with an encrypted password:\n"
+				"\n"
+				"\tremmina -c rdp://username:encrypted-password@server\n"
+				"\tremmina -c vnc://username:encrypted-password@server\n"
+				"\tremmina -c vnc://server?VncUsername=username\\&VncPassword=encrypted-password\n"
+				"\n"
+				"To encrypt a password for use with a URI:\n"
+				"\n"
+				"\tremmina --encrypt-password\n"
+				"\n"
+				"To update username and password and set a different resolution mode of a remmina connection profile use:\n"
+				"\n"
+				"\techo \"username\\napassword\" | remmina --update-profile /PATH/TO/FOO.remmina --set-option username --set-option resolution_mode=2 --set-option password\n"));
+
 	g_signal_connect(app, "startup", G_CALLBACK(remmina_on_startup), NULL);
 	g_signal_connect(app, "command-line", G_CALLBACK(remmina_on_command_line), NULL);
 	g_signal_connect(app, "handle-local-options", G_CALLBACK(remmina_on_local_cmdline), NULL);
 
-	g_application_add_main_option_entries(G_APPLICATION(app), remmina_options);
 
 	g_application_set_inactivity_timeout(G_APPLICATION(app), 10000);
 	status = g_application_run(G_APPLICATION(app), argc, argv);
