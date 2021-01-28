@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-01-26 23:43+0000\n"
-"PO-Revision-Date: 2021-01-28 10:32+0000\n"
+"PO-Revision-Date: 2021-01-28 11:48+0000\n"
 "Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
 "Language-Team: Bulgarian <https://hosted.weblate.org/projects/remmina/"
 "remmina/bg/>\n"
@@ -1340,17 +1340,18 @@ msgid ""
 "connecting.\n"
 "</big></tt>"
 msgstr ""
-"Името на файла може да съдържа следните заместители(placeholders) на низове:"
-"\n"
-"\n"
-"  • %h се замества с името на сървъра\n"
-"  • %t се замества с името на SSH сървъра\n"
-"  • %u се замества с потребителското име\n"
-"  • %U се замества с SSH потребителското име\n"
-"  • %p се замества с името на профила в Reminna\n"
-"  • %g се замества с името на групата от която е част използваният Reminna "
-"профил\n"
-"  • %d се замества с локалните дата и час представени в iso8601 формат\n"
+"<tt> <big>• команда в PATH args %h\n"
+"• /path/to/foo -options %h %u\n"
+"% h се замества с името на сървъра\n"
+"% t се замества с името на SSH сървъра\n"
+"• %u се замества с потребителско име\n"
+"% U се замества с SSH потребителско име\n"
+"• %p се замества с име на профил на Remmina\n"
+"• %g се замества с име на група профили на Remmina\n"
+"• %d се замества с локална дата и час във формат ISO 8601\n"
+"Не се изпълнява във фонов режим, ако искате командата да бъде изпълнена "
+"преди свързване.\n"
+"</big> </tt>"
 
 #: src/remmina_file_editor.c:81
 msgid ""
@@ -1362,9 +1363,11 @@ msgid ""
 "• username@server:port (SSH protocol only)</big></tt>"
 msgstr ""
 "<tt><big>Поддържани формати\n"
-"* сървър\n"
-"* сървър:порт\n"
-"* [сървър]:порт</big></tt>"
+"• :p\n"
+"• сървър\n"
+"• сървър: порт\n"
+"• [сървър] :p ort\n"
+"• username@server:порт (само SSH протокол)</big></tt>"
 
 #: src/remmina_file_editor.c:147
 msgid "Choose a Remote Desktop Server"
@@ -1935,49 +1938,63 @@ msgstr ""
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account locked out."
-msgstr "Командата %s не е открита на SSH сървъра"
+msgstr ""
+"Не може да осъществи достъп до RDP сървъра \"%s\".\n"
+"Сметката е заключена."
 
 #: plugins/rdp/rdp_plugin.c:1855
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account expired."
-msgstr "Командата %s не е открита на SSH сървъра"
+msgstr ""
+"Не може да осъществи достъп до RDP сървъра \"%s\".\n"
+"Сметката е изтекла."
 
 #: plugins/rdp/rdp_plugin.c:1862
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Password expired."
-msgstr "Командата %s не е открита на SSH сървъра"
+msgstr ""
+"Не може да осъществи достъп до RDP сървъра \"%s\".\n"
+"Паролата е с изтекъл срок."
 
 #: plugins/rdp/rdp_plugin.c:1869
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account disabled."
-msgstr "Командата %s не е открита на SSH сървъра"
+msgstr ""
+"Не може да осъществи достъп до RDP сървъра \"%s\".\n"
+"Профилът е деактивиран."
 
 #: plugins/rdp/rdp_plugin.c:1875
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Insufficient user privileges."
-msgstr "Командата %s не е открита на SSH сървъра"
+msgstr ""
+"Не можах да осъществя достъп до RDP сървъра „%s“.\n"
+"Недостатъчни привилегии на потребителя."
 
 #: plugins/rdp/rdp_plugin.c:1883
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account restricted."
-msgstr "Командата %s не е открита на SSH сървъра"
+msgstr ""
+"Не можах да осъществя достъп до RDP сървъра „%s“.\n"
+"Профилът е ограничен."
 
 #: plugins/rdp/rdp_plugin.c:1891
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Change user password before connecting."
-msgstr "Командата %s не е открита на SSH сървъра"
+msgstr ""
+"Не може да осъществи достъп до RDP сървъра \"%s\".\n"
+"Променете потребителската парола, преди да се свържете."
 
 #: plugins/rdp/rdp_plugin.c:1896
 #, c-format
