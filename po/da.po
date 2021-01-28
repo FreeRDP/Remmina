@@ -4,14 +4,14 @@
 # scootergrisen, 2017, 2019.
 # Allan Nordhøy <epost@anotheragency.no>, 2019, 2020.
 # scootergrisen <scootergrisen@gmail.com>, 2019, 2020, 2021.
-# Antenore Gatta <antenore@simbiosi.org>, 2020.
+# Antenore Gatta <antenore@simbiosi.org>, 2020, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-01-26 23:43+0000\n"
-"PO-Revision-Date: 2021-01-12 03:32+0000\n"
-"Last-Translator: scootergrisen <scootergrisen@gmail.com>\n"
+"PO-Revision-Date: 2021-01-28 10:33+0000\n"
+"Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
 "Language-Team: Danish <https://hosted.weblate.org/projects/remmina/remmina/"
 "da/>\n"
 "Language: da\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.4.1-dev\n"
+"X-Generator: Weblate 4.5-dev\n"
 
 #: src/remmina_protocol_widget.c:279
 msgid "Connect via SSH from a new terminal"
@@ -34,14 +34,12 @@ msgid "Executing external commands…"
 msgstr "Udfører eksterne kommandoer …"
 
 #: src/remmina_protocol_widget.c:320
-#, fuzzy, c-format
-#| msgid "Connecting to \"%s\"…"
+#, c-format
 msgid "Connecting to “%s”…"
 msgstr "Opretter forbindelse til \"%s\" …"
 
 #: src/remmina_protocol_widget.c:766 src/remmina_protocol_widget.c:884
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connecting to “%s” via SSH…"
 msgstr "Opretter forbindelse til %s via SSH …"
 
@@ -51,14 +49,12 @@ msgid "Awaiting incoming SSH connection on port %i…"
 msgstr "Afventer indgående SSH-forbindelse på port %i …"
 
 #: src/remmina_protocol_widget.c:999
-#, fuzzy, c-format
-#| msgid "The \"%s\" command is not available on the SSH server."
+#, c-format
 msgid "The “%s” command is not available on the SSH server."
 msgstr "Kommandoen \"%s\" er ikke tilgængelig på SSH-serveren."
 
 #: src/remmina_protocol_widget.c:1003
-#, fuzzy, c-format
-#| msgid "Could not run the \"%s\" command on the SSH server (status = %i)."
+#, c-format
 msgid "Could not run the “%s” command on the SSH server (status = %i)."
 msgstr "Kommandoen \"%s\" kunne ikke køres på SSH-serveren (status = %i)."
 
@@ -318,23 +314,10 @@ msgstr "Adgangskode til at låse op for privat nøgle"
 
 #: src/remmina_ssh_plugin.c:1364 plugins/xdmcp/xdmcp_plugin.c:370
 #: plugins/rdp/rdp_plugin.c:2439 plugins/nx/nx_plugin.c:734
-#, fuzzy
-#| msgid "Startup program"
 msgid "Start-up program"
 msgstr "Opstartsprogram"
 
 #: src/remmina_ssh_plugin.c:1369
-#, fuzzy
-#| msgid ""
-#| "The filename can use the following placeholders:\n"
-#| "\n"
-#| "  • %h is substituted with the server name\n"
-#| "  • %t is substituted with the SSH server name\n"
-#| "  • %u is substituted with the username\n"
-#| "  • %U is substituted with the SSH username\n"
-#| "  • %p is substituted with Remmina profile name\n"
-#| "  • %g is substituted with Remmina profile group name\n"
-#| "  • %d is substituted with local datetime in iso8601 format\n"
 msgid ""
 "The filename can use the following placeholders:\n"
 "\n"
@@ -792,8 +775,7 @@ msgid "Disconnect"
 msgstr "Afbryd forbindelsen"
 
 #: src/rcw.c:3989
-#, fuzzy, c-format
-#| msgid "The file \"%s\" is corrupted, unreadable, or could not be found."
+#, c-format
 msgid "The file “%s” is corrupted, unreadable, or could not be found."
 msgstr "Filen \"%s\" er korrupt, ulæselig eller blev ikke fundet."
 
@@ -859,8 +841,7 @@ msgstr[0] "Total %i element."
 msgstr[1] "Total %i elementer."
 
 #: src/remmina_main.c:842
-#, fuzzy, c-format
-#| msgid "Are you sure you want to delete \"%s\"?"
+#, c-format
 msgid "Are you sure you want to delete “%s”?"
 msgstr "Er du sikker på, at du vil slette \"%s\"?"
 
@@ -919,59 +900,50 @@ msgstr "<ingen>"
 
 #. TRANSLATORS: The placeholder %s is a directory path
 #: src/remmina_sftp_client.c:173
-#, fuzzy, c-format
-#| msgid "Could not create the folder \"%s\"."
+#, c-format
 msgid "Could not create the folder “%s”."
 msgstr "Kunne ikke oprette mappen \"%s\"."
 
 #. TRANSLATORS: The placeholder %s is a file path
 #: src/remmina_sftp_client.c:181 src/remmina_sftp_client.c:202
-#, fuzzy, c-format
-#| msgid "Could not create the file \"%s\"."
+#, c-format
 msgid "Could not create the file “%s”."
 msgstr "Kunne ikke oprette filen \"%s\"."
 
 #. TRANSLATORS: The placeholders %s are a file path, and an error message.
 #: src/remmina_sftp_client.c:220
-#, fuzzy, c-format
-#| msgid "Could not open the file \"%s\" on the server. %s"
+#, c-format
 msgid "Could not open the file “%s” on the server. %s"
 msgstr "Kunne ikke åbne filen \"%s\" på serveren. %s"
 
 #: src/remmina_sftp_client.c:242
-#, fuzzy, c-format
-#| msgid "Could not save the file \"%s\"."
+#, c-format
 msgid "Could not save the file “%s”."
 msgstr "Kunne ikke gemme filen \"%s\"."
 
 #: src/remmina_sftp_client.c:281 src/remmina_sftp_client.c:698
 #: src/remmina_sftp_client.c:761
-#, fuzzy, c-format
-#| msgid "Could not open the folder \"%s\". %s"
+#, c-format
 msgid "Could not open the folder “%s”. %s"
 msgstr "Kunne ikke åbne mappen \"%s\". %s"
 
 #: src/remmina_sftp_client.c:385
-#, fuzzy, c-format
-#| msgid "Could not create the folder \"%s\" on the server. %s"
+#, c-format
 msgid "Could not create the folder “%s” on the server. %s"
 msgstr "Fejl ved oprettelse af mappen \"%s\" på serveren. %s"
 
 #: src/remmina_sftp_client.c:413 src/remmina_sftp_client.c:435
-#, fuzzy, c-format
-#| msgid "Could not create the file \"%s\" on the server. %s"
+#, c-format
 msgid "Could not create the file “%s” on the server. %s"
 msgstr "Kunne ikke oprette filen \"%s\" på serveren. %s"
 
 #: src/remmina_sftp_client.c:456
-#, fuzzy, c-format
-#| msgid "Could not open the file \"%s\"."
+#, c-format
 msgid "Could not open the file “%s”."
 msgstr "Kunne ikke åbne filen \"%s\"."
 
 #: src/remmina_sftp_client.c:476
-#, fuzzy, c-format
-#| msgid "Could not write to the file \"%s\" on the server. %s"
+#, c-format
 msgid "Could not write to the file “%s” on the server. %s"
 msgstr "Kunne ikke skrive filen \"%s\" på serveren. %s"
 
@@ -985,8 +957,7 @@ msgid "Are you sure you want to cancel the file transfer in progress?"
 msgstr "Er du sikker på, at du vil annullere den igangværende filoverførsel?"
 
 #: src/remmina_sftp_client.c:857
-#, fuzzy, c-format
-#| msgid "Could not delete \"%s\". %s"
+#, c-format
 msgid "Could not delete “%s”. %s"
 msgstr "Kunne ikke slette \"%s\". %s"
 
@@ -1083,8 +1054,7 @@ msgid "SFTP - Secure File Transfer"
 msgstr "SFTP - Sikker filoverførsel"
 
 #: src/remmina_ssh.c:236
-#, fuzzy, c-format
-#| msgid "Could not authenticate with SSH password. %s"
+#, c-format
 msgid "Could not authenticate with TOTP/OTP/2FA. %s"
 msgstr "Kunne ikke autentificere med SSH-adgangskode. %s"
 
@@ -1101,8 +1071,6 @@ msgid "Could not authenticate with public SSH key. %s"
 msgstr "Kunne ikke autentificere med offentlig SSH-nøgle. %s"
 
 #: src/remmina_ssh.c:316
-#, fuzzy
-#| msgid "SSH Key file not yet set."
 msgid "SSH identity file not selected."
 msgstr "SSH-nøglefil ikke valgt."
 
@@ -1122,14 +1090,12 @@ msgid "Could not authenticate automatically with public SSH key. %s"
 msgstr "Kunne ikke autentificere automatisk med offentlig SSH-nøgle. %s"
 
 #: src/remmina_ssh.c:468
-#, fuzzy, c-format
-#| msgid "Could not authenticate automatically with public SSH key. %s"
+#, c-format
 msgid "Could not authenticate automatically with SSH agent. %s"
 msgstr "Kunne ikke autentificere automatisk med offentlig SSH-nøgle. %s"
 
 #: src/remmina_ssh.c:514 src/remmina_ssh.c:802
-#, fuzzy, c-format
-#| msgid "Could not authenticate with SSH Kerberos/GSSAPI. %s"
+#, c-format
 msgid "Could not authenticate with SSH GSSAPI/Kerberos. %s"
 msgstr "Kunne ikke autentificere med SSH-Kerberos/-GSSAPI. %s"
 
@@ -1138,14 +1104,12 @@ msgid "The public SSH key changed!"
 msgstr "Den offentlige SSH-nøgle blev ændret!"
 
 #: src/remmina_ssh.c:657
-#, fuzzy, c-format
-#| msgid "Could not authenticate with public SSH key. %s"
+#, c-format
 msgid "Could not authenticate with keyboard-interactive. %s"
 msgstr "Kunne ikke autentificere med offentlig SSH-nøgle. %s"
 
 #: src/remmina_ssh.c:759
-#, fuzzy, c-format
-#| msgid "Could not authenticate with public SSH key. %s"
+#, c-format
 msgid "Could not authenticate with automatic public SSH key. %s"
 msgstr "Kunne ikke autentificere med offentlig SSH-nøgle. %s"
 
@@ -1163,8 +1127,7 @@ msgstr "Kunne ikke hente offentlig SSH-nøgle. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:882
-#, fuzzy, c-format
-#| msgid "Could not fetch checksum for public SSH key. %s"
+#, c-format
 msgid "Could not fetch checksum of the public SSH key. %s"
 msgstr "Kunne ikke hente checksum til offentlig SSH-nøgle. %s"
 
@@ -1177,12 +1140,6 @@ msgid "Do you trust the new public key?"
 msgstr "Stoler du på den nye offentlige nøgle?"
 
 #: src/remmina_ssh.c:900
-#, fuzzy
-#| msgid ""
-#| "Warning: The server has changed its public key. This means either you are "
-#| "under attack,\n"
-#| "or the administrator has changed the key. The new public key fingerprint "
-#| "is:"
 msgid ""
 "Warning: The server has changed its public key. This means you are either "
 "under attack,\n"
@@ -1358,20 +1315,6 @@ msgstr ""
 "• [server]:port</big></tt>"
 
 #: src/remmina_file_editor.c:67
-#, fuzzy
-#| msgid ""
-#| "<tt><big>• command in PATH args %h\n"
-#| "• /path/to/foo -options %h %u\n"
-#| "• %h is substituted with the server name\n"
-#| "• %t is substituted with the SSH server name\n"
-#| "• %u is substituted with the username\n"
-#| "• %U is substituted with the SSH username\n"
-#| "• %p is substituted with Remmina profile name\n"
-#| "• %g is substituted with Remmina profile group name\n"
-#| "• %d is substituted with local datetime in iso8601 format\n"
-#| "Do not run in background if you want the command to be executed before "
-#| "connecting.\n"
-#| "</big></tt>"
 msgid ""
 "<tt><big>• command in PATH args %h\n"
 "• /path/to/foo -options %h %u\n"
@@ -1473,14 +1416,10 @@ msgid "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
 msgstr "/sti/til/kommando -alt1 arg %h %u %t -alt2 %U %p %g"
 
 #: src/remmina_file_editor.c:887
-#, fuzzy
-#| msgid "Startup"
 msgid "Start-up"
 msgstr "Opstart"
 
 #: src/remmina_file_editor.c:890
-#, fuzzy
-#| msgid "Autostart this profile"
 msgid "Auto-start this profile"
 msgstr "Automatisk start af profilen"
 
@@ -1502,8 +1441,6 @@ msgid "Same server at port %i"
 msgstr "Samme server på port %i"
 
 #: src/remmina_file_editor.c:973 plugins/rdp/rdp_plugin.c:2440
-#, fuzzy
-#| msgid "Startup path"
 msgid "Start-up path"
 msgstr "Opstartssti"
 
@@ -1563,8 +1500,7 @@ msgid "Use '%s' as subgroup delimiter"
 msgstr "Brug '%s' som afgrænser for undergruppe"
 
 #: src/remmina_file_editor.c:1657 src/remmina_file_editor.c:1675
-#, fuzzy, c-format
-#| msgid "Could not find the file \"%s\"."
+#, c-format
 msgid "Could not find the file “%s”."
 msgstr "Kunne ikke finde filen \"%s\"."
 
@@ -1783,8 +1719,6 @@ msgid "Turn off clipboard sync"
 msgstr "Deaktivér synkronisering af udklipsholder"
 
 #: plugins/vnc/vnc_plugin.c:1921
-#, fuzzy
-#| msgid "Use TLS encryption"
 msgid "Turn off encryption"
 msgstr "Brug TLS-kryptering"
 
@@ -1826,8 +1760,7 @@ msgid "Enter SPICE password"
 msgstr "Indtast SPICE-adgangskode"
 
 #: plugins/spice/spice_plugin.c:296
-#, fuzzy, c-format
-#| msgid "Disconnected from the SPICE server \"%s\"."
+#, c-format
 msgid "Disconnected from the SPICE server “%s”."
 msgstr "Forbindelsen til SPICE-serveren \"%s\" blev afbrudt."
 
@@ -1874,14 +1807,10 @@ msgid "Share folder"
 msgstr "Delingsmappe"
 
 #: plugins/spice/spice_plugin.c:562
-#, fuzzy
-#| msgid "Preference"
 msgid "Prefered video codec"
 msgstr "Præference"
 
 #: plugins/spice/spice_plugin.c:563
-#, fuzzy
-#| msgid "Disable server input"
 msgid "Turn off GStreamer overlay"
 msgstr "Deaktivér serverinput"
 
@@ -1890,8 +1819,6 @@ msgid "Prefered image compression"
 msgstr ""
 
 #: plugins/spice/spice_plugin.c:565 plugins/spice/spice_plugin.c:578
-#, fuzzy
-#| msgid "Turn off clipboard sync"
 msgid "No clipboard sync"
 msgstr "Deaktivér synkronisering af udklipsholder"
 
@@ -1934,14 +1861,10 @@ msgid "Ran out of available local X display numbers."
 msgstr "Løb tør for tilgængelige tal til lokalt X-display."
 
 #: plugins/xdmcp/xdmcp_plugin.c:264 plugins/nx/nx_plugin.c:617
-#, fuzzy, c-format
-#| msgid ""
-#| "The protocol \"%s\" is unavailable because GtkSocket only works under X."
-#| "Org."
+#, c-format
 msgid ""
 "The protocol “%s” is unavailable because GtkSocket only works under X.Org."
-msgstr ""
-"Protokollen \"%s\" er utilgængelig da GtkSocket kun virker under X.Org."
+msgstr "Protokollen \"%s\" er utilgængelig da GtkSocket kun virker under X.Org."
 
 #: plugins/xdmcp/xdmcp_plugin.c:349
 msgid "Grayscale"
@@ -2000,10 +1923,7 @@ msgid "Enter RDP gateway authentication credentials"
 msgstr "Indtast loginoplysninger for autentifikation af RDP-gateway"
 
 #: plugins/rdp/rdp_plugin.c:1848
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not access the RDP server \"%s\".\n"
-#| "Account locked out."
+#, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account locked out."
@@ -2012,10 +1932,7 @@ msgstr ""
 "Kontoen er låst."
 
 #: plugins/rdp/rdp_plugin.c:1855
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not access the RDP server \"%s\".\n"
-#| "Account expired."
+#, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account expired."
@@ -2024,10 +1941,7 @@ msgstr ""
 "Kontoen er udløbet."
 
 #: plugins/rdp/rdp_plugin.c:1862
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not access the RDP server \"%s\".\n"
-#| "Password expired."
+#, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Password expired."
@@ -2036,10 +1950,7 @@ msgstr ""
 "Adgangskoden er udløbet."
 
 #: plugins/rdp/rdp_plugin.c:1869
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not access the RDP server \"%s\".\n"
-#| "Account disabled."
+#, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account disabled."
@@ -2048,10 +1959,7 @@ msgstr ""
 "Kontoen er deaktiveret."
 
 #: plugins/rdp/rdp_plugin.c:1875
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not access the RDP server \"%s\".\n"
-#| "Insufficient user privileges."
+#, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Insufficient user privileges."
@@ -2060,10 +1968,7 @@ msgstr ""
 "Brugeren har ikke tilstrækkelige rettigheder."
 
 #: plugins/rdp/rdp_plugin.c:1883
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not access the RDP server \"%s\".\n"
-#| "Account restricted."
+#, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account restricted."
@@ -2072,10 +1977,7 @@ msgstr ""
 "Kontoen har begrænsninger."
 
 #: plugins/rdp/rdp_plugin.c:1891
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not access the RDP server \"%s\".\n"
-#| "Change user password before connecting."
+#, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Change user password before connecting."
@@ -2084,22 +1986,17 @@ msgstr ""
 "Brugeren skal skifte adgangskode inden der oprettes forbindelse."
 
 #: plugins/rdp/rdp_plugin.c:1896
-#, fuzzy, c-format
-#| msgid "Lost connection to the RDP server \"%s\"."
+#, c-format
 msgid "Lost connection to the RDP server “%s”."
 msgstr "Mistede forbindelse til RDP-serveren \"%s\"."
 
 #: plugins/rdp/rdp_plugin.c:1899
-#, fuzzy, c-format
-#| msgid "Could not find the address for the RDP server \"%s\"."
+#, c-format
 msgid "Could not find the address for the RDP server “%s”."
 msgstr "Kunne ikke finde adressen til RDP-serveren \"%s\"."
 
 #: plugins/rdp/rdp_plugin.c:1903
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not connect to the RDP server \"%s\" via TLS. Check that client and "
-#| "server support a common TLS version."
+#, c-format
 msgid ""
 "Could not connect to the RDP server “%s” via TLS. Check that client and "
 "server support a common TLS version."
@@ -2109,10 +2006,7 @@ msgstr ""
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:1907
-#, fuzzy, c-format
-#| msgid ""
-#| "Unable to establish a connection to the RDP server. Check \"Security "
-#| "protocol negotiation\" \"%s\"."
+#, c-format
 msgid ""
 "Unable to establish a connection to the RDP server “%s”. Check \"Security "
 "protocol negotiation\"."
@@ -2121,8 +2015,7 @@ msgstr ""
 "sikkerhedsprotokol\" \"%s\"."
 
 #: plugins/rdp/rdp_plugin.c:1915
-#, fuzzy, c-format
-#| msgid "Cannot connect to the RDP server \"%s\"."
+#, c-format
 msgid "Cannot connect to the RDP server “%s”."
 msgstr "Kan ikke oprette forbindelse til RDP-serveren \"%s\"."
 
@@ -2131,10 +2024,7 @@ msgid "Could not start libfreerdp-gdi."
 msgstr "Kunne ikke starte libfreerdp-gdi."
 
 #: plugins/rdp/rdp_plugin.c:1921
-#, fuzzy, c-format
-#| msgid ""
-#| "You requested a H.264 GFX mode for the server \"%s\", but your libfreerdp "
-#| "does not support H.264. Please use a non-AVC colour depth setting."
+#, c-format
 msgid ""
 "You requested a H.264 GFX mode for the server “%s”, but your libfreerdp does "
 "not support H.264. Please use a non-AVC colour depth setting."
@@ -2144,16 +2034,12 @@ msgstr ""
 "AVC."
 
 #: plugins/rdp/rdp_plugin.c:1928
-#, fuzzy, c-format
-#| msgid "The \"%s\" server refused the connection."
+#, c-format
 msgid "The “%s” server refused the connection."
 msgstr "Serveren \"%s\" nægtede forbindelsen."
 
 #: plugins/rdp/rdp_plugin.c:1933
-#, fuzzy, c-format
-#| msgid ""
-#| "The Remote Desktop Gateway \"%s\" denied the user \"%s\\%s\" access due "
-#| "to policy."
+#, c-format
 msgid ""
 "The Remote Desktop Gateway “%s” denied the user \"%s\\%s\" access due to "
 "policy."
@@ -2162,8 +2048,7 @@ msgstr ""
 "regler."
 
 #: plugins/rdp/rdp_plugin.c:1943
-#, fuzzy, c-format
-#| msgid "Cannot connect to the \"%s\" RDP server."
+#, c-format
 msgid "Cannot connect to the “%s” RDP server."
 msgstr "Kan ikke oprette forbindelse til RDP-serveren \"%s\"."
 
@@ -2204,8 +2089,6 @@ msgid "None"
 msgstr "Ingen"
 
 #: plugins/rdp/rdp_plugin.c:2303
-#, fuzzy
-#| msgid "Autodetect"
 msgid "Auto-detect"
 msgstr "Automatisk registrering"
 
@@ -2336,12 +2219,6 @@ msgstr ""
 "  • id:054c:0268#4669:6e6b,addr:04:0c"
 
 #: plugins/rdp/rdp_plugin.c:2381
-#, fuzzy
-#| msgid ""
-#| "Advanced setting for high latency links:\n"
-#| "Adjust connection timeout, use if you encounter timeout failures with "
-#| "your connection.\n"
-#| "The highest possible value is 600000 ms (10 minutes)\n"
 msgid ""
 "Advanced setting for high latency links:\n"
 "Adjusts the connection timeout. Use if your connection times out.\n"
@@ -2584,8 +2461,6 @@ msgid "Export connection in Windows .rdp file format"
 msgstr "Eksportér forbindelse i Windows .rdp-filformat"
 
 #: plugins/rdp/rdp_settings.c:200
-#, fuzzy
-#| msgid "<Auto detect>"
 msgid "<Auto-detect>"
 msgstr "<automatisk registrering>"
 
@@ -3159,8 +3034,6 @@ msgid "Hyper"
 msgstr "Hyper"
 
 #: data/ui/remmina_preferences.glade:160
-#, fuzzy
-#| msgid "Step size for auto scroll"
 msgid "Step size for auto-scroll"
 msgstr "Trinstørrelse for automatisk rulning"
 
@@ -3203,10 +3076,6 @@ msgstr ""
 "%Y år, %m måned, %d dag, %H time, %M minut, %S sekunder (UTC-tid)\n"
 
 #: data/ui/remmina_preferences.glade:353
-#, fuzzy
-#| msgid ""
-#| "The folder where connection profiles are saved, it defaults to the "
-#| "XDG_USER_DATA"
 msgid ""
 "The folder connection profiles are saved in, it defaults to the XDG_USER_DATA"
 msgstr ""
@@ -3218,8 +3087,6 @@ msgid "Remmina data folder"
 msgstr "Remmina-datamappe"
 
 #: data/ui/remmina_preferences.glade:385
-#, fuzzy
-#| msgid "Remember last view mode for each connection"
 msgid "Remember last view for each connection"
 msgstr "Husk sidste visningstilstand for hver forbindelse"
 
@@ -3277,8 +3144,6 @@ msgid "Hide the toolbar shown in the tabbed interface"
 msgstr "Skjul værktøjslinjen i grænseflade med faneblade"
 
 #: data/ui/remmina_preferences.glade:612
-#, fuzzy
-#| msgid "Default view mode"
 msgid "Default view"
 msgstr "Standard visningstilstand"
 
@@ -3303,8 +3168,6 @@ msgid "By group"
 msgstr "Efter gruppe"
 
 #: data/ui/remmina_preferences.glade:661
-#, fuzzy
-#| msgid "By protocols"
 msgid "By protocol"
 msgstr "Efter protokoller"
 

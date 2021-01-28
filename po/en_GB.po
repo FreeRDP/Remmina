@@ -9,13 +9,14 @@
 # J. Lavoie <j.lavoie@net-c.ca>, 2020.
 # Rob Pearson <rob.dunedin@gmail.com>, 2020.
 # Andi Chandler <andi@gowling.com>, 2020, 2021.
+# Antenore Gatta <antenore@simbiosi.org>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-01-26 23:43+0000\n"
-"PO-Revision-Date: 2021-01-26 23:43+0000\n"
-"Last-Translator: Andi Chandler <andi@gowling.com>\n"
+"PO-Revision-Date: 2021-01-28 10:33+0000\n"
+"Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
 "Language-Team: English (United Kingdom) <https://hosted.weblate.org/projects/"
 "remmina/remmina/en_GB/>\n"
 "Language: en_GB\n"
@@ -178,8 +179,6 @@ msgid "libsodium >= 1.9.0 is required to use master password"
 msgstr "libsodium >= 1.9.0 is required to use master password"
 
 #: src/remmina_pref_dialog.c:744
-#, fuzzy
-#| msgid "Pick a terminal colouring file"
 msgid "Picking a terminal colouring file replaces the file: "
 msgstr "Pick a terminal colouring file"
 
@@ -324,23 +323,10 @@ msgstr "Password to unlock private key"
 
 #: src/remmina_ssh_plugin.c:1364 plugins/xdmcp/xdmcp_plugin.c:370
 #: plugins/rdp/rdp_plugin.c:2439 plugins/nx/nx_plugin.c:734
-#, fuzzy
-#| msgid "Startup program"
 msgid "Start-up program"
 msgstr "Start-up program"
 
 #: src/remmina_ssh_plugin.c:1369
-#, fuzzy
-#| msgid ""
-#| "The filename can use the following placeholders:\n"
-#| "\n"
-#| "  • %h is substituted with the server name\n"
-#| "  • %t is substituted with the SSH server name\n"
-#| "  • %u is substituted with the username\n"
-#| "  • %U is substituted with the SSH username\n"
-#| "  • %p is substituted with Remmina profile name\n"
-#| "  • %g is substituted with Remmina profile group name\n"
-#| "  • %d is substituted with local datetime in iso8601 format\n"
 msgid ""
 "The filename can use the following placeholders:\n"
 "\n"
@@ -454,8 +440,6 @@ msgid "Please enter format 'widthxheight'."
 msgstr "Please enter format 'widthxheight'."
 
 #: src/remmina_public.c:646
-#, fuzzy
-#| msgid "Quality settings"
 msgid "Change security settings"
 msgstr "Quality settings"
 
@@ -793,8 +777,7 @@ msgid "Disconnect"
 msgstr "Disconnect"
 
 #: src/rcw.c:3989
-#, fuzzy, c-format
-#| msgid "The file \"%s\" is corrupted, unreadable, or could not be found."
+#, c-format
 msgid "The file “%s” is corrupted, unreadable, or could not be found."
 msgstr "The file ‘%s’ is corrupted, unreadable, or could not be found."
 
@@ -860,8 +843,7 @@ msgstr[0] "Total %i item."
 msgstr[1] "Total %i items."
 
 #: src/remmina_main.c:842
-#, fuzzy, c-format
-#| msgid "Are you sure you want to delete \"%s\"?"
+#, c-format
 msgid "Are you sure you want to delete “%s”?"
 msgstr "Are you sure you want to delete ‘%s’?"
 
@@ -920,59 +902,50 @@ msgstr "<None>"
 
 #. TRANSLATORS: The placeholder %s is a directory path
 #: src/remmina_sftp_client.c:173
-#, fuzzy, c-format
-#| msgid "Could not create the folder \"%s\"."
+#, c-format
 msgid "Could not create the folder “%s”."
 msgstr "Could not create the folder ‘%s’."
 
 #. TRANSLATORS: The placeholder %s is a file path
 #: src/remmina_sftp_client.c:181 src/remmina_sftp_client.c:202
-#, fuzzy, c-format
-#| msgid "Could not create the file \"%s\"."
+#, c-format
 msgid "Could not create the file “%s”."
 msgstr "Could not create the file ‘%s’."
 
 #. TRANSLATORS: The placeholders %s are a file path, and an error message.
 #: src/remmina_sftp_client.c:220
-#, fuzzy, c-format
-#| msgid "Could not open the file \"%s\" on the server. %s"
+#, c-format
 msgid "Could not open the file “%s” on the server. %s"
 msgstr "Could not open the file ‘%s’ on the server. %s"
 
 #: src/remmina_sftp_client.c:242
-#, fuzzy, c-format
-#| msgid "Could not save the file \"%s\"."
+#, c-format
 msgid "Could not save the file “%s”."
 msgstr "Could not save the file ‘%s’."
 
 #: src/remmina_sftp_client.c:281 src/remmina_sftp_client.c:698
 #: src/remmina_sftp_client.c:761
-#, fuzzy, c-format
-#| msgid "Could not open the folder \"%s\". %s"
+#, c-format
 msgid "Could not open the folder “%s”. %s"
 msgstr "Could not open the folder ‘%s’. %s"
 
 #: src/remmina_sftp_client.c:385
-#, fuzzy, c-format
-#| msgid "Could not create the folder \"%s\" on the server. %s"
+#, c-format
 msgid "Could not create the folder “%s” on the server. %s"
 msgstr "Could not create the folder ‘%s’ on the server. %s"
 
 #: src/remmina_sftp_client.c:413 src/remmina_sftp_client.c:435
-#, fuzzy, c-format
-#| msgid "Could not create the file \"%s\" on the server. %s"
+#, c-format
 msgid "Could not create the file “%s” on the server. %s"
 msgstr "Could not create the file ‘%s’ on the server. %s"
 
 #: src/remmina_sftp_client.c:456
-#, fuzzy, c-format
-#| msgid "Could not open the file \"%s\"."
+#, c-format
 msgid "Could not open the file “%s”."
 msgstr "Could not open the file ‘%s’."
 
 #: src/remmina_sftp_client.c:476
-#, fuzzy, c-format
-#| msgid "Could not write to the file \"%s\" on the server. %s"
+#, c-format
 msgid "Could not write to the file “%s” on the server. %s"
 msgstr "Could not write to the file ‘%s’ on the server. %s"
 
@@ -986,8 +959,7 @@ msgid "Are you sure you want to cancel the file transfer in progress?"
 msgstr "Are you sure you want to cancel the file transfer in progress?"
 
 #: src/remmina_sftp_client.c:857
-#, fuzzy, c-format
-#| msgid "Could not delete \"%s\". %s"
+#, c-format
 msgid "Could not delete “%s”. %s"
 msgstr "Could not delete ‘%s’. %s"
 
@@ -1084,8 +1056,7 @@ msgid "SFTP - Secure File Transfer"
 msgstr "SFTP - Secure File Transfer"
 
 #: src/remmina_ssh.c:236
-#, fuzzy, c-format
-#| msgid "Could not authenticate with SSH password. %s"
+#, c-format
 msgid "Could not authenticate with TOTP/OTP/2FA. %s"
 msgstr "Could not authenticate with SSH password. %s"
 
@@ -1102,8 +1073,6 @@ msgid "Could not authenticate with public SSH key. %s"
 msgstr "Could not authenticate with public SSH key. %s"
 
 #: src/remmina_ssh.c:316
-#, fuzzy
-#| msgid "SSH Key file not yet set."
 msgid "SSH identity file not selected."
 msgstr "SSH Key file not yet set."
 
@@ -1123,14 +1092,12 @@ msgid "Could not authenticate automatically with public SSH key. %s"
 msgstr "Could not authenticate automatically with public SSH key. %s"
 
 #: src/remmina_ssh.c:468
-#, fuzzy, c-format
-#| msgid "Could not authenticate automatically with public SSH key. %s"
+#, c-format
 msgid "Could not authenticate automatically with SSH agent. %s"
 msgstr "Could not authenticate automatically with public SSH key. %s"
 
 #: src/remmina_ssh.c:514 src/remmina_ssh.c:802
-#, fuzzy, c-format
-#| msgid "Could not authenticate with SSH Kerberos/GSSAPI. %s"
+#, c-format
 msgid "Could not authenticate with SSH GSSAPI/Kerberos. %s"
 msgstr "Could not authenticate with SSH Kerberos/GSSAPI. %s"
 
@@ -1139,14 +1106,12 @@ msgid "The public SSH key changed!"
 msgstr "The public SSH key changed!"
 
 #: src/remmina_ssh.c:657
-#, fuzzy, c-format
-#| msgid "Could not authenticate with public SSH key. %s"
+#, c-format
 msgid "Could not authenticate with keyboard-interactive. %s"
 msgstr "Could not authenticate with public SSH key. %s"
 
 #: src/remmina_ssh.c:759
-#, fuzzy, c-format
-#| msgid "Could not authenticate with public SSH key. %s"
+#, c-format
 msgid "Could not authenticate with automatic public SSH key. %s"
 msgstr "Could not authenticate with public SSH key. %s"
 
@@ -1164,8 +1129,7 @@ msgstr "Could not fetch public SSH key. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:882
-#, fuzzy, c-format
-#| msgid "Could not fetch checksum for public SSH key. %s"
+#, c-format
 msgid "Could not fetch checksum of the public SSH key. %s"
 msgstr "Could not fetch checksum for public SSH key. %s"
 
@@ -1178,12 +1142,6 @@ msgid "Do you trust the new public key?"
 msgstr "Do you trust the new public key?"
 
 #: src/remmina_ssh.c:900
-#, fuzzy
-#| msgid ""
-#| "Warning: The server has changed its public key. This means either you are "
-#| "under attack,\n"
-#| "or the administrator has changed the key. The new public key fingerprint "
-#| "is:"
 msgid ""
 "Warning: The server has changed its public key. This means you are either "
 "under attack,\n"
@@ -1358,20 +1316,6 @@ msgstr ""
 "• [server]:port</big></tt>"
 
 #: src/remmina_file_editor.c:67
-#, fuzzy
-#| msgid ""
-#| "<tt><big>• command in PATH args %h\n"
-#| "• /path/to/foo -options %h %u\n"
-#| "• %h is substituted with the server name\n"
-#| "• %t is substituted with the SSH server name\n"
-#| "• %u is substituted with the username\n"
-#| "• %U is substituted with the SSH username\n"
-#| "• %p is substituted with Remmina profile name\n"
-#| "• %g is substituted with Remmina profile group name\n"
-#| "• %d is substituted with local datetime in iso8601 format\n"
-#| "Do not run in background if you want the command to be executed before "
-#| "connecting.\n"
-#| "</big></tt>"
 msgid ""
 "<tt><big>• command in PATH args %h\n"
 "• /path/to/foo -options %h %u\n"
@@ -1473,14 +1417,10 @@ msgid "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
 msgstr "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
 
 #: src/remmina_file_editor.c:887
-#, fuzzy
-#| msgid "Startup"
 msgid "Start-up"
 msgstr "Start-up"
 
 #: src/remmina_file_editor.c:890
-#, fuzzy
-#| msgid "Autostart this profile"
 msgid "Auto-start this profile"
 msgstr "Autostart this profile"
 
@@ -1502,8 +1442,6 @@ msgid "Same server at port %i"
 msgstr "Same server at port %i"
 
 #: src/remmina_file_editor.c:973 plugins/rdp/rdp_plugin.c:2440
-#, fuzzy
-#| msgid "Startup path"
 msgid "Start-up path"
 msgstr "Startup path"
 
@@ -1532,8 +1470,6 @@ msgid "Default settings saved."
 msgstr "Default settings saved."
 
 #: src/remmina_file_editor.c:1426
-#, fuzzy
-#| msgid "New connection profile"
 msgid "Remote Connection Profile"
 msgstr "New connection profile"
 
@@ -1564,8 +1500,7 @@ msgid "Use '%s' as subgroup delimiter"
 msgstr "Use '%s' as subgroup delimiter"
 
 #: src/remmina_file_editor.c:1657 src/remmina_file_editor.c:1675
-#, fuzzy, c-format
-#| msgid "Could not find the file \"%s\"."
+#, c-format
 msgid "Could not find the file “%s”."
 msgstr "Could not find the file ‘%s’."
 
@@ -1783,8 +1718,6 @@ msgid "Turn off clipboard sync"
 msgstr "Turn off clipboard sync"
 
 #: plugins/vnc/vnc_plugin.c:1921
-#, fuzzy
-#| msgid "Use TLS encryption"
 msgid "Turn off encryption"
 msgstr "Use TLS encryption"
 
@@ -1826,8 +1759,7 @@ msgid "Enter SPICE password"
 msgstr "Enter SPICE password"
 
 #: plugins/spice/spice_plugin.c:296
-#, fuzzy, c-format
-#| msgid "Disconnected from the SPICE server \"%s\"."
+#, c-format
 msgid "Disconnected from the SPICE server “%s”."
 msgstr "Disconnected from the SPICE server ‘%s’."
 
@@ -1874,14 +1806,10 @@ msgid "Share folder"
 msgstr "Share folder"
 
 #: plugins/spice/spice_plugin.c:562
-#, fuzzy
-#| msgid "Preference"
 msgid "Prefered video codec"
 msgstr "Preference"
 
 #: plugins/spice/spice_plugin.c:563
-#, fuzzy
-#| msgid "Disable server input"
 msgid "Turn off GStreamer overlay"
 msgstr "Disable server input"
 
@@ -1890,8 +1818,6 @@ msgid "Prefered image compression"
 msgstr "Preferred image compression"
 
 #: plugins/spice/spice_plugin.c:565 plugins/spice/spice_plugin.c:578
-#, fuzzy
-#| msgid "Turn off clipboard sync"
 msgid "No clipboard sync"
 msgstr "Turn off clipboard sync"
 
@@ -1934,10 +1860,7 @@ msgid "Ran out of available local X display numbers."
 msgstr "Run out of available local X display number."
 
 #: plugins/xdmcp/xdmcp_plugin.c:264 plugins/nx/nx_plugin.c:617
-#, fuzzy, c-format
-#| msgid ""
-#| "The protocol \"%s\" is unavailable because GtkSocket only works under X."
-#| "Org."
+#, c-format
 msgid ""
 "The protocol “%s” is unavailable because GtkSocket only works under X.Org."
 msgstr ""
@@ -2000,10 +1923,7 @@ msgid "Enter RDP gateway authentication credentials"
 msgstr "Enter RDP gateway authentication credentials"
 
 #: plugins/rdp/rdp_plugin.c:1848
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not access the RDP server \"%s\".\n"
-#| "Account locked out."
+#, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account locked out."
@@ -2012,10 +1932,7 @@ msgstr ""
 "Account locked out."
 
 #: plugins/rdp/rdp_plugin.c:1855
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not access the RDP server \"%s\".\n"
-#| "Account expired."
+#, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account expired."
@@ -2024,10 +1941,7 @@ msgstr ""
 "Account expired."
 
 #: plugins/rdp/rdp_plugin.c:1862
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not access the RDP server \"%s\".\n"
-#| "Password expired."
+#, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Password expired."
@@ -2036,10 +1950,7 @@ msgstr ""
 "Password expired."
 
 #: plugins/rdp/rdp_plugin.c:1869
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not access the RDP server \"%s\".\n"
-#| "Account disabled."
+#, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account disabled."
@@ -2048,10 +1959,7 @@ msgstr ""
 "Account disabled."
 
 #: plugins/rdp/rdp_plugin.c:1875
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not access the RDP server \"%s\".\n"
-#| "Insufficient user privileges."
+#, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Insufficient user privileges."
@@ -2060,10 +1968,7 @@ msgstr ""
 "Insufficient user privileges."
 
 #: plugins/rdp/rdp_plugin.c:1883
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not access the RDP server \"%s\".\n"
-#| "Account restricted."
+#, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account restricted."
@@ -2072,10 +1977,7 @@ msgstr ""
 "Account restricted."
 
 #: plugins/rdp/rdp_plugin.c:1891
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not access the RDP server \"%s\".\n"
-#| "Change user password before connecting."
+#, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Change user password before connecting."
@@ -2084,22 +1986,17 @@ msgstr ""
 "Change user password before connecting."
 
 #: plugins/rdp/rdp_plugin.c:1896
-#, fuzzy, c-format
-#| msgid "Lost connection to the RDP server \"%s\"."
+#, c-format
 msgid "Lost connection to the RDP server “%s”."
 msgstr "Lost connection to the RDP server ‘%s’."
 
 #: plugins/rdp/rdp_plugin.c:1899
-#, fuzzy, c-format
-#| msgid "Could not find the address for the RDP server \"%s\"."
+#, c-format
 msgid "Could not find the address for the RDP server “%s”."
 msgstr "Could not find the address for the RDP server ‘%s’."
 
 #: plugins/rdp/rdp_plugin.c:1903
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not connect to the RDP server \"%s\" via TLS. Check that client and "
-#| "server support a common TLS version."
+#, c-format
 msgid ""
 "Could not connect to the RDP server “%s” via TLS. Check that client and "
 "server support a common TLS version."
@@ -2109,10 +2006,7 @@ msgstr ""
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:1907
-#, fuzzy, c-format
-#| msgid ""
-#| "Unable to establish a connection to the RDP server. Check \"Security "
-#| "protocol negotiation\" \"%s\"."
+#, c-format
 msgid ""
 "Unable to establish a connection to the RDP server “%s”. Check \"Security "
 "protocol negotiation\"."
@@ -2121,8 +2015,7 @@ msgstr ""
 "negotiation’ ‘%s’."
 
 #: plugins/rdp/rdp_plugin.c:1915
-#, fuzzy, c-format
-#| msgid "Cannot connect to the RDP server \"%s\"."
+#, c-format
 msgid "Cannot connect to the RDP server “%s”."
 msgstr "Cannot connect to the RDP server ‘%s’."
 
@@ -2131,10 +2024,7 @@ msgid "Could not start libfreerdp-gdi."
 msgstr "Could not start libfreerdp-gdi."
 
 #: plugins/rdp/rdp_plugin.c:1921
-#, fuzzy, c-format
-#| msgid ""
-#| "You requested a H.264 GFX mode for the server \"%s\", but your libfreerdp "
-#| "does not support H.264. Please use a non-AVC colour depth setting."
+#, c-format
 msgid ""
 "You requested a H.264 GFX mode for the server “%s”, but your libfreerdp does "
 "not support H.264. Please use a non-AVC colour depth setting."
@@ -2143,16 +2033,12 @@ msgstr ""
 "not support H.264. Please use a non-AVC colour depth setting."
 
 #: plugins/rdp/rdp_plugin.c:1928
-#, fuzzy, c-format
-#| msgid "The \"%s\" server refused the connection."
+#, c-format
 msgid "The “%s” server refused the connection."
 msgstr "The ‘%s’ server refused the connection."
 
 #: plugins/rdp/rdp_plugin.c:1933
-#, fuzzy, c-format
-#| msgid ""
-#| "The Remote Desktop Gateway \"%s\" denied the user \"%s\\%s\" access due "
-#| "to policy."
+#, c-format
 msgid ""
 "The Remote Desktop Gateway “%s” denied the user \"%s\\%s\" access due to "
 "policy."
@@ -2161,8 +2047,7 @@ msgstr ""
 "policy."
 
 #: plugins/rdp/rdp_plugin.c:1943
-#, fuzzy, c-format
-#| msgid "Cannot connect to the \"%s\" RDP server."
+#, c-format
 msgid "Cannot connect to the “%s” RDP server."
 msgstr "Cannot connect to the ‘%s’ RDP server."
 
@@ -2203,8 +2088,6 @@ msgid "None"
 msgstr "None"
 
 #: plugins/rdp/rdp_plugin.c:2303
-#, fuzzy
-#| msgid "<Auto detect>"
 msgid "Auto-detect"
 msgstr "<Auto detect>"
 
@@ -2269,15 +2152,6 @@ msgid "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 and newer)"
 msgstr "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 and newer)"
 
 #: plugins/rdp/rdp_plugin.c:2348
-#, fuzzy
-#| msgid ""
-#| "Used i.a. by terminal services in smart card channel to distinguish "
-#| "client capabilities:\n"
-#| "  • < 4034: Windows XP base smart card functions\n"
-#| "  • 4034-7064: Windows Vista/7: SCardReadCache(),\n"
-#| "    SCardWriteCache(), SCardGetTransmitCount()\n"
-#| "  • >= 7065: Windows 8 and newer: SCardGetReaderIcon(),\n"
-#| "    SCardGetDeviceTypeId()"
 msgid ""
 "Used i.a. by terminal services in a smart card channel to distinguish client "
 "capabilities:\n"
@@ -2296,14 +2170,6 @@ msgstr ""
 "    SCardGetDeviceTypeId()"
 
 #: plugins/rdp/rdp_plugin.c:2356
-#, fuzzy
-#| msgid ""
-#| "Options for redirection of audio input:\n"
-#| "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
-#| "    [channel:<channel>] Audio input (microphone)\n"
-#| "  • format:1\n"
-#| "  • sys:oss,dev:1,format:1\n"
-#| "  • sys:alsa"
 msgid ""
 "Options for redirection of audio input:\n"
 "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
@@ -2321,14 +2187,6 @@ msgstr ""
 "  • sys:alsa"
 
 #: plugins/rdp/rdp_plugin.c:2365
-#, fuzzy
-#| msgid ""
-#| "Options for redirection of audio input:\n"
-#| "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
-#| "    [channel:<channel>] Audio input (microphone)\n"
-#| "  • format:1\n"
-#| "  • sys:oss,dev:1,format:1\n"
-#| "  • sys:alsa"
 msgid ""
 "Options for redirection of audio ouput:\n"
 "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
@@ -2358,12 +2216,6 @@ msgstr ""
 "  • id:054c:0268#4669:6e6b,addr:04:0c"
 
 #: plugins/rdp/rdp_plugin.c:2381
-#, fuzzy
-#| msgid ""
-#| "Advanced setting for high latency links:\n"
-#| "Adjust connection timeout, use if you encounter timeout failures with "
-#| "your connection.\n"
-#| "The highest possible value is 600000 ms (10 minutes)\n"
 msgid ""
 "Advanced setting for high latency links:\n"
 "Adjusts the connection timeout. Use if your connection times out.\n"
@@ -2385,8 +2237,6 @@ msgstr ""
 "If \"Auto-detect\" fails, choose the most appropriate option in the list.\n"
 
 #: plugins/rdp/rdp_plugin.c:2408
-#, fuzzy
-#| msgid "New connection profile"
 msgid "Network connection type"
 msgstr "New connection profile"
 
@@ -2407,8 +2257,6 @@ msgid "FreeRDP log filters"
 msgstr "FreeRDP log filters"
 
 #: plugins/rdp/rdp_plugin.c:2428
-#, fuzzy
-#| msgid "tag:level[,tag:level[,...]]"
 msgid "tag:level[,tag:level[,…]]"
 msgstr "tag:level[,tag:level[,...]]"
 
@@ -2417,8 +2265,6 @@ msgid "Sound"
 msgstr "Sound"
 
 #: plugins/rdp/rdp_plugin.c:2430
-#, fuzzy
-#| msgid "Redirect local microphone"
 msgid "Redirect local audio output"
 msgstr "Redirect local microphone"
 
@@ -2615,8 +2461,6 @@ msgid "Export connection in Windows .rdp file format"
 msgstr "Export connection in Windows .rdp file format"
 
 #: plugins/rdp/rdp_settings.c:200
-#, fuzzy
-#| msgid "<Auto detect>"
 msgid "<Auto-detect>"
 msgstr "<Auto detect>"
 
@@ -2862,13 +2706,6 @@ msgid "About"
 msgstr "About"
 
 #: data/ui/remmina_about.glade:34
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Copyright © 2014–2020 Antenore Gatta, Giovanni Panozzo.\n"
-#| "Copyright © 2009–2014 Vic Lee\n"
-#| "More details in COPYING\n"
-#| "    "
 msgid ""
 "\n"
 "Copyright © 2014–2021 Antenore Gatta, Giovanni Panozzo.\n"
@@ -3197,8 +3034,6 @@ msgid "Hyper"
 msgstr "Hyper"
 
 #: data/ui/remmina_preferences.glade:160
-#, fuzzy
-#| msgid "Step size for auto scroll"
 msgid "Step size for auto-scroll"
 msgstr "Step size for auto scroll"
 
@@ -3241,10 +3076,6 @@ msgstr ""
 "%Y Year, %m Month, %d Day, %H Hour, %M Minute, %S Seconds (UTC time)\n"
 
 #: data/ui/remmina_preferences.glade:353
-#, fuzzy
-#| msgid ""
-#| "The folder where connection profiles are saved, it defaults to the "
-#| "XDG_USER_DATA"
 msgid ""
 "The folder connection profiles are saved in, it defaults to the XDG_USER_DATA"
 msgstr ""
@@ -3257,8 +3088,6 @@ msgid "Remmina data folder"
 msgstr "Remmina data folder"
 
 #: data/ui/remmina_preferences.glade:385
-#, fuzzy
-#| msgid "Remember last view mode for each connection"
 msgid "Remember last view for each connection"
 msgstr "Remember last view mode for each connection"
 
@@ -3316,8 +3145,6 @@ msgid "Hide the toolbar shown in the tabbed interface"
 msgstr "Hide the toolbar shown in the tabbed interface"
 
 #: data/ui/remmina_preferences.glade:612
-#, fuzzy
-#| msgid "Default view mode"
 msgid "Default view"
 msgstr "Default view mode"
 
@@ -3342,8 +3169,6 @@ msgid "By group"
 msgstr "By group"
 
 #: data/ui/remmina_preferences.glade:661
-#, fuzzy
-#| msgid "By protocols"
 msgid "By protocol"
 msgstr "By protocols"
 
@@ -3525,20 +3350,14 @@ msgid "Repeat the password"
 msgstr "Repeat the password"
 
 #: data/ui/remmina_preferences.glade:1653
-#, fuzzy
-#| msgid "Accept changed certificate?"
 msgid "Fingerprints and certificates"
 msgstr "Accept changed certificate?"
 
 #: data/ui/remmina_preferences.glade:1668
-#, fuzzy
-#| msgid "Accept changed certificate?"
 msgid "Automatically accept all fingerprints and certificates"
 msgstr "Accept changed certificate?"
 
 #: data/ui/remmina_preferences.glade:1674
-#, fuzzy
-#| msgid "Accept changed certificate?"
 msgid "Trust all fingerprints and certificates"
 msgstr "Accept changed certificate?"
 
@@ -3700,8 +3519,6 @@ msgid "Search text"
 msgstr "Search text"
 
 #: data/ui/remmina_preferences.glade:2379
-#, fuzzy
-#| msgid "Normal colours"
 msgid "Bold colour"
 msgstr "Normal colours"
 

@@ -5,13 +5,14 @@
 # anonymous <noreply@weblate.org>, 2019.
 # Allan Nordhøy <epost@anotheragency.no>, 2020.
 # Justin Song <mcsong@gmail.com>, 2020.
+# Antenore Gatta <antenore@simbiosi.org>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-01-26 23:43+0000\n"
-"PO-Revision-Date: 2020-09-11 22:29+0000\n"
-"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"PO-Revision-Date: 2021-01-28 10:33+0000\n"
+"Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/remmina/remmina/"
 "ko/>\n"
 "Language: ko\n"
@@ -19,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.3-dev\n"
+"X-Generator: Weblate 4.5-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
 
 #: src/remmina_protocol_widget.c:279
@@ -35,31 +36,27 @@ msgid "Executing external commands…"
 msgstr "외부 명령 실행 중…"
 
 #: src/remmina_protocol_widget.c:320
-#, fuzzy, c-format
-#| msgid "Connecting to \"%s\"…"
+#, c-format
 msgid "Connecting to “%s”…"
 msgstr "'%s'에 연결하는 중…"
 
 #: src/remmina_protocol_widget.c:766 src/remmina_protocol_widget.c:884
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connecting to “%s” via SSH…"
 msgstr "SSH로 '%s'에 연결하는 중…"
 
 #: src/remmina_protocol_widget.c:947
-#, fuzzy, c-format
+#, c-format
 msgid "Awaiting incoming SSH connection on port %i…"
 msgstr "포트 %i에서 SSH 연결 대기 중…"
 
 #: src/remmina_protocol_widget.c:999
-#, fuzzy, c-format
-#| msgid "The \"%s\" command is not available on the SSH server."
+#, c-format
 msgid "The “%s” command is not available on the SSH server."
 msgstr "SSH 서버에서 %s 명령을 사용할 수 없습니다."
 
 #: src/remmina_protocol_widget.c:1003
-#, fuzzy, c-format
-#| msgid "Could not run the \"%s\" command on the SSH server (status = %i)."
+#, c-format
 msgid "Could not run the “%s” command on the SSH server (status = %i)."
 msgstr "SSH 서버에서 \"%s\" 명령을 실행할 수 없습니다 (상태 = %i)."
 
@@ -84,7 +81,6 @@ msgid "Password"
 msgstr "비밀번호"
 
 #: src/remmina_protocol_widget.c:1465
-#, fuzzy
 msgid "Type in SSH username and password."
 msgstr "SSH 사용자 이름과 비밀번호를 입력하세요."
 
@@ -179,8 +175,6 @@ msgid "libsodium >= 1.9.0 is required to use master password"
 msgstr "마스터 비밀번호를 사용하려면 libsodium> = 1.9.0이 필요합니다"
 
 #: src/remmina_pref_dialog.c:744
-#, fuzzy
-#| msgid "Pick a terminal colouring file"
 msgid "Picking a terminal colouring file replaces the file: "
 msgstr "터미널 색 파일 선택"
 
@@ -202,20 +196,14 @@ msgid "Terminal content saved in"
 msgstr "터미널 내용이 저장되었습니다"
 
 #: src/remmina_ssh_plugin.c:805
-#, fuzzy
-#| msgid "Select All (Host + A)"
 msgid "Select All (host+A)"
 msgstr "모두 선택 (Host + A)"
 
 #: src/remmina_ssh_plugin.c:806
-#, fuzzy
-#| msgid "Copy (host + C)"
 msgid "Copy (host+C)"
 msgstr "복사 (host + C)"
 
 #: src/remmina_ssh_plugin.c:807
-#, fuzzy
-#| msgid "Paste (host + V)"
 msgid "Paste (host+V)"
 msgstr "붙여넣기 (host + V)"
 
@@ -232,8 +220,6 @@ msgid "Decrease font size (host+Page Down)"
 msgstr ""
 
 #: src/remmina_ssh_plugin.c:811
-#, fuzzy
-#| msgid "Paste (host + V)"
 msgid "Find text (host+G)"
 msgstr "붙여넣기 (host + V)"
 
@@ -330,23 +316,10 @@ msgstr "개인 키 잠금 해제 비밀번호"
 
 #: src/remmina_ssh_plugin.c:1364 plugins/xdmcp/xdmcp_plugin.c:370
 #: plugins/rdp/rdp_plugin.c:2439 plugins/nx/nx_plugin.c:734
-#, fuzzy
-#| msgid "Startup program"
 msgid "Start-up program"
 msgstr "시작 프로그램"
 
 #: src/remmina_ssh_plugin.c:1369
-#, fuzzy
-#| msgid ""
-#| "The filename can use the following placeholders:\n"
-#| "\n"
-#| "  • %h is substituted with the server name\n"
-#| "  • %t is substituted with the SSH server name\n"
-#| "  • %u is substituted with the username\n"
-#| "  • %U is substituted with the SSH username\n"
-#| "  • %p is substituted with Remmina profile name\n"
-#| "  • %g is substituted with Remmina profile group name\n"
-#| "  • %d is substituted with local datetime in iso8601 format\n"
 msgid ""
 "The filename can use the following placeholders:\n"
 "\n"
@@ -459,8 +432,6 @@ msgid "Please enter format 'widthxheight'."
 msgstr "'가로x세로' 형태로 입력하세요."
 
 #: src/remmina_public.c:646
-#, fuzzy
-#| msgid "Quality settings"
 msgid "Change security settings"
 msgstr "퀄리티 설정"
 
@@ -578,10 +549,6 @@ msgstr "'정보' 보기"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:88
-#, fuzzy
-#| msgid ""
-#| "Connect to desktop described in file (.remmina or type supported by "
-#| "plugin)"
 msgid ""
 "Connect either to a desktop described in a file (.remmina or a filetype "
 "supported by a plugin) or a supported URI (RDP, VNC, SSH or SPICE)"
@@ -593,10 +560,6 @@ msgstr ""
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:90
-#, fuzzy
-#| msgid ""
-#| "Connect to desktop described in file (.remmina or type supported by "
-#| "plugin)"
 msgid ""
 "Connect to a desktop described in a file (.remmina or a type supported by a "
 "plugin)"
@@ -677,8 +640,6 @@ msgid "Set one or more profile settings, to be used with --update-profile"
 msgstr "--update-profile 을 사용해서 사용할 하나 이상의 프로필 설정"
 
 #: src/remmina.c:121
-#, fuzzy
-#| msgid "Enter VNC password"
 msgid "Encrypt a password"
 msgstr "VNC 비밀번호 입력"
 
@@ -772,13 +733,10 @@ msgid "Grab all keyboard events"
 msgstr "모든 키보드 이벤트 기록"
 
 #: src/rcw.c:2276
-#, fuzzy
-#| msgid "_Preferences"
 msgid "Preferences"
 msgstr "_설정"
 
 #: src/rcw.c:2284
-#, fuzzy
 msgid "_Tools"
 msgstr "도구"
 
@@ -804,8 +762,7 @@ msgid "Disconnect"
 msgstr "연결 끊기"
 
 #: src/rcw.c:3989
-#, fuzzy, c-format
-#| msgid "The file \"%s\" is corrupted, unreadable, or could not be found."
+#, c-format
 msgid "The file “%s” is corrupted, unreadable, or could not be found."
 msgstr "\"%s\" 파일이 손상 또는 읽을 수 없거나 찾을 수 없습니다."
 
@@ -870,8 +827,7 @@ msgid_plural "Total %i items."
 msgstr[0] "총 %i개의 항목."
 
 #: src/remmina_main.c:842
-#, fuzzy, c-format
-#| msgid "Are you sure you want to delete \"%s\"?"
+#, c-format
 msgid "Are you sure you want to delete “%s”?"
 msgstr "\"%s\"을(를) 삭제 하시겠습니까?"
 
@@ -930,59 +886,50 @@ msgstr "<없음>"
 
 #. TRANSLATORS: The placeholder %s is a directory path
 #: src/remmina_sftp_client.c:173
-#, fuzzy, c-format
-#| msgid "Could not create the folder \"%s\"."
+#, c-format
 msgid "Could not create the folder “%s”."
 msgstr "\"%s\" 폴더를 만들 수 없습니다."
 
 #. TRANSLATORS: The placeholder %s is a file path
 #: src/remmina_sftp_client.c:181 src/remmina_sftp_client.c:202
-#, fuzzy, c-format
-#| msgid "Could not create the file \"%s\"."
+#, c-format
 msgid "Could not create the file “%s”."
 msgstr "\"%s\" 파일을 만들 수 없습니다."
 
 #. TRANSLATORS: The placeholders %s are a file path, and an error message.
 #: src/remmina_sftp_client.c:220
-#, fuzzy, c-format
-#| msgid "Could not open the file \"%s\" on the server. %s"
+#, c-format
 msgid "Could not open the file “%s” on the server. %s"
 msgstr "서버에서 파일 \"%s\"을(를) 열 수 없습니다. %s"
 
 #: src/remmina_sftp_client.c:242
-#, fuzzy, c-format
-#| msgid "Could not save the file \"%s\"."
+#, c-format
 msgid "Could not save the file “%s”."
 msgstr "파일 \"%s\"을(를) 저장할 수 없습니다."
 
 #: src/remmina_sftp_client.c:281 src/remmina_sftp_client.c:698
 #: src/remmina_sftp_client.c:761
-#, fuzzy, c-format
-#| msgid "Could not open the folder \"%s\". %s"
+#, c-format
 msgid "Could not open the folder “%s”. %s"
 msgstr "\"%s\" 폴더를 열 수 없습니다. %s"
 
 #: src/remmina_sftp_client.c:385
-#, fuzzy, c-format
-#| msgid "Could not create the folder \"%s\" on the server. %s"
+#, c-format
 msgid "Could not create the folder “%s” on the server. %s"
 msgstr "%s 서버에 폴더 만들기 오류. %s"
 
 #: src/remmina_sftp_client.c:413 src/remmina_sftp_client.c:435
-#, fuzzy, c-format
-#| msgid "Could not create the file \"%s\" on the server. %s"
+#, c-format
 msgid "Could not create the file “%s” on the server. %s"
 msgstr "서버에 %s 파일을 만들지 못 했습니다. %s"
 
 #: src/remmina_sftp_client.c:456
-#, fuzzy, c-format
-#| msgid "Could not open the file \"%s\"."
+#, c-format
 msgid "Could not open the file “%s”."
 msgstr "\"%s\" 파일을 열 수 없습니다."
 
 #: src/remmina_sftp_client.c:476
-#, fuzzy, c-format
-#| msgid "Could not write to the file \"%s\" on the server. %s"
+#, c-format
 msgid "Could not write to the file “%s” on the server. %s"
 msgstr "서버의 %s 파일에 쓸 수 없습니다. %s"
 
@@ -996,8 +943,7 @@ msgid "Are you sure you want to cancel the file transfer in progress?"
 msgstr "전송 중인 파일을 취소 하시겠습니까?"
 
 #: src/remmina_sftp_client.c:857
-#, fuzzy, c-format
-#| msgid "Could not delete \"%s\". %s"
+#, c-format
 msgid "Could not delete “%s”. %s"
 msgstr "\"%s\" 를 삭제할 수 없습니다. %s"
 
@@ -1082,14 +1028,10 @@ msgid "Show Hidden Files"
 msgstr "숨긴 파일 보기"
 
 #: src/remmina_sftp_plugin.c:324
-#, fuzzy
-#| msgid "Overwrite all"
 msgid "Overwrite all files"
 msgstr "모두 덮어 쓰기"
 
 #: src/remmina_sftp_plugin.c:326
-#, fuzzy
-#| msgid "File Transfers"
 msgid "Resume all file transfers"
 msgstr "파일 전송"
 
@@ -1098,8 +1040,7 @@ msgid "SFTP - Secure File Transfer"
 msgstr "SFTP - 보안 파일 전송"
 
 #: src/remmina_ssh.c:236
-#, fuzzy, c-format
-#| msgid "Could not authenticate with SSH password. %s"
+#, c-format
 msgid "Could not authenticate with TOTP/OTP/2FA. %s"
 msgstr "SSH 비밀번호로 인증 할 수 없습니다. %s"
 
@@ -1116,8 +1057,6 @@ msgid "Could not authenticate with public SSH key. %s"
 msgstr "공개 SSH 키로 인증 할 수 없습니다. %s"
 
 #: src/remmina_ssh.c:316
-#, fuzzy
-#| msgid "SSH Key file not yet set."
 msgid "SSH identity file not selected."
 msgstr "SSH 키 파일이 아직 없음."
 
@@ -1137,14 +1076,12 @@ msgid "Could not authenticate automatically with public SSH key. %s"
 msgstr "공개 SSH 키로 자동 인증 할 수 없습니다. %s"
 
 #: src/remmina_ssh.c:468
-#, fuzzy, c-format
-#| msgid "Could not authenticate automatically with public SSH key. %s"
+#, c-format
 msgid "Could not authenticate automatically with SSH agent. %s"
 msgstr "공개 SSH 키로 자동 인증 할 수 없습니다. %s"
 
 #: src/remmina_ssh.c:514 src/remmina_ssh.c:802
-#, fuzzy, c-format
-#| msgid "Could not authenticate with SSH Kerberos/GSSAPI. %s"
+#, c-format
 msgid "Could not authenticate with SSH GSSAPI/Kerberos. %s"
 msgstr "SSH 커베로스/GSSAPI로 인증 할 수 없습니다. %s"
 
@@ -1153,14 +1090,12 @@ msgid "The public SSH key changed!"
 msgstr "공개 SSH 키가 변경되었습니다!"
 
 #: src/remmina_ssh.c:657
-#, fuzzy, c-format
-#| msgid "Could not authenticate with public SSH key. %s"
+#, c-format
 msgid "Could not authenticate with keyboard-interactive. %s"
 msgstr "공개 SSH 키로 인증 할 수 없습니다. %s"
 
 #: src/remmina_ssh.c:759
-#, fuzzy, c-format
-#| msgid "Could not authenticate with public SSH key. %s"
+#, c-format
 msgid "Could not authenticate with automatic public SSH key. %s"
 msgstr "공개 SSH 키로 인증 할 수 없습니다. %s"
 
@@ -1178,8 +1113,7 @@ msgstr "SSH 공개 키를 가져올 수 없습니다. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:882
-#, fuzzy, c-format
-#| msgid "Could not fetch checksum for public SSH key. %s"
+#, c-format
 msgid "Could not fetch checksum of the public SSH key. %s"
 msgstr "SSH 공개 키에 대한 체크섬을 가져올 수 없습니다. %s"
 
@@ -1192,12 +1126,6 @@ msgid "Do you trust the new public key?"
 msgstr "새 공중 키를 믿을 수 있습니까?"
 
 #: src/remmina_ssh.c:900
-#, fuzzy
-#| msgid ""
-#| "Warning: The server has changed its public key. This means either you are "
-#| "under attack,\n"
-#| "or the administrator has changed the key. The new public key fingerprint "
-#| "is:"
 msgid ""
 "Warning: The server has changed its public key. This means you are either "
 "under attack,\n"
@@ -1371,20 +1299,6 @@ msgstr ""
 "• [서버]:포트</big></tt>"
 
 #: src/remmina_file_editor.c:67
-#, fuzzy
-#| msgid ""
-#| "<tt><big>• command in PATH args %h\n"
-#| "• /path/to/foo -options %h %u\n"
-#| "• %h is substituted with the server name\n"
-#| "• %t is substituted with the SSH server name\n"
-#| "• %u is substituted with the username\n"
-#| "• %U is substituted with the SSH username\n"
-#| "• %p is substituted with Remmina profile name\n"
-#| "• %g is substituted with Remmina profile group name\n"
-#| "• %d is substituted with local datetime in iso8601 format\n"
-#| "Do not run in background if you want the command to be executed before "
-#| "connecting.\n"
-#| "</big></tt>"
 msgid ""
 "<tt><big>• command in PATH args %h\n"
 "• /path/to/foo -options %h %u\n"
@@ -1465,13 +1379,10 @@ msgid "Behavior"
 msgstr ""
 
 #: src/remmina_file_editor.c:870
-#, fuzzy
-#| msgid "Execute a command"
 msgid "Execute a Command"
 msgstr "명령 실행"
 
 #: src/remmina_file_editor.c:874
-#, fuzzy
 msgid "Before connecting"
 msgstr "연결 시작"
 
@@ -1480,7 +1391,6 @@ msgid "command %h %u %t %U %p %g --option"
 msgstr ""
 
 #: src/remmina_file_editor.c:881
-#, fuzzy
 msgid "After connecting"
 msgstr "연결 시작"
 
@@ -1489,13 +1399,10 @@ msgid "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
 msgstr ""
 
 #: src/remmina_file_editor.c:887
-#, fuzzy
-#| msgid "Start"
 msgid "Start-up"
 msgstr "시작"
 
 #: src/remmina_file_editor.c:890
-#, fuzzy
 msgid "Auto-start this profile"
 msgstr "프로필에 대해 \"자동 시작\" 키기"
 
@@ -1517,8 +1424,6 @@ msgid "Same server at port %i"
 msgstr "포트 %i와 같은 서버"
 
 #: src/remmina_file_editor.c:973 plugins/rdp/rdp_plugin.c:2440
-#, fuzzy
-#| msgid "Startup path"
 msgid "Start-up path"
 msgstr "시작 프로그램 경로"
 
@@ -1547,8 +1452,6 @@ msgid "Default settings saved."
 msgstr "기본 설정으로 저장됨."
 
 #: src/remmina_file_editor.c:1426
-#, fuzzy
-#| msgid "New connection profile"
 msgid "Remote Connection Profile"
 msgstr "새 연결 프로필"
 
@@ -1578,8 +1481,7 @@ msgid "Use '%s' as subgroup delimiter"
 msgstr "'%s' 하위그룹 구분자 사용"
 
 #: src/remmina_file_editor.c:1657 src/remmina_file_editor.c:1675
-#, fuzzy, c-format
-#| msgid "Could not find the file \"%s\"."
+#, c-format
 msgid "Could not find the file “%s”."
 msgstr "\"%s\" 파일을 찾을 수 없습니다."
 
@@ -1653,7 +1555,6 @@ msgid "Turn on Java support"
 msgstr "자바(Java) 지원"
 
 #: plugins/www/www_plugin.c:890
-#, fuzzy
 msgid "Turn on smooth scrolling"
 msgstr "부드러운 스크롤"
 
@@ -1680,7 +1581,6 @@ msgstr "TLS 에러 무시"
 #: plugins/www/www_plugin.c:896 plugins/vnc/vnc_plugin.c:1923
 #: plugins/spice/spice_plugin.c:566 plugins/rdp/rdp_plugin.c:2461
 #: plugins/nx/nx_plugin.c:752
-#, fuzzy
 msgid "Forget passwords after use"
 msgstr "비밀번호 저장 안함"
 
@@ -1693,12 +1593,10 @@ msgid "Remmina web-browser plugin"
 msgstr "레미나 웹 브라우저 플러그인"
 
 #: plugins/secret/src/glibsecret_plugin.c:188
-#, fuzzy
 msgid "Secured password storage in the GNOME keyring"
 msgstr "그놈(GNOME) 키링에 안전한 비밀번호 저장"
 
 #: plugins/tool_hello_world/plugin_config.h:40
-#, fuzzy
 msgid "Hello, World!"
 msgstr "헬로 월드!"
 
@@ -1738,17 +1636,14 @@ msgid "Please retry after turning on encryption for this profile."
 msgstr "프로필의 암호화를 키신 후에 다시 시도하세요."
 
 #: plugins/vnc/vnc_plugin.c:1850 plugins/rdp/rdp_plugin.c:2267
-#, fuzzy
 msgid "True colour (32 bpp)"
 msgstr "실제 색감 (32 bpp)"
 
 #: plugins/vnc/vnc_plugin.c:1851 plugins/rdp/rdp_plugin.c:2269
-#, fuzzy
 msgid "High colour (16 bpp)"
 msgstr "고화질 (16 bpp)"
 
 #: plugins/vnc/vnc_plugin.c:1852 plugins/rdp/rdp_plugin.c:2271
-#, fuzzy
 msgid "256 colours (8 bpp)"
 msgstr "256 색 (8 bpp)"
 
@@ -1778,7 +1673,6 @@ msgstr "리피터"
 
 #: plugins/vnc/vnc_plugin.c:1881 plugins/vnc/vnc_plugin.c:1901
 #: plugins/xdmcp/xdmcp_plugin.c:369 plugins/rdp/rdp_plugin.c:2407
-#, fuzzy
 msgid "Colour depth"
 msgstr "색 심도(Color depth)"
 
@@ -1801,13 +1695,10 @@ msgid "View only"
 msgstr "뷰 전용"
 
 #: plugins/vnc/vnc_plugin.c:1920 plugins/rdp/rdp_plugin.c:2458
-#, fuzzy
 msgid "Turn off clipboard sync"
 msgstr "클립보드 동기화 끄기"
 
 #: plugins/vnc/vnc_plugin.c:1921
-#, fuzzy
-#| msgid "Use TLS encryption"
 msgid "Turn off encryption"
 msgstr "TLS 암호화 사용"
 
@@ -1849,8 +1740,7 @@ msgid "Enter SPICE password"
 msgstr "SPICE 비밀번호를 입력하세요"
 
 #: plugins/spice/spice_plugin.c:296
-#, fuzzy, c-format
-#| msgid "Disconnected from the SPICE server \"%s\"."
+#, c-format
 msgid "Disconnected from the SPICE server “%s”."
 msgstr "SPICE 서버 \"%s\"와 연결이 끊어졌습니다."
 
@@ -1897,14 +1787,10 @@ msgid "Share folder"
 msgstr "공유 폴더"
 
 #: plugins/spice/spice_plugin.c:562
-#, fuzzy
-#| msgid "Preference"
 msgid "Prefered video codec"
 msgstr "설정"
 
 #: plugins/spice/spice_plugin.c:563
-#, fuzzy
-#| msgid "Disable server input"
 msgid "Turn off GStreamer overlay"
 msgstr "서버 입력 비활성화"
 
@@ -1913,7 +1799,6 @@ msgid "Prefered image compression"
 msgstr ""
 
 #: plugins/spice/spice_plugin.c:565 plugins/spice/spice_plugin.c:578
-#, fuzzy
 msgid "No clipboard sync"
 msgstr "클립보드 동기화 끄기"
 
@@ -1922,7 +1807,6 @@ msgid "Enable audio channel"
 msgstr "오디오 채널 활성화"
 
 #: plugins/spice/spice_plugin.c:568
-#, fuzzy
 msgid "Share smart card"
 msgstr "스마트 카드 공유"
 
@@ -1954,19 +1838,14 @@ msgid "The %s file has been transferred"
 msgstr "%s 파일이 전송되었습니다"
 
 #: plugins/xdmcp/xdmcp_plugin.c:97
-#, fuzzy
 msgid "Ran out of available local X display numbers."
 msgstr "사용할 수 있는 로컬 X 디스플레이 수가 부족합니다."
 
 #: plugins/xdmcp/xdmcp_plugin.c:264 plugins/nx/nx_plugin.c:617
-#, fuzzy, c-format
-#| msgid ""
-#| "The protocol \"%s\" is unavailable because GtkSocket only works under X."
-#| "Org."
+#, c-format
 msgid ""
 "The protocol “%s” is unavailable because GtkSocket only works under X.Org."
-msgstr ""
-"GtkSocket은 X.Org에서만 동작하기에 \"%s\" 프로토콜을 사용할 수 없습니다."
+msgstr "GtkSocket은 X.Org에서만 동작하기에 \"%s\" 프로토콜을 사용할 수 없습니다."
 
 #: plugins/xdmcp/xdmcp_plugin.c:349
 msgid "Grayscale"
@@ -2025,10 +1904,7 @@ msgid "Enter RDP gateway authentication credentials"
 msgstr "RDP 게이트웨이 인증 자격을 입력하세요"
 
 #: plugins/rdp/rdp_plugin.c:1848
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not access the RDP server \"%s\".\n"
-#| "Account locked out."
+#, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account locked out."
@@ -2037,10 +1913,7 @@ msgstr ""
 "계정이 잠겼습니다."
 
 #: plugins/rdp/rdp_plugin.c:1855
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not access the RDP server \"%s\".\n"
-#| "Account expired."
+#, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account expired."
@@ -2049,10 +1922,7 @@ msgstr ""
 "계정이 만료되었습니다."
 
 #: plugins/rdp/rdp_plugin.c:1862
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not access the RDP server \"%s\".\n"
-#| "Password expired."
+#, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Password expired."
@@ -2061,10 +1931,7 @@ msgstr ""
 "비밀번호가 만료되었습니다."
 
 #: plugins/rdp/rdp_plugin.c:1869
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not access the RDP server \"%s\".\n"
-#| "Account disabled."
+#, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account disabled."
@@ -2073,10 +1940,7 @@ msgstr ""
 "계정이 비활성화 되었습니다."
 
 #: plugins/rdp/rdp_plugin.c:1875
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not access the RDP server \"%s\".\n"
-#| "Insufficient user privileges."
+#, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Insufficient user privileges."
@@ -2085,10 +1949,7 @@ msgstr ""
 "사용자 권한이 부족합니다."
 
 #: plugins/rdp/rdp_plugin.c:1883
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not access the RDP server \"%s\".\n"
-#| "Account restricted."
+#, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account restricted."
@@ -2097,10 +1958,7 @@ msgstr ""
 "계정이 제한되었습니다."
 
 #: plugins/rdp/rdp_plugin.c:1891
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not access the RDP server \"%s\".\n"
-#| "Change user password before connecting."
+#, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Change user password before connecting."
@@ -2109,40 +1967,32 @@ msgstr ""
 "연결하기 전에 사용자 비밀번호를 변경하세요."
 
 #: plugins/rdp/rdp_plugin.c:1896
-#, fuzzy, c-format
-#| msgid "Lost connection to the RDP server \"%s\"."
+#, c-format
 msgid "Lost connection to the RDP server “%s”."
 msgstr "RDP 서버 \"%s\"에 대한 연결이 끊어졌습니다."
 
 #: plugins/rdp/rdp_plugin.c:1899
-#, fuzzy, c-format
-#| msgid "Could not find the address for the RDP server \"%s\"."
+#, c-format
 msgid "Could not find the address for the RDP server “%s”."
 msgstr "RDP 서버 \"%s\"의 주소를 찾을 수 없습니다."
 
 #: plugins/rdp/rdp_plugin.c:1903
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not connect to the RDP server \"%s\" via TLS. Check that client and "
-#| "server support a common TLS version."
+#, c-format
 msgid ""
 "Could not connect to the RDP server “%s” via TLS. Check that client and "
 "server support a common TLS version."
-msgstr ""
-"TLS로 RDP 서버 \"%s\"에 연결할 수 없습니다. 클라이언트와 서버가 일반 TLS 버전"
-"을 지원하는지 확인하세요."
+msgstr "TLS로 RDP 서버 \"%s\"에 연결할 수 없습니다. 클라이언트와 서버가 일반 TLS 버전을 지원하는지 확인하세요."
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:1907
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Unable to establish a connection to the RDP server “%s”. Check \"Security "
 "protocol negotiation\"."
 msgstr "RDP 서버 \"%s\"에 연결할 수 없습니다."
 
 #: plugins/rdp/rdp_plugin.c:1915
-#, fuzzy, c-format
-#| msgid "Cannot connect to the RDP server \"%s\"."
+#, c-format
 msgid "Cannot connect to the RDP server “%s”."
 msgstr "RDP 서버 %s에 연결할 수 없습니다."
 
@@ -2151,38 +2001,28 @@ msgid "Could not start libfreerdp-gdi."
 msgstr "libfreerdp-gdi를 시작할 수 없습니다."
 
 #: plugins/rdp/rdp_plugin.c:1921
-#, fuzzy, c-format
-#| msgid ""
-#| "You requested a H.264 GFX mode for the server \"%s\", but your libfreerdp "
-#| "does not support H.264. Please use a non-AVC colour depth setting."
+#, c-format
 msgid ""
 "You requested a H.264 GFX mode for the server “%s”, but your libfreerdp does "
 "not support H.264. Please use a non-AVC colour depth setting."
 msgstr ""
-"서버 \"%s\"에 H.264 GFX 모드를 요청했지만 libfreerdp가 H.264를 지원하지 않습"
-"니다. 비 AVC 색 심도 설정을 사용하세요."
+"서버 \"%s\"에 H.264 GFX 모드를 요청했지만 libfreerdp가 H.264를 지원하지 않습니다. 비 AVC 색 심도 설정을 "
+"사용하세요."
 
 #: plugins/rdp/rdp_plugin.c:1928
-#, fuzzy, c-format
-#| msgid "The \"%s\" server refused the connection."
+#, c-format
 msgid "The “%s” server refused the connection."
 msgstr "\"%s\"서버가 연결을 거부했습니다."
 
 #: plugins/rdp/rdp_plugin.c:1933
-#, fuzzy, c-format
-#| msgid ""
-#| "The Remote Desktop Gateway \"%s\" denied the user \"%s\\%s\" access due "
-#| "to policy."
+#, c-format
 msgid ""
 "The Remote Desktop Gateway “%s” denied the user \"%s\\%s\" access due to "
 "policy."
-msgstr ""
-"정책으로 원격 데스크톱 게이트웨이 \"%s\" 이(가) 사용자 \"%s\\%s\" 접속을 거부"
-"했습니다."
+msgstr "정책으로 원격 데스크톱 게이트웨이 \"%s\" 이(가) 사용자 \"%s\\%s\" 접속을 거부했습니다."
 
 #: plugins/rdp/rdp_plugin.c:1943
-#, fuzzy, c-format
-#| msgid "Cannot connect to the \"%s\" RDP server."
+#, c-format
 msgid "Cannot connect to the “%s” RDP server."
 msgstr "RDP 서버 %s에 연결할 수 없습니다."
 
@@ -2203,8 +2043,6 @@ msgid "GFX RFX (32 bpp)"
 msgstr "GFX RFX (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2265
-#, fuzzy
-#| msgid "GFX RFX (32 bpp)"
 msgid "GFX RFX Progressive (32 bpp)"
 msgstr "GFX RFX (32 bpp)"
 
@@ -2213,23 +2051,18 @@ msgid "RemoteFX (32 bpp)"
 msgstr "리모트FX (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2268
-#, fuzzy
 msgid "True colour (24 bpp)"
 msgstr "실제 색감 (24 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2270
-#, fuzzy
 msgid "High colour (15 bpp)"
 msgstr "고화질 (15 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2302 data/ui/remmina_preferences.glade:663
-#, fuzzy
 msgid "None"
 msgstr "<없음>"
 
 #: plugins/rdp/rdp_plugin.c:2303
-#, fuzzy
-#| msgid "<Auto detect>"
 msgid "Auto-detect"
 msgstr "<자동 구성>"
 
@@ -2270,23 +2103,18 @@ msgid "Local - high quality"
 msgstr "로컬 - 높은 퀄리티"
 
 #: plugins/rdp/rdp_plugin.c:2328
-#, fuzzy
-#| msgid "Automatic lock interval"
 msgid "Automatic negotiation"
 msgstr "자동 잠금 간격"
 
 #: plugins/rdp/rdp_plugin.c:2329
-#, fuzzy
 msgid "NLA protocol security"
 msgstr "프로토콜 별 탭"
 
 #: plugins/rdp/rdp_plugin.c:2330
-#, fuzzy
 msgid "TLS protocol security"
 msgstr "프로토콜 별 탭"
 
 #: plugins/rdp/rdp_plugin.c:2331
-#, fuzzy
 msgid "RDP protocol security"
 msgstr "프로토콜 별 탭"
 
@@ -2295,12 +2123,10 @@ msgid "NLA extended protocol security"
 msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:2345
-#, fuzzy
 msgid "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 and newer)"
 msgstr "2600 (윈도 XP),7601 (윈도 비스타/7),9600 (윈도 8 이상)"
 
 #: plugins/rdp/rdp_plugin.c:2348
-#, fuzzy
 msgid ""
 "Used i.a. by terminal services in a smart card channel to distinguish client "
 "capabilities:\n"
@@ -2310,8 +2136,7 @@ msgid ""
 "  • >= 7065: Windows 8 and newer: SCardGetReaderIcon(),\n"
 "    SCardGetDeviceTypeId()"
 msgstr ""
-"클라이언트 별로 구별하기 위해서 스마트카드 채널의 터미널 서비스는 아래와 같"
-"이 사용합니다:\n"
+"클라이언트 별로 구별하기 위해서 스마트카드 채널의 터미널 서비스는 아래와 같이 사용합니다:\n"
 "  • < 4034: 윈도 XP 기본 스마트 카드 기능\n"
 "  • 4034-7064: 윈도 비스타/7: SCardReadCache(), SCardWriteCache(),\n"
 "    SCardGetTransmitCount()\n"
@@ -2362,8 +2187,6 @@ msgid ""
 msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:2408
-#, fuzzy
-#| msgid "New connection profile"
 msgid "Network connection type"
 msgstr "새 연결 프로필"
 
@@ -2376,14 +2199,10 @@ msgid "Gateway transport type"
 msgstr "게이트웨이 전송 유형"
 
 #: plugins/rdp/rdp_plugin.c:2427
-#, fuzzy
-#| msgid "SSH log level"
 msgid "FreeRDP log level"
 msgstr "FreeRDP 로그 레벨"
 
 #: plugins/rdp/rdp_plugin.c:2428
-#, fuzzy
-#| msgid "SSH log level"
 msgid "FreeRDP log filters"
 msgstr "FreeRDP 로그 레벨"
 
@@ -2396,8 +2215,6 @@ msgid "Sound"
 msgstr "소리"
 
 #: plugins/rdp/rdp_plugin.c:2430
-#, fuzzy
-#| msgid "Redirect local microphone"
 msgid "Redirect local audio output"
 msgstr "로컬 마이크 리디렉션"
 
@@ -2406,28 +2223,22 @@ msgid "Redirect local microphone"
 msgstr "로컬 마이크 리디렉션"
 
 #: plugins/rdp/rdp_plugin.c:2432
-#, fuzzy
-#| msgid "Connecting to \"%s\"…"
 msgid "Connection timeout in ms"
 msgstr "'%s'에 연결하는 중…"
 
 #: plugins/rdp/rdp_plugin.c:2433
-#, fuzzy
 msgid "Remote Desktop Gateway server"
 msgstr "원격 데스크톱 게이트웨이 서버"
 
 #: plugins/rdp/rdp_plugin.c:2434
-#, fuzzy
 msgid "Remote Desktop Gateway username"
 msgstr "원격 데스크톱 게이트웨이 사용자 이름"
 
 #: plugins/rdp/rdp_plugin.c:2435
-#, fuzzy
 msgid "Remote Desktop Gateway password"
 msgstr "원격 데스크톱 게이트웨이 비밀번호"
 
 #: plugins/rdp/rdp_plugin.c:2436
-#, fuzzy
 msgid "Remote Desktop Gateway domain"
 msgstr "원격 데스크톱 게이트웨이 도메인"
 
@@ -2436,7 +2247,6 @@ msgid "Client name"
 msgstr "클라이언트 이름"
 
 #: plugins/rdp/rdp_plugin.c:2438
-#, fuzzy
 msgid "Client build"
 msgstr "클라이언트 빌드"
 
@@ -2457,8 +2267,6 @@ msgstr ""
 "논 MF410 시리즈 UFR II\""
 
 #: plugins/rdp/rdp_plugin.c:2443
-#, fuzzy
-#| msgid "Select USB devices for redirection"
 msgid "USB device redirection"
 msgstr "리디렉션 할 USB 기기 선택"
 
@@ -2495,7 +2303,6 @@ msgid "Local parallel device"
 msgstr "로컬 병렬(parallel) 기기"
 
 #: plugins/rdp/rdp_plugin.c:2449
-#, fuzzy
 msgid "Name of smart card"
 msgstr "스마트 카드 공유"
 
@@ -2532,7 +2339,6 @@ msgid "Share parallel ports"
 msgstr "병렬(parallel) 포트 공유"
 
 #: plugins/rdp/rdp_plugin.c:2457
-#, fuzzy
 msgid "Share a smart card"
 msgstr "스마트 카드 공유"
 
@@ -2605,8 +2411,6 @@ msgid "Export connection in Windows .rdp file format"
 msgstr "윈도 .rdp 파일로 연결 내보내기"
 
 #: plugins/rdp/rdp_settings.c:200
-#, fuzzy
-#| msgid "<Auto detect>"
 msgid "<Auto-detect>"
 msgstr "<자동 구성>"
 
@@ -2688,7 +2492,7 @@ msgid "Terminating…"
 msgstr "종료중…"
 
 #: plugins/nx/nx_session_manager.c:143
-#, fuzzy, c-format
+#, c-format
 msgid "NX sessions on %s"
 msgstr "%s NX 세션"
 
@@ -2733,7 +2537,6 @@ msgid "Disable encryption"
 msgstr "암호화 비활성화"
 
 #: plugins/nx/nx_plugin.c:760
-#, fuzzy
 msgid "Send Ctrl+Alt+Del"
 msgstr "Ctrl+Alt+Delete 전송"
 
@@ -2742,7 +2545,6 @@ msgid "NX - NX Technology"
 msgstr "NX - NX 기술"
 
 #: plugins/kwallet/src/kwallet_plugin_main.c:118
-#, fuzzy
 msgid "Secured password storage in KWallet"
 msgstr "KWallet에 안전한 비밀번호 저장"
 
@@ -2806,27 +2608,16 @@ msgid ""
 msgstr ""
 
 #: data/ui/remmina_snap_info_dialog.glade:120
-#, fuzzy
-#| msgid ""
-#| "It seems that Remmina is running on your system as a SNAP package. To "
-#| "enable access to some important features, like password saving in your "
-#| "keyring and RDP printer sharing, please open your software center and "
-#| "give the appropriate permissions to Remmina. As an alternative you can "
-#| "enter the following commands in a terminal window:"
 msgid ""
 "To enable access to some important features, like password saving in your "
 "keyring and RDP printer sharing, please open your software center and give "
 "the appropriate permissions to Remmina. As an alternative you can enter the "
 "following commands in a terminal window:"
 msgstr ""
-"레미나가 SNAP 패키지로 실행중인 것 같습니다. 키링의 암호 저장 및 RDP 프린터 "
-"공유와 같은 일부 중요한 기능을 사용하려면 소프트웨어 센터를 열고 레미나에 적"
-"절한 권한을 부여하세요. 또 다른 방법으로 터미널 창에 다음 명령을 입력 할 수 "
-"있습니다:"
+"레미나가 SNAP 패키지로 실행중인 것 같습니다. 키링의 암호 저장 및 RDP 프린터 공유와 같은 일부 중요한 기능을 사용하려면 "
+"소프트웨어 센터를 열고 레미나에 적절한 권한을 부여하세요. 또 다른 방법으로 터미널 창에 다음 명령을 입력 할 수 있습니다:"
 
 #: data/ui/remmina_snap_info_dialog.glade:167
-#, fuzzy
-#| msgid "Permission"
 msgid "<big>Permissions</big>"
 msgstr "<big>권한</big>"
 
@@ -2842,7 +2633,6 @@ msgid "Change where Remmina profiles are stored"
 msgstr ""
 
 #: data/ui/remmina_snap_info_dialog.glade:261
-#, fuzzy
 msgid "<big>Snap settings</big>"
 msgstr "<big>기여</big>"
 
@@ -2868,12 +2658,10 @@ msgid "Website"
 msgstr "웹사이트"
 
 #: data/ui/remmina_main.glade:35
-#, fuzzy
 msgid "Hide or show the search bar"
 msgstr "검색 바 보기"
 
 #: data/ui/remmina_main.glade:41
-#, fuzzy
 msgid "Add a new connection profile"
 msgstr "새 연결 프로필 생성"
 
@@ -2931,7 +2719,6 @@ msgid "News"
 msgstr "뉴스"
 
 #: data/ui/remmina_main.glade:321
-#, fuzzy
 msgid "Make Remmina your default remote desktop client"
 msgstr "레미나를 기본 원격 데스크톱 클라이언트로 설정"
 
@@ -2949,7 +2736,6 @@ msgstr "위키"
 
 #. Remmina community website
 #: data/ui/remmina_main.glade:378
-#, fuzzy
 msgid "Community"
 msgstr "온라인 커뮤니티"
 
@@ -2962,7 +2748,6 @@ msgid "Last used"
 msgstr "마지막 사용시간"
 
 #: data/ui/remmina_main.glade:554
-#, fuzzy
 msgid "Remote Desktop Client"
 msgstr "렘미나 원격 데스크톱 클라이언트"
 
@@ -2971,7 +2756,6 @@ msgid "New connection profile"
 msgstr "새 연결 프로필"
 
 #: data/ui/remmina_main.glade:580
-#, fuzzy
 msgid "Remmina main menu"
 msgstr "레미나 데이터 폴더"
 
@@ -3024,23 +2808,20 @@ msgstr ""
 
 #. The star (*) is a reference to privacy consent
 #: data/ui/remmina_news.glade:130 data/ui/remmina_preferences.glade:530
-#, fuzzy
 msgid ""
 "Send <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
 "remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
 "\">anonymous</a></b> statistics. (*)"
 msgstr ""
 "전송 <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-"remmina__stats_8c.html#details\" title=\"Remmina usage statistics\">익명</"
-"a></b> remmina.org에 사용량"
+"remmina__stats_8c.html#details\" title=\"Remmina usage statistics\">익명</a></"
+"b> remmina.org에 사용량"
 
 #: data/ui/remmina_news.glade:142 data/ui/remmina_news.glade:195
-#, fuzzy
 msgid "Send anonymous statistics"
 msgstr "remmina.org에 사용량 보내기"
 
 #: data/ui/remmina_news.glade:156
-#, fuzzy
 msgid "Use as default remote desktop client"
 msgstr "레미나를 기본 원격 데스크톱 클라이언트로 설정"
 
@@ -3066,13 +2847,11 @@ msgid ""
 msgstr ""
 
 #: data/ui/remmina_news.glade:231
-#, fuzzy
 msgid "<big>Take part</big>"
 msgstr "<big>기여</big>"
 
 #. Pay attention to thr quoting charachters as they may break the pango layout. If in doubt and cannot test, copy and paste the symbols from the English string.
 #: data/ui/remmina_news.glade:257
-#, fuzzy
 msgid ""
 "<span>\n"
 "<b>You have our gratitude in choosing copylefted libre software, <a href="
@@ -3082,9 +2861,9 @@ msgid ""
 "</span>\n"
 msgstr ""
 "<span>\n"
-"<b>카피 레프트인 리브레(libre) 소프트웨어를 사용하는 것이 좋습니다, <a href="
-"\"https://remmina.org/donations/\" title=\"Awesome Remmina donations\">기부"
-"해 주세요</a>, 기부는 프로그램을 더 좋게 만들고 행복하게 합니다.</b>\n"
+"<b>카피 레프트인 리브레(libre) 소프트웨어를 사용하는 것이 좋습니다, <a href=\"https://remmina.org/"
+"donations/\" title=\"Awesome Remmina donations\">기부해 주세요</a>, 기부는 프로그램을 더 좋게 "
+"만들고 행복하게 합니다.</b>\n"
 "</span>\n"
 
 #: data/ui/remmina_news.glade:277
@@ -3169,8 +2948,6 @@ msgid "Hyper"
 msgstr "하이퍼"
 
 #: data/ui/remmina_preferences.glade:160
-#, fuzzy
-#| msgid "Step size for auto scroll"
 msgid "Step size for auto-scroll"
 msgstr "자동 스크롤 단위 크기"
 
@@ -3183,7 +2960,6 @@ msgid "Screen resolutions"
 msgstr "스크린 해상도"
 
 #: data/ui/remmina_preferences.glade:277
-#, fuzzy
 msgid "Folder for screenshots"
 msgstr "SSH 세션 로그 폴더"
 
@@ -3200,7 +2976,6 @@ msgid "Set up"
 msgstr ""
 
 #: data/ui/remmina_preferences.glade:323
-#, fuzzy
 msgid "Screenshot filenames"
 msgstr "스크린샷 파일 이름"
 
@@ -3215,10 +2990,6 @@ msgstr ""
 "%Y 년, %m 월, %d 일, %H 시, %M 분, %S 초 (UTC 시간)\n"
 
 #: data/ui/remmina_preferences.glade:353
-#, fuzzy
-#| msgid ""
-#| "The folder where connection profiles are saved, it defaults to the "
-#| "XDG_USER_DATA"
 msgid ""
 "The folder connection profiles are saved in, it defaults to the XDG_USER_DATA"
 msgstr "연결 프로필이 저장되는 폴더의 기본 이름은 XDG_USER_DATA 입니다"
@@ -3229,8 +3000,6 @@ msgid "Remmina data folder"
 msgstr "레미나 데이터 폴더"
 
 #: data/ui/remmina_preferences.glade:385
-#, fuzzy
-#| msgid "Remember last view mode for each connection"
 msgid "Remember last view for each connection"
 msgstr "개별 연결에 대한 마지막 뷰 모드 기억"
 
@@ -3288,8 +3057,6 @@ msgid "Hide the toolbar shown in the tabbed interface"
 msgstr "탭 인터페이스에 보이는 툴바 숨기기"
 
 #: data/ui/remmina_preferences.glade:612
-#, fuzzy
-#| msgid "Default view mode"
 msgid "Default view"
 msgstr "기본 뷰 모드"
 
@@ -3310,17 +3077,14 @@ msgid "Tabs"
 msgstr ""
 
 #: data/ui/remmina_preferences.glade:660
-#, fuzzy
 msgid "By group"
 msgstr "그룹 별 탭"
 
 #: data/ui/remmina_preferences.glade:661
-#, fuzzy
 msgid "By protocol"
 msgstr "프로토콜 별 탭"
 
 #: data/ui/remmina_preferences.glade:662
-#, fuzzy
 msgid "Per connection"
 msgstr "연결 시작"
 
@@ -3497,20 +3261,14 @@ msgid "Repeat the password"
 msgstr "비밀번호 입력"
 
 #: data/ui/remmina_preferences.glade:1653
-#, fuzzy
-#| msgid "Accept changed certificate?"
 msgid "Fingerprints and certificates"
 msgstr "변경된 인증서를 허용하시겠습니까?"
 
 #: data/ui/remmina_preferences.glade:1668
-#, fuzzy
-#| msgid "Accept changed certificate?"
 msgid "Automatically accept all fingerprints and certificates"
 msgstr "변경된 인증서를 허용하시겠습니까?"
 
 #: data/ui/remmina_preferences.glade:1674
-#, fuzzy
-#| msgid "Accept changed certificate?"
 msgid "Trust all fingerprints and certificates"
 msgstr "변경된 인증서를 허용하시겠습니까?"
 
@@ -3544,8 +3302,6 @@ msgstr "모든 단축 키 선택"
 #: data/ui/remmina_preferences.glade:2315
 #: data/ui/remmina_preferences.glade:2333
 #: data/ui/remmina_preferences.glade:2364
-#, fuzzy
-#| msgid "(Host key +)"
 msgid "(Host key+)"
 msgstr "(호스트 키 +)"
 
@@ -3564,7 +3320,6 @@ msgid "Allow using bright colours with bold text"
 msgstr ""
 
 #: data/ui/remmina_preferences.glade:1955
-#, fuzzy
 msgid "Colour theme"
 msgstr "색 스키마 읽기"
 
@@ -3674,8 +3429,6 @@ msgid "Search text"
 msgstr ""
 
 #: data/ui/remmina_preferences.glade:2379
-#, fuzzy
-#| msgid "Normal colours"
 msgid "Bold colour"
 msgstr "일반 색"
 

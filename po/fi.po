@@ -6,13 +6,14 @@
 # Jeannette L <j.lavoie@net-c.ca>, 2020.
 # Jiri Grönroos <jiri.gronroos@iki.fi>, 2020.
 # Allan Nordhøy <epost@anotheragency.no>, 2020.
+# Antenore Gatta <antenore@simbiosi.org>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-01-26 23:43+0000\n"
-"PO-Revision-Date: 2020-09-11 22:29+0000\n"
-"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"PO-Revision-Date: 2021-01-28 10:33+0000\n"
+"Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/remmina/remmina/"
 "fi/>\n"
 "Language: fi\n"
@@ -20,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.3-dev\n"
+"X-Generator: Weblate 4.5-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
 
 #: src/remmina_protocol_widget.c:279
@@ -36,14 +37,12 @@ msgid "Executing external commands…"
 msgstr "Suoritetaan ulkoisia komentoja…"
 
 #: src/remmina_protocol_widget.c:320
-#, fuzzy, c-format
-#| msgid "Connecting to \"%s\"…"
+#, c-format
 msgid "Connecting to “%s”…"
 msgstr "Yhdistetään kohteeseen \"%s\"…"
 
 #: src/remmina_protocol_widget.c:766 src/remmina_protocol_widget.c:884
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connecting to “%s” via SSH…"
 msgstr "Yhdistetään kohteeseen ”%s”…"
 
@@ -53,14 +52,12 @@ msgid "Awaiting incoming SSH connection on port %i…"
 msgstr "Odotetaan saapuvaa SSH-yhteyttä portissa %i…"
 
 #: src/remmina_protocol_widget.c:999
-#, fuzzy, c-format
-#| msgid "The \"%s\" command is not available on the SSH server."
+#, c-format
 msgid "The “%s” command is not available on the SSH server."
 msgstr "Komento \"%s\" ei ole käytettävissä SSH-palvelimessa."
 
 #: src/remmina_protocol_widget.c:1003
-#, fuzzy, c-format
-#| msgid "Could not run the \"%s\" command on the SSH server (status = %i)."
+#, c-format
 msgid "Could not run the “%s” command on the SSH server (status = %i)."
 msgstr ""
 "Komennon \"%s\" suorittaminen SSH-palvelimessa ei onnistunut (tila = %i)."
@@ -180,8 +177,6 @@ msgid "libsodium >= 1.9.0 is required to use master password"
 msgstr "libsodium >= 1.9.0 vaaditaan pääsalasanan käyttämiseksi"
 
 #: src/remmina_pref_dialog.c:744
-#, fuzzy
-#| msgid "Pick a terminal colouring file"
 msgid "Picking a terminal colouring file replaces the file: "
 msgstr "Valitse päätteen väritystiedosto"
 
@@ -203,20 +198,14 @@ msgid "Terminal content saved in"
 msgstr "Päätesisältö, joka on tallennettu"
 
 #: src/remmina_ssh_plugin.c:805
-#, fuzzy
-#| msgid "Select All (Host + A)"
 msgid "Select All (host+A)"
 msgstr "Valitse kaikki (Host + A)"
 
 #: src/remmina_ssh_plugin.c:806
-#, fuzzy
-#| msgid "Copy (host + C)"
 msgid "Copy (host+C)"
 msgstr "Kopioi (Host + C)"
 
 #: src/remmina_ssh_plugin.c:807
-#, fuzzy
-#| msgid "Paste (host + V)"
 msgid "Paste (host+V)"
 msgstr "Liitä (Host + V)"
 
@@ -233,8 +222,6 @@ msgid "Decrease font size (host+Page Down)"
 msgstr "Pienennä fontin kokoa (host+Page Down)"
 
 #: src/remmina_ssh_plugin.c:811
-#, fuzzy
-#| msgid "Paste (host + V)"
 msgid "Find text (host+G)"
 msgstr "Liitä (Host + V)"
 
@@ -331,23 +318,10 @@ msgstr "Salasana avataksesi yksityisen avaimen"
 
 #: src/remmina_ssh_plugin.c:1364 plugins/xdmcp/xdmcp_plugin.c:370
 #: plugins/rdp/rdp_plugin.c:2439 plugins/nx/nx_plugin.c:734
-#, fuzzy
-#| msgid "Startup program"
 msgid "Start-up program"
 msgstr "Käynnistettävä ohjelma"
 
 #: src/remmina_ssh_plugin.c:1369
-#, fuzzy
-#| msgid ""
-#| "The filename can use the following placeholders:\n"
-#| "\n"
-#| "  • %h is substituted with the server name\n"
-#| "  • %t is substituted with the SSH server name\n"
-#| "  • %u is substituted with the username\n"
-#| "  • %U is substituted with the SSH username\n"
-#| "  • %p is substituted with Remmina profile name\n"
-#| "  • %g is substituted with Remmina profile group name\n"
-#| "  • %d is substituted with local datetime in iso8601 format\n"
 msgid ""
 "The filename can use the following placeholders:\n"
 "\n"
@@ -461,8 +435,6 @@ msgid "Please enter format 'widthxheight'."
 msgstr "Syötä muodossa 'widthxheight'."
 
 #: src/remmina_public.c:646
-#, fuzzy
-#| msgid "Quality settings"
 msgid "Change security settings"
 msgstr "Laatuasetukset"
 
@@ -584,10 +556,6 @@ msgstr "Näytä 'Tietoja'"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:88
-#, fuzzy
-#| msgid ""
-#| "Connect to desktop described in file (.remmina or type supported by "
-#| "plugin)"
 msgid ""
 "Connect either to a desktop described in a file (.remmina or a filetype "
 "supported by a plugin) or a supported URI (RDP, VNC, SSH or SPICE)"
@@ -601,10 +569,6 @@ msgstr ""
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:90
-#, fuzzy
-#| msgid ""
-#| "Connect to desktop described in file (.remmina or type supported by "
-#| "plugin)"
 msgid ""
 "Connect to a desktop described in a file (.remmina or a type supported by a "
 "plugin)"
@@ -690,8 +654,6 @@ msgstr ""
 "Aseta yksi tai useampi profiiliasetus, jota käytetään --update-profile kanssa"
 
 #: src/remmina.c:121
-#, fuzzy
-#| msgid "Enter VNC password"
 msgid "Encrypt a password"
 msgstr "Anna VNC-salasana"
 
@@ -785,8 +747,6 @@ msgid "Grab all keyboard events"
 msgstr "Kaappaa kaikki näppäimistön tapahtumat"
 
 #: src/rcw.c:2276
-#, fuzzy
-#| msgid "_Preferences"
 msgid "Preferences"
 msgstr "_Asetukset"
 
@@ -816,8 +776,7 @@ msgid "Disconnect"
 msgstr "Katkaise yhteys"
 
 #: src/rcw.c:3989
-#, fuzzy, c-format
-#| msgid "The file \"%s\" is corrupted, unreadable, or could not be found."
+#, c-format
 msgid "The file “%s” is corrupted, unreadable, or could not be found."
 msgstr "Tiedosto \"%s\" on vioittunut, lukukelvoton tai sitä ei löytynyt."
 
@@ -884,8 +843,7 @@ msgstr[0] "Yhteensä %i kohde."
 msgstr[1] "Yhteensä %i kohdetta."
 
 #: src/remmina_main.c:842
-#, fuzzy, c-format
-#| msgid "Are you sure you want to delete \"%s\"?"
+#, c-format
 msgid "Are you sure you want to delete “%s”?"
 msgstr "Haluatko varmasti poistaa \"%s\"?"
 
@@ -944,59 +902,50 @@ msgstr "<Ei mitään>"
 
 #. TRANSLATORS: The placeholder %s is a directory path
 #: src/remmina_sftp_client.c:173
-#, fuzzy, c-format
-#| msgid "Could not create the folder \"%s\"."
+#, c-format
 msgid "Could not create the folder “%s”."
 msgstr "Kansiota \"%s\" ei voitu luoda."
 
 #. TRANSLATORS: The placeholder %s is a file path
 #: src/remmina_sftp_client.c:181 src/remmina_sftp_client.c:202
-#, fuzzy, c-format
-#| msgid "Could not create the file \"%s\"."
+#, c-format
 msgid "Could not create the file “%s”."
 msgstr "Tiedostoa \"%s\" ei voitu luoda."
 
 #. TRANSLATORS: The placeholders %s are a file path, and an error message.
 #: src/remmina_sftp_client.c:220
-#, fuzzy, c-format
-#| msgid "Could not open the file \"%s\" on the server. %s"
+#, c-format
 msgid "Could not open the file “%s” on the server. %s"
 msgstr "Tiedostoa \"%s\" ei voitu avata palvelimella. %s"
 
 #: src/remmina_sftp_client.c:242
-#, fuzzy, c-format
-#| msgid "Could not save the file \"%s\"."
+#, c-format
 msgid "Could not save the file “%s”."
 msgstr "Tiedostoa \"%s\" ei voitu tallentaa."
 
 #: src/remmina_sftp_client.c:281 src/remmina_sftp_client.c:698
 #: src/remmina_sftp_client.c:761
-#, fuzzy, c-format
-#| msgid "Could not open the folder \"%s\". %s"
+#, c-format
 msgid "Could not open the folder “%s”. %s"
 msgstr "Kansiota \"%s\" ei voitu avata. %s"
 
 #: src/remmina_sftp_client.c:385
-#, fuzzy, c-format
-#| msgid "Could not create the folder \"%s\" on the server. %s"
+#, c-format
 msgid "Could not create the folder “%s” on the server. %s"
 msgstr "Kansiota %s ei voitu luoda palvelimelle. %s"
 
 #: src/remmina_sftp_client.c:413 src/remmina_sftp_client.c:435
-#, fuzzy, c-format
-#| msgid "Could not create the file \"%s\" on the server. %s"
+#, c-format
 msgid "Could not create the file “%s” on the server. %s"
 msgstr "Tiedostoa %s ei voitu luoda palvelimelle. %s"
 
 #: src/remmina_sftp_client.c:456
-#, fuzzy, c-format
-#| msgid "Could not open the file \"%s\"."
+#, c-format
 msgid "Could not open the file “%s”."
 msgstr "Tiedostoa \"%s\" ei voi avata."
 
 #: src/remmina_sftp_client.c:476
-#, fuzzy, c-format
-#| msgid "Could not write to the file \"%s\" on the server. %s"
+#, c-format
 msgid "Could not write to the file “%s” on the server. %s"
 msgstr "Palvelimen tiedostoon \"%s\" ei voitu kirjoittaa. %s"
 
@@ -1010,8 +959,7 @@ msgid "Are you sure you want to cancel the file transfer in progress?"
 msgstr "Haluatko varmasti perua käynnissä olevan tiedostonsiirron?"
 
 #: src/remmina_sftp_client.c:857
-#, fuzzy, c-format
-#| msgid "Could not delete \"%s\". %s"
+#, c-format
 msgid "Could not delete “%s”. %s"
 msgstr "Kohteen \"%s\" poistaminen ei onnistunut. %s"
 
@@ -1096,14 +1044,10 @@ msgid "Show Hidden Files"
 msgstr "Näytä piilotiedostot"
 
 #: src/remmina_sftp_plugin.c:324
-#, fuzzy
-#| msgid "Overwrite all"
 msgid "Overwrite all files"
 msgstr "Korvaa kaikki"
 
 #: src/remmina_sftp_plugin.c:326
-#, fuzzy
-#| msgid "File Transfers"
 msgid "Resume all file transfers"
 msgstr "Tiedostosiirrot"
 
@@ -1112,8 +1056,7 @@ msgid "SFTP - Secure File Transfer"
 msgstr "SFTP - Suojattu tiedostonsiirto"
 
 #: src/remmina_ssh.c:236
-#, fuzzy, c-format
-#| msgid "Could not authenticate with SSH password. %s"
+#, c-format
 msgid "Could not authenticate with TOTP/OTP/2FA. %s"
 msgstr "Ei voitu todentaa SSH-salasanaa. %s"
 
@@ -1130,8 +1073,6 @@ msgid "Could not authenticate with public SSH key. %s"
 msgstr "Todennus ei onnistunut julkisen SSH-avaimen avulla. %s"
 
 #: src/remmina_ssh.c:316
-#, fuzzy
-#| msgid "SSH Key file not yet set."
 msgid "SSH identity file not selected."
 msgstr "SSH-avaintiedostoa ei ole asetettu."
 
@@ -1152,32 +1093,27 @@ msgstr ""
 "Automaattista todentamista julkisen SSH-avaimen avulla ei voitu suorittaa. %s"
 
 #: src/remmina_ssh.c:468
-#, fuzzy, c-format
-#| msgid "Could not authenticate automatically with public SSH key. %s"
+#, c-format
 msgid "Could not authenticate automatically with SSH agent. %s"
 msgstr ""
 "Automaattista todentamista julkisen SSH-avaimen avulla ei voitu suorittaa. %s"
 
 #: src/remmina_ssh.c:514 src/remmina_ssh.c:802
-#, fuzzy, c-format
-#| msgid "Could not authenticate with SSH Kerberos/GSSAPI. %s"
+#, c-format
 msgid "Could not authenticate with SSH GSSAPI/Kerberos. %s"
-msgstr ""
-"Todennusta ei voitu todentaa SSH-Kerberos/GSSAPI-todennuksen avulla. %s"
+msgstr "Todennusta ei voitu todentaa SSH-Kerberos/GSSAPI-todennuksen avulla. %s"
 
 #: src/remmina_ssh.c:543
 msgid "The public SSH key changed!"
 msgstr "Julkinen SSH-avain on muutettu!"
 
 #: src/remmina_ssh.c:657
-#, fuzzy, c-format
-#| msgid "Could not authenticate with public SSH key. %s"
+#, c-format
 msgid "Could not authenticate with keyboard-interactive. %s"
 msgstr "Todennus ei onnistunut julkisen SSH-avaimen avulla. %s"
 
 #: src/remmina_ssh.c:759
-#, fuzzy, c-format
-#| msgid "Could not authenticate with public SSH key. %s"
+#, c-format
 msgid "Could not authenticate with automatic public SSH key. %s"
 msgstr "Todennus ei onnistunut julkisen SSH-avaimen avulla. %s"
 
@@ -1195,8 +1131,7 @@ msgstr "Julkisen SSH-avaimen hakeminen ei onnistunut. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:882
-#, fuzzy, c-format
-#| msgid "Could not fetch checksum for public SSH key. %s"
+#, c-format
 msgid "Could not fetch checksum of the public SSH key. %s"
 msgstr "Julkisen SSH-avaimen tarkistussumman hakeminen ei onnistunut. %s"
 
@@ -1209,12 +1144,6 @@ msgid "Do you trust the new public key?"
 msgstr "Luotatko uuteen julkiseen avaimeen?"
 
 #: src/remmina_ssh.c:900
-#, fuzzy
-#| msgid ""
-#| "Warning: The server has changed its public key. This means either you are "
-#| "under attack,\n"
-#| "or the administrator has changed the key. The new public key fingerprint "
-#| "is:"
 msgid ""
 "Warning: The server has changed its public key. This means you are either "
 "under attack,\n"
@@ -1390,20 +1319,6 @@ msgstr ""
 "* [palvelin]:portti</big></tt>"
 
 #: src/remmina_file_editor.c:67
-#, fuzzy
-#| msgid ""
-#| "<tt><big>• command in PATH args %h\n"
-#| "• /path/to/foo -options %h %u\n"
-#| "• %h is substituted with the server name\n"
-#| "• %t is substituted with the SSH server name\n"
-#| "• %u is substituted with the username\n"
-#| "• %U is substituted with the SSH username\n"
-#| "• %p is substituted with Remmina profile name\n"
-#| "• %g is substituted with Remmina profile group name\n"
-#| "• %d is substituted with local datetime in iso8601 format\n"
-#| "Do not run in background if you want the command to be executed before "
-#| "connecting.\n"
-#| "</big></tt>"
 msgid ""
 "<tt><big>• command in PATH args %h\n"
 "• /path/to/foo -options %h %u\n"
@@ -1485,14 +1400,10 @@ msgid "Behavior"
 msgstr ""
 
 #: src/remmina_file_editor.c:870
-#, fuzzy
-#| msgid "Execute a command"
 msgid "Execute a Command"
 msgstr "Suorita komento"
 
 #: src/remmina_file_editor.c:874
-#, fuzzy
-#| msgid "Per connection"
 msgid "Before connecting"
 msgstr "Yhteyttä kohti"
 
@@ -1501,8 +1412,6 @@ msgid "command %h %u %t %U %p %g --option"
 msgstr "komento %h %u %t %U %p %g --optio"
 
 #: src/remmina_file_editor.c:881
-#, fuzzy
-#| msgid "Per connection"
 msgid "After connecting"
 msgstr "Yhteyttä kohti"
 
@@ -1511,14 +1420,10 @@ msgid "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
 msgstr "/polku/kohteeseen/komento -opt1 arg %h %u %t -opt2 %U %p %g"
 
 #: src/remmina_file_editor.c:887
-#, fuzzy
-#| msgid "Start"
 msgid "Start-up"
 msgstr "Käynnistä"
 
 #: src/remmina_file_editor.c:890
-#, fuzzy
-#| msgid "Autostart this profile"
 msgid "Auto-start this profile"
 msgstr "Käynnistä tämä profiili automaattisesti"
 
@@ -1540,8 +1445,6 @@ msgid "Same server at port %i"
 msgstr "Sama palvelin portissa %i"
 
 #: src/remmina_file_editor.c:973 plugins/rdp/rdp_plugin.c:2440
-#, fuzzy
-#| msgid "Startup path"
 msgid "Start-up path"
 msgstr "Käynnistyspolku"
 
@@ -1570,8 +1473,6 @@ msgid "Default settings saved."
 msgstr "Oletusasetukset tallennettu."
 
 #: src/remmina_file_editor.c:1426
-#, fuzzy
-#| msgid "New connection profile"
 msgid "Remote Connection Profile"
 msgstr "Uusi yhteysprofiili"
 
@@ -1602,8 +1503,7 @@ msgid "Use '%s' as subgroup delimiter"
 msgstr "Käytä '%s' alaryhmän erottimena"
 
 #: src/remmina_file_editor.c:1657 src/remmina_file_editor.c:1675
-#, fuzzy, c-format
-#| msgid "Could not find the file \"%s\"."
+#, c-format
 msgid "Could not find the file “%s”."
 msgstr "Tiedostoa \"%s\" ei löytynyt."
 
@@ -1822,8 +1722,6 @@ msgid "Turn off clipboard sync"
 msgstr "Estä leikepöytien synkronointi"
 
 #: plugins/vnc/vnc_plugin.c:1921
-#, fuzzy
-#| msgid "Use TLS encryption"
 msgid "Turn off encryption"
 msgstr "Käytä TLS-salausta"
 
@@ -1865,8 +1763,7 @@ msgid "Enter SPICE password"
 msgstr "Kirjoita SPICE-salasana"
 
 #: plugins/spice/spice_plugin.c:296
-#, fuzzy, c-format
-#| msgid "Disconnected from the SPICE server \"%s\"."
+#, c-format
 msgid "Disconnected from the SPICE server “%s”."
 msgstr "Katkaistu yhteys SPICE-palvelimeen \"%s\"."
 
@@ -1913,14 +1810,10 @@ msgid "Share folder"
 msgstr "Jaa kansio"
 
 #: plugins/spice/spice_plugin.c:562
-#, fuzzy
-#| msgid "Preference"
 msgid "Prefered video codec"
 msgstr "Asetukset"
 
 #: plugins/spice/spice_plugin.c:563
-#, fuzzy
-#| msgid "Disable server input"
 msgid "Turn off GStreamer overlay"
 msgstr "Poista palvelimen syöte käytöstä"
 
@@ -1929,8 +1822,6 @@ msgid "Prefered image compression"
 msgstr ""
 
 #: plugins/spice/spice_plugin.c:565 plugins/spice/spice_plugin.c:578
-#, fuzzy
-#| msgid "Turn off clipboard sync"
 msgid "No clipboard sync"
 msgstr "Estä leikepöytien synkronointi"
 
@@ -1974,10 +1865,7 @@ msgid "Ran out of available local X display numbers."
 msgstr "Käytettävissä olevat paikalliset X-näyttönumerot loppuivat."
 
 #: plugins/xdmcp/xdmcp_plugin.c:264 plugins/nx/nx_plugin.c:617
-#, fuzzy, c-format
-#| msgid ""
-#| "The protocol \"%s\" is unavailable because GtkSocket only works under X."
-#| "Org."
+#, c-format
 msgid ""
 "The protocol “%s” is unavailable because GtkSocket only works under X.Org."
 msgstr ""
@@ -2041,10 +1929,7 @@ msgid "Enter RDP gateway authentication credentials"
 msgstr "Syötä RDP-yhdyskäytävän kirjautumistiedot"
 
 #: plugins/rdp/rdp_plugin.c:1848
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not access the RDP server \"%s\".\n"
-#| "Account locked out."
+#, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account locked out."
@@ -2053,10 +1938,7 @@ msgstr ""
 "Tili on lukittu."
 
 #: plugins/rdp/rdp_plugin.c:1855
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not access the RDP server \"%s\".\n"
-#| "Account expired."
+#, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account expired."
@@ -2065,10 +1947,7 @@ msgstr ""
 "Tili on vanhentunut."
 
 #: plugins/rdp/rdp_plugin.c:1862
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not access the RDP server \"%s\".\n"
-#| "Password expired."
+#, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Password expired."
@@ -2077,10 +1956,7 @@ msgstr ""
 "Salasana on vanhentunut."
 
 #: plugins/rdp/rdp_plugin.c:1869
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not access the RDP server \"%s\".\n"
-#| "Account disabled."
+#, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account disabled."
@@ -2089,10 +1965,7 @@ msgstr ""
 "Tili on poistettu käytöstä."
 
 #: plugins/rdp/rdp_plugin.c:1875
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not access the RDP server \"%s\".\n"
-#| "Insufficient user privileges."
+#, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Insufficient user privileges."
@@ -2101,10 +1974,7 @@ msgstr ""
 "Käyttäjällä ei ole riittävästi oikeuksia."
 
 #: plugins/rdp/rdp_plugin.c:1883
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not access the RDP server \"%s\".\n"
-#| "Account restricted."
+#, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account restricted."
@@ -2113,10 +1983,7 @@ msgstr ""
 "Tilillä on rajoituksia."
 
 #: plugins/rdp/rdp_plugin.c:1891
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not access the RDP server \"%s\".\n"
-#| "Change user password before connecting."
+#, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Change user password before connecting."
@@ -2125,22 +1992,17 @@ msgstr ""
 "Käyttäjän on vaihdettava salasana ennen yhteyden muodostamista."
 
 #: plugins/rdp/rdp_plugin.c:1896
-#, fuzzy, c-format
-#| msgid "Lost connection to the RDP server \"%s\"."
+#, c-format
 msgid "Lost connection to the RDP server “%s”."
 msgstr "Yhteyden muodostaminen RDP-palvelimeen \"%s\" ei onnistunut."
 
 #: plugins/rdp/rdp_plugin.c:1899
-#, fuzzy, c-format
-#| msgid "Could not find the address for the RDP server \"%s\"."
+#, c-format
 msgid "Could not find the address for the RDP server “%s”."
 msgstr "RDP-palvelimen osoitetta \"%s\" ei löytynyt."
 
 #: plugins/rdp/rdp_plugin.c:1903
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not connect to the RDP server \"%s\" via TLS. Check that client and "
-#| "server support a common TLS version."
+#, c-format
 msgid ""
 "Could not connect to the RDP server “%s” via TLS. Check that client and "
 "server support a common TLS version."
@@ -2150,10 +2012,7 @@ msgstr ""
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:1907
-#, fuzzy, c-format
-#| msgid ""
-#| "Unable to establish a connection to the RDP server. Check \"Security "
-#| "protocol negotiation\" \"%s\"."
+#, c-format
 msgid ""
 "Unable to establish a connection to the RDP server “%s”. Check \"Security "
 "protocol negotiation\"."
@@ -2162,8 +2021,7 @@ msgstr ""
 "neuvottelu\" \"%s\"."
 
 #: plugins/rdp/rdp_plugin.c:1915
-#, fuzzy, c-format
-#| msgid "Cannot connect to the RDP server \"%s\"."
+#, c-format
 msgid "Cannot connect to the RDP server “%s”."
 msgstr "Yhteyden muodostaminen RDP-palvelimeen \"%s\" ei onnistunut."
 
@@ -2172,10 +2030,7 @@ msgid "Could not start libfreerdp-gdi."
 msgstr "Ei voitu käynnistää libfreerdp-gdi:tä."
 
 #: plugins/rdp/rdp_plugin.c:1921
-#, fuzzy, c-format
-#| msgid ""
-#| "You requested a H.264 GFX mode for the server \"%s\", but your libfreerdp "
-#| "does not support H.264. Please use a non-AVC colour depth setting."
+#, c-format
 msgid ""
 "You requested a H.264 GFX mode for the server “%s”, but your libfreerdp does "
 "not support H.264. Please use a non-AVC colour depth setting."
@@ -2184,16 +2039,12 @@ msgstr ""
 "libfreerdp ei tue H.264:aa. Käytä muuta kuin AVC-värisyvyysasetusta."
 
 #: plugins/rdp/rdp_plugin.c:1928
-#, fuzzy, c-format
-#| msgid "The \"%s\" server refused the connection."
+#, c-format
 msgid "The “%s” server refused the connection."
 msgstr "Palvelin \"%s\" esti yhteyden."
 
 #: plugins/rdp/rdp_plugin.c:1933
-#, fuzzy, c-format
-#| msgid ""
-#| "The Remote Desktop Gateway \"%s\" denied the user \"%s\\%s\" access due "
-#| "to policy."
+#, c-format
 msgid ""
 "The Remote Desktop Gateway “%s” denied the user \"%s\\%s\" access due to "
 "policy."
@@ -2202,8 +2053,7 @@ msgstr ""
 "toimesta."
 
 #: plugins/rdp/rdp_plugin.c:1943
-#, fuzzy, c-format
-#| msgid "Cannot connect to the \"%s\" RDP server."
+#, c-format
 msgid "Cannot connect to the “%s” RDP server."
 msgstr "Yhteyden muodostaminen RDP-palvelimeen \"%s\" ei onnistu."
 
@@ -2224,8 +2074,6 @@ msgid "GFX RFX (32 bpp)"
 msgstr "GFX RFX (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2265
-#, fuzzy
-#| msgid "GFX RFX (32 bpp)"
 msgid "GFX RFX Progressive (32 bpp)"
 msgstr "GFX RFX (32 bpp)"
 
@@ -2246,8 +2094,6 @@ msgid "None"
 msgstr "Ei mitään"
 
 #: plugins/rdp/rdp_plugin.c:2303
-#, fuzzy
-#| msgid "<Auto detect>"
 msgid "Auto-detect"
 msgstr "<Havaitse automaattisesti>"
 
@@ -2288,8 +2134,6 @@ msgid "Local - high quality"
 msgstr "Paikallinen - korkea laatu"
 
 #: plugins/rdp/rdp_plugin.c:2328
-#, fuzzy
-#| msgid "Automatically negotiate"
 msgid "Automatic negotiation"
 msgstr "Neuvottele automaattisesti"
 
@@ -2314,15 +2158,6 @@ msgid "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 and newer)"
 msgstr "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 ja uudempi)"
 
 #: plugins/rdp/rdp_plugin.c:2348
-#, fuzzy
-#| msgid ""
-#| "Used i.a. by terminal services in smart card channel to distinguish "
-#| "client capabilities:\n"
-#| "  • < 4034: Windows XP base smart card functions\n"
-#| "  • 4034-7064: Windows Vista/7: SCardReadCache(), SCardWriteCache(),\n"
-#| "    SCardGetTransmitCount()\n"
-#| "  • >= 7065: Windows 8 and newer: SCardGetReaderIcon(), "
-#| "SCardGetDeviceTypeId()"
 msgid ""
 "Used i.a. by terminal services in a smart card channel to distinguish client "
 "capabilities:\n"
@@ -2385,8 +2220,6 @@ msgid ""
 msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:2408
-#, fuzzy
-#| msgid "New connection profile"
 msgid "Network connection type"
 msgstr "Uusi yhteysprofiili"
 
@@ -2399,14 +2232,10 @@ msgid "Gateway transport type"
 msgstr "Yhdyskäytävän liikenteen tyyppi"
 
 #: plugins/rdp/rdp_plugin.c:2427
-#, fuzzy
-#| msgid "SSH log level"
 msgid "FreeRDP log level"
 msgstr "FreeRDP-lokitaso"
 
 #: plugins/rdp/rdp_plugin.c:2428
-#, fuzzy
-#| msgid "SSH log level"
 msgid "FreeRDP log filters"
 msgstr "FreeRDP-lokitaso"
 
@@ -2419,8 +2248,6 @@ msgid "Sound"
 msgstr "Ääni"
 
 #: plugins/rdp/rdp_plugin.c:2430
-#, fuzzy
-#| msgid "Redirect local microphone"
 msgid "Redirect local audio output"
 msgstr "Ohjaa paikallinen mikrofoni"
 
@@ -2429,8 +2256,6 @@ msgid "Redirect local microphone"
 msgstr "Ohjaa paikallinen mikrofoni"
 
 #: plugins/rdp/rdp_plugin.c:2432
-#, fuzzy
-#| msgid "Connecting to \"%s\"…"
 msgid "Connection timeout in ms"
 msgstr "Yhdistetään kohteeseen \"%s\"…"
 
@@ -2475,8 +2300,6 @@ msgstr ""
 "\"Canon MF410 Series UFR II\""
 
 #: plugins/rdp/rdp_plugin.c:2443
-#, fuzzy
-#| msgid "Select USB devices for redirection"
 msgid "USB device redirection"
 msgstr "Valitse USB-laitteet uudelleenohjausta varten"
 
@@ -2621,8 +2444,6 @@ msgid "Export connection in Windows .rdp file format"
 msgstr "Vie yhteys Windowsin .rdp-tiedostomuotoon"
 
 #: plugins/rdp/rdp_settings.c:200
-#, fuzzy
-#| msgid "<Auto detect>"
 msgid "<Auto-detect>"
 msgstr "<Havaitse automaattisesti>"
 
@@ -2820,13 +2641,6 @@ msgid ""
 msgstr ""
 
 #: data/ui/remmina_snap_info_dialog.glade:120
-#, fuzzy
-#| msgid ""
-#| "It seems that Remmina is running on your system as a SNAP package. To "
-#| "enable access to some important features, like password saving in your "
-#| "keyring and RDP printer sharing, please open your software center and "
-#| "give the appropriate permissions to Remmina. As an alternative you can "
-#| "enter the following commands in a terminal window:"
 msgid ""
 "To enable access to some important features, like password saving in your "
 "keyring and RDP printer sharing, please open your software center and give "
@@ -2840,8 +2654,6 @@ msgstr ""
 "voit kirjoittaa seuraavat komennot pääteikkunaan:"
 
 #: data/ui/remmina_snap_info_dialog.glade:167
-#, fuzzy
-#| msgid "Permission"
 msgid "<big>Permissions</big>"
 msgstr "<big>Oikeudet</big>"
 
@@ -2857,8 +2669,6 @@ msgid "Change where Remmina profiles are stored"
 msgstr ""
 
 #: data/ui/remmina_snap_info_dialog.glade:261
-#, fuzzy
-#| msgid "<big>Take part</big>"
 msgid "<big>Snap settings</big>"
 msgstr "<big>Osallistu</big>"
 
@@ -2871,13 +2681,6 @@ msgid "About"
 msgstr "Tietoja"
 
 #: data/ui/remmina_about.glade:34
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Copyright © 2014–2020 Antenore Gatta, Giovanni Panozzo.\n"
-#| "Copyright © 2009–2014 Vic Lee\n"
-#| "More details in COPYING\n"
-#| "    "
 msgid ""
 "\n"
 "Copyright © 2014–2021 Antenore Gatta, Giovanni Panozzo.\n"
@@ -3094,14 +2897,6 @@ msgstr "<big>Osallistu</big>"
 
 #. Pay attention to thr quoting charachters as they may break the pango layout. If in doubt and cannot test, copy and paste the symbols from the English string.
 #: data/ui/remmina_news.glade:257
-#, fuzzy
-#| msgid ""
-#| "<span>\n"
-#| "<b>You have our gratitude in choosing copylefted libre software, <a href="
-#| "\"https://remmina.org/donations/\" title=\"Awesome Remmina donations"
-#| "\">donations also make us happy</a>, and further help improve Remmina.</"
-#| "b>\n"
-#| "</span>\n"
 msgid ""
 "<span>\n"
 "<b>You have our gratitude in choosing copylefted libre software, <a href="
@@ -3111,9 +2906,9 @@ msgid ""
 "</span>\n"
 msgstr ""
 "<span>\n"
-"<b> Kiitos, että valitsit vapaan copyleft-ohjelman. <a href=\"https://"
-"remmina.org/donations/\" title=\"Remmina-lahjoituksia\">Lahjoitukset</a> "
-"tekevät meistä iloisia ja auttavat parantamaan ohjelmaa entisestään.</b>\n"
+"<b> Kiitos, että valitsit vapaan copyleft-ohjelman. <a href=\"https://remmina"
+".org/donations/\" title=\"Remmina-lahjoituksia\">Lahjoitukset</a> tekevät "
+"meistä iloisia ja auttavat parantamaan ohjelmaa entisestään.</b>\n"
 "</span>\n"
 
 #: data/ui/remmina_news.glade:277
@@ -3198,8 +2993,6 @@ msgid "Hyper"
 msgstr "Hyper"
 
 #: data/ui/remmina_preferences.glade:160
-#, fuzzy
-#| msgid "Step size for auto scroll"
 msgid "Step size for auto-scroll"
 msgstr "Automaattisen vierityksen askelkoko"
 
@@ -3243,10 +3036,6 @@ msgstr ""
 "aika)\n"
 
 #: data/ui/remmina_preferences.glade:353
-#, fuzzy
-#| msgid ""
-#| "The folder where connection profiles are saved, it defaults to the "
-#| "XDG_USER_DATA"
 msgid ""
 "The folder connection profiles are saved in, it defaults to the XDG_USER_DATA"
 msgstr ""
@@ -3258,8 +3047,6 @@ msgid "Remmina data folder"
 msgstr "Remminan datakansio"
 
 #: data/ui/remmina_preferences.glade:385
-#, fuzzy
-#| msgid "Remember last view mode for each connection"
 msgid "Remember last view for each connection"
 msgstr "Muista kunkin yhteyden viimeinen näkymätila"
 
@@ -3317,8 +3104,6 @@ msgid "Hide the toolbar shown in the tabbed interface"
 msgstr "Piilota työkalurivi välilehtinäkymässä"
 
 #: data/ui/remmina_preferences.glade:612
-#, fuzzy
-#| msgid "Default view mode"
 msgid "Default view"
 msgstr "Oletusarvoinen näkymätila"
 
@@ -3343,8 +3128,6 @@ msgid "By group"
 msgstr "Ryhmien mukaan"
 
 #: data/ui/remmina_preferences.glade:661
-#, fuzzy
-#| msgid "By protocols"
 msgid "By protocol"
 msgstr "Protokollan mukaan"
 
@@ -3530,20 +3313,14 @@ msgid "Repeat the password"
 msgstr "Toista salasana"
 
 #: data/ui/remmina_preferences.glade:1653
-#, fuzzy
-#| msgid "Accept changed certificate?"
 msgid "Fingerprints and certificates"
 msgstr "Hyväksytäänkö muuttunut varmenne?"
 
 #: data/ui/remmina_preferences.glade:1668
-#, fuzzy
-#| msgid "Accept changed certificate?"
 msgid "Automatically accept all fingerprints and certificates"
 msgstr "Hyväksytäänkö muuttunut varmenne?"
 
 #: data/ui/remmina_preferences.glade:1674
-#, fuzzy
-#| msgid "Accept changed certificate?"
 msgid "Trust all fingerprints and certificates"
 msgstr "Hyväksytäänkö muuttunut varmenne?"
 
@@ -3577,8 +3354,6 @@ msgstr "Valitse kaikki -pikanäppäin"
 #: data/ui/remmina_preferences.glade:2315
 #: data/ui/remmina_preferences.glade:2333
 #: data/ui/remmina_preferences.glade:2364
-#, fuzzy
-#| msgid "(Host key +)"
 msgid "(Host key+)"
 msgstr "(Host key +) (esim. oikea CTRL + )"
 
@@ -3706,8 +3481,6 @@ msgid "Search text"
 msgstr ""
 
 #: data/ui/remmina_preferences.glade:2379
-#, fuzzy
-#| msgid "Normal colours"
 msgid "Bold colour"
 msgstr "Normaalit värit"
 

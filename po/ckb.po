@@ -4,13 +4,14 @@
 # Allan Nordhøy <epost@anotheragency.no>, 2020.
 # Jwtiyar Nariman <jwtiyar@gmail.com>, 2020.
 # Kurd As <kurd68587@gmail.com>, 2020, 2021.
+# Antenore Gatta <antenore@simbiosi.org>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: Remmina v1.4.6\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-01-26 23:43+0000\n"
-"PO-Revision-Date: 2021-01-13 16:14+0000\n"
-"Last-Translator: Kurd As <kurd68587@gmail.com>\n"
+"PO-Revision-Date: 2021-01-28 10:34+0000\n"
+"Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
 "Language-Team: Kurdish (Central) <https://hosted.weblate.org/projects/"
 "remmina/remmina/ckb/>\n"
 "Language: ckb\n"
@@ -18,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.4.1-dev\n"
+"X-Generator: Weblate 4.5-dev\n"
 
 #: src/remmina_protocol_widget.c:279
 msgid "Connect via SSH from a new terminal"
@@ -33,14 +34,12 @@ msgid "Executing external commands…"
 msgstr "جێبەجێکردنی فرمانی دەرەکی…"
 
 #: src/remmina_protocol_widget.c:320
-#, fuzzy, c-format
-#| msgid "Connecting to \"%s\"…"
+#, c-format
 msgid "Connecting to “%s”…"
 msgstr "پەیوەندیکردن بە “%s”…"
 
 #: src/remmina_protocol_widget.c:766 src/remmina_protocol_widget.c:884
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connecting to “%s” via SSH…"
 msgstr "پەیوەندی گرتن بە %s لەڕێگەی SSH…"
 
@@ -50,14 +49,12 @@ msgid "Awaiting incoming SSH connection on port %i…"
 msgstr "چاوەڕوانی پەیوەندی SSH هاتوو دەکرێت لەسەر پۆرتی %i…"
 
 #: src/remmina_protocol_widget.c:999
-#, fuzzy, c-format
-#| msgid "The \"%s\" command is not available on the SSH server."
+#, c-format
 msgid "The “%s” command is not available on the SSH server."
 msgstr "فرمانی “%s” بەردەست نیە لەسەر ڕاژەی SSH."
 
 #: src/remmina_protocol_widget.c:1003
-#, fuzzy, c-format
-#| msgid "Could not run the \"%s\" command on the SSH server (status = %i)."
+#, c-format
 msgid "Could not run the “%s” command on the SSH server (status = %i)."
 msgstr "نەتوانرا فەرمانی “%s” جێبەجێبکرێت لەسەر ڕاژەی SSH (دۆخ = %i)."
 
@@ -320,23 +317,10 @@ msgstr "وشەی تێپەڕبوون بنووسە بۆ کردنەوەی کیلی 
 
 #: src/remmina_ssh_plugin.c:1364 plugins/xdmcp/xdmcp_plugin.c:370
 #: plugins/rdp/rdp_plugin.c:2439 plugins/nx/nx_plugin.c:734
-#, fuzzy
-#| msgid "Startup program"
 msgid "Start-up program"
 msgstr "بەرنامەی دەستپێکەری سەرەتا"
 
 #: src/remmina_ssh_plugin.c:1369
-#, fuzzy
-#| msgid ""
-#| "The filename can use the following placeholders:\n"
-#| "\n"
-#| "  • %h is substituted with the server name\n"
-#| "  • %t is substituted with the SSH server name\n"
-#| "  • %u is substituted with the username\n"
-#| "  • %U is substituted with the SSH username\n"
-#| "  • %p is substituted with Remmina profile name\n"
-#| "  • %g is substituted with Remmina profile group name\n"
-#| "  • %d is substituted with local datetime in iso8601 format\n"
 msgid ""
 "The filename can use the following placeholders:\n"
 "\n"
@@ -789,8 +773,7 @@ msgid "Disconnect"
 msgstr "دەرهێڵ بوون"
 
 #: src/rcw.c:3989
-#, fuzzy, c-format
-#| msgid "The file \"%s\" is corrupted, unreadable, or could not be found."
+#, c-format
 msgid "The file “%s” is corrupted, unreadable, or could not be found."
 msgstr "پەڕگەی “%s” تێکشکاوە، ناخوێندرێتەوە، یان نادۆزرێتەوە."
 
@@ -856,8 +839,7 @@ msgstr[0] "کۆس گشتی %i بڕگە."
 msgstr[1] "‫کۆس گشتی %i بڕگە."
 
 #: src/remmina_main.c:842
-#, fuzzy, c-format
-#| msgid "Are you sure you want to delete \"%s\"?"
+#, c-format
 msgid "Are you sure you want to delete “%s”?"
 msgstr "ئایا تۆ دڵنیایت کە دەتەوێت “%s” بسڕیتەوە؟"
 
@@ -916,59 +898,50 @@ msgstr "<نیە>"
 
 #. TRANSLATORS: The placeholder %s is a directory path
 #: src/remmina_sftp_client.c:173
-#, fuzzy, c-format
-#| msgid "Could not create the folder \"%s\"."
+#, c-format
 msgid "Could not create the folder “%s”."
 msgstr "نەتوانرا بوخچە دروستبکرێت “%s”."
 
 #. TRANSLATORS: The placeholder %s is a file path
 #: src/remmina_sftp_client.c:181 src/remmina_sftp_client.c:202
-#, fuzzy, c-format
-#| msgid "Could not create the file \"%s\"."
+#, c-format
 msgid "Could not create the file “%s”."
 msgstr "نەتوانرا پەڕگە دروستبکرێت “%s”."
 
 #. TRANSLATORS: The placeholders %s are a file path, and an error message.
 #: src/remmina_sftp_client.c:220
-#, fuzzy, c-format
-#| msgid "Could not open the file \"%s\" on the server. %s"
+#, c-format
 msgid "Could not open the file “%s” on the server. %s"
 msgstr "نەتوانرا پەڕگەی “%s” بکرێتەوە لەسەر ڕاژە .%s"
 
 #: src/remmina_sftp_client.c:242
-#, fuzzy, c-format
-#| msgid "Could not save the file \"%s\"."
+#, c-format
 msgid "Could not save the file “%s”."
 msgstr "نەتوانرا پەرگە پاشەکەوت بکرێت “%s”."
 
 #: src/remmina_sftp_client.c:281 src/remmina_sftp_client.c:698
 #: src/remmina_sftp_client.c:761
-#, fuzzy, c-format
-#| msgid "Could not open the folder \"%s\". %s"
+#, c-format
 msgid "Could not open the folder “%s”. %s"
 msgstr "نەتوانرا بوخچە بکرێتەوە “%s”. %s"
 
 #: src/remmina_sftp_client.c:385
-#, fuzzy, c-format
-#| msgid "Could not create the folder \"%s\" on the server. %s"
+#, c-format
 msgid "Could not create the folder “%s” on the server. %s"
 msgstr "نەتوانرا بوخچەی “%s” دروستبکرێت لەسەر ڕاژە. %s"
 
 #: src/remmina_sftp_client.c:413 src/remmina_sftp_client.c:435
-#, fuzzy, c-format
-#| msgid "Could not create the file \"%s\" on the server. %s"
+#, c-format
 msgid "Could not create the file “%s” on the server. %s"
 msgstr "نەتوانرا پەڕگەی “%s دروستبکرێت لەسەر ڕاژە .%s"
 
 #: src/remmina_sftp_client.c:456
-#, fuzzy, c-format
-#| msgid "Could not open the file \"%s\"."
+#, c-format
 msgid "Could not open the file “%s”."
 msgstr "نەتوانرا پەڕگەی “%s بکرێتەوە."
 
 #: src/remmina_sftp_client.c:476
-#, fuzzy, c-format
-#| msgid "Could not write to the file \"%s\" on the server. %s"
+#, c-format
 msgid "Could not write to the file “%s” on the server. %s"
 msgstr "نەتوانرا نووسین بکرێت لە پەڕگەی “%s” لەسەر ڕاژە .%s"
 
@@ -982,8 +955,7 @@ msgid "Are you sure you want to cancel the file transfer in progress?"
 msgstr "ئایا تۆ دڵنیایت کە دەتەوێت گواستنەوەی پەڕگە هەڵبوەشێنیتەوە؟"
 
 #: src/remmina_sftp_client.c:857
-#, fuzzy, c-format
-#| msgid "Could not delete \"%s\". %s"
+#, c-format
 msgid "Could not delete “%s”. %s"
 msgstr "نەتوانرا “%s” بسڕێتەوە. %s"
 
@@ -1080,8 +1052,7 @@ msgid "SFTP - Secure File Transfer"
 msgstr "‫SFTP - Secure File Transfer"
 
 #: src/remmina_ssh.c:236
-#, fuzzy, c-format
-#| msgid "Could not authenticate with SSH password. %s"
+#, c-format
 msgid "Could not authenticate with TOTP/OTP/2FA. %s"
 msgstr "نەتوانرا ڕێگە بدرێت بە وشەی تێپەڕی SSH . %s"
 
@@ -1098,8 +1069,6 @@ msgid "Could not authenticate with public SSH key. %s"
 msgstr "نەتوانرا ڕێگە بدرێت خۆکارانە لەگەڵ کلیلی SSH گشتی. %s"
 
 #: src/remmina_ssh.c:316
-#, fuzzy
-#| msgid "SSH Key file not yet set."
 msgid "SSH identity file not selected."
 msgstr "پەڕگەی کلیلی SSH هێستا دانەنراوە."
 
@@ -1119,14 +1088,12 @@ msgid "Could not authenticate automatically with public SSH key. %s"
 msgstr "نەتوانرا ڕێگە بدرێت خۆکارانە لەگەڵ کلیلی SSH گشتی. %s"
 
 #: src/remmina_ssh.c:468
-#, fuzzy, c-format
-#| msgid "Could not authenticate automatically with public SSH key. %s"
+#, c-format
 msgid "Could not authenticate automatically with SSH agent. %s"
 msgstr "نەتوانرا ڕێگە بدرێت خۆکارانە لەگەڵ کلیلی SSH گشتی. %s"
 
 #: src/remmina_ssh.c:514 src/remmina_ssh.c:802
-#, fuzzy, c-format
-#| msgid "Could not authenticate with SSH Kerberos/GSSAPI. %s"
+#, c-format
 msgid "Could not authenticate with SSH GSSAPI/Kerberos. %s"
 msgstr "ناتوانرێت ڕێگەبدرێت بەهۆی SSH Kerberos/GSSAPI. %s"
 
@@ -1135,14 +1102,12 @@ msgid "The public SSH key changed!"
 msgstr "کلیلی گشتی SSH گۆڕا!"
 
 #: src/remmina_ssh.c:657
-#, fuzzy, c-format
-#| msgid "Could not authenticate with public SSH key. %s"
+#, c-format
 msgid "Could not authenticate with keyboard-interactive. %s"
 msgstr "نەتوانرا ڕێگە بدرێت خۆکارانە لەگەڵ کلیلی SSH گشتی. %s"
 
 #: src/remmina_ssh.c:759
-#, fuzzy, c-format
-#| msgid "Could not authenticate with public SSH key. %s"
+#, c-format
 msgid "Could not authenticate with automatic public SSH key. %s"
 msgstr "نەتوانرا ڕێگە بدرێت خۆکارانە لەگەڵ کلیلی SSH گشتی. %s"
 
@@ -1160,8 +1125,7 @@ msgstr "نەتوانرا کلیلی گشتی بەدەستبهێنرێت. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:882
-#, fuzzy, c-format
-#| msgid "Could not fetch checksum for public SSH key. %s"
+#, c-format
 msgid "Could not fetch checksum of the public SSH key. %s"
 msgstr "نەیتوانی چێکسوم بۆ کلیلی گشتی SSH بهاێت. %s"
 
@@ -1174,12 +1138,6 @@ msgid "Do you trust the new public key?"
 msgstr "بڕوات بە کلیلی گشتی نوێ هەیە؟"
 
 #: src/remmina_ssh.c:900
-#, fuzzy
-#| msgid ""
-#| "Warning: The server has changed its public key. This means either you are "
-#| "under attack,\n"
-#| "or the administrator has changed the key. The new public key fingerprint "
-#| "is:"
 msgid ""
 "Warning: The server has changed its public key. This means you are either "
 "under attack,\n"
@@ -1354,20 +1312,6 @@ msgstr ""
 "‏‫• [server]:port</big></tt>"
 
 #: src/remmina_file_editor.c:67
-#, fuzzy
-#| msgid ""
-#| "<tt><big>• command in PATH args %h\n"
-#| "• /path/to/foo -options %h %u\n"
-#| "• %h is substituted with the server name\n"
-#| "• %t is substituted with the SSH server name\n"
-#| "• %u is substituted with the username\n"
-#| "• %U is substituted with the SSH username\n"
-#| "• %p is substituted with Remmina profile name\n"
-#| "• %g is substituted with Remmina profile group name\n"
-#| "• %d is substituted with local datetime in iso8601 format\n"
-#| "Do not run in background if you want the command to be executed before "
-#| "connecting.\n"
-#| "</big></tt>"
 msgid ""
 "<tt><big>• command in PATH args %h\n"
 "• /path/to/foo -options %h %u\n"
@@ -1468,14 +1412,10 @@ msgid "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
 msgstr "ڕێڕەوی/بۆ/فرمانەکە -opt1 arg %h %u %t -opt2 %U %p %g"
 
 #: src/remmina_file_editor.c:887
-#, fuzzy
-#| msgid "Startup"
 msgid "Start-up"
 msgstr "ڕێڕەوی دەستپێکردن"
 
 #: src/remmina_file_editor.c:890
-#, fuzzy
-#| msgid "Autostart this profile"
 msgid "Auto-start this profile"
 msgstr "ئەم پرۆفایلە خۆکار پێبکە"
 
@@ -1497,8 +1437,6 @@ msgid "Same server at port %i"
 msgstr "هەمان ڕاژە لەسەر پۆرت %i"
 
 #: src/remmina_file_editor.c:973 plugins/rdp/rdp_plugin.c:2440
-#, fuzzy
-#| msgid "Startup path"
 msgid "Start-up path"
 msgstr "ڕێڕەوی دەستپێکردن"
 
@@ -1556,8 +1494,7 @@ msgid "Use '%s' as subgroup delimiter"
 msgstr "‫‘%s’ بەکاربێنە بۆ جیاکەرەوەی ژێرگرووپ"
 
 #: src/remmina_file_editor.c:1657 src/remmina_file_editor.c:1675
-#, fuzzy, c-format
-#| msgid "Could not find the file \"%s\"."
+#, c-format
 msgid "Could not find the file “%s”."
 msgstr "پەڕگەی “%s” نەتوانرا بدۆزرێتەوە."
 
@@ -1777,8 +1714,6 @@ msgid "Turn off clipboard sync"
 msgstr "کوژاندنەوەی هاوکاتگەری شوێنی لەبەرگیراوەکان"
 
 #: plugins/vnc/vnc_plugin.c:1921
-#, fuzzy
-#| msgid "Use TLS encryption"
 msgid "Turn off encryption"
 msgstr "نهێنیکردنی TLS بەکاربێنە"
 
@@ -1820,8 +1755,7 @@ msgid "Enter SPICE password"
 msgstr "وشەی تێپەڕبوونی SPICE بنووسە"
 
 #: plugins/spice/spice_plugin.c:296
-#, fuzzy, c-format
-#| msgid "Disconnected from the SPICE server \"%s\"."
+#, c-format
 msgid "Disconnected from the SPICE server “%s”."
 msgstr "دەرهێڵ بوونی لە ڕاژەی SPICE“ %s”."
 
@@ -1868,14 +1802,10 @@ msgid "Share folder"
 msgstr "بڵاوکردنەوەی بوخچە"
 
 #: plugins/spice/spice_plugin.c:562
-#, fuzzy
-#| msgid "Preference"
 msgid "Prefered video codec"
 msgstr "هەڵبژاردەکان"
 
 #: plugins/spice/spice_plugin.c:563
-#, fuzzy
-#| msgid "Disable server input"
 msgid "Turn off GStreamer overlay"
 msgstr "تێخستنی ڕاژە ناچالاک بکە"
 
@@ -1884,8 +1814,6 @@ msgid "Prefered image compression"
 msgstr ""
 
 #: plugins/spice/spice_plugin.c:565 plugins/spice/spice_plugin.c:578
-#, fuzzy
-#| msgid "Turn off clipboard sync"
 msgid "No clipboard sync"
 msgstr "کوژاندنەوەی هاوکاتگەری شوێنی لەبەرگیراوەکان"
 
@@ -1928,10 +1856,7 @@ msgid "Ran out of available local X display numbers."
 msgstr "چیتر پیشاندەری ناوخۆیی X بەردەست نیە."
 
 #: plugins/xdmcp/xdmcp_plugin.c:264 plugins/nx/nx_plugin.c:617
-#, fuzzy, c-format
-#| msgid ""
-#| "The protocol \"%s\" is unavailable because GtkSocket only works under X."
-#| "Org."
+#, c-format
 msgid ""
 "The protocol “%s” is unavailable because GtkSocket only works under X.Org."
 msgstr "پرتۆکۆلی “%s” بەردەست نیە چونکە GtkSocket تەها لەژێر X.Org کاردەکات."
@@ -1993,10 +1918,7 @@ msgid "Enter RDP gateway authentication credentials"
 msgstr "بڕواپێدانەکانی ڕەسەنایەتی سەلماندنی دەروازە (RDP) تێبنووسە"
 
 #: plugins/rdp/rdp_plugin.c:1848
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not access the RDP server \"%s\".\n"
-#| "Account locked out."
+#, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account locked out."
@@ -2005,10 +1927,7 @@ msgstr ""
 "ئەژمێرەکە داخراوە"
 
 #: plugins/rdp/rdp_plugin.c:1855
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not access the RDP server \"%s\".\n"
-#| "Account expired."
+#, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account expired."
@@ -2017,10 +1936,7 @@ msgstr ""
 "‫‬هەژمار بەسەرچووە."
 
 #: plugins/rdp/rdp_plugin.c:1862
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not access the RDP server \"%s\".\n"
-#| "Password expired."
+#, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Password expired."
@@ -2029,10 +1945,7 @@ msgstr ""
 "‫وشەی تێپەڕبەسەرچووە."
 
 #: plugins/rdp/rdp_plugin.c:1869
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not access the RDP server \"%s\".\n"
-#| "Account disabled."
+#, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account disabled."
@@ -2041,10 +1954,7 @@ msgstr ""
 "‫هەژمار ناچالاکە."
 
 #: plugins/rdp/rdp_plugin.c:1875
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not access the RDP server \"%s\".\n"
-#| "Insufficient user privileges."
+#, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Insufficient user privileges."
@@ -2053,10 +1963,7 @@ msgstr ""
 "‫دەسەڵاتی پێویست نیە."
 
 #: plugins/rdp/rdp_plugin.c:1883
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not access the RDP server \"%s\".\n"
-#| "Account restricted."
+#, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account restricted."
@@ -2065,10 +1972,7 @@ msgstr ""
 "‫‫هەژمار ڕێگەپێنەدراوە."
 
 #: plugins/rdp/rdp_plugin.c:1891
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not access the RDP server \"%s\".\n"
-#| "Change user password before connecting."
+#, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Change user password before connecting."
@@ -2077,22 +1981,17 @@ msgstr ""
 "‫وشەی تێپەڕبوونی بەکارهێنەر بگۆڕە پێش پەیوەندی کردن."
 
 #: plugins/rdp/rdp_plugin.c:1896
-#, fuzzy, c-format
-#| msgid "Lost connection to the RDP server \"%s\"."
+#, c-format
 msgid "Lost connection to the RDP server “%s”."
 msgstr "پەیوەندی بچڕا لەگەڵ ڕاژەی RDP “%s”."
 
 #: plugins/rdp/rdp_plugin.c:1899
-#, fuzzy, c-format
-#| msgid "Could not find the address for the RDP server \"%s\"."
+#, c-format
 msgid "Could not find the address for the RDP server “%s”."
 msgstr "نەتوانرا ناونیشانی راژەی RDP بدۆزرێتەوە “%s”."
 
 #: plugins/rdp/rdp_plugin.c:1903
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not connect to the RDP server \"%s\" via TLS. Check that client and "
-#| "server support a common TLS version."
+#, c-format
 msgid ""
 "Could not connect to the RDP server “%s” via TLS. Check that client and "
 "server support a common TLS version."
@@ -2102,10 +2001,7 @@ msgstr ""
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:1907
-#, fuzzy, c-format
-#| msgid ""
-#| "Unable to establish a connection to the RDP server. Check \"Security "
-#| "protocol negotiation\" \"%s\"."
+#, c-format
 msgid ""
 "Unable to establish a connection to the RDP server “%s”. Check \"Security "
 "protocol negotiation\"."
@@ -2114,8 +2010,7 @@ msgstr ""
 "بکە “%s”."
 
 #: plugins/rdp/rdp_plugin.c:1915
-#, fuzzy, c-format
-#| msgid "Cannot connect to the RDP server \"%s\"."
+#, c-format
 msgid "Cannot connect to the RDP server “%s”."
 msgstr "ناتوانرێت پەیوەندی بکرێت بە ڕاژەی RDP “%s\"."
 
@@ -2124,10 +2019,7 @@ msgid "Could not start libfreerdp-gdi."
 msgstr "ناتوانرێت libfreerdp-gdi بکرێتە کار."
 
 #: plugins/rdp/rdp_plugin.c:1921
-#, fuzzy, c-format
-#| msgid ""
-#| "You requested a H.264 GFX mode for the server \"%s\", but your libfreerdp "
-#| "does not support H.264. Please use a non-AVC colour depth setting."
+#, c-format
 msgid ""
 "You requested a H.264 GFX mode for the server “%s”, but your libfreerdp does "
 "not support H.264. Please use a non-AVC colour depth setting."
@@ -2136,16 +2028,12 @@ msgstr ""
 "تکایە ڕێکخستنی تێری ڕەنگی non-AVC بەکاربێنە."
 
 #: plugins/rdp/rdp_plugin.c:1928
-#, fuzzy, c-format
-#| msgid "The \"%s\" server refused the connection."
+#, c-format
 msgid "The “%s” server refused the connection."
 msgstr "ڕاژەی “%s” پەیوەندی ڕەتکردەوە."
 
 #: plugins/rdp/rdp_plugin.c:1933
-#, fuzzy, c-format
-#| msgid ""
-#| "The Remote Desktop Gateway \"%s\" denied the user \"%s\\%s\" access due "
-#| "to policy."
+#, c-format
 msgid ""
 "The Remote Desktop Gateway “%s” denied the user \"%s\\%s\" access due to "
 "policy."
@@ -2154,8 +2042,7 @@ msgstr ""
 "سیاسەتەوە."
 
 #: plugins/rdp/rdp_plugin.c:1943
-#, fuzzy, c-format
-#| msgid "Cannot connect to the \"%s\" RDP server."
+#, c-format
 msgid "Cannot connect to the “%s” RDP server."
 msgstr "ناتوانرێت پەیوەندی بکرێت بە RDP ڕاژەی “%s\"."
 
@@ -2196,8 +2083,6 @@ msgid "None"
 msgstr "هیچ"
 
 #: plugins/rdp/rdp_plugin.c:2303
-#, fuzzy
-#| msgid "Autodetect"
 msgid "Auto-detect"
 msgstr "دۆزینەوەی خۆکار"
 
@@ -2335,11 +2220,6 @@ msgstr ""
 "بەرزترین بەهای گونجاو 600000 ms ( 10 خولەک)ە.\n"
 
 #: plugins/rdp/rdp_plugin.c:2386
-#, fuzzy
-#| msgid ""
-#| "Performance optimisations based on the network connection type:\n"
-#| "Using autodetection is advised.\n"
-#| "If \"Autodetect\" fails, choose the most appropriate option in the list.\n"
 msgid ""
 "Performance optimisations based on the network connection type:\n"
 "Using auto-detection is advised.\n"
@@ -2347,8 +2227,8 @@ msgid ""
 msgstr ""
 "گەشبینی کارایی لەسەر بنەمای جۆری پەیوەندی تۆڕ:\n"
 "بەکارهێنانی دۆزینەوەی خۆکار ئامۆژگاری کراوە.\n"
-"ئەگەر \"دۆزینەوەی خۆکار\" سەرنەکەوت، گونجاوترین بەربژار هەڵبژێرە لە "
-"لیستەکە.\n"
+"ئەگەر \"دۆزینەوەی خۆکار\" سەرنەکەوت، گونجاوترین بەربژار هەڵبژێرە لە لیستەکە."
+"\n"
 
 #: plugins/rdp/rdp_plugin.c:2408
 msgid "Network connection type"
@@ -2575,8 +2455,6 @@ msgid "Export connection in Windows .rdp file format"
 msgstr "هاوردەکردنی پەیوەندی لە پەنجەرەی پەڕگە جۆری .rdp"
 
 #: plugins/rdp/rdp_settings.c:200
-#, fuzzy
-#| msgid "<Auto detect>"
 msgid "<Auto-detect>"
 msgstr "<دۆزینەوەی خۆکار>"
 
@@ -3149,8 +3027,6 @@ msgid "Hyper"
 msgstr "زیادەڕۆیی"
 
 #: data/ui/remmina_preferences.glade:160
-#, fuzzy
-#| msgid "Step size for auto scroll"
 msgid "Step size for auto-scroll"
 msgstr "قەبارەی هەنگاوی جوڵاندنی خۆکار"
 
@@ -3193,10 +3069,6 @@ msgstr ""
 "‏‫%Y ساڵ, %m مانگ, %d ڕۆژ, %H کاژێر, %M خولەک, %S چرکە (کاتی یو تی سی)\n"
 
 #: data/ui/remmina_preferences.glade:353
-#, fuzzy
-#| msgid ""
-#| "The folder where connection profiles are saved, it defaults to the "
-#| "XDG_USER_DATA"
 msgid ""
 "The folder connection profiles are saved in, it defaults to the XDG_USER_DATA"
 msgstr ""
@@ -3209,8 +3081,6 @@ msgid "Remmina data folder"
 msgstr "بوخچەی زانیاری ڕێمینا"
 
 #: data/ui/remmina_preferences.glade:385
-#, fuzzy
-#| msgid "Remember last view mode for each connection"
 msgid "Remember last view for each connection"
 msgstr "دۆخی پیشاندانی کۆتاجار لەبیرمەکە بۆ هەر پەیوەندییەک"
 
@@ -3268,8 +3138,6 @@ msgid "Hide the toolbar shown in the tabbed interface"
 msgstr "توڵامراز بشارەوە کە دەردەکەوێت لە ڕووکارەکە"
 
 #: data/ui/remmina_preferences.glade:612
-#, fuzzy
-#| msgid "Default view mode"
 msgid "Default view"
 msgstr "دۆخی پیشاندانی بنەڕەتی"
 
@@ -3294,8 +3162,6 @@ msgid "By group"
 msgstr "بە پێی گرووپ"
 
 #: data/ui/remmina_preferences.glade:661
-#, fuzzy
-#| msgid "By protocols"
 msgid "By protocol"
 msgstr "بە پرۆتۆکۆڵەوە"
 
@@ -3527,11 +3393,6 @@ msgid "Use default system font"
 msgstr "جۆرەپیتی بنەڕەتی سیستم بەکاربێنە"
 
 #: data/ui/remmina_preferences.glade:1926
-#, fuzzy
-#| msgid ""
-#| "Sets whether the SGR 1 attribute also switches to the bright counterpart "
-#| "of the first 8 palette colors, in addition to making them bold (legacy "
-#| "behavior) or if SGR 1 only enables bold and leaves the color intact."
 msgid ""
 "Selecting “SGR 1” also switches to the bright counterparts of the first 8 "
 "palette colours (in addition to making text bold)."

@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the Remmina package.
 # MJ Ahmadi <mohammad.j.ahmadi@gmail.com>, 2020.
 # Alireza Jabbari <rhrurhraj@gmail.com>, 2020.
+# Antenore Gatta <antenore@simbiosi.org>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: Remmina v1.4.5\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-01-26 23:43+0000\n"
-"PO-Revision-Date: 2020-06-12 17:41+0000\n"
-"Last-Translator: Alireza Jabbari <rhrurhraj@gmail.com>\n"
+"PO-Revision-Date: 2021-01-28 10:34+0000\n"
+"Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/remmina/remmina/"
 "fa/>\n"
 "Language: fa\n"
@@ -17,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.1-dev\n"
+"X-Generator: Weblate 4.5-dev\n"
 
 #: src/remmina_protocol_widget.c:279
 msgid "Connect via SSH from a new terminal"
@@ -32,14 +33,12 @@ msgid "Executing external commands…"
 msgstr "اجرای دستورات خارجی…"
 
 #: src/remmina_protocol_widget.c:320
-#, fuzzy, c-format
-#| msgid "Connecting to \"%s\"…"
+#, c-format
 msgid "Connecting to “%s”…"
 msgstr "در حال اتصال به \"%s\"…"
 
 #: src/remmina_protocol_widget.c:766 src/remmina_protocol_widget.c:884
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connecting to “%s” via SSH…"
 msgstr "وصل شدن به %s با SSH…"
 
@@ -49,14 +48,12 @@ msgid "Awaiting incoming SSH connection on port %i…"
 msgstr "در انتظار اتصال SSH ورودی در پورت \"%i\"…"
 
 #: src/remmina_protocol_widget.c:999
-#, fuzzy, c-format
-#| msgid "The \"%s\" command is not available on the SSH server."
+#, c-format
 msgid "The “%s” command is not available on the SSH server."
 msgstr "دستور \"%s\" در سرور SSH موجود نیست."
 
 #: src/remmina_protocol_widget.c:1003
-#, fuzzy, c-format
-#| msgid "Could not run the \"%s\" command on the SSH server (status = %i)."
+#, c-format
 msgid "Could not run the “%s” command on the SSH server (status = %i)."
 msgstr "دستور \"%s\" روی سرور SSH اجرا نشد (وضعیت =\"%i\")."
 
@@ -196,14 +193,10 @@ msgid "Terminal content saved in"
 msgstr "محتوای ترمینال ذخیره شده در"
 
 #: src/remmina_ssh_plugin.c:805
-#, fuzzy
-#| msgid "Select All (Host + A)"
 msgid "Select All (host+A)"
 msgstr "انتخاب همه (Host + A)"
 
 #: src/remmina_ssh_plugin.c:806
-#, fuzzy
-#| msgid "Copy (host + C)"
 msgid "Copy (host+C)"
 msgstr "کپی (host + C)"
 
@@ -220,14 +213,10 @@ msgid "Increase font size (host+Page Up)"
 msgstr "افزایش اندازه فونت (Host + Page_Up)"
 
 #: src/remmina_ssh_plugin.c:810
-#, fuzzy
-#| msgid "Decrease font size (Host + Page_Down)"
 msgid "Decrease font size (host+Page Down)"
 msgstr "کاهش اندازه فونت (Host + Page_Down)"
 
 #: src/remmina_ssh_plugin.c:811
-#, fuzzy
-#| msgid "Paste (host+V)"
 msgid "Find text (host+G)"
 msgstr "چسباندن (host + V)"
 
@@ -324,8 +313,6 @@ msgstr "رمز عبور برای باز کردن کلید خصوصی"
 
 #: src/remmina_ssh_plugin.c:1364 plugins/xdmcp/xdmcp_plugin.c:370
 #: plugins/rdp/rdp_plugin.c:2439 plugins/nx/nx_plugin.c:734
-#, fuzzy
-#| msgid "Startup program"
 msgid "Start-up program"
 msgstr "برنامه راه اندازی"
 
@@ -642,8 +629,6 @@ msgid "Set one or more profile settings, to be used with --update-profile"
 msgstr ""
 
 #: src/remmina.c:121
-#, fuzzy
-#| msgid "User password"
 msgid "Encrypt a password"
 msgstr "رمزعبور کاربر"
 
@@ -901,8 +886,7 @@ msgstr ""
 
 #. TRANSLATORS: The placeholders %s are a file path, and an error message.
 #: src/remmina_sftp_client.c:220
-#, fuzzy, c-format
-#| msgid "Could not run the \"%s\" command on the SSH server (status = %i)."
+#, c-format
 msgid "Could not open the file “%s” on the server. %s"
 msgstr "دستور \"%s\" روی سرور SSH اجرا نشد (وضعیت =\"%i\")."
 
@@ -1061,8 +1045,6 @@ msgid "Could not authenticate with public SSH key. %s"
 msgstr ""
 
 #: src/remmina_ssh.c:316
-#, fuzzy
-#| msgid "SSH identity file"
 msgid "SSH identity file not selected."
 msgstr "فایل هویت SSH"
 
@@ -1082,14 +1064,12 @@ msgid "Could not authenticate automatically with public SSH key. %s"
 msgstr ""
 
 #: src/remmina_ssh.c:468
-#, fuzzy, c-format
-#| msgid "Could not authenticate, attempting reconnection…"
+#, c-format
 msgid "Could not authenticate automatically with SSH agent. %s"
 msgstr "امکان تأیید اعتبار وجود ندارد ، تلاش برای اتصال مجدد …"
 
 #: src/remmina_ssh.c:514 src/remmina_ssh.c:802
-#, fuzzy, c-format
-#| msgid "Could not authenticate, attempting reconnection…"
+#, c-format
 msgid "Could not authenticate with SSH GSSAPI/Kerberos. %s"
 msgstr "امکان تأیید اعتبار وجود ندارد ، تلاش برای اتصال مجدد …"
 
@@ -1098,14 +1078,12 @@ msgid "The public SSH key changed!"
 msgstr ""
 
 #: src/remmina_ssh.c:657
-#, fuzzy, c-format
-#| msgid "Could not authenticate, attempting reconnection…"
+#, c-format
 msgid "Could not authenticate with keyboard-interactive. %s"
 msgstr "امکان تأیید اعتبار وجود ندارد ، تلاش برای اتصال مجدد …"
 
 #: src/remmina_ssh.c:759
-#, fuzzy, c-format
-#| msgid "Could not authenticate, attempting reconnection…"
+#, c-format
 msgid "Could not authenticate with automatic public SSH key. %s"
 msgstr "امکان تأیید اعتبار وجود ندارد ، تلاش برای اتصال مجدد …"
 
@@ -1366,14 +1344,10 @@ msgid "Behavior"
 msgstr ""
 
 #: src/remmina_file_editor.c:870
-#, fuzzy
-#| msgid "Executing external commands…"
 msgid "Execute a Command"
 msgstr "اجرای دستورات خارجی…"
 
 #: src/remmina_file_editor.c:874
-#, fuzzy
-#| msgid "New Connection"
 msgid "Before connecting"
 msgstr "ارتباط جدید"
 
@@ -1382,8 +1356,6 @@ msgid "command %h %u %t %U %p %g --option"
 msgstr ""
 
 #: src/remmina_file_editor.c:881
-#, fuzzy
-#| msgid "New Connection"
 msgid "After connecting"
 msgstr "ارتباط جدید"
 
@@ -1392,8 +1364,6 @@ msgid "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
 msgstr ""
 
 #: src/remmina_file_editor.c:887
-#, fuzzy
-#| msgid "Startup program"
 msgid "Start-up"
 msgstr "برنامه راه اندازی"
 
@@ -1419,8 +1389,6 @@ msgid "Same server at port %i"
 msgstr ""
 
 #: src/remmina_file_editor.c:973 plugins/rdp/rdp_plugin.c:2440
-#, fuzzy
-#| msgid "Startup program"
 msgid "Start-up path"
 msgstr "برنامه راه اندازی"
 
@@ -1449,8 +1417,6 @@ msgid "Default settings saved."
 msgstr ""
 
 #: src/remmina_file_editor.c:1426
-#, fuzzy
-#| msgid "New Connection"
 msgid "Remote Connection Profile"
 msgstr "ارتباط جدید"
 
@@ -2162,8 +2128,6 @@ msgid ""
 msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:2408
-#, fuzzy
-#| msgid "New Connection"
 msgid "Network connection type"
 msgstr "ارتباط جدید"
 
@@ -2200,8 +2164,6 @@ msgid "Redirect local microphone"
 msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:2432
-#, fuzzy
-#| msgid "Connecting to \"%s\"…"
 msgid "Connection timeout in ms"
 msgstr "در حال اتصال به \"%s\"…"
 
@@ -3213,20 +3175,14 @@ msgid "Repeat the password"
 msgstr ""
 
 #: data/ui/remmina_preferences.glade:1653
-#, fuzzy
-#| msgid "Accept changed certificate?"
 msgid "Fingerprints and certificates"
 msgstr "گواهینامه تغییر یافته را قبول دارید؟"
 
 #: data/ui/remmina_preferences.glade:1668
-#, fuzzy
-#| msgid "Accept changed certificate?"
 msgid "Automatically accept all fingerprints and certificates"
 msgstr "گواهینامه تغییر یافته را قبول دارید؟"
 
 #: data/ui/remmina_preferences.glade:1674
-#, fuzzy
-#| msgid "Accept changed certificate?"
 msgid "Trust all fingerprints and certificates"
 msgstr "گواهینامه تغییر یافته را قبول دارید؟"
 
