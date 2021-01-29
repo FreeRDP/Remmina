@@ -1402,8 +1402,9 @@ GtkWidget *remmina_main_new(void)
 	gtk_window_add_accel_group(remminamain->window, accel_group);
 	gtk_accel_group_connect(accel_group, GDK_KEY_Q, GDK_CONTROL_MASK, 0,
 				g_cclosure_new_swap(G_CALLBACK(remmina_main_on_action_application_quit), NULL, NULL));
-	gtk_accel_group_connect(accel_group, GDK_KEY_P, GDK_CONTROL_MASK, 0,
-				g_cclosure_new_swap(G_CALLBACK(remmina_main_on_action_application_preferences), NULL, NULL));
+	// BUG: See https://gitlab.com/Remmina/Remmina/-/issues/2401
+	// gtk_accel_group_connect(accel_group, GDK_KEY_P, GDK_CONTROL_MASK, 0,
+				//g_cclosure_new_swap(G_CALLBACK(remmina_main_on_action_application_preferences), NULL, NULL));
 	gtk_accel_group_connect(accel_group, GDK_KEY_F, GDK_CONTROL_MASK, 0,
 				g_cclosure_new_swap(G_CALLBACK(remmina_main_on_action_search_toggle), NULL, NULL));
 
