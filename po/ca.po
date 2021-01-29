@@ -15,9 +15,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-28 19:45+0000\n"
-"PO-Revision-Date: 2021-01-28 10:33+0000\n"
-"Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
+"POT-Creation-Date: 2021-01-29 15:16+0000\n"
+"PO-Revision-Date: 2021-01-29 15:16+0000\n"
+"Last-Translator: Ecron <ecron_89@hotmail.com>\n"
 "Language-Team: Catalan <https://hosted.weblate.org/projects/remmina/remmina/"
 "ca/>\n"
 "Language: ca\n"
@@ -672,7 +672,7 @@ msgstr "Xifra una contrasenya"
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:375
 msgid "- or protocol://username:encryptedpassword@host:port"
-msgstr ""
+msgstr "- o protocol://nomusuari:contrasenyaxifratge@servidor:port"
 
 #: src/remmina.c:378
 msgid ""
@@ -708,6 +708,38 @@ msgid ""
 "remmina --set-option username --set-option resolution_mode=2 --set-option "
 "password\n"
 msgstr ""
+"Exemples:\n"
+"Per a connectar utilitzant un perfil de connexió existent, utilitzeu:\n"
+"\n"
+"\tremmina -c FILE.remmina\n"
+"\n"
+"Per a una connexió ràpida utilitzant una URI:\n"
+"\n"
+"\tremmina -c rdp://username@server\n"
+"\tremmina -c rdp://domain\\\\username@server\n"
+"\tremmina -c vnc://username@server\n"
+"\tremmina -c vnc://server?VncUsername=username\n"
+"\tremmina -c ssh://user@server\n"
+"\tremmina -c spice://server\n"
+"\n"
+"Per a una connexió ràpida utilitzant una URI i a més una contrasenya "
+"xifrada:\n"
+"\n"
+"\tremmina -c rdp://username:encrypted-password@server\n"
+"\tremmina -c vnc://username:encrypted-password@server\n"
+"\tremmina -c vnc://server?VncUsername=username\\&VncPassword=encrypted-"
+"password\n"
+"\n"
+"Per a xifrar una contrasenya per a utilitzar-la am una URI:\n"
+"\n"
+"\tremmina --encrypt-password\n"
+"\n"
+"Per a actualitzar el nom d'usuari i la contrasenya i establir un mode de "
+"resolució diferent d'un perfil de connexió del Remmina, utilitzeu:\n"
+"\n"
+"\techo \"username\\napassword\" | remmina --update-profile /PATH/TO/FOO."
+"remmina --set-option username --set-option resolution_mode=2 --set-option "
+"password\n"
 
 #: src/remmina_icon.c:139
 msgid "Open Main Window"
@@ -740,7 +772,7 @@ msgstr "Miniaplicació del Remmina"
 msgid "Connect to remote desktops through the applet menu"
 msgstr "Connecta amb escriptoris remots mitjançant el menú de la miniaplicació"
 
-#: src/remmina_icon.c:474 src/remmina_icon.c:475 src/remmina_main.c:1280
+#: src/remmina_icon.c:474 src/remmina_icon.c:475 src/remmina_main.c:1287
 msgid "Remmina Remote Desktop Client"
 msgstr "Client d’escriptori remot Remmina"
 
@@ -899,7 +931,7 @@ msgstr[1] "%i elements en total."
 msgid "Are you sure you want to delete “%s”?"
 msgstr "Segur que voleu suprimir «%s»?"
 
-#: src/remmina_main.c:952
+#: src/remmina_main.c:959
 #, c-format
 msgid ""
 "Unable to import:\n"
@@ -908,19 +940,19 @@ msgstr ""
 "No s’ha pogut importar:\n"
 "%s"
 
-#: src/remmina_main.c:978 data/ui/remmina_main.glade:291
+#: src/remmina_main.c:985 data/ui/remmina_main.glade:291
 msgid "Import"
 msgstr "Importa"
 
-#: src/remmina_main.c:1001 src/remmina_file_editor.c:1436
+#: src/remmina_main.c:1008 src/remmina_file_editor.c:1436
 msgid "_Save"
 msgstr "_Desa"
 
-#: src/remmina_main.c:1007
+#: src/remmina_main.c:1014
 msgid "This protocol does not support exporting."
 msgstr "Aquest protocol no admet l’exportació."
 
-#: src/remmina_main.c:1282
+#: src/remmina_main.c:1289
 msgid "Remmina Kiosk"
 msgstr "Quiosc Remmina"
 

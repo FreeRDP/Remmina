@@ -3,16 +3,16 @@
 # This file is distributed under the same license as the remmina package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
 # Allan Nordhøy <epost@anotheragency.no>, 2020.
-# Dušan Kazik <prescott66@gmail.com>, 2020.
+# Dušan Kazik <prescott66@gmail.com>, 2020, 2021.
 # Jose Riha <jose1711@gmail.com>, 2020.
 # Antenore Gatta <antenore@simbiosi.org>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-28 19:45+0000\n"
-"PO-Revision-Date: 2021-01-28 10:34+0000\n"
-"Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
+"POT-Creation-Date: 2021-01-29 15:16+0000\n"
+"PO-Revision-Date: 2021-01-29 15:16+0000\n"
+"Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/remmina/remmina/"
 "sk/>\n"
 "Language: sk\n"
@@ -735,7 +735,7 @@ msgstr "Aplet aplikácie Remmina"
 msgid "Connect to remote desktops through the applet menu"
 msgstr "Pripojenie vzdialenej plochy cez appletové menu"
 
-#: src/remmina_icon.c:474 src/remmina_icon.c:475 src/remmina_main.c:1280
+#: src/remmina_icon.c:474 src/remmina_icon.c:475 src/remmina_main.c:1287
 msgid "Remmina Remote Desktop Client"
 msgstr "Remmina - klient vzdialenej pracovnej plochy"
 
@@ -896,7 +896,7 @@ msgstr[2] "Celkom %i položky."
 msgid "Are you sure you want to delete “%s”?"
 msgstr "Naozaj chcete odstrániť „%s“?"
 
-#: src/remmina_main.c:952
+#: src/remmina_main.c:959
 #, c-format
 msgid ""
 "Unable to import:\n"
@@ -905,19 +905,19 @@ msgstr ""
 "Nepodarilo sa importovať:\n"
 "%s"
 
-#: src/remmina_main.c:978 data/ui/remmina_main.glade:291
+#: src/remmina_main.c:985 data/ui/remmina_main.glade:291
 msgid "Import"
 msgstr "Import"
 
-#: src/remmina_main.c:1001 src/remmina_file_editor.c:1436
+#: src/remmina_main.c:1008 src/remmina_file_editor.c:1436
 msgid "_Save"
 msgstr "_Uložiť"
 
-#: src/remmina_main.c:1007
+#: src/remmina_main.c:1014
 msgid "This protocol does not support exporting."
 msgstr "Tento protokol nepodporuje exportovanie."
 
-#: src/remmina_main.c:1282
+#: src/remmina_main.c:1289
 msgid "Remmina Kiosk"
 msgstr "Kiosk aplikácie Remmina"
 
@@ -1134,6 +1134,8 @@ msgstr "Nedá sa importovať verejný kľúč SSH. %s"
 #: src/remmina_ssh.c:336
 msgid "No saved SSH passphrase supplied. Asking user to enter it."
 msgstr ""
+"Nebolo dodané žiadne uložené heslo SSH. Používateľ bol vyzvaný na jeho "
+"zadanie."
 
 #: src/remmina_ssh.c:423
 #, c-format
@@ -1222,7 +1224,7 @@ msgstr "SSH Kerberos/GSSAPI"
 
 #: src/remmina_ssh.c:951
 msgid "Enter TOTP/OTP/2FA code"
-msgstr ""
+msgstr "Zadajte kód TOTP/OTP/2FA"
 
 #: src/remmina_ssh.c:980 src/remmina_ssh.c:1006
 msgid "SSH tunnel credentials"
@@ -1234,7 +1236,7 @@ msgstr "Poverenia SSH"
 
 #: src/remmina_ssh.c:1057
 msgid "Keyboard interactive login, TOTP/OTP/2FA"
-msgstr ""
+msgstr "Interaktívne prihlásenie pomocou klávesnice, TOTP/OTP/2FA"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1277
@@ -1776,7 +1778,7 @@ msgstr "Použiť šifrovanie TLS"
 
 #: plugins/vnc/vnc_plugin.c:1922 plugins/vnc/vnc_plugin.c:1935
 msgid "Prevent local interaction on the server"
-msgstr ""
+msgstr "Zabrániť miestnej interakcii na serveri"
 
 #: plugins/vnc/vnc_plugin.c:1937
 msgid "Open Chat…"
@@ -1836,15 +1838,15 @@ msgstr "Vypnutý"
 
 #: plugins/spice/spice_plugin.c:520
 msgid "Auto GLZ"
-msgstr ""
+msgstr "Automatické GLZ"
 
 #: plugins/spice/spice_plugin.c:521
 msgid "Auto LZ"
-msgstr ""
+msgstr "Automatické LZ"
 
 #: plugins/spice/spice_plugin.c:530
 msgid "Disable video overlay if videos are not displayed properly.\n"
-msgstr ""
+msgstr "Zakázať prekladanie videa, ak nie sú videá zobrazované správne.\n"
 
 #: plugins/spice/spice_plugin.c:545
 msgid "Use TLS encryption"
@@ -1868,7 +1870,7 @@ msgstr "Zakázať vstup zo servera"
 
 #: plugins/spice/spice_plugin.c:564
 msgid "Prefered image compression"
-msgstr ""
+msgstr "Uprednostňovaná komprimácia obrázkov"
 
 #: plugins/spice/spice_plugin.c:565 plugins/spice/spice_plugin.c:578
 msgid "No clipboard sync"
@@ -2147,27 +2149,27 @@ msgstr "Zistiť automaticky"
 
 #: plugins/rdp/rdp_plugin.c:2304
 msgid "Modem"
-msgstr ""
+msgstr "Modem"
 
 #: plugins/rdp/rdp_plugin.c:2305
 msgid "Low performance broadband"
-msgstr ""
+msgstr "Širokopásmové pripojenie s nízkym výkonom"
 
 #: plugins/rdp/rdp_plugin.c:2306
 msgid "Satellite"
-msgstr ""
+msgstr "Satelit"
 
 #: plugins/rdp/rdp_plugin.c:2307
 msgid "High performance broadband"
-msgstr ""
+msgstr "Širokopásmové pripojenie s vysokým výkonom"
 
 #: plugins/rdp/rdp_plugin.c:2308
 msgid "WAN"
-msgstr ""
+msgstr "WAN"
 
 #: plugins/rdp/rdp_plugin.c:2309
 msgid "LAN"
-msgstr ""
+msgstr "LAN"
 
 #: plugins/rdp/rdp_plugin.c:2318
 msgid "Local - low quality"
@@ -2285,6 +2287,9 @@ msgid ""
 "Using auto-detection is advised.\n"
 "If \"Auto-detect\" fails, choose the most appropriate option in the list.\n"
 msgstr ""
+"Optimalizácie výkonu založené na type sieťového pripojenia:\n"
+"Odporúča sa použitie automatického zistenia.\n"
+"Ak voľba „Zistiť automaticky“ zlyhá, zvoľte vhodnú voľbu zo zoznamu.\n"
 
 #: plugins/rdp/rdp_plugin.c:2408
 msgid "Network connection type"
@@ -2492,7 +2497,7 @@ msgstr "Použitím protokolu UDP sa môže zvýšiť výkon"
 
 #: plugins/rdp/rdp_plugin.c:2472
 msgid "Use base credentials for gateway too"
-msgstr ""
+msgstr "Použiť základné poverenia tiež pre bránu"
 
 #: plugins/rdp/rdp_plugin.c:2496
 msgid "RDP - Remote Desktop Protocol"
@@ -3164,7 +3169,7 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:433
 msgid "Template for profile filenames"
-msgstr ""
+msgstr "Šablóna pre názvy súborov profilu"
 
 #: data/ui/remmina_preferences.glade:445
 msgid ""
@@ -3468,7 +3473,7 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:1941
 msgid "Allow using bright colours with bold text"
-msgstr ""
+msgstr "Umožniť použitie svetlých farieb s tučným textom"
 
 #: data/ui/remmina_preferences.glade:1955
 msgid "Colour theme"

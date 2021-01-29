@@ -14,9 +14,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-28 19:45+0000\n"
-"PO-Revision-Date: 2021-01-27 09:17+0000\n"
-"Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
+"POT-Creation-Date: 2021-01-29 15:16+0000\n"
+"PO-Revision-Date: 2021-01-29 15:16+0000\n"
+"Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/remmina/remmina/"
 "tr/>\n"
 "Language: tr\n"
@@ -663,6 +663,8 @@ msgstr "Parolayı şifrele"
 #: src/remmina.c:375
 msgid "- or protocol://username:encryptedpassword@host:port"
 msgstr ""
+"- veya iletisimkurali://kullaniciadi:sifrelenmisparola@anamakine:"
+"baglantinoktasi"
 
 #: src/remmina.c:378
 msgid ""
@@ -698,6 +700,37 @@ msgid ""
 "remmina --set-option username --set-option resolution_mode=2 --set-option "
 "password\n"
 msgstr ""
+"Örnekler:\n"
+"Var olan bağlantı profili kullanarak bağlanmak için şunu kullan:\n"
+"\n"
+"\tremmina -c DOSYA.remmina\n"
+"\n"
+"URI kullanarak hızlıca bağlanmak için:\n"
+"\n"
+"\tremmina -c rdp://kullaniciadi@sunucu\n"
+"\tremmina -c rdp://etkialani\\\\kullaniciadi@sunucu\n"
+"\tremmina -c vnc://kullaniciadi@sunucu\n"
+"\tremmina -c vnc://sunucu?VncUsername=kullaniciadi\n"
+"\tremmina -c ssh://kullanici@sunucu\n"
+"\tremmina -c spice://sunucu\n"
+"\n"
+"URI ile birlikte şifrelenmiş parola kullanarak hızlıca bağlanmak için:\n"
+"\n"
+"\tremmina -c rdp://kullaniciadi:sifrelenmis-parola@sunucu\n"
+"\tremmina -c vnc://kullaniciadi:sifrelenmis-parola@sunucu\n"
+"\tremmina -c vnc://sunucu?VncUsername=kullaniciadi\\&VncPassword=sifrelenmis-"
+"parola\n"
+"\n"
+"URI ile kullanılacak parolayı şifrelemek için:\n"
+"\n"
+"\tremmina --encrypt-password\n"
+"\n"
+"Remmina bağlantı profiline başka çözünürlük kipi belirlemek, kullanıcı adı "
+"ve parola güncellemek için:\n"
+"\n"
+"\techo \"kullaniciadi\\nparola\" | remmina --update-profile /KONUM/YOL/ornek."
+"remmina --set-option username --set-option resolution_mode=2 --set-option "
+"password\n"
 
 #: src/remmina_icon.c:139
 msgid "Open Main Window"
@@ -730,7 +763,7 @@ msgstr "Remmina Küçük Uygulama"
 msgid "Connect to remote desktops through the applet menu"
 msgstr "Uzak masaüstüne küçük uygulama menüsü ile bağlan"
 
-#: src/remmina_icon.c:474 src/remmina_icon.c:475 src/remmina_main.c:1280
+#: src/remmina_icon.c:474 src/remmina_icon.c:475 src/remmina_main.c:1287
 msgid "Remmina Remote Desktop Client"
 msgstr "Remmina Uzak Masaüstü İstemcisi"
 
@@ -889,7 +922,7 @@ msgstr[1] "Toplam %i öge."
 msgid "Are you sure you want to delete “%s”?"
 msgstr "“%s”i silmek istediğinizden emin misiniz?"
 
-#: src/remmina_main.c:952
+#: src/remmina_main.c:959
 #, c-format
 msgid ""
 "Unable to import:\n"
@@ -898,19 +931,19 @@ msgstr ""
 "İçeri aktarılamıyor:\n"
 "%s"
 
-#: src/remmina_main.c:978 data/ui/remmina_main.glade:291
+#: src/remmina_main.c:985 data/ui/remmina_main.glade:291
 msgid "Import"
 msgstr "İçeri Aktar"
 
-#: src/remmina_main.c:1001 src/remmina_file_editor.c:1436
+#: src/remmina_main.c:1008 src/remmina_file_editor.c:1436
 msgid "_Save"
 msgstr "_Kaydet"
 
-#: src/remmina_main.c:1007
+#: src/remmina_main.c:1014
 msgid "This protocol does not support exporting."
 msgstr "Bu iletişim kuralı dışarı çıkartmayı desteklemiyor."
 
-#: src/remmina_main.c:1282
+#: src/remmina_main.c:1289
 msgid "Remmina Kiosk"
 msgstr "Remmina Kiosk"
 
