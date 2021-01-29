@@ -851,6 +851,13 @@ void remmina_main_on_action_connection_delete(GSimpleAction *action, GVariant *p
 	remmina_main_clear_selection_data();
 }
 
+void remmina_main_on_accel_application_preferences(GSimpleAction *action, GVariant *param, gpointer data)
+{
+	TRACE_CALL(__func__);
+	GVariant *v = g_variant_new ("i", 0);
+	remmina_main_on_action_application_preferences(NULL, v, NULL);
+}
+
 void remmina_main_on_action_application_preferences(GSimpleAction *action, GVariant *param, gpointer data)
 {
 	TRACE_CALL(__func__);
@@ -1402,9 +1409,8 @@ GtkWidget *remmina_main_new(void)
 	gtk_window_add_accel_group(remminamain->window, accel_group);
 	gtk_accel_group_connect(accel_group, GDK_KEY_Q, GDK_CONTROL_MASK, 0,
 				g_cclosure_new_swap(G_CALLBACK(remmina_main_on_action_application_quit), NULL, NULL));
-	// BUG: See https://gitlab.com/Remmina/Remmina/-/issues/2401
-	// gtk_accel_group_connect(accel_group, GDK_KEY_P, GDK_CONTROL_MASK, 0,
-				//g_cclosure_new_swap(G_CALLBACK(remmina_main_on_action_application_preferences), NULL, NULL));
+	gtk_accel_group_connect(accel_group, GDK_KEY_P, GDK_CONTROL_MASK, 0,
+				g_cclosure_new_swap(G_CALLBACK(remmina_main_on_accel_application_preferences), NULL, NULL));
 	gtk_accel_group_connect(accel_group, GDK_KEY_F, GDK_CONTROL_MASK, 0,
 				g_cclosure_new_swap(G_CALLBACK(remmina_main_on_action_search_toggle), NULL, NULL));
 
