@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: Remmina v1.4.6\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-01-29 15:16+0000\n"
-"PO-Revision-Date: 2021-01-28 10:34+0000\n"
-"Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
+"PO-Revision-Date: 2021-01-31 00:32+0000\n"
+"Last-Translator: Kurd As <kurd68587@gmail.com>\n"
 "Language-Team: Kurdish (Central) <https://hosted.weblate.org/projects/"
 "remmina/remmina/ckb/>\n"
 "Language: ckb\n"
@@ -657,7 +657,7 @@ msgstr "وشەی نهێنی بڕەمزێنە"
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:375
 msgid "- or protocol://username:encryptedpassword@host:port"
-msgstr ""
+msgstr "- یان protocol://username:encryptedpassword@host:port"
 
 #: src/remmina.c:378
 msgid ""
@@ -693,6 +693,37 @@ msgid ""
 "remmina --set-option username --set-option resolution_mode=2 --set-option "
 "password\n"
 msgstr ""
+"نموونەکان:\n"
+"بۆ پەیوەندی کردن بە بەکارهێنانی پرۆفایلی پەیوەندی بەردەست، بەکاری بێنە:\n"
+"\n"
+"remmina -c FILE.remmina\n"
+"\n"
+"بۆ پەیوەندی خێرا بە بەکارهێنانی URI:\n"
+"\n"
+"ڕێمینا -سی rdp://username@server\n"
+"\tڕێمینا -سی rdp://domain\\\\username@server\n"
+"\tڕێمینا -سی vnc://username@server\n"
+"\tچارەسەری vnc://server؟ VncUsername=username\n"
+"\tڕێمینا -سی ssh://user@server\n"
+"\tڕێمینا -سی spice://server\n"
+"\n"
+"بۆ پەیوەندی خێرا بە بەکارهێنانی URI لەگەڵ نهێنوشەی رەمزێنراوە:\n"
+"\n"
+"ڕێمینا -سی rdp://username:encrypted-password@server\n"
+"\tڕێمینا -سی vnc://username:encrypted-password@server\n"
+"\tچارەسەری vnc://server؟ VncUsername=username\\&VncPassword=encrypted-"
+"password\n"
+"\n"
+"بۆ ڕەمزاندنی نهێنوشە بۆ بەکارهێنانی لەگەڵ URI:\n"
+"\n"
+"ڕێمینا --وشەی نهێنی نهێنی\n"
+"\n"
+"بۆ نوێکردنەوەی ناوی بەکارهێنەر و نهێنوشە و دانانی شێوازی چارەسەری جیاواز لە "
+"پرۆفایلی گرێدانەکانی Remmina، بەکاربێنە:\n"
+"\n"
+"دەنگدانەوەی \"username\\n"
+"apassword\" | remmina --update-profile /PATH/TO/FOO.remmina --set-option "
+"username --set-option resolution_mode=2 --set-option password\n"
 
 #: src/remmina_icon.c:139
 msgid "Open Main Window"
@@ -1121,6 +1152,8 @@ msgstr "نەتوانرا کلیلی گشتی هاوردەبکرێت. %s"
 #: src/remmina_ssh.c:336
 msgid "No saved SSH passphrase supplied. Asking user to enter it."
 msgstr ""
+"هیچ بڕگەیەکی تێپەڕەوی SSH پاشەکەوت نەکراوە. داوا لە بەکارهێنەر دەکات کە "
+"تێنووس بکات."
 
 #: src/remmina_ssh.c:423
 #, c-format
@@ -1207,7 +1240,7 @@ msgstr "‫SSH Kerberos/GSSAPI"
 
 #: src/remmina_ssh.c:951
 msgid "Enter TOTP/OTP/2FA code"
-msgstr ""
+msgstr "داخڵکردنی TOTP/OTP/2FA کۆد"
 
 #: src/remmina_ssh.c:980 src/remmina_ssh.c:1006
 msgid "SSH tunnel credentials"
@@ -1219,7 +1252,7 @@ msgstr "باوەڕنامەی SSH"
 
 #: src/remmina_ssh.c:1057
 msgid "Keyboard interactive login, TOTP/OTP/2FA"
-msgstr ""
+msgstr "چوونەژوورەوەی کارلێکەر لەسەر تەختەکلیل، TOTP/OTP/2FA"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1277
@@ -1759,7 +1792,7 @@ msgstr "نهێنیکردنی TLS بەکاربێنە"
 
 #: plugins/vnc/vnc_plugin.c:1922 plugins/vnc/vnc_plugin.c:1935
 msgid "Prevent local interaction on the server"
-msgstr ""
+msgstr "ڕێگرتن لە کارلێکی ناوخۆیی لەسەر سێرڤەر"
 
 #: plugins/vnc/vnc_plugin.c:1937
 msgid "Open Chat…"
@@ -1819,15 +1852,15 @@ msgstr "کوژاوەتەوە"
 
 #: plugins/spice/spice_plugin.c:520
 msgid "Auto GLZ"
-msgstr ""
+msgstr "خۆکاری GLZ"
 
 #: plugins/spice/spice_plugin.c:521
 msgid "Auto LZ"
-msgstr ""
+msgstr "خۆکاری LZ"
 
 #: plugins/spice/spice_plugin.c:530
 msgid "Disable video overlay if videos are not displayed properly.\n"
-msgstr ""
+msgstr "کوژاندنەوەی ڤیدیۆ ئەگەر ڤیدیۆکان بە دروستی پیشان نەدران.\n"
 
 #: plugins/spice/spice_plugin.c:545
 msgid "Use TLS encryption"
@@ -1851,7 +1884,7 @@ msgstr "تێخستنی ڕاژە ناچالاک بکە"
 
 #: plugins/spice/spice_plugin.c:564
 msgid "Prefered image compression"
-msgstr ""
+msgstr "پەستاندانی وێنەی پەسەندکراو"
 
 #: plugins/spice/spice_plugin.c:565 plugins/spice/spice_plugin.c:578
 msgid "No clipboard sync"
@@ -3139,7 +3172,7 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:433
 msgid "Template for profile filenames"
-msgstr ""
+msgstr "داڕێژە بۆ ناوی فایلی پرۆفایل"
 
 #: data/ui/remmina_preferences.glade:445
 msgid ""
