@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-01-29 15:16+0000\n"
+"POT-Creation-Date: 2021-02-01 08:30+0000\n"
 "PO-Revision-Date: 2021-01-31 00:32+0000\n"
 "Last-Translator: Davy Defaud <davy.defaud@free.fr>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -166,7 +166,7 @@ msgstr "Configurer les définitions disponibles"
 msgid "Recent lists cleared."
 msgstr "Les listes récentes ont été vidées."
 
-#: src/remmina_pref_dialog.c:146 src/rcw.c:1896
+#: src/remmina_pref_dialog.c:146 src/rcw.c:1895
 #: data/ui/remmina_preferences.glade:246 data/ui/remmina_preferences.glade:256
 msgid "Keystrokes"
 msgstr "Entrées clavier"
@@ -743,8 +743,8 @@ msgstr ""
 "\tremmina -c ssh://user@server\n"
 "\tremmina -c spice://server\n"
 "\n"
-"• pour une connexion rapide à partir d’un URI et d’un mot de passe chiffré :"
-"\n"
+"• pour une connexion rapide à partir d’un URI et d’un mot de passe "
+"chiffré :\n"
 "\n"
 "\tremmina -c rdp://username:encrypted-password@server\n"
 "\tremmina -c vnc://username:encrypted-password@server\n"
@@ -758,10 +758,9 @@ msgstr ""
 "• pour modifier le nom d’utilisateur, le mot de passe et le mode de "
 "définition d’affichage d’un profile de connexion Remmina :\n"
 "\n"
-"\techo \"nouvelutilisateur\\n"
-"nouveaumotdepasse\" | remmina --update-profile /CHEMIN/VERS/"
-"NOMPROFILE.remmina --set-option username --set-option resolution_mode=2 "
-"--set-option password\n"
+"\techo \"nouvelutilisateur\\nnouveaumotdepasse\" | remmina --update-profile /"
+"CHEMIN/VERS/NOMPROFILE.remmina --set-option username --set-option "
+"resolution_mode=2 --set-option password\n"
 
 #: src/remmina_icon.c:139
 msgid "Open Main Window"
@@ -822,76 +821,76 @@ msgstr "Garder le rapport d’aspect lors du redimensionnement"
 msgid "Fill client window when scaled"
 msgstr "Remplir la fenêtre d’affichage lors du redimensionnement"
 
-#: src/rcw.c:2015
+#: src/rcw.c:2010
 msgid "Turn off scaling to avoid screenshot distortion."
 msgstr ""
 "Désactiver la mise à l’échelle afin d’éviter l’étirement des captures "
 "d’écran."
 
-#: src/rcw.c:2075 plugins/www/www_plugin.c:840
+#: src/rcw.c:2070 plugins/www/www_plugin.c:840
 msgid "Screenshot taken"
 msgstr "Capture d’écran effectuée"
 
-#: src/rcw.c:2152
+#: src/rcw.c:2147
 msgid "Resize the window to fit in remote resolution"
 msgstr "Redimensionner la fenêtre en fonction de la définition distante"
 
-#: src/rcw.c:2163
+#: src/rcw.c:2158
 msgid "Toggle fullscreen mode"
 msgstr "Basculer en mode plein écran"
 
-#: src/rcw.c:2208 data/ui/remmina_preferences.glade:974
+#: src/rcw.c:2203 data/ui/remmina_preferences.glade:974
 msgid "Switch tab pages"
 msgstr "Changer d’onglet"
 
-#: src/rcw.c:2222
+#: src/rcw.c:2217
 msgid "Toggle dynamic resolution update"
 msgstr "Commuter la mise à jour dynamique de la définition"
 
-#: src/rcw.c:2232
+#: src/rcw.c:2227
 msgid "Toggle scaled mode"
 msgstr "Basculer en mode réduit"
 
-#: src/rcw.c:2267
+#: src/rcw.c:2262
 msgid "Grab all keyboard events"
 msgstr "Capturer les événements du clavier"
 
-#: src/rcw.c:2276
+#: src/rcw.c:2271
 msgid "Preferences"
 msgstr "Préférences"
 
-#: src/rcw.c:2284
+#: src/rcw.c:2279
 msgid "_Tools"
 msgstr "_Outils"
 
-#: src/rcw.c:2285 data/ui/remmina_main.glade:213
+#: src/rcw.c:2280 data/ui/remmina_main.glade:213
 msgid "Tools"
 msgstr "Outils"
 
-#: src/rcw.c:2297
+#: src/rcw.c:2292
 msgid "Duplicate current connection"
 msgstr "Dupliquer la connexion actuelle"
 
-#: src/rcw.c:2308 data/ui/remmina_preferences.glade:1168
+#: src/rcw.c:2303 data/ui/remmina_preferences.glade:1168
 #: data/ui/remmina_preferences.glade:1178
 msgid "Screenshot"
 msgstr "Capture d’écran"
 
-#: src/rcw.c:2316 data/ui/remmina_preferences.glade:1077
+#: src/rcw.c:2311 data/ui/remmina_preferences.glade:1077
 msgid "Minimize window"
 msgstr "Réduire la fenêtre"
 
-#: src/rcw.c:2325 data/ui/remmina_preferences.glade:1108
+#: src/rcw.c:2320 data/ui/remmina_preferences.glade:1108
 msgid "Disconnect"
 msgstr "Se déconnecter"
 
-#: src/rcw.c:3989
+#: src/rcw.c:3984
 #, c-format
 msgid "The file “%s” is corrupted, unreadable, or could not be found."
 msgstr ""
 "Le fichier « %s » est corrompu, inaccessible en lecture ou introuvable."
 
-#: src/rcw.c:4154
+#: src/rcw.c:4149
 msgid "Warning: This plugin requires GtkSocket, but it’s not available."
 msgstr ""
 "Attention : ce greffon nécessite GtkSocket, mais ce dernier n’est pas "
