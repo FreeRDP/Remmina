@@ -50,6 +50,54 @@ include(GtkUpdateIconCache)
 include(CheckHasModule)
 include(FindPCRE2)
 
+#---------------------------------------------------------------------
+# Package creation with CMake depends on the value of umask - if permissions
+# are such that temporary files are created without permissions needed for
+# generated packages, the resulting packages may behave badly when installed.
+# In particular, RPM packages may improperly reset permissions on core
+# directories such as /usr.
+function(check_umask umask_val status_var)
+    string(REGEX REPLACE "[^x]" "" umask_x "${umask_val}")
+    string(REGEX REPLACE "[^r]" "" umask_r "${umask_val}")
+    string(LENGTH "${umask_r}" UMASK_HAVE_R)
+    set(${status_var} 0 PARENT_SCOPE)
+    if(UMASK_HAVE_R AND "${umask_x}" STREQUAL "xxx")
+        set(${status_var} 1 PARENT_SCOPE)
+    endif(UMASK_HAVE_R AND "${umask_x}" STREQUAL "xxx")
+endfunction(check_umask)
+
+find_program(SLEEP_EXEC sleep)
+mark_as_advanced(SLEEP_EXEC)
+# Note - umask is not always an executable, so find_program wont' necessarily
+# determine whether the umask check is appropriate.  If we don't find an
+# executable, follow up to see if we can use sh to get the info.
+find_program(UMASK_EXEC umask)
+mark_as_advanced(UMASK_EXEC)
+if(NOT UMASK_EXEC)
+    # If we don't have a umask cmd, see if sh -c "umask -S" works
+    execute_process(COMMAND sh -c "umask -S" OUTPUT_VARIABLE umask_out)
+    # Check if we've got something that looks like a umask output
+    if("${umask_out}" MATCHES "^u=.*g=.*o=.*")
+        set(UMASK_EXEC sh)
+        set(UMASK_EXEC_ARGS -c "umask -S")
+    endif("${umask_out}" MATCHES "^u=.*g=.*o=.*")
+else(NOT UMASK_EXEC)
+    set(UMASK_EXEC_ARGS -S)
+endif(NOT UMASK_EXEC)
+
+if(UMASK_EXEC)
+    execute_process(COMMAND ${UMASK_EXEC} ${UMASK_EXEC_ARGS} OUTPUT_VARIABLE umask_curr)
+    string(STRIP "${umask_curr}" umask_curr)
+    check_umask("${umask_curr}" UMASK_OK)
+    if(NOT UMASK_OK)
+        message(" ")
+        message(WARNING "umask is set to ${umask_curr} - this setting is not recommended if one of the goals of this build is to generate packages. Use 'umask 022' for improved package behavior.")
+        if(SLEEP_EXEC)
+            execute_process(COMMAND ${SLEEP_EXEC} 10)
+        endif(SLEEP_EXEC)
+    endif(NOT UMASK_OK)
+endif(UMASK_EXEC)
+
 if(NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE "Release")
 endif()
