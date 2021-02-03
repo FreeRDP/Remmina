@@ -1,5 +1,47 @@
 # Changelog
 
+## v1.4.11
+[full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.10...v1.4.11)
+
+* Implementing simple SSH multi factor authentication. [!2162](https://gitlab.com/Remmina/Remmina/merge_requests/2162) *@antenore*
+* rdp/cliprdr: Fix header of FormatList message [!2147](https://gitlab.com/Remmina/Remmina/merge_requests/2147) *@pnowack*
+* rdp/event: Fix wheel value for GDK_SCROLL_DOWN events [!2149](https://gitlab.com/Remmina/Remmina/merge_requests/2149) *@pnowack*
+* Implementing dynamic resolution in SPICE plugin [!2150](https://gitlab.com/Remmina/Remmina/merge_requests/2150) *@hadogenes*
+* remove triplicate entry in changelog [!2151](https://gitlab.com/Remmina/Remmina/merge_requests/2151) *@Fantu*
+* Resolve "Remmina does not handle `file:///some/path/to/file.rdp` syntax" [!2152](https://gitlab.com/Remmina/Remmina/merge_requests/2152) *@antenore*
+* Resolve "SSH tunneling, honoring ssh_config (User, HostKeyAlias, ProxyJump, HostKeyAlgorithms, IdentitiesOnly, etc.)" [!2154](https://gitlab.com/Remmina/Remmina/merge_requests/2154) *@antenore*
+* Resolve "While in the main window, bind F10 keyboard shortcut to toggling the main menubutton" [!2156](https://gitlab.com/Remmina/Remmina/merge_requests/2156) *@antenore*
+* Add capability to load Python plugins (not finished). [!2157](https://gitlab.com/Remmina/Remmina/merge_requests/2157) *@ToolsDevler*
+* Disabling Python support by default [!2158](https://gitlab.com/Remmina/Remmina/merge_requests/2158) *@antenore*
+* Suppress Output PDU when the RDP window is not visible [!2159](https://gitlab.com/Remmina/Remmina/merge_requests/2159) *@antenore*
+* Refactoring SSH plugin [!2160](https://gitlab.com/Remmina/Remmina/merge_requests/2160) *@antenore*
+* Spelling: SGR 1 attribute colour and bold switching [!2163](https://gitlab.com/Remmina/Remmina/merge_requests/2163) *@kingu*
+* Remove extra parenthesis [!2164](https://gitlab.com/Remmina/Remmina/merge_requests/2164) *@yurchor*
+* Spice option to choose Prefered Video Codec and Image Compressor [!2165](https://gitlab.com/Remmina/Remmina/merge_requests/2165) *@hadogenes*
+* Spelling: Protocol info and view strings reworked [!2166](https://gitlab.com/Remmina/Remmina/merge_requests/2166) *@kingu*
+* Spelling: Server name placeholder moved [!2167](https://gitlab.com/Remmina/Remmina/merge_requests/2167) *@kingu*
+* Spelling: Glade [!2170](https://gitlab.com/Remmina/Remmina/merge_requests/2170) *@kingu*
+* Spelling: Start-up [!2171](https://gitlab.com/Remmina/Remmina/merge_requests/2171) *@kingu*
+* Spelling: ISO, date and time [!2172](https://gitlab.com/Remmina/Remmina/merge_requests/2172) *@kingu*
+* Spelling: Auto-start, auto-scroll, auto-detect [!2173](https://gitlab.com/Remmina/Remmina/merge_requests/2173) *@kingu*
+* Spelling: Colour, could not, turn off, don't send [!2168](https://gitlab.com/Remmina/Remmina/merge_requests/2168) *@kingu*
+* Spelling: SSH key, first, checksum of, either [!2169](https://gitlab.com/Remmina/Remmina/merge_requests/2169) *@kingu*
+* Implementing simple SSH multi factor authentication. [!2162](https://gitlab.com/Remmina/Remmina/merge_requests/2162) *@antenore*
+* Correct iterating lines in string - address sanitizer fix #2390 [!2174](https://gitlab.com/Remmina/Remmina/merge_requests/2174) *@hadogenes*
+* Correct freeing memory in spice [!2175](https://gitlab.com/Remmina/Remmina/merge_requests/2175) *@hadogenes*
+* Issue/2391 randomness [!2176](https://gitlab.com/Remmina/Remmina/merge_requests/2176) *@antenore*
+* Resolve "Missing keyboard shortcuts to toggle search (Ctrl+F, Escape), and closing the search doesn't clear the search" [!2179](https://gitlab.com/Remmina/Remmina/merge_requests/2179) *@antenore*
+* Resolve "Always false contition in remmina_ssh.c" [!2180](https://gitlab.com/Remmina/Remmina/merge_requests/2180) *@antenore*
+* Improving error detection [!2181](https://gitlab.com/Remmina/Remmina/merge_requests/2181) *@antenore*
+* Using curly double quotes where possible [!2182](https://gitlab.com/Remmina/Remmina/merge_requests/2182) *@antenore*
+* Spelling: SPICE, GStreamer, No, video-codec error [!2183](https://gitlab.com/Remmina/Remmina/merge_requests/2183) *@kingu*
+* Command line help improvements [!2185](https://gitlab.com/Remmina/Remmina/merge_requests/2185) *@antenore*
+* Fix minor typo [!2186](https://gitlab.com/Remmina/Remmina/merge_requests/2186) *@yurchor*
+* Small typos fixed [!2187](https://gitlab.com/Remmina/Remmina/merge_requests/2187) *@kingu*
+* Resolve "Remmina Crashes when opening the preferences with the accelerator" [!2189](https://gitlab.com/Remmina/Remmina/merge_requests/2189) *@antenore*
+* Fixing #2401 - crash when using ctrl+p [!2190](https://gitlab.com/Remmina/Remmina/merge_requests/2190) *@antenore*
+* Refactorin the RCW toolbar to use the right tool items types [!2188](https://gitlab.com/Remmina/Remmina/merge_requests/2188) *@antenore*
+
 ## v1.4.10
 [full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.9...v1.4.10)
 
