@@ -88,6 +88,7 @@ gint remmina_protocol_widget_get_height(RemminaProtocolWidget *gp);
 void remmina_protocol_widget_set_height(RemminaProtocolWidget *gp, gint height);
 gint remmina_protocol_widget_get_profile_remote_width(RemminaProtocolWidget *gp);
 gint remmina_protocol_widget_get_profile_remote_height(RemminaProtocolWidget *gp);
+gint remmina_protocol_widget_get_multimon(RemminaProtocolWidget *gp);
 
 RemminaScaleMode remmina_protocol_widget_get_current_scale_mode(RemminaProtocolWidget *gp);
 void remmina_protocol_widget_set_current_scale_mode(RemminaProtocolWidget *gp, RemminaScaleMode scalemode);

@@ -56,6 +56,12 @@ static RemminaPrefDialog *remmina_pref_dialog;
 
 #define GET_OBJECT(object_name) gtk_builder_get_object(remmina_pref_dialog->builder, object_name)
 
+static GActionEntry pref_actions[] = {
+	{ "close",	 remmina_pref_dialog_on_action_close,	   NULL, NULL, NULL },
+
+};
+
+
 /* Show a key chooser dialog */
 void remmina_pref_dialog_on_key_chooser(GtkWidget *widget, gpointer user_data)
 {
@@ -188,6 +194,11 @@ void remmina_prefdiag_unlock_repwd_on_changed(GtkEditable* editable, RemminaPref
 
 }
 
+void remmina_pref_dialog_on_action_close(GSimpleAction *action, GVariant *param, gpointer data)
+{
+	TRACE_CALL(__func__);
+	gtk_widget_destroy(GTK_WIDGET(remmina_pref_dialog->dialog));
+}
 void remmina_pref_dialog_on_close_clicked(GtkWidget *widget, RemminaPrefDialog *dialog)
 {
 	TRACE_CALL(__func__);
@@ -296,6 +307,7 @@ void remmina_pref_on_dialog_destroy(GtkWidget *widget, gpointer user_data)
 	remmina_pref.shortcutkey_prevtab = remmina_key_chooser_get_keyval(gtk_button_get_label(remmina_pref_dialog->button_keyboard_switch_tab_left));
 	remmina_pref.shortcutkey_nexttab = remmina_key_chooser_get_keyval(gtk_button_get_label(remmina_pref_dialog->button_keyboard_switch_tab_right));
 	remmina_pref.shortcutkey_scale = remmina_key_chooser_get_keyval(gtk_button_get_label(remmina_pref_dialog->button_keyboard_scaled));
+	remmina_pref.shortcutkey_multimon = remmina_key_chooser_get_keyval(gtk_button_get_label(remmina_pref_dialog->button_keyboard_multimon));
 	remmina_pref.shortcutkey_grab = remmina_key_chooser_get_keyval(gtk_button_get_label(remmina_pref_dialog->button_keyboard_grab_keyboard));
 	remmina_pref.shortcutkey_screenshot = remmina_key_chooser_get_keyval(gtk_button_get_label(remmina_pref_dialog->button_keyboard_screenshot));
 	remmina_pref.shortcutkey_viewonly = remmina_key_chooser_get_keyval(gtk_button_get_label(remmina_pref_dialog->button_keyboard_viewonly));
@@ -374,6 +386,8 @@ static gboolean remmina_pref_dialog_add_pref_plugin(gchar *name, RemminaPlugin *
 	pref_plugin = (RemminaPrefPlugin*)plugin;
 
 	widget = gtk_label_new(pref_plugin->pref_label);
+	gtk_widget_set_halign(widget, GTK_ALIGN_END);
+	gtk_widget_set_margin_end(widget, 18);
 	gtk_widget_show(widget);
 
 	vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
@@ -495,6 +509,7 @@ static void remmina_pref_dialog_init(void)
 	remmina_pref_dialog_set_button_label(remmina_pref_dialog->button_keyboard_switch_tab_left, remmina_pref.shortcutkey_prevtab);
 	remmina_pref_dialog_set_button_label(remmina_pref_dialog->button_keyboard_switch_tab_right, remmina_pref.shortcutkey_nexttab);
 	remmina_pref_dialog_set_button_label(remmina_pref_dialog->button_keyboard_scaled, remmina_pref.shortcutkey_scale);
+	remmina_pref_dialog_set_button_label(remmina_pref_dialog->button_keyboard_multimon, remmina_pref.shortcutkey_multimon);
 	remmina_pref_dialog_set_button_label(remmina_pref_dialog->button_keyboard_grab_keyboard, remmina_pref.shortcutkey_grab);
 	remmina_pref_dialog_set_button_label(remmina_pref_dialog->button_keyboard_screenshot, remmina_pref.shortcutkey_screenshot);
 	remmina_pref_dialog_set_button_label(remmina_pref_dialog->button_keyboard_viewonly, remmina_pref.shortcutkey_viewonly);
@@ -633,6 +648,8 @@ static void remmina_pref_dialog_init(void)
 GtkDialog* remmina_pref_dialog_new(gint default_tab, GtkWindow *parent)
 {
 	TRACE_CALL(__func__);
+	GSimpleActionGroup *actions;
+	GtkAccelGroup *accel_group = NULL;
 
 	remmina_pref_dialog = g_new0(RemminaPrefDialog, 1);
 	remmina_pref_dialog->priv = g_new0(RemminaPrefDialogPriv, 1);
@@ -692,6 +709,7 @@ GtkDialog* remmina_pref_dialog_new(gint default_tab, GtkWindow *parent)
 	remmina_pref_dialog->button_keyboard_switch_tab_right = GTK_BUTTON(GET_OBJECT("button_keyboard_switch_tabright"));
 	remmina_pref_dialog->button_keyboard_scaled = GTK_BUTTON(GET_OBJECT("button_keyboard_scaled"));
 	remmina_pref_dialog->button_keyboard_grab_keyboard = GTK_BUTTON(GET_OBJECT("button_keyboard_grab_keyboard"));
+	remmina_pref_dialog->button_keyboard_multimon = GTK_BUTTON(GET_OBJECT("button_keyboard_multimon"));
 	remmina_pref_dialog->button_keyboard_screenshot = GTK_BUTTON(GET_OBJECT("button_keyboard_screenshot"));
 	remmina_pref_dialog->button_keyboard_viewonly = GTK_BUTTON(GET_OBJECT("button_keyboard_viewonly"));
 	remmina_pref_dialog->button_keyboard_minimize = GTK_BUTTON(GET_OBJECT("button_keyboard_minimize"));
@@ -752,6 +770,17 @@ GtkDialog* remmina_pref_dialog_new(gint default_tab, GtkWindow *parent)
 	g_free(destpath);
 #endif
 #endif
+	/* Non widget objects */
+	actions = g_simple_action_group_new();
+	g_action_map_add_action_entries(G_ACTION_MAP(actions), pref_actions, G_N_ELEMENTS(pref_actions), remmina_pref_dialog->dialog);
+	gtk_widget_insert_action_group(GTK_WIDGET(remmina_pref_dialog->dialog), "pref", G_ACTION_GROUP(actions));
+	g_action_map_add_action_entries(G_ACTION_MAP(actions), pref_actions, G_N_ELEMENTS(pref_actions), remmina_pref_dialog->dialog);
+	g_object_unref(actions);
+	/* Accelerators */
+	accel_group = gtk_accel_group_new();
+	gtk_window_add_accel_group(GTK_WINDOW(remmina_pref_dialog->dialog), accel_group);
+	gtk_accel_group_connect(accel_group, GDK_KEY_Q, GDK_CONTROL_MASK, 0,
+				g_cclosure_new_swap(G_CALLBACK(remmina_pref_dialog_on_action_close), NULL, NULL));
 
 	/* Connect signals */
 	gtk_builder_connect_signals(remmina_pref_dialog->builder, NULL);

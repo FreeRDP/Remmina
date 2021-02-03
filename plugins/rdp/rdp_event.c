@@ -37,14 +37,15 @@
  */
 
 #include "rdp_plugin.h"
-#include "rdp_event.h"
 #include "rdp_cliprdr.h"
+#include "rdp_event.h"
+#include "rdp_monitor.h"
 #include "rdp_settings.h"
 #include <gdk/gdkkeysyms.h>
 #include <cairo/cairo-xlib.h>
 #include <freerdp/locale/keyboard.h>
 
-static gboolean remmina_rdp_event_on_map (GtkWindow *window, GdkEvent  *event, RemminaProtocolWidget* gp)
+static gboolean remmina_rdp_event_on_map(GtkWindow *window, GdkEvent *event, RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
@@ -61,7 +62,7 @@ static gboolean remmina_rdp_event_on_map (GtkWindow *window, GdkEvent  *event, R
 	return FALSE;
 }
 
-static gboolean remmina_rdp_event_on_unmap (GtkWindow *window, GdkEvent  *event, RemminaProtocolWidget* gp)
+static gboolean remmina_rdp_event_on_unmap(GtkWindow *window, GdkEvent *event, RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
@@ -78,11 +79,11 @@ static gboolean remmina_rdp_event_on_unmap (GtkWindow *window, GdkEvent  *event,
 	return FALSE;
 }
 
-static gboolean remmina_rdp_event_on_focus_in(GtkWidget* widget, GdkEventKey* event, RemminaProtocolWidget* gp)
+static gboolean remmina_rdp_event_on_focus_in(GtkWidget *widget, GdkEventKey *event, RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
-	rfContext* rfi = GET_PLUGIN_DATA(gp);
-	rdpInput* input;
+	rfContext *rfi = GET_PLUGIN_DATA(gp);
+	rdpInput *input;
 	GdkModifierType state;
 
 #if GTK_CHECK_VERSION(3, 20, 0)
@@ -107,15 +108,12 @@ static gboolean remmina_rdp_event_on_focus_in(GtkWidget* widget, GdkEventKey* ev
 #endif
 	gdk_window_get_device_position(gdk_get_default_root_window(), keyboard, NULL, NULL, &state);
 
-	if (state & GDK_LOCK_MASK) {
+	if (state & GDK_LOCK_MASK)
 		toggle_keys_state |= KBD_SYNC_CAPS_LOCK;
-	}
-	if (state & GDK_MOD2_MASK) {
+	if (state & GDK_MOD2_MASK)
 		toggle_keys_state |= KBD_SYNC_NUM_LOCK;
-	}
-	if (state & GDK_MOD5_MASK) {
+	if (state & GDK_MOD5_MASK)
 		toggle_keys_state |= KBD_SYNC_SCROLL_LOCK;
-	}
 
 	input->SynchronizeEvent(input, toggle_keys_state);
 	input->KeyboardEvent(input, KBD_FLAGS_RELEASE, 0x0F);
@@ -123,11 +121,11 @@ static gboolean remmina_rdp_event_on_focus_in(GtkWidget* widget, GdkEventKey* ev
 	return FALSE;
 }
 
-void remmina_rdp_event_event_push(RemminaProtocolWidget* gp, const RemminaPluginRdpEvent* e)
+void remmina_rdp_event_event_push(RemminaProtocolWidget *gp, const RemminaPluginRdpEvent *e)
 {
 	TRACE_CALL(__func__);
-	rfContext* rfi = GET_PLUGIN_DATA(gp);
-	RemminaPluginRdpEvent* event;
+	rfContext *rfi = GET_PLUGIN_DATA(gp);
+	RemminaPluginRdpEvent *event;
 
 	/* Called by the main GTK thread to send an event to the libfreerdp thread */
 
@@ -143,10 +141,10 @@ void remmina_rdp_event_event_push(RemminaProtocolWidget* gp, const RemminaPlugin
 	}
 }
 
-static void remmina_rdp_event_release_all_keys(RemminaProtocolWidget* gp)
+static void remmina_rdp_event_release_all_keys(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
-	rfContext* rfi = GET_PLUGIN_DATA(gp);
+	rfContext *rfi = GET_PLUGIN_DATA(gp);
 	RemminaPluginRdpEvent rdp_event = { 0 };
 	int i;
 
@@ -164,18 +162,18 @@ static void remmina_rdp_event_release_all_keys(RemminaProtocolWidget* gp)
 	g_array_set_size(rfi->pressed_keys, 0);
 }
 
-static void remmina_rdp_event_release_key(RemminaProtocolWidget* gp, RemminaPluginRdpEvent rdp_event)
+static void remmina_rdp_event_release_key(RemminaProtocolWidget *gp, RemminaPluginRdpEvent rdp_event)
 {
 	TRACE_CALL(__func__);
 	gint i;
-	rfContext* rfi = GET_PLUGIN_DATA(gp);
+	rfContext *rfi = GET_PLUGIN_DATA(gp);
 	RemminaPluginRdpEvent rdp_event_2 = { 0 };
 
 	rdp_event_2.type = REMMINA_RDP_EVENT_TYPE_SCANCODE;
 
 	if ((rdp_event.type == REMMINA_RDP_EVENT_TYPE_SCANCODE ||
 	     rdp_event.type == REMMINA_RDP_EVENT_TYPE_SCANCODE_UNICODE) &&
-	    rdp_event.key_event.up ) {
+	    rdp_event.key_event.up) {
 		/* Unregister the keycode only */
 		for (i = 0; i < rfi->pressed_keys->len; i++) {
 			rdp_event_2 = g_array_index(rfi->pressed_keys, RemminaPluginRdpEvent, i);
@@ -193,25 +191,24 @@ static void remmina_rdp_event_release_key(RemminaProtocolWidget* gp, RemminaPlug
 static void keypress_list_add(RemminaProtocolWidget *gp, RemminaPluginRdpEvent rdp_event)
 {
 	TRACE_CALL(__func__);
-	rfContext* rfi = GET_PLUGIN_DATA(gp);
+	rfContext *rfi = GET_PLUGIN_DATA(gp);
 	if (!rdp_event.key_event.key_code)
 		return;
 
-	if (rdp_event.key_event.up) {
+	if (rdp_event.key_event.up)
 		remmina_rdp_event_release_key(gp, rdp_event);
-	} else {
+	else
 		g_array_append_val(rfi->pressed_keys, rdp_event);
-	}
 
 }
 
 
-static void remmina_rdp_event_scale_area(RemminaProtocolWidget* gp, gint* x, gint* y, gint* w, gint* h)
+static void remmina_rdp_event_scale_area(RemminaProtocolWidget *gp, gint *x, gint *y, gint *w, gint *h)
 {
 	TRACE_CALL(__func__);
 	gint width, height;
 	gint sx, sy, sw, sh;
-	rfContext* rfi = GET_PLUGIN_DATA(gp);
+	rfContext *rfi = GET_PLUGIN_DATA(gp);
 
 	if (!rfi || !rfi->connected || rfi->is_reconnecting || !rfi->surface)
 		return;
@@ -234,16 +231,16 @@ static void remmina_rdp_event_scale_area(RemminaProtocolWidget* gp, gint* x, gin
 	/* We have to extend the scaled region one scaled pixel, to avoid gaps */
 
 	sx = MIN(MAX(0, (*x) * rfi->scale_width / width
-			- rfi->scale_width / width - 2), rfi->scale_width - 1);
+		     - rfi->scale_width / width - 2), rfi->scale_width - 1);
 
 	sy = MIN(MAX(0, (*y) * rfi->scale_height / height
-			- rfi->scale_height / height - 2), rfi->scale_height - 1);
+		     - rfi->scale_height / height - 2), rfi->scale_height - 1);
 
 	sw = MIN(rfi->scale_width - sx, (*w) * rfi->scale_width / width
-		+ rfi->scale_width / width + 4);
+		 + rfi->scale_width / width + 4);
 
 	sh = MIN(rfi->scale_height - sy, (*h) * rfi->scale_height / height
-		+ rfi->scale_height / height + 4);
+		 + rfi->scale_height / height + 4);
 
 	*x = sx;
 	*y = sy;
@@ -251,13 +248,13 @@ static void remmina_rdp_event_scale_area(RemminaProtocolWidget* gp, gint* x, gin
 	*h = sh;
 }
 
-void remmina_rdp_event_update_regions(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
+void remmina_rdp_event_update_regions(RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *ui)
 {
 	TRACE_CALL(__func__);
-	rfContext* rfi = GET_PLUGIN_DATA(gp);
+	rfContext *rfi = GET_PLUGIN_DATA(gp);
 	gint x, y, w, h, i;
 
-	for(i = 0; i < ui->reg.ninvalid; i++) {
+	for (i = 0; i < ui->reg.ninvalid; i++) {
 		x = ui->reg.ureg[i].x;
 		y = ui->reg.ureg[i].y;
 		w = ui->reg.ureg[i].w;
@@ -271,10 +268,10 @@ void remmina_rdp_event_update_regions(RemminaProtocolWidget* gp, RemminaPluginRd
 	g_free(ui->reg.ureg);
 }
 
-void remmina_rdp_event_update_rect(RemminaProtocolWidget* gp, gint x, gint y, gint w, gint h)
+void remmina_rdp_event_update_rect(RemminaProtocolWidget *gp, gint x, gint y, gint w, gint h)
 {
 	TRACE_CALL(__func__);
-	rfContext* rfi = GET_PLUGIN_DATA(gp);
+	rfContext *rfi = GET_PLUGIN_DATA(gp);
 
 	if (rfi->scale == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_SCALED)
 		remmina_rdp_event_scale_area(gp, &x, &y, &w, &h);
@@ -282,13 +279,13 @@ void remmina_rdp_event_update_rect(RemminaProtocolWidget* gp, gint x, gint y, gi
 	gtk_widget_queue_draw_area(rfi->drawing_area, x, y, w, h);
 }
 
-static void remmina_rdp_event_update_scale_factor(RemminaProtocolWidget* gp)
+static void remmina_rdp_event_update_scale_factor(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
 	GtkAllocation a;
 	gint rdwidth, rdheight;
 	gint gpwidth, gpheight;
-	rfContext* rfi = GET_PLUGIN_DATA(gp);
+	rfContext *rfi = GET_PLUGIN_DATA(gp);
 
 	gtk_widget_get_allocation(GTK_WIDGET(gp), &a);
 	gpwidth = a.width;
@@ -305,19 +302,18 @@ static void remmina_rdp_event_update_scale_factor(RemminaProtocolWidget* gp)
 			rfi->scale_x = (gdouble)rfi->scale_width / (gdouble)rdwidth;
 			rfi->scale_y = (gdouble)rfi->scale_height / (gdouble)rdheight;
 		}
-	}else  {
+	} else {
 		rfi->scale_width = 0;
 		rfi->scale_height = 0;
 		rfi->scale_x = 0;
 		rfi->scale_y = 0;
 	}
-
 }
 
-static gboolean remmina_rdp_event_on_draw(GtkWidget* widget, cairo_t* context, RemminaProtocolWidget* gp)
+static gboolean remmina_rdp_event_on_draw(GtkWidget *widget, cairo_t *context, RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
-	rfContext* rfi = GET_PLUGIN_DATA(gp);
+	rfContext *rfi = GET_PLUGIN_DATA(gp);
 	guint width, height;
 	gchar *msg;
 	cairo_text_extents_t extents;
@@ -334,7 +330,7 @@ static gboolean remmina_rdp_event_on_draw(GtkWidget* widget, cairo_t* context, R
 
 		/* Draw text */
 		msg = g_strdup_printf(_("Reconnection attempt %d of %d…"),
-			rfi->reconnect_nattempt, rfi->reconnect_maxattempts);
+				      rfi->reconnect_nattempt, rfi->reconnect_maxattempts);
 
 		cairo_select_font_face(context, "Sans", CAIRO_FONT_SLANT_NORMAL, CAIRO_FONT_WEIGHT_BOLD);
 		cairo_set_font_size(context, 24);
@@ -343,8 +339,7 @@ static gboolean remmina_rdp_event_on_draw(GtkWidget* widget, cairo_t* context, R
 		cairo_move_to(context, (width - (extents.width + extents.x_bearing)) / 2, (height - (extents.height + extents.y_bearing)) / 2);
 		cairo_show_text(context, msg);
 		g_free(msg);
-
-	}else  {
+	} else {
 		/* Standard drawing: We copy the surface from RDP */
 
 		if (!rfi->surface)
@@ -362,17 +357,21 @@ static gboolean remmina_rdp_event_on_draw(GtkWidget* widget, cairo_t* context, R
 	return TRUE;
 }
 
-static gboolean remmina_rdp_event_delayed_monitor_layout(RemminaProtocolWidget* gp)
+static gboolean remmina_rdp_event_delayed_monitor_layout(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
-	rfContext* rfi = GET_PLUGIN_DATA(gp);
+	rfContext *rfi = GET_PLUGIN_DATA(gp);
 
 	RemminaPluginRdpEvent rdp_event = { 0 };
 	GtkAllocation a;
 	gint desktopOrientation, desktopScaleFactor, deviceScaleFactor;
 
+	RemminaFile *remminafile;
+
 	if (!rfi || !rfi->connected || rfi->is_reconnecting)
 		return FALSE;
+
+	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
 	if (rfi->scale != REMMINA_PROTOCOL_WIDGET_SCALE_MODE_DYNRES)
 		return FALSE;
@@ -380,6 +379,12 @@ static gboolean remmina_rdp_event_delayed_monitor_layout(RemminaProtocolWidget* 
 	rfi->delayed_monitor_layout_handler = 0;
 	gint gpwidth, gpheight, prevwidth, prevheight;
 
+	gchar *monitorids = NULL;
+	guint32 maxwidth = 0;
+	guint32 maxheight = 0;
+	remmina_rdp_monitor_get(rfi, &monitorids, &maxwidth, &maxheight);
+
+	REMMINA_PLUGIN_DEBUG("Sending preconfigured monitor layout");
 	if (rfi->dispcontext && rfi->dispcontext->SendMonitorLayout) {
 		remmina_rdp_settings_get_orientation_scale_prefs(&desktopOrientation, &desktopScaleFactor, &deviceScaleFactor);
 		gtk_widget_get_allocation(GTK_WIDGET(gp), &a);
@@ -388,10 +393,7 @@ static gboolean remmina_rdp_event_delayed_monitor_layout(RemminaProtocolWidget* 
 		prevwidth = remmina_plugin_service->protocol_plugin_get_width(gp);
 		prevheight = remmina_plugin_service->protocol_plugin_get_height(gp);
 
-		if ((gpwidth != prevwidth || gpheight != prevheight) &&
-		    gpwidth >= 200 && gpwidth < 8192 &&
-		    gpheight >= 200 && gpheight < 8192
-		    ) {
+		if ((gpwidth != prevwidth || gpheight != prevheight) && gpwidth >= 200 && gpheight >= 200) {
 			if (rfi->rdpgfxchan) {
 				/* Workaround for FreeRDP issue #5417 */
 				if (gpwidth < AVC_MIN_DESKTOP_WIDTH)
@@ -400,40 +402,68 @@ static gboolean remmina_rdp_event_delayed_monitor_layout(RemminaProtocolWidget* 
 					gpheight = AVC_MIN_DESKTOP_HEIGHT;
 			}
 			rdp_event.type = REMMINA_RDP_EVENT_TYPE_SEND_MONITOR_LAYOUT;
-			rdp_event.monitor_layout.width = gpwidth;
-			rdp_event.monitor_layout.height = gpheight;
-			rdp_event.monitor_layout.desktopOrientation = desktopOrientation;
-			rdp_event.monitor_layout.desktopScaleFactor = desktopScaleFactor;
-			rdp_event.monitor_layout.deviceScaleFactor = deviceScaleFactor;
-			remmina_rdp_event_event_push(gp, &rdp_event);
+			if (remmina_plugin_service->file_get_int(remminafile, "multimon", FALSE)) {
+				for (gint i = 0; i < rfi->settings->MonitorCount; ++i) {
+					REMMINA_PLUGIN_DEBUG("Sending diplay layout n° %d", i);
+					rdp_event.monitor_layout.Flags = rfi->settings->MonitorDefArray[i].is_primary;
+					REMMINA_PLUGIN_DEBUG("EVNT MON LAYOUT - Flags: %i", rdp_event.monitor_layout.Flags);
+					rdp_event.monitor_layout.Left = rfi->settings->MonitorDefArray[i].x;
+					REMMINA_PLUGIN_DEBUG("EVNT MON LAYOUT - Left: %i", rdp_event.monitor_layout.Left);
+					rdp_event.monitor_layout.Top = rfi->settings->MonitorDefArray[i].y;
+					REMMINA_PLUGIN_DEBUG("EVNT MON LAYOUT - Top: %i", rdp_event.monitor_layout.Top);
+					rdp_event.monitor_layout.width = rfi->settings->MonitorDefArray[i].width;
+					REMMINA_PLUGIN_DEBUG("EVNT MON LAYOUT - width: %i", rdp_event.monitor_layout.width);
+					rdp_event.monitor_layout.height = rfi->settings->MonitorDefArray[i].height;
+					REMMINA_PLUGIN_DEBUG("EVNT MON LAYOUT - height: %i", rdp_event.monitor_layout.height);
+					rdp_event.monitor_layout.physicalWidth = rfi->settings->MonitorDefArray[i].attributes.physicalWidth;
+					REMMINA_PLUGIN_DEBUG("EVNT MON LAYOUT - physicalWidth: %i", rdp_event.monitor_layout.physicalWidth);
+					rdp_event.monitor_layout.physicalHeight = rfi->settings->MonitorDefArray[i].attributes.physicalHeight;
+					REMMINA_PLUGIN_DEBUG("EVNT MON LAYOUT - PhysicalHeight: %i", rdp_event.monitor_layout.physicalHeight);
+					rdp_event.monitor_layout.desktopOrientation = rdp_event.monitor_layout.desktopOrientation;
+					REMMINA_PLUGIN_DEBUG("EVNT MON LAYOUT - desktopOrientation: %i", rdp_event.monitor_layout.desktopOrientation);
+					rdp_event.monitor_layout.desktopScaleFactor = rdp_event.monitor_layout.desktopScaleFactor;
+					REMMINA_PLUGIN_DEBUG("EVNT MON LAYOUT - ScaleFactorflag: %i", rdp_event.monitor_layout.desktopScaleFactor);
+					rdp_event.monitor_layout.deviceScaleFactor = rdp_event.monitor_layout.deviceScaleFactor;
+				}
+				remmina_rdp_event_event_push(gp, &rdp_event);
+			} else {
+
+				rdp_event.monitor_layout.width = gpwidth;
+				rdp_event.monitor_layout.height = gpheight;
+				rdp_event.monitor_layout.desktopOrientation = desktopOrientation;
+				rdp_event.monitor_layout.desktopScaleFactor = desktopScaleFactor;
+				rdp_event.monitor_layout.deviceScaleFactor = deviceScaleFactor;
+				remmina_rdp_event_event_push(gp, &rdp_event);
+			}
 		}
 	}
+
+	g_free(monitorids);
 
 	return FALSE;
 }
 
-void remmina_rdp_event_send_delayed_monitor_layout(RemminaProtocolWidget* gp)
+void remmina_rdp_event_send_delayed_monitor_layout(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
-	rfContext* rfi = GET_PLUGIN_DATA(gp);
+	rfContext *rfi = GET_PLUGIN_DATA(gp);
 	if (!rfi || !rfi->connected || rfi->is_reconnecting)
 		return;
 	if (rfi->delayed_monitor_layout_handler) {
 		g_source_remove(rfi->delayed_monitor_layout_handler);
 		rfi->delayed_monitor_layout_handler = 0;
 	}
-	if (rfi->scale == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_DYNRES) {
+	if (rfi->scale == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_DYNRES)
 		rfi->delayed_monitor_layout_handler = g_timeout_add(500, (GSourceFunc)remmina_rdp_event_delayed_monitor_layout, gp);
-	}
 
 }
 
-static gboolean remmina_rdp_event_on_configure(GtkWidget* widget, GdkEventConfigure* event, RemminaProtocolWidget* gp)
+static gboolean remmina_rdp_event_on_configure(GtkWidget *widget, GdkEventConfigure *event, RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
 	/* Called when gp changes its size or position */
 
-	rfContext* rfi = GET_PLUGIN_DATA(gp);
+	rfContext *rfi = GET_PLUGIN_DATA(gp);
 	if (!rfi || !rfi->connected || rfi->is_reconnecting)
 		return FALSE;
 
@@ -446,10 +476,10 @@ static gboolean remmina_rdp_event_on_configure(GtkWidget* widget, GdkEventConfig
 	return FALSE;
 }
 
-static void remmina_rdp_event_translate_pos(RemminaProtocolWidget* gp, int ix, int iy, UINT16* ox, UINT16* oy)
+static void remmina_rdp_event_translate_pos(RemminaProtocolWidget *gp, int ix, int iy, UINT16 *ox, UINT16 *oy)
 {
 	TRACE_CALL(__func__);
-	rfContext* rfi = GET_PLUGIN_DATA(gp);
+	rfContext *rfi = GET_PLUGIN_DATA(gp);
 
 	/*
 	 * Translate a position from local window coordinates (ix,iy) to
@@ -462,16 +492,16 @@ static void remmina_rdp_event_translate_pos(RemminaProtocolWidget* gp, int ix, i
 	if ((rfi->scale == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_SCALED) && (rfi->scale_width >= 1) && (rfi->scale_height >= 1)) {
 		*ox = (UINT16)(ix * remmina_plugin_service->protocol_plugin_get_width(gp) / rfi->scale_width);
 		*oy = (UINT16)(iy * remmina_plugin_service->protocol_plugin_get_height(gp) / rfi->scale_height);
-	}else  {
+	} else {
 		*ox = (UINT16)ix;
 		*oy = (UINT16)iy;
 	}
 }
 
-static void remmina_rdp_event_reverse_translate_pos_reverse(RemminaProtocolWidget* gp, int ix, int iy, int* ox, int* oy)
+static void remmina_rdp_event_reverse_translate_pos_reverse(RemminaProtocolWidget *gp, int ix, int iy, int *ox, int *oy)
 {
 	TRACE_CALL(__func__);
-	rfContext* rfi = GET_PLUGIN_DATA(gp);
+	rfContext *rfi = GET_PLUGIN_DATA(gp);
 
 	/*
 	 * Translate a position from RDP coordinates (ix,iy) to
@@ -484,13 +514,13 @@ static void remmina_rdp_event_reverse_translate_pos_reverse(RemminaProtocolWidge
 	if ((rfi->scale == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_SCALED) && (rfi->scale_width >= 1) && (rfi->scale_height >= 1)) {
 		*ox = (ix * rfi->scale_width) / remmina_plugin_service->protocol_plugin_get_width(gp);
 		*oy = (iy * rfi->scale_height) / remmina_plugin_service->protocol_plugin_get_height(gp);
-	}else  {
+	} else {
 		*ox = ix;
 		*oy = iy;
 	}
 }
 
-static gboolean remmina_rdp_event_on_motion(GtkWidget* widget, GdkEventMotion* event, RemminaProtocolWidget* gp)
+static gboolean remmina_rdp_event_on_motion(GtkWidget *widget, GdkEventMotion *event, RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
 	RemminaPluginRdpEvent rdp_event = { 0 };
@@ -505,7 +535,7 @@ static gboolean remmina_rdp_event_on_motion(GtkWidget* widget, GdkEventMotion* e
 	return TRUE;
 }
 
-static gboolean remmina_rdp_event_on_button(GtkWidget* widget, GdkEventButton* event, RemminaProtocolWidget* gp)
+static gboolean remmina_rdp_event_on_button(GtkWidget *widget, GdkEventButton *event, RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
 	gint flag;
@@ -561,7 +591,7 @@ static gboolean remmina_rdp_event_on_button(GtkWidget* widget, GdkEventButton* e
 	return TRUE;
 }
 
-static gboolean remmina_rdp_event_on_scroll(GtkWidget* widget, GdkEventScroll* event, RemminaProtocolWidget* gp)
+static gboolean remmina_rdp_event_on_scroll(GtkWidget *widget, GdkEventScroll *event, RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
 	gint flag;
@@ -574,7 +604,6 @@ static gboolean remmina_rdp_event_on_scroll(GtkWidget* widget, GdkEventScroll* e
 	/* See [MS-RDPBCGR] TS_POINTER_EVENT and WM_MOUSEWHEEL message */
 
 	switch (event->direction) {
-
 	case GDK_SCROLL_UP:
 		flag = PTR_FLAGS_WHEEL | 0x0078;  // 120 is one scroll unit defined in WM_MOUSEWHEEL
 		break;
@@ -619,7 +648,7 @@ static gboolean remmina_rdp_event_on_scroll(GtkWidget* widget, GdkEventScroll* e
 	return TRUE;
 }
 
-static void remmina_rdp_event_init_keymap(rfContext* rfi, const gchar* strmap)
+static void remmina_rdp_event_init_keymap(rfContext *rfi, const gchar *strmap)
 {
 	long int v1, v2;
 	const char *s;
@@ -632,7 +661,7 @@ static void remmina_rdp_event_init_keymap(rfContext* rfi, const gchar* strmap)
 	}
 	s = strmap;
 	rfi->keymap = g_array_new(FALSE, TRUE, sizeof(RemminaPluginRdpKeymapEntry));
-	while(1) {
+	while (1) {
 		v1 = strtol(s, &endptr, 10);
 		if (endptr == s) break;
 		s = endptr;
@@ -651,17 +680,16 @@ static void remmina_rdp_event_init_keymap(rfContext* rfi, const gchar* strmap)
 		g_array_unref(rfi->keymap);
 		rfi->keymap = NULL;
 	}
-
 }
 
-static gboolean remmina_rdp_event_on_key(GtkWidget* widget, GdkEventKey* event, RemminaProtocolWidget* gp)
+static gboolean remmina_rdp_event_on_key(GtkWidget *widget, GdkEventKey *event, RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
 	guint32 unicode_keyval;
 	guint16 hardware_keycode;
-	rfContext* rfi = GET_PLUGIN_DATA(gp);
+	rfContext *rfi = GET_PLUGIN_DATA(gp);
 	RemminaPluginRdpEvent rdp_event;
-	RemminaPluginRdpKeymapEntry* kep;
+	RemminaPluginRdpKeymapEntry *kep;
 	DWORD scancode = 0;
 	int ik;
 
@@ -671,9 +699,9 @@ static gboolean remmina_rdp_event_on_key(GtkWidget* widget, GdkEventKey* event, 
 #ifdef ENABLE_GTK_INSPECTOR_KEY
 	/* GTK inspector key is propagated up. Disabled by default.
 	 * enable it by defining ENABLE_GTK_INSPECTOR_KEY */
-	if ( ( event->state & GDK_CONTROL_MASK ) != 0 && ( event->keyval == GDK_KEY_I || event->keyval == GDK_KEY_D ) ) {
+	if ((event->state & GDK_CONTROL_MASK) != 0 && (event->keyval == GDK_KEY_I || event->keyval == GDK_KEY_D))
 		return FALSE;
-	}
+
 #endif
 
 	rdp_event.type = REMMINA_RDP_EVENT_TYPE_SCANCODE;
@@ -705,7 +733,7 @@ static gboolean remmina_rdp_event_on_key(GtkWidget* widget, GdkEventKey* event, 
 		if (!rfi->use_client_keymap) {
 			hardware_keycode = event->hardware_keycode;
 			if (rfi->keymap) {
-				for(ik = 0; ik < rfi->keymap->len; ik++) {
+				for (ik = 0; ik < rfi->keymap->len; ik++) {
 					kep = &g_array_index(rfi->keymap, RemminaPluginRdpKeymapEntry, ik);
 					if (hardware_keycode == kep->orig_keycode) {
 						hardware_keycode = kep->translated_keycode;
@@ -731,7 +759,7 @@ static gboolean remmina_rdp_event_on_key(GtkWidget* widget, GdkEventKey* event, 
 			 * - The rest as Unicode char
 			 */
 			if (event->keyval >= 0xfe00 ||                                                  // Arrows, Shift, Alt, Fn, num keypad…
-				event->hardware_keycode == 0x41 ||											// Spacebar
+			    event->hardware_keycode == 0x41 ||                                          // Spacebar
 			    unicode_keyval == 0 ||                                                      // Impossible to translate
 			    (event->state & (GDK_MOD1_MASK | GDK_CONTROL_MASK | GDK_SUPER_MASK)) != 0   // A modifier not recognized by gdk_keyval_to_unicode()
 			    ) {
@@ -761,7 +789,7 @@ gboolean remmina_rdp_event_on_clipboard(GtkClipboard *gtkClipboard, GdkEvent *ev
 	/* Signal handler for GTK clipboard owner-change */
 	TRACE_CALL(__func__);
 	RemminaPluginRdpEvent rdp_event = { 0 };
-	CLIPRDR_FORMAT_LIST* pFormatList;
+	CLIPRDR_FORMAT_LIST *pFormatList;
 
 	/* Usually "owner-change" is fired when a user pres "COPY" on the client
 	 * OR when this plugin calls gtk_clipboard_set_with_owner()
@@ -774,11 +802,11 @@ gboolean remmina_rdp_event_on_clipboard(GtkClipboard *gtkClipboard, GdkEvent *ev
 	if (rfi)
 		remmina_rdp_clipboard_abort_transfer(rfi);
 
-	if (gtk_clipboard_get_owner(gtkClipboard) != (GObject*)gp) {
+	if (gtk_clipboard_get_owner(gtkClipboard) != (GObject *)gp) {
 		/* To do: avoid this when the new owner is another remmina protocol widget of
 		 * the same remmina application */
 		REMMINA_PLUGIN_DEBUG("     new owner is different than me: new=%p me=%p. Sending local clipboard format list to server.",
-				gtk_clipboard_get_owner(gtkClipboard), (GObject*)gp);
+				     gtk_clipboard_get_owner(gtkClipboard), (GObject *)gp);
 
 		pFormatList = remmina_rdp_cliprdr_get_client_format_list(gp);
 		rdp_event.type = REMMINA_RDP_EVENT_TYPE_CLIPBOARD_SEND_CLIENT_FORMAT_LIST;
@@ -790,14 +818,14 @@ gboolean remmina_rdp_event_on_clipboard(GtkClipboard *gtkClipboard, GdkEvent *ev
 	return TRUE;
 }
 
-void remmina_rdp_event_init(RemminaProtocolWidget* gp)
+void remmina_rdp_event_init(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
-	gchar* s;
+	gchar *s;
 	gint flags;
-	rfContext* rfi = GET_PLUGIN_DATA(gp);
-	GtkClipboard* clipboard;
-	RemminaFile* remminafile;
+	rfContext *rfi = GET_PLUGIN_DATA(gp);
+	GtkClipboard *clipboard;
+	RemminaFile *remminafile;
 
 	if (!rfi) return;
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
@@ -807,12 +835,12 @@ void remmina_rdp_event_init(RemminaProtocolWidget* gp)
 	gtk_container_add(GTK_CONTAINER(gp), rfi->drawing_area);
 
 	gtk_widget_add_events(rfi->drawing_area, GDK_POINTER_MOTION_MASK
-		| GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK
-		| GDK_KEY_PRESS_MASK | GDK_KEY_RELEASE_MASK
-#if GTK_CHECK_VERSION(3,4,0)
-		| GDK_SMOOTH_SCROLL_MASK
+			      | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK
+			      | GDK_KEY_PRESS_MASK | GDK_KEY_RELEASE_MASK
+#if GTK_CHECK_VERSION(3, 4, 0)
+			      | GDK_SMOOTH_SCROLL_MASK
 #endif
-		| GDK_SCROLL_MASK | GDK_FOCUS_CHANGE_MASK);
+			      | GDK_SCROLL_MASK | GDK_FOCUS_CHANGE_MASK);
 	gtk_widget_set_can_focus(rfi->drawing_area, TRUE);
 
 	remmina_plugin_service->protocol_plugin_register_hostkey(gp, rfi->drawing_area);
@@ -824,32 +852,31 @@ void remmina_rdp_event_init(RemminaProtocolWidget* gp)
 	/* Read special keymap from profile file, if exists */
 	remmina_rdp_event_init_keymap(rfi, remmina_plugin_service->pref_get_value("rdp_map_keycode"));
 
-	if (rfi->use_client_keymap && rfi->keymap) {
+	if (rfi->use_client_keymap && rfi->keymap)
 		fprintf(stderr, "RDP profile error: you cannot define both rdp_map_hardware_keycode and have 'Use client keuboard mapping' enabled\n");
-	}
 
 	g_signal_connect(G_OBJECT(rfi->drawing_area), "draw",
-		G_CALLBACK(remmina_rdp_event_on_draw), gp);
+			 G_CALLBACK(remmina_rdp_event_on_draw), gp);
 	g_signal_connect(G_OBJECT(rfi->drawing_area), "configure-event",
-		G_CALLBACK(remmina_rdp_event_on_configure), gp);
+			 G_CALLBACK(remmina_rdp_event_on_configure), gp);
 	g_signal_connect(G_OBJECT(rfi->drawing_area), "motion-notify-event",
-		G_CALLBACK(remmina_rdp_event_on_motion), gp);
+			 G_CALLBACK(remmina_rdp_event_on_motion), gp);
 	g_signal_connect(G_OBJECT(rfi->drawing_area), "button-press-event",
-		G_CALLBACK(remmina_rdp_event_on_button), gp);
+			 G_CALLBACK(remmina_rdp_event_on_button), gp);
 	g_signal_connect(G_OBJECT(rfi->drawing_area), "button-release-event",
-		G_CALLBACK(remmina_rdp_event_on_button), gp);
+			 G_CALLBACK(remmina_rdp_event_on_button), gp);
 	g_signal_connect(G_OBJECT(rfi->drawing_area), "scroll-event",
-		G_CALLBACK(remmina_rdp_event_on_scroll), gp);
+			 G_CALLBACK(remmina_rdp_event_on_scroll), gp);
 	g_signal_connect(G_OBJECT(rfi->drawing_area), "key-press-event",
-		G_CALLBACK(remmina_rdp_event_on_key), gp);
+			 G_CALLBACK(remmina_rdp_event_on_key), gp);
 	g_signal_connect(G_OBJECT(rfi->drawing_area), "key-release-event",
-		G_CALLBACK(remmina_rdp_event_on_key), gp);
+			 G_CALLBACK(remmina_rdp_event_on_key), gp);
 	g_signal_connect(G_OBJECT(rfi->drawing_area), "focus-in-event",
-		G_CALLBACK(remmina_rdp_event_on_focus_in), gp);
+			 G_CALLBACK(remmina_rdp_event_on_focus_in), gp);
 	g_signal_connect(G_OBJECT(gtk_widget_get_toplevel(rfi->drawing_area)), "map-event",
-		G_CALLBACK(remmina_rdp_event_on_map), gp);
+			 G_CALLBACK(remmina_rdp_event_on_map), gp);
 	g_signal_connect(G_OBJECT(gtk_widget_get_toplevel(rfi->drawing_area)), "unmap-event",
-		G_CALLBACK(remmina_rdp_event_on_unmap), gp);
+			 G_CALLBACK(remmina_rdp_event_on_unmap), gp);
 
 	if (!remmina_plugin_service->file_get_int(remminafile, "disableclipboard", FALSE)) {
 		clipboard = gtk_widget_get_clipboard(rfi->drawing_area, GDK_SELECTION_CLIPBOARD);
@@ -866,13 +893,12 @@ void remmina_rdp_event_init(RemminaProtocolWidget* gp)
 		rfi->event_pipe[0] = -1;
 		rfi->event_pipe[1] = -1;
 		rfi->event_handle = NULL;
-	}else  {
+	} else {
 		flags = fcntl(rfi->event_pipe[0], F_GETFL, 0);
 		fcntl(rfi->event_pipe[0], F_SETFL, flags | O_NONBLOCK);
 		rfi->event_handle = CreateFileDescriptorEvent(NULL, FALSE, FALSE, rfi->event_pipe[0], WINPR_FD_READ);
-		if (!rfi->event_handle) {
+		if (!rfi->event_handle)
 			g_print("CreateFileDescriptorEvent() failed\n");
-		}
 	}
 
 	rfi->object_table = g_hash_table_new_full(NULL, NULL, NULL, g_free);
@@ -881,14 +907,14 @@ void remmina_rdp_event_init(RemminaProtocolWidget* gp)
 
 #if GTK_CHECK_VERSION(3, 22, 0)
 	GdkVisual *visual = gdk_screen_get_system_visual(
-			gdk_display_get_default_screen(rfi->display));
-	rfi->bpp = gdk_visual_get_depth (visual);
+		gdk_display_get_default_screen(rfi->display));
+	rfi->bpp = gdk_visual_get_depth(visual);
 #else
 	rfi->bpp = gdk_visual_get_best_depth();
 #endif
 }
 
-void remmina_rdp_event_free_event(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* obj)
+void remmina_rdp_event_free_event(RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *obj)
 {
 	TRACE_CALL(__func__);
 
@@ -904,11 +930,11 @@ void remmina_rdp_event_free_event(RemminaProtocolWidget* gp, RemminaPluginRdpUiO
 	g_free(obj);
 }
 
-void remmina_rdp_event_uninit(RemminaProtocolWidget* gp)
+void remmina_rdp_event_uninit(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
-	rfContext* rfi = GET_PLUGIN_DATA(gp);
-	RemminaPluginRdpUiObject* ui;
+	rfContext *rfi = GET_PLUGIN_DATA(gp);
+	RemminaPluginRdpUiObject *ui;
 
 	if (!rfi) return;
 
@@ -925,9 +951,8 @@ void remmina_rdp_event_uninit(RemminaProtocolWidget* gp)
 		g_source_remove(rfi->ui_handler);
 		rfi->ui_handler = 0;
 	}
-	while ((ui = (RemminaPluginRdpUiObject*)g_async_queue_try_pop(rfi->ui_queue)) != NULL) {
+	while ((ui = (RemminaPluginRdpUiObject *)g_async_queue_try_pop(rfi->ui_queue)) != NULL)
 		remmina_rdp_event_free_event(gp, ui);
-	}
 	if (rfi->surface) {
 		cairo_surface_destroy(rfi->surface);
 		rfi->surface = NULL;
@@ -955,10 +980,10 @@ void remmina_rdp_event_uninit(RemminaProtocolWidget* gp)
 	close(rfi->event_pipe[1]);
 }
 
-static void remmina_rdp_event_create_cairo_surface(rfContext* rfi)
+static void remmina_rdp_event_create_cairo_surface(rfContext *rfi)
 {
 	int stride;
-	rdpGdi* gdi;
+	rdpGdi *gdi;
 
 	if (!rfi)
 		return;
@@ -973,33 +998,33 @@ static void remmina_rdp_event_create_cairo_surface(rfContext* rfi)
 		rfi->surface = NULL;
 	}
 	stride = cairo_format_stride_for_width(rfi->cairo_format, gdi->width);
-	rfi->surface = cairo_image_surface_create_for_data((unsigned char*)gdi->primary_buffer, rfi->cairo_format, gdi->width, gdi->height, stride);
+	rfi->surface = cairo_image_surface_create_for_data((unsigned char *)gdi->primary_buffer, rfi->cairo_format, gdi->width, gdi->height, stride);
 }
 
-void remmina_rdp_event_update_scale(RemminaProtocolWidget* gp)
+void remmina_rdp_event_update_scale(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
 	gint width, height;
-	rdpGdi* gdi;
-	rfContext* rfi = GET_PLUGIN_DATA(gp);
+	rdpGdi *gdi;
+	rfContext *rfi = GET_PLUGIN_DATA(gp);
 
 	width = remmina_plugin_service->protocol_plugin_get_width(gp);
 	height = remmina_plugin_service->protocol_plugin_get_height(gp);
 
-	gdi = ((rdpContext*)rfi)->gdi;
+	gdi = ((rdpContext *)rfi)->gdi;
 
 	rfi->scale = remmina_plugin_service->remmina_protocol_widget_get_current_scale_mode(gp);
 
 	/* See if we also must rellocate rfi->surface with different width and height,
 	 * this usually happens after a DesktopResize RDP event*/
 
-	if ( rfi->surface && (cairo_image_surface_get_width(rfi->surface) != gdi->width ||
-		cairo_image_surface_get_height(rfi->surface) != gdi->height) ) {
+	if (rfi->surface && (cairo_image_surface_get_width(rfi->surface) != gdi->width ||
+			     cairo_image_surface_get_height(rfi->surface) != gdi->height)) {
 		/* Destroys and recreate rfi->surface with new width and height */
 		cairo_surface_destroy(rfi->surface);
 		rfi->surface = NULL;
 		remmina_rdp_event_create_cairo_surface(rfi);
-	} else if ( rfi->surface == NULL ) {
+	} else if (rfi->surface == NULL) {
 		remmina_rdp_event_create_cairo_surface(rfi);
 	}
 
@@ -1012,21 +1037,20 @@ void remmina_rdp_event_update_scale(RemminaProtocolWidget* gp)
 
 	remmina_rdp_event_update_scale_factor(gp);
 
-	if (rfi->scale == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_SCALED || rfi->scale == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_DYNRES) {
+	if (rfi->scale == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_SCALED || rfi->scale == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_DYNRES)
 		/* In scaled mode and autores mode, drawing_area will get its dimensions from its parent */
-		gtk_widget_set_size_request(rfi->drawing_area, -1, -1 );
-	}else  {
+		gtk_widget_set_size_request(rfi->drawing_area, -1, -1);
+	else
 		/* In non scaled mode, the plugins forces dimensions of drawing area */
 		gtk_widget_set_size_request(rfi->drawing_area, width, height);
-	}
 	remmina_plugin_service->protocol_plugin_update_align(gp);
 }
 
-static void remmina_rdp_event_connected(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
+static void remmina_rdp_event_connected(RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *ui)
 {
 	TRACE_CALL(__func__);
-	rfContext* rfi = GET_PLUGIN_DATA(gp);
-	rdpGdi* gdi;
+	rfContext *rfi = GET_PLUGIN_DATA(gp);
+	rdpGdi *gdi;
 
 	gdi = ((rdpContext *)rfi)->gdi;
 
@@ -1037,27 +1061,27 @@ static void remmina_rdp_event_connected(RemminaProtocolWidget* gp, RemminaPlugin
 
 	remmina_rdp_event_update_scale(gp);
 
-    remmina_plugin_service->protocol_plugin_signal_connection_opened(gp);
+	remmina_plugin_service->protocol_plugin_signal_connection_opened(gp);
 }
 
-static void remmina_rdp_event_reconnect_progress(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
+static void remmina_rdp_event_reconnect_progress(RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *ui)
 {
 	TRACE_CALL(__func__);
-	rfContext* rfi = GET_PLUGIN_DATA(gp);
+	rfContext *rfi = GET_PLUGIN_DATA(gp);
 	gdk_window_invalidate_rect(gtk_widget_get_window(rfi->drawing_area), NULL, TRUE);
 }
 
-static BOOL remmina_rdp_event_create_cursor(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
+static BOOL remmina_rdp_event_create_cursor(RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *ui)
 {
 	TRACE_CALL(__func__);
-	GdkPixbuf* pixbuf;
-	rfContext* rfi = GET_PLUGIN_DATA(gp);
-	rdpPointer* pointer = (rdpPointer*)ui->cursor.pointer;
-	cairo_surface_t* surface;
-	UINT8* data = malloc(pointer->width * pointer->height * 4);
+	GdkPixbuf *pixbuf;
+	rfContext *rfi = GET_PLUGIN_DATA(gp);
+	rdpPointer *pointer = (rdpPointer *)ui->cursor.pointer;
+	cairo_surface_t *surface;
+	UINT8 *data = malloc(pointer->width * pointer->height * 4);
 
 	if (!freerdp_image_copy_from_pointer_data(
-		    (BYTE*)data, PIXEL_FORMAT_BGRA32,
+		    (BYTE *)data, PIXEL_FORMAT_BGRA32,
 		    pointer->width * 4, 0, 0, pointer->width, pointer->height,
 		    pointer->xorMaskData, pointer->lengthXorMask,
 		    pointer->andMaskData, pointer->lengthAndMask,
@@ -1070,13 +1094,13 @@ static BOOL remmina_rdp_event_create_cursor(RemminaProtocolWidget* gp, RemminaPl
 	pixbuf = gdk_pixbuf_get_from_surface(surface, 0, 0, pointer->width, pointer->height);
 	cairo_surface_destroy(surface);
 	free(data);
-	((rfPointer*)ui->cursor.pointer)->cursor = gdk_cursor_new_from_pixbuf(rfi->display, pixbuf, pointer->xPos, pointer->yPos);
+	((rfPointer *)ui->cursor.pointer)->cursor = gdk_cursor_new_from_pixbuf(rfi->display, pixbuf, pointer->xPos, pointer->yPos);
 	g_object_unref(pixbuf);
 
 	return TRUE;
 }
 
-static void remmina_rdp_event_free_cursor(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
+static void remmina_rdp_event_free_cursor(RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *ui)
 {
 	TRACE_CALL(__func__);
 	g_object_unref(ui->cursor.pointer->cursor);
@@ -1094,7 +1118,7 @@ static BOOL remmina_rdp_event_set_pointer_position(RemminaProtocolWidget *gp, gi
 	GdkDeviceManager *manager;
 #endif
 	GdkDevice *dev;
-	rfContext* rfi = GET_PLUGIN_DATA(gp);
+	rfContext *rfi = GET_PLUGIN_DATA(gp);
 
 	if (rfi == NULL)
 		return FALSE;
@@ -1120,10 +1144,10 @@ static BOOL remmina_rdp_event_set_pointer_position(RemminaProtocolWidget *gp, gi
 	return TRUE;
 }
 
-static void remmina_rdp_event_cursor(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
+static void remmina_rdp_event_cursor(RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *ui)
 {
 	TRACE_CALL(__func__);
-	rfContext* rfi = GET_PLUGIN_DATA(gp);
+	rfContext *rfi = GET_PLUGIN_DATA(gp);
 
 	switch (ui->cursor.type) {
 	case REMMINA_RDP_POINTER_NEW:
@@ -1145,8 +1169,8 @@ static void remmina_rdp_event_cursor(RemminaProtocolWidget* gp, RemminaPluginRdp
 
 	case REMMINA_RDP_POINTER_NULL:
 		gdk_window_set_cursor(gtk_widget_get_window(rfi->drawing_area),
-			gdk_cursor_new_for_display(gdk_display_get_default(),
-				GDK_BLANK_CURSOR));
+				      gdk_cursor_new_for_display(gdk_display_get_default(),
+								 GDK_BLANK_CURSOR));
 		ui->retval = 1;
 		break;
 
@@ -1157,31 +1181,31 @@ static void remmina_rdp_event_cursor(RemminaProtocolWidget* gp, RemminaPluginRdp
 	}
 }
 
-static void remmina_rdp_ui_event_update_scale(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
+static void remmina_rdp_ui_event_update_scale(RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *ui)
 {
 	TRACE_CALL(__func__);
 	remmina_rdp_event_update_scale(gp);
 }
 
-void remmina_rdp_event_unfocus(RemminaProtocolWidget* gp)
+void remmina_rdp_event_unfocus(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
-	rfContext* rfi = GET_PLUGIN_DATA(gp);
+	rfContext *rfi = GET_PLUGIN_DATA(gp);
 
 	if (!rfi || !rfi->connected || rfi->is_reconnecting)
 		return;
 	remmina_rdp_event_release_all_keys(gp);
 }
 
-static void remmina_rdp_ui_event_destroy_cairo_surface(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
+static void remmina_rdp_ui_event_destroy_cairo_surface(RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *ui)
 {
 	TRACE_CALL(__func__);
-	rfContext* rfi = GET_PLUGIN_DATA(gp);
+	rfContext *rfi = GET_PLUGIN_DATA(gp);
 	cairo_surface_destroy(rfi->surface);
 	rfi->surface = NULL;
 }
 
-static void remmina_rdp_event_process_event(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
+static void remmina_rdp_event_process_event(RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *ui)
 {
 	TRACE_CALL(__func__);
 	switch (ui->event.type) {
@@ -1194,7 +1218,7 @@ static void remmina_rdp_event_process_event(RemminaProtocolWidget* gp, RemminaPl
 	}
 }
 
-static void remmina_rdp_event_process_ui_event(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
+static void remmina_rdp_event_process_ui_event(RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *ui)
 {
 	TRACE_CALL(__func__);
 	switch (ui->type) {
@@ -1227,49 +1251,46 @@ static void remmina_rdp_event_process_ui_event(RemminaProtocolWidget* gp, Remmin
 	}
 }
 
-static gboolean remmina_rdp_event_process_ui_queue(RemminaProtocolWidget* gp)
+static gboolean remmina_rdp_event_process_ui_queue(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
 
-	rfContext* rfi = GET_PLUGIN_DATA(gp);
-	RemminaPluginRdpUiObject* ui;
+	rfContext *rfi = GET_PLUGIN_DATA(gp);
+	RemminaPluginRdpUiObject *ui;
 
 	pthread_mutex_lock(&rfi->ui_queue_mutex);
-	ui = (RemminaPluginRdpUiObject*)g_async_queue_try_pop(rfi->ui_queue);
+	ui = (RemminaPluginRdpUiObject *)g_async_queue_try_pop(rfi->ui_queue);
 	if (ui) {
 		pthread_mutex_lock(&ui->sync_wait_mutex);
-		if (!rfi->thread_cancelled) {
+		if (!rfi->thread_cancelled)
 			remmina_rdp_event_process_ui_event(gp, ui);
-		}
 		// Should we signal the caller thread to unlock ?
 		if (ui->sync) {
 			ui->complete = TRUE;
 			pthread_cond_signal(&ui->sync_wait_cond);
 			pthread_mutex_unlock(&ui->sync_wait_mutex);
-
 		} else {
 			remmina_rdp_event_free_event(gp, ui);
 		}
 
 		pthread_mutex_unlock(&rfi->ui_queue_mutex);
 		return TRUE;
-	}else  {
+	} else {
 		rfi->ui_handler = 0;
 		pthread_mutex_unlock(&rfi->ui_queue_mutex);
 		return FALSE;
 	}
 }
 
-static void remmina_rdp_event_queue_ui(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
+static void remmina_rdp_event_queue_ui(RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *ui)
 {
 	TRACE_CALL(__func__);
-	rfContext* rfi = GET_PLUGIN_DATA(gp);
+	rfContext *rfi = GET_PLUGIN_DATA(gp);
 	gboolean ui_sync_save;
 	int oldcanceltype;
 
-	if (rfi->thread_cancelled) {
+	if (rfi->thread_cancelled)
 		return;
-	}
 
 	if (remmina_plugin_service->is_main_thread()) {
 		remmina_rdp_event_process_ui_event(gp, ui);
@@ -1292,17 +1313,15 @@ static void remmina_rdp_event_queue_ui(RemminaProtocolWidget* gp, RemminaPluginR
 
 	g_async_queue_push(rfi->ui_queue, ui);
 
-	if (!rfi->ui_handler) {
+	if (!rfi->ui_handler)
 		rfi->ui_handler = IDLE_ADD((GSourceFunc)remmina_rdp_event_process_ui_queue, gp);
-	}
 
 	if (ui_sync_save) {
 		/* Wait for main thread function completion before returning */
 		pthread_mutex_lock(&ui->sync_wait_mutex);
 		pthread_mutex_unlock(&rfi->ui_queue_mutex);
-		while (!ui->complete) {
+		while (!ui->complete)
 			pthread_cond_wait(&ui->sync_wait_cond, &ui->sync_wait_mutex);
-		}
 		pthread_cond_destroy(&ui->sync_wait_cond);
 		pthread_mutex_destroy(&ui->sync_wait_mutex);
 	} else {
@@ -1311,13 +1330,13 @@ static void remmina_rdp_event_queue_ui(RemminaProtocolWidget* gp, RemminaPluginR
 	pthread_setcanceltype(oldcanceltype, NULL);
 }
 
-void remmina_rdp_event_queue_ui_async(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
+void remmina_rdp_event_queue_ui_async(RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *ui)
 {
 	ui->sync = FALSE;
 	remmina_rdp_event_queue_ui(gp, ui);
 }
 
-int remmina_rdp_event_queue_ui_sync_retint(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
+int remmina_rdp_event_queue_ui_sync_retint(RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *ui)
 {
 	TRACE_CALL(__func__);
 	int retval;
@@ -1328,7 +1347,7 @@ int remmina_rdp_event_queue_ui_sync_retint(RemminaProtocolWidget* gp, RemminaPlu
 	return retval;
 }
 
-void *remmina_rdp_event_queue_ui_sync_retptr(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
+void *remmina_rdp_event_queue_ui_sync_retptr(RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *ui)
 {
 	TRACE_CALL(__func__);
 	void *rp;

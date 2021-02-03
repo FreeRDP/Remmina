@@ -84,6 +84,7 @@ struct _RemminaProtocolWidgetPriv {
 
 	gint			profile_remote_width;
 	gint			profile_remote_height;
+	gint			multimon;
 
 	RemminaMessagePanel *	connect_message_panel;
 	RemminaMessagePanel *	listen_message_panel;
@@ -1127,6 +1128,15 @@ gint remmina_protocol_widget_get_profile_remote_width(RemminaProtocolWidget *gp)
 	TRACE_CALL(__func__);
 	/* Returns the width of remote desktop as chosen by the user profile */
 	return gp->priv->profile_remote_width;
+}
+
+gint remmina_protocol_widget_get_multimon(RemminaProtocolWidget *gp)
+{
+	TRACE_CALL(__func__);
+	/* Returns ehenever multi monitor is enabled (1) */
+	gp->priv->multimon = remmina_file_get_int(gp->priv->remmina_file, "multimon", -1);
+	REMMINA_DEBUG ("Multi monitor is set to %d", gp->priv->multimon);
+	return gp->priv->multimon;
 }
 
 gint remmina_protocol_widget_get_profile_remote_height(RemminaProtocolWidget *gp)

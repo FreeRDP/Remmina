@@ -34,6 +34,7 @@
  */
 
 #pragma once
+#include <gtk/gtk.h>
 
 /*
  * Remmina Preferences Dialog
@@ -95,6 +96,7 @@ typedef struct _RemminaPrefDialog {
 	GtkButton *		button_keyboard_switch_tab_left;
 	GtkButton *		button_keyboard_switch_tab_right;
 	GtkButton *		button_keyboard_scaled;
+	GtkButton *		button_keyboard_multimon;
 	GtkButton *		button_keyboard_grab_keyboard;
 	GtkButton *		button_keyboard_screenshot;
 	GtkButton *		button_keyboard_viewonly;
@@ -156,5 +158,6 @@ GtkDialog *remmina_pref_dialog_new(gint default_tab, GtkWindow *parent);
 /* Get the current PrefDialog or NULL if not initialized */
 GtkDialog *remmina_pref_dialog_get_dialog(void);
 void remmina_prefdiag_unlock_repwd_on_changed(GtkEditable *editable, RemminaPrefDialog *dialog);
+void remmina_pref_dialog_on_action_close(GSimpleAction *action, GVariant *param, gpointer data);
 
 G_END_DECLS

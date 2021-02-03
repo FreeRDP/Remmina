@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.36.0
+<!-- Generated with glade 3.36.0 
 
-Remmina Preferences Dialog -
-Copyright © 2014-2021 Antenore Gatta, Giovanni Panozzo
+Remmina Preferences Dialog - 
+Copyright (C) Antenore Gatta, Giovanni Panozzo 2014-2020
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -27,19 +27,10 @@ Author: Antenore Gatta
   <!-- interface-name Remmina Preferences Dialog -->
   <!-- interface-copyright Antenore Gatta, Giovanni Panozzo 2014-2020 -->
   <!-- interface-authors Antenore Gatta -->
-  <object class="GtkActionGroup" id="actiongroup_preferences">
-    <child>
-      <object class="GtkAction" id="action_preferences_close">
-        <property name="label" translatable="yes">Close</property>
-        <property name="short_label" translatable="yes">Close</property>
-        <signal name="activate" handler="remmina_pref_dialog_on_close_clicked" swapped="no"/>
-      </object>
-    </child>
-  </object>
   <object class="GtkDialog" id="RemminaPrefDialog">
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">Remmina Preferences</property>
-    <property name="modal">True</property>
+    <property name="window_position">center-on-parent</property>
     <property name="type_hint">dialog</property>
     <signal name="close" handler="remmina_pref_dialog_on_close_clicked" swapped="no"/>
     <signal name="destroy" handler="remmina_pref_on_dialog_destroy" swapped="no"/>
@@ -55,11 +46,10 @@ Author: Antenore Gatta
             <child>
               <object class="GtkButton" id="button_close">
                 <property name="label" translatable="yes">Close</property>
-                <property name="use_action_appearance">True</property>
-                <property name="related_action">action_preferences_close</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
+                <property name="action_name">pref.close</property>
                 <property name="use_underline">True</property>
               </object>
               <packing>
@@ -80,6 +70,9 @@ Author: Antenore Gatta
           <object class="GtkNotebook" id="notebook_preferences">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
+            <property name="tab_pos">left</property>
+            <property name="scrollable">True</property>
+            <property name="enable_popup">True</property>
             <child>
               <object class="GtkGrid" id="grid_options">
                 <property name="visible">True</property>
@@ -91,7 +84,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
+                    <property name="margin_start">18</property>
                     <property name="hexpand">False</property>
                     <property name="label" translatable="yes">Double-click action</property>
                     <property name="justify">right</property>
@@ -105,7 +98,7 @@ Author: Antenore Gatta
                   <object class="GtkComboBoxText" id="comboboxtext_options_double_click">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="margin_right">18</property>
+                    <property name="margin_end">18</property>
                     <items>
                       <item translatable="yes">Open connection</item>
                       <item translatable="yes">Edit settings</item>
@@ -122,7 +115,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
+                    <property name="margin_start">18</property>
                     <property name="hexpand">False</property>
                     <property name="label" translatable="yes">Scaling quality</property>
                     <property name="justify">right</property>
@@ -136,7 +129,7 @@ Author: Antenore Gatta
                   <object class="GtkComboBoxText" id="comboboxtext_options_scale_quality">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="margin_right">18</property>
+                    <property name="margin_end">18</property>
                     <items>
                       <item translatable="yes">Nearest</item>
                       <item translatable="yes">Tiles</item>
@@ -155,7 +148,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
+                    <property name="margin_start">18</property>
                     <property name="hexpand">False</property>
                     <property name="label" translatable="yes">Step size for auto-scroll</property>
                     <property name="justify">right</property>
@@ -169,7 +162,7 @@ Author: Antenore Gatta
                   <object class="GtkEntry" id="entry_options_scroll">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="margin_right">18</property>
+                    <property name="margin_end">18</property>
                     <property name="max_length">3</property>
                   </object>
                   <packing>
@@ -183,7 +176,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
+                    <property name="margin_start">18</property>
                     <property name="hexpand">False</property>
                     <property name="label" translatable="yes">Maximal amount of recent items</property>
                     <property name="justify">right</property>
@@ -213,7 +206,7 @@ Author: Antenore Gatta
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
                     <property name="halign">start</property>
-                    <property name="margin_right">18</property>
+                    <property name="margin_end">18</property>
                     <signal name="clicked" handler="remmina_pref_dialog_clear_recent" swapped="no"/>
                   </object>
                   <packing>
@@ -226,7 +219,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
+                    <property name="margin_start">18</property>
                     <property name="hexpand">False</property>
                     <property name="label" translatable="yes">Screen resolutions</property>
                     <property name="justify">right</property>
@@ -241,7 +234,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
+                    <property name="margin_start">18</property>
                     <property name="hexpand">False</property>
                     <property name="label" translatable="yes">Keystrokes</property>
                     <property name="justify">right</property>
@@ -257,8 +250,8 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
-                    <property name="halign">start</property>
-                    <property name="margin_right">18</property>
+                    <property name="halign">end</property>
+                    <property name="margin_end">18</property>
                     <signal name="clicked" handler="remmina_pref_on_button_keystrokes_clicked" swapped="no"/>
                   </object>
                   <packing>
@@ -272,7 +265,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
+                    <property name="margin_start">18</property>
                     <property name="hexpand">False</property>
                     <property name="label" translatable="yes">Folder for screenshots</property>
                     <property name="justify">right</property>
@@ -287,7 +280,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="tooltip_text" translatable="yes">Choose a folder to save screenshots from Remmina in.</property>
-                    <property name="margin_right">18</property>
+                    <property name="margin_end">18</property>
                     <property name="action">select-folder</property>
                     <property name="title" translatable="yes">Select a folder</property>
                   </object>
@@ -303,8 +296,8 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
-                    <property name="halign">start</property>
-                    <property name="margin_right">18</property>
+                    <property name="halign">end</property>
+                    <property name="margin_end">18</property>
                     <signal name="clicked" handler="remmina_pref_on_button_resolutions_clicked" swapped="no"/>
                   </object>
                   <packing>
@@ -318,7 +311,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
+                    <property name="margin_start">18</property>
                     <property name="hexpand">False</property>
                     <property name="label" translatable="yes">Screenshot filenames</property>
                     <property name="justify">right</property>
@@ -336,7 +329,7 @@ Author: Antenore Gatta
 %h Server name/IP
 %Y Year, %m Month, %d Day, %H Hour, %M Minute, %S Seconds (UTC time)
 </property>
-                    <property name="margin_right">18</property>
+                    <property name="margin_end">18</property>
                     <property name="width_chars">35</property>
                     <property name="placeholder_text">remmina_%p_%h_%Y%m%d-%H%M%S</property>
                   </object>
@@ -352,7 +345,7 @@ Author: Antenore Gatta
                     <property name="can_focus">False</property>
                     <property name="tooltip_text" translatable="yes">The folder connection profiles are saved in, it defaults to the XDG_USER_DATA</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
+                    <property name="margin_start">18</property>
                     <property name="margin_top">18</property>
                     <property name="hexpand">False</property>
                     <property name="label" translatable="yes" comments="The folder where profiles are saved">Remmina data folder</property>
@@ -367,7 +360,7 @@ Author: Antenore Gatta
                   <object class="GtkFileChooserButton" id="filechooserbutton_options_datadir_path">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="margin_right">18</property>
+                    <property name="margin_end">18</property>
                     <property name="margin_top">18</property>
                     <property name="action">select-folder</property>
                     <property name="title" translatable="yes"/>
@@ -384,7 +377,7 @@ Author: Antenore Gatta
                     <property name="can_focus">False</property>
                     <property name="tooltip_text" translatable="yes">Remember last view for each connection</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
+                    <property name="margin_start">18</property>
                     <property name="hexpand">False</property>
                     <property name="label" translatable="yes" comments="The star (*) is a reference to privacy consent">Remember last view mode</property>
                     <property name="justify">right</property>
@@ -398,9 +391,9 @@ Author: Antenore Gatta
                   <object class="GtkSwitch" id="switch_options_remember_last_view_mode">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="halign">start</property>
+                    <property name="halign">end</property>
                     <property name="valign">center</property>
-                    <property name="margin_right">18</property>
+                    <property name="margin_end">18</property>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -412,9 +405,9 @@ Author: Antenore Gatta
                   <object class="GtkSwitch" id="switch_permit_send_stats">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="halign">start</property>
+                    <property name="halign">end</property>
                     <property name="valign">center</property>
-                    <property name="margin_right">18</property>
+                    <property name="margin_end">18</property>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -428,7 +421,7 @@ Author: Antenore Gatta
                     <property name="can_focus">False</property>
                     <property name="tooltip_text" translatable="yes">Set a custom filename for your Remmina connection profiles, using a formatting string.</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
+                    <property name="margin_start">18</property>
                     <property name="hexpand">False</property>
                     <property name="label" translatable="yes">Template for profile filenames</property>
                     <property name="justify">right</property>
@@ -449,7 +442,7 @@ Author: Antenore Gatta
 
 
 </property>
-                    <property name="margin_right">18</property>
+                    <property name="margin_end">18</property>
                     <property name="width_chars">25</property>
                     <property name="placeholder_text">%G_%P_%N_%h</property>
                   </object>
@@ -465,7 +458,7 @@ Author: Antenore Gatta
                     <property name="can_focus">False</property>
                     <property name="tooltip_text" translatable="yes">Only save generated screenshots, don't copy them to clipboard.</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
+                    <property name="margin_start">18</property>
                     <property name="margin_bottom">18</property>
                     <property name="hexpand">False</property>
                     <property name="label" translatable="yes">Prevent screenshots from entering clipboard</property>
@@ -480,9 +473,9 @@ Author: Antenore Gatta
                   <object class="GtkSwitch" id="switch_options_deny_screenshot_clipboard">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="halign">start</property>
+                    <property name="halign">end</property>
                     <property name="valign">center</property>
-                    <property name="margin_right">18</property>
+                    <property name="margin_end">18</property>
                     <property name="margin_bottom">18</property>
                   </object>
                   <packing>
@@ -495,9 +488,9 @@ Author: Antenore Gatta
                   <object class="GtkSwitch" id="switch_permit_news">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="halign">start</property>
+                    <property name="halign">end</property>
                     <property name="valign">center</property>
-                    <property name="margin_right">18</property>
+                    <property name="margin_end">18</property>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -509,6 +502,9 @@ Author: Antenore Gatta
                   <object class="GtkLabel" id="privacy_disclaimer_label">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="halign">start</property>
+                    <property name="margin_start">18</property>
+                    <property name="margin_end">18</property>
                     <property name="label" translatable="yes">* By enabling statistics and/or news you consent to send and fetch data to/from remmina.org</property>
                     <property name="justify">fill</property>
                     <property name="wrap">True</property>
@@ -525,7 +521,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
+                    <property name="margin_start">18</property>
                     <property name="hexpand">False</property>
                     <property name="label" translatable="yes" comments="The star (*) is a reference to privacy consent">Send &lt;b&gt;&lt;a href="https://remmina.gitlab.io/remminadoc.gitlab.io/remmina__stats_8c.html#details" title="Remmina usage statistics"&gt;anonymous&lt;/a&gt;&lt;/b&gt; statistics. (*)</property>
                     <property name="use_markup">True</property>
@@ -540,7 +536,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
+                    <property name="margin_start">18</property>
                     <property name="hexpand">False</property>
                     <property name="label" translatable="yes" comments="The star (*) is a reference to privacy consent">Fetch news from &lt;a href="https://remmina.org" title="Remmina news site"&gt;remmina.org&lt;/a&gt; (*)</property>
                     <property name="use_markup">True</property>
@@ -556,6 +552,8 @@ Author: Antenore Gatta
               <object class="GtkLabel" id="label_tab_options">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="halign">end</property>
+                <property name="margin_end">18</property>
                 <property name="label" translatable="yes">Options</property>
               </object>
               <packing>
@@ -576,7 +574,7 @@ Author: Antenore Gatta
                     <property name="can_focus">True</property>
                     <property name="receives_default">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
+                    <property name="margin_start">18</property>
                     <property name="hexpand">True</property>
                     <property name="draw_indicator">True</property>
                   </object>
@@ -593,7 +591,7 @@ Author: Antenore Gatta
                     <property name="can_focus">True</property>
                     <property name="receives_default">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
+                    <property name="margin_start">18</property>
                     <property name="hexpand">True</property>
                     <property name="draw_indicator">True</property>
                   </object>
@@ -608,7 +606,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
+                    <property name="margin_start">18</property>
                     <property name="label" translatable="yes">Default view</property>
                   </object>
                   <packing>
@@ -620,7 +618,7 @@ Author: Antenore Gatta
                   <object class="GtkComboBoxText" id="comboboxtext_appearance_view_mode">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="margin_right">18</property>
+                    <property name="margin_end">18</property>
                     <property name="hexpand">True</property>
                     <items>
                       <item translatable="yes">Automatic</item>
@@ -640,7 +638,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
+                    <property name="margin_start">18</property>
                     <property name="margin_bottom">18</property>
                     <property name="label" translatable="yes">Tabs</property>
                   </object>
@@ -653,7 +651,7 @@ Author: Antenore Gatta
                   <object class="GtkComboBoxText" id="comboboxtext_appearance_tab_interface">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="margin_right">18</property>
+                    <property name="margin_end">18</property>
                     <property name="margin_bottom">18</property>
                     <property name="hexpand">True</property>
                     <items>
@@ -676,7 +674,7 @@ Author: Antenore Gatta
                     <property name="can_focus">True</property>
                     <property name="receives_default">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
+                    <property name="margin_start">18</property>
                     <property name="margin_top">18</property>
                     <property name="hexpand">True</property>
                     <property name="active">True</property>
@@ -692,7 +690,7 @@ Author: Antenore Gatta
                   <object class="GtkComboBoxText" id="comboboxtext_appearance_fullscreen_toolbar_visibility">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="margin_right">18</property>
+                    <property name="margin_end">18</property>
                     <property name="active_id">0</property>
                     <items>
                       <item id="0" translatable="yes">Peeking</item>
@@ -711,7 +709,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
+                    <property name="margin_start">18</property>
                     <property name="label" translatable="yes">Fullscreen toolbar visibility</property>
                     <property name="selectable">True</property>
                   </object>
@@ -727,7 +725,7 @@ Author: Antenore Gatta
                     <property name="can_focus">True</property>
                     <property name="receives_default">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
+                    <property name="margin_start">18</property>
                     <property name="hexpand">True</property>
                     <property name="draw_indicator">True</property>
                   </object>
@@ -746,6 +744,8 @@ Author: Antenore Gatta
               <object class="GtkLabel" id="label_tab_appearance">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="halign">end</property>
+                <property name="margin_end">18</property>
                 <property name="label" translatable="yes">Appearance</property>
               </object>
               <packing>
@@ -767,7 +767,7 @@ Author: Antenore Gatta
                     <property name="can_focus">True</property>
                     <property name="receives_default">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
+                    <property name="margin_start">18</property>
                     <property name="margin_top">18</property>
                     <property name="hexpand">True</property>
                     <property name="draw_indicator">True</property>
@@ -785,7 +785,7 @@ Author: Antenore Gatta
                     <property name="can_focus">True</property>
                     <property name="receives_default">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
+                    <property name="margin_start">18</property>
                     <property name="hexpand">True</property>
                     <property name="draw_indicator">True</property>
                   </object>
@@ -802,7 +802,7 @@ Author: Antenore Gatta
                     <property name="can_focus">True</property>
                     <property name="receives_default">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
+                    <property name="margin_start">18</property>
                     <property name="hexpand">True</property>
                     <property name="draw_indicator">True</property>
                     <signal name="toggled" handler="remmina_pref_dialog_disable_tray_icon_on_toggled" swapped="no"/>
@@ -820,7 +820,7 @@ Author: Antenore Gatta
                     <property name="can_focus">True</property>
                     <property name="receives_default">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
+                    <property name="margin_start">18</property>
                     <property name="margin_bottom">18</property>
                     <property name="hexpand">True</property>
                     <property name="draw_indicator">True</property>
@@ -839,7 +839,7 @@ Author: Antenore Gatta
                     <property name="receives_default">False</property>
                     <property name="tooltip_text" translatable="yes">Improves contrast if you have a light panel.</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
+                    <property name="margin_start">18</property>
                     <property name="hexpand">True</property>
                     <property name="draw_indicator">True</property>
                   </object>
@@ -858,6 +858,8 @@ Author: Antenore Gatta
               <object class="GtkLabel" id="label_tab_applet">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="halign">end</property>
+                <property name="margin_end">18</property>
                 <property name="label" translatable="yes">Applet</property>
               </object>
               <packing>
@@ -877,7 +879,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
+                    <property name="margin_start">18</property>
                     <property name="margin_top">18</property>
                     <property name="hexpand">True</property>
                     <property name="label" translatable="yes">Host key</property>
@@ -894,7 +896,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
-                    <property name="margin_right">18</property>
+                    <property name="margin_end">18</property>
                     <property name="margin_top">18</property>
                     <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                   </object>
@@ -909,7 +911,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
+                    <property name="margin_start">18</property>
                     <property name="hexpand">True</property>
                     <property name="label" translatable="yes">Show/hide fullscreen</property>
                   </object>
@@ -925,7 +927,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
-                    <property name="margin_right">18</property>
+                    <property name="margin_end">18</property>
                     <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                   </object>
                   <packing>
@@ -939,7 +941,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
+                    <property name="margin_start">18</property>
                     <property name="hexpand">True</property>
                     <property name="label" translatable="yes">Auto-fit window</property>
                   </object>
@@ -955,7 +957,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
-                    <property name="margin_right">18</property>
+                    <property name="margin_end">18</property>
                     <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                   </object>
                   <packing>
@@ -969,7 +971,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
+                    <property name="margin_start">18</property>
                     <property name="hexpand">True</property>
                     <property name="label" translatable="yes">Switch tab pages</property>
                   </object>
@@ -999,7 +1001,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
-                    <property name="margin_right">18</property>
+                    <property name="margin_end">18</property>
                     <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                   </object>
                   <packing>
@@ -1012,7 +1014,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
+                    <property name="margin_start">18</property>
                     <property name="hexpand">True</property>
                     <property name="label" translatable="yes">Apply/remove scaling</property>
                   </object>
@@ -1028,7 +1030,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
-                    <property name="margin_right">18</property>
+                    <property name="margin_end">18</property>
                     <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                   </object>
                   <packing>
@@ -1042,7 +1044,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
+                    <property name="margin_start">18</property>
                     <property name="hexpand">True</property>
                     <property name="label" translatable="yes">Grab keyboard</property>
                   </object>
@@ -1058,7 +1060,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
-                    <property name="margin_right">18</property>
+                    <property name="margin_end">18</property>
                     <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                   </object>
                   <packing>
@@ -1072,7 +1074,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
+                    <property name="margin_start">18</property>
                     <property name="hexpand">True</property>
                     <property name="label" translatable="yes">Minimize window</property>
                   </object>
@@ -1088,8 +1090,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
-                    <property name="valign">start</property>
-                    <property name="margin_right">18</property>
+                    <property name="margin_end">18</property>
                     <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                   </object>
                   <packing>
@@ -1103,7 +1104,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
+                    <property name="margin_start">18</property>
                     <property name="hexpand">True</property>
                     <property name="label" translatable="yes">Disconnect</property>
                   </object>
@@ -1119,7 +1120,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
-                    <property name="margin_right">18</property>
+                    <property name="margin_end">18</property>
                     <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                   </object>
                   <packing>
@@ -1133,7 +1134,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
+                    <property name="margin_start">18</property>
                     <property name="hexpand">True</property>
                     <property name="label" translatable="yes">Show/hide toolbar</property>
                   </object>
@@ -1149,7 +1150,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
-                    <property name="margin_right">18</property>
+                    <property name="margin_end">18</property>
                     <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                   </object>
                   <packing>
@@ -1163,7 +1164,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
+                    <property name="margin_start">18</property>
                     <property name="hexpand">True</property>
                     <property name="label" translatable="yes">Screenshot</property>
                     <property name="ellipsize">start</property>
@@ -1180,7 +1181,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
-                    <property name="margin_right">18</property>
+                    <property name="margin_end">18</property>
                     <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                   </object>
                   <packing>
@@ -1194,8 +1195,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
-                    <property name="margin_bottom">18</property>
+                    <property name="margin_start">18</property>
                     <property name="hexpand">True</property>
                     <property name="label" translatable="yes">View-only mode</property>
                     <property name="ellipsize">start</property>
@@ -1212,13 +1212,45 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
-                    <property name="margin_right">18</property>
-                    <property name="margin_bottom">18</property>
+                    <property name="margin_end">18</property>
                     <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
                     <property name="top_attach">10</property>
+                    <property name="width">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="label_keyboard_multimon">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="halign">start</property>
+                    <property name="margin_start">18</property>
+                    <property name="margin_bottom">18</property>
+                    <property name="hexpand">True</property>
+                    <property name="label" translatable="yes">Multi monitor</property>
+                    <property name="ellipsize">start</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">11</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkButton" id="button_keyboard_multimon">
+                    <property name="label" translatable="yes">Multi monitor</property>
+                    <property name="width_request">100</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">True</property>
+                    <property name="margin_end">18</property>
+                    <property name="margin_bottom">18</property>
+                    <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">11</property>
                     <property name="width">2</property>
                   </packing>
                 </child>
@@ -1231,6 +1263,8 @@ Author: Antenore Gatta
               <object class="GtkLabel" id="label_tab_keyboard">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="halign">end</property>
+                <property name="margin_end">18</property>
                 <property name="label" translatable="yes">Keyboard</property>
               </object>
               <packing>
@@ -1250,7 +1284,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
+                    <property name="margin_start">18</property>
                     <property name="label" translatable="yes">Local SSH port</property>
                   </object>
                   <packing>
@@ -1262,7 +1296,7 @@ Author: Antenore Gatta
                   <object class="GtkEntry" id="entry_options_ssh_port">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="margin_right">18</property>
+                    <property name="margin_end">18</property>
                     <property name="hexpand">True</property>
                     <property name="max_length">5</property>
                     <property name="input_purpose">number</property>
@@ -1280,7 +1314,7 @@ Author: Antenore Gatta
                     <property name="can_focus">True</property>
                     <property name="receives_default">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
+                    <property name="margin_start">18</property>
                     <property name="margin_bottom">18</property>
                     <property name="hexpand">True</property>
                     <property name="draw_indicator">True</property>
@@ -1295,7 +1329,7 @@ Author: Antenore Gatta
                   <object class="GtkComboBoxText" id="comboboxtext_options_ssh_loglevel">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="margin_right">18</property>
+                    <property name="margin_end">18</property>
                     <property name="margin_top">18</property>
                     <property name="hexpand">True</property>
                     <items>
@@ -1317,7 +1351,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
+                    <property name="margin_start">18</property>
                     <property name="margin_top">18</property>
                     <property name="label" translatable="yes">SSH log level</property>
                   </object>
@@ -1331,7 +1365,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
+                    <property name="margin_start">18</property>
                     <property name="label">TCP_keepidle</property>
                     <property name="selectable">True</property>
                   </object>
@@ -1345,7 +1379,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
+                    <property name="margin_start">18</property>
                     <property name="label">TCP_keepintvl</property>
                     <property name="selectable">True</property>
                   </object>
@@ -1359,7 +1393,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
+                    <property name="margin_start">18</property>
                     <property name="label">TCP_keepcnt</property>
                     <property name="selectable">True</property>
                   </object>
@@ -1373,7 +1407,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
+                    <property name="margin_start">18</property>
                     <property name="label">TCP_user_timeout</property>
                     <property name="selectable">True</property>
                   </object>
@@ -1387,7 +1421,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="tooltip_text" translatable="yes" comments="http://man7.org/linux/man-pages/man7/tcp.7.html">Seconds of connection idleness before TCP keepalive probes are sent.</property>
-                    <property name="margin_right">18</property>
+                    <property name="margin_end">18</property>
                     <property name="hexpand">True</property>
                     <property name="max_length">5</property>
                     <property name="input_purpose">number</property>
@@ -1403,7 +1437,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="tooltip_text" translatable="yes" comments="http://man7.org/linux/man-pages/man7/tcp.7.html">Seconds between each keepalive probe.</property>
-                    <property name="margin_right">18</property>
+                    <property name="margin_end">18</property>
                     <property name="hexpand">True</property>
                     <property name="max_length">5</property>
                     <property name="input_purpose">number</property>
@@ -1419,7 +1453,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="tooltip_text" translatable="yes" comments="http://man7.org/linux/man-pages/man7/tcp.7.html">Number of keepalive probes sent via TCP connection before it is dropped.</property>
-                    <property name="margin_right">18</property>
+                    <property name="margin_end">18</property>
                     <property name="hexpand">True</property>
                     <property name="max_length">5</property>
                     <property name="input_purpose">number</property>
@@ -1435,7 +1469,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="tooltip_text" translatable="yes" comments="http://man7.org/linux/man-pages/man7/tcp.7.html">Amount of milliseconds to attempt acknowledging data before closing the corresponding TCP connection forcibly.</property>
-                    <property name="margin_right">18</property>
+                    <property name="margin_end">18</property>
                     <property name="hexpand">True</property>
                     <property name="max_length">5</property>
                     <property name="input_purpose">number</property>
@@ -1455,6 +1489,8 @@ Author: Antenore Gatta
               <object class="GtkLabel" id="label_tab_ssh">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="halign">end</property>
+                <property name="margin_end">18</property>
                 <property name="label" translatable="yes">SSH options</property>
               </object>
               <packing>
@@ -1486,7 +1522,7 @@ Author: Antenore Gatta
                   <packing>
                     <property name="left_attach">0</property>
                     <property name="top_attach">0</property>
-                    <property name="width">3</property>
+                    <property name="width">2</property>
                   </packing>
                 </child>
                 <child>
@@ -1503,7 +1539,6 @@ Author: Antenore Gatta
                   <packing>
                     <property name="left_attach">1</property>
                     <property name="top_attach">1</property>
-                    <property name="width">2</property>
                   </packing>
                 </child>
                 <child>
@@ -1512,7 +1547,6 @@ Author: Antenore Gatta
                     <property name="can_focus">False</property>
                     <property name="tooltip_text" translatable="yes">Use secret key authentication for some widgets</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">36</property>
                     <property name="margin_start">36</property>
                     <property name="margin_top">9</property>
                     <property name="margin_bottom">9</property>
@@ -1542,7 +1576,6 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="tooltip_text" translatable="yes">Master password validity in seconds</property>
-                    <property name="halign">start</property>
                     <property name="margin_end">18</property>
                     <property name="hexpand">True</property>
                     <property name="width_chars">24</property>
@@ -1552,7 +1585,6 @@ Author: Antenore Gatta
                   <packing>
                     <property name="left_attach">1</property>
                     <property name="top_attach">2</property>
-                    <property name="width">2</property>
                   </packing>
                 </child>
                 <child>
@@ -1571,7 +1603,7 @@ Author: Antenore Gatta
                   <packing>
                     <property name="left_attach">0</property>
                     <property name="top_attach">7</property>
-                    <property name="width">3</property>
+                    <property name="width">2</property>
                   </packing>
                 </child>
                 <child>
@@ -1579,7 +1611,6 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">36</property>
                     <property name="margin_start">36</property>
                     <property name="label" translatable="yes">Password</property>
                   </object>
@@ -1593,7 +1624,6 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">36</property>
                     <property name="margin_start">36</property>
                     <property name="label" translatable="yes">Repeat the password</property>
                   </object>
@@ -1606,7 +1636,6 @@ Author: Antenore Gatta
                   <object class="GtkEntry" id="unlock_password">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="halign">start</property>
                     <property name="margin_end">18</property>
                     <property name="hexpand">True</property>
                     <property name="visibility">False</property>
@@ -1617,14 +1646,12 @@ Author: Antenore Gatta
                   <packing>
                     <property name="left_attach">1</property>
                     <property name="top_attach">3</property>
-                    <property name="width">2</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkEntry" id="unlock_repassword">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="halign">start</property>
                     <property name="margin_end">18</property>
                     <property name="hexpand">True</property>
                     <property name="visibility">False</property>
@@ -1639,7 +1666,6 @@ Author: Antenore Gatta
                   <packing>
                     <property name="left_attach">1</property>
                     <property name="top_attach">4</property>
-                    <property name="width">2</property>
                   </packing>
                 </child>
                 <child>
@@ -1658,7 +1684,7 @@ Author: Antenore Gatta
                   <packing>
                     <property name="left_attach">0</property>
                     <property name="top_attach">5</property>
-                    <property name="width">3</property>
+                    <property name="width">2</property>
                   </packing>
                 </child>
                 <child>
@@ -1692,7 +1718,6 @@ Author: Antenore Gatta
                   <packing>
                     <property name="left_attach">1</property>
                     <property name="top_attach">6</property>
-                    <property name="width">2</property>
                   </packing>
                 </child>
               </object>
@@ -1704,6 +1729,8 @@ Author: Antenore Gatta
               <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="halign">end</property>
+                <property name="margin_end">18</property>
                 <property name="label" translatable="yes">Security</property>
               </object>
               <packing>
@@ -1724,7 +1751,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
+                    <property name="margin_start">18</property>
                     <property name="margin_top">18</property>
                     <property name="label" translatable="yes">Terminal font</property>
                   </object>
@@ -1738,7 +1765,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
+                    <property name="margin_start">18</property>
                     <property name="label" translatable="yes">Scrollback lines</property>
                   </object>
                   <packing>
@@ -1805,7 +1832,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
+                    <property name="margin_start">18</property>
                     <property name="label" translatable="yes">Shortcut for copying to clipboard</property>
                   </object>
                   <packing>
@@ -1818,7 +1845,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
+                    <property name="margin_start">18</property>
                     <property name="label" translatable="yes">Shortcut for pasting from clipboard</property>
                   </object>
                   <packing>
@@ -1831,7 +1858,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
+                    <property name="margin_start">18</property>
                     <property name="label" translatable="yes">Select all shortcuts</property>
                   </object>
                   <packing>
@@ -1898,7 +1925,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
+                    <property name="margin_start">18</property>
                     <property name="label" translatable="yes">Use default system font</property>
                   </object>
                   <packing>
@@ -1937,7 +1964,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
+                    <property name="margin_start">18</property>
                     <property name="label" translatable="yes">Allow using bright colours with bold text</property>
                   </object>
                   <packing>
@@ -1950,7 +1977,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
+                    <property name="margin_start">18</property>
                     <property name="margin_bottom">18</property>
                     <property name="label" translatable="yes">Colour theme</property>
                   </object>
@@ -1980,7 +2007,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
+                    <property name="margin_start">18</property>
                     <property name="label" translatable="yes">Bright colours</property>
                   </object>
                   <packing>
@@ -2187,7 +2214,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
+                    <property name="margin_start">18</property>
                     <property name="label" translatable="yes">Normal colours</property>
                   </object>
                   <packing>
@@ -2200,7 +2227,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
+                    <property name="margin_start">18</property>
                     <property name="label" translatable="yes">Cursor colour</property>
                   </object>
                   <packing>
@@ -2228,7 +2255,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
+                    <property name="margin_start">18</property>
                     <property name="label" translatable="yes">Background colour</property>
                   </object>
                   <packing>
@@ -2271,7 +2298,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
+                    <property name="margin_start">18</property>
                     <property name="label" translatable="yes">Foreground colour</property>
                   </object>
                   <packing>
@@ -2284,7 +2311,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
+                    <property name="margin_start">18</property>
                     <property name="label" translatable="yes">Increase font size</property>
                   </object>
                   <packing>
@@ -2297,7 +2324,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
+                    <property name="margin_start">18</property>
                     <property name="label" translatable="yes">Decrease font size</property>
                   </object>
                   <packing>
@@ -2346,7 +2373,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
+                    <property name="margin_start">18</property>
                     <property name="label" translatable="yes">Search text</property>
                   </object>
                   <packing>
@@ -2376,6 +2403,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
+                    <property name="margin_start">18</property>
                     <property name="label" translatable="yes">Bold colour</property>
                   </object>
                   <packing>
@@ -2407,6 +2435,8 @@ Author: Antenore Gatta
               <object class="GtkLabel" id="label_tab_terminal">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="halign">end</property>
+                <property name="margin_end">18</property>
                 <property name="label" translatable="yes">Terminal</property>
               </object>
               <packing>

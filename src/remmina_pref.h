@@ -35,6 +35,7 @@
  */
 
 #pragma once
+#include <gtk/gtk.h>
 
 /*
  * Remmina Preference Loader
@@ -152,6 +153,7 @@ typedef struct _RemminaPref {
 	guint			shortcutkey_nexttab;
 	guint			shortcutkey_dynres;
 	guint			shortcutkey_scale;
+	guint			shortcutkey_multimon;
 	guint			shortcutkey_grab;
 	guint			shortcutkey_viewonly;
 	guint			shortcutkey_screenshot;
