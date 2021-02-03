@@ -20,7 +20,7 @@ editable on [the wiki](https://gitlab.com/Remmina/Remmina/wikis/home).
 
 ### Configuration
 
-Set up everything from the graphical interface, or from $HOME/.remmina or $HOME/.config/remmina
+Set up everything from the graphical interface, or from $HOME/.config/remmina
 
 ### Contributing
 
