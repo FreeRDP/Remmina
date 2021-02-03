@@ -52,6 +52,8 @@ set(REMMINA_PLUGIN_RDP_SRCS
         rdp_graphics.h
         rdp_cliprdr.c
         rdp_cliprdr.h
+        rdp_monitor.c
+        rdp_monitor.h
         rdp_channels.c
         rdp_channels.h
         )
