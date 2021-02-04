@@ -494,10 +494,10 @@ void remmina_pref_init(void)
 	else
 		remmina_pref.disable_tray_icon = FALSE;
 
-	if (g_key_file_has_key(gkeyfile, "remmina_pref", "dark_tray_icon", NULL))
-		remmina_pref.dark_tray_icon = g_key_file_get_boolean(gkeyfile, "remmina_pref", "dark_tray_icon", NULL);
+	if (g_key_file_has_key(gkeyfile, "remmina_pref", "dark_theme", NULL))
+		remmina_pref.dark_theme = g_key_file_get_boolean(gkeyfile, "remmina_pref", "dark_theme", NULL);
 	else
-		remmina_pref.dark_tray_icon = FALSE;
+		remmina_pref.dark_theme = FALSE;
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "recent_maximum", NULL))
 		remmina_pref.recent_maximum = g_key_file_get_integer(gkeyfile, "remmina_pref", "recent_maximum", NULL);
@@ -801,7 +801,7 @@ gboolean remmina_pref_save(void)
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "applet_hide_count", remmina_pref.applet_hide_count);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "applet_enable_avahi", remmina_pref.applet_enable_avahi);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "disable_tray_icon", remmina_pref.disable_tray_icon);
-	g_key_file_set_boolean(gkeyfile, "remmina_pref", "dark_tray_icon", remmina_pref.dark_tray_icon);
+	g_key_file_set_boolean(gkeyfile, "remmina_pref", "dark_theme", remmina_pref.dark_theme);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "recent_maximum", remmina_pref.recent_maximum);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "default_mode", remmina_pref.default_mode);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "tab_mode", remmina_pref.tab_mode);

@@ -87,7 +87,7 @@ typedef struct _RemminaPrefDialog {
 	GtkCheckButton *	checkbutton_applet_new_connection_on_top;
 	GtkCheckButton *	checkbutton_applet_hide_totals;
 	GtkCheckButton *	checkbutton_applet_disable_tray;
-	GtkCheckButton *	checkbutton_applet_light_tray;
+	GtkCheckButton *	checkbutton_dark_theme;
 	GtkCheckButton *	checkbutton_applet_start_in_tray;
 
 	GtkButton *		button_keyboard_host_key;
