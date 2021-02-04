@@ -1,0 +1,89 @@
+resource_rules:
+  issues:
+    rules:
+      - name: Triage policy
+        conditions:
+          date:
+            attribute: updated_at
+            condition: older_than
+            interval_type: days
+            interval: 30
+          state: opened
+          no_additional_labels: true
+        limits:
+          most_recent: 50
+        actions:
+          labels:
+            - needs attention
+          comment: |
+            {{author}} This issue is unlabelled after 30 days. It needs attention.
+          summarize:
+            title: |
+              #{resource[:type].capitalize} require labels
+            item: |
+              - [ ] [{{title}}]({{web_url}}) {{labels}}
+            redact_confidential_resources: false
+            summary: |
+              The following issues require labels:
+
+              {{items}}
+
+              Please take care of them.
+
+              /label ~"needs attention"
+
+      - name: Close old needinfo policy
+        conditions:
+          date:
+            attribute: updated_at
+            condition: older_than
+            interval_type: months
+            interval: 1
+          state: opened
+          labels:
+            - needinfo
+        limits:
+          most_recent: 50
+        actions:
+          status: close
+          comment: |
+            {{author}} This issue was marked as needinfo with no update for long time. We are now closing it, but please re-open if it is still relevant.
+            CC {{assignees}}
+
+      - name: Close old needs attention policy
+        conditions:
+          date:
+            attribute: updated_at
+            condition: older_than
+            interval_type: months
+            interval: 1
+          state: opened
+          labels:
+            - needs attention
+        limits:
+          most_recent: 50
+        actions:
+          status: close
+          comment: |
+            {{author}} This issue was marked as needs attention with no update for long time. We are now closing it, but please re-open if it is still relevant.
+            CC {{assignees}}
+
+  merge_requests:
+    rules:
+      - name: Close old WIP policy
+        conditions:
+          title: WIP
+          date:
+            attribute: updated_at
+            condition: older_than
+            interval_type: months
+            interval: 4
+          state: opened
+          no_additional_labels: true
+        limits:
+          most_recent: 50
+        actions:
+          status: close
+          comment: |
+            {{author}} This merge request is marked as work in progress with no update for very long time. We are now closing it, but please re-open if you are still interested in finishing this merge request.
+            CC {{assignees}}
