@@ -77,7 +77,7 @@ G_DEFINE_TYPE(RemminaConnectionWindow, rcw, GTK_TYPE_WINDOW)
 #define MOTION_TIME 100
 
 /* default timeout used to hide the floating toolbar when switching profile */
-#define TB_HIDE_TIME_TIME 1000
+#define TB_HIDE_TIME_TIME 1500
 
 #define FULL_SCREEN_TARGET_MONITOR_UNDEFINED -1
 
