@@ -563,7 +563,7 @@ Author: Antenore Gatta
               </packing>
             </child>
             <child>
-              <!-- n-columns=3 n-rows=8 -->
+              <!-- n-columns=3 n-rows=9 -->
               <object class="GtkGrid" id="grid_appearance">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
@@ -620,6 +620,7 @@ Author: Antenore Gatta
                   <object class="GtkComboBoxText" id="comboboxtext_appearance_view_mode">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
+                    <property name="halign">start</property>
                     <property name="margin-end">18</property>
                     <property name="hexpand">True</property>
                     <items>
@@ -653,6 +654,7 @@ Author: Antenore Gatta
                   <object class="GtkComboBoxText" id="comboboxtext_appearance_tab_interface">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
+                    <property name="halign">start</property>
                     <property name="margin-end">18</property>
                     <property name="margin-bottom">18</property>
                     <property name="hexpand">True</property>
@@ -691,6 +693,7 @@ Author: Antenore Gatta
                   <object class="GtkComboBoxText" id="comboboxtext_appearance_fullscreen_toolbar_visibility">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
+                    <property name="halign">start</property>
                     <property name="margin-end">18</property>
                     <property name="active-id">0</property>
                     <items>
@@ -753,6 +756,35 @@ Author: Antenore Gatta
                     <property name="left-attach">0</property>
                     <property name="top-attach">0</property>
                     <property name="width">3</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="halign">start</property>
+                    <property name="margin-start">18</property>
+                    <property name="margin-bottom">18</property>
+                    <property name="label" translatable="yes">“Grab all keyboard events” status colour</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">8</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkEntry" id="entry_grab_color">
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="tooltip-text" translatable="yes">Hexadecimal or color names (red, #ff0000)
+It changes the connection name background colour, in the remmina connection toolbar when in full screen</property>
+                    <property name="halign">start</property>
+                    <property name="placeholder-text" translatable="yes">#00FF00</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">8</property>
+                    <property name="width">2</property>
                   </packing>
                 </child>
               </object>

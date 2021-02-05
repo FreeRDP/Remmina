@@ -2503,12 +2503,27 @@ static void rco_update_toolbar(RemminaConnectionObject *cnnobj)
 
 	if (test_floating_toolbar) {
 		const gchar *str = remmina_file_get_string(cnnobj->remmina_file, "name");
-		const gchar *format = "<big><b>\%s</b></big>";
+		const gchar *format;
+		GdkRGBA rgba;
+		gchar *bg;
+
+		bg = g_strdup(remmina_pref.grab_color);
+		if (!gdk_rgba_parse(&rgba, bg)) {
+			REMMINA_DEBUG ("%s cannot be parsed as a color", bg);
+			bg = g_strdup("#00FF00");
+		} else
+			REMMINA_DEBUG ("Using %s as background color", bg);
+
+		if (remmina_file_get_int(cnnobj->remmina_file, "keyboard_grab", FALSE))
+			format = g_strconcat("<span bgcolor=\"", bg, "\" size=\"large\"><b>(G:ON) - \%s</b></span>", NULL);
+		else
+			format = "<big><b>(G:OFF) - \%s</b></big>";
 		gchar *markup;
 
 		markup = g_markup_printf_escaped (format, str);
 		gtk_label_set_markup (GTK_LABEL (priv->floating_toolbar_label), markup);
 		g_free (markup);
+		g_free (bg);
 	}
 
 	priv->toolbar_is_reconfiguring = FALSE;

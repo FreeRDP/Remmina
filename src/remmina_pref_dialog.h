@@ -81,6 +81,7 @@ typedef struct _RemminaPrefDialog {
 	GtkEntry *		entry_options_ssh_tcp_usrtimeout;
 	GtkEntry *		entry_options_scroll;
 	GtkEntry *		entry_options_recent_items;
+	GtkEntry *		entry_grab_color;
 	GtkButton *		button_options_recent_items_clear;
 	GtkButton *		button_options_resolutions;
 

@@ -125,6 +125,7 @@ typedef struct _RemminaPref {
 	gchar *			resolutions;
 	gchar *			keystrokes;
 	/* In RemminaPrefDialog appearance tab */
+	gboolean		dark_theme;
 	gboolean		fullscreen_on_auto;
 	gboolean		always_show_tab;
 	gboolean		hide_connection_toolbar;
@@ -132,11 +133,11 @@ typedef struct _RemminaPref {
 	gint			default_mode;
 	gint			tab_mode;
 	gint			fullscreen_toolbar_visibility;
+	const gchar *			grab_color;
 	/* In RemminaPrefDialog applet tab */
 	gboolean		applet_new_ontop;
 	gboolean		applet_hide_count;
 	gboolean		disable_tray_icon;
-	gboolean		dark_theme;
 	/* In RemminaPrefDialog SSH Option tab */
 	gint			ssh_loglevel;
 	gboolean		ssh_parseconfig;
