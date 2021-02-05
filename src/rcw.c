@@ -2175,8 +2175,6 @@ rcw_create_toolbar(RemminaConnectionWindow *cnnwin, gint mode)
 	toolbar = gtk_toolbar_new();
 	gtk_widget_show(toolbar);
 	gtk_toolbar_set_style(GTK_TOOLBAR(toolbar), GTK_TOOLBAR_ICONS);
-	gtk_toolbar_set_icon_size(GTK_TOOLBAR(toolbar), GTK_ICON_SIZE_SMALL_TOOLBAR);
-	gtk_toolbar_set_show_arrow(GTK_TOOLBAR(toolbar), FALSE);
 
 	/* Auto-Fit */
 	toolitem = gtk_tool_button_new(NULL, NULL);
