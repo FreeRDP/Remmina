@@ -76,7 +76,7 @@ G_DEFINE_TYPE(RemminaConnectionWindow, rcw, GTK_TYPE_WINDOW)
 
 #define MOTION_TIME 100
 
-/* default timeout used to hide the floating toolbar wen switching profile */
+/* default timeout used to hide the floating toolbar when switching profile */
 #define TB_HIDE_TIME_TIME 1000
 
 #define FULL_SCREEN_TARGET_MONITOR_UNDEFINED -1
@@ -2249,20 +2249,6 @@ rcw_create_toolbar(RemminaConnectionWindow *cnnwin, gint mode)
 					remmina_file_get_int(cnnobj->remmina_file, "multimon", FALSE));
 	}
 
-	/* Switch tabs */
-	toolitem = gtk_toggle_tool_button_new();
-	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-switch-page-symbolic");
-	rcw_set_tooltip(GTK_WIDGET(toolitem), _("Switch tab pages"), remmina_pref.shortcutkey_prevtab,
-			remmina_pref.shortcutkey_nexttab);
-	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
-	gtk_widget_show(GTK_WIDGET(toolitem));
-	g_signal_connect(G_OBJECT(toolitem), "toggled", G_CALLBACK(rcw_toolbar_switch_page), cnnwin);
-	priv->toolitem_switch_page = toolitem;
-
-	toolitem = gtk_separator_tool_item_new();
-	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
-	gtk_widget_show(GTK_WIDGET(toolitem));
-
 	/* Dynamic Resolution Update */
 	toolitem = gtk_toggle_tool_button_new();
 	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-dynres-symbolic");
@@ -2308,6 +2294,21 @@ rcw_create_toolbar(RemminaConnectionWindow *cnnwin, gint mode)
 	g_signal_connect(G_OBJECT(widget), "toggled", G_CALLBACK(rcw_toolbar_scaler_option), cnnwin);
 	priv->scaler_option_button = widget;
 
+	/* Separator */
+	toolitem = gtk_separator_tool_item_new ();
+	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
+	gtk_widget_show(GTK_WIDGET(toolitem));
+
+	/* Switch tabs */
+	toolitem = gtk_toggle_tool_button_new();
+	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-switch-page-symbolic");
+	rcw_set_tooltip(GTK_WIDGET(toolitem), _("Switch tab pages"), remmina_pref.shortcutkey_prevtab,
+			remmina_pref.shortcutkey_nexttab);
+	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
+	gtk_widget_show(GTK_WIDGET(toolitem));
+	g_signal_connect(G_OBJECT(toolitem), "toggled", G_CALLBACK(rcw_toolbar_switch_page), cnnwin);
+	priv->toolitem_switch_page = toolitem;
+
 	/* Grab keyboard button */
 	toolitem = gtk_toggle_tool_button_new();
 	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-keyboard-symbolic");
@@ -2318,6 +2319,7 @@ rcw_create_toolbar(RemminaConnectionWindow *cnnwin, gint mode)
 	g_signal_connect(G_OBJECT(toolitem), "toggled", G_CALLBACK(rcw_toolbar_grab), cnnwin);
 	priv->toolitem_grab = toolitem;
 
+	/* Preferences */
 	toolitem = gtk_toggle_tool_button_new();
 	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-preferences-system-symbolic");
 	gtk_tool_item_set_tooltip_text(toolitem, _("Preferences"));
@@ -2326,6 +2328,7 @@ rcw_create_toolbar(RemminaConnectionWindow *cnnwin, gint mode)
 	g_signal_connect(G_OBJECT(toolitem), "toggled", G_CALLBACK(rcw_toolbar_preferences), cnnwin);
 	priv->toolitem_preferences = toolitem;
 
+	/* Tools */
 	toolitem = gtk_toggle_tool_button_new();
 	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-system-run-symbolic");
 	gtk_tool_button_set_label(GTK_TOOL_BUTTON(toolitem), _("_Tools"));
@@ -2335,6 +2338,7 @@ rcw_create_toolbar(RemminaConnectionWindow *cnnwin, gint mode)
 	g_signal_connect(G_OBJECT(toolitem), "toggled", G_CALLBACK(rcw_toolbar_tools), cnnwin);
 	priv->toolitem_tools = toolitem;
 
+	/* Separator */
 	toolitem = gtk_separator_tool_item_new();
 	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
 	gtk_widget_show(GTK_WIDGET(toolitem));
@@ -2358,6 +2362,12 @@ rcw_create_toolbar(RemminaConnectionWindow *cnnwin, gint mode)
 	g_signal_connect(G_OBJECT(toolitem), "clicked", G_CALLBACK(rcw_toolbar_screenshot), cnnwin);
 	priv->toolitem_screenshot = toolitem;
 
+	/* Separator */
+	toolitem = gtk_separator_tool_item_new();
+	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
+	gtk_widget_show(GTK_WIDGET(toolitem));
+
+	/* Minimize */
 	toolitem = gtk_tool_button_new(NULL, "_Bottom");
 	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-go-bottom-symbolic");
 	rcw_set_tooltip(GTK_WIDGET(toolitem), _("Minimize window"), remmina_pref.shortcutkey_minimize, 0);
@@ -2367,6 +2377,7 @@ rcw_create_toolbar(RemminaConnectionWindow *cnnwin, gint mode)
 	if (kioskmode)
 		gtk_widget_set_sensitive(GTK_WIDGET(toolitem), FALSE);
 
+	/* Diconnect */
 	toolitem = gtk_tool_button_new(NULL, "_Disconnect");
 	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-disconnect-symbolic");
 	rcw_set_tooltip(GTK_WIDGET(toolitem), _("Disconnect"), remmina_pref.shortcutkey_disconnect, 0);
@@ -2489,9 +2500,16 @@ static void rco_update_toolbar(RemminaConnectionObject *cnnobj)
 	gtk_window_set_title(GTK_WINDOW(cnnobj->cnnwin), remmina_file_get_string(cnnobj->remmina_file, "name"));
 
 	test_floating_toolbar = (priv->floating_toolbar_widget != NULL);
-	if (test_floating_toolbar)
-		gtk_label_set_text(GTK_LABEL(priv->floating_toolbar_label),
-				   remmina_file_get_string(cnnobj->remmina_file, "name"));
+
+	if (test_floating_toolbar) {
+		const gchar *str = remmina_file_get_string(cnnobj->remmina_file, "name");
+		const gchar *format = "<big><b>\%s</b></big>";
+		gchar *markup;
+
+		markup = g_markup_printf_escaped (format, str);
+		gtk_label_set_markup (GTK_LABEL (priv->floating_toolbar_label), markup);
+		g_free (markup);
+	}
 
 	priv->toolbar_is_reconfiguring = FALSE;
 }
