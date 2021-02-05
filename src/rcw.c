@@ -2242,6 +2242,11 @@ rcw_create_toolbar(RemminaConnectionWindow *cnnwin, gint mode)
 		gtk_widget_show(GTK_WIDGET(toolitem));
 		g_signal_connect(G_OBJECT(toolitem), "toggled", G_CALLBACK(rcw_toolbar_multi_monitor_mode), cnnwin);
 		priv->toolitem_multimon = toolitem;
+		if (!cnnobj)
+			gtk_widget_set_sensitive(GTK_WIDGET(toolitem), FALSE);
+		else
+			gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(toolitem),
+					remmina_file_get_int(cnnobj->remmina_file, "multimon", FALSE));
 	}
 
 	/* Switch tabs */
@@ -2454,10 +2459,14 @@ static void rco_update_toolbar(RemminaConnectionObject *cnnobj)
 		break;
 	}
 
+	/* REMMINA_PROTOCOL_FEATURE_TYPE_MULTIMON */
 	toolitem = priv->toolitem_multimon;
+	gint hasmultimon = remmina_protocol_widget_query_feature_by_type(REMMINA_PROTOCOL_WIDGET(cnnobj->proto),
+							     REMMINA_PROTOCOL_FEATURE_TYPE_MULTIMON);
 	gtk_widget_set_sensitive(GTK_WIDGET(toolitem), cnnobj->connected);
 	gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(toolitem),
-					  remmina_file_get_int(cnnobj->remmina_file, "multimon", FALSE));
+			remmina_file_get_int(cnnobj->remmina_file, "multimon", FALSE));
+	gtk_widget_set_sensitive(GTK_WIDGET(toolitem), hasmultimon);
 
 	toolitem = priv->toolitem_grab;
 	gtk_widget_set_sensitive(GTK_WIDGET(toolitem), cnnobj->connected);

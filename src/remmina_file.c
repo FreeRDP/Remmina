@@ -526,9 +526,12 @@ gint remmina_file_get_int(RemminaFile *remminafile, const gchar *setting, gint d
 {
 	TRACE_CALL(__func__);
 	gchar *value;
+	gint r;
 
 	value = g_hash_table_lookup(remminafile->settings, setting);
-	return value == NULL ? default_value : (value[0] == 't' ? TRUE : atoi(value));
+	r = value == NULL ? default_value : (value[0] == 't' ? TRUE : atoi(value));
+	// TOO verbose: REMMINA_DEBUG ("Integer value is: %d", r);
+	return r;
 }
 
 static GKeyFile *
