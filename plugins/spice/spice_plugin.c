@@ -379,6 +379,8 @@ static void remmina_plugin_spice_display_ready_cb(GObject *display, GParamSpec *
 				}
 			}
 
+#ifdef SPICE_GTK_CHECK_VERSION
+#  if SPICE_GTK_CHECK_VERSION(0, 38, 0)
 			if (!spice_display_channel_change_preferred_video_codec_types(SPICE_CHANNEL(gpdata->display_channel),
 					(gint *) preferred_codecs->data,
 					preferred_codecs->len,
@@ -386,6 +388,11 @@ static void remmina_plugin_spice_display_ready_cb(GObject *display, GParamSpec *
 				REMMINA_PLUGIN_DEBUG("Could not set video-codec preference. %s", err->message);
 				g_error_free(err);
 			}
+#  else		/* SPICE_GTK_CHECK_VERSION(0, 38, 0) */
+			spice_display_channel_change_preferred_video_codec_type(SPICE_CHANNEL(gpdata->display_channel),
+				(gint *) preferred_codecs->data);
+#  endif	/* SPICE_GTK_CHECK_VERSION(0, 38, 0) */
+#endif		/* SPICE_GTK_CHECK_VERSION */
 
 			g_clear_pointer(&preferred_codecs, g_array_unref);
 		}
