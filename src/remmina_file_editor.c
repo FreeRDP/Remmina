@@ -80,7 +80,6 @@ static const gchar *cmd_tips = N_("<tt><big>"
 #ifdef HAVE_LIBSSH
 static const gchar *server_tips2 = N_("<tt><big>"
 				      "Supported formats\n"
-				      "• :port\n"
 				      "• server\n"
 				      "• server:port\n"
 				      "• [server]:port\n"
