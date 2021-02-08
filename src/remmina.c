@@ -322,7 +322,6 @@ int main(int argc, char *argv[])
 	TRACE_CALL(__func__);
 	GtkApplication *app;
 	const gchar *app_id;
-	gchar *summary;
 	int status;
 
 	g_unsetenv("GDK_CORE_DEVICE_EVENTS");
@@ -368,7 +367,8 @@ int main(int argc, char *argv[])
 	g_set_prgname(app_id);
 #endif
 	g_application_add_main_option_entries(G_APPLICATION(app), remmina_options);
-	summary = g_strdup_printf ("%s %s", app_id, VERSION);
+#if GLIB_CHECK_VERSION(2,56,0)
+	gchar *summary = g_strdup_printf ("%s %s", app_id, VERSION);
 	g_application_set_option_context_summary (G_APPLICATION(app), summary);
 	g_free(summary);
 	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
@@ -402,6 +402,7 @@ int main(int argc, char *argv[])
 				"To update username and password and set a different resolution mode of a Remmina connection profile, use:\n"
 				"\n"
 				"\techo \"username\\napassword\" | remmina --update-profile /PATH/TO/FOO.remmina --set-option username --set-option resolution_mode=2 --set-option password\n"));
+#endif
 
 	g_signal_connect(app, "startup", G_CALLBACK(remmina_on_startup), NULL);
 	g_signal_connect(app, "command-line", G_CALLBACK(remmina_on_command_line), NULL);
