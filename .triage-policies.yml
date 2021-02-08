@@ -16,22 +16,7 @@ resource_rules:
           labels:
             - needs attention
           comment: |
-            Hi {{author}},
-
-            Thank you for raising an issue to help improve Remmina. We're sorry this particular issue has gone unnoticed for quite some time.
-            
-            This issue will be threated as soon as possible.
-            We'd like to ask you to help us keep our issue tracker organized by determining whether this issue should be closed or adding additional details.
-
-            If this issue is reporting a bug, let us know if this issue is still present in a newer version and if you can reproduce it.
-
-            Thanks for your help!
-            
-            ---
-            This is an automatic message. If you have suggestions to improve this automatic action feel free to add a comment on https://gitlab.com/Remmina/Remmina/-/issues/2407
-
-            /cc {{assignees}} @kingu @antenore
-
+            {{author}} This issue is unlabelled after 30 days. It needs somone to label it.
           summarize:
             title: |
               #{resource[:type].capitalize} require labels
@@ -62,23 +47,8 @@ resource_rules:
         actions:
           status: close
           comment: |
-            Hi {{author}},
-
-            Thank you for raising an issue to help improve Remmina. We're sorry this particular issue has gone unnoticed for quite some time.
-            
-            This issue will be closed, as it meets the following criteria:
-            * No activity in the past 1 months.
-           
-            We'd like to ask you to help us keep our issue tracker organized  by determining whether this issue should be reopened.
-
-            If this issue is reporting a bug, let us know if this issue is still present in a newer version and if you can reproduce it.
-
-            Thanks for your help!
-
-            ---
-            This is an automatic message. If you have suggestions to improve this automatic action feel free to add a comment on https://gitlab.com/Remmina/Remmina/-/issues/2407
-
-            /cc {{assignees}}
+            {{author}} This issue is now closed due to being marked as "needinfo" with no updates for a long time. Please re-open if still relevant.
+            CC {{assignees}}
 
       - name: Close old needs attention policy
         conditions:
@@ -95,23 +65,8 @@ resource_rules:
         actions:
           status: close
           comment: |
-            Hi {{author}},
-
-            Thank you for raising an issue to help improve Remmina. We're sorry this particular issue has gone unnoticed for quite some time.
-            
-            This issue will be closed, as it meets the following criteria:
-            * No activity in the past 1 months.
-           
-            We'd like to ask you to help us keep our issue tracker organized  by determining whether this issue should be reopened.
-
-            If this issue is reporting a bug, let us know if this issue is still present in a newer version and if you can reproduce it.
-
-            Thanks for your help!
-
-            ---
-            This is an automatic message. If you have suggestions to improve this automatic action feel free to add a comment on https://gitlab.com/Remmina/Remmina/-/issues/2407
-
-            /cc {{assignees}}
+            {{author}} This issue is now closed due to being marked as "needs attention" with no updates for a long time. Please re-open it if still relevant.
+            CC {{assignees}}
 
   merge_requests:
     rules:
@@ -130,5 +85,5 @@ resource_rules:
         actions:
           status: close
           comment: |
-            {{author}} This merge request is marked as work in progress with no update for very long time. We are now closing it, but please re-open if you are still interested in finishing this merge request.
+            {{author}} This merge request is now closed due to being marked as "work in progress" with no updates for a very long time. Please re-open if interested in finishing it.
             CC {{assignees}}
