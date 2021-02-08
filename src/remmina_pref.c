@@ -499,6 +499,11 @@ void remmina_pref_init(void)
 	else
 		remmina_pref.dark_theme = FALSE;
 
+	if (g_key_file_has_key(gkeyfile, "remmina_pref", "grab_color_switch", NULL))
+		remmina_pref.grab_color_switch = g_key_file_get_boolean(gkeyfile, "remmina_pref", "grab_color_switch", NULL);
+	else
+		remmina_pref.grab_color_switch = FALSE;
+
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "grab_color", NULL))
 		remmina_pref.grab_color = g_key_file_get_string(gkeyfile, "remmina_pref", "grab_color", NULL);
 	else
@@ -827,6 +832,7 @@ gboolean remmina_pref_save(void)
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "shortcutkey_toolbar", remmina_pref.shortcutkey_toolbar);
 	g_key_file_set_string(gkeyfile, "remmina_pref", "vte_font", remmina_pref.vte_font ? remmina_pref.vte_font : "");
 	g_key_file_set_string(gkeyfile, "remmina_pref", "grab_color", remmina_pref.grab_color ? remmina_pref.grab_color : "");
+	g_key_file_set_boolean(gkeyfile, "remmina_pref", "grab_color_switch", remmina_pref.grab_color_switch);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "vte_allow_bold_text", remmina_pref.vte_allow_bold_text);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "vte_lines", remmina_pref.vte_lines);
 	g_key_file_set_string(gkeyfile, "ssh_colors", "background", remmina_pref.color_pref.background ? remmina_pref.color_pref.background : "");

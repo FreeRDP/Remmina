@@ -2515,7 +2515,10 @@ static void rco_update_toolbar(RemminaConnectionObject *cnnobj)
 			REMMINA_DEBUG ("Using %s as background color", bg);
 
 		if (remmina_file_get_int(cnnobj->remmina_file, "keyboard_grab", FALSE))
-			format = g_strconcat("<span bgcolor=\"", bg, "\" size=\"large\"><b>(G:ON) - \%s</b></span>", NULL);
+			if (remmina_pref_get_boolean("grab_color_switch"))
+				format = g_strconcat("<span bgcolor=\"", bg, "\" size=\"large\"><b>(G:ON) - \%s</b></span>", NULL);
+			else
+				format = "<big><b>(G:ON) - \%s</b></big>";
 		else
 			format = "<big><b>(G:OFF) - \%s</b></big>";
 		gchar *markup;

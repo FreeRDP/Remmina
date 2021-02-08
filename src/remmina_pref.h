@@ -133,7 +133,8 @@ typedef struct _RemminaPref {
 	gint			default_mode;
 	gint			tab_mode;
 	gint			fullscreen_toolbar_visibility;
-	const gchar *			grab_color;
+	const gchar *		grab_color;
+	gboolean		grab_color_switch;
 	/* In RemminaPrefDialog applet tab */
 	gboolean		applet_new_ontop;
 	gboolean		applet_hide_count;

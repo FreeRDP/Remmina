@@ -53,6 +53,7 @@ typedef struct _RemminaPrefDialog {
 	GtkEntry *		entry_options_file_name;
 	GtkFileChooser *	filechooserbutton_options_screenshots_path;
 	GtkEntry *		entry_options_screenshot_name;
+	GtkSwitch *		switch_appearance_grab_color;
 	GtkSwitch *		switch_options_deny_screenshot_clipboard;
 	GtkSwitch *		switch_options_remember_last_view_mode;
 	GtkSwitch *		switch_security_use_master_password;

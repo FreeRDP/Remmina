@@ -41,6 +41,7 @@
 #if defined (HAVE_LIBSSH) && defined (HAVE_LIBVTE)
 #include <vte/vte.h>
 #endif
+#include "remmina_log.h"
 #include "remmina_sodium.h"
 #include "remmina_public.h"
 #include "remmina_string_list.h"
@@ -156,6 +157,14 @@ void remmina_pref_on_button_keystrokes_clicked(GtkWidget *widget, gpointer user_
 	remmina_pref.keystrokes = remmina_string_list_get_text();
 	gtk_widget_destroy(GTK_WIDGET(dialog));
 }
+
+void remmina_prefdiag_on_grab_color_activated (GtkSwitch *widget, gpointer user_data)
+{
+	TRACE_CALL(__func__);
+	//REMMINA_DEBUG ("entry_grab_color %d", gtk_switch_get_active(widget));
+	gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->entry_grab_color), gtk_switch_get_active(widget));
+}
+
 
 void remmina_prefdiag_unlock_repwd_on_changed(GtkEditable* editable, RemminaPrefDialog *dialog)
 {
@@ -283,6 +292,8 @@ void remmina_pref_on_dialog_destroy(GtkWidget *widget, gpointer user_data)
 		remmina_pref.dark_theme = b;
 		rebuild_remmina_icon = TRUE;
 	}
+
+	remmina_pref.grab_color_switch = gtk_switch_get_active (remmina_pref_dialog->switch_appearance_grab_color);
 	remmina_pref.grab_color = gtk_entry_get_text(remmina_pref_dialog->entry_grab_color);
 
 	b = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_applet_disable_tray));
@@ -630,6 +641,8 @@ static void remmina_pref_dialog_init(void)
 	}else{
 		gtk_entry_set_text(remmina_pref_dialog->entry_options_screenshot_name, "remmina_%p_%h_%Y%m%d-%H%M%S");
 	}
+
+	gtk_switch_set_active(remmina_pref_dialog->switch_appearance_grab_color, remmina_pref.grab_color_switch);
 	if (remmina_pref.grab_color != NULL)
 		gtk_entry_set_text(remmina_pref_dialog->entry_grab_color, remmina_pref.grab_color);
 	else
@@ -700,6 +713,7 @@ GtkDialog* remmina_pref_dialog_new(gint default_tab, GtkWindow *parent)
 	remmina_pref_dialog->entry_options_scroll = GTK_ENTRY(GET_OBJECT("entry_options_scroll"));
 	remmina_pref_dialog->entry_options_recent_items = GTK_ENTRY(GET_OBJECT("entry_options_recent_items"));
 	remmina_pref_dialog->entry_grab_color = GTK_ENTRY(GET_OBJECT("entry_grab_color"));
+	remmina_pref_dialog->switch_appearance_grab_color = GTK_SWITCH(GET_OBJECT("switch_appearance_grab_color"));
 	remmina_pref_dialog->button_options_recent_items_clear = GTK_BUTTON(GET_OBJECT("button_options_recent_items_clear"));
 	remmina_pref_dialog->unlock_timeout = GTK_ENTRY(GET_OBJECT("unlock_timeout"));
 

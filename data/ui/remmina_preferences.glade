@@ -31,6 +31,8 @@ Author: Antenore Gatta
     <property name="can-focus">False</property>
     <property name="title" translatable="yes">Remmina Preferences</property>
     <property name="window-position">center-on-parent</property>
+    <property name="default-width">800</property>
+    <property name="default-height">600</property>
     <property name="type-hint">dialog</property>
     <signal name="close" handler="remmina_pref_dialog_on_close_clicked" swapped="no"/>
     <signal name="destroy" handler="remmina_pref_on_dialog_destroy" swapped="no"/>
@@ -42,6 +44,7 @@ Author: Antenore Gatta
         <child internal-child="action_area">
           <object class="GtkButtonBox" id="dialog-action_area1">
             <property name="can-focus">False</property>
+            <property name="valign">start</property>
             <property name="layout-style">end</property>
             <child>
               <object class="GtkButton" id="button_close">
@@ -49,6 +52,8 @@ Author: Antenore Gatta
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="receives-default">True</property>
+                <property name="halign">end</property>
+                <property name="valign">center</property>
                 <property name="action-name">pref.close</property>
                 <property name="use-underline">True</property>
               </object>
@@ -99,6 +104,7 @@ Author: Antenore Gatta
                   <object class="GtkComboBoxText" id="comboboxtext_options_double_click">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
+                    <property name="halign">start</property>
                     <property name="margin-end">18</property>
                     <items>
                       <item translatable="yes">Open connection</item>
@@ -130,6 +136,7 @@ Author: Antenore Gatta
                   <object class="GtkComboBoxText" id="comboboxtext_options_scale_quality">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
+                    <property name="halign">start</property>
                     <property name="margin-end">18</property>
                     <items>
                       <item translatable="yes">Nearest</item>
@@ -163,8 +170,10 @@ Author: Antenore Gatta
                   <object class="GtkEntry" id="entry_options_scroll">
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
+                    <property name="halign">start</property>
                     <property name="margin-end">18</property>
                     <property name="max-length">3</property>
+                    <property name="width-chars">24</property>
                   </object>
                   <packing>
                     <property name="left-attach">1</property>
@@ -191,8 +200,10 @@ Author: Antenore Gatta
                   <object class="GtkEntry" id="entry_options_recent_items">
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
+                    <property name="halign">start</property>
                     <property name="hexpand">True</property>
                     <property name="max-length">2</property>
+                    <property name="width-chars">24</property>
                     <property name="input-purpose">number</property>
                   </object>
                   <packing>
@@ -251,7 +262,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="receives-default">True</property>
-                    <property name="halign">end</property>
+                    <property name="halign">start</property>
                     <property name="margin-end">18</property>
                     <signal name="clicked" handler="remmina_pref_on_button_keystrokes_clicked" swapped="no"/>
                   </object>
@@ -281,9 +292,11 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="tooltip-text" translatable="yes">Choose a folder to save screenshots from Remmina in.</property>
+                    <property name="halign">start</property>
                     <property name="margin-end">18</property>
                     <property name="action">select-folder</property>
                     <property name="title" translatable="yes">Select a folder</property>
+                    <property name="width-chars">24</property>
                   </object>
                   <packing>
                     <property name="left-attach">1</property>
@@ -297,7 +310,7 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="receives-default">True</property>
-                    <property name="halign">end</property>
+                    <property name="halign">start</property>
                     <property name="margin-end">18</property>
                     <signal name="clicked" handler="remmina_pref_on_button_resolutions_clicked" swapped="no"/>
                   </object>
@@ -330,8 +343,9 @@ Author: Antenore Gatta
 %h Server name/IP
 %Y Year, %m Month, %d Day, %H Hour, %M Minute, %S Seconds (UTC time)
 </property>
+                    <property name="halign">start</property>
                     <property name="margin-end">18</property>
-                    <property name="width-chars">35</property>
+                    <property name="width-chars">24</property>
                     <property name="placeholder-text">remmina_%p_%h_%Y%m%d-%H%M%S</property>
                   </object>
                   <packing>
@@ -361,10 +375,12 @@ Author: Antenore Gatta
                   <object class="GtkFileChooserButton" id="filechooserbutton_options_datadir_path">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
+                    <property name="halign">start</property>
                     <property name="margin-end">18</property>
                     <property name="margin-top">18</property>
                     <property name="action">select-folder</property>
                     <property name="title" translatable="yes"/>
+                    <property name="width-chars">24</property>
                   </object>
                   <packing>
                     <property name="left-attach">1</property>
@@ -392,7 +408,7 @@ Author: Antenore Gatta
                   <object class="GtkSwitch" id="switch_options_remember_last_view_mode">
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
-                    <property name="halign">end</property>
+                    <property name="halign">start</property>
                     <property name="valign">center</property>
                     <property name="margin-end">18</property>
                   </object>
@@ -406,7 +422,7 @@ Author: Antenore Gatta
                   <object class="GtkSwitch" id="switch_permit_send_stats">
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
-                    <property name="halign">end</property>
+                    <property name="halign">start</property>
                     <property name="valign">center</property>
                     <property name="margin-end">18</property>
                   </object>
@@ -443,8 +459,9 @@ Author: Antenore Gatta
 
 
 </property>
+                    <property name="halign">start</property>
                     <property name="margin-end">18</property>
-                    <property name="width-chars">25</property>
+                    <property name="width-chars">24</property>
                     <property name="placeholder-text">%G_%P_%N_%h</property>
                   </object>
                   <packing>
@@ -474,7 +491,7 @@ Author: Antenore Gatta
                   <object class="GtkSwitch" id="switch_options_deny_screenshot_clipboard">
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
-                    <property name="halign">end</property>
+                    <property name="halign">start</property>
                     <property name="valign">center</property>
                     <property name="margin-end">18</property>
                     <property name="margin-bottom">18</property>
@@ -489,7 +506,7 @@ Author: Antenore Gatta
                   <object class="GtkSwitch" id="switch_permit_news">
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
-                    <property name="halign">end</property>
+                    <property name="halign">start</property>
                     <property name="valign">center</property>
                     <property name="margin-end">18</property>
                   </object>
@@ -779,12 +796,26 @@ Author: Antenore Gatta
                     <property name="tooltip-text" translatable="yes">Hexadecimal or color names (red, #ff0000)
 It changes the connection name background colour, in the remmina connection toolbar when in full screen</property>
                     <property name="halign">start</property>
+                    <property name="valign">center</property>
+                    <property name="width-chars">8</property>
                     <property name="placeholder-text" translatable="yes">#00FF00</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">2</property>
+                    <property name="top-attach">8</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkSwitch" id="switch_appearance_grab_color">
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="halign">start</property>
+                    <property name="valign">center</property>
+                    <signal name="notify::active" handler="remmina_prefdiag_on_grab_color_activated" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left-attach">1</property>
                     <property name="top-attach">8</property>
-                    <property name="width">2</property>
                   </packing>
                 </child>
               </object>
@@ -1544,14 +1575,13 @@ It changes the connection name background colour, in the remmina connection tool
                 <property name="row-spacing">5</property>
                 <property name="column-spacing">7</property>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="GtkLabel" id="label_security_master">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="halign">start</property>
                     <property name="margin-start">18</property>
                     <property name="margin-top">18</property>
                     <property name="margin-bottom">9</property>
-                    <property name="hexpand">False</property>
                     <property name="label" translatable="yes">Master password</property>
                     <attributes>
                       <attribute name="weight" value="bold"/>
@@ -1560,7 +1590,7 @@ It changes the connection name background colour, in the remmina connection tool
                   <packing>
                     <property name="left-attach">0</property>
                     <property name="top-attach">0</property>
-                    <property name="width">2</property>
+                    <property name="width">3</property>
                   </packing>
                 </child>
                 <child>
@@ -1572,23 +1602,21 @@ It changes the connection name background colour, in the remmina connection tool
                     <property name="margin-end">18</property>
                     <property name="margin-top">9</property>
                     <property name="margin-bottom">9</property>
-                    <property name="hexpand">True</property>
                   </object>
                   <packing>
                     <property name="left-attach">1</property>
                     <property name="top-attach">1</property>
+                    <property name="width">2</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="GtkLabel" id="label_security_use_master">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="tooltip-text" translatable="yes">Use secret key authentication for some widgets</property>
                     <property name="halign">start</property>
                     <property name="margin-start">36</property>
                     <property name="margin-top">9</property>
-                    <property name="margin-bottom">9</property>
-                    <property name="hexpand">True</property>
                     <property name="label" translatable="yes">Use master password</property>
                   </object>
                   <packing>
@@ -1597,7 +1625,7 @@ It changes the connection name background colour, in the remmina connection tool
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="GtkLabel" id="label_security_lock_interval">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="halign">start</property>
@@ -1614,8 +1642,8 @@ It changes the connection name background colour, in the remmina connection tool
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="tooltip-text" translatable="yes">Master password validity in seconds</property>
+                    <property name="halign">start</property>
                     <property name="margin-end">18</property>
-                    <property name="hexpand">True</property>
                     <property name="width-chars">24</property>
                     <property name="text">300</property>
                     <property name="input-purpose">number</property>
@@ -1623,10 +1651,11 @@ It changes the connection name background colour, in the remmina connection tool
                   <packing>
                     <property name="left-attach">1</property>
                     <property name="top-attach">2</property>
+                    <property name="width">2</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="GtkLabel" id="label_security_file_encryption">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="halign">start</property>
@@ -1641,11 +1670,11 @@ It changes the connection name background colour, in the remmina connection tool
                   <packing>
                     <property name="left-attach">0</property>
                     <property name="top-attach">7</property>
-                    <property name="width">2</property>
+                    <property name="width">3</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="GtkLabel" id="label_security_master_password">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="halign">start</property>
@@ -1658,11 +1687,12 @@ It changes the connection name background colour, in the remmina connection tool
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="GtkLabel" id="label_security_repeat_password">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="halign">start</property>
                     <property name="margin-start">36</property>
+                    <property name="margin-bottom">9</property>
                     <property name="label" translatable="yes">Repeat the password</property>
                   </object>
                   <packing>
@@ -1674,8 +1704,8 @@ It changes the connection name background colour, in the remmina connection tool
                   <object class="GtkEntry" id="unlock_password">
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
+                    <property name="halign">start</property>
                     <property name="margin-end">18</property>
-                    <property name="hexpand">True</property>
                     <property name="visibility">False</property>
                     <property name="invisible-char">•</property>
                     <property name="width-chars">24</property>
@@ -1684,14 +1714,16 @@ It changes the connection name background colour, in the remmina connection tool
                   <packing>
                     <property name="left-attach">1</property>
                     <property name="top-attach">3</property>
+                    <property name="width">2</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkEntry" id="unlock_repassword">
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
+                    <property name="halign">start</property>
                     <property name="margin-end">18</property>
-                    <property name="hexpand">True</property>
+                    <property name="margin-bottom">9</property>
                     <property name="visibility">False</property>
                     <property name="invisible-char">•</property>
                     <property name="width-chars">24</property>
@@ -1704,10 +1736,11 @@ It changes the connection name background colour, in the remmina connection tool
                   <packing>
                     <property name="left-attach">1</property>
                     <property name="top-attach">4</property>
+                    <property name="width">2</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="GtkLabel" id="label_security_fingerprints">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="halign">start</property>
@@ -1722,11 +1755,11 @@ It changes the connection name background colour, in the remmina connection tool
                   <packing>
                     <property name="left-attach">0</property>
                     <property name="top-attach">5</property>
-                    <property name="width">2</property>
+                    <property name="width">3</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="GtkLabel" id="label_security_trust_fingerprints">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="tooltip-text" translatable="yes">Automatically accept all fingerprints and certificates</property>
@@ -1756,31 +1789,8 @@ It changes the connection name background colour, in the remmina connection tool
                   <packing>
                     <property name="left-attach">1</property>
                     <property name="top-attach">6</property>
+                    <property name="width">2</property>
                   </packing>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
                 </child>
               </object>
               <packing>
