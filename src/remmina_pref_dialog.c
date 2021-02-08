@@ -41,6 +41,7 @@
 #if defined (HAVE_LIBSSH) && defined (HAVE_LIBVTE)
 #include <vte/vte.h>
 #endif
+#include "remmina_log.h"
 #include "remmina_sodium.h"
 #include "remmina_public.h"
 #include "remmina_string_list.h"
@@ -156,6 +157,14 @@ void remmina_pref_on_button_keystrokes_clicked(GtkWidget *widget, gpointer user_
 	remmina_pref.keystrokes = remmina_string_list_get_text();
 	gtk_widget_destroy(GTK_WIDGET(dialog));
 }
+
+void remmina_prefdiag_on_grab_color_activated (GtkSwitch *widget, gpointer user_data)
+{
+	TRACE_CALL(__func__);
+	//REMMINA_DEBUG ("entry_grab_color %d", gtk_switch_get_active(widget));
+	gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->entry_grab_color), gtk_switch_get_active(widget));
+}
+
 
 void remmina_prefdiag_unlock_repwd_on_changed(GtkEditable* editable, RemminaPrefDialog *dialog)
 {
@@ -278,11 +287,14 @@ void remmina_pref_on_dialog_destroy(GtkWidget *widget, gpointer user_data)
 
 	remmina_pref.applet_new_ontop = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_applet_new_connection_on_top));
 	remmina_pref.applet_hide_count = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_applet_hide_totals));
-	b = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_applet_light_tray));
-	if (remmina_pref.dark_tray_icon != b) {
-		remmina_pref.dark_tray_icon = b;
+	b = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_dark_theme));
+	if (remmina_pref.dark_theme != b) {
+		remmina_pref.dark_theme = b;
 		rebuild_remmina_icon = TRUE;
 	}
+
+	remmina_pref.grab_color_switch = gtk_switch_get_active (remmina_pref_dialog->switch_appearance_grab_color);
+	remmina_pref.grab_color = gtk_entry_get_text(remmina_pref_dialog->entry_grab_color);
 
 	b = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_applet_disable_tray));
 	if (remmina_pref.disable_tray_icon != b) {
@@ -499,7 +511,7 @@ static void remmina_pref_dialog_init(void)
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_applet_new_connection_on_top), remmina_pref.applet_new_ontop);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_applet_hide_totals), remmina_pref.applet_hide_count);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_applet_disable_tray), remmina_pref.disable_tray_icon);
-	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_applet_light_tray), remmina_pref.dark_tray_icon);
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_dark_theme), remmina_pref.dark_theme);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_applet_start_in_tray), remmina_icon_is_autostart());
 	gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->checkbutton_applet_start_in_tray), !remmina_pref.disable_tray_icon);
 
@@ -614,11 +626,11 @@ static void remmina_pref_dialog_init(void)
 	if (remmina_pref.datadir_path != NULL && strlen(remmina_pref.datadir_path) > 0) {
 		gtk_file_chooser_set_filename(remmina_pref_dialog->filechooserbutton_options_datadir_path, remmina_pref.datadir_path);
 	}
-	if (remmina_pref.remmina_file_name != NULL) {
+	if (remmina_pref.remmina_file_name != NULL)
 		gtk_entry_set_text(remmina_pref_dialog->entry_options_file_name, remmina_pref.remmina_file_name);
-	}else{
+	else
 		gtk_entry_set_text(remmina_pref_dialog->entry_options_file_name, "%G_%P_%N_%h.remmina");
-	}
+
 	if (remmina_pref.screenshot_path != NULL) {
 		gtk_file_chooser_set_filename(remmina_pref_dialog->filechooserbutton_options_screenshots_path, remmina_pref.screenshot_path);
 	}else{
@@ -629,6 +641,13 @@ static void remmina_pref_dialog_init(void)
 	}else{
 		gtk_entry_set_text(remmina_pref_dialog->entry_options_screenshot_name, "remmina_%p_%h_%Y%m%d-%H%M%S");
 	}
+
+	gtk_switch_set_active(remmina_pref_dialog->switch_appearance_grab_color, remmina_pref.grab_color_switch);
+	if (remmina_pref.grab_color != NULL)
+		gtk_entry_set_text(remmina_pref_dialog->entry_grab_color, remmina_pref.grab_color);
+	else
+		gtk_entry_set_text(remmina_pref_dialog->entry_options_file_name, "#00FF00");
+
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_options_ssh_parseconfig), remmina_pref.ssh_parseconfig);
 
 	remmina_pref_dialog_set_button_label(remmina_pref_dialog->button_keyboard_copy, remmina_pref.vte_shortcutkey_copy);
@@ -693,13 +712,15 @@ GtkDialog* remmina_pref_dialog_new(gint default_tab, GtkWindow *parent)
 	remmina_pref_dialog->entry_options_ssh_tcp_usrtimeout = GTK_ENTRY(GET_OBJECT("entry_options_ssh_tcp_usrtimeout"));
 	remmina_pref_dialog->entry_options_scroll = GTK_ENTRY(GET_OBJECT("entry_options_scroll"));
 	remmina_pref_dialog->entry_options_recent_items = GTK_ENTRY(GET_OBJECT("entry_options_recent_items"));
+	remmina_pref_dialog->entry_grab_color = GTK_ENTRY(GET_OBJECT("entry_grab_color"));
+	remmina_pref_dialog->switch_appearance_grab_color = GTK_SWITCH(GET_OBJECT("switch_appearance_grab_color"));
 	remmina_pref_dialog->button_options_recent_items_clear = GTK_BUTTON(GET_OBJECT("button_options_recent_items_clear"));
 	remmina_pref_dialog->unlock_timeout = GTK_ENTRY(GET_OBJECT("unlock_timeout"));
 
 	remmina_pref_dialog->checkbutton_applet_new_connection_on_top = GTK_CHECK_BUTTON(GET_OBJECT("checkbutton_applet_new_connection_on_top"));
 	remmina_pref_dialog->checkbutton_applet_hide_totals = GTK_CHECK_BUTTON(GET_OBJECT("checkbutton_applet_hide_totals"));
 	remmina_pref_dialog->checkbutton_applet_disable_tray = GTK_CHECK_BUTTON(GET_OBJECT("checkbutton_applet_disable_tray"));
-	remmina_pref_dialog->checkbutton_applet_light_tray = GTK_CHECK_BUTTON(GET_OBJECT("checkbutton_applet_light_tray"));
+	remmina_pref_dialog->checkbutton_dark_theme = GTK_CHECK_BUTTON(GET_OBJECT("checkbutton_dark_theme"));
 	remmina_pref_dialog->checkbutton_applet_start_in_tray = GTK_CHECK_BUTTON(GET_OBJECT("checkbutton_applet_start_in_tray"));
 
 	remmina_pref_dialog->button_keyboard_host_key = GTK_BUTTON(GET_OBJECT("button_keyboard_host_key"));

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.36.0 
+<!-- Generated with glade 3.38.2 
 
-Remmina Preferences Dialog - 
+Remmina Preferences Dialog -
 Copyright (C) Antenore Gatta, Giovanni Panozzo 2014-2020
 
 This program is free software; you can redistribute it and/or
@@ -28,29 +28,34 @@ Author: Antenore Gatta
   <!-- interface-copyright Antenore Gatta, Giovanni Panozzo 2014-2020 -->
   <!-- interface-authors Antenore Gatta -->
   <object class="GtkDialog" id="RemminaPrefDialog">
-    <property name="can_focus">False</property>
+    <property name="can-focus">False</property>
     <property name="title" translatable="yes">Remmina Preferences</property>
-    <property name="window_position">center-on-parent</property>
-    <property name="type_hint">dialog</property>
+    <property name="window-position">center-on-parent</property>
+    <property name="default-width">800</property>
+    <property name="default-height">600</property>
+    <property name="type-hint">dialog</property>
     <signal name="close" handler="remmina_pref_dialog_on_close_clicked" swapped="no"/>
     <signal name="destroy" handler="remmina_pref_on_dialog_destroy" swapped="no"/>
     <child internal-child="vbox">
       <object class="GtkBox" id="dialog-vbox1">
-        <property name="can_focus">False</property>
+        <property name="can-focus">False</property>
         <property name="orientation">vertical</property>
         <property name="spacing">10</property>
         <child internal-child="action_area">
           <object class="GtkButtonBox" id="dialog-action_area1">
-            <property name="can_focus">False</property>
-            <property name="layout_style">end</property>
+            <property name="can-focus">False</property>
+            <property name="valign">start</property>
+            <property name="layout-style">end</property>
             <child>
               <object class="GtkButton" id="button_close">
                 <property name="label" translatable="yes">Close</property>
                 <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="action_name">pref.close</property>
-                <property name="use_underline">True</property>
+                <property name="can-focus">True</property>
+                <property name="receives-default">True</property>
+                <property name="halign">end</property>
+                <property name="valign">center</property>
+                <property name="action-name">pref.close</property>
+                <property name="use-underline">True</property>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -62,74 +67,77 @@ Author: Antenore Gatta
           <packing>
             <property name="expand">False</property>
             <property name="fill">False</property>
-            <property name="pack_type">end</property>
+            <property name="pack-type">end</property>
             <property name="position">0</property>
           </packing>
         </child>
         <child>
           <object class="GtkNotebook" id="notebook_preferences">
             <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="tab_pos">left</property>
+            <property name="can-focus">True</property>
+            <property name="tab-pos">left</property>
             <property name="scrollable">True</property>
-            <property name="enable_popup">True</property>
+            <property name="enable-popup">True</property>
             <child>
+              <!-- n-columns=3 n-rows=15 -->
               <object class="GtkGrid" id="grid_options">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="row_spacing">5</property>
-                <property name="column_spacing">7</property>
+                <property name="can-focus">False</property>
+                <property name="row-spacing">5</property>
+                <property name="column-spacing">7</property>
                 <child>
                   <object class="GtkLabel" id="label_options_double_click">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
+                    <property name="margin-start">18</property>
                     <property name="hexpand">False</property>
                     <property name="label" translatable="yes">Double-click action</property>
                     <property name="justify">right</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">4</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">4</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkComboBoxText" id="comboboxtext_options_double_click">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="margin_end">18</property>
+                    <property name="can-focus">False</property>
+                    <property name="halign">start</property>
+                    <property name="margin-end">18</property>
                     <items>
                       <item translatable="yes">Open connection</item>
                       <item translatable="yes">Edit settings</item>
                     </items>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">4</property>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">4</property>
                     <property name="width">2</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="label_options_scale_quality">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
+                    <property name="margin-start">18</property>
                     <property name="hexpand">False</property>
                     <property name="label" translatable="yes">Scaling quality</property>
                     <property name="justify">right</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">5</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">5</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkComboBoxText" id="comboboxtext_options_scale_quality">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="margin_end">18</property>
+                    <property name="can-focus">False</property>
+                    <property name="halign">start</property>
+                    <property name="margin-end">18</property>
                     <items>
                       <item translatable="yes">Nearest</item>
                       <item translatable="yes">Tiles</item>
@@ -138,155 +146,161 @@ Author: Antenore Gatta
                     </items>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">5</property>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">5</property>
                     <property name="width">2</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="label_options_scroll">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
+                    <property name="margin-start">18</property>
                     <property name="hexpand">False</property>
                     <property name="label" translatable="yes">Step size for auto-scroll</property>
                     <property name="justify">right</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">7</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">7</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkEntry" id="entry_options_scroll">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="margin_end">18</property>
-                    <property name="max_length">3</property>
+                    <property name="can-focus">True</property>
+                    <property name="halign">start</property>
+                    <property name="margin-end">18</property>
+                    <property name="max-length">3</property>
+                    <property name="width-chars">24</property>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">7</property>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">7</property>
                     <property name="width">2</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="label_options_recent_items">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
+                    <property name="margin-start">18</property>
                     <property name="hexpand">False</property>
                     <property name="label" translatable="yes">Maximal amount of recent items</property>
                     <property name="justify">right</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">6</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">6</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkEntry" id="entry_options_recent_items">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="halign">start</property>
                     <property name="hexpand">True</property>
-                    <property name="max_length">2</property>
-                    <property name="input_purpose">number</property>
+                    <property name="max-length">2</property>
+                    <property name="width-chars">24</property>
+                    <property name="input-purpose">number</property>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">6</property>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">6</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkButton" id="button_options_recent_items_clear">
                     <property name="label" translatable="yes">Clear</property>
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
                     <property name="halign">start</property>
-                    <property name="margin_end">18</property>
+                    <property name="margin-end">18</property>
                     <signal name="clicked" handler="remmina_pref_dialog_clear_recent" swapped="no"/>
                   </object>
                   <packing>
-                    <property name="left_attach">2</property>
-                    <property name="top_attach">6</property>
+                    <property name="left-attach">2</property>
+                    <property name="top-attach">6</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="label_options_resolutions">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
+                    <property name="margin-start">18</property>
                     <property name="hexpand">False</property>
                     <property name="label" translatable="yes">Screen resolutions</property>
                     <property name="justify">right</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">8</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">8</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="label_options_keystrokes">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
+                    <property name="margin-start">18</property>
                     <property name="hexpand">False</property>
                     <property name="label" translatable="yes">Keystrokes</property>
                     <property name="justify">right</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">9</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">9</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkButton" id="button_options_keystrokes">
                     <property name="label" translatable="yes">Keystrokes</property>
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
-                    <property name="halign">end</property>
-                    <property name="margin_end">18</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
+                    <property name="halign">start</property>
+                    <property name="margin-end">18</property>
                     <signal name="clicked" handler="remmina_pref_on_button_keystrokes_clicked" swapped="no"/>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">9</property>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">9</property>
                     <property name="width">2</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="label_options_screenshot_folder">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
+                    <property name="margin-start">18</property>
                     <property name="hexpand">False</property>
                     <property name="label" translatable="yes">Folder for screenshots</property>
                     <property name="justify">right</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">2</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">2</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkFileChooserButton" id="filechooserbutton_options_screenshots_path">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="tooltip_text" translatable="yes">Choose a folder to save screenshots from Remmina in.</property>
-                    <property name="margin_end">18</property>
+                    <property name="can-focus">False</property>
+                    <property name="tooltip-text" translatable="yes">Choose a folder to save screenshots from Remmina in.</property>
+                    <property name="halign">start</property>
+                    <property name="margin-end">18</property>
                     <property name="action">select-folder</property>
                     <property name="title" translatable="yes">Select a folder</property>
+                    <property name="width-chars">24</property>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">2</property>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">2</property>
                     <property name="width">2</property>
                   </packing>
                 </child>
@@ -294,256 +308,260 @@ Author: Antenore Gatta
                   <object class="GtkButton" id="button_options_resolutions">
                     <property name="label" translatable="yes">Set up</property>
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
-                    <property name="halign">end</property>
-                    <property name="margin_end">18</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
+                    <property name="halign">start</property>
+                    <property name="margin-end">18</property>
                     <signal name="clicked" handler="remmina_pref_on_button_resolutions_clicked" swapped="no"/>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">8</property>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">8</property>
                     <property name="width">2</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="label_options_screenshot_name">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
+                    <property name="margin-start">18</property>
                     <property name="hexpand">False</property>
                     <property name="label" translatable="yes">Screenshot filenames</property>
                     <property name="justify">right</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">3</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">3</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkEntry" id="entry_options_screenshot_name">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="tooltip_text" translatable="yes">%p Profile name
+                    <property name="can-focus">True</property>
+                    <property name="tooltip-text" translatable="yes">%p Profile name
 %h Server name/IP
 %Y Year, %m Month, %d Day, %H Hour, %M Minute, %S Seconds (UTC time)
 </property>
-                    <property name="margin_end">18</property>
-                    <property name="width_chars">35</property>
-                    <property name="placeholder_text">remmina_%p_%h_%Y%m%d-%H%M%S</property>
+                    <property name="halign">start</property>
+                    <property name="margin-end">18</property>
+                    <property name="width-chars">24</property>
+                    <property name="placeholder-text">remmina_%p_%h_%Y%m%d-%H%M%S</property>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">3</property>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">3</property>
                     <property name="width">2</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="tooltip_text" translatable="yes">The folder connection profiles are saved in, it defaults to the XDG_USER_DATA</property>
+                    <property name="can-focus">False</property>
+                    <property name="tooltip-text" translatable="yes">The folder connection profiles are saved in, it defaults to the XDG_USER_DATA</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
-                    <property name="margin_top">18</property>
+                    <property name="margin-start">18</property>
+                    <property name="margin-top">18</property>
                     <property name="hexpand">False</property>
                     <property name="label" translatable="yes" comments="The folder where profiles are saved">Remmina data folder</property>
                     <property name="justify">right</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">0</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">0</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkFileChooserButton" id="filechooserbutton_options_datadir_path">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="margin_end">18</property>
-                    <property name="margin_top">18</property>
+                    <property name="can-focus">False</property>
+                    <property name="halign">start</property>
+                    <property name="margin-end">18</property>
+                    <property name="margin-top">18</property>
                     <property name="action">select-folder</property>
                     <property name="title" translatable="yes"/>
+                    <property name="width-chars">24</property>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">0</property>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">0</property>
                     <property name="width">2</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="label_options_remember_last_view_mode">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="tooltip_text" translatable="yes">Remember last view for each connection</property>
+                    <property name="can-focus">False</property>
+                    <property name="tooltip-text" translatable="yes">Remember last view for each connection</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
+                    <property name="margin-start">18</property>
                     <property name="hexpand">False</property>
                     <property name="label" translatable="yes" comments="The star (*) is a reference to privacy consent">Remember last view mode</property>
                     <property name="justify">right</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">10</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">10</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkSwitch" id="switch_options_remember_last_view_mode">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="halign">end</property>
+                    <property name="can-focus">True</property>
+                    <property name="halign">start</property>
                     <property name="valign">center</property>
-                    <property name="margin_end">18</property>
+                    <property name="margin-end">18</property>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">10</property>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">10</property>
                     <property name="width">2</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkSwitch" id="switch_permit_send_stats">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="halign">end</property>
+                    <property name="can-focus">True</property>
+                    <property name="halign">start</property>
                     <property name="valign">center</property>
-                    <property name="margin_end">18</property>
+                    <property name="margin-end">18</property>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">11</property>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">11</property>
                     <property name="width">2</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="label_options_file_name">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="tooltip_text" translatable="yes">Set a custom filename for your Remmina connection profiles, using a formatting string.</property>
+                    <property name="can-focus">False</property>
+                    <property name="tooltip-text" translatable="yes">Set a custom filename for your Remmina connection profiles, using a formatting string.</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
+                    <property name="margin-start">18</property>
                     <property name="hexpand">False</property>
                     <property name="label" translatable="yes">Template for profile filenames</property>
                     <property name="justify">right</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">1</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">1</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkEntry" id="entry_options_file_name">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="tooltip_text" translatable="yes">%G Group name (slash will be converted to - automatically)
+                    <property name="can-focus">True</property>
+                    <property name="tooltip-text" translatable="yes">%G Group name (slash will be converted to - automatically)
 %P Protocol name
 %N Connection name
 %h Hostname/IP
 
 
 </property>
-                    <property name="margin_end">18</property>
-                    <property name="width_chars">25</property>
-                    <property name="placeholder_text">%G_%P_%N_%h</property>
+                    <property name="halign">start</property>
+                    <property name="margin-end">18</property>
+                    <property name="width-chars">24</property>
+                    <property name="placeholder-text">%G_%P_%N_%h</property>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">1</property>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">1</property>
                     <property name="width">2</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="label_options_deny_screenshot_clipboard">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="tooltip_text" translatable="yes">Only save generated screenshots, don't copy them to clipboard.</property>
+                    <property name="can-focus">False</property>
+                    <property name="tooltip-text" translatable="yes">Only save generated screenshots, don't copy them to clipboard.</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
-                    <property name="margin_bottom">18</property>
+                    <property name="margin-start">18</property>
+                    <property name="margin-bottom">18</property>
                     <property name="hexpand">False</property>
                     <property name="label" translatable="yes">Prevent screenshots from entering clipboard</property>
                     <property name="justify">right</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">13</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">13</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkSwitch" id="switch_options_deny_screenshot_clipboard">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="halign">end</property>
+                    <property name="can-focus">True</property>
+                    <property name="halign">start</property>
                     <property name="valign">center</property>
-                    <property name="margin_end">18</property>
-                    <property name="margin_bottom">18</property>
+                    <property name="margin-end">18</property>
+                    <property name="margin-bottom">18</property>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">13</property>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">13</property>
                     <property name="width">2</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkSwitch" id="switch_permit_news">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="halign">end</property>
+                    <property name="can-focus">True</property>
+                    <property name="halign">start</property>
                     <property name="valign">center</property>
-                    <property name="margin_end">18</property>
+                    <property name="margin-end">18</property>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">12</property>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">12</property>
                     <property name="width">2</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="privacy_disclaimer_label">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
-                    <property name="margin_end">18</property>
+                    <property name="margin-start">18</property>
+                    <property name="margin-end">18</property>
                     <property name="label" translatable="yes">* By enabling statistics and/or news you consent to send and fetch data to/from remmina.org</property>
                     <property name="justify">fill</property>
                     <property name="wrap">True</property>
-                    <property name="wrap_mode">word-char</property>
+                    <property name="wrap-mode">word-char</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">14</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">14</property>
                     <property name="width">3</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="rmnews_allow_stats_label">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
+                    <property name="can-focus">True</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
+                    <property name="margin-start">18</property>
                     <property name="hexpand">False</property>
                     <property name="label" translatable="yes" comments="The star (*) is a reference to privacy consent">Send &lt;b&gt;&lt;a href="https://remmina.gitlab.io/remminadoc.gitlab.io/remmina__stats_8c.html#details" title="Remmina usage statistics"&gt;anonymous&lt;/a&gt;&lt;/b&gt; statistics. (*)</property>
-                    <property name="use_markup">True</property>
+                    <property name="use-markup">True</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">11</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">11</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="rmnews_allow_news_label">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
+                    <property name="can-focus">True</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
+                    <property name="margin-start">18</property>
                     <property name="hexpand">False</property>
                     <property name="label" translatable="yes" comments="The star (*) is a reference to privacy consent">Fetch news from &lt;a href="https://remmina.org" title="Remmina news site"&gt;remmina.org&lt;/a&gt; (*)</property>
-                    <property name="use_markup">True</property>
+                    <property name="use-markup">True</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">12</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">12</property>
                   </packing>
                 </child>
               </object>
@@ -551,36 +569,37 @@ Author: Antenore Gatta
             <child type="tab">
               <object class="GtkLabel" id="label_tab_options">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
+                <property name="can-focus">False</property>
                 <property name="halign">end</property>
-                <property name="margin_end">18</property>
+                <property name="margin-end">18</property>
                 <property name="label" translatable="yes">Options</property>
               </object>
               <packing>
-                <property name="menu_label">options</property>
-                <property name="tab_fill">False</property>
+                <property name="menu-label">options</property>
+                <property name="tab-fill">False</property>
               </packing>
             </child>
             <child>
+              <!-- n-columns=3 n-rows=9 -->
               <object class="GtkGrid" id="grid_appearance">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="row_spacing">5</property>
-                <property name="column_spacing">7</property>
+                <property name="can-focus">False</property>
+                <property name="row-spacing">5</property>
+                <property name="column-spacing">7</property>
                 <child>
                   <object class="GtkCheckButton" id="checkbutton_appearance_show_tabs">
                     <property name="label" translatable="yes">Always show tabs</property>
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">False</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
+                    <property name="margin-start">18</property>
                     <property name="hexpand">True</property>
-                    <property name="draw_indicator">True</property>
+                    <property name="draw-indicator">True</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">1</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">2</property>
                     <property name="width">3</property>
                   </packing>
                 </child>
@@ -588,37 +607,38 @@ Author: Antenore Gatta
                   <object class="GtkCheckButton" id="checkbutton_appearance_hide_toolbar">
                     <property name="label" translatable="yes">Hide the toolbar shown in the tabbed interface</property>
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">False</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
+                    <property name="margin-start">18</property>
                     <property name="hexpand">True</property>
-                    <property name="draw_indicator">True</property>
+                    <property name="draw-indicator">True</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">2</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">3</property>
                     <property name="width">3</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="label_appearance_view_mode">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
+                    <property name="margin-start">18</property>
                     <property name="label" translatable="yes">Default view</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">5</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">6</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkComboBoxText" id="comboboxtext_appearance_view_mode">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="margin_end">18</property>
+                    <property name="can-focus">False</property>
+                    <property name="halign">start</property>
+                    <property name="margin-end">18</property>
                     <property name="hexpand">True</property>
                     <items>
                       <item translatable="yes">Automatic</item>
@@ -628,31 +648,32 @@ Author: Antenore Gatta
                     </items>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">5</property>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">6</property>
                     <property name="width">2</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="label_appearance_tab_interface">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
-                    <property name="margin_bottom">18</property>
+                    <property name="margin-start">18</property>
+                    <property name="margin-bottom">18</property>
                     <property name="label" translatable="yes">Tabs</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">6</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">7</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkComboBoxText" id="comboboxtext_appearance_tab_interface">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="margin_end">18</property>
-                    <property name="margin_bottom">18</property>
+                    <property name="can-focus">False</property>
+                    <property name="halign">start</property>
+                    <property name="margin-end">18</property>
+                    <property name="margin-bottom">18</property>
                     <property name="hexpand">True</property>
                     <items>
                       <item id="0" translatable="yes">By group</item>
@@ -662,8 +683,8 @@ Author: Antenore Gatta
                     </items>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">6</property>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">7</property>
                     <property name="width">2</property>
                   </packing>
                 </child>
@@ -671,27 +692,27 @@ Author: Antenore Gatta
                   <object class="GtkCheckButton" id="checkbutton_appearance_fullscreen_on_auto">
                     <property name="label" translatable="yes">Fullscreen on the same screen as the connection window</property>
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">False</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
-                    <property name="margin_top">18</property>
+                    <property name="margin-start">18</property>
                     <property name="hexpand">True</property>
                     <property name="active">True</property>
-                    <property name="draw_indicator">True</property>
+                    <property name="draw-indicator">True</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">0</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">1</property>
                     <property name="width">3</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkComboBoxText" id="comboboxtext_appearance_fullscreen_toolbar_visibility">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="margin_end">18</property>
-                    <property name="active_id">0</property>
+                    <property name="can-focus">False</property>
+                    <property name="halign">start</property>
+                    <property name="margin-end">18</property>
+                    <property name="active-id">0</property>
                     <items>
                       <item id="0" translatable="yes">Peeking</item>
                       <item id="1" translatable="yes">Hidden</item>
@@ -699,40 +720,102 @@ Author: Antenore Gatta
                     </items>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">4</property>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">5</property>
                     <property name="width">2</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="label_fullscreen_toolbar_visibility">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
+                    <property name="margin-start">18</property>
                     <property name="label" translatable="yes">Fullscreen toolbar visibility</property>
                     <property name="selectable">True</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">4</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">5</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkCheckButton" id="checkbutton_appearance_hide_searchbar">
                     <property name="label" translatable="yes">Hide the search bar shown in the main window</property>
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">False</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
+                    <property name="margin-start">18</property>
                     <property name="hexpand">True</property>
-                    <property name="draw_indicator">True</property>
+                    <property name="draw-indicator">True</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">3</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">4</property>
                     <property name="width">3</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="checkbutton_dark_theme">
+                    <property name="label" translatable="yes">Prefer dark theme</property>
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">False</property>
+                    <property name="tooltip-text" translatable="yes">If a GTK theme includes a dark variant, it will be used instead of the configured theme.</property>
+                    <property name="halign">start</property>
+                    <property name="margin-start">18</property>
+                    <property name="margin-top">18</property>
+                    <property name="hexpand">True</property>
+                    <property name="draw-indicator">True</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">0</property>
+                    <property name="width">3</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="halign">start</property>
+                    <property name="margin-start">18</property>
+                    <property name="margin-bottom">18</property>
+                    <property name="label" translatable="yes">“Grab all keyboard events” status colour</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">8</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkEntry" id="entry_grab_color">
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="tooltip-text" translatable="yes">Hexadecimal or color names (red, #ff0000)
+It changes the connection name background colour, in the remmina connection toolbar when in full screen</property>
+                    <property name="halign">start</property>
+                    <property name="valign">center</property>
+                    <property name="width-chars">8</property>
+                    <property name="placeholder-text" translatable="yes">#00FF00</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">2</property>
+                    <property name="top-attach">8</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkSwitch" id="switch_appearance_grab_color">
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="halign">start</property>
+                    <property name="valign">center</property>
+                    <signal name="notify::active" handler="remmina_prefdiag_on_grab_color_activated" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">8</property>
                   </packing>
                 </child>
               </object>
@@ -743,38 +826,39 @@ Author: Antenore Gatta
             <child type="tab">
               <object class="GtkLabel" id="label_tab_appearance">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
+                <property name="can-focus">False</property>
                 <property name="halign">end</property>
-                <property name="margin_end">18</property>
+                <property name="margin-end">18</property>
                 <property name="label" translatable="yes">Appearance</property>
               </object>
               <packing>
-                <property name="menu_label">appearance</property>
+                <property name="menu-label">appearance</property>
                 <property name="position">1</property>
-                <property name="tab_fill">False</property>
+                <property name="tab-fill">False</property>
               </packing>
             </child>
             <child>
+              <!-- n-columns=3 n-rows=4 -->
               <object class="GtkGrid" id="grid_applet">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="row_spacing">5</property>
-                <property name="column_spacing">7</property>
+                <property name="can-focus">False</property>
+                <property name="row-spacing">5</property>
+                <property name="column-spacing">7</property>
                 <child>
                   <object class="GtkCheckButton" id="checkbutton_applet_new_connection_on_top">
                     <property name="label" translatable="yes">Show new connection on top of the menu</property>
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">False</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
-                    <property name="margin_top">18</property>
+                    <property name="margin-start">18</property>
+                    <property name="margin-top">18</property>
                     <property name="hexpand">True</property>
-                    <property name="draw_indicator">True</property>
+                    <property name="draw-indicator">True</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">0</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">0</property>
                     <property name="width">3</property>
                   </packing>
                 </child>
@@ -782,16 +866,16 @@ Author: Antenore Gatta
                   <object class="GtkCheckButton" id="checkbutton_applet_hide_totals">
                     <property name="label" translatable="yes">Hide total count shown in the group menu</property>
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">False</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
+                    <property name="margin-start">18</property>
                     <property name="hexpand">True</property>
-                    <property name="draw_indicator">True</property>
+                    <property name="draw-indicator">True</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">1</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">1</property>
                     <property name="width">3</property>
                   </packing>
                 </child>
@@ -799,17 +883,17 @@ Author: Antenore Gatta
                   <object class="GtkCheckButton" id="checkbutton_applet_disable_tray">
                     <property name="label" translatable="yes">No tray icon</property>
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">False</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
+                    <property name="margin-start">18</property>
                     <property name="hexpand">True</property>
-                    <property name="draw_indicator">True</property>
+                    <property name="draw-indicator">True</property>
                     <signal name="toggled" handler="remmina_pref_dialog_disable_tray_icon_on_toggled" swapped="no"/>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">2</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">2</property>
                     <property name="width">3</property>
                   </packing>
                 </child>
@@ -817,35 +901,17 @@ Author: Antenore Gatta
                   <object class="GtkCheckButton" id="checkbutton_applet_start_in_tray">
                     <property name="label" translatable="yes">Start in tray upon user login</property>
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">False</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
-                    <property name="margin_bottom">18</property>
+                    <property name="margin-start">18</property>
+                    <property name="margin-bottom">18</property>
                     <property name="hexpand">True</property>
-                    <property name="draw_indicator">True</property>
+                    <property name="draw-indicator">True</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">4</property>
-                    <property name="width">3</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkCheckButton" id="checkbutton_applet_light_tray">
-                    <property name="label" translatable="yes">Dark tray icon</property>
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">False</property>
-                    <property name="tooltip_text" translatable="yes">Improves contrast if you have a light panel.</property>
-                    <property name="halign">start</property>
-                    <property name="margin_start">18</property>
-                    <property name="hexpand">True</property>
-                    <property name="draw_indicator">True</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">3</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">3</property>
                     <property name="width">3</property>
                   </packing>
                 </child>
@@ -857,400 +923,401 @@ Author: Antenore Gatta
             <child type="tab">
               <object class="GtkLabel" id="label_tab_applet">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
+                <property name="can-focus">False</property>
                 <property name="halign">end</property>
-                <property name="margin_end">18</property>
+                <property name="margin-end">18</property>
                 <property name="label" translatable="yes">Applet</property>
               </object>
               <packing>
-                <property name="menu_label">applet</property>
+                <property name="menu-label">applet</property>
                 <property name="position">2</property>
-                <property name="tab_fill">False</property>
+                <property name="tab-fill">False</property>
               </packing>
             </child>
             <child>
+              <!-- n-columns=3 n-rows=12 -->
               <object class="GtkGrid" id="grid_keyboard">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="row_spacing">5</property>
-                <property name="column_spacing">7</property>
+                <property name="can-focus">False</property>
+                <property name="row-spacing">5</property>
+                <property name="column-spacing">7</property>
                 <child>
                   <object class="GtkLabel" id="label_keyboard_host_key">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
-                    <property name="margin_top">18</property>
+                    <property name="margin-start">18</property>
+                    <property name="margin-top">18</property>
                     <property name="hexpand">True</property>
                     <property name="label" translatable="yes">Host key</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">0</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">0</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkButton" id="button_keyboard_host_key">
                     <property name="label">Host key</property>
-                    <property name="width_request">100</property>
+                    <property name="width-request">100</property>
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
-                    <property name="margin_end">18</property>
-                    <property name="margin_top">18</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
+                    <property name="margin-end">18</property>
+                    <property name="margin-top">18</property>
                     <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">0</property>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">0</property>
                     <property name="width">2</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="label_keyboard_fullscreen">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
+                    <property name="margin-start">18</property>
                     <property name="hexpand">True</property>
                     <property name="label" translatable="yes">Show/hide fullscreen</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">1</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">1</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkButton" id="button_keyboard_fullscreen">
                     <property name="label">Fullscreen mode</property>
-                    <property name="width_request">100</property>
+                    <property name="width-request">100</property>
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
-                    <property name="margin_end">18</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
+                    <property name="margin-end">18</property>
                     <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">1</property>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">1</property>
                     <property name="width">2</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="label_keyboard_auto_fit">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
+                    <property name="margin-start">18</property>
                     <property name="hexpand">True</property>
                     <property name="label" translatable="yes">Auto-fit window</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">2</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">2</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkButton" id="button_keyboard_auto_fit">
                     <property name="label">Auto-fit window</property>
-                    <property name="width_request">100</property>
+                    <property name="width-request">100</property>
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
-                    <property name="margin_end">18</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
+                    <property name="margin-end">18</property>
                     <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">2</property>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">2</property>
                     <property name="width">2</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="label_keyboard_switch_tab">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
+                    <property name="margin-start">18</property>
                     <property name="hexpand">True</property>
                     <property name="label" translatable="yes">Switch tab pages</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">3</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">3</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkButton" id="button_keyboard_switch_tab_left">
                     <property name="label">Switch tab l</property>
-                    <property name="width_request">100</property>
+                    <property name="width-request">100</property>
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
                     <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">3</property>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">3</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkButton" id="button_keyboard_switch_tabright">
                     <property name="label">Switch tab r</property>
-                    <property name="width_request">100</property>
+                    <property name="width-request">100</property>
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
-                    <property name="margin_end">18</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
+                    <property name="margin-end">18</property>
                     <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                   </object>
                   <packing>
-                    <property name="left_attach">2</property>
-                    <property name="top_attach">3</property>
+                    <property name="left-attach">2</property>
+                    <property name="top-attach">3</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="label_keyboard_scaled">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
+                    <property name="margin-start">18</property>
                     <property name="hexpand">True</property>
                     <property name="label" translatable="yes">Apply/remove scaling</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">4</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">4</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkButton" id="button_keyboard_scaled">
                     <property name="label">Scaled mode</property>
-                    <property name="width_request">100</property>
+                    <property name="width-request">100</property>
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
-                    <property name="margin_end">18</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
+                    <property name="margin-end">18</property>
                     <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">4</property>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">4</property>
                     <property name="width">2</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="label_keyboard_grab_keyboard">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
+                    <property name="margin-start">18</property>
                     <property name="hexpand">True</property>
                     <property name="label" translatable="yes">Grab keyboard</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">5</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">5</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkButton" id="button_keyboard_grab_keyboard">
                     <property name="label">Grab keyboard</property>
-                    <property name="width_request">100</property>
+                    <property name="width-request">100</property>
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
-                    <property name="margin_end">18</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
+                    <property name="margin-end">18</property>
                     <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">5</property>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">5</property>
                     <property name="width">2</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="label_keyboard_minimize">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
+                    <property name="margin-start">18</property>
                     <property name="hexpand">True</property>
                     <property name="label" translatable="yes">Minimize window</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">6</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">6</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkButton" id="button_keyboard_minimize">
                     <property name="label">Minimize</property>
-                    <property name="width_request">100</property>
+                    <property name="width-request">100</property>
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
-                    <property name="margin_end">18</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
+                    <property name="margin-end">18</property>
                     <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">6</property>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">6</property>
                     <property name="width">2</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="label_keyboard_disconnect">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
+                    <property name="margin-start">18</property>
                     <property name="hexpand">True</property>
                     <property name="label" translatable="yes">Disconnect</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">7</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">7</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkButton" id="button_keyboard_disconnect">
                     <property name="label">Disconnect</property>
-                    <property name="width_request">100</property>
+                    <property name="width-request">100</property>
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
-                    <property name="margin_end">18</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
+                    <property name="margin-end">18</property>
                     <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">7</property>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">7</property>
                     <property name="width">2</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="label_keyboard_toolbar">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
+                    <property name="margin-start">18</property>
                     <property name="hexpand">True</property>
                     <property name="label" translatable="yes">Show/hide toolbar</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">8</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">8</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkButton" id="button_keyboard_toolbar">
                     <property name="label">Show/hide toolbar</property>
-                    <property name="width_request">100</property>
+                    <property name="width-request">100</property>
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
-                    <property name="margin_end">18</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
+                    <property name="margin-end">18</property>
                     <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">8</property>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">8</property>
                     <property name="width">2</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="label_keyboard_screenshot">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
+                    <property name="margin-start">18</property>
                     <property name="hexpand">True</property>
                     <property name="label" translatable="yes">Screenshot</property>
                     <property name="ellipsize">start</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">9</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">9</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkButton" id="button_keyboard_screenshot">
                     <property name="label" translatable="yes">Screenshot</property>
-                    <property name="width_request">100</property>
+                    <property name="width-request">100</property>
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
-                    <property name="margin_end">18</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
+                    <property name="margin-end">18</property>
                     <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">9</property>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">9</property>
                     <property name="width">2</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="label_keyboard_viewonly">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
+                    <property name="margin-start">18</property>
                     <property name="hexpand">True</property>
                     <property name="label" translatable="yes">View-only mode</property>
                     <property name="ellipsize">start</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">10</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">10</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkButton" id="button_keyboard_viewonly">
                     <property name="label" translatable="yes">View-only mode</property>
-                    <property name="width_request">100</property>
+                    <property name="width-request">100</property>
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
-                    <property name="margin_end">18</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
+                    <property name="margin-end">18</property>
                     <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">10</property>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">10</property>
                     <property name="width">2</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="label_keyboard_multimon">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
-                    <property name="margin_bottom">18</property>
+                    <property name="margin-start">18</property>
+                    <property name="margin-bottom">18</property>
                     <property name="hexpand">True</property>
                     <property name="label" translatable="yes">Multi monitor</property>
                     <property name="ellipsize">start</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">11</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">11</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkButton" id="button_keyboard_multimon">
                     <property name="label" translatable="yes">Multi monitor</property>
-                    <property name="width_request">100</property>
+                    <property name="width-request">100</property>
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
-                    <property name="margin_end">18</property>
-                    <property name="margin_bottom">18</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
+                    <property name="margin-end">18</property>
+                    <property name="margin-bottom">18</property>
                     <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">11</property>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">11</property>
                     <property name="width">2</property>
                   </packing>
                 </child>
@@ -1262,48 +1329,49 @@ Author: Antenore Gatta
             <child type="tab">
               <object class="GtkLabel" id="label_tab_keyboard">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
+                <property name="can-focus">False</property>
                 <property name="halign">end</property>
-                <property name="margin_end">18</property>
+                <property name="margin-end">18</property>
                 <property name="label" translatable="yes">Keyboard</property>
               </object>
               <packing>
-                <property name="menu_label">keyboard</property>
+                <property name="menu-label">keyboard</property>
                 <property name="position">3</property>
-                <property name="tab_fill">False</property>
+                <property name="tab-fill">False</property>
               </packing>
             </child>
             <child>
+              <!-- n-columns=3 n-rows=7 -->
               <object class="GtkGrid" id="grid_ssh">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="row_spacing">5</property>
-                <property name="column_spacing">7</property>
+                <property name="can-focus">False</property>
+                <property name="row-spacing">5</property>
+                <property name="column-spacing">7</property>
                 <child>
                   <object class="GtkLabel" id="label_options_ssh_port">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
+                    <property name="margin-start">18</property>
                     <property name="label" translatable="yes">Local SSH port</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">1</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">1</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkEntry" id="entry_options_ssh_port">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="margin_end">18</property>
+                    <property name="can-focus">True</property>
+                    <property name="margin-end">18</property>
                     <property name="hexpand">True</property>
-                    <property name="max_length">5</property>
-                    <property name="input_purpose">number</property>
+                    <property name="max-length">5</property>
+                    <property name="input-purpose">number</property>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">1</property>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">1</property>
                     <property name="width">2</property>
                   </packing>
                 </child>
@@ -1311,26 +1379,26 @@ Author: Antenore Gatta
                   <object class="GtkCheckButton" id="checkbutton_options_ssh_parseconfig">
                     <property name="label" translatable="yes">Parse ~/.ssh/config</property>
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">False</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
-                    <property name="margin_bottom">18</property>
+                    <property name="margin-start">18</property>
+                    <property name="margin-bottom">18</property>
                     <property name="hexpand">True</property>
-                    <property name="draw_indicator">True</property>
+                    <property name="draw-indicator">True</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">6</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">6</property>
                     <property name="width">3</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkComboBoxText" id="comboboxtext_options_ssh_loglevel">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="margin_end">18</property>
-                    <property name="margin_top">18</property>
+                    <property name="can-focus">False</property>
+                    <property name="margin-end">18</property>
+                    <property name="margin-top">18</property>
                     <property name="hexpand">True</property>
                     <items>
                       <item id="0" translatable="yes">No logging at all</item>
@@ -1341,142 +1409,142 @@ Author: Antenore Gatta
                     </items>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">0</property>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">0</property>
                     <property name="width">2</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="label_options_ssh_loglevel">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
-                    <property name="margin_top">18</property>
+                    <property name="margin-start">18</property>
+                    <property name="margin-top">18</property>
                     <property name="label" translatable="yes">SSH log level</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">0</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">0</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="label_options_ssh_tcp_keepidle">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
+                    <property name="margin-start">18</property>
                     <property name="label">TCP_keepidle</property>
                     <property name="selectable">True</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">2</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">2</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="label_options_ssh_tcp_keepintvl">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
+                    <property name="margin-start">18</property>
                     <property name="label">TCP_keepintvl</property>
                     <property name="selectable">True</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">3</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">3</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="label_options_ssh_tcp_keepcnt">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
+                    <property name="margin-start">18</property>
                     <property name="label">TCP_keepcnt</property>
                     <property name="selectable">True</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">4</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">4</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="label_options_ssh_tcp_usrtimeout">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
+                    <property name="margin-start">18</property>
                     <property name="label">TCP_user_timeout</property>
                     <property name="selectable">True</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">5</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">5</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkEntry" id="entry_options_ssh_tcp_keepidle">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="tooltip_text" translatable="yes" comments="http://man7.org/linux/man-pages/man7/tcp.7.html">Seconds of connection idleness before TCP keepalive probes are sent.</property>
-                    <property name="margin_end">18</property>
+                    <property name="can-focus">True</property>
+                    <property name="tooltip-text" translatable="yes" comments="http://man7.org/linux/man-pages/man7/tcp.7.html">Seconds of connection idleness before TCP keepalive probes are sent.</property>
+                    <property name="margin-end">18</property>
                     <property name="hexpand">True</property>
-                    <property name="max_length">5</property>
-                    <property name="input_purpose">number</property>
+                    <property name="max-length">5</property>
+                    <property name="input-purpose">number</property>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">2</property>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">2</property>
                     <property name="width">2</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkEntry" id="entry_options_ssh_tcp_keepintvl">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="tooltip_text" translatable="yes" comments="http://man7.org/linux/man-pages/man7/tcp.7.html">Seconds between each keepalive probe.</property>
-                    <property name="margin_end">18</property>
+                    <property name="can-focus">True</property>
+                    <property name="tooltip-text" translatable="yes" comments="http://man7.org/linux/man-pages/man7/tcp.7.html">Seconds between each keepalive probe.</property>
+                    <property name="margin-end">18</property>
                     <property name="hexpand">True</property>
-                    <property name="max_length">5</property>
-                    <property name="input_purpose">number</property>
+                    <property name="max-length">5</property>
+                    <property name="input-purpose">number</property>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">3</property>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">3</property>
                     <property name="width">2</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkEntry" id="entry_options_ssh_tcp_keepcnt">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="tooltip_text" translatable="yes" comments="http://man7.org/linux/man-pages/man7/tcp.7.html">Number of keepalive probes sent via TCP connection before it is dropped.</property>
-                    <property name="margin_end">18</property>
+                    <property name="can-focus">True</property>
+                    <property name="tooltip-text" translatable="yes" comments="http://man7.org/linux/man-pages/man7/tcp.7.html">Number of keepalive probes sent via TCP connection before it is dropped.</property>
+                    <property name="margin-end">18</property>
                     <property name="hexpand">True</property>
-                    <property name="max_length">5</property>
-                    <property name="input_purpose">number</property>
+                    <property name="max-length">5</property>
+                    <property name="input-purpose">number</property>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">4</property>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">4</property>
                     <property name="width">2</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkEntry" id="entry_options_ssh_tcp_usrtimeout">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="tooltip_text" translatable="yes" comments="http://man7.org/linux/man-pages/man7/tcp.7.html">Amount of milliseconds to attempt acknowledging data before closing the corresponding TCP connection forcibly.</property>
-                    <property name="margin_end">18</property>
+                    <property name="can-focus">True</property>
+                    <property name="tooltip-text" translatable="yes" comments="http://man7.org/linux/man-pages/man7/tcp.7.html">Amount of milliseconds to attempt acknowledging data before closing the corresponding TCP connection forcibly.</property>
+                    <property name="margin-end">18</property>
                     <property name="hexpand">True</property>
-                    <property name="max_length">5</property>
-                    <property name="input_purpose">number</property>
+                    <property name="max-length">5</property>
+                    <property name="input-purpose">number</property>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">5</property>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">5</property>
                     <property name="width">2</property>
                   </packing>
                 </child>
@@ -1488,112 +1556,111 @@ Author: Antenore Gatta
             <child type="tab">
               <object class="GtkLabel" id="label_tab_ssh">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
+                <property name="can-focus">False</property>
                 <property name="halign">end</property>
-                <property name="margin_end">18</property>
+                <property name="margin-end">18</property>
                 <property name="label" translatable="yes">SSH options</property>
               </object>
               <packing>
-                <property name="menu_label">ssh option</property>
+                <property name="menu-label">ssh option</property>
                 <property name="position">4</property>
-                <property name="tab_fill">False</property>
+                <property name="tab-fill">False</property>
               </packing>
             </child>
             <child>
+              <!-- n-columns=3 n-rows=8 -->
               <object class="GtkGrid" id="grid_security">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="row_spacing">5</property>
-                <property name="column_spacing">7</property>
+                <property name="can-focus">False</property>
+                <property name="row-spacing">5</property>
+                <property name="column-spacing">7</property>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="GtkLabel" id="label_security_master">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
-                    <property name="margin_top">18</property>
-                    <property name="margin_bottom">9</property>
-                    <property name="hexpand">False</property>
+                    <property name="margin-start">18</property>
+                    <property name="margin-top">18</property>
+                    <property name="margin-bottom">9</property>
                     <property name="label" translatable="yes">Master password</property>
                     <attributes>
                       <attribute name="weight" value="bold"/>
                     </attributes>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">0</property>
-                    <property name="width">2</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">0</property>
+                    <property name="width">3</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkSwitch" id="switch_security_use_master_password">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="tooltip_text" translatable="yes">Use secret key authentication for some widgets</property>
+                    <property name="can-focus">True</property>
+                    <property name="tooltip-text" translatable="yes">Use secret key authentication for some widgets</property>
                     <property name="halign">start</property>
-                    <property name="margin_end">18</property>
-                    <property name="margin_top">9</property>
-                    <property name="margin_bottom">9</property>
-                    <property name="hexpand">True</property>
+                    <property name="margin-end">18</property>
+                    <property name="margin-top">9</property>
+                    <property name="margin-bottom">9</property>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">1</property>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">1</property>
+                    <property name="width">2</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="GtkLabel" id="label_security_use_master">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="tooltip_text" translatable="yes">Use secret key authentication for some widgets</property>
+                    <property name="can-focus">False</property>
+                    <property name="tooltip-text" translatable="yes">Use secret key authentication for some widgets</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">36</property>
-                    <property name="margin_top">9</property>
-                    <property name="margin_bottom">9</property>
-                    <property name="hexpand">True</property>
+                    <property name="margin-start">36</property>
+                    <property name="margin-top">9</property>
                     <property name="label" translatable="yes">Use master password</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">1</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">1</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="GtkLabel" id="label_security_lock_interval">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">36</property>
+                    <property name="margin-start">36</property>
                     <property name="label" translatable="yes">Automatic lock interval</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">2</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">2</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkEntry" id="unlock_timeout">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="tooltip_text" translatable="yes">Master password validity in seconds</property>
-                    <property name="margin_end">18</property>
-                    <property name="hexpand">True</property>
-                    <property name="width_chars">24</property>
+                    <property name="can-focus">True</property>
+                    <property name="tooltip-text" translatable="yes">Master password validity in seconds</property>
+                    <property name="halign">start</property>
+                    <property name="margin-end">18</property>
+                    <property name="width-chars">24</property>
                     <property name="text">300</property>
-                    <property name="input_purpose">number</property>
+                    <property name="input-purpose">number</property>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">2</property>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">2</property>
+                    <property name="width">2</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="GtkLabel" id="label_security_file_encryption">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
-                    <property name="margin_top">9</property>
+                    <property name="margin-start">18</property>
+                    <property name="margin-top">9</property>
                     <property name="hexpand">False</property>
                     <property name="label" translatable="yes">File encryption</property>
                     <attributes>
@@ -1601,80 +1668,84 @@ Author: Antenore Gatta
                     </attributes>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">7</property>
-                    <property name="width">2</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">7</property>
+                    <property name="width">3</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="GtkLabel" id="label_security_master_password">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">36</property>
+                    <property name="margin-start">36</property>
                     <property name="label" translatable="yes">Password</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">3</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">3</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="GtkLabel" id="label_security_repeat_password">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">36</property>
+                    <property name="margin-start">36</property>
+                    <property name="margin-bottom">9</property>
                     <property name="label" translatable="yes">Repeat the password</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">4</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">4</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkEntry" id="unlock_password">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="margin_end">18</property>
-                    <property name="hexpand">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="halign">start</property>
+                    <property name="margin-end">18</property>
                     <property name="visibility">False</property>
-                    <property name="invisible_char">•</property>
-                    <property name="width_chars">24</property>
-                    <property name="input_purpose">password</property>
+                    <property name="invisible-char">•</property>
+                    <property name="width-chars">24</property>
+                    <property name="input-purpose">password</property>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">3</property>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">3</property>
+                    <property name="width">2</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkEntry" id="unlock_repassword">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="margin_end">18</property>
-                    <property name="hexpand">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="halign">start</property>
+                    <property name="margin-end">18</property>
+                    <property name="margin-bottom">9</property>
                     <property name="visibility">False</property>
-                    <property name="invisible_char">•</property>
-                    <property name="width_chars">24</property>
-                    <property name="input_purpose">password</property>
+                    <property name="invisible-char">•</property>
+                    <property name="width-chars">24</property>
+                    <property name="input-purpose">password</property>
                     <signal name="changed" handler="remmina_prefdiag_unlock_repwd_on_changed" swapped="no"/>
                     <style>
                       <class name="unlock_repassword"/>
                     </style>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">4</property>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">4</property>
+                    <property name="width">2</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="GtkLabel" id="label_security_fingerprints">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
-                    <property name="margin_top">9</property>
+                    <property name="margin-start">18</property>
+                    <property name="margin-top">9</property>
                     <property name="hexpand">False</property>
                     <property name="label" translatable="yes">Fingerprints and certificates</property>
                     <attributes>
@@ -1682,42 +1753,43 @@ Author: Antenore Gatta
                     </attributes>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">5</property>
-                    <property name="width">2</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">5</property>
+                    <property name="width">3</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="GtkLabel" id="label_security_trust_fingerprints">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="tooltip_text" translatable="yes">Automatically accept all fingerprints and certificates</property>
+                    <property name="can-focus">False</property>
+                    <property name="tooltip-text" translatable="yes">Automatically accept all fingerprints and certificates</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">36</property>
-                    <property name="margin_top">9</property>
-                    <property name="margin_bottom">9</property>
+                    <property name="margin-start">36</property>
+                    <property name="margin-top">9</property>
+                    <property name="margin-bottom">9</property>
                     <property name="hexpand">True</property>
                     <property name="label" translatable="yes">Trust all fingerprints and certificates</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">6</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">6</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkSwitch" id="switch_security_trust_all">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="tooltip_text" translatable="yes">Use secret key authentication for some widgets</property>
+                    <property name="can-focus">True</property>
+                    <property name="tooltip-text" translatable="yes">Use secret key authentication for some widgets</property>
                     <property name="halign">start</property>
-                    <property name="margin_end">18</property>
-                    <property name="margin_top">9</property>
-                    <property name="margin_bottom">9</property>
+                    <property name="margin-end">18</property>
+                    <property name="margin-top">9</property>
+                    <property name="margin-bottom">9</property>
                     <property name="hexpand">True</property>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">6</property>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">6</property>
+                    <property name="width">2</property>
                   </packing>
                 </child>
               </object>
@@ -1728,701 +1800,702 @@ Author: Antenore Gatta
             <child type="tab">
               <object class="GtkLabel">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
+                <property name="can-focus">False</property>
                 <property name="halign">end</property>
-                <property name="margin_end">18</property>
+                <property name="margin-end">18</property>
                 <property name="label" translatable="yes">Security</property>
               </object>
               <packing>
-                <property name="menu_label">security</property>
+                <property name="menu-label">security</property>
                 <property name="position">5</property>
-                <property name="tab_fill">False</property>
+                <property name="tab-fill">False</property>
               </packing>
             </child>
             <child>
+              <!-- n-columns=9 n-rows=17 -->
               <object class="GtkGrid" id="grid_terminal">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
+                <property name="can-focus">False</property>
                 <property name="halign">start</property>
-                <property name="row_spacing">5</property>
-                <property name="column_spacing">7</property>
+                <property name="row-spacing">5</property>
+                <property name="column-spacing">7</property>
                 <child>
                   <object class="GtkLabel" id="label_terminal_font1">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
-                    <property name="margin_top">18</property>
+                    <property name="margin-start">18</property>
+                    <property name="margin-top">18</property>
                     <property name="label" translatable="yes">Terminal font</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">0</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">0</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="label_terminal_scrollback_lines">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
+                    <property name="margin-start">18</property>
                     <property name="label" translatable="yes">Scrollback lines</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">3</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">3</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkFontButton" id="fontbutton_terminal_font">
-                    <property name="width_request">200</property>
+                    <property name="width-request">200</property>
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
-                    <property name="margin_end">18</property>
-                    <property name="margin_top">18</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
+                    <property name="margin-end">18</property>
+                    <property name="margin-top">18</property>
                     <property name="font">Sans 12</property>
-                    <property name="preview_text"/>
+                    <property name="preview-text"/>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">0</property>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">0</property>
                     <property name="width">8</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="label_terminal_font2">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="halign">end</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">1</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">1</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="label_terminal_font3">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="hexpand">True</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">2</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">2</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkEntry" id="entry_scrollback_lines">
-                    <property name="width_request">200</property>
+                    <property name="width-request">200</property>
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
+                    <property name="can-focus">True</property>
                     <property name="halign">start</property>
-                    <property name="margin_end">18</property>
-                    <property name="max_length">5</property>
+                    <property name="margin-end">18</property>
+                    <property name="max-length">5</property>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">3</property>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">3</property>
                     <property name="width">8</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="label_keyboard_copy1">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
+                    <property name="margin-start">18</property>
                     <property name="label" translatable="yes">Shortcut for copying to clipboard</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">4</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">4</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="label_keyboard_paste1">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
+                    <property name="margin-start">18</property>
                     <property name="label" translatable="yes">Shortcut for pasting from clipboard</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">5</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">5</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="label_keyboard_select_all1">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
+                    <property name="margin-start">18</property>
                     <property name="label" translatable="yes">Select all shortcuts</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">6</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">6</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkButton" id="button_keyboard_copy">
                     <property name="label">Copy</property>
-                    <property name="width_request">200</property>
+                    <property name="width-request">200</property>
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
-                    <property name="tooltip_text" translatable="yes">(Host key+)</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
+                    <property name="tooltip-text" translatable="yes">(Host key+)</property>
                     <property name="halign">start</property>
-                    <property name="margin_end">18</property>
+                    <property name="margin-end">18</property>
                     <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">4</property>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">4</property>
                     <property name="width">8</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkButton" id="button_keyboard_paste">
                     <property name="label">Paste</property>
-                    <property name="width_request">200</property>
+                    <property name="width-request">200</property>
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
-                    <property name="tooltip_text" translatable="yes">(Host key+)</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
+                    <property name="tooltip-text" translatable="yes">(Host key+)</property>
                     <property name="halign">start</property>
-                    <property name="margin_end">18</property>
+                    <property name="margin-end">18</property>
                     <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">5</property>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">5</property>
                     <property name="width">8</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkButton" id="button_keyboard_select_all">
                     <property name="label">Select_all</property>
-                    <property name="width_request">200</property>
+                    <property name="width-request">200</property>
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
-                    <property name="tooltip_text" translatable="yes">(Host key+)</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
+                    <property name="tooltip-text" translatable="yes">(Host key+)</property>
                     <property name="halign">start</property>
-                    <property name="margin_end">18</property>
+                    <property name="margin-end">18</property>
                     <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">6</property>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">6</property>
                     <property name="width">8</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
+                    <property name="margin-start">18</property>
                     <property name="label" translatable="yes">Use default system font</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">1</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">1</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkSwitch" id="switch_terminal_font_system">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
+                    <property name="can-focus">True</property>
                     <property name="halign">start</property>
                     <signal name="activate" handler="remmina_pref_dialog_vte_font_on_toggled" swapped="no"/>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">1</property>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">1</property>
                     <property name="width">8</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkSwitch" id="switch_terminal_bold">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="tooltip_text" translatable="yes">Selecting “SGR 1” also switches to the bright counterparts of the first 8 palette colours (in addition to making text bold).</property>
+                    <property name="can-focus">True</property>
+                    <property name="tooltip-text" translatable="yes">Selecting “SGR 1” also switches to the bright counterparts of the first 8 palette colours (in addition to making text bold).</property>
                     <property name="halign">start</property>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">2</property>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">2</property>
                     <property name="width">8</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
+                    <property name="margin-start">18</property>
                     <property name="label" translatable="yes">Allow using bright colours with bold text</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">2</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">2</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="label_color_chooser">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
-                    <property name="margin_bottom">18</property>
+                    <property name="margin-start">18</property>
+                    <property name="margin-bottom">18</property>
                     <property name="label" translatable="yes">Colour theme</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">16</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">16</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkFileChooserButton" id="button_term_cs">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="tooltip_text" translatable="yes">Choose a colour scheme file. Usually available in /usr/share/remmina/theme. https://github.com/mbadolato/iTerm2-Color-Schemes has more details.</property>
-                    <property name="margin_end">18</property>
-                    <property name="margin_bottom">18</property>
+                    <property name="can-focus">False</property>
+                    <property name="tooltip-text" translatable="yes">Choose a colour scheme file. Usually available in /usr/share/remmina/theme. https://github.com/mbadolato/iTerm2-Color-Schemes has more details.</property>
+                    <property name="margin-end">18</property>
+                    <property name="margin-bottom">18</property>
                     <property name="title" translatable="yes">Pick a terminal colouring file</property>
                     <signal name="file-set" handler="remmina_pref_on_color_scheme_selected" swapped="no"/>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">16</property>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">16</property>
                     <property name="width">8</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="label_terminal_bright_colors">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
+                    <property name="margin-start">18</property>
                     <property name="label" translatable="yes">Bright colours</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">15</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">15</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkColorButton" id="colorbutton_color8">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
                     <property name="title" translatable="yes">Pick a light black colour</property>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">15</property>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">15</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkColorButton" id="colorbutton_color9">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
                     <property name="title" translatable="yes">Pick a light red colour</property>
                   </object>
                   <packing>
-                    <property name="left_attach">2</property>
-                    <property name="top_attach">15</property>
+                    <property name="left-attach">2</property>
+                    <property name="top-attach">15</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkColorButton" id="colorbutton_color10">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
                     <property name="title" translatable="yes">Pick a bright green colour</property>
                   </object>
                   <packing>
-                    <property name="left_attach">3</property>
-                    <property name="top_attach">15</property>
+                    <property name="left-attach">3</property>
+                    <property name="top-attach">15</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkColorButton" id="colorbutton_color11">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
                     <property name="title" translatable="yes">Pick a bright yellow colour</property>
                   </object>
                   <packing>
-                    <property name="left_attach">4</property>
-                    <property name="top_attach">15</property>
+                    <property name="left-attach">4</property>
+                    <property name="top-attach">15</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkColorButton" id="colorbutton_color12">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
                     <property name="title" translatable="yes">Pick a bright blue colour</property>
                   </object>
                   <packing>
-                    <property name="left_attach">5</property>
-                    <property name="top_attach">15</property>
+                    <property name="left-attach">5</property>
+                    <property name="top-attach">15</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkColorButton" id="colorbutton_color13">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
                     <property name="title" translatable="yes">Pick a light magenta colour</property>
                   </object>
                   <packing>
-                    <property name="left_attach">6</property>
-                    <property name="top_attach">15</property>
+                    <property name="left-attach">6</property>
+                    <property name="top-attach">15</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkColorButton" id="colorbutton_color14">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
                     <property name="title" translatable="yes">Pick a light cyan colour</property>
                   </object>
                   <packing>
-                    <property name="left_attach">7</property>
-                    <property name="top_attach">15</property>
+                    <property name="left-attach">7</property>
+                    <property name="top-attach">15</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkColorButton" id="colorbutton_color15">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
-                    <property name="margin_end">18</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
+                    <property name="margin-end">18</property>
                     <property name="title" translatable="yes">Pick a light white colour</property>
                   </object>
                   <packing>
-                    <property name="left_attach">8</property>
-                    <property name="top_attach">15</property>
+                    <property name="left-attach">8</property>
+                    <property name="top-attach">15</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkColorButton" id="colorbutton_color0">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
                     <property name="title" translatable="yes">Pick a black colour</property>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">14</property>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">14</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkColorButton" id="colorbutton_color1">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
                     <property name="title" translatable="yes">Pick a red colour</property>
                   </object>
                   <packing>
-                    <property name="left_attach">2</property>
-                    <property name="top_attach">14</property>
+                    <property name="left-attach">2</property>
+                    <property name="top-attach">14</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkColorButton" id="colorbutton_color2">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
                     <property name="title" translatable="yes">Pick a green colour</property>
                   </object>
                   <packing>
-                    <property name="left_attach">3</property>
-                    <property name="top_attach">14</property>
+                    <property name="left-attach">3</property>
+                    <property name="top-attach">14</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkColorButton" id="colorbutton_color3">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
                     <property name="title" translatable="yes">Pick a yellow colour</property>
                   </object>
                   <packing>
-                    <property name="left_attach">4</property>
-                    <property name="top_attach">14</property>
+                    <property name="left-attach">4</property>
+                    <property name="top-attach">14</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkColorButton" id="colorbutton_color4">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
                     <property name="title" translatable="yes">Pick a blue colour</property>
                   </object>
                   <packing>
-                    <property name="left_attach">5</property>
-                    <property name="top_attach">14</property>
+                    <property name="left-attach">5</property>
+                    <property name="top-attach">14</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkColorButton" id="colorbutton_color5">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
                     <property name="title" translatable="yes">Pick a magenta colour</property>
                   </object>
                   <packing>
-                    <property name="left_attach">6</property>
-                    <property name="top_attach">14</property>
+                    <property name="left-attach">6</property>
+                    <property name="top-attach">14</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkColorButton" id="colorbutton_color6">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
                     <property name="title" translatable="yes">Pick a cyan colour</property>
                   </object>
                   <packing>
-                    <property name="left_attach">7</property>
-                    <property name="top_attach">14</property>
+                    <property name="left-attach">7</property>
+                    <property name="top-attach">14</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkColorButton" id="colorbutton_color7">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
-                    <property name="margin_end">18</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
+                    <property name="margin-end">18</property>
                     <property name="title" translatable="yes">Pick a white colour</property>
                   </object>
                   <packing>
-                    <property name="left_attach">8</property>
-                    <property name="top_attach">14</property>
+                    <property name="left-attach">8</property>
+                    <property name="top-attach">14</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="label_terminal_normal_colors">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
+                    <property name="margin-start">18</property>
                     <property name="label" translatable="yes">Normal colours</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">14</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">14</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="label_terminal_cursor_color">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
+                    <property name="margin-start">18</property>
                     <property name="label" translatable="yes">Cursor colour</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">12</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">12</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkColorButton" id="colorbutton_cursor">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
                     <property name="halign">start</property>
-                    <property name="margin_end">18</property>
+                    <property name="margin-end">18</property>
                     <property name="title" translatable="yes">Cursor colour</property>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">12</property>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">12</property>
                     <property name="width">8</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="label_terminal_background">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
+                    <property name="margin-start">18</property>
                     <property name="label" translatable="yes">Background colour</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">11</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">11</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkColorButton" id="colorbutton_background">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
                     <property name="halign">start</property>
-                    <property name="margin_end">18</property>
+                    <property name="margin-end">18</property>
                     <property name="title" translatable="yes">Background colour</property>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">11</property>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">11</property>
                     <property name="width">8</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkColorButton" id="colorbutton_foreground">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
                     <property name="halign">start</property>
-                    <property name="margin_end">18</property>
+                    <property name="margin-end">18</property>
                     <property name="title" translatable="yes">Foreground colour</property>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">10</property>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">10</property>
                     <property name="width">8</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="label_terminal_foreground">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
+                    <property name="margin-start">18</property>
                     <property name="label" translatable="yes">Foreground colour</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">10</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">10</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="label_keyboard_select_all2">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
+                    <property name="margin-start">18</property>
                     <property name="label" translatable="yes">Increase font size</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">7</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">7</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="label_keyboard_select_all3">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
+                    <property name="margin-start">18</property>
                     <property name="label" translatable="yes">Decrease font size</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">8</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">8</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkButton" id="button_keyboard_increase_font">
                     <property name="label">Increase</property>
-                    <property name="width_request">200</property>
+                    <property name="width-request">200</property>
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
-                    <property name="tooltip_text" translatable="yes">(Host key+)</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
+                    <property name="tooltip-text" translatable="yes">(Host key+)</property>
                     <property name="halign">start</property>
-                    <property name="margin_end">18</property>
+                    <property name="margin-end">18</property>
                     <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">7</property>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">7</property>
                     <property name="width">8</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkButton" id="button_keyboard_decrease_font">
                     <property name="label">Decrease</property>
-                    <property name="width_request">200</property>
+                    <property name="width-request">200</property>
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
-                    <property name="tooltip_text" translatable="yes">(Host key+)</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
+                    <property name="tooltip-text" translatable="yes">(Host key+)</property>
                     <property name="halign">start</property>
-                    <property name="margin_end">18</property>
+                    <property name="margin-end">18</property>
                     <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">8</property>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">8</property>
                     <property name="width">8</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="label_keyboard_search_text">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
+                    <property name="margin-start">18</property>
                     <property name="label" translatable="yes">Search text</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">9</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">9</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkButton" id="button_keyboard_search_text">
                     <property name="label">Search</property>
-                    <property name="width_request">200</property>
+                    <property name="width-request">200</property>
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
-                    <property name="tooltip_text" translatable="yes">(Host key+)</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
+                    <property name="tooltip-text" translatable="yes">(Host key+)</property>
                     <property name="halign">start</property>
-                    <property name="margin_end">18</property>
+                    <property name="margin-end">18</property>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">9</property>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">9</property>
                     <property name="width">8</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="label_terminal_bold_color">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_start">18</property>
+                    <property name="margin-start">18</property>
                     <property name="label" translatable="yes">Bold colour</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">13</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">13</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkColorButton" id="colorbutton_bold">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
                     <property name="halign">start</property>
-                    <property name="margin_end">18</property>
+                    <property name="margin-end">18</property>
                     <property name="title" translatable="yes">Cursor colour</property>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">13</property>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">13</property>
                     <property name="width">8</property>
                   </packing>
                 </child>
@@ -2434,15 +2507,15 @@ Author: Antenore Gatta
             <child type="tab">
               <object class="GtkLabel" id="label_tab_terminal">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
+                <property name="can-focus">False</property>
                 <property name="halign">end</property>
-                <property name="margin_end">18</property>
+                <property name="margin-end">18</property>
                 <property name="label" translatable="yes">Terminal</property>
               </object>
               <packing>
-                <property name="menu_label">terminal</property>
+                <property name="menu-label">terminal</property>
                 <property name="position">6</property>
-                <property name="tab_fill">False</property>
+                <property name="tab-fill">False</property>
               </packing>
             </child>
           </object>
@@ -2453,9 +2526,6 @@ Author: Antenore Gatta
           </packing>
         </child>
       </object>
-    </child>
-    <child type="titlebar">
-      <placeholder/>
     </child>
   </object>
 </interface>

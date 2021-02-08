@@ -57,6 +57,7 @@ typedef struct _RemminaMain {
 	GtkButton *		button_make_default;
 	/* Search bar objects */
 	GtkToggleButton *	search_toggle;
+	GtkSwitch *		switch_dark_mode;
 	GtkToggleButton *	view_toggle_button;
 	GtkToggleButton *	ustats_toggle;
 	GtkSearchBar *		search_bar;
@@ -110,6 +111,7 @@ void remmina_main_on_action_application_news(GSimpleAction *action, GVariant *pa
 void remmina_main_on_action_application_default(GSimpleAction *action, GVariant *param, gpointer data);
 void remmina_main_on_action_application_mpchange(GSimpleAction *action, GVariant *param, gpointer data);
 void remmina_main_on_action_application_plugins(GSimpleAction *action, GVariant *param, gpointer data);
+void remmina_main_on_action_application_dark_theme(GSimpleAction *action, GVariant *param, gpointer data);
 void remmina_main_on_action_application_preferences(GSimpleAction *action, GVariant *param, gpointer data);
 void remmina_main_on_action_application_quit(GSimpleAction *action, GVariant *param, gpointer data);
 void remmina_main_on_action_connection_connect(GSimpleAction *action, GVariant *param, gpointer data);
