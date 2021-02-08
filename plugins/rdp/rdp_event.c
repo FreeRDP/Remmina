@@ -609,7 +609,7 @@ static gboolean remmina_rdp_event_on_scroll(GtkWidget *widget, GdkEventScroll *e
 		break;
 
 	case GDK_SCROLL_DOWN:
-		flag = PTR_FLAGS_WHEEL | PTR_FLAGS_WHEEL_NEGATIVE | 0x0078;  // -120 (one scroll unit)
+		flag = PTR_FLAGS_WHEEL | 0x0188;  // -120 (one scroll unit) in 9 bits two's complement
 		break;
 
 #if GTK_CHECK_VERSION(3, 4, 0)
@@ -622,16 +622,10 @@ static gboolean remmina_rdp_event_on_scroll(GtkWidget *widget, GdkEventScroll *e
 
 		if (windows_delta > 255)
 			windows_delta = 255;
-		if (windows_delta < -255)
-			windows_delta = -255;
+		if (windows_delta < -256)
+			windows_delta = -256;
 
-		flag = PTR_FLAGS_WHEEL;
-
-		if (windows_delta < 0) {
-			windows_delta = -windows_delta;
-			flag |= PTR_FLAGS_WHEEL_NEGATIVE;
-		}
-		flag |= (short)windows_delta & 0xFF;
+		flag = PTR_FLAGS_WHEEL | ((short)windows_delta & WheelRotationMask);
 
 		break;
 #endif
