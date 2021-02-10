@@ -541,6 +541,11 @@ static gboolean remmina_rdp_event_on_button(GtkWidget *widget, GdkEventButton *e
 	gint flag;
 	gboolean extended = FALSE;
 	RemminaPluginRdpEvent rdp_event = { 0 };
+	gint primary, secondary;
+
+	RemminaFile *remminafile;
+
+	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
 	/* We bypass 2button-press and 3button-press events */
 	if ((event->type != GDK_BUTTON_PRESS) && (event->type != GDK_BUTTON_RELEASE))
@@ -548,15 +553,23 @@ static gboolean remmina_rdp_event_on_button(GtkWidget *widget, GdkEventButton *e
 
 	flag = 0;
 
+	if (remmina_plugin_service->file_get_int(remminafile, "left-handed", FALSE)) {
+		primary = PTR_FLAGS_BUTTON2;
+		secondary = PTR_FLAGS_BUTTON1;
+	} else {
+		primary = PTR_FLAGS_BUTTON1;
+		secondary = PTR_FLAGS_BUTTON2;
+	}
+
 	switch (event->button) {
 	case 1:
-		flag |= PTR_FLAGS_BUTTON1;
+		flag |= primary;
 		break;
 	case 2:
 		flag |= PTR_FLAGS_BUTTON3;
 		break;
 	case 3:
-		flag |= PTR_FLAGS_BUTTON2;
+		flag |= secondary;
 		break;
 	case 8:                 /* back */
 	case 97:                /* Xming */
