@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-02-08 09:13+0000\n"
+"POT-Creation-Date: 2021-02-10 09:43+0000\n"
 "PO-Revision-Date: 2021-02-10 03:50+0000\n"
 "Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -322,7 +322,7 @@ msgid "Password to unlock private key"
 msgstr "Özel anahtarın kilidini açmak için parola"
 
 #: src/remmina_ssh_plugin.c:1364 plugins/xdmcp/xdmcp_plugin.c:370
-#: plugins/rdp/rdp_plugin.c:2544 plugins/nx/nx_plugin.c:734
+#: plugins/rdp/rdp_plugin.c:2545 plugins/nx/nx_plugin.c:734
 msgid "Start-up program"
 msgstr "Başlangıç programı"
 
@@ -495,7 +495,7 @@ msgid "Go to parent folder"
 msgstr "Üst klasöre git"
 
 #: src/remmina_ftp_client.c:764 plugins/vnc/vnc_plugin.c:1936
-#: plugins/rdp/rdp_plugin.c:2585
+#: plugins/rdp/rdp_plugin.c:2586
 msgid "Refresh"
 msgstr "Yenile"
 
@@ -1434,8 +1434,8 @@ msgstr ""
 "* sunucu\n"
 "* sunucu:bağlantınoktası\n"
 "* [sunucu]:bağlantınoktası\n"
-"* kullanıcıadı@sunucu:bağlantınoktası (yalnızca SSH iletişim "
-"kuralı)</big></tt>"
+"* kullanıcıadı@sunucu:bağlantınoktası (yalnızca SSH iletişim kuralı)</big></"
+"tt>"
 
 #: src/remmina_file_editor.c:146
 msgid "Choose a Remote Desktop Server"
@@ -1519,7 +1519,7 @@ msgstr "Loopback adres aracılığıyla tünelle"
 msgid "Same server at port %i"
 msgstr "%i bağlantı noktasında aynı sunucu"
 
-#: src/remmina_file_editor.c:972 plugins/rdp/rdp_plugin.c:2545
+#: src/remmina_file_editor.c:972 plugins/rdp/rdp_plugin.c:2546
 msgid "Start-up path"
 msgstr "Başlangıç yolu"
 
@@ -1677,7 +1677,7 @@ msgid "Ignore TLS errors"
 msgstr "TLS hatalarını yoksay"
 
 #: plugins/www/www_plugin.c:896 plugins/vnc/vnc_plugin.c:1923
-#: plugins/spice/spice_plugin.c:604 plugins/rdp/rdp_plugin.c:2566
+#: plugins/spice/spice_plugin.c:604 plugins/rdp/rdp_plugin.c:2567
 #: plugins/nx/nx_plugin.c:752
 msgid "Forget passwords after use"
 msgstr "Kullandıktan sonra parolaları unut"
@@ -1770,12 +1770,12 @@ msgid "Repeater"
 msgstr "Tekrarlayıcı"
 
 #: plugins/vnc/vnc_plugin.c:1881 plugins/vnc/vnc_plugin.c:1901
-#: plugins/xdmcp/xdmcp_plugin.c:369 plugins/rdp/rdp_plugin.c:2512
+#: plugins/xdmcp/xdmcp_plugin.c:369 plugins/rdp/rdp_plugin.c:2513
 msgid "Colour depth"
 msgstr "Renk derinliği"
 
 #: plugins/vnc/vnc_plugin.c:1882 plugins/vnc/vnc_plugin.c:1902
-#: plugins/rdp/rdp_plugin.c:2529 plugins/nx/nx_plugin.c:733
+#: plugins/rdp/rdp_plugin.c:2530 plugins/nx/nx_plugin.c:733
 msgid "Quality"
 msgstr "Kalite"
 
@@ -1792,7 +1792,7 @@ msgstr "Uzaktaki imleci göster"
 msgid "View only"
 msgstr "Yalnızca görüntüle"
 
-#: plugins/vnc/vnc_plugin.c:1920 plugins/rdp/rdp_plugin.c:2563
+#: plugins/vnc/vnc_plugin.c:1920 plugins/rdp/rdp_plugin.c:2564
 msgid "Turn off clipboard sync"
 msgstr "Pano eşzamanlamayı kapat"
 
@@ -1809,7 +1809,7 @@ msgid "Open Chat…"
 msgstr "Sohbeti Aç…"
 
 #: plugins/vnc/vnc_plugin.c:1938 plugins/spice/spice_plugin.c:617
-#: plugins/xdmcp/xdmcp_plugin.c:381 plugins/rdp/rdp_plugin.c:2589
+#: plugins/xdmcp/xdmcp_plugin.c:381 plugins/rdp/rdp_plugin.c:2590
 msgid "Send Ctrl+Alt+Delete"
 msgstr "Gönder Ctrl+Alt+Delete"
 
@@ -1880,7 +1880,7 @@ msgstr "TLS şifreleme kullan"
 msgid "Server CA certificate"
 msgstr "Sunucu CA sertifikası"
 
-#: plugins/spice/spice_plugin.c:579 plugins/rdp/rdp_plugin.c:2514
+#: plugins/spice/spice_plugin.c:579 plugins/rdp/rdp_plugin.c:2515
 msgid "Share folder"
 msgstr "Klasör paylaş"
 
@@ -2318,94 +2318,102 @@ msgstr ""
 "\"Kendiliğinden algıla\" başarısız olursa, listeden en uygununu seçin.\n"
 
 #: plugins/rdp/rdp_plugin.c:2508
-msgid "Enable multi monitor"
+msgid "Left-handed mouse support"
+msgstr ""
+
+#: plugins/rdp/rdp_plugin.c:2508
+msgid "Swap left and right mouse buttons for lef-handed mouse support"
 msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:2509
+msgid "Enable multi monitor"
+msgstr ""
+
+#: plugins/rdp/rdp_plugin.c:2510
 msgid "Span screen over multiple monitors"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2510
+#: plugins/rdp/rdp_plugin.c:2511
 msgid "Monitor ID list"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2510
+#: plugins/rdp/rdp_plugin.c:2511
 msgid "Comma separated list of monitor IDs (0,1,2,4)"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2513
+#: plugins/rdp/rdp_plugin.c:2514
 msgid "Network connection type"
 msgstr "Ağ bağlantı türü"
 
-#: plugins/rdp/rdp_plugin.c:2530
+#: plugins/rdp/rdp_plugin.c:2531
 msgid "Security protocol negotiation"
 msgstr "Güvenlik iletişim kuralı uzlaşımı"
 
-#: plugins/rdp/rdp_plugin.c:2531
+#: plugins/rdp/rdp_plugin.c:2532
 msgid "Gateway transport type"
 msgstr "Ağ geçidi taşıma türü"
 
-#: plugins/rdp/rdp_plugin.c:2532
+#: plugins/rdp/rdp_plugin.c:2533
 msgid "FreeRDP log level"
 msgstr "FreeRDP günlük kaydı seviyesi"
 
-#: plugins/rdp/rdp_plugin.c:2533
+#: plugins/rdp/rdp_plugin.c:2534
 msgid "FreeRDP log filters"
 msgstr "FreeRDP günlük filtreleri"
 
-#: plugins/rdp/rdp_plugin.c:2533
+#: plugins/rdp/rdp_plugin.c:2534
 msgid "tag:level[,tag:level[,…]]"
 msgstr "etiket:seviye[,etiket:seviye[,…]]"
 
-#: plugins/rdp/rdp_plugin.c:2534
+#: plugins/rdp/rdp_plugin.c:2535
 msgid "Sound"
 msgstr "Ses"
 
-#: plugins/rdp/rdp_plugin.c:2535
+#: plugins/rdp/rdp_plugin.c:2536
 msgid "Redirect local audio output"
 msgstr "Yerel ses çıkışı yönlendirmesi"
 
-#: plugins/rdp/rdp_plugin.c:2536
+#: plugins/rdp/rdp_plugin.c:2537
 msgid "Redirect local microphone"
 msgstr "Yerel mikrofon yönlendirmesi"
 
-#: plugins/rdp/rdp_plugin.c:2537
+#: plugins/rdp/rdp_plugin.c:2538
 msgid "Connection timeout in ms"
 msgstr "Milisaniye türünde bağlantı zaman aşımı"
 
-#: plugins/rdp/rdp_plugin.c:2538
+#: plugins/rdp/rdp_plugin.c:2539
 msgid "Remote Desktop Gateway server"
 msgstr "Uzak Masaüstü Ağ Geçidi sunucusu"
 
-#: plugins/rdp/rdp_plugin.c:2539
+#: plugins/rdp/rdp_plugin.c:2540
 msgid "Remote Desktop Gateway username"
 msgstr "Uzak Masaüstü Ağ Geçidi kullanıcı adı"
 
-#: plugins/rdp/rdp_plugin.c:2540
+#: plugins/rdp/rdp_plugin.c:2541
 msgid "Remote Desktop Gateway password"
 msgstr "Uzak Masaüstü Ağ Geçidi parolası"
 
-#: plugins/rdp/rdp_plugin.c:2541
+#: plugins/rdp/rdp_plugin.c:2542
 msgid "Remote Desktop Gateway domain"
 msgstr "Uzak Masaüstü Ağ Geçidi alan adı"
 
-#: plugins/rdp/rdp_plugin.c:2542
+#: plugins/rdp/rdp_plugin.c:2543
 msgid "Client name"
 msgstr "İstemci adı"
 
-#: plugins/rdp/rdp_plugin.c:2543
+#: plugins/rdp/rdp_plugin.c:2544
 msgid "Client build"
 msgstr "İstemci derlemesi"
 
-#: plugins/rdp/rdp_plugin.c:2546
+#: plugins/rdp/rdp_plugin.c:2547
 msgid "Load balance info"
 msgstr "Yük dengesi bilgisi"
 
-#: plugins/rdp/rdp_plugin.c:2547
+#: plugins/rdp/rdp_plugin.c:2548
 msgid "Override printer drivers"
 msgstr "Yazıcı sürücülerini geçersiz kıl"
 
-#: plugins/rdp/rdp_plugin.c:2547
+#: plugins/rdp/rdp_plugin.c:2548
 msgid ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
@@ -2413,147 +2421,147 @@ msgstr ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Serisi PS\";\"Canon MF410\":"
 "\"Canon MF410 Serisi UFR II\""
 
-#: plugins/rdp/rdp_plugin.c:2548
+#: plugins/rdp/rdp_plugin.c:2549
 msgid "USB device redirection"
 msgstr "USB aygıt yönlendirme"
 
-#: plugins/rdp/rdp_plugin.c:2549
+#: plugins/rdp/rdp_plugin.c:2550
 msgid "Local serial name"
 msgstr "Yerel seri bağlantı noktası adı"
 
-#: plugins/rdp/rdp_plugin.c:2549
+#: plugins/rdp/rdp_plugin.c:2550
 msgid "COM1, COM2, etc."
 msgstr "COM1, COM2, vb."
 
-#: plugins/rdp/rdp_plugin.c:2550
+#: plugins/rdp/rdp_plugin.c:2551
 msgid "Local serial driver"
 msgstr "Yerel seri bağlantı noktası sürücüsü"
 
-#: plugins/rdp/rdp_plugin.c:2550
+#: plugins/rdp/rdp_plugin.c:2551
 msgid "Serial"
 msgstr "Seri"
 
-#: plugins/rdp/rdp_plugin.c:2551
+#: plugins/rdp/rdp_plugin.c:2552
 msgid "Local serial path"
 msgstr "Yerel seri bağlantı noktası yolu"
 
-#: plugins/rdp/rdp_plugin.c:2551
+#: plugins/rdp/rdp_plugin.c:2552
 msgid "/dev/ttyS0, /dev/ttyS1, etc."
 msgstr "/dev/ttyS0, /dev/ttyS1, vb."
 
-#: plugins/rdp/rdp_plugin.c:2552
+#: plugins/rdp/rdp_plugin.c:2553
 msgid "Local parallel name"
 msgstr "Yerel paralel bağlantı noktası adı"
 
-#: plugins/rdp/rdp_plugin.c:2553
+#: plugins/rdp/rdp_plugin.c:2554
 msgid "Local parallel device"
 msgstr "Yerel paralel bağlantı noktası aygıtı"
 
-#: plugins/rdp/rdp_plugin.c:2554
+#: plugins/rdp/rdp_plugin.c:2555
 msgid "Name of smart card"
 msgstr "Akıllı kartın adı"
 
-#: plugins/rdp/rdp_plugin.c:2555
+#: plugins/rdp/rdp_plugin.c:2556
 msgid "Dynamic virtual channel"
 msgstr "Dinamik sanal kanal"
 
-#: plugins/rdp/rdp_plugin.c:2555 plugins/rdp/rdp_plugin.c:2556
+#: plugins/rdp/rdp_plugin.c:2556 plugins/rdp/rdp_plugin.c:2557
 msgid "<channel>[,<options>]"
 msgstr "<channel>[,<options>]"
 
-#: plugins/rdp/rdp_plugin.c:2556
+#: plugins/rdp/rdp_plugin.c:2557
 msgid "Static virtual channel"
 msgstr "Statik sanal kanal"
 
-#: plugins/rdp/rdp_plugin.c:2557
+#: plugins/rdp/rdp_plugin.c:2558
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
 msgstr "IPv4 A kaydı yerine IPv6 AAAA kaydını tercih et"
 
-#: plugins/rdp/rdp_plugin.c:2558
+#: plugins/rdp/rdp_plugin.c:2559
 msgid "Share printers"
 msgstr "Yazıcı paylaş"
 
-#: plugins/rdp/rdp_plugin.c:2559
+#: plugins/rdp/rdp_plugin.c:2560
 msgid "Share serial ports"
 msgstr "Seri bağlantı noktası paylaş"
 
-#: plugins/rdp/rdp_plugin.c:2560
+#: plugins/rdp/rdp_plugin.c:2561
 msgid "(SELinux) permissive mode for serial ports"
 msgstr "(SELinux) Seri bağlantı noktaları için izin verici kip"
 
-#: plugins/rdp/rdp_plugin.c:2561
+#: plugins/rdp/rdp_plugin.c:2562
 msgid "Share parallel ports"
 msgstr "Paralel bağlantı noktası paylaş"
 
-#: plugins/rdp/rdp_plugin.c:2562
+#: plugins/rdp/rdp_plugin.c:2563
 msgid "Share a smart card"
 msgstr "Akıllı kartı paylaş"
 
-#: plugins/rdp/rdp_plugin.c:2564
+#: plugins/rdp/rdp_plugin.c:2565
 msgid "Ignore certificate"
 msgstr "Sertifikayı yoksay"
 
-#: plugins/rdp/rdp_plugin.c:2565
+#: plugins/rdp/rdp_plugin.c:2566
 msgid "Use the old license workflow"
 msgstr "Eski lisans iş akışını kullan"
 
-#: plugins/rdp/rdp_plugin.c:2565
+#: plugins/rdp/rdp_plugin.c:2566
 msgid "It disables CAL and hwId is set to 0"
 msgstr "CAL'yi devre dışı bırakır ve hwld'yi 0 olarak ayarlar"
 
-#: plugins/rdp/rdp_plugin.c:2567
+#: plugins/rdp/rdp_plugin.c:2568
 msgid "Attach to console (2003/2003 R2)"
 msgstr "Konsola ekle (Win 2003/2003 R2)"
 
-#: plugins/rdp/rdp_plugin.c:2568
+#: plugins/rdp/rdp_plugin.c:2569
 msgid "Turn off fast-path"
 msgstr "Fast-path'i kapat"
 
-#: plugins/rdp/rdp_plugin.c:2569
+#: plugins/rdp/rdp_plugin.c:2570
 msgid "Server detection using Remote Desktop Gateway"
 msgstr "Uzak Masaüstü Ağ Geçidi kullanarak sunucu algılama"
 
-#: plugins/rdp/rdp_plugin.c:2571
+#: plugins/rdp/rdp_plugin.c:2572
 msgid "Use system proxy settings"
 msgstr "Sistem vekil sunucu ayarlarını kullan"
 
-#: plugins/rdp/rdp_plugin.c:2573
+#: plugins/rdp/rdp_plugin.c:2574
 msgid "Turn off automatic reconnection"
 msgstr "Kendiliğinden yeniden bağlanmayı kapat"
 
-#: plugins/rdp/rdp_plugin.c:2574
+#: plugins/rdp/rdp_plugin.c:2575
 msgid "Relax order checks"
 msgstr "Sıralama denetimlerini gevşet"
 
-#: plugins/rdp/rdp_plugin.c:2575
+#: plugins/rdp/rdp_plugin.c:2576
 msgid "Glyph cache"
 msgstr "Glyph önbelleği"
 
-#: plugins/rdp/rdp_plugin.c:2576
+#: plugins/rdp/rdp_plugin.c:2577
 msgid "Enable multitransport protocol (UDP)"
 msgstr "Çoklu aktarım protokolünü etkinleştir (UDP)"
 
-#: plugins/rdp/rdp_plugin.c:2576
+#: plugins/rdp/rdp_plugin.c:2577
 msgid "Using the UDP protocol may improve performance"
 msgstr "UDP protokolünü kullanmak performansı artırabilir"
 
-#: plugins/rdp/rdp_plugin.c:2577
+#: plugins/rdp/rdp_plugin.c:2578
 msgid "Use base credentials for gateway too"
 msgstr "Ağ geçidi için de temel kimlik bilgilerini kullan"
 
-#: plugins/rdp/rdp_plugin.c:2602
+#: plugins/rdp/rdp_plugin.c:2603
 msgid "RDP - Remote Desktop Protocol"
 msgstr "RDP - Uzak Masaüstü İletişim Kuralı"
 
-#: plugins/rdp/rdp_plugin.c:2625
+#: plugins/rdp/rdp_plugin.c:2626
 msgid "RDP - RDP File Handler"
 msgstr "RDP - RDP Dosya İşleyici"
 
-#: plugins/rdp/rdp_plugin.c:2640
+#: plugins/rdp/rdp_plugin.c:2641
 msgid "RDP - Preferences"
 msgstr "RDP - Tercihleri"
 
-#: plugins/rdp/rdp_plugin.c:2693
+#: plugins/rdp/rdp_plugin.c:2694
 msgid "Export connection in Windows .rdp file format"
 msgstr "Bağlantıyı Windows .rdp dosya biçiminde dışarı aktar"
 
