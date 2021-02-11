@@ -219,6 +219,10 @@ typedef struct {
 		return NULL; \
 	}
 
+void remmina_plugin_python_protocol_widget_init(void) {
+  pygobject_init(-1, -1, -1);
+}
+
 static PyObject* protocol_widget_get_viewport(PyRemminaProtocolWidget* self, PyObject* args)
 {
 	TRACE_CALL(__func__);

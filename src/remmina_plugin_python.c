@@ -54,12 +54,11 @@
 #include <Python.h>
 #include <structmember.h>
 
-#include "pygobject.h"
-
 #include "config.h"
 #include "remmina/remmina_trace_calls.h"
 #include "remmina_plugin_python.h"
 #include "remmina_plugin_python_module.h"
+#include "remmina_plugin_python_protocol_widget.h"
 
 /**
  * @brief Extracts the filename without extention from a path.
@@ -85,7 +84,7 @@ void remmina_plugin_python_init(void) {
     PyRun_SimpleString("import sys");
     PyRun_SimpleString("sys.path.append('" REMMINA_RUNTIME_PLUGINDIR "')");
 
-    pygobject_init(-1, -1, -1);
+    remmina_plugin_python_protocol_widget_init();
 }
 
 gboolean remmina_plugin_python_load(RemminaPluginService* service, const gchar* name) {
