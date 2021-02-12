@@ -39,7 +39,6 @@
 #include <structmember.h>
 
 #include "config.h"
-#include "pygobject.h"
 #include "remmina_plugin_manager.h"
 #include "remmina/plugin.h"
 #include "remmina_protocol_widget.h"
@@ -404,7 +403,7 @@ static PyTypeObject python_protocol_setting_type = {
 
 typedef struct {
     PyObject_HEAD
-	RemminaProtocolFeatureType* type;
+	RemminaProtocolFeatureType type;
 	gint id;
 	PyObject* opt1;
 	PyObject* opt2;

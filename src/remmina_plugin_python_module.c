@@ -53,7 +53,6 @@
 #include <structmember.h>
 
 #include "config.h"
-#include "pygobject.h"
 #include "remmina_plugin_manager.h"
 #include "remmina_plugin_python_remmina.h"
 #include "remmina/plugin.h"
