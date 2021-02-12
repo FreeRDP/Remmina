@@ -41,7 +41,7 @@ if(LIBSECRET_FOUND)
     set_target_properties(remmina-plugin-secret PROPERTIES NO_SONAME 1)
 
     include_directories(${GTK3_INCLUDE_DIRS})
-    target_link_libraries(remmina-plugin-secret ${GTK3_LIBRARY} ${GDK3_LIBRARY} ${GDKPixbuf_LIBRARY} ${Pango_LIBRARY} ${Cairo_LIBRARY} ${GObject_LIBRARY} ${GLib_LIBRARY} ${GIO_LIBRARY})
+    target_link_libraries(remmina-plugin-secret ${GTK_LIBRARIES})
 
     include_directories(SYSTEM ${LIBSECRET_INCLUDE_DIRS})
     target_link_libraries(remmina-plugin-secret ${LIBSECRET_LIBRARIES} ${GLIB_LIBRARY})

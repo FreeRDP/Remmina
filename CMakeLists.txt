@@ -357,13 +357,14 @@ if(NOT GLib_FOUND)
     message(FATAL_ERROR "GLIB2 library not found")
 endif(NOT GLib_FOUND)
 include_directories(${GLib_INCLUDE_DIRS})
+include_directories(${GMODULE_INCLUDE_DIR})
 
 find_package(GTK3 3.14.0 REQUIRED)
 if(NOT GTK3_FOUND)
     message(FATAL_ERROR "GTK3 library not found")
 endif(NOT GTK3_FOUND)
 include_directories(${GTK3_INCLUDE_DIRS})
-set(GTK_LIBRARIES ${GTK3_LIBRARY} ${GDK3_LIBRARY} ${GDKPixbuf_LIBRARY} ${Pango_LIBRARY} ${Cairo_LIBRARY} ${GObject_LIBRARY} ${GLib_LIBRARY} ${GIO_LIBRARY} ${Gmodule_LIBRARIES})
+set(GTK_LIBRARIES ${GTK3_LIBRARY} ${GDK3_LIBRARY} ${GDKPixbuf_LIBRARY} ${Pango_LIBRARY} ${Cairo_LIBRARY} ${GObject_LIBRARY} ${GLib_LIBRARY} ${GIO_LIBRARY} ${Gmodule_LIBRARIES} ${GMODULE_LIBRARY})
 
 
 set(CMAKE_THREAD_PREFER_PTHREAD TRUE)

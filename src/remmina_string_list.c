@@ -284,7 +284,7 @@ GtkDialog* remmina_string_list_new(gboolean two_columns, const gchar *fields_sep
 	string_list = g_new0(RemminaStringList, 1);
 	string_list->priv = g_new0(RemminaStringListPriv, 1);
 
-	string_list->builder = remmina_public_gtk_builder_new_from_file("remmina_string_list.glade");
+	string_list->builder = remmina_public_gtk_builder_new_from_resource("/org/remmina/Remmina/src/../data/ui/remmina_string_list.glade");
 	string_list->dialog = GTK_DIALOG(gtk_builder_get_object(string_list->builder, "DialogStringList"));
 
 	string_list->liststore_items = GTK_LIST_STORE(GET_OBJECT("liststore_items"));

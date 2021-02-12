@@ -701,7 +701,7 @@ GtkWidget * remmina_plugin_pop_search_new (GtkWidget *relative_to, RemminaProtoc
         search_widget->has_regex = FALSE;
         search_widget->regex_pattern = NULL;
 
-	search_widget->builder = remmina_public_gtk_builder_new_from_file("remmina_search.glade");
+	search_widget->builder = remmina_public_gtk_builder_new_from_resource("/org/remmina/Remmina/src/../data/ui/remmina_search.glade");
 	search_widget->window = GTK_WIDGET(GET_OBJECT("RemminaSearchWidget"));
         search_widget->search_entry = GTK_WIDGET(GET_OBJECT("search_entry"));
         search_widget->search_prev_button = GTK_WIDGET(GET_OBJECT("search_prev_button"));

@@ -580,6 +580,7 @@ GtkBuilder* remmina_public_gtk_builder_new_from_resource(gchar *resource)
 	GError *err = NULL;
 	GtkBuilder *builder = gtk_builder_new();
 	gtk_builder_add_from_resource (builder, resource, &err);
+	//GtkBuilder *builder = gtk_builder_new_from_resource (resource);
 	if (err != NULL) {
 		g_print("Error adding build from resource. Error: %s", err->message);
 		g_error_free(err);

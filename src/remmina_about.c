@@ -46,7 +46,7 @@ void remmina_about_open(GtkWindow *parent)
 {
 	TRACE_CALL(__func__);
 
-	GtkBuilder *builder = remmina_public_gtk_builder_new_from_file("remmina_about.glade");
+	GtkBuilder *builder = remmina_public_gtk_builder_new_from_resource ("/org/remmina/Remmina/src/../data/ui/remmina_about.glade");
 	GtkDialog *dialog = GTK_DIALOG(gtk_builder_get_object(builder, "dialog_remmina_about"));
 
 	gtk_about_dialog_set_version(GTK_ABOUT_DIALOG(dialog), VERSION " (git " REMMINA_GIT_REVISION ")");

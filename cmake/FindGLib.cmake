@@ -79,12 +79,13 @@ if(GLib_LIBRARY AND NOT GLib_FOUND)
     unset(GLib_MINOR_VERSION)
     unset(GLib_MICRO_VERSION)
 
-    list(APPEND GLib_INCLUDE_DIRS ${GMODULE_INCLUDE_DIR} ${GLib_CONFIG_INCLUDE_DIR})
+    #list(APPEND GLib_INCLUDE_DIRS ${GMODULE_INCLUDE_DIR} ${GLib_CONFIG_INCLUDE_DIR})
+    list(APPEND GLib_INCLUDE_DIRS ${GLib_CONFIG_INCLUDE_DIR})
     set_property(TARGET ${GLib} PROPERTY INTERFACE_INCLUDE_DIRECTORIES "${GLib_INCLUDE_DIRS}")
   endif()
 endif()
 
-list (APPEND GLib_LIBRARY ${GMODULE_LIBRARY})
+##list (APPEND GLib_LIBRARY ${GMODULE_LIBRARY})
 
 include(FindPackageHandleStandardArgs)
 find_package_handle_standard_args(GLib

@@ -198,7 +198,7 @@ void rmnews_show_news(GtkWindow *parent)
 	rmnews_news_dialog = g_new0(RemminaNewsDialog, 1);
 	rmnews_news_dialog->retval = 1;
 
-	rmnews_news_dialog->builder = remmina_public_gtk_builder_new_from_file("remmina_news.glade");
+	rmnews_news_dialog->builder = remmina_public_gtk_builder_new_from_resource("/org/remmina/Remmina/src/../data/ui/remmina_news.glade");
 	rmnews_news_dialog->dialog = GTK_DIALOG(gtk_builder_get_object(rmnews_news_dialog->builder, "RemminaNewsDialog"));
 
 	rmnews_news_dialog->rmnews_text_view = GTK_TEXT_VIEW(GET_OBJ("rmnews_text_view"));
