@@ -142,7 +142,7 @@ gint remmina_unlock_new(GtkWindow *parent)
 	}
 	g_info("Based on settings and current status, the unlock dialog is set to %d", lock);
 
-	remmina_unlock_dialog->builder = remmina_public_gtk_builder_new_from_file("remmina_unlock.glade");
+	remmina_unlock_dialog->builder = remmina_public_gtk_builder_new_from_resource("/org/remmina/Remmina/src/../data/ui/remmina_unlock.glade");
 	remmina_unlock_dialog->dialog = GTK_DIALOG(gtk_builder_get_object(remmina_unlock_dialog->builder, "RemminaUnlockDialog"));
 	if (parent)
 		gtk_window_set_transient_for(GTK_WINDOW(remmina_unlock_dialog->dialog), parent);

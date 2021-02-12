@@ -1,142 +1,93 @@
-# Remmina - The GTK+ Remote Desktop Client
+# FindGTK3.cmake
+# <https://github.com/nemequ/gnome-cmake>
 #
-# Copyright (C) 2011 Marc-Andre Moreau
-# Copyright (C) 2019 Antenore Gatta, Giovanni Panozzo
+# CMake support for GTK+ 3.
 #
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or
-# (at your option) any later version.
+# License:
 #
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
+#   Copyright (c) 2016 Evan Nemerson <evan@nemerson.com>
 #
-# You should have received a copy of the GNU General Public License
-# along with this program; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin Street, Fifth Floor,
-# Boston, MA  02110-1301, USA.
+#   Permission is hereby granted, free of charge, to any person
+#   obtaining a copy of this software and associated documentation
+#   files (the "Software"), to deal in the Software without
+#   restriction, including without limitation the rights to use, copy,
+#   modify, merge, publish, distribute, sublicense, and/or sell copies
+#   of the Software, and to permit persons to whom the Software is
+#   furnished to do so, subject to the following conditions:
+#
+#   The above copyright notice and this permission notice shall be
+#   included in all copies or substantial portions of the Software.
+#
+#   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+#   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+#   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+#   NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+#   HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+#   WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+#   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+#   DEALINGS IN THE SOFTWARE.
 
-set(_GTK3_found_all true)
+find_package(PkgConfig)
 
-# Gtk
+set(GTK3_DEPS
+  GIO
+  ATK
+  GDK3
+  Pango
+  Cairo
+  GDKPixbuf)
 
-pkg_check_modules(PC_GTK3 gtk+-3.0)
-
-if(NOT PC_GTK3_FOUND)
-	set(_GTK3_found_all false)
+if(PKG_CONFIG_FOUND)
+  pkg_search_module(GTK3_PKG QUIET gtk+-3.0)
 endif()
 
-find_path(GTK3_INCLUDE_DIR NAMES gtk/gtk.h
-	PATH_SUFFIXES gtk-3.0)
+find_library(GTK3_LIBRARY gtk-3 HINTS ${GTK3_PKG_LIBRARY_DIRS})
+set(GTK3 gtk-3)
 
-find_library(GTK3_LIBRARY NAMES gtk-3)
+if(GTK3_LIBRARY)
+  add_library(${GTK3} SHARED IMPORTED)
+  set_property(TARGET ${GTK3} PROPERTY IMPORTED_LOCATION "${GTK3_LIBRARY}")
+  set_property(TARGET ${GTK3} PROPERTY INTERFACE_COMPILE_OPTIONS "${GTK3_PKG_CFLAGS_OTHER}")
 
-# Gdk
+  set(GTK3_INCLUDE_DIRS)
 
-find_library(GDK3_LIBRARY NAMES gdk-3)
+  find_path(GTK3_INCLUDE_DIR "gtk/gtk.h"
+    HINTS ${GTK3_PKG_INCLUDE_DIRS})
 
-# Gdk-Pixbuf
+  if(GTK3_INCLUDE_DIR)
+    file(STRINGS "${GTK3_INCLUDE_DIR}/gtk/gtkversion.h" GTK3_MAJOR_VERSION REGEX "^#define GTK_MAJOR_VERSION +\\(?([0-9]+)\\)?$")
+    string(REGEX REPLACE "^#define GTK_MAJOR_VERSION \\(?([0-9]+)\\)?$" "\\1" GTK3_MAJOR_VERSION "${GTK3_MAJOR_VERSION}")
+    file(STRINGS "${GTK3_INCLUDE_DIR}/gtk/gtkversion.h" GTK3_MINOR_VERSION REGEX "^#define GTK_MINOR_VERSION +\\(?([0-9]+)\\)?$")
+    string(REGEX REPLACE "^#define GTK_MINOR_VERSION \\(?([0-9]+)\\)?$" "\\1" GTK3_MINOR_VERSION "${GTK3_MINOR_VERSION}")
+    file(STRINGS "${GTK3_INCLUDE_DIR}/gtk/gtkversion.h" GTK3_MICRO_VERSION REGEX "^#define GTK_MICRO_VERSION +\\(?([0-9]+)\\)?$")
+    string(REGEX REPLACE "^#define GTK_MICRO_VERSION \\(?([0-9]+)\\)?$" "\\1" GTK3_MICRO_VERSION "${GTK3_MICRO_VERSION}")
+    set(GTK3_VERSION "${GTK3_MAJOR_VERSION}.${GTK3_MINOR_VERSION}.${GTK3_MICRO_VERSION}")
+    unset(GTK3_MAJOR_VERSION)
+    unset(GTK3_MINOR_VERSION)
+    unset(GTK3_MICRO_VERSION)
 
-pkg_check_modules(PC_GDKPIXBUF gdk-pixbuf-2.0)
-
-if(NOT PC_GDKPIXBUF_FOUND)
-	set(_GTK3_found_all false)
+    list(APPEND GTK3_INCLUDE_DIRS ${GTK3_INCLUDE_DIR})
+    set_property(TARGET ${GTK3} PROPERTY INTERFACE_INCLUDE_DIRECTORIES "${GTK3_INCLUDE_DIR}")
+  endif()
 endif()
 
-find_path(GDKPIXBUF_INCLUDE_DIR gdk-pixbuf/gdk-pixbuf.h
-	HINTS ${PC_GDKPIXBUF_INCLUDEDIR} ${PC_GDKPIXBUF_INCLUDE_DIRS}
-	PATH_SUFFIXES gdk-pixbuf-2.0)
+set(GTK3_DEPS_FOUND_VARS)
+foreach(gtk3_dep ${GTK3_DEPS})
+  find_package(${gtk3_dep})
 
-find_library(GDKPIXBUF_LIBRARY NAMES gdk_pixbuf-2.0
-	HINTS ${PC_GDKPIXBUF_LIBDIR} ${PC_GDKPIXBUF_LIBRARY_DIRS})
+  list(APPEND GTK3_DEPS_FOUND_VARS "${gtk3_dep}_FOUND")
+  list(APPEND GTK3_INCLUDE_DIRS ${${gtk3_dep}_INCLUDE_DIRS})
 
-# Wayland client, if GTK3's pkg-config suggests it. We only need
-# the include dir
+  set_property (TARGET "${GTK3}" APPEND PROPERTY INTERFACE_LINK_LIBRARIES "${${gtk3_dep}}")
+endforeach(gtk3_dep)
 
-find_path(WAYLAND_INCLUDE_DIR wayland-client.h
-	PATHS ${PC_GTK3_INCLUDE_DIRS})
+include(FindPackageHandleStandardArgs)
+find_package_handle_standard_args(GTK3
+    REQUIRED_VARS
+      GTK3_LIBRARY
+      GTK3_INCLUDE_DIRS
+      ${GTK3_DEPS_FOUND_VARS}
+    VERSION_VAR
+      GTK3_VERSION)
 
-# Glib
-
-find_required_package(GLIB2)
-if(NOT GLIB2_FOUND)
-	set(_GTK3_found_all false)
-endif()
-
-# Harfbuzz
-
-pkg_check_modules(PC_HB harfbuzz)
-find_path(HB_INCLUDE_DIR
-    NAMES hb.h
-    HINTS ${PC_HB_INCLUDE_DIRS}
-    PATH_SUFFIXES harfbuzz
-)
-
-# Pango
-
-pkg_check_modules(PC_PANGO pango)
-
-if(NOT PC_PANGO_FOUND)
-	set(_GTK3_found_all false)
-endif()
-
-find_path(PANGO_INCLUDE_DIR pango/pango.h
-	HINTS ${PC_PANGO_INCLUDEDIR} ${PC_PANGO_INCLUDE_DIRS}
-	PATH_SUFFIXES pango-1.0)
-
-find_library(PANGO_LIBRARY NAMES pango-1.0
-	HINTS ${PC_PANGO_LIBDIR} ${PC_PANGO_LIBRARY_DIRS})
-
-# Cairo
-
-set(CAIRO_DEFINITIONS ${PC_CAIRO_CXXFLAGS_OTHER})
-
-find_path(CAIRO_INCLUDE_DIR cairo.h
-	HINTS ${PC_CAIRO_INCLUDEDIR} ${PC_CAIRO_INCLUDE_DIRS}
-	PATH_SUFFIXES cairo)
-
-find_library(CAIRO_LIBRARY NAMES cairo
-	HINTS ${PC_CAIRO_LIBDIR} ${PC_CAIRO_LIBRARY_DIRS})
-
-# Atk
-
-pkg_check_modules(PC_ATK atk)
-
-if(NOT PC_ATK_FOUND)
-	set(_GTK3_found_all false)
-endif()
-
-find_path(ATK_INCLUDE_DIR atk/atk.h
-	HINTS ${PC_ATK_INCLUDEDIR} ${PC_ATK_INCLUDE_DIRS}
-	PATH_SUFFIXES atk-1.0)
-
-find_library(ATK_LIBRARY NAMES atk-1.0
-	HINTS ${PC_ATK_LIBDIR} ${PC_ATK_LIBRARY_DIRS})
-
-# Finalize
-
-if(_GTK3_found_all)
-	include(FindPackageHandleStandardArgs)
-
-	find_package_handle_standard_args(GTK3 DEFAULT_MSG GTK3_LIBRARY GTK3_INCLUDE_DIR)
-
-	set(GTK3_LIBRARIES ${GTK3_LIBRARY} ${GDK3_LIBRARY} ${GLIB2_LIBRARIES} ${PANGO_LIBRARY} ${CAIRO_LIBRARY} ${GDKPIXBUF_LIBRARY} ${ATK_LIBRARY})
-        set(GTK3_INCLUDE_DIRS ${GTK3_INCLUDE_DIR} ${GLIB2_INCLUDE_DIRS} ${HB_INCLUDE_DIR} ${PANGO_INCLUDE_DIR} ${CAIRO_INCLUDE_DIR} ${GDKPIXBUF_INCLUDE_DIR} ${ATK_INCLUDE_DIR})
-	if (WAYLAND_INCLUDE_DIR)
-		set(GTK3_INCLUDE_DIRS ${GTK3_INCLUDE_DIRS} ${WAYLAND_INCLUDE_DIR})
-	endif()
-
-	mark_as_advanced(GTK3_INCLUDE_DIR GTK3_LIBRARY)
-
-	set(GTK3_FOUND true)
-else()
-	unset(GTK3_LIBRARY)
-	unset(GTK3_INCLUDE_DIR)
-
-	unset(GDK3_LIBRARY)
-	unset(GDK3_INCLUDE_DIR)
-
-	set(GTK3_FOUND false)
-endif()
+unset(GTK3_DEPS_FOUND_VARS)

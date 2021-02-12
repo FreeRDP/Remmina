@@ -29,9 +29,13 @@
 # this exception statement from all source files in the program, then also
 # delete it here.
 
-cmake_minimum_required(VERSION 3.0.0)
+cmake_minimum_required(VERSION 3.4.0)
+
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/cmake)
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/cmake/macros)
 
 set(CMAKE_COLOR_MAKEFILE ON)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 project(Remmina C CXX)
 
@@ -42,13 +46,12 @@ include(CheckSymbolExists)
 include(FindPkgConfig)
 include(GNUInstallDirs)
 
-set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/)
-
 include(FindOptionalPackage)
 include(ConfigOptions)
 include(GtkUpdateIconCache)
 include(CheckHasModule)
 include(FindPCRE2)
+include(GlibCompileResourcesSupport)
 
 #---------------------------------------------------------------------
 # Package creation with CMake depends on the value of umask - if permissions
@@ -343,12 +346,26 @@ endif()
 
 # Uninstall support
 configure_file(
-  "${CMAKE_CURRENT_SOURCE_DIR}/cmake_uninstall.cmake.in"
-  "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake" IMMEDIATE @ONLY)
+    "${CMAKE_CURRENT_SOURCE_DIR}/cmake_uninstall.cmake.in"
+    "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake" IMMEDIATE @ONLY)
 add_custom_target(uninstall "${CMAKE_COMMAND}" -P
-                            "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake")
+    "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake")
 
-find_required_package(GTK)
+#find_required_package(GTK)
+find_package(GLib REQUIRED)
+if(NOT GLib_FOUND)
+    message(FATAL_ERROR "GLIB2 library not found")
+endif(NOT GLib_FOUND)
+include_directories(${GLib_INCLUDE_DIRS})
+include_directories(${GMODULE_INCLUDE_DIR})
+
+find_package(GTK3 3.14.0 REQUIRED)
+if(NOT GTK3_FOUND)
+    message(FATAL_ERROR "GTK3 library not found")
+endif(NOT GTK3_FOUND)
+include_directories(${GTK3_INCLUDE_DIRS})
+set(GTK_LIBRARIES ${GTK3_LIBRARY} ${GDK3_LIBRARY} ${GDKPixbuf_LIBRARY} ${Pango_LIBRARY} ${Cairo_LIBRARY} ${GObject_LIBRARY} ${GLib_LIBRARY} ${GIO_LIBRARY} ${Gmodule_LIBRARIES} ${GMODULE_LIBRARY})
+
 
 set(CMAKE_THREAD_PREFER_PTHREAD TRUE)
 find_package(Threads REQUIRED)
@@ -378,7 +395,6 @@ elseif("${CMAKE_C_COMPILER_ID}" MATCHES "GNU" AND WITH_GCC_PROFILING)
 endif()
 
 find_suggested_package(GCRYPT)
-find_suggested_package(AVAHI)
 find_package(OpenSSL)
 find_package(sodium REQUIRED)
 if(sodium_FOUND)
@@ -414,9 +430,15 @@ if(GCRYPT_FOUND)
   add_definitions(-DHAVE_LIBGCRYPT)
 endif()
 
-if(AVAHI_FOUND)
-  add_definitions(-DHAVE_LIBAVAHI_UI)
-  add_definitions(-DHAVE_LIBAVAHI_CLIENT)
+#avahi for discovery over mDNS/DNS-SD daemon
+if (UNIX AND NOT APPLE)
+    find_suggested_package(Avahi)
+    if(AVAHI_FOUND)
+        message(STATUS "AVAHI_INCLUDE_DIRS=${AVAHI_INCLUDE_DIRS}")
+        message(STATUS "AVAHI_LIBRARIES=${AVAHI_LIBRARIES}")
+        add_definitions(-DHAVE_LIBAVAHI_UI)
+        add_definitions(-DHAVE_LIBAVAHI_CLIENT)
+    endif()
 endif()
 
 option(WITH_ICON_CACHE "Generate the icon cache during install target" ON)
@@ -444,13 +466,13 @@ else()
   message(STATUS "Desktop MIME types cache database won't be generated")
 endif()
 
-if(GTK_FOUND)
-  pkg_check_modules(gio REQUIRED gio-2.0)
-  pkg_check_modules(gio-unix REQUIRED gio-unix-2.0)
-  add_subdirectory(src)
-  add_subdirectory(data)
-  add_subdirectory(plugins)
-  add_subdirectory(plugins/secret)
+if(GTK3_FOUND)
+    #pkg_check_modules(gio REQUIRED gio-2.0)
+    #pkg_check_modules(gio-unix REQUIRED gio-unix-2.0)
+    add_subdirectory(src)
+    add_subdirectory(data)
+    add_subdirectory(plugins)
+    add_subdirectory(plugins/secret)
 endif()
 
 if(WITH_TRANSLATIONS)

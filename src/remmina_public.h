@@ -37,6 +37,7 @@
 #pragma once
 
 #include "config.h"
+#include <gtk/gtk.h>
 
 #define IDLE_ADD        gdk_threads_add_idle
 #define TIMEOUT_ADD     gdk_threads_add_timeout
@@ -102,6 +103,8 @@ guint16 remmina_public_get_keycode_for_keyval(GdkKeymap *keymap, guint keyval);
 gboolean remmina_public_get_modifier_for_keycode(GdkKeymap *keymap, guint16 keycode);
 /* Load a GtkBuilder object from a filename */
 GtkBuilder *remmina_public_gtk_builder_new_from_file(gchar *filename);
+/* Load a GtkBuilder object from a resource */
+GtkBuilder *remmina_public_gtk_builder_new_from_resource(gchar *resource);
 /* Change parent container for a widget */
 void remmina_public_gtk_widget_reparent(GtkWidget *widget, GtkContainer *container);
 /* Used to send desktop notifications */

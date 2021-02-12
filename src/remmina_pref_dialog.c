@@ -673,7 +673,7 @@ GtkDialog* remmina_pref_dialog_new(gint default_tab, GtkWindow *parent)
 	remmina_pref_dialog = g_new0(RemminaPrefDialog, 1);
 	remmina_pref_dialog->priv = g_new0(RemminaPrefDialogPriv, 1);
 
-	remmina_pref_dialog->builder = remmina_public_gtk_builder_new_from_file("remmina_preferences.glade");
+	remmina_pref_dialog->builder = remmina_public_gtk_builder_new_from_resource("/org/remmina/Remmina/src/../data/ui/remmina_preferences.glade");
 	remmina_pref_dialog->dialog = GTK_DIALOG(gtk_builder_get_object(remmina_pref_dialog->builder, "RemminaPrefDialog"));
 	if (parent)
 		gtk_window_set_transient_for(GTK_WINDOW(remmina_pref_dialog->dialog), parent);

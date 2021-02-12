@@ -39,7 +39,7 @@ include_directories(${CMAKE_SOURCE_DIR}/plugins)
 
 set(APPICONSCALE_EMBLEMS_DIR "${REMMINA_DATADIR}/icons/hicolor/scalable/emblems")
 
-set(REMMINA_COMMON_INCLUDE_DIRS ${GTK_INCLUDE_DIRS})
+set(REMMINA_COMMON_INCLUDE_DIRS ${GTK3_INCLUDE_DIRS})
 set(REMMINA_COMMON_LIBRARIES ${GTK_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
 
 find_suggested_package(LIBSSH)
@@ -85,7 +85,7 @@ if(LIBVNCSERVER_FOUND)
 	add_subdirectory(vnc)
 endif()
 
-find_suggested_package(SPICE)
+find_suggested_package(Spice)
 if(SPICE_FOUND)
 	add_subdirectory(spice)
 endif()

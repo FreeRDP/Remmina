@@ -40,11 +40,11 @@ if(LIBSECRET_FOUND)
     set_target_properties(remmina-plugin-secret PROPERTIES PREFIX "")
     set_target_properties(remmina-plugin-secret PROPERTIES NO_SONAME 1)
 
-    include_directories(${GTK_INCLUDE_DIRS})
-    target_link_libraries(remmina-plugin-secret ${GTK_LIBRARY_DIRS})
+    include_directories(${GTK3_INCLUDE_DIRS})
+    target_link_libraries(remmina-plugin-secret ${GTK_LIBRARIES})
 
     include_directories(SYSTEM ${LIBSECRET_INCLUDE_DIRS})
-    target_link_libraries(remmina-plugin-secret ${LIBSECRET_LIBRARIES} ${GLIB2_LIBRARY})
+    target_link_libraries(remmina-plugin-secret ${LIBSECRET_LIBRARIES} ${GLIB_LIBRARY})
 
     install(TARGETS remmina-plugin-secret DESTINATION ${REMMINA_PLUGINDIR})
 endif()

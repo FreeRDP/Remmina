@@ -57,7 +57,7 @@ static gboolean remmina_key_chooser_dialog_on_key_press(GtkWidget *widget, GdkEv
 RemminaKeyChooserArguments* remmina_key_chooser_new(GtkWindow *parent_window, gboolean use_modifiers)
 {
 	TRACE_CALL(__func__);
-	GtkBuilder *builder = remmina_public_gtk_builder_new_from_file("remmina_key_chooser.glade");
+	GtkBuilder *builder = remmina_public_gtk_builder_new_from_resource ("/org/remmina/Remmina/src/../data/ui/remmina_key_chooser.glade");
 	GtkDialog *dialog;
 	RemminaKeyChooserArguments *arguments;
 	arguments = g_new0(RemminaKeyChooserArguments, 1);

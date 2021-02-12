@@ -91,7 +91,7 @@ GtkDialog* remmina_ext_exec_new(RemminaFile* remminafile, const char *remmina_ex
 	if (*cmd != 0) {
 
 		pcspinner = g_new(PCon_Spinner, 1);
-		builder = remmina_public_gtk_builder_new_from_file("remmina_spinner.glade");
+		builder = remmina_public_gtk_builder_new_from_resource("/org/remmina/Remmina/src/../data/ui/remmina_spinner.glade");
 		pcspinner->dialog = GTK_DIALOG(gtk_builder_get_object(builder, "DialogSpinner"));
 		pcspinner->label_pleasewait = GTK_LABEL(GET_OBJECT("label_pleasewait"));
 		pcspinner->spinner = GTK_WIDGET(GET_OBJECT("spinner"));
