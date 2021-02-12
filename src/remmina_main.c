@@ -1385,6 +1385,7 @@ GtkWidget *remmina_main_new(void)
 	remminamain->priv = g_new0(RemminaMainPriv, 1);
 	/* Assign UI widgets to the private members */
 	remminamain->builder = remmina_public_gtk_builder_new_from_file("remmina_main.glade");
+	//remminamain->builder = remmina_public_gtk_builder_new_from_resource ("/org.remmina.Remmina/data/ui/remmina_main.glade");
 	remminamain->window = GTK_WINDOW(RM_GET_OBJECT("RemminaMain"));
 	if (kioskmode && kioskmode == TRUE) {
 		gtk_window_set_position(remminamain->window, GTK_WIN_POS_CENTER_ALWAYS);

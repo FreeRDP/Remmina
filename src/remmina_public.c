@@ -573,6 +573,21 @@ GtkBuilder* remmina_public_gtk_builder_new_from_file(gchar *filename)
 	return builder;
 }
 
+/* Load a GtkBuilder object from a resource */
+GtkBuilder* remmina_public_gtk_builder_new_from_resource(gchar *resource)
+{
+	TRACE_CALL(__func__);
+	GError *err = NULL;
+	GtkBuilder *builder = gtk_builder_new();
+	gtk_builder_add_from_resource (builder, resource, &err);
+	if (err != NULL) {
+		g_print("Error adding build from resource. Error: %s", err->message);
+		g_error_free(err);
+	}
+	return builder;
+}
+
+
 /* Change parent container for a widget
  * If possible use this function instead of the deprecated gtk_widget_reparent */
 void remmina_public_gtk_widget_reparent(GtkWidget *widget, GtkContainer *container)

@@ -567,6 +567,33 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
           </object>
         </child>
         <child>
+          <object class="GtkToggleButton" id="search_toggle">
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">False</property>
+            <property name="tooltip-text" translatable="yes">Show search bar</property>
+            <property name="action-name">main.search</property>
+            <property name="image">find_toggle_image</property>
+            <property name="active">True</property>
+          </object>
+          <packing>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="button_news">
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
+            <property name="action-name">app.news</property>
+            <property name="image">image_news</property>
+            <property name="always-show-image">True</property>
+          </object>
+          <packing>
+            <property name="position">2</property>
+          </packing>
+        </child>
+        <child>
           <object class="GtkMenuButton" id="menu_header_button">
             <property name="visible">True</property>
             <property name="can-focus">True</property>
@@ -591,21 +618,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
           </object>
           <packing>
             <property name="pack-type">end</property>
-            <property name="position">1</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkToggleButton" id="search_toggle">
-            <property name="visible">True</property>
-            <property name="can-focus">True</property>
-            <property name="receives-default">False</property>
-            <property name="tooltip-text" translatable="yes">Show search bar</property>
-            <property name="action-name">main.search</property>
-            <property name="image">find_toggle_image</property>
-            <property name="active">True</property>
-          </object>
-          <packing>
-            <property name="position">1</property>
+            <property name="position">3</property>
           </packing>
         </child>
         <child>
@@ -619,20 +632,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
           </object>
           <packing>
             <property name="pack-type">end</property>
-            <property name="position">2</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="button_news">
-            <property name="visible">True</property>
-            <property name="can-focus">True</property>
-            <property name="receives-default">True</property>
-            <property name="action-name">app.news</property>
-            <property name="image">image_news</property>
-            <property name="always-show-image">True</property>
-          </object>
-          <packing>
-            <property name="position">3</property>
+            <property name="position">4</property>
           </packing>
         </child>
         <child>

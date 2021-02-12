@@ -30,17 +30,52 @@
 #  version. *  If you delete this exception statement from all source
 #  files in the program, then also delete it here.
 
-include(FindPkgConfig)
+find_package(PkgConfig)
 
 if(PKG_CONFIG_FOUND)
-	pkg_check_modules(PC_SPICE_PROTOCOL spice-protocol)
+    #pkg_check_modules(PC_SPICE_PROTOCOL spice-protocol)
+    pkg_check_modules(_SPICE spice-client-gtk-3.0)
+endif(PKG_CONFIG_FOUND)
 
-	pkg_check_modules(PC_SPICE_CLIENT spice-client-gtk-3.0)
+find_library(SPICE_CLIENT_GTK3_LIB NAMES spice-client-gtk-3.0
+    PATHS
+    ${_SPICE_LIBRARY_DIRS}
+    ${COMMON_LIB_DIR}
+)
+
+if(SPICE_CLIENT_GTK3_LIB)
+    set(SPICE_LIBRARIES ${SPICE_CLIENT_GTK3_LIB})
+    message(STATUS "Spice-Libs: ${SPICE_LIBRARIES}")
 endif()
 
-if(PC_SPICE_CLIENT_FOUND)
-	set(SPICE_LIBRARIES ${PC_SPICE_CLIENT_LIBRARIES})
-	set(SPICE_INCLUDE_DIRS ${PC_SPICE_CLIENT_INCLUDE_DIRS})
 
-	set(SPICE_FOUND TRUE)
+find_path(SPICE_CLIENT_GTK3_INCLUDE_DIR spice-client-gtk.h
+    PATH_SUFFIXES spice-client-gtk-3.0
+    PATHS
+    ${_SPICE_INCLUDE_DIRS}
+    ${COMMON_INCLUDE_DIR}
+)
+
+find_path(SPICE_CLIENT_GLIB_INCLUDE_DIR spice-client.h
+    PATH_SUFFIXES spice-client-glib-2.0
+    PATHS
+    ${_SPICE_INCLUDE_DIRS}
+    ${COMMON_INCLUDE_DIR}
+)
+
+find_path(SPICE_PROTO_INCLUDE_DIR spice/enums.h
+    PATH_SUFFIXES spice-1
+    PATHS
+    ${_SPICE_INCLUDE_DIRS}
+    ${COMMON_INCLUDE_DIR}
+)
+
+
+if(SPICE_CLIENT_GTK3_INCLUDE_DIR AND SPICE_CLIENT_GLIB_INCLUDE_DIR AND SPICE_PROTO_INCLUDE_DIR)
+    set(SPICE_INCLUDE_DIRS ${SPICE_CLIENT_GTK3_INCLUDE_DIR} ${SPICE_CLIENT_GLIB_INCLUDE_DIR} ${SPICE_PROTO_INCLUDE_DIR})
+    message(STATUS "Spice-Include-Dirs: ${SPICE_INCLUDE_DIRS}")
+endif()
+
+if(SPICE_LIBRARIES AND SPICE_INCLUDE_DIRS)
+    set(SPICE_FOUND TRUE)
 endif()

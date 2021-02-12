@@ -161,7 +161,7 @@ endif()
 message(DEBUG "Source list set to: " ${REMMINA_SRCS})
 
 add_executable(remmina ${REMMINA_SRCS})
-include_directories(${GTK_INCLUDE_DIRS} ${gio_INCLUDE_DIRS} ${gio-unix_INCLUDE_DIRS})
+#include_directories(${GTK_INCLUDE_DIRS} ${gio_INCLUDE_DIRS} ${gio-unix_INCLUDE_DIRS})
 target_link_libraries(remmina ${GTK_LIBRARIES})
 
 if(WITH_PYTHONLIBS)
