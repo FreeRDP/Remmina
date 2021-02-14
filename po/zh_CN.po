@@ -5,7 +5,7 @@
 # shijing <jingshi@ubuntukylin.com>, 2019.
 # Allan Nordhøy <epost@anotheragency.no>, 2019, 2020.
 # anonymous <noreply@weblate.org>, 2019.
-# 玉堂白鹤 <yjwork@qq.com>, 2020.
+# 玉堂白鹤 <yjwork@qq.com>, 2020, 2021.
 # Antenore Gatta <antenore@simbiosi.org>, 2020, 2021.
 # Eric <spice2wolf@gmail.com>, 2020, 2021.
 msgid ""
@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-02-12 21:32+0000\n"
-"PO-Revision-Date: 2021-02-10 03:51+0000\n"
-"Last-Translator: Eric <spice2wolf@gmail.com>\n"
+"PO-Revision-Date: 2021-02-14 21:19+0000\n"
+"Last-Translator: 玉堂白鹤 <yjwork@qq.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "remmina/remmina/zh_Hans/>\n"
 "Language: zh_CN\n"
@@ -88,7 +88,7 @@ msgstr "输入 SSH 的用户名和密码。"
 
 #: src/remmina_protocol_widget.c:1530 src/remmina_protocol_widget.c:1557
 msgid "Fingerprint automatically accepted"
-msgstr ""
+msgstr "自动接受指纹"
 
 #: src/remmina_protocol_widget.c:1537
 msgid "Certificate details:"
@@ -287,11 +287,11 @@ msgstr "减小字体(_D)"
 
 #: src/remmina_ssh_plugin.c:1341
 msgid "Find text"
-msgstr ""
+msgstr "查找文本"
 
 #: src/remmina_ssh_plugin.c:1341
 msgid "_Find text"
-msgstr ""
+msgstr "查找文本(_F)"
 
 #: src/remmina_ssh_plugin.c:1359 src/remmina_message_panel.c:330
 #: src/remmina_sftp_plugin.c:343 src/remmina_file_editor.c:988
@@ -381,7 +381,7 @@ msgstr "退出 Remmina 时记录 SSH 会话"
 
 #: src/remmina_ssh_plugin.c:1400
 msgid "Audible terminal bell"
-msgstr ""
+msgstr "有声终端铃"
 
 #: src/remmina_ssh_plugin.c:1401
 msgid "SSH compression"
@@ -604,7 +604,7 @@ msgstr "显示首选项"
 
 #: src/remmina.c:99
 msgid "TABINDEX"
-msgstr ""
+msgstr "标签索引"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:106
@@ -661,7 +661,7 @@ msgstr "加密一个密码"
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:375
 msgid "- or protocol://username:encryptedpassword@host:port"
-msgstr ""
+msgstr "- 或者 协议://用户名:加密密码@主机:端口"
 
 #: src/remmina.c:378
 msgid ""
@@ -697,6 +697,36 @@ msgid ""
 "remmina --set-option username --set-option resolution_mode=2 --set-option "
 "password\n"
 msgstr ""
+"示例:\n"
+"要使用现有的连接配置文件进行连接，请使用:\n"
+"\n"
+"\tremmina -c FILE.remmina\n"
+"\n"
+"快速连接使用 URI:\n"
+"\n"
+"\tremmina -c rdp://username@server\n"
+"\tremmina -c rdp://domain\\\\username@server\n"
+"\tremmina -c vnc://username@server\n"
+"\tremmina -c vnc://server?VncUsername=username\n"
+"\tremmina -c ssh://user@server\n"
+"\tremmina -c spice://server\n"
+"\n"
+"使用 URI 和加密密码快速连接 :\n"
+"\n"
+"\tremmina -c rdp://username:encrypted-password@server\n"
+"\tremmina -c vnc://username:encrypted-password@server\n"
+"\tremmina -c vnc://server?VncUsername=username\\&VncPassword=encrypted-"
+"password\n"
+"\n"
+"加密用于 URI 的密码 :\n"
+"\n"
+"\tremmina --encrypt-password\n"
+"\n"
+"要更新用户名和密码并设置 Remmina 连接配置文件的不同分辨率模式，请使用 :\n"
+"\n"
+"\techo \"username\\n"
+"apassword\" | remmina --update-profile /PATH/TO/FOO.remmina --set-option "
+"username --set-option resolution_mode=2 --set-option password\n"
 
 #: src/remmina_icon.c:139
 msgid "Open Main Window"
@@ -774,7 +804,7 @@ msgstr "切换全屏模式"
 #: src/rcw.c:2239 data/ui/remmina_preferences.glade:1299
 #: data/ui/remmina_preferences.glade:1309
 msgid "Multi monitor"
-msgstr ""
+msgstr "多显示器"
 
 #: src/rcw.c:2255
 msgid "Toggle dynamic resolution update"
@@ -1127,7 +1157,7 @@ msgstr "无法导入公共 SSH 密钥。%s"
 
 #: src/remmina_ssh.c:336
 msgid "No saved SSH passphrase supplied. Asking user to enter it."
-msgstr ""
+msgstr "未能提供保存的 SSH 密码。需要用户输入。"
 
 #: src/remmina_ssh.c:423
 #, c-format
@@ -1213,7 +1243,7 @@ msgstr "SSH Kerberos/GSSAPI"
 
 #: src/remmina_ssh.c:951
 msgid "Enter TOTP/OTP/2FA code"
-msgstr ""
+msgstr "输入 TOTP/OTP/2FA 代码"
 
 #: src/remmina_ssh.c:980 src/remmina_ssh.c:1006
 msgid "SSH tunnel credentials"
@@ -1225,7 +1255,7 @@ msgstr "SSH 凭据"
 
 #: src/remmina_ssh.c:1057
 msgid "Keyboard interactive login, TOTP/OTP/2FA"
-msgstr ""
+msgstr "键盘交互式登录, TOTP/OTP/2FA"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1277
@@ -1433,7 +1463,7 @@ msgstr "键盘映射"
 
 #: src/remmina_file_editor.c:866
 msgid "Behavior"
-msgstr ""
+msgstr "行为"
 
 #: src/remmina_file_editor.c:869
 msgid "Execute a Command"
@@ -1617,7 +1647,7 @@ msgstr "启用平滑滚动"
 
 #: plugins/www/www_plugin.c:891
 msgid "Turn on spatial navigation"
-msgstr ""
+msgstr "开启空间导航"
 
 #: plugins/www/www_plugin.c:892
 msgid "Turn on plugin support"
@@ -1761,7 +1791,7 @@ msgstr "关闭 TLS 加密"
 
 #: plugins/vnc/vnc_plugin.c:1922 plugins/vnc/vnc_plugin.c:1935
 msgid "Prevent local interaction on the server"
-msgstr ""
+msgstr "阻止服务器上的本地交互"
 
 #: plugins/vnc/vnc_plugin.c:1937
 msgid "Open Chat…"
@@ -1821,15 +1851,15 @@ msgstr "关"
 
 #: plugins/spice/spice_plugin.c:546
 msgid "Auto GLZ"
-msgstr ""
+msgstr "自动 GLZ"
 
 #: plugins/spice/spice_plugin.c:547
 msgid "Auto LZ"
-msgstr ""
+msgstr "自动 LZ"
 
 #: plugins/spice/spice_plugin.c:560
 msgid "Disable video overlay if videos are not displayed properly.\n"
-msgstr ""
+msgstr "如果视频显示不正常，请禁用视频叠加。\n"
 
 #: plugins/spice/spice_plugin.c:577
 msgid "Use TLS encryption"
@@ -1853,7 +1883,7 @@ msgstr "禁止 Gstreamer 叠加"
 
 #: plugins/spice/spice_plugin.c:600
 msgid "Prefered image compression"
-msgstr ""
+msgstr "首选图像压缩"
 
 #: plugins/spice/spice_plugin.c:603 plugins/spice/spice_plugin.c:616
 msgid "No clipboard sync"
@@ -2086,7 +2116,7 @@ msgstr "无法连接到 RDP 服务器 “%s” 。"
 
 #: plugins/rdp/rdp_plugin.c:2363
 msgid "Automatic (32 bpp) (Server chooses its best format)"
-msgstr ""
+msgstr "自动 (32 bpp) (服务器选择其最佳格式)"
 
 #: plugins/rdp/rdp_plugin.c:2364
 msgid "GFX AVC444 (32 bpp)"
@@ -2098,11 +2128,11 @@ msgstr "GFX AVC420（32 位）"
 
 #: plugins/rdp/rdp_plugin.c:2366
 msgid "GFX RFX (32 bpp)"
-msgstr "GFX RFX（32 bpp）"
+msgstr "GFX RFX（32 位）"
 
 #: plugins/rdp/rdp_plugin.c:2367
 msgid "GFX RFX Progressive (32 bpp)"
-msgstr "GFX RFX Progressive (32 bpp)"
+msgstr "GFX RFX Progressive (32 位)"
 
 #: plugins/rdp/rdp_plugin.c:2368
 msgid "RemoteFX (32 bpp)"
@@ -2126,27 +2156,27 @@ msgstr "自动检测"
 
 #: plugins/rdp/rdp_plugin.c:2406
 msgid "Modem"
-msgstr ""
+msgstr "调制解调器"
 
 #: plugins/rdp/rdp_plugin.c:2407
 msgid "Low performance broadband"
-msgstr ""
+msgstr "低性能宽带"
 
 #: plugins/rdp/rdp_plugin.c:2408
 msgid "Satellite"
-msgstr ""
+msgstr "卫星"
 
 #: plugins/rdp/rdp_plugin.c:2409
 msgid "High performance broadband"
-msgstr ""
+msgstr "高性能宽带"
 
 #: plugins/rdp/rdp_plugin.c:2410
 msgid "WAN"
-msgstr ""
+msgstr "WAN"
 
 #: plugins/rdp/rdp_plugin.c:2411
 msgid "LAN"
-msgstr ""
+msgstr "LAN"
 
 #: plugins/rdp/rdp_plugin.c:2420
 msgid "Local - low quality"
@@ -2178,7 +2208,7 @@ msgstr "RDP协议安全"
 
 #: plugins/rdp/rdp_plugin.c:2434
 msgid "NLA extended protocol security"
-msgstr ""
+msgstr "NLA 扩展协议安全"
 
 #: plugins/rdp/rdp_plugin.c:2447
 msgid "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 and newer)"
@@ -2216,6 +2246,13 @@ msgid ""
 "  • sys:oss,dev:1,format:1\n"
 "  • sys:alsa"
 msgstr ""
+"音频输出重定向选项:\n"
+"  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
+"    [channel:<channel>] Audio output\n"
+"  • sys:pulse\n"
+"  • format:1\n"
+"  • sys:oss,dev:1,format:1\n"
+"  • sys:alsa"
 
 #: plugins/rdp/rdp_plugin.c:2477
 msgid ""
@@ -2224,6 +2261,10 @@ msgid ""
 "  • auto\n"
 "  • id:054c:0268#4669:6e6b,addr:04:0c"
 msgstr ""
+"USB 设备重定向选项:\n"
+"  • [dbg,][id:<vid>:<pid>#…,][addr:<bus>:<addr>#…,][auto]\n"
+"  • auto\n"
+"  • id:054c:0268#4669:6e6b,addr:04:0c"
 
 #: plugins/rdp/rdp_plugin.c:2483
 msgid ""
@@ -2241,15 +2282,15 @@ msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:2508
 msgid "Left-handed mouse support"
-msgstr ""
+msgstr "左手鼠标支持"
 
 #: plugins/rdp/rdp_plugin.c:2508
 msgid "Swap left and right mouse buttons for lef-handed mouse support"
-msgstr ""
+msgstr "交换鼠标左键和右键以支持左手鼠标"
 
 #: plugins/rdp/rdp_plugin.c:2509
 msgid "Enable multi monitor"
-msgstr ""
+msgstr "启用多显视器"
 
 #: plugins/rdp/rdp_plugin.c:2510
 msgid "Span screen over multiple monitors"
@@ -2257,11 +2298,11 @@ msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:2511
 msgid "Monitor ID list"
-msgstr ""
+msgstr "显示器 ID 列表"
 
 #: plugins/rdp/rdp_plugin.c:2511
 msgid "Comma separated list of monitor IDs (0,1,2,4)"
-msgstr ""
+msgstr "逗号分隔的显示器 ID 列表 (0,1,2,4)"
 
 #: plugins/rdp/rdp_plugin.c:2514
 msgid "Network connection type"
@@ -2285,7 +2326,7 @@ msgstr "FreeRDP 日志过滤器"
 
 #: plugins/rdp/rdp_plugin.c:2534
 msgid "tag:level[,tag:level[,…]]"
-msgstr ""
+msgstr "tag:level[,tag:level[,…]]"
 
 #: plugins/rdp/rdp_plugin.c:2535
 msgid "Sound"
@@ -2429,7 +2470,7 @@ msgstr "使用旧的许可证工作流程"
 
 #: plugins/rdp/rdp_plugin.c:2566
 msgid "It disables CAL and hwId is set to 0"
-msgstr ""
+msgstr "它禁用 CAL，并将 hwId 设置为 0"
 
 #: plugins/rdp/rdp_plugin.c:2568
 msgid "Attach to console (2003/2003 R2)"
@@ -2644,35 +2685,35 @@ msgstr "Telepathy - 桌面共享"
 
 #: data/ui/remmina_search.glade:61 data/ui/remmina_search_popover.glade:56
 msgid "Search"
-msgstr ""
+msgstr "搜索"
 
 #: data/ui/remmina_search.glade:75 data/ui/remmina_search_popover.glade:70
 msgid "Search for previous occurrence"
-msgstr ""
+msgstr "搜索上一个匹配"
 
 #: data/ui/remmina_search.glade:98 data/ui/remmina_search_popover.glade:93
 msgid "Search for next occurrence"
-msgstr ""
+msgstr "搜索下一个匹配"
 
 #: data/ui/remmina_search.glade:130 data/ui/remmina_search_popover.glade:125
 msgid "Toggle search options"
-msgstr ""
+msgstr "切换搜索选项"
 
 #: data/ui/remmina_search.glade:191 data/ui/remmina_search_popover.glade:186
 msgid "_Match case"
-msgstr ""
+msgstr "匹配大小写(_M)"
 
 #: data/ui/remmina_search.glade:208 data/ui/remmina_search_popover.glade:203
 msgid "Match _entire word only"
-msgstr ""
+msgstr "只匹配整个单词(_e)"
 
 #: data/ui/remmina_search.glade:225 data/ui/remmina_search_popover.glade:220
 msgid "Match as _regular expression"
-msgstr ""
+msgstr "匹配为正则表达式(_R)"
 
 #: data/ui/remmina_search.glade:242 data/ui/remmina_search_popover.glade:237
 msgid "_Wrap around"
-msgstr ""
+msgstr "循环(_W)"
 
 #: data/ui/remmina_snap_info_dialog.glade:71
 msgid ""
@@ -2683,6 +2724,12 @@ msgid ""
 "Some Remmina functions need to be set up to work properly.\n"
 "</span>\n"
 msgstr ""
+"<big><b>Remmina Snap 软件包</b></big>\n"
+"\n"
+"<span>\n"
+"Remmina 作为Snap 软件包在您的系统上运行。\n"
+"需要设置一些 Remmina 功能才能正常工作。\n"
+"</span>\n"
 
 #: data/ui/remmina_snap_info_dialog.glade:120
 msgid ""
@@ -2704,10 +2751,12 @@ msgid ""
 "profiles are saved inside the Snap file system by default. You can change "
 "the location in the Remmina preferences."
 msgstr ""
+"由于 Snap 程序包是在系统的其余部分运行的，因此默认情况下，Remmina 配置文件保存在 Snap 文件系统中。 您可以在 Remmina "
+"首选项中更改位置。"
 
 #: data/ui/remmina_snap_info_dialog.glade:222
 msgid "Change where Remmina profiles are stored"
-msgstr ""
+msgstr "更改 Remmina 配置文件的存储位置"
 
 #: data/ui/remmina_snap_info_dialog.glade:261
 msgid "<big>Snap settings</big>"
@@ -3117,7 +3166,7 @@ msgstr "使用格式字符串为 Remmina 连接配置文件设置一个自定义
 
 #: data/ui/remmina_preferences.glade:443
 msgid "Template for profile filenames"
-msgstr ""
+msgstr "配置文件名模板"
 
 #: data/ui/remmina_preferences.glade:455
 msgid ""
@@ -3209,7 +3258,7 @@ msgstr "在主窗口中隐藏搜索栏"
 
 #: data/ui/remmina_preferences.glade:761
 msgid "Prefer dark theme"
-msgstr ""
+msgstr "喜欢深色主题"
 
 #: data/ui/remmina_preferences.glade:785
 msgid "“Grab all keyboard events” status colour"
@@ -3221,10 +3270,12 @@ msgid ""
 "It changes the connection name background colour, in the remmina connection "
 "toolbar when in full screen"
 msgstr ""
+"十六进制或颜色名称 (red, #ff0000)\n"
+"全屏显示时，它会在 remmina 连接工具栏中更改连接名称的背景色"
 
 #: data/ui/remmina_preferences.glade:801
 msgid "#00FF00"
-msgstr ""
+msgstr "#00FF00"
 
 #: data/ui/remmina_preferences.glade:832
 msgid "Appearance"
@@ -3305,7 +3356,7 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:1407
 msgid "Lower level protocol info, packet level"
-msgstr ""
+msgstr "低层协议信息，数据包层"
 
 #: data/ui/remmina_preferences.glade:1408
 msgid "Function entering and leaving"
@@ -3533,7 +3584,7 @@ msgstr "前景色"
 
 #: data/ui/remmina_preferences.glade:2450
 msgid "Search text"
-msgstr ""
+msgstr "搜索文本"
 
 #: data/ui/remmina_preferences.glade:2480
 msgid "Bold colour"
