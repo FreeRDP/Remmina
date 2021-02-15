@@ -1806,9 +1806,10 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 					}
 				} else
 					monitorids = g_strdup(monitorids_string);
-			}
-
-		}
+			} else
+				monitorids = g_strdup(monitorids_string);
+		} else
+			monitorids = g_strdup(monitorids_string);
 		remmina_rdp_monitor_get(rfi, &monitorids, &maxwidth, &maxheight);
 		if (monitorids != NULL && monitorids[0] != '\0') {
 			gchar **items;
