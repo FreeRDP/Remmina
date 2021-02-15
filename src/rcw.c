@@ -1675,7 +1675,7 @@ static void rcw_toolbar_multi_monitor_mode(GtkToolItem *toggle, RemminaConnectio
 			gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(cnnwin->priv->toolitem_fullscreen), TRUE);
 	} else {
 		remmina_file_set_int(cnnobj->remmina_file, "multimon", 0);
-		rcw_toolbar_fullscreen(NULL, cnnwin);
+		rcw_toolbar_fullscreen(cnnwin->priv->toolitem_fullscreen, cnnwin);
 	}
 }
 
