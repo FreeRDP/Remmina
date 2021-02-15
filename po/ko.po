@@ -4,15 +4,15 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
 # anonymous <noreply@weblate.org>, 2019.
 # Allan Nordhøy <epost@anotheragency.no>, 2020.
-# Justin Song <mcsong@gmail.com>, 2020.
+# Justin Song <mcsong@gmail.com>, 2020, 2021.
 # Antenore Gatta <antenore@simbiosi.org>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-02-12 21:32+0000\n"
-"PO-Revision-Date: 2021-01-28 10:33+0000\n"
-"Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
+"PO-Revision-Date: 2021-02-15 09:57+0000\n"
+"Last-Translator: Justin Song <mcsong@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/remmina/remmina/"
 "ko/>\n"
 "Language: ko\n"
@@ -25,7 +25,7 @@ msgstr ""
 
 #: src/remmina_protocol_widget.c:280
 msgid "Connect via SSH from a new terminal"
-msgstr "새 터미널을 사용해서 SSH 연결"
+msgstr "새 터미널에서 SSH로 연결하기"
 
 #: src/remmina_protocol_widget.c:286
 msgid "Open SFTP transfer…"
@@ -86,7 +86,7 @@ msgstr "SSH 사용자 이름과 비밀번호를 입력하세요."
 
 #: src/remmina_protocol_widget.c:1530 src/remmina_protocol_widget.c:1557
 msgid "Fingerprint automatically accepted"
-msgstr ""
+msgstr "지문인식을 자동으로 허용함"
 
 #: src/remmina_protocol_widget.c:1537
 msgid "Certificate details:"
@@ -184,6 +184,8 @@ msgid ""
 "\"Advanced\" tab of terminal connections and editable in the \"Terminal\" "
 "tab in the settings."
 msgstr ""
+"이 파일은 터미널 연결의 \"고급\"탭에서 선택할 수 있고 설정의 \"터미널\" 탭에서 편집 할 수있는 \"사용자 지정\" 터미널 색 "
+"스킴을 포함하고 있다."
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_ssh_plugin.c:534
@@ -213,11 +215,11 @@ msgstr "세션을 파일로 저장"
 
 #: src/remmina_ssh_plugin.c:809
 msgid "Increase font size (host+Page Up)"
-msgstr ""
+msgstr "글자 크기 크게 (host+Page Up)"
 
 #: src/remmina_ssh_plugin.c:810
 msgid "Decrease font size (host+Page Down)"
-msgstr ""
+msgstr "글자 크기 작게 (host+Page Down)"
 
 #: src/remmina_ssh_plugin.c:811
 msgid "Find text (host+G)"
@@ -269,27 +271,27 @@ msgstr "_모두 선택"
 
 #: src/remmina_ssh_plugin.c:1339 data/ui/remmina_preferences.glade:2388
 msgid "Increase font size"
-msgstr ""
+msgstr "글자 크기 크게"
 
 #: src/remmina_ssh_plugin.c:1339
 msgid "_Increase font size"
-msgstr ""
+msgstr "_글자 크기 크게"
 
 #: src/remmina_ssh_plugin.c:1340 data/ui/remmina_preferences.glade:2401
 msgid "Decrease font size"
-msgstr ""
+msgstr "글자 크기 줄이기"
 
 #: src/remmina_ssh_plugin.c:1340
 msgid "_Decrease font size"
-msgstr ""
+msgstr "_글자 크기 줄이기"
 
 #: src/remmina_ssh_plugin.c:1341
 msgid "Find text"
-msgstr ""
+msgstr "텍스트 찾기"
 
 #: src/remmina_ssh_plugin.c:1341
 msgid "_Find text"
-msgstr ""
+msgstr "_텍스트 찾기"
 
 #: src/remmina_ssh_plugin.c:1359 src/remmina_message_panel.c:330
 #: src/remmina_sftp_plugin.c:343 src/remmina_file_editor.c:988
@@ -556,7 +558,7 @@ msgstr "파일에 기술한 데스크톱에 연결(.remmina 또는 플러그인�
 
 #: src/remmina.c:88 src/remmina.c:90 src/remmina.c:92
 msgid "FILE"
-msgstr ""
+msgstr "파일"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:90
@@ -589,7 +591,7 @@ msgstr "환경 설정 보기"
 
 #: src/remmina.c:99
 msgid "TABINDEX"
-msgstr ""
+msgstr "탭 인덱스"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:106
@@ -603,7 +605,7 @@ msgstr "기본 서버 이름 사용 (--new)"
 
 #: src/remmina.c:108
 msgid "SERVER"
-msgstr ""
+msgstr "서버"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:110
@@ -612,7 +614,7 @@ msgstr "기본 프로토콜 사용 (--new)"
 
 #: src/remmina.c:110
 msgid "PROTOCOL"
-msgstr ""
+msgstr "프로토콜"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:112
@@ -646,7 +648,7 @@ msgstr "VNC 비밀번호 입력"
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:375
 msgid "- or protocol://username:encryptedpassword@host:port"
-msgstr ""
+msgstr "- 또는 protocol://username:encryptedpassword@host:port"
 
 #: src/remmina.c:378
 msgid ""
@@ -682,6 +684,37 @@ msgid ""
 "remmina --set-option username --set-option resolution_mode=2 --set-option "
 "password\n"
 msgstr ""
+"예제: \n"
+"\n"
+"기존 연결 프로필을 사용해서 연결하려면 다음 명령을 사용: \n"
+"\n"
+"\tremmina -c FILE.remmina\n"
+"\n"
+"URI를 사용해서 빠른 연결 사용: \n"
+"\n"
+"\tremmina -c rdp://username@server\n"
+"\tremmina -c rdp://domain\\\\username@server\n"
+"\tremmina -c vnc://username@server\n"
+"\tremmina -c vnc://server?VncUsername=username\n"
+"\tremmina -c ssh://user@server\n"
+"\tremmina -c spice://server\n"
+"\n"
+"암호화된 패스워드로 URI를 사용 사용하는 빠른 연결 사용:\n"
+"\n"
+"\tremmina -c rdp://username:encrypted-password@server\n"
+"\tremmina -c vnc://username:encrypted-password@server\n"
+"\tremmina -c vnc://server?VncUsername=username\\&VncPassword=encrypted-"
+"password\n"
+"\n"
+"URI와 같이 사용할 패스워드를 암호화 하려면: \n"
+"\n"
+"\tremmina --encrypt-password\n"
+"\n"
+"사용자 이름과 암호를 갱신하고, Remmina 연결 프로필에서 다른 해상도 모드를 설정하는데 사용: \n"
+"\n"
+"\techo \"username\\n"
+"apassword\" | remmina --update-profile /PATH/TO/FOO.remmina --set-option "
+"username --set-option resolution_mode=2 --set-option password\n"
 
 #: src/remmina_icon.c:139
 msgid "Open Main Window"
@@ -759,7 +792,7 @@ msgstr "전체 화면 모드 전환"
 #: src/rcw.c:2239 data/ui/remmina_preferences.glade:1299
 #: data/ui/remmina_preferences.glade:1309
 msgid "Multi monitor"
-msgstr ""
+msgstr "멀티 모니터"
 
 #: src/rcw.c:2255
 msgid "Toggle dynamic resolution update"
@@ -1112,7 +1145,7 @@ msgstr "공개 SSH 키를 가져올 수 없습니다. %s"
 
 #: src/remmina_ssh.c:336
 msgid "No saved SSH passphrase supplied. Asking user to enter it."
-msgstr ""
+msgstr "SSH 암호가 저장되어 있지 않습니다. 사용자에게 입력을 요청하세요."
 
 #: src/remmina_ssh.c:423
 #, c-format
@@ -1198,7 +1231,7 @@ msgstr "SSH 커베로스/GSSAPI"
 
 #: src/remmina_ssh.c:951
 msgid "Enter TOTP/OTP/2FA code"
-msgstr ""
+msgstr "TOTP/OTP/2FA 코드 입력"
 
 #: src/remmina_ssh.c:980 src/remmina_ssh.c:1006
 msgid "SSH tunnel credentials"
@@ -1210,7 +1243,7 @@ msgstr "SSH 자격 증명"
 
 #: src/remmina_ssh.c:1057
 msgid "Keyboard interactive login, TOTP/OTP/2FA"
-msgstr ""
+msgstr "키보드 인터렉티브 로그인, TOTP/OTP/2FA"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1277
@@ -1370,14 +1403,6 @@ msgstr ""
 "</big></tt>"
 
 #: src/remmina_file_editor.c:81
-#, fuzzy
-#| msgid ""
-#| "<tt><big>Supported formats\n"
-#| "• :port\n"
-#| "• server\n"
-#| "• server:port\n"
-#| "• [server]:port\n"
-#| "• username@server:port (SSH protocol only)</big></tt>"
 msgid ""
 "<tt><big>Supported formats\n"
 "• server\n"
@@ -1427,7 +1452,7 @@ msgstr "사용자키 지정"
 
 #: src/remmina_file_editor.c:866
 msgid "Behavior"
-msgstr ""
+msgstr "행동"
 
 #: src/remmina_file_editor.c:869
 msgid "Execute a Command"
@@ -1439,7 +1464,7 @@ msgstr "연결 시작"
 
 #: src/remmina_file_editor.c:875
 msgid "command %h %u %t %U %p %g --option"
-msgstr ""
+msgstr "command %h %u %t %U %p %g --option"
 
 #: src/remmina_file_editor.c:880
 msgid "After connecting"
@@ -1447,7 +1472,7 @@ msgstr "연결 시작"
 
 #: src/remmina_file_editor.c:882
 msgid "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
-msgstr ""
+msgstr "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
 
 #: src/remmina_file_editor.c:886
 msgid "Start-up"
@@ -1496,7 +1521,7 @@ msgstr "고급 설정"
 
 #: src/remmina_file_editor.c:1112
 msgid "Notes"
-msgstr ""
+msgstr "노트"
 
 #: src/remmina_file_editor.c:1355
 msgid "Default settings saved."
@@ -1571,7 +1596,7 @@ msgstr "명령"
 
 #: plugins/exec/exec_plugin.c:267
 msgid "Asynchronous execution"
-msgstr ""
+msgstr "비동기 실행"
 
 #: plugins/www/www_plugin.c:97
 msgid "File downloaded"
@@ -1595,11 +1620,11 @@ msgstr "사용자 에이전트"
 
 #: plugins/www/www_plugin.c:888
 msgid "Proxy URL"
-msgstr ""
+msgstr "프록시 URL"
 
 #: plugins/www/www_plugin.c:888
 msgid "E.g. https://example.org, socks://mysocks:1080"
-msgstr ""
+msgstr "예제) https://example.org, socks://mysocks:1080"
 
 #: plugins/www/www_plugin.c:889
 msgid "Turn on Java support"
@@ -1755,7 +1780,7 @@ msgstr "TLS 암호화 사용"
 
 #: plugins/vnc/vnc_plugin.c:1922 plugins/vnc/vnc_plugin.c:1935
 msgid "Prevent local interaction on the server"
-msgstr ""
+msgstr "서버에서 로컬 인터렉션 방지"
 
 #: plugins/vnc/vnc_plugin.c:1937
 msgid "Open Chat…"
@@ -1815,15 +1840,15 @@ msgstr "끄기"
 
 #: plugins/spice/spice_plugin.c:546
 msgid "Auto GLZ"
-msgstr ""
+msgstr "Auto GLZ"
 
 #: plugins/spice/spice_plugin.c:547
 msgid "Auto LZ"
-msgstr ""
+msgstr "Auto LZ"
 
 #: plugins/spice/spice_plugin.c:560
 msgid "Disable video overlay if videos are not displayed properly.\n"
-msgstr ""
+msgstr "비디오가 잘 보여지지 않으면, 비디오 오버레이를 비활성화 하세요.\n"
 
 #: plugins/spice/spice_plugin.c:577
 msgid "Use TLS encryption"
@@ -1847,7 +1872,7 @@ msgstr "서버 입력 비활성화"
 
 #: plugins/spice/spice_plugin.c:600
 msgid "Prefered image compression"
-msgstr ""
+msgstr "사용하기 원하는 이미지 압축"
 
 #: plugins/spice/spice_plugin.c:603 plugins/spice/spice_plugin.c:616
 msgid "No clipboard sync"
@@ -2084,7 +2109,7 @@ msgstr "RDP 서버 %s에 연결할 수 없습니다."
 
 #: plugins/rdp/rdp_plugin.c:2363
 msgid "Automatic (32 bpp) (Server chooses its best format)"
-msgstr ""
+msgstr "자동 (32bpp) (서버가 최상의 포맷을 선택)"
 
 #: plugins/rdp/rdp_plugin.c:2364
 msgid "GFX AVC444 (32 bpp)"
@@ -2124,27 +2149,27 @@ msgstr "<자동 구성>"
 
 #: plugins/rdp/rdp_plugin.c:2406
 msgid "Modem"
-msgstr ""
+msgstr "모뎀"
 
 #: plugins/rdp/rdp_plugin.c:2407
 msgid "Low performance broadband"
-msgstr ""
+msgstr "저 성능 브로드밴드"
 
 #: plugins/rdp/rdp_plugin.c:2408
 msgid "Satellite"
-msgstr ""
+msgstr "위성"
 
 #: plugins/rdp/rdp_plugin.c:2409
 msgid "High performance broadband"
-msgstr ""
+msgstr "고 성능 브로드밴드"
 
 #: plugins/rdp/rdp_plugin.c:2410
 msgid "WAN"
-msgstr ""
+msgstr "WAN"
 
 #: plugins/rdp/rdp_plugin.c:2411
 msgid "LAN"
-msgstr ""
+msgstr "LAN"
 
 #: plugins/rdp/rdp_plugin.c:2420
 msgid "Local - low quality"
@@ -2176,7 +2201,7 @@ msgstr "프로토콜 별 탭"
 
 #: plugins/rdp/rdp_plugin.c:2434
 msgid "NLA extended protocol security"
-msgstr ""
+msgstr "NLA 확장 프로토콜 보안"
 
 #: plugins/rdp/rdp_plugin.c:2447
 msgid "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 and newer)"
@@ -2209,6 +2234,13 @@ msgid ""
 "  • sys:oss,dev:1,format:1\n"
 "  • sys:alsa"
 msgstr ""
+"오디오 입력을 리다이렉션할 수 있는 옵션: \n"
+"  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
+"    [channel:<channel>] Audio input (microphone)\n"
+"  • sys:pulse\n"
+"  • format:1\n"
+"  • sys:oss,dev:1,format:1\n"
+"  • sys:alsa"
 
 #: plugins/rdp/rdp_plugin.c:2467
 msgid ""
@@ -2220,6 +2252,13 @@ msgid ""
 "  • sys:oss,dev:1,format:1\n"
 "  • sys:alsa"
 msgstr ""
+"오디오 출력을 리다이렉션할 수 있는 옵션: \n"
+"  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
+"    [channel:<channel>] Audio output\n"
+"  • sys:pulse\n"
+"  • format:1\n"
+"  • sys:oss,dev:1,format:1\n"
+"  • sys:alsa"
 
 #: plugins/rdp/rdp_plugin.c:2477
 msgid ""
@@ -2228,6 +2267,10 @@ msgid ""
 "  • auto\n"
 "  • id:054c:0268#4669:6e6b,addr:04:0c"
 msgstr ""
+"USB 기기를 리다이렉션할 수 있는 옵션:\n"
+"  • [dbg,][id:<vid>:<pid>#…,][addr:<bus>:<addr>#…,][auto]\n"
+"  • auto\n"
+"  • id:054c:0268#4669:6e6b,addr:04:0c"
 
 #: plugins/rdp/rdp_plugin.c:2483
 msgid ""
@@ -2235,6 +2278,9 @@ msgid ""
 "Adjusts the connection timeout. Use if your connection times out.\n"
 "The highest possible value is 600000 ms (10 minutes).\n"
 msgstr ""
+"대기 시간이 긴 링크에 대한 고급 설정 :\n"
+"연결 타임아웃을 조절합니다. 연결 시간이 초과되면 사용하세요. \n"
+"가장 큰 값은 600000ms (10 분)입니다.\n"
 
 #: plugins/rdp/rdp_plugin.c:2488
 msgid ""
@@ -2242,30 +2288,33 @@ msgid ""
 "Using auto-detection is advised.\n"
 "If \"Auto-detect\" fails, choose the most appropriate option in the list.\n"
 msgstr ""
+"네트워크 연결 타입에 따른 성능 최적화 :\n"
+"자동 감지를 사용하는 것이 좋습니다.\n"
+"\"자동 감지\"가 실패하면, 목록에서 가장 적절한 옵션을 선택하세요.\n"
 
 #: plugins/rdp/rdp_plugin.c:2508
 msgid "Left-handed mouse support"
-msgstr ""
+msgstr "왼손잡이 마우스 지원"
 
 #: plugins/rdp/rdp_plugin.c:2508
 msgid "Swap left and right mouse buttons for lef-handed mouse support"
-msgstr ""
+msgstr "왼손잡이 마우스 지원을 위해 왼쪽, 오른쪽 마우스 버튼 전환"
 
 #: plugins/rdp/rdp_plugin.c:2509
 msgid "Enable multi monitor"
-msgstr ""
+msgstr "다중 모니터 사용"
 
 #: plugins/rdp/rdp_plugin.c:2510
 msgid "Span screen over multiple monitors"
-msgstr ""
+msgstr "다중 모니터로 화면 확장"
 
 #: plugins/rdp/rdp_plugin.c:2511
 msgid "Monitor ID list"
-msgstr ""
+msgstr "모니터 ID 목록"
 
 #: plugins/rdp/rdp_plugin.c:2511
 msgid "Comma separated list of monitor IDs (0,1,2,4)"
-msgstr ""
+msgstr "콤마로 구분 한 모니터 ID 목록 (0,1,2,4)"
 
 #: plugins/rdp/rdp_plugin.c:2514
 msgid "Network connection type"
@@ -2273,11 +2322,11 @@ msgstr "새 연결 프로필"
 
 #: plugins/rdp/rdp_plugin.c:2531
 msgid "Security protocol negotiation"
-msgstr ""
+msgstr "보안 프로토콜 협상"
 
 #: plugins/rdp/rdp_plugin.c:2532
 msgid "Gateway transport type"
-msgstr "게이트웨이 전송 유형"
+msgstr "게이트웨이 전송 타입"
 
 #: plugins/rdp/rdp_plugin.c:2533
 msgid "FreeRDP log level"
@@ -2289,7 +2338,7 @@ msgstr "FreeRDP 로그 레벨"
 
 #: plugins/rdp/rdp_plugin.c:2534
 msgid "tag:level[,tag:level[,…]]"
-msgstr ""
+msgstr "tag:level[,tag:level[,…]]"
 
 #: plugins/rdp/rdp_plugin.c:2535
 msgid "Sound"
@@ -2389,19 +2438,19 @@ msgstr "스마트 카드 공유"
 
 #: plugins/rdp/rdp_plugin.c:2556
 msgid "Dynamic virtual channel"
-msgstr ""
+msgstr "다이나믹 가상 채널"
 
 #: plugins/rdp/rdp_plugin.c:2556 plugins/rdp/rdp_plugin.c:2557
 msgid "<channel>[,<options>]"
-msgstr ""
+msgstr "<channel>[,<options>]"
 
 #: plugins/rdp/rdp_plugin.c:2557
 msgid "Static virtual channel"
-msgstr ""
+msgstr "스태틱 가상 채널"
 
 #: plugins/rdp/rdp_plugin.c:2558
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
-msgstr ""
+msgstr "IPv4 A 레코드보다 IPv6 AAAA 레코드 선호"
 
 #: plugins/rdp/rdp_plugin.c:2559
 msgid "Share printers"
@@ -2465,15 +2514,15 @@ msgstr "Glyph 캐시"
 
 #: plugins/rdp/rdp_plugin.c:2577
 msgid "Enable multitransport protocol (UDP)"
-msgstr ""
+msgstr "다중 전송 프로토콜 (UDP) 활성화"
 
 #: plugins/rdp/rdp_plugin.c:2577
 msgid "Using the UDP protocol may improve performance"
-msgstr ""
+msgstr "UDP 프로토콜을 사용하면 성능이 향상 될 수 있습니다."
 
 #: plugins/rdp/rdp_plugin.c:2578
 msgid "Use base credentials for gateway too"
-msgstr ""
+msgstr "게이트웨이에도 기본 자격 증명 사용"
 
 #: plugins/rdp/rdp_plugin.c:2603
 msgid "RDP - Remote Desktop Protocol"
@@ -2648,35 +2697,35 @@ msgstr "Telepathy - 데스크탑 공유"
 
 #: data/ui/remmina_search.glade:61 data/ui/remmina_search_popover.glade:56
 msgid "Search"
-msgstr ""
+msgstr "검색"
 
 #: data/ui/remmina_search.glade:75 data/ui/remmina_search_popover.glade:70
 msgid "Search for previous occurrence"
-msgstr ""
+msgstr "이전 항목 검색"
 
 #: data/ui/remmina_search.glade:98 data/ui/remmina_search_popover.glade:93
 msgid "Search for next occurrence"
-msgstr ""
+msgstr "다음 항목 검색"
 
 #: data/ui/remmina_search.glade:130 data/ui/remmina_search_popover.glade:125
 msgid "Toggle search options"
-msgstr ""
+msgstr "검색 옵션 토글"
 
 #: data/ui/remmina_search.glade:191 data/ui/remmina_search_popover.glade:186
 msgid "_Match case"
-msgstr ""
+msgstr "_매치 케이스"
 
 #: data/ui/remmina_search.glade:208 data/ui/remmina_search_popover.glade:203
 msgid "Match _entire word only"
-msgstr ""
+msgstr "_ 단어 전체 일치"
 
 #: data/ui/remmina_search.glade:225 data/ui/remmina_search_popover.glade:220
 msgid "Match as _regular expression"
-msgstr ""
+msgstr "_정규 표현식으로 일치"
 
 #: data/ui/remmina_search.glade:242 data/ui/remmina_search_popover.glade:237
 msgid "_Wrap around"
-msgstr ""
+msgstr "_줄 바꿈"
 
 #: data/ui/remmina_snap_info_dialog.glade:71
 msgid ""
@@ -2687,6 +2736,12 @@ msgid ""
 "Some Remmina functions need to be set up to work properly.\n"
 "</span>\n"
 msgstr ""
+"<big> <b> Remmina Snap 패키지 </b> </big>\n"
+"\n"
+"<span>\n"
+"시스템에서 Snap 패키지로 Remmina가 실행됩니다.\n"
+"일부 Remmina 기능은 제대로 설정해서 동작합니다. \n"
+"</span>\n"
 
 #: data/ui/remmina_snap_info_dialog.glade:120
 msgid ""
@@ -2710,10 +2765,12 @@ msgid ""
 "profiles are saved inside the Snap file system by default. You can change "
 "the location in the Remmina preferences."
 msgstr ""
+"Snap 패키지는 시스템의 일부로 제한적으로 실행되기 때문에 Remmina 프로필은 기본적으로 Snap 파일 시스템에 저장됩니다. "
+"Remmina 환경 설정에서 위치를 변경할 수 있습니다."
 
 #: data/ui/remmina_snap_info_dialog.glade:222
 msgid "Change where Remmina profiles are stored"
-msgstr ""
+msgstr "Remmina 프로필이 저장되는 위치가 변경되었습니다"
 
 #: data/ui/remmina_snap_info_dialog.glade:261
 msgid "<big>Snap settings</big>"
@@ -2735,6 +2792,11 @@ msgid ""
 "More details in COPYING\n"
 "    "
 msgstr ""
+"\n"
+"Copyright © 2014–2021 Antenore Gatta, Giovanni Panozzo.\n"
+"Copyright © 2009–2014 Vic Lee\n"
+"More details in COPYING\n"
+"    "
 
 #: data/ui/remmina_about.glade:40
 msgid "Website"
@@ -2750,15 +2812,15 @@ msgstr "새 연결 프로필 생성"
 
 #: data/ui/remmina_main.glade:47
 msgid "Show the Remmina changelog."
-msgstr ""
+msgstr "Remmina 변경 로그 보기."
 
 #: data/ui/remmina_main.glade:53
 msgid "Switch from grouped to list view"
-msgstr ""
+msgstr "그룹에서 목록 보기로 전환"
 
 #: data/ui/remmina_main.glade:85
 msgid "Select the protocol to use with the quick connect bar."
-msgstr ""
+msgstr "빠른 연결 표시 바에서 사용할 프로토콜을 선택하세요."
 
 #: data/ui/remmina_main.glade:103
 msgid "Search string or server name/IP address for “Quick Connect”"
@@ -2858,7 +2920,7 @@ msgstr "뷰 토글"
 msgid ""
 "If a GTK theme includes a dark variant, it will be used instead of the "
 "configured theme."
-msgstr ""
+msgstr "GTK 테마가 다크 모드를 포함한 경우, 설정한 테마 대신 사용됩니다."
 
 #: data/ui/remmina_unlock.glade:60
 msgid "Unlock"
@@ -2894,6 +2956,20 @@ msgid ""
 "release notes\"><i>Visit the website to read the release notes</i></a>.\n"
 "</span>"
 msgstr ""
+"<big> <b> 뉴스가 꺼져 있습니다. </b> </big>\n"
+"\n"
+"<span>\n"
+"뉴스를 켜면, 프로그램이 Remmina 서버에 연결하여 릴리스 정보를 다운로드 합니다. \n"
+"</span>\n"
+"\n"
+"<span>\n"
+"버전 확인은 컴파일 타임에만 활성화할 수 있습니다.\n"
+"</span>\n"
+"\n"
+"<span>\n"
+"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina 출시 "
+"노트\"> <i> 웹 사이트를 방문해서 출시 노트를 읽어보세요 </i> </a>.\n"
+"</span>"
 
 #. The star (*) is a reference to privacy consent
 #: data/ui/remmina_news.glade:130 data/ui/remmina_preferences.glade:544
@@ -2920,7 +2996,7 @@ msgstr "적용"
 
 #: data/ui/remmina_news.glade:169
 msgid "Allow Remmina to automatically open .rdp and .remmina files."
-msgstr ""
+msgstr "Remmina가 .rdp, .remmina 파일을 자동으로 열 수 있게 허용"
 
 #. The star (*) is a reference to privacy consent
 #: data/ui/remmina_news.glade:183 data/ui/remmina_preferences.glade:559
@@ -2928,12 +3004,14 @@ msgid ""
 "Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
 "\">remmina.org</a> (*)"
 msgstr ""
+"<a href=\"https://remmina.org\" title=\"Remmina 뉴스 사이트\"> remmina.org </a>에서 "
+"뉴스 가져 오기 (*)"
 
 #: data/ui/remmina_news.glade:208 data/ui/remmina_preferences.glade:526
 msgid ""
 "* By enabling statistics and/or news you consent to send and fetch data to/"
 "from remmina.org"
-msgstr ""
+msgstr "* 통계, 또는 뉴스를 활성화하면 remmina.org와 데이터를 주고받는 데 동의하는 것입니다."
 
 #: data/ui/remmina_news.glade:231
 msgid "<big>Take part</big>"
@@ -3062,7 +3140,7 @@ msgstr "폴더 선택"
 
 #: data/ui/remmina_preferences.glade:309
 msgid "Set up"
-msgstr ""
+msgstr "셋업"
 
 #: data/ui/remmina_preferences.glade:330
 msgid "Screenshot filenames"
@@ -3107,7 +3185,7 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:443
 msgid "Template for profile filenames"
-msgstr ""
+msgstr "프로필 파일 이름 템플릿"
 
 #: data/ui/remmina_preferences.glade:455
 msgid ""
@@ -3163,7 +3241,7 @@ msgstr "전체 화면 뷰포트"
 
 #: data/ui/remmina_preferences.glade:663
 msgid "Tabs"
-msgstr ""
+msgstr "탭"
 
 #: data/ui/remmina_preferences.glade:679
 msgid "By group"
@@ -3199,13 +3277,11 @@ msgstr "메인 윈도에 보이는 검색 바 숨기기"
 
 #: data/ui/remmina_preferences.glade:761
 msgid "Prefer dark theme"
-msgstr ""
+msgstr "어두운 테마 선호"
 
 #: data/ui/remmina_preferences.glade:785
-#, fuzzy
-#| msgid "Grab all keyboard events"
 msgid "“Grab all keyboard events” status colour"
-msgstr "모든 키보드 이벤트 기록"
+msgstr "\"모든 키보드 이벤트 캐치\" 상태 색"
 
 #: data/ui/remmina_preferences.glade:796
 msgid ""
@@ -3213,10 +3289,12 @@ msgid ""
 "It changes the connection name background colour, in the remmina connection "
 "toolbar when in full screen"
 msgstr ""
+"16 진수 또는 색상 이름 (빨간색, #ff0000)\n"
+"전체 화면 일 때 remmina 연결 도구 모음에서 연결 이름 배경색을 변경합니다."
 
 #: data/ui/remmina_preferences.glade:801
 msgid "#00FF00"
-msgstr ""
+msgstr "#00FF00"
 
 #: data/ui/remmina_preferences.glade:832
 msgid "Appearance"
@@ -3285,23 +3363,23 @@ msgstr "Parse ~/.ssh/config"
 
 #: data/ui/remmina_preferences.glade:1404
 msgid "No logging at all"
-msgstr ""
+msgstr "로딩 데이터 없음"
 
 #: data/ui/remmina_preferences.glade:1405
 msgid "Rare conditions or warnings"
-msgstr ""
+msgstr "거의 발생하지 않는 조건 또는 경고"
 
 #: data/ui/remmina_preferences.glade:1406
 msgid "API-accessible entrypoints"
-msgstr ""
+msgstr "API 액세스 가능한 진입 점"
 
 #: data/ui/remmina_preferences.glade:1407
 msgid "Lower level protocol info, packet level"
-msgstr ""
+msgstr "패킷 수준의 하위 수준 프로토콜 정보"
 
 #: data/ui/remmina_preferences.glade:1408
 msgid "Function entering and leaving"
-msgstr ""
+msgstr "기능 실행 및 종료"
 
 #: data/ui/remmina_preferences.glade:1424
 msgid "SSH log level"
@@ -3415,11 +3493,11 @@ msgstr "기본 시스템 글꼴 사용"
 msgid ""
 "Selecting “SGR 1” also switches to the bright counterparts of the first 8 "
 "palette colours (in addition to making text bold)."
-msgstr ""
+msgstr "\"SGR 1\"을 선택하면 처음 8개 팔레트 색상의 밝은 색상으로 전환됩니다 (텍스트를 굵게 표시하는 것 외에도)."
 
 #: data/ui/remmina_preferences.glade:2041
 msgid "Allow using bright colours with bold text"
-msgstr ""
+msgstr "굵은 텍스트에 밝은 색상 사용 허용"
 
 #: data/ui/remmina_preferences.glade:2055
 msgid "Colour theme"
@@ -3528,7 +3606,7 @@ msgstr "전경 색"
 
 #: data/ui/remmina_preferences.glade:2450
 msgid "Search text"
-msgstr ""
+msgstr "텍스트 검색"
 
 #: data/ui/remmina_preferences.glade:2480
 msgid "Bold colour"

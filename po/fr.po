@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-02-12 21:32+0000\n"
-"PO-Revision-Date: 2021-02-06 11:26+0000\n"
+"PO-Revision-Date: 2021-02-15 09:57+0000\n"
 "Last-Translator: Davy Defaud <davy.defaud@free.fr>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/remmina/remmina/"
 "fr/>\n"
@@ -1469,14 +1469,6 @@ msgstr ""
 "</big>"
 
 #: src/remmina_file_editor.c:81
-#, fuzzy
-#| msgid ""
-#| "<tt><big>Supported formats\n"
-#| "• :port\n"
-#| "• server\n"
-#| "• server:port\n"
-#| "• [server]:port\n"
-#| "• username@server:port (SSH protocol only)</big></tt>"
 msgid ""
 "<tt><big>Supported formats\n"
 "• server\n"
@@ -1485,7 +1477,6 @@ msgid ""
 "• username@server:port (SSH protocol only)</big></tt>"
 msgstr ""
 "<big>Formats pris en charge :\n"
-"• <tt>:port</tt> ;\n"
 "• <tt>serveur</tt> ;\n"
 "• <tt>serveur:port</tt> ;\n"
 "• <tt>[serveur]:port</tt> ;\n"
@@ -2380,11 +2371,13 @@ msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:2508
 msgid "Left-handed mouse support"
-msgstr ""
+msgstr "Prise en charge des souris pour gauchers"
 
 #: plugins/rdp/rdp_plugin.c:2508
 msgid "Swap left and right mouse buttons for lef-handed mouse support"
 msgstr ""
+"Permuter les boutons droit et gauche de la souris pour la prise en charge "
+"des souris pour gauchers"
 
 #: plugins/rdp/rdp_plugin.c:2509
 msgid "Enable multi monitor"
@@ -3016,6 +3009,8 @@ msgid ""
 "If a GTK theme includes a dark variant, it will be used instead of the "
 "configured theme."
 msgstr ""
+"Si un thème GTK inclut une variante sombre, il sera utilisé à la place du "
+"thème configuré."
 
 #: data/ui/remmina_unlock.glade:60
 msgid "Unlock"
@@ -3391,13 +3386,11 @@ msgstr "Masquer la barre de recherche dans la fenêtre principale"
 
 #: data/ui/remmina_preferences.glade:761
 msgid "Prefer dark theme"
-msgstr ""
+msgstr "Préférer le thème sombre"
 
 #: data/ui/remmina_preferences.glade:785
-#, fuzzy
-#| msgid "Grab all keyboard events"
 msgid "“Grab all keyboard events” status colour"
-msgstr "Capturer les événements du clavier"
+msgstr "Couleur pour l’état « Capturer les événements du clavier »"
 
 #: data/ui/remmina_preferences.glade:796
 msgid ""
@@ -3405,6 +3398,9 @@ msgid ""
 "It changes the connection name background colour, in the remmina connection "
 "toolbar when in full screen"
 msgstr ""
+"Nom de couleur ou code hexadécimal (« red » ou « #ff0000 »).\n"
+"Permet de définir la couleur de fond du nom de la connexion dans la barre d’"
+"outils de connexion de Remmina en mode plein écran."
 
 #: data/ui/remmina_preferences.glade:801
 msgid "#00FF00"
