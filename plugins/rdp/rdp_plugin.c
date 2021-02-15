@@ -2505,7 +2505,7 @@ static const RemminaProtocolSetting remmina_rdp_basic_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "username",	   N_("Username"),		  FALSE, NULL,		  NULL									      	},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD,   "password",	   N_("Password"),		  FALSE, NULL,		  NULL									      	},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "domain",	   N_("Domain"),		  FALSE, NULL,		  NULL									      	},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "left-handed", N_("Left-handed mouse support"), FALSE, NULL,		  N_("Swap left and right mouse buttons for lef-handed mouse support")	},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "left-handed", N_("Left-handed mouse support"), FALSE, NULL,		  N_("Swap left and right mouse buttons for left-handed mouse support")	},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "multimon",	   N_("Enable multi monitor"),	  TRUE, NULL,		  NULL										},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "span",	   N_("Span screen over multiple monitors"),	  TRUE, NULL,		  NULL						      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "monitorids",  N_("Monitor ID list"),	  FALSE, NULL,		  N_("Comma separated list of monitor IDs (0,1,2,4)") },
