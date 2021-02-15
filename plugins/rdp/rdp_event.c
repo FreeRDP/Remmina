@@ -419,7 +419,10 @@ static gboolean remmina_rdp_event_delayed_monitor_layout(RemminaProtocolWidget *
 					REMMINA_PLUGIN_DEBUG("EVNT MON LAYOUT - physicalWidth: %i", rdp_event.monitor_layout.physicalWidth);
 					rdp_event.monitor_layout.physicalHeight = rfi->settings->MonitorDefArray[i].attributes.physicalHeight;
 					REMMINA_PLUGIN_DEBUG("EVNT MON LAYOUT - PhysicalHeight: %i", rdp_event.monitor_layout.physicalHeight);
-					rdp_event.monitor_layout.desktopOrientation = rdp_event.monitor_layout.desktopOrientation;
+					if (rfi->settings->MonitorDefArray[i].attributes.orientation)
+						rdp_event.monitor_layout.desktopOrientation = rfi->settings->MonitorDefArray[i].attributes.orientation;
+					else
+						rdp_event.monitor_layout.desktopOrientation = rdp_event.monitor_layout.desktopOrientation;
 					REMMINA_PLUGIN_DEBUG("EVNT MON LAYOUT - desktopOrientation: %i", rdp_event.monitor_layout.desktopOrientation);
 					rdp_event.monitor_layout.desktopScaleFactor = rdp_event.monitor_layout.desktopScaleFactor;
 					REMMINA_PLUGIN_DEBUG("EVNT MON LAYOUT - ScaleFactorflag: %i", rdp_event.monitor_layout.desktopScaleFactor);
