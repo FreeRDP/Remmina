@@ -1320,10 +1320,16 @@ static void rcw_toolbar_fullscreen(GtkToolItem *toggle, RemminaConnectionWindow 
 	} else
 		REMMINA_DEBUG("Fullscreen on one monitor");
 
-	if (gtk_toggle_tool_button_get_active(GTK_TOGGLE_TOOL_BUTTON(toggle)))
-		rcw_switch_viewmode(cnnwin, cnnwin->priv->fss_view_mode);
+	if ((toggle != NULL && toggle == cnnwin->priv->toolitem_fullscreen))
+		if (gtk_toggle_tool_button_get_active(GTK_TOGGLE_TOOL_BUTTON(toggle)))
+			rcw_switch_viewmode(cnnwin, cnnwin->priv->fss_view_mode);
+		else
+			rcw_switch_viewmode(cnnwin, SCROLLED_WINDOW_MODE);
 	else
-		rcw_switch_viewmode(cnnwin, SCROLLED_WINDOW_MODE);
+		if (gtk_toggle_tool_button_get_active(GTK_TOGGLE_TOOL_BUTTON(cnnwin->priv->toolitem_multimon)))
+			rcw_switch_viewmode(cnnwin, cnnwin->priv->fss_view_mode);
+		else
+			rcw_switch_viewmode(cnnwin, SCROLLED_WINDOW_MODE);
 }
 
 static void rco_viewport_fullscreen_mode(GtkWidget *widget, RemminaConnectionObject *cnnobj)
@@ -1668,12 +1674,14 @@ static void rcw_toolbar_multi_monitor_mode(GtkToolItem *toggle, RemminaConnectio
 	if (!(cnnobj = rcw_get_visible_cnnobj(cnnwin))) return;
 
 	if (gtk_toggle_tool_button_get_active(GTK_TOGGLE_TOOL_BUTTON(toggle))) {
+		REMMINA_DEBUG("Saving multimon as 1");
 		remmina_file_set_int(cnnobj->remmina_file, "multimon", 1);
 		remmina_protocol_widget_call_feature_by_type(REMMINA_PROTOCOL_WIDGET(cnnobj->proto),
 				REMMINA_PROTOCOL_FEATURE_TYPE_MULTIMON, 0);
 		if (!gtk_toggle_tool_button_get_active(GTK_TOGGLE_TOOL_BUTTON(cnnwin->priv->toolitem_fullscreen)))
 			gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(cnnwin->priv->toolitem_fullscreen), TRUE);
 	} else {
+		REMMINA_DEBUG("Saving multimon as 0");
 		remmina_file_set_int(cnnobj->remmina_file, "multimon", 0);
 		rcw_toolbar_fullscreen(NULL, cnnwin);
 	}
