@@ -1800,7 +1800,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 						if (i == 0)
 							monitorids = g_strdup(rot_items[0]);
 						else
-							monitorids = g_strdup_printf(",%s", rot_items[0]);
+							monitorids = g_strdup_printf("%s,%s", monitorids, rot_items[0]);
 						rfi->settings->MonitorDefArray[atoi(rot_items[0])].attributes.orientation = atoi(rot_items[1]);
 						REMMINA_PLUGIN_DEBUG("Monitor n %d orientation: %d", i, rfi->settings->MonitorDefArray[atoi(rot_items[0])].attributes.orientation);
 					}
