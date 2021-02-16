@@ -2520,7 +2520,7 @@ static gchar network_tooltip[] =
 	   "If \"Auto-detect\" fails, choose the most appropriate option in the list.\n");
 
 static gchar monitorids_tooltip[] =
-	N_("Comma separated list of monitor IDs and dektop orientations:\n"
+	N_("Comma separated list of monitor IDs and desktop orientations:\n"
 	   "  • [<id>:<orientation-in-degrees>,]\n"
 	   "  • 0,1,2,3\n"
 	   "  • 0:270,1:90\n"
