@@ -1409,7 +1409,7 @@ remmina_ssh_init_from_file(RemminaSSH *ssh, RemminaFile *remminafile, gboolean i
 	REMMINA_DEBUG("ssh->ciphers: %s", ssh->ciphers);
 	REMMINA_DEBUG("ssh->hostkeytypes: %s", ssh->hostkeytypes);
 	REMMINA_DEBUG("ssh->proxycommand: %s", ssh->proxycommand);
-	REMMINA_DEBUG("ssh->stricthostkeycheck: %s", ssh->stricthostkeycheck);
+	REMMINA_DEBUG("ssh->stricthostkeycheck: %d", ssh->stricthostkeycheck);
 	REMMINA_DEBUG("ssh->compression: %s", ssh->compression);
 
 	/* Public/Private keys */
