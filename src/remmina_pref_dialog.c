@@ -340,8 +340,14 @@ void remmina_pref_on_dialog_destroy(GtkWidget *widget, gpointer user_data)
 	remmina_pref.color_pref.background = gdk_rgba_to_string(&color);
 	gtk_color_chooser_get_rgba(GTK_COLOR_CHOOSER(remmina_pref_dialog->colorbutton_cursor), &color);
 	remmina_pref.color_pref.cursor = gdk_rgba_to_string(&color);
-	gtk_color_chooser_get_rgba(GTK_COLOR_CHOOSER(remmina_pref_dialog->colorbutton_bold), &color);
-	remmina_pref.color_pref.bold = gdk_rgba_to_string(&color);
+	gtk_color_chooser_get_rgba(GTK_COLOR_CHOOSER(remmina_pref_dialog->colorbutton_cursor_foreground), &color);
+	remmina_pref.color_pref.cursor_foreground = gdk_rgba_to_string(&color);
+	gtk_color_chooser_get_rgba(GTK_COLOR_CHOOSER(remmina_pref_dialog->colorbutton_highlight), &color);
+	remmina_pref.color_pref.highlight = gdk_rgba_to_string(&color);
+	gtk_color_chooser_get_rgba(GTK_COLOR_CHOOSER(remmina_pref_dialog->colorbutton_highlight_foreground), &color);
+	remmina_pref.color_pref.highlight_foreground = gdk_rgba_to_string(&color);
+	gtk_color_chooser_get_rgba(GTK_COLOR_CHOOSER(remmina_pref_dialog->colorbutton_colorBD), &color);
+	remmina_pref.color_pref.colorBD = gdk_rgba_to_string(&color);
 	gtk_color_chooser_get_rgba(GTK_COLOR_CHOOSER(remmina_pref_dialog->colorbutton_color0), &color);
 	remmina_pref.color_pref.color0 = gdk_rgba_to_string(&color);
 	gtk_color_chooser_get_rgba(GTK_COLOR_CHOOSER(remmina_pref_dialog->colorbutton_color1), &color);
@@ -549,9 +555,16 @@ static void remmina_pref_dialog_init(void)
 	/* Cursor color option */
 	gdk_rgba_parse(&color, remmina_pref.color_pref.cursor);
 	gtk_color_chooser_set_rgba(GTK_COLOR_CHOOSER(remmina_pref_dialog->colorbutton_cursor), &color);
+	gdk_rgba_parse(&color, remmina_pref.color_pref.cursor_foreground);
+	gtk_color_chooser_set_rgba(GTK_COLOR_CHOOSER(remmina_pref_dialog->colorbutton_cursor_foreground), &color);
+	/* Highlight color option */
+	gdk_rgba_parse(&color, remmina_pref.color_pref.highlight);
+	gtk_color_chooser_set_rgba(GTK_COLOR_CHOOSER(remmina_pref_dialog->colorbutton_highlight), &color);
+	gdk_rgba_parse(&color, remmina_pref.color_pref.highlight_foreground);
+	gtk_color_chooser_set_rgba(GTK_COLOR_CHOOSER(remmina_pref_dialog->colorbutton_highlight_foreground), &color);
 	/* Bold color option */
-	gdk_rgba_parse(&color, remmina_pref.color_pref.bold);
-	gtk_color_chooser_set_rgba(GTK_COLOR_CHOOSER(remmina_pref_dialog->colorbutton_bold), &color);
+	gdk_rgba_parse(&color, remmina_pref.color_pref.colorBD);
+	gtk_color_chooser_set_rgba(GTK_COLOR_CHOOSER(remmina_pref_dialog->colorbutton_colorBD), &color);
 	/* 16 colors */
 	gdk_rgba_parse(&color, remmina_pref.color_pref.color0);
 	gtk_color_chooser_set_rgba(GTK_COLOR_CHOOSER(remmina_pref_dialog->colorbutton_color0), &color);
@@ -589,7 +602,10 @@ static void remmina_pref_dialog_init(void)
 #if !VTE_CHECK_VERSION(0, 38, 0)
 	/* Disable color scheme buttons if old version of VTE */
 	gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->colorbutton_cursor), FALSE);
-	gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->colorbutton_bold), FALSE);
+	gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->colorbutton_cursor_foreground), FALSE);
+	gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->colorbutton_highlight), FALSE);
+	gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->colorbutton_highlight_foreground), FALSE);
+	gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->colorbutton_colorBD), FALSE);
 	gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->colorbutton_color0), FALSE);
 	gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->colorbutton_color1), FALSE);
 	gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->colorbutton_color2), FALSE);
@@ -753,8 +769,11 @@ GtkDialog* remmina_pref_dialog_new(gint default_tab, GtkWindow *parent)
 	remmina_pref_dialog->colorbutton_background = GTK_COLOR_BUTTON(GET_OBJECT("colorbutton_background"));
 	remmina_pref_dialog->label_terminal_cursor_color = GTK_LABEL(GET_OBJECT("label_terminal_cursor_color"));
 	remmina_pref_dialog->colorbutton_cursor = GTK_COLOR_BUTTON(GET_OBJECT("colorbutton_cursor"));
+	remmina_pref_dialog->colorbutton_cursor_foreground = GTK_COLOR_BUTTON(GET_OBJECT("colorbutton_cursor_foreground"));
+	remmina_pref_dialog->colorbutton_highlight = GTK_COLOR_BUTTON(GET_OBJECT("colorbutton_highlight"));
+	remmina_pref_dialog->colorbutton_highlight_foreground = GTK_COLOR_BUTTON(GET_OBJECT("colorbutton_highlight_foreground"));
 	remmina_pref_dialog->label_terminal_bold_color = GTK_LABEL(GET_OBJECT("label_terminal_bold_color"));
-	remmina_pref_dialog->colorbutton_bold = GTK_COLOR_BUTTON(GET_OBJECT("colorbutton_bold"));
+	remmina_pref_dialog->colorbutton_colorBD = GTK_COLOR_BUTTON(GET_OBJECT("colorbutton_colorBD"));
 	remmina_pref_dialog->label_terminal_normal_colors = GTK_LABEL(GET_OBJECT("label_terminal_normal_colors"));
 	remmina_pref_dialog->colorbutton_color0 = GTK_COLOR_BUTTON(GET_OBJECT("colorbutton_color0"));
 	remmina_pref_dialog->colorbutton_color1 = GTK_COLOR_BUTTON(GET_OBJECT("colorbutton_color1"));
