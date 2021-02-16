@@ -2011,7 +2011,7 @@ It changes the connection name background colour, in the Remmina connection tool
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="halign">start</property>
-                    <signal name="activate" handler="remmina_pref_dialog_vte_font_on_toggled" swapped="no"/>
+                    <signal name="notify::active" handler="remmina_pref_dialog_vte_font_on_toggled" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left-attach">1</property>
