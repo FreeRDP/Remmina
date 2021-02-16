@@ -16,8 +16,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-02-16 06:47+0000\n"
-"PO-Revision-Date: 2021-02-15 15:28+0000\n"
+"POT-Creation-Date: 2021-02-16 15:13+0000\n"
+"PO-Revision-Date: 2021-02-16 15:13+0000\n"
 "Last-Translator: Davy Defaud <davy.defaud@free.fr>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/remmina/remmina/"
 "fr/>\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.5-dev\n"
+"X-Generator: Weblate 4.5\n"
 
 #: src/remmina_protocol_widget.c:280
 msgid "Connect via SSH from a new terminal"
@@ -78,7 +78,7 @@ msgid "Connecting to %s via SSH…"
 msgstr "Connexion à « %s » via SSH…"
 
 #: src/remmina_protocol_widget.c:1457 src/remmina_protocol_widget.c:1476
-#: src/remmina_ssh_plugin.c:1257 src/remmina_sftp_plugin.c:309
+#: src/remmina_ssh_plugin.c:1287 src/remmina_sftp_plugin.c:309
 #: src/remmina_sftp_plugin.c:344 src/remmina_file_editor.c:997
 #: plugins/www/www_plugin.c:872 plugins/rdp/rdp_plugin.c:2548
 #: data/ui/remmina_unlock.glade:116 data/ui/remmina_mpc.glade:236
@@ -176,18 +176,18 @@ msgid "Configure the keystrokes"
 msgstr "Configurer les entrées clavier"
 
 #. TRANSLATORS: Do not translate libsodium, is the name of a library
-#: src/remmina_pref_dialog.c:480
+#: src/remmina_pref_dialog.c:486
 msgid "libsodium >= 1.9.0 is required to use master password"
 msgstr ""
 "L’utilisation d’un mot de passe principal nécessite libsodium 1.9.0 ou "
 "supérieur"
 
-#: src/remmina_pref_dialog.c:783
+#: src/remmina_pref_dialog.c:802
 msgid "Picking a terminal colouring file replaces the file: "
 msgstr ""
 "Le choix d’un fichier de thème de terminal remplace celui sélectionné : "
 
-#: src/remmina_pref_dialog.c:787
+#: src/remmina_pref_dialog.c:806
 msgid ""
 "This file contains the \"Custom\" terminal colour scheme selectable from the "
 "\"Advanced\" tab of terminal connections and editable in the \"Terminal\" "
@@ -235,75 +235,75 @@ msgstr "Réduire la taille de la police (<hôte> + ⇟)"
 msgid "Find text (host+G)"
 msgstr "Recherche de texte (<hôte> + G)"
 
-#: src/remmina_ssh_plugin.c:1258 src/remmina_ssh_plugin.c:1362
+#: src/remmina_ssh_plugin.c:1288 src/remmina_ssh_plugin.c:1392
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:346
 #: src/remmina_file_editor.c:349 src/remmina_file_editor.c:356
 #: plugins/nx/nx_plugin.c:729
 msgid "SSH identity file"
 msgstr "Fichier d’identité SSH"
 
-#: src/remmina_ssh_plugin.c:1259 src/remmina_sftp_plugin.c:311
+#: src/remmina_ssh_plugin.c:1289 src/remmina_sftp_plugin.c:311
 msgid "SSH agent"
 msgstr "Agent SSH"
 
-#: src/remmina_ssh_plugin.c:1260 src/remmina_sftp_plugin.c:312
+#: src/remmina_ssh_plugin.c:1290 src/remmina_sftp_plugin.c:312
 #: src/remmina_file_editor.c:1010
 msgid "Public key (automatic)"
 msgstr "Clef publique (automatique)"
 
-#: src/remmina_ssh_plugin.c:1261 src/remmina_sftp_plugin.c:313
+#: src/remmina_ssh_plugin.c:1291 src/remmina_sftp_plugin.c:313
 msgid "Kerberos (GSSAPI)"
 msgstr "Kerberos (GSSAPI)"
 
-#: src/remmina_ssh_plugin.c:1336 data/ui/remmina_main.glade:183
+#: src/remmina_ssh_plugin.c:1366 data/ui/remmina_main.glade:183
 msgid "Copy"
 msgstr "Copier"
 
-#: src/remmina_ssh_plugin.c:1336
+#: src/remmina_ssh_plugin.c:1366
 msgid "_Copy"
 msgstr "_Copier"
 
-#: src/remmina_ssh_plugin.c:1337
+#: src/remmina_ssh_plugin.c:1367
 msgid "Paste"
 msgstr "Coller"
 
-#: src/remmina_ssh_plugin.c:1337
+#: src/remmina_ssh_plugin.c:1367
 msgid "_Paste"
 msgstr "C_oller"
 
-#: src/remmina_ssh_plugin.c:1338
+#: src/remmina_ssh_plugin.c:1368
 msgid "Select all"
 msgstr "Sélectionner tout"
 
-#: src/remmina_ssh_plugin.c:1338
+#: src/remmina_ssh_plugin.c:1368
 msgid "_Select all"
 msgstr "_Sélectionner tout"
 
-#: src/remmina_ssh_plugin.c:1339 data/ui/remmina_preferences.glade:2388
+#: src/remmina_ssh_plugin.c:1369 data/ui/remmina_preferences.glade:2388
 msgid "Increase font size"
 msgstr "Augmenter la taille de la police"
 
-#: src/remmina_ssh_plugin.c:1339
+#: src/remmina_ssh_plugin.c:1369
 msgid "_Increase font size"
 msgstr "_Réduire la taille de la police"
 
-#: src/remmina_ssh_plugin.c:1340 data/ui/remmina_preferences.glade:2401
+#: src/remmina_ssh_plugin.c:1370 data/ui/remmina_preferences.glade:2401
 msgid "Decrease font size"
 msgstr "Réduire la taille de la police"
 
-#: src/remmina_ssh_plugin.c:1340
+#: src/remmina_ssh_plugin.c:1370
 msgid "_Decrease font size"
 msgstr "_Réduire la taille de la police"
 
-#: src/remmina_ssh_plugin.c:1341
+#: src/remmina_ssh_plugin.c:1371
 msgid "Find text"
 msgstr "Rechercher un texte"
 
-#: src/remmina_ssh_plugin.c:1341
+#: src/remmina_ssh_plugin.c:1371
 msgid "_Find text"
 msgstr "_Recherche de texte"
 
-#: src/remmina_ssh_plugin.c:1359 src/remmina_message_panel.c:330
+#: src/remmina_ssh_plugin.c:1389 src/remmina_message_panel.c:330
 #: src/remmina_sftp_plugin.c:343 src/remmina_file_editor.c:988
 #: plugins/www/www_plugin.c:871 plugins/vnc/vnc_plugin.c:1879
 #: plugins/vnc/vnc_plugin.c:1899 plugins/rdp/rdp_plugin.c:2547
@@ -311,27 +311,27 @@ msgstr "_Recherche de texte"
 msgid "Username"
 msgstr "Nom d’utilisateur"
 
-#: src/remmina_ssh_plugin.c:1360 plugins/vnc/vnc_plugin.c:1880
+#: src/remmina_ssh_plugin.c:1390 plugins/vnc/vnc_plugin.c:1880
 #: plugins/vnc/vnc_plugin.c:1900 plugins/spice/spice_plugin.c:576
 #: plugins/nx/nx_plugin.c:731
 msgid "User password"
 msgstr "Mot de passe de l’utilisateur"
 
-#: src/remmina_ssh_plugin.c:1361 src/remmina_sftp_plugin.c:345
+#: src/remmina_ssh_plugin.c:1391 src/remmina_sftp_plugin.c:345
 msgid "Authentication type"
 msgstr "Type d’authentification"
 
-#: src/remmina_ssh_plugin.c:1363 src/remmina_sftp_plugin.c:347
+#: src/remmina_ssh_plugin.c:1393 src/remmina_sftp_plugin.c:347
 #: src/remmina_file_editor.c:1019
 msgid "Password to unlock private key"
 msgstr "Mot de passe de déverrouillage de la clef privée"
 
-#: src/remmina_ssh_plugin.c:1364 plugins/xdmcp/xdmcp_plugin.c:370
+#: src/remmina_ssh_plugin.c:1394 plugins/xdmcp/xdmcp_plugin.c:370
 #: plugins/rdp/rdp_plugin.c:2587 plugins/nx/nx_plugin.c:734
 msgid "Start-up program"
 msgstr "Programme de démarrage"
 
-#: src/remmina_ssh_plugin.c:1369
+#: src/remmina_ssh_plugin.c:1399
 msgid ""
 "The filename can use the following placeholders:\n"
 "\n"
@@ -355,59 +355,59 @@ msgstr ""
 "  • <tt>%d</tt>, qui sera remplacé par l’horodatage local au format "
 "ISO 8601.\n"
 
-#: src/remmina_ssh_plugin.c:1391
+#: src/remmina_ssh_plugin.c:1421
 msgid "Terminal color scheme"
 msgstr "Palette de couleurs du terminal"
 
-#: src/remmina_ssh_plugin.c:1392
+#: src/remmina_ssh_plugin.c:1422
 msgid "Character set"
 msgstr "Jeu de caractères"
 
-#: src/remmina_ssh_plugin.c:1393 src/remmina_sftp_plugin.c:348
+#: src/remmina_ssh_plugin.c:1423 src/remmina_sftp_plugin.c:348
 msgid "SSH Proxy Command"
 msgstr "Commande mandataire SSH"
 
-#: src/remmina_ssh_plugin.c:1394
+#: src/remmina_ssh_plugin.c:1424
 msgid "KEX (Key Exchange) algorithms"
 msgstr "Algorithmes d’échange de clefs (KEX)"
 
-#: src/remmina_ssh_plugin.c:1395
+#: src/remmina_ssh_plugin.c:1425
 msgid "Symmetric cipher client to server"
 msgstr "Chiffrement symétrique client‐serveur"
 
-#: src/remmina_ssh_plugin.c:1396
+#: src/remmina_ssh_plugin.c:1426
 msgid "Preferred server host key types"
 msgstr "Types de clef d’hôte préférés"
 
-#: src/remmina_ssh_plugin.c:1397
+#: src/remmina_ssh_plugin.c:1427
 msgid "Folder for SSH session log"
 msgstr "Dossier du journal de la session SSH"
 
-#: src/remmina_ssh_plugin.c:1398
+#: src/remmina_ssh_plugin.c:1428
 msgid "Filename for SSH session log"
 msgstr "Nom de fichier du journal de la session SSH"
 
-#: src/remmina_ssh_plugin.c:1399
+#: src/remmina_ssh_plugin.c:1429
 msgid "Log SSH session when exiting Remmina"
 msgstr "Enregistrer le journal de la session SSH à la fermeture de Remmina"
 
-#: src/remmina_ssh_plugin.c:1400
+#: src/remmina_ssh_plugin.c:1430
 msgid "Audible terminal bell"
 msgstr "Bip du terminal"
 
-#: src/remmina_ssh_plugin.c:1401
+#: src/remmina_ssh_plugin.c:1431
 msgid "SSH compression"
 msgstr "Compression SSH"
 
-#: src/remmina_ssh_plugin.c:1402
+#: src/remmina_ssh_plugin.c:1432
 msgid "Don't remember passwords"
 msgstr "Ne pas enregistrer les mots de passe"
 
-#: src/remmina_ssh_plugin.c:1403
+#: src/remmina_ssh_plugin.c:1433
 msgid "Strict host key checking"
 msgstr "Vérification stricte des clefs d’hôte"
 
-#: src/remmina_ssh_plugin.c:1417
+#: src/remmina_ssh_plugin.c:1447
 msgid "SSH - Secure Shell"
 msgstr "SSH — Shell sécurisé"
 
@@ -2318,15 +2318,6 @@ msgstr ""
 "  • sys:alsa"
 
 #: plugins/rdp/rdp_plugin.c:2497
-#, fuzzy
-#| msgid ""
-#| "Options for redirection of audio ouput:\n"
-#| "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
-#| "    [channel:<channel>] Audio output\n"
-#| "  • sys:pulse\n"
-#| "  • format:1\n"
-#| "  • sys:oss,dev:1,format:1\n"
-#| "  • sys:alsa"
 msgid ""
 "Options for redirection of audio output:\n"
 "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
@@ -2338,7 +2329,7 @@ msgid ""
 msgstr ""
 "Options de redirection de la sortie audio :\n"
 "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<fréq>,]\n"
-"    [channel:<channel>] sortie audio\n"
+"    [channel:<canal>] sortie audio\n"
 "  • sys:pulse\n"
 "  • format:1\n"
 "  • sys:oss,dev:1,format:1\n"
@@ -2391,6 +2382,18 @@ msgid ""
 "  • 270 (portrait flipped)\n"
 "\n"
 msgstr ""
+"Liste d’identifiants de moniteur et d’orientations d’affichage :\n"
+" • <ident. 1>[:<orientation en degrés>][,<ident. 2>:<orientation en degrés>]"
+"…\n"
+" • 0,1,2,3\n"
+" • 0:270,1:90\n"
+"\n"
+"Les orientations sont spécifiées en degrés, les valeurs possibles sont :\n"
+" • 0 (paysage) ;\n"
+" • 90 (portrait) ;\n"
+" • 180 (paysage renversé) ;\n"
+" • 270 (portrait renversé).\n"
+"\n"
 
 #: plugins/rdp/rdp_plugin.c:2550
 msgid "Left-handed mouse support"
@@ -3411,17 +3414,12 @@ msgid "“Grab all keyboard events” status colour"
 msgstr "Couleur pour l’état « Capturer les événements du clavier »"
 
 #: data/ui/remmina_preferences.glade:796
-#, fuzzy
-#| msgid ""
-#| "Hexadecimal or color names (red, #ff0000)\n"
-#| "It changes the connection name background colour, in the remmina "
-#| "connection toolbar when in full screen"
 msgid ""
 "Hexadecimal or color names (red, #ff0000).\n"
 "It changes the connection name background colour, in the Remmina connection "
 "toolbar when in full screen."
 msgstr ""
-"Nom de couleur ou code hexadécimal (« red » ou « #ff0000 »).\n"
+"Nom de couleur en anglais ou code hexadécimal (« red » ou « #ff0000 »).\n"
 "Permet de définir la couleur de fond du nom de la connexion dans la barre "
 "d’outils de connexion de Remmina en mode plein écran."
 
@@ -3730,7 +3728,6 @@ msgstr "Couleurs normales"
 
 #: data/ui/remmina_preferences.glade:2304
 #: data/ui/remmina_preferences.glade:2318
-#: data/ui/remmina_preferences.glade:2494
 msgid "Cursor colour"
 msgstr "Couleur du curseur"
 
@@ -3749,10 +3746,32 @@ msgid "Search text"
 msgstr "Recherche de texte"
 
 #: data/ui/remmina_preferences.glade:2480
+#: data/ui/remmina_preferences.glade:2494
 msgid "Bold colour"
 msgstr "Couleur du texte en gras"
 
-#: data/ui/remmina_preferences.glade:2513
+#: data/ui/remmina_preferences.glade:2508
+#: data/ui/remmina_preferences.glade:2548
+#, fuzzy
+#| msgid "Bright colours"
+msgid "Highlight colour"
+msgstr "Couleurs claires"
+
+#: data/ui/remmina_preferences.glade:2521
+#: data/ui/remmina_preferences.glade:2563
+#, fuzzy
+#| msgid "Foreground colour"
+msgid "Highlight foreground colour"
+msgstr "Couleur de premier plan"
+
+#: data/ui/remmina_preferences.glade:2534
+#: data/ui/remmina_preferences.glade:2578
+#, fuzzy
+#| msgid "Foreground colour"
+msgid "Cursor foreground colour"
+msgstr "Couleur de premier plan"
+
+#: data/ui/remmina_preferences.glade:2597
 msgid "Terminal"
 msgstr "Terminal"
 
