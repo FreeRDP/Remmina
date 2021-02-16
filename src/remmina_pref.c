@@ -181,7 +181,10 @@ void remmina_pref_file_load_colors(GKeyFile *gkeyfile, RemminaColorPref *color_p
 	} colors[] = {
 		{ "background", &color_pref->background, "#d5ccba" },
 		{ "cursor",	&color_pref->cursor,	 "#45373c" },
-		{ "bold",	&color_pref->bold,	 "#45373c" },
+		{ "cursor_foreground",	&color_pref->cursor_foreground,	 "#d5ccba" },
+		{ "highlight",	&color_pref->highlight,	 "#45373c" },
+		{ "highlight_foreground",	&color_pref->highlight_foreground,	 "#d5ccba" },
+		{ "colorBD",	&color_pref->colorBD,	 "#45373c" },
 		{ "foreground", &color_pref->foreground, "#45373c" },
 		{ "color0",	&color_pref->color0,	 "#20111b" },
 		{ "color1",	&color_pref->color1,	 "#be100e" },
@@ -837,7 +840,10 @@ gboolean remmina_pref_save(void)
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "vte_lines", remmina_pref.vte_lines);
 	g_key_file_set_string(gkeyfile, "ssh_colors", "background", remmina_pref.color_pref.background ? remmina_pref.color_pref.background : "");
 	g_key_file_set_string(gkeyfile, "ssh_colors", "cursor", remmina_pref.color_pref.cursor ? remmina_pref.color_pref.cursor : "");
-	g_key_file_set_string(gkeyfile, "ssh_colors", "bold", remmina_pref.color_pref.bold ? remmina_pref.color_pref.bold : "");
+	g_key_file_set_string(gkeyfile, "ssh_colors", "cursor_foreground", remmina_pref.color_pref.cursor_foreground ? remmina_pref.color_pref.cursor_foreground : "");
+	g_key_file_set_string(gkeyfile, "ssh_colors", "highlight", remmina_pref.color_pref.highlight ? remmina_pref.color_pref.highlight : "");
+	g_key_file_set_string(gkeyfile, "ssh_colors", "highlight_foreground", remmina_pref.color_pref.highlight_foreground ? remmina_pref.color_pref.highlight_foreground : "");
+	g_key_file_set_string(gkeyfile, "ssh_colors", "colorBD", remmina_pref.color_pref.colorBD ? remmina_pref.color_pref.colorBD : "");
 	g_key_file_set_string(gkeyfile, "ssh_colors", "foreground", remmina_pref.color_pref.foreground ? remmina_pref.color_pref.foreground : "");
 	g_key_file_set_string(gkeyfile, "ssh_colors", "color0", remmina_pref.color_pref.color0 ? remmina_pref.color_pref.color0 : "");
 	g_key_file_set_string(gkeyfile, "ssh_colors", "color1", remmina_pref.color_pref.color1 ? remmina_pref.color_pref.color1 : "");
