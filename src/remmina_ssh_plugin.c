@@ -79,9 +79,9 @@
 
 enum color_schemes { LINUX, TANGO, GRUVBOX, SOLARIZED_DARK, SOLARIZED_LIGHT, XTERM, CUSTOM };
 
-/** 16 color palettes in GdkRGBA format (red, green, blue, alpha).
- * Text displayed in the first 8 colors (0-7) is meek (uses thin strokes).
- * Text displayed in the second 8 colors (8-15) is bold (uses thick strokes).
+/** 16 colour palettes in GdkRGBA format (red, green, blue, alpha).
+ * Text displayed in the first 8 colours (0-7) is meek (uses thin strokes).
+ * Text displayed in the second 8 colours (8-15) is bold (uses thick strokes).
  **/
 const GdkRGBA linux_palette[PALETTE_SIZE] = {
 	{ 0,	    0,	      0,	1 },
@@ -1418,7 +1418,7 @@ static gchar log_tips[] =
  */
 static const RemminaProtocolSetting remmina_ssh_advanced_settings[] =
 {
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT, "ssh_color_scheme",	  N_("Terminal color scheme"),		      FALSE, ssh_terminal_palette, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT, "ssh_color_scheme",	  N_("Terminal colour scheme"),		      FALSE, ssh_terminal_palette, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT, "ssh_charset",		  N_("Character set"),			      FALSE, ssh_charset_list,	   NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	"ssh_proxycommand",	  N_("SSH Proxy Command"),		      FALSE, NULL,		   NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	"ssh_kex_algorithms",	  N_("KEX (Key Exchange) algorithms"),	      FALSE, NULL,		   NULL },
