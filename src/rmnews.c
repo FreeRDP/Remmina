@@ -145,7 +145,7 @@ void rmnews_defaultcl_on_click()
 
 	for (i = 0; supported_mime_types[i]; i++) {
 		if (!g_app_info_set_as_default_for_type(info, supported_mime_types[i], &error))
-			g_warning("Failed to set '%s' as the default application for secondary content type '%s': %s",
+			REMMINA_DEBUG("Failed to set '%s' as the default application for secondary content type '%s': %s",
 				  g_app_info_get_name(info), supported_mime_types[i], error->message);
 		else
 			REMMINA_DEBUG("Set '%s' as the default application for '%s'",
@@ -161,7 +161,7 @@ static gchar *rmnews_get_file_contents(gchar *path)
 
 	if (g_file_get_contents(path, &content, &size, NULL)) {
 		if (!g_utf8_validate(content, size, NULL)) {
-			g_warning("%s content is not UTF-8", path);
+			REMMINA_DEBUG("%s content is not UTF-8", path);
 			g_free(content);
 			content = NULL;
 		}
@@ -258,7 +258,7 @@ static void rmnews_get_url_cb(SoupSession *session, SoupMessage *msg, gpointer d
 	GDateTime *gdt;
 	gint64 unixts;
 
-	g_info("Status code %d", msg->status_code);
+	REMMINA_DEBUG("Status code %d", msg->status_code);
 
 	name = soup_message_get_uri(msg)->path;
 
@@ -267,22 +267,28 @@ static void rmnews_get_url_cb(SoupSession *session, SoupMessage *msg, gpointer d
 	g_date_time_unref(gdt);
 
 	if (SOUP_STATUS_IS_CLIENT_ERROR(msg->status_code)) {
-		g_info("Status 404 - Release file not available");
+		REMMINA_DEBUG("Status 404 - Release file not available");
 		remmina_pref.periodic_rmnews_last_get = unixts;
+		REMMINA_DEBUG ("periodic_rmnews_last_get set to %ld", remmina_pref.periodic_rmnews_last_get);
+		REMMINA_DEBUG ("Saving preferences");
 		remmina_pref_save();
 		return;
 	}
 
 	if (SOUP_STATUS_IS_SERVER_ERROR(msg->status_code)) {
-		g_info("Server not available");
+		REMMINA_DEBUG("Server not available");
 		remmina_pref.periodic_rmnews_last_get = unixts;
+		REMMINA_DEBUG ("periodic_rmnews_last_get set to %ld", remmina_pref.periodic_rmnews_last_get);
+		REMMINA_DEBUG ("Saving preferences");
 		remmina_pref_save();
 		return;
 	}
 
 	if (SOUP_STATUS_IS_TRANSPORT_ERROR(msg->status_code)) {
-		g_info("Transport Error");
+		REMMINA_DEBUG("Transport Error");
 		remmina_pref.periodic_rmnews_last_get = unixts;
+		REMMINA_DEBUG ("periodic_rmnews_last_get set to %ld", remmina_pref.periodic_rmnews_last_get);
+		REMMINA_DEBUG ("Saving preferences");
 		remmina_pref_save();
 		return;
 	}
@@ -291,25 +297,27 @@ static void rmnews_get_url_cb(SoupSession *session, SoupMessage *msg, gpointer d
 		GTlsCertificateFlags flags;
 
 		if (soup_message_get_https_status(msg, NULL, &flags))
-			g_warning("%s: %d %s (0x%x)\n", name, msg->status_code, msg->reason_phrase, flags);
+			REMMINA_DEBUG("%s: %d %s (0x%x)\n", name, msg->status_code, msg->reason_phrase, flags);
 		else
-			g_warning("%s: %d %s (no handshake status)\n", name, msg->status_code, msg->reason_phrase);
+			REMMINA_DEBUG("%s: %d %s (no handshake status)\n", name, msg->status_code, msg->reason_phrase);
 		remmina_pref.periodic_rmnews_last_get = unixts;
+		REMMINA_DEBUG ("periodic_rmnews_last_get set to %ld", remmina_pref.periodic_rmnews_last_get);
+		REMMINA_DEBUG ("Saving preferences");
 		remmina_pref_save();
 		return;
 	} else if (SOUP_STATUS_IS_TRANSPORT_ERROR(msg->status_code)) {
-		g_warning("%s: %d %s\n", name, msg->status_code, msg->reason_phrase);
+		REMMINA_DEBUG("%s: %d %s\n", name, msg->status_code, msg->reason_phrase);
 	}
 
 	if (SOUP_STATUS_IS_REDIRECTION(msg->status_code)) {
 		header = soup_message_headers_get_one(msg->response_headers,
 						      "Location");
-		g_warning("Redirection detected");
+		REMMINA_DEBUG("Redirection detected");
 		if (header) {
 			SoupURI *uri;
 			char *uri_string;
 
-			g_info("  -> %s\n", header);
+			REMMINA_DEBUG("  -> %s\n", header);
 
 			uri = soup_uri_new_with_base(soup_message_get_uri(msg), header);
 			uri_string = soup_uri_to_string(uri, FALSE);
@@ -318,27 +326,34 @@ static void rmnews_get_url_cb(SoupSession *session, SoupMessage *msg, gpointer d
 			soup_uri_free(uri);
 		}
 		remmina_pref.periodic_rmnews_last_get = unixts;
+		REMMINA_DEBUG ("periodic_rmnews_last_get set to %ld", remmina_pref.periodic_rmnews_last_get);
+		REMMINA_DEBUG ("Saving preferences");
 		remmina_pref_save();
 		return;
 	} else if (SOUP_STATUS_IS_SUCCESSFUL(msg->status_code)) {
-		g_info("Status 200");
+		REMMINA_DEBUG("Status 200");
 		if (output_file_path) {
-			g_info("Calculating the SHA1 of the local file");
+			REMMINA_DEBUG("Calculating the SHA1 of the local file");
 			filesha = remmina_sha1_file(output_file_path);
-			g_info("SHA1 is %s", filesha);
+			REMMINA_DEBUG("SHA1 is %s", filesha);
 			if (filesha == NULL || filesha[0] == 0)
 				filesha = "0\0";
-			g_info("Opening %s output file for writing", output_file_path);
+			REMMINA_DEBUG("Opening %s output file for writing", output_file_path);
 			output_file = fopen(output_file_path, "w");
 			if (!output_file) {
 				g_printerr("Error trying to create file %s.\n", output_file_path);
 				remmina_pref.periodic_rmnews_last_get = unixts;
+				REMMINA_DEBUG ("periodic_rmnews_last_get set to %ld", remmina_pref.periodic_rmnews_last_get);
+				REMMINA_DEBUG ("Saving preferences");
 				remmina_pref_save();
+				g_free(filesha); filesha = NULL;
 				return;
 			}
 		} else {
-			g_warning("Cannot open output file for writing, because output_file_path is NULL");
+			REMMINA_DEBUG("Cannot open output file for writing, because output_file_path is NULL");
 			remmina_pref.periodic_rmnews_last_get = unixts;
+			REMMINA_DEBUG ("periodic_rmnews_last_get set to %ld", remmina_pref.periodic_rmnews_last_get);
+			REMMINA_DEBUG ("Saving preferences");
 			remmina_pref_save();
 			return;
 		}
@@ -352,10 +367,12 @@ static void rmnews_get_url_cb(SoupSession *session, SoupMessage *msg, gpointer d
 				fclose(output_file);
 				filesha_after = remmina_sha1_file(output_file_path);
 			}
-			g_info("SHA1 after download is %s", filesha_after);
+			REMMINA_DEBUG("SHA1 after download is %s", filesha_after);
 			if (g_strcmp0(filesha, filesha_after) != 0) {
-				g_info("SHA1 differs, we show the news and reset the counter");
+				REMMINA_DEBUG("SHA1 differs, we show the news and reset the counter");
 				remmina_pref.periodic_rmnews_last_get = 0;
+				REMMINA_DEBUG ("periodic_rmnews_last_get set to %ld", remmina_pref.periodic_rmnews_last_get);
+				REMMINA_DEBUG ("Saving preferences");
 				GtkWindow *parent = remmina_main_get_window();
 				if (!kioskmode && kioskmode == FALSE)
 					rmnews_show_news(parent);
@@ -365,6 +382,7 @@ static void rmnews_get_url_cb(SoupSession *session, SoupMessage *msg, gpointer d
 			/* Increase counter with number of successful GETs */
 			remmina_pref.periodic_rmnews_get_count = remmina_pref.periodic_rmnews_get_count + 1;
 			remmina_pref_save();
+			g_free(filesha); filesha = NULL;
 		}
 	}
 	g_object_unref(msg);
@@ -442,13 +460,15 @@ void rmnews_get_news()
 	else
 		output_file_path = g_build_path("/", cachedir, "latest_news.md", NULL);
 
-	g_info("Output file set to %s", output_file_path);
+	REMMINA_DEBUG("Output file set to %s", output_file_path);
 
 	if (remmina_pref.periodic_rmnews_last_get == 0 &&
 	    remmina_pref.periodic_rmnews_get_count == 0) {
 		g_file_set_contents(output_file_path, "", 0, NULL);
 		/* Just a symolic date */
 		remmina_pref.periodic_rmnews_last_get = 191469343000;
+		REMMINA_DEBUG ("periodic_rmnews_last_get set to %ld", remmina_pref.periodic_rmnews_last_get);
+		REMMINA_DEBUG ("Preferences NOT saved");
 	}
 
 	fd = g_open(output_file_path, O_RDWR | O_CREAT, S_IRUSR | S_IWUSR);
@@ -460,14 +480,14 @@ void rmnews_get_news()
 	}
 	g_close(fd, NULL);
 
-	g_info("Output file %s created successfully", output_file_path);
+	REMMINA_DEBUG("Output file %s created successfully", output_file_path);
 
 	if (output_file_path) {
 	} else {
-		g_warning("Output file set to %s", output_file_path);
+		REMMINA_DEBUG("Output file set to %s", output_file_path);
 	}
 
-	g_info("Gathering news");
+	REMMINA_DEBUG("Gathering news");
 	session = g_object_new(SOUP_TYPE_SESSION,
 			       SOUP_SESSION_ADD_FEATURE_BY_TYPE, SOUP_TYPE_CONTENT_DECODER,
 			       SOUP_SESSION_ADD_FEATURE_BY_TYPE, SOUP_TYPE_COOKIE_JAR,
