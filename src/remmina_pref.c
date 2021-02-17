@@ -179,29 +179,29 @@ void remmina_pref_file_load_colors(GKeyFile *gkeyfile, RemminaColorPref *color_p
 		char **		setting;
 		char *		fallback;
 	} colors[] = {
-		{ "background", &color_pref->background, "#d5ccba" },
-		{ "cursor",	&color_pref->cursor,	 "#45373c" },
-		{ "cursor_foreground",	&color_pref->cursor_foreground,	 "#d5ccba" },
-		{ "highlight",	&color_pref->highlight,	 "#45373c" },
-		{ "highlight_foreground",	&color_pref->highlight_foreground,	 "#d5ccba" },
-		{ "colorBD",	&color_pref->colorBD,	 "#45373c" },
-		{ "foreground", &color_pref->foreground, "#45373c" },
-		{ "color0",	&color_pref->color0,	 "#20111b" },
-		{ "color1",	&color_pref->color1,	 "#be100e" },
-		{ "color2",	&color_pref->color2,	 "#858162" },
-		{ "color3",	&color_pref->color3,	 "#eaa549" },
-		{ "color4",	&color_pref->color4,	 "#426a79" },
-		{ "color5",	&color_pref->color5,	 "#97522c" },
-		{ "color6",	&color_pref->color6,	 "#989a9c" },
-		{ "color7",	&color_pref->color7,	 "#968c83" },
-		{ "color8",	&color_pref->color8,	 "#5e5252" },
-		{ "color9",	&color_pref->color9,	 "#be100e" },
-		{ "color10",	&color_pref->color10,	 "#858162" },
-		{ "color11",	&color_pref->color11,	 "#eaa549" },
-		{ "color12",	&color_pref->color12,	 "#426a79" },
-		{ "color13",	&color_pref->color13,	 "#97522c" },
-		{ "color14",	&color_pref->color14,	 "#989a9c" },
-		{ "color15",	&color_pref->color15,	 "#d5ccba" },
+		{ "background",		  &color_pref->background,	     "#d5ccba" },
+		{ "cursor",		  &color_pref->cursor,		     "#45373c" },
+		{ "cursor_foreground",	  &color_pref->cursor_foreground,    "#d5ccba" },
+		{ "highlight",		  &color_pref->highlight,	     "#45373c" },
+		{ "highlight_foreground", &color_pref->highlight_foreground, "#d5ccba" },
+		{ "colorBD",		  &color_pref->colorBD,		     "#45373c" },
+		{ "foreground",		  &color_pref->foreground,	     "#45373c" },
+		{ "color0",		  &color_pref->color0,		     "#20111b" },
+		{ "color1",		  &color_pref->color1,		     "#be100e" },
+		{ "color2",		  &color_pref->color2,		     "#858162" },
+		{ "color3",		  &color_pref->color3,		     "#eaa549" },
+		{ "color4",		  &color_pref->color4,		     "#426a79" },
+		{ "color5",		  &color_pref->color5,		     "#97522c" },
+		{ "color6",		  &color_pref->color6,		     "#989a9c" },
+		{ "color7",		  &color_pref->color7,		     "#968c83" },
+		{ "color8",		  &color_pref->color8,		     "#5e5252" },
+		{ "color9",		  &color_pref->color9,		     "#be100e" },
+		{ "color10",		  &color_pref->color10,		     "#858162" },
+		{ "color11",		  &color_pref->color11,		     "#eaa549" },
+		{ "color12",		  &color_pref->color12,		     "#426a79" },
+		{ "color13",		  &color_pref->color13,		     "#97522c" },
+		{ "color14",		  &color_pref->color14,		     "#989a9c" },
+		{ "color15",		  &color_pref->color15,		     "#d5ccba" },
 	};
 
 	int i;
@@ -245,6 +245,7 @@ void remmina_pref_init(void)
 
 	/* /usr/local/etc/remmina */
 	const gchar *const *dirs = g_get_system_config_dirs();
+
 	g_free(remmina_dir), remmina_dir = NULL;
 	for (i = 0; dirs[i] != NULL; ++i) {
 		remmina_dir = g_build_path("/", dirs[i], "remmina", NULL);
@@ -721,7 +722,6 @@ void remmina_pref_init(void)
 	/* If we have a color scheme file, we switch to it, GIO will merge it in the
 	 * remmina.pref file */
 	if (g_file_test(remmina_colors_file, G_FILE_TEST_IS_REGULAR)) {
-		//gkeyfile = g_key_file_new();
 		g_key_file_load_from_file(gkeyfile, remmina_colors_file, G_KEY_FILE_NONE, NULL);
 		g_remove(remmina_colors_file);
 	}
