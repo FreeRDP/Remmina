@@ -1086,8 +1086,10 @@ void remmina_main_on_action_application_about(GSimpleAction *action, GVariant *p
 void remmina_main_on_action_application_news(GSimpleAction *action, GVariant *param, gpointer data)
 {
 	TRACE_CALL(__func__);
+	REMMINA_DEBUG ("Setting news counters to 0");
 	remmina_pref.periodic_rmnews_last_get = 0;
 	remmina_pref.periodic_rmnews_get_count = 0;
+	REMMINA_DEBUG ("Saving preferences");
 	remmina_pref_save();
 };
 

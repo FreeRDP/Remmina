@@ -220,7 +220,7 @@ static void remmina_rdp_settings_grid_load_layout(RemminaPluginRdpsetGrid* grid)
 		g_free(s);
 	}
 
-	free(layouts);
+	freerdp_keyboard_layouts_free(layouts);
 }
 
 static void remmina_rdp_settings_grid_load_devicescalefactor_combo(RemminaPluginRdpsetGrid* grid)

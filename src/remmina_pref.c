@@ -179,29 +179,29 @@ void remmina_pref_file_load_colors(GKeyFile *gkeyfile, RemminaColorPref *color_p
 		char **		setting;
 		char *		fallback;
 	} colors[] = {
-		{ "background", &color_pref->background, "#d5ccba" },
-		{ "cursor",	&color_pref->cursor,	 "#45373c" },
-		{ "cursor_foreground",	&color_pref->cursor_foreground,	 "#d5ccba" },
-		{ "highlight",	&color_pref->highlight,	 "#45373c" },
-		{ "highlight_foreground",	&color_pref->highlight_foreground,	 "#d5ccba" },
-		{ "colorBD",	&color_pref->colorBD,	 "#45373c" },
-		{ "foreground", &color_pref->foreground, "#45373c" },
-		{ "color0",	&color_pref->color0,	 "#20111b" },
-		{ "color1",	&color_pref->color1,	 "#be100e" },
-		{ "color2",	&color_pref->color2,	 "#858162" },
-		{ "color3",	&color_pref->color3,	 "#eaa549" },
-		{ "color4",	&color_pref->color4,	 "#426a79" },
-		{ "color5",	&color_pref->color5,	 "#97522c" },
-		{ "color6",	&color_pref->color6,	 "#989a9c" },
-		{ "color7",	&color_pref->color7,	 "#968c83" },
-		{ "color8",	&color_pref->color8,	 "#5e5252" },
-		{ "color9",	&color_pref->color9,	 "#be100e" },
-		{ "color10",	&color_pref->color10,	 "#858162" },
-		{ "color11",	&color_pref->color11,	 "#eaa549" },
-		{ "color12",	&color_pref->color12,	 "#426a79" },
-		{ "color13",	&color_pref->color13,	 "#97522c" },
-		{ "color14",	&color_pref->color14,	 "#989a9c" },
-		{ "color15",	&color_pref->color15,	 "#d5ccba" },
+		{ "background",		  &color_pref->background,	     "#d5ccba" },
+		{ "cursor",		  &color_pref->cursor,		     "#45373c" },
+		{ "cursor_foreground",	  &color_pref->cursor_foreground,    "#d5ccba" },
+		{ "highlight",		  &color_pref->highlight,	     "#45373c" },
+		{ "highlight_foreground", &color_pref->highlight_foreground, "#d5ccba" },
+		{ "colorBD",		  &color_pref->colorBD,		     "#45373c" },
+		{ "foreground",		  &color_pref->foreground,	     "#45373c" },
+		{ "color0",		  &color_pref->color0,		     "#20111b" },
+		{ "color1",		  &color_pref->color1,		     "#be100e" },
+		{ "color2",		  &color_pref->color2,		     "#858162" },
+		{ "color3",		  &color_pref->color3,		     "#eaa549" },
+		{ "color4",		  &color_pref->color4,		     "#426a79" },
+		{ "color5",		  &color_pref->color5,		     "#97522c" },
+		{ "color6",		  &color_pref->color6,		     "#989a9c" },
+		{ "color7",		  &color_pref->color7,		     "#968c83" },
+		{ "color8",		  &color_pref->color8,		     "#5e5252" },
+		{ "color9",		  &color_pref->color9,		     "#be100e" },
+		{ "color10",		  &color_pref->color10,		     "#858162" },
+		{ "color11",		  &color_pref->color11,		     "#eaa549" },
+		{ "color12",		  &color_pref->color12,		     "#426a79" },
+		{ "color13",		  &color_pref->color13,		     "#97522c" },
+		{ "color14",		  &color_pref->color14,		     "#989a9c" },
+		{ "color15",		  &color_pref->color15,		     "#d5ccba" },
 	};
 
 	int i;
@@ -245,6 +245,7 @@ void remmina_pref_init(void)
 
 	/* /usr/local/etc/remmina */
 	const gchar *const *dirs = g_get_system_config_dirs();
+
 	g_free(remmina_dir), remmina_dir = NULL;
 	for (i = 0; dirs[i] != NULL; ++i) {
 		remmina_dir = g_build_path("/", dirs[i], "remmina", NULL);
@@ -273,6 +274,7 @@ void remmina_pref_init(void)
 	remmina_keymap_file = g_strdup_printf("%s/remmina.keymap", remmina_dir);
 
 	gkeyfile = g_key_file_new();
+
 	g_key_file_load_from_file(gkeyfile, remmina_pref_file, G_KEY_FILE_NONE, NULL);
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "save_view_mode", NULL))
@@ -671,14 +673,6 @@ void remmina_pref_init(void)
 		remmina_pref.vte_shortcutkey_search_text = GDK_KEY_g;
 
 
-	/* If we have a color scheme file, we switch to it, GIO will merge it in the
-	 * remmina.pref file */
-	if (g_file_test(remmina_colors_file, G_FILE_TEST_IS_REGULAR)) {
-		gkeyfile = g_key_file_new();
-		g_key_file_load_from_file(gkeyfile, remmina_colors_file, G_KEY_FILE_NONE, NULL);
-		g_remove(remmina_colors_file);
-	}
-
 	remmina_pref_file_load_colors(gkeyfile, &remmina_pref.color_pref);
 
 	if (g_key_file_has_key(gkeyfile, "usage_stats", "periodic_usage_stats_permitted", NULL))
@@ -707,10 +701,13 @@ void remmina_pref_init(void)
 		remmina_pref.periodic_news_permitted = RMNEWS_ENABLE_NEWS;
 
 
-	if (g_key_file_has_key(gkeyfile, "remmina_news", "periodic_rmnews_last_get", NULL))
+	if (g_key_file_has_key(gkeyfile, "remmina_news", "periodic_rmnews_last_get", NULL)) {
 		remmina_pref.periodic_rmnews_last_get = g_key_file_get_int64(gkeyfile, "remmina_news", "periodic_rmnews_last_get", NULL);
-	else
+		g_debug("(%s) - periodic_rmnews_last_get set to %ld", __func__, remmina_pref.periodic_rmnews_last_get);
+	} else {
 		remmina_pref.periodic_rmnews_last_get = 0;
+		g_debug("(%s) - periodic_rmnews_last_get set to 0", __func__);
+	}
 
 	if (g_key_file_has_key(gkeyfile, "remmina_news", "periodic_rmnews_get_count", NULL))
 		remmina_pref.periodic_rmnews_get_count = g_key_file_get_int64(gkeyfile, "remmina_news", "periodic_rmnews_get_count", NULL);
@@ -721,6 +718,13 @@ void remmina_pref_init(void)
 		remmina_pref.periodic_rmnews_uuid_prefix = g_key_file_get_string(gkeyfile, "remmina_news", "periodic_rmnews_uuid_prefix", NULL);
 	else
 		remmina_pref.periodic_rmnews_uuid_prefix = NULL;
+
+	/* If we have a color scheme file, we switch to it, GIO will merge it in the
+	 * remmina.pref file */
+	if (g_file_test(remmina_colors_file, G_FILE_TEST_IS_REGULAR)) {
+		g_key_file_load_from_file(gkeyfile, remmina_colors_file, G_KEY_FILE_NONE, NULL);
+		g_remove(remmina_colors_file);
+	}
 
 	/* Default settings */
 	if (!g_key_file_has_key(gkeyfile, "remmina", "name", NULL)) {
@@ -867,6 +871,7 @@ gboolean remmina_pref_save(void)
 	g_key_file_set_string(gkeyfile, "usage_stats", "periodic_usage_stats_uuid_prefix",
 			      remmina_pref.periodic_usage_stats_uuid_prefix ? remmina_pref.periodic_usage_stats_uuid_prefix : "");
 	g_key_file_set_boolean(gkeyfile, "remmina_news", "periodic_news_permitted", remmina_pref.periodic_news_permitted);
+	g_debug("(%s) - Setting periodic_rmnews_last_get to %ld", __func__, remmina_pref.periodic_rmnews_last_get);
 	g_key_file_set_int64(gkeyfile, "remmina_news", "periodic_rmnews_last_get", remmina_pref.periodic_rmnews_last_get);
 	g_key_file_set_integer(gkeyfile, "remmina_news", "periodic_rmnews_get_count", remmina_pref.periodic_rmnews_get_count);
 	g_key_file_set_string(gkeyfile, "remmina_news", "periodic_rmnews_uuid_prefix",
