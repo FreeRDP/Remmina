@@ -1219,12 +1219,6 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 	const gchar *s;
 	gchar *sm;
 	gchar *value;
-	gint rdpsnd_rate;
-	gint rdpsnd_channel;
-	char *rdpsnd_params[3];
-	int rdpsnd_nparams;
-	char rdpsnd_param1[16];
-	char rdpsnd_param2[16];
 	const gchar *cs;
 	RemminaFile *remminafile;
 	rfContext *rfi = GET_PLUGIN_DATA(gp);
@@ -1596,36 +1590,12 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 	}
 
 	/* Sound settings */
-
 	cs = remmina_plugin_service->file_get_string(remminafile, "sound");
 
 	if (g_strcmp0(cs, "remote") == 0) {
 		rfi->settings->RemoteConsoleAudio = TRUE;
 	} else if (g_str_has_prefix(cs, "local")) {
 		rfi->settings->AudioPlayback = TRUE;
-		rfi->settings->DeviceRedirection = TRUE;        /* rdpsnd requires rdpdr to be registered */
-
-		rdpsnd_nparams = 0;
-		rdpsnd_params[rdpsnd_nparams++] = "rdpsnd";
-
-		cs = strchr(cs, ',');
-		if (cs) {
-			rdpsnd_rate = atoi(cs + 1);
-			if (rdpsnd_rate > 1000 && rdpsnd_rate < 150000) {
-				snprintf(rdpsnd_param1, sizeof(rdpsnd_param1), "rate:%d", rdpsnd_rate);
-				rdpsnd_params[rdpsnd_nparams++] = rdpsnd_param1;
-				cs = strchr(cs + 1, ',');
-				if (cs) {
-					rdpsnd_channel = atoi(cs + 1);
-					if (rdpsnd_channel >= 1 && rdpsnd_channel <= 2) {
-						snprintf(rdpsnd_param2, sizeof(rdpsnd_param2), "channel:%d", rdpsnd_channel);
-						rdpsnd_params[rdpsnd_nparams++] = rdpsnd_param2;
-					}
-				}
-			}
-		}
-
-		freerdp_client_add_static_channel(rfi->settings, rdpsnd_nparams, (char **)rdpsnd_params);
 	} else {
 		/* Disable sound */
 		rfi->settings->AudioPlayback = FALSE;
@@ -2447,9 +2417,6 @@ static gpointer sound_list[] =
 {
 	"off",		 N_("Off"),
 	"local",	 N_("Local"),
-	"local,11025,1", N_("Local - low quality"),
-	"local,22050,2", N_("Local - medium quality"),
-	"local,44100,2", N_("Local - high quality"),
 	"remote",	 N_("Remote"),
 	NULL
 };
@@ -2574,7 +2541,7 @@ static const RemminaProtocolSetting remmina_rdp_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "gwtransp",		    N_("Gateway transport type"),			 FALSE, gwtransp_list,	  NULL														 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "freerdp_log_level",	    N_("FreeRDP log level"),				 FALSE, log_level,	  NULL														 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "freerdp_log_filters",    N_("FreeRDP log filters"),				 FALSE, NULL,		  N_("tag:level[,tag:level[,…]]")										 },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "sound",		    N_("Sound"),					 FALSE, sound_list,	  NULL														 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "sound",		    N_("Audio output mode"),				 FALSE, sound_list,	  NULL														 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "audio-output",	    N_("Redirect local audio output"),			 TRUE,	NULL,		  audio_tooltip													 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "microphone",		    N_("Redirect local microphone"),			 TRUE,	NULL,		  microphone_tooltip												 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "timeout",		    N_("Connection timeout in ms"),			 TRUE,	NULL,		  timeout_tooltip												 },
