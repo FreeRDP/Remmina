@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-02-18 08:39+0000\n"
+"POT-Creation-Date: 2021-02-19 11:31+0000\n"
 "PO-Revision-Date: 2021-01-28 10:34+0000\n"
 "Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
 "Language-Team: Uzbek <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -72,7 +72,7 @@ msgstr "'%s'га SSH орқали боғланилмоқда…"
 
 #: src/remmina_protocol_widget.c:1457 src/remmina_protocol_widget.c:1476
 #: src/remmina_ssh_plugin.c:1287 src/remmina_sftp_plugin.c:309
-#: src/remmina_sftp_plugin.c:344 src/remmina_file_editor.c:997
+#: src/remmina_sftp_plugin.c:344 src/remmina_file_editor.c:965
 #: plugins/www/www_plugin.c:872 plugins/rdp/rdp_plugin.c:2515
 #: data/ui/remmina_unlock.glade:116 data/ui/remmina_mpc.glade:236
 #: data/ui/remmina_preferences.glade:1682
@@ -132,8 +132,8 @@ msgstr "%i порти орқали кирувчи %s боғланишини ку
 msgid "Could not authenticate, attempting reconnection…"
 msgstr "Муваффқиятсиз идентификация. Қайта боғланишга ҳаракат қилинмоқда…"
 
-#: src/remmina_protocol_widget.c:1798 src/remmina_file_editor.c:395
-#: src/remmina_file_editor.c:953 data/ui/remmina_main.glade:485
+#: src/remmina_protocol_widget.c:1798 src/remmina_file_editor.c:356
+#: src/remmina_file_editor.c:917 data/ui/remmina_main.glade:485
 msgid "Server"
 msgstr "Сервер"
 
@@ -147,11 +147,11 @@ msgstr "Аввал %s протокол плагинини ўрнатинг."
 msgid "Plugin %s is not registered."
 msgstr "%s плагини рўйхатдан ўтказилмаган."
 
-#: src/remmina_pref_dialog.c:90 src/remmina_file_editor.c:484
+#: src/remmina_pref_dialog.c:90 src/remmina_file_editor.c:445
 msgid "Resolutions"
 msgstr "Экран ўлчамлари"
 
-#: src/remmina_pref_dialog.c:90 src/remmina_file_editor.c:484
+#: src/remmina_pref_dialog.c:90 src/remmina_file_editor.c:445
 msgid "Configure the available resolutions"
 msgstr "Мавжуд экран ўлчамларини мослаш"
 
@@ -224,7 +224,6 @@ msgstr "Қўйиш (Хост + V)"
 
 #: src/remmina_ssh_plugin.c:1288 src/remmina_ssh_plugin.c:1392
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:346
-#: src/remmina_file_editor.c:349 src/remmina_file_editor.c:356
 #: plugins/nx/nx_plugin.c:729
 msgid "SSH identity file"
 msgstr "SSH идентификация файли"
@@ -234,7 +233,7 @@ msgid "SSH agent"
 msgstr "SSH агент"
 
 #: src/remmina_ssh_plugin.c:1290 src/remmina_sftp_plugin.c:312
-#: src/remmina_file_editor.c:1010
+#: src/remmina_file_editor.c:978
 msgid "Public key (automatic)"
 msgstr "Оммавий калит (автоматик)"
 
@@ -291,7 +290,7 @@ msgid "_Find text"
 msgstr ""
 
 #: src/remmina_ssh_plugin.c:1389 src/remmina_message_panel.c:330
-#: src/remmina_sftp_plugin.c:343 src/remmina_file_editor.c:988
+#: src/remmina_sftp_plugin.c:343 src/remmina_file_editor.c:955
 #: plugins/www/www_plugin.c:871 plugins/vnc/vnc_plugin.c:1879
 #: plugins/vnc/vnc_plugin.c:1899 plugins/rdp/rdp_plugin.c:2514
 #: plugins/nx/nx_plugin.c:730 data/ui/remmina_mpc.glade:144
@@ -308,17 +307,23 @@ msgstr "Пароль"
 msgid "Authentication type"
 msgstr "Аутентификация тури"
 
-#: src/remmina_ssh_plugin.c:1393 src/remmina_sftp_plugin.c:347
-#: src/remmina_file_editor.c:1019
+#: src/remmina_ssh_plugin.c:1393
+#, fuzzy
+#| msgid "SSH identity file"
+msgid "SSH certificat file"
+msgstr "SSH идентификация файли"
+
+#: src/remmina_ssh_plugin.c:1394 src/remmina_sftp_plugin.c:347
+#: src/remmina_file_editor.c:995
 msgid "Password to unlock private key"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1394 plugins/xdmcp/xdmcp_plugin.c:370
+#: src/remmina_ssh_plugin.c:1395 plugins/xdmcp/xdmcp_plugin.c:370
 #: plugins/rdp/rdp_plugin.c:2554 plugins/nx/nx_plugin.c:734
 msgid "Start-up program"
 msgstr "Бошланғич программа"
 
-#: src/remmina_ssh_plugin.c:1399
+#: src/remmina_ssh_plugin.c:1400
 msgid ""
 "The filename can use the following placeholders:\n"
 "\n"
@@ -331,61 +336,61 @@ msgid ""
 "  • %d is substituted with local date and time in ISO 8601 format\n"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1421
+#: src/remmina_ssh_plugin.c:1422
 #, fuzzy
 #| msgid "Terminal color scheme"
 msgid "Terminal colour scheme"
 msgstr "Терминал ранг схемаси"
 
-#: src/remmina_ssh_plugin.c:1422
+#: src/remmina_ssh_plugin.c:1423
 msgid "Character set"
 msgstr "Кодировка"
 
-#: src/remmina_ssh_plugin.c:1423 src/remmina_sftp_plugin.c:348
+#: src/remmina_ssh_plugin.c:1424 src/remmina_sftp_plugin.c:348
 msgid "SSH Proxy Command"
 msgstr "SSH прокси буйруғи"
 
-#: src/remmina_ssh_plugin.c:1424
+#: src/remmina_ssh_plugin.c:1425
 msgid "KEX (Key Exchange) algorithms"
 msgstr "Калит алмашув алгоритми (KEX)"
 
-#: src/remmina_ssh_plugin.c:1425
+#: src/remmina_ssh_plugin.c:1426
 msgid "Symmetric cipher client to server"
 msgstr "Клиентдан серверга симметрик шифрлаш"
 
-#: src/remmina_ssh_plugin.c:1426
+#: src/remmina_ssh_plugin.c:1427
 msgid "Preferred server host key types"
 msgstr "Афзал кўрилган хост тугма турлари"
 
-#: src/remmina_ssh_plugin.c:1427
+#: src/remmina_ssh_plugin.c:1428
 msgid "Folder for SSH session log"
 msgstr "SSH сессияни кўтаришда муаммо юз берди: %s"
 
-#: src/remmina_ssh_plugin.c:1428
+#: src/remmina_ssh_plugin.c:1429
 msgid "Filename for SSH session log"
 msgstr "Чиқишда SSH сессияни лог файлга ёзишни ёқиш"
 
-#: src/remmina_ssh_plugin.c:1429
+#: src/remmina_ssh_plugin.c:1430
 msgid "Log SSH session when exiting Remmina"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1430
+#: src/remmina_ssh_plugin.c:1431
 msgid "Audible terminal bell"
 msgstr "Терминал овозли сигналларини ёқиш"
 
-#: src/remmina_ssh_plugin.c:1431
+#: src/remmina_ssh_plugin.c:1432
 msgid "SSH compression"
 msgstr "SSH сиқишни ёқиш"
 
-#: src/remmina_ssh_plugin.c:1432
+#: src/remmina_ssh_plugin.c:1433
 msgid "Don't remember passwords"
 msgstr "Паролни сақлаб қолманг"
 
-#: src/remmina_ssh_plugin.c:1433
+#: src/remmina_ssh_plugin.c:1434
 msgid "Strict host key checking"
 msgstr "Хост тугмаларини жиддий текшириш"
 
-#: src/remmina_ssh_plugin.c:1447
+#: src/remmina_ssh_plugin.c:1448
 msgid "SSH - Secure Shell"
 msgstr "SSH - хавфсиз қобиқ (Secure Shell)"
 
@@ -516,7 +521,7 @@ msgstr "Ҳажми"
 msgid "User"
 msgstr "Фойдаланувчи"
 
-#: src/remmina_ftp_client.c:948 src/remmina_file_editor.c:1577
+#: src/remmina_ftp_client.c:948 src/remmina_file_editor.c:1560
 #: data/ui/remmina_main.glade:471 data/ui/remmina_mpc.glade:115
 msgid "Group"
 msgstr "Гуруҳ"
@@ -811,7 +816,7 @@ msgstr ""
 msgid "Warning: This plugin requires GtkSocket, but it’s not available."
 msgstr ""
 
-#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1595
+#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1578
 msgid "Protocol"
 msgstr "Протокол"
 
@@ -840,11 +845,11 @@ msgid "Plugins"
 msgstr "Плагинлар"
 
 #: src/remmina_plugin_manager.c:455 src/remmina_message_panel.c:452
-#: src/remmina_message_panel.c:621 src/remmina_file_editor.c:149
+#: src/remmina_message_panel.c:621 src/remmina_file_editor.c:150
 msgid "_OK"
 msgstr "_ОК"
 
-#: src/remmina_plugin_manager.c:473 src/remmina_file_editor.c:1552
+#: src/remmina_plugin_manager.c:473 src/remmina_file_editor.c:1535
 #: plugins/nx/nx_session_manager.c:204 data/ui/remmina_main.glade:449
 msgid "Name"
 msgstr "Ном"
@@ -886,7 +891,7 @@ msgstr ""
 msgid "Import"
 msgstr "Импорт"
 
-#: src/remmina_main.c:1015 src/remmina_file_editor.c:1435
+#: src/remmina_main.c:1015 src/remmina_file_editor.c:1418
 msgid "_Save"
 msgstr "_Сақлаш"
 
@@ -1002,9 +1007,8 @@ msgid "Overwrite"
 msgstr "Устидан ёзиш"
 
 #: src/remmina_sftp_client.c:947 src/remmina_message_panel.c:457
-#: src/remmina_message_panel.c:629 src/remmina_file_editor.c:148
-#: src/remmina_file_editor.c:357 src/remmina_file_editor.c:1427
-#: plugins/spice/spice_plugin_file_transfer.c:84
+#: src/remmina_message_panel.c:629 src/remmina_file_editor.c:149
+#: src/remmina_file_editor.c:1410 plugins/spice/spice_plugin_file_transfer.c:84
 #: plugins/nx/nx_session_manager.c:156 data/ui/remmina_spinner.glade:8
 #: data/ui/remmina_spinner.glade:9 data/ui/remmina_key_chooser.glade:8
 #: data/ui/remmina_key_chooser.glade:9
@@ -1085,88 +1089,106 @@ msgstr "SFTP - хавфсиз файл узатиш протоколи"
 msgid "Could not authenticate with TOTP/OTP/2FA. %s"
 msgstr "SSH сессияни кўтаришда муаммо юз берди: %s"
 
-#: src/remmina_ssh.c:295 src/remmina_ssh.c:622
+#: src/remmina_ssh.c:295 src/remmina_ssh.c:672
 #, c-format
 msgid "Could not authenticate with SSH password. %s"
 msgstr "SSH сессияни кўтаришда муаммо юз берди: %s"
 
+#: src/remmina_ssh.c:321 src/remmina_ssh.c:384
+msgid "No saved SSH passphrase supplied. Asking user to enter it."
+msgstr ""
+
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:315 src/remmina_ssh.c:341 src/remmina_ssh.c:378
-#: src/remmina_ssh.c:692
+#: src/remmina_ssh.c:326 src/remmina_ssh.c:363 src/remmina_ssh.c:389
+#: src/remmina_ssh.c:428 src/remmina_ssh.c:742
 #, c-format
 msgid "Could not authenticate with public SSH key. %s"
 msgstr ""
 
-#: src/remmina_ssh.c:316
+#. TRANSLATORS: The placeholder %s is an error message
+#: src/remmina_ssh.c:334
+#, c-format
+msgid "SSH certificate cannot be imported. %s"
+msgstr ""
+
+#. TRANSLATORS: The placeholder %s is an error message
+#: src/remmina_ssh.c:343
+#, c-format
+msgid "SSH certificate cannot be copied into the privatekey. %s"
+msgstr ""
+
+#. TRANSLATORS: The placeholder %s is an error message
+#: src/remmina_ssh.c:353
+#, c-format
+msgid "Authentication with SSH certificate failed. %s"
+msgstr ""
+
+#: src/remmina_ssh.c:364
 msgid "SSH identity file not selected."
 msgstr "SSH калит файли ҳали яратилмаган/танланмаган."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:327
+#: src/remmina_ssh.c:375
 #, c-format
 msgid "Public SSH key cannot be imported. %s"
 msgstr ""
 
-#: src/remmina_ssh.c:336
-msgid "No saved SSH passphrase supplied. Asking user to enter it."
-msgstr ""
-
-#: src/remmina_ssh.c:423
+#: src/remmina_ssh.c:473
 #, c-format
 msgid "Could not authenticate automatically with public SSH key. %s"
 msgstr ""
 
-#: src/remmina_ssh.c:468
+#: src/remmina_ssh.c:518
 #, c-format
 msgid "Could not authenticate automatically with SSH agent. %s"
 msgstr "SSH сессияни кўтаришда муаммо юз берди: %s"
 
-#: src/remmina_ssh.c:514 src/remmina_ssh.c:802
+#: src/remmina_ssh.c:564 src/remmina_ssh.c:852
 #, c-format
 msgid "Could not authenticate with SSH GSSAPI/Kerberos. %s"
 msgstr "SSH сессияни кўтаришда муаммо юз берди: %s"
 
-#: src/remmina_ssh.c:543
+#: src/remmina_ssh.c:593
 msgid "The public SSH key changed!"
 msgstr ""
 
-#: src/remmina_ssh.c:657
+#: src/remmina_ssh.c:707
 #, c-format
 msgid "Could not authenticate with keyboard-interactive. %s"
 msgstr "SSH сессияни кўтаришда муаммо юз берди: %s"
 
-#: src/remmina_ssh.c:759
+#: src/remmina_ssh.c:809
 #, c-format
 msgid "Could not authenticate with automatic public SSH key. %s"
 msgstr "SSH туннел манзилига уланишда муаммо юз берди: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:867
+#: src/remmina_ssh.c:917
 #, c-format
 msgid "Could not fetch the server's public SSH key. %s"
 msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:874
+#: src/remmina_ssh.c:924
 #, c-format
 msgid "Could not fetch public SSH key. %s"
 msgstr "SSH туннел манзилига уланишда муаммо юз берди: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:882
+#: src/remmina_ssh.c:932
 #, c-format
 msgid "Could not fetch checksum of the public SSH key. %s"
 msgstr "SSH сессияни кўтаришда муаммо юз берди: %s"
 
-#: src/remmina_ssh.c:895
+#: src/remmina_ssh.c:945
 msgid "The server is unknown. The public key fingerprint is:"
 msgstr "Номаълум сервер. Оммавий калит бармоқ изи:"
 
-#: src/remmina_ssh.c:897 src/remmina_ssh.c:903
+#: src/remmina_ssh.c:947 src/remmina_ssh.c:953
 msgid "Do you trust the new public key?"
 msgstr "Янги оммавий калитга (public key) ишонасизми?"
 
-#: src/remmina_ssh.c:900
+#: src/remmina_ssh.c:950
 msgid ""
 "Warning: The server has changed its public key. This means you are either "
 "under attack,\n"
@@ -1178,154 +1200,154 @@ msgstr ""
 "калит бармоқ изи:"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:925
+#: src/remmina_ssh.c:975
 #, c-format
 msgid "Could not check list of known SSH hosts. %s"
 msgstr "SSH сессияни кўтаришда муаммо юз берди: %s"
 
-#: src/remmina_ssh.c:934
+#: src/remmina_ssh.c:984
 msgid "SSH password"
 msgstr "SSH пароль"
 
-#: src/remmina_ssh.c:941 src/remmina_ssh.c:984
+#: src/remmina_ssh.c:991 src/remmina_ssh.c:1035
 msgid "SSH private key passphrase"
 msgstr "SSH шахсий калити пароли"
 
-#: src/remmina_ssh.c:946
+#: src/remmina_ssh.c:996
 msgid "SSH Kerberos/GSSAPI"
 msgstr "SSH Kerberos/GSSAPI"
 
-#: src/remmina_ssh.c:951
+#: src/remmina_ssh.c:1001
 msgid "Enter TOTP/OTP/2FA code"
 msgstr ""
 
-#: src/remmina_ssh.c:980 src/remmina_ssh.c:1006
+#: src/remmina_ssh.c:1031 src/remmina_ssh.c:1057
 msgid "SSH tunnel credentials"
 msgstr ""
 
-#: src/remmina_ssh.c:980 src/remmina_ssh.c:1006 plugins/nx/nx_plugin.c:203
+#: src/remmina_ssh.c:1031 src/remmina_ssh.c:1057 plugins/nx/nx_plugin.c:203
 msgid "SSH credentials"
 msgstr ""
 
-#: src/remmina_ssh.c:1057
+#: src/remmina_ssh.c:1108
 msgid "Keyboard interactive login, TOTP/OTP/2FA"
 msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1277
+#: src/remmina_ssh.c:1329
 #, c-format
 msgid "Could not start SSH session. %s"
 msgstr "SSH сессияни кўтаришда муаммо юз берди: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1680 src/remmina_ssh.c:1743
+#: src/remmina_ssh.c:1735 src/remmina_ssh.c:1798
 #, c-format
 msgid "Could not create channel. %s"
 msgstr "SFTP сессия яратишда муаммо юз берди: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1691
+#: src/remmina_ssh.c:1746
 #, c-format
 msgid "Could not connect to SSH tunnel. %s"
 msgstr "SSH туннел манзилига уланишда муаммо юз берди: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1758 src/remmina_ssh.c:2382
+#: src/remmina_ssh.c:1813 src/remmina_ssh.c:2437
 #, c-format
 msgid "Could not open channel. %s"
 msgstr "Канални очиб бўлмади: %s"
 
-#: src/remmina_ssh.c:1764
+#: src/remmina_ssh.c:1819
 #, c-format
 msgid "Could not run %s on SSH server."
 msgstr "SSH серверда %s ни бажаришда муаммо юз берди."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1802 src/remmina_ssh.c:1823 src/remmina_ssh.c:1832
+#: src/remmina_ssh.c:1857 src/remmina_ssh.c:1878 src/remmina_ssh.c:1887
 #, c-format
 msgid "Could not request port forwarding. %s"
 msgstr "Порт йўналтиришда муаммо юз берди? %s"
 
-#: src/remmina_ssh.c:1867
+#: src/remmina_ssh.c:1922
 msgid "The server did not respond."
 msgstr "Сервер жавоб бермади."
 
-#: src/remmina_ssh.c:1910
+#: src/remmina_ssh.c:1965
 #, c-format
 msgid "Cannot connect to local port %i."
 msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1960
+#: src/remmina_ssh.c:2015
 #, c-format
 msgid "Could not write to SSH channel. %s"
 msgstr "SFTP сессия яратишда муаммо юз берди: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1967
+#: src/remmina_ssh.c:2022
 #, c-format
 msgid "Could not read from tunnel listening socket. %s"
 msgstr "SFTP сессия яратишда муаммо юз берди: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1987
+#: src/remmina_ssh.c:2042
 #, c-format
 msgid "Could not poll SSH channel. %s"
 msgstr "Канални очиб бўлмади: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1994
+#: src/remmina_ssh.c:2049
 #, c-format
 msgid "Could not read SSH channel in a non-blocking way. %s"
 msgstr "SFTP сессия яратишда муаммо юз берди: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2013
+#: src/remmina_ssh.c:2068
 #, c-format
 msgid "Could not send data to tunnel listening socket. %s"
 msgstr "SSH туннел манзилига уланишда муаммо юз берди: %s"
 
-#: src/remmina_ssh.c:2115
+#: src/remmina_ssh.c:2170
 msgid "Assign a destination port."
 msgstr ""
 
-#: src/remmina_ssh.c:2122
+#: src/remmina_ssh.c:2177
 msgid "Could not create socket."
 msgstr ""
 
-#: src/remmina_ssh.c:2132
+#: src/remmina_ssh.c:2187
 msgid "Could not bind server socket to local port."
 msgstr ""
 
-#: src/remmina_ssh.c:2138
+#: src/remmina_ssh.c:2193
 msgid "Could not listen to local port."
 msgstr ""
 
 #. TRANSLATORS: Do not translate pthread
-#: src/remmina_ssh.c:2148 src/remmina_ssh.c:2165 src/remmina_ssh.c:2182
-#: src/remmina_ssh.c:2200
+#: src/remmina_ssh.c:2203 src/remmina_ssh.c:2220 src/remmina_ssh.c:2237
+#: src/remmina_ssh.c:2255
 msgid "Could not start pthread."
 msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2292
+#: src/remmina_ssh.c:2347
 #, c-format
 msgid "Could not create SFTP session. %s"
 msgstr "SFTP сессия яратишда муаммо юз берди: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2297
+#: src/remmina_ssh.c:2352
 #, c-format
 msgid "Could not start SFTP session. %s"
 msgstr "SSH сессияни кўтаришда муаммо юз берди: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2412
+#: src/remmina_ssh.c:2467
 #, c-format
 msgid "Could not request shell. %s"
 msgstr "SFTP сессия яратишда муаммо юз берди: %s"
 
-#: src/remmina_ssh.c:2505
+#: src/remmina_ssh.c:2560
 msgid "Could not create PTY device."
 msgstr ""
 
@@ -1378,146 +1400,154 @@ msgstr ""
 "* сервер:порт\n"
 "* [сервер]:порт</big></tt>"
 
-#: src/remmina_file_editor.c:146
+#: src/remmina_file_editor.c:147
 msgid "Choose a Remote Desktop Server"
 msgstr "Масофавий иш столи серверини танланг"
 
-#: src/remmina_file_editor.c:358
-msgid "_Open"
-msgstr "_Очиш"
-
-#: src/remmina_file_editor.c:419
+#: src/remmina_file_editor.c:380
 #, c-format
 msgid "Browse the network to find a %s server"
 msgstr "%s серверни топиш учун тармоқни кўриб чиқиш"
 
-#: src/remmina_file_editor.c:520
+#: src/remmina_file_editor.c:481
 msgid "Resolution"
 msgstr "Экран ўлчамлари"
 
-#: src/remmina_file_editor.c:527
+#: src/remmina_file_editor.c:488
 msgid "Use initial window size"
 msgstr ""
 
-#: src/remmina_file_editor.c:531
+#: src/remmina_file_editor.c:492
 msgid "Use client resolution"
 msgstr "Клиент экран ўлчамларидан фойдаланиш"
 
-#: src/remmina_file_editor.c:542 src/remmina_file_editor.c:934
+#: src/remmina_file_editor.c:503 src/remmina_file_editor.c:897
 msgid "Custom"
 msgstr "Қўлбола"
 
-#: src/remmina_file_editor.c:766
+#: src/remmina_file_editor.c:727
 msgid "Keyboard mapping"
 msgstr "Клавиатура шаблони"
 
-#: src/remmina_file_editor.c:866
+#: src/remmina_file_editor.c:827
 msgid "Behavior"
 msgstr ""
 
-#: src/remmina_file_editor.c:869
+#: src/remmina_file_editor.c:830
 msgid "Execute a Command"
 msgstr "Ташқи командаларни ишга тушириш…"
 
-#: src/remmina_file_editor.c:873
+#: src/remmina_file_editor.c:834
 msgid "Before connecting"
 msgstr "Янги боғич"
 
-#: src/remmina_file_editor.c:875
+#: src/remmina_file_editor.c:836
 msgid "command %h %u %t %U %p %g --option"
 msgstr ""
 
-#: src/remmina_file_editor.c:880
+#: src/remmina_file_editor.c:841
 msgid "After connecting"
 msgstr "Янги боғич"
 
-#: src/remmina_file_editor.c:882
+#: src/remmina_file_editor.c:843
 msgid "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
 msgstr ""
 
-#: src/remmina_file_editor.c:886
+#: src/remmina_file_editor.c:847
 msgid "Start-up"
 msgstr "Бошлаш"
 
-#: src/remmina_file_editor.c:889
+#: src/remmina_file_editor.c:850
 msgid "Auto-start this profile"
 msgstr ""
 
-#: src/remmina_file_editor.c:909
+#: src/remmina_file_editor.c:870
 msgid "SSH Tunnel"
 msgstr ""
 
-#: src/remmina_file_editor.c:910
+#: src/remmina_file_editor.c:871
 msgid "Enable SSH tunnel"
 msgstr "SSH туннелни фаоллаштириш"
 
-#: src/remmina_file_editor.c:917
+#: src/remmina_file_editor.c:878
 msgid "Tunnel via loopback address"
 msgstr "loopback адрес орқали туннеллаштириш"
 
-#: src/remmina_file_editor.c:926
+#: src/remmina_file_editor.c:888
 #, c-format
 msgid "Same server at port %i"
 msgstr "%i портдаги айни сервер"
 
-#: src/remmina_file_editor.c:972 plugins/rdp/rdp_plugin.c:2555
+#: src/remmina_file_editor.c:938 plugins/rdp/rdp_plugin.c:2555
 msgid "Start-up path"
 msgstr "Бошланғич йўл/жилд"
 
-#: src/remmina_file_editor.c:981
+#: src/remmina_file_editor.c:947
 msgid "SSH Authentication"
 msgstr "SSH идентификация"
 
-#: src/remmina_file_editor.c:991
+#: src/remmina_file_editor.c:959
 msgid "SSH agent (automatic)"
 msgstr "SSH агент (автоматик)"
 
-#: src/remmina_file_editor.c:1095
+#: src/remmina_file_editor.c:984
+#, fuzzy
+#| msgid "SSH private key passphrase"
+msgid "SSH private key file"
+msgstr "SSH шахсий калити пароли"
+
+#: src/remmina_file_editor.c:989
+#, fuzzy
+#| msgid "SSH identity file"
+msgid "SSH certificate file"
+msgstr "SSH идентификация файли"
+
+#: src/remmina_file_editor.c:1071
 msgid "Basic"
 msgstr "Оддий"
 
-#: src/remmina_file_editor.c:1101
+#: src/remmina_file_editor.c:1077
 msgid "Advanced"
 msgstr "Илғор"
 
-#: src/remmina_file_editor.c:1112
+#: src/remmina_file_editor.c:1088
 msgid "Notes"
 msgstr ""
 
-#: src/remmina_file_editor.c:1355
+#: src/remmina_file_editor.c:1338
 msgid "Default settings saved."
 msgstr "Асос мосламалар сақланди."
 
-#: src/remmina_file_editor.c:1425
+#: src/remmina_file_editor.c:1408
 msgid "Remote Connection Profile"
 msgstr "Янги боғланиш профилини ясаш"
 
-#: src/remmina_file_editor.c:1431
+#: src/remmina_file_editor.c:1414
 msgid "Save as Default"
 msgstr ""
 
-#: src/remmina_file_editor.c:1432
+#: src/remmina_file_editor.c:1415
 msgid "Use the current settings as the default for all new connection profiles"
 msgstr ""
 
-#: src/remmina_file_editor.c:1440 data/ui/remmina_main.glade:166
+#: src/remmina_file_editor.c:1423 data/ui/remmina_main.glade:166
 msgid "Connect"
 msgstr "Боғланиш"
 
-#: src/remmina_file_editor.c:1443
+#: src/remmina_file_editor.c:1426
 msgid "_Save and Connect"
 msgstr ""
 
-#: src/remmina_file_editor.c:1566
+#: src/remmina_file_editor.c:1549
 msgid "Quick Connect"
 msgstr "Тез уланиш"
 
-#: src/remmina_file_editor.c:1590
+#: src/remmina_file_editor.c:1573
 #, c-format
 msgid "Use '%s' as subgroup delimiter"
 msgstr "Ост-гуруҳ бўлувчиси сифатида '%s'дан фойдаланиш"
 
-#: src/remmina_file_editor.c:1656 src/remmina_file_editor.c:1674
+#: src/remmina_file_editor.c:1639 src/remmina_file_editor.c:1657
 #, c-format
 msgid "Could not find the file “%s”."
 msgstr "Канални очиб бўлмади: %s"
@@ -3502,6 +3532,9 @@ msgstr ""
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr ""
+
+#~ msgid "_Open"
+#~ msgstr "_Очиш"
 
 #~ msgid "Local - low quality"
 #~ msgstr "Маҳаллий - қуйи сифат"
