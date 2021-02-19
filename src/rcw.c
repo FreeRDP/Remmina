@@ -581,7 +581,7 @@ static void rcw_keyboard_grab(RemminaConnectionWindow *cnnwin)
 		 * events (ie: i3wm+Plasma with GDK_CORE_DEVICE_EVENTS=1 because detail=NotifyNonlinear
 		 * instead of detail=NotifyAncestor/detail=NotifyInferior)
 		 * Receiving a FocusOut event for Remmina at this time will cause an infinite loop.
-		 * Therefore is important for GTK to use Xinput2 insetead of core X events
+		 * Therefore is important for GTK to use Xinput2 instead of core X events
 		 * by unsetting GDK_CORE_DEVICE_EVENTS
 		 */
 #if GTK_CHECK_VERSION(3, 24, 0)
@@ -2385,7 +2385,7 @@ rcw_create_toolbar(RemminaConnectionWindow *cnnwin, gint mode)
 	if (kioskmode)
 		gtk_widget_set_sensitive(GTK_WIDGET(toolitem), FALSE);
 
-	/* Diconnect */
+	/* Disconnect */
 	toolitem = gtk_tool_button_new(NULL, "_Disconnect");
 	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-disconnect-symbolic");
 	rcw_set_tooltip(GTK_WIDGET(toolitem), _("Disconnect"), remmina_pref.shortcutkey_disconnect, 0);
@@ -2711,7 +2711,7 @@ static gboolean focus_in_delayed_grab(RemminaConnectionWindow *cnnwin)
 #endif
 	if (cnnwin->priv->pointer_entered) {
 #if DEBUG_KB_GRABBING
-		printf("DEBUG_KB_GRABBING:   deleayed requesting kb and pointer grab, because of pointer inside\n");
+		printf("DEBUG_KB_GRABBING:   delayed requesting kb and pointer grab, because of pointer inside\n");
 #endif
 		rcw_keyboard_grab(cnnwin);
 		rcw_pointer_grab(cnnwin);
@@ -3623,7 +3623,7 @@ static void rcw_create_overlay_ftb_overlay(RemminaConnectionWindow *cnnwin)
 	g_signal_connect_after(GTK_WIDGET(priv->overlay_ftb_overlay), "drag-begin", G_CALLBACK(rcw_ftb_drag_begin), cnnwin);
 
 	if (remmina_pref.fullscreen_toolbar_visibility == FLOATING_TOOLBAR_VISIBILITY_DISABLE) {
-		/* toolbar in fullscreenmode disbled, hide everityhg */
+		/* toolbar in fullscreenmode disabled, hide everything */
 		gtk_widget_hide(fr);
 	}
 }

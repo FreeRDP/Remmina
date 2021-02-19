@@ -170,7 +170,7 @@ void remmina_rdp_monitor_get (rfContext *rfi, gchar **monitorids, guint32 *maxwi
 			if (!primary_found && settings->MonitorDefArray[index].x == 0 &&
 					settings->MonitorDefArray[index].y == 0)
 			{
-				REMMINA_PLUGIN_DEBUG ("Monitor %d has 0,0 coordiantes", index);
+				REMMINA_PLUGIN_DEBUG ("Monitor %d has 0,0 coordinates", index);
 				settings->MonitorDefArray[index].is_primary = TRUE;
 				settings->MonitorLocalShiftX = settings->MonitorDefArray[index].x;
 				settings->MonitorLocalShiftY = settings->MonitorDefArray[index].y;

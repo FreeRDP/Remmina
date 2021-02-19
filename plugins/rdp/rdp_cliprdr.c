@@ -502,7 +502,7 @@ void remmina_rdp_cliprdr_request_data(GtkClipboard *gtkClipboard, GtkSelectionDa
 	pFormatDataRequest->requestedFormatId = clipboard->format;
 	clipboard->srv_clip_data_wait = SCDW_BUSY_WAIT;
 
-	REMMINA_PLUGIN_DEBUG("Requesting clipboard data with fotmat %d from the server", clipboard->format);
+	REMMINA_PLUGIN_DEBUG("Requesting clipboard data with format %d from the server", clipboard->format);
 
 	rdp_event.type = REMMINA_RDP_EVENT_TYPE_CLIPBOARD_SEND_CLIENT_FORMAT_DATA_REQUEST;
 	rdp_event.clipboard_formatdatarequest.pFormatDataRequest = pFormatDataRequest;

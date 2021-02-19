@@ -661,7 +661,7 @@ remmina_ssh_auth(RemminaSSH *ssh, const gchar *password, RemminaProtocolWidget *
 					break;
 				case SSH_AUTH_METHOD_INTERACTIVE:
 					ssh->auth = SSH_AUTH_KBDINTERACTIVE;
-					//REMMINA_DEBUG("Interactve auth method not implemented: %d", ssh->auth);
+					//REMMINA_DEBUG("Interactive auth method not implemented: %d", ssh->auth);
 					break;
 				case SSH_AUTH_METHOD_UNKNOWN:
 				default:
@@ -694,7 +694,7 @@ remmina_ssh_auth(RemminaSSH *ssh, const gchar *password, RemminaProtocolWidget *
 					break;
 				case SSH_AUTH_METHOD_INTERACTIVE:
 					ssh->auth = SSH_AUTH_KBDINTERACTIVE;
-					//REMMINA_DEBUG("Interactve auth method not implemented: %d", ssh->auth);
+					//REMMINA_DEBUG("Interactive auth method not implemented: %d", ssh->auth);
 					break;
 				case SSH_AUTH_METHOD_UNKNOWN:
 				default:
@@ -728,7 +728,7 @@ remmina_ssh_auth(RemminaSSH *ssh, const gchar *password, RemminaProtocolWidget *
 					break;
 				case SSH_AUTH_METHOD_INTERACTIVE:
 					ssh->auth = SSH_AUTH_KBDINTERACTIVE;
-					//REMMINA_DEBUG("Interactve auth method not implemented: %d", ssh->auth);
+					//REMMINA_DEBUG("Interactive auth method not implemented: %d", ssh->auth);
 					break;
 				case SSH_AUTH_METHOD_UNKNOWN:
 				default:
@@ -762,7 +762,7 @@ remmina_ssh_auth(RemminaSSH *ssh, const gchar *password, RemminaProtocolWidget *
 					break;
 				case SSH_AUTH_METHOD_INTERACTIVE:
 					ssh->auth = SSH_AUTH_KBDINTERACTIVE;
-					//REMMINA_DEBUG("Interactve auth method not implemented: %d", ssh->auth);
+					//REMMINA_DEBUG("Interactive auth method not implemented: %d", ssh->auth);
 					break;
 				case SSH_AUTH_METHOD_UNKNOWN:
 				default:
@@ -795,7 +795,7 @@ remmina_ssh_auth(RemminaSSH *ssh, const gchar *password, RemminaProtocolWidget *
 						break;
 					case SSH_AUTH_METHOD_INTERACTIVE:
 						ssh->auth = SSH_AUTH_KBDINTERACTIVE;
-						//REMMINA_DEBUG("Interactve auth method not implemented: %d", ssh->auth);
+						//REMMINA_DEBUG("Interactive auth method not implemented: %d", ssh->auth);
 						break;
 					case SSH_AUTH_METHOD_UNKNOWN:
 					default:
@@ -838,7 +838,7 @@ remmina_ssh_auth(RemminaSSH *ssh, const gchar *password, RemminaProtocolWidget *
 					break;
 				case SSH_AUTH_METHOD_INTERACTIVE:
 					ssh->auth = SSH_AUTH_KBDINTERACTIVE;
-					//REMMINA_DEBUG("Interactve auth method not implemented: %d", ssh->auth);
+					//REMMINA_DEBUG("Interactive auth method not implemented: %d", ssh->auth);
 					break;
 				case SSH_AUTH_METHOD_UNKNOWN:
 				default:

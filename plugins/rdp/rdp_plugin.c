@@ -253,7 +253,7 @@ static BOOL rf_process_event_queue(RemminaProtocolWidget *gp)
 				if (!dcml)
 					break;
 				for (gint i = 0; i < rfi->settings->MonitorCount; ++i) {
-					REMMINA_PLUGIN_DEBUG("Sending diplay layout for monitor n° %d", i);
+					REMMINA_PLUGIN_DEBUG("Sending display layout for monitor n° %d", i);
 					dcml[i].Flags = (rfi->settings->MonitorDefArray[i].is_primary ? DISPLAY_CONTROL_MONITOR_PRIMARY : 0);
 					REMMINA_PLUGIN_DEBUG("Monitor %d is primary: %d", i, dcml[i].Flags);
 					dcml[i].Left = rfi->settings->MonitorDefArray[i].x;

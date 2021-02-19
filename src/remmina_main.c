@@ -169,7 +169,7 @@ static void remmina_main_save_expanded_group(void)
 }
 
 /**
- * Save the Remmina Main Window size and the exapnded group before to close Remmina.
+ * Save the Remmina Main Window size and the expanded group before to close Remmina.
  * This function uses remmina_main_save_size and remmina_main_save_expanded_group.
  */
 void remmina_main_save_before_destroy()
