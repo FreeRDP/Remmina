@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-02-19 11:31+0000\n"
+"POT-Creation-Date: 2021-02-19 13:28+0000\n"
 "PO-Revision-Date: 2021-02-15 09:57+0000\n"
 "Last-Translator: Justin Song <mcsong@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -310,10 +310,10 @@ msgstr "사용자 비밀번호"
 msgid "Authentication type"
 msgstr "인증 유형"
 
-#: src/remmina_ssh_plugin.c:1393
+#: src/remmina_ssh_plugin.c:1393 src/remmina_file_editor.c:989
 #, fuzzy
 #| msgid "CA Certificate File"
-msgid "SSH certificat file"
+msgid "SSH certificate file"
 msgstr "CA 인증서 파일"
 
 #: src/remmina_ssh_plugin.c:1394 src/remmina_sftp_plugin.c:347
@@ -1538,12 +1538,6 @@ msgstr "SSH 에이전트 (자동)"
 #| msgid "SSH private key passphrase"
 msgid "SSH private key file"
 msgstr "SSH 개인 키 암호"
-
-#: src/remmina_file_editor.c:989
-#, fuzzy
-#| msgid "CA Certificate File"
-msgid "SSH certificate file"
-msgstr "CA 인증서 파일"
 
 #: src/remmina_file_editor.c:1071
 msgid "Basic"
@@ -3711,6 +3705,11 @@ msgstr "새 키 선택"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "새 키를 누르세요…"
+
+#, fuzzy
+#~| msgid "CA Certificate File"
+#~ msgid "SSH certificat file"
+#~ msgstr "CA 인증서 파일"
 
 #~ msgid "_Open"
 #~ msgstr "_열기"

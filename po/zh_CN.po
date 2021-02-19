@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-02-19 11:31+0000\n"
-"PO-Revision-Date: 2021-02-17 12:29+0000\n"
+"POT-Creation-Date: 2021-02-19 13:28+0000\n"
+"PO-Revision-Date: 2021-02-19 13:29+0000\n"
 "Last-Translator: Eric <spice2wolf@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "remmina/remmina/zh_Hans/>\n"
@@ -310,11 +310,9 @@ msgstr "用户密码"
 msgid "Authentication type"
 msgstr "认证类型"
 
-#: src/remmina_ssh_plugin.c:1393
-#, fuzzy
-#| msgid "CA Certificate File"
-msgid "SSH certificat file"
-msgstr "CA 证书文件"
+#: src/remmina_ssh_plugin.c:1393 src/remmina_file_editor.c:989
+msgid "SSH certificate file"
+msgstr "SSH 证书文件"
 
 #: src/remmina_ssh_plugin.c:1394 src/remmina_sftp_plugin.c:347
 #: src/remmina_file_editor.c:995
@@ -1155,10 +1153,9 @@ msgstr "无法使用公共SSH密钥进行身份验证。%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:334
-#, fuzzy, c-format
-#| msgid "Public SSH key cannot be imported. %s"
+#, c-format
 msgid "SSH certificate cannot be imported. %s"
-msgstr "无法导入公共 SSH 密钥。%s"
+msgstr "无法导入 SSH 证书。%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:343
@@ -1542,16 +1539,8 @@ msgid "SSH agent (automatic)"
 msgstr "SSH 代理（自动）"
 
 #: src/remmina_file_editor.c:984
-#, fuzzy
-#| msgid "SSH private key passphrase"
 msgid "SSH private key file"
-msgstr "SSH 私钥密码"
-
-#: src/remmina_file_editor.c:989
-#, fuzzy
-#| msgid "CA Certificate File"
-msgid "SSH certificate file"
-msgstr "CA 证书文件"
+msgstr "SSH 私钥文件"
 
 #: src/remmina_file_editor.c:1071
 msgid "Basic"
@@ -3658,6 +3647,9 @@ msgstr "选择一个新按键"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "请按下新按键…"
+
+#~ msgid "SSH certificat file"
+#~ msgstr "SSH 证书文件"
 
 #~ msgid "_Open"
 #~ msgstr "打开(_O)"

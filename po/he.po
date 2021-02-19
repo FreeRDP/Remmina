@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-02-19 11:31+0000\n"
-"PO-Revision-Date: 2021-02-19 11:31+0000\n"
+"POT-Creation-Date: 2021-02-19 13:28+0000\n"
+"PO-Revision-Date: 2021-02-19 13:29+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/remmina/remmina/"
 "he/>\n"
@@ -308,11 +308,9 @@ msgstr "ססמת משתמש"
 msgid "Authentication type"
 msgstr "סוג אימות"
 
-#: src/remmina_ssh_plugin.c:1393
-#, fuzzy
-#| msgid "CA Certificate File"
-msgid "SSH certificat file"
-msgstr "קובץ אישור CA"
+#: src/remmina_ssh_plugin.c:1393 src/remmina_file_editor.c:989
+msgid "SSH certificate file"
+msgstr "קובץ אישור SSH"
 
 #: src/remmina_ssh_plugin.c:1394 src/remmina_sftp_plugin.c:347
 #: src/remmina_file_editor.c:995
@@ -1150,22 +1148,21 @@ msgstr "לא ניתן להזדהות עם מפתח ה־SSH הציבורי. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:334
-#, fuzzy, c-format
-#| msgid "Public SSH key cannot be imported. %s"
+#, c-format
 msgid "SSH certificate cannot be imported. %s"
-msgstr "לא ניתן לייבא את מפתח ה־SSH הציבורי. %s"
+msgstr "לא ניתן לייבא את אישור ה־SSH.‏ %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:343
 #, c-format
 msgid "SSH certificate cannot be copied into the privatekey. %s"
-msgstr ""
+msgstr "לא ניתן להעתיק את אישור ה־SSH לקובץ פרטי. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:353
 #, c-format
 msgid "Authentication with SSH certificate failed. %s"
-msgstr ""
+msgstr "האימות עם אישור ה־SSH נכשל. %s"
 
 #: src/remmina_ssh.c:364
 msgid "SSH identity file not selected."
@@ -1538,16 +1535,8 @@ msgid "SSH agent (automatic)"
 msgstr "סוכן SSH (אוטומטי)"
 
 #: src/remmina_file_editor.c:984
-#, fuzzy
-#| msgid "SSH private key passphrase"
 msgid "SSH private key file"
-msgstr "מילת צופן למפתח SSH פרטי"
-
-#: src/remmina_file_editor.c:989
-#, fuzzy
-#| msgid "CA Certificate File"
-msgid "SSH certificate file"
-msgstr "קובץ אישור CA"
+msgstr "קובץ מפתח SSH פרטי"
 
 #: src/remmina_file_editor.c:1071
 msgid "Basic"
@@ -3706,6 +3695,9 @@ msgstr "נא לבחור מפתח חדש"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "נא ללחוץ על המקש החדש…"
+
+#~ msgid "SSH certificat file"
+#~ msgstr "קובץ אישור SSH"
 
 #~ msgid "_Open"
 #~ msgstr "_פתיחה"

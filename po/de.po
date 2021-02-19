@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-02-19 11:31+0000\n"
-"PO-Revision-Date: 2021-02-19 11:31+0000\n"
+"POT-Creation-Date: 2021-02-19 13:28+0000\n"
+"PO-Revision-Date: 2021-02-19 13:29+0000\n"
 "Last-Translator: Johannes Weberhofer <jweberhofer@weberhofer.at>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/remmina/remmina/"
 "de/>\n"
@@ -315,11 +315,9 @@ msgstr "Benutzerpasswort"
 msgid "Authentication type"
 msgstr "Authentifizierungstyp"
 
-#: src/remmina_ssh_plugin.c:1393
-#, fuzzy
-#| msgid "CA Certificate File"
-msgid "SSH certificat file"
-msgstr "CA Zertifikatsdatei"
+#: src/remmina_ssh_plugin.c:1393 src/remmina_file_editor.c:989
+msgid "SSH certificate file"
+msgstr "SSH-Zertifikatsdatei"
 
 #: src/remmina_ssh_plugin.c:1394 src/remmina_sftp_plugin.c:347
 #: src/remmina_file_editor.c:995
@@ -1169,22 +1167,22 @@ msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:334
-#, fuzzy, c-format
-#| msgid "Public SSH key cannot be imported. %s"
+#, c-format
 msgid "SSH certificate cannot be imported. %s"
-msgstr "Der öffentliche SSH-Schlüssel kann nicht importiert werden: %s"
+msgstr "Das SSH-Zertifikat kann nicht importiert werden. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:343
 #, c-format
 msgid "SSH certificate cannot be copied into the privatekey. %s"
 msgstr ""
+"Das SSH-Zertifikat kann nicht in den privaten Schlüssel kopiert werden. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:353
 #, c-format
 msgid "Authentication with SSH certificate failed. %s"
-msgstr ""
+msgstr "Authentifizierung über SSH-Zertifikat ist fehlgeschlagen. %s"
 
 #: src/remmina_ssh.c:364
 msgid "SSH identity file not selected."
@@ -1564,16 +1562,8 @@ msgid "SSH agent (automatic)"
 msgstr "SSH-Agent (automatisch)"
 
 #: src/remmina_file_editor.c:984
-#, fuzzy
-#| msgid "SSH private key passphrase"
 msgid "SSH private key file"
-msgstr "SSH‐Passphrase für privaten Schlüssel"
-
-#: src/remmina_file_editor.c:989
-#, fuzzy
-#| msgid "CA Certificate File"
-msgid "SSH certificate file"
-msgstr "CA Zertifikatsdatei"
+msgstr "Datei mit privatem SSH-Schlüssel"
 
 #: src/remmina_file_editor.c:1071
 msgid "Basic"
@@ -3757,6 +3747,9 @@ msgstr "Wählen Sie eine neue Taste"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "Bitte drücken Sie die neue Taste…"
+
+#~ msgid "SSH certificat file"
+#~ msgstr "SSH-Zertifikatsdatei"
 
 #~ msgid "_Open"
 #~ msgstr "Ö_ffnen"

@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-02-19 11:31+0000\n"
-"PO-Revision-Date: 2021-02-19 11:31+0000\n"
+"POT-Creation-Date: 2021-02-19 13:28+0000\n"
+"PO-Revision-Date: 2021-02-19 13:29+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/remmina/"
 "remmina/uk/>\n"
@@ -313,11 +313,9 @@ msgstr "Пароль користувача"
 msgid "Authentication type"
 msgstr "Тип автентифікації"
 
-#: src/remmina_ssh_plugin.c:1393
-#, fuzzy
-#| msgid "CA Certificate File"
-msgid "SSH certificat file"
-msgstr "Файл сертифіката CA"
+#: src/remmina_ssh_plugin.c:1393 src/remmina_file_editor.c:989
+msgid "SSH certificate file"
+msgstr "Файл сертифіката SSH"
 
 #: src/remmina_ssh_plugin.c:1394 src/remmina_sftp_plugin.c:347
 #: src/remmina_file_editor.c:995
@@ -1168,22 +1166,21 @@ msgstr "Не вдалося пройти розпізнавання за від�
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:334
-#, fuzzy, c-format
-#| msgid "Public SSH key cannot be imported. %s"
+#, c-format
 msgid "SSH certificate cannot be imported. %s"
-msgstr "Не вдалося імпортувати відкритий ключ SSH. %s"
+msgstr "Не вдалося імпортувати сертифікат SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:343
 #, c-format
 msgid "SSH certificate cannot be copied into the privatekey. %s"
-msgstr ""
+msgstr "Не можна копіювати сертифікат SSH до закритого ключа. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:353
 #, c-format
 msgid "Authentication with SSH certificate failed. %s"
-msgstr ""
+msgstr "Не вдалося пройти розпізнавання за сертифікатом SSH. %s"
 
 #: src/remmina_ssh.c:364
 msgid "SSH identity file not selected."
@@ -1561,16 +1558,8 @@ msgid "SSH agent (automatic)"
 msgstr "Агент SSH (автоматично)"
 
 #: src/remmina_file_editor.c:984
-#, fuzzy
-#| msgid "SSH private key passphrase"
 msgid "SSH private key file"
-msgstr "Пароль до закритого ключа SSH"
-
-#: src/remmina_file_editor.c:989
-#, fuzzy
-#| msgid "CA Certificate File"
-msgid "SSH certificate file"
-msgstr "Файл сертифіката CA"
+msgstr "Файл закритого ключа SSH"
 
 #: src/remmina_file_editor.c:1071
 msgid "Basic"
@@ -3752,6 +3741,9 @@ msgstr "Виберіть нову клавішу"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "Будь ласка, натисніть нову клавішу…"
+
+#~ msgid "SSH certificat file"
+#~ msgstr "Файл сертифіката SSH"
 
 #~ msgid "_Open"
 #~ msgstr "_Відкрити"
