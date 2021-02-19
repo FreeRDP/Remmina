@@ -16,8 +16,8 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-02-19 13:28+0000\n"
-"PO-Revision-Date: 2021-02-13 21:36+0000\n"
-"Last-Translator: Fabio Fantoni <fantonifabio@tiscali.it>\n"
+"PO-Revision-Date: 2021-02-19 15:04+0000\n"
+"Last-Translator: Roberto Bellingeri <bellingeri@netguru.it>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/remmina/remmina/"
 "it/>\n"
 "Language: it\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.5-dev\n"
+"X-Generator: Weblate 4.5\n"
 "X-Launchpad-Export-Date: 2011-01-18 05:16+0000\n"
 
 #: src/remmina_protocol_widget.c:280
@@ -320,10 +320,8 @@ msgid "Authentication type"
 msgstr "Tipo di autenticazione"
 
 #: src/remmina_ssh_plugin.c:1393 src/remmina_file_editor.c:989
-#, fuzzy
-#| msgid "CA Certificate File"
 msgid "SSH certificate file"
-msgstr "File di certificato CA"
+msgstr "File di certificato SSH"
 
 #: src/remmina_ssh_plugin.c:1394 src/remmina_sftp_plugin.c:347
 #: src/remmina_file_editor.c:995
@@ -358,8 +356,6 @@ msgstr ""
 "• %d è sostituito con la data e l'ora locale in formato ISO 8601\n"
 
 #: src/remmina_ssh_plugin.c:1422
-#, fuzzy
-#| msgid "Terminal color scheme"
 msgid "Terminal colour scheme"
 msgstr "Combinazione di colori per il terminale"
 
@@ -1169,22 +1165,21 @@ msgstr "Impossibile eseguire l'autenticazione con la chiave SSH pubblica. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:334
-#, fuzzy, c-format
-#| msgid "Public SSH key cannot be imported. %s"
+#, c-format
 msgid "SSH certificate cannot be imported. %s"
-msgstr "Impossibile importare la chiave SSH pubblica. %s"
+msgstr "Impossibile importare il certificato SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:343
 #, c-format
 msgid "SSH certificate cannot be copied into the privatekey. %s"
-msgstr ""
+msgstr "Il certificato SSH non può essere copiato nella chiave privata. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:353
 #, c-format
 msgid "Authentication with SSH certificate failed. %s"
-msgstr ""
+msgstr "Autenticazione con certificato SSH non riuscita. %s"
 
 #: src/remmina_ssh.c:364
 msgid "SSH identity file not selected."
@@ -1563,10 +1558,8 @@ msgid "SSH agent (automatic)"
 msgstr "Agente SSH (automatico)"
 
 #: src/remmina_file_editor.c:984
-#, fuzzy
-#| msgid "SSH private key passphrase"
 msgid "SSH private key file"
-msgstr "Passphrase della chiave privata SSH"
+msgstr "File della chiave privata SSH"
 
 #: src/remmina_file_editor.c:1071
 msgid "Basic"
@@ -2296,15 +2289,6 @@ msgstr ""
 "  • sys:alsa"
 
 #: plugins/rdp/rdp_plugin.c:2464
-#, fuzzy
-#| msgid ""
-#| "Options for redirection of audio ouput:\n"
-#| "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
-#| "    [channel:<channel>] Audio output\n"
-#| "  • sys:pulse\n"
-#| "  • format:1\n"
-#| "  • sys:oss,dev:1,format:1\n"
-#| "  • sys:alsa"
 msgid ""
 "Options for redirection of audio output:\n"
 "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
@@ -2369,6 +2353,16 @@ msgid ""
 "  • 270 (portrait flipped)\n"
 "\n"
 msgstr ""
+"Elenco separato da virgole d'ID monitor e orientamenti del desktop:\n"
+"  • [<id>: <orientation-in-degrees>,]\n"
+"  • 0,1,2,3\n"
+"  • 0: 270,1: 90\n"
+"Gli orientamenti sono specificati in gradi, i valori validi sono:\n"
+"  • 0 (orizzontale)\n"
+"  • 90 (verticale)\n"
+"  • 180 (orizzontale capovolto)\n"
+"  • 270 (ritratto capovolto)\n"
+"\n"
 
 #: plugins/rdp/rdp_plugin.c:2517
 msgid "Left-handed mouse support"
@@ -2418,7 +2412,7 @@ msgstr "tag:livello[,tag:livello[,…]]"
 
 #: plugins/rdp/rdp_plugin.c:2544
 msgid "Audio output mode"
-msgstr ""
+msgstr "Modalità di uscita audio"
 
 #: plugins/rdp/rdp_plugin.c:2545
 msgid "Redirect local audio output"
