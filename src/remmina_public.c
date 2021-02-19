@@ -470,7 +470,7 @@ guint remmina_public_get_current_workspace(GdkScreen *screen)
 	return ret;
 #endif
 #else
-	/* FIXME: on mac etc proably there are native APIs
+	/* FIXME: on mac etc probably there are native APIs
 	 * to get the current workspace etc */
 	return 0;
 #endif
@@ -524,7 +524,7 @@ guint remmina_public_get_window_workspace(GtkWindow *gtkwindow)
 	return ret;
 #endif
 #else
-	/* FIXME: on mac etc proably there are native APIs
+	/* FIXME: on mac etc probably there are native APIs
 	 * to get the current workspace etc */
 	return 0;
 #endif

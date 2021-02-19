@@ -246,7 +246,7 @@ gchar *remmina_utils_string_strip(const gchar *s)
  * @param filename The file path of a Linux distribution release file.
  * @param distroSize The size of the distribution name.
  * @param distro The full distro name.
- * @return Returns a string containing distro information verbatium from /etc/xxx-release (distro). Use g_free to free the string.
+ * @return Returns a string containing distro information verbatim from /etc/xxx-release (distro). Use g_free to free the string.
  *
  */
 static gchar *remmina_utils_read_distrofile(gchar *filename)

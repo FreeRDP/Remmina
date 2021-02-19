@@ -549,7 +549,7 @@ static gboolean rmnews_periodic_check(gpointer user_data)
 
 	/* if remmina_pref is not writable ... */
 	if (remmina_pref_is_rw() == FALSE && remmina_pref.periodic_rmnews_last_get == 0) {
-		/* We randmoly set periodic_rmnews_last_get to a a day between today
+		/* We randomly set periodic_rmnews_last_get to a day between today
 		 * and 7 days ago */
 		gint randidx = randombytes_uniform(8);
 		REMMINA_DEBUG("Setting a random periodic_rmnews_last_get to %d - %d", unixts, eweekdays[randidx]);

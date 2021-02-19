@@ -404,7 +404,7 @@ static gboolean remmina_rdp_event_delayed_monitor_layout(RemminaProtocolWidget *
 			rdp_event.type = REMMINA_RDP_EVENT_TYPE_SEND_MONITOR_LAYOUT;
 			if (remmina_plugin_service->file_get_int(remminafile, "multimon", FALSE)) {
 				for (gint i = 0; i < rfi->settings->MonitorCount; ++i) {
-					REMMINA_PLUGIN_DEBUG("Sending diplay layout n° %d", i);
+					REMMINA_PLUGIN_DEBUG("Sending display layout n° %d", i);
 					rdp_event.monitor_layout.Flags = rfi->settings->MonitorDefArray[i].is_primary;
 					REMMINA_PLUGIN_DEBUG("EVNT MON LAYOUT - Flags: %i", rdp_event.monitor_layout.Flags);
 					rdp_event.monitor_layout.Left = rfi->settings->MonitorDefArray[i].x;
