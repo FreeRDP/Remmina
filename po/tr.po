@@ -14,9 +14,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-02-19 13:28+0000\n"
-"PO-Revision-Date: 2021-02-13 21:36+0000\n"
-"Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
+"POT-Creation-Date: 2021-02-21 14:48+0000\n"
+"PO-Revision-Date: 2021-02-21 14:48+0000\n"
+"Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/remmina/remmina/"
 "tr/>\n"
 "Language: tr\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.5-dev\n"
+"X-Generator: Weblate 4.5\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:04+0000\n"
 
 #: src/remmina_protocol_widget.c:280
@@ -77,10 +77,10 @@ msgstr "SSH ile %s'ye bağlanılıyor…"
 
 #: src/remmina_protocol_widget.c:1457 src/remmina_protocol_widget.c:1476
 #: src/remmina_ssh_plugin.c:1287 src/remmina_sftp_plugin.c:309
-#: src/remmina_sftp_plugin.c:344 src/remmina_file_editor.c:965
-#: plugins/www/www_plugin.c:872 plugins/rdp/rdp_plugin.c:2515
-#: data/ui/remmina_unlock.glade:116 data/ui/remmina_mpc.glade:236
-#: data/ui/remmina_preferences.glade:1682
+#: src/remmina_sftp_plugin.c:344 src/remmina_file_editor.c:845
+#: src/remmina_file_editor.c:966 plugins/www/www_plugin.c:872
+#: plugins/rdp/rdp_plugin.c:2515 data/ui/remmina_unlock.glade:116
+#: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1682
 msgid "Password"
 msgstr "Parola"
 
@@ -137,8 +137,8 @@ msgstr "%i bağlantı noktası, gelen %s bağlantası için dinleniyor…"
 msgid "Could not authenticate, attempting reconnection…"
 msgstr "Kimlik doğrulanamadı, yeniden bağlanmaya çalışılıyor…"
 
-#: src/remmina_protocol_widget.c:1798 src/remmina_file_editor.c:356
-#: src/remmina_file_editor.c:917 data/ui/remmina_main.glade:485
+#: src/remmina_protocol_widget.c:1798 src/remmina_file_editor.c:345
+#: src/remmina_file_editor.c:916 data/ui/remmina_main.glade:485
 msgid "Server"
 msgstr "Sunucu"
 
@@ -152,11 +152,11 @@ msgstr "Önce %s iletişim kuralı eklentisini kurun."
 msgid "Plugin %s is not registered."
 msgstr "Eklenti %s kayıtlı değil."
 
-#: src/remmina_pref_dialog.c:90 src/remmina_file_editor.c:445
+#: src/remmina_pref_dialog.c:90 src/remmina_file_editor.c:434
 msgid "Resolutions"
 msgstr "Çözünürlük"
 
-#: src/remmina_pref_dialog.c:90 src/remmina_file_editor.c:445
+#: src/remmina_pref_dialog.c:90 src/remmina_file_editor.c:434
 msgid "Configure the available resolutions"
 msgstr "Kullanılabilir çözünürlükleri yapılandır"
 
@@ -232,20 +232,22 @@ msgstr "Metin bul (ana makine+G)"
 
 #: src/remmina_ssh_plugin.c:1288 src/remmina_ssh_plugin.c:1392
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:346
-#: plugins/nx/nx_plugin.c:729
+#: src/remmina_file_editor.c:846 plugins/nx/nx_plugin.c:729
 msgid "SSH identity file"
 msgstr "SSH kimlik dosyası"
 
 #: src/remmina_ssh_plugin.c:1289 src/remmina_sftp_plugin.c:311
+#: src/remmina_file_editor.c:847
 msgid "SSH agent"
 msgstr "SSH istemci"
 
 #: src/remmina_ssh_plugin.c:1290 src/remmina_sftp_plugin.c:312
-#: src/remmina_file_editor.c:978
+#: src/remmina_file_editor.c:848
 msgid "Public key (automatic)"
 msgstr "Genel anahtar (kendiliğinden)"
 
 #: src/remmina_ssh_plugin.c:1291 src/remmina_sftp_plugin.c:313
+#: src/remmina_file_editor.c:849
 msgid "Kerberos (GSSAPI)"
 msgstr "Kerberos (GSSAPI)"
 
@@ -297,32 +299,31 @@ msgstr "Metin bul"
 msgid "_Find text"
 msgstr "Metin _bul"
 
-#: src/remmina_ssh_plugin.c:1389 src/remmina_message_panel.c:330
-#: src/remmina_sftp_plugin.c:343 src/remmina_file_editor.c:955
+#: src/remmina_ssh_plugin.c:1389 src/remmina_sftp_plugin.c:345
+#: src/remmina_file_editor.c:951
+msgid "Authentication type"
+msgstr "Kimlik doğrulama türü"
+
+#: src/remmina_ssh_plugin.c:1390 src/remmina_message_panel.c:330
+#: src/remmina_sftp_plugin.c:343 src/remmina_file_editor.c:960
 #: plugins/www/www_plugin.c:871 plugins/vnc/vnc_plugin.c:1879
 #: plugins/vnc/vnc_plugin.c:1899 plugins/rdp/rdp_plugin.c:2514
 #: plugins/nx/nx_plugin.c:730 data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr "Kullanıcı adı"
 
-#: src/remmina_ssh_plugin.c:1390 plugins/vnc/vnc_plugin.c:1880
+#: src/remmina_ssh_plugin.c:1391 plugins/vnc/vnc_plugin.c:1880
 #: plugins/vnc/vnc_plugin.c:1900 plugins/spice/spice_plugin.c:576
 #: plugins/nx/nx_plugin.c:731
 msgid "User password"
 msgstr "Kullanıcı parolası"
 
-#: src/remmina_ssh_plugin.c:1391 src/remmina_sftp_plugin.c:345
-msgid "Authentication type"
-msgstr "Kimlik doğrulama türü"
-
-#: src/remmina_ssh_plugin.c:1393 src/remmina_file_editor.c:989
-#, fuzzy
-#| msgid "CA Certificate File"
+#: src/remmina_ssh_plugin.c:1393 src/remmina_file_editor.c:978
 msgid "SSH certificate file"
-msgstr "CA Sertifika Dosyası"
+msgstr "SSH sertifika dosyası"
 
 #: src/remmina_ssh_plugin.c:1394 src/remmina_sftp_plugin.c:347
-#: src/remmina_file_editor.c:995
+#: src/remmina_file_editor.c:983
 msgid "Password to unlock private key"
 msgstr "Özel anahtarın kilidini açmak için parola"
 
@@ -354,8 +355,6 @@ msgstr ""
 "  • %d ISO 8601 biçiminde yerel tarih ve saat ile değiştirilir\n"
 
 #: src/remmina_ssh_plugin.c:1422
-#, fuzzy
-#| msgid "Terminal color scheme"
 msgid "Terminal colour scheme"
 msgstr "Uçbirim renk düzeni"
 
@@ -538,7 +537,7 @@ msgstr "Boyut"
 msgid "User"
 msgstr "Kullanıcı"
 
-#: src/remmina_ftp_client.c:948 src/remmina_file_editor.c:1560
+#: src/remmina_ftp_client.c:948 src/remmina_file_editor.c:1514
 #: data/ui/remmina_main.glade:471 data/ui/remmina_mpc.glade:115
 msgid "Group"
 msgstr "Küme"
@@ -872,7 +871,7 @@ msgstr "“%s” dosyası bozuk, okunamıyor veya bulunamadı."
 msgid "Warning: This plugin requires GtkSocket, but it’s not available."
 msgstr "Uyarı: Bu eklenti GtkSocket gerektirir, ancak kullanılabilir değil."
 
-#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1578
+#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1532
 msgid "Protocol"
 msgstr "İletişim Kuralı"
 
@@ -901,11 +900,11 @@ msgid "Plugins"
 msgstr "Eklentiler"
 
 #: src/remmina_plugin_manager.c:455 src/remmina_message_panel.c:452
-#: src/remmina_message_panel.c:621 src/remmina_file_editor.c:150
+#: src/remmina_message_panel.c:621 src/remmina_file_editor.c:151
 msgid "_OK"
 msgstr "_Tamam"
 
-#: src/remmina_plugin_manager.c:473 src/remmina_file_editor.c:1535
+#: src/remmina_plugin_manager.c:473 src/remmina_file_editor.c:1489
 #: plugins/nx/nx_session_manager.c:204 data/ui/remmina_main.glade:449
 msgid "Name"
 msgstr "Ad"
@@ -947,7 +946,7 @@ msgstr ""
 msgid "Import"
 msgstr "İçeri Aktar"
 
-#: src/remmina_main.c:1015 src/remmina_file_editor.c:1418
+#: src/remmina_main.c:1015 src/remmina_file_editor.c:1372
 msgid "_Save"
 msgstr "_Kaydet"
 
@@ -1063,8 +1062,8 @@ msgid "Overwrite"
 msgstr "Üzerine Yaz"
 
 #: src/remmina_sftp_client.c:947 src/remmina_message_panel.c:457
-#: src/remmina_message_panel.c:629 src/remmina_file_editor.c:149
-#: src/remmina_file_editor.c:1410 plugins/spice/spice_plugin_file_transfer.c:84
+#: src/remmina_message_panel.c:629 src/remmina_file_editor.c:150
+#: src/remmina_file_editor.c:1364 plugins/spice/spice_plugin_file_transfer.c:84
 #: plugins/nx/nx_session_manager.c:156 data/ui/remmina_spinner.glade:8
 #: data/ui/remmina_spinner.glade:9 data/ui/remmina_key_chooser.glade:8
 #: data/ui/remmina_key_chooser.glade:9
@@ -1163,22 +1162,21 @@ msgstr "Genel SSH anahtarıyla kimlik doğrulanamadı. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:334
-#, fuzzy, c-format
-#| msgid "Public SSH key cannot be imported. %s"
+#, c-format
 msgid "SSH certificate cannot be imported. %s"
-msgstr "Genel SSH anahtarı alınamıyor. %s"
+msgstr "SSH sertifikası alınamıyor. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:343
 #, c-format
 msgid "SSH certificate cannot be copied into the privatekey. %s"
-msgstr ""
+msgstr "SSH sertifikası özel anahtar içerisine kopyalanamıyor. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:353
 #, c-format
 msgid "Authentication with SSH certificate failed. %s"
-msgstr ""
+msgstr "SSH sertifikasıyla kimlik doğrulama başarısız oldu. %s"
 
 #: src/remmina_ssh.c:364
 msgid "SSH identity file not selected."
@@ -1462,149 +1460,143 @@ msgstr ""
 "* kullanıcıadı@sunucu:bağlantınoktası (yalnızca SSH iletişim kuralı)</big></"
 "tt>"
 
-#: src/remmina_file_editor.c:147
+#: src/remmina_file_editor.c:148
 msgid "Choose a Remote Desktop Server"
 msgstr "Uzak Masaüstü Sunucusunu Seç"
 
-#: src/remmina_file_editor.c:380
+#: src/remmina_file_editor.c:369
 #, c-format
 msgid "Browse the network to find a %s server"
 msgstr "Bulmak için ağa göz at %s sunucu"
 
-#: src/remmina_file_editor.c:481
+#: src/remmina_file_editor.c:470
 msgid "Resolution"
 msgstr "Çözünürlük"
 
-#: src/remmina_file_editor.c:488
+#: src/remmina_file_editor.c:477
 msgid "Use initial window size"
 msgstr "İlk pencere boyutunu kullan"
 
-#: src/remmina_file_editor.c:492
+#: src/remmina_file_editor.c:481
 msgid "Use client resolution"
 msgstr "İstemci çözünürlüğünü kullan"
 
-#: src/remmina_file_editor.c:503 src/remmina_file_editor.c:897
+#: src/remmina_file_editor.c:492 src/remmina_file_editor.c:896
 msgid "Custom"
 msgstr "Özel"
 
-#: src/remmina_file_editor.c:727
+#: src/remmina_file_editor.c:716
 msgid "Keyboard mapping"
 msgstr "Klavye tuş haritası"
 
-#: src/remmina_file_editor.c:827
+#: src/remmina_file_editor.c:816
 msgid "Behavior"
 msgstr "Davranış"
 
-#: src/remmina_file_editor.c:830
+#: src/remmina_file_editor.c:819
 msgid "Execute a Command"
 msgstr "Bir Komut Yürüt"
 
-#: src/remmina_file_editor.c:834
+#: src/remmina_file_editor.c:823
 msgid "Before connecting"
 msgstr "Bağlanmadan önce"
 
-#: src/remmina_file_editor.c:836
+#: src/remmina_file_editor.c:825
 msgid "command %h %u %t %U %p %g --option"
 msgstr "komut %h %u %t %U %p %g --seçenek"
 
-#: src/remmina_file_editor.c:841
+#: src/remmina_file_editor.c:830
 msgid "After connecting"
 msgstr "Bağlandıktan sonra"
 
-#: src/remmina_file_editor.c:843
+#: src/remmina_file_editor.c:832
 msgid "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
 msgstr "/komutun/yolu -seçenek1 argüman %h %u %t -seçenek2 %U %p %g"
 
-#: src/remmina_file_editor.c:847
+#: src/remmina_file_editor.c:836
 msgid "Start-up"
 msgstr "Başlangıç"
 
-#: src/remmina_file_editor.c:850
+#: src/remmina_file_editor.c:839
 msgid "Auto-start this profile"
 msgstr "Bu profili kendiliğinden başlat"
 
-#: src/remmina_file_editor.c:870
+#: src/remmina_file_editor.c:869
 msgid "SSH Tunnel"
 msgstr "SSH Tünel"
 
-#: src/remmina_file_editor.c:871
+#: src/remmina_file_editor.c:870
 msgid "Enable SSH tunnel"
 msgstr "SSH tünellemeyi aktifleştir"
 
-#: src/remmina_file_editor.c:878
+#: src/remmina_file_editor.c:877
 msgid "Tunnel via loopback address"
 msgstr "Loopback adres aracılığıyla tünelle"
 
-#: src/remmina_file_editor.c:888
+#: src/remmina_file_editor.c:887
 #, c-format
 msgid "Same server at port %i"
 msgstr "%i bağlantı noktasında aynı sunucu"
 
-#: src/remmina_file_editor.c:938 plugins/rdp/rdp_plugin.c:2555
+#: src/remmina_file_editor.c:937 plugins/rdp/rdp_plugin.c:2555
 msgid "Start-up path"
 msgstr "Başlangıç yolu"
 
-#: src/remmina_file_editor.c:947
+#: src/remmina_file_editor.c:946
 msgid "SSH Authentication"
 msgstr "SSH Kimlik Doğrulayıcı"
 
-#: src/remmina_file_editor.c:959
-msgid "SSH agent (automatic)"
-msgstr "SSH ajanı (kendiliğinden)"
-
-#: src/remmina_file_editor.c:984
-#, fuzzy
-#| msgid "SSH private key passphrase"
+#: src/remmina_file_editor.c:972
 msgid "SSH private key file"
-msgstr "SSH özel anahtar parolası"
+msgstr "SSH özel anahtar dosyası"
 
-#: src/remmina_file_editor.c:1071
+#: src/remmina_file_editor.c:1036
 msgid "Basic"
 msgstr "Basit"
 
-#: src/remmina_file_editor.c:1077
+#: src/remmina_file_editor.c:1042
 msgid "Advanced"
 msgstr "Gelişmiş"
 
-#: src/remmina_file_editor.c:1088
+#: src/remmina_file_editor.c:1053
 msgid "Notes"
 msgstr "Notlar"
 
-#: src/remmina_file_editor.c:1338
+#: src/remmina_file_editor.c:1292
 msgid "Default settings saved."
 msgstr "Öntanımlı ayarlar kaydedildi."
 
-#: src/remmina_file_editor.c:1408
+#: src/remmina_file_editor.c:1362
 msgid "Remote Connection Profile"
 msgstr "Uzak Bağlantı Profili"
 
-#: src/remmina_file_editor.c:1414
+#: src/remmina_file_editor.c:1368
 msgid "Save as Default"
 msgstr "Öntanımlı Olarak Kaydet"
 
-#: src/remmina_file_editor.c:1415
+#: src/remmina_file_editor.c:1369
 msgid "Use the current settings as the default for all new connection profiles"
 msgstr ""
 "Tüm yeni bağlantı profilleri için geçerli ayarları öntanımlı olarak kullan"
 
-#: src/remmina_file_editor.c:1423 data/ui/remmina_main.glade:166
+#: src/remmina_file_editor.c:1377 data/ui/remmina_main.glade:166
 msgid "Connect"
 msgstr "Bağlan"
 
-#: src/remmina_file_editor.c:1426
+#: src/remmina_file_editor.c:1380
 msgid "_Save and Connect"
 msgstr "_Kaydet ve Bağlan"
 
-#: src/remmina_file_editor.c:1549
+#: src/remmina_file_editor.c:1503
 msgid "Quick Connect"
 msgstr "Hızlı Bağlantı"
 
-#: src/remmina_file_editor.c:1573
+#: src/remmina_file_editor.c:1527
 #, c-format
 msgid "Use '%s' as subgroup delimiter"
 msgstr "Şunu alt küme sınırlayıcı olarak kullan: '%s'"
 
-#: src/remmina_file_editor.c:1639 src/remmina_file_editor.c:1657
+#: src/remmina_file_editor.c:1593 src/remmina_file_editor.c:1611
 #, c-format
 msgid "Could not find the file “%s”."
 msgstr "“%s” dosyası bulunamadı."
@@ -2283,15 +2275,6 @@ msgstr ""
 "  • sys:alsa"
 
 #: plugins/rdp/rdp_plugin.c:2464
-#, fuzzy
-#| msgid ""
-#| "Options for redirection of audio ouput:\n"
-#| "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
-#| "    [channel:<channel>] Audio output\n"
-#| "  • sys:pulse\n"
-#| "  • format:1\n"
-#| "  • sys:oss,dev:1,format:1\n"
-#| "  • sys:alsa"
 msgid ""
 "Options for redirection of audio output:\n"
 "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
@@ -2354,6 +2337,17 @@ msgid ""
 "  • 270 (portrait flipped)\n"
 "\n"
 msgstr ""
+"Ekran kimliklerinin ve masaüstü yönlendirmelerinin virgülle ayrılmış "
+"listesi:\n"
+"  • [<kimlik>: <derece-cinsinden-yönlendirme>,]\n"
+"  • 0,1,2,3\n"
+"  • 0: 270,1: 90\n"
+"Yönlendirmeler derece cinsinden belirtilir, geçerli değerler şunlardır:\n"
+"  • 0 (yatay)\n"
+"  • 90 (dikey)\n"
+"  • 180 (yatay ters çevrilmiş)\n"
+"  • 270 (dikey ters çevrilmiş)\n"
+"\n"
 
 #: plugins/rdp/rdp_plugin.c:2517
 msgid "Left-handed mouse support"
@@ -2404,7 +2398,7 @@ msgstr "etiket:seviye[,etiket:seviye[,…]]"
 
 #: plugins/rdp/rdp_plugin.c:2544
 msgid "Audio output mode"
-msgstr ""
+msgstr "Ses çıkış kipi"
 
 #: plugins/rdp/rdp_plugin.c:2545
 msgid "Redirect local audio output"
@@ -3353,19 +3347,14 @@ msgid "“Grab all keyboard events” status colour"
 msgstr "“Tüm klavye olaylarını yakala” durum rengi"
 
 #: data/ui/remmina_preferences.glade:796
-#, fuzzy
-#| msgid ""
-#| "Hexadecimal or color names (red, #ff0000)\n"
-#| "It changes the connection name background colour, in the remmina "
-#| "connection toolbar when in full screen"
 msgid ""
 "Hexadecimal- or colour names (red, #ff0000).\n"
 "It changes the background colour of connection names in the Remmina "
 "connection toolbar (when in fullscreen)."
 msgstr ""
-"Onaltılık düzen veya renk adları (red, #ff0000)\n"
-"Tam ekranda olduğunda Remmina bağlantı araç çubuğunda bağlantı adı arka plan "
-"rengini değiştirir"
+"Onaltılık düzen veya renk adları (red, #ff0000).\n"
+"(Tam ekranda olduğunda) Remmina bağlantı araç çubuğunda bağlantı adlarının "
+"arka plan rengini değiştirir."
 
 #: data/ui/remmina_preferences.glade:832
 msgid "Appearance"
@@ -3691,24 +3680,18 @@ msgstr "Kalın renk"
 
 #: data/ui/remmina_preferences.glade:2508
 #: data/ui/remmina_preferences.glade:2548
-#, fuzzy
-#| msgid "Bright colours"
 msgid "Highlight colour"
-msgstr "Parlak renkler"
+msgstr "Vurgu rengi"
 
 #: data/ui/remmina_preferences.glade:2521
 #: data/ui/remmina_preferences.glade:2563
-#, fuzzy
-#| msgid "Foreground colour"
 msgid "Highlight foreground colour"
-msgstr "Ön plan rengi"
+msgstr "Vurgu ön plan rengi"
 
 #: data/ui/remmina_preferences.glade:2534
 #: data/ui/remmina_preferences.glade:2578
-#, fuzzy
-#| msgid "Foreground colour"
 msgid "Cursor foreground colour"
-msgstr "Ön plan rengi"
+msgstr "İmleç ön plan rengi"
 
 #: data/ui/remmina_preferences.glade:2597
 msgid "Terminal"
@@ -3738,6 +3721,9 @@ msgstr "Yeni tuş seç"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "Lütfen yeni tuşa basın…"
+
+#~ msgid "SSH agent (automatic)"
+#~ msgstr "SSH ajanı (kendiliğinden)"
 
 #, fuzzy
 #~| msgid "CA Certificate File"

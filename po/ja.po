@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-02-19 13:28+0000\n"
+"POT-Creation-Date: 2021-02-21 14:48+0000\n"
 "PO-Revision-Date: 2021-02-14 21:19+0000\n"
 "Last-Translator: YAMADA Shinichirou <yamada_strong_yamada_nice_64bit@yahoo."
 "co.jp>\n"
@@ -80,10 +80,10 @@ msgstr "SSH で %s に接続中…"
 
 #: src/remmina_protocol_widget.c:1457 src/remmina_protocol_widget.c:1476
 #: src/remmina_ssh_plugin.c:1287 src/remmina_sftp_plugin.c:309
-#: src/remmina_sftp_plugin.c:344 src/remmina_file_editor.c:965
-#: plugins/www/www_plugin.c:872 plugins/rdp/rdp_plugin.c:2515
-#: data/ui/remmina_unlock.glade:116 data/ui/remmina_mpc.glade:236
-#: data/ui/remmina_preferences.glade:1682
+#: src/remmina_sftp_plugin.c:344 src/remmina_file_editor.c:845
+#: src/remmina_file_editor.c:966 plugins/www/www_plugin.c:872
+#: plugins/rdp/rdp_plugin.c:2515 data/ui/remmina_unlock.glade:116
+#: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1682
 msgid "Password"
 msgstr "パスワード"
 
@@ -140,8 +140,8 @@ msgstr "ポート %i への %s 接続を待ち受け中…"
 msgid "Could not authenticate, attempting reconnection…"
 msgstr "認証できませんでした。再接続しています…"
 
-#: src/remmina_protocol_widget.c:1798 src/remmina_file_editor.c:356
-#: src/remmina_file_editor.c:917 data/ui/remmina_main.glade:485
+#: src/remmina_protocol_widget.c:1798 src/remmina_file_editor.c:345
+#: src/remmina_file_editor.c:916 data/ui/remmina_main.glade:485
 msgid "Server"
 msgstr "サーバー"
 
@@ -155,11 +155,11 @@ msgstr "最初に %s プロトコルプラグインをインストールして�
 msgid "Plugin %s is not registered."
 msgstr "プラグイン %s は登録されていません。"
 
-#: src/remmina_pref_dialog.c:90 src/remmina_file_editor.c:445
+#: src/remmina_pref_dialog.c:90 src/remmina_file_editor.c:434
 msgid "Resolutions"
 msgstr "解像度"
 
-#: src/remmina_pref_dialog.c:90 src/remmina_file_editor.c:445
+#: src/remmina_pref_dialog.c:90 src/remmina_file_editor.c:434
 msgid "Configure the available resolutions"
 msgstr "利用可能な解像度の設定"
 
@@ -234,20 +234,22 @@ msgstr "文字列を検索 (host+G)"
 
 #: src/remmina_ssh_plugin.c:1288 src/remmina_ssh_plugin.c:1392
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:346
-#: plugins/nx/nx_plugin.c:729
+#: src/remmina_file_editor.c:846 plugins/nx/nx_plugin.c:729
 msgid "SSH identity file"
 msgstr "SSH 秘密鍵ファイル"
 
 #: src/remmina_ssh_plugin.c:1289 src/remmina_sftp_plugin.c:311
+#: src/remmina_file_editor.c:847
 msgid "SSH agent"
 msgstr "SSH エージェント"
 
 #: src/remmina_ssh_plugin.c:1290 src/remmina_sftp_plugin.c:312
-#: src/remmina_file_editor.c:978
+#: src/remmina_file_editor.c:848
 msgid "Public key (automatic)"
 msgstr "公開鍵 (自動)"
 
 #: src/remmina_ssh_plugin.c:1291 src/remmina_sftp_plugin.c:313
+#: src/remmina_file_editor.c:849
 msgid "Kerberos (GSSAPI)"
 msgstr "Kerberos (GSSAPI)"
 
@@ -299,32 +301,33 @@ msgstr "文字列を検索"
 msgid "_Find text"
 msgstr "文字列を検索(_F)"
 
-#: src/remmina_ssh_plugin.c:1389 src/remmina_message_panel.c:330
-#: src/remmina_sftp_plugin.c:343 src/remmina_file_editor.c:955
+#: src/remmina_ssh_plugin.c:1389 src/remmina_sftp_plugin.c:345
+#: src/remmina_file_editor.c:951
+msgid "Authentication type"
+msgstr "認証方式"
+
+#: src/remmina_ssh_plugin.c:1390 src/remmina_message_panel.c:330
+#: src/remmina_sftp_plugin.c:343 src/remmina_file_editor.c:960
 #: plugins/www/www_plugin.c:871 plugins/vnc/vnc_plugin.c:1879
 #: plugins/vnc/vnc_plugin.c:1899 plugins/rdp/rdp_plugin.c:2514
 #: plugins/nx/nx_plugin.c:730 data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr "ユーザー名"
 
-#: src/remmina_ssh_plugin.c:1390 plugins/vnc/vnc_plugin.c:1880
+#: src/remmina_ssh_plugin.c:1391 plugins/vnc/vnc_plugin.c:1880
 #: plugins/vnc/vnc_plugin.c:1900 plugins/spice/spice_plugin.c:576
 #: plugins/nx/nx_plugin.c:731
 msgid "User password"
 msgstr "ユーザーパスワード"
 
-#: src/remmina_ssh_plugin.c:1391 src/remmina_sftp_plugin.c:345
-msgid "Authentication type"
-msgstr "認証方式"
-
-#: src/remmina_ssh_plugin.c:1393 src/remmina_file_editor.c:989
+#: src/remmina_ssh_plugin.c:1393 src/remmina_file_editor.c:978
 #, fuzzy
 #| msgid "CA Certificate File"
 msgid "SSH certificate file"
 msgstr "CA 証明書ファイル"
 
 #: src/remmina_ssh_plugin.c:1394 src/remmina_sftp_plugin.c:347
-#: src/remmina_file_editor.c:995
+#: src/remmina_file_editor.c:983
 msgid "Password to unlock private key"
 msgstr "秘密鍵のロックを解除するパスワード"
 
@@ -557,7 +560,7 @@ msgstr "サイズ"
 msgid "User"
 msgstr "ユーザー"
 
-#: src/remmina_ftp_client.c:948 src/remmina_file_editor.c:1560
+#: src/remmina_ftp_client.c:948 src/remmina_file_editor.c:1514
 #: data/ui/remmina_main.glade:471 data/ui/remmina_mpc.glade:115
 msgid "Group"
 msgstr "グループ"
@@ -891,7 +894,7 @@ msgstr "“%s” は壊れているか、読み取り不可か、または見つ
 msgid "Warning: This plugin requires GtkSocket, but it’s not available."
 msgstr "警告: このプラグインに必要な GtkSocket が利用できません。"
 
-#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1578
+#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1532
 msgid "Protocol"
 msgstr "プロトコル"
 
@@ -920,11 +923,11 @@ msgid "Plugins"
 msgstr "プラグイン"
 
 #: src/remmina_plugin_manager.c:455 src/remmina_message_panel.c:452
-#: src/remmina_message_panel.c:621 src/remmina_file_editor.c:150
+#: src/remmina_message_panel.c:621 src/remmina_file_editor.c:151
 msgid "_OK"
 msgstr "OK(_O)"
 
-#: src/remmina_plugin_manager.c:473 src/remmina_file_editor.c:1535
+#: src/remmina_plugin_manager.c:473 src/remmina_file_editor.c:1489
 #: plugins/nx/nx_session_manager.c:204 data/ui/remmina_main.glade:449
 msgid "Name"
 msgstr "名前"
@@ -965,7 +968,7 @@ msgstr ""
 msgid "Import"
 msgstr "インポート"
 
-#: src/remmina_main.c:1015 src/remmina_file_editor.c:1418
+#: src/remmina_main.c:1015 src/remmina_file_editor.c:1372
 msgid "_Save"
 msgstr "保存(_S)"
 
@@ -1081,8 +1084,8 @@ msgid "Overwrite"
 msgstr "上書き"
 
 #: src/remmina_sftp_client.c:947 src/remmina_message_panel.c:457
-#: src/remmina_message_panel.c:629 src/remmina_file_editor.c:149
-#: src/remmina_file_editor.c:1410 plugins/spice/spice_plugin_file_transfer.c:84
+#: src/remmina_message_panel.c:629 src/remmina_file_editor.c:150
+#: src/remmina_file_editor.c:1364 plugins/spice/spice_plugin_file_transfer.c:84
 #: plugins/nx/nx_session_manager.c:156 data/ui/remmina_spinner.glade:8
 #: data/ui/remmina_spinner.glade:9 data/ui/remmina_key_chooser.glade:8
 #: data/ui/remmina_key_chooser.glade:9
@@ -1480,148 +1483,144 @@ msgstr ""
 "• [サーバー]:ポート\n"
 "• ユーザー名@サーバー:ポート (SSH プロトコルのみ)</big></tt>"
 
-#: src/remmina_file_editor.c:147
+#: src/remmina_file_editor.c:148
 msgid "Choose a Remote Desktop Server"
 msgstr "リモートデスクトップサーバーを選択"
 
-#: src/remmina_file_editor.c:380
+#: src/remmina_file_editor.c:369
 #, c-format
 msgid "Browse the network to find a %s server"
 msgstr "ネットワークからサーバー %s を探す"
 
-#: src/remmina_file_editor.c:481
+#: src/remmina_file_editor.c:470
 msgid "Resolution"
 msgstr "解像度"
 
-#: src/remmina_file_editor.c:488
+#: src/remmina_file_editor.c:477
 msgid "Use initial window size"
 msgstr "初期ウィンドウサイズを使用する"
 
-#: src/remmina_file_editor.c:492
+#: src/remmina_file_editor.c:481
 msgid "Use client resolution"
 msgstr "クライアントの解像度を使用する"
 
-#: src/remmina_file_editor.c:503 src/remmina_file_editor.c:897
+#: src/remmina_file_editor.c:492 src/remmina_file_editor.c:896
 msgid "Custom"
 msgstr "カスタム"
 
-#: src/remmina_file_editor.c:727
+#: src/remmina_file_editor.c:716
 msgid "Keyboard mapping"
 msgstr "キーボードマッピング"
 
-#: src/remmina_file_editor.c:827
+#: src/remmina_file_editor.c:816
 msgid "Behavior"
 msgstr "挙動"
 
-#: src/remmina_file_editor.c:830
+#: src/remmina_file_editor.c:819
 msgid "Execute a Command"
 msgstr "コマンドの実行"
 
-#: src/remmina_file_editor.c:834
+#: src/remmina_file_editor.c:823
 msgid "Before connecting"
 msgstr "接続前"
 
-#: src/remmina_file_editor.c:836
+#: src/remmina_file_editor.c:825
 msgid "command %h %u %t %U %p %g --option"
 msgstr "コマンド %h %u %t %U %p %g --オプション"
 
-#: src/remmina_file_editor.c:841
+#: src/remmina_file_editor.c:830
 msgid "After connecting"
 msgstr "接続後"
 
-#: src/remmina_file_editor.c:843
+#: src/remmina_file_editor.c:832
 msgid "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
 msgstr "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
 
-#: src/remmina_file_editor.c:847
+#: src/remmina_file_editor.c:836
 msgid "Start-up"
 msgstr "起動時"
 
-#: src/remmina_file_editor.c:850
+#: src/remmina_file_editor.c:839
 msgid "Auto-start this profile"
 msgstr "このプロファイルを自動起動する"
 
-#: src/remmina_file_editor.c:870
+#: src/remmina_file_editor.c:869
 msgid "SSH Tunnel"
 msgstr "SSH トンネル"
 
-#: src/remmina_file_editor.c:871
+#: src/remmina_file_editor.c:870
 msgid "Enable SSH tunnel"
 msgstr "SSH トンネルを有効にする"
 
-#: src/remmina_file_editor.c:878
+#: src/remmina_file_editor.c:877
 msgid "Tunnel via loopback address"
 msgstr "ループバックアドレス経由のトンネル"
 
-#: src/remmina_file_editor.c:888
+#: src/remmina_file_editor.c:887
 #, c-format
 msgid "Same server at port %i"
 msgstr "ポート %i の同じサーバー"
 
-#: src/remmina_file_editor.c:938 plugins/rdp/rdp_plugin.c:2555
+#: src/remmina_file_editor.c:937 plugins/rdp/rdp_plugin.c:2555
 msgid "Start-up path"
 msgstr "起動パス"
 
-#: src/remmina_file_editor.c:947
+#: src/remmina_file_editor.c:946
 msgid "SSH Authentication"
 msgstr "SSH 認証"
 
-#: src/remmina_file_editor.c:959
-msgid "SSH agent (automatic)"
-msgstr "SSH エージェント (自動)"
-
-#: src/remmina_file_editor.c:984
+#: src/remmina_file_editor.c:972
 #, fuzzy
 #| msgid "SSH private key passphrase"
 msgid "SSH private key file"
 msgstr "SSH 秘密鍵のパスフレーズ"
 
-#: src/remmina_file_editor.c:1071
+#: src/remmina_file_editor.c:1036
 msgid "Basic"
 msgstr "基本設定"
 
-#: src/remmina_file_editor.c:1077
+#: src/remmina_file_editor.c:1042
 msgid "Advanced"
 msgstr "高度な設定"
 
-#: src/remmina_file_editor.c:1088
+#: src/remmina_file_editor.c:1053
 msgid "Notes"
 msgstr "メモ"
 
-#: src/remmina_file_editor.c:1338
+#: src/remmina_file_editor.c:1292
 msgid "Default settings saved."
 msgstr "既定の設定を保存しました。"
 
-#: src/remmina_file_editor.c:1408
+#: src/remmina_file_editor.c:1362
 msgid "Remote Connection Profile"
 msgstr "リモート接続プロファイル"
 
-#: src/remmina_file_editor.c:1414
+#: src/remmina_file_editor.c:1368
 msgid "Save as Default"
 msgstr "既定値として保存"
 
-#: src/remmina_file_editor.c:1415
+#: src/remmina_file_editor.c:1369
 msgid "Use the current settings as the default for all new connection profiles"
 msgstr "現在の設定をすべての新規接続プロファイルの規定値として使用する"
 
-#: src/remmina_file_editor.c:1423 data/ui/remmina_main.glade:166
+#: src/remmina_file_editor.c:1377 data/ui/remmina_main.glade:166
 msgid "Connect"
 msgstr "接続"
 
-#: src/remmina_file_editor.c:1426
+#: src/remmina_file_editor.c:1380
 msgid "_Save and Connect"
 msgstr "保存して接続(_S)"
 
-#: src/remmina_file_editor.c:1549
+#: src/remmina_file_editor.c:1503
 msgid "Quick Connect"
 msgstr "クイック接続"
 
-#: src/remmina_file_editor.c:1573
+#: src/remmina_file_editor.c:1527
 #, c-format
 msgid "Use '%s' as subgroup delimiter"
 msgstr "サブグループの区切り文字には '%s' を使用してください"
 
-#: src/remmina_file_editor.c:1639 src/remmina_file_editor.c:1657
+#: src/remmina_file_editor.c:1593 src/remmina_file_editor.c:1611
 #, c-format
 msgid "Could not find the file “%s”."
 msgstr "“%s” が見つかりませんでした。"
@@ -3748,6 +3747,9 @@ msgstr "新しいキーを選択"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "新しいキーを押してください…"
+
+#~ msgid "SSH agent (automatic)"
+#~ msgstr "SSH エージェント (自動)"
 
 #, fuzzy
 #~| msgid "CA Certificate File"
