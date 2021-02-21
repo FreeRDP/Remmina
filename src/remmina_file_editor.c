@@ -124,6 +124,7 @@ struct _RemminaFileEditorPriv {
 	GtkWidget *		ssh_tunnel_passphrase;
 	GtkWidget *		ssh_tunnel_auth_publickey_radio;
 	GtkWidget *		ssh_tunnel_auth_auto_publickey_radio;
+	GtkWidget *		ssh_tunnel_auth_combo;
 	GtkWidget *		ssh_tunnel_username_entry;
 	GtkWidget *		ssh_tunnel_privatekey_chooser;
 	GtkWidget *		ssh_tunnel_certfile_chooser;
@@ -271,24 +272,6 @@ static void remmina_file_editor_ssh_tunnel_server_custom_radio_on_toggled(GtkTog
 				 );
 }
 
-static void remmina_file_editor_ssh_tunnel_auth_publickey_radio_on_toggled(GtkToggleButton *togglebutton, RemminaFileEditor *gfe)
-{
-	TRACE_CALL(__func__);
-	gboolean b;
-	const gchar *s;
-
-	b = ((!gfe->priv->ssh_tunnel_enabled_check ||
-	      gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(gfe->priv->ssh_tunnel_enabled_check))) &&
-	     gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(gfe->priv->ssh_tunnel_auth_publickey_radio)));
-	gtk_widget_set_sensitive(GTK_WIDGET(gfe->priv->ssh_tunnel_privatekey_chooser), b);
-	gtk_widget_set_sensitive(GTK_WIDGET(gfe->priv->ssh_tunnel_certfile_chooser), b);
-
-	if (b && (s = remmina_file_get_string(gfe->priv->remmina_file, "ssh_tunnel_privatekey")))
-		gtk_file_chooser_set_filename(GTK_FILE_CHOOSER(gfe->priv->ssh_tunnel_privatekey_chooser), s);
-	if (b && (s = remmina_file_get_string(gfe->priv->remmina_file, "ssh_tunnel_certfile")))
-		gtk_file_chooser_set_filename(GTK_FILE_CHOOSER(gfe->priv->ssh_tunnel_certfile_chooser), s);
-}
-
 static void remmina_file_editor_ssh_tunnel_enabled_check_on_toggled(GtkToggleButton *togglebutton,
 								    RemminaFileEditor *gfe, RemminaProtocolSSHSetting ssh_setting)
 {
@@ -297,6 +280,7 @@ static void remmina_file_editor_ssh_tunnel_enabled_check_on_toggled(GtkToggleBut
 	gboolean enabled = TRUE;
 	gchar *p;
 	const gchar *cp;
+	const gchar *s = NULL;
 
 	if (gfe->priv->ssh_tunnel_enabled_check) {
 		enabled = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(gfe->priv->ssh_tunnel_enabled_check));
@@ -310,15 +294,20 @@ static void remmina_file_editor_ssh_tunnel_enabled_check_on_toggled(GtkToggleBut
 		p = remmina_public_combo_get_active_text(GTK_COMBO_BOX(priv->protocol_combo));
 		//if (!(g_strcmp0(p, "SFTP") == 0 || g_strcmp0(p, "SSH") == 0)) {
 		gtk_widget_set_sensitive(GTK_WIDGET(gfe->priv->ssh_tunnel_username_entry), enabled);
-		gtk_widget_set_sensitive(GTK_WIDGET(gfe->priv->ssh_tunnel_auth_agent_radio), enabled);
-		gtk_widget_set_sensitive(GTK_WIDGET(gfe->priv->ssh_tunnel_auth_password_radio), enabled);
 		gtk_widget_set_sensitive(GTK_WIDGET(gfe->priv->ssh_tunnel_auth_password), enabled);
-		gtk_widget_set_sensitive(GTK_WIDGET(gfe->priv->ssh_tunnel_auth_publickey_radio), enabled);
-		gtk_widget_set_sensitive(GTK_WIDGET(gfe->priv->ssh_tunnel_auth_auto_publickey_radio), enabled);
+		gtk_widget_set_sensitive(GTK_WIDGET(gfe->priv->ssh_tunnel_auth_combo), enabled);
+		gtk_widget_set_sensitive(GTK_WIDGET(gfe->priv->ssh_tunnel_privatekey_chooser), enabled);
+		gtk_widget_set_sensitive(GTK_WIDGET(gfe->priv->ssh_tunnel_certfile_chooser), enabled);
 		//}
 		g_free(p);
 	}
-	remmina_file_editor_ssh_tunnel_auth_publickey_radio_on_toggled(NULL, gfe);
+	//remmina_file_editor_ssh_tunnel_auth_publickey_radio_on_toggled(NULL, gfe);
+	s = remmina_file_get_string(gfe->priv->remmina_file, "ssh_tunnel_privatekey");
+	if (s)
+		gtk_file_chooser_set_filename(GTK_FILE_CHOOSER(gfe->priv->ssh_tunnel_privatekey_chooser), s);
+	s = remmina_file_get_string(gfe->priv->remmina_file, "ssh_tunnel_certfile");
+	if (s)
+		gtk_file_chooser_set_filename(GTK_FILE_CHOOSER(gfe->priv->ssh_tunnel_certfile_chooser), s);
 
 	if (gfe->priv->ssh_tunnel_username_entry)
 		if (enabled && gtk_entry_get_text(GTK_ENTRY(gfe->priv->ssh_tunnel_username_entry)) [0] == '\0') {
@@ -851,6 +840,16 @@ static void remmina_file_editor_create_behavior_tab(RemminaFileEditor *gfe)
 							remmina_file_get_int(priv->remmina_file, "enable-autostart", FALSE));
 }
 
+static gpointer ssh_tunnel_auth_list[] =
+{
+	"0", N_("Password"),
+	"1", N_("SSH identity file"),
+	"2", N_("SSH agent"),
+	"3", N_("Public key (automatic)"),
+	"4", N_("Kerberos (GSSAPI)"),
+	NULL
+};
+
 static void remmina_file_editor_create_ssh_tunnel_tab(RemminaFileEditor *gfe, RemminaProtocolSSHSetting ssh_setting)
 {
 	TRACE_CALL(__func__);
@@ -948,6 +947,12 @@ static void remmina_file_editor_create_ssh_tunnel_tab(RemminaFileEditor *gfe, Re
 	// 5
 	row +=2;
 
+	priv->ssh_tunnel_auth_combo = remmina_file_editor_create_select(gfe, grid, row, 0,
+			_("Authentication type"),
+			(const gpointer *)ssh_tunnel_auth_list,
+			remmina_file_get_string(priv->remmina_file, "ssh_tunnel_auth"));
+	row++;
+
 	if (ssh_setting == REMMINA_PROTOCOL_SSH_SETTING_TUNNEL ||
 	    ssh_setting == REMMINA_PROTOCOL_SSH_SETTING_REVERSE_TUNNEL) {
 		priv->ssh_tunnel_username_entry =
@@ -956,28 +961,11 @@ static void remmina_file_editor_create_ssh_tunnel_tab(RemminaFileEditor *gfe, Re
 		// 5
 		row++;
 	}
-	widget = gtk_radio_button_new_with_label(NULL, _("SSH agent (automatic)"));
-	gtk_grid_attach(GTK_GRID(grid), widget, 0, row, 1, 1);
-	priv->ssh_tunnel_auth_agent_radio = widget;
-	row++;
 
-	widget = gtk_radio_button_new_with_label_from_widget(
-		GTK_RADIO_BUTTON(priv->ssh_tunnel_auth_agent_radio), _("Password"));
-	gtk_grid_attach(GTK_GRID(grid), widget, 0, row, 1, 1);
-	priv->ssh_tunnel_auth_password_radio = widget;
-
-	widget = gtk_entry_new();
-	gtk_grid_attach(GTK_GRID(grid), widget, 1, row, 2, 1);
-	gtk_entry_set_max_length(GTK_ENTRY(widget), 300);
-	gtk_entry_set_visibility(GTK_ENTRY(widget), FALSE);
-	gtk_widget_set_hexpand(widget, TRUE);
+	widget= remmina_file_editor_create_password(gfe, grid, row, 0,
+						     _("Password"),
+						     remmina_file_get_string(priv->remmina_file, "ssh_tunnel_password"));
 	priv->ssh_tunnel_auth_password = widget;
-	row++;
-
-	widget = gtk_radio_button_new_with_label_from_widget(
-		GTK_RADIO_BUTTON(priv->ssh_tunnel_auth_agent_radio), _("Public key (automatic)"));
-	gtk_grid_attach(GTK_GRID(grid), widget, 0, row, 1, 1);
-	priv->ssh_tunnel_auth_auto_publickey_radio = widget;
 	row++;
 
 	priv->ssh_tunnel_privatekey_chooser = remmina_file_editor_create_chooser(gfe, grid, row, 0,
@@ -985,12 +973,12 @@ static void remmina_file_editor_create_ssh_tunnel_tab(RemminaFileEditor *gfe, Re
 	    remmina_file_get_string(priv->remmina_file, "ssh_tunnel_privatekey"),
 	    GTK_FILE_CHOOSER_ACTION_OPEN);
 	row++;
+
 	priv->ssh_tunnel_certfile_chooser = remmina_file_editor_create_chooser(gfe, grid, row, 0,
 	    _("SSH certificate file"),
 	    remmina_file_get_string(priv->remmina_file, "ssh_tunnel_certfile"),
 	    GTK_FILE_CHOOSER_ACTION_OPEN);
 	row++;
-
 
 	widget = gtk_label_new(_("Password to unlock private key"));
 	gtk_grid_attach(GTK_GRID(grid), widget, 0, row, 1, 1);
@@ -1023,30 +1011,7 @@ static void remmina_file_editor_create_ssh_tunnel_tab(RemminaFileEditor *gfe, Re
 				   cs ? cs : "");
 	}
 
-	//if (!(g_strcmp0(p, "SFTP") == 0 || g_strcmp0(p, "SSH") == 0)) {
-	gint ssh_tunnel_auth_status = remmina_file_get_int(priv->remmina_file, "ssh_tunnel_auth", 0);
-	g_debug ("[Editor - tunnel] ssh_tunnel_auth_status is: %d", ssh_tunnel_auth_status);
-	switch (ssh_tunnel_auth_status) {
-		case SSH_AUTH_PUBLICKEY:
-			g_debug("[Editor - tunnel] Auth set from file to SSH_AUTH_PUBLICKEY");
-			gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(priv->ssh_tunnel_auth_publickey_radio), TRUE);
-			break;
-		case SSH_AUTH_AUTO_PUBLICKEY:
-			g_debug("[Editor - tunnel] Auth set from file to SSH_AUTH_AUTO_PUBLICKEY");
-			gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(priv->ssh_tunnel_auth_auto_publickey_radio), TRUE);
-			break;
-		case SSH_AUTH_AGENT:
-			g_debug("[Editor - tunnel] Auth set from file to SSH_AUTH_AGENT");
-			gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(priv->ssh_tunnel_auth_agent_radio), TRUE);
-			break;
-		default:
-			g_debug("[Editor - tunnel] Auth set from file to SSH_AUTH_PASSWORD");
-			gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(priv->ssh_tunnel_auth_password_radio), TRUE);
-			break;
-	}
-
 	remmina_file_editor_ssh_tunnel_enabled_check_on_toggled(NULL, gfe, ssh_setting);
-	//}
 	gtk_widget_show_all(grid);
 	g_free(p);
 #endif
@@ -1117,10 +1082,8 @@ static void remmina_file_editor_protocol_combo_on_changed(GtkComboBox *combo, Re
 	priv->ssh_tunnel_server_custom_radio = NULL;
 	priv->ssh_tunnel_server_entry = NULL;
 	priv->ssh_tunnel_username_entry = NULL;
-	priv->ssh_tunnel_auth_agent_radio = NULL;
-	priv->ssh_tunnel_auth_password_radio = NULL;
-	priv->ssh_tunnel_auth_publickey_radio = NULL;
-	priv->ssh_tunnel_auth_auto_publickey_radio = NULL;
+	priv->ssh_tunnel_auth_combo = NULL;
+	priv->ssh_tunnel_auth_password = NULL;
 	priv->ssh_tunnel_privatekey_chooser = NULL;
 	priv->ssh_tunnel_certfile_chooser = NULL;
 
@@ -1164,6 +1127,8 @@ static void remmina_file_editor_save_ssh_tunnel_tab(RemminaFileEditor *gfe)
 			      gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(priv->ssh_tunnel_loopback_check)) :
 			      FALSE));
 	remmina_file_set_int(priv->remmina_file, "ssh_tunnel_enabled", ssh_tunnel_enabled);
+	remmina_file_set_string_ref(priv->remmina_file, "ssh_tunnel_auth",
+			remmina_public_combo_get_active_text(GTK_COMBO_BOX(priv->ssh_tunnel_auth_combo)));
 	remmina_file_set_string(priv->remmina_file, "ssh_tunnel_username",
 				(ssh_tunnel_enabled ? gtk_entry_get_text(GTK_ENTRY(priv->ssh_tunnel_username_entry)) : NULL));
 	remmina_file_set_string(
@@ -1175,18 +1140,7 @@ static void remmina_file_editor_save_ssh_tunnel_tab(RemminaFileEditor *gfe)
 			     GTK_TOGGLE_BUTTON(priv->ssh_tunnel_server_custom_radio))) ?
 		 gtk_entry_get_text(GTK_ENTRY(priv->ssh_tunnel_server_entry)) : NULL));
 
-	ssh_tunnel_auth = (priv->ssh_tunnel_auth_publickey_radio
-			   && gtk_toggle_button_get_active(
-				   GTK_TOGGLE_BUTTON(priv->ssh_tunnel_auth_publickey_radio)) ?
-			   SSH_AUTH_PUBLICKEY :
-			   priv->ssh_tunnel_auth_auto_publickey_radio
-			   && gtk_toggle_button_get_active(
-				   GTK_TOGGLE_BUTTON(priv->ssh_tunnel_auth_auto_publickey_radio)) ?
-			   SSH_AUTH_AUTO_PUBLICKEY :
-			   priv->ssh_tunnel_auth_agent_radio
-			   && gtk_toggle_button_get_active(
-				   GTK_TOGGLE_BUTTON(priv->ssh_tunnel_auth_agent_radio)) ?
-			   SSH_AUTH_AGENT : SSH_AUTH_PASSWORD);
+	ssh_tunnel_auth = gtk_combo_box_get_active (GTK_COMBO_BOX(priv->ssh_tunnel_auth_combo));
 
 	remmina_file_set_int(
 		priv->remmina_file,
