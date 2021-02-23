@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-02-23 00:59+0000\n"
+"POT-Creation-Date: 2021-02-23 20:00+0000\n"
 "PO-Revision-Date: 2021-02-15 09:57+0000\n"
 "Last-Translator: Justin Song <mcsong@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -1156,15 +1156,17 @@ msgstr "공개 SSH 키를 가져올 수 없습니다. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:343
-#, c-format
-msgid "SSH certificate cannot be copied into the privatekey. %s"
-msgstr ""
+#, fuzzy, c-format
+#| msgid "Public SSH key cannot be imported. %s"
+msgid "SSH certificate cannot be copied into the private SSH key. %s"
+msgstr "공개 SSH 키를 가져올 수 없습니다. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:353
-#, c-format
-msgid "Authentication with SSH certificate failed. %s"
-msgstr ""
+#, fuzzy, c-format
+#| msgid "Could not authenticate with public SSH key. %s"
+msgid "Could not authenticate using SSH certificate. %s"
+msgstr "공개 SSH 키로 인증 할 수 없습니다. %s"
 
 #: src/remmina_ssh.c:364
 msgid "SSH identity file not selected."

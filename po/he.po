@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-02-23 00:59+0000\n"
+"POT-Creation-Date: 2021-02-23 20:00+0000\n"
 "PO-Revision-Date: 2021-02-19 13:29+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -1157,15 +1157,17 @@ msgstr "לא ניתן לייבא את אישור ה־SSH.‏ %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:343
-#, c-format
-msgid "SSH certificate cannot be copied into the privatekey. %s"
+#, fuzzy, c-format
+#| msgid "SSH certificate cannot be copied into the privatekey. %s"
+msgid "SSH certificate cannot be copied into the private SSH key. %s"
 msgstr "לא ניתן להעתיק את אישור ה־SSH לקובץ פרטי. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:353
-#, c-format
-msgid "Authentication with SSH certificate failed. %s"
-msgstr "האימות עם אישור ה־SSH נכשל. %s"
+#, fuzzy, c-format
+#| msgid "Could not authenticate with public SSH key. %s"
+msgid "Could not authenticate using SSH certificate. %s"
+msgstr "לא ניתן להזדהות עם מפתח ה־SSH הציבורי. %s"
 
 #: src/remmina_ssh.c:364
 msgid "SSH identity file not selected."
@@ -3694,6 +3696,9 @@ msgstr "נא לבחור מפתח חדש"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "נא ללחוץ על המקש החדש…"
+
+#~ msgid "Authentication with SSH certificate failed. %s"
+#~ msgstr "האימות עם אישור ה־SSH נכשל. %s"
 
 #~ msgid "SSH agent (automatic)"
 #~ msgstr "סוכן SSH (אוטומטי)"

@@ -326,7 +326,7 @@ remmina_ssh_auth_pubkey(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile 
 			remmina_ssh_set_error(ssh, _("Could not authenticate with public SSH key. %s"));
 			return REMMINA_SSH_AUTH_AUTHFAILED_RETRY_AFTER_PROMPT;
 		}
-		REMMINA_DEBUG ("SSH privatekey file imported correctly");
+		REMMINA_DEBUG ("Imported private SSH key file");
 		ret = ssh_pki_import_cert_file 	(ssh->certfile, &cert ) 	;
 		if (ret != SSH_OK) {
 			REMMINA_DEBUG ("Certificate import returned: %d", ret);
@@ -340,17 +340,17 @@ remmina_ssh_auth_pubkey(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile 
 		if (ret != SSH_OK) {
 			REMMINA_DEBUG ("Copy certificate into a key returned: %d", ret);
 			// TRANSLATORS: The placeholder %s is an error message
-			remmina_ssh_set_error(ssh, _("SSH certificate cannot be copied into the privatekey. %s"));
+			remmina_ssh_set_error(ssh, _("SSH certificate cannot be copied into the private SSH key. %s"));
 			ssh_key_free(cert);
 			return REMMINA_SSH_AUTH_FATAL_ERROR;
 		}
-		REMMINA_DEBUG ("%s certificate copied into the privatekey", ssh->certfile);
+		REMMINA_DEBUG ("%s certificate copied into the private SSH key", ssh->certfile);
 		/* We try to authenticate */
 		ret = ssh_userauth_try_publickey(ssh->session, NULL, cert);
 		if (ret != SSH_AUTH_SUCCESS && ret != SSH_AUTH_AGAIN ) {
 			REMMINA_DEBUG ("Trying to authenticate with the new key returned: %d", ret);
 			// TRANSLATORS: The placeholder %s is an error message
-			remmina_ssh_set_error(ssh, _("Authentication with SSH certificate failed. %s"));
+			remmina_ssh_set_error(ssh, _("Could not authenticate using SSH certificate. %s"));
 			ssh_key_free(key);
 			ssh_key_free(cert);
 			return REMMINA_SSH_AUTH_FATAL_ERROR;

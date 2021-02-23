@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-02-23 00:59+0000\n"
+"POT-Creation-Date: 2021-02-23 20:00+0000\n"
 "PO-Revision-Date: 2021-02-21 14:48+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/remmina/"
@@ -1138,14 +1138,15 @@ msgstr "Kunne ikke importere SSH-sertifikat. %s"
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:343
 #, fuzzy, c-format
-msgid "SSH certificate cannot be copied into the privatekey. %s"
+msgid "SSH certificate cannot be copied into the private SSH key. %s"
 msgstr "SSH-sertifikatet kan ikke kopieres inn i den private nøkkelen. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:353
 #, fuzzy, c-format
-msgid "Authentication with SSH certificate failed. %s"
-msgstr "Identitetsbekreftelse med SSH-sertifikat mislyktes. %s"
+#| msgid "Could not authenticate with public SSH key. %s"
+msgid "Could not authenticate using SSH certificate. %s"
+msgstr "Kunne ikke identitetsbekrefte med offentlig SSH-nøkkel. %s"
 
 #: src/remmina_ssh.c:364
 msgid "SSH identity file not selected."
@@ -3691,6 +3692,10 @@ msgstr "Velg en ny tast"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "Trykk på den nye tasten…"
+
+#, fuzzy
+#~ msgid "Authentication with SSH certificate failed. %s"
+#~ msgstr "Identitetsbekreftelse med SSH-sertifikat mislyktes. %s"
 
 #~ msgid "SSH agent (automatic)"
 #~ msgstr "SSH-agent (automatisk)"

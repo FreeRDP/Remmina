@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-02-23 00:59+0000\n"
+"POT-Creation-Date: 2021-02-23 20:00+0000\n"
 "PO-Revision-Date: 2021-02-19 13:29+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/remmina/"
@@ -1175,15 +1175,17 @@ msgstr "Не вдалося імпортувати сертифікат SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:343
-#, c-format
-msgid "SSH certificate cannot be copied into the privatekey. %s"
+#, fuzzy, c-format
+#| msgid "SSH certificate cannot be copied into the privatekey. %s"
+msgid "SSH certificate cannot be copied into the private SSH key. %s"
 msgstr "Не можна копіювати сертифікат SSH до закритого ключа. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:353
-#, c-format
-msgid "Authentication with SSH certificate failed. %s"
-msgstr "Не вдалося пройти розпізнавання за сертифікатом SSH. %s"
+#, fuzzy, c-format
+#| msgid "Could not authenticate with public SSH key. %s"
+msgid "Could not authenticate using SSH certificate. %s"
+msgstr "Не вдалося пройти розпізнавання за відкритим ключем SSH. %s"
 
 #: src/remmina_ssh.c:364
 msgid "SSH identity file not selected."
@@ -3740,6 +3742,9 @@ msgstr "Виберіть нову клавішу"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "Будь ласка, натисніть нову клавішу…"
+
+#~ msgid "Authentication with SSH certificate failed. %s"
+#~ msgstr "Не вдалося пройти розпізнавання за сертифікатом SSH. %s"
 
 #~ msgid "SSH agent (automatic)"
 #~ msgstr "Агент SSH (автоматично)"

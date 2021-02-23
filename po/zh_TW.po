@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-02-23 00:59+0000\n"
+"POT-Creation-Date: 2021-02-23 20:00+0000\n"
 "PO-Revision-Date: 2021-01-28 12:19+0000\n"
 "Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
 "Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
@@ -1127,15 +1127,17 @@ msgstr "無法匯入 SSH 公鑰：%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:343
-#, c-format
-msgid "SSH certificate cannot be copied into the privatekey. %s"
-msgstr ""
+#, fuzzy, c-format
+#| msgid "Public SSH key cannot be imported. %s"
+msgid "SSH certificate cannot be copied into the private SSH key. %s"
+msgstr "無法匯入 SSH 公鑰：%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:353
-#, c-format
-msgid "Authentication with SSH certificate failed. %s"
-msgstr ""
+#, fuzzy, c-format
+#| msgid "Could not authenticate with SSH password. %s"
+msgid "Could not authenticate using SSH certificate. %s"
+msgstr "未能啟動 SSH 作業階段：%s"
 
 #: src/remmina_ssh.c:364
 msgid "SSH identity file not selected."
