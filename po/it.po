@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-02-23 00:59+0000\n"
+"POT-Creation-Date: 2021-02-23 20:00+0000\n"
 "PO-Revision-Date: 2021-02-23 07:24+0000\n"
 "Last-Translator: Roberto Bellingeri <bellingeri@netguru.it>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -1174,15 +1174,17 @@ msgstr "Impossibile importare il certificato SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:343
-#, c-format
-msgid "SSH certificate cannot be copied into the privatekey. %s"
+#, fuzzy, c-format
+#| msgid "SSH certificate cannot be copied into the privatekey. %s"
+msgid "SSH certificate cannot be copied into the private SSH key. %s"
 msgstr "Il certificato SSH non può essere copiato nella chiave privata. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:353
-#, c-format
-msgid "Authentication with SSH certificate failed. %s"
-msgstr "Autenticazione con certificato SSH non riuscita. %s"
+#, fuzzy, c-format
+#| msgid "Could not authenticate with public SSH key. %s"
+msgid "Could not authenticate using SSH certificate. %s"
+msgstr "Impossibile eseguire l'autenticazione con la chiave SSH pubblica. %s"
 
 #: src/remmina_ssh.c:364
 msgid "SSH identity file not selected."
@@ -3741,6 +3743,9 @@ msgstr "Scegli un nuovo tasto"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "Premere un nuovo tasto prego…"
+
+#~ msgid "Authentication with SSH certificate failed. %s"
+#~ msgstr "Autenticazione con certificato SSH non riuscita. %s"
 
 #~ msgid "SSH agent (automatic)"
 #~ msgstr "Agente SSH (automatico)"

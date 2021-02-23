@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-02-23 00:59+0000\n"
+"POT-Creation-Date: 2021-02-23 20:00+0000\n"
 "PO-Revision-Date: 2021-02-23 07:31+0000\n"
 "Last-Translator: Reza Almanda <rezaalmanda27@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/remmina/"
@@ -1137,15 +1137,17 @@ msgstr "Sertifikat SSH tidak bisa diimpor. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:343
-#, c-format
-msgid "SSH certificate cannot be copied into the privatekey. %s"
+#, fuzzy, c-format
+#| msgid "SSH certificate cannot be copied into the privatekey. %s"
+msgid "SSH certificate cannot be copied into the private SSH key. %s"
 msgstr "Sertifikat SSH tidak dapat disalin ke dalam privatekey. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:353
-#, c-format
-msgid "Authentication with SSH certificate failed. %s"
-msgstr "Otentikasi dengan sertifikat SSH gagal. %s"
+#, fuzzy, c-format
+#| msgid "Could not authenticate with public SSH key. %s"
+msgid "Could not authenticate using SSH certificate. %s"
+msgstr "Tidak bisa mengautentikasi dengan kunci SSH publik. %s"
 
 #: src/remmina_ssh.c:364
 msgid "SSH identity file not selected."
@@ -3326,8 +3328,8 @@ msgid ""
 "connection toolbar (when in fullscreen)."
 msgstr ""
 "Nama heksadesimal atau warna (merah, #ff0000).\n"
-"Ini mengubah warna latar belakang nama koneksi di toolbar koneksi Remmina ("
-"ketika dalam layar penuh)."
+"Ini mengubah warna latar belakang nama koneksi di toolbar koneksi Remmina "
+"(ketika dalam layar penuh)."
 
 #: data/ui/remmina_preferences.glade:832
 msgid "Appearance"
@@ -3691,6 +3693,9 @@ msgstr "Pilih kunci baru"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "Silakan tekan tombol baru…"
+
+#~ msgid "Authentication with SSH certificate failed. %s"
+#~ msgstr "Otentikasi dengan sertifikat SSH gagal. %s"
 
 #~ msgid "SSH agent (automatic)"
 #~ msgstr "Agen SSH (otomatis)"
