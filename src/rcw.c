@@ -1321,9 +1321,11 @@ static void rcw_toolbar_fullscreen(GtkToolItem *toggle, RemminaConnectionWindow 
 		REMMINA_DEBUG("Fullscreen on one monitor");
 
 	if ((toggle != NULL && toggle == cnnwin->priv->toolitem_fullscreen))
-		if (gtk_toggle_tool_button_get_active(GTK_TOGGLE_TOOL_BUTTON(toggle)))
+		if (gtk_toggle_tool_button_get_active(GTK_TOGGLE_TOOL_BUTTON(toggle))) {
+			if (remmina_protocol_widget_get_multimon (gp) >= 1)
+				gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(cnnwin->priv->toolitem_multimon), TRUE);
 			rcw_switch_viewmode(cnnwin, cnnwin->priv->fss_view_mode);
-		else
+		} else
 			rcw_switch_viewmode(cnnwin, SCROLLED_WINDOW_MODE);
 	else
 		if (gtk_toggle_tool_button_get_active(GTK_TOGGLE_TOOL_BUTTON(cnnwin->priv->toolitem_multimon)))
@@ -1676,6 +1678,7 @@ static void rcw_toolbar_multi_monitor_mode(GtkToolItem *toggle, RemminaConnectio
 	if (gtk_toggle_tool_button_get_active(GTK_TOGGLE_TOOL_BUTTON(toggle))) {
 		REMMINA_DEBUG("Saving multimon as 1");
 		remmina_file_set_int(cnnobj->remmina_file, "multimon", 1);
+		remmina_file_save(cnnobj->remmina_file);
 		remmina_protocol_widget_call_feature_by_type(REMMINA_PROTOCOL_WIDGET(cnnobj->proto),
 				REMMINA_PROTOCOL_FEATURE_TYPE_MULTIMON, 0);
 		if (!gtk_toggle_tool_button_get_active(GTK_TOGGLE_TOOL_BUTTON(cnnwin->priv->toolitem_fullscreen)))
@@ -1683,6 +1686,7 @@ static void rcw_toolbar_multi_monitor_mode(GtkToolItem *toggle, RemminaConnectio
 	} else {
 		REMMINA_DEBUG("Saving multimon as 0");
 		remmina_file_set_int(cnnobj->remmina_file, "multimon", 0);
+		remmina_file_save(cnnobj->remmina_file);
 		rcw_toolbar_fullscreen(NULL, cnnwin);
 	}
 }
@@ -4200,6 +4204,9 @@ GtkWidget *rcw_open_from_file_full(RemminaFile *remminafile, GCallback disconnec
 
 	view_mode = remmina_file_get_int(cnnobj->remmina_file, "viewmode", 0);
 	if (kioskmode)
+		view_mode = VIEWPORT_FULLSCREEN_MODE;
+	gint ismultimon = remmina_file_get_int(cnnobj->remmina_file, "multimon", 0);
+	if (ismultimon)
 		view_mode = VIEWPORT_FULLSCREEN_MODE;
 
 	/* Create the viewport to make the RemminaProtocolWidget scrollable */

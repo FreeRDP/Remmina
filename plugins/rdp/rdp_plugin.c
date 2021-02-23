@@ -105,6 +105,10 @@ static BOOL gfx_h264_available = FALSE;
  */
 static char **remmina_rdp_CommandLineParseCommaSeparatedValuesEx(const char *name, const char *list, size_t *count)
 {
+	TRACE_CALL(__func__);
+#if FREERDP_CHECK_VERSION(2, 0, 0)
+	return CommandLineParseCommaSeparatedValuesEx(name, list, count);
+#else
 	char **p;
 	char *str;
 	size_t nArgs;
@@ -175,10 +179,12 @@ static char **remmina_rdp_CommandLineParseCommaSeparatedValuesEx(const char *nam
 
 	*count = nArgs;
 	return p;
+#endif
 }
 
 static char **remmina_rdp_CommandLineParseCommaSeparatedValues(const char *list, size_t *count)
 {
+	TRACE_CALL(__func__);
 	return remmina_rdp_CommandLineParseCommaSeparatedValuesEx(NULL, list, count);
 }
 
@@ -247,6 +253,10 @@ static BOOL rf_process_event_queue(RemminaProtocolWidget *gp)
 
 		case REMMINA_RDP_EVENT_TYPE_SEND_MONITOR_LAYOUT:
 			if (remmina_plugin_service->file_get_int(remminafile, "multimon", FALSE)) {
+				rfi->settings->UseMultimon = TRUE;
+				/* TODO Add an option for this */
+				rfi->settings->ForceMultimon = TRUE;
+				rfi->settings->Fullscreen = TRUE;
 				/* got some crashes with g_malloc0, to be investigated */
 				dcml = calloc(rfi->settings->MonitorCount, sizeof(DISPLAY_CONTROL_MONITOR_LAYOUT));
 				REMMINA_PLUGIN_DEBUG("REMMINA_RDP_EVENT_TYPE_SEND_MONITOR_LAYOUT:");
@@ -598,10 +608,17 @@ BOOL rf_keyboard_set_ime_status(rdpContext *context, UINT16 imeId, UINT32 imeSta
 static BOOL remmina_rdp_pre_connect(freerdp *instance)
 {
 	TRACE_CALL(__func__);
-	ALIGN64 rdpSettings *settings;
-
+	rdpChannels* channels;
+	rdpSettings *settings;
+	rdpContext* context = instance->context;
+	//rfContext* xfc = (rfContext*)instance->context;
+	rfContext *rfi;
+	rfi = (rfContext *)instance->context;
+	guint32 maxwidth = 0;
+	guint32 maxheight = 0;
+	gchar *monitorids = NULL;
 	settings = instance->settings;
-
+	channels = context->channels;
 	settings->OsMajorType = OSMAJORTYPE_UNIX;
 	settings->OsMinorType = OSMINORTYPE_UNSPECIFIED;
 
@@ -613,7 +630,26 @@ static BOOL remmina_rdp_pre_connect(freerdp *instance)
 	PubSub_SubscribeChannelDisconnected(instance->context->pubSub,
 					    (pChannelDisconnectedEventHandler)remmina_rdp_OnChannelDisconnectedEventHandler);
 
-	freerdp_client_load_addins(instance->context->channels, instance->settings);
+	if(!freerdp_client_load_addins(channels, settings))
+		return FALSE;
+
+	remmina_rdp_monitor_get(rfi, &monitorids, &maxwidth, &maxheight);
+	if (maxwidth && maxheight) {
+		REMMINA_PLUGIN_DEBUG("Setting DesktopWidth and DesktopHeight to: %dx%d", maxwidth, maxheight);
+		rfi->settings->DesktopWidth = maxwidth;
+		rfi->settings->DesktopHeight = maxheight;
+		REMMINA_PLUGIN_DEBUG("DesktopWidth and DesktopHeight set to: %dx%d", rfi->settings->DesktopWidth, rfi->settings->DesktopHeight);
+	} else {
+		REMMINA_PLUGIN_DEBUG("Cannot set Desktop Size, we are using the previously set values: %dx%d", rfi->settings->DesktopWidth, rfi->settings->DesktopHeight);
+	}
+	/* Here xfreerdp pre configure the monitors */
+	// xf_detect_monitors(xfc, &maxWidth, &maxHeight);
+
+	// if (maxWidth && maxHeight)
+	// {
+	// 	settings->DesktopWidth = maxWidth;
+	// 	settings->DesktopHeight = maxHeight;
+	// }
 
 	return True;
 }
@@ -1591,11 +1627,11 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 
 	/* Sound settings */
 	cs = remmina_plugin_service->file_get_string(remminafile, "sound");
-
 	if (g_strcmp0(cs, "remote") == 0) {
 		rfi->settings->RemoteConsoleAudio = TRUE;
 	} else if (g_str_has_prefix(cs, "local")) {
 		rfi->settings->AudioPlayback = TRUE;
+		rfi->settings->AudioCapture = TRUE;
 	} else {
 		/* Disable sound */
 		rfi->settings->AudioPlayback = FALSE;
@@ -1608,6 +1644,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 			REMMINA_PLUGIN_DEBUG("\"microphone\" was set to 0, setting to \"\"");
 			remmina_plugin_service->file_set_string(remminafile, "microphone", "");
 		} else {
+			rfi->settings->AudioCapture = TRUE;
 			REMMINA_PLUGIN_DEBUG("microphone set to %s", cs);
 			char **p;
 			size_t count;
@@ -1615,7 +1652,6 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 			p = remmina_rdp_CommandLineParseCommaSeparatedValuesEx("audin", g_strdup(cs), &count);
 
 			freerdp_client_add_dynamic_channel(rfi->settings, count, p);
-			rfi->settings->AudioCapture = TRUE;
 			g_free(p);
 		}
 	}
