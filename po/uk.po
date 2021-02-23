@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-02-23 20:00+0000\n"
-"PO-Revision-Date: 2021-02-19 13:29+0000\n"
+"POT-Creation-Date: 2021-02-23 23:00+0000\n"
+"PO-Revision-Date: 2021-02-23 23:00+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/remmina/"
 "remmina/uk/>\n"
@@ -76,7 +76,7 @@ msgstr "Встановлення з'єднання з %s крізь SSH…"
 #: src/remmina_ssh_plugin.c:1287 src/remmina_sftp_plugin.c:309
 #: src/remmina_sftp_plugin.c:344 src/remmina_file_editor.c:845
 #: src/remmina_file_editor.c:966 plugins/www/www_plugin.c:872
-#: plugins/rdp/rdp_plugin.c:2551 data/ui/remmina_unlock.glade:116
+#: plugins/rdp/rdp_plugin.c:2529 data/ui/remmina_unlock.glade:116
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1682
 msgid "Password"
 msgstr "Пароль"
@@ -305,7 +305,7 @@ msgstr "Тип автентифікації"
 #: src/remmina_ssh_plugin.c:1390 src/remmina_message_panel.c:330
 #: src/remmina_sftp_plugin.c:343 src/remmina_file_editor.c:960
 #: plugins/www/www_plugin.c:871 plugins/vnc/vnc_plugin.c:1879
-#: plugins/vnc/vnc_plugin.c:1899 plugins/rdp/rdp_plugin.c:2550
+#: plugins/vnc/vnc_plugin.c:1899 plugins/rdp/rdp_plugin.c:2528
 #: plugins/nx/nx_plugin.c:730 data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr "Ім'я користувача"
@@ -326,7 +326,7 @@ msgid "Password to unlock private key"
 msgstr "Пароль розблокування закритого ключа"
 
 #: src/remmina_ssh_plugin.c:1395 plugins/xdmcp/xdmcp_plugin.c:370
-#: plugins/rdp/rdp_plugin.c:2590 plugins/nx/nx_plugin.c:734
+#: plugins/rdp/rdp_plugin.c:2568 plugins/nx/nx_plugin.c:734
 msgid "Start-up program"
 msgstr "Запускати програму"
 
@@ -506,7 +506,7 @@ msgid "Go to parent folder"
 msgstr "На одну теку вище"
 
 #: src/remmina_ftp_client.c:764 plugins/vnc/vnc_plugin.c:1936
-#: plugins/rdp/rdp_plugin.c:2631
+#: plugins/rdp/rdp_plugin.c:2609
 msgid "Refresh"
 msgstr "Оновити"
 
@@ -551,11 +551,11 @@ msgstr "Група"
 msgid "Permission"
 msgstr "Права"
 
-#: src/remmina_ftp_client.c:1006 plugins/rdp/rdp_plugin.c:2456
+#: src/remmina_ftp_client.c:1006 plugins/rdp/rdp_plugin.c:2434
 msgid "Remote"
 msgstr "Віддалений"
 
-#: src/remmina_ftp_client.c:1013 plugins/rdp/rdp_plugin.c:2455
+#: src/remmina_ftp_client.c:1013 plugins/rdp/rdp_plugin.c:2433
 msgid "Local"
 msgstr "Локальний"
 
@@ -1101,7 +1101,7 @@ msgstr "Так"
 msgid "No"
 msgstr "Ні"
 
-#: src/remmina_message_panel.c:391 plugins/rdp/rdp_plugin.c:2552
+#: src/remmina_message_panel.c:391 plugins/rdp/rdp_plugin.c:2530
 #: data/ui/remmina_mpc.glade:172
 msgid "Domain"
 msgstr "Домен"
@@ -1175,17 +1175,15 @@ msgstr "Не вдалося імпортувати сертифікат SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:343
-#, fuzzy, c-format
-#| msgid "SSH certificate cannot be copied into the privatekey. %s"
+#, c-format
 msgid "SSH certificate cannot be copied into the private SSH key. %s"
-msgstr "Не можна копіювати сертифікат SSH до закритого ключа. %s"
+msgstr "Не можна копіювати сертифікат SSH до закритого ключа SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:353
-#, fuzzy, c-format
-#| msgid "Could not authenticate with public SSH key. %s"
+#, c-format
 msgid "Could not authenticate using SSH certificate. %s"
-msgstr "Не вдалося пройти розпізнавання за відкритим ключем SSH. %s"
+msgstr "Не вдалося пройти розпізнавання з використанням сертифіката SSH. %s"
 
 #: src/remmina_ssh.c:364
 msgid "SSH identity file not selected."
@@ -1550,7 +1548,7 @@ msgstr "Тунелювання через петльову адресу"
 msgid "Same server at port %i"
 msgstr "Цей же сервер на порту %i"
 
-#: src/remmina_file_editor.c:937 plugins/rdp/rdp_plugin.c:2591
+#: src/remmina_file_editor.c:937 plugins/rdp/rdp_plugin.c:2569
 msgid "Start-up path"
 msgstr "Шлях до програми"
 
@@ -1709,7 +1707,7 @@ msgid "Ignore TLS errors"
 msgstr "Ігнорувати помилки TLS"
 
 #: plugins/www/www_plugin.c:896 plugins/vnc/vnc_plugin.c:1923
-#: plugins/spice/spice_plugin.c:604 plugins/rdp/rdp_plugin.c:2612
+#: plugins/spice/spice_plugin.c:604 plugins/rdp/rdp_plugin.c:2590
 #: plugins/nx/nx_plugin.c:752
 msgid "Forget passwords after use"
 msgstr "Забути паролі після використання"
@@ -1765,34 +1763,34 @@ msgstr "Сервером VNC надіслано запит щодо невідо
 msgid "Please retry after turning on encryption for this profile."
 msgstr "Спробуйте знову після увімкнення шифрування для цього профілю."
 
-#: plugins/vnc/vnc_plugin.c:1850 plugins/rdp/rdp_plugin.c:2405
+#: plugins/vnc/vnc_plugin.c:1850 plugins/rdp/rdp_plugin.c:2383
 msgid "True colour (32 bpp)"
 msgstr "Справжній колір (32 біти/піксель)"
 
-#: plugins/vnc/vnc_plugin.c:1851 plugins/rdp/rdp_plugin.c:2407
+#: plugins/vnc/vnc_plugin.c:1851 plugins/rdp/rdp_plugin.c:2385
 msgid "High colour (16 bpp)"
 msgstr "Якісний колір (16 біт/піксель)"
 
-#: plugins/vnc/vnc_plugin.c:1852 plugins/rdp/rdp_plugin.c:2409
+#: plugins/vnc/vnc_plugin.c:1852 plugins/rdp/rdp_plugin.c:2387
 msgid "256 colours (8 bpp)"
 msgstr "256 кольорів (8 біт/піксель)"
 
-#: plugins/vnc/vnc_plugin.c:1859 plugins/rdp/rdp_plugin.c:2433
+#: plugins/vnc/vnc_plugin.c:1859 plugins/rdp/rdp_plugin.c:2411
 #: plugins/rdp/rdp_settings.c:273 plugins/nx/nx_plugin.c:713
 msgid "Best (slowest)"
 msgstr "Найкраща (найповільніше)"
 
-#: plugins/vnc/vnc_plugin.c:1860 plugins/rdp/rdp_plugin.c:2432
+#: plugins/vnc/vnc_plugin.c:1860 plugins/rdp/rdp_plugin.c:2410
 #: plugins/rdp/rdp_settings.c:271 plugins/nx/nx_plugin.c:712
 msgid "Good"
 msgstr "Добра"
 
-#: plugins/vnc/vnc_plugin.c:1861 plugins/rdp/rdp_plugin.c:2431
+#: plugins/vnc/vnc_plugin.c:1861 plugins/rdp/rdp_plugin.c:2409
 #: plugins/rdp/rdp_settings.c:269 plugins/nx/nx_plugin.c:711
 msgid "Medium"
 msgstr "Середня"
 
-#: plugins/vnc/vnc_plugin.c:1862 plugins/rdp/rdp_plugin.c:2430
+#: plugins/vnc/vnc_plugin.c:1862 plugins/rdp/rdp_plugin.c:2408
 #: plugins/rdp/rdp_settings.c:267 plugins/nx/nx_plugin.c:710
 msgid "Poor (fastest)"
 msgstr "Низька (найшвидше)"
@@ -1802,12 +1800,12 @@ msgid "Repeater"
 msgstr "Ретранслятор"
 
 #: plugins/vnc/vnc_plugin.c:1881 plugins/vnc/vnc_plugin.c:1901
-#: plugins/xdmcp/xdmcp_plugin.c:369 plugins/rdp/rdp_plugin.c:2558
+#: plugins/xdmcp/xdmcp_plugin.c:369 plugins/rdp/rdp_plugin.c:2536
 msgid "Colour depth"
 msgstr "Глибина кольорів"
 
 #: plugins/vnc/vnc_plugin.c:1882 plugins/vnc/vnc_plugin.c:1902
-#: plugins/rdp/rdp_plugin.c:2575 plugins/nx/nx_plugin.c:733
+#: plugins/rdp/rdp_plugin.c:2553 plugins/nx/nx_plugin.c:733
 msgid "Quality"
 msgstr "Якість"
 
@@ -1824,7 +1822,7 @@ msgstr "Показувати курсор віддаленого комп'юте
 msgid "View only"
 msgstr "Лише перегляд"
 
-#: plugins/vnc/vnc_plugin.c:1920 plugins/rdp/rdp_plugin.c:2609
+#: plugins/vnc/vnc_plugin.c:1920 plugins/rdp/rdp_plugin.c:2587
 msgid "Turn off clipboard sync"
 msgstr "Вимкнути синхронізацію буферів обміну"
 
@@ -1841,7 +1839,7 @@ msgid "Open Chat…"
 msgstr "Розпочати спілкування (текст)…"
 
 #: plugins/vnc/vnc_plugin.c:1938 plugins/spice/spice_plugin.c:617
-#: plugins/xdmcp/xdmcp_plugin.c:381 plugins/rdp/rdp_plugin.c:2635
+#: plugins/xdmcp/xdmcp_plugin.c:381 plugins/rdp/rdp_plugin.c:2613
 msgid "Send Ctrl+Alt+Delete"
 msgstr "Надіслати Ctrl+Alt+Delete"
 
@@ -1887,7 +1885,7 @@ msgstr "З'єднання із сервером SPICE розірвано."
 msgid "Default"
 msgstr "Типова"
 
-#: plugins/spice/spice_plugin.c:545 plugins/rdp/rdp_plugin.c:2454
+#: plugins/spice/spice_plugin.c:545 plugins/rdp/rdp_plugin.c:2432
 #: data/ui/remmina_preferences.glade:719
 msgid "Off"
 msgstr "Вимкнути"
@@ -1913,7 +1911,7 @@ msgstr "Використовувати шифрування TLS"
 msgid "Server CA certificate"
 msgstr "Сертифікат CA сервера"
 
-#: plugins/spice/spice_plugin.c:579 plugins/rdp/rdp_plugin.c:2560
+#: plugins/spice/spice_plugin.c:579 plugins/rdp/rdp_plugin.c:2538
 msgid "Share folder"
 msgstr "Спільна тека"
 
@@ -2025,15 +2023,15 @@ msgstr "Відокремлене вікно"
 msgid "Remmina simple terminal"
 msgstr "Простий термінал Remmina"
 
-#: plugins/rdp/rdp_plugin.c:739 plugins/rdp/rdp_plugin.c:804
+#: plugins/rdp/rdp_plugin.c:717 plugins/rdp/rdp_plugin.c:782
 msgid "Enter RDP authentication credentials"
 msgstr "Введіть дані розпізнавання RDP"
 
-#: plugins/rdp/rdp_plugin.c:812
+#: plugins/rdp/rdp_plugin.c:790
 msgid "Enter RDP gateway authentication credentials"
 msgstr "Введіть дані розпізнавання на шлюзі RDP"
 
-#: plugins/rdp/rdp_plugin.c:1972
+#: plugins/rdp/rdp_plugin.c:1950
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2042,7 +2040,7 @@ msgstr ""
 "Не вдалося отримати доступ до RDP-сервера «%s».\n"
 "Обліковий запис заблоковано."
 
-#: plugins/rdp/rdp_plugin.c:1979
+#: plugins/rdp/rdp_plugin.c:1957
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2051,7 +2049,7 @@ msgstr ""
 "Не вдалося отримати доступ до RDP-сервера «%s».\n"
 "Вичерпано термін дії облікового запису."
 
-#: plugins/rdp/rdp_plugin.c:1986
+#: plugins/rdp/rdp_plugin.c:1964
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2060,7 +2058,7 @@ msgstr ""
 "Не вдалося отримати доступ до RDP-сервера «%s».\n"
 "Вичерпано термін дії пароля."
 
-#: plugins/rdp/rdp_plugin.c:1993
+#: plugins/rdp/rdp_plugin.c:1971
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2069,7 +2067,7 @@ msgstr ""
 "Не вдалося отримати доступ до RDP-сервера «%s».\n"
 "Обліковий запис вимкнено."
 
-#: plugins/rdp/rdp_plugin.c:1999
+#: plugins/rdp/rdp_plugin.c:1977
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2078,7 +2076,7 @@ msgstr ""
 "Не вдалося отримати доступ до RDP-сервера «%s».\n"
 "Недостатні права доступу користувача."
 
-#: plugins/rdp/rdp_plugin.c:2007
+#: plugins/rdp/rdp_plugin.c:1985
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2087,7 +2085,7 @@ msgstr ""
 "Не вдалося отримати доступ до RDP-сервера «%s».\n"
 "Обліковий запис із обмеженим доступом."
 
-#: plugins/rdp/rdp_plugin.c:2015
+#: plugins/rdp/rdp_plugin.c:1993
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2096,17 +2094,17 @@ msgstr ""
 "Не вдалося отримати доступ до сервера RDP «%s».\n"
 "Змініть пароль перед з'єднанням."
 
-#: plugins/rdp/rdp_plugin.c:2020
+#: plugins/rdp/rdp_plugin.c:1998
 #, c-format
 msgid "Lost connection to the RDP server “%s”."
 msgstr "Втрачено з'єднання із сервером RDP «%s»."
 
-#: plugins/rdp/rdp_plugin.c:2023
+#: plugins/rdp/rdp_plugin.c:2001
 #, c-format
 msgid "Could not find the address for the RDP server “%s”."
 msgstr "Не вдалося знайти адресу сервера RDP «%s»."
 
-#: plugins/rdp/rdp_plugin.c:2027
+#: plugins/rdp/rdp_plugin.c:2005
 #, c-format
 msgid ""
 "Could not connect to the RDP server “%s” via TLS. Check that client and "
@@ -2116,7 +2114,7 @@ msgstr ""
 "сервері підтримку типової версії TLS."
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
-#: plugins/rdp/rdp_plugin.c:2031
+#: plugins/rdp/rdp_plugin.c:2009
 #, c-format
 msgid ""
 "Unable to establish a connection to the RDP server “%s”. Check \"Security "
@@ -2125,16 +2123,16 @@ msgstr ""
 "Не вдалося встановити з'єднання із сервером RDP «%s». Перевірте, чи вказано "
 "«Узгодження протоколу захисту»."
 
-#: plugins/rdp/rdp_plugin.c:2039
+#: plugins/rdp/rdp_plugin.c:2017
 #, c-format
 msgid "Cannot connect to the RDP server “%s”."
 msgstr "Не вдалося встановити з'єднання із сервером RDP «%s»."
 
-#: plugins/rdp/rdp_plugin.c:2042
+#: plugins/rdp/rdp_plugin.c:2020
 msgid "Could not start libfreerdp-gdi."
 msgstr "Не вдалося запустити libfreerdp-gdi."
 
-#: plugins/rdp/rdp_plugin.c:2045
+#: plugins/rdp/rdp_plugin.c:2023
 #, c-format
 msgid ""
 "You requested a H.264 GFX mode for the server “%s”, but your libfreerdp does "
@@ -2144,12 +2142,12 @@ msgstr ""
 "варіант libfreerdp не підтримує H.264. Будь ласка, скористайтеся варіантом "
 "без глибини кольорів AVC."
 
-#: plugins/rdp/rdp_plugin.c:2052
+#: plugins/rdp/rdp_plugin.c:2030
 #, c-format
 msgid "The “%s” server refused the connection."
 msgstr "Сервер «%s» відхилив з'єднання."
 
-#: plugins/rdp/rdp_plugin.c:2057
+#: plugins/rdp/rdp_plugin.c:2035
 #, c-format
 msgid ""
 "The Remote Desktop Gateway “%s” denied the user \"%s\\%s\" access due to "
@@ -2158,100 +2156,100 @@ msgstr ""
 "Шлюз віддаленої стільниці «%s» заборонив користувачу «%s\\%s» доступ через "
 "встановлені правила."
 
-#: plugins/rdp/rdp_plugin.c:2067
+#: plugins/rdp/rdp_plugin.c:2045
 #, c-format
 msgid "Cannot connect to the “%s” RDP server."
 msgstr "Не вдалося встановити з'єднання із сервером RDP «%s»."
 
-#: plugins/rdp/rdp_plugin.c:2399
+#: plugins/rdp/rdp_plugin.c:2377
 msgid "Automatic (32 bpp) (Server chooses its best format)"
 msgstr "Автоматично (32 біт/піксель) (Сервер вибирає найкращий формат)"
 
-#: plugins/rdp/rdp_plugin.c:2400
+#: plugins/rdp/rdp_plugin.c:2378
 msgid "GFX AVC444 (32 bpp)"
 msgstr "GFX AVC444 (32 біт/піксель)"
 
-#: plugins/rdp/rdp_plugin.c:2401
+#: plugins/rdp/rdp_plugin.c:2379
 msgid "GFX AVC420 (32 bpp)"
 msgstr "GFX AVC420 (32 біт/піксель)"
 
-#: plugins/rdp/rdp_plugin.c:2402
+#: plugins/rdp/rdp_plugin.c:2380
 msgid "GFX RFX (32 bpp)"
 msgstr "GFX RFX (32 біт/піксель)"
 
-#: plugins/rdp/rdp_plugin.c:2403
+#: plugins/rdp/rdp_plugin.c:2381
 msgid "GFX RFX Progressive (32 bpp)"
 msgstr "GFX RFX прогресивний (32 біт/піксель)"
 
-#: plugins/rdp/rdp_plugin.c:2404
+#: plugins/rdp/rdp_plugin.c:2382
 msgid "RemoteFX (32 bpp)"
 msgstr "Віддалений FX (32 біт/піксель)"
 
-#: plugins/rdp/rdp_plugin.c:2406
+#: plugins/rdp/rdp_plugin.c:2384
 msgid "True colour (24 bpp)"
 msgstr "Справжній колір (24 біт/піксель)"
 
-#: plugins/rdp/rdp_plugin.c:2408
+#: plugins/rdp/rdp_plugin.c:2386
 msgid "High colour (15 bpp)"
 msgstr "Якісний колір (15 біт/піксель)"
 
-#: plugins/rdp/rdp_plugin.c:2440 data/ui/remmina_preferences.glade:682
+#: plugins/rdp/rdp_plugin.c:2418 data/ui/remmina_preferences.glade:682
 msgid "None"
 msgstr "Немає"
 
-#: plugins/rdp/rdp_plugin.c:2441
+#: plugins/rdp/rdp_plugin.c:2419
 msgid "Auto-detect"
 msgstr "Автовиявлення"
 
-#: plugins/rdp/rdp_plugin.c:2442
+#: plugins/rdp/rdp_plugin.c:2420
 msgid "Modem"
 msgstr "Модем"
 
-#: plugins/rdp/rdp_plugin.c:2443
+#: plugins/rdp/rdp_plugin.c:2421
 msgid "Low performance broadband"
 msgstr "Низькошвидкісна широкосмугова"
 
-#: plugins/rdp/rdp_plugin.c:2444
+#: plugins/rdp/rdp_plugin.c:2422
 msgid "Satellite"
 msgstr "Супутникова"
 
-#: plugins/rdp/rdp_plugin.c:2445
+#: plugins/rdp/rdp_plugin.c:2423
 msgid "High performance broadband"
 msgstr "Високошвидкісна широкосмугова"
 
-#: plugins/rdp/rdp_plugin.c:2446
+#: plugins/rdp/rdp_plugin.c:2424
 msgid "WAN"
 msgstr "WAN"
 
-#: plugins/rdp/rdp_plugin.c:2447
+#: plugins/rdp/rdp_plugin.c:2425
 msgid "LAN"
 msgstr "LAN"
 
-#: plugins/rdp/rdp_plugin.c:2463
+#: plugins/rdp/rdp_plugin.c:2441
 msgid "Automatic negotiation"
 msgstr "Автоматичне узгодження"
 
-#: plugins/rdp/rdp_plugin.c:2464
+#: plugins/rdp/rdp_plugin.c:2442
 msgid "NLA protocol security"
 msgstr "Захист протоколу NLA"
 
-#: plugins/rdp/rdp_plugin.c:2465
+#: plugins/rdp/rdp_plugin.c:2443
 msgid "TLS protocol security"
 msgstr "Захист протоколу TLS"
 
-#: plugins/rdp/rdp_plugin.c:2466
+#: plugins/rdp/rdp_plugin.c:2444
 msgid "RDP protocol security"
 msgstr "Захист протоколу RDP"
 
-#: plugins/rdp/rdp_plugin.c:2467
+#: plugins/rdp/rdp_plugin.c:2445
 msgid "NLA extended protocol security"
 msgstr "Розширений захист протоколу NLA"
 
-#: plugins/rdp/rdp_plugin.c:2480
+#: plugins/rdp/rdp_plugin.c:2458
 msgid "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 and newer)"
 msgstr "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 та новіша)"
 
-#: plugins/rdp/rdp_plugin.c:2483
+#: plugins/rdp/rdp_plugin.c:2461
 msgid ""
 "Used i.a. by terminal services in a smart card channel to distinguish client "
 "capabilities:\n"
@@ -2270,7 +2268,7 @@ msgstr ""
 "  • >= 7065: Windows 8 і новіші версії: SCardGetReaderIcon(),\n"
 "    SCardGetDeviceTypeId()"
 
-#: plugins/rdp/rdp_plugin.c:2491
+#: plugins/rdp/rdp_plugin.c:2469
 msgid ""
 "Options for redirection of audio input:\n"
 "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
@@ -2288,7 +2286,7 @@ msgstr ""
 "  • sys:oss,dev:1,format:1\n"
 "  • sys:alsa"
 
-#: plugins/rdp/rdp_plugin.c:2500
+#: plugins/rdp/rdp_plugin.c:2478
 msgid ""
 "Options for redirection of audio output:\n"
 "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
@@ -2306,7 +2304,7 @@ msgstr ""
 "  • sys:oss,dev:1,format:1\n"
 "  • sys:alsa"
 
-#: plugins/rdp/rdp_plugin.c:2510
+#: plugins/rdp/rdp_plugin.c:2488
 msgid ""
 "Options for redirection of USB device:\n"
 "  • [dbg,][id:<vid>:<pid>#…,][addr:<bus>:<addr>#…,][auto]\n"
@@ -2318,7 +2316,7 @@ msgstr ""
 "  • auto\n"
 "  • id:054c:0268#4669:6e6b,addr:04:0c"
 
-#: plugins/rdp/rdp_plugin.c:2516
+#: plugins/rdp/rdp_plugin.c:2494
 msgid ""
 "Advanced setting for high latency links:\n"
 "Adjusts the connection timeout. Use if your connection times out.\n"
@@ -2329,7 +2327,7 @@ msgstr ""
 "виникають перевищення часу очікування при з'єднанні.\n"
 "Найбільшим можливим значенням є 600000 мс (10 хвилин)\n"
 
-#: plugins/rdp/rdp_plugin.c:2521
+#: plugins/rdp/rdp_plugin.c:2499
 msgid ""
 "Performance optimisations based on the network connection type:\n"
 "Using auto-detection is advised.\n"
@@ -2339,7 +2337,7 @@ msgstr ""
 "Рекомендуємо скористатися автоматичним виявленням.\n"
 "Якщо тип не вдасться виявити автоматично, виберіть належний тип зі списку.\n"
 
-#: plugins/rdp/rdp_plugin.c:2526
+#: plugins/rdp/rdp_plugin.c:2504
 msgid ""
 "Comma separated list of monitor IDs and desktop orientations:\n"
 "  • [<id>:<orientation-in-degrees>,]\n"
@@ -2364,101 +2362,101 @@ msgstr ""
 "  • 270 (книжкова перевернута)\n"
 "\n"
 
-#: plugins/rdp/rdp_plugin.c:2553
+#: plugins/rdp/rdp_plugin.c:2531
 msgid "Left-handed mouse support"
 msgstr "Підтримка роботи мишею для шульги"
 
-#: plugins/rdp/rdp_plugin.c:2553
+#: plugins/rdp/rdp_plugin.c:2531
 msgid "Swap left and right mouse buttons for left-handed mouse support"
 msgstr ""
 "Поміняти місцями ліву і праву кнопки миші для забезпечення комфортної роботи "
 "для шульги"
 
-#: plugins/rdp/rdp_plugin.c:2554
+#: plugins/rdp/rdp_plugin.c:2532
 msgid "Enable multi monitor"
 msgstr "Увімкнути багатомоніторну конфігурацію"
 
-#: plugins/rdp/rdp_plugin.c:2555
+#: plugins/rdp/rdp_plugin.c:2533
 msgid "Span screen over multiple monitors"
 msgstr "Поділити екран між декількома моніторами"
 
-#: plugins/rdp/rdp_plugin.c:2556
+#: plugins/rdp/rdp_plugin.c:2534
 msgid "Monitor ID list"
 msgstr "Список ідентифікаторів моніторів"
 
-#: plugins/rdp/rdp_plugin.c:2559
+#: plugins/rdp/rdp_plugin.c:2537
 msgid "Network connection type"
 msgstr "Тип мережевого з'єднання"
 
-#: plugins/rdp/rdp_plugin.c:2576
+#: plugins/rdp/rdp_plugin.c:2554
 msgid "Security protocol negotiation"
 msgstr "Узгодження протоколу захисту"
 
-#: plugins/rdp/rdp_plugin.c:2577
+#: plugins/rdp/rdp_plugin.c:2555
 msgid "Gateway transport type"
 msgstr "Тип передавання даних шлюзу"
 
-#: plugins/rdp/rdp_plugin.c:2578
+#: plugins/rdp/rdp_plugin.c:2556
 msgid "FreeRDP log level"
 msgstr "Рівень журналювання FreeRDP"
 
-#: plugins/rdp/rdp_plugin.c:2579
+#: plugins/rdp/rdp_plugin.c:2557
 msgid "FreeRDP log filters"
 msgstr "Фільтри журналювання FreeRDP"
 
-#: plugins/rdp/rdp_plugin.c:2579
+#: plugins/rdp/rdp_plugin.c:2557
 msgid "tag:level[,tag:level[,…]]"
 msgstr "мітка:рівень[,мітка:рівень[,...]]"
 
-#: plugins/rdp/rdp_plugin.c:2580
+#: plugins/rdp/rdp_plugin.c:2558
 msgid "Audio output mode"
 msgstr "Режим виведення звуку"
 
-#: plugins/rdp/rdp_plugin.c:2581
+#: plugins/rdp/rdp_plugin.c:2559
 msgid "Redirect local audio output"
 msgstr "Переспрямувати локальне виведення звуку"
 
-#: plugins/rdp/rdp_plugin.c:2582
+#: plugins/rdp/rdp_plugin.c:2560
 msgid "Redirect local microphone"
 msgstr "Переспрямувати локальний мікрофон"
 
-#: plugins/rdp/rdp_plugin.c:2583
+#: plugins/rdp/rdp_plugin.c:2561
 msgid "Connection timeout in ms"
 msgstr "Час очікування на встановлення у мс"
 
-#: plugins/rdp/rdp_plugin.c:2584
+#: plugins/rdp/rdp_plugin.c:2562
 msgid "Remote Desktop Gateway server"
 msgstr "Сервер шлюзу віддаленої стільниці"
 
-#: plugins/rdp/rdp_plugin.c:2585
+#: plugins/rdp/rdp_plugin.c:2563
 msgid "Remote Desktop Gateway username"
 msgstr "Користувач шлюзу віддаленої стільниці"
 
-#: plugins/rdp/rdp_plugin.c:2586
+#: plugins/rdp/rdp_plugin.c:2564
 msgid "Remote Desktop Gateway password"
 msgstr "Пароль шлюзу віддаленої стільниці"
 
-#: plugins/rdp/rdp_plugin.c:2587
+#: plugins/rdp/rdp_plugin.c:2565
 msgid "Remote Desktop Gateway domain"
 msgstr "Домен шлюзу віддаленої стільниці"
 
-#: plugins/rdp/rdp_plugin.c:2588
+#: plugins/rdp/rdp_plugin.c:2566
 msgid "Client name"
 msgstr "Назва клієнта"
 
-#: plugins/rdp/rdp_plugin.c:2589
+#: plugins/rdp/rdp_plugin.c:2567
 msgid "Client build"
 msgstr "Номер збірки клієнта"
 
-#: plugins/rdp/rdp_plugin.c:2592
+#: plugins/rdp/rdp_plugin.c:2570
 msgid "Load balance info"
 msgstr "Інформація балансування навантаження"
 
-#: plugins/rdp/rdp_plugin.c:2593
+#: plugins/rdp/rdp_plugin.c:2571
 msgid "Override printer drivers"
 msgstr "Перевизначення драйверів принтера"
 
-#: plugins/rdp/rdp_plugin.c:2593
+#: plugins/rdp/rdp_plugin.c:2571
 msgid ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
@@ -2466,147 +2464,147 @@ msgstr ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
 
-#: plugins/rdp/rdp_plugin.c:2594
+#: plugins/rdp/rdp_plugin.c:2572
 msgid "USB device redirection"
 msgstr "Переспрямовування пристрою USB"
 
-#: plugins/rdp/rdp_plugin.c:2595
+#: plugins/rdp/rdp_plugin.c:2573
 msgid "Local serial name"
 msgstr "Назва локального послідовного порту"
 
-#: plugins/rdp/rdp_plugin.c:2595
+#: plugins/rdp/rdp_plugin.c:2573
 msgid "COM1, COM2, etc."
 msgstr "COM1, COM2, тощо."
 
-#: plugins/rdp/rdp_plugin.c:2596
+#: plugins/rdp/rdp_plugin.c:2574
 msgid "Local serial driver"
 msgstr "Драйвер локального послідовного порту"
 
-#: plugins/rdp/rdp_plugin.c:2596
+#: plugins/rdp/rdp_plugin.c:2574
 msgid "Serial"
 msgstr "Послідовний порт"
 
-#: plugins/rdp/rdp_plugin.c:2597
+#: plugins/rdp/rdp_plugin.c:2575
 msgid "Local serial path"
 msgstr "Шлях до локального послідовного порту"
 
-#: plugins/rdp/rdp_plugin.c:2597
+#: plugins/rdp/rdp_plugin.c:2575
 msgid "/dev/ttyS0, /dev/ttyS1, etc."
 msgstr "/dev/ttyS0, /dev/ttyS1, тощо."
 
-#: plugins/rdp/rdp_plugin.c:2598
+#: plugins/rdp/rdp_plugin.c:2576
 msgid "Local parallel name"
 msgstr "Назва локального паралельного порту"
 
-#: plugins/rdp/rdp_plugin.c:2599
+#: plugins/rdp/rdp_plugin.c:2577
 msgid "Local parallel device"
 msgstr "Локальний паралельний пристрій"
 
-#: plugins/rdp/rdp_plugin.c:2600
+#: plugins/rdp/rdp_plugin.c:2578
 msgid "Name of smart card"
 msgstr "Назва смарт-картки"
 
-#: plugins/rdp/rdp_plugin.c:2601
+#: plugins/rdp/rdp_plugin.c:2579
 msgid "Dynamic virtual channel"
 msgstr "Динамічний віртуальний канал"
 
-#: plugins/rdp/rdp_plugin.c:2601 plugins/rdp/rdp_plugin.c:2602
+#: plugins/rdp/rdp_plugin.c:2579 plugins/rdp/rdp_plugin.c:2580
 msgid "<channel>[,<options>]"
 msgstr "<канал>[,<параметри>]"
 
-#: plugins/rdp/rdp_plugin.c:2602
+#: plugins/rdp/rdp_plugin.c:2580
 msgid "Static virtual channel"
 msgstr "Статичний віртуальний канал"
 
-#: plugins/rdp/rdp_plugin.c:2603
+#: plugins/rdp/rdp_plugin.c:2581
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
 msgstr "Пріоритет запису AAAA IPv6 над записом A IPv4"
 
-#: plugins/rdp/rdp_plugin.c:2604
+#: plugins/rdp/rdp_plugin.c:2582
 msgid "Share printers"
 msgstr "Зробити принтери загальнодоступними"
 
-#: plugins/rdp/rdp_plugin.c:2605
+#: plugins/rdp/rdp_plugin.c:2583
 msgid "Share serial ports"
 msgstr "Зробити послідовні порти загальнодоступними"
 
-#: plugins/rdp/rdp_plugin.c:2606
+#: plugins/rdp/rdp_plugin.c:2584
 msgid "(SELinux) permissive mode for serial ports"
 msgstr "(SELinux) дозвільний режим для послідовних портів"
 
-#: plugins/rdp/rdp_plugin.c:2607
+#: plugins/rdp/rdp_plugin.c:2585
 msgid "Share parallel ports"
 msgstr "Зробити паралельні порти загальнодоступними"
 
-#: plugins/rdp/rdp_plugin.c:2608
+#: plugins/rdp/rdp_plugin.c:2586
 msgid "Share a smart card"
 msgstr "Надати доступ до смарт-картки"
 
-#: plugins/rdp/rdp_plugin.c:2610
+#: plugins/rdp/rdp_plugin.c:2588
 msgid "Ignore certificate"
 msgstr "Ігнорувати сертифікат"
 
-#: plugins/rdp/rdp_plugin.c:2611
+#: plugins/rdp/rdp_plugin.c:2589
 msgid "Use the old license workflow"
 msgstr "Використовувати стару процедуру ліцензування"
 
-#: plugins/rdp/rdp_plugin.c:2611
+#: plugins/rdp/rdp_plugin.c:2589
 msgid "It disables CAL and hwId is set to 0"
 msgstr "Вимкне CAL і встановить для hwId значення 0"
 
-#: plugins/rdp/rdp_plugin.c:2613
+#: plugins/rdp/rdp_plugin.c:2591
 msgid "Attach to console (2003/2003 R2)"
 msgstr "Долучити до консолі (Windows 2003 / 2003 R2)"
 
-#: plugins/rdp/rdp_plugin.c:2614
+#: plugins/rdp/rdp_plugin.c:2592
 msgid "Turn off fast-path"
 msgstr "Вимкнути fast-path"
 
-#: plugins/rdp/rdp_plugin.c:2615
+#: plugins/rdp/rdp_plugin.c:2593
 msgid "Server detection using Remote Desktop Gateway"
 msgstr "Визначення сервера з використанням шлюзу віддалених стільниць"
 
-#: plugins/rdp/rdp_plugin.c:2617
+#: plugins/rdp/rdp_plugin.c:2595
 msgid "Use system proxy settings"
 msgstr "Використовувати системні налаштування проксі"
 
-#: plugins/rdp/rdp_plugin.c:2619
+#: plugins/rdp/rdp_plugin.c:2597
 msgid "Turn off automatic reconnection"
 msgstr "Вимкнути автоматичні перез'єднання"
 
-#: plugins/rdp/rdp_plugin.c:2620
+#: plugins/rdp/rdp_plugin.c:2598
 msgid "Relax order checks"
 msgstr "Перевірки порядку оптимізації"
 
-#: plugins/rdp/rdp_plugin.c:2621
+#: plugins/rdp/rdp_plugin.c:2599
 msgid "Glyph cache"
 msgstr "Кеш гліфів"
 
-#: plugins/rdp/rdp_plugin.c:2622
+#: plugins/rdp/rdp_plugin.c:2600
 msgid "Enable multitransport protocol (UDP)"
 msgstr "Увімкнути мультитранспортний протокол (UDP)"
 
-#: plugins/rdp/rdp_plugin.c:2622
+#: plugins/rdp/rdp_plugin.c:2600
 msgid "Using the UDP protocol may improve performance"
 msgstr "Використання протоколу UDP може підвищити швидкодію"
 
-#: plugins/rdp/rdp_plugin.c:2623
+#: plugins/rdp/rdp_plugin.c:2601
 msgid "Use base credentials for gateway too"
 msgstr "Використовувати базову реєстрацію і для шлюзу"
 
-#: plugins/rdp/rdp_plugin.c:2648
+#: plugins/rdp/rdp_plugin.c:2626
 msgid "RDP - Remote Desktop Protocol"
 msgstr "RDP — Протокол віддаленої стільниці"
 
-#: plugins/rdp/rdp_plugin.c:2671
+#: plugins/rdp/rdp_plugin.c:2649
 msgid "RDP - RDP File Handler"
 msgstr "RDP — Обробник файлів RDP"
 
-#: plugins/rdp/rdp_plugin.c:2686
+#: plugins/rdp/rdp_plugin.c:2664
 msgid "RDP - Preferences"
 msgstr "RDP — Налаштування"
 
-#: plugins/rdp/rdp_plugin.c:2739
+#: plugins/rdp/rdp_plugin.c:2717
 msgid "Export connection in Windows .rdp file format"
 msgstr "Експортувати з'єднання у форматі файлів Windows .rdp"
 
