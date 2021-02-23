@@ -253,6 +253,10 @@ static BOOL rf_process_event_queue(RemminaProtocolWidget *gp)
 
 		case REMMINA_RDP_EVENT_TYPE_SEND_MONITOR_LAYOUT:
 			if (remmina_plugin_service->file_get_int(remminafile, "multimon", FALSE)) {
+				rfi->settings->UseMultimon = TRUE;
+				/* TODO Add an option for this */
+				rfi->settings->ForceMultimon = TRUE;
+				rfi->settings->Fullscreen = TRUE;
 				/* got some crashes with g_malloc0, to be investigated */
 				dcml = calloc(rfi->settings->MonitorCount, sizeof(DISPLAY_CONTROL_MONITOR_LAYOUT));
 				REMMINA_PLUGIN_DEBUG("REMMINA_RDP_EVENT_TYPE_SEND_MONITOR_LAYOUT:");
@@ -608,8 +612,11 @@ static BOOL remmina_rdp_pre_connect(freerdp *instance)
 	rdpSettings *settings;
 	rdpContext* context = instance->context;
 	//rfContext* xfc = (rfContext*)instance->context;
-	//guint32 maxwidth = 0;
-	//guint32 maxheight = 0;
+	rfContext *rfi;
+	rfi = (rfContext *)instance->context;
+	guint32 maxwidth = 0;
+	guint32 maxheight = 0;
+	gchar *monitorids = NULL;
 	settings = instance->settings;
 	channels = context->channels;
 	settings->OsMajorType = OSMAJORTYPE_UNIX;
@@ -626,6 +633,15 @@ static BOOL remmina_rdp_pre_connect(freerdp *instance)
 	if(!freerdp_client_load_addins(channels, settings))
 		return FALSE;
 
+	remmina_rdp_monitor_get(rfi, &monitorids, &maxwidth, &maxheight);
+	if (maxwidth && maxheight) {
+		REMMINA_PLUGIN_DEBUG("Setting DesktopWidth and DesktopHeight to: %dx%d", maxwidth, maxheight);
+		rfi->settings->DesktopWidth = maxwidth;
+		rfi->settings->DesktopHeight = maxheight;
+		REMMINA_PLUGIN_DEBUG("DesktopWidth and DesktopHeight set to: %dx%d", rfi->settings->DesktopWidth, rfi->settings->DesktopHeight);
+	} else {
+		REMMINA_PLUGIN_DEBUG("Cannot set Desktop Size, we are using the previously set values: %dx%d", rfi->settings->DesktopWidth, rfi->settings->DesktopHeight);
+	}
 	/* Here xfreerdp pre configure the monitors */
 	// xf_detect_monitors(xfc, &maxWidth, &maxHeight);
 
@@ -634,7 +650,6 @@ static BOOL remmina_rdp_pre_connect(freerdp *instance)
 	// 	settings->DesktopWidth = maxWidth;
 	// 	settings->DesktopHeight = maxHeight;
 	// }
-
 
 	return True;
 }
