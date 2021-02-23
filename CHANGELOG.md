@@ -1,5 +1,31 @@
 # Changelog
 
+## v1.4.12
+[full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.11...v1.4.12)
+
+* Multi monitor support preview [!2184](https://gitlab.com/Remmina/Remmina/merge_requests/2184) *@antenore*
+* Resolve "Left-handed mouse support" [!2200](https://gitlab.com/Remmina/Remmina/merge_requests/2200) *@antenore*
+* Refactoring SSH themes [!2205](https://gitlab.com/Remmina/Remmina/merge_requests/2205) *@antenore*
+* Crystal clear sound made simple. [!2207](https://gitlab.com/Remmina/Remmina/merge_requests/2207) *@antenore*
+* Adding SSH certificate authentication [!2208](https://gitlab.com/Remmina/Remmina/merge_requests/2208) *@antenore*
+* Refactoring SSH tunnel authentication. #2414 [!2211](https://gitlab.com/Remmina/Remmina/merge_requests/2211) *@antenore*
+* Refactoring: GResource based UI elements [!2201](https://gitlab.com/Remmina/Remmina/merge_requests/2201) *@antenore*
+* Invalid connection option ":port" removed [!2193](https://gitlab.com/Remmina/Remmina/merge_requests/2193) *@kingu*
+* Add ifdefs for spice version less then 0.38 (fix #2408) [!2195](https://gitlab.com/Remmina/Remmina/merge_requests/2195) *@hadogenes*
+* Fix for #2408 building with older SPICE libraries [!2194](https://gitlab.com/Remmina/Remmina/merge_requests/2194) *@jweberhofer*
+* Spelling: Bug triaging and labeling labels reworked. [!2192](https://gitlab.com/Remmina/Remmina/merge_requests/2192) *@kingu*
+* Ignoring glib functions if glib version older then 2.56 [!2196](https://gitlab.com/Remmina/Remmina/merge_requests/2196) *@antenore*
+* Some refactoring and fixes for 1.4.11 [!2198](https://gitlab.com/Remmina/Remmina/merge_requests/2198) *@antenore*
+* Revert "rdp/event: Fix wheel value for GDK_SCROLL_DOWN events" [!2199](https://gitlab.com/Remmina/Remmina/merge_requests/2199) *@pnowack*
+* Fixing compiler errors related to Python plugin support on master [!2178](https://gitlab.com/Remmina/Remmina/merge_requests/2178) *@ToolsDevler*
+* Fixes for multi monitor and weblate [!2202](https://gitlab.com/Remmina/Remmina/merge_requests/2202) *@antenore*
+* Spelling: desktop [!2203](https://gitlab.com/Remmina/Remmina/merge_requests/2203) *@kingu*
+* Spelling: Colour [!2204](https://gitlab.com/Remmina/Remmina/merge_requests/2204) *@kingu*
+* Fixing memory leaks and minor bugs [!2206](https://gitlab.com/Remmina/Remmina/merge_requests/2206) *@antenore*
+* Fix minor typos [!2209](https://gitlab.com/Remmina/Remmina/merge_requests/2209) *@yurchor*
+* Typo fix, certificat -> certificate [!2210](https://gitlab.com/Remmina/Remmina/merge_requests/2210) *@yarons*
+* Improve pre-connection FreeRDP channel initializations [!2212](https://gitlab.com/Remmina/Remmina/merge_requests/2212) *@antenore*
+
 ## v1.4.11
 [full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.10...v1.4.11)
 
