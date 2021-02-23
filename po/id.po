@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-02-23 00:59+0000\n"
-"PO-Revision-Date: 2021-02-14 21:19+0000\n"
+"PO-Revision-Date: 2021-02-23 07:31+0000\n"
 "Last-Translator: Reza Almanda <rezaalmanda27@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/remmina/"
 "remmina/id/>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.5-dev\n"
+"X-Generator: Weblate 4.5\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
 
 #: src/remmina_protocol_widget.c:280
@@ -185,6 +185,9 @@ msgid ""
 "\"Advanced\" tab of terminal connections and editable in the \"Terminal\" "
 "tab in the settings."
 msgstr ""
+"File ini berisi skema warna terminal \"Kustom\" yang dapat dipilih dari tab "
+"\"Lanjutan\" koneksi terminal dan dapat diedit di tab \"Terminal\" di "
+"pengaturan."
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_ssh_plugin.c:534
@@ -313,10 +316,8 @@ msgid "User password"
 msgstr "Sandi pengguna"
 
 #: src/remmina_ssh_plugin.c:1393 src/remmina_file_editor.c:978
-#, fuzzy
-#| msgid "CA Certificate File"
 msgid "SSH certificate file"
-msgstr "Berkas Sertifikat CA"
+msgstr "Berkas sertifikat SSH"
 
 #: src/remmina_ssh_plugin.c:1394 src/remmina_sftp_plugin.c:347
 #: src/remmina_file_editor.c:983
@@ -351,8 +352,6 @@ msgstr ""
 "  •%d diganti dengan datetime lokal dalam format ISO8601\n"
 
 #: src/remmina_ssh_plugin.c:1422
-#, fuzzy
-#| msgid "Terminal color scheme"
 msgid "Terminal colour scheme"
 msgstr "Skema warna terminal"
 
@@ -1132,22 +1131,21 @@ msgstr "Tidak bisa mengautentikasi dengan kunci SSH publik. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:334
-#, fuzzy, c-format
-#| msgid "Public SSH key cannot be imported. %s"
+#, c-format
 msgid "SSH certificate cannot be imported. %s"
-msgstr "Kunci SSH publik tidak bisa diimpor. %s"
+msgstr "Sertifikat SSH tidak bisa diimpor. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:343
 #, c-format
 msgid "SSH certificate cannot be copied into the privatekey. %s"
-msgstr ""
+msgstr "Sertifikat SSH tidak dapat disalin ke dalam privatekey. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:353
 #, c-format
 msgid "Authentication with SSH certificate failed. %s"
-msgstr ""
+msgstr "Otentikasi dengan sertifikat SSH gagal. %s"
 
 #: src/remmina_ssh.c:364
 msgid "SSH identity file not selected."
@@ -1527,10 +1525,8 @@ msgid "SSH Authentication"
 msgstr "Autentikasi SSH"
 
 #: src/remmina_file_editor.c:972
-#, fuzzy
-#| msgid "SSH private key passphrase"
 msgid "SSH private key file"
-msgstr "Frasa sandi kunci privat SSH"
+msgstr "Berkas kunci privat SSH"
 
 #: src/remmina_file_editor.c:1036
 msgid "Basic"
@@ -2257,15 +2253,6 @@ msgstr ""
 "  • sys:alsa"
 
 #: plugins/rdp/rdp_plugin.c:2500
-#, fuzzy
-#| msgid ""
-#| "Options for redirection of audio ouput:\n"
-#| "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
-#| "    [channel:<channel>] Audio output\n"
-#| "  • sys:pulse\n"
-#| "  • format:1\n"
-#| "  • sys:oss,dev:1,format:1\n"
-#| "  • sys:alsa"
 msgid ""
 "Options for redirection of audio output:\n"
 "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
@@ -2275,12 +2262,13 @@ msgid ""
 "  • sys:oss,dev:1,format:1\n"
 "  • sys:alsa"
 msgstr ""
-"Opsi pengalihan masukan audio:\n"
-"  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
-"    [channel:<channel>] Audio input (microphone)\n"
-"  • format:1\n"
-"  • sys:oss,dev:1,format:1\n"
-"  • sys:alsa"
+"Opsi untuk pengalihan keluaran audio:\n"
+"  • [sys: <sys>,] [dev: <dev>,] [format: <format>,] [rate: <rate>,]\n"
+"    [channel: <channel>] Output audio\n"
+"  • sys: denyut nadi\n"
+"  • format: 1\n"
+"  • sys: oss, dev: 1, format: 1\n"
+"  • sys: alsa"
 
 #: plugins/rdp/rdp_plugin.c:2510
 msgid ""
@@ -2325,6 +2313,16 @@ msgid ""
 "  • 270 (portrait flipped)\n"
 "\n"
 msgstr ""
+"Daftar koma yang dipisahkan dari ID monitor dan orientasi desktop:\n"
+"  • [<id>:<orientation-in-degrees>,]\n"
+"  • 0,1,2,3\n"
+"  • 0:270,1:90\n"
+"Orientasi ditentukan dalam derajat, nilai yang valid adalah:\n"
+"  • 0 (lanskap)\n"
+"  • 90 (potret)\n"
+"  • 180 (lanskap terbalik)\n"
+"  • 270 (potret terbalik)\n"
+"\n"
 
 #: plugins/rdp/rdp_plugin.c:2553
 msgid "Left-handed mouse support"
@@ -2372,7 +2370,7 @@ msgstr "tag:level[,tag:level[,...]]"
 
 #: plugins/rdp/rdp_plugin.c:2580
 msgid "Audio output mode"
-msgstr ""
+msgstr "Mode keluaran audio"
 
 #: plugins/rdp/rdp_plugin.c:2581
 msgid "Redirect local audio output"
@@ -3318,10 +3316,8 @@ msgid "Prefer dark theme"
 msgstr ""
 
 #: data/ui/remmina_preferences.glade:785
-#, fuzzy
-#| msgid "Grab all keyboard events"
 msgid "“Grab all keyboard events” status colour"
-msgstr "Tangkap semua kejadian papan tik"
+msgstr "Status warna \"Tangkap semua kejadian papan tik\""
 
 #: data/ui/remmina_preferences.glade:796
 msgid ""
@@ -3329,6 +3325,9 @@ msgid ""
 "It changes the background colour of connection names in the Remmina "
 "connection toolbar (when in fullscreen)."
 msgstr ""
+"Nama heksadesimal atau warna (merah, #ff0000).\n"
+"Ini mengubah warna latar belakang nama koneksi di toolbar koneksi Remmina ("
+"ketika dalam layar penuh)."
 
 #: data/ui/remmina_preferences.glade:832
 msgid "Appearance"
@@ -3529,10 +3528,12 @@ msgid ""
 "Selecting “SGR 1” also switches to the bright counterparts of the first 8 "
 "palette colours (in addition to making text bold)."
 msgstr ""
+"Memilih \"SGR 1\" juga akan mengalihkan ke bagian cerah dari 8 warna palet "
+"pertama (selain membuat teks tebal)."
 
 #: data/ui/remmina_preferences.glade:2041
 msgid "Allow using bright colours with bold text"
-msgstr ""
+msgstr "Izinkan penggunaan warna-warna cerah dengan teks tebal"
 
 #: data/ui/remmina_preferences.glade:2055
 msgid "Colour theme"
@@ -3649,24 +3650,18 @@ msgstr "Warna normal"
 
 #: data/ui/remmina_preferences.glade:2508
 #: data/ui/remmina_preferences.glade:2548
-#, fuzzy
-#| msgid "Bright colours"
 msgid "Highlight colour"
-msgstr "Warna cerah"
+msgstr "Sorot warna"
 
 #: data/ui/remmina_preferences.glade:2521
 #: data/ui/remmina_preferences.glade:2563
-#, fuzzy
-#| msgid "Foreground colour"
 msgid "Highlight foreground colour"
-msgstr "Warna latar depan"
+msgstr "Sorot warna latar depan"
 
 #: data/ui/remmina_preferences.glade:2534
 #: data/ui/remmina_preferences.glade:2578
-#, fuzzy
-#| msgid "Foreground colour"
 msgid "Cursor foreground colour"
-msgstr "Warna latar depan"
+msgstr "Kursor warna latar depan"
 
 #: data/ui/remmina_preferences.glade:2597
 msgid "Terminal"
