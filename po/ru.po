@@ -20,8 +20,8 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-02-23 23:00+0000\n"
-"PO-Revision-Date: 2021-02-10 03:50+0000\n"
-"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"PO-Revision-Date: 2021-02-26 11:50+0000\n"
+"Last-Translator: Солтыс Сергей <treefeed@mail.ru>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/remmina/remmina/"
 "ru/>\n"
 "Language: ru\n"
@@ -30,7 +30,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.5-dev\n"
+"X-Generator: Weblate 4.5\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
 "X-Poedit-Flags-xgettext: --add-comments\n"
 
@@ -187,7 +187,7 @@ msgstr "libsodium 1.9.0 (или старше) требуется для испо
 
 #: src/remmina_pref_dialog.c:802
 msgid "Picking a terminal colouring file replaces the file: "
-msgstr "Выбор файла цветовой схемы терминала"
+msgstr "Выбор файла цветовой схемы терминала заменяет файл: "
 
 #: src/remmina_pref_dialog.c:806
 msgid ""
@@ -326,10 +326,8 @@ msgid "User password"
 msgstr "Пароль пользователя"
 
 #: src/remmina_ssh_plugin.c:1393 src/remmina_file_editor.c:978
-#, fuzzy
-#| msgid "CA Certificate File"
 msgid "SSH certificate file"
-msgstr "Файл сертификата ЦС"
+msgstr "Файл сертификата SSH"
 
 #: src/remmina_ssh_plugin.c:1394 src/remmina_sftp_plugin.c:347
 #: src/remmina_file_editor.c:983
@@ -364,8 +362,6 @@ msgstr ""
 "  - %d заменяется локальным временем в формате iso8601\n"
 
 #: src/remmina_ssh_plugin.c:1422
-#, fuzzy
-#| msgid "Terminal color scheme"
 msgid "Terminal colour scheme"
 msgstr "Цветовая схема терминала"
 
@@ -1189,24 +1185,21 @@ msgstr "Аутентификация SSH по публичному ключу н
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:334
-#, fuzzy, c-format
-#| msgid "Public SSH key cannot be imported. %s"
+#, c-format
 msgid "SSH certificate cannot be imported. %s"
-msgstr "Публичный ключ SSH не может быть импортирован. %s"
+msgstr "Сертификат SSH не может быть импортирован. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:343
-#, fuzzy, c-format
-#| msgid "Public SSH key cannot be imported. %s"
+#, c-format
 msgid "SSH certificate cannot be copied into the private SSH key. %s"
-msgstr "Публичный ключ SSH не может быть импортирован. %s"
+msgstr "Сертификат SSH не может быть импортирован в приватный ключ SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:353
-#, fuzzy, c-format
-#| msgid "Could not authenticate with public SSH key. %s"
+#, c-format
 msgid "Could not authenticate using SSH certificate. %s"
-msgstr "Аутентификация SSH по публичному ключу не удалась. %s"
+msgstr "Аутентификация SSH по сертификату не удалась. %s"
 
 #: src/remmina_ssh.c:364
 msgid "SSH identity file not selected."
@@ -1576,10 +1569,8 @@ msgid "SSH Authentication"
 msgstr "Аутентификация SSH"
 
 #: src/remmina_file_editor.c:972
-#, fuzzy
-#| msgid "SSH private key passphrase"
 msgid "SSH private key file"
-msgstr "Ключевая фраза закрытого ключа SSH"
+msgstr "Файл закрытого ключа SSH"
 
 #: src/remmina_file_editor.c:1036
 msgid "Basic"
@@ -2306,15 +2297,6 @@ msgstr ""
 "  • sys:alsa"
 
 #: plugins/rdp/rdp_plugin.c:2478
-#, fuzzy
-#| msgid ""
-#| "Options for redirection of audio ouput:\n"
-#| "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
-#| "    [channel:<channel>] Audio output\n"
-#| "  • sys:pulse\n"
-#| "  • format:1\n"
-#| "  • sys:oss,dev:1,format:1\n"
-#| "  • sys:alsa"
 msgid ""
 "Options for redirection of audio output:\n"
 "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
@@ -2324,12 +2306,13 @@ msgid ""
 "  • sys:oss,dev:1,format:1\n"
 "  • sys:alsa"
 msgstr ""
-"Параметры перенаправления аудиовхода:\n"
-"  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
-"    [channel:<channel>] Аудиовход (микрофон)\n"
-"  • format:1\n"
-"  • sys:oss,dev:1,format:1\n"
-"  • sys:alsa"
+"Параметры перенаправления аудиовыхода:\n"
+" • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
+" [channel:<channel>] Аудиовыход\n"
+" • sys:pulse\n"
+" • format:1\n"
+" • sys:oss,dev:1,format:1\n"
+" • sys:alsa"
 
 #: plugins/rdp/rdp_plugin.c:2488
 msgid ""
@@ -2378,6 +2361,16 @@ msgid ""
 "  • 270 (portrait flipped)\n"
 "\n"
 msgstr ""
+"Список(через запятую) ID мониторов и ориентаций рабочего стола:\n"
+" • [<id>:<ориентация-в-градусах>,]\n"
+" • 0,1,2,3\n"
+" • 0:270,1:90\n"
+"Ориентация указывается в градусах, допустимые значения:\n"
+" • 0 (горизонтальная)\n"
+" • 90 (портретная)\n"
+" • 180 (горизонтальная перевёрнутая)\n"
+" • 270 (портретная перевёрнутая)\n"
+"\n"
 
 #: plugins/rdp/rdp_plugin.c:2531
 msgid "Left-handed mouse support"
@@ -2425,7 +2418,7 @@ msgstr "tag:level[,tag:level[,…]]"
 
 #: plugins/rdp/rdp_plugin.c:2558
 msgid "Audio output mode"
-msgstr ""
+msgstr "Режим аудиовыхода"
 
 #: plugins/rdp/rdp_plugin.c:2559
 msgid "Redirect local audio output"
@@ -3373,10 +3366,8 @@ msgid "Prefer dark theme"
 msgstr ""
 
 #: data/ui/remmina_preferences.glade:785
-#, fuzzy
-#| msgid "Grab all keyboard events"
 msgid "“Grab all keyboard events” status colour"
-msgstr "Захватывать все нажатия клавиш"
+msgstr "Цвет режима \"Захватывать все нажатия клавиш\""
 
 #: data/ui/remmina_preferences.glade:796
 msgid ""
@@ -3384,6 +3375,9 @@ msgid ""
 "It changes the background colour of connection names in the Remmina "
 "connection toolbar (when in fullscreen)."
 msgstr ""
+"Шестнадцатеричные или цветные имена (красный, #ff0000).\n"
+"Изменяет цвет фона названий соединений в панели инструментов Remmina (когда "
+"в полноэкранном режиме)."
 
 #: data/ui/remmina_preferences.glade:832
 msgid "Appearance"
@@ -3709,24 +3703,18 @@ msgstr "Обычные цвета"
 
 #: data/ui/remmina_preferences.glade:2508
 #: data/ui/remmina_preferences.glade:2548
-#, fuzzy
-#| msgid "Bright colours"
 msgid "Highlight colour"
-msgstr "Яркие цвета"
+msgstr "Цвет выделения"
 
 #: data/ui/remmina_preferences.glade:2521
 #: data/ui/remmina_preferences.glade:2563
-#, fuzzy
-#| msgid "Foreground colour"
 msgid "Highlight foreground colour"
-msgstr "Цвет переднего плана"
+msgstr "Цвет выделения на переднем плане"
 
 #: data/ui/remmina_preferences.glade:2534
 #: data/ui/remmina_preferences.glade:2578
-#, fuzzy
-#| msgid "Foreground colour"
 msgid "Cursor foreground colour"
-msgstr "Цвет переднего плана"
+msgstr "Цвет курсора на переднем плане"
 
 #: data/ui/remmina_preferences.glade:2597
 msgid "Terminal"
