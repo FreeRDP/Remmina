@@ -45,7 +45,7 @@ Add yourself in [AUTHORS](AUTHORS) if you have contributed.
 ### Resources
 
  * [Website](https://www.remmina.org/)
- * IRC room on freenode.net, in the #remmina channel, you can also use a [web client](https://kiwiirc.com/client/irc.freenode.net/?nick=remminer|?#remmina/).
+ * IRC room on freenode.net, in the #remmina channel, you can also use a [web client](https://kiwiirc.com/client/irc.freenode.net/?nick=remminer|?#remmina).
 
 ### License
 
