@@ -114,6 +114,7 @@ struct _RemminaConnectionWindowPriv {
 	GtkToolItem *					toolitem_multimon;
 	GtkToolItem *					toolitem_preferences;
 	GtkToolItem *					toolitem_tools;
+	GtkToolItem *                   toolitem_new;
 	GtkToolItem *					toolitem_duplicate;
 	GtkToolItem *					toolitem_screenshot;
 	GtkWidget *					fullscreen_option_button;
@@ -2354,6 +2355,15 @@ rcw_create_toolbar(RemminaConnectionWindow *cnnwin, gint mode)
 	toolitem = gtk_separator_tool_item_new();
 	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
 	gtk_widget_show(GTK_WIDGET(toolitem));
+
+    toolitem = gtk_tool_button_new(NULL, "New connection");
+    gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-new-symbolic");
+    gtk_tool_item_set_tooltip_text(toolitem, _("Open new connection"));
+    gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
+    gtk_widget_show(GTK_WIDGET(toolitem));
+    g_signal_connect(G_OBJECT(toolitem), "clicked", G_CALLBACK(remmina_exec_command), (gpointer) REMMINA_COMMAND_NEW);
+
+    priv->toolitem_new = toolitem;
 
 	toolitem = gtk_tool_button_new(NULL, "Duplicate connection");
 	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-duplicate-symbolic");
