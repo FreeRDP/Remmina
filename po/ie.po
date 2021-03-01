@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright © YEAR Antenore Gatta and Giovanni Panozzo
 # This file is distributed under the same license as the Remmina package.
-# OIS <mistresssilvara@hotmail.com>, 2019.
+# OIS <mistresssilvara@hotmail.com>, 2019, 2021.
 # Allan Nordhøy <epost@anotheragency.no>, 2019, 2020.
 # Antenore Gatta <antenore@simbiosi.org>, 2020, 2021.
 msgid ""
@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Remmina v1.3.6\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-02-23 23:00+0000\n"
-"PO-Revision-Date: 2021-01-28 10:34+0000\n"
-"Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
+"PO-Revision-Date: 2021-03-01 03:26+0000\n"
+"Last-Translator: OIS <mistresssilvara@hotmail.com>\n"
 "Language-Team: Occidental <https://hosted.weblate.org/projects/remmina/"
 "remmina/ie/>\n"
 "Language: ie\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.5-dev\n"
+"X-Generator: Weblate 4.5\n"
 
 #: src/remmina_protocol_widget.c:280
 msgid "Connect via SSH from a new terminal"
@@ -309,10 +309,8 @@ msgid "User password"
 msgstr "Contrasigne de usator"
 
 #: src/remmina_ssh_plugin.c:1393 src/remmina_file_editor.c:978
-#, fuzzy
-#| msgid "CA Certificate File"
 msgid "SSH certificate file"
-msgstr "File de certificate de CA"
+msgstr "File de certificate SSH"
 
 #: src/remmina_ssh_plugin.c:1394 src/remmina_sftp_plugin.c:347
 #: src/remmina_file_editor.c:983
@@ -338,10 +336,8 @@ msgid ""
 msgstr ""
 
 #: src/remmina_ssh_plugin.c:1422
-#, fuzzy
-#| msgid "Normal colours"
 msgid "Terminal colour scheme"
-msgstr "Normal colores"
+msgstr "Schema de colores del terminal"
 
 #: src/remmina_ssh_plugin.c:1423
 msgid "Character set"
@@ -1105,20 +1101,19 @@ msgstr ""
 #: src/remmina_ssh.c:334
 #, c-format
 msgid "SSH certificate cannot be imported. %s"
-msgstr ""
+msgstr "Li certificate SSH ne posset esser importat. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:343
 #, c-format
 msgid "SSH certificate cannot be copied into the private SSH key. %s"
-msgstr ""
+msgstr "Li certificat SSH ne posset esser copiat al clave SSH privat. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:353
-#, fuzzy, c-format
-#| msgid "Could not authenticate with SSH password. %s"
+#, c-format
 msgid "Could not authenticate using SSH certificate. %s"
-msgstr "Ne successat iniciar un session SSH: %s"
+msgstr "Ne successat autentificar per un certificat SSH. %s"
 
 #: src/remmina_ssh.c:364
 msgid "SSH identity file not selected."
@@ -1482,10 +1477,8 @@ msgid "SSH Authentication"
 msgstr ""
 
 #: src/remmina_file_editor.c:972
-#, fuzzy
-#| msgid "SSH private key passphrase"
 msgid "SSH private key file"
-msgstr "Contrasigne del clave privat"
+msgstr "File del clave SSH privat"
 
 #: src/remmina_file_editor.c:1036
 msgid "Basic"
@@ -2041,6 +2034,8 @@ msgid ""
 "You requested a H.264 GFX mode for the server “%s”, but your libfreerdp does "
 "not support H.264. Please use a non-AVC colour depth setting."
 msgstr ""
+"Vu demandat un mode GFX H.264 GFX por li servitor «%s», ma vor libfreerdp ne "
+"supporta H.264. Ples usar un profunditá de colores non-AVC."
 
 #: plugins/rdp/rdp_plugin.c:2030
 #, c-format
@@ -2179,6 +2174,13 @@ msgid ""
 "  • sys:oss,dev:1,format:1\n"
 "  • sys:alsa"
 msgstr ""
+"Optiones de redirection del audio-production:\n"
+"  • [sys:<sistema>,][dev:<aparate>,][format:<formate>,][rate:<rapid.>,]\n"
+"    [channel:<canal>] Audio-production\n"
+"  • sys:pulse\n"
+"  • format:1\n"
+"  • sys:oss,dev:1,format:1\n"
+"  • sys:alsa"
 
 #: plugins/rdp/rdp_plugin.c:2488
 msgid ""
@@ -2262,7 +2264,7 @@ msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:2558
 msgid "Audio output mode"
-msgstr ""
+msgstr "Mode del audio-production"
 
 #: plugins/rdp/rdp_plugin.c:2559
 msgid "Redirect local audio output"
@@ -3357,10 +3359,12 @@ msgid ""
 "Selecting “SGR 1” also switches to the bright counterparts of the first 8 "
 "palette colours (in addition to making text bold)."
 msgstr ""
+"Selection de «SGR 1» va anc usar li lucid variantes del 8 prim colores de "
+"palette (li textu anc deveni grass)."
 
 #: data/ui/remmina_preferences.glade:2041
 msgid "Allow using bright colours with bold text"
-msgstr ""
+msgstr "Permisser usar lucid colores por grass textu"
 
 #: data/ui/remmina_preferences.glade:2055
 msgid "Colour theme"
@@ -3371,6 +3375,9 @@ msgid ""
 "Choose a colour scheme file. Usually available in /usr/share/remmina/theme. "
 "https://github.com/mbadolato/iTerm2-Color-Schemes has more details."
 msgstr ""
+"Selecte un file de schema de colores. It usualmen es disponibil in «/usr/"
+"share/remmina/theme». Plu detallies che https://github.com/mbadolato/iTerm2"
+"-Color-Schemes."
 
 #: data/ui/remmina_preferences.glade:2069
 msgid "Pick a terminal colouring file"
@@ -3474,24 +3481,18 @@ msgstr "Normal colores"
 
 #: data/ui/remmina_preferences.glade:2508
 #: data/ui/remmina_preferences.glade:2548
-#, fuzzy
-#| msgid "Bright colours"
 msgid "Highlight colour"
-msgstr "Clar colores"
+msgstr "Color de marca"
 
 #: data/ui/remmina_preferences.glade:2521
 #: data/ui/remmina_preferences.glade:2563
-#, fuzzy
-#| msgid "Foreground colour"
 msgid "Highlight foreground colour"
-msgstr "Color de avanplan"
+msgstr "Color de marcat avanplan"
 
 #: data/ui/remmina_preferences.glade:2534
 #: data/ui/remmina_preferences.glade:2578
-#, fuzzy
-#| msgid "Foreground colour"
 msgid "Cursor foreground colour"
-msgstr "Color de avanplan"
+msgstr "Color de avanplan del cursor"
 
 #: data/ui/remmina_preferences.glade:2597
 msgid "Terminal"
