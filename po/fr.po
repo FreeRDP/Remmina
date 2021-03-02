@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-02-23 23:00+0000\n"
-"PO-Revision-Date: 2021-02-16 15:13+0000\n"
+"PO-Revision-Date: 2021-03-02 12:29+0000\n"
 "Last-Translator: Davy Defaud <davy.defaud@free.fr>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/remmina/remmina/"
 "fr/>\n"
@@ -324,10 +324,8 @@ msgid "User password"
 msgstr "Mot de passe de l’utilisateur"
 
 #: src/remmina_ssh_plugin.c:1393 src/remmina_file_editor.c:978
-#, fuzzy
-#| msgid "CA Certificate File"
 msgid "SSH certificate file"
-msgstr "Fichier du certificat de l’AC"
+msgstr "Fichier du certificat SSH"
 
 #: src/remmina_ssh_plugin.c:1394 src/remmina_sftp_plugin.c:347
 #: src/remmina_file_editor.c:983
@@ -364,8 +362,6 @@ msgstr ""
 "ISO 8601.\n"
 
 #: src/remmina_ssh_plugin.c:1422
-#, fuzzy
-#| msgid "Terminal color scheme"
 msgid "Terminal colour scheme"
 msgstr "Palette de couleurs du terminal"
 
@@ -1206,24 +1202,22 @@ msgstr "Authentification SSH par clef publique impossible. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:334
-#, fuzzy, c-format
-#| msgid "Public SSH key cannot be imported. %s"
+#, c-format
 msgid "SSH certificate cannot be imported. %s"
-msgstr "La clef SSH publique n’a pas pu être importée. %s"
+msgstr "Le certificat SSH n’a pas pu être importé. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:343
-#, fuzzy, c-format
-#| msgid "Public SSH key cannot be imported. %s"
+#, c-format
 msgid "SSH certificate cannot be copied into the private SSH key. %s"
-msgstr "La clef SSH publique n’a pas pu être importée. %s"
+msgstr ""
+"Un certificat SSH ne peut être copié dans un fichier de clef SSH privée. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:353
-#, fuzzy, c-format
-#| msgid "Could not authenticate with public SSH key. %s"
+#, c-format
 msgid "Could not authenticate using SSH certificate. %s"
-msgstr "Authentification SSH par clef publique impossible. %s"
+msgstr "Authentification par certificat SSH impossible. %s"
 
 #: src/remmina_ssh.c:364
 msgid "SSH identity file not selected."
@@ -1599,10 +1593,8 @@ msgid "SSH Authentication"
 msgstr "Authentification SSH"
 
 #: src/remmina_file_editor.c:972
-#, fuzzy
-#| msgid "SSH private key passphrase"
 msgid "SSH private key file"
-msgstr "Phrase de passe de la clef SSH privée"
+msgstr "Fichier contenant la clef SSH privée"
 
 #: src/remmina_file_editor.c:1036
 msgid "Basic"
@@ -2459,7 +2451,7 @@ msgstr "étiquette:niveau[,étiquette:niveau[,…]]"
 
 #: plugins/rdp/rdp_plugin.c:2558
 msgid "Audio output mode"
-msgstr ""
+msgstr "Mode de sortie audio"
 
 #: plugins/rdp/rdp_plugin.c:2559
 msgid "Redirect local audio output"
@@ -3430,18 +3422,13 @@ msgid "“Grab all keyboard events” status colour"
 msgstr "Couleur pour l’état « Capturer les événements du clavier »"
 
 #: data/ui/remmina_preferences.glade:796
-#, fuzzy
-#| msgid ""
-#| "Hexadecimal or color names (red, #ff0000).\n"
-#| "It changes the connection name background colour, in the Remmina "
-#| "connection toolbar when in full screen."
 msgid ""
 "Hexadecimal- or colour names (red, #ff0000).\n"
 "It changes the background colour of connection names in the Remmina "
 "connection toolbar (when in fullscreen)."
 msgstr ""
 "Nom de couleur en anglais ou code hexadécimal (« red » ou « #ff0000 »).\n"
-"Permet de définir la couleur de fond du nom de la connexion dans la barre "
+"Permet de définir la couleur de fond des noms des connexions dans la barre "
 "d’outils de connexion de Remmina en mode plein écran."
 
 #: data/ui/remmina_preferences.glade:832
@@ -3773,24 +3760,18 @@ msgstr "Couleur du texte en gras"
 
 #: data/ui/remmina_preferences.glade:2508
 #: data/ui/remmina_preferences.glade:2548
-#, fuzzy
-#| msgid "Bright colours"
 msgid "Highlight colour"
-msgstr "Couleurs claires"
+msgstr "Couleur de surbrillance"
 
 #: data/ui/remmina_preferences.glade:2521
 #: data/ui/remmina_preferences.glade:2563
-#, fuzzy
-#| msgid "Foreground colour"
 msgid "Highlight foreground colour"
-msgstr "Couleur de premier plan"
+msgstr "Couleur de surbrillance de premier plan"
 
 #: data/ui/remmina_preferences.glade:2534
 #: data/ui/remmina_preferences.glade:2578
-#, fuzzy
-#| msgid "Foreground colour"
 msgid "Cursor foreground colour"
-msgstr "Couleur de premier plan"
+msgstr "Couleur de premier plan du curseur"
 
 #: data/ui/remmina_preferences.glade:2597
 msgid "Terminal"
