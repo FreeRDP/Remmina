@@ -35,7 +35,10 @@
         /* File transfer (although limited to user directory) */
         "--filesystem=home",
         /* Devices access as the user may require to share local devices on the remote server */
+        "--env=DCONF_USER_CONFIG_DIR=.config/dconf",
         "--device=all",
+        "--talk-name=ca.desrt.dconf",
+        "--talk-name=org.gtk.vfs.*",
         "--talk-name=org.freedesktop.portal.Fcitx",
         /* Desktop notifications */
         "--talk-name=org.freedesktop.Notifications",
@@ -211,23 +214,39 @@
         },
         {
             "name": "spice-gtk",
-            "cleanup": [
-                "/bin",
-                "/share/vala"
-            ],
+            "buildsystem": "meson",
+            "build-options" : {
+                "env" : {
+                    "PYTHONPATH" : "/app"
+                }
+            },
             "config-opts": [
-                "PYTHON=python3",
-                "--disable-introspection",
-                "--disable-vala"
+                "-Dvapi=enabled",
+                "-Dwebdav=enabled",
+                "-Dgtk_doc=disabled"
             ],
             "sources": [
                 {
                     "type": "archive",
-                    "url": "http://www.spice-space.org/download/gtk/spice-gtk-0.37.tar.bz2",
-                    "sha256": "1f28b706472ad391cda79a93fd7b4c7a03e84b88fc46ddb35dddbe323c923bb7"
+                    "url": "https://www.spice-space.org/download/gtk/spice-gtk-0.38.tar.xz",
+                    "sha256": "5ae974731baf2b41316d4f0b3ae0c2e47f00bff91a5a617e189cd3dedcd96d8e"
                 }
             ],
             "modules": [
+                {
+                    "name" : "python-pyparsing",
+                    "buildsystem" : "simple",
+                    "build-commands" : [
+                        "pip3 install --prefix=/app pyparsing-2.4.6-py2.py3-none-any.whl"
+                    ],
+                    "sources" : [
+                        {
+                            "type" : "file",
+                            "url" : "https://files.pythonhosted.org/packages/5d/bc/1e58593167fade7b544bfe9502a26dc860940a79ab306e651e7f13be68c2/pyparsing-2.4.6-py2.py3-none-any.whl",
+                            "sha256" : "c342dccb5250c08d45fd6f8b4a559613ca603b57498511740e65cd11a2e7dcec"
+                        }
+                    ]
+                },
                 {
                     /**
                     * For smartcard support
@@ -286,8 +305,8 @@
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://www.spice-space.org/download/releases/spice-protocol/spice-protocol-0.14.0.tar.bz2",
-                            "sha256": "b6a4aa1ca32668790b45a494bbd000e9d05797b391d5a5d4b91adf1118216eac"
+                            "url": "https://www.spice-space.org/download/releases/spice-protocol-0.14.2.tar.xz",
+                            "sha256": "8f3a63c8b68300dffe36f2e75eac57afa1e76d5d80af760fd138a0b3f44cf1e9"
                         }
                     ]
                 }
@@ -297,13 +316,14 @@
             "name": "libsodium",
             "sources": [
                 {
-                    "type": "archive",
-                    "url": "https://download.libsodium.org/libsodium/releases/libsodium-1.0.18.tar.gz",
-                    "sha256": "6f504490b342a4f8a4c4a02fc9b866cbef8622d5df4e5452b46be121e46636c1"
+                    "type": "git",
+                    "url": "https://github.com/jedisct1/libsodium.git",
+                    "branch": "stable",
+                    "commit": "c9608ed004f6dda62c43be9d5a8fffdf6eb978c7"
                 }
             ],
             "post-install": [
-                "install -Dm644 -t ${FLATPAK_DEST}/share/licenses/libsodium LICENSE"
+                "install -Dm644 LICENSE ${FLATPAK_DEST}/share/licenses/libsodium/LICENSE"
             ]
         },
         {
