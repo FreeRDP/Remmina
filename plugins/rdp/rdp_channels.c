@@ -56,7 +56,7 @@ void remmina_rdp_OnChannelConnectedEventHandler(rdpContext* context, ChannelConn
 		g_print("Unimplemented: channel %s connected but we can’t use it\n", e->name);
 		// xf_tsmf_init(xfc, (TsmfClientContext*) e->pInterface);
 	}else if (g_strcmp0(e->name, RDPGFX_DVC_CHANNEL_NAME) == 0) {
-	   if (rfi->settings->SoftwareGdi) {
+	   if (freerdp_settings_get_bool(rfi->settings, FreeRDP_SoftwareGdi)) {
 			rfi->rdpgfxchan = TRUE;
 			gdi_graphics_pipeline_init(context->gdi, (RdpgfxClientContext*) e->pInterface);
 	   }
@@ -88,7 +88,7 @@ void remmina_rdp_OnChannelDisconnectedEventHandler(rdpContext* context, ChannelC
 	rfContext* rfi = (rfContext*)context;
 
 	if (strcmp(e->name, RDPGFX_DVC_CHANNEL_NAME) == 0) {
-		if (rfi->settings->SoftwareGdi)
+		if (freerdp_settings_get_bool(rfi->settings, FreeRDP_SoftwareGdi))
 			gdi_graphics_pipeline_uninit(context->gdi, (RdpgfxClientContext*) e->pInterface);
 	}
 	REMMINA_PLUGIN_DEBUG("Channel %s has been closed", e->name);

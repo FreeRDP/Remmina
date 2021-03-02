@@ -69,6 +69,7 @@ void remmina_rdp_monitor_get (rfContext *rfi, gchar **monitorids, guint32 *maxwi
 {
 	TRACE_CALL(__func__);
 
+	rdpMonitor* base;
 	GdkDisplay *display;
 	GdkMonitor *monitor;
 	gboolean has_custom_monitors = FALSE;
@@ -91,8 +92,8 @@ void remmina_rdp_monitor_get (rfContext *rfi, gchar **monitorids, guint32 *maxwi
 
 	settings = rfi->settings;
 
-	*maxwidth = settings->DesktopWidth;
-	*maxheight = settings->DesktopHeight;
+	*maxwidth = freerdp_settings_get_uint32(settings, FreeRDP_DesktopWidth);
+	*maxheight = freerdp_settings_get_uint32(settings, FreeRDP_DesktopHeight);
 
 	display = gdk_display_get_default ();
 	n_monitors = gdk_display_get_n_monitors(display);
@@ -108,7 +109,9 @@ void remmina_rdp_monitor_get (rfContext *rfi, gchar **monitorids, guint32 *maxwi
 
 	buffer[0] = '\0';
 
+	base = freerdp_settings_get_pointer(settings, FreeRDP_MonitorDefArray);
 	for (gint i = 0; i < n_monitors; ++i) {
+		rdpMonitor* current;
 		if (has_custom_monitors) {
 			REMMINA_PLUGIN_DEBUG("We have custom monitors");
 			gchar itoc[10];
@@ -128,14 +131,15 @@ void remmina_rdp_monitor_get (rfContext *rfi, gchar **monitorids, guint32 *maxwi
 		}
 
 		monitor = gdk_display_get_monitor(display, index);
+		current = &base[index];
 		REMMINA_PLUGIN_DEBUG("Monitor n %d", index);
 		/* If the desktop env in use doesn't have the working area concept
 		 * gdk_monitor_get_workarea will return the monitor geometry*/
 		//gdk_monitor_get_workarea (monitor, &geometry);
 		gdk_monitor_get_geometry (monitor, &geometry);
-		settings->MonitorDefArray[index].x = geometry.x;
+		current->x = geometry.x;
 		REMMINA_PLUGIN_DEBUG("Monitor n %d x: %d", index, geometry.x);
-		settings->MonitorDefArray[index].y = geometry.y;
+		current->y = geometry.y;
 		REMMINA_PLUGIN_DEBUG("Monitor n %d y: %d", index, geometry.y);
 		/* geometry contain the application geometry, to obtain the real one
 		 * we must multiply by the scale factor */
@@ -145,47 +149,47 @@ void remmina_rdp_monitor_get (rfContext *rfi, gchar **monitorids, guint32 *maxwi
 		geometry.height *= scale;
 		REMMINA_PLUGIN_DEBUG("Monitor n %d width: %d", index, geometry.width);
 		REMMINA_PLUGIN_DEBUG("Monitor n %d height: %d", index, geometry.height);
-		settings->MonitorDefArray[index].width = geometry.width;
-		settings->MonitorDefArray[index].height = geometry.height;
-		settings->MonitorDefArray[index].attributes.physicalHeight = gdk_monitor_get_height_mm (monitor);
-		REMMINA_PLUGIN_DEBUG("Monitor n %d physical  height: %d", i, settings->MonitorDefArray[index].attributes.physicalHeight);
-		settings->MonitorDefArray[index].attributes.physicalWidth = gdk_monitor_get_width_mm (monitor);
-		REMMINA_PLUGIN_DEBUG("Monitor n %d physical  width: %d", i, settings->MonitorDefArray[index].attributes.physicalWidth);
-		settings->MonitorDefArray[index].orig_screen = index;
+		current->width = geometry.width;
+		current->height = geometry.height;
+		current->attributes.physicalHeight = gdk_monitor_get_height_mm (monitor);
+		REMMINA_PLUGIN_DEBUG("Monitor n %d physical  height: %d", i, current->attributes.physicalHeight);
+		current->attributes.physicalWidth = gdk_monitor_get_width_mm (monitor);
+		REMMINA_PLUGIN_DEBUG("Monitor n %d physical  width: %d", i, current->attributes.physicalWidth);
+		current->orig_screen = index;
 		if (!primary_found) {
-			settings->MonitorLocalShiftX = settings->MonitorDefArray[index].x;
-			settings->MonitorLocalShiftY = settings->MonitorDefArray[index].y;
+			freerdp_settings_set_uint32(settings, FreeRDP_MonitorLocalShiftX, current->x);
+			freerdp_settings_set_uint32(settings, FreeRDP_MonitorLocalShiftY, current->y);
 		}
 		if (gdk_monitor_is_primary(monitor)) {
 			REMMINA_PLUGIN_DEBUG ("Primary monitor found with id: %d", index);
-			settings->MonitorDefArray[index].is_primary = TRUE;
+			current->is_primary = TRUE;
 			primary_found = TRUE;
-			if (settings->MonitorDefArray[index].x != 0 || settings->MonitorDefArray[index].y != 0)
+			if (current->x != 0 || current->y != 0)
 			{
 				REMMINA_PLUGIN_DEBUG ("Primary monitor not at 0,0 coordinates: %d", index);
-				settings->MonitorLocalShiftX = settings->MonitorDefArray[index].x;
-				settings->MonitorLocalShiftY = settings->MonitorDefArray[index].y;
+				freerdp_settings_set_uint32(settings, FreeRDP_MonitorLocalShiftX, current->x);
+				freerdp_settings_set_uint32(settings, FreeRDP_MonitorLocalShiftY, current->y);
 			}
 		} else {
-			if (!primary_found && settings->MonitorDefArray[index].x == 0 &&
-					settings->MonitorDefArray[index].y == 0)
+			if (!primary_found && current->x == 0 &&
+					current->y == 0)
 			{
 				REMMINA_PLUGIN_DEBUG ("Monitor %d has 0,0 coordinates", index);
-				settings->MonitorDefArray[index].is_primary = TRUE;
-				settings->MonitorLocalShiftX = settings->MonitorDefArray[index].x;
-				settings->MonitorLocalShiftY = settings->MonitorDefArray[index].y;
+				current->is_primary = TRUE;
+				freerdp_settings_set_uint32(settings, FreeRDP_MonitorLocalShiftX, current->x);
+				freerdp_settings_set_uint32(settings, FreeRDP_MonitorLocalShiftY, current->y);
 				primary_found = TRUE;
 				REMMINA_PLUGIN_DEBUG ("Primary monitor set to id: %d", index);
 			}
 		}
-		REMMINA_PLUGIN_DEBUG ("Local X Shift: %d", settings->MonitorLocalShiftX);
-		REMMINA_PLUGIN_DEBUG ("Local Y Shift: %d", settings->MonitorLocalShiftY);
-		//settings->MonitorDefArray[index].x =
-			//settings->MonitorDefArray[index].x - settings->MonitorLocalShiftX;
-		//REMMINA_PLUGIN_DEBUG("Monitor n %d calculated x: %d", index, settings->MonitorDefArray[index].x);
-		//settings->MonitorDefArray[index].y =
-			//settings->MonitorDefArray[index].y - settings->MonitorLocalShiftY;
-		//REMMINA_PLUGIN_DEBUG("Monitor n %d calculated y: %d", index, settings->MonitorDefArray[index].y);
+		REMMINA_PLUGIN_DEBUG ("Local X Shift: %d", freerdp_settings_get_uint32(settings, FreeRDP_MonitorLocalShiftX));
+		REMMINA_PLUGIN_DEBUG ("Local Y Shift: %d", freerdp_settings_get_uint32(settings, FreeRDP_MonitorLocalShiftY));
+		//current->x =
+			//current->x - freerdp_settings_get_uint32(settings, FreeRDP_MonitorLocalShiftX);
+		//REMMINA_PLUGIN_DEBUG("Monitor n %d calculated x: %d", index, current->x);
+		//current->y =
+			//current->y - freerdp_settings_get_uint32(settings, FreeRDP_MonitorLocalShiftY);
+		//REMMINA_PLUGIN_DEBUG("Monitor n %d calculated y: %d", index, current->y);
 
 		if (buffer[0] == '\0')
 			g_sprintf (buffer, "%d", i);
@@ -198,7 +202,7 @@ void remmina_rdp_monitor_get (rfContext *rfi, gchar **monitorids, guint32 *maxwi
 		index++;
 
 	}
-	settings->MonitorCount = index;
+	freerdp_settings_set_uint32(settings, FreeRDP_MonitorCount, index);
 	/* Subtract monitor shift from monitor variables for server-side use.
 	 * We maintain monitor shift value as Window requires the primary monitor to have a
 	 * coordinate of 0,0 In some X configurations, no monitor may have a coordinate of 0,0. This
@@ -206,21 +210,22 @@ void remmina_rdp_monitor_get (rfContext *rfi, gchar **monitorids, guint32 *maxwi
 	 * So, we make sure to translate our primary monitor's upper-left corner to 0,0 on the
 	 * server.
 	 */
-	for (gint i = 0; i < settings->MonitorCount; i++)
+	for (gint i = 0; i < freerdp_settings_get_uint32(settings, FreeRDP_MonitorCount); i++)
 	{
-		settings->MonitorDefArray[i].x =
-			settings->MonitorDefArray[i].x - settings->MonitorLocalShiftX;
-		REMMINA_PLUGIN_DEBUG("Monitor n %d calculated x: %d", i, settings->MonitorDefArray[i].x);
-		settings->MonitorDefArray[i].y =
-			settings->MonitorDefArray[i].y - settings->MonitorLocalShiftY;
-		REMMINA_PLUGIN_DEBUG("Monitor n %d calculated y: %d", i, settings->MonitorDefArray[i].y);
+		rdpMonitor* current = &base[i];
+		current->x =
+			current->x - freerdp_settings_get_uint32(settings, FreeRDP_MonitorLocalShiftX);
+		REMMINA_PLUGIN_DEBUG("Monitor n %d calculated x: %d", i, current->x);
+		current->y =
+			current->y - freerdp_settings_get_uint32(settings, FreeRDP_MonitorLocalShiftY);
+		REMMINA_PLUGIN_DEBUG("Monitor n %d calculated y: %d", i, current->y);
 	}
 
-	REMMINA_PLUGIN_DEBUG("%d monitors on %d have been configured", rfi->settings->MonitorCount, count);
+	REMMINA_PLUGIN_DEBUG("%d monitors on %d have been configured", freerdp_settings_get_uint32(settings, FreeRDP_MonitorCount), count);
 	*maxwidth = destgeom.width;
 	*maxheight = destgeom.height;
 	REMMINA_PLUGIN_DEBUG("maxw and maxh: %ux%u", *maxwidth, *maxheight);
 	if (n_monitors > 1)
-		rfi->settings->SupportMonitorLayoutPdu = TRUE;
+		freerdp_settings_set_bool(rfi->settings, FreeRDP_SupportMonitorLayoutPdu, TRUE);
 	*monitorids = g_strdup(buffer);
 }

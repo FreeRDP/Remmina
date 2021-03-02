@@ -403,24 +403,26 @@ static gboolean remmina_rdp_event_delayed_monitor_layout(RemminaProtocolWidget *
 			}
 			rdp_event.type = REMMINA_RDP_EVENT_TYPE_SEND_MONITOR_LAYOUT;
 			if (remmina_plugin_service->file_get_int(remminafile, "multimon", FALSE)) {
-				for (gint i = 0; i < rfi->settings->MonitorCount; ++i) {
+				const rdpMonitor* base = freerdp_settings_get_pointer(rfi->settings, FreeRDP_MonitorDefArray);
+				for (gint i = 0; i < freerdp_settings_get_uint32(rfi->settings, FreeRDP_MonitorCount); ++i) {
+					const rdpMonitor* current = &base[i];
 					REMMINA_PLUGIN_DEBUG("Sending display layout n° %d", i);
-					rdp_event.monitor_layout.Flags = rfi->settings->MonitorDefArray[i].is_primary;
+					rdp_event.monitor_layout.Flags = current->is_primary;
 					REMMINA_PLUGIN_DEBUG("EVNT MON LAYOUT - Flags: %i", rdp_event.monitor_layout.Flags);
-					rdp_event.monitor_layout.Left = rfi->settings->MonitorDefArray[i].x;
+					rdp_event.monitor_layout.Left = current->x;
 					REMMINA_PLUGIN_DEBUG("EVNT MON LAYOUT - Left: %i", rdp_event.monitor_layout.Left);
-					rdp_event.monitor_layout.Top = rfi->settings->MonitorDefArray[i].y;
+					rdp_event.monitor_layout.Top = current->y;
 					REMMINA_PLUGIN_DEBUG("EVNT MON LAYOUT - Top: %i", rdp_event.monitor_layout.Top);
-					rdp_event.monitor_layout.width = rfi->settings->MonitorDefArray[i].width;
+					rdp_event.monitor_layout.width = current->width;
 					REMMINA_PLUGIN_DEBUG("EVNT MON LAYOUT - width: %i", rdp_event.monitor_layout.width);
-					rdp_event.monitor_layout.height = rfi->settings->MonitorDefArray[i].height;
+					rdp_event.monitor_layout.height = current->height;
 					REMMINA_PLUGIN_DEBUG("EVNT MON LAYOUT - height: %i", rdp_event.monitor_layout.height);
-					rdp_event.monitor_layout.physicalWidth = rfi->settings->MonitorDefArray[i].attributes.physicalWidth;
+					rdp_event.monitor_layout.physicalWidth = current->attributes.physicalWidth;
 					REMMINA_PLUGIN_DEBUG("EVNT MON LAYOUT - physicalWidth: %i", rdp_event.monitor_layout.physicalWidth);
-					rdp_event.monitor_layout.physicalHeight = rfi->settings->MonitorDefArray[i].attributes.physicalHeight;
+					rdp_event.monitor_layout.physicalHeight = current->attributes.physicalHeight;
 					REMMINA_PLUGIN_DEBUG("EVNT MON LAYOUT - PhysicalHeight: %i", rdp_event.monitor_layout.physicalHeight);
-					if (rfi->settings->MonitorDefArray[i].attributes.orientation)
-						rdp_event.monitor_layout.desktopOrientation = rfi->settings->MonitorDefArray[i].attributes.orientation;
+					if (current->attributes.orientation)
+						rdp_event.monitor_layout.desktopOrientation = current->attributes.orientation;
 					else
 						rdp_event.monitor_layout.desktopOrientation = rdp_event.monitor_layout.desktopOrientation;
 					REMMINA_PLUGIN_DEBUG("EVNT MON LAYOUT - desktopOrientation: %i", rdp_event.monitor_layout.desktopOrientation);
