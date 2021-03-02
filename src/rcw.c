@@ -1692,6 +1692,16 @@ static void rcw_toolbar_multi_monitor_mode(GtkToolItem *toggle, RemminaConnectio
 	}
 }
 
+static void rcw_toolbar_new(GtkToolItem *toggle, RemminaConnectionWindow *cnnwin)
+{
+    TRACE_CALL(__func__);
+
+    if (cnnwin->priv->toolbar_is_reconfiguring)
+        return;
+
+    remmina_exec_command(REMMINA_COMMAND_MAIN, NULL);
+}
+
 static void rcw_toolbar_preferences_popdown(GtkToolItem *toggle, RemminaConnectionWindow *cnnwin)
 {
 	TRACE_CALL(__func__);
@@ -2361,7 +2371,7 @@ rcw_create_toolbar(RemminaConnectionWindow *cnnwin, gint mode)
     gtk_tool_item_set_tooltip_text(toolitem, _("Open new connection"));
     gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
     gtk_widget_show(GTK_WIDGET(toolitem));
-    g_signal_connect(G_OBJECT(toolitem), "clicked", G_CALLBACK(remmina_exec_command), (gpointer) REMMINA_COMMAND_NEW);
+    g_signal_connect(G_OBJECT(toolitem), "clicked", G_CALLBACK(rcw_toolbar_new), cnnwin);
 
     priv->toolitem_new = toolitem;
 
