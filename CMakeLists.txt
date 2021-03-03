@@ -364,7 +364,27 @@ if(NOT GTK3_FOUND)
     message(FATAL_ERROR "GTK3 library not found")
 endif(NOT GTK3_FOUND)
 include_directories(${GTK3_INCLUDE_DIRS})
-set(GTK_LIBRARIES ${GTK3_LIBRARY} ${GDK3_LIBRARY} ${GDKPixbuf_LIBRARY} ${Pango_LIBRARY} ${Cairo_LIBRARY} ${GObject_LIBRARY} ${GLib_LIBRARY} ${GIO_LIBRARY} ${Gmodule_LIBRARIES} ${GMODULE_LIBRARY})
+
+pkg_check_modules(wayland-client REQUIRED wayland-client)
+pkg_check_modules(wayland-cursor REQUIRED wayland-cursor)
+pkg_check_modules(wayland-egl REQUIRED wayland-egl)
+include_directories(${wayland-client_INCLUDE_DIR})
+
+set(GTK_LIBRARIES
+    ${GTK3_LIBRARY}
+    ${GDK3_LIBRARY}
+    ${GDKPixbuf_LIBRARY}
+    ${Pango_LIBRARY}
+    ${Cairo_LIBRARY}
+    ${GObject_LIBRARY}
+    ${GLib_LIBRARY}
+    ${GIO_LIBRARY}
+    ${Gmodule_LIBRARIES}
+    ${GMODULE_LIBRARY}
+    ${wayland-client_LIBRARIES}
+    ${wayland-cursor_LIBRARIES}
+    ${wayland-egl_LIBRARIES}
+)
 
 
 set(CMAKE_THREAD_PREFER_PTHREAD TRUE)
