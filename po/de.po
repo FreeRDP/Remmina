@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-03-02 14:23+0000\n"
+"POT-Creation-Date: 2021-03-03 22:33+0000\n"
 "PO-Revision-Date: 2021-02-25 06:50+0000\n"
 "Last-Translator: Johannes Weberhofer <jweberhofer@weberhofer.at>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -163,7 +163,7 @@ msgstr "Konfigurieren Sie auswählbare Bildschirmauflösungen"
 msgid "Recent lists cleared."
 msgstr "Die Liste der zuletzt geöffneter Verbindungen wurde geleert."
 
-#: src/remmina_pref_dialog.c:153 src/rcw.c:1938
+#: src/remmina_pref_dialog.c:153 src/rcw.c:1949
 #: data/ui/remmina_preferences.glade:251 data/ui/remmina_preferences.glade:261
 msgid "Keystrokes"
 msgstr "Tastenschläge"
@@ -776,102 +776,108 @@ msgstr "Mit dem Applet‐Menü zur entfernten Arbeitsflächen verbinden"
 msgid "Remmina Remote Desktop Client"
 msgstr "Remmina Remote-Desktop-Client"
 
-#: src/rcw.c:653
+#: src/rcw.c:654
 #, c-format
 msgid ""
 "Are you sure you want to close %i active connections in the current window?"
 msgstr ""
 "Wollen Sie wirklich %i aktive Verbindungen im aktuellen Fenster schließen?"
 
-#: src/rcw.c:1389
+#: src/rcw.c:1390
 msgid "Viewport fullscreen mode"
 msgstr "Vollbildmodus"
 
-#: src/rcw.c:1397 data/ui/remmina_preferences.glade:646
+#: src/rcw.c:1398 data/ui/remmina_preferences.glade:646
 msgid "Scrolled fullscreen"
 msgstr "Verschiebbare Vollbildschirmanzeige"
 
-#: src/rcw.c:1482
+#: src/rcw.c:1483
 msgid "Keep aspect ratio when scaled"
 msgstr "Bildformat im skalierten Modus beibehalten"
 
-#: src/rcw.c:1490
+#: src/rcw.c:1491
 msgid "Fill client window when scaled"
 msgstr "Client‐Fenster füllen wenn skaliert"
 
-#: src/rcw.c:2053
+#: src/rcw.c:2064
 msgid "Turn off scaling to avoid screenshot distortion."
 msgstr ""
 "Schalten Sie die Skalierung aus um Verzerrungen bei Screenshots zu vermeiden."
 
-#: src/rcw.c:2113 plugins/www/www_plugin.c:840
+#: src/rcw.c:2124 plugins/www/www_plugin.c:840
 msgid "Screenshot taken"
 msgstr "Screenshot wurde erzeugt"
 
-#: src/rcw.c:2194
+#: src/rcw.c:2205
+#, fuzzy
+#| msgid "Open Main Window"
+msgid "Open the Remmina main window"
+msgstr "Hauptfenster öffnen"
+
+#: src/rcw.c:2214
+msgid "Duplicate current connection"
+msgstr "Aktuelle Verbindung duplizieren"
+
+#: src/rcw.c:2231
 msgid "Resize the window to fit in remote resolution"
 msgstr "Das Fenster auf die entfernte Bildschirmauflösung anpassen"
 
-#: src/rcw.c:2205
+#: src/rcw.c:2242
 msgid "Toggle fullscreen mode"
 msgstr "Vollbildmodus umschalten"
 
-#: src/rcw.c:2251 data/ui/remmina_preferences.glade:1299
+#: src/rcw.c:2288 data/ui/remmina_preferences.glade:1299
 #: data/ui/remmina_preferences.glade:1309
 msgid "Multi monitor"
 msgstr "Multi-Monitor"
 
-#: src/rcw.c:2267
+#: src/rcw.c:2304
 msgid "Toggle dynamic resolution update"
 msgstr "Dynamische Auflösung umschalten"
 
-#: src/rcw.c:2277
+#: src/rcw.c:2314
 msgid "Toggle scaled mode"
 msgstr "Skalierten Modus umschalten"
 
-#: src/rcw.c:2317 data/ui/remmina_preferences.glade:1043
+#: src/rcw.c:2354 data/ui/remmina_preferences.glade:1043
 msgid "Switch tab pages"
 msgstr "Wechsel zwischen den Reitern"
 
-#: src/rcw.c:2327
+#: src/rcw.c:2364
 msgid "Grab all keyboard events"
 msgstr "Alle Tastatureingaben abfangen"
 
-#: src/rcw.c:2337
+#: src/rcw.c:2374
 msgid "Preferences"
 msgstr "Einstellungen"
 
-#: src/rcw.c:2346
+#: src/rcw.c:2383
 msgid "_Tools"
 msgstr "_Werkzeuge"
 
-#: src/rcw.c:2347 data/ui/remmina_main.glade:213
+#: src/rcw.c:2384 data/ui/remmina_main.glade:213
 msgid "Tools"
 msgstr "Werkzeuge"
 
-#: src/rcw.c:2360
-msgid "Duplicate current connection"
-msgstr "Aktuelle Verbindung duplizieren"
-
-#: src/rcw.c:2371 data/ui/remmina_preferences.glade:1236
+#: src/rcw.c:2397 data/ui/remmina_preferences.glade:1236
 #: data/ui/remmina_preferences.glade:1246
 msgid "Screenshot"
 msgstr "Bildschirmfoto"
 
-#: src/rcw.c:2385 data/ui/remmina_preferences.glade:1146
+#: src/rcw.c:2411 data/ui/remmina_preferences.glade:1146
 msgid "Minimize window"
 msgstr "Fenster minimieren"
 
-#: src/rcw.c:2395 data/ui/remmina_preferences.glade:1176
+#: src/rcw.c:2421 data/ui/remmina_preferences.glade:1176
 msgid "Disconnect"
 msgstr "Verbindung trennen"
 
-#: src/rcw.c:4117
+#: src/rcw.c:4143
 #, c-format
 msgid "The file “%s” is corrupted, unreadable, or could not be found."
 msgstr "Die Datei „%s“ ist ungültig, unlesbar oder wurde nicht gefunden."
 
-#: src/rcw.c:4285
+#: src/rcw.c:4311
 msgid "Warning: This plugin requires GtkSocket, but it’s not available."
 msgstr ""
 "Warnung: Dieses Plugin benötigt GtkSocket, welches aber nicht verfügbar ist."
