@@ -366,9 +366,11 @@ endif(NOT GTK3_FOUND)
 include_directories(${GTK3_INCLUDE_DIRS})
 
 pkg_check_modules(wayland-client REQUIRED wayland-client)
-pkg_check_modules(wayland-cursor REQUIRED wayland-cursor)
-pkg_check_modules(wayland-egl REQUIRED wayland-egl)
-include_directories(${wayland-client_INCLUDE_DIR})
+if(NOT wayland-client_FOUND)
+    message(FATAL_ERROR "Wayland library not found")
+endif(NOT wayland-client_FOUND)
+
+include_directories(${wayland-client_INCLUDE_DIRS})
 
 set(GTK_LIBRARIES
     ${GTK3_LIBRARY}
@@ -382,8 +384,6 @@ set(GTK_LIBRARIES
     ${Gmodule_LIBRARIES}
     ${GMODULE_LIBRARY}
     ${wayland-client_LIBRARIES}
-    ${wayland-cursor_LIBRARIES}
-    ${wayland-egl_LIBRARIES}
 )
 
 
