@@ -486,6 +486,30 @@ else()
   message(STATUS "Desktop MIME types cache database won't be generated")
 endif()
 
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config.h.in
+			   ${CMAKE_CURRENT_BINARY_DIR}/generated/config.h)
+
+set(REMMINA_BUILD_CONFIG_LIST "")
+get_cmake_property(res VARIABLES)
+foreach(var ${res})
+  if(var MATCHES "^WITH_*|^HAVE_*")
+    list(APPEND REMMINA_BUILD_CONFIG_LIST "${var}=${${var}}")
+  endif()
+endforeach()
+string(REPLACE ";" " " REMMINA_BUILD_CONFIG "${REMMINA_BUILD_CONFIG_LIST}")
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/buildflags.h.in
+			   ${CMAKE_CURRENT_BINARY_DIR}/generated/buildflags.h)
+include_directories(${CMAKE_CURRENT_BINARY_DIR}/generated/)
+
+# Configure RPATH
+set(CMAKE_SKIP_BUILD_RPATH FALSE)
+set(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
+set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+set(CMAKE_BUILD_RPATH_USE_ORIGIN TRUE)
+if (NOT FREEBSD)
+	set(CMAKE_INSTALL_RPATH "\$ORIGIN/../${CMAKE_INSTALL_LIBDIR}:\$ORIGIN/..")
+endif()
+
 if(GTK3_FOUND)
     #pkg_check_modules(gio REQUIRED gio-2.0)
     #pkg_check_modules(gio-unix REQUIRED gio-unix-2.0)
@@ -499,16 +523,3 @@ if(WITH_TRANSLATIONS)
   add_subdirectory(po)
 endif()
 
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config.h.in
-               ${CMAKE_CURRENT_SOURCE_DIR}/config.h)
-
-set(REMMINA_BUILD_CONFIG_LIST "")
-get_cmake_property(res VARIABLES)
-foreach(var ${res})
-  if(var MATCHES "^WITH_*|^HAVE_*")
-    list(APPEND REMMINA_BUILD_CONFIG_LIST "${var}=${${var}}")
-  endif()
-endforeach()
-string(REPLACE ";" " " REMMINA_BUILD_CONFIG "${REMMINA_BUILD_CONFIG_LIST}")
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/buildflags.h.in
-               ${CMAKE_CURRENT_SOURCE_DIR}/buildflags.h)
