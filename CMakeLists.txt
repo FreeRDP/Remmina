@@ -237,6 +237,17 @@ if(${CMAKE_C_COMPILER_ID} STREQUAL "Clang")
   endif()
 endif()
 
+# Figure out no-undefined flag
+if(${CMAKE_SYSTEM_NAME} STREQUAL Darwin)
+    set(NO_UNDEFINED_FLAG "-Wl,-undefined,error")
+elseif((${CMAKE_SYSTEM_NAME} STREQUAL Linux) OR MINGW)
+    set(NO_UNDEFINED_FLAG "-Wl,--no-undefined")
+else()
+    # On OpenBSD this seems to cause problems, so we unset it
+    set(NO_UNDEFINED_FLAG "")
+endif()
+set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} ${NO_UNDEFINED_FLAG}")
+
 check_include_files(sys/socket.h HAVE_SYS_SOCKET_H)
 check_include_files(arpa/inet.h HAVE_ARPA_INET_H)
 check_include_files(netinet/in.h HAVE_NETINET_IN_H)
