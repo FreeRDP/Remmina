@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-03-05 11:32+0000\n"
-"PO-Revision-Date: 2021-02-17 12:29+0000\n"
+"PO-Revision-Date: 2021-03-06 21:18+0000\n"
 "Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "remmina/remmina/pt_BR/>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.5\n"
+"X-Generator: Weblate 4.5.1\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:04+0000\n"
 
 #: src/remmina_protocol_widget.c:280
@@ -317,10 +317,8 @@ msgid "User password"
 msgstr "Senha de usuário"
 
 #: src/remmina_ssh_plugin.c:1393 src/remmina_file_editor.c:978
-#, fuzzy
-#| msgid "CA Certificate File"
 msgid "SSH certificate file"
-msgstr "Arquivo de certificado de AC"
+msgstr "Arquivo de certificado SSH"
 
 #: src/remmina_ssh_plugin.c:1394 src/remmina_sftp_plugin.c:347
 #: src/remmina_file_editor.c:983
@@ -815,10 +813,8 @@ msgid "Screenshot taken"
 msgstr "Captura de tela tirada"
 
 #: src/rcw.c:2205
-#, fuzzy
-#| msgid "Open Main Window"
 msgid "Open the Remmina main window"
-msgstr "Abrir janela principal"
+msgstr "Abre a janela principal do Remmina"
 
 #: src/rcw.c:2214
 msgid "Duplicate current connection"
@@ -1179,24 +1175,21 @@ msgstr "Não foi possível autenticar com chave pública SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:334
-#, fuzzy, c-format
-#| msgid "Public SSH key cannot be imported. %s"
+#, c-format
 msgid "SSH certificate cannot be imported. %s"
-msgstr "A chave pública SSH não pôde ser importada. %s"
+msgstr "O certificado SSH não pôde ser importado. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:343
-#, fuzzy, c-format
-#| msgid "Public SSH key cannot be imported. %s"
+#, c-format
 msgid "SSH certificate cannot be copied into the private SSH key. %s"
-msgstr "A chave pública SSH não pôde ser importada. %s"
+msgstr "O certificado SSH não pôde ser copiado para a chave privada SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:353
-#, fuzzy, c-format
-#| msgid "Could not authenticate with public SSH key. %s"
+#, c-format
 msgid "Could not authenticate using SSH certificate. %s"
-msgstr "Não foi possível autenticar com chave pública SSH. %s"
+msgstr "Não foi possível autenticar com certificado SSH. %s"
 
 #: src/remmina_ssh.c:364
 msgid "SSH identity file not selected."
@@ -1567,10 +1560,8 @@ msgid "SSH Authentication"
 msgstr "Autenticação SSH"
 
 #: src/remmina_file_editor.c:972
-#, fuzzy
-#| msgid "SSH private key passphrase"
 msgid "SSH private key file"
-msgstr "frase secreta da chave privada SSH"
+msgstr "arquivo de chave privada SSH"
 
 #: src/remmina_file_editor.c:1036
 msgid "Basic"
@@ -2376,11 +2367,12 @@ msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:2528
 msgid "Left-handed mouse support"
-msgstr ""
+msgstr "Suporte a mouse canhoto"
 
 #: plugins/rdp/rdp_plugin.c:2528
 msgid "Swap left and right mouse buttons for left-handed mouse support"
 msgstr ""
+"Troca os botões do mouse esquerdo e direito para o suporte a um mouse canhoto"
 
 #: plugins/rdp/rdp_plugin.c:2529
 msgid "Enable multi monitor"
@@ -2420,7 +2412,7 @@ msgstr "tag:nível[,tag:nível[,…]]"
 
 #: plugins/rdp/rdp_plugin.c:2555
 msgid "Audio output mode"
-msgstr ""
+msgstr "Modo de saída de áudio"
 
 #: plugins/rdp/rdp_plugin.c:2556
 msgid "Redirect local audio output"
@@ -3004,6 +2996,8 @@ msgid ""
 "If a GTK theme includes a dark variant, it will be used instead of the "
 "configured theme."
 msgstr ""
+"Se um tema GTK incluir uma variante escura, ele será usado em vez do tema "
+"configurado."
 
 #: data/ui/remmina_unlock.glade:60
 msgid "Unlock"
@@ -3368,7 +3362,7 @@ msgstr "Ocultar a barra de pesquisa mostrada na janela principal"
 
 #: data/ui/remmina_preferences.glade:761
 msgid "Prefer dark theme"
-msgstr ""
+msgstr "Preferir tema escuro"
 
 #: data/ui/remmina_preferences.glade:785
 msgid "“Grab all keyboard events” status colour"
@@ -3463,7 +3457,7 @@ msgstr "Pontos de entrada acessíveis de API"
 
 #: data/ui/remmina_preferences.glade:1407
 msgid "Lower level protocol info, packet level"
-msgstr "Informações de protocolo de baixo nível, nível de pacote"
+msgstr "Informações de protocolo de baixo nível, a nível de pacote"
 
 #: data/ui/remmina_preferences.glade:1408
 msgid "Function entering and leaving"
