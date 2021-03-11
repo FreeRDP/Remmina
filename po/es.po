@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-03-05 11:32+0000\n"
-"PO-Revision-Date: 2021-03-03 22:33+0000\n"
+"PO-Revision-Date: 2021-03-11 06:02+0000\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/remmina/remmina/"
 "es/>\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.5.1-dev\n"
+"X-Generator: Weblate 4.5.2-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
 
 #: src/remmina_protocol_widget.c:280
@@ -322,10 +322,8 @@ msgid "User password"
 msgstr "Contraseña de usuario"
 
 #: src/remmina_ssh_plugin.c:1393 src/remmina_file_editor.c:978
-#, fuzzy
-#| msgid "CA Certificate File"
 msgid "SSH certificate file"
-msgstr "Archivo de certificado CA"
+msgstr "Archivo de certificado SSH"
 
 #: src/remmina_ssh_plugin.c:1394 src/remmina_sftp_plugin.c:347
 #: src/remmina_file_editor.c:983
@@ -360,8 +358,6 @@ msgstr ""
 "• %d se sustituye por la fecha local en formato iso8601\n"
 
 #: src/remmina_ssh_plugin.c:1422
-#, fuzzy
-#| msgid "Terminal color scheme"
 msgid "Terminal colour scheme"
 msgstr "Combinación de colores de terminal"
 
@@ -828,13 +824,11 @@ msgstr ""
 
 #: src/rcw.c:2124 plugins/www/www_plugin.c:840
 msgid "Screenshot taken"
-msgstr "Captura de pantalla realizada"
+msgstr "Captura de pantalla hecha"
 
 #: src/rcw.c:2205
-#, fuzzy
-#| msgid "Open Main Window"
 msgid "Open the Remmina main window"
-msgstr "Abrir en ventana principal"
+msgstr "Abrir la ventana principal de Remmina"
 
 #: src/rcw.c:2214
 msgid "Duplicate current connection"
@@ -871,7 +865,7 @@ msgstr "Capturar todos los eventos del teclado"
 
 #: src/rcw.c:2374
 msgid "Preferences"
-msgstr "_Preferencias"
+msgstr "Preferencias"
 
 #: src/rcw.c:2383
 msgid "_Tools"
@@ -1174,7 +1168,7 @@ msgstr "SFTP - Transferencia segura de archivos"
 #: src/remmina_ssh.c:236
 #, c-format
 msgid "Could not authenticate with TOTP/OTP/2FA. %s"
-msgstr "No se pudo autentificar con la contraseña de SSH. %s"
+msgstr "No se pudo autenticar con TOTP/OTP/2FA. %s"
 
 #: src/remmina_ssh.c:295 src/remmina_ssh.c:672
 #, c-format
@@ -1196,17 +1190,15 @@ msgstr "No se pudo autenticar con la clave pública SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:334
-#, fuzzy, c-format
-#| msgid "Public SSH key cannot be imported. %s"
+#, c-format
 msgid "SSH certificate cannot be imported. %s"
-msgstr "No se puede importar la clave pública SSH. %s"
+msgstr "No se puede importar el certificado SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:343
-#, fuzzy, c-format
-#| msgid "Public SSH key cannot be imported. %s"
+#, c-format
 msgid "SSH certificate cannot be copied into the private SSH key. %s"
-msgstr "No se puede importar la clave pública SSH. %s"
+msgstr "El certificado SSH no puede copiarse en la clave privada SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:353
@@ -1232,12 +1224,12 @@ msgstr "No se pudo autenticar automáticamente con la clave pública SSH. %s"
 #: src/remmina_ssh.c:518
 #, c-format
 msgid "Could not authenticate automatically with SSH agent. %s"
-msgstr "No pudo autenticarse automáticamente con la clave pública SSH. %s"
+msgstr "No se pudo autenticar automáticamente con el agente SSH. %s"
 
 #: src/remmina_ssh.c:564 src/remmina_ssh.c:852
 #, c-format
 msgid "Could not authenticate with SSH GSSAPI/Kerberos. %s"
-msgstr "No pudo autenticarse con la GSSAPI SSH de Kerberos. %s"
+msgstr "No se pudo autenticar con GSSAPI SSH/Kerberos. %s"
 
 #: src/remmina_ssh.c:593
 msgid "The public SSH key changed!"
@@ -1246,12 +1238,12 @@ msgstr "Ha cambiado la clave pública SSH."
 #: src/remmina_ssh.c:707
 #, c-format
 msgid "Could not authenticate with keyboard-interactive. %s"
-msgstr "No se pudo autentificar con la clave pública SSH. %s"
+msgstr "No se pudo autenticar con keyboard-interactive. %s"
 
 #: src/remmina_ssh.c:809
 #, c-format
 msgid "Could not authenticate with automatic public SSH key. %s"
-msgstr "No se pudo autentificar con la clave pública SSH. %s"
+msgstr "No se pudo autenticar con la clave pública automática SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:917
@@ -1584,10 +1576,8 @@ msgid "SSH Authentication"
 msgstr "Autenticación SSH"
 
 #: src/remmina_file_editor.c:972
-#, fuzzy
-#| msgid "SSH private key passphrase"
 msgid "SSH private key file"
-msgstr "Frase de contraseña de clave privada SSH"
+msgstr "Archivo de clave privada SSH"
 
 #: src/remmina_file_editor.c:1036
 msgid "Basic"
@@ -1946,11 +1936,11 @@ msgstr "Compartir carpeta"
 
 #: plugins/spice/spice_plugin.c:596
 msgid "Prefered video codec"
-msgstr "Preferencias"
+msgstr "Códec de vídeo preferido"
 
 #: plugins/spice/spice_plugin.c:597
 msgid "Turn off GStreamer overlay"
-msgstr "Desactivar entrada del servidor"
+msgstr "Desactivar superposición de GStreamer"
 
 #: plugins/spice/spice_plugin.c:600
 msgid "Prefered image compression"
@@ -2183,7 +2173,7 @@ msgid ""
 "The Remote Desktop Gateway “%s” denied the user \"%s\\%s\" access due to "
 "policy."
 msgstr ""
-"La puerta de enlace de escritorio remoto «%s» rechazó el acceso a «%s»\\%s "
+"La puerta de enlace de escritorio remoto «%s» rechazó el acceso a «%s\\%s» "
 "como consecuencia de una normativa."
 
 #: plugins/rdp/rdp_plugin.c:2042
@@ -2316,15 +2306,6 @@ msgstr ""
 "  • sys:alsa"
 
 #: plugins/rdp/rdp_plugin.c:2475
-#, fuzzy
-#| msgid ""
-#| "Options for redirection of audio ouput:\n"
-#| "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
-#| "    [channel:<channel>] Audio output\n"
-#| "  • sys:pulse\n"
-#| "  • format:1\n"
-#| "  • sys:oss,dev:1,format:1\n"
-#| "  • sys:alsa"
 msgid ""
 "Options for redirection of audio output:\n"
 "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
@@ -2334,10 +2315,10 @@ msgid ""
 "  • sys:oss,dev:1,format:1\n"
 "  • sys:alsa"
 msgstr ""
-"Opciones para redirigir la entrada de audio:\n"
-"  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
-"    [channel:<channel>] Audio input (microphone)\n"
-"  • format:1\n"
+"Opciones para redirigir la salida de audio:\n"
+"  • [sys:<sys>,][dev:<dev>,][format:<formato>,][rate:<tasa>,]\n"
+"    [channel:<canal>] Salida de audio\n"
+"  • sys:pulse\n"
 "  • sys:oss,dev:1,format:1\n"
 "  • sys:alsa"
 
@@ -2387,14 +2368,23 @@ msgid ""
 "  • 270 (portrait flipped)\n"
 "\n"
 msgstr ""
+"Lista separada por comas de los identificadores de los monitores y los "
+"entornos de escritorio:\n"
+"  - [<id>:<orientación-en-grados>,]\n"
+"  - 0,1,2,3\n"
+"  - 0:270,1:90\n"
+"Las orientaciones se especifican en grados; los valores válidos son:\n"
+"  - 0 (horizontal)\n"
+"  - 90 (vertical)\n"
+"  - 180 (horizontal invertido)\n"
+"  - 270 (vertical invertido)\n"
+"\n"
 
 #: plugins/rdp/rdp_plugin.c:2528
 msgid "Left-handed mouse support"
 msgstr "Compatibilidad con ratón para zurdos"
 
 #: plugins/rdp/rdp_plugin.c:2528
-#, fuzzy
-#| msgid "Swap left and right mouse buttons for lef-handed mouse support"
 msgid "Swap left and right mouse buttons for left-handed mouse support"
 msgstr ""
 "Intercambiar los botones izquierdo y derecho del ratón para su uso por zurdos"
@@ -2413,7 +2403,7 @@ msgstr "Lista de identificadores de monitores"
 
 #: plugins/rdp/rdp_plugin.c:2534
 msgid "Network connection type"
-msgstr "Perfil de conexión nuevo"
+msgstr "Tipo de conexión de red"
 
 #: plugins/rdp/rdp_plugin.c:2551
 msgid "Security protocol negotiation"
@@ -2429,7 +2419,7 @@ msgstr "Nivel de registro FreeRDP"
 
 #: plugins/rdp/rdp_plugin.c:2554
 msgid "FreeRDP log filters"
-msgstr "Nivel de registro FreeRDP"
+msgstr "Filtros de registro de FreeRDP"
 
 #: plugins/rdp/rdp_plugin.c:2554
 msgid "tag:level[,tag:level[,…]]"
@@ -2437,11 +2427,11 @@ msgstr "etiqueta:nivel[,etiqueta:nivel[,…]]"
 
 #: plugins/rdp/rdp_plugin.c:2555
 msgid "Audio output mode"
-msgstr ""
+msgstr "Modo de salida de audio"
 
 #: plugins/rdp/rdp_plugin.c:2556
 msgid "Redirect local audio output"
-msgstr "Redirigir el micrófono local"
+msgstr "Redirigir salida de audio local"
 
 #: plugins/rdp/rdp_plugin.c:2557
 msgid "Redirect local microphone"
@@ -3266,7 +3256,7 @@ msgstr ""
 msgid ""
 "The folder connection profiles are saved in, it defaults to the XDG_USER_DATA"
 msgstr ""
-"Carpeta donde se guardan los perfiles de conexión, el valor predeterminado "
+"Carpeta donde se guardan los perfiles de conexión; el valor predeterminado "
 "es XDG_USER_DATA"
 
 #. The folder where profiles are saved
@@ -3392,19 +3382,14 @@ msgid "“Grab all keyboard events” status colour"
 msgstr "Color de estado «Capturar todos los eventos del teclado»"
 
 #: data/ui/remmina_preferences.glade:796
-#, fuzzy
-#| msgid ""
-#| "Hexadecimal or color names (red, #ff0000)\n"
-#| "It changes the connection name background colour, in the remmina "
-#| "connection toolbar when in full screen"
 msgid ""
 "Hexadecimal- or colour names (red, #ff0000).\n"
 "It changes the background colour of connection names in the Remmina "
 "connection toolbar (when in fullscreen)."
 msgstr ""
-"Valores hexadecimal o colores con nombre (red, #ff0000)\n"
-"Cambia el color de fondo del nombre de la conexión en la barra de conexiones "
-"de Remmina mientras se está a pantalla completa"
+"Valores hexadecimales o colores con nombre (red, #ff0000)\n"
+"Cambia el color de fondo de los nombres de las conexiones en la barra de "
+"conexiones de Remmina (en el modo de pantalla completa)."
 
 #: data/ui/remmina_preferences.glade:832
 msgid "Appearance"
@@ -3556,15 +3541,15 @@ msgstr "Escriba de nuevo la contraseña"
 
 #: data/ui/remmina_preferences.glade:1750
 msgid "Fingerprints and certificates"
-msgstr "¿Aceptar el nuevo certificado?"
+msgstr "Huellas y certificados"
 
 #: data/ui/remmina_preferences.glade:1765
 msgid "Automatically accept all fingerprints and certificates"
-msgstr "¿Aceptar el nuevo certificado?"
+msgstr "Aceptar automáticamente todas las huellas y certificados"
 
 #: data/ui/remmina_preferences.glade:1771
 msgid "Trust all fingerprints and certificates"
-msgstr "¿Aceptar el nuevo certificado?"
+msgstr "Confiar en todas las huellas y certificados"
 
 #: data/ui/remmina_preferences.glade:1806
 msgid "Security"
@@ -3730,24 +3715,18 @@ msgstr "Colores normales"
 
 #: data/ui/remmina_preferences.glade:2508
 #: data/ui/remmina_preferences.glade:2548
-#, fuzzy
-#| msgid "Bright colours"
 msgid "Highlight colour"
-msgstr "Colores brillantes"
+msgstr "Color de realce"
 
 #: data/ui/remmina_preferences.glade:2521
 #: data/ui/remmina_preferences.glade:2563
-#, fuzzy
-#| msgid "Foreground colour"
 msgid "Highlight foreground colour"
-msgstr "Color de primer plano"
+msgstr "Color de realce en primer plano"
 
 #: data/ui/remmina_preferences.glade:2534
 #: data/ui/remmina_preferences.glade:2578
-#, fuzzy
-#| msgid "Foreground colour"
 msgid "Cursor foreground colour"
-msgstr "Color de primer plano"
+msgstr "Color de cursor en primer plano"
 
 #: data/ui/remmina_preferences.glade:2597
 msgid "Terminal"
