@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-03-05 11:32+0000\n"
-"PO-Revision-Date: 2021-02-10 03:50+0000\n"
-"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"PO-Revision-Date: 2021-03-15 10:02+0000\n"
+"Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/remmina/remmina/"
 "sk/>\n"
 "Language: sk\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
-"X-Generator: Weblate 4.5-dev\n"
+"X-Generator: Weblate 4.5.2-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
 
 #: src/remmina_protocol_widget.c:280
@@ -314,10 +314,8 @@ msgid "User password"
 msgstr "Heslo používateľa"
 
 #: src/remmina_ssh_plugin.c:1393 src/remmina_file_editor.c:978
-#, fuzzy
-#| msgid "CA Certificate File"
 msgid "SSH certificate file"
-msgstr "Súbor certifikátu CA"
+msgstr "Súbor certifikátu SSH"
 
 #: src/remmina_ssh_plugin.c:1394 src/remmina_sftp_plugin.c:347
 #: src/remmina_file_editor.c:983
@@ -352,8 +350,6 @@ msgstr ""
 "  • %d je nahradený miestnym dátumom a časom vo formáte iso8601\n"
 
 #: src/remmina_ssh_plugin.c:1422
-#, fuzzy
-#| msgid "Terminal color scheme"
 msgid "Terminal colour scheme"
 msgstr "Farebná schéma terminálu"
 
@@ -677,7 +673,7 @@ msgstr "Zašifruje heslo"
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:375
 msgid "- or protocol://username:encryptedpassword@host:port"
-msgstr ""
+msgstr "- alebo protokol://používateľské_meno:zašifrované_heslo@hostiteľ:port"
 
 #: src/remmina.c:378
 msgid ""
@@ -780,10 +776,8 @@ msgid "Screenshot taken"
 msgstr "Snímka obrazovky bola zachytená"
 
 #: src/rcw.c:2205
-#, fuzzy
-#| msgid "Open Main Window"
 msgid "Open the Remmina main window"
-msgstr "Otvoriť hlavné okno"
+msgstr "Otvorí hlavné okno aplikácie Remmina"
 
 #: src/rcw.c:2214
 msgid "Duplicate current connection"
@@ -800,7 +794,7 @@ msgstr "Prepne na režim celej obrazovky"
 #: src/rcw.c:2288 data/ui/remmina_preferences.glade:1299
 #: data/ui/remmina_preferences.glade:1309
 msgid "Multi monitor"
-msgstr ""
+msgstr "Viacero monitorov"
 
 #: src/rcw.c:2304
 msgid "Toggle dynamic resolution update"
@@ -1148,24 +1142,21 @@ msgstr "Nepodarilo sa overiť totožnosť pomocou verejného kľúča SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:334
-#, fuzzy, c-format
-#| msgid "Public SSH key cannot be imported. %s"
+#, c-format
 msgid "SSH certificate cannot be imported. %s"
-msgstr "Nedá sa importovať verejný kľúč SSH. %s"
+msgstr "Nedá sa importovať certifikát SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:343
-#, fuzzy, c-format
-#| msgid "Public SSH key cannot be imported. %s"
+#, c-format
 msgid "SSH certificate cannot be copied into the private SSH key. %s"
-msgstr "Nedá sa importovať verejný kľúč SSH. %s"
+msgstr "Nedá sa skopírovať certifikát SSH do súkromného kľúča SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:353
-#, fuzzy, c-format
-#| msgid "Could not authenticate with public SSH key. %s"
+#, c-format
 msgid "Could not authenticate using SSH certificate. %s"
-msgstr "Nepodarilo sa overiť totožnosť pomocou verejného kľúča SSH. %s"
+msgstr "Nepodarilo sa overiť totožnosť pomocou certifikátu SSH. %s"
 
 #: src/remmina_ssh.c:364
 msgid "SSH identity file not selected."
@@ -1437,14 +1428,6 @@ msgstr ""
 "</big></tt>"
 
 #: src/remmina_file_editor.c:81
-#, fuzzy
-#| msgid ""
-#| "<tt><big>Supported formats\n"
-#| "• :port\n"
-#| "• server\n"
-#| "• server:port\n"
-#| "• [server]:port\n"
-#| "• username@server:port (SSH protocol only)</big></tt>"
 msgid ""
 "<tt><big>Supported formats\n"
 "• server\n"
@@ -1453,7 +1436,6 @@ msgid ""
 "• username@server:port (SSH protocol only)</big></tt>"
 msgstr ""
 "<tt><big>Podporované formáty\n"
-"• :port\n"
 "• server\n"
 "• server:port\n"
 "• [server]:port\n"
@@ -1546,10 +1528,8 @@ msgid "SSH Authentication"
 msgstr "Overenie totožnosti SSH"
 
 #: src/remmina_file_editor.c:972
-#, fuzzy
-#| msgid "SSH private key passphrase"
 msgid "SSH private key file"
-msgstr "Heslo k súkromnému kľúču SSH"
+msgstr "Súbor súkromného kľúča SSH"
 
 #: src/remmina_file_editor.c:1036
 msgid "Basic"
@@ -2275,15 +2255,6 @@ msgstr ""
 "  • sys:alsa"
 
 #: plugins/rdp/rdp_plugin.c:2475
-#, fuzzy
-#| msgid ""
-#| "Options for redirection of audio ouput:\n"
-#| "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
-#| "    [channel:<channel>] Audio output\n"
-#| "  • sys:pulse\n"
-#| "  • format:1\n"
-#| "  • sys:oss,dev:1,format:1\n"
-#| "  • sys:alsa"
 msgid ""
 "Options for redirection of audio output:\n"
 "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
@@ -2293,9 +2264,10 @@ msgid ""
 "  • sys:oss,dev:1,format:1\n"
 "  • sys:alsa"
 msgstr ""
-"Voľby presmerovania zvukového vstupu:\n"
+"Voľby presmerovania zvukového výstupu:\n"
 "  • [sys:<sys>,][dev:<zariadenie>,][format:<formát>,][rate:<frekvencia>,]\n"
-"    [channel:<kanál>] Zvukový vstup (mikrofón)\n"
+"    [channel:<kanál>] Zvukový výstup\n"
+"  • sys:pulse  • \n"
 "  • format:1\n"
 "  • sys:oss,dev:1,format:1\n"
 "  • sys:alsa"
@@ -2349,23 +2321,23 @@ msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:2528
 msgid "Left-handed mouse support"
-msgstr ""
+msgstr "Podpora myši pre ľavákov"
 
 #: plugins/rdp/rdp_plugin.c:2528
 msgid "Swap left and right mouse buttons for left-handed mouse support"
-msgstr ""
+msgstr "Prehodí ľavé a pravé tlačidlá myši pre podporu myši pre ľavákov"
 
 #: plugins/rdp/rdp_plugin.c:2529
 msgid "Enable multi monitor"
-msgstr ""
+msgstr "Povoliť viacero monitorov"
 
 #: plugins/rdp/rdp_plugin.c:2530
 msgid "Span screen over multiple monitors"
-msgstr ""
+msgstr "Roztiahnuť obrazovku na viacero monitorov"
 
 #: plugins/rdp/rdp_plugin.c:2531
 msgid "Monitor ID list"
-msgstr ""
+msgstr "Zoznam identifikátorov monitorov"
 
 #: plugins/rdp/rdp_plugin.c:2534
 msgid "Network connection type"
@@ -2393,7 +2365,7 @@ msgstr "značka:úroveň[,značka:úroveň[,...]]"
 
 #: plugins/rdp/rdp_plugin.c:2555
 msgid "Audio output mode"
-msgstr ""
+msgstr "Režim zvukového výstupu"
 
 #: plugins/rdp/rdp_plugin.c:2556
 msgid "Redirect local audio output"
@@ -2976,6 +2948,7 @@ msgid ""
 "If a GTK theme includes a dark variant, it will be used instead of the "
 "configured theme."
 msgstr ""
+"Ak motív GTK zahŕňa tmavý variant, bude použitý namiesto nastaveného motívu."
 
 #: data/ui/remmina_unlock.glade:60
 msgid "Unlock"
@@ -3344,13 +3317,11 @@ msgstr "Skryť panel vyhľadávania zobrazený v hlavnom okne"
 
 #: data/ui/remmina_preferences.glade:761
 msgid "Prefer dark theme"
-msgstr ""
+msgstr "Uprednostniť tmavý motív"
 
 #: data/ui/remmina_preferences.glade:785
-#, fuzzy
-#| msgid "Grab all keyboard events"
 msgid "“Grab all keyboard events” status colour"
-msgstr "Zachytí všetky udalosti klávesnice"
+msgstr "Stavová farba pre funkciu „Zachytiť všetky udalosti klávesnice“"
 
 #: data/ui/remmina_preferences.glade:796
 msgid ""
@@ -3358,6 +3329,9 @@ msgid ""
 "It changes the background colour of connection names in the Remmina "
 "connection toolbar (when in fullscreen)."
 msgstr ""
+"Hexadecimálna hodnota alebo názvy farieb (red - „červená“, #ff0000).\n"
+"Zmení farbu pozadia názvov pripojení v paneli nástrojov aplikácie Remmina (v "
+"režime na celú obrazovku)."
 
 #: data/ui/remmina_preferences.glade:832
 msgid "Appearance"
@@ -3513,11 +3487,11 @@ msgstr "Odtlačky prstov a certifikáty"
 
 #: data/ui/remmina_preferences.glade:1765
 msgid "Automatically accept all fingerprints and certificates"
-msgstr "Prijať zmenený certifikát?"
+msgstr "Automaticky prijme všetky odtlačky a certifikáty"
 
 #: data/ui/remmina_preferences.glade:1771
 msgid "Trust all fingerprints and certificates"
-msgstr "Prijať zmenený certifikát?"
+msgstr "Dôverovať všetkým odtlačkom a certifikátom"
 
 #: data/ui/remmina_preferences.glade:1806
 msgid "Security"
@@ -3681,24 +3655,18 @@ msgstr "Normálne farby"
 
 #: data/ui/remmina_preferences.glade:2508
 #: data/ui/remmina_preferences.glade:2548
-#, fuzzy
-#| msgid "Bright colours"
 msgid "Highlight colour"
-msgstr "Svetlé farby"
+msgstr "Farba zvýraznenia"
 
 #: data/ui/remmina_preferences.glade:2521
 #: data/ui/remmina_preferences.glade:2563
-#, fuzzy
-#| msgid "Foreground colour"
 msgid "Highlight foreground colour"
-msgstr "Farba popredia"
+msgstr "Farba popredia zvýraznenia"
 
 #: data/ui/remmina_preferences.glade:2534
 #: data/ui/remmina_preferences.glade:2578
-#, fuzzy
-#| msgid "Foreground colour"
 msgid "Cursor foreground colour"
-msgstr "Farba popredia"
+msgstr "Farba popredia kurzora"
 
 #: data/ui/remmina_preferences.glade:2597
 msgid "Terminal"
