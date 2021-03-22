@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-03-05 11:32+0000\n"
-"PO-Revision-Date: 2021-03-21 04:53+0000\n"
+"PO-Revision-Date: 2021-03-22 07:48+0000\n"
 "Last-Translator: あわしろいくや <ikunya@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/remmina/remmina/"
 "ja/>\n"
@@ -1185,24 +1185,21 @@ msgstr "公開 SSH 鍵で認証できませんでした: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:334
-#, fuzzy, c-format
-#| msgid "Public SSH key cannot be imported. %s"
+#, c-format
 msgid "SSH certificate cannot be imported. %s"
-msgstr "公開 SSH 鍵をインポートできません: %s"
+msgstr "SSH 証明書をインポートできません: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:343
-#, fuzzy, c-format
-#| msgid "Public SSH key cannot be imported. %s"
+#, c-format
 msgid "SSH certificate cannot be copied into the private SSH key. %s"
-msgstr "公開 SSH 鍵をインポートできません: %s"
+msgstr "SSH 証明書をSSH 秘密鍵からインポートできません: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:353
-#, fuzzy, c-format
-#| msgid "Could not authenticate with public SSH key. %s"
+#, c-format
 msgid "Could not authenticate using SSH certificate. %s"
-msgstr "公開 SSH 鍵で認証できませんでした: %s"
+msgstr "SSH 証明書で認証できませんでした: %s"
 
 #: src/remmina_ssh.c:364
 msgid "SSH identity file not selected."
@@ -1572,10 +1569,8 @@ msgid "SSH Authentication"
 msgstr "SSH 認証"
 
 #: src/remmina_file_editor.c:972
-#, fuzzy
-#| msgid "SSH private key passphrase"
 msgid "SSH private key file"
-msgstr "SSH 秘密鍵のパスフレーズ"
+msgstr "SSH 秘密鍵のキーファイル"
 
 #: src/remmina_file_editor.c:1036
 msgid "Basic"
@@ -1603,7 +1598,7 @@ msgstr "既定値として保存"
 
 #: src/remmina_file_editor.c:1369
 msgid "Use the current settings as the default for all new connection profiles"
-msgstr "現在の設定をすべての新規接続プロファイルの規定値として使用する"
+msgstr "現在の設定をすべての新規接続プロファイルの既定値として使用する"
 
 #: src/remmina_file_editor.c:1377 data/ui/remmina_main.glade:166
 msgid "Connect"
@@ -2299,15 +2294,6 @@ msgstr ""
 "  • sys:alsa"
 
 #: plugins/rdp/rdp_plugin.c:2475
-#, fuzzy
-#| msgid ""
-#| "Options for redirection of audio ouput:\n"
-#| "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
-#| "    [channel:<channel>] Audio output\n"
-#| "  • sys:pulse\n"
-#| "  • format:1\n"
-#| "  • sys:oss,dev:1,format:1\n"
-#| "  • sys:alsa"
 msgid ""
 "Options for redirection of audio output:\n"
 "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
@@ -2377,8 +2363,6 @@ msgid "Left-handed mouse support"
 msgstr "左利き用マウスのサポート"
 
 #: plugins/rdp/rdp_plugin.c:2528
-#, fuzzy
-#| msgid "Swap left and right mouse buttons for lef-handed mouse support"
 msgid "Swap left and right mouse buttons for left-handed mouse support"
 msgstr "左手でマウスを使用する人向けにマウスの左ボタンと右ボタンを入れ替える"
 
@@ -2420,7 +2404,7 @@ msgstr "tag:level[,tag:level[,…]]"
 
 #: plugins/rdp/rdp_plugin.c:2555
 msgid "Audio output mode"
-msgstr ""
+msgstr "自動出力モード"
 
 #: plugins/rdp/rdp_plugin.c:2556
 msgid "Redirect local audio output"
@@ -2945,7 +2929,7 @@ msgstr "ニュース"
 
 #: data/ui/remmina_main.glade:321
 msgid "Make Remmina your default remote desktop client"
-msgstr "Remmina を規定のリモートデスクトップクライアントにする"
+msgstr "Remmina を既定のリモートデスクトップクライアントにする"
 
 #: data/ui/remmina_main.glade:348
 msgid "Homepage"
@@ -3245,7 +3229,7 @@ msgstr ""
 #: data/ui/remmina_preferences.glade:361
 msgid ""
 "The folder connection profiles are saved in, it defaults to the XDG_USER_DATA"
-msgstr "接続プロファイルが保存されるフォルダー (規定の場所は XDG_USER_DATA)"
+msgstr "接続プロファイルが保存されるフォルダー (既定の場所は XDG_USER_DATA)"
 
 #. The folder where profiles are saved
 #: data/ui/remmina_preferences.glade:366
@@ -3370,11 +3354,6 @@ msgid "“Grab all keyboard events” status colour"
 msgstr "“すべてのキーボードイベントを取得する”状態の色"
 
 #: data/ui/remmina_preferences.glade:796
-#, fuzzy
-#| msgid ""
-#| "Hexadecimal or color names (red, #ff0000)\n"
-#| "It changes the connection name background colour, in the remmina "
-#| "connection toolbar when in full screen"
 msgid ""
 "Hexadecimal- or colour names (red, #ff0000).\n"
 "It changes the background colour of connection names in the Remmina "
@@ -3702,24 +3681,18 @@ msgstr "太字の色"
 
 #: data/ui/remmina_preferences.glade:2508
 #: data/ui/remmina_preferences.glade:2548
-#, fuzzy
-#| msgid "Bright colours"
 msgid "Highlight colour"
-msgstr "明るい色"
+msgstr "ハイライト色"
 
 #: data/ui/remmina_preferences.glade:2521
 #: data/ui/remmina_preferences.glade:2563
-#, fuzzy
-#| msgid "Foreground colour"
 msgid "Highlight foreground colour"
-msgstr "前景色"
+msgstr "前景のハイライト色"
 
 #: data/ui/remmina_preferences.glade:2534
 #: data/ui/remmina_preferences.glade:2578
-#, fuzzy
-#| msgid "Foreground colour"
 msgid "Cursor foreground colour"
-msgstr "前景色"
+msgstr "カーソルの前景色"
 
 #: data/ui/remmina_preferences.glade:2597
 msgid "Terminal"
