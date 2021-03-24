@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-03-05 11:32+0000\n"
-"PO-Revision-Date: 2021-02-21 14:48+0000\n"
+"PO-Revision-Date: 2021-03-24 23:29+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/remmina/"
 "remmina/nb_NO/>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.5\n"
+"X-Generator: Weblate 4.5.2-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
 
 #: src/remmina_protocol_widget.c:280
@@ -671,6 +671,7 @@ msgid "- or protocol://username:encryptedpassword@host:port"
 msgstr "- eller protokoll://brukernavn:kryptertpassord@vert:port"
 
 #: src/remmina.c:378
+#, fuzzy
 msgid ""
 "Examples:\n"
 "To connect using an existing connection profile, use:\n"
@@ -704,6 +705,37 @@ msgid ""
 "remmina --set-option username --set-option resolution_mode=2 --set-option "
 "password\n"
 msgstr ""
+"Eksempler:\n"
+"For å koble til med eksisterende profil, bruk:\n"
+"\n"
+"\tremmina -c FILE.remmina\n"
+"\n"
+"For hurtigtilkobling ved bruk av URI:\n"
+"\n"
+"\tremmina -c rdp://username@server\n"
+"\tremmina -c rdp://domain\\\\username@server\n"
+"\tremmina -c vnc://username@server\n"
+"\tremmina -c vnc://server?VncUsername=username\n"
+"\tremmina -c ssh://user@server\n"
+"\tremmina -c spice://server\n"
+"\n"
+"For hurtigtilkobling ved bruk av URI sammen med et kryptert passord:\n"
+"\n"
+"\tremmina -c rdp://username:encrypted-password@server\n"
+"\tremmina -c vnc://username:encrypted-password@server\n"
+"\tremmina -c vnc://server?VncUsername=username\\&VncPassword=encrypted-"
+"password\n"
+"\n"
+"For å kryptere et passord for bruk med en URI:\n"
+"\n"
+"\tremmina --encrypt-password\n"
+"\n"
+"For å oppdatere brukernavn og passord, og sette forskjellig oppløsningsmodus "
+"for en Remmina-tilkoblingsprofil:\n"
+"\n"
+"\techo \"username\\n"
+"apassword\" | remmina --update-profile /PATH/TO/FOO.remmina --set-option "
+"username --set-option resolution_mode=2 --set-option password\n"
 
 #: src/remmina_icon.c:139
 msgid "Open Main Window"
@@ -2333,20 +2365,24 @@ msgstr ""
 "\n"
 
 #: plugins/rdp/rdp_plugin.c:2528
+#, fuzzy
 msgid "Left-handed mouse support"
-msgstr ""
+msgstr "Venstrehendt mus"
 
 #: plugins/rdp/rdp_plugin.c:2528
+#, fuzzy
 msgid "Swap left and right mouse buttons for left-handed mouse support"
-msgstr ""
+msgstr "Bytt venstre og høyre musetaster for venstrehendt musestøtte"
 
 #: plugins/rdp/rdp_plugin.c:2529
+#, fuzzy
 msgid "Enable multi monitor"
-msgstr ""
+msgstr "Multi-monitor"
 
 #: plugins/rdp/rdp_plugin.c:2530
+#, fuzzy
 msgid "Span screen over multiple monitors"
-msgstr ""
+msgstr "Spenn skjermflaten over flere skjermer"
 
 #: plugins/rdp/rdp_plugin.c:2531
 msgid "Monitor ID list"
@@ -2958,6 +2994,8 @@ msgid ""
 "If a GTK theme includes a dark variant, it will be used instead of the "
 "configured theme."
 msgstr ""
+"Hvis en GTK-draktpakke inneholder en mørk variant, vil den bli brukt "
+"istedenfor oppsatt drakt."
 
 #: data/ui/remmina_unlock.glade:60
 msgid "Unlock"

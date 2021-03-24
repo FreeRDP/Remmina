@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-03-05 11:32+0000\n"
-"PO-Revision-Date: 2021-02-15 09:57+0000\n"
+"PO-Revision-Date: 2021-03-24 23:29+0000\n"
 "Last-Translator: Justin Song <mcsong@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/remmina/remmina/"
 "ko/>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.5-dev\n"
+"X-Generator: Weblate 4.5.2-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
 
 #: src/remmina_protocol_widget.c:280
@@ -314,10 +314,8 @@ msgid "User password"
 msgstr "사용자 비밀번호"
 
 #: src/remmina_ssh_plugin.c:1393 src/remmina_file_editor.c:978
-#, fuzzy
-#| msgid "CA Certificate File"
 msgid "SSH certificate file"
-msgstr "CA 인증서 파일"
+msgstr "SSH 인증서 파일"
 
 #: src/remmina_ssh_plugin.c:1394 src/remmina_sftp_plugin.c:347
 #: src/remmina_file_editor.c:983
@@ -352,8 +350,6 @@ msgstr ""
 "  • %d 는 ISO8601 형식의 로컬 날짜로 대체됩니다\n"
 
 #: src/remmina_ssh_plugin.c:1422
-#, fuzzy
-#| msgid "Terminal color scheme"
 msgid "Terminal colour scheme"
 msgstr "터미널 색 스키마"
 
@@ -793,10 +789,8 @@ msgid "Screenshot taken"
 msgstr "스크린 샷을 성공했습니다"
 
 #: src/rcw.c:2205
-#, fuzzy
-#| msgid "Open Main Window"
 msgid "Open the Remmina main window"
-msgstr "메인 윈도 열기"
+msgstr "레미나 메인 윈도 열기"
 
 #: src/rcw.c:2214
 msgid "Duplicate current connection"
@@ -1155,24 +1149,21 @@ msgstr "공개 SSH 키로 인증 할 수 없습니다. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:334
-#, fuzzy, c-format
-#| msgid "Public SSH key cannot be imported. %s"
+#, c-format
 msgid "SSH certificate cannot be imported. %s"
-msgstr "공개 SSH 키를 가져올 수 없습니다. %s"
+msgstr "SSH 인증서를 가져올 수 없습니다. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:343
-#, fuzzy, c-format
-#| msgid "Public SSH key cannot be imported. %s"
+#, c-format
 msgid "SSH certificate cannot be copied into the private SSH key. %s"
-msgstr "공개 SSH 키를 가져올 수 없습니다. %s"
+msgstr "SSH 인증서를 개인 SSH 키에 복사 할 수 없습니다. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:353
-#, fuzzy, c-format
-#| msgid "Could not authenticate with public SSH key. %s"
+#, c-format
 msgid "Could not authenticate using SSH certificate. %s"
-msgstr "공개 SSH 키로 인증 할 수 없습니다. %s"
+msgstr "SSH 인증서로 인증 할 수 없습니다. %s"
 
 #: src/remmina_ssh.c:364
 msgid "SSH identity file not selected."
@@ -1541,10 +1532,8 @@ msgid "SSH Authentication"
 msgstr "SSH 확인"
 
 #: src/remmina_file_editor.c:972
-#, fuzzy
-#| msgid "SSH private key passphrase"
 msgid "SSH private key file"
-msgstr "SSH 개인 키 암호"
+msgstr "SSH 개인 키 파일"
 
 #: src/remmina_file_editor.c:1036
 msgid "Basic"
@@ -2266,15 +2255,6 @@ msgstr ""
 "  • sys:alsa"
 
 #: plugins/rdp/rdp_plugin.c:2475
-#, fuzzy
-#| msgid ""
-#| "Options for redirection of audio ouput:\n"
-#| "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
-#| "    [channel:<channel>] Audio output\n"
-#| "  • sys:pulse\n"
-#| "  • format:1\n"
-#| "  • sys:oss,dev:1,format:1\n"
-#| "  • sys:alsa"
 msgid ""
 "Options for redirection of audio output:\n"
 "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
@@ -2286,7 +2266,7 @@ msgid ""
 msgstr ""
 "오디오 출력을 리다이렉션할 수 있는 옵션: \n"
 "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
-"    [channel:<channel>] Audio output\n"
+"  [channel:<channel>] Audio output\n"
 "  • sys:pulse\n"
 "  • format:1\n"
 "  • sys:oss,dev:1,format:1\n"
@@ -2337,16 +2317,25 @@ msgid ""
 "  • 270 (portrait flipped)\n"
 "\n"
 msgstr ""
+"모니터 ID와 데스크톱 방향을 쉼표로 구분한 목록 :\n"
+"Comma separated list of monitor IDs and desktop orientations:\n"
+"  • [<id>:<orientation-in-degrees>,]\n"
+"  • 0,1,2,3\n"
+"  • 0:270,1:90\n"
+"방향은 각도로 지정되며 유효한 값은 아래와 같다: \n"
+"  •   0 (수평)\n"
+"  •  90 (수직)\n"
+"  • 180 (수평 거꾸로)\n"
+"  • 270 (수직 거꾸로)\n"
+"\n"
 
 #: plugins/rdp/rdp_plugin.c:2528
 msgid "Left-handed mouse support"
 msgstr "왼손잡이 마우스 지원"
 
 #: plugins/rdp/rdp_plugin.c:2528
-#, fuzzy
-#| msgid "Swap left and right mouse buttons for lef-handed mouse support"
 msgid "Swap left and right mouse buttons for left-handed mouse support"
-msgstr "왼손잡이 마우스 지원을 위해 왼쪽, 오른쪽 마우스 버튼 전환"
+msgstr "왼손 마우스 지원을 위해 왼쪽, 오른쪽 마우스 버튼 전환"
 
 #: plugins/rdp/rdp_plugin.c:2529
 msgid "Enable multi monitor"
@@ -2386,7 +2375,7 @@ msgstr "tag:level[,tag:level[,…]]"
 
 #: plugins/rdp/rdp_plugin.c:2555
 msgid "Audio output mode"
-msgstr ""
+msgstr "오디오 출력 모드"
 
 #: plugins/rdp/rdp_plugin.c:2556
 msgid "Redirect local audio output"
@@ -2562,7 +2551,7 @@ msgstr "다중 전송 프로토콜 (UDP) 활성화"
 
 #: plugins/rdp/rdp_plugin.c:2597
 msgid "Using the UDP protocol may improve performance"
-msgstr "UDP 프로토콜을 사용하면 성능이 향상 될 수 있습니다."
+msgstr "UDP 프로토콜을 사용하면 성능을 향상시킬 수 있습니다."
 
 #: plugins/rdp/rdp_plugin.c:2598
 msgid "Use base credentials for gateway too"
@@ -3332,17 +3321,12 @@ msgid "“Grab all keyboard events” status colour"
 msgstr "\"모든 키보드 이벤트 캐치\" 상태 색"
 
 #: data/ui/remmina_preferences.glade:796
-#, fuzzy
-#| msgid ""
-#| "Hexadecimal or color names (red, #ff0000)\n"
-#| "It changes the connection name background colour, in the remmina "
-#| "connection toolbar when in full screen"
 msgid ""
 "Hexadecimal- or colour names (red, #ff0000).\n"
 "It changes the background colour of connection names in the Remmina "
 "connection toolbar (when in fullscreen)."
 msgstr ""
-"16 진수 또는 색상 이름 (빨간색, #ff0000)\n"
+"16 진수 또는 색상 이름 (빨간색, #ff0000).\n"
 "전체 화면 일 때 remmina 연결 도구 모음에서 연결 이름 배경색을 변경합니다."
 
 #: data/ui/remmina_preferences.glade:832
@@ -3665,24 +3649,18 @@ msgstr "일반 색"
 
 #: data/ui/remmina_preferences.glade:2508
 #: data/ui/remmina_preferences.glade:2548
-#, fuzzy
-#| msgid "Bright colours"
 msgid "Highlight colour"
-msgstr "밝은 색"
+msgstr "하이라이트 색"
 
 #: data/ui/remmina_preferences.glade:2521
 #: data/ui/remmina_preferences.glade:2563
-#, fuzzy
-#| msgid "Foreground colour"
 msgid "Highlight foreground colour"
-msgstr "전경 색"
+msgstr "하이라이트 포그라운드 색"
 
 #: data/ui/remmina_preferences.glade:2534
 #: data/ui/remmina_preferences.glade:2578
-#, fuzzy
-#| msgid "Foreground colour"
 msgid "Cursor foreground colour"
-msgstr "전경 색"
+msgstr "포그라운드 커서 색"
 
 #: data/ui/remmina_preferences.glade:2597
 msgid "Terminal"
