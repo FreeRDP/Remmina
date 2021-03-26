@@ -1390,7 +1390,9 @@ static const RemminaProtocolSetting remmina_ssh_basic_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "username",	    N_("Username"),			  FALSE, NULL,	      NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "password",	    N_("User password"),		  FALSE, NULL,	      NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_FILE,	  "ssh_privatekey", N_("SSH identity file"),		  FALSE, NULL,	      NULL },
+#if LIBSSH_VERSION_INT >= SSH_VERSION_INT(0, 9, 0)
 	{ REMMINA_PROTOCOL_SETTING_TYPE_FILE,	  "ssh_certfile",   N_("SSH certificate file"),		  FALSE, NULL,	      NULL },
+#endif
 	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "ssh_passphrase", N_("Password to unlock private key"), FALSE, NULL,	      NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "exec",	    N_("Start-up program"),		  FALSE, NULL,	      NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	  NULL,		    NULL,				  FALSE, NULL,	      NULL }
