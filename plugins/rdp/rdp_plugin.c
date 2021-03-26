@@ -387,9 +387,16 @@ BOOL rf_auto_reconnect(rfContext *rfi)
 	rfi->reconnect_nattempt = 0;
 
 	/* Only auto reconnect on network disconnects. */
-	if (freerdp_error_info(rfi->instance) != 0) {
-		rfi->is_reconnecting = FALSE;
-		return FALSE;
+	switch (freerdp_error_info(rfi->instance)) {
+		case ERRINFO_GRAPHICS_SUBSYSTEM_FAILED:
+			/* Disconnected by server hitting a bug or resource limit */
+			break;
+		case ERRINFO_SUCCESS:
+			/* A network disconnect was detected */
+			break;
+		default:
+			rfi->is_reconnecting = FALSE;
+			return FALSE;
 	}
 
 	if (!freerdp_settings_get_bool(settings, FreeRDP_AutoReconnectionEnabled)) {
