@@ -106,7 +106,8 @@ snap:build:
   - snapcraft --destructive-mode
   - |
     if [ "$CI_COMMIT_REF_NAME" = "master" ]; then
-      echo $SNAPCRAFT_LOGIN | snapcraft login --with -
+      echo $SNAPCRAFT_LOGIN | base64 --decode --ignore-garbage > snapcraft.login
+      snapcraft login --with snapcraft.login
       snapcraft push remmina*.snap --release edge
       snapcraft logout
     fi
