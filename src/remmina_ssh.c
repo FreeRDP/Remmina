@@ -623,7 +623,6 @@ remmina_ssh_auth(RemminaSSH *ssh, const gchar *password, RemminaProtocolWidget *
 	 *
 	 * And than test both the method and the option selected by the user
 	 */
-	ssh_userauth_none(ssh->session, NULL);
 	method = ssh_userauth_list(ssh->session, NULL);
 	REMMINA_DEBUG("Methods supported by server: %s%s%s%s%s%s%s",
 		      (method & SSH_AUTH_METHOD_NONE) ? "SSH_AUTH_METHOD_NONE " : "",
