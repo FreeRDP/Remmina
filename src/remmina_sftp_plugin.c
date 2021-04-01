@@ -99,6 +99,7 @@ remmina_plugin_sftp_main_thread(gpointer data)
 	CANCEL_ASYNC
 
 		gpdata = GET_PLUGIN_DATA(gp);
+
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
 	/* we may need to open a new tunnel too */
@@ -131,7 +132,7 @@ remmina_plugin_sftp_main_thread(gpointer data)
 
 			ret = remmina_ssh_auth_gui(ssh, gp, remminafile);
 			if (ret != REMMINA_SSH_AUTH_SUCCESS) {
-				if(ret == REMMINA_SSH_AUTH_RECONNECT) {
+				if (ret == REMMINA_SSH_AUTH_RECONNECT) {
 					if (ssh->session) {
 						ssh_disconnect(ssh->session);
 						ssh_free(ssh->session);
@@ -209,8 +210,8 @@ remmina_plugin_sftp_init(RemminaProtocolWidget *gp)
 						remmina_plugin_service->file_get_int(remminafile,
 										     REMMINA_PLUGIN_SFTP_FEATURE_PREF_OVERWRITE_ALL_KEY, FALSE));
 	remmina_ftp_client_set_resume_status(REMMINA_FTP_CLIENT(gpdata->client),
-						remmina_plugin_service->file_get_int(remminafile,
-										     REMMINA_PLUGIN_SFTP_FEATURE_PREF_RESUME_ALL_KEY, FALSE));
+					     remmina_plugin_service->file_get_int(remminafile,
+										  REMMINA_PLUGIN_SFTP_FEATURE_PREF_RESUME_ALL_KEY, FALSE));
 
 	remmina_plugin_service->protocol_plugin_register_hostkey(gp, GTK_WIDGET(gpdata->client));
 
@@ -298,8 +299,8 @@ remmina_plugin_sftp_call_feature(RemminaProtocolWidget *gp, const RemminaProtoco
 											     REMMINA_PLUGIN_SFTP_FEATURE_PREF_OVERWRITE_ALL_KEY, FALSE));
 	case REMMINA_PLUGIN_SFTP_FEATURE_PREF_RESUME_ALL:
 		remmina_ftp_client_set_resume_status(REMMINA_FTP_CLIENT(gpdata->client),
-							remmina_plugin_service->file_get_int(remminafile,
-											     REMMINA_PLUGIN_SFTP_FEATURE_PREF_RESUME_ALL_KEY, FALSE));
+						     remmina_plugin_service->file_get_int(remminafile,
+											  REMMINA_PLUGIN_SFTP_FEATURE_PREF_RESUME_ALL_KEY, FALSE));
 		return;
 	}
 }
@@ -319,13 +320,14 @@ static gpointer ssh_auth[] =
 static const RemminaProtocolFeature remmina_plugin_sftp_features[] =
 {
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_PREF, REMMINA_PLUGIN_SFTP_FEATURE_PREF_SHOW_HIDDEN,   GINT_TO_POINTER(REMMINA_PROTOCOL_FEATURE_PREF_CHECK), "showhidden",
-		N_("Show Hidden Files") },
+	  N_("Show Hidden Files") },
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_PREF, REMMINA_PLUGIN_SFTP_FEATURE_PREF_OVERWRITE_ALL, GINT_TO_POINTER(REMMINA_PROTOCOL_FEATURE_PREF_CHECK),
-		REMMINA_PLUGIN_SFTP_FEATURE_PREF_OVERWRITE_ALL_KEY, N_("Overwrite all files") },
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_PREF, REMMINA_PLUGIN_SFTP_FEATURE_PREF_RESUME_ALL, GINT_TO_POINTER(REMMINA_PROTOCOL_FEATURE_PREF_CHECK),
-		REMMINA_PLUGIN_SFTP_FEATURE_PREF_RESUME_ALL_KEY, N_("Resume all file transfers") },
+	  REMMINA_PLUGIN_SFTP_FEATURE_PREF_OVERWRITE_ALL_KEY, N_("Overwrite all files") },
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_PREF, REMMINA_PLUGIN_SFTP_FEATURE_PREF_RESUME_ALL,    GINT_TO_POINTER(REMMINA_PROTOCOL_FEATURE_PREF_CHECK),
+	  REMMINA_PLUGIN_SFTP_FEATURE_PREF_RESUME_ALL_KEY, N_("Resume all file transfers") },
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_PROTOCOL_FEATURE_TOOL_SSH,	      N_("Connect via SSH from a new terminal"),	    "utilities-terminal",NULL},
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_END,  0,					      NULL,						    NULL,
-		NULL }
+	  NULL }
 };
 
 /* Array of RemminaProtocolSetting for basic settings.

@@ -245,6 +245,8 @@ void remmina_protocol_widget_open_connection_real(gpointer data)
 	TRACE_CALL(__func__);
 	RemminaProtocolWidget *gp = REMMINA_PROTOCOL_WIDGET(data);
 
+	REMMINA_DEBUG("Opening connection");
+
 	RemminaProtocolPlugin *plugin;
 	RemminaProtocolFeature *feature;
 	gint num_plugin;
@@ -274,17 +276,20 @@ void remmina_protocol_widget_open_connection_real(gpointer data)
 			feature += num_plugin;
 		}
 #ifdef HAVE_LIBSSH
+	REMMINA_DEBUG("Have SSH");
 		if (num_ssh) {
 			feature->type = REMMINA_PROTOCOL_FEATURE_TYPE_TOOL;
 			feature->id = REMMINA_PROTOCOL_FEATURE_TOOL_SSH;
 			feature->opt1 = _("Connect via SSH from a new terminal");
 			feature->opt2 = "utilities-terminal";
+			feature->opt3 = NULL;
 			feature++;
 
 			feature->type = REMMINA_PROTOCOL_FEATURE_TYPE_TOOL;
 			feature->id = REMMINA_PROTOCOL_FEATURE_TOOL_SFTP;
 			feature->opt1 = _("Open SFTP transfer…");
 			feature->opt2 = "folder-remote";
+			feature->opt3 = NULL;
 			feature++;
 		}
 		feature->type = REMMINA_PROTOCOL_FEATURE_TYPE_END;

@@ -219,17 +219,17 @@ static void remmina_ftp_client_cell_data_progress_pixbuf(GtkTreeViewColumn *col,
 
 	switch (status) {
 	case REMMINA_FTP_TASK_STATUS_WAIT:
-		g_object_set(renderer, "stock-id", "P_ause", NULL);
+		g_object_set(renderer, "icon-name", "media-playback-pause", NULL);
 		break;
 	case REMMINA_FTP_TASK_STATUS_RUN:
-		g_object_set(renderer, "stock-id",
+		g_object_set(renderer, "icon-name",
 			(tasktype == REMMINA_FTP_TASK_TYPE_UPLOAD ? "go-up" : "go-down"), NULL);
 		break;
 	case REMMINA_FTP_TASK_STATUS_FINISH:
-		g_object_set(renderer, "stock-id", "_Yes", NULL);
+		g_object_set(renderer, "icon-name", "emblem-default", NULL);
 		break;
 	case REMMINA_FTP_TASK_STATUS_ERROR:
-		g_object_set(renderer, "stock-id", "_No", NULL);
+		g_object_set(renderer, "icon-name", "emblem-unreadable", NULL);
 		break;
 	}
 }
@@ -1015,7 +1015,7 @@ static void remmina_ftp_client_init(RemminaFTPClient *client)
 
 	renderer = remmina_cell_renderer_pixbuf_new();
 	column = gtk_tree_view_column_new_with_attributes(NULL, renderer, NULL);
-	g_object_set(G_OBJECT(renderer), "stock-id", "_Cancel", NULL);
+	g_object_set(G_OBJECT(renderer), "icon-name", "process-stop", NULL);
 	gtk_tree_view_column_set_resizable(column, FALSE);
 	gtk_tree_view_append_column(GTK_TREE_VIEW(priv->task_list_view), column);
 
