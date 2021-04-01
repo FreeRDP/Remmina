@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-04-01 08:24+0000\n"
+"POT-Creation-Date: 2021-04-01 13:49+0000\n"
 "PO-Revision-Date: 2021-03-24 23:29+0000\n"
 "Last-Translator: Justin Song <mcsong@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -23,122 +23,123 @@ msgstr ""
 "X-Generator: Weblate 4.5.2-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
 
-#: src/remmina_protocol_widget.c:280
+#: src/remmina_protocol_widget.c:283 src/remmina_sftp_plugin.c:328
 msgid "Connect via SSH from a new terminal"
 msgstr "새 터미널에서 SSH로 연결하기"
 
-#: src/remmina_protocol_widget.c:286
+#: src/remmina_protocol_widget.c:290 src/remmina_ssh_plugin.c:826
+#: src/remmina_ssh_plugin.c:1390
 msgid "Open SFTP transfer…"
 msgstr "SFTP 전송 열기…"
 
-#: src/remmina_protocol_widget.c:314
+#: src/remmina_protocol_widget.c:319
 msgid "Executing external commands…"
 msgstr "외부 명령 실행 중…"
 
-#: src/remmina_protocol_widget.c:321
+#: src/remmina_protocol_widget.c:326
 #, c-format
 msgid "Connecting to “%s”…"
 msgstr "'%s'에 연결하는 중…"
 
-#: src/remmina_protocol_widget.c:767 src/remmina_protocol_widget.c:885
+#: src/remmina_protocol_widget.c:772 src/remmina_protocol_widget.c:890
 #, c-format
 msgid "Connecting to “%s” via SSH…"
 msgstr "SSH로 '%s'에 연결하는 중…"
 
-#: src/remmina_protocol_widget.c:948
+#: src/remmina_protocol_widget.c:953
 #, c-format
 msgid "Awaiting incoming SSH connection on port %i…"
 msgstr "포트 %i에서 SSH 연결 대기 중…"
 
-#: src/remmina_protocol_widget.c:1000
+#: src/remmina_protocol_widget.c:1005
 #, c-format
 msgid "The “%s” command is not available on the SSH server."
 msgstr "SSH 서버에서 %s 명령을 사용할 수 없습니다."
 
-#: src/remmina_protocol_widget.c:1004
+#: src/remmina_protocol_widget.c:1009
 #, c-format
 msgid "Could not run the “%s” command on the SSH server (status = %i)."
 msgstr "SSH 서버에서 \"%s\" 명령을 실행할 수 없습니다 (상태 = %i)."
 
 #. TRANSLATORS: %s is a placeholder for an error message
-#: src/remmina_protocol_widget.c:1012
+#: src/remmina_protocol_widget.c:1017
 #, c-format
 msgid "Could not run command. %s"
 msgstr "명령을 실행할 수 없습니다. %s"
 
-#: src/remmina_protocol_widget.c:1081
+#: src/remmina_protocol_widget.c:1086
 #, c-format
 msgid "Connecting to %s via SSH…"
 msgstr "SSH로 '%s'에 연결하는 중…"
 
-#: src/remmina_protocol_widget.c:1457 src/remmina_protocol_widget.c:1476
-#: src/remmina_ssh_plugin.c:1287 src/remmina_sftp_plugin.c:309
-#: src/remmina_sftp_plugin.c:344 src/remmina_file_editor.c:845
+#: src/remmina_protocol_widget.c:1462 src/remmina_protocol_widget.c:1481
+#: src/remmina_ssh_plugin.c:1305 src/remmina_sftp_plugin.c:310
+#: src/remmina_sftp_plugin.c:346 src/remmina_file_editor.c:845
 #: src/remmina_file_editor.c:966 plugins/www/www_plugin.c:872
 #: plugins/rdp/rdp_plugin.c:2533 data/ui/remmina_unlock.glade:116
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1682
 msgid "Password"
 msgstr "비밀번호"
 
-#: src/remmina_protocol_widget.c:1475
+#: src/remmina_protocol_widget.c:1480
 msgid "Type in SSH username and password."
 msgstr "SSH 사용자 이름과 비밀번호를 입력하세요."
 
-#: src/remmina_protocol_widget.c:1530 src/remmina_protocol_widget.c:1557
+#: src/remmina_protocol_widget.c:1535 src/remmina_protocol_widget.c:1562
 msgid "Fingerprint automatically accepted"
 msgstr "지문인식을 자동으로 허용함"
 
-#: src/remmina_protocol_widget.c:1537
+#: src/remmina_protocol_widget.c:1542
 msgid "Certificate details:"
 msgstr "인증서 세부정보:"
 
-#: src/remmina_protocol_widget.c:1538 src/remmina_protocol_widget.c:1565
+#: src/remmina_protocol_widget.c:1543 src/remmina_protocol_widget.c:1570
 msgid "Subject:"
 msgstr "주제:"
 
-#: src/remmina_protocol_widget.c:1539 src/remmina_protocol_widget.c:1566
+#: src/remmina_protocol_widget.c:1544 src/remmina_protocol_widget.c:1571
 msgid "Issuer:"
 msgstr "발급자:"
 
-#: src/remmina_protocol_widget.c:1540
+#: src/remmina_protocol_widget.c:1545
 msgid "Fingerprint:"
 msgstr "지문:"
 
-#: src/remmina_protocol_widget.c:1541
+#: src/remmina_protocol_widget.c:1546
 msgid "Accept certificate?"
 msgstr "인증서를 허용하시겠습니까?"
 
-#: src/remmina_protocol_widget.c:1564
+#: src/remmina_protocol_widget.c:1569
 msgid "The certificate changed! Details:"
 msgstr "인증서가 변경되었습니다! 세부 내용:"
 
-#: src/remmina_protocol_widget.c:1567
+#: src/remmina_protocol_widget.c:1572
 msgid "Old fingerprint:"
 msgstr "이전 지문:"
 
-#: src/remmina_protocol_widget.c:1568
+#: src/remmina_protocol_widget.c:1573
 msgid "New fingerprint:"
 msgstr "새 지문:"
 
-#: src/remmina_protocol_widget.c:1569
+#: src/remmina_protocol_widget.c:1574
 msgid "Accept changed certificate?"
 msgstr "변경된 인증서를 허용하시겠습니까?"
 
-#: src/remmina_protocol_widget.c:1711
+#: src/remmina_protocol_widget.c:1716
 #, c-format
 msgid "Listening on port %i for an incoming %s connection…"
 msgstr "%s 연결을 위해서 %i 포트에서 대기 중…"
 
-#: src/remmina_protocol_widget.c:1736
+#: src/remmina_protocol_widget.c:1741
 msgid "Could not authenticate, attempting reconnection…"
 msgstr "인증할 수 없습니다, 다시 접속 중…"
 
-#: src/remmina_protocol_widget.c:1798 src/remmina_file_editor.c:345
+#: src/remmina_protocol_widget.c:1803 src/remmina_file_editor.c:345
 #: src/remmina_file_editor.c:916 data/ui/remmina_main.glade:485
 msgid "Server"
 msgstr "서버"
 
-#: src/remmina_protocol_widget.c:1815
+#: src/remmina_protocol_widget.c:1820
 #, c-format
 msgid "Install the %s protocol plugin first."
 msgstr "먼저 %s 프로토콜 플러그인을 설치하세요."
@@ -188,146 +189,146 @@ msgstr ""
 "서 편집 할 수있는 \"사용자 지정\" 터미널 색 스킴을 포함하고 있다."
 
 #. TRANSLATORS: %s is a placeholder for an error message
-#: src/remmina_ssh_plugin.c:534
+#: src/remmina_ssh_plugin.c:536
 #, c-format
 msgid "Error: %s"
 msgstr "에러: %s"
 
-#: src/remmina_ssh_plugin.c:551
+#: src/remmina_ssh_plugin.c:553
 msgid "Terminal content saved in"
 msgstr "터미널 내용이 저장되었습니다"
 
-#: src/remmina_ssh_plugin.c:805
+#: src/remmina_ssh_plugin.c:819
 msgid "Select All (host+A)"
 msgstr "모두 선택 (Host + A)"
 
-#: src/remmina_ssh_plugin.c:806
+#: src/remmina_ssh_plugin.c:820
 msgid "Copy (host+C)"
 msgstr "복사 (host + C)"
 
-#: src/remmina_ssh_plugin.c:807
+#: src/remmina_ssh_plugin.c:821
 msgid "Paste (host+V)"
 msgstr "붙여넣기 (host + V)"
 
-#: src/remmina_ssh_plugin.c:808
+#: src/remmina_ssh_plugin.c:822
 msgid "Save session to file"
 msgstr "세션을 파일로 저장"
 
-#: src/remmina_ssh_plugin.c:809
+#: src/remmina_ssh_plugin.c:823
 msgid "Increase font size (host+Page Up)"
 msgstr "글자 크기 크게 (host+Page Up)"
 
-#: src/remmina_ssh_plugin.c:810
+#: src/remmina_ssh_plugin.c:824
 msgid "Decrease font size (host+Page Down)"
 msgstr "글자 크기 작게 (host+Page Down)"
 
-#: src/remmina_ssh_plugin.c:811
+#: src/remmina_ssh_plugin.c:825
 msgid "Find text (host+G)"
 msgstr "붙여넣기 (host + V)"
 
-#: src/remmina_ssh_plugin.c:1288 src/remmina_ssh_plugin.c:1392
-#: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:346
+#: src/remmina_ssh_plugin.c:1306 src/remmina_ssh_plugin.c:1411
+#: src/remmina_sftp_plugin.c:311 src/remmina_sftp_plugin.c:348
 #: src/remmina_file_editor.c:846 plugins/nx/nx_plugin.c:729
 msgid "SSH identity file"
 msgstr "SSH 인증 키 파일"
 
-#: src/remmina_ssh_plugin.c:1289 src/remmina_sftp_plugin.c:311
+#: src/remmina_ssh_plugin.c:1307 src/remmina_sftp_plugin.c:312
 #: src/remmina_file_editor.c:847
 msgid "SSH agent"
 msgstr "SSH 에이전트"
 
-#: src/remmina_ssh_plugin.c:1290 src/remmina_sftp_plugin.c:312
+#: src/remmina_ssh_plugin.c:1308 src/remmina_sftp_plugin.c:313
 #: src/remmina_file_editor.c:848
 msgid "Public key (automatic)"
 msgstr "공개 키 (자동)"
 
-#: src/remmina_ssh_plugin.c:1291 src/remmina_sftp_plugin.c:313
+#: src/remmina_ssh_plugin.c:1309 src/remmina_sftp_plugin.c:314
 #: src/remmina_file_editor.c:849
 msgid "Kerberos (GSSAPI)"
 msgstr "커베로스 (GSSAPI)"
 
-#: src/remmina_ssh_plugin.c:1366 data/ui/remmina_main.glade:183
+#: src/remmina_ssh_plugin.c:1384 data/ui/remmina_main.glade:183
 msgid "Copy"
 msgstr "복사"
 
-#: src/remmina_ssh_plugin.c:1366
+#: src/remmina_ssh_plugin.c:1384
 msgid "_Copy"
 msgstr "_복사"
 
-#: src/remmina_ssh_plugin.c:1367
+#: src/remmina_ssh_plugin.c:1385
 msgid "Paste"
 msgstr "붙여넣기"
 
-#: src/remmina_ssh_plugin.c:1367
+#: src/remmina_ssh_plugin.c:1385
 msgid "_Paste"
 msgstr "_붙여넣기"
 
-#: src/remmina_ssh_plugin.c:1368
+#: src/remmina_ssh_plugin.c:1386
 msgid "Select all"
 msgstr "모두 선택"
 
-#: src/remmina_ssh_plugin.c:1368
+#: src/remmina_ssh_plugin.c:1386
 msgid "_Select all"
 msgstr "_모두 선택"
 
-#: src/remmina_ssh_plugin.c:1369 data/ui/remmina_preferences.glade:2388
+#: src/remmina_ssh_plugin.c:1387 data/ui/remmina_preferences.glade:2388
 msgid "Increase font size"
 msgstr "글자 크기 크게"
 
-#: src/remmina_ssh_plugin.c:1369
+#: src/remmina_ssh_plugin.c:1387
 msgid "_Increase font size"
 msgstr "_글자 크기 크게"
 
-#: src/remmina_ssh_plugin.c:1370 data/ui/remmina_preferences.glade:2401
+#: src/remmina_ssh_plugin.c:1388 data/ui/remmina_preferences.glade:2401
 msgid "Decrease font size"
 msgstr "글자 크기 줄이기"
 
-#: src/remmina_ssh_plugin.c:1370
+#: src/remmina_ssh_plugin.c:1388
 msgid "_Decrease font size"
 msgstr "_글자 크기 줄이기"
 
-#: src/remmina_ssh_plugin.c:1371
+#: src/remmina_ssh_plugin.c:1389
 msgid "Find text"
 msgstr "텍스트 찾기"
 
-#: src/remmina_ssh_plugin.c:1371
+#: src/remmina_ssh_plugin.c:1389
 msgid "_Find text"
 msgstr "_텍스트 찾기"
 
-#: src/remmina_ssh_plugin.c:1389 src/remmina_sftp_plugin.c:345
+#: src/remmina_ssh_plugin.c:1408 src/remmina_sftp_plugin.c:347
 #: src/remmina_file_editor.c:951
 msgid "Authentication type"
 msgstr "인증 유형"
 
-#: src/remmina_ssh_plugin.c:1390 src/remmina_message_panel.c:330
-#: src/remmina_sftp_plugin.c:343 src/remmina_file_editor.c:960
+#: src/remmina_ssh_plugin.c:1409 src/remmina_message_panel.c:330
+#: src/remmina_sftp_plugin.c:345 src/remmina_file_editor.c:960
 #: plugins/www/www_plugin.c:871 plugins/vnc/vnc_plugin.c:1879
 #: plugins/vnc/vnc_plugin.c:1899 plugins/rdp/rdp_plugin.c:2532
 #: plugins/nx/nx_plugin.c:730 data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr "사용자명"
 
-#: src/remmina_ssh_plugin.c:1391 plugins/vnc/vnc_plugin.c:1880
+#: src/remmina_ssh_plugin.c:1410 plugins/vnc/vnc_plugin.c:1880
 #: plugins/vnc/vnc_plugin.c:1900 plugins/spice/spice_plugin.c:576
 #: plugins/nx/nx_plugin.c:731
 msgid "User password"
 msgstr "사용자 비밀번호"
 
-#: src/remmina_ssh_plugin.c:1394 src/remmina_file_editor.c:978
+#: src/remmina_ssh_plugin.c:1413 src/remmina_file_editor.c:978
 msgid "SSH certificate file"
 msgstr "SSH 인증서 파일"
 
-#: src/remmina_ssh_plugin.c:1396 src/remmina_sftp_plugin.c:347
+#: src/remmina_ssh_plugin.c:1415 src/remmina_sftp_plugin.c:349
 #: src/remmina_file_editor.c:983
 msgid "Password to unlock private key"
 msgstr "개인 키 잠금 해제 비밀번호"
 
-#: src/remmina_ssh_plugin.c:1397 plugins/xdmcp/xdmcp_plugin.c:370
+#: src/remmina_ssh_plugin.c:1416 plugins/xdmcp/xdmcp_plugin.c:370
 #: plugins/rdp/rdp_plugin.c:2572 plugins/nx/nx_plugin.c:734
 msgid "Start-up program"
 msgstr "시작 프로그램"
 
-#: src/remmina_ssh_plugin.c:1402
+#: src/remmina_ssh_plugin.c:1421
 msgid ""
 "The filename can use the following placeholders:\n"
 "\n"
@@ -349,59 +350,59 @@ msgstr ""
 "  • %g 는 레미나 프로필 그룹 이름으로 대체됩니다\n"
 "  • %d 는 ISO8601 형식의 로컬 날짜로 대체됩니다\n"
 
-#: src/remmina_ssh_plugin.c:1424
+#: src/remmina_ssh_plugin.c:1443
 msgid "Terminal colour scheme"
 msgstr "터미널 색 스키마"
 
-#: src/remmina_ssh_plugin.c:1425
+#: src/remmina_ssh_plugin.c:1444
 msgid "Character set"
 msgstr "문자표"
 
-#: src/remmina_ssh_plugin.c:1426 src/remmina_sftp_plugin.c:348
+#: src/remmina_ssh_plugin.c:1445 src/remmina_sftp_plugin.c:350
 msgid "SSH Proxy Command"
 msgstr "SSH 프록시 명령"
 
-#: src/remmina_ssh_plugin.c:1427
+#: src/remmina_ssh_plugin.c:1446
 msgid "KEX (Key Exchange) algorithms"
 msgstr "KEX (키 교환) 알고리즘"
 
-#: src/remmina_ssh_plugin.c:1428
+#: src/remmina_ssh_plugin.c:1447
 msgid "Symmetric cipher client to server"
 msgstr "클라이언트 서버 대칭키 암호"
 
-#: src/remmina_ssh_plugin.c:1429
+#: src/remmina_ssh_plugin.c:1448
 msgid "Preferred server host key types"
 msgstr "기본 서버 호스트 키 종류"
 
-#: src/remmina_ssh_plugin.c:1430
+#: src/remmina_ssh_plugin.c:1449
 msgid "Folder for SSH session log"
 msgstr "SSH 세션 로그 폴더"
 
-#: src/remmina_ssh_plugin.c:1431
+#: src/remmina_ssh_plugin.c:1450
 msgid "Filename for SSH session log"
 msgstr "SSH 세션 로그 파일 이름"
 
-#: src/remmina_ssh_plugin.c:1432
+#: src/remmina_ssh_plugin.c:1451
 msgid "Log SSH session when exiting Remmina"
 msgstr "Remmina를 종료 할 때 SSH 세션 기록"
 
-#: src/remmina_ssh_plugin.c:1433
+#: src/remmina_ssh_plugin.c:1452
 msgid "Audible terminal bell"
 msgstr "오디오 터미널 벨"
 
-#: src/remmina_ssh_plugin.c:1434
+#: src/remmina_ssh_plugin.c:1453
 msgid "SSH compression"
 msgstr "SSH 압축"
 
-#: src/remmina_ssh_plugin.c:1435
+#: src/remmina_ssh_plugin.c:1454
 msgid "Don't remember passwords"
 msgstr "비밀번호 저장하지 않기"
 
-#: src/remmina_ssh_plugin.c:1436
+#: src/remmina_ssh_plugin.c:1455
 msgid "Strict host key checking"
 msgstr "엄격한 호스트 키 확인"
 
-#: src/remmina_ssh_plugin.c:1450
+#: src/remmina_ssh_plugin.c:1469
 msgid "SSH - Secure Shell"
 msgstr "SSH - 보안 쉘"
 
@@ -464,11 +465,11 @@ msgstr "업로드할 파일을 선택하세요"
 msgid "Upload folder"
 msgstr "업로드 위치"
 
-#: src/remmina_ftp_client.c:649 src/remmina_ftp_client.c:771
+#: src/remmina_ftp_client.c:649 src/remmina_ftp_client.c:763
 msgid "Download"
 msgstr "다운로드"
 
-#: src/remmina_ftp_client.c:656 src/remmina_ftp_client.c:782
+#: src/remmina_ftp_client.c:656 src/remmina_ftp_client.c:770
 msgid "Upload"
 msgstr "업로드"
 
@@ -476,77 +477,77 @@ msgstr "업로드"
 msgid "_Delete"
 msgstr "_삭제"
 
-#: src/remmina_ftp_client.c:750
+#: src/remmina_ftp_client.c:748
 msgid "Home"
 msgstr "홈"
 
-#: src/remmina_ftp_client.c:752
+#: src/remmina_ftp_client.c:749
 msgid "Go to home folder"
 msgstr "홈 폴더로 가기"
 
-#: src/remmina_ftp_client.c:757
+#: src/remmina_ftp_client.c:753
 msgid "Up"
 msgstr "위로"
 
-#: src/remmina_ftp_client.c:759
+#: src/remmina_ftp_client.c:754
 msgid "Go to parent folder"
 msgstr "상위 폴더로 가기"
 
-#: src/remmina_ftp_client.c:764 plugins/vnc/vnc_plugin.c:1936
+#: src/remmina_ftp_client.c:758 plugins/vnc/vnc_plugin.c:1936
 #: plugins/rdp/rdp_plugin.c:2613
 msgid "Refresh"
 msgstr "새로 고침"
 
-#: src/remmina_ftp_client.c:766
+#: src/remmina_ftp_client.c:759
 msgid "Refresh current folder"
 msgstr "현재 폴더 새로 고침"
 
-#: src/remmina_ftp_client.c:773
+#: src/remmina_ftp_client.c:764
 msgid "Download from server"
 msgstr "서버에서 다운로드"
 
-#: src/remmina_ftp_client.c:784
+#: src/remmina_ftp_client.c:771
 msgid "Upload to server"
 msgstr "서버에 업로드"
 
-#: src/remmina_ftp_client.c:791 data/ui/remmina_main.glade:203
+#: src/remmina_ftp_client.c:775 data/ui/remmina_main.glade:203
 msgid "Delete"
 msgstr "삭제"
 
-#: src/remmina_ftp_client.c:793
+#: src/remmina_ftp_client.c:776
 msgid "Delete files on server"
 msgstr "서버에서 파일 삭제"
 
-#: src/remmina_ftp_client.c:921 src/remmina_ftp_client.c:990
+#: src/remmina_ftp_client.c:905 src/remmina_ftp_client.c:974
 msgid "Filename"
 msgstr "파일 이름"
 
-#: src/remmina_ftp_client.c:934 src/remmina_ftp_client.c:1019
+#: src/remmina_ftp_client.c:918 src/remmina_ftp_client.c:1003
 msgid "Size"
 msgstr "크기"
 
-#: src/remmina_ftp_client.c:942
+#: src/remmina_ftp_client.c:926
 msgid "User"
 msgstr "사용자"
 
-#: src/remmina_ftp_client.c:948 src/remmina_file_editor.c:1514
+#: src/remmina_ftp_client.c:932 src/remmina_file_editor.c:1514
 #: data/ui/remmina_main.glade:471 data/ui/remmina_mpc.glade:115
 msgid "Group"
 msgstr "그룹"
 
-#: src/remmina_ftp_client.c:954
+#: src/remmina_ftp_client.c:938
 msgid "Permission"
 msgstr "권한"
 
-#: src/remmina_ftp_client.c:1006 plugins/rdp/rdp_plugin.c:2438
+#: src/remmina_ftp_client.c:990 plugins/rdp/rdp_plugin.c:2438
 msgid "Remote"
 msgstr "리모트"
 
-#: src/remmina_ftp_client.c:1013 plugins/rdp/rdp_plugin.c:2437
+#: src/remmina_ftp_client.c:997 plugins/rdp/rdp_plugin.c:2437
 msgid "Local"
 msgstr "로컬"
 
-#: src/remmina_ftp_client.c:1027
+#: src/remmina_ftp_client.c:1011
 msgid "Progress"
 msgstr "진행"
 
@@ -1110,19 +1111,19 @@ msgstr "클라이언트 인증서 파일"
 msgid "Client Certificate Key"
 msgstr "클라이언트 인증서 키"
 
-#: src/remmina_sftp_plugin.c:322
+#: src/remmina_sftp_plugin.c:323
 msgid "Show Hidden Files"
 msgstr "숨긴 파일 보기"
 
-#: src/remmina_sftp_plugin.c:324
+#: src/remmina_sftp_plugin.c:325
 msgid "Overwrite all files"
 msgstr "모두 덮어 쓰기"
 
-#: src/remmina_sftp_plugin.c:326
+#: src/remmina_sftp_plugin.c:327
 msgid "Resume all file transfers"
 msgstr "파일 전송"
 
-#: src/remmina_sftp_plugin.c:357
+#: src/remmina_sftp_plugin.c:359
 msgid "SFTP - Secure File Transfer"
 msgstr "SFTP - 보안 파일 전송"
 

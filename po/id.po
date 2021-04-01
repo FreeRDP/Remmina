@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-04-01 08:24+0000\n"
+"POT-Creation-Date: 2021-04-01 13:49+0000\n"
 "PO-Revision-Date: 2021-02-23 07:31+0000\n"
 "Last-Translator: Reza Almanda <rezaalmanda27@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/remmina/"
@@ -24,122 +24,123 @@ msgstr ""
 "X-Generator: Weblate 4.5\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
 
-#: src/remmina_protocol_widget.c:280
+#: src/remmina_protocol_widget.c:283 src/remmina_sftp_plugin.c:328
 msgid "Connect via SSH from a new terminal"
 msgstr "Hubungkan melalui SSH dari terminal baru"
 
-#: src/remmina_protocol_widget.c:286
+#: src/remmina_protocol_widget.c:290 src/remmina_ssh_plugin.c:826
+#: src/remmina_ssh_plugin.c:1390
 msgid "Open SFTP transfer…"
 msgstr "Buka transfer SFTP…"
 
-#: src/remmina_protocol_widget.c:314
+#: src/remmina_protocol_widget.c:319
 msgid "Executing external commands…"
 msgstr "Mengeksekusi perintah eksternal…"
 
-#: src/remmina_protocol_widget.c:321
+#: src/remmina_protocol_widget.c:326
 #, c-format
 msgid "Connecting to “%s”…"
 msgstr "Menyambung ke \"%s\"…"
 
-#: src/remmina_protocol_widget.c:767 src/remmina_protocol_widget.c:885
+#: src/remmina_protocol_widget.c:772 src/remmina_protocol_widget.c:890
 #, c-format
 msgid "Connecting to “%s” via SSH…"
 msgstr "Menyambung ke %s lewat SSH…"
 
-#: src/remmina_protocol_widget.c:948
+#: src/remmina_protocol_widget.c:953
 #, c-format
 msgid "Awaiting incoming SSH connection on port %i…"
 msgstr "Menunggu koneksi SSH masuk di port %i…"
 
-#: src/remmina_protocol_widget.c:1000
+#: src/remmina_protocol_widget.c:1005
 #, c-format
 msgid "The “%s” command is not available on the SSH server."
 msgstr "Perintah \"%s\" tidak tersedia di server SSH."
 
-#: src/remmina_protocol_widget.c:1004
+#: src/remmina_protocol_widget.c:1009
 #, c-format
 msgid "Could not run the “%s” command on the SSH server (status = %i)."
 msgstr "Tidak bisa menjalankan perintah \"%s\" pada server SSH (status = %i)."
 
 #. TRANSLATORS: %s is a placeholder for an error message
-#: src/remmina_protocol_widget.c:1012
+#: src/remmina_protocol_widget.c:1017
 #, c-format
 msgid "Could not run command. %s"
 msgstr "Tidak bisa menjalankan perintah. %s"
 
-#: src/remmina_protocol_widget.c:1081
+#: src/remmina_protocol_widget.c:1086
 #, c-format
 msgid "Connecting to %s via SSH…"
 msgstr "Menyambung ke %s lewat SSH…"
 
-#: src/remmina_protocol_widget.c:1457 src/remmina_protocol_widget.c:1476
-#: src/remmina_ssh_plugin.c:1287 src/remmina_sftp_plugin.c:309
-#: src/remmina_sftp_plugin.c:344 src/remmina_file_editor.c:845
+#: src/remmina_protocol_widget.c:1462 src/remmina_protocol_widget.c:1481
+#: src/remmina_ssh_plugin.c:1305 src/remmina_sftp_plugin.c:310
+#: src/remmina_sftp_plugin.c:346 src/remmina_file_editor.c:845
 #: src/remmina_file_editor.c:966 plugins/www/www_plugin.c:872
 #: plugins/rdp/rdp_plugin.c:2533 data/ui/remmina_unlock.glade:116
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1682
 msgid "Password"
 msgstr "Kata Sandi"
 
-#: src/remmina_protocol_widget.c:1475
+#: src/remmina_protocol_widget.c:1480
 msgid "Type in SSH username and password."
 msgstr "Ketik nama pengguna dan kata sandi SSH."
 
-#: src/remmina_protocol_widget.c:1530 src/remmina_protocol_widget.c:1557
+#: src/remmina_protocol_widget.c:1535 src/remmina_protocol_widget.c:1562
 msgid "Fingerprint automatically accepted"
 msgstr "Sidik jari otomatis diterima"
 
-#: src/remmina_protocol_widget.c:1537
+#: src/remmina_protocol_widget.c:1542
 msgid "Certificate details:"
 msgstr "Rincian sertifikat:"
 
-#: src/remmina_protocol_widget.c:1538 src/remmina_protocol_widget.c:1565
+#: src/remmina_protocol_widget.c:1543 src/remmina_protocol_widget.c:1570
 msgid "Subject:"
 msgstr "Subjek:"
 
-#: src/remmina_protocol_widget.c:1539 src/remmina_protocol_widget.c:1566
+#: src/remmina_protocol_widget.c:1544 src/remmina_protocol_widget.c:1571
 msgid "Issuer:"
 msgstr "Penerbit:"
 
-#: src/remmina_protocol_widget.c:1540
+#: src/remmina_protocol_widget.c:1545
 msgid "Fingerprint:"
 msgstr "Sidik jari:"
 
-#: src/remmina_protocol_widget.c:1541
+#: src/remmina_protocol_widget.c:1546
 msgid "Accept certificate?"
 msgstr "Terima sertifikat?"
 
-#: src/remmina_protocol_widget.c:1564
+#: src/remmina_protocol_widget.c:1569
 msgid "The certificate changed! Details:"
 msgstr "Sertifikat berubah! Rincian:"
 
-#: src/remmina_protocol_widget.c:1567
+#: src/remmina_protocol_widget.c:1572
 msgid "Old fingerprint:"
 msgstr "Sidik jari lama:"
 
-#: src/remmina_protocol_widget.c:1568
+#: src/remmina_protocol_widget.c:1573
 msgid "New fingerprint:"
 msgstr "Sidik jari baru:"
 
-#: src/remmina_protocol_widget.c:1569
+#: src/remmina_protocol_widget.c:1574
 msgid "Accept changed certificate?"
 msgstr "Terima sertifikat yang telah berubah?"
 
-#: src/remmina_protocol_widget.c:1711
+#: src/remmina_protocol_widget.c:1716
 #, c-format
 msgid "Listening on port %i for an incoming %s connection…"
 msgstr "Mendengarkan pada port %i untuk koneksi %s masuk…"
 
-#: src/remmina_protocol_widget.c:1736
+#: src/remmina_protocol_widget.c:1741
 msgid "Could not authenticate, attempting reconnection…"
 msgstr "Tidak bisa mengotentikasi, mencoba menyambung ulang…"
 
-#: src/remmina_protocol_widget.c:1798 src/remmina_file_editor.c:345
+#: src/remmina_protocol_widget.c:1803 src/remmina_file_editor.c:345
 #: src/remmina_file_editor.c:916 data/ui/remmina_main.glade:485
 msgid "Server"
 msgstr "Server"
 
-#: src/remmina_protocol_widget.c:1815
+#: src/remmina_protocol_widget.c:1820
 #, c-format
 msgid "Install the %s protocol plugin first."
 msgstr "Pasang pengaya protokol %s terlebih dahulu."
@@ -190,146 +191,146 @@ msgstr ""
 "pengaturan."
 
 #. TRANSLATORS: %s is a placeholder for an error message
-#: src/remmina_ssh_plugin.c:534
+#: src/remmina_ssh_plugin.c:536
 #, c-format
 msgid "Error: %s"
 msgstr "Galat: %s"
 
-#: src/remmina_ssh_plugin.c:551
+#: src/remmina_ssh_plugin.c:553
 msgid "Terminal content saved in"
 msgstr "Konten terminal disimpan di"
 
-#: src/remmina_ssh_plugin.c:805
+#: src/remmina_ssh_plugin.c:819
 msgid "Select All (host+A)"
 msgstr "Pilih Semua (host+A)"
 
-#: src/remmina_ssh_plugin.c:806
+#: src/remmina_ssh_plugin.c:820
 msgid "Copy (host+C)"
 msgstr "Salin (host+C)"
 
-#: src/remmina_ssh_plugin.c:807
+#: src/remmina_ssh_plugin.c:821
 msgid "Paste (host+V)"
 msgstr "Tempel (host+V)"
 
-#: src/remmina_ssh_plugin.c:808
+#: src/remmina_ssh_plugin.c:822
 msgid "Save session to file"
 msgstr "Simpan sesi ke berkas"
 
-#: src/remmina_ssh_plugin.c:809
+#: src/remmina_ssh_plugin.c:823
 msgid "Increase font size (host+Page Up)"
 msgstr "Perbesar ukuran fonta (host+Page Up)"
 
-#: src/remmina_ssh_plugin.c:810
+#: src/remmina_ssh_plugin.c:824
 msgid "Decrease font size (host+Page Down)"
 msgstr "Perkecil ukuran fonta (host+Page Down)"
 
-#: src/remmina_ssh_plugin.c:811
+#: src/remmina_ssh_plugin.c:825
 msgid "Find text (host+G)"
 msgstr "Cari teks (host+G)"
 
-#: src/remmina_ssh_plugin.c:1288 src/remmina_ssh_plugin.c:1392
-#: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:346
+#: src/remmina_ssh_plugin.c:1306 src/remmina_ssh_plugin.c:1411
+#: src/remmina_sftp_plugin.c:311 src/remmina_sftp_plugin.c:348
 #: src/remmina_file_editor.c:846 plugins/nx/nx_plugin.c:729
 msgid "SSH identity file"
 msgstr "Berkas identitas SSH"
 
-#: src/remmina_ssh_plugin.c:1289 src/remmina_sftp_plugin.c:311
+#: src/remmina_ssh_plugin.c:1307 src/remmina_sftp_plugin.c:312
 #: src/remmina_file_editor.c:847
 msgid "SSH agent"
 msgstr "Agen SSH"
 
-#: src/remmina_ssh_plugin.c:1290 src/remmina_sftp_plugin.c:312
+#: src/remmina_ssh_plugin.c:1308 src/remmina_sftp_plugin.c:313
 #: src/remmina_file_editor.c:848
 msgid "Public key (automatic)"
 msgstr "Kunci publik (otomatis)"
 
-#: src/remmina_ssh_plugin.c:1291 src/remmina_sftp_plugin.c:313
+#: src/remmina_ssh_plugin.c:1309 src/remmina_sftp_plugin.c:314
 #: src/remmina_file_editor.c:849
 msgid "Kerberos (GSSAPI)"
 msgstr "Kerberos (GSSAPI)"
 
-#: src/remmina_ssh_plugin.c:1366 data/ui/remmina_main.glade:183
+#: src/remmina_ssh_plugin.c:1384 data/ui/remmina_main.glade:183
 msgid "Copy"
 msgstr "Salin"
 
-#: src/remmina_ssh_plugin.c:1366
+#: src/remmina_ssh_plugin.c:1384
 msgid "_Copy"
 msgstr "_Salin"
 
-#: src/remmina_ssh_plugin.c:1367
+#: src/remmina_ssh_plugin.c:1385
 msgid "Paste"
 msgstr "Tempel"
 
-#: src/remmina_ssh_plugin.c:1367
+#: src/remmina_ssh_plugin.c:1385
 msgid "_Paste"
 msgstr "Tem_pel"
 
-#: src/remmina_ssh_plugin.c:1368
+#: src/remmina_ssh_plugin.c:1386
 msgid "Select all"
 msgstr "Pilih semua"
 
-#: src/remmina_ssh_plugin.c:1368
+#: src/remmina_ssh_plugin.c:1386
 msgid "_Select all"
 msgstr "Pilih _semua"
 
-#: src/remmina_ssh_plugin.c:1369 data/ui/remmina_preferences.glade:2388
+#: src/remmina_ssh_plugin.c:1387 data/ui/remmina_preferences.glade:2388
 msgid "Increase font size"
 msgstr "Perbesar ukuran fonta"
 
-#: src/remmina_ssh_plugin.c:1369
+#: src/remmina_ssh_plugin.c:1387
 msgid "_Increase font size"
 msgstr "Na_ikkan ukuran fonta"
 
-#: src/remmina_ssh_plugin.c:1370 data/ui/remmina_preferences.glade:2401
+#: src/remmina_ssh_plugin.c:1388 data/ui/remmina_preferences.glade:2401
 msgid "Decrease font size"
 msgstr "Perkecil ukuran fonta"
 
-#: src/remmina_ssh_plugin.c:1370
+#: src/remmina_ssh_plugin.c:1388
 msgid "_Decrease font size"
 msgstr "_Perkecil ukuran fonta"
 
-#: src/remmina_ssh_plugin.c:1371
+#: src/remmina_ssh_plugin.c:1389
 msgid "Find text"
 msgstr "Cari teks"
 
-#: src/remmina_ssh_plugin.c:1371
+#: src/remmina_ssh_plugin.c:1389
 msgid "_Find text"
 msgstr "_Cari teks"
 
-#: src/remmina_ssh_plugin.c:1389 src/remmina_sftp_plugin.c:345
+#: src/remmina_ssh_plugin.c:1408 src/remmina_sftp_plugin.c:347
 #: src/remmina_file_editor.c:951
 msgid "Authentication type"
 msgstr "Tipe otentikasi"
 
-#: src/remmina_ssh_plugin.c:1390 src/remmina_message_panel.c:330
-#: src/remmina_sftp_plugin.c:343 src/remmina_file_editor.c:960
+#: src/remmina_ssh_plugin.c:1409 src/remmina_message_panel.c:330
+#: src/remmina_sftp_plugin.c:345 src/remmina_file_editor.c:960
 #: plugins/www/www_plugin.c:871 plugins/vnc/vnc_plugin.c:1879
 #: plugins/vnc/vnc_plugin.c:1899 plugins/rdp/rdp_plugin.c:2532
 #: plugins/nx/nx_plugin.c:730 data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr "Nama pengguna"
 
-#: src/remmina_ssh_plugin.c:1391 plugins/vnc/vnc_plugin.c:1880
+#: src/remmina_ssh_plugin.c:1410 plugins/vnc/vnc_plugin.c:1880
 #: plugins/vnc/vnc_plugin.c:1900 plugins/spice/spice_plugin.c:576
 #: plugins/nx/nx_plugin.c:731
 msgid "User password"
 msgstr "Sandi pengguna"
 
-#: src/remmina_ssh_plugin.c:1394 src/remmina_file_editor.c:978
+#: src/remmina_ssh_plugin.c:1413 src/remmina_file_editor.c:978
 msgid "SSH certificate file"
 msgstr "Berkas sertifikat SSH"
 
-#: src/remmina_ssh_plugin.c:1396 src/remmina_sftp_plugin.c:347
+#: src/remmina_ssh_plugin.c:1415 src/remmina_sftp_plugin.c:349
 #: src/remmina_file_editor.c:983
 msgid "Password to unlock private key"
 msgstr "Kata sandi untuk membuka kunci privat"
 
-#: src/remmina_ssh_plugin.c:1397 plugins/xdmcp/xdmcp_plugin.c:370
+#: src/remmina_ssh_plugin.c:1416 plugins/xdmcp/xdmcp_plugin.c:370
 #: plugins/rdp/rdp_plugin.c:2572 plugins/nx/nx_plugin.c:734
 msgid "Start-up program"
 msgstr "Program startup"
 
-#: src/remmina_ssh_plugin.c:1402
+#: src/remmina_ssh_plugin.c:1421
 msgid ""
 "The filename can use the following placeholders:\n"
 "\n"
@@ -351,59 +352,59 @@ msgstr ""
 "  •%g diganti dengan nama grup profil Remmina\n"
 "  •%d diganti dengan datetime lokal dalam format ISO8601\n"
 
-#: src/remmina_ssh_plugin.c:1424
+#: src/remmina_ssh_plugin.c:1443
 msgid "Terminal colour scheme"
 msgstr "Skema warna terminal"
 
-#: src/remmina_ssh_plugin.c:1425
+#: src/remmina_ssh_plugin.c:1444
 msgid "Character set"
 msgstr "Set karakter"
 
-#: src/remmina_ssh_plugin.c:1426 src/remmina_sftp_plugin.c:348
+#: src/remmina_ssh_plugin.c:1445 src/remmina_sftp_plugin.c:350
 msgid "SSH Proxy Command"
 msgstr "Perintah Proksi SSH"
 
-#: src/remmina_ssh_plugin.c:1427
+#: src/remmina_ssh_plugin.c:1446
 msgid "KEX (Key Exchange) algorithms"
 msgstr "Algoritma KEX (Key Exchange)"
 
-#: src/remmina_ssh_plugin.c:1428
+#: src/remmina_ssh_plugin.c:1447
 msgid "Symmetric cipher client to server"
 msgstr "Cipher simetris klien ke server"
 
-#: src/remmina_ssh_plugin.c:1429
+#: src/remmina_ssh_plugin.c:1448
 msgid "Preferred server host key types"
 msgstr "Tipe kunci host server yang disukai"
 
-#: src/remmina_ssh_plugin.c:1430
+#: src/remmina_ssh_plugin.c:1449
 msgid "Folder for SSH session log"
 msgstr "Folder untuk log sesi SSH"
 
-#: src/remmina_ssh_plugin.c:1431
+#: src/remmina_ssh_plugin.c:1450
 msgid "Filename for SSH session log"
 msgstr "Nama berkas untuk log sesi SSH"
 
-#: src/remmina_ssh_plugin.c:1432
+#: src/remmina_ssh_plugin.c:1451
 msgid "Log SSH session when exiting Remmina"
 msgstr "Log sesi SSH ketika keluar Remmina"
 
-#: src/remmina_ssh_plugin.c:1433
+#: src/remmina_ssh_plugin.c:1452
 msgid "Audible terminal bell"
 msgstr "Bel terminal diperdengarkan"
 
-#: src/remmina_ssh_plugin.c:1434
+#: src/remmina_ssh_plugin.c:1453
 msgid "SSH compression"
 msgstr "Kompresi SSH"
 
-#: src/remmina_ssh_plugin.c:1435
+#: src/remmina_ssh_plugin.c:1454
 msgid "Don't remember passwords"
 msgstr "Jangan ingat kata sandi"
 
-#: src/remmina_ssh_plugin.c:1436
+#: src/remmina_ssh_plugin.c:1455
 msgid "Strict host key checking"
 msgstr "Pemeriksaan ketat kunci host"
 
-#: src/remmina_ssh_plugin.c:1450
+#: src/remmina_ssh_plugin.c:1469
 msgid "SSH - Secure Shell"
 msgstr "SSH - Secure Shell"
 
@@ -471,11 +472,11 @@ msgstr "Pilih berkas untuk diunggah"
 msgid "Upload folder"
 msgstr "Folder unggah"
 
-#: src/remmina_ftp_client.c:649 src/remmina_ftp_client.c:771
+#: src/remmina_ftp_client.c:649 src/remmina_ftp_client.c:763
 msgid "Download"
 msgstr "Unduh"
 
-#: src/remmina_ftp_client.c:656 src/remmina_ftp_client.c:782
+#: src/remmina_ftp_client.c:656 src/remmina_ftp_client.c:770
 msgid "Upload"
 msgstr "Unggah"
 
@@ -483,77 +484,77 @@ msgstr "Unggah"
 msgid "_Delete"
 msgstr "_Hapus"
 
-#: src/remmina_ftp_client.c:750
+#: src/remmina_ftp_client.c:748
 msgid "Home"
 msgstr "Home"
 
-#: src/remmina_ftp_client.c:752
+#: src/remmina_ftp_client.c:749
 msgid "Go to home folder"
 msgstr "Ke beranda"
 
-#: src/remmina_ftp_client.c:757
+#: src/remmina_ftp_client.c:753
 msgid "Up"
 msgstr "Naik"
 
-#: src/remmina_ftp_client.c:759
+#: src/remmina_ftp_client.c:754
 msgid "Go to parent folder"
 msgstr "Ke folder induk"
 
-#: src/remmina_ftp_client.c:764 plugins/vnc/vnc_plugin.c:1936
+#: src/remmina_ftp_client.c:758 plugins/vnc/vnc_plugin.c:1936
 #: plugins/rdp/rdp_plugin.c:2613
 msgid "Refresh"
 msgstr "Segarkan"
 
-#: src/remmina_ftp_client.c:766
+#: src/remmina_ftp_client.c:759
 msgid "Refresh current folder"
 msgstr "Segarkan folder saat ini"
 
-#: src/remmina_ftp_client.c:773
+#: src/remmina_ftp_client.c:764
 msgid "Download from server"
 msgstr "Unduh dari server"
 
-#: src/remmina_ftp_client.c:784
+#: src/remmina_ftp_client.c:771
 msgid "Upload to server"
 msgstr "Unggah ke server"
 
-#: src/remmina_ftp_client.c:791 data/ui/remmina_main.glade:203
+#: src/remmina_ftp_client.c:775 data/ui/remmina_main.glade:203
 msgid "Delete"
 msgstr "Hapus"
 
-#: src/remmina_ftp_client.c:793
+#: src/remmina_ftp_client.c:776
 msgid "Delete files on server"
 msgstr "Hapus berkas di server"
 
-#: src/remmina_ftp_client.c:921 src/remmina_ftp_client.c:990
+#: src/remmina_ftp_client.c:905 src/remmina_ftp_client.c:974
 msgid "Filename"
 msgstr "Nama Berkas"
 
-#: src/remmina_ftp_client.c:934 src/remmina_ftp_client.c:1019
+#: src/remmina_ftp_client.c:918 src/remmina_ftp_client.c:1003
 msgid "Size"
 msgstr "Ukuran"
 
-#: src/remmina_ftp_client.c:942
+#: src/remmina_ftp_client.c:926
 msgid "User"
 msgstr "Pengguna"
 
-#: src/remmina_ftp_client.c:948 src/remmina_file_editor.c:1514
+#: src/remmina_ftp_client.c:932 src/remmina_file_editor.c:1514
 #: data/ui/remmina_main.glade:471 data/ui/remmina_mpc.glade:115
 msgid "Group"
 msgstr "Grup"
 
-#: src/remmina_ftp_client.c:954
+#: src/remmina_ftp_client.c:938
 msgid "Permission"
 msgstr "Izin"
 
-#: src/remmina_ftp_client.c:1006 plugins/rdp/rdp_plugin.c:2438
+#: src/remmina_ftp_client.c:990 plugins/rdp/rdp_plugin.c:2438
 msgid "Remote"
 msgstr "Remote"
 
-#: src/remmina_ftp_client.c:1013 plugins/rdp/rdp_plugin.c:2437
+#: src/remmina_ftp_client.c:997 plugins/rdp/rdp_plugin.c:2437
 msgid "Local"
 msgstr "Lokal"
 
-#: src/remmina_ftp_client.c:1027
+#: src/remmina_ftp_client.c:1011
 msgid "Progress"
 msgstr "Kemajuan"
 
@@ -1098,19 +1099,19 @@ msgstr "Berkas Sertifikat Klien"
 msgid "Client Certificate Key"
 msgstr "Kunci Sertifikat Klien"
 
-#: src/remmina_sftp_plugin.c:322
+#: src/remmina_sftp_plugin.c:323
 msgid "Show Hidden Files"
 msgstr "Tampilkan Berkas Tersembunyi"
 
-#: src/remmina_sftp_plugin.c:324
+#: src/remmina_sftp_plugin.c:325
 msgid "Overwrite all files"
 msgstr "Timpa semua berkas"
 
-#: src/remmina_sftp_plugin.c:326
+#: src/remmina_sftp_plugin.c:327
 msgid "Resume all file transfers"
 msgstr "Lanjutkan semua transfer berkas"
 
-#: src/remmina_sftp_plugin.c:357
+#: src/remmina_sftp_plugin.c:359
 msgid "SFTP - Secure File Transfer"
 msgstr "SFTP - Secure File Transfer"
 
