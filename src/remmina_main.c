@@ -755,11 +755,12 @@ void remmina_main_on_action_connection_new(GSimpleAction *action, GVariant *para
 }
 
 static gboolean remmina_main_search_key_event (GtkWidget *search_entry, GdkEventKey *event, gpointer user_data)
+
 {
 	TRACE_CALL(__func__);
 	if (event->keyval == GDK_KEY_Escape) {
 		gtk_entry_set_text(remminamain->entry_quick_connect_server, "");
-		gtk_search_bar_set_search_mode(remminamain->search_bar, FALSE);
+		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(RM_GET_OBJECT("search_toggle")), FALSE);
 		return TRUE;
 	}
 	return FALSE;
@@ -1172,13 +1173,21 @@ void remmina_main_on_action_collapse(GSimpleAction *action, GVariant *param, gpo
 void remmina_main_on_action_search_toggle(GSimpleAction *action, GVariant *param, gpointer data)
 {
 	TRACE_CALL(__func__);
-	if (gtk_toggle_button_get_active(remminamain->search_toggle)) {
-		gtk_search_bar_set_search_mode(remminamain->search_bar, TRUE);
+	REMMINA_DEBUG("Search toggle triggered");
+	gboolean toggle_status = gtk_toggle_button_get_active(remminamain->search_toggle);
+	gtk_search_bar_set_search_mode(remminamain->search_bar, toggle_status);
+	if (toggle_status) {
+		REMMINA_DEBUG("Search toggle is active");
 		gtk_widget_grab_focus (GTK_WIDGET(remminamain->entry_quick_connect_server));
 	} else
-		gtk_search_bar_set_search_mode(remminamain->search_bar, FALSE);
+		REMMINA_DEBUG("Search toggle is not active");
 }
 
+void remmina_main_on_accel_search_toggle(RemminaMain *remminamain)
+{
+	TRACE_CALL(__func__);
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(remminamain->search_toggle), TRUE);
+}
 
 void remmina_main_on_action_expand(GSimpleAction *action, GVariant *param, gpointer data)
 {
@@ -1445,7 +1454,8 @@ GtkWidget *remmina_main_new(void)
 	gtk_accel_group_connect(accel_group, GDK_KEY_P, GDK_CONTROL_MASK, 0,
 				g_cclosure_new_swap(G_CALLBACK(remmina_main_on_accel_application_preferences), NULL, NULL));
 	gtk_accel_group_connect(accel_group, GDK_KEY_F, GDK_CONTROL_MASK, 0,
-				g_cclosure_new_swap(G_CALLBACK(remmina_main_on_action_search_toggle), NULL, NULL));
+				//g_cclosure_new_swap(G_CALLBACK(remmina_main_on_action_search_toggle), NULL, NULL));
+				g_cclosure_new_swap(G_CALLBACK(remmina_main_on_accel_search_toggle), remminamain, NULL));
 
 	/* Connect signals */
 	gtk_builder_connect_signals(remminamain->builder, NULL);
