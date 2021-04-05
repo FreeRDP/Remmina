@@ -1236,14 +1236,18 @@ remmina_ssh_init_session(RemminaSSH *ssh)
 		REMMINA_DEBUG("Setting SSH_OPTIONS_HOST to ssh->tunnel_entrance_host is 127.0.0.1,");
 		ssh_options_set(ssh->session, SSH_OPTIONS_HOST, ssh->tunnel_entrance_host);
 	}
-	rc = ssh_options_get(ssh->session, SSH_OPTIONS_USER, &parsed_config);
-	if (rc == SSH_OK) {
-		ssh->user = g_strdup(parsed_config);
-		ssh_string_free_char(parsed_config);
-	} else {
-		REMMINA_DEBUG("Parsing ssh_config for SSH_OPTIONS_USER returned an error: %s", ssh_get_error(ssh->session));
-	}
-	ssh_options_set(ssh->session, SSH_OPTIONS_USER, ssh->user);
+	if (!ssh->user || *ssh->user == 0) {
+    rc = ssh_options_get(ssh->session, SSH_OPTIONS_USER, &parsed_config);
+    if (rc == SSH_OK) {
+      if (ssh->user)
+        g_free(ssh->user);
+      ssh->user = g_strdup(parsed_config);
+      ssh_string_free_char(parsed_config);
+    } else {
+      REMMINA_DEBUG("Parsing ssh_config for SSH_OPTIONS_USER returned an error: %s", ssh_get_error(ssh->session));
+    }
+  }
+  ssh_options_set(ssh->session, SSH_OPTIONS_USER, ssh->user);
 	REMMINA_DEBUG("SSH_OPTIONS_USER is now %s", ssh->user);
 
 	/* SSH_OPTIONS_PROXYCOMMAND */
