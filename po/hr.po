@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-04-05 20:48+0000\n"
-"PO-Revision-Date: 2021-04-07 03:57+0000\n"
+"PO-Revision-Date: 2021-04-08 09:26+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/remmina/remmina/"
 "hr/>\n"
@@ -2170,7 +2170,7 @@ msgstr "GFX RFX (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2385
 msgid "GFX RFX Progressive (32 bpp)"
-msgstr "GFX RFX Progressive (32 bpp)"
+msgstr "GFX RFX progresivno (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2386
 msgid "RemoteFX (32 bpp)"
@@ -2341,6 +2341,16 @@ msgid ""
 "  • 270 (portrait flipped)\n"
 "\n"
 msgstr ""
+"Zarezima odvojen popis ID-a monitora i položaji radnih površina:\n"
+"  • [<id>: <položaji-u-stupnjevima>,]\n"
+"  • 0,1,2,3\n"
+"  • 0:270,1:90\n"
+"Položaji se zadaju u stupnjevima, ispravne vrijednosti su:\n"
+"  • 0 (ležeći)\n"
+"  • 90 (uspravno)\n"
+"  • 180 (ležeći preokrenuto)\n"
+"  • 270 (uspravno preokrenuto)\n"
+"\n"
 
 #: plugins/rdp/rdp_plugin.c:2535
 msgid "Left-handed mouse support"
@@ -2656,7 +2666,7 @@ msgstr "Razmjer veličine uređaja %"
 
 #: plugins/rdp/rdp_settings.c:576
 msgid "Desktop orientation"
-msgstr "Orijentacija radne povšine"
+msgstr "Položaj radne površine"
 
 #: plugins/rdp/rdp_event.c:332
 #, c-format
@@ -2964,6 +2974,8 @@ msgid ""
 "If a GTK theme includes a dark variant, it will be used instead of the "
 "configured theme."
 msgstr ""
+"Ako GTK tema uključuje tamnu varijantu, ona će se koristiti umjesto "
+"konfigurirane teme."
 
 #: data/ui/remmina_unlock.glade:60
 msgid "Unlock"
@@ -3665,24 +3677,18 @@ msgstr "Boja podebljanog teksta"
 
 #: data/ui/remmina_preferences.glade:2508
 #: data/ui/remmina_preferences.glade:2548
-#, fuzzy
-#| msgid "Bright colours"
 msgid "Highlight colour"
-msgstr "Svijetle boje"
+msgstr "Boja isticanja"
 
 #: data/ui/remmina_preferences.glade:2521
 #: data/ui/remmina_preferences.glade:2563
-#, fuzzy
-#| msgid "Foreground colour"
 msgid "Highlight foreground colour"
-msgstr "Prednja boja"
+msgstr "Prednja boja isticanja"
 
 #: data/ui/remmina_preferences.glade:2534
 #: data/ui/remmina_preferences.glade:2578
-#, fuzzy
-#| msgid "Foreground colour"
 msgid "Cursor foreground colour"
-msgstr "Prednja boja"
+msgstr "Prednja boja pokazivača"
 
 #: data/ui/remmina_preferences.glade:2597
 msgid "Terminal"
