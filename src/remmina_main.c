@@ -766,6 +766,16 @@ static gboolean remmina_main_search_key_event (GtkWidget *search_entry, GdkEvent
 	return FALSE;
 }
 
+static gboolean remmina_main_tree_row_activated (GtkTreeView *tree, GtkTreePath *path, GtkTreeViewColumn *column, gpointer user_data)
+{
+	TRACE_CALL(__func__);
+	if (gtk_tree_view_row_expanded(tree, path))
+		gtk_tree_view_collapse_row(tree, path);
+	else
+		gtk_tree_view_expand_row(tree, path, FALSE);
+	return TRUE;
+}
+
 void remmina_main_on_view_toggle()
 {
 	if (gtk_toggle_button_get_active(remminamain->view_toggle_button)) {
@@ -1438,6 +1448,7 @@ GtkWidget *remmina_main_new(void)
 	remminamain->statusbar_main = GTK_STATUSBAR(RM_GET_OBJECT("statusbar_main"));
 	/* signals */
 	g_signal_connect (remminamain->entry_quick_connect_server, "key-release-event", G_CALLBACK (remmina_main_search_key_event), NULL);
+	g_signal_connect (remminamain->tree_files_list, "row-activated", G_CALLBACK (remmina_main_tree_row_activated), NULL);
 	/* Non widget objects */
 	actions = g_simple_action_group_new();
 	g_action_map_add_action_entries(G_ACTION_MAP(actions), app_actions, G_N_ELEMENTS(app_actions), remminamain->window);
