@@ -79,6 +79,8 @@ static gboolean remmina_scrolled_viewport_motion_timeout(gpointer data)
 	GtkAdjustment *adj;
 	gdouble value;
 
+	if (!g_main_context_find_source_by_funcs_user_data(NULL, (GSourceFuncs *) remmina_scrolled_viewport_motion_timeout, data))
+		return FALSE;
 	if (!REMMINA_IS_SCROLLED_VIEWPORT(data))
 		return FALSE;
 	if (!GTK_IS_BIN(data))
