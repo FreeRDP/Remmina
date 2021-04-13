@@ -1323,11 +1323,16 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 	/* Workaround for FreeRDP issue #5417: in GFX AVC modes we can't go under
 	 * AVC_MIN_DESKTOP_WIDTH x AVC_MIN_DESKTOP_HEIGHT */
 	if (freerdp_settings_get_bool(rfi->settings, FreeRDP_SupportGraphicsPipeline) && freerdp_settings_get_bool(rfi->settings, FreeRDP_GfxH264)) {
-		if (freerdp_settings_get_bool(rfi->settings, FreeRDP_DesktopWidth < AVC_MIN_DESKTOP_WIDTH))
-			freerdp_settings_set_bool(rfi->settings, FreeRDP_DesktopWidth, AVC_MIN_DESKTOP_WIDTH);
-		if (freerdp_settings_get_bool(rfi->settings, FreeRDP_DesktopHeight < AVC_MIN_DESKTOP_HEIGHT))
-			freerdp_settings_set_bool(rfi->settings, FreeRDP_DesktopHeight, AVC_MIN_DESKTOP_HEIGHT);
-	}
+          if (freerdp_settings_get_uint32(rfi->settings, FreeRDP_DesktopWidth) <
+              AVC_MIN_DESKTOP_WIDTH)
+            freerdp_settings_set_uint32(rfi->settings, FreeRDP_DesktopWidth,
+                                        AVC_MIN_DESKTOP_WIDTH);
+          if (freerdp_settings_get_uint32(rfi->settings,
+                                          FreeRDP_DesktopHeight) <
+              AVC_MIN_DESKTOP_HEIGHT)
+            freerdp_settings_set_uint32(rfi->settings, FreeRDP_DesktopHeight,
+                                        AVC_MIN_DESKTOP_HEIGHT);
+        }
 
 	/* Workaround for FreeRDP issue #5119. This will make our horizontal resolution
 	 * an even value, but it will add a vertical black 1 pixel line on the
