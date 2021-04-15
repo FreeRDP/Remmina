@@ -399,9 +399,9 @@ static void remmina_plugin_vnc_update_quality(rfbClient *cl, gint quality)
 		break;
 	case 0:
 	default:
+		// bpp8 and tight encoding is not supported in libvnc
 		cl->appData.useBGR233 = 1;
-		cl->appData.encodingsString = "tight zrle ultra copyrect hextile zlib corre rre raw";
-		cl->appData.compressLevel = 9;
+		cl->appData.encodingsString = "copyrect zrle ultra zlib hextile corre rre raw";
 		cl->appData.qualityLevel = 1;
 		break;
 	}
