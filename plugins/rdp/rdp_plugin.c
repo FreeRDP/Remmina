@@ -1248,12 +1248,23 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 	rdpChannels *channels;
 	gchar *gateway_host;
 	gint gateway_port;
+	gchar *datapath;
 
 	gint desktopOrientation, desktopScaleFactor, deviceScaleFactor;
 
 	channels = rfi->instance->context->channels;
 
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
+
+	datapath = g_build_path("/",
+				g_path_get_dirname(remmina_plugin_service->file_get_path(remminafile)),
+				"RDP",
+				NULL);
+	REMMINA_PLUGIN_DEBUG("RDP data path is %s", datapath);
+
+	if (datapath) {
+		freerdp_settings_set_string(rfi->settings, FreeRDP_ConfigPath, datapath);
+	}
 
 #if defined(PROXY_TYPE_IGNORE)
 	if (!remmina_plugin_service->file_get_int(remminafile, "useproxyenv", FALSE) ? TRUE : FALSE) {
