@@ -895,9 +895,15 @@ static void remmina_plugin_vnc_rfb_bell(rfbClient *cl)
 {
 	TRACE_CALL(__func__);
 	RemminaProtocolWidget *gp;
+	RemminaFile *remminafile;
 	GdkWindow *window;
 
 	gp = (RemminaProtocolWidget *)(rfbClientGetClientData(cl, NULL));
+	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
+
+	if (remmina_plugin_service->file_get_int(remminafile, "disableserverbell", FALSE))
+		return;
+
 	window = gtk_widget_get_window(GTK_WIDGET(gp));
 
 	if (window)
@@ -1920,7 +1926,8 @@ static const RemminaProtocolSetting remmina_plugin_vnc_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableclipboard",	 N_("Turn off clipboard sync"),	 TRUE,	NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableencryption",	 N_("Turn off encryption"),	 FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableserverinput",	 N_("Prevent local interaction on the server"),	 TRUE,	NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disablepasswordstoring", N_("Forget passwords after use"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableserverbell",	 N_("Ignore remote bell messages"),	 FALSE,	NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disablepasswordstoring", N_("Forget passwords after use"), TRUE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END,   NULL,			 NULL,				 FALSE, NULL, NULL }
 };
 
