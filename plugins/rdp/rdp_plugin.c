@@ -2510,7 +2510,7 @@ static gchar network_tooltip[] =
 	   "If \"Auto-detect\" fails, choose the most appropriate option in the list.\n");
 
 static gchar monitorids_tooltip[] =
-	N_("Comma separated list of monitor IDs and desktop orientations:\n"
+	N_("Comma-separated list of monitor IDs and desktop orientations:\n"
 	   "  • [<id>:<orientation-in-degrees>,]\n"
 	   "  • 0,1,2,3\n"
 	   "  • 0:270,1:90\n"
@@ -2540,7 +2540,7 @@ static const RemminaProtocolSetting remmina_rdp_basic_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "left-handed", N_("Left-handed mouse support"), FALSE, NULL,		  N_("Swap left and right mouse buttons for left-handed mouse support")	},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "multimon",	   N_("Enable multi monitor"),	  TRUE, NULL,		  NULL										},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "span",	   N_("Span screen over multiple monitors"),	  TRUE, NULL,		  NULL						      },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "monitorids",  N_("Monitor ID list"),	  FALSE, NULL,		  monitorids_tooltip },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "monitorids",  N_("List monitor IDs"),	  FALSE, NULL,		  monitorids_tooltip },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION, "resolution",  NULL,			  FALSE, NULL,		  NULL						      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	    "colordepth",  N_("Colour depth"),		  FALSE, colordepth_list, NULL						      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	    "network",	   N_("Network connection type"), FALSE, network_list,	  network_tooltip				      },
