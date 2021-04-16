@@ -340,7 +340,7 @@ void remmina_public_get_server_port(const gchar *server, gint defaultport, gchar
 	const gchar *nul_terminated_server = NULL;
 	if (server != NULL) {
 		GNetworkAddress *address;
-		GError *err;
+		GError *err = NULL;
 
 		nul_terminated_server = g_strdup (server);
 		g_debug ("(%s) - Parsing server: %s, default port: %d", __func__, server, defaultport);
@@ -348,10 +348,27 @@ void remmina_public_get_server_port(const gchar *server, gint defaultport, gchar
 
 		if (address == NULL) {
 			g_debug ("(%s) - Error converting server string: %s, with error: %s", __func__, nul_terminated_server, err->message);
+			/* We can have a STRING:INT, that cannot be resolved, but it's valid */
+			if (g_utf8_strchr (server, -1, ':')) {
+				gchar **items = g_strsplit (server, ":", -1);
+				if (g_strv_length (items) == 2) {
+					*host = g_strdup(items[0]);
+					g_debug ("(%s) - host: %s", __func__, *host);
+					*port = atoi(items[1]);
+					g_debug ("(%s) - host: %d", __func__, *port);
+				}
+				 g_strfreev(items);
+				 if (err)
+					 g_error_free(err);
+				 return;
+			} else
+				g_debug ("(%s) - Parsing server: %s, default port: %d failed", __func__, server, defaultport);
 		}
 
 		*host = g_strdup(g_network_address_get_hostname (address));
 		*port = g_network_address_get_port (address);
+		if (err)
+			g_error_free(err);
 	} else
 		*host = NULL;
 
