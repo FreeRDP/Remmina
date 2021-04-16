@@ -686,6 +686,18 @@ static void remmina_plugin_vnc_rfb_updatefb(rfbClient *cl, int x, int y, int w, 
 	remmina_plugin_vnc_queue_draw_area(gp, x, y, w, h);
 }
 
+static void remmina_plugin_vnc_rfb_finished(rfbClient *cl)
+{
+	TRACE_CALL(__func__);
+	REMMINA_PLUGIN_DEBUG("FinishedFrameBufferUpdate");
+}
+
+static void remmina_plugin_vnc_rfb_led_state(rfbClient* cl, int value, int pad)
+{
+	TRACE_CALL(__func__);
+	REMMINA_PLUGIN_DEBUG("Led state - value: %d, pad: %d", value, pad);
+}
+
 static gboolean remmina_plugin_vnc_queue_cuttext(RemminaPluginVncCuttextParam *param)
 {
 	TRACE_CALL(__func__);
@@ -1173,16 +1185,34 @@ static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 			break;
 		}
 		cl->MallocFrameBuffer = remmina_plugin_vnc_rfb_allocfb;
-		cl->canHandleNewFBSize = TRUE;
+		cl->GotFrameBufferUpdate = remmina_plugin_vnc_rfb_updatefb;
+		/**
+		 * @fixme we have to implement FinishedFrameBufferUpdate
+		 * This is to know when the server has finished to send a batch of fram buffer
+		 * updates.
+		 * cl->FinishedFrameBufferUpdate = remmina_plugin_vnc_rfb_finished;
+		 */
+		cl->FinishedFrameBufferUpdate = remmina_plugin_vnc_rfb_finished;
 		cl->GetPassword = remmina_plugin_vnc_rfb_password;
 		cl->GetCredential = remmina_plugin_vnc_rfb_credential;
-		cl->GotFrameBufferUpdate = remmina_plugin_vnc_rfb_updatefb;
+		cl->GotCursorShape = remmina_plugin_vnc_rfb_cursor_shape;
+		/**
+		 * @fixme we have to implement HandleKeyboardLedState
+		 * cl->HandleKeyboardLedState = remmina_plugin_vnc_rfb_led_state
+		 */
+		cl->HandleKeyboardLedState = remmina_plugin_vnc_rfb_led_state;
+		cl->HandleTextChat = remmina_plugin_vnc_rfb_chat;
 		cl->GotXCutText = (
 			remmina_plugin_service->file_get_int(remminafile, "disableclipboard", FALSE) ?
 			NULL : remmina_plugin_vnc_rfb_cuttext);
-		cl->GotCursorShape = remmina_plugin_vnc_rfb_cursor_shape;
 		cl->Bell = remmina_plugin_vnc_rfb_bell;
-		cl->HandleTextChat = remmina_plugin_vnc_rfb_chat;
+		/**
+		 * @fixme we have to implement HandleXvpMsg
+		 * cl->HandleXvpMsg = remmina_plugin_vnc_rfb_handle_xvp;
+		 */
+
+
+		cl->canHandleNewFBSize = TRUE;
 		rfbClientSetClientData(cl, NULL, gp);
 
 		if (host[0] == '\0') {
