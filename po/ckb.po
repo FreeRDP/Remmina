@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Remmina v1.4.6\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-04-15 12:09+0000\n"
+"POT-Creation-Date: 2021-04-16 15:03+0000\n"
 "PO-Revision-Date: 2021-01-31 00:32+0000\n"
 "Last-Translator: Kurd As <kurd68587@gmail.com>\n"
 "Language-Team: Kurdish (Central) <https://hosted.weblate.org/projects/"
@@ -301,14 +301,14 @@ msgstr "جۆری ڕێگەپێدان"
 
 #: src/remmina_ssh_plugin.c:1409 src/remmina_message_panel.c:330
 #: src/remmina_sftp_plugin.c:345 src/remmina_file_editor.c:960
-#: plugins/www/www_plugin.c:871 plugins/vnc/vnc_plugin.c:1879
-#: plugins/vnc/vnc_plugin.c:1899 plugins/rdp/rdp_plugin.c:2548
+#: plugins/www/www_plugin.c:871 plugins/vnc/vnc_plugin.c:1917
+#: plugins/vnc/vnc_plugin.c:1937 plugins/rdp/rdp_plugin.c:2548
 #: plugins/nx/nx_plugin.c:730 data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr "ناوی بەکارهێنەر"
 
-#: src/remmina_ssh_plugin.c:1410 plugins/vnc/vnc_plugin.c:1880
-#: plugins/vnc/vnc_plugin.c:1900 plugins/spice/spice_plugin.c:576
+#: src/remmina_ssh_plugin.c:1410 plugins/vnc/vnc_plugin.c:1918
+#: plugins/vnc/vnc_plugin.c:1938 plugins/spice/spice_plugin.c:576
 #: plugins/nx/nx_plugin.c:731
 msgid "User password"
 msgstr "وشەی تێپەڕبوونی بەکارهێنەر"
@@ -440,11 +440,11 @@ msgid_plural "%d passwords changed."
 msgstr[0] "‫%d وشەی تێپەڕبوون گؤڕا."
 msgstr[1] "‏‫%d وشەی تێپەڕبوون گۆڕا."
 
-#: src/remmina_public.c:640
+#: src/remmina_public.c:657
 msgid "Please enter format 'widthxheight'."
 msgstr "تکایە شێپێدان بنووسە ‘widthxheight’."
 
-#: src/remmina_public.c:662
+#: src/remmina_public.c:679
 msgid "Change security settings"
 msgstr "گۆڕینی ڕێکخستنەکانی پاراستن"
 
@@ -499,7 +499,7 @@ msgstr "سەرەوە"
 msgid "Go to parent folder"
 msgstr "بڕۆ بۆ بوخچەی سەرتا"
 
-#: src/remmina_ftp_client.c:758 plugins/vnc/vnc_plugin.c:1936
+#: src/remmina_ftp_client.c:758 plugins/vnc/vnc_plugin.c:1975
 #: plugins/rdp/rdp_plugin.c:2629
 msgid "Refresh"
 msgstr "نوێکردنەوە"
@@ -1711,7 +1711,7 @@ msgstr "پشتگیری دەنگی HTML بکە کار"
 msgid "Ignore TLS errors"
 msgstr "هەڵەکانی TLS پشتگوێبخە"
 
-#: plugins/www/www_plugin.c:896 plugins/vnc/vnc_plugin.c:1923
+#: plugins/www/www_plugin.c:896 plugins/vnc/vnc_plugin.c:1962
 #: plugins/spice/spice_plugin.c:604 plugins/rdp/rdp_plugin.c:2610
 #: plugins/nx/nx_plugin.c:752
 msgid "Forget passwords after use"
@@ -1733,118 +1733,122 @@ msgstr "بیرگەی وشەی تێپەڕبوونی پارێزراو لە کلی�
 msgid "Hello, World!"
 msgstr "سڵاو، جیهان!"
 
-#: plugins/vnc/vnc_plugin.c:753
+#: plugins/vnc/vnc_plugin.c:765
 msgid "Enter VNC password"
 msgstr "وشەی تێپەڕبوونی VNC بنووسە"
 
-#: plugins/vnc/vnc_plugin.c:806
+#: plugins/vnc/vnc_plugin.c:818
 msgid "Enter VNC authentication credentials"
 msgstr "ڕێگەپێدانەکانی VNC بنووسە"
 
-#: plugins/vnc/vnc_plugin.c:909
+#: plugins/vnc/vnc_plugin.c:929
 msgid "Unable to connect to VNC server"
 msgstr "نەتوانرا پەیوەست بێت بە ڕاژەی VNCیەوە‬"
 
-#: plugins/vnc/vnc_plugin.c:910
+#: plugins/vnc/vnc_plugin.c:930
 #, c-format
 msgid "Couldn’t convert '%s' to host address"
 msgstr "نەتوانرا ‘%s’ بگۆڕرێت بۆ ناونیشانی خانەخوێ"
 
-#: plugins/vnc/vnc_plugin.c:911
+#: plugins/vnc/vnc_plugin.c:931
 #, c-format
 msgid "VNC connection failed: %s"
 msgstr "پەیوەندی VNC سەرکەوتوو نەبوو: %s"
 
-#: plugins/vnc/vnc_plugin.c:912
+#: plugins/vnc/vnc_plugin.c:932
 msgid "Your connection has been rejected."
 msgstr "پەیوەندیگرتنەکەت ڕەتکرایەوە."
 
-#: plugins/vnc/vnc_plugin.c:938
+#: plugins/vnc/vnc_plugin.c:958
 #, c-format
 msgid "The VNC server requested an unknown authentication method. %s"
 msgstr "ڕاژەی VNC داوای ڕێگەپێدانێکی نەزانراوی کرد. %s"
 
-#: plugins/vnc/vnc_plugin.c:940
+#: plugins/vnc/vnc_plugin.c:960
 msgid "Please retry after turning on encryption for this profile."
 msgstr ""
 "تکایە دووبارە هەوڵ بدەرەوە دووای چالاک کردنی نهێنیکردن بۆ ئەم پرۆفایلە."
 
-#: plugins/vnc/vnc_plugin.c:1850 plugins/rdp/rdp_plugin.c:2403
+#: plugins/vnc/vnc_plugin.c:1888 plugins/rdp/rdp_plugin.c:2403
 msgid "True colour (32 bpp)"
 msgstr "ڕەنگی ڕاستەقینە (32 bpp)"
 
-#: plugins/vnc/vnc_plugin.c:1851 plugins/rdp/rdp_plugin.c:2405
+#: plugins/vnc/vnc_plugin.c:1889 plugins/rdp/rdp_plugin.c:2405
 msgid "High colour (16 bpp)"
 msgstr "ڕەنگی بەرز (16 bpp)"
 
-#: plugins/vnc/vnc_plugin.c:1852 plugins/rdp/rdp_plugin.c:2407
+#: plugins/vnc/vnc_plugin.c:1890 plugins/rdp/rdp_plugin.c:2407
 msgid "256 colours (8 bpp)"
 msgstr "٢٥٦ ڕەنگ (8 bpp)"
 
-#: plugins/vnc/vnc_plugin.c:1859 plugins/rdp/rdp_plugin.c:2431
+#: plugins/vnc/vnc_plugin.c:1897 plugins/rdp/rdp_plugin.c:2431
 #: plugins/rdp/rdp_settings.c:273 plugins/nx/nx_plugin.c:713
 msgid "Best (slowest)"
 msgstr "باشترین (خاوترین)"
 
-#: plugins/vnc/vnc_plugin.c:1860 plugins/rdp/rdp_plugin.c:2430
+#: plugins/vnc/vnc_plugin.c:1898 plugins/rdp/rdp_plugin.c:2430
 #: plugins/rdp/rdp_settings.c:271 plugins/nx/nx_plugin.c:712
 msgid "Good"
 msgstr "باش"
 
-#: plugins/vnc/vnc_plugin.c:1861 plugins/rdp/rdp_plugin.c:2429
+#: plugins/vnc/vnc_plugin.c:1899 plugins/rdp/rdp_plugin.c:2429
 #: plugins/rdp/rdp_settings.c:269 plugins/nx/nx_plugin.c:711
 msgid "Medium"
 msgstr "ناوەند"
 
-#: plugins/vnc/vnc_plugin.c:1862 plugins/rdp/rdp_plugin.c:2428
+#: plugins/vnc/vnc_plugin.c:1900 plugins/rdp/rdp_plugin.c:2428
 #: plugins/rdp/rdp_settings.c:267 plugins/nx/nx_plugin.c:710
 msgid "Poor (fastest)"
 msgstr "لاواز (خێراترین)"
 
-#: plugins/vnc/vnc_plugin.c:1878
+#: plugins/vnc/vnc_plugin.c:1916
 msgid "Repeater"
 msgstr "دووبارەکەرەوە"
 
-#: plugins/vnc/vnc_plugin.c:1881 plugins/vnc/vnc_plugin.c:1901
+#: plugins/vnc/vnc_plugin.c:1919 plugins/vnc/vnc_plugin.c:1939
 #: plugins/xdmcp/xdmcp_plugin.c:369 plugins/rdp/rdp_plugin.c:2556
 msgid "Colour depth"
 msgstr "قوڵی ڕەنگ"
 
-#: plugins/vnc/vnc_plugin.c:1882 plugins/vnc/vnc_plugin.c:1902
+#: plugins/vnc/vnc_plugin.c:1920 plugins/vnc/vnc_plugin.c:1940
 #: plugins/rdp/rdp_plugin.c:2573 plugins/nx/nx_plugin.c:733
 msgid "Quality"
 msgstr "جۆرایه‌تی"
 
-#: plugins/vnc/vnc_plugin.c:1898
+#: plugins/vnc/vnc_plugin.c:1936
 msgid "Listen on port"
 msgstr "گوێگرتن لە پۆرت"
 
-#: plugins/vnc/vnc_plugin.c:1918
+#: plugins/vnc/vnc_plugin.c:1956
 msgid "Show remote cursor"
 msgstr "دیارکەری لەدوور پیشان بدە"
 
-#: plugins/vnc/vnc_plugin.c:1919 plugins/vnc/vnc_plugin.c:1934
+#: plugins/vnc/vnc_plugin.c:1957 plugins/vnc/vnc_plugin.c:1973
 #: plugins/spice/spice_plugin.c:607 plugins/spice/spice_plugin.c:615
 msgid "View only"
 msgstr "تەنها پیشاندان"
 
-#: plugins/vnc/vnc_plugin.c:1920 plugins/rdp/rdp_plugin.c:2607
+#: plugins/vnc/vnc_plugin.c:1958 plugins/rdp/rdp_plugin.c:2607
 msgid "Turn off clipboard sync"
 msgstr "کوژاندنەوەی هاوکاتگەری شوێنی لەبەرگیراوەکان"
 
-#: plugins/vnc/vnc_plugin.c:1921
+#: plugins/vnc/vnc_plugin.c:1959
 msgid "Turn off encryption"
 msgstr "نهێنیکردنی TLS بەکاربێنە"
 
-#: plugins/vnc/vnc_plugin.c:1922 plugins/vnc/vnc_plugin.c:1935
+#: plugins/vnc/vnc_plugin.c:1960 plugins/vnc/vnc_plugin.c:1974
 msgid "Prevent local interaction on the server"
 msgstr "ڕێگرتن لە کارلێکی ناوخۆیی لەسەر سێرڤەر"
 
-#: plugins/vnc/vnc_plugin.c:1937
+#: plugins/vnc/vnc_plugin.c:1961
+msgid "Ignore remote bell messages"
+msgstr ""
+
+#: plugins/vnc/vnc_plugin.c:1976
 msgid "Open Chat…"
 msgstr "چات بکەرەوە…"
 
-#: plugins/vnc/vnc_plugin.c:1938 plugins/spice/spice_plugin.c:617
+#: plugins/vnc/vnc_plugin.c:1977 plugins/spice/spice_plugin.c:617
 #: plugins/xdmcp/xdmcp_plugin.c:381 plugins/rdp/rdp_plugin.c:2633
 msgid "Send Ctrl+Alt+Delete"
 msgstr "ناردن Ctrl+Alt+Del"

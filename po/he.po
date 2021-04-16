@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-04-15 12:09+0000\n"
-"PO-Revision-Date: 2021-03-05 11:32+0000\n"
+"POT-Creation-Date: 2021-04-16 15:03+0000\n"
+"PO-Revision-Date: 2021-04-16 15:04+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/remmina/remmina/"
 "he/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Weblate 4.5.1-dev\n"
+"X-Generator: Weblate 4.6-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
 
 #: src/remmina_protocol_widget.c:283 src/remmina_sftp_plugin.c:328
@@ -300,14 +300,14 @@ msgstr "סוג אימות"
 
 #: src/remmina_ssh_plugin.c:1409 src/remmina_message_panel.c:330
 #: src/remmina_sftp_plugin.c:345 src/remmina_file_editor.c:960
-#: plugins/www/www_plugin.c:871 plugins/vnc/vnc_plugin.c:1879
-#: plugins/vnc/vnc_plugin.c:1899 plugins/rdp/rdp_plugin.c:2548
+#: plugins/www/www_plugin.c:871 plugins/vnc/vnc_plugin.c:1917
+#: plugins/vnc/vnc_plugin.c:1937 plugins/rdp/rdp_plugin.c:2548
 #: plugins/nx/nx_plugin.c:730 data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr "שם משתמש"
 
-#: src/remmina_ssh_plugin.c:1410 plugins/vnc/vnc_plugin.c:1880
-#: plugins/vnc/vnc_plugin.c:1900 plugins/spice/spice_plugin.c:576
+#: src/remmina_ssh_plugin.c:1410 plugins/vnc/vnc_plugin.c:1918
+#: plugins/vnc/vnc_plugin.c:1938 plugins/spice/spice_plugin.c:576
 #: plugins/nx/nx_plugin.c:731
 msgid "User password"
 msgstr "ססמת משתמש"
@@ -435,11 +435,11 @@ msgid_plural "%d passwords changed."
 msgstr[0] "ססמה אחת הוחלפה."
 msgstr[1] "%d ססמאות הוחלפו."
 
-#: src/remmina_public.c:640
+#: src/remmina_public.c:657
 msgid "Please enter format 'widthxheight'."
 msgstr "נא להקליד בצורה ‚רוחבxגובה’."
 
-#: src/remmina_public.c:662
+#: src/remmina_public.c:679
 msgid "Change security settings"
 msgstr "החלפת הגדרות אבטחה"
 
@@ -495,7 +495,7 @@ msgstr "מעבר לתיקיית הבית"
 msgid "Go to parent folder"
 msgstr "מעבר לתיקיית ההורה"
 
-#: src/remmina_ftp_client.c:758 plugins/vnc/vnc_plugin.c:1936
+#: src/remmina_ftp_client.c:758 plugins/vnc/vnc_plugin.c:1975
 #: plugins/rdp/rdp_plugin.c:2629
 msgid "Refresh"
 msgstr "רענון"
@@ -933,7 +933,7 @@ msgid ""
 "Unable to import:\n"
 "%s"
 msgstr ""
-"Unable to import:\n"
+"לא ניתן לייבא:\n"
 "%s"
 
 #: src/remmina_main.c:1003 data/ui/remmina_main.glade:291
@@ -1685,7 +1685,7 @@ msgstr "הפעלת תמיכה בשמע עם HTML5"
 msgid "Ignore TLS errors"
 msgstr "התעלמות משגיאות TLS"
 
-#: plugins/www/www_plugin.c:896 plugins/vnc/vnc_plugin.c:1923
+#: plugins/www/www_plugin.c:896 plugins/vnc/vnc_plugin.c:1962
 #: plugins/spice/spice_plugin.c:604 plugins/rdp/rdp_plugin.c:2610
 #: plugins/nx/nx_plugin.c:752
 msgid "Forget passwords after use"
@@ -1707,117 +1707,121 @@ msgstr "אחסון ססמאות מאובטח בצרור המפתחות של GNOM
 msgid "Hello, World!"
 msgstr "שלום עולם!"
 
-#: plugins/vnc/vnc_plugin.c:753
+#: plugins/vnc/vnc_plugin.c:765
 msgid "Enter VNC password"
 msgstr "נא להקליד ססמת VNC"
 
-#: plugins/vnc/vnc_plugin.c:806
+#: plugins/vnc/vnc_plugin.c:818
 msgid "Enter VNC authentication credentials"
 msgstr "נא להקליד פרטי אימות ל־VNC"
 
-#: plugins/vnc/vnc_plugin.c:909
+#: plugins/vnc/vnc_plugin.c:929
 msgid "Unable to connect to VNC server"
 msgstr "לא ניתן להתחבר לשרת ה־VNC"
 
-#: plugins/vnc/vnc_plugin.c:910
+#: plugins/vnc/vnc_plugin.c:930
 #, c-format
 msgid "Couldn’t convert '%s' to host address"
 msgstr "לא ניתן להמיר את '%s' לכתובת מארח"
 
-#: plugins/vnc/vnc_plugin.c:911
+#: plugins/vnc/vnc_plugin.c:931
 #, c-format
 msgid "VNC connection failed: %s"
 msgstr "חיבור ה־VNC נכשל: %s"
 
-#: plugins/vnc/vnc_plugin.c:912
+#: plugins/vnc/vnc_plugin.c:932
 msgid "Your connection has been rejected."
 msgstr "החיבור שלך נדחה."
 
-#: plugins/vnc/vnc_plugin.c:938
+#: plugins/vnc/vnc_plugin.c:958
 #, c-format
 msgid "The VNC server requested an unknown authentication method. %s"
 msgstr "שרת ה־VNC ביקש שיטת אימות בלתי מוכרת. %s"
 
-#: plugins/vnc/vnc_plugin.c:940
+#: plugins/vnc/vnc_plugin.c:960
 msgid "Please retry after turning on encryption for this profile."
 msgstr "נא לנסות שוב לאחר הפעלת הצפנה על הפרופיל הזה."
 
-#: plugins/vnc/vnc_plugin.c:1850 plugins/rdp/rdp_plugin.c:2403
+#: plugins/vnc/vnc_plugin.c:1888 plugins/rdp/rdp_plugin.c:2403
 msgid "True colour (32 bpp)"
 msgstr "צבע אמתי (‎32 bpp)"
 
-#: plugins/vnc/vnc_plugin.c:1851 plugins/rdp/rdp_plugin.c:2405
+#: plugins/vnc/vnc_plugin.c:1889 plugins/rdp/rdp_plugin.c:2405
 msgid "High colour (16 bpp)"
 msgstr "צבע איכותי (‎16 bpp)"
 
-#: plugins/vnc/vnc_plugin.c:1852 plugins/rdp/rdp_plugin.c:2407
+#: plugins/vnc/vnc_plugin.c:1890 plugins/rdp/rdp_plugin.c:2407
 msgid "256 colours (8 bpp)"
 msgstr "256 צבעים (‏‎8 bpp)"
 
-#: plugins/vnc/vnc_plugin.c:1859 plugins/rdp/rdp_plugin.c:2431
+#: plugins/vnc/vnc_plugin.c:1897 plugins/rdp/rdp_plugin.c:2431
 #: plugins/rdp/rdp_settings.c:273 plugins/nx/nx_plugin.c:713
 msgid "Best (slowest)"
 msgstr "מעולה (אטי ביותר)"
 
-#: plugins/vnc/vnc_plugin.c:1860 plugins/rdp/rdp_plugin.c:2430
+#: plugins/vnc/vnc_plugin.c:1898 plugins/rdp/rdp_plugin.c:2430
 #: plugins/rdp/rdp_settings.c:271 plugins/nx/nx_plugin.c:712
 msgid "Good"
 msgstr "טובה"
 
-#: plugins/vnc/vnc_plugin.c:1861 plugins/rdp/rdp_plugin.c:2429
+#: plugins/vnc/vnc_plugin.c:1899 plugins/rdp/rdp_plugin.c:2429
 #: plugins/rdp/rdp_settings.c:269 plugins/nx/nx_plugin.c:711
 msgid "Medium"
 msgstr "בינונית"
 
-#: plugins/vnc/vnc_plugin.c:1862 plugins/rdp/rdp_plugin.c:2428
+#: plugins/vnc/vnc_plugin.c:1900 plugins/rdp/rdp_plugin.c:2428
 #: plugins/rdp/rdp_settings.c:267 plugins/nx/nx_plugin.c:710
 msgid "Poor (fastest)"
 msgstr "גרועה (הכי מהיר)"
 
-#: plugins/vnc/vnc_plugin.c:1878
+#: plugins/vnc/vnc_plugin.c:1916
 msgid "Repeater"
 msgstr "ממסר"
 
-#: plugins/vnc/vnc_plugin.c:1881 plugins/vnc/vnc_plugin.c:1901
+#: plugins/vnc/vnc_plugin.c:1919 plugins/vnc/vnc_plugin.c:1939
 #: plugins/xdmcp/xdmcp_plugin.c:369 plugins/rdp/rdp_plugin.c:2556
 msgid "Colour depth"
 msgstr "עומק צבעים"
 
-#: plugins/vnc/vnc_plugin.c:1882 plugins/vnc/vnc_plugin.c:1902
+#: plugins/vnc/vnc_plugin.c:1920 plugins/vnc/vnc_plugin.c:1940
 #: plugins/rdp/rdp_plugin.c:2573 plugins/nx/nx_plugin.c:733
 msgid "Quality"
 msgstr "איכות"
 
-#: plugins/vnc/vnc_plugin.c:1898
+#: plugins/vnc/vnc_plugin.c:1936
 msgid "Listen on port"
 msgstr "האזנה לפתחה"
 
-#: plugins/vnc/vnc_plugin.c:1918
+#: plugins/vnc/vnc_plugin.c:1956
 msgid "Show remote cursor"
 msgstr "הצגת הסמן המרוחק"
 
-#: plugins/vnc/vnc_plugin.c:1919 plugins/vnc/vnc_plugin.c:1934
+#: plugins/vnc/vnc_plugin.c:1957 plugins/vnc/vnc_plugin.c:1973
 #: plugins/spice/spice_plugin.c:607 plugins/spice/spice_plugin.c:615
 msgid "View only"
 msgstr "צפייה בלבד"
 
-#: plugins/vnc/vnc_plugin.c:1920 plugins/rdp/rdp_plugin.c:2607
+#: plugins/vnc/vnc_plugin.c:1958 plugins/rdp/rdp_plugin.c:2607
 msgid "Turn off clipboard sync"
 msgstr "השבתת סנכרון לוח הגזירים"
 
-#: plugins/vnc/vnc_plugin.c:1921
+#: plugins/vnc/vnc_plugin.c:1959
 msgid "Turn off encryption"
 msgstr "כיבוי הצפנה"
 
-#: plugins/vnc/vnc_plugin.c:1922 plugins/vnc/vnc_plugin.c:1935
+#: plugins/vnc/vnc_plugin.c:1960 plugins/vnc/vnc_plugin.c:1974
 msgid "Prevent local interaction on the server"
 msgstr "מניעת אינטראקציה מקומית בשרת"
 
-#: plugins/vnc/vnc_plugin.c:1937
+#: plugins/vnc/vnc_plugin.c:1961
+msgid "Ignore remote bell messages"
+msgstr ""
+
+#: plugins/vnc/vnc_plugin.c:1976
 msgid "Open Chat…"
 msgstr "פתיחת הצ׳אט…"
 
-#: plugins/vnc/vnc_plugin.c:1938 plugins/spice/spice_plugin.c:617
+#: plugins/vnc/vnc_plugin.c:1977 plugins/spice/spice_plugin.c:617
 #: plugins/xdmcp/xdmcp_plugin.c:381 plugins/rdp/rdp_plugin.c:2633
 msgid "Send Ctrl+Alt+Delete"
 msgstr "שליחת Ctrl+Alt+Delete"
@@ -2315,18 +2319,6 @@ msgstr ""
 "אם הזיהוי האוטומטי נכשל, יש לבחור את האפשרות המתאימה ביותר מהרשימה.\n"
 
 #: plugins/rdp/rdp_plugin.c:2524
-#, fuzzy
-#| msgid ""
-#| "Comma separated list of monitor IDs and desktop orientations:\n"
-#| "  • [<id>:<orientation-in-degrees>,]\n"
-#| "  • 0,1,2,3\n"
-#| "  • 0:270,1:90\n"
-#| "Orientations are specified in degrees, valid values are:\n"
-#| "  •   0 (landscape)\n"
-#| "  •  90 (portrait)\n"
-#| "  • 180 (landscape flipped)\n"
-#| "  • 270 (portrait flipped)\n"
-#| "\n"
 msgid ""
 "Comma-separated list of monitor IDs and desktop orientations:\n"
 "  • [<id>:<orientation-in-degrees>,]\n"
@@ -2367,10 +2359,8 @@ msgid "Span screen over multiple monitors"
 msgstr "פריסת המסך על פני מספר צגים"
 
 #: plugins/rdp/rdp_plugin.c:2554
-#, fuzzy
-#| msgid "Monitor ID list"
 msgid "List monitor IDs"
-msgstr "רשימת מזהי הצגים"
+msgstr "הצגת מזהי צגים"
 
 #: plugins/rdp/rdp_plugin.c:2557
 msgid "Network connection type"

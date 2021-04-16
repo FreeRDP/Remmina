@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-04-15 12:09+0000\n"
+"POT-Creation-Date: 2021-04-16 15:03+0000\n"
 "PO-Revision-Date: 2021-04-08 09:26+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -304,14 +304,14 @@ msgstr "Vrsta ovjere"
 
 #: src/remmina_ssh_plugin.c:1409 src/remmina_message_panel.c:330
 #: src/remmina_sftp_plugin.c:345 src/remmina_file_editor.c:960
-#: plugins/www/www_plugin.c:871 plugins/vnc/vnc_plugin.c:1879
-#: plugins/vnc/vnc_plugin.c:1899 plugins/rdp/rdp_plugin.c:2548
+#: plugins/www/www_plugin.c:871 plugins/vnc/vnc_plugin.c:1917
+#: plugins/vnc/vnc_plugin.c:1937 plugins/rdp/rdp_plugin.c:2548
 #: plugins/nx/nx_plugin.c:730 data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr "Korisničko ime"
 
-#: src/remmina_ssh_plugin.c:1410 plugins/vnc/vnc_plugin.c:1880
-#: plugins/vnc/vnc_plugin.c:1900 plugins/spice/spice_plugin.c:576
+#: src/remmina_ssh_plugin.c:1410 plugins/vnc/vnc_plugin.c:1918
+#: plugins/vnc/vnc_plugin.c:1938 plugins/spice/spice_plugin.c:576
 #: plugins/nx/nx_plugin.c:731
 msgid "User password"
 msgstr "Korisnička lozinka"
@@ -440,11 +440,11 @@ msgstr[0] "%d lozinka je promijenjena."
 msgstr[1] "%d lozinke su promijenjene."
 msgstr[2] "%d lozinka je promijenjeno."
 
-#: src/remmina_public.c:640
+#: src/remmina_public.c:657
 msgid "Please enter format 'widthxheight'."
 msgstr "Upiši format „širina×visina”."
 
-#: src/remmina_public.c:662
+#: src/remmina_public.c:679
 msgid "Change security settings"
 msgstr "Promijeni sigurnosne postavke"
 
@@ -502,7 +502,7 @@ msgstr "Gore"
 msgid "Go to parent folder"
 msgstr "Idi u nadređenu mapu"
 
-#: src/remmina_ftp_client.c:758 plugins/vnc/vnc_plugin.c:1936
+#: src/remmina_ftp_client.c:758 plugins/vnc/vnc_plugin.c:1975
 #: plugins/rdp/rdp_plugin.c:2629
 msgid "Refresh"
 msgstr "Osvježi"
@@ -1697,7 +1697,7 @@ msgstr "Uključi podršku za HTML5"
 msgid "Ignore TLS errors"
 msgstr "Zanemari TLS-greške"
 
-#: plugins/www/www_plugin.c:896 plugins/vnc/vnc_plugin.c:1923
+#: plugins/www/www_plugin.c:896 plugins/vnc/vnc_plugin.c:1962
 #: plugins/spice/spice_plugin.c:604 plugins/rdp/rdp_plugin.c:2610
 #: plugins/nx/nx_plugin.c:752
 msgid "Forget passwords after use"
@@ -1719,117 +1719,121 @@ msgstr "Sigurno spremanje lozinki u GNOME skupu ključeva"
 msgid "Hello, World!"
 msgstr "Pozdrav svijete!"
 
-#: plugins/vnc/vnc_plugin.c:753
+#: plugins/vnc/vnc_plugin.c:765
 msgid "Enter VNC password"
 msgstr "Upiši lozinku za VNC"
 
-#: plugins/vnc/vnc_plugin.c:806
+#: plugins/vnc/vnc_plugin.c:818
 msgid "Enter VNC authentication credentials"
 msgstr "Upiši podatke za autentifikaciju na VNC"
 
-#: plugins/vnc/vnc_plugin.c:909
+#: plugins/vnc/vnc_plugin.c:929
 msgid "Unable to connect to VNC server"
 msgstr "Neuspjelo povezivanje s VNC poslužiteljem"
 
-#: plugins/vnc/vnc_plugin.c:910
+#: plugins/vnc/vnc_plugin.c:930
 #, c-format
 msgid "Couldn’t convert '%s' to host address"
 msgstr "Neuspjelo pretvaranje „%s” u adresu računala"
 
-#: plugins/vnc/vnc_plugin.c:911
+#: plugins/vnc/vnc_plugin.c:931
 #, c-format
 msgid "VNC connection failed: %s"
 msgstr "VNC veza neuspjela: %s"
 
-#: plugins/vnc/vnc_plugin.c:912
+#: plugins/vnc/vnc_plugin.c:932
 msgid "Your connection has been rejected."
 msgstr "Tvoja veza je odbijena."
 
-#: plugins/vnc/vnc_plugin.c:938
+#: plugins/vnc/vnc_plugin.c:958
 #, c-format
 msgid "The VNC server requested an unknown authentication method. %s"
 msgstr "VNC poslužitelj je zatražio nepoznat način ovjere. %s"
 
-#: plugins/vnc/vnc_plugin.c:940
+#: plugins/vnc/vnc_plugin.c:960
 msgid "Please retry after turning on encryption for this profile."
 msgstr "Pokušaj ponovo nakon uključivanja šifriranja za ovaj profil."
 
-#: plugins/vnc/vnc_plugin.c:1850 plugins/rdp/rdp_plugin.c:2403
+#: plugins/vnc/vnc_plugin.c:1888 plugins/rdp/rdp_plugin.c:2403
 msgid "True colour (32 bpp)"
 msgstr "True colour (32 bpp)"
 
-#: plugins/vnc/vnc_plugin.c:1851 plugins/rdp/rdp_plugin.c:2405
+#: plugins/vnc/vnc_plugin.c:1889 plugins/rdp/rdp_plugin.c:2405
 msgid "High colour (16 bpp)"
 msgstr "High colour (16 bpp)"
 
-#: plugins/vnc/vnc_plugin.c:1852 plugins/rdp/rdp_plugin.c:2407
+#: plugins/vnc/vnc_plugin.c:1890 plugins/rdp/rdp_plugin.c:2407
 msgid "256 colours (8 bpp)"
 msgstr "256 boja (8 bpp)"
 
-#: plugins/vnc/vnc_plugin.c:1859 plugins/rdp/rdp_plugin.c:2431
+#: plugins/vnc/vnc_plugin.c:1897 plugins/rdp/rdp_plugin.c:2431
 #: plugins/rdp/rdp_settings.c:273 plugins/nx/nx_plugin.c:713
 msgid "Best (slowest)"
 msgstr "Najbolja (najsporije)"
 
-#: plugins/vnc/vnc_plugin.c:1860 plugins/rdp/rdp_plugin.c:2430
+#: plugins/vnc/vnc_plugin.c:1898 plugins/rdp/rdp_plugin.c:2430
 #: plugins/rdp/rdp_settings.c:271 plugins/nx/nx_plugin.c:712
 msgid "Good"
 msgstr "Bolja"
 
-#: plugins/vnc/vnc_plugin.c:1861 plugins/rdp/rdp_plugin.c:2429
+#: plugins/vnc/vnc_plugin.c:1899 plugins/rdp/rdp_plugin.c:2429
 #: plugins/rdp/rdp_settings.c:269 plugins/nx/nx_plugin.c:711
 msgid "Medium"
 msgstr "Srednja"
 
-#: plugins/vnc/vnc_plugin.c:1862 plugins/rdp/rdp_plugin.c:2428
+#: plugins/vnc/vnc_plugin.c:1900 plugins/rdp/rdp_plugin.c:2428
 #: plugins/rdp/rdp_settings.c:267 plugins/nx/nx_plugin.c:710
 msgid "Poor (fastest)"
 msgstr "Slabija (brže)"
 
-#: plugins/vnc/vnc_plugin.c:1878
+#: plugins/vnc/vnc_plugin.c:1916
 msgid "Repeater"
 msgstr "Ponavljač"
 
-#: plugins/vnc/vnc_plugin.c:1881 plugins/vnc/vnc_plugin.c:1901
+#: plugins/vnc/vnc_plugin.c:1919 plugins/vnc/vnc_plugin.c:1939
 #: plugins/xdmcp/xdmcp_plugin.c:369 plugins/rdp/rdp_plugin.c:2556
 msgid "Colour depth"
 msgstr "Dubina boja"
 
-#: plugins/vnc/vnc_plugin.c:1882 plugins/vnc/vnc_plugin.c:1902
+#: plugins/vnc/vnc_plugin.c:1920 plugins/vnc/vnc_plugin.c:1940
 #: plugins/rdp/rdp_plugin.c:2573 plugins/nx/nx_plugin.c:733
 msgid "Quality"
 msgstr "Kvaliteta"
 
-#: plugins/vnc/vnc_plugin.c:1898
+#: plugins/vnc/vnc_plugin.c:1936
 msgid "Listen on port"
 msgstr "Osluškuj na ulazu"
 
-#: plugins/vnc/vnc_plugin.c:1918
+#: plugins/vnc/vnc_plugin.c:1956
 msgid "Show remote cursor"
 msgstr "Prikaži udaljeni pokazivač"
 
-#: plugins/vnc/vnc_plugin.c:1919 plugins/vnc/vnc_plugin.c:1934
+#: plugins/vnc/vnc_plugin.c:1957 plugins/vnc/vnc_plugin.c:1973
 #: plugins/spice/spice_plugin.c:607 plugins/spice/spice_plugin.c:615
 msgid "View only"
 msgstr "Samo gledaj"
 
-#: plugins/vnc/vnc_plugin.c:1920 plugins/rdp/rdp_plugin.c:2607
+#: plugins/vnc/vnc_plugin.c:1958 plugins/rdp/rdp_plugin.c:2607
 msgid "Turn off clipboard sync"
 msgstr "Isključi sinkroniziranje međuspremnika"
 
-#: plugins/vnc/vnc_plugin.c:1921
+#: plugins/vnc/vnc_plugin.c:1959
 msgid "Turn off encryption"
 msgstr "Isključi šifriranje"
 
-#: plugins/vnc/vnc_plugin.c:1922 plugins/vnc/vnc_plugin.c:1935
+#: plugins/vnc/vnc_plugin.c:1960 plugins/vnc/vnc_plugin.c:1974
 msgid "Prevent local interaction on the server"
 msgstr "Spriječi lokalnu interakciju na poslužitelju"
 
-#: plugins/vnc/vnc_plugin.c:1937
+#: plugins/vnc/vnc_plugin.c:1961
+msgid "Ignore remote bell messages"
+msgstr ""
+
+#: plugins/vnc/vnc_plugin.c:1976
 msgid "Open Chat…"
 msgstr "Otvori razgovor …"
 
-#: plugins/vnc/vnc_plugin.c:1938 plugins/spice/spice_plugin.c:617
+#: plugins/vnc/vnc_plugin.c:1977 plugins/spice/spice_plugin.c:617
 #: plugins/xdmcp/xdmcp_plugin.c:381 plugins/rdp/rdp_plugin.c:2633
 msgid "Send Ctrl+Alt+Delete"
 msgstr "Pošalji Ctrl+Alt+Delete"
