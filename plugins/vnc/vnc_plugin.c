@@ -399,9 +399,9 @@ static void remmina_plugin_vnc_update_quality(rfbClient *cl, gint quality)
 		break;
 	case 0:
 	default:
+		// bpp8 and tight encoding is not supported in libvnc
 		cl->appData.useBGR233 = 1;
-		cl->appData.encodingsString = "tight zrle ultra copyrect hextile zlib corre rre raw";
-		cl->appData.compressLevel = 9;
+		cl->appData.encodingsString = "copyrect zrle ultra zlib hextile corre rre raw";
 		cl->appData.qualityLevel = 1;
 		break;
 	}
@@ -686,6 +686,18 @@ static void remmina_plugin_vnc_rfb_updatefb(rfbClient *cl, int x, int y, int w, 
 	remmina_plugin_vnc_queue_draw_area(gp, x, y, w, h);
 }
 
+static void remmina_plugin_vnc_rfb_finished(rfbClient *cl)
+{
+	TRACE_CALL(__func__);
+	REMMINA_PLUGIN_DEBUG("FinishedFrameBufferUpdate");
+}
+
+static void remmina_plugin_vnc_rfb_led_state(rfbClient* cl, int value, int pad)
+{
+	TRACE_CALL(__func__);
+	REMMINA_PLUGIN_DEBUG("Led state - value: %d, pad: %d", value, pad);
+}
+
 static gboolean remmina_plugin_vnc_queue_cuttext(RemminaPluginVncCuttextParam *param)
 {
 	TRACE_CALL(__func__);
@@ -894,14 +906,22 @@ static void remmina_plugin_vnc_rfb_cursor_shape(rfbClient *cl, int xhot, int yho
 static void remmina_plugin_vnc_rfb_bell(rfbClient *cl)
 {
 	TRACE_CALL(__func__);
+	REMMINA_PLUGIN_DEBUG("Bell message received");
 	RemminaProtocolWidget *gp;
+	RemminaFile *remminafile;
 	GdkWindow *window;
 
 	gp = (RemminaProtocolWidget *)(rfbClientGetClientData(cl, NULL));
+	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
+
+	if (remmina_plugin_service->file_get_int(remminafile, "disableserverbell", FALSE))
+		return;
+
 	window = gtk_widget_get_window(GTK_WIDGET(gp));
 
 	if (window)
 		gdk_window_beep(window);
+	REMMINA_PLUGIN_DEBUG("Beep emitted");
 }
 
 /* Translate known VNC messages. It’s for intltool only, not for gcc */
@@ -1167,16 +1187,34 @@ static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 			break;
 		}
 		cl->MallocFrameBuffer = remmina_plugin_vnc_rfb_allocfb;
-		cl->canHandleNewFBSize = TRUE;
+		cl->GotFrameBufferUpdate = remmina_plugin_vnc_rfb_updatefb;
+		/**
+		 * @fixme we have to implement FinishedFrameBufferUpdate
+		 * This is to know when the server has finished to send a batch of fram buffer
+		 * updates.
+		 * cl->FinishedFrameBufferUpdate = remmina_plugin_vnc_rfb_finished;
+		 */
+		cl->FinishedFrameBufferUpdate = remmina_plugin_vnc_rfb_finished;
 		cl->GetPassword = remmina_plugin_vnc_rfb_password;
 		cl->GetCredential = remmina_plugin_vnc_rfb_credential;
-		cl->GotFrameBufferUpdate = remmina_plugin_vnc_rfb_updatefb;
+		cl->GotCursorShape = remmina_plugin_vnc_rfb_cursor_shape;
+		/**
+		 * @fixme we have to implement HandleKeyboardLedState
+		 * cl->HandleKeyboardLedState = remmina_plugin_vnc_rfb_led_state
+		 */
+		cl->HandleKeyboardLedState = remmina_plugin_vnc_rfb_led_state;
+		cl->HandleTextChat = remmina_plugin_vnc_rfb_chat;
 		cl->GotXCutText = (
 			remmina_plugin_service->file_get_int(remminafile, "disableclipboard", FALSE) ?
 			NULL : remmina_plugin_vnc_rfb_cuttext);
-		cl->GotCursorShape = remmina_plugin_vnc_rfb_cursor_shape;
 		cl->Bell = remmina_plugin_vnc_rfb_bell;
-		cl->HandleTextChat = remmina_plugin_vnc_rfb_chat;
+		/**
+		 * @fixme we have to implement HandleXvpMsg
+		 * cl->HandleXvpMsg = remmina_plugin_vnc_rfb_handle_xvp;
+		 */
+
+
+		cl->canHandleNewFBSize = TRUE;
 		rfbClientSetClientData(cl, NULL, gp);
 
 		if (host[0] == '\0') {
@@ -1920,7 +1958,8 @@ static const RemminaProtocolSetting remmina_plugin_vnc_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableclipboard",	 N_("Turn off clipboard sync"),	 TRUE,	NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableencryption",	 N_("Turn off encryption"),	 FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableserverinput",	 N_("Prevent local interaction on the server"),	 TRUE,	NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disablepasswordstoring", N_("Forget passwords after use"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableserverbell",	 N_("Ignore remote bell messages"),	 FALSE,	NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disablepasswordstoring", N_("Forget passwords after use"), TRUE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END,   NULL,			 NULL,				 FALSE, NULL, NULL }
 };
 
