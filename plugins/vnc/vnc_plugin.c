@@ -906,6 +906,7 @@ static void remmina_plugin_vnc_rfb_cursor_shape(rfbClient *cl, int xhot, int yho
 static void remmina_plugin_vnc_rfb_bell(rfbClient *cl)
 {
 	TRACE_CALL(__func__);
+	REMMINA_PLUGIN_DEBUG("Bell message received");
 	RemminaProtocolWidget *gp;
 	RemminaFile *remminafile;
 	GdkWindow *window;
@@ -920,6 +921,7 @@ static void remmina_plugin_vnc_rfb_bell(rfbClient *cl)
 
 	if (window)
 		gdk_window_beep(window);
+	REMMINA_PLUGIN_DEBUG("Beep emitted");
 }
 
 /* Translate known VNC messages. It’s for intltool only, not for gcc */
