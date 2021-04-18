@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-04-16 15:03+0000\n"
+"POT-Creation-Date: 2021-04-18 22:00+0000\n"
 "PO-Revision-Date: 2021-01-28 10:33+0000\n"
 "Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
 "Language-Team: Kazakh <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -38,38 +38,38 @@ msgstr ""
 msgid "Connecting to “%s”…"
 msgstr "\"%s\" хостына қосылу…"
 
-#: src/remmina_protocol_widget.c:772 src/remmina_protocol_widget.c:890
+#: src/remmina_protocol_widget.c:820 src/remmina_protocol_widget.c:938
 #, c-format
 msgid "Connecting to “%s” via SSH…"
 msgstr "\"%s\" хостына қосылу…"
 
-#: src/remmina_protocol_widget.c:953
+#: src/remmina_protocol_widget.c:1001
 #, c-format
 msgid "Awaiting incoming SSH connection on port %i…"
 msgstr "Кіріс SSH туннелді %i портында күту…"
 
-#: src/remmina_protocol_widget.c:1005
+#: src/remmina_protocol_widget.c:1053
 #, c-format
 msgid "The “%s” command is not available on the SSH server."
 msgstr "%s командасы SSH серверінде табылмады"
 
-#: src/remmina_protocol_widget.c:1009
+#: src/remmina_protocol_widget.c:1057
 #, c-format
 msgid "Could not run the “%s” command on the SSH server (status = %i)."
 msgstr "%s командасының SSH серверінде орындауы сәтсіз аяқталды (күйі = %i)."
 
 #. TRANSLATORS: %s is a placeholder for an error message
-#: src/remmina_protocol_widget.c:1017
+#: src/remmina_protocol_widget.c:1065
 #, c-format
 msgid "Could not run command. %s"
 msgstr "Осы команда орындауы сәтсіз аяқталды: %s"
 
-#: src/remmina_protocol_widget.c:1086
+#: src/remmina_protocol_widget.c:1134
 #, c-format
 msgid "Connecting to %s via SSH…"
 msgstr "\"%s\" хостына қосылу…"
 
-#: src/remmina_protocol_widget.c:1462 src/remmina_protocol_widget.c:1481
+#: src/remmina_protocol_widget.c:1510 src/remmina_protocol_widget.c:1529
 #: src/remmina_ssh_plugin.c:1305 src/remmina_sftp_plugin.c:310
 #: src/remmina_sftp_plugin.c:346 src/remmina_file_editor.c:845
 #: src/remmina_file_editor.c:966 plugins/www/www_plugin.c:872
@@ -78,65 +78,65 @@ msgstr "\"%s\" хостына қосылу…"
 msgid "Password"
 msgstr "Құпия сөз"
 
-#: src/remmina_protocol_widget.c:1480
+#: src/remmina_protocol_widget.c:1528
 msgid "Type in SSH username and password."
 msgstr ""
 
-#: src/remmina_protocol_widget.c:1535 src/remmina_protocol_widget.c:1562
+#: src/remmina_protocol_widget.c:1583 src/remmina_protocol_widget.c:1610
 msgid "Fingerprint automatically accepted"
 msgstr ""
 
-#: src/remmina_protocol_widget.c:1542
+#: src/remmina_protocol_widget.c:1590
 msgid "Certificate details:"
 msgstr ""
 
-#: src/remmina_protocol_widget.c:1543 src/remmina_protocol_widget.c:1570
+#: src/remmina_protocol_widget.c:1591 src/remmina_protocol_widget.c:1618
 msgid "Subject:"
 msgstr ""
 
-#: src/remmina_protocol_widget.c:1544 src/remmina_protocol_widget.c:1571
+#: src/remmina_protocol_widget.c:1592 src/remmina_protocol_widget.c:1619
 msgid "Issuer:"
 msgstr ""
 
-#: src/remmina_protocol_widget.c:1545
+#: src/remmina_protocol_widget.c:1593
 msgid "Fingerprint:"
 msgstr ""
 
-#: src/remmina_protocol_widget.c:1546
+#: src/remmina_protocol_widget.c:1594
 msgid "Accept certificate?"
 msgstr ""
 
-#: src/remmina_protocol_widget.c:1569
+#: src/remmina_protocol_widget.c:1617
 msgid "The certificate changed! Details:"
 msgstr ""
 
-#: src/remmina_protocol_widget.c:1572
+#: src/remmina_protocol_widget.c:1620
 msgid "Old fingerprint:"
 msgstr ""
 
-#: src/remmina_protocol_widget.c:1573
+#: src/remmina_protocol_widget.c:1621
 msgid "New fingerprint:"
 msgstr ""
 
-#: src/remmina_protocol_widget.c:1574
+#: src/remmina_protocol_widget.c:1622
 msgid "Accept changed certificate?"
 msgstr ""
 
-#: src/remmina_protocol_widget.c:1716
+#: src/remmina_protocol_widget.c:1764
 #, c-format
 msgid "Listening on port %i for an incoming %s connection…"
 msgstr ""
 
-#: src/remmina_protocol_widget.c:1741
+#: src/remmina_protocol_widget.c:1789
 msgid "Could not authenticate, attempting reconnection…"
 msgstr "Аутентификация сәтсіз аяқталды. Қайта қосылу…"
 
-#: src/remmina_protocol_widget.c:1803 src/remmina_file_editor.c:345
+#: src/remmina_protocol_widget.c:1851 src/remmina_file_editor.c:345
 #: src/remmina_file_editor.c:916 data/ui/remmina_main.glade:485
 msgid "Server"
 msgstr "Сервер"
 
-#: src/remmina_protocol_widget.c:1820
+#: src/remmina_protocol_widget.c:1868
 #, c-format
 msgid "Install the %s protocol plugin first."
 msgstr ""
@@ -740,84 +740,88 @@ msgstr ""
 msgid "Fill client window when scaled"
 msgstr ""
 
-#: src/rcw.c:2064
+#: src/rcw.c:1970
+msgid "Send clipboard content as text"
+msgstr ""
+
+#: src/rcw.c:2070
 msgid "Turn off scaling to avoid screenshot distortion."
 msgstr ""
 
-#: src/rcw.c:2124 plugins/www/www_plugin.c:840
+#: src/rcw.c:2130 plugins/www/www_plugin.c:840
 msgid "Screenshot taken"
 msgstr ""
 
-#: src/rcw.c:2205
+#: src/rcw.c:2211
 #, fuzzy
 #| msgid "Open Main Window"
 msgid "Open the Remmina main window"
 msgstr "Бас терезені ашу"
 
-#: src/rcw.c:2214
+#: src/rcw.c:2220
 msgid "Duplicate current connection"
 msgstr ""
 
-#: src/rcw.c:2231
+#: src/rcw.c:2237
 msgid "Resize the window to fit in remote resolution"
 msgstr "Терезе қашықтаған жұмыс үстелдің экран өлшемдер қатынасын қабылдауы"
 
-#: src/rcw.c:2242
+#: src/rcw.c:2248
 msgid "Toggle fullscreen mode"
 msgstr "Толық экран режиміне өту"
 
-#: src/rcw.c:2288 data/ui/remmina_preferences.glade:1299
+#: src/rcw.c:2294 data/ui/remmina_preferences.glade:1299
 #: data/ui/remmina_preferences.glade:1309
 msgid "Multi monitor"
 msgstr ""
 
-#: src/rcw.c:2304
+#: src/rcw.c:2310
 msgid "Toggle dynamic resolution update"
 msgstr ""
 
-#: src/rcw.c:2314
+#: src/rcw.c:2320
 msgid "Toggle scaled mode"
 msgstr "Масштабтау режиміне өту"
 
-#: src/rcw.c:2354 data/ui/remmina_preferences.glade:1043
+#: src/rcw.c:2360 data/ui/remmina_preferences.glade:1043
 msgid "Switch tab pages"
 msgstr ""
 
-#: src/rcw.c:2364
+#: src/rcw.c:2370
 msgid "Grab all keyboard events"
 msgstr "Басылған барлық пернелерді өзіне қаратып қабылдау"
 
-#: src/rcw.c:2374
+#: src/rcw.c:2380
 msgid "Preferences"
 msgstr "Баптаулар"
 
-#: src/rcw.c:2383
+#: src/rcw.c:2389
 msgid "_Tools"
 msgstr "Құралдар"
 
-#: src/rcw.c:2384 data/ui/remmina_main.glade:213
+#: src/rcw.c:2390 data/ui/remmina_main.glade:213
 msgid "Tools"
 msgstr "Құралдар"
 
-#: src/rcw.c:2397 data/ui/remmina_preferences.glade:1236
+#: src/rcw.c:2403 data/ui/remmina_preferences.glade:1236
 #: data/ui/remmina_preferences.glade:1246
 msgid "Screenshot"
 msgstr ""
 
-#: src/rcw.c:2411 data/ui/remmina_preferences.glade:1146
+#: src/rcw.c:2417 data/ui/remmina_preferences.glade:1146
 msgid "Minimize window"
 msgstr "Терезені қайыру"
 
-#: src/rcw.c:2421 data/ui/remmina_preferences.glade:1176
+#: src/rcw.c:2427 data/ui/remmina_preferences.glade:1176
 msgid "Disconnect"
 msgstr "Байланысты үзу"
 
-#: src/rcw.c:4143
+#: src/rcw.c:4149
 #, c-format
 msgid "The file “%s” is corrupted, unreadable, or could not be found."
 msgstr ""
 
-#: src/rcw.c:4311
+#: src/rcw.c:4317
 msgid "Warning: This plugin requires GtkSocket, but it’s not available."
 msgstr ""
 
