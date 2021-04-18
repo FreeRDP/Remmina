@@ -579,18 +579,50 @@ void remmina_protocol_widget_send_keystrokes(RemminaProtocolWidget *gp, GtkMenuI
 	return;
 }
 
-void remmina_protocol_widget_send_clip_strokes(GtkClipboard *clipboard, const gchar *text, gpointer data)
+/**
+ * Send to the plugin some keystrokes from the content of the clipboard
+ * This is a copy of remmina_protocol_widget_send_keystrokes but it uses the clipboard content
+ * get from remmina_protocol_widget_send_clipboard
+ * Probably we don't need the replacement table.
+ */
+void remmina_protocol_widget_send_clip_strokes(GtkClipboard *clipboard, const gchar *clip_text, gpointer data)
 {
 	TRACE_CALL(__func__);
-
+	RemminaProtocolWidget *gp = REMMINA_PROTOCOL_WIDGET(data);
+	gchar *text = g_strdup(clip_text);
 	guint *keyvals;
+	gint i;
+	GdkKeymap *keymap = gdk_keymap_get_for_display(gdk_display_get_default());
 	gunichar character;
 	guint keyval;
+	GdkKeymapKey *keys;
 	gint n_keys;
-
-	RemminaProtocolWidget *gp = REMMINA_PROTOCOL_WIDGET(data);
+	/* Single keystroke replace */
+	typedef struct _KeystrokeReplace {
+		gchar * search;
+		gchar * replace;
+		guint	keyval;
+	} KeystrokeReplace;
+	/* Special characters to replace */
+	KeystrokeReplace text_replaces[] =
+	{
+		{ "\\n",  "\n", GDK_KEY_Return	  },
+		{ "\\t",  "\t", GDK_KEY_Tab	  },
+		{ "\\b",  "\b", GDK_KEY_BackSpace },
+		{ "\\e",  "\e", GDK_KEY_Escape	  },
+		{ "\\\\", "\\", GDK_KEY_backslash },
+		{ NULL,	  NULL, 0		  }
+	};
 	if (remmina_protocol_widget_plugin_receives_keystrokes(gp)) {
 		if(text) {
+			/* Replace special characters */
+			for (i = 0; text_replaces[i].replace; i++) {
+				REMMINA_DEBUG("Text clipboard before replacement is \'%s\'", text);
+				text = g_strdup(remmina_public_str_replace_in_place(text,
+							text_replaces[i].search,
+							text_replaces[i].replace));
+				REMMINA_DEBUG("Text clipboard after replacement is \'%s\'", text);
+			}
 			gchar *iter = g_strdup(text);
 			keyvals = (guint *)g_malloc(strlen(text));
 			while (TRUE) {
@@ -599,15 +631,46 @@ void remmina_protocol_widget_send_clip_strokes(GtkClipboard *clipboard, const gc
 				if (character == 0)
 					break;
 				keyval = gdk_unicode_to_keyval(character);
-
+				/* Replace all the special character with its keyval */
+				for (i = 0; text_replaces[i].replace; i++) {
+					if (character == text_replaces[i].replace[0]) {
+						keys = g_new0(GdkKeymapKey, 1);
+						keyval = text_replaces[i].keyval;
+						/* A special character was generated, no keyval lookup needed */
+						character = 0;
+						break;
+					}
+				}
+				/* Decode character if it’s not a special character */
+				if (character) {
+					/* get keyval without modifications */
+					if (!gdk_keymap_get_entries_for_keyval(keymap, keyval, &keys, &n_keys)) {
+						g_warning("keyval 0x%04x has no keycode!", keyval);
+						iter = g_utf8_find_next_char(iter, NULL);
+						continue;
+					}
+				}
+				/* Add modifier keys */
 				n_keys = 0;
+				if (keys->level & 1)
+					keyvals[n_keys++] = GDK_KEY_Shift_L;
+				if (keys->level & 2)
+					keyvals[n_keys++] = GDK_KEY_Alt_R;
+				/*
+				 * @fixme heap buffer overflow
+				 * In some cases, for example sending \t as the only sequence
+				 * may lead to a buffer overflow
+				 */
 				keyvals[n_keys++] = keyval;
 				/* Send keystroke to the plugin */
 				gp->priv->plugin->send_keystrokes(gp, keyvals, n_keys);
-
+				g_free(keys);
+				/* Process next character in the keystrokes */
 				iter = g_utf8_find_next_char(iter, NULL);
 			}
+			g_free(keyvals);
 		}
+		g_free(text);
 	}
 	return;
 }
