@@ -579,8 +579,56 @@ void remmina_protocol_widget_send_keystrokes(RemminaProtocolWidget *gp, GtkMenuI
 	return;
 }
 
+void remmina_protocol_widget_send_clip_strokes(GtkClipboard *clipboard, const gchar *text, gpointer data)
+{
+	TRACE_CALL(__func__);
+
+	guint *keyvals;
+	gunichar character;
+	guint keyval;
+	gint n_keys;
+
+	RemminaProtocolWidget *gp = REMMINA_PROTOCOL_WIDGET(data);
+	if (remmina_protocol_widget_plugin_receives_keystrokes(gp)) {
+		if(text) {
+			gchar *iter = g_strdup(text);
+			keyvals = (guint *)g_malloc(strlen(text));
+			while (TRUE) {
+				/* Process each character in the keystrokes */
+				character = g_utf8_get_char_validated(iter, -1);
+				if (character == 0)
+					break;
+				keyval = gdk_unicode_to_keyval(character);
+
+				n_keys = 0;
+				keyvals[n_keys++] = keyval;
+				/* Send keystroke to the plugin */
+				gp->priv->plugin->send_keystrokes(gp, keyvals, n_keys);
+
+				iter = g_utf8_find_next_char(iter, NULL);
+			}
+		}
+	}
+	return;
+}
+
+void remmina_protocol_widget_send_clipboard(RemminaProtocolWidget *gp, GtkMenuItem *widget)
+{
+	TRACE_CALL(__func__);
+	GtkClipboard *clipboard;
+
+	clipboard = gtk_clipboard_get (GDK_SELECTION_CLIPBOARD);
+
+	/* Request the contents of the clipboard, contents_received will be
+	   called when we do get the contents.
+	   */
+	gtk_clipboard_request_text (clipboard,
+			remmina_protocol_widget_send_clip_strokes, gp);
+}
+
 gboolean remmina_protocol_widget_plugin_screenshot(RemminaProtocolWidget *gp, RemminaPluginScreenshotData *rpsd)
 {
+	TRACE_CALL(__func__);
 	if (!gp->priv->plugin->get_plugin_screenshot) {
 		REMMINA_DEBUG("plugin screenshot function is not implemented, using core Remmina functionality");
 		return FALSE;
