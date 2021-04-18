@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-04-18 22:00+0000\n"
+"POT-Creation-Date: 2021-04-18 23:09+0000\n"
 "PO-Revision-Date: 2021-03-24 23:29+0000\n"
 "Last-Translator: Justin Song <mcsong@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -41,38 +41,38 @@ msgstr "외부 명령 실행 중…"
 msgid "Connecting to “%s”…"
 msgstr "'%s'에 연결하는 중…"
 
-#: src/remmina_protocol_widget.c:820 src/remmina_protocol_widget.c:938
+#: src/remmina_protocol_widget.c:883 src/remmina_protocol_widget.c:1001
 #, c-format
 msgid "Connecting to “%s” via SSH…"
 msgstr "SSH로 '%s'에 연결하는 중…"
 
-#: src/remmina_protocol_widget.c:1001
+#: src/remmina_protocol_widget.c:1064
 #, c-format
 msgid "Awaiting incoming SSH connection on port %i…"
 msgstr "포트 %i에서 SSH 연결 대기 중…"
 
-#: src/remmina_protocol_widget.c:1053
+#: src/remmina_protocol_widget.c:1116
 #, c-format
 msgid "The “%s” command is not available on the SSH server."
 msgstr "SSH 서버에서 %s 명령을 사용할 수 없습니다."
 
-#: src/remmina_protocol_widget.c:1057
+#: src/remmina_protocol_widget.c:1120
 #, c-format
 msgid "Could not run the “%s” command on the SSH server (status = %i)."
 msgstr "SSH 서버에서 \"%s\" 명령을 실행할 수 없습니다 (상태 = %i)."
 
 #. TRANSLATORS: %s is a placeholder for an error message
-#: src/remmina_protocol_widget.c:1065
+#: src/remmina_protocol_widget.c:1128
 #, c-format
 msgid "Could not run command. %s"
 msgstr "명령을 실행할 수 없습니다. %s"
 
-#: src/remmina_protocol_widget.c:1134
+#: src/remmina_protocol_widget.c:1197
 #, c-format
 msgid "Connecting to %s via SSH…"
 msgstr "SSH로 '%s'에 연결하는 중…"
 
-#: src/remmina_protocol_widget.c:1510 src/remmina_protocol_widget.c:1529
+#: src/remmina_protocol_widget.c:1573 src/remmina_protocol_widget.c:1592
 #: src/remmina_ssh_plugin.c:1305 src/remmina_sftp_plugin.c:310
 #: src/remmina_sftp_plugin.c:346 src/remmina_file_editor.c:845
 #: src/remmina_file_editor.c:966 plugins/www/www_plugin.c:872
@@ -81,65 +81,65 @@ msgstr "SSH로 '%s'에 연결하는 중…"
 msgid "Password"
 msgstr "비밀번호"
 
-#: src/remmina_protocol_widget.c:1528
+#: src/remmina_protocol_widget.c:1591
 msgid "Type in SSH username and password."
 msgstr "SSH 사용자 이름과 비밀번호를 입력하세요."
 
-#: src/remmina_protocol_widget.c:1583 src/remmina_protocol_widget.c:1610
+#: src/remmina_protocol_widget.c:1646 src/remmina_protocol_widget.c:1673
 msgid "Fingerprint automatically accepted"
 msgstr "지문인식을 자동으로 허용함"
 
-#: src/remmina_protocol_widget.c:1590
+#: src/remmina_protocol_widget.c:1653
 msgid "Certificate details:"
 msgstr "인증서 세부정보:"
 
-#: src/remmina_protocol_widget.c:1591 src/remmina_protocol_widget.c:1618
+#: src/remmina_protocol_widget.c:1654 src/remmina_protocol_widget.c:1681
 msgid "Subject:"
 msgstr "주제:"
 
-#: src/remmina_protocol_widget.c:1592 src/remmina_protocol_widget.c:1619
+#: src/remmina_protocol_widget.c:1655 src/remmina_protocol_widget.c:1682
 msgid "Issuer:"
 msgstr "발급자:"
 
-#: src/remmina_protocol_widget.c:1593
+#: src/remmina_protocol_widget.c:1656
 msgid "Fingerprint:"
 msgstr "지문:"
 
-#: src/remmina_protocol_widget.c:1594
+#: src/remmina_protocol_widget.c:1657
 msgid "Accept certificate?"
 msgstr "인증서를 허용하시겠습니까?"
 
-#: src/remmina_protocol_widget.c:1617
+#: src/remmina_protocol_widget.c:1680
 msgid "The certificate changed! Details:"
 msgstr "인증서가 변경되었습니다! 세부 내용:"
 
-#: src/remmina_protocol_widget.c:1620
+#: src/remmina_protocol_widget.c:1683
 msgid "Old fingerprint:"
 msgstr "이전 지문:"
 
-#: src/remmina_protocol_widget.c:1621
+#: src/remmina_protocol_widget.c:1684
 msgid "New fingerprint:"
 msgstr "새 지문:"
 
-#: src/remmina_protocol_widget.c:1622
+#: src/remmina_protocol_widget.c:1685
 msgid "Accept changed certificate?"
 msgstr "변경된 인증서를 허용하시겠습니까?"
 
-#: src/remmina_protocol_widget.c:1764
+#: src/remmina_protocol_widget.c:1827
 #, c-format
 msgid "Listening on port %i for an incoming %s connection…"
 msgstr "%s 연결을 위해서 %i 포트에서 대기 중…"
 
-#: src/remmina_protocol_widget.c:1789
+#: src/remmina_protocol_widget.c:1852
 msgid "Could not authenticate, attempting reconnection…"
 msgstr "인증할 수 없습니다, 다시 접속 중…"
 
-#: src/remmina_protocol_widget.c:1851 src/remmina_file_editor.c:345
+#: src/remmina_protocol_widget.c:1914 src/remmina_file_editor.c:345
 #: src/remmina_file_editor.c:916 data/ui/remmina_main.glade:485
 msgid "Server"
 msgstr "서버"
 
-#: src/remmina_protocol_widget.c:1868
+#: src/remmina_protocol_widget.c:1931
 #, c-format
 msgid "Install the %s protocol plugin first."
 msgstr "먼저 %s 프로토콜 플러그인을 설치하세요."
@@ -782,7 +782,7 @@ msgid "Fill client window when scaled"
 msgstr "크기 조정시 클라이언트 윈도 채우기"
 
 #: src/rcw.c:1970
-msgid "Send clipboard content as text"
+msgid "Send clipboard content as keystrokes"
 msgstr ""
 
 #: src/rcw.c:2070
