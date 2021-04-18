@@ -61,7 +61,7 @@ static const gchar *server_tips = N_("<tt><big>"
 				     "Supported formats\n"
 				     "• server\n"
 				     "• server:port\n"
-				     "• [server]:port"
+				     "• server:[port]"
 				     "</big></tt>");
 
 static const gchar *cmd_tips = N_("<tt><big>"
@@ -82,8 +82,8 @@ static const gchar *server_tips2 = N_("<tt><big>"
 				      "Supported formats\n"
 				      "• server\n"
 				      "• server:port\n"
-				      "• [server]:port\n"
-				      "• username@server:port (SSH protocol only)"
+				      "• server:[port]\n"
+				      "• username@server:[port] (SSH protocol only)"
 				      "</big></tt>");
 #endif
 
