@@ -5,6 +5,9 @@ grade: stable
 confinement: strict
 base: core18
 
+# this line enables LZO compression for the snap
+compression: lzo
+
 layout:
   /usr/lib/$SNAPCRAFT_ARCH_TRIPLET/webkit2gtk-4.0:
     bind: $SNAP/gnome-platform/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/webkit2gtk-4.0
