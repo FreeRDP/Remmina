@@ -15,9 +15,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-04-18 23:09+0000\n"
-"PO-Revision-Date: 2021-04-02 14:27+0000\n"
-"Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
+"POT-Creation-Date: 2021-04-19 09:01+0000\n"
+"PO-Revision-Date: 2021-04-19 09:02+0000\n"
+"Last-Translator: Roberto Bellingeri <bellingeri@netguru.it>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/remmina/remmina/"
 "it/>\n"
 "Language: it\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.6-dev\n"
+"X-Generator: Weblate 4.6\n"
 "X-Launchpad-Export-Date: 2011-01-18 05:16+0000\n"
 
 #: src/remmina_protocol_widget.c:283 src/remmina_sftp_plugin.c:328
@@ -804,7 +804,7 @@ msgstr "Ridimensiona riempiendo la finestra"
 
 #: src/rcw.c:1970
 msgid "Send clipboard content as keystrokes"
-msgstr ""
+msgstr "Invia il contenuto degli appunti come sequenza di tasti"
 
 #: src/rcw.c:2070
 msgid "Turn off scaling to avoid screenshot distortion."
@@ -1427,11 +1427,17 @@ msgid "Could not create PTY device."
 msgstr "Impossibile creare il dispositivo PTY."
 
 #: src/remmina_file_editor.c:60
+#, fuzzy
+#| msgid ""
+#| "<tt><big>Supported formats\n"
+#| "• server\n"
+#| "• server:port\n"
+#| "• [server]:port</big></tt>"
 msgid ""
 "<tt><big>Supported formats\n"
 "• server\n"
 "• server:port\n"
-"• [server]:port</big></tt>"
+"• server:[port]</big></tt>"
 msgstr ""
 "<tt><big>Formati supportati\n"
 "* server\n"
@@ -1467,12 +1473,19 @@ msgstr ""
 "</big></tt>"
 
 #: src/remmina_file_editor.c:81
+#, fuzzy
+#| msgid ""
+#| "<tt><big>Supported formats\n"
+#| "• server\n"
+#| "• server:port\n"
+#| "• [server]:port\n"
+#| "• username@server:port (SSH protocol only)</big></tt>"
 msgid ""
 "<tt><big>Supported formats\n"
 "• server\n"
 "• server:port\n"
-"• [server]:port\n"
-"• username@server:port (SSH protocol only)</big></tt>"
+"• server:[port]\n"
+"• username@server:[port] (SSH protocol only)</big></tt>"
 msgstr ""
 "<tt><big>Formati supportati\n"
 "• server\n"
@@ -1844,7 +1857,7 @@ msgstr "Impedisci l'interazione locale sul server"
 
 #: plugins/vnc/vnc_plugin.c:1961
 msgid "Ignore remote bell messages"
-msgstr ""
+msgstr "Ignora i messaggi del campanello remoto"
 
 #: plugins/vnc/vnc_plugin.c:1976
 msgid "Open Chat…"
@@ -2354,18 +2367,6 @@ msgstr ""
 "nell'elenco.\n"
 
 #: plugins/rdp/rdp_plugin.c:2524
-#, fuzzy
-#| msgid ""
-#| "Comma separated list of monitor IDs and desktop orientations:\n"
-#| "  • [<id>:<orientation-in-degrees>,]\n"
-#| "  • 0,1,2,3\n"
-#| "  • 0:270,1:90\n"
-#| "Orientations are specified in degrees, valid values are:\n"
-#| "  •   0 (landscape)\n"
-#| "  •  90 (portrait)\n"
-#| "  • 180 (landscape flipped)\n"
-#| "  • 270 (portrait flipped)\n"
-#| "\n"
 msgid ""
 "Comma-separated list of monitor IDs and desktop orientations:\n"
 "  • [<id>:<orientation-in-degrees>,]\n"
@@ -2378,15 +2379,15 @@ msgid ""
 "  • 270 (portrait flipped)\n"
 "\n"
 msgstr ""
-"Elenco separato da virgole d'ID monitor e orientamenti del desktop:\n"
-"  • [<id>: <orientation-in-degrees>,]\n"
+"Elenco separato da virgole di ID monitor e orientamenti del desktop:\n"
+"  • [<id>: <orientamento-in-gradi>,]\n"
 "  • 0,1,2,3\n"
-"  • 0: 270,1: 90\n"
+"  • 0:270,1:90\n"
 "Gli orientamenti sono specificati in gradi, i valori validi sono:\n"
 "  • 0 (orizzontale)\n"
 "  • 90 (verticale)\n"
 "  • 180 (orizzontale capovolto)\n"
-"  • 270 (ritratto capovolto)\n"
+"  • 270 (verticale capovolto)\n"
 "\n"
 
 #: plugins/rdp/rdp_plugin.c:2551
@@ -2406,10 +2407,8 @@ msgid "Span screen over multiple monitors"
 msgstr "Estendi lo schermo su più monitor"
 
 #: plugins/rdp/rdp_plugin.c:2554
-#, fuzzy
-#| msgid "Monitor ID list"
 msgid "List monitor IDs"
-msgstr "Lista ID monitor"
+msgstr "Elenca gli ID monitor"
 
 #: plugins/rdp/rdp_plugin.c:2557
 msgid "Network connection type"
