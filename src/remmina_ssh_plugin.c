@@ -1283,6 +1283,7 @@ remmina_plugin_ssh_call_feature(RemminaProtocolWidget *gp, const RemminaProtocol
 	case REMMINA_PLUGIN_SSH_FEATURE_TOOL_DECREASE_FONT:
 		vte_terminal_set_font_scale(VTE_TERMINAL(gpdata->vte),
 					    vte_terminal_get_font_scale(VTE_TERMINAL(gpdata->vte)) - SCALE_FACTOR);
+		return;
 	case REMMINA_PLUGIN_SSH_FEATURE_TOOL_SEARCH:
 		remmina_plugin_pop_search(NULL, gp);
 		return;

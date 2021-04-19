@@ -837,6 +837,12 @@ gboolean remmina_pref_save(void)
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "shortcutkey_minimize", remmina_pref.shortcutkey_minimize);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "shortcutkey_disconnect", remmina_pref.shortcutkey_disconnect);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "shortcutkey_toolbar", remmina_pref.shortcutkey_toolbar);
+	g_key_file_set_integer(gkeyfile, "remmina_pref", "vte_shortcutkey_copy", remmina_pref.vte_shortcutkey_copy);
+	g_key_file_set_integer(gkeyfile, "remmina_pref", "vte_shortcutkey_paste", remmina_pref.vte_shortcutkey_paste);
+	g_key_file_set_integer(gkeyfile, "remmina_pref", "vte_shortcutkey_select_all", remmina_pref.vte_shortcutkey_select_all);
+	g_key_file_set_integer(gkeyfile, "remmina_pref", "vte_shortcutkey_increase_font", remmina_pref.vte_shortcutkey_increase_font);
+	g_key_file_set_integer(gkeyfile, "remmina_pref", "vte_shortcutkey_decrease_font", remmina_pref.vte_shortcutkey_decrease_font);
+	g_key_file_set_integer(gkeyfile, "remmina_pref", "vte_shortcutkey_search_text", remmina_pref.vte_shortcutkey_search_text);
 	g_key_file_set_string(gkeyfile, "remmina_pref", "vte_font", remmina_pref.vte_font ? remmina_pref.vte_font : "");
 	g_key_file_set_string(gkeyfile, "remmina_pref", "grab_color", remmina_pref.grab_color ? remmina_pref.grab_color : "");
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "grab_color_switch", remmina_pref.grab_color_switch);
