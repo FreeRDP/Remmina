@@ -89,6 +89,7 @@ void remmina_public_popup_position(GtkMenu *menu, gint *x, gint *y, gboolean *pu
 gchar *remmina_public_combine_path(const gchar *path1, const gchar *path2);
 
 /* Parse a server entry with server name and port */
+void remmina_public_get_server_port_old(const gchar *server, gint defaultport, gchar **host, gint *port);
 void remmina_public_get_server_port(const gchar *server, gint defaultport, gchar **host, gint *port);
 
 /* X */
