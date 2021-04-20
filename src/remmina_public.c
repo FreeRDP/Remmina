@@ -333,12 +333,69 @@ remmina_public_combine_path(const gchar *path1, const gchar *path2)
 	return g_strdup_printf("%s/%s", path1, path2);
 }
 
+void remmina_public_get_server_port_old(const gchar *server, gint defaultport, gchar **host, gint *port)
+{
+	TRACE_CALL(__func__);
+	gchar *str, *ptr, *ptr2;
+
+	str = g_strdup(server);
+
+	if (str) {
+		/* [server]:port format */
+		ptr = strchr(str, '[');
+		if (ptr) {
+			ptr++;
+			ptr2 = strchr(ptr, ']');
+			if (ptr2) {
+				*ptr2++ = '\0';
+				if (*ptr2 == ':')
+					defaultport = atoi(ptr2 + 1);
+			}
+			if (host)
+				*host = g_strdup(ptr);
+			if (port)
+				*port = defaultport;
+			g_free(str);
+			g_debug ("(%s) - host: %s", __func__, *host);
+			g_debug ("(%s) - port: %d", __func__, *port);
+			return;
+		}
+
+		/* server:port format, IPv6 cannot use this format */
+		ptr = strchr(str, ':');
+		if (ptr) {
+			ptr2 = strchr(ptr + 1, ':');
+			if (ptr2 == NULL) {
+				*ptr++ = '\0';
+				defaultport = atoi(ptr);
+			}
+			/* More than one ':' means this is IPv6 address. Treat it as a whole address */
+		}
+	}
+
+	if (host)
+		*host = str;
+	else
+		g_free(str);
+	if (port)
+		*port = defaultport;
+
+	g_debug ("(%s) - host: %s", __func__, *host);
+	g_debug ("(%s) - port: %d", __func__, *port);
+}
+
 void remmina_public_get_server_port(const gchar *server, gint defaultport, gchar **host, gint *port)
 {
 	TRACE_CALL(__func__);
 
 	const gchar *nul_terminated_server = NULL;
 	if (server != NULL) {
+		if(strstr(g_strdup(server), "ID:") != NULL) {
+			g_debug ("(%s) - Using remmina_public_get_server_port_old to parse the repeater ID", __func__);
+			remmina_public_get_server_port_old (server, defaultport, host, port);
+			return;
+		}
+
 		GNetworkAddress *address;
 		GError *err = NULL;
 
@@ -348,32 +405,23 @@ void remmina_public_get_server_port(const gchar *server, gint defaultport, gchar
 
 		if (address == NULL) {
 			g_debug ("(%s) - Error converting server string: %s, with error: %s", __func__, nul_terminated_server, err->message);
-			/* We can have a STRING:INT, that cannot be resolved, but it's valid */
-			if (g_utf8_strchr (server, -1, ':')) {
-				gchar **items = g_strsplit (server, ":", -1);
-				if (g_strv_length (items) == 2) {
-					*host = g_strdup(items[0]);
-					g_debug ("(%s) - host: %s", __func__, *host);
-					*port = atoi(items[1]);
-					g_debug ("(%s) - host: %d", __func__, *port);
-				}
-				 g_strfreev(items);
-				 if (err)
-					 g_error_free(err);
-				 return;
-			} else
-				g_debug ("(%s) - Parsing server: %s, default port: %d failed", __func__, server, defaultport);
-		}
+			if (err)
+				g_error_free(err);
+			//g_debug ("(%s) - Using remmina_public_get_server_port_old to parse the address", __func__);
+			//remmina_public_get_server_port_old (server, defaultport, host, port);
+		} else {
 
-		*host = g_strdup(g_network_address_get_hostname (address));
-		*port = g_network_address_get_port (address);
-		if (err)
-			g_error_free(err);
+			*host = g_strdup(g_network_address_get_hostname (address));
+			*port = g_network_address_get_port (address);
+		}
 	} else
 		*host = NULL;
 
 	if (port == 0)
 		*port = defaultport;
+
+	g_debug ("(%s) - host: %s", __func__, *host);
+	g_debug ("(%s) - port: %d", __func__, *port);
 
 	return;
 }

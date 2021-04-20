@@ -405,6 +405,7 @@ static void remmina_plugin_vnc_update_quality(rfbClient *cl, gint quality)
 		cl->appData.qualityLevel = 1;
 		break;
 	}
+	REMMINA_PLUGIN_DEBUG("Quality: %d", quality);
 }
 
 static void remmina_plugin_vnc_update_colordepth(rfbClient *cl, gint colordepth)
@@ -1165,6 +1166,7 @@ static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 		host = remmina_plugin_service->protocol_plugin_start_direct_tunnel(gp, 5900, TRUE);
 
 		if (host == NULL) {
+			REMMINA_PLUGIN_DEBUG("host is null");
 			gpdata->connected = FALSE;
 			break;
 		}
@@ -1186,7 +1188,11 @@ static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 			cl = rfbGetClient(8, 3, 4);
 			break;
 		}
+		REMMINA_PLUGIN_DEBUG("Color depth: %d", colordepth);
 		cl->MallocFrameBuffer = remmina_plugin_vnc_rfb_allocfb;
+		cl->canHandleNewFBSize = TRUE;
+		cl->GetPassword = remmina_plugin_vnc_rfb_password;
+		cl->GetCredential = remmina_plugin_vnc_rfb_credential;
 		cl->GotFrameBufferUpdate = remmina_plugin_vnc_rfb_updatefb;
 		/**
 		 * @fixme we have to implement FinishedFrameBufferUpdate
@@ -1194,27 +1200,23 @@ static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 		 * updates.
 		 * cl->FinishedFrameBufferUpdate = remmina_plugin_vnc_rfb_finished;
 		 */
-		cl->FinishedFrameBufferUpdate = remmina_plugin_vnc_rfb_finished;
-		cl->GetPassword = remmina_plugin_vnc_rfb_password;
-		cl->GetCredential = remmina_plugin_vnc_rfb_credential;
-		cl->GotCursorShape = remmina_plugin_vnc_rfb_cursor_shape;
 		/**
 		 * @fixme we have to implement HandleKeyboardLedState
 		 * cl->HandleKeyboardLedState = remmina_plugin_vnc_rfb_led_state
 		 */
 		cl->HandleKeyboardLedState = remmina_plugin_vnc_rfb_led_state;
-		cl->HandleTextChat = remmina_plugin_vnc_rfb_chat;
 		cl->GotXCutText = (
 			remmina_plugin_service->file_get_int(remminafile, "disableclipboard", FALSE) ?
 			NULL : remmina_plugin_vnc_rfb_cuttext);
+		cl->GotCursorShape = remmina_plugin_vnc_rfb_cursor_shape;
 		cl->Bell = remmina_plugin_vnc_rfb_bell;
+		cl->HandleTextChat = remmina_plugin_vnc_rfb_chat;
 		/**
 		 * @fixme we have to implement HandleXvpMsg
 		 * cl->HandleXvpMsg = remmina_plugin_vnc_rfb_handle_xvp;
 		 */
 
 
-		cl->canHandleNewFBSize = TRUE;
 		rfbClientSetClientData(cl, NULL, gp);
 
 		if (host[0] == '\0') {
@@ -1274,8 +1276,10 @@ static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 
 		if (rfbInitClient(cl, NULL, NULL))
 			break;
+		else
+			REMMINA_PLUGIN_DEBUG("Client initialization failed");
 
-		/* If the authentication is not called, it has to be a fatel error and must quit */
+		/* If the authentication is not called, it has to be a fatal error and must quit */
 		if (!gpdata->auth_called) {
 			gpdata->connected = FALSE;
 			break;
