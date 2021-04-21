@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-04-21 15:06+0000\n"
+"POT-Creation-Date: 2021-04-21 21:34+0000\n"
 "PO-Revision-Date: 2021-01-28 10:34+0000\n"
 "Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
 "Language-Team: Telugu <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -298,14 +298,14 @@ msgstr ""
 
 #: src/remmina_ssh_plugin.c:1410 src/remmina_message_panel.c:330
 #: src/remmina_sftp_plugin.c:345 src/remmina_file_editor.c:960
-#: plugins/www/www_plugin.c:871 plugins/vnc/vnc_plugin.c:1932
-#: plugins/vnc/vnc_plugin.c:1952 plugins/rdp/rdp_plugin.c:2548
+#: plugins/www/www_plugin.c:871 plugins/vnc/vnc_plugin.c:1950
+#: plugins/vnc/vnc_plugin.c:1970 plugins/rdp/rdp_plugin.c:2548
 #: plugins/nx/nx_plugin.c:730 data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1411 plugins/vnc/vnc_plugin.c:1933
-#: plugins/vnc/vnc_plugin.c:1953 plugins/spice/spice_plugin.c:576
+#: src/remmina_ssh_plugin.c:1411 plugins/vnc/vnc_plugin.c:1951
+#: plugins/vnc/vnc_plugin.c:1971 plugins/spice/spice_plugin.c:576
 #: plugins/nx/nx_plugin.c:731
 msgid "User password"
 msgstr ""
@@ -483,7 +483,7 @@ msgstr ""
 msgid "Go to parent folder"
 msgstr ""
 
-#: src/remmina_ftp_client.c:758 plugins/vnc/vnc_plugin.c:1990
+#: src/remmina_ftp_client.c:758 plugins/vnc/vnc_plugin.c:2008
 #: plugins/rdp/rdp_plugin.c:2629
 msgid "Refresh"
 msgstr ""
@@ -1615,7 +1615,7 @@ msgstr ""
 msgid "Ignore TLS errors"
 msgstr ""
 
-#: plugins/www/www_plugin.c:896 plugins/vnc/vnc_plugin.c:1977
+#: plugins/www/www_plugin.c:896 plugins/vnc/vnc_plugin.c:1995
 #: plugins/spice/spice_plugin.c:604 plugins/rdp/rdp_plugin.c:2610
 #: plugins/nx/nx_plugin.c:752
 msgid "Forget passwords after use"
@@ -1672,96 +1672,105 @@ msgstr ""
 msgid "Please retry after turning on encryption for this profile."
 msgstr ""
 
-#: plugins/vnc/vnc_plugin.c:1895 plugins/rdp/rdp_plugin.c:2403
+#: plugins/vnc/vnc_plugin.c:1903 plugins/rdp/rdp_plugin.c:2403
 msgid "True colour (32 bpp)"
 msgstr ""
 
-#: plugins/vnc/vnc_plugin.c:1896 plugins/rdp/rdp_plugin.c:2405
+#: plugins/vnc/vnc_plugin.c:1904 plugins/rdp/rdp_plugin.c:2405
 msgid "High colour (16 bpp)"
 msgstr ""
 
-#: plugins/vnc/vnc_plugin.c:1897 plugins/rdp/rdp_plugin.c:2407
+#: plugins/vnc/vnc_plugin.c:1905 plugins/rdp/rdp_plugin.c:2407
 msgid "256 colours (8 bpp)"
 msgstr ""
 
-#: plugins/vnc/vnc_plugin.c:1904 plugins/rdp/rdp_plugin.c:2431
+#: plugins/vnc/vnc_plugin.c:1912 plugins/rdp/rdp_plugin.c:2431
 #: plugins/rdp/rdp_settings.c:273 plugins/nx/nx_plugin.c:713
 msgid "Best (slowest)"
 msgstr ""
 
-#: plugins/vnc/vnc_plugin.c:1905 plugins/rdp/rdp_plugin.c:2430
+#: plugins/vnc/vnc_plugin.c:1913 plugins/rdp/rdp_plugin.c:2430
 #: plugins/rdp/rdp_settings.c:271 plugins/nx/nx_plugin.c:712
 msgid "Good"
 msgstr ""
 
-#: plugins/vnc/vnc_plugin.c:1906 plugins/rdp/rdp_plugin.c:2429
+#: plugins/vnc/vnc_plugin.c:1914 plugins/rdp/rdp_plugin.c:2429
 #: plugins/rdp/rdp_settings.c:269 plugins/nx/nx_plugin.c:711
 msgid "Medium"
 msgstr ""
 
-#: plugins/vnc/vnc_plugin.c:1907 plugins/rdp/rdp_plugin.c:2428
+#: plugins/vnc/vnc_plugin.c:1915 plugins/rdp/rdp_plugin.c:2428
 #: plugins/rdp/rdp_settings.c:267 plugins/nx/nx_plugin.c:710
 msgid "Poor (fastest)"
 msgstr ""
 
-#: plugins/vnc/vnc_plugin.c:1912
+#: plugins/vnc/vnc_plugin.c:1920
 msgid ""
-"Connect to VNC using a repeater:\n"
-"  • ID:123456789\n"
-"  • In server use REPEATER-IP:REPEATER-PORT\n"
-"  • From the remote VNC server, you will connect to\n"
-"    the repeater, e.g. with x11vnc:\n"
-"    x11vnc -connect repeater=ID:123456789+192.168.1.28:5500"
+"<tt><big>Supported formats:\n"
+"  • server\n"
+"  • server:port\n"
+"  • server:[port]  • ID:numeric-id</big></tt>"
 msgstr ""
 
-#: plugins/vnc/vnc_plugin.c:1931
+#: plugins/vnc/vnc_plugin.c:1929
+msgid ""
+"Connect to VNC using a repeater:\n"
+"  • The server field must contain the repeater ID, e.g. ID:123456789\n"
+"  • The repeater field have to be set to the repeater IP and port, like:\n"
+"    10.10.10.12:5901\n"
+"  • From the remote VNC server, you will connect to\n"
+"    the repeater, e.g. with x11vnc:\n"
+"    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
+msgstr ""
+
+#: plugins/vnc/vnc_plugin.c:1949
 msgid "Repeater"
 msgstr ""
 
-#: plugins/vnc/vnc_plugin.c:1934 plugins/vnc/vnc_plugin.c:1954
+#: plugins/vnc/vnc_plugin.c:1952 plugins/vnc/vnc_plugin.c:1972
 #: plugins/xdmcp/xdmcp_plugin.c:369 plugins/rdp/rdp_plugin.c:2556
 msgid "Colour depth"
 msgstr ""
 
-#: plugins/vnc/vnc_plugin.c:1935 plugins/vnc/vnc_plugin.c:1955
+#: plugins/vnc/vnc_plugin.c:1953 plugins/vnc/vnc_plugin.c:1973
 #: plugins/rdp/rdp_plugin.c:2573 plugins/nx/nx_plugin.c:733
 msgid "Quality"
 msgstr ""
 
-#: plugins/vnc/vnc_plugin.c:1951
+#: plugins/vnc/vnc_plugin.c:1969
 msgid "Listen on port"
 msgstr ""
 
-#: plugins/vnc/vnc_plugin.c:1971
+#: plugins/vnc/vnc_plugin.c:1989
 msgid "Show remote cursor"
 msgstr ""
 
-#: plugins/vnc/vnc_plugin.c:1972 plugins/vnc/vnc_plugin.c:1988
+#: plugins/vnc/vnc_plugin.c:1990 plugins/vnc/vnc_plugin.c:2006
 #: plugins/spice/spice_plugin.c:607 plugins/spice/spice_plugin.c:615
 msgid "View only"
 msgstr ""
 
-#: plugins/vnc/vnc_plugin.c:1973 plugins/rdp/rdp_plugin.c:2607
+#: plugins/vnc/vnc_plugin.c:1991 plugins/rdp/rdp_plugin.c:2607
 msgid "Turn off clipboard sync"
 msgstr ""
 
-#: plugins/vnc/vnc_plugin.c:1974
+#: plugins/vnc/vnc_plugin.c:1992
 msgid "Turn off encryption"
 msgstr ""
 
-#: plugins/vnc/vnc_plugin.c:1975 plugins/vnc/vnc_plugin.c:1989
+#: plugins/vnc/vnc_plugin.c:1993 plugins/vnc/vnc_plugin.c:2007
 msgid "Prevent local interaction on the server"
 msgstr ""
 
-#: plugins/vnc/vnc_plugin.c:1976
+#: plugins/vnc/vnc_plugin.c:1994
 msgid "Ignore remote bell messages"
 msgstr ""
 
-#: plugins/vnc/vnc_plugin.c:1991
+#: plugins/vnc/vnc_plugin.c:2009
 msgid "Open Chat…"
 msgstr ""
 
-#: plugins/vnc/vnc_plugin.c:1992 plugins/spice/spice_plugin.c:617
+#: plugins/vnc/vnc_plugin.c:2010 plugins/spice/spice_plugin.c:617
 #: plugins/xdmcp/xdmcp_plugin.c:381 plugins/rdp/rdp_plugin.c:2633
 msgid "Send Ctrl+Alt+Delete"
 msgstr ""
