@@ -1196,7 +1196,7 @@ static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 		cl->GotFrameBufferUpdate = remmina_plugin_vnc_rfb_updatefb;
 		/**
 		 * @fixme we have to implement FinishedFrameBufferUpdate
-		 * This is to know when the server has finished to send a batch of fram buffer
+		 * This is to know when the server has finished to send a batch of frame buffer
 		 * updates.
 		 * cl->FinishedFrameBufferUpdate = remmina_plugin_vnc_rfb_finished;
 		 */
@@ -1215,7 +1215,6 @@ static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 		 * @fixme we have to implement HandleXvpMsg
 		 * cl->HandleXvpMsg = remmina_plugin_vnc_rfb_handle_xvp;
 		 */
-
 
 		rfbClientSetClientData(cl, NULL, gp);
 
@@ -1245,10 +1244,19 @@ static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 
 		if (remmina_plugin_service->file_get_string(remminafile, "proxy")) {
 			remmina_plugin_service->get_server_port(
-					remmina_plugin_service->file_get_string(remminafile, "proxy"),
+					remmina_plugin_service->file_get_string(remminafile, "server"),
 					5900,
 					&cl->destHost,
 					&cl->destPort);
+			remmina_plugin_service->get_server_port(
+					remmina_plugin_service->file_get_string(remminafile, "proxy"),
+					5900,
+					&cl->serverHost,
+					&cl->serverPort);
+			REMMINA_PLUGIN_DEBUG("cl->serverHost: %s", cl->serverHost);
+			REMMINA_PLUGIN_DEBUG("cl->serverPort: %d", cl->serverPort);
+			REMMINA_PLUGIN_DEBUG("cl->destHost: %s", cl->destHost);
+			REMMINA_PLUGIN_DEBUG("cl->destPort: %d", cl->destPort);
 		}
 
 		cl->appData.useRemoteCursor = (
@@ -1908,13 +1916,23 @@ static gpointer quality_list[] =
 	NULL
 };
 
+static gchar server_tooltip[] =
+	N_("<tt><big>"
+	   "Supported formats:\n"
+	   "  • server\n"
+	   "  • server:port\n"
+	   "  • server:[port]"
+	   "  • ID:numeric-id"
+	   "</big></tt>");
+
 static gchar repeater_tooltip[] =
 	N_("Connect to VNC using a repeater:\n"
-	   "  • ID:123456789\n"
-	   "  • In server use REPEATER-IP:REPEATER-PORT\n"
+	   "  • The server field must contain the repeater ID, e.g. ID:123456789\n"
+	   "  • The repeater field have to be set to the repeater IP and port, like:\n"
+	   "    10.10.10.12:5901\n"
 	   "  • From the remote VNC server, you will connect to\n"
 	   "    the repeater, e.g. with x11vnc:\n"
-	   "    x11vnc -connect repeater=ID:123456789+192.168.1.28:5500");
+	   "    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500");
 
 /* Array of RemminaProtocolSetting for basic settings.
  * Each item is composed by:
