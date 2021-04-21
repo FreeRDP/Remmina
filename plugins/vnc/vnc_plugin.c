@@ -1244,23 +1244,11 @@ static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 		host = NULL;
 
 		if (remmina_plugin_service->file_get_string(remminafile, "proxy")) {
-			/*
-			* cl->destHost = cl->serverHost;
-			* cl->destPort = cl->serverPort;
-			* remmina_plugin_service->get_server_port(remmina_plugin_service->file_get_string(remminafile, "proxy"), 5900,
-			*				 &s, &cl->serverPort);
-			* cl->serverHost = g_strdup(s);
-			* g_free(s);
-			* */
-			//cl->destHost = "ID";
-			//cl->destPort = 123456789;
 			remmina_plugin_service->get_server_port(
 					remmina_plugin_service->file_get_string(remminafile, "proxy"),
 					5900,
 					&cl->destHost,
 					&cl->destPort);
-
-
 		}
 
 		cl->appData.useRemoteCursor = (
@@ -1920,6 +1908,14 @@ static gpointer quality_list[] =
 	NULL
 };
 
+static gchar repeater_tooltip[] =
+	N_("Connect to VNC using a repeater:\n"
+	   "  • ID:123456789\n"
+	   "  • In server use REPEATER-IP:REPEATER-PORT\n"
+	   "  • From the remote VNC server, you will connect to\n"
+	   "    the repeater, e.g. with x11vnc:\n"
+	   "    x11vnc -connect repeater=ID:123456789+192.168.1.28:5500");
+
 /* Array of RemminaProtocolSetting for basic settings.
  * Each item is composed by:
  * a) RemminaProtocolSettingType for setting type
@@ -1932,7 +1928,7 @@ static gpointer quality_list[] =
 static const RemminaProtocolSetting remmina_plugin_vnc_basic_settings[] =
 {
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER,	  "server",	NULL,		     FALSE, "_rfb._tcp",     NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "proxy",	N_("Repeater"),	     FALSE, NULL,	     NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "proxy",	N_("Repeater"),	     FALSE, NULL,	     repeater_tooltip },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "username",	N_("Username"),	     FALSE, NULL,	     NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "password",	N_("User password"), FALSE, NULL,	     NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "colordepth", N_("Colour depth"),   FALSE, colordepth_list, NULL },
