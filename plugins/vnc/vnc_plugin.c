@@ -1244,12 +1244,11 @@ static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 		host = NULL;
 
 		if (remmina_plugin_service->file_get_string(remminafile, "proxy")) {
-			cl->destHost = cl->serverHost;
-			cl->destPort = cl->serverPort;
-			remmina_plugin_service->get_server_port(remmina_plugin_service->file_get_string(remminafile, "proxy"), 5900,
-								&s, &cl->serverPort);
-			cl->serverHost = g_strdup(s);
-			g_free(s);
+			remmina_plugin_service->get_server_port(
+					remmina_plugin_service->file_get_string(remminafile, "proxy"),
+					5900,
+					&cl->destHost,
+					&cl->destPort);
 		}
 
 		cl->appData.useRemoteCursor = (
@@ -1274,13 +1273,15 @@ static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 			vnc_encryption_disable_requested = FALSE;
 		}
 
-		if (rfbInitClient(cl, NULL, NULL))
+		if (rfbInitClient(cl, NULL, NULL)) {
+			REMMINA_PLUGIN_DEBUG("Client initialization successfull");
 			break;
-		else
+		} else
 			REMMINA_PLUGIN_DEBUG("Client initialization failed");
 
 		/* If the authentication is not called, it has to be a fatal error and must quit */
 		if (!gpdata->auth_called) {
+			REMMINA_PLUGIN_DEBUG("Client not authenticated");
 			gpdata->connected = FALSE;
 			break;
 		}
@@ -1307,6 +1308,7 @@ static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 	}
 
 	if (!gpdata->connected) {
+		REMMINA_PLUGIN_DEBUG("Client not connected with error: %s", vnc_error);
 		if (cl && !gpdata->auth_called && !(remmina_plugin_service->protocol_plugin_has_error(gp)))
 			remmina_plugin_service->protocol_plugin_set_error(gp, "%s", vnc_error);
 		gpdata->running = FALSE;
@@ -1316,6 +1318,7 @@ static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 		return FALSE;
 	}
 
+	REMMINA_PLUGIN_DEBUG("Client connected");
 	remmina_plugin_service->protocol_plugin_init_save_cred(gp);
 
 	gpdata->client = cl;
@@ -1905,6 +1908,14 @@ static gpointer quality_list[] =
 	NULL
 };
 
+static gchar repeater_tooltip[] =
+	N_("Connect to VNC using a repeater:\n"
+	   "  • ID:123456789\n"
+	   "  • In server use REPEATER-IP:REPEATER-PORT\n"
+	   "  • From the remote VNC server, you will connect to\n"
+	   "    the repeater, e.g. with x11vnc:\n"
+	   "    x11vnc -connect repeater=ID:123456789+192.168.1.28:5500");
+
 /* Array of RemminaProtocolSetting for basic settings.
  * Each item is composed by:
  * a) RemminaProtocolSettingType for setting type
@@ -1917,7 +1928,7 @@ static gpointer quality_list[] =
 static const RemminaProtocolSetting remmina_plugin_vnc_basic_settings[] =
 {
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER,	  "server",	NULL,		     FALSE, "_rfb._tcp",     NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "proxy",	N_("Repeater"),	     FALSE, NULL,	     NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "proxy",	N_("Repeater"),	     FALSE, NULL,	     repeater_tooltip },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "username",	N_("Username"),	     FALSE, NULL,	     NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "password",	N_("User password"), FALSE, NULL,	     NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "colordepth", N_("Colour depth"),   FALSE, colordepth_list, NULL },
