@@ -1921,7 +1921,7 @@ static gchar server_tooltip[] =
 	   "Supported formats:\n"
 	   "  • server\n"
 	   "  • server:port\n"
-	   "  • server:[port]"
+	   "  • server:[port]\n"
 	   "  • ID:numeric-id"
 	   "</big></tt>");
 
