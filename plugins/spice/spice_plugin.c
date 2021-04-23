@@ -405,7 +405,7 @@ static void remmina_plugin_spice_display_ready_cb(GObject *display, GParamSpec *
 #  if SPICE_GTK_CHECK_VERSION(0, 31, 0)
 		SpiceImageCompression imagecompression = remmina_plugin_service->file_get_int(remminafile, "imagecompression", 0);
 		if (imagecompression) {
-#    if SPICE_GTK_CHECK_VERSION(0, 35, 0)            
+#    if SPICE_GTK_CHECK_VERSION(0, 35, 0)
 			spice_display_channel_change_preferred_compression(SPICE_CHANNEL(gpdata->display_channel),
 				imagecompression);
 #    else
@@ -641,7 +641,9 @@ static RemminaProtocolPlugin remmina_plugin_spice =
 	remmina_plugin_spice_query_feature,                                     // Query for available features
 	remmina_plugin_spice_call_feature,                                      // Call a feature
 	remmina_plugin_spice_keystroke,                                         // Send a keystroke
-	NULL                                                                    // No screenshot support available
+	NULL,                                                                   // No screenshot support available
+	NULL,                                                                   // RCW map event
+	NULL                                                                    // RCW unmap event
 };
 
 void remmina_plugin_spice_remove_list_option(gpointer *option_list, const gchar *option_to_remove) {

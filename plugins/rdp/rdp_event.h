@@ -47,5 +47,7 @@ void remmina_rdp_event_update_rect(RemminaProtocolWidget *gp, gint x, gint y, gi
 void remmina_rdp_event_queue_ui_async(RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *ui);
 int remmina_rdp_event_queue_ui_sync_retint(RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *ui);
 void *remmina_rdp_event_queue_ui_sync_retptr(RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *ui);
+gboolean remmina_rdp_event_on_map(RemminaProtocolWidget *gp);
+gboolean remmina_rdp_event_on_unmap(RemminaProtocolWidget *gp);
 
 G_END_DECLS

@@ -287,7 +287,9 @@ static RemminaProtocolPlugin remmina_plugin = {
 	NULL,                                           // Query for available features
 	NULL,                                           // Call a feature
 	NULL,                                           // Send a keystroke
-	NULL                                            // No screenshot support available
+	NULL,                                           // No screenshot support available
+	NULL,                                           // RCW map event
+	NULL                                            // RCW unmap event
 };
 
 G_MODULE_EXPORT gboolean remmina_plugin_entry(RemminaPluginService *service)

@@ -700,6 +700,30 @@ gboolean remmina_protocol_widget_plugin_screenshot(RemminaProtocolWidget *gp, Re
 	return gp->priv->plugin->get_plugin_screenshot(gp, rpsd);
 }
 
+gboolean remmina_protocol_widget_map_event(RemminaProtocolWidget *gp)
+{
+	TRACE_CALL(__func__);
+	if (!gp->priv->plugin->map_event) {
+		REMMINA_DEBUG("Map plugin function not implemented");
+		return FALSE;
+	}
+
+	REMMINA_DEBUG ("Calling plugin mapping function");
+	return gp->priv->plugin->map_event(gp);
+}
+
+gboolean remmina_protocol_widget_unmap_event(RemminaProtocolWidget *gp)
+{
+	TRACE_CALL(__func__);
+	if (!gp->priv->plugin->get_plugin_screenshot) {
+		REMMINA_DEBUG("Unmap plugin function not implemented");
+		return FALSE;
+	}
+
+	REMMINA_DEBUG ("Calling plugin unmapping function");
+	return gp->priv->plugin->unmap_event(gp);
+}
+
 void remmina_protocol_widget_emit_signal(RemminaProtocolWidget *gp, const gchar *signal_name)
 {
 	TRACE_CALL(__func__);

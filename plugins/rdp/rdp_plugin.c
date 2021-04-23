@@ -2658,7 +2658,9 @@ static RemminaProtocolPlugin remmina_rdp =
 	remmina_rdp_query_feature,                      // Query for available features
 	remmina_rdp_call_feature,                       // Call a feature
 	remmina_rdp_keystroke,                          // Send a keystroke
-	remmina_rdp_get_screenshot                      // Screenshot
+	remmina_rdp_get_screenshot,                     // Screenshot
+	remmina_rdp_event_on_map,                       // RCW map event
+	remmina_rdp_event_on_unmap                      // RCW unmap event
 };
 
 /* File plugin definition and features */
