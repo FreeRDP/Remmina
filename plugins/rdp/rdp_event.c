@@ -45,7 +45,7 @@
 #include <cairo/cairo-xlib.h>
 #include <freerdp/locale/keyboard.h>
 
-static gboolean remmina_rdp_event_on_map(GtkWindow *window, GdkEvent *event, RemminaProtocolWidget *gp)
+gboolean remmina_rdp_event_on_map(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
@@ -62,7 +62,7 @@ static gboolean remmina_rdp_event_on_map(GtkWindow *window, GdkEvent *event, Rem
 	return FALSE;
 }
 
-static gboolean remmina_rdp_event_on_unmap(GtkWindow *window, GdkEvent *event, RemminaProtocolWidget *gp)
+gboolean remmina_rdp_event_on_unmap(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
@@ -70,6 +70,13 @@ static gboolean remmina_rdp_event_on_unmap(GtkWindow *window, GdkEvent *event, R
 
 	if (rfi == NULL)
 		return false;
+
+	GtkWidget *toplevel = gtk_widget_get_toplevel(GTK_WIDGET(gp));
+	GdkWindow *window = gtk_widget_get_window(toplevel);
+	if (gdk_window_get_fullscreen_mode(window) == GDK_FULLSCREEN_ON_ALL_MONITORS) {
+		REMMINA_PLUGIN_DEBUG("Unmap event received, but cannot enable TS_SUPPRESS_OUTPUT_PDU when in fullscreen");
+		return FALSE;
+	}
 
 	gdi = ((rdpContext *)rfi)->gdi;
 
@@ -82,6 +89,7 @@ static gboolean remmina_rdp_event_on_unmap(GtkWindow *window, GdkEvent *event, R
 static gboolean remmina_rdp_event_on_focus_in(GtkWidget *widget, GdkEventKey *event, RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
+
 	rfContext *rfi = GET_PLUGIN_DATA(gp);
 	rdpInput *input;
 	GdkModifierType state;
@@ -92,6 +100,9 @@ static gboolean remmina_rdp_event_on_focus_in(GtkWidget *widget, GdkEventKey *ev
 	GdkDeviceManager *manager;
 #endif
 	GdkDevice *keyboard = NULL;
+
+	const gchar *wname = gtk_widget_get_name(gtk_widget_get_toplevel(widget));
+	REMMINA_PLUGIN_DEBUG("Top level name is: %s", wname);
 
 	if (!rfi || !rfi->connected || rfi->is_reconnecting)
 		return FALSE;
@@ -885,10 +896,16 @@ void remmina_rdp_event_init(RemminaProtocolWidget *gp)
 			 G_CALLBACK(remmina_rdp_event_on_key), gp);
 	g_signal_connect(G_OBJECT(rfi->drawing_area), "focus-in-event",
 			 G_CALLBACK(remmina_rdp_event_on_focus_in), gp);
-	g_signal_connect(G_OBJECT(gtk_widget_get_toplevel(rfi->drawing_area)), "map-event",
-			 G_CALLBACK(remmina_rdp_event_on_map), gp);
-	g_signal_connect(G_OBJECT(gtk_widget_get_toplevel(rfi->drawing_area)), "unmap-event",
-			 G_CALLBACK(remmina_rdp_event_on_unmap), gp);
+	/** Fixme: This comment
+	 * needed for TS_SUPPRESS_OUTPUT_PDU
+	 * But it works only when we stay in the same window mode, if we switch to
+	 * fullscreen, for instance, the object refernce is lost, so we loose these
+	 * events.
+	 */
+	//g_signal_connect(G_OBJECT(gtk_widget_get_toplevel(rfi->drawing_area)), "map-event",
+	// G_CALLBACK(remmina_rdp_event_on_map), gp);
+	//g_signal_connect(G_OBJECT(gtk_widget_get_toplevel(rfi->drawing_area)), "unmap-event",
+	// G_CALLBACK(remmina_rdp_event_on_unmap), gp);
 
 	if (!remmina_plugin_service->file_get_int(remminafile, "disableclipboard", FALSE)) {
 		clipboard = gtk_widget_get_clipboard(rfi->drawing_area, GDK_SELECTION_CLIPBOARD);

@@ -1482,7 +1482,9 @@ static RemminaProtocolPlugin remmina_plugin_ssh =
 	remmina_plugin_ssh_query_feature,               /**< Query for available features */
 	remmina_plugin_ssh_call_feature,                /**< Call a feature */
 	remmina_ssh_keystroke,                          /**< Send a keystroke */
-	NULL                                            /**< No screenshot support available */
+	NULL,                                           /**< No screenshot support available */
+	NULL,                                           /**< RCW map event */
+	NULL                                            /**< RCW unmap event */
 };
 
 
