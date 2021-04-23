@@ -376,27 +376,38 @@ if(NOT GTK3_FOUND)
 endif(NOT GTK3_FOUND)
 include_directories(${GTK3_INCLUDE_DIRS})
 
-pkg_check_modules(wayland-client REQUIRED wayland-client)
-if(NOT wayland-client_FOUND)
-    message(FATAL_ERROR "Wayland library not found")
-endif(NOT wayland-client_FOUND)
-
-include_directories(${wayland-client_INCLUDE_DIRS})
-
-set(GTK_LIBRARIES
-    ${GTK3_LIBRARY}
-    ${GDK3_LIBRARY}
-    ${GDKPixbuf_LIBRARY}
-    ${Pango_LIBRARY}
-    ${Cairo_LIBRARY}
-    ${GObject_LIBRARY}
-    ${GLib_LIBRARY}
-    ${GIO_LIBRARY}
-    ${Gmodule_LIBRARIES}
-    ${GMODULE_LIBRARY}
-    ${wayland-client_LIBRARIES}
-)
-
+pkg_check_modules(wayland-client wayland-client)
+if(wayland-client_FOUND)
+    set(GTK_LIBRARIES
+        ${GTK3_LIBRARY}
+        ${GDK3_LIBRARY}
+        ${GDKPixbuf_LIBRARY}
+        ${Pango_LIBRARY}
+        ${Cairo_LIBRARY}
+        ${GObject_LIBRARY}
+        ${GLib_LIBRARY}
+        ${GIO_LIBRARY}
+        ${Gmodule_LIBRARIES}
+        ${GMODULE_LIBRARY}
+        ${wayland-client_LIBRARIES}
+    )
+    include_directories(${wayland-client_INCLUDE_DIRS})
+    message(STATUS "Wayland library found.")
+else()
+    set(GTK_LIBRARIES
+        ${GTK3_LIBRARY}
+        ${GDK3_LIBRARY}
+        ${GDKPixbuf_LIBRARY}
+        ${Pango_LIBRARY}
+        ${Cairo_LIBRARY}
+        ${GObject_LIBRARY}
+        ${GLib_LIBRARY}
+        ${GIO_LIBRARY}
+        ${Gmodule_LIBRARIES}
+        ${GMODULE_LIBRARY}
+    )
+    message(STATUS "Wayland library not found.")
+endif()
 
 set(CMAKE_THREAD_PREFER_PTHREAD TRUE)
 find_package(Threads REQUIRED)
