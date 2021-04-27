@@ -662,16 +662,27 @@ static BOOL remmina_rdp_post_connect(freerdp *instance)
 
 	rf_register_graphics(instance->context->graphics);
 
-	if (rfi->bpp == 32) {
-		freerdp_local_color_format = PIXEL_FORMAT_BGRA32;
-		rfi->cairo_format = CAIRO_FORMAT_ARGB32;
-	} else if (rfi->bpp == 24) {
-		/* CAIRO_FORMAT_RGB24 is 32bit aligned, so we map it to libfreerdp’s PIXEL_FORMAT_BGRX32 */
-		freerdp_local_color_format = PIXEL_FORMAT_BGRX32;
-		rfi->cairo_format = CAIRO_FORMAT_RGB24;
-	} else {
-		freerdp_local_color_format = PIXEL_FORMAT_RGB16;
-		rfi->cairo_format = CAIRO_FORMAT_RGB16_565;
+	REMMINA_PLUGIN_DEBUG("bpp: %d", rfi->bpp);
+	switch (rfi->bpp) {
+		case 24:
+			REMMINA_PLUGIN_DEBUG("CAIRO_FORMAT_RGB24");
+			freerdp_local_color_format = PIXEL_FORMAT_BGRX32;
+			rfi->cairo_format = CAIRO_FORMAT_RGB24;
+			break;
+		case 32:
+			/** Do not use alpha as it's not used with the desktop
+			 * CAIRO_FORMAT_ARGB32
+			 * See https://gitlab.com/Remmina/Remmina/-/issues/2456
+			 */
+			REMMINA_PLUGIN_DEBUG("CAIRO_FORMAT_RGB24");
+			freerdp_local_color_format = PIXEL_FORMAT_BGRA32;
+			rfi->cairo_format = CAIRO_FORMAT_RGB24;
+			break;
+		default:
+			REMMINA_PLUGIN_DEBUG("CAIRO_FORMAT_RGB16_565");
+			freerdp_local_color_format = PIXEL_FORMAT_RGB16;
+			rfi->cairo_format = CAIRO_FORMAT_RGB16_565;
+			break;
 	}
 
 	if (!gdi_init(instance, freerdp_local_color_format)) {
@@ -1284,6 +1295,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 	freerdp_settings_set_uint32(rfi->settings, FreeRDP_ColorDepth,remmina_plugin_service->file_get_int(remminafile, "colordepth", 99));
 
 	freerdp_settings_set_bool(rfi->settings, FreeRDP_SoftwareGdi, TRUE);
+	REMMINA_PLUGIN_DEBUG("gfx_h264_available: %d", gfx_h264_available);
 
 	/* Avoid using H.264 modes if they are not available on libfreerdp */
 	if (!gfx_h264_available && (freerdp_settings_get_bool(rfi->settings, FreeRDP_ColorDepth) == 65 || freerdp_settings_get_bool(rfi->settings, FreeRDP_ColorDepth == 66)))
@@ -1326,6 +1338,15 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 		freerdp_settings_set_bool(rfi->settings, FreeRDP_SupportGraphicsPipeline, TRUE);
 		freerdp_settings_set_bool(rfi->settings, FreeRDP_GfxH264, gfx_h264_available);
 		freerdp_settings_set_bool(rfi->settings, FreeRDP_GfxAVC444, gfx_h264_available);
+	}
+
+	if (freerdp_settings_get_bool(rfi->settings, FreeRDP_RemoteFxCodec) ||
+	    freerdp_settings_get_bool(rfi->settings, FreeRDP_NSCodec)       ||
+	    freerdp_settings_get_bool(rfi->settings, FreeRDP_SupportGraphicsPipeline) ) {
+		freerdp_settings_set_bool(rfi->settings, FreeRDP_FastPathOutput, TRUE);
+		freerdp_settings_set_bool(rfi->settings, FreeRDP_FrameMarkerCommandEnabled, TRUE);
+		freerdp_settings_set_uint32(rfi->settings, FreeRDP_ColorDepth, 32);
+		rfi->bpp = 32;
 	}
 
 	freerdp_settings_set_uint32(rfi->settings, FreeRDP_DesktopWidth, remmina_plugin_service->get_profile_remote_width(gp));
@@ -2746,8 +2767,10 @@ G_MODULE_EXPORT gboolean remmina_plugin_entry(RemminaPluginService *service)
 
 	if (buildconfig_strstr(freerdp_get_build_config(), "WITH_GFX_H264=ON")) {
 		gfx_h264_available = TRUE;
+		REMMINA_PLUGIN_DEBUG("gfx_h264_available: %d", gfx_h264_available);
 	} else {
 		gfx_h264_available = FALSE;
+		REMMINA_PLUGIN_DEBUG("gfx_h264_available: %d", gfx_h264_available);
 		/* Remove values 65 and 66 from colordepth_list array by shifting it */
 		gpointer *src, *dst;
 		dst = src = colordepth_list;
