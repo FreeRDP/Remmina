@@ -69,21 +69,28 @@
         "mkdir -p /app/lib/ffmpeg"
     ],
     "modules": [
+        "shared-modules/intltool/intltool-0.51.json",
         "shared-modules/dbus-glib/dbus-glib-0.110.json",
         "shared-modules/libappindicator/libappindicator-gtk3-12.10.json",
         {
-            "name": "vte",
+            "name" : "gtk-vnc",
             "buildsystem" : "meson",
-            "build-options" : {
-                "env" : {
-                    "CXXFLAGS" : "-fno-exceptions"
-                }
-            },
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://download.gnome.org/sources/vte/0.60/vte-0.60.0.tar.xz",
-                    "sha256" : "72d1955eb40b4475b858892813a79545cee34409bac2af470606fb4b4d193a1b"
+                    "url" : "https://download.gnome.org/sources/gtk-vnc/1.2/gtk-vnc-1.2.0.tar.xz",
+                    "sha256" : "7aaf80040d47134a963742fb6c94e970fcb6bf52dc975d7ae542b2ef5f34b94a"
+                }
+            ]
+        },
+        {
+            "name": "vte",
+            "buildsystem" : "meson",
+            "sources" : [
+                {
+                    "type" : "archive",
+                    "url" : "https://download-fallback.gnome.org/sources/vte/0.64/vte-0.64.0.tar.xz",
+                    "sha256" : "c0c60b8dc343167437c86d984b0cf134df86034180ed70513f683006ada3ec41"
                 }
             ]
         },
@@ -474,6 +481,7 @@
                 "-DWITH_NEWS:BOOL=ON",
                 "-DCMAKE_INSTALL_LIBDIR:PATH=lib",
                 "-DWITH_FREERDP3:BOOL=OFF",
+                "-DWITH_GVNC:BOOL=ON",
                 "-DWITH_MANPAGES:BOOL=OFF"
             ],
             "sources": [
