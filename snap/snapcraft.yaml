@@ -21,7 +21,7 @@ slots:
 apps:
   remmina:
     command: bin/remmina
-    extensions: [gnome-3-28]
+    extensions: [gnome-3-34]
     common-id: org.remmina.Remmina.desktop
     plugs:
       - alsa
@@ -166,6 +166,8 @@ parts:
       - libgcrypt20-dev
       - libsecret-1-dev
       - libgtk-3-dev
+      - libgtk-vnc-2.0-dev
+      - libgvnc-1.0-dev
       - libjson-glib-dev
       - libsodium-dev
       - libsoup2.4-dev
@@ -192,6 +194,7 @@ parts:
       - -DCMAKE_BUILD_TYPE=Release
       - -DWITH_NEWS:BOOL=ON
       - -DWITH_FREERDP3=OFF
+      - -DWITH_GVNC=ON
       - -DCMAKE_PREFIX_PATH=$SNAPCRAFT_STAGE/usr
       - -DSNAP_BUILD=on
 
@@ -292,10 +295,10 @@ parts:
   cleanup:
     after: [pulse-utils, freerdp, remmina, app]  # Make this part run last; list all your other parts here
     plugin: nil
-    build-snaps: [core18, gnome-3-28-1804, gtk-common-themes]  # List all content-snaps you're using here
+    build-snaps: [core18, gnome-3-34-1804, gtk-common-themes]  # List all content-snaps you're using here
     override-prime: |
       set -eux
-      for snap in "core18" "gnome-3-28-1804" "gtk-common-themes"; do  # List all content-snaps you're using here
+      for snap in "core18" "gnome-3-34-1804" "gtk-common-themes"; do  # List all content-snaps you're using here
         cd "/snap/$snap/current" && find . -type f,l -exec rm -f "$SNAPCRAFT_PRIME/{}" \;
       done
       for CRUFT in bug lintian man; do
