@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-04-27 09:38+0000\n"
+"POT-Creation-Date: 2021-05-03 15:25+0000\n"
 "PO-Revision-Date: 2021-02-10 03:50+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/remmina/"
@@ -1621,6 +1621,221 @@ msgstr "_Küldés"
 msgid "_Clear"
 msgstr "_Törlés"
 
+#: plugins/gvnc/gvnc_plugin_config.h:40
+#, fuzzy
+#| msgid "Remmina VNC Plugin"
+msgid "Remmina VNC plugin GNOME and KVM"
+msgstr "Remmina VNC bővítmény"
+
+#: plugins/gvnc/gvnc_plugin.c:455
+#, fuzzy, c-format
+#| msgid "Authentication type"
+msgid "Unsupported authentication type %u"
+msgstr "Hitelesítési típus"
+
+#: plugins/gvnc/gvnc_plugin.c:467
+#, fuzzy, c-format
+#| msgid "Authentication type"
+msgid "Authentication failure: %s"
+msgstr "Hitelesítési típus"
+
+#: plugins/gvnc/gvnc_plugin.c:513 plugins/vnc/vnc_plugin.c:819
+msgid "Enter VNC authentication credentials"
+msgstr "Adja meg a VNC hitelesítő adatokat"
+
+#: plugins/gvnc/gvnc_plugin.c:759
+#, fuzzy
+#| msgid "Use system proxy settings"
+msgid "Use server settings"
+msgstr "Rendszer proxy beállítások használata"
+
+#: plugins/gvnc/gvnc_plugin.c:760
+#, fuzzy
+#| msgid "True colour (24 bit)"
+msgid "True colour (24 bits)"
+msgstr "24 bites színmélység"
+
+#: plugins/gvnc/gvnc_plugin.c:761
+#, fuzzy
+#| msgid "High colour (16 bit)"
+msgid "High colour (16 bits)"
+msgstr "16 bites színmélység"
+
+#: plugins/gvnc/gvnc_plugin.c:762
+#, fuzzy
+#| msgid "High colour (16 bit)"
+msgid "Low colour (8 bits)"
+msgstr "16 bites színmélység"
+
+#: plugins/gvnc/gvnc_plugin.c:763
+#, fuzzy
+#| msgid "True colour (24 bit)"
+msgid "Ultra low colour (3 bits)"
+msgstr "24 bites színmélység"
+
+#: plugins/gvnc/gvnc_plugin.c:778
+#, fuzzy
+#| msgid "Enter VNC password"
+msgid "VNC password"
+msgstr "Adja meg a VNC jelszavát"
+
+#: plugins/gvnc/gvnc_plugin.c:779 plugins/vnc/vnc_plugin.c:1952
+#: plugins/vnc/vnc_plugin.c:1972 plugins/xdmcp/xdmcp_plugin.c:369
+#: plugins/rdp/rdp_plugin.c:2577
+msgid "Colour depth"
+msgstr "Színmélység"
+
+#: plugins/gvnc/gvnc_plugin.c:780
+#, fuzzy
+#| msgid "SSH compression"
+msgid "Use JPEG Compression"
+msgstr "SSH tömörítés"
+
+#: plugins/gvnc/gvnc_plugin.c:780
+#, fuzzy
+#| msgid "Browse the network to find a %s server"
+msgid "This might not work on all VNC servers"
+msgstr "Hálózat böngészése egy %s kiszolgáló kereséséhez"
+
+#: plugins/gvnc/gvnc_plugin.c:781
+msgid "Enable GTK-VNC debug"
+msgstr ""
+
+#: plugins/gvnc/gvnc_plugin.c:796 plugins/gvnc/gvnc_plugin.c:810
+#: plugins/spice/spice_plugin.c:603 plugins/spice/spice_plugin.c:616
+msgid "No clipboard sync"
+msgstr "Vágólap-szinkronizálás kikapcsolása"
+
+#: plugins/gvnc/gvnc_plugin.c:797 plugins/www/www_plugin.c:896
+#: plugins/vnc/vnc_plugin.c:1995 plugins/spice/spice_plugin.c:604
+#: plugins/rdp/rdp_plugin.c:2631 plugins/nx/nx_plugin.c:752
+msgid "Forget passwords after use"
+msgstr "Jelszó elfelejtés használat után"
+
+#: plugins/gvnc/gvnc_plugin.c:798 plugins/vnc/vnc_plugin.c:1994
+msgid "Ignore remote bell messages"
+msgstr ""
+
+#: plugins/gvnc/gvnc_plugin.c:799 plugins/spice/spice_plugin.c:605
+msgid "Enable audio channel"
+msgstr "Hangcsatorna engedélyezése"
+
+#: plugins/gvnc/gvnc_plugin.c:800 plugins/gvnc/gvnc_plugin.c:809
+#: plugins/vnc/vnc_plugin.c:1990 plugins/vnc/vnc_plugin.c:2006
+#: plugins/spice/spice_plugin.c:607 plugins/spice/spice_plugin.c:615
+msgid "View only"
+msgstr "Csak megtekintés"
+
+#: plugins/gvnc/gvnc_plugin.c:801
+#, fuzzy
+#| msgid "Per connection"
+msgid "Shared connection"
+msgstr "Kapcsolatonként"
+
+#: plugins/gvnc/gvnc_plugin.c:801
+msgid ""
+"If the server should try to share the desktop by leaving other clients "
+"connected"
+msgstr ""
+
+#: plugins/gvnc/gvnc_plugin.c:811
+#, fuzzy
+#| msgid "Send Ctrl+Alt+Del"
+msgid "Send Ctrl+Alt+_Del"
+msgstr "Ctrl+Alt+Delete küldése"
+
+#: plugins/gvnc/gvnc_plugin.c:812
+#, fuzzy
+#| msgid "Send Ctrl+Alt+Del"
+msgid "Send Ctrl+Alt+_Backspace"
+msgstr "Ctrl+Alt+Delete küldése"
+
+#: plugins/gvnc/gvnc_plugin.c:813
+#, fuzzy
+#| msgid "Send Ctrl+Alt+Del"
+msgid "Send Ctrl+Alt+_F1"
+msgstr "Ctrl+Alt+Delete küldése"
+
+#: plugins/gvnc/gvnc_plugin.c:814
+#, fuzzy
+#| msgid "Send Ctrl+Alt+Del"
+msgid "Send Ctrl+Alt+_F2"
+msgstr "Ctrl+Alt+Delete küldése"
+
+#: plugins/gvnc/gvnc_plugin.c:815
+#, fuzzy
+#| msgid "Send Ctrl+Alt+Del"
+msgid "Send Ctrl+Alt+_F3"
+msgstr "Ctrl+Alt+Delete küldése"
+
+#: plugins/gvnc/gvnc_plugin.c:816
+#, fuzzy
+#| msgid "Send Ctrl+Alt+Del"
+msgid "Send Ctrl+Alt+_F4"
+msgstr "Ctrl+Alt+Delete küldése"
+
+#: plugins/gvnc/gvnc_plugin.c:817
+#, fuzzy
+#| msgid "Send Ctrl+Alt+Del"
+msgid "Send Ctrl+Alt+_F5"
+msgstr "Ctrl+Alt+Delete küldése"
+
+#: plugins/gvnc/gvnc_plugin.c:818
+#, fuzzy
+#| msgid "Send Ctrl+Alt+Del"
+msgid "Send Ctrl+Alt+_F6"
+msgstr "Ctrl+Alt+Delete küldése"
+
+#: plugins/gvnc/gvnc_plugin.c:819
+#, fuzzy
+#| msgid "Send Ctrl+Alt+Del"
+msgid "Send Ctrl+Alt+_F7"
+msgstr "Ctrl+Alt+Delete küldése"
+
+#: plugins/gvnc/gvnc_plugin.c:820
+#, fuzzy
+#| msgid "Send Ctrl+Alt+Del"
+msgid "Send Ctrl+Alt+_F8"
+msgstr "Ctrl+Alt+Delete küldése"
+
+#: plugins/gvnc/gvnc_plugin.c:821
+#, fuzzy
+#| msgid "Send Ctrl+Alt+Del"
+msgid "Send Ctrl+Alt+_F9"
+msgstr "Ctrl+Alt+Delete küldése"
+
+#: plugins/gvnc/gvnc_plugin.c:822
+#, fuzzy
+#| msgid "Send Ctrl+Alt+Del"
+msgid "Send Ctrl+Alt+_F10"
+msgstr "Ctrl+Alt+Delete küldése"
+
+#: plugins/gvnc/gvnc_plugin.c:823
+#, fuzzy
+#| msgid "Send Ctrl+Alt+Del"
+msgid "Send Ctrl+Alt+_F11"
+msgstr "Ctrl+Alt+Delete küldése"
+
+#: plugins/gvnc/gvnc_plugin.c:824
+#, fuzzy
+#| msgid "Send Ctrl+Alt+Del"
+msgid "Send Ctrl+Alt+_F12"
+msgstr "Ctrl+Alt+Delete küldése"
+
+#: plugins/gvnc/gvnc_plugin.c:826
+msgid "Reboot remote host"
+msgstr ""
+
+#: plugins/gvnc/gvnc_plugin.c:827
+msgid "Reset remote host (hard reboot)"
+msgstr ""
+
+#: plugins/gvnc/gvnc_plugin.c:828
+#, fuzzy
+#| msgid "Show remote cursor"
+msgid "Shutdown remote host"
+msgstr "Távoli kurzor megjelenítése"
+
 #: plugins/exec/exec_plugin_config.h:41
 msgid "Execute a command"
 msgstr "Parancs futtatása"
@@ -1701,12 +1916,6 @@ msgstr "HTML5 audió támogatás bekapcsolása"
 msgid "Ignore TLS errors"
 msgstr "TLS hibák figyelmen kívül hagyása"
 
-#: plugins/www/www_plugin.c:896 plugins/vnc/vnc_plugin.c:1995
-#: plugins/spice/spice_plugin.c:604 plugins/rdp/rdp_plugin.c:2631
-#: plugins/nx/nx_plugin.c:752
-msgid "Forget passwords after use"
-msgstr "Jelszó elfelejtés használat után"
-
 #: plugins/www/www_plugin.c:898
 msgid "Turn on Web Inspector"
 msgstr "Web Inspector bekapcsolása"
@@ -1726,10 +1935,6 @@ msgstr "Helló Világ!"
 #: plugins/vnc/vnc_plugin.c:766
 msgid "Enter VNC password"
 msgstr "Adja meg a VNC jelszavát"
-
-#: plugins/vnc/vnc_plugin.c:819
-msgid "Enter VNC authentication credentials"
-msgstr "Adja meg a VNC hitelesítő adatokat"
 
 #: plugins/vnc/vnc_plugin.c:930
 msgid "Unable to connect to VNC server"
@@ -1824,11 +2029,6 @@ msgstr ""
 msgid "Repeater"
 msgstr "Ismétlő"
 
-#: plugins/vnc/vnc_plugin.c:1952 plugins/vnc/vnc_plugin.c:1972
-#: plugins/xdmcp/xdmcp_plugin.c:369 plugins/rdp/rdp_plugin.c:2577
-msgid "Colour depth"
-msgstr "Színmélység"
-
 #: plugins/vnc/vnc_plugin.c:1953 plugins/vnc/vnc_plugin.c:1973
 #: plugins/rdp/rdp_plugin.c:2594 plugins/nx/nx_plugin.c:733
 msgid "Quality"
@@ -1842,11 +2042,6 @@ msgstr "Port figyelése"
 msgid "Show remote cursor"
 msgstr "Távoli kurzor megjelenítése"
 
-#: plugins/vnc/vnc_plugin.c:1990 plugins/vnc/vnc_plugin.c:2006
-#: plugins/spice/spice_plugin.c:607 plugins/spice/spice_plugin.c:615
-msgid "View only"
-msgstr "Csak megtekintés"
-
 #: plugins/vnc/vnc_plugin.c:1991 plugins/rdp/rdp_plugin.c:2628
 msgid "Turn off clipboard sync"
 msgstr "Vágólap-szinkronizálás kikapcsolása"
@@ -1857,10 +2052,6 @@ msgstr "TLS titkosítás használata"
 
 #: plugins/vnc/vnc_plugin.c:1993 plugins/vnc/vnc_plugin.c:2007
 msgid "Prevent local interaction on the server"
-msgstr ""
-
-#: plugins/vnc/vnc_plugin.c:1994
-msgid "Ignore remote bell messages"
 msgstr ""
 
 #: plugins/vnc/vnc_plugin.c:2009
@@ -1954,14 +2145,6 @@ msgstr "Kiszolgálóbemenet letiltása"
 #: plugins/spice/spice_plugin.c:600
 msgid "Prefered image compression"
 msgstr ""
-
-#: plugins/spice/spice_plugin.c:603 plugins/spice/spice_plugin.c:616
-msgid "No clipboard sync"
-msgstr "Vágólap-szinkronizálás kikapcsolása"
-
-#: plugins/spice/spice_plugin.c:605
-msgid "Enable audio channel"
-msgstr "Hangcsatorna engedélyezése"
 
 #: plugins/spice/spice_plugin.c:606
 msgid "Share smart card"

@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-04-27 09:38+0000\n"
+"POT-Creation-Date: 2021-05-03 15:25+0000\n"
 "PO-Revision-Date: 2021-04-23 14:23+0000\n"
 "Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -1623,6 +1623,221 @@ msgstr "_Gönder"
 msgid "_Clear"
 msgstr "_Temizle"
 
+#: plugins/gvnc/gvnc_plugin_config.h:40
+#, fuzzy
+#| msgid "Remmina VNC Plugin"
+msgid "Remmina VNC plugin GNOME and KVM"
+msgstr "Remmina VNC Eklentisi"
+
+#: plugins/gvnc/gvnc_plugin.c:455
+#, fuzzy, c-format
+#| msgid "Authentication type"
+msgid "Unsupported authentication type %u"
+msgstr "Kimlik doğrulama türü"
+
+#: plugins/gvnc/gvnc_plugin.c:467
+#, fuzzy, c-format
+#| msgid "Authentication type"
+msgid "Authentication failure: %s"
+msgstr "Kimlik doğrulama türü"
+
+#: plugins/gvnc/gvnc_plugin.c:513 plugins/vnc/vnc_plugin.c:819
+msgid "Enter VNC authentication credentials"
+msgstr "VNC kimlik doğrulama bilgilerini girin"
+
+#: plugins/gvnc/gvnc_plugin.c:759
+#, fuzzy
+#| msgid "Use system proxy settings"
+msgid "Use server settings"
+msgstr "Sistem vekil sunucu ayarlarını kullan"
+
+#: plugins/gvnc/gvnc_plugin.c:760
+#, fuzzy
+#| msgid "True colour (24 bit)"
+msgid "True colour (24 bits)"
+msgstr "Gerçek renk (24 bit)"
+
+#: plugins/gvnc/gvnc_plugin.c:761
+#, fuzzy
+#| msgid "High colour (16 bit)"
+msgid "High colour (16 bits)"
+msgstr "Yüksek renk (16 bit)"
+
+#: plugins/gvnc/gvnc_plugin.c:762
+#, fuzzy
+#| msgid "High colour (16 bit)"
+msgid "Low colour (8 bits)"
+msgstr "Yüksek renk (16 bit)"
+
+#: plugins/gvnc/gvnc_plugin.c:763
+#, fuzzy
+#| msgid "True colour (24 bit)"
+msgid "Ultra low colour (3 bits)"
+msgstr "Gerçek renk (24 bit)"
+
+#: plugins/gvnc/gvnc_plugin.c:778
+#, fuzzy
+#| msgid "Enter VNC password"
+msgid "VNC password"
+msgstr "VNC parolası girin"
+
+#: plugins/gvnc/gvnc_plugin.c:779 plugins/vnc/vnc_plugin.c:1952
+#: plugins/vnc/vnc_plugin.c:1972 plugins/xdmcp/xdmcp_plugin.c:369
+#: plugins/rdp/rdp_plugin.c:2577
+msgid "Colour depth"
+msgstr "Renk derinliği"
+
+#: plugins/gvnc/gvnc_plugin.c:780
+#, fuzzy
+#| msgid "SSH compression"
+msgid "Use JPEG Compression"
+msgstr "SSH sıkıştırma"
+
+#: plugins/gvnc/gvnc_plugin.c:780
+#, fuzzy
+#| msgid "Browse the network to find a %s server"
+msgid "This might not work on all VNC servers"
+msgstr "Bulmak için ağa göz at %s sunucu"
+
+#: plugins/gvnc/gvnc_plugin.c:781
+msgid "Enable GTK-VNC debug"
+msgstr ""
+
+#: plugins/gvnc/gvnc_plugin.c:796 plugins/gvnc/gvnc_plugin.c:810
+#: plugins/spice/spice_plugin.c:603 plugins/spice/spice_plugin.c:616
+msgid "No clipboard sync"
+msgstr "Pano eşzamanlama yok"
+
+#: plugins/gvnc/gvnc_plugin.c:797 plugins/www/www_plugin.c:896
+#: plugins/vnc/vnc_plugin.c:1995 plugins/spice/spice_plugin.c:604
+#: plugins/rdp/rdp_plugin.c:2631 plugins/nx/nx_plugin.c:752
+msgid "Forget passwords after use"
+msgstr "Kullandıktan sonra parolaları unut"
+
+#: plugins/gvnc/gvnc_plugin.c:798 plugins/vnc/vnc_plugin.c:1994
+msgid "Ignore remote bell messages"
+msgstr "Uzak zil mesajlarını yoksay"
+
+#: plugins/gvnc/gvnc_plugin.c:799 plugins/spice/spice_plugin.c:605
+msgid "Enable audio channel"
+msgstr "Ses kanalını etkinleştir"
+
+#: plugins/gvnc/gvnc_plugin.c:800 plugins/gvnc/gvnc_plugin.c:809
+#: plugins/vnc/vnc_plugin.c:1990 plugins/vnc/vnc_plugin.c:2006
+#: plugins/spice/spice_plugin.c:607 plugins/spice/spice_plugin.c:615
+msgid "View only"
+msgstr "Yalnızca görüntüle"
+
+#: plugins/gvnc/gvnc_plugin.c:801
+#, fuzzy
+#| msgid "Per connection"
+msgid "Shared connection"
+msgstr "Bağlantı başına"
+
+#: plugins/gvnc/gvnc_plugin.c:801
+msgid ""
+"If the server should try to share the desktop by leaving other clients "
+"connected"
+msgstr ""
+
+#: plugins/gvnc/gvnc_plugin.c:811
+#, fuzzy
+#| msgid "Send Ctrl+Alt+Del"
+msgid "Send Ctrl+Alt+_Del"
+msgstr "Ctrl+Alt+Delete gönder"
+
+#: plugins/gvnc/gvnc_plugin.c:812
+#, fuzzy
+#| msgid "Send Ctrl+Alt+Del"
+msgid "Send Ctrl+Alt+_Backspace"
+msgstr "Ctrl+Alt+Delete gönder"
+
+#: plugins/gvnc/gvnc_plugin.c:813
+#, fuzzy
+#| msgid "Send Ctrl+Alt+Del"
+msgid "Send Ctrl+Alt+_F1"
+msgstr "Ctrl+Alt+Delete gönder"
+
+#: plugins/gvnc/gvnc_plugin.c:814
+#, fuzzy
+#| msgid "Send Ctrl+Alt+Del"
+msgid "Send Ctrl+Alt+_F2"
+msgstr "Ctrl+Alt+Delete gönder"
+
+#: plugins/gvnc/gvnc_plugin.c:815
+#, fuzzy
+#| msgid "Send Ctrl+Alt+Del"
+msgid "Send Ctrl+Alt+_F3"
+msgstr "Ctrl+Alt+Delete gönder"
+
+#: plugins/gvnc/gvnc_plugin.c:816
+#, fuzzy
+#| msgid "Send Ctrl+Alt+Del"
+msgid "Send Ctrl+Alt+_F4"
+msgstr "Ctrl+Alt+Delete gönder"
+
+#: plugins/gvnc/gvnc_plugin.c:817
+#, fuzzy
+#| msgid "Send Ctrl+Alt+Del"
+msgid "Send Ctrl+Alt+_F5"
+msgstr "Ctrl+Alt+Delete gönder"
+
+#: plugins/gvnc/gvnc_plugin.c:818
+#, fuzzy
+#| msgid "Send Ctrl+Alt+Del"
+msgid "Send Ctrl+Alt+_F6"
+msgstr "Ctrl+Alt+Delete gönder"
+
+#: plugins/gvnc/gvnc_plugin.c:819
+#, fuzzy
+#| msgid "Send Ctrl+Alt+Del"
+msgid "Send Ctrl+Alt+_F7"
+msgstr "Ctrl+Alt+Delete gönder"
+
+#: plugins/gvnc/gvnc_plugin.c:820
+#, fuzzy
+#| msgid "Send Ctrl+Alt+Del"
+msgid "Send Ctrl+Alt+_F8"
+msgstr "Ctrl+Alt+Delete gönder"
+
+#: plugins/gvnc/gvnc_plugin.c:821
+#, fuzzy
+#| msgid "Send Ctrl+Alt+Del"
+msgid "Send Ctrl+Alt+_F9"
+msgstr "Ctrl+Alt+Delete gönder"
+
+#: plugins/gvnc/gvnc_plugin.c:822
+#, fuzzy
+#| msgid "Send Ctrl+Alt+Del"
+msgid "Send Ctrl+Alt+_F10"
+msgstr "Ctrl+Alt+Delete gönder"
+
+#: plugins/gvnc/gvnc_plugin.c:823
+#, fuzzy
+#| msgid "Send Ctrl+Alt+Del"
+msgid "Send Ctrl+Alt+_F11"
+msgstr "Ctrl+Alt+Delete gönder"
+
+#: plugins/gvnc/gvnc_plugin.c:824
+#, fuzzy
+#| msgid "Send Ctrl+Alt+Del"
+msgid "Send Ctrl+Alt+_F12"
+msgstr "Ctrl+Alt+Delete gönder"
+
+#: plugins/gvnc/gvnc_plugin.c:826
+msgid "Reboot remote host"
+msgstr ""
+
+#: plugins/gvnc/gvnc_plugin.c:827
+msgid "Reset remote host (hard reboot)"
+msgstr ""
+
+#: plugins/gvnc/gvnc_plugin.c:828
+#, fuzzy
+#| msgid "Show remote cursor"
+msgid "Shutdown remote host"
+msgstr "Uzaktaki imleci göster"
+
 #: plugins/exec/exec_plugin_config.h:41
 msgid "Execute a command"
 msgstr "Bir komut yürüt"
@@ -1704,12 +1919,6 @@ msgstr "HTML5 ses desteğini aç"
 msgid "Ignore TLS errors"
 msgstr "TLS hatalarını yoksay"
 
-#: plugins/www/www_plugin.c:896 plugins/vnc/vnc_plugin.c:1995
-#: plugins/spice/spice_plugin.c:604 plugins/rdp/rdp_plugin.c:2631
-#: plugins/nx/nx_plugin.c:752
-msgid "Forget passwords after use"
-msgstr "Kullandıktan sonra parolaları unut"
-
 #: plugins/www/www_plugin.c:898
 msgid "Turn on Web Inspector"
 msgstr "Web Denetçisini aç"
@@ -1729,10 +1938,6 @@ msgstr "Merhaba Dünya!"
 #: plugins/vnc/vnc_plugin.c:766
 msgid "Enter VNC password"
 msgstr "VNC parolası girin"
-
-#: plugins/vnc/vnc_plugin.c:819
-msgid "Enter VNC authentication credentials"
-msgstr "VNC kimlik doğrulama bilgilerini girin"
 
 #: plugins/vnc/vnc_plugin.c:930
 msgid "Unable to connect to VNC server"
@@ -1830,11 +2035,6 @@ msgstr ""
 msgid "Repeater"
 msgstr "Tekrarlayıcı"
 
-#: plugins/vnc/vnc_plugin.c:1952 plugins/vnc/vnc_plugin.c:1972
-#: plugins/xdmcp/xdmcp_plugin.c:369 plugins/rdp/rdp_plugin.c:2577
-msgid "Colour depth"
-msgstr "Renk derinliği"
-
 #: plugins/vnc/vnc_plugin.c:1953 plugins/vnc/vnc_plugin.c:1973
 #: plugins/rdp/rdp_plugin.c:2594 plugins/nx/nx_plugin.c:733
 msgid "Quality"
@@ -1848,11 +2048,6 @@ msgstr "Bağlantı noktasını dinle"
 msgid "Show remote cursor"
 msgstr "Uzaktaki imleci göster"
 
-#: plugins/vnc/vnc_plugin.c:1990 plugins/vnc/vnc_plugin.c:2006
-#: plugins/spice/spice_plugin.c:607 plugins/spice/spice_plugin.c:615
-msgid "View only"
-msgstr "Yalnızca görüntüle"
-
 #: plugins/vnc/vnc_plugin.c:1991 plugins/rdp/rdp_plugin.c:2628
 msgid "Turn off clipboard sync"
 msgstr "Pano eşzamanlamayı kapat"
@@ -1864,10 +2059,6 @@ msgstr "Şifrelemeyi kapat"
 #: plugins/vnc/vnc_plugin.c:1993 plugins/vnc/vnc_plugin.c:2007
 msgid "Prevent local interaction on the server"
 msgstr "Sunucuda yerel etkileşimi önle"
-
-#: plugins/vnc/vnc_plugin.c:1994
-msgid "Ignore remote bell messages"
-msgstr "Uzak zil mesajlarını yoksay"
 
 #: plugins/vnc/vnc_plugin.c:2009
 msgid "Open Chat…"
@@ -1960,14 +2151,6 @@ msgstr "GStreamer kaplamayı kapat"
 #: plugins/spice/spice_plugin.c:600
 msgid "Prefered image compression"
 msgstr "Yeğlenen resim sıkıştırma"
-
-#: plugins/spice/spice_plugin.c:603 plugins/spice/spice_plugin.c:616
-msgid "No clipboard sync"
-msgstr "Pano eşzamanlama yok"
-
-#: plugins/spice/spice_plugin.c:605
-msgid "Enable audio channel"
-msgstr "Ses kanalını etkinleştir"
 
 #: plugins/spice/spice_plugin.c:606
 msgid "Share smart card"

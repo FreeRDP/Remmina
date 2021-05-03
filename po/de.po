@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-04-27 09:38+0000\n"
+"POT-Creation-Date: 2021-05-03 15:25+0000\n"
 "PO-Revision-Date: 2021-04-27 09:38+0000\n"
 "Last-Translator: Johannes Weberhofer <jweberhofer@weberhofer.at>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -1637,6 +1637,221 @@ msgstr "_Senden"
 msgid "_Clear"
 msgstr "_Leeren"
 
+#: plugins/gvnc/gvnc_plugin_config.h:40
+#, fuzzy
+#| msgid "Remmina VNC Plugin"
+msgid "Remmina VNC plugin GNOME and KVM"
+msgstr "Remmina VNC-Plugin"
+
+#: plugins/gvnc/gvnc_plugin.c:455
+#, fuzzy, c-format
+#| msgid "Authentication type"
+msgid "Unsupported authentication type %u"
+msgstr "Authentifizierungstyp"
+
+#: plugins/gvnc/gvnc_plugin.c:467
+#, fuzzy, c-format
+#| msgid "Authentication type"
+msgid "Authentication failure: %s"
+msgstr "Authentifizierungstyp"
+
+#: plugins/gvnc/gvnc_plugin.c:513 plugins/vnc/vnc_plugin.c:819
+msgid "Enter VNC authentication credentials"
+msgstr "VNC-Anmeldedaten eingeben"
+
+#: plugins/gvnc/gvnc_plugin.c:759
+#, fuzzy
+#| msgid "Use system proxy settings"
+msgid "Use server settings"
+msgstr "Proxy-Einstellungen des Systems verwenden"
+
+#: plugins/gvnc/gvnc_plugin.c:760
+#, fuzzy
+#| msgid "True colour (24 bit)"
+msgid "True colour (24 bits)"
+msgstr "Echtfarben (24 Bit)"
+
+#: plugins/gvnc/gvnc_plugin.c:761
+#, fuzzy
+#| msgid "High colour (16 bit)"
+msgid "High colour (16 bits)"
+msgstr "Hohe Farbtiefe (16 Bit)"
+
+#: plugins/gvnc/gvnc_plugin.c:762
+#, fuzzy
+#| msgid "High colour (16 bit)"
+msgid "Low colour (8 bits)"
+msgstr "Hohe Farbtiefe (16 Bit)"
+
+#: plugins/gvnc/gvnc_plugin.c:763
+#, fuzzy
+#| msgid "True colour (24 bit)"
+msgid "Ultra low colour (3 bits)"
+msgstr "Echtfarben (24 Bit)"
+
+#: plugins/gvnc/gvnc_plugin.c:778
+#, fuzzy
+#| msgid "Enter VNC password"
+msgid "VNC password"
+msgstr "VNC-Passwort eingeben"
+
+#: plugins/gvnc/gvnc_plugin.c:779 plugins/vnc/vnc_plugin.c:1952
+#: plugins/vnc/vnc_plugin.c:1972 plugins/xdmcp/xdmcp_plugin.c:369
+#: plugins/rdp/rdp_plugin.c:2577
+msgid "Colour depth"
+msgstr "Farbtiefe"
+
+#: plugins/gvnc/gvnc_plugin.c:780
+#, fuzzy
+#| msgid "SSH compression"
+msgid "Use JPEG Compression"
+msgstr "SSH-Komprimierung"
+
+#: plugins/gvnc/gvnc_plugin.c:780
+#, fuzzy
+#| msgid "Browse the network to find a %s server"
+msgid "This might not work on all VNC servers"
+msgstr "Durchsuche das Netzwerk nach einem %s Server"
+
+#: plugins/gvnc/gvnc_plugin.c:781
+msgid "Enable GTK-VNC debug"
+msgstr ""
+
+#: plugins/gvnc/gvnc_plugin.c:796 plugins/gvnc/gvnc_plugin.c:810
+#: plugins/spice/spice_plugin.c:603 plugins/spice/spice_plugin.c:616
+msgid "No clipboard sync"
+msgstr "Zwischenablage nicht abgleichen"
+
+#: plugins/gvnc/gvnc_plugin.c:797 plugins/www/www_plugin.c:896
+#: plugins/vnc/vnc_plugin.c:1995 plugins/spice/spice_plugin.c:604
+#: plugins/rdp/rdp_plugin.c:2631 plugins/nx/nx_plugin.c:752
+msgid "Forget passwords after use"
+msgstr "Passwörter nach der Verwendung verwerfen"
+
+#: plugins/gvnc/gvnc_plugin.c:798 plugins/vnc/vnc_plugin.c:1994
+msgid "Ignore remote bell messages"
+msgstr "Entfernte Klingeltöne ignorieren"
+
+#: plugins/gvnc/gvnc_plugin.c:799 plugins/spice/spice_plugin.c:605
+msgid "Enable audio channel"
+msgstr "Klang aktivieren"
+
+#: plugins/gvnc/gvnc_plugin.c:800 plugins/gvnc/gvnc_plugin.c:809
+#: plugins/vnc/vnc_plugin.c:1990 plugins/vnc/vnc_plugin.c:2006
+#: plugins/spice/spice_plugin.c:607 plugins/spice/spice_plugin.c:615
+msgid "View only"
+msgstr "Nur anzeigen"
+
+#: plugins/gvnc/gvnc_plugin.c:801
+#, fuzzy
+#| msgid "Per connection"
+msgid "Shared connection"
+msgstr "Nach Verbindung"
+
+#: plugins/gvnc/gvnc_plugin.c:801
+msgid ""
+"If the server should try to share the desktop by leaving other clients "
+"connected"
+msgstr ""
+
+#: plugins/gvnc/gvnc_plugin.c:811
+#, fuzzy
+#| msgid "Send Ctrl+Alt+Del"
+msgid "Send Ctrl+Alt+_Del"
+msgstr "Sende Strg+Alt+Entfernen"
+
+#: plugins/gvnc/gvnc_plugin.c:812
+#, fuzzy
+#| msgid "Send Ctrl+Alt+Del"
+msgid "Send Ctrl+Alt+_Backspace"
+msgstr "Sende Strg+Alt+Entfernen"
+
+#: plugins/gvnc/gvnc_plugin.c:813
+#, fuzzy
+#| msgid "Send Ctrl+Alt+Del"
+msgid "Send Ctrl+Alt+_F1"
+msgstr "Sende Strg+Alt+Entfernen"
+
+#: plugins/gvnc/gvnc_plugin.c:814
+#, fuzzy
+#| msgid "Send Ctrl+Alt+Del"
+msgid "Send Ctrl+Alt+_F2"
+msgstr "Sende Strg+Alt+Entfernen"
+
+#: plugins/gvnc/gvnc_plugin.c:815
+#, fuzzy
+#| msgid "Send Ctrl+Alt+Del"
+msgid "Send Ctrl+Alt+_F3"
+msgstr "Sende Strg+Alt+Entfernen"
+
+#: plugins/gvnc/gvnc_plugin.c:816
+#, fuzzy
+#| msgid "Send Ctrl+Alt+Del"
+msgid "Send Ctrl+Alt+_F4"
+msgstr "Sende Strg+Alt+Entfernen"
+
+#: plugins/gvnc/gvnc_plugin.c:817
+#, fuzzy
+#| msgid "Send Ctrl+Alt+Del"
+msgid "Send Ctrl+Alt+_F5"
+msgstr "Sende Strg+Alt+Entfernen"
+
+#: plugins/gvnc/gvnc_plugin.c:818
+#, fuzzy
+#| msgid "Send Ctrl+Alt+Del"
+msgid "Send Ctrl+Alt+_F6"
+msgstr "Sende Strg+Alt+Entfernen"
+
+#: plugins/gvnc/gvnc_plugin.c:819
+#, fuzzy
+#| msgid "Send Ctrl+Alt+Del"
+msgid "Send Ctrl+Alt+_F7"
+msgstr "Sende Strg+Alt+Entfernen"
+
+#: plugins/gvnc/gvnc_plugin.c:820
+#, fuzzy
+#| msgid "Send Ctrl+Alt+Del"
+msgid "Send Ctrl+Alt+_F8"
+msgstr "Sende Strg+Alt+Entfernen"
+
+#: plugins/gvnc/gvnc_plugin.c:821
+#, fuzzy
+#| msgid "Send Ctrl+Alt+Del"
+msgid "Send Ctrl+Alt+_F9"
+msgstr "Sende Strg+Alt+Entfernen"
+
+#: plugins/gvnc/gvnc_plugin.c:822
+#, fuzzy
+#| msgid "Send Ctrl+Alt+Del"
+msgid "Send Ctrl+Alt+_F10"
+msgstr "Sende Strg+Alt+Entfernen"
+
+#: plugins/gvnc/gvnc_plugin.c:823
+#, fuzzy
+#| msgid "Send Ctrl+Alt+Del"
+msgid "Send Ctrl+Alt+_F11"
+msgstr "Sende Strg+Alt+Entfernen"
+
+#: plugins/gvnc/gvnc_plugin.c:824
+#, fuzzy
+#| msgid "Send Ctrl+Alt+Del"
+msgid "Send Ctrl+Alt+_F12"
+msgstr "Sende Strg+Alt+Entfernen"
+
+#: plugins/gvnc/gvnc_plugin.c:826
+msgid "Reboot remote host"
+msgstr ""
+
+#: plugins/gvnc/gvnc_plugin.c:827
+msgid "Reset remote host (hard reboot)"
+msgstr ""
+
+#: plugins/gvnc/gvnc_plugin.c:828
+#, fuzzy
+#| msgid "Show remote cursor"
+msgid "Shutdown remote host"
+msgstr "Entfernten Mauszeiger anzeigen"
+
 #: plugins/exec/exec_plugin_config.h:41
 msgid "Execute a command"
 msgstr "Einen Befehl ausführen"
@@ -1718,12 +1933,6 @@ msgstr "HTML-Audiounterstützung aktivieren"
 msgid "Ignore TLS errors"
 msgstr "TLS-Fehler ignorieren"
 
-#: plugins/www/www_plugin.c:896 plugins/vnc/vnc_plugin.c:1995
-#: plugins/spice/spice_plugin.c:604 plugins/rdp/rdp_plugin.c:2631
-#: plugins/nx/nx_plugin.c:752
-msgid "Forget passwords after use"
-msgstr "Passwörter nach der Verwendung verwerfen"
-
 #: plugins/www/www_plugin.c:898
 msgid "Turn on Web Inspector"
 msgstr "Web-Inspector aktivieren"
@@ -1743,10 +1952,6 @@ msgstr "Hallo Welt!"
 #: plugins/vnc/vnc_plugin.c:766
 msgid "Enter VNC password"
 msgstr "VNC-Passwort eingeben"
-
-#: plugins/vnc/vnc_plugin.c:819
-msgid "Enter VNC authentication credentials"
-msgstr "VNC-Anmeldedaten eingeben"
 
 #: plugins/vnc/vnc_plugin.c:930
 msgid "Unable to connect to VNC server"
@@ -1846,11 +2051,6 @@ msgstr ""
 msgid "Repeater"
 msgstr "Repeater"
 
-#: plugins/vnc/vnc_plugin.c:1952 plugins/vnc/vnc_plugin.c:1972
-#: plugins/xdmcp/xdmcp_plugin.c:369 plugins/rdp/rdp_plugin.c:2577
-msgid "Colour depth"
-msgstr "Farbtiefe"
-
 #: plugins/vnc/vnc_plugin.c:1953 plugins/vnc/vnc_plugin.c:1973
 #: plugins/rdp/rdp_plugin.c:2594 plugins/nx/nx_plugin.c:733
 msgid "Quality"
@@ -1864,11 +2064,6 @@ msgstr "Auf Port lauschen"
 msgid "Show remote cursor"
 msgstr "Entfernten Mauszeiger anzeigen"
 
-#: plugins/vnc/vnc_plugin.c:1990 plugins/vnc/vnc_plugin.c:2006
-#: plugins/spice/spice_plugin.c:607 plugins/spice/spice_plugin.c:615
-msgid "View only"
-msgstr "Nur anzeigen"
-
 #: plugins/vnc/vnc_plugin.c:1991 plugins/rdp/rdp_plugin.c:2628
 msgid "Turn off clipboard sync"
 msgstr "Zwischenablage nicht abgleichen"
@@ -1880,10 +2075,6 @@ msgstr "TLS-Verschlüsselung ausschalten"
 #: plugins/vnc/vnc_plugin.c:1993 plugins/vnc/vnc_plugin.c:2007
 msgid "Prevent local interaction on the server"
 msgstr "Lokale Interaktion am Server verhindern"
-
-#: plugins/vnc/vnc_plugin.c:1994
-msgid "Ignore remote bell messages"
-msgstr "Entfernte Klingeltöne ignorieren"
 
 #: plugins/vnc/vnc_plugin.c:2009
 msgid "Open Chat…"
@@ -1977,14 +2168,6 @@ msgstr "Gstreamer Overlay deaktivieren"
 #: plugins/spice/spice_plugin.c:600
 msgid "Prefered image compression"
 msgstr "Bevorzugte Bild-Kompression"
-
-#: plugins/spice/spice_plugin.c:603 plugins/spice/spice_plugin.c:616
-msgid "No clipboard sync"
-msgstr "Zwischenablage nicht abgleichen"
-
-#: plugins/spice/spice_plugin.c:605
-msgid "Enable audio channel"
-msgstr "Klang aktivieren"
 
 #: plugins/spice/spice_plugin.c:606
 msgid "Share smart card"

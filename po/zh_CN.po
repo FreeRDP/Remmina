@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-04-27 09:38+0000\n"
+"POT-Creation-Date: 2021-05-03 15:25+0000\n"
 "PO-Revision-Date: 2021-04-26 06:31+0000\n"
 "Last-Translator: Eric <spice2wolf@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -1613,6 +1613,221 @@ msgstr "发送(_S)"
 msgid "_Clear"
 msgstr "清除(_C)"
 
+#: plugins/gvnc/gvnc_plugin_config.h:40
+#, fuzzy
+#| msgid "Remmina VNC Plugin"
+msgid "Remmina VNC plugin GNOME and KVM"
+msgstr "Remmina VNC 插件"
+
+#: plugins/gvnc/gvnc_plugin.c:455
+#, fuzzy, c-format
+#| msgid "Authentication type"
+msgid "Unsupported authentication type %u"
+msgstr "认证类型"
+
+#: plugins/gvnc/gvnc_plugin.c:467
+#, fuzzy, c-format
+#| msgid "Authentication type"
+msgid "Authentication failure: %s"
+msgstr "认证类型"
+
+#: plugins/gvnc/gvnc_plugin.c:513 plugins/vnc/vnc_plugin.c:819
+msgid "Enter VNC authentication credentials"
+msgstr "输入 VNC 身份验证凭据"
+
+#: plugins/gvnc/gvnc_plugin.c:759
+#, fuzzy
+#| msgid "Use system proxy settings"
+msgid "Use server settings"
+msgstr "使用系统代理设置"
+
+#: plugins/gvnc/gvnc_plugin.c:760
+#, fuzzy
+#| msgid "True colour (24 bit)"
+msgid "True colour (24 bits)"
+msgstr "真彩色（24 位）"
+
+#: plugins/gvnc/gvnc_plugin.c:761
+#, fuzzy
+#| msgid "High colour (16 bit)"
+msgid "High colour (16 bits)"
+msgstr "增强色（16 位）"
+
+#: plugins/gvnc/gvnc_plugin.c:762
+#, fuzzy
+#| msgid "High colour (16 bit)"
+msgid "Low colour (8 bits)"
+msgstr "增强色（16 位）"
+
+#: plugins/gvnc/gvnc_plugin.c:763
+#, fuzzy
+#| msgid "True colour (24 bit)"
+msgid "Ultra low colour (3 bits)"
+msgstr "真彩色（24 位）"
+
+#: plugins/gvnc/gvnc_plugin.c:778
+#, fuzzy
+#| msgid "Enter VNC password"
+msgid "VNC password"
+msgstr "输入 VNC 密码"
+
+#: plugins/gvnc/gvnc_plugin.c:779 plugins/vnc/vnc_plugin.c:1952
+#: plugins/vnc/vnc_plugin.c:1972 plugins/xdmcp/xdmcp_plugin.c:369
+#: plugins/rdp/rdp_plugin.c:2577
+msgid "Colour depth"
+msgstr "色深"
+
+#: plugins/gvnc/gvnc_plugin.c:780
+#, fuzzy
+#| msgid "SSH compression"
+msgid "Use JPEG Compression"
+msgstr "SSH 压缩"
+
+#: plugins/gvnc/gvnc_plugin.c:780
+#, fuzzy
+#| msgid "Browse the network to find a %s server"
+msgid "This might not work on all VNC servers"
+msgstr "浏览网络查找 %s 服务器"
+
+#: plugins/gvnc/gvnc_plugin.c:781
+msgid "Enable GTK-VNC debug"
+msgstr ""
+
+#: plugins/gvnc/gvnc_plugin.c:796 plugins/gvnc/gvnc_plugin.c:810
+#: plugins/spice/spice_plugin.c:603 plugins/spice/spice_plugin.c:616
+msgid "No clipboard sync"
+msgstr "禁用剪贴板同步"
+
+#: plugins/gvnc/gvnc_plugin.c:797 plugins/www/www_plugin.c:896
+#: plugins/vnc/vnc_plugin.c:1995 plugins/spice/spice_plugin.c:604
+#: plugins/rdp/rdp_plugin.c:2631 plugins/nx/nx_plugin.c:752
+msgid "Forget passwords after use"
+msgstr "使用后忘记密码"
+
+#: plugins/gvnc/gvnc_plugin.c:798 plugins/vnc/vnc_plugin.c:1994
+msgid "Ignore remote bell messages"
+msgstr ""
+
+#: plugins/gvnc/gvnc_plugin.c:799 plugins/spice/spice_plugin.c:605
+msgid "Enable audio channel"
+msgstr "启用音频通道"
+
+#: plugins/gvnc/gvnc_plugin.c:800 plugins/gvnc/gvnc_plugin.c:809
+#: plugins/vnc/vnc_plugin.c:1990 plugins/vnc/vnc_plugin.c:2006
+#: plugins/spice/spice_plugin.c:607 plugins/spice/spice_plugin.c:615
+msgid "View only"
+msgstr "仅查看"
+
+#: plugins/gvnc/gvnc_plugin.c:801
+#, fuzzy
+#| msgid "Per connection"
+msgid "Shared connection"
+msgstr "每个连接"
+
+#: plugins/gvnc/gvnc_plugin.c:801
+msgid ""
+"If the server should try to share the desktop by leaving other clients "
+"connected"
+msgstr ""
+
+#: plugins/gvnc/gvnc_plugin.c:811
+#, fuzzy
+#| msgid "Send Ctrl+Alt+Del"
+msgid "Send Ctrl+Alt+_Del"
+msgstr "发送 Ctrl+Alt+Del"
+
+#: plugins/gvnc/gvnc_plugin.c:812
+#, fuzzy
+#| msgid "Send Ctrl+Alt+Del"
+msgid "Send Ctrl+Alt+_Backspace"
+msgstr "发送 Ctrl+Alt+Del"
+
+#: plugins/gvnc/gvnc_plugin.c:813
+#, fuzzy
+#| msgid "Send Ctrl+Alt+Del"
+msgid "Send Ctrl+Alt+_F1"
+msgstr "发送 Ctrl+Alt+Del"
+
+#: plugins/gvnc/gvnc_plugin.c:814
+#, fuzzy
+#| msgid "Send Ctrl+Alt+Del"
+msgid "Send Ctrl+Alt+_F2"
+msgstr "发送 Ctrl+Alt+Del"
+
+#: plugins/gvnc/gvnc_plugin.c:815
+#, fuzzy
+#| msgid "Send Ctrl+Alt+Del"
+msgid "Send Ctrl+Alt+_F3"
+msgstr "发送 Ctrl+Alt+Del"
+
+#: plugins/gvnc/gvnc_plugin.c:816
+#, fuzzy
+#| msgid "Send Ctrl+Alt+Del"
+msgid "Send Ctrl+Alt+_F4"
+msgstr "发送 Ctrl+Alt+Del"
+
+#: plugins/gvnc/gvnc_plugin.c:817
+#, fuzzy
+#| msgid "Send Ctrl+Alt+Del"
+msgid "Send Ctrl+Alt+_F5"
+msgstr "发送 Ctrl+Alt+Del"
+
+#: plugins/gvnc/gvnc_plugin.c:818
+#, fuzzy
+#| msgid "Send Ctrl+Alt+Del"
+msgid "Send Ctrl+Alt+_F6"
+msgstr "发送 Ctrl+Alt+Del"
+
+#: plugins/gvnc/gvnc_plugin.c:819
+#, fuzzy
+#| msgid "Send Ctrl+Alt+Del"
+msgid "Send Ctrl+Alt+_F7"
+msgstr "发送 Ctrl+Alt+Del"
+
+#: plugins/gvnc/gvnc_plugin.c:820
+#, fuzzy
+#| msgid "Send Ctrl+Alt+Del"
+msgid "Send Ctrl+Alt+_F8"
+msgstr "发送 Ctrl+Alt+Del"
+
+#: plugins/gvnc/gvnc_plugin.c:821
+#, fuzzy
+#| msgid "Send Ctrl+Alt+Del"
+msgid "Send Ctrl+Alt+_F9"
+msgstr "发送 Ctrl+Alt+Del"
+
+#: plugins/gvnc/gvnc_plugin.c:822
+#, fuzzy
+#| msgid "Send Ctrl+Alt+Del"
+msgid "Send Ctrl+Alt+_F10"
+msgstr "发送 Ctrl+Alt+Del"
+
+#: plugins/gvnc/gvnc_plugin.c:823
+#, fuzzy
+#| msgid "Send Ctrl+Alt+Del"
+msgid "Send Ctrl+Alt+_F11"
+msgstr "发送 Ctrl+Alt+Del"
+
+#: plugins/gvnc/gvnc_plugin.c:824
+#, fuzzy
+#| msgid "Send Ctrl+Alt+Del"
+msgid "Send Ctrl+Alt+_F12"
+msgstr "发送 Ctrl+Alt+Del"
+
+#: plugins/gvnc/gvnc_plugin.c:826
+msgid "Reboot remote host"
+msgstr ""
+
+#: plugins/gvnc/gvnc_plugin.c:827
+msgid "Reset remote host (hard reboot)"
+msgstr ""
+
+#: plugins/gvnc/gvnc_plugin.c:828
+#, fuzzy
+#| msgid "Show remote cursor"
+msgid "Shutdown remote host"
+msgstr "显示远程光标"
+
 #: plugins/exec/exec_plugin_config.h:41
 msgid "Execute a command"
 msgstr "执行命令"
@@ -1693,12 +1908,6 @@ msgstr "开启 HTML5 音频支持"
 msgid "Ignore TLS errors"
 msgstr "忽略 TLS 错误"
 
-#: plugins/www/www_plugin.c:896 plugins/vnc/vnc_plugin.c:1995
-#: plugins/spice/spice_plugin.c:604 plugins/rdp/rdp_plugin.c:2631
-#: plugins/nx/nx_plugin.c:752
-msgid "Forget passwords after use"
-msgstr "使用后忘记密码"
-
 #: plugins/www/www_plugin.c:898
 msgid "Turn on Web Inspector"
 msgstr "打开 Web 检查器"
@@ -1718,10 +1927,6 @@ msgstr "Hello World!"
 #: plugins/vnc/vnc_plugin.c:766
 msgid "Enter VNC password"
 msgstr "输入 VNC 密码"
-
-#: plugins/vnc/vnc_plugin.c:819
-msgid "Enter VNC authentication credentials"
-msgstr "输入 VNC 身份验证凭据"
 
 #: plugins/vnc/vnc_plugin.c:930
 msgid "Unable to connect to VNC server"
@@ -1811,11 +2016,6 @@ msgstr ""
 msgid "Repeater"
 msgstr "中继器"
 
-#: plugins/vnc/vnc_plugin.c:1952 plugins/vnc/vnc_plugin.c:1972
-#: plugins/xdmcp/xdmcp_plugin.c:369 plugins/rdp/rdp_plugin.c:2577
-msgid "Colour depth"
-msgstr "色深"
-
 #: plugins/vnc/vnc_plugin.c:1953 plugins/vnc/vnc_plugin.c:1973
 #: plugins/rdp/rdp_plugin.c:2594 plugins/nx/nx_plugin.c:733
 msgid "Quality"
@@ -1829,11 +2029,6 @@ msgstr "监听端口"
 msgid "Show remote cursor"
 msgstr "显示远程光标"
 
-#: plugins/vnc/vnc_plugin.c:1990 plugins/vnc/vnc_plugin.c:2006
-#: plugins/spice/spice_plugin.c:607 plugins/spice/spice_plugin.c:615
-msgid "View only"
-msgstr "仅查看"
-
 #: plugins/vnc/vnc_plugin.c:1991 plugins/rdp/rdp_plugin.c:2628
 msgid "Turn off clipboard sync"
 msgstr "禁用剪贴板同步"
@@ -1845,10 +2040,6 @@ msgstr "关闭 TLS 加密"
 #: plugins/vnc/vnc_plugin.c:1993 plugins/vnc/vnc_plugin.c:2007
 msgid "Prevent local interaction on the server"
 msgstr "阻止服务器上的本地交互"
-
-#: plugins/vnc/vnc_plugin.c:1994
-msgid "Ignore remote bell messages"
-msgstr ""
 
 #: plugins/vnc/vnc_plugin.c:2009
 msgid "Open Chat…"
@@ -1941,14 +2132,6 @@ msgstr "禁止 Gstreamer 叠加"
 #: plugins/spice/spice_plugin.c:600
 msgid "Prefered image compression"
 msgstr "首选图像压缩"
-
-#: plugins/spice/spice_plugin.c:603 plugins/spice/spice_plugin.c:616
-msgid "No clipboard sync"
-msgstr "禁用剪贴板同步"
-
-#: plugins/spice/spice_plugin.c:605
-msgid "Enable audio channel"
-msgstr "启用音频通道"
 
 #: plugins/spice/spice_plugin.c:606
 msgid "Share smart card"
