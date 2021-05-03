@@ -875,8 +875,12 @@ static DWORD remmina_rdp_verify_certificate_ex(freerdp *instance, const char *ho
 	return 0;
 }
 
-static DWORD remmina_rdp_verify_certificate(freerdp *instance, const char *common_name, const char *subject,
-						const char *issuer, const char *fingerprint, BOOL host_mismatch)
+static DWORD
+remmina_rdp_verify_certificate(freerdp *instance, const char *common_name, const char *subject,
+		const char *issuer, const char *fingerprint, BOOL host_mismatch) __attribute__ ((unused));
+static DWORD
+remmina_rdp_verify_certificate(freerdp *instance, const char *common_name, const char *subject,
+		const char *issuer, const char *fingerprint, BOOL host_mismatch)
 {
 	TRACE_CALL(__func__);
 	gint status;
@@ -1817,7 +1821,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 		if (monitorids_string != NULL && monitorids_string[0] != '\0') {
 			if (g_strstr_len(monitorids_string, -1, ",") != NULL) {
 				if (g_strstr_len(monitorids_string, -1, ":") != NULL) {
-					rdpMonitor* base = freerdp_settings_get_pointer(rfi->settings, FreeRDP_MonitorDefArray);
+					rdpMonitor* base = (rdpMonitor *)freerdp_settings_get_pointer(rfi->settings, FreeRDP_MonitorDefArray);
 					/* We have an ID and an orientation degree */
 					gchar **temp_items;
 					gchar **rot_items;
@@ -1840,7 +1844,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 			monitorids = g_strdup(monitorids_string);
 		remmina_rdp_monitor_get(rfi, &monitorids, &maxwidth, &maxheight);
 		if (monitorids != NULL && monitorids[0] != '\0') {
-			UINT32* base = freerdp_settings_get_pointer(rfi->settings, FreeRDP_MonitorIds);
+			UINT32* base = (UINT32 *)freerdp_settings_get_pointer(rfi->settings, FreeRDP_MonitorIds);
 			gchar **items;
 			items = g_strsplit(monitorids, ",", -1);
 			freerdp_settings_set_uint32(rfi->settings, FreeRDP_NumMonitorIds, g_strv_length(items));

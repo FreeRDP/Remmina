@@ -687,6 +687,7 @@ static void remmina_plugin_vnc_rfb_updatefb(rfbClient *cl, int x, int y, int w, 
 	remmina_plugin_vnc_queue_draw_area(gp, x, y, w, h);
 }
 
+static void remmina_plugin_vnc_rfb_finished(rfbClient *cl) __attribute__ ((unused));
 static void remmina_plugin_vnc_rfb_finished(rfbClient *cl)
 {
 	TRACE_CALL(__func__);
@@ -1915,15 +1916,6 @@ static gpointer quality_list[] =
 	"0", N_("Poor (fastest)"),
 	NULL
 };
-
-static gchar server_tooltip[] =
-	N_("<tt><big>"
-	   "Supported formats:\n"
-	   "  • server\n"
-	   "  • server:port\n"
-	   "  • server:[port]\n"
-	   "  • ID:numeric-id"
-	   "</big></tt>");
 
 static gchar repeater_tooltip[] =
 	N_("Connect to VNC using a repeater:\n"
