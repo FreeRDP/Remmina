@@ -69,7 +69,6 @@ void remmina_rdp_monitor_get (rfContext *rfi, gchar **monitorids, guint32 *maxwi
 {
 	TRACE_CALL(__func__);
 
-	rdpMonitor* base;
 	GdkDisplay *display;
 	GdkMonitor *monitor;
 	gboolean has_custom_monitors = FALSE;
@@ -109,7 +108,7 @@ void remmina_rdp_monitor_get (rfContext *rfi, gchar **monitorids, guint32 *maxwi
 
 	buffer[0] = '\0';
 
-	base = freerdp_settings_get_pointer(settings, FreeRDP_MonitorDefArray);
+	rdpMonitor* base = (rdpMonitor *)freerdp_settings_get_pointer(settings, FreeRDP_MonitorDefArray);
 	for (gint i = 0; i < n_monitors; ++i) {
 		rdpMonitor* current;
 		if (has_custom_monitors) {
