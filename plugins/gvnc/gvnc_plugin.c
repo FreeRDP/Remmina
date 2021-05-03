@@ -135,12 +135,13 @@ static void gvnc_plugin_on_vnc_error(GtkWidget *vncdisplay G_GNUC_UNUSED, const 
 	gpdata->error_msg = g_strdup(msg);
 }
 
+static gboolean gvnc_plugin_get_screenshot(RemminaProtocolWidget *gp, RemminaPluginScreenshotData *rpsd) __attribute__ ((unused));
 static gboolean gvnc_plugin_get_screenshot(RemminaProtocolWidget *gp, RemminaPluginScreenshotData *rpsd)
 {
 	GVncPluginData *gpdata = GET_PLUGIN_DATA(gp);
-	gsize szmem;
+	//gsize szmem;
 	const VncPixelFormat *currentFormat;
-	GError *err = NULL;
+	//GError *err = NULL;
 
 	if (!gpdata)
 		return FALSE;
@@ -164,7 +165,7 @@ static gboolean gvnc_plugin_get_screenshot(RemminaProtocolWidget *gp, RemminaPlu
 	//rpsd->buffer = malloc(szmem);
 
 	//memcpy(rpsd->buffer, pix, szmem);
-	gdk_pixbuf_save_to_buffer(pix, &rpsd->buffer, &szmem, "jpeg", &err, "quality", "100", NULL);
+	//gdk_pixbuf_save_to_buffer(pix, &rpsd->buffer, &szmem, "jpeg", &err, "quality", "100", NULL);
 
 
 	/* Returning TRUE instruct also the caller to deallocate rpsd->buffer */
@@ -486,10 +487,14 @@ static gboolean gvnc_plugin_ask_auth(GtkWidget *vncdisplay, GValueArray *credLis
 	RemminaFile *remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
 
-	REMMINA_PLUGIN_DEBUG("Got credential request for %u credential(s)\n", credList->n_values);
+	GArray *credArray = g_array_sized_new(FALSE, TRUE, sizeof(GValue), credList->n_values);
+	g_array_set_clear_func(credArray, (GDestroyNotify) g_value_unset);
+	g_array_append_vals(credArray, credList->values, credList->n_values);
 
-	for (i = 0; i < credList->n_values; i++) {
-		GValue *cred = g_value_array_get_nth(credList, i);
+	REMMINA_PLUGIN_DEBUG("Got credential request for %d credential(s)\n", credArray->len);
+
+	for (i = 0 ; i < credArray->len ; i++) {
+		GValue *cred = &g_array_index(credArray, GValue, i);
 		switch (g_value_get_enum(cred)) {
 		case VNC_DISPLAY_CREDENTIAL_USERNAME:
 			wantUsername = TRUE;
@@ -530,23 +535,23 @@ static gboolean gvnc_plugin_ask_auth(GtkWidget *vncdisplay, GValueArray *credLis
 			remmina_plugin_service->file_set_string(remminafile, "password", NULL);
 		}
 
-		for (i = 0; i < credList->n_values; i++) {
-			GValue *cred = g_value_array_get_nth(credList, i);
+		for (i = 0 ; i < credArray->len ; i++) {
+			GValue *cred = &g_array_index(credArray, GValue, i);
 			switch (g_value_get_enum(cred)) {
-			case VNC_DISPLAY_CREDENTIAL_USERNAME:
-				if (!s_username ||
-				    vnc_display_set_credential(VNC_DISPLAY(gpdata->vnc),
-							       g_value_get_enum(cred),
-							       s_username)) {
-					g_debug("Failed to set credential type %d", g_value_get_enum(cred));
-					vnc_display_close(VNC_DISPLAY(gpdata->vnc));
-				}
-				break;
-			case VNC_DISPLAY_CREDENTIAL_PASSWORD:
-				if (!s_password ||
-				    vnc_display_set_credential(VNC_DISPLAY(gpdata->vnc),
-							       g_value_get_enum(cred),
-							       s_password)) {
+				case VNC_DISPLAY_CREDENTIAL_USERNAME:
+					if (!s_username ||
+							vnc_display_set_credential(VNC_DISPLAY(gpdata->vnc),
+								g_value_get_enum(cred),
+								s_username)) {
+						g_debug("Failed to set credential type %d", g_value_get_enum(cred));
+						vnc_display_close(VNC_DISPLAY(gpdata->vnc));
+					}
+					break;
+				case VNC_DISPLAY_CREDENTIAL_PASSWORD:
+					if (!s_password ||
+							vnc_display_set_credential(VNC_DISPLAY(gpdata->vnc),
+								g_value_get_enum(cred),
+								s_password)) {
 					g_debug("Failed to set credential type %d", g_value_get_enum(cred));
 					vnc_display_close(VNC_DISPLAY(gpdata->vnc));
 				}
