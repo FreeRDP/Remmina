@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-05-03 15:25+0000\n"
+"POT-Creation-Date: 2021-05-03 22:51+0000\n"
 "PO-Revision-Date: 2021-03-17 11:18+0000\n"
 "Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -75,8 +75,8 @@ msgstr "Pripája sa k %s prostredníctvom SSH…"
 #: src/remmina_protocol_widget.c:1597 src/remmina_protocol_widget.c:1616
 #: src/remmina_ssh_plugin.c:1306 src/remmina_sftp_plugin.c:310
 #: src/remmina_sftp_plugin.c:346 src/remmina_file_editor.c:845
-#: src/remmina_file_editor.c:966 plugins/www/www_plugin.c:872
-#: plugins/rdp/rdp_plugin.c:2570 data/ui/remmina_unlock.glade:116
+#: src/remmina_file_editor.c:966 plugins/www/www_plugin.c:880
+#: plugins/rdp/rdp_plugin.c:2574 data/ui/remmina_unlock.glade:116
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1682
 msgid "Password"
 msgstr "Heslo"
@@ -302,14 +302,14 @@ msgstr "Typ overenia totožnosti"
 
 #: src/remmina_ssh_plugin.c:1410 src/remmina_message_panel.c:330
 #: src/remmina_sftp_plugin.c:345 src/remmina_file_editor.c:960
-#: plugins/www/www_plugin.c:871 plugins/vnc/vnc_plugin.c:1950
-#: plugins/vnc/vnc_plugin.c:1970 plugins/rdp/rdp_plugin.c:2569
+#: plugins/www/www_plugin.c:879 plugins/vnc/vnc_plugin.c:1942
+#: plugins/vnc/vnc_plugin.c:1962 plugins/rdp/rdp_plugin.c:2573
 #: plugins/nx/nx_plugin.c:730 data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr "Meno používateľa"
 
-#: src/remmina_ssh_plugin.c:1411 plugins/vnc/vnc_plugin.c:1951
-#: plugins/vnc/vnc_plugin.c:1971 plugins/spice/spice_plugin.c:576
+#: src/remmina_ssh_plugin.c:1411 plugins/vnc/vnc_plugin.c:1943
+#: plugins/vnc/vnc_plugin.c:1963 plugins/spice/spice_plugin.c:576
 #: plugins/nx/nx_plugin.c:731
 msgid "User password"
 msgstr "Heslo používateľa"
@@ -324,7 +324,7 @@ msgid "Password to unlock private key"
 msgstr "Heslo na odomknutie súkromného kľúča"
 
 #: src/remmina_ssh_plugin.c:1417 plugins/xdmcp/xdmcp_plugin.c:370
-#: plugins/rdp/rdp_plugin.c:2609 plugins/nx/nx_plugin.c:734
+#: plugins/rdp/rdp_plugin.c:2613 plugins/nx/nx_plugin.c:734
 msgid "Start-up program"
 msgstr "Program po spustení"
 
@@ -503,8 +503,8 @@ msgstr "Nahor"
 msgid "Go to parent folder"
 msgstr "Prejsť do nadradeného priečinku"
 
-#: src/remmina_ftp_client.c:758 plugins/vnc/vnc_plugin.c:2008
-#: plugins/rdp/rdp_plugin.c:2650
+#: src/remmina_ftp_client.c:758 plugins/vnc/vnc_plugin.c:2000
+#: plugins/rdp/rdp_plugin.c:2654
 msgid "Refresh"
 msgstr "Obnoviť"
 
@@ -549,11 +549,11 @@ msgstr "Skupina"
 msgid "Permission"
 msgstr "Oprávnenie"
 
-#: src/remmina_ftp_client.c:990 plugins/rdp/rdp_plugin.c:2475
+#: src/remmina_ftp_client.c:990 plugins/rdp/rdp_plugin.c:2479
 msgid "Remote"
 msgstr "Vzdialený"
 
-#: src/remmina_ftp_client.c:997 plugins/rdp/rdp_plugin.c:2474
+#: src/remmina_ftp_client.c:997 plugins/rdp/rdp_plugin.c:2478
 msgid "Local"
 msgstr "Miestny"
 
@@ -776,7 +776,7 @@ msgstr ""
 msgid "Turn off scaling to avoid screenshot distortion."
 msgstr "Vypnite zmenu mierky, aby ste predišli skresleniu snímky obrazovky."
 
-#: src/rcw.c:2131 plugins/www/www_plugin.c:840
+#: src/rcw.c:2131 plugins/www/www_plugin.c:848
 msgid "Screenshot taken"
 msgstr "Snímka obrazovky bola zachytená"
 
@@ -1077,7 +1077,7 @@ msgstr "Áno"
 msgid "No"
 msgstr "Nie"
 
-#: src/remmina_message_panel.c:391 plugins/rdp/rdp_plugin.c:2571
+#: src/remmina_message_panel.c:391 plugins/rdp/rdp_plugin.c:2575
 #: data/ui/remmina_mpc.glade:172
 msgid "Domain"
 msgstr "Doména"
@@ -1537,7 +1537,7 @@ msgstr "Tunel cez adresu slučky"
 msgid "Same server at port %i"
 msgstr "Rovnaký server na porte %i"
 
-#: src/remmina_file_editor.c:937 plugins/rdp/rdp_plugin.c:2610
+#: src/remmina_file_editor.c:937 plugins/rdp/rdp_plugin.c:2614
 msgid "Start-up path"
 msgstr "Cesta po spustení"
 
@@ -1620,210 +1620,210 @@ msgstr "_Vymazať"
 msgid "Remmina VNC plugin GNOME and KVM"
 msgstr "Zásuvný modul VNC aplikácie Remmina"
 
-#: plugins/gvnc/gvnc_plugin.c:455
+#: plugins/gvnc/gvnc_plugin.c:456
 #, fuzzy, c-format
 #| msgid "Authentication type"
 msgid "Unsupported authentication type %u"
 msgstr "Typ overenia totožnosti"
 
-#: plugins/gvnc/gvnc_plugin.c:467
+#: plugins/gvnc/gvnc_plugin.c:468
 #, fuzzy, c-format
 #| msgid "Authentication type"
 msgid "Authentication failure: %s"
 msgstr "Typ overenia totožnosti"
 
-#: plugins/gvnc/gvnc_plugin.c:513 plugins/vnc/vnc_plugin.c:819
+#: plugins/gvnc/gvnc_plugin.c:518 plugins/vnc/vnc_plugin.c:820
 msgid "Enter VNC authentication credentials"
 msgstr "Zadajte poverenia pre overenie totožnosti protokolu VNC"
 
-#: plugins/gvnc/gvnc_plugin.c:759
+#: plugins/gvnc/gvnc_plugin.c:764
 #, fuzzy
 #| msgid "Use system proxy settings"
 msgid "Use server settings"
 msgstr "Použiť systémové nastavenia proxy"
 
-#: plugins/gvnc/gvnc_plugin.c:760
+#: plugins/gvnc/gvnc_plugin.c:765
 #, fuzzy
 #| msgid "True colour (24 bit)"
 msgid "True colour (24 bits)"
 msgstr "Skutočné farby (24 bit)"
 
-#: plugins/gvnc/gvnc_plugin.c:761
+#: plugins/gvnc/gvnc_plugin.c:766
 #, fuzzy
 #| msgid "High colour (16 bit)"
 msgid "High colour (16 bits)"
 msgstr "Veľa farieb (16 bit)"
 
-#: plugins/gvnc/gvnc_plugin.c:762
+#: plugins/gvnc/gvnc_plugin.c:767
 #, fuzzy
 #| msgid "High colour (16 bit)"
 msgid "Low colour (8 bits)"
 msgstr "Veľa farieb (16 bit)"
 
-#: plugins/gvnc/gvnc_plugin.c:763
+#: plugins/gvnc/gvnc_plugin.c:768
 #, fuzzy
 #| msgid "True colour (24 bit)"
 msgid "Ultra low colour (3 bits)"
 msgstr "Skutočné farby (24 bit)"
 
-#: plugins/gvnc/gvnc_plugin.c:778
+#: plugins/gvnc/gvnc_plugin.c:783
 #, fuzzy
 #| msgid "Enter VNC password"
 msgid "VNC password"
 msgstr "Zadajte heslo pre VNC"
 
-#: plugins/gvnc/gvnc_plugin.c:779 plugins/vnc/vnc_plugin.c:1952
-#: plugins/vnc/vnc_plugin.c:1972 plugins/xdmcp/xdmcp_plugin.c:369
-#: plugins/rdp/rdp_plugin.c:2577
+#: plugins/gvnc/gvnc_plugin.c:784 plugins/vnc/vnc_plugin.c:1944
+#: plugins/vnc/vnc_plugin.c:1964 plugins/xdmcp/xdmcp_plugin.c:369
+#: plugins/rdp/rdp_plugin.c:2581
 msgid "Colour depth"
 msgstr "Hĺbka farieb"
 
-#: plugins/gvnc/gvnc_plugin.c:780
+#: plugins/gvnc/gvnc_plugin.c:785
 #, fuzzy
 #| msgid "SSH compression"
 msgid "Use JPEG Compression"
 msgstr "Komprimácia SSH"
 
-#: plugins/gvnc/gvnc_plugin.c:780
+#: plugins/gvnc/gvnc_plugin.c:785
 #, fuzzy
 #| msgid "Browse the network to find a %s server"
 msgid "This might not work on all VNC servers"
 msgstr "Prehľadať sieť a nájsť server %s"
 
-#: plugins/gvnc/gvnc_plugin.c:781
+#: plugins/gvnc/gvnc_plugin.c:786
 msgid "Enable GTK-VNC debug"
 msgstr ""
 
-#: plugins/gvnc/gvnc_plugin.c:796 plugins/gvnc/gvnc_plugin.c:810
+#: plugins/gvnc/gvnc_plugin.c:801 plugins/gvnc/gvnc_plugin.c:815
 #: plugins/spice/spice_plugin.c:603 plugins/spice/spice_plugin.c:616
 msgid "No clipboard sync"
 msgstr "Vypnúť synchronizáciu schránky"
 
-#: plugins/gvnc/gvnc_plugin.c:797 plugins/www/www_plugin.c:896
-#: plugins/vnc/vnc_plugin.c:1995 plugins/spice/spice_plugin.c:604
-#: plugins/rdp/rdp_plugin.c:2631 plugins/nx/nx_plugin.c:752
+#: plugins/gvnc/gvnc_plugin.c:802 plugins/www/www_plugin.c:904
+#: plugins/vnc/vnc_plugin.c:1987 plugins/spice/spice_plugin.c:604
+#: plugins/rdp/rdp_plugin.c:2635 plugins/nx/nx_plugin.c:752
 msgid "Forget passwords after use"
 msgstr "Zabudnúť heslá po použití"
 
-#: plugins/gvnc/gvnc_plugin.c:798 plugins/vnc/vnc_plugin.c:1994
+#: plugins/gvnc/gvnc_plugin.c:803 plugins/vnc/vnc_plugin.c:1986
 msgid "Ignore remote bell messages"
 msgstr ""
 
-#: plugins/gvnc/gvnc_plugin.c:799 plugins/spice/spice_plugin.c:605
+#: plugins/gvnc/gvnc_plugin.c:804 plugins/spice/spice_plugin.c:605
 msgid "Enable audio channel"
 msgstr "Povoliť zvukový kanál"
 
-#: plugins/gvnc/gvnc_plugin.c:800 plugins/gvnc/gvnc_plugin.c:809
-#: plugins/vnc/vnc_plugin.c:1990 plugins/vnc/vnc_plugin.c:2006
+#: plugins/gvnc/gvnc_plugin.c:805 plugins/gvnc/gvnc_plugin.c:814
+#: plugins/vnc/vnc_plugin.c:1982 plugins/vnc/vnc_plugin.c:1998
 #: plugins/spice/spice_plugin.c:607 plugins/spice/spice_plugin.c:615
 msgid "View only"
 msgstr "Iba zobrazenie"
 
-#: plugins/gvnc/gvnc_plugin.c:801
+#: plugins/gvnc/gvnc_plugin.c:806
 #, fuzzy
 #| msgid "Per connection"
 msgid "Shared connection"
 msgstr "Na pripojenie"
 
-#: plugins/gvnc/gvnc_plugin.c:801
+#: plugins/gvnc/gvnc_plugin.c:806
 msgid ""
 "If the server should try to share the desktop by leaving other clients "
 "connected"
 msgstr ""
 
-#: plugins/gvnc/gvnc_plugin.c:811
+#: plugins/gvnc/gvnc_plugin.c:816
 #, fuzzy
 #| msgid "Send Ctrl+Alt+Del"
 msgid "Send Ctrl+Alt+_Del"
 msgstr "Odoslať Ctrl+Alt+Del"
 
-#: plugins/gvnc/gvnc_plugin.c:812
+#: plugins/gvnc/gvnc_plugin.c:817
 #, fuzzy
 #| msgid "Send Ctrl+Alt+Del"
 msgid "Send Ctrl+Alt+_Backspace"
 msgstr "Odoslať Ctrl+Alt+Del"
 
-#: plugins/gvnc/gvnc_plugin.c:813
+#: plugins/gvnc/gvnc_plugin.c:818
 #, fuzzy
 #| msgid "Send Ctrl+Alt+Del"
 msgid "Send Ctrl+Alt+_F1"
 msgstr "Odoslať Ctrl+Alt+Del"
 
-#: plugins/gvnc/gvnc_plugin.c:814
+#: plugins/gvnc/gvnc_plugin.c:819
 #, fuzzy
 #| msgid "Send Ctrl+Alt+Del"
 msgid "Send Ctrl+Alt+_F2"
 msgstr "Odoslať Ctrl+Alt+Del"
 
-#: plugins/gvnc/gvnc_plugin.c:815
+#: plugins/gvnc/gvnc_plugin.c:820
 #, fuzzy
 #| msgid "Send Ctrl+Alt+Del"
 msgid "Send Ctrl+Alt+_F3"
 msgstr "Odoslať Ctrl+Alt+Del"
 
-#: plugins/gvnc/gvnc_plugin.c:816
+#: plugins/gvnc/gvnc_plugin.c:821
 #, fuzzy
 #| msgid "Send Ctrl+Alt+Del"
 msgid "Send Ctrl+Alt+_F4"
 msgstr "Odoslať Ctrl+Alt+Del"
 
-#: plugins/gvnc/gvnc_plugin.c:817
+#: plugins/gvnc/gvnc_plugin.c:822
 #, fuzzy
 #| msgid "Send Ctrl+Alt+Del"
 msgid "Send Ctrl+Alt+_F5"
 msgstr "Odoslať Ctrl+Alt+Del"
 
-#: plugins/gvnc/gvnc_plugin.c:818
+#: plugins/gvnc/gvnc_plugin.c:823
 #, fuzzy
 #| msgid "Send Ctrl+Alt+Del"
 msgid "Send Ctrl+Alt+_F6"
 msgstr "Odoslať Ctrl+Alt+Del"
 
-#: plugins/gvnc/gvnc_plugin.c:819
+#: plugins/gvnc/gvnc_plugin.c:824
 #, fuzzy
 #| msgid "Send Ctrl+Alt+Del"
 msgid "Send Ctrl+Alt+_F7"
 msgstr "Odoslať Ctrl+Alt+Del"
 
-#: plugins/gvnc/gvnc_plugin.c:820
+#: plugins/gvnc/gvnc_plugin.c:825
 #, fuzzy
 #| msgid "Send Ctrl+Alt+Del"
 msgid "Send Ctrl+Alt+_F8"
 msgstr "Odoslať Ctrl+Alt+Del"
 
-#: plugins/gvnc/gvnc_plugin.c:821
+#: plugins/gvnc/gvnc_plugin.c:826
 #, fuzzy
 #| msgid "Send Ctrl+Alt+Del"
 msgid "Send Ctrl+Alt+_F9"
 msgstr "Odoslať Ctrl+Alt+Del"
 
-#: plugins/gvnc/gvnc_plugin.c:822
+#: plugins/gvnc/gvnc_plugin.c:827
 #, fuzzy
 #| msgid "Send Ctrl+Alt+Del"
 msgid "Send Ctrl+Alt+_F10"
 msgstr "Odoslať Ctrl+Alt+Del"
 
-#: plugins/gvnc/gvnc_plugin.c:823
+#: plugins/gvnc/gvnc_plugin.c:828
 #, fuzzy
 #| msgid "Send Ctrl+Alt+Del"
 msgid "Send Ctrl+Alt+_F11"
 msgstr "Odoslať Ctrl+Alt+Del"
 
-#: plugins/gvnc/gvnc_plugin.c:824
+#: plugins/gvnc/gvnc_plugin.c:829
 #, fuzzy
 #| msgid "Send Ctrl+Alt+Del"
 msgid "Send Ctrl+Alt+_F12"
 msgstr "Odoslať Ctrl+Alt+Del"
 
-#: plugins/gvnc/gvnc_plugin.c:826
+#: plugins/gvnc/gvnc_plugin.c:831
 msgid "Reboot remote host"
 msgstr ""
 
-#: plugins/gvnc/gvnc_plugin.c:827
+#: plugins/gvnc/gvnc_plugin.c:832
 msgid "Reset remote host (hard reboot)"
 msgstr ""
 
-#: plugins/gvnc/gvnc_plugin.c:828
+#: plugins/gvnc/gvnc_plugin.c:833
 #, fuzzy
 #| msgid "Show remote cursor"
 msgid "Shutdown remote host"
@@ -1854,63 +1854,63 @@ msgstr "Príkaz"
 msgid "Asynchronous execution"
 msgstr "Asynchrónne spustenie"
 
-#: plugins/www/www_plugin.c:97
+#: plugins/www/www_plugin.c:98
 msgid "File downloaded"
 msgstr "Súbor prevzatý"
 
-#: plugins/www/www_plugin.c:566
+#: plugins/www/www_plugin.c:574
 msgid "Enter WWW authentication credentials"
 msgstr "Zadajte poverenia pre overenie totožnosti protokolu WWW"
 
-#: plugins/www/www_plugin.c:870
+#: plugins/www/www_plugin.c:878
 msgid "URL"
 msgstr "URL"
 
-#: plugins/www/www_plugin.c:870
+#: plugins/www/www_plugin.c:878
 msgid "http://address or https://address"
 msgstr "http://adresa alebo https://adresa"
 
-#: plugins/www/www_plugin.c:887
+#: plugins/www/www_plugin.c:895
 msgid "User agent"
 msgstr "Používateľský agent"
 
-#: plugins/www/www_plugin.c:888
+#: plugins/www/www_plugin.c:896
 msgid "Proxy URL"
 msgstr "URL proxy"
 
-#: plugins/www/www_plugin.c:888
+#: plugins/www/www_plugin.c:896
 msgid "E.g. https://example.org, socks://mysocks:1080"
 msgstr "Napr. https://priklad.org, socks://mojesocks:1080"
 
-#: plugins/www/www_plugin.c:889
+#: plugins/www/www_plugin.c:897
 msgid "Turn on Java support"
 msgstr "Zapnúť podporu jazyka Java"
 
-#: plugins/www/www_plugin.c:890
+#: plugins/www/www_plugin.c:898
 msgid "Turn on smooth scrolling"
 msgstr "Zapnúť hladké rolovanie"
 
-#: plugins/www/www_plugin.c:891
+#: plugins/www/www_plugin.c:899
 msgid "Turn on spatial navigation"
 msgstr "Zapnúť priestorovú navigáciu"
 
-#: plugins/www/www_plugin.c:892
+#: plugins/www/www_plugin.c:900
 msgid "Turn on plugin support"
 msgstr "Zapnúť podporu zásuvných modulov"
 
-#: plugins/www/www_plugin.c:893
+#: plugins/www/www_plugin.c:901
 msgid "Turn on WebGL support"
 msgstr "Zapnúť podporu WebGL"
 
-#: plugins/www/www_plugin.c:894
+#: plugins/www/www_plugin.c:902
 msgid "Turn on HTML5 audio support"
 msgstr "Zapnúť podporu zvuku HTML5"
 
-#: plugins/www/www_plugin.c:895
+#: plugins/www/www_plugin.c:903
 msgid "Ignore TLS errors"
 msgstr "Ignoruje chyby TLS"
 
-#: plugins/www/www_plugin.c:898
+#: plugins/www/www_plugin.c:906
 msgid "Turn on Web Inspector"
 msgstr "Zapnúť webového inšpektora"
 
@@ -1926,89 +1926,70 @@ msgstr "Bezpečné úložisko hesiel v zväzku kľúčov prostredia GNOME"
 msgid "Hello, World!"
 msgstr "Ahoj, Svet!"
 
-#: plugins/vnc/vnc_plugin.c:766
+#: plugins/vnc/vnc_plugin.c:767
 msgid "Enter VNC password"
 msgstr "Zadajte heslo pre VNC"
 
-#: plugins/vnc/vnc_plugin.c:930
+#: plugins/vnc/vnc_plugin.c:931
 msgid "Unable to connect to VNC server"
 msgstr "Nie je možné pripojiť sa k serveru VNC"
 
-#: plugins/vnc/vnc_plugin.c:931
+#: plugins/vnc/vnc_plugin.c:932
 #, c-format
 msgid "Couldn’t convert '%s' to host address"
 msgstr "Nepodarilo sa skonvertovať „%s“ na adresu hostiteľa"
 
-#: plugins/vnc/vnc_plugin.c:932
+#: plugins/vnc/vnc_plugin.c:933
 #, c-format
 msgid "VNC connection failed: %s"
 msgstr "Pripojenie VNC zlyhalo: %s"
 
-#: plugins/vnc/vnc_plugin.c:933
+#: plugins/vnc/vnc_plugin.c:934
 msgid "Your connection has been rejected."
 msgstr "Vaše pripojenie bolo odmietnuté."
 
-#: plugins/vnc/vnc_plugin.c:959
+#: plugins/vnc/vnc_plugin.c:960
 #, c-format
 msgid "The VNC server requested an unknown authentication method. %s"
 msgstr "Server VNC si vyžiadal neznámy spôsob overenia totožnosti. %s"
 
-#: plugins/vnc/vnc_plugin.c:961
+#: plugins/vnc/vnc_plugin.c:962
 msgid "Please retry after turning on encryption for this profile."
 msgstr "Prosím, skúste to znovu po zapnutí šifrovanie pre tento profil."
 
-#: plugins/vnc/vnc_plugin.c:1903 plugins/rdp/rdp_plugin.c:2424
+#: plugins/vnc/vnc_plugin.c:1904 plugins/rdp/rdp_plugin.c:2428
 msgid "True colour (32 bpp)"
 msgstr "Skutočné farby (32 bpp)"
 
-#: plugins/vnc/vnc_plugin.c:1904 plugins/rdp/rdp_plugin.c:2426
+#: plugins/vnc/vnc_plugin.c:1905 plugins/rdp/rdp_plugin.c:2430
 msgid "High colour (16 bpp)"
 msgstr "Veľa farieb (16 bpp)"
 
-#: plugins/vnc/vnc_plugin.c:1905 plugins/rdp/rdp_plugin.c:2428
+#: plugins/vnc/vnc_plugin.c:1906 plugins/rdp/rdp_plugin.c:2432
 msgid "256 colours (8 bpp)"
 msgstr "256 farieb (8 bpp)"
 
-#: plugins/vnc/vnc_plugin.c:1912 plugins/rdp/rdp_plugin.c:2452
+#: plugins/vnc/vnc_plugin.c:1913 plugins/rdp/rdp_plugin.c:2456
 #: plugins/rdp/rdp_settings.c:273 plugins/nx/nx_plugin.c:713
 msgid "Best (slowest)"
 msgstr "Najlepšia (najpomalšie)"
 
-#: plugins/vnc/vnc_plugin.c:1913 plugins/rdp/rdp_plugin.c:2451
+#: plugins/vnc/vnc_plugin.c:1914 plugins/rdp/rdp_plugin.c:2455
 #: plugins/rdp/rdp_settings.c:271 plugins/nx/nx_plugin.c:712
 msgid "Good"
 msgstr "Dobrá"
 
-#: plugins/vnc/vnc_plugin.c:1914 plugins/rdp/rdp_plugin.c:2450
+#: plugins/vnc/vnc_plugin.c:1915 plugins/rdp/rdp_plugin.c:2454
 #: plugins/rdp/rdp_settings.c:269 plugins/nx/nx_plugin.c:711
 msgid "Medium"
 msgstr "Stredná"
 
-#: plugins/vnc/vnc_plugin.c:1915 plugins/rdp/rdp_plugin.c:2449
+#: plugins/vnc/vnc_plugin.c:1916 plugins/rdp/rdp_plugin.c:2453
 #: plugins/rdp/rdp_settings.c:267 plugins/nx/nx_plugin.c:710
 msgid "Poor (fastest)"
 msgstr "Najhoršia (najrýchlejšie)"
 
-#: plugins/vnc/vnc_plugin.c:1920
-#, fuzzy
-#| msgid ""
-#| "<tt><big>Supported formats\n"
-#| "• server\n"
-#| "• server:port\n"
-#| "• [server]:port</big></tt>"
-msgid ""
-"<tt><big>Supported formats:\n"
-"  • server\n"
-"  • server:port\n"
-"  • server:[port]\n"
-"  • ID:numeric-id</big></tt>"
-msgstr ""
-"<tt><big>Podporované formáty\n"
-"• server\n"
-"• server:port\n"
-"• [server]:port</big></tt>"
-
-#: plugins/vnc/vnc_plugin.c:1929
+#: plugins/vnc/vnc_plugin.c:1921
 msgid ""
 "Connect to VNC using a repeater:\n"
 "  • The server field must contain the repeater ID, e.g. ID:123456789\n"
@@ -2019,41 +2000,41 @@ msgid ""
 "    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
 msgstr ""
 
-#: plugins/vnc/vnc_plugin.c:1949
+#: plugins/vnc/vnc_plugin.c:1941
 msgid "Repeater"
 msgstr "Opakovač"
 
-#: plugins/vnc/vnc_plugin.c:1953 plugins/vnc/vnc_plugin.c:1973
-#: plugins/rdp/rdp_plugin.c:2594 plugins/nx/nx_plugin.c:733
+#: plugins/vnc/vnc_plugin.c:1945 plugins/vnc/vnc_plugin.c:1965
+#: plugins/rdp/rdp_plugin.c:2598 plugins/nx/nx_plugin.c:733
 msgid "Quality"
 msgstr "Kvalita"
 
-#: plugins/vnc/vnc_plugin.c:1969
+#: plugins/vnc/vnc_plugin.c:1961
 msgid "Listen on port"
 msgstr "Načúva na porte"
 
-#: plugins/vnc/vnc_plugin.c:1989
+#: plugins/vnc/vnc_plugin.c:1981
 msgid "Show remote cursor"
 msgstr "Zobraziť vzdialený kurzor"
 
-#: plugins/vnc/vnc_plugin.c:1991 plugins/rdp/rdp_plugin.c:2628
+#: plugins/vnc/vnc_plugin.c:1983 plugins/rdp/rdp_plugin.c:2632
 msgid "Turn off clipboard sync"
 msgstr "Vypnúť synchronizáciu schránky"
 
-#: plugins/vnc/vnc_plugin.c:1992
+#: plugins/vnc/vnc_plugin.c:1984
 msgid "Turn off encryption"
 msgstr "Použiť šifrovanie TLS"
 
-#: plugins/vnc/vnc_plugin.c:1993 plugins/vnc/vnc_plugin.c:2007
+#: plugins/vnc/vnc_plugin.c:1985 plugins/vnc/vnc_plugin.c:1999
 msgid "Prevent local interaction on the server"
 msgstr "Zabrániť miestnej interakcii na serveri"
 
-#: plugins/vnc/vnc_plugin.c:2009
+#: plugins/vnc/vnc_plugin.c:2001
 msgid "Open Chat…"
 msgstr "Otvoriť rozhovor…"
 
-#: plugins/vnc/vnc_plugin.c:2010 plugins/spice/spice_plugin.c:617
-#: plugins/xdmcp/xdmcp_plugin.c:381 plugins/rdp/rdp_plugin.c:2654
+#: plugins/vnc/vnc_plugin.c:2002 plugins/spice/spice_plugin.c:617
+#: plugins/xdmcp/xdmcp_plugin.c:381 plugins/rdp/rdp_plugin.c:2658
 msgid "Send Ctrl+Alt+Delete"
 msgstr "Odoslať Ctrl+Alt+Delete"
 
@@ -2099,7 +2080,7 @@ msgstr "Pripojenie k serveru SPICE bolo ukončené."
 msgid "Default"
 msgstr "Predvolená"
 
-#: plugins/spice/spice_plugin.c:545 plugins/rdp/rdp_plugin.c:2473
+#: plugins/spice/spice_plugin.c:545 plugins/rdp/rdp_plugin.c:2477
 #: data/ui/remmina_preferences.glade:719
 msgid "Off"
 msgstr "Vypnutý"
@@ -2124,7 +2105,7 @@ msgstr "Použiť šifrovanie TLS"
 msgid "Server CA certificate"
 msgstr "Certifikát CA servera"
 
-#: plugins/spice/spice_plugin.c:579 plugins/rdp/rdp_plugin.c:2579
+#: plugins/spice/spice_plugin.c:579 plugins/rdp/rdp_plugin.c:2583
 msgid "Share folder"
 msgstr "Sprístupniť priečinok"
 
@@ -2238,7 +2219,7 @@ msgstr "Zadajte poverenia pre overenie totožnosti protokolu RDP"
 msgid "Enter RDP gateway authentication credentials"
 msgstr "Zadajte poverenia pre overenie totožnosti brány RDP"
 
-#: plugins/rdp/rdp_plugin.c:1991
+#: plugins/rdp/rdp_plugin.c:1995
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2247,7 +2228,7 @@ msgstr ""
 "Nepodarilo sa pristúpiť k serveru RDP „%s“.\n"
 "Účet je uzamknutý."
 
-#: plugins/rdp/rdp_plugin.c:1998
+#: plugins/rdp/rdp_plugin.c:2002
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2256,7 +2237,7 @@ msgstr ""
 "Nepodarilo sa pristúpiť k serveru RDP „%s“.\n"
 "Platnosť účtu vypršala."
 
-#: plugins/rdp/rdp_plugin.c:2005
+#: plugins/rdp/rdp_plugin.c:2009
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2265,7 +2246,7 @@ msgstr ""
 "Nepodarilo sa pristúpiť k serveru RDP „%s“.\n"
 "Platnosť hesla vypršala."
 
-#: plugins/rdp/rdp_plugin.c:2012
+#: plugins/rdp/rdp_plugin.c:2016
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2274,7 +2255,7 @@ msgstr ""
 "Nepodarilo sa pristúpiť k serveru RDP „%s“.\n"
 "Účet je zakázaný."
 
-#: plugins/rdp/rdp_plugin.c:2018
+#: plugins/rdp/rdp_plugin.c:2022
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2283,7 +2264,7 @@ msgstr ""
 "Nepodarilo sa pristúpiť k serveru RDP „%s“.\n"
 "Nedostatočné oprávnenie používateľa."
 
-#: plugins/rdp/rdp_plugin.c:2026
+#: plugins/rdp/rdp_plugin.c:2030
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2292,7 +2273,7 @@ msgstr ""
 "Nepodarilo sa pristúpiť k serveru RDP „%s“.\n"
 "Účet je obmedzený."
 
-#: plugins/rdp/rdp_plugin.c:2034
+#: plugins/rdp/rdp_plugin.c:2038
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2301,17 +2282,17 @@ msgstr ""
 "Nepodarilo sa pristúpiť k serveru RDP „%s“.\n"
 "Pred pripojením zmeňte heslo používateľa."
 
-#: plugins/rdp/rdp_plugin.c:2039
+#: plugins/rdp/rdp_plugin.c:2043
 #, c-format
 msgid "Lost connection to the RDP server “%s”."
 msgstr "Stratilo sa pripojenie k serveru RDP „%s“."
 
-#: plugins/rdp/rdp_plugin.c:2042
+#: plugins/rdp/rdp_plugin.c:2046
 #, c-format
 msgid "Could not find the address for the RDP server “%s”."
 msgstr "Nepodarilo sa nájsť adresu servera RDP „%s“."
 
-#: plugins/rdp/rdp_plugin.c:2046
+#: plugins/rdp/rdp_plugin.c:2050
 #, c-format
 msgid ""
 "Could not connect to the RDP server “%s” via TLS. Check that client and "
@@ -2321,7 +2302,7 @@ msgstr ""
 "či klient aj server podporujú rovnakú verziu TLS."
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
-#: plugins/rdp/rdp_plugin.c:2050
+#: plugins/rdp/rdp_plugin.c:2054
 #, c-format
 msgid ""
 "Unable to establish a connection to the RDP server “%s”. Check \"Security "
@@ -2330,16 +2311,16 @@ msgstr ""
 "Nie je možné vytvoriť pripojenie k serveru RDP. Skontrolujte voľbu „Dohoda "
 "bezpečnostného protokolu“ „%s“."
 
-#: plugins/rdp/rdp_plugin.c:2058
+#: plugins/rdp/rdp_plugin.c:2062
 #, c-format
 msgid "Cannot connect to the RDP server “%s”."
 msgstr "Nedá sa pripojiť k serveru RDP „%s“."
 
-#: plugins/rdp/rdp_plugin.c:2061
+#: plugins/rdp/rdp_plugin.c:2065
 msgid "Could not start libfreerdp-gdi."
 msgstr "Nepodarilo sa spustiť program libfreerdp-gdi."
 
-#: plugins/rdp/rdp_plugin.c:2064
+#: plugins/rdp/rdp_plugin.c:2068
 #, c-format
 msgid ""
 "You requested a H.264 GFX mode for the server “%s”, but your libfreerdp does "
@@ -2348,12 +2329,12 @@ msgstr ""
 "Požadovali ste režim H.264 GFX pre server „%s“, ale vaša knižnica libfreerdp "
 "nepodporuje H.264. Prosím, použite iné nastavenie hĺbky farieb ako AVC."
 
-#: plugins/rdp/rdp_plugin.c:2071
+#: plugins/rdp/rdp_plugin.c:2075
 #, c-format
 msgid "The “%s” server refused the connection."
 msgstr "Server „%s“ odmietol pripojenie."
 
-#: plugins/rdp/rdp_plugin.c:2076
+#: plugins/rdp/rdp_plugin.c:2080
 #, c-format
 msgid ""
 "The Remote Desktop Gateway “%s” denied the user \"%s\\%s\" access due to "
@@ -2362,100 +2343,100 @@ msgstr ""
 "Brána vzdialenej pracovnej plochy „%s“ odmietla prístup používateľa „%s\\%s“ "
 "kvôli politike."
 
-#: plugins/rdp/rdp_plugin.c:2086
+#: plugins/rdp/rdp_plugin.c:2090
 #, c-format
 msgid "Cannot connect to the “%s” RDP server."
 msgstr "Nedá sa pripojiť k serveru RDP „%s“."
 
-#: plugins/rdp/rdp_plugin.c:2418
+#: plugins/rdp/rdp_plugin.c:2422
 msgid "Automatic (32 bpp) (Server chooses its best format)"
 msgstr "Automatická (32 bpp) (Server si zvolí najlepší formát)"
 
-#: plugins/rdp/rdp_plugin.c:2419
+#: plugins/rdp/rdp_plugin.c:2423
 msgid "GFX AVC444 (32 bpp)"
 msgstr "GFX AVC444 (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2420
+#: plugins/rdp/rdp_plugin.c:2424
 msgid "GFX AVC420 (32 bpp)"
 msgstr "GFX AVC420 (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2421
+#: plugins/rdp/rdp_plugin.c:2425
 msgid "GFX RFX (32 bpp)"
 msgstr "GFX RFX (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2422
+#: plugins/rdp/rdp_plugin.c:2426
 msgid "GFX RFX Progressive (32 bpp)"
 msgstr "Progresívna GFX RFX (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2423
+#: plugins/rdp/rdp_plugin.c:2427
 msgid "RemoteFX (32 bpp)"
 msgstr "RemoteFX (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2425
+#: plugins/rdp/rdp_plugin.c:2429
 msgid "True colour (24 bpp)"
 msgstr "Skutočné farby (24 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2427
+#: plugins/rdp/rdp_plugin.c:2431
 msgid "High colour (15 bpp)"
 msgstr "Veľa farieb (15 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2459 data/ui/remmina_preferences.glade:682
+#: plugins/rdp/rdp_plugin.c:2463 data/ui/remmina_preferences.glade:682
 msgid "None"
 msgstr "Žiadne"
 
-#: plugins/rdp/rdp_plugin.c:2460
+#: plugins/rdp/rdp_plugin.c:2464
 msgid "Auto-detect"
 msgstr "Zistiť automaticky"
 
-#: plugins/rdp/rdp_plugin.c:2461
+#: plugins/rdp/rdp_plugin.c:2465
 msgid "Modem"
 msgstr "Modem"
 
-#: plugins/rdp/rdp_plugin.c:2462
+#: plugins/rdp/rdp_plugin.c:2466
 msgid "Low performance broadband"
 msgstr "Širokopásmové pripojenie s nízkym výkonom"
 
-#: plugins/rdp/rdp_plugin.c:2463
+#: plugins/rdp/rdp_plugin.c:2467
 msgid "Satellite"
 msgstr "Satelit"
 
-#: plugins/rdp/rdp_plugin.c:2464
+#: plugins/rdp/rdp_plugin.c:2468
 msgid "High performance broadband"
 msgstr "Širokopásmové pripojenie s vysokým výkonom"
 
-#: plugins/rdp/rdp_plugin.c:2465
+#: plugins/rdp/rdp_plugin.c:2469
 msgid "WAN"
 msgstr "WAN"
 
-#: plugins/rdp/rdp_plugin.c:2466
+#: plugins/rdp/rdp_plugin.c:2470
 msgid "LAN"
 msgstr "LAN"
 
-#: plugins/rdp/rdp_plugin.c:2482
+#: plugins/rdp/rdp_plugin.c:2486
 msgid "Automatic negotiation"
 msgstr "Automatická dohoda"
 
-#: plugins/rdp/rdp_plugin.c:2483
+#: plugins/rdp/rdp_plugin.c:2487
 msgid "NLA protocol security"
 msgstr "Zabezpečenie protokolom NLA"
 
-#: plugins/rdp/rdp_plugin.c:2484
+#: plugins/rdp/rdp_plugin.c:2488
 msgid "TLS protocol security"
 msgstr "Zabezpečenie protokolom TLS"
 
-#: plugins/rdp/rdp_plugin.c:2485
+#: plugins/rdp/rdp_plugin.c:2489
 msgid "RDP protocol security"
 msgstr "Zabezpečenie protokolom RDP"
 
-#: plugins/rdp/rdp_plugin.c:2486
+#: plugins/rdp/rdp_plugin.c:2490
 msgid "NLA extended protocol security"
 msgstr "Zabezpečenie rozšíreným protokolom NLA"
 
-#: plugins/rdp/rdp_plugin.c:2499
+#: plugins/rdp/rdp_plugin.c:2503
 msgid "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 and newer)"
 msgstr "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 a novší)"
 
-#: plugins/rdp/rdp_plugin.c:2502
+#: plugins/rdp/rdp_plugin.c:2506
 msgid ""
 "Used i.a. by terminal services in a smart card channel to distinguish client "
 "capabilities:\n"
@@ -2472,7 +2453,7 @@ msgstr ""
 "    SCardGetTransmitCount()\n"
 "  • >= 7065: Windows 8 a novší: SCardGetReaderIcon(), SCardGetDeviceTypeId()"
 
-#: plugins/rdp/rdp_plugin.c:2510
+#: plugins/rdp/rdp_plugin.c:2514
 msgid ""
 "Options for redirection of audio input:\n"
 "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
@@ -2489,7 +2470,7 @@ msgstr ""
 "  • sys:oss,dev:1,format:1\n"
 "  • sys:alsa"
 
-#: plugins/rdp/rdp_plugin.c:2519
+#: plugins/rdp/rdp_plugin.c:2523
 msgid ""
 "Options for redirection of audio output:\n"
 "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
@@ -2507,7 +2488,7 @@ msgstr ""
 "  • sys:oss,dev:1,format:1\n"
 "  • sys:alsa"
 
-#: plugins/rdp/rdp_plugin.c:2529
+#: plugins/rdp/rdp_plugin.c:2533
 msgid ""
 "Options for redirection of USB device:\n"
 "  • [dbg,][id:<vid>:<pid>#…,][addr:<bus>:<addr>#…,][auto]\n"
@@ -2519,7 +2500,7 @@ msgstr ""
 "  • auto\n"
 "  • id:054c:0268#4669:6e6b,addr:04:0c"
 
-#: plugins/rdp/rdp_plugin.c:2535
+#: plugins/rdp/rdp_plugin.c:2539
 msgid ""
 "Advanced setting for high latency links:\n"
 "Adjusts the connection timeout. Use if your connection times out.\n"
@@ -2530,7 +2511,7 @@ msgstr ""
 "limitu vášho pripojenia.\n"
 "Najvyššia možná hodnota je 600000 ms (10 minút)\n"
 
-#: plugins/rdp/rdp_plugin.c:2540
+#: plugins/rdp/rdp_plugin.c:2544
 msgid ""
 "Performance optimisations based on the network connection type:\n"
 "Using auto-detection is advised.\n"
@@ -2540,7 +2521,7 @@ msgstr ""
 "Odporúča sa použitie automatického zistenia.\n"
 "Ak voľba „Zistiť automaticky“ zlyhá, zvoľte vhodnú voľbu zo zoznamu.\n"
 
-#: plugins/rdp/rdp_plugin.c:2545
+#: plugins/rdp/rdp_plugin.c:2549
 msgid ""
 "Comma-separated list of monitor IDs and desktop orientations:\n"
 "  • [<id>:<orientation-in-degrees>,]\n"
@@ -2554,101 +2535,101 @@ msgid ""
 "\n"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2572
+#: plugins/rdp/rdp_plugin.c:2576
 msgid "Left-handed mouse support"
 msgstr "Podpora myši pre ľavákov"
 
-#: plugins/rdp/rdp_plugin.c:2572
+#: plugins/rdp/rdp_plugin.c:2576
 msgid "Swap left and right mouse buttons for left-handed mouse support"
 msgstr "Prehodí ľavé a pravé tlačidlá myši pre podporu myši pre ľavákov"
 
-#: plugins/rdp/rdp_plugin.c:2573
+#: plugins/rdp/rdp_plugin.c:2577
 msgid "Enable multi monitor"
 msgstr "Povoliť viacero monitorov"
 
-#: plugins/rdp/rdp_plugin.c:2574
+#: plugins/rdp/rdp_plugin.c:2578
 msgid "Span screen over multiple monitors"
 msgstr "Roztiahnuť obrazovku na viacero monitorov"
 
-#: plugins/rdp/rdp_plugin.c:2575
+#: plugins/rdp/rdp_plugin.c:2579
 #, fuzzy
 #| msgid "Monitor ID list"
 msgid "List monitor IDs"
 msgstr "Zoznam identifikátorov monitorov"
 
-#: plugins/rdp/rdp_plugin.c:2578
+#: plugins/rdp/rdp_plugin.c:2582
 msgid "Network connection type"
 msgstr "Typ sieťového pripojenia"
 
-#: plugins/rdp/rdp_plugin.c:2595
+#: plugins/rdp/rdp_plugin.c:2599
 msgid "Security protocol negotiation"
 msgstr "Dohoda bezpečnostného protokolu"
 
-#: plugins/rdp/rdp_plugin.c:2596
+#: plugins/rdp/rdp_plugin.c:2600
 msgid "Gateway transport type"
 msgstr "Typ transportu brány"
 
-#: plugins/rdp/rdp_plugin.c:2597
+#: plugins/rdp/rdp_plugin.c:2601
 msgid "FreeRDP log level"
 msgstr "Úroveň záznamu protokolu FreeRDP"
 
-#: plugins/rdp/rdp_plugin.c:2598
+#: plugins/rdp/rdp_plugin.c:2602
 msgid "FreeRDP log filters"
 msgstr "Filtre záznamu protokolu FreeRDP"
 
-#: plugins/rdp/rdp_plugin.c:2598
+#: plugins/rdp/rdp_plugin.c:2602
 msgid "tag:level[,tag:level[,…]]"
 msgstr "značka:úroveň[,značka:úroveň[,...]]"
 
-#: plugins/rdp/rdp_plugin.c:2599
+#: plugins/rdp/rdp_plugin.c:2603
 msgid "Audio output mode"
 msgstr "Režim zvukového výstupu"
 
-#: plugins/rdp/rdp_plugin.c:2600
+#: plugins/rdp/rdp_plugin.c:2604
 msgid "Redirect local audio output"
 msgstr "Presmeruje miestny mikrofón"
 
-#: plugins/rdp/rdp_plugin.c:2601
+#: plugins/rdp/rdp_plugin.c:2605
 msgid "Redirect local microphone"
 msgstr "Presmeruje miestny mikrofón"
 
-#: plugins/rdp/rdp_plugin.c:2602
+#: plugins/rdp/rdp_plugin.c:2606
 msgid "Connection timeout in ms"
 msgstr "Časový limit pripojenia v ms"
 
-#: plugins/rdp/rdp_plugin.c:2603
+#: plugins/rdp/rdp_plugin.c:2607
 msgid "Remote Desktop Gateway server"
 msgstr "Server brány vzdialenej pracovnej plochy"
 
-#: plugins/rdp/rdp_plugin.c:2604
+#: plugins/rdp/rdp_plugin.c:2608
 msgid "Remote Desktop Gateway username"
 msgstr "Meno používateľa brány vzdialenej pracovnej plochy"
 
-#: plugins/rdp/rdp_plugin.c:2605
+#: plugins/rdp/rdp_plugin.c:2609
 msgid "Remote Desktop Gateway password"
 msgstr "Heslo brány vzdialenej pracovnej plochy"
 
-#: plugins/rdp/rdp_plugin.c:2606
+#: plugins/rdp/rdp_plugin.c:2610
 msgid "Remote Desktop Gateway domain"
 msgstr "Doména brány vzdialenej pracovnej plochy"
 
-#: plugins/rdp/rdp_plugin.c:2607
+#: plugins/rdp/rdp_plugin.c:2611
 msgid "Client name"
 msgstr "Názov klienta"
 
-#: plugins/rdp/rdp_plugin.c:2608
+#: plugins/rdp/rdp_plugin.c:2612
 msgid "Client build"
 msgstr "Klientská zostava"
 
-#: plugins/rdp/rdp_plugin.c:2611
+#: plugins/rdp/rdp_plugin.c:2615
 msgid "Load balance info"
 msgstr "Informácie o vyvážení záťaže"
 
-#: plugins/rdp/rdp_plugin.c:2612
+#: plugins/rdp/rdp_plugin.c:2616
 msgid "Override printer drivers"
 msgstr "Nahradiť ovládače tlačiarní"
 
-#: plugins/rdp/rdp_plugin.c:2612
+#: plugins/rdp/rdp_plugin.c:2616
 msgid ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
@@ -2656,147 +2637,147 @@ msgstr ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
 
-#: plugins/rdp/rdp_plugin.c:2613
+#: plugins/rdp/rdp_plugin.c:2617
 msgid "USB device redirection"
 msgstr "Presmerovanie zariadení USB"
 
-#: plugins/rdp/rdp_plugin.c:2614
+#: plugins/rdp/rdp_plugin.c:2618
 msgid "Local serial name"
 msgstr "Názov miestneho sériového portu"
 
-#: plugins/rdp/rdp_plugin.c:2614
+#: plugins/rdp/rdp_plugin.c:2618
 msgid "COM1, COM2, etc."
 msgstr "COM1, COM2, atď."
 
-#: plugins/rdp/rdp_plugin.c:2615
+#: plugins/rdp/rdp_plugin.c:2619
 msgid "Local serial driver"
 msgstr "Ovládač miestneho sériového portu"
 
-#: plugins/rdp/rdp_plugin.c:2615
+#: plugins/rdp/rdp_plugin.c:2619
 msgid "Serial"
 msgstr "Sériový port"
 
-#: plugins/rdp/rdp_plugin.c:2616
+#: plugins/rdp/rdp_plugin.c:2620
 msgid "Local serial path"
 msgstr "Cesta k miestnemu sériovému portu"
 
-#: plugins/rdp/rdp_plugin.c:2616
+#: plugins/rdp/rdp_plugin.c:2620
 msgid "/dev/ttyS0, /dev/ttyS1, etc."
 msgstr "/dev/ttyS0, /dev/ttyS1, atď."
 
-#: plugins/rdp/rdp_plugin.c:2617
+#: plugins/rdp/rdp_plugin.c:2621
 msgid "Local parallel name"
 msgstr "Názov miestneho paralelného portu"
 
-#: plugins/rdp/rdp_plugin.c:2618
+#: plugins/rdp/rdp_plugin.c:2622
 msgid "Local parallel device"
 msgstr "Miestne zariadenie paralelného portu"
 
-#: plugins/rdp/rdp_plugin.c:2619
+#: plugins/rdp/rdp_plugin.c:2623
 msgid "Name of smart card"
 msgstr "Názov karty smart card"
 
-#: plugins/rdp/rdp_plugin.c:2620
+#: plugins/rdp/rdp_plugin.c:2624
 msgid "Dynamic virtual channel"
 msgstr "Dynamický virtuálny kanál"
 
-#: plugins/rdp/rdp_plugin.c:2620 plugins/rdp/rdp_plugin.c:2621
+#: plugins/rdp/rdp_plugin.c:2624 plugins/rdp/rdp_plugin.c:2625
 msgid "<channel>[,<options>]"
 msgstr "<kanál>[,<voľby>]"
 
-#: plugins/rdp/rdp_plugin.c:2621
+#: plugins/rdp/rdp_plugin.c:2625
 msgid "Static virtual channel"
 msgstr "Statický virtuálny kanál"
 
-#: plugins/rdp/rdp_plugin.c:2622
+#: plugins/rdp/rdp_plugin.c:2626
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
 msgstr "Uprednostniť záznam IPv6 AAAA pred záznamom IPv4 A"
 
-#: plugins/rdp/rdp_plugin.c:2623
+#: plugins/rdp/rdp_plugin.c:2627
 msgid "Share printers"
 msgstr "Sprístupniť tlačiarne"
 
-#: plugins/rdp/rdp_plugin.c:2624
+#: plugins/rdp/rdp_plugin.c:2628
 msgid "Share serial ports"
 msgstr "Sprístupniť sériové porty"
 
-#: plugins/rdp/rdp_plugin.c:2625
+#: plugins/rdp/rdp_plugin.c:2629
 msgid "(SELinux) permissive mode for serial ports"
 msgstr "(SELinux) prípustný režim pre sériové porty"
 
-#: plugins/rdp/rdp_plugin.c:2626
+#: plugins/rdp/rdp_plugin.c:2630
 msgid "Share parallel ports"
 msgstr "Sprístupniť paralelné porty"
 
-#: plugins/rdp/rdp_plugin.c:2627
+#: plugins/rdp/rdp_plugin.c:2631
 msgid "Share a smart card"
 msgstr "Sprístupniť kartu smart card"
 
-#: plugins/rdp/rdp_plugin.c:2629
+#: plugins/rdp/rdp_plugin.c:2633
 msgid "Ignore certificate"
 msgstr "Ignorovať certifikát"
 
-#: plugins/rdp/rdp_plugin.c:2630
+#: plugins/rdp/rdp_plugin.c:2634
 msgid "Use the old license workflow"
 msgstr "Použiť spôsob fungovania podľa starej licencie"
 
-#: plugins/rdp/rdp_plugin.c:2630
+#: plugins/rdp/rdp_plugin.c:2634
 msgid "It disables CAL and hwId is set to 0"
 msgstr "Zakáže CAL a hwId nastaví na hodnotu 0"
 
-#: plugins/rdp/rdp_plugin.c:2632
+#: plugins/rdp/rdp_plugin.c:2636
 msgid "Attach to console (2003/2003 R2)"
 msgstr "Priloží ku konzole (2003/2003 R2)"
 
-#: plugins/rdp/rdp_plugin.c:2633
+#: plugins/rdp/rdp_plugin.c:2637
 msgid "Turn off fast-path"
 msgstr "Vypnúť funkciu fast-path"
 
-#: plugins/rdp/rdp_plugin.c:2634
+#: plugins/rdp/rdp_plugin.c:2638
 msgid "Server detection using Remote Desktop Gateway"
 msgstr "Zistenie servera pomocou brány vzdialenej pracovnej plochy"
 
-#: plugins/rdp/rdp_plugin.c:2636
+#: plugins/rdp/rdp_plugin.c:2640
 msgid "Use system proxy settings"
 msgstr "Použiť systémové nastavenia proxy"
 
-#: plugins/rdp/rdp_plugin.c:2638
+#: plugins/rdp/rdp_plugin.c:2642
 msgid "Turn off automatic reconnection"
 msgstr "Vypnúť automatické znovu pripojenie"
 
-#: plugins/rdp/rdp_plugin.c:2639
+#: plugins/rdp/rdp_plugin.c:2643
 msgid "Relax order checks"
 msgstr "Voľnejšie kontroly poradia"
 
-#: plugins/rdp/rdp_plugin.c:2640
+#: plugins/rdp/rdp_plugin.c:2644
 msgid "Glyph cache"
 msgstr "Vyrovnávacia pamäť glyfov"
 
-#: plugins/rdp/rdp_plugin.c:2641
+#: plugins/rdp/rdp_plugin.c:2645
 msgid "Enable multitransport protocol (UDP)"
 msgstr "Povoliť multitransportný protokol (UDP)"
 
-#: plugins/rdp/rdp_plugin.c:2641
+#: plugins/rdp/rdp_plugin.c:2645
 msgid "Using the UDP protocol may improve performance"
 msgstr "Použitím protokolu UDP sa môže zvýšiť výkon"
 
-#: plugins/rdp/rdp_plugin.c:2642
+#: plugins/rdp/rdp_plugin.c:2646
 msgid "Use base credentials for gateway too"
 msgstr "Použiť základné poverenia tiež pre bránu"
 
-#: plugins/rdp/rdp_plugin.c:2667
+#: plugins/rdp/rdp_plugin.c:2671
 msgid "RDP - Remote Desktop Protocol"
 msgstr "RDP - Protokol vzdialenej pracovnej plochy"
 
-#: plugins/rdp/rdp_plugin.c:2692
+#: plugins/rdp/rdp_plugin.c:2696
 msgid "RDP - RDP File Handler"
 msgstr "RDP - Nástroj na spracovanie súborov RDP"
 
-#: plugins/rdp/rdp_plugin.c:2707
+#: plugins/rdp/rdp_plugin.c:2711
 msgid "RDP - Preferences"
 msgstr "RDP - Predvoľby"
 
-#: plugins/rdp/rdp_plugin.c:2760
+#: plugins/rdp/rdp_plugin.c:2764
 msgid "Export connection in Windows .rdp file format"
 msgstr "Exportuje pripojenie do formátu súboru .rdp systému Windows"
 
@@ -3929,6 +3910,24 @@ msgstr "Výber nového kľúča"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "Prosím, stlačte nový kláves…"
+
+#, fuzzy
+#~| msgid ""
+#~| "<tt><big>Supported formats\n"
+#~| "• server\n"
+#~| "• server:port\n"
+#~| "• [server]:port</big></tt>"
+#~ msgid ""
+#~ "<tt><big>Supported formats:\n"
+#~ "  • server\n"
+#~ "  • server:port\n"
+#~ "  • server:[port]\n"
+#~ "  • ID:numeric-id</big></tt>"
+#~ msgstr ""
+#~ "<tt><big>Podporované formáty\n"
+#~ "• server\n"
+#~ "• server:port\n"
+#~ "• [server]:port</big></tt>"
 
 #~ msgid "Remote Desktop Client"
 #~ msgstr "Klient vzdialenej pracovnej plochy"

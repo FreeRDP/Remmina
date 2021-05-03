@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-05-03 15:25+0000\n"
+"POT-Creation-Date: 2021-05-03 22:51+0000\n"
 "PO-Revision-Date: 2021-04-23 14:23+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -73,8 +73,8 @@ msgstr "מתבצע חיבור אל „%s” דרך SSH…"
 #: src/remmina_protocol_widget.c:1597 src/remmina_protocol_widget.c:1616
 #: src/remmina_ssh_plugin.c:1306 src/remmina_sftp_plugin.c:310
 #: src/remmina_sftp_plugin.c:346 src/remmina_file_editor.c:845
-#: src/remmina_file_editor.c:966 plugins/www/www_plugin.c:872
-#: plugins/rdp/rdp_plugin.c:2570 data/ui/remmina_unlock.glade:116
+#: src/remmina_file_editor.c:966 plugins/www/www_plugin.c:880
+#: plugins/rdp/rdp_plugin.c:2574 data/ui/remmina_unlock.glade:116
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1682
 msgid "Password"
 msgstr "ססמה"
@@ -300,14 +300,14 @@ msgstr "סוג אימות"
 
 #: src/remmina_ssh_plugin.c:1410 src/remmina_message_panel.c:330
 #: src/remmina_sftp_plugin.c:345 src/remmina_file_editor.c:960
-#: plugins/www/www_plugin.c:871 plugins/vnc/vnc_plugin.c:1950
-#: plugins/vnc/vnc_plugin.c:1970 plugins/rdp/rdp_plugin.c:2569
+#: plugins/www/www_plugin.c:879 plugins/vnc/vnc_plugin.c:1942
+#: plugins/vnc/vnc_plugin.c:1962 plugins/rdp/rdp_plugin.c:2573
 #: plugins/nx/nx_plugin.c:730 data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr "שם משתמש"
 
-#: src/remmina_ssh_plugin.c:1411 plugins/vnc/vnc_plugin.c:1951
-#: plugins/vnc/vnc_plugin.c:1971 plugins/spice/spice_plugin.c:576
+#: src/remmina_ssh_plugin.c:1411 plugins/vnc/vnc_plugin.c:1943
+#: plugins/vnc/vnc_plugin.c:1963 plugins/spice/spice_plugin.c:576
 #: plugins/nx/nx_plugin.c:731
 msgid "User password"
 msgstr "ססמת משתמש"
@@ -322,7 +322,7 @@ msgid "Password to unlock private key"
 msgstr "ססמה לשחרור מפתח פרטי"
 
 #: src/remmina_ssh_plugin.c:1417 plugins/xdmcp/xdmcp_plugin.c:370
-#: plugins/rdp/rdp_plugin.c:2609 plugins/nx/nx_plugin.c:734
+#: plugins/rdp/rdp_plugin.c:2613 plugins/nx/nx_plugin.c:734
 msgid "Start-up program"
 msgstr "תכנית להתחלה"
 
@@ -495,8 +495,8 @@ msgstr "מעבר לתיקיית הבית"
 msgid "Go to parent folder"
 msgstr "מעבר לתיקיית ההורה"
 
-#: src/remmina_ftp_client.c:758 plugins/vnc/vnc_plugin.c:2008
-#: plugins/rdp/rdp_plugin.c:2650
+#: src/remmina_ftp_client.c:758 plugins/vnc/vnc_plugin.c:2000
+#: plugins/rdp/rdp_plugin.c:2654
 msgid "Refresh"
 msgstr "רענון"
 
@@ -541,11 +541,11 @@ msgstr "קבוצה"
 msgid "Permission"
 msgstr "הרשאה"
 
-#: src/remmina_ftp_client.c:990 plugins/rdp/rdp_plugin.c:2475
+#: src/remmina_ftp_client.c:990 plugins/rdp/rdp_plugin.c:2479
 msgid "Remote"
 msgstr "מרוחק"
 
-#: src/remmina_ftp_client.c:997 plugins/rdp/rdp_plugin.c:2474
+#: src/remmina_ftp_client.c:997 plugins/rdp/rdp_plugin.c:2478
 msgid "Local"
 msgstr "מקומי"
 
@@ -794,7 +794,7 @@ msgstr "שליחת תוכן לוח הגזירים כלחיצות מקשים"
 msgid "Turn off scaling to avoid screenshot distortion."
 msgstr "כיבוי מתיחה כדי להימנע מעיוותים בצילומי המסך."
 
-#: src/rcw.c:2131 plugins/www/www_plugin.c:840
+#: src/rcw.c:2131 plugins/www/www_plugin.c:848
 msgid "Screenshot taken"
 msgstr "המסך צולם"
 
@@ -1092,7 +1092,7 @@ msgstr "כן"
 msgid "No"
 msgstr "לא"
 
-#: src/remmina_message_panel.c:391 plugins/rdp/rdp_plugin.c:2571
+#: src/remmina_message_panel.c:391 plugins/rdp/rdp_plugin.c:2575
 #: data/ui/remmina_mpc.glade:172
 msgid "Domain"
 msgstr "שם מתחם"
@@ -1534,7 +1534,7 @@ msgstr "תעלה דרך כתובת הפניה עצמית"
 msgid "Same server at port %i"
 msgstr "אותו שרת בפתחה %i"
 
-#: src/remmina_file_editor.c:937 plugins/rdp/rdp_plugin.c:2610
+#: src/remmina_file_editor.c:937 plugins/rdp/rdp_plugin.c:2614
 msgid "Start-up path"
 msgstr "נתיב להתחלה"
 
@@ -1615,210 +1615,210 @@ msgstr "_ניקוי"
 msgid "Remmina VNC plugin GNOME and KVM"
 msgstr "תוסף VNC של Remmina"
 
-#: plugins/gvnc/gvnc_plugin.c:455
+#: plugins/gvnc/gvnc_plugin.c:456
 #, fuzzy, c-format
 #| msgid "Authentication type"
 msgid "Unsupported authentication type %u"
 msgstr "סוג אימות"
 
-#: plugins/gvnc/gvnc_plugin.c:467
+#: plugins/gvnc/gvnc_plugin.c:468
 #, fuzzy, c-format
 #| msgid "Authentication type"
 msgid "Authentication failure: %s"
 msgstr "סוג אימות"
 
-#: plugins/gvnc/gvnc_plugin.c:513 plugins/vnc/vnc_plugin.c:819
+#: plugins/gvnc/gvnc_plugin.c:518 plugins/vnc/vnc_plugin.c:820
 msgid "Enter VNC authentication credentials"
 msgstr "נא להקליד פרטי אימות ל־VNC"
 
-#: plugins/gvnc/gvnc_plugin.c:759
+#: plugins/gvnc/gvnc_plugin.c:764
 #, fuzzy
 #| msgid "Use system proxy settings"
 msgid "Use server settings"
 msgstr "להשתמש בהגדרות המתווך של המערכת"
 
-#: plugins/gvnc/gvnc_plugin.c:760
+#: plugins/gvnc/gvnc_plugin.c:765
 #, fuzzy
 #| msgid "True colour (24 bit)"
 msgid "True colour (24 bits)"
 msgstr "צבע אמתי (‎24 סיביות)"
 
-#: plugins/gvnc/gvnc_plugin.c:761
+#: plugins/gvnc/gvnc_plugin.c:766
 #, fuzzy
 #| msgid "High colour (16 bit)"
 msgid "High colour (16 bits)"
 msgstr "צבע איכותי (‎16 סיביות)"
 
-#: plugins/gvnc/gvnc_plugin.c:762
+#: plugins/gvnc/gvnc_plugin.c:767
 #, fuzzy
 #| msgid "High colour (16 bit)"
 msgid "Low colour (8 bits)"
 msgstr "צבע איכותי (‎16 סיביות)"
 
-#: plugins/gvnc/gvnc_plugin.c:763
+#: plugins/gvnc/gvnc_plugin.c:768
 #, fuzzy
 #| msgid "True colour (24 bit)"
 msgid "Ultra low colour (3 bits)"
 msgstr "צבע אמתי (‎24 סיביות)"
 
-#: plugins/gvnc/gvnc_plugin.c:778
+#: plugins/gvnc/gvnc_plugin.c:783
 #, fuzzy
 #| msgid "Enter VNC password"
 msgid "VNC password"
 msgstr "נא להקליד ססמת VNC"
 
-#: plugins/gvnc/gvnc_plugin.c:779 plugins/vnc/vnc_plugin.c:1952
-#: plugins/vnc/vnc_plugin.c:1972 plugins/xdmcp/xdmcp_plugin.c:369
-#: plugins/rdp/rdp_plugin.c:2577
+#: plugins/gvnc/gvnc_plugin.c:784 plugins/vnc/vnc_plugin.c:1944
+#: plugins/vnc/vnc_plugin.c:1964 plugins/xdmcp/xdmcp_plugin.c:369
+#: plugins/rdp/rdp_plugin.c:2581
 msgid "Colour depth"
 msgstr "עומק צבעים"
 
-#: plugins/gvnc/gvnc_plugin.c:780
+#: plugins/gvnc/gvnc_plugin.c:785
 #, fuzzy
 #| msgid "SSH compression"
 msgid "Use JPEG Compression"
 msgstr "דחיסת SSH"
 
-#: plugins/gvnc/gvnc_plugin.c:780
+#: plugins/gvnc/gvnc_plugin.c:785
 #, fuzzy
 #| msgid "Browse the network to find a %s server"
 msgid "This might not work on all VNC servers"
 msgstr "עיון ברשת לאיתור שרת %s"
 
-#: plugins/gvnc/gvnc_plugin.c:781
+#: plugins/gvnc/gvnc_plugin.c:786
 msgid "Enable GTK-VNC debug"
 msgstr ""
 
-#: plugins/gvnc/gvnc_plugin.c:796 plugins/gvnc/gvnc_plugin.c:810
+#: plugins/gvnc/gvnc_plugin.c:801 plugins/gvnc/gvnc_plugin.c:815
 #: plugins/spice/spice_plugin.c:603 plugins/spice/spice_plugin.c:616
 msgid "No clipboard sync"
 msgstr "השבתת סנכרון לוח הגזירים"
 
-#: plugins/gvnc/gvnc_plugin.c:797 plugins/www/www_plugin.c:896
-#: plugins/vnc/vnc_plugin.c:1995 plugins/spice/spice_plugin.c:604
-#: plugins/rdp/rdp_plugin.c:2631 plugins/nx/nx_plugin.c:752
+#: plugins/gvnc/gvnc_plugin.c:802 plugins/www/www_plugin.c:904
+#: plugins/vnc/vnc_plugin.c:1987 plugins/spice/spice_plugin.c:604
+#: plugins/rdp/rdp_plugin.c:2635 plugins/nx/nx_plugin.c:752
 msgid "Forget passwords after use"
 msgstr "לשכוח את הססמאות לאחר השימוש"
 
-#: plugins/gvnc/gvnc_plugin.c:798 plugins/vnc/vnc_plugin.c:1994
+#: plugins/gvnc/gvnc_plugin.c:803 plugins/vnc/vnc_plugin.c:1986
 msgid "Ignore remote bell messages"
 msgstr "התעלמות מהודעות פעמון מרוחקות"
 
-#: plugins/gvnc/gvnc_plugin.c:799 plugins/spice/spice_plugin.c:605
+#: plugins/gvnc/gvnc_plugin.c:804 plugins/spice/spice_plugin.c:605
 msgid "Enable audio channel"
 msgstr "הפעלת ערוץ שמע"
 
-#: plugins/gvnc/gvnc_plugin.c:800 plugins/gvnc/gvnc_plugin.c:809
-#: plugins/vnc/vnc_plugin.c:1990 plugins/vnc/vnc_plugin.c:2006
+#: plugins/gvnc/gvnc_plugin.c:805 plugins/gvnc/gvnc_plugin.c:814
+#: plugins/vnc/vnc_plugin.c:1982 plugins/vnc/vnc_plugin.c:1998
 #: plugins/spice/spice_plugin.c:607 plugins/spice/spice_plugin.c:615
 msgid "View only"
 msgstr "צפייה בלבד"
 
-#: plugins/gvnc/gvnc_plugin.c:801
+#: plugins/gvnc/gvnc_plugin.c:806
 #, fuzzy
 #| msgid "Per connection"
 msgid "Shared connection"
 msgstr "לפי חיבור"
 
-#: plugins/gvnc/gvnc_plugin.c:801
+#: plugins/gvnc/gvnc_plugin.c:806
 msgid ""
 "If the server should try to share the desktop by leaving other clients "
 "connected"
 msgstr ""
 
-#: plugins/gvnc/gvnc_plugin.c:811
+#: plugins/gvnc/gvnc_plugin.c:816
 #, fuzzy
 #| msgid "Send Ctrl+Alt+Del"
 msgid "Send Ctrl+Alt+_Del"
 msgstr "שליחת Ctrl+Alt+Delete"
 
-#: plugins/gvnc/gvnc_plugin.c:812
+#: plugins/gvnc/gvnc_plugin.c:817
 #, fuzzy
 #| msgid "Send Ctrl+Alt+Del"
 msgid "Send Ctrl+Alt+_Backspace"
 msgstr "שליחת Ctrl+Alt+Delete"
 
-#: plugins/gvnc/gvnc_plugin.c:813
+#: plugins/gvnc/gvnc_plugin.c:818
 #, fuzzy
 #| msgid "Send Ctrl+Alt+Del"
 msgid "Send Ctrl+Alt+_F1"
 msgstr "שליחת Ctrl+Alt+Delete"
 
-#: plugins/gvnc/gvnc_plugin.c:814
+#: plugins/gvnc/gvnc_plugin.c:819
 #, fuzzy
 #| msgid "Send Ctrl+Alt+Del"
 msgid "Send Ctrl+Alt+_F2"
 msgstr "שליחת Ctrl+Alt+Delete"
 
-#: plugins/gvnc/gvnc_plugin.c:815
+#: plugins/gvnc/gvnc_plugin.c:820
 #, fuzzy
 #| msgid "Send Ctrl+Alt+Del"
 msgid "Send Ctrl+Alt+_F3"
 msgstr "שליחת Ctrl+Alt+Delete"
 
-#: plugins/gvnc/gvnc_plugin.c:816
+#: plugins/gvnc/gvnc_plugin.c:821
 #, fuzzy
 #| msgid "Send Ctrl+Alt+Del"
 msgid "Send Ctrl+Alt+_F4"
 msgstr "שליחת Ctrl+Alt+Delete"
 
-#: plugins/gvnc/gvnc_plugin.c:817
+#: plugins/gvnc/gvnc_plugin.c:822
 #, fuzzy
 #| msgid "Send Ctrl+Alt+Del"
 msgid "Send Ctrl+Alt+_F5"
 msgstr "שליחת Ctrl+Alt+Delete"
 
-#: plugins/gvnc/gvnc_plugin.c:818
+#: plugins/gvnc/gvnc_plugin.c:823
 #, fuzzy
 #| msgid "Send Ctrl+Alt+Del"
 msgid "Send Ctrl+Alt+_F6"
 msgstr "שליחת Ctrl+Alt+Delete"
 
-#: plugins/gvnc/gvnc_plugin.c:819
+#: plugins/gvnc/gvnc_plugin.c:824
 #, fuzzy
 #| msgid "Send Ctrl+Alt+Del"
 msgid "Send Ctrl+Alt+_F7"
 msgstr "שליחת Ctrl+Alt+Delete"
 
-#: plugins/gvnc/gvnc_plugin.c:820
+#: plugins/gvnc/gvnc_plugin.c:825
 #, fuzzy
 #| msgid "Send Ctrl+Alt+Del"
 msgid "Send Ctrl+Alt+_F8"
 msgstr "שליחת Ctrl+Alt+Delete"
 
-#: plugins/gvnc/gvnc_plugin.c:821
+#: plugins/gvnc/gvnc_plugin.c:826
 #, fuzzy
 #| msgid "Send Ctrl+Alt+Del"
 msgid "Send Ctrl+Alt+_F9"
 msgstr "שליחת Ctrl+Alt+Delete"
 
-#: plugins/gvnc/gvnc_plugin.c:822
+#: plugins/gvnc/gvnc_plugin.c:827
 #, fuzzy
 #| msgid "Send Ctrl+Alt+Del"
 msgid "Send Ctrl+Alt+_F10"
 msgstr "שליחת Ctrl+Alt+Delete"
 
-#: plugins/gvnc/gvnc_plugin.c:823
+#: plugins/gvnc/gvnc_plugin.c:828
 #, fuzzy
 #| msgid "Send Ctrl+Alt+Del"
 msgid "Send Ctrl+Alt+_F11"
 msgstr "שליחת Ctrl+Alt+Delete"
 
-#: plugins/gvnc/gvnc_plugin.c:824
+#: plugins/gvnc/gvnc_plugin.c:829
 #, fuzzy
 #| msgid "Send Ctrl+Alt+Del"
 msgid "Send Ctrl+Alt+_F12"
 msgstr "שליחת Ctrl+Alt+Delete"
 
-#: plugins/gvnc/gvnc_plugin.c:826
+#: plugins/gvnc/gvnc_plugin.c:831
 msgid "Reboot remote host"
 msgstr ""
 
-#: plugins/gvnc/gvnc_plugin.c:827
+#: plugins/gvnc/gvnc_plugin.c:832
 msgid "Reset remote host (hard reboot)"
 msgstr ""
 
-#: plugins/gvnc/gvnc_plugin.c:828
+#: plugins/gvnc/gvnc_plugin.c:833
 #, fuzzy
 #| msgid "Show remote cursor"
 msgid "Shutdown remote host"
@@ -1848,63 +1848,63 @@ msgstr "פקודה"
 msgid "Asynchronous execution"
 msgstr "הפעלה אסינכרונית"
 
-#: plugins/www/www_plugin.c:97
+#: plugins/www/www_plugin.c:98
 msgid "File downloaded"
 msgstr "התקבל קובץ"
 
-#: plugins/www/www_plugin.c:566
+#: plugins/www/www_plugin.c:574
 msgid "Enter WWW authentication credentials"
 msgstr "נא להקליד פרטי אימות ל־WWW"
 
-#: plugins/www/www_plugin.c:870
+#: plugins/www/www_plugin.c:878
 msgid "URL"
 msgstr "כתובת"
 
-#: plugins/www/www_plugin.c:870
+#: plugins/www/www_plugin.c:878
 msgid "http://address or https://address"
 msgstr "http://address או https://address"
 
-#: plugins/www/www_plugin.c:887
+#: plugins/www/www_plugin.c:895
 msgid "User agent"
 msgstr "סוכן משתמש"
 
-#: plugins/www/www_plugin.c:888
+#: plugins/www/www_plugin.c:896
 msgid "Proxy URL"
 msgstr "כתובת מתווך"
 
-#: plugins/www/www_plugin.c:888
+#: plugins/www/www_plugin.c:896
 msgid "E.g. https://example.org, socks://mysocks:1080"
 msgstr "למשל: https://example.org, socks://mysocks:1080"
 
-#: plugins/www/www_plugin.c:889
+#: plugins/www/www_plugin.c:897
 msgid "Turn on Java support"
 msgstr "הפעלת תמיכה ב־Java"
 
-#: plugins/www/www_plugin.c:890
+#: plugins/www/www_plugin.c:898
 msgid "Turn on smooth scrolling"
 msgstr "הפעלת גלילה חלקה"
 
-#: plugins/www/www_plugin.c:891
+#: plugins/www/www_plugin.c:899
 msgid "Turn on spatial navigation"
 msgstr "הפעלת ניווט מרחבי"
 
-#: plugins/www/www_plugin.c:892
+#: plugins/www/www_plugin.c:900
 msgid "Turn on plugin support"
 msgstr "הפעלת תמיכה בתוספים"
 
-#: plugins/www/www_plugin.c:893
+#: plugins/www/www_plugin.c:901
 msgid "Turn on WebGL support"
 msgstr "הפעלת תמיכה ב־WebGL"
 
-#: plugins/www/www_plugin.c:894
+#: plugins/www/www_plugin.c:902
 msgid "Turn on HTML5 audio support"
 msgstr "הפעלת תמיכה בשמע עם HTML5"
 
-#: plugins/www/www_plugin.c:895
+#: plugins/www/www_plugin.c:903
 msgid "Ignore TLS errors"
 msgstr "התעלמות משגיאות TLS"
 
-#: plugins/www/www_plugin.c:898
+#: plugins/www/www_plugin.c:906
 msgid "Turn on Web Inspector"
 msgstr "הפעלת מנתח אתרים"
 
@@ -1920,84 +1920,70 @@ msgstr "אחסון ססמאות מאובטח בצרור המפתחות של GNOM
 msgid "Hello, World!"
 msgstr "שלום עולם!"
 
-#: plugins/vnc/vnc_plugin.c:766
+#: plugins/vnc/vnc_plugin.c:767
 msgid "Enter VNC password"
 msgstr "נא להקליד ססמת VNC"
 
-#: plugins/vnc/vnc_plugin.c:930
+#: plugins/vnc/vnc_plugin.c:931
 msgid "Unable to connect to VNC server"
 msgstr "לא ניתן להתחבר לשרת ה־VNC"
 
-#: plugins/vnc/vnc_plugin.c:931
+#: plugins/vnc/vnc_plugin.c:932
 #, c-format
 msgid "Couldn’t convert '%s' to host address"
 msgstr "לא ניתן להמיר את '%s' לכתובת מארח"
 
-#: plugins/vnc/vnc_plugin.c:932
+#: plugins/vnc/vnc_plugin.c:933
 #, c-format
 msgid "VNC connection failed: %s"
 msgstr "חיבור ה־VNC נכשל: %s"
 
-#: plugins/vnc/vnc_plugin.c:933
+#: plugins/vnc/vnc_plugin.c:934
 msgid "Your connection has been rejected."
 msgstr "החיבור שלך נדחה."
 
-#: plugins/vnc/vnc_plugin.c:959
+#: plugins/vnc/vnc_plugin.c:960
 #, c-format
 msgid "The VNC server requested an unknown authentication method. %s"
 msgstr "שרת ה־VNC ביקש שיטת אימות בלתי מוכרת. %s"
 
-#: plugins/vnc/vnc_plugin.c:961
+#: plugins/vnc/vnc_plugin.c:962
 msgid "Please retry after turning on encryption for this profile."
 msgstr "נא לנסות שוב לאחר הפעלת הצפנה על הפרופיל הזה."
 
-#: plugins/vnc/vnc_plugin.c:1903 plugins/rdp/rdp_plugin.c:2424
+#: plugins/vnc/vnc_plugin.c:1904 plugins/rdp/rdp_plugin.c:2428
 msgid "True colour (32 bpp)"
 msgstr "צבע אמתי (‎32 bpp)"
 
-#: plugins/vnc/vnc_plugin.c:1904 plugins/rdp/rdp_plugin.c:2426
+#: plugins/vnc/vnc_plugin.c:1905 plugins/rdp/rdp_plugin.c:2430
 msgid "High colour (16 bpp)"
 msgstr "צבע איכותי (‎16 bpp)"
 
-#: plugins/vnc/vnc_plugin.c:1905 plugins/rdp/rdp_plugin.c:2428
+#: plugins/vnc/vnc_plugin.c:1906 plugins/rdp/rdp_plugin.c:2432
 msgid "256 colours (8 bpp)"
 msgstr "256 צבעים (‏‎8 bpp)"
 
-#: plugins/vnc/vnc_plugin.c:1912 plugins/rdp/rdp_plugin.c:2452
+#: plugins/vnc/vnc_plugin.c:1913 plugins/rdp/rdp_plugin.c:2456
 #: plugins/rdp/rdp_settings.c:273 plugins/nx/nx_plugin.c:713
 msgid "Best (slowest)"
 msgstr "מעולה (אטי ביותר)"
 
-#: plugins/vnc/vnc_plugin.c:1913 plugins/rdp/rdp_plugin.c:2451
+#: plugins/vnc/vnc_plugin.c:1914 plugins/rdp/rdp_plugin.c:2455
 #: plugins/rdp/rdp_settings.c:271 plugins/nx/nx_plugin.c:712
 msgid "Good"
 msgstr "טובה"
 
-#: plugins/vnc/vnc_plugin.c:1914 plugins/rdp/rdp_plugin.c:2450
+#: plugins/vnc/vnc_plugin.c:1915 plugins/rdp/rdp_plugin.c:2454
 #: plugins/rdp/rdp_settings.c:269 plugins/nx/nx_plugin.c:711
 msgid "Medium"
 msgstr "בינונית"
 
-#: plugins/vnc/vnc_plugin.c:1915 plugins/rdp/rdp_plugin.c:2449
+#: plugins/vnc/vnc_plugin.c:1916 plugins/rdp/rdp_plugin.c:2453
 #: plugins/rdp/rdp_settings.c:267 plugins/nx/nx_plugin.c:710
 msgid "Poor (fastest)"
 msgstr "גרועה (הכי מהיר)"
 
-#: plugins/vnc/vnc_plugin.c:1920
-msgid ""
-"<tt><big>Supported formats:\n"
-"  • server\n"
-"  • server:port\n"
-"  • server:[port]\n"
-"  • ID:numeric-id</big></tt>"
-msgstr ""
-"<tt><big>התבניות הנתמכות:\n"
-"  • server\n"
-"  • server:port\n"
-"  • server:[port]\n"
-"  • ID:numeric-id</big></tt>"
-
-#: plugins/vnc/vnc_plugin.c:1929
+#: plugins/vnc/vnc_plugin.c:1921
 msgid ""
 "Connect to VNC using a repeater:\n"
 "  • The server field must contain the repeater ID, e.g. ID:123456789\n"
@@ -2015,41 +2001,41 @@ msgstr ""
 "    למשחזר, למשל באמצעות x11vnc:\n"
 "    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
 
-#: plugins/vnc/vnc_plugin.c:1949
+#: plugins/vnc/vnc_plugin.c:1941
 msgid "Repeater"
 msgstr "ממסר"
 
-#: plugins/vnc/vnc_plugin.c:1953 plugins/vnc/vnc_plugin.c:1973
-#: plugins/rdp/rdp_plugin.c:2594 plugins/nx/nx_plugin.c:733
+#: plugins/vnc/vnc_plugin.c:1945 plugins/vnc/vnc_plugin.c:1965
+#: plugins/rdp/rdp_plugin.c:2598 plugins/nx/nx_plugin.c:733
 msgid "Quality"
 msgstr "איכות"
 
-#: plugins/vnc/vnc_plugin.c:1969
+#: plugins/vnc/vnc_plugin.c:1961
 msgid "Listen on port"
 msgstr "האזנה לפתחה"
 
-#: plugins/vnc/vnc_plugin.c:1989
+#: plugins/vnc/vnc_plugin.c:1981
 msgid "Show remote cursor"
 msgstr "הצגת הסמן המרוחק"
 
-#: plugins/vnc/vnc_plugin.c:1991 plugins/rdp/rdp_plugin.c:2628
+#: plugins/vnc/vnc_plugin.c:1983 plugins/rdp/rdp_plugin.c:2632
 msgid "Turn off clipboard sync"
 msgstr "השבתת סנכרון לוח הגזירים"
 
-#: plugins/vnc/vnc_plugin.c:1992
+#: plugins/vnc/vnc_plugin.c:1984
 msgid "Turn off encryption"
 msgstr "כיבוי הצפנה"
 
-#: plugins/vnc/vnc_plugin.c:1993 plugins/vnc/vnc_plugin.c:2007
+#: plugins/vnc/vnc_plugin.c:1985 plugins/vnc/vnc_plugin.c:1999
 msgid "Prevent local interaction on the server"
 msgstr "מניעת אינטראקציה מקומית בשרת"
 
-#: plugins/vnc/vnc_plugin.c:2009
+#: plugins/vnc/vnc_plugin.c:2001
 msgid "Open Chat…"
 msgstr "פתיחת הצ׳אט…"
 
-#: plugins/vnc/vnc_plugin.c:2010 plugins/spice/spice_plugin.c:617
-#: plugins/xdmcp/xdmcp_plugin.c:381 plugins/rdp/rdp_plugin.c:2654
+#: plugins/vnc/vnc_plugin.c:2002 plugins/spice/spice_plugin.c:617
+#: plugins/xdmcp/xdmcp_plugin.c:381 plugins/rdp/rdp_plugin.c:2658
 msgid "Send Ctrl+Alt+Delete"
 msgstr "שליחת Ctrl+Alt+Delete"
 
@@ -2095,7 +2081,7 @@ msgstr "ההתחברות לשרת ה־SPICE נקטעה."
 msgid "Default"
 msgstr "בררת מחדל"
 
-#: plugins/spice/spice_plugin.c:545 plugins/rdp/rdp_plugin.c:2473
+#: plugins/spice/spice_plugin.c:545 plugins/rdp/rdp_plugin.c:2477
 #: data/ui/remmina_preferences.glade:719
 msgid "Off"
 msgstr "כבוי"
@@ -2120,7 +2106,7 @@ msgstr "להשתמש בהצפנת TLS"
 msgid "Server CA certificate"
 msgstr "אישור CA של השרת"
 
-#: plugins/spice/spice_plugin.c:579 plugins/rdp/rdp_plugin.c:2579
+#: plugins/spice/spice_plugin.c:579 plugins/rdp/rdp_plugin.c:2583
 msgid "Share folder"
 msgstr "שיתוף תיקייה"
 
@@ -2234,7 +2220,7 @@ msgstr "נא להקליד פרטי אימות של RDP"
 msgid "Enter RDP gateway authentication credentials"
 msgstr "נא להקליד פרטי אימות מול שער הגישה ל־RDP"
 
-#: plugins/rdp/rdp_plugin.c:1991
+#: plugins/rdp/rdp_plugin.c:1995
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2243,7 +2229,7 @@ msgstr ""
 "לא ניתן לגשת לשרת ה־RDP‏ „%s”.\n"
 "החשבון נעול."
 
-#: plugins/rdp/rdp_plugin.c:1998
+#: plugins/rdp/rdp_plugin.c:2002
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2252,7 +2238,7 @@ msgstr ""
 "לא ניתן לגשת לשרת ה־RDP‏ „%s”.\n"
 "תוקף החשבון פג."
 
-#: plugins/rdp/rdp_plugin.c:2005
+#: plugins/rdp/rdp_plugin.c:2009
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2261,7 +2247,7 @@ msgstr ""
 "לא ניתן לגשת לשרת ה־RDP‏ „%s”.\n"
 "תוקף הססמה פג."
 
-#: plugins/rdp/rdp_plugin.c:2012
+#: plugins/rdp/rdp_plugin.c:2016
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2270,7 +2256,7 @@ msgstr ""
 "לא ניתן לגשת לשרת ה־RDP‏ „%s”.\n"
 "החשבון מושבת."
 
-#: plugins/rdp/rdp_plugin.c:2018
+#: plugins/rdp/rdp_plugin.c:2022
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2279,7 +2265,7 @@ msgstr ""
 "לא ניתן לגשת לשרת ה־RDP‏ „%s”.\n"
 "לחשבון המשתמש אין הרשאות מתאימות."
 
-#: plugins/rdp/rdp_plugin.c:2026
+#: plugins/rdp/rdp_plugin.c:2030
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2288,7 +2274,7 @@ msgstr ""
 "לא ניתן לגשת לשרת ה־RDP‏ „%s”.\n"
 "חלות הגבלות על חשבון המשתמש."
 
-#: plugins/rdp/rdp_plugin.c:2034
+#: plugins/rdp/rdp_plugin.c:2038
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2297,17 +2283,17 @@ msgstr ""
 "לא ניתן לגשת לשרת ה־RDP‏ „%s”.\n"
 "על המשתמש להחליף ססמה בטרם ההתחברות."
 
-#: plugins/rdp/rdp_plugin.c:2039
+#: plugins/rdp/rdp_plugin.c:2043
 #, c-format
 msgid "Lost connection to the RDP server “%s”."
 msgstr "החיבור לשרת ה־RDP‏ „%s” אבד."
 
-#: plugins/rdp/rdp_plugin.c:2042
+#: plugins/rdp/rdp_plugin.c:2046
 #, c-format
 msgid "Could not find the address for the RDP server “%s”."
 msgstr "לא ניתן למצוא את כתובת שרת ה־RDP‏ „%s”."
 
-#: plugins/rdp/rdp_plugin.c:2046
+#: plugins/rdp/rdp_plugin.c:2050
 #, c-format
 msgid ""
 "Could not connect to the RDP server “%s” via TLS. Check that client and "
@@ -2317,7 +2303,7 @@ msgstr ""
 "TLS משותפת."
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
-#: plugins/rdp/rdp_plugin.c:2050
+#: plugins/rdp/rdp_plugin.c:2054
 #, c-format
 msgid ""
 "Unable to establish a connection to the RDP server “%s”. Check \"Security "
@@ -2326,16 +2312,16 @@ msgstr ""
 "לא ניתן ליצור התחברות לשרת ה־RDP‏ „%s”. יש לסמן את „משא ומתן על פרוטוקול "
 "אבטחה”."
 
-#: plugins/rdp/rdp_plugin.c:2058
+#: plugins/rdp/rdp_plugin.c:2062
 #, c-format
 msgid "Cannot connect to the RDP server “%s”."
 msgstr "לא ניתן להתחבר לשרת ה־RDP‏ „%s”."
 
-#: plugins/rdp/rdp_plugin.c:2061
+#: plugins/rdp/rdp_plugin.c:2065
 msgid "Could not start libfreerdp-gdi."
 msgstr "לא ניתן להתחיל את libfreerdp-gdi."
 
-#: plugins/rdp/rdp_plugin.c:2064
+#: plugins/rdp/rdp_plugin.c:2068
 #, c-format
 msgid ""
 "You requested a H.264 GFX mode for the server “%s”, but your libfreerdp does "
@@ -2344,12 +2330,12 @@ msgstr ""
 "ביקשת מצב גרפי H.264 (GFX) עבור השרת „%s” אך ל־libfreerdp שלך אין תמיכה ב־"
 "H.264. נא להשתמש בהגדרת עומק צבע שאינה AVC."
 
-#: plugins/rdp/rdp_plugin.c:2071
+#: plugins/rdp/rdp_plugin.c:2075
 #, c-format
 msgid "The “%s” server refused the connection."
 msgstr "השרת „%s” דחה את החיבור."
 
-#: plugins/rdp/rdp_plugin.c:2076
+#: plugins/rdp/rdp_plugin.c:2080
 #, c-format
 msgid ""
 "The Remote Desktop Gateway “%s” denied the user \"%s\\%s\" access due to "
@@ -2358,100 +2344,100 @@ msgstr ""
 "שער הגישה לשולחן העבודה המרוחק „%s” דחה את הגישה של המשתמש „%s‏\\%s” עקב "
 "מדיניות."
 
-#: plugins/rdp/rdp_plugin.c:2086
+#: plugins/rdp/rdp_plugin.c:2090
 #, c-format
 msgid "Cannot connect to the “%s” RDP server."
 msgstr "לא ניתן להתחבר לשרת ה־RDP‏ „%s”."
 
-#: plugins/rdp/rdp_plugin.c:2418
+#: plugins/rdp/rdp_plugin.c:2422
 msgid "Automatic (32 bpp) (Server chooses its best format)"
 msgstr "אוטומטי (32 סיביות לפיקסל - השרת בוחר את התצורה המיטבית)"
 
-#: plugins/rdp/rdp_plugin.c:2419
+#: plugins/rdp/rdp_plugin.c:2423
 msgid "GFX AVC444 (32 bpp)"
 msgstr "GFX AVC444 (32 סיביות לפיקסל)"
 
-#: plugins/rdp/rdp_plugin.c:2420
+#: plugins/rdp/rdp_plugin.c:2424
 msgid "GFX AVC420 (32 bpp)"
 msgstr "GFX AVC420 (32 סיביות לפיקסל)"
 
-#: plugins/rdp/rdp_plugin.c:2421
+#: plugins/rdp/rdp_plugin.c:2425
 msgid "GFX RFX (32 bpp)"
 msgstr "GFX RFX (32 סיביות לפיקסל)"
 
-#: plugins/rdp/rdp_plugin.c:2422
+#: plugins/rdp/rdp_plugin.c:2426
 msgid "GFX RFX Progressive (32 bpp)"
 msgstr "GFX RFX תהליכי (32 סיביות לפיקסל)"
 
-#: plugins/rdp/rdp_plugin.c:2423
+#: plugins/rdp/rdp_plugin.c:2427
 msgid "RemoteFX (32 bpp)"
 msgstr "RemoteFX (‎32 סיביות לפיקסל)"
 
-#: plugins/rdp/rdp_plugin.c:2425
+#: plugins/rdp/rdp_plugin.c:2429
 msgid "True colour (24 bpp)"
 msgstr "צבע אמתי (‎24 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2427
+#: plugins/rdp/rdp_plugin.c:2431
 msgid "High colour (15 bpp)"
 msgstr "צבע איכותי (‎15 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2459 data/ui/remmina_preferences.glade:682
+#: plugins/rdp/rdp_plugin.c:2463 data/ui/remmina_preferences.glade:682
 msgid "None"
 msgstr "בלי"
 
-#: plugins/rdp/rdp_plugin.c:2460
+#: plugins/rdp/rdp_plugin.c:2464
 msgid "Auto-detect"
 msgstr "זיהוי אוטומטי"
 
-#: plugins/rdp/rdp_plugin.c:2461
+#: plugins/rdp/rdp_plugin.c:2465
 msgid "Modem"
 msgstr "מודם"
 
-#: plugins/rdp/rdp_plugin.c:2462
+#: plugins/rdp/rdp_plugin.c:2466
 msgid "Low performance broadband"
 msgstr "רוחב פס בביצועים נמוכים"
 
-#: plugins/rdp/rdp_plugin.c:2463
+#: plugins/rdp/rdp_plugin.c:2467
 msgid "Satellite"
 msgstr "לוויין"
 
-#: plugins/rdp/rdp_plugin.c:2464
+#: plugins/rdp/rdp_plugin.c:2468
 msgid "High performance broadband"
 msgstr "רוחב פס בביצועים משופרים"
 
-#: plugins/rdp/rdp_plugin.c:2465
+#: plugins/rdp/rdp_plugin.c:2469
 msgid "WAN"
 msgstr "אינטרנט"
 
-#: plugins/rdp/rdp_plugin.c:2466
+#: plugins/rdp/rdp_plugin.c:2470
 msgid "LAN"
 msgstr "רשת מקומית"
 
-#: plugins/rdp/rdp_plugin.c:2482
+#: plugins/rdp/rdp_plugin.c:2486
 msgid "Automatic negotiation"
 msgstr "משא ומתן אוטומטי"
 
-#: plugins/rdp/rdp_plugin.c:2483
+#: plugins/rdp/rdp_plugin.c:2487
 msgid "NLA protocol security"
 msgstr "אבטחת פרוטוקול NLA"
 
-#: plugins/rdp/rdp_plugin.c:2484
+#: plugins/rdp/rdp_plugin.c:2488
 msgid "TLS protocol security"
 msgstr "אבטחת פרוטוקול TLS"
 
-#: plugins/rdp/rdp_plugin.c:2485
+#: plugins/rdp/rdp_plugin.c:2489
 msgid "RDP protocol security"
 msgstr "אבטחת פרוטוקול RDP"
 
-#: plugins/rdp/rdp_plugin.c:2486
+#: plugins/rdp/rdp_plugin.c:2490
 msgid "NLA extended protocol security"
 msgstr "אבטחת פרוטוקול NLA מורחבת"
 
-#: plugins/rdp/rdp_plugin.c:2499
+#: plugins/rdp/rdp_plugin.c:2503
 msgid "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 and newer)"
 msgstr "2600 (Windows XP)‏, 7601 (Windows Vista/7), 9600 (Windows 8 ומעלה)"
 
-#: plugins/rdp/rdp_plugin.c:2502
+#: plugins/rdp/rdp_plugin.c:2506
 msgid ""
 "Used i.a. by terminal services in a smart card channel to distinguish client "
 "capabilities:\n"
@@ -2469,7 +2455,7 @@ msgstr ""
 "  • >= 7065: Windows 8 ומעלה: SCardGetReaderIcon(),\n"
 "    SCardGetDeviceTypeId()‎"
 
-#: plugins/rdp/rdp_plugin.c:2510
+#: plugins/rdp/rdp_plugin.c:2514
 msgid ""
 "Options for redirection of audio input:\n"
 "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
@@ -2487,7 +2473,7 @@ msgstr ""
 "  • sys:oss,dev:1,format:1\n"
 "  • sys:alsa"
 
-#: plugins/rdp/rdp_plugin.c:2519
+#: plugins/rdp/rdp_plugin.c:2523
 msgid ""
 "Options for redirection of audio output:\n"
 "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
@@ -2505,7 +2491,7 @@ msgstr ""
 "  • sys:oss,dev:1,format:1\n"
 "  • sys:alsa"
 
-#: plugins/rdp/rdp_plugin.c:2529
+#: plugins/rdp/rdp_plugin.c:2533
 msgid ""
 "Options for redirection of USB device:\n"
 "  • [dbg,][id:<vid>:<pid>#…,][addr:<bus>:<addr>#…,][auto]\n"
@@ -2517,7 +2503,7 @@ msgstr ""
 "  • auto\n"
 "  • id:054c:0268#4669:6e6b,addr:04:0c"
 
-#: plugins/rdp/rdp_plugin.c:2535
+#: plugins/rdp/rdp_plugin.c:2539
 msgid ""
 "Advanced setting for high latency links:\n"
 "Adjusts the connection timeout. Use if your connection times out.\n"
@@ -2527,7 +2513,7 @@ msgstr ""
 "מכוונן את משך תפוגת החיבור. יש להשתמש אם החיבור שלך נקטע.\n"
 "הערך הגבוה ביותר המותר הוא 600000 מילישניות שהם 10 דקות.\n"
 
-#: plugins/rdp/rdp_plugin.c:2540
+#: plugins/rdp/rdp_plugin.c:2544
 msgid ""
 "Performance optimisations based on the network connection type:\n"
 "Using auto-detection is advised.\n"
@@ -2537,7 +2523,7 @@ msgstr ""
 "מומלץ להשתמש בזיהוי אוטומטי\n"
 "אם הזיהוי האוטומטי נכשל, יש לבחור את האפשרות המתאימה ביותר מהרשימה.\n"
 
-#: plugins/rdp/rdp_plugin.c:2545
+#: plugins/rdp/rdp_plugin.c:2549
 msgid ""
 "Comma-separated list of monitor IDs and desktop orientations:\n"
 "  • [<id>:<orientation-in-degrees>,]\n"
@@ -2561,99 +2547,99 @@ msgstr ""
 "  • 270 (לאורך הפוך)\n"
 "\n"
 
-#: plugins/rdp/rdp_plugin.c:2572
+#: plugins/rdp/rdp_plugin.c:2576
 msgid "Left-handed mouse support"
 msgstr "תמיכה בעכבר לשמאליים"
 
-#: plugins/rdp/rdp_plugin.c:2572
+#: plugins/rdp/rdp_plugin.c:2576
 msgid "Swap left and right mouse buttons for left-handed mouse support"
 msgstr "להחליף בין כפתור העכבר השמאלי לימני לתמיכה בעכבר לשמאליים"
 
-#: plugins/rdp/rdp_plugin.c:2573
+#: plugins/rdp/rdp_plugin.c:2577
 msgid "Enable multi monitor"
 msgstr "הפעלת ריבוי צגים"
 
-#: plugins/rdp/rdp_plugin.c:2574
+#: plugins/rdp/rdp_plugin.c:2578
 msgid "Span screen over multiple monitors"
 msgstr "פריסת המסך על פני מספר צגים"
 
-#: plugins/rdp/rdp_plugin.c:2575
+#: plugins/rdp/rdp_plugin.c:2579
 msgid "List monitor IDs"
 msgstr "הצגת מזהי צגים"
 
-#: plugins/rdp/rdp_plugin.c:2578
+#: plugins/rdp/rdp_plugin.c:2582
 msgid "Network connection type"
 msgstr "סוג חיבור רשת"
 
-#: plugins/rdp/rdp_plugin.c:2595
+#: plugins/rdp/rdp_plugin.c:2599
 msgid "Security protocol negotiation"
 msgstr "משא ומתן על פרוטוקול אבטחה"
 
-#: plugins/rdp/rdp_plugin.c:2596
+#: plugins/rdp/rdp_plugin.c:2600
 msgid "Gateway transport type"
 msgstr "סוג תעבורת שער גישה"
 
-#: plugins/rdp/rdp_plugin.c:2597
+#: plugins/rdp/rdp_plugin.c:2601
 msgid "FreeRDP log level"
 msgstr "רמת דיווח FreeRDP"
 
-#: plugins/rdp/rdp_plugin.c:2598
+#: plugins/rdp/rdp_plugin.c:2602
 msgid "FreeRDP log filters"
 msgstr "מסנן דיווח FreeRDP"
 
-#: plugins/rdp/rdp_plugin.c:2598
+#: plugins/rdp/rdp_plugin.c:2602
 msgid "tag:level[,tag:level[,…]]"
 msgstr "tag:level[,tag:level[,…]]"
 
-#: plugins/rdp/rdp_plugin.c:2599
+#: plugins/rdp/rdp_plugin.c:2603
 msgid "Audio output mode"
 msgstr "מצב פלט שמע"
 
-#: plugins/rdp/rdp_plugin.c:2600
+#: plugins/rdp/rdp_plugin.c:2604
 msgid "Redirect local audio output"
 msgstr "הפניית פלט שמע מקומי"
 
-#: plugins/rdp/rdp_plugin.c:2601
+#: plugins/rdp/rdp_plugin.c:2605
 msgid "Redirect local microphone"
 msgstr "הפניית מיקרופון מקומי"
 
-#: plugins/rdp/rdp_plugin.c:2602
+#: plugins/rdp/rdp_plugin.c:2606
 msgid "Connection timeout in ms"
 msgstr "משך המתנה לחיבור במילישניות"
 
-#: plugins/rdp/rdp_plugin.c:2603
+#: plugins/rdp/rdp_plugin.c:2607
 msgid "Remote Desktop Gateway server"
 msgstr "שרת שער גישה לשולחן עבודה מרחוק"
 
-#: plugins/rdp/rdp_plugin.c:2604
+#: plugins/rdp/rdp_plugin.c:2608
 msgid "Remote Desktop Gateway username"
 msgstr "שם משתמש לשער גישה לשולחן עבודה מרחוק"
 
-#: plugins/rdp/rdp_plugin.c:2605
+#: plugins/rdp/rdp_plugin.c:2609
 msgid "Remote Desktop Gateway password"
 msgstr "ססמה לגשר גישה לשולחן עבודה מרוחק"
 
-#: plugins/rdp/rdp_plugin.c:2606
+#: plugins/rdp/rdp_plugin.c:2610
 msgid "Remote Desktop Gateway domain"
 msgstr "שם מתחם לגשר גישה לשולחן עבודה מרוחק"
 
-#: plugins/rdp/rdp_plugin.c:2607
+#: plugins/rdp/rdp_plugin.c:2611
 msgid "Client name"
 msgstr "שם הלקוח"
 
-#: plugins/rdp/rdp_plugin.c:2608
+#: plugins/rdp/rdp_plugin.c:2612
 msgid "Client build"
 msgstr "מהדורת הבנייה של הלקוח"
 
-#: plugins/rdp/rdp_plugin.c:2611
+#: plugins/rdp/rdp_plugin.c:2615
 msgid "Load balance info"
 msgstr "פרטי איזון עומס"
 
-#: plugins/rdp/rdp_plugin.c:2612
+#: plugins/rdp/rdp_plugin.c:2616
 msgid "Override printer drivers"
 msgstr "דריסת מנהלי התקן של מדפסות"
 
-#: plugins/rdp/rdp_plugin.c:2612
+#: plugins/rdp/rdp_plugin.c:2616
 msgid ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
@@ -2661,147 +2647,147 @@ msgstr ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
 
-#: plugins/rdp/rdp_plugin.c:2613
+#: plugins/rdp/rdp_plugin.c:2617
 msgid "USB device redirection"
 msgstr "הפניית התקני USB"
 
-#: plugins/rdp/rdp_plugin.c:2614
+#: plugins/rdp/rdp_plugin.c:2618
 msgid "Local serial name"
 msgstr "שם החיבור הטורי המקומי"
 
-#: plugins/rdp/rdp_plugin.c:2614
+#: plugins/rdp/rdp_plugin.c:2618
 msgid "COM1, COM2, etc."
 msgstr "COM1,‏ COM2 וכו׳"
 
-#: plugins/rdp/rdp_plugin.c:2615
+#: plugins/rdp/rdp_plugin.c:2619
 msgid "Local serial driver"
 msgstr "מנהל התקן טורי מקומי"
 
-#: plugins/rdp/rdp_plugin.c:2615
+#: plugins/rdp/rdp_plugin.c:2619
 msgid "Serial"
 msgstr "טורי"
 
-#: plugins/rdp/rdp_plugin.c:2616
+#: plugins/rdp/rdp_plugin.c:2620
 msgid "Local serial path"
 msgstr "נתיב טורי מקומי"
 
-#: plugins/rdp/rdp_plugin.c:2616
+#: plugins/rdp/rdp_plugin.c:2620
 msgid "/dev/ttyS0, /dev/ttyS1, etc."
 msgstr "‎/dev/ttyS0,‏ ‎/dev/ttyS1 וכו׳"
 
-#: plugins/rdp/rdp_plugin.c:2617
+#: plugins/rdp/rdp_plugin.c:2621
 msgid "Local parallel name"
 msgstr "שם מקבילי מקומי"
 
-#: plugins/rdp/rdp_plugin.c:2618
+#: plugins/rdp/rdp_plugin.c:2622
 msgid "Local parallel device"
 msgstr "התקן מקבילי מקומי"
 
-#: plugins/rdp/rdp_plugin.c:2619
+#: plugins/rdp/rdp_plugin.c:2623
 msgid "Name of smart card"
 msgstr "שם הכרטיס החכם"
 
-#: plugins/rdp/rdp_plugin.c:2620
+#: plugins/rdp/rdp_plugin.c:2624
 msgid "Dynamic virtual channel"
 msgstr "ערוץ וירטואלי דינאמי"
 
-#: plugins/rdp/rdp_plugin.c:2620 plugins/rdp/rdp_plugin.c:2621
+#: plugins/rdp/rdp_plugin.c:2624 plugins/rdp/rdp_plugin.c:2625
 msgid "<channel>[,<options>]"
 msgstr "‎<channel>[,<options>]"
 
-#: plugins/rdp/rdp_plugin.c:2621
+#: plugins/rdp/rdp_plugin.c:2625
 msgid "Static virtual channel"
 msgstr "ערוץ וירטואלי סטטי"
 
-#: plugins/rdp/rdp_plugin.c:2622
+#: plugins/rdp/rdp_plugin.c:2626
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
 msgstr "להעדיף רשומת AAAA של IPv6 על פני רשומת A של IPv4"
 
-#: plugins/rdp/rdp_plugin.c:2623
+#: plugins/rdp/rdp_plugin.c:2627
 msgid "Share printers"
 msgstr "שיתוף מדפסות"
 
-#: plugins/rdp/rdp_plugin.c:2624
+#: plugins/rdp/rdp_plugin.c:2628
 msgid "Share serial ports"
 msgstr "שיתוף פתחות טוריות"
 
-#: plugins/rdp/rdp_plugin.c:2625
+#: plugins/rdp/rdp_plugin.c:2629
 msgid "(SELinux) permissive mode for serial ports"
 msgstr "(SELinux) מצב מתירני לפתחות טוריות"
 
-#: plugins/rdp/rdp_plugin.c:2626
+#: plugins/rdp/rdp_plugin.c:2630
 msgid "Share parallel ports"
 msgstr "שיתוף פתחות טוריות"
 
-#: plugins/rdp/rdp_plugin.c:2627
+#: plugins/rdp/rdp_plugin.c:2631
 msgid "Share a smart card"
 msgstr "שיתוף כרטיס חכם"
 
-#: plugins/rdp/rdp_plugin.c:2629
+#: plugins/rdp/rdp_plugin.c:2633
 msgid "Ignore certificate"
 msgstr "התעלמות מאישור"
 
-#: plugins/rdp/rdp_plugin.c:2630
+#: plugins/rdp/rdp_plugin.c:2634
 msgid "Use the old license workflow"
 msgstr "להשתמש בתצורת הרישיון הישנה"
 
-#: plugins/rdp/rdp_plugin.c:2630
+#: plugins/rdp/rdp_plugin.c:2634
 msgid "It disables CAL and hwId is set to 0"
 msgstr "האפשרות הזאת משביתה את CAL וה־hwId מוגדר ל־0"
 
-#: plugins/rdp/rdp_plugin.c:2632
+#: plugins/rdp/rdp_plugin.c:2636
 msgid "Attach to console (2003/2003 R2)"
 msgstr "הצמדה למסוף (Windows 2003 / 2003 R2)"
 
-#: plugins/rdp/rdp_plugin.c:2633
+#: plugins/rdp/rdp_plugin.c:2637
 msgid "Turn off fast-path"
 msgstr "הפעלת נתיב מהיר"
 
-#: plugins/rdp/rdp_plugin.c:2634
+#: plugins/rdp/rdp_plugin.c:2638
 msgid "Server detection using Remote Desktop Gateway"
 msgstr "איתור שרתים באמצעות שער גישה לשולחן עבודה מרוחק"
 
-#: plugins/rdp/rdp_plugin.c:2636
+#: plugins/rdp/rdp_plugin.c:2640
 msgid "Use system proxy settings"
 msgstr "להשתמש בהגדרות המתווך של המערכת"
 
-#: plugins/rdp/rdp_plugin.c:2638
+#: plugins/rdp/rdp_plugin.c:2642
 msgid "Turn off automatic reconnection"
 msgstr "כיבוי התחברות חוזרת אוטומטית"
 
-#: plugins/rdp/rdp_plugin.c:2639
+#: plugins/rdp/rdp_plugin.c:2643
 msgid "Relax order checks"
 msgstr "הקלת בדיקות סדר"
 
-#: plugins/rdp/rdp_plugin.c:2640
+#: plugins/rdp/rdp_plugin.c:2644
 msgid "Glyph cache"
 msgstr "מטמון צורות תווים"
 
-#: plugins/rdp/rdp_plugin.c:2641
+#: plugins/rdp/rdp_plugin.c:2645
 msgid "Enable multitransport protocol (UDP)"
 msgstr "הפעלת פרוטוקול העברה מגוונת (UDP)"
 
-#: plugins/rdp/rdp_plugin.c:2641
+#: plugins/rdp/rdp_plugin.c:2645
 msgid "Using the UDP protocol may improve performance"
 msgstr "השימוש בפרוטוקול UDP עשוי לשפר את הביצועים"
 
-#: plugins/rdp/rdp_plugin.c:2642
+#: plugins/rdp/rdp_plugin.c:2646
 msgid "Use base credentials for gateway too"
 msgstr "להשתמש בפרטי הגישה הבסיסיים גם עבור שער הגישה"
 
-#: plugins/rdp/rdp_plugin.c:2667
+#: plugins/rdp/rdp_plugin.c:2671
 msgid "RDP - Remote Desktop Protocol"
 msgstr "RDP - פרוטוקול לשולחן עבודה מרוחק"
 
-#: plugins/rdp/rdp_plugin.c:2692
+#: plugins/rdp/rdp_plugin.c:2696
 msgid "RDP - RDP File Handler"
 msgstr "RDP - מטפל בקובצי RDP"
 
-#: plugins/rdp/rdp_plugin.c:2707
+#: plugins/rdp/rdp_plugin.c:2711
 msgid "RDP - Preferences"
 msgstr "RDP - העדפות"
 
-#: plugins/rdp/rdp_plugin.c:2760
+#: plugins/rdp/rdp_plugin.c:2764
 msgid "Export connection in Windows .rdp file format"
 msgstr "ייצוא החיבור בתצורת ‎.rdp עבור Windows"
 
@@ -3918,6 +3904,19 @@ msgstr "נא לבחור מפתח חדש"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "נא ללחוץ על המקש החדש…"
+
+#~ msgid ""
+#~ "<tt><big>Supported formats:\n"
+#~ "  • server\n"
+#~ "  • server:port\n"
+#~ "  • server:[port]\n"
+#~ "  • ID:numeric-id</big></tt>"
+#~ msgstr ""
+#~ "<tt><big>התבניות הנתמכות:\n"
+#~ "  • server\n"
+#~ "  • server:port\n"
+#~ "  • server:[port]\n"
+#~ "  • ID:numeric-id</big></tt>"
 
 #~ msgid "Remote Desktop Client"
 #~ msgstr "לקוח חיבורי שולחן עבודה מרוחקים"
