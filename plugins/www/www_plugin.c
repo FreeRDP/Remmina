@@ -51,6 +51,7 @@
 #include "www_utils.h"
 #include "www_plugin.h"
 
+#define UNUSED(x) (void)(x)
 
 #define GET_PLUGIN_DATA(gp) (RemminaPluginWWWData *)g_object_get_data(G_OBJECT(gp), "plugin-data")
 
@@ -188,6 +189,7 @@ void remmina_plugin_www_on_create(WebKitWebView *webview, WebKitNavigationAction
 			webkit_navigation_action_get_request(a));
 		REMMINA_PLUGIN_DEBUG("Downloading url %s ", url);
 		WebKitDownload *d = webkit_web_view_download_uri(gpdata->webview, url);
+		UNUSED(d);
 
 		break;
 	case WEBKIT_NAVIGATION_TYPE_FORM_SUBMITTED:
@@ -246,6 +248,7 @@ void remmina_plugin_www_decide_newwin(WebKitPolicyDecision *decision, RemminaPro
 			webkit_navigation_action_get_request(a));
 		REMMINA_PLUGIN_DEBUG("Downloading url %s ", url);
 		WebKitDownload *d = webkit_web_view_download_uri(gpdata->webview, url);
+		UNUSED(d);
 
 
 		break;
@@ -391,6 +394,9 @@ static gboolean remmina_www_query_feature(RemminaProtocolWidget *gp, const Remmi
 
 static gboolean remmina_plugin_www_load_failed_tls_cb(WebKitWebView *webview,
 						      gchar *failing_uri, GTlsCertificate *certificate,
+						      GTlsCertificateFlags errors, RemminaProtocolWidget *gp) __attribute__ ((unused));
+static gboolean remmina_plugin_www_load_failed_tls_cb(WebKitWebView *webview,
+						      gchar *failing_uri, GTlsCertificate *certificate,
 						      GTlsCertificateFlags errors, RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
@@ -515,13 +521,15 @@ static void remmina_plugin_www_init(RemminaProtocolWidget *gp)
 	}
 
 	if (remmina_plugin_service->file_get_int(remminafile, "ignore-tls-errors", FALSE)) {
-		webkit_web_context_set_tls_errors_policy(gpdata->context, WEBKIT_TLS_ERRORS_POLICY_IGNORE);
+		webkit_website_data_manager_set_tls_errors_policy
+			(gpdata->data_mgr, WEBKIT_TLS_ERRORS_POLICY_IGNORE);
 		g_info("Ignore TLS errors");
 	}
 	if (remmina_plugin_service->file_get_string(remminafile, "proxy-url")) {
 		gchar *proxyurl = g_strdup(remmina_plugin_service->file_get_string(remminafile, "proxy-url"));
 		WebKitNetworkProxySettings *proxy_settings = webkit_network_proxy_settings_new (proxyurl, NULL);
-		webkit_web_context_set_network_proxy_settings(gpdata->context, WEBKIT_NETWORK_PROXY_MODE_CUSTOM, proxy_settings);
+		webkit_website_data_manager_set_network_proxy_settings
+			(gpdata->data_mgr, WEBKIT_NETWORK_PROXY_MODE_CUSTOM, proxy_settings);
 		webkit_network_proxy_settings_free(proxy_settings);
 		g_free(proxyurl);
 	}
