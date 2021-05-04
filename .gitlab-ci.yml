@@ -125,6 +125,9 @@ snap:build:
 trigger_build:
   image: registry.gitlab.com/remmina/remmina/ubuntu:18.04
   stage: build
+  before_script:
+  - apt-get update -qq
+  - apt-get install -y -qq curl
   script:
   - curl -X POST -F token=$CITOKEN -F ref=master https://gitlab.com/api/v4/projects/10530342/trigger/pipeline
 sast:
