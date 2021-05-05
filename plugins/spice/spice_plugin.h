@@ -60,6 +60,7 @@ typedef struct _RemminaPluginSpiceData {
 	SpiceGtkSession *	gtk_session;
 	SpiceMainChannel *	main_channel;
 	SpiceSession *		session;
+	gint			fd;
 
 #ifdef SPICE_GTK_CHECK_VERSION
 #  if SPICE_GTK_CHECK_VERSION(0, 31, 0)
