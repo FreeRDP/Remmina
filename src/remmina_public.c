@@ -37,6 +37,7 @@
 #include "config.h"
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
+#include <errno.h>
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
@@ -331,6 +332,38 @@ remmina_public_combine_path(const gchar *path1, const gchar *path2)
 	if (path1[strlen(path1) - 1] == '/')
 		return g_strdup_printf("%s%s", path1, path2);
 	return g_strdup_printf("%s/%s", path1, path2);
+}
+
+//static int remmina_public_open_unix_sock(const char *unixsock, GError **error)
+gint remmina_public_open_unix_sock(const char *unixsock)
+{
+    struct sockaddr_un addr;
+    int fd;
+
+    if (strlen(unixsock) + 1 > sizeof(addr.sun_path)) {
+        //g_set_error(error, REMMINA_ERROR, REMMINA_ERROR_FAILED,
+                    g_debug(_("Address is too long for UNIX socket_path: %s"), unixsock);
+        return -1;
+    }
+
+    memset(&addr, 0, sizeof addr);
+    addr.sun_family = AF_UNIX;
+    strcpy(addr.sun_path, unixsock);
+
+    if ((fd = socket(AF_UNIX, SOCK_STREAM, 0)) < 0) {
+        //g_set_error(error, REMMINA_ERROR, REMMINA_ERROR_FAILED,
+                    g_debug(_("Creating UNIX socket failed: %s"), g_strerror(errno));
+        return -1;
+    }
+
+    if (connect(fd, (struct sockaddr *)&addr, sizeof addr) < 0) {
+        //g_set_error(error, REMMINA_ERROR, REMMINA_ERROR_FAILED,
+                    g_debug(_("Connecting to UNIX socket failed: %s"), g_strerror(errno));
+        close(fd);
+        return -1;
+    }
+
+    return fd;
 }
 
 void remmina_public_get_server_port_old(const gchar *server, gint defaultport, gchar **host, gint *port)

@@ -88,6 +88,13 @@ void remmina_public_popup_position(GtkMenu *menu, gint *x, gint *y, gboolean *pu
 /* Combine two paths into one by correctly handling trailing slash. Return newly allocated string */
 gchar *remmina_public_combine_path(const gchar *path1, const gchar *path2);
 
+/**
+ * Return a file descriptor handle for a unix socket
+ * @return a file descriptor (socket) or -1
+ *
+ * */
+gint remmina_public_open_unix_sock(const char *unixsock);
+
 /* Parse a server entry with server name and port */
 void remmina_public_get_server_port_old(const gchar *server, gint defaultport, gchar **host, gint *port);
 void remmina_public_get_server_port(const gchar *server, gint defaultport, gchar **host, gint *port);

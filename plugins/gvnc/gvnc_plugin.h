@@ -103,6 +103,8 @@ typedef struct _GVncPluginData {
 	gboolean	viewonly;
 	gint		width;
 	gint		height;
+	gint		fd;
+	gchar *		addr;
 } GVncPluginData;
 
 G_BEGIN_DECLS

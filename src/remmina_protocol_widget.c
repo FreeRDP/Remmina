@@ -991,6 +991,11 @@ gchar *remmina_protocol_widget_start_direct_tunnel(RemminaProtocolWidget *gp, gi
 	if (!server)
 		return g_strdup("");
 
+	if(strstr(g_strdup(server), "unix:///") != NULL) {
+		REMMINA_DEBUG ("%s is a UNIX socket", server);
+		return g_strdup(server);
+	}
+
 	REMMINA_DEBUG ("Calling remmina_public_get_server_port");
 	remmina_public_get_server_port(server, default_port, &srv_host, &srv_port);
 	REMMINA_DEBUG ("Calling remmina_public_get_server_port (tunnel)");

@@ -79,6 +79,27 @@ enum {
 static RemminaPluginService *remmina_plugin_service = NULL;
 #define REMMINA_PLUGIN_DEBUG(fmt, ...) remmina_plugin_service->_remmina_debug(__func__, fmt, ## __VA_ARGS__)
 
+gchar* str_replace(const gchar *string, const gchar *search, const gchar *replacement)
+{
+	TRACE_CALL(__func__);
+	gchar *str, **arr;
+
+	g_return_val_if_fail(string != NULL, NULL);
+	g_return_val_if_fail(search != NULL, NULL);
+
+	if (replacement == NULL)
+		replacement = "";
+
+	arr = g_strsplit(string, search, -1);
+	if (arr != NULL && arr[0] != NULL)
+		str = g_strjoinv(replacement, arr);
+	else
+		str = g_strdup(string);
+
+	g_strfreev(arr);
+	return str;
+}
+
 /* Send a keystroke to the plugin window */
 static void gvnc_plugin_keystroke(RemminaProtocolWidget *gp, const guint keystrokes[], const gint keylen)
 {
@@ -594,6 +615,8 @@ static void gvnc_plugin_initialized(GtkWidget *vncdisplay, RemminaProtocolWidget
 	RemminaFile *remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
 	REMMINA_PLUGIN_DEBUG("Connection initialized");
+	g_return_if_fail(gpdata != NULL);
+	REMMINA_PLUGIN_DEBUG("Presenting the window");
 
 	VncAudioFormat format = {
 		VNC_AUDIO_FORMAT_RAW_S32,
@@ -601,12 +624,30 @@ static void gvnc_plugin_initialized(GtkWidget *vncdisplay, RemminaProtocolWidget
 		44100,
 	};
 
+	REMMINA_PLUGIN_DEBUG("Gathering the VNC connection object");
 	gpdata->conn = vnc_display_get_connection(VNC_DISPLAY(gpdata->vnc));
+	g_return_if_fail(gpdata->conn != NULL);
 
 	if (remmina_plugin_service->file_get_int(remminafile, "enableaudio", FALSE)) {
-		vnc_connection_set_audio_format(gpdata->conn, &format);
-		vnc_connection_set_audio(gpdata->conn, VNC_AUDIO(gpdata->pa));
-		vnc_connection_audio_enable(gpdata->conn);
+		REMMINA_PLUGIN_DEBUG("Setting up VNC audio channel");
+		if (vnc_connection_set_audio_format(gpdata->conn, &format))
+			REMMINA_PLUGIN_DEBUG("VNC audio format set");
+		else {
+			REMMINA_PLUGIN_DEBUG("VNC audio format returned an error");
+			return;
+		}
+
+		if (vnc_connection_set_audio(gpdata->conn, VNC_AUDIO(gpdata->pa)))
+			REMMINA_PLUGIN_DEBUG("VNC audio channel has been set");
+		else {
+			REMMINA_PLUGIN_DEBUG("VNC audio channel cannot be set");
+			return;
+		}
+		REMMINA_PLUGIN_DEBUG("Enabling audio");
+		if (vnc_connection_audio_enable(gpdata->conn))
+			REMMINA_PLUGIN_DEBUG("Audio enabled");
+		else
+			REMMINA_PLUGIN_DEBUG("Audio cannot be enabled");
 	}
 	gpdata->width = vnc_display_get_width(VNC_DISPLAY(gpdata->vnc));
 	gpdata->width = vnc_display_get_height(VNC_DISPLAY(gpdata->vnc));
@@ -703,7 +744,7 @@ static gboolean gvnc_plugin_open_connection(RemminaProtocolWidget *gp)
 	TRACE_CALL(__func__);
 
 	gint port;
-	gchar *host, *tunnel;
+	gchar *host = NULL, *tunnel = NULL;
 	GVncPluginData *gpdata = GET_PLUGIN_DATA(gp);
 	RemminaFile *remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
@@ -718,27 +759,42 @@ static gboolean gvnc_plugin_open_connection(RemminaProtocolWidget *gp)
 	remmina_plugin_service->protocol_plugin_register_hostkey(gp, gpdata->vnc);
 
 
-	/* Setup SSH tunnel if needed */
-	tunnel = remmina_plugin_service->protocol_plugin_start_direct_tunnel(gp, GVNC_DEFAULT_PORT, FALSE);
+	const gchar *address = remmina_plugin_service->file_get_string(remminafile, "server");
+	if(strstr(g_strdup(address), "unix:///") != NULL) {
+		REMMINA_PLUGIN_DEBUG("address contain unix:// -> %s", address);
+		gchar *val = str_replace (address, "unix://", "");
+		REMMINA_PLUGIN_DEBUG("address after cleaning = %s", val);
+		gint fd = remmina_plugin_service->open_unix_sock(val);
+		REMMINA_PLUGIN_DEBUG("Unix socket fd: %d", fd);
+		gpdata->fd = fd;
+		g_free(val);
 
-	if (!tunnel)
-		return FALSE;
+	} else {
+		/* Setup SSH tunnel if needed */
+		tunnel = remmina_plugin_service->protocol_plugin_start_direct_tunnel(gp, GVNC_DEFAULT_PORT, FALSE);
+		if (!tunnel)
+			return FALSE;
+		remmina_plugin_service->get_server_port(tunnel,
+				GVNC_DEFAULT_PORT,
+				&host,
+				&port);
+	}
 
-	remmina_plugin_service->get_server_port(tunnel,
-						GVNC_DEFAULT_PORT,
-						&host,
-						&port);
+
 
 	gpdata->depth_profile = remmina_plugin_service->file_get_int(remminafile, "depth_profile", 24);
 	gpdata->viewonly = remmina_plugin_service->file_get_int(remminafile, "viewonly", FALSE);
 	vnc_display_set_depth(VNC_DISPLAY(gpdata->vnc), gpdata->depth_profile);
-	vnc_display_open_host(VNC_DISPLAY(gpdata->vnc), host, g_strdup_printf("%d", port));
+	if (gpdata->fd > 0)
+		vnc_display_open_fd(VNC_DISPLAY(gpdata->vnc), gpdata->fd);
+	else
+		vnc_display_open_host(VNC_DISPLAY(gpdata->vnc), host, g_strdup_printf("%d", port));
 	gpdata->lossy_encoding = remmina_plugin_service->file_get_int(remminafile, "lossy_encoding", FALSE);
 	vnc_display_set_lossy_encoding(VNC_DISPLAY(gpdata->vnc), gpdata->shared);
 	vnc_display_set_shared_flag(VNC_DISPLAY(gpdata->vnc), gpdata->shared);
 
-	g_free(host);
-	g_free(tunnel);
+	if(host) g_free(host);
+	if(tunnel) g_free(tunnel);
 
 	/* TRUE Conflict with remmina? */
 	vnc_display_set_keyboard_grab(VNC_DISPLAY(gpdata->vnc), FALSE);

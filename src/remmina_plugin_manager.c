@@ -245,6 +245,7 @@ RemminaPluginService remmina_plugin_manager_service =
 	remmina_widget_pool_register,
 
 	rcw_open_from_file_full,
+	remmina_public_open_unix_sock,
 	remmina_public_get_server_port,
 	remmina_masterthread_exec_is_main_thread,
 	remmina_gtksocket_available,
