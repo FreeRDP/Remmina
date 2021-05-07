@@ -3557,11 +3557,13 @@ static RemminaConnectionWindow *rcw_create_scrolled(gint width, gint height, gbo
 	GtkWidget *grid;
 	GtkWidget *toolbar;
 	GtkNotebook *notebook;
+	GtkSettings *settings = gtk_settings_get_default ();
 
 	cnnwin = rcw_new(FALSE, 0);
 	gtk_widget_realize(GTK_WIDGET(cnnwin));
 
 	gtk_window_set_default_size(GTK_WINDOW(cnnwin), width, height);
+	g_object_set (settings, "gtk-application-prefer-dark-theme", remmina_pref.dark_theme, NULL);
 
 	/* Create the toolbar */
 	toolbar = rcw_create_toolbar(cnnwin, SCROLLED_WINDOW_MODE);
