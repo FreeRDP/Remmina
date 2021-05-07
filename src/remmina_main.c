@@ -892,8 +892,6 @@ void remmina_main_on_action_application_preferences(GSimpleAction *action, GVari
 	/* Switch to a dark theme if the user enabled it */
 	settings = gtk_settings_get_default ();
 	g_object_set (settings, "gtk-application-prefer-dark-theme", remmina_pref.dark_theme, NULL);
-	gtk_switch_set_active (remminamain->switch_dark_mode, remmina_pref.dark_theme);
-
 }
 
 void remmina_main_on_action_application_default(GSimpleAction *action, GVariant *param, gpointer data)
@@ -1330,7 +1328,6 @@ static void remmina_main_init(void)
 	/* Switch to a dark theme if the user enabled it */
 	settings = gtk_settings_get_default ();
 	g_object_set (settings, "gtk-application-prefer-dark-theme", remmina_pref.dark_theme, NULL);
-	gtk_switch_set_active (remminamain->switch_dark_mode, remmina_pref.dark_theme);
 
 	remminamain->priv->expanded_group = remmina_string_array_new_from_string(remmina_pref.expanded_group);
 	if (!kioskmode && kioskmode == FALSE)
@@ -1418,7 +1415,6 @@ GtkWidget *remmina_main_new(void)
 		gtk_widget_set_sensitive(GTK_WIDGET(remminamain->button_new), FALSE);
 	/* Search bar */
 	remminamain->search_toggle = GTK_TOGGLE_BUTTON(RM_GET_OBJECT("search_toggle"));
-	remminamain->switch_dark_mode = GTK_SWITCH(RM_GET_OBJECT("switch_dark_mode"));
 	remminamain->search_bar = GTK_SEARCH_BAR(RM_GET_OBJECT("search_bar"));
 	/* view mode list/tree */
 	remminamain->view_toggle_button = GTK_TOGGLE_BUTTON(RM_GET_OBJECT("view_toggle_button"));
