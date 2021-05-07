@@ -41,12 +41,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
     <property name="tooltip-text" translatable="yes">Add a new connection profile</property>
     <property name="icon-name">document-new-symbolic</property>
   </object>
-  <object class="GtkImage" id="image_news">
-    <property name="visible">True</property>
-    <property name="can-focus">False</property>
-    <property name="tooltip-text" translatable="yes">Show the Remmina changelog.</property>
-    <property name="icon-name">dialog-information</property>
-  </object>
   <object class="GtkImage" id="view_toggle_icon">
     <property name="visible">True</property>
     <property name="can-focus">False</property>
@@ -303,26 +297,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                       </object>
                     </child>
                     <child>
-                      <object class="GtkMenuItem" id="menuitem_help_news">
-                        <property name="visible">True</property>
-                        <property name="app-paintable">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="action-name">app.news</property>
-                        <property name="label" translatable="yes">News</property>
-                        <property name="use-underline">True</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkMenuItem" id="menuitem_set_default">
-                        <property name="visible">True</property>
-                        <property name="app-paintable">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="action-name">app.default</property>
-                        <property name="label" translatable="yes">Make Remmina your default remote desktop client</property>
-                        <property name="use-underline">True</property>
-                      </object>
-                    </child>
-                    <child>
                       <object class="GtkMenuItem" id="menuitem_tools_plugins">
                         <property name="visible">True</property>
                         <property name="app-paintable">True</property>
@@ -337,6 +311,32 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                         <property name="visible">True</property>
                         <property name="app-paintable">True</property>
                         <property name="can-focus">False</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkMenuItem" id="menuitem_set_default">
+                        <property name="visible">True</property>
+                        <property name="app-paintable">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="action-name">app.default</property>
+                        <property name="label" translatable="yes">Make Remmina your default remote desktop client</property>
+                        <property name="use-underline">True</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkSeparatorMenuItem">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkMenuItem" id="menuitem_help_news">
+                        <property name="visible">True</property>
+                        <property name="app-paintable">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="action-name">app.news</property>
+                        <property name="label" translatable="yes">News</property>
+                        <property name="use-underline">True</property>
                       </object>
                     </child>
                     <child>
@@ -381,13 +381,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                     </child>
                     <child>
                       <object class="GtkSeparatorMenuItem" id="menuitem_tools_separator">
-                        <property name="visible">True</property>
-                        <property name="app-paintable">True</property>
-                        <property name="can-focus">False</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkSeparatorMenuItem" id="menuitem_quit_separator1">
                         <property name="visible">True</property>
                         <property name="app-paintable">True</property>
                         <property name="can-focus">False</property>
@@ -581,19 +574,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="button_news">
-            <property name="visible">True</property>
-            <property name="can-focus">True</property>
-            <property name="receives-default">True</property>
-            <property name="action-name">app.news</property>
-            <property name="image">image_news</property>
-            <property name="always-show-image">True</property>
-          </object>
-          <packing>
-            <property name="position">2</property>
-          </packing>
-        </child>
-        <child>
           <object class="GtkMenuButton" id="menu_header_button">
             <property name="visible">True</property>
             <property name="can-focus">True</property>
@@ -633,18 +613,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
           <packing>
             <property name="pack-type">end</property>
             <property name="position">4</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkSwitch" id="switch_dark_mode">
-            <property name="visible">True</property>
-            <property name="can-focus">True</property>
-            <property name="tooltip-text" translatable="yes">If a GTK theme includes a dark variant, it will be used instead of the configured theme.</property>
-            <property name="action-name">app.dark</property>
-          </object>
-          <packing>
-            <property name="pack-type">end</property>
-            <property name="position">5</property>
           </packing>
         </child>
       </object>
