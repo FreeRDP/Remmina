@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-05-05 15:39+0000\n"
-"PO-Revision-Date: 2021-05-03 22:51+0000\n"
+"POT-Creation-Date: 2021-05-07 07:43+0000\n"
+"PO-Revision-Date: 2021-05-07 07:43+0000\n"
 "Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/remmina/remmina/"
 "tr/>\n"
@@ -445,18 +445,17 @@ msgstr[1] "%d parola değiştirildi."
 #: src/remmina_public.c:345
 #, c-format
 msgid "Address is too long for UNIX socket_path: %s"
-msgstr ""
+msgstr "Adres, UNIX socket_path için çok uzun: %s"
 
 #: src/remmina_public.c:355
 #, c-format
 msgid "Creating UNIX socket failed: %s"
-msgstr ""
+msgstr "UNIX soketi oluşturulamadı: %s"
 
 #: src/remmina_public.c:361
-#, fuzzy, c-format
-#| msgid "VNC connection failed: %s"
+#, c-format
 msgid "Connecting to UNIX socket failed: %s"
-msgstr "VNC bağlantısı sağlanamadı: %s"
+msgstr "UNIX soketine bağlanma başarısız oldu: %s"
 
 #: src/remmina_public.c:738
 msgid "Please enter format 'widthxheight'."
@@ -887,12 +886,12 @@ msgstr "Pencereyi küçült"
 msgid "Disconnect"
 msgstr "Bağlantıyı kes"
 
-#: src/rcw.c:4193
+#: src/rcw.c:4195
 #, c-format
 msgid "The file “%s” is corrupted, unreadable, or could not be found."
 msgstr "“%s” dosyası bozuk, okunamıyor veya bulunamadı."
 
-#: src/rcw.c:4361
+#: src/rcw.c:4363
 msgid "Warning: This plugin requires GtkSocket, but it’s not available."
 msgstr "Uyarı: Bu eklenti GtkSocket gerektirir, ancak kullanılabilir değil."
 
@@ -1431,13 +1430,6 @@ msgid "Could not create PTY device."
 msgstr "PTY cihazı oluşturulamadı."
 
 #: src/remmina_file_editor.c:60
-#, fuzzy
-#| msgid ""
-#| "<tt><big>Supported formats:\n"
-#| "  • server\n"
-#| "  • server:port\n"
-#| "  • server:[port]\n"
-#| "  • ID:numeric-id</big></tt>"
 msgid ""
 "<tt><big>Supported formats\n"
 "• server\n"
@@ -1447,11 +1439,13 @@ msgid ""
 "• ID:repeater ID number\n"
 "• unix:///path/socket.sock</big></tt>"
 msgstr ""
-"<tt><big>Desteklenen biçimler:\n"
-"  • sunucu\n"
-"  • sunucu:bağlantınoktası\n"
-"  • sunucu:[bağlantınoktası]\n"
-"  • ID:sayısal-kimlik</big></tt>"
+"<tt><big>Desteklenen biçimler\n"
+"• sunucu\n"
+"• sunucu:bağlantınoktası\n"
+"• sunucu:[bağlantınoktası]\n"
+"Ek VNC biçimleri\n"
+"• ID:tekrarlayıcı kimlik numarası\n"
+"• unix:///yol/soket.sock</big></tt>"
 
 #: src/remmina_file_editor.c:70
 msgid ""

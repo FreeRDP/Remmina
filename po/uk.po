@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-05-05 15:39+0000\n"
-"PO-Revision-Date: 2021-05-03 22:51+0000\n"
+"POT-Creation-Date: 2021-05-07 07:43+0000\n"
+"PO-Revision-Date: 2021-05-07 07:43+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/remmina/"
 "remmina/uk/>\n"
@@ -444,18 +444,17 @@ msgstr[2] "%d паролів змінено."
 #: src/remmina_public.c:345
 #, c-format
 msgid "Address is too long for UNIX socket_path: %s"
-msgstr ""
+msgstr "Адреса є надто довгою для socket_path UNIX: %s"
 
 #: src/remmina_public.c:355
 #, c-format
 msgid "Creating UNIX socket failed: %s"
-msgstr ""
+msgstr "Не вдалося створити сокет UNIX: %s"
 
 #: src/remmina_public.c:361
-#, fuzzy, c-format
-#| msgid "VNC connection failed: %s"
+#, c-format
 msgid "Connecting to UNIX socket failed: %s"
-msgstr "Помилка VNC-з'єднання: %s"
+msgstr "Не вдалося встановити з'єднання із сокетом UNIX: %s"
 
 #: src/remmina_public.c:738
 msgid "Please enter format 'widthxheight'."
@@ -893,12 +892,12 @@ msgstr "Згорнути вікно"
 msgid "Disconnect"
 msgstr "Від'єднатися"
 
-#: src/rcw.c:4193
+#: src/rcw.c:4195
 #, c-format
 msgid "The file “%s” is corrupted, unreadable, or could not be found."
 msgstr "Файл «%s» пошкоджено, неможливо прочитати або не знайдено."
 
-#: src/rcw.c:4361
+#: src/rcw.c:4363
 msgid "Warning: This plugin requires GtkSocket, but it’s not available."
 msgstr "Увага: цей додаток потребує GtkSocket, але цей сокет недоступний."
 
@@ -1442,13 +1441,6 @@ msgid "Could not create PTY device."
 msgstr "Не вдалося створити PTY-пристрій."
 
 #: src/remmina_file_editor.c:60
-#, fuzzy
-#| msgid ""
-#| "<tt><big>Supported formats:\n"
-#| "  • server\n"
-#| "  • server:port\n"
-#| "  • server:[port]\n"
-#| "  • ID:numeric-id</big></tt>"
 msgid ""
 "<tt><big>Supported formats\n"
 "• server\n"
@@ -1462,7 +1454,9 @@ msgstr ""
 "* сервер\n"
 "* сервер:порт\n"
 "* сервер:[порт]\n"
-" • ID:числовий ідентифікатор</big></tt>"
+"Додаткові формати VNC:\n"
+"• ID:ідентифікаційний номер ретранслятора\n"
+"• unix:///шлях/сокет.sock</big></tt>"
 
 #: src/remmina_file_editor.c:70
 msgid ""

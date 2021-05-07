@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-05-05 15:39+0000\n"
-"PO-Revision-Date: 2021-05-03 22:51+0000\n"
+"POT-Creation-Date: 2021-05-07 07:43+0000\n"
+"PO-Revision-Date: 2021-05-07 07:43+0000\n"
 "Last-Translator: Eric <spice2wolf@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "remmina/remmina/zh_Hans/>\n"
@@ -447,10 +447,9 @@ msgid "Creating UNIX socket failed: %s"
 msgstr ""
 
 #: src/remmina_public.c:361
-#, fuzzy, c-format
-#| msgid "VNC connection failed: %s"
+#, c-format
 msgid "Connecting to UNIX socket failed: %s"
-msgstr "VNC 连接失败：%s"
+msgstr "未能连接到 UNIX 套接字：%s"
 
 #: src/remmina_public.c:738
 msgid "Please enter format 'widthxheight'."
@@ -882,12 +881,12 @@ msgstr "最小化窗口"
 msgid "Disconnect"
 msgstr "断开"
 
-#: src/rcw.c:4193
+#: src/rcw.c:4195
 #, c-format
 msgid "The file “%s” is corrupted, unreadable, or could not be found."
 msgstr "文件“%s” 已损坏，无法读取或未找到。"
 
-#: src/rcw.c:4361
+#: src/rcw.c:4363
 msgid "Warning: This plugin requires GtkSocket, but it’s not available."
 msgstr "警告：此插件需要 GtkSocket，但它不可用。"
 
@@ -1424,13 +1423,6 @@ msgid "Could not create PTY device."
 msgstr "无法创建 PTY 设备。"
 
 #: src/remmina_file_editor.c:60
-#, fuzzy
-#| msgid ""
-#| "<tt><big>Supported formats:\n"
-#| "  • server\n"
-#| "  • server:port\n"
-#| "  • server:[port]\n"
-#| "  • ID:numeric-id</big></tt>"
 msgid ""
 "<tt><big>Supported formats\n"
 "• server\n"
@@ -1444,7 +1436,9 @@ msgstr ""
 "• 服务器\n"
 "• 服务器：端口\n"
 "• 服务器：[端口]   \n"
-"• ID:numeric-id</big></tt>"
+"VNC 附加格式\n"
+"•ID：中继器ID号\n"
+"• unix:///path/socket.sock</big></tt>"
 
 #: src/remmina_file_editor.c:70
 msgid ""
