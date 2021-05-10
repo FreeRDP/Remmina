@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-05-07 08:25+0000\n"
+"POT-Creation-Date: 2021-05-10 06:59+0000\n"
 "PO-Revision-Date: 2021-01-28 10:33+0000\n"
 "Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/remmina/remmina/nl/"
@@ -77,8 +77,8 @@ msgstr "Verbinding maken met %s via SSH…"
 
 #: src/remmina_protocol_widget.c:1602 src/remmina_protocol_widget.c:1621
 #: src/remmina_ssh_plugin.c:1306 src/remmina_sftp_plugin.c:310
-#: src/remmina_sftp_plugin.c:346 src/remmina_file_editor.c:848
-#: src/remmina_file_editor.c:969 plugins/www/www_plugin.c:880
+#: src/remmina_sftp_plugin.c:346 src/remmina_file_editor.c:846
+#: src/remmina_file_editor.c:967 plugins/www/www_plugin.c:880
 #: plugins/rdp/rdp_plugin.c:2574 data/ui/remmina_unlock.glade:116
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1682
 msgid "Password"
@@ -137,8 +137,8 @@ msgstr "Op poort %i naar een inkomende %s-verbinding luisteren…"
 msgid "Could not authenticate, attempting reconnection…"
 msgstr "Authenticatie mislukt. Opnieuw proberen verbinding te maken…"
 
-#: src/remmina_protocol_widget.c:1943 src/remmina_file_editor.c:348
-#: src/remmina_file_editor.c:919 data/ui/remmina_main.glade:478
+#: src/remmina_protocol_widget.c:1943 src/remmina_file_editor.c:346
+#: src/remmina_file_editor.c:917 data/ui/remmina_main.glade:478
 msgid "Server"
 msgstr "Server"
 
@@ -152,11 +152,11 @@ msgstr "Installeer eerst de %s-protocolplugin."
 msgid "Plugin %s is not registered."
 msgstr "Plug-in %s is niet geregistreerd."
 
-#: src/remmina_pref_dialog.c:90 src/remmina_file_editor.c:437
+#: src/remmina_pref_dialog.c:90 src/remmina_file_editor.c:435
 msgid "Resolutions"
 msgstr "Schermresoluties"
 
-#: src/remmina_pref_dialog.c:90 src/remmina_file_editor.c:437
+#: src/remmina_pref_dialog.c:90 src/remmina_file_editor.c:435
 msgid "Configure the available resolutions"
 msgstr "Configureer de beschikbare resoluties"
 
@@ -229,22 +229,22 @@ msgstr "Plakken (host + V)"
 
 #: src/remmina_ssh_plugin.c:1307 src/remmina_ssh_plugin.c:1412
 #: src/remmina_sftp_plugin.c:311 src/remmina_sftp_plugin.c:348
-#: src/remmina_file_editor.c:849 plugins/nx/nx_plugin.c:729
+#: src/remmina_file_editor.c:847 plugins/nx/nx_plugin.c:729
 msgid "SSH identity file"
 msgstr "SSH-identiteitsbestand"
 
 #: src/remmina_ssh_plugin.c:1308 src/remmina_sftp_plugin.c:312
-#: src/remmina_file_editor.c:850
+#: src/remmina_file_editor.c:848
 msgid "SSH agent"
 msgstr "SSH-agent"
 
 #: src/remmina_ssh_plugin.c:1309 src/remmina_sftp_plugin.c:313
-#: src/remmina_file_editor.c:851
+#: src/remmina_file_editor.c:849
 msgid "Public key (automatic)"
 msgstr "Publieke sleutel (automatisch)"
 
 #: src/remmina_ssh_plugin.c:1310 src/remmina_sftp_plugin.c:314
-#: src/remmina_file_editor.c:852
+#: src/remmina_file_editor.c:850
 msgid "Kerberos (GSSAPI)"
 msgstr "Kerberos (GSSAPI)"
 
@@ -297,12 +297,12 @@ msgid "_Find text"
 msgstr ""
 
 #: src/remmina_ssh_plugin.c:1409 src/remmina_sftp_plugin.c:347
-#: src/remmina_file_editor.c:954
+#: src/remmina_file_editor.c:952
 msgid "Authentication type"
 msgstr "Verificatietype"
 
 #: src/remmina_ssh_plugin.c:1410 src/remmina_message_panel.c:330
-#: src/remmina_sftp_plugin.c:345 src/remmina_file_editor.c:963
+#: src/remmina_sftp_plugin.c:345 src/remmina_file_editor.c:961
 #: plugins/www/www_plugin.c:879 plugins/vnc/vnc_plugin.c:1942
 #: plugins/vnc/vnc_plugin.c:1962 plugins/rdp/rdp_plugin.c:2573
 #: plugins/nx/nx_plugin.c:730 data/ui/remmina_mpc.glade:144
@@ -315,14 +315,14 @@ msgstr "Gebruikersnaam"
 msgid "User password"
 msgstr "Gebruikerswachtwoord"
 
-#: src/remmina_ssh_plugin.c:1414 src/remmina_file_editor.c:981
+#: src/remmina_ssh_plugin.c:1414 src/remmina_file_editor.c:979
 #, fuzzy
 #| msgid "CA Certificate File"
 msgid "SSH certificate file"
 msgstr "CA Certificaat Bestand"
 
 #: src/remmina_ssh_plugin.c:1416 src/remmina_sftp_plugin.c:349
-#: src/remmina_file_editor.c:986
+#: src/remmina_file_editor.c:984
 msgid "Password to unlock private key"
 msgstr "Wachtwoord om de privésleutel te ontgrendelen"
 
@@ -565,7 +565,7 @@ msgstr "Grootte"
 msgid "User"
 msgstr "Gebruiker"
 
-#: src/remmina_ftp_client.c:932 src/remmina_file_editor.c:1517
+#: src/remmina_ftp_client.c:932 src/remmina_file_editor.c:1515
 #: data/ui/remmina_main.glade:464 data/ui/remmina_mpc.glade:115
 msgid "Group"
 msgstr "Groep"
@@ -879,7 +879,7 @@ msgstr ""
 "Waarschuwing: voor deze plug-in is GtkSocket vereist, maar deze is niet "
 "beschikbaar."
 
-#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1535
+#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1533
 msgid "Protocol"
 msgstr "Protocol"
 
@@ -908,11 +908,11 @@ msgid "Plugins"
 msgstr "Plug-ins"
 
 #: src/remmina_plugin_manager.c:456 src/remmina_message_panel.c:452
-#: src/remmina_message_panel.c:621 src/remmina_file_editor.c:154
+#: src/remmina_message_panel.c:621 src/remmina_file_editor.c:152
 msgid "_OK"
 msgstr "OK"
 
-#: src/remmina_plugin_manager.c:474 src/remmina_file_editor.c:1492
+#: src/remmina_plugin_manager.c:474 src/remmina_file_editor.c:1490
 #: plugins/nx/nx_session_manager.c:204 data/ui/remmina_main.glade:442
 msgid "Name"
 msgstr "Naam"
@@ -954,7 +954,7 @@ msgstr ""
 msgid "Import"
 msgstr "Importeren"
 
-#: src/remmina_main.c:1024 src/remmina_file_editor.c:1375
+#: src/remmina_main.c:1024 src/remmina_file_editor.c:1373
 msgid "_Save"
 msgstr "_Opslaan"
 
@@ -1070,8 +1070,8 @@ msgid "Overwrite"
 msgstr "Overschrijven"
 
 #: src/remmina_sftp_client.c:947 src/remmina_message_panel.c:457
-#: src/remmina_message_panel.c:629 src/remmina_file_editor.c:153
-#: src/remmina_file_editor.c:1367 plugins/spice/spice_plugin_file_transfer.c:84
+#: src/remmina_message_panel.c:629 src/remmina_file_editor.c:151
+#: src/remmina_file_editor.c:1365 plugins/spice/spice_plugin_file_transfer.c:84
 #: plugins/nx/nx_session_manager.c:156 data/ui/remmina_spinner.glade:8
 #: data/ui/remmina_spinner.glade:9 data/ui/remmina_key_chooser.glade:8
 #: data/ui/remmina_key_chooser.glade:9
@@ -1425,22 +1425,35 @@ msgstr "PTY-apparaat aanmaken mislukt."
 #| "• server:port\n"
 #| "• [server]:port</big></tt>"
 msgid ""
-"<tt><big>Supported formats\n"
+"<big>Supported formats\n"
 "• server\n"
-"• server:port\n"
-"• server:[port]\n"
+"• server[:port]\n"
 "VNC additional formats\n"
 "• ID:repeater ID number\n"
-"• unix:///path/socket.sock</big></tt>"
+"• unix:///path/socket.sock</big>"
 msgstr ""
 "<tt><big>Ondersteunde formaten\n"
 "* server\n"
 "* server:poort\n"
 "* [server]:poort</big></tt>"
 
-#: src/remmina_file_editor.c:70
+#: src/remmina_file_editor.c:69
+#, fuzzy
+#| msgid ""
+#| "<tt><big>• command in PATH args %h\n"
+#| "• /path/to/foo -options %h %u\n"
+#| "• %h is substituted with the server name\n"
+#| "• %t is substituted with the SSH server name\n"
+#| "• %u is substituted with the username\n"
+#| "• %U is substituted with the SSH username\n"
+#| "• %p is substituted with Remmina profile name\n"
+#| "• %g is substituted with Remmina profile group name\n"
+#| "• %d is substituted with local date and time in ISO 8601 format\n"
+#| "Do not run in background if you want the command to be executed before "
+#| "connecting.\n"
+#| "</big></tt>"
 msgid ""
-"<tt><big>• command in PATH args %h\n"
+"<big>• command in PATH args %h\n"
 "• /path/to/foo -options %h %u\n"
 "• %h is substituted with the server name\n"
 "• %t is substituted with the SSH server name\n"
@@ -1451,7 +1464,7 @@ msgid ""
 "• %d is substituted with local date and time in ISO 8601 format\n"
 "Do not run in background if you want the command to be executed before "
 "connecting.\n"
-"</big></tt>"
+"</big>"
 msgstr ""
 "<tt><big>• commando in PATH args %h\n"
 "• /path/to/foo -options %h %u\n"
@@ -1466,7 +1479,7 @@ msgstr ""
 "verbinding maakt.\n"
 "</big></tt>"
 
-#: src/remmina_file_editor.c:84
+#: src/remmina_file_editor.c:83
 #, fuzzy
 #| msgid ""
 #| "<tt><big>Supported formats\n"
@@ -1476,11 +1489,10 @@ msgstr ""
 #| "• [server]:port\n"
 #| "• username@server:port (SSH protocol only)</big></tt>"
 msgid ""
-"<tt><big>Supported formats\n"
+"<big>Supported formats\n"
 "• server\n"
-"• server:port\n"
-"• server:[port]\n"
-"• username@server:[port] (SSH protocol only)</big></tt>"
+"• server[:port]\n"
+"• username@server[:port] (SSH protocol only)</big>"
 msgstr ""
 "<tt><big>Ondersteunde formaten\n"
 "• :port\n"
@@ -1489,146 +1501,146 @@ msgstr ""
 "• [server]:port\n"
 "• username@server:port (SSH protocol only)</big></tt>"
 
-#: src/remmina_file_editor.c:151
+#: src/remmina_file_editor.c:149
 msgid "Choose a Remote Desktop Server"
 msgstr "Kies een Remote Desktop Server"
 
-#: src/remmina_file_editor.c:372
+#: src/remmina_file_editor.c:370
 #, c-format
 msgid "Browse the network to find a %s server"
 msgstr "Op het netwerk naar een %s-server zoeken"
 
-#: src/remmina_file_editor.c:473
+#: src/remmina_file_editor.c:471
 msgid "Resolution"
 msgstr "Resolutie"
 
-#: src/remmina_file_editor.c:480
+#: src/remmina_file_editor.c:478
 msgid "Use initial window size"
 msgstr "Gebruik de initiële venstergrootte"
 
-#: src/remmina_file_editor.c:484
+#: src/remmina_file_editor.c:482
 msgid "Use client resolution"
 msgstr "Clientresolutie gebruiken"
 
-#: src/remmina_file_editor.c:495 src/remmina_file_editor.c:899
+#: src/remmina_file_editor.c:493 src/remmina_file_editor.c:897
 msgid "Custom"
 msgstr "Aangepast"
 
-#: src/remmina_file_editor.c:719
+#: src/remmina_file_editor.c:717
 msgid "Keyboard mapping"
 msgstr "Toetsenbordindeling"
 
-#: src/remmina_file_editor.c:819
+#: src/remmina_file_editor.c:817
 msgid "Behavior"
 msgstr ""
 
-#: src/remmina_file_editor.c:822
+#: src/remmina_file_editor.c:820
 msgid "Execute a Command"
 msgstr "Externe opdrachten uitvoeren…"
 
-#: src/remmina_file_editor.c:826
+#: src/remmina_file_editor.c:824
 msgid "Before connecting"
 msgstr "Nieuwe verbinding"
 
-#: src/remmina_file_editor.c:828
+#: src/remmina_file_editor.c:826
 msgid "command %h %u %t %U %p %g --option"
 msgstr ""
 
-#: src/remmina_file_editor.c:833
+#: src/remmina_file_editor.c:831
 msgid "After connecting"
 msgstr "Nieuwe verbinding"
 
-#: src/remmina_file_editor.c:835
+#: src/remmina_file_editor.c:833
 msgid "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
 msgstr ""
 
-#: src/remmina_file_editor.c:839
+#: src/remmina_file_editor.c:837
 msgid "Start-up"
 msgstr "Starten"
 
-#: src/remmina_file_editor.c:842
+#: src/remmina_file_editor.c:840
 msgid "Auto-start this profile"
 msgstr ""
 
-#: src/remmina_file_editor.c:872
+#: src/remmina_file_editor.c:870
 msgid "SSH Tunnel"
 msgstr "SSH Tunnel"
 
-#: src/remmina_file_editor.c:873
+#: src/remmina_file_editor.c:871
 msgid "Enable SSH tunnel"
 msgstr "SSH-tunnel inschakelen"
 
-#: src/remmina_file_editor.c:880
+#: src/remmina_file_editor.c:878
 msgid "Tunnel via loopback address"
 msgstr "Tunnel langs loopback address"
 
-#: src/remmina_file_editor.c:890
+#: src/remmina_file_editor.c:888
 #, c-format
 msgid "Same server at port %i"
 msgstr "Zelfde server op poort %i"
 
-#: src/remmina_file_editor.c:940 plugins/rdp/rdp_plugin.c:2614
+#: src/remmina_file_editor.c:938 plugins/rdp/rdp_plugin.c:2614
 msgid "Start-up path"
 msgstr "Opstartlocatie"
 
-#: src/remmina_file_editor.c:949
+#: src/remmina_file_editor.c:947
 msgid "SSH Authentication"
 msgstr "SSH-verificatie"
 
-#: src/remmina_file_editor.c:975
+#: src/remmina_file_editor.c:973
 #, fuzzy
 #| msgid "SSH private key passphrase"
 msgid "SSH private key file"
 msgstr "Wachtwoord voor SSH-privesleutel"
 
-#: src/remmina_file_editor.c:1039
+#: src/remmina_file_editor.c:1037
 msgid "Basic"
 msgstr "Standaard"
 
-#: src/remmina_file_editor.c:1045
+#: src/remmina_file_editor.c:1043
 msgid "Advanced"
 msgstr "Geavanceerd"
 
-#: src/remmina_file_editor.c:1056
+#: src/remmina_file_editor.c:1054
 msgid "Notes"
 msgstr ""
 
-#: src/remmina_file_editor.c:1295
+#: src/remmina_file_editor.c:1293
 msgid "Default settings saved."
 msgstr "Standaardinstellingen opgeslagen."
 
-#: src/remmina_file_editor.c:1365
+#: src/remmina_file_editor.c:1363
 msgid "Remote Connection Profile"
 msgstr "VNC-verbinding mislukt: %s"
 
-#: src/remmina_file_editor.c:1371
+#: src/remmina_file_editor.c:1369
 msgid "Save as Default"
 msgstr "Opslaan als standaard"
 
-#: src/remmina_file_editor.c:1372
+#: src/remmina_file_editor.c:1370
 msgid "Use the current settings as the default for all new connection profiles"
 msgstr ""
 "Gebruik de huidige instellingen als standaard voor alle nieuwe "
 "verbindingsprofielen"
 
-#: src/remmina_file_editor.c:1380 data/ui/remmina_main.glade:160
+#: src/remmina_file_editor.c:1378 data/ui/remmina_main.glade:160
 msgid "Connect"
 msgstr "Verbinden"
 
-#: src/remmina_file_editor.c:1383
+#: src/remmina_file_editor.c:1381
 msgid "_Save and Connect"
 msgstr "_Opslaan en Verbinden"
 
-#: src/remmina_file_editor.c:1506
+#: src/remmina_file_editor.c:1504
 msgid "Quick Connect"
 msgstr "Snel verbinden"
 
-#: src/remmina_file_editor.c:1530
+#: src/remmina_file_editor.c:1528
 #, c-format
 msgid "Use '%s' as subgroup delimiter"
 msgstr "Gebruik ‘%s’ als scheidingsteken voor de subgroep"
 
-#: src/remmina_file_editor.c:1596 src/remmina_file_editor.c:1614
+#: src/remmina_file_editor.c:1594 src/remmina_file_editor.c:1612
 #, c-format
 msgid "Could not find the file “%s”."
 msgstr "Kon het bestand \"%s\" niet vinden."
@@ -1647,7 +1659,7 @@ msgid "_Clear"
 msgstr "_Wissen"
 
 #: plugins/gvnc/gvnc_plugin_config.h:40
-msgid "Remmina VNC plugin GNOME and KVM"
+msgid "Remmina VNC plugin for GNOME and KVM"
 msgstr ""
 
 #: plugins/gvnc/gvnc_plugin.c:477
