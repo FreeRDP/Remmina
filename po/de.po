@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-05-07 08:25+0000\n"
-"PO-Revision-Date: 2021-05-05 15:39+0000\n"
-"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"PO-Revision-Date: 2021-05-10 06:45+0000\n"
+"Last-Translator: Johannes Weberhofer <jweberhofer@weberhofer.at>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/remmina/remmina/"
 "de/>\n"
 "Language: de\n"
@@ -448,18 +448,17 @@ msgstr[1] "%d Passwörter wurden geändert."
 #: src/remmina_public.c:345
 #, c-format
 msgid "Address is too long for UNIX socket_path: %s"
-msgstr ""
+msgstr "Die Adresse ist für den UNIX Socket_path %s zu lang"
 
 #: src/remmina_public.c:355
 #, c-format
 msgid "Creating UNIX socket failed: %s"
-msgstr ""
+msgstr "Erzeugen des UNIX-Sockets ist fehlgeschlagen: %s"
 
 #: src/remmina_public.c:361
-#, fuzzy, c-format
-#| msgid "VNC connection failed: %s"
+#, c-format
 msgid "Connecting to UNIX socket failed: %s"
-msgstr "VNC‐Verbindung fehlgeschlagen: %s"
+msgstr "Verbindung zum UNIX-Socket ist fehlgeschlagen: %s"
 
 #: src/remmina_public.c:738
 msgid "Please enter format 'widthxheight'."
@@ -1446,13 +1445,6 @@ msgid "Could not create PTY device."
 msgstr "Kann das PTY‐Gerät nicht öffnen."
 
 #: src/remmina_file_editor.c:60
-#, fuzzy
-#| msgid ""
-#| "<tt><big>Supported formats:\n"
-#| "  • server\n"
-#| "  • server:port\n"
-#| "  • server:[port]\n"
-#| "  • ID:numeric-id</big></tt>"
 msgid ""
 "<tt><big>Supported formats\n"
 "• server\n"
@@ -1464,9 +1456,11 @@ msgid ""
 msgstr ""
 "<tt><big>Unterstützte Formate:\n"
 " • server\n"
-" • server:port\n"
 " • server:[port]\n"
-" • ID:numerische-ID</big></tt>"
+" • ID:numerische-ID</big></tt>\n"
+"Weitere VNC Formate:\n"
+"• ID:repeater ID\n"
+"• unix:///Pfad/Socket.sock</big></tt>"
 
 #: src/remmina_file_editor.c:70
 msgid ""
@@ -1671,56 +1665,42 @@ msgid "Remmina VNC plugin GNOME and KVM"
 msgstr "Remmina VNC-Plugin"
 
 #: plugins/gvnc/gvnc_plugin.c:477
-#, fuzzy, c-format
-#| msgid "Authentication type"
+#, c-format
 msgid "Unsupported authentication type %u"
-msgstr "Authentifizierungstyp"
+msgstr "Nicht unterstützter Authentifizierungstyp %u"
 
 #: plugins/gvnc/gvnc_plugin.c:489
-#, fuzzy, c-format
-#| msgid "Authentication type"
+#, c-format
 msgid "Authentication failure: %s"
-msgstr "Authentifizierungstyp"
+msgstr "Authentifizierungsfehler: %s"
 
 #: plugins/gvnc/gvnc_plugin.c:539 plugins/vnc/vnc_plugin.c:820
 msgid "Enter VNC authentication credentials"
 msgstr "VNC-Anmeldedaten eingeben"
 
 #: plugins/gvnc/gvnc_plugin.c:820
-#, fuzzy
-#| msgid "Use system proxy settings"
 msgid "Use server settings"
-msgstr "Proxy-Einstellungen des Systems verwenden"
+msgstr "Systemseinstellungen verwenden"
 
 #: plugins/gvnc/gvnc_plugin.c:821
-#, fuzzy
-#| msgid "True colour (24 bit)"
 msgid "True colour (24 bits)"
 msgstr "Echtfarben (24 Bit)"
 
 #: plugins/gvnc/gvnc_plugin.c:822
-#, fuzzy
-#| msgid "High colour (16 bit)"
 msgid "High colour (16 bits)"
 msgstr "Hohe Farbtiefe (16 Bit)"
 
 #: plugins/gvnc/gvnc_plugin.c:823
-#, fuzzy
-#| msgid "High colour (16 bit)"
 msgid "Low colour (8 bits)"
-msgstr "Hohe Farbtiefe (16 Bit)"
+msgstr "Geringe Farbtiefe (8 Bit)"
 
 #: plugins/gvnc/gvnc_plugin.c:824
-#, fuzzy
-#| msgid "True colour (24 bit)"
 msgid "Ultra low colour (3 bits)"
-msgstr "Echtfarben (24 Bit)"
+msgstr "Extra geringe Farbtiefe (3 Bit)"
 
 #: plugins/gvnc/gvnc_plugin.c:839
-#, fuzzy
-#| msgid "Enter VNC password"
 msgid "VNC password"
-msgstr "VNC-Passwort eingeben"
+msgstr "VNC-Passwort"
 
 #: plugins/gvnc/gvnc_plugin.c:840 plugins/vnc/vnc_plugin.c:1944
 #: plugins/vnc/vnc_plugin.c:1964 plugins/xdmcp/xdmcp_plugin.c:369
@@ -1729,20 +1709,16 @@ msgid "Colour depth"
 msgstr "Farbtiefe"
 
 #: plugins/gvnc/gvnc_plugin.c:841
-#, fuzzy
-#| msgid "SSH compression"
 msgid "Use JPEG Compression"
-msgstr "SSH-Komprimierung"
+msgstr "JPEG Komprimierung verwenden"
 
 #: plugins/gvnc/gvnc_plugin.c:841
-#, fuzzy
-#| msgid "Browse the network to find a %s server"
 msgid "This might not work on all VNC servers"
-msgstr "Durchsuche das Netzwerk nach einem %s Server"
+msgstr "Funktioniert nicht mit allen VNC-Servern"
 
 #: plugins/gvnc/gvnc_plugin.c:842
 msgid "Enable GTK-VNC debug"
-msgstr ""
+msgstr "GTK-VNC Debugging einschalten"
 
 #: plugins/gvnc/gvnc_plugin.c:857 plugins/gvnc/gvnc_plugin.c:871
 #: plugins/spice/spice_plugin.c:693 plugins/spice/spice_plugin.c:706
@@ -1770,28 +1746,24 @@ msgid "View only"
 msgstr "Nur anzeigen"
 
 #: plugins/gvnc/gvnc_plugin.c:862
-#, fuzzy
-#| msgid "Per connection"
 msgid "Shared connection"
-msgstr "Nach Verbindung"
+msgstr "Geteilte Verbindung"
 
 #: plugins/gvnc/gvnc_plugin.c:862
 msgid ""
 "If the server should try to share the desktop by leaving other clients "
 "connected"
 msgstr ""
+"Der Server soll versuchen den Desktop freizugeben und bestehende "
+"Verbindungen beibehalten"
 
 #: plugins/gvnc/gvnc_plugin.c:872
-#, fuzzy
-#| msgid "Send Ctrl+Alt+Del"
 msgid "Send Ctrl+Alt+_Del"
-msgstr "Sende Strg+Alt+Entfernen"
+msgstr "Sende Strg+Alt+_Entfernen"
 
 #: plugins/gvnc/gvnc_plugin.c:873
-#, fuzzy
-#| msgid "Send Ctrl+Alt+Del"
 msgid "Send Ctrl+Alt+_Backspace"
-msgstr "Sende Strg+Alt+Entfernen"
+msgstr "Sende Strg+Alt+_Rückschritt"
 
 #: plugins/gvnc/gvnc_plugin.c:874
 msgid "Send Ctrl+Alt+_F1"
@@ -1843,17 +1815,15 @@ msgstr "Sende Strg+Alt+_F12"
 
 #: plugins/gvnc/gvnc_plugin.c:887
 msgid "Reboot remote host"
-msgstr ""
+msgstr "Entfernten Host neu starten"
 
 #: plugins/gvnc/gvnc_plugin.c:888
 msgid "Reset remote host (hard reboot)"
-msgstr ""
+msgstr "Entfernten Host zurücksetzen (Erzwungener neustart)"
 
 #: plugins/gvnc/gvnc_plugin.c:889
-#, fuzzy
-#| msgid "Show remote cursor"
 msgid "Shutdown remote host"
-msgstr "Entfernten Mauszeiger anzeigen"
+msgstr "Entfernten Host ausschalten"
 
 #: plugins/exec/exec_plugin_config.h:41
 msgid "Execute a command"
