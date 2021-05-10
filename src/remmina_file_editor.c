@@ -57,17 +57,16 @@
 
 G_DEFINE_TYPE(RemminaFileEditor, remmina_file_editor, GTK_TYPE_DIALOG)
 
-static const gchar *server_tips = N_("<tt><big>"
+static const gchar *server_tips = N_("<big>"
 				     "Supported formats\n"
 				     "• server\n"
-				     "• server:port\n"
-				     "• server:[port]\n"
+				     "• server[:port]\n"
 				     "VNC additional formats\n"
 				     "• ID:repeater ID number\n"
 				     "• unix:///path/socket.sock"
-				     "</big></tt>");
+				     "</big>");
 
-static const gchar *cmd_tips = N_("<tt><big>"
+static const gchar *cmd_tips = N_("<big>"
 				  "• command in PATH args %h\n"
 				  "• /path/to/foo -options %h %u\n"
 				  "• %h is substituted with the server name\n"
@@ -78,16 +77,15 @@ static const gchar *cmd_tips = N_("<tt><big>"
 				  "• %g is substituted with Remmina profile group name\n"
 				  "• %d is substituted with local date and time in ISO 8601 format\n"
 				  "Do not run in background if you want the command to be executed before connecting.\n"
-				  "</big></tt>");
+				  "</big>");
 
 #ifdef HAVE_LIBSSH
-static const gchar *server_tips2 = N_("<tt><big>"
+static const gchar *server_tips2 = N_("<big>"
 				      "Supported formats\n"
 				      "• server\n"
-				      "• server:port\n"
-				      "• server:[port]\n"
-				      "• username@server:[port] (SSH protocol only)"
-				      "</big></tt>");
+				      "• server[:port]\n"
+				      "• username@server[:port] (SSH protocol only)"
+				      "</big>");
 #endif
 
 struct _RemminaFileEditorPriv {
