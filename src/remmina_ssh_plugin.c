@@ -71,7 +71,7 @@
 #define GET_PLUGIN_DATA(gp) (RemminaPluginSshData *)g_object_get_data(G_OBJECT(gp), "plugin-data");
 
 /** Palette colors taken from sakura */
-#define PALETTE_SIZE 16
+#define PALETTE_SIZE 256
 /* Min fontsize and increase */
 #define FONT_SCALE    0.75
 #define SCALE_FACTOR  0.1
