@@ -1,3 +1,31 @@
+## v1.4.14
+[full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.13...v1.4.14)
+
+* [VNC] - Ignore remote Bell option and other fixes [!2237](https://gitlab.com/Remmina/Remmina/merge_requests/2237) *@antenore*
+* Fixing color palette size for themed SSH [!2253](https://gitlab.com/Remmina/Remmina/merge_requests/2253) *@antenore*
+* Bump FreeRDP version to 2.3.2 [!2226](https://gitlab.com/Remmina/Remmina/merge_requests/2226) *@antenore*
+* Fixes search bar shortcuts wrong bahavior [!2227](https://gitlab.com/Remmina/Remmina/merge_requests/2227) *@antenore*
+* Honour theme settings when run from command line [!2251](https://gitlab.com/Remmina/Remmina/merge_requests/2251) *@antenore*
+* FTP UI improvements [!2228](https://gitlab.com/Remmina/Remmina/merge_requests/2228) *@antenore*
+* Experimental VNC plugin using GTK-VNC [!2248](https://gitlab.com/Remmina/Remmina/merge_requests/2248) *@antenore*
+* Config SSH tunnel username takes precedence. [!2231](https://gitlab.com/Remmina/Remmina/merge_requests/2231) *@matir*
+* Allow groups to be expanded and collapsed by using the keyboard [!2232](https://gitlab.com/Remmina/Remmina/merge_requests/2232) *@xsmile*
+* Fixing VNC repeater logic. [!2243](https://gitlab.com/Remmina/Remmina/merge_requests/2243) *@antenore*
+* Send text clipboard content as keystrokes [!2238](https://gitlab.com/Remmina/Remmina/merge_requests/2238) *@antenore*
+* scrolled viewport: explicitly recheck whether the timeout is active [!2233](https://gitlab.com/Remmina/Remmina/merge_requests/2233) *@cth451*
+* Resolve Host+Page_Down triggers search text in SSH [!2240](https://gitlab.com/Remmina/Remmina/merge_requests/2240) *@antenore*
+* UNIX sockets initial support [!2250](https://gitlab.com/Remmina/Remmina/merge_requests/2250) *@antenore*
+* Fixed wrong freerdp_settings function use [!2234](https://gitlab.com/Remmina/Remmina/merge_requests/2234) *@akallabeth*
+* Fixing RemminaConnectionWindow map/unmap events [!2245](https://gitlab.com/Remmina/Remmina/merge_requests/2245) *@antenore*
+* Spelling: Comma-separated, List monitor IDs [!2235](https://gitlab.com/Remmina/Remmina/merge_requests/2235) *@kingu*
+* Set Remmina specific FreeRDP config data folder [!2236](https://gitlab.com/Remmina/Remmina/merge_requests/2236) *@antenore*
+* Optional port connection instead of server [!2239](https://gitlab.com/Remmina/Remmina/merge_requests/2239) *@kingu*
+* Resolve "Use LZO compression for Snap to improve startup speed" [!2241](https://gitlab.com/Remmina/Remmina/merge_requests/2241) *@antenore*
+* Make wayland not mandatory during compile time [!2246](https://gitlab.com/Remmina/Remmina/merge_requests/2246) *@antenore*
+* Do not use alpha as it is not used for the Desktop [!2247](https://gitlab.com/Remmina/Remmina/merge_requests/2247) *@antenore*
+* Refactoring: Deprecations and warnings [!2249](https://gitlab.com/Remmina/Remmina/merge_requests/2249) *@antenore*
+* Removing unneeded widgets in the headerbar [!2252](https://gitlab.com/Remmina/Remmina/merge_requests/2252) *@antenore*
+
 ## v1.4.13
 [full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.12...v1.4.13)
 
