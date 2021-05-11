@@ -1,3 +1,8 @@
+## v1.4.15
+[full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.14...v1.4.15)
+
+* Fixing SSH plugin color palette initialization. [!2255](https://gitlab.com/Remmina/Remmina/merge_requests/2255) *@antenore*
+
 ## v1.4.14
 [full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.13...v1.4.14)
 
