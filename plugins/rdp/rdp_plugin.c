@@ -1272,7 +1272,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
 	datapath = g_build_path("/",
-				g_path_get_dirname(remmina_plugin_service->file_get_path(remminafile)),
+				g_path_get_dirname(remmina_plugin_service->file_get_user_datadir()),
 				"RDP",
 				NULL);
 	REMMINA_PLUGIN_DEBUG("RDP data path is %s", datapath);
