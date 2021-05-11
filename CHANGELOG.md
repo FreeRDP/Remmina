@@ -1,3 +1,8 @@
+## v1.4.16
+[full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.15...v1.4.16)
+
+* Fix Data PATH for the FreeRDP files bcf24360e05d2f9b60f9f0adaf56dede66497a42 @antenore
+
 ## v1.4.15
 [full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.14...v1.4.15)
 
