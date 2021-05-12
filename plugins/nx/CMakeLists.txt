@@ -53,6 +53,7 @@ target_link_libraries(remmina-plugin-nx
     ${REMMINA_COMMON_LIBRARIES}
     ${XKBFILE_LIBRARIES}
     ${LIBSSH_LIBRARIES}
+    ${Intl_LIBRARIES}
     ${X11_X11_LIB})
 
 install(TARGETS remmina-plugin-nx DESTINATION ${REMMINA_PLUGINDIR})

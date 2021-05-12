@@ -52,6 +52,7 @@ include(GtkUpdateIconCache)
 include(CheckHasModule)
 include(FindPCRE2)
 include(GlibCompileResourcesSupport)
+include(FindIntl)
 
 #---------------------------------------------------------------------
 # Package creation with CMake depends on the value of umask - if permissions
