@@ -15,8 +15,8 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-05-13 16:03+0000\n"
-"PO-Revision-Date: 2021-05-10 12:11+0000\n"
-"Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
+"PO-Revision-Date: 2021-05-15 17:32+0000\n"
+"Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/remmina/remmina/"
 "tr/>\n"
 "Language: tr\n"
@@ -1442,7 +1442,7 @@ msgstr ""
 "• sunucu\n"
 "• sunucu[:bağlantınoktası]\n"
 "Ek VNC biçimleri\n"
-"• ID:tekrarlayıcı kimlik numarası\n"
+"• ID:yineleyici kimlik numarası\n"
 "• unix:///yol/soket.sock</big>"
 
 #: src/remmina_file_editor.c:69
@@ -1712,7 +1712,7 @@ msgstr "Kullandıktan sonra parolaları unut"
 
 #: plugins/gvnc/gvnc_plugin.c:859 plugins/vnc/vnc_plugin.c:1986
 msgid "Ignore remote bell messages"
-msgstr "Uzak zil mesajlarını yoksay"
+msgstr "Uzak zil iletilerini yok say"
 
 #: plugins/gvnc/gvnc_plugin.c:860 plugins/spice/spice_plugin.c:695
 msgid "Enable audio channel"
@@ -1929,7 +1929,7 @@ msgstr "VNC sunucusu bilinmeyen bir kimlik doğrulama yöntemi istedi. %s"
 
 #: plugins/vnc/vnc_plugin.c:962
 msgid "Please retry after turning on encryption for this profile."
-msgstr "Lütfen bu profil için şifrelemeyi açtıktan sonra tekrar deneyin."
+msgstr "Lütfen bu profil için şifrelemeyi açtıktan sonra yeniden deneyin."
 
 #: plugins/vnc/vnc_plugin.c:1904 plugins/rdp/rdp_plugin.c:2428
 msgid "True colour (32 bpp)"
@@ -1973,18 +1973,18 @@ msgid ""
 "    the repeater, e.g. with x11vnc:\n"
 "    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
 msgstr ""
-"Tekrarlayıcı kullanarak VNC'ye bağlan:\n"
-"  • Sunucu alanı, tekrarlayıcı kimliğini içermelidir, örn. ID:123456789\n"
-"  • Tekrarlayıcı alanı, aşağıdaki gibi tekrarlayıcı IP adresi ve bağlantı "
+"Yineleyici kullanarak VNC'ye bağlan:\n"
+"  • Sunucu alanı, yineleyici kimliğini içermelidir, örn. ID:123456789\n"
+"  • Yineleyici alanı, aşağıdaki gibi yineleyici IP adresi ve bağlantı "
 "noktasına ayarlanmalıdır:\n"
 "    10.10.10.12:5901\n"
-"  • Uzak VNC sunucusundan tekrarlayıcıya bağlanacaksınız,\n"
+"  • Uzak VNC sunucusundan yineleyiciye bağlanacaksınız,\n"
 "    örn. x11vnc ile:\n"
 "    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
 
 #: plugins/vnc/vnc_plugin.c:1941
 msgid "Repeater"
-msgstr "Tekrarlayıcı"
+msgstr "Yineleyici"
 
 #: plugins/vnc/vnc_plugin.c:1945 plugins/vnc/vnc_plugin.c:1965
 #: plugins/rdp/rdp_plugin.c:2598 plugins/nx/nx_plugin.c:733
@@ -2030,7 +2030,7 @@ msgstr "Remmina VNC dinleyici Eklentisi"
 
 #: plugins/spice/spice_plugin_usb.c:51 plugins/spice/spice_plugin.c:708
 msgid "Select USB devices for redirection"
-msgstr "Yönlendirme için USB aygıtlarını seçin"
+msgstr "Yönlendirme için USB aygıtları seç"
 
 #: plugins/spice/spice_plugin_usb.c:54
 msgid "_Close"
@@ -2517,12 +2517,11 @@ msgid ""
 "  • 270 (portrait flipped)\n"
 "\n"
 msgstr ""
-"Ekran kimliklerinin ve masaüstü yönlendirmelerinin virgülle ayrılmış "
-"listesi:\n"
-"  • [<kimlik>: <derece-cinsinden-yönlendirme>,]\n"
+"Ekran kimliklerinin ve masaüstü yönelimlerinin virgülle ayrılmış listesi:\n"
+"  • [<kimlik>: <derece-türünden-yönelim>,]\n"
 "  • 0,1,2,3\n"
 "  • 0: 270,1: 90\n"
-"Yönlendirmeler derece cinsinden belirtilir, geçerli değerler şunlardır:\n"
+"Yönelimler derece türünden belirtilir, geçerli değerler şunlardır:\n"
 "  • 0 (yatay)\n"
 "  • 90 (dikey)\n"
 "  • 180 (yatay ters çevrilmiş)\n"
@@ -2844,7 +2843,7 @@ msgstr "Aygıt ölçek faktörü %"
 
 #: plugins/rdp/rdp_settings.c:576
 msgid "Desktop orientation"
-msgstr "Masaüstü yönlendirmesi"
+msgstr "Masaüstü yönelimi"
 
 #: plugins/rdp/rdp_event.c:343
 #, c-format
@@ -3013,7 +3012,7 @@ msgstr "<big>Snap ayarları</big>"
 
 #: data/ui/remmina_snap_info_dialog.glade:274
 msgid "Do not show this message again"
-msgstr "Bu mesajı tekrar gösterme"
+msgstr "Bu iletiyi yeniden gösterme"
 
 #: data/ui/remmina_about.glade:30 data/ui/remmina_main.glade:395
 msgid "About"
@@ -3664,7 +3663,7 @@ msgstr "Kendiliğinden kilit aralığı"
 
 #: data/ui/remmina_preferences.glade:1644
 msgid "Master password validity in seconds"
-msgstr "Ana parola geçerliliği saniye cinsinden"
+msgstr "Ana parola geçerliliği, saniye türünden"
 
 #: data/ui/remmina_preferences.glade:1665
 msgid "File encryption"
@@ -3672,7 +3671,7 @@ msgstr "Dosya şifreleme"
 
 #: data/ui/remmina_preferences.glade:1696
 msgid "Repeat the password"
-msgstr "Parolayı tekrar edin"
+msgstr "Parolayı yinele"
 
 #: data/ui/remmina_preferences.glade:1750
 msgid "Fingerprints and certificates"
