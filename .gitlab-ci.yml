@@ -14,6 +14,9 @@ variables:
   DOCKER_IMAGE: ubuntu:bionic
   CMAKE_BUILD_OPTIONS: "-DCMAKE_BUILD_TYPE=Release -DWITH_APPINDICATOR=on -DWITH_FREERDP3=OFF"
   FLATPAK_ARCH: x86_64
+cache: &global_cache
+  key: ${CI_JOB_NAME}
+  policy: pull-push
 before_script:
 - mkdir -p .flatpak-builder/cache
 ubuntu:devel:
@@ -84,10 +87,12 @@ flatpak:test:
     - flatpak/remmina-dev.flatpak
     expire_in: 7 days
   cache:
+    <<: *global_cache
     paths:
-    - flatpak/.flatpak-builder/cache
-    - flatpak/.flatpak-builder/downloads
-    - flatpak/.flatpak-builder/git
+    - flatpak/.flatpak-builder/cache/
+    - flatpak/.flatpak-builder/ccache/
+    - flatpak/.flatpak-builder/downloads/
+    - flatpak/.flatpak-builder/git/
   only:
   - merge_requests
   - tags
