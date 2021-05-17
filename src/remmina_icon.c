@@ -459,7 +459,7 @@ void remmina_icon_init(void)
 	if (!remmina_icon.icon && !remmina_pref.disable_tray_icon) {
 #ifdef HAVE_LIBAPPINDICATOR
 		remmina_icon.icon = app_indicator_new("remmina-icon", remmina_panel, APP_INDICATOR_CATEGORY_APPLICATION_STATUS);
-		app_indicator_set_icon_theme_path(remmina_icon.icon, REMMINA_RUNTIME_DATADIR G_DIR_SEPARATOR_S "icons");
+		app_indicator_set_icon_theme_path(remmina_icon.icon, REMMINA_RUNTIME_DATADIR G_DIR_SEPARATOR_S "icons/hicolor/apps");
 
 		app_indicator_set_status(remmina_icon.icon, APP_INDICATOR_STATUS_ACTIVE);
 		app_indicator_set_title(remmina_icon.icon, "Remmina");
