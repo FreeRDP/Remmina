@@ -1910,8 +1910,8 @@ static gpointer colordepth_list[] =
 /* Array of key/value pairs for quality selection */
 static gpointer quality_list[] =
 {
-	"9", N_("Best (slowest)"),
 	"2", N_("Good"),
+	"9", N_("Best (slowest)"),
 	"1", N_("Medium"),
 	"0", N_("Poor (fastest)"),
 	NULL
