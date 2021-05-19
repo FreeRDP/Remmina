@@ -19,14 +19,14 @@
     ],
     "finish-args": [
         "--share=ipc",
-        "--socket=fallback-x11",
-        "--socket=x11",
         "--share=network",
-        "--socket=pulseaudio",
-        "--socket=wayland",
+        "--socket=cups",
+        "--socket=fallback-x11",
         "--socket=pcsc",
+        "--socket=pulseaudio",
         "--socket=ssh-auth",
-        "--filesystem=home",
+        "--socket=wayland",
+        "--socket=x11",
         "--env=DCONF_USER_CONFIG_DIR=.config/dconf",
         "--device=all",
         "--talk-name=ca.desrt.dconf",
@@ -35,11 +35,13 @@
         "--talk-name=org.freedesktop.Notifications",
         "--talk-name=org.freedesktop.secrets",
         "--talk-name=org.kde.StatusNotifierWatcher",
+        "--talk-name=org.kde.kwalletd5",
         "--talk-name=com.canonical.indicator.application",
         "--talk-name=org.ayatana.indicator.application",
         "--talk-name=org.gnome.Shell",
         "--talk-name=com.canonical.Unity",
         "--system-talk-name=org.freedesktop.Avahi",
+        "--filesystem=home",
         "--filesystem=xdg-download"
     ],
     "add-extensions": {
@@ -58,24 +60,63 @@
         "shared-modules/intltool/intltool-0.51.json",
         "shared-modules/dbus-glib/dbus-glib-0.110.json",
         "shared-modules/libappindicator/libappindicator-gtk3-12.10.json",
+        "shared-modules/libusb/libusb.json",
         {
-            "name" : "gtk-vnc",
-            "buildsystem" : "meson",
-            "sources" : [
+            /**
+            * libfreerdp uses xprop to try to detect keyboard layout
+            */
+            "name": "xprop",
+            "sources": [
                 {
-                    "type" : "archive",
-                    "url" : "https://download.gnome.org/sources/gtk-vnc/1.2/gtk-vnc-1.2.0.tar.xz",
-                    "sha256" : "7aaf80040d47134a963742fb6c94e970fcb6bf52dc975d7ae542b2ef5f34b94a"
+                    "type": "archive",
+                    "url": "https://xorg.freedesktop.org/archive/individual/app/xprop-1.2.5.tar.bz2",
+                    "sha256": "9b92ed0316bf2486121d8bac88bd1878f16b43bd335f18009b1f941f1eca93a1",
+                    "x-checker-data": {
+                        "type": "anitya",
+                        "project-id": "14958",
+                        "url-template": "https://xorg.freedesktop.org/archive/individual/app/xprop-$version.tar.bz2"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "libcups",
+            "make-args": ["libs"],
+            "no-make-install": true,
+            "post-install": [
+                "make install-headers install-libs"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/OpenPrinting/cups.git",
+                    "tag": "v2.3.3op2",
+                    "commit": "3b566f73587ffa8ad9690f2399efc4508b3a9016",
+                    "x-checker-data": {
+                        "type": "git",
+                        "tag-pattern": "^v([\\d.]+)$"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "gtk-vnc",
+            "buildsystem": "meson",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/gtk-vnc/1.2/gtk-vnc-1.2.0.tar.xz",
+                    "sha256": "7aaf80040d47134a963742fb6c94e970fcb6bf52dc975d7ae542b2ef5f34b94a"
                 }
             ]
         },
         {
             "name": "vte",
-            "buildsystem" : "meson",
-            "sources" : [
+            "buildsystem": "meson",
+            "sources": [
                 {
-                    "type" : "git",
-                    "url" : "https://gitlab.gnome.org/GNOME/vte.git",
+                    "type": "git",
+                    "url": "https://gitlab.gnome.org/GNOME/vte.git",
                     "tag": "0.64.1",
                     "commit": "109a6cf6e05ef55b79f768a30fdf95723ebba0d3",
                     "x-checker-data": {
@@ -129,27 +170,30 @@
                 }
             ],
             "modules": [
-		{
-		  "name": "libevent",
-		  "sources": [
-		    {
-		      "type": "archive",
-		      "url": "https://github.com/libevent/libevent/releases/download/release-2.1.12-stable//libevent-2.1.12-stable.tar.gz",
-		      "sha256": "92e6de1be9ec176428fd2367677e61ceffc2ee1cb119035037a27d346b0403bb",
-		      "x-checker-data": {
-                        "type": "anitya",
-                        "project-id": "1606",
-                        "url-template": "https://github.com/libevent/libevent/releases/download/release-$version-stable//libevent-$version-stable.tar.gz"
-                      }
-		    }
-		  ]
-		}
+                {
+                    "name": "libevent",
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://github.com/libevent/libevent/releases/download/release-2.1.12-stable//libevent-2.1.12-stable.tar.gz",
+                            "sha256": "92e6de1be9ec176428fd2367677e61ceffc2ee1cb119035037a27d346b0403bb",
+                            "x-checker-data": {
+                                "type": "anitya",
+                                "project-id": "1606",
+                                "url-template": "https://github.com/libevent/libevent/releases/download/release-$version-stable//libevent-$version-stable.tar.gz"
+                            }
+                        }
+                    ]
+                }
             ]
         },
         {
             "name": "nxproxy",
             "no-autogen": true,
-            "make-args": [ "build-lite", "PREFIX=${FLATPAK_DEST}" ],
+            "make-args": [
+                "build-lite",
+                "PREFIX=${FLATPAK_DEST}"
+            ],
             "install-rule": "install-lite",
             "sources": [
                 {
@@ -165,9 +209,6 @@
             ]
         },
         {
-            /**
-            * For smartcard support
-            */
             "name": "pcsc",
             "config-opts": [
                 "--disable-libsystemd",
@@ -222,8 +263,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/FreeRDP/FreeRDP.git",
-                    "tag": "2.3.1",
-                    "commit": "136a58fbd0c3c2421a4e02d6422119406f1c32c2",
+                    "tag": "2.3.2",
+                    "commit": "c3df0be63953ed98525d9b736ba878ad733de059",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^([\\d.]+)$"
@@ -232,9 +273,6 @@
             ],
             "modules": [
                 {
-                    /**
-                    * libfreerdp uses xprop to try to detect keyboard layout
-                    */
                     "name": "xprop",
                     "sources": [
                         {
@@ -249,16 +287,15 @@
                         }
                     ]
                 },
-                /* libusb-1.0 has been forced as a dependency for FreeRDP */
                 "shared-modules/libusb/libusb.json"
             ]
         },
         {
             "name": "spice-gtk",
             "buildsystem": "meson",
-            "build-options" : {
-                "env" : {
-                    "PYTHONPATH" : "/app"
+            "build-options": {
+                "env": {
+                    "PYTHONPATH": "/app"
                 }
             },
             "config-opts": [
@@ -280,16 +317,16 @@
             ],
             "modules": [
                 {
-                    "name" : "python-pyparsing",
-                    "buildsystem" : "simple",
-                    "build-commands" : [
+                    "name": "python-pyparsing",
+                    "buildsystem": "simple",
+                    "build-commands": [
                         "pip3 install --no-deps --no-build-isolation --verbose --prefix=${FLATPAK_DEST} ."
                     ],
-                    "sources" : [
+                    "sources": [
                         {
-                            "type" : "archive",
-                            "url" : "https://files.pythonhosted.org/packages/c1/47/dfc9c342c9842bbe0036c7f763d2d6686bcf5eb1808ba3e170afdb282210/pyparsing-2.4.7.tar.gz",
-                            "sha256" : "c203ec8783bf771a155b207279b9bccb8dea02d8f0c9e5f8ead507bc3246ecc1",
+                            "type": "archive",
+                            "url": "https://files.pythonhosted.org/packages/c1/47/dfc9c342c9842bbe0036c7f763d2d6686bcf5eb1808ba3e170afdb282210/pyparsing-2.4.7.tar.gz",
+                            "sha256": "c203ec8783bf771a155b207279b9bccb8dea02d8f0c9e5f8ead507bc3246ecc1",
                             "x-checker-data": {
                                 "type": "pypi",
                                 "name": "pyparsing"
@@ -298,9 +335,6 @@
                     ]
                 },
                 {
-                    /**
-                    * For smartcard support
-                    */
                     "name": "libcacard",
                     "buildsystem": "meson",
                     "config-opts": [
@@ -324,8 +358,12 @@
                     "name": "lz4",
                     "subdir": "lib",
                     "no-autogen": true,
-                    "make-args": [ "lib" ],
-                    "make-install-args": [ "PREFIX=${FLATPAK_DEST}" ],
+                    "make-args": [
+                        "lib"
+                    ],
+                    "make-install-args": [
+                        "PREFIX=${FLATPAK_DEST}"
+                    ],
                     "sources": [
                         {
                             "type": "archive",
@@ -379,6 +417,20 @@
                                 "project-id": "14892",
                                 "url-template": "https://www.spice-space.org/download/releases/spice-protocol-$version.tar.xz"
                             }
+                        }
+                    ]
+                },
+                {
+                    "name": "usbredir",
+                    "buildsystem": "meson",
+                    "config-opts": [
+                        "-Dtools=disabled"
+                    ],
+                    "sources": [
+                        {
+                            "type": "git",
+                            "url": "https://gitlab.freedesktop.org/spice/usbredir.git",
+                            "commit": "456d2715973fa28fc4daf70378c125825645e193"
                         }
                     ]
                 }
@@ -518,6 +570,45 @@
             ]
         },
         {
+            "name": "freerdp",
+            "buildsystem": "cmake-ninja",
+            "cleanup": [
+            ],
+            "config-opts": [
+                "-DCMAKE_BUILD_TYPE:STRING=Release",
+                "-DCMAKE_INSTALL_LIBDIR:PATH=lib",
+                "-DWITH_WAYLAND:BOOL=ON",
+                "-DCHANNEL_TSMF:BOOL=ON",
+                "-DCHANNEL_URBDRC:BOOL=ON",
+                "-DBUILD_TESTING:BOOL=OFF",
+                "-DWITH_MANPAGES:BOOL=OFF",
+                "-DWITH_GSSAPI:BOOL=OFF",
+                "-DWITH_PCSC:BOOL=ON",
+                "-DWITH_SERVER:BOOL=OFF",
+                "-DWITH_CUPS:BOOL=ON",
+                "-DWITH_FFMPEG:BOOL=ON",
+                "-DWITH_DSP_FFMPEG:BOOL=ON",
+                "-DWITH_OSS:BOOL=OFF",
+                "-DWITH_PULSE:BOOL=ON",
+                "-DWITH_CHANNELS:BOOL=ON",
+                "-DBUILTIN_CHANNELS:BOOL=ON",
+                "-DWITH_JPEG:BOOL=ON",
+                "-DWITH_LIBSYSTEMD:BOOL=OFF"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/FreeRDP/FreeRDP.git",
+                    "tag": "2.3.2",
+                    "commit": "c3df0be63953ed98525d9b736ba878ad733de059",
+                    "x-checker-data": {
+                        "type": "git",
+                        "tag-pattern": "^([\\d.]+)$"
+                    }
+                }
+            ]
+        },
+        {
             /* Remmina main build */
             "name": "remmina",
             "buildsystem": "cmake-ninja",
@@ -532,6 +623,7 @@
                 "-DCMAKE_INSTALL_LIBDIR:PATH=lib",
                 "-DWITH_FREERDP3:BOOL=OFF",
                 "-DWITH_GVNC:BOOL=ON",
+                "-DWITH_CUPS:BOOL=ON",
                 "-DWITH_MANPAGES:BOOL=OFF"
             ],
             "sources": [
