@@ -1441,6 +1441,12 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 	s = remmina_plugin_service->file_get_string(remminafile, "gateway_server");
 	if (s) {
 		cs = remmina_plugin_service->file_get_string(remminafile, "gwtransp");
+#if FREERDP_CHECK_VERSION(2, 3, 0)
+		if (remmina_plugin_service->file_get_int(remminafile, "websockets", FALSE))
+			freerdp_settings_set_bool(rfi->settings, FreeRDP_GatewayHttpUseWebsockets, TRUE);
+		else
+			freerdp_settings_set_bool(rfi->settings, FreeRDP_GatewayHttpUseWebsockets, FALSE);
+#endif
 		if (g_strcmp0(cs, "http") == 0) {
 			freerdp_settings_set_bool(rfi->settings, FreeRDP_GatewayRpcTransport, FALSE);
 			freerdp_settings_set_bool(rfi->settings, FreeRDP_GatewayHttpTransport, TRUE);
@@ -2598,6 +2604,8 @@ static const RemminaProtocolSetting remmina_rdp_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "quality",		    N_("Quality"),					 FALSE, quality_list,	  NULL														 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "security",		    N_("Security protocol negotiation"),		 FALSE, security_list,	  NULL														 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "gwtransp",		    N_("Gateway transport type"),			 FALSE, gwtransp_list,	  NULL														 },
+#if FREERDP_CHECK_VERSION(2, 3, 0)
+#endif
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "freerdp_log_level",	    N_("FreeRDP log level"),				 FALSE, log_level,	  NULL														 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "freerdp_log_filters",    N_("FreeRDP log filters"),				 FALSE, NULL,		  N_("tag:level[,tag:level[,…]]")										 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "sound",		    N_("Audio output mode"),				 FALSE, sound_list,	  NULL														 },
@@ -2644,6 +2652,7 @@ static const RemminaProtocolSetting remmina_rdp_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "glyph-cache",	    N_("Glyph cache"),					 TRUE,	NULL,		  NULL														 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "multitransport",	    N_("Enable multitransport protocol (UDP)"),		 TRUE,	NULL,		  N_("Using the UDP protocol may improve performance")								 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "base-cred-for-gw",	    N_("Use base credentials for gateway too"),		 TRUE,	NULL,		  NULL														 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "websockets",	    	    N_("Enable Gateway websockets support"),		 TRUE,	NULL,		  NULL														 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	  NULL,			    NULL,						 FALSE, NULL,		  NULL														 }
 };
 
