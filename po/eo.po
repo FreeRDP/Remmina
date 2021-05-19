@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Remmina v1.4.3\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-05-19 11:19+0000\n"
+"POT-Creation-Date: 2021-05-19 15:25+0000\n"
 "PO-Revision-Date: 2021-05-10 12:11+0000\n"
 "Last-Translator: phlostically <phlostically@mailinator.com>\n"
 "Language-Team: Esperanto <https://hosted.weblate.org/projects/remmina/"
@@ -72,7 +72,7 @@ msgstr "Konektante al %s per SSH…"
 #: src/remmina_ssh_plugin.c:1355 src/remmina_sftp_plugin.c:310
 #: src/remmina_sftp_plugin.c:346 src/remmina_file_editor.c:846
 #: src/remmina_file_editor.c:967 plugins/www/www_plugin.c:880
-#: plugins/rdp/rdp_plugin.c:2574 data/ui/remmina_unlock.glade:116
+#: plugins/rdp/rdp_plugin.c:2580 data/ui/remmina_unlock.glade:116
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1682
 msgid "Password"
 msgstr "Pasvorto"
@@ -301,7 +301,7 @@ msgstr "Tipo de aŭtentikigo"
 #: src/remmina_ssh_plugin.c:1459 src/remmina_message_panel.c:330
 #: src/remmina_sftp_plugin.c:345 src/remmina_file_editor.c:961
 #: plugins/www/www_plugin.c:879 plugins/vnc/vnc_plugin.c:1942
-#: plugins/vnc/vnc_plugin.c:1962 plugins/rdp/rdp_plugin.c:2573
+#: plugins/vnc/vnc_plugin.c:1962 plugins/rdp/rdp_plugin.c:2579
 #: plugins/nx/nx_plugin.c:730 data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr "Salutnomo"
@@ -322,7 +322,7 @@ msgid "Password to unlock private key"
 msgstr "Pasvorto por malŝlosi privatan ŝlosilon"
 
 #: src/remmina_ssh_plugin.c:1466 plugins/xdmcp/xdmcp_plugin.c:370
-#: plugins/rdp/rdp_plugin.c:2613 plugins/nx/nx_plugin.c:734
+#: plugins/rdp/rdp_plugin.c:2621 plugins/nx/nx_plugin.c:734
 msgid "Start-up program"
 msgstr "Starta programo"
 
@@ -511,7 +511,7 @@ msgid "Go to parent folder"
 msgstr "Iri al patra dosierujo"
 
 #: src/remmina_ftp_client.c:758 plugins/vnc/vnc_plugin.c:2000
-#: plugins/rdp/rdp_plugin.c:2654
+#: plugins/rdp/rdp_plugin.c:2663
 msgid "Refresh"
 msgstr "Reŝargi"
 
@@ -556,11 +556,11 @@ msgstr "Grupo"
 msgid "Permission"
 msgstr "Permeso"
 
-#: src/remmina_ftp_client.c:990 plugins/rdp/rdp_plugin.c:2479
+#: src/remmina_ftp_client.c:990 plugins/rdp/rdp_plugin.c:2485
 msgid "Remote"
 msgstr "Fora"
 
-#: src/remmina_ftp_client.c:997 plugins/rdp/rdp_plugin.c:2478
+#: src/remmina_ftp_client.c:997 plugins/rdp/rdp_plugin.c:2484
 msgid "Local"
 msgstr "Loka"
 
@@ -1111,7 +1111,7 @@ msgstr "Jes"
 msgid "No"
 msgstr "Ne"
 
-#: src/remmina_message_panel.c:391 plugins/rdp/rdp_plugin.c:2575
+#: src/remmina_message_panel.c:391 plugins/rdp/rdp_plugin.c:2581
 #: data/ui/remmina_mpc.glade:172
 msgid "Domain"
 msgstr "Retejo"
@@ -1558,7 +1558,7 @@ msgstr "Tunelo per retrosenda adreso"
 msgid "Same server at port %i"
 msgstr "Sama servilo ĉe pordo %i"
 
-#: src/remmina_file_editor.c:938 plugins/rdp/rdp_plugin.c:2614
+#: src/remmina_file_editor.c:938 plugins/rdp/rdp_plugin.c:2622
 msgid "Start-up path"
 msgstr "Dosierindiko de starto"
 
@@ -1678,7 +1678,7 @@ msgstr "Pasvorto de VNC"
 
 #: plugins/gvnc/gvnc_plugin.c:840 plugins/vnc/vnc_plugin.c:1944
 #: plugins/vnc/vnc_plugin.c:1964 plugins/xdmcp/xdmcp_plugin.c:369
-#: plugins/rdp/rdp_plugin.c:2581
+#: plugins/rdp/rdp_plugin.c:2587
 msgid "Colour depth"
 msgstr "Nombro de kolorbitoj"
 
@@ -1701,7 +1701,7 @@ msgstr "Sen sinkronigo de tondujo"
 
 #: plugins/gvnc/gvnc_plugin.c:858 plugins/www/www_plugin.c:904
 #: plugins/vnc/vnc_plugin.c:1987 plugins/spice/spice_plugin.c:694
-#: plugins/rdp/rdp_plugin.c:2635 plugins/nx/nx_plugin.c:752
+#: plugins/rdp/rdp_plugin.c:2643 plugins/nx/nx_plugin.c:752
 msgid "Forget passwords after use"
 msgstr "Forgesi pasvortojn post uzo"
 
@@ -1926,34 +1926,34 @@ msgstr "La VNC-servilo petis nekonatan metodon de aŭtentikigo. %s"
 msgid "Please retry after turning on encryption for this profile."
 msgstr "Bonvolu reprovi post ŝalto de ĉifrado de ĉi tiu profilo."
 
-#: plugins/vnc/vnc_plugin.c:1904 plugins/rdp/rdp_plugin.c:2428
+#: plugins/vnc/vnc_plugin.c:1904 plugins/rdp/rdp_plugin.c:2434
 msgid "True colour (32 bpp)"
 msgstr "Vera koloro (32 bitoj bildere)"
 
-#: plugins/vnc/vnc_plugin.c:1905 plugins/rdp/rdp_plugin.c:2430
+#: plugins/vnc/vnc_plugin.c:1905 plugins/rdp/rdp_plugin.c:2436
 msgid "High colour (16 bpp)"
 msgstr "Altkvalita koloro (16 bitoj bildere)"
 
-#: plugins/vnc/vnc_plugin.c:1906 plugins/rdp/rdp_plugin.c:2432
+#: plugins/vnc/vnc_plugin.c:1906 plugins/rdp/rdp_plugin.c:2438
 msgid "256 colours (8 bpp)"
 msgstr "256 koloroj (8 bitoj bildere)"
 
-#: plugins/vnc/vnc_plugin.c:1913 plugins/rdp/rdp_plugin.c:2455
+#: plugins/vnc/vnc_plugin.c:1913 plugins/rdp/rdp_plugin.c:2461
 #: plugins/rdp/rdp_settings.c:271 plugins/nx/nx_plugin.c:712
 msgid "Good"
 msgstr "Bone"
 
-#: plugins/vnc/vnc_plugin.c:1914 plugins/rdp/rdp_plugin.c:2456
+#: plugins/vnc/vnc_plugin.c:1914 plugins/rdp/rdp_plugin.c:2462
 #: plugins/rdp/rdp_settings.c:273 plugins/nx/nx_plugin.c:713
 msgid "Best (slowest)"
 msgstr "Plej bone (plej malrapide)"
 
-#: plugins/vnc/vnc_plugin.c:1915 plugins/rdp/rdp_plugin.c:2454
+#: plugins/vnc/vnc_plugin.c:1915 plugins/rdp/rdp_plugin.c:2460
 #: plugins/rdp/rdp_settings.c:269 plugins/nx/nx_plugin.c:711
 msgid "Medium"
 msgstr "Mezbone"
 
-#: plugins/vnc/vnc_plugin.c:1916 plugins/rdp/rdp_plugin.c:2453
+#: plugins/vnc/vnc_plugin.c:1916 plugins/rdp/rdp_plugin.c:2459
 #: plugins/rdp/rdp_settings.c:267 plugins/nx/nx_plugin.c:710
 msgid "Poor (fastest)"
 msgstr "Malbone (plej rapide)"
@@ -1981,7 +1981,7 @@ msgid "Repeater"
 msgstr "Ripetilo"
 
 #: plugins/vnc/vnc_plugin.c:1945 plugins/vnc/vnc_plugin.c:1965
-#: plugins/rdp/rdp_plugin.c:2598 plugins/nx/nx_plugin.c:733
+#: plugins/rdp/rdp_plugin.c:2604 plugins/nx/nx_plugin.c:733
 msgid "Quality"
 msgstr "Kvalito"
 
@@ -1993,7 +1993,7 @@ msgstr "Aŭskulti al pordo"
 msgid "Show remote cursor"
 msgstr "Montri foran kursoron"
 
-#: plugins/vnc/vnc_plugin.c:1983 plugins/rdp/rdp_plugin.c:2632
+#: plugins/vnc/vnc_plugin.c:1983 plugins/rdp/rdp_plugin.c:2640
 msgid "Turn off clipboard sync"
 msgstr "Malŝalti sinkronigon de tondujo"
 
@@ -2010,7 +2010,7 @@ msgid "Open Chat…"
 msgstr "Malfermi Babililon…"
 
 #: plugins/vnc/vnc_plugin.c:2002 plugins/spice/spice_plugin.c:707
-#: plugins/xdmcp/xdmcp_plugin.c:381 plugins/rdp/rdp_plugin.c:2658
+#: plugins/xdmcp/xdmcp_plugin.c:381 plugins/rdp/rdp_plugin.c:2667
 msgid "Send Ctrl+Alt+Delete"
 msgstr "Sendi Stir+Alt+Forig"
 
@@ -2056,7 +2056,7 @@ msgstr "Perdiĝis konekto al SPICE-servilo."
 msgid "Default"
 msgstr "Aprioro"
 
-#: plugins/spice/spice_plugin.c:635 plugins/rdp/rdp_plugin.c:2477
+#: plugins/spice/spice_plugin.c:635 plugins/rdp/rdp_plugin.c:2483
 #: data/ui/remmina_preferences.glade:719
 msgid "Off"
 msgstr "Malŝaltita"
@@ -2081,7 +2081,7 @@ msgstr "Ŝalti TLS-ĉifradon"
 msgid "Server CA certificate"
 msgstr "Servila atestilo el atestila aŭtoritato"
 
-#: plugins/spice/spice_plugin.c:669 plugins/rdp/rdp_plugin.c:2583
+#: plugins/spice/spice_plugin.c:669 plugins/rdp/rdp_plugin.c:2589
 msgid "Share folder"
 msgstr "Kunhavigi dosierujon"
 
@@ -2194,7 +2194,7 @@ msgstr "Entajpu akreditilojn de RDP-aŭtentikigo"
 msgid "Enter RDP gateway authentication credentials"
 msgstr "Entajpu akreditilojn de aŭtentikigo de RDP-kluzo"
 
-#: plugins/rdp/rdp_plugin.c:1995
+#: plugins/rdp/rdp_plugin.c:2001
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2203,7 +2203,7 @@ msgstr ""
 "Ne povis atingi la RDP-servilon “%s”.\n"
 "Konto ŝlosita."
 
-#: plugins/rdp/rdp_plugin.c:2002
+#: plugins/rdp/rdp_plugin.c:2008
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2212,7 +2212,7 @@ msgstr ""
 "Ne povis atingi la RDP-servilon “%s”.\n"
 "Konto eksvalidiĝis."
 
-#: plugins/rdp/rdp_plugin.c:2009
+#: plugins/rdp/rdp_plugin.c:2015
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2221,7 +2221,7 @@ msgstr ""
 "Ne povis atingi la RDP-servilon “%s”.\n"
 "Pasvorto eksvalidiĝis."
 
-#: plugins/rdp/rdp_plugin.c:2016
+#: plugins/rdp/rdp_plugin.c:2022
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2230,7 +2230,7 @@ msgstr ""
 "Ne povis atingi la RDP-servilon “%s”.\n"
 "Konto malaktiviĝis."
 
-#: plugins/rdp/rdp_plugin.c:2022
+#: plugins/rdp/rdp_plugin.c:2028
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2239,7 +2239,7 @@ msgstr ""
 "Ne povis atingi la RDP-servilon “%s”.\n"
 "Nesufiĉaj privilegioj de uzanto."
 
-#: plugins/rdp/rdp_plugin.c:2030
+#: plugins/rdp/rdp_plugin.c:2036
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2248,7 +2248,7 @@ msgstr ""
 "Ne povis atingi la RDP-servilon “%s”.\n"
 "Konto limigita."
 
-#: plugins/rdp/rdp_plugin.c:2038
+#: plugins/rdp/rdp_plugin.c:2044
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2257,17 +2257,17 @@ msgstr ""
 "Ne povis atingi la RDP-servilon “%s”.\n"
 "Ŝanĝu pasvorton de uzanto antaŭ konekto."
 
-#: plugins/rdp/rdp_plugin.c:2043
+#: plugins/rdp/rdp_plugin.c:2049
 #, c-format
 msgid "Lost connection to the RDP server “%s”."
 msgstr "Perdiĝis konekto al la RDP-servilo “%s”."
 
-#: plugins/rdp/rdp_plugin.c:2046
+#: plugins/rdp/rdp_plugin.c:2052
 #, c-format
 msgid "Could not find the address for the RDP server “%s”."
 msgstr "Ne povis trovi la adreson de la RDP-servilo “%s”."
 
-#: plugins/rdp/rdp_plugin.c:2050
+#: plugins/rdp/rdp_plugin.c:2056
 #, c-format
 msgid ""
 "Could not connect to the RDP server “%s” via TLS. Check that client and "
@@ -2277,7 +2277,7 @@ msgstr ""
 "la servilo subtenas komunan TLS-version."
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
-#: plugins/rdp/rdp_plugin.c:2054
+#: plugins/rdp/rdp_plugin.c:2060
 #, c-format
 msgid ""
 "Unable to establish a connection to the RDP server “%s”. Check \"Security "
@@ -2286,16 +2286,16 @@ msgstr ""
 "Ne povis konekti al la RDP-servilo “%s”. Kontrolu pri “Negocado de sekureca "
 "protokolo”."
 
-#: plugins/rdp/rdp_plugin.c:2062
+#: plugins/rdp/rdp_plugin.c:2068
 #, c-format
 msgid "Cannot connect to the RDP server “%s”."
 msgstr "Ne povis konekti al la RDP-servilo “%s”."
 
-#: plugins/rdp/rdp_plugin.c:2065
+#: plugins/rdp/rdp_plugin.c:2071
 msgid "Could not start libfreerdp-gdi."
 msgstr "Ne povis startigi libfreerdp-gdi."
 
-#: plugins/rdp/rdp_plugin.c:2068
+#: plugins/rdp/rdp_plugin.c:2074
 #, c-format
 msgid ""
 "You requested a H.264 GFX mode for the server “%s”, but your libfreerdp does "
@@ -2304,12 +2304,12 @@ msgstr ""
 "Vi petis efektreĝimon H.264 por la servilo “%s”, sed via libfreerdp ne "
 "subtenas H.264. Bonvolu uzi ne-AVC-koloran agordon."
 
-#: plugins/rdp/rdp_plugin.c:2075
+#: plugins/rdp/rdp_plugin.c:2081
 #, c-format
 msgid "The “%s” server refused the connection."
 msgstr "La servilo “%s” rifuzis la konekton."
 
-#: plugins/rdp/rdp_plugin.c:2080
+#: plugins/rdp/rdp_plugin.c:2086
 #, c-format
 msgid ""
 "The Remote Desktop Gateway “%s” denied the user \"%s\\%s\" access due to "
@@ -2318,101 +2318,101 @@ msgstr ""
 "La Forakomputila Kluzo “%s” malpermesis la atingon de la uzanto “%s\\%s” pro "
 "reguloj."
 
-#: plugins/rdp/rdp_plugin.c:2090
+#: plugins/rdp/rdp_plugin.c:2096
 #, c-format
 msgid "Cannot connect to the “%s” RDP server."
 msgstr "Ne povis konekti al la RDP-servilo “%s”."
 
-#: plugins/rdp/rdp_plugin.c:2422
+#: plugins/rdp/rdp_plugin.c:2428
 msgid "Automatic (32 bpp) (Server chooses its best format)"
 msgstr "Aŭtomate (32 bitoj bildere) (Servilo elektas laŭplaĉe)"
 
-#: plugins/rdp/rdp_plugin.c:2423
+#: plugins/rdp/rdp_plugin.c:2429
 msgid "GFX AVC444 (32 bpp)"
 msgstr "GFX AVC444 (32 bitoj bildere)"
 
-#: plugins/rdp/rdp_plugin.c:2424
+#: plugins/rdp/rdp_plugin.c:2430
 msgid "GFX AVC420 (32 bpp)"
 msgstr "GFX AVC420 (32 bitoj bildere)"
 
-#: plugins/rdp/rdp_plugin.c:2425
+#: plugins/rdp/rdp_plugin.c:2431
 msgid "GFX RFX (32 bpp)"
 msgstr "GFX RFX (32 bitoj bildere)"
 
-#: plugins/rdp/rdp_plugin.c:2426
+#: plugins/rdp/rdp_plugin.c:2432
 msgid "GFX RFX Progressive (32 bpp)"
 msgstr "GFX RFX Progresada (32 bitoj bildere)"
 
-#: plugins/rdp/rdp_plugin.c:2427
+#: plugins/rdp/rdp_plugin.c:2433
 msgid "RemoteFX (32 bpp)"
 msgstr "Vera koloro (32 bitoj bildere)"
 
-#: plugins/rdp/rdp_plugin.c:2429
+#: plugins/rdp/rdp_plugin.c:2435
 msgid "True colour (24 bpp)"
 msgstr "Vera koloro (24 bitoj bildere)"
 
-#: plugins/rdp/rdp_plugin.c:2431
+#: plugins/rdp/rdp_plugin.c:2437
 msgid "High colour (15 bpp)"
 msgstr "Altkvalita koloro (15 bitoj bildere)"
 
-#: plugins/rdp/rdp_plugin.c:2463 data/ui/remmina_preferences.glade:682
+#: plugins/rdp/rdp_plugin.c:2469 data/ui/remmina_preferences.glade:682
 msgid "None"
 msgstr "Nenio"
 
-#: plugins/rdp/rdp_plugin.c:2464
+#: plugins/rdp/rdp_plugin.c:2470
 msgid "Auto-detect"
 msgstr "Aŭtomate diveni"
 
-#: plugins/rdp/rdp_plugin.c:2465
+#: plugins/rdp/rdp_plugin.c:2471
 msgid "Modem"
 msgstr "Modemo"
 
-#: plugins/rdp/rdp_plugin.c:2466
+#: plugins/rdp/rdp_plugin.c:2472
 msgid "Low performance broadband"
 msgstr "Malbona larĝkapacita konekto"
 
-#: plugins/rdp/rdp_plugin.c:2467
+#: plugins/rdp/rdp_plugin.c:2473
 msgid "Satellite"
 msgstr "Satelito"
 
-#: plugins/rdp/rdp_plugin.c:2468
+#: plugins/rdp/rdp_plugin.c:2474
 msgid "High performance broadband"
 msgstr "Bona larĝkapacita konekto"
 
-#: plugins/rdp/rdp_plugin.c:2469
+#: plugins/rdp/rdp_plugin.c:2475
 msgid "WAN"
 msgstr "Malloka reto (WAN)"
 
-#: plugins/rdp/rdp_plugin.c:2470
+#: plugins/rdp/rdp_plugin.c:2476
 msgid "LAN"
 msgstr "Loka reto (LAN)"
 
-#: plugins/rdp/rdp_plugin.c:2486
+#: plugins/rdp/rdp_plugin.c:2492
 msgid "Automatic negotiation"
 msgstr "Aŭtomata negocado"
 
-#: plugins/rdp/rdp_plugin.c:2487
+#: plugins/rdp/rdp_plugin.c:2493
 msgid "NLA protocol security"
 msgstr "NLA-protokola sekureco"
 
-#: plugins/rdp/rdp_plugin.c:2488
+#: plugins/rdp/rdp_plugin.c:2494
 msgid "TLS protocol security"
 msgstr "TLS-protokola sekureco"
 
-#: plugins/rdp/rdp_plugin.c:2489
+#: plugins/rdp/rdp_plugin.c:2495
 msgid "RDP protocol security"
 msgstr "RDP-protokola sekureco"
 
-#: plugins/rdp/rdp_plugin.c:2490
+#: plugins/rdp/rdp_plugin.c:2496
 msgid "NLA extended protocol security"
 msgstr "NLA-etendita protokola sekureco"
 
-#: plugins/rdp/rdp_plugin.c:2503
+#: plugins/rdp/rdp_plugin.c:2509
 msgid "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 and newer)"
 msgstr ""
 "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 kaj pli novaj)"
 
-#: plugins/rdp/rdp_plugin.c:2506
+#: plugins/rdp/rdp_plugin.c:2512
 msgid ""
 "Used i.a. by terminal services in a smart card channel to distinguish client "
 "capabilities:\n"
@@ -2430,7 +2430,7 @@ msgstr ""
 "  • >= 7065: Windows 8 kaj pli novaj: SCardGetReaderIcon(),\n"
 "    SCardGetDeviceTypeId()"
 
-#: plugins/rdp/rdp_plugin.c:2514
+#: plugins/rdp/rdp_plugin.c:2520
 msgid ""
 "Options for redirection of audio input:\n"
 "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
@@ -2448,7 +2448,7 @@ msgstr ""
 "  • sys:oss,dev:1,format:1\n"
 "  • sys:alsa"
 
-#: plugins/rdp/rdp_plugin.c:2523
+#: plugins/rdp/rdp_plugin.c:2529
 msgid ""
 "Options for redirection of audio output:\n"
 "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
@@ -2466,7 +2466,7 @@ msgstr ""
 "  • sys:oss,dev:1,format:1\n"
 "  • sys:alsa"
 
-#: plugins/rdp/rdp_plugin.c:2533
+#: plugins/rdp/rdp_plugin.c:2539
 msgid ""
 "Options for redirection of USB device:\n"
 "  • [dbg,][id:<vid>:<pid>#…,][addr:<bus>:<addr>#…,][auto]\n"
@@ -2479,7 +2479,7 @@ msgstr ""
 "  • auto\n"
 "  • id:054c:0268#4669:6e6b,addr:04:0c"
 
-#: plugins/rdp/rdp_plugin.c:2539
+#: plugins/rdp/rdp_plugin.c:2545
 msgid ""
 "Advanced setting for high latency links:\n"
 "Adjusts the connection timeout. Use if your connection times out.\n"
@@ -2490,7 +2490,7 @@ msgstr ""
 "tempolimo.\n"
 "La plej longa ebla valoro estas 600000 milisekundoj (10 minutoj).\n"
 
-#: plugins/rdp/rdp_plugin.c:2544
+#: plugins/rdp/rdp_plugin.c:2550
 msgid ""
 "Performance optimisations based on the network connection type:\n"
 "Using auto-detection is advised.\n"
@@ -2500,7 +2500,7 @@ msgstr ""
 "Oni rekomendas uzi aŭtomatan divenon.\n"
 "Se “Aŭtomate diveni” malsukcesas, elektu la plej taŭgan opcion en la listo.\n"
 
-#: plugins/rdp/rdp_plugin.c:2549
+#: plugins/rdp/rdp_plugin.c:2555
 msgid ""
 "Comma-separated list of monitor IDs and desktop orientations:\n"
 "  • [<id>:<orientation-in-degrees>,]\n"
@@ -2524,100 +2524,100 @@ msgstr ""
 "  • 270 (vertikale renversite)\n"
 "\n"
 
-#: plugins/rdp/rdp_plugin.c:2576
+#: plugins/rdp/rdp_plugin.c:2582
 msgid "Left-handed mouse support"
 msgstr "Subteno de maldekstramanula muso"
 
-#: plugins/rdp/rdp_plugin.c:2576
+#: plugins/rdp/rdp_plugin.c:2582
 msgid "Swap left and right mouse buttons for left-handed mouse support"
 msgstr ""
 "Interŝanĝi dekstran kaj maldekstran musobutonojn por maldekstramanula muso"
 
-#: plugins/rdp/rdp_plugin.c:2577
+#: plugins/rdp/rdp_plugin.c:2583
 msgid "Enable multi monitor"
 msgstr "Ebligi plurmonitorecon"
 
-#: plugins/rdp/rdp_plugin.c:2578
+#: plugins/rdp/rdp_plugin.c:2584
 msgid "Span screen over multiple monitors"
 msgstr "Montri ekranon sur pluraj monitoroj"
 
-#: plugins/rdp/rdp_plugin.c:2579
+#: plugins/rdp/rdp_plugin.c:2585
 msgid "List monitor IDs"
 msgstr "Listo de identigiloj de monitoroj"
 
-#: plugins/rdp/rdp_plugin.c:2582
+#: plugins/rdp/rdp_plugin.c:2588
 msgid "Network connection type"
 msgstr "Tipo de reta konekto"
 
-#: plugins/rdp/rdp_plugin.c:2599
+#: plugins/rdp/rdp_plugin.c:2605
 msgid "Security protocol negotiation"
 msgstr "Negocado de sekureca protokolo"
 
-#: plugins/rdp/rdp_plugin.c:2600
+#: plugins/rdp/rdp_plugin.c:2606
 msgid "Gateway transport type"
 msgstr "Tipo de kluza transporto"
 
-#: plugins/rdp/rdp_plugin.c:2601
+#: plugins/rdp/rdp_plugin.c:2609
 msgid "FreeRDP log level"
 msgstr "Nivelo de protokolado por FreeRDP"
 
-#: plugins/rdp/rdp_plugin.c:2602
+#: plugins/rdp/rdp_plugin.c:2610
 msgid "FreeRDP log filters"
 msgstr "Protokolfiltrilo de FreeRDP"
 
-#: plugins/rdp/rdp_plugin.c:2602
+#: plugins/rdp/rdp_plugin.c:2610
 msgid "tag:level[,tag:level[,…]]"
 msgstr "etikedo:nivelo[,etikedo:nivelo[,…]]"
 
-#: plugins/rdp/rdp_plugin.c:2603
+#: plugins/rdp/rdp_plugin.c:2611
 msgid "Audio output mode"
 msgstr "Reĝimo de sona eligo"
 
-#: plugins/rdp/rdp_plugin.c:2604
+#: plugins/rdp/rdp_plugin.c:2612
 msgid "Redirect local audio output"
 msgstr "Alidirekti lokan sonan eligon"
 
-#: plugins/rdp/rdp_plugin.c:2605
+#: plugins/rdp/rdp_plugin.c:2613
 msgid "Redirect local microphone"
 msgstr "Alidirekti lokan mikrofonon"
 
-#: plugins/rdp/rdp_plugin.c:2606
+#: plugins/rdp/rdp_plugin.c:2614
 msgid "Connection timeout in ms"
 msgstr "Tempolimo de konekto en milisekundoj"
 
-#: plugins/rdp/rdp_plugin.c:2607
+#: plugins/rdp/rdp_plugin.c:2615
 msgid "Remote Desktop Gateway server"
 msgstr "Servilo de Forakomputila Kluzo"
 
-#: plugins/rdp/rdp_plugin.c:2608
+#: plugins/rdp/rdp_plugin.c:2616
 msgid "Remote Desktop Gateway username"
 msgstr "Salutnomo de Forakomputila Kluzo"
 
-#: plugins/rdp/rdp_plugin.c:2609
+#: plugins/rdp/rdp_plugin.c:2617
 msgid "Remote Desktop Gateway password"
 msgstr "Pasvorto de Forakomputila Kluzo"
 
-#: plugins/rdp/rdp_plugin.c:2610
+#: plugins/rdp/rdp_plugin.c:2618
 msgid "Remote Desktop Gateway domain"
 msgstr "Reteja adreso de Forakomputila Kluzo"
 
-#: plugins/rdp/rdp_plugin.c:2611
+#: plugins/rdp/rdp_plugin.c:2619
 msgid "Client name"
 msgstr "Klienta nomo"
 
-#: plugins/rdp/rdp_plugin.c:2612
+#: plugins/rdp/rdp_plugin.c:2620
 msgid "Client build"
 msgstr "Versio de kliento"
 
-#: plugins/rdp/rdp_plugin.c:2615
+#: plugins/rdp/rdp_plugin.c:2623
 msgid "Load balance info"
 msgstr "Informo pri ŝarĝodistribuado"
 
-#: plugins/rdp/rdp_plugin.c:2616
+#: plugins/rdp/rdp_plugin.c:2624
 msgid "Override printer drivers"
 msgstr "Anstataŭigi presilajn pelilojn"
 
-#: plugins/rdp/rdp_plugin.c:2616
+#: plugins/rdp/rdp_plugin.c:2624
 msgid ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
@@ -2625,147 +2625,151 @@ msgstr ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
 
-#: plugins/rdp/rdp_plugin.c:2617
+#: plugins/rdp/rdp_plugin.c:2625
 msgid "USB device redirection"
 msgstr "Alidirektado de USB-aparato"
 
-#: plugins/rdp/rdp_plugin.c:2618
+#: plugins/rdp/rdp_plugin.c:2626
 msgid "Local serial name"
 msgstr "Nomo de loka seria konektejo"
 
-#: plugins/rdp/rdp_plugin.c:2618
+#: plugins/rdp/rdp_plugin.c:2626
 msgid "COM1, COM2, etc."
 msgstr "COM1, COM2, ktp."
 
-#: plugins/rdp/rdp_plugin.c:2619
+#: plugins/rdp/rdp_plugin.c:2627
 msgid "Local serial driver"
 msgstr "Pelilo de loka seria konektejo"
 
-#: plugins/rdp/rdp_plugin.c:2619
+#: plugins/rdp/rdp_plugin.c:2627
 msgid "Serial"
 msgstr "Seria konektejo"
 
-#: plugins/rdp/rdp_plugin.c:2620
+#: plugins/rdp/rdp_plugin.c:2628
 msgid "Local serial path"
 msgstr "Dosierindiko de loka seria konektejo"
 
-#: plugins/rdp/rdp_plugin.c:2620
+#: plugins/rdp/rdp_plugin.c:2628
 msgid "/dev/ttyS0, /dev/ttyS1, etc."
 msgstr "/dev/ttyS0, /dev/ttyS1, ktp."
 
-#: plugins/rdp/rdp_plugin.c:2621
+#: plugins/rdp/rdp_plugin.c:2629
 msgid "Local parallel name"
 msgstr "Loka paralela nomo"
 
-#: plugins/rdp/rdp_plugin.c:2622
+#: plugins/rdp/rdp_plugin.c:2630
 msgid "Local parallel device"
 msgstr "Loka paralela aparato"
 
-#: plugins/rdp/rdp_plugin.c:2623
+#: plugins/rdp/rdp_plugin.c:2631
 msgid "Name of smart card"
 msgstr "Nomo de saĝkarto"
 
-#: plugins/rdp/rdp_plugin.c:2624
+#: plugins/rdp/rdp_plugin.c:2632
 msgid "Dynamic virtual channel"
 msgstr "Dinamika virtuala kanalo"
 
-#: plugins/rdp/rdp_plugin.c:2624 plugins/rdp/rdp_plugin.c:2625
+#: plugins/rdp/rdp_plugin.c:2632 plugins/rdp/rdp_plugin.c:2633
 msgid "<channel>[,<options>]"
 msgstr "<kanalo>[,<opcioj>]"
 
-#: plugins/rdp/rdp_plugin.c:2625
+#: plugins/rdp/rdp_plugin.c:2633
 msgid "Static virtual channel"
 msgstr "Statika virtuala kanalo"
 
-#: plugins/rdp/rdp_plugin.c:2626
+#: plugins/rdp/rdp_plugin.c:2634
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
 msgstr "Preferi AAAA-rikordon de IPv6 ol A-rikordon de IPv4"
 
-#: plugins/rdp/rdp_plugin.c:2627
+#: plugins/rdp/rdp_plugin.c:2635
 msgid "Share printers"
 msgstr "Kunhavigi presilojn"
 
-#: plugins/rdp/rdp_plugin.c:2628
+#: plugins/rdp/rdp_plugin.c:2636
 msgid "Share serial ports"
 msgstr "Kunhavigi seriajn konektejojn"
 
-#: plugins/rdp/rdp_plugin.c:2629
+#: plugins/rdp/rdp_plugin.c:2637
 msgid "(SELinux) permissive mode for serial ports"
 msgstr "(SELinux) permesema reĝimo pri seriaj konektejoj"
 
-#: plugins/rdp/rdp_plugin.c:2630
+#: plugins/rdp/rdp_plugin.c:2638
 msgid "Share parallel ports"
 msgstr "Kunhavigi palalelajn konektejojn"
 
-#: plugins/rdp/rdp_plugin.c:2631
+#: plugins/rdp/rdp_plugin.c:2639
 msgid "Share a smart card"
 msgstr "Kunhavigi saĝkarton"
 
-#: plugins/rdp/rdp_plugin.c:2633
+#: plugins/rdp/rdp_plugin.c:2641
 msgid "Ignore certificate"
 msgstr "Ignori atestilon"
 
-#: plugins/rdp/rdp_plugin.c:2634
+#: plugins/rdp/rdp_plugin.c:2642
 msgid "Use the old license workflow"
 msgstr "Uzi la malnovan laborfluon pri permesilo"
 
-#: plugins/rdp/rdp_plugin.c:2634
+#: plugins/rdp/rdp_plugin.c:2642
 msgid "It disables CAL and hwId is set to 0"
 msgstr "Tio malŝaltas CAL kaj igas ke hwId estos 0"
 
-#: plugins/rdp/rdp_plugin.c:2636
+#: plugins/rdp/rdp_plugin.c:2644
 msgid "Attach to console (2003/2003 R2)"
 msgstr "Alkroĉi al konzolo (2003/2003 R2)"
 
-#: plugins/rdp/rdp_plugin.c:2637
+#: plugins/rdp/rdp_plugin.c:2645
 msgid "Turn off fast-path"
 msgstr "Malŝalti rapidan vojon"
 
-#: plugins/rdp/rdp_plugin.c:2638
+#: plugins/rdp/rdp_plugin.c:2646
 msgid "Server detection using Remote Desktop Gateway"
 msgstr "Servilo-trovado per Forakomputila Kluzo"
 
-#: plugins/rdp/rdp_plugin.c:2640
+#: plugins/rdp/rdp_plugin.c:2648
 msgid "Use system proxy settings"
 msgstr "Uzi sistemajn agordojn pri prokurilo"
 
-#: plugins/rdp/rdp_plugin.c:2642
+#: plugins/rdp/rdp_plugin.c:2650
 msgid "Turn off automatic reconnection"
 msgstr "Malŝalti aŭtomatan rekonektadon"
 
-#: plugins/rdp/rdp_plugin.c:2643
+#: plugins/rdp/rdp_plugin.c:2651
 msgid "Relax order checks"
 msgstr "Malŝalti striktan kontrolon de ordo"
 
-#: plugins/rdp/rdp_plugin.c:2644
+#: plugins/rdp/rdp_plugin.c:2652
 msgid "Glyph cache"
 msgstr "Staplo de signobildoj"
 
-#: plugins/rdp/rdp_plugin.c:2645
+#: plugins/rdp/rdp_plugin.c:2653
 msgid "Enable multitransport protocol (UDP)"
 msgstr "Ŝalti plurtransportan protokolon (UDP)"
 
-#: plugins/rdp/rdp_plugin.c:2645
+#: plugins/rdp/rdp_plugin.c:2653
 msgid "Using the UDP protocol may improve performance"
 msgstr "Uzo de la protokolo UDP povas plibonigi rendimenton"
 
-#: plugins/rdp/rdp_plugin.c:2646
+#: plugins/rdp/rdp_plugin.c:2654
 msgid "Use base credentials for gateway too"
 msgstr "Uzi bazajn akreditilojn ankaŭ por kluzo"
 
-#: plugins/rdp/rdp_plugin.c:2671
+#: plugins/rdp/rdp_plugin.c:2655
+msgid "Enable Gateway websockets support"
+msgstr ""
+
+#: plugins/rdp/rdp_plugin.c:2680
 msgid "RDP - Remote Desktop Protocol"
 msgstr "RDP - Forakomputila Protokolo"
 
-#: plugins/rdp/rdp_plugin.c:2696
+#: plugins/rdp/rdp_plugin.c:2705
 msgid "RDP - RDP File Handler"
 msgstr "RDP - Dosiertraktilo de RDP"
 
-#: plugins/rdp/rdp_plugin.c:2711
+#: plugins/rdp/rdp_plugin.c:2720
 msgid "RDP - Preferences"
 msgstr "RDP - Preferoj"
 
-#: plugins/rdp/rdp_plugin.c:2764
+#: plugins/rdp/rdp_plugin.c:2773
 msgid "Export connection in Windows .rdp file format"
 msgstr "Elporti konekton laŭ dosierformo .rdp de Windows"
 
