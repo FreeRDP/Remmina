@@ -11,7 +11,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN \
     LC_ALL=en_US.UTF-8 apt-get update -qq \
     && apt-get install -y -qq software-properties-common python3-software-properties \
-    && apt-add-repository ppa:remmina-ppa-team/freerdp-daily -y \
+    && apt-add-repository ppa:remmina-ppa-team/remmina-next-daily -y \
     && apt-get update -qq \
     && apt-get install -y -qq build-essential git-core cmake libssl-dev \
     libx11-dev libxext-dev libxinerama-dev libxcursor-dev libxdamage-dev \
