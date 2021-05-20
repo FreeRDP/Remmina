@@ -51,10 +51,16 @@
             "add-ld-path": ".",
             "no-autodownload": false,
             "autodelete": false
+        },
+        "org.freedesktop.Platform.openh264": {
+            "directory": "lib/openh264",
+            "version": "2.1.0",
+            "add-ld-path": "."
         }
     },
     "cleanup-commands": [
-        "mkdir -p /app/lib/ffmpeg"
+        "mkdir -p /app/lib/ffmpeg",
+        "mkdir -p /app/lib/openh264"
     ],
     "modules": [
         "shared-modules/intltool/intltool-0.51.json",
@@ -228,66 +234,6 @@
                         "tag-pattern": "^pcsc-([\\d.]+)$"
                     }
                 }
-            ]
-        },
-        {
-            "name": "freerdp",
-            "buildsystem": "cmake-ninja",
-            "cleanup": [
-                "/bin",
-                "/lib/libwinpr-tools2.so*",
-                "/lib/libuwac0.so*"
-            ],
-            "config-opts": [
-                "-DCMAKE_BUILD_TYPE:STRING=Release",
-                "-DCMAKE_INSTALL_LIBDIR:PATH=lib",
-                "-DWITH_WAYLAND:BOOL=ON",
-                "-DCHANNEL_TSMF:BOOL=ON",
-                "-DCHANNEL_URBDRC:BOOL=ON",
-                "-DBUILD_TESTING:BOOL=OFF",
-                "-DWITH_MANPAGES:BOOL=OFF",
-                "-DWITH_GSSAPI:BOOL=OFF",
-                "-DWITH_PCSC:BOOL=ON",
-                "-DWITH_SERVER:BOOL=OFF",
-                "-DWITH_CLIENT:BOOL=OFF",
-                "-DWITH_CUPS:BOOL=ON",
-                "-DWITH_FFMPEG:BOOL=ON",
-                "-DWITH_OSS:BOOL=OFF",
-                "-DWITH_PULSE:BOOL=ON",
-                "-DWITH_CHANNELS:BOOL=ON",
-                "-DBUILTIN_CHANNELS:BOOL=ON",
-                "-DWITH_JPEG:BOOL=ON",
-                "-DWITH_LIBSYSTEMD:BOOL=OFF"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/FreeRDP/FreeRDP.git",
-                    "tag": "2.3.2",
-                    "commit": "c3df0be63953ed98525d9b736ba878ad733de059",
-                    "x-checker-data": {
-                        "type": "git",
-                        "tag-pattern": "^([\\d.]+)$"
-                    }
-                }
-            ],
-            "modules": [
-                {
-                    "name": "xprop",
-                    "sources": [
-                        {
-                            "type": "archive",
-                            "url": "https://xorg.freedesktop.org/archive/individual/app/xprop-1.2.5.tar.bz2",
-                            "sha256": "9b92ed0316bf2486121d8bac88bd1878f16b43bd335f18009b1f941f1eca93a1",
-                            "x-checker-data": {
-                                "type": "anitya",
-                                "project-id": "14958",
-                                "url-template": "https://xorg.freedesktop.org/archive/individual/app/xprop-$version.tar.bz2"
-                            }
-                        }
-                    ]
-                },
-                "shared-modules/libusb/libusb.json"
             ]
         },
         {
@@ -587,12 +533,9 @@
                 "-DWITH_SERVER:BOOL=OFF",
                 "-DWITH_CUPS:BOOL=ON",
                 "-DWITH_FFMPEG:BOOL=ON",
-                "-DWITH_DSP_FFMPEG:BOOL=ON",
                 "-DWITH_OSS:BOOL=OFF",
                 "-DWITH_PULSE:BOOL=ON",
                 "-DWITH_CHANNELS:BOOL=ON",
-                "-DBUILTIN_CHANNELS:BOOL=ON",
-                "-DWITH_JPEG:BOOL=ON",
                 "-DWITH_LIBSYSTEMD:BOOL=OFF"
             ],
             "sources": [
