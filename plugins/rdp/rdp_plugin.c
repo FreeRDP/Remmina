@@ -67,6 +67,7 @@
 #include <cups/cups.h>
 #endif
 
+#include <unistd.h>
 #include <string.h>
 
 #ifdef GDK_WINDOWING_X11
@@ -1263,7 +1264,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 	rdpChannels *channels;
 	gchar *gateway_host;
 	gint gateway_port;
-	gchar *datapath;
+	gchar *datapath = NULL;
 
 	gint desktopOrientation, desktopScaleFactor, deviceScaleFactor;
 
@@ -1272,14 +1273,16 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
 	datapath = g_build_path("/",
-				g_path_get_dirname(remmina_plugin_service->file_get_user_datadir()),
-				"RDP",
-				NULL);
+			remmina_plugin_service->file_get_user_datadir(),
+			"RDP",
+			NULL);
 	REMMINA_PLUGIN_DEBUG("RDP data path is %s", datapath);
 
-	if (datapath) {
-		freerdp_settings_set_string(rfi->settings, FreeRDP_ConfigPath, datapath);
+	if ((datapath != NULL) && (datapath[0] != '\0')) {
+		if (access(datapath, W_OK) == 0)
+			freerdp_settings_set_string(rfi->settings, FreeRDP_ConfigPath, datapath);
 	}
+	g_free(datapath);
 
 #if defined(PROXY_TYPE_IGNORE)
 	if (!remmina_plugin_service->file_get_int(remminafile, "useproxyenv", FALSE) ? TRUE : FALSE) {
