@@ -1,4 +1,17 @@
 ## v1.4.16
+[full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.16...v1.4.17)
+
+* Fix build with musl libc [!2259](https://gitlab.com/Remmina/Remmina/merge_requests/2259) *@ncopa*
+* Fix typos [!2260](https://gitlab.com/Remmina/Remmina/merge_requests/2260) *@mfvescovi*
+* Improving CI cache [!2257](https://gitlab.com/Remmina/Remmina/merge_requests/2257) *@antenore*
+* Fix System Tray Icon Broken/Missing [!2261](https://gitlab.com/Remmina/Remmina/merge_requests/2261) *@antenore*
+* VNC quality deafults now to good [!2264](https://gitlab.com/Remmina/Remmina/merge_requests/2264) *@antenore*
+* Flatpak refactoring [!2262](https://gitlab.com/Remmina/Remmina/merge_requests/2262) *@antenore*
+* Adding Gateway websocket support [!2263](https://gitlab.com/Remmina/Remmina/merge_requests/2263) *@antenore*
+* Revert "Linking snap and flatpak to FreeRDP 2.3.1" [!2265](https://gitlab.com/Remmina/Remmina/merge_requests/2265) *@antenore*
+* Set FreeRDP config path to Remmina profiles path [!2266](https://gitlab.com/Remmina/Remmina/merge_requests/2266) *@antenore*
+
+## v1.4.16
 [full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.15...v1.4.16)
 
 * Fix Data PATH for the FreeRDP files bcf24360e05d2f9b60f9f0adaf56dede66497a42 @antenore
