@@ -9,13 +9,14 @@
 # Reza Almanda <rezaalmanda27@gmail.com>, 2021.
 # liimee <alt3753.7@gmail.com>, 2021.
 # Jacque Fresco <aidter@use.startmail.com>, 2021.
+# Aditya Rahman <adityarahman032@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-05-21 13:49+0000\n"
-"PO-Revision-Date: 2021-05-21 07:32+0000\n"
-"Last-Translator: Jacque Fresco <aidter@use.startmail.com>\n"
+"PO-Revision-Date: 2021-05-23 03:10+0000\n"
+"Last-Translator: Aditya Rahman <adityarahman032@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/remmina/"
 "remmina/id/>\n"
 "Language: id\n"
@@ -443,12 +444,12 @@ msgstr[0] "%d kata sandi berubah."
 #: src/remmina_public.c:345
 #, c-format
 msgid "Address is too long for UNIX socket_path: %s"
-msgstr ""
+msgstr "Alamat terlalu panjang untuk UNIX socket_path: %s"
 
 #: src/remmina_public.c:355
 #, c-format
 msgid "Creating UNIX socket failed: %s"
-msgstr ""
+msgstr "Pembuatan soket UNIX gagal: %s"
 
 #: src/remmina_public.c:361
 #, fuzzy, c-format
@@ -689,7 +690,7 @@ msgstr "Enkripsi kata sandi"
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:375
 msgid "- or protocol://username:encryptedpassword@host:port"
-msgstr ""
+msgstr "- atau protocol://username:encryptedpassword@host:port"
 
 #: src/remmina.c:378
 msgid ""
@@ -725,6 +726,38 @@ msgid ""
 "remmina --set-option username --set-option resolution_mode=2 --set-option "
 "password\n"
 msgstr ""
+"Contoh:\n"
+"Untuk terhubung menggunakan salah satu profil koneksi yang ada, gunakan:\n"
+"\n"
+"\tremmina -c FILE.remmina\n"
+"\n"
+"Untuk terhubung secara cepat menggunakan sebuah URI:\n"
+"\n"
+"\tremmina -c rdp://username@server\n"
+"\tremmina -c rdp://domain\\\\username@server\n"
+"\tremmina -c vnc://username@server\n"
+"\tremmina -c vnc://server?VncUsername=username\n"
+"\tremmina -c ssh://user@server\n"
+"\tremmina -c spice://server\n"
+"\n"
+"Untuk terhubung secara cepat menggunakan URI dengan kata sandi yang "
+"dienskripsi:\n"
+"\n"
+"\tremmina -c rdp://username:encrypted-password@server\n"
+"\tremmina -c vnc://username:encrypted-password@server\n"
+"\tremmina -c vnc://server?VncUsername=username\\&VncPassword=encrypted-"
+"password\n"
+"\n"
+"Untuk mengenkripsi kata sandi yang akan digunakan pada URI:\n"
+"\n"
+"\tremmina --encrypt-password\n"
+"\n"
+"Untuk memperbarui nama pengguna, kata sandi dan mode resolusi yang berbeda "
+"dengan koneksi profile Remmina, gunakan:\n"
+"\n"
+"\techo \"username\\n"
+"apassword\" | remmina --update-profile /PATH/TO/FOO.remmina --set-option "
+"username --set-option resolution_mode=2 --set-option password\n"
 
 #: src/remmina_icon.c:139
 msgid "Open Main Window"
@@ -814,7 +847,7 @@ msgstr "Mengubah mode layar penuh"
 #: src/rcw.c:2295 data/ui/remmina_preferences.glade:1300
 #: data/ui/remmina_preferences.glade:1310
 msgid "Multi monitor"
-msgstr ""
+msgstr "Multi monitor"
 
 #: src/rcw.c:2311
 msgid "Toggle dynamic resolution update"
@@ -1148,6 +1181,8 @@ msgstr "Tidak bisa mengautentikasi dengan kata sandi SSH. %s"
 #: src/remmina_ssh.c:322 src/remmina_ssh.c:389
 msgid "No saved SSH passphrase supplied. Asking user to enter it."
 msgstr ""
+"Tidak ada frasa sandi SSH terimpan yang diberikan. Meminta pengguna untuk "
+"memasukannya."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:327 src/remmina_ssh.c:368 src/remmina_ssh.c:394
@@ -1718,7 +1753,7 @@ msgstr "Jelajahi jaringan untuk menemukan server %s"
 
 #: plugins/gvnc/gvnc_plugin.c:842
 msgid "Enable GTK-VNC debug"
-msgstr ""
+msgstr "Nyalakan debug GTK-VNC"
 
 #: plugins/gvnc/gvnc_plugin.c:857 plugins/gvnc/gvnc_plugin.c:871
 #: plugins/spice/spice_plugin.c:693 plugins/spice/spice_plugin.c:706
