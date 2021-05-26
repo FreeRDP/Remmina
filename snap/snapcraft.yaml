@@ -54,6 +54,8 @@ apps:
       - unity7
       - wayland
       - x11
+    slots:
+      - remmina-gapp
 
   winpr-makecert:
     command: winpr-makecert
@@ -126,7 +128,6 @@ parts:
       - -DCMAKE_C_FLAGS_RELEASE=-O1 -g -DNDEBUG
       - -DCMAKE_BUILD_TYPE=Release
       - -DWITH_WAYLAND=on
-      - -DWITH_CLIENT=off
       - -DWITH_SERVER=off
       - -DWITH_PULSE=on
       - -DWITH_GSTREAMER=off
