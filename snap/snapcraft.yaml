@@ -5,6 +5,11 @@ grade: stable
 confinement: strict
 base: core18
 
+architectures:
+  - build-on: amd64
+  - build-on: arm64
+  - build-on: armhf
+
 # this line enables LZO compression for the snap
 compression: lzo
 
