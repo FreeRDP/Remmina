@@ -5,6 +5,11 @@ grade: stable
 confinement: strict
 base: core18
 
+architectures:
+  - build-on: amd64
+  - build-on: arm64
+  - build-on: armhf
+
 # this line enables LZO compression for the snap
 compression: lzo
 
@@ -49,6 +54,8 @@ apps:
       - unity7
       - wayland
       - x11
+    slots:
+      - remmina-gapp
 
   winpr-makecert:
     command: winpr-makecert
@@ -121,7 +128,6 @@ parts:
       - -DCMAKE_C_FLAGS_RELEASE=-O1 -g -DNDEBUG
       - -DCMAKE_BUILD_TYPE=Release
       - -DWITH_WAYLAND=on
-      - -DWITH_CLIENT=off
       - -DWITH_SERVER=off
       - -DWITH_PULSE=on
       - -DWITH_GSTREAMER=off
@@ -186,6 +192,7 @@ parts:
       - libgtk-vnc-2.0-0
       - libssh-4
       - libusb-1.0-0
+      - libvte-2.91-0
       - libzvbi0
       - suckless-tools
       - vim
