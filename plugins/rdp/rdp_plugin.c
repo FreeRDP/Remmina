@@ -89,9 +89,6 @@
 
 #define REMMINA_CONNECTION_TYPE_NONE             0
 
-/* Some string settings of FreeRDP are preallocated buffers of N bytes */
-#define FREERDP_CLIENTHOSTNAME_LEN      32
-
 RemminaPluginService *remmina_plugin_service = NULL;
 static char remmina_rdp_plugin_default_drive_name[] = "RemminaDisk";
 
@@ -1506,7 +1503,6 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 	freerdp_settings_set_bool(rfi->settings, FreeRDP_AllowUnanouncedOrdersFromServer, remmina_plugin_service->file_get_int(remminafile, "relax-order-checks", 0));
 	freerdp_settings_set_uint32(rfi->settings, FreeRDP_GlyphSupportLevel, (remmina_plugin_service->file_get_int(remminafile, "glyph-cache", 0) ? GLYPH_SUPPORT_FULL : GLYPH_SUPPORT_NONE));
 
-	/* ClientHostname is internally preallocated to 32 bytes by libfreerdp */
 	if ((cs = remmina_plugin_service->file_get_string(remminafile, "clientname")))
 		freerdp_settings_set_string(rfi->settings, FreeRDP_ClientHostname, cs);
 	else
