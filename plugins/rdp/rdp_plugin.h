@@ -63,11 +63,11 @@
  * Returns: %TRUE if FREERDP headers are new enough
  */
 
-#define FREERDP_CHECK_VERSION(major,minor,release)                                  \
+#define FREERDP_CHECK_VERSION(major,minor,revision)                                  \
 	(FREERDP_VERSION_MAJOR > (major) ||                                       \
 	 (FREERDP_VERSION_MAJOR == (major) && FREERDP_VERSION_MINOR > (minor)) || \
 	 (FREERDP_VERSION_MAJOR == (major) && FREERDP_VERSION_MINOR == (minor) && \
-	  FREERDP_VERSION_RELEASE >= (release)))
+	  FREERDP_VERSION_REVISION >= (revision)))
 
 /* Constants to workaround FreeRDP issue #5417 (min resolution in AVC mode) */
 #define AVC_MIN_DESKTOP_WIDTH 642
