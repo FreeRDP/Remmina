@@ -1235,8 +1235,8 @@ static gboolean remmina_rdp_set_connection_type(rdpSettings *settings, guint32 t
 
 		/* Automatically activate GFX and RFX codec support */
 #ifdef WITH_GFX_H264
-		freerdp_settings_set_bool(settings, FreeRDP_GfxAVC444, TRUE);
-		freerdp_settings_set_bool(settings, FreeRDP_GfxH264, TRUE);
+		freerdp_settings_set_bool(settings, FreeRDP_GfxAVC444, gfx_h264_available);
+		freerdp_settings_set_bool(settings, FreeRDP_GfxH264, gfx_h264_available);
 #endif
 		freerdp_settings_set_bool(settings, FreeRDP_RemoteFxCodec, TRUE);
 		freerdp_settings_set_bool(settings, FreeRDP_SupportGraphicsPipeline, TRUE);
@@ -1327,14 +1327,14 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 		/* /gfx:avc420 (Win8.1) */
 		freerdp_settings_set_uint32(rfi->settings, FreeRDP_ColorDepth, 32);
 		freerdp_settings_set_bool(rfi->settings, FreeRDP_SupportGraphicsPipeline, TRUE);
-		freerdp_settings_set_bool(rfi->settings, FreeRDP_GfxH264, TRUE);
+		freerdp_settings_set_bool(rfi->settings, FreeRDP_GfxH264, gfx_h264_available);
 		freerdp_settings_set_bool(rfi->settings, FreeRDP_GfxAVC444, FALSE);
 	} else if (freerdp_settings_get_uint32(rfi->settings, FreeRDP_ColorDepth) == 66) {
 		/* /gfx:avc444 (Win10) */
 		freerdp_settings_set_uint32(rfi->settings, FreeRDP_ColorDepth, 32);
 		freerdp_settings_set_bool(rfi->settings, FreeRDP_SupportGraphicsPipeline, TRUE);
-		freerdp_settings_set_bool(rfi->settings, FreeRDP_GfxH264, TRUE);
-		freerdp_settings_set_bool(rfi->settings, FreeRDP_GfxAVC444, TRUE);
+		freerdp_settings_set_bool(rfi->settings, FreeRDP_GfxH264, gfx_h264_available);
+		freerdp_settings_set_bool(rfi->settings, FreeRDP_GfxAVC444, gfx_h264_available);
 	} else if (freerdp_settings_get_uint32(rfi->settings, FreeRDP_ColorDepth) == 99) {
 		/* Automatic (Let the server choose its best format) */
 		freerdp_settings_set_uint32(rfi->settings, FreeRDP_ColorDepth, 32);
@@ -1651,6 +1651,15 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 
 		dcount = 1;
 		d[0] = "disp";
+		freerdp_client_add_dynamic_channel(rfi->settings, dcount, d);
+	}
+
+	if (freerdp_settings_get_bool(rfi->settings, FreeRDP_SupportGraphicsPipeline)) {
+		char *d[1];
+		int dcount;
+
+		dcount = 1;
+		d[0] = "rdpgfx";
 		freerdp_client_add_dynamic_channel(rfi->settings, dcount, d);
 	}
 
