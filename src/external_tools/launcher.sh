@@ -3,18 +3,18 @@
 ####################
 # Main Script
 ####################
-#gnome-terminal -e $(dirname $0)/$1
 
-if [ -x "/usr/bin/x-terminal-emulator" ];
-then
- TERMNAME="/usr/bin/x-terminal-emulator"
-else
- TERMNAME="gnome-terminal"
+TERMINALS="x-terminal-emulator gnome-terminal bash sh"
+for t in $TERMINALS; do
+    if command -v "$t" >/dev/null 2>&1; then
+        TERMNAME="$t"
+        continue
+    fi
+done
+
+if [ -z "$TERMNAME" ]; then
+    echo "Can't found a terminal"
+    exit 1
 fi
-$TERMNAME -e "$1" &
 
-#if [ "$2" = "1" ]
-#then
-#  echo "Hit a key to continue…"
-#  Pause
-#fi
+$TERMNAME -- "$1" &
