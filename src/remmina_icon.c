@@ -429,10 +429,13 @@ void remmina_icon_init(void)
 	gboolean sni_supported;
 	char msg[200];
 
-	if (remmina_pref.dark_theme == 1)
-		g_stpcpy(remmina_panel, "remmina-dark-panel");
-	else
+	if (remmina_pref.dark_theme) {
+		g_debug("(%s) Dark theme, inverted icon (light)", __func__);
+		g_stpcpy(remmina_panel, "remmina-panel-inverted");
+	} else {
+		g_debug("(%s) Light theme, normal icon (dark)", __func__);
 		g_stpcpy(remmina_panel, "remmina-panel");
+	}
 
 	/* Print on stdout the availability of appindicators on DBUS */
 	sni_supported = remmina_sysinfo_is_appindicator_available();

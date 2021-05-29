@@ -291,7 +291,7 @@ void remmina_pref_on_dialog_destroy(GtkWidget *widget, gpointer user_data)
 	b = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_dark_theme));
 	if (remmina_pref.dark_theme != b) {
 		remmina_pref.dark_theme = b;
-		rebuild_remmina_icon = TRUE;
+		 rebuild_remmina_icon = TRUE;
 	}
 
 	remmina_pref.grab_color_switch = gtk_switch_get_active (remmina_pref_dialog->switch_appearance_grab_color);
