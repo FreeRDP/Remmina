@@ -1190,9 +1190,8 @@ remmina_plugin_ssh_init(RemminaProtocolWidget *gp)
 	const gchar *dir;
 	const gchar *sshlogname;
 	const gchar *fp;
-	GFile *rf;
 
-	rf = g_file_new_for_path(remminafile->filename);
+	GFile *rf = g_file_new_for_path(remminafile->filename);
 
 	if (remmina_plugin_service->file_get_string(remminafile, "sshlogfolder") == NULL)
 		dir = g_build_path("/", g_get_user_cache_dir(), "remmina", NULL);
@@ -1499,6 +1498,7 @@ static const RemminaProtocolSetting remmina_ssh_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_FOLDER, "sshlogfolder",		  N_("Folder for SSH session log"),	      FALSE, NULL,		   NULL	    },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	"sshlogname",		  N_("Filename for SSH session log"),	      FALSE, NULL,		   log_tips },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"sshlogenabled",	  N_("Log SSH session when exiting Remmina"), FALSE, NULL,		   NULL	    },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"sshsavesession",	  N_("Log SSH session asynchronously"), FALSE, NULL,		   N_("Saving the session asynchronously may have a notable performance impact")	    },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"audiblebell",		  N_("Audible terminal bell"),		      FALSE, NULL,		   NULL	    },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"ssh_compression",	  N_("SSH compression"),		      FALSE, NULL,		   NULL	    },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"disablepasswordstoring", N_("Don't remember passwords"),	      TRUE,  NULL,		   NULL	    },
