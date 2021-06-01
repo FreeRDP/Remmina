@@ -2584,7 +2584,8 @@ remmina_ssh_shell_thread(gpointer data)
 	}
 
 	LOCK_SSH(shell)
-	if (fp) fclose(fp);
+	if (remmina_file_get_int (remminafile, "sshsavesession", FALSE))
+	fclose(fp);
 	shell->channel = NULL;
 	ssh_channel_close(channel);
 	ssh_channel_send_eof(channel);
