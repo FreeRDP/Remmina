@@ -343,10 +343,10 @@ static void remmina_icon_save_autostart_file(GKeyFile *gkeyfile)
 static void remmina_icon_create_autostart_file(void)
 {
 	TRACE_CALL(__func__);
-	GKeyFile *gkeyfile;
-
 	if (g_file_test(remmina_icon.autostart_file, G_FILE_TEST_EXISTS))
 		return;
+
+	GKeyFile *gkeyfile;
 
 	gkeyfile = g_key_file_new();
 	g_key_file_set_string(gkeyfile, "Desktop Entry", "Version", "1.0");
@@ -500,7 +500,7 @@ void remmina_icon_init(void)
 			remmina_avahi_stop(remmina_icon.avahi);
 		}
 	}
-	if (!remmina_icon.autostart_file) {
+	if (!remmina_icon.autostart_file && !remmina_pref.disable_tray_icon) {
 		remmina_icon.autostart_file = g_strdup_printf("%s/.config/autostart/remmina-applet.desktop", g_get_home_dir());
 		remmina_icon_create_autostart_file();
 	}
