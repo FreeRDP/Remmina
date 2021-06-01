@@ -2288,6 +2288,7 @@ static gboolean remmina_rdp_close_connection(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
 
+	REMMINA_PLUGIN_DEBUG("Requesting to close the connection");
 	RemminaPluginRdpEvent rdp_event = { 0 };
 	rfContext *rfi = GET_PLUGIN_DATA(gp);
 

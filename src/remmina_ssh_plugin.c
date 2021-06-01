@@ -860,6 +860,43 @@ void remmina_plugin_ssh_popup_ui(RemminaProtocolWidget *gp)
 	gtk_widget_show_all(menu);
 }
 
+static gboolean
+remmina_plugin_ssh_close_connection(RemminaProtocolWidget *gp)
+{
+	TRACE_CALL(__func__);
+	RemminaPluginSshData *gpdata = GET_PLUGIN_DATA(gp);
+
+	RemminaFile *remminafile;
+
+	REMMINA_DEBUG("Requesting to close the connection");
+	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
+
+	if (remmina_file_get_int(remminafile, "sshlogenabled", FALSE))
+		remmina_plugin_ssh_vte_save_session(NULL, gp);
+	if (gpdata->thread) {
+		pthread_cancel(gpdata->thread);
+		if (gpdata->thread) pthread_join(gpdata->thread, NULL);
+	}
+	if (gpdata->shell) {
+		remmina_ssh_shell_free(gpdata->shell);
+		gpdata->shell = NULL;
+	}
+
+	remmina_plugin_service->protocol_plugin_signal_connection_closed(gp);
+	return FALSE;
+}
+
+static void
+remmina_plugin_ssh_eof(VteTerminal *vteterminal, RemminaProtocolWidget *gp)
+{
+	TRACE_CALL(__func__);
+
+	RemminaFile *remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
+
+	if (remmina_file_get_int(remminafile, "sshlogenabled", FALSE))
+		remmina_plugin_ssh_vte_save_session(NULL, gp);
+}
+
 /**
  * Remmina SSH plugin initialization.
  *
@@ -1172,7 +1209,6 @@ remmina_plugin_ssh_init(RemminaProtocolWidget *gp)
 	gtk_box_pack_start(GTK_BOX(hbox), vte, TRUE, TRUE, 0);
 	gpdata->vte = vte;
 	remmina_plugin_ssh_set_vte_pref(gp);
-	g_signal_connect(G_OBJECT(vte), "size-allocate", G_CALLBACK(remmina_plugin_ssh_on_size_allocate), gp);
 
 	remmina_plugin_service->protocol_plugin_register_hostkey(gp, vte);
 
@@ -1190,9 +1226,8 @@ remmina_plugin_ssh_init(RemminaProtocolWidget *gp)
 	const gchar *dir;
 	const gchar *sshlogname;
 	const gchar *fp;
-	GFile *rf;
 
-	rf = g_file_new_for_path(remminafile->filename);
+	GFile *rf = g_file_new_for_path(remminafile->filename);
 
 	if (remmina_plugin_service->file_get_string(remminafile, "sshlogfolder") == NULL)
 		dir = g_build_path("/", g_get_user_cache_dir(), "remmina", NULL);
@@ -1209,6 +1244,10 @@ remmina_plugin_ssh_init(RemminaProtocolWidget *gp)
 	fp = g_strconcat(dir, "/", sshlogname, NULL);
 	gpdata->vte_session_file = g_file_new_for_path(fp);
 
+	g_signal_connect(G_OBJECT(vte), "size-allocate", G_CALLBACK(remmina_plugin_ssh_on_size_allocate), gp);
+	g_signal_connect (G_OBJECT(vte), "unrealize", G_CALLBACK(remmina_plugin_ssh_eof), gp);
+	g_signal_connect (G_OBJECT(vte), "eof", G_CALLBACK(remmina_plugin_ssh_eof), gp);
+	g_signal_connect (G_OBJECT(vte), "child-exited", G_CALLBACK(remmina_plugin_ssh_eof), gp);
 	remmina_plugin_ssh_popup_ui(gp);
 	gtk_widget_show_all(hbox);
 }
@@ -1239,31 +1278,6 @@ remmina_plugin_ssh_open_connection(RemminaProtocolWidget *gp)
 		return TRUE;
 	}
 	return TRUE;
-}
-
-static gboolean
-remmina_plugin_ssh_close_connection(RemminaProtocolWidget *gp)
-{
-	TRACE_CALL(__func__);
-	RemminaPluginSshData *gpdata = GET_PLUGIN_DATA(gp);
-
-	RemminaFile *remminafile;
-
-	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
-
-	if (remmina_file_get_int(remminafile, "sshlogenabled", FALSE))
-		remmina_plugin_ssh_vte_save_session(NULL, gp);
-	if (gpdata->thread) {
-		pthread_cancel(gpdata->thread);
-		if (gpdata->thread) pthread_join(gpdata->thread, NULL);
-	}
-	if (gpdata->shell) {
-		remmina_ssh_shell_free(gpdata->shell);
-		gpdata->shell = NULL;
-	}
-
-	remmina_plugin_service->protocol_plugin_signal_connection_closed(gp);
-	return FALSE;
 }
 
 /**
@@ -1499,6 +1513,7 @@ static const RemminaProtocolSetting remmina_ssh_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_FOLDER, "sshlogfolder",		  N_("Folder for SSH session log"),	      FALSE, NULL,		   NULL	    },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	"sshlogname",		  N_("Filename for SSH session log"),	      FALSE, NULL,		   log_tips },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"sshlogenabled",	  N_("Log SSH session when exiting Remmina"), FALSE, NULL,		   NULL	    },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"sshsavesession",	  N_("Log SSH session asynchronously"), FALSE, NULL,		   N_("Saving the session asynchronously may have a notable performance impact")	    },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"audiblebell",		  N_("Audible terminal bell"),		      FALSE, NULL,		   NULL	    },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"ssh_compression",	  N_("SSH compression"),		      FALSE, NULL,		   NULL	    },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"disablepasswordstoring", N_("Don't remember passwords"),	      TRUE,  NULL,		   NULL	    },

@@ -41,6 +41,7 @@
 /* Define this before stdlib.h to have posix_openpt */
 #define _XOPEN_SOURCE 600
 
+#include <errno.h>
 #define LIBSSH_STATIC 1
 #include <libssh/libssh.h>
 #include <gdk/gdkx.h>
@@ -115,6 +116,19 @@ static const gchar *common_identities[] =
 	".ssh/identity",
 	NULL
 };
+
+void remmina_ssh_remove_all_chars(char* str)
+{
+	TRACE_CALL(__func__);
+	char *pr = str, *pw = str;
+	char c = 33;
+	while (*pr) {
+		*pw = *pr++;
+		pw += (*pw != c);
+	}
+	*pw = '\0';
+}
+
 
 gchar *
 remmina_ssh_identity_path(const gchar *id)
@@ -1974,12 +1988,11 @@ remmina_ssh_tunnel_main_thread_proc(gpointer data)
 						close(sock);
 						sock = -1;
 					}
-				} else {
+				} else
 					sock = remmina_public_open_xdisplay(tunnel->localdisplay);
-				}
-				if (sock >= 0) {
+				if (sock >= 0)
 					remmina_ssh_tunnel_add_channel(tunnel, channel, sock);
-				} else {
+				else {
 					/* Failed to create unix socket. Will this happen? */
 					ssh_channel_close(channel);
 					ssh_channel_send_eof(channel);
@@ -2426,14 +2439,23 @@ remmina_ssh_shell_thread(gpointer data)
 {
 	TRACE_CALL(__func__);
 	RemminaSSHShell *shell = (RemminaSSHShell *)data;
+	RemminaProtocolWidget *gp = (RemminaProtocolWidget *)shell->user_data;
+	RemminaFile *remminafile;
+	remminafile = remmina_protocol_widget_get_file(gp);
 	fd_set fds;
 	struct timeval timeout;
 	ssh_channel channel = NULL;
 	ssh_channel ch[2], chout[2];
 	gchar *buf = NULL;
+	gchar *bufcp = NULL;
 	gint buf_len;
 	gint len;
 	gint i, ret;
+	const gchar *filename;
+	const gchar *dir;
+	const gchar *sshlogname;
+	FILE *fp;
+
 	//gint screen;
 
 	LOCK_SSH(shell)
@@ -2469,7 +2491,7 @@ remmina_ssh_shell_thread(gpointer data)
 		ret = ssh_channel_request_exec(channel, shell->exec);
 	else
 		ret = ssh_channel_request_shell(channel);
-	if (ret) {
+	if (ret != SSH_OK) {
 		UNLOCK_SSH(shell)
 		// TRANSLATORS: The placeholder %s is an error message
 		remmina_ssh_set_error(REMMINA_SSH(shell), _("Could not request shell. %s"));
@@ -2490,6 +2512,24 @@ remmina_ssh_shell_thread(gpointer data)
 	ch[0] = channel;
 	ch[1] = NULL;
 
+	GFile *rf = g_file_new_for_path(remminafile->filename);
+
+	if (remmina_file_get_string(remminafile, "sshlogfolder") == NULL)
+		dir = g_build_path("/", g_get_user_cache_dir(), "remmina", NULL);
+	else
+		dir = remmina_file_get_string(remminafile, "sshlogfolder");
+
+	if (remmina_file_get_string(remminafile, "sshlogname") == NULL)
+		sshlogname = g_strconcat(g_file_get_basename(rf), ".", "log", NULL);
+	else
+		sshlogname = remmina_file_get_string(remminafile, "sshlogname");
+	sshlogname = remmina_file_format_properties(remminafile, sshlogname);
+	filename = g_strconcat(dir, "/", sshlogname, NULL);
+
+	if (remmina_file_get_int (remminafile, "sshsavesession", FALSE)) {
+		REMMINA_DEBUG("Saving session log to %s", filename);
+		fp = fopen(filename, "w");
+	}
 	while (!shell->closed) {
 		timeout.tv_sec = 1;
 		timeout.tv_usec = 0;
@@ -2508,6 +2548,7 @@ remmina_ssh_shell_thread(gpointer data)
 			ssh_channel_write(channel, buf, len);
 			UNLOCK_SSH(shell)
 		}
+
 		for (i = 0; i < 2; i++) {
 			LOCK_SSH(shell)
 			len = ssh_channel_poll(channel, i);
@@ -2530,6 +2571,12 @@ remmina_ssh_shell_thread(gpointer data)
 			}
 			while (len > 0) {
 				ret = write(shell->slave, buf, len);
+				bufcp = g_strdup(buf);
+				remmina_ssh_remove_all_chars(bufcp);
+				if (remmina_file_get_int (remminafile, "sshsavesession", FALSE)) {
+					fwrite(bufcp, ret, 1, fp );
+					fflush(fp);
+				}
 				if (ret <= 0) break;
 				len -= ret;
 			}
@@ -2537,6 +2584,8 @@ remmina_ssh_shell_thread(gpointer data)
 	}
 
 	LOCK_SSH(shell)
+	if (remmina_file_get_int (remminafile, "sshsavesession", FALSE))
+	fclose(fp);
 	shell->channel = NULL;
 	ssh_channel_close(channel);
 	ssh_channel_send_eof(channel);
@@ -2544,6 +2593,7 @@ remmina_ssh_shell_thread(gpointer data)
 	UNLOCK_SSH(shell)
 
 	g_free(buf);
+	g_free(bufcp);
 	shell->thread = 0;
 
 	if (shell->exit_callback)
