@@ -1353,22 +1353,29 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 		rfi->bpp = 32;
 	}
 
-	freerdp_settings_set_uint32(rfi->settings, FreeRDP_DesktopWidth, remmina_plugin_service->get_profile_remote_width(gp));
-	freerdp_settings_set_uint32(rfi->settings, FreeRDP_DesktopHeight, remmina_plugin_service->get_profile_remote_height(gp));
+	gint w = remmina_plugin_service->get_profile_remote_width(gp);
+	gint h = remmina_plugin_service->get_profile_remote_height(gp);
+	/* multiple of 4 */
+	w = (w + 3) & ~0x3;
+	h = (h + 3) & ~0x3;
+	freerdp_settings_set_uint32(rfi->settings, FreeRDP_DesktopWidth, w);
+	freerdp_settings_set_uint32(rfi->settings, FreeRDP_DesktopHeight, h);
+	REMMINA_PLUGIN_DEBUG ("Resolution set by the user: %dx%d", w, h);
 
 	/* Workaround for FreeRDP issue #5417: in GFX AVC modes we can't go under
 	 * AVC_MIN_DESKTOP_WIDTH x AVC_MIN_DESKTOP_HEIGHT */
-	if (freerdp_settings_get_bool(rfi->settings, FreeRDP_SupportGraphicsPipeline) && freerdp_settings_get_bool(rfi->settings, FreeRDP_GfxH264)) {
-          if (freerdp_settings_get_uint32(rfi->settings, FreeRDP_DesktopWidth) <
-              AVC_MIN_DESKTOP_WIDTH)
-            freerdp_settings_set_uint32(rfi->settings, FreeRDP_DesktopWidth,
-                                        AVC_MIN_DESKTOP_WIDTH);
-          if (freerdp_settings_get_uint32(rfi->settings,
-                                          FreeRDP_DesktopHeight) <
-              AVC_MIN_DESKTOP_HEIGHT)
-            freerdp_settings_set_uint32(rfi->settings, FreeRDP_DesktopHeight,
-                                        AVC_MIN_DESKTOP_HEIGHT);
-        }
+	if (freerdp_settings_get_bool(rfi->settings, FreeRDP_SupportGraphicsPipeline) &&
+			freerdp_settings_get_bool(rfi->settings, FreeRDP_GfxH264)) {
+		if (freerdp_settings_get_uint32(rfi->settings, FreeRDP_DesktopWidth) <
+				AVC_MIN_DESKTOP_WIDTH)
+			freerdp_settings_set_uint32(rfi->settings, FreeRDP_DesktopWidth,
+					AVC_MIN_DESKTOP_WIDTH);
+		if (freerdp_settings_get_uint32(rfi->settings,
+					FreeRDP_DesktopHeight) <
+				AVC_MIN_DESKTOP_HEIGHT)
+			freerdp_settings_set_uint32(rfi->settings, FreeRDP_DesktopHeight,
+					AVC_MIN_DESKTOP_HEIGHT);
+	}
 
 	/* Workaround for FreeRDP issue #5119. This will make our horizontal resolution
 	 * an even value, but it will add a vertical black 1 pixel line on the
@@ -1380,6 +1387,10 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 
 	remmina_plugin_service->protocol_plugin_set_width(gp, freerdp_settings_get_uint32(rfi->settings, FreeRDP_DesktopWidth));
 	remmina_plugin_service->protocol_plugin_set_height(gp, freerdp_settings_get_uint32(rfi->settings, FreeRDP_DesktopHeight));
+
+	w = freerdp_settings_get_uint32(rfi->settings, FreeRDP_DesktopWidth);
+	h = freerdp_settings_get_uint32(rfi->settings, FreeRDP_DesktopHeight);
+	REMMINA_PLUGIN_DEBUG ("Resolution set after workarounds: %dx%d", w, h);
 
 
 	if (remmina_plugin_service->file_get_string(remminafile, "username"))
