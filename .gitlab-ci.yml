@@ -140,7 +140,7 @@ trigger_ppa:
   - apt-get update -qq
   - apt-get install -y -qq curl
   script:
-  - "curl -X POST -F token=$PPA_CI_TOKEN -F ref=master https://gitlab.com/api/v4/projects/10530342/trigger/pipeline"
+  - curl -X POST -F token=$PPA_CI_TOKEN -F ref=master https://gitlab.com/api/v4/projects/10530342/trigger/pipeline
   only:
     - tags
     - web
