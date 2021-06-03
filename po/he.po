@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-06-03 05:57+0000\n"
-"PO-Revision-Date: 2021-05-21 21:34+0000\n"
+"POT-Creation-Date: 2021-06-03 06:47+0000\n"
+"PO-Revision-Date: 2021-06-03 06:48+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/remmina/remmina/"
 "he/>\n"
@@ -387,11 +387,11 @@ msgstr "תיעוד חיבור ה־SSH בטרם היציאה מ־Remmina"
 
 #: src/remmina_ssh_plugin.c:1516
 msgid "Log SSH session asynchronously"
-msgstr ""
+msgstr "תיעוד חיבורי SSH באופן אסינכרוני"
 
 #: src/remmina_ssh_plugin.c:1516
 msgid "Saving the session asynchronously may have a notable performance impact"
-msgstr ""
+msgstr "שמירת החיבור באופן אסינכרוני יכולה להשפיע באופן מהותי על הביצועים"
 
 #: src/remmina_ssh_plugin.c:1517
 msgid "Audible terminal bell"
@@ -1161,111 +1161,111 @@ msgstr "להמשיך את כל העברות הקבצים"
 msgid "SFTP - Secure File Transfer"
 msgstr "SFTP - העברת קבצים מאובטחת"
 
-#: src/remmina_ssh.c:250
+#: src/remmina_ssh.c:237
 #, c-format
 msgid "Could not authenticate with TOTP/OTP/2FA. %s"
 msgstr "לא ניתן להזדהות עם TOTP/OTP/2FA.‏ %s"
 
-#: src/remmina_ssh.c:309 src/remmina_ssh.c:690
+#: src/remmina_ssh.c:296 src/remmina_ssh.c:677
 #, c-format
 msgid "Could not authenticate with SSH password. %s"
 msgstr "לא ניתן להזדהות עם ססמת SSH.‏ %s"
 
-#: src/remmina_ssh.c:336 src/remmina_ssh.c:403
+#: src/remmina_ssh.c:323 src/remmina_ssh.c:390
 msgid "No saved SSH passphrase supplied. Asking user to enter it."
 msgstr "לא נשמרה מילת צופן ל־SSH. נשלחת בבקשה למשתמש להקליד אותה."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:341 src/remmina_ssh.c:382 src/remmina_ssh.c:408
-#: src/remmina_ssh.c:447 src/remmina_ssh.c:760
+#: src/remmina_ssh.c:328 src/remmina_ssh.c:369 src/remmina_ssh.c:395
+#: src/remmina_ssh.c:434 src/remmina_ssh.c:747
 #, c-format
 msgid "Could not authenticate with public SSH key. %s"
 msgstr "לא ניתן להזדהות עם מפתח ה־SSH הציבורי. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:350
+#: src/remmina_ssh.c:337
 #, c-format
 msgid "SSH certificate cannot be imported. %s"
 msgstr "לא ניתן לייבא את אישור ה־SSH.‏ %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:359
+#: src/remmina_ssh.c:346
 #, c-format
 msgid "SSH certificate cannot be copied into the private SSH key. %s"
 msgstr "לא ניתן להעתיק את אישור ה־SSH לקובץ ה־SSH הפרטי. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:369
+#: src/remmina_ssh.c:356
 #, c-format
 msgid "Could not authenticate using SSH certificate. %s"
 msgstr "לא ניתן להזדהות עם אישור SSH.‏ %s"
 
-#: src/remmina_ssh.c:383
+#: src/remmina_ssh.c:370
 msgid "SSH identity file not selected."
 msgstr "לא נבחר קובץ זהות ל־SSH."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:394
+#: src/remmina_ssh.c:381
 #, c-format
 msgid "Public SSH key cannot be imported. %s"
 msgstr "לא ניתן לייבא את מפתח ה־SSH הציבורי. %s"
 
-#: src/remmina_ssh.c:492
+#: src/remmina_ssh.c:479
 #, c-format
 msgid "Could not authenticate automatically with public SSH key. %s"
 msgstr "לא ניתן להזדהות אוטומטית עם מפתח SSH ציבורי. %s"
 
-#: src/remmina_ssh.c:537
+#: src/remmina_ssh.c:524
 #, c-format
 msgid "Could not authenticate automatically with SSH agent. %s"
 msgstr "לא ניתן להזדהות אוטומטית עם סוכן SSH.‏ %s"
 
-#: src/remmina_ssh.c:583 src/remmina_ssh.c:870
+#: src/remmina_ssh.c:570 src/remmina_ssh.c:857
 #, c-format
 msgid "Could not authenticate with SSH GSSAPI/Kerberos. %s"
 msgstr "לא ניתן להזדהות עם GSSAPI/Kerberos מול SSH.‏ %s"
 
-#: src/remmina_ssh.c:612
+#: src/remmina_ssh.c:599
 msgid "The public SSH key changed!"
 msgstr "מפתח ה־SSH הציבורי הוחלף!"
 
-#: src/remmina_ssh.c:725
+#: src/remmina_ssh.c:712
 #, c-format
 msgid "Could not authenticate with keyboard-interactive. %s"
 msgstr "לא ניתן להזדהות עם אינטראקציה של מקלדת. %s"
 
-#: src/remmina_ssh.c:827
+#: src/remmina_ssh.c:814
 #, c-format
 msgid "Could not authenticate with automatic public SSH key. %s"
 msgstr "לא ניתן להזדהות אוטומטית עם מפתח ה־SSH הציבורי. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:935
+#: src/remmina_ssh.c:922
 #, c-format
 msgid "Could not fetch the server's public SSH key. %s"
 msgstr "לא ניתן לקבל את מפתח ה־SSH הציבורי של השרת. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:942
+#: src/remmina_ssh.c:929
 #, c-format
 msgid "Could not fetch public SSH key. %s"
 msgstr "לא ניתן לקבל את מפתח ה־SSH הציבורי. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:950
+#: src/remmina_ssh.c:937
 #, c-format
 msgid "Could not fetch checksum of the public SSH key. %s"
 msgstr "לא ניתן לקבל מחרוזת חישוב של מפתח ה־SSH הציבורי. %s"
 
-#: src/remmina_ssh.c:963
+#: src/remmina_ssh.c:950
 msgid "The server is unknown. The public key fingerprint is:"
 msgstr "השרת אינו ידוע. טביעת האצבע הציבורית היא:"
 
-#: src/remmina_ssh.c:965 src/remmina_ssh.c:971
+#: src/remmina_ssh.c:952 src/remmina_ssh.c:958
 msgid "Do you trust the new public key?"
 msgstr "המפתח הציבורי החדש מהימן בעיניך?"
 
-#: src/remmina_ssh.c:968
+#: src/remmina_ssh.c:955
 msgid ""
 "Warning: The server has changed its public key. This means you are either "
 "under attack,\n"
@@ -1276,154 +1276,154 @@ msgstr ""
 "או שהמנהל החליף את המפתח. טביעת האצבע של המפתח הציבורי החדש היא:"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:993
+#: src/remmina_ssh.c:980
 #, c-format
 msgid "Could not check list of known SSH hosts. %s"
 msgstr "לא ניתן לבדוק את רשימת מארחי ה־SSH המוכרים. %s"
 
-#: src/remmina_ssh.c:1002
+#: src/remmina_ssh.c:989
 msgid "SSH password"
 msgstr "ססמת SSH"
 
-#: src/remmina_ssh.c:1009 src/remmina_ssh.c:1053
+#: src/remmina_ssh.c:996 src/remmina_ssh.c:1040
 msgid "SSH private key passphrase"
 msgstr "מילת צופן למפתח SSH פרטי"
 
-#: src/remmina_ssh.c:1014
+#: src/remmina_ssh.c:1001
 msgid "SSH Kerberos/GSSAPI"
 msgstr "Kerberos/GSSAPI ל־SSH"
 
-#: src/remmina_ssh.c:1019
+#: src/remmina_ssh.c:1006
 msgid "Enter TOTP/OTP/2FA code"
 msgstr "נא למלא קוד TOTP/OTP/2FA"
 
-#: src/remmina_ssh.c:1049 src/remmina_ssh.c:1075
+#: src/remmina_ssh.c:1036 src/remmina_ssh.c:1062
 msgid "SSH tunnel credentials"
 msgstr "פרטי תעלת ה־SSH"
 
-#: src/remmina_ssh.c:1049 src/remmina_ssh.c:1075 plugins/nx/nx_plugin.c:203
+#: src/remmina_ssh.c:1036 src/remmina_ssh.c:1062 plugins/nx/nx_plugin.c:203
 msgid "SSH credentials"
 msgstr "פרטי גישה ב־SSH"
 
-#: src/remmina_ssh.c:1126
+#: src/remmina_ssh.c:1113
 msgid "Keyboard interactive login, TOTP/OTP/2FA"
 msgstr "כניסה עם אינטראקציה של מקלדת, TOTP/OTP/2FA"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1351
+#: src/remmina_ssh.c:1338
 #, c-format
 msgid "Could not start SSH session. %s"
 msgstr "לא ניתן להפעיל התקשרות SSH.‏ %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1757 src/remmina_ssh.c:1820
+#: src/remmina_ssh.c:1744 src/remmina_ssh.c:1807
 #, c-format
 msgid "Could not create channel. %s"
 msgstr "לא ניתן ליצור את הערוץ. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1768
+#: src/remmina_ssh.c:1755
 #, c-format
 msgid "Could not connect to SSH tunnel. %s"
 msgstr "לא ניתן להתחבר לתעלת ה־SSH.‏ %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1835 src/remmina_ssh.c:2467
+#: src/remmina_ssh.c:1822 src/remmina_ssh.c:2453
 #, c-format
 msgid "Could not open channel. %s"
 msgstr "לא ניתן לפתוח ערוץ. %s"
 
-#: src/remmina_ssh.c:1841
+#: src/remmina_ssh.c:1828
 #, c-format
 msgid "Could not run %s on SSH server."
 msgstr "לא ניתן להפעיל את %s בשרת ה־SSH."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1879 src/remmina_ssh.c:1900 src/remmina_ssh.c:1909
+#: src/remmina_ssh.c:1866 src/remmina_ssh.c:1887 src/remmina_ssh.c:1896
 #, c-format
 msgid "Could not request port forwarding. %s"
 msgstr "לא ניתן לבקש הפניית פתחות. %s"
 
-#: src/remmina_ssh.c:1944
+#: src/remmina_ssh.c:1931
 msgid "The server did not respond."
 msgstr "השרת לא הגיב."
 
-#: src/remmina_ssh.c:1987
+#: src/remmina_ssh.c:1974
 #, c-format
 msgid "Cannot connect to local port %i."
 msgstr "לא ניתן להתחבר לפתחה המקומית %i."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2036
+#: src/remmina_ssh.c:2023
 #, c-format
 msgid "Could not write to SSH channel. %s"
 msgstr "לא ניתן לכתוב לערוץ SSH.‏ %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2043
+#: src/remmina_ssh.c:2030
 #, c-format
 msgid "Could not read from tunnel listening socket. %s"
 msgstr "לא ניתן לקרוא משקע האזנה לתעלת SSH‏. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2063
+#: src/remmina_ssh.c:2050
 #, c-format
 msgid "Could not poll SSH channel. %s"
 msgstr "לא ניתן לתשאל ערוץ SSH.‏ %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2070
+#: src/remmina_ssh.c:2057
 #, c-format
 msgid "Could not read SSH channel in a non-blocking way. %s"
 msgstr "לא ניתן לקרוא את ערוץ ה־SSH בצורה שלא תחסום אותו. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2089
+#: src/remmina_ssh.c:2076
 #, c-format
 msgid "Could not send data to tunnel listening socket. %s"
 msgstr "לא ניתן לשלוח נתונים לשקע ההאזנה לתעלה. %s"
 
-#: src/remmina_ssh.c:2191
+#: src/remmina_ssh.c:2178
 msgid "Assign a destination port."
 msgstr "הקצת פתחת יעד."
 
-#: src/remmina_ssh.c:2198
+#: src/remmina_ssh.c:2185
 msgid "Could not create socket."
 msgstr "לא ניתן ליצור שקע."
 
-#: src/remmina_ssh.c:2208
+#: src/remmina_ssh.c:2195
 msgid "Could not bind server socket to local port."
 msgstr "לא ניתן לארגן את שקע השרת לפתחה מקומית."
 
-#: src/remmina_ssh.c:2214
+#: src/remmina_ssh.c:2201
 msgid "Could not listen to local port."
 msgstr "לא ניתן להאזין לפתחה מקומית."
 
 #. TRANSLATORS: Do not translate pthread
-#: src/remmina_ssh.c:2224 src/remmina_ssh.c:2241 src/remmina_ssh.c:2258
-#: src/remmina_ssh.c:2276
+#: src/remmina_ssh.c:2211 src/remmina_ssh.c:2228 src/remmina_ssh.c:2245
+#: src/remmina_ssh.c:2263
 msgid "Could not start pthread."
 msgstr "לא ניתן להתחיל את pthread."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2368
+#: src/remmina_ssh.c:2355
 #, c-format
 msgid "Could not create SFTP session. %s"
 msgstr "לא ניתן ליצור התקשרות SFTP‏. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2373
+#: src/remmina_ssh.c:2360
 #, c-format
 msgid "Could not start SFTP session. %s"
 msgstr "לא ניתן להפעיל התקשרות SSH.‏ %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2497
+#: src/remmina_ssh.c:2483
 #, c-format
 msgid "Could not request shell. %s"
 msgstr "לא ניתן לבקש מעטפת. %s"
 
-#: src/remmina_ssh.c:2618
+#: src/remmina_ssh.c:2601
 msgid "Could not create PTY device."
 msgstr "לא ניתן ליצור התקן pty."
 
