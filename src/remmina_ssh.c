@@ -117,19 +117,6 @@ static const gchar *common_identities[] =
 	NULL
 };
 
-void remmina_ssh_remove_all_chars(char* str)
-{
-	TRACE_CALL(__func__);
-	char *pr = str, *pw = str;
-	char c = 33;
-	while (*pr) {
-		*pw = *pr++;
-		pw += (*pw != c);
-	}
-	*pw = '\0';
-}
-
-
 gchar *
 remmina_ssh_identity_path(const gchar *id)
 {
@@ -2447,7 +2434,6 @@ remmina_ssh_shell_thread(gpointer data)
 	ssh_channel channel = NULL;
 	ssh_channel ch[2], chout[2];
 	gchar *buf = NULL;
-	gchar *bufcp = NULL;
 	gint buf_len;
 	gint len;
 	gint i, ret;
@@ -2571,10 +2557,8 @@ remmina_ssh_shell_thread(gpointer data)
 			}
 			while (len > 0) {
 				ret = write(shell->slave, buf, len);
-				bufcp = g_strdup(buf);
-				remmina_ssh_remove_all_chars(bufcp);
 				if (remmina_file_get_int (remminafile, "sshsavesession", FALSE)) {
-					fwrite(bufcp, ret, 1, fp );
+					fwrite(buf, ret, 1, fp );
 					fflush(fp);
 				}
 				if (ret <= 0) break;
@@ -2593,7 +2577,6 @@ remmina_ssh_shell_thread(gpointer data)
 	UNLOCK_SSH(shell)
 
 	g_free(buf);
-	g_free(bufcp);
 	shell->thread = 0;
 
 	if (shell->exit_callback)
