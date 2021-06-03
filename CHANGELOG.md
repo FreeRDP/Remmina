@@ -1,4 +1,17 @@
-## v1.4.16
+## v1.4.18
+[full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.17...v1.4.18)
+
+* [SNAP] Removing unsupported architectures [!2268](https://gitlab.com/Remmina/Remmina/merge_requests/2268) *@antenore*
+* Try more shells as launcher if default isn't found [!2269](https://gitlab.com/Remmina/Remmina/merge_requests/2269) *@cirelli94*
+* Minor fixes for v1.4.17 [!2270](https://gitlab.com/Remmina/Remmina/merge_requests/2270) *@antenore*
+* SSH session improvements [!2271](https://gitlab.com/Remmina/Remmina/merge_requests/2271) *@antenore*
+* Fixes - Auto-start file created on tray icon disabled [!2272](https://gitlab.com/Remmina/Remmina/merge_requests/2272) *@antenore*
+* RDP: Remove older usage of ClientHostname *@giox069*
+* Fix libfreerdp version check *@giox069*
+* Explicitly set user resolution to a multiple of 4 [!2273](https://gitlab.com/Remmina/Remmina/merge_requests/2273) *@antenore*
+* Code refactoring - ASAN exceptions [!2274](https://gitlab.com/Remmina/Remmina/merge_requests/2274) *@antenore*
+
+## v1.4.17
 [full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.16...v1.4.17)
 
 * Fix build with musl libc [!2259](https://gitlab.com/Remmina/Remmina/merge_requests/2259) *@ncopa*
