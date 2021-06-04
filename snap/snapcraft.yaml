@@ -194,6 +194,7 @@ parts:
       - libusb-1.0-0
       - libvte-2.91-0
       - libzvbi0
+      - spice-client-glib-usb-acl-helper
       - suckless-tools
       - vim
       - xauth
@@ -214,6 +215,7 @@ parts:
       snap/remmina/current: .
     stage:
       - -./usr/share/fonts/**
+      - ./usr/lib/spice-gtk/spice-client-glib-usb-acl-helper
 
     override-build: |
       set -eu
@@ -248,7 +250,6 @@ parts:
       - libavcodec57
       - libspice-client-glib-2.0-8
       - libspice-client-gtk-3.0-5
-      - spice-client-glib-usb-acl-helper
       - libavutil55
       - libopus0
       - libswresample2
