@@ -7,13 +7,15 @@
 # Oliver <websites@posteo.de>, 2020, 2021.
 # Jeannette L <j.lavoie@net-c.ca>, 2020.
 # Milo Ivir <mail@milotype.de>, 2020, 2021.
+# J. Lavoie <j.lavoie@net-c.ca>, 2021.
+# Joachim Breitsprecher <joachim.breitsprecher@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-06-03 14:35+0000\n"
-"PO-Revision-Date: 2021-06-04 13:49+0000\n"
-"Last-Translator: Johannes Weberhofer <jweberhofer@weberhofer.at>\n"
+"PO-Revision-Date: 2021-06-04 14:27+0000\n"
+"Last-Translator: Joachim Breitsprecher <joachim.breitsprecher@gmail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/remmina/remmina/"
 "de/>\n"
 "Language: de\n"
@@ -189,9 +191,9 @@ msgid ""
 "\"Advanced\" tab of terminal connections and editable in the \"Terminal\" "
 "tab in the settings."
 msgstr ""
-"Diese Datei beinhaltet dass Benutzer-Terminal Farbschame das im \"Erweitert"
-"\"-Reiter der Termina-Verbindung ausgewählt werden kann und das im \"Terminal"
-"\"-Reiter in den Einstellungen bearbeitet werden kann."
+"Diese Datei beinhaltet dass Benutzer-Terminal Farbschame das im \"Erweitert\""
+"-Reiter der Termina-Verbindung ausgewählt werden kann und das im \"Terminal\""
+"-Reiter in den Einstellungen bearbeitet werden kann."
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_ssh_plugin.c:539
@@ -345,8 +347,8 @@ msgid ""
 "  • %g is substituted with Remmina profile group name\n"
 "  • %d is substituted with local date and time in ISO 8601 format\n"
 msgstr ""
-"Beim Festlegen des Dateinamens können folgende Platzhalter verwendet "
-"werden:\n"
+"Beim Festlegen des Dateinamens können folgende Platzhalter verwendet werden:"
+"\n"
 "\n"
 "   • %h wird durch den Servernamen ersetzt\n"
 "   • %t wird durch den SSH Servernamen ersetzt\n"
@@ -597,8 +599,8 @@ msgid ""
 "supported by a plugin) or a supported URI (RDP, VNC, SSH or SPICE)"
 msgstr ""
 "Verbindung zu einem Desktop herstellen über eine Definition in einer Datei (."
-"remmina oder von einem Plugin-stezifisch) oder über eine unterstützten URI "
-"(RDP, VNC, SSH oder SPICE)"
+"remmina oder von einem Plugin-stezifisch) oder über eine unterstützten URI ("
+"RDP, VNC, SSH oder SPICE)"
 
 #: src/remmina.c:88 src/remmina.c:90 src/remmina.c:92
 msgid "FILE"
@@ -752,8 +754,8 @@ msgstr ""
 "\n"
 "\tremmina -c rdp://benutzername:verschlüsseltesPasswort@server\n"
 "\tremmina -c vnc://benutzername:verschlüsseltesPasswort@server\n"
-"\tremmina -c vnc://server?VncBenutzername=benutzername"
-"\\&VncPasswort=verschlüsseltesVncPasswort\n"
+"\tremmina -c vnc://server?VncBenutzername=benutzername\\&VncPasswort="
+"verschlüsseltesVncPasswort\n"
 "\n"
 "Um ein Passwort zur Benutzung in einer URI zu verschlüsseln:\n"
 "\n"
@@ -763,9 +765,9 @@ msgstr ""
 "Bildschirmauflösung in einem Remmina Verbindungsprofil zu setzten, verwenden "
 "Sie:\n"
 "\n"
-"\techo \"benutzername\\napasswort\" | remmina --update-profile /PFAD/ZU/"
-"PROFILDATEI.remmina --set-option benutzername --set-option resolution_mode=2 "
-"--set-option passwort\n"
+"\techo \"benutzername\\n"
+"apasswort\" | remmina --update-profile /PFAD/ZU/PROFILDATEI.remmina --set-"
+"option benutzername --set-option resolution_mode=2 --set-option passwort\n"
 
 #: src/remmina_icon.c:139
 msgid "Open Main Window"
@@ -1266,8 +1268,7 @@ msgstr "Anmeldung mit dem öffentlichen SSH-Schlüssel funktioniert nicht. %s"
 #: src/remmina_ssh.c:922
 #, c-format
 msgid "Could not fetch the server's public SSH key. %s"
-msgstr ""
-"Der öffentliche SSH-Schlüssel des Servers kann nicht gelesen werden. %s"
+msgstr "Der öffentliche SSH-Schlüssel des Servers kann nicht gelesen werden. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:929
@@ -3238,8 +3239,8 @@ msgid ""
 "\">anonymous</a></b> statistics. (*)"
 msgstr ""
 "Sende <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-"remmina__stats_8c.html#details\" title=\"Remmina Benutzungsstatistiken"
-"\">anonyme</a></b> Benutzungsstatistiken (*)"
+"remmina__stats_8c.html#details\" title=\"Remmina Benutzungsstatistiken\""
+">anonyme</a></b> Benutzungsstatistiken (*)"
 
 #: data/ui/remmina_news.glade:142 data/ui/remmina_news.glade:195
 msgid "Send anonymous statistics"
@@ -3255,8 +3256,7 @@ msgstr "Anwenden"
 
 #: data/ui/remmina_news.glade:169
 msgid "Allow Remmina to automatically open .rdp and .remmina files."
-msgstr ""
-"Erlauben Sie Remmina, automatisch .rdp- und .remmina-Dateien zu öffnen."
+msgstr "Erlauben Sie Remmina, automatisch .rdp- und .remmina-Dateien zu öffnen."
 
 #. The star (*) is a reference to privacy consent
 #: data/ui/remmina_news.glade:183 data/ui/remmina_preferences.glade:560
@@ -3264,8 +3264,8 @@ msgid ""
 "Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
 "\">remmina.org</a> (*)"
 msgstr ""
-"Nachrichten von <a href=\"https://remmina.org\" title=\"Remmina news site"
-"\">remmina.org</a> empfangen (*)"
+"Nachrichten von <a href=\"https://remmina.org\" title=\"Remmina news site\""
+">remmina.org</a> empfangen (*)"
 
 #: data/ui/remmina_news.glade:208 data/ui/remmina_preferences.glade:527
 msgid ""
@@ -3292,9 +3292,9 @@ msgid ""
 msgstr ""
 "<span>\n"
 "<b>Wir danken Ihnen, dass sie freie Software mit einer Copyleft-Lizenz "
-"benutzen! <a href=\"https://remmina.org/donations/\" title=\"Spenden!"
-"\">Spenden Sie</a> an unser Projekt, um uns eine Freude und das Programm "
-"noch besser zu machen.</b>\n"
+"benutzen! <a href=\"https://remmina.org/donations/\" title=\"Spenden!\""
+">Spenden Sie</a> an unser Projekt, um uns eine Freude und das Programm noch "
+"besser zu machen.</b>\n"
 "</span>\n"
 
 #: data/ui/remmina_news.glade:277
@@ -3468,8 +3468,8 @@ msgid ""
 "\n"
 "\n"
 msgstr ""
-"%G Gruppenname (Schrägstriche werden automatisch in Bindestriche "
-"verwandelt)\n"
+"%G Gruppenname (Schrägstriche werden automatisch in Bindestriche verwandelt)"
+"\n"
 "%P Protokollname\n"
 "%N Verbindungsname\n"
 "%h Hostname/IP\n"

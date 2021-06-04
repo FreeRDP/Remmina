@@ -2,7 +2,7 @@
 # Copyright © 2012 Rosetta Contributors and Canonical Ltd 2012
 # This file is distributed under the same license as the remmina package.
 # Po-Hsu Lin <po-hsu.lin at canonical.com>, 2019.
-# Walter Cheuk <wwycheuk@gmail.com>, 2019.
+# Walter Cheuk <wwycheuk@gmail.com>, 2019, 2021.
 # Allan Nordhøy <epost@anotheragency.no>, 2019, 2020, 2021.
 # Antenore Gatta <antenore@simbiosi.org>, 2020, 2021.
 msgid ""
@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-06-03 14:35+0000\n"
-"PO-Revision-Date: 2021-05-05 15:39+0000\n"
+"PO-Revision-Date: 2021-06-04 14:34+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
 "remmina/remmina/zh_Hant/>\n"
@@ -2294,9 +2294,7 @@ msgstr "無法找到 RDP 伺服器位置 %s。"
 msgid ""
 "Could not connect to the RDP server “%s” via TLS. Check that client and "
 "server support a common TLS version."
-msgstr ""
-"連線至 RDP 伺服器 %s 發生錯誤。TLS 連線失敗。請檢查客戶端與伺服器是否支援通用"
-"的 TLS 版本。"
+msgstr "連線至 RDP 伺服器 %s 發生錯誤。TLS 連線失敗。請檢查客戶端與伺服器是否支援通用的 TLS 版本。"
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:2079
@@ -2320,9 +2318,7 @@ msgstr "無法啟動 pthread。"
 msgid ""
 "You requested a H.264 GFX mode for the server “%s”, but your libfreerdp does "
 "not support H.264. Please use a non-AVC colour depth setting."
-msgstr ""
-"要求了於 %s 伺服器使用 H.264 GFX 模式，但您的 libfreerdp 並不支援 H.264。請使"
-"用非 AVC 的色彩深度設定。"
+msgstr "要求了於 %s 伺服器使用 H.264 GFX 模式，但您的 libfreerdp 並不支援 H.264。請使用非 AVC 的色彩深度設定。"
 
 #: plugins/rdp/rdp_plugin.c:2100
 #, c-format
@@ -2597,8 +2593,8 @@ msgid ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
 msgstr ""
-"\"Samsung_CLX-3300_系列\":\"Samsung CLX-3300 系列 PS\";\"Canon MF410\":"
-"\"Canon MF410 系列 UFR II\""
+"\"Samsung_CLX-3300_系列\":\"Samsung CLX-3300 系列 PS\";\"Canon MF410\":\"Canon "
+"MF410 系列 UFR II\""
 
 #: plugins/rdp/rdp_plugin.c:2643
 msgid "USB device redirection"
@@ -2952,9 +2948,8 @@ msgid ""
 "the appropriate permissions to Remmina. As an alternative you can enter the "
 "following commands in a terminal window:"
 msgstr ""
-"似乎 Remmina 是以 SNAP 套件的方式在您的系統上運行。為了啟用一些重要的功能，像"
-"是將密碼儲存到您的鑰匙圈與 RDP 印表機共享，請開啟您的「軟體中心」，並給予 "
-"Remmina 適當的權限；又或在終端機輸入以下指令："
+"似乎 Remmina 是以 SNAP 套件的方式在您的系統上運行。為了啟用一些重要的功能，像是將密碼儲存到您的鑰匙圈與 RDP "
+"印表機共享，請開啟您的「軟體中心」，並給予 Remmina 適當的權限；又或在終端機輸入以下指令："
 
 #: data/ui/remmina_snap_info_dialog.glade:167
 msgid "<big>Permissions</big>"
@@ -3145,8 +3140,8 @@ msgid ""
 "\">anonymous</a></b> statistics. (*)"
 msgstr ""
 "傳送<b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-"remmina__stats_8c.html#details\" title=\"Remmina usage statistics\">匿名</"
-"a></b>統計資料給 remmina.org"
+"remmina__stats_8c.html#details\" title=\"Remmina usage statistics\">匿名</a></"
+"b>統計資料給 remmina.org"
 
 #: data/ui/remmina_news.glade:142 data/ui/remmina_news.glade:195
 msgid "Send anonymous statistics"
@@ -3192,9 +3187,8 @@ msgid ""
 "</span>\n"
 msgstr ""
 "<span>\n"
-"<b>Remmina 是由無畏的貢獻者們在他們的閒暇時間所開發的，加入勇者們的行列，<a "
-"href=\"https://remmina.org/donations/\" title=\"贊助 Remmina\">贊助我們的英雄"
-"們！</a></b>\n"
+"<b>Remmina 是由無畏的貢獻者們在他們的閒暇時間所開發的，加入勇者們的行列，<a href=\"https://remmina.org/"
+"donations/\" title=\"贊助 Remmina\">贊助我們的英雄們！</a></b>\n"
 "</span>\n"
 
 #: data/ui/remmina_news.glade:277
@@ -3576,9 +3570,7 @@ msgstr "丟棄連線之前 TCP 應發送的 keepalive probes 數量。"
 msgid ""
 "Amount of milliseconds to attempt acknowledging data before closing the "
 "corresponding TCP connection forcibly."
-msgstr ""
-"它指定在 TCP 強制關閉相應連線之前，傳輸數據可能保持未確認狀態的最長時間（毫"
-"秒）。"
+msgstr "它指定在 TCP 強制關閉相應連線之前，傳輸數據可能保持未確認狀態的最長時間（毫秒）。"
 
 #: data/ui/remmina_preferences.glade:1563
 msgid "SSH options"
@@ -3678,8 +3670,8 @@ msgid ""
 "Choose a colour scheme file. Usually available in /usr/share/remmina/theme. "
 "https://github.com/mbadolato/iTerm2-Color-Schemes has more details."
 msgstr ""
-"選擇配色檔。預先安裝的配色通常在 /usr/share/remmina/theme。請參閱 https://"
-"github.com/mbadolato/iTerm2-Color-Schemes"
+"選擇配色檔。預先安裝的配色通常在 /usr/share/remmina/theme。請參閱 https://github.com/mbadolato/"
+"iTerm2-Color-Schemes"
 
 #: data/ui/remmina_preferences.glade:2070
 msgid "Pick a terminal colouring file"

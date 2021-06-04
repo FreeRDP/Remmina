@@ -2,19 +2,20 @@
 # Copyright © 2012 Rosetta Contributors and Canonical Ltd 2012
 # This file is distributed under the same license as the remmina package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
-# Tuomas Lähteenmäki <lahtis@gmail.com>, 2019, 2020.
+# Tuomas Lähteenmäki <lahtis@gmail.com>, 2019, 2020, 2021.
 # Jeannette L <j.lavoie@net-c.ca>, 2020.
 # Jiri Grönroos <jiri.gronroos@iki.fi>, 2020, 2021.
 # Allan Nordhøy <epost@anotheragency.no>, 2020, 2021.
 # Antenore Gatta <antenore@simbiosi.org>, 2021.
 # Ricky Tigg <ricky.tigg@gmail.com>, 2021.
+# J. Lavoie <j.lavoie@net-c.ca>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-06-03 14:35+0000\n"
-"PO-Revision-Date: 2021-05-05 15:39+0000\n"
-"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"PO-Revision-Date: 2021-06-04 14:28+0000\n"
+"Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/remmina/remmina/"
 "fi/>\n"
 "Language: fi\n"
@@ -759,9 +760,9 @@ msgstr ""
 "Päivitääksesi käyttäjänimi ja salasana ja aseta Remmina-yhteysprofiilille "
 "erilainen resoluutiotila käytä:\n"
 "\n"
-"\techo \"username\\napassword\" | remmina --update-profile /PATH/TO/FOO."
-"remmina --set-option username --set-option resolution_mode=2 --set-option "
-"password\n"
+"\techo \"username\\n"
+"apassword\" | remmina --update-profile /PATH/TO/FOO.remmina --set-option "
+"username --set-option resolution_mode=2 --set-option password\n"
 
 #: src/remmina_icon.c:139
 msgid "Open Main Window"
@@ -1237,8 +1238,7 @@ msgstr ""
 #: src/remmina_ssh.c:570 src/remmina_ssh.c:857
 #, c-format
 msgid "Could not authenticate with SSH GSSAPI/Kerberos. %s"
-msgstr ""
-"Todennusta ei voitu todentaa SSH-Kerberos/GSSAPI-todennuksen avulla. %s"
+msgstr "Todennusta ei voitu todentaa SSH-Kerberos/GSSAPI-todennuksen avulla. %s"
 
 #: src/remmina_ssh.c:599
 msgid "The public SSH key changed!"
@@ -2136,8 +2136,7 @@ msgstr "Auto-LZ"
 
 #: plugins/spice/spice_plugin.c:650
 msgid "Disable video overlay if videos are not displayed properly.\n"
-msgstr ""
-"Poista videoiden peittokuva käytöstä, jos videoita ei näytetä oikein.\n"
+msgstr "Poista videoiden peittokuva käytöstä, jos videoita ei näytetä oikein.\n"
 
 #: plugins/spice/spice_plugin.c:667
 msgid "Use TLS encryption"
@@ -3280,8 +3279,8 @@ msgid ""
 "\">anonymous</a></b> statistics. (*)"
 msgstr ""
 "Lähetä <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-"remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
-"\">anonyymeja</a></b> tilastoja. (*)"
+"remmina__stats_8c.html#details\" title=\"Remmina usage statistics\""
+">anonyymeja</a></b> tilastoja. (*)"
 
 #: data/ui/remmina_news.glade:142 data/ui/remmina_news.glade:195
 msgid "Send anonymous statistics"
@@ -3305,8 +3304,8 @@ msgid ""
 "Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
 "\">remmina.org</a> (*)"
 msgstr ""
-"Nouda uutiset <a href=\"https://remmina.org\" title=\"Remmina news site"
-"\">remmina.orgista</a> (*)"
+"Nouda uutiset <a href=\"https://remmina.org\" title=\"Remmina news site\""
+">remmina.orgista</a> (*)"
 
 #: data/ui/remmina_news.glade:208 data/ui/remmina_preferences.glade:527
 msgid ""
@@ -3331,9 +3330,9 @@ msgid ""
 "</span>\n"
 msgstr ""
 "<span>\n"
-"<b> Kiitos, että valitsit vapaan copyleft-ohjelman. <a href=\"https://"
-"remmina.org/donations/\" title=\"Remmina-lahjoituksia\">Lahjoitukset</a> "
-"tekevät meistä iloisia ja auttavat parantamaan ohjelmaa entisestään.</b>\n"
+"<b> Kiitos, että valitsit vapaan copyleft-ohjelman. <a href=\"https://remmina"
+".org/donations/\" title=\"Remmina-lahjoituksia\">Lahjoitukset</a> tekevät "
+"meistä iloisia ja auttavat parantamaan ohjelmaa entisestään.</b>\n"
 "</span>\n"
 
 #: data/ui/remmina_news.glade:277
@@ -3457,8 +3456,8 @@ msgid ""
 msgstr ""
 "%p Profiilin nimi\n"
 "%h Palvelimen nimi/IP\n"
-"%Y vuosi, %m kuukausi, %d päivä, %H tunti, %M minuutti, %S sekunti (UTC-"
-"aika)\n"
+"%Y vuosi, %m kuukausi, %d päivä, %H tunti, %M minuutti, %S sekunti (UTC-aika)"
+"\n"
 
 #: data/ui/remmina_preferences.glade:361
 msgid ""
@@ -3705,8 +3704,8 @@ msgstr "SSH-lokitaso"
 #: data/ui/remmina_preferences.glade:1492
 msgid "Seconds of connection idleness before TCP keepalive probes are sent."
 msgstr ""
-"Yhteyden tyhjäkäynnin sekunnit ennen kuin TCP:n pidä hengissä -luotaimet "
-"(Keep Alive) on lähetetty."
+"Yhteyden tyhjäkäynnin sekunnit ennen kuin TCP:n pidä hengissä -luotaimet ("
+"Keep Alive) on lähetetty."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
 #: data/ui/remmina_preferences.glade:1508

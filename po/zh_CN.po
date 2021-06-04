@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the remmina package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
 # shijing <jingshi@ubuntukylin.com>, 2019.
-# Allan Nordhøy <epost@anotheragency.no>, 2019, 2020.
+# Allan Nordhøy <epost@anotheragency.no>, 2019, 2020, 2021.
 # anonymous <noreply@weblate.org>, 2019.
 # 玉堂白鹤 <yjwork@qq.com>, 2020, 2021.
 # Antenore Gatta <antenore@simbiosi.org>, 2020, 2021.
@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-06-03 14:35+0000\n"
-"PO-Revision-Date: 2021-05-21 15:12+0000\n"
-"Last-Translator: Eric <spice2wolf@gmail.com>\n"
+"PO-Revision-Date: 2021-06-04 14:34+0000\n"
+"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "remmina/remmina/zh_Hans/>\n"
 "Language: zh_CN\n"
@@ -595,9 +595,7 @@ msgstr "显示关于对话框"
 msgid ""
 "Connect either to a desktop described in a file (.remmina or a filetype "
 "supported by a plugin) or a supported URI (RDP, VNC, SSH or SPICE)"
-msgstr ""
-"连接到文件(.remmina或插件支持的文件类型)描述的桌面，或支持的URI (RDP、VNC、"
-"SSH或SPICE)"
+msgstr "连接到文件(.remmina或插件支持的文件类型)描述的桌面，或支持的URI (RDP、VNC、SSH或SPICE)"
 
 #: src/remmina.c:88 src/remmina.c:90 src/remmina.c:92
 msgid "FILE"
@@ -754,9 +752,9 @@ msgstr ""
 "\n"
 "要更新用户名和密码并设置 Remmina 连接配置文件的不同分辨率模式，请使用 :\n"
 "\n"
-"\techo \"username\\napassword\" | remmina --update-profile /PATH/TO/FOO."
-"remmina --set-option username --set-option resolution_mode=2 --set-option "
-"password\n"
+"\techo \"username\\n"
+"apassword\" | remmina --update-profile /PATH/TO/FOO.remmina --set-option "
+"username --set-option resolution_mode=2 --set-option password\n"
 
 #: src/remmina_icon.c:139
 msgid "Open Main Window"
@@ -2266,9 +2264,7 @@ msgstr "无法找到 RDP 服务器 “%s”的地址。"
 msgid ""
 "Could not connect to the RDP server “%s” via TLS. Check that client and "
 "server support a common TLS version."
-msgstr ""
-"连接到 RDP 服务器 “%s” 时出错。TLS 连接失败。请检查客户端和服务器是否支持常见"
-"的 TLS 版本。"
+msgstr "连接到 RDP 服务器 “%s” 时出错。TLS 连接失败。请检查客户端和服务器是否支持常见的 TLS 版本。"
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:2079
@@ -2292,9 +2288,7 @@ msgstr "无法启动 libfreerdp-gdi。"
 msgid ""
 "You requested a H.264 GFX mode for the server “%s”, but your libfreerdp does "
 "not support H.264. Please use a non-AVC colour depth setting."
-msgstr ""
-"您为服务器 “%s” 请求了 H.264 GFX 模式，但您的 libfreerdp 不支持 H.264。 请使"
-"用非AVC颜色深度设置。"
+msgstr "您为服务器 “%s” 请求了 H.264 GFX 模式，但您的 libfreerdp 不支持 H.264。 请使用非AVC颜色深度设置。"
 
 #: plugins/rdp/rdp_plugin.c:2100
 #, c-format
@@ -2939,8 +2933,8 @@ msgid ""
 "the appropriate permissions to Remmina. As an alternative you can enter the "
 "following commands in a terminal window:"
 msgstr ""
-"要访问一些重要的功能，如在您的密匙环保存密码和RDP打印机共享，请打开您的软件中"
-"心，并给予Remmina适当的权限。作为替代办法，您可以在终端窗口中输入以下命令:"
+"要访问一些重要的功能，如在您的密匙环保存密码和RDP打印机共享，请打开您的软件中心，并给予Remmina适当的权限。作为替代办法，您可以在终端窗口中输入以"
+"下命令:"
 
 #: data/ui/remmina_snap_info_dialog.glade:167
 msgid "<big>Permissions</big>"
@@ -2952,8 +2946,8 @@ msgid ""
 "profiles are saved inside the Snap file system by default. You can change "
 "the location in the Remmina preferences."
 msgstr ""
-"由于 Snap 程序包是在系统的其余部分运行的，因此默认情况下，Remmina 配置文件保"
-"存在 Snap 文件系统中。 您可以在 Remmina 首选项中更改位置。"
+"由于 Snap 程序包是在系统的其余部分运行的，因此默认情况下，Remmina 配置文件保存在 Snap 文件系统中。 您可以在 Remmina "
+"首选项中更改位置。"
 
 #: data/ui/remmina_snap_info_dialog.glade:222
 msgid "Change where Remmina profiles are stored"
@@ -3140,8 +3134,8 @@ msgstr ""
 "</span>\n"
 "\n"
 "<span>\n"
-"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina 发行说"
-"明\"><i>访问网站以阅读发行说明</i></a>。\n"
+"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina 发行说明\""
+"><i>访问网站以阅读发行说明</i></a>。\n"
 "</span>"
 
 #. The star (*) is a reference to privacy consent
@@ -3152,8 +3146,7 @@ msgid ""
 "\">anonymous</a></b> statistics. (*)"
 msgstr ""
 "发送 <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-"remmina__stats_8c.html#details\" title=\"Remmina 使用统计\">匿名</a></b> 统"
-"计。 (*)"
+"remmina__stats_8c.html#details\" title=\"Remmina 使用统计\">匿名</a></b> 统计。 (*)"
 
 #: data/ui/remmina_news.glade:142 data/ui/remmina_news.glade:195
 msgid "Send anonymous statistics"
@@ -3184,9 +3177,7 @@ msgstr ""
 msgid ""
 "* By enabling statistics and/or news you consent to send and fetch data to/"
 "from remmina.org"
-msgstr ""
-"* 通过启用统计信息和(或)新闻，您同意向 remmina.org 发送数据或从 remmina.org "
-"获取数据"
+msgstr "* 通过启用统计信息和(或)新闻，您同意向 remmina.org 发送数据或从 remmina.org 获取数据"
 
 #: data/ui/remmina_news.glade:231
 msgid "<big>Take part</big>"
@@ -3680,8 +3671,8 @@ msgid ""
 "Choose a colour scheme file. Usually available in /usr/share/remmina/theme. "
 "https://github.com/mbadolato/iTerm2-Color-Schemes has more details."
 msgstr ""
-"选择一个配色方案文件，预安装的主题通常在 /usr/share/remmina/theme 下。请参阅 "
-"https://github.com/mbadolato/iTerm2-Color-Schemes。"
+"选择一个配色方案文件，预安装的主题通常在 /usr/share/remmina/theme 下。请参阅 https://github.com/"
+"mbadolato/iTerm2-Color-Schemes。"
 
 #: data/ui/remmina_preferences.glade:2070
 msgid "Pick a terminal colouring file"
