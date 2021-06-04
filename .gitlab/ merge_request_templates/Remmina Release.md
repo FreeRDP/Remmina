@@ -1,4 +1,4 @@
-## Release type or title)
+## Release type or title
 
 ## List of changes
 
