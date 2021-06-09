@@ -15,13 +15,14 @@
 # Дубовский Алексей Георгиевич <1100dag@norgau.com>, 2020, 2021.
 # Dmitriy Q <krotesk@mail.ru>, 2021.
 # Antenore Gatta <antenore@simbiosi.org>, 2021.
+# flyvint <flyvint@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-06-03 14:35+0000\n"
-"PO-Revision-Date: 2021-06-04 14:32+0000\n"
-"Last-Translator: Lesya Novaselskaya <mesnevi@airpost.net>\n"
+"PO-Revision-Date: 2021-06-09 11:33+0000\n"
+"Last-Translator: flyvint <flyvint@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/remmina/remmina/"
 "ru/>\n"
 "Language: ru\n"
@@ -400,11 +401,13 @@ msgstr "Записывать в журнал сессию SSH при выход�
 
 #: src/remmina_ssh_plugin.c:1516
 msgid "Log SSH session asynchronously"
-msgstr ""
+msgstr "Асинхронно регистрировать сеанс SSH"
 
 #: src/remmina_ssh_plugin.c:1516
 msgid "Saving the session asynchronously may have a notable performance impact"
 msgstr ""
+"Асинхронное сохранение сеанса может существенно повлиять на "
+"производительность"
 
 #: src/remmina_ssh_plugin.c:1517
 msgid "Audible terminal bell"
@@ -420,7 +423,7 @@ msgstr "Не запоминать пароли"
 
 #: src/remmina_ssh_plugin.c:1520
 msgid "Strict host key checking"
-msgstr "Строгая проверка хост клавиш"
+msgstr "Строгая проверка хост-клавиш"
 
 #: src/remmina_ssh_plugin.c:1534
 msgid "SSH - Secure Shell"
@@ -461,18 +464,17 @@ msgstr[2] "%d паролей изменено."
 #: src/remmina_public.c:345
 #, c-format
 msgid "Address is too long for UNIX socket_path: %s"
-msgstr ""
+msgstr "Адрес слишком длинный для UNIX socket_path: %s"
 
 #: src/remmina_public.c:355
 #, c-format
 msgid "Creating UNIX socket failed: %s"
-msgstr ""
+msgstr "Создание сокета UNIX не удалось: %s"
 
 #: src/remmina_public.c:361
-#, fuzzy, c-format
-#| msgid "VNC connection failed: %s"
+#, c-format
 msgid "Connecting to UNIX socket failed: %s"
-msgstr "Подключение через VNC не удалось: %s"
+msgstr "Подключение к сокету UNIX не удалось: %s"
 
 #: src/remmina_public.c:738
 msgid "Please enter format 'widthxheight'."
@@ -697,7 +699,7 @@ msgstr "Показать версию приложения"
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:116
 msgid "Show version of the application and its plugins"
-msgstr "Показать версию приложения, включая версии модульа"
+msgstr "Показать версию приложения, включая версии модулей"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:118
@@ -845,7 +847,7 @@ msgstr "Заполнять окно клиента при масштабиров
 
 #: src/rcw.c:1971
 msgid "Send clipboard content as keystrokes"
-msgstr ""
+msgstr "Отправлять содержимое буфера обмена в виде нажатий клавиш"
 
 #: src/rcw.c:2071
 msgid "Turn off scaling to avoid screenshot distortion."
@@ -1462,12 +1464,6 @@ msgid "Could not create PTY device."
 msgstr "Не удалось создать PTY устройство."
 
 #: src/remmina_file_editor.c:60
-#, fuzzy
-#| msgid ""
-#| "<tt><big>Supported formats\n"
-#| "• server\n"
-#| "• server:port\n"
-#| "• [server]:port</big></tt>"
 msgid ""
 "<big>Supported formats\n"
 "• server\n"
@@ -1476,26 +1472,14 @@ msgid ""
 "• ID:repeater ID number\n"
 "• unix:///path/socket.sock</big>"
 msgstr ""
-"<tt><big>Поддерживаемые форматы\n"
+"<big>Поддерживаемые форматы\n"
 "• сервер\n"
-"• сервер:порт\n"
-"• [сервер]:порт</big></tt>"
+"• сервер[:порт]\n"
+"Дополнительные форматы VNC\n"
+"• ID:числовое значение ID репитера\n"
+"• unix:///путь/сокет.sock</big>"
 
 #: src/remmina_file_editor.c:69
-#, fuzzy
-#| msgid ""
-#| "<tt><big>• command in PATH args %h\n"
-#| "• /path/to/foo -options %h %u\n"
-#| "• %h is substituted with the server name\n"
-#| "• %t is substituted with the SSH server name\n"
-#| "• %u is substituted with the username\n"
-#| "• %U is substituted with the SSH username\n"
-#| "• %p is substituted with Remmina profile name\n"
-#| "• %g is substituted with Remmina profile group name\n"
-#| "• %d is substituted with local date and time in ISO 8601 format\n"
-#| "Do not run in background if you want the command to be executed before "
-#| "connecting.\n"
-#| "</big></tt>"
 msgid ""
 "<big>• command in PATH args %h\n"
 "• /path/to/foo -options %h %u\n"
@@ -1510,38 +1494,30 @@ msgid ""
 "connecting.\n"
 "</big>"
 msgstr ""
-"<tt><big>• команды в аргументах PATH %h\n"
+"<big>• команды в аргументах PATH %h\n"
 "• /path/to/foo -options %h %u\n"
 "• %h назначает имя сервера\n"
 "• %t назначает имя сервера SSH\n"
 "• %u назначает имя пользователя\n"
 "• %U назначает имя пользователя SSH\n"
 "• %p назначает имя профиля Remmina\n"
-"• %g назначает имя групппы профиля Remmina\n"
+"• %g назначает имя группы профиля Remmina\n"
 "• %d заменяется локальным временем в формате iso8601\n"
 "Не запускайте в фоновом режиме, если хотите выполнять команды до соединения."
 "\n"
-"</big></tt>"
+"</big>"
 
 #: src/remmina_file_editor.c:83
-#, fuzzy
-#| msgid ""
-#| "<tt><big>Supported formats\n"
-#| "• server\n"
-#| "• server:port\n"
-#| "• [server]:port\n"
-#| "• username@server:port (SSH protocol only)</big></tt>"
 msgid ""
 "<big>Supported formats\n"
 "• server\n"
 "• server[:port]\n"
 "• username@server[:port] (SSH protocol only)</big>"
 msgstr ""
-"<tt><big>Поддерживаемые форматы\n"
+"<big>Поддерживаемые форматы\n"
 "• сервер\n"
-"• сервер:порт\n"
-"• [сервер]:порт\n"
-"• пользователь@сервер:порт (только для SSH)</big></tt>"
+"• сервер[:порт]\n"
+"• пользователь@сервер[:порт] (только для SSH)</big>"
 
 #: src/remmina_file_editor.c:149
 msgid "Choose a Remote Desktop Server"
@@ -1594,11 +1570,11 @@ msgstr "После соединения"
 
 #: src/remmina_file_editor.c:833
 msgid "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
-msgstr "/путь/к/команде -опция1 arg %h %u %t -опция2 %U %p %g"
+msgstr "/путь/к/команде -опция1 аргумент %h %u %t -опция2 %U %p %g"
 
 #: src/remmina_file_editor.c:837
 msgid "Start-up"
-msgstr "Запуск"
+msgstr "При запуске"
 
 #: src/remmina_file_editor.c:840
 msgid "Auto-start this profile"
@@ -1699,62 +1675,46 @@ msgid "_Clear"
 msgstr "_Очистить"
 
 #: plugins/gvnc/gvnc_plugin_config.h:40
-#, fuzzy
-#| msgid "Remmina VNC Plugin"
 msgid "Remmina VNC plugin for GNOME and KVM"
-msgstr "Модуль VNC Remmina"
+msgstr "Модуль VNC Remmina для GNOME и KVM"
 
 #: plugins/gvnc/gvnc_plugin.c:477
-#, fuzzy, c-format
-#| msgid "Authentication type"
+#, c-format
 msgid "Unsupported authentication type %u"
-msgstr "Тип аутентификации"
+msgstr "Неподдерживаемый тип аутентификации %u"
 
 #: plugins/gvnc/gvnc_plugin.c:489
-#, fuzzy, c-format
-#| msgid "Authentication type"
+#, c-format
 msgid "Authentication failure: %s"
-msgstr "Тип аутентификации"
+msgstr "Ошибка аутентификации: %s"
 
 #: plugins/gvnc/gvnc_plugin.c:539 plugins/vnc/vnc_plugin.c:820
 msgid "Enter VNC authentication credentials"
 msgstr "Введите данные авторизации VNC"
 
 #: plugins/gvnc/gvnc_plugin.c:820
-#, fuzzy
-#| msgid "Use system proxy settings"
 msgid "Use server settings"
-msgstr "Использовать системные настройки прокси"
+msgstr "Использовать настройки сервера"
 
 #: plugins/gvnc/gvnc_plugin.c:821
-#, fuzzy
-#| msgid "True colour (24 bit)"
 msgid "True colour (24 bits)"
 msgstr "True color (24 бит)"
 
 #: plugins/gvnc/gvnc_plugin.c:822
-#, fuzzy
-#| msgid "High colour (16 bit)"
 msgid "High colour (16 bits)"
 msgstr "High color (16 бит)"
 
 #: plugins/gvnc/gvnc_plugin.c:823
-#, fuzzy
-#| msgid "High colour (16 bit)"
 msgid "Low colour (8 bits)"
-msgstr "High color (16 бит)"
+msgstr "Low color (8 бит)"
 
 #: plugins/gvnc/gvnc_plugin.c:824
-#, fuzzy
-#| msgid "True colour (24 bit)"
 msgid "Ultra low colour (3 bits)"
-msgstr "True color (24 бит)"
+msgstr "Ultra low colour (3 бита)"
 
 #: plugins/gvnc/gvnc_plugin.c:839
-#, fuzzy
-#| msgid "Enter VNC password"
 msgid "VNC password"
-msgstr "Введите VNC пароль"
+msgstr "Пароль VNC"
 
 #: plugins/gvnc/gvnc_plugin.c:840 plugins/vnc/vnc_plugin.c:1944
 #: plugins/vnc/vnc_plugin.c:1964 plugins/xdmcp/xdmcp_plugin.c:369
@@ -1763,20 +1723,16 @@ msgid "Colour depth"
 msgstr "Глубина цвета"
 
 #: plugins/gvnc/gvnc_plugin.c:841
-#, fuzzy
-#| msgid "SSH compression"
 msgid "Use JPEG Compression"
-msgstr "SSH сжатие"
+msgstr "Использовать JPEG сжатие"
 
 #: plugins/gvnc/gvnc_plugin.c:841
-#, fuzzy
-#| msgid "Browse the network to find a %s server"
 msgid "This might not work on all VNC servers"
-msgstr "Провести обзор сети для поиска сервера %s"
+msgstr "Это может не работать на всех VNC серверах"
 
 #: plugins/gvnc/gvnc_plugin.c:842
 msgid "Enable GTK-VNC debug"
-msgstr ""
+msgstr "Включить GTK-VNC отладку"
 
 #: plugins/gvnc/gvnc_plugin.c:857 plugins/gvnc/gvnc_plugin.c:871
 #: plugins/spice/spice_plugin.c:693 plugins/spice/spice_plugin.c:706
@@ -1791,7 +1747,7 @@ msgstr "Забыть пароль после использования"
 
 #: plugins/gvnc/gvnc_plugin.c:859 plugins/vnc/vnc_plugin.c:1986
 msgid "Ignore remote bell messages"
-msgstr ""
+msgstr "Игнорировать сообщения удаленного звонка"
 
 #: plugins/gvnc/gvnc_plugin.c:860 plugins/spice/spice_plugin.c:695
 msgid "Enable audio channel"
@@ -1804,28 +1760,24 @@ msgid "View only"
 msgstr "Только просмотр"
 
 #: plugins/gvnc/gvnc_plugin.c:862
-#, fuzzy
-#| msgid "Per connection"
 msgid "Shared connection"
-msgstr "По соединениям"
+msgstr "Совместное соединение"
 
 #: plugins/gvnc/gvnc_plugin.c:862
 msgid ""
 "If the server should try to share the desktop by leaving other clients "
 "connected"
 msgstr ""
+"Если сервер должен попытаться разделить рабочий стол, оставив других "
+"клиентов подключенными"
 
 #: plugins/gvnc/gvnc_plugin.c:872
-#, fuzzy
-#| msgid "Send Ctrl+Alt+Del"
 msgid "Send Ctrl+Alt+_Del"
-msgstr "Послать Ctrl+Alt+Del"
+msgstr "Послать Ctrl+Alt+_Del"
 
 #: plugins/gvnc/gvnc_plugin.c:873
-#, fuzzy
-#| msgid "Send Ctrl+Alt+Del"
 msgid "Send Ctrl+Alt+_Backspace"
-msgstr "Послать Ctrl+Alt+Del"
+msgstr "Послать Ctrl+Alt+_Backspace"
 
 #: plugins/gvnc/gvnc_plugin.c:874
 msgid "Send Ctrl+Alt+_F1"
@@ -1877,17 +1829,15 @@ msgstr "Послать Ctrl+Alt+_F12"
 
 #: plugins/gvnc/gvnc_plugin.c:887
 msgid "Reboot remote host"
-msgstr ""
+msgstr "Перезагрузить удалённую машину"
 
 #: plugins/gvnc/gvnc_plugin.c:888
 msgid "Reset remote host (hard reboot)"
-msgstr ""
+msgstr "Перезагрузить удалённую машину (жёсткая перезагрузка)"
 
 #: plugins/gvnc/gvnc_plugin.c:889
-#, fuzzy
-#| msgid "Show remote cursor"
 msgid "Shutdown remote host"
-msgstr "Показывать удалённый курсор"
+msgstr "Выключить удалённый компьютер"
 
 #: plugins/exec/exec_plugin_config.h:41
 msgid "Execute a command"
@@ -2058,6 +2008,13 @@ msgid ""
 "    the repeater, e.g. with x11vnc:\n"
 "    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
 msgstr ""
+"Подключиться к VNC используя репитер:\n"
+"  • Поле 'сервер' должно содержать ID репитера, например - ID:123456789\n"
+"  • Поле репитера должно содержать IP и порт репитера, например:\n"
+"    10.10.10.12:5901\n"
+"  • С удалённого сервера VNC, вы подключитесь к\n"
+"    репитеру, например, при помощи x11vnc:\n"
+"    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
 
 #: plugins/vnc/vnc_plugin.c:1941
 msgid "Repeater"
@@ -2583,18 +2540,6 @@ msgstr ""
 "списке.\n"
 
 #: plugins/rdp/rdp_plugin.c:2575
-#, fuzzy
-#| msgid ""
-#| "Comma separated list of monitor IDs and desktop orientations:\n"
-#| "  • [<id>:<orientation-in-degrees>,]\n"
-#| "  • 0,1,2,3\n"
-#| "  • 0:270,1:90\n"
-#| "Orientations are specified in degrees, valid values are:\n"
-#| "  •   0 (landscape)\n"
-#| "  •  90 (portrait)\n"
-#| "  • 180 (landscape flipped)\n"
-#| "  • 270 (portrait flipped)\n"
-#| "\n"
 msgid ""
 "Comma-separated list of monitor IDs and desktop orientations:\n"
 "  • [<id>:<orientation-in-degrees>,]\n"
@@ -2636,8 +2581,6 @@ msgid "Span screen over multiple monitors"
 msgstr "Растянуть экран на несколько мониторов"
 
 #: plugins/rdp/rdp_plugin.c:2605
-#, fuzzy
-#| msgid "Monitor ID list"
 msgid "List monitor IDs"
 msgstr "Список ID мониторов"
 
@@ -2851,7 +2794,7 @@ msgstr "Использовать базовые учётные данные и �
 
 #: plugins/rdp/rdp_plugin.c:2674
 msgid "Enable Gateway websockets support"
-msgstr ""
+msgstr "Включить поддержку вебсокетами шлюза"
 
 #: plugins/rdp/rdp_plugin.c:2700
 msgid "RDP - Remote Desktop Protocol"
@@ -3492,10 +3435,8 @@ msgid "Remmina data folder"
 msgstr "Папка данных Remmina"
 
 #: data/ui/remmina_preferences.glade:378
-#, fuzzy
-#| msgid "Choose a folder to save screenshots from Remmina in."
 msgid "Choose a folder to save connection profiles from Remmina in."
-msgstr "Выберите папку, в которой будут храниться снимки Remmina."
+msgstr "Выберите папку, в которой будут храниться профили подключения Remmina."
 
 #: data/ui/remmina_preferences.glade:396
 msgid "Remember last view for each connection"
