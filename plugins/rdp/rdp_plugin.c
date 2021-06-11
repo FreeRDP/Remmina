@@ -2823,7 +2823,7 @@ G_MODULE_EXPORT gboolean remmina_plugin_entry(RemminaPluginService *service)
 	snprintf(remmina_plugin_rdp_version, sizeof(remmina_plugin_rdp_version),
 		 "RDP plugin: %s (Git %s), Compiled with libfreerdp %s (%s), Running with libfreerdp %s (rev %s), H.264 %s",
 		 VERSION, REMMINA_GIT_REVISION,
-		 FREERDP_VERSION_FULL, GIT_REVISION,
+		 FREERDP_VERSION_FULL, FREERDP_GIT_REVISION,
 		 freerdp_get_version_string(),
 		 freerdp_get_build_revision(),
 		 gfx_h264_available ? "Yes" : "No"
