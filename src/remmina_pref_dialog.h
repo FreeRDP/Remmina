@@ -46,7 +46,7 @@ typedef struct _RemminaPrefDialogPriv {
 
 typedef struct _RemminaPrefDialog {
 	GtkBuilder *		builder;
-	GtkDialog *		dialog;
+	GtkWidget *		dialog;
 	GtkNotebook *		notebook_preferences;
 
 	GtkFileChooser *	filechooserbutton_options_datadir_path;
@@ -159,9 +159,9 @@ enum {
 G_BEGIN_DECLS
 
 /* RemminaPrefDialog instance */
-GtkDialog *remmina_pref_dialog_new(gint default_tab, GtkWindow *parent);
+GtkWidget *remmina_pref_dialog_new(gint default_tab, GtkWindow *parent);
 /* Get the current PrefDialog or NULL if not initialized */
-GtkDialog *remmina_pref_dialog_get_dialog(void);
+GtkWidget *remmina_pref_dialog_get_dialog(void);
 void remmina_prefdiag_unlock_repwd_on_changed(GtkEditable *editable, RemminaPrefDialog *dialog);
 void remmina_pref_dialog_on_action_close(GSimpleAction *action, GVariant *param, gpointer data);
 

@@ -371,7 +371,7 @@ void remmina_exec_command(RemminaCommandType command, const gchar* data)
 	gchar *temp;
 	GtkWidget *widget;
 	GtkWindow *mainwindow;
-	GtkDialog *prefdialog;
+	GtkWidget *prefdialog;
 	RemminaEntryPlugin *plugin;
     int i;
     int ch;
@@ -401,7 +401,7 @@ void remmina_exec_command(RemminaCommandType command, const gchar* data)
 			gtk_window_deiconify(GTK_WINDOW(prefdialog));
 		}else  {
 			/* Create a new preference dialog */
-			widget = GTK_WIDGET(remmina_pref_dialog_new(atoi(data), NULL));
+			widget = remmina_pref_dialog_new(atoi(data), NULL);
 			gtk_widget_show(widget);
 		}
 		break;
