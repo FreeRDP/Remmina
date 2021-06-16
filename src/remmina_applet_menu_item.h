@@ -49,7 +49,7 @@ typedef enum {
 } RemminaAppletMenuItemType;
 
 typedef struct _RemminaAppletMenuItem {
-	GtkImageMenuItem		image_menu_item;
+	GtkMenuItem		        menu_item;
 
 	RemminaAppletMenuItemType	item_type;
 	gchar *				filename;
@@ -61,7 +61,7 @@ typedef struct _RemminaAppletMenuItem {
 } RemminaAppletMenuItem;
 
 typedef struct _RemminaAppletMenuItemClass {
-	GtkImageMenuItemClass parent_class;
+	GtkMenuItemClass parent_class;
 } RemminaAppletMenuItemClass;
 
 GType remmina_applet_menu_item_get_type(void)
