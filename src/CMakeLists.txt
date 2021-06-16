@@ -136,7 +136,7 @@ set(RESOURCE_LIST
     ${CMAKE_CURRENT_SOURCE_DIR}/../data/ui/remmina_main.glade
     ${CMAKE_CURRENT_SOURCE_DIR}/../data/ui/remmina_mpc.glade
     ${CMAKE_CURRENT_SOURCE_DIR}/../data/ui/remmina_news.glade
-    ${CMAKE_CURRENT_SOURCE_DIR}/../data/ui/remmina_pref.glade
+    ${CMAKE_CURRENT_SOURCE_DIR}/../data/ui/remmina_preferences.glade
     ${CMAKE_CURRENT_SOURCE_DIR}/../data/ui/remmina_search.glade
     ${CMAKE_CURRENT_SOURCE_DIR}/../data/ui/remmina_search_popover.glade
     ${CMAKE_CURRENT_SOURCE_DIR}/../data/ui/remmina_snap_info_dialog.glade
