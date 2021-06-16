@@ -446,6 +446,12 @@ if(sodium_FOUND)
   message(STATUS "sodium_LIBRARY_DEBUG: ${sodium_LIBRARY_DEBUG}")
 endif()
 
+option(TOGTK4 "Disable deprecations to easy GTK4 migration")
+if(TOGTK4)
+    message(STATUS "Do not use GTK3 and GDK deprecated symbols")
+    add_definitions(-DGDK_DISABLE_DEPRECATED -DGTK_DISABLE_DEPRECATED)
+endif()
+
 if(WITH_TRACE_CALLS)
   message(STATUS "Enabling trace calls.")
   add_definitions(-DWITH_TRACE_CALLS)
