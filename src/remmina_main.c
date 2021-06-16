@@ -886,9 +886,8 @@ void remmina_main_on_action_application_preferences(GSimpleAction *action, GVari
 
 	if (remmina_unlock_new(remminamain->window) == 0)
 		return;
-	GtkDialog *dialog = remmina_pref_dialog_new(tab_num, remminamain->window);
-	gtk_dialog_run(dialog);
-	gtk_widget_destroy(GTK_WIDGET(dialog));
+	GtkWidget *widget = remmina_pref_dialog_new(tab_num, remminamain->window);
+	gtk_widget_show_all(widget);
 	/* Switch to a dark theme if the user enabled it */
 	settings = gtk_settings_get_default ();
 	g_object_set (settings, "gtk-application-prefer-dark-theme", remmina_pref.dark_theme, NULL);
@@ -1461,7 +1460,6 @@ GtkWidget *remmina_main_new(void)
 	gtk_accel_group_connect(accel_group, GDK_KEY_P, GDK_CONTROL_MASK, 0,
 				g_cclosure_new_swap(G_CALLBACK(remmina_main_on_accel_application_preferences), NULL, NULL));
 	gtk_accel_group_connect(accel_group, GDK_KEY_F, GDK_CONTROL_MASK, 0,
-				//g_cclosure_new_swap(G_CALLBACK(remmina_main_on_action_search_toggle), NULL, NULL));
 				g_cclosure_new_swap(G_CALLBACK(remmina_main_on_accel_search_toggle), remminamain, NULL));
 
 	/* Connect signals */

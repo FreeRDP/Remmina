@@ -208,6 +208,9 @@ void remmina_pref_dialog_on_action_close(GSimpleAction *action, GVariant *param,
 {
 	TRACE_CALL(__func__);
 	gtk_widget_destroy(GTK_WIDGET(remmina_pref_dialog->dialog));
+	/* Switch to a dark theme if the user enabled it */
+	GtkSettings *settings = gtk_settings_get_default ();
+	g_object_set (settings, "gtk-application-prefer-dark-theme", remmina_pref.dark_theme, NULL);
 }
 void remmina_pref_dialog_on_close_clicked(GtkWidget *widget, RemminaPrefDialog *dialog)
 {
@@ -406,7 +409,6 @@ static gboolean remmina_pref_dialog_add_pref_plugin(gchar *name, RemminaPlugin *
 
 	widget = gtk_label_new(pref_plugin->pref_label);
 	gtk_widget_set_halign(widget, GTK_ALIGN_END);
-	gtk_widget_set_margin_end(widget, 18);
 	gtk_widget_show(widget);
 
 	vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
@@ -465,8 +467,6 @@ static void remmina_pref_dialog_init(void)
 	align = GTK_WIDGET(GET_OBJECT("alignment_ssh"));
 	gtk_widget_set_sensitive(align, FALSE);
 #endif
-
-	gtk_dialog_set_default_response(GTK_DIALOG(remmina_pref_dialog->dialog), GTK_RESPONSE_CLOSE);
 
 	gtk_switch_set_active(GTK_SWITCH(remmina_pref_dialog->switch_options_remember_last_view_mode), remmina_pref.save_view_mode);
 #if SODIUM_VERSION_INT >= 90200
@@ -677,12 +677,14 @@ static void remmina_pref_dialog_init(void)
 
 	remmina_plugin_manager_for_each_plugin(REMMINA_PLUGIN_TYPE_PREF, remmina_pref_dialog_add_pref_plugin, remmina_pref_dialog->dialog);
 
+	g_signal_connect(G_OBJECT(remmina_pref_dialog->dialog), "destroy", G_CALLBACK(remmina_pref_on_dialog_destroy), NULL);
+
 	g_object_set_data(G_OBJECT(remmina_pref_dialog->dialog), "tag", "remmina-pref-dialog");
 	remmina_widget_pool_register(GTK_WIDGET(remmina_pref_dialog->dialog));
 }
 
 /* RemminaPrefDialog instance */
-GtkDialog* remmina_pref_dialog_new(gint default_tab, GtkWindow *parent)
+GtkWidget* remmina_pref_dialog_new(gint default_tab, GtkWindow *parent)
 {
 	TRACE_CALL(__func__);
 	GSimpleActionGroup *actions;
@@ -691,8 +693,8 @@ GtkDialog* remmina_pref_dialog_new(gint default_tab, GtkWindow *parent)
 	remmina_pref_dialog = g_new0(RemminaPrefDialog, 1);
 	remmina_pref_dialog->priv = g_new0(RemminaPrefDialogPriv, 1);
 
-	remmina_pref_dialog->builder = remmina_public_gtk_builder_new_from_resource("/org/remmina/Remmina/src/../data/ui/remmina_preferences.glade");
-	remmina_pref_dialog->dialog = GTK_DIALOG(gtk_builder_get_object(remmina_pref_dialog->builder, "RemminaPrefDialog"));
+	remmina_pref_dialog->builder = remmina_public_gtk_builder_new_from_resource("/org/remmina/Remmina/src/../data/ui/remmina_pref.glade");
+	remmina_pref_dialog->dialog = GTK_WIDGET(gtk_builder_get_object(remmina_pref_dialog->builder, "RemminaPrefDialog"));
 	if (parent)
 		gtk_window_set_transient_for(GTK_WINDOW(remmina_pref_dialog->dialog), parent);
 
@@ -834,7 +836,7 @@ GtkDialog* remmina_pref_dialog_new(gint default_tab, GtkWindow *parent)
 	return remmina_pref_dialog->dialog;
 }
 
-GtkDialog* remmina_pref_dialog_get_dialog()
+GtkWidget* remmina_pref_dialog_get_dialog()
 {
 	if (!remmina_pref_dialog)
 		return NULL;

@@ -48,13 +48,13 @@ G_BEGIN_DECLS
 typedef struct _RemminaFTPClientPriv RemminaFTPClientPriv;
 
 typedef struct _RemminaFTPClient {
-	GtkVBox			vbox;
+	GtkBox			vbox;
 
 	RemminaFTPClientPriv *	priv;
 } RemminaFTPClient;
 
 typedef struct _RemminaFTPClientClass {
-	GtkVBoxClass parent_class;
+	GtkBoxClass parent_class;
 
 	void (*open_dir)(RemminaFTPClient *client);
 	void (*new_task)(RemminaFTPClient *client);

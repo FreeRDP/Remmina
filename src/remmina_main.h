@@ -72,10 +72,6 @@ typedef struct _RemminaMain {
 	GtkStatusbar *		statusbar_main;
 	/* Non widget objects */
 	GtkAccelGroup *		accelgroup_shortcuts;
-	/* Actions from the view ActionGroup */
-	GtkToggleAction *	action_view_quick_connect;
-	GtkToggleAction *	action_view_mode_list;
-	GtkToggleAction *	action_view_mode_tree;
 	RemminaMainPriv *	priv;
 } RemminaMain;
 
