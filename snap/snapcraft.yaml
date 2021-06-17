@@ -37,6 +37,9 @@ plugs:
     target: $SNAP/share/sounds
     default-provider: gtk-common-themes
 
+environment:
+  SSH_AUTH_SOCK:    "${SNAP_DATA}/ssh-agent.socket"
+
 apps:
   remmina:
     command: bin/remmina
@@ -83,6 +86,15 @@ apps:
   wlfreerdp:
     command: wlfreerdp
 
+  ssh-agent:
+    command: usr/bin/ssh-agent -D -a $SSH_AUTH_SOCK
+    daemon: simple
+    adapter: none
+    plugs:
+      - home
+      - network-bind
+      - ssh-keys
+
 parts:
   pulse-utils:
     plugin: nil
@@ -97,6 +109,11 @@ parts:
       - libogg0
       - libvorbis0a
       - libpulse0
+
+  tools:
+    plugin: nil
+    stage-packages:
+      - openssh-client
 
   freerdp:
     after:
