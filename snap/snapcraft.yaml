@@ -39,7 +39,7 @@ plugs:
 
 apps:
   remmina:
-    command: desktop-launch $SNAP/remmina
+    command: bin/remmina
     extensions: [gnome-3-34]
     common-id: org.remmina.Remmina.desktop
     plugs:
@@ -84,32 +84,6 @@ apps:
     command: wfreerdp
 
 parts:
-  gtk3:
-    source: .
-    source-subdir: gtk
-    plugin: make
-    make-parameters: ["FLAVOR=gtk3"]
-    build-packages:
-      - libgtk-3-dev
-    stage-packages:
-      - libxkbcommon0  # XKB_CONFIG_ROOT
-      - ttf-ubuntu-font-family
-      - dmz-cursor-theme
-      - light-themes
-      - adwaita-icon-theme
-      - gnome-themes-standard
-      - shared-mime-info
-      - libgtk-3-0
-      - libgdk-pixbuf2.0-0
-      - libglib2.0-bin
-      - libgtk-3-bin
-      - unity-gtk3-module
-      - libappindicator3-1
-      - locales-all
-      - xdg-user-dirs
-      - ibus-gtk3
-      - libibus-1.0-5
-
   pulse-utils:
     plugin: nil
     stage-packages:
@@ -350,7 +324,7 @@ parts:
       - dbus-x11
       - xdg-user-dirs
   cleanup:
-    after: [gtk3, pulse-utils, freerdp, remmina, app]  # Make this part run last; list all your other parts here
+    after: [pulse-utils, freerdp, remmina, app]  # Make this part run last; list all your other parts here
     plugin: nil
     build-snaps: [core18, gnome-3-34-1804, gtk-common-themes]  # List all content-snaps you're using here
     override-prime: |
