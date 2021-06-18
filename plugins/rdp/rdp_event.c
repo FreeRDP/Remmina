@@ -48,8 +48,8 @@
 gboolean remmina_rdp_event_on_map(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
-	rfContext* rfi = GET_PLUGIN_DATA(gp);
-	rdpGdi* gdi;
+	rfContext *rfi = GET_PLUGIN_DATA(gp);
+	rdpGdi *gdi;
 
 	if (rfi == NULL)
 		return false;
@@ -65,14 +65,15 @@ gboolean remmina_rdp_event_on_map(RemminaProtocolWidget *gp)
 gboolean remmina_rdp_event_on_unmap(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
-	rfContext* rfi = GET_PLUGIN_DATA(gp);
-	rdpGdi* gdi;
+	rfContext *rfi = GET_PLUGIN_DATA(gp);
+	rdpGdi *gdi;
 
 	if (rfi == NULL)
 		return false;
 
 	GtkWidget *toplevel = gtk_widget_get_toplevel(GTK_WIDGET(gp));
 	GdkWindow *window = gtk_widget_get_window(toplevel);
+
 	if (gdk_window_get_fullscreen_mode(window) == GDK_FULLSCREEN_ON_ALL_MONITORS) {
 		REMMINA_PLUGIN_DEBUG("Unmap event received, but cannot enable TS_SUPPRESS_OUTPUT_PDU when in fullscreen");
 		return FALSE;
@@ -203,6 +204,7 @@ static void keypress_list_add(RemminaProtocolWidget *gp, RemminaPluginRdpEvent r
 {
 	TRACE_CALL(__func__);
 	rfContext *rfi = GET_PLUGIN_DATA(gp);
+
 	if (!rdp_event.key_event.key_code)
 		return;
 
@@ -210,7 +212,6 @@ static void keypress_list_add(RemminaProtocolWidget *gp, RemminaPluginRdpEvent r
 		remmina_rdp_event_release_key(gp, rdp_event);
 	else
 		g_array_append_val(rfi->pressed_keys, rdp_event);
-
 }
 
 
@@ -393,6 +394,7 @@ static gboolean remmina_rdp_event_delayed_monitor_layout(RemminaProtocolWidget *
 	gchar *monitorids = NULL;
 	guint32 maxwidth = 0;
 	guint32 maxheight = 0;
+
 	remmina_rdp_monitor_get(rfi, &monitorids, &maxwidth, &maxheight);
 
 	REMMINA_PLUGIN_DEBUG("Sending preconfigured monitor layout");
@@ -414,9 +416,9 @@ static gboolean remmina_rdp_event_delayed_monitor_layout(RemminaProtocolWidget *
 			}
 			rdp_event.type = REMMINA_RDP_EVENT_TYPE_SEND_MONITOR_LAYOUT;
 			if (remmina_plugin_service->file_get_int(remminafile, "multimon", FALSE)) {
-				const rdpMonitor* base = freerdp_settings_get_pointer(rfi->settings, FreeRDP_MonitorDefArray);
+				const rdpMonitor *base = freerdp_settings_get_pointer(rfi->settings, FreeRDP_MonitorDefArray);
 				for (gint i = 0; i < freerdp_settings_get_uint32(rfi->settings, FreeRDP_MonitorCount); ++i) {
-					const rdpMonitor* current = &base[i];
+					const rdpMonitor *current = &base[i];
 					REMMINA_PLUGIN_DEBUG("Sending display layout n° %d", i);
 					rdp_event.monitor_layout.Flags = current->is_primary;
 					REMMINA_PLUGIN_DEBUG("EVNT MON LAYOUT - Flags: %i", rdp_event.monitor_layout.Flags);
@@ -443,7 +445,6 @@ static gboolean remmina_rdp_event_delayed_monitor_layout(RemminaProtocolWidget *
 				}
 				remmina_rdp_event_event_push(gp, &rdp_event);
 			} else {
-
 				rdp_event.monitor_layout.width = gpwidth;
 				rdp_event.monitor_layout.height = gpheight;
 				rdp_event.monitor_layout.desktopOrientation = desktopOrientation;
@@ -463,6 +464,7 @@ void remmina_rdp_event_send_delayed_monitor_layout(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
 	rfContext *rfi = GET_PLUGIN_DATA(gp);
+
 	if (!rfi || !rfi->connected || rfi->is_reconnecting)
 		return;
 	if (rfi->delayed_monitor_layout_handler) {
@@ -471,7 +473,6 @@ void remmina_rdp_event_send_delayed_monitor_layout(RemminaProtocolWidget *gp)
 	}
 	if (rfi->scale == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_DYNRES)
 		rfi->delayed_monitor_layout_handler = g_timeout_add(500, (GSourceFunc)remmina_rdp_event_delayed_monitor_layout, gp);
-
 }
 
 static gboolean remmina_rdp_event_on_configure(GtkWidget *widget, GdkEventConfigure *event, RemminaProtocolWidget *gp)
@@ -480,6 +481,7 @@ static gboolean remmina_rdp_event_on_configure(GtkWidget *widget, GdkEventConfig
 	/* Called when gp changes its size or position */
 
 	rfContext *rfi = GET_PLUGIN_DATA(gp);
+
 	if (!rfi || !rfi->connected || rfi->is_reconnecting)
 		return FALSE;
 
@@ -822,6 +824,7 @@ gboolean remmina_rdp_event_on_clipboard(GtkClipboard *gtkClipboard, GdkEvent *ev
 	REMMINA_PLUGIN_DEBUG("owner-change event received");
 
 	rfContext *rfi = GET_PLUGIN_DATA(gp);
+
 	if (rfi)
 		remmina_rdp_clipboard_abort_transfer(rfi);
 
@@ -850,8 +853,19 @@ void remmina_rdp_event_init(RemminaProtocolWidget *gp)
 	GtkClipboard *clipboard;
 	RemminaFile *remminafile;
 
+	gboolean disable_smooth_scrolling = FALSE;
+
 	if (!rfi) return;
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
+
+	/* we get first the global preferences */
+	s = remmina_plugin_service->pref_get_value("rdp_disable_smooth_scrolling");
+	disable_smooth_scrolling = (s && s[0] == '1' ? TRUE : FALSE);
+	g_free(s), s = NULL;
+	/* Otherwise we use the connection profile specific setting */
+	disable_smooth_scrolling = remmina_plugin_service->file_get_int(remminafile, "disable-smooth-scrolling", disable_smooth_scrolling);
+
+	REMMINA_PLUGIN_DEBUG("Disable smooth scrolling is set to %d", disable_smooth_scrolling);
 
 	rfi->drawing_area = gtk_drawing_area_new();
 	gtk_widget_show(rfi->drawing_area);
@@ -860,23 +874,26 @@ void remmina_rdp_event_init(RemminaProtocolWidget *gp)
 	gtk_widget_add_events(rfi->drawing_area, GDK_POINTER_MOTION_MASK
 			      | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK
 			      | GDK_KEY_PRESS_MASK | GDK_KEY_RELEASE_MASK
-#if GTK_CHECK_VERSION(3, 4, 0)
-			      | GDK_SMOOTH_SCROLL_MASK
-#endif
 			      | GDK_SCROLL_MASK | GDK_FOCUS_CHANGE_MASK);
+
+	if (!disable_smooth_scrolling) {
+		REMMINA_PLUGIN_DEBUG("Adding GDK_SMOOTH_SCROLL_MASK");
+		gtk_widget_add_events(rfi->drawing_area, GDK_SMOOTH_SCROLL_MASK);
+	}
+
 	gtk_widget_set_can_focus(rfi->drawing_area, TRUE);
 
 	remmina_plugin_service->protocol_plugin_register_hostkey(gp, rfi->drawing_area);
 
 	s = remmina_plugin_service->pref_get_value("rdp_use_client_keymap");
 	rfi->use_client_keymap = (s && s[0] == '1' ? TRUE : FALSE);
-	g_free(s);
+	g_free(s), s = NULL;
 
 	/* Read special keymap from profile file, if exists */
 	remmina_rdp_event_init_keymap(rfi, remmina_plugin_service->pref_get_value("rdp_map_keycode"));
 
 	if (rfi->use_client_keymap && rfi->keymap)
-		fprintf(stderr, "RDP profile error: you cannot define both rdp_map_hardware_keycode and have 'Use client keuboard mapping' enabled\n");
+		fprintf(stderr, "RDP profile error: you cannot define both rdp_map_hardware_keycode and have 'Use client keyboard mapping' enabled\n");
 
 	g_signal_connect(G_OBJECT(rfi->drawing_area), "draw",
 			 G_CALLBACK(remmina_rdp_event_on_draw), gp);
@@ -1097,6 +1114,7 @@ static void remmina_rdp_event_reconnect_progress(RemminaProtocolWidget *gp, Remm
 {
 	TRACE_CALL(__func__);
 	rfContext *rfi = GET_PLUGIN_DATA(gp);
+
 	gdk_window_invalidate_rect(gtk_widget_get_window(rfi->drawing_area), NULL, TRUE);
 }
 
@@ -1141,6 +1159,7 @@ static BOOL remmina_rdp_event_set_pointer_position(RemminaProtocolWidget *gp, gi
 	TRACE_CALL(__func__);
 	GdkWindow *w, *nw;
 	gint nx, ny, wx, wy;
+
 #if GTK_CHECK_VERSION(3, 20, 0)
 	GdkSeat *seat;
 #else
@@ -1230,6 +1249,7 @@ static void remmina_rdp_ui_event_destroy_cairo_surface(RemminaProtocolWidget *gp
 {
 	TRACE_CALL(__func__);
 	rfContext *rfi = GET_PLUGIN_DATA(gp);
+
 	cairo_surface_destroy(rfi->surface);
 	rfi->surface = NULL;
 }
@@ -1369,6 +1389,7 @@ int remmina_rdp_event_queue_ui_sync_retint(RemminaProtocolWidget *gp, RemminaPlu
 {
 	TRACE_CALL(__func__);
 	int retval;
+
 	ui->sync = TRUE;
 	remmina_rdp_event_queue_ui(gp, ui);
 	retval = ui->retval;
@@ -1380,6 +1401,7 @@ void *remmina_rdp_event_queue_ui_sync_retptr(RemminaProtocolWidget *gp, RemminaP
 {
 	TRACE_CALL(__func__);
 	void *rp;
+
 	ui->sync = TRUE;
 	remmina_rdp_event_queue_ui(gp, ui);
 	rp = ui->retptr;
