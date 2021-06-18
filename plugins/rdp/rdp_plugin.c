@@ -261,9 +261,9 @@ static BOOL rf_process_event_queue(RemminaProtocolWidget *gp)
 				if (!dcml)
 					break;
 
-				const rdpMonitor* base = freerdp_settings_get_pointer(rfi->settings, FreeRDP_MonitorDefArray);
+				const rdpMonitor *base = freerdp_settings_get_pointer(rfi->settings, FreeRDP_MonitorDefArray);
 				for (gint i = 0; i < freerdp_settings_get_uint32(rfi->settings, FreeRDP_MonitorCount); ++i) {
-					const rdpMonitor* current = &base[i];
+					const rdpMonitor *current = &base[i];
 					REMMINA_PLUGIN_DEBUG("Sending display layout for monitor n° %d", i);
 					dcml[i].Flags = (current->is_primary ? DISPLAY_CONTROL_MONITOR_PRIMARY : 0);
 					REMMINA_PLUGIN_DEBUG("Monitor %d is primary: %d", i, dcml[i].Flags);
@@ -299,7 +299,7 @@ static BOOL rf_process_event_queue(RemminaProtocolWidget *gp)
 					dcml->DesktopScaleFactor = event->monitor_layout.desktopScaleFactor;
 					dcml->DeviceScaleFactor = event->monitor_layout.deviceScaleFactor;
 					rfi->dispcontext->SendMonitorLayout(rfi->dispcontext, 1, dcml);
-					g_free(dcml);\
+					g_free(dcml); \
 				}
 			}
 			break;
@@ -332,6 +332,7 @@ static gboolean remmina_rdp_tunnel_init(RemminaProtocolWidget *gp)
 	gint port;
 
 	rfContext *rfi = GET_PLUGIN_DATA(gp);
+
 	REMMINA_PLUGIN_DEBUG("Tunnel init");
 	hostport = remmina_plugin_service->protocol_plugin_start_direct_tunnel(gp, 3389, FALSE);
 	if (hostport == NULL)
@@ -386,15 +387,15 @@ BOOL rf_auto_reconnect(rfContext *rfi)
 
 	/* Only auto reconnect on network disconnects. */
 	switch (freerdp_error_info(rfi->instance)) {
-		case ERRINFO_GRAPHICS_SUBSYSTEM_FAILED:
-			/* Disconnected by server hitting a bug or resource limit */
-			break;
-		case ERRINFO_SUCCESS:
-			/* A network disconnect was detected */
-			break;
-		default:
-			rfi->is_reconnecting = FALSE;
-			return FALSE;
+	case ERRINFO_GRAPHICS_SUBSYSTEM_FAILED:
+		/* Disconnected by server hitting a bug or resource limit */
+		break;
+	case ERRINFO_SUCCESS:
+		/* A network disconnect was detected */
+		break;
+	default:
+		rfi->is_reconnecting = FALSE;
+		return FALSE;
 	}
 
 	if (!freerdp_settings_get_bool(settings, FreeRDP_AutoReconnectionEnabled)) {
@@ -405,7 +406,7 @@ BOOL rf_auto_reconnect(rfContext *rfi)
 
 	/* A network disconnect was detected and we should try to reconnect */
 	REMMINA_PLUGIN_DEBUG("[%s] network disconnection detected, initiating reconnection attempt",
-				 freerdp_settings_get_string(rfi->settings, FreeRDP_ServerHostname));
+			     freerdp_settings_get_string(rfi->settings, FreeRDP_ServerHostname));
 
 	ui = g_new0(RemminaPluginRdpUiObject, 1);
 	ui->type = REMMINA_RDP_UI_RECONNECT_PROGRESS;
@@ -423,13 +424,13 @@ BOOL rf_auto_reconnect(rfContext *rfi)
 		/* Quit retrying if max retries has been exceeded */
 		if (rfi->reconnect_nattempt++ >= rfi->reconnect_maxattempts) {
 			REMMINA_PLUGIN_DEBUG("[%s] maximum number of reconnection attempts exceeded.",
-						 freerdp_settings_get_string(rfi->settings, FreeRDP_ServerHostname));
+					     freerdp_settings_get_string(rfi->settings, FreeRDP_ServerHostname));
 			break;
 		}
 
 		/* Attempt the next reconnect */
 		REMMINA_PLUGIN_DEBUG("[%s] reconnection, attempt #%d of %d",
-					 freerdp_settings_get_string(rfi->settings, FreeRDP_ServerHostname), rfi->reconnect_nattempt, rfi->reconnect_maxattempts);
+				     freerdp_settings_get_string(rfi->settings, FreeRDP_ServerHostname), rfi->reconnect_nattempt, rfi->reconnect_maxattempts);
 
 		ui = g_new0(RemminaPluginRdpUiObject, 1);
 		ui->type = REMMINA_RDP_UI_RECONNECT_PROGRESS;
@@ -440,7 +441,7 @@ BOOL rf_auto_reconnect(rfContext *rfi)
 		/* Reconnect the SSH tunnel, if needed */
 		if (!remmina_rdp_tunnel_init(rfi->protocol_widget)) {
 			REMMINA_PLUGIN_DEBUG("[%s] unable to recreate tunnel with remmina_rdp_tunnel_init.",
-						 freerdp_settings_get_string(rfi->settings, FreeRDP_ServerHostname));
+					     freerdp_settings_get_string(rfi->settings, FreeRDP_ServerHostname));
 		} else {
 			if (freerdp_reconnect(rfi->instance)) {
 				/* Reconnection is successful */
@@ -617,9 +618,9 @@ BOOL rf_keyboard_set_ime_status(rdpContext *context, UINT16 imeId, UINT32 imeSta
 static BOOL remmina_rdp_pre_connect(freerdp *instance)
 {
 	TRACE_CALL(__func__);
-	rdpChannels* channels;
+	rdpChannels *channels;
 	rdpSettings *settings;
-	rdpContext* context = instance->context;
+	rdpContext *context = instance->context;
 
 	settings = instance->settings;
 	channels = context->channels;
@@ -631,9 +632,9 @@ static BOOL remmina_rdp_pre_connect(freerdp *instance)
 	PubSub_SubscribeChannelConnected(instance->context->pubSub,
 					 (pChannelConnectedEventHandler)remmina_rdp_OnChannelConnectedEventHandler);
 	PubSub_SubscribeChannelDisconnected(instance->context->pubSub,
-						(pChannelDisconnectedEventHandler)remmina_rdp_OnChannelDisconnectedEventHandler);
+					    (pChannelDisconnectedEventHandler)remmina_rdp_OnChannelDisconnectedEventHandler);
 
-	if(!freerdp_client_load_addins(channels, settings))
+	if (!freerdp_client_load_addins(channels, settings))
 		return FALSE;
 
 	return True;
@@ -662,25 +663,25 @@ static BOOL remmina_rdp_post_connect(freerdp *instance)
 
 	REMMINA_PLUGIN_DEBUG("bpp: %d", rfi->bpp);
 	switch (rfi->bpp) {
-		case 24:
-			REMMINA_PLUGIN_DEBUG("CAIRO_FORMAT_RGB24");
-			freerdp_local_color_format = PIXEL_FORMAT_BGRX32;
-			rfi->cairo_format = CAIRO_FORMAT_RGB24;
-			break;
-		case 32:
-			/** Do not use alpha as it's not used with the desktop
-			 * CAIRO_FORMAT_ARGB32
-			 * See https://gitlab.com/Remmina/Remmina/-/issues/2456
-			 */
-			REMMINA_PLUGIN_DEBUG("CAIRO_FORMAT_RGB24");
-			freerdp_local_color_format = PIXEL_FORMAT_BGRA32;
-			rfi->cairo_format = CAIRO_FORMAT_RGB24;
-			break;
-		default:
-			REMMINA_PLUGIN_DEBUG("CAIRO_FORMAT_RGB16_565");
-			freerdp_local_color_format = PIXEL_FORMAT_RGB16;
-			rfi->cairo_format = CAIRO_FORMAT_RGB16_565;
-			break;
+	case 24:
+		REMMINA_PLUGIN_DEBUG("CAIRO_FORMAT_RGB24");
+		freerdp_local_color_format = PIXEL_FORMAT_BGRX32;
+		rfi->cairo_format = CAIRO_FORMAT_RGB24;
+		break;
+	case 32:
+		/** Do not use alpha as it's not used with the desktop
+		 * CAIRO_FORMAT_ARGB32
+		 * See https://gitlab.com/Remmina/Remmina/-/issues/2456
+		 */
+		REMMINA_PLUGIN_DEBUG("CAIRO_FORMAT_RGB24");
+		freerdp_local_color_format = PIXEL_FORMAT_BGRA32;
+		rfi->cairo_format = CAIRO_FORMAT_RGB24;
+		break;
+	default:
+		REMMINA_PLUGIN_DEBUG("CAIRO_FORMAT_RGB16_565");
+		freerdp_local_color_format = PIXEL_FORMAT_RGB16;
+		rfi->cairo_format = CAIRO_FORMAT_RGB16_565;
+		break;
 	}
 
 	if (!gdi_init(instance, freerdp_local_color_format)) {
@@ -854,8 +855,8 @@ static BOOL remmina_rdp_gw_authenticate(freerdp *instance, char **username, char
 }
 
 static DWORD remmina_rdp_verify_certificate_ex(freerdp *instance, const char *host, UINT16 port,
-						   const char *common_name, const char *subject,
-						   const char *issuer, const char *fingerprint, DWORD flags)
+					       const char *common_name, const char *subject,
+					       const char *issuer, const char *fingerprint, DWORD flags)
 {
 	TRACE_CALL(__func__);
 	gint status;
@@ -874,11 +875,10 @@ static DWORD remmina_rdp_verify_certificate_ex(freerdp *instance, const char *ho
 }
 
 static DWORD
-remmina_rdp_verify_certificate(freerdp *instance, const char *common_name, const char *subject,
-		const char *issuer, const char *fingerprint, BOOL host_mismatch) __attribute__ ((unused));
+remmina_rdp_verify_certificate(freerdp *instance, const char *common_name, const char *subject, const char *issuer, const char *fingerprint, BOOL host_mismatch) __attribute__ ((unused));
 static DWORD
 remmina_rdp_verify_certificate(freerdp *instance, const char *common_name, const char *subject,
-		const char *issuer, const char *fingerprint, BOOL host_mismatch)
+			       const char *issuer, const char *fingerprint, BOOL host_mismatch)
 {
 	TRACE_CALL(__func__);
 	gint status;
@@ -897,10 +897,10 @@ remmina_rdp_verify_certificate(freerdp *instance, const char *common_name, const
 }
 
 static DWORD remmina_rdp_verify_changed_certificate_ex(freerdp *instance, const char *host, UINT16 port,
-							   const char *common_name, const char *subject,
-							   const char *issuer, const char *fingerprint,
-							   const char *old_subject, const char *old_issuer,
-							   const char *old_fingerprint, DWORD flags)
+						       const char *common_name, const char *subject,
+						       const char *issuer, const char *fingerprint,
+						       const char *old_subject, const char *old_issuer,
+						       const char *old_fingerprint, DWORD flags)
 {
 	TRACE_CALL(__func__);
 	gint status;
@@ -928,7 +928,7 @@ static void remmina_rdp_post_disconnect(freerdp *instance)
 	PubSub_UnsubscribeChannelConnected(instance->context->pubSub,
 					   (pChannelConnectedEventHandler)remmina_rdp_OnChannelConnectedEventHandler);
 	PubSub_UnsubscribeChannelDisconnected(instance->context->pubSub,
-						  (pChannelDisconnectedEventHandler)remmina_rdp_OnChannelDisconnectedEventHandler);
+					      (pChannelDisconnectedEventHandler)remmina_rdp_OnChannelDisconnectedEventHandler);
 
 	/* The remaining cleanup will be continued on main thread by complete_cleanup_on_main_thread() */
 }
@@ -996,6 +996,7 @@ int remmina_rdp_load_static_channel_addin(rdpChannels *channels, rdpSettings *se
 	TRACE_CALL(__func__);
 	PVIRTUALCHANNELENTRY entry = NULL;
 	PVIRTUALCHANNELENTRYEX entryEx = NULL;
+
 	entryEx = (PVIRTUALCHANNELENTRYEX)(void *)freerdp_load_channel_addin_entry(
 		name, NULL, NULL, FREERDP_ADDIN_CHANNEL_STATIC | FREERDP_ADDIN_CHANNEL_ENTRYEX);
 
@@ -1024,11 +1025,11 @@ gchar *remmina_rdp_find_prdriver(char *smap, char *prn)
 	size_t sz;
 
 	enum { S_WAITPR,
-		   S_INPRINTER,
-		   S_WAITCOLON,
-		   S_WAITDRIVER,
-		   S_INDRIVER,
-		   S_WAITSEMICOLON } state = S_WAITPR;
+	       S_INPRINTER,
+	       S_WAITCOLON,
+	       S_WAITDRIVER,
+	       S_INDRIVER,
+	       S_WAITSEMICOLON } state = S_WAITPR;
 
 	matching = 0;
 	while ((c = *smap++) != 0) {
@@ -1118,6 +1119,7 @@ int remmina_rdp_set_printers(void *user_data, unsigned flags, cups_dest_t *dest)
 	const gchar *s = remmina_plugin_service->file_get_string(remminafile, "printer_overrides");
 
 	RDPDR_PRINTER *printer;
+
 	printer = (RDPDR_PRINTER *)calloc(1, sizeof(RDPDR_PRINTER));
 
 	printer->Type = RDPDR_DTYP_PRINT;
@@ -1270,15 +1272,14 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
 	datapath = g_build_path("/",
-			remmina_plugin_service->file_get_user_datadir(),
-			"RDP",
-			NULL);
+				remmina_plugin_service->file_get_user_datadir(),
+				"RDP",
+				NULL);
 	REMMINA_PLUGIN_DEBUG("RDP data path is %s", datapath);
 
-	if ((datapath != NULL) && (datapath[0] != '\0')) {
+	if ((datapath != NULL) && (datapath[0] != '\0'))
 		if (access(datapath, W_OK) == 0)
 			freerdp_settings_set_string(rfi->settings, FreeRDP_ConfigPath, datapath);
-	}
 	g_free(datapath);
 
 #if defined(PROXY_TYPE_IGNORE)
@@ -1296,7 +1297,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 	if (remmina_plugin_service->file_get_int(remminafile, "ssh_tunnel_enabled", FALSE))
 		freerdp_settings_set_bool(rfi->settings, FreeRDP_AutoReconnectionEnabled, FALSE);
 
-	freerdp_settings_set_uint32(rfi->settings, FreeRDP_ColorDepth,remmina_plugin_service->file_get_int(remminafile, "colordepth", 99));
+	freerdp_settings_set_uint32(rfi->settings, FreeRDP_ColorDepth, remmina_plugin_service->file_get_int(remminafile, "colordepth", 99));
 
 	freerdp_settings_set_bool(rfi->settings, FreeRDP_SoftwareGdi, TRUE);
 	REMMINA_PLUGIN_DEBUG("gfx_h264_available: %d", gfx_h264_available);
@@ -1345,8 +1346,8 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 	}
 
 	if (freerdp_settings_get_bool(rfi->settings, FreeRDP_RemoteFxCodec) ||
-	    freerdp_settings_get_bool(rfi->settings, FreeRDP_NSCodec)       ||
-	    freerdp_settings_get_bool(rfi->settings, FreeRDP_SupportGraphicsPipeline) ) {
+	    freerdp_settings_get_bool(rfi->settings, FreeRDP_NSCodec) ||
+	    freerdp_settings_get_bool(rfi->settings, FreeRDP_SupportGraphicsPipeline)) {
 		freerdp_settings_set_bool(rfi->settings, FreeRDP_FastPathOutput, TRUE);
 		freerdp_settings_set_bool(rfi->settings, FreeRDP_FrameMarkerCommandEnabled, TRUE);
 		freerdp_settings_set_uint32(rfi->settings, FreeRDP_ColorDepth, 32);
@@ -1360,21 +1361,21 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 	h = (h + 3) & ~0x3;
 	freerdp_settings_set_uint32(rfi->settings, FreeRDP_DesktopWidth, w);
 	freerdp_settings_set_uint32(rfi->settings, FreeRDP_DesktopHeight, h);
-	REMMINA_PLUGIN_DEBUG ("Resolution set by the user: %dx%d", w, h);
+	REMMINA_PLUGIN_DEBUG("Resolution set by the user: %dx%d", w, h);
 
 	/* Workaround for FreeRDP issue #5417: in GFX AVC modes we can't go under
 	 * AVC_MIN_DESKTOP_WIDTH x AVC_MIN_DESKTOP_HEIGHT */
 	if (freerdp_settings_get_bool(rfi->settings, FreeRDP_SupportGraphicsPipeline) &&
-			freerdp_settings_get_bool(rfi->settings, FreeRDP_GfxH264)) {
+	    freerdp_settings_get_bool(rfi->settings, FreeRDP_GfxH264)) {
 		if (freerdp_settings_get_uint32(rfi->settings, FreeRDP_DesktopWidth) <
-				AVC_MIN_DESKTOP_WIDTH)
+		    AVC_MIN_DESKTOP_WIDTH)
 			freerdp_settings_set_uint32(rfi->settings, FreeRDP_DesktopWidth,
-					AVC_MIN_DESKTOP_WIDTH);
+						    AVC_MIN_DESKTOP_WIDTH);
 		if (freerdp_settings_get_uint32(rfi->settings,
-					FreeRDP_DesktopHeight) <
-				AVC_MIN_DESKTOP_HEIGHT)
+						FreeRDP_DesktopHeight) <
+		    AVC_MIN_DESKTOP_HEIGHT)
 			freerdp_settings_set_uint32(rfi->settings, FreeRDP_DesktopHeight,
-					AVC_MIN_DESKTOP_HEIGHT);
+						    AVC_MIN_DESKTOP_HEIGHT);
 	}
 
 	/* Workaround for FreeRDP issue #5119. This will make our horizontal resolution
@@ -1390,7 +1391,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 
 	w = freerdp_settings_get_uint32(rfi->settings, FreeRDP_DesktopWidth);
 	h = freerdp_settings_get_uint32(rfi->settings, FreeRDP_DesktopHeight);
-	REMMINA_PLUGIN_DEBUG ("Resolution set after workarounds: %dx%d", w, h);
+	REMMINA_PLUGIN_DEBUG("Resolution set after workarounds: %dx%d", w, h);
 
 
 	if (remmina_plugin_service->file_get_string(remminafile, "username"))
@@ -1503,10 +1504,10 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 						 remmina_plugin_service->file_get_int(remminafile, "gateway_usage", FALSE) ? TSC_PROXY_MODE_DETECT : TSC_PROXY_MODE_DIRECT);
 
 	freerdp_settings_set_string(rfi->settings, FreeRDP_GatewayAccessToken,
-					remmina_plugin_service->file_get_string(remminafile, "gatewayaccesstoken"));
+				    remmina_plugin_service->file_get_string(remminafile, "gatewayaccesstoken"));
 
 	freerdp_settings_set_uint32(rfi->settings, FreeRDP_AuthenticationLevel, remmina_plugin_service->file_get_int(
-		remminafile, "authentication level", freerdp_settings_get_uint32(rfi->settings, FreeRDP_AuthenticationLevel)));
+					    remminafile, "authentication level", freerdp_settings_get_uint32(rfi->settings, FreeRDP_AuthenticationLevel)));
 
 	/* Certificate ignore */
 	freerdp_settings_set_bool(rfi->settings, FreeRDP_IgnoreCertificate, remmina_plugin_service->file_get_int(remminafile, "cert_ignore", 0));
@@ -1529,7 +1530,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 
 
 	if (remmina_plugin_service->file_get_string(remminafile, "loadbalanceinfo")) {
-		char* tmp = strdup(remmina_plugin_service->file_get_string(remminafile, "loadbalanceinfo"));
+		char *tmp = strdup(remmina_plugin_service->file_get_string(remminafile, "loadbalanceinfo"));
 		rfi->settings->LoadBalanceInfo = (BYTE *)tmp;
 
 		freerdp_settings_set_uint32(rfi->settings, FreeRDP_LoadBalanceInfoLength, strlen(tmp));
@@ -1846,13 +1847,13 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 		if (monitorids_string != NULL && monitorids_string[0] != '\0') {
 			if (g_strstr_len(monitorids_string, -1, ",") != NULL) {
 				if (g_strstr_len(monitorids_string, -1, ":") != NULL) {
-					rdpMonitor* base = (rdpMonitor *)freerdp_settings_get_pointer(rfi->settings, FreeRDP_MonitorDefArray);
+					rdpMonitor *base = (rdpMonitor *)freerdp_settings_get_pointer(rfi->settings, FreeRDP_MonitorDefArray);
 					/* We have an ID and an orientation degree */
 					gchar **temp_items;
 					gchar **rot_items;
 					temp_items = g_strsplit(monitorids_string, ",", -1);
 					for (i = 0; i < g_strv_length(temp_items); i++) {
-						rdpMonitor* current = &base[atoi(rot_items[0])];
+						rdpMonitor *current = &base[atoi(rot_items[0])];
 						rot_items = g_strsplit(temp_items[i], ":", -1);
 						if (i == 0)
 							monitorids = g_strdup(rot_items[0]);
@@ -1861,21 +1862,24 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 						current->attributes.orientation = atoi(rot_items[1]);
 						REMMINA_PLUGIN_DEBUG("Monitor n %d orientation: %d", i, current->attributes.orientation);
 					}
-				} else
+				} else {
 					monitorids = g_strdup(monitorids_string);
-			} else
+				}
+			} else {
 				monitorids = g_strdup(monitorids_string);
-		} else
+			}
+		} else {
 			monitorids = g_strdup(monitorids_string);
+		}
 		remmina_rdp_monitor_get(rfi, &monitorids, &maxwidth, &maxheight);
 		if (monitorids != NULL && monitorids[0] != '\0') {
-			UINT32* base = (UINT32 *)freerdp_settings_get_pointer(rfi->settings, FreeRDP_MonitorIds);
+			UINT32 *base = (UINT32 *)freerdp_settings_get_pointer(rfi->settings, FreeRDP_MonitorIds);
 			gchar **items;
 			items = g_strsplit(monitorids, ",", -1);
 			freerdp_settings_set_uint32(rfi->settings, FreeRDP_NumMonitorIds, g_strv_length(items));
 			REMMINA_PLUGIN_DEBUG("NumMonitorIds: %d", freerdp_settings_get_uint32(rfi->settings, FreeRDP_NumMonitorIds));
 			for (i = 0; i < g_strv_length(items); i++) {
-				UINT32* current = &base[i];
+				UINT32 *current = &base[i];
 				*current = atoi(items[i]);
 				REMMINA_PLUGIN_DEBUG("Added monitor with ID %" PRIu32, *current);
 			}
@@ -1975,7 +1979,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 		freerdp_settings_set_bool(rfi->settings, FreeRDP_DeviceRedirection, TRUE);
 		freerdp_settings_set_bool(rfi->settings, FreeRDP_SupportMultitransport, TRUE);
 		freerdp_settings_set_uint32(rfi->settings, FreeRDP_MultitransportFlags,
-			(TRANSPORT_TYPE_UDP_FECR | TRANSPORT_TYPE_UDP_FECL | TRANSPORT_TYPE_UDP_PREFERRED));
+					    (TRANSPORT_TYPE_UDP_FECR | TRANSPORT_TYPE_UDP_FECL | TRANSPORT_TYPE_UDP_PREFERRED));
 	} else {
 		freerdp_settings_set_uint32(rfi->settings, FreeRDP_MultitransportFlags, 0);
 	}
@@ -1998,7 +2002,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 	gboolean orphaned;
 
 	if (!freerdp_connect(rfi->instance)) {
-		orphaned =  (GET_PLUGIN_DATA(rfi->protocol_widget) == NULL);
+		orphaned = (GET_PLUGIN_DATA(rfi->protocol_widget) == NULL);
 		if (!orphaned) {
 			UINT32 e;
 
@@ -2006,7 +2010,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 
 			switch (e) {
 			case FREERDP_ERROR_AUTHENTICATION_FAILED:
-			case STATUS_LOGON_FAILURE:			  // wrong return code from FreeRDP introduced at the end of July 2016? (fixed with b86c0ba)
+			case STATUS_LOGON_FAILURE:                        // wrong return code from FreeRDP introduced at the end of July 2016? (fixed with b86c0ba)
 #ifdef FREERDP_ERROR_CONNECT_LOGON_FAILURE
 			case FREERDP_ERROR_CONNECT_LOGON_FAILURE:
 #endif
@@ -2153,7 +2157,7 @@ static void rfi_uninit(rfContext *rfi)
 			IFCALL(pEntryPoints->GlobalUninit);
 		free(instance->pClientEntryPoints);
 		freerdp_context_free(instance); /* context is rfContext* rfi */
-		freerdp_free(instance);		 /* This implicitly frees instance->context and rfi is no longer valid */
+		freerdp_free(instance);         /* This implicitly frees instance->context and rfi is no longer valid */
 	}
 }
 
@@ -2197,6 +2201,7 @@ static gpointer remmina_rdp_main_thread(gpointer data)
 	CANCEL_ASYNC
 
 		gp = (RemminaProtocolWidget *)data;
+
 	rfi = GET_PLUGIN_DATA(gp);
 
 	rfi->attempt_interactive_authentication = FALSE;
@@ -2351,8 +2356,9 @@ static void remmina_rdp_call_feature(RemminaProtocolWidget *gp, const RemminaPro
 		if (rfi) {
 			rfi->scale = remmina_plugin_service->remmina_protocol_widget_get_current_scale_mode(gp);
 			remmina_rdp_event_update_scale(gp);
-		} else
+		} else {
 			REMMINA_PLUGIN_DEBUG("Remmina RDP plugin warning: Null value for rfi by REMMINA_RDP_FEATURE_SCALE");
+		}
 		break;
 
 	case REMMINA_RDP_FEATURE_MULTIMON:
@@ -2365,10 +2371,9 @@ static void remmina_rdp_call_feature(RemminaProtocolWidget *gp, const RemminaPro
 				freerdp_settings_set_bool(rfi->settings, FreeRDP_Fullscreen, TRUE);
 				remmina_rdp_event_send_delayed_monitor_layout(gp);
 			}
-
-		}
-		else
+		} else {
 			REMMINA_PLUGIN_DEBUG("Remmina RDP plugin warning: Null value for rfi by REMMINA_RDP_FEATURE_MULTIMON");
+		}
 		break;
 
 	case REMMINA_RDP_FEATURE_DYNRESUPDATE:
@@ -2377,8 +2382,8 @@ static void remmina_rdp_call_feature(RemminaProtocolWidget *gp, const RemminaPro
 	case REMMINA_RDP_FEATURE_TOOL_REFRESH:
 		if (rfi)
 			gtk_widget_queue_draw_area(rfi->drawing_area, 0, 0,
-					remmina_plugin_service->protocol_plugin_get_width(gp),
-					remmina_plugin_service->protocol_plugin_get_height(gp));
+						   remmina_plugin_service->protocol_plugin_get_width(gp),
+						   remmina_plugin_service->protocol_plugin_get_height(gp));
 		else
 			REMMINA_PLUGIN_DEBUG("Remmina RDP plugin warning: Null value for rfi by REMMINA_RDP_FEATURE_TOOL_REFRESH");
 		break;
@@ -2397,6 +2402,7 @@ static void remmina_rdp_keystroke(RemminaProtocolWidget *gp, const guint keystro
 {
 	TRACE_CALL(__func__);
 	rfContext *rfi = GET_PLUGIN_DATA(gp);
+
 	remmina_plugin_service->protocol_plugin_send_keys_signals(rfi->drawing_area,
 								  keystrokes, keylen, GDK_KEY_PRESS | GDK_KEY_RELEASE);
 	return;
@@ -2500,16 +2506,16 @@ static gpointer network_list[] =
 /* Array of key/value pairs for sound options */
 static gpointer sound_list[] =
 {
-	"off",		 N_("Off"),
-	"local",	 N_("Local"),
-	"remote",	 N_("Remote"),
+	"off",	  N_("Off"),
+	"local",  N_("Local"),
+	"remote", N_("Remote"),
 	NULL
 };
 
 /* Array of key/value pairs for security */
 static gpointer security_list[] =
 {
-	"",	N_("Automatic negotiation"),
+	"",    N_("Automatic negotiation"),
 	"nla", N_("NLA protocol security"),
 	"tls", N_("TLS protocol security"),
 	"rdp", N_("RDP protocol security"),
@@ -2595,19 +2601,20 @@ static gchar monitorids_tooltip[] =
  */
 static const RemminaProtocolSetting remmina_rdp_basic_settings[] =
 {
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER,	    "server",	   NULL,			  FALSE, NULL,		  NULL									      	},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "username",	   N_("Username"),		  FALSE, NULL,		  NULL									      	},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD,   "password",	   N_("Password"),		  FALSE, NULL,		  NULL									      	},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "domain",	   N_("Domain"),		  FALSE, NULL,		  NULL									      	},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "left-handed", N_("Left-handed mouse support"), FALSE, NULL,		  N_("Swap left and right mouse buttons for left-handed mouse support")	},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "multimon",	   N_("Enable multi monitor"),	  TRUE, NULL,		  NULL										},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "span",	   N_("Span screen over multiple monitors"),	  TRUE, NULL,		  NULL						      },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "monitorids",  N_("List monitor IDs"),	  FALSE, NULL,		  monitorids_tooltip },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION, "resolution",  NULL,			  FALSE, NULL,		  NULL						      },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	    "colordepth",  N_("Colour depth"),		  FALSE, colordepth_list, NULL						      },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	    "network",	   N_("Network connection type"), FALSE, network_list,	  network_tooltip				      },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_FOLDER,	    "sharefolder", N_("Share folder"),		  FALSE, NULL,		  NULL						      },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	    NULL,	   NULL,			  FALSE, NULL,		  NULL						      }
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER,	    "server",			NULL,					  FALSE, NULL,		  NULL									},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "username",			N_("Username"),				  FALSE, NULL,		  NULL									},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD,   "password",			N_("Password"),				  FALSE, NULL,		  NULL									},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "domain",			N_("Domain"),				  FALSE, NULL,		  NULL									},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "left-handed",		N_("Left-handed mouse support"),	  TRUE,	 NULL,		  N_("Swap left and right mouse buttons for left-handed mouse support") },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "disable-smooth-scrolling", N_("Disable smooth scrolling"),		  TRUE,	 NULL,		  NULL									},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "multimon",			N_("Enable multi monitor"),		  TRUE,	 NULL,		  NULL									},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "span",			N_("Span screen over multiple monitors"), TRUE,	 NULL,		  NULL									},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "monitorids",		N_("List monitor IDs"),			  FALSE, NULL,		  monitorids_tooltip							},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION, "resolution",		NULL,					  FALSE, NULL,		  NULL									},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	    "colordepth",		N_("Colour depth"),			  FALSE, colordepth_list, NULL									},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	    "network",			N_("Network connection type"),		  FALSE, network_list,	  network_tooltip							},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_FOLDER,	    "sharefolder",		N_("Share folder"),			  FALSE, NULL,		  NULL									},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	    NULL,			NULL,					  FALSE, NULL,		  NULL									}
 };
 
 /* Array of RemminaProtocolSetting for advanced settings.
@@ -2671,7 +2678,7 @@ static const RemminaProtocolSetting remmina_rdp_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "multitransport",	    N_("Enable multitransport protocol (UDP)"),		 TRUE,	NULL,		  N_("Using the UDP protocol may improve performance")								 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "base-cred-for-gw",	    N_("Use base credentials for gateway too"),		 TRUE,	NULL,		  NULL														 },
 #if FREERDP_CHECK_VERSION(2, 3, 1)
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "websockets",	    	    N_("Enable Gateway websockets support"),		 TRUE,	NULL,		  NULL														 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "websockets",		    N_("Enable Gateway websockets support"),		 TRUE,	NULL,		  NULL														 },
 #endif
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	  NULL,			    NULL,						 FALSE, NULL,		  NULL														 }
 };
