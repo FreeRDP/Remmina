@@ -1,7 +1,23 @@
 resource_rules:
   issues:
     rules:
-      - name: Triage policy
+      - name: Close older than 9 Months
+        conditions:
+          date:
+            attribute: updated_at
+            condition: older_than
+            interval_type: months
+            interval: 9
+          state: opened
+        limits:
+          most_recent: 50
+        actions:
+          status: close
+          comment: |
+            {{author}} This issue is now closed due to with no updates for a long time. Please re-open if still relevant.
+            CC {{assignees}}
+
+      - name: Unlabelled after 30 days
         conditions:
           date:
             attribute: updated_at
