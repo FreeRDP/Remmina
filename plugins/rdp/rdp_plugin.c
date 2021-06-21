@@ -1764,6 +1764,14 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 		g_free(p);
 	}
 
+	cs = remmina_plugin_service->file_get_string(remminafile, "rdp2tcp");
+	if (cs != NULL && cs[0] != '\0') {
+		g_free(rfi->settings->RDP2TCPArgs);
+		rfi->settings->RDP2TCPArgs = g_strdup(cs);
+		REMMINA_PLUGIN_DEBUG("rdp2tcp set to %s", rfi->settings->RDP2TCPArgs);
+		remmina_rdp_load_static_channel_addin(channels, rfi->settings, "rdp2tcp", rfi->settings->RDP2TCPArgs);
+	}
+
 	int vermaj, vermin, verrev;
 	freerdp_get_version(&vermaj, &vermin, &verrev);
 
@@ -2656,6 +2664,7 @@ static const RemminaProtocolSetting remmina_rdp_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "smartcardname",	    N_("Name of smart card"),				 FALSE, NULL,		  NULL														 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "dvc",		    N_("Dynamic virtual channel"),			 FALSE, NULL,		  N_("<channel>[,<options>]")											 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "vc",			    N_("Static virtual channel"),			 FALSE, NULL,		  N_("<channel>[,<options>]")											 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "rdp2tcp",		    N_("TCP redirection"),				 FALSE, NULL,		  N_("/PATH/TO/rdp2tcp")											 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "preferipv6",		    N_("Prefer IPv6 AAAA record over IPv4 A record"),	 TRUE,	NULL,		  NULL														 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "shareprinter",	    N_("Share printers"),				 TRUE,	NULL,		  NULL														 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "shareserial",	    N_("Share serial ports"),				 TRUE,	NULL,		  NULL														 },
