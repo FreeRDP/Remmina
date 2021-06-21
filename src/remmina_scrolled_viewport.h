@@ -54,7 +54,6 @@ typedef struct _RemminaScrolledViewport {
 	GtkEventBox	event_box;
 
 	/* Motion activates in Viewport Fullscreen mode */
-	gboolean	viewport_motion;
 	guint		viewport_motion_handler;
 } RemminaScrolledViewport;
 
