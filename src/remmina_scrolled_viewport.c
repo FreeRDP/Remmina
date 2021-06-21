@@ -60,7 +60,11 @@ static void remmina_scrolled_viewport_get_preferred_height(GtkWidget* widget, gi
 	if (natural_height != NULL) *natural_height = 100;
 }
 
-/* Event handler when mouse move on borders */
+/* Event handler when mouse move on borders
+ * Note that this handler may repeat itself. Zeroing out viewport_motion_handler before returning FALSE will
+ * relay the fact that this specific occurrence of timeout has been cancelled.
+ * A new one may be scheduled if the mouse pointer moves to the edge again.
+ */
 static gboolean remmina_scrolled_viewport_motion_timeout(gpointer data)
 {
 	TRACE_CALL(__func__);
@@ -79,26 +83,32 @@ static gboolean remmina_scrolled_viewport_motion_timeout(gpointer data)
 	GtkAdjustment *adj;
 	gdouble value;
 
-	if (!g_main_context_find_source_by_funcs_user_data(NULL, (GSourceFuncs *) remmina_scrolled_viewport_motion_timeout, data))
-		return FALSE;
-	if (!REMMINA_IS_SCROLLED_VIEWPORT(data))
-		return FALSE;
-	if (!GTK_IS_BIN(data))
-		return FALSE;
 	gsv = REMMINA_SCROLLED_VIEWPORT(data);
-	if (!gsv || !gsv->viewport_motion)
+	if (!gsv || !gsv->viewport_motion_handler)
+		// Either the pointer is nullptr or the source id is already 0
 		return FALSE;
+	if (!REMMINA_IS_SCROLLED_VIEWPORT(data)) {
+		gsv->viewport_motion_handler = 0;
+		return FALSE;
+	}
+	if (!GTK_IS_BIN(data)) {
+		gsv->viewport_motion_handler = 0;
+		return FALSE;
+	}
+
 	child = gtk_bin_get_child(GTK_BIN(gsv));
-	if (!GTK_IS_VIEWPORT(child))
+	if (!GTK_IS_VIEWPORT(child)) {
+		gsv->viewport_motion_handler = 0;
 		return FALSE;
+	}
 
 	gsvwin = gtk_widget_get_window(GTK_WIDGET(gsv));
-	if (!gsv)
-		return FALSE;
-
 	display = gdk_display_get_default();
-	if (!display)
+	if (!display) {
+		gsv->viewport_motion_handler = 0;
 		return FALSE;
+	}
+
 #if GTK_CHECK_VERSION(3, 20, 0)
 	seat = gdk_display_get_default_seat(display);
 	pointer = gdk_seat_get_pointer(seat);
@@ -146,7 +156,6 @@ static gboolean remmina_scrolled_viewport_leave(GtkWidget *widget, GdkEventCross
 {
 	TRACE_CALL(__func__);
 	RemminaScrolledViewport *gsv = REMMINA_SCROLLED_VIEWPORT(widget);
-	gsv->viewport_motion = TRUE;
 	gsv->viewport_motion_handler = g_timeout_add(20, remmina_scrolled_viewport_motion_timeout, gsv);
 	return FALSE;
 }
@@ -176,10 +185,10 @@ static void remmina_scrolled_viewport_init(RemminaScrolledViewport *gsv)
 void remmina_scrolled_viewport_remove_motion(RemminaScrolledViewport *gsv)
 {
 	TRACE_CALL(__func__);
-	if (gsv->viewport_motion) {
-		gsv->viewport_motion = FALSE;
-		g_source_remove(gsv->viewport_motion_handler);
+	guint handler = gsv->viewport_motion_handler;
+	if (handler) {
 		gsv->viewport_motion_handler = 0;
+		g_source_remove(handler);
 	}
 }
 
@@ -191,7 +200,6 @@ remmina_scrolled_viewport_new(void)
 
 	gsv = REMMINA_SCROLLED_VIEWPORT(g_object_new(REMMINA_TYPE_SCROLLED_VIEWPORT, NULL));
 
-	gsv->viewport_motion = FALSE;
 	gsv->viewport_motion_handler = 0;
 
 	gtk_widget_set_size_request(GTK_WIDGET(gsv), 1, 1);
