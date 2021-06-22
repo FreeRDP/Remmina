@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-06-03 14:35+0000\n"
+"POT-Creation-Date: 2021-06-18 12:13+0000\n"
 "PO-Revision-Date: 2021-06-04 14:34+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
@@ -75,8 +75,8 @@ msgstr "正在以 SSH 連接 %s …"
 #: src/remmina_ssh_plugin.c:1369 src/remmina_sftp_plugin.c:310
 #: src/remmina_sftp_plugin.c:346 src/remmina_file_editor.c:846
 #: src/remmina_file_editor.c:967 plugins/www/www_plugin.c:880
-#: plugins/rdp/rdp_plugin.c:2600 data/ui/remmina_unlock.glade:116
-#: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1683
+#: plugins/rdp/rdp_plugin.c:2606 data/ui/remmina_unlock.glade:116
+#: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1674
 msgid "Password"
 msgstr "密碼"
 
@@ -161,7 +161,7 @@ msgid "Recent lists cleared."
 msgstr "已清除最近使用清單。"
 
 #: src/remmina_pref_dialog.c:154 src/rcw.c:1950
-#: data/ui/remmina_preferences.glade:251 data/ui/remmina_preferences.glade:261
+#: data/ui/remmina_preferences.glade:168 data/ui/remmina_preferences.glade:178
 msgid "Keystrokes"
 msgstr "自訂快捷鍵"
 
@@ -174,11 +174,11 @@ msgstr "設定自訂快速鍵"
 msgid "libsodium >= 1.9.0 is required to use master password"
 msgstr "需要 libsodium 版本 >= 1.9.0 才能使用主密碼"
 
-#: src/remmina_pref_dialog.c:804
+#: src/remmina_pref_dialog.c:806
 msgid "Picking a terminal colouring file replaces the file: "
 msgstr "選擇終端機配色檔案"
 
-#: src/remmina_pref_dialog.c:808
+#: src/remmina_pref_dialog.c:810
 msgid ""
 "This file contains the \"Custom\" terminal colour scheme selectable from the "
 "\"Advanced\" tab of terminal connections and editable in the \"Terminal\" "
@@ -268,7 +268,7 @@ msgstr "全選"
 msgid "_Select all"
 msgstr "全選(_S)"
 
-#: src/remmina_ssh_plugin.c:1451 data/ui/remmina_preferences.glade:2389
+#: src/remmina_ssh_plugin.c:1451
 msgid "Increase font size"
 msgstr ""
 
@@ -276,7 +276,7 @@ msgstr ""
 msgid "_Increase font size"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1452 data/ui/remmina_preferences.glade:2402
+#: src/remmina_ssh_plugin.c:1452
 msgid "Decrease font size"
 msgstr ""
 
@@ -299,14 +299,14 @@ msgstr "認證類型"
 
 #: src/remmina_ssh_plugin.c:1473 src/remmina_message_panel.c:330
 #: src/remmina_sftp_plugin.c:345 src/remmina_file_editor.c:961
-#: plugins/www/www_plugin.c:879 plugins/vnc/vnc_plugin.c:1942
-#: plugins/vnc/vnc_plugin.c:1962 plugins/rdp/rdp_plugin.c:2599
+#: plugins/www/www_plugin.c:879 plugins/vnc/vnc_plugin.c:1960
+#: plugins/vnc/vnc_plugin.c:1980 plugins/rdp/rdp_plugin.c:2605
 #: plugins/nx/nx_plugin.c:730 data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr "使用者名稱"
 
-#: src/remmina_ssh_plugin.c:1474 plugins/vnc/vnc_plugin.c:1943
-#: plugins/vnc/vnc_plugin.c:1963 plugins/spice/spice_plugin.c:666
+#: src/remmina_ssh_plugin.c:1474 plugins/vnc/vnc_plugin.c:1961
+#: plugins/vnc/vnc_plugin.c:1981 plugins/spice/spice_plugin.c:666
 #: plugins/nx/nx_plugin.c:731
 msgid "User password"
 msgstr "使用者密碼"
@@ -323,7 +323,7 @@ msgid "Password to unlock private key"
 msgstr ""
 
 #: src/remmina_ssh_plugin.c:1480 plugins/xdmcp/xdmcp_plugin.c:370
-#: plugins/rdp/rdp_plugin.c:2639 plugins/nx/nx_plugin.c:734
+#: plugins/rdp/rdp_plugin.c:2646 plugins/nx/nx_plugin.c:734
 msgid "Start-up program"
 msgstr "啟動程式"
 
@@ -524,8 +524,8 @@ msgstr "往上"
 msgid "Go to parent folder"
 msgstr "跳到上一層目錄"
 
-#: src/remmina_ftp_client.c:758 plugins/vnc/vnc_plugin.c:2000
-#: plugins/rdp/rdp_plugin.c:2683
+#: src/remmina_ftp_client.c:758 plugins/vnc/vnc_plugin.c:2019
+#: plugins/rdp/rdp_plugin.c:2690
 msgid "Refresh"
 msgstr "重新整理"
 
@@ -570,11 +570,11 @@ msgstr "群組"
 msgid "Permission"
 msgstr "權限"
 
-#: src/remmina_ftp_client.c:990 plugins/rdp/rdp_plugin.c:2505
+#: src/remmina_ftp_client.c:990 plugins/rdp/rdp_plugin.c:2511
 msgid "Remote"
 msgstr "遠端"
 
-#: src/remmina_ftp_client.c:997 plugins/rdp/rdp_plugin.c:2504
+#: src/remmina_ftp_client.c:997 plugins/rdp/rdp_plugin.c:2510
 msgid "Local"
 msgstr "本地"
 
@@ -754,7 +754,7 @@ msgstr "Remmina 面板小程式"
 msgid "Connect to remote desktops through the applet menu"
 msgstr "通過小程式選單快速連接到遠端桌面"
 
-#: src/remmina_icon.c:476 src/remmina_icon.c:477 src/remmina_main.c:1334
+#: src/remmina_icon.c:476 src/remmina_icon.c:477 src/remmina_main.c:1333
 msgid "Remmina Remote Desktop Client"
 msgstr "Remmina 遠端桌面客戶端"
 
@@ -768,7 +768,7 @@ msgstr "目前視窗已開啟 %i 個作用中的連線。確定要關閉嗎？"
 msgid "Viewport fullscreen mode"
 msgstr "視埠全螢幕模式"
 
-#: src/rcw.c:1399 data/ui/remmina_preferences.glade:647
+#: src/rcw.c:1399 data/ui/remmina_preferences.glade:603
 msgid "Scrolled fullscreen"
 msgstr "捲動全螢幕"
 
@@ -810,8 +810,8 @@ msgstr "調整視窗大小以適應遠端解析度"
 msgid "Toggle fullscreen mode"
 msgstr "切換全螢幕模式"
 
-#: src/rcw.c:2295 data/ui/remmina_preferences.glade:1300
-#: data/ui/remmina_preferences.glade:1310
+#: src/rcw.c:2295 data/ui/remmina_preferences.glade:1326
+#: data/ui/remmina_preferences.glade:1336
 msgid "Multi monitor"
 msgstr ""
 
@@ -823,7 +823,7 @@ msgstr "切換動態解析度更新"
 msgid "Toggle scaled mode"
 msgstr "啟用縮放的模式"
 
-#: src/rcw.c:2361 data/ui/remmina_preferences.glade:1044
+#: src/rcw.c:2361 data/ui/remmina_preferences.glade:1061
 msgid "Switch tab pages"
 msgstr "切換分頁"
 
@@ -843,16 +843,16 @@ msgstr "工具"
 msgid "Tools"
 msgstr "工具"
 
-#: src/rcw.c:2404 data/ui/remmina_preferences.glade:1237
-#: data/ui/remmina_preferences.glade:1247
+#: src/rcw.c:2404 data/ui/remmina_preferences.glade:1261
+#: data/ui/remmina_preferences.glade:1271
 msgid "Screenshot"
 msgstr "螢幕截圖"
 
-#: src/rcw.c:2418 data/ui/remmina_preferences.glade:1147
+#: src/rcw.c:2418 data/ui/remmina_preferences.glade:1168
 msgid "Minimize window"
 msgstr "最小化視窗"
 
-#: src/rcw.c:2428 data/ui/remmina_preferences.glade:1177
+#: src/rcw.c:2428 data/ui/remmina_preferences.glade:1199
 msgid "Disconnect"
 msgstr "斷開連接"
 
@@ -926,7 +926,7 @@ msgstr[0] "共 %i 項。"
 msgid "Are you sure you want to delete “%s”?"
 msgstr "確定要刪除「%s」？"
 
-#: src/remmina_main.c:975
+#: src/remmina_main.c:974
 #, c-format
 msgid ""
 "Unable to import:\n"
@@ -935,19 +935,19 @@ msgstr ""
 "無法匯入:\n"
 "%s"
 
-#: src/remmina_main.c:1001 data/ui/remmina_main.glade:285
+#: src/remmina_main.c:1000 data/ui/remmina_main.glade:285
 msgid "Import"
 msgstr "匯入"
 
-#: src/remmina_main.c:1024 src/remmina_file_editor.c:1373
+#: src/remmina_main.c:1023 src/remmina_file_editor.c:1373
 msgid "_Save"
 msgstr "儲存(_S)"
 
-#: src/remmina_main.c:1030
+#: src/remmina_main.c:1029
 msgid "This protocol does not support exporting."
 msgstr "此協定不支援匯出。"
 
-#: src/remmina_main.c:1336
+#: src/remmina_main.c:1335
 msgid "Remmina Kiosk"
 msgstr "Remmina 服務台"
 
@@ -1073,7 +1073,7 @@ msgid "Cancel"
 msgstr "取消"
 
 #: src/remmina_message_panel.c:199 data/ui/remmina_snap_info_dialog.glade:28
-#: data/ui/remmina_news.glade:33 data/ui/remmina_preferences.glade:51
+#: data/ui/remmina_news.glade:33 data/ui/remmina_preferences.glade:2612
 #: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
 #: data/ui/remmina_string_list.glade:63
 msgid "Close"
@@ -1087,7 +1087,7 @@ msgstr "是"
 msgid "No"
 msgstr "否"
 
-#: src/remmina_message_panel.c:391 plugins/rdp/rdp_plugin.c:2601
+#: src/remmina_message_panel.c:391 plugins/rdp/rdp_plugin.c:2607
 #: data/ui/remmina_mpc.glade:172
 msgid "Domain"
 msgstr "網域"
@@ -1561,7 +1561,7 @@ msgstr "透過 loopback 位址穿隧"
 msgid "Same server at port %i"
 msgstr "相同伺服器上的 %i 連接埠"
 
-#: src/remmina_file_editor.c:938 plugins/rdp/rdp_plugin.c:2640
+#: src/remmina_file_editor.c:938 plugins/rdp/rdp_plugin.c:2647
 msgid "Start-up path"
 msgstr "啟動路徑"
 
@@ -1656,7 +1656,7 @@ msgstr "認證類型"
 msgid "Authentication failure: %s"
 msgstr "認證類型"
 
-#: plugins/gvnc/gvnc_plugin.c:539 plugins/vnc/vnc_plugin.c:820
+#: plugins/gvnc/gvnc_plugin.c:539 plugins/vnc/vnc_plugin.c:825
 msgid "Enter VNC authentication credentials"
 msgstr "輸入 VNC 驗證身分資料"
 
@@ -1696,9 +1696,9 @@ msgstr "真彩 (24 位元)"
 msgid "VNC password"
 msgstr "輸入 VNC 密碼"
 
-#: plugins/gvnc/gvnc_plugin.c:840 plugins/vnc/vnc_plugin.c:1944
-#: plugins/vnc/vnc_plugin.c:1964 plugins/xdmcp/xdmcp_plugin.c:369
-#: plugins/rdp/rdp_plugin.c:2607
+#: plugins/gvnc/gvnc_plugin.c:840 plugins/vnc/vnc_plugin.c:1962
+#: plugins/vnc/vnc_plugin.c:1982 plugins/xdmcp/xdmcp_plugin.c:369
+#: plugins/rdp/rdp_plugin.c:2614
 msgid "Colour depth"
 msgstr "色彩深度"
 
@@ -1724,12 +1724,12 @@ msgid "No clipboard sync"
 msgstr "關閉剪貼簿同步"
 
 #: plugins/gvnc/gvnc_plugin.c:858 plugins/www/www_plugin.c:904
-#: plugins/vnc/vnc_plugin.c:1987 plugins/spice/spice_plugin.c:694
-#: plugins/rdp/rdp_plugin.c:2661 plugins/nx/nx_plugin.c:752
+#: plugins/vnc/vnc_plugin.c:2005 plugins/spice/spice_plugin.c:694
+#: plugins/rdp/rdp_plugin.c:2668 plugins/nx/nx_plugin.c:752
 msgid "Forget passwords after use"
 msgstr "不要記住密碼"
 
-#: plugins/gvnc/gvnc_plugin.c:859 plugins/vnc/vnc_plugin.c:1986
+#: plugins/gvnc/gvnc_plugin.c:859 plugins/vnc/vnc_plugin.c:2004
 msgid "Ignore remote bell messages"
 msgstr ""
 
@@ -1738,7 +1738,7 @@ msgid "Enable audio channel"
 msgstr "啟用音效頻道"
 
 #: plugins/gvnc/gvnc_plugin.c:861 plugins/gvnc/gvnc_plugin.c:870
-#: plugins/vnc/vnc_plugin.c:1982 plugins/vnc/vnc_plugin.c:1998
+#: plugins/vnc/vnc_plugin.c:2000 plugins/vnc/vnc_plugin.c:2017
 #: plugins/spice/spice_plugin.c:697 plugins/spice/spice_plugin.c:705
 msgid "View only"
 msgstr "僅檢視"
@@ -1925,70 +1925,70 @@ msgstr "儲存在 GNOME 鑰匙圈的安全密碼"
 msgid "Hello, World!"
 msgstr "Hello World!"
 
-#: plugins/vnc/vnc_plugin.c:767
+#: plugins/vnc/vnc_plugin.c:772
 msgid "Enter VNC password"
 msgstr "輸入 VNC 密碼"
 
-#: plugins/vnc/vnc_plugin.c:931
+#: plugins/vnc/vnc_plugin.c:936
 msgid "Unable to connect to VNC server"
 msgstr "無法連接至 VNC 伺服器"
 
-#: plugins/vnc/vnc_plugin.c:932
+#: plugins/vnc/vnc_plugin.c:937
 #, c-format
 msgid "Couldn’t convert '%s' to host address"
 msgstr "無法將「%s」轉換為主機位置"
 
-#: plugins/vnc/vnc_plugin.c:933
+#: plugins/vnc/vnc_plugin.c:938
 #, c-format
 msgid "VNC connection failed: %s"
 msgstr "VNC 連線失敗：%s"
 
-#: plugins/vnc/vnc_plugin.c:934
+#: plugins/vnc/vnc_plugin.c:939
 msgid "Your connection has been rejected."
 msgstr "您的連線已被拒絕。"
 
-#: plugins/vnc/vnc_plugin.c:960
+#: plugins/vnc/vnc_plugin.c:966
 #, c-format
 msgid "The VNC server requested an unknown authentication method. %s"
 msgstr ""
 
-#: plugins/vnc/vnc_plugin.c:962
+#: plugins/vnc/vnc_plugin.c:968
 msgid "Please retry after turning on encryption for this profile."
 msgstr "請在此連線設定檔上啟用加密後重試"
 
-#: plugins/vnc/vnc_plugin.c:1904 plugins/rdp/rdp_plugin.c:2454
+#: plugins/vnc/vnc_plugin.c:1922 plugins/rdp/rdp_plugin.c:2460
 msgid "True colour (32 bpp)"
 msgstr "真彩 (32 bpp)"
 
-#: plugins/vnc/vnc_plugin.c:1905 plugins/rdp/rdp_plugin.c:2456
+#: plugins/vnc/vnc_plugin.c:1923 plugins/rdp/rdp_plugin.c:2462
 msgid "High colour (16 bpp)"
 msgstr "高彩 (16bpp)"
 
-#: plugins/vnc/vnc_plugin.c:1906 plugins/rdp/rdp_plugin.c:2458
+#: plugins/vnc/vnc_plugin.c:1924 plugins/rdp/rdp_plugin.c:2464
 msgid "256 colours (8 bpp)"
 msgstr "256 色 (8 bpp)"
 
-#: plugins/vnc/vnc_plugin.c:1913 plugins/rdp/rdp_plugin.c:2481
-#: plugins/rdp/rdp_settings.c:271 plugins/nx/nx_plugin.c:712
+#: plugins/vnc/vnc_plugin.c:1931 plugins/rdp/rdp_plugin.c:2487
+#: plugins/rdp/rdp_settings.c:270 plugins/nx/nx_plugin.c:712
 msgid "Good"
 msgstr "佳"
 
-#: plugins/vnc/vnc_plugin.c:1914 plugins/rdp/rdp_plugin.c:2482
-#: plugins/rdp/rdp_settings.c:273 plugins/nx/nx_plugin.c:713
+#: plugins/vnc/vnc_plugin.c:1932 plugins/rdp/rdp_plugin.c:2488
+#: plugins/rdp/rdp_settings.c:272 plugins/nx/nx_plugin.c:713
 msgid "Best (slowest)"
 msgstr "最佳（最慢）"
 
-#: plugins/vnc/vnc_plugin.c:1915 plugins/rdp/rdp_plugin.c:2480
-#: plugins/rdp/rdp_settings.c:269 plugins/nx/nx_plugin.c:711
+#: plugins/vnc/vnc_plugin.c:1933 plugins/rdp/rdp_plugin.c:2486
+#: plugins/rdp/rdp_settings.c:268 plugins/nx/nx_plugin.c:711
 msgid "Medium"
 msgstr "中"
 
-#: plugins/vnc/vnc_plugin.c:1916 plugins/rdp/rdp_plugin.c:2479
-#: plugins/rdp/rdp_settings.c:267 plugins/nx/nx_plugin.c:710
+#: plugins/vnc/vnc_plugin.c:1934 plugins/rdp/rdp_plugin.c:2485
+#: plugins/rdp/rdp_settings.c:266 plugins/nx/nx_plugin.c:710
 msgid "Poor (fastest)"
 msgstr "差（最快）"
 
-#: plugins/vnc/vnc_plugin.c:1921
+#: plugins/vnc/vnc_plugin.c:1939
 msgid ""
 "Connect to VNC using a repeater:\n"
 "  • The server field must contain the repeater ID, e.g. ID:123456789\n"
@@ -1999,41 +1999,48 @@ msgid ""
 "    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
 msgstr ""
 
-#: plugins/vnc/vnc_plugin.c:1941
+#: plugins/vnc/vnc_plugin.c:1959
 msgid "Repeater"
 msgstr "中繼器"
 
-#: plugins/vnc/vnc_plugin.c:1945 plugins/vnc/vnc_plugin.c:1965
-#: plugins/rdp/rdp_plugin.c:2624 plugins/nx/nx_plugin.c:733
+#: plugins/vnc/vnc_plugin.c:1963 plugins/vnc/vnc_plugin.c:1983
+#: plugins/rdp/rdp_plugin.c:2631 plugins/nx/nx_plugin.c:733
 msgid "Quality"
 msgstr "品質"
 
-#: plugins/vnc/vnc_plugin.c:1961
+#: plugins/vnc/vnc_plugin.c:1979
 msgid "Listen on port"
 msgstr "監聽連接埠"
 
-#: plugins/vnc/vnc_plugin.c:1981
+#: plugins/vnc/vnc_plugin.c:1999
 msgid "Show remote cursor"
 msgstr "顯示遠端游標"
 
-#: plugins/vnc/vnc_plugin.c:1983 plugins/rdp/rdp_plugin.c:2658
+#: plugins/vnc/vnc_plugin.c:2001 plugins/rdp/rdp_plugin.c:2665
 msgid "Turn off clipboard sync"
 msgstr "關閉剪貼簿同步"
 
-#: plugins/vnc/vnc_plugin.c:1984
+#: plugins/vnc/vnc_plugin.c:2002
 msgid "Turn off encryption"
 msgstr "使用 TLS 加密"
 
-#: plugins/vnc/vnc_plugin.c:1985 plugins/vnc/vnc_plugin.c:1999
+#: plugins/vnc/vnc_plugin.c:2003 plugins/vnc/vnc_plugin.c:2018
 msgid "Prevent local interaction on the server"
 msgstr ""
 
-#: plugins/vnc/vnc_plugin.c:2001
+#: plugins/vnc/vnc_plugin.c:2006 plugins/rdp/rdp_plugin.c:2609
+#: plugins/rdp/rdp_settings.c:594
+#, fuzzy
+#| msgid "Turn on smooth scrolling"
+msgid "Disable smooth scrolling"
+msgstr "啟用順滑捲動"
+
+#: plugins/vnc/vnc_plugin.c:2020
 msgid "Open Chat…"
 msgstr "開啟聊天…"
 
-#: plugins/vnc/vnc_plugin.c:2002 plugins/spice/spice_plugin.c:707
-#: plugins/xdmcp/xdmcp_plugin.c:381 plugins/rdp/rdp_plugin.c:2687
+#: plugins/vnc/vnc_plugin.c:2021 plugins/spice/spice_plugin.c:707
+#: plugins/xdmcp/xdmcp_plugin.c:381 plugins/rdp/rdp_plugin.c:2694
 msgid "Send Ctrl+Alt+Delete"
 msgstr "傳送 Ctrl+Alt+Delete"
 
@@ -2079,8 +2086,8 @@ msgstr "連線到 SPICE 伺服器失敗。"
 msgid "Default"
 msgstr "預設"
 
-#: plugins/spice/spice_plugin.c:635 plugins/rdp/rdp_plugin.c:2503
-#: data/ui/remmina_preferences.glade:720
+#: plugins/spice/spice_plugin.c:635 plugins/rdp/rdp_plugin.c:2509
+#: data/ui/remmina_preferences.glade:673
 msgid "Off"
 msgstr "關"
 
@@ -2104,7 +2111,7 @@ msgstr "使用 TLS 加密"
 msgid "Server CA certificate"
 msgstr "伺服器 CA 憑證"
 
-#: plugins/spice/spice_plugin.c:669 plugins/rdp/rdp_plugin.c:2609
+#: plugins/spice/spice_plugin.c:669 plugins/rdp/rdp_plugin.c:2616
 msgid "Share folder"
 msgstr "共享資料夾"
 
@@ -2208,15 +2215,15 @@ msgstr "浮動視窗"
 msgid "Remmina simple terminal"
 msgstr "Remmina 簡單終端機"
 
-#: plugins/rdp/rdp_plugin.c:735 plugins/rdp/rdp_plugin.c:800
+#: plugins/rdp/rdp_plugin.c:736 plugins/rdp/rdp_plugin.c:801
 msgid "Enter RDP authentication credentials"
 msgstr "輸入 RDP 驗證身分資料"
 
-#: plugins/rdp/rdp_plugin.c:808
+#: plugins/rdp/rdp_plugin.c:809
 msgid "Enter RDP gateway authentication credentials"
 msgstr "輸入 RDP 閘道驗證身分資料"
 
-#: plugins/rdp/rdp_plugin.c:2020
+#: plugins/rdp/rdp_plugin.c:2024
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2225,7 +2232,7 @@ msgstr ""
 "存取 RDP 伺服器 %s 失敗。\n"
 "帳戶被鎖。"
 
-#: plugins/rdp/rdp_plugin.c:2027
+#: plugins/rdp/rdp_plugin.c:2031
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2234,7 +2241,7 @@ msgstr ""
 "存取 RDP 伺服器 %s 失敗。\n"
 "帳戶已過期。"
 
-#: plugins/rdp/rdp_plugin.c:2034
+#: plugins/rdp/rdp_plugin.c:2038
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2243,7 +2250,7 @@ msgstr ""
 "存取 RDP 伺服器 %s 失敗。\n"
 "密碼已過期。"
 
-#: plugins/rdp/rdp_plugin.c:2041
+#: plugins/rdp/rdp_plugin.c:2045
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2252,7 +2259,7 @@ msgstr ""
 "存取 RDP 伺服器 %s 失敗。\n"
 "帳戶已停用。"
 
-#: plugins/rdp/rdp_plugin.c:2047
+#: plugins/rdp/rdp_plugin.c:2051
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2261,7 +2268,7 @@ msgstr ""
 "存取 RDP 伺服器 %s 失敗。\n"
 "使用者權限不足。"
 
-#: plugins/rdp/rdp_plugin.c:2055
+#: plugins/rdp/rdp_plugin.c:2059
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2270,7 +2277,7 @@ msgstr ""
 "存取 RDP 伺服器 %s 失敗。\n"
 "帳戶受限。"
 
-#: plugins/rdp/rdp_plugin.c:2063
+#: plugins/rdp/rdp_plugin.c:2067
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2279,153 +2286,157 @@ msgstr ""
 "存取 RDP 伺服器 %s 失敗。\n"
 "使用者在連線前必須變更密碼。"
 
-#: plugins/rdp/rdp_plugin.c:2068
+#: plugins/rdp/rdp_plugin.c:2072
 #, c-format
 msgid "Lost connection to the RDP server “%s”."
 msgstr "無法連線至 RDP 伺服器 %s。"
 
-#: plugins/rdp/rdp_plugin.c:2071
+#: plugins/rdp/rdp_plugin.c:2075
 #, c-format
 msgid "Could not find the address for the RDP server “%s”."
 msgstr "無法找到 RDP 伺服器位置 %s。"
 
-#: plugins/rdp/rdp_plugin.c:2075
+#: plugins/rdp/rdp_plugin.c:2079
 #, c-format
 msgid ""
 "Could not connect to the RDP server “%s” via TLS. Check that client and "
 "server support a common TLS version."
-msgstr "連線至 RDP 伺服器 %s 發生錯誤。TLS 連線失敗。請檢查客戶端與伺服器是否支援通用的 TLS 版本。"
+msgstr ""
+"連線至 RDP 伺服器 %s 發生錯誤。TLS 連線失敗。請檢查客戶端與伺服器是否支援通用"
+"的 TLS 版本。"
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
-#: plugins/rdp/rdp_plugin.c:2079
+#: plugins/rdp/rdp_plugin.c:2083
 #, c-format
 msgid ""
 "Unable to establish a connection to the RDP server “%s”. Check \"Security "
 "protocol negotiation\"."
 msgstr "無法建立至 RDP 伺服器 %s 的連線。"
 
-#: plugins/rdp/rdp_plugin.c:2087
+#: plugins/rdp/rdp_plugin.c:2091
 #, c-format
 msgid "Cannot connect to the RDP server “%s”."
 msgstr "無法連線至 RDP 伺服器 %s。"
 
-#: plugins/rdp/rdp_plugin.c:2090
+#: plugins/rdp/rdp_plugin.c:2094
 msgid "Could not start libfreerdp-gdi."
 msgstr "無法啟動 pthread。"
 
-#: plugins/rdp/rdp_plugin.c:2093
+#: plugins/rdp/rdp_plugin.c:2097
 #, c-format
 msgid ""
 "You requested a H.264 GFX mode for the server “%s”, but your libfreerdp does "
 "not support H.264. Please use a non-AVC colour depth setting."
-msgstr "要求了於 %s 伺服器使用 H.264 GFX 模式，但您的 libfreerdp 並不支援 H.264。請使用非 AVC 的色彩深度設定。"
+msgstr ""
+"要求了於 %s 伺服器使用 H.264 GFX 模式，但您的 libfreerdp 並不支援 H.264。請使"
+"用非 AVC 的色彩深度設定。"
 
-#: plugins/rdp/rdp_plugin.c:2100
+#: plugins/rdp/rdp_plugin.c:2104
 #, c-format
 msgid "The “%s” server refused the connection."
 msgstr "伺服器 %s 拒絕連線。"
 
-#: plugins/rdp/rdp_plugin.c:2105
+#: plugins/rdp/rdp_plugin.c:2109
 #, c-format
 msgid ""
 "The Remote Desktop Gateway “%s” denied the user \"%s\\%s\" access due to "
 "policy."
 msgstr "基於政策，遠端桌面閘道 %s 拒絕了使用者 %s\\%s 的存取。"
 
-#: plugins/rdp/rdp_plugin.c:2115
+#: plugins/rdp/rdp_plugin.c:2119
 #, c-format
 msgid "Cannot connect to the “%s” RDP server."
 msgstr "無法連線至 RDP 伺服器 %s。"
 
-#: plugins/rdp/rdp_plugin.c:2448
+#: plugins/rdp/rdp_plugin.c:2454
 msgid "Automatic (32 bpp) (Server chooses its best format)"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2449
+#: plugins/rdp/rdp_plugin.c:2455
 msgid "GFX AVC444 (32 bpp)"
 msgstr "GFX AVC444 (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2450
+#: plugins/rdp/rdp_plugin.c:2456
 msgid "GFX AVC420 (32 bpp)"
 msgstr "GFX AVC420 (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2451
+#: plugins/rdp/rdp_plugin.c:2457
 msgid "GFX RFX (32 bpp)"
 msgstr "GFX RFX (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2452
+#: plugins/rdp/rdp_plugin.c:2458
 msgid "GFX RFX Progressive (32 bpp)"
 msgstr "GFX RFX (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2453
+#: plugins/rdp/rdp_plugin.c:2459
 msgid "RemoteFX (32 bpp)"
 msgstr "RemoteFX (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2455
+#: plugins/rdp/rdp_plugin.c:2461
 msgid "True colour (24 bpp)"
 msgstr "真彩 (24 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2457
+#: plugins/rdp/rdp_plugin.c:2463
 msgid "High colour (15 bpp)"
 msgstr "高彩 (15 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2489 data/ui/remmina_preferences.glade:683
+#: plugins/rdp/rdp_plugin.c:2495 data/ui/remmina_preferences.glade:637
 msgid "None"
 msgstr "<無>"
 
-#: plugins/rdp/rdp_plugin.c:2490
+#: plugins/rdp/rdp_plugin.c:2496
 msgid "Auto-detect"
 msgstr "<自動偵測>"
 
-#: plugins/rdp/rdp_plugin.c:2491
+#: plugins/rdp/rdp_plugin.c:2497
 msgid "Modem"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2492
+#: plugins/rdp/rdp_plugin.c:2498
 msgid "Low performance broadband"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2493
+#: plugins/rdp/rdp_plugin.c:2499
 msgid "Satellite"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2494
+#: plugins/rdp/rdp_plugin.c:2500
 msgid "High performance broadband"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2495
+#: plugins/rdp/rdp_plugin.c:2501
 msgid "WAN"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2496
+#: plugins/rdp/rdp_plugin.c:2502
 msgid "LAN"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2512
+#: plugins/rdp/rdp_plugin.c:2518
 msgid "Automatic negotiation"
 msgstr "自動鎖定間隔"
 
-#: plugins/rdp/rdp_plugin.c:2513
+#: plugins/rdp/rdp_plugin.c:2519
 msgid "NLA protocol security"
 msgstr "以協定分頁"
 
-#: plugins/rdp/rdp_plugin.c:2514
+#: plugins/rdp/rdp_plugin.c:2520
 msgid "TLS protocol security"
 msgstr "以協定分頁"
 
-#: plugins/rdp/rdp_plugin.c:2515
+#: plugins/rdp/rdp_plugin.c:2521
 msgid "RDP protocol security"
 msgstr "以協定分頁"
 
-#: plugins/rdp/rdp_plugin.c:2516
+#: plugins/rdp/rdp_plugin.c:2522
 msgid "NLA extended protocol security"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2529
+#: plugins/rdp/rdp_plugin.c:2535
 msgid "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 and newer)"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2532
+#: plugins/rdp/rdp_plugin.c:2538
 msgid ""
 "Used i.a. by terminal services in a smart card channel to distinguish client "
 "capabilities:\n"
@@ -2436,7 +2447,7 @@ msgid ""
 "    SCardGetDeviceTypeId()"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2540
+#: plugins/rdp/rdp_plugin.c:2546
 msgid ""
 "Options for redirection of audio input:\n"
 "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
@@ -2447,7 +2458,7 @@ msgid ""
 "  • sys:alsa"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2549
+#: plugins/rdp/rdp_plugin.c:2555
 msgid ""
 "Options for redirection of audio output:\n"
 "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
@@ -2458,7 +2469,7 @@ msgid ""
 "  • sys:alsa"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2559
+#: plugins/rdp/rdp_plugin.c:2565
 msgid ""
 "Options for redirection of USB device:\n"
 "  • [dbg,][id:<vid>:<pid>#…,][addr:<bus>:<addr>#…,][auto]\n"
@@ -2466,21 +2477,21 @@ msgid ""
 "  • id:054c:0268#4669:6e6b,addr:04:0c"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2565
+#: plugins/rdp/rdp_plugin.c:2571
 msgid ""
 "Advanced setting for high latency links:\n"
 "Adjusts the connection timeout. Use if your connection times out.\n"
 "The highest possible value is 600000 ms (10 minutes).\n"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2570
+#: plugins/rdp/rdp_plugin.c:2576
 msgid ""
 "Performance optimisations based on the network connection type:\n"
 "Using auto-detection is advised.\n"
 "If \"Auto-detect\" fails, choose the most appropriate option in the list.\n"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2575
+#: plugins/rdp/rdp_plugin.c:2581
 msgid ""
 "Comma-separated list of monitor IDs and desktop orientations:\n"
 "  • [<id>:<orientation-in-degrees>,]\n"
@@ -2494,329 +2505,335 @@ msgid ""
 "\n"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2602
+#: plugins/rdp/rdp_plugin.c:2608
 msgid "Left-handed mouse support"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2602
+#: plugins/rdp/rdp_plugin.c:2608
 msgid "Swap left and right mouse buttons for left-handed mouse support"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2603
+#: plugins/rdp/rdp_plugin.c:2610
 msgid "Enable multi monitor"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2604
+#: plugins/rdp/rdp_plugin.c:2611
 msgid "Span screen over multiple monitors"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2605
+#: plugins/rdp/rdp_plugin.c:2612
 #, fuzzy
 #| msgid "Listen on port"
 msgid "List monitor IDs"
 msgstr "監聽連接埠"
 
-#: plugins/rdp/rdp_plugin.c:2608
+#: plugins/rdp/rdp_plugin.c:2615
 msgid "Network connection type"
 msgstr "建立新的連線設定檔"
 
-#: plugins/rdp/rdp_plugin.c:2625
+#: plugins/rdp/rdp_plugin.c:2632
 msgid "Security protocol negotiation"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2626
+#: plugins/rdp/rdp_plugin.c:2633
 msgid "Gateway transport type"
 msgstr "閘道傳輸類型"
 
-#: plugins/rdp/rdp_plugin.c:2627
+#: plugins/rdp/rdp_plugin.c:2634
 msgid "FreeRDP log level"
 msgstr "FreeRDP 紀錄等級"
 
-#: plugins/rdp/rdp_plugin.c:2628
+#: plugins/rdp/rdp_plugin.c:2635
 msgid "FreeRDP log filters"
 msgstr "FreeRDP 紀錄等級"
 
-#: plugins/rdp/rdp_plugin.c:2628
+#: plugins/rdp/rdp_plugin.c:2635
 msgid "tag:level[,tag:level[,…]]"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2629
+#: plugins/rdp/rdp_plugin.c:2636
 msgid "Audio output mode"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2630
+#: plugins/rdp/rdp_plugin.c:2637
 msgid "Redirect local audio output"
 msgstr "重新導向本地麥克風"
 
-#: plugins/rdp/rdp_plugin.c:2631
+#: plugins/rdp/rdp_plugin.c:2638
 msgid "Redirect local microphone"
 msgstr "重新導向本地麥克風"
 
-#: plugins/rdp/rdp_plugin.c:2632
+#: plugins/rdp/rdp_plugin.c:2639
 msgid "Connection timeout in ms"
 msgstr "正連接至「%s」…"
 
-#: plugins/rdp/rdp_plugin.c:2633
+#: plugins/rdp/rdp_plugin.c:2640
 msgid "Remote Desktop Gateway server"
 msgstr "遠端桌面閘道伺服器"
 
-#: plugins/rdp/rdp_plugin.c:2634
+#: plugins/rdp/rdp_plugin.c:2641
 msgid "Remote Desktop Gateway username"
 msgstr "遠端桌面閘道使用者名稱"
 
-#: plugins/rdp/rdp_plugin.c:2635
+#: plugins/rdp/rdp_plugin.c:2642
 msgid "Remote Desktop Gateway password"
 msgstr "遠端桌面閘道密碼"
 
-#: plugins/rdp/rdp_plugin.c:2636
+#: plugins/rdp/rdp_plugin.c:2643
 msgid "Remote Desktop Gateway domain"
 msgstr "遠端桌面閘道網域"
 
-#: plugins/rdp/rdp_plugin.c:2637
+#: plugins/rdp/rdp_plugin.c:2644
 msgid "Client name"
 msgstr "客戶端名稱"
 
-#: plugins/rdp/rdp_plugin.c:2638
+#: plugins/rdp/rdp_plugin.c:2645
 msgid "Client build"
 msgstr "客戶端名稱"
 
-#: plugins/rdp/rdp_plugin.c:2641
+#: plugins/rdp/rdp_plugin.c:2648
 msgid "Load balance info"
 msgstr "覆載平衡資訊"
 
-#: plugins/rdp/rdp_plugin.c:2642
+#: plugins/rdp/rdp_plugin.c:2649
 msgid "Override printer drivers"
 msgstr "凌駕印表機驅動程式"
 
-#: plugins/rdp/rdp_plugin.c:2642
+#: plugins/rdp/rdp_plugin.c:2649
 msgid ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
 msgstr ""
-"\"Samsung_CLX-3300_系列\":\"Samsung CLX-3300 系列 PS\";\"Canon MF410\":\"Canon "
-"MF410 系列 UFR II\""
+"\"Samsung_CLX-3300_系列\":\"Samsung CLX-3300 系列 PS\";\"Canon MF410\":"
+"\"Canon MF410 系列 UFR II\""
 
-#: plugins/rdp/rdp_plugin.c:2643
+#: plugins/rdp/rdp_plugin.c:2650
 msgid "USB device redirection"
 msgstr "選擇要重新導向的 USB 裝置"
 
-#: plugins/rdp/rdp_plugin.c:2644
+#: plugins/rdp/rdp_plugin.c:2651
 msgid "Local serial name"
 msgstr "本地序列埠名稱"
 
-#: plugins/rdp/rdp_plugin.c:2644
+#: plugins/rdp/rdp_plugin.c:2651
 msgid "COM1, COM2, etc."
 msgstr "COM1、COM2 等等"
 
-#: plugins/rdp/rdp_plugin.c:2645
+#: plugins/rdp/rdp_plugin.c:2652
 msgid "Local serial driver"
 msgstr "本地序列埠驅動程式"
 
-#: plugins/rdp/rdp_plugin.c:2645
+#: plugins/rdp/rdp_plugin.c:2652
 msgid "Serial"
 msgstr "串列"
 
-#: plugins/rdp/rdp_plugin.c:2646
+#: plugins/rdp/rdp_plugin.c:2653
 msgid "Local serial path"
 msgstr "本地序列埠路徑"
 
-#: plugins/rdp/rdp_plugin.c:2646
+#: plugins/rdp/rdp_plugin.c:2653
 msgid "/dev/ttyS0, /dev/ttyS1, etc."
 msgstr "/dev/ttyS0、/dev/ttyS1 等等"
 
-#: plugins/rdp/rdp_plugin.c:2647
+#: plugins/rdp/rdp_plugin.c:2654
 msgid "Local parallel name"
 msgstr "本地平行埠名稱"
 
-#: plugins/rdp/rdp_plugin.c:2648
+#: plugins/rdp/rdp_plugin.c:2655
 msgid "Local parallel device"
 msgstr "本地平行埠裝置"
 
-#: plugins/rdp/rdp_plugin.c:2649
+#: plugins/rdp/rdp_plugin.c:2656
 msgid "Name of smart card"
 msgstr "共享 smartcard"
 
-#: plugins/rdp/rdp_plugin.c:2650
+#: plugins/rdp/rdp_plugin.c:2657
 msgid "Dynamic virtual channel"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2650 plugins/rdp/rdp_plugin.c:2651
+#: plugins/rdp/rdp_plugin.c:2657 plugins/rdp/rdp_plugin.c:2658
 msgid "<channel>[,<options>]"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2651
+#: plugins/rdp/rdp_plugin.c:2658
 msgid "Static virtual channel"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2652
+#: plugins/rdp/rdp_plugin.c:2659
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2653
+#: plugins/rdp/rdp_plugin.c:2660
 msgid "Share printers"
 msgstr "共享印表機"
 
-#: plugins/rdp/rdp_plugin.c:2654
+#: plugins/rdp/rdp_plugin.c:2661
 msgid "Share serial ports"
 msgstr "共享序列埠"
 
-#: plugins/rdp/rdp_plugin.c:2655
+#: plugins/rdp/rdp_plugin.c:2662
 msgid "(SELinux) permissive mode for serial ports"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2656
+#: plugins/rdp/rdp_plugin.c:2663
 msgid "Share parallel ports"
 msgstr "共享並列埠"
 
-#: plugins/rdp/rdp_plugin.c:2657
+#: plugins/rdp/rdp_plugin.c:2664
 msgid "Share a smart card"
 msgstr "共享 smartcard"
 
-#: plugins/rdp/rdp_plugin.c:2659
+#: plugins/rdp/rdp_plugin.c:2666
 msgid "Ignore certificate"
 msgstr "忽略憑證"
 
-#: plugins/rdp/rdp_plugin.c:2660
+#: plugins/rdp/rdp_plugin.c:2667
 msgid "Use the old license workflow"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2660
+#: plugins/rdp/rdp_plugin.c:2667
 msgid "It disables CAL and hwId is set to 0"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2662
+#: plugins/rdp/rdp_plugin.c:2669
 msgid "Attach to console (2003/2003 R2)"
 msgstr "連接至主控臺 (Windows 2003 / 2003 R2)"
 
-#: plugins/rdp/rdp_plugin.c:2663
+#: plugins/rdp/rdp_plugin.c:2670
 msgid "Turn off fast-path"
 msgstr "關閉快速路徑(fast-path)"
 
-#: plugins/rdp/rdp_plugin.c:2664
+#: plugins/rdp/rdp_plugin.c:2671
 msgid "Server detection using Remote Desktop Gateway"
 msgstr "使用遠端桌面閘道偵測伺服器"
 
-#: plugins/rdp/rdp_plugin.c:2666
+#: plugins/rdp/rdp_plugin.c:2673
 msgid "Use system proxy settings"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2668
+#: plugins/rdp/rdp_plugin.c:2675
 msgid "Turn off automatic reconnection"
 msgstr "停用自動重新連線"
 
-#: plugins/rdp/rdp_plugin.c:2669
+#: plugins/rdp/rdp_plugin.c:2676
 msgid "Relax order checks"
 msgstr "Relax Order 檢查"
 
-#: plugins/rdp/rdp_plugin.c:2670
+#: plugins/rdp/rdp_plugin.c:2677
 msgid "Glyph cache"
 msgstr "字型快取"
 
-#: plugins/rdp/rdp_plugin.c:2671
+#: plugins/rdp/rdp_plugin.c:2678
 msgid "Enable multitransport protocol (UDP)"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2671
+#: plugins/rdp/rdp_plugin.c:2678
 msgid "Using the UDP protocol may improve performance"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2672
+#: plugins/rdp/rdp_plugin.c:2679
 msgid "Use base credentials for gateway too"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2674
+#: plugins/rdp/rdp_plugin.c:2681
 msgid "Enable Gateway websockets support"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2700
+#: plugins/rdp/rdp_plugin.c:2707
 msgid "RDP - Remote Desktop Protocol"
 msgstr "RDP - 遠端桌面協定"
 
-#: plugins/rdp/rdp_plugin.c:2725
+#: plugins/rdp/rdp_plugin.c:2732
 msgid "RDP - RDP File Handler"
 msgstr "RDP - RDP 檔案處理器"
 
-#: plugins/rdp/rdp_plugin.c:2740
+#: plugins/rdp/rdp_plugin.c:2747
 msgid "RDP - Preferences"
 msgstr "RDP - 偏好設定"
 
-#: plugins/rdp/rdp_plugin.c:2793
+#: plugins/rdp/rdp_plugin.c:2800
 msgid "Export connection in Windows .rdp file format"
 msgstr "以 Windows .rdp 檔案格式匯出連線"
 
-#: plugins/rdp/rdp_settings.c:200
+#: plugins/rdp/rdp_settings.c:201
 msgid "<Auto-detect>"
 msgstr "<自動偵測>"
 
-#: plugins/rdp/rdp_settings.c:232
+#: plugins/rdp/rdp_settings.c:233
 msgid "<Not set>"
 msgstr "<未設定>"
 
-#: plugins/rdp/rdp_settings.c:265
+#: plugins/rdp/rdp_settings.c:264
 msgid "<Choose a quality level to edit…>"
 msgstr "<選擇一個品質等級來編輯…>"
 
-#: plugins/rdp/rdp_settings.c:416
+#: plugins/rdp/rdp_settings.c:411
 msgid "Keyboard layout"
 msgstr "鍵盤配置"
 
-#: plugins/rdp/rdp_settings.c:441
+#: plugins/rdp/rdp_settings.c:436
 msgid "Use client keyboard mapping"
 msgstr "使用客戶端鍵盤映射"
 
-#: plugins/rdp/rdp_settings.c:451
+#: plugins/rdp/rdp_settings.c:446
 msgid "Quality settings"
 msgstr "品質設定"
 
-#: plugins/rdp/rdp_settings.c:471
+#: plugins/rdp/rdp_settings.c:466
 msgid "Wallpaper"
 msgstr "桌布"
 
-#: plugins/rdp/rdp_settings.c:478
+#: plugins/rdp/rdp_settings.c:473
 msgid "Window drag"
 msgstr "視窗拖曳"
 
-#: plugins/rdp/rdp_settings.c:485
+#: plugins/rdp/rdp_settings.c:480
 msgid "Menu animation"
 msgstr "選單動畫"
 
-#: plugins/rdp/rdp_settings.c:492
+#: plugins/rdp/rdp_settings.c:487
 msgid "Theme"
 msgstr "主題"
 
-#: plugins/rdp/rdp_settings.c:499
+#: plugins/rdp/rdp_settings.c:494
 msgid "Cursor shadow"
 msgstr "游標陰影"
 
-#: plugins/rdp/rdp_settings.c:506
+#: plugins/rdp/rdp_settings.c:501
 msgid "Cursor blinking"
 msgstr "游標閃爍"
 
-#: plugins/rdp/rdp_settings.c:513
+#: plugins/rdp/rdp_settings.c:508
 msgid "Font smoothing"
 msgstr "字體平滑處理"
 
-#: plugins/rdp/rdp_settings.c:520
+#: plugins/rdp/rdp_settings.c:515
 msgid "Composition"
 msgstr "合成"
 
-#: plugins/rdp/rdp_settings.c:530
+#: plugins/rdp/rdp_settings.c:525
 msgid "Remote scale factor"
 msgstr "遠端縮放百分比"
 
-#: plugins/rdp/rdp_settings.c:543
+#: plugins/rdp/rdp_settings.c:538
 msgid "Desktop scale factor %"
 msgstr "桌面縮放百分比 %"
 
-#: plugins/rdp/rdp_settings.c:554
+#: plugins/rdp/rdp_settings.c:549
 msgid "Device scale factor %"
 msgstr "裝置縮放百分比 %"
 
-#: plugins/rdp/rdp_settings.c:576
+#: plugins/rdp/rdp_settings.c:571
 msgid "Desktop orientation"
 msgstr "桌面方向"
 
-#: plugins/rdp/rdp_event.c:343
+#: plugins/rdp/rdp_settings.c:588
+#, fuzzy
+#| msgid "Change security settings"
+msgid "Input device settings"
+msgstr "品質設定"
+
+#: plugins/rdp/rdp_event.c:344
 #, c-format
 msgid "Reconnection attempt %d of %d…"
 msgstr "重新連線中。第 %d / %d 次嘗試…"
@@ -2948,8 +2965,9 @@ msgid ""
 "the appropriate permissions to Remmina. As an alternative you can enter the "
 "following commands in a terminal window:"
 msgstr ""
-"似乎 Remmina 是以 SNAP 套件的方式在您的系統上運行。為了啟用一些重要的功能，像是將密碼儲存到您的鑰匙圈與 RDP "
-"印表機共享，請開啟您的「軟體中心」，並給予 Remmina 適當的權限；又或在終端機輸入以下指令："
+"似乎 Remmina 是以 SNAP 套件的方式在您的系統上運行。為了啟用一些重要的功能，像"
+"是將密碼儲存到您的鑰匙圈與 RDP 印表機共享，請開啟您的「軟體中心」，並給予 "
+"Remmina 適當的權限；又或在終端機輸入以下指令："
 
 #: data/ui/remmina_snap_info_dialog.glade:167
 msgid "<big>Permissions</big>"
@@ -3016,7 +3034,7 @@ msgid "Server name or IP address"
 msgstr "伺服器名稱或 IP 位址"
 
 #: data/ui/remmina_main.glade:102 data/ui/remmina_main.glade:104
-#: data/ui/remmina_preferences.glade:216
+#: data/ui/remmina_preferences.glade:501
 msgid "Clear"
 msgstr "清除"
 
@@ -3105,7 +3123,7 @@ msgstr "解鎖"
 msgid "Unlock Remmina"
 msgstr "解鎖 Remmina"
 
-#: data/ui/remmina_unlock.glade:128 data/ui/remmina_preferences.glade:1586
+#: data/ui/remmina_unlock.glade:128
 msgid "Master password"
 msgstr "主密碼"
 
@@ -3133,15 +3151,15 @@ msgid ""
 msgstr ""
 
 #. The star (*) is a reference to privacy consent
-#: data/ui/remmina_news.glade:130 data/ui/remmina_preferences.glade:545
+#: data/ui/remmina_news.glade:130 data/ui/remmina_preferences.glade:461
 msgid ""
 "Send <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
 "remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
 "\">anonymous</a></b> statistics. (*)"
 msgstr ""
 "傳送<b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-"remmina__stats_8c.html#details\" title=\"Remmina usage statistics\">匿名</a></"
-"b>統計資料給 remmina.org"
+"remmina__stats_8c.html#details\" title=\"Remmina usage statistics\">匿名</"
+"a></b>統計資料給 remmina.org"
 
 #: data/ui/remmina_news.glade:142 data/ui/remmina_news.glade:195
 msgid "Send anonymous statistics"
@@ -3160,13 +3178,13 @@ msgid "Allow Remmina to automatically open .rdp and .remmina files."
 msgstr ""
 
 #. The star (*) is a reference to privacy consent
-#: data/ui/remmina_news.glade:183 data/ui/remmina_preferences.glade:560
+#: data/ui/remmina_news.glade:183 data/ui/remmina_preferences.glade:476
 msgid ""
 "Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
 "\">remmina.org</a> (*)"
 msgstr ""
 
-#: data/ui/remmina_news.glade:208 data/ui/remmina_preferences.glade:527
+#: data/ui/remmina_news.glade:208 data/ui/remmina_preferences.glade:443
 msgid ""
 "* By enabling statistics and/or news you consent to send and fetch data to/"
 "from remmina.org"
@@ -3187,8 +3205,9 @@ msgid ""
 "</span>\n"
 msgstr ""
 "<span>\n"
-"<b>Remmina 是由無畏的貢獻者們在他們的閒暇時間所開發的，加入勇者們的行列，<a href=\"https://remmina.org/"
-"donations/\" title=\"贊助 Remmina\">贊助我們的英雄們！</a></b>\n"
+"<b>Remmina 是由無畏的貢獻者們在他們的閒暇時間所開發的，加入勇者們的行列，<a "
+"href=\"https://remmina.org/donations/\" title=\"贊助 Remmina\">贊助我們的英雄"
+"們！</a></b>\n"
 "</span>\n"
 
 #: data/ui/remmina_news.glade:277
@@ -3236,75 +3255,71 @@ msgctxt "Multi password changer table"
 msgid "Domain\\Username"
 msgstr "網域\\使用者名稱"
 
-#: data/ui/remmina_preferences.glade:32
-msgid "Remmina Preferences"
-msgstr "Remmina 偏好設定"
-
-#: data/ui/remmina_preferences.glade:95
+#: data/ui/remmina_preferences.glade:41
 msgid "Double-click action"
 msgstr "雙擊動作"
 
-#: data/ui/remmina_preferences.glade:110
+#: data/ui/remmina_preferences.glade:57
 msgid "Open connection"
 msgstr "開啟連線"
 
-#: data/ui/remmina_preferences.glade:111
+#: data/ui/remmina_preferences.glade:58
 msgid "Edit settings"
 msgstr "編輯設定"
 
-#: data/ui/remmina_preferences.glade:127
+#: data/ui/remmina_preferences.glade:74
 msgid "Scaling quality"
 msgstr "縮放品質"
 
-#: data/ui/remmina_preferences.glade:142
+#: data/ui/remmina_preferences.glade:90
 msgid "Nearest"
 msgstr "最近"
 
-#: data/ui/remmina_preferences.glade:143
+#: data/ui/remmina_preferences.glade:91
 msgid "Tiles"
 msgstr "標題"
 
-#: data/ui/remmina_preferences.glade:144
+#: data/ui/remmina_preferences.glade:92
 msgid "Bilinear"
 msgstr "雙線性"
 
-#: data/ui/remmina_preferences.glade:145
+#: data/ui/remmina_preferences.glade:93
 msgid "Hyper"
 msgstr "Hyper"
 
-#: data/ui/remmina_preferences.glade:161
+#: data/ui/remmina_preferences.glade:109
 msgid "Step size for auto-scroll"
 msgstr "自動捲動步進大小"
 
-#: data/ui/remmina_preferences.glade:191
+#: data/ui/remmina_preferences.glade:138
 msgid "Maximal amount of recent items"
 msgstr "最近的項目上限值"
 
-#: data/ui/remmina_preferences.glade:236
+#: data/ui/remmina_preferences.glade:153
 msgid "Screen resolutions"
 msgstr "螢幕解析度"
 
-#: data/ui/remmina_preferences.glade:282
+#: data/ui/remmina_preferences.glade:198
 msgid "Folder for screenshots"
 msgstr "未能啟動 SSH 作業階段：%s"
 
-#: data/ui/remmina_preferences.glade:294
+#: data/ui/remmina_preferences.glade:210
 msgid "Choose a folder to save screenshots from Remmina in."
 msgstr "選擇儲存 Remmina 螢幕截圖的資料夾。"
 
-#: data/ui/remmina_preferences.glade:298 data/ui/remmina_preferences.glade:383
+#: data/ui/remmina_preferences.glade:214 data/ui/remmina_preferences.glade:299
 msgid "Select a folder"
 msgstr "選取資料夾"
 
-#: data/ui/remmina_preferences.glade:309
+#: data/ui/remmina_preferences.glade:225
 msgid "Set up"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:330
+#: data/ui/remmina_preferences.glade:246
 msgid "Screenshot filenames"
 msgstr "螢幕截圖檔案名稱"
 
-#: data/ui/remmina_preferences.glade:342
+#: data/ui/remmina_preferences.glade:258
 msgid ""
 "%p Profile name\n"
 "%h Server name/IP\n"
@@ -3314,42 +3329,42 @@ msgstr ""
 "%h 伺服器名稱/IP\n"
 "%Y 年，%m 月，%d 日，%H 時，%M 分，%S 秒（UTC時間）\n"
 
-#: data/ui/remmina_preferences.glade:361
+#: data/ui/remmina_preferences.glade:277
 msgid ""
 "The folder connection profiles are saved in, it defaults to the XDG_USER_DATA"
 msgstr "存放連線設定檔的資料夾，預設是 XDG_USER_DATA"
 
 #. The folder where profiles are saved
-#: data/ui/remmina_preferences.glade:366
+#: data/ui/remmina_preferences.glade:282
 msgid "Remmina data folder"
 msgstr "Remmina 資料夾"
 
-#: data/ui/remmina_preferences.glade:378
+#: data/ui/remmina_preferences.glade:294
 #, fuzzy
 #| msgid "Choose a folder to save screenshots from Remmina in."
 msgid "Choose a folder to save connection profiles from Remmina in."
 msgstr "選擇儲存 Remmina 螢幕截圖的資料夾。"
 
-#: data/ui/remmina_preferences.glade:396
+#: data/ui/remmina_preferences.glade:312
 msgid "Remember last view for each connection"
 msgstr "為每個連線記住最後的觀看模式"
 
 #. The star (*) is a reference to privacy consent
-#: data/ui/remmina_preferences.glade:400
+#: data/ui/remmina_preferences.glade:316
 msgid "Remember last view mode"
 msgstr "記住最後一次的觀看模式"
 
-#: data/ui/remmina_preferences.glade:440
+#: data/ui/remmina_preferences.glade:356
 msgid ""
 "Set a custom filename for your Remmina connection profiles, using a "
 "formatting string."
 msgstr "用一個格式化的文字為您的 Remmina 連線設定檔設定一個自訂的檔案名稱。"
 
-#: data/ui/remmina_preferences.glade:444
+#: data/ui/remmina_preferences.glade:360
 msgid "Template for profile filenames"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:456
+#: data/ui/remmina_preferences.glade:372
 msgid ""
 "%G Group name (slash will be converted to - automatically)\n"
 "%P Protocol name\n"
@@ -3365,110 +3380,118 @@ msgstr ""
 "\n"
 "\n"
 
-#: data/ui/remmina_preferences.glade:478
+#: data/ui/remmina_preferences.glade:394
 msgid "Only save generated screenshots, don't copy them to clipboard."
 msgstr "僅將螢幕截圖儲存為檔案，不要存入剪貼簿。"
 
-#: data/ui/remmina_preferences.glade:483
+#: data/ui/remmina_preferences.glade:399
 msgid "Prevent screenshots from entering clipboard"
 msgstr "拒絕將螢幕截圖存入剪貼簿"
 
-#: data/ui/remmina_preferences.glade:576
+#: data/ui/remmina_preferences.glade:525
 msgid "Options"
 msgstr "選項"
 
-#: data/ui/remmina_preferences.glade:592
+#: data/ui/remmina_preferences.glade:550
 msgid "Always show tabs"
 msgstr "永遠顯示分頁"
 
-#: data/ui/remmina_preferences.glade:609
+#: data/ui/remmina_preferences.glade:566
 msgid "Hide the toolbar shown in the tabbed interface"
 msgstr "在分頁界面隱藏工具列"
 
-#: data/ui/remmina_preferences.glade:630
+#: data/ui/remmina_preferences.glade:587
 msgid "Default view"
 msgstr "預設顯示模式"
 
-#: data/ui/remmina_preferences.glade:645
+#: data/ui/remmina_preferences.glade:601
 msgid "Automatic"
 msgstr "自動"
 
-#: data/ui/remmina_preferences.glade:646
+#: data/ui/remmina_preferences.glade:602
 msgid "Scrolled window"
 msgstr "捲動視窗"
 
-#: data/ui/remmina_preferences.glade:648
+#: data/ui/remmina_preferences.glade:604
 msgid "Viewport fullscreen"
 msgstr "Viewport 全螢幕"
 
-#: data/ui/remmina_preferences.glade:664
-msgid "Tabs"
+#. How tabs are grouped in the Remmina connection window
+#: data/ui/remmina_preferences.glade:620
+msgctxt "Appearance preferences"
+msgid "Tabs grouping"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:680
+#: data/ui/remmina_preferences.glade:634
 msgid "By group"
 msgstr "以群組分頁"
 
-#: data/ui/remmina_preferences.glade:681
+#: data/ui/remmina_preferences.glade:635
 msgid "By protocol"
 msgstr "以協定分頁"
 
-#: data/ui/remmina_preferences.glade:682
+#: data/ui/remmina_preferences.glade:636
 msgid "Per connection"
 msgstr "開啟連線"
 
-#: data/ui/remmina_preferences.glade:694
+#: data/ui/remmina_preferences.glade:648
 msgid "Fullscreen on the same screen as the connection window"
 msgstr "全螢幕顯示，並與連線視窗位於同一個螢幕"
 
-#: data/ui/remmina_preferences.glade:718
+#: data/ui/remmina_preferences.glade:671
 msgid "Peeking"
 msgstr "窺視"
 
-#: data/ui/remmina_preferences.glade:719
+#: data/ui/remmina_preferences.glade:672
 msgid "Hidden"
 msgstr "隱藏"
 
-#: data/ui/remmina_preferences.glade:735
+#: data/ui/remmina_preferences.glade:689
 msgid "Fullscreen toolbar visibility"
 msgstr "全螢幕工具列可見度"
 
-#: data/ui/remmina_preferences.glade:745
+#: data/ui/remmina_preferences.glade:699
 msgid "Hide the search bar shown in the main window"
 msgstr "在主視窗隱藏搜尋列"
 
-#: data/ui/remmina_preferences.glade:762
+#: data/ui/remmina_preferences.glade:715
 msgid "Prefer dark theme"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:766
+#: data/ui/remmina_preferences.glade:719
 msgid ""
 "If a GTK theme includes a dark variant, it will be used instead of the "
 "configured theme."
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:786
+#: data/ui/remmina_preferences.glade:739
 #, fuzzy
 #| msgid "Grab all keyboard events"
 msgid "“Grab all keyboard events” status colour"
 msgstr "抓取所有鍵盤事件"
 
-#: data/ui/remmina_preferences.glade:797
+#: data/ui/remmina_preferences.glade:750
+#, fuzzy
+#| msgid "Grab all keyboard events"
+msgid "Enable/Disable “Grab all keyboard events” status colour"
+msgstr "抓取所有鍵盤事件"
+
+#: data/ui/remmina_preferences.glade:765
 msgid ""
 "Hexadecimal- or colour names (red, #ff0000).\n"
 "It changes the background colour of connection names in the Remmina "
 "connection toolbar (when in fullscreen)."
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:833
+#: data/ui/remmina_preferences.glade:822
 msgid "Appearance"
 msgstr "外觀"
 
-#: data/ui/remmina_preferences.glade:850
+#: data/ui/remmina_preferences.glade:848
 msgid "Show new connection on top of the menu"
 msgstr "在選單上方顯示新的連線"
 
-#: data/ui/remmina_preferences.glade:868
+#: data/ui/remmina_preferences.glade:867
 msgid "Hide total count shown in the group menu"
 msgstr "在群組選單隱藏總數"
 
@@ -3480,323 +3503,325 @@ msgstr "停用工作列圖示"
 msgid "Start in tray upon user login"
 msgstr "在使用者登錄後，啟動 Remmina 並放在提示匣"
 
-#: data/ui/remmina_preferences.glade:930
+#: data/ui/remmina_preferences.glade:934
 msgid "Applet"
 msgstr "小工具"
 
-#: data/ui/remmina_preferences.glade:953
+#: data/ui/remmina_preferences.glade:967
 msgid "Host key"
 msgstr "Host 鍵"
 
-#: data/ui/remmina_preferences.glade:984
+#: data/ui/remmina_preferences.glade:999
 msgid "Show/hide fullscreen"
 msgstr "顯示或隱藏全螢幕"
 
-#: data/ui/remmina_preferences.glade:1014
+#: data/ui/remmina_preferences.glade:1030
 msgid "Auto-fit window"
 msgstr "自動調整視窗"
 
-#: data/ui/remmina_preferences.glade:1087
+#: data/ui/remmina_preferences.glade:1106
 msgid "Apply/remove scaling"
 msgstr "套用或移除縮放"
 
-#: data/ui/remmina_preferences.glade:1117
+#: data/ui/remmina_preferences.glade:1137
 msgid "Grab keyboard"
 msgstr "鍵盤抓取"
 
-#: data/ui/remmina_preferences.glade:1207
+#: data/ui/remmina_preferences.glade:1230
 msgid "Show/hide toolbar"
 msgstr "顯示或隱藏工具列"
 
-#: data/ui/remmina_preferences.glade:1268
-#: data/ui/remmina_preferences.glade:1278
+#: data/ui/remmina_preferences.glade:1293
+#: data/ui/remmina_preferences.glade:1303
 msgid "View-only mode"
 msgstr "僅觀看模式"
 
-#: data/ui/remmina_preferences.glade:1336
+#: data/ui/remmina_preferences.glade:1365
 msgid "Keyboard"
 msgstr "鍵盤"
 
-#: data/ui/remmina_preferences.glade:1357
+#: data/ui/remmina_preferences.glade:1396
 msgid "Local SSH port"
 msgstr "本機 SSH 連接埠"
 
-#: data/ui/remmina_preferences.glade:1381
+#: data/ui/remmina_preferences.glade:1421
 msgid "Parse ~/.ssh/config"
 msgstr "解析 ~/.ssh/config"
 
-#: data/ui/remmina_preferences.glade:1405
+#: data/ui/remmina_preferences.glade:1446
 msgid "No logging at all"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1406
+#: data/ui/remmina_preferences.glade:1447
 msgid "Rare conditions or warnings"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1407
+#: data/ui/remmina_preferences.glade:1448
 msgid "API-accessible entrypoints"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1408
+#: data/ui/remmina_preferences.glade:1449
 msgid "Lower level protocol info, packet level"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1409
+#: data/ui/remmina_preferences.glade:1450
 msgid "Function entering and leaving"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1425
+#: data/ui/remmina_preferences.glade:1467
 msgid "SSH log level"
 msgstr "SSH 紀錄等級"
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1492
+#: data/ui/remmina_preferences.glade:1538
 msgid "Seconds of connection idleness before TCP keepalive probes are sent."
 msgstr "在 TCP 開始發送 keepalive probes 之前，連線需要處於閒置的時間（秒）。"
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1508
+#: data/ui/remmina_preferences.glade:1555
 msgid "Seconds between each keepalive probe."
 msgstr "各個 keepalive probes 之間的間隔時間（秒）。"
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1524
+#: data/ui/remmina_preferences.glade:1572
 msgid ""
 "Number of keepalive probes sent via TCP connection before it is dropped."
 msgstr "丟棄連線之前 TCP 應發送的 keepalive probes 數量。"
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1540
+#: data/ui/remmina_preferences.glade:1589
 msgid ""
 "Amount of milliseconds to attempt acknowledging data before closing the "
 "corresponding TCP connection forcibly."
-msgstr "它指定在 TCP 強制關閉相應連線之前，傳輸數據可能保持未確認狀態的最長時間（毫秒）。"
+msgstr ""
+"它指定在 TCP 強制關閉相應連線之前，傳輸數據可能保持未確認狀態的最長時間（毫"
+"秒）。"
 
-#: data/ui/remmina_preferences.glade:1563
+#: data/ui/remmina_preferences.glade:1616
 msgid "SSH options"
 msgstr "SSH 選項"
 
-#: data/ui/remmina_preferences.glade:1601
-#: data/ui/remmina_preferences.glade:1617
+#: data/ui/remmina_preferences.glade:1644
+#: data/ui/remmina_preferences.glade:1713
 #: data/ui/remmina_preferences.glade:1783
 msgid "Use secret key authentication for some widgets"
 msgstr "使用密鑰來對某些器件進行身分核對"
 
-#: data/ui/remmina_preferences.glade:1621
+#: data/ui/remmina_preferences.glade:1648
 msgid "Use master password"
 msgstr "使用主密碼"
 
-#: data/ui/remmina_preferences.glade:1634
+#: data/ui/remmina_preferences.glade:1661
 msgid "Automatic lock interval"
 msgstr "自動鎖定間隔"
 
-#: data/ui/remmina_preferences.glade:1645
-msgid "Master password validity in seconds"
-msgstr "主密碼有效秒數"
-
-#: data/ui/remmina_preferences.glade:1666
-msgid "File encryption"
-msgstr "檔案加密"
-
-#: data/ui/remmina_preferences.glade:1697
+#: data/ui/remmina_preferences.glade:1687
 msgid "Repeat the password"
 msgstr "再次輸入密碼"
 
-#: data/ui/remmina_preferences.glade:1751
-msgid "Fingerprints and certificates"
-msgstr "接受變更的憑證嗎？"
-
-#: data/ui/remmina_preferences.glade:1766
+#: data/ui/remmina_preferences.glade:1698
 msgid "Automatically accept all fingerprints and certificates"
 msgstr "接受變更的憑證嗎？"
 
-#: data/ui/remmina_preferences.glade:1772
+#: data/ui/remmina_preferences.glade:1702
 msgid "Trust all fingerprints and certificates"
 msgstr "接受變更的憑證嗎？"
 
-#: data/ui/remmina_preferences.glade:1807
+#: data/ui/remmina_preferences.glade:1745
+msgid "Master password validity in seconds"
+msgstr "主密碼有效秒數"
+
+#: data/ui/remmina_preferences.glade:1808
 msgid "Security"
 msgstr "安全"
 
-#: data/ui/remmina_preferences.glade:1830
+#: data/ui/remmina_preferences.glade:1839
 msgid "Terminal font"
 msgstr "終端機字型"
 
-#: data/ui/remmina_preferences.glade:1843
+#: data/ui/remmina_preferences.glade:1852
 msgid "Scrollback lines"
 msgstr "回捲行數"
 
-#: data/ui/remmina_preferences.glade:1910
-msgid "Shortcut for copying to clipboard"
+#: data/ui/remmina_preferences.glade:1900
+#, fuzzy
+#| msgid "Shortcut for copying to clipboard"
+msgid "Shortcuts for copying and pasting"
 msgstr "複製至剪貼簿的捷徑鍵"
 
-#: data/ui/remmina_preferences.glade:1923
-msgid "Shortcut for pasting from clipboard"
-msgstr "從剪貼簿貼上的捷徑鍵"
-
-#: data/ui/remmina_preferences.glade:1936
+#: data/ui/remmina_preferences.glade:1913
 msgid "Select all shortcuts"
 msgstr "選擇所有快速鍵"
 
-#: data/ui/remmina_preferences.glade:1950
-#: data/ui/remmina_preferences.glade:1968
-#: data/ui/remmina_preferences.glade:1986
-#: data/ui/remmina_preferences.glade:2416
-#: data/ui/remmina_preferences.glade:2434
-#: data/ui/remmina_preferences.glade:2465
+#: data/ui/remmina_preferences.glade:1926
+#: data/ui/remmina_preferences.glade:1942
+#: data/ui/remmina_preferences.glade:2392
+#: data/ui/remmina_preferences.glade:2421
+#: data/ui/remmina_preferences.glade:2554
+#: data/ui/remmina_preferences.glade:2570
 msgid "(Host key+)"
 msgstr "（Host 鍵 +）"
 
-#: data/ui/remmina_preferences.glade:2003
+#: data/ui/remmina_preferences.glade:1959
 msgid "Use default system font"
 msgstr "使用系統預設字型"
 
-#: data/ui/remmina_preferences.glade:2027
+#: data/ui/remmina_preferences.glade:1983
 msgid ""
 "Selecting “SGR 1” also switches to the bright counterparts of the first 8 "
 "palette colours (in addition to making text bold)."
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:2042
+#: data/ui/remmina_preferences.glade:1999
 msgid "Allow using bright colours with bold text"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:2056
+#: data/ui/remmina_preferences.glade:2013
 msgid "Colour theme"
 msgstr "載入配色"
 
-#: data/ui/remmina_preferences.glade:2067
+#: data/ui/remmina_preferences.glade:2024
 msgid ""
 "Choose a colour scheme file. Usually available in /usr/share/remmina/theme. "
 "https://github.com/mbadolato/iTerm2-Color-Schemes has more details."
 msgstr ""
-"選擇配色檔。預先安裝的配色通常在 /usr/share/remmina/theme。請參閱 https://github.com/mbadolato/"
-"iTerm2-Color-Schemes"
+"選擇配色檔。預先安裝的配色通常在 /usr/share/remmina/theme。請參閱 https://"
+"github.com/mbadolato/iTerm2-Color-Schemes"
 
-#: data/ui/remmina_preferences.glade:2070
+#: data/ui/remmina_preferences.glade:2028
 msgid "Pick a terminal colouring file"
 msgstr "選擇終端機配色檔案"
 
-#: data/ui/remmina_preferences.glade:2085
+#: data/ui/remmina_preferences.glade:2042
 msgid "Bright colours"
 msgstr "高亮度顏色"
 
-#: data/ui/remmina_preferences.glade:2097
+#: data/ui/remmina_preferences.glade:2056
 msgid "Pick a light black colour"
 msgstr "選擇亮黑色"
 
-#: data/ui/remmina_preferences.glade:2109
+#: data/ui/remmina_preferences.glade:2070
 msgid "Pick a light red colour"
 msgstr "選擇亮紅色"
 
-#: data/ui/remmina_preferences.glade:2121
+#: data/ui/remmina_preferences.glade:2084
 msgid "Pick a bright green colour"
 msgstr "選擇亮綠色"
 
-#: data/ui/remmina_preferences.glade:2133
+#: data/ui/remmina_preferences.glade:2098
 msgid "Pick a bright yellow colour"
 msgstr "選擇亮黃色"
 
-#: data/ui/remmina_preferences.glade:2145
+#: data/ui/remmina_preferences.glade:2112
 msgid "Pick a bright blue colour"
 msgstr "選擇亮藍色"
 
-#: data/ui/remmina_preferences.glade:2157
+#: data/ui/remmina_preferences.glade:2126
 msgid "Pick a light magenta colour"
 msgstr "選擇亮洋紅色"
 
-#: data/ui/remmina_preferences.glade:2169
+#: data/ui/remmina_preferences.glade:2140
 msgid "Pick a light cyan colour"
 msgstr "選擇亮青綠色"
 
-#: data/ui/remmina_preferences.glade:2182
+#: data/ui/remmina_preferences.glade:2154
 msgid "Pick a light white colour"
 msgstr "選擇亮白色"
 
-#: data/ui/remmina_preferences.glade:2194
+#: data/ui/remmina_preferences.glade:2168
 msgid "Pick a black colour"
 msgstr "選擇黑色"
 
-#: data/ui/remmina_preferences.glade:2206
+#: data/ui/remmina_preferences.glade:2182
 msgid "Pick a red colour"
 msgstr "選擇紅色"
 
-#: data/ui/remmina_preferences.glade:2218
+#: data/ui/remmina_preferences.glade:2196
 msgid "Pick a green colour"
 msgstr "選擇綠色"
 
-#: data/ui/remmina_preferences.glade:2230
+#: data/ui/remmina_preferences.glade:2210
 msgid "Pick a yellow colour"
 msgstr "選擇黃色"
 
-#: data/ui/remmina_preferences.glade:2242
+#: data/ui/remmina_preferences.glade:2224
 msgid "Pick a blue colour"
 msgstr "選擇藍色"
 
-#: data/ui/remmina_preferences.glade:2254
+#: data/ui/remmina_preferences.glade:2238
 msgid "Pick a magenta colour"
 msgstr "選擇洋紅色"
 
-#: data/ui/remmina_preferences.glade:2266
+#: data/ui/remmina_preferences.glade:2252
 msgid "Pick a cyan colour"
 msgstr "選擇青綠色"
 
-#: data/ui/remmina_preferences.glade:2279
+#: data/ui/remmina_preferences.glade:2266
 msgid "Pick a white colour"
 msgstr "選擇白色"
 
-#: data/ui/remmina_preferences.glade:2292
+#: data/ui/remmina_preferences.glade:2279
 msgid "Normal colours"
 msgstr "一般顏色"
 
-#: data/ui/remmina_preferences.glade:2305
-#: data/ui/remmina_preferences.glade:2319
+#: data/ui/remmina_preferences.glade:2292
+#: data/ui/remmina_preferences.glade:2307
 msgid "Cursor colour"
 msgstr "游標顏色"
 
-#: data/ui/remmina_preferences.glade:2333
-#: data/ui/remmina_preferences.glade:2347
+#: data/ui/remmina_preferences.glade:2321
+#: data/ui/remmina_preferences.glade:2336
 msgid "Background colour"
 msgstr "背景色"
 
-#: data/ui/remmina_preferences.glade:2362
-#: data/ui/remmina_preferences.glade:2376
+#: data/ui/remmina_preferences.glade:2352
+#: data/ui/remmina_preferences.glade:2366
 msgid "Foreground colour"
 msgstr "前景色"
 
-#: data/ui/remmina_preferences.glade:2451
-msgid "Search text"
+#: data/ui/remmina_preferences.glade:2379
+msgid "Increase and decrease font size"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:2482
-#: data/ui/remmina_preferences.glade:2496
+#: data/ui/remmina_preferences.glade:2408
+#, fuzzy
+#| msgid "Select all shortcuts"
+msgid "Search text shortcut"
+msgstr "選擇所有快速鍵"
+
+#: data/ui/remmina_preferences.glade:2438
+#: data/ui/remmina_preferences.glade:2453
 msgid "Bold colour"
 msgstr "一般顏色"
 
-#: data/ui/remmina_preferences.glade:2510
-#: data/ui/remmina_preferences.glade:2550
+#: data/ui/remmina_preferences.glade:2467
+#: data/ui/remmina_preferences.glade:2508
 #, fuzzy
 #| msgid "Bright colours"
 msgid "Highlight colour"
 msgstr "高亮度顏色"
 
-#: data/ui/remmina_preferences.glade:2523
-#: data/ui/remmina_preferences.glade:2565
+#: data/ui/remmina_preferences.glade:2480
+#: data/ui/remmina_preferences.glade:2524
 #, fuzzy
 #| msgid "Foreground colour"
 msgid "Highlight foreground colour"
 msgstr "前景色"
 
-#: data/ui/remmina_preferences.glade:2536
-#: data/ui/remmina_preferences.glade:2580
+#: data/ui/remmina_preferences.glade:2493
+#: data/ui/remmina_preferences.glade:2540
 #, fuzzy
 #| msgid "Foreground colour"
 msgid "Cursor foreground colour"
 msgstr "前景色"
 
-#: data/ui/remmina_preferences.glade:2599
+#: data/ui/remmina_preferences.glade:2594
 msgid "Terminal"
 msgstr "終端機"
+
+#: data/ui/remmina_preferences.glade:2608
+msgid "Remmina Preferences"
+msgstr "Remmina 偏好設定"
 
 #: data/ui/remmina_string_list.glade:14 data/ui/remmina_string_list.glade:158
 msgid "Add"
@@ -3822,6 +3847,15 @@ msgstr "選擇一個新按鍵"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "請按下新按鍵…"
+
+#~ msgid "File encryption"
+#~ msgstr "檔案加密"
+
+#~ msgid "Fingerprints and certificates"
+#~ msgstr "接受變更的憑證嗎？"
+
+#~ msgid "Shortcut for pasting from clipboard"
+#~ msgstr "從剪貼簿貼上的捷徑鍵"
 
 #, fuzzy
 #~| msgid ""

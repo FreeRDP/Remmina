@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-06-03 14:35+0000\n"
+"POT-Creation-Date: 2021-06-18 12:13+0000\n"
 "PO-Revision-Date: 2021-06-04 14:30+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -76,8 +76,8 @@ msgstr "SSH로 '%s'에 연결하는 중…"
 #: src/remmina_ssh_plugin.c:1369 src/remmina_sftp_plugin.c:310
 #: src/remmina_sftp_plugin.c:346 src/remmina_file_editor.c:846
 #: src/remmina_file_editor.c:967 plugins/www/www_plugin.c:880
-#: plugins/rdp/rdp_plugin.c:2600 data/ui/remmina_unlock.glade:116
-#: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1683
+#: plugins/rdp/rdp_plugin.c:2606 data/ui/remmina_unlock.glade:116
+#: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1674
 msgid "Password"
 msgstr "비밀번호"
 
@@ -162,7 +162,7 @@ msgid "Recent lists cleared."
 msgstr "최근 목록을 지웠습니다."
 
 #: src/remmina_pref_dialog.c:154 src/rcw.c:1950
-#: data/ui/remmina_preferences.glade:251 data/ui/remmina_preferences.glade:261
+#: data/ui/remmina_preferences.glade:168 data/ui/remmina_preferences.glade:178
 msgid "Keystrokes"
 msgstr "키스트로크"
 
@@ -175,18 +175,18 @@ msgstr "키스트로크 설정"
 msgid "libsodium >= 1.9.0 is required to use master password"
 msgstr "마스터 비밀번호를 사용하려면 libsodium> = 1.9.0이 필요합니다"
 
-#: src/remmina_pref_dialog.c:804
+#: src/remmina_pref_dialog.c:806
 msgid "Picking a terminal colouring file replaces the file: "
 msgstr "터미널 색 파일 선택"
 
-#: src/remmina_pref_dialog.c:808
+#: src/remmina_pref_dialog.c:810
 msgid ""
 "This file contains the \"Custom\" terminal colour scheme selectable from the "
 "\"Advanced\" tab of terminal connections and editable in the \"Terminal\" "
 "tab in the settings."
 msgstr ""
-"이 파일은 터미널 연결의 \"고급\"탭에서 선택할 수 있고 설정의 \"터미널\" 탭에서 편집 할 수있는 \"사용자 지정\" 터미널 색 "
-"스킴을 포함하고 있다."
+"이 파일은 터미널 연결의 \"고급\"탭에서 선택할 수 있고 설정의 \"터미널\" 탭에"
+"서 편집 할 수있는 \"사용자 지정\" 터미널 색 스킴을 포함하고 있다."
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_ssh_plugin.c:539
@@ -271,7 +271,7 @@ msgstr "모두 선택"
 msgid "_Select all"
 msgstr "_모두 선택"
 
-#: src/remmina_ssh_plugin.c:1451 data/ui/remmina_preferences.glade:2389
+#: src/remmina_ssh_plugin.c:1451
 msgid "Increase font size"
 msgstr "글자 크기 크게"
 
@@ -279,7 +279,7 @@ msgstr "글자 크기 크게"
 msgid "_Increase font size"
 msgstr "_글자 크기 크게"
 
-#: src/remmina_ssh_plugin.c:1452 data/ui/remmina_preferences.glade:2402
+#: src/remmina_ssh_plugin.c:1452
 msgid "Decrease font size"
 msgstr "글자 크기 줄이기"
 
@@ -302,14 +302,14 @@ msgstr "인증 유형"
 
 #: src/remmina_ssh_plugin.c:1473 src/remmina_message_panel.c:330
 #: src/remmina_sftp_plugin.c:345 src/remmina_file_editor.c:961
-#: plugins/www/www_plugin.c:879 plugins/vnc/vnc_plugin.c:1942
-#: plugins/vnc/vnc_plugin.c:1962 plugins/rdp/rdp_plugin.c:2599
+#: plugins/www/www_plugin.c:879 plugins/vnc/vnc_plugin.c:1960
+#: plugins/vnc/vnc_plugin.c:1980 plugins/rdp/rdp_plugin.c:2605
 #: plugins/nx/nx_plugin.c:730 data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr "사용자명"
 
-#: src/remmina_ssh_plugin.c:1474 plugins/vnc/vnc_plugin.c:1943
-#: plugins/vnc/vnc_plugin.c:1963 plugins/spice/spice_plugin.c:666
+#: src/remmina_ssh_plugin.c:1474 plugins/vnc/vnc_plugin.c:1961
+#: plugins/vnc/vnc_plugin.c:1981 plugins/spice/spice_plugin.c:666
 #: plugins/nx/nx_plugin.c:731
 msgid "User password"
 msgstr "사용자 비밀번호"
@@ -324,7 +324,7 @@ msgid "Password to unlock private key"
 msgstr "개인 키 잠금 해제 비밀번호"
 
 #: src/remmina_ssh_plugin.c:1480 plugins/xdmcp/xdmcp_plugin.c:370
-#: plugins/rdp/rdp_plugin.c:2639 plugins/nx/nx_plugin.c:734
+#: plugins/rdp/rdp_plugin.c:2646 plugins/nx/nx_plugin.c:734
 msgid "Start-up program"
 msgstr "시작 프로그램"
 
@@ -517,8 +517,8 @@ msgstr "위로"
 msgid "Go to parent folder"
 msgstr "상위 폴더로 가기"
 
-#: src/remmina_ftp_client.c:758 plugins/vnc/vnc_plugin.c:2000
-#: plugins/rdp/rdp_plugin.c:2683
+#: src/remmina_ftp_client.c:758 plugins/vnc/vnc_plugin.c:2019
+#: plugins/rdp/rdp_plugin.c:2690
 msgid "Refresh"
 msgstr "새로 고침"
 
@@ -563,11 +563,11 @@ msgstr "그룹"
 msgid "Permission"
 msgstr "권한"
 
-#: src/remmina_ftp_client.c:990 plugins/rdp/rdp_plugin.c:2505
+#: src/remmina_ftp_client.c:990 plugins/rdp/rdp_plugin.c:2511
 msgid "Remote"
 msgstr "리모트"
 
-#: src/remmina_ftp_client.c:997 plugins/rdp/rdp_plugin.c:2504
+#: src/remmina_ftp_client.c:997 plugins/rdp/rdp_plugin.c:2510
 msgid "Local"
 msgstr "로컬"
 
@@ -741,11 +741,12 @@ msgstr ""
 "\n"
 "\tremmina --encrypt-password\n"
 "\n"
-"사용자 이름과 암호를 갱신하고, Remmina 연결 프로필에서 다른 해상도 모드를 설정하는데 사용: \n"
+"사용자 이름과 암호를 갱신하고, Remmina 연결 프로필에서 다른 해상도 모드를 설"
+"정하는데 사용: \n"
 "\n"
-"\techo \"username\\n"
-"apassword\" | remmina --update-profile /PATH/TO/FOO.remmina --set-option "
-"username --set-option resolution_mode=2 --set-option password\n"
+"\techo \"username\\napassword\" | remmina --update-profile /PATH/TO/FOO."
+"remmina --set-option username --set-option resolution_mode=2 --set-option "
+"password\n"
 
 #: src/remmina_icon.c:139
 msgid "Open Main Window"
@@ -778,7 +779,7 @@ msgstr "렘미나 애플릿"
 msgid "Connect to remote desktops through the applet menu"
 msgstr "애플릿 메뉴로 원격 데스크톱에 연결"
 
-#: src/remmina_icon.c:476 src/remmina_icon.c:477 src/remmina_main.c:1334
+#: src/remmina_icon.c:476 src/remmina_icon.c:477 src/remmina_main.c:1333
 msgid "Remmina Remote Desktop Client"
 msgstr "렘미나 원격 데스크톱 클라이언트"
 
@@ -792,7 +793,7 @@ msgstr "현재 %i 과(와) 연결되어 있습니다. 종료 하시겠습니까?
 msgid "Viewport fullscreen mode"
 msgstr "전체 화면 모드 뷰포트"
 
-#: src/rcw.c:1399 data/ui/remmina_preferences.glade:647
+#: src/rcw.c:1399 data/ui/remmina_preferences.glade:603
 msgid "Scrolled fullscreen"
 msgstr "스크롤 전체 화면"
 
@@ -832,8 +833,8 @@ msgstr "원격 접속 해상도에 맞게 윈도 크기 조정"
 msgid "Toggle fullscreen mode"
 msgstr "전체 화면 모드 전환"
 
-#: src/rcw.c:2295 data/ui/remmina_preferences.glade:1300
-#: data/ui/remmina_preferences.glade:1310
+#: src/rcw.c:2295 data/ui/remmina_preferences.glade:1326
+#: data/ui/remmina_preferences.glade:1336
 msgid "Multi monitor"
 msgstr "멀티 모니터"
 
@@ -845,7 +846,7 @@ msgstr "동적 해상도 갱신 전환"
 msgid "Toggle scaled mode"
 msgstr "크기 조정 모드 전환"
 
-#: src/rcw.c:2361 data/ui/remmina_preferences.glade:1044
+#: src/rcw.c:2361 data/ui/remmina_preferences.glade:1061
 msgid "Switch tab pages"
 msgstr "탭 페이지 전환"
 
@@ -865,16 +866,16 @@ msgstr "도구"
 msgid "Tools"
 msgstr "도구"
 
-#: src/rcw.c:2404 data/ui/remmina_preferences.glade:1237
-#: data/ui/remmina_preferences.glade:1247
+#: src/rcw.c:2404 data/ui/remmina_preferences.glade:1261
+#: data/ui/remmina_preferences.glade:1271
 msgid "Screenshot"
 msgstr "스크린샷"
 
-#: src/rcw.c:2418 data/ui/remmina_preferences.glade:1147
+#: src/rcw.c:2418 data/ui/remmina_preferences.glade:1168
 msgid "Minimize window"
 msgstr "창 최소화"
 
-#: src/rcw.c:2428 data/ui/remmina_preferences.glade:1177
+#: src/rcw.c:2428 data/ui/remmina_preferences.glade:1199
 msgid "Disconnect"
 msgstr "연결 끊기"
 
@@ -948,7 +949,7 @@ msgstr[0] "총 %i개의 항목."
 msgid "Are you sure you want to delete “%s”?"
 msgstr "\"%s\"을(를) 삭제 하시겠습니까?"
 
-#: src/remmina_main.c:975
+#: src/remmina_main.c:974
 #, c-format
 msgid ""
 "Unable to import:\n"
@@ -957,19 +958,19 @@ msgstr ""
 "가져 올 수 없음:\n"
 "%s"
 
-#: src/remmina_main.c:1001 data/ui/remmina_main.glade:285
+#: src/remmina_main.c:1000 data/ui/remmina_main.glade:285
 msgid "Import"
 msgstr "가져오기"
 
-#: src/remmina_main.c:1024 src/remmina_file_editor.c:1373
+#: src/remmina_main.c:1023 src/remmina_file_editor.c:1373
 msgid "_Save"
 msgstr "_저장"
 
-#: src/remmina_main.c:1030
+#: src/remmina_main.c:1029
 msgid "This protocol does not support exporting."
 msgstr "이 프로토콜은 '내보내기'를 지원하지 않습니다."
 
-#: src/remmina_main.c:1336
+#: src/remmina_main.c:1335
 msgid "Remmina Kiosk"
 msgstr "렘미나 키오스크"
 
@@ -1095,7 +1096,7 @@ msgid "Cancel"
 msgstr "취소"
 
 #: src/remmina_message_panel.c:199 data/ui/remmina_snap_info_dialog.glade:28
-#: data/ui/remmina_news.glade:33 data/ui/remmina_preferences.glade:51
+#: data/ui/remmina_news.glade:33 data/ui/remmina_preferences.glade:2612
 #: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
 #: data/ui/remmina_string_list.glade:63
 msgid "Close"
@@ -1109,7 +1110,7 @@ msgstr "예"
 msgid "No"
 msgstr "아니오"
 
-#: src/remmina_message_panel.c:391 plugins/rdp/rdp_plugin.c:2601
+#: src/remmina_message_panel.c:391 plugins/rdp/rdp_plugin.c:2607
 #: data/ui/remmina_mpc.glade:172
 msgid "Domain"
 msgstr "도메인"
@@ -1579,7 +1580,7 @@ msgstr "반향(=반송) 주소를 통한 터널링"
 msgid "Same server at port %i"
 msgstr "포트 %i와 같은 서버"
 
-#: src/remmina_file_editor.c:938 plugins/rdp/rdp_plugin.c:2640
+#: src/remmina_file_editor.c:938 plugins/rdp/rdp_plugin.c:2647
 msgid "Start-up path"
 msgstr "시작 프로그램 경로"
 
@@ -1672,7 +1673,7 @@ msgstr "인증 유형"
 msgid "Authentication failure: %s"
 msgstr "인증 유형"
 
-#: plugins/gvnc/gvnc_plugin.c:539 plugins/vnc/vnc_plugin.c:820
+#: plugins/gvnc/gvnc_plugin.c:539 plugins/vnc/vnc_plugin.c:825
 msgid "Enter VNC authentication credentials"
 msgstr "VNC 인증 자격을 입력하세요"
 
@@ -1712,9 +1713,9 @@ msgstr "천연색 (24 비트)"
 msgid "VNC password"
 msgstr "VNC 비밀번호 입력"
 
-#: plugins/gvnc/gvnc_plugin.c:840 plugins/vnc/vnc_plugin.c:1944
-#: plugins/vnc/vnc_plugin.c:1964 plugins/xdmcp/xdmcp_plugin.c:369
-#: plugins/rdp/rdp_plugin.c:2607
+#: plugins/gvnc/gvnc_plugin.c:840 plugins/vnc/vnc_plugin.c:1962
+#: plugins/vnc/vnc_plugin.c:1982 plugins/xdmcp/xdmcp_plugin.c:369
+#: plugins/rdp/rdp_plugin.c:2614
 msgid "Colour depth"
 msgstr "색 심도(Color depth)"
 
@@ -1740,12 +1741,12 @@ msgid "No clipboard sync"
 msgstr "클립보드 동기화 끄기"
 
 #: plugins/gvnc/gvnc_plugin.c:858 plugins/www/www_plugin.c:904
-#: plugins/vnc/vnc_plugin.c:1987 plugins/spice/spice_plugin.c:694
-#: plugins/rdp/rdp_plugin.c:2661 plugins/nx/nx_plugin.c:752
+#: plugins/vnc/vnc_plugin.c:2005 plugins/spice/spice_plugin.c:694
+#: plugins/rdp/rdp_plugin.c:2668 plugins/nx/nx_plugin.c:752
 msgid "Forget passwords after use"
 msgstr "비밀번호 저장 안함"
 
-#: plugins/gvnc/gvnc_plugin.c:859 plugins/vnc/vnc_plugin.c:1986
+#: plugins/gvnc/gvnc_plugin.c:859 plugins/vnc/vnc_plugin.c:2004
 msgid "Ignore remote bell messages"
 msgstr ""
 
@@ -1754,7 +1755,7 @@ msgid "Enable audio channel"
 msgstr "오디오 채널 활성화"
 
 #: plugins/gvnc/gvnc_plugin.c:861 plugins/gvnc/gvnc_plugin.c:870
-#: plugins/vnc/vnc_plugin.c:1982 plugins/vnc/vnc_plugin.c:1998
+#: plugins/vnc/vnc_plugin.c:2000 plugins/vnc/vnc_plugin.c:2017
 #: plugins/spice/spice_plugin.c:697 plugins/spice/spice_plugin.c:705
 msgid "View only"
 msgstr "뷰 전용"
@@ -1943,70 +1944,70 @@ msgstr "그놈(GNOME) 키링에 안전한 비밀번호 저장"
 msgid "Hello, World!"
 msgstr "헬로 월드!"
 
-#: plugins/vnc/vnc_plugin.c:767
+#: plugins/vnc/vnc_plugin.c:772
 msgid "Enter VNC password"
 msgstr "VNC 비밀번호 입력"
 
-#: plugins/vnc/vnc_plugin.c:931
+#: plugins/vnc/vnc_plugin.c:936
 msgid "Unable to connect to VNC server"
 msgstr "VNC 서버에 연결할 수 없습니다"
 
-#: plugins/vnc/vnc_plugin.c:932
+#: plugins/vnc/vnc_plugin.c:937
 #, c-format
 msgid "Couldn’t convert '%s' to host address"
 msgstr "호스트 주소를 '%s' 로 바꿀 수 없습니다"
 
-#: plugins/vnc/vnc_plugin.c:933
+#: plugins/vnc/vnc_plugin.c:938
 #, c-format
 msgid "VNC connection failed: %s"
 msgstr "VNC 연결 실패: %s"
 
-#: plugins/vnc/vnc_plugin.c:934
+#: plugins/vnc/vnc_plugin.c:939
 msgid "Your connection has been rejected."
 msgstr "연결이 거부 됐습니다."
 
-#: plugins/vnc/vnc_plugin.c:960
+#: plugins/vnc/vnc_plugin.c:966
 #, c-format
 msgid "The VNC server requested an unknown authentication method. %s"
 msgstr "VNC 서버가 알 수 없는 인증 방법을 요청했습니다. %s"
 
-#: plugins/vnc/vnc_plugin.c:962
+#: plugins/vnc/vnc_plugin.c:968
 msgid "Please retry after turning on encryption for this profile."
 msgstr "프로필의 암호화를 키신 후에 다시 시도하세요."
 
-#: plugins/vnc/vnc_plugin.c:1904 plugins/rdp/rdp_plugin.c:2454
+#: plugins/vnc/vnc_plugin.c:1922 plugins/rdp/rdp_plugin.c:2460
 msgid "True colour (32 bpp)"
 msgstr "실제 색감 (32 bpp)"
 
-#: plugins/vnc/vnc_plugin.c:1905 plugins/rdp/rdp_plugin.c:2456
+#: plugins/vnc/vnc_plugin.c:1923 plugins/rdp/rdp_plugin.c:2462
 msgid "High colour (16 bpp)"
 msgstr "고화질 (16 bpp)"
 
-#: plugins/vnc/vnc_plugin.c:1906 plugins/rdp/rdp_plugin.c:2458
+#: plugins/vnc/vnc_plugin.c:1924 plugins/rdp/rdp_plugin.c:2464
 msgid "256 colours (8 bpp)"
 msgstr "256 색 (8 bpp)"
 
-#: plugins/vnc/vnc_plugin.c:1913 plugins/rdp/rdp_plugin.c:2481
-#: plugins/rdp/rdp_settings.c:271 plugins/nx/nx_plugin.c:712
+#: plugins/vnc/vnc_plugin.c:1931 plugins/rdp/rdp_plugin.c:2487
+#: plugins/rdp/rdp_settings.c:270 plugins/nx/nx_plugin.c:712
 msgid "Good"
 msgstr "좋음"
 
-#: plugins/vnc/vnc_plugin.c:1914 plugins/rdp/rdp_plugin.c:2482
-#: plugins/rdp/rdp_settings.c:273 plugins/nx/nx_plugin.c:713
+#: plugins/vnc/vnc_plugin.c:1932 plugins/rdp/rdp_plugin.c:2488
+#: plugins/rdp/rdp_settings.c:272 plugins/nx/nx_plugin.c:713
 msgid "Best (slowest)"
 msgstr "최고 (느림)"
 
-#: plugins/vnc/vnc_plugin.c:1915 plugins/rdp/rdp_plugin.c:2480
-#: plugins/rdp/rdp_settings.c:269 plugins/nx/nx_plugin.c:711
+#: plugins/vnc/vnc_plugin.c:1933 plugins/rdp/rdp_plugin.c:2486
+#: plugins/rdp/rdp_settings.c:268 plugins/nx/nx_plugin.c:711
 msgid "Medium"
 msgstr "보통"
 
-#: plugins/vnc/vnc_plugin.c:1916 plugins/rdp/rdp_plugin.c:2479
-#: plugins/rdp/rdp_settings.c:267 plugins/nx/nx_plugin.c:710
+#: plugins/vnc/vnc_plugin.c:1934 plugins/rdp/rdp_plugin.c:2485
+#: plugins/rdp/rdp_settings.c:266 plugins/nx/nx_plugin.c:710
 msgid "Poor (fastest)"
 msgstr "낮음 (빠름)"
 
-#: plugins/vnc/vnc_plugin.c:1921
+#: plugins/vnc/vnc_plugin.c:1939
 msgid ""
 "Connect to VNC using a repeater:\n"
 "  • The server field must contain the repeater ID, e.g. ID:123456789\n"
@@ -2017,41 +2018,48 @@ msgid ""
 "    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
 msgstr ""
 
-#: plugins/vnc/vnc_plugin.c:1941
+#: plugins/vnc/vnc_plugin.c:1959
 msgid "Repeater"
 msgstr "리피터"
 
-#: plugins/vnc/vnc_plugin.c:1945 plugins/vnc/vnc_plugin.c:1965
-#: plugins/rdp/rdp_plugin.c:2624 plugins/nx/nx_plugin.c:733
+#: plugins/vnc/vnc_plugin.c:1963 plugins/vnc/vnc_plugin.c:1983
+#: plugins/rdp/rdp_plugin.c:2631 plugins/nx/nx_plugin.c:733
 msgid "Quality"
 msgstr "품질"
 
-#: plugins/vnc/vnc_plugin.c:1961
+#: plugins/vnc/vnc_plugin.c:1979
 msgid "Listen on port"
 msgstr "수신 포트"
 
-#: plugins/vnc/vnc_plugin.c:1981
+#: plugins/vnc/vnc_plugin.c:1999
 msgid "Show remote cursor"
 msgstr "원격 커서 보기"
 
-#: plugins/vnc/vnc_plugin.c:1983 plugins/rdp/rdp_plugin.c:2658
+#: plugins/vnc/vnc_plugin.c:2001 plugins/rdp/rdp_plugin.c:2665
 msgid "Turn off clipboard sync"
 msgstr "클립보드 동기화 끄기"
 
-#: plugins/vnc/vnc_plugin.c:1984
+#: plugins/vnc/vnc_plugin.c:2002
 msgid "Turn off encryption"
 msgstr "TLS 암호화 사용"
 
-#: plugins/vnc/vnc_plugin.c:1985 plugins/vnc/vnc_plugin.c:1999
+#: plugins/vnc/vnc_plugin.c:2003 plugins/vnc/vnc_plugin.c:2018
 msgid "Prevent local interaction on the server"
 msgstr "서버에서 로컬 인터렉션 방지"
 
-#: plugins/vnc/vnc_plugin.c:2001
+#: plugins/vnc/vnc_plugin.c:2006 plugins/rdp/rdp_plugin.c:2609
+#: plugins/rdp/rdp_settings.c:594
+#, fuzzy
+#| msgid "Turn on smooth scrolling"
+msgid "Disable smooth scrolling"
+msgstr "부드러운 스크롤"
+
+#: plugins/vnc/vnc_plugin.c:2020
 msgid "Open Chat…"
 msgstr "대화창 열기…"
 
-#: plugins/vnc/vnc_plugin.c:2002 plugins/spice/spice_plugin.c:707
-#: plugins/xdmcp/xdmcp_plugin.c:381 plugins/rdp/rdp_plugin.c:2687
+#: plugins/vnc/vnc_plugin.c:2021 plugins/spice/spice_plugin.c:707
+#: plugins/xdmcp/xdmcp_plugin.c:381 plugins/rdp/rdp_plugin.c:2694
 msgid "Send Ctrl+Alt+Delete"
 msgstr "Ctrl+Alt+Delete 전송"
 
@@ -2097,8 +2105,8 @@ msgstr "SPICE 서버에 대한 연결이 끊어졌습니다."
 msgid "Default"
 msgstr "기본값"
 
-#: plugins/spice/spice_plugin.c:635 plugins/rdp/rdp_plugin.c:2503
-#: data/ui/remmina_preferences.glade:720
+#: plugins/spice/spice_plugin.c:635 plugins/rdp/rdp_plugin.c:2509
+#: data/ui/remmina_preferences.glade:673
 msgid "Off"
 msgstr "끄기"
 
@@ -2122,7 +2130,7 @@ msgstr "TLS 암호화 사용"
 msgid "Server CA certificate"
 msgstr "서버 CA 인증서"
 
-#: plugins/spice/spice_plugin.c:669 plugins/rdp/rdp_plugin.c:2609
+#: plugins/spice/spice_plugin.c:669 plugins/rdp/rdp_plugin.c:2616
 msgid "Share folder"
 msgstr "공유 폴더"
 
@@ -2144,7 +2152,8 @@ msgstr "스마트 카드 공유"
 
 #: plugins/spice/spice_plugin.c:719
 msgid "SPICE - Simple Protocol for Independent Computing Environments"
-msgstr "스파이스(SPICE) - Simple Protocol for Independent Computing Environments"
+msgstr ""
+"스파이스(SPICE) - Simple Protocol for Independent Computing Environments"
 
 #: plugins/spice/spice_plugin_file_transfer.c:82
 msgid "File Transfers"
@@ -2176,7 +2185,8 @@ msgstr "사용할 수 있는 로컬 X 디스플레이 수가 부족합니다."
 #, c-format
 msgid ""
 "The protocol “%s” is unavailable because GtkSocket only works under X.Org."
-msgstr "GtkSocket은 X.Org에서만 동작하기에 \"%s\" 프로토콜을 사용할 수 없습니다."
+msgstr ""
+"GtkSocket은 X.Org에서만 동작하기에 \"%s\" 프로토콜을 사용할 수 없습니다."
 
 #: plugins/xdmcp/xdmcp_plugin.c:349
 msgid "Grayscale"
@@ -2226,15 +2236,15 @@ msgstr "윈도 분리"
 msgid "Remmina simple terminal"
 msgstr "레미너 단순 터미널"
 
-#: plugins/rdp/rdp_plugin.c:735 plugins/rdp/rdp_plugin.c:800
+#: plugins/rdp/rdp_plugin.c:736 plugins/rdp/rdp_plugin.c:801
 msgid "Enter RDP authentication credentials"
 msgstr "RDP 인증 자격을 입력하세요"
 
-#: plugins/rdp/rdp_plugin.c:808
+#: plugins/rdp/rdp_plugin.c:809
 msgid "Enter RDP gateway authentication credentials"
 msgstr "RDP 게이트웨이 인증 자격을 입력하세요"
 
-#: plugins/rdp/rdp_plugin.c:2020
+#: plugins/rdp/rdp_plugin.c:2024
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2243,7 +2253,7 @@ msgstr ""
 "RDP 서버 \"%s\"에 접속할 수 없습니다.\n"
 "계정이 잠겼습니다."
 
-#: plugins/rdp/rdp_plugin.c:2027
+#: plugins/rdp/rdp_plugin.c:2031
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2252,7 +2262,7 @@ msgstr ""
 "RDP 서버 \"%s\"에 접속할 수 없습니다.\n"
 "계정이 만료되었습니다."
 
-#: plugins/rdp/rdp_plugin.c:2034
+#: plugins/rdp/rdp_plugin.c:2038
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2261,7 +2271,7 @@ msgstr ""
 "RDP 서버 \"%s\"에 접속할 수 없습니다.\n"
 "비밀번호가 만료되었습니다."
 
-#: plugins/rdp/rdp_plugin.c:2041
+#: plugins/rdp/rdp_plugin.c:2045
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2270,7 +2280,7 @@ msgstr ""
 "RDP 서버 \"%s\"에 접속할 수 없습니다.\n"
 "계정이 비활성화 되었습니다."
 
-#: plugins/rdp/rdp_plugin.c:2047
+#: plugins/rdp/rdp_plugin.c:2051
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2279,7 +2289,7 @@ msgstr ""
 "RDP 서버 \"%s\"에 접속할 수 없습니다.\n"
 "사용자 권한이 부족합니다."
 
-#: plugins/rdp/rdp_plugin.c:2055
+#: plugins/rdp/rdp_plugin.c:2059
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2288,7 +2298,7 @@ msgstr ""
 "RDP 서버 \"%s\"에 접속할 수 없습니다.\n"
 "계정이 제한되었습니다."
 
-#: plugins/rdp/rdp_plugin.c:2063
+#: plugins/rdp/rdp_plugin.c:2067
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2297,155 +2307,159 @@ msgstr ""
 "RDP 서버 \"%s\"에 접속할 수 없습니다.\n"
 "연결하기 전에 사용자 비밀번호를 변경하세요."
 
-#: plugins/rdp/rdp_plugin.c:2068
+#: plugins/rdp/rdp_plugin.c:2072
 #, c-format
 msgid "Lost connection to the RDP server “%s”."
 msgstr "RDP 서버 \"%s\"에 대한 연결이 끊어졌습니다."
 
-#: plugins/rdp/rdp_plugin.c:2071
+#: plugins/rdp/rdp_plugin.c:2075
 #, c-format
 msgid "Could not find the address for the RDP server “%s”."
 msgstr "RDP 서버 \"%s\"의 주소를 찾을 수 없습니다."
 
-#: plugins/rdp/rdp_plugin.c:2075
+#: plugins/rdp/rdp_plugin.c:2079
 #, c-format
 msgid ""
 "Could not connect to the RDP server “%s” via TLS. Check that client and "
 "server support a common TLS version."
-msgstr "TLS로 RDP 서버 \"%s\"에 연결할 수 없습니다. 클라이언트와 서버가 일반 TLS 버전을 지원하는지 확인하세요."
+msgstr ""
+"TLS로 RDP 서버 \"%s\"에 연결할 수 없습니다. 클라이언트와 서버가 일반 TLS 버전"
+"을 지원하는지 확인하세요."
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
-#: plugins/rdp/rdp_plugin.c:2079
+#: plugins/rdp/rdp_plugin.c:2083
 #, c-format
 msgid ""
 "Unable to establish a connection to the RDP server “%s”. Check \"Security "
 "protocol negotiation\"."
 msgstr "RDP 서버 \"%s\"에 연결할 수 없습니다."
 
-#: plugins/rdp/rdp_plugin.c:2087
+#: plugins/rdp/rdp_plugin.c:2091
 #, c-format
 msgid "Cannot connect to the RDP server “%s”."
 msgstr "RDP 서버 %s에 연결할 수 없습니다."
 
-#: plugins/rdp/rdp_plugin.c:2090
+#: plugins/rdp/rdp_plugin.c:2094
 msgid "Could not start libfreerdp-gdi."
 msgstr "libfreerdp-gdi를 시작할 수 없습니다."
 
-#: plugins/rdp/rdp_plugin.c:2093
+#: plugins/rdp/rdp_plugin.c:2097
 #, c-format
 msgid ""
 "You requested a H.264 GFX mode for the server “%s”, but your libfreerdp does "
 "not support H.264. Please use a non-AVC colour depth setting."
 msgstr ""
-"서버 \"%s\"에 H.264 GFX 모드를 요청했지만 libfreerdp가 H.264를 지원하지 않습니다. 비 AVC 색 심도 설정을 "
-"사용하세요."
+"서버 \"%s\"에 H.264 GFX 모드를 요청했지만 libfreerdp가 H.264를 지원하지 않습"
+"니다. 비 AVC 색 심도 설정을 사용하세요."
 
-#: plugins/rdp/rdp_plugin.c:2100
+#: plugins/rdp/rdp_plugin.c:2104
 #, c-format
 msgid "The “%s” server refused the connection."
 msgstr "\"%s\"서버가 연결을 거부했습니다."
 
-#: plugins/rdp/rdp_plugin.c:2105
+#: plugins/rdp/rdp_plugin.c:2109
 #, c-format
 msgid ""
 "The Remote Desktop Gateway “%s” denied the user \"%s\\%s\" access due to "
 "policy."
-msgstr "정책으로 원격 데스크톱 게이트웨이 \"%s\" 이(가) 사용자 \"%s\\%s\" 접속을 거부했습니다."
+msgstr ""
+"정책으로 원격 데스크톱 게이트웨이 \"%s\" 이(가) 사용자 \"%s\\%s\" 접속을 거부"
+"했습니다."
 
-#: plugins/rdp/rdp_plugin.c:2115
+#: plugins/rdp/rdp_plugin.c:2119
 #, c-format
 msgid "Cannot connect to the “%s” RDP server."
 msgstr "RDP 서버 %s에 연결할 수 없습니다."
 
-#: plugins/rdp/rdp_plugin.c:2448
+#: plugins/rdp/rdp_plugin.c:2454
 msgid "Automatic (32 bpp) (Server chooses its best format)"
 msgstr "자동 (32bpp) (서버가 최상의 포맷을 선택)"
 
-#: plugins/rdp/rdp_plugin.c:2449
+#: plugins/rdp/rdp_plugin.c:2455
 msgid "GFX AVC444 (32 bpp)"
 msgstr "GFX AVC444 (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2450
+#: plugins/rdp/rdp_plugin.c:2456
 msgid "GFX AVC420 (32 bpp)"
 msgstr "GFX AVC420 (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2451
+#: plugins/rdp/rdp_plugin.c:2457
 msgid "GFX RFX (32 bpp)"
 msgstr "GFX RFX (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2452
+#: plugins/rdp/rdp_plugin.c:2458
 msgid "GFX RFX Progressive (32 bpp)"
 msgstr "GFX RFX (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2453
+#: plugins/rdp/rdp_plugin.c:2459
 msgid "RemoteFX (32 bpp)"
 msgstr "리모트FX (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2455
+#: plugins/rdp/rdp_plugin.c:2461
 msgid "True colour (24 bpp)"
 msgstr "실제 색감 (24 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2457
+#: plugins/rdp/rdp_plugin.c:2463
 msgid "High colour (15 bpp)"
 msgstr "고화질 (15 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2489 data/ui/remmina_preferences.glade:683
+#: plugins/rdp/rdp_plugin.c:2495 data/ui/remmina_preferences.glade:637
 msgid "None"
 msgstr "<없음>"
 
-#: plugins/rdp/rdp_plugin.c:2490
+#: plugins/rdp/rdp_plugin.c:2496
 msgid "Auto-detect"
 msgstr "<자동 구성>"
 
-#: plugins/rdp/rdp_plugin.c:2491
+#: plugins/rdp/rdp_plugin.c:2497
 msgid "Modem"
 msgstr "모뎀"
 
-#: plugins/rdp/rdp_plugin.c:2492
+#: plugins/rdp/rdp_plugin.c:2498
 msgid "Low performance broadband"
 msgstr "저 성능 브로드밴드"
 
-#: plugins/rdp/rdp_plugin.c:2493
+#: plugins/rdp/rdp_plugin.c:2499
 msgid "Satellite"
 msgstr "위성"
 
-#: plugins/rdp/rdp_plugin.c:2494
+#: plugins/rdp/rdp_plugin.c:2500
 msgid "High performance broadband"
 msgstr "고 성능 브로드밴드"
 
-#: plugins/rdp/rdp_plugin.c:2495
+#: plugins/rdp/rdp_plugin.c:2501
 msgid "WAN"
 msgstr "WAN"
 
-#: plugins/rdp/rdp_plugin.c:2496
+#: plugins/rdp/rdp_plugin.c:2502
 msgid "LAN"
 msgstr "LAN"
 
-#: plugins/rdp/rdp_plugin.c:2512
+#: plugins/rdp/rdp_plugin.c:2518
 msgid "Automatic negotiation"
 msgstr "자동 잠금 간격"
 
-#: plugins/rdp/rdp_plugin.c:2513
+#: plugins/rdp/rdp_plugin.c:2519
 msgid "NLA protocol security"
 msgstr "프로토콜 별 탭"
 
-#: plugins/rdp/rdp_plugin.c:2514
+#: plugins/rdp/rdp_plugin.c:2520
 msgid "TLS protocol security"
 msgstr "프로토콜 별 탭"
 
-#: plugins/rdp/rdp_plugin.c:2515
+#: plugins/rdp/rdp_plugin.c:2521
 msgid "RDP protocol security"
 msgstr "프로토콜 별 탭"
 
-#: plugins/rdp/rdp_plugin.c:2516
+#: plugins/rdp/rdp_plugin.c:2522
 msgid "NLA extended protocol security"
 msgstr "NLA 확장 프로토콜 보안"
 
-#: plugins/rdp/rdp_plugin.c:2529
+#: plugins/rdp/rdp_plugin.c:2535
 msgid "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 and newer)"
 msgstr "2600 (윈도 XP),7601 (윈도 비스타/7),9600 (윈도 8 이상)"
 
-#: plugins/rdp/rdp_plugin.c:2532
+#: plugins/rdp/rdp_plugin.c:2538
 msgid ""
 "Used i.a. by terminal services in a smart card channel to distinguish client "
 "capabilities:\n"
@@ -2455,13 +2469,14 @@ msgid ""
 "  • >= 7065: Windows 8 and newer: SCardGetReaderIcon(),\n"
 "    SCardGetDeviceTypeId()"
 msgstr ""
-"클라이언트 별로 구별하기 위해서 스마트카드 채널의 터미널 서비스는 아래와 같이 사용합니다:\n"
+"클라이언트 별로 구별하기 위해서 스마트카드 채널의 터미널 서비스는 아래와 같"
+"이 사용합니다:\n"
 "  • < 4034: 윈도 XP 기본 스마트 카드 기능\n"
 "  • 4034-7064: 윈도 비스타/7: SCardReadCache(), SCardWriteCache(),\n"
 "    SCardGetTransmitCount()\n"
 "  • >= 7065: 윈도 8 이상: SCardGetReaderIcon(), SCardGetDeviceTypeId()"
 
-#: plugins/rdp/rdp_plugin.c:2540
+#: plugins/rdp/rdp_plugin.c:2546
 msgid ""
 "Options for redirection of audio input:\n"
 "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
@@ -2479,7 +2494,7 @@ msgstr ""
 "  • sys:oss,dev:1,format:1\n"
 "  • sys:alsa"
 
-#: plugins/rdp/rdp_plugin.c:2549
+#: plugins/rdp/rdp_plugin.c:2555
 msgid ""
 "Options for redirection of audio output:\n"
 "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
@@ -2497,7 +2512,7 @@ msgstr ""
 "  • sys:oss,dev:1,format:1\n"
 "  • sys:alsa"
 
-#: plugins/rdp/rdp_plugin.c:2559
+#: plugins/rdp/rdp_plugin.c:2565
 msgid ""
 "Options for redirection of USB device:\n"
 "  • [dbg,][id:<vid>:<pid>#…,][addr:<bus>:<addr>#…,][auto]\n"
@@ -2509,7 +2524,7 @@ msgstr ""
 "  • auto\n"
 "  • id:054c:0268#4669:6e6b,addr:04:0c"
 
-#: plugins/rdp/rdp_plugin.c:2565
+#: plugins/rdp/rdp_plugin.c:2571
 msgid ""
 "Advanced setting for high latency links:\n"
 "Adjusts the connection timeout. Use if your connection times out.\n"
@@ -2519,7 +2534,7 @@ msgstr ""
 "연결 타임아웃을 조절합니다. 연결 시간이 초과되면 사용하세요. \n"
 "가장 큰 값은 600000ms (10 분)입니다.\n"
 
-#: plugins/rdp/rdp_plugin.c:2570
+#: plugins/rdp/rdp_plugin.c:2576
 msgid ""
 "Performance optimisations based on the network connection type:\n"
 "Using auto-detection is advised.\n"
@@ -2529,7 +2544,7 @@ msgstr ""
 "자동 감지를 사용하는 것이 좋습니다.\n"
 "\"자동 감지\"가 실패하면, 목록에서 가장 적절한 옵션을 선택하세요.\n"
 
-#: plugins/rdp/rdp_plugin.c:2575
+#: plugins/rdp/rdp_plugin.c:2581
 #, fuzzy
 #| msgid ""
 #| "Comma separated list of monitor IDs and desktop orientations:\n"
@@ -2566,329 +2581,335 @@ msgstr ""
 "  • 270 (수직 거꾸로)\n"
 "\n"
 
-#: plugins/rdp/rdp_plugin.c:2602
+#: plugins/rdp/rdp_plugin.c:2608
 msgid "Left-handed mouse support"
 msgstr "왼손잡이 마우스 지원"
 
-#: plugins/rdp/rdp_plugin.c:2602
+#: plugins/rdp/rdp_plugin.c:2608
 msgid "Swap left and right mouse buttons for left-handed mouse support"
 msgstr "왼손 마우스 지원을 위해 왼쪽, 오른쪽 마우스 버튼 전환"
 
-#: plugins/rdp/rdp_plugin.c:2603
+#: plugins/rdp/rdp_plugin.c:2610
 msgid "Enable multi monitor"
 msgstr "다중 모니터 사용"
 
-#: plugins/rdp/rdp_plugin.c:2604
+#: plugins/rdp/rdp_plugin.c:2611
 msgid "Span screen over multiple monitors"
 msgstr "다중 모니터로 화면 확장"
 
-#: plugins/rdp/rdp_plugin.c:2605
+#: plugins/rdp/rdp_plugin.c:2612
 #, fuzzy
 #| msgid "Monitor ID list"
 msgid "List monitor IDs"
 msgstr "모니터 ID 목록"
 
-#: plugins/rdp/rdp_plugin.c:2608
+#: plugins/rdp/rdp_plugin.c:2615
 msgid "Network connection type"
 msgstr "새 연결 프로필"
 
-#: plugins/rdp/rdp_plugin.c:2625
+#: plugins/rdp/rdp_plugin.c:2632
 msgid "Security protocol negotiation"
 msgstr "보안 프로토콜 협상"
 
-#: plugins/rdp/rdp_plugin.c:2626
+#: plugins/rdp/rdp_plugin.c:2633
 msgid "Gateway transport type"
 msgstr "게이트웨이 전송 타입"
 
-#: plugins/rdp/rdp_plugin.c:2627
+#: plugins/rdp/rdp_plugin.c:2634
 msgid "FreeRDP log level"
 msgstr "FreeRDP 로그 레벨"
 
-#: plugins/rdp/rdp_plugin.c:2628
+#: plugins/rdp/rdp_plugin.c:2635
 msgid "FreeRDP log filters"
 msgstr "FreeRDP 로그 레벨"
 
-#: plugins/rdp/rdp_plugin.c:2628
+#: plugins/rdp/rdp_plugin.c:2635
 msgid "tag:level[,tag:level[,…]]"
 msgstr "tag:level[,tag:level[,…]]"
 
-#: plugins/rdp/rdp_plugin.c:2629
+#: plugins/rdp/rdp_plugin.c:2636
 msgid "Audio output mode"
 msgstr "오디오 출력 모드"
 
-#: plugins/rdp/rdp_plugin.c:2630
+#: plugins/rdp/rdp_plugin.c:2637
 msgid "Redirect local audio output"
 msgstr "로컬 마이크 리디렉션"
 
-#: plugins/rdp/rdp_plugin.c:2631
+#: plugins/rdp/rdp_plugin.c:2638
 msgid "Redirect local microphone"
 msgstr "로컬 마이크 리디렉션"
 
-#: plugins/rdp/rdp_plugin.c:2632
+#: plugins/rdp/rdp_plugin.c:2639
 msgid "Connection timeout in ms"
 msgstr "'%s'에 연결하는 중…"
 
-#: plugins/rdp/rdp_plugin.c:2633
+#: plugins/rdp/rdp_plugin.c:2640
 msgid "Remote Desktop Gateway server"
 msgstr "원격 데스크톱 게이트웨이 서버"
 
-#: plugins/rdp/rdp_plugin.c:2634
+#: plugins/rdp/rdp_plugin.c:2641
 msgid "Remote Desktop Gateway username"
 msgstr "원격 데스크톱 게이트웨이 사용자 이름"
 
-#: plugins/rdp/rdp_plugin.c:2635
+#: plugins/rdp/rdp_plugin.c:2642
 msgid "Remote Desktop Gateway password"
 msgstr "원격 데스크톱 게이트웨이 비밀번호"
 
-#: plugins/rdp/rdp_plugin.c:2636
+#: plugins/rdp/rdp_plugin.c:2643
 msgid "Remote Desktop Gateway domain"
 msgstr "원격 데스크톱 게이트웨이 도메인"
 
-#: plugins/rdp/rdp_plugin.c:2637
+#: plugins/rdp/rdp_plugin.c:2644
 msgid "Client name"
 msgstr "클라이언트 이름"
 
-#: plugins/rdp/rdp_plugin.c:2638
+#: plugins/rdp/rdp_plugin.c:2645
 msgid "Client build"
 msgstr "클라이언트 빌드"
 
-#: plugins/rdp/rdp_plugin.c:2641
+#: plugins/rdp/rdp_plugin.c:2648
 msgid "Load balance info"
 msgstr "로드 밸런스 정보"
 
-#: plugins/rdp/rdp_plugin.c:2642
+#: plugins/rdp/rdp_plugin.c:2649
 msgid "Override printer drivers"
 msgstr "프린터 드라이버 오버라이드"
 
-#: plugins/rdp/rdp_plugin.c:2642
+#: plugins/rdp/rdp_plugin.c:2649
 msgid ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
 msgstr ""
-"\"Samsung_CLX-3300_Series\":\"삼성 CLX-3300 시리즈 PS\";\"캐논 MF410\":\"캐논 MF410 "
-"시리즈 UFR II\""
+"\"Samsung_CLX-3300_Series\":\"삼성 CLX-3300 시리즈 PS\";\"캐논 MF410\":\"캐"
+"논 MF410 시리즈 UFR II\""
 
-#: plugins/rdp/rdp_plugin.c:2643
+#: plugins/rdp/rdp_plugin.c:2650
 msgid "USB device redirection"
 msgstr "리디렉션 할 USB 기기 선택"
 
-#: plugins/rdp/rdp_plugin.c:2644
+#: plugins/rdp/rdp_plugin.c:2651
 msgid "Local serial name"
 msgstr "로컬 시리얼 이름"
 
-#: plugins/rdp/rdp_plugin.c:2644
+#: plugins/rdp/rdp_plugin.c:2651
 msgid "COM1, COM2, etc."
 msgstr "COM1, COM2, 기타."
 
-#: plugins/rdp/rdp_plugin.c:2645
+#: plugins/rdp/rdp_plugin.c:2652
 msgid "Local serial driver"
 msgstr "로컬 시리얼 드라이버"
 
-#: plugins/rdp/rdp_plugin.c:2645
+#: plugins/rdp/rdp_plugin.c:2652
 msgid "Serial"
 msgstr "시리얼"
 
-#: plugins/rdp/rdp_plugin.c:2646
+#: plugins/rdp/rdp_plugin.c:2653
 msgid "Local serial path"
 msgstr "로컬 시리얼 경로"
 
-#: plugins/rdp/rdp_plugin.c:2646
+#: plugins/rdp/rdp_plugin.c:2653
 msgid "/dev/ttyS0, /dev/ttyS1, etc."
 msgstr "/dev/ttyS0, /dev/ttyS1, 기타."
 
-#: plugins/rdp/rdp_plugin.c:2647
+#: plugins/rdp/rdp_plugin.c:2654
 msgid "Local parallel name"
 msgstr "로컬 병렬(parallel) 이름"
 
-#: plugins/rdp/rdp_plugin.c:2648
+#: plugins/rdp/rdp_plugin.c:2655
 msgid "Local parallel device"
 msgstr "로컬 병렬(parallel) 기기"
 
-#: plugins/rdp/rdp_plugin.c:2649
+#: plugins/rdp/rdp_plugin.c:2656
 msgid "Name of smart card"
 msgstr "스마트 카드 공유"
 
-#: plugins/rdp/rdp_plugin.c:2650
+#: plugins/rdp/rdp_plugin.c:2657
 msgid "Dynamic virtual channel"
 msgstr "다이나믹 가상 채널"
 
-#: plugins/rdp/rdp_plugin.c:2650 plugins/rdp/rdp_plugin.c:2651
+#: plugins/rdp/rdp_plugin.c:2657 plugins/rdp/rdp_plugin.c:2658
 msgid "<channel>[,<options>]"
 msgstr "<channel>[,<options>]"
 
-#: plugins/rdp/rdp_plugin.c:2651
+#: plugins/rdp/rdp_plugin.c:2658
 msgid "Static virtual channel"
 msgstr "스태틱 가상 채널"
 
-#: plugins/rdp/rdp_plugin.c:2652
+#: plugins/rdp/rdp_plugin.c:2659
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
 msgstr "IPv4 A 레코드보다 IPv6 AAAA 레코드 선호"
 
-#: plugins/rdp/rdp_plugin.c:2653
+#: plugins/rdp/rdp_plugin.c:2660
 msgid "Share printers"
 msgstr "프린터 공유"
 
-#: plugins/rdp/rdp_plugin.c:2654
+#: plugins/rdp/rdp_plugin.c:2661
 msgid "Share serial ports"
 msgstr "시리얼 포트 공유"
 
-#: plugins/rdp/rdp_plugin.c:2655
+#: plugins/rdp/rdp_plugin.c:2662
 msgid "(SELinux) permissive mode for serial ports"
 msgstr "시리얼 포트에 대한 (SELinux) 허용 모드"
 
-#: plugins/rdp/rdp_plugin.c:2656
+#: plugins/rdp/rdp_plugin.c:2663
 msgid "Share parallel ports"
 msgstr "병렬(parallel) 포트 공유"
 
-#: plugins/rdp/rdp_plugin.c:2657
+#: plugins/rdp/rdp_plugin.c:2664
 msgid "Share a smart card"
 msgstr "스마트 카드 공유"
 
-#: plugins/rdp/rdp_plugin.c:2659
+#: plugins/rdp/rdp_plugin.c:2666
 msgid "Ignore certificate"
 msgstr "인증서 무시"
 
-#: plugins/rdp/rdp_plugin.c:2660
+#: plugins/rdp/rdp_plugin.c:2667
 msgid "Use the old license workflow"
 msgstr "기존 라이선스 워크 플로우 사용"
 
-#: plugins/rdp/rdp_plugin.c:2660
+#: plugins/rdp/rdp_plugin.c:2667
 msgid "It disables CAL and hwId is set to 0"
 msgstr "CAL을 비활성화하고 hwId를 0으로 설정"
 
-#: plugins/rdp/rdp_plugin.c:2662
+#: plugins/rdp/rdp_plugin.c:2669
 msgid "Attach to console (2003/2003 R2)"
 msgstr "콘솔에 연결 (2003/2003 R2)"
 
-#: plugins/rdp/rdp_plugin.c:2663
+#: plugins/rdp/rdp_plugin.c:2670
 msgid "Turn off fast-path"
 msgstr "패스트 패스(fast-path) 끄기"
 
-#: plugins/rdp/rdp_plugin.c:2664
+#: plugins/rdp/rdp_plugin.c:2671
 msgid "Server detection using Remote Desktop Gateway"
 msgstr "원격 데스크톱 게이트웨이를 사용하는 서버 감지"
 
-#: plugins/rdp/rdp_plugin.c:2666
+#: plugins/rdp/rdp_plugin.c:2673
 msgid "Use system proxy settings"
 msgstr "시스템 프록시 설정 사용"
 
-#: plugins/rdp/rdp_plugin.c:2668
+#: plugins/rdp/rdp_plugin.c:2675
 msgid "Turn off automatic reconnection"
 msgstr "자동으로 다시 연결 끄기"
 
-#: plugins/rdp/rdp_plugin.c:2669
+#: plugins/rdp/rdp_plugin.c:2676
 msgid "Relax order checks"
 msgstr "릴렉스 오더 체크(Relax order checks)"
 
-#: plugins/rdp/rdp_plugin.c:2670
+#: plugins/rdp/rdp_plugin.c:2677
 msgid "Glyph cache"
 msgstr "Glyph 캐시"
 
-#: plugins/rdp/rdp_plugin.c:2671
+#: plugins/rdp/rdp_plugin.c:2678
 msgid "Enable multitransport protocol (UDP)"
 msgstr "다중 전송 프로토콜 (UDP) 활성화"
 
-#: plugins/rdp/rdp_plugin.c:2671
+#: plugins/rdp/rdp_plugin.c:2678
 msgid "Using the UDP protocol may improve performance"
 msgstr "UDP 프로토콜을 사용하면 성능을 향상시킬 수 있습니다."
 
-#: plugins/rdp/rdp_plugin.c:2672
+#: plugins/rdp/rdp_plugin.c:2679
 msgid "Use base credentials for gateway too"
 msgstr "게이트웨이에도 기본 자격 증명 사용"
 
-#: plugins/rdp/rdp_plugin.c:2674
+#: plugins/rdp/rdp_plugin.c:2681
 msgid "Enable Gateway websockets support"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2700
+#: plugins/rdp/rdp_plugin.c:2707
 msgid "RDP - Remote Desktop Protocol"
 msgstr "RDP - 리모트 데스크톱 프로토콜(Remote Desktop Protocol)"
 
-#: plugins/rdp/rdp_plugin.c:2725
+#: plugins/rdp/rdp_plugin.c:2732
 msgid "RDP - RDP File Handler"
 msgstr "RDP - RDP 파일 핸들러"
 
-#: plugins/rdp/rdp_plugin.c:2740
+#: plugins/rdp/rdp_plugin.c:2747
 msgid "RDP - Preferences"
 msgstr "RDP - 설정"
 
-#: plugins/rdp/rdp_plugin.c:2793
+#: plugins/rdp/rdp_plugin.c:2800
 msgid "Export connection in Windows .rdp file format"
 msgstr "윈도 .rdp 파일로 연결 내보내기"
 
-#: plugins/rdp/rdp_settings.c:200
+#: plugins/rdp/rdp_settings.c:201
 msgid "<Auto-detect>"
 msgstr "<자동 구성>"
 
-#: plugins/rdp/rdp_settings.c:232
+#: plugins/rdp/rdp_settings.c:233
 msgid "<Not set>"
 msgstr "<설정되지 않음>"
 
-#: plugins/rdp/rdp_settings.c:265
+#: plugins/rdp/rdp_settings.c:264
 msgid "<Choose a quality level to edit…>"
 msgstr "<편집 할 품질 수준을 선택하세요…>"
 
-#: plugins/rdp/rdp_settings.c:416
+#: plugins/rdp/rdp_settings.c:411
 msgid "Keyboard layout"
 msgstr "키보드 레이아웃"
 
-#: plugins/rdp/rdp_settings.c:441
+#: plugins/rdp/rdp_settings.c:436
 msgid "Use client keyboard mapping"
 msgstr "클라이언트 키보드 매핑 사용"
 
-#: plugins/rdp/rdp_settings.c:451
+#: plugins/rdp/rdp_settings.c:446
 msgid "Quality settings"
 msgstr "퀄리티 설정"
 
-#: plugins/rdp/rdp_settings.c:471
+#: plugins/rdp/rdp_settings.c:466
 msgid "Wallpaper"
 msgstr "배경 화면"
 
-#: plugins/rdp/rdp_settings.c:478
+#: plugins/rdp/rdp_settings.c:473
 msgid "Window drag"
 msgstr "윈도 끌기"
 
-#: plugins/rdp/rdp_settings.c:485
+#: plugins/rdp/rdp_settings.c:480
 msgid "Menu animation"
 msgstr "메뉴 에니메이션"
 
-#: plugins/rdp/rdp_settings.c:492
+#: plugins/rdp/rdp_settings.c:487
 msgid "Theme"
 msgstr "테마"
 
-#: plugins/rdp/rdp_settings.c:499
+#: plugins/rdp/rdp_settings.c:494
 msgid "Cursor shadow"
 msgstr "커서 그림자"
 
-#: plugins/rdp/rdp_settings.c:506
+#: plugins/rdp/rdp_settings.c:501
 msgid "Cursor blinking"
 msgstr "커서 깜박임"
 
-#: plugins/rdp/rdp_settings.c:513
+#: plugins/rdp/rdp_settings.c:508
 msgid "Font smoothing"
 msgstr "부드러운 글꼴"
 
-#: plugins/rdp/rdp_settings.c:520
+#: plugins/rdp/rdp_settings.c:515
 msgid "Composition"
 msgstr "합성"
 
-#: plugins/rdp/rdp_settings.c:530
+#: plugins/rdp/rdp_settings.c:525
 msgid "Remote scale factor"
 msgstr "원격 크기 조정 비율"
 
-#: plugins/rdp/rdp_settings.c:543
+#: plugins/rdp/rdp_settings.c:538
 msgid "Desktop scale factor %"
 msgstr "데스크톱 크기 비율 %"
 
-#: plugins/rdp/rdp_settings.c:554
+#: plugins/rdp/rdp_settings.c:549
 msgid "Device scale factor %"
 msgstr "기기 크기 비율 %"
 
-#: plugins/rdp/rdp_settings.c:576
+#: plugins/rdp/rdp_settings.c:571
 msgid "Desktop orientation"
 msgstr "데스크톱 방향"
 
-#: plugins/rdp/rdp_event.c:343
+#: plugins/rdp/rdp_settings.c:588
+#, fuzzy
+#| msgid "Use system proxy settings"
+msgid "Input device settings"
+msgstr "시스템 프록시 설정 사용"
+
+#: plugins/rdp/rdp_event.c:344
 #, c-format
 msgid "Reconnection attempt %d of %d…"
 msgstr "%d (%d 개중에) 번째 재 연결 시도중…"
@@ -3026,8 +3047,10 @@ msgid ""
 "the appropriate permissions to Remmina. As an alternative you can enter the "
 "following commands in a terminal window:"
 msgstr ""
-"레미나가 SNAP 패키지로 실행중인 것 같습니다. 키링의 암호 저장 및 RDP 프린터 공유와 같은 일부 중요한 기능을 사용하려면 "
-"소프트웨어 센터를 열고 레미나에 적절한 권한을 부여하세요. 또 다른 방법으로 터미널 창에 다음 명령을 입력 할 수 있습니다:"
+"레미나가 SNAP 패키지로 실행중인 것 같습니다. 키링의 암호 저장 및 RDP 프린터 "
+"공유와 같은 일부 중요한 기능을 사용하려면 소프트웨어 센터를 열고 레미나에 적"
+"절한 권한을 부여하세요. 또 다른 방법으로 터미널 창에 다음 명령을 입력 할 수 "
+"있습니다:"
 
 #: data/ui/remmina_snap_info_dialog.glade:167
 msgid "<big>Permissions</big>"
@@ -3039,8 +3062,9 @@ msgid ""
 "profiles are saved inside the Snap file system by default. You can change "
 "the location in the Remmina preferences."
 msgstr ""
-"Snap 패키지는 시스템의 일부로 제한적으로 실행되기 때문에 Remmina 프로필은 기본적으로 Snap 파일 시스템에 저장됩니다. "
-"Remmina 환경 설정에서 위치를 변경할 수 있습니다."
+"Snap 패키지는 시스템의 일부로 제한적으로 실행되기 때문에 Remmina 프로필은 기"
+"본적으로 Snap 파일 시스템에 저장됩니다. Remmina 환경 설정에서 위치를 변경할 "
+"수 있습니다."
 
 #: data/ui/remmina_snap_info_dialog.glade:222
 msgid "Change where Remmina profiles are stored"
@@ -3101,7 +3125,7 @@ msgid "Server name or IP address"
 msgstr "서버 이름 또는 IP 주소"
 
 #: data/ui/remmina_main.glade:102 data/ui/remmina_main.glade:104
-#: data/ui/remmina_preferences.glade:216
+#: data/ui/remmina_preferences.glade:501
 msgid "Clear"
 msgstr "비우기"
 
@@ -3190,7 +3214,7 @@ msgstr "잠금 해제"
 msgid "Unlock Remmina"
 msgstr "레미나 잠금 해제"
 
-#: data/ui/remmina_unlock.glade:128 data/ui/remmina_preferences.glade:1586
+#: data/ui/remmina_unlock.glade:128
 msgid "Master password"
 msgstr "마스터 비밀번호"
 
@@ -3219,7 +3243,8 @@ msgstr ""
 "<big> <b> 뉴스가 꺼져 있습니다. </b> </big>\n"
 "\n"
 "<span>\n"
-"뉴스를 켜면, 프로그램이 Remmina 서버에 연결하여 릴리스 정보를 다운로드 합니다. \n"
+"뉴스를 켜면, 프로그램이 Remmina 서버에 연결하여 릴리스 정보를 다운로드 합니"
+"다. \n"
 "</span>\n"
 "\n"
 "<span>\n"
@@ -3232,15 +3257,15 @@ msgstr ""
 "</span>"
 
 #. The star (*) is a reference to privacy consent
-#: data/ui/remmina_news.glade:130 data/ui/remmina_preferences.glade:545
+#: data/ui/remmina_news.glade:130 data/ui/remmina_preferences.glade:461
 msgid ""
 "Send <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
 "remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
 "\">anonymous</a></b> statistics. (*)"
 msgstr ""
 "전송 <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-"remmina__stats_8c.html#details\" title=\"Remmina usage statistics\">익명</a></"
-"b> remmina.org에 사용량"
+"remmina__stats_8c.html#details\" title=\"Remmina usage statistics\">익명</"
+"a></b> remmina.org에 사용량"
 
 #: data/ui/remmina_news.glade:142 data/ui/remmina_news.glade:195
 msgid "Send anonymous statistics"
@@ -3259,19 +3284,21 @@ msgid "Allow Remmina to automatically open .rdp and .remmina files."
 msgstr "Remmina가 .rdp, .remmina 파일을 자동으로 열 수 있게 허용"
 
 #. The star (*) is a reference to privacy consent
-#: data/ui/remmina_news.glade:183 data/ui/remmina_preferences.glade:560
+#: data/ui/remmina_news.glade:183 data/ui/remmina_preferences.glade:476
 msgid ""
 "Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
 "\">remmina.org</a> (*)"
 msgstr ""
-"<a href=\"https://remmina.org\" title=\"Remmina 뉴스 사이트\"> remmina.org </a>에서 "
-"뉴스 가져 오기 (*)"
+"<a href=\"https://remmina.org\" title=\"Remmina 뉴스 사이트\"> remmina.org </"
+"a>에서 뉴스 가져 오기 (*)"
 
-#: data/ui/remmina_news.glade:208 data/ui/remmina_preferences.glade:527
+#: data/ui/remmina_news.glade:208 data/ui/remmina_preferences.glade:443
 msgid ""
 "* By enabling statistics and/or news you consent to send and fetch data to/"
 "from remmina.org"
-msgstr "* 통계, 또는 뉴스를 활성화하면 remmina.org와 데이터를 주고받는 데 동의하는 것입니다."
+msgstr ""
+"* 통계, 또는 뉴스를 활성화하면 remmina.org와 데이터를 주고받는 데 동의하는 것"
+"입니다."
 
 #: data/ui/remmina_news.glade:231
 msgid "<big>Take part</big>"
@@ -3288,9 +3315,9 @@ msgid ""
 "</span>\n"
 msgstr ""
 "<span>\n"
-"<b>카피 레프트인 리브레(libre) 소프트웨어를 사용하는 것이 좋습니다, <a href=\"https://remmina.org/"
-"donations/\" title=\"Awesome Remmina donations\">기부해 주세요</a>, 기부는 프로그램을 더 좋게 "
-"만들고 행복하게 합니다.</b>\n"
+"<b>카피 레프트인 리브레(libre) 소프트웨어를 사용하는 것이 좋습니다, <a href="
+"\"https://remmina.org/donations/\" title=\"Awesome Remmina donations\">기부"
+"해 주세요</a>, 기부는 프로그램을 더 좋게 만들고 행복하게 합니다.</b>\n"
 "</span>\n"
 
 #: data/ui/remmina_news.glade:277
@@ -3338,75 +3365,71 @@ msgctxt "Multi password changer table"
 msgid "Domain\\Username"
 msgstr "도메인\\사용자 이름"
 
-#: data/ui/remmina_preferences.glade:32
-msgid "Remmina Preferences"
-msgstr "레미나 환경 설정"
-
-#: data/ui/remmina_preferences.glade:95
+#: data/ui/remmina_preferences.glade:41
 msgid "Double-click action"
 msgstr "더블 클릭 동작"
 
-#: data/ui/remmina_preferences.glade:110
+#: data/ui/remmina_preferences.glade:57
 msgid "Open connection"
 msgstr "연결 시작"
 
-#: data/ui/remmina_preferences.glade:111
+#: data/ui/remmina_preferences.glade:58
 msgid "Edit settings"
 msgstr "설정 편집"
 
-#: data/ui/remmina_preferences.glade:127
+#: data/ui/remmina_preferences.glade:74
 msgid "Scaling quality"
 msgstr "크기조절 퀄리티"
 
-#: data/ui/remmina_preferences.glade:142
+#: data/ui/remmina_preferences.glade:90
 msgid "Nearest"
 msgstr "가장 가까운"
 
-#: data/ui/remmina_preferences.glade:143
+#: data/ui/remmina_preferences.glade:91
 msgid "Tiles"
 msgstr "타일"
 
-#: data/ui/remmina_preferences.glade:144
+#: data/ui/remmina_preferences.glade:92
 msgid "Bilinear"
 msgstr "이중선형(Bilinear)"
 
-#: data/ui/remmina_preferences.glade:145
+#: data/ui/remmina_preferences.glade:93
 msgid "Hyper"
 msgstr "하이퍼"
 
-#: data/ui/remmina_preferences.glade:161
+#: data/ui/remmina_preferences.glade:109
 msgid "Step size for auto-scroll"
 msgstr "자동 스크롤 단위 크기"
 
-#: data/ui/remmina_preferences.glade:191
+#: data/ui/remmina_preferences.glade:138
 msgid "Maximal amount of recent items"
 msgstr "최근 항목의 최대 수"
 
-#: data/ui/remmina_preferences.glade:236
+#: data/ui/remmina_preferences.glade:153
 msgid "Screen resolutions"
 msgstr "스크린 해상도"
 
-#: data/ui/remmina_preferences.glade:282
+#: data/ui/remmina_preferences.glade:198
 msgid "Folder for screenshots"
 msgstr "SSH 세션 로그 폴더"
 
-#: data/ui/remmina_preferences.glade:294
+#: data/ui/remmina_preferences.glade:210
 msgid "Choose a folder to save screenshots from Remmina in."
 msgstr "레미나의 스크린샷을 저장할 폴더를 선택하세요."
 
-#: data/ui/remmina_preferences.glade:298 data/ui/remmina_preferences.glade:383
+#: data/ui/remmina_preferences.glade:214 data/ui/remmina_preferences.glade:299
 msgid "Select a folder"
 msgstr "폴더 선택"
 
-#: data/ui/remmina_preferences.glade:309
+#: data/ui/remmina_preferences.glade:225
 msgid "Set up"
 msgstr "셋업"
 
-#: data/ui/remmina_preferences.glade:330
+#: data/ui/remmina_preferences.glade:246
 msgid "Screenshot filenames"
 msgstr "스크린샷 파일 이름"
 
-#: data/ui/remmina_preferences.glade:342
+#: data/ui/remmina_preferences.glade:258
 msgid ""
 "%p Profile name\n"
 "%h Server name/IP\n"
@@ -3416,42 +3439,44 @@ msgstr ""
 "%h 서버 이름/IP\n"
 "%Y 년, %m 월, %d 일, %H 시, %M 분, %S 초 (UTC 시간)\n"
 
-#: data/ui/remmina_preferences.glade:361
+#: data/ui/remmina_preferences.glade:277
 msgid ""
 "The folder connection profiles are saved in, it defaults to the XDG_USER_DATA"
 msgstr "연결 프로필이 저장되는 폴더의 기본 이름은 XDG_USER_DATA 입니다"
 
 #. The folder where profiles are saved
-#: data/ui/remmina_preferences.glade:366
+#: data/ui/remmina_preferences.glade:282
 msgid "Remmina data folder"
 msgstr "레미나 데이터 폴더"
 
-#: data/ui/remmina_preferences.glade:378
+#: data/ui/remmina_preferences.glade:294
 #, fuzzy
 #| msgid "Choose a folder to save screenshots from Remmina in."
 msgid "Choose a folder to save connection profiles from Remmina in."
 msgstr "레미나의 스크린샷을 저장할 폴더를 선택하세요."
 
-#: data/ui/remmina_preferences.glade:396
+#: data/ui/remmina_preferences.glade:312
 msgid "Remember last view for each connection"
 msgstr "개별 연결에 대한 마지막 뷰 모드 기억"
 
 #. The star (*) is a reference to privacy consent
-#: data/ui/remmina_preferences.glade:400
+#: data/ui/remmina_preferences.glade:316
 msgid "Remember last view mode"
 msgstr "마지막 뷰 모드 기억"
 
-#: data/ui/remmina_preferences.glade:440
+#: data/ui/remmina_preferences.glade:356
 msgid ""
 "Set a custom filename for your Remmina connection profiles, using a "
 "formatting string."
-msgstr "형식화된 문자열을 사용해서 레미나 연결 프로필의 사용자 정의 파일 이름을 설정하세요."
+msgstr ""
+"형식화된 문자열을 사용해서 레미나 연결 프로필의 사용자 정의 파일 이름을 설정"
+"하세요."
 
-#: data/ui/remmina_preferences.glade:444
+#: data/ui/remmina_preferences.glade:360
 msgid "Template for profile filenames"
 msgstr "프로필 파일 이름 템플릿"
 
-#: data/ui/remmina_preferences.glade:456
+#: data/ui/remmina_preferences.glade:372
 msgid ""
 "%G Group name (slash will be converted to - automatically)\n"
 "%P Protocol name\n"
@@ -3467,93 +3492,101 @@ msgstr ""
 "\n"
 "\n"
 
-#: data/ui/remmina_preferences.glade:478
+#: data/ui/remmina_preferences.glade:394
 msgid "Only save generated screenshots, don't copy them to clipboard."
 msgstr "생성한 스크린샷 만 저장하고, 클립 보드에 복사하지 않습니다."
 
-#: data/ui/remmina_preferences.glade:483
+#: data/ui/remmina_preferences.glade:399
 msgid "Prevent screenshots from entering clipboard"
 msgstr "스크린샷이 클립 보드에 추가되지 않도록 제한"
 
-#: data/ui/remmina_preferences.glade:576
+#: data/ui/remmina_preferences.glade:525
 msgid "Options"
 msgstr "옵션"
 
-#: data/ui/remmina_preferences.glade:592
+#: data/ui/remmina_preferences.glade:550
 msgid "Always show tabs"
 msgstr "항상 탭 보기"
 
-#: data/ui/remmina_preferences.glade:609
+#: data/ui/remmina_preferences.glade:566
 msgid "Hide the toolbar shown in the tabbed interface"
 msgstr "탭 인터페이스에 보이는 툴바 숨기기"
 
-#: data/ui/remmina_preferences.glade:630
+#: data/ui/remmina_preferences.glade:587
 msgid "Default view"
 msgstr "기본 뷰 모드"
 
-#: data/ui/remmina_preferences.glade:645
+#: data/ui/remmina_preferences.glade:601
 msgid "Automatic"
 msgstr "자동"
 
-#: data/ui/remmina_preferences.glade:646
+#: data/ui/remmina_preferences.glade:602
 msgid "Scrolled window"
 msgstr "스크롤 윈도"
 
-#: data/ui/remmina_preferences.glade:648
+#: data/ui/remmina_preferences.glade:604
 msgid "Viewport fullscreen"
 msgstr "전체 화면 뷰포트"
 
-#: data/ui/remmina_preferences.glade:664
-msgid "Tabs"
-msgstr "탭"
+#. How tabs are grouped in the Remmina connection window
+#: data/ui/remmina_preferences.glade:620
+msgctxt "Appearance preferences"
+msgid "Tabs grouping"
+msgstr ""
 
-#: data/ui/remmina_preferences.glade:680
+#: data/ui/remmina_preferences.glade:634
 msgid "By group"
 msgstr "그룹 별 탭"
 
-#: data/ui/remmina_preferences.glade:681
+#: data/ui/remmina_preferences.glade:635
 msgid "By protocol"
 msgstr "프로토콜 별 탭"
 
-#: data/ui/remmina_preferences.glade:682
+#: data/ui/remmina_preferences.glade:636
 msgid "Per connection"
 msgstr "연결 시작"
 
-#: data/ui/remmina_preferences.glade:694
+#: data/ui/remmina_preferences.glade:648
 msgid "Fullscreen on the same screen as the connection window"
 msgstr "연결 윈도와 같은 화면에서 전체 화면"
 
-#: data/ui/remmina_preferences.glade:718
+#: data/ui/remmina_preferences.glade:671
 msgid "Peeking"
 msgstr "피킹(peeking)"
 
-#: data/ui/remmina_preferences.glade:719
+#: data/ui/remmina_preferences.glade:672
 msgid "Hidden"
 msgstr "숨겨짐"
 
-#: data/ui/remmina_preferences.glade:735
+#: data/ui/remmina_preferences.glade:689
 msgid "Fullscreen toolbar visibility"
 msgstr "전체 화면 툴바 보이기"
 
-#: data/ui/remmina_preferences.glade:745
+#: data/ui/remmina_preferences.glade:699
 msgid "Hide the search bar shown in the main window"
 msgstr "메인 윈도에 보이는 검색 바 숨기기"
 
-#: data/ui/remmina_preferences.glade:762
+#: data/ui/remmina_preferences.glade:715
 msgid "Prefer dark theme"
 msgstr "어두운 테마 선호"
 
-#: data/ui/remmina_preferences.glade:766
+#: data/ui/remmina_preferences.glade:719
 msgid ""
 "If a GTK theme includes a dark variant, it will be used instead of the "
 "configured theme."
 msgstr "GTK 테마가 다크 모드를 포함한 경우, 설정한 테마 대신 사용됩니다."
 
-#: data/ui/remmina_preferences.glade:786
+#: data/ui/remmina_preferences.glade:739
 msgid "“Grab all keyboard events” status colour"
 msgstr "\"모든 키보드 이벤트 캐치\" 상태 색"
 
-#: data/ui/remmina_preferences.glade:797
+#: data/ui/remmina_preferences.glade:750
+#, fuzzy
+#| msgid "“Grab all keyboard events” status colour"
+msgid "Enable/Disable “Grab all keyboard events” status colour"
+msgstr "\"모든 키보드 이벤트 캐치\" 상태 색"
+
+#: data/ui/remmina_preferences.glade:765
 msgid ""
 "Hexadecimal- or colour names (red, #ff0000).\n"
 "It changes the background colour of connection names in the Remmina "
@@ -3562,15 +3595,15 @@ msgstr ""
 "16 진수 또는 색상 이름 (빨간색, #ff0000).\n"
 "전체 화면 일 때 remmina 연결 도구 모음에서 연결 이름 배경색을 변경합니다."
 
-#: data/ui/remmina_preferences.glade:833
+#: data/ui/remmina_preferences.glade:822
 msgid "Appearance"
 msgstr "외모"
 
-#: data/ui/remmina_preferences.glade:850
+#: data/ui/remmina_preferences.glade:848
 msgid "Show new connection on top of the menu"
 msgstr "메뉴 상단에 새 연결 보기"
 
-#: data/ui/remmina_preferences.glade:868
+#: data/ui/remmina_preferences.glade:867
 msgid "Hide total count shown in the group menu"
 msgstr "그룹 메뉴에 보이는 총 수 숨기기"
 
@@ -3582,317 +3615,324 @@ msgstr "트레이 아이콘 없음"
 msgid "Start in tray upon user login"
 msgstr "사용자 로그인시 트레이에서 시작"
 
-#: data/ui/remmina_preferences.glade:930
+#: data/ui/remmina_preferences.glade:934
 msgid "Applet"
 msgstr "애플릿"
 
-#: data/ui/remmina_preferences.glade:953
+#: data/ui/remmina_preferences.glade:967
 msgid "Host key"
 msgstr "호스트 키"
 
-#: data/ui/remmina_preferences.glade:984
+#: data/ui/remmina_preferences.glade:999
 msgid "Show/hide fullscreen"
 msgstr "전체 화면 모드 전환"
 
-#: data/ui/remmina_preferences.glade:1014
+#: data/ui/remmina_preferences.glade:1030
 msgid "Auto-fit window"
 msgstr "자동 맞춤 윈도"
 
-#: data/ui/remmina_preferences.glade:1087
+#: data/ui/remmina_preferences.glade:1106
 msgid "Apply/remove scaling"
 msgstr "크기 조절 적용/제거"
 
-#: data/ui/remmina_preferences.glade:1117
+#: data/ui/remmina_preferences.glade:1137
 msgid "Grab keyboard"
 msgstr "키보드 잡기"
 
-#: data/ui/remmina_preferences.glade:1207
+#: data/ui/remmina_preferences.glade:1230
 msgid "Show/hide toolbar"
 msgstr "툴바 보이기/숨기기"
 
-#: data/ui/remmina_preferences.glade:1268
-#: data/ui/remmina_preferences.glade:1278
+#: data/ui/remmina_preferences.glade:1293
+#: data/ui/remmina_preferences.glade:1303
 msgid "View-only mode"
 msgstr "뷰 전용 모드"
 
-#: data/ui/remmina_preferences.glade:1336
+#: data/ui/remmina_preferences.glade:1365
 msgid "Keyboard"
 msgstr "키보드"
 
-#: data/ui/remmina_preferences.glade:1357
+#: data/ui/remmina_preferences.glade:1396
 msgid "Local SSH port"
 msgstr "로컬 SSH 포트"
 
-#: data/ui/remmina_preferences.glade:1381
+#: data/ui/remmina_preferences.glade:1421
 msgid "Parse ~/.ssh/config"
 msgstr "Parse ~/.ssh/config"
 
-#: data/ui/remmina_preferences.glade:1405
+#: data/ui/remmina_preferences.glade:1446
 msgid "No logging at all"
 msgstr "로딩 데이터 없음"
 
-#: data/ui/remmina_preferences.glade:1406
+#: data/ui/remmina_preferences.glade:1447
 msgid "Rare conditions or warnings"
 msgstr "거의 발생하지 않는 조건 또는 경고"
 
-#: data/ui/remmina_preferences.glade:1407
+#: data/ui/remmina_preferences.glade:1448
 msgid "API-accessible entrypoints"
 msgstr "API 액세스 가능한 진입 점"
 
-#: data/ui/remmina_preferences.glade:1408
+#: data/ui/remmina_preferences.glade:1449
 msgid "Lower level protocol info, packet level"
 msgstr "패킷 수준의 하위 수준 프로토콜 정보"
 
-#: data/ui/remmina_preferences.glade:1409
+#: data/ui/remmina_preferences.glade:1450
 msgid "Function entering and leaving"
 msgstr "기능 실행 및 종료"
 
-#: data/ui/remmina_preferences.glade:1425
+#: data/ui/remmina_preferences.glade:1467
 msgid "SSH log level"
 msgstr "SSH 로그 레벨"
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1492
+#: data/ui/remmina_preferences.glade:1538
 msgid "Seconds of connection idleness before TCP keepalive probes are sent."
 msgstr "TCP keepalive probe 패킷이 전송되기 전의 연결 유휴 시간_초."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1508
+#: data/ui/remmina_preferences.glade:1555
 msgid "Seconds between each keepalive probe."
 msgstr "개별 keepalive probe 패킷 간격 시간_초."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1524
+#: data/ui/remmina_preferences.glade:1572
 msgid ""
 "Number of keepalive probes sent via TCP connection before it is dropped."
 msgstr "TCP 연결이 종료되기 전에 전송 된 keepalive probe 패킷 수."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1540
+#: data/ui/remmina_preferences.glade:1589
 msgid ""
 "Amount of milliseconds to attempt acknowledging data before closing the "
 "corresponding TCP connection forcibly."
-msgstr "TCP 연결을 강제로 종료하기 전에 데이터 수신을 확인하는 시간(밀리세컨드) 입니다."
+msgstr ""
+"TCP 연결을 강제로 종료하기 전에 데이터 수신을 확인하는 시간(밀리세컨드) 입니"
+"다."
 
-#: data/ui/remmina_preferences.glade:1563
+#: data/ui/remmina_preferences.glade:1616
 msgid "SSH options"
 msgstr "SSH 옵션"
 
-#: data/ui/remmina_preferences.glade:1601
-#: data/ui/remmina_preferences.glade:1617
+#: data/ui/remmina_preferences.glade:1644
+#: data/ui/remmina_preferences.glade:1713
 #: data/ui/remmina_preferences.glade:1783
 msgid "Use secret key authentication for some widgets"
 msgstr "일부 위젯에 비밀 키 인증 사용"
 
-#: data/ui/remmina_preferences.glade:1621
+#: data/ui/remmina_preferences.glade:1648
 msgid "Use master password"
 msgstr "마스터 비밀번호 사용"
 
-#: data/ui/remmina_preferences.glade:1634
+#: data/ui/remmina_preferences.glade:1661
 msgid "Automatic lock interval"
 msgstr "자동 잠금 간격"
 
-#: data/ui/remmina_preferences.glade:1645
-msgid "Master password validity in seconds"
-msgstr "초 단위의 마스터 비밀번호 유효"
-
-#: data/ui/remmina_preferences.glade:1666
-msgid "File encryption"
-msgstr "파일 암호화"
-
-#: data/ui/remmina_preferences.glade:1697
+#: data/ui/remmina_preferences.glade:1687
 msgid "Repeat the password"
 msgstr "비밀번호 입력"
 
-#: data/ui/remmina_preferences.glade:1751
-msgid "Fingerprints and certificates"
-msgstr "변경된 인증서를 허용하시겠습니까?"
-
-#: data/ui/remmina_preferences.glade:1766
+#: data/ui/remmina_preferences.glade:1698
 msgid "Automatically accept all fingerprints and certificates"
 msgstr "변경된 인증서를 허용하시겠습니까?"
 
-#: data/ui/remmina_preferences.glade:1772
+#: data/ui/remmina_preferences.glade:1702
 msgid "Trust all fingerprints and certificates"
 msgstr "변경된 인증서를 허용하시겠습니까?"
 
-#: data/ui/remmina_preferences.glade:1807
+#: data/ui/remmina_preferences.glade:1745
+msgid "Master password validity in seconds"
+msgstr "초 단위의 마스터 비밀번호 유효"
+
+#: data/ui/remmina_preferences.glade:1808
 msgid "Security"
 msgstr "보안"
 
-#: data/ui/remmina_preferences.glade:1830
+#: data/ui/remmina_preferences.glade:1839
 msgid "Terminal font"
 msgstr "터미널 폰트"
 
-#: data/ui/remmina_preferences.glade:1843
+#: data/ui/remmina_preferences.glade:1852
 msgid "Scrollback lines"
 msgstr "스크롤백 라인(Scrollback lines)"
 
-#: data/ui/remmina_preferences.glade:1910
-msgid "Shortcut for copying to clipboard"
+#: data/ui/remmina_preferences.glade:1900
+#, fuzzy
+#| msgid "Shortcut for copying to clipboard"
+msgid "Shortcuts for copying and pasting"
 msgstr "클립 보드로 복사하는 단축 키"
 
-#: data/ui/remmina_preferences.glade:1923
-msgid "Shortcut for pasting from clipboard"
-msgstr "클립보드에 붙여 넣기 단축 키"
-
-#: data/ui/remmina_preferences.glade:1936
+#: data/ui/remmina_preferences.glade:1913
 msgid "Select all shortcuts"
 msgstr "모든 단축 키 선택"
 
-#: data/ui/remmina_preferences.glade:1950
-#: data/ui/remmina_preferences.glade:1968
-#: data/ui/remmina_preferences.glade:1986
-#: data/ui/remmina_preferences.glade:2416
-#: data/ui/remmina_preferences.glade:2434
-#: data/ui/remmina_preferences.glade:2465
+#: data/ui/remmina_preferences.glade:1926
+#: data/ui/remmina_preferences.glade:1942
+#: data/ui/remmina_preferences.glade:2392
+#: data/ui/remmina_preferences.glade:2421
+#: data/ui/remmina_preferences.glade:2554
+#: data/ui/remmina_preferences.glade:2570
 msgid "(Host key+)"
 msgstr "(호스트 키 +)"
 
-#: data/ui/remmina_preferences.glade:2003
+#: data/ui/remmina_preferences.glade:1959
 msgid "Use default system font"
 msgstr "기본 시스템 글꼴 사용"
 
-#: data/ui/remmina_preferences.glade:2027
+#: data/ui/remmina_preferences.glade:1983
 msgid ""
 "Selecting “SGR 1” also switches to the bright counterparts of the first 8 "
 "palette colours (in addition to making text bold)."
-msgstr "\"SGR 1\"을 선택하면 처음 8개 팔레트 색상의 밝은 색상으로 전환됩니다 (텍스트를 굵게 표시하는 것 외에도)."
+msgstr ""
+"\"SGR 1\"을 선택하면 처음 8개 팔레트 색상의 밝은 색상으로 전환됩니다 (텍스트"
+"를 굵게 표시하는 것 외에도)."
 
-#: data/ui/remmina_preferences.glade:2042
+#: data/ui/remmina_preferences.glade:1999
 msgid "Allow using bright colours with bold text"
 msgstr "굵은 텍스트에 밝은 색상 사용 허용"
 
-#: data/ui/remmina_preferences.glade:2056
+#: data/ui/remmina_preferences.glade:2013
 msgid "Colour theme"
 msgstr "색 스키마 읽기"
 
-#: data/ui/remmina_preferences.glade:2067
+#: data/ui/remmina_preferences.glade:2024
 msgid ""
 "Choose a colour scheme file. Usually available in /usr/share/remmina/theme. "
 "https://github.com/mbadolato/iTerm2-Color-Schemes has more details."
 msgstr ""
-"색 스키마 파일을 선택하세요. 일반적으로 /usr/share/remmina/theme 에서 사용할 수 있습니다. 자세한 내용은 "
-"https://github.com/mbadolato/iTerm2-Color-Schemes 를 참고하세요."
+"색 스키마 파일을 선택하세요. 일반적으로 /usr/share/remmina/theme 에서 사용할 "
+"수 있습니다. 자세한 내용은 https://github.com/mbadolato/iTerm2-Color-Schemes "
+"를 참고하세요."
 
-#: data/ui/remmina_preferences.glade:2070
+#: data/ui/remmina_preferences.glade:2028
 msgid "Pick a terminal colouring file"
 msgstr "터미널 색 파일 선택"
 
-#: data/ui/remmina_preferences.glade:2085
+#: data/ui/remmina_preferences.glade:2042
 msgid "Bright colours"
 msgstr "밝은 색"
 
-#: data/ui/remmina_preferences.glade:2097
+#: data/ui/remmina_preferences.glade:2056
 msgid "Pick a light black colour"
 msgstr "블랙 라이트(light black) 색 선택"
 
-#: data/ui/remmina_preferences.glade:2109
+#: data/ui/remmina_preferences.glade:2070
 msgid "Pick a light red colour"
 msgstr "레드 라이트(light red) 색 선택"
 
-#: data/ui/remmina_preferences.glade:2121
+#: data/ui/remmina_preferences.glade:2084
 msgid "Pick a bright green colour"
 msgstr "밝은 녹 색 선택"
 
-#: data/ui/remmina_preferences.glade:2133
+#: data/ui/remmina_preferences.glade:2098
 msgid "Pick a bright yellow colour"
 msgstr "밝은 노란 색 선택"
 
-#: data/ui/remmina_preferences.glade:2145
+#: data/ui/remmina_preferences.glade:2112
 msgid "Pick a bright blue colour"
 msgstr "밝은 파란 색 선택"
 
-#: data/ui/remmina_preferences.glade:2157
+#: data/ui/remmina_preferences.glade:2126
 msgid "Pick a light magenta colour"
 msgstr "마젠타 라이트(light magenta) 색 선택"
 
-#: data/ui/remmina_preferences.glade:2169
+#: data/ui/remmina_preferences.glade:2140
 msgid "Pick a light cyan colour"
 msgstr "시안 라이트(light cyan) 색 선택"
 
-#: data/ui/remmina_preferences.glade:2182
+#: data/ui/remmina_preferences.glade:2154
 msgid "Pick a light white colour"
 msgstr "화이트 라이트(light white) 색 선택"
 
-#: data/ui/remmina_preferences.glade:2194
+#: data/ui/remmina_preferences.glade:2168
 msgid "Pick a black colour"
 msgstr "검은 색 선택"
 
-#: data/ui/remmina_preferences.glade:2206
+#: data/ui/remmina_preferences.glade:2182
 msgid "Pick a red colour"
 msgstr "붉은 색 선택"
 
-#: data/ui/remmina_preferences.glade:2218
+#: data/ui/remmina_preferences.glade:2196
 msgid "Pick a green colour"
 msgstr "녹 색 선택"
 
-#: data/ui/remmina_preferences.glade:2230
+#: data/ui/remmina_preferences.glade:2210
 msgid "Pick a yellow colour"
 msgstr "노란 색 선택"
 
-#: data/ui/remmina_preferences.glade:2242
+#: data/ui/remmina_preferences.glade:2224
 msgid "Pick a blue colour"
 msgstr "파란 색 선택"
 
-#: data/ui/remmina_preferences.glade:2254
+#: data/ui/remmina_preferences.glade:2238
 msgid "Pick a magenta colour"
 msgstr "마젠타(magenta) 색 선택"
 
-#: data/ui/remmina_preferences.glade:2266
+#: data/ui/remmina_preferences.glade:2252
 msgid "Pick a cyan colour"
 msgstr "시안(cyan) 색 선택"
 
-#: data/ui/remmina_preferences.glade:2279
+#: data/ui/remmina_preferences.glade:2266
 msgid "Pick a white colour"
 msgstr "흰 색 선택"
 
-#: data/ui/remmina_preferences.glade:2292
+#: data/ui/remmina_preferences.glade:2279
 msgid "Normal colours"
 msgstr "일반 색"
 
-#: data/ui/remmina_preferences.glade:2305
-#: data/ui/remmina_preferences.glade:2319
+#: data/ui/remmina_preferences.glade:2292
+#: data/ui/remmina_preferences.glade:2307
 msgid "Cursor colour"
 msgstr "커서 색"
 
-#: data/ui/remmina_preferences.glade:2333
-#: data/ui/remmina_preferences.glade:2347
+#: data/ui/remmina_preferences.glade:2321
+#: data/ui/remmina_preferences.glade:2336
 msgid "Background colour"
 msgstr "배경 색"
 
-#: data/ui/remmina_preferences.glade:2362
-#: data/ui/remmina_preferences.glade:2376
+#: data/ui/remmina_preferences.glade:2352
+#: data/ui/remmina_preferences.glade:2366
 msgid "Foreground colour"
 msgstr "전경 색"
 
-#: data/ui/remmina_preferences.glade:2451
-msgid "Search text"
+#: data/ui/remmina_preferences.glade:2379
+#, fuzzy
+#| msgid "Increase font size"
+msgid "Increase and decrease font size"
+msgstr "글자 크기 크게"
+
+#: data/ui/remmina_preferences.glade:2408
+#, fuzzy
+#| msgid "Search text"
+msgid "Search text shortcut"
 msgstr "텍스트 검색"
 
-#: data/ui/remmina_preferences.glade:2482
-#: data/ui/remmina_preferences.glade:2496
+#: data/ui/remmina_preferences.glade:2438
+#: data/ui/remmina_preferences.glade:2453
 msgid "Bold colour"
 msgstr "일반 색"
 
-#: data/ui/remmina_preferences.glade:2510
-#: data/ui/remmina_preferences.glade:2550
+#: data/ui/remmina_preferences.glade:2467
+#: data/ui/remmina_preferences.glade:2508
 msgid "Highlight colour"
 msgstr "하이라이트 색"
 
-#: data/ui/remmina_preferences.glade:2523
-#: data/ui/remmina_preferences.glade:2565
+#: data/ui/remmina_preferences.glade:2480
+#: data/ui/remmina_preferences.glade:2524
 msgid "Highlight foreground colour"
 msgstr "하이라이트 포그라운드 색"
 
-#: data/ui/remmina_preferences.glade:2536
-#: data/ui/remmina_preferences.glade:2580
+#: data/ui/remmina_preferences.glade:2493
+#: data/ui/remmina_preferences.glade:2540
 msgid "Cursor foreground colour"
 msgstr "포그라운드 커서 색"
 
-#: data/ui/remmina_preferences.glade:2599
+#: data/ui/remmina_preferences.glade:2594
 msgid "Terminal"
 msgstr "터미널"
+
+#: data/ui/remmina_preferences.glade:2608
+msgid "Remmina Preferences"
+msgstr "레미나 환경 설정"
 
 #: data/ui/remmina_string_list.glade:14 data/ui/remmina_string_list.glade:158
 msgid "Add"
@@ -3918,6 +3958,18 @@ msgstr "새 키 선택"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "새 키를 누르세요…"
+
+#~ msgid "Tabs"
+#~ msgstr "탭"
+
+#~ msgid "File encryption"
+#~ msgstr "파일 암호화"
+
+#~ msgid "Fingerprints and certificates"
+#~ msgstr "변경된 인증서를 허용하시겠습니까?"
+
+#~ msgid "Shortcut for pasting from clipboard"
+#~ msgstr "클립보드에 붙여 넣기 단축 키"
 
 #~ msgid "Show the Remmina changelog."
 #~ msgstr "Remmina 변경 로그 보기."

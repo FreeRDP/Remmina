@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-06-03 14:35+0000\n"
-"PO-Revision-Date: 2021-06-04 14:28+0000\n"
+"POT-Creation-Date: 2021-06-18 12:13+0000\n"
+"PO-Revision-Date: 2021-06-16 22:31+0000\n"
 "Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/remmina/remmina/"
 "fi/>\n"
@@ -80,8 +80,8 @@ msgstr "Yhdistetään kohteeseen ”%s”…"
 #: src/remmina_ssh_plugin.c:1369 src/remmina_sftp_plugin.c:310
 #: src/remmina_sftp_plugin.c:346 src/remmina_file_editor.c:846
 #: src/remmina_file_editor.c:967 plugins/www/www_plugin.c:880
-#: plugins/rdp/rdp_plugin.c:2600 data/ui/remmina_unlock.glade:116
-#: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1683
+#: plugins/rdp/rdp_plugin.c:2606 data/ui/remmina_unlock.glade:116
+#: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1674
 msgid "Password"
 msgstr "Salasana"
 
@@ -166,7 +166,7 @@ msgid "Recent lists cleared."
 msgstr "Viimeaikaisten luettelo tyhjennetty."
 
 #: src/remmina_pref_dialog.c:154 src/rcw.c:1950
-#: data/ui/remmina_preferences.glade:251 data/ui/remmina_preferences.glade:261
+#: data/ui/remmina_preferences.glade:168 data/ui/remmina_preferences.glade:178
 msgid "Keystrokes"
 msgstr "Painalluksia"
 
@@ -179,11 +179,11 @@ msgstr "Määritä näppäimistön painikkeet"
 msgid "libsodium >= 1.9.0 is required to use master password"
 msgstr "libsodium >= 1.9.0 vaaditaan pääsalasanan käyttämiseksi"
 
-#: src/remmina_pref_dialog.c:804
+#: src/remmina_pref_dialog.c:806
 msgid "Picking a terminal colouring file replaces the file: "
 msgstr "Valitse päätteen väritystiedosto"
 
-#: src/remmina_pref_dialog.c:808
+#: src/remmina_pref_dialog.c:810
 msgid ""
 "This file contains the \"Custom\" terminal colour scheme selectable from the "
 "\"Advanced\" tab of terminal connections and editable in the \"Terminal\" "
@@ -276,7 +276,7 @@ msgstr "Valitse kaikki"
 msgid "_Select all"
 msgstr "_Valitse kaikki"
 
-#: src/remmina_ssh_plugin.c:1451 data/ui/remmina_preferences.glade:2389
+#: src/remmina_ssh_plugin.c:1451
 msgid "Increase font size"
 msgstr "Suurenna fontin kokoa"
 
@@ -284,7 +284,7 @@ msgstr "Suurenna fontin kokoa"
 msgid "_Increase font size"
 msgstr "_Suurenna fontin kokoa"
 
-#: src/remmina_ssh_plugin.c:1452 data/ui/remmina_preferences.glade:2402
+#: src/remmina_ssh_plugin.c:1452
 msgid "Decrease font size"
 msgstr "Pienennä fontin kokoa"
 
@@ -307,14 +307,14 @@ msgstr "Todennustyyppi"
 
 #: src/remmina_ssh_plugin.c:1473 src/remmina_message_panel.c:330
 #: src/remmina_sftp_plugin.c:345 src/remmina_file_editor.c:961
-#: plugins/www/www_plugin.c:879 plugins/vnc/vnc_plugin.c:1942
-#: plugins/vnc/vnc_plugin.c:1962 plugins/rdp/rdp_plugin.c:2599
+#: plugins/www/www_plugin.c:879 plugins/vnc/vnc_plugin.c:1960
+#: plugins/vnc/vnc_plugin.c:1980 plugins/rdp/rdp_plugin.c:2605
 #: plugins/nx/nx_plugin.c:730 data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr "Käyttäjänimi"
 
-#: src/remmina_ssh_plugin.c:1474 plugins/vnc/vnc_plugin.c:1943
-#: plugins/vnc/vnc_plugin.c:1963 plugins/spice/spice_plugin.c:666
+#: src/remmina_ssh_plugin.c:1474 plugins/vnc/vnc_plugin.c:1961
+#: plugins/vnc/vnc_plugin.c:1981 plugins/spice/spice_plugin.c:666
 #: plugins/nx/nx_plugin.c:731
 msgid "User password"
 msgstr "Käyttäjän salasana"
@@ -329,7 +329,7 @@ msgid "Password to unlock private key"
 msgstr "Salasana avataksesi yksityisen avaimen"
 
 #: src/remmina_ssh_plugin.c:1480 plugins/xdmcp/xdmcp_plugin.c:370
-#: plugins/rdp/rdp_plugin.c:2639 plugins/nx/nx_plugin.c:734
+#: plugins/rdp/rdp_plugin.c:2646 plugins/nx/nx_plugin.c:734
 msgid "Start-up program"
 msgstr "Käynnistettävä ohjelma"
 
@@ -527,8 +527,8 @@ msgstr "Ylös"
 msgid "Go to parent folder"
 msgstr "Siirry yläkansioon"
 
-#: src/remmina_ftp_client.c:758 plugins/vnc/vnc_plugin.c:2000
-#: plugins/rdp/rdp_plugin.c:2683
+#: src/remmina_ftp_client.c:758 plugins/vnc/vnc_plugin.c:2019
+#: plugins/rdp/rdp_plugin.c:2690
 msgid "Refresh"
 msgstr "Päivitä"
 
@@ -573,11 +573,11 @@ msgstr "Ryhmä"
 msgid "Permission"
 msgstr "Oikeudet"
 
-#: src/remmina_ftp_client.c:990 plugins/rdp/rdp_plugin.c:2505
+#: src/remmina_ftp_client.c:990 plugins/rdp/rdp_plugin.c:2511
 msgid "Remote"
 msgstr "Etä"
 
-#: src/remmina_ftp_client.c:997 plugins/rdp/rdp_plugin.c:2504
+#: src/remmina_ftp_client.c:997 plugins/rdp/rdp_plugin.c:2510
 msgid "Local"
 msgstr "Paikallinen"
 
@@ -760,9 +760,9 @@ msgstr ""
 "Päivitääksesi käyttäjänimi ja salasana ja aseta Remmina-yhteysprofiilille "
 "erilainen resoluutiotila käytä:\n"
 "\n"
-"\techo \"username\\n"
-"apassword\" | remmina --update-profile /PATH/TO/FOO.remmina --set-option "
-"username --set-option resolution_mode=2 --set-option password\n"
+"\techo \"username\\napassword\" | remmina --update-profile /PATH/TO/FOO."
+"remmina --set-option username --set-option resolution_mode=2 --set-option "
+"password\n"
 
 #: src/remmina_icon.c:139
 msgid "Open Main Window"
@@ -795,7 +795,7 @@ msgstr "Remmina-sovelma"
 msgid "Connect to remote desktops through the applet menu"
 msgstr "Yhdistä etätyöpöytiin käyttäen sovelmavalikkoa"
 
-#: src/remmina_icon.c:476 src/remmina_icon.c:477 src/remmina_main.c:1334
+#: src/remmina_icon.c:476 src/remmina_icon.c:477 src/remmina_main.c:1333
 msgid "Remmina Remote Desktop Client"
 msgstr "Remmina-etätyöpöytäsovellus"
 
@@ -809,7 +809,7 @@ msgstr "Haluatko varmasti sulkea %i aktiivista yhteyttä nykyisessä ikkunassa?"
 msgid "Viewport fullscreen mode"
 msgstr "Näytä kokonäytön tilassa"
 
-#: src/rcw.c:1399 data/ui/remmina_preferences.glade:647
+#: src/rcw.c:1399 data/ui/remmina_preferences.glade:603
 msgid "Scrolled fullscreen"
 msgstr "Vieritetty koko näyttö"
 
@@ -849,8 +849,8 @@ msgstr "Muuta ikkunan koko vastaamaan etäpään resoluutiota"
 msgid "Toggle fullscreen mode"
 msgstr "Koko näytön tila päälle/pois"
 
-#: src/rcw.c:2295 data/ui/remmina_preferences.glade:1300
-#: data/ui/remmina_preferences.glade:1310
+#: src/rcw.c:2295 data/ui/remmina_preferences.glade:1326
+#: data/ui/remmina_preferences.glade:1336
 msgid "Multi monitor"
 msgstr "Moninäyttö"
 
@@ -862,7 +862,7 @@ msgstr "Vaihda dynaamisen resoluution päivitystä"
 msgid "Toggle scaled mode"
 msgstr "Skaalattu tila päällä/pois"
 
-#: src/rcw.c:2361 data/ui/remmina_preferences.glade:1044
+#: src/rcw.c:2361 data/ui/remmina_preferences.glade:1061
 msgid "Switch tab pages"
 msgstr "Vaihtaa välilehtien sivuja"
 
@@ -882,16 +882,16 @@ msgstr "_Työkalut"
 msgid "Tools"
 msgstr "Työkalut"
 
-#: src/rcw.c:2404 data/ui/remmina_preferences.glade:1237
-#: data/ui/remmina_preferences.glade:1247
+#: src/rcw.c:2404 data/ui/remmina_preferences.glade:1261
+#: data/ui/remmina_preferences.glade:1271
 msgid "Screenshot"
 msgstr "Kuvakaappaus"
 
-#: src/rcw.c:2418 data/ui/remmina_preferences.glade:1147
+#: src/rcw.c:2418 data/ui/remmina_preferences.glade:1168
 msgid "Minimize window"
 msgstr "Pienennä ikkuna"
 
-#: src/rcw.c:2428 data/ui/remmina_preferences.glade:1177
+#: src/rcw.c:2428 data/ui/remmina_preferences.glade:1199
 msgid "Disconnect"
 msgstr "Katkaise yhteys"
 
@@ -967,7 +967,7 @@ msgstr[1] "Yhteensä %i kohdetta."
 msgid "Are you sure you want to delete “%s”?"
 msgstr "Haluatko varmasti poistaa \"%s\"?"
 
-#: src/remmina_main.c:975
+#: src/remmina_main.c:974
 #, c-format
 msgid ""
 "Unable to import:\n"
@@ -976,19 +976,19 @@ msgstr ""
 "Tuonti ei onnistunut:\n"
 "%s"
 
-#: src/remmina_main.c:1001 data/ui/remmina_main.glade:285
+#: src/remmina_main.c:1000 data/ui/remmina_main.glade:285
 msgid "Import"
 msgstr "Tuo"
 
-#: src/remmina_main.c:1024 src/remmina_file_editor.c:1373
+#: src/remmina_main.c:1023 src/remmina_file_editor.c:1373
 msgid "_Save"
 msgstr "_Tallenna"
 
-#: src/remmina_main.c:1030
+#: src/remmina_main.c:1029
 msgid "This protocol does not support exporting."
 msgstr "Tämä protokolla ei tue vientiä."
 
-#: src/remmina_main.c:1336
+#: src/remmina_main.c:1335
 msgid "Remmina Kiosk"
 msgstr "Remmina-kioski"
 
@@ -1114,7 +1114,7 @@ msgid "Cancel"
 msgstr "Peru"
 
 #: src/remmina_message_panel.c:199 data/ui/remmina_snap_info_dialog.glade:28
-#: data/ui/remmina_news.glade:33 data/ui/remmina_preferences.glade:51
+#: data/ui/remmina_news.glade:33 data/ui/remmina_preferences.glade:2612
 #: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
 #: data/ui/remmina_string_list.glade:63
 msgid "Close"
@@ -1128,7 +1128,7 @@ msgstr "Kyllä"
 msgid "No"
 msgstr "Ei"
 
-#: src/remmina_message_panel.c:391 plugins/rdp/rdp_plugin.c:2601
+#: src/remmina_message_panel.c:391 plugins/rdp/rdp_plugin.c:2607
 #: data/ui/remmina_mpc.glade:172
 msgid "Domain"
 msgstr "Verkkoalue"
@@ -1238,7 +1238,8 @@ msgstr ""
 #: src/remmina_ssh.c:570 src/remmina_ssh.c:857
 #, c-format
 msgid "Could not authenticate with SSH GSSAPI/Kerberos. %s"
-msgstr "Todennusta ei voitu todentaa SSH-Kerberos/GSSAPI-todennuksen avulla. %s"
+msgstr ""
+"Todennusta ei voitu todentaa SSH-Kerberos/GSSAPI-todennuksen avulla. %s"
 
 #: src/remmina_ssh.c:599
 msgid "The public SSH key changed!"
@@ -1603,7 +1604,7 @@ msgstr "Tunneli loopback-osoitteen kautta"
 msgid "Same server at port %i"
 msgstr "Sama palvelin portissa %i"
 
-#: src/remmina_file_editor.c:938 plugins/rdp/rdp_plugin.c:2640
+#: src/remmina_file_editor.c:938 plugins/rdp/rdp_plugin.c:2647
 msgid "Start-up path"
 msgstr "Käynnistyspolku"
 
@@ -1697,7 +1698,7 @@ msgstr "Todennustyyppi"
 msgid "Authentication failure: %s"
 msgstr "Todennustyyppi"
 
-#: plugins/gvnc/gvnc_plugin.c:539 plugins/vnc/vnc_plugin.c:820
+#: plugins/gvnc/gvnc_plugin.c:539 plugins/vnc/vnc_plugin.c:825
 msgid "Enter VNC authentication credentials"
 msgstr "Syötä NX-todennustiedot"
 
@@ -1737,9 +1738,9 @@ msgstr "True colour (24 bit)"
 msgid "VNC password"
 msgstr "Anna VNC-salasana"
 
-#: plugins/gvnc/gvnc_plugin.c:840 plugins/vnc/vnc_plugin.c:1944
-#: plugins/vnc/vnc_plugin.c:1964 plugins/xdmcp/xdmcp_plugin.c:369
-#: plugins/rdp/rdp_plugin.c:2607
+#: plugins/gvnc/gvnc_plugin.c:840 plugins/vnc/vnc_plugin.c:1962
+#: plugins/vnc/vnc_plugin.c:1982 plugins/xdmcp/xdmcp_plugin.c:369
+#: plugins/rdp/rdp_plugin.c:2614
 msgid "Colour depth"
 msgstr "Värisyvyys"
 
@@ -1765,12 +1766,12 @@ msgid "No clipboard sync"
 msgstr "Estä leikepöytien synkronointi"
 
 #: plugins/gvnc/gvnc_plugin.c:858 plugins/www/www_plugin.c:904
-#: plugins/vnc/vnc_plugin.c:1987 plugins/spice/spice_plugin.c:694
-#: plugins/rdp/rdp_plugin.c:2661 plugins/nx/nx_plugin.c:752
+#: plugins/vnc/vnc_plugin.c:2005 plugins/spice/spice_plugin.c:694
+#: plugins/rdp/rdp_plugin.c:2668 plugins/nx/nx_plugin.c:752
 msgid "Forget passwords after use"
 msgstr "Unohda salasanat käytön jälkeen"
 
-#: plugins/gvnc/gvnc_plugin.c:859 plugins/vnc/vnc_plugin.c:1986
+#: plugins/gvnc/gvnc_plugin.c:859 plugins/vnc/vnc_plugin.c:2004
 msgid "Ignore remote bell messages"
 msgstr ""
 
@@ -1779,7 +1780,7 @@ msgid "Enable audio channel"
 msgstr "Ota äänikanava käyttöön"
 
 #: plugins/gvnc/gvnc_plugin.c:861 plugins/gvnc/gvnc_plugin.c:870
-#: plugins/vnc/vnc_plugin.c:1982 plugins/vnc/vnc_plugin.c:1998
+#: plugins/vnc/vnc_plugin.c:2000 plugins/vnc/vnc_plugin.c:2017
 #: plugins/spice/spice_plugin.c:697 plugins/spice/spice_plugin.c:705
 msgid "View only"
 msgstr "Näytä vain"
@@ -1967,70 +1968,70 @@ msgstr "Suojattu salasana, joka tallennetaan GNOME-avainrenkaaseen"
 msgid "Hello, World!"
 msgstr "Hei, maailma!"
 
-#: plugins/vnc/vnc_plugin.c:767
+#: plugins/vnc/vnc_plugin.c:772
 msgid "Enter VNC password"
 msgstr "Anna VNC-salasana"
 
-#: plugins/vnc/vnc_plugin.c:931
+#: plugins/vnc/vnc_plugin.c:936
 msgid "Unable to connect to VNC server"
 msgstr "Yhdistäminen VNC-palvelimeen ei onnistu"
 
-#: plugins/vnc/vnc_plugin.c:932
+#: plugins/vnc/vnc_plugin.c:937
 #, c-format
 msgid "Couldn’t convert '%s' to host address"
 msgstr "Kohteen %s muuntaminen isäntäosoitteeksi epäonnistui"
 
-#: plugins/vnc/vnc_plugin.c:933
+#: plugins/vnc/vnc_plugin.c:938
 #, c-format
 msgid "VNC connection failed: %s"
 msgstr "VNC-yhteys epäonnistui: %s"
 
-#: plugins/vnc/vnc_plugin.c:934
+#: plugins/vnc/vnc_plugin.c:939
 msgid "Your connection has been rejected."
 msgstr "Yhteytesi on hylätty."
 
-#: plugins/vnc/vnc_plugin.c:960
+#: plugins/vnc/vnc_plugin.c:966
 #, c-format
 msgid "The VNC server requested an unknown authentication method. %s"
 msgstr "VNC-palvelin pyysi tuntematonta todennusmenetelmää. %s"
 
-#: plugins/vnc/vnc_plugin.c:962
+#: plugins/vnc/vnc_plugin.c:968
 msgid "Please retry after turning on encryption for this profile."
 msgstr "Yritä uudelleen, kun salaus on otettu käyttöön tässä profiilissa."
 
-#: plugins/vnc/vnc_plugin.c:1904 plugins/rdp/rdp_plugin.c:2454
+#: plugins/vnc/vnc_plugin.c:1922 plugins/rdp/rdp_plugin.c:2460
 msgid "True colour (32 bpp)"
 msgstr "True colour (32 bpp)"
 
-#: plugins/vnc/vnc_plugin.c:1905 plugins/rdp/rdp_plugin.c:2456
+#: plugins/vnc/vnc_plugin.c:1923 plugins/rdp/rdp_plugin.c:2462
 msgid "High colour (16 bpp)"
 msgstr "High colour (16 bpp)"
 
-#: plugins/vnc/vnc_plugin.c:1906 plugins/rdp/rdp_plugin.c:2458
+#: plugins/vnc/vnc_plugin.c:1924 plugins/rdp/rdp_plugin.c:2464
 msgid "256 colours (8 bpp)"
 msgstr "256 väriä (8 bpp)"
 
-#: plugins/vnc/vnc_plugin.c:1913 plugins/rdp/rdp_plugin.c:2481
-#: plugins/rdp/rdp_settings.c:271 plugins/nx/nx_plugin.c:712
+#: plugins/vnc/vnc_plugin.c:1931 plugins/rdp/rdp_plugin.c:2487
+#: plugins/rdp/rdp_settings.c:270 plugins/nx/nx_plugin.c:712
 msgid "Good"
 msgstr "Hyvä"
 
-#: plugins/vnc/vnc_plugin.c:1914 plugins/rdp/rdp_plugin.c:2482
-#: plugins/rdp/rdp_settings.c:273 plugins/nx/nx_plugin.c:713
+#: plugins/vnc/vnc_plugin.c:1932 plugins/rdp/rdp_plugin.c:2488
+#: plugins/rdp/rdp_settings.c:272 plugins/nx/nx_plugin.c:713
 msgid "Best (slowest)"
 msgstr "Paras (hitain)"
 
-#: plugins/vnc/vnc_plugin.c:1915 plugins/rdp/rdp_plugin.c:2480
-#: plugins/rdp/rdp_settings.c:269 plugins/nx/nx_plugin.c:711
+#: plugins/vnc/vnc_plugin.c:1933 plugins/rdp/rdp_plugin.c:2486
+#: plugins/rdp/rdp_settings.c:268 plugins/nx/nx_plugin.c:711
 msgid "Medium"
 msgstr "Keskitaso"
 
-#: plugins/vnc/vnc_plugin.c:1916 plugins/rdp/rdp_plugin.c:2479
-#: plugins/rdp/rdp_settings.c:267 plugins/nx/nx_plugin.c:710
+#: plugins/vnc/vnc_plugin.c:1934 plugins/rdp/rdp_plugin.c:2485
+#: plugins/rdp/rdp_settings.c:266 plugins/nx/nx_plugin.c:710
 msgid "Poor (fastest)"
 msgstr "Heikko (nopein)"
 
-#: plugins/vnc/vnc_plugin.c:1921
+#: plugins/vnc/vnc_plugin.c:1939
 msgid ""
 "Connect to VNC using a repeater:\n"
 "  • The server field must contain the repeater ID, e.g. ID:123456789\n"
@@ -2041,41 +2042,48 @@ msgid ""
 "    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
 msgstr ""
 
-#: plugins/vnc/vnc_plugin.c:1941
+#: plugins/vnc/vnc_plugin.c:1959
 msgid "Repeater"
 msgstr "Toistin"
 
-#: plugins/vnc/vnc_plugin.c:1945 plugins/vnc/vnc_plugin.c:1965
-#: plugins/rdp/rdp_plugin.c:2624 plugins/nx/nx_plugin.c:733
+#: plugins/vnc/vnc_plugin.c:1963 plugins/vnc/vnc_plugin.c:1983
+#: plugins/rdp/rdp_plugin.c:2631 plugins/nx/nx_plugin.c:733
 msgid "Quality"
 msgstr "Laatu"
 
-#: plugins/vnc/vnc_plugin.c:1961
+#: plugins/vnc/vnc_plugin.c:1979
 msgid "Listen on port"
 msgstr "Kuuntele portissa"
 
-#: plugins/vnc/vnc_plugin.c:1981
+#: plugins/vnc/vnc_plugin.c:1999
 msgid "Show remote cursor"
 msgstr "Näytä etäpään kohdistin"
 
-#: plugins/vnc/vnc_plugin.c:1983 plugins/rdp/rdp_plugin.c:2658
+#: plugins/vnc/vnc_plugin.c:2001 plugins/rdp/rdp_plugin.c:2665
 msgid "Turn off clipboard sync"
 msgstr "Estä leikepöytien synkronointi"
 
-#: plugins/vnc/vnc_plugin.c:1984
+#: plugins/vnc/vnc_plugin.c:2002
 msgid "Turn off encryption"
 msgstr "Käytä TLS-salausta"
 
-#: plugins/vnc/vnc_plugin.c:1985 plugins/vnc/vnc_plugin.c:1999
+#: plugins/vnc/vnc_plugin.c:2003 plugins/vnc/vnc_plugin.c:2018
 msgid "Prevent local interaction on the server"
 msgstr "Estä paikallinen vuorovaikutus palvelimella"
 
-#: plugins/vnc/vnc_plugin.c:2001
+#: plugins/vnc/vnc_plugin.c:2006 plugins/rdp/rdp_plugin.c:2609
+#: plugins/rdp/rdp_settings.c:594
+#, fuzzy
+#| msgid "Turn on smooth scrolling"
+msgid "Disable smooth scrolling"
+msgstr "Ota tasainen vieritys käyttöön"
+
+#: plugins/vnc/vnc_plugin.c:2020
 msgid "Open Chat…"
 msgstr "Avaa keskustelu…"
 
-#: plugins/vnc/vnc_plugin.c:2002 plugins/spice/spice_plugin.c:707
-#: plugins/xdmcp/xdmcp_plugin.c:381 plugins/rdp/rdp_plugin.c:2687
+#: plugins/vnc/vnc_plugin.c:2021 plugins/spice/spice_plugin.c:707
+#: plugins/xdmcp/xdmcp_plugin.c:381 plugins/rdp/rdp_plugin.c:2694
 msgid "Send Ctrl+Alt+Delete"
 msgstr "Lähetä Ctrl+Alt+Delete"
 
@@ -2121,8 +2129,8 @@ msgstr "Yhteys SPICE-palvelimeen epäonnistui."
 msgid "Default"
 msgstr "Oletus"
 
-#: plugins/spice/spice_plugin.c:635 plugins/rdp/rdp_plugin.c:2503
-#: data/ui/remmina_preferences.glade:720
+#: plugins/spice/spice_plugin.c:635 plugins/rdp/rdp_plugin.c:2509
+#: data/ui/remmina_preferences.glade:673
 msgid "Off"
 msgstr "Pois"
 
@@ -2136,7 +2144,8 @@ msgstr "Auto-LZ"
 
 #: plugins/spice/spice_plugin.c:650
 msgid "Disable video overlay if videos are not displayed properly.\n"
-msgstr "Poista videoiden peittokuva käytöstä, jos videoita ei näytetä oikein.\n"
+msgstr ""
+"Poista videoiden peittokuva käytöstä, jos videoita ei näytetä oikein.\n"
 
 #: plugins/spice/spice_plugin.c:667
 msgid "Use TLS encryption"
@@ -2146,7 +2155,7 @@ msgstr "Käytä TLS-salausta"
 msgid "Server CA certificate"
 msgstr "Palvelimen CA-varmenne"
 
-#: plugins/spice/spice_plugin.c:669 plugins/rdp/rdp_plugin.c:2609
+#: plugins/spice/spice_plugin.c:669 plugins/rdp/rdp_plugin.c:2616
 msgid "Share folder"
 msgstr "Jaa kansio"
 
@@ -2253,15 +2262,15 @@ msgstr "Irrotettu ikkuna"
 msgid "Remmina simple terminal"
 msgstr "Remminan yksinkertainen pääte"
 
-#: plugins/rdp/rdp_plugin.c:735 plugins/rdp/rdp_plugin.c:800
+#: plugins/rdp/rdp_plugin.c:736 plugins/rdp/rdp_plugin.c:801
 msgid "Enter RDP authentication credentials"
 msgstr "Syötä RDP-kirjautumistiedot"
 
-#: plugins/rdp/rdp_plugin.c:808
+#: plugins/rdp/rdp_plugin.c:809
 msgid "Enter RDP gateway authentication credentials"
 msgstr "Syötä RDP-yhdyskäytävän kirjautumistiedot"
 
-#: plugins/rdp/rdp_plugin.c:2020
+#: plugins/rdp/rdp_plugin.c:2024
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2270,7 +2279,7 @@ msgstr ""
 "Pääsy RDP-palvelimeen \"%s\" epäonnistui.\n"
 "Tili on lukittu."
 
-#: plugins/rdp/rdp_plugin.c:2027
+#: plugins/rdp/rdp_plugin.c:2031
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2279,7 +2288,7 @@ msgstr ""
 "Pääsy RDP-palvelimeen \"%s\" epäonnistui.\n"
 "Tili on vanhentunut."
 
-#: plugins/rdp/rdp_plugin.c:2034
+#: plugins/rdp/rdp_plugin.c:2038
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2288,7 +2297,7 @@ msgstr ""
 "Pääsy RDP-palvelimeen \"%s\" epäonnistui.\n"
 "Salasana on vanhentunut."
 
-#: plugins/rdp/rdp_plugin.c:2041
+#: plugins/rdp/rdp_plugin.c:2045
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2297,7 +2306,7 @@ msgstr ""
 "Pääsy RDP-palvelimeen \"%s\" epäonnistui.\n"
 "Tili on poistettu käytöstä."
 
-#: plugins/rdp/rdp_plugin.c:2047
+#: plugins/rdp/rdp_plugin.c:2051
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2306,7 +2315,7 @@ msgstr ""
 "Pääsy RDP-palvelimeen \"%s\" epäonnistui. \n"
 "Käyttäjällä ei ole riittävästi oikeuksia."
 
-#: plugins/rdp/rdp_plugin.c:2055
+#: plugins/rdp/rdp_plugin.c:2059
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2315,7 +2324,7 @@ msgstr ""
 "Pääsy RDP-palvelimeen \"%s\" epäonnistui.\n"
 "Tilillä on rajoituksia."
 
-#: plugins/rdp/rdp_plugin.c:2063
+#: plugins/rdp/rdp_plugin.c:2067
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2324,17 +2333,17 @@ msgstr ""
 "Pääsy RDP-palvelimeen \"%s\" epäonnistui.\n"
 "Käyttäjän on vaihdettava salasana ennen yhteyden muodostamista."
 
-#: plugins/rdp/rdp_plugin.c:2068
+#: plugins/rdp/rdp_plugin.c:2072
 #, c-format
 msgid "Lost connection to the RDP server “%s”."
 msgstr "Yhteyden muodostaminen RDP-palvelimeen \"%s\" ei onnistunut."
 
-#: plugins/rdp/rdp_plugin.c:2071
+#: plugins/rdp/rdp_plugin.c:2075
 #, c-format
 msgid "Could not find the address for the RDP server “%s”."
 msgstr "RDP-palvelimen osoitetta \"%s\" ei löytynyt."
 
-#: plugins/rdp/rdp_plugin.c:2075
+#: plugins/rdp/rdp_plugin.c:2079
 #, c-format
 msgid ""
 "Could not connect to the RDP server “%s” via TLS. Check that client and "
@@ -2344,7 +2353,7 @@ msgstr ""
 "asiakas ja palvelin tukevat yhteistä TLS-versiota."
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
-#: plugins/rdp/rdp_plugin.c:2079
+#: plugins/rdp/rdp_plugin.c:2083
 #, c-format
 msgid ""
 "Unable to establish a connection to the RDP server “%s”. Check \"Security "
@@ -2353,16 +2362,16 @@ msgstr ""
 "Yhteyttä RDP-palvelimeen ei voi luoda. Valitse \"Tarkista Suojausprotokollan "
 "neuvottelu\" \"%s\"."
 
-#: plugins/rdp/rdp_plugin.c:2087
+#: plugins/rdp/rdp_plugin.c:2091
 #, c-format
 msgid "Cannot connect to the RDP server “%s”."
 msgstr "Yhteyden muodostaminen RDP-palvelimeen \"%s\" ei onnistunut."
 
-#: plugins/rdp/rdp_plugin.c:2090
+#: plugins/rdp/rdp_plugin.c:2094
 msgid "Could not start libfreerdp-gdi."
 msgstr "Ei voitu käynnistää libfreerdp-gdi:tä."
 
-#: plugins/rdp/rdp_plugin.c:2093
+#: plugins/rdp/rdp_plugin.c:2097
 #, c-format
 msgid ""
 "You requested a H.264 GFX mode for the server “%s”, but your libfreerdp does "
@@ -2371,12 +2380,12 @@ msgstr ""
 "Pyysit H.264 GFX -tilaa palvelimelle \"%s\", mutta käytössäsi oleva "
 "libfreerdp ei tue H.264:aa. Käytä muuta kuin AVC-värisyvyysasetusta."
 
-#: plugins/rdp/rdp_plugin.c:2100
+#: plugins/rdp/rdp_plugin.c:2104
 #, c-format
 msgid "The “%s” server refused the connection."
 msgstr "Palvelin \"%s\" esti yhteyden."
 
-#: plugins/rdp/rdp_plugin.c:2105
+#: plugins/rdp/rdp_plugin.c:2109
 #, c-format
 msgid ""
 "The Remote Desktop Gateway “%s” denied the user \"%s\\%s\" access due to "
@@ -2385,100 +2394,100 @@ msgstr ""
 "Etätyöpöytäyhdyskäytävä \"%s\" esti käyttäjän \"%s\\%s\" pääsyn käytännön "
 "toimesta."
 
-#: plugins/rdp/rdp_plugin.c:2115
+#: plugins/rdp/rdp_plugin.c:2119
 #, c-format
 msgid "Cannot connect to the “%s” RDP server."
 msgstr "Yhteyden muodostaminen RDP-palvelimeen \"%s\" ei onnistu."
 
-#: plugins/rdp/rdp_plugin.c:2448
+#: plugins/rdp/rdp_plugin.c:2454
 msgid "Automatic (32 bpp) (Server chooses its best format)"
 msgstr "Automaattinen (32 bpp) (Palvelin valitsee parhaan muodon)"
 
-#: plugins/rdp/rdp_plugin.c:2449
+#: plugins/rdp/rdp_plugin.c:2455
 msgid "GFX AVC444 (32 bpp)"
 msgstr "GFX AVC444 (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2450
+#: plugins/rdp/rdp_plugin.c:2456
 msgid "GFX AVC420 (32 bpp)"
 msgstr "GFX AVC420 (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2451
+#: plugins/rdp/rdp_plugin.c:2457
 msgid "GFX RFX (32 bpp)"
 msgstr "GFX RFX (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2452
+#: plugins/rdp/rdp_plugin.c:2458
 msgid "GFX RFX Progressive (32 bpp)"
 msgstr "GFX RFX (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2453
+#: plugins/rdp/rdp_plugin.c:2459
 msgid "RemoteFX (32 bpp)"
 msgstr "RemoteFX (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2455
+#: plugins/rdp/rdp_plugin.c:2461
 msgid "True colour (24 bpp)"
 msgstr "True colour (24 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2457
+#: plugins/rdp/rdp_plugin.c:2463
 msgid "High colour (15 bpp)"
 msgstr "High colour (15 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2489 data/ui/remmina_preferences.glade:683
+#: plugins/rdp/rdp_plugin.c:2495 data/ui/remmina_preferences.glade:637
 msgid "None"
 msgstr "Ei mitään"
 
-#: plugins/rdp/rdp_plugin.c:2490
+#: plugins/rdp/rdp_plugin.c:2496
 msgid "Auto-detect"
 msgstr "<Havaitse automaattisesti>"
 
-#: plugins/rdp/rdp_plugin.c:2491
+#: plugins/rdp/rdp_plugin.c:2497
 msgid "Modem"
 msgstr "Modeemi"
 
-#: plugins/rdp/rdp_plugin.c:2492
+#: plugins/rdp/rdp_plugin.c:2498
 msgid "Low performance broadband"
 msgstr "Matala suorituskykyinen laajakaista"
 
-#: plugins/rdp/rdp_plugin.c:2493
+#: plugins/rdp/rdp_plugin.c:2499
 msgid "Satellite"
 msgstr "Satelliitti"
 
-#: plugins/rdp/rdp_plugin.c:2494
+#: plugins/rdp/rdp_plugin.c:2500
 msgid "High performance broadband"
 msgstr "Korkea suorituskykyinen laajakaista"
 
-#: plugins/rdp/rdp_plugin.c:2495
+#: plugins/rdp/rdp_plugin.c:2501
 msgid "WAN"
 msgstr "WAN"
 
-#: plugins/rdp/rdp_plugin.c:2496
+#: plugins/rdp/rdp_plugin.c:2502
 msgid "LAN"
 msgstr "LAN"
 
-#: plugins/rdp/rdp_plugin.c:2512
+#: plugins/rdp/rdp_plugin.c:2518
 msgid "Automatic negotiation"
 msgstr "Neuvottele automaattisesti"
 
-#: plugins/rdp/rdp_plugin.c:2513
+#: plugins/rdp/rdp_plugin.c:2519
 msgid "NLA protocol security"
 msgstr "NLA-protokollan turvallisuus"
 
-#: plugins/rdp/rdp_plugin.c:2514
+#: plugins/rdp/rdp_plugin.c:2520
 msgid "TLS protocol security"
 msgstr "TLS-protokollan turvallisuus"
 
-#: plugins/rdp/rdp_plugin.c:2515
+#: plugins/rdp/rdp_plugin.c:2521
 msgid "RDP protocol security"
 msgstr "RDP-protokollan turvallisuus"
 
-#: plugins/rdp/rdp_plugin.c:2516
+#: plugins/rdp/rdp_plugin.c:2522
 msgid "NLA extended protocol security"
 msgstr "NLA:n laajennetun protokollan turvallisuus"
 
-#: plugins/rdp/rdp_plugin.c:2529
+#: plugins/rdp/rdp_plugin.c:2535
 msgid "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 and newer)"
 msgstr "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 ja uudempi)"
 
-#: plugins/rdp/rdp_plugin.c:2532
+#: plugins/rdp/rdp_plugin.c:2538
 msgid ""
 "Used i.a. by terminal services in a smart card channel to distinguish client "
 "capabilities:\n"
@@ -2496,7 +2505,7 @@ msgstr ""
 "  • >= 7065: Windows 8 ja uudempi: SCardGetReaderIcon(), "
 "SCardGetDeviceTypeId()"
 
-#: plugins/rdp/rdp_plugin.c:2540
+#: plugins/rdp/rdp_plugin.c:2546
 msgid ""
 "Options for redirection of audio input:\n"
 "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
@@ -2514,7 +2523,7 @@ msgstr ""
 "  • sys:oss,dev:1,format:1\n"
 "  • sys:alsa"
 
-#: plugins/rdp/rdp_plugin.c:2549
+#: plugins/rdp/rdp_plugin.c:2555
 msgid ""
 "Options for redirection of audio output:\n"
 "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
@@ -2532,7 +2541,7 @@ msgstr ""
 "  • sys:oss,dev:1,format:1\n"
 "  • sys:alsa"
 
-#: plugins/rdp/rdp_plugin.c:2559
+#: plugins/rdp/rdp_plugin.c:2565
 msgid ""
 "Options for redirection of USB device:\n"
 "  • [dbg,][id:<vid>:<pid>#…,][addr:<bus>:<addr>#…,][auto]\n"
@@ -2544,7 +2553,7 @@ msgstr ""
 "  • auto\n"
 "  • id:054c:0268#4669:6e6b,addr:04:0c"
 
-#: plugins/rdp/rdp_plugin.c:2565
+#: plugins/rdp/rdp_plugin.c:2571
 msgid ""
 "Advanced setting for high latency links:\n"
 "Adjusts the connection timeout. Use if your connection times out.\n"
@@ -2554,7 +2563,7 @@ msgstr ""
 "Säätää yhteyden aikakatkaisua. Käytä, jos yhteys katkeaa.\n"
 "Suurin mahdollinen arvo on 600000 ms (kymmenen minuuttia).\n"
 
-#: plugins/rdp/rdp_plugin.c:2570
+#: plugins/rdp/rdp_plugin.c:2576
 msgid ""
 "Performance optimisations based on the network connection type:\n"
 "Using auto-detection is advised.\n"
@@ -2565,7 +2574,7 @@ msgstr ""
 "Jos automaattinen tunnistus epäonnistuu, valitse sopivin vaihtoehto "
 "luettelosta.\n"
 
-#: plugins/rdp/rdp_plugin.c:2575
+#: plugins/rdp/rdp_plugin.c:2581
 #, fuzzy
 #| msgid ""
 #| "Comma separated list of monitor IDs and desktop orientations:\n"
@@ -2601,101 +2610,101 @@ msgstr ""
 "   • 270 (käännetty muotokuva)\n"
 "\n"
 
-#: plugins/rdp/rdp_plugin.c:2602
+#: plugins/rdp/rdp_plugin.c:2608
 msgid "Left-handed mouse support"
 msgstr "Vasemman käden hiirituki"
 
-#: plugins/rdp/rdp_plugin.c:2602
+#: plugins/rdp/rdp_plugin.c:2608
 msgid "Swap left and right mouse buttons for left-handed mouse support"
 msgstr "Vaihda vasen ja oikea hiiren painike vasenkätisen hiiren tueksi"
 
-#: plugins/rdp/rdp_plugin.c:2603
+#: plugins/rdp/rdp_plugin.c:2610
 msgid "Enable multi monitor"
 msgstr "Ota moninäyttö käyttöön"
 
-#: plugins/rdp/rdp_plugin.c:2604
+#: plugins/rdp/rdp_plugin.c:2611
 msgid "Span screen over multiple monitors"
 msgstr "Jatka näyttöä useiden näyttöjen yli"
 
-#: plugins/rdp/rdp_plugin.c:2605
+#: plugins/rdp/rdp_plugin.c:2612
 #, fuzzy
 #| msgid "Monitor ID list"
 msgid "List monitor IDs"
 msgstr "Näytön tunnusluettelo"
 
-#: plugins/rdp/rdp_plugin.c:2608
+#: plugins/rdp/rdp_plugin.c:2615
 msgid "Network connection type"
 msgstr "Uusi yhteysprofiili"
 
-#: plugins/rdp/rdp_plugin.c:2625
+#: plugins/rdp/rdp_plugin.c:2632
 msgid "Security protocol negotiation"
 msgstr "Turvallisuusprotokollan neuvottelut"
 
-#: plugins/rdp/rdp_plugin.c:2626
+#: plugins/rdp/rdp_plugin.c:2633
 msgid "Gateway transport type"
 msgstr "Yhdyskäytävän liikenteen tyyppi"
 
-#: plugins/rdp/rdp_plugin.c:2627
+#: plugins/rdp/rdp_plugin.c:2634
 msgid "FreeRDP log level"
 msgstr "FreeRDP-lokitaso"
 
-#: plugins/rdp/rdp_plugin.c:2628
+#: plugins/rdp/rdp_plugin.c:2635
 msgid "FreeRDP log filters"
 msgstr "FreeRDP-lokitaso"
 
-#: plugins/rdp/rdp_plugin.c:2628
+#: plugins/rdp/rdp_plugin.c:2635
 msgid "tag:level[,tag:level[,…]]"
 msgstr "tag:level[,tag:level[,…]]"
 
-#: plugins/rdp/rdp_plugin.c:2629
+#: plugins/rdp/rdp_plugin.c:2636
 msgid "Audio output mode"
 msgstr "Äänilähtötila"
 
-#: plugins/rdp/rdp_plugin.c:2630
+#: plugins/rdp/rdp_plugin.c:2637
 msgid "Redirect local audio output"
 msgstr "Ohjaa paikallinen mikrofoni"
 
-#: plugins/rdp/rdp_plugin.c:2631
+#: plugins/rdp/rdp_plugin.c:2638
 msgid "Redirect local microphone"
 msgstr "Ohjaa paikallinen mikrofoni"
 
-#: plugins/rdp/rdp_plugin.c:2632
+#: plugins/rdp/rdp_plugin.c:2639
 msgid "Connection timeout in ms"
 msgstr "Yhteyden aikakatkaisu ms:na"
 
-#: plugins/rdp/rdp_plugin.c:2633
+#: plugins/rdp/rdp_plugin.c:2640
 msgid "Remote Desktop Gateway server"
 msgstr "Etätyöpöydän yhdyskäytäväpalvelin"
 
-#: plugins/rdp/rdp_plugin.c:2634
+#: plugins/rdp/rdp_plugin.c:2641
 msgid "Remote Desktop Gateway username"
 msgstr "Etätyöpöydän yhdyskäytävän käyttäjätunnus"
 
-#: plugins/rdp/rdp_plugin.c:2635
+#: plugins/rdp/rdp_plugin.c:2642
 msgid "Remote Desktop Gateway password"
 msgstr "Etätyöpöydän yhdyskäytävän salasana"
 
-#: plugins/rdp/rdp_plugin.c:2636
+#: plugins/rdp/rdp_plugin.c:2643
 msgid "Remote Desktop Gateway domain"
 msgstr "Etätyöpöydän yhdyskäytävän verkkotunnus"
 
-#: plugins/rdp/rdp_plugin.c:2637
+#: plugins/rdp/rdp_plugin.c:2644
 msgid "Client name"
 msgstr "Asiakkaan nimi"
 
-#: plugins/rdp/rdp_plugin.c:2638
+#: plugins/rdp/rdp_plugin.c:2645
 msgid "Client build"
 msgstr "Asiakkaan koontiversio"
 
-#: plugins/rdp/rdp_plugin.c:2641
+#: plugins/rdp/rdp_plugin.c:2648
 msgid "Load balance info"
 msgstr "Kuormitustiedot"
 
-#: plugins/rdp/rdp_plugin.c:2642
+#: plugins/rdp/rdp_plugin.c:2649
 msgid "Override printer drivers"
 msgstr "Ohita tulostinajurit"
 
-#: plugins/rdp/rdp_plugin.c:2642
+#: plugins/rdp/rdp_plugin.c:2649
 msgid ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
@@ -2703,227 +2712,233 @@ msgstr ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
 
-#: plugins/rdp/rdp_plugin.c:2643
+#: plugins/rdp/rdp_plugin.c:2650
 msgid "USB device redirection"
 msgstr "Valitse USB-laitteet uudelleenohjausta varten"
 
-#: plugins/rdp/rdp_plugin.c:2644
+#: plugins/rdp/rdp_plugin.c:2651
 msgid "Local serial name"
 msgstr "Paikallinen sarjanimi"
 
-#: plugins/rdp/rdp_plugin.c:2644
+#: plugins/rdp/rdp_plugin.c:2651
 msgid "COM1, COM2, etc."
 msgstr "COM1, COM2 jne."
 
-#: plugins/rdp/rdp_plugin.c:2645
+#: plugins/rdp/rdp_plugin.c:2652
 msgid "Local serial driver"
 msgstr "Paikallinen sarjaohjain"
 
-#: plugins/rdp/rdp_plugin.c:2645
+#: plugins/rdp/rdp_plugin.c:2652
 msgid "Serial"
 msgstr "Sarja"
 
-#: plugins/rdp/rdp_plugin.c:2646
+#: plugins/rdp/rdp_plugin.c:2653
 msgid "Local serial path"
 msgstr "Paikallinen sarjapolku"
 
-#: plugins/rdp/rdp_plugin.c:2646
+#: plugins/rdp/rdp_plugin.c:2653
 msgid "/dev/ttyS0, /dev/ttyS1, etc."
 msgstr "/dev/ttyS0,/dev/ttyS1, jne."
 
-#: plugins/rdp/rdp_plugin.c:2647
+#: plugins/rdp/rdp_plugin.c:2654
 msgid "Local parallel name"
 msgstr "Paikallinen rinnakkaisnimi"
 
-#: plugins/rdp/rdp_plugin.c:2648
+#: plugins/rdp/rdp_plugin.c:2655
 msgid "Local parallel device"
 msgstr "Paikallinen rinnakkaislaite"
 
-#: plugins/rdp/rdp_plugin.c:2649
+#: plugins/rdp/rdp_plugin.c:2656
 msgid "Name of smart card"
 msgstr "Älykortin nimi"
 
-#: plugins/rdp/rdp_plugin.c:2650
+#: plugins/rdp/rdp_plugin.c:2657
 msgid "Dynamic virtual channel"
 msgstr "Dynaaminen virtuaalikanava"
 
-#: plugins/rdp/rdp_plugin.c:2650 plugins/rdp/rdp_plugin.c:2651
+#: plugins/rdp/rdp_plugin.c:2657 plugins/rdp/rdp_plugin.c:2658
 msgid "<channel>[,<options>]"
 msgstr "<channel>[,<options>]"
 
-#: plugins/rdp/rdp_plugin.c:2651
+#: plugins/rdp/rdp_plugin.c:2658
 msgid "Static virtual channel"
 msgstr "Staattinen virtuaalikanava"
 
-#: plugins/rdp/rdp_plugin.c:2652
+#: plugins/rdp/rdp_plugin.c:2659
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
 msgstr "Suosi IPv6 AAAA -tietuetta IPv4 A -tietueen sijaan"
 
-#: plugins/rdp/rdp_plugin.c:2653
+#: plugins/rdp/rdp_plugin.c:2660
 msgid "Share printers"
 msgstr "Jaa tulostimet"
 
-#: plugins/rdp/rdp_plugin.c:2654
+#: plugins/rdp/rdp_plugin.c:2661
 msgid "Share serial ports"
 msgstr "Jaa sarjaportit"
 
-#: plugins/rdp/rdp_plugin.c:2655
+#: plugins/rdp/rdp_plugin.c:2662
 msgid "(SELinux) permissive mode for serial ports"
 msgstr "(SELinux) - sarjaportit salliva tila"
 
-#: plugins/rdp/rdp_plugin.c:2656
+#: plugins/rdp/rdp_plugin.c:2663
 msgid "Share parallel ports"
 msgstr "Jaa rinnakkaisportit"
 
-#: plugins/rdp/rdp_plugin.c:2657
+#: plugins/rdp/rdp_plugin.c:2664
 msgid "Share a smart card"
 msgstr "Jaa älykortti"
 
-#: plugins/rdp/rdp_plugin.c:2659
+#: plugins/rdp/rdp_plugin.c:2666
 msgid "Ignore certificate"
 msgstr "Ohita varmenne"
 
-#: plugins/rdp/rdp_plugin.c:2660
+#: plugins/rdp/rdp_plugin.c:2667
 msgid "Use the old license workflow"
 msgstr "Käytä vanhaa lisenssin työnkulkua"
 
-#: plugins/rdp/rdp_plugin.c:2660
+#: plugins/rdp/rdp_plugin.c:2667
 msgid "It disables CAL and hwId is set to 0"
 msgstr "Poistaa CAL:in käytöstä ja asettaa hwId:n arvoon 0"
 
-#: plugins/rdp/rdp_plugin.c:2662
+#: plugins/rdp/rdp_plugin.c:2669
 msgid "Attach to console (2003/2003 R2)"
 msgstr "Kiinnitä konsoliin (Windows 2003 / 2003 R2)"
 
-#: plugins/rdp/rdp_plugin.c:2663
+#: plugins/rdp/rdp_plugin.c:2670
 msgid "Turn off fast-path"
 msgstr "Poista fast-path käytöstä"
 
-#: plugins/rdp/rdp_plugin.c:2664
+#: plugins/rdp/rdp_plugin.c:2671
 msgid "Server detection using Remote Desktop Gateway"
 msgstr "Palvelimen tunnistus etätyöpöytäyhdyskäytävän avulla"
 
-#: plugins/rdp/rdp_plugin.c:2666
+#: plugins/rdp/rdp_plugin.c:2673
 msgid "Use system proxy settings"
 msgstr "Käytä järjestelmän välityspalvelimen asetuksia"
 
-#: plugins/rdp/rdp_plugin.c:2668
+#: plugins/rdp/rdp_plugin.c:2675
 msgid "Turn off automatic reconnection"
 msgstr "Älä käytä automaattista uudelleenyhdistämistä"
 
-#: plugins/rdp/rdp_plugin.c:2669
+#: plugins/rdp/rdp_plugin.c:2676
 msgid "Relax order checks"
 msgstr "Rentoudu, tilaustarkistukset"
 
-#: plugins/rdp/rdp_plugin.c:2670
+#: plugins/rdp/rdp_plugin.c:2677
 msgid "Glyph cache"
 msgstr "Glyph-välimuisti"
 
-#: plugins/rdp/rdp_plugin.c:2671
+#: plugins/rdp/rdp_plugin.c:2678
 msgid "Enable multitransport protocol (UDP)"
 msgstr "Ota monikuljetusprotokolla (UDP) käyttöön"
 
-#: plugins/rdp/rdp_plugin.c:2671
+#: plugins/rdp/rdp_plugin.c:2678
 msgid "Using the UDP protocol may improve performance"
 msgstr "UDP-protokollan käyttö voi parantaa suorituskykyä"
 
-#: plugins/rdp/rdp_plugin.c:2672
+#: plugins/rdp/rdp_plugin.c:2679
 msgid "Use base credentials for gateway too"
 msgstr "Käytä myös yhdyskäytävän perustietoja"
 
-#: plugins/rdp/rdp_plugin.c:2674
+#: plugins/rdp/rdp_plugin.c:2681
 msgid "Enable Gateway websockets support"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2700
+#: plugins/rdp/rdp_plugin.c:2707
 msgid "RDP - Remote Desktop Protocol"
 msgstr "RDP - Etätyöpöytäprotokolla"
 
-#: plugins/rdp/rdp_plugin.c:2725
+#: plugins/rdp/rdp_plugin.c:2732
 msgid "RDP - RDP File Handler"
 msgstr "RDP - RDP-tiedostonkäsittelijä"
 
-#: plugins/rdp/rdp_plugin.c:2740
+#: plugins/rdp/rdp_plugin.c:2747
 msgid "RDP - Preferences"
 msgstr "RDP-asetukset"
 
-#: plugins/rdp/rdp_plugin.c:2793
+#: plugins/rdp/rdp_plugin.c:2800
 msgid "Export connection in Windows .rdp file format"
 msgstr "Vie yhteys Windowsin .rdp-tiedostomuotoon"
 
-#: plugins/rdp/rdp_settings.c:200
+#: plugins/rdp/rdp_settings.c:201
 msgid "<Auto-detect>"
 msgstr "<Havaitse automaattisesti>"
 
-#: plugins/rdp/rdp_settings.c:232
+#: plugins/rdp/rdp_settings.c:233
 msgid "<Not set>"
 msgstr "< Ei määritetty >"
 
-#: plugins/rdp/rdp_settings.c:265
+#: plugins/rdp/rdp_settings.c:264
 msgid "<Choose a quality level to edit…>"
 msgstr "<Valitse muokattava laatutaso…>"
 
-#: plugins/rdp/rdp_settings.c:416
+#: plugins/rdp/rdp_settings.c:411
 msgid "Keyboard layout"
 msgstr "Näppäimistön asettelu"
 
-#: plugins/rdp/rdp_settings.c:441
+#: plugins/rdp/rdp_settings.c:436
 msgid "Use client keyboard mapping"
 msgstr "Käytä asiakasnäppäimistön kartoitusta"
 
-#: plugins/rdp/rdp_settings.c:451
+#: plugins/rdp/rdp_settings.c:446
 msgid "Quality settings"
 msgstr "Laatuasetukset"
 
-#: plugins/rdp/rdp_settings.c:471
+#: plugins/rdp/rdp_settings.c:466
 msgid "Wallpaper"
 msgstr "Taustakuva"
 
-#: plugins/rdp/rdp_settings.c:478
+#: plugins/rdp/rdp_settings.c:473
 msgid "Window drag"
 msgstr "Ikkunan raahaus"
 
-#: plugins/rdp/rdp_settings.c:485
+#: plugins/rdp/rdp_settings.c:480
 msgid "Menu animation"
 msgstr "Valikon animaatio"
 
-#: plugins/rdp/rdp_settings.c:492
+#: plugins/rdp/rdp_settings.c:487
 msgid "Theme"
 msgstr "Teema"
 
-#: plugins/rdp/rdp_settings.c:499
+#: plugins/rdp/rdp_settings.c:494
 msgid "Cursor shadow"
 msgstr "Kohdistimen varjo"
 
-#: plugins/rdp/rdp_settings.c:506
+#: plugins/rdp/rdp_settings.c:501
 msgid "Cursor blinking"
 msgstr "Vilkkuva kohdistin"
 
-#: plugins/rdp/rdp_settings.c:513
+#: plugins/rdp/rdp_settings.c:508
 msgid "Font smoothing"
 msgstr "Fontin pehmennys"
 
-#: plugins/rdp/rdp_settings.c:520
+#: plugins/rdp/rdp_settings.c:515
 msgid "Composition"
 msgstr "Kompositio"
 
-#: plugins/rdp/rdp_settings.c:530
+#: plugins/rdp/rdp_settings.c:525
 msgid "Remote scale factor"
 msgstr "Etäasteikkokerroin"
 
-#: plugins/rdp/rdp_settings.c:543
+#: plugins/rdp/rdp_settings.c:538
 msgid "Desktop scale factor %"
 msgstr "Työpöydän skaalauskerroin-%"
 
-#: plugins/rdp/rdp_settings.c:554
+#: plugins/rdp/rdp_settings.c:549
 msgid "Device scale factor %"
 msgstr "Laitteen skaalauskerroin-%"
 
-#: plugins/rdp/rdp_settings.c:576
+#: plugins/rdp/rdp_settings.c:571
 msgid "Desktop orientation"
 msgstr "Työpöydän suunta"
 
-#: plugins/rdp/rdp_event.c:343
+#: plugins/rdp/rdp_settings.c:588
+#, fuzzy
+#| msgid "Use system proxy settings"
+msgid "Input device settings"
+msgstr "Käytä järjestelmän välityspalvelimen asetuksia"
+
+#: plugins/rdp/rdp_event.c:344
 #, c-format
 msgid "Reconnection attempt %d of %d…"
 msgstr "Uudelleenyhdistämisen yritys %d/%d…"
@@ -3140,7 +3155,7 @@ msgid "Server name or IP address"
 msgstr "Palvelimen nimi tai IP-osoite"
 
 #: data/ui/remmina_main.glade:102 data/ui/remmina_main.glade:104
-#: data/ui/remmina_preferences.glade:216
+#: data/ui/remmina_preferences.glade:501
 msgid "Clear"
 msgstr "Tyhjennä"
 
@@ -3229,7 +3244,7 @@ msgstr "Poista lukitus"
 msgid "Unlock Remmina"
 msgstr "Poista Remminan lukitus"
 
-#: data/ui/remmina_unlock.glade:128 data/ui/remmina_preferences.glade:1586
+#: data/ui/remmina_unlock.glade:128
 msgid "Master password"
 msgstr "Pääsalasana"
 
@@ -3272,15 +3287,15 @@ msgstr ""
 "</span>"
 
 #. The star (*) is a reference to privacy consent
-#: data/ui/remmina_news.glade:130 data/ui/remmina_preferences.glade:545
+#: data/ui/remmina_news.glade:130 data/ui/remmina_preferences.glade:461
 msgid ""
 "Send <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
 "remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
 "\">anonymous</a></b> statistics. (*)"
 msgstr ""
 "Lähetä <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-"remmina__stats_8c.html#details\" title=\"Remmina usage statistics\""
-">anonyymeja</a></b> tilastoja. (*)"
+"remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
+"\">anonyymeja</a></b> tilastoja. (*)"
 
 #: data/ui/remmina_news.glade:142 data/ui/remmina_news.glade:195
 msgid "Send anonymous statistics"
@@ -3299,15 +3314,15 @@ msgid "Allow Remmina to automatically open .rdp and .remmina files."
 msgstr "Salli Remminan avata automaattisesti .rdp- ja .remmina-tiedostot."
 
 #. The star (*) is a reference to privacy consent
-#: data/ui/remmina_news.glade:183 data/ui/remmina_preferences.glade:560
+#: data/ui/remmina_news.glade:183 data/ui/remmina_preferences.glade:476
 msgid ""
 "Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
 "\">remmina.org</a> (*)"
 msgstr ""
-"Nouda uutiset <a href=\"https://remmina.org\" title=\"Remmina news site\""
-">remmina.orgista</a> (*)"
+"Nouda uutiset <a href=\"https://remmina.org\" title=\"Remmina news site"
+"\">remmina.orgista</a> (*)"
 
-#: data/ui/remmina_news.glade:208 data/ui/remmina_preferences.glade:527
+#: data/ui/remmina_news.glade:208 data/ui/remmina_preferences.glade:443
 msgid ""
 "* By enabling statistics and/or news you consent to send and fetch data to/"
 "from remmina.org"
@@ -3330,9 +3345,9 @@ msgid ""
 "</span>\n"
 msgstr ""
 "<span>\n"
-"<b> Kiitos, että valitsit vapaan copyleft-ohjelman. <a href=\"https://remmina"
-".org/donations/\" title=\"Remmina-lahjoituksia\">Lahjoitukset</a> tekevät "
-"meistä iloisia ja auttavat parantamaan ohjelmaa entisestään.</b>\n"
+"<b> Kiitos, että valitsit vapaan copyleft-ohjelman. <a href=\"https://"
+"remmina.org/donations/\" title=\"Remmina-lahjoituksia\">Lahjoitukset</a> "
+"tekevät meistä iloisia ja auttavat parantamaan ohjelmaa entisestään.</b>\n"
 "</span>\n"
 
 #: data/ui/remmina_news.glade:277
@@ -3380,75 +3395,71 @@ msgctxt "Multi password changer table"
 msgid "Domain\\Username"
 msgstr "Verkkotunnus\\Käyttäjätunnus"
 
-#: data/ui/remmina_preferences.glade:32
-msgid "Remmina Preferences"
-msgstr "Remminan asetukset"
-
-#: data/ui/remmina_preferences.glade:95
+#: data/ui/remmina_preferences.glade:41
 msgid "Double-click action"
 msgstr "Kaksoisnapsautuksen toiminto"
 
-#: data/ui/remmina_preferences.glade:110
+#: data/ui/remmina_preferences.glade:57
 msgid "Open connection"
 msgstr "Avaa yhteys"
 
-#: data/ui/remmina_preferences.glade:111
+#: data/ui/remmina_preferences.glade:58
 msgid "Edit settings"
 msgstr "Muokkaa asetuksia"
 
-#: data/ui/remmina_preferences.glade:127
+#: data/ui/remmina_preferences.glade:74
 msgid "Scaling quality"
 msgstr "Skaalauslaatu"
 
-#: data/ui/remmina_preferences.glade:142
+#: data/ui/remmina_preferences.glade:90
 msgid "Nearest"
 msgstr "Lähin"
 
-#: data/ui/remmina_preferences.glade:143
+#: data/ui/remmina_preferences.glade:91
 msgid "Tiles"
 msgstr "Laatat"
 
-#: data/ui/remmina_preferences.glade:144
+#: data/ui/remmina_preferences.glade:92
 msgid "Bilinear"
 msgstr "Bilineaarinen"
 
-#: data/ui/remmina_preferences.glade:145
+#: data/ui/remmina_preferences.glade:93
 msgid "Hyper"
 msgstr "Hyper"
 
-#: data/ui/remmina_preferences.glade:161
+#: data/ui/remmina_preferences.glade:109
 msgid "Step size for auto-scroll"
 msgstr "Automaattisen vierityksen askelkoko"
 
-#: data/ui/remmina_preferences.glade:191
+#: data/ui/remmina_preferences.glade:138
 msgid "Maximal amount of recent items"
 msgstr "Enimmäismäärä viimeaikaisia kohteita"
 
-#: data/ui/remmina_preferences.glade:236
+#: data/ui/remmina_preferences.glade:153
 msgid "Screen resolutions"
 msgstr "Näytön tarkkuudet"
 
-#: data/ui/remmina_preferences.glade:282
+#: data/ui/remmina_preferences.glade:198
 msgid "Folder for screenshots"
 msgstr "Kansio kuvakaappauksiin"
 
-#: data/ui/remmina_preferences.glade:294
+#: data/ui/remmina_preferences.glade:210
 msgid "Choose a folder to save screenshots from Remmina in."
 msgstr "Valitse kansio, johon Remmina tallentaa kuvakaappauksen."
 
-#: data/ui/remmina_preferences.glade:298 data/ui/remmina_preferences.glade:383
+#: data/ui/remmina_preferences.glade:214 data/ui/remmina_preferences.glade:299
 msgid "Select a folder"
 msgstr "Valitse kansio"
 
-#: data/ui/remmina_preferences.glade:309
+#: data/ui/remmina_preferences.glade:225
 msgid "Set up"
 msgstr "Määritä"
 
-#: data/ui/remmina_preferences.glade:330
+#: data/ui/remmina_preferences.glade:246
 msgid "Screenshot filenames"
 msgstr "Kuvakaappauksen tiedostonimet"
 
-#: data/ui/remmina_preferences.glade:342
+#: data/ui/remmina_preferences.glade:258
 msgid ""
 "%p Profile name\n"
 "%h Server name/IP\n"
@@ -3456,36 +3467,36 @@ msgid ""
 msgstr ""
 "%p Profiilin nimi\n"
 "%h Palvelimen nimi/IP\n"
-"%Y vuosi, %m kuukausi, %d päivä, %H tunti, %M minuutti, %S sekunti (UTC-aika)"
-"\n"
+"%Y vuosi, %m kuukausi, %d päivä, %H tunti, %M minuutti, %S sekunti (UTC-"
+"aika)\n"
 
-#: data/ui/remmina_preferences.glade:361
+#: data/ui/remmina_preferences.glade:277
 msgid ""
 "The folder connection profiles are saved in, it defaults to the XDG_USER_DATA"
 msgstr ""
 "Kansio, johon yhteysprofiilit tallennetaan, sen oletusarvo on XDG_USER_DATA"
 
 #. The folder where profiles are saved
-#: data/ui/remmina_preferences.glade:366
+#: data/ui/remmina_preferences.glade:282
 msgid "Remmina data folder"
 msgstr "Remminan datakansio"
 
-#: data/ui/remmina_preferences.glade:378
+#: data/ui/remmina_preferences.glade:294
 #, fuzzy
 #| msgid "Choose a folder to save screenshots from Remmina in."
 msgid "Choose a folder to save connection profiles from Remmina in."
 msgstr "Valitse kansio, johon Remmina tallentaa kuvakaappauksen."
 
-#: data/ui/remmina_preferences.glade:396
+#: data/ui/remmina_preferences.glade:312
 msgid "Remember last view for each connection"
 msgstr "Muista kunkin yhteyden viimeinen näkymätila"
 
 #. The star (*) is a reference to privacy consent
-#: data/ui/remmina_preferences.glade:400
+#: data/ui/remmina_preferences.glade:316
 msgid "Remember last view mode"
 msgstr "Muista viimeinen näyttötila"
 
-#: data/ui/remmina_preferences.glade:440
+#: data/ui/remmina_preferences.glade:356
 msgid ""
 "Set a custom filename for your Remmina connection profiles, using a "
 "formatting string."
@@ -3493,11 +3504,11 @@ msgstr ""
 "Aseta muokattu tiedostonimi Remmina-yhteysprofiileille muotoilujärjestyksen "
 "avulla."
 
-#: data/ui/remmina_preferences.glade:444
+#: data/ui/remmina_preferences.glade:360
 msgid "Template for profile filenames"
 msgstr "Malli profiilin tiedostonimille"
 
-#: data/ui/remmina_preferences.glade:456
+#: data/ui/remmina_preferences.glade:372
 msgid ""
 "%G Group name (slash will be converted to - automatically)\n"
 "%P Protocol name\n"
@@ -3513,83 +3524,85 @@ msgstr ""
 "\n"
 "\n"
 
-#: data/ui/remmina_preferences.glade:478
+#: data/ui/remmina_preferences.glade:394
 msgid "Only save generated screenshots, don't copy them to clipboard."
 msgstr "Tallenna vain luodut kuvakaappaukset, älä kopioi niitä leikepöydälle."
 
-#: data/ui/remmina_preferences.glade:483
+#: data/ui/remmina_preferences.glade:399
 msgid "Prevent screenshots from entering clipboard"
 msgstr "Estä kuvakaappauksien pääsy leikepöydälle"
 
-#: data/ui/remmina_preferences.glade:576
+#: data/ui/remmina_preferences.glade:525
 msgid "Options"
 msgstr "Valinnat"
 
-#: data/ui/remmina_preferences.glade:592
+#: data/ui/remmina_preferences.glade:550
 msgid "Always show tabs"
 msgstr "Näytä aina välilehdet"
 
-#: data/ui/remmina_preferences.glade:609
+#: data/ui/remmina_preferences.glade:566
 msgid "Hide the toolbar shown in the tabbed interface"
 msgstr "Piilota työkalurivi välilehtinäkymässä"
 
-#: data/ui/remmina_preferences.glade:630
+#: data/ui/remmina_preferences.glade:587
 msgid "Default view"
 msgstr "Oletusarvoinen näkymätila"
 
-#: data/ui/remmina_preferences.glade:645
+#: data/ui/remmina_preferences.glade:601
 msgid "Automatic"
 msgstr "Automaattinen"
 
-#: data/ui/remmina_preferences.glade:646
+#: data/ui/remmina_preferences.glade:602
 msgid "Scrolled window"
 msgstr "Vieritetty ikkuna"
 
-#: data/ui/remmina_preferences.glade:648
+#: data/ui/remmina_preferences.glade:604
 msgid "Viewport fullscreen"
 msgstr "Täysinäyttöinen näyttö"
 
-#: data/ui/remmina_preferences.glade:664
-msgid "Tabs"
-msgstr "Välilehdet"
+#. How tabs are grouped in the Remmina connection window
+#: data/ui/remmina_preferences.glade:620
+msgctxt "Appearance preferences"
+msgid "Tabs grouping"
+msgstr ""
 
-#: data/ui/remmina_preferences.glade:680
+#: data/ui/remmina_preferences.glade:634
 msgid "By group"
 msgstr "Ryhmien mukaan"
 
-#: data/ui/remmina_preferences.glade:681
+#: data/ui/remmina_preferences.glade:635
 msgid "By protocol"
 msgstr "Protokollan mukaan"
 
-#: data/ui/remmina_preferences.glade:682
+#: data/ui/remmina_preferences.glade:636
 msgid "Per connection"
 msgstr "Yhteyttä kohti"
 
-#: data/ui/remmina_preferences.glade:694
+#: data/ui/remmina_preferences.glade:648
 msgid "Fullscreen on the same screen as the connection window"
 msgstr "Koko näyttö samassa näytössä kuin yhteysikkuna"
 
-#: data/ui/remmina_preferences.glade:718
+#: data/ui/remmina_preferences.glade:671
 msgid "Peeking"
 msgstr "Kurkista"
 
-#: data/ui/remmina_preferences.glade:719
+#: data/ui/remmina_preferences.glade:672
 msgid "Hidden"
 msgstr "Piilotettu"
 
-#: data/ui/remmina_preferences.glade:735
+#: data/ui/remmina_preferences.glade:689
 msgid "Fullscreen toolbar visibility"
 msgstr "Koko näytön työkalurivin näkyvyys"
 
-#: data/ui/remmina_preferences.glade:745
+#: data/ui/remmina_preferences.glade:699
 msgid "Hide the search bar shown in the main window"
 msgstr "Piilota pääikkunassa näkyvä hakupalkki"
 
-#: data/ui/remmina_preferences.glade:762
+#: data/ui/remmina_preferences.glade:715
 msgid "Prefer dark theme"
 msgstr "Suosi tummaa teemaa"
 
-#: data/ui/remmina_preferences.glade:766
+#: data/ui/remmina_preferences.glade:719
 msgid ""
 "If a GTK theme includes a dark variant, it will be used instead of the "
 "configured theme."
@@ -3597,11 +3610,17 @@ msgstr ""
 "Jos GTK-teema sisältää tumman muunnelman, sitä käytetään määritetyn teeman "
 "sijaan."
 
-#: data/ui/remmina_preferences.glade:786
+#: data/ui/remmina_preferences.glade:739
 msgid "“Grab all keyboard events” status colour"
 msgstr "\"Tartu kaikkiin näppäimistötapahtumiin\" -tilaväri"
 
-#: data/ui/remmina_preferences.glade:797
+#: data/ui/remmina_preferences.glade:750
+#, fuzzy
+#| msgid "“Grab all keyboard events” status colour"
+msgid "Enable/Disable “Grab all keyboard events” status colour"
+msgstr "\"Tartu kaikkiin näppäimistötapahtumiin\" -tilaväri"
+
+#: data/ui/remmina_preferences.glade:765
 msgid ""
 "Hexadecimal- or colour names (red, #ff0000).\n"
 "It changes the background colour of connection names in the Remmina "
@@ -3611,15 +3630,15 @@ msgstr ""
 "Se muuttaa yhteysnimien taustavärin Remmina-yhteyden työkalurivillä (kun se "
 "on koko näytössä)."
 
-#: data/ui/remmina_preferences.glade:833
+#: data/ui/remmina_preferences.glade:822
 msgid "Appearance"
 msgstr "Ulkoasu"
 
-#: data/ui/remmina_preferences.glade:850
+#: data/ui/remmina_preferences.glade:848
 msgid "Show new connection on top of the menu"
 msgstr "Näytä uusi yhteys valikon yläosassa"
 
-#: data/ui/remmina_preferences.glade:868
+#: data/ui/remmina_preferences.glade:867
 msgid "Hide total count shown in the group menu"
 msgstr "Piilota ryhmävalikossa näkyvä kokonaismäärä"
 
@@ -3631,90 +3650,90 @@ msgstr "Ei ilmoitusalueen kuvaketta"
 msgid "Start in tray upon user login"
 msgstr "Käynnistä järjestelmän ilmoitusalueelle sisäänkirjautumisen yhteydessä"
 
-#: data/ui/remmina_preferences.glade:930
+#: data/ui/remmina_preferences.glade:934
 msgid "Applet"
 msgstr "Sovelma"
 
-#: data/ui/remmina_preferences.glade:953
+#: data/ui/remmina_preferences.glade:967
 msgid "Host key"
 msgstr "Isännän näppäin"
 
-#: data/ui/remmina_preferences.glade:984
+#: data/ui/remmina_preferences.glade:999
 msgid "Show/hide fullscreen"
 msgstr "Näytä/piilota koko näytön tila"
 
-#: data/ui/remmina_preferences.glade:1014
+#: data/ui/remmina_preferences.glade:1030
 msgid "Auto-fit window"
 msgstr "Sovita ikkuna automaattisesti"
 
-#: data/ui/remmina_preferences.glade:1087
+#: data/ui/remmina_preferences.glade:1106
 msgid "Apply/remove scaling"
 msgstr "Käytä/poista skaalaus"
 
-#: data/ui/remmina_preferences.glade:1117
+#: data/ui/remmina_preferences.glade:1137
 msgid "Grab keyboard"
 msgstr "Kaappaa näppäimistö"
 
-#: data/ui/remmina_preferences.glade:1207
+#: data/ui/remmina_preferences.glade:1230
 msgid "Show/hide toolbar"
 msgstr "Näytä/piilota työkalurivi"
 
-#: data/ui/remmina_preferences.glade:1268
-#: data/ui/remmina_preferences.glade:1278
+#: data/ui/remmina_preferences.glade:1293
+#: data/ui/remmina_preferences.glade:1303
 msgid "View-only mode"
 msgstr "Vain katselu -tila"
 
-#: data/ui/remmina_preferences.glade:1336
+#: data/ui/remmina_preferences.glade:1365
 msgid "Keyboard"
 msgstr "Näppäimistö"
 
-#: data/ui/remmina_preferences.glade:1357
+#: data/ui/remmina_preferences.glade:1396
 msgid "Local SSH port"
 msgstr "Paikallinen SSH-portti"
 
-#: data/ui/remmina_preferences.glade:1381
+#: data/ui/remmina_preferences.glade:1421
 msgid "Parse ~/.ssh/config"
 msgstr "Jäsennä ~/.ssh/config"
 
-#: data/ui/remmina_preferences.glade:1405
+#: data/ui/remmina_preferences.glade:1446
 msgid "No logging at all"
 msgstr "Ei lokiin kirjaamista lainkaan"
 
-#: data/ui/remmina_preferences.glade:1406
+#: data/ui/remmina_preferences.glade:1447
 msgid "Rare conditions or warnings"
 msgstr "Harvinaiset olosuhteet tai varoitukset"
 
-#: data/ui/remmina_preferences.glade:1407
+#: data/ui/remmina_preferences.glade:1448
 msgid "API-accessible entrypoints"
 msgstr "Sovellusrajapinnassa käytettävissä olevat pääsypisteet"
 
-#: data/ui/remmina_preferences.glade:1408
+#: data/ui/remmina_preferences.glade:1449
 msgid "Lower level protocol info, packet level"
 msgstr "Matalan tason protokollatiedot, paketitaso"
 
-#: data/ui/remmina_preferences.glade:1409
+#: data/ui/remmina_preferences.glade:1450
 msgid "Function entering and leaving"
 msgstr "Funktion saapuminen ja poistuminen"
 
-#: data/ui/remmina_preferences.glade:1425
+#: data/ui/remmina_preferences.glade:1467
 msgid "SSH log level"
 msgstr "SSH-lokitaso"
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1492
+#: data/ui/remmina_preferences.glade:1538
 msgid "Seconds of connection idleness before TCP keepalive probes are sent."
 msgstr ""
-"Yhteyden tyhjäkäynnin sekunnit ennen kuin TCP:n pidä hengissä -luotaimet ("
-"Keep Alive) on lähetetty."
+"Yhteyden tyhjäkäynnin sekunnit ennen kuin TCP:n pidä hengissä -luotaimet "
+"(Keep Alive) on lähetetty."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1508
+#: data/ui/remmina_preferences.glade:1555
 msgid "Seconds between each keepalive probe."
 msgstr ""
 "Sekunnit jokaisen pidättävän pidä hengissä (Keep Alive) -luotaimen välillä."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1524
+#: data/ui/remmina_preferences.glade:1572
 msgid ""
 "Number of keepalive probes sent via TCP connection before it is dropped."
 msgstr ""
@@ -3722,7 +3741,7 @@ msgstr ""
 "kuin yhteys hylätään."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1540
+#: data/ui/remmina_preferences.glade:1589
 msgid ""
 "Amount of milliseconds to attempt acknowledging data before closing the "
 "corresponding TCP connection forcibly."
@@ -3730,86 +3749,76 @@ msgstr ""
 "Millisekuntien määrä datan tunnistamisen yrittämiseksi, ennen kuin vastaava "
 "TCP-yhteys suljetaan väkisin."
 
-#: data/ui/remmina_preferences.glade:1563
+#: data/ui/remmina_preferences.glade:1616
 msgid "SSH options"
 msgstr "SSH-asetukset"
 
-#: data/ui/remmina_preferences.glade:1601
-#: data/ui/remmina_preferences.glade:1617
+#: data/ui/remmina_preferences.glade:1644
+#: data/ui/remmina_preferences.glade:1713
 #: data/ui/remmina_preferences.glade:1783
 msgid "Use secret key authentication for some widgets"
 msgstr "Käytä yksityisen avaimen todennusta joillekin widgeteille"
 
-#: data/ui/remmina_preferences.glade:1621
+#: data/ui/remmina_preferences.glade:1648
 msgid "Use master password"
 msgstr "Käytä pääsalasanaa"
 
-#: data/ui/remmina_preferences.glade:1634
+#: data/ui/remmina_preferences.glade:1661
 msgid "Automatic lock interval"
 msgstr "Automaattinen lukitusväli"
 
-#: data/ui/remmina_preferences.glade:1645
-msgid "Master password validity in seconds"
-msgstr "Pääsalasanan voimassaolo sekunteina"
-
-#: data/ui/remmina_preferences.glade:1666
-msgid "File encryption"
-msgstr "Tiedostojen salaus"
-
-#: data/ui/remmina_preferences.glade:1697
+#: data/ui/remmina_preferences.glade:1687
 msgid "Repeat the password"
 msgstr "Toista salasana"
 
-#: data/ui/remmina_preferences.glade:1751
-msgid "Fingerprints and certificates"
-msgstr "Sormenjäljet ja varmenteet"
-
-#: data/ui/remmina_preferences.glade:1766
+#: data/ui/remmina_preferences.glade:1698
 msgid "Automatically accept all fingerprints and certificates"
 msgstr "Hyväksy kaikki sormenjäljet ja varmenteet automaattisesti"
 
-#: data/ui/remmina_preferences.glade:1772
+#: data/ui/remmina_preferences.glade:1702
 msgid "Trust all fingerprints and certificates"
 msgstr "Luota kaikkiin sormenjälkiin ja varmenteisiin"
 
-#: data/ui/remmina_preferences.glade:1807
+#: data/ui/remmina_preferences.glade:1745
+msgid "Master password validity in seconds"
+msgstr "Pääsalasanan voimassaolo sekunteina"
+
+#: data/ui/remmina_preferences.glade:1808
 msgid "Security"
 msgstr "Turvallisuus"
 
-#: data/ui/remmina_preferences.glade:1830
+#: data/ui/remmina_preferences.glade:1839
 msgid "Terminal font"
 msgstr "Päätteen fontti"
 
-#: data/ui/remmina_preferences.glade:1843
+#: data/ui/remmina_preferences.glade:1852
 msgid "Scrollback lines"
 msgstr "Vieritysrivit"
 
-#: data/ui/remmina_preferences.glade:1910
-msgid "Shortcut for copying to clipboard"
+#: data/ui/remmina_preferences.glade:1900
+#, fuzzy
+#| msgid "Shortcut for copying to clipboard"
+msgid "Shortcuts for copying and pasting"
 msgstr "Pikanäppäin leikepöydälle kopioimiseksi"
 
-#: data/ui/remmina_preferences.glade:1923
-msgid "Shortcut for pasting from clipboard"
-msgstr "Pikanäppäin leikepöydältä liittämiseksi"
-
-#: data/ui/remmina_preferences.glade:1936
+#: data/ui/remmina_preferences.glade:1913
 msgid "Select all shortcuts"
 msgstr "Valitse kaikki -pikanäppäin"
 
-#: data/ui/remmina_preferences.glade:1950
-#: data/ui/remmina_preferences.glade:1968
-#: data/ui/remmina_preferences.glade:1986
-#: data/ui/remmina_preferences.glade:2416
-#: data/ui/remmina_preferences.glade:2434
-#: data/ui/remmina_preferences.glade:2465
+#: data/ui/remmina_preferences.glade:1926
+#: data/ui/remmina_preferences.glade:1942
+#: data/ui/remmina_preferences.glade:2392
+#: data/ui/remmina_preferences.glade:2421
+#: data/ui/remmina_preferences.glade:2554
+#: data/ui/remmina_preferences.glade:2570
 msgid "(Host key+)"
 msgstr "(Host key +) (esim. oikea CTRL + )"
 
-#: data/ui/remmina_preferences.glade:2003
+#: data/ui/remmina_preferences.glade:1959
 msgid "Use default system font"
 msgstr "Käytä järjestelmän oletusfonttia"
 
-#: data/ui/remmina_preferences.glade:2027
+#: data/ui/remmina_preferences.glade:1983
 msgid ""
 "Selecting “SGR 1” also switches to the bright counterparts of the first 8 "
 "palette colours (in addition to making text bold)."
@@ -3817,15 +3826,15 @@ msgstr ""
 "\"SGR 1\":n valitseminen vaihtaa myös kahdeksan ensimmäisen paletin värin "
 "kirkkaita vastaavia (tekstin lihavoinnin lisäksi)."
 
-#: data/ui/remmina_preferences.glade:2042
+#: data/ui/remmina_preferences.glade:1999
 msgid "Allow using bright colours with bold text"
 msgstr "Salli kirkkaiden värien ja lihavoidun tekstin käyttö"
 
-#: data/ui/remmina_preferences.glade:2056
+#: data/ui/remmina_preferences.glade:2013
 msgid "Colour theme"
 msgstr "Väriteema"
 
-#: data/ui/remmina_preferences.glade:2067
+#: data/ui/remmina_preferences.glade:2024
 msgid ""
 "Choose a colour scheme file. Usually available in /usr/share/remmina/theme. "
 "https://github.com/mbadolato/iTerm2-Color-Schemes has more details."
@@ -3834,124 +3843,136 @@ msgstr ""
 "theme. Lisätietoja on saatavilla osoitteesta https://github.com/mbadolato/"
 "iTerm2-Color-Schemes."
 
-#: data/ui/remmina_preferences.glade:2070
+#: data/ui/remmina_preferences.glade:2028
 msgid "Pick a terminal colouring file"
 msgstr "Valitse päätteen väritystiedosto"
 
-#: data/ui/remmina_preferences.glade:2085
+#: data/ui/remmina_preferences.glade:2042
 msgid "Bright colours"
 msgstr "Kirkkaat värit"
 
-#: data/ui/remmina_preferences.glade:2097
+#: data/ui/remmina_preferences.glade:2056
 msgid "Pick a light black colour"
 msgstr "Valitse vaalean mustan väri"
 
-#: data/ui/remmina_preferences.glade:2109
+#: data/ui/remmina_preferences.glade:2070
 msgid "Pick a light red colour"
 msgstr "Valitse vaaleanpunainen väri"
 
-#: data/ui/remmina_preferences.glade:2121
+#: data/ui/remmina_preferences.glade:2084
 msgid "Pick a bright green colour"
 msgstr "Valitse kirkkaanvihreä väri"
 
-#: data/ui/remmina_preferences.glade:2133
+#: data/ui/remmina_preferences.glade:2098
 msgid "Pick a bright yellow colour"
 msgstr "Valitse kirkkaankeltainen väri"
 
-#: data/ui/remmina_preferences.glade:2145
+#: data/ui/remmina_preferences.glade:2112
 msgid "Pick a bright blue colour"
 msgstr "Valitse kirkkaansininen väri"
 
-#: data/ui/remmina_preferences.glade:2157
+#: data/ui/remmina_preferences.glade:2126
 msgid "Pick a light magenta colour"
 msgstr "Valitse vaalean magentan väri"
 
-#: data/ui/remmina_preferences.glade:2169
+#: data/ui/remmina_preferences.glade:2140
 msgid "Pick a light cyan colour"
 msgstr "Valitse vaalean syaanin väri"
 
-#: data/ui/remmina_preferences.glade:2182
+#: data/ui/remmina_preferences.glade:2154
 msgid "Pick a light white colour"
 msgstr "Valitse vaalean valkoinen väri"
 
-#: data/ui/remmina_preferences.glade:2194
+#: data/ui/remmina_preferences.glade:2168
 msgid "Pick a black colour"
 msgstr "Valitse musta väri"
 
-#: data/ui/remmina_preferences.glade:2206
+#: data/ui/remmina_preferences.glade:2182
 msgid "Pick a red colour"
 msgstr "Valitse punainen väri"
 
-#: data/ui/remmina_preferences.glade:2218
+#: data/ui/remmina_preferences.glade:2196
 msgid "Pick a green colour"
 msgstr "Valitse vihreä väri"
 
-#: data/ui/remmina_preferences.glade:2230
+#: data/ui/remmina_preferences.glade:2210
 msgid "Pick a yellow colour"
 msgstr "Valitse keltainen väri"
 
-#: data/ui/remmina_preferences.glade:2242
+#: data/ui/remmina_preferences.glade:2224
 msgid "Pick a blue colour"
 msgstr "Valitse sininen väri"
 
-#: data/ui/remmina_preferences.glade:2254
+#: data/ui/remmina_preferences.glade:2238
 msgid "Pick a magenta colour"
 msgstr "Valitse magenta väri"
 
-#: data/ui/remmina_preferences.glade:2266
+#: data/ui/remmina_preferences.glade:2252
 msgid "Pick a cyan colour"
 msgstr "Valitse syaani väri"
 
-#: data/ui/remmina_preferences.glade:2279
+#: data/ui/remmina_preferences.glade:2266
 msgid "Pick a white colour"
 msgstr "Valitse valkoinen väri"
 
-#: data/ui/remmina_preferences.glade:2292
+#: data/ui/remmina_preferences.glade:2279
 msgid "Normal colours"
 msgstr "Normaalit värit"
 
-#: data/ui/remmina_preferences.glade:2305
-#: data/ui/remmina_preferences.glade:2319
+#: data/ui/remmina_preferences.glade:2292
+#: data/ui/remmina_preferences.glade:2307
 msgid "Cursor colour"
 msgstr "Kohdistimen väri"
 
-#: data/ui/remmina_preferences.glade:2333
-#: data/ui/remmina_preferences.glade:2347
+#: data/ui/remmina_preferences.glade:2321
+#: data/ui/remmina_preferences.glade:2336
 msgid "Background colour"
 msgstr "Taustan väri"
 
-#: data/ui/remmina_preferences.glade:2362
-#: data/ui/remmina_preferences.glade:2376
+#: data/ui/remmina_preferences.glade:2352
+#: data/ui/remmina_preferences.glade:2366
 msgid "Foreground colour"
 msgstr "Edustan väri"
 
-#: data/ui/remmina_preferences.glade:2451
-msgid "Search text"
+#: data/ui/remmina_preferences.glade:2379
+#, fuzzy
+#| msgid "Increase font size"
+msgid "Increase and decrease font size"
+msgstr "Suurenna fontin kokoa"
+
+#: data/ui/remmina_preferences.glade:2408
+#, fuzzy
+#| msgid "Search text"
+msgid "Search text shortcut"
 msgstr "Etsi tekstiä"
 
-#: data/ui/remmina_preferences.glade:2482
-#: data/ui/remmina_preferences.glade:2496
+#: data/ui/remmina_preferences.glade:2438
+#: data/ui/remmina_preferences.glade:2453
 msgid "Bold colour"
 msgstr "Normaalit värit"
 
-#: data/ui/remmina_preferences.glade:2510
-#: data/ui/remmina_preferences.glade:2550
+#: data/ui/remmina_preferences.glade:2467
+#: data/ui/remmina_preferences.glade:2508
 msgid "Highlight colour"
 msgstr "Korosta väri"
 
-#: data/ui/remmina_preferences.glade:2523
-#: data/ui/remmina_preferences.glade:2565
+#: data/ui/remmina_preferences.glade:2480
+#: data/ui/remmina_preferences.glade:2524
 msgid "Highlight foreground colour"
 msgstr "Korosta edustaväri"
 
-#: data/ui/remmina_preferences.glade:2536
-#: data/ui/remmina_preferences.glade:2580
+#: data/ui/remmina_preferences.glade:2493
+#: data/ui/remmina_preferences.glade:2540
 msgid "Cursor foreground colour"
 msgstr "Kohdistimen etualan väri"
 
-#: data/ui/remmina_preferences.glade:2599
+#: data/ui/remmina_preferences.glade:2594
 msgid "Terminal"
 msgstr "Pääte"
+
+#: data/ui/remmina_preferences.glade:2608
+msgid "Remmina Preferences"
+msgstr "Remminan asetukset"
 
 #: data/ui/remmina_string_list.glade:14 data/ui/remmina_string_list.glade:158
 msgid "Add"
@@ -3977,6 +3998,18 @@ msgstr "Valitse uusi näppäin"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "Paina uutta näppäintä…"
+
+#~ msgid "Tabs"
+#~ msgstr "Välilehdet"
+
+#~ msgid "File encryption"
+#~ msgstr "Tiedostojen salaus"
+
+#~ msgid "Fingerprints and certificates"
+#~ msgstr "Sormenjäljet ja varmenteet"
+
+#~ msgid "Shortcut for pasting from clipboard"
+#~ msgstr "Pikanäppäin leikepöydältä liittämiseksi"
 
 #~ msgid "Show the Remmina changelog."
 #~ msgstr "Näytä Remminan muutosloki."
