@@ -381,8 +381,13 @@ BOOL rf_auto_reconnect(rfContext *rfi)
 	RemminaPluginRdpUiObject *ui;
 	time_t treconn;
 
+	RemminaProtocolWidget *gp = rfi->protocol_widget;
+	RemminaFile *remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
+
 	rfi->is_reconnecting = TRUE;
-	rfi->reconnect_maxattempts = freerdp_settings_get_uint32(settings, FreeRDP_AutoReconnectMaxRetries);
+	gint i = atoi(remmina_plugin_service->pref_get_value("rdp_reconnect_attempts"));
+	i = remmina_plugin_service->file_get_int(remminafile, "rdp_reconnect_attempts", i);
+	rfi->reconnect_maxattempts = (i && i >= 0 ? i : freerdp_settings_get_uint32(settings, FreeRDP_AutoReconnectMaxRetries));
 	rfi->reconnect_nattempt = 0;
 
 	/* Only auto reconnect on network disconnects. */
@@ -2614,6 +2619,7 @@ static const RemminaProtocolSetting remmina_rdp_basic_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	    "colordepth",		N_("Colour depth"),			  FALSE, colordepth_list, NULL									},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	    "network",			N_("Network connection type"),		  FALSE, network_list,	  network_tooltip							},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_FOLDER,	    "sharefolder",		N_("Share folder"),			  FALSE, NULL,		  NULL									},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "rdp_reconnect_attempts",	N_("Reconnect attempts number"),	  FALSE, NULL, N_("The maximum number of reconnect attempts upon an RDP disconnect (default: 20)")									},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	    NULL,			NULL,					  FALSE, NULL,		  NULL									}
 };
 
