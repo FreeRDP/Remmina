@@ -96,6 +96,9 @@ apps:
       - network-bind
       - ssh-keys
 
+  xprop:
+    command: usr/bin/xprop
+
 parts:
   pulse-utils:
     plugin: nil
@@ -160,6 +163,7 @@ parts:
     stage-packages:
       - libusb-1.0-0
       - libzvbi0
+      - x11-utils
     configflags:
       # Workaround for ubuntu 18.04 armhf: build fails with "unable to find a register to spill"
       # remember to remove when snapcraft will be built in ubuntu >= 20.04
