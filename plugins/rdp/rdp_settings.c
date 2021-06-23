@@ -95,6 +95,7 @@ typedef struct _RemminaPluginRdpsetGrid {
 	GtkWidget *	composition_check;
 	GtkWidget *	use_client_keymap_check;
 	GtkWidget *	disable_smooth_scrolling_check;
+	GtkWidget *	reconnect_attempts;
 
 	/* FreeRDP /scale-desktop: Scaling of desktop app */
 	GtkWidget *	desktop_scale_factor_spin;
@@ -150,6 +151,9 @@ static void remmina_rdp_settings_grid_destroy(GtkWidget *widget, gpointer data)
 
 	remmina_plugin_service->pref_set_value("rdp_disable_smooth_scrolling",
 					       gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(grid->disable_smooth_scrolling_check)) ? "1" : "0");
+
+	remmina_plugin_service->pref_set_value("rdp_reconnect_attempts",
+					       gtk_entry_get_text(GTK_ENTRY(grid->reconnect_attempts)));
 
 	s = g_strdup_printf("%X", grid->quality_values[0]);
 	remmina_plugin_service->pref_set_value("rdp_quality_0", s);
@@ -600,6 +604,25 @@ static void remmina_rdp_settings_grid_init(RemminaPluginRdpsetGrid *grid)
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget),
 				     s && s[0] == '1' ? TRUE : FALSE);
 	g_free(s);
+
+	widget = gtk_label_new(_("General settings"));
+	gtk_widget_show(widget);
+	gtk_widget_set_halign(GTK_WIDGET(widget), GTK_ALIGN_START);
+	gtk_widget_set_valign(GTK_WIDGET(widget), GTK_ALIGN_CENTER);
+	gtk_grid_attach(GTK_GRID(grid), widget, 0, 31, 1, 1);
+	widget = gtk_label_new(_("Reconnect attempts number"));
+	gtk_grid_attach(GTK_GRID(grid), widget, 1, 31, 1, 1);
+	widget = gtk_entry_new();
+	gtk_grid_attach(GTK_GRID(grid), widget, 2, 31, 2, 1);
+	gtk_entry_set_input_purpose(GTK_ENTRY(widget), GTK_INPUT_PURPOSE_NUMBER);
+	gtk_entry_set_input_hints(GTK_ENTRY(widget), GTK_INPUT_HINT_NONE);
+	gtk_widget_set_tooltip_text(widget, _("The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"));
+	s = remmina_plugin_service->pref_get_value("rdp_reconnect_attempts");
+	if (s && s[0])
+		gtk_entry_set_text(GTK_ENTRY(widget), s);
+	g_free(s);
+	grid->reconnect_attempts = widget;
+
 }
 
 GtkWidget *remmina_rdp_settings_new(void)
