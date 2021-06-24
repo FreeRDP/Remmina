@@ -308,6 +308,7 @@ struct rf_context {
 
 	gboolean		connected;
 	gboolean		is_reconnecting;
+	gboolean		stop_reconnecting_requested;
 	/* orphaned: rf_context has still one or more libfreerdp thread active,
 	 * but no longer maintained by an open RemminaProtocolWidget/tab.
 	 * When the orphaned thread terminates, we must cleanup rf_context.
