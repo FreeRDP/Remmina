@@ -380,14 +380,22 @@ BOOL rf_auto_reconnect(rfContext *rfi)
 	rdpSettings *settings = rfi->instance->settings;
 	RemminaPluginRdpUiObject *ui;
 	time_t treconn;
+	gchar *cval;
+	gint maxattempts;
 
 	RemminaProtocolWidget *gp = rfi->protocol_widget;
 	RemminaFile *remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
 	rfi->is_reconnecting = TRUE;
-	gint i = atoi(remmina_plugin_service->pref_get_value("rdp_reconnect_attempts"));
-	i = remmina_plugin_service->file_get_int(remminafile, "rdp_reconnect_attempts", i);
-	rfi->reconnect_maxattempts = (i && i >= 0 ? i : freerdp_settings_get_uint32(settings, FreeRDP_AutoReconnectMaxRetries));
+	rfi->stop_reconnecting_requested = FALSE;
+
+	maxattempts = FreeRDP_AutoReconnectMaxRetries;
+	if ((cval = remmina_plugin_service->pref_get_value("rdp_reconnect_attempts")) != NULL)
+		maxattempts = atoi(cval);
+	maxattempts = remmina_plugin_service->file_get_int(remminafile, "rdp_reconnect_attempts", maxattempts);
+	if (maxattempts <= 0)
+		maxattempts = freerdp_settings_get_uint32(settings, FreeRDP_AutoReconnectMaxRetries);
+	rfi->reconnect_maxattempts = maxattempts;
 	rfi->reconnect_nattempt = 0;
 
 	/* Only auto reconnect on network disconnects. */
@@ -433,6 +441,12 @@ BOOL rf_auto_reconnect(rfContext *rfi)
 			break;
 		}
 
+		if (rfi->stop_reconnecting_requested) {
+			REMMINA_PLUGIN_DEBUG("[%s] reconnect request loop interrupted by user.",
+					freerdp_settings_get_string(rfi->settings, FreeRDP_ServerHostname));
+			break;
+		}
+
 		/* Attempt the next reconnect */
 		REMMINA_PLUGIN_DEBUG("[%s] reconnection, attempt #%d of %d",
 				     freerdp_settings_get_string(rfi->settings, FreeRDP_ServerHostname), rfi->reconnect_nattempt, rfi->reconnect_maxattempts);
@@ -456,9 +470,12 @@ BOOL rf_auto_reconnect(rfContext *rfi)
 			}
 		}
 
-		/* Wait until 5 secs have elapsed from last reconnect attempt */
-		while (time(NULL) - treconn < 5)
-			sleep(1);
+		/* Wait until 5 secs have elapsed from last reconnect attempt, while checking for rfi->stop_reconnecting_requested */
+		while (time(NULL) - treconn < 25) {
+			if (rfi->stop_reconnecting_requested)
+				break;
+			usleep(200000); // 200ms sleep
+		}
 	}
 
 	rfi->is_reconnecting = FALSE;
@@ -2259,6 +2276,7 @@ static void remmina_rdp_init(RemminaProtocolWidget *gp)
 	rfi->settings = instance->settings;
 	rfi->connected = False;
 	rfi->is_reconnecting = False;
+	rfi->stop_reconnecting_requested = False;
 	rfi->user_cancelled = FALSE;
 
 	freerdp_register_addin_provider(freerdp_channels_load_static_addin_entry, 0);
@@ -2341,6 +2359,12 @@ static gboolean remmina_rdp_close_connection(RemminaProtocolWidget *gp)
 		/* Allow clipboard transfer from server to terminate */
 		rfi->clipboard.srv_clip_data_wait = SCDW_ABORTING;
 		usleep(100000);
+	}
+
+	if (rfi->is_reconnecting) {
+		/* Special case: window closed when attempting to reconnect */
+		rfi->stop_reconnecting_requested = TRUE;
+		return FALSE;
 	}
 
 	rdp_event.type = REMMINA_RDP_EVENT_DISCONNECT;
