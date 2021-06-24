@@ -45,6 +45,7 @@
 #include "remmina_applet_menu.h"
 #include "rcw.h"
 #include "remmina_icon.h"
+#include "remmina_log.h"
 #include "remmina/remmina_trace_calls.h"
 #include "remmina_sysinfo.h"
 
@@ -59,13 +60,11 @@
 typedef struct _RemminaIcon {
 #ifdef HAVE_LIBAPPINDICATOR
 	AppIndicator *	icon;
-#else
-	GtkStatusIcon * icon;
+	gboolean indicator_connected;
 #endif
 	RemminaAvahi *	avahi;
 	guint32		popup_time;
 	gchar *		autostart_file;
-	gchar *		gsversion; // GnomeShell version string, or null if not available
 } RemminaIcon;
 
 static RemminaIcon remmina_icon =
@@ -77,8 +76,6 @@ void remmina_icon_destroy(void)
 	if (remmina_icon.icon) {
 #ifdef HAVE_LIBAPPINDICATOR
 		app_indicator_set_status(remmina_icon.icon, APP_INDICATOR_STATUS_PASSIVE);
-#else
-		gtk_status_icon_set_visible(remmina_icon.icon, FALSE);
 #endif
 		remmina_icon.icon = NULL;
 	}
@@ -89,10 +86,6 @@ void remmina_icon_destroy(void)
 	if (remmina_icon.autostart_file) {
 		g_free(remmina_icon.autostart_file);
 		remmina_icon.autostart_file = NULL;
-	}
-	if (remmina_icon.gsversion) {
-		g_free(remmina_icon.gsversion);
-		remmina_icon.gsversion = NULL;
 	}
 }
 
@@ -234,14 +227,6 @@ static void remmina_icon_populate_extra_menu_item(GtkWidget *menu)
 		}
 	}
 
-	/* Separator */
-	//menuitem = gtk_separator_menu_item_new();
-	//gtk_widget_show(menuitem);
-	//if (new_ontop)
-		//gtk_menu_shell_prepend(GTK_MENU_SHELL(menu), menuitem);
-	//else
-		//gtk_menu_shell_append(GTK_MENU_SHELL(menu), menuitem);
-
 	/* New Connection */
 	menuitem = remmina_applet_menu_item_new(REMMINA_APPLET_MENU_ITEM_NEW);
 	gtk_widget_show(menuitem);
@@ -278,53 +263,6 @@ remmina_icon_populate_menu(void)
 
 		remmina_icon_populate_additional_menu_item(menu);
 	}
-}
-
-#else
-
-void remmina_icon_populate_menu(void)
-{
-	TRACE_CALL(__func__);
-}
-
-static void remmina_icon_popdown_menu(GtkWidget *widget, gpointer data)
-{
-	TRACE_CALL(__func__);
-	if (gtk_get_current_event_time() - remmina_icon.popup_time <= 500)
-		remmina_exec_command(REMMINA_COMMAND_MAIN, NULL);
-}
-
-static void remmina_icon_on_activate(GtkStatusIcon *icon, gpointer user_data)
-{
-	TRACE_CALL(__func__);
-	GtkWidget *menu;
-	gint button, event_time;
-
-	remmina_icon.popup_time = gtk_get_current_event_time();
-	menu = remmina_applet_menu_new();
-	remmina_applet_menu_set_hide_count(REMMINA_APPLET_MENU(menu), remmina_pref.applet_hide_count);
-	remmina_applet_menu_populate(REMMINA_APPLET_MENU(menu));
-
-	remmina_icon_populate_extra_menu_item(menu);
-
-	button = 0;
-	event_time = gtk_get_current_event_time();
-
-	g_signal_connect(G_OBJECT(menu), "deactivate", G_CALLBACK(remmina_icon_popdown_menu), NULL);
-
-	gtk_menu_popup(GTK_MENU(menu), NULL, NULL, gtk_status_icon_position_menu, remmina_icon.icon, button, event_time);
-}
-
-static void remmina_icon_on_popup_menu(GtkStatusIcon *icon, guint button, guint activate_time, gpointer user_data)
-{
-	TRACE_CALL(__func__);
-	GtkWidget *menu;
-
-	menu = gtk_menu_new();
-
-	remmina_icon_populate_additional_menu_item(menu);
-
-	gtk_menu_popup(GTK_MENU(menu), NULL, NULL, gtk_status_icon_position_menu, remmina_icon.icon, button, activate_time);
 }
 
 #endif
@@ -373,52 +311,32 @@ static void remmina_icon_create_autostart_file(void)
 gboolean remmina_icon_is_available(void)
 {
 	TRACE_CALL(__func__);
-	gchar *gsversion;
-	unsigned int gsv_maj, gsv_min, gsv_seq;
-	gboolean gshell_has_legacyTray;
 
 	if (!remmina_icon.icon)
 		return FALSE;
 	if (remmina_pref.disable_tray_icon)
 		return FALSE;
 
-	/* Special treatmen under GNOME Shell */
-	if ((gsversion = remmina_sysinfo_get_gnome_shell_version()) != NULL) {
-		if (sscanf(gsversion, "%u.%u", &gsv_maj, &gsv_min) == 2)
-			gsv_seq = gsv_maj << 16 | gsv_min << 8;
-		else
-			gsv_seq = 0x030000;
-		g_free(gsversion);
-
-		gshell_has_legacyTray = FALSE;
-		if (gsv_seq >= 0x031000 && gsv_seq <= 0x031800)
-			/* GNOME Shell from 3.16 to 3.24, Status Icon (GtkStatusIcon) is visible in the drawer
-			 * at the bottom left of the screen */
-			gshell_has_legacyTray = TRUE;
-
-
-#ifdef HAVE_LIBAPPINDICATOR
-		/** GNOME Shell with compiled in LIBAPPINDICATOR:
-		 * ensure have also a working appindicator extension available.
-		 */
-		if (remmina_sysinfo_is_appindicator_available())
-			/* No libappindicator extension for GNOME Shell, no remmina_icon */
-			return TRUE;
-		else if (gshell_has_legacyTray)
-			return TRUE;
-		else
-			return FALSE;
-
-#endif
-		/* GNOME Shell without LIBAPPINDICATOR */
-		if (gshell_has_legacyTray)
-			return TRUE;
-		else
-			/* GNOME Shell < 3.16, Status Icon (GtkStatusIcon) is hidden
-			 * in the message tray */
-			return FALSE;
+	if (remmina_icon.indicator_connected == FALSE) {
+		REMMINA_DEBUG ("Indicator is not connected to panel, thus it cannot be displayed.");
+		return FALSE;
+	} else {
+		REMMINA_DEBUG ("Indicator is connected to panel, thus it can be displayed.");
+		return TRUE;
 	}
+	/** Special treatment under GNOME Shell
+	 * Remmina > v1.4.18 won't be shipped in distributions with GNOME Shell <= 3.18
+	 * therefore checking the the GNOME Shell version is useless.
+	 * We just return TRUE
+	 */
 	return TRUE;
+}
+
+static void
+remmina_icon_connection_changed_cb (AppIndicator *indicator, gboolean connected, gpointer data)
+{
+	TRACE_CALL(__func__);
+	remmina_icon.indicator_connected = connected;
 }
 
 void remmina_icon_init(void)
@@ -429,55 +347,40 @@ void remmina_icon_init(void)
 	gboolean sni_supported;
 	char msg[200];
 
-	if (remmina_pref.dark_theme) {
-		g_debug("(%s) Dark theme, inverted icon (light)", __func__);
-		g_stpcpy(remmina_panel, "remmina-panel-inverted");
-	} else {
-		g_debug("(%s) Light theme, normal icon (dark)", __func__);
-		g_stpcpy(remmina_panel, "remmina-panel");
-	}
+	g_stpcpy(remmina_panel, "remmina-status");
 
 	/* Print on stdout the availability of appindicators on DBUS */
 	sni_supported = remmina_sysinfo_is_appindicator_available();
 
 	strcpy(msg, "StatusNotifier/Appindicator support: ");
 	if (sni_supported) {
-		strcat(msg, "your desktop does support it");
+		REMMINA_DEBUG("%s your desktop does support it", msg);
 #ifdef HAVE_LIBAPPINDICATOR
-		strcat(msg, " and libappindicator is compiled in Remmina. Good.");
+		REMMINA_DEBUG("%s and libappindicator is compiled in Remmina. Good.", msg);
 #else
-		strcat(msg, ", but you did not compile Remmina with CMake’s -DWITH_APPINDICATOR=on");
+		REMMINA_DEBUG("%s, but you did not compile Remmina with CMake’s -DWITH_APPINDICATOR=on", msg);
 #endif
 	} else {
 #ifdef HAVE_LIBAPPINDICATOR
-		strcat(msg, "not supported by desktop. libappindicator will try to fallback to GtkStatusIcon/xembed");
+		REMMINA_DEBUG("%snot supported by desktop. libappindicator will try to fallback to GtkStatusIcon/xembed", msg);
 #else
-		strcat(msg, "not supported by desktop. Remmina will try to fallback to GtkStatusIcon/xembed");
+		REMMINA_DEBUG("%snot supported by desktop.", msg);
 #endif
 	}
-	strcat(msg, "\n");
-	fputs(msg, stderr);
 
-	remmina_icon.gsversion = remmina_sysinfo_get_gnome_shell_version();
-	if (remmina_icon.gsversion != NULL)
-		printf("Running under GNOME Shell version %s\n", remmina_icon.gsversion);
 
 	if (!remmina_icon.icon && !remmina_pref.disable_tray_icon) {
 #ifdef HAVE_LIBAPPINDICATOR
 		remmina_icon.icon = app_indicator_new("remmina-icon", remmina_panel, APP_INDICATOR_CATEGORY_APPLICATION_STATUS);
-		app_indicator_set_icon_theme_path(remmina_icon.icon, REMMINA_RUNTIME_DATADIR G_DIR_SEPARATOR_S "icons");
+		//app_indicator_set_icon_theme_path(remmina_icon.icon, REMMINA_RUNTIME_DATADIR G_DIR_SEPARATOR_S "icons");
+		//const gchar *theme_path = app_indicator_get_icon_theme_path(remmina_icon.icon);
+		//REMMINA_DEBUG("Custom app indicator icon theme path is %s", theme_path);
 
 		app_indicator_set_status(remmina_icon.icon, APP_INDICATOR_STATUS_ACTIVE);
 		app_indicator_set_title(remmina_icon.icon, "Remmina");
 		remmina_icon_populate_menu();
 #else
-		remmina_icon.icon = gtk_status_icon_new_from_icon_name(remmina_panel);
-
-		gtk_status_icon_set_title(remmina_icon.icon, _("Remmina Remote Desktop Client"));
-		gtk_status_icon_set_tooltip_text(remmina_icon.icon, _("Remmina Remote Desktop Client"));
-
-		g_signal_connect(G_OBJECT(remmina_icon.icon), "popup-menu", G_CALLBACK(remmina_icon_on_popup_menu), NULL);
-		g_signal_connect(G_OBJECT(remmina_icon.icon), "activate", G_CALLBACK(remmina_icon_on_activate), NULL);
+		REMMINA_DEBUG("GtkStatusIcon support has been droppen since Gtk 3.14")
 #endif
 	} else if (remmina_icon.icon) {
 #ifdef HAVE_LIBAPPINDICATOR
@@ -486,8 +389,7 @@ void remmina_icon_init(void)
 		/* With libappindicator we can also change the icon on the fly */
 		app_indicator_set_icon(remmina_icon.icon, remmina_panel);
 #else
-		gtk_status_icon_set_visible(remmina_icon.icon, !remmina_pref.disable_tray_icon);
-
+		REMMINA_DEBUG("GtkStatusIcon support has been droppen since Gtk 3.14")
 #endif
 	}
 	if (!remmina_icon.avahi)
@@ -504,6 +406,11 @@ void remmina_icon_init(void)
 		remmina_icon.autostart_file = g_strdup_printf("%s/.config/autostart/remmina-applet.desktop", g_get_home_dir());
 		remmina_icon_create_autostart_file();
 	}
+	// "connected" property means a visible indicator, otherwise could be hidden. or fall back to GtkStatusIcon
+#ifdef HAVE_LIBAPPINDICATOR
+	g_signal_connect (G_OBJECT(remmina_icon.icon), "connection-changed", G_CALLBACK(remmina_icon_connection_changed_cb), NULL);
+	g_object_get(G_OBJECT(remmina_icon.icon), "connected", &remmina_icon.indicator_connected, NULL);
+#endif
 }
 
 gboolean remmina_icon_is_autostart(void)
