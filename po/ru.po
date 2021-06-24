@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-06-24 13:10+0000\n"
+"POT-Creation-Date: 2021-06-24 21:48+0000\n"
 "PO-Revision-Date: 2021-06-09 11:33+0000\n"
 "Last-Translator: flyvint <flyvint@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -337,7 +337,7 @@ msgid "Password to unlock private key"
 msgstr "Пароль разблокировки приватного ключа"
 
 #: src/remmina_ssh_plugin.c:1480 plugins/xdmcp/xdmcp_plugin.c:370
-#: plugins/rdp/rdp_plugin.c:2684 plugins/nx/nx_plugin.c:734
+#: plugins/rdp/rdp_plugin.c:2683 plugins/nx/nx_plugin.c:734
 msgid "Start-up program"
 msgstr "Запуск программы"
 
@@ -1597,7 +1597,7 @@ msgstr "Туннель через loopback адрес"
 msgid "Same server at port %i"
 msgstr "Этот же сервер на порту %i"
 
-#: src/remmina_file_editor.c:938 plugins/rdp/rdp_plugin.c:2685
+#: src/remmina_file_editor.c:938 plugins/rdp/rdp_plugin.c:2684
 msgid "Start-up path"
 msgstr "Путь запуска"
 
@@ -2022,7 +2022,7 @@ msgid "Repeater"
 msgstr "Повторитель"
 
 #: plugins/vnc/vnc_plugin.c:1963 plugins/vnc/vnc_plugin.c:1983
-#: plugins/rdp/rdp_plugin.c:2669 plugins/nx/nx_plugin.c:733
+#: plugins/rdp/rdp_plugin.c:2668 plugins/nx/nx_plugin.c:733
 msgid "Quality"
 msgstr "Качество"
 
@@ -2597,86 +2597,75 @@ msgstr "Список ID мониторов"
 msgid "Network connection type"
 msgstr "Новый профиль соединения"
 
-#: plugins/rdp/rdp_plugin.c:2654 plugins/rdp/rdp_settings.c:613
-#, fuzzy
-#| msgid "Reconnection attempt %d of %d…"
-msgid "Reconnect attempts number"
-msgstr "Попытка повторного подключения %d из %d…"
-
-#: plugins/rdp/rdp_plugin.c:2654 plugins/rdp/rdp_settings.c:619
-msgid ""
-"The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
-msgstr ""
-
-#: plugins/rdp/rdp_plugin.c:2670
+#: plugins/rdp/rdp_plugin.c:2669
 msgid "Security protocol negotiation"
 msgstr "Согласование протокола безопасности"
 
-#: plugins/rdp/rdp_plugin.c:2671
+#: plugins/rdp/rdp_plugin.c:2670
 msgid "Gateway transport type"
 msgstr "Тип транспорта шлюза"
 
-#: plugins/rdp/rdp_plugin.c:2672
+#: plugins/rdp/rdp_plugin.c:2671
 msgid "FreeRDP log level"
 msgstr "Уровень лога FreeRDP"
 
-#: plugins/rdp/rdp_plugin.c:2673
+#: plugins/rdp/rdp_plugin.c:2672
 msgid "FreeRDP log filters"
 msgstr "Уровень лога FreeRDP"
 
-#: plugins/rdp/rdp_plugin.c:2673
+#: plugins/rdp/rdp_plugin.c:2672
 msgid "tag:level[,tag:level[,…]]"
 msgstr "tag:level[,tag:level[,…]]"
 
-#: plugins/rdp/rdp_plugin.c:2674
+#: plugins/rdp/rdp_plugin.c:2673
 msgid "Audio output mode"
 msgstr "Режим аудиовыхода"
 
-#: plugins/rdp/rdp_plugin.c:2675
+#: plugins/rdp/rdp_plugin.c:2674
 msgid "Redirect local audio output"
 msgstr "Перенаправить локальный аудиовыход"
 
-#: plugins/rdp/rdp_plugin.c:2676
+#: plugins/rdp/rdp_plugin.c:2675
 msgid "Redirect local microphone"
 msgstr "Перенаправлять локальный микрофон"
 
-#: plugins/rdp/rdp_plugin.c:2677
+#: plugins/rdp/rdp_plugin.c:2676
 msgid "Connection timeout in ms"
 msgstr "Тайм-аут соединения в мс"
 
-#: plugins/rdp/rdp_plugin.c:2678
+#: plugins/rdp/rdp_plugin.c:2677
 msgid "Remote Desktop Gateway server"
 msgstr "Сервер шлюза удаленных рабочих столов"
 
-#: plugins/rdp/rdp_plugin.c:2679
+#: plugins/rdp/rdp_plugin.c:2678
 msgid "Remote Desktop Gateway username"
 msgstr "Имя пользователя шлюза удаленных рабочих столов"
 
-#: plugins/rdp/rdp_plugin.c:2680
+#: plugins/rdp/rdp_plugin.c:2679
 msgid "Remote Desktop Gateway password"
 msgstr "Пароль пользователя шлюза удаленных рабочих столов"
 
-#: plugins/rdp/rdp_plugin.c:2681
+#: plugins/rdp/rdp_plugin.c:2680
 msgid "Remote Desktop Gateway domain"
 msgstr "Доменое имя шлюза удаленных рабочих столов"
 
-#: plugins/rdp/rdp_plugin.c:2682
+#: plugins/rdp/rdp_plugin.c:2681
 msgid "Client name"
 msgstr "Имя клиента"
 
-#: plugins/rdp/rdp_plugin.c:2683
+#: plugins/rdp/rdp_plugin.c:2682
 msgid "Client build"
 msgstr "Билд клиента"
 
-#: plugins/rdp/rdp_plugin.c:2686
+#: plugins/rdp/rdp_plugin.c:2685
 msgid "Load balance info"
 msgstr "Информация для балансировки нагрузки"
 
-#: plugins/rdp/rdp_plugin.c:2687
+#: plugins/rdp/rdp_plugin.c:2686
 msgid "Override printer drivers"
 msgstr "Переписать драйвер принтера"
 
-#: plugins/rdp/rdp_plugin.c:2687
+#: plugins/rdp/rdp_plugin.c:2686
 msgid ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
@@ -2684,66 +2673,77 @@ msgstr ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
 
-#: plugins/rdp/rdp_plugin.c:2688
+#: plugins/rdp/rdp_plugin.c:2687
 msgid "USB device redirection"
 msgstr "USB-устройство для перенаправления"
 
-#: plugins/rdp/rdp_plugin.c:2689
+#: plugins/rdp/rdp_plugin.c:2688
 msgid "Local serial name"
 msgstr "Имя локального последовательного порта"
 
-#: plugins/rdp/rdp_plugin.c:2689
+#: plugins/rdp/rdp_plugin.c:2688
 msgid "COM1, COM2, etc."
 msgstr "COM1, COM2, и т.д."
 
-#: plugins/rdp/rdp_plugin.c:2690
+#: plugins/rdp/rdp_plugin.c:2689
 msgid "Local serial driver"
 msgstr "Драйвер локального последовательного порта"
 
-#: plugins/rdp/rdp_plugin.c:2690
+#: plugins/rdp/rdp_plugin.c:2689
 msgid "Serial"
 msgstr "Последовательный порт"
 
-#: plugins/rdp/rdp_plugin.c:2691
+#: plugins/rdp/rdp_plugin.c:2690
 msgid "Local serial path"
 msgstr "Путь локального последовательного порта"
 
-#: plugins/rdp/rdp_plugin.c:2691
+#: plugins/rdp/rdp_plugin.c:2690
 msgid "/dev/ttyS0, /dev/ttyS1, etc."
 msgstr "/dev/ttyS0, /dev/ttyS1, и т.д."
 
-#: plugins/rdp/rdp_plugin.c:2692
+#: plugins/rdp/rdp_plugin.c:2691
 msgid "Local parallel name"
 msgstr "Имя локального параллельного порта"
 
-#: plugins/rdp/rdp_plugin.c:2693
+#: plugins/rdp/rdp_plugin.c:2692
 msgid "Local parallel device"
 msgstr "Локальное параллельное устройство"
 
-#: plugins/rdp/rdp_plugin.c:2694
+#: plugins/rdp/rdp_plugin.c:2693
 msgid "Name of smart card"
 msgstr "Имя смарт-карты"
 
-#: plugins/rdp/rdp_plugin.c:2695
+#: plugins/rdp/rdp_plugin.c:2694
 msgid "Dynamic virtual channel"
 msgstr "Динамический виртуальный канал"
 
-#: plugins/rdp/rdp_plugin.c:2695 plugins/rdp/rdp_plugin.c:2696
+#: plugins/rdp/rdp_plugin.c:2694 plugins/rdp/rdp_plugin.c:2695
 msgid "<channel>[,<options>]"
 msgstr "<channel>[,<options>]"
 
-#: plugins/rdp/rdp_plugin.c:2696
+#: plugins/rdp/rdp_plugin.c:2695
 msgid "Static virtual channel"
 msgstr "Статический виртуальный канал"
 
-#: plugins/rdp/rdp_plugin.c:2697
+#: plugins/rdp/rdp_plugin.c:2696
 #, fuzzy
 #| msgid "USB redirection error"
 msgid "TCP redirection"
 msgstr "Ошибка перенаправления USB"
 
-#: plugins/rdp/rdp_plugin.c:2697
+#: plugins/rdp/rdp_plugin.c:2696
 msgid "/PATH/TO/rdp2tcp"
+msgstr ""
+
+#: plugins/rdp/rdp_plugin.c:2697 plugins/rdp/rdp_settings.c:613
+#, fuzzy
+#| msgid "Reconnection attempt %d of %d…"
+msgid "Reconnect attempts number"
+msgstr "Попытка повторного подключения %d из %d…"
+
+#: plugins/rdp/rdp_plugin.c:2697 plugins/rdp/rdp_settings.c:619
+msgid ""
+"The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
 msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:2698

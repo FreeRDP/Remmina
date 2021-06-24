@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-06-24 13:10+0000\n"
+"POT-Creation-Date: 2021-06-24 21:48+0000\n"
 "PO-Revision-Date: 2021-06-04 14:30+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -324,7 +324,7 @@ msgid "Password to unlock private key"
 msgstr "개인 키 잠금 해제 비밀번호"
 
 #: src/remmina_ssh_plugin.c:1480 plugins/xdmcp/xdmcp_plugin.c:370
-#: plugins/rdp/rdp_plugin.c:2684 plugins/nx/nx_plugin.c:734
+#: plugins/rdp/rdp_plugin.c:2683 plugins/nx/nx_plugin.c:734
 msgid "Start-up program"
 msgstr "시작 프로그램"
 
@@ -1580,7 +1580,7 @@ msgstr "반향(=반송) 주소를 통한 터널링"
 msgid "Same server at port %i"
 msgstr "포트 %i와 같은 서버"
 
-#: src/remmina_file_editor.c:938 plugins/rdp/rdp_plugin.c:2685
+#: src/remmina_file_editor.c:938 plugins/rdp/rdp_plugin.c:2684
 msgid "Start-up path"
 msgstr "시작 프로그램 경로"
 
@@ -2023,7 +2023,7 @@ msgid "Repeater"
 msgstr "리피터"
 
 #: plugins/vnc/vnc_plugin.c:1963 plugins/vnc/vnc_plugin.c:1983
-#: plugins/rdp/rdp_plugin.c:2669 plugins/nx/nx_plugin.c:733
+#: plugins/rdp/rdp_plugin.c:2668 plugins/nx/nx_plugin.c:733
 msgid "Quality"
 msgstr "품질"
 
@@ -2607,86 +2607,75 @@ msgstr "모니터 ID 목록"
 msgid "Network connection type"
 msgstr "새 연결 프로필"
 
-#: plugins/rdp/rdp_plugin.c:2654 plugins/rdp/rdp_settings.c:613
-#, fuzzy
-#| msgid "Reconnection attempt %d of %d…"
-msgid "Reconnect attempts number"
-msgstr "%d (%d 개중에) 번째 재 연결 시도중…"
-
-#: plugins/rdp/rdp_plugin.c:2654 plugins/rdp/rdp_settings.c:619
-msgid ""
-"The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
-msgstr ""
-
-#: plugins/rdp/rdp_plugin.c:2670
+#: plugins/rdp/rdp_plugin.c:2669
 msgid "Security protocol negotiation"
 msgstr "보안 프로토콜 협상"
 
-#: plugins/rdp/rdp_plugin.c:2671
+#: plugins/rdp/rdp_plugin.c:2670
 msgid "Gateway transport type"
 msgstr "게이트웨이 전송 타입"
 
-#: plugins/rdp/rdp_plugin.c:2672
+#: plugins/rdp/rdp_plugin.c:2671
 msgid "FreeRDP log level"
 msgstr "FreeRDP 로그 레벨"
 
-#: plugins/rdp/rdp_plugin.c:2673
+#: plugins/rdp/rdp_plugin.c:2672
 msgid "FreeRDP log filters"
 msgstr "FreeRDP 로그 레벨"
 
-#: plugins/rdp/rdp_plugin.c:2673
+#: plugins/rdp/rdp_plugin.c:2672
 msgid "tag:level[,tag:level[,…]]"
 msgstr "tag:level[,tag:level[,…]]"
 
-#: plugins/rdp/rdp_plugin.c:2674
+#: plugins/rdp/rdp_plugin.c:2673
 msgid "Audio output mode"
 msgstr "오디오 출력 모드"
 
-#: plugins/rdp/rdp_plugin.c:2675
+#: plugins/rdp/rdp_plugin.c:2674
 msgid "Redirect local audio output"
 msgstr "로컬 마이크 리디렉션"
 
-#: plugins/rdp/rdp_plugin.c:2676
+#: plugins/rdp/rdp_plugin.c:2675
 msgid "Redirect local microphone"
 msgstr "로컬 마이크 리디렉션"
 
-#: plugins/rdp/rdp_plugin.c:2677
+#: plugins/rdp/rdp_plugin.c:2676
 msgid "Connection timeout in ms"
 msgstr "'%s'에 연결하는 중…"
 
-#: plugins/rdp/rdp_plugin.c:2678
+#: plugins/rdp/rdp_plugin.c:2677
 msgid "Remote Desktop Gateway server"
 msgstr "원격 데스크톱 게이트웨이 서버"
 
-#: plugins/rdp/rdp_plugin.c:2679
+#: plugins/rdp/rdp_plugin.c:2678
 msgid "Remote Desktop Gateway username"
 msgstr "원격 데스크톱 게이트웨이 사용자 이름"
 
-#: plugins/rdp/rdp_plugin.c:2680
+#: plugins/rdp/rdp_plugin.c:2679
 msgid "Remote Desktop Gateway password"
 msgstr "원격 데스크톱 게이트웨이 비밀번호"
 
-#: plugins/rdp/rdp_plugin.c:2681
+#: plugins/rdp/rdp_plugin.c:2680
 msgid "Remote Desktop Gateway domain"
 msgstr "원격 데스크톱 게이트웨이 도메인"
 
-#: plugins/rdp/rdp_plugin.c:2682
+#: plugins/rdp/rdp_plugin.c:2681
 msgid "Client name"
 msgstr "클라이언트 이름"
 
-#: plugins/rdp/rdp_plugin.c:2683
+#: plugins/rdp/rdp_plugin.c:2682
 msgid "Client build"
 msgstr "클라이언트 빌드"
 
-#: plugins/rdp/rdp_plugin.c:2686
+#: plugins/rdp/rdp_plugin.c:2685
 msgid "Load balance info"
 msgstr "로드 밸런스 정보"
 
-#: plugins/rdp/rdp_plugin.c:2687
+#: plugins/rdp/rdp_plugin.c:2686
 msgid "Override printer drivers"
 msgstr "프린터 드라이버 오버라이드"
 
-#: plugins/rdp/rdp_plugin.c:2687
+#: plugins/rdp/rdp_plugin.c:2686
 msgid ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
@@ -2694,66 +2683,77 @@ msgstr ""
 "\"Samsung_CLX-3300_Series\":\"삼성 CLX-3300 시리즈 PS\";\"캐논 MF410\":\"캐"
 "논 MF410 시리즈 UFR II\""
 
-#: plugins/rdp/rdp_plugin.c:2688
+#: plugins/rdp/rdp_plugin.c:2687
 msgid "USB device redirection"
 msgstr "리디렉션 할 USB 기기 선택"
 
-#: plugins/rdp/rdp_plugin.c:2689
+#: plugins/rdp/rdp_plugin.c:2688
 msgid "Local serial name"
 msgstr "로컬 시리얼 이름"
 
-#: plugins/rdp/rdp_plugin.c:2689
+#: plugins/rdp/rdp_plugin.c:2688
 msgid "COM1, COM2, etc."
 msgstr "COM1, COM2, 기타."
 
-#: plugins/rdp/rdp_plugin.c:2690
+#: plugins/rdp/rdp_plugin.c:2689
 msgid "Local serial driver"
 msgstr "로컬 시리얼 드라이버"
 
-#: plugins/rdp/rdp_plugin.c:2690
+#: plugins/rdp/rdp_plugin.c:2689
 msgid "Serial"
 msgstr "시리얼"
 
-#: plugins/rdp/rdp_plugin.c:2691
+#: plugins/rdp/rdp_plugin.c:2690
 msgid "Local serial path"
 msgstr "로컬 시리얼 경로"
 
-#: plugins/rdp/rdp_plugin.c:2691
+#: plugins/rdp/rdp_plugin.c:2690
 msgid "/dev/ttyS0, /dev/ttyS1, etc."
 msgstr "/dev/ttyS0, /dev/ttyS1, 기타."
 
-#: plugins/rdp/rdp_plugin.c:2692
+#: plugins/rdp/rdp_plugin.c:2691
 msgid "Local parallel name"
 msgstr "로컬 병렬(parallel) 이름"
 
-#: plugins/rdp/rdp_plugin.c:2693
+#: plugins/rdp/rdp_plugin.c:2692
 msgid "Local parallel device"
 msgstr "로컬 병렬(parallel) 기기"
 
-#: plugins/rdp/rdp_plugin.c:2694
+#: plugins/rdp/rdp_plugin.c:2693
 msgid "Name of smart card"
 msgstr "스마트 카드 공유"
 
-#: plugins/rdp/rdp_plugin.c:2695
+#: plugins/rdp/rdp_plugin.c:2694
 msgid "Dynamic virtual channel"
 msgstr "다이나믹 가상 채널"
 
-#: plugins/rdp/rdp_plugin.c:2695 plugins/rdp/rdp_plugin.c:2696
+#: plugins/rdp/rdp_plugin.c:2694 plugins/rdp/rdp_plugin.c:2695
 msgid "<channel>[,<options>]"
 msgstr "<channel>[,<options>]"
 
-#: plugins/rdp/rdp_plugin.c:2696
+#: plugins/rdp/rdp_plugin.c:2695
 msgid "Static virtual channel"
 msgstr "스태틱 가상 채널"
 
-#: plugins/rdp/rdp_plugin.c:2697
+#: plugins/rdp/rdp_plugin.c:2696
 #, fuzzy
 #| msgid "USB redirection error"
 msgid "TCP redirection"
 msgstr "USB 리디렉션 에러"
 
-#: plugins/rdp/rdp_plugin.c:2697
+#: plugins/rdp/rdp_plugin.c:2696
 msgid "/PATH/TO/rdp2tcp"
+msgstr ""
+
+#: plugins/rdp/rdp_plugin.c:2697 plugins/rdp/rdp_settings.c:613
+#, fuzzy
+#| msgid "Reconnection attempt %d of %d…"
+msgid "Reconnect attempts number"
+msgstr "%d (%d 개중에) 번째 재 연결 시도중…"
+
+#: plugins/rdp/rdp_plugin.c:2697 plugins/rdp/rdp_settings.c:619
+msgid ""
+"The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
 msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:2698

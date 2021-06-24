@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-06-24 13:10+0000\n"
+"POT-Creation-Date: 2021-06-24 21:48+0000\n"
 "PO-Revision-Date: 2021-06-24 11:15+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -323,7 +323,7 @@ msgid "Password to unlock private key"
 msgstr "ססמה לשחרור מפתח פרטי"
 
 #: src/remmina_ssh_plugin.c:1480 plugins/xdmcp/xdmcp_plugin.c:370
-#: plugins/rdp/rdp_plugin.c:2684 plugins/nx/nx_plugin.c:734
+#: plugins/rdp/rdp_plugin.c:2683 plugins/nx/nx_plugin.c:734
 msgid "Start-up program"
 msgstr "תכנית להתחלה"
 
@@ -1560,7 +1560,7 @@ msgstr "תעלה דרך כתובת הפניה עצמית"
 msgid "Same server at port %i"
 msgstr "אותו שרת בפתחה %i"
 
-#: src/remmina_file_editor.c:938 plugins/rdp/rdp_plugin.c:2685
+#: src/remmina_file_editor.c:938 plugins/rdp/rdp_plugin.c:2684
 msgid "Start-up path"
 msgstr "נתיב להתחלה"
 
@@ -1981,7 +1981,7 @@ msgid "Repeater"
 msgstr "ממסר"
 
 #: plugins/vnc/vnc_plugin.c:1963 plugins/vnc/vnc_plugin.c:1983
-#: plugins/rdp/rdp_plugin.c:2669 plugins/nx/nx_plugin.c:733
+#: plugins/rdp/rdp_plugin.c:2668 plugins/nx/nx_plugin.c:733
 msgid "Quality"
 msgstr "איכות"
 
@@ -2551,151 +2551,151 @@ msgstr "הצגת מזהי צגים"
 msgid "Network connection type"
 msgstr "סוג חיבור רשת"
 
-#: plugins/rdp/rdp_plugin.c:2654 plugins/rdp/rdp_settings.c:613
+#: plugins/rdp/rdp_plugin.c:2669
+msgid "Security protocol negotiation"
+msgstr "משא ומתן על פרוטוקול אבטחה"
+
+#: plugins/rdp/rdp_plugin.c:2670
+msgid "Gateway transport type"
+msgstr "סוג תעבורת שער גישה"
+
+#: plugins/rdp/rdp_plugin.c:2671
+msgid "FreeRDP log level"
+msgstr "רמת דיווח FreeRDP"
+
+#: plugins/rdp/rdp_plugin.c:2672
+msgid "FreeRDP log filters"
+msgstr "מסנן דיווח FreeRDP"
+
+#: plugins/rdp/rdp_plugin.c:2672
+msgid "tag:level[,tag:level[,…]]"
+msgstr "tag:level[,tag:level[,…]]"
+
+#: plugins/rdp/rdp_plugin.c:2673
+msgid "Audio output mode"
+msgstr "מצב פלט שמע"
+
+#: plugins/rdp/rdp_plugin.c:2674
+msgid "Redirect local audio output"
+msgstr "הפניית פלט שמע מקומי"
+
+#: plugins/rdp/rdp_plugin.c:2675
+msgid "Redirect local microphone"
+msgstr "הפניית מיקרופון מקומי"
+
+#: plugins/rdp/rdp_plugin.c:2676
+msgid "Connection timeout in ms"
+msgstr "משך המתנה לחיבור במילישניות"
+
+#: plugins/rdp/rdp_plugin.c:2677
+msgid "Remote Desktop Gateway server"
+msgstr "שרת שער גישה לשולחן עבודה מרחוק"
+
+#: plugins/rdp/rdp_plugin.c:2678
+msgid "Remote Desktop Gateway username"
+msgstr "שם משתמש לשער גישה לשולחן עבודה מרחוק"
+
+#: plugins/rdp/rdp_plugin.c:2679
+msgid "Remote Desktop Gateway password"
+msgstr "ססמה לגשר גישה לשולחן עבודה מרוחק"
+
+#: plugins/rdp/rdp_plugin.c:2680
+msgid "Remote Desktop Gateway domain"
+msgstr "שם מתחם לגשר גישה לשולחן עבודה מרוחק"
+
+#: plugins/rdp/rdp_plugin.c:2681
+msgid "Client name"
+msgstr "שם הלקוח"
+
+#: plugins/rdp/rdp_plugin.c:2682
+msgid "Client build"
+msgstr "מהדורת הבנייה של הלקוח"
+
+#: plugins/rdp/rdp_plugin.c:2685
+msgid "Load balance info"
+msgstr "פרטי איזון עומס"
+
+#: plugins/rdp/rdp_plugin.c:2686
+msgid "Override printer drivers"
+msgstr "דריסת מנהלי התקן של מדפסות"
+
+#: plugins/rdp/rdp_plugin.c:2686
+msgid ""
+"\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
+"\"Canon MF410 Series UFR II\""
+msgstr ""
+"\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
+"\"Canon MF410 Series UFR II\""
+
+#: plugins/rdp/rdp_plugin.c:2687
+msgid "USB device redirection"
+msgstr "הפניית התקני USB"
+
+#: plugins/rdp/rdp_plugin.c:2688
+msgid "Local serial name"
+msgstr "שם החיבור הטורי המקומי"
+
+#: plugins/rdp/rdp_plugin.c:2688
+msgid "COM1, COM2, etc."
+msgstr "COM1,‏ COM2 וכו׳"
+
+#: plugins/rdp/rdp_plugin.c:2689
+msgid "Local serial driver"
+msgstr "מנהל התקן טורי מקומי"
+
+#: plugins/rdp/rdp_plugin.c:2689
+msgid "Serial"
+msgstr "טורי"
+
+#: plugins/rdp/rdp_plugin.c:2690
+msgid "Local serial path"
+msgstr "נתיב טורי מקומי"
+
+#: plugins/rdp/rdp_plugin.c:2690
+msgid "/dev/ttyS0, /dev/ttyS1, etc."
+msgstr "‎/dev/ttyS0,‏ ‎/dev/ttyS1 וכו׳"
+
+#: plugins/rdp/rdp_plugin.c:2691
+msgid "Local parallel name"
+msgstr "שם מקבילי מקומי"
+
+#: plugins/rdp/rdp_plugin.c:2692
+msgid "Local parallel device"
+msgstr "התקן מקבילי מקומי"
+
+#: plugins/rdp/rdp_plugin.c:2693
+msgid "Name of smart card"
+msgstr "שם הכרטיס החכם"
+
+#: plugins/rdp/rdp_plugin.c:2694
+msgid "Dynamic virtual channel"
+msgstr "ערוץ וירטואלי דינאמי"
+
+#: plugins/rdp/rdp_plugin.c:2694 plugins/rdp/rdp_plugin.c:2695
+msgid "<channel>[,<options>]"
+msgstr "‎<channel>[,<options>]"
+
+#: plugins/rdp/rdp_plugin.c:2695
+msgid "Static virtual channel"
+msgstr "ערוץ וירטואלי סטטי"
+
+#: plugins/rdp/rdp_plugin.c:2696
+msgid "TCP redirection"
+msgstr "הפניית TCP"
+
+#: plugins/rdp/rdp_plugin.c:2696
+msgid "/PATH/TO/rdp2tcp"
+msgstr "/נתיב/אל/rdp2tcp"
+
+#: plugins/rdp/rdp_plugin.c:2697 plugins/rdp/rdp_settings.c:613
 msgid "Reconnect attempts number"
 msgstr "מספר ניסיונות התחברות חוזרים"
 
-#: plugins/rdp/rdp_plugin.c:2654 plugins/rdp/rdp_settings.c:619
+#: plugins/rdp/rdp_plugin.c:2697 plugins/rdp/rdp_settings.c:619
 msgid ""
 "The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
 msgstr ""
 "ניסיונות ההתחברות החוזרים המרבי במקרה של ניתוק מ־RDP (בררת המחדל היא 20)"
-
-#: plugins/rdp/rdp_plugin.c:2670
-msgid "Security protocol negotiation"
-msgstr "משא ומתן על פרוטוקול אבטחה"
-
-#: plugins/rdp/rdp_plugin.c:2671
-msgid "Gateway transport type"
-msgstr "סוג תעבורת שער גישה"
-
-#: plugins/rdp/rdp_plugin.c:2672
-msgid "FreeRDP log level"
-msgstr "רמת דיווח FreeRDP"
-
-#: plugins/rdp/rdp_plugin.c:2673
-msgid "FreeRDP log filters"
-msgstr "מסנן דיווח FreeRDP"
-
-#: plugins/rdp/rdp_plugin.c:2673
-msgid "tag:level[,tag:level[,…]]"
-msgstr "tag:level[,tag:level[,…]]"
-
-#: plugins/rdp/rdp_plugin.c:2674
-msgid "Audio output mode"
-msgstr "מצב פלט שמע"
-
-#: plugins/rdp/rdp_plugin.c:2675
-msgid "Redirect local audio output"
-msgstr "הפניית פלט שמע מקומי"
-
-#: plugins/rdp/rdp_plugin.c:2676
-msgid "Redirect local microphone"
-msgstr "הפניית מיקרופון מקומי"
-
-#: plugins/rdp/rdp_plugin.c:2677
-msgid "Connection timeout in ms"
-msgstr "משך המתנה לחיבור במילישניות"
-
-#: plugins/rdp/rdp_plugin.c:2678
-msgid "Remote Desktop Gateway server"
-msgstr "שרת שער גישה לשולחן עבודה מרחוק"
-
-#: plugins/rdp/rdp_plugin.c:2679
-msgid "Remote Desktop Gateway username"
-msgstr "שם משתמש לשער גישה לשולחן עבודה מרחוק"
-
-#: plugins/rdp/rdp_plugin.c:2680
-msgid "Remote Desktop Gateway password"
-msgstr "ססמה לגשר גישה לשולחן עבודה מרוחק"
-
-#: plugins/rdp/rdp_plugin.c:2681
-msgid "Remote Desktop Gateway domain"
-msgstr "שם מתחם לגשר גישה לשולחן עבודה מרוחק"
-
-#: plugins/rdp/rdp_plugin.c:2682
-msgid "Client name"
-msgstr "שם הלקוח"
-
-#: plugins/rdp/rdp_plugin.c:2683
-msgid "Client build"
-msgstr "מהדורת הבנייה של הלקוח"
-
-#: plugins/rdp/rdp_plugin.c:2686
-msgid "Load balance info"
-msgstr "פרטי איזון עומס"
-
-#: plugins/rdp/rdp_plugin.c:2687
-msgid "Override printer drivers"
-msgstr "דריסת מנהלי התקן של מדפסות"
-
-#: plugins/rdp/rdp_plugin.c:2687
-msgid ""
-"\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
-"\"Canon MF410 Series UFR II\""
-msgstr ""
-"\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
-"\"Canon MF410 Series UFR II\""
-
-#: plugins/rdp/rdp_plugin.c:2688
-msgid "USB device redirection"
-msgstr "הפניית התקני USB"
-
-#: plugins/rdp/rdp_plugin.c:2689
-msgid "Local serial name"
-msgstr "שם החיבור הטורי המקומי"
-
-#: plugins/rdp/rdp_plugin.c:2689
-msgid "COM1, COM2, etc."
-msgstr "COM1,‏ COM2 וכו׳"
-
-#: plugins/rdp/rdp_plugin.c:2690
-msgid "Local serial driver"
-msgstr "מנהל התקן טורי מקומי"
-
-#: plugins/rdp/rdp_plugin.c:2690
-msgid "Serial"
-msgstr "טורי"
-
-#: plugins/rdp/rdp_plugin.c:2691
-msgid "Local serial path"
-msgstr "נתיב טורי מקומי"
-
-#: plugins/rdp/rdp_plugin.c:2691
-msgid "/dev/ttyS0, /dev/ttyS1, etc."
-msgstr "‎/dev/ttyS0,‏ ‎/dev/ttyS1 וכו׳"
-
-#: plugins/rdp/rdp_plugin.c:2692
-msgid "Local parallel name"
-msgstr "שם מקבילי מקומי"
-
-#: plugins/rdp/rdp_plugin.c:2693
-msgid "Local parallel device"
-msgstr "התקן מקבילי מקומי"
-
-#: plugins/rdp/rdp_plugin.c:2694
-msgid "Name of smart card"
-msgstr "שם הכרטיס החכם"
-
-#: plugins/rdp/rdp_plugin.c:2695
-msgid "Dynamic virtual channel"
-msgstr "ערוץ וירטואלי דינאמי"
-
-#: plugins/rdp/rdp_plugin.c:2695 plugins/rdp/rdp_plugin.c:2696
-msgid "<channel>[,<options>]"
-msgstr "‎<channel>[,<options>]"
-
-#: plugins/rdp/rdp_plugin.c:2696
-msgid "Static virtual channel"
-msgstr "ערוץ וירטואלי סטטי"
-
-#: plugins/rdp/rdp_plugin.c:2697
-msgid "TCP redirection"
-msgstr "הפניית TCP"
-
-#: plugins/rdp/rdp_plugin.c:2697
-msgid "/PATH/TO/rdp2tcp"
-msgstr "/נתיב/אל/rdp2tcp"
 
 #: plugins/rdp/rdp_plugin.c:2698
 msgid "Prefer IPv6 AAAA record over IPv4 A record"

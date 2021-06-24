@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-06-24 13:10+0000\n"
+"POT-Creation-Date: 2021-06-24 21:48+0000\n"
 "PO-Revision-Date: 2021-06-24 11:15+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/remmina/"
@@ -327,7 +327,7 @@ msgid "Password to unlock private key"
 msgstr "Пароль розблокування закритого ключа"
 
 #: src/remmina_ssh_plugin.c:1480 plugins/xdmcp/xdmcp_plugin.c:370
-#: plugins/rdp/rdp_plugin.c:2684 plugins/nx/nx_plugin.c:734
+#: plugins/rdp/rdp_plugin.c:2683 plugins/nx/nx_plugin.c:734
 msgid "Start-up program"
 msgstr "Запускати програму"
 
@@ -1582,7 +1582,7 @@ msgstr "Тунелювання через петльову адресу"
 msgid "Same server at port %i"
 msgstr "Цей же сервер на порту %i"
 
-#: src/remmina_file_editor.c:938 plugins/rdp/rdp_plugin.c:2685
+#: src/remmina_file_editor.c:938 plugins/rdp/rdp_plugin.c:2684
 msgid "Start-up path"
 msgstr "Шлях до програми"
 
@@ -2009,7 +2009,7 @@ msgid "Repeater"
 msgstr "Ретранслятор"
 
 #: plugins/vnc/vnc_plugin.c:1963 plugins/vnc/vnc_plugin.c:1983
-#: plugins/rdp/rdp_plugin.c:2669 plugins/nx/nx_plugin.c:733
+#: plugins/rdp/rdp_plugin.c:2668 plugins/nx/nx_plugin.c:733
 msgid "Quality"
 msgstr "Якість"
 
@@ -2584,152 +2584,152 @@ msgstr "Список ідентифікаторів моніторів"
 msgid "Network connection type"
 msgstr "Тип мережевого з'єднання"
 
-#: plugins/rdp/rdp_plugin.c:2654 plugins/rdp/rdp_settings.c:613
+#: plugins/rdp/rdp_plugin.c:2669
+msgid "Security protocol negotiation"
+msgstr "Узгодження протоколу захисту"
+
+#: plugins/rdp/rdp_plugin.c:2670
+msgid "Gateway transport type"
+msgstr "Тип передавання даних шлюзу"
+
+#: plugins/rdp/rdp_plugin.c:2671
+msgid "FreeRDP log level"
+msgstr "Рівень журналювання FreeRDP"
+
+#: plugins/rdp/rdp_plugin.c:2672
+msgid "FreeRDP log filters"
+msgstr "Фільтри журналювання FreeRDP"
+
+#: plugins/rdp/rdp_plugin.c:2672
+msgid "tag:level[,tag:level[,…]]"
+msgstr "мітка:рівень[,мітка:рівень[,...]]"
+
+#: plugins/rdp/rdp_plugin.c:2673
+msgid "Audio output mode"
+msgstr "Режим виведення звуку"
+
+#: plugins/rdp/rdp_plugin.c:2674
+msgid "Redirect local audio output"
+msgstr "Переспрямувати локальне виведення звуку"
+
+#: plugins/rdp/rdp_plugin.c:2675
+msgid "Redirect local microphone"
+msgstr "Переспрямувати локальний мікрофон"
+
+#: plugins/rdp/rdp_plugin.c:2676
+msgid "Connection timeout in ms"
+msgstr "Час очікування на встановлення у мс"
+
+#: plugins/rdp/rdp_plugin.c:2677
+msgid "Remote Desktop Gateway server"
+msgstr "Сервер шлюзу віддаленої стільниці"
+
+#: plugins/rdp/rdp_plugin.c:2678
+msgid "Remote Desktop Gateway username"
+msgstr "Користувач шлюзу віддаленої стільниці"
+
+#: plugins/rdp/rdp_plugin.c:2679
+msgid "Remote Desktop Gateway password"
+msgstr "Пароль шлюзу віддаленої стільниці"
+
+#: plugins/rdp/rdp_plugin.c:2680
+msgid "Remote Desktop Gateway domain"
+msgstr "Домен шлюзу віддаленої стільниці"
+
+#: plugins/rdp/rdp_plugin.c:2681
+msgid "Client name"
+msgstr "Назва клієнта"
+
+#: plugins/rdp/rdp_plugin.c:2682
+msgid "Client build"
+msgstr "Номер збірки клієнта"
+
+#: plugins/rdp/rdp_plugin.c:2685
+msgid "Load balance info"
+msgstr "Інформація балансування навантаження"
+
+#: plugins/rdp/rdp_plugin.c:2686
+msgid "Override printer drivers"
+msgstr "Перевизначення драйверів принтера"
+
+#: plugins/rdp/rdp_plugin.c:2686
+msgid ""
+"\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
+"\"Canon MF410 Series UFR II\""
+msgstr ""
+"\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
+"\"Canon MF410 Series UFR II\""
+
+#: plugins/rdp/rdp_plugin.c:2687
+msgid "USB device redirection"
+msgstr "Переспрямовування пристрою USB"
+
+#: plugins/rdp/rdp_plugin.c:2688
+msgid "Local serial name"
+msgstr "Назва локального послідовного порту"
+
+#: plugins/rdp/rdp_plugin.c:2688
+msgid "COM1, COM2, etc."
+msgstr "COM1, COM2, тощо."
+
+#: plugins/rdp/rdp_plugin.c:2689
+msgid "Local serial driver"
+msgstr "Драйвер локального послідовного порту"
+
+#: plugins/rdp/rdp_plugin.c:2689
+msgid "Serial"
+msgstr "Послідовний порт"
+
+#: plugins/rdp/rdp_plugin.c:2690
+msgid "Local serial path"
+msgstr "Шлях до локального послідовного порту"
+
+#: plugins/rdp/rdp_plugin.c:2690
+msgid "/dev/ttyS0, /dev/ttyS1, etc."
+msgstr "/dev/ttyS0, /dev/ttyS1, тощо."
+
+#: plugins/rdp/rdp_plugin.c:2691
+msgid "Local parallel name"
+msgstr "Назва локального паралельного порту"
+
+#: plugins/rdp/rdp_plugin.c:2692
+msgid "Local parallel device"
+msgstr "Локальний паралельний пристрій"
+
+#: plugins/rdp/rdp_plugin.c:2693
+msgid "Name of smart card"
+msgstr "Назва смарт-картки"
+
+#: plugins/rdp/rdp_plugin.c:2694
+msgid "Dynamic virtual channel"
+msgstr "Динамічний віртуальний канал"
+
+#: plugins/rdp/rdp_plugin.c:2694 plugins/rdp/rdp_plugin.c:2695
+msgid "<channel>[,<options>]"
+msgstr "<канал>[,<параметри>]"
+
+#: plugins/rdp/rdp_plugin.c:2695
+msgid "Static virtual channel"
+msgstr "Статичний віртуальний канал"
+
+#: plugins/rdp/rdp_plugin.c:2696
+msgid "TCP redirection"
+msgstr "Переспрямовування TCP"
+
+#: plugins/rdp/rdp_plugin.c:2696
+msgid "/PATH/TO/rdp2tcp"
+msgstr "/ШЛЯХ/ДО/rdp2tcp"
+
+#: plugins/rdp/rdp_plugin.c:2697 plugins/rdp/rdp_settings.c:613
 msgid "Reconnect attempts number"
 msgstr "Кількість спроб повторного з'єднання"
 
-#: plugins/rdp/rdp_plugin.c:2654 plugins/rdp/rdp_settings.c:619
+#: plugins/rdp/rdp_plugin.c:2697 plugins/rdp/rdp_settings.c:619
 msgid ""
 "The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
 msgstr ""
 "Максимальна кількість спроб повторно встановити з'єднання при роз'єднанні "
 "RDP (типове значення: 20)"
-
-#: plugins/rdp/rdp_plugin.c:2670
-msgid "Security protocol negotiation"
-msgstr "Узгодження протоколу захисту"
-
-#: plugins/rdp/rdp_plugin.c:2671
-msgid "Gateway transport type"
-msgstr "Тип передавання даних шлюзу"
-
-#: plugins/rdp/rdp_plugin.c:2672
-msgid "FreeRDP log level"
-msgstr "Рівень журналювання FreeRDP"
-
-#: plugins/rdp/rdp_plugin.c:2673
-msgid "FreeRDP log filters"
-msgstr "Фільтри журналювання FreeRDP"
-
-#: plugins/rdp/rdp_plugin.c:2673
-msgid "tag:level[,tag:level[,…]]"
-msgstr "мітка:рівень[,мітка:рівень[,...]]"
-
-#: plugins/rdp/rdp_plugin.c:2674
-msgid "Audio output mode"
-msgstr "Режим виведення звуку"
-
-#: plugins/rdp/rdp_plugin.c:2675
-msgid "Redirect local audio output"
-msgstr "Переспрямувати локальне виведення звуку"
-
-#: plugins/rdp/rdp_plugin.c:2676
-msgid "Redirect local microphone"
-msgstr "Переспрямувати локальний мікрофон"
-
-#: plugins/rdp/rdp_plugin.c:2677
-msgid "Connection timeout in ms"
-msgstr "Час очікування на встановлення у мс"
-
-#: plugins/rdp/rdp_plugin.c:2678
-msgid "Remote Desktop Gateway server"
-msgstr "Сервер шлюзу віддаленої стільниці"
-
-#: plugins/rdp/rdp_plugin.c:2679
-msgid "Remote Desktop Gateway username"
-msgstr "Користувач шлюзу віддаленої стільниці"
-
-#: plugins/rdp/rdp_plugin.c:2680
-msgid "Remote Desktop Gateway password"
-msgstr "Пароль шлюзу віддаленої стільниці"
-
-#: plugins/rdp/rdp_plugin.c:2681
-msgid "Remote Desktop Gateway domain"
-msgstr "Домен шлюзу віддаленої стільниці"
-
-#: plugins/rdp/rdp_plugin.c:2682
-msgid "Client name"
-msgstr "Назва клієнта"
-
-#: plugins/rdp/rdp_plugin.c:2683
-msgid "Client build"
-msgstr "Номер збірки клієнта"
-
-#: plugins/rdp/rdp_plugin.c:2686
-msgid "Load balance info"
-msgstr "Інформація балансування навантаження"
-
-#: plugins/rdp/rdp_plugin.c:2687
-msgid "Override printer drivers"
-msgstr "Перевизначення драйверів принтера"
-
-#: plugins/rdp/rdp_plugin.c:2687
-msgid ""
-"\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
-"\"Canon MF410 Series UFR II\""
-msgstr ""
-"\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
-"\"Canon MF410 Series UFR II\""
-
-#: plugins/rdp/rdp_plugin.c:2688
-msgid "USB device redirection"
-msgstr "Переспрямовування пристрою USB"
-
-#: plugins/rdp/rdp_plugin.c:2689
-msgid "Local serial name"
-msgstr "Назва локального послідовного порту"
-
-#: plugins/rdp/rdp_plugin.c:2689
-msgid "COM1, COM2, etc."
-msgstr "COM1, COM2, тощо."
-
-#: plugins/rdp/rdp_plugin.c:2690
-msgid "Local serial driver"
-msgstr "Драйвер локального послідовного порту"
-
-#: plugins/rdp/rdp_plugin.c:2690
-msgid "Serial"
-msgstr "Послідовний порт"
-
-#: plugins/rdp/rdp_plugin.c:2691
-msgid "Local serial path"
-msgstr "Шлях до локального послідовного порту"
-
-#: plugins/rdp/rdp_plugin.c:2691
-msgid "/dev/ttyS0, /dev/ttyS1, etc."
-msgstr "/dev/ttyS0, /dev/ttyS1, тощо."
-
-#: plugins/rdp/rdp_plugin.c:2692
-msgid "Local parallel name"
-msgstr "Назва локального паралельного порту"
-
-#: plugins/rdp/rdp_plugin.c:2693
-msgid "Local parallel device"
-msgstr "Локальний паралельний пристрій"
-
-#: plugins/rdp/rdp_plugin.c:2694
-msgid "Name of smart card"
-msgstr "Назва смарт-картки"
-
-#: plugins/rdp/rdp_plugin.c:2695
-msgid "Dynamic virtual channel"
-msgstr "Динамічний віртуальний канал"
-
-#: plugins/rdp/rdp_plugin.c:2695 plugins/rdp/rdp_plugin.c:2696
-msgid "<channel>[,<options>]"
-msgstr "<канал>[,<параметри>]"
-
-#: plugins/rdp/rdp_plugin.c:2696
-msgid "Static virtual channel"
-msgstr "Статичний віртуальний канал"
-
-#: plugins/rdp/rdp_plugin.c:2697
-msgid "TCP redirection"
-msgstr "Переспрямовування TCP"
-
-#: plugins/rdp/rdp_plugin.c:2697
-msgid "/PATH/TO/rdp2tcp"
-msgstr "/ШЛЯХ/ДО/rdp2tcp"
 
 #: plugins/rdp/rdp_plugin.c:2698
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
