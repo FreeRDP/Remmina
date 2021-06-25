@@ -90,7 +90,6 @@
 #define REMMINA_CONNECTION_TYPE_NONE             0
 
 RemminaPluginService *remmina_plugin_service = NULL;
-static char remmina_rdp_plugin_default_drive_name[] = "RemminaDisk";
 
 static BOOL gfx_h264_available = FALSE;
 
@@ -1286,6 +1285,8 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 	gchar *gateway_host;
 	gint gateway_port;
 	gchar *datapath = NULL;
+	gboolean status = TRUE;
+	gint i;
 
 	gint desktopOrientation, desktopScaleFactor, deviceScaleFactor;
 
@@ -1735,7 +1736,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 		size_t count;
 
 		p = remmina_rdp_CommandLineParseCommaSeparatedValuesEx("rdpsnd", g_strdup(cs), &count);
-		gboolean status = freerdp_client_add_static_channel(rfi->settings, count, p);
+		status = freerdp_client_add_static_channel(rfi->settings, count, p);
 		if (status == 0)
 			status = freerdp_client_add_dynamic_channel(rfi->settings, count, p);
 		g_free(p);
@@ -1814,30 +1815,28 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 	freerdp_settings_set_bool(rfi->settings, FreeRDP_RedirectClipboard, remmina_plugin_service->file_get_int(remminafile, "disableclipboard", FALSE) ? FALSE : TRUE);
 
 	cs = remmina_plugin_service->file_get_string(remminafile, "sharefolder");
+	if (cs != NULL && cs[0] != '\0') {
+		REMMINA_PLUGIN_DEBUG("Share folder set to %s", cs);
+		char **p;
+		size_t count;
+		p = remmina_rdp_CommandLineParseCommaSeparatedValuesEx("drive", g_strdup(cs), &count);
+		status = freerdp_client_add_device_channel(rfi->settings, count, p);
+		g_free(p);
+	}
+	cs = remmina_plugin_service->file_get_string(remminafile, "drive");
+	if (cs != NULL && cs[0] != '\0') {
+		REMMINA_PLUGIN_DEBUG("Redirect directory set to %s", cs);
+		char **p;
+		size_t count;
 
-	if (cs && cs[0] == '/') {
-		RDPDR_DRIVE *drive;
-		gsize sz;
-
-		drive = (RDPDR_DRIVE *)calloc(1, sizeof(RDPDR_DRIVE));
-
-		freerdp_settings_set_bool(rfi->settings, FreeRDP_DeviceRedirection, TRUE);
-		remmina_rdp_load_static_channel_addin(channels, rfi->settings, "rdpdr", rfi->settings);
-
-		s = strrchr(cs, '/');
-		if (s == NULL || s[1] == 0)
-			s = remmina_rdp_plugin_default_drive_name;
-		else
-			s++;
-		sm = g_convert_with_fallback(s, -1, "ascii", "utf-8", "_", NULL, &sz, NULL);
-
-		drive->Type = RDPDR_DTYP_FILESYSTEM;
-		drive->Name = _strdup(sm);
-		drive->Path = _strdup(cs);
-		g_free(sm);
-
-		freerdp_device_collection_add(rfi->settings, (RDPDR_DEVICE *)drive);
-		freerdp_settings_set_bool(rfi->settings, FreeRDP_DeviceRedirection, TRUE);
+		gchar **folders = g_strsplit(cs, ";", -1);
+		for (i = 0; folders[i] != NULL; i++) {
+			REMMINA_PLUGIN_DEBUG("Parsing folder %s", folders[i]);
+			p = remmina_rdp_CommandLineParseCommaSeparatedValuesEx("drive", g_strdup(folders[i]), &count);
+			status = freerdp_client_add_device_channel(rfi->settings, count, p);
+			g_free(p);
+		}
+		g_strfreev(folders);
 	}
 
 	if (remmina_plugin_service->file_get_int(remminafile, "shareprinter", FALSE)) {
@@ -2626,6 +2625,15 @@ static gchar monitorids_tooltip[] =
 	   "  • 270 (portrait flipped)\n"
 	   "\n");
 
+static gchar drive_tooltip[] =
+	N_("Redirect directory <path> as named share <name>.\n"
+	   "  • <name>,<fullpath>[;<name>,<fullpath>[;…]]\n"
+	   "  • MyHome,/home/remminer\n"
+	   "  • /home/remminer\n"
+	   "  • MyHome,/home/remminer;SomePath,/path/to/somepath\n"
+	   "Hotplug support is enabled with:\n"
+	   "  • hotplug,*\n"
+	   "\n");
 
 /* Array of RemminaProtocolSetting for basic settings.
  * Each item is composed by:
@@ -2638,20 +2646,20 @@ static gchar monitorids_tooltip[] =
  */
 static const RemminaProtocolSetting remmina_rdp_basic_settings[] =
 {
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER,	    "server",			NULL,					  FALSE, NULL,		  NULL									},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "username",			N_("Username"),				  FALSE, NULL,		  NULL									},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD,   "password",			N_("Password"),				  FALSE, NULL,		  NULL									},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "domain",			N_("Domain"),				  FALSE, NULL,		  NULL									},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "left-handed",		N_("Left-handed mouse support"),	  TRUE,	 NULL,		  N_("Swap left and right mouse buttons for left-handed mouse support") },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "disable-smooth-scrolling", N_("Disable smooth scrolling"),		  TRUE,	 NULL,		  NULL									},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "multimon",			N_("Enable multi monitor"),		  TRUE,	 NULL,		  NULL									},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "span",			N_("Span screen over multiple monitors"), TRUE,	 NULL,		  NULL									},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "monitorids",		N_("List monitor IDs"),			  FALSE, NULL,		  monitorids_tooltip							},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION, "resolution",		NULL,					  FALSE, NULL,		  NULL									},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	    "colordepth",		N_("Colour depth"),			  FALSE, colordepth_list, NULL									},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	    "network",			N_("Network connection type"),		  FALSE, network_list,	  network_tooltip							},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_FOLDER,	    "sharefolder",		N_("Share folder"),			  FALSE, NULL,		  NULL									},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	    NULL,			NULL,					  FALSE, NULL,		  NULL									}
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER,	    "server",			NULL,					  FALSE, NULL,		  NULL										},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "username",			N_("Username"),				  FALSE, NULL,		  NULL										},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD,   "password",			N_("Password"),				  FALSE, NULL,		  NULL										},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "domain",			N_("Domain"),				  FALSE, NULL,		  NULL										},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_FOLDER,	    "sharefolder",		N_("Share folder"),			  FALSE, NULL,		  N_("Use \"Redirect directory\" in the advanced tab for multiple directories") },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "left-handed",		N_("Left-handed mouse support"),	  TRUE,	 NULL,		  N_("Swap left and right mouse buttons for left-handed mouse support")		},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "disable-smooth-scrolling", N_("Disable smooth scrolling"),		  TRUE,	 NULL,		  NULL										},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "multimon",			N_("Enable multi monitor"),		  TRUE,	 NULL,		  NULL										},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "span",			N_("Span screen over multiple monitors"), TRUE,	 NULL,		  NULL										},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "monitorids",		N_("List monitor IDs"),			  FALSE, NULL,		  monitorids_tooltip								},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION, "resolution",		NULL,					  FALSE, NULL,		  NULL										},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	    "colordepth",		N_("Colour depth"),			  FALSE, colordepth_list, NULL										},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	    "network",			N_("Network connection type"),		  FALSE, network_list,	  network_tooltip								},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	    NULL,			NULL,					  FALSE, NULL,		  NULL										}
 };
 
 /* Array of RemminaProtocolSetting for advanced settings.
@@ -2678,6 +2686,7 @@ static const RemminaProtocolSetting remmina_rdp_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "gateway_username",	    N_("Remote Desktop Gateway username"),		 FALSE, NULL,		  NULL														 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "gateway_password",	    N_("Remote Desktop Gateway password"),		 FALSE, NULL,		  NULL														 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "gateway_domain",	    N_("Remote Desktop Gateway domain"),		 FALSE, NULL,		  NULL														 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "drive",		    N_("Redirect directory"),				 FALSE, NULL,		  drive_tooltip													 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "clientname",		    N_("Client name"),					 FALSE, NULL,		  NULL														 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_COMBO,	  "clientbuild",	    N_("Client build"),					 FALSE, clientbuild_list, clientbuild_tooltip												 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "exec",		    N_("Start-up program"),				 FALSE, NULL,		  NULL														 },
