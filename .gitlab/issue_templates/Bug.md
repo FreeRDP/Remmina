@@ -6,6 +6,10 @@ You can also ask questions via
 * [General discussion mailing list](https://lists.remmina.org/listinfo/users).
 * [Reddit](https://reddit.com/r/Remmina)
 
+## Debuggin documentation
+
+See our wiki at https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging
+
 ## Local System Description
 
 * Client (OS name and version):
