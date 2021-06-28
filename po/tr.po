@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-06-25 11:38+0000\n"
-"PO-Revision-Date: 2021-06-21 20:56+0000\n"
+"POT-Creation-Date: 2021-06-28 07:59+0000\n"
+"PO-Revision-Date: 2021-06-28 08:00+0000\n"
 "Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/remmina/remmina/"
 "tr/>\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.7\n"
+"X-Generator: Weblate 4.7.1-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:04+0000\n"
 
 #: src/remmina_protocol_widget.c:283 src/remmina_sftp_plugin.c:328
@@ -984,11 +984,11 @@ msgstr "_Kaydet"
 msgid "This protocol does not support exporting."
 msgstr "Bu iletişim kuralı dışarı çıkartmayı desteklemiyor."
 
-#: src/remmina_main.c:1333
+#: src/remmina_main.c:1335
 msgid "Remmina Remote Desktop Client"
 msgstr "Remmina Uzak Masaüstü İstemcisi"
 
-#: src/remmina_main.c:1335
+#: src/remmina_main.c:1337
 msgid "Remmina Kiosk"
 msgstr "Remmina Kiosk"
 
@@ -2554,10 +2554,18 @@ msgid ""
 "  • hotplug,*\n"
 "\n"
 msgstr ""
+"<yol> dizinini <ad> ile adlandırılmış paylaşım olarak yönlendir.\n"
+"  • <ad>,<tamyol>[;<ad>,<tamyol>[;…]]\n"
+"  • Evim,/home/remminer\n"
+"  • /home/remminer\n"
+"  • Evim,/home/remminer;BirYol,/herhangibir/yola/gidenyol\n"
+"Tak çıkar desteği şununla etkinleştirilebilir:\n"
+"  • hotplug,*\n"
+"\n"
 
 #: plugins/rdp/rdp_plugin.c:2653
 msgid "Use \"Redirect directory\" in the advanced tab for multiple directories"
-msgstr ""
+msgstr "Çoklu dizinler için gelişmiş sekmesindeki \"Dizin yönlendir\"i kullan"
 
 #: plugins/rdp/rdp_plugin.c:2654
 msgid "Left-handed mouse support"
@@ -2638,7 +2646,7 @@ msgstr "Uzak Masaüstü Ağ Geçidi alan adı"
 
 #: plugins/rdp/rdp_plugin.c:2689
 msgid "Redirect directory"
-msgstr ""
+msgstr "Dizin yönlendir"
 
 #: plugins/rdp/rdp_plugin.c:2690
 msgid "Client name"
@@ -2710,32 +2718,30 @@ msgstr "Dinamik sanal kanal"
 
 #: plugins/rdp/rdp_plugin.c:2703 plugins/rdp/rdp_plugin.c:2704
 msgid "<channel>[,<options>]"
-msgstr "<channel>[,<options>]"
+msgstr "<kanal>[,<seçenekler>]"
 
 #: plugins/rdp/rdp_plugin.c:2704
 msgid "Static virtual channel"
 msgstr "Statik sanal kanal"
 
 #: plugins/rdp/rdp_plugin.c:2705
-#, fuzzy
-#| msgid "USB redirection error"
 msgid "TCP redirection"
-msgstr "USB yönlendirme hatası"
+msgstr "TCP yönlendirme"
 
 #: plugins/rdp/rdp_plugin.c:2705
 msgid "/PATH/TO/rdp2tcp"
-msgstr ""
+msgstr "/SISTEM/YOLU/rdp2tcp"
 
 #: plugins/rdp/rdp_plugin.c:2706 plugins/rdp/rdp_settings.c:613
-#, fuzzy
-#| msgid "Reconnection attempt %d of %d…"
 msgid "Reconnect attempts number"
-msgstr "Yeniden bağlanma girişimi %d / %d…"
+msgstr "Yeniden bağlanma girişimi sayısı"
 
 #: plugins/rdp/rdp_plugin.c:2706 plugins/rdp/rdp_settings.c:619
 msgid ""
 "The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
 msgstr ""
+"RDP bağlantı kopuşuna değin azami yeniden bağlanma girişimi sayısı "
+"(öntanımlı: 20)"
 
 #: plugins/rdp/rdp_plugin.c:2707
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
@@ -2910,10 +2916,8 @@ msgid "Input device settings"
 msgstr "Girdi aygıtı ayarları"
 
 #: plugins/rdp/rdp_settings.c:608
-#, fuzzy
-#| msgid "Quality settings"
 msgid "General settings"
-msgstr "Kalite ayarları"
+msgstr "Genel ayarlar"
 
 #: plugins/rdp/rdp_event.c:344
 #, c-format

@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-06-25 11:38+0000\n"
-"PO-Revision-Date: 2021-06-17 08:20+0000\n"
+"POT-Creation-Date: 2021-06-28 07:59+0000\n"
+"PO-Revision-Date: 2021-06-28 13:21+0000\n"
 "Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/remmina/remmina/"
 "it/>\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.7\n"
+"X-Generator: Weblate 4.7.1-dev\n"
 "X-Launchpad-Export-Date: 2011-01-18 05:16+0000\n"
 
 #: src/remmina_protocol_widget.c:283 src/remmina_sftp_plugin.c:328
@@ -990,11 +990,11 @@ msgstr "_Salva"
 msgid "This protocol does not support exporting."
 msgstr "Questo protocollo non supporta l’export."
 
-#: src/remmina_main.c:1333
+#: src/remmina_main.c:1335
 msgid "Remmina Remote Desktop Client"
 msgstr "Client di connessione a desktop remoti Remmina"
 
-#: src/remmina_main.c:1335
+#: src/remmina_main.c:1337
 msgid "Remmina Kiosk"
 msgstr "Remmina Chiosco"
 
@@ -2036,10 +2036,8 @@ msgstr "Impedisci l'interazione locale sul server"
 
 #: plugins/vnc/vnc_plugin.c:2006 plugins/rdp/rdp_plugin.c:2655
 #: plugins/rdp/rdp_settings.c:598
-#, fuzzy
-#| msgid "Turn on smooth scrolling"
 msgid "Disable smooth scrolling"
-msgstr "Abilita lo scorrimento uniforme"
+msgstr "Disabilita Scorrimento Fluido"
 
 #: plugins/vnc/vnc_plugin.c:2020
 msgid "Open Chat…"
@@ -2575,10 +2573,19 @@ msgid ""
 "  • hotplug,*\n"
 "\n"
 msgstr ""
+"Reindirizza la directory <path> come condivisione <nome>.\n"
+"  - <nome>,<percorso completo>[;<nome>,<percorso completo>[;...]]\n"
+"  - MyHome,/home/remminer\n"
+"  - /home/remminer\n"
+"  - MyHome,/home/remminer;SomePath,/path/to/somepath\n"
+"Il supporto Hotplug è abilitato con:\n"
+"  - hotplug,*\n"
+"\n"
 
 #: plugins/rdp/rdp_plugin.c:2653
 msgid "Use \"Redirect directory\" in the advanced tab for multiple directories"
 msgstr ""
+"Utilizzare \"Reindirizza directory\" nella scheda avanzata per più directory"
 
 #: plugins/rdp/rdp_plugin.c:2654
 msgid "Left-handed mouse support"
@@ -2658,7 +2665,7 @@ msgstr "Dominio Remote Desktop Gateway"
 
 #: plugins/rdp/rdp_plugin.c:2689
 msgid "Redirect directory"
-msgstr ""
+msgstr "Reindirizza directory"
 
 #: plugins/rdp/rdp_plugin.c:2690
 msgid "Client name"
@@ -2736,25 +2743,23 @@ msgid "Static virtual channel"
 msgstr "Canale virtuale statico"
 
 #: plugins/rdp/rdp_plugin.c:2705
-#, fuzzy
-#| msgid "USB redirection error"
 msgid "TCP redirection"
-msgstr "Errore di reindirizzamento USB"
+msgstr "Reindirizzamento TCP"
 
 #: plugins/rdp/rdp_plugin.c:2705
 msgid "/PATH/TO/rdp2tcp"
-msgstr ""
+msgstr "/PERCORSO/A/rdp2tcp"
 
 #: plugins/rdp/rdp_plugin.c:2706 plugins/rdp/rdp_settings.c:613
-#, fuzzy
-#| msgid "Reconnection attempt %d of %d…"
 msgid "Reconnect attempts number"
-msgstr "Tentativo di riconnessione %d di %d…"
+msgstr "Numero tentativi di riconnessione"
 
 #: plugins/rdp/rdp_plugin.c:2706 plugins/rdp/rdp_settings.c:619
 msgid ""
 "The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
 msgstr ""
+"Numero massimo di tentativi di riconnessione in caso di disconnessione RDP ("
+"impostazione predefinita: 20)"
 
 #: plugins/rdp/rdp_plugin.c:2707
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
@@ -2925,16 +2930,12 @@ msgid "Desktop orientation"
 msgstr "Orientamento del desktop"
 
 #: plugins/rdp/rdp_settings.c:592
-#, fuzzy
-#| msgid "Use server settings"
 msgid "Input device settings"
-msgstr "Utilizzare le impostazioni del server"
+msgstr "Impostazioni del dispositivo di input"
 
 #: plugins/rdp/rdp_settings.c:608
-#, fuzzy
-#| msgid "Quality settings"
 msgid "General settings"
-msgstr "Impostazioni qualità"
+msgstr "Impostazioni generali"
 
 #: plugins/rdp/rdp_event.c:344
 #, c-format
@@ -3487,8 +3488,7 @@ msgstr "Cartella dati Remmina"
 
 #: data/ui/remmina_preferences.glade:294
 msgid "Choose a folder to save connection profiles from Remmina in."
-msgstr ""
-"Scegli una cartella in cui salvare i profili di connessione di Remmina."
+msgstr "Scegli una cartella in cui salvare i profili di connessione di Remmina."
 
 #: data/ui/remmina_preferences.glade:312
 msgid "Remember last view for each connection"

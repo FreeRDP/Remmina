@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-06-25 11:38+0000\n"
-"PO-Revision-Date: 2021-06-23 11:14+0000\n"
+"POT-Creation-Date: 2021-06-28 07:59+0000\n"
+"PO-Revision-Date: 2021-06-28 08:00+0000\n"
 "Last-Translator: Johannes Weberhofer <jweberhofer@weberhofer.at>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/remmina/remmina/"
 "de/>\n"
@@ -990,11 +990,11 @@ msgstr "_Speichern"
 msgid "This protocol does not support exporting."
 msgstr "Das Protokoll unterstützt den Export nicht."
 
-#: src/remmina_main.c:1333
+#: src/remmina_main.c:1335
 msgid "Remmina Remote Desktop Client"
 msgstr "Remmina Remote-Desktop-Client"
 
-#: src/remmina_main.c:1335
+#: src/remmina_main.c:1337
 msgid "Remmina Kiosk"
 msgstr "Remmina-Kiosk"
 
@@ -2577,10 +2577,20 @@ msgid ""
 "  • hotplug,*\n"
 "\n"
 msgstr ""
+"Umleiten des Ordners <Pfad> als benannte Freigabe <Freigabename>.\n"
+"  • <Freigabename>,<fullpath>[;<Freigabename>,<fullpath>[;…]]\n"
+"  • MeinStartOrdner,/home/meinName\n"
+"  • /home/meinName\n"
+"  • MeinStartOrdner,/home/meinName;einAndererOrdner,/ordner/irgend/wo\n"
+"Die Hot-Plug Unterstützung kann folgendermaßen aktiviert werden:\n"
+"  • hotplug,*\n"
+"\n"
 
 #: plugins/rdp/rdp_plugin.c:2653
 msgid "Use \"Redirect directory\" in the advanced tab for multiple directories"
 msgstr ""
+"Benutzen Sie die \"Ordner-Umleitung\" in der erweiterten Konfiguration um "
+"mehrere Ordner umzuleiten"
 
 #: plugins/rdp/rdp_plugin.c:2654
 msgid "Left-handed mouse support"
@@ -2660,7 +2670,7 @@ msgstr "Remote-Desktop-Gateway Domäne"
 
 #: plugins/rdp/rdp_plugin.c:2689
 msgid "Redirect directory"
-msgstr ""
+msgstr "Umleitungs-Ordner"
 
 #: plugins/rdp/rdp_plugin.c:2690
 msgid "Client name"
@@ -2739,25 +2749,23 @@ msgid "Static virtual channel"
 msgstr "Statischer virtueller Kanal"
 
 #: plugins/rdp/rdp_plugin.c:2705
-#, fuzzy
-#| msgid "USB redirection error"
 msgid "TCP redirection"
-msgstr "USB Weiterleitungsfehler"
+msgstr "TCP-Umleitung"
 
 #: plugins/rdp/rdp_plugin.c:2705
 msgid "/PATH/TO/rdp2tcp"
-msgstr ""
+msgstr "/Pfad/zu/rdp2tcp"
 
 #: plugins/rdp/rdp_plugin.c:2706 plugins/rdp/rdp_settings.c:613
-#, fuzzy
-#| msgid "Reconnection attempt %d of %d…"
 msgid "Reconnect attempts number"
-msgstr "Wiederherstellen der Verbindung. Versuch %d von %d…"
+msgstr "Anzahl der Wiederherstellungsversuche"
 
 #: plugins/rdp/rdp_plugin.c:2706 plugins/rdp/rdp_settings.c:619
 msgid ""
 "The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
 msgstr ""
+"Die maximale Anzahl der Wiederherstellungsversuche nach einem RDP-"
+"Verbindungsabbruch (Standard: 20)"
 
 #: plugins/rdp/rdp_plugin.c:2707
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
@@ -2932,10 +2940,8 @@ msgid "Input device settings"
 msgstr "Einstellungen der Eingabegeräte"
 
 #: plugins/rdp/rdp_settings.c:608
-#, fuzzy
-#| msgid "Quality settings"
 msgid "General settings"
-msgstr "Qualitätsstufen"
+msgstr "Allgemeine Einstellungen"
 
 #: plugins/rdp/rdp_event.c:344
 #, c-format
