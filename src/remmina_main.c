@@ -1186,8 +1186,10 @@ void remmina_main_on_action_search_toggle(GSimpleAction *action, GVariant *param
 	if (toggle_status) {
 		REMMINA_DEBUG("Search toggle is active");
 		gtk_widget_grab_focus (GTK_WIDGET(remminamain->entry_quick_connect_server));
-	} else
-		REMMINA_DEBUG("Search toggle is not active");
+	} else {
+		REMMINA_DEBUG("Search toggle is not active, focus is tree_files_list");
+		gtk_widget_grab_focus (GTK_WIDGET(remminamain->tree_files_list));
+	}
 }
 
 void remmina_main_on_accel_search_toggle(RemminaMain *remminamain)
@@ -1368,6 +1370,8 @@ static void remmina_main_init(void)
 		remmina_main_selection_func, NULL, NULL);
 	/** @todo Set entry_quick_connect_server as default search entry. Weirdly. This does not work yet. */
 	gtk_tree_view_set_search_entry(remminamain->tree_files_list, GTK_ENTRY(remminamain->entry_quick_connect_server));
+	if (remmina_pref.hide_searchbar)
+		gtk_widget_grab_focus (GTK_WIDGET(remminamain->tree_files_list));
 	/* Load the files list */
 	remmina_main_load_files();
 
