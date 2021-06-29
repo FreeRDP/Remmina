@@ -13,9 +13,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-06-29 14:24+0000\n"
-"PO-Revision-Date: 2021-06-16 22:31+0000\n"
-"Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
+"POT-Creation-Date: 2021-06-29 21:55+0000\n"
+"PO-Revision-Date: 2021-06-29 21:55+0000\n"
+"Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/remmina/remmina/"
 "fi/>\n"
 "Language: fi\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.7-dev\n"
+"X-Generator: Weblate 4.7.1-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
 
 #: src/remmina_protocol_widget.c:283 src/remmina_sftp_plugin.c:328
@@ -458,13 +458,12 @@ msgstr ""
 #: src/remmina_public.c:355
 #, c-format
 msgid "Creating UNIX socket failed: %s"
-msgstr ""
+msgstr "UNIX-pistokkeen luominen epäonnistui: %s"
 
 #: src/remmina_public.c:361
-#, fuzzy, c-format
-#| msgid "VNC connection failed: %s"
+#, c-format
 msgid "Connecting to UNIX socket failed: %s"
-msgstr "VNC-yhteys epäonnistui: %s"
+msgstr "Yhdistäminen UNIX-pistokkeeseen epäonnistui: %s"
 
 #: src/remmina_public.c:738
 msgid "Please enter format 'widthxheight'."
@@ -764,34 +763,34 @@ msgstr ""
 "remmina --set-option username --set-option resolution_mode=2 --set-option "
 "password\n"
 
-#: src/remmina_icon.c:132
+#: src/remmina_icon.c:128
 msgid "Open Main Window"
 msgstr "Avaa pääikkuna"
 
-#: src/remmina_icon.c:137 data/ui/remmina_main.glade:254
+#: src/remmina_icon.c:133 data/ui/remmina_main.glade:254
 msgid "_Preferences"
 msgstr "_Asetukset"
 
-#: src/remmina_icon.c:142
+#: src/remmina_icon.c:138
 msgid "_About"
 msgstr "_Tietoja"
 
-#: src/remmina_icon.c:152
+#: src/remmina_icon.c:148
 msgid "Enable Service Discovery"
 msgstr "Käytä Service Discovery -etsintäprotokollaa"
 
-#: src/remmina_icon.c:164 data/ui/remmina_main.glade:404
+#: src/remmina_icon.c:160 data/ui/remmina_main.glade:404
 msgid "_Quit"
 msgstr "_Lopeta"
 
 #. TRANSLATORS: Applet name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
 #. TRANSLATORS: Applet Name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
-#: src/remmina_icon.c:292 src/remmina_icon.c:442
+#: src/remmina_icon.c:284 src/remmina_icon.c:416
 msgid "Remmina Applet"
 msgstr "Remmina-sovelma"
 
 #. TRANSLATORS: Applet comment/description as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
-#: src/remmina_icon.c:294 src/remmina_icon.c:444
+#: src/remmina_icon.c:286 src/remmina_icon.c:418
 msgid "Connect to remote desktops through the applet menu"
 msgstr "Yhdistä etätyöpöytiin käyttäen sovelmavalikkoa"
 
@@ -1507,24 +1506,16 @@ msgstr ""
 "</big></tt>"
 
 #: src/remmina_file_editor.c:83
-#, fuzzy
-#| msgid ""
-#| "<tt><big>Supported formats\n"
-#| "• server\n"
-#| "• server:port\n"
-#| "• [server]:port\n"
-#| "• username@server:port (SSH protocol only)</big></tt>"
 msgid ""
 "<big>Supported formats\n"
 "• server\n"
 "• server[:port]\n"
 "• username@server[:port] (SSH protocol only)</big>"
 msgstr ""
-"<tt><big>Tuetut muodot\n"
+"<big>Tuetut muodot\n"
 "• palvelin\n"
-"• palvelin:portti\n"
-"• [palvelin]:portti\n"
-"• käyttäjätunnus@palvelin:portti (vain SSH-protokolla)</big></tt>"
+"• palvelin[:portti]\n"
+"• käyttäjätunnus@palvelin[:portti] (vain SSH-protokolla)</big>"
 
 #: src/remmina_file_editor.c:149
 msgid "Choose a Remote Desktop Server"
@@ -1681,10 +1672,8 @@ msgid "_Clear"
 msgstr "_Tyhjennä"
 
 #: plugins/gvnc/gvnc_plugin_config.h:40
-#, fuzzy
-#| msgid "Remmina VNC Plugin"
 msgid "Remmina VNC plugin for GNOME and KVM"
-msgstr "Remminan VNC-liitännäinen"
+msgstr "Remminan VNC-liitännäinen Gnomelle ja KVM:lle"
 
 #: plugins/gvnc/gvnc_plugin.c:477
 #, fuzzy, c-format
@@ -1693,50 +1682,37 @@ msgid "Unsupported authentication type %u"
 msgstr "Todennustyyppi"
 
 #: plugins/gvnc/gvnc_plugin.c:489
-#, fuzzy, c-format
-#| msgid "Authentication type"
+#, c-format
 msgid "Authentication failure: %s"
-msgstr "Todennustyyppi"
+msgstr "Todennusvirhe: %s"
 
 #: plugins/gvnc/gvnc_plugin.c:539 plugins/vnc/vnc_plugin.c:825
 msgid "Enter VNC authentication credentials"
 msgstr "Syötä NX-todennustiedot"
 
 #: plugins/gvnc/gvnc_plugin.c:820
-#, fuzzy
-#| msgid "Use system proxy settings"
 msgid "Use server settings"
-msgstr "Käytä järjestelmän välityspalvelimen asetuksia"
+msgstr "Käytä palvelimen asetuksia"
 
 #: plugins/gvnc/gvnc_plugin.c:821
-#, fuzzy
-#| msgid "True colour (24 bit)"
 msgid "True colour (24 bits)"
 msgstr "True colour (24 bit)"
 
 #: plugins/gvnc/gvnc_plugin.c:822
-#, fuzzy
-#| msgid "High colour (16 bit)"
 msgid "High colour (16 bits)"
 msgstr "High colour (16 bit)"
 
 #: plugins/gvnc/gvnc_plugin.c:823
-#, fuzzy
-#| msgid "High colour (16 bit)"
 msgid "Low colour (8 bits)"
-msgstr "High colour (16 bit)"
+msgstr "Low colour (8 bit)"
 
 #: plugins/gvnc/gvnc_plugin.c:824
-#, fuzzy
-#| msgid "True colour (24 bit)"
 msgid "Ultra low colour (3 bits)"
-msgstr "True colour (24 bit)"
+msgstr "Ultra low colour (3 bit)"
 
 #: plugins/gvnc/gvnc_plugin.c:839
-#, fuzzy
-#| msgid "Enter VNC password"
 msgid "VNC password"
-msgstr "Anna VNC-salasana"
+msgstr "VNC-salasana"
 
 #: plugins/gvnc/gvnc_plugin.c:840 plugins/vnc/vnc_plugin.c:1962
 #: plugins/vnc/vnc_plugin.c:1982 plugins/xdmcp/xdmcp_plugin.c:369
@@ -1745,16 +1721,12 @@ msgid "Colour depth"
 msgstr "Värisyvyys"
 
 #: plugins/gvnc/gvnc_plugin.c:841
-#, fuzzy
-#| msgid "SSH compression"
 msgid "Use JPEG Compression"
-msgstr "SSH-pakkaus"
+msgstr "Käytä JPEG-pakkausta"
 
 #: plugins/gvnc/gvnc_plugin.c:841
-#, fuzzy
-#| msgid "Browse the network to find a %s server"
 msgid "This might not work on all VNC servers"
-msgstr "Selaa verkkoa löytääksesi %s-palvelimen"
+msgstr "Tämä ei välttämättä toimi kaikilla VNC-palvelimilla"
 
 #: plugins/gvnc/gvnc_plugin.c:842
 msgid "Enable GTK-VNC debug"
@@ -1786,10 +1758,8 @@ msgid "View only"
 msgstr "Näytä vain"
 
 #: plugins/gvnc/gvnc_plugin.c:862
-#, fuzzy
-#| msgid "Per connection"
 msgid "Shared connection"
-msgstr "Yhteyttä kohti"
+msgstr "Jaettu yhteys"
 
 #: plugins/gvnc/gvnc_plugin.c:862
 msgid ""
@@ -1798,16 +1768,12 @@ msgid ""
 msgstr ""
 
 #: plugins/gvnc/gvnc_plugin.c:872
-#, fuzzy
-#| msgid "Send Ctrl+Alt+Del"
 msgid "Send Ctrl+Alt+_Del"
-msgstr "Lähetä Ctrl+Alt+Del"
+msgstr "Lähetä Ctrl+Alt+_Del"
 
 #: plugins/gvnc/gvnc_plugin.c:873
-#, fuzzy
-#| msgid "Send Ctrl+Alt+Del"
 msgid "Send Ctrl+Alt+_Backspace"
-msgstr "Lähetä Ctrl+Alt+Del"
+msgstr "Lähetä Ctrl+Alt+_Backspace"
 
 #: plugins/gvnc/gvnc_plugin.c:874
 msgid "Send Ctrl+Alt+_F1"
@@ -1859,17 +1825,15 @@ msgstr "Lähetä Ctrl+Alt+_F12"
 
 #: plugins/gvnc/gvnc_plugin.c:887
 msgid "Reboot remote host"
-msgstr ""
+msgstr "Käynnistä etäpää uudelleen"
 
 #: plugins/gvnc/gvnc_plugin.c:888
 msgid "Reset remote host (hard reboot)"
-msgstr ""
+msgstr "Nollaa etäpää (pakotettu uudelleenkäynnistys)"
 
 #: plugins/gvnc/gvnc_plugin.c:889
-#, fuzzy
-#| msgid "Show remote cursor"
 msgid "Shutdown remote host"
-msgstr "Näytä etäpään kohdistin"
+msgstr "Sammuta etäpää"
 
 #: plugins/exec/exec_plugin_config.h:41
 msgid "Execute a command"
@@ -2073,10 +2037,8 @@ msgstr "Estä paikallinen vuorovaikutus palvelimella"
 
 #: plugins/vnc/vnc_plugin.c:2006 plugins/rdp/rdp_plugin.c:2655
 #: plugins/rdp/rdp_settings.c:598
-#, fuzzy
-#| msgid "Turn on smooth scrolling"
 msgid "Disable smooth scrolling"
-msgstr "Ota tasainen vieritys käyttöön"
+msgstr "Poista tasainen vieritys käytöstä"
 
 #: plugins/vnc/vnc_plugin.c:2020
 msgid "Open Chat…"
@@ -2785,10 +2747,8 @@ msgid "Static virtual channel"
 msgstr "Staattinen virtuaalikanava"
 
 #: plugins/rdp/rdp_plugin.c:2705
-#, fuzzy
-#| msgid "USB redirection error"
 msgid "TCP redirection"
-msgstr "USB-uudelleenohjausvirhe"
+msgstr "TCP-uudelleenohjaus"
 
 #: plugins/rdp/rdp_plugin.c:2705
 msgid "/PATH/TO/rdp2tcp"
@@ -2974,16 +2934,12 @@ msgid "Desktop orientation"
 msgstr "Työpöydän suunta"
 
 #: plugins/rdp/rdp_settings.c:592
-#, fuzzy
-#| msgid "Use system proxy settings"
 msgid "Input device settings"
-msgstr "Käytä järjestelmän välityspalvelimen asetuksia"
+msgstr "Syöttölaitteen asetukset"
 
 #: plugins/rdp/rdp_settings.c:608
-#, fuzzy
-#| msgid "Quality settings"
 msgid "General settings"
-msgstr "Laatuasetukset"
+msgstr "Yleiset asetukset"
 
 #: plugins/rdp/rdp_event.c:344
 #, c-format
@@ -3529,10 +3485,8 @@ msgid "Remmina data folder"
 msgstr "Remminan datakansio"
 
 #: data/ui/remmina_preferences.glade:294
-#, fuzzy
-#| msgid "Choose a folder to save screenshots from Remmina in."
 msgid "Choose a folder to save connection profiles from Remmina in."
-msgstr "Valitse kansio, johon Remmina tallentaa kuvakaappauksen."
+msgstr "Valitse kansio, johon Remmina tallentaa yhteysprofiilit."
 
 #: data/ui/remmina_preferences.glade:312
 msgid "Remember last view for each connection"
@@ -3611,7 +3565,7 @@ msgstr "Täysinäyttöinen näyttö"
 #: data/ui/remmina_preferences.glade:620
 msgctxt "Appearance preferences"
 msgid "Tabs grouping"
-msgstr ""
+msgstr "Välilehtien ryhmittely"
 
 #: data/ui/remmina_preferences.glade:634
 msgid "By group"
@@ -3843,10 +3797,8 @@ msgid "Scrollback lines"
 msgstr "Vieritysrivit"
 
 #: data/ui/remmina_preferences.glade:1900
-#, fuzzy
-#| msgid "Shortcut for copying to clipboard"
 msgid "Shortcuts for copying and pasting"
-msgstr "Pikanäppäin leikepöydälle kopioimiseksi"
+msgstr "Pikanäppäimet leikepöydälle kopioimiseksi ja liittämiseksi"
 
 #: data/ui/remmina_preferences.glade:1913
 msgid "Select all shortcuts"
@@ -3982,16 +3934,12 @@ msgid "Foreground colour"
 msgstr "Edustan väri"
 
 #: data/ui/remmina_preferences.glade:2379
-#, fuzzy
-#| msgid "Increase font size"
 msgid "Increase and decrease font size"
-msgstr "Suurenna fontin kokoa"
+msgstr "Suurenna ja pienennä fontin kokoa"
 
 #: data/ui/remmina_preferences.glade:2408
-#, fuzzy
-#| msgid "Search text"
 msgid "Search text shortcut"
-msgstr "Etsi tekstiä"
+msgstr "Etsi tekstiä -pikanäppäin"
 
 #: data/ui/remmina_preferences.glade:2438
 #: data/ui/remmina_preferences.glade:2453
