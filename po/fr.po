@@ -17,8 +17,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-06-28 07:59+0000\n"
-"PO-Revision-Date: 2021-06-18 12:09+0000\n"
+"POT-Creation-Date: 2021-06-29 13:36+0000\n"
+"PO-Revision-Date: 2021-06-29 13:31+0000\n"
 "Last-Translator: Davy Defaud <davy.defaud@free.fr>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/remmina/remmina/"
 "fr/>\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.7\n"
+"X-Generator: Weblate 4.7.1-dev\n"
 
 #: src/remmina_protocol_widget.c:283 src/remmina_sftp_plugin.c:328
 msgid "Connect via SSH from a new terminal"
@@ -2071,10 +2071,8 @@ msgstr "Empêcher les interactions locales sur le serveur"
 
 #: plugins/vnc/vnc_plugin.c:2006 plugins/rdp/rdp_plugin.c:2655
 #: plugins/rdp/rdp_settings.c:598
-#, fuzzy
-#| msgid "Turn on smooth scrolling"
 msgid "Disable smooth scrolling"
-msgstr "Activer le défilement doux"
+msgstr "Désactiver le défilement doux"
 
 #: plugins/vnc/vnc_plugin.c:2020
 msgid "Open Chat…"
@@ -2613,10 +2611,21 @@ msgid ""
 "  • hotplug,*\n"
 "\n"
 msgstr ""
+"Pour partager le répertoire </chemin/complet> en un partage nommé <nom> :\n"
+"  • <nom>,</chemin/complet>[;<nom>,</chemin/complet>[;…]]\n"
+"  • ChezMoi,/home/remminer\n"
+"  • /home/remminer\n"
+"  • ChezMoi,/home/remminer;UnPartage,/chemin/vers/le/partage\n"
+"\n"
+"La prise en charge des médias connectés à chaud est activable avec :\n"
+"  • hotplug,*\n"
+"\n"
 
 #: plugins/rdp/rdp_plugin.c:2653
 msgid "Use \"Redirect directory\" in the advanced tab for multiple directories"
 msgstr ""
+"Utiliser « Redirection de répertoires » sous l’onglet « Avancé » pour des "
+"répertoires multiples"
 
 #: plugins/rdp/rdp_plugin.c:2654
 msgid "Left-handed mouse support"
@@ -2698,7 +2707,7 @@ msgstr "Domaine de la passerelle RDP"
 
 #: plugins/rdp/rdp_plugin.c:2689
 msgid "Redirect directory"
-msgstr ""
+msgstr "Répertoire de redirection"
 
 #: plugins/rdp/rdp_plugin.c:2690
 msgid "Client name"
@@ -2776,25 +2785,23 @@ msgid "Static virtual channel"
 msgstr "Canal virtuel statique"
 
 #: plugins/rdp/rdp_plugin.c:2705
-#, fuzzy
-#| msgid "USB redirection error"
 msgid "TCP redirection"
-msgstr "Erreur de redirection USB"
+msgstr "Redirection TCP"
 
 #: plugins/rdp/rdp_plugin.c:2705
 msgid "/PATH/TO/rdp2tcp"
-msgstr ""
+msgstr "/chemin/vers/rdp2tcp"
 
 #: plugins/rdp/rdp_plugin.c:2706 plugins/rdp/rdp_settings.c:613
-#, fuzzy
-#| msgid "Reconnection attempt %d of %d…"
 msgid "Reconnect attempts number"
-msgstr "Tentative de reconnexion %d sur %d…"
+msgstr "Nombre de tentatives de reconnexion"
 
 #: plugins/rdp/rdp_plugin.c:2706 plugins/rdp/rdp_settings.c:619
 msgid ""
 "The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
 msgstr ""
+"Le nombre maximal de tentatives de reconnexion après une déconnexion RDP (20 "
+"par défaut)"
 
 #: plugins/rdp/rdp_plugin.c:2707
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
@@ -2967,16 +2974,12 @@ msgid "Desktop orientation"
 msgstr "Orientation du bureau"
 
 #: plugins/rdp/rdp_settings.c:592
-#, fuzzy
-#| msgid "Use server settings"
 msgid "Input device settings"
-msgstr "Utiliser les paramètres du serveur"
+msgstr "Paramètres du périphérique d’entrée"
 
 #: plugins/rdp/rdp_settings.c:608
-#, fuzzy
-#| msgid "Quality settings"
 msgid "General settings"
-msgstr "Paramètres de qualité"
+msgstr "Paramètres généraux"
 
 #: plugins/rdp/rdp_event.c:344
 #, c-format

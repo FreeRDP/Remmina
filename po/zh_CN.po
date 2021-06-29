@@ -12,9 +12,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-06-28 07:59+0000\n"
-"PO-Revision-Date: 2021-06-24 11:15+0000\n"
-"Last-Translator: Eric <spice2wolf@gmail.com>\n"
+"POT-Creation-Date: 2021-06-29 13:36+0000\n"
+"PO-Revision-Date: 2021-06-29 13:31+0000\n"
+"Last-Translator: 玉堂白鹤 <yjwork@qq.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "remmina/remmina/zh_Hans/>\n"
 "Language: zh_CN\n"
@@ -187,6 +187,8 @@ msgid ""
 "\"Advanced\" tab of terminal connections and editable in the \"Terminal\" "
 "tab in the settings."
 msgstr ""
+"此文件包含“自定义”终端颜色方案，可从终端连接的“高级”选项卡中选择，并可在设置"
+"的“终端”选项卡中编辑。"
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_ssh_plugin.c:539
@@ -388,11 +390,11 @@ msgstr "退出 Remmina 时记录 SSH 会话"
 
 #: src/remmina_ssh_plugin.c:1516
 msgid "Log SSH session asynchronously"
-msgstr ""
+msgstr "异步记录 SSH 会话"
 
 #: src/remmina_ssh_plugin.c:1516
 msgid "Saving the session asynchronously may have a notable performance impact"
-msgstr ""
+msgstr "异步保存会话可能会对性能产生显著影响"
 
 #: src/remmina_ssh_plugin.c:1517
 msgid "Audible terminal bell"
@@ -447,12 +449,12 @@ msgstr[0] "%d 个密码已更改。"
 #: src/remmina_public.c:345
 #, c-format
 msgid "Address is too long for UNIX socket_path: %s"
-msgstr ""
+msgstr "UNIX 套接字路径的地址太长: %s"
 
 #: src/remmina_public.c:355
 #, c-format
 msgid "Creating UNIX socket failed: %s"
-msgstr ""
+msgstr "创建UNIX套接字失败：%s"
 
 #: src/remmina_public.c:361
 #, c-format
@@ -813,7 +815,7 @@ msgstr "缩放时填满客户端窗口"
 
 #: src/rcw.c:1971
 msgid "Send clipboard content as keystrokes"
-msgstr ""
+msgstr "以击键方式发送剪贴板内容"
 
 #: src/rcw.c:2071
 msgid "Turn off scaling to avoid screenshot distortion."
@@ -1696,7 +1698,7 @@ msgstr "这可能不适用于所有 VNC 服务器"
 
 #: plugins/gvnc/gvnc_plugin.c:842
 msgid "Enable GTK-VNC debug"
-msgstr ""
+msgstr "启用 GTK-VNC 调试"
 
 #: plugins/gvnc/gvnc_plugin.c:857 plugins/gvnc/gvnc_plugin.c:871
 #: plugins/spice/spice_plugin.c:693 plugins/spice/spice_plugin.c:706
@@ -1711,7 +1713,7 @@ msgstr "使用后忘记密码"
 
 #: plugins/gvnc/gvnc_plugin.c:859 plugins/vnc/vnc_plugin.c:2004
 msgid "Ignore remote bell messages"
-msgstr ""
+msgstr "忽略远程铃声消息"
 
 #: plugins/gvnc/gvnc_plugin.c:860 plugins/spice/spice_plugin.c:695
 msgid "Enable audio channel"
@@ -1731,7 +1733,7 @@ msgstr "共享的连接"
 msgid ""
 "If the server should try to share the desktop by leaving other clients "
 "connected"
-msgstr ""
+msgstr "服务器是否应该通过让其他客户端保持连接来尝试共享桌面"
 
 #: plugins/gvnc/gvnc_plugin.c:872
 msgid "Send Ctrl+Alt+_Del"
@@ -1791,11 +1793,11 @@ msgstr "发送 Ctrl+Alt+_F12"
 
 #: plugins/gvnc/gvnc_plugin.c:887
 msgid "Reboot remote host"
-msgstr ""
+msgstr "重启远程主机"
 
 #: plugins/gvnc/gvnc_plugin.c:888
 msgid "Reset remote host (hard reboot)"
-msgstr ""
+msgstr "重置远程主机（硬重启）"
 
 #: plugins/gvnc/gvnc_plugin.c:889
 msgid "Shutdown remote host"
@@ -1970,6 +1972,13 @@ msgid ""
 "    the repeater, e.g. with x11vnc:\n"
 "    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
 msgstr ""
+"使用中继器连接到VNC:\n"
+"  • 服务器字段必须包含中继器ID，例如 ID:123456789\n"
+"  • T中继器字段必须设置为中继器IP和端口，例如:\n"
+"    10.10.10.12:5901\n"
+"  • 从远程 VNC 服务器，您将连接到\n"
+"    中继器，例如使用 x11vnc:\n"
+"    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
 
 #: plugins/vnc/vnc_plugin.c:1959
 msgid "Repeater"
@@ -2427,6 +2436,13 @@ msgid ""
 "  • sys:oss,dev:1,format:1\n"
 "  • sys:alsa"
 msgstr ""
+"音频输入重定向选项:\n"
+"  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
+"    [channel:<channel>] Audio input (microphone)\n"
+"  • sys:pulse\n"
+"  • format:1\n"
+"  • sys:oss,dev:1,format:1\n"
+"  • sys:alsa"
 
 #: plugins/rdp/rdp_plugin.c:2591
 msgid ""
@@ -2464,6 +2480,9 @@ msgid ""
 "Adjusts the connection timeout. Use if your connection times out.\n"
 "The highest possible value is 600000 ms (10 minutes).\n"
 msgstr ""
+"高延迟链接的高级设置：\n"
+"调整连接超时。如果您的连接超时，请使用。\n"
+"可能的最高值为 600000 毫秒（10 分钟）。\n"
 
 #: plugins/rdp/rdp_plugin.c:2612
 msgid ""
@@ -2471,6 +2490,9 @@ msgid ""
 "Using auto-detection is advised.\n"
 "If \"Auto-detect\" fails, choose the most appropriate option in the list.\n"
 msgstr ""
+"基于网络连接类型的性能优化：\n"
+"建议使用自动检测。\n"
+"如果“自动检测”失败，请在列表中选择最合适的选项。\n"
 
 #: plugins/rdp/rdp_plugin.c:2617
 msgid ""
@@ -2485,6 +2507,16 @@ msgid ""
 "  • 270 (portrait flipped)\n"
 "\n"
 msgstr ""
+"以逗号分隔的显示器 ID 和桌面方向列表:\n"
+"  • [<id>:<orientation-in-degrees>,]\n"
+"  • 0,1,2,3\n"
+"  • 0:270,1:90\n"
+"方向以度数指定，有效值为:\n"
+"  •   0 (横向)\n"
+"  •  90 (纵向)\n"
+"  • 180 (横向翻转)\n"
+"  • 270 (纵向翻转)\n"
+"\n"
 
 #: plugins/rdp/rdp_plugin.c:2629
 msgid ""
@@ -2500,7 +2532,7 @@ msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:2653
 msgid "Use \"Redirect directory\" in the advanced tab for multiple directories"
-msgstr ""
+msgstr "对多个目录使用高级选项卡中的“重定向目录”"
 
 #: plugins/rdp/rdp_plugin.c:2654
 msgid "Left-handed mouse support"
@@ -2516,7 +2548,7 @@ msgstr "启用多显视器"
 
 #: plugins/rdp/rdp_plugin.c:2657
 msgid "Span screen over multiple monitors"
-msgstr ""
+msgstr "跨多个显示器的屏幕"
 
 #: plugins/rdp/rdp_plugin.c:2658
 msgid "List monitor IDs"
@@ -2548,7 +2580,7 @@ msgstr "tag:level[,tag:level[,…]]"
 
 #: plugins/rdp/rdp_plugin.c:2681
 msgid "Audio output mode"
-msgstr ""
+msgstr "音频输出模式"
 
 #: plugins/rdp/rdp_plugin.c:2682
 msgid "Redirect local audio output"
@@ -2580,7 +2612,7 @@ msgstr "RD 网关域"
 
 #: plugins/rdp/rdp_plugin.c:2689
 msgid "Redirect directory"
-msgstr ""
+msgstr "重定向目录"
 
 #: plugins/rdp/rdp_plugin.c:2690
 msgid "Client name"
@@ -2664,7 +2696,7 @@ msgstr "TCP 重定向"
 
 #: plugins/rdp/rdp_plugin.c:2705
 msgid "/PATH/TO/rdp2tcp"
-msgstr ""
+msgstr "/PATH/TO/rdp2tcp"
 
 #: plugins/rdp/rdp_plugin.c:2706 plugins/rdp/rdp_settings.c:613
 msgid "Reconnect attempts number"
@@ -2673,7 +2705,7 @@ msgstr "重连尝试次数"
 #: plugins/rdp/rdp_plugin.c:2706 plugins/rdp/rdp_settings.c:619
 msgid ""
 "The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
-msgstr ""
+msgstr "RDP 断开连接时的最大重新连接尝试次数（默认值：20）"
 
 #: plugins/rdp/rdp_plugin.c:2707
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
@@ -2749,11 +2781,11 @@ msgstr "使用 UDP 协议可以提高性能"
 
 #: plugins/rdp/rdp_plugin.c:2727
 msgid "Use base credentials for gateway too"
-msgstr ""
+msgstr "也为网关使用提供基本凭据"
 
 #: plugins/rdp/rdp_plugin.c:2729
 msgid "Enable Gateway websockets support"
-msgstr ""
+msgstr "启用网关 websockets 支持"
 
 #: plugins/rdp/rdp_plugin.c:2755
 msgid "RDP - Remote Desktop Protocol"
@@ -3252,6 +3284,11 @@ msgid ""
 "Remmina.</b>\n"
 "</span>\n"
 msgstr ""
+"<span>\n"
+"<b>感谢您选择了 Copylefted libre 软件， <a href=\"https://remmina.org/"
+"donations/\" title=\"Where’s the money, Lebowski? “blblblblblb”\">捐款将使我"
+"们更快乐</a>, 并进一步帮助改进 Remmina。</b>\n"
+"</span>\n"
 
 #: data/ui/remmina_news.glade:277
 msgid "<big>Contribute</big>"
@@ -3461,7 +3498,7 @@ msgstr "全屏视口"
 #: data/ui/remmina_preferences.glade:620
 msgctxt "Appearance preferences"
 msgid "Tabs grouping"
-msgstr ""
+msgstr "标签分组"
 
 #: data/ui/remmina_preferences.glade:634
 msgid "By group"
@@ -3503,7 +3540,7 @@ msgstr "喜欢深色主题"
 msgid ""
 "If a GTK theme includes a dark variant, it will be used instead of the "
 "configured theme."
-msgstr ""
+msgstr "如果 GTK 主题包含深色变体，则将使用它而不是配置的主题。"
 
 #: data/ui/remmina_preferences.glade:739
 msgid "“Grab all keyboard events” status colour"
@@ -3709,7 +3746,7 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:1999
 msgid "Allow using bright colours with bold text"
-msgstr ""
+msgstr "允许在粗体文本中使用明亮的颜色"
 
 #: data/ui/remmina_preferences.glade:2013
 msgid "Colour theme"
