@@ -58,10 +58,8 @@
 #endif
 
 typedef struct _RemminaIcon {
-#ifdef HAVE_LIBAPPINDICATOR
 	AppIndicator *	icon;
 	gboolean indicator_connected;
-#endif
 	RemminaAvahi *	avahi;
 	guint32		popup_time;
 	gchar *		autostart_file;
@@ -74,9 +72,7 @@ void remmina_icon_destroy(void)
 {
 	TRACE_CALL(__func__);
 	if (remmina_icon.icon) {
-#ifdef HAVE_LIBAPPINDICATOR
 		app_indicator_set_status(remmina_icon.icon, APP_INDICATOR_STATUS_PASSIVE);
-#endif
 		remmina_icon.icon = NULL;
 	}
 	if (remmina_icon.avahi) {
@@ -240,8 +236,6 @@ static void remmina_icon_populate_extra_menu_item(GtkWidget *menu)
 	g_signal_connect(G_OBJECT(menu), "edit-item", G_CALLBACK(remmina_icon_on_edit_item), NULL);
 }
 
-#ifdef HAVE_LIBAPPINDICATOR
-
 void
 remmina_icon_populate_menu(void)
 {
@@ -264,8 +258,6 @@ remmina_icon_populate_menu(void)
 		remmina_icon_populate_additional_menu_item(menu);
 	}
 }
-
-#endif
 
 static void remmina_icon_save_autostart_file(GKeyFile *gkeyfile)
 {
@@ -355,22 +347,13 @@ void remmina_icon_init(void)
 	strcpy(msg, "StatusNotifier/Appindicator support: ");
 	if (sni_supported) {
 		REMMINA_DEBUG("%s your desktop does support it", msg);
-#ifdef HAVE_LIBAPPINDICATOR
 		REMMINA_DEBUG("%s and libappindicator is compiled in Remmina. Good.", msg);
-#else
-		REMMINA_DEBUG("%s, but you did not compile Remmina with CMake’s -DWITH_APPINDICATOR=on", msg);
-#endif
 	} else {
-#ifdef HAVE_LIBAPPINDICATOR
 		REMMINA_DEBUG("%snot supported by desktop. libappindicator will try to fallback to GtkStatusIcon/xembed", msg);
-#else
-		REMMINA_DEBUG("%snot supported by desktop.", msg);
-#endif
 	}
 
 
 	if (!remmina_icon.icon && !remmina_pref.disable_tray_icon) {
-#ifdef HAVE_LIBAPPINDICATOR
 		remmina_icon.icon = app_indicator_new("remmina-icon", remmina_panel, APP_INDICATOR_CATEGORY_APPLICATION_STATUS);
 		//app_indicator_set_icon_theme_path(remmina_icon.icon, REMMINA_RUNTIME_DATADIR G_DIR_SEPARATOR_S "icons");
 		//const gchar *theme_path = app_indicator_get_icon_theme_path(remmina_icon.icon);
@@ -379,18 +362,11 @@ void remmina_icon_init(void)
 		app_indicator_set_status(remmina_icon.icon, APP_INDICATOR_STATUS_ACTIVE);
 		app_indicator_set_title(remmina_icon.icon, "Remmina");
 		remmina_icon_populate_menu();
-#else
-		REMMINA_DEBUG("GtkStatusIcon support has been droppen since Gtk 3.14")
-#endif
 	} else if (remmina_icon.icon) {
-#ifdef HAVE_LIBAPPINDICATOR
 		app_indicator_set_status(remmina_icon.icon, remmina_pref.disable_tray_icon ?
 					 APP_INDICATOR_STATUS_PASSIVE : APP_INDICATOR_STATUS_ACTIVE);
 		/* With libappindicator we can also change the icon on the fly */
 		app_indicator_set_icon(remmina_icon.icon, remmina_panel);
-#else
-		REMMINA_DEBUG("GtkStatusIcon support has been droppen since Gtk 3.14")
-#endif
 	}
 	if (!remmina_icon.avahi)
 		remmina_icon.avahi = remmina_avahi_new();
@@ -407,10 +383,8 @@ void remmina_icon_init(void)
 		remmina_icon_create_autostart_file();
 	}
 	// "connected" property means a visible indicator, otherwise could be hidden. or fall back to GtkStatusIcon
-#ifdef HAVE_LIBAPPINDICATOR
 	g_signal_connect (G_OBJECT(remmina_icon.icon), "connection-changed", G_CALLBACK(remmina_icon_connection_changed_cb), NULL);
 	g_object_get(G_OBJECT(remmina_icon.icon), "connected", &remmina_icon.indicator_connected, NULL);
-#endif
 }
 
 gboolean remmina_icon_is_autostart(void)
