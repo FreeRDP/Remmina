@@ -49,8 +49,6 @@ if(LIBSSH_FOUND)
 	target_link_libraries(remmina ${SSH_LIBRARIES})
 endif()
 
-# After the plugin split only the RDP plugin needs XKBfile.h
-find_required_package(XKBFILE)
 set(FREERDP_REQUIRED_MAJOR 2)
 set(FREERDP_REQUIRED_MINOR 0)
 set(FREERDP_REQUIRED_REVISION 0)
@@ -156,6 +154,8 @@ endif()
 option(WITH_NX "Build NX plugin" OFF)
 if(WITH_NX)
     add_definitions(-DWITH_NX)
+    # After the plugin split only the NX plugin needs XKBfile.h
+    find_required_package(XKBFILE)
     if(LIBSSH_FOUND AND XKBFILE_FOUND)
         message(STATUS "Enabling NX plugin.")
         get_filename_component(_nx_fullpath "nx" REALPATH)
