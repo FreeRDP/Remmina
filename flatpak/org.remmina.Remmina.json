@@ -194,27 +194,6 @@
             ]
         },
         {
-            "name": "nxproxy",
-            "no-autogen": true,
-            "make-args": [
-                "build-lite",
-                "PREFIX=${FLATPAK_DEST}"
-            ],
-            "install-rule": "install-lite",
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/ArcticaProject/nx-libs.git",
-                    "tag": "3.5.99.26",
-                    "commit": "0e2b7971343845248353f6d8503e28506e9536ea",
-                    "x-checker-data": {
-                        "type": "git",
-                        "tag-pattern": "^([\\d.]+)$"
-                    }
-                }
-            ]
-        },
-        {
             "name": "pcsc",
             "config-opts": [
                 "--disable-libsystemd",
