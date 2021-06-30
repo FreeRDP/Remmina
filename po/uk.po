@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-06-29 21:55+0000\n"
+"POT-Creation-Date: 2021-06-30 06:48+0000\n"
 "PO-Revision-Date: 2021-06-28 08:00+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/remmina/"
@@ -231,7 +231,7 @@ msgstr "Знайти текст (Host + G)"
 
 #: src/remmina_ssh_plugin.c:1370 src/remmina_ssh_plugin.c:1475
 #: src/remmina_sftp_plugin.c:311 src/remmina_sftp_plugin.c:348
-#: src/remmina_file_editor.c:847 plugins/nx/nx_plugin.c:729
+#: src/remmina_file_editor.c:847
 msgid "SSH identity file"
 msgstr "Файл ідентифікації SSH"
 
@@ -307,13 +307,12 @@ msgstr "Тип автентифікації"
 #: src/remmina_sftp_plugin.c:345 src/remmina_file_editor.c:961
 #: plugins/www/www_plugin.c:879 plugins/vnc/vnc_plugin.c:1960
 #: plugins/vnc/vnc_plugin.c:1980 plugins/rdp/rdp_plugin.c:2650
-#: plugins/nx/nx_plugin.c:730 data/ui/remmina_mpc.glade:144
+#: data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr "Ім'я користувача"
 
 #: src/remmina_ssh_plugin.c:1474 plugins/vnc/vnc_plugin.c:1961
 #: plugins/vnc/vnc_plugin.c:1981 plugins/spice/spice_plugin.c:666
-#: plugins/nx/nx_plugin.c:731
 msgid "User password"
 msgstr "Пароль користувача"
 
@@ -326,8 +325,7 @@ msgstr "Файл сертифіката SSH"
 msgid "Password to unlock private key"
 msgstr "Пароль розблокування закритого ключа"
 
-#: src/remmina_ssh_plugin.c:1480 plugins/xdmcp/xdmcp_plugin.c:370
-#: plugins/rdp/rdp_plugin.c:2692 plugins/nx/nx_plugin.c:734
+#: src/remmina_ssh_plugin.c:1480 plugins/rdp/rdp_plugin.c:2692
 msgid "Start-up program"
 msgstr "Запускати програму"
 
@@ -939,11 +937,11 @@ msgid "_OK"
 msgstr "_Гаразд"
 
 #: src/remmina_plugin_manager.c:474 src/remmina_file_editor.c:1490
-#: plugins/nx/nx_session_manager.c:204 data/ui/remmina_main.glade:442
+#: data/ui/remmina_main.glade:442
 msgid "Name"
 msgstr "Назва"
 
-#: src/remmina_plugin_manager.c:480 plugins/nx/nx_session_manager.c:183
+#: src/remmina_plugin_manager.c:480
 msgid "Type"
 msgstr "Тип"
 
@@ -1103,9 +1101,8 @@ msgstr "Перезаписати"
 #: src/remmina_sftp_client.c:947 src/remmina_message_panel.c:457
 #: src/remmina_message_panel.c:629 src/remmina_file_editor.c:151
 #: src/remmina_file_editor.c:1365 plugins/spice/spice_plugin_file_transfer.c:84
-#: plugins/nx/nx_session_manager.c:156 data/ui/remmina_spinner.glade:8
-#: data/ui/remmina_spinner.glade:9 data/ui/remmina_key_chooser.glade:8
-#: data/ui/remmina_key_chooser.glade:9
+#: data/ui/remmina_spinner.glade:8 data/ui/remmina_spinner.glade:9
+#: data/ui/remmina_key_chooser.glade:8 data/ui/remmina_key_chooser.glade:9
 msgid "_Cancel"
 msgstr "_Скасувати"
 
@@ -1320,7 +1317,7 @@ msgstr "Введіть код TOTP, OTP або 2FA"
 msgid "SSH tunnel credentials"
 msgstr "Реєстраційні дані SSH-тунелю"
 
-#: src/remmina_ssh.c:1036 src/remmina_ssh.c:1062 plugins/nx/nx_plugin.c:203
+#: src/remmina_ssh.c:1036 src/remmina_ssh.c:1062
 msgid "SSH credentials"
 msgstr "Реєстраційні дані SSH"
 
@@ -1702,8 +1699,7 @@ msgid "VNC password"
 msgstr "Пароль VNC"
 
 #: plugins/gvnc/gvnc_plugin.c:840 plugins/vnc/vnc_plugin.c:1962
-#: plugins/vnc/vnc_plugin.c:1982 plugins/xdmcp/xdmcp_plugin.c:369
-#: plugins/rdp/rdp_plugin.c:2660
+#: plugins/vnc/vnc_plugin.c:1982 plugins/rdp/rdp_plugin.c:2660
 msgid "Colour depth"
 msgstr "Глибина кольорів"
 
@@ -1726,7 +1722,7 @@ msgstr "Без синхронізації буферів обміну"
 
 #: plugins/gvnc/gvnc_plugin.c:858 plugins/www/www_plugin.c:904
 #: plugins/vnc/vnc_plugin.c:2005 plugins/spice/spice_plugin.c:694
-#: plugins/rdp/rdp_plugin.c:2716 plugins/nx/nx_plugin.c:752
+#: plugins/rdp/rdp_plugin.c:2716
 msgid "Forget passwords after use"
 msgstr "Забути паролі після використання"
 
@@ -1965,22 +1961,22 @@ msgid "256 colours (8 bpp)"
 msgstr "256 кольорів (8 біт/піксель)"
 
 #: plugins/vnc/vnc_plugin.c:1931 plugins/rdp/rdp_plugin.c:2523
-#: plugins/rdp/rdp_settings.c:274 plugins/nx/nx_plugin.c:712
+#: plugins/rdp/rdp_settings.c:274
 msgid "Good"
 msgstr "Добра"
 
 #: plugins/vnc/vnc_plugin.c:1932 plugins/rdp/rdp_plugin.c:2524
-#: plugins/rdp/rdp_settings.c:276 plugins/nx/nx_plugin.c:713
+#: plugins/rdp/rdp_settings.c:276
 msgid "Best (slowest)"
 msgstr "Найкраща (найповільніше)"
 
 #: plugins/vnc/vnc_plugin.c:1933 plugins/rdp/rdp_plugin.c:2522
-#: plugins/rdp/rdp_settings.c:272 plugins/nx/nx_plugin.c:711
+#: plugins/rdp/rdp_settings.c:272
 msgid "Medium"
 msgstr "Середня"
 
 #: plugins/vnc/vnc_plugin.c:1934 plugins/rdp/rdp_plugin.c:2521
-#: plugins/rdp/rdp_settings.c:270 plugins/nx/nx_plugin.c:710
+#: plugins/rdp/rdp_settings.c:270
 msgid "Poor (fastest)"
 msgstr "Низька (найшвидше)"
 
@@ -2009,7 +2005,7 @@ msgid "Repeater"
 msgstr "Ретранслятор"
 
 #: plugins/vnc/vnc_plugin.c:1963 plugins/vnc/vnc_plugin.c:1983
-#: plugins/rdp/rdp_plugin.c:2676 plugins/nx/nx_plugin.c:733
+#: plugins/rdp/rdp_plugin.c:2676
 msgid "Quality"
 msgstr "Якість"
 
@@ -2043,7 +2039,7 @@ msgid "Open Chat…"
 msgstr "Розпочати спілкування (текст)…"
 
 #: plugins/vnc/vnc_plugin.c:2021 plugins/spice/spice_plugin.c:707
-#: plugins/xdmcp/xdmcp_plugin.c:381 plugins/rdp/rdp_plugin.c:2742
+#: plugins/rdp/rdp_plugin.c:2742
 msgid "Send Ctrl+Alt+Delete"
 msgstr "Надіслати Ctrl+Alt+Delete"
 
@@ -2085,7 +2081,6 @@ msgid "Connection to the SPICE server dropped."
 msgstr "З'єднання із сервером SPICE розірвано."
 
 #: plugins/spice/spice_plugin.c:616 plugins/spice/spice_plugin.c:634
-#: plugins/xdmcp/xdmcp_plugin.c:348
 msgid "Default"
 msgstr "Типова"
 
@@ -2160,64 +2155,6 @@ msgstr "Передавання завершено"
 #, c-format
 msgid "The %s file has been transferred"
 msgstr "Файл %s було передано"
-
-#: plugins/xdmcp/xdmcp_plugin.c:97
-msgid "Ran out of available local X display numbers."
-msgstr "Скінчились доступні номери для локальних X-дисплеїв."
-
-#: plugins/xdmcp/xdmcp_plugin.c:264 plugins/nx/nx_plugin.c:617
-#, c-format
-msgid ""
-"The protocol “%s” is unavailable because GtkSocket only works under X.Org."
-msgstr "Протокол «%s» недоступний, оскільки GtkSocket працює тільки під X.Org."
-
-#: plugins/xdmcp/xdmcp_plugin.c:349
-msgid "Grayscale"
-msgstr "Тони сірого"
-
-#: plugins/xdmcp/xdmcp_plugin.c:350
-msgid "256 colours"
-msgstr "256 кольорів"
-
-#: plugins/xdmcp/xdmcp_plugin.c:351
-msgid "High colour (16 bit)"
-msgstr "Якісний колір (16 бітів)"
-
-#: plugins/xdmcp/xdmcp_plugin.c:352
-msgid "True colour (24 bit)"
-msgstr "Справжній колір (24 біти)"
-
-#: plugins/xdmcp/xdmcp_plugin.c:371 plugins/nx/nx_plugin.c:751
-msgid "Use local cursor"
-msgstr "Використовувати курсор свого комп'ютера"
-
-#: plugins/xdmcp/xdmcp_plugin.c:372
-msgid "Disconnect after first session"
-msgstr "Роз'єднати після першого з'єднання"
-
-#: plugins/xdmcp/xdmcp_plugin.c:373
-msgid "Listen for TCP connections"
-msgstr "Очікувати на TCP-з'єднання"
-
-#: plugins/xdmcp/xdmcp_plugin.c:391
-msgid "XDMCP - X Remote Session"
-msgstr "XDMCP — Віддалений вхід у графічне середовище"
-
-#: plugins/st/st_plugin.c:238
-msgid "Terminal Emulator"
-msgstr "Емулятор термінала"
-
-#: plugins/st/st_plugin.c:239
-msgid "Command to be executed"
-msgstr "Команда для виконання"
-
-#: plugins/st/st_plugin.c:254
-msgid "Detached window"
-msgstr "Відокремлене вікно"
-
-#: plugins/st/st_plugin_config.h:43
-msgid "Remmina simple terminal"
-msgstr "Простий термінал Remmina"
 
 #: plugins/rdp/rdp_plugin.c:757 plugins/rdp/rdp_plugin.c:822
 msgid "Enter RDP authentication credentials"
@@ -2942,63 +2879,6 @@ msgstr "Загальні параметри"
 #, c-format
 msgid "Reconnection attempt %d of %d…"
 msgstr "Спроба повторного з'єднання %d з %d…"
-
-#: plugins/nx/nx_session_manager.c:98
-msgid "Terminating…"
-msgstr "Перериваємо…"
-
-#: plugins/nx/nx_session_manager.c:143
-#, c-format
-msgid "NX sessions on %s"
-msgstr "Сеанси NX на %s"
-
-#: plugins/nx/nx_session_manager.c:147
-msgid "Attach"
-msgstr "Долучити"
-
-#: plugins/nx/nx_session_manager.c:151
-msgid "Restore"
-msgstr "Відновити"
-
-#: plugins/nx/nx_session_manager.c:152
-msgid "Start"
-msgstr "Пуск"
-
-#: plugins/nx/nx_session_manager.c:158
-msgid "Terminate"
-msgstr "Перервати"
-
-#: plugins/nx/nx_session_manager.c:190
-msgid "Display"
-msgstr "Дисплей"
-
-#: plugins/nx/nx_session_manager.c:197
-msgid "Status"
-msgstr "Стан"
-
-#: plugins/nx/nx_plugin.c:206
-msgid "Password for private SSH key"
-msgstr "Пароль до закритого ключа SSH"
-
-#: plugins/nx/nx_plugin.c:376
-msgid "Enter NX authentication credentials"
-msgstr "Введіть дані розпізнавання NX"
-
-#: plugins/nx/nx_plugin.c:749
-msgid "Disable clipboard sync"
-msgstr "Не використовувати синхронізацію буферів обміну"
-
-#: plugins/nx/nx_plugin.c:750
-msgid "Disable encryption"
-msgstr "Вимкнути шифрування"
-
-#: plugins/nx/nx_plugin.c:760
-msgid "Send Ctrl+Alt+Del"
-msgstr "Надіслати Ctrl+Alt+Del"
-
-#: plugins/nx/nx_plugin.c:770
-msgid "NX - NX Technology"
-msgstr "Технологія NX - NX"
 
 #: plugins/kwallet/src/kwallet_plugin_main.c:118
 msgid "Secured password storage in KWallet"
@@ -3994,6 +3874,92 @@ msgstr "Виберіть нову клавішу"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "Будь ласка, натисніть нову клавішу…"
+
+#~ msgid "Ran out of available local X display numbers."
+#~ msgstr "Скінчились доступні номери для локальних X-дисплеїв."
+
+#~ msgid ""
+#~ "The protocol “%s” is unavailable because GtkSocket only works under X.Org."
+#~ msgstr ""
+#~ "Протокол «%s» недоступний, оскільки GtkSocket працює тільки під X.Org."
+
+#~ msgid "Grayscale"
+#~ msgstr "Тони сірого"
+
+#~ msgid "256 colours"
+#~ msgstr "256 кольорів"
+
+#~ msgid "High colour (16 bit)"
+#~ msgstr "Якісний колір (16 бітів)"
+
+#~ msgid "True colour (24 bit)"
+#~ msgstr "Справжній колір (24 біти)"
+
+#~ msgid "Use local cursor"
+#~ msgstr "Використовувати курсор свого комп'ютера"
+
+#~ msgid "Disconnect after first session"
+#~ msgstr "Роз'єднати після першого з'єднання"
+
+#~ msgid "Listen for TCP connections"
+#~ msgstr "Очікувати на TCP-з'єднання"
+
+#~ msgid "XDMCP - X Remote Session"
+#~ msgstr "XDMCP — Віддалений вхід у графічне середовище"
+
+#~ msgid "Terminal Emulator"
+#~ msgstr "Емулятор термінала"
+
+#~ msgid "Command to be executed"
+#~ msgstr "Команда для виконання"
+
+#~ msgid "Detached window"
+#~ msgstr "Відокремлене вікно"
+
+#~ msgid "Remmina simple terminal"
+#~ msgstr "Простий термінал Remmina"
+
+#~ msgid "Terminating…"
+#~ msgstr "Перериваємо…"
+
+#~ msgid "NX sessions on %s"
+#~ msgstr "Сеанси NX на %s"
+
+#~ msgid "Attach"
+#~ msgstr "Долучити"
+
+#~ msgid "Restore"
+#~ msgstr "Відновити"
+
+#~ msgid "Start"
+#~ msgstr "Пуск"
+
+#~ msgid "Terminate"
+#~ msgstr "Перервати"
+
+#~ msgid "Display"
+#~ msgstr "Дисплей"
+
+#~ msgid "Status"
+#~ msgstr "Стан"
+
+#~ msgid "Password for private SSH key"
+#~ msgstr "Пароль до закритого ключа SSH"
+
+#~ msgid "Enter NX authentication credentials"
+#~ msgstr "Введіть дані розпізнавання NX"
+
+#~ msgid "Disable clipboard sync"
+#~ msgstr "Не використовувати синхронізацію буферів обміну"
+
+#~ msgid "Disable encryption"
+#~ msgstr "Вимкнути шифрування"
+
+#~ msgid "Send Ctrl+Alt+Del"
+#~ msgstr "Надіслати Ctrl+Alt+Del"
+
+#~ msgid "NX - NX Technology"
+#~ msgstr "Технологія NX - NX"
 
 #~ msgid "Tabs"
 #~ msgstr "Вкладки"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-06-29 21:55+0000\n"
+"POT-Creation-Date: 2021-06-30 06:48+0000\n"
 "PO-Revision-Date: 2021-06-04 14:34+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
@@ -225,7 +225,7 @@ msgstr "貼上（Host+v）"
 
 #: src/remmina_ssh_plugin.c:1370 src/remmina_ssh_plugin.c:1475
 #: src/remmina_sftp_plugin.c:311 src/remmina_sftp_plugin.c:348
-#: src/remmina_file_editor.c:847 plugins/nx/nx_plugin.c:729
+#: src/remmina_file_editor.c:847
 msgid "SSH identity file"
 msgstr "SSH 身份檔案"
 
@@ -301,13 +301,12 @@ msgstr "認證類型"
 #: src/remmina_sftp_plugin.c:345 src/remmina_file_editor.c:961
 #: plugins/www/www_plugin.c:879 plugins/vnc/vnc_plugin.c:1960
 #: plugins/vnc/vnc_plugin.c:1980 plugins/rdp/rdp_plugin.c:2650
-#: plugins/nx/nx_plugin.c:730 data/ui/remmina_mpc.glade:144
+#: data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr "使用者名稱"
 
 #: src/remmina_ssh_plugin.c:1474 plugins/vnc/vnc_plugin.c:1961
 #: plugins/vnc/vnc_plugin.c:1981 plugins/spice/spice_plugin.c:666
-#: plugins/nx/nx_plugin.c:731
 msgid "User password"
 msgstr "使用者密碼"
 
@@ -322,8 +321,7 @@ msgstr "CA 憑證檔案"
 msgid "Password to unlock private key"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1480 plugins/xdmcp/xdmcp_plugin.c:370
-#: plugins/rdp/rdp_plugin.c:2692 plugins/nx/nx_plugin.c:734
+#: src/remmina_ssh_plugin.c:1480 plugins/rdp/rdp_plugin.c:2692
 msgid "Start-up program"
 msgstr "啟動程式"
 
@@ -895,11 +893,11 @@ msgid "_OK"
 msgstr "確定(_O)"
 
 #: src/remmina_plugin_manager.c:474 src/remmina_file_editor.c:1490
-#: plugins/nx/nx_session_manager.c:204 data/ui/remmina_main.glade:442
+#: data/ui/remmina_main.glade:442
 msgid "Name"
 msgstr "名稱"
 
-#: src/remmina_plugin_manager.c:480 plugins/nx/nx_session_manager.c:183
+#: src/remmina_plugin_manager.c:480
 msgid "Type"
 msgstr "類型"
 
@@ -1057,9 +1055,8 @@ msgstr "覆寫"
 #: src/remmina_sftp_client.c:947 src/remmina_message_panel.c:457
 #: src/remmina_message_panel.c:629 src/remmina_file_editor.c:151
 #: src/remmina_file_editor.c:1365 plugins/spice/spice_plugin_file_transfer.c:84
-#: plugins/nx/nx_session_manager.c:156 data/ui/remmina_spinner.glade:8
-#: data/ui/remmina_spinner.glade:9 data/ui/remmina_key_chooser.glade:8
-#: data/ui/remmina_key_chooser.glade:9
+#: data/ui/remmina_spinner.glade:8 data/ui/remmina_spinner.glade:9
+#: data/ui/remmina_key_chooser.glade:8 data/ui/remmina_key_chooser.glade:9
 msgid "_Cancel"
 msgstr "取消(_C)"
 
@@ -1274,7 +1271,7 @@ msgstr ""
 msgid "SSH tunnel credentials"
 msgstr "SSH 身份檔案"
 
-#: src/remmina_ssh.c:1036 src/remmina_ssh.c:1062 plugins/nx/nx_plugin.c:203
+#: src/remmina_ssh.c:1036 src/remmina_ssh.c:1062
 msgid "SSH credentials"
 msgstr "SSH 身份檔案"
 
@@ -1697,8 +1694,7 @@ msgid "VNC password"
 msgstr "輸入 VNC 密碼"
 
 #: plugins/gvnc/gvnc_plugin.c:840 plugins/vnc/vnc_plugin.c:1962
-#: plugins/vnc/vnc_plugin.c:1982 plugins/xdmcp/xdmcp_plugin.c:369
-#: plugins/rdp/rdp_plugin.c:2660
+#: plugins/vnc/vnc_plugin.c:1982 plugins/rdp/rdp_plugin.c:2660
 msgid "Colour depth"
 msgstr "色彩深度"
 
@@ -1725,7 +1721,7 @@ msgstr "關閉剪貼簿同步"
 
 #: plugins/gvnc/gvnc_plugin.c:858 plugins/www/www_plugin.c:904
 #: plugins/vnc/vnc_plugin.c:2005 plugins/spice/spice_plugin.c:694
-#: plugins/rdp/rdp_plugin.c:2716 plugins/nx/nx_plugin.c:752
+#: plugins/rdp/rdp_plugin.c:2716
 msgid "Forget passwords after use"
 msgstr "不要記住密碼"
 
@@ -1969,22 +1965,22 @@ msgid "256 colours (8 bpp)"
 msgstr "256 色 (8 bpp)"
 
 #: plugins/vnc/vnc_plugin.c:1931 plugins/rdp/rdp_plugin.c:2523
-#: plugins/rdp/rdp_settings.c:274 plugins/nx/nx_plugin.c:712
+#: plugins/rdp/rdp_settings.c:274
 msgid "Good"
 msgstr "佳"
 
 #: plugins/vnc/vnc_plugin.c:1932 plugins/rdp/rdp_plugin.c:2524
-#: plugins/rdp/rdp_settings.c:276 plugins/nx/nx_plugin.c:713
+#: plugins/rdp/rdp_settings.c:276
 msgid "Best (slowest)"
 msgstr "最佳（最慢）"
 
 #: plugins/vnc/vnc_plugin.c:1933 plugins/rdp/rdp_plugin.c:2522
-#: plugins/rdp/rdp_settings.c:272 plugins/nx/nx_plugin.c:711
+#: plugins/rdp/rdp_settings.c:272
 msgid "Medium"
 msgstr "中"
 
 #: plugins/vnc/vnc_plugin.c:1934 plugins/rdp/rdp_plugin.c:2521
-#: plugins/rdp/rdp_settings.c:270 plugins/nx/nx_plugin.c:710
+#: plugins/rdp/rdp_settings.c:270
 msgid "Poor (fastest)"
 msgstr "差（最快）"
 
@@ -2004,7 +2000,7 @@ msgid "Repeater"
 msgstr "中繼器"
 
 #: plugins/vnc/vnc_plugin.c:1963 plugins/vnc/vnc_plugin.c:1983
-#: plugins/rdp/rdp_plugin.c:2676 plugins/nx/nx_plugin.c:733
+#: plugins/rdp/rdp_plugin.c:2676
 msgid "Quality"
 msgstr "品質"
 
@@ -2040,7 +2036,7 @@ msgid "Open Chat…"
 msgstr "開啟聊天…"
 
 #: plugins/vnc/vnc_plugin.c:2021 plugins/spice/spice_plugin.c:707
-#: plugins/xdmcp/xdmcp_plugin.c:381 plugins/rdp/rdp_plugin.c:2742
+#: plugins/rdp/rdp_plugin.c:2742
 msgid "Send Ctrl+Alt+Delete"
 msgstr "傳送 Ctrl+Alt+Delete"
 
@@ -2082,7 +2078,6 @@ msgid "Connection to the SPICE server dropped."
 msgstr "連線到 SPICE 伺服器失敗。"
 
 #: plugins/spice/spice_plugin.c:616 plugins/spice/spice_plugin.c:634
-#: plugins/xdmcp/xdmcp_plugin.c:348
 msgid "Default"
 msgstr "預設"
 
@@ -2156,64 +2151,6 @@ msgstr "傳輸完成"
 #, c-format
 msgid "The %s file has been transferred"
 msgstr "已傳輸 %s 檔案"
-
-#: plugins/xdmcp/xdmcp_plugin.c:97
-msgid "Ran out of available local X display numbers."
-msgstr "本機可用的 X 顯示編號已用盡。"
-
-#: plugins/xdmcp/xdmcp_plugin.c:264 plugins/nx/nx_plugin.c:617
-#, c-format
-msgid ""
-"The protocol “%s” is unavailable because GtkSocket only works under X.Org."
-msgstr "協定 %s 不可用，因為 GtkSocket 僅能在 X.Org 下使用"
-
-#: plugins/xdmcp/xdmcp_plugin.c:349
-msgid "Grayscale"
-msgstr "灰階"
-
-#: plugins/xdmcp/xdmcp_plugin.c:350
-msgid "256 colours"
-msgstr "256 色"
-
-#: plugins/xdmcp/xdmcp_plugin.c:351
-msgid "High colour (16 bit)"
-msgstr "高彩 (16 位元)"
-
-#: plugins/xdmcp/xdmcp_plugin.c:352
-msgid "True colour (24 bit)"
-msgstr "真彩 (24 位元)"
-
-#: plugins/xdmcp/xdmcp_plugin.c:371 plugins/nx/nx_plugin.c:751
-msgid "Use local cursor"
-msgstr "使用本地游標"
-
-#: plugins/xdmcp/xdmcp_plugin.c:372
-msgid "Disconnect after first session"
-msgstr "在首個作業階段之後斷開連線"
-
-#: plugins/xdmcp/xdmcp_plugin.c:373
-msgid "Listen for TCP connections"
-msgstr "監聽 TCP 連線"
-
-#: plugins/xdmcp/xdmcp_plugin.c:391
-msgid "XDMCP - X Remote Session"
-msgstr "XDMCP - X 遠端作業階段"
-
-#: plugins/st/st_plugin.c:238
-msgid "Terminal Emulator"
-msgstr "終端機模擬器"
-
-#: plugins/st/st_plugin.c:239
-msgid "Command to be executed"
-msgstr "要執行的命令"
-
-#: plugins/st/st_plugin.c:254
-msgid "Detached window"
-msgstr "浮動視窗"
-
-#: plugins/st/st_plugin_config.h:43
-msgid "Remmina simple terminal"
-msgstr "Remmina 簡單終端機"
 
 #: plugins/rdp/rdp_plugin.c:757 plugins/rdp/rdp_plugin.c:822
 msgid "Enter RDP authentication credentials"
@@ -2884,63 +2821,6 @@ msgstr "品質設定"
 #, c-format
 msgid "Reconnection attempt %d of %d…"
 msgstr "重新連線中。第 %d / %d 次嘗試…"
-
-#: plugins/nx/nx_session_manager.c:98
-msgid "Terminating…"
-msgstr "正在終止…"
-
-#: plugins/nx/nx_session_manager.c:143
-#, c-format
-msgid "NX sessions on %s"
-msgstr "%s 上的 NX 作業階段"
-
-#: plugins/nx/nx_session_manager.c:147
-msgid "Attach"
-msgstr "掛接"
-
-#: plugins/nx/nx_session_manager.c:151
-msgid "Restore"
-msgstr "還原"
-
-#: plugins/nx/nx_session_manager.c:152
-msgid "Start"
-msgstr "啟動"
-
-#: plugins/nx/nx_session_manager.c:158
-msgid "Terminate"
-msgstr "終止"
-
-#: plugins/nx/nx_session_manager.c:190
-msgid "Display"
-msgstr "顯示"
-
-#: plugins/nx/nx_session_manager.c:197
-msgid "Status"
-msgstr "狀態"
-
-#: plugins/nx/nx_plugin.c:206
-msgid "Password for private SSH key"
-msgstr ""
-
-#: plugins/nx/nx_plugin.c:376
-msgid "Enter NX authentication credentials"
-msgstr "輸入 NX 驗證身分資料"
-
-#: plugins/nx/nx_plugin.c:749
-msgid "Disable clipboard sync"
-msgstr "停用剪贴簿同步"
-
-#: plugins/nx/nx_plugin.c:750
-msgid "Disable encryption"
-msgstr "停用加密"
-
-#: plugins/nx/nx_plugin.c:760
-msgid "Send Ctrl+Alt+Del"
-msgstr "傳送 Ctrl+Alt+Delete"
-
-#: plugins/nx/nx_plugin.c:770
-msgid "NX - NX Technology"
-msgstr "NX - NX 技術"
 
 #: plugins/kwallet/src/kwallet_plugin_main.c:118
 msgid "Secured password storage in KWallet"
@@ -3894,6 +3774,88 @@ msgstr "選擇一個新按鍵"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "請按下新按鍵…"
+
+#~ msgid "Ran out of available local X display numbers."
+#~ msgstr "本機可用的 X 顯示編號已用盡。"
+
+#~ msgid ""
+#~ "The protocol “%s” is unavailable because GtkSocket only works under X.Org."
+#~ msgstr "協定 %s 不可用，因為 GtkSocket 僅能在 X.Org 下使用"
+
+#~ msgid "Grayscale"
+#~ msgstr "灰階"
+
+#~ msgid "256 colours"
+#~ msgstr "256 色"
+
+#~ msgid "High colour (16 bit)"
+#~ msgstr "高彩 (16 位元)"
+
+#~ msgid "True colour (24 bit)"
+#~ msgstr "真彩 (24 位元)"
+
+#~ msgid "Use local cursor"
+#~ msgstr "使用本地游標"
+
+#~ msgid "Disconnect after first session"
+#~ msgstr "在首個作業階段之後斷開連線"
+
+#~ msgid "Listen for TCP connections"
+#~ msgstr "監聽 TCP 連線"
+
+#~ msgid "XDMCP - X Remote Session"
+#~ msgstr "XDMCP - X 遠端作業階段"
+
+#~ msgid "Terminal Emulator"
+#~ msgstr "終端機模擬器"
+
+#~ msgid "Command to be executed"
+#~ msgstr "要執行的命令"
+
+#~ msgid "Detached window"
+#~ msgstr "浮動視窗"
+
+#~ msgid "Remmina simple terminal"
+#~ msgstr "Remmina 簡單終端機"
+
+#~ msgid "Terminating…"
+#~ msgstr "正在終止…"
+
+#~ msgid "NX sessions on %s"
+#~ msgstr "%s 上的 NX 作業階段"
+
+#~ msgid "Attach"
+#~ msgstr "掛接"
+
+#~ msgid "Restore"
+#~ msgstr "還原"
+
+#~ msgid "Start"
+#~ msgstr "啟動"
+
+#~ msgid "Terminate"
+#~ msgstr "終止"
+
+#~ msgid "Display"
+#~ msgstr "顯示"
+
+#~ msgid "Status"
+#~ msgstr "狀態"
+
+#~ msgid "Enter NX authentication credentials"
+#~ msgstr "輸入 NX 驗證身分資料"
+
+#~ msgid "Disable clipboard sync"
+#~ msgstr "停用剪贴簿同步"
+
+#~ msgid "Disable encryption"
+#~ msgstr "停用加密"
+
+#~ msgid "Send Ctrl+Alt+Del"
+#~ msgstr "傳送 Ctrl+Alt+Delete"
+
+#~ msgid "NX - NX Technology"
+#~ msgstr "NX - NX 技術"
 
 #~ msgid "File encryption"
 #~ msgstr "檔案加密"

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-06-29 21:55+0000\n"
+"POT-Creation-Date: 2021-06-30 06:48+0000\n"
 "PO-Revision-Date: 2021-06-29 21:55+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -233,7 +233,7 @@ msgstr "Etsi tekstiä (Host + G)"
 
 #: src/remmina_ssh_plugin.c:1370 src/remmina_ssh_plugin.c:1475
 #: src/remmina_sftp_plugin.c:311 src/remmina_sftp_plugin.c:348
-#: src/remmina_file_editor.c:847 plugins/nx/nx_plugin.c:729
+#: src/remmina_file_editor.c:847
 msgid "SSH identity file"
 msgstr "SSH-identiteettitiedosto"
 
@@ -309,13 +309,12 @@ msgstr "Todennustyyppi"
 #: src/remmina_sftp_plugin.c:345 src/remmina_file_editor.c:961
 #: plugins/www/www_plugin.c:879 plugins/vnc/vnc_plugin.c:1960
 #: plugins/vnc/vnc_plugin.c:1980 plugins/rdp/rdp_plugin.c:2650
-#: plugins/nx/nx_plugin.c:730 data/ui/remmina_mpc.glade:144
+#: data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr "Käyttäjänimi"
 
 #: src/remmina_ssh_plugin.c:1474 plugins/vnc/vnc_plugin.c:1961
 #: plugins/vnc/vnc_plugin.c:1981 plugins/spice/spice_plugin.c:666
-#: plugins/nx/nx_plugin.c:731
 msgid "User password"
 msgstr "Käyttäjän salasana"
 
@@ -328,8 +327,7 @@ msgstr "SSH-varmennetiedosto"
 msgid "Password to unlock private key"
 msgstr "Salasana avataksesi yksityisen avaimen"
 
-#: src/remmina_ssh_plugin.c:1480 plugins/xdmcp/xdmcp_plugin.c:370
-#: plugins/rdp/rdp_plugin.c:2692 plugins/nx/nx_plugin.c:734
+#: src/remmina_ssh_plugin.c:1480 plugins/rdp/rdp_plugin.c:2692
 msgid "Start-up program"
 msgstr "Käynnistettävä ohjelma"
 
@@ -934,11 +932,11 @@ msgid "_OK"
 msgstr "_OK"
 
 #: src/remmina_plugin_manager.c:474 src/remmina_file_editor.c:1490
-#: plugins/nx/nx_session_manager.c:204 data/ui/remmina_main.glade:442
+#: data/ui/remmina_main.glade:442
 msgid "Name"
 msgstr "Nimi"
 
-#: src/remmina_plugin_manager.c:480 plugins/nx/nx_session_manager.c:183
+#: src/remmina_plugin_manager.c:480
 msgid "Type"
 msgstr "Tyyppi"
 
@@ -1097,9 +1095,8 @@ msgstr "Korvaa"
 #: src/remmina_sftp_client.c:947 src/remmina_message_panel.c:457
 #: src/remmina_message_panel.c:629 src/remmina_file_editor.c:151
 #: src/remmina_file_editor.c:1365 plugins/spice/spice_plugin_file_transfer.c:84
-#: plugins/nx/nx_session_manager.c:156 data/ui/remmina_spinner.glade:8
-#: data/ui/remmina_spinner.glade:9 data/ui/remmina_key_chooser.glade:8
-#: data/ui/remmina_key_chooser.glade:9
+#: data/ui/remmina_spinner.glade:8 data/ui/remmina_spinner.glade:9
+#: data/ui/remmina_key_chooser.glade:8 data/ui/remmina_key_chooser.glade:9
 msgid "_Cancel"
 msgstr "_Peru"
 
@@ -1317,7 +1314,7 @@ msgstr "Kirjoita TOTP-/OTP-/2FA-koodi"
 msgid "SSH tunnel credentials"
 msgstr "SSH-tunnelin kirjautumistiedot"
 
-#: src/remmina_ssh.c:1036 src/remmina_ssh.c:1062 plugins/nx/nx_plugin.c:203
+#: src/remmina_ssh.c:1036 src/remmina_ssh.c:1062
 msgid "SSH credentials"
 msgstr "SSH-kirjautumistiedot"
 
@@ -1715,8 +1712,7 @@ msgid "VNC password"
 msgstr "VNC-salasana"
 
 #: plugins/gvnc/gvnc_plugin.c:840 plugins/vnc/vnc_plugin.c:1962
-#: plugins/vnc/vnc_plugin.c:1982 plugins/xdmcp/xdmcp_plugin.c:369
-#: plugins/rdp/rdp_plugin.c:2660
+#: plugins/vnc/vnc_plugin.c:1982 plugins/rdp/rdp_plugin.c:2660
 msgid "Colour depth"
 msgstr "Värisyvyys"
 
@@ -1739,7 +1735,7 @@ msgstr "Estä leikepöytien synkronointi"
 
 #: plugins/gvnc/gvnc_plugin.c:858 plugins/www/www_plugin.c:904
 #: plugins/vnc/vnc_plugin.c:2005 plugins/spice/spice_plugin.c:694
-#: plugins/rdp/rdp_plugin.c:2716 plugins/nx/nx_plugin.c:752
+#: plugins/rdp/rdp_plugin.c:2716
 msgid "Forget passwords after use"
 msgstr "Unohda salasanat käytön jälkeen"
 
@@ -1976,22 +1972,22 @@ msgid "256 colours (8 bpp)"
 msgstr "256 väriä (8 bpp)"
 
 #: plugins/vnc/vnc_plugin.c:1931 plugins/rdp/rdp_plugin.c:2523
-#: plugins/rdp/rdp_settings.c:274 plugins/nx/nx_plugin.c:712
+#: plugins/rdp/rdp_settings.c:274
 msgid "Good"
 msgstr "Hyvä"
 
 #: plugins/vnc/vnc_plugin.c:1932 plugins/rdp/rdp_plugin.c:2524
-#: plugins/rdp/rdp_settings.c:276 plugins/nx/nx_plugin.c:713
+#: plugins/rdp/rdp_settings.c:276
 msgid "Best (slowest)"
 msgstr "Paras (hitain)"
 
 #: plugins/vnc/vnc_plugin.c:1933 plugins/rdp/rdp_plugin.c:2522
-#: plugins/rdp/rdp_settings.c:272 plugins/nx/nx_plugin.c:711
+#: plugins/rdp/rdp_settings.c:272
 msgid "Medium"
 msgstr "Keskitaso"
 
 #: plugins/vnc/vnc_plugin.c:1934 plugins/rdp/rdp_plugin.c:2521
-#: plugins/rdp/rdp_settings.c:270 plugins/nx/nx_plugin.c:710
+#: plugins/rdp/rdp_settings.c:270
 msgid "Poor (fastest)"
 msgstr "Heikko (nopein)"
 
@@ -2011,7 +2007,7 @@ msgid "Repeater"
 msgstr "Toistin"
 
 #: plugins/vnc/vnc_plugin.c:1963 plugins/vnc/vnc_plugin.c:1983
-#: plugins/rdp/rdp_plugin.c:2676 plugins/nx/nx_plugin.c:733
+#: plugins/rdp/rdp_plugin.c:2676
 msgid "Quality"
 msgstr "Laatu"
 
@@ -2045,7 +2041,7 @@ msgid "Open Chat…"
 msgstr "Avaa keskustelu…"
 
 #: plugins/vnc/vnc_plugin.c:2021 plugins/spice/spice_plugin.c:707
-#: plugins/xdmcp/xdmcp_plugin.c:381 plugins/rdp/rdp_plugin.c:2742
+#: plugins/rdp/rdp_plugin.c:2742
 msgid "Send Ctrl+Alt+Delete"
 msgstr "Lähetä Ctrl+Alt+Delete"
 
@@ -2087,7 +2083,6 @@ msgid "Connection to the SPICE server dropped."
 msgstr "Yhteys SPICE-palvelimeen epäonnistui."
 
 #: plugins/spice/spice_plugin.c:616 plugins/spice/spice_plugin.c:634
-#: plugins/xdmcp/xdmcp_plugin.c:348
 msgid "Default"
 msgstr "Oletus"
 
@@ -2163,66 +2158,6 @@ msgstr "Siirto on valmistunut"
 #, c-format
 msgid "The %s file has been transferred"
 msgstr "%s on siirretty"
-
-#: plugins/xdmcp/xdmcp_plugin.c:97
-msgid "Ran out of available local X display numbers."
-msgstr "Käytettävissä olevat paikalliset X-näyttönumerot loppuivat."
-
-#: plugins/xdmcp/xdmcp_plugin.c:264 plugins/nx/nx_plugin.c:617
-#, c-format
-msgid ""
-"The protocol “%s” is unavailable because GtkSocket only works under X.Org."
-msgstr ""
-"Protokolla \"%s\" ei ole käytettävissä, koska GtkSocket toimii vain X."
-"Orgissa."
-
-#: plugins/xdmcp/xdmcp_plugin.c:349
-msgid "Grayscale"
-msgstr "Harmaasävy"
-
-#: plugins/xdmcp/xdmcp_plugin.c:350
-msgid "256 colours"
-msgstr "256 väriä"
-
-#: plugins/xdmcp/xdmcp_plugin.c:351
-msgid "High colour (16 bit)"
-msgstr "High colour (16 bit)"
-
-#: plugins/xdmcp/xdmcp_plugin.c:352
-msgid "True colour (24 bit)"
-msgstr "True colour (24 bit)"
-
-#: plugins/xdmcp/xdmcp_plugin.c:371 plugins/nx/nx_plugin.c:751
-msgid "Use local cursor"
-msgstr "Käytä paikallista kohdistinta"
-
-#: plugins/xdmcp/xdmcp_plugin.c:372
-msgid "Disconnect after first session"
-msgstr "Katkaise yhteys ensimmäisen istunnon jälkeen"
-
-#: plugins/xdmcp/xdmcp_plugin.c:373
-msgid "Listen for TCP connections"
-msgstr "Kuuntele TCP-yhteyksiä"
-
-#: plugins/xdmcp/xdmcp_plugin.c:391
-msgid "XDMCP - X Remote Session"
-msgstr "XDMCP - X-etäistunto"
-
-#: plugins/st/st_plugin.c:238
-msgid "Terminal Emulator"
-msgstr "Pääte-emulaattori"
-
-#: plugins/st/st_plugin.c:239
-msgid "Command to be executed"
-msgstr "Suoritettava komento"
-
-#: plugins/st/st_plugin.c:254
-msgid "Detached window"
-msgstr "Irrotettu ikkuna"
-
-#: plugins/st/st_plugin_config.h:43
-msgid "Remmina simple terminal"
-msgstr "Remminan yksinkertainen pääte"
 
 #: plugins/rdp/rdp_plugin.c:757 plugins/rdp/rdp_plugin.c:822
 msgid "Enter RDP authentication credentials"
@@ -2945,63 +2880,6 @@ msgstr "Yleiset asetukset"
 #, c-format
 msgid "Reconnection attempt %d of %d…"
 msgstr "Uudelleenyhdistämisen yritys %d/%d…"
-
-#: plugins/nx/nx_session_manager.c:98
-msgid "Terminating…"
-msgstr "Lopetetaan…"
-
-#: plugins/nx/nx_session_manager.c:143
-#, c-format
-msgid "NX sessions on %s"
-msgstr "NX-istunnot kohteessa %s"
-
-#: plugins/nx/nx_session_manager.c:147
-msgid "Attach"
-msgstr "Kiinnitä"
-
-#: plugins/nx/nx_session_manager.c:151
-msgid "Restore"
-msgstr "Palauta"
-
-#: plugins/nx/nx_session_manager.c:152
-msgid "Start"
-msgstr "Käynnistä"
-
-#: plugins/nx/nx_session_manager.c:158
-msgid "Terminate"
-msgstr "Lopeta"
-
-#: plugins/nx/nx_session_manager.c:190
-msgid "Display"
-msgstr "Näyttö"
-
-#: plugins/nx/nx_session_manager.c:197
-msgid "Status"
-msgstr "Tila"
-
-#: plugins/nx/nx_plugin.c:206
-msgid "Password for private SSH key"
-msgstr "Yksityisen SSH-avaimen salasana"
-
-#: plugins/nx/nx_plugin.c:376
-msgid "Enter NX authentication credentials"
-msgstr "Syötä NX-todennustiedot"
-
-#: plugins/nx/nx_plugin.c:749
-msgid "Disable clipboard sync"
-msgstr "Estä leikepöytien synkronointi"
-
-#: plugins/nx/nx_plugin.c:750
-msgid "Disable encryption"
-msgstr "Poista salaus käytöstä"
-
-#: plugins/nx/nx_plugin.c:760
-msgid "Send Ctrl+Alt+Del"
-msgstr "Lähetä Ctrl+Alt+Del"
-
-#: plugins/nx/nx_plugin.c:770
-msgid "NX - NX Technology"
-msgstr "NX - NX-Teknologia"
 
 #: plugins/kwallet/src/kwallet_plugin_main.c:118
 msgid "Secured password storage in KWallet"
@@ -3993,6 +3871,93 @@ msgstr "Valitse uusi näppäin"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "Paina uutta näppäintä…"
+
+#~ msgid "Ran out of available local X display numbers."
+#~ msgstr "Käytettävissä olevat paikalliset X-näyttönumerot loppuivat."
+
+#~ msgid ""
+#~ "The protocol “%s” is unavailable because GtkSocket only works under X.Org."
+#~ msgstr ""
+#~ "Protokolla \"%s\" ei ole käytettävissä, koska GtkSocket toimii vain X."
+#~ "Orgissa."
+
+#~ msgid "Grayscale"
+#~ msgstr "Harmaasävy"
+
+#~ msgid "256 colours"
+#~ msgstr "256 väriä"
+
+#~ msgid "High colour (16 bit)"
+#~ msgstr "High colour (16 bit)"
+
+#~ msgid "True colour (24 bit)"
+#~ msgstr "True colour (24 bit)"
+
+#~ msgid "Use local cursor"
+#~ msgstr "Käytä paikallista kohdistinta"
+
+#~ msgid "Disconnect after first session"
+#~ msgstr "Katkaise yhteys ensimmäisen istunnon jälkeen"
+
+#~ msgid "Listen for TCP connections"
+#~ msgstr "Kuuntele TCP-yhteyksiä"
+
+#~ msgid "XDMCP - X Remote Session"
+#~ msgstr "XDMCP - X-etäistunto"
+
+#~ msgid "Terminal Emulator"
+#~ msgstr "Pääte-emulaattori"
+
+#~ msgid "Command to be executed"
+#~ msgstr "Suoritettava komento"
+
+#~ msgid "Detached window"
+#~ msgstr "Irrotettu ikkuna"
+
+#~ msgid "Remmina simple terminal"
+#~ msgstr "Remminan yksinkertainen pääte"
+
+#~ msgid "Terminating…"
+#~ msgstr "Lopetetaan…"
+
+#~ msgid "NX sessions on %s"
+#~ msgstr "NX-istunnot kohteessa %s"
+
+#~ msgid "Attach"
+#~ msgstr "Kiinnitä"
+
+#~ msgid "Restore"
+#~ msgstr "Palauta"
+
+#~ msgid "Start"
+#~ msgstr "Käynnistä"
+
+#~ msgid "Terminate"
+#~ msgstr "Lopeta"
+
+#~ msgid "Display"
+#~ msgstr "Näyttö"
+
+#~ msgid "Status"
+#~ msgstr "Tila"
+
+#~ msgid "Password for private SSH key"
+#~ msgstr "Yksityisen SSH-avaimen salasana"
+
+#~ msgid "Enter NX authentication credentials"
+#~ msgstr "Syötä NX-todennustiedot"
+
+#~ msgid "Disable clipboard sync"
+#~ msgstr "Estä leikepöytien synkronointi"
+
+#~ msgid "Disable encryption"
+#~ msgstr "Poista salaus käytöstä"
+
+#~ msgid "Send Ctrl+Alt+Del"
+#~ msgstr "Lähetä Ctrl+Alt+Del"
+
+#~ msgid "NX - NX Technology"
+#~ msgstr "NX - NX-Teknologia"
 
 #~ msgid "Tabs"
 #~ msgstr "Välilehdet"

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-06-29 21:55+0000\n"
+"POT-Creation-Date: 2021-06-30 06:48+0000\n"
 "PO-Revision-Date: 2021-06-04 14:29+0000\n"
 "Last-Translator: Marczis István <marczisi@yahoo.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/remmina/"
@@ -227,7 +227,7 @@ msgstr "Beillesztés (host+V)"
 
 #: src/remmina_ssh_plugin.c:1370 src/remmina_ssh_plugin.c:1475
 #: src/remmina_sftp_plugin.c:311 src/remmina_sftp_plugin.c:348
-#: src/remmina_file_editor.c:847 plugins/nx/nx_plugin.c:729
+#: src/remmina_file_editor.c:847
 msgid "SSH identity file"
 msgstr "SSH személyazonosság fájl"
 
@@ -303,13 +303,12 @@ msgstr "Hitelesítési típus"
 #: src/remmina_sftp_plugin.c:345 src/remmina_file_editor.c:961
 #: plugins/www/www_plugin.c:879 plugins/vnc/vnc_plugin.c:1960
 #: plugins/vnc/vnc_plugin.c:1980 plugins/rdp/rdp_plugin.c:2650
-#: plugins/nx/nx_plugin.c:730 data/ui/remmina_mpc.glade:144
+#: data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr "Felhasználónév"
 
 #: src/remmina_ssh_plugin.c:1474 plugins/vnc/vnc_plugin.c:1961
 #: plugins/vnc/vnc_plugin.c:1981 plugins/spice/spice_plugin.c:666
-#: plugins/nx/nx_plugin.c:731
 msgid "User password"
 msgstr "Felhasználó jelszava"
 
@@ -324,8 +323,7 @@ msgstr "CA tanúsítványfájl"
 msgid "Password to unlock private key"
 msgstr "Privát kulcs jelszava"
 
-#: src/remmina_ssh_plugin.c:1480 plugins/xdmcp/xdmcp_plugin.c:370
-#: plugins/rdp/rdp_plugin.c:2692 plugins/nx/nx_plugin.c:734
+#: src/remmina_ssh_plugin.c:1480 plugins/rdp/rdp_plugin.c:2692
 msgid "Start-up program"
 msgstr "Induló program"
 
@@ -912,11 +910,11 @@ msgid "_OK"
 msgstr "_OK"
 
 #: src/remmina_plugin_manager.c:474 src/remmina_file_editor.c:1490
-#: plugins/nx/nx_session_manager.c:204 data/ui/remmina_main.glade:442
+#: data/ui/remmina_main.glade:442
 msgid "Name"
 msgstr "Név"
 
-#: src/remmina_plugin_manager.c:480 plugins/nx/nx_session_manager.c:183
+#: src/remmina_plugin_manager.c:480
 msgid "Type"
 msgstr "Típus"
 
@@ -1075,9 +1073,8 @@ msgstr "Felülírás"
 #: src/remmina_sftp_client.c:947 src/remmina_message_panel.c:457
 #: src/remmina_message_panel.c:629 src/remmina_file_editor.c:151
 #: src/remmina_file_editor.c:1365 plugins/spice/spice_plugin_file_transfer.c:84
-#: plugins/nx/nx_session_manager.c:156 data/ui/remmina_spinner.glade:8
-#: data/ui/remmina_spinner.glade:9 data/ui/remmina_key_chooser.glade:8
-#: data/ui/remmina_key_chooser.glade:9
+#: data/ui/remmina_spinner.glade:8 data/ui/remmina_spinner.glade:9
+#: data/ui/remmina_key_chooser.glade:8 data/ui/remmina_key_chooser.glade:9
 msgid "_Cancel"
 msgstr "Mé_gse"
 
@@ -1294,7 +1291,7 @@ msgstr ""
 msgid "SSH tunnel credentials"
 msgstr "SSH alagút hitelesítő adatok"
 
-#: src/remmina_ssh.c:1036 src/remmina_ssh.c:1062 plugins/nx/nx_plugin.c:203
+#: src/remmina_ssh.c:1036 src/remmina_ssh.c:1062
 msgid "SSH credentials"
 msgstr "SSH hitelesítő adatok"
 
@@ -1719,8 +1716,7 @@ msgid "VNC password"
 msgstr "Adja meg a VNC jelszavát"
 
 #: plugins/gvnc/gvnc_plugin.c:840 plugins/vnc/vnc_plugin.c:1962
-#: plugins/vnc/vnc_plugin.c:1982 plugins/xdmcp/xdmcp_plugin.c:369
-#: plugins/rdp/rdp_plugin.c:2660
+#: plugins/vnc/vnc_plugin.c:1982 plugins/rdp/rdp_plugin.c:2660
 msgid "Colour depth"
 msgstr "Színmélység"
 
@@ -1747,7 +1743,7 @@ msgstr "Vágólap-szinkronizálás kikapcsolása"
 
 #: plugins/gvnc/gvnc_plugin.c:858 plugins/www/www_plugin.c:904
 #: plugins/vnc/vnc_plugin.c:2005 plugins/spice/spice_plugin.c:694
-#: plugins/rdp/rdp_plugin.c:2716 plugins/nx/nx_plugin.c:752
+#: plugins/rdp/rdp_plugin.c:2716
 msgid "Forget passwords after use"
 msgstr "Jelszó elfelejtés használat után"
 
@@ -1995,22 +1991,22 @@ msgid "256 colours (8 bpp)"
 msgstr "256 szín (8 bpp)"
 
 #: plugins/vnc/vnc_plugin.c:1931 plugins/rdp/rdp_plugin.c:2523
-#: plugins/rdp/rdp_settings.c:274 plugins/nx/nx_plugin.c:712
+#: plugins/rdp/rdp_settings.c:274
 msgid "Good"
 msgstr "Jó"
 
 #: plugins/vnc/vnc_plugin.c:1932 plugins/rdp/rdp_plugin.c:2524
-#: plugins/rdp/rdp_settings.c:276 plugins/nx/nx_plugin.c:713
+#: plugins/rdp/rdp_settings.c:276
 msgid "Best (slowest)"
 msgstr "Legjobb (leglassabb)"
 
 #: plugins/vnc/vnc_plugin.c:1933 plugins/rdp/rdp_plugin.c:2522
-#: plugins/rdp/rdp_settings.c:272 plugins/nx/nx_plugin.c:711
+#: plugins/rdp/rdp_settings.c:272
 msgid "Medium"
 msgstr "Közepes"
 
 #: plugins/vnc/vnc_plugin.c:1934 plugins/rdp/rdp_plugin.c:2521
-#: plugins/rdp/rdp_settings.c:270 plugins/nx/nx_plugin.c:710
+#: plugins/rdp/rdp_settings.c:270
 msgid "Poor (fastest)"
 msgstr "Gyenge (leggyorsabb)"
 
@@ -2030,7 +2026,7 @@ msgid "Repeater"
 msgstr "Ismétlő"
 
 #: plugins/vnc/vnc_plugin.c:1963 plugins/vnc/vnc_plugin.c:1983
-#: plugins/rdp/rdp_plugin.c:2676 plugins/nx/nx_plugin.c:733
+#: plugins/rdp/rdp_plugin.c:2676
 msgid "Quality"
 msgstr "Minőség"
 
@@ -2066,7 +2062,7 @@ msgid "Open Chat…"
 msgstr "Csevegés megnyitása…"
 
 #: plugins/vnc/vnc_plugin.c:2021 plugins/spice/spice_plugin.c:707
-#: plugins/xdmcp/xdmcp_plugin.c:381 plugins/rdp/rdp_plugin.c:2742
+#: plugins/rdp/rdp_plugin.c:2742
 msgid "Send Ctrl+Alt+Delete"
 msgstr "Ctrl+Alt+Delete küldése"
 
@@ -2108,7 +2104,6 @@ msgid "Connection to the SPICE server dropped."
 msgstr "A kapcsolat a(z) %s SPICE kiszolgálóhoz eldobásra került."
 
 #: plugins/spice/spice_plugin.c:616 plugins/spice/spice_plugin.c:634
-#: plugins/xdmcp/xdmcp_plugin.c:348
 msgid "Default"
 msgstr "Alapértelmezett"
 
@@ -2182,65 +2177,6 @@ msgstr "Átvitel kész"
 #, c-format
 msgid "The %s file has been transferred"
 msgstr "A %s fájl átvitelre került"
-
-#: plugins/xdmcp/xdmcp_plugin.c:97
-msgid "Ran out of available local X display numbers."
-msgstr "Az elérhető helyi X megjelenítők száma kifogyott."
-
-#: plugins/xdmcp/xdmcp_plugin.c:264 plugins/nx/nx_plugin.c:617
-#, c-format
-msgid ""
-"The protocol “%s” is unavailable because GtkSocket only works under X.Org."
-msgstr ""
-"A \"%s\" protokoll nem elérhető, mert a GtkSocket csak X.Org alatt működik."
-
-#: plugins/xdmcp/xdmcp_plugin.c:349
-msgid "Grayscale"
-msgstr "Szürkeárnyalatos"
-
-#: plugins/xdmcp/xdmcp_plugin.c:350
-msgid "256 colours"
-msgstr "256 szín"
-
-#: plugins/xdmcp/xdmcp_plugin.c:351
-msgid "High colour (16 bit)"
-msgstr "16 bites színmélység"
-
-#: plugins/xdmcp/xdmcp_plugin.c:352
-msgid "True colour (24 bit)"
-msgstr "24 bites színmélység"
-
-#: plugins/xdmcp/xdmcp_plugin.c:371 plugins/nx/nx_plugin.c:751
-msgid "Use local cursor"
-msgstr "Helyi kurzor használata"
-
-#: plugins/xdmcp/xdmcp_plugin.c:372
-msgid "Disconnect after first session"
-msgstr "Bontás az első munkamenet után"
-
-#: plugins/xdmcp/xdmcp_plugin.c:373
-msgid "Listen for TCP connections"
-msgstr "Várakozás TCP kapcsolatokra"
-
-#: plugins/xdmcp/xdmcp_plugin.c:391
-msgid "XDMCP - X Remote Session"
-msgstr "XDMCP - Távoli X-kapcsolat"
-
-#: plugins/st/st_plugin.c:238
-msgid "Terminal Emulator"
-msgstr "Parancsértelmező"
-
-#: plugins/st/st_plugin.c:239
-msgid "Command to be executed"
-msgstr "Végrehajtandó parancs"
-
-#: plugins/st/st_plugin.c:254
-msgid "Detached window"
-msgstr "Leválasztott ablak"
-
-#: plugins/st/st_plugin_config.h:43
-msgid "Remmina simple terminal"
-msgstr "Remmina egyszerű terminal"
 
 #: plugins/rdp/rdp_plugin.c:757 plugins/rdp/rdp_plugin.c:822
 msgid "Enter RDP authentication credentials"
@@ -2930,63 +2866,6 @@ msgstr "Minőségbeállítások"
 #, c-format
 msgid "Reconnection attempt %d of %d…"
 msgstr "Újrakapcsolódási kísérlet: %d / %d…"
-
-#: plugins/nx/nx_session_manager.c:98
-msgid "Terminating…"
-msgstr "Befejezés…"
-
-#: plugins/nx/nx_session_manager.c:143
-#, c-format
-msgid "NX sessions on %s"
-msgstr "NX kapcsolatok ezen: %s"
-
-#: plugins/nx/nx_session_manager.c:147
-msgid "Attach"
-msgstr "Kapcsolódás"
-
-#: plugins/nx/nx_session_manager.c:151
-msgid "Restore"
-msgstr "Visszaállítás"
-
-#: plugins/nx/nx_session_manager.c:152
-msgid "Start"
-msgstr "Indítás"
-
-#: plugins/nx/nx_session_manager.c:158
-msgid "Terminate"
-msgstr "Bezárás"
-
-#: plugins/nx/nx_session_manager.c:190
-msgid "Display"
-msgstr "Kijelző"
-
-#: plugins/nx/nx_session_manager.c:197
-msgid "Status"
-msgstr "Állapot"
-
-#: plugins/nx/nx_plugin.c:206
-msgid "Password for private SSH key"
-msgstr "Jelszó az SSH privát kulcshoz"
-
-#: plugins/nx/nx_plugin.c:376
-msgid "Enter NX authentication credentials"
-msgstr "Adja meg az NX hitelesítő adatokat"
-
-#: plugins/nx/nx_plugin.c:749
-msgid "Disable clipboard sync"
-msgstr "Vágólap-szinkronizálás tiltása"
-
-#: plugins/nx/nx_plugin.c:750
-msgid "Disable encryption"
-msgstr "Titkosítás tiltása"
-
-#: plugins/nx/nx_plugin.c:760
-msgid "Send Ctrl+Alt+Del"
-msgstr "Ctrl+Alt+Delete küldése"
-
-#: plugins/nx/nx_plugin.c:770
-msgid "NX - NX Technology"
-msgstr "NX - NX technológia"
 
 #: plugins/kwallet/src/kwallet_plugin_main.c:118
 msgid "Secured password storage in KWallet"
@@ -3991,6 +3870,93 @@ msgstr "Válasszon új gombot"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "Nyomja meg az új gombot…"
+
+#~ msgid "Ran out of available local X display numbers."
+#~ msgstr "Az elérhető helyi X megjelenítők száma kifogyott."
+
+#~ msgid ""
+#~ "The protocol “%s” is unavailable because GtkSocket only works under X.Org."
+#~ msgstr ""
+#~ "A \"%s\" protokoll nem elérhető, mert a GtkSocket csak X.Org alatt "
+#~ "működik."
+
+#~ msgid "Grayscale"
+#~ msgstr "Szürkeárnyalatos"
+
+#~ msgid "256 colours"
+#~ msgstr "256 szín"
+
+#~ msgid "High colour (16 bit)"
+#~ msgstr "16 bites színmélység"
+
+#~ msgid "True colour (24 bit)"
+#~ msgstr "24 bites színmélység"
+
+#~ msgid "Use local cursor"
+#~ msgstr "Helyi kurzor használata"
+
+#~ msgid "Disconnect after first session"
+#~ msgstr "Bontás az első munkamenet után"
+
+#~ msgid "Listen for TCP connections"
+#~ msgstr "Várakozás TCP kapcsolatokra"
+
+#~ msgid "XDMCP - X Remote Session"
+#~ msgstr "XDMCP - Távoli X-kapcsolat"
+
+#~ msgid "Terminal Emulator"
+#~ msgstr "Parancsértelmező"
+
+#~ msgid "Command to be executed"
+#~ msgstr "Végrehajtandó parancs"
+
+#~ msgid "Detached window"
+#~ msgstr "Leválasztott ablak"
+
+#~ msgid "Remmina simple terminal"
+#~ msgstr "Remmina egyszerű terminal"
+
+#~ msgid "Terminating…"
+#~ msgstr "Befejezés…"
+
+#~ msgid "NX sessions on %s"
+#~ msgstr "NX kapcsolatok ezen: %s"
+
+#~ msgid "Attach"
+#~ msgstr "Kapcsolódás"
+
+#~ msgid "Restore"
+#~ msgstr "Visszaállítás"
+
+#~ msgid "Start"
+#~ msgstr "Indítás"
+
+#~ msgid "Terminate"
+#~ msgstr "Bezárás"
+
+#~ msgid "Display"
+#~ msgstr "Kijelző"
+
+#~ msgid "Status"
+#~ msgstr "Állapot"
+
+#~ msgid "Password for private SSH key"
+#~ msgstr "Jelszó az SSH privát kulcshoz"
+
+#~ msgid "Enter NX authentication credentials"
+#~ msgstr "Adja meg az NX hitelesítő adatokat"
+
+#~ msgid "Disable clipboard sync"
+#~ msgstr "Vágólap-szinkronizálás tiltása"
+
+#~ msgid "Disable encryption"
+#~ msgstr "Titkosítás tiltása"
+
+#~ msgid "Send Ctrl+Alt+Del"
+#~ msgstr "Ctrl+Alt+Delete küldése"
+
+#~ msgid "NX - NX Technology"
+#~ msgstr "NX - NX technológia"
 
 #~ msgid "Tabs"
 #~ msgstr "Fülek"

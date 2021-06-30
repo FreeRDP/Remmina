@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-06-29 21:55+0000\n"
+"POT-Creation-Date: 2021-06-30 06:48+0000\n"
 "PO-Revision-Date: 2021-06-28 08:00+0000\n"
 "Last-Translator: Johannes Weberhofer <jweberhofer@weberhofer.at>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -235,7 +235,7 @@ msgstr "Text suchen (Host+G)"
 
 #: src/remmina_ssh_plugin.c:1370 src/remmina_ssh_plugin.c:1475
 #: src/remmina_sftp_plugin.c:311 src/remmina_sftp_plugin.c:348
-#: src/remmina_file_editor.c:847 plugins/nx/nx_plugin.c:729
+#: src/remmina_file_editor.c:847
 msgid "SSH identity file"
 msgstr "SSH‐Identity Datei"
 
@@ -311,13 +311,12 @@ msgstr "Authentifizierungstyp"
 #: src/remmina_sftp_plugin.c:345 src/remmina_file_editor.c:961
 #: plugins/www/www_plugin.c:879 plugins/vnc/vnc_plugin.c:1960
 #: plugins/vnc/vnc_plugin.c:1980 plugins/rdp/rdp_plugin.c:2650
-#: plugins/nx/nx_plugin.c:730 data/ui/remmina_mpc.glade:144
+#: data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr "Benutzername"
 
 #: src/remmina_ssh_plugin.c:1474 plugins/vnc/vnc_plugin.c:1961
 #: plugins/vnc/vnc_plugin.c:1981 plugins/spice/spice_plugin.c:666
-#: plugins/nx/nx_plugin.c:731
 msgid "User password"
 msgstr "Benutzerpasswort"
 
@@ -330,8 +329,7 @@ msgstr "SSH-Zertifikatsdatei"
 msgid "Password to unlock private key"
 msgstr "Passwort zum Entsperren des privaten Schlüssels"
 
-#: src/remmina_ssh_plugin.c:1480 plugins/xdmcp/xdmcp_plugin.c:370
-#: plugins/rdp/rdp_plugin.c:2692 plugins/nx/nx_plugin.c:734
+#: src/remmina_ssh_plugin.c:1480 plugins/rdp/rdp_plugin.c:2692
 msgid "Start-up program"
 msgstr "Startprogramm"
 
@@ -941,11 +939,11 @@ msgid "_OK"
 msgstr "_Ok"
 
 #: src/remmina_plugin_manager.c:474 src/remmina_file_editor.c:1490
-#: plugins/nx/nx_session_manager.c:204 data/ui/remmina_main.glade:442
+#: data/ui/remmina_main.glade:442
 msgid "Name"
 msgstr "Bezeichnung"
 
-#: src/remmina_plugin_manager.c:480 plugins/nx/nx_session_manager.c:183
+#: src/remmina_plugin_manager.c:480
 msgid "Type"
 msgstr "Typ"
 
@@ -1104,9 +1102,8 @@ msgstr "Überschreiben"
 #: src/remmina_sftp_client.c:947 src/remmina_message_panel.c:457
 #: src/remmina_message_panel.c:629 src/remmina_file_editor.c:151
 #: src/remmina_file_editor.c:1365 plugins/spice/spice_plugin_file_transfer.c:84
-#: plugins/nx/nx_session_manager.c:156 data/ui/remmina_spinner.glade:8
-#: data/ui/remmina_spinner.glade:9 data/ui/remmina_key_chooser.glade:8
-#: data/ui/remmina_key_chooser.glade:9
+#: data/ui/remmina_spinner.glade:8 data/ui/remmina_spinner.glade:9
+#: data/ui/remmina_key_chooser.glade:8 data/ui/remmina_key_chooser.glade:9
 msgid "_Cancel"
 msgstr "_Schließen"
 
@@ -1330,7 +1327,7 @@ msgstr "Geben Sie den TOTP/OTP/2FA Code ein"
 msgid "SSH tunnel credentials"
 msgstr "SSH‐Tunnel Anmeldedaten"
 
-#: src/remmina_ssh.c:1036 src/remmina_ssh.c:1062 plugins/nx/nx_plugin.c:203
+#: src/remmina_ssh.c:1036 src/remmina_ssh.c:1062
 msgid "SSH credentials"
 msgstr "SSH‐Anmeldeinformationen"
 
@@ -1709,8 +1706,7 @@ msgid "VNC password"
 msgstr "VNC-Passwort"
 
 #: plugins/gvnc/gvnc_plugin.c:840 plugins/vnc/vnc_plugin.c:1962
-#: plugins/vnc/vnc_plugin.c:1982 plugins/xdmcp/xdmcp_plugin.c:369
-#: plugins/rdp/rdp_plugin.c:2660
+#: plugins/vnc/vnc_plugin.c:1982 plugins/rdp/rdp_plugin.c:2660
 msgid "Colour depth"
 msgstr "Farbtiefe"
 
@@ -1733,7 +1729,7 @@ msgstr "Zwischenablage nicht abgleichen"
 
 #: plugins/gvnc/gvnc_plugin.c:858 plugins/www/www_plugin.c:904
 #: plugins/vnc/vnc_plugin.c:2005 plugins/spice/spice_plugin.c:694
-#: plugins/rdp/rdp_plugin.c:2716 plugins/nx/nx_plugin.c:752
+#: plugins/rdp/rdp_plugin.c:2716
 msgid "Forget passwords after use"
 msgstr "Passwörter nach der Verwendung verwerfen"
 
@@ -1975,22 +1971,22 @@ msgid "256 colours (8 bpp)"
 msgstr "256 Farben (8 bpp)"
 
 #: plugins/vnc/vnc_plugin.c:1931 plugins/rdp/rdp_plugin.c:2523
-#: plugins/rdp/rdp_settings.c:274 plugins/nx/nx_plugin.c:712
+#: plugins/rdp/rdp_settings.c:274
 msgid "Good"
 msgstr "Gut"
 
 #: plugins/vnc/vnc_plugin.c:1932 plugins/rdp/rdp_plugin.c:2524
-#: plugins/rdp/rdp_settings.c:276 plugins/nx/nx_plugin.c:713
+#: plugins/rdp/rdp_settings.c:276
 msgid "Best (slowest)"
 msgstr "Beste (langsam)"
 
 #: plugins/vnc/vnc_plugin.c:1933 plugins/rdp/rdp_plugin.c:2522
-#: plugins/rdp/rdp_settings.c:272 plugins/nx/nx_plugin.c:711
+#: plugins/rdp/rdp_settings.c:272
 msgid "Medium"
 msgstr "Mittel"
 
 #: plugins/vnc/vnc_plugin.c:1934 plugins/rdp/rdp_plugin.c:2521
-#: plugins/rdp/rdp_settings.c:270 plugins/nx/nx_plugin.c:710
+#: plugins/rdp/rdp_settings.c:270
 msgid "Poor (fastest)"
 msgstr "Niedrig (schnell)"
 
@@ -2017,7 +2013,7 @@ msgid "Repeater"
 msgstr "Repeater"
 
 #: plugins/vnc/vnc_plugin.c:1963 plugins/vnc/vnc_plugin.c:1983
-#: plugins/rdp/rdp_plugin.c:2676 plugins/nx/nx_plugin.c:733
+#: plugins/rdp/rdp_plugin.c:2676
 msgid "Quality"
 msgstr "Qualität"
 
@@ -2051,7 +2047,7 @@ msgid "Open Chat…"
 msgstr "Chat öffnen …"
 
 #: plugins/vnc/vnc_plugin.c:2021 plugins/spice/spice_plugin.c:707
-#: plugins/xdmcp/xdmcp_plugin.c:381 plugins/rdp/rdp_plugin.c:2742
+#: plugins/rdp/rdp_plugin.c:2742
 msgid "Send Ctrl+Alt+Delete"
 msgstr "Sende Strg+Alt+Entfernen"
 
@@ -2093,7 +2089,6 @@ msgid "Connection to the SPICE server dropped."
 msgstr "Die Verbindung zum SPICE-Server ist verlorengegangen."
 
 #: plugins/spice/spice_plugin.c:616 plugins/spice/spice_plugin.c:634
-#: plugins/xdmcp/xdmcp_plugin.c:348
 msgid "Default"
 msgstr "Standard"
 
@@ -2168,66 +2163,6 @@ msgstr "Übertragung abgeschlossen"
 #, c-format
 msgid "The %s file has been transferred"
 msgstr "Die Datei %s wurde übermittelt"
-
-#: plugins/xdmcp/xdmcp_plugin.c:97
-msgid "Ran out of available local X display numbers."
-msgstr "Es sind keine lokalen X-Display Nummern mehr verfügbar."
-
-#: plugins/xdmcp/xdmcp_plugin.c:264 plugins/nx/nx_plugin.c:617
-#, c-format
-msgid ""
-"The protocol “%s” is unavailable because GtkSocket only works under X.Org."
-msgstr ""
-"Das Protokoll „%s“ ist nicht verfügbar, da der GtkSocket nur unter X.Org "
-"funktioniert."
-
-#: plugins/xdmcp/xdmcp_plugin.c:349
-msgid "Grayscale"
-msgstr "Graustufen"
-
-#: plugins/xdmcp/xdmcp_plugin.c:350
-msgid "256 colours"
-msgstr "256 Farben"
-
-#: plugins/xdmcp/xdmcp_plugin.c:351
-msgid "High colour (16 bit)"
-msgstr "Hohe Farbtiefe (16 Bit)"
-
-#: plugins/xdmcp/xdmcp_plugin.c:352
-msgid "True colour (24 bit)"
-msgstr "Echtfarben (24 Bit)"
-
-#: plugins/xdmcp/xdmcp_plugin.c:371 plugins/nx/nx_plugin.c:751
-msgid "Use local cursor"
-msgstr "Lokalen Mauszeiger verwenden"
-
-#: plugins/xdmcp/xdmcp_plugin.c:372
-msgid "Disconnect after first session"
-msgstr "Verbindung nach der ersten Sitzung trennen"
-
-#: plugins/xdmcp/xdmcp_plugin.c:373
-msgid "Listen for TCP connections"
-msgstr "Auf TCP-Verbindungen warten"
-
-#: plugins/xdmcp/xdmcp_plugin.c:391
-msgid "XDMCP - X Remote Session"
-msgstr "XDMCP – Entfernte X‐Sitzung"
-
-#: plugins/st/st_plugin.c:238
-msgid "Terminal Emulator"
-msgstr "Terminal-Emulator"
-
-#: plugins/st/st_plugin.c:239
-msgid "Command to be executed"
-msgstr "Auszuführender Befehl"
-
-#: plugins/st/st_plugin.c:254
-msgid "Detached window"
-msgstr "Separates Fenster"
-
-#: plugins/st/st_plugin_config.h:43
-msgid "Remmina simple terminal"
-msgstr "Einfaches Remmina-Terminal"
 
 #: plugins/rdp/rdp_plugin.c:757 plugins/rdp/rdp_plugin.c:822
 msgid "Enter RDP authentication credentials"
@@ -2947,63 +2882,6 @@ msgstr "Allgemeine Einstellungen"
 #, c-format
 msgid "Reconnection attempt %d of %d…"
 msgstr "Wiederherstellen der Verbindung. Versuch %d von %d…"
-
-#: plugins/nx/nx_session_manager.c:98
-msgid "Terminating…"
-msgstr "Beenden…"
-
-#: plugins/nx/nx_session_manager.c:143
-#, c-format
-msgid "NX sessions on %s"
-msgstr "NX‐Sitzungen auf %s"
-
-#: plugins/nx/nx_session_manager.c:147
-msgid "Attach"
-msgstr "Verbinden"
-
-#: plugins/nx/nx_session_manager.c:151
-msgid "Restore"
-msgstr "Wiederherstellen"
-
-#: plugins/nx/nx_session_manager.c:152
-msgid "Start"
-msgstr "Starten"
-
-#: plugins/nx/nx_session_manager.c:158
-msgid "Terminate"
-msgstr "Beenden"
-
-#: plugins/nx/nx_session_manager.c:190
-msgid "Display"
-msgstr "Anzeigen"
-
-#: plugins/nx/nx_session_manager.c:197
-msgid "Status"
-msgstr "Status"
-
-#: plugins/nx/nx_plugin.c:206
-msgid "Password for private SSH key"
-msgstr "Passwort für den privaten SSH-Schlüssel"
-
-#: plugins/nx/nx_plugin.c:376
-msgid "Enter NX authentication credentials"
-msgstr "Geben Sie die Anmeldedaten zur NX-Authentifizierung ein"
-
-#: plugins/nx/nx_plugin.c:749
-msgid "Disable clipboard sync"
-msgstr "Zwischenablage nicht abgleichen"
-
-#: plugins/nx/nx_plugin.c:750
-msgid "Disable encryption"
-msgstr "Verschlüsselung deaktivieren"
-
-#: plugins/nx/nx_plugin.c:760
-msgid "Send Ctrl+Alt+Del"
-msgstr "Sende Strg+Alt+Entfernen"
-
-#: plugins/nx/nx_plugin.c:770
-msgid "NX - NX Technology"
-msgstr "NX - NX Technologie"
 
 #: plugins/kwallet/src/kwallet_plugin_main.c:118
 msgid "Secured password storage in KWallet"
@@ -4000,6 +3878,93 @@ msgstr "Wählen Sie eine neue Taste"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "Bitte drücken Sie die neue Taste…"
+
+#~ msgid "Ran out of available local X display numbers."
+#~ msgstr "Es sind keine lokalen X-Display Nummern mehr verfügbar."
+
+#~ msgid ""
+#~ "The protocol “%s” is unavailable because GtkSocket only works under X.Org."
+#~ msgstr ""
+#~ "Das Protokoll „%s“ ist nicht verfügbar, da der GtkSocket nur unter X.Org "
+#~ "funktioniert."
+
+#~ msgid "Grayscale"
+#~ msgstr "Graustufen"
+
+#~ msgid "256 colours"
+#~ msgstr "256 Farben"
+
+#~ msgid "High colour (16 bit)"
+#~ msgstr "Hohe Farbtiefe (16 Bit)"
+
+#~ msgid "True colour (24 bit)"
+#~ msgstr "Echtfarben (24 Bit)"
+
+#~ msgid "Use local cursor"
+#~ msgstr "Lokalen Mauszeiger verwenden"
+
+#~ msgid "Disconnect after first session"
+#~ msgstr "Verbindung nach der ersten Sitzung trennen"
+
+#~ msgid "Listen for TCP connections"
+#~ msgstr "Auf TCP-Verbindungen warten"
+
+#~ msgid "XDMCP - X Remote Session"
+#~ msgstr "XDMCP – Entfernte X‐Sitzung"
+
+#~ msgid "Terminal Emulator"
+#~ msgstr "Terminal-Emulator"
+
+#~ msgid "Command to be executed"
+#~ msgstr "Auszuführender Befehl"
+
+#~ msgid "Detached window"
+#~ msgstr "Separates Fenster"
+
+#~ msgid "Remmina simple terminal"
+#~ msgstr "Einfaches Remmina-Terminal"
+
+#~ msgid "Terminating…"
+#~ msgstr "Beenden…"
+
+#~ msgid "NX sessions on %s"
+#~ msgstr "NX‐Sitzungen auf %s"
+
+#~ msgid "Attach"
+#~ msgstr "Verbinden"
+
+#~ msgid "Restore"
+#~ msgstr "Wiederherstellen"
+
+#~ msgid "Start"
+#~ msgstr "Starten"
+
+#~ msgid "Terminate"
+#~ msgstr "Beenden"
+
+#~ msgid "Display"
+#~ msgstr "Anzeigen"
+
+#~ msgid "Status"
+#~ msgstr "Status"
+
+#~ msgid "Password for private SSH key"
+#~ msgstr "Passwort für den privaten SSH-Schlüssel"
+
+#~ msgid "Enter NX authentication credentials"
+#~ msgstr "Geben Sie die Anmeldedaten zur NX-Authentifizierung ein"
+
+#~ msgid "Disable clipboard sync"
+#~ msgstr "Zwischenablage nicht abgleichen"
+
+#~ msgid "Disable encryption"
+#~ msgstr "Verschlüsselung deaktivieren"
+
+#~ msgid "Send Ctrl+Alt+Del"
+#~ msgstr "Sende Strg+Alt+Entfernen"
+
+#~ msgid "NX - NX Technology"
+#~ msgstr "NX - NX Technologie"
 
 #~ msgid "Tabs"
 #~ msgstr "Reiter"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-06-29 21:55+0000\n"
+"POT-Creation-Date: 2021-06-30 06:48+0000\n"
 "PO-Revision-Date: 2021-06-16 22:29+0000\n"
 "Last-Translator: scootergrisen <scootergrisen@gmail.com>\n"
 "Language-Team: Danish <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -224,7 +224,7 @@ msgstr "Find tekst (vært+G)"
 
 #: src/remmina_ssh_plugin.c:1370 src/remmina_ssh_plugin.c:1475
 #: src/remmina_sftp_plugin.c:311 src/remmina_sftp_plugin.c:348
-#: src/remmina_file_editor.c:847 plugins/nx/nx_plugin.c:729
+#: src/remmina_file_editor.c:847
 msgid "SSH identity file"
 msgstr "SSH-identitetsfil"
 
@@ -300,13 +300,12 @@ msgstr "Autentifikationstype"
 #: src/remmina_sftp_plugin.c:345 src/remmina_file_editor.c:961
 #: plugins/www/www_plugin.c:879 plugins/vnc/vnc_plugin.c:1960
 #: plugins/vnc/vnc_plugin.c:1980 plugins/rdp/rdp_plugin.c:2650
-#: plugins/nx/nx_plugin.c:730 data/ui/remmina_mpc.glade:144
+#: data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr "Brugernavn"
 
 #: src/remmina_ssh_plugin.c:1474 plugins/vnc/vnc_plugin.c:1961
 #: plugins/vnc/vnc_plugin.c:1981 plugins/spice/spice_plugin.c:666
-#: plugins/nx/nx_plugin.c:731
 msgid "User password"
 msgstr "Brugerens adgangskode"
 
@@ -319,8 +318,7 @@ msgstr "SSH-certifikatfil"
 msgid "Password to unlock private key"
 msgstr "Adgangskode til at låse op for privat nøgle"
 
-#: src/remmina_ssh_plugin.c:1480 plugins/xdmcp/xdmcp_plugin.c:370
-#: plugins/rdp/rdp_plugin.c:2692 plugins/nx/nx_plugin.c:734
+#: src/remmina_ssh_plugin.c:1480 plugins/rdp/rdp_plugin.c:2692
 msgid "Start-up program"
 msgstr "Opstartsprogram"
 
@@ -899,11 +897,11 @@ msgid "_OK"
 msgstr "_OK"
 
 #: src/remmina_plugin_manager.c:474 src/remmina_file_editor.c:1490
-#: plugins/nx/nx_session_manager.c:204 data/ui/remmina_main.glade:442
+#: data/ui/remmina_main.glade:442
 msgid "Name"
 msgstr "Navn"
 
-#: src/remmina_plugin_manager.c:480 plugins/nx/nx_session_manager.c:183
+#: src/remmina_plugin_manager.c:480
 msgid "Type"
 msgstr "Type"
 
@@ -1062,9 +1060,8 @@ msgstr "Overskriv"
 #: src/remmina_sftp_client.c:947 src/remmina_message_panel.c:457
 #: src/remmina_message_panel.c:629 src/remmina_file_editor.c:151
 #: src/remmina_file_editor.c:1365 plugins/spice/spice_plugin_file_transfer.c:84
-#: plugins/nx/nx_session_manager.c:156 data/ui/remmina_spinner.glade:8
-#: data/ui/remmina_spinner.glade:9 data/ui/remmina_key_chooser.glade:8
-#: data/ui/remmina_key_chooser.glade:9
+#: data/ui/remmina_spinner.glade:8 data/ui/remmina_spinner.glade:9
+#: data/ui/remmina_key_chooser.glade:8 data/ui/remmina_key_chooser.glade:9
 msgid "_Cancel"
 msgstr "_Annuller"
 
@@ -1278,7 +1275,7 @@ msgstr "Skriv ind TOTP/OTP/2FA-kode"
 msgid "SSH tunnel credentials"
 msgstr "Loginoplysninger for SSH-tunnel"
 
-#: src/remmina_ssh.c:1036 src/remmina_ssh.c:1062 plugins/nx/nx_plugin.c:203
+#: src/remmina_ssh.c:1036 src/remmina_ssh.c:1062
 msgid "SSH credentials"
 msgstr "SSH-loginoplysninger"
 
@@ -1697,8 +1694,7 @@ msgid "VNC password"
 msgstr "VNC-adgangskode"
 
 #: plugins/gvnc/gvnc_plugin.c:840 plugins/vnc/vnc_plugin.c:1962
-#: plugins/vnc/vnc_plugin.c:1982 plugins/xdmcp/xdmcp_plugin.c:369
-#: plugins/rdp/rdp_plugin.c:2660
+#: plugins/vnc/vnc_plugin.c:1982 plugins/rdp/rdp_plugin.c:2660
 msgid "Colour depth"
 msgstr "Farvedybde"
 
@@ -1723,7 +1719,7 @@ msgstr "Deaktivér synkronisering af udklipsholder"
 
 #: plugins/gvnc/gvnc_plugin.c:858 plugins/www/www_plugin.c:904
 #: plugins/vnc/vnc_plugin.c:2005 plugins/spice/spice_plugin.c:694
-#: plugins/rdp/rdp_plugin.c:2716 plugins/nx/nx_plugin.c:752
+#: plugins/rdp/rdp_plugin.c:2716
 msgid "Forget passwords after use"
 msgstr "Gem adgangskoder efter anvendelse"
 
@@ -1962,22 +1958,22 @@ msgid "256 colours (8 bpp)"
 msgstr "256 farver (8 bpp)"
 
 #: plugins/vnc/vnc_plugin.c:1931 plugins/rdp/rdp_plugin.c:2523
-#: plugins/rdp/rdp_settings.c:274 plugins/nx/nx_plugin.c:712
+#: plugins/rdp/rdp_settings.c:274
 msgid "Good"
 msgstr "God"
 
 #: plugins/vnc/vnc_plugin.c:1932 plugins/rdp/rdp_plugin.c:2524
-#: plugins/rdp/rdp_settings.c:276 plugins/nx/nx_plugin.c:713
+#: plugins/rdp/rdp_settings.c:276
 msgid "Best (slowest)"
 msgstr "Bedste (langsomst)"
 
 #: plugins/vnc/vnc_plugin.c:1933 plugins/rdp/rdp_plugin.c:2522
-#: plugins/rdp/rdp_settings.c:272 plugins/nx/nx_plugin.c:711
+#: plugins/rdp/rdp_settings.c:272
 msgid "Medium"
 msgstr "Medium"
 
 #: plugins/vnc/vnc_plugin.c:1934 plugins/rdp/rdp_plugin.c:2521
-#: plugins/rdp/rdp_settings.c:270 plugins/nx/nx_plugin.c:710
+#: plugins/rdp/rdp_settings.c:270
 msgid "Poor (fastest)"
 msgstr "Dårlig (hurtigst)"
 
@@ -1997,7 +1993,7 @@ msgid "Repeater"
 msgstr "Repeater"
 
 #: plugins/vnc/vnc_plugin.c:1963 plugins/vnc/vnc_plugin.c:1983
-#: plugins/rdp/rdp_plugin.c:2676 plugins/nx/nx_plugin.c:733
+#: plugins/rdp/rdp_plugin.c:2676
 msgid "Quality"
 msgstr "Kvalitet"
 
@@ -2033,7 +2029,7 @@ msgid "Open Chat…"
 msgstr "Åbn chat …"
 
 #: plugins/vnc/vnc_plugin.c:2021 plugins/spice/spice_plugin.c:707
-#: plugins/xdmcp/xdmcp_plugin.c:381 plugins/rdp/rdp_plugin.c:2742
+#: plugins/rdp/rdp_plugin.c:2742
 msgid "Send Ctrl+Alt+Delete"
 msgstr "Send Ctrl+Alt+Delete"
 
@@ -2075,7 +2071,6 @@ msgid "Connection to the SPICE server dropped."
 msgstr "Forbindelsen til SPICE-serveren blev opgivet."
 
 #: plugins/spice/spice_plugin.c:616 plugins/spice/spice_plugin.c:634
-#: plugins/xdmcp/xdmcp_plugin.c:348
 msgid "Default"
 msgstr "Standard"
 
@@ -2149,65 +2144,6 @@ msgstr "Overførsel fuldført"
 #, c-format
 msgid "The %s file has been transferred"
 msgstr "%s-filen er blevet overføret"
-
-#: plugins/xdmcp/xdmcp_plugin.c:97
-msgid "Ran out of available local X display numbers."
-msgstr "Løb tør for tilgængelige tal til lokalt X-display."
-
-#: plugins/xdmcp/xdmcp_plugin.c:264 plugins/nx/nx_plugin.c:617
-#, c-format
-msgid ""
-"The protocol “%s” is unavailable because GtkSocket only works under X.Org."
-msgstr ""
-"Protokollen \"%s\" er utilgængelig da GtkSocket kun virker under X.Org."
-
-#: plugins/xdmcp/xdmcp_plugin.c:349
-msgid "Grayscale"
-msgstr "Gråtone"
-
-#: plugins/xdmcp/xdmcp_plugin.c:350
-msgid "256 colours"
-msgstr "256 farver"
-
-#: plugins/xdmcp/xdmcp_plugin.c:351
-msgid "High colour (16 bit)"
-msgstr "Mange farver (16 bit)"
-
-#: plugins/xdmcp/xdmcp_plugin.c:352
-msgid "True colour (24 bit)"
-msgstr "Ægte farver (24 bit)"
-
-#: plugins/xdmcp/xdmcp_plugin.c:371 plugins/nx/nx_plugin.c:751
-msgid "Use local cursor"
-msgstr "Brug lokal markør"
-
-#: plugins/xdmcp/xdmcp_plugin.c:372
-msgid "Disconnect after first session"
-msgstr "Afbryd forbindelsen efter første session"
-
-#: plugins/xdmcp/xdmcp_plugin.c:373
-msgid "Listen for TCP connections"
-msgstr "Lyt efter TCP-forbindelser"
-
-#: plugins/xdmcp/xdmcp_plugin.c:391
-msgid "XDMCP - X Remote Session"
-msgstr "XDMCP - X-fjernsession"
-
-#: plugins/st/st_plugin.c:238
-msgid "Terminal Emulator"
-msgstr "Terminalemulator"
-
-#: plugins/st/st_plugin.c:239
-msgid "Command to be executed"
-msgstr "Kommando som skal udføres"
-
-#: plugins/st/st_plugin.c:254
-msgid "Detached window"
-msgstr "Løsrevet vindue"
-
-#: plugins/st/st_plugin_config.h:43
-msgid "Remmina simple terminal"
-msgstr "Remmina simpel terminal"
 
 #: plugins/rdp/rdp_plugin.c:757 plugins/rdp/rdp_plugin.c:822
 msgid "Enter RDP authentication credentials"
@@ -2921,63 +2857,6 @@ msgstr "Kvalitetsindstillinger"
 #, c-format
 msgid "Reconnection attempt %d of %d…"
 msgstr "Genoprettelsesforsøg %d af %d …"
-
-#: plugins/nx/nx_session_manager.c:98
-msgid "Terminating…"
-msgstr "Afslutter …"
-
-#: plugins/nx/nx_session_manager.c:143
-#, c-format
-msgid "NX sessions on %s"
-msgstr "NX-sessioner på %s"
-
-#: plugins/nx/nx_session_manager.c:147
-msgid "Attach"
-msgstr "Tilkobl"
-
-#: plugins/nx/nx_session_manager.c:151
-msgid "Restore"
-msgstr "Gendan"
-
-#: plugins/nx/nx_session_manager.c:152
-msgid "Start"
-msgstr "Start"
-
-#: plugins/nx/nx_session_manager.c:158
-msgid "Terminate"
-msgstr "Afslut"
-
-#: plugins/nx/nx_session_manager.c:190
-msgid "Display"
-msgstr "Vis"
-
-#: plugins/nx/nx_session_manager.c:197
-msgid "Status"
-msgstr "Status"
-
-#: plugins/nx/nx_plugin.c:206
-msgid "Password for private SSH key"
-msgstr "Adgangskode til privat SSH-nøgle"
-
-#: plugins/nx/nx_plugin.c:376
-msgid "Enter NX authentication credentials"
-msgstr "Indtast loginoplysninger for NX-autentifikation"
-
-#: plugins/nx/nx_plugin.c:749
-msgid "Disable clipboard sync"
-msgstr "Deaktivér synkronisering af udklipsholder"
-
-#: plugins/nx/nx_plugin.c:750
-msgid "Disable encryption"
-msgstr "Deaktivér kryptering"
-
-#: plugins/nx/nx_plugin.c:760
-msgid "Send Ctrl+Alt+Del"
-msgstr "Send Ctrl+Alt+Del"
-
-#: plugins/nx/nx_plugin.c:770
-msgid "NX - NX Technology"
-msgstr "NX - NX-teknologi"
 
 #: plugins/kwallet/src/kwallet_plugin_main.c:118
 msgid "Secured password storage in KWallet"
@@ -3974,6 +3853,92 @@ msgstr "Vælg en ny tast"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "Tryk venligst på en ny tast …"
+
+#~ msgid "Ran out of available local X display numbers."
+#~ msgstr "Løb tør for tilgængelige tal til lokalt X-display."
+
+#~ msgid ""
+#~ "The protocol “%s” is unavailable because GtkSocket only works under X.Org."
+#~ msgstr ""
+#~ "Protokollen \"%s\" er utilgængelig da GtkSocket kun virker under X.Org."
+
+#~ msgid "Grayscale"
+#~ msgstr "Gråtone"
+
+#~ msgid "256 colours"
+#~ msgstr "256 farver"
+
+#~ msgid "High colour (16 bit)"
+#~ msgstr "Mange farver (16 bit)"
+
+#~ msgid "True colour (24 bit)"
+#~ msgstr "Ægte farver (24 bit)"
+
+#~ msgid "Use local cursor"
+#~ msgstr "Brug lokal markør"
+
+#~ msgid "Disconnect after first session"
+#~ msgstr "Afbryd forbindelsen efter første session"
+
+#~ msgid "Listen for TCP connections"
+#~ msgstr "Lyt efter TCP-forbindelser"
+
+#~ msgid "XDMCP - X Remote Session"
+#~ msgstr "XDMCP - X-fjernsession"
+
+#~ msgid "Terminal Emulator"
+#~ msgstr "Terminalemulator"
+
+#~ msgid "Command to be executed"
+#~ msgstr "Kommando som skal udføres"
+
+#~ msgid "Detached window"
+#~ msgstr "Løsrevet vindue"
+
+#~ msgid "Remmina simple terminal"
+#~ msgstr "Remmina simpel terminal"
+
+#~ msgid "Terminating…"
+#~ msgstr "Afslutter …"
+
+#~ msgid "NX sessions on %s"
+#~ msgstr "NX-sessioner på %s"
+
+#~ msgid "Attach"
+#~ msgstr "Tilkobl"
+
+#~ msgid "Restore"
+#~ msgstr "Gendan"
+
+#~ msgid "Start"
+#~ msgstr "Start"
+
+#~ msgid "Terminate"
+#~ msgstr "Afslut"
+
+#~ msgid "Display"
+#~ msgstr "Vis"
+
+#~ msgid "Status"
+#~ msgstr "Status"
+
+#~ msgid "Password for private SSH key"
+#~ msgstr "Adgangskode til privat SSH-nøgle"
+
+#~ msgid "Enter NX authentication credentials"
+#~ msgstr "Indtast loginoplysninger for NX-autentifikation"
+
+#~ msgid "Disable clipboard sync"
+#~ msgstr "Deaktivér synkronisering af udklipsholder"
+
+#~ msgid "Disable encryption"
+#~ msgstr "Deaktivér kryptering"
+
+#~ msgid "Send Ctrl+Alt+Del"
+#~ msgstr "Send Ctrl+Alt+Del"
+
+#~ msgid "NX - NX Technology"
+#~ msgstr "NX - NX-teknologi"
 
 #~ msgid "Tabs"
 #~ msgstr "Faneeblade"

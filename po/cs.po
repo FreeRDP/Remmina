@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-06-29 21:55+0000\n"
+"POT-Creation-Date: 2021-06-30 06:48+0000\n"
 "PO-Revision-Date: 2021-06-16 22:29+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/remmina/remmina/cs/"
@@ -227,7 +227,7 @@ msgstr "Vložit (host+V)"
 
 #: src/remmina_ssh_plugin.c:1370 src/remmina_ssh_plugin.c:1475
 #: src/remmina_sftp_plugin.c:311 src/remmina_sftp_plugin.c:348
-#: src/remmina_file_editor.c:847 plugins/nx/nx_plugin.c:729
+#: src/remmina_file_editor.c:847
 msgid "SSH identity file"
 msgstr "soubor s identitou pro SSH"
 
@@ -303,13 +303,12 @@ msgstr "Typ ověřování se"
 #: src/remmina_sftp_plugin.c:345 src/remmina_file_editor.c:961
 #: plugins/www/www_plugin.c:879 plugins/vnc/vnc_plugin.c:1960
 #: plugins/vnc/vnc_plugin.c:1980 plugins/rdp/rdp_plugin.c:2650
-#: plugins/nx/nx_plugin.c:730 data/ui/remmina_mpc.glade:144
+#: data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr "Uživatelské jméno"
 
 #: src/remmina_ssh_plugin.c:1474 plugins/vnc/vnc_plugin.c:1961
 #: plugins/vnc/vnc_plugin.c:1981 plugins/spice/spice_plugin.c:666
-#: plugins/nx/nx_plugin.c:731
 msgid "User password"
 msgstr "Heslo k uživatelskému účtu"
 
@@ -324,8 +323,7 @@ msgstr "Soubor s certifikátem cert. autority"
 msgid "Password to unlock private key"
 msgstr "Heslo pro odemčení soukromé části klíče"
 
-#: src/remmina_ssh_plugin.c:1480 plugins/xdmcp/xdmcp_plugin.c:370
-#: plugins/rdp/rdp_plugin.c:2692 plugins/nx/nx_plugin.c:734
+#: src/remmina_ssh_plugin.c:1480 plugins/rdp/rdp_plugin.c:2692
 msgid "Start-up program"
 msgstr "Program při spouštění"
 
@@ -912,11 +910,11 @@ msgid "_OK"
 msgstr "_OK"
 
 #: src/remmina_plugin_manager.c:474 src/remmina_file_editor.c:1490
-#: plugins/nx/nx_session_manager.c:204 data/ui/remmina_main.glade:442
+#: data/ui/remmina_main.glade:442
 msgid "Name"
 msgstr "Název"
 
-#: src/remmina_plugin_manager.c:480 plugins/nx/nx_session_manager.c:183
+#: src/remmina_plugin_manager.c:480
 msgid "Type"
 msgstr "Typ"
 
@@ -1076,9 +1074,8 @@ msgstr "Přepsat"
 #: src/remmina_sftp_client.c:947 src/remmina_message_panel.c:457
 #: src/remmina_message_panel.c:629 src/remmina_file_editor.c:151
 #: src/remmina_file_editor.c:1365 plugins/spice/spice_plugin_file_transfer.c:84
-#: plugins/nx/nx_session_manager.c:156 data/ui/remmina_spinner.glade:8
-#: data/ui/remmina_spinner.glade:9 data/ui/remmina_key_chooser.glade:8
-#: data/ui/remmina_key_chooser.glade:9
+#: data/ui/remmina_spinner.glade:8 data/ui/remmina_spinner.glade:9
+#: data/ui/remmina_key_chooser.glade:8 data/ui/remmina_key_chooser.glade:9
 msgid "_Cancel"
 msgstr "_Storno"
 
@@ -1296,7 +1293,7 @@ msgstr ""
 msgid "SSH tunnel credentials"
 msgstr "přihlašovací údaje pro SSH tunel"
 
-#: src/remmina_ssh.c:1036 src/remmina_ssh.c:1062 plugins/nx/nx_plugin.c:203
+#: src/remmina_ssh.c:1036 src/remmina_ssh.c:1062
 msgid "SSH credentials"
 msgstr "přihlašovací údaje pro SSH"
 
@@ -1721,8 +1718,7 @@ msgid "VNC password"
 msgstr "Zadejte heslo pro VNC"
 
 #: plugins/gvnc/gvnc_plugin.c:840 plugins/vnc/vnc_plugin.c:1962
-#: plugins/vnc/vnc_plugin.c:1982 plugins/xdmcp/xdmcp_plugin.c:369
-#: plugins/rdp/rdp_plugin.c:2660
+#: plugins/vnc/vnc_plugin.c:1982 plugins/rdp/rdp_plugin.c:2660
 msgid "Colour depth"
 msgstr "Barevná hloubka"
 
@@ -1749,7 +1745,7 @@ msgstr "Nesynchronizovat obsah schránky"
 
 #: plugins/gvnc/gvnc_plugin.c:858 plugins/www/www_plugin.c:904
 #: plugins/vnc/vnc_plugin.c:2005 plugins/spice/spice_plugin.c:694
-#: plugins/rdp/rdp_plugin.c:2716 plugins/nx/nx_plugin.c:752
+#: plugins/rdp/rdp_plugin.c:2716
 msgid "Forget passwords after use"
 msgstr "Po použití heslo zapomenout"
 
@@ -1994,22 +1990,22 @@ msgid "256 colours (8 bpp)"
 msgstr "256 barev (8 bit/px)"
 
 #: plugins/vnc/vnc_plugin.c:1931 plugins/rdp/rdp_plugin.c:2523
-#: plugins/rdp/rdp_settings.c:274 plugins/nx/nx_plugin.c:712
+#: plugins/rdp/rdp_settings.c:274
 msgid "Good"
 msgstr "Dobrá"
 
 #: plugins/vnc/vnc_plugin.c:1932 plugins/rdp/rdp_plugin.c:2524
-#: plugins/rdp/rdp_settings.c:276 plugins/nx/nx_plugin.c:713
+#: plugins/rdp/rdp_settings.c:276
 msgid "Best (slowest)"
 msgstr "Nejlepší (nejpomalejší)"
 
 #: plugins/vnc/vnc_plugin.c:1933 plugins/rdp/rdp_plugin.c:2522
-#: plugins/rdp/rdp_settings.c:272 plugins/nx/nx_plugin.c:711
+#: plugins/rdp/rdp_settings.c:272
 msgid "Medium"
 msgstr "Střední"
 
 #: plugins/vnc/vnc_plugin.c:1934 plugins/rdp/rdp_plugin.c:2521
-#: plugins/rdp/rdp_settings.c:270 plugins/nx/nx_plugin.c:710
+#: plugins/rdp/rdp_settings.c:270
 msgid "Poor (fastest)"
 msgstr "Nejhorší (nejrychlejší)"
 
@@ -2029,7 +2025,7 @@ msgid "Repeater"
 msgstr "Opakovač"
 
 #: plugins/vnc/vnc_plugin.c:1963 plugins/vnc/vnc_plugin.c:1983
-#: plugins/rdp/rdp_plugin.c:2676 plugins/nx/nx_plugin.c:733
+#: plugins/rdp/rdp_plugin.c:2676
 msgid "Quality"
 msgstr "Kvalita"
 
@@ -2065,7 +2061,7 @@ msgid "Open Chat…"
 msgstr "Otevřít chat…"
 
 #: plugins/vnc/vnc_plugin.c:2021 plugins/spice/spice_plugin.c:707
-#: plugins/xdmcp/xdmcp_plugin.c:381 plugins/rdp/rdp_plugin.c:2742
+#: plugins/rdp/rdp_plugin.c:2742
 msgid "Send Ctrl+Alt+Delete"
 msgstr "Poslat Ctrl+Alt+Delete"
 
@@ -2107,7 +2103,6 @@ msgid "Connection to the SPICE server dropped."
 msgstr "Připojení ke SPICE serveru se přerušilo."
 
 #: plugins/spice/spice_plugin.c:616 plugins/spice/spice_plugin.c:634
-#: plugins/xdmcp/xdmcp_plugin.c:348
 msgid "Default"
 msgstr "Výchozí"
 
@@ -2181,65 +2176,6 @@ msgstr "Přenos dokončen"
 #, c-format
 msgid "The %s file has been transferred"
 msgstr "Soubor %s byl přenesen"
-
-#: plugins/xdmcp/xdmcp_plugin.c:97
-msgid "Ran out of available local X display numbers."
-msgstr "Došla volná čísla lokálního X displeje."
-
-#: plugins/xdmcp/xdmcp_plugin.c:264 plugins/nx/nx_plugin.c:617
-#, c-format
-msgid ""
-"The protocol “%s” is unavailable because GtkSocket only works under X.Org."
-msgstr ""
-"Protokol „%s“ není k dispozici protože GtkSocket funguje pouze pod X.Org."
-
-#: plugins/xdmcp/xdmcp_plugin.c:349
-msgid "Grayscale"
-msgstr "Stupně šedi"
-
-#: plugins/xdmcp/xdmcp_plugin.c:350
-msgid "256 colours"
-msgstr "256 barev"
-
-#: plugins/xdmcp/xdmcp_plugin.c:351
-msgid "High colour (16 bit)"
-msgstr "High color (16 bitů)"
-
-#: plugins/xdmcp/xdmcp_plugin.c:352
-msgid "True colour (24 bit)"
-msgstr "True color (24 bitů)"
-
-#: plugins/xdmcp/xdmcp_plugin.c:371 plugins/nx/nx_plugin.c:751
-msgid "Use local cursor"
-msgstr "Použít místní kurzor"
-
-#: plugins/xdmcp/xdmcp_plugin.c:372
-msgid "Disconnect after first session"
-msgstr "Odpojit po první relaci"
-
-#: plugins/xdmcp/xdmcp_plugin.c:373
-msgid "Listen for TCP connections"
-msgstr "Očekávat TCP spojení"
-
-#: plugins/xdmcp/xdmcp_plugin.c:391
-msgid "XDMCP - X Remote Session"
-msgstr "XDMCP – X Remote Session"
-
-#: plugins/st/st_plugin.c:238
-msgid "Terminal Emulator"
-msgstr "Emulátor terminálu"
-
-#: plugins/st/st_plugin.c:239
-msgid "Command to be executed"
-msgstr "Příkaz, který má být vykonán"
-
-#: plugins/st/st_plugin.c:254
-msgid "Detached window"
-msgstr "Odpojené okno"
-
-#: plugins/st/st_plugin_config.h:43
-msgid "Remmina simple terminal"
-msgstr "Jednoduchý terminál Remmina"
 
 #: plugins/rdp/rdp_plugin.c:757 plugins/rdp/rdp_plugin.c:822
 msgid "Enter RDP authentication credentials"
@@ -2950,63 +2886,6 @@ msgstr "Nastavení kvality"
 #, c-format
 msgid "Reconnection attempt %d of %d…"
 msgstr "Probíhá opětovné navazování spojení. Pokus %d z %d…"
-
-#: plugins/nx/nx_session_manager.c:98
-msgid "Terminating…"
-msgstr "Ukončování…"
-
-#: plugins/nx/nx_session_manager.c:143
-#, c-format
-msgid "NX sessions on %s"
-msgstr "NX relace na %s"
-
-#: plugins/nx/nx_session_manager.c:147
-msgid "Attach"
-msgstr "Připojit"
-
-#: plugins/nx/nx_session_manager.c:151
-msgid "Restore"
-msgstr "Obnovit"
-
-#: plugins/nx/nx_session_manager.c:152
-msgid "Start"
-msgstr "Zahájit"
-
-#: plugins/nx/nx_session_manager.c:158
-msgid "Terminate"
-msgstr "Ukončit"
-
-#: plugins/nx/nx_session_manager.c:190
-msgid "Display"
-msgstr "Obrazovka"
-
-#: plugins/nx/nx_session_manager.c:197
-msgid "Status"
-msgstr "Stav"
-
-#: plugins/nx/nx_plugin.c:206
-msgid "Password for private SSH key"
-msgstr "Heslo pro soukromou část SSH klíče"
-
-#: plugins/nx/nx_plugin.c:376
-msgid "Enter NX authentication credentials"
-msgstr "Zadejte přihlašovací údaje pro NX"
-
-#: plugins/nx/nx_plugin.c:749
-msgid "Disable clipboard sync"
-msgstr "Nesynchronizovat obsah schránky"
-
-#: plugins/nx/nx_plugin.c:750
-msgid "Disable encryption"
-msgstr "Nešifrovat"
-
-#: plugins/nx/nx_plugin.c:760
-msgid "Send Ctrl+Alt+Del"
-msgstr "Poslat Ctrl+Alt+Delete"
-
-#: plugins/nx/nx_plugin.c:770
-msgid "NX - NX Technology"
-msgstr "NX – technologie NX"
 
 #: plugins/kwallet/src/kwallet_plugin_main.c:118
 msgid "Secured password storage in KWallet"
@@ -4009,6 +3888,92 @@ msgstr "Zvolte novou klávesu"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "Stiskněte novou klávesu…"
+
+#~ msgid "Ran out of available local X display numbers."
+#~ msgstr "Došla volná čísla lokálního X displeje."
+
+#~ msgid ""
+#~ "The protocol “%s” is unavailable because GtkSocket only works under X.Org."
+#~ msgstr ""
+#~ "Protokol „%s“ není k dispozici protože GtkSocket funguje pouze pod X.Org."
+
+#~ msgid "Grayscale"
+#~ msgstr "Stupně šedi"
+
+#~ msgid "256 colours"
+#~ msgstr "256 barev"
+
+#~ msgid "High colour (16 bit)"
+#~ msgstr "High color (16 bitů)"
+
+#~ msgid "True colour (24 bit)"
+#~ msgstr "True color (24 bitů)"
+
+#~ msgid "Use local cursor"
+#~ msgstr "Použít místní kurzor"
+
+#~ msgid "Disconnect after first session"
+#~ msgstr "Odpojit po první relaci"
+
+#~ msgid "Listen for TCP connections"
+#~ msgstr "Očekávat TCP spojení"
+
+#~ msgid "XDMCP - X Remote Session"
+#~ msgstr "XDMCP – X Remote Session"
+
+#~ msgid "Terminal Emulator"
+#~ msgstr "Emulátor terminálu"
+
+#~ msgid "Command to be executed"
+#~ msgstr "Příkaz, který má být vykonán"
+
+#~ msgid "Detached window"
+#~ msgstr "Odpojené okno"
+
+#~ msgid "Remmina simple terminal"
+#~ msgstr "Jednoduchý terminál Remmina"
+
+#~ msgid "Terminating…"
+#~ msgstr "Ukončování…"
+
+#~ msgid "NX sessions on %s"
+#~ msgstr "NX relace na %s"
+
+#~ msgid "Attach"
+#~ msgstr "Připojit"
+
+#~ msgid "Restore"
+#~ msgstr "Obnovit"
+
+#~ msgid "Start"
+#~ msgstr "Zahájit"
+
+#~ msgid "Terminate"
+#~ msgstr "Ukončit"
+
+#~ msgid "Display"
+#~ msgstr "Obrazovka"
+
+#~ msgid "Status"
+#~ msgstr "Stav"
+
+#~ msgid "Password for private SSH key"
+#~ msgstr "Heslo pro soukromou část SSH klíče"
+
+#~ msgid "Enter NX authentication credentials"
+#~ msgstr "Zadejte přihlašovací údaje pro NX"
+
+#~ msgid "Disable clipboard sync"
+#~ msgstr "Nesynchronizovat obsah schránky"
+
+#~ msgid "Disable encryption"
+#~ msgstr "Nešifrovat"
+
+#~ msgid "Send Ctrl+Alt+Del"
+#~ msgstr "Poslat Ctrl+Alt+Delete"
+
+#~ msgid "NX - NX Technology"
+#~ msgstr "NX – technologie NX"
 
 #~ msgid "Tabs"
 #~ msgstr "Panely"

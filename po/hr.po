@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-06-29 21:55+0000\n"
+"POT-Creation-Date: 2021-06-30 06:48+0000\n"
 "PO-Revision-Date: 2021-06-04 14:28+0000\n"
 "Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -230,7 +230,7 @@ msgstr "Nađi tekst (računalo + G)"
 
 #: src/remmina_ssh_plugin.c:1370 src/remmina_ssh_plugin.c:1475
 #: src/remmina_sftp_plugin.c:311 src/remmina_sftp_plugin.c:348
-#: src/remmina_file_editor.c:847 plugins/nx/nx_plugin.c:729
+#: src/remmina_file_editor.c:847
 msgid "SSH identity file"
 msgstr "Datoteka SSH identiteta"
 
@@ -306,13 +306,12 @@ msgstr "Vrsta ovjere"
 #: src/remmina_sftp_plugin.c:345 src/remmina_file_editor.c:961
 #: plugins/www/www_plugin.c:879 plugins/vnc/vnc_plugin.c:1960
 #: plugins/vnc/vnc_plugin.c:1980 plugins/rdp/rdp_plugin.c:2650
-#: plugins/nx/nx_plugin.c:730 data/ui/remmina_mpc.glade:144
+#: data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr "Korisničko ime"
 
 #: src/remmina_ssh_plugin.c:1474 plugins/vnc/vnc_plugin.c:1961
 #: plugins/vnc/vnc_plugin.c:1981 plugins/spice/spice_plugin.c:666
-#: plugins/nx/nx_plugin.c:731
 msgid "User password"
 msgstr "Korisnička lozinka"
 
@@ -325,8 +324,7 @@ msgstr "Datoteka SSH vjerodajnice"
 msgid "Password to unlock private key"
 msgstr "Lozinka za otključavanje privatnog ključa"
 
-#: src/remmina_ssh_plugin.c:1480 plugins/xdmcp/xdmcp_plugin.c:370
-#: plugins/rdp/rdp_plugin.c:2692 plugins/nx/nx_plugin.c:734
+#: src/remmina_ssh_plugin.c:1480 plugins/rdp/rdp_plugin.c:2692
 msgid "Start-up program"
 msgstr "Program pokretanja"
 
@@ -934,11 +932,11 @@ msgid "_OK"
 msgstr "_U redu"
 
 #: src/remmina_plugin_manager.c:474 src/remmina_file_editor.c:1490
-#: plugins/nx/nx_session_manager.c:204 data/ui/remmina_main.glade:442
+#: data/ui/remmina_main.glade:442
 msgid "Name"
 msgstr "Ime"
 
-#: src/remmina_plugin_manager.c:480 plugins/nx/nx_session_manager.c:183
+#: src/remmina_plugin_manager.c:480
 msgid "Type"
 msgstr "Vrsta"
 
@@ -1098,9 +1096,8 @@ msgstr "Prepiši"
 #: src/remmina_sftp_client.c:947 src/remmina_message_panel.c:457
 #: src/remmina_message_panel.c:629 src/remmina_file_editor.c:151
 #: src/remmina_file_editor.c:1365 plugins/spice/spice_plugin_file_transfer.c:84
-#: plugins/nx/nx_session_manager.c:156 data/ui/remmina_spinner.glade:8
-#: data/ui/remmina_spinner.glade:9 data/ui/remmina_key_chooser.glade:8
-#: data/ui/remmina_key_chooser.glade:9
+#: data/ui/remmina_spinner.glade:8 data/ui/remmina_spinner.glade:9
+#: data/ui/remmina_key_chooser.glade:8 data/ui/remmina_key_chooser.glade:9
 msgid "_Cancel"
 msgstr "_Odustani"
 
@@ -1313,7 +1310,7 @@ msgstr "Upiši TOTP/OTP/2FA kôd"
 msgid "SSH tunnel credentials"
 msgstr "Vjerodajnice SSH tunela"
 
-#: src/remmina_ssh.c:1036 src/remmina_ssh.c:1062 plugins/nx/nx_plugin.c:203
+#: src/remmina_ssh.c:1036 src/remmina_ssh.c:1062
 msgid "SSH credentials"
 msgstr "SSH vjerodajnice"
 
@@ -1734,8 +1731,7 @@ msgid "VNC password"
 msgstr "Upiši lozinku za VNC"
 
 #: plugins/gvnc/gvnc_plugin.c:840 plugins/vnc/vnc_plugin.c:1962
-#: plugins/vnc/vnc_plugin.c:1982 plugins/xdmcp/xdmcp_plugin.c:369
-#: plugins/rdp/rdp_plugin.c:2660
+#: plugins/vnc/vnc_plugin.c:1982 plugins/rdp/rdp_plugin.c:2660
 msgid "Colour depth"
 msgstr "Dubina boja"
 
@@ -1762,7 +1758,7 @@ msgstr "Isključi sinkroniziranje međuspremnika"
 
 #: plugins/gvnc/gvnc_plugin.c:858 plugins/www/www_plugin.c:904
 #: plugins/vnc/vnc_plugin.c:2005 plugins/spice/spice_plugin.c:694
-#: plugins/rdp/rdp_plugin.c:2716 plugins/nx/nx_plugin.c:752
+#: plugins/rdp/rdp_plugin.c:2716
 msgid "Forget passwords after use"
 msgstr "Zaboravi lozinke nakon upotrebe"
 
@@ -2006,22 +2002,22 @@ msgid "256 colours (8 bpp)"
 msgstr "256 boja (8 bpp)"
 
 #: plugins/vnc/vnc_plugin.c:1931 plugins/rdp/rdp_plugin.c:2523
-#: plugins/rdp/rdp_settings.c:274 plugins/nx/nx_plugin.c:712
+#: plugins/rdp/rdp_settings.c:274
 msgid "Good"
 msgstr "Bolja"
 
 #: plugins/vnc/vnc_plugin.c:1932 plugins/rdp/rdp_plugin.c:2524
-#: plugins/rdp/rdp_settings.c:276 plugins/nx/nx_plugin.c:713
+#: plugins/rdp/rdp_settings.c:276
 msgid "Best (slowest)"
 msgstr "Najbolja (najsporije)"
 
 #: plugins/vnc/vnc_plugin.c:1933 plugins/rdp/rdp_plugin.c:2522
-#: plugins/rdp/rdp_settings.c:272 plugins/nx/nx_plugin.c:711
+#: plugins/rdp/rdp_settings.c:272
 msgid "Medium"
 msgstr "Srednja"
 
 #: plugins/vnc/vnc_plugin.c:1934 plugins/rdp/rdp_plugin.c:2521
-#: plugins/rdp/rdp_settings.c:270 plugins/nx/nx_plugin.c:710
+#: plugins/rdp/rdp_settings.c:270
 msgid "Poor (fastest)"
 msgstr "Slabija (brže)"
 
@@ -2041,7 +2037,7 @@ msgid "Repeater"
 msgstr "Ponavljač"
 
 #: plugins/vnc/vnc_plugin.c:1963 plugins/vnc/vnc_plugin.c:1983
-#: plugins/rdp/rdp_plugin.c:2676 plugins/nx/nx_plugin.c:733
+#: plugins/rdp/rdp_plugin.c:2676
 msgid "Quality"
 msgstr "Kvaliteta"
 
@@ -2077,7 +2073,7 @@ msgid "Open Chat…"
 msgstr "Otvori razgovor …"
 
 #: plugins/vnc/vnc_plugin.c:2021 plugins/spice/spice_plugin.c:707
-#: plugins/xdmcp/xdmcp_plugin.c:381 plugins/rdp/rdp_plugin.c:2742
+#: plugins/rdp/rdp_plugin.c:2742
 msgid "Send Ctrl+Alt+Delete"
 msgstr "Pošalji Ctrl+Alt+Delete"
 
@@ -2119,7 +2115,6 @@ msgid "Connection to the SPICE server dropped."
 msgstr "Veza sa SPICE poslužiteljem prekinuta."
 
 #: plugins/spice/spice_plugin.c:616 plugins/spice/spice_plugin.c:634
-#: plugins/xdmcp/xdmcp_plugin.c:348
 msgid "Default"
 msgstr "Standardno"
 
@@ -2195,64 +2190,6 @@ msgstr "Prijenos završen"
 #, c-format
 msgid "The %s file has been transferred"
 msgstr "Datoteka %s je prenesena"
-
-#: plugins/xdmcp/xdmcp_plugin.c:97
-msgid "Ran out of available local X display numbers."
-msgstr "Ponestalo je dostupnih brojeva lokalnog X ekrana."
-
-#: plugins/xdmcp/xdmcp_plugin.c:264 plugins/nx/nx_plugin.c:617
-#, c-format
-msgid ""
-"The protocol “%s” is unavailable because GtkSocket only works under X.Org."
-msgstr "Protokol „%s” je nedostupan, jer GtkSocket radi samo pod X.Org-om."
-
-#: plugins/xdmcp/xdmcp_plugin.c:349
-msgid "Grayscale"
-msgstr "Sive nijanse"
-
-#: plugins/xdmcp/xdmcp_plugin.c:350
-msgid "256 colours"
-msgstr "256 boja"
-
-#: plugins/xdmcp/xdmcp_plugin.c:351
-msgid "High colour (16 bit)"
-msgstr "High colour (16 bit)"
-
-#: plugins/xdmcp/xdmcp_plugin.c:352
-msgid "True colour (24 bit)"
-msgstr "True colour (24 bit)"
-
-#: plugins/xdmcp/xdmcp_plugin.c:371 plugins/nx/nx_plugin.c:751
-msgid "Use local cursor"
-msgstr "Koristi lokalni pokazivač"
-
-#: plugins/xdmcp/xdmcp_plugin.c:372
-msgid "Disconnect after first session"
-msgstr "Prekini vezu nakon prve sesije"
-
-#: plugins/xdmcp/xdmcp_plugin.c:373
-msgid "Listen for TCP connections"
-msgstr "Osluškuj TCP veze"
-
-#: plugins/xdmcp/xdmcp_plugin.c:391
-msgid "XDMCP - X Remote Session"
-msgstr "XDMCP – udaljena X sesija"
-
-#: plugins/st/st_plugin.c:238
-msgid "Terminal Emulator"
-msgstr "Emulator terminala"
-
-#: plugins/st/st_plugin.c:239
-msgid "Command to be executed"
-msgstr "Naredba za izvršavanje"
-
-#: plugins/st/st_plugin.c:254
-msgid "Detached window"
-msgstr "Odvojeni prozor"
-
-#: plugins/st/st_plugin_config.h:43
-msgid "Remmina simple terminal"
-msgstr "Jednostavan Remmina terminal"
 
 #: plugins/rdp/rdp_plugin.c:757 plugins/rdp/rdp_plugin.c:822
 msgid "Enter RDP authentication credentials"
@@ -2968,63 +2905,6 @@ msgstr "Postavke kvalitete"
 #, c-format
 msgid "Reconnection attempt %d of %d…"
 msgstr "Pokušaj ponovnog povezivanja %d od %d …"
-
-#: plugins/nx/nx_session_manager.c:98
-msgid "Terminating…"
-msgstr "Prekidanje …"
-
-#: plugins/nx/nx_session_manager.c:143
-#, c-format
-msgid "NX sessions on %s"
-msgstr "NX sesije na %s"
-
-#: plugins/nx/nx_session_manager.c:147
-msgid "Attach"
-msgstr "Dodaj"
-
-#: plugins/nx/nx_session_manager.c:151
-msgid "Restore"
-msgstr "Vrati"
-
-#: plugins/nx/nx_session_manager.c:152
-msgid "Start"
-msgstr "Pokreni"
-
-#: plugins/nx/nx_session_manager.c:158
-msgid "Terminate"
-msgstr "Prekini"
-
-#: plugins/nx/nx_session_manager.c:190
-msgid "Display"
-msgstr "Prikaži"
-
-#: plugins/nx/nx_session_manager.c:197
-msgid "Status"
-msgstr "Stanje"
-
-#: plugins/nx/nx_plugin.c:206
-msgid "Password for private SSH key"
-msgstr "Lozinka za privatni SSH ključ"
-
-#: plugins/nx/nx_plugin.c:376
-msgid "Enter NX authentication credentials"
-msgstr "Upiši podatke za autentifikaciju na NX"
-
-#: plugins/nx/nx_plugin.c:749
-msgid "Disable clipboard sync"
-msgstr "Deaktiviraj sinkronizaciju međuspremnika"
-
-#: plugins/nx/nx_plugin.c:750
-msgid "Disable encryption"
-msgstr "Deaktiviraj šifriranje"
-
-#: plugins/nx/nx_plugin.c:760
-msgid "Send Ctrl+Alt+Del"
-msgstr "Pošalji Ctrl+Alt+Del"
-
-#: plugins/nx/nx_plugin.c:770
-msgid "NX - NX Technology"
-msgstr "NX – NX tehnologija"
 
 #: plugins/kwallet/src/kwallet_plugin_main.c:118
 msgid "Secured password storage in KWallet"
@@ -4022,6 +3902,91 @@ msgstr "Odaberi novu tipku"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "Pritisni novu tipku …"
+
+#~ msgid "Ran out of available local X display numbers."
+#~ msgstr "Ponestalo je dostupnih brojeva lokalnog X ekrana."
+
+#~ msgid ""
+#~ "The protocol “%s” is unavailable because GtkSocket only works under X.Org."
+#~ msgstr "Protokol „%s” je nedostupan, jer GtkSocket radi samo pod X.Org-om."
+
+#~ msgid "Grayscale"
+#~ msgstr "Sive nijanse"
+
+#~ msgid "256 colours"
+#~ msgstr "256 boja"
+
+#~ msgid "High colour (16 bit)"
+#~ msgstr "High colour (16 bit)"
+
+#~ msgid "True colour (24 bit)"
+#~ msgstr "True colour (24 bit)"
+
+#~ msgid "Use local cursor"
+#~ msgstr "Koristi lokalni pokazivač"
+
+#~ msgid "Disconnect after first session"
+#~ msgstr "Prekini vezu nakon prve sesije"
+
+#~ msgid "Listen for TCP connections"
+#~ msgstr "Osluškuj TCP veze"
+
+#~ msgid "XDMCP - X Remote Session"
+#~ msgstr "XDMCP – udaljena X sesija"
+
+#~ msgid "Terminal Emulator"
+#~ msgstr "Emulator terminala"
+
+#~ msgid "Command to be executed"
+#~ msgstr "Naredba za izvršavanje"
+
+#~ msgid "Detached window"
+#~ msgstr "Odvojeni prozor"
+
+#~ msgid "Remmina simple terminal"
+#~ msgstr "Jednostavan Remmina terminal"
+
+#~ msgid "Terminating…"
+#~ msgstr "Prekidanje …"
+
+#~ msgid "NX sessions on %s"
+#~ msgstr "NX sesije na %s"
+
+#~ msgid "Attach"
+#~ msgstr "Dodaj"
+
+#~ msgid "Restore"
+#~ msgstr "Vrati"
+
+#~ msgid "Start"
+#~ msgstr "Pokreni"
+
+#~ msgid "Terminate"
+#~ msgstr "Prekini"
+
+#~ msgid "Display"
+#~ msgstr "Prikaži"
+
+#~ msgid "Status"
+#~ msgstr "Stanje"
+
+#~ msgid "Password for private SSH key"
+#~ msgstr "Lozinka za privatni SSH ključ"
+
+#~ msgid "Enter NX authentication credentials"
+#~ msgstr "Upiši podatke za autentifikaciju na NX"
+
+#~ msgid "Disable clipboard sync"
+#~ msgstr "Deaktiviraj sinkronizaciju međuspremnika"
+
+#~ msgid "Disable encryption"
+#~ msgstr "Deaktiviraj šifriranje"
+
+#~ msgid "Send Ctrl+Alt+Del"
+#~ msgstr "Pošalji Ctrl+Alt+Del"
+
+#~ msgid "NX - NX Technology"
+#~ msgstr "NX – NX tehnologija"
 
 #~ msgid "Tabs"
 #~ msgstr "Kartice"

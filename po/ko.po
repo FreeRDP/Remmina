@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-06-29 21:55+0000\n"
+"POT-Creation-Date: 2021-06-30 06:48+0000\n"
 "PO-Revision-Date: 2021-06-29 13:31+0000\n"
 "Last-Translator: Justin Song <mcsong@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -228,7 +228,7 @@ msgstr "붙여넣기 (host + V)"
 
 #: src/remmina_ssh_plugin.c:1370 src/remmina_ssh_plugin.c:1475
 #: src/remmina_sftp_plugin.c:311 src/remmina_sftp_plugin.c:348
-#: src/remmina_file_editor.c:847 plugins/nx/nx_plugin.c:729
+#: src/remmina_file_editor.c:847
 msgid "SSH identity file"
 msgstr "SSH 인증 키 파일"
 
@@ -304,13 +304,12 @@ msgstr "인증 유형"
 #: src/remmina_sftp_plugin.c:345 src/remmina_file_editor.c:961
 #: plugins/www/www_plugin.c:879 plugins/vnc/vnc_plugin.c:1960
 #: plugins/vnc/vnc_plugin.c:1980 plugins/rdp/rdp_plugin.c:2650
-#: plugins/nx/nx_plugin.c:730 data/ui/remmina_mpc.glade:144
+#: data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr "사용자명"
 
 #: src/remmina_ssh_plugin.c:1474 plugins/vnc/vnc_plugin.c:1961
 #: plugins/vnc/vnc_plugin.c:1981 plugins/spice/spice_plugin.c:666
-#: plugins/nx/nx_plugin.c:731
 msgid "User password"
 msgstr "사용자 비밀번호"
 
@@ -323,8 +322,7 @@ msgstr "SSH 인증서 파일"
 msgid "Password to unlock private key"
 msgstr "개인 키 잠금 해제 비밀번호"
 
-#: src/remmina_ssh_plugin.c:1480 plugins/xdmcp/xdmcp_plugin.c:370
-#: plugins/rdp/rdp_plugin.c:2692 plugins/nx/nx_plugin.c:734
+#: src/remmina_ssh_plugin.c:1480 plugins/rdp/rdp_plugin.c:2692
 msgid "Start-up program"
 msgstr "시작 프로그램"
 
@@ -917,11 +915,11 @@ msgid "_OK"
 msgstr "_OK"
 
 #: src/remmina_plugin_manager.c:474 src/remmina_file_editor.c:1490
-#: plugins/nx/nx_session_manager.c:204 data/ui/remmina_main.glade:442
+#: data/ui/remmina_main.glade:442
 msgid "Name"
 msgstr "이름"
 
-#: src/remmina_plugin_manager.c:480 plugins/nx/nx_session_manager.c:183
+#: src/remmina_plugin_manager.c:480
 msgid "Type"
 msgstr "형식"
 
@@ -1079,9 +1077,8 @@ msgstr "덮어쓰기"
 #: src/remmina_sftp_client.c:947 src/remmina_message_panel.c:457
 #: src/remmina_message_panel.c:629 src/remmina_file_editor.c:151
 #: src/remmina_file_editor.c:1365 plugins/spice/spice_plugin_file_transfer.c:84
-#: plugins/nx/nx_session_manager.c:156 data/ui/remmina_spinner.glade:8
-#: data/ui/remmina_spinner.glade:9 data/ui/remmina_key_chooser.glade:8
-#: data/ui/remmina_key_chooser.glade:9
+#: data/ui/remmina_spinner.glade:8 data/ui/remmina_spinner.glade:9
+#: data/ui/remmina_key_chooser.glade:8 data/ui/remmina_key_chooser.glade:9
 msgid "_Cancel"
 msgstr "_취소"
 
@@ -1293,7 +1290,7 @@ msgstr "TOTP/OTP/2FA 코드 입력"
 msgid "SSH tunnel credentials"
 msgstr "SSH 터널 자격"
 
-#: src/remmina_ssh.c:1036 src/remmina_ssh.c:1062 plugins/nx/nx_plugin.c:203
+#: src/remmina_ssh.c:1036 src/remmina_ssh.c:1062
 msgid "SSH credentials"
 msgstr "SSH 자격 증명"
 
@@ -1670,8 +1667,7 @@ msgid "VNC password"
 msgstr "VNC 비밀번호"
 
 #: plugins/gvnc/gvnc_plugin.c:840 plugins/vnc/vnc_plugin.c:1962
-#: plugins/vnc/vnc_plugin.c:1982 plugins/xdmcp/xdmcp_plugin.c:369
-#: plugins/rdp/rdp_plugin.c:2660
+#: plugins/vnc/vnc_plugin.c:1982 plugins/rdp/rdp_plugin.c:2660
 msgid "Colour depth"
 msgstr "색 심도(Color depth)"
 
@@ -1694,7 +1690,7 @@ msgstr "클립보드 동기화 끄기"
 
 #: plugins/gvnc/gvnc_plugin.c:858 plugins/www/www_plugin.c:904
 #: plugins/vnc/vnc_plugin.c:2005 plugins/spice/spice_plugin.c:694
-#: plugins/rdp/rdp_plugin.c:2716 plugins/nx/nx_plugin.c:752
+#: plugins/rdp/rdp_plugin.c:2716
 msgid "Forget passwords after use"
 msgstr "비밀번호 저장 안함"
 
@@ -1931,22 +1927,22 @@ msgid "256 colours (8 bpp)"
 msgstr "256 색 (8 bpp)"
 
 #: plugins/vnc/vnc_plugin.c:1931 plugins/rdp/rdp_plugin.c:2523
-#: plugins/rdp/rdp_settings.c:274 plugins/nx/nx_plugin.c:712
+#: plugins/rdp/rdp_settings.c:274
 msgid "Good"
 msgstr "좋음"
 
 #: plugins/vnc/vnc_plugin.c:1932 plugins/rdp/rdp_plugin.c:2524
-#: plugins/rdp/rdp_settings.c:276 plugins/nx/nx_plugin.c:713
+#: plugins/rdp/rdp_settings.c:276
 msgid "Best (slowest)"
 msgstr "최고 (느림)"
 
 #: plugins/vnc/vnc_plugin.c:1933 plugins/rdp/rdp_plugin.c:2522
-#: plugins/rdp/rdp_settings.c:272 plugins/nx/nx_plugin.c:711
+#: plugins/rdp/rdp_settings.c:272
 msgid "Medium"
 msgstr "보통"
 
 #: plugins/vnc/vnc_plugin.c:1934 plugins/rdp/rdp_plugin.c:2521
-#: plugins/rdp/rdp_settings.c:270 plugins/nx/nx_plugin.c:710
+#: plugins/rdp/rdp_settings.c:270
 msgid "Poor (fastest)"
 msgstr "낮음 (빠름)"
 
@@ -1973,7 +1969,7 @@ msgid "Repeater"
 msgstr "리피터"
 
 #: plugins/vnc/vnc_plugin.c:1963 plugins/vnc/vnc_plugin.c:1983
-#: plugins/rdp/rdp_plugin.c:2676 plugins/nx/nx_plugin.c:733
+#: plugins/rdp/rdp_plugin.c:2676
 msgid "Quality"
 msgstr "품질"
 
@@ -2007,7 +2003,7 @@ msgid "Open Chat…"
 msgstr "대화창 열기…"
 
 #: plugins/vnc/vnc_plugin.c:2021 plugins/spice/spice_plugin.c:707
-#: plugins/xdmcp/xdmcp_plugin.c:381 plugins/rdp/rdp_plugin.c:2742
+#: plugins/rdp/rdp_plugin.c:2742
 msgid "Send Ctrl+Alt+Delete"
 msgstr "Ctrl+Alt+Delete 전송"
 
@@ -2049,7 +2045,6 @@ msgid "Connection to the SPICE server dropped."
 msgstr "SPICE 서버에 대한 연결이 끊어졌습니다."
 
 #: plugins/spice/spice_plugin.c:616 plugins/spice/spice_plugin.c:634
-#: plugins/xdmcp/xdmcp_plugin.c:348
 msgid "Default"
 msgstr "기본값"
 
@@ -2124,65 +2119,6 @@ msgstr "전송 완료"
 #, c-format
 msgid "The %s file has been transferred"
 msgstr "%s 파일이 전송되었습니다"
-
-#: plugins/xdmcp/xdmcp_plugin.c:97
-msgid "Ran out of available local X display numbers."
-msgstr "사용할 수 있는 로컬 X 디스플레이 수가 부족합니다."
-
-#: plugins/xdmcp/xdmcp_plugin.c:264 plugins/nx/nx_plugin.c:617
-#, c-format
-msgid ""
-"The protocol “%s” is unavailable because GtkSocket only works under X.Org."
-msgstr ""
-"GtkSocket은 X.Org에서만 동작하기에 \"%s\" 프로토콜을 사용할 수 없습니다."
-
-#: plugins/xdmcp/xdmcp_plugin.c:349
-msgid "Grayscale"
-msgstr "흑백명암 보기"
-
-#: plugins/xdmcp/xdmcp_plugin.c:350
-msgid "256 colours"
-msgstr "256 색"
-
-#: plugins/xdmcp/xdmcp_plugin.c:351
-msgid "High colour (16 bit)"
-msgstr "고화질 (16 비트)"
-
-#: plugins/xdmcp/xdmcp_plugin.c:352
-msgid "True colour (24 bit)"
-msgstr "천연색 (24 비트)"
-
-#: plugins/xdmcp/xdmcp_plugin.c:371 plugins/nx/nx_plugin.c:751
-msgid "Use local cursor"
-msgstr "로컬지 커서 사용"
-
-#: plugins/xdmcp/xdmcp_plugin.c:372
-msgid "Disconnect after first session"
-msgstr "첫 세션 후 연결 끊기"
-
-#: plugins/xdmcp/xdmcp_plugin.c:373
-msgid "Listen for TCP connections"
-msgstr "TCP 연결 대기"
-
-#: plugins/xdmcp/xdmcp_plugin.c:391
-msgid "XDMCP - X Remote Session"
-msgstr "XDMCP - X 원격 세션"
-
-#: plugins/st/st_plugin.c:238
-msgid "Terminal Emulator"
-msgstr "터미널 에뮬레이터"
-
-#: plugins/st/st_plugin.c:239
-msgid "Command to be executed"
-msgstr "실행할 명령"
-
-#: plugins/st/st_plugin.c:254
-msgid "Detached window"
-msgstr "윈도 분리"
-
-#: plugins/st/st_plugin_config.h:43
-msgid "Remmina simple terminal"
-msgstr "레미너 단순 터미널"
 
 #: plugins/rdp/rdp_plugin.c:757 plugins/rdp/rdp_plugin.c:822
 msgid "Enter RDP authentication credentials"
@@ -2893,63 +2829,6 @@ msgstr "일반 설정"
 #, c-format
 msgid "Reconnection attempt %d of %d…"
 msgstr "%d (%d 개중에) 번째 재 연결 시도중…"
-
-#: plugins/nx/nx_session_manager.c:98
-msgid "Terminating…"
-msgstr "종료중…"
-
-#: plugins/nx/nx_session_manager.c:143
-#, c-format
-msgid "NX sessions on %s"
-msgstr "%s NX 세션"
-
-#: plugins/nx/nx_session_manager.c:147
-msgid "Attach"
-msgstr "첨부"
-
-#: plugins/nx/nx_session_manager.c:151
-msgid "Restore"
-msgstr "복구"
-
-#: plugins/nx/nx_session_manager.c:152
-msgid "Start"
-msgstr "시작"
-
-#: plugins/nx/nx_session_manager.c:158
-msgid "Terminate"
-msgstr "중단"
-
-#: plugins/nx/nx_session_manager.c:190
-msgid "Display"
-msgstr "화면"
-
-#: plugins/nx/nx_session_manager.c:197
-msgid "Status"
-msgstr "상태"
-
-#: plugins/nx/nx_plugin.c:206
-msgid "Password for private SSH key"
-msgstr "SSH 개인 키 비밀번호"
-
-#: plugins/nx/nx_plugin.c:376
-msgid "Enter NX authentication credentials"
-msgstr "NX 인증 정보를 입력하세요"
-
-#: plugins/nx/nx_plugin.c:749
-msgid "Disable clipboard sync"
-msgstr "클립 보드 동기화 비활성화"
-
-#: plugins/nx/nx_plugin.c:750
-msgid "Disable encryption"
-msgstr "암호화 비활성화"
-
-#: plugins/nx/nx_plugin.c:760
-msgid "Send Ctrl+Alt+Del"
-msgstr "Ctrl+Alt+Delete 전송"
-
-#: plugins/nx/nx_plugin.c:770
-msgid "NX - NX Technology"
-msgstr "NX - NX 기술"
 
 #: plugins/kwallet/src/kwallet_plugin_main.c:118
 msgid "Secured password storage in KWallet"
@@ -3928,6 +3807,92 @@ msgstr "새 키 선택"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "새 키를 누르세요…"
+
+#~ msgid "Ran out of available local X display numbers."
+#~ msgstr "사용할 수 있는 로컬 X 디스플레이 수가 부족합니다."
+
+#~ msgid ""
+#~ "The protocol “%s” is unavailable because GtkSocket only works under X.Org."
+#~ msgstr ""
+#~ "GtkSocket은 X.Org에서만 동작하기에 \"%s\" 프로토콜을 사용할 수 없습니다."
+
+#~ msgid "Grayscale"
+#~ msgstr "흑백명암 보기"
+
+#~ msgid "256 colours"
+#~ msgstr "256 색"
+
+#~ msgid "High colour (16 bit)"
+#~ msgstr "고화질 (16 비트)"
+
+#~ msgid "True colour (24 bit)"
+#~ msgstr "천연색 (24 비트)"
+
+#~ msgid "Use local cursor"
+#~ msgstr "로컬지 커서 사용"
+
+#~ msgid "Disconnect after first session"
+#~ msgstr "첫 세션 후 연결 끊기"
+
+#~ msgid "Listen for TCP connections"
+#~ msgstr "TCP 연결 대기"
+
+#~ msgid "XDMCP - X Remote Session"
+#~ msgstr "XDMCP - X 원격 세션"
+
+#~ msgid "Terminal Emulator"
+#~ msgstr "터미널 에뮬레이터"
+
+#~ msgid "Command to be executed"
+#~ msgstr "실행할 명령"
+
+#~ msgid "Detached window"
+#~ msgstr "윈도 분리"
+
+#~ msgid "Remmina simple terminal"
+#~ msgstr "레미너 단순 터미널"
+
+#~ msgid "Terminating…"
+#~ msgstr "종료중…"
+
+#~ msgid "NX sessions on %s"
+#~ msgstr "%s NX 세션"
+
+#~ msgid "Attach"
+#~ msgstr "첨부"
+
+#~ msgid "Restore"
+#~ msgstr "복구"
+
+#~ msgid "Start"
+#~ msgstr "시작"
+
+#~ msgid "Terminate"
+#~ msgstr "중단"
+
+#~ msgid "Display"
+#~ msgstr "화면"
+
+#~ msgid "Status"
+#~ msgstr "상태"
+
+#~ msgid "Password for private SSH key"
+#~ msgstr "SSH 개인 키 비밀번호"
+
+#~ msgid "Enter NX authentication credentials"
+#~ msgstr "NX 인증 정보를 입력하세요"
+
+#~ msgid "Disable clipboard sync"
+#~ msgstr "클립 보드 동기화 비활성화"
+
+#~ msgid "Disable encryption"
+#~ msgstr "암호화 비활성화"
+
+#~ msgid "Send Ctrl+Alt+Del"
+#~ msgstr "Ctrl+Alt+Delete 전송"
+
+#~ msgid "NX - NX Technology"
+#~ msgstr "NX - NX 기술"
 
 #~ msgid "Tabs"
 #~ msgstr "탭"
