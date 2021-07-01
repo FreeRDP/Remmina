@@ -916,13 +916,15 @@ static RemminaSSHTunnel* remmina_protocol_widget_init_tunnel(RemminaProtocolWidg
 	while (1) {
 		if (!partial) {
 			if (!remmina_ssh_init_session(REMMINA_SSH(tunnel))) {
-				REMMINA_DEBUG("init session error: %s", REMMINA_SSH(tunnel)->error);
+				REMMINA_DEBUG("SSH Tunnel init session error: %s", REMMINA_SSH(tunnel)->error);
+				remmina_protocol_widget_set_error(gp, REMMINA_SSH(tunnel)->error);
 				// exit the loop here: OK
 				break;
 			}
 		}
 
 		ret = remmina_ssh_auth_gui(REMMINA_SSH(tunnel), gp, gp->priv->remmina_file);
+		REMMINA_DEBUG ("Tunnel auth returned %d", ret);
 		switch (ret) {
 			case REMMINA_SSH_AUTH_SUCCESS:
 				REMMINA_DEBUG("Authentication success");
@@ -934,19 +936,25 @@ static RemminaSSHTunnel* remmina_protocol_widget_init_tunnel(RemminaProtocolWidg
 				continue;
 				break;
 			case REMMINA_SSH_AUTH_RECONNECT:
-				REMMINA_DEBUG("Reconnecting...");
+				REMMINA_DEBUG("Reconnecting…");
+				if (REMMINA_SSH(tunnel)->session) {
+					ssh_disconnect(REMMINA_SSH(tunnel)->session);
+					ssh_free(REMMINA_SSH(tunnel)->session);
+					REMMINA_SSH(tunnel)->session = NULL;
+				}
+				g_free(REMMINA_SSH(tunnel)->callback);
 				// Continue the loop: OK
 				continue;
 				break;
 			case REMMINA_SSH_AUTH_USERCANCEL:
 				REMMINA_DEBUG("Interrupted by the user");
-				// TODO: exit the loop here: OK
+				// exit the loop here: OK
 				goto BREAK;
 				break;
 			default:
 				REMMINA_DEBUG("Error during the authentication: %s", REMMINA_SSH(tunnel)->error);
 				remmina_protocol_widget_set_error(gp, REMMINA_SSH(tunnel)->error);
-				// TODO: exit the loop here: OK
+				// exit the loop here: OK
 				goto BREAK;
 		}
 
@@ -954,9 +962,6 @@ static RemminaSSHTunnel* remmina_protocol_widget_init_tunnel(RemminaProtocolWidg
 		cont = TRUE;
 		break;
 	}
-
-
-
 
 #if 0
 
