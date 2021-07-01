@@ -139,7 +139,6 @@ typedef gboolean (*RemminaSSHTunnelCallback) (RemminaSSHTunnel *, gpointer);
 
 enum {
 	REMMINA_SSH_TUNNEL_OPEN,
-	REMMINA_SSH_TUNNEL_X11,
 	REMMINA_SSH_TUNNEL_XPORT,
 	REMMINA_SSH_TUNNEL_REVERSE
 };
@@ -155,8 +154,6 @@ struct _RemminaSSHTunnel {
 	RemminaSSHTunnelBuffer **	socketbuffers;
 	gint				num_channels;
 	gint				max_channels;
-
-	ssh_channel			x11_channel;
 
 	pthread_t			thread;
 	gboolean			running;
@@ -197,11 +194,6 @@ gboolean remmina_ssh_tunnel_open(RemminaSSHTunnel *tunnel, const gchar *host, gi
  * Typically called after the connection has already been establish.
  */
 void remmina_ssh_tunnel_cancel_accept(RemminaSSHTunnel *tunnel);
-
-/* Accept the X11 tunnel. A new thread will be started and connect to local display.
- * cmd: The remote X11 application to be executed
- */
-gboolean remmina_ssh_tunnel_x11(RemminaSSHTunnel *tunnel, const gchar *cmd);
 
 /* start X Port Forwarding */
 gboolean remmina_ssh_tunnel_xport(RemminaSSHTunnel *tunnel, gboolean bindlocalhost);
