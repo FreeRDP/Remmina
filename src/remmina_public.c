@@ -523,111 +523,6 @@ gint remmina_public_open_xdisplay(const gchar *disp)
 	return sock;
 }
 
-/* This function was copied from GEdit (gedit-utils.c). */
-guint remmina_public_get_current_workspace(GdkScreen *screen)
-{
-	TRACE_CALL(__func__);
-#ifdef GDK_WINDOWING_X11
-#if GTK_CHECK_VERSION(3, 10, 0)
-	g_return_val_if_fail(GDK_IS_SCREEN(screen), 0);
-	if (GDK_IS_X11_DISPLAY(gdk_screen_get_display(screen)))
-		return gdk_x11_screen_get_current_desktop(screen);
-	else
-		return 0;
-
-#else
-	GdkWindow *root_win;
-	GdkDisplay *display;
-	Atom type;
-	gint format;
-	gulong nitems;
-	gulong bytes_after;
-	guint *current_desktop;
-	gint err, result;
-	guint ret = 0;
-
-	g_return_val_if_fail(GDK_IS_SCREEN(screen), 0);
-
-	root_win = gdk_screen_get_root_window(screen);
-	display = gdk_screen_get_display(screen);
-
-	gdk_error_trap_push();
-	result = XGetWindowProperty(GDK_DISPLAY_XDISPLAY(display), GDK_WINDOW_XID(root_win),
-		gdk_x11_get_xatom_by_name_for_display(display, "_NET_CURRENT_DESKTOP"),
-		0, G_MAXLONG, False, XA_CARDINAL, &type, &format, &nitems,
-		&bytes_after, (gpointer) & current_desktop);
-	err = gdk_error_trap_pop();
-
-	if (err != Success || result != Success)
-		return ret;
-
-	if (type == XA_CARDINAL && format == 32 && nitems > 0)
-		ret = current_desktop[0];
-
-	XFree(current_desktop);
-	return ret;
-#endif
-#else
-	/* FIXME: on mac etc probably there are native APIs
-	 * to get the current workspace etc */
-	return 0;
-#endif
-}
-
-/* This function was copied from GEdit (gedit-utils.c). */
-guint remmina_public_get_window_workspace(GtkWindow *gtkwindow)
-{
-	TRACE_CALL(__func__);
-#ifdef GDK_WINDOWING_X11
-#if GTK_CHECK_VERSION(3, 10, 0)
-	GdkWindow *window;
-	g_return_val_if_fail(GTK_IS_WINDOW(gtkwindow), 0);
-	g_return_val_if_fail(gtk_widget_get_realized(GTK_WIDGET(gtkwindow)), 0);
-	window = gtk_widget_get_window(GTK_WIDGET(gtkwindow));
-	if (GDK_IS_X11_DISPLAY(gdk_window_get_display(window)))
-		return gdk_x11_window_get_desktop(window);
-	else
-		return 0;
-#else
-	GdkWindow *window;
-	GdkDisplay *display;
-	Atom type;
-	gint format;
-	gulong nitems;
-	gulong bytes_after;
-	guint *workspace;
-	gint err, result;
-	guint ret = 0;
-
-	g_return_val_if_fail(GTK_IS_WINDOW(gtkwindow), 0);
-	g_return_val_if_fail(gtk_widget_get_realized(GTK_WIDGET(gtkwindow)), 0);
-
-	window = gtk_widget_get_window(GTK_WIDGET(gtkwindow));
-	display = gdk_window_get_display(window);
-
-	gdk_error_trap_push();
-	result = XGetWindowProperty(GDK_DISPLAY_XDISPLAY(display), GDK_WINDOW_XID(window),
-		gdk_x11_get_xatom_by_name_for_display(display, "_NET_WM_DESKTOP"),
-		0, G_MAXLONG, False, XA_CARDINAL, &type, &format, &nitems,
-		&bytes_after, (gpointer) & workspace);
-	err = gdk_error_trap_pop();
-
-	if (err != Success || result != Success)
-		return ret;
-
-	if (type == XA_CARDINAL && format == 32 && nitems > 0)
-		ret = workspace[0];
-
-	XFree(workspace);
-	return ret;
-#endif
-#else
-	/* FIXME: on mac etc probably there are native APIs
-	 * to get the current workspace etc */
-	return 0;
-#endif
-}
-
 /* Find hardware keycode for the requested keyval */
 guint16 remmina_public_get_keycode_for_keyval(GdkKeymap *keymap, guint keyval)
 {
@@ -685,7 +580,6 @@ GtkBuilder* remmina_public_gtk_builder_new_from_resource(gchar *resource)
 	}
 	return builder;
 }
-
 
 /* Change parent container for a widget
  * If possible use this function instead of the deprecated gtk_widget_reparent */
