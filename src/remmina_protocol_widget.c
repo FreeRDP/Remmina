@@ -900,6 +900,8 @@ static RemminaSSHTunnel* remmina_protocol_widget_init_tunnel(RemminaProtocolWidg
 	gint ret;
 	gchar *msg;
 	RemminaMessagePanel *mp;
+	gboolean partial = FALSE;
+	gboolean cont = FALSE;
 
 	tunnel = remmina_ssh_tunnel_new_from_file(gp->priv->remmina_file);
 
@@ -908,6 +910,60 @@ static RemminaSSHTunnel* remmina_protocol_widget_init_tunnel(RemminaProtocolWidg
 
 	mp = remmina_protocol_widget_mpprogress(gp->cnnobj, msg, cancel_init_tunnel_cb, NULL);
 	g_free(msg);
+
+
+
+	while (1) {
+		if (!partial) {
+			if (!remmina_ssh_init_session(REMMINA_SSH(tunnel))) {
+				REMMINA_DEBUG("SSH Tunnel init session error: %s", REMMINA_SSH(tunnel)->error);
+				remmina_protocol_widget_set_error(gp, REMMINA_SSH(tunnel)->error);
+				// exit the loop here: OK
+				break;
+			}
+		}
+
+		ret = remmina_ssh_auth_gui(REMMINA_SSH(tunnel), gp, gp->priv->remmina_file);
+		REMMINA_DEBUG ("Tunnel auth returned %d", ret);
+		switch (ret) {
+			case REMMINA_SSH_AUTH_SUCCESS:
+				REMMINA_DEBUG("Authentication success");
+				break;
+			case REMMINA_SSH_AUTH_PARTIAL:
+				REMMINA_DEBUG("Continue with the next auth method");
+				partial = TRUE;
+				// Continue the loop: OK
+				continue;
+				break;
+			case REMMINA_SSH_AUTH_RECONNECT:
+				REMMINA_DEBUG("Reconnecting…");
+				if (REMMINA_SSH(tunnel)->session) {
+					ssh_disconnect(REMMINA_SSH(tunnel)->session);
+					ssh_free(REMMINA_SSH(tunnel)->session);
+					REMMINA_SSH(tunnel)->session = NULL;
+				}
+				g_free(REMMINA_SSH(tunnel)->callback);
+				// Continue the loop: OK
+				continue;
+				break;
+			case REMMINA_SSH_AUTH_USERCANCEL:
+				REMMINA_DEBUG("Interrupted by the user");
+				// exit the loop here: OK
+				goto BREAK;
+				break;
+			default:
+				REMMINA_DEBUG("Error during the authentication: %s", REMMINA_SSH(tunnel)->error);
+				remmina_protocol_widget_set_error(gp, REMMINA_SSH(tunnel)->error);
+				// exit the loop here: OK
+				goto BREAK;
+		}
+
+
+		cont = TRUE;
+		break;
+	}
+
+#if 0
 
 	if (!remmina_ssh_init_session(REMMINA_SSH(tunnel))) {
 		REMMINA_DEBUG ("Cannot init SSH session with tunnel struct");
@@ -925,6 +981,13 @@ static RemminaSSHTunnel* remmina_protocol_widget_init_tunnel(RemminaProtocolWidg
 		return NULL;
 	}
 
+#endif
+
+BREAK:
+	if (!cont) {
+		remmina_ssh_tunnel_free(tunnel);
+		return NULL;
+	}
 	remmina_protocol_widget_mpdestroy(gp->cnnobj, mp);
 
 	return tunnel;
