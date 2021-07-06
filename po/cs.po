@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-07-06 11:39+0000\n"
-"PO-Revision-Date: 2021-06-16 22:29+0000\n"
-"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"PO-Revision-Date: 2021-07-06 22:36+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/remmina/remmina/cs/"
 ">\n"
 "Language: cs\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 4.7-dev\n"
+"X-Generator: Weblate 4.8-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
 
 #: src/remmina_protocol_widget.c:283 src/remmina_sftp_plugin.c:328
@@ -89,8 +89,9 @@ msgid "Type in SSH username and password."
 msgstr "Zadejte uživatelské jméno a heslo pro SSH."
 
 #: src/remmina_protocol_widget.c:1745 src/remmina_protocol_widget.c:1777
+#, fuzzy
 msgid "Fingerprint automatically accepted"
-msgstr ""
+msgstr "Automatické přijetí otisku prstu"
 
 #. TRANSLATORS: The user is asked to verify a new SSL certificate.
 #: src/remmina_protocol_widget.c:1753
@@ -196,11 +197,15 @@ msgid "Picking a terminal colouring file replaces the file: "
 msgstr "Vyberte soubor s barvami pro terminál"
 
 #: src/remmina_pref_dialog.c:810
+#, fuzzy
 msgid ""
 "This file contains the “Custom” terminal colour scheme selectable from the "
 "“Advanced” tab of terminal connections and editable in the “Terminal” tab in "
 "the settings."
 msgstr ""
+"Tento soubor obsahuje barevné schéma \"Vlastní\" terminálu, které lze vybrat "
+"na kartě \"Upřesnit\" připojení terminálu a upravit na kartě \"Terminál\" v "
+"nastavení."
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_ssh_plugin.c:539
@@ -302,12 +307,14 @@ msgid "_Decrease font size"
 msgstr "_Zmenšit velikost písma"
 
 #: src/remmina_ssh_plugin.c:1453
+#, fuzzy
 msgid "Find text"
-msgstr ""
+msgstr "Najít text"
 
 #: src/remmina_ssh_plugin.c:1453
+#, fuzzy
 msgid "_Find text"
-msgstr ""
+msgstr "_Najít text"
 
 #: src/remmina_ssh_plugin.c:1472 src/remmina_sftp_plugin.c:347
 #: src/remmina_file_editor.c:952
@@ -331,7 +338,7 @@ msgstr "Heslo k uživatelskému účtu"
 #, fuzzy
 #| msgid "CA Certificate File"
 msgid "SSH certificate file"
-msgstr "Soubor s certifikátem cert. autority"
+msgstr "Soubor s certifikátem SSH"
 
 #: src/remmina_ssh_plugin.c:1479 src/remmina_sftp_plugin.c:349
 #: src/remmina_file_editor.c:984
@@ -403,12 +410,14 @@ msgid "Log SSH session when exiting Remmina"
 msgstr "Při ukončování Remmina uložit záznam SSH relace"
 
 #: src/remmina_ssh_plugin.c:1516
+#, fuzzy
 msgid "Log SSH session asynchronously"
-msgstr ""
+msgstr "Asynchronní protokolování relace SSH"
 
 #: src/remmina_ssh_plugin.c:1516
+#, fuzzy
 msgid "Saving the session asynchronously may have a notable performance impact"
-msgstr ""
+msgstr "Asynchronní uložení relace může mít znatelný dopad na výkon."
 
 #: src/remmina_ssh_plugin.c:1517
 msgid "Audible terminal bell"
@@ -466,20 +475,20 @@ msgstr[1] "%d hesla změněna."
 msgstr[2] "%d hesel změněno."
 
 #: src/remmina_public.c:345
-#, c-format
+#, c-format, fuzzy
 msgid "Address is too long for UNIX socket_path: %s"
-msgstr ""
+msgstr "Adresa je příliš dlouhá pro UNIX socket_path: %s"
 
 #: src/remmina_public.c:355
-#, c-format
+#, c-format, fuzzy
 msgid "Creating UNIX socket failed: %s"
-msgstr ""
+msgstr "Vytvoření zásuvky UNIX se nezdařilo: %s"
 
 #: src/remmina_public.c:361
 #, fuzzy, c-format
 #| msgid "VNC connection failed: %s"
 msgid "Connecting to UNIX socket failed: %s"
-msgstr "Spojení pomocí VNC se nezdařilo: %s"
+msgstr "Připojení k zásuvce UNIX se nezdařilo: %s"
 
 #: src/remmina_public.c:738
 msgid "Please enter format 'widthxheight'."
@@ -714,10 +723,12 @@ msgstr "Heslo zašifrovat"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:375
+#, fuzzy
 msgid "- or protocol://username:encryptedpassword@host:port"
-msgstr ""
+msgstr "- nebo protocol://username:encryptedpassword@host:port"
 
 #: src/remmina.c:378
+#, fuzzy
 msgid ""
 "Examples:\n"
 "To connect using an existing connection profile, use:\n"
@@ -751,6 +762,36 @@ msgid ""
 "remmina --set-option username --set-option resolution_mode=2 --set-option "
 "password\n"
 msgstr ""
+"Příklady:\n"
+"Pro připojení pomocí existujícího profilu připojení použijte:\n"
+"\n"
+"\tremmina -c FILE.remmina\n"
+"\n"
+"Pro rychlé připojení pomocí URI:\n"
+"\n"
+"\tURI: remmina -c rdp://username@server\n"
+"\tremmina -c rdp://domain\\\\username@server\n"
+"\tremmina -c vnc://username@server\n"
+"\tremmina -c vnc://server?VncUsername=username\n"
+"\tremmina -c ssh://user@server\n"
+"\tremmina -c spice://server\n"
+"\n"
+"Rychlé připojení pomocí URI spolu se zašifrovaným heslem:\n"
+"\n"
+"\tremmina -c rdp://uživatelské jméno:zašifrované heslo@server\n"
+"\tremmina -c vnc://username:encrypted-password@server\n"
+"\tremmina -c vnc://server?VncUsername=username\\&VncPassword=encrypted-"
+"password\n"
+"\n"
+"Šifrování hesla pro použití s URI:\n"
+"\n"
+"\tremmina --encrypt-password\n"
+"\n"
+"Pro aktualizaci uživatelského jména a hesla a nastavení jiného režimu "
+"rozlišení profilu připojení Remmina použijte:\n"
+"\n"
+"\tremmina --update-profile /PATH/TO/FOO.remmina --set-option username --set-"
+"option resolution_mode=2 --set-option password\n"
 
 #: src/remmina_icon.c:128
 msgid "Open Main Window"
@@ -806,8 +847,9 @@ msgid "Fill client window when scaled"
 msgstr "Při změně měřítka zobrazení vyplnit okno klienta"
 
 #: src/rcw.c:1971
+#, fuzzy
 msgid "Send clipboard content as keystrokes"
-msgstr ""
+msgstr "Odesílání obsahu schránky jako stisknutí kláves"
 
 #: src/rcw.c:2071
 msgid "Turn off scaling to avoid screenshot distortion."
@@ -821,7 +863,7 @@ msgstr "Snímek pořízen"
 #, fuzzy
 #| msgid "Open Main Window"
 msgid "Open the Remmina main window"
-msgstr "Otevřít hlavní okno"
+msgstr "Otevřete hlavní okno aplikace Remmina"
 
 #: src/rcw.c:2221
 msgid "Duplicate current connection"
@@ -837,8 +879,9 @@ msgstr "Vyp/zap. zobrazení na celou obrazovku"
 
 #: src/rcw.c:2295 data/ui/remmina_preferences.glade:1326
 #: data/ui/remmina_preferences.glade:1336
+#, fuzzy
 msgid "Multi monitor"
-msgstr ""
+msgstr "Více monitorů"
 
 #: src/rcw.c:2311
 msgid "Toggle dynamic resolution update"
@@ -1174,8 +1217,11 @@ msgid "Could not authenticate with SSH password. %s"
 msgstr "Nepodařilo se ověřit pomocí SSH hesla: %s"
 
 #: src/remmina_ssh.c:323 src/remmina_ssh.c:390
+#, fuzzy
 msgid "No saved SSH passphrase supplied. Asking user to enter it."
 msgstr ""
+"Nebyla zadána žádná uložená přístupová fráze SSH. Vyzývá uživatele k jejímu "
+"zadání."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:328 src/remmina_ssh.c:369 src/remmina_ssh.c:395
@@ -1189,21 +1235,21 @@ msgstr "Nedaří se ověřit pomocí veřejné části SSH klíče: %s"
 #, fuzzy, c-format
 #| msgid "Public SSH key cannot be imported. %s"
 msgid "SSH certificate cannot be imported. %s"
-msgstr "Veřejný klíč SSH se nepodařilo naimportovat: %s"
+msgstr "Certifikát SSH nelze importovat. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:346
 #, fuzzy, c-format
 #| msgid "Public SSH key cannot be imported. %s"
 msgid "SSH certificate cannot be copied into the private SSH key. %s"
-msgstr "Veřejný klíč SSH se nepodařilo naimportovat: %s"
+msgstr "Certifikát SSH nelze zkopírovat do soukromého klíče SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:356
 #, fuzzy, c-format
 #| msgid "Could not authenticate with public SSH key. %s"
 msgid "Could not authenticate using SSH certificate. %s"
-msgstr "Nedaří se ověřit pomocí veřejné části SSH klíče: %s"
+msgstr "Nepodařilo se ověřit pomocí certifikátu SSH. %s"
 
 #: src/remmina_ssh.c:370
 msgid "SSH identity file not selected."
@@ -1301,8 +1347,9 @@ msgid "SSH Kerberos/GSSAPI"
 msgstr "SSH Kerberos/GSSAPI"
 
 #: src/remmina_ssh.c:1006
+#, fuzzy
 msgid "Enter TOTP/OTP/2FA code"
-msgstr ""
+msgstr "Zadejte kód TOTP/OTP/2FA"
 
 #: src/remmina_ssh.c:1036 src/remmina_ssh.c:1062
 msgid "SSH tunnel credentials"
@@ -1313,8 +1360,9 @@ msgid "SSH credentials"
 msgstr "přihlašovací údaje pro SSH"
 
 #: src/remmina_ssh.c:1113
+#, fuzzy
 msgid "Keyboard interactive login, TOTP/OTP/2FA"
-msgstr ""
+msgstr "Interaktivní přihlášení pomocí klávesnice, TOTP/OTP/2FA"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1338
@@ -1449,10 +1497,12 @@ msgid ""
 "• ID:repeater ID number\n"
 "• unix:///path/socket.sock</big>"
 msgstr ""
-"<tt><big>Podporované formy zápisu\n"
-"* server\n"
-"* server:port\n"
-"* [server]:port</big></tt>"
+"<big>Podporované formáty\n"
+"- server\n"
+"- server[:port]\n"
+"Další formáty VNC\n"
+"- ID:ID číslo opakovače\n"
+"- unix:///path/socket.sock</big>"
 
 #: src/remmina_file_editor.c:69
 #, fuzzy
@@ -1511,12 +1561,10 @@ msgid ""
 "• server[:port]\n"
 "• username@server[:port] (SSH protocol only)</big>"
 msgstr ""
-"<tt><big>Podporované formy zápisu\n"
-"* :port\n"
-"* server\n"
-"* server:port\n"
-"* [server]:port\n"
-"* uzivatelske_jmeno@server:port (pouze pro protokol SSH)</big></tt>"
+"<big>Podporované formáty\n"
+"- server\n"
+"- server[:port]\n"
+"- username@server[:port] (pouze protokol SSH)</big>"
 
 #: src/remmina_file_editor.c:149
 msgid "Choose a Remote Desktop Server"
@@ -1608,7 +1656,7 @@ msgstr "Ověřování se pro SSH"
 #, fuzzy
 #| msgid "SSH private key passphrase"
 msgid "SSH private key file"
-msgstr "Heslová fráze k soukromému SSH klíči"
+msgstr "Soubor soukromého klíče SSH"
 
 #: src/remmina_file_editor.c:1037
 msgid "Basic"
@@ -1678,19 +1726,19 @@ msgstr "_Vyčistit"
 #, fuzzy
 #| msgid "Remmina VNC Plugin"
 msgid "Remmina VNC plugin for GNOME and KVM"
-msgstr "Zásuvný modul Remmina pro VNC"
+msgstr "Zásuvný modul VNC Remmina pro GNOME a KVM"
 
 #: plugins/gvnc/gvnc_plugin.c:477
 #, fuzzy, c-format
 #| msgid "Authentication type"
 msgid "Unsupported authentication type %u"
-msgstr "Typ ověřování se"
+msgstr "Nepodporovaný typ ověřování %u"
 
 #: plugins/gvnc/gvnc_plugin.c:489
 #, fuzzy, c-format
 #| msgid "Authentication type"
 msgid "Authentication failure: %s"
-msgstr "Typ ověřování se"
+msgstr "Selhání ověřování: %s"
 
 #: plugins/gvnc/gvnc_plugin.c:539 plugins/vnc/vnc_plugin.c:825
 msgid "Enter VNC authentication credentials"
@@ -1700,7 +1748,7 @@ msgstr "Zadejte přihlašovací údaje pro VNC"
 #, fuzzy
 #| msgid "Use system proxy settings"
 msgid "Use server settings"
-msgstr "Použít nastavení proxy ze systému"
+msgstr "Použít nastavení serveru"
 
 #: plugins/gvnc/gvnc_plugin.c:821
 #, fuzzy
@@ -1718,19 +1766,19 @@ msgstr "High color (16 bitů)"
 #, fuzzy
 #| msgid "High colour (16 bit)"
 msgid "Low colour (8 bits)"
-msgstr "High color (16 bitů)"
+msgstr "Nízká barevnost (8 bitů)"
 
 #: plugins/gvnc/gvnc_plugin.c:824
 #, fuzzy
 #| msgid "True colour (24 bit)"
 msgid "Ultra low colour (3 bits)"
-msgstr "True color (24 bitů)"
+msgstr "Velmi nízká barevnost (3 bity)"
 
 #: plugins/gvnc/gvnc_plugin.c:839
 #, fuzzy
 #| msgid "Enter VNC password"
 msgid "VNC password"
-msgstr "Zadejte heslo pro VNC"
+msgstr "Heslo VNC"
 
 #: plugins/gvnc/gvnc_plugin.c:840 plugins/vnc/vnc_plugin.c:1962
 #: plugins/vnc/vnc_plugin.c:1982 plugins/rdp/rdp_plugin.c:2660
@@ -1741,17 +1789,18 @@ msgstr "Barevná hloubka"
 #, fuzzy
 #| msgid "SSH compression"
 msgid "Use JPEG Compression"
-msgstr "Komprese SSH"
+msgstr "Použití komprese JPEG"
 
 #: plugins/gvnc/gvnc_plugin.c:841
 #, fuzzy
 #| msgid "Browse the network to find a %s server"
 msgid "This might not work on all VNC servers"
-msgstr "Procházet síť a najít server %s"
+msgstr "To nemusí fungovat na všech serverech VNC."
 
 #: plugins/gvnc/gvnc_plugin.c:842
+#, fuzzy
 msgid "Enable GTK-VNC debug"
-msgstr ""
+msgstr "Povolení ladění GTK-VNC"
 
 #: plugins/gvnc/gvnc_plugin.c:857 plugins/gvnc/gvnc_plugin.c:871
 #: plugins/spice/spice_plugin.c:693 plugins/spice/spice_plugin.c:706
@@ -1765,8 +1814,9 @@ msgid "Forget passwords after use"
 msgstr "Po použití heslo zapomenout"
 
 #: plugins/gvnc/gvnc_plugin.c:859 plugins/vnc/vnc_plugin.c:2004
+#, fuzzy
 msgid "Ignore remote bell messages"
-msgstr ""
+msgstr "Ignorování zpráv vzdáleného zvonku"
 
 #: plugins/gvnc/gvnc_plugin.c:860 plugins/spice/spice_plugin.c:695
 msgid "Enable audio channel"
@@ -1782,13 +1832,15 @@ msgstr "Pouze prohlížení"
 #, fuzzy
 #| msgid "Per connection"
 msgid "Shared connection"
-msgstr "Podle spojení"
+msgstr "Sdílené připojení"
 
 #: plugins/gvnc/gvnc_plugin.c:862
+#, fuzzy
 msgid ""
 "If the server should try to share the desktop by leaving other clients "
 "connected"
 msgstr ""
+"Pokud se server pokusí sdílet plochu tím, že nechá připojené další klienty."
 
 #: plugins/gvnc/gvnc_plugin.c:872
 #, fuzzy
@@ -1800,7 +1852,7 @@ msgstr "Poslat Ctrl+Alt+Delete"
 #, fuzzy
 #| msgid "Send Ctrl+Alt+Del"
 msgid "Send Ctrl+Alt+_Backspace"
-msgstr "Poslat Ctrl+Alt+Delete"
+msgstr "Odeslat Ctrl+Alt+_Backspace"
 
 #: plugins/gvnc/gvnc_plugin.c:874
 msgid "Send Ctrl+Alt+_F1"
@@ -1851,18 +1903,20 @@ msgid "Send Ctrl+Alt+_F12"
 msgstr "Poslat Ctrl+Alt+_F12"
 
 #: plugins/gvnc/gvnc_plugin.c:887
+#, fuzzy
 msgid "Reboot remote host"
-msgstr ""
+msgstr "Restartování vzdáleného hostitele"
 
 #: plugins/gvnc/gvnc_plugin.c:888
+#, fuzzy
 msgid "Reset remote host (hard reboot)"
-msgstr ""
+msgstr "Resetování vzdáleného hostitele (tvrdý restart)"
 
 #: plugins/gvnc/gvnc_plugin.c:889
 #, fuzzy
 #| msgid "Show remote cursor"
 msgid "Shutdown remote host"
-msgstr "Zobrazit vzdálený kurzor"
+msgstr "Vypnutí vzdáleného hostitele"
 
 #: plugins/exec/exec_plugin_config.h:41
 msgid "Execute a command"
@@ -2025,6 +2079,7 @@ msgid "Poor (fastest)"
 msgstr "Nejhorší (nejrychlejší)"
 
 #: plugins/vnc/vnc_plugin.c:1939
+#, fuzzy
 msgid ""
 "Connect to VNC using a repeater:\n"
 "  • The server field must contain the repeater ID, e.g. ID:123456789\n"
@@ -2034,6 +2089,13 @@ msgid ""
 "    the repeater, e.g. with x11vnc:\n"
 "    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
 msgstr ""
+"Připojte se k VNC pomocí opakovače:\n"
+"  - ID:123456789.\n"
+"  - V poli repeater musí být nastavena IP adresa a port repeateru, např:\n"
+"    10.10.10.12:5901\n"
+"  - Ze vzdáleného VNC serveru se připojíte k\n"
+"    opakovače, např. pomocí x11vnc:\n"
+"    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
 
 #: plugins/vnc/vnc_plugin.c:1959
 msgid "Repeater"
@@ -2061,15 +2123,16 @@ msgid "Turn off encryption"
 msgstr "Použít TLS šifrování"
 
 #: plugins/vnc/vnc_plugin.c:2003 plugins/vnc/vnc_plugin.c:2018
+#, fuzzy
 msgid "Prevent local interaction on the server"
-msgstr ""
+msgstr "Zabránit místní interakci na serveru"
 
 #: plugins/vnc/vnc_plugin.c:2006 plugins/rdp/rdp_plugin.c:2655
 #: plugins/rdp/rdp_settings.c:598
 #, fuzzy
 #| msgid "Turn on smooth scrolling"
 msgid "Disable smooth scrolling"
-msgstr "Zapnout plynulé posouvání"
+msgstr "Zakázat plynulé posouvání"
 
 #: plugins/vnc/vnc_plugin.c:2020
 msgid "Open Chat…"
@@ -2127,16 +2190,19 @@ msgid "Off"
 msgstr "Vypnout"
 
 #: plugins/spice/spice_plugin.c:636
+#, fuzzy
 msgid "Auto GLZ"
-msgstr ""
+msgstr "Auto GLZ"
 
 #: plugins/spice/spice_plugin.c:637
+#, fuzzy
 msgid "Auto LZ"
-msgstr ""
+msgstr "Auto LZ"
 
 #: plugins/spice/spice_plugin.c:650
+#, fuzzy
 msgid "Disable video overlay if videos are not displayed properly.\n"
-msgstr ""
+msgstr "Pokud se videa nezobrazují správně, vypněte překrývání videa.\n"
 
 #: plugins/spice/spice_plugin.c:667
 msgid "Use TLS encryption"
@@ -2159,8 +2225,9 @@ msgid "Turn off GStreamer overlay"
 msgstr "Vypnout klávesnici a myš na straně serveru"
 
 #: plugins/spice/spice_plugin.c:690
+#, fuzzy
 msgid "Prefered image compression"
-msgstr ""
+msgstr "Preferovaná komprese obrazu"
 
 #: plugins/spice/spice_plugin.c:696
 msgid "Share smart card"
@@ -2292,8 +2359,8 @@ msgid ""
 "Unable to establish a connection to the RDP server “%s”. Check “Security "
 "protocol negotiation”."
 msgstr ""
-"Nedaří se navázat spojení s RDP serverem. Zkontrolujte „Dojednání protokolu "
-"zabezpečení“ „%s“."
+"Nelze navázat spojení se serverem RDP \"%s\". Zkontrolujte \"Security "
+"protocol negotiation\"."
 
 #: plugins/rdp/rdp_plugin.c:2120
 #, c-format
@@ -2376,28 +2443,34 @@ msgid "Auto-detect"
 msgstr "<Automatické zjišťování>"
 
 #: plugins/rdp/rdp_plugin.c:2533
+#, fuzzy
 msgid "Modem"
-msgstr ""
+msgstr "Modem"
 
 #: plugins/rdp/rdp_plugin.c:2534
+#, fuzzy
 msgid "Low performance broadband"
-msgstr ""
+msgstr "Širokopásmové připojení s nízkým výkonem"
 
 #: plugins/rdp/rdp_plugin.c:2535
+#, fuzzy
 msgid "Satellite"
-msgstr ""
+msgstr "Satelitní"
 
 #: plugins/rdp/rdp_plugin.c:2536
+#, fuzzy
 msgid "High performance broadband"
-msgstr ""
+msgstr "Vysoce výkonné širokopásmové připojení"
 
 #: plugins/rdp/rdp_plugin.c:2537
+#, fuzzy
 msgid "WAN"
-msgstr ""
+msgstr "WAN"
 
 #: plugins/rdp/rdp_plugin.c:2538
+#, fuzzy
 msgid "LAN"
-msgstr ""
+msgstr "LAN"
 
 #: plugins/rdp/rdp_plugin.c:2554
 msgid "Automatic negotiation"
@@ -2508,13 +2581,18 @@ msgstr ""
 "Nejvyšší možná hodnota je 600000 ms (10 minut)\n"
 
 #: plugins/rdp/rdp_plugin.c:2612
+#, fuzzy
 msgid ""
 "Performance optimisations based on the network connection type:\n"
 "Using auto-detection is advised.\n"
 "If “Auto-detect” fails, choose the most appropriate option in the list.\n"
 msgstr ""
+"Optimalizace výkonu na základě typu síťového připojení:\n"
+"Doporučujeme používat automatickou detekci.\n"
+"Pokud \"Auto-detect\" selže, vyberte nejvhodnější možnost ze seznamu.\n"
 
 #: plugins/rdp/rdp_plugin.c:2617
+#, fuzzy
 msgid ""
 "Comma-separated list of monitor IDs and desktop orientations:\n"
 "  • [<id>:<orientation-in-degrees>,]\n"
@@ -2527,8 +2605,19 @@ msgid ""
 "  • 270 (portrait flipped)\n"
 "\n"
 msgstr ""
+"Seznam ID monitorů a orientací pracovní plochy oddělený čárkami:\n"
+"  - [<id>:<orientace ve stupních>,]\n"
+"  - 0,1,2,3\n"
+"  - 0:270,1:90\n"
+"Orientace se udává ve stupních, platné hodnoty jsou:\n"
+"  - 0 (na šířku)\n"
+"  - 90 (na výšku)\n"
+"  - 180 (na šířku převrácené)\n"
+"  - 270 (obrácená na výšku)\n"
+"\n"
 
 #: plugins/rdp/rdp_plugin.c:2629
+#, fuzzy
 msgid ""
 "Redirect directory <path> as named share <name>.\n"
 "  • <name>,<fullpath>[;<name>,<fullpath>[;…]]\n"
@@ -2539,32 +2628,46 @@ msgid ""
 "  • hotplug,*\n"
 "\n"
 msgstr ""
+"Přesměrování adresáře <cesta> jako pojmenované sdílené složky <název>.\n"
+"  - <název>,<plnácesta>[;<název>,<plnácesta>[;...]]\n"
+"  - MyHome,/home/remminer\n"
+"  - /home/remminer\n"
+"  - MyHome,/home/remminer;SomePath,/path/to/somepath\n"
+"Podpora Hotplug je povolena pomocí:\n"
+"  - hotplug,*\n"
+"\n"
 
 #: plugins/rdp/rdp_plugin.c:2653
+#, fuzzy
 msgid "Use “Redirect directory” in the advanced tab for multiple directories"
 msgstr ""
+"Použijte možnost \"Přesměrovat adresář\" na kartě Upřesnit pro více adresářů."
 
 #: plugins/rdp/rdp_plugin.c:2654
+#, fuzzy
 msgid "Left-handed mouse support"
-msgstr ""
+msgstr "Podpora myši pro leváky"
 
 #: plugins/rdp/rdp_plugin.c:2654
+#, fuzzy
 msgid "Swap left and right mouse buttons for left-handed mouse support"
-msgstr ""
+msgstr "Výměna levého a pravého tlačítka myši pro podporu myši pro leváky"
 
 #: plugins/rdp/rdp_plugin.c:2656
+#, fuzzy
 msgid "Enable multi monitor"
-msgstr ""
+msgstr "Povolení více monitorů"
 
 #: plugins/rdp/rdp_plugin.c:2657
+#, fuzzy
 msgid "Span screen over multiple monitors"
-msgstr ""
+msgstr "Rozložení obrazovky na více monitorů"
 
 #: plugins/rdp/rdp_plugin.c:2658
 #, fuzzy
 #| msgid "Listen on port"
 msgid "List monitor IDs"
-msgstr "Očekávat spojení na portu"
+msgstr "Seznam ID monitorů"
 
 #: plugins/rdp/rdp_plugin.c:2661
 msgid "Network connection type"
@@ -2587,12 +2690,14 @@ msgid "FreeRDP log filters"
 msgstr "Stupeň podrobností záznamu událostí ve FreeRDP"
 
 #: plugins/rdp/rdp_plugin.c:2680
+#, fuzzy
 msgid "tag:level[,tag:level[,…]]"
-msgstr ""
+msgstr "tag:level[,tag:level[,...]]"
 
 #: plugins/rdp/rdp_plugin.c:2681
+#, fuzzy
 msgid "Audio output mode"
-msgstr ""
+msgstr "Režim zvukového výstupu"
 
 #: plugins/rdp/rdp_plugin.c:2682
 msgid "Redirect local audio output"
@@ -2623,8 +2728,9 @@ msgid "Remote Desktop Gateway domain"
 msgstr "Doména pro bránu ke vzdálené ploše"
 
 #: plugins/rdp/rdp_plugin.c:2689
+#, fuzzy
 msgid "Redirect directory"
-msgstr ""
+msgstr "Přesměrování adresáře"
 
 #: plugins/rdp/rdp_plugin.c:2690
 msgid "Client name"
@@ -2707,22 +2813,25 @@ msgstr "Statický virtuální kanál"
 #, fuzzy
 #| msgid "USB redirection error"
 msgid "TCP redirection"
-msgstr "Chyba přesměrování USB"
+msgstr "Přesměrování TCP"
 
 #: plugins/rdp/rdp_plugin.c:2706
+#, fuzzy
 msgid "/PATH/TO/rdp2tcp"
-msgstr ""
+msgstr "/PATH/TO/rdp2tcp"
 
 #: plugins/rdp/rdp_plugin.c:2707 plugins/rdp/rdp_settings.c:613
 #, fuzzy
 #| msgid "Reconnection attempt %d of %d…"
 msgid "Reconnect attempts number"
-msgstr "Probíhá opětovné navazování spojení. Pokus %d z %d…"
+msgstr "Počet pokusů o opětovné připojení"
 
 #: plugins/rdp/rdp_plugin.c:2707 plugins/rdp/rdp_settings.c:619
+#, fuzzy
 msgid ""
 "The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
 msgstr ""
+"Maximální počet pokusů o opětovné připojení při odpojení RDP (výchozí: 20)."
 
 #: plugins/rdp/rdp_plugin.c:2708
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
@@ -2797,12 +2906,14 @@ msgid "Using the UDP protocol may improve performance"
 msgstr "Použití protokolu UDP může zlepšit výkon"
 
 #: plugins/rdp/rdp_plugin.c:2728
+#, fuzzy
 msgid "Use base credentials for gateway too"
-msgstr ""
+msgstr "Použijte základní pověření i pro bránu"
 
 #: plugins/rdp/rdp_plugin.c:2730
+#, fuzzy
 msgid "Enable Gateway websockets support"
-msgstr ""
+msgstr "Povolení podpory webových soketů brány"
 
 #: plugins/rdp/rdp_plugin.c:2756
 msgid "RDP - Remote Desktop Protocol"
@@ -2896,13 +3007,13 @@ msgstr "Orientace plochy"
 #, fuzzy
 #| msgid "Use system proxy settings"
 msgid "Input device settings"
-msgstr "Použít nastavení proxy ze systému"
+msgstr "Nastavení vstupního zařízení"
 
 #: plugins/rdp/rdp_settings.c:608
 #, fuzzy
 #| msgid "Quality settings"
 msgid "General settings"
-msgstr "Nastavení kvality"
+msgstr "Obecná nastavení"
 
 #: plugins/rdp/rdp_event.c:344
 #, c-format
@@ -2931,36 +3042,44 @@ msgid "Telepathy - Desktop Sharing"
 msgstr "Telepathy – sdílení plochy"
 
 #: data/ui/remmina_search.glade:61 data/ui/remmina_search_popover.glade:56
+#, fuzzy
 msgid "Search"
-msgstr ""
+msgstr "Hledat"
 
 #: data/ui/remmina_search.glade:75 data/ui/remmina_search_popover.glade:70
+#, fuzzy
 msgid "Search for previous occurrence"
-msgstr ""
+msgstr "Hledání předchozího výskytu"
 
 #: data/ui/remmina_search.glade:98 data/ui/remmina_search_popover.glade:93
+#, fuzzy
 msgid "Search for next occurrence"
-msgstr ""
+msgstr "Hledání dalšího výskytu"
 
 #: data/ui/remmina_search.glade:130 data/ui/remmina_search_popover.glade:125
+#, fuzzy
 msgid "Toggle search options"
-msgstr ""
+msgstr "Přepínání možností vyhledávání"
 
 #: data/ui/remmina_search.glade:191 data/ui/remmina_search_popover.glade:186
+#, fuzzy
 msgid "_Match case"
-msgstr ""
+msgstr "_Match case"
 
 #: data/ui/remmina_search.glade:208 data/ui/remmina_search_popover.glade:203
+#, fuzzy
 msgid "Match _entire word only"
-msgstr ""
+msgstr "Hledat jen celá slova"
 
 #: data/ui/remmina_search.glade:225 data/ui/remmina_search_popover.glade:220
+#, fuzzy
 msgid "Match as _regular expression"
-msgstr ""
+msgstr "Hledat jako regulární výraz"
 
 #: data/ui/remmina_search.glade:242 data/ui/remmina_search_popover.glade:237
+#, fuzzy
 msgid "_Wrap around"
-msgstr ""
+msgstr "Po dosažení konce pokračovat od začátku"
 
 #: data/ui/remmina_snap_info_dialog.glade:71
 msgid ""
@@ -2997,15 +3116,20 @@ msgid "<big>Permissions</big>"
 msgstr "<big>Oprávnění</big>"
 
 #: data/ui/remmina_snap_info_dialog.glade:202
+#, fuzzy
 msgid ""
 "Since Snap packages run confined from the rest of the system, Remmina "
 "profiles are saved inside the Snap file system by default. You can change "
 "the location in the Remmina preferences."
 msgstr ""
+"Protože balíčky Snap běží odděleně od zbytku systému, jsou profily Remmina "
+"ve výchozím nastavení uloženy v souborovém systému Snap. Umístění můžete "
+"změnit v předvolbách aplikace Remmina."
 
 #: data/ui/remmina_snap_info_dialog.glade:222
+#, fuzzy
 msgid "Change where Remmina profiles are stored"
-msgstr ""
+msgstr "Změna místa uložení profilů Remmina"
 
 #: data/ui/remmina_snap_info_dialog.glade:261
 msgid "<big>Snap settings</big>"
@@ -3394,7 +3518,8 @@ msgstr "Složka s daty Remmina"
 #, fuzzy
 #| msgid "Choose a folder to save screenshots from Remmina in."
 msgid "Choose a folder to save connection profiles from Remmina in."
-msgstr "Zvolte složku, do které ukládat snímky obrazovky z Remmina."
+msgstr ""
+"Vyberte složku, do které chcete uložit profily připojení z aplikace Remmina."
 
 #: data/ui/remmina_preferences.glade:312
 msgid "Remember last view for each connection"
@@ -3414,8 +3539,9 @@ msgstr ""
 "Remmina, pomocí formátovacího řetězce."
 
 #: data/ui/remmina_preferences.glade:360
+#, fuzzy
 msgid "Template for profile filenames"
-msgstr ""
+msgstr "Šablona pro názvy profilových souborů"
 
 #: data/ui/remmina_preferences.glade:372
 msgid ""
@@ -3471,9 +3597,10 @@ msgstr "Výřez na celé obrazovce"
 
 #. How tabs are grouped in the Remmina connection window
 #: data/ui/remmina_preferences.glade:620
+#, fuzzy
 msgctxt "Appearance preferences"
 msgid "Tabs grouping"
-msgstr ""
+msgstr "Seskupení karet"
 
 #: data/ui/remmina_preferences.glade:634
 msgid "By group"
@@ -3510,33 +3637,42 @@ msgid "Hide the search bar shown in the main window"
 msgstr "V hlavním okně skrýt lištu hledání"
 
 #: data/ui/remmina_preferences.glade:715
+#, fuzzy
 msgid "Prefer dark theme"
-msgstr ""
+msgstr "Preferovat tmavé téma vzhledu"
 
 #: data/ui/remmina_preferences.glade:719
+#, fuzzy
 msgid ""
 "If a GTK theme includes a dark variant, it will be used instead of the "
 "configured theme."
 msgstr ""
+"Pokud téma GTK obsahuje tmavou variantu, bude použita místo "
+"nakonfigurovaného tématu."
 
 #: data/ui/remmina_preferences.glade:739
 #, fuzzy
 #| msgid "Grab all keyboard events"
 msgid "“Grab all keyboard events” status colour"
-msgstr "Zabrat si veškeré stisky kláves"
+msgstr "Stavová barva \"Zachytit všechny události klávesnice\""
 
 #: data/ui/remmina_preferences.glade:750
 #, fuzzy
 #| msgid "Grab all keyboard events"
 msgid "Enable/Disable “Grab all keyboard events” status colour"
-msgstr "Zabrat si veškeré stisky kláves"
+msgstr ""
+"Povolení/zakázání stavové barvy \"Zachytit všechny události klávesnice\""
 
 #: data/ui/remmina_preferences.glade:765
+#, fuzzy
 msgid ""
 "Hexadecimal- or colour names (red, #ff0000).\n"
 "It changes the background colour of connection names in the Remmina "
 "connection toolbar (when in fullscreen)."
 msgstr ""
+"Hexadecimální nebo barevné názvy (červená, #ff0000).\n"
+"Mění barvu pozadí názvů připojení na panelu nástrojů připojení Remmina (při "
+"zobrazení na celou obrazovku)."
 
 #: data/ui/remmina_preferences.glade:822
 msgid "Appearance"
@@ -3708,7 +3844,7 @@ msgstr "Počet řádků historie"
 #, fuzzy
 #| msgid "Shortcut for copying to clipboard"
 msgid "Shortcuts for copying and pasting"
-msgstr "Zkratka pro zkopírování do schránky"
+msgstr "Zkratky pro kopírování a vkládání"
 
 #: data/ui/remmina_preferences.glade:1913
 msgid "Select all shortcuts"
@@ -3728,14 +3864,18 @@ msgid "Use default system font"
 msgstr "Použít výchozí písmo systému"
 
 #: data/ui/remmina_preferences.glade:1983
+#, fuzzy
 msgid ""
 "Selecting “SGR 1” also switches to the bright counterparts of the first 8 "
 "palette colours (in addition to making text bold)."
 msgstr ""
+"Výběrem možnosti \"SGR 1\" se také přepne na světlé protějšky prvních 8 "
+"barev palety (kromě toho, že text bude tučný)."
 
 #: data/ui/remmina_preferences.glade:1999
+#, fuzzy
 msgid "Allow using bright colours with bold text"
-msgstr ""
+msgstr "Povolit používání jasných barev s tučným textem"
 
 #: data/ui/remmina_preferences.glade:2013
 msgid "Colour theme"
@@ -3844,13 +3984,13 @@ msgstr "Barva popředí"
 #, fuzzy
 #| msgid "Increase font size"
 msgid "Increase and decrease font size"
-msgstr "Zvětšit velikost písma"
+msgstr "Zvětšení a zmenšení velikosti písma"
 
 #: data/ui/remmina_preferences.glade:2408
 #, fuzzy
 #| msgid "Select all shortcuts"
 msgid "Search text shortcut"
-msgstr "Vybrat všechny zkratky"
+msgstr "Textová zkratka pro vyhledávání"
 
 #: data/ui/remmina_preferences.glade:2438
 #: data/ui/remmina_preferences.glade:2453
@@ -3862,21 +4002,21 @@ msgstr "Normální barvy"
 #, fuzzy
 #| msgid "Bright colours"
 msgid "Highlight colour"
-msgstr "Světlé barvy"
+msgstr "Barva zvýraznění"
 
 #: data/ui/remmina_preferences.glade:2480
 #: data/ui/remmina_preferences.glade:2524
 #, fuzzy
 #| msgid "Foreground colour"
 msgid "Highlight foreground colour"
-msgstr "Barva popředí"
+msgstr "Zvýraznění barvy popředí"
 
 #: data/ui/remmina_preferences.glade:2493
 #: data/ui/remmina_preferences.glade:2540
 #, fuzzy
 #| msgid "Foreground colour"
 msgid "Cursor foreground colour"
-msgstr "Barva popředí"
+msgstr "Barva popředí kurzoru"
 
 #: data/ui/remmina_preferences.glade:2594
 msgid "Terminal"
