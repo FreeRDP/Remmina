@@ -6,13 +6,14 @@
 # anonymous <noreply@weblate.org>, 2019.
 # Osoitz <oelkoro@gmail.com>, 2020, 2021.
 # Antenore Gatta <antenore@simbiosi.org>, 2021.
+# Iñigo Zendegi Urzelai <izendegi@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-07-02 10:50+0000\n"
-"PO-Revision-Date: 2021-06-16 22:30+0000\n"
-"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"PO-Revision-Date: 2021-07-06 08:27+0000\n"
+"Last-Translator: Iñigo Zendegi Urzelai <izendegi@gmail.com>\n"
 "Language-Team: Basque <https://hosted.weblate.org/projects/remmina/remmina/"
 "eu/>\n"
 "Language: eu\n"
@@ -20,12 +21,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.7-dev\n"
+"X-Generator: Weblate 4.8-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
 
 #: src/remmina_protocol_widget.c:283 src/remmina_sftp_plugin.c:328
 msgid "Connect via SSH from a new terminal"
-msgstr ""
+msgstr "Konektatu SSH bidez terminal berri batetik"
 
 #: src/remmina_protocol_widget.c:290 src/remmina_ssh_plugin.c:829
 #: src/remmina_ssh_plugin.c:1454
@@ -44,7 +45,7 @@ msgstr "\"%s\"(r)ekin konektatzen…"
 #: src/remmina_protocol_widget.c:909 src/remmina_protocol_widget.c:1093
 #, c-format
 msgid "Connecting to “%s” via SSH…"
-msgstr "\"%s\"(r)ekin konektatzen…"
+msgstr "\"%s\"(r)ekin SSH bidez konektatzen…"
 
 #: src/remmina_protocol_widget.c:1156
 #, c-format
@@ -54,7 +55,7 @@ msgstr "Sarrerako SSH konexio baten zain %i atakan…"
 #: src/remmina_protocol_widget.c:1208
 #, c-format
 msgid "The “%s” command is not available on the SSH server."
-msgstr "\"%s\" komandoa ez da aurkitu SSH zerbitzarian."
+msgstr "\"%s\" komandoa ez dago eskuragarri SSH zerbitzarian."
 
 #: src/remmina_protocol_widget.c:1212
 #, c-format
@@ -312,10 +313,8 @@ msgid "User password"
 msgstr ""
 
 #: src/remmina_ssh_plugin.c:1477 src/remmina_file_editor.c:979
-#, fuzzy
-#| msgid "SSH identity file"
 msgid "SSH certificate file"
-msgstr "SSH identitate fitxategia"
+msgstr "SSH ziurtagiri-fitxategia"
 
 #: src/remmina_ssh_plugin.c:1479 src/remmina_sftp_plugin.c:349
 #: src/remmina_file_editor.c:984
@@ -445,10 +444,9 @@ msgid "Creating UNIX socket failed: %s"
 msgstr ""
 
 #: src/remmina_public.c:361
-#, fuzzy, c-format
-#| msgid "VNC connection failed: %s"
+#, c-format
 msgid "Connecting to UNIX socket failed: %s"
-msgstr "VNC konexioak huts egin du: %s"
+msgstr "UNIX socket-erako konexioak huts egin du: %s"
 
 #: src/remmina_public.c:738
 msgid "Please enter format 'widthxheight'."
@@ -781,10 +779,8 @@ msgid "Screenshot taken"
 msgstr ""
 
 #: src/rcw.c:2212
-#, fuzzy
-#| msgid "Open Main Window"
 msgid "Open the Remmina main window"
-msgstr "Ireki leiho nagusia"
+msgstr "Ireki Remminako leiho nagusia"
 
 #: src/rcw.c:2221
 msgid "Duplicate current connection"
@@ -1159,10 +1155,9 @@ msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:356
-#, fuzzy, c-format
-#| msgid "Could not authenticate with SSH password. %s"
+#, c-format
 msgid "Could not authenticate using SSH certificate. %s"
-msgstr "Ezin izan da SSH pasahitzarekin saioa hasi: %s"
+msgstr "Ezin izan da SSH ziurtagiriarekin saioa hasi: %s"
 
 #: src/remmina_ssh.c:370
 msgid "SSH identity file not selected."
@@ -1393,12 +1388,6 @@ msgid "Could not create PTY device."
 msgstr ""
 
 #: src/remmina_file_editor.c:60
-#, fuzzy
-#| msgid ""
-#| "<tt><big>Supported formats\n"
-#| "• server\n"
-#| "• server:port\n"
-#| "• [server]:port</big></tt>"
 msgid ""
 "<big>Supported formats\n"
 "• server\n"
@@ -1407,10 +1396,12 @@ msgid ""
 "• ID:repeater ID number\n"
 "• unix:///path/socket.sock</big>"
 msgstr ""
-"<tt><big>Onartutako formatuak\n"
-"* zerbitzaria\n"
-"* zerbitzaria:ataka\n"
-"* [zerbitzaria]:ataka</big></tt>"
+"<big>Onartutako formatuak\n"
+"• zerbitzaria\n"
+"• zerbitzaria[:ataka]\n"
+"VNC formatu gehigarriak\n"
+"• ID: errepikatzailearen ID zenbakia\n"
+"• unix:///path/socket.sock</big>"
 
 #: src/remmina_file_editor.c:69
 msgid ""
@@ -1429,26 +1420,16 @@ msgid ""
 msgstr ""
 
 #: src/remmina_file_editor.c:83
-#, fuzzy
-#| msgid ""
-#| "<tt><big>Supported formats\n"
-#| "• :port\n"
-#| "• server\n"
-#| "• server:port\n"
-#| "• [server]:port\n"
-#| "• username@server:port (SSH protocol only)</big></tt>"
 msgid ""
 "<big>Supported formats\n"
 "• server\n"
 "• server[:port]\n"
 "• username@server[:port] (SSH protocol only)</big>"
 msgstr ""
-"<tt><big>Onartutako formatuak\n"
-"• :ataka\n"
+"<big>Onartutako formatuak\n"
 "• zerbitzaria\n"
-"• zerbitzaria:ataka\n"
-"• [zerbitzaria]:ataka\n"
-"• erabiltzaile-izena@zerbitzaria:ataka (SSH protokoloa soilik)</big></tt>"
+"• zerbitzaria[:ataka]\n"
+"• erabiltzaile-izena@zerbitzaria:ataka (SSH protokoloa soilik)</big>"
 
 #: src/remmina_file_editor.c:149
 msgid "Choose a Remote Desktop Server"
@@ -1537,10 +1518,8 @@ msgid "SSH Authentication"
 msgstr "SSH autentifikazioa"
 
 #: src/remmina_file_editor.c:973
-#, fuzzy
-#| msgid "SSH private key passphrase"
 msgid "SSH private key file"
-msgstr "SSH gako pribatuaren pasaesaldia"
+msgstr "SSH gako pribatuaren fitxategia"
 
 #: src/remmina_file_editor.c:1037
 msgid "Basic"
@@ -1615,50 +1594,37 @@ msgid "Unsupported authentication type %u"
 msgstr ""
 
 #: plugins/gvnc/gvnc_plugin.c:489
-#, fuzzy, c-format
-#| msgid "SSH Authentication"
+#, c-format
 msgid "Authentication failure: %s"
-msgstr "SSH autentifikazioa"
+msgstr "Autentifikazio-hutsegitea: %s"
 
 #: plugins/gvnc/gvnc_plugin.c:539 plugins/vnc/vnc_plugin.c:825
 msgid "Enter VNC authentication credentials"
 msgstr ""
 
 #: plugins/gvnc/gvnc_plugin.c:820
-#, fuzzy
-#| msgid "Disable server input"
 msgid "Use server settings"
-msgstr "Desgaitu zerbitzariaren sarrera"
+msgstr "Erabili zerbitzariaren ezarpenak"
 
 #: plugins/gvnc/gvnc_plugin.c:821
-#, fuzzy
-#| msgid "True colour (24 bit)"
 msgid "True colour (24 bits)"
 msgstr "Benetako kolorea (24 bit)"
 
 #: plugins/gvnc/gvnc_plugin.c:822
-#, fuzzy
-#| msgid "High colour (16 bit)"
 msgid "High colour (16 bits)"
 msgstr "Kolore altua (16 bit)"
 
 #: plugins/gvnc/gvnc_plugin.c:823
-#, fuzzy
-#| msgid "High colour (16 bit)"
 msgid "Low colour (8 bits)"
-msgstr "Kolore altua (16 bit)"
+msgstr "Kolore baxua (8 bit)"
 
 #: plugins/gvnc/gvnc_plugin.c:824
-#, fuzzy
-#| msgid "True colour (24 bit)"
 msgid "Ultra low colour (3 bits)"
-msgstr "Benetako kolorea (24 bit)"
+msgstr "Kolorea ultra-baxua (3 bit)"
 
 #: plugins/gvnc/gvnc_plugin.c:839
-#, fuzzy
-#| msgid "SSH password"
 msgid "VNC password"
-msgstr "SSH pasahitza"
+msgstr "VNC pasahitza"
 
 #: plugins/gvnc/gvnc_plugin.c:840 plugins/vnc/vnc_plugin.c:1962
 #: plugins/vnc/vnc_plugin.c:1982 plugins/rdp/rdp_plugin.c:2660
@@ -1670,10 +1636,8 @@ msgid "Use JPEG Compression"
 msgstr ""
 
 #: plugins/gvnc/gvnc_plugin.c:841
-#, fuzzy
-#| msgid "Browse the network to find a %s server"
 msgid "This might not work on all VNC servers"
-msgstr "Arakatu sarea '%s' zerbitzaria aurkitzeko"
+msgstr "Baliteke honek VNC zerbitzari guztietan ez funtzionatzea"
 
 #: plugins/gvnc/gvnc_plugin.c:842
 msgid "Enable GTK-VNC debug"
@@ -1705,10 +1669,8 @@ msgid "View only"
 msgstr "Ikusteko soilik"
 
 #: plugins/gvnc/gvnc_plugin.c:862
-#, fuzzy
-#| msgid "Per connection"
 msgid "Shared connection"
-msgstr "Konexioko"
+msgstr "Konexio partekatua"
 
 #: plugins/gvnc/gvnc_plugin.c:862
 msgid ""
@@ -1781,10 +1743,8 @@ msgid "Reset remote host (hard reboot)"
 msgstr ""
 
 #: plugins/gvnc/gvnc_plugin.c:889
-#, fuzzy
-#| msgid "Show remote cursor"
 msgid "Shutdown remote host"
-msgstr "Erakutsi urruneko kurtsorea"
+msgstr "Itzali urruneko kurtsorea"
 
 #: plugins/exec/exec_plugin_config.h:41
 msgid "Execute a command"
@@ -2174,7 +2134,7 @@ msgstr "Ezin izan da \"%s\" RDP zerbitzarira konektatu."
 #: plugins/rdp/rdp_plugin.c:2104
 #, c-format
 msgid "Could not find the address for the RDP server “%s”."
-msgstr "Ezin izan da\"%s\" fitxategia zerbitzarian ireki. %s"
+msgstr "Ezin izan da aurkitu \"%s\" RDP zerbitzariaren helbidea."
 
 #: plugins/rdp/rdp_plugin.c:2108
 #, c-format
@@ -2416,10 +2376,8 @@ msgid "Span screen over multiple monitors"
 msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:2658
-#, fuzzy
-#| msgid "Listen on port"
 msgid "List monitor IDs"
-msgstr "Entzun ataka honetan"
+msgstr "Monitore ID-en zerrenda"
 
 #: plugins/rdp/rdp_plugin.c:2661
 msgid "Network connection type"
@@ -2459,7 +2417,7 @@ msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:2684
 msgid "Connection timeout in ms"
-msgstr "\"%s\"(r)ekin konektatzen…"
+msgstr "Konexioaren denbora-muga milisegundotan"
 
 #: plugins/rdp/rdp_plugin.c:2685
 msgid "Remote Desktop Gateway server"
@@ -2556,10 +2514,8 @@ msgid "Static virtual channel"
 msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:2705
-#, fuzzy
-#| msgid "Per connection"
 msgid "TCP redirection"
-msgstr "Konexioko"
+msgstr "TCP berbideraketa"
 
 #: plugins/rdp/rdp_plugin.c:2705
 msgid "/PATH/TO/rdp2tcp"
@@ -2743,16 +2699,12 @@ msgid "Desktop orientation"
 msgstr ""
 
 #: plugins/rdp/rdp_settings.c:592
-#, fuzzy
-#| msgid "Disable server input"
 msgid "Input device settings"
-msgstr "Desgaitu zerbitzariaren sarrera"
+msgstr "Sarrerako gailuen ezarpenak"
 
 #: plugins/rdp/rdp_settings.c:608
-#, fuzzy
-#| msgid "Disable server input"
 msgid "General settings"
-msgstr "Desgaitu zerbitzariaren sarrera"
+msgstr "Ezarpen orokorrak"
 
 #: plugins/rdp/rdp_event.c:344
 #, c-format
@@ -3307,16 +3259,13 @@ msgid ""
 msgstr ""
 
 #: data/ui/remmina_preferences.glade:739
-#, fuzzy
-#| msgid "Grab all keyboard events"
 msgid "“Grab all keyboard events” status colour"
-msgstr "Kapturatu teklatuko gertaera guztiak"
+msgstr "\"Kapturatu teklatuko gertaera guztiak\" egoeraren kolorea"
 
 #: data/ui/remmina_preferences.glade:750
-#, fuzzy
-#| msgid "Grab all keyboard events"
 msgid "Enable/Disable “Grab all keyboard events” status colour"
-msgstr "Kapturatu teklatuko gertaera guztiak"
+msgstr ""
+"Gaitu/desgaitu \"Kapturatu teklatuko gertaera guztiak\" egoeraren kolorea"
 
 #: data/ui/remmina_preferences.glade:765
 msgid ""
@@ -3461,11 +3410,11 @@ msgstr "Errepikatu pasahitza"
 
 #: data/ui/remmina_preferences.glade:1698
 msgid "Automatically accept all fingerprints and certificates"
-msgstr "Aldatutako ziurtagiria onartu?"
+msgstr "Onartu automatikoki hatz-marka eta ziurtagiri guztiak"
 
 #: data/ui/remmina_preferences.glade:1702
 msgid "Trust all fingerprints and certificates"
-msgstr "Aldatutako ziurtagiria onartu?"
+msgstr "Fidatu hatz-marka eta ziurtagiri guztietaz"
 
 #: data/ui/remmina_preferences.glade:1745
 msgid "Master password validity in seconds"
@@ -3630,10 +3579,8 @@ msgstr "Kurtsorearen kolorea"
 
 #: data/ui/remmina_preferences.glade:2467
 #: data/ui/remmina_preferences.glade:2508
-#, fuzzy
-#| msgid "High colour (16 bpp)"
 msgid "Highlight colour"
-msgstr "Kolore altua (16 bpp)"
+msgstr "Nabarmentze-kolorea"
 
 #: data/ui/remmina_preferences.glade:2480
 #: data/ui/remmina_preferences.glade:2524
@@ -3642,10 +3589,8 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:2493
 #: data/ui/remmina_preferences.glade:2540
-#, fuzzy
-#| msgid "Cursor colour"
 msgid "Cursor foreground colour"
-msgstr "Kurtsorearen kolorea"
+msgstr "Kurtsorearen lehen planoko kolorea"
 
 #: data/ui/remmina_preferences.glade:2594
 msgid "Terminal"

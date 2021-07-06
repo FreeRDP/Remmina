@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-07-02 10:50+0000\n"
-"PO-Revision-Date: 2021-06-17 12:23+0000\n"
+"PO-Revision-Date: 2021-07-06 08:27+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/remmina/"
 "remmina/nb_NO/>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.7\n"
+"X-Generator: Weblate 4.8-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
 
 #: src/remmina_protocol_widget.c:283 src/remmina_sftp_plugin.c:328
@@ -2526,6 +2526,7 @@ msgstr ""
 "\n"
 
 #: plugins/rdp/rdp_plugin.c:2629
+#, fuzzy
 msgid ""
 "Redirect directory <path> as named share <name>.\n"
 "  • <name>,<fullpath>[;<name>,<fullpath>[;…]]\n"
@@ -2536,10 +2537,18 @@ msgid ""
 "  • hotplug,*\n"
 "\n"
 msgstr ""
+"Videresendingsmappe <sti> som navngitt deling <navn>.\n"
+"  • <navn>,<fullsti>[;<avn>,<fullsti>[;…]]\n"
+"  • MinHjemmemappe,/home/dinbruker\n"
+"  • /home/dinbruker\n"
+"  • MyHome,/home/dinbruker;EnSti,/sti/til/enmappe\n"
+"Hurtigomkoblingsstøtte slås på med:\n"
+"  • hotplug,*\n"
+"\n"
 
 #: plugins/rdp/rdp_plugin.c:2653
 msgid "Use \"Redirect directory\" in the advanced tab for multiple directories"
-msgstr ""
+msgstr "Bruk «Videresendingsmappe» i den avanserte fanen for flere mapper"
 
 #: plugins/rdp/rdp_plugin.c:2654
 #, fuzzy
@@ -2623,7 +2632,7 @@ msgstr "RD-portnerdomene"
 
 #: plugins/rdp/rdp_plugin.c:2689
 msgid "Redirect directory"
-msgstr ""
+msgstr "Videresendingsmappe"
 
 #: plugins/rdp/rdp_plugin.c:2690
 msgid "Client name"
@@ -2708,8 +2717,9 @@ msgid "TCP redirection"
 msgstr "USB-videresendingsfeil"
 
 #: plugins/rdp/rdp_plugin.c:2705
+#, fuzzy
 msgid "/PATH/TO/rdp2tcp"
-msgstr ""
+msgstr "/STI/TIL/r2p2tcp"
 
 #: plugins/rdp/rdp_plugin.c:2706 plugins/rdp/rdp_settings.c:613
 #, fuzzy
@@ -2718,9 +2728,10 @@ msgid "Reconnect attempts number"
 msgstr "Gjentilkoblingsforsøk %d av %d…"
 
 #: plugins/rdp/rdp_plugin.c:2706 plugins/rdp/rdp_settings.c:619
+#, fuzzy
 msgid ""
 "The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
-msgstr ""
+msgstr "Maksimalt antall gjentilkoblingsforsøk ved RDP-frakobling (forvalg: 20)"
 
 #: plugins/rdp/rdp_plugin.c:2707
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
