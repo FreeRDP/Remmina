@@ -250,7 +250,7 @@ static void gvnc_plugin_cut_text(VncDisplay *vnc G_GNUC_UNUSED, const gchar *tex
 	TRACE_CALL(__func__);
 	GVncPluginData *gpdata = GET_PLUGIN_DATA(gp);
 
-	REMMINA_PLUGIN_DEBUG("Got clipboard request for \"%s\"", text);
+	REMMINA_PLUGIN_DEBUG("Got clipboard request for “%s”", text);
 
 	GtkClipboard *cb;
 	gsize a, b;

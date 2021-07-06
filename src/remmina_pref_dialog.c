@@ -807,7 +807,7 @@ GtkWidget* remmina_pref_dialog_new(gint default_tab, GtkWindow *parent)
 			"\n",
 			destpath,
 			"\n",
-			_("This file contains the \"Custom\" terminal colour scheme selectable from the \"Advanced\" tab of terminal connections and editable in the \"Terminal\" tab in the settings."),
+			_("This file contains the “Custom” terminal colour scheme selectable from the “Advanced” tab of terminal connections and editable in the “Terminal” tab in the settings."),
 			NULL);
 	gtk_widget_set_tooltip_text (GTK_WIDGET(remmina_pref_dialog->button_term_cs), fc_tooltip_text);
 	gtk_file_chooser_set_current_folder( GTK_FILE_CHOOSER(remmina_pref_dialog->button_term_cs), REMMINA_RUNTIME_TERM_CS_DIR);

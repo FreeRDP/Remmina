@@ -1714,11 +1714,11 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 	cs = remmina_plugin_service->file_get_string(remminafile, "microphone");
 	if (cs != NULL && cs[0] != '\0') {
 		if (g_strcmp0(cs, "0") == 0) {
-			REMMINA_PLUGIN_DEBUG("\"microphone\" was set to 0, setting to \"\"");
+			REMMINA_PLUGIN_DEBUG("“microphone” was set to 0, setting to \"\"");
 			remmina_plugin_service->file_set_string(remminafile, "microphone", "");
 		} else {
 			freerdp_settings_set_bool(rfi->settings, FreeRDP_AudioCapture, TRUE);
-			REMMINA_PLUGIN_DEBUG("microphone set to %s", cs);
+			REMMINA_PLUGIN_DEBUG("“microphone” set to “%s”", cs);
 			char **p;
 			size_t count;
 
@@ -2135,7 +2135,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 #endif
 			case 0x800759DB:
 				// E_PROXY_NAP_ACCESSDENIED https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-tsgu/84cd92e4-592c-4219-95d8-18021ac654b0
-				remmina_plugin_service->protocol_plugin_set_error(gp, _("The Remote Desktop Gateway “%s” denied the user \"%s\\%s\" access due to policy."),
+				remmina_plugin_service->protocol_plugin_set_error(gp, _("The Remote Desktop Gateway “%s” denied the user “%s\\%s” access due to policy."),
 										  freerdp_settings_get_string(rfi->settings, FreeRDP_GatewayHostname), freerdp_settings_get_string(rfi->settings, FreeRDP_GatewayDomain), freerdp_settings_get_string(rfi->settings, FreeRDP_GatewayUsername));
 				break;
 
@@ -2611,7 +2611,7 @@ static gchar timeout_tooltip[] =
 static gchar network_tooltip[] =
 	N_("Performance optimisations based on the network connection type:\n"
 	   "Using auto-detection is advised.\n"
-	   "If \"Auto-detect\" fails, choose the most appropriate option in the list.\n");
+	   "If “Auto-detect” fails, choose the most appropriate option in the list.\n");
 
 static gchar monitorids_tooltip[] =
 	N_("Comma-separated list of monitor IDs and desktop orientations:\n"
@@ -2650,7 +2650,7 @@ static const RemminaProtocolSetting remmina_rdp_basic_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "username",			N_("Username"),				  FALSE, NULL,		  NULL										},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD,   "password",			N_("Password"),				  FALSE, NULL,		  NULL										},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "domain",			N_("Domain"),				  FALSE, NULL,		  NULL										},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_FOLDER,	    "sharefolder",		N_("Share folder"),			  FALSE, NULL,		  N_("Use \"Redirect directory\" in the advanced tab for multiple directories") },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_FOLDER,	    "sharefolder",		N_("Share folder"),			  FALSE, NULL,		  N_("Use “Redirect directory” in the advanced tab for multiple directories") },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "left-handed",		N_("Left-handed mouse support"),	  TRUE,	 NULL,		  N_("Swap left and right mouse buttons for left-handed mouse support")		},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "disable-smooth-scrolling", N_("Disable smooth scrolling"),		  TRUE,	 NULL,		  NULL										},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "multimon",			N_("Enable multi monitor"),		  TRUE,	 NULL,		  NULL										},
@@ -2692,6 +2692,7 @@ static const RemminaProtocolSetting remmina_rdp_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "exec",		    N_("Start-up program"),				 FALSE, NULL,		  NULL														 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "execpath",		    N_("Start-up path"),				 FALSE, NULL,		  NULL														 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "loadbalanceinfo",	    N_("Load balance info"),				 FALSE, NULL,		  NULL														 },
+	// TRANSLATORS: Do not use typographic quotation marks, these must stay as "double quote", also know as “Typewriter ("programmer's") quote, ambidextrous.”
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "printer_overrides",	    N_("Override printer drivers"),			 FALSE, NULL,		  N_("\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":\"Canon MF410 Series UFR II\"") },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "usb",		    N_("USB device redirection"),			 TRUE,	NULL,		  usb_tooltip													 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "serialname",		    N_("Local serial name"),				 FALSE, NULL,		  N_("COM1, COM2, etc.")											 },

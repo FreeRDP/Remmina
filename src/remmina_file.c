@@ -435,7 +435,7 @@ void remmina_file_set_string_ref(RemminaFile *remminafile, const gchar *setting,
 	if (value) {
 		/* We refuse to accept to set the "resolution" field */
 		if (strcmp(setting, "resolution") == 0) {
-			message = "WARNING: the \"resolution\" setting in .pref files is deprecated, but some code in remmina or in a plugin is trying to set it.\n";
+			message = "WARNING: the “resolution” setting in .pref files is deprecated, but some code in remmina or in a plugin is trying to set it.\n";
 			fputs(message, stdout);
 			remmina_main_show_warning_dialog(message);
 			return;
@@ -471,7 +471,7 @@ remmina_file_get_string(RemminaFile *remminafile, const gchar *setting)
 	}
 
 	if (strcmp(setting, "resolution") == 0) {
-		message = "WARNING: the \"resolution\" setting in .pref files is deprecated, but some code in remmina or in a plugin is trying to read it.\n";
+		message = "WARNING: the “resolution” setting in .pref files is deprecated, but some code in remmina or in a plugin is trying to read it.\n";
 		fputs(message, stdout);
 		remmina_main_show_warning_dialog(message);
 		return NULL;

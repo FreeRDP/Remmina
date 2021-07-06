@@ -1205,7 +1205,7 @@ remmina_ssh_init_session(RemminaSSH *ssh)
 		if (rc == 0)
 			REMMINA_DEBUG("SSH_OPTIONS_IDENTITY is now %s", ssh->privkeyfile);
 		else
-			REMMINA_DEBUG("SSH_OPTIONS_IDENTITY is not set, by default the files \"identity\", \"id_dsa\" and \"id_rsa\" are used.");
+			REMMINA_DEBUG("SSH_OPTIONS_IDENTITY is not set, by default the files “identity”, “id_dsa” and “id_rsa” are used.");
 	}
 
 #ifdef SNAP_BUILD
