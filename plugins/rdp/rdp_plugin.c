@@ -2109,7 +2109,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 				break;
 			case FREERDP_ERROR_SECURITY_NEGO_CONNECT_FAILED:
 				// TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
-				remmina_plugin_service->protocol_plugin_set_error(gp, _("Unable to establish a connection to the RDP server “%s”. Check \"Security protocol negotiation\"."), freerdp_settings_get_string(rfi->settings, FreeRDP_ServerHostname));
+				remmina_plugin_service->protocol_plugin_set_error(gp, _("Unable to establish a connection to the RDP server “%s”. Check “Security protocol negotiation”."), freerdp_settings_get_string(rfi->settings, FreeRDP_ServerHostname));
 				break;
 #ifdef FREERDP_ERROR_POST_CONNECT_FAILED
 			case FREERDP_ERROR_POST_CONNECT_FAILED:
