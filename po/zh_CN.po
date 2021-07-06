@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-07-06 08:44+0000\n"
+"POT-Creation-Date: 2021-07-06 11:39+0000\n"
 "PO-Revision-Date: 2021-07-06 09:36+0000\n"
 "Last-Translator: Eric <spice2wolf@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -38,43 +38,47 @@ msgstr "打开 SFTP 传输…"
 msgid "Executing external commands…"
 msgstr "执行外部命令…"
 
-#: src/remmina_protocol_widget.c:326
+#. TRANSLATORS: “%s” is a placeholder for the connection profile name
+#: src/remmina_protocol_widget.c:327
 #, c-format
 msgid "Connecting to “%s”…"
 msgstr "正在连接到 “%s”…"
 
-#: src/remmina_protocol_widget.c:909 src/remmina_protocol_widget.c:1093
+#. TRANSLATORS: “%s” is a placeholder for an hostname or an IP address.
+#: src/remmina_protocol_widget.c:911 src/remmina_protocol_widget.c:1096
 #, c-format
 msgid "Connecting to “%s” via SSH…"
 msgstr "正在通过 SSH 连接到 “%s”…"
 
-#: src/remmina_protocol_widget.c:1156
+#. TRANSLATORS: “%i” is a placeholder for a TCP port number.
+#: src/remmina_protocol_widget.c:1160
 #, c-format
 msgid "Awaiting incoming SSH connection on port %i…"
 msgstr "在端口 %i 等待传入的 SSH 连接…"
 
-#: src/remmina_protocol_widget.c:1208
+#: src/remmina_protocol_widget.c:1213
 #, c-format
 msgid "The “%s” command is not available on the SSH server."
 msgstr "“%s”命令在 SSH 服务器上不可用。"
 
-#: src/remmina_protocol_widget.c:1212
+#: src/remmina_protocol_widget.c:1218
 #, c-format
 msgid "Could not run the “%s” command on the SSH server (status = %i)."
 msgstr "SSH 服务器运行命令 “%s” 失败（状态= %i）。"
 
 #. TRANSLATORS: %s is a placeholder for an error message
-#: src/remmina_protocol_widget.c:1220
+#: src/remmina_protocol_widget.c:1226
 #, c-format
 msgid "Could not run command. %s"
 msgstr "无法运行命令。%s"
 
-#: src/remmina_protocol_widget.c:1289
+#. TRANSLATORS: “%s” is a placeholder for a hostname or IP address.
+#: src/remmina_protocol_widget.c:1296
 #, c-format
 msgid "Connecting to %s via SSH…"
 msgstr "通过 SSH 连接到 %s …"
 
-#: src/remmina_protocol_widget.c:1665 src/remmina_protocol_widget.c:1684
+#: src/remmina_protocol_widget.c:1672 src/remmina_protocol_widget.c:1691
 #: src/remmina_ssh_plugin.c:1369 src/remmina_sftp_plugin.c:310
 #: src/remmina_sftp_plugin.c:346 src/remmina_file_editor.c:846
 #: src/remmina_file_editor.c:967 plugins/www/www_plugin.c:880
@@ -83,65 +87,76 @@ msgstr "通过 SSH 连接到 %s …"
 msgid "Password"
 msgstr "密码"
 
-#: src/remmina_protocol_widget.c:1683
+#: src/remmina_protocol_widget.c:1690
 msgid "Type in SSH username and password."
 msgstr "输入 SSH 的用户名和密码。"
 
-#: src/remmina_protocol_widget.c:1738 src/remmina_protocol_widget.c:1765
+#: src/remmina_protocol_widget.c:1745 src/remmina_protocol_widget.c:1777
 msgid "Fingerprint automatically accepted"
 msgstr "自动接受指纹"
 
-#: src/remmina_protocol_widget.c:1745
+#. TRANSLATORS: The user is asked to verify a new SSL certificate.
+#: src/remmina_protocol_widget.c:1753
 msgid "Certificate details:"
 msgstr "证书详情："
 
-#: src/remmina_protocol_widget.c:1746 src/remmina_protocol_widget.c:1773
+#. TRANSLATORS: An SSL certificate subject is usually the remote server the user connect to.
+#: src/remmina_protocol_widget.c:1755 src/remmina_protocol_widget.c:1787
 msgid "Subject:"
 msgstr "主题："
 
-#: src/remmina_protocol_widget.c:1747 src/remmina_protocol_widget.c:1774
+#. TRANSLATORS: The name or email of the entity that have issued the SSL certificate
+#: src/remmina_protocol_widget.c:1757 src/remmina_protocol_widget.c:1789
 msgid "Issuer:"
 msgstr "颁发者："
 
-#: src/remmina_protocol_widget.c:1748
+#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
+#: src/remmina_protocol_widget.c:1759
 msgid "Fingerprint:"
 msgstr "指纹："
 
-#: src/remmina_protocol_widget.c:1749
+#. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
+#: src/remmina_protocol_widget.c:1761
 msgid "Accept certificate?"
 msgstr "接受证书吗？"
 
-#: src/remmina_protocol_widget.c:1772
+#. TRANSLATORS: The user is asked to verify a new SSL certificate.
+#: src/remmina_protocol_widget.c:1785
 msgid "The certificate changed! Details:"
 msgstr "证书已更改！详情："
 
-#: src/remmina_protocol_widget.c:1775
+#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
+#: src/remmina_protocol_widget.c:1791
 msgid "Old fingerprint:"
 msgstr "旧指纹："
 
-#: src/remmina_protocol_widget.c:1776
+#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
+#: src/remmina_protocol_widget.c:1793
 msgid "New fingerprint:"
 msgstr "新指纹："
 
-#: src/remmina_protocol_widget.c:1777
+#. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
+#: src/remmina_protocol_widget.c:1795
 msgid "Accept changed certificate?"
 msgstr "接受更改的证书吗？"
 
-#: src/remmina_protocol_widget.c:1919
+#. TRANSLATORS: “%i” is a placeholder for a port number. “%s”  is a placeholder for a protocol name (VNC).
+#: src/remmina_protocol_widget.c:1938
 #, c-format
 msgid "Listening on port %i for an incoming %s connection…"
 msgstr "在 %i 端口监听传入的 %s 连接…"
 
-#: src/remmina_protocol_widget.c:1944
+#: src/remmina_protocol_widget.c:1963
 msgid "Could not authenticate, attempting reconnection…"
 msgstr "验证失败，重新连接…"
 
-#: src/remmina_protocol_widget.c:2006 src/remmina_file_editor.c:346
+#: src/remmina_protocol_widget.c:2025 src/remmina_file_editor.c:346
 #: src/remmina_file_editor.c:917 data/ui/remmina_main.glade:478
 msgid "Server"
 msgstr "服务器"
 
-#: src/remmina_protocol_widget.c:2023
+#. TRANSLATORS: “%s” is a placeholder for a protocol name, like “RDP”.
+#: src/remmina_protocol_widget.c:2043
 #, c-format
 msgid "Install the %s protocol plugin first."
 msgstr "请先安装 %s 协议插件。"
@@ -182,10 +197,15 @@ msgid "Picking a terminal colouring file replaces the file: "
 msgstr "选择一个终端配色文件替换该文件： "
 
 #: src/remmina_pref_dialog.c:810
+#, fuzzy
+#| msgid ""
+#| "This file contains the \"Custom\" terminal colour scheme selectable from "
+#| "the \"Advanced\" tab of terminal connections and editable in the "
+#| "\"Terminal\" tab in the settings."
 msgid ""
-"This file contains the \"Custom\" terminal colour scheme selectable from the "
-"\"Advanced\" tab of terminal connections and editable in the \"Terminal\" "
-"tab in the settings."
+"This file contains the “Custom” terminal colour scheme selectable from the "
+"“Advanced” tab of terminal connections and editable in the “Terminal” tab in "
+"the settings."
 msgstr ""
 "此文件包含“自定义”终端颜色方案，可从终端连接的“高级”选项卡中选择，并可在设置"
 "的“终端”选项卡中编辑。"
@@ -528,7 +548,7 @@ msgid "Go to parent folder"
 msgstr "跳到上一层目录"
 
 #: src/remmina_ftp_client.c:758 plugins/vnc/vnc_plugin.c:2019
-#: plugins/rdp/rdp_plugin.c:2738
+#: plugins/rdp/rdp_plugin.c:2739
 msgid "Refresh"
 msgstr "刷新"
 
@@ -1703,7 +1723,7 @@ msgstr "禁用剪贴板同步"
 
 #: plugins/gvnc/gvnc_plugin.c:858 plugins/www/www_plugin.c:904
 #: plugins/vnc/vnc_plugin.c:2005 plugins/spice/spice_plugin.c:694
-#: plugins/rdp/rdp_plugin.c:2716
+#: plugins/rdp/rdp_plugin.c:2717
 msgid "Forget passwords after use"
 msgstr "使用后忘记密码"
 
@@ -1993,7 +2013,7 @@ msgstr "监听端口"
 msgid "Show remote cursor"
 msgstr "显示远程光标"
 
-#: plugins/vnc/vnc_plugin.c:2001 plugins/rdp/rdp_plugin.c:2713
+#: plugins/vnc/vnc_plugin.c:2001 plugins/rdp/rdp_plugin.c:2714
 msgid "Turn off clipboard sync"
 msgstr "禁用剪贴板同步"
 
@@ -2015,7 +2035,7 @@ msgid "Open Chat…"
 msgstr "打开聊天…"
 
 #: plugins/vnc/vnc_plugin.c:2021 plugins/spice/spice_plugin.c:707
-#: plugins/rdp/rdp_plugin.c:2742
+#: plugins/rdp/rdp_plugin.c:2743
 msgid "Send Ctrl+Alt+Delete"
 msgstr "发送 Ctrl+Alt+Delete"
 
@@ -2253,9 +2273,12 @@ msgid "The “%s” server refused the connection."
 msgstr "服务器 “%s” 拒绝连接。"
 
 #: plugins/rdp/rdp_plugin.c:2138
-#, c-format
+#, fuzzy, c-format
+#| msgid ""
+#| "The Remote Desktop Gateway “%s” denied the user \"%s\\%s\" access due to "
+#| "policy."
 msgid ""
-"The Remote Desktop Gateway “%s” denied the user \"%s\\%s\" access due to "
+"The Remote Desktop Gateway “%s” denied the user “%s\\%s” access due to "
 "policy."
 msgstr "由于策略，远程桌面网关 “%s” 拒绝了用户 \"%s\\%s\" 的访问。"
 
@@ -2422,10 +2445,16 @@ msgstr ""
 "可能的最高值为 600000 毫秒（10 分钟）。\n"
 
 #: plugins/rdp/rdp_plugin.c:2612
+#, fuzzy
+#| msgid ""
+#| "Performance optimisations based on the network connection type:\n"
+#| "Using auto-detection is advised.\n"
+#| "If \"Auto-detect\" fails, choose the most appropriate option in the "
+#| "list.\n"
 msgid ""
 "Performance optimisations based on the network connection type:\n"
 "Using auto-detection is advised.\n"
-"If \"Auto-detect\" fails, choose the most appropriate option in the list.\n"
+"If “Auto-detect” fails, choose the most appropriate option in the list.\n"
 msgstr ""
 "基于网络连接类型的性能优化：\n"
 "建议使用自动检测。\n"
@@ -2468,7 +2497,10 @@ msgid ""
 msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:2653
-msgid "Use \"Redirect directory\" in the advanced tab for multiple directories"
+#, fuzzy
+#| msgid ""
+#| "Use \"Redirect directory\" in the advanced tab for multiple directories"
+msgid "Use “Redirect directory” in the advanced tab for multiple directories"
 msgstr "对多个目录使用高级选项卡中的“重定向目录”"
 
 #: plugins/rdp/rdp_plugin.c:2654
@@ -2563,11 +2595,12 @@ msgstr "客户端构建"
 msgid "Load balance info"
 msgstr "负载平衡信息"
 
-#: plugins/rdp/rdp_plugin.c:2695
+#. TRANSLATORS: Do not use typographic quotation marks, these must stay as "double quote", also know as “Typewriter ("programmer's") quote, ambidextrous.”
+#: plugins/rdp/rdp_plugin.c:2696
 msgid "Override printer drivers"
 msgstr "覆盖打印机驱动程序"
 
-#: plugins/rdp/rdp_plugin.c:2695
+#: plugins/rdp/rdp_plugin.c:2696
 msgid ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
@@ -2575,168 +2608,168 @@ msgstr ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
 
-#: plugins/rdp/rdp_plugin.c:2696
+#: plugins/rdp/rdp_plugin.c:2697
 msgid "USB device redirection"
 msgstr "USB 设备转发"
 
-#: plugins/rdp/rdp_plugin.c:2697
+#: plugins/rdp/rdp_plugin.c:2698
 msgid "Local serial name"
 msgstr "本地串口名称"
 
-#: plugins/rdp/rdp_plugin.c:2697
+#: plugins/rdp/rdp_plugin.c:2698
 msgid "COM1, COM2, etc."
 msgstr "COM1，COM2，等等。"
 
-#: plugins/rdp/rdp_plugin.c:2698
+#: plugins/rdp/rdp_plugin.c:2699
 msgid "Local serial driver"
 msgstr "本地串口驱动"
 
-#: plugins/rdp/rdp_plugin.c:2698
+#: plugins/rdp/rdp_plugin.c:2699
 msgid "Serial"
 msgstr "串口"
 
-#: plugins/rdp/rdp_plugin.c:2699
+#: plugins/rdp/rdp_plugin.c:2700
 msgid "Local serial path"
 msgstr "本地串口路径"
 
-#: plugins/rdp/rdp_plugin.c:2699
+#: plugins/rdp/rdp_plugin.c:2700
 msgid "/dev/ttyS0, /dev/ttyS1, etc."
 msgstr "/dev/ttyS0，/dev/ttyS1， 等等。"
 
-#: plugins/rdp/rdp_plugin.c:2700
+#: plugins/rdp/rdp_plugin.c:2701
 msgid "Local parallel name"
 msgstr "本地并口名称"
 
-#: plugins/rdp/rdp_plugin.c:2701
+#: plugins/rdp/rdp_plugin.c:2702
 msgid "Local parallel device"
 msgstr "本地并口驱动"
 
-#: plugins/rdp/rdp_plugin.c:2702
+#: plugins/rdp/rdp_plugin.c:2703
 msgid "Name of smart card"
 msgstr "智能卡名称"
 
-#: plugins/rdp/rdp_plugin.c:2703
+#: plugins/rdp/rdp_plugin.c:2704
 msgid "Dynamic virtual channel"
 msgstr "动态虚拟通道"
 
-#: plugins/rdp/rdp_plugin.c:2703 plugins/rdp/rdp_plugin.c:2704
+#: plugins/rdp/rdp_plugin.c:2704 plugins/rdp/rdp_plugin.c:2705
 msgid "<channel>[,<options>]"
 msgstr "<通道>[,<参数>]"
 
-#: plugins/rdp/rdp_plugin.c:2704
+#: plugins/rdp/rdp_plugin.c:2705
 msgid "Static virtual channel"
 msgstr "静态虚拟通道"
 
-#: plugins/rdp/rdp_plugin.c:2705
+#: plugins/rdp/rdp_plugin.c:2706
 msgid "TCP redirection"
 msgstr "TCP 重定向"
 
-#: plugins/rdp/rdp_plugin.c:2705
+#: plugins/rdp/rdp_plugin.c:2706
 msgid "/PATH/TO/rdp2tcp"
 msgstr "/PATH/TO/rdp2tcp"
 
-#: plugins/rdp/rdp_plugin.c:2706 plugins/rdp/rdp_settings.c:613
+#: plugins/rdp/rdp_plugin.c:2707 plugins/rdp/rdp_settings.c:613
 msgid "Reconnect attempts number"
 msgstr "重连尝试次数"
 
-#: plugins/rdp/rdp_plugin.c:2706 plugins/rdp/rdp_settings.c:619
+#: plugins/rdp/rdp_plugin.c:2707 plugins/rdp/rdp_settings.c:619
 msgid ""
 "The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
 msgstr "RDP 断开连接时的最大重新连接尝试次数（默认值：20）"
 
-#: plugins/rdp/rdp_plugin.c:2707
+#: plugins/rdp/rdp_plugin.c:2708
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
 msgstr "优先使用 IPv6 AAAA 记录而不是 IPv4 A 记录"
 
-#: plugins/rdp/rdp_plugin.c:2708
+#: plugins/rdp/rdp_plugin.c:2709
 msgid "Share printers"
 msgstr "共享打印机"
 
-#: plugins/rdp/rdp_plugin.c:2709
+#: plugins/rdp/rdp_plugin.c:2710
 msgid "Share serial ports"
 msgstr "共享串口"
 
-#: plugins/rdp/rdp_plugin.c:2710
+#: plugins/rdp/rdp_plugin.c:2711
 msgid "(SELinux) permissive mode for serial ports"
 msgstr "(SELinux)串行端口许可模式"
 
-#: plugins/rdp/rdp_plugin.c:2711
+#: plugins/rdp/rdp_plugin.c:2712
 msgid "Share parallel ports"
 msgstr "共享并口"
 
-#: plugins/rdp/rdp_plugin.c:2712
+#: plugins/rdp/rdp_plugin.c:2713
 msgid "Share a smart card"
 msgstr "共享智能卡"
 
-#: plugins/rdp/rdp_plugin.c:2714
+#: plugins/rdp/rdp_plugin.c:2715
 msgid "Ignore certificate"
 msgstr "忽略证书"
 
-#: plugins/rdp/rdp_plugin.c:2715
+#: plugins/rdp/rdp_plugin.c:2716
 msgid "Use the old license workflow"
 msgstr "使用旧的许可证工作流程"
 
-#: plugins/rdp/rdp_plugin.c:2715
+#: plugins/rdp/rdp_plugin.c:2716
 msgid "It disables CAL and hwId is set to 0"
 msgstr "它禁用 CAL，并将 hwId 设置为 0"
 
-#: plugins/rdp/rdp_plugin.c:2717
+#: plugins/rdp/rdp_plugin.c:2718
 msgid "Attach to console (2003/2003 R2)"
 msgstr "挂接到控制台（2003/2003 R2）"
 
-#: plugins/rdp/rdp_plugin.c:2718
+#: plugins/rdp/rdp_plugin.c:2719
 msgid "Turn off fast-path"
 msgstr "关闭快速路径"
 
-#: plugins/rdp/rdp_plugin.c:2719
+#: plugins/rdp/rdp_plugin.c:2720
 msgid "Server detection using Remote Desktop Gateway"
 msgstr "使用远程桌面网关检测服务器"
 
-#: plugins/rdp/rdp_plugin.c:2721
+#: plugins/rdp/rdp_plugin.c:2722
 msgid "Use system proxy settings"
 msgstr "使用系统代理设置"
 
-#: plugins/rdp/rdp_plugin.c:2723
+#: plugins/rdp/rdp_plugin.c:2724
 msgid "Turn off automatic reconnection"
 msgstr "禁用自动重连"
 
-#: plugins/rdp/rdp_plugin.c:2724
+#: plugins/rdp/rdp_plugin.c:2725
 msgid "Relax order checks"
 msgstr "Relax Order 检查"
 
-#: plugins/rdp/rdp_plugin.c:2725
+#: plugins/rdp/rdp_plugin.c:2726
 msgid "Glyph cache"
 msgstr "字形缓存"
 
-#: plugins/rdp/rdp_plugin.c:2726
+#: plugins/rdp/rdp_plugin.c:2727
 msgid "Enable multitransport protocol (UDP)"
 msgstr "启用多重传输协议 (UDP)"
 
-#: plugins/rdp/rdp_plugin.c:2726
+#: plugins/rdp/rdp_plugin.c:2727
 msgid "Using the UDP protocol may improve performance"
 msgstr "使用 UDP 协议可以提高性能"
 
-#: plugins/rdp/rdp_plugin.c:2727
+#: plugins/rdp/rdp_plugin.c:2728
 msgid "Use base credentials for gateway too"
 msgstr "也为网关使用提供基本凭据"
 
-#: plugins/rdp/rdp_plugin.c:2729
+#: plugins/rdp/rdp_plugin.c:2730
 msgid "Enable Gateway websockets support"
 msgstr "启用网关 websockets 支持"
 
-#: plugins/rdp/rdp_plugin.c:2755
+#: plugins/rdp/rdp_plugin.c:2756
 msgid "RDP - Remote Desktop Protocol"
 msgstr "RDP - 远程桌面协议"
 
-#: plugins/rdp/rdp_plugin.c:2780
+#: plugins/rdp/rdp_plugin.c:2781
 msgid "RDP - RDP File Handler"
 msgstr "RDP - RDP 文件处理器"
 
-#: plugins/rdp/rdp_plugin.c:2795
+#: plugins/rdp/rdp_plugin.c:2796
 msgid "RDP - Preferences"
 msgstr "RDP - 首选项"
 
-#: plugins/rdp/rdp_plugin.c:2848
+#: plugins/rdp/rdp_plugin.c:2849
 msgid "Export connection in Windows .rdp file format"
 msgstr "使用 Windows .rdp 文件格式导出连接"
 

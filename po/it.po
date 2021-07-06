@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-07-06 08:44+0000\n"
+"POT-Creation-Date: 2021-07-06 11:39+0000\n"
 "PO-Revision-Date: 2021-07-06 09:36+0000\n"
 "Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -41,43 +41,47 @@ msgstr "Aprire il trasferimento SFTP…"
 msgid "Executing external commands…"
 msgstr "Esecuzione comandi esterni…"
 
-#: src/remmina_protocol_widget.c:326
+#. TRANSLATORS: “%s” is a placeholder for the connection profile name
+#: src/remmina_protocol_widget.c:327
 #, c-format
 msgid "Connecting to “%s”…"
 msgstr "Connessione a “%s”…"
 
-#: src/remmina_protocol_widget.c:909 src/remmina_protocol_widget.c:1093
+#. TRANSLATORS: “%s” is a placeholder for an hostname or an IP address.
+#: src/remmina_protocol_widget.c:911 src/remmina_protocol_widget.c:1096
 #, c-format
 msgid "Connecting to “%s” via SSH…"
 msgstr "Connessione a “%s” tramite SSH in corso…"
 
-#: src/remmina_protocol_widget.c:1156
+#. TRANSLATORS: “%i” is a placeholder for a TCP port number.
+#: src/remmina_protocol_widget.c:1160
 #, c-format
 msgid "Awaiting incoming SSH connection on port %i…"
 msgstr "In attesa di connessione SSH in entrata sulla porta %i…"
 
-#: src/remmina_protocol_widget.c:1208
+#: src/remmina_protocol_widget.c:1213
 #, c-format
 msgid "The “%s” command is not available on the SSH server."
 msgstr "Il comando “%s” non è disponibile sul server SSH."
 
-#: src/remmina_protocol_widget.c:1212
+#: src/remmina_protocol_widget.c:1218
 #, c-format
 msgid "Could not run the “%s” command on the SSH server (status = %i)."
 msgstr "Impossibile eseguire il comando “%s” sul server SSH (stato : %i)."
 
 #. TRANSLATORS: %s is a placeholder for an error message
-#: src/remmina_protocol_widget.c:1220
+#: src/remmina_protocol_widget.c:1226
 #, c-format
 msgid "Could not run command. %s"
 msgstr "Impossibile eseguire il comando. %s"
 
-#: src/remmina_protocol_widget.c:1289
+#. TRANSLATORS: “%s” is a placeholder for a hostname or IP address.
+#: src/remmina_protocol_widget.c:1296
 #, c-format
 msgid "Connecting to %s via SSH…"
 msgstr "Connessione a %s tramite SSH in corso…"
 
-#: src/remmina_protocol_widget.c:1665 src/remmina_protocol_widget.c:1684
+#: src/remmina_protocol_widget.c:1672 src/remmina_protocol_widget.c:1691
 #: src/remmina_ssh_plugin.c:1369 src/remmina_sftp_plugin.c:310
 #: src/remmina_sftp_plugin.c:346 src/remmina_file_editor.c:846
 #: src/remmina_file_editor.c:967 plugins/www/www_plugin.c:880
@@ -86,66 +90,77 @@ msgstr "Connessione a %s tramite SSH in corso…"
 msgid "Password"
 msgstr "Password"
 
-#: src/remmina_protocol_widget.c:1683
+#: src/remmina_protocol_widget.c:1690
 msgid "Type in SSH username and password."
 msgstr "Digitare nome utente e password per SSH."
 
-#: src/remmina_protocol_widget.c:1738 src/remmina_protocol_widget.c:1765
+#: src/remmina_protocol_widget.c:1745 src/remmina_protocol_widget.c:1777
 msgid "Fingerprint automatically accepted"
 msgstr "Impronta digitale accettata automaticamente"
 
-#: src/remmina_protocol_widget.c:1745
+#. TRANSLATORS: The user is asked to verify a new SSL certificate.
+#: src/remmina_protocol_widget.c:1753
 msgid "Certificate details:"
 msgstr "Dettagli certificato:"
 
-#: src/remmina_protocol_widget.c:1746 src/remmina_protocol_widget.c:1773
+#. TRANSLATORS: An SSL certificate subject is usually the remote server the user connect to.
+#: src/remmina_protocol_widget.c:1755 src/remmina_protocol_widget.c:1787
 msgid "Subject:"
 msgstr "Oggetto:"
 
-#: src/remmina_protocol_widget.c:1747 src/remmina_protocol_widget.c:1774
+#. TRANSLATORS: The name or email of the entity that have issued the SSL certificate
+#: src/remmina_protocol_widget.c:1757 src/remmina_protocol_widget.c:1789
 msgid "Issuer:"
 msgstr "Emittente:"
 
-#: src/remmina_protocol_widget.c:1748
+#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
+#: src/remmina_protocol_widget.c:1759
 msgid "Fingerprint:"
 msgstr "Impronta digitale:"
 
-#: src/remmina_protocol_widget.c:1749
+#. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
+#: src/remmina_protocol_widget.c:1761
 msgid "Accept certificate?"
 msgstr "Accettare il certificato?"
 
-#: src/remmina_protocol_widget.c:1772
+#. TRANSLATORS: The user is asked to verify a new SSL certificate.
+#: src/remmina_protocol_widget.c:1785
 msgid "The certificate changed! Details:"
 msgstr "Il certificato è cambiato! Dettagli:"
 
-#: src/remmina_protocol_widget.c:1775
+#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
+#: src/remmina_protocol_widget.c:1791
 msgid "Old fingerprint:"
 msgstr "Vecchia impronta digitale:"
 
-#: src/remmina_protocol_widget.c:1776
+#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
+#: src/remmina_protocol_widget.c:1793
 msgid "New fingerprint:"
 msgstr "Nuova impronta digitale:"
 
-#: src/remmina_protocol_widget.c:1777
+#. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
+#: src/remmina_protocol_widget.c:1795
 msgid "Accept changed certificate?"
 msgstr "Accettare il certificato modificato?"
 
-#: src/remmina_protocol_widget.c:1919
+#. TRANSLATORS: “%i” is a placeholder for a port number. “%s”  is a placeholder for a protocol name (VNC).
+#: src/remmina_protocol_widget.c:1938
 #, c-format
 msgid "Listening on port %i for an incoming %s connection…"
 msgstr "In ascolto sulla Porta %i per una connessione in ingresso %s…"
 
-#: src/remmina_protocol_widget.c:1944
+#: src/remmina_protocol_widget.c:1963
 msgid "Could not authenticate, attempting reconnection…"
 msgstr ""
 "Impossibile eseguire l'autenticazione, tentativo di riconnessione in corso…"
 
-#: src/remmina_protocol_widget.c:2006 src/remmina_file_editor.c:346
+#: src/remmina_protocol_widget.c:2025 src/remmina_file_editor.c:346
 #: src/remmina_file_editor.c:917 data/ui/remmina_main.glade:478
 msgid "Server"
 msgstr "Server"
 
-#: src/remmina_protocol_widget.c:2023
+#. TRANSLATORS: “%s” is a placeholder for a protocol name, like “RDP”.
+#: src/remmina_protocol_widget.c:2043
 #, c-format
 msgid "Install the %s protocol plugin first."
 msgstr "Installare prima il plugin del protocollo %s."
@@ -188,10 +203,15 @@ msgstr ""
 "La scelta di un file di colorazione del terminale sostituisce il file: "
 
 #: src/remmina_pref_dialog.c:810
+#, fuzzy
+#| msgid ""
+#| "This file contains the \"Custom\" terminal colour scheme selectable from "
+#| "the \"Advanced\" tab of terminal connections and editable in the "
+#| "\"Terminal\" tab in the settings."
 msgid ""
-"This file contains the \"Custom\" terminal colour scheme selectable from the "
-"\"Advanced\" tab of terminal connections and editable in the \"Terminal\" "
-"tab in the settings."
+"This file contains the “Custom” terminal colour scheme selectable from the "
+"“Advanced” tab of terminal connections and editable in the “Terminal” tab in "
+"the settings."
 msgstr ""
 "Questo file contiene lo schema di colori \"Personalizzato\" del terminale "
 "selezionabile dalla scheda \"Avanzato\" delle connessioni del terminale e "
@@ -530,7 +550,7 @@ msgid "Go to parent folder"
 msgstr "Visualizzare la cartella padre"
 
 #: src/remmina_ftp_client.c:758 plugins/vnc/vnc_plugin.c:2019
-#: plugins/rdp/rdp_plugin.c:2738
+#: plugins/rdp/rdp_plugin.c:2739
 msgid "Refresh"
 msgstr "Aggiorna"
 
@@ -1723,7 +1743,7 @@ msgstr "Nessuna sincronizzazione degli appunti"
 
 #: plugins/gvnc/gvnc_plugin.c:858 plugins/www/www_plugin.c:904
 #: plugins/vnc/vnc_plugin.c:2005 plugins/spice/spice_plugin.c:694
-#: plugins/rdp/rdp_plugin.c:2716
+#: plugins/rdp/rdp_plugin.c:2717
 msgid "Forget passwords after use"
 msgstr "Dimenticare le password dopo l'uso"
 
@@ -1993,8 +2013,8 @@ msgid ""
 msgstr ""
 "Per connettersi con il protocollo  VNC tramite un ripetitore:\n"
 "  • Il campo server deve contenere l'ID del ripetitore, ad es. ID:123456789\n"
-"  • Nel campo ripetitore devono essere inseriti l'IP e la porta, come: 10.10."
-"10.12:5901\n"
+"  • Nel campo ripetitore devono essere inseriti l'IP e la porta, come: "
+"10.10.10.12:5901\n"
 "  • Dal server VNC remoto ti connetterai al ripetitore, ad es. con x11vnc:\n"
 "    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
 
@@ -2015,7 +2035,7 @@ msgstr "In ascolto sulla porta"
 msgid "Show remote cursor"
 msgstr "Visualizzare il cursore remoto"
 
-#: plugins/vnc/vnc_plugin.c:2001 plugins/rdp/rdp_plugin.c:2713
+#: plugins/vnc/vnc_plugin.c:2001 plugins/rdp/rdp_plugin.c:2714
 msgid "Turn off clipboard sync"
 msgstr "Disattivare la sincronizzazione degli Appunti"
 
@@ -2037,7 +2057,7 @@ msgid "Open Chat…"
 msgstr "Aprire la chat…"
 
 #: plugins/vnc/vnc_plugin.c:2021 plugins/spice/spice_plugin.c:707
-#: plugins/rdp/rdp_plugin.c:2742
+#: plugins/rdp/rdp_plugin.c:2743
 msgid "Send Ctrl+Alt+Delete"
 msgstr "Inviare Ctrl+Alt+Canc"
 
@@ -2283,9 +2303,12 @@ msgid "The “%s” server refused the connection."
 msgstr "Il server “%s” ha rifiutato la connessione."
 
 #: plugins/rdp/rdp_plugin.c:2138
-#, c-format
+#, fuzzy, c-format
+#| msgid ""
+#| "The Remote Desktop Gateway “%s” denied the user \"%s\\%s\" access due to "
+#| "policy."
 msgid ""
-"The Remote Desktop Gateway “%s” denied the user \"%s\\%s\" access due to "
+"The Remote Desktop Gateway “%s” denied the user “%s\\%s” access due to "
 "policy."
 msgstr ""
 "Il Gateway Desktop remoto “%s” ha negato all'utente \"%s\\%s\" l'accesso a "
@@ -2464,10 +2487,16 @@ msgstr ""
 "Il valore più alto possibile è 600000 ms (10 minuti).\n"
 
 #: plugins/rdp/rdp_plugin.c:2612
+#, fuzzy
+#| msgid ""
+#| "Performance optimisations based on the network connection type:\n"
+#| "Using auto-detection is advised.\n"
+#| "If \"Auto-detect\" fails, choose the most appropriate option in the "
+#| "list.\n"
 msgid ""
 "Performance optimisations based on the network connection type:\n"
 "Using auto-detection is advised.\n"
-"If \"Auto-detect\" fails, choose the most appropriate option in the list.\n"
+"If “Auto-detect” fails, choose the most appropriate option in the list.\n"
 msgstr ""
 "Ottimizzazione delle prestazioni in base al tipo di connessione di rete:\n"
 "Si consiglia di utilizzare il rilevamento automatico.\n"
@@ -2519,7 +2548,10 @@ msgstr ""
 "\n"
 
 #: plugins/rdp/rdp_plugin.c:2653
-msgid "Use \"Redirect directory\" in the advanced tab for multiple directories"
+#, fuzzy
+#| msgid ""
+#| "Use \"Redirect directory\" in the advanced tab for multiple directories"
+msgid "Use “Redirect directory” in the advanced tab for multiple directories"
 msgstr ""
 "Utilizzare \"Reindirizza directory\" nella scheda avanzata per più directory"
 
@@ -2615,181 +2647,182 @@ msgstr "Build del client"
 msgid "Load balance info"
 msgstr "Info bilanciamento del carico"
 
-#: plugins/rdp/rdp_plugin.c:2695
+#. TRANSLATORS: Do not use typographic quotation marks, these must stay as "double quote", also know as “Typewriter ("programmer's") quote, ambidextrous.”
+#: plugins/rdp/rdp_plugin.c:2696
 msgid "Override printer drivers"
 msgstr "Sovrascrivere i driver di stampa"
 
-#: plugins/rdp/rdp_plugin.c:2695
+#: plugins/rdp/rdp_plugin.c:2696
 msgid ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
 msgstr ""
 "Nome completo del driver di stampa, ad esempio Samsung CLX-3300 Series PS"
 
-#: plugins/rdp/rdp_plugin.c:2696
+#: plugins/rdp/rdp_plugin.c:2697
 msgid "USB device redirection"
 msgstr "Reindirizzamento dei dispositivi USB"
 
-#: plugins/rdp/rdp_plugin.c:2697
+#: plugins/rdp/rdp_plugin.c:2698
 msgid "Local serial name"
 msgstr "Nome porta seriale locale"
 
-#: plugins/rdp/rdp_plugin.c:2697
+#: plugins/rdp/rdp_plugin.c:2698
 msgid "COM1, COM2, etc."
 msgstr "COM1, COM2 e così via."
 
-#: plugins/rdp/rdp_plugin.c:2698
+#: plugins/rdp/rdp_plugin.c:2699
 msgid "Local serial driver"
 msgstr "Driver porta seriale locale"
 
-#: plugins/rdp/rdp_plugin.c:2698
+#: plugins/rdp/rdp_plugin.c:2699
 msgid "Serial"
 msgstr "Seriale"
 
-#: plugins/rdp/rdp_plugin.c:2699
+#: plugins/rdp/rdp_plugin.c:2700
 msgid "Local serial path"
 msgstr "Percorso porta seriale locale"
 
-#: plugins/rdp/rdp_plugin.c:2699
+#: plugins/rdp/rdp_plugin.c:2700
 msgid "/dev/ttyS0, /dev/ttyS1, etc."
 msgstr "/dev/ttyS0, /dev/ttyS1 e così via."
 
-#: plugins/rdp/rdp_plugin.c:2700
+#: plugins/rdp/rdp_plugin.c:2701
 msgid "Local parallel name"
 msgstr "Nome porta parallela locale"
 
-#: plugins/rdp/rdp_plugin.c:2701
+#: plugins/rdp/rdp_plugin.c:2702
 msgid "Local parallel device"
 msgstr "Percorso porta seriale locale"
 
-#: plugins/rdp/rdp_plugin.c:2702
+#: plugins/rdp/rdp_plugin.c:2703
 msgid "Name of smart card"
 msgstr "Nome della smart card"
 
-#: plugins/rdp/rdp_plugin.c:2703
+#: plugins/rdp/rdp_plugin.c:2704
 msgid "Dynamic virtual channel"
 msgstr "Canale virtuale dinamico"
 
-#: plugins/rdp/rdp_plugin.c:2703 plugins/rdp/rdp_plugin.c:2704
+#: plugins/rdp/rdp_plugin.c:2704 plugins/rdp/rdp_plugin.c:2705
 msgid "<channel>[,<options>]"
 msgstr "<canale>[,<opzioni>]"
 
-#: plugins/rdp/rdp_plugin.c:2704
+#: plugins/rdp/rdp_plugin.c:2705
 msgid "Static virtual channel"
 msgstr "Canale virtuale statico"
 
-#: plugins/rdp/rdp_plugin.c:2705
+#: plugins/rdp/rdp_plugin.c:2706
 msgid "TCP redirection"
 msgstr "Reindirizzamento TCP"
 
-#: plugins/rdp/rdp_plugin.c:2705
+#: plugins/rdp/rdp_plugin.c:2706
 msgid "/PATH/TO/rdp2tcp"
 msgstr "/PERCORSO/A/rdp2tcp"
 
-#: plugins/rdp/rdp_plugin.c:2706 plugins/rdp/rdp_settings.c:613
+#: plugins/rdp/rdp_plugin.c:2707 plugins/rdp/rdp_settings.c:613
 msgid "Reconnect attempts number"
 msgstr "Numero tentativi di riconnessione"
 
-#: plugins/rdp/rdp_plugin.c:2706 plugins/rdp/rdp_settings.c:619
+#: plugins/rdp/rdp_plugin.c:2707 plugins/rdp/rdp_settings.c:619
 msgid ""
 "The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
 msgstr ""
 "Numero massimo di tentativi di riconnessione in caso di disconnessione RDP "
 "(impostazione predefinita: 20)"
 
-#: plugins/rdp/rdp_plugin.c:2707
+#: plugins/rdp/rdp_plugin.c:2708
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
 msgstr "Preferisci il record AAAA IPv6 rispetto al record A IPv4"
 
-#: plugins/rdp/rdp_plugin.c:2708
+#: plugins/rdp/rdp_plugin.c:2709
 msgid "Share printers"
 msgstr "Condividi stampanti"
 
-#: plugins/rdp/rdp_plugin.c:2709
+#: plugins/rdp/rdp_plugin.c:2710
 msgid "Share serial ports"
 msgstr "Condividi porte seriali"
 
-#: plugins/rdp/rdp_plugin.c:2710
+#: plugins/rdp/rdp_plugin.c:2711
 msgid "(SELinux) permissive mode for serial ports"
 msgstr "(SELinux) modalità permissiva per le porte seriali"
 
-#: plugins/rdp/rdp_plugin.c:2711
+#: plugins/rdp/rdp_plugin.c:2712
 msgid "Share parallel ports"
 msgstr "Condividi porte parallele"
 
-#: plugins/rdp/rdp_plugin.c:2712
+#: plugins/rdp/rdp_plugin.c:2713
 msgid "Share a smart card"
 msgstr "Condividere una smart card"
 
-#: plugins/rdp/rdp_plugin.c:2714
+#: plugins/rdp/rdp_plugin.c:2715
 msgid "Ignore certificate"
 msgstr "Ignora il certificato"
 
-#: plugins/rdp/rdp_plugin.c:2715
+#: plugins/rdp/rdp_plugin.c:2716
 msgid "Use the old license workflow"
 msgstr "Utilizzare il sistema di licenze legacy"
 
-#: plugins/rdp/rdp_plugin.c:2715
+#: plugins/rdp/rdp_plugin.c:2716
 msgid "It disables CAL and hwId is set to 0"
 msgstr "Disabilita CAL e hwId è impostato su 0"
 
-#: plugins/rdp/rdp_plugin.c:2717
+#: plugins/rdp/rdp_plugin.c:2718
 msgid "Attach to console (2003/2003 R2)"
 msgstr "Collega alla console (2003/2003 R2)"
 
-#: plugins/rdp/rdp_plugin.c:2718
+#: plugins/rdp/rdp_plugin.c:2719
 msgid "Turn off fast-path"
 msgstr "Spegnere fast-path"
 
-#: plugins/rdp/rdp_plugin.c:2719
+#: plugins/rdp/rdp_plugin.c:2720
 msgid "Server detection using Remote Desktop Gateway"
 msgstr "Rilevamento del server tramite Remote Desktop Gateway"
 
-#: plugins/rdp/rdp_plugin.c:2721
+#: plugins/rdp/rdp_plugin.c:2722
 msgid "Use system proxy settings"
 msgstr "Usa le impostazioni proxy del sistema"
 
-#: plugins/rdp/rdp_plugin.c:2723
+#: plugins/rdp/rdp_plugin.c:2724
 msgid "Turn off automatic reconnection"
 msgstr "Disattivare la riconnessione automatica"
 
-#: plugins/rdp/rdp_plugin.c:2724
+#: plugins/rdp/rdp_plugin.c:2725
 msgid "Relax order checks"
 msgstr "Rilassare i controlli degli ordini"
 
-#: plugins/rdp/rdp_plugin.c:2725
+#: plugins/rdp/rdp_plugin.c:2726
 msgid "Glyph cache"
 msgstr "Cache glifi"
 
-#: plugins/rdp/rdp_plugin.c:2726
+#: plugins/rdp/rdp_plugin.c:2727
 msgid "Enable multitransport protocol (UDP)"
 msgstr "Abilita protocollo multitransport (UDP)"
 
-#: plugins/rdp/rdp_plugin.c:2726
+#: plugins/rdp/rdp_plugin.c:2727
 msgid "Using the UDP protocol may improve performance"
 msgstr "L'uso del protocollo UDP può migliorare le prestazioni"
 
-#: plugins/rdp/rdp_plugin.c:2727
+#: plugins/rdp/rdp_plugin.c:2728
 msgid "Use base credentials for gateway too"
 msgstr "Utilizza le credenziali di base anche per il gateway"
 
-#: plugins/rdp/rdp_plugin.c:2729
+#: plugins/rdp/rdp_plugin.c:2730
 msgid "Enable Gateway websockets support"
 msgstr "Abilita il supporto websocket del Gateway"
 
-#: plugins/rdp/rdp_plugin.c:2755
+#: plugins/rdp/rdp_plugin.c:2756
 msgid "RDP - Remote Desktop Protocol"
 msgstr "RDP — Remote Desktop Protocol"
 
-#: plugins/rdp/rdp_plugin.c:2780
+#: plugins/rdp/rdp_plugin.c:2781
 msgid "RDP - RDP File Handler"
 msgstr "Gestore file RDP"
 
-#: plugins/rdp/rdp_plugin.c:2795
+#: plugins/rdp/rdp_plugin.c:2796
 msgid "RDP - Preferences"
 msgstr "Preferenze RDP"
 
-#: plugins/rdp/rdp_plugin.c:2848
+#: plugins/rdp/rdp_plugin.c:2849
 msgid "Export connection in Windows .rdp file format"
 msgstr "Esporta la connessione nel formato .rdp di Windows"
 

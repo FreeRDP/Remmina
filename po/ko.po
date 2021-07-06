@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-07-06 08:44+0000\n"
+"POT-Creation-Date: 2021-07-06 11:39+0000\n"
 "PO-Revision-Date: 2021-06-29 13:31+0000\n"
 "Last-Translator: Justin Song <mcsong@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -36,43 +36,47 @@ msgstr "SFTP 전송 열기…"
 msgid "Executing external commands…"
 msgstr "외부 명령 실행 중…"
 
-#: src/remmina_protocol_widget.c:326
+#. TRANSLATORS: “%s” is a placeholder for the connection profile name
+#: src/remmina_protocol_widget.c:327
 #, c-format
 msgid "Connecting to “%s”…"
 msgstr "'%s'에 연결하는 중…"
 
-#: src/remmina_protocol_widget.c:909 src/remmina_protocol_widget.c:1093
+#. TRANSLATORS: “%s” is a placeholder for an hostname or an IP address.
+#: src/remmina_protocol_widget.c:911 src/remmina_protocol_widget.c:1096
 #, c-format
 msgid "Connecting to “%s” via SSH…"
 msgstr "SSH로 '%s'에 연결하는 중…"
 
-#: src/remmina_protocol_widget.c:1156
+#. TRANSLATORS: “%i” is a placeholder for a TCP port number.
+#: src/remmina_protocol_widget.c:1160
 #, c-format
 msgid "Awaiting incoming SSH connection on port %i…"
 msgstr "%i 포트에서 SSH 연결을 기다리는 중…"
 
-#: src/remmina_protocol_widget.c:1208
+#: src/remmina_protocol_widget.c:1213
 #, c-format
 msgid "The “%s” command is not available on the SSH server."
 msgstr "SSH 서버에서 %s 명령을 사용할 수 없습니다."
 
-#: src/remmina_protocol_widget.c:1212
+#: src/remmina_protocol_widget.c:1218
 #, c-format
 msgid "Could not run the “%s” command on the SSH server (status = %i)."
 msgstr "SSH 서버에서 \"%s\" 명령을 실행할 수 없습니다 (상태 = %i)."
 
 #. TRANSLATORS: %s is a placeholder for an error message
-#: src/remmina_protocol_widget.c:1220
+#: src/remmina_protocol_widget.c:1226
 #, c-format
 msgid "Could not run command. %s"
 msgstr "명령을 실행할 수 없습니다. %s"
 
-#: src/remmina_protocol_widget.c:1289
+#. TRANSLATORS: “%s” is a placeholder for a hostname or IP address.
+#: src/remmina_protocol_widget.c:1296
 #, c-format
 msgid "Connecting to %s via SSH…"
 msgstr "SSH로 '%s'에 연결하는 중…"
 
-#: src/remmina_protocol_widget.c:1665 src/remmina_protocol_widget.c:1684
+#: src/remmina_protocol_widget.c:1672 src/remmina_protocol_widget.c:1691
 #: src/remmina_ssh_plugin.c:1369 src/remmina_sftp_plugin.c:310
 #: src/remmina_sftp_plugin.c:346 src/remmina_file_editor.c:846
 #: src/remmina_file_editor.c:967 plugins/www/www_plugin.c:880
@@ -81,65 +85,76 @@ msgstr "SSH로 '%s'에 연결하는 중…"
 msgid "Password"
 msgstr "비밀번호"
 
-#: src/remmina_protocol_widget.c:1683
+#: src/remmina_protocol_widget.c:1690
 msgid "Type in SSH username and password."
 msgstr "SSH 사용자 이름과 비밀번호를 입력하세요."
 
-#: src/remmina_protocol_widget.c:1738 src/remmina_protocol_widget.c:1765
+#: src/remmina_protocol_widget.c:1745 src/remmina_protocol_widget.c:1777
 msgid "Fingerprint automatically accepted"
 msgstr "지문으로 자동 허용"
 
-#: src/remmina_protocol_widget.c:1745
+#. TRANSLATORS: The user is asked to verify a new SSL certificate.
+#: src/remmina_protocol_widget.c:1753
 msgid "Certificate details:"
 msgstr "인증서 세부정보:"
 
-#: src/remmina_protocol_widget.c:1746 src/remmina_protocol_widget.c:1773
+#. TRANSLATORS: An SSL certificate subject is usually the remote server the user connect to.
+#: src/remmina_protocol_widget.c:1755 src/remmina_protocol_widget.c:1787
 msgid "Subject:"
 msgstr "주제:"
 
-#: src/remmina_protocol_widget.c:1747 src/remmina_protocol_widget.c:1774
+#. TRANSLATORS: The name or email of the entity that have issued the SSL certificate
+#: src/remmina_protocol_widget.c:1757 src/remmina_protocol_widget.c:1789
 msgid "Issuer:"
 msgstr "발급자:"
 
-#: src/remmina_protocol_widget.c:1748
+#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
+#: src/remmina_protocol_widget.c:1759
 msgid "Fingerprint:"
 msgstr "지문:"
 
-#: src/remmina_protocol_widget.c:1749
+#. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
+#: src/remmina_protocol_widget.c:1761
 msgid "Accept certificate?"
 msgstr "인증서를 허용하시겠습니까?"
 
-#: src/remmina_protocol_widget.c:1772
+#. TRANSLATORS: The user is asked to verify a new SSL certificate.
+#: src/remmina_protocol_widget.c:1785
 msgid "The certificate changed! Details:"
 msgstr "인증서가 변경되었습니다! 세부 내용:"
 
-#: src/remmina_protocol_widget.c:1775
+#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
+#: src/remmina_protocol_widget.c:1791
 msgid "Old fingerprint:"
 msgstr "이전 지문:"
 
-#: src/remmina_protocol_widget.c:1776
+#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
+#: src/remmina_protocol_widget.c:1793
 msgid "New fingerprint:"
 msgstr "새 지문:"
 
-#: src/remmina_protocol_widget.c:1777
+#. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
+#: src/remmina_protocol_widget.c:1795
 msgid "Accept changed certificate?"
 msgstr "변경된 인증서를 허용하시겠습니까?"
 
-#: src/remmina_protocol_widget.c:1919
+#. TRANSLATORS: “%i” is a placeholder for a port number. “%s”  is a placeholder for a protocol name (VNC).
+#: src/remmina_protocol_widget.c:1938
 #, c-format
 msgid "Listening on port %i for an incoming %s connection…"
 msgstr "%s 연결을 위해서 %i 포트에서 대기 중…"
 
-#: src/remmina_protocol_widget.c:1944
+#: src/remmina_protocol_widget.c:1963
 msgid "Could not authenticate, attempting reconnection…"
 msgstr "인증할 수 없습니다, 다시 접속 중…"
 
-#: src/remmina_protocol_widget.c:2006 src/remmina_file_editor.c:346
+#: src/remmina_protocol_widget.c:2025 src/remmina_file_editor.c:346
 #: src/remmina_file_editor.c:917 data/ui/remmina_main.glade:478
 msgid "Server"
 msgstr "서버"
 
-#: src/remmina_protocol_widget.c:2023
+#. TRANSLATORS: “%s” is a placeholder for a protocol name, like “RDP”.
+#: src/remmina_protocol_widget.c:2043
 #, c-format
 msgid "Install the %s protocol plugin first."
 msgstr "먼저 %s 프로토콜 플러그인을 설치하세요."
@@ -180,10 +195,15 @@ msgid "Picking a terminal colouring file replaces the file: "
 msgstr "터미널 색 파일 선택"
 
 #: src/remmina_pref_dialog.c:810
+#, fuzzy
+#| msgid ""
+#| "This file contains the \"Custom\" terminal colour scheme selectable from "
+#| "the \"Advanced\" tab of terminal connections and editable in the "
+#| "\"Terminal\" tab in the settings."
 msgid ""
-"This file contains the \"Custom\" terminal colour scheme selectable from the "
-"\"Advanced\" tab of terminal connections and editable in the \"Terminal\" "
-"tab in the settings."
+"This file contains the “Custom” terminal colour scheme selectable from the "
+"“Advanced” tab of terminal connections and editable in the “Terminal” tab in "
+"the settings."
 msgstr ""
 "이 파일은 터미널 연결의 \"고급\"탭에서 선택할 수 있고 설정의 \"터미널\" 탭에"
 "서 편집 할 수있는 \"사용자 지정\" 터미널 색 스킴을 포함하고 있다."
@@ -515,7 +535,7 @@ msgid "Go to parent folder"
 msgstr "상위 폴더로 가기"
 
 #: src/remmina_ftp_client.c:758 plugins/vnc/vnc_plugin.c:2019
-#: plugins/rdp/rdp_plugin.c:2738
+#: plugins/rdp/rdp_plugin.c:2739
 msgid "Refresh"
 msgstr "새로 고침"
 
@@ -1690,7 +1710,7 @@ msgstr "클립보드 동기화 끄기"
 
 #: plugins/gvnc/gvnc_plugin.c:858 plugins/www/www_plugin.c:904
 #: plugins/vnc/vnc_plugin.c:2005 plugins/spice/spice_plugin.c:694
-#: plugins/rdp/rdp_plugin.c:2716
+#: plugins/rdp/rdp_plugin.c:2717
 msgid "Forget passwords after use"
 msgstr "비밀번호 저장 안함"
 
@@ -1981,7 +2001,7 @@ msgstr "수신 포트"
 msgid "Show remote cursor"
 msgstr "원격 커서 보기"
 
-#: plugins/vnc/vnc_plugin.c:2001 plugins/rdp/rdp_plugin.c:2713
+#: plugins/vnc/vnc_plugin.c:2001 plugins/rdp/rdp_plugin.c:2714
 msgid "Turn off clipboard sync"
 msgstr "클립보드 동기화 끄기"
 
@@ -2003,7 +2023,7 @@ msgid "Open Chat…"
 msgstr "대화창 열기…"
 
 #: plugins/vnc/vnc_plugin.c:2021 plugins/spice/spice_plugin.c:707
-#: plugins/rdp/rdp_plugin.c:2742
+#: plugins/rdp/rdp_plugin.c:2743
 msgid "Send Ctrl+Alt+Delete"
 msgstr "Ctrl+Alt+Delete 전송"
 
@@ -2245,9 +2265,12 @@ msgid "The “%s” server refused the connection."
 msgstr "\"%s\"서버가 연결을 거부했습니다."
 
 #: plugins/rdp/rdp_plugin.c:2138
-#, c-format
+#, fuzzy, c-format
+#| msgid ""
+#| "The Remote Desktop Gateway “%s” denied the user \"%s\\%s\" access due to "
+#| "policy."
 msgid ""
-"The Remote Desktop Gateway “%s” denied the user \"%s\\%s\" access due to "
+"The Remote Desktop Gateway “%s” denied the user “%s\\%s” access due to "
 "policy."
 msgstr ""
 "정책으로 원격 데스크톱 게이트웨이 \"%s\" 이(가) 사용자 \"%s\\%s\" 접속을 거부"
@@ -2422,10 +2445,16 @@ msgstr ""
 "가장 큰 값은 600000ms (10 분)입니다.\n"
 
 #: plugins/rdp/rdp_plugin.c:2612
+#, fuzzy
+#| msgid ""
+#| "Performance optimisations based on the network connection type:\n"
+#| "Using auto-detection is advised.\n"
+#| "If \"Auto-detect\" fails, choose the most appropriate option in the "
+#| "list.\n"
 msgid ""
 "Performance optimisations based on the network connection type:\n"
 "Using auto-detection is advised.\n"
-"If \"Auto-detect\" fails, choose the most appropriate option in the list.\n"
+"If “Auto-detect” fails, choose the most appropriate option in the list.\n"
 msgstr ""
 "네트워크 연결 타입에 따른 성능 최적화 :\n"
 "자동 감지를 사용하는 것이 좋습니다.\n"
@@ -2476,7 +2505,10 @@ msgstr ""
 "\n"
 
 #: plugins/rdp/rdp_plugin.c:2653
-msgid "Use \"Redirect directory\" in the advanced tab for multiple directories"
+#, fuzzy
+#| msgid ""
+#| "Use \"Redirect directory\" in the advanced tab for multiple directories"
+msgid "Use “Redirect directory” in the advanced tab for multiple directories"
 msgstr "여러 디렉토리의 경우에는 고급 탭에서 \"디렉토리 전달\"을 사용하세요"
 
 #: plugins/rdp/rdp_plugin.c:2654
@@ -2571,11 +2603,12 @@ msgstr "클라이언트 빌드"
 msgid "Load balance info"
 msgstr "로드 밸런스 정보"
 
-#: plugins/rdp/rdp_plugin.c:2695
+#. TRANSLATORS: Do not use typographic quotation marks, these must stay as "double quote", also know as “Typewriter ("programmer's") quote, ambidextrous.”
+#: plugins/rdp/rdp_plugin.c:2696
 msgid "Override printer drivers"
 msgstr "프린터 드라이버 오버라이드"
 
-#: plugins/rdp/rdp_plugin.c:2695
+#: plugins/rdp/rdp_plugin.c:2696
 msgid ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
@@ -2583,168 +2616,168 @@ msgstr ""
 "\"Samsung_CLX-3300_Series\":\"삼성 CLX-3300 시리즈 PS\";\"캐논 MF410\":\"캐"
 "논 MF410 시리즈 UFR II\""
 
-#: plugins/rdp/rdp_plugin.c:2696
+#: plugins/rdp/rdp_plugin.c:2697
 msgid "USB device redirection"
 msgstr "리디렉션 할 USB 기기 선택"
 
-#: plugins/rdp/rdp_plugin.c:2697
+#: plugins/rdp/rdp_plugin.c:2698
 msgid "Local serial name"
 msgstr "로컬 시리얼 이름"
 
-#: plugins/rdp/rdp_plugin.c:2697
+#: plugins/rdp/rdp_plugin.c:2698
 msgid "COM1, COM2, etc."
 msgstr "COM1, COM2, 기타."
 
-#: plugins/rdp/rdp_plugin.c:2698
+#: plugins/rdp/rdp_plugin.c:2699
 msgid "Local serial driver"
 msgstr "로컬 시리얼 드라이버"
 
-#: plugins/rdp/rdp_plugin.c:2698
+#: plugins/rdp/rdp_plugin.c:2699
 msgid "Serial"
 msgstr "시리얼"
 
-#: plugins/rdp/rdp_plugin.c:2699
+#: plugins/rdp/rdp_plugin.c:2700
 msgid "Local serial path"
 msgstr "로컬 시리얼 경로"
 
-#: plugins/rdp/rdp_plugin.c:2699
+#: plugins/rdp/rdp_plugin.c:2700
 msgid "/dev/ttyS0, /dev/ttyS1, etc."
 msgstr "/dev/ttyS0, /dev/ttyS1, 기타."
 
-#: plugins/rdp/rdp_plugin.c:2700
+#: plugins/rdp/rdp_plugin.c:2701
 msgid "Local parallel name"
 msgstr "로컬 병렬(parallel) 이름"
 
-#: plugins/rdp/rdp_plugin.c:2701
+#: plugins/rdp/rdp_plugin.c:2702
 msgid "Local parallel device"
 msgstr "로컬 병렬(parallel) 기기"
 
-#: plugins/rdp/rdp_plugin.c:2702
+#: plugins/rdp/rdp_plugin.c:2703
 msgid "Name of smart card"
 msgstr "스마트 카드 공유"
 
-#: plugins/rdp/rdp_plugin.c:2703
+#: plugins/rdp/rdp_plugin.c:2704
 msgid "Dynamic virtual channel"
 msgstr "다이나믹 가상 채널"
 
-#: plugins/rdp/rdp_plugin.c:2703 plugins/rdp/rdp_plugin.c:2704
+#: plugins/rdp/rdp_plugin.c:2704 plugins/rdp/rdp_plugin.c:2705
 msgid "<channel>[,<options>]"
 msgstr "<channel>[,<options>]"
 
-#: plugins/rdp/rdp_plugin.c:2704
+#: plugins/rdp/rdp_plugin.c:2705
 msgid "Static virtual channel"
 msgstr "스태틱 가상 채널"
 
-#: plugins/rdp/rdp_plugin.c:2705
+#: plugins/rdp/rdp_plugin.c:2706
 msgid "TCP redirection"
 msgstr "TCP 전달"
 
-#: plugins/rdp/rdp_plugin.c:2705
+#: plugins/rdp/rdp_plugin.c:2706
 msgid "/PATH/TO/rdp2tcp"
 msgstr "/PATH/TO/rdp2tcp"
 
-#: plugins/rdp/rdp_plugin.c:2706 plugins/rdp/rdp_settings.c:613
+#: plugins/rdp/rdp_plugin.c:2707 plugins/rdp/rdp_settings.c:613
 msgid "Reconnect attempts number"
 msgstr "다시 연결 시도 횟수"
 
-#: plugins/rdp/rdp_plugin.c:2706 plugins/rdp/rdp_settings.c:619
+#: plugins/rdp/rdp_plugin.c:2707 plugins/rdp/rdp_settings.c:619
 msgid ""
 "The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
 msgstr "RDP 연결이 끊어진 경우 다시 연결 시도의 최대 횟수 (기본: 20)"
 
-#: plugins/rdp/rdp_plugin.c:2707
+#: plugins/rdp/rdp_plugin.c:2708
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
 msgstr "IPv4 A 레코드보다 IPv6 AAAA 레코드 선호"
 
-#: plugins/rdp/rdp_plugin.c:2708
+#: plugins/rdp/rdp_plugin.c:2709
 msgid "Share printers"
 msgstr "프린터 공유"
 
-#: plugins/rdp/rdp_plugin.c:2709
+#: plugins/rdp/rdp_plugin.c:2710
 msgid "Share serial ports"
 msgstr "시리얼 포트 공유"
 
-#: plugins/rdp/rdp_plugin.c:2710
+#: plugins/rdp/rdp_plugin.c:2711
 msgid "(SELinux) permissive mode for serial ports"
 msgstr "시리얼 포트에 대한 (SELinux) 허용 모드"
 
-#: plugins/rdp/rdp_plugin.c:2711
+#: plugins/rdp/rdp_plugin.c:2712
 msgid "Share parallel ports"
 msgstr "병렬(parallel) 포트 공유"
 
-#: plugins/rdp/rdp_plugin.c:2712
+#: plugins/rdp/rdp_plugin.c:2713
 msgid "Share a smart card"
 msgstr "스마트 카드 공유"
 
-#: plugins/rdp/rdp_plugin.c:2714
+#: plugins/rdp/rdp_plugin.c:2715
 msgid "Ignore certificate"
 msgstr "인증서 무시"
 
-#: plugins/rdp/rdp_plugin.c:2715
+#: plugins/rdp/rdp_plugin.c:2716
 msgid "Use the old license workflow"
 msgstr "기존 라이선스 워크 플로우 사용"
 
-#: plugins/rdp/rdp_plugin.c:2715
+#: plugins/rdp/rdp_plugin.c:2716
 msgid "It disables CAL and hwId is set to 0"
 msgstr "CAL을 비활성화하고 hwId를 0으로 설정"
 
-#: plugins/rdp/rdp_plugin.c:2717
+#: plugins/rdp/rdp_plugin.c:2718
 msgid "Attach to console (2003/2003 R2)"
 msgstr "콘솔에 연결 (2003/2003 R2)"
 
-#: plugins/rdp/rdp_plugin.c:2718
+#: plugins/rdp/rdp_plugin.c:2719
 msgid "Turn off fast-path"
 msgstr "패스트 패스(fast-path) 끄기"
 
-#: plugins/rdp/rdp_plugin.c:2719
+#: plugins/rdp/rdp_plugin.c:2720
 msgid "Server detection using Remote Desktop Gateway"
 msgstr "원격 데스크톱 게이트웨이를 사용하는 서버 감지"
 
-#: plugins/rdp/rdp_plugin.c:2721
+#: plugins/rdp/rdp_plugin.c:2722
 msgid "Use system proxy settings"
 msgstr "시스템 프록시 설정 사용"
 
-#: plugins/rdp/rdp_plugin.c:2723
+#: plugins/rdp/rdp_plugin.c:2724
 msgid "Turn off automatic reconnection"
 msgstr "자동으로 다시 연결 끄기"
 
-#: plugins/rdp/rdp_plugin.c:2724
+#: plugins/rdp/rdp_plugin.c:2725
 msgid "Relax order checks"
 msgstr "릴렉스 오더 체크(Relax order checks)"
 
-#: plugins/rdp/rdp_plugin.c:2725
+#: plugins/rdp/rdp_plugin.c:2726
 msgid "Glyph cache"
 msgstr "Glyph 캐시"
 
-#: plugins/rdp/rdp_plugin.c:2726
+#: plugins/rdp/rdp_plugin.c:2727
 msgid "Enable multitransport protocol (UDP)"
 msgstr "다중 전송 프로토콜 (UDP) 활성화"
 
-#: plugins/rdp/rdp_plugin.c:2726
+#: plugins/rdp/rdp_plugin.c:2727
 msgid "Using the UDP protocol may improve performance"
 msgstr "UDP 프로토콜을 사용하면 성능을 향상시킬 수 있습니다."
 
-#: plugins/rdp/rdp_plugin.c:2727
+#: plugins/rdp/rdp_plugin.c:2728
 msgid "Use base credentials for gateway too"
 msgstr "게이트웨이에도 기본 자격 증명 사용"
 
-#: plugins/rdp/rdp_plugin.c:2729
+#: plugins/rdp/rdp_plugin.c:2730
 msgid "Enable Gateway websockets support"
 msgstr "게이트웨이 웹소켓 지원 활성화"
 
-#: plugins/rdp/rdp_plugin.c:2755
+#: plugins/rdp/rdp_plugin.c:2756
 msgid "RDP - Remote Desktop Protocol"
 msgstr "RDP - 리모트 데스크톱 프로토콜(Remote Desktop Protocol)"
 
-#: plugins/rdp/rdp_plugin.c:2780
+#: plugins/rdp/rdp_plugin.c:2781
 msgid "RDP - RDP File Handler"
 msgstr "RDP - RDP 파일 핸들러"
 
-#: plugins/rdp/rdp_plugin.c:2795
+#: plugins/rdp/rdp_plugin.c:2796
 msgid "RDP - Preferences"
 msgstr "RDP - 설정"
 
-#: plugins/rdp/rdp_plugin.c:2848
+#: plugins/rdp/rdp_plugin.c:2849
 msgid "Export connection in Windows .rdp file format"
 msgstr "윈도 .rdp 파일로 연결 내보내기"
 
