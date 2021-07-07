@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-07-06 11:39+0000\n"
-"PO-Revision-Date: 2021-07-06 09:36+0000\n"
+"PO-Revision-Date: 2021-07-07 02:44+0000\n"
 "Last-Translator: Eric <spice2wolf@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "remmina/remmina/zh_Hans/>\n"
@@ -197,18 +197,11 @@ msgid "Picking a terminal colouring file replaces the file: "
 msgstr "选择一个终端配色文件替换该文件： "
 
 #: src/remmina_pref_dialog.c:810
-#, fuzzy
-#| msgid ""
-#| "This file contains the \"Custom\" terminal colour scheme selectable from "
-#| "the \"Advanced\" tab of terminal connections and editable in the "
-#| "\"Terminal\" tab in the settings."
 msgid ""
 "This file contains the “Custom” terminal colour scheme selectable from the "
 "“Advanced” tab of terminal connections and editable in the “Terminal” tab in "
 "the settings."
-msgstr ""
-"此文件包含“自定义”终端颜色方案，可从终端连接的“高级”选项卡中选择，并可在设置"
-"的“终端”选项卡中编辑。"
+msgstr "此文件包含“自定义”终端颜色方案，可从终端连接的“高级”选项卡中选择，并可在设置的“终端”选项卡中编辑。"
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_ssh_plugin.c:539
@@ -2273,10 +2266,7 @@ msgid "The “%s” server refused the connection."
 msgstr "服务器 “%s” 拒绝连接。"
 
 #: plugins/rdp/rdp_plugin.c:2138
-#, fuzzy, c-format
-#| msgid ""
-#| "The Remote Desktop Gateway “%s” denied the user \"%s\\%s\" access due to "
-#| "policy."
+#, c-format
 msgid ""
 "The Remote Desktop Gateway “%s” denied the user “%s\\%s” access due to "
 "policy."
@@ -2376,6 +2366,7 @@ msgid "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 and newer)"
 msgstr "2600 (Windows XP),7601 (Windows Vista/7),9600 (Windows 8 及更高版本)"
 
 #: plugins/rdp/rdp_plugin.c:2574
+#, fuzzy
 msgid ""
 "Used i.a. by terminal services in a smart card channel to distinguish client "
 "capabilities:\n"
@@ -2385,6 +2376,12 @@ msgid ""
 "  • >= 7065: Windows 8 and newer: SCardGetReaderIcon(),\n"
 "    SCardGetDeviceTypeId()"
 msgstr ""
+"由智能卡通道中的终端服务使用，以区分客户的能力。\n"
+"  - < 4034: Windows XP基本智能卡功能\n"
+"  - 4034-7064:Windows Vista/7: SCardReadCache(),\n"
+"    SCardWriteCache(), SCardGetTransmitCount()\n"
+"  - >= 7065:Windows 8和更新版本。SCardGetReaderIcon()。\n"
+"    SCardGetDeviceTypeId()"
 
 #: plugins/rdp/rdp_plugin.c:2582
 msgid ""
@@ -2445,12 +2442,6 @@ msgstr ""
 "可能的最高值为 600000 毫秒（10 分钟）。\n"
 
 #: plugins/rdp/rdp_plugin.c:2612
-#, fuzzy
-#| msgid ""
-#| "Performance optimisations based on the network connection type:\n"
-#| "Using auto-detection is advised.\n"
-#| "If \"Auto-detect\" fails, choose the most appropriate option in the "
-#| "list.\n"
 msgid ""
 "Performance optimisations based on the network connection type:\n"
 "Using auto-detection is advised.\n"
@@ -2485,6 +2476,7 @@ msgstr ""
 "\n"
 
 #: plugins/rdp/rdp_plugin.c:2629
+#, fuzzy
 msgid ""
 "Redirect directory <path> as named share <name>.\n"
 "  • <name>,<fullpath>[;<name>,<fullpath>[;…]]\n"
@@ -2495,11 +2487,16 @@ msgid ""
 "  • hotplug,*\n"
 "\n"
 msgstr ""
+"重定向目录<path>作为命名的共享<name>。\n"
+"  - <名>,<fullpath>[;<名>,<fullpath>[;...]]\n"
+"  - MyHome,/home/remminer\n"
+"  - /home/remminer\n"
+"  - MyHome,/home/remminer;SomePath,/path/to/somepath\n"
+"用以下方式启用热插拔支持。\n"
+"  - hotplug,*\n"
+"\n"
 
 #: plugins/rdp/rdp_plugin.c:2653
-#, fuzzy
-#| msgid ""
-#| "Use \"Redirect directory\" in the advanced tab for multiple directories"
 msgid "Use “Redirect directory” in the advanced tab for multiple directories"
 msgstr "对多个目录使用高级选项卡中的“重定向目录”"
 
@@ -3546,16 +3543,18 @@ msgid "Rare conditions or warnings"
 msgstr "罕见情况或告警"
 
 #: data/ui/remmina_preferences.glade:1448
+#, fuzzy
 msgid "API-accessible entrypoints"
-msgstr ""
+msgstr "API可访问的入口"
 
 #: data/ui/remmina_preferences.glade:1449
 msgid "Lower level protocol info, packet level"
 msgstr "低层协议信息，数据包层"
 
 #: data/ui/remmina_preferences.glade:1450
+#, fuzzy
 msgid "Function entering and leaving"
-msgstr ""
+msgstr "进入和离开的功能"
 
 #: data/ui/remmina_preferences.glade:1467
 msgid "SSH log level"
@@ -3652,10 +3651,11 @@ msgid "Use default system font"
 msgstr "使用系统默认字体"
 
 #: data/ui/remmina_preferences.glade:1983
+#, fuzzy
 msgid ""
 "Selecting “SGR 1” also switches to the bright counterparts of the first 8 "
 "palette colours (in addition to making text bold)."
-msgstr ""
+msgstr "选择 \"SGR 1 \"也会切换到前8种调色板颜色的明亮对应色（除了使文字变粗之外）。"
 
 #: data/ui/remmina_preferences.glade:1999
 msgid "Allow using bright colours with bold text"
