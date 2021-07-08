@@ -1,6 +1,16 @@
+## v1.4.20
+[full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.19...v1.4.20)
+
+* Mark appindicator as required [!2290](https://gitlab.com/Remmina/Remmina/merge_requests/2290) *@antenore*
+* Disabling XDMCP, NX, and ST [!2291](https://gitlab.com/Remmina/Remmina/merge_requests/2291) *@antenore*
+* Remove plugins/st,xdmcp,nx for submodule replacement [!2292](https://gitlab.com/Remmina/Remmina/merge_requests/2292) *@antenore*
+* SSH tunnel MFA [!2293](https://gitlab.com/Remmina/Remmina/merge_requests/2293) *@antenore*
+* Adding connection profiles menu into the toolbar [!2295](https://gitlab.com/Remmina/Remmina/merge_requests/2295) *@antenore*
+* Resolve "Preferences buttons not working since v1.4.19" [!2296](https://gitlab.com/Remmina/Remmina/merge_requests/2296) *@antenore*
+
 ## v1.4.19
 [full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.18...v1.4.19)
-*
+
 * Fix Freerdp Git Revision [!2277](https://gitlab.com/Remmina/Remmina/merge_requests/2277) *@matty-r*
 * UI improvements and cleanup [!2278](https://gitlab.com/Remmina/Remmina/merge_requests/2278) *@antenore*
 * Desktop integration for the Remmina SNAP [!2279](https://gitlab.com/Remmina/Remmina/merge_requests/2279) *@antenore*
