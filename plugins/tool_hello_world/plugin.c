@@ -38,9 +38,6 @@
 
 #include "common/remmina_plugin.h"
 
-#include <gtk/gtkx.h>
-#include <gdk/gdkx.h>
-
 static RemminaPluginService *remmina_plugin_service = NULL;
 #define REMMINA_PLUGIN_DEBUG(fmt, ...) remmina_plugin_service->_remmina_debug(__func__, fmt, ##__VA_ARGS__)
 
