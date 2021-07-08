@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-07-08 21:05+0000\n"
+"POT-Creation-Date: 2021-07-08 21:08+0000\n"
 "PO-Revision-Date: 2021-06-04 14:31+0000\n"
 "Last-Translator: Quentin PAGÈS <quentinantonin@free.fr>\n"
 "Language-Team: Occitan <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -464,11 +464,11 @@ msgstr ""
 msgid "Connecting to UNIX socket failed: %s"
 msgstr "La connexion VNC a fracassat : %s"
 
-#: src/remmina_public.c:738
+#: src/remmina_public.c:632
 msgid "Please enter format 'widthxheight'."
 msgstr "Entratz un format de tipe « ‘largor’x‘nautor’ »."
 
-#: src/remmina_public.c:760
+#: src/remmina_public.c:654
 msgid "Change security settings"
 msgstr ""
 
@@ -1142,112 +1142,112 @@ msgstr ""
 msgid "SFTP - Secure File Transfer"
 msgstr "SFTP - Transferiment de fichièrs securizat"
 
-#: src/remmina_ssh.c:237
+#: src/remmina_ssh.c:236
 #, c-format
 msgid "Could not authenticate with TOTP/OTP/2FA. %s"
 msgstr "Fracàs de l’inicializacion de la sesilha SSH : %s"
 
-#: src/remmina_ssh.c:296 src/remmina_ssh.c:677
+#: src/remmina_ssh.c:295 src/remmina_ssh.c:676
 #, c-format
 msgid "Could not authenticate with SSH password. %s"
 msgstr "Fracàs de l’inicializacion de la sesilha SSH : %s"
 
-#: src/remmina_ssh.c:323 src/remmina_ssh.c:390
+#: src/remmina_ssh.c:322 src/remmina_ssh.c:389
 msgid "No saved SSH passphrase supplied. Asking user to enter it."
 msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:328 src/remmina_ssh.c:369 src/remmina_ssh.c:395
-#: src/remmina_ssh.c:434 src/remmina_ssh.c:747
+#: src/remmina_ssh.c:327 src/remmina_ssh.c:368 src/remmina_ssh.c:394
+#: src/remmina_ssh.c:433 src/remmina_ssh.c:746
 #, c-format
 msgid "Could not authenticate with public SSH key. %s"
 msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:337
+#: src/remmina_ssh.c:336
 #, c-format
 msgid "SSH certificate cannot be imported. %s"
 msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:346
+#: src/remmina_ssh.c:345
 #, c-format
 msgid "SSH certificate cannot be copied into the private SSH key. %s"
 msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:356
+#: src/remmina_ssh.c:355
 #, fuzzy, c-format
 #| msgid "Could not authenticate with SSH password. %s"
 msgid "Could not authenticate using SSH certificate. %s"
 msgstr "Fracàs de l’inicializacion de la sesilha SSH : %s"
 
-#: src/remmina_ssh.c:370
+#: src/remmina_ssh.c:369
 msgid "SSH identity file not selected."
 msgstr "Lo fichièr que conten la clau SSH es pas encara estat definit."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:381
+#: src/remmina_ssh.c:380
 #, c-format
 msgid "Public SSH key cannot be imported. %s"
 msgstr ""
 
-#: src/remmina_ssh.c:479
+#: src/remmina_ssh.c:478
 #, c-format
 msgid "Could not authenticate automatically with public SSH key. %s"
 msgstr ""
 
-#: src/remmina_ssh.c:524
+#: src/remmina_ssh.c:523
 #, c-format
 msgid "Could not authenticate automatically with SSH agent. %s"
 msgstr "Fracàs de l’inicializacion de la sesilha SSH : %s"
 
-#: src/remmina_ssh.c:570 src/remmina_ssh.c:857
+#: src/remmina_ssh.c:569 src/remmina_ssh.c:856
 #, c-format
 msgid "Could not authenticate with SSH GSSAPI/Kerberos. %s"
 msgstr "Fracàs de l’inicializacion de la sesilha SSH : %s"
 
-#: src/remmina_ssh.c:599
+#: src/remmina_ssh.c:598
 msgid "The public SSH key changed!"
 msgstr ""
 
-#: src/remmina_ssh.c:712
+#: src/remmina_ssh.c:711
 #, c-format
 msgid "Could not authenticate with keyboard-interactive. %s"
 msgstr "Fracàs de l’inicializacion de la sesilha SSH : %s"
 
-#: src/remmina_ssh.c:814
+#: src/remmina_ssh.c:813
 #, c-format
 msgid "Could not authenticate with automatic public SSH key. %s"
 msgstr "Fracàs de la connexion a la destinacion del tunèl SSH : %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:922
+#: src/remmina_ssh.c:921
 #, c-format
 msgid "Could not fetch the server's public SSH key. %s"
 msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:929
+#: src/remmina_ssh.c:928
 #, c-format
 msgid "Could not fetch public SSH key. %s"
 msgstr "Fracàs de la connexion a la destinacion del tunèl SSH : %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:937
+#: src/remmina_ssh.c:936
 #, c-format
 msgid "Could not fetch checksum of the public SSH key. %s"
 msgstr "Fracàs de l’inicializacion de la sesilha SSH : %s"
 
-#: src/remmina_ssh.c:950
+#: src/remmina_ssh.c:949
 msgid "The server is unknown. The public key fingerprint is:"
 msgstr "Lo servidor es desconegut. L’emprencha de la clau publica es :"
 
-#: src/remmina_ssh.c:952 src/remmina_ssh.c:958
+#: src/remmina_ssh.c:951 src/remmina_ssh.c:957
 msgid "Do you trust the new public key?"
 msgstr "Vos fisatz de la novèla clau publica ?"
 
-#: src/remmina_ssh.c:955
+#: src/remmina_ssh.c:954
 msgid ""
 "Warning: The server has changed its public key. This means you are either "
 "under attack,\n"
@@ -1259,154 +1259,148 @@ msgstr ""
 "publica es :"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:980
+#: src/remmina_ssh.c:979
 #, c-format
 msgid "Could not check list of known SSH hosts. %s"
 msgstr "Fracàs de l’inicializacion de la sesilha SSH : %s"
 
-#: src/remmina_ssh.c:989
+#: src/remmina_ssh.c:988
 msgid "SSH password"
 msgstr "Senhal SSH"
 
-#: src/remmina_ssh.c:996 src/remmina_ssh.c:1040
+#: src/remmina_ssh.c:995 src/remmina_ssh.c:1039
 msgid "SSH private key passphrase"
 msgstr "Frasa secreta de la clau privada"
 
-#: src/remmina_ssh.c:1001
+#: src/remmina_ssh.c:1000
 msgid "SSH Kerberos/GSSAPI"
 msgstr ""
 
-#: src/remmina_ssh.c:1006
+#: src/remmina_ssh.c:1005
 msgid "Enter TOTP/OTP/2FA code"
 msgstr ""
 
-#: src/remmina_ssh.c:1036 src/remmina_ssh.c:1062
+#: src/remmina_ssh.c:1035 src/remmina_ssh.c:1061
 msgid "SSH tunnel credentials"
 msgstr ""
 
-#: src/remmina_ssh.c:1036 src/remmina_ssh.c:1062
+#: src/remmina_ssh.c:1035 src/remmina_ssh.c:1061
 msgid "SSH credentials"
 msgstr ""
 
-#: src/remmina_ssh.c:1113
+#: src/remmina_ssh.c:1112
 msgid "Keyboard interactive login, TOTP/OTP/2FA"
 msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1338
+#: src/remmina_ssh.c:1337
 #, c-format
 msgid "Could not start SSH session. %s"
 msgstr "Fracàs de l’inicializacion de la sesilha SSH : %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1744 src/remmina_ssh.c:1807
+#: src/remmina_ssh.c:1735
 #, c-format
 msgid "Could not create channel. %s"
 msgstr "Fracàs de la creacion de la sesilha SFTP : %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1755
+#: src/remmina_ssh.c:1746
 #, c-format
 msgid "Could not connect to SSH tunnel. %s"
 msgstr "Fracàs de la connexion a la destinacion del tunèl SSH : %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1822 src/remmina_ssh.c:2453
-#, c-format
-msgid "Could not open channel. %s"
-msgstr "Fracàs de la creacion de la sesilha SFTP : %s"
-
-#: src/remmina_ssh.c:1828
-#, c-format
-msgid "Could not run %s on SSH server."
-msgstr "Impossible d’executar %s sul servidor SSH."
-
-#. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1866 src/remmina_ssh.c:1887 src/remmina_ssh.c:1896
+#: src/remmina_ssh.c:1816 src/remmina_ssh.c:1837 src/remmina_ssh.c:1846
 #, c-format
 msgid "Could not request port forwarding. %s"
 msgstr "Fracàs de la demanda de redireccion de pòrt : %s"
 
-#: src/remmina_ssh.c:1931
+#: src/remmina_ssh.c:1876
 msgid "The server did not respond."
 msgstr ""
 
-#: src/remmina_ssh.c:1974
+#: src/remmina_ssh.c:1916
 #, c-format
 msgid "Cannot connect to local port %i."
 msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2023
+#: src/remmina_ssh.c:1965
 #, c-format
 msgid "Could not write to SSH channel. %s"
 msgstr "Fracàs de la creacion de la sesilha SFTP : %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2030
+#: src/remmina_ssh.c:1972
 #, c-format
 msgid "Could not read from tunnel listening socket. %s"
 msgstr "Fracàs de la creacion de la sesilha SFTP : %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2050
+#: src/remmina_ssh.c:1992
 #, c-format
 msgid "Could not poll SSH channel. %s"
 msgstr "Fracàs de la creacion de la sesilha SFTP : %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2057
+#: src/remmina_ssh.c:1999
 #, c-format
 msgid "Could not read SSH channel in a non-blocking way. %s"
 msgstr "Fracàs de la creacion de la sesilha SFTP : %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2076
+#: src/remmina_ssh.c:2018
 #, c-format
 msgid "Could not send data to tunnel listening socket. %s"
 msgstr "Fracàs de la connexion a la destinacion del tunèl SSH : %s"
 
-#: src/remmina_ssh.c:2178
+#: src/remmina_ssh.c:2120
 msgid "Assign a destination port."
 msgstr ""
 
-#: src/remmina_ssh.c:2185
+#: src/remmina_ssh.c:2127
 msgid "Could not create socket."
 msgstr ""
 
-#: src/remmina_ssh.c:2195
+#: src/remmina_ssh.c:2137
 msgid "Could not bind server socket to local port."
 msgstr ""
 
-#: src/remmina_ssh.c:2201
+#: src/remmina_ssh.c:2143
 msgid "Could not listen to local port."
 msgstr ""
 
 #. TRANSLATORS: Do not translate pthread
-#: src/remmina_ssh.c:2211 src/remmina_ssh.c:2228 src/remmina_ssh.c:2245
-#: src/remmina_ssh.c:2263
+#: src/remmina_ssh.c:2153 src/remmina_ssh.c:2170 src/remmina_ssh.c:2188
 msgid "Could not start pthread."
 msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2355
+#: src/remmina_ssh.c:2280
 #, c-format
 msgid "Could not create SFTP session. %s"
 msgstr "Fracàs de la creacion de la sesilha SFTP : %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2360
+#: src/remmina_ssh.c:2285
 #, c-format
 msgid "Could not start SFTP session. %s"
 msgstr "Fracàs de l’inicializacion de la sesilha SSH : %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2483
+#: src/remmina_ssh.c:2378
+#, c-format
+msgid "Could not open channel. %s"
+msgstr "Fracàs de la creacion de la sesilha SFTP : %s"
+
+#. TRANSLATORS: The placeholder %s is an error message
+#: src/remmina_ssh.c:2393
 #, c-format
 msgid "Could not request shell. %s"
 msgstr "Fracàs de la creacion de la sesilha SFTP : %s"
 
-#: src/remmina_ssh.c:2601
+#: src/remmina_ssh.c:2511
 msgid "Could not create PTY device."
 msgstr ""
 
@@ -3701,6 +3695,9 @@ msgstr ""
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr ""
+
+#~ msgid "Could not run %s on SSH server."
+#~ msgstr "Impossible d’executar %s sul servidor SSH."
 
 #~ msgid "Grayscale"
 #~ msgstr "Escala de grises"
