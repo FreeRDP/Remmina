@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-07-06 11:39+0000\n"
-"PO-Revision-Date: 2021-07-07 02:44+0000\n"
+"PO-Revision-Date: 2021-07-08 08:32+0000\n"
 "Last-Translator: Eric <spice2wolf@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "remmina/remmina/zh_Hans/>\n"
@@ -2366,7 +2366,6 @@ msgid "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 and newer)"
 msgstr "2600 (Windows XP),7601 (Windows Vista/7),9600 (Windows 8 及更高版本)"
 
 #: plugins/rdp/rdp_plugin.c:2574
-#, fuzzy
 msgid ""
 "Used i.a. by terminal services in a smart card channel to distinguish client "
 "capabilities:\n"
@@ -2376,11 +2375,11 @@ msgid ""
 "  • >= 7065: Windows 8 and newer: SCardGetReaderIcon(),\n"
 "    SCardGetDeviceTypeId()"
 msgstr ""
-"由智能卡通道中的终端服务使用，以区分客户的能力。\n"
-"  - < 4034: Windows XP基本智能卡功能\n"
-"  - 4034-7064:Windows Vista/7: SCardReadCache(),\n"
+"被智能卡通道内的终端服务用于区分客户端能力：\n"
+"  • < 4034: Windows XP 基础智能卡功能\n"
+"  • 4034-7064: Windows Vista/7: SCardReadCache(),\n"
 "    SCardWriteCache(), SCardGetTransmitCount()\n"
-"  - >= 7065:Windows 8和更新版本。SCardGetReaderIcon()。\n"
+"  • >= 7065: Windows 8 及更新: SCardGetReaderIcon(),\n"
 "    SCardGetDeviceTypeId()"
 
 #: plugins/rdp/rdp_plugin.c:2582
@@ -2476,7 +2475,6 @@ msgstr ""
 "\n"
 
 #: plugins/rdp/rdp_plugin.c:2629
-#, fuzzy
 msgid ""
 "Redirect directory <path> as named share <name>.\n"
 "  • <name>,<fullpath>[;<name>,<fullpath>[;…]]\n"
@@ -2487,13 +2485,13 @@ msgid ""
 "  • hotplug,*\n"
 "\n"
 msgstr ""
-"重定向目录<path>作为命名的共享<name>。\n"
-"  - <名>,<fullpath>[;<名>,<fullpath>[;...]]\n"
-"  - MyHome,/home/remminer\n"
-"  - /home/remminer\n"
-"  - MyHome,/home/remminer;SomePath,/path/to/somepath\n"
-"用以下方式启用热插拔支持。\n"
-"  - hotplug,*\n"
+"将目录重 <path> 定向为命名的共享 <name>。\n"
+"  • <name>,<fullpath>[;<name>,<fullpath>[;…]]\n"
+"  • MyHome,/home/remminer\n"
+"  • /home/remminer\n"
+"  • MyHome,/home/remminer;SomePath,/path/to/somepath\n"
+"热插拔支持启用方式：\n"
+"  • hotplug,*\n"
 "\n"
 
 #: plugins/rdp/rdp_plugin.c:2653
@@ -3543,7 +3541,6 @@ msgid "Rare conditions or warnings"
 msgstr "罕见情况或告警"
 
 #: data/ui/remmina_preferences.glade:1448
-#, fuzzy
 msgid "API-accessible entrypoints"
 msgstr "API可访问的入口"
 
@@ -3552,7 +3549,6 @@ msgid "Lower level protocol info, packet level"
 msgstr "低层协议信息，数据包层"
 
 #: data/ui/remmina_preferences.glade:1450
-#, fuzzy
 msgid "Function entering and leaving"
 msgstr "进入和离开的功能"
 
@@ -3651,7 +3647,6 @@ msgid "Use default system font"
 msgstr "使用系统默认字体"
 
 #: data/ui/remmina_preferences.glade:1983
-#, fuzzy
 msgid ""
 "Selecting “SGR 1” also switches to the bright counterparts of the first 8 "
 "palette colours (in addition to making text bold)."
