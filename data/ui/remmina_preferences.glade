@@ -9,6 +9,7 @@
     <property name="default-height">600</property>
     <property name="icon-name">org.remmina.Remmina</property>
     <property name="gravity">center</property>
+    <signal name="destroy" handler="remmina_pref_on_dialog_destroy" swapped="no"/>
     <child>
       <object class="GtkNotebook" id="notebook_preferences">
         <property name="visible">True</property>
@@ -181,6 +182,7 @@
                         <property name="receives-default">True</property>
                         <property name="halign">start</property>
                         <property name="margin-end">18</property>
+                        <signal name="clicked" handler="remmina_pref_on_button_keystrokes_clicked" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left-attach">1</property>
@@ -228,6 +230,7 @@
                         <property name="receives-default">True</property>
                         <property name="halign">start</property>
                         <property name="margin-end">18</property>
+                        <signal name="clicked" handler="remmina_pref_on_button_resolutions_clicked" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left-attach">1</property>
@@ -505,6 +508,7 @@
                         <property name="halign">start</property>
                         <property name="margin-start">6</property>
                         <property name="margin-end">6</property>
+                        <signal name="clicked" handler="remmina_pref_dialog_clear_recent" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left-attach">1</property>
@@ -752,6 +756,7 @@
                         <property name="margin-start">6</property>
                         <property name="margin-end">6</property>
                         <property name="margin-top">18</property>
+                        <signal name="notify::active" handler="remmina_prefdiag_on_grab_color_activated" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left-attach">1</property>
@@ -891,6 +896,7 @@ It changes the background colour of connection names in the Remmina connection t
                         <property name="margin-end">18</property>
                         <property name="hexpand">True</property>
                         <property name="draw-indicator">True</property>
+                        <signal name="toggled" handler="remmina_pref_dialog_disable_tray_icon_on_toggled" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left-attach">0</property>
@@ -981,6 +987,7 @@ It changes the background colour of connection names in the Remmina connection t
                         <property name="margin-start">6</property>
                         <property name="margin-end">18</property>
                         <property name="margin-top">18</property>
+                        <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left-attach">1</property>
@@ -1012,6 +1019,7 @@ It changes the background colour of connection names in the Remmina connection t
                         <property name="receives-default">True</property>
                         <property name="margin-start">6</property>
                         <property name="margin-end">18</property>
+                        <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left-attach">1</property>
@@ -1043,6 +1051,7 @@ It changes the background colour of connection names in the Remmina connection t
                         <property name="receives-default">True</property>
                         <property name="margin-start">6</property>
                         <property name="margin-end">18</property>
+                        <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left-attach">1</property>
@@ -1074,6 +1083,7 @@ It changes the background colour of connection names in the Remmina connection t
                         <property name="receives-default">True</property>
                         <property name="margin-start">6</property>
                         <property name="margin-end">6</property>
+                        <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left-attach">1</property>
@@ -1089,6 +1099,7 @@ It changes the background colour of connection names in the Remmina connection t
                         <property name="receives-default">True</property>
                         <property name="margin-start">6</property>
                         <property name="margin-end">18</property>
+                        <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left-attach">2</property>
@@ -1119,6 +1130,7 @@ It changes the background colour of connection names in the Remmina connection t
                         <property name="receives-default">True</property>
                         <property name="margin-start">6</property>
                         <property name="margin-end">18</property>
+                        <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left-attach">1</property>
@@ -1150,6 +1162,7 @@ It changes the background colour of connection names in the Remmina connection t
                         <property name="receives-default">True</property>
                         <property name="margin-start">6</property>
                         <property name="margin-end">18</property>
+                        <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left-attach">1</property>
@@ -1181,6 +1194,7 @@ It changes the background colour of connection names in the Remmina connection t
                         <property name="receives-default">True</property>
                         <property name="margin-start">6</property>
                         <property name="margin-end">18</property>
+                        <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left-attach">1</property>
@@ -1212,6 +1226,7 @@ It changes the background colour of connection names in the Remmina connection t
                         <property name="receives-default">True</property>
                         <property name="margin-start">6</property>
                         <property name="margin-end">18</property>
+                        <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left-attach">1</property>
@@ -1243,6 +1258,7 @@ It changes the background colour of connection names in the Remmina connection t
                         <property name="receives-default">True</property>
                         <property name="margin-start">6</property>
                         <property name="margin-end">18</property>
+                        <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left-attach">1</property>
@@ -1275,6 +1291,7 @@ It changes the background colour of connection names in the Remmina connection t
                         <property name="receives-default">True</property>
                         <property name="margin-start">6</property>
                         <property name="margin-end">18</property>
+                        <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left-attach">1</property>
@@ -1307,6 +1324,7 @@ It changes the background colour of connection names in the Remmina connection t
                         <property name="receives-default">True</property>
                         <property name="margin-start">6</property>
                         <property name="margin-end">18</property>
+                        <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left-attach">1</property>
@@ -1341,6 +1359,7 @@ It changes the background colour of connection names in the Remmina connection t
                         <property name="margin-start">6</property>
                         <property name="margin-end">18</property>
                         <property name="margin-bottom">18</property>
+                        <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left-attach">1</property>
@@ -1767,6 +1786,7 @@ It changes the background colour of connection names in the Remmina connection t
                         <property name="invisible-char">•</property>
                         <property name="width-chars">24</property>
                         <property name="input-purpose">password</property>
+                        <signal name="changed" handler="remmina_prefdiag_unlock_repwd_on_changed" swapped="no"/>
                         <style>
                           <class name="unlock_repassword"/>
                         </style>
@@ -1926,6 +1946,7 @@ It changes the background colour of connection names in the Remmina connection t
                         <property name="tooltip-text" translatable="yes">(Host key+)</property>
                         <property name="margin-start">6</property>
                         <property name="margin-end">6</property>
+                        <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left-attach">1</property>
@@ -1943,6 +1964,7 @@ It changes the background colour of connection names in the Remmina connection t
                         <property name="halign">start</property>
                         <property name="margin-start">6</property>
                         <property name="margin-end">18</property>
+                        <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left-attach">1</property>
@@ -1969,6 +1991,7 @@ It changes the background colour of connection names in the Remmina connection t
                         <property name="can-focus">True</property>
                         <property name="halign">start</property>
                         <property name="margin-start">6</property>
+                        <signal name="notify::active" handler="remmina_pref_dialog_vte_font_on_toggled" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left-attach">1</property>
@@ -2026,6 +2049,7 @@ It changes the background colour of connection names in the Remmina connection t
                         <property name="margin-end">18</property>
                         <property name="margin-bottom">18</property>
                         <property name="title" translatable="yes">Pick a terminal colouring file</property>
+                        <signal name="file-set" handler="remmina_pref_on_color_scheme_selected" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left-attach">1</property>
@@ -2392,6 +2416,7 @@ It changes the background colour of connection names in the Remmina connection t
                         <property name="tooltip-text" translatable="yes">(Host key+)</property>
                         <property name="margin-start">6</property>
                         <property name="margin-end">6</property>
+                        <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left-attach">1</property>
@@ -2422,6 +2447,7 @@ It changes the background colour of connection names in the Remmina connection t
                         <property name="halign">start</property>
                         <property name="margin-start">6</property>
                         <property name="margin-end">18</property>
+                        <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left-attach">1</property>
@@ -2554,6 +2580,7 @@ It changes the background colour of connection names in the Remmina connection t
                         <property name="tooltip-text" translatable="yes">(Host key+)</property>
                         <property name="margin-start">6</property>
                         <property name="margin-end">18</property>
+                        <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left-attach">5</property>
@@ -2570,6 +2597,7 @@ It changes the background colour of connection names in the Remmina connection t
                         <property name="tooltip-text" translatable="yes">(Host key+)</property>
                         <property name="margin-start">6</property>
                         <property name="margin-end">18</property>
+                        <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left-attach">5</property>
