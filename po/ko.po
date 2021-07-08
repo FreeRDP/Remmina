@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-07-06 11:39+0000\n"
+"POT-Creation-Date: 2021-07-08 10:50+0000\n"
 "PO-Revision-Date: 2021-06-29 13:31+0000\n"
 "Last-Translator: Justin Song <mcsong@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -176,7 +176,7 @@ msgstr "사용할 수 있는 해상도 설정"
 msgid "Recent lists cleared."
 msgstr "최근 목록을 지웠습니다."
 
-#: src/remmina_pref_dialog.c:154 src/rcw.c:1950
+#: src/remmina_pref_dialog.c:154 src/rcw.c:2022
 #: data/ui/remmina_preferences.glade:168 data/ui/remmina_preferences.glade:178
 msgid "Keystrokes"
 msgstr "키스트로크"
@@ -796,108 +796,116 @@ msgstr "렘미나 애플릿"
 msgid "Connect to remote desktops through the applet menu"
 msgstr "애플릿 메뉴로 원격 데스크톱에 연결"
 
-#: src/rcw.c:655
+#: src/rcw.c:658
 #, c-format
 msgid ""
 "Are you sure you want to close %i active connections in the current window?"
 msgstr "현재 %i 과(와) 연결되어 있습니다. 종료 하시겠습니까?"
 
-#: src/rcw.c:1391
+#: src/rcw.c:1394
 msgid "Viewport fullscreen mode"
 msgstr "전체 화면 모드 뷰포트"
 
-#: src/rcw.c:1399 data/ui/remmina_preferences.glade:603
+#: src/rcw.c:1402 data/ui/remmina_preferences.glade:603
 msgid "Scrolled fullscreen"
 msgstr "스크롤 전체 화면"
 
-#: src/rcw.c:1484
+#: src/rcw.c:1487
 msgid "Keep aspect ratio when scaled"
 msgstr "크기 조정시 비율 유지"
 
-#: src/rcw.c:1492
+#: src/rcw.c:1495
 msgid "Fill client window when scaled"
 msgstr "크기 조정시 클라이언트 윈도 채우기"
 
-#: src/rcw.c:1971
+#: src/rcw.c:2043
 msgid "Send clipboard content as keystrokes"
 msgstr "클립 보드 내용을 키 입력으로 보내기"
 
-#: src/rcw.c:2071
+#: src/rcw.c:2147
 msgid "Turn off scaling to avoid screenshot distortion."
 msgstr "스크린 샷 왜곡 방지를 위해서 크기 조정 끄기."
 
-#: src/rcw.c:2131 plugins/www/www_plugin.c:848
+#: src/rcw.c:2207 plugins/www/www_plugin.c:848
 msgid "Screenshot taken"
 msgstr "스크린 샷을 성공했습니다"
 
-#: src/rcw.c:2212
+#: src/rcw.c:2290
+msgid "_Menu"
+msgstr ""
+
+#: src/rcw.c:2291
+msgid "Menu"
+msgstr ""
+
+#: src/rcw.c:2300
 msgid "Open the Remmina main window"
 msgstr "레미나 메인 윈도 열기"
 
-#: src/rcw.c:2221
+#: src/rcw.c:2310
 msgid "Duplicate current connection"
 msgstr "현재 연결 중복"
 
-#: src/rcw.c:2238
+#: src/rcw.c:2327
 msgid "Resize the window to fit in remote resolution"
 msgstr "원격 접속 해상도에 맞게 윈도 크기 조정"
 
-#: src/rcw.c:2249
+#: src/rcw.c:2338
 msgid "Toggle fullscreen mode"
 msgstr "전체 화면 모드 전환"
 
-#: src/rcw.c:2295 data/ui/remmina_preferences.glade:1326
+#: src/rcw.c:2384 data/ui/remmina_preferences.glade:1326
 #: data/ui/remmina_preferences.glade:1336
 msgid "Multi monitor"
 msgstr "멀티 모니터"
 
-#: src/rcw.c:2311
+#: src/rcw.c:2400
 msgid "Toggle dynamic resolution update"
 msgstr "동적 해상도 갱신 전환"
 
-#: src/rcw.c:2321
+#: src/rcw.c:2410
 msgid "Toggle scaled mode"
 msgstr "크기 조정 모드 전환"
 
-#: src/rcw.c:2361 data/ui/remmina_preferences.glade:1061
+#: src/rcw.c:2450 data/ui/remmina_preferences.glade:1061
 msgid "Switch tab pages"
 msgstr "탭 페이지 전환"
 
-#: src/rcw.c:2371
+#: src/rcw.c:2460
 msgid "Grab all keyboard events"
 msgstr "모든 키보드 이벤트 기록"
 
-#: src/rcw.c:2381
+#: src/rcw.c:2470
 msgid "Preferences"
 msgstr "_설정"
 
-#: src/rcw.c:2390
+#: src/rcw.c:2479
 msgid "_Tools"
 msgstr "도구"
 
-#: src/rcw.c:2391 data/ui/remmina_main.glade:207
+#: src/rcw.c:2480 data/ui/remmina_main.glade:207
 msgid "Tools"
 msgstr "도구"
 
-#: src/rcw.c:2404 data/ui/remmina_preferences.glade:1261
+#: src/rcw.c:2493 data/ui/remmina_preferences.glade:1261
 #: data/ui/remmina_preferences.glade:1271
 msgid "Screenshot"
 msgstr "스크린샷"
 
-#: src/rcw.c:2418 data/ui/remmina_preferences.glade:1168
+#: src/rcw.c:2507 data/ui/remmina_preferences.glade:1168
 msgid "Minimize window"
 msgstr "창 최소화"
 
-#: src/rcw.c:2428 data/ui/remmina_preferences.glade:1199
+#: src/rcw.c:2517 data/ui/remmina_preferences.glade:1199
 msgid "Disconnect"
 msgstr "연결 끊기"
 
-#: src/rcw.c:4195
+#: src/rcw.c:4284
 #, c-format
 msgid "The file “%s” is corrupted, unreadable, or could not be found."
 msgstr "\"%s\" 파일이 손상 또는 읽을 수 없거나 찾을 수 없습니다."
 
-#: src/rcw.c:4363
+#: src/rcw.c:4452
 msgid "Warning: This plugin requires GtkSocket, but it’s not available."
 msgstr "경고: 이 플러그인에는 GtkSocket이 필요하지만 사용할 수 없습니다."
 

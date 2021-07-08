@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-07-06 11:39+0000\n"
+"POT-Creation-Date: 2021-07-08 10:50+0000\n"
 "PO-Revision-Date: 2021-07-06 22:36+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Malay <https://hosted.weblate.org/projects/remmina/remmina/ms/"
@@ -161,7 +161,7 @@ msgstr "Pelayan"
 
 #. TRANSLATORS: “%s” is a placeholder for a protocol name, like “RDP”.
 #: src/remmina_protocol_widget.c:2043
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Install the %s protocol plugin first."
 msgstr "Pasang plugin protokol %s dahulu."
 
@@ -183,7 +183,7 @@ msgstr "Konfigurasi resolusi yang ada"
 msgid "Recent lists cleared."
 msgstr "Senarai terkini dikosongkan."
 
-#: src/remmina_pref_dialog.c:154 src/rcw.c:1950
+#: src/remmina_pref_dialog.c:154 src/rcw.c:2022
 #: data/ui/remmina_preferences.glade:168 data/ui/remmina_preferences.glade:178
 #, fuzzy
 msgid "Keystrokes"
@@ -218,7 +218,7 @@ msgstr ""
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_ssh_plugin.c:539
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Error: %s"
 msgstr "Ralat: %s"
 
@@ -511,19 +511,19 @@ msgid "The multi password changer requires a secrecy service.\n"
 msgstr "Penukar berbilang kata laluan memerlukan perkhidmatan kerahsiaan.\n"
 
 #: src/remmina_mpchange.c:409
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "%d password changed."
 msgid_plural "%d passwords changed."
 msgstr[0] "%d kata laluan ditukar."
 msgstr[1] ""
 
 #: src/remmina_public.c:345
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Address is too long for UNIX socket_path: %s"
 msgstr "Alamat terlalu panjang untuk UNIX socket_path: %s"
 
 #: src/remmina_public.c:355
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Creating UNIX socket failed: %s"
 msgstr "Mewujudkan soket UNIX gagal: %s"
 
@@ -840,8 +840,8 @@ msgstr ""
 "\n"
 "remmina -c rdp://username:encrypted-password@server\n"
 "\tremmina -c vnc://username:encrypted-password@server\n"
-"\tremmina -c vnc://server? VncUsername=nama pengguna\\"
-"&VncPassword=disulitkan kata laluan\n"
+"\tremmina -c vnc://server? VncUsername=nama pengguna"
+"\\&VncPassword=disulitkan kata laluan\n"
 "\n"
 "Untuk menyulitkan kata laluan untuk digunakan dengan URI:\n"
 "\n"
@@ -850,9 +850,9 @@ msgstr ""
 "Untuk mengemas kini nama pengguna dan kata laluan dan menetapkan mod "
 "resolusi berbeza profil sambungan Remmina, gunakan:\n"
 "\n"
-"echo \"nama pengguna\\n"
-"apassword\" | remmina --update-profile /PATH/TO/FOO.remmina --set-option "
-"username --set-option resolution_mode=2 --set-option password\n"
+"echo \"nama pengguna\\napassword\" | remmina --update-profile /PATH/TO/FOO."
+"remmina --set-option username --set-option resolution_mode=2 --set-option "
+"password\n"
 
 #: src/remmina_icon.c:128
 msgid "Open Main Window"
@@ -887,7 +887,7 @@ msgstr "Aplet Remmina"
 msgid "Connect to remote desktops through the applet menu"
 msgstr "Sambung ke desktop jauh melalui menu aplet"
 
-#: src/rcw.c:655
+#: src/rcw.c:658
 #, c-format
 msgid ""
 "Are you sure you want to close %i active connections in the current window?"
@@ -895,114 +895,122 @@ msgstr ""
 "Terdapat %i sambungan aktif dalam tetingkap semasa. Anda pasti hendak "
 "menutupnya?"
 
-#: src/rcw.c:1391
+#: src/rcw.c:1394
 msgid "Viewport fullscreen mode"
 msgstr "Mod skrin penuh port pandang"
 
-#: src/rcw.c:1399 data/ui/remmina_preferences.glade:603
+#: src/rcw.c:1402 data/ui/remmina_preferences.glade:603
 #, fuzzy
 msgid "Scrolled fullscreen"
 msgstr "Skrin penuh skrol"
 
-#: src/rcw.c:1484
+#: src/rcw.c:1487
 #, fuzzy
 msgid "Keep aspect ratio when scaled"
 msgstr "Kekalkan nisbah aspek apabila diskalakan"
 
-#: src/rcw.c:1492
+#: src/rcw.c:1495
 #, fuzzy
 msgid "Fill client window when scaled"
 msgstr "Isi tetingkap pelanggan apabila diskalakan"
 
-#: src/rcw.c:1971
+#: src/rcw.c:2043
 #, fuzzy
 msgid "Send clipboard content as keystrokes"
 msgstr "Hantar kandungan papan klip sebagai kekunci kekunci"
 
-#: src/rcw.c:2071
+#: src/rcw.c:2147
 #, fuzzy
 msgid "Turn off scaling to avoid screenshot distortion."
 msgstr "Matikan penskalaan untuk mengelakkan gangguan tangkapan skrin."
 
-#: src/rcw.c:2131 plugins/www/www_plugin.c:848
+#: src/rcw.c:2207 plugins/www/www_plugin.c:848
 #, fuzzy
 msgid "Screenshot taken"
 msgstr "Tangkapan skrin diambil"
 
-#: src/rcw.c:2212
+#: src/rcw.c:2290
+msgid "_Menu"
+msgstr ""
+
+#: src/rcw.c:2291
+msgid "Menu"
+msgstr ""
+
+#: src/rcw.c:2300
 #, fuzzy
 #| msgid "Open Main Window"
 msgid "Open the Remmina main window"
 msgstr "Buka tetingkap utama Remmina"
 
-#: src/rcw.c:2221
+#: src/rcw.c:2310
 #, fuzzy
 msgid "Duplicate current connection"
 msgstr "Sambungan semasa pendua"
 
-#: src/rcw.c:2238
+#: src/rcw.c:2327
 msgid "Resize the window to fit in remote resolution"
 msgstr "Saiz semula tetingkap untuk muatkannya dalam resolusi jauh"
 
-#: src/rcw.c:2249
+#: src/rcw.c:2338
 msgid "Toggle fullscreen mode"
 msgstr "Togol mod skrin penuh"
 
-#: src/rcw.c:2295 data/ui/remmina_preferences.glade:1326
+#: src/rcw.c:2384 data/ui/remmina_preferences.glade:1326
 #: data/ui/remmina_preferences.glade:1336
 #, fuzzy
 msgid "Multi monitor"
 msgstr "Monitor berbilang"
 
-#: src/rcw.c:2311
+#: src/rcw.c:2400
 #, fuzzy
 msgid "Toggle dynamic resolution update"
 msgstr "Togol kemas kini resolusi dinamik"
 
-#: src/rcw.c:2321
+#: src/rcw.c:2410
 msgid "Toggle scaled mode"
 msgstr "Togol mod berskala"
 
-#: src/rcw.c:2361 data/ui/remmina_preferences.glade:1061
+#: src/rcw.c:2450 data/ui/remmina_preferences.glade:1061
 msgid "Switch tab pages"
 msgstr "Tukar halaman tab"
 
-#: src/rcw.c:2371
+#: src/rcw.c:2460
 msgid "Grab all keyboard events"
 msgstr "Cekau semua peristiwa papan kekunci"
 
-#: src/rcw.c:2381
+#: src/rcw.c:2470
 msgid "Preferences"
 msgstr "Keutamaan"
 
-#: src/rcw.c:2390
+#: src/rcw.c:2479
 msgid "_Tools"
 msgstr "Alatan"
 
-#: src/rcw.c:2391 data/ui/remmina_main.glade:207
+#: src/rcw.c:2480 data/ui/remmina_main.glade:207
 msgid "Tools"
 msgstr "Alatan"
 
-#: src/rcw.c:2404 data/ui/remmina_preferences.glade:1261
+#: src/rcw.c:2493 data/ui/remmina_preferences.glade:1261
 #: data/ui/remmina_preferences.glade:1271
 #, fuzzy
 msgid "Screenshot"
 msgstr "Tangkapan skrin"
 
-#: src/rcw.c:2418 data/ui/remmina_preferences.glade:1168
+#: src/rcw.c:2507 data/ui/remmina_preferences.glade:1168
 msgid "Minimize window"
 msgstr "Minimunkan window"
 
-#: src/rcw.c:2428 data/ui/remmina_preferences.glade:1199
+#: src/rcw.c:2517 data/ui/remmina_preferences.glade:1199
 msgid "Disconnect"
 msgstr "Putuskan"
 
-#: src/rcw.c:4195
-#, c-format, fuzzy
+#: src/rcw.c:4284
+#, fuzzy, c-format
 msgid "The file “%s” is corrupted, unreadable, or could not be found."
 msgstr "Fail \"%s\" rosak, tidak boleh dibaca, atau tidak dijumpai."
 
-#: src/rcw.c:4363
+#: src/rcw.c:4452
 #, fuzzy
 msgid "Warning: This plugin requires GtkSocket, but it’s not available."
 msgstr "Amaran: Plugin ini memerlukan GtkSocket, tetapi ia tidak tersedia."
@@ -1319,19 +1327,19 @@ msgstr ""
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:328 src/remmina_ssh.c:369 src/remmina_ssh.c:395
 #: src/remmina_ssh.c:434 src/remmina_ssh.c:747
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not authenticate with public SSH key. %s"
 msgstr "Tidak dapat mengesahkan dengan kekunci SSH awam. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:337
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "SSH certificate cannot be imported. %s"
 msgstr "Sijil SSH tidak boleh diimport. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:346
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "SSH certificate cannot be copied into the private SSH key. %s"
 msgstr "Sijil SSH tidak boleh disalin ke dalam kekunci SSH peribadi. %s"
 
@@ -1348,12 +1356,12 @@ msgstr "Fail Kunci SSh belum lagi ditetapkan."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:381
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Public SSH key cannot be imported. %s"
 msgstr "Kekunci SSH awam tidak boleh diimport. %s"
 
 #: src/remmina_ssh.c:479
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not authenticate automatically with public SSH key. %s"
 msgstr "Tidak dapat mengesahkan secara automatik dengan kekunci SSH awam. %s"
 
@@ -1384,7 +1392,7 @@ msgstr "Gagal menyambung ke destinasi terowong SSH: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:922
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not fetch the server's public SSH key. %s"
 msgstr "Tidak dapat mengambil kekunci SSH awam pelayan. %s"
 
@@ -1498,7 +1506,7 @@ msgid "The server did not respond."
 msgstr "Pelayan tidak bertindak balas."
 
 #: src/remmina_ssh.c:1974
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Cannot connect to local port %i."
 msgstr "Tidak dapat menyambung ke port tempatan %i."
 
@@ -1825,7 +1833,7 @@ msgid "Remmina VNC plugin for GNOME and KVM"
 msgstr "Plugin Remmina VNC untuk GNOME dan KVM"
 
 #: plugins/gvnc/gvnc_plugin.c:477
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Unsupported authentication type %u"
 msgstr "Jenis pengesahan tidak disokong %u"
 
@@ -2166,7 +2174,7 @@ msgid "Your connection has been rejected."
 msgstr "Sambungan anda telah ditolak."
 
 #: plugins/vnc/vnc_plugin.c:966
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "The VNC server requested an unknown authentication method. %s"
 msgstr "Pelayan VNC meminta kaedah pengesahan yang tidak diketahui. %s"
 
@@ -2388,7 +2396,7 @@ msgid "Transfer error"
 msgstr "Ralat pemindahan"
 
 #: plugins/spice/spice_plugin_file_transfer.c:220
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "%s: %s"
 msgstr "%s: %s"
 
@@ -2398,7 +2406,7 @@ msgid "Transfer completed"
 msgstr "Pemindahan selesai"
 
 #: plugins/spice/spice_plugin_file_transfer.c:224
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "The %s file has been transferred"
 msgstr "Fail %s telah dipindahkan"
 
@@ -2472,7 +2480,7 @@ msgid "Could not find the address for the RDP server “%s”."
 msgstr "Perintah %s tidak ditemui pada pelayan SSH"
 
 #: plugins/rdp/rdp_plugin.c:2108
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "Could not connect to the RDP server “%s” via TLS. Check that client and "
 "server support a common TLS version."
@@ -2504,7 +2512,7 @@ msgid "Could not start libfreerdp-gdi."
 msgstr "Tidak dapat memulakan libfreerdp-gdi."
 
 #: plugins/rdp/rdp_plugin.c:2126
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "You requested a H.264 GFX mode for the server “%s”, but your libfreerdp does "
 "not support H.264. Please use a non-AVC colour depth setting."
@@ -2513,12 +2521,12 @@ msgstr ""
 "tidak menyokong H.264. Sila gunakan tetapan kedalaman warna bukan AVC."
 
 #: plugins/rdp/rdp_plugin.c:2133
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "The “%s” server refused the connection."
 msgstr "Pelayan \"%s\" menolak sambungan."
 
 #: plugins/rdp/rdp_plugin.c:2138
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "The Remote Desktop Gateway “%s” denied the user “%s\\%s” access due to "
 "policy."
@@ -2787,7 +2795,8 @@ msgstr "Sokongan tetikus sebelah kiri"
 #: plugins/rdp/rdp_plugin.c:2654
 #, fuzzy
 msgid "Swap left and right mouse buttons for left-handed mouse support"
-msgstr "Tukar butang tetikus kiri dan kanan untuk sokongan tetikus sebelah kiri"
+msgstr ""
+"Tukar butang tetikus kiri dan kanan untuk sokongan tetikus sebelah kiri"
 
 #: plugins/rdp/rdp_plugin.c:2656
 #, fuzzy
@@ -3555,7 +3564,8 @@ msgstr "Laksana"
 #: data/ui/remmina_news.glade:169
 #, fuzzy
 msgid "Allow Remmina to automatically open .rdp and .remmina files."
-msgstr "Benarkan Remmina untuk membuka fail .rdp dan .remmina secara automatik."
+msgstr ""
+"Benarkan Remmina untuk membuka fail .rdp dan .remmina secara automatik."
 
 #. The star (*) is a reference to privacy consent
 #: data/ui/remmina_news.glade:183 data/ui/remmina_preferences.glade:476
@@ -3564,8 +3574,8 @@ msgid ""
 "Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
 "\">remmina.org</a> (*)"
 msgstr ""
-"Fetch berita dari <a href=\"https://remmina.org\" title=\"Remmina news site\""
-">remmina.org</a> (*)"
+"Fetch berita dari <a href=\"https://remmina.org\" title=\"Remmina news site"
+"\">remmina.org</a> (*)"
 
 #: data/ui/remmina_news.glade:208 data/ui/remmina_preferences.glade:443
 #, fuzzy
@@ -3607,7 +3617,8 @@ msgstr "<big> Sumbang</big>"
 #: data/ui/remmina_mpc.glade:14
 #, fuzzy
 msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
-msgstr "<span weight='bold' size='larger'> Penarik Berbilang Kata Laluan</span>"
+msgstr ""
+"<span weight='bold' size='larger'> Penarik Berbilang Kata Laluan</span>"
 
 #: data/ui/remmina_mpc.glade:32
 msgid "Change"
@@ -4160,9 +4171,9 @@ msgid ""
 "Choose a colour scheme file. Usually available in /usr/share/remmina/theme. "
 "https://github.com/mbadolato/iTerm2-Color-Schemes has more details."
 msgstr ""
-"Pilih fail skim warna. Biasanya boleh didapati dalam / usr / share / remmina "
-"/ tema. https://github.com/mbadolato/iTerm2-Color-Schemes mempunyai butiran "
-"lanjut."
+"Pilih fail skim warna. Biasanya boleh didapati dalam / usr / share / "
+"remmina / tema. https://github.com/mbadolato/iTerm2-Color-Schemes mempunyai "
+"butiran lanjut."
 
 #: data/ui/remmina_preferences.glade:2028
 #, fuzzy

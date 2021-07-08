@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-07-06 11:39+0000\n"
+"POT-Creation-Date: 2021-07-08 10:50+0000\n"
 "PO-Revision-Date: 2021-07-06 22:36+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Danish <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -174,7 +174,7 @@ msgstr "Konfigurer de tilgængelige opløsninger"
 msgid "Recent lists cleared."
 msgstr "Seneste-liste ryddet."
 
-#: src/remmina_pref_dialog.c:154 src/rcw.c:1950
+#: src/remmina_pref_dialog.c:154 src/rcw.c:2022
 #: data/ui/remmina_preferences.glade:168 data/ui/remmina_preferences.glade:178
 msgid "Keystrokes"
 msgstr "Tastetryk"
@@ -465,12 +465,12 @@ msgstr[0] "%d adgangskode blev ændret."
 msgstr[1] "%d adgangskoder blev ændret."
 
 #: src/remmina_public.c:345
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Address is too long for UNIX socket_path: %s"
 msgstr "Adressen er for lang til UNIX socket_path: %s"
 
 #: src/remmina_public.c:355
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Creating UNIX socket failed: %s"
 msgstr "Oprettelse af UNIX-socket mislykkedes: %s"
 
@@ -778,9 +778,9 @@ msgstr ""
 "Hvis du vil opdatere brugernavn og adgangskode og indstille en anden "
 "opløsningstilstand for en Remmina-forbindelsesprofil, skal du bruge:\n"
 "\n"
-"\techo \"username\\n"
-"apassword\" | remmina --update-profile /PATH/TO/FOO.remmina --set-option "
-"username --set-option resolution_mode=2 --set-option password\n"
+"\techo \"username\\napassword\" | remmina --update-profile /PATH/TO/FOO."
+"remmina --set-option username --set-option resolution_mode=2 --set-option "
+"password\n"
 
 #: src/remmina_icon.c:128
 msgid "Open Main Window"
@@ -813,7 +813,7 @@ msgstr "Remmina-applet"
 msgid "Connect to remote desktops through the applet menu"
 msgstr "Opret forbindelse til fjernskriveborde gennem applet-menuen"
 
-#: src/rcw.c:655
+#: src/rcw.c:658
 #, c-format
 msgid ""
 "Are you sure you want to close %i active connections in the current window?"
@@ -821,103 +821,111 @@ msgstr ""
 "Er du sikker på, at du vil lukke %i aktive forbindelser i det nuværende "
 "vindue?"
 
-#: src/rcw.c:1391
+#: src/rcw.c:1394
 msgid "Viewport fullscreen mode"
 msgstr "Visningsområde - fuldskærmstilstand"
 
-#: src/rcw.c:1399 data/ui/remmina_preferences.glade:603
+#: src/rcw.c:1402 data/ui/remmina_preferences.glade:603
 msgid "Scrolled fullscreen"
 msgstr "Rullet fuldskærm"
 
-#: src/rcw.c:1484
+#: src/rcw.c:1487
 msgid "Keep aspect ratio when scaled"
 msgstr "Bevar højde-bredde-forhold når skaleret"
 
-#: src/rcw.c:1492
+#: src/rcw.c:1495
 msgid "Fill client window when scaled"
 msgstr "Udfyld klientens vindue når skaleret"
 
-#: src/rcw.c:1971
+#: src/rcw.c:2043
 #, fuzzy
 msgid "Send clipboard content as keystrokes"
 msgstr "Send indhold fra udklipsholderen som tastetryk"
 
-#: src/rcw.c:2071
+#: src/rcw.c:2147
 msgid "Turn off scaling to avoid screenshot distortion."
 msgstr "Deaktivér skalering, for at forhindre forvrængning af skærmbillede."
 
-#: src/rcw.c:2131 plugins/www/www_plugin.c:848
+#: src/rcw.c:2207 plugins/www/www_plugin.c:848
 msgid "Screenshot taken"
 msgstr "Skærmbillede taget"
 
-#: src/rcw.c:2212
+#: src/rcw.c:2290
+msgid "_Menu"
+msgstr ""
+
+#: src/rcw.c:2291
+msgid "Menu"
+msgstr ""
+
+#: src/rcw.c:2300
 msgid "Open the Remmina main window"
 msgstr "Åbn Remmina-hovedvinduet"
 
-#: src/rcw.c:2221
+#: src/rcw.c:2310
 msgid "Duplicate current connection"
 msgstr "Dupliker nuværende forbindelse"
 
-#: src/rcw.c:2238
+#: src/rcw.c:2327
 msgid "Resize the window to fit in remote resolution"
 msgstr "Tilpas størrelsen på vinduet efter serverens opløsning"
 
-#: src/rcw.c:2249
+#: src/rcw.c:2338
 msgid "Toggle fullscreen mode"
 msgstr "Fuldskærmstilstand til/fra"
 
-#: src/rcw.c:2295 data/ui/remmina_preferences.glade:1326
+#: src/rcw.c:2384 data/ui/remmina_preferences.glade:1326
 #: data/ui/remmina_preferences.glade:1336
 msgid "Multi monitor"
 msgstr "Multi-monitor"
 
-#: src/rcw.c:2311
+#: src/rcw.c:2400
 msgid "Toggle dynamic resolution update"
 msgstr "Opdatering af dynamisk opløsning til/fra"
 
-#: src/rcw.c:2321
+#: src/rcw.c:2410
 msgid "Toggle scaled mode"
 msgstr "Skaleret tilstand til/fra"
 
-#: src/rcw.c:2361 data/ui/remmina_preferences.glade:1061
+#: src/rcw.c:2450 data/ui/remmina_preferences.glade:1061
 msgid "Switch tab pages"
 msgstr "Skift faneblade"
 
-#: src/rcw.c:2371
+#: src/rcw.c:2460
 msgid "Grab all keyboard events"
 msgstr "Fang alle tastetryk"
 
-#: src/rcw.c:2381
+#: src/rcw.c:2470
 msgid "Preferences"
 msgstr "Præferencer"
 
-#: src/rcw.c:2390
+#: src/rcw.c:2479
 msgid "_Tools"
 msgstr "_Værktøjer"
 
-#: src/rcw.c:2391 data/ui/remmina_main.glade:207
+#: src/rcw.c:2480 data/ui/remmina_main.glade:207
 msgid "Tools"
 msgstr "Værktøjer"
 
-#: src/rcw.c:2404 data/ui/remmina_preferences.glade:1261
+#: src/rcw.c:2493 data/ui/remmina_preferences.glade:1261
 #: data/ui/remmina_preferences.glade:1271
 msgid "Screenshot"
 msgstr "Skærmbillede"
 
-#: src/rcw.c:2418 data/ui/remmina_preferences.glade:1168
+#: src/rcw.c:2507 data/ui/remmina_preferences.glade:1168
 msgid "Minimize window"
 msgstr "Minimer vindue"
 
-#: src/rcw.c:2428 data/ui/remmina_preferences.glade:1199
+#: src/rcw.c:2517 data/ui/remmina_preferences.glade:1199
 msgid "Disconnect"
 msgstr "Afbryd forbindelsen"
 
-#: src/rcw.c:4195
+#: src/rcw.c:4284
 #, c-format
 msgid "The file “%s” is corrupted, unreadable, or could not be found."
 msgstr "Filen \"%s\" er korrupt, ulæselig eller blev ikke fundet."
 
-#: src/rcw.c:4363
+#: src/rcw.c:4452
 msgid "Warning: This plugin requires GtkSocket, but it’s not available."
 msgstr "Advarsel: Pluginet kræver GtkSocket, men det er ikke tilgængeligt."
 

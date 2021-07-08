@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-07-06 11:39+0000\n"
+"POT-Creation-Date: 2021-07-08 10:50+0000\n"
 "PO-Revision-Date: 2021-07-06 22:36+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/remmina/remmina/cs/"
@@ -176,7 +176,7 @@ msgstr "Nastavit dostupná rozlišení"
 msgid "Recent lists cleared."
 msgstr "Seznam nedávno použitých vymazán."
 
-#: src/remmina_pref_dialog.c:154 src/rcw.c:1950
+#: src/remmina_pref_dialog.c:154 src/rcw.c:2022
 #: data/ui/remmina_preferences.glade:168 data/ui/remmina_preferences.glade:178
 msgid "Keystrokes"
 msgstr "Stisky kláves"
@@ -475,12 +475,12 @@ msgstr[1] "%d hesla změněna."
 msgstr[2] "%d hesel změněno."
 
 #: src/remmina_public.c:345
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Address is too long for UNIX socket_path: %s"
 msgstr "Adresa je příliš dlouhá pro UNIX socket_path: %s"
 
 #: src/remmina_public.c:355
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Creating UNIX socket failed: %s"
 msgstr "Vytvoření zásuvky UNIX se nezdařilo: %s"
 
@@ -824,112 +824,120 @@ msgstr "Miniaplikace Remmina"
 msgid "Connect to remote desktops through the applet menu"
 msgstr "Připojovat se ke vzdáleným plochám z nabídky miniaplikace"
 
-#: src/rcw.c:655
+#: src/rcw.c:658
 #, c-format
 msgid ""
 "Are you sure you want to close %i active connections in the current window?"
 msgstr "Opravdu chcete zavřít %i aktivních připojení ve stávajícím okně?"
 
-#: src/rcw.c:1391
+#: src/rcw.c:1394
 msgid "Viewport fullscreen mode"
 msgstr "Režim výřezu při zobrazení na celou obrazovku"
 
-#: src/rcw.c:1399 data/ui/remmina_preferences.glade:603
+#: src/rcw.c:1402 data/ui/remmina_preferences.glade:603
 msgid "Scrolled fullscreen"
 msgstr "Celá obrazovka s posuvníky"
 
-#: src/rcw.c:1484
+#: src/rcw.c:1487
 msgid "Keep aspect ratio when scaled"
 msgstr "Při změně měřítka zobrazení zachovat poměr stran"
 
-#: src/rcw.c:1492
+#: src/rcw.c:1495
 msgid "Fill client window when scaled"
 msgstr "Při změně měřítka zobrazení vyplnit okno klienta"
 
-#: src/rcw.c:1971
+#: src/rcw.c:2043
 #, fuzzy
 msgid "Send clipboard content as keystrokes"
 msgstr "Odesílání obsahu schránky jako stisknutí kláves"
 
-#: src/rcw.c:2071
+#: src/rcw.c:2147
 msgid "Turn off scaling to avoid screenshot distortion."
 msgstr "Aby zobrazení nebylo deformované, vypnout změnu měřítka."
 
-#: src/rcw.c:2131 plugins/www/www_plugin.c:848
+#: src/rcw.c:2207 plugins/www/www_plugin.c:848
 msgid "Screenshot taken"
 msgstr "Snímek pořízen"
 
-#: src/rcw.c:2212
+#: src/rcw.c:2290
+msgid "_Menu"
+msgstr ""
+
+#: src/rcw.c:2291
+msgid "Menu"
+msgstr ""
+
+#: src/rcw.c:2300
 #, fuzzy
 #| msgid "Open Main Window"
 msgid "Open the Remmina main window"
 msgstr "Otevřete hlavní okno aplikace Remmina"
 
-#: src/rcw.c:2221
+#: src/rcw.c:2310
 msgid "Duplicate current connection"
 msgstr "Zduplikovat stávající spojení"
 
-#: src/rcw.c:2238
+#: src/rcw.c:2327
 msgid "Resize the window to fit in remote resolution"
 msgstr "Upravit velikost okna podle rozlišení na protějšku"
 
-#: src/rcw.c:2249
+#: src/rcw.c:2338
 msgid "Toggle fullscreen mode"
 msgstr "Vyp/zap. zobrazení na celou obrazovku"
 
-#: src/rcw.c:2295 data/ui/remmina_preferences.glade:1326
+#: src/rcw.c:2384 data/ui/remmina_preferences.glade:1326
 #: data/ui/remmina_preferences.glade:1336
 #, fuzzy
 msgid "Multi monitor"
 msgstr "Více monitorů"
 
-#: src/rcw.c:2311
+#: src/rcw.c:2400
 msgid "Toggle dynamic resolution update"
 msgstr "Vyp/zap. dynamickou aktualizaci rozlišení"
 
-#: src/rcw.c:2321
+#: src/rcw.c:2410
 msgid "Toggle scaled mode"
 msgstr "Vyp/zap. měnění měřítka zobrazení"
 
-#: src/rcw.c:2361 data/ui/remmina_preferences.glade:1061
+#: src/rcw.c:2450 data/ui/remmina_preferences.glade:1061
 msgid "Switch tab pages"
 msgstr "Přepínat mezi panely"
 
-#: src/rcw.c:2371
+#: src/rcw.c:2460
 msgid "Grab all keyboard events"
 msgstr "Zabrat si veškeré stisky kláves"
 
-#: src/rcw.c:2381
+#: src/rcw.c:2470
 msgid "Preferences"
 msgstr "_Předvolby"
 
-#: src/rcw.c:2390
+#: src/rcw.c:2479
 msgid "_Tools"
 msgstr "Nás_troje"
 
-#: src/rcw.c:2391 data/ui/remmina_main.glade:207
+#: src/rcw.c:2480 data/ui/remmina_main.glade:207
 msgid "Tools"
 msgstr "Nástroje"
 
-#: src/rcw.c:2404 data/ui/remmina_preferences.glade:1261
+#: src/rcw.c:2493 data/ui/remmina_preferences.glade:1261
 #: data/ui/remmina_preferences.glade:1271
 msgid "Screenshot"
 msgstr "Snímek obrazovky"
 
-#: src/rcw.c:2418 data/ui/remmina_preferences.glade:1168
+#: src/rcw.c:2507 data/ui/remmina_preferences.glade:1168
 msgid "Minimize window"
 msgstr "Minimalizovat okno"
 
-#: src/rcw.c:2428 data/ui/remmina_preferences.glade:1199
+#: src/rcw.c:2517 data/ui/remmina_preferences.glade:1199
 msgid "Disconnect"
 msgstr "Odpojit se"
 
-#: src/rcw.c:4195
+#: src/rcw.c:4284
 #, c-format
 msgid "The file “%s” is corrupted, unreadable, or could not be found."
 msgstr "Soubor „%s“ je poškozený, nečitelný nebo se ho nepodařilo nalézt."
 
-#: src/rcw.c:4363
+#: src/rcw.c:4452
 msgid "Warning: This plugin requires GtkSocket, but it’s not available."
 msgstr ""
 "Varování: tento zásuvný modul vyžaduje GtkSocket, ale to není k dispozici."

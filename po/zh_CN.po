@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-07-06 11:39+0000\n"
+"POT-Creation-Date: 2021-07-08 10:50+0000\n"
 "PO-Revision-Date: 2021-07-08 08:32+0000\n"
 "Last-Translator: Eric <spice2wolf@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -178,7 +178,7 @@ msgstr "配置可提供的分辨率"
 msgid "Recent lists cleared."
 msgstr "最近项已被清除。"
 
-#: src/remmina_pref_dialog.c:154 src/rcw.c:1950
+#: src/remmina_pref_dialog.c:154 src/rcw.c:2022
 #: data/ui/remmina_preferences.glade:168 data/ui/remmina_preferences.glade:178
 msgid "Keystrokes"
 msgstr "键盘监听"
@@ -201,7 +201,9 @@ msgid ""
 "This file contains the “Custom” terminal colour scheme selectable from the "
 "“Advanced” tab of terminal connections and editable in the “Terminal” tab in "
 "the settings."
-msgstr "此文件包含“自定义”终端颜色方案，可从终端连接的“高级”选项卡中选择，并可在设置的“终端”选项卡中编辑。"
+msgstr ""
+"此文件包含“自定义”终端颜色方案，可从终端连接的“高级”选项卡中选择，并可在设置"
+"的“终端”选项卡中编辑。"
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_ssh_plugin.c:539
@@ -802,108 +804,116 @@ msgstr "Remmina 面板小程序"
 msgid "Connect to remote desktops through the applet menu"
 msgstr "通过小程序菜单快速连接到远程桌面"
 
-#: src/rcw.c:655
+#: src/rcw.c:658
 #, c-format
 msgid ""
 "Are you sure you want to close %i active connections in the current window?"
 msgstr "当前窗口已打开 %i 个连接。确认要关闭吗？"
 
-#: src/rcw.c:1391
+#: src/rcw.c:1394
 msgid "Viewport fullscreen mode"
 msgstr "视口全屏模式"
 
-#: src/rcw.c:1399 data/ui/remmina_preferences.glade:603
+#: src/rcw.c:1402 data/ui/remmina_preferences.glade:603
 msgid "Scrolled fullscreen"
 msgstr "滚动全屏"
 
-#: src/rcw.c:1484
+#: src/rcw.c:1487
 msgid "Keep aspect ratio when scaled"
 msgstr "缩放时保持比例"
 
-#: src/rcw.c:1492
+#: src/rcw.c:1495
 msgid "Fill client window when scaled"
 msgstr "缩放时填满客户端窗口"
 
-#: src/rcw.c:1971
+#: src/rcw.c:2043
 msgid "Send clipboard content as keystrokes"
 msgstr "以击键方式发送剪贴板内容"
 
-#: src/rcw.c:2071
+#: src/rcw.c:2147
 msgid "Turn off scaling to avoid screenshot distortion."
 msgstr "关闭缩放比例以避免屏幕截图失真。"
 
-#: src/rcw.c:2131 plugins/www/www_plugin.c:848
+#: src/rcw.c:2207 plugins/www/www_plugin.c:848
 msgid "Screenshot taken"
 msgstr "截屏"
 
-#: src/rcw.c:2212
+#: src/rcw.c:2290
+msgid "_Menu"
+msgstr ""
+
+#: src/rcw.c:2291
+msgid "Menu"
+msgstr ""
+
+#: src/rcw.c:2300
 msgid "Open the Remmina main window"
 msgstr "打开 Remmina 主窗口"
 
-#: src/rcw.c:2221
+#: src/rcw.c:2310
 msgid "Duplicate current connection"
 msgstr "重复当前连接"
 
-#: src/rcw.c:2238
+#: src/rcw.c:2327
 msgid "Resize the window to fit in remote resolution"
 msgstr "调整窗口大小以适应远程分辨率"
 
-#: src/rcw.c:2249
+#: src/rcw.c:2338
 msgid "Toggle fullscreen mode"
 msgstr "切换全屏模式"
 
-#: src/rcw.c:2295 data/ui/remmina_preferences.glade:1326
+#: src/rcw.c:2384 data/ui/remmina_preferences.glade:1326
 #: data/ui/remmina_preferences.glade:1336
 msgid "Multi monitor"
 msgstr "多显示器"
 
-#: src/rcw.c:2311
+#: src/rcw.c:2400
 msgid "Toggle dynamic resolution update"
 msgstr "切换动态分辨率更新"
 
-#: src/rcw.c:2321
+#: src/rcw.c:2410
 msgid "Toggle scaled mode"
 msgstr "切换缩放模式"
 
-#: src/rcw.c:2361 data/ui/remmina_preferences.glade:1061
+#: src/rcw.c:2450 data/ui/remmina_preferences.glade:1061
 msgid "Switch tab pages"
 msgstr "切换标签页"
 
-#: src/rcw.c:2371
+#: src/rcw.c:2460
 msgid "Grab all keyboard events"
 msgstr "俘获所有键盘事件"
 
-#: src/rcw.c:2381
+#: src/rcw.c:2470
 msgid "Preferences"
 msgstr "首选项"
 
-#: src/rcw.c:2390
+#: src/rcw.c:2479
 msgid "_Tools"
 msgstr "工具(_T)"
 
-#: src/rcw.c:2391 data/ui/remmina_main.glade:207
+#: src/rcw.c:2480 data/ui/remmina_main.glade:207
 msgid "Tools"
 msgstr "工具"
 
-#: src/rcw.c:2404 data/ui/remmina_preferences.glade:1261
+#: src/rcw.c:2493 data/ui/remmina_preferences.glade:1261
 #: data/ui/remmina_preferences.glade:1271
 msgid "Screenshot"
 msgstr "截屏"
 
-#: src/rcw.c:2418 data/ui/remmina_preferences.glade:1168
+#: src/rcw.c:2507 data/ui/remmina_preferences.glade:1168
 msgid "Minimize window"
 msgstr "最小化窗口"
 
-#: src/rcw.c:2428 data/ui/remmina_preferences.glade:1199
+#: src/rcw.c:2517 data/ui/remmina_preferences.glade:1199
 msgid "Disconnect"
 msgstr "断开"
 
-#: src/rcw.c:4195
+#: src/rcw.c:4284
 #, c-format
 msgid "The file “%s” is corrupted, unreadable, or could not be found."
 msgstr "文件“%s” 已损坏，无法读取或未找到。"
 
-#: src/rcw.c:4363
+#: src/rcw.c:4452
 msgid "Warning: This plugin requires GtkSocket, but it’s not available."
 msgstr "警告：此插件需要 GtkSocket，但它不可用。"
 
@@ -3650,7 +3660,8 @@ msgstr "使用系统默认字体"
 msgid ""
 "Selecting “SGR 1” also switches to the bright counterparts of the first 8 "
 "palette colours (in addition to making text bold)."
-msgstr "选择 \"SGR 1 \"也会切换到前8种调色板颜色的明亮对应色（除了使文字变粗之外）。"
+msgstr ""
+"选择 \"SGR 1 \"也会切换到前8种调色板颜色的明亮对应色（除了使文字变粗之外）。"
 
 #: data/ui/remmina_preferences.glade:1999
 msgid "Allow using bright colours with bold text"
