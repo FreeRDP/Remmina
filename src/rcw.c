@@ -47,6 +47,8 @@
 #include "remmina.h"
 #include "remmina_main.h"
 #include "rcw.h"
+#include "remmina_applet_menu_item.h"
+#include "remmina_applet_menu.h"
 #include "remmina_file.h"
 #include "remmina_file_manager.h"
 #include "remmina_message_panel.h"
@@ -105,6 +107,7 @@ struct _RemminaConnectionWindowPriv {
 	GtkWidget *					grid;
 
 	/* Toolitems that need to be handled */
+	GtkToolItem *					toolitem_menu;
 	GtkToolItem *					toolitem_autofit;
 	GtkToolItem *					toolitem_fullscreen;
 	GtkToolItem *					toolitem_switch_page;
@@ -1718,6 +1721,20 @@ static void rcw_toolbar_preferences_popdown(GtkToolItem *toggle, RemminaConnecti
 	rcw_floating_toolbar_show(cnnwin, FALSE);
 }
 
+void rcw_toolbar_menu_popdown(GtkToolItem *toggle, RemminaConnectionWindow *cnnwin)
+{
+	TRACE_CALL(__func__);
+	RemminaConnectionWindowPriv *priv = cnnwin->priv;
+
+	if (priv->toolbar_is_reconfiguring)
+		return;
+
+	priv->sticky = FALSE;
+
+	gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(priv->toolitem_menu), FALSE);
+	rcw_floating_toolbar_show(cnnwin, FALSE);
+}
+
 void rcw_toolbar_tools_popdown(GtkToolItem *toggle, RemminaConnectionWindow *cnnwin)
 {
 	TRACE_CALL(__func__);
@@ -1889,6 +1906,63 @@ static void rcw_toolbar_preferences(GtkToolItem *toggle, RemminaConnectionWindow
 #endif
 }
 
+static void rcw_toolbar_menu_on_launch_item(RemminaAppletMenu *menu, RemminaAppletMenuItem *menuitem, gpointer data)
+{
+	TRACE_CALL(__func__);
+	gchar *s;
+
+	switch (menuitem->item_type) {
+	case REMMINA_APPLET_MENU_ITEM_NEW:
+		remmina_exec_command(REMMINA_COMMAND_NEW, NULL);
+		break;
+	case REMMINA_APPLET_MENU_ITEM_FILE:
+		remmina_exec_command(REMMINA_COMMAND_CONNECT, menuitem->filename);
+		break;
+	case REMMINA_APPLET_MENU_ITEM_DISCOVERED:
+		s = g_strdup_printf("%s,%s", menuitem->protocol, menuitem->name);
+		remmina_exec_command(REMMINA_COMMAND_NEW, s);
+		g_free(s);
+		break;
+	}
+}
+
+static void rcw_toolbar_menu(GtkToolItem *toggle, RemminaConnectionWindow *cnnwin)
+{
+	TRACE_CALL(__func__);
+	RemminaConnectionWindowPriv *priv;
+	RemminaConnectionObject *cnnobj;
+	GtkWidget *menu;
+	GtkWidget *menuitem = NULL;
+
+	if (cnnwin->priv->toolbar_is_reconfiguring)
+		return;
+
+	if (!(cnnobj = rcw_get_visible_cnnobj(cnnwin))) return;
+	priv = cnnobj->cnnwin->priv;
+
+	if (!gtk_toggle_tool_button_get_active(GTK_TOGGLE_TOOL_BUTTON(toggle)))
+		return;
+
+	priv->sticky = TRUE;
+
+	menu = remmina_applet_menu_new();
+	remmina_applet_menu_set_hide_count(REMMINA_APPLET_MENU(menu), remmina_pref.applet_hide_count);
+	remmina_applet_menu_populate(REMMINA_APPLET_MENU(menu));
+
+	g_signal_connect(G_OBJECT(menu), "launch-item", G_CALLBACK(rcw_toolbar_menu_on_launch_item), NULL);
+	//g_signal_connect(G_OBJECT(menu), "edit-item", G_CALLBACK(rcw_toolbar_menu_on_edit_item), NULL);
+	menuitem = gtk_separator_menu_item_new();
+	gtk_widget_show(menuitem);
+	gtk_menu_shell_append(GTK_MENU_SHELL(menu), menuitem);
+#if GTK_CHECK_VERSION(3, 22, 0)
+	gtk_menu_popup_at_widget(GTK_MENU(menu), GTK_WIDGET(toggle),
+				 GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST, NULL);
+#else
+	gtk_menu_popup(GTK_MENU(menu), NULL, NULL, remmina_public_popup_position, widget, 0, gtk_get_current_event_time());
+#endif
+	g_signal_connect(G_OBJECT(menu), "deactivate", G_CALLBACK(rcw_toolbar_menu_popdown), cnnwin);
+}
+
 static void rcw_toolbar_tools(GtkToolItem *toggle, RemminaConnectionWindow *cnnwin)
 {
 	TRACE_CALL(__func__);
@@ -1939,8 +2013,6 @@ static void rcw_toolbar_tools(GtkToolItem *toggle, RemminaConnectionWindow *cnnw
 		}
 	}
 
-	g_signal_connect(G_OBJECT(menu), "deactivate", G_CALLBACK(rcw_toolbar_tools_popdown), cnnwin);
-
 	/* If the plugin accepts keystrokes include the keystrokes menu */
 	if (remmina_protocol_widget_plugin_receives_keystrokes(REMMINA_PROTOCOL_WIDGET(cnnobj->proto))) {
 		/* Get the registered keystrokes list */
@@ -1977,6 +2049,9 @@ static void rcw_toolbar_tools(GtkToolItem *toggle, RemminaConnectionWindow *cnnw
 		}
 		g_strfreev(keystrokes);
 	}
+
+	g_signal_connect(G_OBJECT(menu), "deactivate", G_CALLBACK(rcw_toolbar_tools_popdown), cnnwin);
+
 #if GTK_CHECK_VERSION(3, 22, 0)
 	gtk_menu_popup_at_widget(GTK_MENU(menu), GTK_WIDGET(toggle),
 				 GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST, NULL);
@@ -1997,6 +2072,7 @@ static void rcw_toolbar_duplicate(GtkToolItem *toggle, RemminaConnectionWindow *
 
 	remmina_exec_command(REMMINA_COMMAND_CONNECT, cnnobj->remmina_file->filename);
 }
+
 static void rcw_toolbar_screenshot(GtkToolItem *toggle, RemminaConnectionWindow *cnnwin)
 {
 	TRACE_CALL(__func__);
@@ -2207,6 +2283,18 @@ rcw_create_toolbar(RemminaConnectionWindow *cnnwin, gint mode)
 	gtk_toolbar_set_style(GTK_TOOLBAR(toolbar), GTK_TOOLBAR_ICONS);
 
 	/* Main actions */
+
+	/* Menu */
+	toolitem = gtk_toggle_tool_button_new();
+	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "view-more-symbolic");
+	gtk_tool_button_set_label(GTK_TOOL_BUTTON(toolitem), _("_Menu"));
+	gtk_tool_item_set_tooltip_text(toolitem, _("Menu"));
+	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
+	gtk_widget_show(GTK_WIDGET(toolitem));
+	g_signal_connect(G_OBJECT(toolitem), "toggled", G_CALLBACK(rcw_toolbar_menu), cnnwin);
+	priv->toolitem_menu = toolitem;
+
+	/* Open Main window */
 	toolitem = gtk_tool_button_new(NULL, "Open Remmina Main window");
 	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "go-home-symbolic");
 	gtk_tool_item_set_tooltip_text(toolitem, _("Open the Remmina main window"));
@@ -2216,6 +2304,7 @@ rcw_create_toolbar(RemminaConnectionWindow *cnnwin, gint mode)
 
 	priv->toolitem_new = toolitem;
 
+	/* Duplicate session */
 	toolitem = gtk_tool_button_new(NULL, "Duplicate connection");
 	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-duplicate-symbolic");
 	gtk_tool_item_set_tooltip_text(toolitem, _("Duplicate current connection"));
