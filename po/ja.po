@@ -17,8 +17,8 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-07-08 21:10+0000\n"
-"PO-Revision-Date: 2021-06-22 11:33+0000\n"
-"Last-Translator: Ryunosuke Toda <toda.ryunosuke@gmail.com>\n"
+"PO-Revision-Date: 2021-07-10 16:33+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/remmina/remmina/"
 "ja/>\n"
 "Language: ja\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.7.1-dev\n"
+"X-Generator: Weblate 4.8-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
 
 #: src/remmina_protocol_widget.c:283 src/remmina_sftp_plugin.c:328
@@ -412,12 +412,14 @@ msgid "Log SSH session when exiting Remmina"
 msgstr "Remmina を終了するときに SSH セッションログを保存する"
 
 #: src/remmina_ssh_plugin.c:1516
+#, fuzzy
 msgid "Log SSH session asynchronously"
-msgstr ""
+msgstr "SSHセッションを非同期にログする"
 
 #: src/remmina_ssh_plugin.c:1516
+#, fuzzy
 msgid "Saving the session asynchronously may have a notable performance impact"
-msgstr ""
+msgstr "非同期にセッションを保存すると、パフォーマンスに重大な影響を与える可能性があります。"
 
 #: src/remmina_ssh_plugin.c:1517
 msgid "Audible terminal bell"
@@ -470,20 +472,20 @@ msgid_plural "%d passwords changed."
 msgstr[0] "%d 個のパスワードを変更しました。"
 
 #: src/remmina_public.c:345
-#, c-format
+#, c-format, fuzzy
 msgid "Address is too long for UNIX socket_path: %s"
-msgstr ""
+msgstr "UNIXのsocket_pathではアドレスが長すぎます。%s"
 
 #: src/remmina_public.c:355
-#, c-format
+#, c-format, fuzzy
 msgid "Creating UNIX socket failed: %s"
-msgstr ""
+msgstr "UNIXソケットの作成に失敗しました。%s"
 
 #: src/remmina_public.c:361
 #, fuzzy, c-format
 #| msgid "VNC connection failed: %s"
 msgid "Connecting to UNIX socket failed: %s"
-msgstr "VNC 接続失敗: %s"
+msgstr "UNIXソケットへの接続に失敗しました。%s"
 
 #: src/remmina_public.c:632
 msgid "Please enter format 'widthxheight'."
@@ -854,8 +856,9 @@ msgid "Fill client window when scaled"
 msgstr "拡大縮小時にクライアントウィンドウ全体に表示"
 
 #: src/rcw.c:2043
+#, fuzzy
 msgid "Send clipboard content as keystrokes"
-msgstr ""
+msgstr "クリップボードの内容をキーストロークとして送信"
 
 #: src/rcw.c:2147
 msgid "Turn off scaling to avoid screenshot distortion."
@@ -867,12 +870,14 @@ msgid "Screenshot taken"
 msgstr "スクリーンショットを撮影しました"
 
 #: src/rcw.c:2290
+#, fuzzy
 msgid "_Menu"
-msgstr ""
+msgstr "_Menu"
 
 #: src/rcw.c:2291
+#, fuzzy
 msgid "Menu"
-msgstr ""
+msgstr "メニュー"
 
 #: src/rcw.c:2300
 msgid "Open the Remmina main window"
@@ -1491,10 +1496,12 @@ msgid ""
 "• ID:repeater ID number\n"
 "• unix:///path/socket.sock</big>"
 msgstr ""
-"<tt><big>サポートしている書式\n"
-"• サーバー\n"
-"• サーバー:ポート\n"
-"• [サーバー]:ポート</big></tt>"
+"<big>対応フォーマット\n"
+"- サーバ\n"
+"- サーバー[:ポート]\n"
+"VNCの追加フォーマット\n"
+"- ID:リピータID番号\n"
+"- unix:///path/socket.sock</big>."
 
 #: src/remmina_file_editor.c:69
 #, fuzzy
@@ -1533,9 +1540,8 @@ msgstr ""
 "• %U : SSH ユーザー名\n"
 "• %p : Remmina のプロファイル名\n"
 "• %g : Remmina のプロファイルグループ名\n"
-"• %d : ISO 8601 形式のローカル日時\n"
-"接続する前にコマンドを実行させたい場合はバックグラウンドで実行しないでくださ"
-"い。\n"
+"• %d : iso8601 形式のローカル日時\n"
+"接続する前にコマンドを実行させたい場合はバックグラウンドで実行しないでください。\n"
 "</big></tt>"
 
 #: src/remmina_file_editor.c:83
@@ -1552,11 +1558,10 @@ msgid ""
 "• server[:port]\n"
 "• username@server[:port] (SSH protocol only)</big>"
 msgstr ""
-"<tt><big>サポートしている書式\n"
-"• サーバー\n"
-"• サーバー:ポート\n"
-"• [サーバー]:ポート\n"
-"• ユーザー名@サーバー:ポート (SSH プロトコルのみ)</big></tt>"
+"<big>対応フォーマット\n"
+"- サーバ\n"
+"- サーバー[:ポート]\n"
+"- username@server[:port] (SSHプロトコルのみ)</big>."
 
 #: src/remmina_file_editor.c:149
 msgid "Choose a Remote Desktop Server"
@@ -1715,19 +1720,19 @@ msgstr "消去(_C)"
 #, fuzzy
 #| msgid "Remmina VNC Plugin"
 msgid "Remmina VNC plugin for GNOME and KVM"
-msgstr "Remmina VNC プラグイン"
+msgstr "GNOMEとKVMのためのRemmina VNCプラグイン"
 
 #: plugins/gvnc/gvnc_plugin.c:477
 #, fuzzy, c-format
 #| msgid "Authentication type"
 msgid "Unsupported authentication type %u"
-msgstr "認証方式"
+msgstr "サポートされていない認証タイプ %u"
 
 #: plugins/gvnc/gvnc_plugin.c:489
 #, fuzzy, c-format
 #| msgid "Authentication type"
 msgid "Authentication failure: %s"
-msgstr "認証方式"
+msgstr "認証に失敗しました。%s"
 
 #: plugins/gvnc/gvnc_plugin.c:539 plugins/vnc/vnc_plugin.c:825
 msgid "Enter VNC authentication credentials"
@@ -1737,7 +1742,7 @@ msgstr "VNC 認証資格情報を入力してください"
 #, fuzzy
 #| msgid "Use system proxy settings"
 msgid "Use server settings"
-msgstr "システムのプロキシ設定を使用する"
+msgstr "サーバー設定の使用"
 
 #: plugins/gvnc/gvnc_plugin.c:821
 #, fuzzy
@@ -1755,19 +1760,19 @@ msgstr "ハイカラー (16 bit)"
 #, fuzzy
 #| msgid "High colour (16 bit)"
 msgid "Low colour (8 bits)"
-msgstr "ハイカラー (16 bit)"
+msgstr "ローカラー（8ビット"
 
 #: plugins/gvnc/gvnc_plugin.c:824
 #, fuzzy
 #| msgid "True colour (24 bit)"
 msgid "Ultra low colour (3 bits)"
-msgstr "フルカラー (24 bit)"
+msgstr "ウルトラローカラー（3ビット"
 
 #: plugins/gvnc/gvnc_plugin.c:839
 #, fuzzy
 #| msgid "Enter VNC password"
 msgid "VNC password"
-msgstr "VNC パスワードを入力してください"
+msgstr "VNCパスワード"
 
 #: plugins/gvnc/gvnc_plugin.c:840 plugins/vnc/vnc_plugin.c:1962
 #: plugins/vnc/vnc_plugin.c:1982 plugins/rdp/rdp_plugin.c:2660
@@ -1778,17 +1783,18 @@ msgstr "色数"
 #, fuzzy
 #| msgid "SSH compression"
 msgid "Use JPEG Compression"
-msgstr "SSH 圧縮"
+msgstr "JPEG圧縮の使用"
 
 #: plugins/gvnc/gvnc_plugin.c:841
 #, fuzzy
 #| msgid "Browse the network to find a %s server"
 msgid "This might not work on all VNC servers"
-msgstr "ネットワークからサーバー %s を探す"
+msgstr "すべてのVNCサーバーで動作するとは限りません。"
 
 #: plugins/gvnc/gvnc_plugin.c:842
+#, fuzzy
 msgid "Enable GTK-VNC debug"
-msgstr ""
+msgstr "GTK-VNCのデバッグを有効にする"
 
 #: plugins/gvnc/gvnc_plugin.c:857 plugins/gvnc/gvnc_plugin.c:871
 #: plugins/spice/spice_plugin.c:693 plugins/spice/spice_plugin.c:706
@@ -1802,8 +1808,9 @@ msgid "Forget passwords after use"
 msgstr "パスワードを使用後に消去する"
 
 #: plugins/gvnc/gvnc_plugin.c:859 plugins/vnc/vnc_plugin.c:2004
+#, fuzzy
 msgid "Ignore remote bell messages"
-msgstr ""
+msgstr "リモートベルのメッセージを無視する"
 
 #: plugins/gvnc/gvnc_plugin.c:860 plugins/spice/spice_plugin.c:695
 msgid "Enable audio channel"
@@ -1819,13 +1826,14 @@ msgstr "表示専用"
 #, fuzzy
 #| msgid "Per connection"
 msgid "Shared connection"
-msgstr "接続ごと"
+msgstr "シェアード・コネクション"
 
 #: plugins/gvnc/gvnc_plugin.c:862
+#, fuzzy
 msgid ""
 "If the server should try to share the desktop by leaving other clients "
 "connected"
-msgstr ""
+msgstr "サーバーが他のクライアントを接続したままでデスクトップを共有しようとすると"
 
 #: plugins/gvnc/gvnc_plugin.c:872
 #, fuzzy
@@ -1837,7 +1845,7 @@ msgstr "Ctrl+Alt+Del を送る"
 #, fuzzy
 #| msgid "Send Ctrl+Alt+Del"
 msgid "Send Ctrl+Alt+_Backspace"
-msgstr "Ctrl+Alt+Del を送る"
+msgstr "送信 Ctrl+Alt+Backspace"
 
 #: plugins/gvnc/gvnc_plugin.c:874
 msgid "Send Ctrl+Alt+_F1"
@@ -1888,18 +1896,20 @@ msgid "Send Ctrl+Alt+_F12"
 msgstr "Ctrl+Alt+_F12 を送る"
 
 #: plugins/gvnc/gvnc_plugin.c:887
+#, fuzzy
 msgid "Reboot remote host"
-msgstr ""
+msgstr "リモートホストの再起動"
 
 #: plugins/gvnc/gvnc_plugin.c:888
+#, fuzzy
 msgid "Reset remote host (hard reboot)"
-msgstr ""
+msgstr "リモートホストのリセット（ハードリブート"
 
 #: plugins/gvnc/gvnc_plugin.c:889
 #, fuzzy
 #| msgid "Show remote cursor"
 msgid "Shutdown remote host"
-msgstr "リモートのカーソルを表示する"
+msgstr "リモートホストのシャットダウン"
 
 #: plugins/exec/exec_plugin_config.h:41
 msgid "Execute a command"
@@ -2061,6 +2071,7 @@ msgid "Poor (fastest)"
 msgstr "低 (最速)"
 
 #: plugins/vnc/vnc_plugin.c:1939
+#, fuzzy
 msgid ""
 "Connect to VNC using a repeater:\n"
 "  • The server field must contain the repeater ID, e.g. ID:123456789\n"
@@ -2070,6 +2081,13 @@ msgid ""
 "    the repeater, e.g. with x11vnc:\n"
 "    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
 msgstr ""
+"リピータを使用してVNCに接続します。\n"
+"  - サーバーフィールドにはリピータIDを入力してください（例：ID:123456789\n"
+"  - リピータフィールドには、リピータのIPとポートを設定する必要があり、以下のようになります。\n"
+"    10.10.10.12:5901\n"
+"  - リモートVNCサーバーから、リピータに接続します。\n"
+"    例えば、x11vncを使って、リモートVNCサーバーからリピータに接続します。\n"
+"    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
 
 #: plugins/vnc/vnc_plugin.c:1959
 msgid "Repeater"
@@ -2105,7 +2123,7 @@ msgstr "ローカル側からサーバー側への入力を防ぐ"
 #, fuzzy
 #| msgid "Turn on smooth scrolling"
 msgid "Disable smooth scrolling"
-msgstr "スムーズスクロールをオン"
+msgstr "スムーズ スクロールの無効化"
 
 #: plugins/vnc/vnc_plugin.c:2020
 msgid "Open Chat…"
@@ -2327,9 +2345,7 @@ msgstr ""
 msgid ""
 "Unable to establish a connection to the RDP server “%s”. Check “Security "
 "protocol negotiation”."
-msgstr ""
-"RDP サーバー “%s” への接続を確立できません。\"セキュリティプロトコルのネゴシ"
-"エーション\" を確認してください。"
+msgstr "RDP サーバー \"%s\" への接続を確立できません。\"セキュリティプロトコルのネゴシエーション\" を確認してください。"
 
 #: plugins/rdp/rdp_plugin.c:2120
 #, c-format
@@ -2362,9 +2378,7 @@ msgstr "サーバー “%s” が接続を拒否しました。"
 msgid ""
 "The Remote Desktop Gateway “%s” denied the user “%s\\%s” access due to "
 "policy."
-msgstr ""
-"リモートデスクトップゲートウェイ “%s” はポリシーにより、ユーザー \"%s\\%s\" "
-"のアクセスを拒否しました。"
+msgstr "リモートデスクトップゲートウェイ \"%s\" はポリシーにより、ユーザー \"%s\\%s\" のアクセスを拒否しました。"
 
 #: plugins/rdp/rdp_plugin.c:2148
 #, c-format
@@ -2553,6 +2567,7 @@ msgstr ""
 "い。\n"
 
 #: plugins/rdp/rdp_plugin.c:2617
+#, fuzzy
 msgid ""
 "Comma-separated list of monitor IDs and desktop orientations:\n"
 "  • [<id>:<orientation-in-degrees>,]\n"
@@ -2565,8 +2580,19 @@ msgid ""
 "  • 270 (portrait flipped)\n"
 "\n"
 msgstr ""
+"モニターのIDとデスクトップの向きをカンマで区切って指定します。\n"
+"  - <id>:<orientation-in-degrees>,]と表示されます。\n"
+"  - 0,1,2,3\n"
+"  - 0:270,1:90\n"
+"向きは度数で指定し、有効な値は次のとおりです。\n"
+"  - 0 (横)\n"
+"  - 90 (縦)\n"
+"  - 180（横方向に反転\n"
+"  - 270（縦方向に反転\n"
+"\n"
 
 #: plugins/rdp/rdp_plugin.c:2629
+#, fuzzy
 msgid ""
 "Redirect directory <path> as named share <name>.\n"
 "  • <name>,<fullpath>[;<name>,<fullpath>[;…]]\n"
@@ -2577,10 +2603,19 @@ msgid ""
 "  • hotplug,*\n"
 "\n"
 msgstr ""
+"ディレクトリ <path> を名前付き共有 <name> としてリダイレクトします。\n"
+"  - <name>,<fullpath>[;<name>,<fullpath>[;...]] のようになります。\n"
+"  - マイホーム、/home/remminer\n"
+"  - /home/remminer\n"
+"  - MyHome,/home/remminer;SomePath,/path/to/somepath\n"
+"Hotplugのサポートは以下で有効になります。\n"
+"  - ホットプラグ,*\n"
+"\n"
 
 #: plugins/rdp/rdp_plugin.c:2653
+#, fuzzy
 msgid "Use “Redirect directory” in the advanced tab for multiple directories"
-msgstr ""
+msgstr "複数のディレクトリに対して、詳細タブの「ディレクトリのリダイレクト」を使用する"
 
 #: plugins/rdp/rdp_plugin.c:2654
 msgid "Left-handed mouse support"
@@ -2602,7 +2637,7 @@ msgstr "画面を複数のモニターに合わせて広げる"
 #, fuzzy
 #| msgid "Monitor ID list"
 msgid "List monitor IDs"
-msgstr "モニターの ID リスト"
+msgstr "モニターID一覧"
 
 #: plugins/rdp/rdp_plugin.c:2661
 msgid "Network connection type"
@@ -2661,8 +2696,9 @@ msgid "Remote Desktop Gateway domain"
 msgstr "リモートデスクトップゲートウェイのドメイン"
 
 #: plugins/rdp/rdp_plugin.c:2689
+#, fuzzy
 msgid "Redirect directory"
-msgstr ""
+msgstr "ディレクトリのリダイレクト"
 
 #: plugins/rdp/rdp_plugin.c:2690
 msgid "Client name"
@@ -2745,22 +2781,24 @@ msgstr "静的仮想チャンネル (SVC)"
 #, fuzzy
 #| msgid "USB redirection error"
 msgid "TCP redirection"
-msgstr "USB リダイレクトエラー"
+msgstr "TCPリダイレクション"
 
 #: plugins/rdp/rdp_plugin.c:2706
+#, fuzzy
 msgid "/PATH/TO/rdp2tcp"
-msgstr ""
+msgstr "/PATH/TO/rdp2tcp"
 
 #: plugins/rdp/rdp_plugin.c:2707 plugins/rdp/rdp_settings.c:613
 #, fuzzy
 #| msgid "Reconnection attempt %d of %d…"
 msgid "Reconnect attempts number"
-msgstr "再接続の試行 %d / %d…"
+msgstr "再接続試行回数"
 
 #: plugins/rdp/rdp_plugin.c:2707 plugins/rdp/rdp_settings.c:619
+#, fuzzy
 msgid ""
 "The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
-msgstr ""
+msgstr "RDPの切断時に再接続を試みる最大数（デフォルト：20"
 
 #: plugins/rdp/rdp_plugin.c:2708
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
@@ -2839,8 +2877,9 @@ msgid "Use base credentials for gateway too"
 msgstr "ゲートウェイにも基本資格情報を使用する"
 
 #: plugins/rdp/rdp_plugin.c:2730
+#, fuzzy
 msgid "Enable Gateway websockets support"
-msgstr ""
+msgstr "ゲートウェイ・ウェブソケットのサポートを有効にする"
 
 #: plugins/rdp/rdp_plugin.c:2756
 msgid "RDP - Remote Desktop Protocol"
@@ -2934,13 +2973,13 @@ msgstr "デスクトップの向き"
 #, fuzzy
 #| msgid "Use system proxy settings"
 msgid "Input device settings"
-msgstr "システムのプロキシ設定を使用する"
+msgstr "入力デバイスの設定"
 
 #: plugins/rdp/rdp_settings.c:608
 #, fuzzy
 #| msgid "Quality settings"
 msgid "General settings"
-msgstr "品質設定"
+msgstr "一般的設定"
 
 #: plugins/rdp/rdp_event.c:344
 #, c-format
@@ -3432,7 +3471,7 @@ msgstr "Remmina のデータフォルダー"
 #, fuzzy
 #| msgid "Choose a folder to save screenshots from Remmina in."
 msgid "Choose a folder to save connection profiles from Remmina in."
-msgstr "Remmina のスクリーンショットを保存するフォルダーを選択してください。"
+msgstr "Remminaからの接続プロファイルを保存するフォルダを選択してください。"
 
 #: data/ui/remmina_preferences.glade:315
 msgid "Remember last view for each connection"
@@ -3509,9 +3548,10 @@ msgstr "全画面表示 (ウィンドウモード)"
 
 #. How tabs are grouped in the Remmina connection window
 #: data/ui/remmina_preferences.glade:624
+#, fuzzy
 msgctxt "Appearance preferences"
 msgid "Tabs grouping"
-msgstr ""
+msgstr "タブのグループ化"
 
 #: data/ui/remmina_preferences.glade:638
 msgid "By group"
@@ -3564,7 +3604,7 @@ msgstr "“すべてのキーボードイベントを取得する”状態の色
 #, fuzzy
 #| msgid "“Grab all keyboard events” status colour"
 msgid "Enable/Disable “Grab all keyboard events” status colour"
-msgstr "“すべてのキーボードイベントを取得する”状態の色"
+msgstr "すべてのキーボードイベントを取得する \"ステータスカラーの有効化/無効化"
 
 #: data/ui/remmina_preferences.glade:770
 msgid ""
@@ -3738,7 +3778,7 @@ msgstr "スクロールして戻れる行数"
 #, fuzzy
 #| msgid "Shortcut for copying to clipboard"
 msgid "Shortcuts for copying and pasting"
-msgstr "クリップボードにコピーするショートカット"
+msgstr "コピー＆ペーストのショートカット"
 
 #: data/ui/remmina_preferences.glade:1933
 msgid "Select all shortcuts"
@@ -3877,13 +3917,13 @@ msgstr "前景色"
 #, fuzzy
 #| msgid "Increase font size"
 msgid "Increase and decrease font size"
-msgstr "フォントサイズを拡大"
+msgstr "文字サイズの拡大・縮小"
 
 #: data/ui/remmina_preferences.glade:2433
 #, fuzzy
 #| msgid "Search text"
 msgid "Search text shortcut"
-msgstr "文字列を検索"
+msgstr "検索テキストのショートカット"
 
 #: data/ui/remmina_preferences.glade:2464
 #: data/ui/remmina_preferences.glade:2479
