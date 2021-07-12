@@ -14,8 +14,8 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-07-08 21:10+0000\n"
-"PO-Revision-Date: 2021-06-29 21:55+0000\n"
-"Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
+"PO-Revision-Date: 2021-07-12 20:35+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/remmina/remmina/"
 "fi/>\n"
 "Language: fi\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.7.1-dev\n"
+"X-Generator: Weblate 4.7.2-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
 
 #: src/remmina_protocol_widget.c:283 src/remmina_sftp_plugin.c:328
@@ -209,9 +209,9 @@ msgid ""
 "“Advanced” tab of terminal connections and editable in the “Terminal” tab in "
 "the settings."
 msgstr ""
-"Tämä tiedosto sisältää \"Mukautetun\" päätelaitteen värimallin, joka voidaan "
-"valita pääteyhteyksien \"Lisäasetukset\" -välilehdeltä ja muokattavissa "
-"asetusten \"Pääte\" -välilehdessä."
+"Tämä tiedosto sisältää \"Mukautetun\" päätelaitteen värimaailman, joka "
+"voidaan valita päätelaiteyhteyksien \"Advanced\"-välilehdeltä ja jota "
+"voidaan muokata asetusten \"Terminal\"-välilehdellä."
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_ssh_plugin.c:539
@@ -410,12 +410,16 @@ msgid "Log SSH session when exiting Remmina"
 msgstr "Lokita SSH-istunto poistuessaan Remminasta"
 
 #: src/remmina_ssh_plugin.c:1516
+#, fuzzy
 msgid "Log SSH session asynchronously"
-msgstr ""
+msgstr "SSH-istunnon kirjaaminen asynkronisesti"
 
 #: src/remmina_ssh_plugin.c:1516
+#, fuzzy
 msgid "Saving the session asynchronously may have a notable performance impact"
 msgstr ""
+"Istunnon tallentaminen asynkronisesti voi vaikuttaa merkittävästi "
+"suorituskykyyn."
 
 #: src/remmina_ssh_plugin.c:1517
 msgid "Audible terminal bell"
@@ -469,9 +473,9 @@ msgstr[0] "%d salasana vaihdettu."
 msgstr[1] "%d salasanaa vaihdettu."
 
 #: src/remmina_public.c:345
-#, c-format
+#, c-format, fuzzy
 msgid "Address is too long for UNIX socket_path: %s"
-msgstr ""
+msgstr "Osoite on liian pitkä UNIX socket_pathille: %s"
 
 #: src/remmina_public.c:355
 #, c-format
@@ -835,8 +839,9 @@ msgid "Fill client window when scaled"
 msgstr "Täytä asiakasikkuna, kun skaalataan"
 
 #: src/rcw.c:2043
+#, fuzzy
 msgid "Send clipboard content as keystrokes"
-msgstr ""
+msgstr "Lähetä leikepöydän sisältö näppäinpainalluksina"
 
 #: src/rcw.c:2147
 msgid "Turn off scaling to avoid screenshot distortion."
@@ -847,12 +852,14 @@ msgid "Screenshot taken"
 msgstr "Kuvakaappaus otettu"
 
 #: src/rcw.c:2290
+#, fuzzy
 msgid "_Menu"
-msgstr ""
+msgstr "_Menu"
 
 #: src/rcw.c:2291
+#, fuzzy
 msgid "Menu"
-msgstr ""
+msgstr "Valikko"
 
 #: src/rcw.c:2300
 msgid "Open the Remmina main window"
@@ -1477,10 +1484,12 @@ msgid ""
 "• ID:repeater ID number\n"
 "• unix:///path/socket.sock</big>"
 msgstr ""
-"<tt><big>Tuetut muodot\n"
-"* palvelin\n"
-"* palvelin:portti\n"
-"* [palvelin]:portti</big></tt>"
+"<big>Tuetut formaatit\n"
+"- palvelin\n"
+"- palvelin[:portti]\n"
+"VNC:n lisäformaatit\n"
+"- ID:toistimen ID-numero\n"
+"- unix:///path/socket.sock</big>"
 
 #: src/remmina_file_editor.c:69
 #, fuzzy
@@ -1698,7 +1707,7 @@ msgstr "Remminan VNC-liitännäinen Gnomelle ja KVM:lle"
 #, fuzzy, c-format
 #| msgid "Authentication type"
 msgid "Unsupported authentication type %u"
-msgstr "Todennustyyppi"
+msgstr "Tukematon todennustyyppi %u"
 
 #: plugins/gvnc/gvnc_plugin.c:489
 #, c-format
@@ -1747,8 +1756,9 @@ msgid "This might not work on all VNC servers"
 msgstr "Tämä ei välttämättä toimi kaikilla VNC-palvelimilla"
 
 #: plugins/gvnc/gvnc_plugin.c:842
+#, fuzzy
 msgid "Enable GTK-VNC debug"
-msgstr ""
+msgstr "Ota GTK-VNC-vianmääritys käyttöön"
 
 #: plugins/gvnc/gvnc_plugin.c:857 plugins/gvnc/gvnc_plugin.c:871
 #: plugins/spice/spice_plugin.c:693 plugins/spice/spice_plugin.c:706
@@ -1762,8 +1772,9 @@ msgid "Forget passwords after use"
 msgstr "Unohda salasanat käytön jälkeen"
 
 #: plugins/gvnc/gvnc_plugin.c:859 plugins/vnc/vnc_plugin.c:2004
+#, fuzzy
 msgid "Ignore remote bell messages"
-msgstr ""
+msgstr "Etäkelloviestien huomiotta jättäminen"
 
 #: plugins/gvnc/gvnc_plugin.c:860 plugins/spice/spice_plugin.c:695
 msgid "Enable audio channel"
@@ -1780,10 +1791,13 @@ msgid "Shared connection"
 msgstr "Jaettu yhteys"
 
 #: plugins/gvnc/gvnc_plugin.c:862
+#, fuzzy
 msgid ""
 "If the server should try to share the desktop by leaving other clients "
 "connected"
 msgstr ""
+"Jos palvelin yrittää jakaa työpöydän jättämällä muut asiakkaat kytkettyinä "
+"toisiinsa."
 
 #: plugins/gvnc/gvnc_plugin.c:872
 msgid "Send Ctrl+Alt+_Del"
@@ -2014,6 +2028,7 @@ msgid "Poor (fastest)"
 msgstr "Heikko (nopein)"
 
 #: plugins/vnc/vnc_plugin.c:1939
+#, fuzzy
 msgid ""
 "Connect to VNC using a repeater:\n"
 "  • The server field must contain the repeater ID, e.g. ID:123456789\n"
@@ -2023,6 +2038,14 @@ msgid ""
 "    the repeater, e.g. with x11vnc:\n"
 "    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
 msgstr ""
+"Muodosta yhteys VNC:hen toistimen avulla:\n"
+"  - ID:123456789.\n"
+"  - Toistin-kenttään on asetettava toistimen IP ja portti, esim. seuraavasti:"
+"\n"
+"    10.10.10.12:5901\n"
+"  - Etäisestä VNC-palvelimesta muodostetaan yhteys osoitteeseen\n"
+"    toistimeen esimerkiksi x11vnc:llä:\n"
+"    x11vnc -connect repeater=ID:123456789+10.10.10.10.12:5500."
 
 #: plugins/vnc/vnc_plugin.c:1959
 msgid "Repeater"
@@ -2281,8 +2304,8 @@ msgid ""
 "Unable to establish a connection to the RDP server “%s”. Check “Security "
 "protocol negotiation”."
 msgstr ""
-"Yhteyttä RDP-palvelimeen ei voi luoda. Valitse \"Tarkista Suojausprotokollan "
-"neuvottelu\" \"%s\"."
+"Yhteyttä RDP-palvelimeen \"%s\" ei pystytä muodostamaan. Tarkista "
+"\"Tietoturvaprotokollan neuvottelu\"."
 
 #: plugins/rdp/rdp_plugin.c:2120
 #, c-format
@@ -2500,9 +2523,9 @@ msgid ""
 "Using auto-detection is advised.\n"
 "If “Auto-detect” fails, choose the most appropriate option in the list.\n"
 msgstr ""
-"Suorituskyvyn optimoinnit verkkoyhteystyypin perusteella:\n"
-"Automaattisen tunnistuksen käyttöä on suositeltavaa.\n"
-"Jos automaattinen tunnistus epäonnistuu, valitse sopivin vaihtoehto "
+"Suorituskyvyn optimoinnit verkkoyhteyden tyypin mukaan:\n"
+"Automaattisen tunnistuksen käyttäminen on suositeltavaa.\n"
+"Jos automaattinen tunnistus ei onnistu, valitse sopivin vaihtoehto "
 "luettelosta.\n"
 
 #: plugins/rdp/rdp_plugin.c:2617
@@ -2530,18 +2553,19 @@ msgid ""
 "  • 270 (portrait flipped)\n"
 "\n"
 msgstr ""
-"Pilkulla erotettu luettelo näytön tunnuksista ja työpöydän suunnista:\n"
-"   • [<id>: <suuntaus-asteittain>,]\n"
-"   • 0,1,2,3\n"
-"   • 0: 270,1: 90\n"
-"Suunnat on määritelty asteina, kelvolliset arvot ovat:\n"
-"   • 0 (maisema)\n"
-"   • 90 (muotokuva)\n"
-"   • 180 (vaaka käännetty)\n"
-"   • 270 (käännetty muotokuva)\n"
+"Pilkulla erotettu luettelo näytön tunnuksista ja työpöydän suuntauksista:\n"
+"  - [<id>:<suuntaus asteina>,]\n"
+"  - 0,1,2,3\n"
+"  - 0:270,1:90\n"
+"Suuntaukset määritetään asteina, kelvolliset arvot ovat:\n"
+"  - 0 (maisema)\n"
+"  - 90 (muotokuva)\n"
+"  - 180 (maisemakuva käännettynä)\n"
+"  - 270 (muotokuva käännettynä)\n"
 "\n"
 
 #: plugins/rdp/rdp_plugin.c:2629
+#, fuzzy
 msgid ""
 "Redirect directory <path> as named share <name>.\n"
 "  • <name>,<fullpath>[;<name>,<fullpath>[;…]]\n"
@@ -2552,10 +2576,21 @@ msgid ""
 "  • hotplug,*\n"
 "\n"
 msgstr ""
+"Ohjaa hakemisto <polku> uudelleen nimettyyn jakoon <nimi>.\n"
+"  - <nimi>,<täydellinenpolku>[;<nimi>,<täydellinenpolku>[;...]]\n"
+"  - MyHome,/home/remminer\n"
+"  - /home/remminer\n"
+"  - MyHome,/home/remminer;SomePath,/path/to/somepath\n"
+"Hotplug-tuki on käytössä seuraavilla asetuksilla:\n"
+"  - hotplug,*\n"
+"\n"
 
 #: plugins/rdp/rdp_plugin.c:2653
+#, fuzzy
 msgid "Use “Redirect directory” in the advanced tab for multiple directories"
 msgstr ""
+"Käytä \"Ohjaa hakemisto uudelleen\" lisäasetukset-välilehdellä useita "
+"hakemistoja varten."
 
 #: plugins/rdp/rdp_plugin.c:2654
 msgid "Left-handed mouse support"
@@ -2577,7 +2612,7 @@ msgstr "Jatka näyttöä useiden näyttöjen yli"
 #, fuzzy
 #| msgid "Monitor ID list"
 msgid "List monitor IDs"
-msgstr "Näytön tunnusluettelo"
+msgstr "Luettelo monitorin tunnuksista"
 
 #: plugins/rdp/rdp_plugin.c:2661
 msgid "Network connection type"
@@ -2636,8 +2671,9 @@ msgid "Remote Desktop Gateway domain"
 msgstr "Etätyöpöydän yhdyskäytävän verkkotunnus"
 
 #: plugins/rdp/rdp_plugin.c:2689
+#, fuzzy
 msgid "Redirect directory"
-msgstr ""
+msgstr "Ohjaa hakemisto uudelleen"
 
 #: plugins/rdp/rdp_plugin.c:2690
 msgid "Client name"
@@ -2721,19 +2757,23 @@ msgid "TCP redirection"
 msgstr "TCP-uudelleenohjaus"
 
 #: plugins/rdp/rdp_plugin.c:2706
+#, fuzzy
 msgid "/PATH/TO/rdp2tcp"
-msgstr ""
+msgstr "/PATH/TO/rdp2tcp"
 
 #: plugins/rdp/rdp_plugin.c:2707 plugins/rdp/rdp_settings.c:613
 #, fuzzy
 #| msgid "Reconnection attempt %d of %d…"
 msgid "Reconnect attempts number"
-msgstr "Uudelleenyhdistämisen yritys %d/%d…"
+msgstr "Yhteyden uudelleen muodostamisyritysten määrä"
 
 #: plugins/rdp/rdp_plugin.c:2707 plugins/rdp/rdp_settings.c:619
+#, fuzzy
 msgid ""
 "The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
 msgstr ""
+"RDP-yhteyden katkaisun yhteydessä tehtävien uudelleenyhdistysyritysten "
+"enimmäismäärä (oletusarvo: 20)."
 
 #: plugins/rdp/rdp_plugin.c:2708
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
@@ -2812,8 +2852,9 @@ msgid "Use base credentials for gateway too"
 msgstr "Käytä myös yhdyskäytävän perustietoja"
 
 #: plugins/rdp/rdp_plugin.c:2730
+#, fuzzy
 msgid "Enable Gateway websockets support"
-msgstr ""
+msgstr "Ota käyttöön Gateway websockets-tuki"
 
 #: plugins/rdp/rdp_plugin.c:2756
 msgid "RDP - Remote Desktop Protocol"
@@ -3532,7 +3573,9 @@ msgstr "\"Tartu kaikkiin näppäimistötapahtumiin\" -tilaväri"
 #, fuzzy
 #| msgid "“Grab all keyboard events” status colour"
 msgid "Enable/Disable “Grab all keyboard events” status colour"
-msgstr "\"Tartu kaikkiin näppäimistötapahtumiin\" -tilaväri"
+msgstr ""
+"Ota käyttöön/poista käytöstä \"Ota kaikki näppäimistötapahtumat talteen\" "
+"-tilaväri."
 
 #: data/ui/remmina_preferences.glade:770
 msgid ""

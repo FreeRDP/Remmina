@@ -15,8 +15,8 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-07-08 21:10+0000\n"
-"PO-Revision-Date: 2021-06-04 14:29+0000\n"
-"Last-Translator: Jacque Fresco <aidter@use.startmail.com>\n"
+"PO-Revision-Date: 2021-07-12 20:35+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/remmina/"
 "remmina/id/>\n"
 "Language: id\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.7-dev\n"
+"X-Generator: Weblate 4.7.2-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
 
 #: src/remmina_protocol_widget.c:283 src/remmina_sftp_plugin.c:328
@@ -410,12 +410,15 @@ msgid "Log SSH session when exiting Remmina"
 msgstr "Log sesi SSH ketika keluar Remmina"
 
 #: src/remmina_ssh_plugin.c:1516
+#, fuzzy
 msgid "Log SSH session asynchronously"
-msgstr ""
+msgstr "Log sesi SSH secara tidak sinkron"
 
 #: src/remmina_ssh_plugin.c:1516
+#, fuzzy
 msgid "Saving the session asynchronously may have a notable performance impact"
 msgstr ""
+"Menyimpan sesi secara asinkron mungkin memiliki dampak kinerja yang penting"
 
 #: src/remmina_ssh_plugin.c:1517
 msgid "Audible terminal bell"
@@ -481,7 +484,7 @@ msgstr "Pembuatan soket UNIX gagal: %s"
 #, fuzzy, c-format
 #| msgid "VNC connection failed: %s"
 msgid "Connecting to UNIX socket failed: %s"
-msgstr "Sambungan VNC gagal: %s"
+msgstr "Menyambungkan ke soket UNIX gagal: %s"
 
 #: src/remmina_public.c:632
 msgid "Please enter format 'widthxheight'."
@@ -839,8 +842,9 @@ msgid "Fill client window when scaled"
 msgstr "Penuhi jendela klien saat diskalakan"
 
 #: src/rcw.c:2043
+#, fuzzy
 msgid "Send clipboard content as keystrokes"
-msgstr ""
+msgstr "Mengirim konten clipboard sebagai penekanan tombol"
 
 #: src/rcw.c:2147
 msgid "Turn off scaling to avoid screenshot distortion."
@@ -851,12 +855,14 @@ msgid "Screenshot taken"
 msgstr "Tangkapan layar diambil"
 
 #: src/rcw.c:2290
+#, fuzzy
 msgid "_Menu"
-msgstr ""
+msgstr "_Menu"
 
 #: src/rcw.c:2291
+#, fuzzy
 msgid "Menu"
-msgstr ""
+msgstr "Menu"
 
 #: src/rcw.c:2300
 msgid "Open the Remmina main window"
@@ -1349,8 +1355,9 @@ msgid "SSH credentials"
 msgstr "Kredensial SSH"
 
 #: src/remmina_ssh.c:1112
+#, fuzzy
 msgid "Keyboard interactive login, TOTP/OTP/2FA"
-msgstr ""
+msgstr "Login interaktif keyboard, TOTP/OTP/2FA"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1337
@@ -1479,10 +1486,12 @@ msgid ""
 "• ID:repeater ID number\n"
 "• unix:///path/socket.sock</big>"
 msgstr ""
-"<tt><big>Format yang didukung\n"
+"<big> Format yang didukung\n"
 "• server\n"
-"• server:port\n"
-"• [server]:port</big></tt>"
+"• server[:p ort]\n"
+"Format tambahan VNC\n"
+"• ID:nomor ID repeater\n"
+"• unix:///path/socket.sock</big>"
 
 #: src/remmina_file_editor.c:69
 #, fuzzy
@@ -1541,12 +1550,10 @@ msgid ""
 "• server[:port]\n"
 "• username@server[:port] (SSH protocol only)</big>"
 msgstr ""
-"<tt><big>Format yang didukung\n"
-"• :port\n"
+"<big> Format yang didukung\n"
 "• server\n"
-"• server:port\n"
-"• [server]:port\n"
-"• namapengguna@server:port (hanya protokol SSH)</big></tt>"
+"• server[:p ort]\n"
+"• username@server[:p ort] (hanya protokol SSH)</big>"
 
 #: src/remmina_file_editor.c:149
 msgid "Choose a Remote Desktop Server"
@@ -1706,19 +1713,19 @@ msgstr "_Bersihkan"
 #, fuzzy
 #| msgid "Remmina VNC Plugin"
 msgid "Remmina VNC plugin for GNOME and KVM"
-msgstr "Pengaya VNC Remmina"
+msgstr "Plugin Remmina VNC untuk GNOME dan KVM"
 
 #: plugins/gvnc/gvnc_plugin.c:477
 #, fuzzy, c-format
 #| msgid "Authentication type"
 msgid "Unsupported authentication type %u"
-msgstr "Tipe otentikasi"
+msgstr "Tipe otentikasi tidak didukung %u"
 
 #: plugins/gvnc/gvnc_plugin.c:489
 #, fuzzy, c-format
 #| msgid "Authentication type"
 msgid "Authentication failure: %s"
-msgstr "Tipe otentikasi"
+msgstr "Kegagalan otentikasi: %s"
 
 #: plugins/gvnc/gvnc_plugin.c:539 plugins/vnc/vnc_plugin.c:825
 msgid "Enter VNC authentication credentials"
@@ -1728,7 +1735,7 @@ msgstr "Masukkan kredensial autentikasi VNC"
 #, fuzzy
 #| msgid "Use system proxy settings"
 msgid "Use server settings"
-msgstr "Gunakan setelan proksi sistem"
+msgstr "Gunakan setelan peladen"
 
 #: plugins/gvnc/gvnc_plugin.c:821
 #, fuzzy
@@ -1746,19 +1753,19 @@ msgstr "Warna tinggi (16 bit)"
 #, fuzzy
 #| msgid "High colour (16 bit)"
 msgid "Low colour (8 bits)"
-msgstr "Warna tinggi (16 bit)"
+msgstr "Warna rendah (8 bit)"
 
 #: plugins/gvnc/gvnc_plugin.c:824
 #, fuzzy
 #| msgid "True colour (24 bit)"
 msgid "Ultra low colour (3 bits)"
-msgstr "Warna benar (24 bit)"
+msgstr "Warna sangat rendah (3 bit)"
 
 #: plugins/gvnc/gvnc_plugin.c:839
 #, fuzzy
 #| msgid "Enter VNC password"
 msgid "VNC password"
-msgstr "Masukkan kata sandi VNC"
+msgstr "Kata sandi VNC"
 
 #: plugins/gvnc/gvnc_plugin.c:840 plugins/vnc/vnc_plugin.c:1962
 #: plugins/vnc/vnc_plugin.c:1982 plugins/rdp/rdp_plugin.c:2660
@@ -1769,13 +1776,13 @@ msgstr "Kedalaman warna"
 #, fuzzy
 #| msgid "SSH compression"
 msgid "Use JPEG Compression"
-msgstr "Kompresi SSH"
+msgstr "Gunakan Kompresi JPEG"
 
 #: plugins/gvnc/gvnc_plugin.c:841
 #, fuzzy
 #| msgid "Browse the network to find a %s server"
 msgid "This might not work on all VNC servers"
-msgstr "Jelajahi jaringan untuk menemukan server %s"
+msgstr "Ini mungkin tidak berfungsi pada semua server VNC"
 
 #: plugins/gvnc/gvnc_plugin.c:842
 msgid "Enable GTK-VNC debug"
@@ -1793,8 +1800,9 @@ msgid "Forget passwords after use"
 msgstr "Lupakan kata sandi setelah dipakai"
 
 #: plugins/gvnc/gvnc_plugin.c:859 plugins/vnc/vnc_plugin.c:2004
+#, fuzzy
 msgid "Ignore remote bell messages"
-msgstr ""
+msgstr "Abaikan pesan lonceng jarak jauh"
 
 #: plugins/gvnc/gvnc_plugin.c:860 plugins/spice/spice_plugin.c:695
 msgid "Enable audio channel"
@@ -1810,13 +1818,16 @@ msgstr "Melihat saja"
 #, fuzzy
 #| msgid "Per connection"
 msgid "Shared connection"
-msgstr "Per koneksi"
+msgstr "Sambungan berbagi"
 
 #: plugins/gvnc/gvnc_plugin.c:862
+#, fuzzy
 msgid ""
 "If the server should try to share the desktop by leaving other clients "
 "connected"
 msgstr ""
+"Jika server harus mencoba berbagi desktop dengan membiarkan klien lain "
+"tersambung"
 
 #: plugins/gvnc/gvnc_plugin.c:872
 #, fuzzy
@@ -1828,7 +1839,7 @@ msgstr "Kirim Ctrl+Alt+Del"
 #, fuzzy
 #| msgid "Send Ctrl+Alt+Del"
 msgid "Send Ctrl+Alt+_Backspace"
-msgstr "Kirim Ctrl+Alt+Del"
+msgstr "Kirim Ctrl+Alt+_Backspace"
 
 #: plugins/gvnc/gvnc_plugin.c:874
 msgid "Send Ctrl+Alt+_F1"
@@ -1879,18 +1890,20 @@ msgid "Send Ctrl+Alt+_F12"
 msgstr "Kirim Ctrl+Alt+_F12"
 
 #: plugins/gvnc/gvnc_plugin.c:887
+#, fuzzy
 msgid "Reboot remote host"
-msgstr ""
+msgstr "Host jarak jauh reboot"
 
 #: plugins/gvnc/gvnc_plugin.c:888
+#, fuzzy
 msgid "Reset remote host (hard reboot)"
-msgstr ""
+msgstr "Reset host jarak jauh (reboot keras)"
 
 #: plugins/gvnc/gvnc_plugin.c:889
 #, fuzzy
 #| msgid "Show remote cursor"
 msgid "Shutdown remote host"
-msgstr "Tampilkan kursor jarak jauh"
+msgstr "Tutup host jarak jauh"
 
 #: plugins/exec/exec_plugin_config.h:41
 msgid "Execute a command"
@@ -2053,6 +2066,7 @@ msgid "Poor (fastest)"
 msgstr "Buruk (paling cepat)"
 
 #: plugins/vnc/vnc_plugin.c:1939
+#, fuzzy
 msgid ""
 "Connect to VNC using a repeater:\n"
 "  • The server field must contain the repeater ID, e.g. ID:123456789\n"
@@ -2062,6 +2076,13 @@ msgid ""
 "    the repeater, e.g. with x11vnc:\n"
 "    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
 msgstr ""
+"Sambungkan ke VNC menggunakan repeater:\n"
+"  • Bidang server harus berisi ID repeater, misalnya ID:123456789\n"
+"  • Bidang repeater harus diatur ke IP repeater dan port, seperti:\n"
+"    10.10.10.12:5901\n"
+"  • Dari server VNC jarak jauh, Anda akan\n"
+"    repeater, misalnya dengan x11vnc:\n"
+"    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
 
 #: plugins/vnc/vnc_plugin.c:1959
 msgid "Repeater"
@@ -2089,15 +2110,16 @@ msgid "Turn off encryption"
 msgstr "Gunakan enkripsi TLS"
 
 #: plugins/vnc/vnc_plugin.c:2003 plugins/vnc/vnc_plugin.c:2018
+#, fuzzy
 msgid "Prevent local interaction on the server"
-msgstr ""
+msgstr "Mencegah interaksi lokal pada server"
 
 #: plugins/vnc/vnc_plugin.c:2006 plugins/rdp/rdp_plugin.c:2655
 #: plugins/rdp/rdp_settings.c:598
 #, fuzzy
 #| msgid "Turn on smooth scrolling"
 msgid "Disable smooth scrolling"
-msgstr "Hidupkan pengguliran mulus"
+msgstr "Nonaktifkan Gulir Halus"
 
 #: plugins/vnc/vnc_plugin.c:2020
 msgid "Open Chat…"
@@ -2165,8 +2187,9 @@ msgid "Auto LZ"
 msgstr "LZ Otomatis"
 
 #: plugins/spice/spice_plugin.c:650
+#, fuzzy
 msgid "Disable video overlay if videos are not displayed properly.\n"
-msgstr ""
+msgstr "Nonaktifkan hamparan video jika video tidak ditampilkan dengan benar.\n"
 
 #: plugins/spice/spice_plugin.c:667
 msgid "Use TLS encryption"
@@ -2189,8 +2212,9 @@ msgid "Turn off GStreamer overlay"
 msgstr "Nonaktifkan masukan server"
 
 #: plugins/spice/spice_plugin.c:690
+#, fuzzy
 msgid "Prefered image compression"
-msgstr ""
+msgstr "Kompresi gambar yang disukai"
 
 #: plugins/spice/spice_plugin.c:696
 msgid "Share smart card"
@@ -2322,8 +2346,8 @@ msgid ""
 "Unable to establish a connection to the RDP server “%s”. Check “Security "
 "protocol negotiation”."
 msgstr ""
-"Tidak bisa menjalin sambungan ke server RDP. Periksa \"Negosiasi protokol "
-"keamanan\" \"%s\"."
+"Tak bisa membuat sambungan ke peladen RDP \"%s\". Periksa \"Negosiasi "
+"protokol keamanan\"."
 
 #: plugins/rdp/rdp_plugin.c:2120
 #, c-format
@@ -2410,20 +2434,24 @@ msgid "Modem"
 msgstr "Modem"
 
 #: plugins/rdp/rdp_plugin.c:2534
+#, fuzzy
 msgid "Low performance broadband"
-msgstr ""
+msgstr "Broadband kinerja rendah"
 
 #: plugins/rdp/rdp_plugin.c:2535
+#, fuzzy
 msgid "Satellite"
-msgstr ""
+msgstr "Satelit"
 
 #: plugins/rdp/rdp_plugin.c:2536
+#, fuzzy
 msgid "High performance broadband"
-msgstr ""
+msgstr "Broadband berkinerja tinggi"
 
 #: plugins/rdp/rdp_plugin.c:2537
+#, fuzzy
 msgid "WAN"
-msgstr ""
+msgstr "Wan"
 
 #: plugins/rdp/rdp_plugin.c:2538
 msgid "LAN"
@@ -2532,11 +2560,15 @@ msgstr ""
 "Nilai tertinggi yang mungkin adalah 600000 ms (10 menit)\n"
 
 #: plugins/rdp/rdp_plugin.c:2612
+#, fuzzy
 msgid ""
 "Performance optimisations based on the network connection type:\n"
 "Using auto-detection is advised.\n"
 "If “Auto-detect” fails, choose the most appropriate option in the list.\n"
 msgstr ""
+"Pengoptimalan kinerja berdasarkan tipe sambungan jaringan:\n"
+"Penggunaan deteksi otomatis disarankan.\n"
+"Jika \"Deteksi otomatis\" gagal, pilih opsi yang paling tepat dalam daftar.\n"
 
 #: plugins/rdp/rdp_plugin.c:2617
 #, fuzzy
@@ -2575,6 +2607,7 @@ msgstr ""
 "\n"
 
 #: plugins/rdp/rdp_plugin.c:2629
+#, fuzzy
 msgid ""
 "Redirect directory <path> as named share <name>.\n"
 "  • <name>,<fullpath>[;<name>,<fullpath>[;…]]\n"
@@ -2585,32 +2618,46 @@ msgid ""
 "  • hotplug,*\n"
 "\n"
 msgstr ""
+"Alihkan direktori <path>semua berbagi <name>.\n"
+"  • <name>.<fullpath>[;<name>.<fullpath>[;...]]\n"
+"  • MyHome,/rumah/remminer\n"
+"  • /rumah/remminer\n"
+"  • MyHome,/home/remminer; SomePath,/path/to/somepath\n"
+"Dukungan hotplug diaktifkan dengan:\n"
+"  • hotplug,*\n"
+"\n"
 
 #: plugins/rdp/rdp_plugin.c:2653
+#, fuzzy
 msgid "Use “Redirect directory” in the advanced tab for multiple directories"
 msgstr ""
+"Gunakan \"Alihkan direktori\" di tab tingkat lanjut untuk beberapa direktori"
 
 #: plugins/rdp/rdp_plugin.c:2654
+#, fuzzy
 msgid "Left-handed mouse support"
-msgstr ""
+msgstr "Dukungan mouse kidal"
 
 #: plugins/rdp/rdp_plugin.c:2654
+#, fuzzy
 msgid "Swap left and right mouse buttons for left-handed mouse support"
-msgstr ""
+msgstr "Tukar tombol mouse kiri dan kanan untuk dukungan mouse kidal"
 
 #: plugins/rdp/rdp_plugin.c:2656
+#, fuzzy
 msgid "Enable multi monitor"
-msgstr ""
+msgstr "Fungsikan multi monitor"
 
 #: plugins/rdp/rdp_plugin.c:2657
+#, fuzzy
 msgid "Span screen over multiple monitors"
-msgstr ""
+msgstr "Layar rentang di atas beberapa monitor"
 
 #: plugins/rdp/rdp_plugin.c:2658
 #, fuzzy
 #| msgid "Listen on port"
 msgid "List monitor IDs"
-msgstr "Dengarkan pada port"
+msgstr "Mencantumkan"
 
 #: plugins/rdp/rdp_plugin.c:2661
 msgid "Network connection type"
@@ -2669,8 +2716,9 @@ msgid "Remote Desktop Gateway domain"
 msgstr "Domain Remote Desktop Gateway"
 
 #: plugins/rdp/rdp_plugin.c:2689
+#, fuzzy
 msgid "Redirect directory"
-msgstr ""
+msgstr "Alihkan direktori"
 
 #: plugins/rdp/rdp_plugin.c:2690
 msgid "Client name"
@@ -2753,22 +2801,26 @@ msgstr "Kanal virtual statik"
 #, fuzzy
 #| msgid "USB redirection error"
 msgid "TCP redirection"
-msgstr "Kesalahan pengalihan USB"
+msgstr "Pengalihan TCP"
 
 #: plugins/rdp/rdp_plugin.c:2706
+#, fuzzy
 msgid "/PATH/TO/rdp2tcp"
-msgstr ""
+msgstr "/PATH/TO/rdp2tcp"
 
 #: plugins/rdp/rdp_plugin.c:2707 plugins/rdp/rdp_settings.c:613
 #, fuzzy
 #| msgid "Reconnection attempt %d of %d…"
 msgid "Reconnect attempts number"
-msgstr "Upaya menyambung ulang ke %d dari %d…"
+msgstr "Menyambungkan kembali nomor percobaan"
 
 #: plugins/rdp/rdp_plugin.c:2707 plugins/rdp/rdp_settings.c:619
+#, fuzzy
 msgid ""
 "The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
 msgstr ""
+"Jumlah maksimum upaya sambungkan kembali setelah sambungan RDP terputus "
+"(default: 20)"
 
 #: plugins/rdp/rdp_plugin.c:2708
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
@@ -2843,12 +2895,14 @@ msgid "Using the UDP protocol may improve performance"
 msgstr "Memakai protokol UDP bisa meningkatkan kinerja"
 
 #: plugins/rdp/rdp_plugin.c:2728
+#, fuzzy
 msgid "Use base credentials for gateway too"
-msgstr ""
+msgstr "Gunakan kredensial dasar untuk gateway juga"
 
 #: plugins/rdp/rdp_plugin.c:2730
+#, fuzzy
 msgid "Enable Gateway websockets support"
-msgstr ""
+msgstr "Mengaktifkan dukungan websocket Gateway"
 
 #: plugins/rdp/rdp_plugin.c:2756
 msgid "RDP - Remote Desktop Protocol"
@@ -2942,13 +2996,13 @@ msgstr "Orientasi desktop"
 #, fuzzy
 #| msgid "Use system proxy settings"
 msgid "Input device settings"
-msgstr "Gunakan setelan proksi sistem"
+msgstr "Setelan perangkat masukan"
 
 #: plugins/rdp/rdp_settings.c:608
 #, fuzzy
 #| msgid "Quality settings"
 msgid "General settings"
-msgstr "Pengaturan kualitas"
+msgstr "Pengaturan umum"
 
 #: plugins/rdp/rdp_event.c:344
 #, c-format
@@ -3439,7 +3493,7 @@ msgstr "Folder data Remmina"
 #, fuzzy
 #| msgid "Choose a folder to save screenshots from Remmina in."
 msgid "Choose a folder to save connection profiles from Remmina in."
-msgstr "Pilih folder untuk menyimpan cuplikan layar dari Remmina."
+msgstr "Pilih folder untuk menyimpan profil koneksi dari Remmina."
 
 #: data/ui/remmina_preferences.glade:315
 msgid "Remember last view for each connection"
@@ -3459,8 +3513,9 @@ msgstr ""
 "string pemformatan."
 
 #: data/ui/remmina_preferences.glade:363
+#, fuzzy
 msgid "Template for profile filenames"
-msgstr ""
+msgstr "Templat untuk nama file profil"
 
 #: data/ui/remmina_preferences.glade:375
 msgid ""
@@ -3518,9 +3573,10 @@ msgstr "Jendela penuh viewport"
 
 #. How tabs are grouped in the Remmina connection window
 #: data/ui/remmina_preferences.glade:624
+#, fuzzy
 msgctxt "Appearance preferences"
 msgid "Tabs grouping"
-msgstr ""
+msgstr "Pengelompokan tab"
 
 #: data/ui/remmina_preferences.glade:638
 msgid "By group"
@@ -3555,14 +3611,18 @@ msgid "Hide the search bar shown in the main window"
 msgstr "Sembunyikan bilah pencarian yang ditampilkan di jendela utama"
 
 #: data/ui/remmina_preferences.glade:719
+#, fuzzy
 msgid "Prefer dark theme"
-msgstr ""
+msgstr "Lebih suka tema gelap"
 
 #: data/ui/remmina_preferences.glade:723
+#, fuzzy
 msgid ""
 "If a GTK theme includes a dark variant, it will be used instead of the "
 "configured theme."
 msgstr ""
+"Jika tema GTK menyertakan varian gelap, tema tersebut akan digunakan alih-"
+"alih tema yang dikonfigurasi."
 
 #: data/ui/remmina_preferences.glade:743
 msgid "“Grab all keyboard events” status colour"
@@ -3572,7 +3632,7 @@ msgstr "Status warna \"Tangkap semua kejadian papan tik\""
 #, fuzzy
 #| msgid "“Grab all keyboard events” status colour"
 msgid "Enable/Disable “Grab all keyboard events” status colour"
-msgstr "Status warna \"Tangkap semua kejadian papan tik\""
+msgstr "Aktifkan/Nonaktifkan warna status \"Ambil semua acara keyboard\""
 
 #: data/ui/remmina_preferences.glade:770
 msgid ""
@@ -3749,7 +3809,7 @@ msgstr "Baris gulung balik"
 #, fuzzy
 #| msgid "Shortcut for copying to clipboard"
 msgid "Shortcuts for copying and pasting"
-msgstr "Pintasan untuk menyalin ke papan klip"
+msgstr "Pintasan untuk menyalin dan menempelkan"
 
 #: data/ui/remmina_preferences.glade:1933
 msgid "Select all shortcuts"
@@ -3888,13 +3948,13 @@ msgstr "Warna latar depan"
 #, fuzzy
 #| msgid "Increase font size"
 msgid "Increase and decrease font size"
-msgstr "Perbesar ukuran fonta"
+msgstr "Memperbesar dan mengurangi ukuran font"
 
 #: data/ui/remmina_preferences.glade:2433
 #, fuzzy
 #| msgid "Search text"
 msgid "Search text shortcut"
-msgstr "Teks yang dicari"
+msgstr "Mencari pintasan teks"
 
 #: data/ui/remmina_preferences.glade:2464
 #: data/ui/remmina_preferences.glade:2479
