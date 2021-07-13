@@ -434,14 +434,13 @@ void remmina_public_get_server_port(const gchar *server, gint defaultport, gchar
 
 		nul_terminated_server = g_strdup (server);
 		g_debug ("(%s) - Parsing server: %s, default port: %d", __func__, server, defaultport);
-		address = (GNetworkAddress*)g_network_address_parse ((const gchar *) nul_terminated_server,  defaultport, &err);
+		address = (GNetworkAddress*)g_network_address_parse ((const gchar *)nul_terminated_server, defaultport, &err);
 
 		if (address == NULL) {
 			g_debug ("(%s) - Error converting server string: %s, with error: %s", __func__, nul_terminated_server, err->message);
+			*host = NULL;
 			if (err)
 				g_error_free(err);
-			//g_debug ("(%s) - Using remmina_public_get_server_port_old to parse the address", __func__);
-			//remmina_public_get_server_port_old (server, defaultport, host, port);
 		} else {
 
 			*host = g_strdup(g_network_address_get_hostname (address));
