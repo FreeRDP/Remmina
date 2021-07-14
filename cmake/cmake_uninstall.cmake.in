@@ -1,3 +1,22 @@
+# 'delete_empty_folder' function
+function(delete_empty_folder DIR)
+  if(NOT EXISTS ${DIR})
+    return()
+  endif()
+
+  # check if folder is empty
+  file(GLOB RESULT "${DIR}/*")
+  list(LENGTH RESULT RES_LEN)
+  if(RES_LEN EQUAL 0)
+    message(STATUS "Delete empty folder ${DIR}")
+    #file(REMOVE_RECURSE ${DIR})
+  else()
+    # message(STATUS "${DIR} is not empty! It won't be removed.")
+    # message(STATUS "FILES = ${RESULT}")
+  endif()
+endfunction(delete_empty_folder)
+
+
 if( NOT EXISTS "@CMAKE_CURRENT_BINARY_DIR@/install_manifest.txt" )
   message(FATAL_ERROR "Cannot find install manifest: \"@CMAKE_CURRENT_BINARY_DIR@/install_manifest.txt\"")
 endif( NOT EXISTS "@CMAKE_CURRENT_BINARY_DIR@/install_manifest.txt" )
@@ -25,4 +44,25 @@ foreach(file ${files})
 
   endif(EXISTS "$ENV{DESTDIR}${file}")
 
+
+  get_filename_component(FOLDER $ENV{DESTDIR}${file} DIRECTORY)
+  set(FOLDERS ${FOLDERS} ${FOLDER})
+
 endforeach(file)
+
+# remove empty folders
+message(STATUS "")
+message(STATUS "Removing empty folders")
+
+list(REMOVE_DUPLICATES FOLDERS)
+foreach(dir ${FOLDERS})
+#   message(STATUS ${dir})
+  delete_empty_folder(${dir})
+#   message(STATUS "")
+endforeach(dir)
+
+delete_empty_folder("@INSTALL_INCLUDE_DIR@")
+delete_empty_folder("@INSTALL_BIN_DIR@")
+delete_empty_folder("@INSTALL_LIB_DIR@/CMake")
+delete_empty_folder("@INSTALL_LIB_DIR@")
+message(STATUS "")
