@@ -357,11 +357,23 @@ if(SNAP_BUILD)
 endif()
 
 # Uninstall support
-configure_file(
-    "${CMAKE_CURRENT_SOURCE_DIR}/cmake_uninstall.cmake.in"
-    "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake" IMMEDIATE @ONLY)
-add_custom_target(uninstall "${CMAKE_COMMAND}" -P
-    "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake")
+
+# setup a 'make uninstall' target if we find a
+# cmake_uninstall.cmake.in in the module path
+#===========================================================
+foreach( MODULE_PATH ${CMAKE_MODULE_PATH} )
+  set( UNINSTALL_IN  "${MODULE_PATH}/cmake_uninstall.cmake.in" )
+  set( UNINSTALL_OUT "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake" )
+  if( EXISTS ${UNINSTALL_IN} )
+    configure_file( "${UNINSTALL_IN}"
+                    "${UNINSTALL_OUT}"
+                    IMMEDIATE @ONLY
+    )
+    add_custom_target(uninstall
+                   "${CMAKE_COMMAND}" -P "${UNINSTALL_OUT}")
+    break()
+  endif( EXISTS ${UNINSTALL_IN} )
+endforeach( MODULE_PATH )
 
 #find_required_package(GTK)
 find_package(GLib REQUIRED)
