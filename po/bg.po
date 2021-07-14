@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-07-08 21:10+0000\n"
+"POT-Creation-Date: 2021-07-14 07:04+0000\n"
 "PO-Revision-Date: 2021-07-12 20:35+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Bulgarian <https://hosted.weblate.org/projects/remmina/"
@@ -485,25 +485,25 @@ msgstr[0] "%d паролата е променена."
 msgstr[1] "%d паролите са променени."
 
 #: src/remmina_public.c:345
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Address is too long for UNIX socket_path: %s"
 msgstr "Адресът е твърде дълъг за UNIX socket_path: %s"
 
 #: src/remmina_public.c:355
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Creating UNIX socket failed: %s"
 msgstr "Създаването на гнездо UNIX се провали: %s"
 
 #: src/remmina_public.c:361
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Connecting to UNIX socket failed: %s"
 msgstr "Свързването с гнездо на UNIX се провали: %s"
 
-#: src/remmina_public.c:632
+#: src/remmina_public.c:631
 msgid "Please enter format 'widthxheight'."
 msgstr "Моля въведете формат 'ширинахвисочина'."
 
-#: src/remmina_public.c:654
+#: src/remmina_public.c:653
 #, fuzzy
 msgid "Change security settings"
 msgstr "Промяна на настройките за сигурност"
@@ -774,8 +774,8 @@ msgid ""
 "password\n"
 msgstr ""
 "Примери:\n"
-"За да се свържете, като използвате съществуващ профил за връзка, използвайте:"
-"\n"
+"За да се свържете, като използвате съществуващ профил за връзка, "
+"използвайте:\n"
 "\n"
 "\tremmina -c FILE.remmina\n"
 "\n"
@@ -802,9 +802,9 @@ msgstr ""
 "За да актуализирате потребителското име и паролата и да зададете различен "
 "режим на разрешаване на профил за връзка с Remmina, използвайте:\n"
 "\n"
-"\techo \"username\\n"
-"apassword\" | remmina --update-profile /PATH/TO/FOO.remmina --set-option "
-"username --set-option resolution_mode=2 --set-option password\n"
+"\techo \"username\\napassword\" | remmina --update-profile /PATH/TO/FOO."
+"remmina --set-option username --set-option resolution_mode=2 --set-option "
+"password\n"
 
 #: src/remmina_icon.c:128
 msgid "Open Main Window"
@@ -1019,12 +1019,12 @@ msgid_plural "Total %i items."
 msgstr[0] "Общо %i елемент."
 msgstr[1] "Общо %i елемента."
 
-#: src/remmina_main.c:854
+#: src/remmina_main.c:853
 #, c-format
 msgid "Are you sure you want to delete “%s”?"
 msgstr "Сигурни ли сте, че желаете да изтриете \"%s\"?"
 
-#: src/remmina_main.c:974
+#: src/remmina_main.c:973
 #, c-format
 msgid ""
 "Unable to import:\n"
@@ -1033,23 +1033,23 @@ msgstr ""
 "Невъзможност за внасяне:\n"
 "%s"
 
-#: src/remmina_main.c:1000 data/ui/remmina_main.glade:285
+#: src/remmina_main.c:999 data/ui/remmina_main.glade:285
 msgid "Import"
 msgstr "Внасяне"
 
-#: src/remmina_main.c:1023 src/remmina_file_editor.c:1373
+#: src/remmina_main.c:1022 src/remmina_file_editor.c:1373
 msgid "_Save"
 msgstr "_Запази"
 
-#: src/remmina_main.c:1029
+#: src/remmina_main.c:1028
 msgid "This protocol does not support exporting."
 msgstr "Този протокол не поддържа изнасяне"
 
-#: src/remmina_main.c:1335
+#: src/remmina_main.c:1344
 msgid "Remmina Remote Desktop Client"
 msgstr "Клиент за отдалечен достъп Remmina"
 
-#: src/remmina_main.c:1337
+#: src/remmina_main.c:1346
 #, fuzzy
 msgid "Remmina Kiosk"
 msgstr "Remmina Kiosk"
@@ -2077,12 +2077,12 @@ msgid "Unable to connect to VNC server"
 msgstr "Невъзможност за свързване с VNC сървър"
 
 #: plugins/vnc/vnc_plugin.c:937
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Couldn’t convert '%s' to host address"
 msgstr "Не можах да преобразувам '%s' в адрес на хост"
 
 #: plugins/vnc/vnc_plugin.c:938
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "VNC connection failed: %s"
 msgstr "Връзката с VNC е неуспешна: %s"
 
@@ -2092,7 +2092,7 @@ msgid "Your connection has been rejected."
 msgstr "Връзката ви беше отхвърлена."
 
 #: plugins/vnc/vnc_plugin.c:966
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "The VNC server requested an unknown authentication method. %s"
 msgstr "VNC сървърът е поискал неизвестен метод за удостоверяване. %s"
 
@@ -2336,7 +2336,7 @@ msgid "Transfer error"
 msgstr "Грешка при прехвърлянето"
 
 #: plugins/spice/spice_plugin_file_transfer.c:220
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "%s: %s"
 msgstr "%s: %s"
 
@@ -2346,7 +2346,7 @@ msgid "Transfer completed"
 msgstr "Трансферът е завършен"
 
 #: plugins/spice/spice_plugin_file_transfer.c:224
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "The %s file has been transferred"
 msgstr "Файлът %s е прехвърлен"
 
@@ -2434,7 +2434,7 @@ msgid "Could not find the address for the RDP server “%s”."
 msgstr "Командата %s не е открита на SSH сървъра"
 
 #: plugins/rdp/rdp_plugin.c:2108
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "Could not connect to the RDP server “%s” via TLS. Check that client and "
 "server support a common TLS version."
@@ -2466,7 +2466,7 @@ msgid "Could not start libfreerdp-gdi."
 msgstr "Не можа да стартира libfreerdp-gdi."
 
 #: plugins/rdp/rdp_plugin.c:2126
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "You requested a H.264 GFX mode for the server “%s”, but your libfreerdp does "
 "not support H.264. Please use a non-AVC colour depth setting."
@@ -2476,18 +2476,18 @@ msgstr ""
 "от AVC."
 
 #: plugins/rdp/rdp_plugin.c:2133
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "The “%s” server refused the connection."
 msgstr "Сървърът \"%s\" отказа връзката."
 
 #: plugins/rdp/rdp_plugin.c:2138
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "The Remote Desktop Gateway “%s” denied the user “%s\\%s” access due to "
 "policy."
 msgstr ""
-"Шлюзът за отдалечен работен плот \"%s\" отказва достъп на потребителя \"%s\\%"
-"s\" поради политика."
+"Шлюзът за отдалечен работен плот \"%s\" отказва достъп на потребителя \"%s\\"
+"%s\" поради политика."
 
 #: plugins/rdp/rdp_plugin.c:2148
 #, c-format
@@ -2688,8 +2688,8 @@ msgid ""
 "Using auto-detection is advised.\n"
 "If “Auto-detect” fails, choose the most appropriate option in the list.\n"
 msgstr ""
-"Оптимизиране на производителността в зависимост от типа на мрежовата връзка:"
-"\n"
+"Оптимизиране на производителността в зависимост от типа на мрежовата "
+"връзка:\n"
 "Препоръчва се използването на автоматично откриване.\n"
 "Ако \"Auto-detect\" (Автоматично откриване) не успее, изберете най-"
 "подходящата опция от списъка.\n"
@@ -2870,8 +2870,8 @@ msgid ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
 msgstr ""
-"\"Samsung_CLX-3300_Series\": \"Samsung CLX-3300 Series PS\"; \"Canon MF410\":"
-" \"Canon MF410 Series UFR II\""
+"\"Samsung_CLX-3300_Series\": \"Samsung CLX-3300 Series PS\"; \"Canon "
+"MF410\": \"Canon MF410 Series UFR II\""
 
 #: plugins/rdp/rdp_plugin.c:2697
 #, fuzzy
@@ -3193,7 +3193,7 @@ msgid "Secured password storage in KWallet"
 msgstr "%s парола"
 
 #: plugins/telepathy/telepathy_channel_handler.c:237
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "%s wants to share their desktop.\n"
 "Do you accept?"
@@ -3528,8 +3528,8 @@ msgid ""
 "\">anonymous</a></b> statistics. (*)"
 msgstr ""
 "Изпращане на <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-"remmina__stats_8c.html#details\" title=\"Remmina usage statistics\""
-">анонимни</a></b> статистически данни. (*)"
+"remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
+"\">анонимни</a></b> статистически данни. (*)"
 
 #: data/ui/remmina_news.glade:142 data/ui/remmina_news.glade:195
 #, fuzzy

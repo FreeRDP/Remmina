@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-07-08 21:10+0000\n"
+"POT-Creation-Date: 2021-07-14 07:04+0000\n"
 "PO-Revision-Date: 2021-07-09 08:27+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Latvian <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -161,7 +161,7 @@ msgstr "Serveris"
 
 #. TRANSLATORS: “%s” is a placeholder for a protocol name, like “RDP”.
 #: src/remmina_protocol_widget.c:2043
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Install the %s protocol plugin first."
 msgstr "Vispirms instalējiet %s protokola spraudni."
 
@@ -218,7 +218,7 @@ msgstr ""
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_ssh_plugin.c:539
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Error: %s"
 msgstr "Kļūda: %s"
 
@@ -507,11 +507,11 @@ msgstr "Vairāku paroļu mainītājam ir nepieciešams slepenības spraudnis.\n"
 #, fuzzy
 msgid "The multi password changer requires a secrecy service.\n"
 msgstr ""
-"Vairāku paroļu mainītāja izmantošanai ir nepieciešams slepenības pakalpojums."
-"\n"
+"Vairāku paroļu mainītāja izmantošanai ir nepieciešams slepenības "
+"pakalpojums.\n"
 
 #: src/remmina_mpchange.c:409
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "%d password changed."
 msgid_plural "%d passwords changed."
 msgstr[0] "%d parole mainīta."
@@ -519,12 +519,12 @@ msgstr[1] ""
 msgstr[2] ""
 
 #: src/remmina_public.c:345
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Address is too long for UNIX socket_path: %s"
 msgstr "Adrese ir pārāk gara UNIX socket_path: %s"
 
 #: src/remmina_public.c:355
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Creating UNIX socket failed: %s"
 msgstr "UNIX ligzdas izveide neizdevās: %s"
 
@@ -534,11 +534,11 @@ msgstr "UNIX ligzdas izveide neizdevās: %s"
 msgid "Connecting to UNIX socket failed: %s"
 msgstr "Savienošanās ar UNIX ligzdu neizdevās: %s"
 
-#: src/remmina_public.c:632
+#: src/remmina_public.c:631
 msgid "Please enter format 'widthxheight'."
 msgstr "Lūdzu, ievadiet formātu “platumsxaugstums”."
 
-#: src/remmina_public.c:654
+#: src/remmina_public.c:653
 #, fuzzy
 msgid "Change security settings"
 msgstr "Drošības iestatījumu maiņa"
@@ -776,8 +776,8 @@ msgstr "Mainīt savienojuma profilu (nepieciešama opcija --set)"
 #, fuzzy
 msgid "Set one or more profile settings, to be used with --update-profile"
 msgstr ""
-"Iestatīt vienu vai vairākus profila iestatījumus, kas izmantojami kopā ar "
-"--update-profile"
+"Iestatīt vienu vai vairākus profila iestatījumus, kas izmantojami kopā ar --"
+"update-profile"
 
 #: src/remmina.c:121
 msgid "Encrypt a password"
@@ -825,8 +825,8 @@ msgid ""
 "password\n"
 msgstr ""
 "Piemēri:\n"
-"Lai izveidotu savienojumu, izmantojot esošo savienojuma profilu, izmantojiet:"
-"\n"
+"Lai izveidotu savienojumu, izmantojot esošo savienojuma profilu, "
+"izmantojiet:\n"
 "\n"
 "\tremmina -c FILE.remmina\n"
 "\n"
@@ -853,9 +853,9 @@ msgstr ""
 "Lai atjauninātu lietotājvārdu un paroli un iestatītu citu Remmina "
 "savienojuma profila izšķirtspējas režīmu, izmantojiet:\n"
 "\n"
-"\techo \"username\\n"
-"apassword\" | remmina --update-profile /PATH/TO/FOO.remmina --set-option "
-"username --set-option resolution_mode=2 --set-option password\n"
+"\techo \"username\\napassword\" | remmina --update-profile /PATH/TO/FOO."
+"remmina --set-option username --set-option resolution_mode=2 --set-option "
+"password\n"
 
 #: src/remmina_icon.c:128
 msgid "Open Main Window"
@@ -1010,7 +1010,7 @@ msgid "Disconnect"
 msgstr "Atvienot"
 
 #: src/rcw.c:4284
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "The file “%s” is corrupted, unreadable, or could not be found."
 msgstr "Failiņš \"%s\" ir bojāts, nav nolasāms vai nav atrodams."
 
@@ -1078,12 +1078,12 @@ msgstr[0] "Kopā %i vienums."
 msgstr[1] "Kopā %i vienumi."
 msgstr[2] "Kopā %i vienumu."
 
-#: src/remmina_main.c:854
+#: src/remmina_main.c:853
 #, c-format
 msgid "Are you sure you want to delete “%s”?"
 msgstr "Vai tiešām vēlaties dzēst “%s”"
 
-#: src/remmina_main.c:974
+#: src/remmina_main.c:973
 #, c-format
 msgid ""
 "Unable to import:\n"
@@ -1092,24 +1092,24 @@ msgstr ""
 "Neizdevās importēt:\n"
 "%s"
 
-#: src/remmina_main.c:1000 data/ui/remmina_main.glade:285
+#: src/remmina_main.c:999 data/ui/remmina_main.glade:285
 msgid "Import"
 msgstr "Importēt"
 
-#: src/remmina_main.c:1023 src/remmina_file_editor.c:1373
+#: src/remmina_main.c:1022 src/remmina_file_editor.c:1373
 #, fuzzy
 msgid "_Save"
 msgstr "_Saglabāt"
 
-#: src/remmina_main.c:1029
+#: src/remmina_main.c:1028
 msgid "This protocol does not support exporting."
 msgstr "Šis protokols neatbalsta eksportēšanu."
 
-#: src/remmina_main.c:1335
+#: src/remmina_main.c:1344
 msgid "Remmina Remote Desktop Client"
 msgstr "Attālinātas darbvirsmas pārlūks Remmina"
 
-#: src/remmina_main.c:1337
+#: src/remmina_main.c:1346
 #, fuzzy
 msgid "Remmina Kiosk"
 msgstr "Remmina kiosks"
@@ -1331,19 +1331,19 @@ msgstr "Nav saglabāta SSH parole. Lūgums lietotājam to ievadīt."
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:327 src/remmina_ssh.c:368 src/remmina_ssh.c:394
 #: src/remmina_ssh.c:433 src/remmina_ssh.c:746
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not authenticate with public SSH key. %s"
 msgstr "Nevarēja autentificēties ar publisko SSH atslēgu. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:336
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "SSH certificate cannot be imported. %s"
 msgstr "SSH sertifikātu nevar importēt. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:345
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "SSH certificate cannot be copied into the private SSH key. %s"
 msgstr "SSH sertifikātu nevar kopēt privātā SSH atslēgā. %s"
 
@@ -1360,12 +1360,12 @@ msgstr "SSH atslēga vēl nav iestatīta."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:380
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Public SSH key cannot be imported. %s"
 msgstr "Publisko SSH atslēgu nevar importēt. %s"
 
 #: src/remmina_ssh.c:478
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not authenticate automatically with public SSH key. %s"
 msgstr "Nevarēja automātiski autentificēties ar publisko SSH atslēgu. %s"
 
@@ -1396,7 +1396,7 @@ msgstr "Neizdevās savienoties ar SSH tuneļa mērķi — %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:921
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not fetch the server's public SSH key. %s"
 msgstr "Nevar iegūt servera publisko SSH atslēgu. %s"
 
@@ -1499,7 +1499,7 @@ msgid "The server did not respond."
 msgstr "Serveris neatbildēja."
 
 #: src/remmina_ssh.c:1916
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Cannot connect to local port %i."
 msgstr "Nevar izveidot savienojumu ar vietējo portu %i."
 
@@ -1834,7 +1834,7 @@ msgid "Remmina VNC plugin for GNOME and KVM"
 msgstr "Remmina VNC spraudnis GNOME un KVM"
 
 #: plugins/gvnc/gvnc_plugin.c:477
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Unsupported authentication type %u"
 msgstr "Neatbalstīts autentifikācijas tips %u"
 
@@ -2173,7 +2173,7 @@ msgid "Your connection has been rejected."
 msgstr "Jūsu savienojums tika noraidīts."
 
 #: plugins/vnc/vnc_plugin.c:966
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "The VNC server requested an unknown authentication method. %s"
 msgstr "VNC serveris pieprasīja nezināmu autentifikācijas metodi. %s"
 
@@ -2395,7 +2395,7 @@ msgid "Transfer error"
 msgstr "Transfer error"
 
 #: plugins/spice/spice_plugin_file_transfer.c:220
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "%s: %s"
 msgstr "%s: %s"
 
@@ -2405,7 +2405,7 @@ msgid "Transfer completed"
 msgstr "Pārsūtīšana pabeigta"
 
 #: plugins/spice/spice_plugin_file_transfer.c:224
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "The %s file has been transferred"
 msgstr "%s fails ir pārsūtīts"
 
@@ -2479,7 +2479,7 @@ msgid "Could not find the address for the RDP server “%s”."
 msgstr "Uz SSH servera nav atrasta %s komanda"
 
 #: plugins/rdp/rdp_plugin.c:2108
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "Could not connect to the RDP server “%s” via TLS. Check that client and "
 "server support a common TLS version."
@@ -2511,7 +2511,7 @@ msgid "Could not start libfreerdp-gdi."
 msgstr "Nevar palaist libfreerdp-gdi."
 
 #: plugins/rdp/rdp_plugin.c:2126
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "You requested a H.264 GFX mode for the server “%s”, but your libfreerdp does "
 "not support H.264. Please use a non-AVC colour depth setting."
@@ -2520,12 +2520,12 @@ msgstr ""
 "neatbalsta H.264. Lūdzu, izmantojiet krāsu dziļuma iestatījumu, kas nav AVC."
 
 #: plugins/rdp/rdp_plugin.c:2133
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "The “%s” server refused the connection."
 msgstr "\"%s\" serveris atteica savienojumu."
 
 #: plugins/rdp/rdp_plugin.c:2138
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "The Remote Desktop Gateway “%s” denied the user “%s\\%s” access due to "
 "policy."
@@ -2912,8 +2912,8 @@ msgid ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
 msgstr ""
-"\"Samsung_CLX-3300_Series\": \"Samsung CLX-3300 Series PS\"; \"Canon MF410\":"
-" \"Canon MF410 Series UFR II\"."
+"\"Samsung_CLX-3300_Series\": \"Samsung CLX-3300 Series PS\"; \"Canon "
+"MF410\": \"Canon MF410 Series UFR II\"."
 
 #: plugins/rdp/rdp_plugin.c:2697
 #, fuzzy
@@ -3002,8 +3002,8 @@ msgstr "Atkārtoti savienot mēģinājumu skaits"
 msgid ""
 "The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
 msgstr ""
-"Maksimālais atkārtota savienojuma mēģinājumu skaits pēc RDP atvienošanās ("
-"noklusējuma iestatījums: 20)."
+"Maksimālais atkārtota savienojuma mēģinājumu skaits pēc RDP atvienošanās "
+"(noklusējuma iestatījums: 20)."
 
 #: plugins/rdp/rdp_plugin.c:2708
 #, fuzzy
@@ -3557,8 +3557,8 @@ msgid ""
 "\">anonymous</a></b> statistics. (*)"
 msgstr ""
 "Sūtīt <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-"remmina__stats_8c.html#details\" title=\"Remmina usage statistics\""
-">anonīmu</a></b> statistiku. (*)"
+"remmina__stats_8c.html#details\" title=\"Remmina usage statistics\">anonīmu</"
+"a></b> statistiku. (*)"
 
 #: data/ui/remmina_news.glade:142 data/ui/remmina_news.glade:195
 #, fuzzy
@@ -3586,8 +3586,8 @@ msgid ""
 "Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
 "\">remmina.org</a> (*)"
 msgstr ""
-"Saņemt ziņas no <a href=\"https://remmina.org\" title=\"Remmina news site\""
-">remmina.org</a> (*)"
+"Saņemt ziņas no <a href=\"https://remmina.org\" title=\"Remmina news site"
+"\">remmina.org</a> (*)"
 
 #: data/ui/remmina_news.glade:208 data/ui/remmina_preferences.glade:446
 #, fuzzy
@@ -3758,8 +3758,8 @@ msgid ""
 msgstr ""
 "%p Profila nosaukums\n"
 "%h Servera nosaukums/IP\n"
-"%Y Gads, %m Mēnesis, %d Diena, %H Stunda, %M Minūte, %S Sekundes (UTC laiks)"
-"\n"
+"%Y Gads, %m Mēnesis, %d Diena, %H Stunda, %M Minūte, %S Sekundes (UTC "
+"laiks)\n"
 
 #: data/ui/remmina_preferences.glade:280
 #, fuzzy

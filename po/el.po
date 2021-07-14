@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-07-08 21:10+0000\n"
+"POT-Creation-Date: 2021-07-14 07:04+0000\n"
 "PO-Revision-Date: 2021-07-09 08:26+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Greek <https://hosted.weblate.org/projects/remmina/remmina/el/"
@@ -479,12 +479,12 @@ msgstr[0] "%d κωδικός πρόσβασης άλλαξε."
 msgstr[1] "%d κωδικοί πρόσβασης άλλαξαν."
 
 #: src/remmina_public.c:345
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Address is too long for UNIX socket_path: %s"
 msgstr "Η διεύθυνση είναι πολύ μεγάλη για το UNIX socket_path: %s"
 
 #: src/remmina_public.c:355
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Creating UNIX socket failed: %s"
 msgstr "Η δημιουργία υποδοχής UNIX απέτυχε: %s"
 
@@ -494,11 +494,11 @@ msgstr "Η δημιουργία υποδοχής UNIX απέτυχε: %s"
 msgid "Connecting to UNIX socket failed: %s"
 msgstr "Η σύνδεση σε υποδοχή UNIX απέτυχε: %s"
 
-#: src/remmina_public.c:632
+#: src/remmina_public.c:631
 msgid "Please enter format 'widthxheight'."
 msgstr "Παρακαλώ εισάγετε με μορφή 'πλάτοςxύψος'."
 
-#: src/remmina_public.c:654
+#: src/remmina_public.c:653
 msgid "Change security settings"
 msgstr "Αλλαγή ρυθμίσεων ασφαλείας"
 
@@ -791,8 +791,8 @@ msgstr ""
 "\n"
 "\tόνομα χρήστη:κρυπτογραφημένος-συνθηματικό@server\n"
 "\tremmina -c vnc://όνομα χρήστη:κρυπτογραφημένος-συνθηματικό@server\n"
-"\tremmina -c vnc://server?VncUsername=όνομα χρήστη\\"
-"&VncPassword=κρυπτογραφημένος-συνθηματικό\n"
+"\tremmina -c vnc://server?VncUsername=όνομα χρήστη"
+"\\&VncPassword=κρυπτογραφημένος-συνθηματικό\n"
 "\n"
 "Για να κρυπτογραφήσετε έναν κωδικό πρόσβασης για χρήση με ένα URI:\n"
 "\n"
@@ -951,7 +951,7 @@ msgid "Disconnect"
 msgstr "Αποσύνδεση"
 
 #: src/rcw.c:4284
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "The file “%s” is corrupted, unreadable, or could not be found."
 msgstr "Το αρχείο \"%s\" είναι κατεστραμμένο, μη αναγνώσιμο ή δεν βρέθηκε."
 
@@ -1019,12 +1019,12 @@ msgid_plural "Total %i items."
 msgstr[0] "Σύνολο %i αντικείμενο."
 msgstr[1] "Σύνολο %i αντικείμενα."
 
-#: src/remmina_main.c:854
+#: src/remmina_main.c:853
 #, c-format
 msgid "Are you sure you want to delete “%s”?"
 msgstr "Είστε σίγουρη/ος για τη διαγραφή του: '%s'?"
 
-#: src/remmina_main.c:974
+#: src/remmina_main.c:973
 #, c-format
 msgid ""
 "Unable to import:\n"
@@ -1033,23 +1033,23 @@ msgstr ""
 "Δεν είναι δυνατή η εισαγωγή του:\n"
 "%s"
 
-#: src/remmina_main.c:1000 data/ui/remmina_main.glade:285
+#: src/remmina_main.c:999 data/ui/remmina_main.glade:285
 msgid "Import"
 msgstr "Εισαγωγή"
 
-#: src/remmina_main.c:1023 src/remmina_file_editor.c:1373
+#: src/remmina_main.c:1022 src/remmina_file_editor.c:1373
 msgid "_Save"
 msgstr "_Αποθήκευση"
 
-#: src/remmina_main.c:1029
+#: src/remmina_main.c:1028
 msgid "This protocol does not support exporting."
 msgstr "Αυτό το πρωτόκολλο δεν υποστηρίζει την εξαγωγή."
 
-#: src/remmina_main.c:1335
+#: src/remmina_main.c:1344
 msgid "Remmina Remote Desktop Client"
 msgstr "Διακομιστής απομακρυσμένης επιφάνειας εργασίας Remmina"
 
-#: src/remmina_main.c:1337
+#: src/remmina_main.c:1346
 msgid "Remmina Kiosk"
 msgstr "Περίπτερο Ρεμίνα"
 
@@ -1439,7 +1439,7 @@ msgid "The server did not respond."
 msgstr "Ο διακομιστής δεν απάντησε."
 
 #: src/remmina_ssh.c:1916
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Cannot connect to local port %i."
 msgstr "Δεν είναι δυνατή η σύνδεση στην τοπική θύρα %i."
 
@@ -2129,7 +2129,7 @@ msgid "Your connection has been rejected."
 msgstr "Η σύνδεσή σας απορρίφθηκε."
 
 #: plugins/vnc/vnc_plugin.c:966
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "The VNC server requested an unknown authentication method. %s"
 msgstr "Ο διακομιστής VNC ζήτησε μια άγνωστη μέθοδο ελέγχου ταυτότητας. %s"
 
@@ -2355,7 +2355,7 @@ msgid "Transfer error"
 msgstr "Σφάλμα μεταφοράς"
 
 #: plugins/spice/spice_plugin_file_transfer.c:220
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "%s: %s"
 msgstr "%s: %s"
 
@@ -2365,7 +2365,7 @@ msgid "Transfer completed"
 msgstr "Η μεταφορά ολοκληρώθηκε"
 
 #: plugins/spice/spice_plugin_file_transfer.c:224
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "The %s file has been transferred"
 msgstr "Το αρχείο %s έχει μεταφερθεί"
 
@@ -2453,7 +2453,7 @@ msgid "Could not find the address for the RDP server “%s”."
 msgstr "Δεν ήταν δυνατή η εύρεση της διεύθυνσης για το διακομιστή RDP \"%s\"."
 
 #: plugins/rdp/rdp_plugin.c:2108
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "Could not connect to the RDP server “%s” via TLS. Check that client and "
 "server support a common TLS version."
@@ -2485,7 +2485,7 @@ msgid "Could not start libfreerdp-gdi."
 msgstr "Δεν ήταν δυνατή η εκκίνηση της libfreerdp-gdi."
 
 #: plugins/rdp/rdp_plugin.c:2126
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "You requested a H.264 GFX mode for the server “%s”, but your libfreerdp does "
 "not support H.264. Please use a non-AVC colour depth setting."
@@ -2495,12 +2495,12 @@ msgstr ""
 "βάθους χρώματος μη-AVC."
 
 #: plugins/rdp/rdp_plugin.c:2133
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "The “%s” server refused the connection."
 msgstr "Ο διακομιστής \"%s\" αρνήθηκε τη σύνδεση."
 
 #: plugins/rdp/rdp_plugin.c:2138
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "The Remote Desktop Gateway “%s” denied the user “%s\\%s” access due to "
 "policy."
@@ -2613,7 +2613,8 @@ msgstr "Επέκταση της ασφάλειας του πρωτοκόλλου
 #: plugins/rdp/rdp_plugin.c:2571
 #, fuzzy
 msgid "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 and newer)"
-msgstr "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 και νεότερα)"
+msgstr ""
+"2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 και νεότερα)"
 
 #: plugins/rdp/rdp_plugin.c:2574
 #, fuzzy
@@ -2885,8 +2886,8 @@ msgid ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
 msgstr ""
-"\"Samsung_CLX-3300_Series\": \"Samsung CLX-3300 Series PS\"; \"Canon MF410\":"
-" \"Canon MF410 Series UFR II\""
+"\"Samsung_CLX-3300_Series\": \"Samsung CLX-3300 Series PS\"; \"Canon "
+"MF410\": \"Canon MF410 Series UFR II\""
 
 #: plugins/rdp/rdp_plugin.c:2697
 #, fuzzy
@@ -3361,8 +3362,8 @@ msgstr ""
 #, fuzzy
 msgid "Search string or server name/IP address for “Quick Connect”"
 msgstr ""
-"Συμβολοσειρά αναζήτησης ή όνομα διακομιστή/διεύθυνση IP για \"Γρήγορη "
-"σύνδεση\""
+"Συμβολοσειρά αναζήτησης ή όνομα διακομιστή/διεύθυνση IP για \"Γρήγορη σύνδεση"
+"\""
 
 #: data/ui/remmina_main.glade:101 data/ui/remmina_main.glade:103
 #, fuzzy
@@ -3529,8 +3530,8 @@ msgid ""
 "\">anonymous</a></b> statistics. (*)"
 msgstr ""
 "Αποστολή <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-"remmina__stats_8c.html#details\" title=\"Remmina usage statistics\""
-">ανώνυμων</a></b> στατιστικών στοιχείων. (*)"
+"remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
+"\">ανώνυμων</a></b> στατιστικών στοιχείων. (*)"
 
 #: data/ui/remmina_news.glade:142 data/ui/remmina_news.glade:195
 #, fuzzy
@@ -3557,8 +3558,8 @@ msgid ""
 "Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
 "\">remmina.org</a> (*)"
 msgstr ""
-"Λήψη ειδήσεων από <a href=\"https://remmina.org\" title=\"Remmina news site\""
-">remmina.org</a> (*)"
+"Λήψη ειδήσεων από <a href=\"https://remmina.org\" title=\"Remmina news site"
+"\">remmina.org</a> (*)"
 
 #: data/ui/remmina_news.glade:208 data/ui/remmina_preferences.glade:446
 #, fuzzy

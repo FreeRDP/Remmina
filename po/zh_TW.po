@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-07-08 21:10+0000\n"
+"POT-Creation-Date: 2021-07-14 07:04+0000\n"
 "PO-Revision-Date: 2021-07-12 20:35+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
@@ -200,11 +200,13 @@ msgid ""
 "This file contains the “Custom” terminal colour scheme selectable from the "
 "“Advanced” tab of terminal connections and editable in the “Terminal” tab in "
 "the settings."
-msgstr "该文件包含 \"自定义 \"终端颜色方案，可从终端连接的 \"高级 \"选项卡中选择，并可在设置的 \"终端 \"选项卡中编辑。"
+msgstr ""
+"该文件包含 \"自定义 \"终端颜色方案，可从终端连接的 \"高级 \"选项卡中选择，并"
+"可在设置的 \"终端 \"选项卡中编辑。"
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_ssh_plugin.c:539
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Error: %s"
 msgstr "錯誤: %s"
 
@@ -473,12 +475,12 @@ msgid_plural "%d passwords changed."
 msgstr[0] "%d 密碼已變更。"
 
 #: src/remmina_public.c:345
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Address is too long for UNIX socket_path: %s"
 msgstr "地址对于UNIX的socket_path来说太长了。%s"
 
 #: src/remmina_public.c:355
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Creating UNIX socket failed: %s"
 msgstr "创建UNIX套接字失败。%s"
 
@@ -488,11 +490,11 @@ msgstr "创建UNIX套接字失败。%s"
 msgid "Connecting to UNIX socket failed: %s"
 msgstr "连接到UNIX套接字失败。%s"
 
-#: src/remmina_public.c:632
+#: src/remmina_public.c:631
 msgid "Please enter format 'widthxheight'."
 msgstr "請輸入格式「寬x高」。"
 
-#: src/remmina_public.c:654
+#: src/remmina_public.c:653
 msgid "Change security settings"
 msgstr "品質設定"
 
@@ -782,9 +784,9 @@ msgstr ""
 "\n"
 "要更新用户名和密码，并设置Remmina连接配置文件的不同解析模式，请使用。\n"
 "\n"
-"\techo \"username\\n"
-"apassword\" | remmina --update-profile /PATH/TO/FOO.remmina --set-option "
-"username --set-option resolution_mode=2 --set-option password\n"
+"\techo \"username\\napassword\" | remmina --update-profile /PATH/TO/FOO."
+"remmina --set-option username --set-option resolution_mode=2 --set-option "
+"password\n"
 
 #: src/remmina_icon.c:128
 msgid "Open Main Window"
@@ -992,12 +994,12 @@ msgid "Total %i item."
 msgid_plural "Total %i items."
 msgstr[0] "共 %i 項。"
 
-#: src/remmina_main.c:854
+#: src/remmina_main.c:853
 #, c-format
 msgid "Are you sure you want to delete “%s”?"
 msgstr "確定要刪除「%s」？"
 
-#: src/remmina_main.c:974
+#: src/remmina_main.c:973
 #, c-format
 msgid ""
 "Unable to import:\n"
@@ -1006,23 +1008,23 @@ msgstr ""
 "無法匯入:\n"
 "%s"
 
-#: src/remmina_main.c:1000 data/ui/remmina_main.glade:285
+#: src/remmina_main.c:999 data/ui/remmina_main.glade:285
 msgid "Import"
 msgstr "匯入"
 
-#: src/remmina_main.c:1023 src/remmina_file_editor.c:1373
+#: src/remmina_main.c:1022 src/remmina_file_editor.c:1373
 msgid "_Save"
 msgstr "儲存(_S)"
 
-#: src/remmina_main.c:1029
+#: src/remmina_main.c:1028
 msgid "This protocol does not support exporting."
 msgstr "此協定不支援匯出。"
 
-#: src/remmina_main.c:1335
+#: src/remmina_main.c:1344
 msgid "Remmina Remote Desktop Client"
 msgstr "Remmina 遠端桌面客戶端"
 
-#: src/remmina_main.c:1337
+#: src/remmina_main.c:1346
 msgid "Remmina Kiosk"
 msgstr "Remmina 服務台"
 
@@ -1225,7 +1227,7 @@ msgstr "没有提供保存的SSH口令。要求用户输入。"
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:327 src/remmina_ssh.c:368 src/remmina_ssh.c:394
 #: src/remmina_ssh.c:433 src/remmina_ssh.c:746
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not authenticate with public SSH key. %s"
 msgstr "无法用公共SSH密钥进行认证。%s"
 
@@ -1261,7 +1263,7 @@ msgid "Public SSH key cannot be imported. %s"
 msgstr "無法匯入 SSH 公鑰：%s"
 
 #: src/remmina_ssh.c:478
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not authenticate automatically with public SSH key. %s"
 msgstr "无法用公共SSH密钥自动认证。%s"
 
@@ -1291,7 +1293,7 @@ msgstr "無法連接 SSH 通道目的地：%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:921
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not fetch the server's public SSH key. %s"
 msgstr "无法获取服务器的公共SSH密钥。%s"
 
@@ -2031,7 +2033,7 @@ msgid "Your connection has been rejected."
 msgstr "您的連線已被拒絕。"
 
 #: plugins/vnc/vnc_plugin.c:966
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "The VNC server requested an unknown authentication method. %s"
 msgstr "VNC服务器请求一个未知的认证方法。%s"
 
@@ -2486,7 +2488,8 @@ msgstr "NLA扩展协议安全"
 #: plugins/rdp/rdp_plugin.c:2571
 #, fuzzy
 msgid "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 and newer)"
-msgstr "2600（Windows XP），7601（Windows Vista/7），9600（Windows 8和更新版本）。"
+msgstr ""
+"2600（Windows XP），7601（Windows Vista/7），9600（Windows 8和更新版本）。"
 
 #: plugins/rdp/rdp_plugin.c:2574
 #, fuzzy
@@ -3117,7 +3120,8 @@ msgid ""
 "profiles are saved inside the Snap file system by default. You can change "
 "the location in the Remmina preferences."
 msgstr ""
-"由于Snap软件包的运行与系统的其他部分相分离，Remmina配置文件默认保存在Snap文件系统内。你可以在Remmina首选项中改变这个位置。"
+"由于Snap软件包的运行与系统的其他部分相分离，Remmina配置文件默认保存在Snap文件"
+"系统内。你可以在Remmina首选项中改变这个位置。"
 
 #: data/ui/remmina_snap_info_dialog.glade:222
 #, fuzzy
@@ -3352,8 +3356,8 @@ msgid ""
 "Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
 "\">remmina.org</a> (*)"
 msgstr ""
-"从<a href=\"https://remmina.org\" title=\"Remmina news site\">remmina.org</"
-"a>获取新闻 (*)"
+"从<a href=\"https://remmina.org\" title=\"Remmina news site\">remmina.org</a>"
+"获取新闻 (*)"
 
 #: data/ui/remmina_news.glade:208 data/ui/remmina_preferences.glade:446
 #, fuzzy
@@ -3856,7 +3860,8 @@ msgstr "使用系統預設字型"
 msgid ""
 "Selecting “SGR 1” also switches to the bright counterparts of the first 8 "
 "palette colours (in addition to making text bold)."
-msgstr "选择 \"SGR 1 \"也会切换到前8种调色板颜色的明亮对应色（除了使文字变粗之外）。"
+msgstr ""
+"选择 \"SGR 1 \"也会切换到前8种调色板颜色的明亮对应色（除了使文字变粗之外）。"
 
 #: data/ui/remmina_preferences.glade:2022
 #, fuzzy

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Remmina v1.4.5\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-07-08 21:10+0000\n"
+"POT-Creation-Date: 2021-07-14 07:04+0000\n"
 "PO-Revision-Date: 2021-07-12 20:35+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -475,25 +475,25 @@ msgstr[0] "\"%d\" رمزعبور تغییر داده شد."
 msgstr[1] "\"%d\" رمزعبورها تغییر داده شد."
 
 #: src/remmina_public.c:345
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Address is too long for UNIX socket_path: %s"
 msgstr "آدرس بیش از حد طولانی برای یونی socket_path: %s"
 
 #: src/remmina_public.c:355
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Creating UNIX socket failed: %s"
 msgstr "ایجاد سوکت UNIX با شکست مواجه شد: %s"
 
 #: src/remmina_public.c:361
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Connecting to UNIX socket failed: %s"
 msgstr "اتصال به سوکت UNIX با شکست مواجه شد: %s"
 
-#: src/remmina_public.c:632
+#: src/remmina_public.c:631
 msgid "Please enter format 'widthxheight'."
 msgstr "لطفا در قالب 'عرض x طول' وارد کنید."
 
-#: src/remmina_public.c:654
+#: src/remmina_public.c:653
 #, fuzzy
 msgid "Change security settings"
 msgstr "تغییر تنظیمات امنیتی"
@@ -809,9 +809,9 @@ msgstr ""
 "برای به روز رسانی نام کاربری و رمز عبور و تنظیم حالت وضوح متفاوت از یک "
 "پروفایل اتصال Remmina، استفاده کنید:\n"
 "\n"
-"echo \"username\\n"
-"apassword\" | remmina --update-profile /PATH/TO/FOO.remmina --set-option "
-"username --set-option resolution_mode=2 --set-option password\n"
+"echo \"username\\napassword\" | remmina --update-profile /PATH/TO/FOO."
+"remmina --set-option username --set-option resolution_mode=2 --set-option "
+"password\n"
 
 #: src/remmina_icon.c:128
 #, fuzzy
@@ -852,7 +852,7 @@ msgid "Connect to remote desktops through the applet menu"
 msgstr "اتصال به دسکتاپ از راه دور از طریق منوی اپلت"
 
 #: src/rcw.c:658
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "Are you sure you want to close %i active connections in the current window?"
 msgstr "آیا مطمئن هستید که می خواهید اتصالات فعال %i را در پنجره فعلی ببنید؟"
@@ -980,7 +980,7 @@ msgid "Disconnect"
 msgstr "قطع اتصال"
 
 #: src/rcw.c:4284
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "The file “%s” is corrupted, unreadable, or could not be found."
 msgstr "پرونده \"%s\" خراب شده، غیرقابل خواندن است، یا یافت نمی شود."
 
@@ -1052,19 +1052,19 @@ msgid "Version"
 msgstr "نسخه"
 
 #: src/remmina_main.c:662
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Total %i item."
 msgid_plural "Total %i items."
 msgstr[0] "مجموع %i مورد."
 msgstr[1] ""
 
-#: src/remmina_main.c:854
-#, c-format, fuzzy
+#: src/remmina_main.c:853
+#, fuzzy, c-format
 msgid "Are you sure you want to delete “%s”?"
 msgstr "آیا مطمئنید که می‌خواهید %s را حذف کنید؟"
 
-#: src/remmina_main.c:974
-#, c-format, fuzzy
+#: src/remmina_main.c:973
+#, fuzzy, c-format
 msgid ""
 "Unable to import:\n"
 "%s"
@@ -1072,27 +1072,27 @@ msgstr ""
 "قادر به وارد کردن:\n"
 "%s"
 
-#: src/remmina_main.c:1000 data/ui/remmina_main.glade:285
+#: src/remmina_main.c:999 data/ui/remmina_main.glade:285
 #, fuzzy
 msgid "Import"
 msgstr "درون‌ریزی"
 
-#: src/remmina_main.c:1023 src/remmina_file_editor.c:1373
+#: src/remmina_main.c:1022 src/remmina_file_editor.c:1373
 #, fuzzy
 msgid "_Save"
 msgstr "_ذخیره"
 
-#: src/remmina_main.c:1029
+#: src/remmina_main.c:1028
 #, fuzzy
 msgid "This protocol does not support exporting."
 msgstr "این پروتکل از صادرات پشتیبانی نمی کند."
 
-#: src/remmina_main.c:1335
+#: src/remmina_main.c:1344
 #, fuzzy
 msgid "Remmina Remote Desktop Client"
 msgstr "Remmina از راه دور دسکتاپ مشتری"
 
-#: src/remmina_main.c:1337
+#: src/remmina_main.c:1346
 #, fuzzy
 msgid "Remmina Kiosk"
 msgstr "ریمینا کیوسک"
@@ -1134,13 +1134,13 @@ msgstr "<None>"
 
 #. TRANSLATORS: The placeholder %s is a directory path
 #: src/remmina_sftp_client.c:173
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not create the folder “%s”."
 msgstr "نمی توانست پوشه \"%s\" را ایجاد کند."
 
 #. TRANSLATORS: The placeholder %s is a file path
 #: src/remmina_sftp_client.c:181 src/remmina_sftp_client.c:202
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not create the file “%s”."
 msgstr "نمی توانست پرونده \"%s\" را ایجاد کند."
 
@@ -1151,38 +1151,38 @@ msgid "Could not open the file “%s” on the server. %s"
 msgstr "دستور \"%s\" روی سرور SSH اجرا نشد (وضعیت =\"%i\")."
 
 #: src/remmina_sftp_client.c:242
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not save the file “%s”."
 msgstr "نمی توانست پرونده \"%s\" را ذخیره کند."
 
 #: src/remmina_sftp_client.c:281 src/remmina_sftp_client.c:698
 #: src/remmina_sftp_client.c:761
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not open the folder “%s”. %s"
 msgstr "نمی توانست پوشه \"%s\" را باز کند. %s"
 
 #: src/remmina_sftp_client.c:385
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not create the folder “%s” on the server. %s"
 msgstr "نمی توانست پوشه \"%s\" را روی سرور ایجاد کند. %s"
 
 #: src/remmina_sftp_client.c:413 src/remmina_sftp_client.c:435
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not create the file “%s” on the server. %s"
 msgstr "نمی توانست پرونده \"%s\" را روی سرور ایجاد کند. %s"
 
 #: src/remmina_sftp_client.c:456
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not open the file “%s”."
 msgstr "نمی توانست پرونده \"%s\" را باز کند."
 
 #: src/remmina_sftp_client.c:476
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not write to the file “%s” on the server. %s"
 msgstr "نمی توانست روی فایل \"%s\" روی سرور بنویسد. %s"
 
 #: src/remmina_sftp_client.c:716
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not read from the folder. %s"
 msgstr "نمی توانست از پوشه بخواند. %s"
 
@@ -1192,7 +1192,7 @@ msgid "Are you sure you want to cancel the file transfer in progress?"
 msgstr "آیا مطمئن هستید که می خواهید انتقال پرونده در حال انجام را لغو کنید؟"
 
 #: src/remmina_sftp_client.c:857
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not delete “%s”. %s"
 msgstr "نمی تواند \"%s\" را حذف کند. %s"
 
@@ -1306,12 +1306,12 @@ msgid "SFTP - Secure File Transfer"
 msgstr "SFTP -- امن انتقال فایل"
 
 #: src/remmina_ssh.c:236
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not authenticate with TOTP/OTP/2FA. %s"
 msgstr "نمی توانست با TOTP/OTP/2FA تصدیق شود. %s"
 
 #: src/remmina_ssh.c:295 src/remmina_ssh.c:676
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not authenticate with SSH password. %s"
 msgstr "نمی تواند با رمز عبور SSH تصدیق شود. %s"
 
@@ -1324,19 +1324,19 @@ msgstr ""
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:327 src/remmina_ssh.c:368 src/remmina_ssh.c:394
 #: src/remmina_ssh.c:433 src/remmina_ssh.c:746
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not authenticate with public SSH key. %s"
 msgstr "نمی توانست با کلید عمومی SSH تصدیق شود. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:336
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "SSH certificate cannot be imported. %s"
 msgstr "گواهی SSH وارد نمی شود. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:345
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "SSH certificate cannot be copied into the private SSH key. %s"
 msgstr "گواهی SSH را نمی توان در کلید SSH خصوصی کپی کرد. %s"
 
@@ -1353,12 +1353,12 @@ msgstr "فایل هویت SSH"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:380
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Public SSH key cannot be imported. %s"
 msgstr "کلید عمومی SSH را نمی توان وارد کرد. %s"
 
 #: src/remmina_ssh.c:478
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not authenticate automatically with public SSH key. %s"
 msgstr "نمی توانست به طور خودکار با کلید SSH عمومی تصدیق شود. %s"
 
@@ -1389,19 +1389,19 @@ msgstr "امکان تأیید اعتبار وجود ندارد ، تلاش بر�
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:921
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not fetch the server's public SSH key. %s"
 msgstr "نمی تواند کلید عمومی SSH سرور را واکشی کند. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:928
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not fetch public SSH key. %s"
 msgstr "نمی تواند کلید SSH عمومی را واکشی کند. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:936
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not fetch checksum of the public SSH key. %s"
 msgstr "نمی تواند چک از کلید SSH عمومی واکشی. %s"
 
@@ -1428,7 +1428,7 @@ msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:979
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not check list of known SSH hosts. %s"
 msgstr "نمی توانست لیست میزبان های شناخته شده SSH را بررسی کند. %s"
 
@@ -1469,25 +1469,25 @@ msgstr "صفحه کلید ورود تعاملی ، TOTP / OTP / 2FA"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1337
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not start SSH session. %s"
 msgstr "نمی توانست جلسه SSH را شروع کند. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1735
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not create channel. %s"
 msgstr "نمی توانست کانال ایجاد کند. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1746
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not connect to SSH tunnel. %s"
 msgstr "نمی توانست به تونل SSH متصل شود. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1816 src/remmina_ssh.c:1837 src/remmina_ssh.c:1846
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not request port forwarding. %s"
 msgstr "نمی تواند درخواست ارسال پورت. %s"
 
@@ -1497,37 +1497,37 @@ msgid "The server did not respond."
 msgstr "سرور پاسخ نداد."
 
 #: src/remmina_ssh.c:1916
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Cannot connect to local port %i."
 msgstr "نمی تواند به پورت محلی %i متصل شود."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1965
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not write to SSH channel. %s"
 msgstr "نمی توانست به کانال SSH بنویسد. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1972
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not read from tunnel listening socket. %s"
 msgstr "نمی توانست از سوکت گوش دادن تونل بخواند. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1992
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not poll SSH channel. %s"
 msgstr "نمی توانست کانال SSH را نظرسنجی کند. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1999
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not read SSH channel in a non-blocking way. %s"
 msgstr "نمی توانست کانال SSH را به صورت غیر مسدود کننده بخواند. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:2018
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not send data to tunnel listening socket. %s"
 msgstr "نمی توانست داده ها را به سوکت گوش دادن تونل ارسال کند. %s"
 
@@ -1559,25 +1559,25 @@ msgstr "نميتونست شروع به وحشت کنه"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:2280
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not create SFTP session. %s"
 msgstr "نمی توانست جلسه SFTP را ایجاد کند. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:2285
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not start SFTP session. %s"
 msgstr "نمی توانست جلسه SFTP را شروع کند. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:2378
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not open channel. %s"
 msgstr "نمی توانست کانال را باز کند. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:2393
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not request shell. %s"
 msgstr "نميتونستم درخواست پوسته کنم %s"
 
@@ -1650,7 +1650,7 @@ msgid "Choose a Remote Desktop Server"
 msgstr "انتخاب یک سرور دسکتاپ از راه دور"
 
 #: src/remmina_file_editor.c:370
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Browse the network to find a %s server"
 msgstr "مرور شبکه برای پیدا کردن %s سرور"
 
@@ -1731,7 +1731,7 @@ msgid "Tunnel via loopback address"
 msgstr "تونل از طریق آدرس loopback"
 
 #: src/remmina_file_editor.c:888
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Same server at port %i"
 msgstr "همان سرور در پورت %i"
 
@@ -1801,17 +1801,17 @@ msgid "Quick Connect"
 msgstr "اتصال سریع"
 
 #: src/remmina_file_editor.c:1528
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Use '%s' as subgroup delimiter"
 msgstr "استفاده از '%s' به عنوان زیر گروه delimiter"
 
 #: src/remmina_file_editor.c:1594 src/remmina_file_editor.c:1612
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not find the file “%s”."
 msgstr "نمی توانست پرونده \"%s\" را پیدا کند."
 
 #: src/remmina_chat_window.c:178
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Chat with %s"
 msgstr "چت با %s"
 
@@ -2159,12 +2159,12 @@ msgid "Unable to connect to VNC server"
 msgstr "."
 
 #: plugins/vnc/vnc_plugin.c:937
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Couldn’t convert '%s' to host address"
 msgstr "نمی توانست '%s' را به آدرس میزبان تبدیل کند"
 
 #: plugins/vnc/vnc_plugin.c:938
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "VNC connection failed: %s"
 msgstr "اتصال VNC با شکست مواجه شد: %s"
 
@@ -2174,7 +2174,7 @@ msgid "Your connection has been rejected."
 msgstr "ارتباط شما رد شده است."
 
 #: plugins/vnc/vnc_plugin.c:966
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "The VNC server requested an unknown authentication method. %s"
 msgstr "سرور VNC یک روش احراز هویت ناشناخته درخواست کرد. %s"
 
@@ -2325,7 +2325,7 @@ msgid "Enter SPICE password"
 msgstr "رمز عبور SPICE را وارد کنید"
 
 #: plugins/spice/spice_plugin.c:386
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Disconnected from the SPICE server “%s”."
 msgstr "قطع ارتباط با سرور SPICE \"%s\"."
 
@@ -2417,7 +2417,7 @@ msgid "Transfer error"
 msgstr "اشکال در ارسال"
 
 #: plugins/spice/spice_plugin_file_transfer.c:220
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "%s: %s"
 msgstr "%s: %s"
 
@@ -2427,7 +2427,7 @@ msgid "Transfer completed"
 msgstr "انتقال به پایان رسید"
 
 #: plugins/spice/spice_plugin_file_transfer.c:224
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "The %s file has been transferred"
 msgstr "پرونده %s منتقل شده است"
 
@@ -2442,7 +2442,7 @@ msgid "Enter RDP gateway authentication credentials"
 msgstr "اعتبار نامه احراز هویت دروازه RDP را وارد کنید"
 
 #: plugins/rdp/rdp_plugin.c:2053
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account locked out."
@@ -2451,7 +2451,7 @@ msgstr ""
 "حساب قفل شده ."
 
 #: plugins/rdp/rdp_plugin.c:2060
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account expired."
@@ -2460,7 +2460,7 @@ msgstr ""
 "حساب منقضی شد."
 
 #: plugins/rdp/rdp_plugin.c:2067
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Password expired."
@@ -2469,7 +2469,7 @@ msgstr ""
 "رمز عبور منقضی شد."
 
 #: plugins/rdp/rdp_plugin.c:2074
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account disabled."
@@ -2478,7 +2478,7 @@ msgstr ""
 "حساب غیر فعال شده است."
 
 #: plugins/rdp/rdp_plugin.c:2080
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Insufficient user privileges."
@@ -2487,7 +2487,7 @@ msgstr ""
 "امتیازات کاربر ناکافی است."
 
 #: plugins/rdp/rdp_plugin.c:2088
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account restricted."
@@ -2496,7 +2496,7 @@ msgstr ""
 "حساب محدود شده است."
 
 #: plugins/rdp/rdp_plugin.c:2096
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Change user password before connecting."
@@ -2505,17 +2505,17 @@ msgstr ""
 "تغییر رمز عبور کاربر قبل از اتصال."
 
 #: plugins/rdp/rdp_plugin.c:2101
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Lost connection to the RDP server “%s”."
 msgstr "اتصال از دست رفته به سرور RDP \"%s\"."
 
 #: plugins/rdp/rdp_plugin.c:2104
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not find the address for the RDP server “%s”."
 msgstr "نمی توانست آدرس سرور RDP \"%s\" را پیدا کند."
 
 #: plugins/rdp/rdp_plugin.c:2108
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "Could not connect to the RDP server “%s” via TLS. Check that client and "
 "server support a common TLS version."
@@ -2525,7 +2525,7 @@ msgstr ""
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:2112
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "Unable to establish a connection to the RDP server “%s”. Check “Security "
 "protocol negotiation”."
@@ -2533,7 +2533,7 @@ msgstr ""
 "قادر به برقراری اتصال به سرور RDP \"%s\". بررسی \"مذاکره پروتکل امنیتی\"."
 
 #: plugins/rdp/rdp_plugin.c:2120
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Cannot connect to the RDP server “%s”."
 msgstr "نمی توان به سرور RDP \"%s\" متصل شد."
 
@@ -2543,7 +2543,7 @@ msgid "Could not start libfreerdp-gdi."
 msgstr "نميتونست شروع کنه به libfreerdp-gdi"
 
 #: plugins/rdp/rdp_plugin.c:2126
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "You requested a H.264 GFX mode for the server “%s”, but your libfreerdp does "
 "not support H.264. Please use a non-AVC colour depth setting."
@@ -2552,12 +2552,12 @@ msgstr ""
 "H.264 را پشتیبانی نمی کند. لطفا از یک تنظیم عمق رنگ غیر AVC استفاده کنید."
 
 #: plugins/rdp/rdp_plugin.c:2133
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "The “%s” server refused the connection."
 msgstr "سرور \"%s\" اتصال را رد کرد."
 
 #: plugins/rdp/rdp_plugin.c:2138
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "The Remote Desktop Gateway “%s” denied the user “%s\\%s” access due to "
 "policy."
@@ -2566,7 +2566,7 @@ msgstr ""
 "کرد."
 
 #: plugins/rdp/rdp_plugin.c:2148
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Cannot connect to the “%s” RDP server."
 msgstr "نمی تواند به سرور RDP \"%s\" متصل شود."
 
@@ -2694,9 +2694,9 @@ msgid ""
 msgstr ""
 "استفاده از i.a توسط خدمات ترمینال در یک کانال کارت هوشمند برای تشخیص قابلیت "
 "های مشتری:\n"
-"  • < 4034: Windows XP base smart card functions • 4034-7064: Windows Vista/"
-"7: SCardReadCache(), SCardWriteCache(), SCardGetTransmitCount() • >= 7065: "
-"Windows 8 and newer: SCardGetReaderIcon(),\n"
+"  • < 4034: Windows XP base smart card functions • 4034-7064: Windows "
+"Vista/7: SCardReadCache(), SCardWriteCache(), SCardGetTransmitCount() • >= "
+"7065: Windows 8 and newer: SCardGetReaderIcon(),\n"
 "    SCardGetDeviceTypeId()"
 
 #: plugins/rdp/rdp_plugin.c:2582
@@ -3259,7 +3259,7 @@ msgid "General settings"
 msgstr "تنظیمات کلی"
 
 #: plugins/rdp/rdp_event.c:344
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Reconnection attempt %d of %d…"
 msgstr "تلاش برای اتصال مجدد %d از %d…"
 
@@ -3269,7 +3269,7 @@ msgid "Secured password storage in KWallet"
 msgstr "ذخیره سازی رمز عبور امن در KWallet"
 
 #: plugins/telepathy/telepathy_channel_handler.c:237
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "%s wants to share their desktop.\n"
 "Do you accept?"
@@ -3340,8 +3340,8 @@ msgstr ""
 "<big> <b> بسته Remmina Snap</b></big>\n"
 "\n"
 "<span>\n"
-"Remmina در حال اجرا بر روی سیستم خود را به عنوان یک بسته ضربه محکم و ناگهانی."
-"\n"
+"Remmina در حال اجرا بر روی سیستم خود را به عنوان یک بسته ضربه محکم و "
+"ناگهانی.\n"
 "برخی از توابع Remmina نیاز به راه اندازی به درستی کار می کنند.\n"
 "</span>\n"
 
@@ -3611,8 +3611,8 @@ msgid ""
 "\">anonymous</a></b> statistics. (*)"
 msgstr ""
 "آمار <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-"remmina__stats_8c.html#details\" title=\"Remmina usage statistics\""
-">ناشناس</a></b> را ارسال کنید. (*)"
+"remmina__stats_8c.html#details\" title=\"Remmina usage statistics\">ناشناس</"
+"a></b> را ارسال کنید. (*)"
 
 #: data/ui/remmina_news.glade:142 data/ui/remmina_news.glade:195
 #, fuzzy
@@ -3641,8 +3641,8 @@ msgid ""
 "Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
 "\">remmina.org</a> (*)"
 msgstr ""
-"واکشی اخبار از <a href=\"https://remmina.org\" title=\"Remmina news site\""
-">remmina.org</a> (*)"
+"واکشی اخبار از <a href=\"https://remmina.org\" title=\"Remmina news site"
+"\">remmina.org</a> (*)"
 
 #: data/ui/remmina_news.glade:208 data/ui/remmina_preferences.glade:446
 #, fuzzy
@@ -3670,8 +3670,8 @@ msgid ""
 "</span>\n"
 msgstr ""
 "<span>\n"
-"<b> شما قدردانی ما را در انتخاب نرم افزار libre copylefted، <a href=\"https"
-"://remmina.org/donations/\" title=\"Where’s the money, Lebowski? "
+"<b> شما قدردانی ما را در انتخاب نرم افزار libre copylefted، <a href="
+"\"https://remmina.org/donations/\" title=\"Where’s the money, Lebowski? "
 "“blblblblblb”\">کمک های مالی نیز ما را خوشحال</a>، و کمک بیشتر به بهبود "
 "Remmina. </b>\n"
 "</span>\n"

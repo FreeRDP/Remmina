@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-07-08 21:10+0000\n"
+"POT-Creation-Date: 2021-07-14 07:04+0000\n"
 "PO-Revision-Date: 2021-07-12 20:35+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Spanish (Venezuela) <https://hosted.weblate.org/projects/"
@@ -157,7 +157,7 @@ msgstr "Servidor"
 
 #. TRANSLATORS: “%s” is a placeholder for a protocol name, like “RDP”.
 #: src/remmina_protocol_widget.c:2043
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Install the %s protocol plugin first."
 msgstr "Instale primero el plugin de protocolo %s."
 
@@ -211,7 +211,7 @@ msgstr ""
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_ssh_plugin.c:539
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Error: %s"
 msgstr "Error: %s"
 
@@ -489,12 +489,12 @@ msgstr[0] "%d contraseña cambiada."
 msgstr[1] "%d contraseñas cambiadas."
 
 #: src/remmina_public.c:345
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Address is too long for UNIX socket_path: %s"
 msgstr "La dirección es demasiado larga para UNIX socket_path: %s"
 
 #: src/remmina_public.c:355
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Creating UNIX socket failed: %s"
 msgstr "La creación de un socket UNIX ha fallado: %s"
 
@@ -504,11 +504,11 @@ msgstr "La creación de un socket UNIX ha fallado: %s"
 msgid "Connecting to UNIX socket failed: %s"
 msgstr "La conexión al socket UNIX ha fallado: %s"
 
-#: src/remmina_public.c:632
+#: src/remmina_public.c:631
 msgid "Please enter format 'widthxheight'."
 msgstr "Escriba en el formato 'anchura×altura'."
 
-#: src/remmina_public.c:654
+#: src/remmina_public.c:653
 msgid "Change security settings"
 msgstr "Configuración de calidad"
 
@@ -743,8 +743,8 @@ msgstr "Modificar el perfil de conexión (requiere la opción --set-)"
 #, fuzzy
 msgid "Set one or more profile settings, to be used with --update-profile"
 msgstr ""
-"Establecer una o más configuraciones de perfil, para ser utilizadas con "
-"--update-profile"
+"Establecer una o más configuraciones de perfil, para ser utilizadas con --"
+"update-profile"
 
 #: src/remmina.c:121
 msgid "Encrypt a password"
@@ -810,8 +810,8 @@ msgstr ""
 "\n"
 "\tremmina -c rdp://nombre-de-usuario:contraseña-cifrada@servidor\n"
 "\tremmina -c vnc://nombre-de-usuario:contraseña-cifrada@servidor\n"
-"\tremmina -c vnc://servidor?VncUsername=nombre-de-usuario&VncPassword"
-"=contraseña-encriptada\n"
+"\tremmina -c vnc://servidor?VncUsername=nombre-de-"
+"usuario&VncPassword=contraseña-encriptada\n"
 "\n"
 "Para encriptar una contraseña para usarla con un URI:\n"
 "\n"
@@ -820,9 +820,9 @@ msgstr ""
 "Para actualizar el nombre de usuario y la contraseña y establecer un modo de "
 "resolución diferente de un perfil de conexión Remmina, utilice:\n"
 "\n"
-"\techo \"username\\n"
-"apassword\" | remmina --update-profile /PATH/TO/FOO.remmina --set-option "
-"username --set-option resolution_mode=2 --set-option password\n"
+"\techo \"username\\napassword\" | remmina --update-profile /PATH/TO/FOO."
+"remmina --set-option username --set-option resolution_mode=2 --set-option "
+"password\n"
 
 #: src/remmina_icon.c:128
 msgid "Open Main Window"
@@ -971,9 +971,10 @@ msgid "Disconnect"
 msgstr "Desconectarse"
 
 #: src/rcw.c:4284
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "The file “%s” is corrupted, unreadable, or could not be found."
-msgstr "El archivo \"%s\" está dañado, es ilegible o no se ha podido encontrar."
+msgstr ""
+"El archivo \"%s\" está dañado, es ilegible o no se ha podido encontrar."
 
 #: src/rcw.c:4452
 #, fuzzy
@@ -1037,12 +1038,12 @@ msgid_plural "Total %i items."
 msgstr[0] "Total de %i elemento."
 msgstr[1] "Total de %i elementos."
 
-#: src/remmina_main.c:854
+#: src/remmina_main.c:853
 #, c-format
 msgid "Are you sure you want to delete “%s”?"
 msgstr "Está seguro de que quiere eliminar '%s'"
 
-#: src/remmina_main.c:974
+#: src/remmina_main.c:973
 #, c-format
 msgid ""
 "Unable to import:\n"
@@ -1051,23 +1052,23 @@ msgstr ""
 "No se pudo importar:\n"
 "%s"
 
-#: src/remmina_main.c:1000 data/ui/remmina_main.glade:285
+#: src/remmina_main.c:999 data/ui/remmina_main.glade:285
 msgid "Import"
 msgstr "Importar"
 
-#: src/remmina_main.c:1023 src/remmina_file_editor.c:1373
+#: src/remmina_main.c:1022 src/remmina_file_editor.c:1373
 msgid "_Save"
 msgstr "_Guardar"
 
-#: src/remmina_main.c:1029
+#: src/remmina_main.c:1028
 msgid "This protocol does not support exporting."
 msgstr "Este protocolo no es compatible con la exportación."
 
-#: src/remmina_main.c:1335
+#: src/remmina_main.c:1344
 msgid "Remmina Remote Desktop Client"
 msgstr "Cliente de escritorio remoto Remmina"
 
-#: src/remmina_main.c:1337
+#: src/remmina_main.c:1346
 #, fuzzy
 msgid "Remmina Kiosk"
 msgstr "Kiosco Remmina"
@@ -1287,19 +1288,19 @@ msgstr ""
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:327 src/remmina_ssh.c:368 src/remmina_ssh.c:394
 #: src/remmina_ssh.c:433 src/remmina_ssh.c:746
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not authenticate with public SSH key. %s"
 msgstr "No se ha podido autenticar con la clave pública de SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:336
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "SSH certificate cannot be imported. %s"
 msgstr "No se puede importar el certificado SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:345
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "SSH certificate cannot be copied into the private SSH key. %s"
 msgstr "El certificado SSH no se puede copiar en la clave privada SSH. %s"
 
@@ -1316,12 +1317,12 @@ msgstr "Aún no se ha definido un archivo de clave SSH."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:380
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Public SSH key cannot be imported. %s"
 msgstr "No se puede importar la clave pública SSH. %s"
 
 #: src/remmina_ssh.c:478
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not authenticate automatically with public SSH key. %s"
 msgstr ""
 "No se ha podido autentificar automáticamente con la clave pública SSH. %s"
@@ -1353,7 +1354,7 @@ msgstr "La conexión al túnel SSH ha fallado: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:921
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not fetch the server's public SSH key. %s"
 msgstr "No se ha podido obtener la clave pública SSH del servidor. %s"
 
@@ -1454,7 +1455,7 @@ msgid "The server did not respond."
 msgstr "El servidor no respondió."
 
 #: src/remmina_ssh.c:1916
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Cannot connect to local port %i."
 msgstr "No se puede conectar al puerto local %i."
 
@@ -2112,7 +2113,7 @@ msgid "Your connection has been rejected."
 msgstr "Se rechazó su conexión."
 
 #: plugins/vnc/vnc_plugin.c:966
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "The VNC server requested an unknown authentication method. %s"
 msgstr "El servidor VNC solicitó un método de autenticación desconocido. %s"
 
@@ -2165,8 +2166,8 @@ msgid ""
 "    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
 msgstr ""
 "Conéctese a VNC utilizando un repetidor:\n"
-"  - El campo del servidor debe contener el ID del repetidor, por ejemplo ID:"
-"123456789\n"
+"  - El campo del servidor debe contener el ID del repetidor, por ejemplo "
+"ID:123456789\n"
 "  - El campo del repetidor debe contener la IP y el puerto del repetidor, "
 "por ejemplo\n"
 "    10.10.10.12:5901\n"
@@ -2336,7 +2337,7 @@ msgid "Transfer completed"
 msgstr "Transferencia completada"
 
 #: plugins/spice/spice_plugin_file_transfer.c:224
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "The %s file has been transferred"
 msgstr "El archivo %s ha sido transferido"
 
@@ -2456,7 +2457,7 @@ msgid "Could not start libfreerdp-gdi."
 msgstr "No se ha podido iniciar libfreerdp-gdi."
 
 #: plugins/rdp/rdp_plugin.c:2126
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "You requested a H.264 GFX mode for the server “%s”, but your libfreerdp does "
 "not support H.264. Please use a non-AVC colour depth setting."
@@ -2466,12 +2467,12 @@ msgstr ""
 "color no-AVC."
 
 #: plugins/rdp/rdp_plugin.c:2133
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "The “%s” server refused the connection."
 msgstr "El servidor \"%s\" rechazó la conexión."
 
 #: plugins/rdp/rdp_plugin.c:2138
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "The Remote Desktop Gateway “%s” denied the user “%s\\%s” access due to "
 "policy."
@@ -2665,8 +2666,8 @@ msgid ""
 "The highest possible value is 600000 ms (10 minutes).\n"
 msgstr ""
 "Configuración avanzada para enlaces de alta latencia:\n"
-"Ajusta el tiempo de espera de la conexión. Utilícelo si su conexión se agota."
-"\n"
+"Ajusta el tiempo de espera de la conexión. Utilícelo si su conexión se "
+"agota.\n"
 "El valor más alto posible es 600000 ms (10 minutos).\n"
 
 #: plugins/rdp/rdp_plugin.c:2612
@@ -2853,8 +2854,8 @@ msgid ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
 msgstr ""
-"\"Samsung_CLX-3300_Series\": \"Samsung CLX-3300 Series PS\"; \"Canon MF410\":"
-" \"Canon MF410 Series UFR II\""
+"\"Samsung_CLX-3300_Series\": \"Samsung CLX-3300 Series PS\"; \"Canon "
+"MF410\": \"Canon MF410 Series UFR II\""
 
 #: plugins/rdp/rdp_plugin.c:2697
 msgid "USB device redirection"
@@ -3474,8 +3475,8 @@ msgid ""
 "\">anonymous</a></b> statistics. (*)"
 msgstr ""
 "Enviar estadísticas <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab."
-"io/remmina__stats_8c.html#details\" title=\"Remmina usage statistics\""
-">anónimas</a></b>. (*)"
+"io/remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
+"\">anónimas</a></b>. (*)"
 
 #: data/ui/remmina_news.glade:142 data/ui/remmina_news.glade:195
 #, fuzzy
@@ -3493,7 +3494,8 @@ msgstr "Aplicación"
 #: data/ui/remmina_news.glade:169
 #, fuzzy
 msgid "Allow Remmina to automatically open .rdp and .remmina files."
-msgstr "Permitir que Remmina abra automáticamente los archivos .rdp y .remmina."
+msgstr ""
+"Permitir que Remmina abra automáticamente los archivos .rdp y .remmina."
 
 #. The star (*) is a reference to privacy consent
 #: data/ui/remmina_news.glade:183 data/ui/remmina_preferences.glade:479
@@ -3502,8 +3504,8 @@ msgid ""
 "Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
 "\">remmina.org</a> (*)"
 msgstr ""
-"Obtener noticias de <a href=\"https://remmina.org\" title=\"Remmina news "
-"site\">remmina.org</a> (*)"
+"Obtener noticias de <a href=\"https://remmina.org\" title=\"Remmina news site"
+"\">remmina.org</a> (*)"
 
 #: data/ui/remmina_news.glade:208 data/ui/remmina_preferences.glade:446
 #, fuzzy

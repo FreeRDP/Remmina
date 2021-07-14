@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-07-08 21:10+0000\n"
+"POT-Creation-Date: 2021-07-14 07:04+0000\n"
 "PO-Revision-Date: 2021-07-12 20:35+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -162,7 +162,7 @@ msgstr "Server"
 
 #. TRANSLATORS: “%s” is a placeholder for a protocol name, like “RDP”.
 #: src/remmina_protocol_widget.c:2043
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Install the %s protocol plugin first."
 msgstr "Instalați mai întâi pluginul de protocol %s."
 
@@ -220,7 +220,7 @@ msgstr ""
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_ssh_plugin.c:539
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Error: %s"
 msgstr "Eroare: %s"
 
@@ -512,7 +512,7 @@ msgid "The multi password changer requires a secrecy service.\n"
 msgstr "Schimbătorul de parole multiple necesită un serviciu de secretizare.\n"
 
 #: src/remmina_mpchange.c:409
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "%d password changed."
 msgid_plural "%d passwords changed."
 msgstr[0] "%d parola a fost schimbată."
@@ -520,12 +520,12 @@ msgstr[1] ""
 msgstr[2] ""
 
 #: src/remmina_public.c:345
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Address is too long for UNIX socket_path: %s"
 msgstr "Adresa este prea lungă pentru UNIX socket_path: %s"
 
 #: src/remmina_public.c:355
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Creating UNIX socket failed: %s"
 msgstr "Crearea unui socket UNIX a eșuat: %s"
 
@@ -535,11 +535,11 @@ msgstr "Crearea unui socket UNIX a eșuat: %s"
 msgid "Connecting to UNIX socket failed: %s"
 msgstr "Conectarea la socket-ul UNIX a eșuat: %s"
 
-#: src/remmina_public.c:632
+#: src/remmina_public.c:631
 msgid "Please enter format 'widthxheight'."
 msgstr "Introduceți formatul „lățimexînălțime”"
 
-#: src/remmina_public.c:654
+#: src/remmina_public.c:653
 #, fuzzy
 msgid "Change security settings"
 msgstr "Modificarea setărilor de securitate"
@@ -854,12 +854,12 @@ msgstr ""
 "\tremmina --encrypt-password\n"
 "\n"
 "Pentru a actualiza numele de utilizator și parola și pentru a seta un alt "
-"mod de rezoluție al unui profil de conexiune Remmina, utilizați: Remmina: --:"
+"mod de rezoluție al unui profil de conexiune Remmina, utilizați: Remmina: "
+"--:\n"
 "\n"
-"\n"
-"\techo \"username\\n"
-"apassword\" | remmina --update-profile /PATH/TO/FOO.remmina --set-option "
-"username --set-option resolution_mode=2 --set-option password\n"
+"\techo \"username\\napassword\" | remmina --update-profile /PATH/TO/FOO."
+"remmina --set-option username --set-option resolution_mode=2 --set-option "
+"password\n"
 
 #: src/remmina_icon.c:128
 msgid "Open Main Window"
@@ -1016,7 +1016,7 @@ msgid "Disconnect"
 msgstr "Deconectează"
 
 #: src/rcw.c:4284
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "The file “%s” is corrupted, unreadable, or could not be found."
 msgstr "Fișierul \"%s\" este corupt, ilizibil sau nu a putut fi găsit."
 
@@ -1084,12 +1084,12 @@ msgstr[0] "Total %i element."
 msgstr[1] "Total %i elemente."
 msgstr[2] "Total %i de elemente."
 
-#: src/remmina_main.c:854
+#: src/remmina_main.c:853
 #, c-format
 msgid "Are you sure you want to delete “%s”?"
 msgstr "Doriți cu siguranță să ștergeți „%s”"
 
-#: src/remmina_main.c:974
+#: src/remmina_main.c:973
 #, c-format
 msgid ""
 "Unable to import:\n"
@@ -1098,24 +1098,24 @@ msgstr ""
 "Nu se poate importa:\n"
 "%s"
 
-#: src/remmina_main.c:1000 data/ui/remmina_main.glade:285
+#: src/remmina_main.c:999 data/ui/remmina_main.glade:285
 msgid "Import"
 msgstr "Importă"
 
-#: src/remmina_main.c:1023 src/remmina_file_editor.c:1373
+#: src/remmina_main.c:1022 src/remmina_file_editor.c:1373
 #, fuzzy
 msgid "_Save"
 msgstr "_Salvare"
 
-#: src/remmina_main.c:1029
+#: src/remmina_main.c:1028
 msgid "This protocol does not support exporting."
 msgstr "Acest protocol nu recunoaște funcția de exportare."
 
-#: src/remmina_main.c:1335
+#: src/remmina_main.c:1344
 msgid "Remmina Remote Desktop Client"
 msgstr "Client desktop la distanță Remmina"
 
-#: src/remmina_main.c:1337
+#: src/remmina_main.c:1346
 #, fuzzy
 msgid "Remmina Kiosk"
 msgstr "Chioșc Remmina"
@@ -1339,19 +1339,19 @@ msgstr ""
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:327 src/remmina_ssh.c:368 src/remmina_ssh.c:394
 #: src/remmina_ssh.c:433 src/remmina_ssh.c:746
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not authenticate with public SSH key. %s"
 msgstr "Nu s-a putut autentifica cu cheia publică SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:336
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "SSH certificate cannot be imported. %s"
 msgstr "Certificatul SSH nu poate fi importat. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:345
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "SSH certificate cannot be copied into the private SSH key. %s"
 msgstr "Certificatul SSH nu poate fi copiat în cheia privată SSH. %s"
 
@@ -1368,12 +1368,12 @@ msgstr "Cheia SSH încă nu a fost configurată."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:380
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Public SSH key cannot be imported. %s"
 msgstr "Cheia SSH publică nu poate fi importată. %s"
 
 #: src/remmina_ssh.c:478
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not authenticate automatically with public SSH key. %s"
 msgstr "Nu s-a putut autentifica automat cu cheia publică SSH. %s"
 
@@ -1404,7 +1404,7 @@ msgstr "Eșec la conectarea la destinația tunelului SSH: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:921
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not fetch the server's public SSH key. %s"
 msgstr "Nu s-a putut prelua cheia publică SSH a serverului. %s"
 
@@ -1507,7 +1507,7 @@ msgid "The server did not respond."
 msgstr "Serverul nu a răspuns."
 
 #: src/remmina_ssh.c:1916
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Cannot connect to local port %i."
 msgstr "Nu se poate conecta la portul local %i."
 
@@ -1842,7 +1842,7 @@ msgid "Remmina VNC plugin for GNOME and KVM"
 msgstr "Remmina VNC plugin pentru GNOME și KVM"
 
 #: plugins/gvnc/gvnc_plugin.c:477
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Unsupported authentication type %u"
 msgstr "Tip de autentificare neacceptat %u"
 
@@ -2182,7 +2182,7 @@ msgid "Your connection has been rejected."
 msgstr "Conexiunea dumneavoastră a fost respinsă."
 
 #: plugins/vnc/vnc_plugin.c:966
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "The VNC server requested an unknown authentication method. %s"
 msgstr "Serverul VNC a solicitat o metodă de autentificare necunoscută. %s"
 
@@ -2411,7 +2411,7 @@ msgid "Transfer error"
 msgstr "Transfer error"
 
 #: plugins/spice/spice_plugin_file_transfer.c:220
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "%s: %s"
 msgstr "%s: %s"
 
@@ -2421,7 +2421,7 @@ msgid "Transfer completed"
 msgstr "Transfer finalizat"
 
 #: plugins/spice/spice_plugin_file_transfer.c:224
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "The %s file has been transferred"
 msgstr "Fișierul %s a fost transferat"
 
@@ -2495,7 +2495,7 @@ msgid "Could not find the address for the RDP server “%s”."
 msgstr "Comanda %s nu a fost găsită pe serverul SSH"
 
 #: plugins/rdp/rdp_plugin.c:2108
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "Could not connect to the RDP server “%s” via TLS. Check that client and "
 "server support a common TLS version."
@@ -2513,8 +2513,8 @@ msgid ""
 "Unable to establish a connection to the RDP server “%s”. Check “Security "
 "protocol negotiation”."
 msgstr ""
-"Nu se poate stabili o conexiune la serverul RDP \"%s\". Verificați \"Security"
-" protocol negotiation\"."
+"Nu se poate stabili o conexiune la serverul RDP \"%s\". Verificați "
+"\"Security protocol negotiation\"."
 
 #: plugins/rdp/rdp_plugin.c:2120
 #, c-format
@@ -2527,7 +2527,7 @@ msgid "Could not start libfreerdp-gdi."
 msgstr "Nu s-a putut porni libfreerdp-gdi."
 
 #: plugins/rdp/rdp_plugin.c:2126
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "You requested a H.264 GFX mode for the server “%s”, but your libfreerdp does "
 "not support H.264. Please use a non-AVC colour depth setting."
@@ -2536,12 +2536,12 @@ msgstr ""
 "acceptă H.264. Vă rugăm să folosiți o setare de adâncime a culorilor non-AVC."
 
 #: plugins/rdp/rdp_plugin.c:2133
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "The “%s” server refused the connection."
 msgstr "Serverul \"%s\" a refuzat conexiunea."
 
 #: plugins/rdp/rdp_plugin.c:2138
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "The Remote Desktop Gateway “%s” denied the user “%s\\%s” access due to "
 "policy."
@@ -2927,8 +2927,8 @@ msgid ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
 msgstr ""
-"\"Samsung_CLX-3300_Series\": \"Samsung CLX-3300 Series PS\"; \"Canon MF410\":"
-" \"Canon MF410 Series UFR II\""
+"\"Samsung_CLX-3300_Series\": \"Samsung CLX-3300 Series PS\"; \"Canon "
+"MF410\": \"Canon MF410 Series UFR II\""
 
 #: plugins/rdp/rdp_plugin.c:2697
 #, fuzzy
@@ -3556,8 +3556,8 @@ msgstr ""
 "\n"
 "<span>\n"
 "<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
-"release notes\"><i>Vizitați site-ul web pentru a citi notele de "
-"lansare</i></a>.\n"
+"release notes\"><i>Vizitați site-ul web pentru a citi notele de lansare</i></"
+"a>.\n"
 "</span>"
 
 #. The star (*) is a reference to privacy consent
@@ -3568,9 +3568,9 @@ msgid ""
 "remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
 "\">anonymous</a></b> statistics. (*)"
 msgstr ""
-"Trimiteți statistici <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab"
-".io/remmina__stats_8c.html#details\" title=\"Remmina usage statistics\""
-">anonime</a></b>. (*)"
+"Trimiteți statistici <b><a href=\"https://remmina.gitlab.io/remminadoc."
+"gitlab.io/remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
+"\">anonime</a></b>. (*)"
 
 #: data/ui/remmina_news.glade:142 data/ui/remmina_news.glade:195
 #, fuzzy
@@ -3598,8 +3598,8 @@ msgid ""
 "Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
 "\">remmina.org</a> (*)"
 msgstr ""
-"Obține știri de pe <a href=\"https://remmina.org\" title=\"Remmina news "
-"site\">remmina.org</a> (*)"
+"Obține știri de pe <a href=\"https://remmina.org\" title=\"Remmina news site"
+"\">remmina.org</a> (*)"
 
 #: data/ui/remmina_news.glade:208 data/ui/remmina_preferences.glade:446
 #, fuzzy

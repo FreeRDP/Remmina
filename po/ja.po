@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-07-08 21:10+0000\n"
+"POT-Creation-Date: 2021-07-14 07:04+0000\n"
 "PO-Revision-Date: 2021-07-10 16:33+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -419,7 +419,9 @@ msgstr "SSHセッションを非同期にログする"
 #: src/remmina_ssh_plugin.c:1516
 #, fuzzy
 msgid "Saving the session asynchronously may have a notable performance impact"
-msgstr "非同期にセッションを保存すると、パフォーマンスに重大な影響を与える可能性があります。"
+msgstr ""
+"非同期にセッションを保存すると、パフォーマンスに重大な影響を与える可能性があ"
+"ります。"
 
 #: src/remmina_ssh_plugin.c:1517
 msgid "Audible terminal bell"
@@ -472,12 +474,12 @@ msgid_plural "%d passwords changed."
 msgstr[0] "%d 個のパスワードを変更しました。"
 
 #: src/remmina_public.c:345
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Address is too long for UNIX socket_path: %s"
 msgstr "UNIXのsocket_pathではアドレスが長すぎます。%s"
 
 #: src/remmina_public.c:355
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Creating UNIX socket failed: %s"
 msgstr "UNIXソケットの作成に失敗しました。%s"
 
@@ -487,11 +489,11 @@ msgstr "UNIXソケットの作成に失敗しました。%s"
 msgid "Connecting to UNIX socket failed: %s"
 msgstr "UNIXソケットへの接続に失敗しました。%s"
 
-#: src/remmina_public.c:632
+#: src/remmina_public.c:631
 msgid "Please enter format 'widthxheight'."
 msgstr "'幅×高さ' を入力してください。"
 
-#: src/remmina_public.c:654
+#: src/remmina_public.c:653
 msgid "Change security settings"
 msgstr "セキュリティ設定を変更"
 
@@ -1006,12 +1008,12 @@ msgid "Total %i item."
 msgid_plural "Total %i items."
 msgstr[0] "合計 %i 個のアイテム"
 
-#: src/remmina_main.c:854
+#: src/remmina_main.c:853
 #, c-format
 msgid "Are you sure you want to delete “%s”?"
 msgstr "本当に “%s” を削除しますか?"
 
-#: src/remmina_main.c:974
+#: src/remmina_main.c:973
 #, c-format
 msgid ""
 "Unable to import:\n"
@@ -1020,23 +1022,23 @@ msgstr ""
 "インポートできません:\n"
 "%s"
 
-#: src/remmina_main.c:1000 data/ui/remmina_main.glade:285
+#: src/remmina_main.c:999 data/ui/remmina_main.glade:285
 msgid "Import"
 msgstr "インポート"
 
-#: src/remmina_main.c:1023 src/remmina_file_editor.c:1373
+#: src/remmina_main.c:1022 src/remmina_file_editor.c:1373
 msgid "_Save"
 msgstr "保存(_S)"
 
-#: src/remmina_main.c:1029
+#: src/remmina_main.c:1028
 msgid "This protocol does not support exporting."
 msgstr "このプロトコルはエクスポートをサポートしていません。"
 
-#: src/remmina_main.c:1335
+#: src/remmina_main.c:1344
 msgid "Remmina Remote Desktop Client"
 msgstr "Remmina リモートデスクトップクライアント"
 
-#: src/remmina_main.c:1337
+#: src/remmina_main.c:1346
 msgid "Remmina Kiosk"
 msgstr "Remmina キオスク"
 
@@ -1541,7 +1543,8 @@ msgstr ""
 "• %p : Remmina のプロファイル名\n"
 "• %g : Remmina のプロファイルグループ名\n"
 "• %d : iso8601 形式のローカル日時\n"
-"接続する前にコマンドを実行させたい場合はバックグラウンドで実行しないでください。\n"
+"接続する前にコマンドを実行させたい場合はバックグラウンドで実行しないでくださ"
+"い。\n"
 "</big></tt>"
 
 #: src/remmina_file_editor.c:83
@@ -1833,7 +1836,8 @@ msgstr "シェアード・コネクション"
 msgid ""
 "If the server should try to share the desktop by leaving other clients "
 "connected"
-msgstr "サーバーが他のクライアントを接続したままでデスクトップを共有しようとすると"
+msgstr ""
+"サーバーが他のクライアントを接続したままでデスクトップを共有しようとすると"
 
 #: plugins/gvnc/gvnc_plugin.c:872
 #, fuzzy
@@ -2083,7 +2087,8 @@ msgid ""
 msgstr ""
 "リピータを使用してVNCに接続します。\n"
 "  - サーバーフィールドにはリピータIDを入力してください（例：ID:123456789\n"
-"  - リピータフィールドには、リピータのIPとポートを設定する必要があり、以下のようになります。\n"
+"  - リピータフィールドには、リピータのIPとポートを設定する必要があり、以下の"
+"ようになります。\n"
 "    10.10.10.12:5901\n"
 "  - リモートVNCサーバーから、リピータに接続します。\n"
 "    例えば、x11vncを使って、リモートVNCサーバーからリピータに接続します。\n"
@@ -2345,7 +2350,9 @@ msgstr ""
 msgid ""
 "Unable to establish a connection to the RDP server “%s”. Check “Security "
 "protocol negotiation”."
-msgstr "RDP サーバー \"%s\" への接続を確立できません。\"セキュリティプロトコルのネゴシエーション\" を確認してください。"
+msgstr ""
+"RDP サーバー \"%s\" への接続を確立できません。\"セキュリティプロトコルのネゴ"
+"シエーション\" を確認してください。"
 
 #: plugins/rdp/rdp_plugin.c:2120
 #, c-format
@@ -2378,7 +2385,9 @@ msgstr "サーバー “%s” が接続を拒否しました。"
 msgid ""
 "The Remote Desktop Gateway “%s” denied the user “%s\\%s” access due to "
 "policy."
-msgstr "リモートデスクトップゲートウェイ \"%s\" はポリシーにより、ユーザー \"%s\\%s\" のアクセスを拒否しました。"
+msgstr ""
+"リモートデスクトップゲートウェイ \"%s\" はポリシーにより、ユーザー \"%s\\%s"
+"\" のアクセスを拒否しました。"
 
 #: plugins/rdp/rdp_plugin.c:2148
 #, c-format
@@ -2615,7 +2624,9 @@ msgstr ""
 #: plugins/rdp/rdp_plugin.c:2653
 #, fuzzy
 msgid "Use “Redirect directory” in the advanced tab for multiple directories"
-msgstr "複数のディレクトリに対して、詳細タブの「ディレクトリのリダイレクト」を使用する"
+msgstr ""
+"複数のディレクトリに対して、詳細タブの「ディレクトリのリダイレクト」を使用す"
+"る"
 
 #: plugins/rdp/rdp_plugin.c:2654
 msgid "Left-handed mouse support"
