@@ -1,24 +1,27 @@
 # 'delete_empty_folder' function
 function(delete_empty_folder DIR)
-  if(NOT EXISTS ${DIR})
-    return()
-  endif()
+    if(NOT EXISTS ${DIR})
+        return()
+    endif()
 
-  # check if folder is empty
-  file(GLOB RESULT "${DIR}/*")
-  list(LENGTH RESULT RES_LEN)
-  if(RES_LEN EQUAL 0)
-    message(STATUS "Delete empty folder ${DIR}")
-    #file(REMOVE_RECURSE ${DIR})
-  else()
-    # message(STATUS "${DIR} is not empty! It won't be removed.")
-    # message(STATUS "FILES = ${RESULT}")
-  endif()
+    # check if folder is empty
+    file(GLOB RESULT "${DIR}/*")
+    list(LENGTH RESULT RES_LEN)
+    if(RES_LEN EQUAL 0)
+        if(WITH_CLEANUP)
+            message(STATUS "Deleting empty folder ${DIR}")
+            file(REMOVE_RECURSE ${DIR})
+        else()
+            message(STATUS " ${DIR}")
+        endif()
+    else()
+        #message(STATUS "${DIR} is not empty! It won't be removed.")
+        # message(STATUS "FILES = ${RESULT}")
+    endif()
 endfunction(delete_empty_folder)
 
-
 if( NOT EXISTS "@CMAKE_CURRENT_BINARY_DIR@/install_manifest.txt" )
-  message(FATAL_ERROR "Cannot find install manifest: \"@CMAKE_CURRENT_BINARY_DIR@/install_manifest.txt\"")
+    message(FATAL_ERROR "Cannot find install manifest: \"@CMAKE_CURRENT_BINARY_DIR@/install_manifest.txt\"")
 endif( NOT EXISTS "@CMAKE_CURRENT_BINARY_DIR@/install_manifest.txt" )
 
 file( READ "@CMAKE_CURRENT_BINARY_DIR@/install_manifest.txt" files)
@@ -26,43 +29,54 @@ string( REGEX REPLACE "\n" ";" files "${files}" )
 
 foreach(file ${files})
 
-  message(STATUS "Uninstalling \"$ENV{DESTDIR}${file}\"")
-  if(EXISTS "$ENV{DESTDIR}${file}")
+    message(STATUS "Uninstalling \"$ENV{DESTDIR}${file}\"")
+    if(EXISTS "$ENV{DESTDIR}${file}")
 
-    exec_program( "@CMAKE_COMMAND@"
-          ARGS "-E remove \"$ENV{DESTDIR}${file}\""
-          OUTPUT_VARIABLE rm_out
-          RETURN_VALUE rm_retval
-    )
-    if( NOT "${rm_retval}" STREQUAL 0 )
-      message( FATAL_ERROR "Problem when removing \"$ENV{DESTDIR}${file}\"" )
-    endif( NOT "${rm_retval}" STREQUAL 0 )
+        exec_program( "@CMAKE_COMMAND@"
+            ARGS "-E remove \"$ENV{DESTDIR}${file}\""
+            OUTPUT_VARIABLE rm_out
+            RETURN_VALUE rm_retval
+            )
+        if( NOT "${rm_retval}" STREQUAL 0 )
+            message( FATAL_ERROR "Problem when removing \"$ENV{DESTDIR}${file}\"" )
+        endif( NOT "${rm_retval}" STREQUAL 0 )
 
-  else(EXISTS "$ENV{DESTDIR}${file}")
+    else(EXISTS "$ENV{DESTDIR}${file}")
 
-    message( STATUS "File \"$ENV{DESTDIR}${file}\" does not exist." )
+        message( STATUS "File \"$ENV{DESTDIR}${file}\" does not exist." )
 
-  endif(EXISTS "$ENV{DESTDIR}${file}")
+    endif(EXISTS "$ENV{DESTDIR}${file}")
 
-
-  get_filename_component(FOLDER $ENV{DESTDIR}${file} DIRECTORY)
-  set(FOLDERS ${FOLDERS} ${FOLDER})
+    get_filename_component(FOLDER $ENV{DESTDIR}${file} DIRECTORY)
+    set(FOLDERS ${FOLDERS} ${FOLDER})
 
 endforeach(file)
 
 # remove empty folders
 message(STATUS "")
-message(STATUS "Removing empty folders")
+if(WITH_CLEANUP)
+    message(STATUS "Removing empty folders")
+else()
+    message(STATUS "Empty folders that may be safely removed:")
+endif()
+
+list(APPEND FOLDERS
+    "@INSTALL_LIB_DIR@/CMake"
+    "@CMAKE_INSTALL_FULL_LIBDIR@/remmina"
+    "@REMMINA_DATADIR@/remmina"
+    )
 
 list(REMOVE_DUPLICATES FOLDERS)
 foreach(dir ${FOLDERS})
-#   message(STATUS ${dir})
-  delete_empty_folder(${dir})
-#   message(STATUS "")
+    #   message(STATUS ${dir})
+    delete_empty_folder(${dir})
+    #   message(STATUS "")
 endforeach(dir)
 
-delete_empty_folder("@INSTALL_INCLUDE_DIR@")
-delete_empty_folder("@INSTALL_BIN_DIR@")
-delete_empty_folder("@INSTALL_LIB_DIR@/CMake")
-delete_empty_folder("@INSTALL_LIB_DIR@")
+# delete_empty_folder("@INSTALL_INCLUDE_DIR@")
+# delete_empty_folder("@INSTALL_BIN_DIR@")
+# delete_empty_folder("@INSTALL_LIB_DIR@/CMake")
+# delete_empty_folder("@INSTALL_LIB_DIR@")
+# delete_empty_folder("@CMAKE_INSTALL_FULL_LIBDIR@/remmina")
+# delete_empty_folder("@REMMINA_DATADIR@/remmina")
 message(STATUS "")

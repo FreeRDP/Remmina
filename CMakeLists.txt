@@ -369,8 +369,17 @@ foreach( MODULE_PATH ${CMAKE_MODULE_PATH} )
                     "${UNINSTALL_OUT}"
                     IMMEDIATE @ONLY
     )
+   if(WITH_CLEANUP)
+        message(STATUS "Remove folders during uninstall target")
+        add_definitions(-DREMOVE_DIRS)
+        set(UNINST_RMDIRS 1)
+    else()
+        message(STATUS "Folders won't be removed during uninstall target")
+        set(UNINST_RMDIRS 0)
+    endif()
     add_custom_target(uninstall
-                   "${CMAKE_COMMAND}" -P "${UNINSTALL_OUT}")
+        "${CMAKE_COMMAND}" -DWITH_CLEANUP:BOOL=${WITH_CLEANUP} -P "${UNINSTALL_OUT}")
+   option(WITH_CLEANUP "Remove folders during uninstall target" OFF)
     break()
   endif( EXISTS ${UNINSTALL_IN} )
 endforeach( MODULE_PATH )
