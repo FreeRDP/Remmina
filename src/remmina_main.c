@@ -665,7 +665,7 @@ static void remmina_main_load_files()
 	gtk_statusbar_push(remminamain->statusbar_main, context_id, buf);
 }
 
-void remmina_main_load_files_cb()
+void remmina_main_load_files_cb(GtkEntry *entry, char *string, gpointer user_data)
 {
 	TRACE_CALL(__func__);
 	remmina_main_load_files();
@@ -755,7 +755,6 @@ void remmina_main_on_action_connection_new(GSimpleAction *action, GVariant *para
 }
 
 static gboolean remmina_main_search_key_event (GtkWidget *search_entry, GdkEventKey *event, gpointer user_data)
-
 {
 	TRACE_CALL(__func__);
 	if (event->keyval == GDK_KEY_Escape) {
@@ -1132,6 +1131,16 @@ static gboolean remmina_main_quickconnect(void)
 
 	remminafile = remmina_file_new();
 	server = g_strdup(gtk_entry_get_text(remminamain->entry_quick_connect_server));
+	if (g_hostname_to_ascii(server) == NULL)
+		return FALSE;
+	/* If server contain /, e.g. vnc://, it won't connect
+	 * We could search for an array of invalid characters, but
+	 * it's better to find a way to correctly parse and validate addresses
+	 */
+	if (g_strrstr(server, "/") != NULL)
+		return FALSE;
+	//if (g_str_has_suffix (server, "/"))
+		//return FALSE;
 	if (is_empty(server))
 		return FALSE;
 
