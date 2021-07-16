@@ -2310,7 +2310,7 @@ static gboolean remmina_rdp_open_connection(RemminaProtocolWidget *gp)
 	profile_name = remmina_plugin_service->file_get_string(remminafile, "name");
 	p = profile_name;
 	strcpy(thname, "RemmRDP:");
-	if (!p) {
+	if (p) {
 		nthname = strlen(thname);
 		while ((c = *p) != 0 && nthname < sizeof(thname) - 1) {
 			if (isalnum(c))
@@ -2319,6 +2319,7 @@ static gboolean remmina_rdp_open_connection(RemminaProtocolWidget *gp)
 		}
 	} else {
 		strcat(thname, "<NONAM>");
+		nthname = strlen(thname);
 	}
 	thname[nthname] = 0;
 #if defined(__linux__)
