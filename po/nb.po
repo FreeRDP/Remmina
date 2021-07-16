@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-07-14 07:04+0000\n"
-"PO-Revision-Date: 2021-07-08 20:11+0000\n"
-"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"PO-Revision-Date: 2021-07-16 08:59+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/remmina/"
 "remmina/nb_NO/>\n"
 "Language: nb\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.8-dev\n"
+"X-Generator: Weblate 4.7.2-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
 
 #: src/remmina_protocol_widget.c:283 src/remmina_sftp_plugin.c:328
@@ -412,7 +412,8 @@ msgstr "Loggfør SSH-økt asynkront"
 #: src/remmina_ssh_plugin.c:1516
 #, fuzzy
 msgid "Saving the session asynchronously may have a notable performance impact"
-msgstr "Lagring av økt asynkront kan ha merkbar ytelsespåvirkning"
+msgstr ""
+"Hvis du lagrer økten asynkront, kan det ha en merkbar innvirkning på ytelsen"
 
 #: src/remmina_ssh_plugin.c:1517
 msgid "Audible terminal bell"
@@ -469,18 +470,18 @@ msgstr[1] "%d passord endret."
 #: src/remmina_public.c:345
 #, fuzzy, c-format
 msgid "Address is too long for UNIX socket_path: %s"
-msgstr "Adressen er for lang for UNIX-socketsti: %s"
+msgstr "Adressen er for lang for UNIX-socket_path: %s"
 
 #: src/remmina_public.c:355
 #, fuzzy, c-format
 msgid "Creating UNIX socket failed: %s"
-msgstr "Opprettelse av UNIX-socket mislyktes: %s"
+msgstr "Oppretting av UNIX-socket mislyktes: %s"
 
 #: src/remmina_public.c:361
 #, fuzzy, c-format
 #| msgid "VNC connection failed: %s"
 msgid "Connecting to UNIX socket failed: %s"
-msgstr "Feil ved VNC-tilkobling: %s"
+msgstr "Tilkobling til UNIX-kontakt mislyktes: %s"
 
 #: src/remmina_public.c:631
 msgid "Please enter format 'widthxheight'."
@@ -750,36 +751,38 @@ msgid ""
 "password\n"
 msgstr ""
 "Eksempler:\n"
-"For å koble til med eksisterende profil, bruk:\n"
+"Hvis du vil koble til ved hjelp av en eksisterende tilkoblingsprofil, bruker "
+"du følgende:\n"
 "\n"
-"\tremmina -c FILE.remmina\n"
+"remmina -c FIL.remmina\n"
 "\n"
-"For hurtigtilkobling ved bruk av URI:\n"
+"Slik kobler du raskt til ved hjelp av en URI:\n"
 "\n"
-"\tremmina -c rdp://username@server\n"
+"remmina -c rdp://username@server\n"
 "\tremmina -c rdp://domain\\\\username@server\n"
 "\tremmina -c vnc://username@server\n"
-"\tremmina -c vnc://server?VncUsername=username\n"
+"\tremmina -c vnc://server? VncUsername=brukernavn\n"
 "\tremmina -c ssh://user@server\n"
 "\tremmina -c spice://server\n"
 "\n"
-"For hurtigtilkobling ved bruk av URI sammen med et kryptert passord:\n"
+"Slik kobler du raskt til ved hjelp av en URI sammen med et kryptert passord:"
 "\n"
-"\tremmina -c rdp://username:encrypted-password@server\n"
+"\n"
+"remmina -c rdp://username:encrypted-password@server\n"
 "\tremmina -c vnc://username:encrypted-password@server\n"
-"\tremmina -c vnc://server?VncUsername=username\\&VncPassword=encrypted-"
-"password\n"
+"\tremmina -c vnc://server? VncUsername=brukernavn\\&VncPassword=kryptert "
+"passord\n"
 "\n"
-"For å kryptere et passord for bruk med en URI:\n"
+"Slik krypterer du et passord for bruk med en URI:\n"
 "\n"
-"\tremmina --encrypt-password\n"
+"remmina --encrypt-password\n"
 "\n"
-"For å oppdatere brukernavn og passord, og sette forskjellig oppløsningsmodus "
-"for en Remmina-tilkoblingsprofil:\n"
+"Hvis du vil oppdatere brukernavn og passord og angi en annen "
+"oppløsningsmodus for en Remmina-tilkoblingsprofil, bruker du følgende:\n"
 "\n"
-"\techo \"username\\napassword\" | remmina --update-profile /PATH/TO/FOO."
-"remmina --set-option username --set-option resolution_mode=2 --set-option "
-"password\n"
+"echo \"brukernavn\\n"
+"apassword\" | remmina --update-profile /PATH/TO/FOO.remmina --set-option "
+"brukernavn --set-option resolution_mode=2 --set-option passord\n"
 
 #: src/remmina_icon.c:128
 msgid "Open Main Window"
@@ -859,7 +862,7 @@ msgstr "Meny"
 #, fuzzy
 #| msgid "Open Main Window"
 msgid "Open the Remmina main window"
-msgstr "Åpne hovedvindu"
+msgstr "Åpne hovedvinduet i Remmina"
 
 #: src/rcw.c:2310
 msgid "Duplicate current connection"
@@ -1227,20 +1230,20 @@ msgstr "Kunne ikke identitetsbekrefte med offentlig SSH-nøkkel. %s"
 #, fuzzy, c-format
 #| msgid "Public SSH key cannot be imported. %s"
 msgid "SSH certificate cannot be imported. %s"
-msgstr "Kunne ikke importere SSH-sertifikat. %s"
+msgstr "SSH-sertifikat kan ikke importeres. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:345
 #, fuzzy, c-format
 msgid "SSH certificate cannot be copied into the private SSH key. %s"
-msgstr "SSH-sertifikatet kan ikke kopieres inn i den private nøkkelen. %s"
+msgstr "SSH-sertifikat kan ikke kopieres til den private SSH-nøkkelen. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:355
 #, fuzzy, c-format
 #| msgid "Could not authenticate with public SSH key. %s"
 msgid "Could not authenticate using SSH certificate. %s"
-msgstr "Kunne ikke identitetsbekrefte med offentlig SSH-nøkkel. %s"
+msgstr "Kan ikke godkjenne ved hjelp av SSH-sertifikat. %s"
 
 #: src/remmina_ssh.c:369
 msgid "SSH identity file not selected."
@@ -1351,7 +1354,7 @@ msgstr "SSH-identitetbekreftelsesdetaljer"
 #: src/remmina_ssh.c:1112
 #, fuzzy
 msgid "Keyboard interactive login, TOTP/OTP/2FA"
-msgstr "Interaktiv tastaturinnlogging, TOTP/OTP/2FA"
+msgstr "Interaktiv tastaturpålogging, TOTP/OTP/2FA"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1337
@@ -1480,10 +1483,12 @@ msgid ""
 "• ID:repeater ID number\n"
 "• unix:///path/socket.sock</big>"
 msgstr ""
-"<tt><big>Støttede formater\n"
-"* tjener\n"
-"* tjener:port\n"
-"* [tjener]:port</big></tt>"
+"<big> Formater som støttes\n"
+"• server\n"
+"• server[:p ort]\n"
+"VNC flere formater\n"
+"• ID: repeater-ID-nummer\n"
+"• unix:///path/socket.sock</big>"
 
 #: src/remmina_file_editor.c:69
 msgid ""
@@ -1615,7 +1620,7 @@ msgstr "SSH-identitetsbekreftelse"
 #, fuzzy
 #| msgid "SSH private key passphrase"
 msgid "SSH private key file"
-msgstr "Privat SSH-nøkkelfil"
+msgstr "SSH privatnøkkel fil"
 
 #: src/remmina_file_editor.c:1037
 msgid "Basic"
@@ -1685,19 +1690,19 @@ msgstr "_Tøm"
 #, fuzzy
 #| msgid "Remmina VNC Plugin"
 msgid "Remmina VNC plugin for GNOME and KVM"
-msgstr "Remmina VNC-programtillegg"
+msgstr "Remmina VNC plugin for GNOME og KVM"
 
 #: plugins/gvnc/gvnc_plugin.c:477
 #, fuzzy, c-format
 #| msgid "Authentication type"
 msgid "Unsupported authentication type %u"
-msgstr "Ustøttet identitetsbekreftelsestype %u"
+msgstr "Godkjenningstypen %u støttes ikke"
 
 #: plugins/gvnc/gvnc_plugin.c:489
 #, fuzzy, c-format
 #| msgid "Authentication type"
 msgid "Authentication failure: %s"
-msgstr "Identitetsbekreftelsesfeil: %s"
+msgstr "Godkjenningsfeil: %s"
 
 #: plugins/gvnc/gvnc_plugin.c:539 plugins/vnc/vnc_plugin.c:825
 msgid "Enter VNC authentication credentials"
@@ -1707,37 +1712,37 @@ msgstr "Skriv inn VNC-identitetsbekreftelsesdetaljer"
 #, fuzzy
 #| msgid "Use system proxy settings"
 msgid "Use server settings"
-msgstr "Bruk systemets mellomtjenerinnstillinger"
+msgstr "Bruke serverinnstillinger"
 
 #: plugins/gvnc/gvnc_plugin.c:821
 #, fuzzy
 #| msgid "True colour (24 bit)"
 msgid "True colour (24 bits)"
-msgstr "Sann fargeoppløsning (24 bit)"
+msgstr "Millioner av farger (24 biter)"
 
 #: plugins/gvnc/gvnc_plugin.c:822
 #, fuzzy
 #| msgid "High colour (16 bit)"
 msgid "High colour (16 bits)"
-msgstr "Høy fargeoppløsning (16 bit)"
+msgstr "Høy farge (16 biter)"
 
 #: plugins/gvnc/gvnc_plugin.c:823
 #, fuzzy
 #| msgid "High colour (16 bit)"
 msgid "Low colour (8 bits)"
-msgstr "Høy fargeoppløsning (16 bit)"
+msgstr "Lav farge (8 biter)"
 
 #: plugins/gvnc/gvnc_plugin.c:824
 #, fuzzy
 #| msgid "True colour (24 bit)"
 msgid "Ultra low colour (3 bits)"
-msgstr "Sann fargeoppløsning (24 bit)"
+msgstr "Svært lav farge (3 biter)"
 
 #: plugins/gvnc/gvnc_plugin.c:839
 #, fuzzy
 #| msgid "Enter VNC password"
 msgid "VNC password"
-msgstr "Skriv inn VNC-passord"
+msgstr "VNC-passord"
 
 #: plugins/gvnc/gvnc_plugin.c:840 plugins/vnc/vnc_plugin.c:1962
 #: plugins/vnc/vnc_plugin.c:1982 plugins/rdp/rdp_plugin.c:2660
@@ -1748,18 +1753,18 @@ msgstr "Fargedybde"
 #, fuzzy
 #| msgid "SSH compression"
 msgid "Use JPEG Compression"
-msgstr "SSH-komprimering"
+msgstr "Bruke JPEG-komprimering"
 
 #: plugins/gvnc/gvnc_plugin.c:841
 #, fuzzy
 #| msgid "Browse the network to find a %s server"
 msgid "This might not work on all VNC servers"
-msgstr "Bla gjennom nettverket for å finne en %s-tjener"
+msgstr "Dette fungerer kanskje ikke på alle VNC-servere"
 
 #: plugins/gvnc/gvnc_plugin.c:842
 #, fuzzy
 msgid "Enable GTK-VNC debug"
-msgstr "Skru på GTK-VNC-avlusing"
+msgstr "Aktiver GTK-VNC-feilsøking"
 
 #: plugins/gvnc/gvnc_plugin.c:857 plugins/gvnc/gvnc_plugin.c:871
 #: plugins/spice/spice_plugin.c:693 plugins/spice/spice_plugin.c:706
@@ -1775,7 +1780,7 @@ msgstr "Ingen passordslagring"
 #: plugins/gvnc/gvnc_plugin.c:859 plugins/vnc/vnc_plugin.c:2004
 #, fuzzy
 msgid "Ignore remote bell messages"
-msgstr "Ignorer ringeklokkemeldinger annensteds hen"
+msgstr "Ignorer eksterne bjellemeldinger"
 
 #: plugins/gvnc/gvnc_plugin.c:860 plugins/spice/spice_plugin.c:695
 msgid "Enable audio channel"
@@ -1791,7 +1796,7 @@ msgstr "Kun vis"
 #, fuzzy
 #| msgid "Per connection"
 msgid "Shared connection"
-msgstr "Per tilkobling"
+msgstr "Delt tilkobling"
 
 #: plugins/gvnc/gvnc_plugin.c:862
 #, fuzzy
@@ -1799,20 +1804,20 @@ msgid ""
 "If the server should try to share the desktop by leaving other clients "
 "connected"
 msgstr ""
-"Hvorvidt tjeneren skal prøve å dele skrivebordet ved å levne andre klienter "
+"Hvis serveren skal prøve å dele skrivebordet ved å la andre klienter være "
 "tilkoblet"
 
 #: plugins/gvnc/gvnc_plugin.c:872
 #, fuzzy
 #| msgid "Send Ctrl+Alt+Del"
 msgid "Send Ctrl+Alt+_Del"
-msgstr "Send Ctrl+Alt+Delete"
+msgstr "Send Ctrl+Alt+_Del"
 
 #: plugins/gvnc/gvnc_plugin.c:873
 #, fuzzy
 #| msgid "Send Ctrl+Alt+Del"
 msgid "Send Ctrl+Alt+_Backspace"
-msgstr "Send Ctrl+Alt+Delete"
+msgstr "Send Ctrl+Alt+_Backspace"
 
 #: plugins/gvnc/gvnc_plugin.c:874
 msgid "Send Ctrl+Alt+_F1"
@@ -1869,13 +1874,13 @@ msgstr "Utfør omstart av fjernvert"
 #: plugins/gvnc/gvnc_plugin.c:888
 #, fuzzy
 msgid "Reset remote host (hard reboot)"
-msgstr "Slå av fjernvert med tvang (hard omstart)"
+msgstr "Tilbakestill ekstern vert (hard omstart)"
 
 #: plugins/gvnc/gvnc_plugin.c:889
 #, fuzzy
 #| msgid "Show remote cursor"
 msgid "Shutdown remote host"
-msgstr "Vis ekstern peker"
+msgstr "Avslutt ekstern vert"
 
 #: plugins/exec/exec_plugin_config.h:41
 msgid "Execute a command"
@@ -2047,12 +2052,12 @@ msgid ""
 "    the repeater, e.g. with x11vnc:\n"
 "    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
 msgstr ""
-"Koble til VNC ved bruk av en gjentaker:\n"
-"  • Tjenerfeltet må inneholde gjentaker-ID-en, f.eks. ID:123456789\n"
-"  • Gjentakerfeltet må være satt til gjentaker-IP og port, som:\n"
+"Koble til VNC ved hjelp av en repeater:\n"
+"  • Serverfeltet må inneholde repeater-IDen, for eksempel ID:123456789\n"
+"  • Repeaterfeltet må settes til repeater-IP og port, som:\n"
 "    10.10.10.12:5901\n"
-"  • Fra VNC tjeneren annensteds hen, vil du koble til\n"
-"    gjentakeren, f.eks. med x11vnc:\n"
+"  • Fra den eksterne VNC-serveren vil du koble til\n"
+"    repeateren, for eksempel med x11vnc:\n"
 "    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
 
 #: plugins/vnc/vnc_plugin.c:1959
@@ -2089,7 +2094,7 @@ msgstr "Forhindre lokal interaksjon på tjeneren"
 #, fuzzy
 #| msgid "Turn on smooth scrolling"
 msgid "Disable smooth scrolling"
-msgstr "Skru på myk rulling"
+msgstr "Slå av myk rulling"
 
 #: plugins/vnc/vnc_plugin.c:2020
 msgid "Open Chat…"
@@ -2313,7 +2318,9 @@ msgstr ""
 msgid ""
 "Unable to establish a connection to the RDP server “%s”. Check “Security "
 "protocol negotiation”."
-msgstr "Kunne ikke etablere tilkobling til RDP-tjener %s."
+msgstr ""
+"Kan ikke opprette en tilkobling til RDP-serveren %s. Kontroller "
+"\"Sikkerhetsprotokollforhandling\"."
 
 #: plugins/rdp/rdp_plugin.c:2120
 #, c-format
@@ -2346,7 +2353,9 @@ msgstr "\"%s\"-tjeneren avslo tilkoblingen."
 msgid ""
 "The Remote Desktop Gateway “%s” denied the user “%s\\%s” access due to "
 "policy."
-msgstr "Fjernskrivebordet %s nektet bruker %s\\%s tilgang på grunn av praksis."
+msgstr ""
+"Gatewayen for eksternt skrivebord %s\" nektet brukeren %s\\%s-tilgang på "
+"grunn av policy."
 
 #: plugins/rdp/rdp_plugin.c:2148
 #, c-format
@@ -2548,15 +2557,15 @@ msgid ""
 "  • 270 (portrait flipped)\n"
 "\n"
 msgstr ""
-"Kommainndelt liste over skjerm-ID-er og skrivebordsretninger:\n"
-"  • [<id>:<skjermretning-i-grader>,]\n"
+"Kommadelt liste over skjerm-IDer og skrivebordsretninger:\n"
+"  • [<id>:<orientation-in-degrees>,]\n"
 "  • 0,1,2,3\n"
 "  • 0:270,1:90\n"
-"Skjermretninger angis i grader, og de gyldige verdiene er:\n"
-"  •   0 (liggende)\n"
-"  •  90 (stående)\n"
+"Retninger er angitt i grader, gyldige verdier er:\n"
+"  • 0 (liggende)\n"
+"  • 90 (stående)\n"
 "  • 180 (liggende vendt)\n"
-"  • 270 (portrett vendt)\n"
+"  • 270 (stående vendt)\n"
 "\n"
 
 #: plugins/rdp/rdp_plugin.c:2629
@@ -2590,22 +2599,22 @@ msgstr "Bruk «Videresendingsmappe» i den avanserte fanen for flere mapper"
 #: plugins/rdp/rdp_plugin.c:2654
 #, fuzzy
 msgid "Left-handed mouse support"
-msgstr "Venstrehendt mus"
+msgstr "Støtte for venstrehendt mus"
 
 #: plugins/rdp/rdp_plugin.c:2654
 #, fuzzy
 msgid "Swap left and right mouse buttons for left-handed mouse support"
-msgstr "Bytt venstre og høyre musetaster for venstrehendt musestøtte"
+msgstr "Bytte venstre og høyre museknapp for støtte for venstre hånd"
 
 #: plugins/rdp/rdp_plugin.c:2656
 #, fuzzy
 msgid "Enable multi monitor"
-msgstr "Multi-monitor"
+msgstr "Aktivere flere skjermer"
 
 #: plugins/rdp/rdp_plugin.c:2657
 #, fuzzy
 msgid "Span screen over multiple monitors"
-msgstr "Spenn skjermflaten over flere skjermer"
+msgstr "Span-skjermen over flere skjermer"
 
 #: plugins/rdp/rdp_plugin.c:2658
 msgid "List monitor IDs"
@@ -2752,7 +2761,7 @@ msgstr "Statisk virtuell kanal"
 #, fuzzy
 #| msgid "USB redirection error"
 msgid "TCP redirection"
-msgstr "USB-videresendingsfeil"
+msgstr "TCP-omadressering"
 
 #: plugins/rdp/rdp_plugin.c:2706
 #, fuzzy
@@ -2763,7 +2772,7 @@ msgstr "/STI/TIL/r2p2tcp"
 #, fuzzy
 #| msgid "Reconnection attempt %d of %d…"
 msgid "Reconnect attempts number"
-msgstr "Gjentilkoblingsforsøk %d av %d…"
+msgstr "Nummer for nye forsøk"
 
 #: plugins/rdp/rdp_plugin.c:2707 plugins/rdp/rdp_settings.c:619
 #, fuzzy
@@ -2851,7 +2860,7 @@ msgstr "Bruk grunnidentitetsdetaljer for portner også"
 #: plugins/rdp/rdp_plugin.c:2730
 #, fuzzy
 msgid "Enable Gateway websockets support"
-msgstr "Skru på støtte for portner-websockets"
+msgstr "Aktiver støtte for Gateway-websockets"
 
 #: plugins/rdp/rdp_plugin.c:2756
 msgid "RDP - Remote Desktop Protocol"
@@ -2945,13 +2954,13 @@ msgstr "Skrivebordssideretning"
 #, fuzzy
 #| msgid "Use system proxy settings"
 msgid "Input device settings"
-msgstr "Bruk systemets mellomtjenerinnstillinger"
+msgstr "Innstillinger for inndataenhet"
 
 #: plugins/rdp/rdp_settings.c:608
 #, fuzzy
 #| msgid "Quality settings"
 msgid "General settings"
-msgstr "Kvalitetsinnstillinger"
+msgstr "Hovedinnstillinger"
 
 #: plugins/rdp/rdp_event.c:344
 #, c-format
@@ -3442,7 +3451,7 @@ msgstr "Remmina-datamappe"
 #, fuzzy
 #| msgid "Choose a folder to save screenshots from Remmina in."
 msgid "Choose a folder to save connection profiles from Remmina in."
-msgstr "Velg mappe å lagre skjermavbildninger fra Remmina i."
+msgstr "Velg en mappe du vil lagre tilkoblingsprofiler fra Remmina i."
 
 #: data/ui/remmina_preferences.glade:315
 msgid "Remember last view for each connection"
@@ -3575,7 +3584,7 @@ msgstr "«Fang alle tastaturtastetrykk»-statusfarge"
 #, fuzzy
 #| msgid "“Grab all keyboard events” status colour"
 msgid "Enable/Disable “Grab all keyboard events” status colour"
-msgstr "«Fang alle tastaturtastetrykk»-statusfarge"
+msgstr "Aktiver/deaktiver statusfargen \"Grab all keyboard events\""
 
 #: data/ui/remmina_preferences.glade:770
 msgid ""
@@ -3754,7 +3763,7 @@ msgstr "Rulleminne-linjer"
 #, fuzzy
 #| msgid "Shortcut for copying to clipboard"
 msgid "Shortcuts for copying and pasting"
-msgstr "Snarvei for kopiering til utklippstavle"
+msgstr "Snarveier for kopiering og innliming"
 
 #: data/ui/remmina_preferences.glade:1933
 msgid "Select all shortcuts"
@@ -3893,13 +3902,13 @@ msgstr "Forgrunnsfarge"
 #, fuzzy
 #| msgid "Increase font size"
 msgid "Increase and decrease font size"
-msgstr "Øk skriftstørrelse"
+msgstr "Øke og redusere skriftstørrelsen"
 
 #: data/ui/remmina_preferences.glade:2433
 #, fuzzy
 #| msgid "Search text"
 msgid "Search text shortcut"
-msgstr "Søk i tekst"
+msgstr "Snarvei til søketekst"
 
 #: data/ui/remmina_preferences.glade:2464
 #: data/ui/remmina_preferences.glade:2479
