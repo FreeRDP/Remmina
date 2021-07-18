@@ -470,7 +470,7 @@ BOOL rf_auto_reconnect(rfContext *rfi)
 		}
 
 		/* Wait until 5 secs have elapsed from last reconnect attempt, while checking for rfi->stop_reconnecting_requested */
-		while (time(NULL) - treconn < 25) {
+		while (time(NULL) - treconn < 5) {
 			if (rfi->stop_reconnecting_requested)
 				break;
 			usleep(200000); // 200ms sleep
