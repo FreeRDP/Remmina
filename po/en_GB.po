@@ -15,8 +15,8 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-07-16 21:21+0000\n"
-"PO-Revision-Date: 2021-07-16 08:59+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2021-07-23 00:43+0000\n"
+"Last-Translator: Andi Chandler <andi@gowling.com>\n"
 "Language-Team: English (United Kingdom) <https://hosted.weblate.org/projects/"
 "remmina/remmina/en_GB/>\n"
 "Language: en_GB\n"
@@ -410,12 +410,14 @@ msgid "Log SSH session when exiting Remmina"
 msgstr "Log SSH session when exiting Remmina"
 
 #: src/remmina_ssh_plugin.c:1516
+#, fuzzy
 msgid "Log SSH session asynchronously"
-msgstr ""
+msgstr "Log SSH session asynchronously"
 
 #: src/remmina_ssh_plugin.c:1516
+#, fuzzy
 msgid "Saving the session asynchronously may have a notable performance impact"
-msgstr ""
+msgstr "Saving the session asynchronously may have a notable performance impact"
 
 #: src/remmina_ssh_plugin.c:1517
 msgid "Audible terminal bell"
@@ -2544,6 +2546,7 @@ msgstr ""
 "\n"
 
 #: plugins/rdp/rdp_plugin.c:2630
+#, fuzzy
 msgid ""
 "Redirect directory <path> as named share <name>.\n"
 "  • <name>,<fullpath>[;<name>,<fullpath>[;…]]\n"
@@ -2554,10 +2557,18 @@ msgid ""
 "  • hotplug,*\n"
 "\n"
 msgstr ""
+"Redirect directory <path> as named share <name>.\n"
+"  • <name>,<fullpath>[;<name>,<fullpath>[;…]]\n"
+"  • MyHome,/home/remminer\n"
+"  • /home/remminer\n"
+"  • MyHome,/home/remminer;SomePath,/path/to/somepath\n"
+"Hotplug support is enabled with:\n"
+"  • hotplug,*\n"
+"\n"
 
 #: plugins/rdp/rdp_plugin.c:2654
 msgid "Use “Redirect directory” in the advanced tab for multiple directories"
-msgstr ""
+msgstr "Use “Redirect directory” in the advanced tab for multiple directories"
 
 #: plugins/rdp/rdp_plugin.c:2655
 msgid "Left-handed mouse support"
@@ -2637,7 +2648,7 @@ msgstr "Remote Desktop Gateway domain"
 
 #: plugins/rdp/rdp_plugin.c:2690
 msgid "Redirect directory"
-msgstr ""
+msgstr "Redirect directory"
 
 #: plugins/rdp/rdp_plugin.c:2691
 msgid "Client name"
@@ -2724,7 +2735,7 @@ msgstr "USB redirection error"
 
 #: plugins/rdp/rdp_plugin.c:2707
 msgid "/PATH/TO/rdp2tcp"
-msgstr ""
+msgstr "/PATH/TO/rdp2tcp"
 
 #: plugins/rdp/rdp_plugin.c:2708 plugins/rdp/rdp_settings.c:613
 #, fuzzy
@@ -2736,6 +2747,7 @@ msgstr "Reconnection attempt %d of %d…"
 msgid ""
 "The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
 msgstr ""
+"The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
 
 #: plugins/rdp/rdp_plugin.c:2709
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
@@ -2815,7 +2827,7 @@ msgstr "Use base credentials for gateway too"
 
 #: plugins/rdp/rdp_plugin.c:2731
 msgid "Enable Gateway websockets support"
-msgstr ""
+msgstr "Enable Gateway websockets support"
 
 #: plugins/rdp/rdp_plugin.c:2757
 msgid "RDP - Remote Desktop Protocol"
@@ -3486,7 +3498,7 @@ msgstr "Viewport fullscreen"
 #: data/ui/remmina_preferences.glade:624
 msgctxt "Appearance preferences"
 msgid "Tabs grouping"
-msgstr ""
+msgstr "Tabs grouping"
 
 #: data/ui/remmina_preferences.glade:638
 msgid "By group"
