@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Remmina v1.4.5\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-07-16 21:21+0000\n"
+"POT-Creation-Date: 2021-07-29 20:50+0000\n"
 "PO-Revision-Date: 2021-07-17 20:55+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -20,147 +20,202 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Generator: Weblate 4.7.2-dev\n"
 
-#: src/remmina_protocol_widget.c:283 src/remmina_sftp_plugin.c:328
-msgid "Connect via SSH from a new terminal"
-msgstr "از طریق ترمینال جدید با SSH متصل شوید"
-
-#: src/remmina_protocol_widget.c:290 src/remmina_ssh_plugin.c:829
-#: src/remmina_ssh_plugin.c:1454
-msgid "Open SFTP transfer…"
-msgstr "انتقال از طریق SFTP را باز کنید…"
-
-#: src/remmina_protocol_widget.c:319
-msgid "Executing external commands…"
-msgstr "اجرای دستورات خارجی…"
-
-#. TRANSLATORS: “%s” is a placeholder for the connection profile name
-#: src/remmina_protocol_widget.c:327
-#, c-format
-msgid "Connecting to “%s”…"
-msgstr "در حال اتصال به \"%s\"…"
-
-#. TRANSLATORS: “%s” is a placeholder for an hostname or an IP address.
-#: src/remmina_protocol_widget.c:911 src/remmina_protocol_widget.c:1096
-#, c-format
-msgid "Connecting to “%s” via SSH…"
-msgstr "وصل شدن به %s با SSH…"
-
-#. TRANSLATORS: “%i” is a placeholder for a TCP port number.
-#: src/remmina_protocol_widget.c:1160
-#, c-format
-msgid "Awaiting incoming SSH connection on port %i…"
-msgstr "در انتظار اتصال SSH ورودی در پورت \"%i\"…"
-
-#: src/remmina_protocol_widget.c:1213
-#, c-format
-msgid "The “%s” command is not available on the SSH server."
-msgstr "دستور \"%s\" در سرور SSH موجود نیست."
-
-#: src/remmina_protocol_widget.c:1218
-#, c-format
-msgid "Could not run the “%s” command on the SSH server (status = %i)."
-msgstr "دستور \"%s\" روی سرور SSH اجرا نشد (وضعیت =\"%i\")."
-
-#. TRANSLATORS: %s is a placeholder for an error message
-#: src/remmina_protocol_widget.c:1226
-#, c-format
-msgid "Could not run command. %s"
-msgstr "دستور نمی تواند اجرا شود. %s"
-
-#. TRANSLATORS: “%s” is a placeholder for a hostname or IP address.
-#: src/remmina_protocol_widget.c:1296
-#, c-format
-msgid "Connecting to %s via SSH…"
-msgstr "وصل شدن به %s با SSH…"
-
+#: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:346
 #: src/remmina_protocol_widget.c:1672 src/remmina_protocol_widget.c:1691
-#: src/remmina_ssh_plugin.c:1369 src/remmina_sftp_plugin.c:310
-#: src/remmina_sftp_plugin.c:346 src/remmina_file_editor.c:846
-#: src/remmina_file_editor.c:967 plugins/www/www_plugin.c:880
-#: plugins/rdp/rdp_plugin.c:2652 data/ui/remmina_unlock.glade:116
-#: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1693
+#: src/remmina_file_editor.c:846 src/remmina_file_editor.c:967
+#: src/remmina_ssh_plugin.c:1369 plugins/rdp/rdp_plugin.c:2652
+#: plugins/www/www_plugin.c:880 data/ui/remmina_mpc.glade:236
+#: data/ui/remmina_preferences.glade:1693 data/ui/remmina_unlock.glade:116
 msgid "Password"
 msgstr "رمزعبور"
 
-#: src/remmina_protocol_widget.c:1690
-msgid "Type in SSH username and password."
-msgstr "نام کاربری و رمزعبور SSH را وارد کنید."
+#: src/remmina_sftp_plugin.c:311 src/remmina_sftp_plugin.c:348
+#: src/remmina_file_editor.c:847 src/remmina_ssh_plugin.c:1370
+#: src/remmina_ssh_plugin.c:1475
+msgid "SSH identity file"
+msgstr "فایل هویت SSH"
 
-#: src/remmina_protocol_widget.c:1745 src/remmina_protocol_widget.c:1777
+#: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:848
+#: src/remmina_ssh_plugin.c:1371
+msgid "SSH agent"
+msgstr "عامل SSH"
+
+#: src/remmina_sftp_plugin.c:313 src/remmina_file_editor.c:849
+#: src/remmina_ssh_plugin.c:1372
+msgid "Public key (automatic)"
+msgstr "کلید عمومی (خودکار)"
+
+#: src/remmina_sftp_plugin.c:314 src/remmina_file_editor.c:850
+#: src/remmina_ssh_plugin.c:1373
+msgid "Kerberos (GSSAPI)"
+msgstr "کربروس (GSSAPI)"
+
+#: src/remmina_sftp_plugin.c:323
 #, fuzzy
-msgid "Fingerprint automatically accepted"
-msgstr "اثر انگشت به طور خودکار پذیرفته شده"
+msgid "Show Hidden Files"
+msgstr "نمایش پرونده های پنهان"
 
-#. TRANSLATORS: The user is asked to verify a new SSL certificate.
-#: src/remmina_protocol_widget.c:1753
-msgid "Certificate details:"
-msgstr "جزئیات گواهی نامه:"
+#: src/remmina_sftp_plugin.c:325
+#, fuzzy
+msgid "Overwrite all files"
+msgstr "بازنویسی تمام فایل ها"
 
-#. TRANSLATORS: An SSL certificate subject is usually the remote server the user connect to.
-#: src/remmina_protocol_widget.c:1755 src/remmina_protocol_widget.c:1787
-msgid "Subject:"
-msgstr "موضوع:"
+#: src/remmina_sftp_plugin.c:327
+#, fuzzy
+msgid "Resume all file transfers"
+msgstr "از سرگیری تمام انتقال پرونده ها"
 
-#. TRANSLATORS: The name or email of the entity that have issued the SSL certificate
-#: src/remmina_protocol_widget.c:1757 src/remmina_protocol_widget.c:1789
-msgid "Issuer:"
-msgstr "صادر کننده:"
+#: src/remmina_sftp_plugin.c:328 src/remmina_protocol_widget.c:283
+msgid "Connect via SSH from a new terminal"
+msgstr "از طریق ترمینال جدید با SSH متصل شوید"
 
-#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
-#: src/remmina_protocol_widget.c:1759
-msgid "Fingerprint:"
-msgstr "اثر انگشت:"
+#: src/remmina_sftp_plugin.c:345 src/remmina_message_panel.c:330
+#: src/remmina_file_editor.c:961 src/remmina_ssh_plugin.c:1473
+#: plugins/rdp/rdp_plugin.c:2651 plugins/vnc/vnc_plugin.c:1960
+#: plugins/vnc/vnc_plugin.c:1980 plugins/www/www_plugin.c:879
+#: data/ui/remmina_mpc.glade:144
+msgid "Username"
+msgstr "نام کاربری"
 
-#. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
-#: src/remmina_protocol_widget.c:1761
-msgid "Accept certificate?"
-msgstr "آیا گواهی نامه را قبول می کنید؟"
+#: src/remmina_sftp_plugin.c:347 src/remmina_file_editor.c:952
+#: src/remmina_ssh_plugin.c:1472
+msgid "Authentication type"
+msgstr "نوع احراز هویت"
 
-#. TRANSLATORS: The user is asked to verify a new SSL certificate.
-#: src/remmina_protocol_widget.c:1785
-msgid "The certificate changed! Details:"
-msgstr "گواهی نامه تغییر کرده است! جزئیات:"
+#: src/remmina_sftp_plugin.c:349 src/remmina_file_editor.c:984
+#: src/remmina_ssh_plugin.c:1479
+msgid "Password to unlock private key"
+msgstr "رمز عبور برای باز کردن کلید خصوصی"
 
-#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
-#: src/remmina_protocol_widget.c:1791
-msgid "Old fingerprint:"
-msgstr "اثر انگشت قدیمی:"
+#: src/remmina_sftp_plugin.c:350 src/remmina_ssh_plugin.c:1509
+#, fuzzy
+msgid "SSH Proxy Command"
+msgstr "فرمان پروکسی SSH"
 
-#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
-#: src/remmina_protocol_widget.c:1793
-msgid "New fingerprint:"
-msgstr "اثر انگشت جدید:"
+#: src/remmina_sftp_plugin.c:359
+#, fuzzy
+msgid "SFTP - Secure File Transfer"
+msgstr "SFTP -- امن انتقال فایل"
 
-#. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
-#: src/remmina_protocol_widget.c:1795
-msgid "Accept changed certificate?"
-msgstr "گواهینامه تغییر یافته را قبول دارید؟"
+#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1533
+#, fuzzy
+msgid "Protocol"
+msgstr "پروتکل"
 
-#. TRANSLATORS: “%i” is a placeholder for a port number. “%s”  is a placeholder for a protocol name (VNC).
-#: src/remmina_protocol_widget.c:1938
-#, c-format
-msgid "Listening on port %i for an incoming %s connection…"
-msgstr "در حال انتظار روی پورت \"%i\" برای برقراری ارتباط \"%s\"…"
+#: src/remmina_plugin_manager.c:73
+#, fuzzy
+msgid "Entry"
+msgstr "Entry"
 
-#: src/remmina_protocol_widget.c:1963
-msgid "Could not authenticate, attempting reconnection…"
-msgstr "امکان تأیید اعتبار وجود ندارد ، تلاش برای اتصال مجدد …"
+#: src/remmina_plugin_manager.c:73
+#, fuzzy
+msgid "File"
+msgstr "فایل"
 
-#: src/remmina_protocol_widget.c:2025 src/remmina_file_editor.c:346
-#: src/remmina_file_editor.c:917 data/ui/remmina_main.glade:478
-msgid "Server"
-msgstr "سرویس دهنده"
+#: src/remmina_plugin_manager.c:73
+#, fuzzy
+msgid "Tool"
+msgstr "ابزار"
 
-#. TRANSLATORS: “%s” is a placeholder for a protocol name, like “RDP”.
-#: src/remmina_protocol_widget.c:2043
-#, c-format
-msgid "Install the %s protocol plugin first."
-msgstr "ابتدا افزونه پروتکل \"%s\" را نصب کنید."
+#: src/remmina_plugin_manager.c:73
+#, fuzzy
+msgid "Preference"
+msgstr "عملکرد"
 
-#: src/remmina_exec.c:475
-#, c-format
-msgid "Plugin %s is not registered."
-msgstr "افزونه \"%s\" ثبت نشده."
+#: src/remmina_plugin_manager.c:73
+#, fuzzy
+msgid "Secret"
+msgstr "مخفی"
+
+#: src/remmina_plugin_manager.c:456 data/ui/remmina_main.glade:305
+#, fuzzy
+msgid "Plugins"
+msgstr "متصل شونده‌ها"
+
+#: src/remmina_plugin_manager.c:456 src/remmina_message_panel.c:452
+#: src/remmina_message_panel.c:621 src/remmina_file_editor.c:152
+#, fuzzy
+msgid "_OK"
+msgstr "_OK"
+
+#: src/remmina_plugin_manager.c:474 src/remmina_file_editor.c:1490
+#: data/ui/remmina_main.glade:442
+#, fuzzy
+msgid "Name"
+msgstr "نام"
+
+#: src/remmina_plugin_manager.c:480
+#, fuzzy
+msgid "Type"
+msgstr "نوع"
+
+#: src/remmina_plugin_manager.c:486
+#, fuzzy
+msgid "Description"
+msgstr "شرح"
+
+#: src/remmina_plugin_manager.c:492
+#, fuzzy
+msgid "Version"
+msgstr "نسخه"
+
+#: src/remmina_chat_window.c:178
+#, fuzzy, c-format
+msgid "Chat with %s"
+msgstr "چت با %s"
+
+#: src/remmina_chat_window.c:230
+#, fuzzy
+msgid "_Send"
+msgstr "_Send"
+
+#: src/remmina_chat_window.c:240
+#, fuzzy
+msgid "_Clear"
+msgstr "_Clear"
+
+#: src/remmina_applet_menu_item.c:121
+msgid "Discovered"
+msgstr "کشف شده"
+
+#: src/remmina_applet_menu_item.c:126
+msgid "New Connection"
+msgstr "ارتباط جدید"
+
+#: src/remmina_key_chooser.h:38
+#, fuzzy
+msgid "Shift+"
+msgstr "شیفت+"
+
+#: src/remmina_key_chooser.h:39
+#, fuzzy
+msgid "Ctrl+"
+msgstr "Ctrl+"
+
+#: src/remmina_key_chooser.h:40
+#, fuzzy
+msgid "Alt+"
+msgstr "Alt+"
+
+#: src/remmina_key_chooser.h:41
+#, fuzzy
+msgid "Super+"
+msgstr "سوپر+"
+
+#: src/remmina_key_chooser.h:42
+#, fuzzy
+msgid "Hyper+"
+msgstr "هایپر+"
+
+#: src/remmina_key_chooser.h:43
+#, fuzzy
+msgid "Meta+"
+msgstr "متا+"
+
+#: src/remmina_key_chooser.h:44
+#, fuzzy
+msgid "<None>"
+msgstr "<None>"
 
 #: src/remmina_pref_dialog.c:91 src/remmina_file_editor.c:435
 msgid "Resolutions"
@@ -203,251 +258,212 @@ msgstr ""
 "این پرونده شامل طرح رنگ ترمینال \"سفارشی\" قابل انتخاب از زبانه \"پیشرفته\" "
 "اتصالات ترمینال و قابل ویرایش در زبانه \"ترمینال\" در تنظیمات است."
 
-#. TRANSLATORS: %s is a placeholder for an error message
-#: src/remmina_ssh_plugin.c:539
-#, c-format
-msgid "Error: %s"
-msgstr "خطا:‌ \"%s\""
-
-#: src/remmina_ssh_plugin.c:556
-msgid "Terminal content saved in"
-msgstr "محتوای ترمینال ذخیره شده در"
-
-#: src/remmina_ssh_plugin.c:822
-msgid "Select All (host+A)"
-msgstr "انتخاب همه (Host + A)"
-
-#: src/remmina_ssh_plugin.c:823
-msgid "Copy (host+C)"
-msgstr "کپی (host + C)"
-
-#: src/remmina_ssh_plugin.c:824
-msgid "Paste (host+V)"
-msgstr "چسباندن (host + V)"
-
-#: src/remmina_ssh_plugin.c:825
-msgid "Save session to file"
-msgstr "ذخیره نشست در فایل"
-
-#: src/remmina_ssh_plugin.c:826
-msgid "Increase font size (host+Page Up)"
-msgstr "افزایش اندازه فونت (Host + Page_Up)"
-
-#: src/remmina_ssh_plugin.c:827
-msgid "Decrease font size (host+Page Down)"
-msgstr "کاهش اندازه فونت (Host + Page_Down)"
-
-#: src/remmina_ssh_plugin.c:828
-msgid "Find text (host+G)"
-msgstr "چسباندن (host + V)"
-
-#: src/remmina_ssh_plugin.c:1370 src/remmina_ssh_plugin.c:1475
-#: src/remmina_sftp_plugin.c:311 src/remmina_sftp_plugin.c:348
-#: src/remmina_file_editor.c:847
-msgid "SSH identity file"
-msgstr "فایل هویت SSH"
-
-#: src/remmina_ssh_plugin.c:1371 src/remmina_sftp_plugin.c:312
-#: src/remmina_file_editor.c:848
-msgid "SSH agent"
-msgstr "عامل SSH"
-
-#: src/remmina_ssh_plugin.c:1372 src/remmina_sftp_plugin.c:313
-#: src/remmina_file_editor.c:849
-msgid "Public key (automatic)"
-msgstr "کلید عمومی (خودکار)"
-
-#: src/remmina_ssh_plugin.c:1373 src/remmina_sftp_plugin.c:314
-#: src/remmina_file_editor.c:850
-msgid "Kerberos (GSSAPI)"
-msgstr "کربروس (GSSAPI)"
-
-#: src/remmina_ssh_plugin.c:1448 data/ui/remmina_main.glade:177
-msgid "Copy"
-msgstr "کپی"
-
-#: src/remmina_ssh_plugin.c:1448
-msgid "_Copy"
-msgstr "_کپی"
-
-#: src/remmina_ssh_plugin.c:1449
-msgid "Paste"
-msgstr "چسباندن"
-
-#: src/remmina_ssh_plugin.c:1449
-msgid "_Paste"
-msgstr "_چسباندن"
-
-#: src/remmina_ssh_plugin.c:1450
-msgid "Select all"
-msgstr "انتخاب همه"
-
-#: src/remmina_ssh_plugin.c:1450
-msgid "_Select all"
-msgstr "_انتخاب همه"
-
-#: src/remmina_ssh_plugin.c:1451
-msgid "Increase font size"
-msgstr "افزایش اندازه فونت"
-
-#: src/remmina_ssh_plugin.c:1451
-msgid "_Increase font size"
-msgstr "_افزایش اندازه فونت"
-
-#: src/remmina_ssh_plugin.c:1452
-msgid "Decrease font size"
-msgstr "کاهش اندازه فونت"
-
-#: src/remmina_ssh_plugin.c:1452
-msgid "_Decrease font size"
-msgstr "_کاهش اندازه فونت"
-
-#: src/remmina_ssh_plugin.c:1453
+#: src/remmina_message_panel.c:163 data/ui/remmina_mpc.glade:46
+#: data/ui/remmina_unlock.glade:46
 #, fuzzy
-msgid "Find text"
-msgstr "یافتن متن"
+msgid "Cancel"
+msgstr "لغو"
 
-#: src/remmina_ssh_plugin.c:1453
+#: src/remmina_message_panel.c:199 data/ui/remmina_snap_info_dialog.glade:28
+#: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
+#: data/ui/remmina_string_list.glade:63 data/ui/remmina_news.glade:33
+#: data/ui/remmina_preferences.glade:2640
 #, fuzzy
-msgid "_Find text"
-msgstr "_Find متن"
+msgid "Close"
+msgstr "بستن"
 
-#: src/remmina_ssh_plugin.c:1472 src/remmina_sftp_plugin.c:347
-#: src/remmina_file_editor.c:952
-msgid "Authentication type"
-msgstr "نوع احراز هویت"
-
-#: src/remmina_ssh_plugin.c:1473 src/remmina_message_panel.c:330
-#: src/remmina_sftp_plugin.c:345 src/remmina_file_editor.c:961
-#: plugins/www/www_plugin.c:879 plugins/vnc/vnc_plugin.c:1960
-#: plugins/vnc/vnc_plugin.c:1980 plugins/rdp/rdp_plugin.c:2651
-#: data/ui/remmina_mpc.glade:144
-msgid "Username"
-msgstr "نام کاربری"
-
-#: src/remmina_ssh_plugin.c:1474 plugins/vnc/vnc_plugin.c:1961
-#: plugins/vnc/vnc_plugin.c:1981 plugins/spice/spice_plugin.c:666
-msgid "User password"
-msgstr "رمزعبور کاربر"
-
-#: src/remmina_ssh_plugin.c:1477 src/remmina_file_editor.c:979
+#: src/remmina_message_panel.c:260
 #, fuzzy
-#| msgid "SSH identity file"
-msgid "SSH certificate file"
-msgstr "فایل گواهی SSH"
+msgid "Yes"
+msgstr "بله"
 
-#: src/remmina_ssh_plugin.c:1479 src/remmina_sftp_plugin.c:349
-#: src/remmina_file_editor.c:984
-msgid "Password to unlock private key"
-msgstr "رمز عبور برای باز کردن کلید خصوصی"
-
-#: src/remmina_ssh_plugin.c:1480 plugins/rdp/rdp_plugin.c:2693
-msgid "Start-up program"
-msgstr "برنامه راه اندازی"
-
-#: src/remmina_ssh_plugin.c:1485
+#: src/remmina_message_panel.c:267
 #, fuzzy
+msgid "No"
+msgstr "خیر"
+
+#: src/remmina_message_panel.c:391 plugins/rdp/rdp_plugin.c:2653
+#: data/ui/remmina_mpc.glade:172
+#, fuzzy
+msgid "Domain"
+msgstr "دامنه"
+
+#: src/remmina_message_panel.c:420
+#, fuzzy
+msgid "Save password"
+msgstr "ذخیره گذرواژه"
+
+#: src/remmina_message_panel.c:457 src/remmina_message_panel.c:629
+#: src/remmina_sftp_client.c:947 src/remmina_file_editor.c:151
+#: src/remmina_file_editor.c:1365 plugins/spice/spice_plugin_file_transfer.c:84
+#: data/ui/remmina_key_chooser.glade:8 data/ui/remmina_key_chooser.glade:9
+#: data/ui/remmina_spinner.glade:8 data/ui/remmina_spinner.glade:9
+#, fuzzy
+msgid "_Cancel"
+msgstr "_لغو"
+
+#: src/remmina_message_panel.c:513
+#, fuzzy
+msgid "Enter certificate authentication files"
+msgstr "پرونده های احراز هویت گواهی را وارد کنید"
+
+#: src/remmina_message_panel.c:525
+#, fuzzy
+msgid "CA Certificate File"
+msgstr "CA فایل گواهی"
+
+#: src/remmina_message_panel.c:547
+#, fuzzy
+msgid "CA CRL File"
+msgstr "CA CRL فایل"
+
+#: src/remmina_message_panel.c:569
+#, fuzzy
+msgid "Client Certificate File"
+msgstr "پرونده گواهی مشتری"
+
+#: src/remmina_message_panel.c:591
+#, fuzzy
+msgid "Client Certificate Key"
+msgstr "کلید گواهی مشتری"
+
+#: src/rcw.c:658
+#, fuzzy, c-format
 msgid ""
-"The filename can use the following placeholders:\n"
-"\n"
-"  • %h is substituted with the server name\n"
-"  • %t is substituted with the SSH server name\n"
-"  • %u is substituted with the username\n"
-"  • %U is substituted with the SSH username\n"
-"  • %p is substituted with Remmina profile name\n"
-"  • %g is substituted with Remmina profile group name\n"
-"  • %d is substituted with local date and time in ISO 8601 format\n"
-msgstr ""
-"نام پرونده می تواند از دارندگان مکان های زیر استفاده کند:\n"
-"\n"
-"• ٪h با نام سرور جایگزین شده است\n"
-"  • ٪t با نام سرور SSH جایگزین شده است\n"
-"  • ٪u با نام کاربری جایگزین شده است\n"
-"  • ٪U با نام کاربری SSH جایگزین شده است\n"
-"  • ٪p با نام پروفایل Remmina جایگزین شده است\n"
-"  • ٪g با نام گروه پروفایل Remmina جایگزین شده است\n"
-"  • ٪d با تاریخ و زمان محلی در فرمت ISO 8601 جایگزین می شود\n"
+"Are you sure you want to close %i active connections in the current window?"
+msgstr "آیا مطمئن هستید که می خواهید اتصالات فعال %i را در پنجره فعلی ببنید؟"
 
-#: src/remmina_ssh_plugin.c:1507
+#: src/rcw.c:1394
 #, fuzzy
-#| msgid "Terminal color scheme"
-msgid "Terminal colour scheme"
-msgstr "قالب رنگ ترمینال"
+msgid "Viewport fullscreen mode"
+msgstr "حالت تمام صفحه Viewport"
 
-#: src/remmina_ssh_plugin.c:1508
-msgid "Character set"
-msgstr "مجموعه کاراکتر"
-
-#: src/remmina_ssh_plugin.c:1509 src/remmina_sftp_plugin.c:350
+#: src/rcw.c:1402 data/ui/remmina_preferences.glade:607
 #, fuzzy
-msgid "SSH Proxy Command"
-msgstr "فرمان پروکسی SSH"
+msgid "Scrolled fullscreen"
+msgstr "اسکرول شده تمام صفحه"
 
-#: src/remmina_ssh_plugin.c:1510
+#: src/rcw.c:1487
 #, fuzzy
-msgid "KEX (Key Exchange) algorithms"
-msgstr "الگوریتم های KEX (تبادل کلید)"
+msgid "Keep aspect ratio when scaled"
+msgstr "نگه داشتن نسبت جنبه زمانی که مقیاس"
 
-#: src/remmina_ssh_plugin.c:1511
-msgid "Symmetric cipher client to server"
-msgstr "رمزنگاری متقارن کلاینت به سرور"
-
-#: src/remmina_ssh_plugin.c:1512
-msgid "Preferred server host key types"
-msgstr "انواع کلید میزبان سرور"
-
-#: src/remmina_ssh_plugin.c:1513
-msgid "Folder for SSH session log"
-msgstr "پوشه برای نگهداری لاگ های نشست SSH"
-
-#: src/remmina_ssh_plugin.c:1514
-msgid "Filename for SSH session log"
-msgstr "نام فایل لاگهای نشست SSH"
-
-#: src/remmina_ssh_plugin.c:1515
-msgid "Log SSH session when exiting Remmina"
-msgstr "ذخیره کردن لاگ های SSH زمان خروج از Remmina"
-
-#: src/remmina_ssh_plugin.c:1516
+#: src/rcw.c:1495
 #, fuzzy
-msgid "Log SSH session asynchronously"
-msgstr "ورود به جلسه SSH به طور ناهمزمان"
+msgid "Fill client window when scaled"
+msgstr "پر کردن پنجره مشتری هنگامی که مقیاس"
 
-#: src/remmina_ssh_plugin.c:1516
+#: src/rcw.c:2043
 #, fuzzy
-msgid "Saving the session asynchronously may have a notable performance impact"
-msgstr ""
-"صرفه جویی در جلسه به طور ناهمزمان ممکن است تاثیر عملکرد قابل توجهی داشته باشد"
+msgid "Send clipboard content as keystrokes"
+msgstr "ارسال محتوای کلیپ بورد به عنوان ضربه های کلیدی"
 
-#: src/remmina_ssh_plugin.c:1517
-msgid "Audible terminal bell"
-msgstr "صدای ترمینال قابل شندیدن"
-
-#: src/remmina_ssh_plugin.c:1518
-msgid "SSH compression"
-msgstr "فشرده سازی SSH"
-
-#: src/remmina_ssh_plugin.c:1519
-msgid "Don't remember passwords"
-msgstr "عدم یادآوری رمزعبور"
-
-#: src/remmina_ssh_plugin.c:1520
+#: src/rcw.c:2147
 #, fuzzy
-msgid "Strict host key checking"
-msgstr "چک کردن کلید میزبان سخت گیرانه"
+msgid "Turn off scaling to avoid screenshot distortion."
+msgstr "پوسته پوسته شدن را خاموش کنید تا از تحریف تصویر جلوگیری کنید."
 
-#: src/remmina_ssh_plugin.c:1534
+#: src/rcw.c:2207 plugins/www/www_plugin.c:848
 #, fuzzy
-msgid "SSH - Secure Shell"
-msgstr "SSH - پوسته امن"
+msgid "Screenshot taken"
+msgstr "تصویر گرفته شده"
 
-#: src/remmina_applet_menu_item.c:121
-msgid "Discovered"
-msgstr "کشف شده"
+#: src/rcw.c:2290
+#, fuzzy
+msgid "_Menu"
+msgstr "_Menu"
 
-#: src/remmina_applet_menu_item.c:126
-msgid "New Connection"
-msgstr "ارتباط جدید"
+#: src/rcw.c:2291
+#, fuzzy
+msgid "Menu"
+msgstr "فهرست"
+
+#: src/rcw.c:2300
+#, fuzzy
+msgid "Open the Remmina main window"
+msgstr "باز کردن پنجره اصلی Remmina"
+
+#: src/rcw.c:2310
+#, fuzzy
+msgid "Duplicate current connection"
+msgstr "اتصال جریان تکراری"
+
+#: src/rcw.c:2327
+#, fuzzy
+msgid "Resize the window to fit in remote resolution"
+msgstr "اندازه مجدد پنجره به جا در وضوح از راه دور"
+
+#: src/rcw.c:2338
+#, fuzzy
+msgid "Toggle fullscreen mode"
+msgstr "تغییر حالت تمام‌صفحه"
+
+#: src/rcw.c:2384 data/ui/remmina_preferences.glade:1344
+#: data/ui/remmina_preferences.glade:1354
+#, fuzzy
+msgid "Multi monitor"
+msgstr "مانیتور چند"
+
+#: src/rcw.c:2400
+#, fuzzy
+msgid "Toggle dynamic resolution update"
+msgstr "به روز رسانی وضوح پویا را تغییر دهید"
+
+#: src/rcw.c:2410
+#, fuzzy
+msgid "Toggle scaled mode"
+msgstr "تغییر حالت مقیاس"
+
+#: src/rcw.c:2450 data/ui/remmina_preferences.glade:1070
+#, fuzzy
+msgid "Switch tab pages"
+msgstr "تعویض صفحات زبانه"
+
+#: src/rcw.c:2460
+#, fuzzy
+msgid "Grab all keyboard events"
+msgstr "گرفتن تمام رویدادهای صفحه کلید"
+
+#: src/rcw.c:2470
+#, fuzzy
+msgid "Preferences"
+msgstr "عملکرد"
+
+#: src/rcw.c:2479
+#, fuzzy
+msgid "_Tools"
+msgstr "_ابزارها"
+
+#: src/rcw.c:2480 data/ui/remmina_main.glade:207
+#, fuzzy
+msgid "Tools"
+msgstr "ابزارها"
+
+#: src/rcw.c:2493 data/ui/remmina_preferences.glade:1277
+#: data/ui/remmina_preferences.glade:1287
+#, fuzzy
+msgid "Screenshot"
+msgstr "نماگرفت"
+
+#: src/rcw.c:2507 data/ui/remmina_preferences.glade:1181
+#, fuzzy
+msgid "Minimize window"
+msgstr "پنجره را به حداقل برسونید"
+
+#: src/rcw.c:2517 data/ui/remmina_preferences.glade:1213
+#, fuzzy
+msgid "Disconnect"
+msgstr "قطع اتصال"
+
+#: src/rcw.c:4284
+#, fuzzy, c-format
+msgid "The file “%s” is corrupted, unreadable, or could not be found."
+msgstr "پرونده \"%s\" خراب شده، غیرقابل خواندن است، یا یافت نمی شود."
+
+#: src/rcw.c:4452
+#, fuzzy
+msgid "Warning: This plugin requires GtkSocket, but it’s not available."
+msgstr "هشدار: این پلاگین نیاز به GtkSocket, اما آن را در دسترس نیست."
 
 #: src/remmina_mpchange.c:234
 msgid "The passwords do not match"
@@ -473,147 +489,6 @@ msgid "%d password changed."
 msgid_plural "%d passwords changed."
 msgstr[0] "\"%d\" رمزعبور تغییر داده شد."
 msgstr[1] "\"%d\" رمزعبورها تغییر داده شد."
-
-#: src/remmina_public.c:345
-#, fuzzy, c-format
-msgid "Address is too long for UNIX socket_path: %s"
-msgstr "آدرس بیش از حد طولانی برای یونی socket_path: %s"
-
-#: src/remmina_public.c:355
-#, fuzzy, c-format
-msgid "Creating UNIX socket failed: %s"
-msgstr "ایجاد سوکت UNIX با شکست مواجه شد: %s"
-
-#: src/remmina_public.c:361
-#, fuzzy, c-format
-msgid "Connecting to UNIX socket failed: %s"
-msgstr "اتصال به سوکت UNIX با شکست مواجه شد: %s"
-
-#: src/remmina_public.c:631
-msgid "Please enter format 'widthxheight'."
-msgstr "لطفا در قالب 'عرض x طول' وارد کنید."
-
-#: src/remmina_public.c:653
-#, fuzzy
-msgid "Change security settings"
-msgstr "تغییر تنظیمات امنیتی"
-
-#. TRANSLATORS: translator-credits should be replaced with a formatted list of translators in your own language
-#: src/remmina_about.c:54
-#, fuzzy
-msgid "translator-credits"
-msgstr "دانیال بهزادی <dani.behzi@ubuntu.com>"
-
-#: src/remmina_ftp_client.c:389
-msgid "Choose download location"
-msgstr "مکان بارگیری را انتخاب کنید"
-
-#: src/remmina_ftp_client.c:529
-msgid "Are you sure to delete the selected files on server?"
-msgstr "آیا مطمئن هستید که فایل های انتخاب شده بر روی سرور حذف شوند؟"
-
-#: src/remmina_ftp_client.c:586
-msgid "Choose a file to upload"
-msgstr "فایلی را برای بارگذاری انتخاب کنید"
-
-#: src/remmina_ftp_client.c:593
-msgid "Upload folder"
-msgstr "پوشه را بارگذاری کنید"
-
-#: src/remmina_ftp_client.c:649 src/remmina_ftp_client.c:763
-msgid "Download"
-msgstr "دریافت"
-
-#: src/remmina_ftp_client.c:656 src/remmina_ftp_client.c:770
-msgid "Upload"
-msgstr "بارگذاری"
-
-#: src/remmina_ftp_client.c:663
-#, fuzzy
-msgid "_Delete"
-msgstr "_حذف"
-
-#: src/remmina_ftp_client.c:748
-msgid "Home"
-msgstr "خانه"
-
-#: src/remmina_ftp_client.c:749
-#, fuzzy
-msgid "Go to home folder"
-msgstr "رفتن به پوشه خانه"
-
-#: src/remmina_ftp_client.c:753
-msgid "Up"
-msgstr "بالا"
-
-#: src/remmina_ftp_client.c:754
-#, fuzzy
-msgid "Go to parent folder"
-msgstr "برو به پوشه والد."
-
-#: src/remmina_ftp_client.c:758 plugins/vnc/vnc_plugin.c:2019
-#: plugins/rdp/rdp_plugin.c:2740
-msgid "Refresh"
-msgstr "تازه کردن"
-
-#: src/remmina_ftp_client.c:759
-#, fuzzy
-msgid "Refresh current folder"
-msgstr "تازه کردن پوشه فعلی"
-
-#: src/remmina_ftp_client.c:764
-#, fuzzy
-msgid "Download from server"
-msgstr "دانلود از سرور"
-
-#: src/remmina_ftp_client.c:771
-#, fuzzy
-msgid "Upload to server"
-msgstr "آپلود در سرور"
-
-#: src/remmina_ftp_client.c:775 data/ui/remmina_main.glade:197
-msgid "Delete"
-msgstr "حذف"
-
-#: src/remmina_ftp_client.c:776
-#, fuzzy
-msgid "Delete files on server"
-msgstr "حذف پرونده ها بر روی سرور"
-
-#: src/remmina_ftp_client.c:905 src/remmina_ftp_client.c:974
-msgid "Filename"
-msgstr "نام فایل"
-
-#: src/remmina_ftp_client.c:918 src/remmina_ftp_client.c:1003
-msgid "Size"
-msgstr "اندازه"
-
-#: src/remmina_ftp_client.c:926
-msgid "User"
-msgstr "کاربر"
-
-#: src/remmina_ftp_client.c:932 src/remmina_file_editor.c:1515
-#: data/ui/remmina_main.glade:464 data/ui/remmina_mpc.glade:115
-msgid "Group"
-msgstr "گروه"
-
-#: src/remmina_ftp_client.c:938
-#, fuzzy
-msgid "Permission"
-msgstr "مجوز"
-
-#: src/remmina_ftp_client.c:990 plugins/rdp/rdp_plugin.c:2548
-#, fuzzy
-msgid "Remote"
-msgstr "از راه دور"
-
-#: src/remmina_ftp_client.c:997 plugins/rdp/rdp_plugin.c:2547
-msgid "Local"
-msgstr "محلی"
-
-#: src/remmina_ftp_client.c:1011
-msgid "Progress"
-msgstr "فرآیند"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:86
@@ -813,497 +688,270 @@ msgstr ""
 "remmina --set-option username --set-option resolution_mode=2 --set-option "
 "password\n"
 
-#: src/remmina_icon.c:128
-#, fuzzy
-msgid "Open Main Window"
-msgstr "&باز کردن پنجره اصلی"
-
-#: src/remmina_icon.c:133 data/ui/remmina_main.glade:254
-#, fuzzy
-msgid "_Preferences"
-msgstr "_ساماندهی"
-
-#: src/remmina_icon.c:138
-#, fuzzy
-msgid "_About"
-msgstr "_درباره"
-
-#: src/remmina_icon.c:148
-#, fuzzy
-msgid "Enable Service Discovery"
-msgstr "فعال کردن دیسکاوری سرویس"
-
-#: src/remmina_icon.c:160 data/ui/remmina_main.glade:404
-#, fuzzy
-msgid "_Quit"
-msgstr "_خروج"
-
-#. TRANSLATORS: Applet name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
-#. TRANSLATORS: Applet Name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
-#: src/remmina_icon.c:284 src/remmina_icon.c:416
-#, fuzzy
-msgid "Remmina Applet"
-msgstr "ریلینا اپلت"
-
-#. TRANSLATORS: Applet comment/description as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
-#: src/remmina_icon.c:286 src/remmina_icon.c:418
-#, fuzzy
-msgid "Connect to remote desktops through the applet menu"
-msgstr "اتصال به دسکتاپ از راه دور از طریق منوی اپلت"
-
-#: src/rcw.c:658
+#: src/remmina_public.c:345
 #, fuzzy, c-format
-msgid ""
-"Are you sure you want to close %i active connections in the current window?"
-msgstr "آیا مطمئن هستید که می خواهید اتصالات فعال %i را در پنجره فعلی ببنید؟"
+msgid "Address is too long for UNIX socket_path: %s"
+msgstr "آدرس بیش از حد طولانی برای یونی socket_path: %s"
 
-#: src/rcw.c:1394
-#, fuzzy
-msgid "Viewport fullscreen mode"
-msgstr "حالت تمام صفحه Viewport"
-
-#: src/rcw.c:1402 data/ui/remmina_preferences.glade:607
-#, fuzzy
-msgid "Scrolled fullscreen"
-msgstr "اسکرول شده تمام صفحه"
-
-#: src/rcw.c:1487
-#, fuzzy
-msgid "Keep aspect ratio when scaled"
-msgstr "نگه داشتن نسبت جنبه زمانی که مقیاس"
-
-#: src/rcw.c:1495
-#, fuzzy
-msgid "Fill client window when scaled"
-msgstr "پر کردن پنجره مشتری هنگامی که مقیاس"
-
-#: src/rcw.c:2043
-#, fuzzy
-msgid "Send clipboard content as keystrokes"
-msgstr "ارسال محتوای کلیپ بورد به عنوان ضربه های کلیدی"
-
-#: src/rcw.c:2147
-#, fuzzy
-msgid "Turn off scaling to avoid screenshot distortion."
-msgstr "پوسته پوسته شدن را خاموش کنید تا از تحریف تصویر جلوگیری کنید."
-
-#: src/rcw.c:2207 plugins/www/www_plugin.c:848
-#, fuzzy
-msgid "Screenshot taken"
-msgstr "تصویر گرفته شده"
-
-#: src/rcw.c:2290
-#, fuzzy
-msgid "_Menu"
-msgstr "_Menu"
-
-#: src/rcw.c:2291
-#, fuzzy
-msgid "Menu"
-msgstr "فهرست"
-
-#: src/rcw.c:2300
-#, fuzzy
-msgid "Open the Remmina main window"
-msgstr "باز کردن پنجره اصلی Remmina"
-
-#: src/rcw.c:2310
-#, fuzzy
-msgid "Duplicate current connection"
-msgstr "اتصال جریان تکراری"
-
-#: src/rcw.c:2327
-#, fuzzy
-msgid "Resize the window to fit in remote resolution"
-msgstr "اندازه مجدد پنجره به جا در وضوح از راه دور"
-
-#: src/rcw.c:2338
-#, fuzzy
-msgid "Toggle fullscreen mode"
-msgstr "تغییر حالت تمام‌صفحه"
-
-#: src/rcw.c:2384 data/ui/remmina_preferences.glade:1344
-#: data/ui/remmina_preferences.glade:1354
-#, fuzzy
-msgid "Multi monitor"
-msgstr "مانیتور چند"
-
-#: src/rcw.c:2400
-#, fuzzy
-msgid "Toggle dynamic resolution update"
-msgstr "به روز رسانی وضوح پویا را تغییر دهید"
-
-#: src/rcw.c:2410
-#, fuzzy
-msgid "Toggle scaled mode"
-msgstr "تغییر حالت مقیاس"
-
-#: src/rcw.c:2450 data/ui/remmina_preferences.glade:1070
-#, fuzzy
-msgid "Switch tab pages"
-msgstr "تعویض صفحات زبانه"
-
-#: src/rcw.c:2460
-#, fuzzy
-msgid "Grab all keyboard events"
-msgstr "گرفتن تمام رویدادهای صفحه کلید"
-
-#: src/rcw.c:2470
-#, fuzzy
-msgid "Preferences"
-msgstr "عملکرد"
-
-#: src/rcw.c:2479
-#, fuzzy
-msgid "_Tools"
-msgstr "_ابزارها"
-
-#: src/rcw.c:2480 data/ui/remmina_main.glade:207
-#, fuzzy
-msgid "Tools"
-msgstr "ابزارها"
-
-#: src/rcw.c:2493 data/ui/remmina_preferences.glade:1277
-#: data/ui/remmina_preferences.glade:1287
-#, fuzzy
-msgid "Screenshot"
-msgstr "نماگرفت"
-
-#: src/rcw.c:2507 data/ui/remmina_preferences.glade:1181
-#, fuzzy
-msgid "Minimize window"
-msgstr "پنجره را به حداقل برسونید"
-
-#: src/rcw.c:2517 data/ui/remmina_preferences.glade:1213
-#, fuzzy
-msgid "Disconnect"
-msgstr "قطع اتصال"
-
-#: src/rcw.c:4284
+#: src/remmina_public.c:355
 #, fuzzy, c-format
-msgid "The file “%s” is corrupted, unreadable, or could not be found."
-msgstr "پرونده \"%s\" خراب شده، غیرقابل خواندن است، یا یافت نمی شود."
+msgid "Creating UNIX socket failed: %s"
+msgstr "ایجاد سوکت UNIX با شکست مواجه شد: %s"
 
-#: src/rcw.c:4452
-#, fuzzy
-msgid "Warning: This plugin requires GtkSocket, but it’s not available."
-msgstr "هشدار: این پلاگین نیاز به GtkSocket, اما آن را در دسترس نیست."
-
-#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1533
-#, fuzzy
-msgid "Protocol"
-msgstr "پروتکل"
-
-#: src/remmina_plugin_manager.c:73
-#, fuzzy
-msgid "Entry"
-msgstr "Entry"
-
-#: src/remmina_plugin_manager.c:73
-#, fuzzy
-msgid "File"
-msgstr "فایل"
-
-#: src/remmina_plugin_manager.c:73
-#, fuzzy
-msgid "Tool"
-msgstr "ابزار"
-
-#: src/remmina_plugin_manager.c:73
-#, fuzzy
-msgid "Preference"
-msgstr "عملکرد"
-
-#: src/remmina_plugin_manager.c:73
-#, fuzzy
-msgid "Secret"
-msgstr "مخفی"
-
-#: src/remmina_plugin_manager.c:456 data/ui/remmina_main.glade:305
-#, fuzzy
-msgid "Plugins"
-msgstr "متصل شونده‌ها"
-
-#: src/remmina_plugin_manager.c:456 src/remmina_message_panel.c:452
-#: src/remmina_message_panel.c:621 src/remmina_file_editor.c:152
-#, fuzzy
-msgid "_OK"
-msgstr "_OK"
-
-#: src/remmina_plugin_manager.c:474 src/remmina_file_editor.c:1490
-#: data/ui/remmina_main.glade:442
-#, fuzzy
-msgid "Name"
-msgstr "نام"
-
-#: src/remmina_plugin_manager.c:480
-#, fuzzy
-msgid "Type"
-msgstr "نوع"
-
-#: src/remmina_plugin_manager.c:486
-#, fuzzy
-msgid "Description"
-msgstr "شرح"
-
-#: src/remmina_plugin_manager.c:492
-#, fuzzy
-msgid "Version"
-msgstr "نسخه"
-
-#: src/remmina_main.c:662
+#: src/remmina_public.c:361
 #, fuzzy, c-format
-msgid "Total %i item."
-msgid_plural "Total %i items."
-msgstr[0] "مجموع %i مورد."
-msgstr[1] ""
+msgid "Connecting to UNIX socket failed: %s"
+msgstr "اتصال به سوکت UNIX با شکست مواجه شد: %s"
 
-#: src/remmina_main.c:853
-#, fuzzy, c-format
-msgid "Are you sure you want to delete “%s”?"
-msgstr "آیا مطمئنید که می‌خواهید %s را حذف کنید؟"
+#: src/remmina_public.c:631
+msgid "Please enter format 'widthxheight'."
+msgstr "لطفا در قالب 'عرض x طول' وارد کنید."
 
-#: src/remmina_main.c:973
-#, fuzzy, c-format
-msgid ""
-"Unable to import:\n"
-"%s"
-msgstr ""
-"قادر به وارد کردن:\n"
-"%s"
-
-#: src/remmina_main.c:999 data/ui/remmina_main.glade:285
+#: src/remmina_public.c:653
 #, fuzzy
-msgid "Import"
-msgstr "درون‌ریزی"
+msgid "Change security settings"
+msgstr "تغییر تنظیمات امنیتی"
 
-#: src/remmina_main.c:1022 src/remmina_file_editor.c:1373
+#. TRANSLATORS: translator-credits should be replaced with a formatted list of translators in your own language
+#: src/remmina_about.c:54
 #, fuzzy
-msgid "_Save"
-msgstr "_ذخیره"
+msgid "translator-credits"
+msgstr "دانیال بهزادی <dani.behzi@ubuntu.com>"
 
-#: src/remmina_main.c:1028
+#: src/remmina_ftp_client.c:389
+msgid "Choose download location"
+msgstr "مکان بارگیری را انتخاب کنید"
+
+#: src/remmina_ftp_client.c:529
+msgid "Are you sure to delete the selected files on server?"
+msgstr "آیا مطمئن هستید که فایل های انتخاب شده بر روی سرور حذف شوند؟"
+
+#: src/remmina_ftp_client.c:586
+msgid "Choose a file to upload"
+msgstr "فایلی را برای بارگذاری انتخاب کنید"
+
+#: src/remmina_ftp_client.c:593
+msgid "Upload folder"
+msgstr "پوشه را بارگذاری کنید"
+
+#: src/remmina_ftp_client.c:649 src/remmina_ftp_client.c:763
+msgid "Download"
+msgstr "دریافت"
+
+#: src/remmina_ftp_client.c:656 src/remmina_ftp_client.c:770
+msgid "Upload"
+msgstr "بارگذاری"
+
+#: src/remmina_ftp_client.c:663
 #, fuzzy
-msgid "This protocol does not support exporting."
-msgstr "این پروتکل از صادرات پشتیبانی نمی کند."
+msgid "_Delete"
+msgstr "_حذف"
 
-#: src/remmina_main.c:1344
+#: src/remmina_ftp_client.c:748
+msgid "Home"
+msgstr "خانه"
+
+#: src/remmina_ftp_client.c:749
 #, fuzzy
-msgid "Remmina Remote Desktop Client"
-msgstr "Remmina از راه دور دسکتاپ مشتری"
+msgid "Go to home folder"
+msgstr "رفتن به پوشه خانه"
 
-#: src/remmina_main.c:1346
+#: src/remmina_ftp_client.c:753
+msgid "Up"
+msgstr "بالا"
+
+#: src/remmina_ftp_client.c:754
 #, fuzzy
-msgid "Remmina Kiosk"
-msgstr "ریمینا کیوسک"
+msgid "Go to parent folder"
+msgstr "برو به پوشه والد."
 
-#: src/remmina_key_chooser.h:38
+#: src/remmina_ftp_client.c:758 plugins/rdp/rdp_plugin.c:2740
+#: plugins/vnc/vnc_plugin.c:2019
+msgid "Refresh"
+msgstr "تازه کردن"
+
+#: src/remmina_ftp_client.c:759
 #, fuzzy
-msgid "Shift+"
-msgstr "شیفت+"
+msgid "Refresh current folder"
+msgstr "تازه کردن پوشه فعلی"
 
-#: src/remmina_key_chooser.h:39
+#: src/remmina_ftp_client.c:764
 #, fuzzy
-msgid "Ctrl+"
-msgstr "Ctrl+"
+msgid "Download from server"
+msgstr "دانلود از سرور"
 
-#: src/remmina_key_chooser.h:40
+#: src/remmina_ftp_client.c:771
 #, fuzzy
-msgid "Alt+"
-msgstr "Alt+"
+msgid "Upload to server"
+msgstr "آپلود در سرور"
 
-#: src/remmina_key_chooser.h:41
+#: src/remmina_ftp_client.c:775 data/ui/remmina_main.glade:197
+msgid "Delete"
+msgstr "حذف"
+
+#: src/remmina_ftp_client.c:776
 #, fuzzy
-msgid "Super+"
-msgstr "سوپر+"
+msgid "Delete files on server"
+msgstr "حذف پرونده ها بر روی سرور"
 
-#: src/remmina_key_chooser.h:42
+#: src/remmina_ftp_client.c:905 src/remmina_ftp_client.c:974
+msgid "Filename"
+msgstr "نام فایل"
+
+#: src/remmina_ftp_client.c:918 src/remmina_ftp_client.c:1003
+msgid "Size"
+msgstr "اندازه"
+
+#: src/remmina_ftp_client.c:926
+msgid "User"
+msgstr "کاربر"
+
+#: src/remmina_ftp_client.c:932 src/remmina_file_editor.c:1515
+#: data/ui/remmina_mpc.glade:115 data/ui/remmina_main.glade:464
+msgid "Group"
+msgstr "گروه"
+
+#: src/remmina_ftp_client.c:938
 #, fuzzy
-msgid "Hyper+"
-msgstr "هایپر+"
+msgid "Permission"
+msgstr "مجوز"
 
-#: src/remmina_key_chooser.h:43
+#: src/remmina_ftp_client.c:990 plugins/rdp/rdp_plugin.c:2548
 #, fuzzy
-msgid "Meta+"
-msgstr "متا+"
+msgid "Remote"
+msgstr "از راه دور"
 
-#: src/remmina_key_chooser.h:44
-#, fuzzy
-msgid "<None>"
-msgstr "<None>"
+#: src/remmina_ftp_client.c:997 plugins/rdp/rdp_plugin.c:2547
+msgid "Local"
+msgstr "محلی"
 
-#. TRANSLATORS: The placeholder %s is a directory path
-#: src/remmina_sftp_client.c:173
-#, fuzzy, c-format
-msgid "Could not create the folder “%s”."
-msgstr "نمی توانست پوشه \"%s\" را ایجاد کند."
+#: src/remmina_ftp_client.c:1011
+msgid "Progress"
+msgstr "فرآیند"
 
-#. TRANSLATORS: The placeholder %s is a file path
-#: src/remmina_sftp_client.c:181 src/remmina_sftp_client.c:202
-#, fuzzy, c-format
-msgid "Could not create the file “%s”."
-msgstr "نمی توانست پرونده \"%s\" را ایجاد کند."
+#: src/remmina_protocol_widget.c:290 src/remmina_ssh_plugin.c:829
+#: src/remmina_ssh_plugin.c:1454
+msgid "Open SFTP transfer…"
+msgstr "انتقال از طریق SFTP را باز کنید…"
 
-#. TRANSLATORS: The placeholders %s are a file path, and an error message.
-#: src/remmina_sftp_client.c:220
+#: src/remmina_protocol_widget.c:319
+msgid "Executing external commands…"
+msgstr "اجرای دستورات خارجی…"
+
+#. TRANSLATORS: “%s” is a placeholder for the connection profile name
+#: src/remmina_protocol_widget.c:327
 #, c-format
-msgid "Could not open the file “%s” on the server. %s"
+msgid "Connecting to “%s”…"
+msgstr "در حال اتصال به \"%s\"…"
+
+#. TRANSLATORS: “%s” is a placeholder for an hostname or an IP address.
+#: src/remmina_protocol_widget.c:911 src/remmina_protocol_widget.c:1096
+#, c-format
+msgid "Connecting to “%s” via SSH…"
+msgstr "وصل شدن به %s با SSH…"
+
+#. TRANSLATORS: “%i” is a placeholder for a TCP port number.
+#: src/remmina_protocol_widget.c:1160
+#, c-format
+msgid "Awaiting incoming SSH connection on port %i…"
+msgstr "در انتظار اتصال SSH ورودی در پورت \"%i\"…"
+
+#: src/remmina_protocol_widget.c:1213
+#, c-format
+msgid "The “%s” command is not available on the SSH server."
+msgstr "دستور \"%s\" در سرور SSH موجود نیست."
+
+#: src/remmina_protocol_widget.c:1218
+#, c-format
+msgid "Could not run the “%s” command on the SSH server (status = %i)."
 msgstr "دستور \"%s\" روی سرور SSH اجرا نشد (وضعیت =\"%i\")."
 
-#: src/remmina_sftp_client.c:242
-#, fuzzy, c-format
-msgid "Could not save the file “%s”."
-msgstr "نمی توانست پرونده \"%s\" را ذخیره کند."
+#. TRANSLATORS: %s is a placeholder for an error message
+#: src/remmina_protocol_widget.c:1226
+#, c-format
+msgid "Could not run command. %s"
+msgstr "دستور نمی تواند اجرا شود. %s"
 
-#: src/remmina_sftp_client.c:281 src/remmina_sftp_client.c:698
-#: src/remmina_sftp_client.c:761
-#, fuzzy, c-format
-msgid "Could not open the folder “%s”. %s"
-msgstr "نمی توانست پوشه \"%s\" را باز کند. %s"
+#. TRANSLATORS: “%s” is a placeholder for a hostname or IP address.
+#: src/remmina_protocol_widget.c:1296
+#, c-format
+msgid "Connecting to %s via SSH…"
+msgstr "وصل شدن به %s با SSH…"
 
-#: src/remmina_sftp_client.c:385
-#, fuzzy, c-format
-msgid "Could not create the folder “%s” on the server. %s"
-msgstr "نمی توانست پوشه \"%s\" را روی سرور ایجاد کند. %s"
+#: src/remmina_protocol_widget.c:1690
+msgid "Type in SSH username and password."
+msgstr "نام کاربری و رمزعبور SSH را وارد کنید."
 
-#: src/remmina_sftp_client.c:413 src/remmina_sftp_client.c:435
-#, fuzzy, c-format
-msgid "Could not create the file “%s” on the server. %s"
-msgstr "نمی توانست پرونده \"%s\" را روی سرور ایجاد کند. %s"
-
-#: src/remmina_sftp_client.c:456
-#, fuzzy, c-format
-msgid "Could not open the file “%s”."
-msgstr "نمی توانست پرونده \"%s\" را باز کند."
-
-#: src/remmina_sftp_client.c:476
-#, fuzzy, c-format
-msgid "Could not write to the file “%s” on the server. %s"
-msgstr "نمی توانست روی فایل \"%s\" روی سرور بنویسد. %s"
-
-#: src/remmina_sftp_client.c:716
-#, fuzzy, c-format
-msgid "Could not read from the folder. %s"
-msgstr "نمی توانست از پوشه بخواند. %s"
-
-#: src/remmina_sftp_client.c:823
+#: src/remmina_protocol_widget.c:1745 src/remmina_protocol_widget.c:1777
 #, fuzzy
-msgid "Are you sure you want to cancel the file transfer in progress?"
-msgstr "آیا مطمئن هستید که می خواهید انتقال پرونده در حال انجام را لغو کنید؟"
+msgid "Fingerprint automatically accepted"
+msgstr "اثر انگشت به طور خودکار پذیرفته شده"
 
-#: src/remmina_sftp_client.c:857
-#, fuzzy, c-format
-msgid "Could not delete “%s”. %s"
-msgstr "نمی تواند \"%s\" را حذف کند. %s"
+#. TRANSLATORS: The user is asked to verify a new SSL certificate.
+#: src/remmina_protocol_widget.c:1753
+msgid "Certificate details:"
+msgstr "جزئیات گواهی نامه:"
 
-#: src/remmina_sftp_client.c:942
-#, fuzzy
-msgid "The file exists already"
-msgstr "پرونده در حال حاضر وجود دارد"
+#. TRANSLATORS: An SSL certificate subject is usually the remote server the user connect to.
+#: src/remmina_protocol_widget.c:1755 src/remmina_protocol_widget.c:1787
+msgid "Subject:"
+msgstr "موضوع:"
 
-#: src/remmina_sftp_client.c:945
-#, fuzzy
-msgid "Resume"
-msgstr "ازسرگیری"
+#. TRANSLATORS: The name or email of the entity that have issued the SSL certificate
+#: src/remmina_protocol_widget.c:1757 src/remmina_protocol_widget.c:1789
+msgid "Issuer:"
+msgstr "صادر کننده:"
 
-#: src/remmina_sftp_client.c:946
-#, fuzzy
-msgid "Overwrite"
-msgstr "بازنویسی"
+#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
+#: src/remmina_protocol_widget.c:1759
+msgid "Fingerprint:"
+msgstr "اثر انگشت:"
 
-#: src/remmina_sftp_client.c:947 src/remmina_message_panel.c:457
-#: src/remmina_message_panel.c:629 src/remmina_file_editor.c:151
-#: src/remmina_file_editor.c:1365 plugins/spice/spice_plugin_file_transfer.c:84
-#: data/ui/remmina_spinner.glade:8 data/ui/remmina_spinner.glade:9
-#: data/ui/remmina_key_chooser.glade:8 data/ui/remmina_key_chooser.glade:9
-#, fuzzy
-msgid "_Cancel"
-msgstr "_لغو"
+#. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
+#: src/remmina_protocol_widget.c:1761
+msgid "Accept certificate?"
+msgstr "آیا گواهی نامه را قبول می کنید؟"
 
-#: src/remmina_sftp_client.c:964
-#, fuzzy
-msgid "The following file already exists in the target folder:"
-msgstr "پرونده زیر در حال حاضر در پوشه هدف وجود دارد:"
+#. TRANSLATORS: The user is asked to verify a new SSL certificate.
+#: src/remmina_protocol_widget.c:1785
+msgid "The certificate changed! Details:"
+msgstr "گواهی نامه تغییر کرده است! جزئیات:"
 
-#: src/remmina_message_panel.c:163 data/ui/remmina_unlock.glade:46
-#: data/ui/remmina_mpc.glade:46
-#, fuzzy
-msgid "Cancel"
-msgstr "لغو"
+#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
+#: src/remmina_protocol_widget.c:1791
+msgid "Old fingerprint:"
+msgstr "اثر انگشت قدیمی:"
 
-#: src/remmina_message_panel.c:199 data/ui/remmina_snap_info_dialog.glade:28
-#: data/ui/remmina_news.glade:33 data/ui/remmina_preferences.glade:2640
-#: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
-#: data/ui/remmina_string_list.glade:63
-#, fuzzy
-msgid "Close"
-msgstr "بستن"
+#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
+#: src/remmina_protocol_widget.c:1793
+msgid "New fingerprint:"
+msgstr "اثر انگشت جدید:"
 
-#: src/remmina_message_panel.c:260
-#, fuzzy
-msgid "Yes"
-msgstr "بله"
+#. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
+#: src/remmina_protocol_widget.c:1795
+msgid "Accept changed certificate?"
+msgstr "گواهینامه تغییر یافته را قبول دارید؟"
 
-#: src/remmina_message_panel.c:267
-#, fuzzy
-msgid "No"
-msgstr "خیر"
+#. TRANSLATORS: “%i” is a placeholder for a port number. “%s”  is a placeholder for a protocol name (VNC).
+#: src/remmina_protocol_widget.c:1938
+#, c-format
+msgid "Listening on port %i for an incoming %s connection…"
+msgstr "در حال انتظار روی پورت \"%i\" برای برقراری ارتباط \"%s\"…"
 
-#: src/remmina_message_panel.c:391 plugins/rdp/rdp_plugin.c:2653
-#: data/ui/remmina_mpc.glade:172
-#, fuzzy
-msgid "Domain"
-msgstr "دامنه"
+#: src/remmina_protocol_widget.c:1963
+msgid "Could not authenticate, attempting reconnection…"
+msgstr "امکان تأیید اعتبار وجود ندارد ، تلاش برای اتصال مجدد …"
 
-#: src/remmina_message_panel.c:420
-#, fuzzy
-msgid "Save password"
-msgstr "ذخیره گذرواژه"
+#: src/remmina_protocol_widget.c:2025 src/remmina_file_editor.c:346
+#: src/remmina_file_editor.c:917 data/ui/remmina_main.glade:478
+msgid "Server"
+msgstr "سرویس دهنده"
 
-#: src/remmina_message_panel.c:513
-#, fuzzy
-msgid "Enter certificate authentication files"
-msgstr "پرونده های احراز هویت گواهی را وارد کنید"
-
-#: src/remmina_message_panel.c:525
-#, fuzzy
-msgid "CA Certificate File"
-msgstr "CA فایل گواهی"
-
-#: src/remmina_message_panel.c:547
-#, fuzzy
-msgid "CA CRL File"
-msgstr "CA CRL فایل"
-
-#: src/remmina_message_panel.c:569
-#, fuzzy
-msgid "Client Certificate File"
-msgstr "پرونده گواهی مشتری"
-
-#: src/remmina_message_panel.c:591
-#, fuzzy
-msgid "Client Certificate Key"
-msgstr "کلید گواهی مشتری"
-
-#: src/remmina_sftp_plugin.c:323
-#, fuzzy
-msgid "Show Hidden Files"
-msgstr "نمایش پرونده های پنهان"
-
-#: src/remmina_sftp_plugin.c:325
-#, fuzzy
-msgid "Overwrite all files"
-msgstr "بازنویسی تمام فایل ها"
-
-#: src/remmina_sftp_plugin.c:327
-#, fuzzy
-msgid "Resume all file transfers"
-msgstr "از سرگیری تمام انتقال پرونده ها"
-
-#: src/remmina_sftp_plugin.c:359
-#, fuzzy
-msgid "SFTP - Secure File Transfer"
-msgstr "SFTP -- امن انتقال فایل"
+#. TRANSLATORS: “%s” is a placeholder for a protocol name, like “RDP”.
+#: src/remmina_protocol_widget.c:2043
+#, c-format
+msgid "Install the %s protocol plugin first."
+msgstr "ابتدا افزونه پروتکل \"%s\" را نصب کنید."
 
 #: src/remmina_ssh.c:236
 #, fuzzy, c-format
@@ -1586,6 +1234,141 @@ msgstr "نميتونستم درخواست پوسته کنم %s"
 msgid "Could not create PTY device."
 msgstr "نمی توانست دستگاه PTY ایجاد کند."
 
+#: src/remmina_exec.c:475
+#, c-format
+msgid "Plugin %s is not registered."
+msgstr "افزونه \"%s\" ثبت نشده."
+
+#: src/remmina_main.c:662
+#, fuzzy, c-format
+msgid "Total %i item."
+msgid_plural "Total %i items."
+msgstr[0] "مجموع %i مورد."
+msgstr[1] ""
+
+#: src/remmina_main.c:853
+#, fuzzy, c-format
+msgid "Are you sure you want to delete “%s”?"
+msgstr "آیا مطمئنید که می‌خواهید %s را حذف کنید؟"
+
+#: src/remmina_main.c:973
+#, fuzzy, c-format
+msgid ""
+"Unable to import:\n"
+"%s"
+msgstr ""
+"قادر به وارد کردن:\n"
+"%s"
+
+#: src/remmina_main.c:999 data/ui/remmina_main.glade:285
+#, fuzzy
+msgid "Import"
+msgstr "درون‌ریزی"
+
+#: src/remmina_main.c:1022 src/remmina_file_editor.c:1373
+#, fuzzy
+msgid "_Save"
+msgstr "_ذخیره"
+
+#: src/remmina_main.c:1028
+#, fuzzy
+msgid "This protocol does not support exporting."
+msgstr "این پروتکل از صادرات پشتیبانی نمی کند."
+
+#: src/remmina_main.c:1344
+#, fuzzy
+msgid "Remmina Remote Desktop Client"
+msgstr "Remmina از راه دور دسکتاپ مشتری"
+
+#: src/remmina_main.c:1346
+#, fuzzy
+msgid "Remmina Kiosk"
+msgstr "ریمینا کیوسک"
+
+#. TRANSLATORS: The placeholder %s is a directory path
+#: src/remmina_sftp_client.c:173
+#, fuzzy, c-format
+msgid "Could not create the folder “%s”."
+msgstr "نمی توانست پوشه \"%s\" را ایجاد کند."
+
+#. TRANSLATORS: The placeholder %s is a file path
+#: src/remmina_sftp_client.c:181 src/remmina_sftp_client.c:202
+#, fuzzy, c-format
+msgid "Could not create the file “%s”."
+msgstr "نمی توانست پرونده \"%s\" را ایجاد کند."
+
+#. TRANSLATORS: The placeholders %s are a file path, and an error message.
+#: src/remmina_sftp_client.c:220
+#, c-format
+msgid "Could not open the file “%s” on the server. %s"
+msgstr "دستور \"%s\" روی سرور SSH اجرا نشد (وضعیت =\"%i\")."
+
+#: src/remmina_sftp_client.c:242
+#, fuzzy, c-format
+msgid "Could not save the file “%s”."
+msgstr "نمی توانست پرونده \"%s\" را ذخیره کند."
+
+#: src/remmina_sftp_client.c:281 src/remmina_sftp_client.c:698
+#: src/remmina_sftp_client.c:761
+#, fuzzy, c-format
+msgid "Could not open the folder “%s”. %s"
+msgstr "نمی توانست پوشه \"%s\" را باز کند. %s"
+
+#: src/remmina_sftp_client.c:385
+#, fuzzy, c-format
+msgid "Could not create the folder “%s” on the server. %s"
+msgstr "نمی توانست پوشه \"%s\" را روی سرور ایجاد کند. %s"
+
+#: src/remmina_sftp_client.c:413 src/remmina_sftp_client.c:435
+#, fuzzy, c-format
+msgid "Could not create the file “%s” on the server. %s"
+msgstr "نمی توانست پرونده \"%s\" را روی سرور ایجاد کند. %s"
+
+#: src/remmina_sftp_client.c:456
+#, fuzzy, c-format
+msgid "Could not open the file “%s”."
+msgstr "نمی توانست پرونده \"%s\" را باز کند."
+
+#: src/remmina_sftp_client.c:476
+#, fuzzy, c-format
+msgid "Could not write to the file “%s” on the server. %s"
+msgstr "نمی توانست روی فایل \"%s\" روی سرور بنویسد. %s"
+
+#: src/remmina_sftp_client.c:716
+#, fuzzy, c-format
+msgid "Could not read from the folder. %s"
+msgstr "نمی توانست از پوشه بخواند. %s"
+
+#: src/remmina_sftp_client.c:823
+#, fuzzy
+msgid "Are you sure you want to cancel the file transfer in progress?"
+msgstr "آیا مطمئن هستید که می خواهید انتقال پرونده در حال انجام را لغو کنید؟"
+
+#: src/remmina_sftp_client.c:857
+#, fuzzy, c-format
+msgid "Could not delete “%s”. %s"
+msgstr "نمی تواند \"%s\" را حذف کند. %s"
+
+#: src/remmina_sftp_client.c:942
+#, fuzzy
+msgid "The file exists already"
+msgstr "پرونده در حال حاضر وجود دارد"
+
+#: src/remmina_sftp_client.c:945
+#, fuzzy
+msgid "Resume"
+msgstr "ازسرگیری"
+
+#: src/remmina_sftp_client.c:946
+#, fuzzy
+msgid "Overwrite"
+msgstr "بازنویسی"
+
+#: src/remmina_sftp_client.c:964
+#, fuzzy
+msgid "The following file already exists in the target folder:"
+msgstr "پرونده زیر در حال حاضر در پوشه هدف وجود دارد:"
+
 #: src/remmina_file_editor.c:60
 #, fuzzy
 msgid ""
@@ -1750,6 +1533,12 @@ msgstr "احراز هویت SSH"
 msgid "SSH private key file"
 msgstr "فایل کلید خصوصی SSH"
 
+#: src/remmina_file_editor.c:979 src/remmina_ssh_plugin.c:1477
+#, fuzzy
+#| msgid "SSH identity file"
+msgid "SSH certificate file"
+msgstr "فایل گواهی SSH"
+
 #: src/remmina_file_editor.c:1037
 #, fuzzy
 msgid "Basic"
@@ -1810,626 +1599,377 @@ msgstr "استفاده از '%s' به عنوان زیر گروه delimiter"
 msgid "Could not find the file “%s”."
 msgstr "نمی توانست پرونده \"%s\" را پیدا کند."
 
-#: src/remmina_chat_window.c:178
-#, fuzzy, c-format
-msgid "Chat with %s"
-msgstr "چت با %s"
-
-#: src/remmina_chat_window.c:230
+#: src/remmina_icon.c:128
 #, fuzzy
-msgid "_Send"
-msgstr "_Send"
+msgid "Open Main Window"
+msgstr "&باز کردن پنجره اصلی"
 
-#: src/remmina_chat_window.c:240
+#: src/remmina_icon.c:133 data/ui/remmina_main.glade:254
 #, fuzzy
-msgid "_Clear"
-msgstr "_Clear"
+msgid "_Preferences"
+msgstr "_ساماندهی"
 
-#: plugins/gvnc/gvnc_plugin_config.h:40
+#: src/remmina_icon.c:138
 #, fuzzy
-msgid "Remmina VNC plugin for GNOME and KVM"
-msgstr "پلاگین VNC Remmina برای گنوم و KVM"
+msgid "_About"
+msgstr "_درباره"
 
-#: plugins/gvnc/gvnc_plugin.c:477
-#, fuzzy, c-format
-#| msgid "Authentication type"
-msgid "Unsupported authentication type %u"
-msgstr "نوع احراز هویت بدون حمایت %u"
-
-#: plugins/gvnc/gvnc_plugin.c:489
-#, fuzzy, c-format
-#| msgid "Authentication type"
-msgid "Authentication failure: %s"
-msgstr "شکست احراز هویت: %s"
-
-#: plugins/gvnc/gvnc_plugin.c:539 plugins/vnc/vnc_plugin.c:825
+#: src/remmina_icon.c:148
 #, fuzzy
-msgid "Enter VNC authentication credentials"
-msgstr "اعتبارنامه تأیید هویت VNC را وارد کنید"
+msgid "Enable Service Discovery"
+msgstr "فعال کردن دیسکاوری سرویس"
 
-#: plugins/gvnc/gvnc_plugin.c:820
+#: src/remmina_icon.c:160 data/ui/remmina_main.glade:404
 #, fuzzy
-msgid "Use server settings"
-msgstr "استفاده از تنظیمات سرور"
+msgid "_Quit"
+msgstr "_خروج"
 
-#: plugins/gvnc/gvnc_plugin.c:821
+#. TRANSLATORS: Applet name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
+#. TRANSLATORS: Applet Name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
+#: src/remmina_icon.c:284 src/remmina_icon.c:416
 #, fuzzy
-msgid "True colour (24 bits)"
-msgstr "رنگ واقعی (24 بیت)"
+msgid "Remmina Applet"
+msgstr "ریلینا اپلت"
 
-#: plugins/gvnc/gvnc_plugin.c:822
+#. TRANSLATORS: Applet comment/description as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
+#: src/remmina_icon.c:286 src/remmina_icon.c:418
 #, fuzzy
-msgid "High colour (16 bits)"
-msgstr "رنگ بالا (16 بیت)"
+msgid "Connect to remote desktops through the applet menu"
+msgstr "اتصال به دسکتاپ از راه دور از طریق منوی اپلت"
 
-#: plugins/gvnc/gvnc_plugin.c:823
+#. TRANSLATORS: %s is a placeholder for an error message
+#: src/remmina_ssh_plugin.c:539
+#, c-format
+msgid "Error: %s"
+msgstr "خطا:‌ \"%s\""
+
+#: src/remmina_ssh_plugin.c:556
+msgid "Terminal content saved in"
+msgstr "محتوای ترمینال ذخیره شده در"
+
+#: src/remmina_ssh_plugin.c:822
+msgid "Select All (host+A)"
+msgstr "انتخاب همه (Host + A)"
+
+#: src/remmina_ssh_plugin.c:823
+msgid "Copy (host+C)"
+msgstr "کپی (host + C)"
+
+#: src/remmina_ssh_plugin.c:824
+msgid "Paste (host+V)"
+msgstr "چسباندن (host + V)"
+
+#: src/remmina_ssh_plugin.c:825
+msgid "Save session to file"
+msgstr "ذخیره نشست در فایل"
+
+#: src/remmina_ssh_plugin.c:826
+msgid "Increase font size (host+Page Up)"
+msgstr "افزایش اندازه فونت (Host + Page_Up)"
+
+#: src/remmina_ssh_plugin.c:827
+msgid "Decrease font size (host+Page Down)"
+msgstr "کاهش اندازه فونت (Host + Page_Down)"
+
+#: src/remmina_ssh_plugin.c:828
+msgid "Find text (host+G)"
+msgstr "چسباندن (host + V)"
+
+#: src/remmina_ssh_plugin.c:1448 data/ui/remmina_main.glade:177
+msgid "Copy"
+msgstr "کپی"
+
+#: src/remmina_ssh_plugin.c:1448
+msgid "_Copy"
+msgstr "_کپی"
+
+#: src/remmina_ssh_plugin.c:1449
+msgid "Paste"
+msgstr "چسباندن"
+
+#: src/remmina_ssh_plugin.c:1449
+msgid "_Paste"
+msgstr "_چسباندن"
+
+#: src/remmina_ssh_plugin.c:1450
+msgid "Select all"
+msgstr "انتخاب همه"
+
+#: src/remmina_ssh_plugin.c:1450
+msgid "_Select all"
+msgstr "_انتخاب همه"
+
+#: src/remmina_ssh_plugin.c:1451
+msgid "Increase font size"
+msgstr "افزایش اندازه فونت"
+
+#: src/remmina_ssh_plugin.c:1451
+msgid "_Increase font size"
+msgstr "_افزایش اندازه فونت"
+
+#: src/remmina_ssh_plugin.c:1452
+msgid "Decrease font size"
+msgstr "کاهش اندازه فونت"
+
+#: src/remmina_ssh_plugin.c:1452
+msgid "_Decrease font size"
+msgstr "_کاهش اندازه فونت"
+
+#: src/remmina_ssh_plugin.c:1453
 #, fuzzy
-msgid "Low colour (8 bits)"
-msgstr "رنگ کم (8 بیت)"
+msgid "Find text"
+msgstr "یافتن متن"
 
-#: plugins/gvnc/gvnc_plugin.c:824
+#: src/remmina_ssh_plugin.c:1453
 #, fuzzy
-msgid "Ultra low colour (3 bits)"
-msgstr "رنگ فوق العاده کم (3 بیت)"
+msgid "_Find text"
+msgstr "_Find متن"
 
-#: plugins/gvnc/gvnc_plugin.c:839
-#, fuzzy
-#| msgid "User password"
-msgid "VNC password"
-msgstr "رمز عبور VNC"
+#: src/remmina_ssh_plugin.c:1474 plugins/spice/spice_plugin.c:666
+#: plugins/vnc/vnc_plugin.c:1961 plugins/vnc/vnc_plugin.c:1981
+msgid "User password"
+msgstr "رمزعبور کاربر"
 
-#: plugins/gvnc/gvnc_plugin.c:840 plugins/vnc/vnc_plugin.c:1962
-#: plugins/vnc/vnc_plugin.c:1982 plugins/rdp/rdp_plugin.c:2661
-#, fuzzy
-msgid "Colour depth"
-msgstr "عمق رنگ"
+#: src/remmina_ssh_plugin.c:1480 plugins/rdp/rdp_plugin.c:2693
+msgid "Start-up program"
+msgstr "برنامه راه اندازی"
 
-#: plugins/gvnc/gvnc_plugin.c:841
-#, fuzzy
-#| msgid "SSH compression"
-msgid "Use JPEG Compression"
-msgstr "استفاده از فشرده سازی JPEG"
-
-#: plugins/gvnc/gvnc_plugin.c:841
-#, fuzzy
-msgid "This might not work on all VNC servers"
-msgstr "این ممکن است بر روی تمام سرورهای VNC کار نمی کند"
-
-#: plugins/gvnc/gvnc_plugin.c:842
-#, fuzzy
-msgid "Enable GTK-VNC debug"
-msgstr "فعال کردن اشکال زدایی GTK-VNC"
-
-#: plugins/gvnc/gvnc_plugin.c:857 plugins/gvnc/gvnc_plugin.c:871
-#: plugins/spice/spice_plugin.c:693 plugins/spice/spice_plugin.c:706
-#, fuzzy
-msgid "No clipboard sync"
-msgstr "بدون همگام سازی کلیپ بورد"
-
-#: plugins/gvnc/gvnc_plugin.c:858 plugins/www/www_plugin.c:904
-#: plugins/vnc/vnc_plugin.c:2005 plugins/spice/spice_plugin.c:694
-#: plugins/rdp/rdp_plugin.c:2718
-#, fuzzy
-msgid "Forget passwords after use"
-msgstr "پس از استفاده رمزهای عبور را فراموش کنید"
-
-#: plugins/gvnc/gvnc_plugin.c:859 plugins/vnc/vnc_plugin.c:2004
-#, fuzzy
-msgid "Ignore remote bell messages"
-msgstr "نادیده گرفتن پیام های زنگ از راه دور"
-
-#: plugins/gvnc/gvnc_plugin.c:860 plugins/spice/spice_plugin.c:695
-#, fuzzy
-msgid "Enable audio channel"
-msgstr "فعال کردن کانال صوتی"
-
-#: plugins/gvnc/gvnc_plugin.c:861 plugins/gvnc/gvnc_plugin.c:870
-#: plugins/vnc/vnc_plugin.c:2000 plugins/vnc/vnc_plugin.c:2017
-#: plugins/spice/spice_plugin.c:697 plugins/spice/spice_plugin.c:705
-#, fuzzy
-msgid "View only"
-msgstr "فقط مشاهده"
-
-#: plugins/gvnc/gvnc_plugin.c:862
-#, fuzzy
-#| msgid "New Connection"
-msgid "Shared connection"
-msgstr "اتصال مشترک"
-
-#: plugins/gvnc/gvnc_plugin.c:862
-#, fuzzy
-msgid ""
-"If the server should try to share the desktop by leaving other clients "
-"connected"
-msgstr ""
-"اگر سرور باید سعی کنید برای به اشتراک گذاشتن دسکتاپ با ترک مشتریان دیگر متصل"
-
-#: plugins/gvnc/gvnc_plugin.c:872
-#, fuzzy
-msgid "Send Ctrl+Alt+_Del"
-msgstr "ارسال Ctrl+Alt+_Del"
-
-#: plugins/gvnc/gvnc_plugin.c:873
-#, fuzzy
-msgid "Send Ctrl+Alt+_Backspace"
-msgstr "ارسال Ctrl+Alt+_Backspace"
-
-#: plugins/gvnc/gvnc_plugin.c:874
-#, fuzzy
-msgid "Send Ctrl+Alt+_F1"
-msgstr "ارسال Ctrl+Alt+_F1"
-
-#: plugins/gvnc/gvnc_plugin.c:875
-#, fuzzy
-msgid "Send Ctrl+Alt+_F2"
-msgstr "ارسال Ctrl+Alt+_F2"
-
-#: plugins/gvnc/gvnc_plugin.c:876
-#, fuzzy
-msgid "Send Ctrl+Alt+_F3"
-msgstr "ارسال Ctrl+Alt+_F3"
-
-#: plugins/gvnc/gvnc_plugin.c:877
-#, fuzzy
-msgid "Send Ctrl+Alt+_F4"
-msgstr "ارسال Ctrl+Alt+_F4"
-
-#: plugins/gvnc/gvnc_plugin.c:878
-#, fuzzy
-msgid "Send Ctrl+Alt+_F5"
-msgstr "ارسال Ctrl+Alt+_F5"
-
-#: plugins/gvnc/gvnc_plugin.c:879
-#, fuzzy
-msgid "Send Ctrl+Alt+_F6"
-msgstr "ارسال Ctrl+Alt+_F6"
-
-#: plugins/gvnc/gvnc_plugin.c:880
-#, fuzzy
-msgid "Send Ctrl+Alt+_F7"
-msgstr "ارسال Ctrl+Alt+_F7"
-
-#: plugins/gvnc/gvnc_plugin.c:881
-#, fuzzy
-msgid "Send Ctrl+Alt+_F8"
-msgstr "ارسال Ctrl+Alt+_F8"
-
-#: plugins/gvnc/gvnc_plugin.c:882
-#, fuzzy
-msgid "Send Ctrl+Alt+_F9"
-msgstr "ارسال Ctrl+Alt+_F9"
-
-#: plugins/gvnc/gvnc_plugin.c:883
-#, fuzzy
-msgid "Send Ctrl+Alt+_F10"
-msgstr "ارسال Ctrl+Alt+_F10"
-
-#: plugins/gvnc/gvnc_plugin.c:884
-#, fuzzy
-msgid "Send Ctrl+Alt+_F11"
-msgstr "ارسال Ctrl+Alt+_F11"
-
-#: plugins/gvnc/gvnc_plugin.c:885
-#, fuzzy
-msgid "Send Ctrl+Alt+_F12"
-msgstr "ارسال Ctrl+Alt+_F12"
-
-#: plugins/gvnc/gvnc_plugin.c:887
-#, fuzzy
-msgid "Reboot remote host"
-msgstr "راه اندازی مجدد میزبان از راه دور"
-
-#: plugins/gvnc/gvnc_plugin.c:888
-#, fuzzy
-msgid "Reset remote host (hard reboot)"
-msgstr "تنظیم مجدد میزبان از راه دور (راه اندازی مجدد سخت)"
-
-#: plugins/gvnc/gvnc_plugin.c:889
-#, fuzzy
-msgid "Shutdown remote host"
-msgstr "خاموش کردن میزبان از راه دور"
-
-#: plugins/exec/exec_plugin_config.h:41
-#, fuzzy
-msgid "Execute a command"
-msgstr "اجرای دستورات خارجی…"
-
-#: plugins/exec/exec_plugin.c:160
-#, fuzzy
-msgid "You did not set any command to be executed"
-msgstr "تو هيچ دستوري براي اجرا تعيين نکردي"
-
-#: plugins/exec/exec_plugin.c:206
+#: src/remmina_ssh_plugin.c:1485
 #, fuzzy
 msgid ""
-"Warning: Running a command synchronously may cause Remmina not to respond.\n"
-"Do you really want to continue?"
+"The filename can use the following placeholders:\n"
+"\n"
+"  • %h is substituted with the server name\n"
+"  • %t is substituted with the SSH server name\n"
+"  • %u is substituted with the username\n"
+"  • %U is substituted with the SSH username\n"
+"  • %p is substituted with Remmina profile name\n"
+"  • %g is substituted with Remmina profile group name\n"
+"  • %d is substituted with local date and time in ISO 8601 format\n"
 msgstr ""
-"هشدار: اجرای یک فرمان به طور همزمان ممکن است باعث شود که Remmina پاسخ نداد.\n"
-"واقعا ً ميخواي ادامه بدي؟"
+"نام پرونده می تواند از دارندگان مکان های زیر استفاده کند:\n"
+"\n"
+"• ٪h با نام سرور جایگزین شده است\n"
+"  • ٪t با نام سرور SSH جایگزین شده است\n"
+"  • ٪u با نام کاربری جایگزین شده است\n"
+"  • ٪U با نام کاربری SSH جایگزین شده است\n"
+"  • ٪p با نام پروفایل Remmina جایگزین شده است\n"
+"  • ٪g با نام گروه پروفایل Remmina جایگزین شده است\n"
+"  • ٪d با تاریخ و زمان محلی در فرمت ISO 8601 جایگزین می شود\n"
 
-#: plugins/exec/exec_plugin.c:266
+#: src/remmina_ssh_plugin.c:1507
 #, fuzzy
-msgid "Command"
-msgstr "دستور"
+#| msgid "Terminal color scheme"
+msgid "Terminal colour scheme"
+msgstr "قالب رنگ ترمینال"
 
-#: plugins/exec/exec_plugin.c:267
+#: src/remmina_ssh_plugin.c:1508
+msgid "Character set"
+msgstr "مجموعه کاراکتر"
+
+#: src/remmina_ssh_plugin.c:1510
 #, fuzzy
-msgid "Asynchronous execution"
-msgstr "اجرای ناهمزمان"
+msgid "KEX (Key Exchange) algorithms"
+msgstr "الگوریتم های KEX (تبادل کلید)"
 
-#: plugins/www/www_plugin.c:98
+#: src/remmina_ssh_plugin.c:1511
+msgid "Symmetric cipher client to server"
+msgstr "رمزنگاری متقارن کلاینت به سرور"
+
+#: src/remmina_ssh_plugin.c:1512
+msgid "Preferred server host key types"
+msgstr "انواع کلید میزبان سرور"
+
+#: src/remmina_ssh_plugin.c:1513
+msgid "Folder for SSH session log"
+msgstr "پوشه برای نگهداری لاگ های نشست SSH"
+
+#: src/remmina_ssh_plugin.c:1514
+msgid "Filename for SSH session log"
+msgstr "نام فایل لاگهای نشست SSH"
+
+#: src/remmina_ssh_plugin.c:1515
+msgid "Log SSH session when exiting Remmina"
+msgstr "ذخیره کردن لاگ های SSH زمان خروج از Remmina"
+
+#: src/remmina_ssh_plugin.c:1516
 #, fuzzy
-msgid "File downloaded"
-msgstr "فایل دانلود شده"
+msgid "Log SSH session asynchronously"
+msgstr "ورود به جلسه SSH به طور ناهمزمان"
 
-#: plugins/www/www_plugin.c:574
+#: src/remmina_ssh_plugin.c:1516
 #, fuzzy
-msgid "Enter WWW authentication credentials"
-msgstr "اعتبارنامه احراز هویت WWW را وارد کنید"
+msgid "Saving the session asynchronously may have a notable performance impact"
+msgstr ""
+"صرفه جویی در جلسه به طور ناهمزمان ممکن است تاثیر عملکرد قابل توجهی داشته باشد"
 
-#: plugins/www/www_plugin.c:878
+#: src/remmina_ssh_plugin.c:1517
+msgid "Audible terminal bell"
+msgstr "صدای ترمینال قابل شندیدن"
+
+#: src/remmina_ssh_plugin.c:1518
+msgid "SSH compression"
+msgstr "فشرده سازی SSH"
+
+#: src/remmina_ssh_plugin.c:1519
+msgid "Don't remember passwords"
+msgstr "عدم یادآوری رمزعبور"
+
+#: src/remmina_ssh_plugin.c:1520
 #, fuzzy
-msgid "URL"
-msgstr "آدرس"
+msgid "Strict host key checking"
+msgstr "چک کردن کلید میزبان سخت گیرانه"
 
-#: plugins/www/www_plugin.c:878
+#: src/remmina_ssh_plugin.c:1534
 #, fuzzy
-msgid "http://address or https://address"
-msgstr "http://address یا https://address"
+msgid "SSH - Secure Shell"
+msgstr "SSH - پوسته امن"
 
-#: plugins/www/www_plugin.c:895
+#: plugins/kwallet/src/kwallet_plugin_main.c:118
 #, fuzzy
-msgid "User agent"
-msgstr "عامل کاربر"
+msgid "Secured password storage in KWallet"
+msgstr "ذخیره سازی رمز عبور امن در KWallet"
 
-#: plugins/www/www_plugin.c:896
+#: plugins/rdp/rdp_settings.c:205
 #, fuzzy
-msgid "Proxy URL"
-msgstr "آدرس پروکسی"
+msgid "<Auto-detect>"
+msgstr "<Auto-detect>"
 
-#: plugins/www/www_plugin.c:896
+#: plugins/rdp/rdp_settings.c:237
 #, fuzzy
-msgid "E.g. https://example.org, socks://mysocks:1080"
-msgstr "به عنوان https://example.org socks://mysocks:1080"
+msgid "<Not set>"
+msgstr "< تنظیم نمی شود>"
 
-#: plugins/www/www_plugin.c:897
+#: plugins/rdp/rdp_settings.c:268
 #, fuzzy
-msgid "Turn on Java support"
-msgstr "روشن کردن پشتیبانی جاوا"
+msgid "<Choose a quality level to edit…>"
+msgstr "<برس یک سطح کیفیت برای ویرایش...>"
 
-#: plugins/www/www_plugin.c:898
-#, fuzzy
-msgid "Turn on smooth scrolling"
-msgstr "اسکرول کردن صاف را روشن کنید"
-
-#: plugins/www/www_plugin.c:899
-#, fuzzy
-msgid "Turn on spatial navigation"
-msgstr "روشن کردن ناوبری فضایی"
-
-#: plugins/www/www_plugin.c:900
-#, fuzzy
-msgid "Turn on plugin support"
-msgstr "روشن کردن پشتیبانی پلاگین"
-
-#: plugins/www/www_plugin.c:901
-#, fuzzy
-msgid "Turn on WebGL support"
-msgstr "روشن کردن پشتیبانی WebGL"
-
-#: plugins/www/www_plugin.c:902
-#, fuzzy
-msgid "Turn on HTML5 audio support"
-msgstr "پشتیبانی صوتی HTML5 را روشن کنید"
-
-#: plugins/www/www_plugin.c:903
-#, fuzzy
-msgid "Ignore TLS errors"
-msgstr "نادیده گرفتن خطاهای TLS"
-
-#: plugins/www/www_plugin.c:906
-#, fuzzy
-msgid "Turn on Web Inspector"
-msgstr "روشن کردن بازرس وب"
-
-#: plugins/www/www_config.h:43
-#, fuzzy
-msgid "Remmina web-browser plugin"
-msgstr "افزونه مرورگر وب Remmina"
-
-#: plugins/secret/src/glibsecret_plugin.c:188
-#, fuzzy
-msgid "Secured password storage in the GNOME keyring"
-msgstr "ذخیره سازی رمز عبور امن در کلید گنوم"
-
-#: plugins/tool_hello_world/plugin_config.h:40
-#, fuzzy
-msgid "Hello, World!"
-msgstr "سلام به دنیا!"
-
-#: plugins/vnc/vnc_plugin.c:772
-#, fuzzy
-msgid "Enter VNC password"
-msgstr "رمز عبور VNC را وارد کنید"
-
-#: plugins/vnc/vnc_plugin.c:936
-#, fuzzy
-msgid "Unable to connect to VNC server"
-msgstr "."
-
-#: plugins/vnc/vnc_plugin.c:937
-#, fuzzy, c-format
-msgid "Couldn’t convert '%s' to host address"
-msgstr "نمی توانست '%s' را به آدرس میزبان تبدیل کند"
-
-#: plugins/vnc/vnc_plugin.c:938
-#, fuzzy, c-format
-msgid "VNC connection failed: %s"
-msgstr "اتصال VNC با شکست مواجه شد: %s"
-
-#: plugins/vnc/vnc_plugin.c:939
-#, fuzzy
-msgid "Your connection has been rejected."
-msgstr "ارتباط شما رد شده است."
-
-#: plugins/vnc/vnc_plugin.c:966
-#, fuzzy, c-format
-msgid "The VNC server requested an unknown authentication method. %s"
-msgstr "سرور VNC یک روش احراز هویت ناشناخته درخواست کرد. %s"
-
-#: plugins/vnc/vnc_plugin.c:968
-#, fuzzy
-msgid "Please retry after turning on encryption for this profile."
-msgstr "لطفاً پس از روشن کردن رمزگذاری برای این نمایه دوباره تلاش کنید."
-
-#: plugins/vnc/vnc_plugin.c:1922 plugins/rdp/rdp_plugin.c:2497
-#, fuzzy
-msgid "True colour (32 bpp)"
-msgstr "رنگ واقعی (32 bpp)"
-
-#: plugins/vnc/vnc_plugin.c:1923 plugins/rdp/rdp_plugin.c:2499
-#, fuzzy
-msgid "High colour (16 bpp)"
-msgstr "رنگ بالا (16 bpp)"
-
-#: plugins/vnc/vnc_plugin.c:1924 plugins/rdp/rdp_plugin.c:2501
-#, fuzzy
-msgid "256 colours (8 bpp)"
-msgstr "256 رنگ (8 bpp)"
-
-#: plugins/vnc/vnc_plugin.c:1931 plugins/rdp/rdp_plugin.c:2524
-#: plugins/rdp/rdp_settings.c:274
-#, fuzzy
-msgid "Good"
-msgstr "خوب"
-
-#: plugins/vnc/vnc_plugin.c:1932 plugins/rdp/rdp_plugin.c:2525
-#: plugins/rdp/rdp_settings.c:276
-#, fuzzy
-msgid "Best (slowest)"
-msgstr "بهترین (کندترین)"
-
-#: plugins/vnc/vnc_plugin.c:1933 plugins/rdp/rdp_plugin.c:2523
-#: plugins/rdp/rdp_settings.c:272
-#, fuzzy
-msgid "Medium"
-msgstr "متوسط"
-
-#: plugins/vnc/vnc_plugin.c:1934 plugins/rdp/rdp_plugin.c:2522
-#: plugins/rdp/rdp_settings.c:270
+#: plugins/rdp/rdp_settings.c:270 plugins/rdp/rdp_plugin.c:2522
+#: plugins/vnc/vnc_plugin.c:1934
 #, fuzzy
 msgid "Poor (fastest)"
 msgstr "فقیر (سریع ترین)"
 
-#: plugins/vnc/vnc_plugin.c:1939
+#: plugins/rdp/rdp_settings.c:272 plugins/rdp/rdp_plugin.c:2523
+#: plugins/vnc/vnc_plugin.c:1933
 #, fuzzy
-msgid ""
-"Connect to VNC using a repeater:\n"
-"  • The server field must contain the repeater ID, e.g. ID:123456789\n"
-"  • The repeater field have to be set to the repeater IP and port, like:\n"
-"    10.10.10.12:5901\n"
-"  • From the remote VNC server, you will connect to\n"
-"    the repeater, e.g. with x11vnc:\n"
-"    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
-msgstr ""
-"اتصال به VNC با استفاده از تکرار کننده:\n"
-"  • فیلد سرور باید شامل ID تکرار کننده باشد، به عنوان مانند ID:123456789\n"
-"  • فیلد تکرار کننده باید به آی پی تکرار کننده و پورت تنظیم شود، مانند:\n"
-"    10.10.10.12:5901\n"
-"  • از سرور VNC از راه دور، شما به اتصال\n"
-"    تکرار کننده، به عنوان مانند با x11vnc:\n"
-"    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
+msgid "Medium"
+msgstr "متوسط"
 
-#: plugins/vnc/vnc_plugin.c:1959
+#: plugins/rdp/rdp_settings.c:274 plugins/rdp/rdp_plugin.c:2524
+#: plugins/vnc/vnc_plugin.c:1931
 #, fuzzy
-msgid "Repeater"
-msgstr "تکرار"
+msgid "Good"
+msgstr "خوب"
 
-#: plugins/vnc/vnc_plugin.c:1963 plugins/vnc/vnc_plugin.c:1983
-#: plugins/rdp/rdp_plugin.c:2677
+#: plugins/rdp/rdp_settings.c:276 plugins/rdp/rdp_plugin.c:2525
+#: plugins/vnc/vnc_plugin.c:1932
 #, fuzzy
-msgid "Quality"
-msgstr "کیفیت"
+msgid "Best (slowest)"
+msgstr "بهترین (کندترین)"
 
-#: plugins/vnc/vnc_plugin.c:1979
+#: plugins/rdp/rdp_settings.c:415
 #, fuzzy
-msgid "Listen on port"
-msgstr "گوش دادن در بندر"
+msgid "Keyboard layout"
+msgstr "طرح بندی صفحه کلید:"
 
-#: plugins/vnc/vnc_plugin.c:1999
+#: plugins/rdp/rdp_settings.c:440
 #, fuzzy
-msgid "Show remote cursor"
-msgstr "نمایش مکان یاب از راه دور"
+msgid "Use client keyboard mapping"
+msgstr "استفاده از نقشه برداری صفحه کلید مشتری"
 
-#: plugins/vnc/vnc_plugin.c:2001 plugins/rdp/rdp_plugin.c:2715
+#: plugins/rdp/rdp_settings.c:450
 #, fuzzy
-msgid "Turn off clipboard sync"
-msgstr "خاموش کردن همگام سازی کلیپ بورد"
+msgid "Quality settings"
+msgstr "تنظیمات کیفیت"
 
-#: plugins/vnc/vnc_plugin.c:2002
+#: plugins/rdp/rdp_settings.c:470
 #, fuzzy
-msgid "Turn off encryption"
-msgstr "خاموش کردن رمزنگاری"
+msgid "Wallpaper"
+msgstr "کاغذدیواری"
 
-#: plugins/vnc/vnc_plugin.c:2003 plugins/vnc/vnc_plugin.c:2018
+#: plugins/rdp/rdp_settings.c:477
 #, fuzzy
-msgid "Prevent local interaction on the server"
-msgstr "جلوگیری از تعامل محلی بر روی سرور"
+msgid "Window drag"
+msgstr "کشیدن پنجره"
 
-#: plugins/vnc/vnc_plugin.c:2006 plugins/rdp/rdp_plugin.c:2656
-#: plugins/rdp/rdp_settings.c:598
+#: plugins/rdp/rdp_settings.c:484
+#, fuzzy
+msgid "Menu animation"
+msgstr "انیمیشن منو"
+
+#: plugins/rdp/rdp_settings.c:491
+#, fuzzy
+msgid "Theme"
+msgstr "تم"
+
+#: plugins/rdp/rdp_settings.c:498
+#, fuzzy
+msgid "Cursor shadow"
+msgstr "سایه نفرین"
+
+#: plugins/rdp/rdp_settings.c:505
+#, fuzzy
+msgid "Cursor blinking"
+msgstr "چشمک زدن نفرین"
+
+#: plugins/rdp/rdp_settings.c:512
+#, fuzzy
+msgid "Font smoothing"
+msgstr "صاف کردن فونت"
+
+#: plugins/rdp/rdp_settings.c:519
+#, fuzzy
+msgid "Composition"
+msgstr "ترکیب"
+
+#: plugins/rdp/rdp_settings.c:529
+#, fuzzy
+msgid "Remote scale factor"
+msgstr "عامل مقیاس از راه دور"
+
+#: plugins/rdp/rdp_settings.c:542
+#, fuzzy
+msgid "Desktop scale factor %"
+msgstr "عامل مقیاس رومیزی ٪"
+
+#: plugins/rdp/rdp_settings.c:553
+#, fuzzy
+msgid "Device scale factor %"
+msgstr "عامل مقیاس دستگاه ٪"
+
+#: plugins/rdp/rdp_settings.c:575
+#, fuzzy
+msgid "Desktop orientation"
+msgstr "جهت گیری رومیزی"
+
+#: plugins/rdp/rdp_settings.c:592
+#, fuzzy
+msgid "Input device settings"
+msgstr "تنظیمات دستگاه ورودی"
+
+#: plugins/rdp/rdp_settings.c:598 plugins/rdp/rdp_plugin.c:2656
+#: plugins/vnc/vnc_plugin.c:2006
 #, fuzzy
 msgid "Disable smooth scrolling"
 msgstr "غیرفعال کردن اسکرول کردن صاف"
 
-#: plugins/vnc/vnc_plugin.c:2020
+#: plugins/rdp/rdp_settings.c:608
 #, fuzzy
-msgid "Open Chat…"
-msgstr "گپ باز…"
+msgid "General settings"
+msgstr "تنظیمات کلی"
 
-#: plugins/vnc/vnc_plugin.c:2021 plugins/spice/spice_plugin.c:707
-#: plugins/rdp/rdp_plugin.c:2744
+#: plugins/rdp/rdp_settings.c:613 plugins/rdp/rdp_plugin.c:2708
 #, fuzzy
-msgid "Send Ctrl+Alt+Delete"
-msgstr "ارسال Ctrl+Alt+Delete"
+msgid "Reconnect attempts number"
+msgstr "اتصال مجدد شماره تلاش ها"
 
-#: plugins/vnc/vnc_plugin.h:41
+#: plugins/rdp/rdp_settings.c:619 plugins/rdp/rdp_plugin.c:2708
 #, fuzzy
-msgid "Remmina VNC Plugin"
-msgstr "پلاگین VNC Remmina"
-
-#: plugins/vnc/vnc_plugin.h:46
-#, fuzzy
-msgid "Remmina VNC listener Plugin"
-msgstr "افزونه شنونده VNC Remmina"
-
-#: plugins/spice/spice_plugin_usb.c:51 plugins/spice/spice_plugin.c:708
-#, fuzzy
-msgid "Select USB devices for redirection"
-msgstr "انتخاب دستگاه های USB برای تغییر مسیر"
-
-#: plugins/spice/spice_plugin_usb.c:54
-#, fuzzy
-msgid "_Close"
-msgstr "_بستن"
-
-#: plugins/spice/spice_plugin_usb.c:94
-#, fuzzy
-msgid "USB redirection error"
-msgstr "خطای تغییر مسیر USB"
-
-#: plugins/spice/spice_plugin.c:351
-#, fuzzy
-msgid "Enter SPICE password"
-msgstr "رمز عبور SPICE را وارد کنید"
-
-#: plugins/spice/spice_plugin.c:386
-#, fuzzy, c-format
-msgid "Disconnected from the SPICE server “%s”."
-msgstr "قطع ارتباط با سرور SPICE \"%s\"."
-
-#: plugins/spice/spice_plugin.c:402
-#, fuzzy
-msgid "TLS connection error."
-msgstr "خطای اتصال TLS."
-
-#: plugins/spice/spice_plugin.c:408
-#, fuzzy
-msgid "Connection to the SPICE server dropped."
-msgstr "اتصال به سرور SPICE کاهش یافته است."
-
-#: plugins/spice/spice_plugin.c:616 plugins/spice/spice_plugin.c:634
-#, fuzzy
-msgid "Default"
-msgstr "پیش‌فرض"
-
-#: plugins/spice/spice_plugin.c:635 plugins/rdp/rdp_plugin.c:2546
-#: data/ui/remmina_preferences.glade:677
-#, fuzzy
-msgid "Off"
-msgstr "خاموش"
-
-#: plugins/spice/spice_plugin.c:636
-#, fuzzy
-msgid "Auto GLZ"
-msgstr "خودکار GLZ"
-
-#: plugins/spice/spice_plugin.c:637
-#, fuzzy
-msgid "Auto LZ"
-msgstr "خودکار LZ"
-
-#: plugins/spice/spice_plugin.c:650
-#, fuzzy
-msgid "Disable video overlay if videos are not displayed properly.\n"
-msgstr ""
-"اگر ویدیوها به درستی نمایش داده نمی شوند، روکش ویدیویی را غیرفعال کنید.\n"
-
-#: plugins/spice/spice_plugin.c:667
-#, fuzzy
-msgid "Use TLS encryption"
-msgstr "استفاده از رمزگذاری TLS"
-
-#: plugins/spice/spice_plugin.c:668
-#, fuzzy
-msgid "Server CA certificate"
-msgstr "گواهی سرور CA"
-
-#: plugins/spice/spice_plugin.c:669 plugins/rdp/rdp_plugin.c:2654
-#, fuzzy
-msgid "Share folder"
-msgstr "پوشه اشتراک گذاری"
-
-#: plugins/spice/spice_plugin.c:686
-#, fuzzy
-msgid "Prefered video codec"
-msgstr "کدک ویدئویی ترجیح داده شده"
-
-#: plugins/spice/spice_plugin.c:687
-#, fuzzy
-msgid "Turn off GStreamer overlay"
-msgstr "خاموش کردن روکش GStreamer"
-
-#: plugins/spice/spice_plugin.c:690
-#, fuzzy
-msgid "Prefered image compression"
-msgstr "فشرده سازی تصویر ترجیح داده شده"
-
-#: plugins/spice/spice_plugin.c:696
-#, fuzzy
-msgid "Share smart card"
-msgstr "به اشتراک گذاشتن کارت هوشمند"
-
-#: plugins/spice/spice_plugin.c:719
-#, fuzzy
-msgid "SPICE - Simple Protocol for Independent Computing Environments"
-msgstr "SPICE - پروتکل ساده برای محیط های محاسباتی مستقل"
-
-#: plugins/spice/spice_plugin_file_transfer.c:82
-#, fuzzy
-msgid "File Transfers"
-msgstr "فایلهای انتقالی"
-
-#: plugins/spice/spice_plugin_file_transfer.c:219
-#, fuzzy
-msgid "Transfer error"
-msgstr "اشکال در ارسال"
-
-#: plugins/spice/spice_plugin_file_transfer.c:220
-#, fuzzy, c-format
-msgid "%s: %s"
-msgstr "%s: %s"
-
-#: plugins/spice/spice_plugin_file_transfer.c:223
-#, fuzzy
-msgid "Transfer completed"
-msgstr "انتقال به پایان رسید"
-
-#: plugins/spice/spice_plugin_file_transfer.c:224
-#, fuzzy, c-format
-msgid "The %s file has been transferred"
-msgstr "پرونده %s منتقل شده است"
+msgid ""
+"The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
+msgstr "حداکثر تعداد تلاش های اتصال مجدد بر قطع RDP (پیش فرض: 20)"
 
 #: plugins/rdp/rdp_plugin.c:757 plugins/rdp/rdp_plugin.c:822
 #, fuzzy
@@ -2600,15 +2140,30 @@ msgstr "GFX RFX مترقی (32 bpp)"
 msgid "RemoteFX (32 bpp)"
 msgstr "RemoteFX (32 bpp)"
 
+#: plugins/rdp/rdp_plugin.c:2497 plugins/vnc/vnc_plugin.c:1922
+#, fuzzy
+msgid "True colour (32 bpp)"
+msgstr "رنگ واقعی (32 bpp)"
+
 #: plugins/rdp/rdp_plugin.c:2498
 #, fuzzy
 msgid "True colour (24 bpp)"
 msgstr "رنگ واقعی (24 bpp)"
 
+#: plugins/rdp/rdp_plugin.c:2499 plugins/vnc/vnc_plugin.c:1923
+#, fuzzy
+msgid "High colour (16 bpp)"
+msgstr "رنگ بالا (16 bpp)"
+
 #: plugins/rdp/rdp_plugin.c:2500
 #, fuzzy
 msgid "High colour (15 bpp)"
 msgstr "رنگ بالا (15 bpp)"
+
+#: plugins/rdp/rdp_plugin.c:2501 plugins/vnc/vnc_plugin.c:1924
+#, fuzzy
+msgid "256 colours (8 bpp)"
+msgstr "256 رنگ (8 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2532 data/ui/remmina_preferences.glade:641
 #, fuzzy
@@ -2649,6 +2204,12 @@ msgstr "وان"
 #, fuzzy
 msgid "LAN"
 msgstr "شبکه"
+
+#: plugins/rdp/rdp_plugin.c:2546 plugins/spice/spice_plugin.c:635
+#: data/ui/remmina_preferences.glade:677
+#, fuzzy
+msgid "Off"
+msgstr "خاموش"
 
 #: plugins/rdp/rdp_plugin.c:2555
 #, fuzzy
@@ -2818,6 +2379,11 @@ msgstr ""
 "  hotplug,*\n"
 "\n"
 
+#: plugins/rdp/rdp_plugin.c:2654 plugins/spice/spice_plugin.c:669
+#, fuzzy
+msgid "Share folder"
+msgstr "پوشه اشتراک گذاری"
+
 #: plugins/rdp/rdp_plugin.c:2654
 #, fuzzy
 msgid "Use “Redirect directory” in the advanced tab for multiple directories"
@@ -2849,9 +2415,21 @@ msgstr "صفحه نمایش دهانه بیش از مانیتورهای متعد
 msgid "List monitor IDs"
 msgstr "لیست مانیتور IDs"
 
+#: plugins/rdp/rdp_plugin.c:2661 plugins/vnc/vnc_plugin.c:1962
+#: plugins/vnc/vnc_plugin.c:1982 plugins/gvnc/gvnc_plugin.c:840
+#, fuzzy
+msgid "Colour depth"
+msgstr "عمق رنگ"
+
 #: plugins/rdp/rdp_plugin.c:2662
 msgid "Network connection type"
 msgstr "ارتباط جدید"
+
+#: plugins/rdp/rdp_plugin.c:2677 plugins/vnc/vnc_plugin.c:1963
+#: plugins/vnc/vnc_plugin.c:1983
+#, fuzzy
+msgid "Quality"
+msgstr "کیفیت"
 
 #: plugins/rdp/rdp_plugin.c:2678
 #, fuzzy
@@ -3027,17 +2605,6 @@ msgstr "تغییر مسیر TCP"
 msgid "/PATH/TO/rdp2tcp"
 msgstr "/PATH/TO/rdp2tcp"
 
-#: plugins/rdp/rdp_plugin.c:2708 plugins/rdp/rdp_settings.c:613
-#, fuzzy
-msgid "Reconnect attempts number"
-msgstr "اتصال مجدد شماره تلاش ها"
-
-#: plugins/rdp/rdp_plugin.c:2708 plugins/rdp/rdp_settings.c:619
-#, fuzzy
-msgid ""
-"The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
-msgstr "حداکثر تعداد تلاش های اتصال مجدد بر قطع RDP (پیش فرض: 20)"
-
 #: plugins/rdp/rdp_plugin.c:2709
 #, fuzzy
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
@@ -3068,6 +2635,11 @@ msgstr "درگاه های موازی را به اشتراک بگذارید"
 msgid "Share a smart card"
 msgstr "به اشتراک گذاشتن یک کارت هوشمند"
 
+#: plugins/rdp/rdp_plugin.c:2715 plugins/vnc/vnc_plugin.c:2001
+#, fuzzy
+msgid "Turn off clipboard sync"
+msgstr "خاموش کردن همگام سازی کلیپ بورد"
+
 #: plugins/rdp/rdp_plugin.c:2716
 #, fuzzy
 msgid "Ignore certificate"
@@ -3082,6 +2654,13 @@ msgstr "استفاده از گردش کار مجوز قدیمی"
 #, fuzzy
 msgid "It disables CAL and hwId is set to 0"
 msgstr "این غیر فعال CAL و hwId تنظیم شده است به 0"
+
+#: plugins/rdp/rdp_plugin.c:2718 plugins/spice/spice_plugin.c:694
+#: plugins/vnc/vnc_plugin.c:2005 plugins/www/www_plugin.c:904
+#: plugins/gvnc/gvnc_plugin.c:858
+#, fuzzy
+msgid "Forget passwords after use"
+msgstr "پس از استفاده رمزهای عبور را فراموش کنید"
 
 #: plugins/rdp/rdp_plugin.c:2719
 #, fuzzy
@@ -3138,6 +2717,12 @@ msgstr "استفاده از اعتبار پایه برای دروازه بیش �
 msgid "Enable Gateway websockets support"
 msgstr "فعال کردن پشتیبانی از دروازه websockets"
 
+#: plugins/rdp/rdp_plugin.c:2744 plugins/spice/spice_plugin.c:707
+#: plugins/vnc/vnc_plugin.c:2021
+#, fuzzy
+msgid "Send Ctrl+Alt+Delete"
+msgstr "ارسال Ctrl+Alt+Delete"
+
 #: plugins/rdp/rdp_plugin.c:2757
 #, fuzzy
 msgid "RDP - Remote Desktop Protocol"
@@ -3158,115 +2743,530 @@ msgstr "RDP - ترجیحات"
 msgid "Export connection in Windows .rdp file format"
 msgstr "اتصال صادرات در ویندوز .rdp فرمت فایل"
 
-#: plugins/rdp/rdp_settings.c:205
-#, fuzzy
-msgid "<Auto-detect>"
-msgstr "<Auto-detect>"
-
-#: plugins/rdp/rdp_settings.c:237
-#, fuzzy
-msgid "<Not set>"
-msgstr "< تنظیم نمی شود>"
-
-#: plugins/rdp/rdp_settings.c:268
-#, fuzzy
-msgid "<Choose a quality level to edit…>"
-msgstr "<برس یک سطح کیفیت برای ویرایش...>"
-
-#: plugins/rdp/rdp_settings.c:415
-#, fuzzy
-msgid "Keyboard layout"
-msgstr "طرح بندی صفحه کلید:"
-
-#: plugins/rdp/rdp_settings.c:440
-#, fuzzy
-msgid "Use client keyboard mapping"
-msgstr "استفاده از نقشه برداری صفحه کلید مشتری"
-
-#: plugins/rdp/rdp_settings.c:450
-#, fuzzy
-msgid "Quality settings"
-msgstr "تنظیمات کیفیت"
-
-#: plugins/rdp/rdp_settings.c:470
-#, fuzzy
-msgid "Wallpaper"
-msgstr "کاغذدیواری"
-
-#: plugins/rdp/rdp_settings.c:477
-#, fuzzy
-msgid "Window drag"
-msgstr "کشیدن پنجره"
-
-#: plugins/rdp/rdp_settings.c:484
-#, fuzzy
-msgid "Menu animation"
-msgstr "انیمیشن منو"
-
-#: plugins/rdp/rdp_settings.c:491
-#, fuzzy
-msgid "Theme"
-msgstr "تم"
-
-#: plugins/rdp/rdp_settings.c:498
-#, fuzzy
-msgid "Cursor shadow"
-msgstr "سایه نفرین"
-
-#: plugins/rdp/rdp_settings.c:505
-#, fuzzy
-msgid "Cursor blinking"
-msgstr "چشمک زدن نفرین"
-
-#: plugins/rdp/rdp_settings.c:512
-#, fuzzy
-msgid "Font smoothing"
-msgstr "صاف کردن فونت"
-
-#: plugins/rdp/rdp_settings.c:519
-#, fuzzy
-msgid "Composition"
-msgstr "ترکیب"
-
-#: plugins/rdp/rdp_settings.c:529
-#, fuzzy
-msgid "Remote scale factor"
-msgstr "عامل مقیاس از راه دور"
-
-#: plugins/rdp/rdp_settings.c:542
-#, fuzzy
-msgid "Desktop scale factor %"
-msgstr "عامل مقیاس رومیزی ٪"
-
-#: plugins/rdp/rdp_settings.c:553
-#, fuzzy
-msgid "Device scale factor %"
-msgstr "عامل مقیاس دستگاه ٪"
-
-#: plugins/rdp/rdp_settings.c:575
-#, fuzzy
-msgid "Desktop orientation"
-msgstr "جهت گیری رومیزی"
-
-#: plugins/rdp/rdp_settings.c:592
-#, fuzzy
-msgid "Input device settings"
-msgstr "تنظیمات دستگاه ورودی"
-
-#: plugins/rdp/rdp_settings.c:608
-#, fuzzy
-msgid "General settings"
-msgstr "تنظیمات کلی"
-
 #: plugins/rdp/rdp_event.c:344
 #, fuzzy, c-format
 msgid "Reconnection attempt %d of %d…"
 msgstr "تلاش برای اتصال مجدد %d از %d…"
 
-#: plugins/kwallet/src/kwallet_plugin_main.c:118
+#: plugins/spice/spice_plugin_file_transfer.c:82
 #, fuzzy
-msgid "Secured password storage in KWallet"
-msgstr "ذخیره سازی رمز عبور امن در KWallet"
+msgid "File Transfers"
+msgstr "فایلهای انتقالی"
+
+#: plugins/spice/spice_plugin_file_transfer.c:219
+#, fuzzy
+msgid "Transfer error"
+msgstr "اشکال در ارسال"
+
+#: plugins/spice/spice_plugin_file_transfer.c:220
+#, fuzzy, c-format
+msgid "%s: %s"
+msgstr "%s: %s"
+
+#: plugins/spice/spice_plugin_file_transfer.c:223
+#, fuzzy
+msgid "Transfer completed"
+msgstr "انتقال به پایان رسید"
+
+#: plugins/spice/spice_plugin_file_transfer.c:224
+#, fuzzy, c-format
+msgid "The %s file has been transferred"
+msgstr "پرونده %s منتقل شده است"
+
+#: plugins/spice/spice_plugin.c:351
+#, fuzzy
+msgid "Enter SPICE password"
+msgstr "رمز عبور SPICE را وارد کنید"
+
+#: plugins/spice/spice_plugin.c:386
+#, fuzzy, c-format
+msgid "Disconnected from the SPICE server “%s”."
+msgstr "قطع ارتباط با سرور SPICE \"%s\"."
+
+#: plugins/spice/spice_plugin.c:402
+#, fuzzy
+msgid "TLS connection error."
+msgstr "خطای اتصال TLS."
+
+#: plugins/spice/spice_plugin.c:408
+#, fuzzy
+msgid "Connection to the SPICE server dropped."
+msgstr "اتصال به سرور SPICE کاهش یافته است."
+
+#: plugins/spice/spice_plugin.c:616 plugins/spice/spice_plugin.c:634
+#, fuzzy
+msgid "Default"
+msgstr "پیش‌فرض"
+
+#: plugins/spice/spice_plugin.c:636
+#, fuzzy
+msgid "Auto GLZ"
+msgstr "خودکار GLZ"
+
+#: plugins/spice/spice_plugin.c:637
+#, fuzzy
+msgid "Auto LZ"
+msgstr "خودکار LZ"
+
+#: plugins/spice/spice_plugin.c:650
+#, fuzzy
+msgid "Disable video overlay if videos are not displayed properly.\n"
+msgstr ""
+"اگر ویدیوها به درستی نمایش داده نمی شوند، روکش ویدیویی را غیرفعال کنید.\n"
+
+#: plugins/spice/spice_plugin.c:667
+#, fuzzy
+msgid "Use TLS encryption"
+msgstr "استفاده از رمزگذاری TLS"
+
+#: plugins/spice/spice_plugin.c:668
+#, fuzzy
+msgid "Server CA certificate"
+msgstr "گواهی سرور CA"
+
+#: plugins/spice/spice_plugin.c:686
+#, fuzzy
+msgid "Prefered video codec"
+msgstr "کدک ویدئویی ترجیح داده شده"
+
+#: plugins/spice/spice_plugin.c:687
+#, fuzzy
+msgid "Turn off GStreamer overlay"
+msgstr "خاموش کردن روکش GStreamer"
+
+#: plugins/spice/spice_plugin.c:690
+#, fuzzy
+msgid "Prefered image compression"
+msgstr "فشرده سازی تصویر ترجیح داده شده"
+
+#: plugins/spice/spice_plugin.c:693 plugins/spice/spice_plugin.c:706
+#: plugins/gvnc/gvnc_plugin.c:857 plugins/gvnc/gvnc_plugin.c:871
+#, fuzzy
+msgid "No clipboard sync"
+msgstr "بدون همگام سازی کلیپ بورد"
+
+#: plugins/spice/spice_plugin.c:695 plugins/gvnc/gvnc_plugin.c:860
+#, fuzzy
+msgid "Enable audio channel"
+msgstr "فعال کردن کانال صوتی"
+
+#: plugins/spice/spice_plugin.c:696
+#, fuzzy
+msgid "Share smart card"
+msgstr "به اشتراک گذاشتن کارت هوشمند"
+
+#: plugins/spice/spice_plugin.c:697 plugins/spice/spice_plugin.c:705
+#: plugins/vnc/vnc_plugin.c:2000 plugins/vnc/vnc_plugin.c:2017
+#: plugins/gvnc/gvnc_plugin.c:861 plugins/gvnc/gvnc_plugin.c:870
+#, fuzzy
+msgid "View only"
+msgstr "فقط مشاهده"
+
+#: plugins/spice/spice_plugin.c:708 plugins/spice/spice_plugin_usb.c:51
+#, fuzzy
+msgid "Select USB devices for redirection"
+msgstr "انتخاب دستگاه های USB برای تغییر مسیر"
+
+#: plugins/spice/spice_plugin.c:719
+#, fuzzy
+msgid "SPICE - Simple Protocol for Independent Computing Environments"
+msgstr "SPICE - پروتکل ساده برای محیط های محاسباتی مستقل"
+
+#: plugins/spice/spice_plugin_usb.c:54
+#, fuzzy
+msgid "_Close"
+msgstr "_بستن"
+
+#: plugins/spice/spice_plugin_usb.c:94
+#, fuzzy
+msgid "USB redirection error"
+msgstr "خطای تغییر مسیر USB"
+
+#: plugins/vnc/vnc_plugin.c:772
+#, fuzzy
+msgid "Enter VNC password"
+msgstr "رمز عبور VNC را وارد کنید"
+
+#: plugins/vnc/vnc_plugin.c:825 plugins/gvnc/gvnc_plugin.c:539
+#, fuzzy
+msgid "Enter VNC authentication credentials"
+msgstr "اعتبارنامه تأیید هویت VNC را وارد کنید"
+
+#: plugins/vnc/vnc_plugin.c:936
+#, fuzzy
+msgid "Unable to connect to VNC server"
+msgstr "."
+
+#: plugins/vnc/vnc_plugin.c:937
+#, fuzzy, c-format
+msgid "Couldn’t convert '%s' to host address"
+msgstr "نمی توانست '%s' را به آدرس میزبان تبدیل کند"
+
+#: plugins/vnc/vnc_plugin.c:938
+#, fuzzy, c-format
+msgid "VNC connection failed: %s"
+msgstr "اتصال VNC با شکست مواجه شد: %s"
+
+#: plugins/vnc/vnc_plugin.c:939
+#, fuzzy
+msgid "Your connection has been rejected."
+msgstr "ارتباط شما رد شده است."
+
+#: plugins/vnc/vnc_plugin.c:966
+#, fuzzy, c-format
+msgid "The VNC server requested an unknown authentication method. %s"
+msgstr "سرور VNC یک روش احراز هویت ناشناخته درخواست کرد. %s"
+
+#: plugins/vnc/vnc_plugin.c:968
+#, fuzzy
+msgid "Please retry after turning on encryption for this profile."
+msgstr "لطفاً پس از روشن کردن رمزگذاری برای این نمایه دوباره تلاش کنید."
+
+#: plugins/vnc/vnc_plugin.c:1939
+#, fuzzy
+msgid ""
+"Connect to VNC using a repeater:\n"
+"  • The server field must contain the repeater ID, e.g. ID:123456789\n"
+"  • The repeater field have to be set to the repeater IP and port, like:\n"
+"    10.10.10.12:5901\n"
+"  • From the remote VNC server, you will connect to\n"
+"    the repeater, e.g. with x11vnc:\n"
+"    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
+msgstr ""
+"اتصال به VNC با استفاده از تکرار کننده:\n"
+"  • فیلد سرور باید شامل ID تکرار کننده باشد، به عنوان مانند ID:123456789\n"
+"  • فیلد تکرار کننده باید به آی پی تکرار کننده و پورت تنظیم شود، مانند:\n"
+"    10.10.10.12:5901\n"
+"  • از سرور VNC از راه دور، شما به اتصال\n"
+"    تکرار کننده، به عنوان مانند با x11vnc:\n"
+"    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
+
+#: plugins/vnc/vnc_plugin.c:1959
+#, fuzzy
+msgid "Repeater"
+msgstr "تکرار"
+
+#: plugins/vnc/vnc_plugin.c:1979
+#, fuzzy
+msgid "Listen on port"
+msgstr "گوش دادن در بندر"
+
+#: plugins/vnc/vnc_plugin.c:1999
+#, fuzzy
+msgid "Show remote cursor"
+msgstr "نمایش مکان یاب از راه دور"
+
+#: plugins/vnc/vnc_plugin.c:2002
+#, fuzzy
+msgid "Turn off encryption"
+msgstr "خاموش کردن رمزنگاری"
+
+#: plugins/vnc/vnc_plugin.c:2003 plugins/vnc/vnc_plugin.c:2018
+#, fuzzy
+msgid "Prevent local interaction on the server"
+msgstr "جلوگیری از تعامل محلی بر روی سرور"
+
+#: plugins/vnc/vnc_plugin.c:2004 plugins/gvnc/gvnc_plugin.c:859
+#, fuzzy
+msgid "Ignore remote bell messages"
+msgstr "نادیده گرفتن پیام های زنگ از راه دور"
+
+#: plugins/vnc/vnc_plugin.c:2020
+#, fuzzy
+msgid "Open Chat…"
+msgstr "گپ باز…"
+
+#: plugins/vnc/vnc_plugin.h:41
+#, fuzzy
+msgid "Remmina VNC Plugin"
+msgstr "پلاگین VNC Remmina"
+
+#: plugins/vnc/vnc_plugin.h:46
+#, fuzzy
+msgid "Remmina VNC listener Plugin"
+msgstr "افزونه شنونده VNC Remmina"
+
+#: plugins/www/www_config.h:43
+#, fuzzy
+msgid "Remmina web-browser plugin"
+msgstr "افزونه مرورگر وب Remmina"
+
+#: plugins/www/www_plugin.c:98
+#, fuzzy
+msgid "File downloaded"
+msgstr "فایل دانلود شده"
+
+#: plugins/www/www_plugin.c:574
+#, fuzzy
+msgid "Enter WWW authentication credentials"
+msgstr "اعتبارنامه احراز هویت WWW را وارد کنید"
+
+#: plugins/www/www_plugin.c:878
+#, fuzzy
+msgid "URL"
+msgstr "آدرس"
+
+#: plugins/www/www_plugin.c:878
+#, fuzzy
+msgid "http://address or https://address"
+msgstr "http://address یا https://address"
+
+#: plugins/www/www_plugin.c:895
+#, fuzzy
+msgid "User agent"
+msgstr "عامل کاربر"
+
+#: plugins/www/www_plugin.c:896
+#, fuzzy
+msgid "Proxy URL"
+msgstr "آدرس پروکسی"
+
+#: plugins/www/www_plugin.c:896
+#, fuzzy
+msgid "E.g. https://example.org, socks://mysocks:1080"
+msgstr "به عنوان https://example.org socks://mysocks:1080"
+
+#: plugins/www/www_plugin.c:897
+#, fuzzy
+msgid "Turn on Java support"
+msgstr "روشن کردن پشتیبانی جاوا"
+
+#: plugins/www/www_plugin.c:898
+#, fuzzy
+msgid "Turn on smooth scrolling"
+msgstr "اسکرول کردن صاف را روشن کنید"
+
+#: plugins/www/www_plugin.c:899
+#, fuzzy
+msgid "Turn on spatial navigation"
+msgstr "روشن کردن ناوبری فضایی"
+
+#: plugins/www/www_plugin.c:900
+#, fuzzy
+msgid "Turn on plugin support"
+msgstr "روشن کردن پشتیبانی پلاگین"
+
+#: plugins/www/www_plugin.c:901
+#, fuzzy
+msgid "Turn on WebGL support"
+msgstr "روشن کردن پشتیبانی WebGL"
+
+#: plugins/www/www_plugin.c:902
+#, fuzzy
+msgid "Turn on HTML5 audio support"
+msgstr "پشتیبانی صوتی HTML5 را روشن کنید"
+
+#: plugins/www/www_plugin.c:903
+#, fuzzy
+msgid "Ignore TLS errors"
+msgstr "نادیده گرفتن خطاهای TLS"
+
+#: plugins/www/www_plugin.c:906
+#, fuzzy
+msgid "Turn on Web Inspector"
+msgstr "روشن کردن بازرس وب"
+
+#: plugins/exec/exec_plugin.c:160
+#, fuzzy
+msgid "You did not set any command to be executed"
+msgstr "تو هيچ دستوري براي اجرا تعيين نکردي"
+
+#: plugins/exec/exec_plugin.c:206
+#, fuzzy
+msgid ""
+"Warning: Running a command synchronously may cause Remmina not to respond.\n"
+"Do you really want to continue?"
+msgstr ""
+"هشدار: اجرای یک فرمان به طور همزمان ممکن است باعث شود که Remmina پاسخ نداد.\n"
+"واقعا ً ميخواي ادامه بدي؟"
+
+#: plugins/exec/exec_plugin.c:266
+#, fuzzy
+msgid "Command"
+msgstr "دستور"
+
+#: plugins/exec/exec_plugin.c:267
+#, fuzzy
+msgid "Asynchronous execution"
+msgstr "اجرای ناهمزمان"
+
+#: plugins/exec/exec_plugin_config.h:41
+#, fuzzy
+msgid "Execute a command"
+msgstr "اجرای دستورات خارجی…"
+
+#: plugins/tool_hello_world/plugin_config.h:40
+#, fuzzy
+msgid "Hello, World!"
+msgstr "سلام به دنیا!"
+
+#: plugins/secret/src/glibsecret_plugin.c:188
+#, fuzzy
+msgid "Secured password storage in the GNOME keyring"
+msgstr "ذخیره سازی رمز عبور امن در کلید گنوم"
+
+#: plugins/gvnc/gvnc_plugin_config.h:40
+#, fuzzy
+msgid "Remmina VNC plugin for GNOME and KVM"
+msgstr "پلاگین VNC Remmina برای گنوم و KVM"
+
+#: plugins/gvnc/gvnc_plugin.c:477
+#, fuzzy, c-format
+#| msgid "Authentication type"
+msgid "Unsupported authentication type %u"
+msgstr "نوع احراز هویت بدون حمایت %u"
+
+#: plugins/gvnc/gvnc_plugin.c:489
+#, fuzzy, c-format
+#| msgid "Authentication type"
+msgid "Authentication failure: %s"
+msgstr "شکست احراز هویت: %s"
+
+#: plugins/gvnc/gvnc_plugin.c:820
+#, fuzzy
+msgid "Use server settings"
+msgstr "استفاده از تنظیمات سرور"
+
+#: plugins/gvnc/gvnc_plugin.c:821
+#, fuzzy
+msgid "True colour (24 bits)"
+msgstr "رنگ واقعی (24 بیت)"
+
+#: plugins/gvnc/gvnc_plugin.c:822
+#, fuzzy
+msgid "High colour (16 bits)"
+msgstr "رنگ بالا (16 بیت)"
+
+#: plugins/gvnc/gvnc_plugin.c:823
+#, fuzzy
+msgid "Low colour (8 bits)"
+msgstr "رنگ کم (8 بیت)"
+
+#: plugins/gvnc/gvnc_plugin.c:824
+#, fuzzy
+msgid "Ultra low colour (3 bits)"
+msgstr "رنگ فوق العاده کم (3 بیت)"
+
+#: plugins/gvnc/gvnc_plugin.c:839
+#, fuzzy
+#| msgid "User password"
+msgid "VNC password"
+msgstr "رمز عبور VNC"
+
+#: plugins/gvnc/gvnc_plugin.c:841
+#, fuzzy
+#| msgid "SSH compression"
+msgid "Use JPEG Compression"
+msgstr "استفاده از فشرده سازی JPEG"
+
+#: plugins/gvnc/gvnc_plugin.c:841
+#, fuzzy
+msgid "This might not work on all VNC servers"
+msgstr "این ممکن است بر روی تمام سرورهای VNC کار نمی کند"
+
+#: plugins/gvnc/gvnc_plugin.c:842
+#, fuzzy
+msgid "Enable GTK-VNC debug"
+msgstr "فعال کردن اشکال زدایی GTK-VNC"
+
+#: plugins/gvnc/gvnc_plugin.c:862
+#, fuzzy
+#| msgid "New Connection"
+msgid "Shared connection"
+msgstr "اتصال مشترک"
+
+#: plugins/gvnc/gvnc_plugin.c:862
+#, fuzzy
+msgid ""
+"If the server should try to share the desktop by leaving other clients "
+"connected"
+msgstr ""
+"اگر سرور باید سعی کنید برای به اشتراک گذاشتن دسکتاپ با ترک مشتریان دیگر متصل"
+
+#: plugins/gvnc/gvnc_plugin.c:872
+#, fuzzy
+msgid "Send Ctrl+Alt+_Del"
+msgstr "ارسال Ctrl+Alt+_Del"
+
+#: plugins/gvnc/gvnc_plugin.c:873
+#, fuzzy
+msgid "Send Ctrl+Alt+_Backspace"
+msgstr "ارسال Ctrl+Alt+_Backspace"
+
+#: plugins/gvnc/gvnc_plugin.c:874
+#, fuzzy
+msgid "Send Ctrl+Alt+_F1"
+msgstr "ارسال Ctrl+Alt+_F1"
+
+#: plugins/gvnc/gvnc_plugin.c:875
+#, fuzzy
+msgid "Send Ctrl+Alt+_F2"
+msgstr "ارسال Ctrl+Alt+_F2"
+
+#: plugins/gvnc/gvnc_plugin.c:876
+#, fuzzy
+msgid "Send Ctrl+Alt+_F3"
+msgstr "ارسال Ctrl+Alt+_F3"
+
+#: plugins/gvnc/gvnc_plugin.c:877
+#, fuzzy
+msgid "Send Ctrl+Alt+_F4"
+msgstr "ارسال Ctrl+Alt+_F4"
+
+#: plugins/gvnc/gvnc_plugin.c:878
+#, fuzzy
+msgid "Send Ctrl+Alt+_F5"
+msgstr "ارسال Ctrl+Alt+_F5"
+
+#: plugins/gvnc/gvnc_plugin.c:879
+#, fuzzy
+msgid "Send Ctrl+Alt+_F6"
+msgstr "ارسال Ctrl+Alt+_F6"
+
+#: plugins/gvnc/gvnc_plugin.c:880
+#, fuzzy
+msgid "Send Ctrl+Alt+_F7"
+msgstr "ارسال Ctrl+Alt+_F7"
+
+#: plugins/gvnc/gvnc_plugin.c:881
+#, fuzzy
+msgid "Send Ctrl+Alt+_F8"
+msgstr "ارسال Ctrl+Alt+_F8"
+
+#: plugins/gvnc/gvnc_plugin.c:882
+#, fuzzy
+msgid "Send Ctrl+Alt+_F9"
+msgstr "ارسال Ctrl+Alt+_F9"
+
+#: plugins/gvnc/gvnc_plugin.c:883
+#, fuzzy
+msgid "Send Ctrl+Alt+_F10"
+msgstr "ارسال Ctrl+Alt+_F10"
+
+#: plugins/gvnc/gvnc_plugin.c:884
+#, fuzzy
+msgid "Send Ctrl+Alt+_F11"
+msgstr "ارسال Ctrl+Alt+_F11"
+
+#: plugins/gvnc/gvnc_plugin.c:885
+#, fuzzy
+msgid "Send Ctrl+Alt+_F12"
+msgstr "ارسال Ctrl+Alt+_F12"
+
+#: plugins/gvnc/gvnc_plugin.c:887
+#, fuzzy
+msgid "Reboot remote host"
+msgstr "راه اندازی مجدد میزبان از راه دور"
+
+#: plugins/gvnc/gvnc_plugin.c:888
+#, fuzzy
+msgid "Reset remote host (hard reboot)"
+msgstr "تنظیم مجدد میزبان از راه دور (راه اندازی مجدد سخت)"
+
+#: plugins/gvnc/gvnc_plugin.c:889
+#, fuzzy
+msgid "Shutdown remote host"
+msgstr "خاموش کردن میزبان از راه دور"
 
 #: plugins/telepathy/telepathy_channel_handler.c:237
 #, fuzzy, c-format
@@ -3286,46 +3286,6 @@ msgstr "دعوت به اشتراک گذاری دسکتاپ"
 #, fuzzy
 msgid "Telepathy - Desktop Sharing"
 msgstr "تله پاتی - اشتراک گذاری دسکتاپ"
-
-#: data/ui/remmina_search.glade:61 data/ui/remmina_search_popover.glade:56
-#, fuzzy
-msgid "Search"
-msgstr "جست‌ و جو"
-
-#: data/ui/remmina_search.glade:75 data/ui/remmina_search_popover.glade:70
-#, fuzzy
-msgid "Search for previous occurrence"
-msgstr "جستجو برای رخداد قبلی"
-
-#: data/ui/remmina_search.glade:98 data/ui/remmina_search_popover.glade:93
-#, fuzzy
-msgid "Search for next occurrence"
-msgstr "جستجو برای رخداد بعدی"
-
-#: data/ui/remmina_search.glade:130 data/ui/remmina_search_popover.glade:125
-#, fuzzy
-msgid "Toggle search options"
-msgstr "گزینه های جستجوی شعبده بازی"
-
-#: data/ui/remmina_search.glade:191 data/ui/remmina_search_popover.glade:186
-#, fuzzy
-msgid "_Match case"
-msgstr "تطبیق دقیق"
-
-#: data/ui/remmina_search.glade:208 data/ui/remmina_search_popover.glade:203
-#, fuzzy
-msgid "Match _entire word only"
-msgstr "مطابقت _entire کلمه تنها"
-
-#: data/ui/remmina_search.glade:225 data/ui/remmina_search_popover.glade:220
-#, fuzzy
-msgid "Match as _regular expression"
-msgstr "مطابقت به عنوان _regular بیان"
-
-#: data/ui/remmina_search.glade:242 data/ui/remmina_search_popover.glade:237
-#, fuzzy
-msgid "_Wrap around"
-msgstr "_Wrap اطراف"
 
 #: data/ui/remmina_snap_info_dialog.glade:71
 #, fuzzy
@@ -3389,6 +3349,46 @@ msgstr "<big> تنظیمات ضربه محکم و ناگهانی</big>"
 msgid "Do not show this message again"
 msgstr "این پیام را دوباره نشان نمی دهد"
 
+#: data/ui/remmina_search_popover.glade:56 data/ui/remmina_search.glade:61
+#, fuzzy
+msgid "Search"
+msgstr "جست‌ و جو"
+
+#: data/ui/remmina_search_popover.glade:70 data/ui/remmina_search.glade:75
+#, fuzzy
+msgid "Search for previous occurrence"
+msgstr "جستجو برای رخداد قبلی"
+
+#: data/ui/remmina_search_popover.glade:93 data/ui/remmina_search.glade:98
+#, fuzzy
+msgid "Search for next occurrence"
+msgstr "جستجو برای رخداد بعدی"
+
+#: data/ui/remmina_search_popover.glade:125 data/ui/remmina_search.glade:130
+#, fuzzy
+msgid "Toggle search options"
+msgstr "گزینه های جستجوی شعبده بازی"
+
+#: data/ui/remmina_search_popover.glade:186 data/ui/remmina_search.glade:191
+#, fuzzy
+msgid "_Match case"
+msgstr "تطبیق دقیق"
+
+#: data/ui/remmina_search_popover.glade:203 data/ui/remmina_search.glade:208
+#, fuzzy
+msgid "Match _entire word only"
+msgstr "مطابقت _entire کلمه تنها"
+
+#: data/ui/remmina_search_popover.glade:220 data/ui/remmina_search.glade:225
+#, fuzzy
+msgid "Match as _regular expression"
+msgstr "مطابقت به عنوان _regular بیان"
+
+#: data/ui/remmina_search_popover.glade:237 data/ui/remmina_search.glade:242
+#, fuzzy
+msgid "_Wrap around"
+msgstr "_Wrap اطراف"
+
 #: data/ui/remmina_about.glade:30 data/ui/remmina_main.glade:395
 #, fuzzy
 msgid "About"
@@ -3413,6 +3413,202 @@ msgstr ""
 #, fuzzy
 msgid "Website"
 msgstr "تارنما"
+
+#: data/ui/remmina_string_list.glade:14 data/ui/remmina_string_list.glade:158
+#, fuzzy
+msgid "Add"
+msgstr "اضافه کردن"
+
+#: data/ui/remmina_string_list.glade:20 data/ui/remmina_string_list.glade:137
+#: data/ui/remmina_key_chooser.glade:14 data/ui/remmina_key_chooser.glade:15
+#, fuzzy
+msgid "_Remove"
+msgstr "_برداشتن"
+
+#: data/ui/remmina_string_list.glade:26 data/ui/remmina_string_list.glade:116
+#, fuzzy
+msgid "Move up"
+msgstr "انتقال به پایین"
+
+#: data/ui/remmina_string_list.glade:32 data/ui/remmina_string_list.glade:95
+#, fuzzy
+msgid "Move down"
+msgstr "انتقال به بالا"
+
+#: data/ui/remmina_mpc.glade:14
+#, fuzzy
+msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
+msgstr "<span weight='bold' size='larger'> چند تغییر رمز عبور</span>"
+
+#: data/ui/remmina_mpc.glade:32
+#, fuzzy
+msgid "Change"
+msgstr "تغيير"
+
+#: data/ui/remmina_mpc.glade:201
+#, fuzzy
+msgid "Selection criteria"
+msgstr "معیارهای انتخاب"
+
+#: data/ui/remmina_mpc.glade:261
+#, fuzzy
+msgid "Confirm password"
+msgstr "تایید رمز عبور"
+
+#: data/ui/remmina_mpc.glade:294
+#, fuzzy
+msgid "Set new password"
+msgstr "تنظیم رمز عبور جدید"
+
+#. A column table with multiple check-boxes
+#: data/ui/remmina_mpc.glade:331
+#, fuzzy
+msgctxt "Multi password changer"
+msgid "Select"
+msgstr "انتخاب"
+
+#: data/ui/remmina_mpc.glade:343
+#, fuzzy
+msgctxt "Multi password changer table"
+msgid "Name"
+msgstr "نام"
+
+#: data/ui/remmina_mpc.glade:354
+#, fuzzy
+msgctxt "Multi password changer table"
+msgid "Group"
+msgstr "گروه"
+
+#: data/ui/remmina_mpc.glade:365
+#, fuzzy
+msgctxt "Multi password changer table"
+msgid "Domain\\Username"
+msgstr "Domain\\Username"
+
+#: data/ui/remmina_news.glade:75
+#, fuzzy
+msgid ""
+"<big><b>The news are turned off</b></big>\n"
+"\n"
+"<span>\n"
+"Turning on news means the program connects to a Remmina server to download "
+"the release notes.\n"
+"</span>\n"
+"\n"
+"<span>\n"
+"Version checking can only be activated at compile time.\n"
+"</span>\n"
+"\n"
+"<span>\n"
+"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
+"release notes\"><i>Visit the website to read the release notes</i></a>.\n"
+"</span>"
+msgstr ""
+"<big> <b> خبر خاموش است</b></big>\n"
+"\n"
+"<span>\n"
+"روشن کردن اخبار به این معنی است که برنامه به یک سرور Remmina متصل می شود تا "
+"یادداشت های انتشار را دانلود کند.\n"
+"</span>\n"
+"\n"
+"<span>\n"
+"چک کردن نسخه ها فقط در زمان کامپایل قابل فعال شدن است.\n"
+"</span>\n"
+"\n"
+"<span>\n"
+"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
+"release notes\"> <i> برای خواندن یادداشت های انتشار</i></a>به وب سایت مراجعه "
+"کنید.\n"
+"</span>"
+
+#. The star (*) is a reference to privacy consent
+#: data/ui/remmina_news.glade:130 data/ui/remmina_preferences.glade:464
+#, fuzzy
+msgid ""
+"Send <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
+"remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
+"\">anonymous</a></b> statistics. (*)"
+msgstr ""
+"آمار <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
+"remmina__stats_8c.html#details\" title=\"Remmina usage statistics\">ناشناس</"
+"a></b> را ارسال کنید. (*)"
+
+#: data/ui/remmina_news.glade:142 data/ui/remmina_news.glade:195
+#, fuzzy
+msgid "Send anonymous statistics"
+msgstr "ارسال آمار ناشناس"
+
+#: data/ui/remmina_news.glade:156
+#, fuzzy
+msgid "Use as default remote desktop client"
+msgstr "استفاده به عنوان پیش فرض از راه دور مشتری دسکتاپ"
+
+#: data/ui/remmina_news.glade:165
+#, fuzzy
+msgid "Apply"
+msgstr "اعمال کردن"
+
+#: data/ui/remmina_news.glade:169
+#, fuzzy
+msgid "Allow Remmina to automatically open .rdp and .remmina files."
+msgstr "اجازه می دهد Remmina به طور خودکار باز کردن فایل های .rdp و .remmina."
+
+#. The star (*) is a reference to privacy consent
+#: data/ui/remmina_news.glade:183 data/ui/remmina_preferences.glade:479
+#, fuzzy
+msgid ""
+"Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
+"\">remmina.org</a> (*)"
+msgstr ""
+"واکشی اخبار از <a href=\"https://remmina.org\" title=\"Remmina news site"
+"\">remmina.org</a> (*)"
+
+#: data/ui/remmina_news.glade:208 data/ui/remmina_preferences.glade:446
+#, fuzzy
+msgid ""
+"* By enabling statistics and/or news you consent to send and fetch data to/"
+"from remmina.org"
+msgstr ""
+"* با فعال کردن آمار و / یا اخبار شما رضایت به ارسال و واکشی داده ها به / از "
+"remmina.org"
+
+#: data/ui/remmina_news.glade:231
+#, fuzzy
+msgid "<big>Take part</big>"
+msgstr "<big> بخش</big>"
+
+#. Pay attention to the quoting characters as they may break the pango layout. If in doubt and cannot test, copy and paste the symbols from the English string.
+#: data/ui/remmina_news.glade:257
+#, fuzzy
+msgid ""
+"<span>\n"
+"<b>You have our gratitude in choosing copylefted libre software, <a href="
+"\"https://remmina.org/donations/\" title=\"Where’s the money, Lebowski? "
+"“blblblblblb”\">donations also make us happy</a>, and further help improve "
+"Remmina.</b>\n"
+"</span>\n"
+msgstr ""
+"<span>\n"
+"<b> شما قدردانی ما را در انتخاب نرم افزار libre copylefted، <a href="
+"\"https://remmina.org/donations/\" title=\"Where’s the money, Lebowski? "
+"“blblblblblb”\">کمک های مالی نیز ما را خوشحال</a>، و کمک بیشتر به بهبود "
+"Remmina. </b>\n"
+"</span>\n"
+
+#: data/ui/remmina_news.glade:277
+#, fuzzy
+msgid "<big>Contribute</big>"
+msgstr "<big> مشارکت</big>"
+
+#: data/ui/remmina_key_chooser.glade:23
+#, fuzzy
+msgid "Choose a new key"
+msgstr "انتخاب یک کلید جدید"
+
+#: data/ui/remmina_key_chooser.glade:82
+#, fuzzy
+msgid "Please press the new key…"
+msgstr "لطفا کلید جدید را فشار دهید…"
 
 #: data/ui/remmina_main.glade:35
 #, fuzzy
@@ -3546,190 +3742,10 @@ msgstr "عملیات"
 msgid "Toggle view"
 msgstr "منظره شعبده بازی"
 
-#: data/ui/remmina_unlock.glade:60
-#, fuzzy
-msgid "Unlock"
-msgstr "باز کردن"
-
-#: data/ui/remmina_unlock.glade:94
-#, fuzzy
-msgid "Unlock Remmina"
-msgstr "باز کردن باز کردن Remmina"
-
-#: data/ui/remmina_unlock.glade:128
-#, fuzzy
-msgid "Master password"
-msgstr "رمز عبور استاد"
-
 #: data/ui/remmina_spinner.glade:54
 #, fuzzy
 msgid "Please wait…"
 msgstr "لطفاً صبر کنید…"
-
-#: data/ui/remmina_news.glade:75
-#, fuzzy
-msgid ""
-"<big><b>The news are turned off</b></big>\n"
-"\n"
-"<span>\n"
-"Turning on news means the program connects to a Remmina server to download "
-"the release notes.\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"Version checking can only be activated at compile time.\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
-"release notes\"><i>Visit the website to read the release notes</i></a>.\n"
-"</span>"
-msgstr ""
-"<big> <b> خبر خاموش است</b></big>\n"
-"\n"
-"<span>\n"
-"روشن کردن اخبار به این معنی است که برنامه به یک سرور Remmina متصل می شود تا "
-"یادداشت های انتشار را دانلود کند.\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"چک کردن نسخه ها فقط در زمان کامپایل قابل فعال شدن است.\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
-"release notes\"> <i> برای خواندن یادداشت های انتشار</i></a>به وب سایت مراجعه "
-"کنید.\n"
-"</span>"
-
-#. The star (*) is a reference to privacy consent
-#: data/ui/remmina_news.glade:130 data/ui/remmina_preferences.glade:464
-#, fuzzy
-msgid ""
-"Send <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-"remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
-"\">anonymous</a></b> statistics. (*)"
-msgstr ""
-"آمار <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-"remmina__stats_8c.html#details\" title=\"Remmina usage statistics\">ناشناس</"
-"a></b> را ارسال کنید. (*)"
-
-#: data/ui/remmina_news.glade:142 data/ui/remmina_news.glade:195
-#, fuzzy
-msgid "Send anonymous statistics"
-msgstr "ارسال آمار ناشناس"
-
-#: data/ui/remmina_news.glade:156
-#, fuzzy
-msgid "Use as default remote desktop client"
-msgstr "استفاده به عنوان پیش فرض از راه دور مشتری دسکتاپ"
-
-#: data/ui/remmina_news.glade:165
-#, fuzzy
-msgid "Apply"
-msgstr "اعمال کردن"
-
-#: data/ui/remmina_news.glade:169
-#, fuzzy
-msgid "Allow Remmina to automatically open .rdp and .remmina files."
-msgstr "اجازه می دهد Remmina به طور خودکار باز کردن فایل های .rdp و .remmina."
-
-#. The star (*) is a reference to privacy consent
-#: data/ui/remmina_news.glade:183 data/ui/remmina_preferences.glade:479
-#, fuzzy
-msgid ""
-"Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
-"\">remmina.org</a> (*)"
-msgstr ""
-"واکشی اخبار از <a href=\"https://remmina.org\" title=\"Remmina news site"
-"\">remmina.org</a> (*)"
-
-#: data/ui/remmina_news.glade:208 data/ui/remmina_preferences.glade:446
-#, fuzzy
-msgid ""
-"* By enabling statistics and/or news you consent to send and fetch data to/"
-"from remmina.org"
-msgstr ""
-"* با فعال کردن آمار و / یا اخبار شما رضایت به ارسال و واکشی داده ها به / از "
-"remmina.org"
-
-#: data/ui/remmina_news.glade:231
-#, fuzzy
-msgid "<big>Take part</big>"
-msgstr "<big> بخش</big>"
-
-#. Pay attention to the quoting characters as they may break the pango layout. If in doubt and cannot test, copy and paste the symbols from the English string.
-#: data/ui/remmina_news.glade:257
-#, fuzzy
-msgid ""
-"<span>\n"
-"<b>You have our gratitude in choosing copylefted libre software, <a href="
-"\"https://remmina.org/donations/\" title=\"Where’s the money, Lebowski? "
-"“blblblblblb”\">donations also make us happy</a>, and further help improve "
-"Remmina.</b>\n"
-"</span>\n"
-msgstr ""
-"<span>\n"
-"<b> شما قدردانی ما را در انتخاب نرم افزار libre copylefted، <a href="
-"\"https://remmina.org/donations/\" title=\"Where’s the money, Lebowski? "
-"“blblblblblb”\">کمک های مالی نیز ما را خوشحال</a>، و کمک بیشتر به بهبود "
-"Remmina. </b>\n"
-"</span>\n"
-
-#: data/ui/remmina_news.glade:277
-#, fuzzy
-msgid "<big>Contribute</big>"
-msgstr "<big> مشارکت</big>"
-
-#: data/ui/remmina_mpc.glade:14
-#, fuzzy
-msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
-msgstr "<span weight='bold' size='larger'> چند تغییر رمز عبور</span>"
-
-#: data/ui/remmina_mpc.glade:32
-#, fuzzy
-msgid "Change"
-msgstr "تغيير"
-
-#: data/ui/remmina_mpc.glade:201
-#, fuzzy
-msgid "Selection criteria"
-msgstr "معیارهای انتخاب"
-
-#: data/ui/remmina_mpc.glade:261
-#, fuzzy
-msgid "Confirm password"
-msgstr "تایید رمز عبور"
-
-#: data/ui/remmina_mpc.glade:294
-#, fuzzy
-msgid "Set new password"
-msgstr "تنظیم رمز عبور جدید"
-
-#. A column table with multiple check-boxes
-#: data/ui/remmina_mpc.glade:331
-#, fuzzy
-msgctxt "Multi password changer"
-msgid "Select"
-msgstr "انتخاب"
-
-#: data/ui/remmina_mpc.glade:343
-#, fuzzy
-msgctxt "Multi password changer table"
-msgid "Name"
-msgstr "نام"
-
-#: data/ui/remmina_mpc.glade:354
-#, fuzzy
-msgctxt "Multi password changer table"
-msgid "Group"
-msgstr "گروه"
-
-#: data/ui/remmina_mpc.glade:365
-#, fuzzy
-msgctxt "Multi password changer table"
-msgid "Domain\\Username"
-msgstr "Domain\\Username"
 
 #: data/ui/remmina_preferences.glade:42
 #, fuzzy
@@ -4418,36 +4434,20 @@ msgstr "پشت دستگاه"
 msgid "Remmina Preferences"
 msgstr "ترجیحات Remmina"
 
-#: data/ui/remmina_string_list.glade:14 data/ui/remmina_string_list.glade:158
+#: data/ui/remmina_unlock.glade:60
 #, fuzzy
-msgid "Add"
-msgstr "اضافه کردن"
+msgid "Unlock"
+msgstr "باز کردن"
 
-#: data/ui/remmina_string_list.glade:20 data/ui/remmina_string_list.glade:137
-#: data/ui/remmina_key_chooser.glade:14 data/ui/remmina_key_chooser.glade:15
+#: data/ui/remmina_unlock.glade:94
 #, fuzzy
-msgid "_Remove"
-msgstr "_برداشتن"
+msgid "Unlock Remmina"
+msgstr "باز کردن باز کردن Remmina"
 
-#: data/ui/remmina_string_list.glade:26 data/ui/remmina_string_list.glade:116
+#: data/ui/remmina_unlock.glade:128
 #, fuzzy
-msgid "Move up"
-msgstr "انتقال به پایین"
-
-#: data/ui/remmina_string_list.glade:32 data/ui/remmina_string_list.glade:95
-#, fuzzy
-msgid "Move down"
-msgstr "انتقال به بالا"
-
-#: data/ui/remmina_key_chooser.glade:23
-#, fuzzy
-msgid "Choose a new key"
-msgstr "انتخاب یک کلید جدید"
-
-#: data/ui/remmina_key_chooser.glade:82
-#, fuzzy
-msgid "Please press the new key…"
-msgstr "لطفا کلید جدید را فشار دهید…"
+msgid "Master password"
+msgstr "رمز عبور استاد"
 
 #~ msgid "Fingerprints and certificates"
 #~ msgstr "گواهینامه تغییر یافته را قبول دارید؟"

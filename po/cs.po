@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-07-16 21:21+0000\n"
+"POT-Creation-Date: 2021-07-29 20:50+0000\n"
 "PO-Revision-Date: 2021-07-17 20:55+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/remmina/remmina/cs/"
@@ -22,147 +22,176 @@ msgstr ""
 "X-Generator: Weblate 4.7.2-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
 
-#: src/remmina_protocol_widget.c:283 src/remmina_sftp_plugin.c:328
-msgid "Connect via SSH from a new terminal"
-msgstr "Připojit prostřednictvím SSH z nového terminálu"
-
-#: src/remmina_protocol_widget.c:290 src/remmina_ssh_plugin.c:829
-#: src/remmina_ssh_plugin.c:1454
-msgid "Open SFTP transfer…"
-msgstr "Otevřít SFTP přenos…"
-
-#: src/remmina_protocol_widget.c:319
-msgid "Executing external commands…"
-msgstr "Spouštění externích příkazů…"
-
-#. TRANSLATORS: “%s” is a placeholder for the connection profile name
-#: src/remmina_protocol_widget.c:327
-#, c-format
-msgid "Connecting to “%s”…"
-msgstr "Připojování k „%s“…"
-
-#. TRANSLATORS: “%s” is a placeholder for an hostname or an IP address.
-#: src/remmina_protocol_widget.c:911 src/remmina_protocol_widget.c:1096
-#, c-format
-msgid "Connecting to “%s” via SSH…"
-msgstr "Připojování k „%s“ prostřednictvím SSH…"
-
-#. TRANSLATORS: “%i” is a placeholder for a TCP port number.
-#: src/remmina_protocol_widget.c:1160
-#, c-format
-msgid "Awaiting incoming SSH connection on port %i…"
-msgstr "Čekání na příchozí SSH spojení na portu %i…"
-
-#: src/remmina_protocol_widget.c:1213
-#, c-format
-msgid "The “%s” command is not available on the SSH server."
-msgstr "Příkaz „%s“ není na SSH serveru k dispozici."
-
-#: src/remmina_protocol_widget.c:1218
-#, c-format
-msgid "Could not run the “%s” command on the SSH server (status = %i)."
-msgstr "Nedaří se spustit příkaz „%s“ na SSH serveru (stav = %i)."
-
-#. TRANSLATORS: %s is a placeholder for an error message
-#: src/remmina_protocol_widget.c:1226
-#, c-format
-msgid "Could not run command. %s"
-msgstr "Nedaří se spustit příkaz: %s"
-
-#. TRANSLATORS: “%s” is a placeholder for a hostname or IP address.
-#: src/remmina_protocol_widget.c:1296
-#, c-format
-msgid "Connecting to %s via SSH…"
-msgstr "Připojování k „%s“ prostřednictvím SSH…"
-
+#: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:346
 #: src/remmina_protocol_widget.c:1672 src/remmina_protocol_widget.c:1691
-#: src/remmina_ssh_plugin.c:1369 src/remmina_sftp_plugin.c:310
-#: src/remmina_sftp_plugin.c:346 src/remmina_file_editor.c:846
-#: src/remmina_file_editor.c:967 plugins/www/www_plugin.c:880
-#: plugins/rdp/rdp_plugin.c:2652 data/ui/remmina_unlock.glade:116
-#: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1693
+#: src/remmina_file_editor.c:846 src/remmina_file_editor.c:967
+#: src/remmina_ssh_plugin.c:1369 plugins/rdp/rdp_plugin.c:2652
+#: plugins/www/www_plugin.c:880 data/ui/remmina_mpc.glade:236
+#: data/ui/remmina_preferences.glade:1693 data/ui/remmina_unlock.glade:116
 msgid "Password"
 msgstr "Heslo"
 
-#: src/remmina_protocol_widget.c:1690
-msgid "Type in SSH username and password."
-msgstr "Zadejte uživatelské jméno a heslo pro SSH."
+#: src/remmina_sftp_plugin.c:311 src/remmina_sftp_plugin.c:348
+#: src/remmina_file_editor.c:847 src/remmina_ssh_plugin.c:1370
+#: src/remmina_ssh_plugin.c:1475
+msgid "SSH identity file"
+msgstr "soubor s identitou pro SSH"
 
-#: src/remmina_protocol_widget.c:1745 src/remmina_protocol_widget.c:1777
-#, fuzzy
-msgid "Fingerprint automatically accepted"
-msgstr "Automatické přijetí otisku prstu"
+#: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:848
+#: src/remmina_ssh_plugin.c:1371
+msgid "SSH agent"
+msgstr "SSH agent"
 
-#. TRANSLATORS: The user is asked to verify a new SSL certificate.
-#: src/remmina_protocol_widget.c:1753
-msgid "Certificate details:"
-msgstr "Podrobnosti certifikátu:"
+#: src/remmina_sftp_plugin.c:313 src/remmina_file_editor.c:849
+#: src/remmina_ssh_plugin.c:1372
+msgid "Public key (automatic)"
+msgstr "Metoda s veřejným klíčem (automatické)"
 
-#. TRANSLATORS: An SSL certificate subject is usually the remote server the user connect to.
-#: src/remmina_protocol_widget.c:1755 src/remmina_protocol_widget.c:1787
-msgid "Subject:"
-msgstr "Předmět:"
+#: src/remmina_sftp_plugin.c:314 src/remmina_file_editor.c:850
+#: src/remmina_ssh_plugin.c:1373
+msgid "Kerberos (GSSAPI)"
+msgstr "Kerberos (GSSAPI)"
 
-#. TRANSLATORS: The name or email of the entity that have issued the SSL certificate
-#: src/remmina_protocol_widget.c:1757 src/remmina_protocol_widget.c:1789
-msgid "Issuer:"
-msgstr "Vydavatel:"
+#: src/remmina_sftp_plugin.c:323
+msgid "Show Hidden Files"
+msgstr "Zobrazit skryté soubory"
 
-#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
-#: src/remmina_protocol_widget.c:1759
-msgid "Fingerprint:"
-msgstr "Otisk:"
+#: src/remmina_sftp_plugin.c:325
+msgid "Overwrite all files"
+msgstr "Přepsat všechny soubory"
 
-#. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
-#: src/remmina_protocol_widget.c:1761
-msgid "Accept certificate?"
-msgstr "Přijmout certifikát?"
+#: src/remmina_sftp_plugin.c:327
+msgid "Resume all file transfers"
+msgstr "Znovu spustit všechny přenosy souborů"
 
-#. TRANSLATORS: The user is asked to verify a new SSL certificate.
-#: src/remmina_protocol_widget.c:1785
-msgid "The certificate changed! Details:"
-msgstr "Certifikát byl změněn! Podrobnosti:"
+#: src/remmina_sftp_plugin.c:328 src/remmina_protocol_widget.c:283
+msgid "Connect via SSH from a new terminal"
+msgstr "Připojit prostřednictvím SSH z nového terminálu"
 
-#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
-#: src/remmina_protocol_widget.c:1791
-msgid "Old fingerprint:"
-msgstr "Původní otisk:"
+#: src/remmina_sftp_plugin.c:345 src/remmina_message_panel.c:330
+#: src/remmina_file_editor.c:961 src/remmina_ssh_plugin.c:1473
+#: plugins/rdp/rdp_plugin.c:2651 plugins/vnc/vnc_plugin.c:1960
+#: plugins/vnc/vnc_plugin.c:1980 plugins/www/www_plugin.c:879
+#: data/ui/remmina_mpc.glade:144
+msgid "Username"
+msgstr "Uživatelské jméno"
 
-#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
-#: src/remmina_protocol_widget.c:1793
-msgid "New fingerprint:"
-msgstr "Nový otisk:"
+#: src/remmina_sftp_plugin.c:347 src/remmina_file_editor.c:952
+#: src/remmina_ssh_plugin.c:1472
+msgid "Authentication type"
+msgstr "Typ ověřování se"
 
-#. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
-#: src/remmina_protocol_widget.c:1795
-msgid "Accept changed certificate?"
-msgstr "Přijmout změněný certifikát?"
+#: src/remmina_sftp_plugin.c:349 src/remmina_file_editor.c:984
+#: src/remmina_ssh_plugin.c:1479
+msgid "Password to unlock private key"
+msgstr "Heslo pro odemčení soukromé části klíče"
 
-#. TRANSLATORS: “%i” is a placeholder for a port number. “%s”  is a placeholder for a protocol name (VNC).
-#: src/remmina_protocol_widget.c:1938
+#: src/remmina_sftp_plugin.c:350 src/remmina_ssh_plugin.c:1509
+msgid "SSH Proxy Command"
+msgstr "Příkaz pro SSH proxy"
+
+#: src/remmina_sftp_plugin.c:359
+msgid "SFTP - Secure File Transfer"
+msgstr "SFTP – Zabezpečený přenos souborů"
+
+#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1533
+msgid "Protocol"
+msgstr "Protokol"
+
+#: src/remmina_plugin_manager.c:73
+msgid "Entry"
+msgstr "Záznam"
+
+#: src/remmina_plugin_manager.c:73
+msgid "File"
+msgstr "Soubor"
+
+#: src/remmina_plugin_manager.c:73
+msgid "Tool"
+msgstr "Nástroj"
+
+#: src/remmina_plugin_manager.c:73
+msgid "Preference"
+msgstr "Předvolba"
+
+#: src/remmina_plugin_manager.c:73
+msgid "Secret"
+msgstr "Tajné"
+
+#: src/remmina_plugin_manager.c:456 data/ui/remmina_main.glade:305
+msgid "Plugins"
+msgstr "Zásuvné moduly"
+
+#: src/remmina_plugin_manager.c:456 src/remmina_message_panel.c:452
+#: src/remmina_message_panel.c:621 src/remmina_file_editor.c:152
+msgid "_OK"
+msgstr "_OK"
+
+#: src/remmina_plugin_manager.c:474 src/remmina_file_editor.c:1490
+#: data/ui/remmina_main.glade:442
+msgid "Name"
+msgstr "Název"
+
+#: src/remmina_plugin_manager.c:480
+msgid "Type"
+msgstr "Typ"
+
+#: src/remmina_plugin_manager.c:486
+msgid "Description"
+msgstr "Popis"
+
+#: src/remmina_plugin_manager.c:492
+msgid "Version"
+msgstr "Verze"
+
+#: src/remmina_chat_window.c:178
 #, c-format
-msgid "Listening on port %i for an incoming %s connection…"
-msgstr "Na portu %i očekáváno příchozí %s spojení…"
+msgid "Chat with %s"
+msgstr "Chat s %s"
 
-#: src/remmina_protocol_widget.c:1963
-msgid "Could not authenticate, attempting reconnection…"
-msgstr "Ověření se nebylo úspěšné. Zkouší se připojit znovu…"
+#: src/remmina_chat_window.c:230
+msgid "_Send"
+msgstr "Ode_slat"
 
-#: src/remmina_protocol_widget.c:2025 src/remmina_file_editor.c:346
-#: src/remmina_file_editor.c:917 data/ui/remmina_main.glade:478
-msgid "Server"
-msgstr "Server"
+#: src/remmina_chat_window.c:240
+msgid "_Clear"
+msgstr "_Vyčistit"
 
-#. TRANSLATORS: “%s” is a placeholder for a protocol name, like “RDP”.
-#: src/remmina_protocol_widget.c:2043
-#, c-format
-msgid "Install the %s protocol plugin first."
-msgstr "Nejprve nainstalujte zásuvný modul pro protokol %s."
+#: src/remmina_applet_menu_item.c:121
+msgid "Discovered"
+msgstr "Objeveno"
 
-#: src/remmina_exec.c:475
-#, c-format
-msgid "Plugin %s is not registered."
-msgstr "Zásuvný modul %s není zaregistrován."
+#: src/remmina_applet_menu_item.c:126
+msgid "New Connection"
+msgstr "Nové připojení"
+
+#: src/remmina_key_chooser.h:38
+msgid "Shift+"
+msgstr "Shift+"
+
+#: src/remmina_key_chooser.h:39
+msgid "Ctrl+"
+msgstr "Ctrl+"
+
+#: src/remmina_key_chooser.h:40
+msgid "Alt+"
+msgstr "Alt+"
+
+#: src/remmina_key_chooser.h:41
+msgid "Super+"
+msgstr "Super+"
+
+#: src/remmina_key_chooser.h:42
+msgid "Hyper+"
+msgstr "Hyper+"
+
+#: src/remmina_key_chooser.h:43
+msgid "Meta+"
+msgstr "Meta+"
+
+#: src/remmina_key_chooser.h:44
+msgid "<None>"
+msgstr "<Žádné>"
 
 #: src/remmina_pref_dialog.c:91 src/remmina_file_editor.c:435
 msgid "Resolutions"
@@ -207,245 +236,182 @@ msgstr ""
 "na kartě \"Upřesnit\" připojení terminálu a upravit na kartě \"Terminál\" v "
 "nastavení."
 
-#. TRANSLATORS: %s is a placeholder for an error message
-#: src/remmina_ssh_plugin.c:539
+#: src/remmina_message_panel.c:163 data/ui/remmina_mpc.glade:46
+#: data/ui/remmina_unlock.glade:46
+msgid "Cancel"
+msgstr "Storno"
+
+#: src/remmina_message_panel.c:199 data/ui/remmina_snap_info_dialog.glade:28
+#: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
+#: data/ui/remmina_string_list.glade:63 data/ui/remmina_news.glade:33
+#: data/ui/remmina_preferences.glade:2640
+msgid "Close"
+msgstr "Zavřít"
+
+#: src/remmina_message_panel.c:260
+msgid "Yes"
+msgstr "Ano"
+
+#: src/remmina_message_panel.c:267
+msgid "No"
+msgstr "Ne"
+
+#: src/remmina_message_panel.c:391 plugins/rdp/rdp_plugin.c:2653
+#: data/ui/remmina_mpc.glade:172
+msgid "Domain"
+msgstr "Doména"
+
+#: src/remmina_message_panel.c:420
+msgid "Save password"
+msgstr "Uložit heslo"
+
+#: src/remmina_message_panel.c:457 src/remmina_message_panel.c:629
+#: src/remmina_sftp_client.c:947 src/remmina_file_editor.c:151
+#: src/remmina_file_editor.c:1365 plugins/spice/spice_plugin_file_transfer.c:84
+#: data/ui/remmina_key_chooser.glade:8 data/ui/remmina_key_chooser.glade:9
+#: data/ui/remmina_spinner.glade:8 data/ui/remmina_spinner.glade:9
+msgid "_Cancel"
+msgstr "_Storno"
+
+#: src/remmina_message_panel.c:513
+msgid "Enter certificate authentication files"
+msgstr "Zadejte soubory pro ověřování se certifikátem"
+
+#: src/remmina_message_panel.c:525
+msgid "CA Certificate File"
+msgstr "Soubor s certifikátem cert. autority"
+
+#: src/remmina_message_panel.c:547
+msgid "CA CRL File"
+msgstr "Soubor se seznamem zneplatněných certifikátů, vydaných cert. autoritou"
+
+#: src/remmina_message_panel.c:569
+msgid "Client Certificate File"
+msgstr "Soubor s certifikátem klienta"
+
+#: src/remmina_message_panel.c:591
+msgid "Client Certificate Key"
+msgstr "Klíč k certifikátu klienta"
+
+#: src/rcw.c:658
 #, c-format
-msgid "Error: %s"
-msgstr "Chyba: %s"
-
-#: src/remmina_ssh_plugin.c:556
-msgid "Terminal content saved in"
-msgstr "Obsah terminálu uložen v"
-
-#: src/remmina_ssh_plugin.c:822
-msgid "Select All (host+A)"
-msgstr "Vybrat vše (host+A)"
-
-#: src/remmina_ssh_plugin.c:823
-msgid "Copy (host+C)"
-msgstr "Kopírovat (host+C)"
-
-#: src/remmina_ssh_plugin.c:824
-msgid "Paste (host+V)"
-msgstr "Vložit (host+V)"
-
-#: src/remmina_ssh_plugin.c:825
-msgid "Save session to file"
-msgstr "Uložit relaci do souboru"
-
-#: src/remmina_ssh_plugin.c:826
-msgid "Increase font size (host+Page Up)"
-msgstr "Zvětšit velikost písma (host+Page Up)"
-
-#: src/remmina_ssh_plugin.c:827
-msgid "Decrease font size (host+Page Down)"
-msgstr "Zmenšit velikost písma (host+Page Down)"
-
-#: src/remmina_ssh_plugin.c:828
-msgid "Find text (host+G)"
-msgstr "Vložit (host+V)"
-
-#: src/remmina_ssh_plugin.c:1370 src/remmina_ssh_plugin.c:1475
-#: src/remmina_sftp_plugin.c:311 src/remmina_sftp_plugin.c:348
-#: src/remmina_file_editor.c:847
-msgid "SSH identity file"
-msgstr "soubor s identitou pro SSH"
-
-#: src/remmina_ssh_plugin.c:1371 src/remmina_sftp_plugin.c:312
-#: src/remmina_file_editor.c:848
-msgid "SSH agent"
-msgstr "SSH agent"
-
-#: src/remmina_ssh_plugin.c:1372 src/remmina_sftp_plugin.c:313
-#: src/remmina_file_editor.c:849
-msgid "Public key (automatic)"
-msgstr "Metoda s veřejným klíčem (automatické)"
-
-#: src/remmina_ssh_plugin.c:1373 src/remmina_sftp_plugin.c:314
-#: src/remmina_file_editor.c:850
-msgid "Kerberos (GSSAPI)"
-msgstr "Kerberos (GSSAPI)"
-
-#: src/remmina_ssh_plugin.c:1448 data/ui/remmina_main.glade:177
-msgid "Copy"
-msgstr "Kopírovat"
-
-#: src/remmina_ssh_plugin.c:1448
-msgid "_Copy"
-msgstr "_Kopírovat"
-
-#: src/remmina_ssh_plugin.c:1449
-msgid "Paste"
-msgstr "Vložit"
-
-#: src/remmina_ssh_plugin.c:1449
-msgid "_Paste"
-msgstr "_Vložit"
-
-#: src/remmina_ssh_plugin.c:1450
-msgid "Select all"
-msgstr "Vybrat vše"
-
-#: src/remmina_ssh_plugin.c:1450
-msgid "_Select all"
-msgstr "_Vybrat vše"
-
-#: src/remmina_ssh_plugin.c:1451
-msgid "Increase font size"
-msgstr "Zvětšit velikost písma"
-
-#: src/remmina_ssh_plugin.c:1451
-msgid "_Increase font size"
-msgstr "Zvětš_it velikost písma"
-
-#: src/remmina_ssh_plugin.c:1452
-msgid "Decrease font size"
-msgstr "Zmenšit velikost písma"
-
-#: src/remmina_ssh_plugin.c:1452
-msgid "_Decrease font size"
-msgstr "_Zmenšit velikost písma"
-
-#: src/remmina_ssh_plugin.c:1453
-#, fuzzy
-msgid "Find text"
-msgstr "Hledat text"
-
-#: src/remmina_ssh_plugin.c:1453
-#, fuzzy
-msgid "_Find text"
-msgstr "_Najít text"
-
-#: src/remmina_ssh_plugin.c:1472 src/remmina_sftp_plugin.c:347
-#: src/remmina_file_editor.c:952
-msgid "Authentication type"
-msgstr "Typ ověřování se"
-
-#: src/remmina_ssh_plugin.c:1473 src/remmina_message_panel.c:330
-#: src/remmina_sftp_plugin.c:345 src/remmina_file_editor.c:961
-#: plugins/www/www_plugin.c:879 plugins/vnc/vnc_plugin.c:1960
-#: plugins/vnc/vnc_plugin.c:1980 plugins/rdp/rdp_plugin.c:2651
-#: data/ui/remmina_mpc.glade:144
-msgid "Username"
-msgstr "Uživatelské jméno"
-
-#: src/remmina_ssh_plugin.c:1474 plugins/vnc/vnc_plugin.c:1961
-#: plugins/vnc/vnc_plugin.c:1981 plugins/spice/spice_plugin.c:666
-msgid "User password"
-msgstr "Heslo k uživatelskému účtu"
-
-#: src/remmina_ssh_plugin.c:1477 src/remmina_file_editor.c:979
-#, fuzzy
-#| msgid "CA Certificate File"
-msgid "SSH certificate file"
-msgstr "Soubor s certifikátem SSH"
-
-#: src/remmina_ssh_plugin.c:1479 src/remmina_sftp_plugin.c:349
-#: src/remmina_file_editor.c:984
-msgid "Password to unlock private key"
-msgstr "Heslo pro odemčení soukromé části klíče"
-
-#: src/remmina_ssh_plugin.c:1480 plugins/rdp/rdp_plugin.c:2693
-msgid "Start-up program"
-msgstr "Program při spouštění"
-
-#: src/remmina_ssh_plugin.c:1485
 msgid ""
-"The filename can use the following placeholders:\n"
-"\n"
-"  • %h is substituted with the server name\n"
-"  • %t is substituted with the SSH server name\n"
-"  • %u is substituted with the username\n"
-"  • %U is substituted with the SSH username\n"
-"  • %p is substituted with Remmina profile name\n"
-"  • %g is substituted with Remmina profile group name\n"
-"  • %d is substituted with local date and time in ISO 8601 format\n"
+"Are you sure you want to close %i active connections in the current window?"
+msgstr "Opravdu chcete zavřít %i aktivních připojení ve stávajícím okně?"
+
+#: src/rcw.c:1394
+msgid "Viewport fullscreen mode"
+msgstr "Režim výřezu při zobrazení na celou obrazovku"
+
+#: src/rcw.c:1402 data/ui/remmina_preferences.glade:607
+msgid "Scrolled fullscreen"
+msgstr "Celá obrazovka s posuvníky"
+
+#: src/rcw.c:1487
+msgid "Keep aspect ratio when scaled"
+msgstr "Při změně měřítka zobrazení zachovat poměr stran"
+
+#: src/rcw.c:1495
+msgid "Fill client window when scaled"
+msgstr "Při změně měřítka zobrazení vyplnit okno klienta"
+
+#: src/rcw.c:2043
+#, fuzzy
+msgid "Send clipboard content as keystrokes"
+msgstr "Odesílání obsahu schránky jako stisknutí kláves"
+
+#: src/rcw.c:2147
+msgid "Turn off scaling to avoid screenshot distortion."
+msgstr "Aby zobrazení nebylo deformované, vypnout změnu měřítka."
+
+#: src/rcw.c:2207 plugins/www/www_plugin.c:848
+msgid "Screenshot taken"
+msgstr "Snímek pořízen"
+
+#: src/rcw.c:2290
+#, fuzzy
+msgid "_Menu"
+msgstr "_Menu"
+
+#: src/rcw.c:2291
+#, fuzzy
+msgid "Menu"
+msgstr "Nabídka"
+
+#: src/rcw.c:2300
+#, fuzzy
+#| msgid "Open Main Window"
+msgid "Open the Remmina main window"
+msgstr "Otevřete hlavní okno aplikace Remmina"
+
+#: src/rcw.c:2310
+msgid "Duplicate current connection"
+msgstr "Zduplikovat stávající spojení"
+
+#: src/rcw.c:2327
+msgid "Resize the window to fit in remote resolution"
+msgstr "Upravit velikost okna podle rozlišení na protějšku"
+
+#: src/rcw.c:2338
+msgid "Toggle fullscreen mode"
+msgstr "Vyp/zap. zobrazení na celou obrazovku"
+
+#: src/rcw.c:2384 data/ui/remmina_preferences.glade:1344
+#: data/ui/remmina_preferences.glade:1354
+#, fuzzy
+msgid "Multi monitor"
+msgstr "Více monitorů"
+
+#: src/rcw.c:2400
+msgid "Toggle dynamic resolution update"
+msgstr "Vyp/zap. dynamickou aktualizaci rozlišení"
+
+#: src/rcw.c:2410
+msgid "Toggle scaled mode"
+msgstr "Vyp/zap. měnění měřítka zobrazení"
+
+#: src/rcw.c:2450 data/ui/remmina_preferences.glade:1070
+msgid "Switch tab pages"
+msgstr "Přepínat mezi panely"
+
+#: src/rcw.c:2460
+msgid "Grab all keyboard events"
+msgstr "Zabrat si veškeré stisky kláves"
+
+#: src/rcw.c:2470
+msgid "Preferences"
+msgstr "_Předvolby"
+
+#: src/rcw.c:2479
+msgid "_Tools"
+msgstr "Nás_troje"
+
+#: src/rcw.c:2480 data/ui/remmina_main.glade:207
+msgid "Tools"
+msgstr "Nástroje"
+
+#: src/rcw.c:2493 data/ui/remmina_preferences.glade:1277
+#: data/ui/remmina_preferences.glade:1287
+msgid "Screenshot"
+msgstr "Snímek obrazovky"
+
+#: src/rcw.c:2507 data/ui/remmina_preferences.glade:1181
+msgid "Minimize window"
+msgstr "Minimalizovat okno"
+
+#: src/rcw.c:2517 data/ui/remmina_preferences.glade:1213
+msgid "Disconnect"
+msgstr "Odpojit se"
+
+#: src/rcw.c:4284
+#, c-format
+msgid "The file “%s” is corrupted, unreadable, or could not be found."
+msgstr "Soubor „%s“ je poškozený, nečitelný nebo se ho nepodařilo nalézt."
+
+#: src/rcw.c:4452
+msgid "Warning: This plugin requires GtkSocket, but it’s not available."
 msgstr ""
-"V názvu souboru je možné použít následující dosazení:\n"
-"\n"
-"•  za %h je dosazen název serveru\n"
-"•  za %t je dosazen název SSH serveru\n"
-"•  za %u je dosazeno uživatelské jméno\n"
-"•  za %U je dosazeno uživatelské jméno pro SSH\n"
-"•  za %p je dosazen název Remmina profilu\n"
-"•  za %g je dosazen název skupiny Remmina profilu\n"
-"•  za %d je dosazeno lokální datum a čas ve formátu dle normy iso8601\n"
-
-#: src/remmina_ssh_plugin.c:1507
-#, fuzzy
-#| msgid "Terminal color scheme"
-msgid "Terminal colour scheme"
-msgstr "Barevné schéma terminálu"
-
-#: src/remmina_ssh_plugin.c:1508
-msgid "Character set"
-msgstr "Znaková sada"
-
-#: src/remmina_ssh_plugin.c:1509 src/remmina_sftp_plugin.c:350
-msgid "SSH Proxy Command"
-msgstr "Příkaz pro SSH proxy"
-
-#: src/remmina_ssh_plugin.c:1510
-msgid "KEX (Key Exchange) algorithms"
-msgstr "Algoritmy pro výměnu klíčů (KEX)"
-
-#: src/remmina_ssh_plugin.c:1511
-msgid "Symmetric cipher client to server"
-msgstr "Symetrická šifra mezi klientem a serverem"
-
-#: src/remmina_ssh_plugin.c:1512
-msgid "Preferred server host key types"
-msgstr "Upřednostňované typy klíčů serveru hostitele"
-
-#: src/remmina_ssh_plugin.c:1513
-msgid "Folder for SSH session log"
-msgstr "Složka pro záznam z SSH relace"
-
-#: src/remmina_ssh_plugin.c:1514
-msgid "Filename for SSH session log"
-msgstr "Soubor pro záznam z SSH relace"
-
-#: src/remmina_ssh_plugin.c:1515
-msgid "Log SSH session when exiting Remmina"
-msgstr "Při ukončování Remmina uložit záznam SSH relace"
-
-#: src/remmina_ssh_plugin.c:1516
-#, fuzzy
-msgid "Log SSH session asynchronously"
-msgstr "Asynchronní protokolování relace SSH"
-
-#: src/remmina_ssh_plugin.c:1516
-#, fuzzy
-msgid "Saving the session asynchronously may have a notable performance impact"
-msgstr "Asynchronní uložení relace může mít znatelný dopad na výkon."
-
-#: src/remmina_ssh_plugin.c:1517
-msgid "Audible terminal bell"
-msgstr "Zvukové upozorňování terminálu"
-
-#: src/remmina_ssh_plugin.c:1518
-msgid "SSH compression"
-msgstr "Komprese SSH"
-
-#: src/remmina_ssh_plugin.c:1519
-msgid "Don't remember passwords"
-msgstr "Nepamatuje si hesla"
-
-#: src/remmina_ssh_plugin.c:1520
-msgid "Strict host key checking"
-msgstr "Striktně ověřovat klíče hostitele"
-
-#: src/remmina_ssh_plugin.c:1534
-msgid "SSH - Secure Shell"
-msgstr "SSH – zabezpečený shell"
-
-#: src/remmina_applet_menu_item.c:121
-msgid "Discovered"
-msgstr "Objeveno"
-
-#: src/remmina_applet_menu_item.c:126
-msgid "New Connection"
-msgstr "Nové připojení"
+"Varování: tento zásuvný modul vyžaduje GtkSocket, ale to není k dispozici."
 
 #: src/remmina_mpchange.c:234
 msgid "The passwords do not match"
@@ -473,143 +439,6 @@ msgid_plural "%d passwords changed."
 msgstr[0] "%d heslo změněno."
 msgstr[1] "%d hesla změněna."
 msgstr[2] "%d hesel změněno."
-
-#: src/remmina_public.c:345
-#, fuzzy, c-format
-msgid "Address is too long for UNIX socket_path: %s"
-msgstr "Adresa je příliš dlouhá pro UNIX socket_path: %s"
-
-#: src/remmina_public.c:355
-#, fuzzy, c-format
-msgid "Creating UNIX socket failed: %s"
-msgstr "Vytvoření zásuvky UNIX se nezdařilo: %s"
-
-#: src/remmina_public.c:361
-#, fuzzy, c-format
-#| msgid "VNC connection failed: %s"
-msgid "Connecting to UNIX socket failed: %s"
-msgstr "Připojení k zásuvce UNIX se nezdařilo: %s"
-
-#: src/remmina_public.c:631
-msgid "Please enter format 'widthxheight'."
-msgstr "Zadejte ve formátu „výškaxšířka“."
-
-#: src/remmina_public.c:653
-msgid "Change security settings"
-msgstr "Nastavení kvality"
-
-#. TRANSLATORS: translator-credits should be replaced with a formatted list of translators in your own language
-#: src/remmina_about.c:54
-msgid "translator-credits"
-msgstr ""
-"Příspěvky na portálu Launchpad:\n"
-"  Kabi https://launchpad.net/~kubat-jan\n"
-"  Martin \"sachy\" Šácha https://launchpad.net/~sachy\n"
-"  Radek Stastny https://launchpad.net/~tonous\n"
-"  Tadeáš Pařík https://launchpad.net/~pariktadeas\n"
-"  Vice viz https://launchpad.net/~llyzs"
-
-#: src/remmina_ftp_client.c:389
-msgid "Choose download location"
-msgstr "Zvolte kam stahovat"
-
-#: src/remmina_ftp_client.c:529
-msgid "Are you sure to delete the selected files on server?"
-msgstr "Opravdu chcete označené soubory na serveru smazat?"
-
-#: src/remmina_ftp_client.c:586
-msgid "Choose a file to upload"
-msgstr "Zvolte soubor, který nahrát"
-
-#: src/remmina_ftp_client.c:593
-msgid "Upload folder"
-msgstr "Složka, do které nahrát"
-
-#: src/remmina_ftp_client.c:649 src/remmina_ftp_client.c:763
-msgid "Download"
-msgstr "Stáhnout"
-
-#: src/remmina_ftp_client.c:656 src/remmina_ftp_client.c:770
-msgid "Upload"
-msgstr "Nahrát"
-
-#: src/remmina_ftp_client.c:663
-msgid "_Delete"
-msgstr "O_dstranit"
-
-#: src/remmina_ftp_client.c:748
-msgid "Home"
-msgstr "Domů"
-
-#: src/remmina_ftp_client.c:749
-msgid "Go to home folder"
-msgstr "Přejít do domovské složky"
-
-#: src/remmina_ftp_client.c:753
-msgid "Up"
-msgstr "O úroveň výš"
-
-#: src/remmina_ftp_client.c:754
-msgid "Go to parent folder"
-msgstr "Přejít do nadřazené složky"
-
-#: src/remmina_ftp_client.c:758 plugins/vnc/vnc_plugin.c:2019
-#: plugins/rdp/rdp_plugin.c:2740
-msgid "Refresh"
-msgstr "Načíst znovu"
-
-#: src/remmina_ftp_client.c:759
-msgid "Refresh current folder"
-msgstr "Načíst stávající složku znovu"
-
-#: src/remmina_ftp_client.c:764
-msgid "Download from server"
-msgstr "Stáhnout ze serveru"
-
-#: src/remmina_ftp_client.c:771
-msgid "Upload to server"
-msgstr "Nahrát na server"
-
-#: src/remmina_ftp_client.c:775 data/ui/remmina_main.glade:197
-msgid "Delete"
-msgstr "Smazat"
-
-#: src/remmina_ftp_client.c:776
-msgid "Delete files on server"
-msgstr "Smazat soubory na serveru"
-
-#: src/remmina_ftp_client.c:905 src/remmina_ftp_client.c:974
-msgid "Filename"
-msgstr "Název souboru"
-
-#: src/remmina_ftp_client.c:918 src/remmina_ftp_client.c:1003
-msgid "Size"
-msgstr "Velikost"
-
-#: src/remmina_ftp_client.c:926
-msgid "User"
-msgstr "Uživatel"
-
-#: src/remmina_ftp_client.c:932 src/remmina_file_editor.c:1515
-#: data/ui/remmina_main.glade:464 data/ui/remmina_mpc.glade:115
-msgid "Group"
-msgstr "Skupina"
-
-#: src/remmina_ftp_client.c:938
-msgid "Permission"
-msgstr "Oprávnění"
-
-#: src/remmina_ftp_client.c:990 plugins/rdp/rdp_plugin.c:2548
-msgid "Remote"
-msgstr "Vzdálený"
-
-#: src/remmina_ftp_client.c:997 plugins/rdp/rdp_plugin.c:2547
-msgid "Local"
-msgstr "Místní"
-
-#: src/remmina_ftp_client.c:1011
-msgid "Progress"
-msgstr "Průběh"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:86
@@ -793,428 +622,266 @@ msgstr ""
 "\tremmina --update-profile /PATH/TO/FOO.remmina --set-option username --set-"
 "option resolution_mode=2 --set-option password\n"
 
-#: src/remmina_icon.c:128
-msgid "Open Main Window"
-msgstr "Otevřít hlavní okno"
+#: src/remmina_public.c:345
+#, fuzzy, c-format
+msgid "Address is too long for UNIX socket_path: %s"
+msgstr "Adresa je příliš dlouhá pro UNIX socket_path: %s"
 
-#: src/remmina_icon.c:133 data/ui/remmina_main.glade:254
-msgid "_Preferences"
-msgstr "_Předvolby"
+#: src/remmina_public.c:355
+#, fuzzy, c-format
+msgid "Creating UNIX socket failed: %s"
+msgstr "Vytvoření zásuvky UNIX se nezdařilo: %s"
 
-#: src/remmina_icon.c:138
-msgid "_About"
-msgstr "O _aplikaci"
+#: src/remmina_public.c:361
+#, fuzzy, c-format
+#| msgid "VNC connection failed: %s"
+msgid "Connecting to UNIX socket failed: %s"
+msgstr "Připojení k zásuvce UNIX se nezdařilo: %s"
 
-#: src/remmina_icon.c:148
-msgid "Enable Service Discovery"
-msgstr "Zapnout objevování služeb"
+#: src/remmina_public.c:631
+msgid "Please enter format 'widthxheight'."
+msgstr "Zadejte ve formátu „výškaxšířka“."
 
-#: src/remmina_icon.c:160 data/ui/remmina_main.glade:404
-msgid "_Quit"
-msgstr "U_končit"
+#: src/remmina_public.c:653
+msgid "Change security settings"
+msgstr "Nastavení kvality"
 
-#. TRANSLATORS: Applet name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
-#. TRANSLATORS: Applet Name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
-#: src/remmina_icon.c:284 src/remmina_icon.c:416
-msgid "Remmina Applet"
-msgstr "Miniaplikace Remmina"
-
-#. TRANSLATORS: Applet comment/description as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
-#: src/remmina_icon.c:286 src/remmina_icon.c:418
-msgid "Connect to remote desktops through the applet menu"
-msgstr "Připojovat se ke vzdáleným plochám z nabídky miniaplikace"
-
-#: src/rcw.c:658
-#, c-format
-msgid ""
-"Are you sure you want to close %i active connections in the current window?"
-msgstr "Opravdu chcete zavřít %i aktivních připojení ve stávajícím okně?"
-
-#: src/rcw.c:1394
-msgid "Viewport fullscreen mode"
-msgstr "Režim výřezu při zobrazení na celou obrazovku"
-
-#: src/rcw.c:1402 data/ui/remmina_preferences.glade:607
-msgid "Scrolled fullscreen"
-msgstr "Celá obrazovka s posuvníky"
-
-#: src/rcw.c:1487
-msgid "Keep aspect ratio when scaled"
-msgstr "Při změně měřítka zobrazení zachovat poměr stran"
-
-#: src/rcw.c:1495
-msgid "Fill client window when scaled"
-msgstr "Při změně měřítka zobrazení vyplnit okno klienta"
-
-#: src/rcw.c:2043
-#, fuzzy
-msgid "Send clipboard content as keystrokes"
-msgstr "Odesílání obsahu schránky jako stisknutí kláves"
-
-#: src/rcw.c:2147
-msgid "Turn off scaling to avoid screenshot distortion."
-msgstr "Aby zobrazení nebylo deformované, vypnout změnu měřítka."
-
-#: src/rcw.c:2207 plugins/www/www_plugin.c:848
-msgid "Screenshot taken"
-msgstr "Snímek pořízen"
-
-#: src/rcw.c:2290
-#, fuzzy
-msgid "_Menu"
-msgstr "_Menu"
-
-#: src/rcw.c:2291
-#, fuzzy
-msgid "Menu"
-msgstr "Nabídka"
-
-#: src/rcw.c:2300
-#, fuzzy
-#| msgid "Open Main Window"
-msgid "Open the Remmina main window"
-msgstr "Otevřete hlavní okno aplikace Remmina"
-
-#: src/rcw.c:2310
-msgid "Duplicate current connection"
-msgstr "Zduplikovat stávající spojení"
-
-#: src/rcw.c:2327
-msgid "Resize the window to fit in remote resolution"
-msgstr "Upravit velikost okna podle rozlišení na protějšku"
-
-#: src/rcw.c:2338
-msgid "Toggle fullscreen mode"
-msgstr "Vyp/zap. zobrazení na celou obrazovku"
-
-#: src/rcw.c:2384 data/ui/remmina_preferences.glade:1344
-#: data/ui/remmina_preferences.glade:1354
-#, fuzzy
-msgid "Multi monitor"
-msgstr "Více monitorů"
-
-#: src/rcw.c:2400
-msgid "Toggle dynamic resolution update"
-msgstr "Vyp/zap. dynamickou aktualizaci rozlišení"
-
-#: src/rcw.c:2410
-msgid "Toggle scaled mode"
-msgstr "Vyp/zap. měnění měřítka zobrazení"
-
-#: src/rcw.c:2450 data/ui/remmina_preferences.glade:1070
-msgid "Switch tab pages"
-msgstr "Přepínat mezi panely"
-
-#: src/rcw.c:2460
-msgid "Grab all keyboard events"
-msgstr "Zabrat si veškeré stisky kláves"
-
-#: src/rcw.c:2470
-msgid "Preferences"
-msgstr "_Předvolby"
-
-#: src/rcw.c:2479
-msgid "_Tools"
-msgstr "Nás_troje"
-
-#: src/rcw.c:2480 data/ui/remmina_main.glade:207
-msgid "Tools"
-msgstr "Nástroje"
-
-#: src/rcw.c:2493 data/ui/remmina_preferences.glade:1277
-#: data/ui/remmina_preferences.glade:1287
-msgid "Screenshot"
-msgstr "Snímek obrazovky"
-
-#: src/rcw.c:2507 data/ui/remmina_preferences.glade:1181
-msgid "Minimize window"
-msgstr "Minimalizovat okno"
-
-#: src/rcw.c:2517 data/ui/remmina_preferences.glade:1213
-msgid "Disconnect"
-msgstr "Odpojit se"
-
-#: src/rcw.c:4284
-#, c-format
-msgid "The file “%s” is corrupted, unreadable, or could not be found."
-msgstr "Soubor „%s“ je poškozený, nečitelný nebo se ho nepodařilo nalézt."
-
-#: src/rcw.c:4452
-msgid "Warning: This plugin requires GtkSocket, but it’s not available."
+#. TRANSLATORS: translator-credits should be replaced with a formatted list of translators in your own language
+#: src/remmina_about.c:54
+msgid "translator-credits"
 msgstr ""
-"Varování: tento zásuvný modul vyžaduje GtkSocket, ale to není k dispozici."
+"Příspěvky na portálu Launchpad:\n"
+"  Kabi https://launchpad.net/~kubat-jan\n"
+"  Martin \"sachy\" Šácha https://launchpad.net/~sachy\n"
+"  Radek Stastny https://launchpad.net/~tonous\n"
+"  Tadeáš Pařík https://launchpad.net/~pariktadeas\n"
+"  Vice viz https://launchpad.net/~llyzs"
 
-#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1533
-msgid "Protocol"
-msgstr "Protokol"
+#: src/remmina_ftp_client.c:389
+msgid "Choose download location"
+msgstr "Zvolte kam stahovat"
 
-#: src/remmina_plugin_manager.c:73
-msgid "Entry"
-msgstr "Záznam"
+#: src/remmina_ftp_client.c:529
+msgid "Are you sure to delete the selected files on server?"
+msgstr "Opravdu chcete označené soubory na serveru smazat?"
 
-#: src/remmina_plugin_manager.c:73
-msgid "File"
-msgstr "Soubor"
+#: src/remmina_ftp_client.c:586
+msgid "Choose a file to upload"
+msgstr "Zvolte soubor, který nahrát"
 
-#: src/remmina_plugin_manager.c:73
-msgid "Tool"
-msgstr "Nástroj"
+#: src/remmina_ftp_client.c:593
+msgid "Upload folder"
+msgstr "Složka, do které nahrát"
 
-#: src/remmina_plugin_manager.c:73
-msgid "Preference"
-msgstr "Předvolba"
+#: src/remmina_ftp_client.c:649 src/remmina_ftp_client.c:763
+msgid "Download"
+msgstr "Stáhnout"
 
-#: src/remmina_plugin_manager.c:73
-msgid "Secret"
-msgstr "Tajné"
+#: src/remmina_ftp_client.c:656 src/remmina_ftp_client.c:770
+msgid "Upload"
+msgstr "Nahrát"
 
-#: src/remmina_plugin_manager.c:456 data/ui/remmina_main.glade:305
-msgid "Plugins"
-msgstr "Zásuvné moduly"
+#: src/remmina_ftp_client.c:663
+msgid "_Delete"
+msgstr "O_dstranit"
 
-#: src/remmina_plugin_manager.c:456 src/remmina_message_panel.c:452
-#: src/remmina_message_panel.c:621 src/remmina_file_editor.c:152
-msgid "_OK"
-msgstr "_OK"
+#: src/remmina_ftp_client.c:748
+msgid "Home"
+msgstr "Domů"
 
-#: src/remmina_plugin_manager.c:474 src/remmina_file_editor.c:1490
-#: data/ui/remmina_main.glade:442
-msgid "Name"
-msgstr "Název"
+#: src/remmina_ftp_client.c:749
+msgid "Go to home folder"
+msgstr "Přejít do domovské složky"
 
-#: src/remmina_plugin_manager.c:480
-msgid "Type"
-msgstr "Typ"
+#: src/remmina_ftp_client.c:753
+msgid "Up"
+msgstr "O úroveň výš"
 
-#: src/remmina_plugin_manager.c:486
-msgid "Description"
-msgstr "Popis"
+#: src/remmina_ftp_client.c:754
+msgid "Go to parent folder"
+msgstr "Přejít do nadřazené složky"
 
-#: src/remmina_plugin_manager.c:492
-msgid "Version"
-msgstr "Verze"
+#: src/remmina_ftp_client.c:758 plugins/rdp/rdp_plugin.c:2740
+#: plugins/vnc/vnc_plugin.c:2019
+msgid "Refresh"
+msgstr "Načíst znovu"
 
-#: src/remmina_main.c:662
+#: src/remmina_ftp_client.c:759
+msgid "Refresh current folder"
+msgstr "Načíst stávající složku znovu"
+
+#: src/remmina_ftp_client.c:764
+msgid "Download from server"
+msgstr "Stáhnout ze serveru"
+
+#: src/remmina_ftp_client.c:771
+msgid "Upload to server"
+msgstr "Nahrát na server"
+
+#: src/remmina_ftp_client.c:775 data/ui/remmina_main.glade:197
+msgid "Delete"
+msgstr "Smazat"
+
+#: src/remmina_ftp_client.c:776
+msgid "Delete files on server"
+msgstr "Smazat soubory na serveru"
+
+#: src/remmina_ftp_client.c:905 src/remmina_ftp_client.c:974
+msgid "Filename"
+msgstr "Název souboru"
+
+#: src/remmina_ftp_client.c:918 src/remmina_ftp_client.c:1003
+msgid "Size"
+msgstr "Velikost"
+
+#: src/remmina_ftp_client.c:926
+msgid "User"
+msgstr "Uživatel"
+
+#: src/remmina_ftp_client.c:932 src/remmina_file_editor.c:1515
+#: data/ui/remmina_mpc.glade:115 data/ui/remmina_main.glade:464
+msgid "Group"
+msgstr "Skupina"
+
+#: src/remmina_ftp_client.c:938
+msgid "Permission"
+msgstr "Oprávnění"
+
+#: src/remmina_ftp_client.c:990 plugins/rdp/rdp_plugin.c:2548
+msgid "Remote"
+msgstr "Vzdálený"
+
+#: src/remmina_ftp_client.c:997 plugins/rdp/rdp_plugin.c:2547
+msgid "Local"
+msgstr "Místní"
+
+#: src/remmina_ftp_client.c:1011
+msgid "Progress"
+msgstr "Průběh"
+
+#: src/remmina_protocol_widget.c:290 src/remmina_ssh_plugin.c:829
+#: src/remmina_ssh_plugin.c:1454
+msgid "Open SFTP transfer…"
+msgstr "Otevřít SFTP přenos…"
+
+#: src/remmina_protocol_widget.c:319
+msgid "Executing external commands…"
+msgstr "Spouštění externích příkazů…"
+
+#. TRANSLATORS: “%s” is a placeholder for the connection profile name
+#: src/remmina_protocol_widget.c:327
 #, c-format
-msgid "Total %i item."
-msgid_plural "Total %i items."
-msgstr[0] "Celkem %i položka."
-msgstr[1] "Celkem %i položky."
-msgstr[2] "Celkem %i položek."
+msgid "Connecting to “%s”…"
+msgstr "Připojování k „%s“…"
 
-#: src/remmina_main.c:853
+#. TRANSLATORS: “%s” is a placeholder for an hostname or an IP address.
+#: src/remmina_protocol_widget.c:911 src/remmina_protocol_widget.c:1096
 #, c-format
-msgid "Are you sure you want to delete “%s”?"
-msgstr "Opravdu chcete „%s“ smazat?"
+msgid "Connecting to “%s” via SSH…"
+msgstr "Připojování k „%s“ prostřednictvím SSH…"
 
-#: src/remmina_main.c:973
+#. TRANSLATORS: “%i” is a placeholder for a TCP port number.
+#: src/remmina_protocol_widget.c:1160
 #, c-format
-msgid ""
-"Unable to import:\n"
-"%s"
-msgstr ""
-"Nedaří se importovat:\n"
-"%s"
+msgid "Awaiting incoming SSH connection on port %i…"
+msgstr "Čekání na příchozí SSH spojení na portu %i…"
 
-#: src/remmina_main.c:999 data/ui/remmina_main.glade:285
-msgid "Import"
-msgstr "Importovat"
-
-#: src/remmina_main.c:1022 src/remmina_file_editor.c:1373
-msgid "_Save"
-msgstr "_Uložit"
-
-#: src/remmina_main.c:1028
-msgid "This protocol does not support exporting."
-msgstr "Tento protokol nepodporuje exportování."
-
-#: src/remmina_main.c:1344
-msgid "Remmina Remote Desktop Client"
-msgstr "Klient vzdálené plochy Remmina"
-
-#: src/remmina_main.c:1346
-msgid "Remmina Kiosk"
-msgstr "Kiosek Remmina"
-
-#: src/remmina_key_chooser.h:38
-msgid "Shift+"
-msgstr "Shift+"
-
-#: src/remmina_key_chooser.h:39
-msgid "Ctrl+"
-msgstr "Ctrl+"
-
-#: src/remmina_key_chooser.h:40
-msgid "Alt+"
-msgstr "Alt+"
-
-#: src/remmina_key_chooser.h:41
-msgid "Super+"
-msgstr "Super+"
-
-#: src/remmina_key_chooser.h:42
-msgid "Hyper+"
-msgstr "Hyper+"
-
-#: src/remmina_key_chooser.h:43
-msgid "Meta+"
-msgstr "Meta+"
-
-#: src/remmina_key_chooser.h:44
-msgid "<None>"
-msgstr "<Žádné>"
-
-#. TRANSLATORS: The placeholder %s is a directory path
-#: src/remmina_sftp_client.c:173
+#: src/remmina_protocol_widget.c:1213
 #, c-format
-msgid "Could not create the folder “%s”."
-msgstr "Nepodařilo se vytvořit složku „%s“."
+msgid "The “%s” command is not available on the SSH server."
+msgstr "Příkaz „%s“ není na SSH serveru k dispozici."
 
-#. TRANSLATORS: The placeholder %s is a file path
-#: src/remmina_sftp_client.c:181 src/remmina_sftp_client.c:202
+#: src/remmina_protocol_widget.c:1218
 #, c-format
-msgid "Could not create the file “%s”."
-msgstr "Nepodařilo se vytvořit soubor „%s“."
+msgid "Could not run the “%s” command on the SSH server (status = %i)."
+msgstr "Nedaří se spustit příkaz „%s“ na SSH serveru (stav = %i)."
 
-#. TRANSLATORS: The placeholders %s are a file path, and an error message.
-#: src/remmina_sftp_client.c:220
+#. TRANSLATORS: %s is a placeholder for an error message
+#: src/remmina_protocol_widget.c:1226
 #, c-format
-msgid "Could not open the file “%s” on the server. %s"
-msgstr "Nedaří se otevřít soubor „%s“ na serveru. %s"
+msgid "Could not run command. %s"
+msgstr "Nedaří se spustit příkaz: %s"
 
-#: src/remmina_sftp_client.c:242
+#. TRANSLATORS: “%s” is a placeholder for a hostname or IP address.
+#: src/remmina_protocol_widget.c:1296
 #, c-format
-msgid "Could not save the file “%s”."
-msgstr "Nedaří se uložit soubor „%s“."
+msgid "Connecting to %s via SSH…"
+msgstr "Připojování k „%s“ prostřednictvím SSH…"
 
-#: src/remmina_sftp_client.c:281 src/remmina_sftp_client.c:698
-#: src/remmina_sftp_client.c:761
+#: src/remmina_protocol_widget.c:1690
+msgid "Type in SSH username and password."
+msgstr "Zadejte uživatelské jméno a heslo pro SSH."
+
+#: src/remmina_protocol_widget.c:1745 src/remmina_protocol_widget.c:1777
+#, fuzzy
+msgid "Fingerprint automatically accepted"
+msgstr "Automatické přijetí otisku prstu"
+
+#. TRANSLATORS: The user is asked to verify a new SSL certificate.
+#: src/remmina_protocol_widget.c:1753
+msgid "Certificate details:"
+msgstr "Podrobnosti certifikátu:"
+
+#. TRANSLATORS: An SSL certificate subject is usually the remote server the user connect to.
+#: src/remmina_protocol_widget.c:1755 src/remmina_protocol_widget.c:1787
+msgid "Subject:"
+msgstr "Předmět:"
+
+#. TRANSLATORS: The name or email of the entity that have issued the SSL certificate
+#: src/remmina_protocol_widget.c:1757 src/remmina_protocol_widget.c:1789
+msgid "Issuer:"
+msgstr "Vydavatel:"
+
+#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
+#: src/remmina_protocol_widget.c:1759
+msgid "Fingerprint:"
+msgstr "Otisk:"
+
+#. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
+#: src/remmina_protocol_widget.c:1761
+msgid "Accept certificate?"
+msgstr "Přijmout certifikát?"
+
+#. TRANSLATORS: The user is asked to verify a new SSL certificate.
+#: src/remmina_protocol_widget.c:1785
+msgid "The certificate changed! Details:"
+msgstr "Certifikát byl změněn! Podrobnosti:"
+
+#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
+#: src/remmina_protocol_widget.c:1791
+msgid "Old fingerprint:"
+msgstr "Původní otisk:"
+
+#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
+#: src/remmina_protocol_widget.c:1793
+msgid "New fingerprint:"
+msgstr "Nový otisk:"
+
+#. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
+#: src/remmina_protocol_widget.c:1795
+msgid "Accept changed certificate?"
+msgstr "Přijmout změněný certifikát?"
+
+#. TRANSLATORS: “%i” is a placeholder for a port number. “%s”  is a placeholder for a protocol name (VNC).
+#: src/remmina_protocol_widget.c:1938
 #, c-format
-msgid "Could not open the folder “%s”. %s"
-msgstr "Nedaří se otevřít složku „%s“. %s"
+msgid "Listening on port %i for an incoming %s connection…"
+msgstr "Na portu %i očekáváno příchozí %s spojení…"
 
-#: src/remmina_sftp_client.c:385
+#: src/remmina_protocol_widget.c:1963
+msgid "Could not authenticate, attempting reconnection…"
+msgstr "Ověření se nebylo úspěšné. Zkouší se připojit znovu…"
+
+#: src/remmina_protocol_widget.c:2025 src/remmina_file_editor.c:346
+#: src/remmina_file_editor.c:917 data/ui/remmina_main.glade:478
+msgid "Server"
+msgstr "Server"
+
+#. TRANSLATORS: “%s” is a placeholder for a protocol name, like “RDP”.
+#: src/remmina_protocol_widget.c:2043
 #, c-format
-msgid "Could not create the folder “%s” on the server. %s"
-msgstr "Složku „%s“ se nedaří na serveru vytvořit: %s"
-
-#: src/remmina_sftp_client.c:413 src/remmina_sftp_client.c:435
-#, c-format
-msgid "Could not create the file “%s” on the server. %s"
-msgstr "Soubor „%s“ se nedaří na serveru vytvořit: %s"
-
-#: src/remmina_sftp_client.c:456
-#, c-format
-msgid "Could not open the file “%s”."
-msgstr "Nedaří se otevřít soubor „%s“."
-
-#: src/remmina_sftp_client.c:476
-#, c-format
-msgid "Could not write to the file “%s” on the server. %s"
-msgstr "Soubor „%s“ se nedaří zapsat na serveru: %s"
-
-#: src/remmina_sftp_client.c:716
-#, c-format
-msgid "Could not read from the folder. %s"
-msgstr "Nedaří se číst ze složky: %s"
-
-#: src/remmina_sftp_client.c:823
-msgid "Are you sure you want to cancel the file transfer in progress?"
-msgstr "Opravdu chcete probíhající přenos souboru zrušit?"
-
-#: src/remmina_sftp_client.c:857
-#, c-format
-msgid "Could not delete “%s”. %s"
-msgstr "Nepodařilo se smazat „%s“: %s"
-
-#: src/remmina_sftp_client.c:942
-msgid "The file exists already"
-msgstr "Soubor už existuje"
-
-#: src/remmina_sftp_client.c:945
-msgid "Resume"
-msgstr "Pokračovat"
-
-#: src/remmina_sftp_client.c:946
-msgid "Overwrite"
-msgstr "Přepsat"
-
-#: src/remmina_sftp_client.c:947 src/remmina_message_panel.c:457
-#: src/remmina_message_panel.c:629 src/remmina_file_editor.c:151
-#: src/remmina_file_editor.c:1365 plugins/spice/spice_plugin_file_transfer.c:84
-#: data/ui/remmina_spinner.glade:8 data/ui/remmina_spinner.glade:9
-#: data/ui/remmina_key_chooser.glade:8 data/ui/remmina_key_chooser.glade:9
-msgid "_Cancel"
-msgstr "_Storno"
-
-#: src/remmina_sftp_client.c:964
-msgid "The following file already exists in the target folder:"
-msgstr "Následující soubor už v cílové složce existuje:"
-
-#: src/remmina_message_panel.c:163 data/ui/remmina_unlock.glade:46
-#: data/ui/remmina_mpc.glade:46
-msgid "Cancel"
-msgstr "Storno"
-
-#: src/remmina_message_panel.c:199 data/ui/remmina_snap_info_dialog.glade:28
-#: data/ui/remmina_news.glade:33 data/ui/remmina_preferences.glade:2640
-#: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
-#: data/ui/remmina_string_list.glade:63
-msgid "Close"
-msgstr "Zavřít"
-
-#: src/remmina_message_panel.c:260
-msgid "Yes"
-msgstr "Ano"
-
-#: src/remmina_message_panel.c:267
-msgid "No"
-msgstr "Ne"
-
-#: src/remmina_message_panel.c:391 plugins/rdp/rdp_plugin.c:2653
-#: data/ui/remmina_mpc.glade:172
-msgid "Domain"
-msgstr "Doména"
-
-#: src/remmina_message_panel.c:420
-msgid "Save password"
-msgstr "Uložit heslo"
-
-#: src/remmina_message_panel.c:513
-msgid "Enter certificate authentication files"
-msgstr "Zadejte soubory pro ověřování se certifikátem"
-
-#: src/remmina_message_panel.c:525
-msgid "CA Certificate File"
-msgstr "Soubor s certifikátem cert. autority"
-
-#: src/remmina_message_panel.c:547
-msgid "CA CRL File"
-msgstr "Soubor se seznamem zneplatněných certifikátů, vydaných cert. autoritou"
-
-#: src/remmina_message_panel.c:569
-msgid "Client Certificate File"
-msgstr "Soubor s certifikátem klienta"
-
-#: src/remmina_message_panel.c:591
-msgid "Client Certificate Key"
-msgstr "Klíč k certifikátu klienta"
-
-#: src/remmina_sftp_plugin.c:323
-msgid "Show Hidden Files"
-msgstr "Zobrazit skryté soubory"
-
-#: src/remmina_sftp_plugin.c:325
-msgid "Overwrite all files"
-msgstr "Přepsat všechny soubory"
-
-#: src/remmina_sftp_plugin.c:327
-msgid "Resume all file transfers"
-msgstr "Znovu spustit všechny přenosy souborů"
-
-#: src/remmina_sftp_plugin.c:359
-msgid "SFTP - Secure File Transfer"
-msgstr "SFTP – Zabezpečený přenos souborů"
+msgid "Install the %s protocol plugin first."
+msgstr "Nejprve nainstalujte zásuvný modul pro protokol %s."
 
 #: src/remmina_ssh.c:236
 #, c-format
@@ -1486,6 +1153,132 @@ msgstr "Nedaří se vyžádat si shell: %s"
 msgid "Could not create PTY device."
 msgstr "Nedaří se vytvořit zařízení pseudoterminálu."
 
+#: src/remmina_exec.c:475
+#, c-format
+msgid "Plugin %s is not registered."
+msgstr "Zásuvný modul %s není zaregistrován."
+
+#: src/remmina_main.c:662
+#, c-format
+msgid "Total %i item."
+msgid_plural "Total %i items."
+msgstr[0] "Celkem %i položka."
+msgstr[1] "Celkem %i položky."
+msgstr[2] "Celkem %i položek."
+
+#: src/remmina_main.c:853
+#, c-format
+msgid "Are you sure you want to delete “%s”?"
+msgstr "Opravdu chcete „%s“ smazat?"
+
+#: src/remmina_main.c:973
+#, c-format
+msgid ""
+"Unable to import:\n"
+"%s"
+msgstr ""
+"Nedaří se importovat:\n"
+"%s"
+
+#: src/remmina_main.c:999 data/ui/remmina_main.glade:285
+msgid "Import"
+msgstr "Importovat"
+
+#: src/remmina_main.c:1022 src/remmina_file_editor.c:1373
+msgid "_Save"
+msgstr "_Uložit"
+
+#: src/remmina_main.c:1028
+msgid "This protocol does not support exporting."
+msgstr "Tento protokol nepodporuje exportování."
+
+#: src/remmina_main.c:1344
+msgid "Remmina Remote Desktop Client"
+msgstr "Klient vzdálené plochy Remmina"
+
+#: src/remmina_main.c:1346
+msgid "Remmina Kiosk"
+msgstr "Kiosek Remmina"
+
+#. TRANSLATORS: The placeholder %s is a directory path
+#: src/remmina_sftp_client.c:173
+#, c-format
+msgid "Could not create the folder “%s”."
+msgstr "Nepodařilo se vytvořit složku „%s“."
+
+#. TRANSLATORS: The placeholder %s is a file path
+#: src/remmina_sftp_client.c:181 src/remmina_sftp_client.c:202
+#, c-format
+msgid "Could not create the file “%s”."
+msgstr "Nepodařilo se vytvořit soubor „%s“."
+
+#. TRANSLATORS: The placeholders %s are a file path, and an error message.
+#: src/remmina_sftp_client.c:220
+#, c-format
+msgid "Could not open the file “%s” on the server. %s"
+msgstr "Nedaří se otevřít soubor „%s“ na serveru. %s"
+
+#: src/remmina_sftp_client.c:242
+#, c-format
+msgid "Could not save the file “%s”."
+msgstr "Nedaří se uložit soubor „%s“."
+
+#: src/remmina_sftp_client.c:281 src/remmina_sftp_client.c:698
+#: src/remmina_sftp_client.c:761
+#, c-format
+msgid "Could not open the folder “%s”. %s"
+msgstr "Nedaří se otevřít složku „%s“. %s"
+
+#: src/remmina_sftp_client.c:385
+#, c-format
+msgid "Could not create the folder “%s” on the server. %s"
+msgstr "Složku „%s“ se nedaří na serveru vytvořit: %s"
+
+#: src/remmina_sftp_client.c:413 src/remmina_sftp_client.c:435
+#, c-format
+msgid "Could not create the file “%s” on the server. %s"
+msgstr "Soubor „%s“ se nedaří na serveru vytvořit: %s"
+
+#: src/remmina_sftp_client.c:456
+#, c-format
+msgid "Could not open the file “%s”."
+msgstr "Nedaří se otevřít soubor „%s“."
+
+#: src/remmina_sftp_client.c:476
+#, c-format
+msgid "Could not write to the file “%s” on the server. %s"
+msgstr "Soubor „%s“ se nedaří zapsat na serveru: %s"
+
+#: src/remmina_sftp_client.c:716
+#, c-format
+msgid "Could not read from the folder. %s"
+msgstr "Nedaří se číst ze složky: %s"
+
+#: src/remmina_sftp_client.c:823
+msgid "Are you sure you want to cancel the file transfer in progress?"
+msgstr "Opravdu chcete probíhající přenos souboru zrušit?"
+
+#: src/remmina_sftp_client.c:857
+#, c-format
+msgid "Could not delete “%s”. %s"
+msgstr "Nepodařilo se smazat „%s“: %s"
+
+#: src/remmina_sftp_client.c:942
+msgid "The file exists already"
+msgstr "Soubor už existuje"
+
+#: src/remmina_sftp_client.c:945
+msgid "Resume"
+msgstr "Pokračovat"
+
+#: src/remmina_sftp_client.c:946
+msgid "Overwrite"
+msgstr "Přepsat"
+
+#: src/remmina_sftp_client.c:964
+msgid "The following file already exists in the target folder:"
+msgstr "Následující soubor už v cílové složce existuje:"
+
 #: src/remmina_file_editor.c:60
 #, fuzzy
 #| msgid ""
@@ -1662,6 +1455,12 @@ msgstr "Ověřování se pro SSH"
 msgid "SSH private key file"
 msgstr "Soubor soukromého klíče SSH"
 
+#: src/remmina_file_editor.c:979 src/remmina_ssh_plugin.c:1477
+#, fuzzy
+#| msgid "CA Certificate File"
+msgid "SSH certificate file"
+msgstr "Soubor s certifikátem SSH"
+
 #: src/remmina_file_editor.c:1037
 msgid "Basic"
 msgstr "Základní"
@@ -1713,555 +1512,347 @@ msgstr "Podskupiny oddělujte pomocí „%s“"
 msgid "Could not find the file “%s”."
 msgstr "Nedaří se najít soubor „%s“."
 
-#: src/remmina_chat_window.c:178
+#: src/remmina_icon.c:128
+msgid "Open Main Window"
+msgstr "Otevřít hlavní okno"
+
+#: src/remmina_icon.c:133 data/ui/remmina_main.glade:254
+msgid "_Preferences"
+msgstr "_Předvolby"
+
+#: src/remmina_icon.c:138
+msgid "_About"
+msgstr "O _aplikaci"
+
+#: src/remmina_icon.c:148
+msgid "Enable Service Discovery"
+msgstr "Zapnout objevování služeb"
+
+#: src/remmina_icon.c:160 data/ui/remmina_main.glade:404
+msgid "_Quit"
+msgstr "U_končit"
+
+#. TRANSLATORS: Applet name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
+#. TRANSLATORS: Applet Name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
+#: src/remmina_icon.c:284 src/remmina_icon.c:416
+msgid "Remmina Applet"
+msgstr "Miniaplikace Remmina"
+
+#. TRANSLATORS: Applet comment/description as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
+#: src/remmina_icon.c:286 src/remmina_icon.c:418
+msgid "Connect to remote desktops through the applet menu"
+msgstr "Připojovat se ke vzdáleným plochám z nabídky miniaplikace"
+
+#. TRANSLATORS: %s is a placeholder for an error message
+#: src/remmina_ssh_plugin.c:539
 #, c-format
-msgid "Chat with %s"
-msgstr "Chat s %s"
+msgid "Error: %s"
+msgstr "Chyba: %s"
 
-#: src/remmina_chat_window.c:230
-msgid "_Send"
-msgstr "Ode_slat"
+#: src/remmina_ssh_plugin.c:556
+msgid "Terminal content saved in"
+msgstr "Obsah terminálu uložen v"
 
-#: src/remmina_chat_window.c:240
-msgid "_Clear"
-msgstr "_Vyčistit"
+#: src/remmina_ssh_plugin.c:822
+msgid "Select All (host+A)"
+msgstr "Vybrat vše (host+A)"
 
-#: plugins/gvnc/gvnc_plugin_config.h:40
+#: src/remmina_ssh_plugin.c:823
+msgid "Copy (host+C)"
+msgstr "Kopírovat (host+C)"
+
+#: src/remmina_ssh_plugin.c:824
+msgid "Paste (host+V)"
+msgstr "Vložit (host+V)"
+
+#: src/remmina_ssh_plugin.c:825
+msgid "Save session to file"
+msgstr "Uložit relaci do souboru"
+
+#: src/remmina_ssh_plugin.c:826
+msgid "Increase font size (host+Page Up)"
+msgstr "Zvětšit velikost písma (host+Page Up)"
+
+#: src/remmina_ssh_plugin.c:827
+msgid "Decrease font size (host+Page Down)"
+msgstr "Zmenšit velikost písma (host+Page Down)"
+
+#: src/remmina_ssh_plugin.c:828
+msgid "Find text (host+G)"
+msgstr "Vložit (host+V)"
+
+#: src/remmina_ssh_plugin.c:1448 data/ui/remmina_main.glade:177
+msgid "Copy"
+msgstr "Kopírovat"
+
+#: src/remmina_ssh_plugin.c:1448
+msgid "_Copy"
+msgstr "_Kopírovat"
+
+#: src/remmina_ssh_plugin.c:1449
+msgid "Paste"
+msgstr "Vložit"
+
+#: src/remmina_ssh_plugin.c:1449
+msgid "_Paste"
+msgstr "_Vložit"
+
+#: src/remmina_ssh_plugin.c:1450
+msgid "Select all"
+msgstr "Vybrat vše"
+
+#: src/remmina_ssh_plugin.c:1450
+msgid "_Select all"
+msgstr "_Vybrat vše"
+
+#: src/remmina_ssh_plugin.c:1451
+msgid "Increase font size"
+msgstr "Zvětšit velikost písma"
+
+#: src/remmina_ssh_plugin.c:1451
+msgid "_Increase font size"
+msgstr "Zvětš_it velikost písma"
+
+#: src/remmina_ssh_plugin.c:1452
+msgid "Decrease font size"
+msgstr "Zmenšit velikost písma"
+
+#: src/remmina_ssh_plugin.c:1452
+msgid "_Decrease font size"
+msgstr "_Zmenšit velikost písma"
+
+#: src/remmina_ssh_plugin.c:1453
 #, fuzzy
-#| msgid "Remmina VNC Plugin"
-msgid "Remmina VNC plugin for GNOME and KVM"
-msgstr "Zásuvný modul VNC Remmina pro GNOME a KVM"
+msgid "Find text"
+msgstr "Hledat text"
 
-#: plugins/gvnc/gvnc_plugin.c:477
-#, fuzzy, c-format
-#| msgid "Authentication type"
-msgid "Unsupported authentication type %u"
-msgstr "Nepodporovaný typ ověřování %u"
-
-#: plugins/gvnc/gvnc_plugin.c:489
-#, fuzzy, c-format
-#| msgid "Authentication type"
-msgid "Authentication failure: %s"
-msgstr "Selhání ověřování: %s"
-
-#: plugins/gvnc/gvnc_plugin.c:539 plugins/vnc/vnc_plugin.c:825
-msgid "Enter VNC authentication credentials"
-msgstr "Zadejte přihlašovací údaje pro VNC"
-
-#: plugins/gvnc/gvnc_plugin.c:820
+#: src/remmina_ssh_plugin.c:1453
 #, fuzzy
-#| msgid "Use system proxy settings"
-msgid "Use server settings"
-msgstr "Použít nastavení serveru"
+msgid "_Find text"
+msgstr "_Najít text"
 
-#: plugins/gvnc/gvnc_plugin.c:821
-#, fuzzy
-#| msgid "True colour (24 bit)"
-msgid "True colour (24 bits)"
-msgstr "True color (24 bitů)"
+#: src/remmina_ssh_plugin.c:1474 plugins/spice/spice_plugin.c:666
+#: plugins/vnc/vnc_plugin.c:1961 plugins/vnc/vnc_plugin.c:1981
+msgid "User password"
+msgstr "Heslo k uživatelskému účtu"
 
-#: plugins/gvnc/gvnc_plugin.c:822
-#, fuzzy
-#| msgid "High colour (16 bit)"
-msgid "High colour (16 bits)"
-msgstr "High color (16 bitů)"
+#: src/remmina_ssh_plugin.c:1480 plugins/rdp/rdp_plugin.c:2693
+msgid "Start-up program"
+msgstr "Program při spouštění"
 
-#: plugins/gvnc/gvnc_plugin.c:823
-#, fuzzy
-#| msgid "High colour (16 bit)"
-msgid "Low colour (8 bits)"
-msgstr "Nízká barevnost (8 bitů)"
-
-#: plugins/gvnc/gvnc_plugin.c:824
-#, fuzzy
-#| msgid "True colour (24 bit)"
-msgid "Ultra low colour (3 bits)"
-msgstr "Velmi nízká barevnost (3 bity)"
-
-#: plugins/gvnc/gvnc_plugin.c:839
-#, fuzzy
-#| msgid "Enter VNC password"
-msgid "VNC password"
-msgstr "Heslo VNC"
-
-#: plugins/gvnc/gvnc_plugin.c:840 plugins/vnc/vnc_plugin.c:1962
-#: plugins/vnc/vnc_plugin.c:1982 plugins/rdp/rdp_plugin.c:2661
-msgid "Colour depth"
-msgstr "Barevná hloubka"
-
-#: plugins/gvnc/gvnc_plugin.c:841
-#, fuzzy
-#| msgid "SSH compression"
-msgid "Use JPEG Compression"
-msgstr "Použití komprese JPEG"
-
-#: plugins/gvnc/gvnc_plugin.c:841
-#, fuzzy
-#| msgid "Browse the network to find a %s server"
-msgid "This might not work on all VNC servers"
-msgstr "To nemusí fungovat na všech serverech VNC."
-
-#: plugins/gvnc/gvnc_plugin.c:842
-#, fuzzy
-msgid "Enable GTK-VNC debug"
-msgstr "Povolení ladění GTK-VNC"
-
-#: plugins/gvnc/gvnc_plugin.c:857 plugins/gvnc/gvnc_plugin.c:871
-#: plugins/spice/spice_plugin.c:693 plugins/spice/spice_plugin.c:706
-msgid "No clipboard sync"
-msgstr "Nesynchronizovat obsah schránky"
-
-#: plugins/gvnc/gvnc_plugin.c:858 plugins/www/www_plugin.c:904
-#: plugins/vnc/vnc_plugin.c:2005 plugins/spice/spice_plugin.c:694
-#: plugins/rdp/rdp_plugin.c:2718
-msgid "Forget passwords after use"
-msgstr "Po použití heslo zapomenout"
-
-#: plugins/gvnc/gvnc_plugin.c:859 plugins/vnc/vnc_plugin.c:2004
-#, fuzzy
-msgid "Ignore remote bell messages"
-msgstr "Ignorování zpráv vzdáleného zvonku"
-
-#: plugins/gvnc/gvnc_plugin.c:860 plugins/spice/spice_plugin.c:695
-msgid "Enable audio channel"
-msgstr "Přenášet zvuk"
-
-#: plugins/gvnc/gvnc_plugin.c:861 plugins/gvnc/gvnc_plugin.c:870
-#: plugins/vnc/vnc_plugin.c:2000 plugins/vnc/vnc_plugin.c:2017
-#: plugins/spice/spice_plugin.c:697 plugins/spice/spice_plugin.c:705
-msgid "View only"
-msgstr "Pouze prohlížení"
-
-#: plugins/gvnc/gvnc_plugin.c:862
-#, fuzzy
-#| msgid "Per connection"
-msgid "Shared connection"
-msgstr "Sdílené připojení"
-
-#: plugins/gvnc/gvnc_plugin.c:862
-#, fuzzy
+#: src/remmina_ssh_plugin.c:1485
 msgid ""
-"If the server should try to share the desktop by leaving other clients "
-"connected"
+"The filename can use the following placeholders:\n"
+"\n"
+"  • %h is substituted with the server name\n"
+"  • %t is substituted with the SSH server name\n"
+"  • %u is substituted with the username\n"
+"  • %U is substituted with the SSH username\n"
+"  • %p is substituted with Remmina profile name\n"
+"  • %g is substituted with Remmina profile group name\n"
+"  • %d is substituted with local date and time in ISO 8601 format\n"
 msgstr ""
-"Pokud se server pokusí sdílet plochu tím, že nechá připojené další klienty."
+"V názvu souboru je možné použít následující dosazení:\n"
+"\n"
+"•  za %h je dosazen název serveru\n"
+"•  za %t je dosazen název SSH serveru\n"
+"•  za %u je dosazeno uživatelské jméno\n"
+"•  za %U je dosazeno uživatelské jméno pro SSH\n"
+"•  za %p je dosazen název Remmina profilu\n"
+"•  za %g je dosazen název skupiny Remmina profilu\n"
+"•  za %d je dosazeno lokální datum a čas ve formátu dle normy iso8601\n"
 
-#: plugins/gvnc/gvnc_plugin.c:872
+#: src/remmina_ssh_plugin.c:1507
 #, fuzzy
-#| msgid "Send Ctrl+Alt+Del"
-msgid "Send Ctrl+Alt+_Del"
-msgstr "Poslat Ctrl+Alt+Delete"
+#| msgid "Terminal color scheme"
+msgid "Terminal colour scheme"
+msgstr "Barevné schéma terminálu"
 
-#: plugins/gvnc/gvnc_plugin.c:873
+#: src/remmina_ssh_plugin.c:1508
+msgid "Character set"
+msgstr "Znaková sada"
+
+#: src/remmina_ssh_plugin.c:1510
+msgid "KEX (Key Exchange) algorithms"
+msgstr "Algoritmy pro výměnu klíčů (KEX)"
+
+#: src/remmina_ssh_plugin.c:1511
+msgid "Symmetric cipher client to server"
+msgstr "Symetrická šifra mezi klientem a serverem"
+
+#: src/remmina_ssh_plugin.c:1512
+msgid "Preferred server host key types"
+msgstr "Upřednostňované typy klíčů serveru hostitele"
+
+#: src/remmina_ssh_plugin.c:1513
+msgid "Folder for SSH session log"
+msgstr "Složka pro záznam z SSH relace"
+
+#: src/remmina_ssh_plugin.c:1514
+msgid "Filename for SSH session log"
+msgstr "Soubor pro záznam z SSH relace"
+
+#: src/remmina_ssh_plugin.c:1515
+msgid "Log SSH session when exiting Remmina"
+msgstr "Při ukončování Remmina uložit záznam SSH relace"
+
+#: src/remmina_ssh_plugin.c:1516
 #, fuzzy
-#| msgid "Send Ctrl+Alt+Del"
-msgid "Send Ctrl+Alt+_Backspace"
-msgstr "Odeslat Ctrl+Alt+_Backspace"
+msgid "Log SSH session asynchronously"
+msgstr "Asynchronní protokolování relace SSH"
 
-#: plugins/gvnc/gvnc_plugin.c:874
-msgid "Send Ctrl+Alt+_F1"
-msgstr "Poslat Ctrl+Alt+_F1"
-
-#: plugins/gvnc/gvnc_plugin.c:875
-msgid "Send Ctrl+Alt+_F2"
-msgstr "Poslat Ctrl+Alt+_F2"
-
-#: plugins/gvnc/gvnc_plugin.c:876
-msgid "Send Ctrl+Alt+_F3"
-msgstr "Poslat Ctrl+Alt+_F3"
-
-#: plugins/gvnc/gvnc_plugin.c:877
-msgid "Send Ctrl+Alt+_F4"
-msgstr "Poslat Ctrl+Alt+_F4"
-
-#: plugins/gvnc/gvnc_plugin.c:878
-msgid "Send Ctrl+Alt+_F5"
-msgstr "Poslat Ctrl+Alt+_F5"
-
-#: plugins/gvnc/gvnc_plugin.c:879
-msgid "Send Ctrl+Alt+_F6"
-msgstr "Poslat Ctrl+Alt+_F6"
-
-#: plugins/gvnc/gvnc_plugin.c:880
-msgid "Send Ctrl+Alt+_F7"
-msgstr "Poslat Ctrl+Alt+_F7"
-
-#: plugins/gvnc/gvnc_plugin.c:881
-msgid "Send Ctrl+Alt+_F8"
-msgstr "Poslat Ctrl+Alt+_F8"
-
-#: plugins/gvnc/gvnc_plugin.c:882
-msgid "Send Ctrl+Alt+_F9"
-msgstr "Poslat Ctrl+Alt+_F9"
-
-#: plugins/gvnc/gvnc_plugin.c:883
-msgid "Send Ctrl+Alt+_F10"
-msgstr "Poslat Ctrl+Alt+_F10"
-
-#: plugins/gvnc/gvnc_plugin.c:884
-msgid "Send Ctrl+Alt+_F11"
-msgstr "Poslat Ctrl+Alt+_F11"
-
-#: plugins/gvnc/gvnc_plugin.c:885
-msgid "Send Ctrl+Alt+_F12"
-msgstr "Poslat Ctrl+Alt+_F12"
-
-#: plugins/gvnc/gvnc_plugin.c:887
+#: src/remmina_ssh_plugin.c:1516
 #, fuzzy
-msgid "Reboot remote host"
-msgstr "Restartování vzdáleného hostitele"
+msgid "Saving the session asynchronously may have a notable performance impact"
+msgstr "Asynchronní uložení relace může mít znatelný dopad na výkon."
 
-#: plugins/gvnc/gvnc_plugin.c:888
-#, fuzzy
-msgid "Reset remote host (hard reboot)"
-msgstr "Resetování vzdáleného hostitele (tvrdý restart)"
+#: src/remmina_ssh_plugin.c:1517
+msgid "Audible terminal bell"
+msgstr "Zvukové upozorňování terminálu"
 
-#: plugins/gvnc/gvnc_plugin.c:889
-#, fuzzy
-#| msgid "Show remote cursor"
-msgid "Shutdown remote host"
-msgstr "Vypnutí vzdáleného hostitele"
+#: src/remmina_ssh_plugin.c:1518
+msgid "SSH compression"
+msgstr "Komprese SSH"
 
-#: plugins/exec/exec_plugin_config.h:41
-msgid "Execute a command"
-msgstr "Vykonat příkaz"
+#: src/remmina_ssh_plugin.c:1519
+msgid "Don't remember passwords"
+msgstr "Nepamatuje si hesla"
 
-#: plugins/exec/exec_plugin.c:160
-msgid "You did not set any command to be executed"
-msgstr "Nenastavili jste žádný příkaz k vykonání"
+#: src/remmina_ssh_plugin.c:1520
+msgid "Strict host key checking"
+msgstr "Striktně ověřovat klíče hostitele"
 
-#: plugins/exec/exec_plugin.c:206
-msgid ""
-"Warning: Running a command synchronously may cause Remmina not to respond.\n"
-"Do you really want to continue?"
-msgstr ""
-"Varování! Vykonání příkazu synchronně může způsobit, že Remmina přestane "
-"regovat.\n"
-"Opravdu chcete pokračovat?"
+#: src/remmina_ssh_plugin.c:1534
+msgid "SSH - Secure Shell"
+msgstr "SSH – zabezpečený shell"
 
-#: plugins/exec/exec_plugin.c:266
-msgid "Command"
-msgstr "Příkaz"
+#: plugins/kwallet/src/kwallet_plugin_main.c:118
+msgid "Secured password storage in KWallet"
+msgstr "Zabezpečené ukládání hesel v klíčence KDE"
 
-#: plugins/exec/exec_plugin.c:267
-msgid "Asynchronous execution"
-msgstr "Asynchronní vykonání"
+#: plugins/rdp/rdp_settings.c:205
+msgid "<Auto-detect>"
+msgstr "<Automatické zjišťování>"
 
-#: plugins/www/www_plugin.c:98
-msgid "File downloaded"
-msgstr "Soubor stažen"
+#: plugins/rdp/rdp_settings.c:237
+msgid "<Not set>"
+msgstr "<Nenastaveno>"
 
-#: plugins/www/www_plugin.c:574
-msgid "Enter WWW authentication credentials"
-msgstr "Zadejte přihlašovací údaje pro WWW"
+#: plugins/rdp/rdp_settings.c:268
+msgid "<Choose a quality level to edit…>"
+msgstr "<Zvolte úroveň kvality, kterou upravit…>"
 
-#: plugins/www/www_plugin.c:878
-msgid "URL"
-msgstr "URL adresa"
-
-#: plugins/www/www_plugin.c:878
-msgid "http://address or https://address"
-msgstr "http://adresa nebo https://adresa"
-
-#: plugins/www/www_plugin.c:895
-msgid "User agent"
-msgstr "User Agent"
-
-#: plugins/www/www_plugin.c:896
-msgid "Proxy URL"
-msgstr "URL adresa proxy"
-
-#: plugins/www/www_plugin.c:896
-msgid "E.g. https://example.org, socks://mysocks:1080"
-msgstr "Např. https://example.org, socks://mojesocks:1080"
-
-#: plugins/www/www_plugin.c:897
-msgid "Turn on Java support"
-msgstr "Zapnout podporu pro Java"
-
-#: plugins/www/www_plugin.c:898
-msgid "Turn on smooth scrolling"
-msgstr "Zapnout plynulé posouvání"
-
-#: plugins/www/www_plugin.c:899
-msgid "Turn on spatial navigation"
-msgstr "Zapnout prostorovou navigaci"
-
-#: plugins/www/www_plugin.c:900
-msgid "Turn on plugin support"
-msgstr "Zapnout podporu zásuvných modulů"
-
-#: plugins/www/www_plugin.c:901
-msgid "Turn on WebGL support"
-msgstr "Zapnout podporu WebGL"
-
-#: plugins/www/www_plugin.c:902
-msgid "Turn on HTML5 audio support"
-msgstr "Zapnout podporu pro HTMLP5 audio"
-
-#: plugins/www/www_plugin.c:903
-msgid "Ignore TLS errors"
-msgstr "Ignorovat TLS chyby"
-
-#: plugins/www/www_plugin.c:906
-msgid "Turn on Web Inspector"
-msgstr "Zapnout Web Inspector"
-
-#: plugins/www/www_config.h:43
-msgid "Remmina web-browser plugin"
-msgstr "Zásuvný modul Remmina pro webový prohlížeč"
-
-#: plugins/secret/src/glibsecret_plugin.c:188
-msgid "Secured password storage in the GNOME keyring"
-msgstr "Zabezpečené ukládání hesel v klíčence GNOME"
-
-#: plugins/tool_hello_world/plugin_config.h:40
-msgid "Hello, World!"
-msgstr "Ahoj světe!"
-
-#: plugins/vnc/vnc_plugin.c:772
-msgid "Enter VNC password"
-msgstr "Zadejte heslo pro VNC"
-
-#: plugins/vnc/vnc_plugin.c:936
-msgid "Unable to connect to VNC server"
-msgstr "Nedaří se připojit k VNC serveru"
-
-#: plugins/vnc/vnc_plugin.c:937
-#, c-format
-msgid "Couldn’t convert '%s' to host address"
-msgstr "Nedaří se převést „%s“ na adresu hostitele"
-
-#: plugins/vnc/vnc_plugin.c:938
-#, c-format
-msgid "VNC connection failed: %s"
-msgstr "Spojení pomocí VNC se nezdařilo: %s"
-
-#: plugins/vnc/vnc_plugin.c:939
-msgid "Your connection has been rejected."
-msgstr "Vaše spojení bylo odmítnuto."
-
-#: plugins/vnc/vnc_plugin.c:966
-#, c-format
-msgid "The VNC server requested an unknown authentication method. %s"
-msgstr "VNC server vyžádal neznámou metodu ověřování se: %s"
-
-#: plugins/vnc/vnc_plugin.c:968
-msgid "Please retry after turning on encryption for this profile."
-msgstr "Zapněte v tomto profilu šifrování a zkuste to znovu."
-
-#: plugins/vnc/vnc_plugin.c:1922 plugins/rdp/rdp_plugin.c:2497
-msgid "True colour (32 bpp)"
-msgstr "True color (32 bit/px)"
-
-#: plugins/vnc/vnc_plugin.c:1923 plugins/rdp/rdp_plugin.c:2499
-msgid "High colour (16 bpp)"
-msgstr "High color (16 bit/px)"
-
-#: plugins/vnc/vnc_plugin.c:1924 plugins/rdp/rdp_plugin.c:2501
-msgid "256 colours (8 bpp)"
-msgstr "256 barev (8 bit/px)"
-
-#: plugins/vnc/vnc_plugin.c:1931 plugins/rdp/rdp_plugin.c:2524
-#: plugins/rdp/rdp_settings.c:274
-msgid "Good"
-msgstr "Dobrá"
-
-#: plugins/vnc/vnc_plugin.c:1932 plugins/rdp/rdp_plugin.c:2525
-#: plugins/rdp/rdp_settings.c:276
-msgid "Best (slowest)"
-msgstr "Nejlepší (nejpomalejší)"
-
-#: plugins/vnc/vnc_plugin.c:1933 plugins/rdp/rdp_plugin.c:2523
-#: plugins/rdp/rdp_settings.c:272
-msgid "Medium"
-msgstr "Střední"
-
-#: plugins/vnc/vnc_plugin.c:1934 plugins/rdp/rdp_plugin.c:2522
-#: plugins/rdp/rdp_settings.c:270
+#: plugins/rdp/rdp_settings.c:270 plugins/rdp/rdp_plugin.c:2522
+#: plugins/vnc/vnc_plugin.c:1934
 msgid "Poor (fastest)"
 msgstr "Nejhorší (nejrychlejší)"
 
-#: plugins/vnc/vnc_plugin.c:1939
+#: plugins/rdp/rdp_settings.c:272 plugins/rdp/rdp_plugin.c:2523
+#: plugins/vnc/vnc_plugin.c:1933
+msgid "Medium"
+msgstr "Střední"
+
+#: plugins/rdp/rdp_settings.c:274 plugins/rdp/rdp_plugin.c:2524
+#: plugins/vnc/vnc_plugin.c:1931
+msgid "Good"
+msgstr "Dobrá"
+
+#: plugins/rdp/rdp_settings.c:276 plugins/rdp/rdp_plugin.c:2525
+#: plugins/vnc/vnc_plugin.c:1932
+msgid "Best (slowest)"
+msgstr "Nejlepší (nejpomalejší)"
+
+#: plugins/rdp/rdp_settings.c:415
+msgid "Keyboard layout"
+msgstr "Rozložení klávesnice"
+
+#: plugins/rdp/rdp_settings.c:440
+msgid "Use client keyboard mapping"
+msgstr "Použít nastavení klávesnice, jaké má klient"
+
+#: plugins/rdp/rdp_settings.c:450
+msgid "Quality settings"
+msgstr "Nastavení kvality"
+
+#: plugins/rdp/rdp_settings.c:470
+msgid "Wallpaper"
+msgstr "Pozadí plochy"
+
+#: plugins/rdp/rdp_settings.c:477
+msgid "Window drag"
+msgstr "Přetahování okna"
+
+#: plugins/rdp/rdp_settings.c:484
+msgid "Menu animation"
+msgstr "Animace nabídky"
+
+#: plugins/rdp/rdp_settings.c:491
+msgid "Theme"
+msgstr "Motiv"
+
+#: plugins/rdp/rdp_settings.c:498
+msgid "Cursor shadow"
+msgstr "Stín pod ukazatelem"
+
+#: plugins/rdp/rdp_settings.c:505
+msgid "Cursor blinking"
+msgstr "Blikání ukazatele"
+
+#: plugins/rdp/rdp_settings.c:512
+msgid "Font smoothing"
+msgstr "Vyhlazování písma"
+
+#: plugins/rdp/rdp_settings.c:519
+msgid "Composition"
+msgstr "Kompozitní efekty"
+
+#: plugins/rdp/rdp_settings.c:529
+msgid "Remote scale factor"
+msgstr "Měřítko zobrazení na protějšku"
+
+#: plugins/rdp/rdp_settings.c:542
+msgid "Desktop scale factor %"
+msgstr "Měřítko pracovní plochy %"
+
+#: plugins/rdp/rdp_settings.c:553
+msgid "Device scale factor %"
+msgstr "Měřítko zařízení %"
+
+#: plugins/rdp/rdp_settings.c:575
+msgid "Desktop orientation"
+msgstr "Orientace plochy"
+
+#: plugins/rdp/rdp_settings.c:592
 #, fuzzy
-msgid ""
-"Connect to VNC using a repeater:\n"
-"  • The server field must contain the repeater ID, e.g. ID:123456789\n"
-"  • The repeater field have to be set to the repeater IP and port, like:\n"
-"    10.10.10.12:5901\n"
-"  • From the remote VNC server, you will connect to\n"
-"    the repeater, e.g. with x11vnc:\n"
-"    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
-msgstr ""
-"Připojte se k VNC pomocí opakovače:\n"
-"  - ID:123456789.\n"
-"  - V poli repeater musí být nastavena IP adresa a port repeateru, např:\n"
-"    10.10.10.12:5901\n"
-"  - Ze vzdáleného VNC serveru se připojíte k\n"
-"    opakovače, např. pomocí x11vnc:\n"
-"    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
+#| msgid "Use system proxy settings"
+msgid "Input device settings"
+msgstr "Nastavení vstupního zařízení"
 
-#: plugins/vnc/vnc_plugin.c:1959
-msgid "Repeater"
-msgstr "Opakovač"
-
-#: plugins/vnc/vnc_plugin.c:1963 plugins/vnc/vnc_plugin.c:1983
-#: plugins/rdp/rdp_plugin.c:2677
-msgid "Quality"
-msgstr "Kvalita"
-
-#: plugins/vnc/vnc_plugin.c:1979
-msgid "Listen on port"
-msgstr "Očekávat spojení na portu"
-
-#: plugins/vnc/vnc_plugin.c:1999
-msgid "Show remote cursor"
-msgstr "Zobrazit vzdálený kurzor"
-
-#: plugins/vnc/vnc_plugin.c:2001 plugins/rdp/rdp_plugin.c:2715
-msgid "Turn off clipboard sync"
-msgstr "Nesynchronizovat obsah schránky"
-
-#: plugins/vnc/vnc_plugin.c:2002
-msgid "Turn off encryption"
-msgstr "Použít TLS šifrování"
-
-#: plugins/vnc/vnc_plugin.c:2003 plugins/vnc/vnc_plugin.c:2018
-#, fuzzy
-msgid "Prevent local interaction on the server"
-msgstr "Zabránit místní interakci na serveru"
-
-#: plugins/vnc/vnc_plugin.c:2006 plugins/rdp/rdp_plugin.c:2656
-#: plugins/rdp/rdp_settings.c:598
+#: plugins/rdp/rdp_settings.c:598 plugins/rdp/rdp_plugin.c:2656
+#: plugins/vnc/vnc_plugin.c:2006
 #, fuzzy
 #| msgid "Turn on smooth scrolling"
 msgid "Disable smooth scrolling"
 msgstr "Zakázat plynulé posouvání"
 
-#: plugins/vnc/vnc_plugin.c:2020
-msgid "Open Chat…"
-msgstr "Otevřít chat…"
-
-#: plugins/vnc/vnc_plugin.c:2021 plugins/spice/spice_plugin.c:707
-#: plugins/rdp/rdp_plugin.c:2744
-msgid "Send Ctrl+Alt+Delete"
-msgstr "Poslat Ctrl+Alt+Delete"
-
-#: plugins/vnc/vnc_plugin.h:41
-msgid "Remmina VNC Plugin"
-msgstr "Zásuvný modul Remmina pro VNC"
-
-#: plugins/vnc/vnc_plugin.h:46
-msgid "Remmina VNC listener Plugin"
-msgstr "Zásuvný modul Remmina pro očekávání VNC spojení"
-
-#: plugins/spice/spice_plugin_usb.c:51 plugins/spice/spice_plugin.c:708
-msgid "Select USB devices for redirection"
-msgstr "Vyberte USB zařízení, které přesměrovat"
-
-#: plugins/spice/spice_plugin_usb.c:54
-msgid "_Close"
-msgstr "_Zavřít"
-
-#: plugins/spice/spice_plugin_usb.c:94
-msgid "USB redirection error"
-msgstr "Chyba přesměrování USB"
-
-#: plugins/spice/spice_plugin.c:351
-msgid "Enter SPICE password"
-msgstr "Zadejte SPICE heslo"
-
-#: plugins/spice/spice_plugin.c:386
-#, c-format
-msgid "Disconnected from the SPICE server “%s”."
-msgstr "Odpojeno od SPICE serveru „%s“."
-
-#: plugins/spice/spice_plugin.c:402
-msgid "TLS connection error."
-msgstr "Chyba TLS spojení."
-
-#: plugins/spice/spice_plugin.c:408
-msgid "Connection to the SPICE server dropped."
-msgstr "Připojení ke SPICE serveru se přerušilo."
-
-#: plugins/spice/spice_plugin.c:616 plugins/spice/spice_plugin.c:634
-msgid "Default"
-msgstr "Výchozí"
-
-#: plugins/spice/spice_plugin.c:635 plugins/rdp/rdp_plugin.c:2546
-#: data/ui/remmina_preferences.glade:677
-msgid "Off"
-msgstr "Vypnout"
-
-#: plugins/spice/spice_plugin.c:636
+#: plugins/rdp/rdp_settings.c:608
 #, fuzzy
-msgid "Auto GLZ"
-msgstr "Auto GLZ"
+#| msgid "Quality settings"
+msgid "General settings"
+msgstr "Obecná nastavení"
 
-#: plugins/spice/spice_plugin.c:637
+#: plugins/rdp/rdp_settings.c:613 plugins/rdp/rdp_plugin.c:2708
 #, fuzzy
-msgid "Auto LZ"
-msgstr "Auto LZ"
+#| msgid "Reconnection attempt %d of %d…"
+msgid "Reconnect attempts number"
+msgstr "Počet pokusů o opětovné připojení"
 
-#: plugins/spice/spice_plugin.c:650
+#: plugins/rdp/rdp_settings.c:619 plugins/rdp/rdp_plugin.c:2708
 #, fuzzy
-msgid "Disable video overlay if videos are not displayed properly.\n"
-msgstr "Pokud se videa nezobrazují správně, vypněte překrývání videa.\n"
-
-#: plugins/spice/spice_plugin.c:667
-msgid "Use TLS encryption"
-msgstr "Použít TLS šifrování"
-
-#: plugins/spice/spice_plugin.c:668
-msgid "Server CA certificate"
-msgstr "Certifikát cert. autority, která vydala certifikát serveru"
-
-#: plugins/spice/spice_plugin.c:669 plugins/rdp/rdp_plugin.c:2654
-msgid "Share folder"
-msgstr "Sdílet složku"
-
-#: plugins/spice/spice_plugin.c:686
-msgid "Prefered video codec"
-msgstr "Předvolba"
-
-#: plugins/spice/spice_plugin.c:687
-msgid "Turn off GStreamer overlay"
-msgstr "Vypnout klávesnici a myš na straně serveru"
-
-#: plugins/spice/spice_plugin.c:690
-#, fuzzy
-msgid "Prefered image compression"
-msgstr "Preferovaná komprese obrazu"
-
-#: plugins/spice/spice_plugin.c:696
-msgid "Share smart card"
-msgstr "Sdílet čipovou kartu"
-
-#: plugins/spice/spice_plugin.c:719
-msgid "SPICE - Simple Protocol for Independent Computing Environments"
-msgstr "SPICE – Simple Protocol for Independent Computing Environments"
-
-#: plugins/spice/spice_plugin_file_transfer.c:82
-msgid "File Transfers"
-msgstr "Přenos souborů"
-
-#: plugins/spice/spice_plugin_file_transfer.c:219
-msgid "Transfer error"
-msgstr "Chyba přenosu"
-
-#: plugins/spice/spice_plugin_file_transfer.c:220
-#, c-format
-msgid "%s: %s"
-msgstr "%s: %s"
-
-#: plugins/spice/spice_plugin_file_transfer.c:223
-msgid "Transfer completed"
-msgstr "Přenos dokončen"
-
-#: plugins/spice/spice_plugin_file_transfer.c:224
-#, c-format
-msgid "The %s file has been transferred"
-msgstr "Soubor %s byl přenesen"
+msgid ""
+"The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
+msgstr ""
+"Maximální počet pokusů o opětovné připojení při odpojení RDP (výchozí: 20)."
 
 #: plugins/rdp/rdp_plugin.c:757 plugins/rdp/rdp_plugin.c:822
 msgid "Enter RDP authentication credentials"
@@ -2430,13 +2021,25 @@ msgstr "GFX RFX progresivní (32 bit/px)"
 msgid "RemoteFX (32 bpp)"
 msgstr "RemoteFX (32 bit/px)"
 
+#: plugins/rdp/rdp_plugin.c:2497 plugins/vnc/vnc_plugin.c:1922
+msgid "True colour (32 bpp)"
+msgstr "True color (32 bit/px)"
+
 #: plugins/rdp/rdp_plugin.c:2498
 msgid "True colour (24 bpp)"
 msgstr "True color (24 bit/px)"
 
+#: plugins/rdp/rdp_plugin.c:2499 plugins/vnc/vnc_plugin.c:1923
+msgid "High colour (16 bpp)"
+msgstr "High color (16 bit/px)"
+
 #: plugins/rdp/rdp_plugin.c:2500
 msgid "High colour (15 bpp)"
 msgstr "High color (15 bit/px)"
+
+#: plugins/rdp/rdp_plugin.c:2501 plugins/vnc/vnc_plugin.c:1924
+msgid "256 colours (8 bpp)"
+msgstr "256 barev (8 bit/px)"
 
 #: plugins/rdp/rdp_plugin.c:2532 data/ui/remmina_preferences.glade:641
 msgid "None"
@@ -2475,6 +2078,11 @@ msgstr "WAN"
 #, fuzzy
 msgid "LAN"
 msgstr "LAN"
+
+#: plugins/rdp/rdp_plugin.c:2546 plugins/spice/spice_plugin.c:635
+#: data/ui/remmina_preferences.glade:677
+msgid "Off"
+msgstr "Vypnout"
 
 #: plugins/rdp/rdp_plugin.c:2555
 msgid "Automatic negotiation"
@@ -2641,6 +2249,10 @@ msgstr ""
 "  - hotplug,*\n"
 "\n"
 
+#: plugins/rdp/rdp_plugin.c:2654 plugins/spice/spice_plugin.c:669
+msgid "Share folder"
+msgstr "Sdílet složku"
+
 #: plugins/rdp/rdp_plugin.c:2654
 #, fuzzy
 msgid "Use “Redirect directory” in the advanced tab for multiple directories"
@@ -2673,9 +2285,19 @@ msgstr "Rozložení obrazovky na více monitorů"
 msgid "List monitor IDs"
 msgstr "Seznam ID monitorů"
 
+#: plugins/rdp/rdp_plugin.c:2661 plugins/vnc/vnc_plugin.c:1962
+#: plugins/vnc/vnc_plugin.c:1982 plugins/gvnc/gvnc_plugin.c:840
+msgid "Colour depth"
+msgstr "Barevná hloubka"
+
 #: plugins/rdp/rdp_plugin.c:2662
 msgid "Network connection type"
 msgstr "Nový profil připojení"
+
+#: plugins/rdp/rdp_plugin.c:2677 plugins/vnc/vnc_plugin.c:1963
+#: plugins/vnc/vnc_plugin.c:1983
+msgid "Quality"
+msgstr "Kvalita"
 
 #: plugins/rdp/rdp_plugin.c:2678
 msgid "Security protocol negotiation"
@@ -2824,19 +2446,6 @@ msgstr "Přesměrování TCP"
 msgid "/PATH/TO/rdp2tcp"
 msgstr "/PATH/TO/rdp2tcp"
 
-#: plugins/rdp/rdp_plugin.c:2708 plugins/rdp/rdp_settings.c:613
-#, fuzzy
-#| msgid "Reconnection attempt %d of %d…"
-msgid "Reconnect attempts number"
-msgstr "Počet pokusů o opětovné připojení"
-
-#: plugins/rdp/rdp_plugin.c:2708 plugins/rdp/rdp_settings.c:619
-#, fuzzy
-msgid ""
-"The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
-msgstr ""
-"Maximální počet pokusů o opětovné připojení při odpojení RDP (výchozí: 20)."
-
 #: plugins/rdp/rdp_plugin.c:2709
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
 msgstr "Upřednostňovat IPv6 AAA záznam nad IPv4 A záznamem"
@@ -2861,6 +2470,10 @@ msgstr "Sdílet paralelní porty"
 msgid "Share a smart card"
 msgstr "Sdílet čipovou kartu"
 
+#: plugins/rdp/rdp_plugin.c:2715 plugins/vnc/vnc_plugin.c:2001
+msgid "Turn off clipboard sync"
+msgstr "Nesynchronizovat obsah schránky"
+
 #: plugins/rdp/rdp_plugin.c:2716
 msgid "Ignore certificate"
 msgstr "Ignorovat certifikát"
@@ -2872,6 +2485,12 @@ msgstr "Použít starý pracovní postup pro licenci"
 #: plugins/rdp/rdp_plugin.c:2717
 msgid "It disables CAL and hwId is set to 0"
 msgstr "Vypne CAL a hwId je nastaveno na 0"
+
+#: plugins/rdp/rdp_plugin.c:2718 plugins/spice/spice_plugin.c:694
+#: plugins/vnc/vnc_plugin.c:2005 plugins/www/www_plugin.c:904
+#: plugins/gvnc/gvnc_plugin.c:858
+msgid "Forget passwords after use"
+msgstr "Po použití heslo zapomenout"
 
 #: plugins/rdp/rdp_plugin.c:2719
 msgid "Attach to console (2003/2003 R2)"
@@ -2919,6 +2538,11 @@ msgstr "Použijte základní pověření i pro bránu"
 msgid "Enable Gateway websockets support"
 msgstr "Povolení podpory webových soketů brány"
 
+#: plugins/rdp/rdp_plugin.c:2744 plugins/spice/spice_plugin.c:707
+#: plugins/vnc/vnc_plugin.c:2021
+msgid "Send Ctrl+Alt+Delete"
+msgstr "Poslat Ctrl+Alt+Delete"
+
 #: plugins/rdp/rdp_plugin.c:2757
 msgid "RDP - Remote Desktop Protocol"
 msgstr "RDP – Remote Desktop Protocol"
@@ -2935,98 +2559,474 @@ msgstr "RDP – předvolby"
 msgid "Export connection in Windows .rdp file format"
 msgstr "Exportovat připojení do souboru ve Windows formátu *.rdp"
 
-#: plugins/rdp/rdp_settings.c:205
-msgid "<Auto-detect>"
-msgstr "<Automatické zjišťování>"
-
-#: plugins/rdp/rdp_settings.c:237
-msgid "<Not set>"
-msgstr "<Nenastaveno>"
-
-#: plugins/rdp/rdp_settings.c:268
-msgid "<Choose a quality level to edit…>"
-msgstr "<Zvolte úroveň kvality, kterou upravit…>"
-
-#: plugins/rdp/rdp_settings.c:415
-msgid "Keyboard layout"
-msgstr "Rozložení klávesnice"
-
-#: plugins/rdp/rdp_settings.c:440
-msgid "Use client keyboard mapping"
-msgstr "Použít nastavení klávesnice, jaké má klient"
-
-#: plugins/rdp/rdp_settings.c:450
-msgid "Quality settings"
-msgstr "Nastavení kvality"
-
-#: plugins/rdp/rdp_settings.c:470
-msgid "Wallpaper"
-msgstr "Pozadí plochy"
-
-#: plugins/rdp/rdp_settings.c:477
-msgid "Window drag"
-msgstr "Přetahování okna"
-
-#: plugins/rdp/rdp_settings.c:484
-msgid "Menu animation"
-msgstr "Animace nabídky"
-
-#: plugins/rdp/rdp_settings.c:491
-msgid "Theme"
-msgstr "Motiv"
-
-#: plugins/rdp/rdp_settings.c:498
-msgid "Cursor shadow"
-msgstr "Stín pod ukazatelem"
-
-#: plugins/rdp/rdp_settings.c:505
-msgid "Cursor blinking"
-msgstr "Blikání ukazatele"
-
-#: plugins/rdp/rdp_settings.c:512
-msgid "Font smoothing"
-msgstr "Vyhlazování písma"
-
-#: plugins/rdp/rdp_settings.c:519
-msgid "Composition"
-msgstr "Kompozitní efekty"
-
-#: plugins/rdp/rdp_settings.c:529
-msgid "Remote scale factor"
-msgstr "Měřítko zobrazení na protějšku"
-
-#: plugins/rdp/rdp_settings.c:542
-msgid "Desktop scale factor %"
-msgstr "Měřítko pracovní plochy %"
-
-#: plugins/rdp/rdp_settings.c:553
-msgid "Device scale factor %"
-msgstr "Měřítko zařízení %"
-
-#: plugins/rdp/rdp_settings.c:575
-msgid "Desktop orientation"
-msgstr "Orientace plochy"
-
-#: plugins/rdp/rdp_settings.c:592
-#, fuzzy
-#| msgid "Use system proxy settings"
-msgid "Input device settings"
-msgstr "Nastavení vstupního zařízení"
-
-#: plugins/rdp/rdp_settings.c:608
-#, fuzzy
-#| msgid "Quality settings"
-msgid "General settings"
-msgstr "Obecná nastavení"
-
 #: plugins/rdp/rdp_event.c:344
 #, c-format
 msgid "Reconnection attempt %d of %d…"
 msgstr "Probíhá opětovné navazování spojení. Pokus %d z %d…"
 
-#: plugins/kwallet/src/kwallet_plugin_main.c:118
-msgid "Secured password storage in KWallet"
-msgstr "Zabezpečené ukládání hesel v klíčence KDE"
+#: plugins/spice/spice_plugin_file_transfer.c:82
+msgid "File Transfers"
+msgstr "Přenos souborů"
+
+#: plugins/spice/spice_plugin_file_transfer.c:219
+msgid "Transfer error"
+msgstr "Chyba přenosu"
+
+#: plugins/spice/spice_plugin_file_transfer.c:220
+#, c-format
+msgid "%s: %s"
+msgstr "%s: %s"
+
+#: plugins/spice/spice_plugin_file_transfer.c:223
+msgid "Transfer completed"
+msgstr "Přenos dokončen"
+
+#: plugins/spice/spice_plugin_file_transfer.c:224
+#, c-format
+msgid "The %s file has been transferred"
+msgstr "Soubor %s byl přenesen"
+
+#: plugins/spice/spice_plugin.c:351
+msgid "Enter SPICE password"
+msgstr "Zadejte SPICE heslo"
+
+#: plugins/spice/spice_plugin.c:386
+#, c-format
+msgid "Disconnected from the SPICE server “%s”."
+msgstr "Odpojeno od SPICE serveru „%s“."
+
+#: plugins/spice/spice_plugin.c:402
+msgid "TLS connection error."
+msgstr "Chyba TLS spojení."
+
+#: plugins/spice/spice_plugin.c:408
+msgid "Connection to the SPICE server dropped."
+msgstr "Připojení ke SPICE serveru se přerušilo."
+
+#: plugins/spice/spice_plugin.c:616 plugins/spice/spice_plugin.c:634
+msgid "Default"
+msgstr "Výchozí"
+
+#: plugins/spice/spice_plugin.c:636
+#, fuzzy
+msgid "Auto GLZ"
+msgstr "Auto GLZ"
+
+#: plugins/spice/spice_plugin.c:637
+#, fuzzy
+msgid "Auto LZ"
+msgstr "Auto LZ"
+
+#: plugins/spice/spice_plugin.c:650
+#, fuzzy
+msgid "Disable video overlay if videos are not displayed properly.\n"
+msgstr "Pokud se videa nezobrazují správně, vypněte překrývání videa.\n"
+
+#: plugins/spice/spice_plugin.c:667
+msgid "Use TLS encryption"
+msgstr "Použít TLS šifrování"
+
+#: plugins/spice/spice_plugin.c:668
+msgid "Server CA certificate"
+msgstr "Certifikát cert. autority, která vydala certifikát serveru"
+
+#: plugins/spice/spice_plugin.c:686
+msgid "Prefered video codec"
+msgstr "Předvolba"
+
+#: plugins/spice/spice_plugin.c:687
+msgid "Turn off GStreamer overlay"
+msgstr "Vypnout klávesnici a myš na straně serveru"
+
+#: plugins/spice/spice_plugin.c:690
+#, fuzzy
+msgid "Prefered image compression"
+msgstr "Preferovaná komprese obrazu"
+
+#: plugins/spice/spice_plugin.c:693 plugins/spice/spice_plugin.c:706
+#: plugins/gvnc/gvnc_plugin.c:857 plugins/gvnc/gvnc_plugin.c:871
+msgid "No clipboard sync"
+msgstr "Nesynchronizovat obsah schránky"
+
+#: plugins/spice/spice_plugin.c:695 plugins/gvnc/gvnc_plugin.c:860
+msgid "Enable audio channel"
+msgstr "Přenášet zvuk"
+
+#: plugins/spice/spice_plugin.c:696
+msgid "Share smart card"
+msgstr "Sdílet čipovou kartu"
+
+#: plugins/spice/spice_plugin.c:697 plugins/spice/spice_plugin.c:705
+#: plugins/vnc/vnc_plugin.c:2000 plugins/vnc/vnc_plugin.c:2017
+#: plugins/gvnc/gvnc_plugin.c:861 plugins/gvnc/gvnc_plugin.c:870
+msgid "View only"
+msgstr "Pouze prohlížení"
+
+#: plugins/spice/spice_plugin.c:708 plugins/spice/spice_plugin_usb.c:51
+msgid "Select USB devices for redirection"
+msgstr "Vyberte USB zařízení, které přesměrovat"
+
+#: plugins/spice/spice_plugin.c:719
+msgid "SPICE - Simple Protocol for Independent Computing Environments"
+msgstr "SPICE – Simple Protocol for Independent Computing Environments"
+
+#: plugins/spice/spice_plugin_usb.c:54
+msgid "_Close"
+msgstr "_Zavřít"
+
+#: plugins/spice/spice_plugin_usb.c:94
+msgid "USB redirection error"
+msgstr "Chyba přesměrování USB"
+
+#: plugins/vnc/vnc_plugin.c:772
+msgid "Enter VNC password"
+msgstr "Zadejte heslo pro VNC"
+
+#: plugins/vnc/vnc_plugin.c:825 plugins/gvnc/gvnc_plugin.c:539
+msgid "Enter VNC authentication credentials"
+msgstr "Zadejte přihlašovací údaje pro VNC"
+
+#: plugins/vnc/vnc_plugin.c:936
+msgid "Unable to connect to VNC server"
+msgstr "Nedaří se připojit k VNC serveru"
+
+#: plugins/vnc/vnc_plugin.c:937
+#, c-format
+msgid "Couldn’t convert '%s' to host address"
+msgstr "Nedaří se převést „%s“ na adresu hostitele"
+
+#: plugins/vnc/vnc_plugin.c:938
+#, c-format
+msgid "VNC connection failed: %s"
+msgstr "Spojení pomocí VNC se nezdařilo: %s"
+
+#: plugins/vnc/vnc_plugin.c:939
+msgid "Your connection has been rejected."
+msgstr "Vaše spojení bylo odmítnuto."
+
+#: plugins/vnc/vnc_plugin.c:966
+#, c-format
+msgid "The VNC server requested an unknown authentication method. %s"
+msgstr "VNC server vyžádal neznámou metodu ověřování se: %s"
+
+#: plugins/vnc/vnc_plugin.c:968
+msgid "Please retry after turning on encryption for this profile."
+msgstr "Zapněte v tomto profilu šifrování a zkuste to znovu."
+
+#: plugins/vnc/vnc_plugin.c:1939
+#, fuzzy
+msgid ""
+"Connect to VNC using a repeater:\n"
+"  • The server field must contain the repeater ID, e.g. ID:123456789\n"
+"  • The repeater field have to be set to the repeater IP and port, like:\n"
+"    10.10.10.12:5901\n"
+"  • From the remote VNC server, you will connect to\n"
+"    the repeater, e.g. with x11vnc:\n"
+"    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
+msgstr ""
+"Připojte se k VNC pomocí opakovače:\n"
+"  - ID:123456789.\n"
+"  - V poli repeater musí být nastavena IP adresa a port repeateru, např:\n"
+"    10.10.10.12:5901\n"
+"  - Ze vzdáleného VNC serveru se připojíte k\n"
+"    opakovače, např. pomocí x11vnc:\n"
+"    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
+
+#: plugins/vnc/vnc_plugin.c:1959
+msgid "Repeater"
+msgstr "Opakovač"
+
+#: plugins/vnc/vnc_plugin.c:1979
+msgid "Listen on port"
+msgstr "Očekávat spojení na portu"
+
+#: plugins/vnc/vnc_plugin.c:1999
+msgid "Show remote cursor"
+msgstr "Zobrazit vzdálený kurzor"
+
+#: plugins/vnc/vnc_plugin.c:2002
+msgid "Turn off encryption"
+msgstr "Použít TLS šifrování"
+
+#: plugins/vnc/vnc_plugin.c:2003 plugins/vnc/vnc_plugin.c:2018
+#, fuzzy
+msgid "Prevent local interaction on the server"
+msgstr "Zabránit místní interakci na serveru"
+
+#: plugins/vnc/vnc_plugin.c:2004 plugins/gvnc/gvnc_plugin.c:859
+#, fuzzy
+msgid "Ignore remote bell messages"
+msgstr "Ignorování zpráv vzdáleného zvonku"
+
+#: plugins/vnc/vnc_plugin.c:2020
+msgid "Open Chat…"
+msgstr "Otevřít chat…"
+
+#: plugins/vnc/vnc_plugin.h:41
+msgid "Remmina VNC Plugin"
+msgstr "Zásuvný modul Remmina pro VNC"
+
+#: plugins/vnc/vnc_plugin.h:46
+msgid "Remmina VNC listener Plugin"
+msgstr "Zásuvný modul Remmina pro očekávání VNC spojení"
+
+#: plugins/www/www_config.h:43
+msgid "Remmina web-browser plugin"
+msgstr "Zásuvný modul Remmina pro webový prohlížeč"
+
+#: plugins/www/www_plugin.c:98
+msgid "File downloaded"
+msgstr "Soubor stažen"
+
+#: plugins/www/www_plugin.c:574
+msgid "Enter WWW authentication credentials"
+msgstr "Zadejte přihlašovací údaje pro WWW"
+
+#: plugins/www/www_plugin.c:878
+msgid "URL"
+msgstr "URL adresa"
+
+#: plugins/www/www_plugin.c:878
+msgid "http://address or https://address"
+msgstr "http://adresa nebo https://adresa"
+
+#: plugins/www/www_plugin.c:895
+msgid "User agent"
+msgstr "User Agent"
+
+#: plugins/www/www_plugin.c:896
+msgid "Proxy URL"
+msgstr "URL adresa proxy"
+
+#: plugins/www/www_plugin.c:896
+msgid "E.g. https://example.org, socks://mysocks:1080"
+msgstr "Např. https://example.org, socks://mojesocks:1080"
+
+#: plugins/www/www_plugin.c:897
+msgid "Turn on Java support"
+msgstr "Zapnout podporu pro Java"
+
+#: plugins/www/www_plugin.c:898
+msgid "Turn on smooth scrolling"
+msgstr "Zapnout plynulé posouvání"
+
+#: plugins/www/www_plugin.c:899
+msgid "Turn on spatial navigation"
+msgstr "Zapnout prostorovou navigaci"
+
+#: plugins/www/www_plugin.c:900
+msgid "Turn on plugin support"
+msgstr "Zapnout podporu zásuvných modulů"
+
+#: plugins/www/www_plugin.c:901
+msgid "Turn on WebGL support"
+msgstr "Zapnout podporu WebGL"
+
+#: plugins/www/www_plugin.c:902
+msgid "Turn on HTML5 audio support"
+msgstr "Zapnout podporu pro HTMLP5 audio"
+
+#: plugins/www/www_plugin.c:903
+msgid "Ignore TLS errors"
+msgstr "Ignorovat TLS chyby"
+
+#: plugins/www/www_plugin.c:906
+msgid "Turn on Web Inspector"
+msgstr "Zapnout Web Inspector"
+
+#: plugins/exec/exec_plugin.c:160
+msgid "You did not set any command to be executed"
+msgstr "Nenastavili jste žádný příkaz k vykonání"
+
+#: plugins/exec/exec_plugin.c:206
+msgid ""
+"Warning: Running a command synchronously may cause Remmina not to respond.\n"
+"Do you really want to continue?"
+msgstr ""
+"Varování! Vykonání příkazu synchronně může způsobit, že Remmina přestane "
+"regovat.\n"
+"Opravdu chcete pokračovat?"
+
+#: plugins/exec/exec_plugin.c:266
+msgid "Command"
+msgstr "Příkaz"
+
+#: plugins/exec/exec_plugin.c:267
+msgid "Asynchronous execution"
+msgstr "Asynchronní vykonání"
+
+#: plugins/exec/exec_plugin_config.h:41
+msgid "Execute a command"
+msgstr "Vykonat příkaz"
+
+#: plugins/tool_hello_world/plugin_config.h:40
+msgid "Hello, World!"
+msgstr "Ahoj světe!"
+
+#: plugins/secret/src/glibsecret_plugin.c:188
+msgid "Secured password storage in the GNOME keyring"
+msgstr "Zabezpečené ukládání hesel v klíčence GNOME"
+
+#: plugins/gvnc/gvnc_plugin_config.h:40
+#, fuzzy
+#| msgid "Remmina VNC Plugin"
+msgid "Remmina VNC plugin for GNOME and KVM"
+msgstr "Zásuvný modul VNC Remmina pro GNOME a KVM"
+
+#: plugins/gvnc/gvnc_plugin.c:477
+#, fuzzy, c-format
+#| msgid "Authentication type"
+msgid "Unsupported authentication type %u"
+msgstr "Nepodporovaný typ ověřování %u"
+
+#: plugins/gvnc/gvnc_plugin.c:489
+#, fuzzy, c-format
+#| msgid "Authentication type"
+msgid "Authentication failure: %s"
+msgstr "Selhání ověřování: %s"
+
+#: plugins/gvnc/gvnc_plugin.c:820
+#, fuzzy
+#| msgid "Use system proxy settings"
+msgid "Use server settings"
+msgstr "Použít nastavení serveru"
+
+#: plugins/gvnc/gvnc_plugin.c:821
+#, fuzzy
+#| msgid "True colour (24 bit)"
+msgid "True colour (24 bits)"
+msgstr "True color (24 bitů)"
+
+#: plugins/gvnc/gvnc_plugin.c:822
+#, fuzzy
+#| msgid "High colour (16 bit)"
+msgid "High colour (16 bits)"
+msgstr "High color (16 bitů)"
+
+#: plugins/gvnc/gvnc_plugin.c:823
+#, fuzzy
+#| msgid "High colour (16 bit)"
+msgid "Low colour (8 bits)"
+msgstr "Nízká barevnost (8 bitů)"
+
+#: plugins/gvnc/gvnc_plugin.c:824
+#, fuzzy
+#| msgid "True colour (24 bit)"
+msgid "Ultra low colour (3 bits)"
+msgstr "Velmi nízká barevnost (3 bity)"
+
+#: plugins/gvnc/gvnc_plugin.c:839
+#, fuzzy
+#| msgid "Enter VNC password"
+msgid "VNC password"
+msgstr "Heslo VNC"
+
+#: plugins/gvnc/gvnc_plugin.c:841
+#, fuzzy
+#| msgid "SSH compression"
+msgid "Use JPEG Compression"
+msgstr "Použití komprese JPEG"
+
+#: plugins/gvnc/gvnc_plugin.c:841
+#, fuzzy
+#| msgid "Browse the network to find a %s server"
+msgid "This might not work on all VNC servers"
+msgstr "To nemusí fungovat na všech serverech VNC."
+
+#: plugins/gvnc/gvnc_plugin.c:842
+#, fuzzy
+msgid "Enable GTK-VNC debug"
+msgstr "Povolení ladění GTK-VNC"
+
+#: plugins/gvnc/gvnc_plugin.c:862
+#, fuzzy
+#| msgid "Per connection"
+msgid "Shared connection"
+msgstr "Sdílené připojení"
+
+#: plugins/gvnc/gvnc_plugin.c:862
+#, fuzzy
+msgid ""
+"If the server should try to share the desktop by leaving other clients "
+"connected"
+msgstr ""
+"Pokud se server pokusí sdílet plochu tím, že nechá připojené další klienty."
+
+#: plugins/gvnc/gvnc_plugin.c:872
+#, fuzzy
+#| msgid "Send Ctrl+Alt+Del"
+msgid "Send Ctrl+Alt+_Del"
+msgstr "Poslat Ctrl+Alt+Delete"
+
+#: plugins/gvnc/gvnc_plugin.c:873
+#, fuzzy
+#| msgid "Send Ctrl+Alt+Del"
+msgid "Send Ctrl+Alt+_Backspace"
+msgstr "Odeslat Ctrl+Alt+_Backspace"
+
+#: plugins/gvnc/gvnc_plugin.c:874
+msgid "Send Ctrl+Alt+_F1"
+msgstr "Poslat Ctrl+Alt+_F1"
+
+#: plugins/gvnc/gvnc_plugin.c:875
+msgid "Send Ctrl+Alt+_F2"
+msgstr "Poslat Ctrl+Alt+_F2"
+
+#: plugins/gvnc/gvnc_plugin.c:876
+msgid "Send Ctrl+Alt+_F3"
+msgstr "Poslat Ctrl+Alt+_F3"
+
+#: plugins/gvnc/gvnc_plugin.c:877
+msgid "Send Ctrl+Alt+_F4"
+msgstr "Poslat Ctrl+Alt+_F4"
+
+#: plugins/gvnc/gvnc_plugin.c:878
+msgid "Send Ctrl+Alt+_F5"
+msgstr "Poslat Ctrl+Alt+_F5"
+
+#: plugins/gvnc/gvnc_plugin.c:879
+msgid "Send Ctrl+Alt+_F6"
+msgstr "Poslat Ctrl+Alt+_F6"
+
+#: plugins/gvnc/gvnc_plugin.c:880
+msgid "Send Ctrl+Alt+_F7"
+msgstr "Poslat Ctrl+Alt+_F7"
+
+#: plugins/gvnc/gvnc_plugin.c:881
+msgid "Send Ctrl+Alt+_F8"
+msgstr "Poslat Ctrl+Alt+_F8"
+
+#: plugins/gvnc/gvnc_plugin.c:882
+msgid "Send Ctrl+Alt+_F9"
+msgstr "Poslat Ctrl+Alt+_F9"
+
+#: plugins/gvnc/gvnc_plugin.c:883
+msgid "Send Ctrl+Alt+_F10"
+msgstr "Poslat Ctrl+Alt+_F10"
+
+#: plugins/gvnc/gvnc_plugin.c:884
+msgid "Send Ctrl+Alt+_F11"
+msgstr "Poslat Ctrl+Alt+_F11"
+
+#: plugins/gvnc/gvnc_plugin.c:885
+msgid "Send Ctrl+Alt+_F12"
+msgstr "Poslat Ctrl+Alt+_F12"
+
+#: plugins/gvnc/gvnc_plugin.c:887
+#, fuzzy
+msgid "Reboot remote host"
+msgstr "Restartování vzdáleného hostitele"
+
+#: plugins/gvnc/gvnc_plugin.c:888
+#, fuzzy
+msgid "Reset remote host (hard reboot)"
+msgstr "Resetování vzdáleného hostitele (tvrdý restart)"
+
+#: plugins/gvnc/gvnc_plugin.c:889
+#, fuzzy
+#| msgid "Show remote cursor"
+msgid "Shutdown remote host"
+msgstr "Vypnutí vzdáleného hostitele"
 
 #: plugins/telepathy/telepathy_channel_handler.c:237
 #, c-format
@@ -3044,46 +3044,6 @@ msgstr "Pozvat ke sdílení pracovní plochy"
 #: plugins/telepathy/telepathy_plugin.c:57
 msgid "Telepathy - Desktop Sharing"
 msgstr "Telepathy – sdílení plochy"
-
-#: data/ui/remmina_search.glade:61 data/ui/remmina_search_popover.glade:56
-#, fuzzy
-msgid "Search"
-msgstr "Hledat"
-
-#: data/ui/remmina_search.glade:75 data/ui/remmina_search_popover.glade:70
-#, fuzzy
-msgid "Search for previous occurrence"
-msgstr "Hledání předchozího výskytu"
-
-#: data/ui/remmina_search.glade:98 data/ui/remmina_search_popover.glade:93
-#, fuzzy
-msgid "Search for next occurrence"
-msgstr "Hledání dalšího výskytu"
-
-#: data/ui/remmina_search.glade:130 data/ui/remmina_search_popover.glade:125
-#, fuzzy
-msgid "Toggle search options"
-msgstr "Přepínání možností vyhledávání"
-
-#: data/ui/remmina_search.glade:191 data/ui/remmina_search_popover.glade:186
-#, fuzzy
-msgid "_Match case"
-msgstr "_Match case"
-
-#: data/ui/remmina_search.glade:208 data/ui/remmina_search_popover.glade:203
-#, fuzzy
-msgid "Match _entire word only"
-msgstr "Hledat jen celá slova"
-
-#: data/ui/remmina_search.glade:225 data/ui/remmina_search_popover.glade:220
-#, fuzzy
-msgid "Match as _regular expression"
-msgstr "Hledat jako regulární výraz"
-
-#: data/ui/remmina_search.glade:242 data/ui/remmina_search_popover.glade:237
-#, fuzzy
-msgid "_Wrap around"
-msgstr "Po dosažení konce pokračovat od začátku"
 
 #: data/ui/remmina_snap_info_dialog.glade:71
 msgid ""
@@ -3143,6 +3103,46 @@ msgstr "<big>Zapojit se</big>"
 msgid "Do not show this message again"
 msgstr "Tuto zprávu už příště nezobrazovat"
 
+#: data/ui/remmina_search_popover.glade:56 data/ui/remmina_search.glade:61
+#, fuzzy
+msgid "Search"
+msgstr "Hledat"
+
+#: data/ui/remmina_search_popover.glade:70 data/ui/remmina_search.glade:75
+#, fuzzy
+msgid "Search for previous occurrence"
+msgstr "Hledání předchozího výskytu"
+
+#: data/ui/remmina_search_popover.glade:93 data/ui/remmina_search.glade:98
+#, fuzzy
+msgid "Search for next occurrence"
+msgstr "Hledání dalšího výskytu"
+
+#: data/ui/remmina_search_popover.glade:125 data/ui/remmina_search.glade:130
+#, fuzzy
+msgid "Toggle search options"
+msgstr "Přepínání možností vyhledávání"
+
+#: data/ui/remmina_search_popover.glade:186 data/ui/remmina_search.glade:191
+#, fuzzy
+msgid "_Match case"
+msgstr "_Match case"
+
+#: data/ui/remmina_search_popover.glade:203 data/ui/remmina_search.glade:208
+#, fuzzy
+msgid "Match _entire word only"
+msgstr "Hledat jen celá slova"
+
+#: data/ui/remmina_search_popover.glade:220 data/ui/remmina_search.glade:225
+#, fuzzy
+msgid "Match as _regular expression"
+msgstr "Hledat jako regulární výraz"
+
+#: data/ui/remmina_search_popover.glade:237 data/ui/remmina_search.glade:242
+#, fuzzy
+msgid "_Wrap around"
+msgstr "Po dosažení konce pokračovat od začátku"
+
 #: data/ui/remmina_about.glade:30 data/ui/remmina_main.glade:395
 msgid "About"
 msgstr "O aplikaci"
@@ -3164,6 +3164,176 @@ msgstr ""
 #: data/ui/remmina_about.glade:40
 msgid "Website"
 msgstr "Webové stránky"
+
+#: data/ui/remmina_string_list.glade:14 data/ui/remmina_string_list.glade:158
+msgid "Add"
+msgstr "Přidat"
+
+#: data/ui/remmina_string_list.glade:20 data/ui/remmina_string_list.glade:137
+#: data/ui/remmina_key_chooser.glade:14 data/ui/remmina_key_chooser.glade:15
+msgid "_Remove"
+msgstr "Odeb_rat"
+
+#: data/ui/remmina_string_list.glade:26 data/ui/remmina_string_list.glade:116
+msgid "Move up"
+msgstr "Přesunout nahoru"
+
+#: data/ui/remmina_string_list.glade:32 data/ui/remmina_string_list.glade:95
+msgid "Move down"
+msgstr "Přesunout dolů"
+
+#: data/ui/remmina_mpc.glade:14
+msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
+msgstr "<span weight='bold' size='larger'>Hromadná změna hesel</span>"
+
+#: data/ui/remmina_mpc.glade:32
+msgid "Change"
+msgstr "Změnit"
+
+#: data/ui/remmina_mpc.glade:201
+msgid "Selection criteria"
+msgstr "Kritéria výběru"
+
+#: data/ui/remmina_mpc.glade:261
+msgid "Confirm password"
+msgstr "Zopakování hesla"
+
+#: data/ui/remmina_mpc.glade:294
+msgid "Set new password"
+msgstr "Nastavit nové heslo"
+
+#. A column table with multiple check-boxes
+#: data/ui/remmina_mpc.glade:331
+msgctxt "Multi password changer"
+msgid "Select"
+msgstr "Vybrat"
+
+#: data/ui/remmina_mpc.glade:343
+msgctxt "Multi password changer table"
+msgid "Name"
+msgstr "Název"
+
+#: data/ui/remmina_mpc.glade:354
+msgctxt "Multi password changer table"
+msgid "Group"
+msgstr "Skupina"
+
+#: data/ui/remmina_mpc.glade:365
+msgctxt "Multi password changer table"
+msgid "Domain\\Username"
+msgstr "Doména\\Uživatelské_jméno"
+
+#: data/ui/remmina_news.glade:75
+msgid ""
+"<big><b>The news are turned off</b></big>\n"
+"\n"
+"<span>\n"
+"Turning on news means the program connects to a Remmina server to download "
+"the release notes.\n"
+"</span>\n"
+"\n"
+"<span>\n"
+"Version checking can only be activated at compile time.\n"
+"</span>\n"
+"\n"
+"<span>\n"
+"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
+"release notes\"><i>Visit the website to read the release notes</i></a>.\n"
+"</span>"
+msgstr ""
+"<big><b>Odběr novinek je vypnutý</b></big>\n"
+"\n"
+"<span>\n"
+"Zapnutí odběru novinek znamená, že se program bude připojovat k serveru "
+"projektu Remmina server a stahovat odtamtud poznámky k vydání.\n"
+"</span>\n"
+"\n"
+"<span>\n"
+"Zjišťování dostupnosti novějších verzí se přepíná jednorázově, při "
+"sestavování (kompilaci) aplikace.\n"
+"</span>\n"
+"\n"
+"<span>\n"
+"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Poznámky k "
+"vydání Remmina\"><i>Poznámky k vydání naleznete na webových stránkách</i></"
+"a>.\n"
+"</span>"
+
+#. The star (*) is a reference to privacy consent
+#: data/ui/remmina_news.glade:130 data/ui/remmina_preferences.glade:464
+msgid ""
+"Send <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
+"remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
+"\">anonymous</a></b> statistics. (*)"
+msgstr ""
+"Odesílat <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
+"remmina__stats_8c.html#details\" title=\"Statistiky využívání Remmina"
+"\">anonymní</a></b> statistiky. (*)"
+
+#: data/ui/remmina_news.glade:142 data/ui/remmina_news.glade:195
+msgid "Send anonymous statistics"
+msgstr "Odesílat anonymní statistiky"
+
+#: data/ui/remmina_news.glade:156
+msgid "Use as default remote desktop client"
+msgstr "Použít jako výchozího klienta vzdálené plochy"
+
+#: data/ui/remmina_news.glade:165
+msgid "Apply"
+msgstr "Použít"
+
+#: data/ui/remmina_news.glade:169
+msgid "Allow Remmina to automatically open .rdp and .remmina files."
+msgstr "Umožnit aplikaci Remmina automaticky otevírat soubory .rdp a .remmina."
+
+#. The star (*) is a reference to privacy consent
+#: data/ui/remmina_news.glade:183 data/ui/remmina_preferences.glade:479
+msgid ""
+"Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
+"\">remmina.org</a> (*)"
+msgstr ""
+"Stahovat novinky z <a href=\"https://remmina.org\" title=\"Stránky s "
+"novinkami v Remmina\">remmina.org</a> (*)"
+
+#: data/ui/remmina_news.glade:208 data/ui/remmina_preferences.glade:446
+msgid ""
+"* By enabling statistics and/or news you consent to send and fetch data to/"
+"from remmina.org"
+msgstr ""
+"* Zapnutím odesíláním statistik a/nebo zasíláním novinek souhlasíte s "
+"odesíláním a stahování dat na/z remmina.org"
+
+#: data/ui/remmina_news.glade:231
+msgid "<big>Take part</big>"
+msgstr "<big>Zapojit se</big>"
+
+#. Pay attention to the quoting characters as they may break the pango layout. If in doubt and cannot test, copy and paste the symbols from the English string.
+#: data/ui/remmina_news.glade:257
+msgid ""
+"<span>\n"
+"<b>You have our gratitude in choosing copylefted libre software, <a href="
+"\"https://remmina.org/donations/\" title=\"Where’s the money, Lebowski? "
+"“blblblblblb”\">donations also make us happy</a>, and further help improve "
+"Remmina.</b>\n"
+"</span>\n"
+msgstr ""
+"<span>\n"
+"<b>Vážíme si, že používáte svobodný software, <a href=\"https://remmina.org/"
+"donations/\" title=\"Avesome Remmina donations\">dary nás také těší</a>, "
+"stejně tak další pomoc s tím, udělat Remmina ještě lepší.</b>\n"
+"</span>\n"
+
+#: data/ui/remmina_news.glade:277
+msgid "<big>Contribute</big>"
+msgstr "<big>Zapojit se</big>"
+
+#: data/ui/remmina_key_chooser.glade:23
+msgid "Choose a new key"
+msgstr "Zvolte novou klávesu"
+
+#: data/ui/remmina_key_chooser.glade:82
+msgid "Please press the new key…"
+msgstr "Stiskněte novou klávesu…"
 
 #: data/ui/remmina_main.glade:35
 msgid "Hide or show the search bar"
@@ -3272,166 +3442,9 @@ msgstr "Akce"
 msgid "Toggle view"
 msgstr "Přepnout Pohled"
 
-#: data/ui/remmina_unlock.glade:60
-msgid "Unlock"
-msgstr "Odemknout"
-
-#: data/ui/remmina_unlock.glade:94
-msgid "Unlock Remmina"
-msgstr "Odemknout Remmina"
-
-#: data/ui/remmina_unlock.glade:128
-msgid "Master password"
-msgstr "Hlavní heslo"
-
 #: data/ui/remmina_spinner.glade:54
 msgid "Please wait…"
 msgstr "Čekejte…"
-
-#: data/ui/remmina_news.glade:75
-msgid ""
-"<big><b>The news are turned off</b></big>\n"
-"\n"
-"<span>\n"
-"Turning on news means the program connects to a Remmina server to download "
-"the release notes.\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"Version checking can only be activated at compile time.\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
-"release notes\"><i>Visit the website to read the release notes</i></a>.\n"
-"</span>"
-msgstr ""
-"<big><b>Odběr novinek je vypnutý</b></big>\n"
-"\n"
-"<span>\n"
-"Zapnutí odběru novinek znamená, že se program bude připojovat k serveru "
-"projektu Remmina server a stahovat odtamtud poznámky k vydání.\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"Zjišťování dostupnosti novějších verzí se přepíná jednorázově, při "
-"sestavování (kompilaci) aplikace.\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Poznámky k "
-"vydání Remmina\"><i>Poznámky k vydání naleznete na webových stránkách</i></"
-"a>.\n"
-"</span>"
-
-#. The star (*) is a reference to privacy consent
-#: data/ui/remmina_news.glade:130 data/ui/remmina_preferences.glade:464
-msgid ""
-"Send <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-"remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
-"\">anonymous</a></b> statistics. (*)"
-msgstr ""
-"Odesílat <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-"remmina__stats_8c.html#details\" title=\"Statistiky využívání Remmina"
-"\">anonymní</a></b> statistiky. (*)"
-
-#: data/ui/remmina_news.glade:142 data/ui/remmina_news.glade:195
-msgid "Send anonymous statistics"
-msgstr "Odesílat anonymní statistiky"
-
-#: data/ui/remmina_news.glade:156
-msgid "Use as default remote desktop client"
-msgstr "Použít jako výchozího klienta vzdálené plochy"
-
-#: data/ui/remmina_news.glade:165
-msgid "Apply"
-msgstr "Použít"
-
-#: data/ui/remmina_news.glade:169
-msgid "Allow Remmina to automatically open .rdp and .remmina files."
-msgstr "Umožnit aplikaci Remmina automaticky otevírat soubory .rdp a .remmina."
-
-#. The star (*) is a reference to privacy consent
-#: data/ui/remmina_news.glade:183 data/ui/remmina_preferences.glade:479
-msgid ""
-"Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
-"\">remmina.org</a> (*)"
-msgstr ""
-"Stahovat novinky z <a href=\"https://remmina.org\" title=\"Stránky s "
-"novinkami v Remmina\">remmina.org</a> (*)"
-
-#: data/ui/remmina_news.glade:208 data/ui/remmina_preferences.glade:446
-msgid ""
-"* By enabling statistics and/or news you consent to send and fetch data to/"
-"from remmina.org"
-msgstr ""
-"* Zapnutím odesíláním statistik a/nebo zasíláním novinek souhlasíte s "
-"odesíláním a stahování dat na/z remmina.org"
-
-#: data/ui/remmina_news.glade:231
-msgid "<big>Take part</big>"
-msgstr "<big>Zapojit se</big>"
-
-#. Pay attention to the quoting characters as they may break the pango layout. If in doubt and cannot test, copy and paste the symbols from the English string.
-#: data/ui/remmina_news.glade:257
-msgid ""
-"<span>\n"
-"<b>You have our gratitude in choosing copylefted libre software, <a href="
-"\"https://remmina.org/donations/\" title=\"Where’s the money, Lebowski? "
-"“blblblblblb”\">donations also make us happy</a>, and further help improve "
-"Remmina.</b>\n"
-"</span>\n"
-msgstr ""
-"<span>\n"
-"<b>Vážíme si, že používáte svobodný software, <a href=\"https://remmina.org/"
-"donations/\" title=\"Avesome Remmina donations\">dary nás také těší</a>, "
-"stejně tak další pomoc s tím, udělat Remmina ještě lepší.</b>\n"
-"</span>\n"
-
-#: data/ui/remmina_news.glade:277
-msgid "<big>Contribute</big>"
-msgstr "<big>Zapojit se</big>"
-
-#: data/ui/remmina_mpc.glade:14
-msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
-msgstr "<span weight='bold' size='larger'>Hromadná změna hesel</span>"
-
-#: data/ui/remmina_mpc.glade:32
-msgid "Change"
-msgstr "Změnit"
-
-#: data/ui/remmina_mpc.glade:201
-msgid "Selection criteria"
-msgstr "Kritéria výběru"
-
-#: data/ui/remmina_mpc.glade:261
-msgid "Confirm password"
-msgstr "Zopakování hesla"
-
-#: data/ui/remmina_mpc.glade:294
-msgid "Set new password"
-msgstr "Nastavit nové heslo"
-
-#. A column table with multiple check-boxes
-#: data/ui/remmina_mpc.glade:331
-msgctxt "Multi password changer"
-msgid "Select"
-msgstr "Vybrat"
-
-#: data/ui/remmina_mpc.glade:343
-msgctxt "Multi password changer table"
-msgid "Name"
-msgstr "Název"
-
-#: data/ui/remmina_mpc.glade:354
-msgctxt "Multi password changer table"
-msgid "Group"
-msgstr "Skupina"
-
-#: data/ui/remmina_mpc.glade:365
-msgctxt "Multi password changer table"
-msgid "Domain\\Username"
-msgstr "Doména\\Uživatelské_jméno"
 
 #: data/ui/remmina_preferences.glade:42
 msgid "Double-click action"
@@ -4030,30 +4043,17 @@ msgstr "Terminál"
 msgid "Remmina Preferences"
 msgstr "Předvolby pro Remmina"
 
-#: data/ui/remmina_string_list.glade:14 data/ui/remmina_string_list.glade:158
-msgid "Add"
-msgstr "Přidat"
+#: data/ui/remmina_unlock.glade:60
+msgid "Unlock"
+msgstr "Odemknout"
 
-#: data/ui/remmina_string_list.glade:20 data/ui/remmina_string_list.glade:137
-#: data/ui/remmina_key_chooser.glade:14 data/ui/remmina_key_chooser.glade:15
-msgid "_Remove"
-msgstr "Odeb_rat"
+#: data/ui/remmina_unlock.glade:94
+msgid "Unlock Remmina"
+msgstr "Odemknout Remmina"
 
-#: data/ui/remmina_string_list.glade:26 data/ui/remmina_string_list.glade:116
-msgid "Move up"
-msgstr "Přesunout nahoru"
-
-#: data/ui/remmina_string_list.glade:32 data/ui/remmina_string_list.glade:95
-msgid "Move down"
-msgstr "Přesunout dolů"
-
-#: data/ui/remmina_key_chooser.glade:23
-msgid "Choose a new key"
-msgstr "Zvolte novou klávesu"
-
-#: data/ui/remmina_key_chooser.glade:82
-msgid "Please press the new key…"
-msgstr "Stiskněte novou klávesu…"
+#: data/ui/remmina_unlock.glade:128
+msgid "Master password"
+msgstr "Hlavní heslo"
 
 #~ msgid "Could not run %s on SSH server."
 #~ msgstr "Spuštění %s na SSH serveru se nezdařilo."

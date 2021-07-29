@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-07-16 21:21+0000\n"
+"POT-Creation-Date: 2021-07-29 20:50+0000\n"
 "PO-Revision-Date: 2021-07-16 08:59+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -22,155 +22,194 @@ msgstr ""
 "X-Generator: Weblate 4.7.2-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
 
-#: src/remmina_protocol_widget.c:283 src/remmina_sftp_plugin.c:328
+#: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:346
+#: src/remmina_protocol_widget.c:1672 src/remmina_protocol_widget.c:1691
+#: src/remmina_file_editor.c:846 src/remmina_file_editor.c:967
+#: src/remmina_ssh_plugin.c:1369 plugins/rdp/rdp_plugin.c:2652
+#: plugins/www/www_plugin.c:880 data/ui/remmina_mpc.glade:236
+#: data/ui/remmina_preferences.glade:1693 data/ui/remmina_unlock.glade:116
+msgid "Password"
+msgstr "Parool"
+
+#: src/remmina_sftp_plugin.c:311 src/remmina_sftp_plugin.c:348
+#: src/remmina_file_editor.c:847 src/remmina_ssh_plugin.c:1370
+#: src/remmina_ssh_plugin.c:1475
+#, fuzzy
+msgid "SSH identity file"
+msgstr "SSH identiteedifail"
+
+#: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:848
+#: src/remmina_ssh_plugin.c:1371
+#, fuzzy
+msgid "SSH agent"
+msgstr "SSH agent"
+
+#: src/remmina_sftp_plugin.c:313 src/remmina_file_editor.c:849
+#: src/remmina_ssh_plugin.c:1372
+msgid "Public key (automatic)"
+msgstr "Avalik võti (automaatne)"
+
+#: src/remmina_sftp_plugin.c:314 src/remmina_file_editor.c:850
+#: src/remmina_ssh_plugin.c:1373
+#, fuzzy
+msgid "Kerberos (GSSAPI)"
+msgstr "Kerberos (GSSAPI)"
+
+#: src/remmina_sftp_plugin.c:323
+msgid "Show Hidden Files"
+msgstr "Kuva peidetud failid"
+
+#: src/remmina_sftp_plugin.c:325
+msgid "Overwrite all files"
+msgstr "Kirjuta üle"
+
+#: src/remmina_sftp_plugin.c:327
+#, fuzzy
+msgid "Resume all file transfers"
+msgstr "Jätkata kõiki failiülekandeid"
+
+#: src/remmina_sftp_plugin.c:328 src/remmina_protocol_widget.c:283
 #, fuzzy
 msgid "Connect via SSH from a new terminal"
 msgstr "Ühendage SSH kaudu uuest terminalist"
 
-#: src/remmina_protocol_widget.c:290 src/remmina_ssh_plugin.c:829
-#: src/remmina_ssh_plugin.c:1454
-msgid "Open SFTP transfer…"
-msgstr "Avatud turvaline failiedastus…"
-
-#: src/remmina_protocol_widget.c:319
+#: src/remmina_sftp_plugin.c:345 src/remmina_message_panel.c:330
+#: src/remmina_file_editor.c:961 src/remmina_ssh_plugin.c:1473
+#: plugins/rdp/rdp_plugin.c:2651 plugins/vnc/vnc_plugin.c:1960
+#: plugins/vnc/vnc_plugin.c:1980 plugins/www/www_plugin.c:879
+#: data/ui/remmina_mpc.glade:144
 #, fuzzy
-msgid "Executing external commands…"
-msgstr "Väliste käskude täitmine…"
+msgid "Username"
+msgstr "Kasutajanimi"
 
-#. TRANSLATORS: “%s” is a placeholder for the connection profile name
-#: src/remmina_protocol_widget.c:327
+#: src/remmina_sftp_plugin.c:347 src/remmina_file_editor.c:952
+#: src/remmina_ssh_plugin.c:1472
+#, fuzzy
+msgid "Authentication type"
+msgstr "Autentimise tüüp"
+
+#: src/remmina_sftp_plugin.c:349 src/remmina_file_editor.c:984
+#: src/remmina_ssh_plugin.c:1479
+#, fuzzy
+msgid "Password to unlock private key"
+msgstr "Salasõna isikliku võtme avamiseks"
+
+#: src/remmina_sftp_plugin.c:350 src/remmina_ssh_plugin.c:1509
+#, fuzzy
+msgid "SSH Proxy Command"
+msgstr "SSH Proxy käsk"
+
+#: src/remmina_sftp_plugin.c:359
+msgid "SFTP - Secure File Transfer"
+msgstr "SFTP - Turvaline failiedastamine"
+
+#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1533
+msgid "Protocol"
+msgstr "Protokoll"
+
+#: src/remmina_plugin_manager.c:73
+msgid "Entry"
+msgstr "Kirje"
+
+#: src/remmina_plugin_manager.c:73
+msgid "File"
+msgstr "Fail"
+
+#: src/remmina_plugin_manager.c:73
+msgid "Tool"
+msgstr "Tööriist"
+
+#: src/remmina_plugin_manager.c:73
+msgid "Preference"
+msgstr "Eelistus"
+
+#: src/remmina_plugin_manager.c:73
+#, fuzzy
+msgid "Secret"
+msgstr "Salajane"
+
+#: src/remmina_plugin_manager.c:456 data/ui/remmina_main.glade:305
+msgid "Plugins"
+msgstr "Pluginad"
+
+#: src/remmina_plugin_manager.c:456 src/remmina_message_panel.c:452
+#: src/remmina_message_panel.c:621 src/remmina_file_editor.c:152
+#, fuzzy
+msgid "_OK"
+msgstr "_Olgu"
+
+#: src/remmina_plugin_manager.c:474 src/remmina_file_editor.c:1490
+#: data/ui/remmina_main.glade:442
+msgid "Name"
+msgstr "Nimi"
+
+#: src/remmina_plugin_manager.c:480
+msgid "Type"
+msgstr "Tüüp"
+
+#: src/remmina_plugin_manager.c:486
+msgid "Description"
+msgstr "Kirjeldus"
+
+#: src/remmina_plugin_manager.c:492
+msgid "Version"
+msgstr "Versioon"
+
+#: src/remmina_chat_window.c:178
 #, c-format
-msgid "Connecting to “%s”…"
-msgstr "Ühendumine seadmega '%s'…"
+msgid "Chat with %s"
+msgstr "Vestlus kasutajaga %s"
 
-#. TRANSLATORS: “%s” is a placeholder for an hostname or an IP address.
-#: src/remmina_protocol_widget.c:911 src/remmina_protocol_widget.c:1096
-#, c-format
-msgid "Connecting to “%s” via SSH…"
-msgstr "Ühendumine seadmega '%s'…"
+#: src/remmina_chat_window.c:230
+msgid "_Send"
+msgstr "_Saada"
 
-#. TRANSLATORS: “%i” is a placeholder for a TCP port number.
-#: src/remmina_protocol_widget.c:1160
-#, fuzzy, c-format
-msgid "Awaiting incoming SSH connection on port %i…"
-msgstr "Ootab sissetulevat SSH ühendust portil %i…"
+#: src/remmina_chat_window.c:240
+msgid "_Clear"
+msgstr "_Tühjenda"
 
-#: src/remmina_protocol_widget.c:1213
-#, fuzzy, c-format
-msgid "The “%s” command is not available on the SSH server."
-msgstr "Käsk \"%s\" ei ole SSH-serveris saadaval."
+#: src/remmina_applet_menu_item.c:121
+msgid "Discovered"
+msgstr "Leitud"
 
-#: src/remmina_protocol_widget.c:1218
-#, fuzzy, c-format
-msgid "Could not run the “%s” command on the SSH server (status = %i)."
-msgstr "SSH-serveril ei õnnestunud käsku \"%s\" käivitada (staatus = %i)."
+#: src/remmina_applet_menu_item.c:126
+msgid "New Connection"
+msgstr "Uus ühendus"
 
-#. TRANSLATORS: %s is a placeholder for an error message
-#: src/remmina_protocol_widget.c:1226
-#, fuzzy, c-format
-msgid "Could not run command. %s"
-msgstr "Ei saanud käsku käivitada. %s"
-
-#. TRANSLATORS: “%s” is a placeholder for a hostname or IP address.
-#: src/remmina_protocol_widget.c:1296
-#, c-format
-msgid "Connecting to %s via SSH…"
-msgstr "Ühendumine seadmega '%s'…"
-
-#: src/remmina_protocol_widget.c:1672 src/remmina_protocol_widget.c:1691
-#: src/remmina_ssh_plugin.c:1369 src/remmina_sftp_plugin.c:310
-#: src/remmina_sftp_plugin.c:346 src/remmina_file_editor.c:846
-#: src/remmina_file_editor.c:967 plugins/www/www_plugin.c:880
-#: plugins/rdp/rdp_plugin.c:2652 data/ui/remmina_unlock.glade:116
-#: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1693
-msgid "Password"
-msgstr "Parool"
-
-#: src/remmina_protocol_widget.c:1690
+#: src/remmina_key_chooser.h:38
 #, fuzzy
-msgid "Type in SSH username and password."
-msgstr "Sisestage SSH kasutajanimi ja parool."
+msgid "Shift+"
+msgstr "Shift+"
 
-#: src/remmina_protocol_widget.c:1745 src/remmina_protocol_widget.c:1777
+#: src/remmina_key_chooser.h:39
 #, fuzzy
-msgid "Fingerprint automatically accepted"
-msgstr "Sõrmejälg automaatselt aktsepteeritud"
+msgid "Ctrl+"
+msgstr "Ctrl+"
 
-#. TRANSLATORS: The user is asked to verify a new SSL certificate.
-#: src/remmina_protocol_widget.c:1753
+#: src/remmina_key_chooser.h:40
 #, fuzzy
-msgid "Certificate details:"
-msgstr "Certificate details"
+msgid "Alt+"
+msgstr "Alt+"
 
-#. TRANSLATORS: An SSL certificate subject is usually the remote server the user connect to.
-#: src/remmina_protocol_widget.c:1755 src/remmina_protocol_widget.c:1787
+#: src/remmina_key_chooser.h:41
 #, fuzzy
-msgid "Subject:"
-msgstr "Teema:"
+msgid "Super+"
+msgstr "Super+"
 
-#. TRANSLATORS: The name or email of the entity that have issued the SSL certificate
-#: src/remmina_protocol_widget.c:1757 src/remmina_protocol_widget.c:1789
-msgid "Issuer:"
-msgstr "Väljaandja:"
-
-#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
-#: src/remmina_protocol_widget.c:1759
-msgid "Fingerprint:"
-msgstr "Sõrmejälg:"
-
-#. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
-#: src/remmina_protocol_widget.c:1761
+#: src/remmina_key_chooser.h:42
 #, fuzzy
-msgid "Accept certificate?"
-msgstr "Tunnistus vastu võtta?"
+msgid "Hyper+"
+msgstr "Hyper+"
 
-#. TRANSLATORS: The user is asked to verify a new SSL certificate.
-#: src/remmina_protocol_widget.c:1785
+#: src/remmina_key_chooser.h:43
 #, fuzzy
-msgid "The certificate changed! Details:"
-msgstr "Sertifikaat muutus! Üksikasjad:"
+msgid "Meta+"
+msgstr "Meta+"
 
-#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
-#: src/remmina_protocol_widget.c:1791
-msgid "Old fingerprint:"
-msgstr "Sõrmejälg:"
-
-#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
-#: src/remmina_protocol_widget.c:1793
-msgid "New fingerprint:"
-msgstr "Sõrmejälg:"
-
-#. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
-#: src/remmina_protocol_widget.c:1795
+#: src/remmina_key_chooser.h:44
 #, fuzzy
-msgid "Accept changed certificate?"
-msgstr "Aktsepteerida muudetud sertifikaati?"
-
-#. TRANSLATORS: “%i” is a placeholder for a port number. “%s”  is a placeholder for a protocol name (VNC).
-#: src/remmina_protocol_widget.c:1938
-#, fuzzy, c-format
-msgid "Listening on port %i for an incoming %s connection…"
-msgstr "Kuulab portis %i sissetulevat %s ühendust…"
-
-#: src/remmina_protocol_widget.c:1963
-msgid "Could not authenticate, attempting reconnection…"
-msgstr "Autentimine nurjus. Proovime taasühendada…"
-
-#: src/remmina_protocol_widget.c:2025 src/remmina_file_editor.c:346
-#: src/remmina_file_editor.c:917 data/ui/remmina_main.glade:478
-msgid "Server"
-msgstr "Server"
-
-#. TRANSLATORS: “%s” is a placeholder for a protocol name, like “RDP”.
-#: src/remmina_protocol_widget.c:2043
-#, fuzzy, c-format
-msgid "Install the %s protocol plugin first."
-msgstr "Installige kõigepealt protokolli plugin %s."
-
-#: src/remmina_exec.c:475
-#, c-format
-msgid "Plugin %s is not registered."
-msgstr "Plugin %s pole registreeritud."
+msgid "<None>"
+msgstr "<Kõik>"
 
 #: src/remmina_pref_dialog.c:91 src/remmina_file_editor.c:435
 msgid "Resolutions"
@@ -219,277 +258,206 @@ msgstr ""
 "terminaliühenduste vahekaardil \"Advanced\" ja muuta seadete vahekaardil "
 "\"Terminal\"."
 
-#. TRANSLATORS: %s is a placeholder for an error message
-#: src/remmina_ssh_plugin.c:539
-#, fuzzy, c-format
-msgid "Error: %s"
-msgstr "Viga: %s"
-
-#: src/remmina_ssh_plugin.c:556
+#: src/remmina_message_panel.c:163 data/ui/remmina_mpc.glade:46
+#: data/ui/remmina_unlock.glade:46
 #, fuzzy
-msgid "Terminal content saved in"
-msgstr "Terminali sisu salvestatud"
+msgid "Cancel"
+msgstr "Loobu"
 
-#: src/remmina_ssh_plugin.c:822
+#: src/remmina_message_panel.c:199 data/ui/remmina_snap_info_dialog.glade:28
+#: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
+#: data/ui/remmina_string_list.glade:63 data/ui/remmina_news.glade:33
+#: data/ui/remmina_preferences.glade:2640
+msgid "Close"
+msgstr "Sulge"
+
+#: src/remmina_message_panel.c:260
 #, fuzzy
-msgid "Select All (host+A)"
-msgstr "Valige kõik (host+A)"
+msgid "Yes"
+msgstr "Jah"
 
-#: src/remmina_ssh_plugin.c:823
+#: src/remmina_message_panel.c:267
 #, fuzzy
-msgid "Copy (host+C)"
-msgstr "Koopia (host+C)"
+msgid "No"
+msgstr "Ei"
 
-#: src/remmina_ssh_plugin.c:824
-#, fuzzy
-msgid "Paste (host+V)"
-msgstr "Paste (host+V)"
+#: src/remmina_message_panel.c:391 plugins/rdp/rdp_plugin.c:2653
+#: data/ui/remmina_mpc.glade:172
+msgid "Domain"
+msgstr "Domeen"
 
-#: src/remmina_ssh_plugin.c:825
-#, fuzzy
-msgid "Save session to file"
-msgstr "Salvesta seanss faili"
-
-#: src/remmina_ssh_plugin.c:826
-#, fuzzy
-msgid "Increase font size (host+Page Up)"
-msgstr "Suurendada kirjasuurust (host+Page Up)"
-
-#: src/remmina_ssh_plugin.c:827
-#, fuzzy
-msgid "Decrease font size (host+Page Down)"
-msgstr "Vähendada kirjasuurust (host+Page Down)"
-
-#: src/remmina_ssh_plugin.c:828
-#, fuzzy
-msgid "Find text (host+G)"
-msgstr "Teksti leidmine (host+G)"
-
-#: src/remmina_ssh_plugin.c:1370 src/remmina_ssh_plugin.c:1475
-#: src/remmina_sftp_plugin.c:311 src/remmina_sftp_plugin.c:348
-#: src/remmina_file_editor.c:847
-#, fuzzy
-msgid "SSH identity file"
-msgstr "SSH identiteedifail"
-
-#: src/remmina_ssh_plugin.c:1371 src/remmina_sftp_plugin.c:312
-#: src/remmina_file_editor.c:848
-#, fuzzy
-msgid "SSH agent"
-msgstr "SSH agent"
-
-#: src/remmina_ssh_plugin.c:1372 src/remmina_sftp_plugin.c:313
-#: src/remmina_file_editor.c:849
-msgid "Public key (automatic)"
-msgstr "Avalik võti (automaatne)"
-
-#: src/remmina_ssh_plugin.c:1373 src/remmina_sftp_plugin.c:314
-#: src/remmina_file_editor.c:850
-#, fuzzy
-msgid "Kerberos (GSSAPI)"
-msgstr "Kerberos (GSSAPI)"
-
-#: src/remmina_ssh_plugin.c:1448 data/ui/remmina_main.glade:177
-msgid "Copy"
-msgstr "Kopeeri"
-
-#: src/remmina_ssh_plugin.c:1448
-#, fuzzy
-msgid "_Copy"
-msgstr "_Kopeeri"
-
-#: src/remmina_ssh_plugin.c:1449
-msgid "Paste"
-msgstr "Aseta"
-
-#: src/remmina_ssh_plugin.c:1449
-#, fuzzy
-msgid "_Paste"
-msgstr "_Aseta"
-
-#: src/remmina_ssh_plugin.c:1450
-msgid "Select all"
-msgstr ""
-
-#: src/remmina_ssh_plugin.c:1450
-#, fuzzy
-msgid "_Select all"
-msgstr "_Valige kõik"
-
-#: src/remmina_ssh_plugin.c:1451
-#, fuzzy
-msgid "Increase font size"
-msgstr "Suurendada kirjasuurust"
-
-#: src/remmina_ssh_plugin.c:1451
-#, fuzzy
-msgid "_Increase font size"
-msgstr "_Kirjasuuruse suurendamine"
-
-#: src/remmina_ssh_plugin.c:1452
-#, fuzzy
-msgid "Decrease font size"
-msgstr "Vähendada kirjasuurust"
-
-#: src/remmina_ssh_plugin.c:1452
-#, fuzzy
-msgid "_Decrease font size"
-msgstr "_Vähenda kirjasuurust"
-
-#: src/remmina_ssh_plugin.c:1453
-#, fuzzy
-msgid "Find text"
-msgstr "Leia tekst"
-
-#: src/remmina_ssh_plugin.c:1453
-#, fuzzy
-msgid "_Find text"
-msgstr "_Find text"
-
-#: src/remmina_ssh_plugin.c:1472 src/remmina_sftp_plugin.c:347
-#: src/remmina_file_editor.c:952
-#, fuzzy
-msgid "Authentication type"
-msgstr "Autentimise tüüp"
-
-#: src/remmina_ssh_plugin.c:1473 src/remmina_message_panel.c:330
-#: src/remmina_sftp_plugin.c:345 src/remmina_file_editor.c:961
-#: plugins/www/www_plugin.c:879 plugins/vnc/vnc_plugin.c:1960
-#: plugins/vnc/vnc_plugin.c:1980 plugins/rdp/rdp_plugin.c:2651
-#: data/ui/remmina_mpc.glade:144
-#, fuzzy
-msgid "Username"
-msgstr "Kasutajanimi"
-
-#: src/remmina_ssh_plugin.c:1474 plugins/vnc/vnc_plugin.c:1961
-#: plugins/vnc/vnc_plugin.c:1981 plugins/spice/spice_plugin.c:666
-#, fuzzy
-msgid "User password"
-msgstr "kasutaja parool"
-
-#: src/remmina_ssh_plugin.c:1477 src/remmina_file_editor.c:979
-#, fuzzy
-msgid "SSH certificate file"
-msgstr "SSH sertifikaadi fail"
-
-#: src/remmina_ssh_plugin.c:1479 src/remmina_sftp_plugin.c:349
-#: src/remmina_file_editor.c:984
-#, fuzzy
-msgid "Password to unlock private key"
-msgstr "Salasõna isikliku võtme avamiseks"
-
-#: src/remmina_ssh_plugin.c:1480 plugins/rdp/rdp_plugin.c:2693
-msgid "Start-up program"
-msgstr "Käivituse programm"
-
-#: src/remmina_ssh_plugin.c:1485
-#, fuzzy
-msgid ""
-"The filename can use the following placeholders:\n"
-"\n"
-"  • %h is substituted with the server name\n"
-"  • %t is substituted with the SSH server name\n"
-"  • %u is substituted with the username\n"
-"  • %U is substituted with the SSH username\n"
-"  • %p is substituted with Remmina profile name\n"
-"  • %g is substituted with Remmina profile group name\n"
-"  • %d is substituted with local date and time in ISO 8601 format\n"
-msgstr ""
-"Failinimes võib kasutada järgmisi paigutussätteid:\n"
-"\n"
-"  - %h asendatakse serveri nimega\n"
-"  - %t asendatakse SSH-serveri nimega.\n"
-"  - %u asendatakse kasutajanimega\n"
-"  - %U asendatakse SSH kasutajanimega\n"
-"  - %p asendatakse Remmina profiili nimega.\n"
-"  - %g asendatakse Remmina profiili grupi nimega.\n"
-"  - %d asendatakse kohaliku kuupäeva ja kellaajaga ISO 8601 formaadis.\n"
-
-#: src/remmina_ssh_plugin.c:1507
-#, fuzzy
-msgid "Terminal colour scheme"
-msgstr "Terminali värviskeem"
-
-#: src/remmina_ssh_plugin.c:1508
-msgid "Character set"
-msgstr "Kooditabel"
-
-#: src/remmina_ssh_plugin.c:1509 src/remmina_sftp_plugin.c:350
-#, fuzzy
-msgid "SSH Proxy Command"
-msgstr "SSH Proxy käsk"
-
-#: src/remmina_ssh_plugin.c:1510
-#, fuzzy
-msgid "KEX (Key Exchange) algorithms"
-msgstr "KEX (Key Exchange) algoritmid"
-
-#: src/remmina_ssh_plugin.c:1511
-#, fuzzy
-msgid "Symmetric cipher client to server"
-msgstr "Sümmeetriline salastus kliendi ja serveri vahel"
-
-#: src/remmina_ssh_plugin.c:1512
-#, fuzzy
-msgid "Preferred server host key types"
-msgstr "Eelistatud serveri võtmetüübid"
-
-#: src/remmina_ssh_plugin.c:1513
-#, fuzzy
-msgid "Folder for SSH session log"
-msgstr "Kaust SSH seansi logi jaoks"
-
-#: src/remmina_ssh_plugin.c:1514
-#, fuzzy
-msgid "Filename for SSH session log"
-msgstr "SSH-seansi logi failinimi"
-
-#: src/remmina_ssh_plugin.c:1515
-#, fuzzy
-msgid "Log SSH session when exiting Remmina"
-msgstr "SSH seansi logimine Remminast väljumisel"
-
-#: src/remmina_ssh_plugin.c:1516
-#, fuzzy
-msgid "Log SSH session asynchronously"
-msgstr "SSH seansi logimine asünkroonselt"
-
-#: src/remmina_ssh_plugin.c:1516
-#, fuzzy
-msgid "Saving the session asynchronously may have a notable performance impact"
-msgstr ""
-"Seansi asünkroonne salvestamine võib mõjutada märkimisväärselt jõudlust."
-
-#: src/remmina_ssh_plugin.c:1517
-#, fuzzy
-msgid "Audible terminal bell"
-msgstr "Helisev terminalikell"
-
-#: src/remmina_ssh_plugin.c:1518
-#, fuzzy
-msgid "SSH compression"
-msgstr "SSH kompressioon"
-
-#: src/remmina_ssh_plugin.c:1519
-msgid "Don't remember passwords"
+#: src/remmina_message_panel.c:420
+msgid "Save password"
 msgstr "Salvesta parool"
 
-#: src/remmina_ssh_plugin.c:1520
+#: src/remmina_message_panel.c:457 src/remmina_message_panel.c:629
+#: src/remmina_sftp_client.c:947 src/remmina_file_editor.c:151
+#: src/remmina_file_editor.c:1365 plugins/spice/spice_plugin_file_transfer.c:84
+#: data/ui/remmina_key_chooser.glade:8 data/ui/remmina_key_chooser.glade:9
+#: data/ui/remmina_spinner.glade:8 data/ui/remmina_spinner.glade:9
 #, fuzzy
-msgid "Strict host key checking"
-msgstr "Range vastuvõtva võtme kontrollimine"
+msgid "_Cancel"
+msgstr "_Loobu"
 
-#: src/remmina_ssh_plugin.c:1534
-msgid "SSH - Secure Shell"
-msgstr "SSH - Turvaline kest"
+#: src/remmina_message_panel.c:513
+#, fuzzy
+msgid "Enter certificate authentication files"
+msgstr "Sisestage sertifikaadi autentimisfailid"
 
-#: src/remmina_applet_menu_item.c:121
-msgid "Discovered"
-msgstr "Leitud"
+#: src/remmina_message_panel.c:525
+#, fuzzy
+msgid "CA Certificate File"
+msgstr "CA sertifikaadi fail"
 
-#: src/remmina_applet_menu_item.c:126
-msgid "New Connection"
-msgstr "Uus ühendus"
+#: src/remmina_message_panel.c:547
+#, fuzzy
+msgid "CA CRL File"
+msgstr "CA CRLi fail"
+
+#: src/remmina_message_panel.c:569
+#, fuzzy
+msgid "Client Certificate File"
+msgstr "Kliendi sertifikaadi fail"
+
+#: src/remmina_message_panel.c:591
+#, fuzzy
+msgid "Client Certificate Key"
+msgstr "Kliendi sertifikaadi võti"
+
+#: src/rcw.c:658
+#, c-format
+msgid ""
+"Are you sure you want to close %i active connections in the current window?"
+msgstr ""
+"Seal on %i aktiivset ühendust samas aknas. Kas sa oled kindel, et on vaja "
+"sulgeda?"
+
+#: src/rcw.c:1394
+#, fuzzy
+msgid "Viewport fullscreen mode"
+msgstr "Viewport täisekraani režiim"
+
+#: src/rcw.c:1402 data/ui/remmina_preferences.glade:607
+#, fuzzy
+msgid "Scrolled fullscreen"
+msgstr "Täisekraani kerimine"
+
+#: src/rcw.c:1487
+#, fuzzy
+msgid "Keep aspect ratio when scaled"
+msgstr "Säilitab mõõtkava mõõtmisel küljesuhte"
+
+#: src/rcw.c:1495
+#, fuzzy
+msgid "Fill client window when scaled"
+msgstr "Kliendi akna täitmine skaleerimisel"
+
+#: src/rcw.c:2043
+#, fuzzy
+msgid "Send clipboard content as keystrokes"
+msgstr "Lõikeplaadi sisu saatmine klahvivajutusena"
+
+#: src/rcw.c:2147
+#, fuzzy
+msgid "Turn off scaling to avoid screenshot distortion."
+msgstr "Lülitage skaleerimine välja, et vältida ekraanipildi moonutamist."
+
+#: src/rcw.c:2207 plugins/www/www_plugin.c:848
+#, fuzzy
+msgid "Screenshot taken"
+msgstr "Screenshot tehtud"
+
+#: src/rcw.c:2290
+#, fuzzy
+msgid "_Menu"
+msgstr "_Menüü"
+
+#: src/rcw.c:2291
+#, fuzzy
+msgid "Menu"
+msgstr "Menüü"
+
+#: src/rcw.c:2300
+#, fuzzy
+#| msgid "Remmina main menu"
+msgid "Open the Remmina main window"
+msgstr "Avage Remmina põhiaken"
+
+#: src/rcw.c:2310
+#, fuzzy
+msgid "Duplicate current connection"
+msgstr "Praeguse ühenduse dubleerimine"
+
+#: src/rcw.c:2327
+#, fuzzy
+msgid "Resize the window to fit in remote resolution"
+msgstr "Akna suuruse muutmine, et see sobiks kauge resolutsiooniga"
+
+#: src/rcw.c:2338
+msgid "Toggle fullscreen mode"
+msgstr "Täisekraanvaate sisse- ja väljalülitamine"
+
+#: src/rcw.c:2384 data/ui/remmina_preferences.glade:1344
+#: data/ui/remmina_preferences.glade:1354
+#, fuzzy
+msgid "Multi monitor"
+msgstr "Multi monitor"
+
+#: src/rcw.c:2400
+#, fuzzy
+msgid "Toggle dynamic resolution update"
+msgstr "Dünaamilise eraldusvõime uuendamise lülitamine"
+
+#: src/rcw.c:2410
+#, fuzzy
+msgid "Toggle scaled mode"
+msgstr "Vahetage skaleeritud režiimi"
+
+#: src/rcw.c:2450 data/ui/remmina_preferences.glade:1070
+#, fuzzy
+msgid "Switch tab pages"
+msgstr "Vahetage vahekaardilehti"
+
+#: src/rcw.c:2460
+#, fuzzy
+msgid "Grab all keyboard events"
+msgstr "Haara kõik klaviatuurisündmused"
+
+#: src/rcw.c:2470
+msgid "Preferences"
+msgstr "Eelistus"
+
+#: src/rcw.c:2479
+msgid "_Tools"
+msgstr "Tööriistad"
+
+#: src/rcw.c:2480 data/ui/remmina_main.glade:207
+msgid "Tools"
+msgstr "Tööriistad"
+
+#: src/rcw.c:2493 data/ui/remmina_preferences.glade:1277
+#: data/ui/remmina_preferences.glade:1287
+#, fuzzy
+msgid "Screenshot"
+msgstr "Ekraanipilt"
+
+#: src/rcw.c:2507 data/ui/remmina_preferences.glade:1181
+msgid "Minimize window"
+msgstr "Minimeeri aken"
+
+#: src/rcw.c:2517 data/ui/remmina_preferences.glade:1213
+msgid "Disconnect"
+msgstr "Katkesta ühendus"
+
+#: src/rcw.c:4284
+#, fuzzy, c-format
+msgid "The file “%s” is corrupted, unreadable, or could not be found."
+msgstr "Fail \"%s\" on rikutud, loetamatu või seda ei leitud."
+
+#: src/rcw.c:4452
+#, fuzzy
+msgid "Warning: This plugin requires GtkSocket, but it’s not available."
+msgstr "Hoiatus: See plugin nõuab GtkSocket'i, kuid see ei ole saadaval."
 
 #: src/remmina_mpchange.c:234
 #, fuzzy
@@ -517,148 +485,6 @@ msgid "%d password changed."
 msgid_plural "%d passwords changed."
 msgstr[0] "%d parool muudetud."
 msgstr[1] ""
-
-#: src/remmina_public.c:345
-#, fuzzy, c-format
-msgid "Address is too long for UNIX socket_path: %s"
-msgstr "Aadress on UNIX socket_pathi jaoks liiga pikk: %s"
-
-#: src/remmina_public.c:355
-#, fuzzy, c-format
-msgid "Creating UNIX socket failed: %s"
-msgstr "UNIX-soketi loomine ebaõnnestus: %s"
-
-#: src/remmina_public.c:361
-#, fuzzy, c-format
-msgid "Connecting to UNIX socket failed: %s"
-msgstr "Ühendamine UNIX-soketiga ebaõnnestus: %s"
-
-#: src/remmina_public.c:631
-#, fuzzy
-msgid "Please enter format 'widthxheight'."
-msgstr "Palun sisestage formaat 'widthxheight'."
-
-#: src/remmina_public.c:653
-#, fuzzy
-msgid "Change security settings"
-msgstr "Turvasätete muutmine"
-
-#. TRANSLATORS: translator-credits should be replaced with a formatted list of translators in your own language
-#: src/remmina_about.c:54
-msgid "translator-credits"
-msgstr ""
-"Launchpad Contributions:\n"
-"  Jalakas https://launchpad.net/~jalakas\n"
-"  Marko Silluste https://launchpad.net/~marko-silluste\n"
-"  msil https://launchpad.net/~msil"
-
-#: src/remmina_ftp_client.c:389
-msgid "Choose download location"
-msgstr "Allalaadimise asukoha valimine"
-
-#: src/remmina_ftp_client.c:529
-msgid "Are you sure to delete the selected files on server?"
-msgstr "Kas soovid valitud serverifailid kustutada?"
-
-#: src/remmina_ftp_client.c:586
-#, fuzzy
-msgid "Choose a file to upload"
-msgstr "Valige fail üleslaadimiseks"
-
-#: src/remmina_ftp_client.c:593
-msgid "Upload folder"
-msgstr "Sihtkaust"
-
-#: src/remmina_ftp_client.c:649 src/remmina_ftp_client.c:763
-msgid "Download"
-msgstr "Allalaadimine"
-
-#: src/remmina_ftp_client.c:656 src/remmina_ftp_client.c:770
-msgid "Upload"
-msgstr "Üleslaadimine"
-
-#: src/remmina_ftp_client.c:663
-#, fuzzy
-msgid "_Delete"
-msgstr "Ku_stuta"
-
-#: src/remmina_ftp_client.c:748
-msgid "Home"
-msgstr ""
-
-#: src/remmina_ftp_client.c:749
-msgid "Go to home folder"
-msgstr "Liikumine kodukataloogi"
-
-#: src/remmina_ftp_client.c:753
-#, fuzzy
-msgid "Up"
-msgstr "Üles"
-
-#: src/remmina_ftp_client.c:754
-msgid "Go to parent folder"
-msgstr "Mine ülemkausta"
-
-#: src/remmina_ftp_client.c:758 plugins/vnc/vnc_plugin.c:2019
-#: plugins/rdp/rdp_plugin.c:2740
-msgid "Refresh"
-msgstr "Värskenda"
-
-#: src/remmina_ftp_client.c:759
-#, fuzzy
-msgid "Refresh current folder"
-msgstr "Värskenda praegust kausta"
-
-#: src/remmina_ftp_client.c:764
-msgid "Download from server"
-msgstr "Lae serverist"
-
-#: src/remmina_ftp_client.c:771
-msgid "Upload to server"
-msgstr "Lae serverisse"
-
-#: src/remmina_ftp_client.c:775 data/ui/remmina_main.glade:197
-#, fuzzy
-msgid "Delete"
-msgstr "Kustuta"
-
-#: src/remmina_ftp_client.c:776
-#, fuzzy
-msgid "Delete files on server"
-msgstr "Failide kustutamine serveris"
-
-#: src/remmina_ftp_client.c:905 src/remmina_ftp_client.c:974
-msgid "Filename"
-msgstr "Failinimi"
-
-#: src/remmina_ftp_client.c:918 src/remmina_ftp_client.c:1003
-msgid "Size"
-msgstr "Suurus"
-
-#: src/remmina_ftp_client.c:926
-msgid "User"
-msgstr "Kasutaja"
-
-#: src/remmina_ftp_client.c:932 src/remmina_file_editor.c:1515
-#: data/ui/remmina_main.glade:464 data/ui/remmina_mpc.glade:115
-msgid "Group"
-msgstr "Grupp"
-
-#: src/remmina_ftp_client.c:938
-msgid "Permission"
-msgstr "Õigus"
-
-#: src/remmina_ftp_client.c:990 plugins/rdp/rdp_plugin.c:2548
-msgid "Remote"
-msgstr "Kaug"
-
-#: src/remmina_ftp_client.c:997 plugins/rdp/rdp_plugin.c:2547
-msgid "Local"
-msgstr "Kohalik"
-
-#: src/remmina_ftp_client.c:1011
-msgid "Progress"
-msgstr "Edenemine"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:86
@@ -856,471 +682,278 @@ msgstr ""
 "\tremmina --update-profile /PATH/TO/FOO.remmina --set-option username --set-"
 "option resolution_mode=2 --set-option password\n"
 
-#: src/remmina_icon.c:128
+#: src/remmina_public.c:345
+#, fuzzy, c-format
+msgid "Address is too long for UNIX socket_path: %s"
+msgstr "Aadress on UNIX socket_pathi jaoks liiga pikk: %s"
+
+#: src/remmina_public.c:355
+#, fuzzy, c-format
+msgid "Creating UNIX socket failed: %s"
+msgstr "UNIX-soketi loomine ebaõnnestus: %s"
+
+#: src/remmina_public.c:361
+#, fuzzy, c-format
+msgid "Connecting to UNIX socket failed: %s"
+msgstr "Ühendamine UNIX-soketiga ebaõnnestus: %s"
+
+#: src/remmina_public.c:631
 #, fuzzy
-msgid "Open Main Window"
-msgstr "Avatud põhiaken"
+msgid "Please enter format 'widthxheight'."
+msgstr "Palun sisestage formaat 'widthxheight'."
 
-#: src/remmina_icon.c:133 data/ui/remmina_main.glade:254
+#: src/remmina_public.c:653
 #, fuzzy
-msgid "_Preferences"
-msgstr "_Eelistused"
+msgid "Change security settings"
+msgstr "Turvasätete muutmine"
 
-#: src/remmina_icon.c:138
-#, fuzzy
-msgid "_About"
-msgstr "_Teave"
-
-#: src/remmina_icon.c:148
-#, fuzzy
-msgid "Enable Service Discovery"
-msgstr "Teenuse avastamise lubamine"
-
-#: src/remmina_icon.c:160 data/ui/remmina_main.glade:404
-#, fuzzy
-msgid "_Quit"
-msgstr "_Lõpeta"
-
-#. TRANSLATORS: Applet name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
-#. TRANSLATORS: Applet Name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
-#: src/remmina_icon.c:284 src/remmina_icon.c:416
-msgid "Remmina Applet"
-msgstr "Remmina rakend"
-
-#. TRANSLATORS: Applet comment/description as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
-#: src/remmina_icon.c:286 src/remmina_icon.c:418
-#, fuzzy
-msgid "Connect to remote desktops through the applet menu"
-msgstr "Ühendamine kaugtöölaudadega rakenduse menüü kaudu"
-
-#: src/rcw.c:658
-#, c-format
-msgid ""
-"Are you sure you want to close %i active connections in the current window?"
+#. TRANSLATORS: translator-credits should be replaced with a formatted list of translators in your own language
+#: src/remmina_about.c:54
+msgid "translator-credits"
 msgstr ""
-"Seal on %i aktiivset ühendust samas aknas. Kas sa oled kindel, et on vaja "
-"sulgeda?"
+"Launchpad Contributions:\n"
+"  Jalakas https://launchpad.net/~jalakas\n"
+"  Marko Silluste https://launchpad.net/~marko-silluste\n"
+"  msil https://launchpad.net/~msil"
 
-#: src/rcw.c:1394
+#: src/remmina_ftp_client.c:389
+msgid "Choose download location"
+msgstr "Allalaadimise asukoha valimine"
+
+#: src/remmina_ftp_client.c:529
+msgid "Are you sure to delete the selected files on server?"
+msgstr "Kas soovid valitud serverifailid kustutada?"
+
+#: src/remmina_ftp_client.c:586
 #, fuzzy
-msgid "Viewport fullscreen mode"
-msgstr "Viewport täisekraani režiim"
+msgid "Choose a file to upload"
+msgstr "Valige fail üleslaadimiseks"
 
-#: src/rcw.c:1402 data/ui/remmina_preferences.glade:607
+#: src/remmina_ftp_client.c:593
+msgid "Upload folder"
+msgstr "Sihtkaust"
+
+#: src/remmina_ftp_client.c:649 src/remmina_ftp_client.c:763
+msgid "Download"
+msgstr "Allalaadimine"
+
+#: src/remmina_ftp_client.c:656 src/remmina_ftp_client.c:770
+msgid "Upload"
+msgstr "Üleslaadimine"
+
+#: src/remmina_ftp_client.c:663
 #, fuzzy
-msgid "Scrolled fullscreen"
-msgstr "Täisekraani kerimine"
+msgid "_Delete"
+msgstr "Ku_stuta"
 
-#: src/rcw.c:1487
-#, fuzzy
-msgid "Keep aspect ratio when scaled"
-msgstr "Säilitab mõõtkava mõõtmisel küljesuhte"
-
-#: src/rcw.c:1495
-#, fuzzy
-msgid "Fill client window when scaled"
-msgstr "Kliendi akna täitmine skaleerimisel"
-
-#: src/rcw.c:2043
-#, fuzzy
-msgid "Send clipboard content as keystrokes"
-msgstr "Lõikeplaadi sisu saatmine klahvivajutusena"
-
-#: src/rcw.c:2147
-#, fuzzy
-msgid "Turn off scaling to avoid screenshot distortion."
-msgstr "Lülitage skaleerimine välja, et vältida ekraanipildi moonutamist."
-
-#: src/rcw.c:2207 plugins/www/www_plugin.c:848
-#, fuzzy
-msgid "Screenshot taken"
-msgstr "Screenshot tehtud"
-
-#: src/rcw.c:2290
-#, fuzzy
-msgid "_Menu"
-msgstr "_Menüü"
-
-#: src/rcw.c:2291
-#, fuzzy
-msgid "Menu"
-msgstr "Menüü"
-
-#: src/rcw.c:2300
-#, fuzzy
-#| msgid "Remmina main menu"
-msgid "Open the Remmina main window"
-msgstr "Avage Remmina põhiaken"
-
-#: src/rcw.c:2310
-#, fuzzy
-msgid "Duplicate current connection"
-msgstr "Praeguse ühenduse dubleerimine"
-
-#: src/rcw.c:2327
-#, fuzzy
-msgid "Resize the window to fit in remote resolution"
-msgstr "Akna suuruse muutmine, et see sobiks kauge resolutsiooniga"
-
-#: src/rcw.c:2338
-msgid "Toggle fullscreen mode"
-msgstr "Täisekraanvaate sisse- ja väljalülitamine"
-
-#: src/rcw.c:2384 data/ui/remmina_preferences.glade:1344
-#: data/ui/remmina_preferences.glade:1354
-#, fuzzy
-msgid "Multi monitor"
-msgstr "Multi monitor"
-
-#: src/rcw.c:2400
-#, fuzzy
-msgid "Toggle dynamic resolution update"
-msgstr "Dünaamilise eraldusvõime uuendamise lülitamine"
-
-#: src/rcw.c:2410
-#, fuzzy
-msgid "Toggle scaled mode"
-msgstr "Vahetage skaleeritud režiimi"
-
-#: src/rcw.c:2450 data/ui/remmina_preferences.glade:1070
-#, fuzzy
-msgid "Switch tab pages"
-msgstr "Vahetage vahekaardilehti"
-
-#: src/rcw.c:2460
-#, fuzzy
-msgid "Grab all keyboard events"
-msgstr "Haara kõik klaviatuurisündmused"
-
-#: src/rcw.c:2470
-msgid "Preferences"
-msgstr "Eelistus"
-
-#: src/rcw.c:2479
-msgid "_Tools"
-msgstr "Tööriistad"
-
-#: src/rcw.c:2480 data/ui/remmina_main.glade:207
-msgid "Tools"
-msgstr "Tööriistad"
-
-#: src/rcw.c:2493 data/ui/remmina_preferences.glade:1277
-#: data/ui/remmina_preferences.glade:1287
-#, fuzzy
-msgid "Screenshot"
-msgstr "Ekraanipilt"
-
-#: src/rcw.c:2507 data/ui/remmina_preferences.glade:1181
-msgid "Minimize window"
-msgstr "Minimeeri aken"
-
-#: src/rcw.c:2517 data/ui/remmina_preferences.glade:1213
-msgid "Disconnect"
-msgstr "Katkesta ühendus"
-
-#: src/rcw.c:4284
-#, fuzzy, c-format
-msgid "The file “%s” is corrupted, unreadable, or could not be found."
-msgstr "Fail \"%s\" on rikutud, loetamatu või seda ei leitud."
-
-#: src/rcw.c:4452
-#, fuzzy
-msgid "Warning: This plugin requires GtkSocket, but it’s not available."
-msgstr "Hoiatus: See plugin nõuab GtkSocket'i, kuid see ei ole saadaval."
-
-#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1533
-msgid "Protocol"
-msgstr "Protokoll"
-
-#: src/remmina_plugin_manager.c:73
-msgid "Entry"
-msgstr "Kirje"
-
-#: src/remmina_plugin_manager.c:73
-msgid "File"
-msgstr "Fail"
-
-#: src/remmina_plugin_manager.c:73
-msgid "Tool"
-msgstr "Tööriist"
-
-#: src/remmina_plugin_manager.c:73
-msgid "Preference"
-msgstr "Eelistus"
-
-#: src/remmina_plugin_manager.c:73
-#, fuzzy
-msgid "Secret"
-msgstr "Salajane"
-
-#: src/remmina_plugin_manager.c:456 data/ui/remmina_main.glade:305
-msgid "Plugins"
-msgstr "Pluginad"
-
-#: src/remmina_plugin_manager.c:456 src/remmina_message_panel.c:452
-#: src/remmina_message_panel.c:621 src/remmina_file_editor.c:152
-#, fuzzy
-msgid "_OK"
-msgstr "_Olgu"
-
-#: src/remmina_plugin_manager.c:474 src/remmina_file_editor.c:1490
-#: data/ui/remmina_main.glade:442
-msgid "Name"
-msgstr "Nimi"
-
-#: src/remmina_plugin_manager.c:480
-msgid "Type"
-msgstr "Tüüp"
-
-#: src/remmina_plugin_manager.c:486
-msgid "Description"
-msgstr "Kirjeldus"
-
-#: src/remmina_plugin_manager.c:492
-msgid "Version"
-msgstr "Versioon"
-
-#: src/remmina_main.c:662
-#, c-format
-msgid "Total %i item."
-msgid_plural "Total %i items."
-msgstr[0] "Kokku %i kirje."
-msgstr[1] "Kokku %i kirjet."
-
-#: src/remmina_main.c:853
-#, c-format
-msgid "Are you sure you want to delete “%s”?"
-msgstr "Kas sa oled kindel, et kustutad '%s'"
-
-#: src/remmina_main.c:973
-#, c-format
-msgid ""
-"Unable to import:\n"
-"%s"
+#: src/remmina_ftp_client.c:748
+msgid "Home"
 msgstr ""
-"Importimine nurjus:\n"
-"%s"
 
-#: src/remmina_main.c:999 data/ui/remmina_main.glade:285
-msgid "Import"
-msgstr "Importimine"
+#: src/remmina_ftp_client.c:749
+msgid "Go to home folder"
+msgstr "Liikumine kodukataloogi"
 
-#: src/remmina_main.c:1022 src/remmina_file_editor.c:1373
+#: src/remmina_ftp_client.c:753
 #, fuzzy
-msgid "_Save"
-msgstr "_Salvesta"
+msgid "Up"
+msgstr "Üles"
 
-#: src/remmina_main.c:1028
-msgid "This protocol does not support exporting."
-msgstr "See protokoll ei toeta eksportimist."
+#: src/remmina_ftp_client.c:754
+msgid "Go to parent folder"
+msgstr "Mine ülemkausta"
 
-#: src/remmina_main.c:1344
-msgid "Remmina Remote Desktop Client"
-msgstr "Remmina kaugtöölaua klient"
+#: src/remmina_ftp_client.c:758 plugins/rdp/rdp_plugin.c:2740
+#: plugins/vnc/vnc_plugin.c:2019
+msgid "Refresh"
+msgstr "Värskenda"
 
-#: src/remmina_main.c:1346
+#: src/remmina_ftp_client.c:759
 #, fuzzy
-msgid "Remmina Kiosk"
-msgstr "Remmina kiosk"
+msgid "Refresh current folder"
+msgstr "Värskenda praegust kausta"
 
-#: src/remmina_key_chooser.h:38
+#: src/remmina_ftp_client.c:764
+msgid "Download from server"
+msgstr "Lae serverist"
+
+#: src/remmina_ftp_client.c:771
+msgid "Upload to server"
+msgstr "Lae serverisse"
+
+#: src/remmina_ftp_client.c:775 data/ui/remmina_main.glade:197
 #, fuzzy
-msgid "Shift+"
-msgstr "Shift+"
+msgid "Delete"
+msgstr "Kustuta"
 
-#: src/remmina_key_chooser.h:39
+#: src/remmina_ftp_client.c:776
 #, fuzzy
-msgid "Ctrl+"
-msgstr "Ctrl+"
+msgid "Delete files on server"
+msgstr "Failide kustutamine serveris"
 
-#: src/remmina_key_chooser.h:40
+#: src/remmina_ftp_client.c:905 src/remmina_ftp_client.c:974
+msgid "Filename"
+msgstr "Failinimi"
+
+#: src/remmina_ftp_client.c:918 src/remmina_ftp_client.c:1003
+msgid "Size"
+msgstr "Suurus"
+
+#: src/remmina_ftp_client.c:926
+msgid "User"
+msgstr "Kasutaja"
+
+#: src/remmina_ftp_client.c:932 src/remmina_file_editor.c:1515
+#: data/ui/remmina_mpc.glade:115 data/ui/remmina_main.glade:464
+msgid "Group"
+msgstr "Grupp"
+
+#: src/remmina_ftp_client.c:938
+msgid "Permission"
+msgstr "Õigus"
+
+#: src/remmina_ftp_client.c:990 plugins/rdp/rdp_plugin.c:2548
+msgid "Remote"
+msgstr "Kaug"
+
+#: src/remmina_ftp_client.c:997 plugins/rdp/rdp_plugin.c:2547
+msgid "Local"
+msgstr "Kohalik"
+
+#: src/remmina_ftp_client.c:1011
+msgid "Progress"
+msgstr "Edenemine"
+
+#: src/remmina_protocol_widget.c:290 src/remmina_ssh_plugin.c:829
+#: src/remmina_ssh_plugin.c:1454
+msgid "Open SFTP transfer…"
+msgstr "Avatud turvaline failiedastus…"
+
+#: src/remmina_protocol_widget.c:319
 #, fuzzy
-msgid "Alt+"
-msgstr "Alt+"
+msgid "Executing external commands…"
+msgstr "Väliste käskude täitmine…"
 
-#: src/remmina_key_chooser.h:41
-#, fuzzy
-msgid "Super+"
-msgstr "Super+"
+#. TRANSLATORS: “%s” is a placeholder for the connection profile name
+#: src/remmina_protocol_widget.c:327
+#, c-format
+msgid "Connecting to “%s”…"
+msgstr "Ühendumine seadmega '%s'…"
 
-#: src/remmina_key_chooser.h:42
-#, fuzzy
-msgid "Hyper+"
-msgstr "Hyper+"
+#. TRANSLATORS: “%s” is a placeholder for an hostname or an IP address.
+#: src/remmina_protocol_widget.c:911 src/remmina_protocol_widget.c:1096
+#, c-format
+msgid "Connecting to “%s” via SSH…"
+msgstr "Ühendumine seadmega '%s'…"
 
-#: src/remmina_key_chooser.h:43
-#, fuzzy
-msgid "Meta+"
-msgstr "Meta+"
-
-#: src/remmina_key_chooser.h:44
-#, fuzzy
-msgid "<None>"
-msgstr "<Kõik>"
-
-#. TRANSLATORS: The placeholder %s is a directory path
-#: src/remmina_sftp_client.c:173
+#. TRANSLATORS: “%i” is a placeholder for a TCP port number.
+#: src/remmina_protocol_widget.c:1160
 #, fuzzy, c-format
-msgid "Could not create the folder “%s”."
-msgstr "Ei saanud luua kausta \"%s\"."
+msgid "Awaiting incoming SSH connection on port %i…"
+msgstr "Ootab sissetulevat SSH ühendust portil %i…"
 
-#. TRANSLATORS: The placeholder %s is a file path
-#: src/remmina_sftp_client.c:181 src/remmina_sftp_client.c:202
+#: src/remmina_protocol_widget.c:1213
 #, fuzzy, c-format
-msgid "Could not create the file “%s”."
-msgstr "Faili \"%s\" ei saanud luua."
+msgid "The “%s” command is not available on the SSH server."
+msgstr "Käsk \"%s\" ei ole SSH-serveris saadaval."
 
-#. TRANSLATORS: The placeholders %s are a file path, and an error message.
-#: src/remmina_sftp_client.c:220
+#: src/remmina_protocol_widget.c:1218
 #, fuzzy, c-format
-msgid "Could not open the file “%s” on the server. %s"
-msgstr "Faili \"%s\" ei saanud serveris avada. %s"
+msgid "Could not run the “%s” command on the SSH server (status = %i)."
+msgstr "SSH-serveril ei õnnestunud käsku \"%s\" käivitada (staatus = %i)."
 
-#: src/remmina_sftp_client.c:242
+#. TRANSLATORS: %s is a placeholder for an error message
+#: src/remmina_protocol_widget.c:1226
 #, fuzzy, c-format
-msgid "Could not save the file “%s”."
-msgstr "Faili \"%s\" ei saanud salvestada."
+msgid "Could not run command. %s"
+msgstr "Ei saanud käsku käivitada. %s"
 
-#: src/remmina_sftp_client.c:281 src/remmina_sftp_client.c:698
-#: src/remmina_sftp_client.c:761
+#. TRANSLATORS: “%s” is a placeholder for a hostname or IP address.
+#: src/remmina_protocol_widget.c:1296
+#, c-format
+msgid "Connecting to %s via SSH…"
+msgstr "Ühendumine seadmega '%s'…"
+
+#: src/remmina_protocol_widget.c:1690
+#, fuzzy
+msgid "Type in SSH username and password."
+msgstr "Sisestage SSH kasutajanimi ja parool."
+
+#: src/remmina_protocol_widget.c:1745 src/remmina_protocol_widget.c:1777
+#, fuzzy
+msgid "Fingerprint automatically accepted"
+msgstr "Sõrmejälg automaatselt aktsepteeritud"
+
+#. TRANSLATORS: The user is asked to verify a new SSL certificate.
+#: src/remmina_protocol_widget.c:1753
+#, fuzzy
+msgid "Certificate details:"
+msgstr "Certificate details"
+
+#. TRANSLATORS: An SSL certificate subject is usually the remote server the user connect to.
+#: src/remmina_protocol_widget.c:1755 src/remmina_protocol_widget.c:1787
+#, fuzzy
+msgid "Subject:"
+msgstr "Teema:"
+
+#. TRANSLATORS: The name or email of the entity that have issued the SSL certificate
+#: src/remmina_protocol_widget.c:1757 src/remmina_protocol_widget.c:1789
+msgid "Issuer:"
+msgstr "Väljaandja:"
+
+#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
+#: src/remmina_protocol_widget.c:1759
+msgid "Fingerprint:"
+msgstr "Sõrmejälg:"
+
+#. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
+#: src/remmina_protocol_widget.c:1761
+#, fuzzy
+msgid "Accept certificate?"
+msgstr "Tunnistus vastu võtta?"
+
+#. TRANSLATORS: The user is asked to verify a new SSL certificate.
+#: src/remmina_protocol_widget.c:1785
+#, fuzzy
+msgid "The certificate changed! Details:"
+msgstr "Sertifikaat muutus! Üksikasjad:"
+
+#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
+#: src/remmina_protocol_widget.c:1791
+msgid "Old fingerprint:"
+msgstr "Sõrmejälg:"
+
+#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
+#: src/remmina_protocol_widget.c:1793
+msgid "New fingerprint:"
+msgstr "Sõrmejälg:"
+
+#. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
+#: src/remmina_protocol_widget.c:1795
+#, fuzzy
+msgid "Accept changed certificate?"
+msgstr "Aktsepteerida muudetud sertifikaati?"
+
+#. TRANSLATORS: “%i” is a placeholder for a port number. “%s”  is a placeholder for a protocol name (VNC).
+#: src/remmina_protocol_widget.c:1938
 #, fuzzy, c-format
-msgid "Could not open the folder “%s”. %s"
-msgstr "Ei saanud avada kausta \"%s\". %s"
+msgid "Listening on port %i for an incoming %s connection…"
+msgstr "Kuulab portis %i sissetulevat %s ühendust…"
 
-#: src/remmina_sftp_client.c:385
+#: src/remmina_protocol_widget.c:1963
+msgid "Could not authenticate, attempting reconnection…"
+msgstr "Autentimine nurjus. Proovime taasühendada…"
+
+#: src/remmina_protocol_widget.c:2025 src/remmina_file_editor.c:346
+#: src/remmina_file_editor.c:917 data/ui/remmina_main.glade:478
+msgid "Server"
+msgstr "Server"
+
+#. TRANSLATORS: “%s” is a placeholder for a protocol name, like “RDP”.
+#: src/remmina_protocol_widget.c:2043
 #, fuzzy, c-format
-msgid "Could not create the folder “%s” on the server. %s"
-msgstr "Ei õnnestunud luua serveris kausta \"%s\". %s"
-
-#: src/remmina_sftp_client.c:413 src/remmina_sftp_client.c:435
-#, fuzzy, c-format
-msgid "Could not create the file “%s” on the server. %s"
-msgstr "Faili \"%s\" ei õnnestunud serveris luua. %s"
-
-#: src/remmina_sftp_client.c:456
-#, fuzzy, c-format
-msgid "Could not open the file “%s”."
-msgstr "Faili \"%s\" ei saanud avada."
-
-#: src/remmina_sftp_client.c:476
-#, fuzzy, c-format
-msgid "Could not write to the file “%s” on the server. %s"
-msgstr "Ei saanud kirjutada faili \"%s\" serveris. %s"
-
-#: src/remmina_sftp_client.c:716
-#, fuzzy, c-format
-msgid "Could not read from the folder. %s"
-msgstr "Ei saanud kaustast lugeda. %s"
-
-#: src/remmina_sftp_client.c:823
-msgid "Are you sure you want to cancel the file transfer in progress?"
-msgstr "Kas sa oled kindel, et kustutad '%s'"
-
-#: src/remmina_sftp_client.c:857
-#, fuzzy, c-format
-msgid "Could not delete “%s”. %s"
-msgstr "Ei saanud kustutada \"%s\". %s"
-
-#: src/remmina_sftp_client.c:942
-#, fuzzy
-msgid "The file exists already"
-msgstr "Fail on juba olemas"
-
-#: src/remmina_sftp_client.c:945
-msgid "Resume"
-msgstr "Jätka"
-
-#: src/remmina_sftp_client.c:946
-msgid "Overwrite"
-msgstr "Kirjuta üle"
-
-#: src/remmina_sftp_client.c:947 src/remmina_message_panel.c:457
-#: src/remmina_message_panel.c:629 src/remmina_file_editor.c:151
-#: src/remmina_file_editor.c:1365 plugins/spice/spice_plugin_file_transfer.c:84
-#: data/ui/remmina_spinner.glade:8 data/ui/remmina_spinner.glade:9
-#: data/ui/remmina_key_chooser.glade:8 data/ui/remmina_key_chooser.glade:9
-#, fuzzy
-msgid "_Cancel"
-msgstr "_Loobu"
-
-#: src/remmina_sftp_client.c:964
-#, fuzzy
-msgid "The following file already exists in the target folder:"
-msgstr "Järgmine fail on sihtkaustas juba olemas:"
-
-#: src/remmina_message_panel.c:163 data/ui/remmina_unlock.glade:46
-#: data/ui/remmina_mpc.glade:46
-#, fuzzy
-msgid "Cancel"
-msgstr "Loobu"
-
-#: src/remmina_message_panel.c:199 data/ui/remmina_snap_info_dialog.glade:28
-#: data/ui/remmina_news.glade:33 data/ui/remmina_preferences.glade:2640
-#: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
-#: data/ui/remmina_string_list.glade:63
-msgid "Close"
-msgstr "Sulge"
-
-#: src/remmina_message_panel.c:260
-#, fuzzy
-msgid "Yes"
-msgstr "Jah"
-
-#: src/remmina_message_panel.c:267
-#, fuzzy
-msgid "No"
-msgstr "Ei"
-
-#: src/remmina_message_panel.c:391 plugins/rdp/rdp_plugin.c:2653
-#: data/ui/remmina_mpc.glade:172
-msgid "Domain"
-msgstr "Domeen"
-
-#: src/remmina_message_panel.c:420
-msgid "Save password"
-msgstr "Salvesta parool"
-
-#: src/remmina_message_panel.c:513
-#, fuzzy
-msgid "Enter certificate authentication files"
-msgstr "Sisestage sertifikaadi autentimisfailid"
-
-#: src/remmina_message_panel.c:525
-#, fuzzy
-msgid "CA Certificate File"
-msgstr "CA sertifikaadi fail"
-
-#: src/remmina_message_panel.c:547
-#, fuzzy
-msgid "CA CRL File"
-msgstr "CA CRLi fail"
-
-#: src/remmina_message_panel.c:569
-#, fuzzy
-msgid "Client Certificate File"
-msgstr "Kliendi sertifikaadi fail"
-
-#: src/remmina_message_panel.c:591
-#, fuzzy
-msgid "Client Certificate Key"
-msgstr "Kliendi sertifikaadi võti"
-
-#: src/remmina_sftp_plugin.c:323
-msgid "Show Hidden Files"
-msgstr "Kuva peidetud failid"
-
-#: src/remmina_sftp_plugin.c:325
-msgid "Overwrite all files"
-msgstr "Kirjuta üle"
-
-#: src/remmina_sftp_plugin.c:327
-#, fuzzy
-msgid "Resume all file transfers"
-msgstr "Jätkata kõiki failiülekandeid"
-
-#: src/remmina_sftp_plugin.c:359
-msgid "SFTP - Secure File Transfer"
-msgstr "SFTP - Turvaline failiedastamine"
+msgid "Install the %s protocol plugin first."
+msgstr "Installige kõigepealt protokolli plugin %s."
 
 #: src/remmina_ssh.c:236
 #, fuzzy, c-format
@@ -1603,6 +1236,135 @@ msgstr "Ei saanud taotleda kesta. %s"
 msgid "Could not create PTY device."
 msgstr "PTY seadet ei õnnestunud luua."
 
+#: src/remmina_exec.c:475
+#, c-format
+msgid "Plugin %s is not registered."
+msgstr "Plugin %s pole registreeritud."
+
+#: src/remmina_main.c:662
+#, c-format
+msgid "Total %i item."
+msgid_plural "Total %i items."
+msgstr[0] "Kokku %i kirje."
+msgstr[1] "Kokku %i kirjet."
+
+#: src/remmina_main.c:853
+#, c-format
+msgid "Are you sure you want to delete “%s”?"
+msgstr "Kas sa oled kindel, et kustutad '%s'"
+
+#: src/remmina_main.c:973
+#, c-format
+msgid ""
+"Unable to import:\n"
+"%s"
+msgstr ""
+"Importimine nurjus:\n"
+"%s"
+
+#: src/remmina_main.c:999 data/ui/remmina_main.glade:285
+msgid "Import"
+msgstr "Importimine"
+
+#: src/remmina_main.c:1022 src/remmina_file_editor.c:1373
+#, fuzzy
+msgid "_Save"
+msgstr "_Salvesta"
+
+#: src/remmina_main.c:1028
+msgid "This protocol does not support exporting."
+msgstr "See protokoll ei toeta eksportimist."
+
+#: src/remmina_main.c:1344
+msgid "Remmina Remote Desktop Client"
+msgstr "Remmina kaugtöölaua klient"
+
+#: src/remmina_main.c:1346
+#, fuzzy
+msgid "Remmina Kiosk"
+msgstr "Remmina kiosk"
+
+#. TRANSLATORS: The placeholder %s is a directory path
+#: src/remmina_sftp_client.c:173
+#, fuzzy, c-format
+msgid "Could not create the folder “%s”."
+msgstr "Ei saanud luua kausta \"%s\"."
+
+#. TRANSLATORS: The placeholder %s is a file path
+#: src/remmina_sftp_client.c:181 src/remmina_sftp_client.c:202
+#, fuzzy, c-format
+msgid "Could not create the file “%s”."
+msgstr "Faili \"%s\" ei saanud luua."
+
+#. TRANSLATORS: The placeholders %s are a file path, and an error message.
+#: src/remmina_sftp_client.c:220
+#, fuzzy, c-format
+msgid "Could not open the file “%s” on the server. %s"
+msgstr "Faili \"%s\" ei saanud serveris avada. %s"
+
+#: src/remmina_sftp_client.c:242
+#, fuzzy, c-format
+msgid "Could not save the file “%s”."
+msgstr "Faili \"%s\" ei saanud salvestada."
+
+#: src/remmina_sftp_client.c:281 src/remmina_sftp_client.c:698
+#: src/remmina_sftp_client.c:761
+#, fuzzy, c-format
+msgid "Could not open the folder “%s”. %s"
+msgstr "Ei saanud avada kausta \"%s\". %s"
+
+#: src/remmina_sftp_client.c:385
+#, fuzzy, c-format
+msgid "Could not create the folder “%s” on the server. %s"
+msgstr "Ei õnnestunud luua serveris kausta \"%s\". %s"
+
+#: src/remmina_sftp_client.c:413 src/remmina_sftp_client.c:435
+#, fuzzy, c-format
+msgid "Could not create the file “%s” on the server. %s"
+msgstr "Faili \"%s\" ei õnnestunud serveris luua. %s"
+
+#: src/remmina_sftp_client.c:456
+#, fuzzy, c-format
+msgid "Could not open the file “%s”."
+msgstr "Faili \"%s\" ei saanud avada."
+
+#: src/remmina_sftp_client.c:476
+#, fuzzy, c-format
+msgid "Could not write to the file “%s” on the server. %s"
+msgstr "Ei saanud kirjutada faili \"%s\" serveris. %s"
+
+#: src/remmina_sftp_client.c:716
+#, fuzzy, c-format
+msgid "Could not read from the folder. %s"
+msgstr "Ei saanud kaustast lugeda. %s"
+
+#: src/remmina_sftp_client.c:823
+msgid "Are you sure you want to cancel the file transfer in progress?"
+msgstr "Kas sa oled kindel, et kustutad '%s'"
+
+#: src/remmina_sftp_client.c:857
+#, fuzzy, c-format
+msgid "Could not delete “%s”. %s"
+msgstr "Ei saanud kustutada \"%s\". %s"
+
+#: src/remmina_sftp_client.c:942
+#, fuzzy
+msgid "The file exists already"
+msgstr "Fail on juba olemas"
+
+#: src/remmina_sftp_client.c:945
+msgid "Resume"
+msgstr "Jätka"
+
+#: src/remmina_sftp_client.c:946
+msgid "Overwrite"
+msgstr "Kirjuta üle"
+
+#: src/remmina_sftp_client.c:964
+#, fuzzy
+msgid "The following file already exists in the target folder:"
+msgstr "Järgmine fail on sihtkaustas juba olemas:"
+
 #: src/remmina_file_editor.c:60
 #, fuzzy
 msgid ""
@@ -1763,6 +1525,11 @@ msgstr "SSH Autentimine"
 msgid "SSH private key file"
 msgstr "SSH privaatne võtmefail"
 
+#: src/remmina_file_editor.c:979 src/remmina_ssh_plugin.c:1477
+#, fuzzy
+msgid "SSH certificate file"
+msgstr "SSH sertifikaadi fail"
+
 #: src/remmina_file_editor.c:1037
 msgid "Basic"
 msgstr "Tavaline"
@@ -1819,613 +1586,393 @@ msgstr "Kasutage alamrühma piirajana '%s'."
 msgid "Could not find the file “%s”."
 msgstr "Ei leitud faili \"%s\"."
 
-#: src/remmina_chat_window.c:178
-#, c-format
-msgid "Chat with %s"
-msgstr "Vestlus kasutajaga %s"
-
-#: src/remmina_chat_window.c:230
-msgid "_Send"
-msgstr "_Saada"
-
-#: src/remmina_chat_window.c:240
-msgid "_Clear"
-msgstr "_Tühjenda"
-
-#: plugins/gvnc/gvnc_plugin_config.h:40
+#: src/remmina_icon.c:128
 #, fuzzy
-msgid "Remmina VNC plugin for GNOME and KVM"
-msgstr "Remmina VNC plugin GNOME ja KVM jaoks"
+msgid "Open Main Window"
+msgstr "Avatud põhiaken"
 
-#: plugins/gvnc/gvnc_plugin.c:477
+#: src/remmina_icon.c:133 data/ui/remmina_main.glade:254
+#, fuzzy
+msgid "_Preferences"
+msgstr "_Eelistused"
+
+#: src/remmina_icon.c:138
+#, fuzzy
+msgid "_About"
+msgstr "_Teave"
+
+#: src/remmina_icon.c:148
+#, fuzzy
+msgid "Enable Service Discovery"
+msgstr "Teenuse avastamise lubamine"
+
+#: src/remmina_icon.c:160 data/ui/remmina_main.glade:404
+#, fuzzy
+msgid "_Quit"
+msgstr "_Lõpeta"
+
+#. TRANSLATORS: Applet name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
+#. TRANSLATORS: Applet Name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
+#: src/remmina_icon.c:284 src/remmina_icon.c:416
+msgid "Remmina Applet"
+msgstr "Remmina rakend"
+
+#. TRANSLATORS: Applet comment/description as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
+#: src/remmina_icon.c:286 src/remmina_icon.c:418
+#, fuzzy
+msgid "Connect to remote desktops through the applet menu"
+msgstr "Ühendamine kaugtöölaudadega rakenduse menüü kaudu"
+
+#. TRANSLATORS: %s is a placeholder for an error message
+#: src/remmina_ssh_plugin.c:539
 #, fuzzy, c-format
-msgid "Unsupported authentication type %u"
-msgstr "Toetamata autentimistüüp %u"
+msgid "Error: %s"
+msgstr "Viga: %s"
 
-#: plugins/gvnc/gvnc_plugin.c:489
-#, fuzzy, c-format
-#| msgid "SSH Authentication"
-msgid "Authentication failure: %s"
-msgstr "Autentimise ebaõnnestumine: %s"
-
-#: plugins/gvnc/gvnc_plugin.c:539 plugins/vnc/vnc_plugin.c:825
+#: src/remmina_ssh_plugin.c:556
 #, fuzzy
-msgid "Enter VNC authentication credentials"
-msgstr "Sisestage VNC autentimisandmed"
+msgid "Terminal content saved in"
+msgstr "Terminali sisu salvestatud"
 
-#: plugins/gvnc/gvnc_plugin.c:820
+#: src/remmina_ssh_plugin.c:822
 #, fuzzy
-msgid "Use server settings"
-msgstr "Kasutage serveri seadeid"
+msgid "Select All (host+A)"
+msgstr "Valige kõik (host+A)"
 
-#: plugins/gvnc/gvnc_plugin.c:821
+#: src/remmina_ssh_plugin.c:823
 #, fuzzy
-#| msgid "True colour (24 bpp)"
-msgid "True colour (24 bits)"
-msgstr "True color (24 bitti)"
+msgid "Copy (host+C)"
+msgstr "Koopia (host+C)"
 
-#: plugins/gvnc/gvnc_plugin.c:822
+#: src/remmina_ssh_plugin.c:824
 #, fuzzy
-#| msgid "High colour (16 bpp)"
-msgid "High colour (16 bits)"
-msgstr "Kõrge värvsus (16 bitti)"
+msgid "Paste (host+V)"
+msgstr "Paste (host+V)"
 
-#: plugins/gvnc/gvnc_plugin.c:823
+#: src/remmina_ssh_plugin.c:825
 #, fuzzy
-#| msgid "256 colours (8 bpp)"
-msgid "Low colour (8 bits)"
-msgstr "Madal värvus (8 bitti)"
+msgid "Save session to file"
+msgstr "Salvesta seanss faili"
 
-#: plugins/gvnc/gvnc_plugin.c:824
+#: src/remmina_ssh_plugin.c:826
 #, fuzzy
-#| msgid "True colour (32 bpp)"
-msgid "Ultra low colour (3 bits)"
-msgstr "Ülimadalad värvid (3 bitti)"
+msgid "Increase font size (host+Page Up)"
+msgstr "Suurendada kirjasuurust (host+Page Up)"
 
-#: plugins/gvnc/gvnc_plugin.c:839
+#: src/remmina_ssh_plugin.c:827
 #, fuzzy
-#| msgid "Enter VNC password"
-msgid "VNC password"
-msgstr "VNC parool"
+msgid "Decrease font size (host+Page Down)"
+msgstr "Vähendada kirjasuurust (host+Page Down)"
 
-#: plugins/gvnc/gvnc_plugin.c:840 plugins/vnc/vnc_plugin.c:1962
-#: plugins/vnc/vnc_plugin.c:1982 plugins/rdp/rdp_plugin.c:2661
-msgid "Colour depth"
-msgstr "Värvisügavus"
-
-#: plugins/gvnc/gvnc_plugin.c:841
+#: src/remmina_ssh_plugin.c:828
 #, fuzzy
-msgid "Use JPEG Compression"
-msgstr "Kasutage JPEG pakkimist"
+msgid "Find text (host+G)"
+msgstr "Teksti leidmine (host+G)"
 
-#: plugins/gvnc/gvnc_plugin.c:841
+#: src/remmina_ssh_plugin.c:1448 data/ui/remmina_main.glade:177
+msgid "Copy"
+msgstr "Kopeeri"
+
+#: src/remmina_ssh_plugin.c:1448
 #, fuzzy
-msgid "This might not work on all VNC servers"
-msgstr "See ei pruugi toimida kõigis VNC-serverites."
+msgid "_Copy"
+msgstr "_Kopeeri"
 
-#: plugins/gvnc/gvnc_plugin.c:842
+#: src/remmina_ssh_plugin.c:1449
+msgid "Paste"
+msgstr "Aseta"
+
+#: src/remmina_ssh_plugin.c:1449
 #, fuzzy
-msgid "Enable GTK-VNC debug"
-msgstr "GTK-VNC silumise lubamine"
+msgid "_Paste"
+msgstr "_Aseta"
 
-#: plugins/gvnc/gvnc_plugin.c:857 plugins/gvnc/gvnc_plugin.c:871
-#: plugins/spice/spice_plugin.c:693 plugins/spice/spice_plugin.c:706
+#: src/remmina_ssh_plugin.c:1450
+msgid "Select all"
+msgstr ""
+
+#: src/remmina_ssh_plugin.c:1450
 #, fuzzy
-msgid "No clipboard sync"
-msgstr "Lõikeplaadi sünkroonimine puudub"
+msgid "_Select all"
+msgstr "_Valige kõik"
 
-#: plugins/gvnc/gvnc_plugin.c:858 plugins/www/www_plugin.c:904
-#: plugins/vnc/vnc_plugin.c:2005 plugins/spice/spice_plugin.c:694
-#: plugins/rdp/rdp_plugin.c:2718
-msgid "Forget passwords after use"
-msgstr "%s parool"
-
-#: plugins/gvnc/gvnc_plugin.c:859 plugins/vnc/vnc_plugin.c:2004
+#: src/remmina_ssh_plugin.c:1451
 #, fuzzy
-msgid "Ignore remote bell messages"
-msgstr "Ignoreeri kaugkella sõnumeid"
+msgid "Increase font size"
+msgstr "Suurendada kirjasuurust"
 
-#: plugins/gvnc/gvnc_plugin.c:860 plugins/spice/spice_plugin.c:695
+#: src/remmina_ssh_plugin.c:1451
 #, fuzzy
-msgid "Enable audio channel"
-msgstr "Helikanali lubamine"
+msgid "_Increase font size"
+msgstr "_Kirjasuuruse suurendamine"
 
-#: plugins/gvnc/gvnc_plugin.c:861 plugins/gvnc/gvnc_plugin.c:870
-#: plugins/vnc/vnc_plugin.c:2000 plugins/vnc/vnc_plugin.c:2017
-#: plugins/spice/spice_plugin.c:697 plugins/spice/spice_plugin.c:705
+#: src/remmina_ssh_plugin.c:1452
 #, fuzzy
-msgid "View only"
-msgstr "Ainult vaata"
+msgid "Decrease font size"
+msgstr "Vähendada kirjasuurust"
 
-#: plugins/gvnc/gvnc_plugin.c:862
+#: src/remmina_ssh_plugin.c:1452
 #, fuzzy
-#| msgid "Per connection"
-msgid "Shared connection"
-msgstr "Ühine ühendus"
+msgid "_Decrease font size"
+msgstr "_Vähenda kirjasuurust"
 
-#: plugins/gvnc/gvnc_plugin.c:862
+#: src/remmina_ssh_plugin.c:1453
+#, fuzzy
+msgid "Find text"
+msgstr "Leia tekst"
+
+#: src/remmina_ssh_plugin.c:1453
+#, fuzzy
+msgid "_Find text"
+msgstr "_Find text"
+
+#: src/remmina_ssh_plugin.c:1474 plugins/spice/spice_plugin.c:666
+#: plugins/vnc/vnc_plugin.c:1961 plugins/vnc/vnc_plugin.c:1981
+#, fuzzy
+msgid "User password"
+msgstr "kasutaja parool"
+
+#: src/remmina_ssh_plugin.c:1480 plugins/rdp/rdp_plugin.c:2693
+msgid "Start-up program"
+msgstr "Käivituse programm"
+
+#: src/remmina_ssh_plugin.c:1485
 #, fuzzy
 msgid ""
-"If the server should try to share the desktop by leaving other clients "
-"connected"
+"The filename can use the following placeholders:\n"
+"\n"
+"  • %h is substituted with the server name\n"
+"  • %t is substituted with the SSH server name\n"
+"  • %u is substituted with the username\n"
+"  • %U is substituted with the SSH username\n"
+"  • %p is substituted with Remmina profile name\n"
+"  • %g is substituted with Remmina profile group name\n"
+"  • %d is substituted with local date and time in ISO 8601 format\n"
 msgstr ""
-"Kui server peaks püüdma jagada töölauda, jättes teised kliendid ühendatud"
+"Failinimes võib kasutada järgmisi paigutussätteid:\n"
+"\n"
+"  - %h asendatakse serveri nimega\n"
+"  - %t asendatakse SSH-serveri nimega.\n"
+"  - %u asendatakse kasutajanimega\n"
+"  - %U asendatakse SSH kasutajanimega\n"
+"  - %p asendatakse Remmina profiili nimega.\n"
+"  - %g asendatakse Remmina profiili grupi nimega.\n"
+"  - %d asendatakse kohaliku kuupäeva ja kellaajaga ISO 8601 formaadis.\n"
 
-#: plugins/gvnc/gvnc_plugin.c:872
+#: src/remmina_ssh_plugin.c:1507
 #, fuzzy
-msgid "Send Ctrl+Alt+_Del"
-msgstr "Saada Ctrl+Alt+_Del"
+msgid "Terminal colour scheme"
+msgstr "Terminali värviskeem"
 
-#: plugins/gvnc/gvnc_plugin.c:873
-#, fuzzy
-msgid "Send Ctrl+Alt+_Backspace"
-msgstr "Saada Ctrl+Alt+_Backspace"
+#: src/remmina_ssh_plugin.c:1508
+msgid "Character set"
+msgstr "Kooditabel"
 
-#: plugins/gvnc/gvnc_plugin.c:874
+#: src/remmina_ssh_plugin.c:1510
 #, fuzzy
-msgid "Send Ctrl+Alt+_F1"
-msgstr "Saada Ctrl+Alt+_F1"
+msgid "KEX (Key Exchange) algorithms"
+msgstr "KEX (Key Exchange) algoritmid"
 
-#: plugins/gvnc/gvnc_plugin.c:875
+#: src/remmina_ssh_plugin.c:1511
 #, fuzzy
-msgid "Send Ctrl+Alt+_F2"
-msgstr "Saada Ctrl+Alt+_F2"
+msgid "Symmetric cipher client to server"
+msgstr "Sümmeetriline salastus kliendi ja serveri vahel"
 
-#: plugins/gvnc/gvnc_plugin.c:876
+#: src/remmina_ssh_plugin.c:1512
 #, fuzzy
-msgid "Send Ctrl+Alt+_F3"
-msgstr "Saada Ctrl+Alt+_F3"
+msgid "Preferred server host key types"
+msgstr "Eelistatud serveri võtmetüübid"
 
-#: plugins/gvnc/gvnc_plugin.c:877
+#: src/remmina_ssh_plugin.c:1513
 #, fuzzy
-msgid "Send Ctrl+Alt+_F4"
-msgstr "Saada Ctrl+Alt+_F4"
+msgid "Folder for SSH session log"
+msgstr "Kaust SSH seansi logi jaoks"
 
-#: plugins/gvnc/gvnc_plugin.c:878
+#: src/remmina_ssh_plugin.c:1514
 #, fuzzy
-msgid "Send Ctrl+Alt+_F5"
-msgstr "Saada Ctrl+Alt+_F5"
+msgid "Filename for SSH session log"
+msgstr "SSH-seansi logi failinimi"
 
-#: plugins/gvnc/gvnc_plugin.c:879
+#: src/remmina_ssh_plugin.c:1515
 #, fuzzy
-msgid "Send Ctrl+Alt+_F6"
-msgstr "Saada Ctrl+Alt+_F6"
+msgid "Log SSH session when exiting Remmina"
+msgstr "SSH seansi logimine Remminast väljumisel"
 
-#: plugins/gvnc/gvnc_plugin.c:880
+#: src/remmina_ssh_plugin.c:1516
 #, fuzzy
-msgid "Send Ctrl+Alt+_F7"
-msgstr "Saada Ctrl+Alt+_F7"
+msgid "Log SSH session asynchronously"
+msgstr "SSH seansi logimine asünkroonselt"
 
-#: plugins/gvnc/gvnc_plugin.c:881
+#: src/remmina_ssh_plugin.c:1516
 #, fuzzy
-msgid "Send Ctrl+Alt+_F8"
-msgstr "Saada Ctrl+Alt+_F8"
-
-#: plugins/gvnc/gvnc_plugin.c:882
-#, fuzzy
-msgid "Send Ctrl+Alt+_F9"
-msgstr "Saada Ctrl+Alt+_F9"
-
-#: plugins/gvnc/gvnc_plugin.c:883
-#, fuzzy
-msgid "Send Ctrl+Alt+_F10"
-msgstr "Saada Ctrl+Alt+_F10"
-
-#: plugins/gvnc/gvnc_plugin.c:884
-#, fuzzy
-msgid "Send Ctrl+Alt+_F11"
-msgstr "Saada Ctrl+Alt+_F11"
-
-#: plugins/gvnc/gvnc_plugin.c:885
-#, fuzzy
-msgid "Send Ctrl+Alt+_F12"
-msgstr "Saada Ctrl+Alt+_F12"
-
-#: plugins/gvnc/gvnc_plugin.c:887
-#, fuzzy
-msgid "Reboot remote host"
-msgstr "Remote host'i taaskäivitamine"
-
-#: plugins/gvnc/gvnc_plugin.c:888
-#, fuzzy
-msgid "Reset remote host (hard reboot)"
-msgstr "Remote host'i lähtestamine (kõva taaskäivitamine)"
-
-#: plugins/gvnc/gvnc_plugin.c:889
-#, fuzzy
-msgid "Shutdown remote host"
-msgstr "Kaugjuhtimisplatvormi väljalülitamine"
-
-#: plugins/exec/exec_plugin_config.h:41
-#, fuzzy
-msgid "Execute a command"
-msgstr "Käsu täitmine"
-
-#: plugins/exec/exec_plugin.c:160
-#, fuzzy
-msgid "You did not set any command to be executed"
-msgstr "Te ei seadnud ühtegi käsku, mida tuleb täita"
-
-#: plugins/exec/exec_plugin.c:206
-#, fuzzy
-msgid ""
-"Warning: Running a command synchronously may cause Remmina not to respond.\n"
-"Do you really want to continue?"
+msgid "Saving the session asynchronously may have a notable performance impact"
 msgstr ""
-"Hoiatus: Käsu sünkroonne käivitamine võib põhjustada, et Remmina ei "
-"reageeri.\n"
-"Kas te tõesti soovite jätkata?"
+"Seansi asünkroonne salvestamine võib mõjutada märkimisväärselt jõudlust."
 
-#: plugins/exec/exec_plugin.c:266
+#: src/remmina_ssh_plugin.c:1517
 #, fuzzy
-msgid "Command"
-msgstr "Käsk"
+msgid "Audible terminal bell"
+msgstr "Helisev terminalikell"
 
-#: plugins/exec/exec_plugin.c:267
+#: src/remmina_ssh_plugin.c:1518
 #, fuzzy
-msgid "Asynchronous execution"
-msgstr "Asünkroonne täitmine"
+msgid "SSH compression"
+msgstr "SSH kompressioon"
 
-#: plugins/www/www_plugin.c:98
-#, fuzzy
-msgid "File downloaded"
-msgstr "Allalaaditud fail"
-
-#: plugins/www/www_plugin.c:574
-#, fuzzy
-msgid "Enter WWW authentication credentials"
-msgstr "Sisestage WWW autentimisandmed"
-
-#: plugins/www/www_plugin.c:878
-#, fuzzy
-msgid "URL"
-msgstr "URL"
-
-#: plugins/www/www_plugin.c:878
-#, fuzzy
-msgid "http://address or https://address"
-msgstr "http://address või https://address"
-
-#: plugins/www/www_plugin.c:895
-#, fuzzy
-msgid "User agent"
-msgstr "Kasutajarakendus"
-
-#: plugins/www/www_plugin.c:896
-#, fuzzy
-msgid "Proxy URL"
-msgstr "Proksi aadress"
-
-#: plugins/www/www_plugin.c:896
-#, fuzzy
-msgid "E.g. https://example.org, socks://mysocks:1080"
-msgstr "Nt https://example.org, socks://mysocks:1080"
-
-#: plugins/www/www_plugin.c:897
-#, fuzzy
-msgid "Turn on Java support"
-msgstr "Lülitage Java-tugi sisse"
-
-#: plugins/www/www_plugin.c:898
-#, fuzzy
-msgid "Turn on smooth scrolling"
-msgstr "Lülita sisse sujuv kerimine"
-
-#: plugins/www/www_plugin.c:899
-#, fuzzy
-msgid "Turn on spatial navigation"
-msgstr "Lülitage sisse ruumiline navigeerimine"
-
-#: plugins/www/www_plugin.c:900
-#, fuzzy
-msgid "Turn on plugin support"
-msgstr "Lülitage pluginate tugi sisse"
-
-#: plugins/www/www_plugin.c:901
-#, fuzzy
-msgid "Turn on WebGL support"
-msgstr "Lülita WebGL-tugi sisse"
-
-#: plugins/www/www_plugin.c:902
-#, fuzzy
-msgid "Turn on HTML5 audio support"
-msgstr "Lülita sisse HTML5 audio tugi"
-
-#: plugins/www/www_plugin.c:903
-#, fuzzy
-msgid "Ignore TLS errors"
-msgstr "Ignoreeri TLS-i vigu"
-
-#: plugins/www/www_plugin.c:906
-#, fuzzy
-msgid "Turn on Web Inspector"
-msgstr "Web Inspectori sisselülitamine"
-
-#: plugins/www/www_config.h:43
-#, fuzzy
-msgid "Remmina web-browser plugin"
-msgstr "Remmina veebibrauseri plugin"
-
-#: plugins/secret/src/glibsecret_plugin.c:188
-msgid "Secured password storage in the GNOME keyring"
-msgstr "%s parool"
-
-#: plugins/tool_hello_world/plugin_config.h:40
-#, fuzzy
-msgid "Hello, World!"
-msgstr "Tere, maailm!"
-
-#: plugins/vnc/vnc_plugin.c:772
-msgid "Enter VNC password"
+#: src/remmina_ssh_plugin.c:1519
+msgid "Don't remember passwords"
 msgstr "Salvesta parool"
 
-#: plugins/vnc/vnc_plugin.c:936
+#: src/remmina_ssh_plugin.c:1520
 #, fuzzy
-msgid "Unable to connect to VNC server"
-msgstr "VNC serveriga ei saa ühendust luua"
+msgid "Strict host key checking"
+msgstr "Range vastuvõtva võtme kontrollimine"
 
-#: plugins/vnc/vnc_plugin.c:937
-#, fuzzy, c-format
-msgid "Couldn’t convert '%s' to host address"
-msgstr "Ei suutnud teisendada '%s' hostiaadressiks."
+#: src/remmina_ssh_plugin.c:1534
+msgid "SSH - Secure Shell"
+msgstr "SSH - Turvaline kest"
 
-#: plugins/vnc/vnc_plugin.c:938
-#, fuzzy, c-format
-msgid "VNC connection failed: %s"
-msgstr "VNC-ühendus ebaõnnestus: %s"
+#: plugins/kwallet/src/kwallet_plugin_main.c:118
+msgid "Secured password storage in KWallet"
+msgstr "%s parool"
 
-#: plugins/vnc/vnc_plugin.c:939
+#: plugins/rdp/rdp_settings.c:205
 #, fuzzy
-msgid "Your connection has been rejected."
-msgstr "Teie ühendus on tagasi lükatud."
+msgid "<Auto-detect>"
+msgstr "<Automaatne tuvastamine>"
 
-#: plugins/vnc/vnc_plugin.c:966
-#, fuzzy, c-format
-msgid "The VNC server requested an unknown authentication method. %s"
-msgstr "VNC server küsis tundmatut autentimismeetodit. %s"
-
-#: plugins/vnc/vnc_plugin.c:968
+#: plugins/rdp/rdp_settings.c:237
 #, fuzzy
-msgid "Please retry after turning on encryption for this profile."
-msgstr ""
-"Palun proovige uuesti pärast selle profiili krüpteerimise sisselülitamist."
+msgid "<Not set>"
+msgstr "<Ei ole määratud>"
 
-#: plugins/vnc/vnc_plugin.c:1922 plugins/rdp/rdp_plugin.c:2497
-msgid "True colour (32 bpp)"
-msgstr "256 värvi (8 bpp)"
+#: plugins/rdp/rdp_settings.c:268
+#, fuzzy
+msgid "<Choose a quality level to edit…>"
+msgstr "<Valige kvaliteeditase, mida soovite muuta...>"
 
-#: plugins/vnc/vnc_plugin.c:1923 plugins/rdp/rdp_plugin.c:2499
-msgid "High colour (16 bpp)"
-msgstr "256 värvi (8 bpp)"
-
-#: plugins/vnc/vnc_plugin.c:1924 plugins/rdp/rdp_plugin.c:2501
-msgid "256 colours (8 bpp)"
-msgstr "256 värvi (8 bpp)"
-
-#: plugins/vnc/vnc_plugin.c:1931 plugins/rdp/rdp_plugin.c:2524
-#: plugins/rdp/rdp_settings.c:274
-msgid "Good"
-msgstr "Hea"
-
-#: plugins/vnc/vnc_plugin.c:1932 plugins/rdp/rdp_plugin.c:2525
-#: plugins/rdp/rdp_settings.c:276
-msgid "Best (slowest)"
-msgstr "Parim (aeglaseim)"
-
-#: plugins/vnc/vnc_plugin.c:1933 plugins/rdp/rdp_plugin.c:2523
-#: plugins/rdp/rdp_settings.c:272
-msgid "Medium"
-msgstr "Keskmine"
-
-#: plugins/vnc/vnc_plugin.c:1934 plugins/rdp/rdp_plugin.c:2522
-#: plugins/rdp/rdp_settings.c:270
+#: plugins/rdp/rdp_settings.c:270 plugins/rdp/rdp_plugin.c:2522
+#: plugins/vnc/vnc_plugin.c:1934
 #, fuzzy
 msgid "Poor (fastest)"
 msgstr "Kehv (kiireim)"
 
-#: plugins/vnc/vnc_plugin.c:1939
+#: plugins/rdp/rdp_settings.c:272 plugins/rdp/rdp_plugin.c:2523
+#: plugins/vnc/vnc_plugin.c:1933
+msgid "Medium"
+msgstr "Keskmine"
+
+#: plugins/rdp/rdp_settings.c:274 plugins/rdp/rdp_plugin.c:2524
+#: plugins/vnc/vnc_plugin.c:1931
+msgid "Good"
+msgstr "Hea"
+
+#: plugins/rdp/rdp_settings.c:276 plugins/rdp/rdp_plugin.c:2525
+#: plugins/vnc/vnc_plugin.c:1932
+msgid "Best (slowest)"
+msgstr "Parim (aeglaseim)"
+
+#: plugins/rdp/rdp_settings.c:415
+msgid "Keyboard layout"
+msgstr "Klaviatuuri paigutus"
+
+#: plugins/rdp/rdp_settings.c:440
 #, fuzzy
-msgid ""
-"Connect to VNC using a repeater:\n"
-"  • The server field must contain the repeater ID, e.g. ID:123456789\n"
-"  • The repeater field have to be set to the repeater IP and port, like:\n"
-"    10.10.10.12:5901\n"
-"  • From the remote VNC server, you will connect to\n"
-"    the repeater, e.g. with x11vnc:\n"
-"    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
-msgstr ""
-"Ühendage VNC-ga, kasutades repiiterit:\n"
-"  - ID:123456789.\n"
-"  - Repeateri väljale tuleb määrata repeateri IP ja port, nt:\n"
-"    10.10.10.12:5901\n"
-"  - Kaug-VNC serverist ühendute te järgmisega\n"
-"    repiiteriga, nt x11vnc abil:\n"
-"    x11vnc -connect repeater=ID:123456789+10.10.10.10.12:5500: x11vnc -"
-"connect repeater=ID:123456789+10.10.10.12:5500"
+msgid "Use client keyboard mapping"
+msgstr "Kasutage kliendi klaviatuuri kaardistamist"
 
-#: plugins/vnc/vnc_plugin.c:1959
+#: plugins/rdp/rdp_settings.c:450
 #, fuzzy
-msgid "Repeater"
-msgstr "Kordaja"
+msgid "Quality settings"
+msgstr "Kvaliteedi seaded"
 
-#: plugins/vnc/vnc_plugin.c:1963 plugins/vnc/vnc_plugin.c:1983
-#: plugins/rdp/rdp_plugin.c:2677
-msgid "Quality"
-msgstr "Kvaliteet"
+#: plugins/rdp/rdp_settings.c:470
+msgid "Wallpaper"
+msgstr "Taustapilt"
 
-#: plugins/vnc/vnc_plugin.c:1979
+#: plugins/rdp/rdp_settings.c:477
 #, fuzzy
-msgid "Listen on port"
-msgstr "Kuula porti"
+msgid "Window drag"
+msgstr "Akna lohistamine"
 
-#: plugins/vnc/vnc_plugin.c:1999
+#: plugins/rdp/rdp_settings.c:484
 #, fuzzy
-msgid "Show remote cursor"
-msgstr "Näita kaugkursorit"
+msgid "Menu animation"
+msgstr "Menüü animatsioon"
 
-#: plugins/vnc/vnc_plugin.c:2001 plugins/rdp/rdp_plugin.c:2715
+#: plugins/rdp/rdp_settings.c:491
+msgid "Theme"
+msgstr "Välimus"
+
+#: plugins/rdp/rdp_settings.c:498
 #, fuzzy
-msgid "Turn off clipboard sync"
-msgstr "Väljalülituskasti sünkroonimise väljalülitamine"
+msgid "Cursor shadow"
+msgstr "Kursori vari"
 
-#: plugins/vnc/vnc_plugin.c:2002
+#: plugins/rdp/rdp_settings.c:505
 #, fuzzy
-msgid "Turn off encryption"
-msgstr "Krüpteerimise väljalülitamine"
+msgid "Cursor blinking"
+msgstr "Kursori vilkumine"
 
-#: plugins/vnc/vnc_plugin.c:2003 plugins/vnc/vnc_plugin.c:2018
+#: plugins/rdp/rdp_settings.c:512
 #, fuzzy
-msgid "Prevent local interaction on the server"
-msgstr "Vältida lokaalset suhtlemist serveris"
+msgid "Font smoothing"
+msgstr "Kirjatüübi silumine"
 
-#: plugins/vnc/vnc_plugin.c:2006 plugins/rdp/rdp_plugin.c:2656
-#: plugins/rdp/rdp_settings.c:598
+#: plugins/rdp/rdp_settings.c:519
+msgid "Composition"
+msgstr "Kompositsioon"
+
+#: plugins/rdp/rdp_settings.c:529
+#, fuzzy
+msgid "Remote scale factor"
+msgstr "Kauguskaalutegur"
+
+#: plugins/rdp/rdp_settings.c:542
+#, fuzzy
+msgid "Desktop scale factor %"
+msgstr "Töölaua skaalategur %"
+
+#: plugins/rdp/rdp_settings.c:553
+#, fuzzy
+msgid "Device scale factor %"
+msgstr "Seadme skaalategur %"
+
+#: plugins/rdp/rdp_settings.c:575
+#, fuzzy
+msgid "Desktop orientation"
+msgstr "Orienteerumine töölaual"
+
+#: plugins/rdp/rdp_settings.c:592
+#, fuzzy
+msgid "Input device settings"
+msgstr "Sisestusseadme seaded"
+
+#: plugins/rdp/rdp_settings.c:598 plugins/rdp/rdp_plugin.c:2656
+#: plugins/vnc/vnc_plugin.c:2006
 #, fuzzy
 msgid "Disable smooth scrolling"
 msgstr "Ära kasuta sujuvat kerimist"
 
-#: plugins/vnc/vnc_plugin.c:2020
+#: plugins/rdp/rdp_settings.c:608
 #, fuzzy
-msgid "Open Chat…"
-msgstr "Avatud vestlus…"
+#| msgid "Default settings saved."
+msgid "General settings"
+msgstr "General settings"
 
-#: plugins/vnc/vnc_plugin.c:2021 plugins/spice/spice_plugin.c:707
-#: plugins/rdp/rdp_plugin.c:2744
+#: plugins/rdp/rdp_settings.c:613 plugins/rdp/rdp_plugin.c:2708
 #, fuzzy
-msgid "Send Ctrl+Alt+Delete"
-msgstr "Saada Ctrl+Alt+Kustuta"
+#| msgid "Reconnection attempt %d of %d…"
+msgid "Reconnect attempts number"
+msgstr "Uuesti ühendamise katsete arv"
 
-#: plugins/vnc/vnc_plugin.h:41
+#: plugins/rdp/rdp_settings.c:619 plugins/rdp/rdp_plugin.c:2708
 #, fuzzy
-msgid "Remmina VNC Plugin"
-msgstr "Remmina VNC plugin"
-
-#: plugins/vnc/vnc_plugin.h:46
-#, fuzzy
-msgid "Remmina VNC listener Plugin"
-msgstr "Remmina VNC kuulaja plugin"
-
-#: plugins/spice/spice_plugin_usb.c:51 plugins/spice/spice_plugin.c:708
-#, fuzzy
-msgid "Select USB devices for redirection"
-msgstr "USB-seadmete valimine ümbersuunamiseks"
-
-#: plugins/spice/spice_plugin_usb.c:54
-#, fuzzy
-msgid "_Close"
-msgstr "_Sulge"
-
-#: plugins/spice/spice_plugin_usb.c:94
-#, fuzzy
-msgid "USB redirection error"
-msgstr "USB ümbersuunamisviga"
-
-#: plugins/spice/spice_plugin.c:351
-msgid "Enter SPICE password"
-msgstr "SSH parool"
-
-#: plugins/spice/spice_plugin.c:386
-#, fuzzy, c-format
-msgid "Disconnected from the SPICE server “%s”."
-msgstr "SPICE-serverist katkestati ühendus \"%s\"."
-
-#: plugins/spice/spice_plugin.c:402
-#, fuzzy
-msgid "TLS connection error."
-msgstr "TLS-ühenduse viga."
-
-#: plugins/spice/spice_plugin.c:408
-#, fuzzy
-msgid "Connection to the SPICE server dropped."
-msgstr "Ühendus SPICE serveriga katkes."
-
-#: plugins/spice/spice_plugin.c:616 plugins/spice/spice_plugin.c:634
-msgid "Default"
-msgstr "Vaikimisi"
-
-#: plugins/spice/spice_plugin.c:635 plugins/rdp/rdp_plugin.c:2546
-#: data/ui/remmina_preferences.glade:677
-msgid "Off"
-msgstr "Välja lülitatud"
-
-#: plugins/spice/spice_plugin.c:636
-#, fuzzy
-msgid "Auto GLZ"
-msgstr "Auto GLZ"
-
-#: plugins/spice/spice_plugin.c:637
-#, fuzzy
-msgid "Auto LZ"
-msgstr "Automaatne LZ"
-
-#: plugins/spice/spice_plugin.c:650
-#, fuzzy
-msgid "Disable video overlay if videos are not displayed properly.\n"
+msgid ""
+"The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
 msgstr ""
-"Lülitage video pealekandmine välja, kui videod ei ole korralikult kuvatud.\n"
-
-#: plugins/spice/spice_plugin.c:667
-#, fuzzy
-msgid "Use TLS encryption"
-msgstr "Kasutage TLS krüpteerimist"
-
-#: plugins/spice/spice_plugin.c:668
-#, fuzzy
-msgid "Server CA certificate"
-msgstr "Serveri CA sertifikaat"
-
-#: plugins/spice/spice_plugin.c:669 plugins/rdp/rdp_plugin.c:2654
-msgid "Share folder"
-msgstr "Kataloogi jagamine"
-
-#: plugins/spice/spice_plugin.c:686
-msgid "Prefered video codec"
-msgstr "Eelistus"
-
-#: plugins/spice/spice_plugin.c:687
-#, fuzzy
-msgid "Turn off GStreamer overlay"
-msgstr "Lülita välja GStreamer overlay"
-
-#: plugins/spice/spice_plugin.c:690
-#, fuzzy
-msgid "Prefered image compression"
-msgstr "Eelistatud pildikompressioon"
-
-#: plugins/spice/spice_plugin.c:696
-#, fuzzy
-msgid "Share smart card"
-msgstr "Jaga kiipkaarti"
-
-#: plugins/spice/spice_plugin.c:719
-#, fuzzy
-msgid "SPICE - Simple Protocol for Independent Computing Environments"
-msgstr "SPICE - Sõltumatute arvutuskeskkondade lihtne protokoll"
-
-#: plugins/spice/spice_plugin_file_transfer.c:82
-#, fuzzy
-msgid "File Transfers"
-msgstr "Failiülekanded"
-
-#: plugins/spice/spice_plugin_file_transfer.c:219
-#, fuzzy
-msgid "Transfer error"
-msgstr "Transfer error"
-
-#: plugins/spice/spice_plugin_file_transfer.c:220
-#, fuzzy, c-format
-msgid "%s: %s"
-msgstr "%s: %s"
-
-#: plugins/spice/spice_plugin_file_transfer.c:223
-#, fuzzy
-msgid "Transfer completed"
-msgstr "Ülekanne lõpetatud"
-
-#: plugins/spice/spice_plugin_file_transfer.c:224
-#, fuzzy, c-format
-msgid "The %s file has been transferred"
-msgstr "Fail %s on üle kantud"
+"RDP-ühenduse katkestamise korral tehtavate uuesti ühendamise katsete "
+"maksimaalne arv (vaikimisi: 20)."
 
 #: plugins/rdp/rdp_plugin.c:757 plugins/rdp/rdp_plugin.c:822
 #, fuzzy
@@ -2597,12 +2144,24 @@ msgstr "GFX RFX Progressive (32 bpp)"
 msgid "RemoteFX (32 bpp)"
 msgstr "RemoteFX (32 bpp)"
 
+#: plugins/rdp/rdp_plugin.c:2497 plugins/vnc/vnc_plugin.c:1922
+msgid "True colour (32 bpp)"
+msgstr "256 värvi (8 bpp)"
+
 #: plugins/rdp/rdp_plugin.c:2498
 msgid "True colour (24 bpp)"
 msgstr "256 värvi (8 bpp)"
 
+#: plugins/rdp/rdp_plugin.c:2499 plugins/vnc/vnc_plugin.c:1923
+msgid "High colour (16 bpp)"
+msgstr "256 värvi (8 bpp)"
+
 #: plugins/rdp/rdp_plugin.c:2500
 msgid "High colour (15 bpp)"
+msgstr "256 värvi (8 bpp)"
+
+#: plugins/rdp/rdp_plugin.c:2501 plugins/vnc/vnc_plugin.c:1924
+msgid "256 colours (8 bpp)"
 msgstr "256 värvi (8 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2532 data/ui/remmina_preferences.glade:641
@@ -2644,6 +2203,11 @@ msgstr "WAN"
 #, fuzzy
 msgid "LAN"
 msgstr "LAN"
+
+#: plugins/rdp/rdp_plugin.c:2546 plugins/spice/spice_plugin.c:635
+#: data/ui/remmina_preferences.glade:677
+msgid "Off"
+msgstr "Välja lülitatud"
 
 #: plugins/rdp/rdp_plugin.c:2555
 #, fuzzy
@@ -2812,6 +2376,10 @@ msgstr ""
 "  - hotplug,*\n"
 "\n"
 
+#: plugins/rdp/rdp_plugin.c:2654 plugins/spice/spice_plugin.c:669
+msgid "Share folder"
+msgstr "Kataloogi jagamine"
+
 #: plugins/rdp/rdp_plugin.c:2654
 #, fuzzy
 msgid "Use “Redirect directory” in the advanced tab for multiple directories"
@@ -2845,9 +2413,19 @@ msgstr "Ekraani laiendamine üle mitme monitori"
 msgid "List monitor IDs"
 msgstr "Loetelu monitori ID-dest"
 
+#: plugins/rdp/rdp_plugin.c:2661 plugins/vnc/vnc_plugin.c:1962
+#: plugins/vnc/vnc_plugin.c:1982 plugins/gvnc/gvnc_plugin.c:840
+msgid "Colour depth"
+msgstr "Värvisügavus"
+
 #: plugins/rdp/rdp_plugin.c:2662
 msgid "Network connection type"
 msgstr "Uus ühendus"
+
+#: plugins/rdp/rdp_plugin.c:2677 plugins/vnc/vnc_plugin.c:1963
+#: plugins/vnc/vnc_plugin.c:1983
+msgid "Quality"
+msgstr "Kvaliteet"
 
 #: plugins/rdp/rdp_plugin.c:2678
 #, fuzzy
@@ -3018,20 +2596,6 @@ msgstr "TCP ümbersuunamine"
 msgid "/PATH/TO/rdp2tcp"
 msgstr "/PATH/TO/rdp2tcp"
 
-#: plugins/rdp/rdp_plugin.c:2708 plugins/rdp/rdp_settings.c:613
-#, fuzzy
-#| msgid "Reconnection attempt %d of %d…"
-msgid "Reconnect attempts number"
-msgstr "Uuesti ühendamise katsete arv"
-
-#: plugins/rdp/rdp_plugin.c:2708 plugins/rdp/rdp_settings.c:619
-#, fuzzy
-msgid ""
-"The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
-msgstr ""
-"RDP-ühenduse katkestamise korral tehtavate uuesti ühendamise katsete "
-"maksimaalne arv (vaikimisi: 20)."
-
 #: plugins/rdp/rdp_plugin.c:2709
 #, fuzzy
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
@@ -3062,6 +2626,11 @@ msgstr "Jaga paralleelporti"
 msgid "Share a smart card"
 msgstr "Jagage kiipkaarti"
 
+#: plugins/rdp/rdp_plugin.c:2715 plugins/vnc/vnc_plugin.c:2001
+#, fuzzy
+msgid "Turn off clipboard sync"
+msgstr "Väljalülituskasti sünkroonimise väljalülitamine"
+
 #: plugins/rdp/rdp_plugin.c:2716
 #, fuzzy
 msgid "Ignore certificate"
@@ -3076,6 +2645,12 @@ msgstr "Kasutage vana litsentsi töökorraldust"
 #, fuzzy
 msgid "It disables CAL and hwId is set to 0"
 msgstr "See lülitab CAL-i välja ja hwId on seatud 0-ks."
+
+#: plugins/rdp/rdp_plugin.c:2718 plugins/spice/spice_plugin.c:694
+#: plugins/vnc/vnc_plugin.c:2005 plugins/www/www_plugin.c:904
+#: plugins/gvnc/gvnc_plugin.c:858
+msgid "Forget passwords after use"
+msgstr "%s parool"
 
 #: plugins/rdp/rdp_plugin.c:2719
 #, fuzzy
@@ -3132,6 +2707,12 @@ msgstr "Kasutage ka värava jaoks baasvolitusi"
 msgid "Enable Gateway websockets support"
 msgstr "Värava veebisokkide toe lubamine"
 
+#: plugins/rdp/rdp_plugin.c:2744 plugins/spice/spice_plugin.c:707
+#: plugins/vnc/vnc_plugin.c:2021
+#, fuzzy
+msgid "Send Ctrl+Alt+Delete"
+msgstr "Saada Ctrl+Alt+Kustuta"
+
 #: plugins/rdp/rdp_plugin.c:2757
 #, fuzzy
 msgid "RDP - Remote Desktop Protocol"
@@ -3152,111 +2733,530 @@ msgstr "RDP - Eelistused"
 msgid "Export connection in Windows .rdp file format"
 msgstr "Ekspordi ühendus Windowsi .rdp failiformaadis"
 
-#: plugins/rdp/rdp_settings.c:205
-#, fuzzy
-msgid "<Auto-detect>"
-msgstr "<Automaatne tuvastamine>"
-
-#: plugins/rdp/rdp_settings.c:237
-#, fuzzy
-msgid "<Not set>"
-msgstr "<Ei ole määratud>"
-
-#: plugins/rdp/rdp_settings.c:268
-#, fuzzy
-msgid "<Choose a quality level to edit…>"
-msgstr "<Valige kvaliteeditase, mida soovite muuta...>"
-
-#: plugins/rdp/rdp_settings.c:415
-msgid "Keyboard layout"
-msgstr "Klaviatuuri paigutus"
-
-#: plugins/rdp/rdp_settings.c:440
-#, fuzzy
-msgid "Use client keyboard mapping"
-msgstr "Kasutage kliendi klaviatuuri kaardistamist"
-
-#: plugins/rdp/rdp_settings.c:450
-#, fuzzy
-msgid "Quality settings"
-msgstr "Kvaliteedi seaded"
-
-#: plugins/rdp/rdp_settings.c:470
-msgid "Wallpaper"
-msgstr "Taustapilt"
-
-#: plugins/rdp/rdp_settings.c:477
-#, fuzzy
-msgid "Window drag"
-msgstr "Akna lohistamine"
-
-#: plugins/rdp/rdp_settings.c:484
-#, fuzzy
-msgid "Menu animation"
-msgstr "Menüü animatsioon"
-
-#: plugins/rdp/rdp_settings.c:491
-msgid "Theme"
-msgstr "Välimus"
-
-#: plugins/rdp/rdp_settings.c:498
-#, fuzzy
-msgid "Cursor shadow"
-msgstr "Kursori vari"
-
-#: plugins/rdp/rdp_settings.c:505
-#, fuzzy
-msgid "Cursor blinking"
-msgstr "Kursori vilkumine"
-
-#: plugins/rdp/rdp_settings.c:512
-#, fuzzy
-msgid "Font smoothing"
-msgstr "Kirjatüübi silumine"
-
-#: plugins/rdp/rdp_settings.c:519
-msgid "Composition"
-msgstr "Kompositsioon"
-
-#: plugins/rdp/rdp_settings.c:529
-#, fuzzy
-msgid "Remote scale factor"
-msgstr "Kauguskaalutegur"
-
-#: plugins/rdp/rdp_settings.c:542
-#, fuzzy
-msgid "Desktop scale factor %"
-msgstr "Töölaua skaalategur %"
-
-#: plugins/rdp/rdp_settings.c:553
-#, fuzzy
-msgid "Device scale factor %"
-msgstr "Seadme skaalategur %"
-
-#: plugins/rdp/rdp_settings.c:575
-#, fuzzy
-msgid "Desktop orientation"
-msgstr "Orienteerumine töölaual"
-
-#: plugins/rdp/rdp_settings.c:592
-#, fuzzy
-msgid "Input device settings"
-msgstr "Sisestusseadme seaded"
-
-#: plugins/rdp/rdp_settings.c:608
-#, fuzzy
-#| msgid "Default settings saved."
-msgid "General settings"
-msgstr "General settings"
-
 #: plugins/rdp/rdp_event.c:344
 #, c-format
 msgid "Reconnection attempt %d of %d…"
 msgstr "Ühendumine seadmega '%s'…"
 
-#: plugins/kwallet/src/kwallet_plugin_main.c:118
-msgid "Secured password storage in KWallet"
+#: plugins/spice/spice_plugin_file_transfer.c:82
+#, fuzzy
+msgid "File Transfers"
+msgstr "Failiülekanded"
+
+#: plugins/spice/spice_plugin_file_transfer.c:219
+#, fuzzy
+msgid "Transfer error"
+msgstr "Transfer error"
+
+#: plugins/spice/spice_plugin_file_transfer.c:220
+#, fuzzy, c-format
+msgid "%s: %s"
+msgstr "%s: %s"
+
+#: plugins/spice/spice_plugin_file_transfer.c:223
+#, fuzzy
+msgid "Transfer completed"
+msgstr "Ülekanne lõpetatud"
+
+#: plugins/spice/spice_plugin_file_transfer.c:224
+#, fuzzy, c-format
+msgid "The %s file has been transferred"
+msgstr "Fail %s on üle kantud"
+
+#: plugins/spice/spice_plugin.c:351
+msgid "Enter SPICE password"
+msgstr "SSH parool"
+
+#: plugins/spice/spice_plugin.c:386
+#, fuzzy, c-format
+msgid "Disconnected from the SPICE server “%s”."
+msgstr "SPICE-serverist katkestati ühendus \"%s\"."
+
+#: plugins/spice/spice_plugin.c:402
+#, fuzzy
+msgid "TLS connection error."
+msgstr "TLS-ühenduse viga."
+
+#: plugins/spice/spice_plugin.c:408
+#, fuzzy
+msgid "Connection to the SPICE server dropped."
+msgstr "Ühendus SPICE serveriga katkes."
+
+#: plugins/spice/spice_plugin.c:616 plugins/spice/spice_plugin.c:634
+msgid "Default"
+msgstr "Vaikimisi"
+
+#: plugins/spice/spice_plugin.c:636
+#, fuzzy
+msgid "Auto GLZ"
+msgstr "Auto GLZ"
+
+#: plugins/spice/spice_plugin.c:637
+#, fuzzy
+msgid "Auto LZ"
+msgstr "Automaatne LZ"
+
+#: plugins/spice/spice_plugin.c:650
+#, fuzzy
+msgid "Disable video overlay if videos are not displayed properly.\n"
+msgstr ""
+"Lülitage video pealekandmine välja, kui videod ei ole korralikult kuvatud.\n"
+
+#: plugins/spice/spice_plugin.c:667
+#, fuzzy
+msgid "Use TLS encryption"
+msgstr "Kasutage TLS krüpteerimist"
+
+#: plugins/spice/spice_plugin.c:668
+#, fuzzy
+msgid "Server CA certificate"
+msgstr "Serveri CA sertifikaat"
+
+#: plugins/spice/spice_plugin.c:686
+msgid "Prefered video codec"
+msgstr "Eelistus"
+
+#: plugins/spice/spice_plugin.c:687
+#, fuzzy
+msgid "Turn off GStreamer overlay"
+msgstr "Lülita välja GStreamer overlay"
+
+#: plugins/spice/spice_plugin.c:690
+#, fuzzy
+msgid "Prefered image compression"
+msgstr "Eelistatud pildikompressioon"
+
+#: plugins/spice/spice_plugin.c:693 plugins/spice/spice_plugin.c:706
+#: plugins/gvnc/gvnc_plugin.c:857 plugins/gvnc/gvnc_plugin.c:871
+#, fuzzy
+msgid "No clipboard sync"
+msgstr "Lõikeplaadi sünkroonimine puudub"
+
+#: plugins/spice/spice_plugin.c:695 plugins/gvnc/gvnc_plugin.c:860
+#, fuzzy
+msgid "Enable audio channel"
+msgstr "Helikanali lubamine"
+
+#: plugins/spice/spice_plugin.c:696
+#, fuzzy
+msgid "Share smart card"
+msgstr "Jaga kiipkaarti"
+
+#: plugins/spice/spice_plugin.c:697 plugins/spice/spice_plugin.c:705
+#: plugins/vnc/vnc_plugin.c:2000 plugins/vnc/vnc_plugin.c:2017
+#: plugins/gvnc/gvnc_plugin.c:861 plugins/gvnc/gvnc_plugin.c:870
+#, fuzzy
+msgid "View only"
+msgstr "Ainult vaata"
+
+#: plugins/spice/spice_plugin.c:708 plugins/spice/spice_plugin_usb.c:51
+#, fuzzy
+msgid "Select USB devices for redirection"
+msgstr "USB-seadmete valimine ümbersuunamiseks"
+
+#: plugins/spice/spice_plugin.c:719
+#, fuzzy
+msgid "SPICE - Simple Protocol for Independent Computing Environments"
+msgstr "SPICE - Sõltumatute arvutuskeskkondade lihtne protokoll"
+
+#: plugins/spice/spice_plugin_usb.c:54
+#, fuzzy
+msgid "_Close"
+msgstr "_Sulge"
+
+#: plugins/spice/spice_plugin_usb.c:94
+#, fuzzy
+msgid "USB redirection error"
+msgstr "USB ümbersuunamisviga"
+
+#: plugins/vnc/vnc_plugin.c:772
+msgid "Enter VNC password"
+msgstr "Salvesta parool"
+
+#: plugins/vnc/vnc_plugin.c:825 plugins/gvnc/gvnc_plugin.c:539
+#, fuzzy
+msgid "Enter VNC authentication credentials"
+msgstr "Sisestage VNC autentimisandmed"
+
+#: plugins/vnc/vnc_plugin.c:936
+#, fuzzy
+msgid "Unable to connect to VNC server"
+msgstr "VNC serveriga ei saa ühendust luua"
+
+#: plugins/vnc/vnc_plugin.c:937
+#, fuzzy, c-format
+msgid "Couldn’t convert '%s' to host address"
+msgstr "Ei suutnud teisendada '%s' hostiaadressiks."
+
+#: plugins/vnc/vnc_plugin.c:938
+#, fuzzy, c-format
+msgid "VNC connection failed: %s"
+msgstr "VNC-ühendus ebaõnnestus: %s"
+
+#: plugins/vnc/vnc_plugin.c:939
+#, fuzzy
+msgid "Your connection has been rejected."
+msgstr "Teie ühendus on tagasi lükatud."
+
+#: plugins/vnc/vnc_plugin.c:966
+#, fuzzy, c-format
+msgid "The VNC server requested an unknown authentication method. %s"
+msgstr "VNC server küsis tundmatut autentimismeetodit. %s"
+
+#: plugins/vnc/vnc_plugin.c:968
+#, fuzzy
+msgid "Please retry after turning on encryption for this profile."
+msgstr ""
+"Palun proovige uuesti pärast selle profiili krüpteerimise sisselülitamist."
+
+#: plugins/vnc/vnc_plugin.c:1939
+#, fuzzy
+msgid ""
+"Connect to VNC using a repeater:\n"
+"  • The server field must contain the repeater ID, e.g. ID:123456789\n"
+"  • The repeater field have to be set to the repeater IP and port, like:\n"
+"    10.10.10.12:5901\n"
+"  • From the remote VNC server, you will connect to\n"
+"    the repeater, e.g. with x11vnc:\n"
+"    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
+msgstr ""
+"Ühendage VNC-ga, kasutades repiiterit:\n"
+"  - ID:123456789.\n"
+"  - Repeateri väljale tuleb määrata repeateri IP ja port, nt:\n"
+"    10.10.10.12:5901\n"
+"  - Kaug-VNC serverist ühendute te järgmisega\n"
+"    repiiteriga, nt x11vnc abil:\n"
+"    x11vnc -connect repeater=ID:123456789+10.10.10.10.12:5500: x11vnc -"
+"connect repeater=ID:123456789+10.10.10.12:5500"
+
+#: plugins/vnc/vnc_plugin.c:1959
+#, fuzzy
+msgid "Repeater"
+msgstr "Kordaja"
+
+#: plugins/vnc/vnc_plugin.c:1979
+#, fuzzy
+msgid "Listen on port"
+msgstr "Kuula porti"
+
+#: plugins/vnc/vnc_plugin.c:1999
+#, fuzzy
+msgid "Show remote cursor"
+msgstr "Näita kaugkursorit"
+
+#: plugins/vnc/vnc_plugin.c:2002
+#, fuzzy
+msgid "Turn off encryption"
+msgstr "Krüpteerimise väljalülitamine"
+
+#: plugins/vnc/vnc_plugin.c:2003 plugins/vnc/vnc_plugin.c:2018
+#, fuzzy
+msgid "Prevent local interaction on the server"
+msgstr "Vältida lokaalset suhtlemist serveris"
+
+#: plugins/vnc/vnc_plugin.c:2004 plugins/gvnc/gvnc_plugin.c:859
+#, fuzzy
+msgid "Ignore remote bell messages"
+msgstr "Ignoreeri kaugkella sõnumeid"
+
+#: plugins/vnc/vnc_plugin.c:2020
+#, fuzzy
+msgid "Open Chat…"
+msgstr "Avatud vestlus…"
+
+#: plugins/vnc/vnc_plugin.h:41
+#, fuzzy
+msgid "Remmina VNC Plugin"
+msgstr "Remmina VNC plugin"
+
+#: plugins/vnc/vnc_plugin.h:46
+#, fuzzy
+msgid "Remmina VNC listener Plugin"
+msgstr "Remmina VNC kuulaja plugin"
+
+#: plugins/www/www_config.h:43
+#, fuzzy
+msgid "Remmina web-browser plugin"
+msgstr "Remmina veebibrauseri plugin"
+
+#: plugins/www/www_plugin.c:98
+#, fuzzy
+msgid "File downloaded"
+msgstr "Allalaaditud fail"
+
+#: plugins/www/www_plugin.c:574
+#, fuzzy
+msgid "Enter WWW authentication credentials"
+msgstr "Sisestage WWW autentimisandmed"
+
+#: plugins/www/www_plugin.c:878
+#, fuzzy
+msgid "URL"
+msgstr "URL"
+
+#: plugins/www/www_plugin.c:878
+#, fuzzy
+msgid "http://address or https://address"
+msgstr "http://address või https://address"
+
+#: plugins/www/www_plugin.c:895
+#, fuzzy
+msgid "User agent"
+msgstr "Kasutajarakendus"
+
+#: plugins/www/www_plugin.c:896
+#, fuzzy
+msgid "Proxy URL"
+msgstr "Proksi aadress"
+
+#: plugins/www/www_plugin.c:896
+#, fuzzy
+msgid "E.g. https://example.org, socks://mysocks:1080"
+msgstr "Nt https://example.org, socks://mysocks:1080"
+
+#: plugins/www/www_plugin.c:897
+#, fuzzy
+msgid "Turn on Java support"
+msgstr "Lülitage Java-tugi sisse"
+
+#: plugins/www/www_plugin.c:898
+#, fuzzy
+msgid "Turn on smooth scrolling"
+msgstr "Lülita sisse sujuv kerimine"
+
+#: plugins/www/www_plugin.c:899
+#, fuzzy
+msgid "Turn on spatial navigation"
+msgstr "Lülitage sisse ruumiline navigeerimine"
+
+#: plugins/www/www_plugin.c:900
+#, fuzzy
+msgid "Turn on plugin support"
+msgstr "Lülitage pluginate tugi sisse"
+
+#: plugins/www/www_plugin.c:901
+#, fuzzy
+msgid "Turn on WebGL support"
+msgstr "Lülita WebGL-tugi sisse"
+
+#: plugins/www/www_plugin.c:902
+#, fuzzy
+msgid "Turn on HTML5 audio support"
+msgstr "Lülita sisse HTML5 audio tugi"
+
+#: plugins/www/www_plugin.c:903
+#, fuzzy
+msgid "Ignore TLS errors"
+msgstr "Ignoreeri TLS-i vigu"
+
+#: plugins/www/www_plugin.c:906
+#, fuzzy
+msgid "Turn on Web Inspector"
+msgstr "Web Inspectori sisselülitamine"
+
+#: plugins/exec/exec_plugin.c:160
+#, fuzzy
+msgid "You did not set any command to be executed"
+msgstr "Te ei seadnud ühtegi käsku, mida tuleb täita"
+
+#: plugins/exec/exec_plugin.c:206
+#, fuzzy
+msgid ""
+"Warning: Running a command synchronously may cause Remmina not to respond.\n"
+"Do you really want to continue?"
+msgstr ""
+"Hoiatus: Käsu sünkroonne käivitamine võib põhjustada, et Remmina ei "
+"reageeri.\n"
+"Kas te tõesti soovite jätkata?"
+
+#: plugins/exec/exec_plugin.c:266
+#, fuzzy
+msgid "Command"
+msgstr "Käsk"
+
+#: plugins/exec/exec_plugin.c:267
+#, fuzzy
+msgid "Asynchronous execution"
+msgstr "Asünkroonne täitmine"
+
+#: plugins/exec/exec_plugin_config.h:41
+#, fuzzy
+msgid "Execute a command"
+msgstr "Käsu täitmine"
+
+#: plugins/tool_hello_world/plugin_config.h:40
+#, fuzzy
+msgid "Hello, World!"
+msgstr "Tere, maailm!"
+
+#: plugins/secret/src/glibsecret_plugin.c:188
+msgid "Secured password storage in the GNOME keyring"
 msgstr "%s parool"
+
+#: plugins/gvnc/gvnc_plugin_config.h:40
+#, fuzzy
+msgid "Remmina VNC plugin for GNOME and KVM"
+msgstr "Remmina VNC plugin GNOME ja KVM jaoks"
+
+#: plugins/gvnc/gvnc_plugin.c:477
+#, fuzzy, c-format
+msgid "Unsupported authentication type %u"
+msgstr "Toetamata autentimistüüp %u"
+
+#: plugins/gvnc/gvnc_plugin.c:489
+#, fuzzy, c-format
+#| msgid "SSH Authentication"
+msgid "Authentication failure: %s"
+msgstr "Autentimise ebaõnnestumine: %s"
+
+#: plugins/gvnc/gvnc_plugin.c:820
+#, fuzzy
+msgid "Use server settings"
+msgstr "Kasutage serveri seadeid"
+
+#: plugins/gvnc/gvnc_plugin.c:821
+#, fuzzy
+#| msgid "True colour (24 bpp)"
+msgid "True colour (24 bits)"
+msgstr "True color (24 bitti)"
+
+#: plugins/gvnc/gvnc_plugin.c:822
+#, fuzzy
+#| msgid "High colour (16 bpp)"
+msgid "High colour (16 bits)"
+msgstr "Kõrge värvsus (16 bitti)"
+
+#: plugins/gvnc/gvnc_plugin.c:823
+#, fuzzy
+#| msgid "256 colours (8 bpp)"
+msgid "Low colour (8 bits)"
+msgstr "Madal värvus (8 bitti)"
+
+#: plugins/gvnc/gvnc_plugin.c:824
+#, fuzzy
+#| msgid "True colour (32 bpp)"
+msgid "Ultra low colour (3 bits)"
+msgstr "Ülimadalad värvid (3 bitti)"
+
+#: plugins/gvnc/gvnc_plugin.c:839
+#, fuzzy
+#| msgid "Enter VNC password"
+msgid "VNC password"
+msgstr "VNC parool"
+
+#: plugins/gvnc/gvnc_plugin.c:841
+#, fuzzy
+msgid "Use JPEG Compression"
+msgstr "Kasutage JPEG pakkimist"
+
+#: plugins/gvnc/gvnc_plugin.c:841
+#, fuzzy
+msgid "This might not work on all VNC servers"
+msgstr "See ei pruugi toimida kõigis VNC-serverites."
+
+#: plugins/gvnc/gvnc_plugin.c:842
+#, fuzzy
+msgid "Enable GTK-VNC debug"
+msgstr "GTK-VNC silumise lubamine"
+
+#: plugins/gvnc/gvnc_plugin.c:862
+#, fuzzy
+#| msgid "Per connection"
+msgid "Shared connection"
+msgstr "Ühine ühendus"
+
+#: plugins/gvnc/gvnc_plugin.c:862
+#, fuzzy
+msgid ""
+"If the server should try to share the desktop by leaving other clients "
+"connected"
+msgstr ""
+"Kui server peaks püüdma jagada töölauda, jättes teised kliendid ühendatud"
+
+#: plugins/gvnc/gvnc_plugin.c:872
+#, fuzzy
+msgid "Send Ctrl+Alt+_Del"
+msgstr "Saada Ctrl+Alt+_Del"
+
+#: plugins/gvnc/gvnc_plugin.c:873
+#, fuzzy
+msgid "Send Ctrl+Alt+_Backspace"
+msgstr "Saada Ctrl+Alt+_Backspace"
+
+#: plugins/gvnc/gvnc_plugin.c:874
+#, fuzzy
+msgid "Send Ctrl+Alt+_F1"
+msgstr "Saada Ctrl+Alt+_F1"
+
+#: plugins/gvnc/gvnc_plugin.c:875
+#, fuzzy
+msgid "Send Ctrl+Alt+_F2"
+msgstr "Saada Ctrl+Alt+_F2"
+
+#: plugins/gvnc/gvnc_plugin.c:876
+#, fuzzy
+msgid "Send Ctrl+Alt+_F3"
+msgstr "Saada Ctrl+Alt+_F3"
+
+#: plugins/gvnc/gvnc_plugin.c:877
+#, fuzzy
+msgid "Send Ctrl+Alt+_F4"
+msgstr "Saada Ctrl+Alt+_F4"
+
+#: plugins/gvnc/gvnc_plugin.c:878
+#, fuzzy
+msgid "Send Ctrl+Alt+_F5"
+msgstr "Saada Ctrl+Alt+_F5"
+
+#: plugins/gvnc/gvnc_plugin.c:879
+#, fuzzy
+msgid "Send Ctrl+Alt+_F6"
+msgstr "Saada Ctrl+Alt+_F6"
+
+#: plugins/gvnc/gvnc_plugin.c:880
+#, fuzzy
+msgid "Send Ctrl+Alt+_F7"
+msgstr "Saada Ctrl+Alt+_F7"
+
+#: plugins/gvnc/gvnc_plugin.c:881
+#, fuzzy
+msgid "Send Ctrl+Alt+_F8"
+msgstr "Saada Ctrl+Alt+_F8"
+
+#: plugins/gvnc/gvnc_plugin.c:882
+#, fuzzy
+msgid "Send Ctrl+Alt+_F9"
+msgstr "Saada Ctrl+Alt+_F9"
+
+#: plugins/gvnc/gvnc_plugin.c:883
+#, fuzzy
+msgid "Send Ctrl+Alt+_F10"
+msgstr "Saada Ctrl+Alt+_F10"
+
+#: plugins/gvnc/gvnc_plugin.c:884
+#, fuzzy
+msgid "Send Ctrl+Alt+_F11"
+msgstr "Saada Ctrl+Alt+_F11"
+
+#: plugins/gvnc/gvnc_plugin.c:885
+#, fuzzy
+msgid "Send Ctrl+Alt+_F12"
+msgstr "Saada Ctrl+Alt+_F12"
+
+#: plugins/gvnc/gvnc_plugin.c:887
+#, fuzzy
+msgid "Reboot remote host"
+msgstr "Remote host'i taaskäivitamine"
+
+#: plugins/gvnc/gvnc_plugin.c:888
+#, fuzzy
+msgid "Reset remote host (hard reboot)"
+msgstr "Remote host'i lähtestamine (kõva taaskäivitamine)"
+
+#: plugins/gvnc/gvnc_plugin.c:889
+#, fuzzy
+msgid "Shutdown remote host"
+msgstr "Kaugjuhtimisplatvormi väljalülitamine"
 
 #: plugins/telepathy/telepathy_channel_handler.c:237
 #, fuzzy, c-format
@@ -3275,46 +3275,6 @@ msgstr "Töölaua jagamise kutse"
 #, fuzzy
 msgid "Telepathy - Desktop Sharing"
 msgstr "Telepaatia - töölaua jagamine"
-
-#: data/ui/remmina_search.glade:61 data/ui/remmina_search_popover.glade:56
-#, fuzzy
-msgid "Search"
-msgstr "Otsi"
-
-#: data/ui/remmina_search.glade:75 data/ui/remmina_search_popover.glade:70
-#, fuzzy
-msgid "Search for previous occurrence"
-msgstr "Otsi eelmist esinemist"
-
-#: data/ui/remmina_search.glade:98 data/ui/remmina_search_popover.glade:93
-#, fuzzy
-msgid "Search for next occurrence"
-msgstr "Otsi järgmist juhtumit"
-
-#: data/ui/remmina_search.glade:130 data/ui/remmina_search_popover.glade:125
-#, fuzzy
-msgid "Toggle search options"
-msgstr "Otsinguvõimaluste vahetamine"
-
-#: data/ui/remmina_search.glade:191 data/ui/remmina_search_popover.glade:186
-#, fuzzy
-msgid "_Match case"
-msgstr "_Match case"
-
-#: data/ui/remmina_search.glade:208 data/ui/remmina_search_popover.glade:203
-#, fuzzy
-msgid "Match _entire word only"
-msgstr "Vastab ainult _täielik sõna"
-
-#: data/ui/remmina_search.glade:225 data/ui/remmina_search_popover.glade:220
-#, fuzzy
-msgid "Match as _regular expression"
-msgstr "Vastus kui _reeglipärane väljendus"
-
-#: data/ui/remmina_search.glade:242 data/ui/remmina_search_popover.glade:237
-#, fuzzy
-msgid "_Wrap around"
-msgstr "_Wrap around"
 
 #: data/ui/remmina_snap_info_dialog.glade:71
 #, fuzzy
@@ -3377,6 +3337,46 @@ msgstr "<big>Snap seaded</big>"
 msgid "Do not show this message again"
 msgstr "Ärge näidake seda sõnumit uuesti"
 
+#: data/ui/remmina_search_popover.glade:56 data/ui/remmina_search.glade:61
+#, fuzzy
+msgid "Search"
+msgstr "Otsi"
+
+#: data/ui/remmina_search_popover.glade:70 data/ui/remmina_search.glade:75
+#, fuzzy
+msgid "Search for previous occurrence"
+msgstr "Otsi eelmist esinemist"
+
+#: data/ui/remmina_search_popover.glade:93 data/ui/remmina_search.glade:98
+#, fuzzy
+msgid "Search for next occurrence"
+msgstr "Otsi järgmist juhtumit"
+
+#: data/ui/remmina_search_popover.glade:125 data/ui/remmina_search.glade:130
+#, fuzzy
+msgid "Toggle search options"
+msgstr "Otsinguvõimaluste vahetamine"
+
+#: data/ui/remmina_search_popover.glade:186 data/ui/remmina_search.glade:191
+#, fuzzy
+msgid "_Match case"
+msgstr "_Match case"
+
+#: data/ui/remmina_search_popover.glade:203 data/ui/remmina_search.glade:208
+#, fuzzy
+msgid "Match _entire word only"
+msgstr "Vastab ainult _täielik sõna"
+
+#: data/ui/remmina_search_popover.glade:220 data/ui/remmina_search.glade:225
+#, fuzzy
+msgid "Match as _regular expression"
+msgstr "Vastus kui _reeglipärane väljendus"
+
+#: data/ui/remmina_search_popover.glade:237 data/ui/remmina_search.glade:242
+#, fuzzy
+msgid "_Wrap around"
+msgstr "_Wrap around"
+
 #: data/ui/remmina_about.glade:30 data/ui/remmina_main.glade:395
 #, fuzzy
 msgid "About"
@@ -3401,6 +3401,196 @@ msgstr ""
 #, fuzzy
 msgid "Website"
 msgstr "Veebisait"
+
+#: data/ui/remmina_string_list.glade:14 data/ui/remmina_string_list.glade:158
+msgid "Add"
+msgstr "Lisa"
+
+#: data/ui/remmina_string_list.glade:20 data/ui/remmina_string_list.glade:137
+#: data/ui/remmina_key_chooser.glade:14 data/ui/remmina_key_chooser.glade:15
+#, fuzzy
+msgid "_Remove"
+msgstr "_Eemalda"
+
+#: data/ui/remmina_string_list.glade:26 data/ui/remmina_string_list.glade:116
+#, fuzzy
+msgid "Move up"
+msgstr "Liiguta üles"
+
+#: data/ui/remmina_string_list.glade:32 data/ui/remmina_string_list.glade:95
+#, fuzzy
+msgid "Move down"
+msgstr "Liiguta alla"
+
+#: data/ui/remmina_mpc.glade:14
+#, fuzzy
+msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
+msgstr "<span weight='bold' size='larger'>Multi Password Changer</span>"
+
+#: data/ui/remmina_mpc.glade:32
+#, fuzzy
+msgid "Change"
+msgstr "Muuda"
+
+#: data/ui/remmina_mpc.glade:201
+#, fuzzy
+msgid "Selection criteria"
+msgstr "Valikukriteeriumid"
+
+#: data/ui/remmina_mpc.glade:261
+#, fuzzy
+msgid "Confirm password"
+msgstr "Kinnita parool"
+
+#: data/ui/remmina_mpc.glade:294
+msgid "Set new password"
+msgstr "Salvesta parool"
+
+#. A column table with multiple check-boxes
+#: data/ui/remmina_mpc.glade:331
+#, fuzzy
+msgctxt "Multi password changer"
+msgid "Select"
+msgstr "Vali"
+
+#: data/ui/remmina_mpc.glade:343
+msgctxt "Multi password changer table"
+msgid "Name"
+msgstr "Nimi"
+
+#: data/ui/remmina_mpc.glade:354
+msgctxt "Multi password changer table"
+msgid "Group"
+msgstr "Grupp"
+
+#: data/ui/remmina_mpc.glade:365
+#, fuzzy
+msgctxt "Multi password changer table"
+msgid "Domain\\Username"
+msgstr "Domeen\\Username"
+
+#: data/ui/remmina_news.glade:75
+#, fuzzy
+msgid ""
+"<big><b>The news are turned off</b></big>\n"
+"\n"
+"<span>\n"
+"Turning on news means the program connects to a Remmina server to download "
+"the release notes.\n"
+"</span>\n"
+"\n"
+"<span>\n"
+"Version checking can only be activated at compile time.\n"
+"</span>\n"
+"\n"
+"<span>\n"
+"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
+"release notes\"><i>Visit the website to read the release notes</i></a>.\n"
+"</span>"
+msgstr ""
+"<big><b>Uudised on välja lülitatud</b></big>\n"
+"\n"
+"<span>\n"
+"Uudiste sisselülitamine tähendab, et programm võtab ühendust Remmina "
+"serveriga, et laadida alla väljaande märkusi.\n"
+"</span>\n"
+"\n"
+"<span>\n"
+"Versioonikontrolli saab aktiveerida ainult kompileerimise ajal.\n"
+"</span>\n"
+"\n"
+"<span>\n"
+"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
+"release notes\"><i>Külastage veebisaiti, et lugeda versioonimärkusi</i></"
+"a>.\n"
+"</span>"
+
+#. The star (*) is a reference to privacy consent
+#: data/ui/remmina_news.glade:130 data/ui/remmina_preferences.glade:464
+#, fuzzy
+msgid ""
+"Send <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
+"remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
+"\">anonymous</a></b> statistics. (*)"
+msgstr ""
+"Saada <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
+"remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
+"\">anonüümne</a></b> statistika. (*)"
+
+#: data/ui/remmina_news.glade:142 data/ui/remmina_news.glade:195
+#, fuzzy
+msgid "Send anonymous statistics"
+msgstr "Anonüümse statistika saatmine"
+
+#: data/ui/remmina_news.glade:156
+msgid "Use as default remote desktop client"
+msgstr "Remmina kaugtöölaua klient"
+
+#: data/ui/remmina_news.glade:165
+msgid "Apply"
+msgstr "Rakenda"
+
+#: data/ui/remmina_news.glade:169
+#, fuzzy
+msgid "Allow Remmina to automatically open .rdp and .remmina files."
+msgstr "Lubage Remminal automaatselt avada .rdp ja .remmina failid."
+
+#. The star (*) is a reference to privacy consent
+#: data/ui/remmina_news.glade:183 data/ui/remmina_preferences.glade:479
+#, fuzzy
+msgid ""
+"Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
+"\">remmina.org</a> (*)"
+msgstr ""
+"Tooge uudised aadressilt <a href=\"https://remmina.org\" title=\"Remmina "
+"news site\">remmina.org</a> (*)"
+
+#: data/ui/remmina_news.glade:208 data/ui/remmina_preferences.glade:446
+#, fuzzy
+msgid ""
+"* By enabling statistics and/or news you consent to send and fetch data to/"
+"from remmina.org"
+msgstr ""
+"* Lubades statistika ja/või uudised, annate nõusoleku andmete saatmiseks ja "
+"kättesaamiseks remmina.org-ile ja remmina.org-ilt."
+
+#: data/ui/remmina_news.glade:231
+#, fuzzy
+msgid "<big>Take part</big>"
+msgstr "<big>Osale</big>"
+
+#. Pay attention to the quoting characters as they may break the pango layout. If in doubt and cannot test, copy and paste the symbols from the English string.
+#: data/ui/remmina_news.glade:257
+#, fuzzy
+msgid ""
+"<span>\n"
+"<b>You have our gratitude in choosing copylefted libre software, <a href="
+"\"https://remmina.org/donations/\" title=\"Where’s the money, Lebowski? "
+"“blblblblblb”\">donations also make us happy</a>, and further help improve "
+"Remmina.</b>\n"
+"</span>\n"
+msgstr ""
+"<span>\n"
+"<b>Me oleme teile tänulikud, et valisite copylefted libre tarkvara, <a href="
+"\"https://remmina.org/donations/\" title=\"Where’s the money, Lebowski? "
+"“blblblblblb”\">ka annetused teevad meid õnnelikuks</a> ja aitavad Remmina't "
+"veelgi täiustada</b>.\n"
+"</span>\n"
+
+#: data/ui/remmina_news.glade:277
+#, fuzzy
+msgid "<big>Contribute</big>"
+msgstr "<big>Panustage</big>"
+
+#: data/ui/remmina_key_chooser.glade:23
+#, fuzzy
+msgid "Choose a new key"
+msgstr "Valige uus võti"
+
+#: data/ui/remmina_key_chooser.glade:82
+#, fuzzy
+msgid "Please press the new key…"
+msgstr "Palun vajutage uut klahvi…"
 
 #: data/ui/remmina_main.glade:35
 #, fuzzy
@@ -3528,185 +3718,10 @@ msgstr "Toimingud"
 msgid "Toggle view"
 msgstr "Vaate muutmine"
 
-#: data/ui/remmina_unlock.glade:60
-#, fuzzy
-msgid "Unlock"
-msgstr "Lukustuse eemaldamine"
-
-#: data/ui/remmina_unlock.glade:94
-#, fuzzy
-msgid "Unlock Remmina"
-msgstr "Ava Remmina"
-
-#: data/ui/remmina_unlock.glade:128
-#, fuzzy
-msgid "Master password"
-msgstr "Ülemparool"
-
 #: data/ui/remmina_spinner.glade:54
 #, fuzzy
 msgid "Please wait…"
 msgstr "Palun oota…"
-
-#: data/ui/remmina_news.glade:75
-#, fuzzy
-msgid ""
-"<big><b>The news are turned off</b></big>\n"
-"\n"
-"<span>\n"
-"Turning on news means the program connects to a Remmina server to download "
-"the release notes.\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"Version checking can only be activated at compile time.\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
-"release notes\"><i>Visit the website to read the release notes</i></a>.\n"
-"</span>"
-msgstr ""
-"<big><b>Uudised on välja lülitatud</b></big>\n"
-"\n"
-"<span>\n"
-"Uudiste sisselülitamine tähendab, et programm võtab ühendust Remmina "
-"serveriga, et laadida alla väljaande märkusi.\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"Versioonikontrolli saab aktiveerida ainult kompileerimise ajal.\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
-"release notes\"><i>Külastage veebisaiti, et lugeda versioonimärkusi</i></"
-"a>.\n"
-"</span>"
-
-#. The star (*) is a reference to privacy consent
-#: data/ui/remmina_news.glade:130 data/ui/remmina_preferences.glade:464
-#, fuzzy
-msgid ""
-"Send <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-"remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
-"\">anonymous</a></b> statistics. (*)"
-msgstr ""
-"Saada <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-"remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
-"\">anonüümne</a></b> statistika. (*)"
-
-#: data/ui/remmina_news.glade:142 data/ui/remmina_news.glade:195
-#, fuzzy
-msgid "Send anonymous statistics"
-msgstr "Anonüümse statistika saatmine"
-
-#: data/ui/remmina_news.glade:156
-msgid "Use as default remote desktop client"
-msgstr "Remmina kaugtöölaua klient"
-
-#: data/ui/remmina_news.glade:165
-msgid "Apply"
-msgstr "Rakenda"
-
-#: data/ui/remmina_news.glade:169
-#, fuzzy
-msgid "Allow Remmina to automatically open .rdp and .remmina files."
-msgstr "Lubage Remminal automaatselt avada .rdp ja .remmina failid."
-
-#. The star (*) is a reference to privacy consent
-#: data/ui/remmina_news.glade:183 data/ui/remmina_preferences.glade:479
-#, fuzzy
-msgid ""
-"Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
-"\">remmina.org</a> (*)"
-msgstr ""
-"Tooge uudised aadressilt <a href=\"https://remmina.org\" title=\"Remmina "
-"news site\">remmina.org</a> (*)"
-
-#: data/ui/remmina_news.glade:208 data/ui/remmina_preferences.glade:446
-#, fuzzy
-msgid ""
-"* By enabling statistics and/or news you consent to send and fetch data to/"
-"from remmina.org"
-msgstr ""
-"* Lubades statistika ja/või uudised, annate nõusoleku andmete saatmiseks ja "
-"kättesaamiseks remmina.org-ile ja remmina.org-ilt."
-
-#: data/ui/remmina_news.glade:231
-#, fuzzy
-msgid "<big>Take part</big>"
-msgstr "<big>Osale</big>"
-
-#. Pay attention to the quoting characters as they may break the pango layout. If in doubt and cannot test, copy and paste the symbols from the English string.
-#: data/ui/remmina_news.glade:257
-#, fuzzy
-msgid ""
-"<span>\n"
-"<b>You have our gratitude in choosing copylefted libre software, <a href="
-"\"https://remmina.org/donations/\" title=\"Where’s the money, Lebowski? "
-"“blblblblblb”\">donations also make us happy</a>, and further help improve "
-"Remmina.</b>\n"
-"</span>\n"
-msgstr ""
-"<span>\n"
-"<b>Me oleme teile tänulikud, et valisite copylefted libre tarkvara, <a href="
-"\"https://remmina.org/donations/\" title=\"Where’s the money, Lebowski? "
-"“blblblblblb”\">ka annetused teevad meid õnnelikuks</a> ja aitavad Remmina't "
-"veelgi täiustada</b>.\n"
-"</span>\n"
-
-#: data/ui/remmina_news.glade:277
-#, fuzzy
-msgid "<big>Contribute</big>"
-msgstr "<big>Panustage</big>"
-
-#: data/ui/remmina_mpc.glade:14
-#, fuzzy
-msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
-msgstr "<span weight='bold' size='larger'>Multi Password Changer</span>"
-
-#: data/ui/remmina_mpc.glade:32
-#, fuzzy
-msgid "Change"
-msgstr "Muuda"
-
-#: data/ui/remmina_mpc.glade:201
-#, fuzzy
-msgid "Selection criteria"
-msgstr "Valikukriteeriumid"
-
-#: data/ui/remmina_mpc.glade:261
-#, fuzzy
-msgid "Confirm password"
-msgstr "Kinnita parool"
-
-#: data/ui/remmina_mpc.glade:294
-msgid "Set new password"
-msgstr "Salvesta parool"
-
-#. A column table with multiple check-boxes
-#: data/ui/remmina_mpc.glade:331
-#, fuzzy
-msgctxt "Multi password changer"
-msgid "Select"
-msgstr "Vali"
-
-#: data/ui/remmina_mpc.glade:343
-msgctxt "Multi password changer table"
-msgid "Name"
-msgstr "Nimi"
-
-#: data/ui/remmina_mpc.glade:354
-msgctxt "Multi password changer table"
-msgid "Group"
-msgstr "Grupp"
-
-#: data/ui/remmina_mpc.glade:365
-#, fuzzy
-msgctxt "Multi password changer table"
-msgid "Domain\\Username"
-msgstr "Domeen\\Username"
 
 #: data/ui/remmina_preferences.glade:42
 #, fuzzy
@@ -4387,35 +4402,20 @@ msgstr "Terminal"
 msgid "Remmina Preferences"
 msgstr "Remmina eelistused"
 
-#: data/ui/remmina_string_list.glade:14 data/ui/remmina_string_list.glade:158
-msgid "Add"
-msgstr "Lisa"
-
-#: data/ui/remmina_string_list.glade:20 data/ui/remmina_string_list.glade:137
-#: data/ui/remmina_key_chooser.glade:14 data/ui/remmina_key_chooser.glade:15
+#: data/ui/remmina_unlock.glade:60
 #, fuzzy
-msgid "_Remove"
-msgstr "_Eemalda"
+msgid "Unlock"
+msgstr "Lukustuse eemaldamine"
 
-#: data/ui/remmina_string_list.glade:26 data/ui/remmina_string_list.glade:116
+#: data/ui/remmina_unlock.glade:94
 #, fuzzy
-msgid "Move up"
-msgstr "Liiguta üles"
+msgid "Unlock Remmina"
+msgstr "Ava Remmina"
 
-#: data/ui/remmina_string_list.glade:32 data/ui/remmina_string_list.glade:95
+#: data/ui/remmina_unlock.glade:128
 #, fuzzy
-msgid "Move down"
-msgstr "Liiguta alla"
-
-#: data/ui/remmina_key_chooser.glade:23
-#, fuzzy
-msgid "Choose a new key"
-msgstr "Valige uus võti"
-
-#: data/ui/remmina_key_chooser.glade:82
-#, fuzzy
-msgid "Please press the new key…"
-msgstr "Palun vajutage uut klahvi…"
+msgid "Master password"
+msgstr "Ülemparool"
 
 #~ msgid "Grayscale"
 #~ msgstr "Halltoonid"

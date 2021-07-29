@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-07-16 21:21+0000\n"
+"POT-Creation-Date: 2021-07-29 20:50+0000\n"
 "PO-Revision-Date: 2021-07-17 20:55+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Malay <https://hosted.weblate.org/projects/remmina/remmina/ms/"
@@ -23,152 +23,193 @@ msgstr ""
 "X-Generator: Weblate 4.7.2-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
 
-#: src/remmina_protocol_widget.c:283 src/remmina_sftp_plugin.c:328
+#: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:346
+#: src/remmina_protocol_widget.c:1672 src/remmina_protocol_widget.c:1691
+#: src/remmina_file_editor.c:846 src/remmina_file_editor.c:967
+#: src/remmina_ssh_plugin.c:1369 plugins/rdp/rdp_plugin.c:2652
+#: plugins/www/www_plugin.c:880 data/ui/remmina_mpc.glade:236
+#: data/ui/remmina_preferences.glade:1693 data/ui/remmina_unlock.glade:116
+msgid "Password"
+msgstr "Kata laluan"
+
+#: src/remmina_sftp_plugin.c:311 src/remmina_sftp_plugin.c:348
+#: src/remmina_file_editor.c:847 src/remmina_ssh_plugin.c:1370
+#: src/remmina_ssh_plugin.c:1475
+#, fuzzy
+msgid "SSH identity file"
+msgstr "Fail identiti SSH"
+
+#: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:848
+#: src/remmina_ssh_plugin.c:1371
+#, fuzzy
+msgid "SSH agent"
+msgstr "Ejen SSH"
+
+#: src/remmina_sftp_plugin.c:313 src/remmina_file_editor.c:849
+#: src/remmina_ssh_plugin.c:1372
+msgid "Public key (automatic)"
+msgstr "Kunci awam (automatik)"
+
+#: src/remmina_sftp_plugin.c:314 src/remmina_file_editor.c:850
+#: src/remmina_ssh_plugin.c:1373
+#, fuzzy
+msgid "Kerberos (GSSAPI)"
+msgstr "Kerberos (GSSAPI)"
+
+#: src/remmina_sftp_plugin.c:323
+msgid "Show Hidden Files"
+msgstr "Papar Fail Tersembunyi"
+
+#: src/remmina_sftp_plugin.c:325
+msgid "Overwrite all files"
+msgstr "Tulis-Ganti"
+
+#: src/remmina_sftp_plugin.c:327
+#, fuzzy
+msgid "Resume all file transfers"
+msgstr "Sambung semula semua pemindahan fail"
+
+#: src/remmina_sftp_plugin.c:328 src/remmina_protocol_widget.c:283
 #, fuzzy
 msgid "Connect via SSH from a new terminal"
 msgstr "Sambung melalui SSH dari terminal baru"
 
-#: src/remmina_protocol_widget.c:290 src/remmina_ssh_plugin.c:829
-#: src/remmina_ssh_plugin.c:1454
-msgid "Open SFTP transfer…"
-msgstr "Buka Pemindahan Fail Selamat…"
-
-#: src/remmina_protocol_widget.c:319
+#: src/remmina_sftp_plugin.c:345 src/remmina_message_panel.c:330
+#: src/remmina_file_editor.c:961 src/remmina_ssh_plugin.c:1473
+#: plugins/rdp/rdp_plugin.c:2651 plugins/vnc/vnc_plugin.c:1960
+#: plugins/vnc/vnc_plugin.c:1980 plugins/www/www_plugin.c:879
+#: data/ui/remmina_mpc.glade:144
 #, fuzzy
-msgid "Executing external commands…"
-msgstr "Melaksanakan arahan luaran…"
+msgid "Username"
+msgstr "Nama pengguna"
 
-#. TRANSLATORS: “%s” is a placeholder for the connection profile name
-#: src/remmina_protocol_widget.c:327
-#, c-format
-msgid "Connecting to “%s”…"
-msgstr "Menyambung ke '%s'…"
-
-#. TRANSLATORS: “%s” is a placeholder for an hostname or an IP address.
-#: src/remmina_protocol_widget.c:911 src/remmina_protocol_widget.c:1096
-#, c-format
-msgid "Connecting to “%s” via SSH…"
-msgstr "Menyambung ke '%s'…"
-
-#. TRANSLATORS: “%i” is a placeholder for a TCP port number.
-#: src/remmina_protocol_widget.c:1160
-#, c-format
-msgid "Awaiting incoming SSH connection on port %i…"
-msgstr "Menunggu terowong SSH masuk pada port %i…"
-
-#: src/remmina_protocol_widget.c:1213
-#, c-format
-msgid "The “%s” command is not available on the SSH server."
-msgstr "Perintah %s tidak ditemui pada pelayan SSH"
-
-#: src/remmina_protocol_widget.c:1218
-#, c-format
-msgid "Could not run the “%s” command on the SSH server (status = %i)."
-msgstr "Perintah %s gagal pada pelayan SSH (status = %i)."
-
-#. TRANSLATORS: %s is a placeholder for an error message
-#: src/remmina_protocol_widget.c:1226
-#, c-format
-msgid "Could not run command. %s"
-msgstr "Gagal meminta pemajuan port: %s"
-
-#. TRANSLATORS: “%s” is a placeholder for a hostname or IP address.
-#: src/remmina_protocol_widget.c:1296
-#, c-format
-msgid "Connecting to %s via SSH…"
-msgstr "Menyambung ke '%s'…"
-
-#: src/remmina_protocol_widget.c:1672 src/remmina_protocol_widget.c:1691
-#: src/remmina_ssh_plugin.c:1369 src/remmina_sftp_plugin.c:310
-#: src/remmina_sftp_plugin.c:346 src/remmina_file_editor.c:846
-#: src/remmina_file_editor.c:967 plugins/www/www_plugin.c:880
-#: plugins/rdp/rdp_plugin.c:2652 data/ui/remmina_unlock.glade:116
-#: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1693
-msgid "Password"
-msgstr "Kata laluan"
-
-#: src/remmina_protocol_widget.c:1690
+#: src/remmina_sftp_plugin.c:347 src/remmina_file_editor.c:952
+#: src/remmina_ssh_plugin.c:1472
 #, fuzzy
-msgid "Type in SSH username and password."
-msgstr "Taip nama pengguna dan kata laluan SSH."
+msgid "Authentication type"
+msgstr "Jenis pengesahan"
 
-#: src/remmina_protocol_widget.c:1745 src/remmina_protocol_widget.c:1777
+#: src/remmina_sftp_plugin.c:349 src/remmina_file_editor.c:984
+#: src/remmina_ssh_plugin.c:1479
 #, fuzzy
-msgid "Fingerprint automatically accepted"
-msgstr "Cap jari diterima secara automatik"
+msgid "Password to unlock private key"
+msgstr "Kata laluan untuk membuka kunci peribadi"
 
-#. TRANSLATORS: The user is asked to verify a new SSL certificate.
-#: src/remmina_protocol_widget.c:1753
+#: src/remmina_sftp_plugin.c:350 src/remmina_ssh_plugin.c:1509
 #, fuzzy
-msgid "Certificate details:"
-msgstr "Butiran sijil:"
+msgid "SSH Proxy Command"
+msgstr "Perintah Proksi SSH"
 
-#. TRANSLATORS: An SSL certificate subject is usually the remote server the user connect to.
-#: src/remmina_protocol_widget.c:1755 src/remmina_protocol_widget.c:1787
-msgid "Subject:"
-msgstr "Subjek:"
+#: src/remmina_sftp_plugin.c:359
+msgid "SFTP - Secure File Transfer"
+msgstr "SFTP - Pemindahan Fail Selamat"
 
-#. TRANSLATORS: The name or email of the entity that have issued the SSL certificate
-#: src/remmina_protocol_widget.c:1757 src/remmina_protocol_widget.c:1789
-msgid "Issuer:"
-msgstr "Pengeluar:"
+#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1533
+msgid "Protocol"
+msgstr "Protokol"
 
-#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
-#: src/remmina_protocol_widget.c:1759
-msgid "Fingerprint:"
-msgstr "Cap Jari:"
+#: src/remmina_plugin_manager.c:73
+msgid "Entry"
+msgstr "Masukan"
 
-#. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
-#: src/remmina_protocol_widget.c:1761
-msgid "Accept certificate?"
-msgstr "Terima Sijil?"
+#: src/remmina_plugin_manager.c:73
+msgid "File"
+msgstr "Fail"
 
-#. TRANSLATORS: The user is asked to verify a new SSL certificate.
-#: src/remmina_protocol_widget.c:1785
+#: src/remmina_plugin_manager.c:73
+msgid "Tool"
+msgstr "Alat"
+
+#: src/remmina_plugin_manager.c:73
+msgid "Preference"
+msgstr "Keutamaan"
+
+#: src/remmina_plugin_manager.c:73
+msgid "Secret"
+msgstr "Rahsia"
+
+#: src/remmina_plugin_manager.c:456 data/ui/remmina_main.glade:305
+msgid "Plugins"
+msgstr "Pemalam"
+
+#: src/remmina_plugin_manager.c:456 src/remmina_message_panel.c:452
+#: src/remmina_message_panel.c:621 src/remmina_file_editor.c:152
 #, fuzzy
-msgid "The certificate changed! Details:"
-msgstr "Sijil berubah! Butiran:"
+msgid "_OK"
+msgstr "_OK"
 
-#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
-#: src/remmina_protocol_widget.c:1791
-msgid "Old fingerprint:"
-msgstr "Cap Jari:"
+#: src/remmina_plugin_manager.c:474 src/remmina_file_editor.c:1490
+#: data/ui/remmina_main.glade:442
+msgid "Name"
+msgstr "Nama"
 
-#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
-#: src/remmina_protocol_widget.c:1793
-msgid "New fingerprint:"
-msgstr "Cap Jari:"
+#: src/remmina_plugin_manager.c:480
+msgid "Type"
+msgstr "Jenis"
 
-#. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
-#: src/remmina_protocol_widget.c:1795
-msgid "Accept changed certificate?"
-msgstr "Terima Sijil?"
+#: src/remmina_plugin_manager.c:486
+msgid "Description"
+msgstr "Keterangan"
 
-#. TRANSLATORS: “%i” is a placeholder for a port number. “%s”  is a placeholder for a protocol name (VNC).
-#: src/remmina_protocol_widget.c:1938
+#: src/remmina_plugin_manager.c:492
+msgid "Version"
+msgstr "Versi"
+
+#: src/remmina_chat_window.c:178
 #, c-format
-msgid "Listening on port %i for an incoming %s connection…"
-msgstr "Mendengat pada port %i untuk sambungan %s masuk…"
+msgid "Chat with %s"
+msgstr "Sembang dengan %s"
 
-#: src/remmina_protocol_widget.c:1963
-msgid "Could not authenticate, attempting reconnection…"
-msgstr "Pengesahihan gagal. Cuba menyambung semula…"
+#: src/remmina_chat_window.c:230
+msgid "_Send"
+msgstr "_Hantar"
 
-#: src/remmina_protocol_widget.c:2025 src/remmina_file_editor.c:346
-#: src/remmina_file_editor.c:917 data/ui/remmina_main.glade:478
-msgid "Server"
-msgstr "Pelayan"
+#: src/remmina_chat_window.c:240
+msgid "_Clear"
+msgstr "_Kosongkan"
 
-#. TRANSLATORS: “%s” is a placeholder for a protocol name, like “RDP”.
-#: src/remmina_protocol_widget.c:2043
-#, fuzzy, c-format
-msgid "Install the %s protocol plugin first."
-msgstr "Pasang plugin protokol %s dahulu."
+#: src/remmina_applet_menu_item.c:121
+msgid "Discovered"
+msgstr "Ditemui"
 
-#: src/remmina_exec.c:475
-#, c-format
-msgid "Plugin %s is not registered."
-msgstr "Pemalam %s tidak berdaftar."
+#: src/remmina_applet_menu_item.c:126
+msgid "New Connection"
+msgstr "Sambungan Baru"
+
+#: src/remmina_key_chooser.h:38
+#, fuzzy
+msgid "Shift+"
+msgstr "Shift+"
+
+#: src/remmina_key_chooser.h:39
+#, fuzzy
+msgid "Ctrl+"
+msgstr "Ctrl+"
+
+#: src/remmina_key_chooser.h:40
+#, fuzzy
+msgid "Alt+"
+msgstr "Alt+"
+
+#: src/remmina_key_chooser.h:41
+#, fuzzy
+msgid "Super+"
+msgstr "Super+"
+
+#: src/remmina_key_chooser.h:42
+#, fuzzy
+msgid "Hyper+"
+msgstr "Hiper+"
+
+#: src/remmina_key_chooser.h:43
+#, fuzzy
+msgid "Meta+"
+msgstr "Meta +"
+
+#: src/remmina_key_chooser.h:44
+#, fuzzy
+msgid "<None>"
+msgstr "<None>"
 
 #: src/remmina_pref_dialog.c:91 src/remmina_file_editor.c:435
 msgid "Resolutions"
@@ -216,279 +257,201 @@ msgstr ""
 "tab \"Lanjutan\" sambungan terminal dan boleh diedit dalam tab \"Terminal\" "
 "dalam tetapan."
 
-#. TRANSLATORS: %s is a placeholder for an error message
-#: src/remmina_ssh_plugin.c:539
-#, fuzzy, c-format
-msgid "Error: %s"
-msgstr "Ralat: %s"
-
-#: src/remmina_ssh_plugin.c:556
+#: src/remmina_message_panel.c:163 data/ui/remmina_mpc.glade:46
+#: data/ui/remmina_unlock.glade:46
 #, fuzzy
-msgid "Terminal content saved in"
-msgstr "Kandungan terminal disimpan dalam"
+msgid "Cancel"
+msgstr "Batal"
 
-#: src/remmina_ssh_plugin.c:822
+#: src/remmina_message_panel.c:199 data/ui/remmina_snap_info_dialog.glade:28
+#: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
+#: data/ui/remmina_string_list.glade:63 data/ui/remmina_news.glade:33
+#: data/ui/remmina_preferences.glade:2640
 #, fuzzy
-msgid "Select All (host+A)"
-msgstr "Pilih Semua (hos+A)"
+msgid "Close"
+msgstr "Tutup"
 
-#: src/remmina_ssh_plugin.c:823
+#: src/remmina_message_panel.c:260
 #, fuzzy
-msgid "Copy (host+C)"
-msgstr "Salin (hos+C)"
+msgid "Yes"
+msgstr "Ya"
 
-#: src/remmina_ssh_plugin.c:824
-#, fuzzy
-msgid "Paste (host+V)"
-msgstr "Tampal (hos+V)"
+#: src/remmina_message_panel.c:267
+msgid "No"
+msgstr "Tak"
 
-#: src/remmina_ssh_plugin.c:825
-#, fuzzy
-msgid "Save session to file"
-msgstr "Simpan sesi ke fail"
+#: src/remmina_message_panel.c:391 plugins/rdp/rdp_plugin.c:2653
+#: data/ui/remmina_mpc.glade:172
+msgid "Domain"
+msgstr "Domain"
 
-#: src/remmina_ssh_plugin.c:826
-#, fuzzy
-msgid "Increase font size (host+Page Up)"
-msgstr "Tingkatkan saiz fon (hos+Page Up)"
-
-#: src/remmina_ssh_plugin.c:827
-#, fuzzy
-msgid "Decrease font size (host+Page Down)"
-msgstr "Kurangkan saiz fon (hos+Page Down)"
-
-#: src/remmina_ssh_plugin.c:828
-#, fuzzy
-msgid "Find text (host+G)"
-msgstr "Cari teks (hos+G)"
-
-#: src/remmina_ssh_plugin.c:1370 src/remmina_ssh_plugin.c:1475
-#: src/remmina_sftp_plugin.c:311 src/remmina_sftp_plugin.c:348
-#: src/remmina_file_editor.c:847
-#, fuzzy
-msgid "SSH identity file"
-msgstr "Fail identiti SSH"
-
-#: src/remmina_ssh_plugin.c:1371 src/remmina_sftp_plugin.c:312
-#: src/remmina_file_editor.c:848
-#, fuzzy
-msgid "SSH agent"
-msgstr "Ejen SSH"
-
-#: src/remmina_ssh_plugin.c:1372 src/remmina_sftp_plugin.c:313
-#: src/remmina_file_editor.c:849
-msgid "Public key (automatic)"
-msgstr "Kunci awam (automatik)"
-
-#: src/remmina_ssh_plugin.c:1373 src/remmina_sftp_plugin.c:314
-#: src/remmina_file_editor.c:850
-#, fuzzy
-msgid "Kerberos (GSSAPI)"
-msgstr "Kerberos (GSSAPI)"
-
-#: src/remmina_ssh_plugin.c:1448 data/ui/remmina_main.glade:177
-msgid "Copy"
-msgstr "Salin"
-
-#: src/remmina_ssh_plugin.c:1448
-#, fuzzy
-msgid "_Copy"
-msgstr "_Copy"
-
-#: src/remmina_ssh_plugin.c:1449
-msgid "Paste"
-msgstr "Tampal"
-
-#: src/remmina_ssh_plugin.c:1449
-#, fuzzy
-msgid "_Paste"
-msgstr "_Paste"
-
-#: src/remmina_ssh_plugin.c:1450
-#, fuzzy
-msgid "Select all"
-msgstr "Pilih semua"
-
-#: src/remmina_ssh_plugin.c:1450
-#, fuzzy
-msgid "_Select all"
-msgstr "Pilih semua"
-
-#: src/remmina_ssh_plugin.c:1451
-#, fuzzy
-msgid "Increase font size"
-msgstr "Tingkatkan saiz fon"
-
-#: src/remmina_ssh_plugin.c:1451
-#, fuzzy
-msgid "_Increase font size"
-msgstr "_Increase fon"
-
-#: src/remmina_ssh_plugin.c:1452
-#, fuzzy
-msgid "Decrease font size"
-msgstr "Kurangkan saiz fon"
-
-#: src/remmina_ssh_plugin.c:1452
-#, fuzzy
-msgid "_Decrease font size"
-msgstr "_Decrease fon"
-
-#: src/remmina_ssh_plugin.c:1453
-#, fuzzy
-msgid "Find text"
-msgstr "Cari teks"
-
-#: src/remmina_ssh_plugin.c:1453
-#, fuzzy
-msgid "_Find text"
-msgstr "_Find teks"
-
-#: src/remmina_ssh_plugin.c:1472 src/remmina_sftp_plugin.c:347
-#: src/remmina_file_editor.c:952
-#, fuzzy
-msgid "Authentication type"
-msgstr "Jenis pengesahan"
-
-#: src/remmina_ssh_plugin.c:1473 src/remmina_message_panel.c:330
-#: src/remmina_sftp_plugin.c:345 src/remmina_file_editor.c:961
-#: plugins/www/www_plugin.c:879 plugins/vnc/vnc_plugin.c:1960
-#: plugins/vnc/vnc_plugin.c:1980 plugins/rdp/rdp_plugin.c:2651
-#: data/ui/remmina_mpc.glade:144
-#, fuzzy
-msgid "Username"
-msgstr "Nama pengguna"
-
-#: src/remmina_ssh_plugin.c:1474 plugins/vnc/vnc_plugin.c:1961
-#: plugins/vnc/vnc_plugin.c:1981 plugins/spice/spice_plugin.c:666
-#, fuzzy
-msgid "User password"
-msgstr "Kata laluan pengguna"
-
-#: src/remmina_ssh_plugin.c:1477 src/remmina_file_editor.c:979
-#, fuzzy
-#| msgid "Accept certificate?"
-msgid "SSH certificate file"
-msgstr "Fail sijil SSH"
-
-#: src/remmina_ssh_plugin.c:1479 src/remmina_sftp_plugin.c:349
-#: src/remmina_file_editor.c:984
-#, fuzzy
-msgid "Password to unlock private key"
-msgstr "Kata laluan untuk membuka kunci peribadi"
-
-#: src/remmina_ssh_plugin.c:1480 plugins/rdp/rdp_plugin.c:2693
-msgid "Start-up program"
-msgstr "Program permulaan"
-
-#: src/remmina_ssh_plugin.c:1485
-#, fuzzy
-msgid ""
-"The filename can use the following placeholders:\n"
-"\n"
-"  • %h is substituted with the server name\n"
-"  • %t is substituted with the SSH server name\n"
-"  • %u is substituted with the username\n"
-"  • %U is substituted with the SSH username\n"
-"  • %p is substituted with Remmina profile name\n"
-"  • %g is substituted with Remmina profile group name\n"
-"  • %d is substituted with local date and time in ISO 8601 format\n"
-msgstr ""
-"Nama fail boleh menggunakan ruang letak berikut:\n"
-"\n"
-"• %h digantikan dengan nama pelayan\n"
-"  • %t digantikan dengan nama pelayan SSH\n"
-"  • %u digantikan dengan nama pengguna\n"
-"  • %U digantikan dengan nama pengguna SSH\n"
-"  • %p digantikan dengan nama profil Remmina\n"
-"  • %g digantikan dengan nama kumpulan profil Remmina\n"
-"  • %d digantikan dengan tarikh dan masa tempatan dalam format ISO 8601\n"
-
-#: src/remmina_ssh_plugin.c:1507
-#, fuzzy
-msgid "Terminal colour scheme"
-msgstr "Skim warna terminal"
-
-#: src/remmina_ssh_plugin.c:1508
-msgid "Character set"
-msgstr "Set aksara"
-
-#: src/remmina_ssh_plugin.c:1509 src/remmina_sftp_plugin.c:350
-#, fuzzy
-msgid "SSH Proxy Command"
-msgstr "Perintah Proksi SSH"
-
-#: src/remmina_ssh_plugin.c:1510
-#, fuzzy
-msgid "KEX (Key Exchange) algorithms"
-msgstr "Algoritma KEX (Pertukaran Utama)"
-
-#: src/remmina_ssh_plugin.c:1511
-#, fuzzy
-msgid "Symmetric cipher client to server"
-msgstr "Klien symmetric cipher ke pelayan"
-
-#: src/remmina_ssh_plugin.c:1512
-#, fuzzy
-msgid "Preferred server host key types"
-msgstr "Jenis kekunci hos pelayan pilihan"
-
-#: src/remmina_ssh_plugin.c:1513
-msgid "Folder for SSH session log"
-msgstr "Gagal memulakan sesi SSH: %s"
-
-#: src/remmina_ssh_plugin.c:1514
-#, fuzzy
-msgid "Filename for SSH session log"
-msgstr "Nama fail untuk log sesi SSH"
-
-#: src/remmina_ssh_plugin.c:1515
-#, fuzzy
-msgid "Log SSH session when exiting Remmina"
-msgstr "Log sesi SSH ketika keluar dari Remmina"
-
-#: src/remmina_ssh_plugin.c:1516
-#, fuzzy
-msgid "Log SSH session asynchronously"
-msgstr "Log sesi SSH secara asynchronously"
-
-#: src/remmina_ssh_plugin.c:1516
-#, fuzzy
-msgid "Saving the session asynchronously may have a notable performance impact"
-msgstr ""
-"Menyelamatkan sesi secara asynchronously mungkin mempunyai kesan prestasi "
-"yang ketara"
-
-#: src/remmina_ssh_plugin.c:1517
-#, fuzzy
-msgid "Audible terminal bell"
-msgstr "Perut terminal yang boleh didengar"
-
-#: src/remmina_ssh_plugin.c:1518
-#, fuzzy
-msgid "SSH compression"
-msgstr "Mampatan SSH"
-
-#: src/remmina_ssh_plugin.c:1519
-msgid "Don't remember passwords"
+#: src/remmina_message_panel.c:420
+msgid "Save password"
 msgstr "Simpan kata laluan"
 
-#: src/remmina_ssh_plugin.c:1520
+#: src/remmina_message_panel.c:457 src/remmina_message_panel.c:629
+#: src/remmina_sftp_client.c:947 src/remmina_file_editor.c:151
+#: src/remmina_file_editor.c:1365 plugins/spice/spice_plugin_file_transfer.c:84
+#: data/ui/remmina_key_chooser.glade:8 data/ui/remmina_key_chooser.glade:9
+#: data/ui/remmina_spinner.glade:8 data/ui/remmina_spinner.glade:9
 #, fuzzy
-msgid "Strict host key checking"
-msgstr "Semakan kekunci hos ketat"
+msgid "_Cancel"
+msgstr "_Cancel"
 
-#: src/remmina_ssh_plugin.c:1534
-msgid "SSH - Secure Shell"
-msgstr "SSH - Shell Selamat"
+#: src/remmina_message_panel.c:513
+#, fuzzy
+msgid "Enter certificate authentication files"
+msgstr "Masukkan fail pengesahan sijil"
 
-#: src/remmina_applet_menu_item.c:121
-msgid "Discovered"
-msgstr "Ditemui"
+#: src/remmina_message_panel.c:525
+#, fuzzy
+msgid "CA Certificate File"
+msgstr "Fail Sijil CA"
 
-#: src/remmina_applet_menu_item.c:126
-msgid "New Connection"
-msgstr "Sambungan Baru"
+#: src/remmina_message_panel.c:547
+#, fuzzy
+msgid "CA CRL File"
+msgstr "Fail CA CRL"
+
+#: src/remmina_message_panel.c:569
+#, fuzzy
+msgid "Client Certificate File"
+msgstr "Fail Sijil Klien"
+
+#: src/remmina_message_panel.c:591
+#, fuzzy
+msgid "Client Certificate Key"
+msgstr "Kekunci Sijil Pelanggan"
+
+#: src/rcw.c:658
+#, c-format
+msgid ""
+"Are you sure you want to close %i active connections in the current window?"
+msgstr ""
+"Terdapat %i sambungan aktif dalam tetingkap semasa. Anda pasti hendak "
+"menutupnya?"
+
+#: src/rcw.c:1394
+msgid "Viewport fullscreen mode"
+msgstr "Mod skrin penuh port pandang"
+
+#: src/rcw.c:1402 data/ui/remmina_preferences.glade:607
+#, fuzzy
+msgid "Scrolled fullscreen"
+msgstr "Skrin penuh skrol"
+
+#: src/rcw.c:1487
+#, fuzzy
+msgid "Keep aspect ratio when scaled"
+msgstr "Kekalkan nisbah aspek apabila diskalakan"
+
+#: src/rcw.c:1495
+#, fuzzy
+msgid "Fill client window when scaled"
+msgstr "Isi tetingkap pelanggan apabila diskalakan"
+
+#: src/rcw.c:2043
+#, fuzzy
+msgid "Send clipboard content as keystrokes"
+msgstr "Hantar kandungan papan klip sebagai kekunci kekunci"
+
+#: src/rcw.c:2147
+#, fuzzy
+msgid "Turn off scaling to avoid screenshot distortion."
+msgstr "Matikan penskalaan untuk mengelakkan gangguan tangkapan skrin."
+
+#: src/rcw.c:2207 plugins/www/www_plugin.c:848
+#, fuzzy
+msgid "Screenshot taken"
+msgstr "Tangkapan skrin diambil"
+
+#: src/rcw.c:2290
+#, fuzzy
+msgid "_Menu"
+msgstr "_Menu"
+
+#: src/rcw.c:2291
+#, fuzzy
+msgid "Menu"
+msgstr "Menu"
+
+#: src/rcw.c:2300
+#, fuzzy
+#| msgid "Open Main Window"
+msgid "Open the Remmina main window"
+msgstr "Buka tetingkap utama Remmina"
+
+#: src/rcw.c:2310
+#, fuzzy
+msgid "Duplicate current connection"
+msgstr "Sambungan semasa pendua"
+
+#: src/rcw.c:2327
+msgid "Resize the window to fit in remote resolution"
+msgstr "Saiz semula tetingkap untuk muatkannya dalam resolusi jauh"
+
+#: src/rcw.c:2338
+msgid "Toggle fullscreen mode"
+msgstr "Togol mod skrin penuh"
+
+#: src/rcw.c:2384 data/ui/remmina_preferences.glade:1344
+#: data/ui/remmina_preferences.glade:1354
+#, fuzzy
+msgid "Multi monitor"
+msgstr "Monitor berbilang"
+
+#: src/rcw.c:2400
+#, fuzzy
+msgid "Toggle dynamic resolution update"
+msgstr "Togol kemas kini resolusi dinamik"
+
+#: src/rcw.c:2410
+msgid "Toggle scaled mode"
+msgstr "Togol mod berskala"
+
+#: src/rcw.c:2450 data/ui/remmina_preferences.glade:1070
+msgid "Switch tab pages"
+msgstr "Tukar halaman tab"
+
+#: src/rcw.c:2460
+msgid "Grab all keyboard events"
+msgstr "Cekau semua peristiwa papan kekunci"
+
+#: src/rcw.c:2470
+msgid "Preferences"
+msgstr "Keutamaan"
+
+#: src/rcw.c:2479
+msgid "_Tools"
+msgstr "Alatan"
+
+#: src/rcw.c:2480 data/ui/remmina_main.glade:207
+msgid "Tools"
+msgstr "Alatan"
+
+#: src/rcw.c:2493 data/ui/remmina_preferences.glade:1277
+#: data/ui/remmina_preferences.glade:1287
+#, fuzzy
+msgid "Screenshot"
+msgstr "Tangkapan skrin"
+
+#: src/rcw.c:2507 data/ui/remmina_preferences.glade:1181
+msgid "Minimize window"
+msgstr "Minimunkan window"
+
+#: src/rcw.c:2517 data/ui/remmina_preferences.glade:1213
+msgid "Disconnect"
+msgstr "Putuskan"
+
+#: src/rcw.c:4284
+#, fuzzy, c-format
+msgid "The file “%s” is corrupted, unreadable, or could not be found."
+msgstr "Fail \"%s\" rosak, tidak boleh dibaca, atau tidak dijumpai."
+
+#: src/rcw.c:4452
+#, fuzzy
+msgid "Warning: This plugin requires GtkSocket, but it’s not available."
+msgstr "Amaran: Plugin ini memerlukan GtkSocket, tetapi ia tidak tersedia."
 
 #: src/remmina_mpchange.c:234
 #, fuzzy
@@ -516,142 +479,6 @@ msgid "%d password changed."
 msgid_plural "%d passwords changed."
 msgstr[0] "%d kata laluan ditukar."
 msgstr[1] ""
-
-#: src/remmina_public.c:345
-#, fuzzy, c-format
-msgid "Address is too long for UNIX socket_path: %s"
-msgstr "Alamat terlalu panjang untuk UNIX socket_path: %s"
-
-#: src/remmina_public.c:355
-#, fuzzy, c-format
-msgid "Creating UNIX socket failed: %s"
-msgstr "Mewujudkan soket UNIX gagal: %s"
-
-#: src/remmina_public.c:361
-#, fuzzy, c-format
-#| msgid "VNC connection failed: %s"
-msgid "Connecting to UNIX socket failed: %s"
-msgstr "Menyambung ke soket UNIX gagal: %s"
-
-#: src/remmina_public.c:631
-msgid "Please enter format 'widthxheight'."
-msgstr "Sila masukkan format 'lebarxtinggi'."
-
-#: src/remmina_public.c:653
-#, fuzzy
-msgid "Change security settings"
-msgstr "Tukar pengesetan keselamatan"
-
-#. TRANSLATORS: translator-credits should be replaced with a formatted list of translators in your own language
-#: src/remmina_about.c:54
-msgid "translator-credits"
-msgstr ""
-"Launchpad Contributions:\n"
-"  abuyop https://launchpad.net/~abuyop"
-
-#: src/remmina_ftp_client.c:389
-msgid "Choose download location"
-msgstr "Pilih lokasi muat turun"
-
-#: src/remmina_ftp_client.c:529
-msgid "Are you sure to delete the selected files on server?"
-msgstr "Anda pasti hendak memadam fail terpilih dalam pelayan?"
-
-#: src/remmina_ftp_client.c:586
-msgid "Choose a file to upload"
-msgstr "Pilih fail untuk dimuat naik"
-
-#: src/remmina_ftp_client.c:593
-msgid "Upload folder"
-msgstr "Muat naik folder"
-
-#: src/remmina_ftp_client.c:649 src/remmina_ftp_client.c:763
-msgid "Download"
-msgstr "Muat Turun"
-
-#: src/remmina_ftp_client.c:656 src/remmina_ftp_client.c:770
-msgid "Upload"
-msgstr "Muat Naik"
-
-#: src/remmina_ftp_client.c:663
-msgid "_Delete"
-msgstr "_Hapuskan"
-
-#: src/remmina_ftp_client.c:748
-#, fuzzy
-msgid "Home"
-msgstr "Rumah"
-
-#: src/remmina_ftp_client.c:749
-msgid "Go to home folder"
-msgstr "Pergi ke folder rumah"
-
-#: src/remmina_ftp_client.c:753
-#, fuzzy
-msgid "Up"
-msgstr "Naik"
-
-#: src/remmina_ftp_client.c:754
-msgid "Go to parent folder"
-msgstr "Pergi ke folder induk"
-
-#: src/remmina_ftp_client.c:758 plugins/vnc/vnc_plugin.c:2019
-#: plugins/rdp/rdp_plugin.c:2740
-msgid "Refresh"
-msgstr "Segar Semula"
-
-#: src/remmina_ftp_client.c:759
-msgid "Refresh current folder"
-msgstr "Segar semula folder semasa"
-
-#: src/remmina_ftp_client.c:764
-msgid "Download from server"
-msgstr "Muat turun dari pelayan"
-
-#: src/remmina_ftp_client.c:771
-msgid "Upload to server"
-msgstr "Muat naik ke pelayan"
-
-#: src/remmina_ftp_client.c:775 data/ui/remmina_main.glade:197
-msgid "Delete"
-msgstr "Buang"
-
-#: src/remmina_ftp_client.c:776
-msgid "Delete files on server"
-msgstr "Padam fail pada pelayan"
-
-#: src/remmina_ftp_client.c:905 src/remmina_ftp_client.c:974
-msgid "Filename"
-msgstr "Nama Fail"
-
-#: src/remmina_ftp_client.c:918 src/remmina_ftp_client.c:1003
-msgid "Size"
-msgstr "Saiz"
-
-#: src/remmina_ftp_client.c:926
-msgid "User"
-msgstr "Pengguna"
-
-#: src/remmina_ftp_client.c:932 src/remmina_file_editor.c:1515
-#: data/ui/remmina_main.glade:464 data/ui/remmina_mpc.glade:115
-msgid "Group"
-msgstr "Kumpulan"
-
-#: src/remmina_ftp_client.c:938
-msgid "Permission"
-msgstr "Keizinan"
-
-#: src/remmina_ftp_client.c:990 plugins/rdp/rdp_plugin.c:2548
-msgid "Remote"
-msgstr "Jauh"
-
-#: src/remmina_ftp_client.c:997 plugins/rdp/rdp_plugin.c:2547
-msgid "Local"
-msgstr "Setempat"
-
-#: src/remmina_ftp_client.c:1011
-msgid "Progress"
-msgstr "Kemajuan"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:86
@@ -854,460 +681,269 @@ msgstr ""
 "remmina --set-option username --set-option resolution_mode=2 --set-option "
 "password\n"
 
-#: src/remmina_icon.c:128
-msgid "Open Main Window"
-msgstr "Buka Tetingkap Utama"
-
-#: src/remmina_icon.c:133 data/ui/remmina_main.glade:254
-#, fuzzy
-msgid "_Preferences"
-msgstr "Keutamaan"
-
-#: src/remmina_icon.c:138
-msgid "_About"
-msgstr "Perih_al"
-
-#: src/remmina_icon.c:148
-msgid "Enable Service Discovery"
-msgstr "Benarkan Penemuan Perkhidmatan"
-
-#: src/remmina_icon.c:160 data/ui/remmina_main.glade:404
-#, fuzzy
-msgid "_Quit"
-msgstr "_Quit"
-
-#. TRANSLATORS: Applet name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
-#. TRANSLATORS: Applet Name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
-#: src/remmina_icon.c:284 src/remmina_icon.c:416
-msgid "Remmina Applet"
-msgstr "Aplet Remmina"
-
-#. TRANSLATORS: Applet comment/description as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
-#: src/remmina_icon.c:286 src/remmina_icon.c:418
-msgid "Connect to remote desktops through the applet menu"
-msgstr "Sambung ke desktop jauh melalui menu aplet"
-
-#: src/rcw.c:658
-#, c-format
-msgid ""
-"Are you sure you want to close %i active connections in the current window?"
-msgstr ""
-"Terdapat %i sambungan aktif dalam tetingkap semasa. Anda pasti hendak "
-"menutupnya?"
-
-#: src/rcw.c:1394
-msgid "Viewport fullscreen mode"
-msgstr "Mod skrin penuh port pandang"
-
-#: src/rcw.c:1402 data/ui/remmina_preferences.glade:607
-#, fuzzy
-msgid "Scrolled fullscreen"
-msgstr "Skrin penuh skrol"
-
-#: src/rcw.c:1487
-#, fuzzy
-msgid "Keep aspect ratio when scaled"
-msgstr "Kekalkan nisbah aspek apabila diskalakan"
-
-#: src/rcw.c:1495
-#, fuzzy
-msgid "Fill client window when scaled"
-msgstr "Isi tetingkap pelanggan apabila diskalakan"
-
-#: src/rcw.c:2043
-#, fuzzy
-msgid "Send clipboard content as keystrokes"
-msgstr "Hantar kandungan papan klip sebagai kekunci kekunci"
-
-#: src/rcw.c:2147
-#, fuzzy
-msgid "Turn off scaling to avoid screenshot distortion."
-msgstr "Matikan penskalaan untuk mengelakkan gangguan tangkapan skrin."
-
-#: src/rcw.c:2207 plugins/www/www_plugin.c:848
-#, fuzzy
-msgid "Screenshot taken"
-msgstr "Tangkapan skrin diambil"
-
-#: src/rcw.c:2290
-#, fuzzy
-msgid "_Menu"
-msgstr "_Menu"
-
-#: src/rcw.c:2291
-#, fuzzy
-msgid "Menu"
-msgstr "Menu"
-
-#: src/rcw.c:2300
-#, fuzzy
-#| msgid "Open Main Window"
-msgid "Open the Remmina main window"
-msgstr "Buka tetingkap utama Remmina"
-
-#: src/rcw.c:2310
-#, fuzzy
-msgid "Duplicate current connection"
-msgstr "Sambungan semasa pendua"
-
-#: src/rcw.c:2327
-msgid "Resize the window to fit in remote resolution"
-msgstr "Saiz semula tetingkap untuk muatkannya dalam resolusi jauh"
-
-#: src/rcw.c:2338
-msgid "Toggle fullscreen mode"
-msgstr "Togol mod skrin penuh"
-
-#: src/rcw.c:2384 data/ui/remmina_preferences.glade:1344
-#: data/ui/remmina_preferences.glade:1354
-#, fuzzy
-msgid "Multi monitor"
-msgstr "Monitor berbilang"
-
-#: src/rcw.c:2400
-#, fuzzy
-msgid "Toggle dynamic resolution update"
-msgstr "Togol kemas kini resolusi dinamik"
-
-#: src/rcw.c:2410
-msgid "Toggle scaled mode"
-msgstr "Togol mod berskala"
-
-#: src/rcw.c:2450 data/ui/remmina_preferences.glade:1070
-msgid "Switch tab pages"
-msgstr "Tukar halaman tab"
-
-#: src/rcw.c:2460
-msgid "Grab all keyboard events"
-msgstr "Cekau semua peristiwa papan kekunci"
-
-#: src/rcw.c:2470
-msgid "Preferences"
-msgstr "Keutamaan"
-
-#: src/rcw.c:2479
-msgid "_Tools"
-msgstr "Alatan"
-
-#: src/rcw.c:2480 data/ui/remmina_main.glade:207
-msgid "Tools"
-msgstr "Alatan"
-
-#: src/rcw.c:2493 data/ui/remmina_preferences.glade:1277
-#: data/ui/remmina_preferences.glade:1287
-#, fuzzy
-msgid "Screenshot"
-msgstr "Tangkapan skrin"
-
-#: src/rcw.c:2507 data/ui/remmina_preferences.glade:1181
-msgid "Minimize window"
-msgstr "Minimunkan window"
-
-#: src/rcw.c:2517 data/ui/remmina_preferences.glade:1213
-msgid "Disconnect"
-msgstr "Putuskan"
-
-#: src/rcw.c:4284
+#: src/remmina_public.c:345
 #, fuzzy, c-format
-msgid "The file “%s” is corrupted, unreadable, or could not be found."
-msgstr "Fail \"%s\" rosak, tidak boleh dibaca, atau tidak dijumpai."
+msgid "Address is too long for UNIX socket_path: %s"
+msgstr "Alamat terlalu panjang untuk UNIX socket_path: %s"
 
-#: src/rcw.c:4452
+#: src/remmina_public.c:355
+#, fuzzy, c-format
+msgid "Creating UNIX socket failed: %s"
+msgstr "Mewujudkan soket UNIX gagal: %s"
+
+#: src/remmina_public.c:361
+#, fuzzy, c-format
+#| msgid "VNC connection failed: %s"
+msgid "Connecting to UNIX socket failed: %s"
+msgstr "Menyambung ke soket UNIX gagal: %s"
+
+#: src/remmina_public.c:631
+msgid "Please enter format 'widthxheight'."
+msgstr "Sila masukkan format 'lebarxtinggi'."
+
+#: src/remmina_public.c:653
 #, fuzzy
-msgid "Warning: This plugin requires GtkSocket, but it’s not available."
-msgstr "Amaran: Plugin ini memerlukan GtkSocket, tetapi ia tidak tersedia."
+msgid "Change security settings"
+msgstr "Tukar pengesetan keselamatan"
 
-#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1533
-msgid "Protocol"
-msgstr "Protokol"
-
-#: src/remmina_plugin_manager.c:73
-msgid "Entry"
-msgstr "Masukan"
-
-#: src/remmina_plugin_manager.c:73
-msgid "File"
-msgstr "Fail"
-
-#: src/remmina_plugin_manager.c:73
-msgid "Tool"
-msgstr "Alat"
-
-#: src/remmina_plugin_manager.c:73
-msgid "Preference"
-msgstr "Keutamaan"
-
-#: src/remmina_plugin_manager.c:73
-msgid "Secret"
-msgstr "Rahsia"
-
-#: src/remmina_plugin_manager.c:456 data/ui/remmina_main.glade:305
-msgid "Plugins"
-msgstr "Pemalam"
-
-#: src/remmina_plugin_manager.c:456 src/remmina_message_panel.c:452
-#: src/remmina_message_panel.c:621 src/remmina_file_editor.c:152
-#, fuzzy
-msgid "_OK"
-msgstr "_OK"
-
-#: src/remmina_plugin_manager.c:474 src/remmina_file_editor.c:1490
-#: data/ui/remmina_main.glade:442
-msgid "Name"
-msgstr "Nama"
-
-#: src/remmina_plugin_manager.c:480
-msgid "Type"
-msgstr "Jenis"
-
-#: src/remmina_plugin_manager.c:486
-msgid "Description"
-msgstr "Keterangan"
-
-#: src/remmina_plugin_manager.c:492
-msgid "Version"
-msgstr "Versi"
-
-#: src/remmina_main.c:662
-#, c-format
-msgid "Total %i item."
-msgid_plural "Total %i items."
-msgstr[0] "Sejumlah %i item."
-msgstr[1] "Sejumlah %i item."
-
-#: src/remmina_main.c:853
-#, c-format
-msgid "Are you sure you want to delete “%s”?"
-msgstr "Anda pasti hendak memadam '%s'"
-
-#: src/remmina_main.c:973
-#, c-format
-msgid ""
-"Unable to import:\n"
-"%s"
+#. TRANSLATORS: translator-credits should be replaced with a formatted list of translators in your own language
+#: src/remmina_about.c:54
+msgid "translator-credits"
 msgstr ""
-"Tidak boleh import:\n"
-"%s"
+"Launchpad Contributions:\n"
+"  abuyop https://launchpad.net/~abuyop"
 
-#: src/remmina_main.c:999 data/ui/remmina_main.glade:285
-msgid "Import"
-msgstr "Import"
+#: src/remmina_ftp_client.c:389
+msgid "Choose download location"
+msgstr "Pilih lokasi muat turun"
 
-#: src/remmina_main.c:1022 src/remmina_file_editor.c:1373
+#: src/remmina_ftp_client.c:529
+msgid "Are you sure to delete the selected files on server?"
+msgstr "Anda pasti hendak memadam fail terpilih dalam pelayan?"
+
+#: src/remmina_ftp_client.c:586
+msgid "Choose a file to upload"
+msgstr "Pilih fail untuk dimuat naik"
+
+#: src/remmina_ftp_client.c:593
+msgid "Upload folder"
+msgstr "Muat naik folder"
+
+#: src/remmina_ftp_client.c:649 src/remmina_ftp_client.c:763
+msgid "Download"
+msgstr "Muat Turun"
+
+#: src/remmina_ftp_client.c:656 src/remmina_ftp_client.c:770
+msgid "Upload"
+msgstr "Muat Naik"
+
+#: src/remmina_ftp_client.c:663
+msgid "_Delete"
+msgstr "_Hapuskan"
+
+#: src/remmina_ftp_client.c:748
 #, fuzzy
-msgid "_Save"
-msgstr "_Save"
+msgid "Home"
+msgstr "Rumah"
 
-#: src/remmina_main.c:1028
-msgid "This protocol does not support exporting."
-msgstr "Protokol ini tidak menyokong pengeksportan."
+#: src/remmina_ftp_client.c:749
+msgid "Go to home folder"
+msgstr "Pergi ke folder rumah"
 
-#: src/remmina_main.c:1344
-msgid "Remmina Remote Desktop Client"
-msgstr "Klien Desktop Jauh Remmina"
-
-#: src/remmina_main.c:1346
+#: src/remmina_ftp_client.c:753
 #, fuzzy
-msgid "Remmina Kiosk"
-msgstr "Remmina Kiosk"
+msgid "Up"
+msgstr "Naik"
 
-#: src/remmina_key_chooser.h:38
+#: src/remmina_ftp_client.c:754
+msgid "Go to parent folder"
+msgstr "Pergi ke folder induk"
+
+#: src/remmina_ftp_client.c:758 plugins/rdp/rdp_plugin.c:2740
+#: plugins/vnc/vnc_plugin.c:2019
+msgid "Refresh"
+msgstr "Segar Semula"
+
+#: src/remmina_ftp_client.c:759
+msgid "Refresh current folder"
+msgstr "Segar semula folder semasa"
+
+#: src/remmina_ftp_client.c:764
+msgid "Download from server"
+msgstr "Muat turun dari pelayan"
+
+#: src/remmina_ftp_client.c:771
+msgid "Upload to server"
+msgstr "Muat naik ke pelayan"
+
+#: src/remmina_ftp_client.c:775 data/ui/remmina_main.glade:197
+msgid "Delete"
+msgstr "Buang"
+
+#: src/remmina_ftp_client.c:776
+msgid "Delete files on server"
+msgstr "Padam fail pada pelayan"
+
+#: src/remmina_ftp_client.c:905 src/remmina_ftp_client.c:974
+msgid "Filename"
+msgstr "Nama Fail"
+
+#: src/remmina_ftp_client.c:918 src/remmina_ftp_client.c:1003
+msgid "Size"
+msgstr "Saiz"
+
+#: src/remmina_ftp_client.c:926
+msgid "User"
+msgstr "Pengguna"
+
+#: src/remmina_ftp_client.c:932 src/remmina_file_editor.c:1515
+#: data/ui/remmina_mpc.glade:115 data/ui/remmina_main.glade:464
+msgid "Group"
+msgstr "Kumpulan"
+
+#: src/remmina_ftp_client.c:938
+msgid "Permission"
+msgstr "Keizinan"
+
+#: src/remmina_ftp_client.c:990 plugins/rdp/rdp_plugin.c:2548
+msgid "Remote"
+msgstr "Jauh"
+
+#: src/remmina_ftp_client.c:997 plugins/rdp/rdp_plugin.c:2547
+msgid "Local"
+msgstr "Setempat"
+
+#: src/remmina_ftp_client.c:1011
+msgid "Progress"
+msgstr "Kemajuan"
+
+#: src/remmina_protocol_widget.c:290 src/remmina_ssh_plugin.c:829
+#: src/remmina_ssh_plugin.c:1454
+msgid "Open SFTP transfer…"
+msgstr "Buka Pemindahan Fail Selamat…"
+
+#: src/remmina_protocol_widget.c:319
 #, fuzzy
-msgid "Shift+"
-msgstr "Shift+"
+msgid "Executing external commands…"
+msgstr "Melaksanakan arahan luaran…"
 
-#: src/remmina_key_chooser.h:39
-#, fuzzy
-msgid "Ctrl+"
-msgstr "Ctrl+"
-
-#: src/remmina_key_chooser.h:40
-#, fuzzy
-msgid "Alt+"
-msgstr "Alt+"
-
-#: src/remmina_key_chooser.h:41
-#, fuzzy
-msgid "Super+"
-msgstr "Super+"
-
-#: src/remmina_key_chooser.h:42
-#, fuzzy
-msgid "Hyper+"
-msgstr "Hiper+"
-
-#: src/remmina_key_chooser.h:43
-#, fuzzy
-msgid "Meta+"
-msgstr "Meta +"
-
-#: src/remmina_key_chooser.h:44
-#, fuzzy
-msgid "<None>"
-msgstr "<None>"
-
-#. TRANSLATORS: The placeholder %s is a directory path
-#: src/remmina_sftp_client.c:173
+#. TRANSLATORS: “%s” is a placeholder for the connection profile name
+#: src/remmina_protocol_widget.c:327
 #, c-format
-msgid "Could not create the folder “%s”."
-msgstr "Gagal mencipta sesi sftp: %s"
+msgid "Connecting to “%s”…"
+msgstr "Menyambung ke '%s'…"
 
-#. TRANSLATORS: The placeholder %s is a file path
-#: src/remmina_sftp_client.c:181 src/remmina_sftp_client.c:202
+#. TRANSLATORS: “%s” is a placeholder for an hostname or an IP address.
+#: src/remmina_protocol_widget.c:911 src/remmina_protocol_widget.c:1096
 #, c-format
-msgid "Could not create the file “%s”."
-msgstr "Gagal mencipta sesi sftp: %s"
+msgid "Connecting to “%s” via SSH…"
+msgstr "Menyambung ke '%s'…"
 
-#. TRANSLATORS: The placeholders %s are a file path, and an error message.
-#: src/remmina_sftp_client.c:220
+#. TRANSLATORS: “%i” is a placeholder for a TCP port number.
+#: src/remmina_protocol_widget.c:1160
 #, c-format
-msgid "Could not open the file “%s” on the server. %s"
-msgstr "Ralat membuka fail %s pada pelayan. %s"
+msgid "Awaiting incoming SSH connection on port %i…"
+msgstr "Menunggu terowong SSH masuk pada port %i…"
 
-#: src/remmina_sftp_client.c:242
+#: src/remmina_protocol_widget.c:1213
 #, c-format
-msgid "Could not save the file “%s”."
-msgstr "Gagal mencipta sesi sftp: %s"
+msgid "The “%s” command is not available on the SSH server."
+msgstr "Perintah %s tidak ditemui pada pelayan SSH"
 
-#: src/remmina_sftp_client.c:281 src/remmina_sftp_client.c:698
-#: src/remmina_sftp_client.c:761
+#: src/remmina_protocol_widget.c:1218
 #, c-format
-msgid "Could not open the folder “%s”. %s"
-msgstr "Gagal membuka direktori %s. %s"
+msgid "Could not run the “%s” command on the SSH server (status = %i)."
+msgstr "Perintah %s gagal pada pelayan SSH (status = %i)."
 
-#: src/remmina_sftp_client.c:385
+#. TRANSLATORS: %s is a placeholder for an error message
+#: src/remmina_protocol_widget.c:1226
 #, c-format
-msgid "Could not create the folder “%s” on the server. %s"
-msgstr "Ralat mencipta folder %s pada pelayan. %s"
+msgid "Could not run command. %s"
+msgstr "Gagal meminta pemajuan port: %s"
 
-#: src/remmina_sftp_client.c:413 src/remmina_sftp_client.c:435
+#. TRANSLATORS: “%s” is a placeholder for a hostname or IP address.
+#: src/remmina_protocol_widget.c:1296
 #, c-format
-msgid "Could not create the file “%s” on the server. %s"
-msgstr "Ralat mencipta fail %s pada pelayan. %s"
+msgid "Connecting to %s via SSH…"
+msgstr "Menyambung ke '%s'…"
 
-#: src/remmina_sftp_client.c:456
+#: src/remmina_protocol_widget.c:1690
+#, fuzzy
+msgid "Type in SSH username and password."
+msgstr "Taip nama pengguna dan kata laluan SSH."
+
+#: src/remmina_protocol_widget.c:1745 src/remmina_protocol_widget.c:1777
+#, fuzzy
+msgid "Fingerprint automatically accepted"
+msgstr "Cap jari diterima secara automatik"
+
+#. TRANSLATORS: The user is asked to verify a new SSL certificate.
+#: src/remmina_protocol_widget.c:1753
+#, fuzzy
+msgid "Certificate details:"
+msgstr "Butiran sijil:"
+
+#. TRANSLATORS: An SSL certificate subject is usually the remote server the user connect to.
+#: src/remmina_protocol_widget.c:1755 src/remmina_protocol_widget.c:1787
+msgid "Subject:"
+msgstr "Subjek:"
+
+#. TRANSLATORS: The name or email of the entity that have issued the SSL certificate
+#: src/remmina_protocol_widget.c:1757 src/remmina_protocol_widget.c:1789
+msgid "Issuer:"
+msgstr "Pengeluar:"
+
+#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
+#: src/remmina_protocol_widget.c:1759
+msgid "Fingerprint:"
+msgstr "Cap Jari:"
+
+#. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
+#: src/remmina_protocol_widget.c:1761
+msgid "Accept certificate?"
+msgstr "Terima Sijil?"
+
+#. TRANSLATORS: The user is asked to verify a new SSL certificate.
+#: src/remmina_protocol_widget.c:1785
+#, fuzzy
+msgid "The certificate changed! Details:"
+msgstr "Sijil berubah! Butiran:"
+
+#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
+#: src/remmina_protocol_widget.c:1791
+msgid "Old fingerprint:"
+msgstr "Cap Jari:"
+
+#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
+#: src/remmina_protocol_widget.c:1793
+msgid "New fingerprint:"
+msgstr "Cap Jari:"
+
+#. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
+#: src/remmina_protocol_widget.c:1795
+msgid "Accept changed certificate?"
+msgstr "Terima Sijil?"
+
+#. TRANSLATORS: “%i” is a placeholder for a port number. “%s”  is a placeholder for a protocol name (VNC).
+#: src/remmina_protocol_widget.c:1938
 #, c-format
-msgid "Could not open the file “%s”."
-msgstr "Gagal mencipta sesi sftp: %s"
+msgid "Listening on port %i for an incoming %s connection…"
+msgstr "Mendengat pada port %i untuk sambungan %s masuk…"
 
-#: src/remmina_sftp_client.c:476
-#, c-format
-msgid "Could not write to the file “%s” on the server. %s"
-msgstr "Ralat menulis fail %s pada pelayan. %s"
+#: src/remmina_protocol_widget.c:1963
+msgid "Could not authenticate, attempting reconnection…"
+msgstr "Pengesahihan gagal. Cuba menyambung semula…"
 
-#: src/remmina_sftp_client.c:716
-#, c-format
-msgid "Could not read from the folder. %s"
-msgstr "Gagal mencipta sesi sftp: %s"
+#: src/remmina_protocol_widget.c:2025 src/remmina_file_editor.c:346
+#: src/remmina_file_editor.c:917 data/ui/remmina_main.glade:478
+msgid "Server"
+msgstr "Pelayan"
 
-#: src/remmina_sftp_client.c:823
-msgid "Are you sure you want to cancel the file transfer in progress?"
-msgstr "Anda pasti hendak memadam '%s'"
-
-#: src/remmina_sftp_client.c:857
-#, c-format
-msgid "Could not delete “%s”. %s"
-msgstr "Gagal memadam '%s'. %s"
-
-#: src/remmina_sftp_client.c:942
-#, fuzzy
-msgid "The file exists already"
-msgstr "Fail telah pun wujud"
-
-#: src/remmina_sftp_client.c:945
-msgid "Resume"
-msgstr "Sambung Semula"
-
-#: src/remmina_sftp_client.c:946
-msgid "Overwrite"
-msgstr "Tulis-Ganti"
-
-#: src/remmina_sftp_client.c:947 src/remmina_message_panel.c:457
-#: src/remmina_message_panel.c:629 src/remmina_file_editor.c:151
-#: src/remmina_file_editor.c:1365 plugins/spice/spice_plugin_file_transfer.c:84
-#: data/ui/remmina_spinner.glade:8 data/ui/remmina_spinner.glade:9
-#: data/ui/remmina_key_chooser.glade:8 data/ui/remmina_key_chooser.glade:9
-#, fuzzy
-msgid "_Cancel"
-msgstr "_Cancel"
-
-#: src/remmina_sftp_client.c:964
-msgid "The following file already exists in the target folder:"
-msgstr "Fail berikut telah wujud dalam folder sasaran:"
-
-#: src/remmina_message_panel.c:163 data/ui/remmina_unlock.glade:46
-#: data/ui/remmina_mpc.glade:46
-#, fuzzy
-msgid "Cancel"
-msgstr "Batal"
-
-#: src/remmina_message_panel.c:199 data/ui/remmina_snap_info_dialog.glade:28
-#: data/ui/remmina_news.glade:33 data/ui/remmina_preferences.glade:2640
-#: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
-#: data/ui/remmina_string_list.glade:63
-#, fuzzy
-msgid "Close"
-msgstr "Tutup"
-
-#: src/remmina_message_panel.c:260
-#, fuzzy
-msgid "Yes"
-msgstr "Ya"
-
-#: src/remmina_message_panel.c:267
-msgid "No"
-msgstr "Tak"
-
-#: src/remmina_message_panel.c:391 plugins/rdp/rdp_plugin.c:2653
-#: data/ui/remmina_mpc.glade:172
-msgid "Domain"
-msgstr "Domain"
-
-#: src/remmina_message_panel.c:420
-msgid "Save password"
-msgstr "Simpan kata laluan"
-
-#: src/remmina_message_panel.c:513
-#, fuzzy
-msgid "Enter certificate authentication files"
-msgstr "Masukkan fail pengesahan sijil"
-
-#: src/remmina_message_panel.c:525
-#, fuzzy
-msgid "CA Certificate File"
-msgstr "Fail Sijil CA"
-
-#: src/remmina_message_panel.c:547
-#, fuzzy
-msgid "CA CRL File"
-msgstr "Fail CA CRL"
-
-#: src/remmina_message_panel.c:569
-#, fuzzy
-msgid "Client Certificate File"
-msgstr "Fail Sijil Klien"
-
-#: src/remmina_message_panel.c:591
-#, fuzzy
-msgid "Client Certificate Key"
-msgstr "Kekunci Sijil Pelanggan"
-
-#: src/remmina_sftp_plugin.c:323
-msgid "Show Hidden Files"
-msgstr "Papar Fail Tersembunyi"
-
-#: src/remmina_sftp_plugin.c:325
-msgid "Overwrite all files"
-msgstr "Tulis-Ganti"
-
-#: src/remmina_sftp_plugin.c:327
-#, fuzzy
-msgid "Resume all file transfers"
-msgstr "Sambung semula semua pemindahan fail"
-
-#: src/remmina_sftp_plugin.c:359
-msgid "SFTP - Secure File Transfer"
-msgstr "SFTP - Pemindahan Fail Selamat"
+#. TRANSLATORS: “%s” is a placeholder for a protocol name, like “RDP”.
+#: src/remmina_protocol_widget.c:2043
+#, fuzzy, c-format
+msgid "Install the %s protocol plugin first."
+msgstr "Pasang plugin protokol %s dahulu."
 
 #: src/remmina_ssh.c:236
 #, c-format
@@ -1586,6 +1222,134 @@ msgstr "Gagal mencipta sesi sftp: %s"
 msgid "Could not create PTY device."
 msgstr "Tidak dapat mencipta peranti PTY."
 
+#: src/remmina_exec.c:475
+#, c-format
+msgid "Plugin %s is not registered."
+msgstr "Pemalam %s tidak berdaftar."
+
+#: src/remmina_main.c:662
+#, c-format
+msgid "Total %i item."
+msgid_plural "Total %i items."
+msgstr[0] "Sejumlah %i item."
+msgstr[1] "Sejumlah %i item."
+
+#: src/remmina_main.c:853
+#, c-format
+msgid "Are you sure you want to delete “%s”?"
+msgstr "Anda pasti hendak memadam '%s'"
+
+#: src/remmina_main.c:973
+#, c-format
+msgid ""
+"Unable to import:\n"
+"%s"
+msgstr ""
+"Tidak boleh import:\n"
+"%s"
+
+#: src/remmina_main.c:999 data/ui/remmina_main.glade:285
+msgid "Import"
+msgstr "Import"
+
+#: src/remmina_main.c:1022 src/remmina_file_editor.c:1373
+#, fuzzy
+msgid "_Save"
+msgstr "_Save"
+
+#: src/remmina_main.c:1028
+msgid "This protocol does not support exporting."
+msgstr "Protokol ini tidak menyokong pengeksportan."
+
+#: src/remmina_main.c:1344
+msgid "Remmina Remote Desktop Client"
+msgstr "Klien Desktop Jauh Remmina"
+
+#: src/remmina_main.c:1346
+#, fuzzy
+msgid "Remmina Kiosk"
+msgstr "Remmina Kiosk"
+
+#. TRANSLATORS: The placeholder %s is a directory path
+#: src/remmina_sftp_client.c:173
+#, c-format
+msgid "Could not create the folder “%s”."
+msgstr "Gagal mencipta sesi sftp: %s"
+
+#. TRANSLATORS: The placeholder %s is a file path
+#: src/remmina_sftp_client.c:181 src/remmina_sftp_client.c:202
+#, c-format
+msgid "Could not create the file “%s”."
+msgstr "Gagal mencipta sesi sftp: %s"
+
+#. TRANSLATORS: The placeholders %s are a file path, and an error message.
+#: src/remmina_sftp_client.c:220
+#, c-format
+msgid "Could not open the file “%s” on the server. %s"
+msgstr "Ralat membuka fail %s pada pelayan. %s"
+
+#: src/remmina_sftp_client.c:242
+#, c-format
+msgid "Could not save the file “%s”."
+msgstr "Gagal mencipta sesi sftp: %s"
+
+#: src/remmina_sftp_client.c:281 src/remmina_sftp_client.c:698
+#: src/remmina_sftp_client.c:761
+#, c-format
+msgid "Could not open the folder “%s”. %s"
+msgstr "Gagal membuka direktori %s. %s"
+
+#: src/remmina_sftp_client.c:385
+#, c-format
+msgid "Could not create the folder “%s” on the server. %s"
+msgstr "Ralat mencipta folder %s pada pelayan. %s"
+
+#: src/remmina_sftp_client.c:413 src/remmina_sftp_client.c:435
+#, c-format
+msgid "Could not create the file “%s” on the server. %s"
+msgstr "Ralat mencipta fail %s pada pelayan. %s"
+
+#: src/remmina_sftp_client.c:456
+#, c-format
+msgid "Could not open the file “%s”."
+msgstr "Gagal mencipta sesi sftp: %s"
+
+#: src/remmina_sftp_client.c:476
+#, c-format
+msgid "Could not write to the file “%s” on the server. %s"
+msgstr "Ralat menulis fail %s pada pelayan. %s"
+
+#: src/remmina_sftp_client.c:716
+#, c-format
+msgid "Could not read from the folder. %s"
+msgstr "Gagal mencipta sesi sftp: %s"
+
+#: src/remmina_sftp_client.c:823
+msgid "Are you sure you want to cancel the file transfer in progress?"
+msgstr "Anda pasti hendak memadam '%s'"
+
+#: src/remmina_sftp_client.c:857
+#, c-format
+msgid "Could not delete “%s”. %s"
+msgstr "Gagal memadam '%s'. %s"
+
+#: src/remmina_sftp_client.c:942
+#, fuzzy
+msgid "The file exists already"
+msgstr "Fail telah pun wujud"
+
+#: src/remmina_sftp_client.c:945
+msgid "Resume"
+msgstr "Sambung Semula"
+
+#: src/remmina_sftp_client.c:946
+msgid "Overwrite"
+msgstr "Tulis-Ganti"
+
+#: src/remmina_sftp_client.c:964
+msgid "The following file already exists in the target folder:"
+msgstr "Fail berikut telah wujud dalam folder sasaran:"
+
 #: src/remmina_file_editor.c:60
 #, fuzzy
 #| msgid ""
@@ -1756,6 +1520,12 @@ msgstr "Pengesahihan SSH"
 msgid "SSH private key file"
 msgstr "Fail kekunci persendirian SSH"
 
+#: src/remmina_file_editor.c:979 src/remmina_ssh_plugin.c:1477
+#, fuzzy
+#| msgid "Accept certificate?"
+msgid "SSH certificate file"
+msgstr "Fail sijil SSH"
+
 #: src/remmina_file_editor.c:1037
 msgid "Basic"
 msgstr "Asas"
@@ -1810,601 +1580,384 @@ msgstr "Guna '%s' sebagai pembatas sub-kumpulan"
 msgid "Could not find the file “%s”."
 msgstr "Gagal mencipta sesi sftp: %s"
 
-#: src/remmina_chat_window.c:178
-#, c-format
-msgid "Chat with %s"
-msgstr "Sembang dengan %s"
+#: src/remmina_icon.c:128
+msgid "Open Main Window"
+msgstr "Buka Tetingkap Utama"
 
-#: src/remmina_chat_window.c:230
-msgid "_Send"
-msgstr "_Hantar"
-
-#: src/remmina_chat_window.c:240
-msgid "_Clear"
-msgstr "_Kosongkan"
-
-#: plugins/gvnc/gvnc_plugin_config.h:40
+#: src/remmina_icon.c:133 data/ui/remmina_main.glade:254
 #, fuzzy
-msgid "Remmina VNC plugin for GNOME and KVM"
-msgstr "Plugin Remmina VNC untuk GNOME dan KVM"
+msgid "_Preferences"
+msgstr "Keutamaan"
 
-#: plugins/gvnc/gvnc_plugin.c:477
+#: src/remmina_icon.c:138
+msgid "_About"
+msgstr "Perih_al"
+
+#: src/remmina_icon.c:148
+msgid "Enable Service Discovery"
+msgstr "Benarkan Penemuan Perkhidmatan"
+
+#: src/remmina_icon.c:160 data/ui/remmina_main.glade:404
+#, fuzzy
+msgid "_Quit"
+msgstr "_Quit"
+
+#. TRANSLATORS: Applet name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
+#. TRANSLATORS: Applet Name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
+#: src/remmina_icon.c:284 src/remmina_icon.c:416
+msgid "Remmina Applet"
+msgstr "Aplet Remmina"
+
+#. TRANSLATORS: Applet comment/description as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
+#: src/remmina_icon.c:286 src/remmina_icon.c:418
+msgid "Connect to remote desktops through the applet menu"
+msgstr "Sambung ke desktop jauh melalui menu aplet"
+
+#. TRANSLATORS: %s is a placeholder for an error message
+#: src/remmina_ssh_plugin.c:539
 #, fuzzy, c-format
-msgid "Unsupported authentication type %u"
-msgstr "Jenis pengesahan tidak disokong %u"
+msgid "Error: %s"
+msgstr "Ralat: %s"
 
-#: plugins/gvnc/gvnc_plugin.c:489
-#, fuzzy, c-format
-#| msgid "SSH Authentication"
-msgid "Authentication failure: %s"
-msgstr "Kegagalan pengesahan: %s"
-
-#: plugins/gvnc/gvnc_plugin.c:539 plugins/vnc/vnc_plugin.c:825
+#: src/remmina_ssh_plugin.c:556
 #, fuzzy
-msgid "Enter VNC authentication credentials"
-msgstr "Masukkan kelayakan pengesahan VNC"
+msgid "Terminal content saved in"
+msgstr "Kandungan terminal disimpan dalam"
 
-#: plugins/gvnc/gvnc_plugin.c:820
+#: src/remmina_ssh_plugin.c:822
 #, fuzzy
-#| msgid "Disable server input"
-msgid "Use server settings"
-msgstr "Guna pengesetan pelayan"
+msgid "Select All (host+A)"
+msgstr "Pilih Semua (hos+A)"
 
-#: plugins/gvnc/gvnc_plugin.c:821
+#: src/remmina_ssh_plugin.c:823
 #, fuzzy
-#| msgid "True colour (24 bit)"
-msgid "True colour (24 bits)"
-msgstr "Warna sejati (24 bit)"
+msgid "Copy (host+C)"
+msgstr "Salin (hos+C)"
 
-#: plugins/gvnc/gvnc_plugin.c:822
+#: src/remmina_ssh_plugin.c:824
 #, fuzzy
-#| msgid "High colour (16 bit)"
-msgid "High colour (16 bits)"
-msgstr "Warna tinggi (16 bit)"
+msgid "Paste (host+V)"
+msgstr "Tampal (hos+V)"
 
-#: plugins/gvnc/gvnc_plugin.c:823
+#: src/remmina_ssh_plugin.c:825
 #, fuzzy
-#| msgid "High colour (16 bit)"
-msgid "Low colour (8 bits)"
-msgstr "Warna rendah (8 bit)"
+msgid "Save session to file"
+msgstr "Simpan sesi ke fail"
 
-#: plugins/gvnc/gvnc_plugin.c:824
+#: src/remmina_ssh_plugin.c:826
 #, fuzzy
-#| msgid "True colour (24 bit)"
-msgid "Ultra low colour (3 bits)"
-msgstr "Warna ultra rendah (3 bit)"
+msgid "Increase font size (host+Page Up)"
+msgstr "Tingkatkan saiz fon (hos+Page Up)"
 
-#: plugins/gvnc/gvnc_plugin.c:839
+#: src/remmina_ssh_plugin.c:827
 #, fuzzy
-#| msgid "Enter VNC password"
-msgid "VNC password"
-msgstr "Kata laluan VNC"
+msgid "Decrease font size (host+Page Down)"
+msgstr "Kurangkan saiz fon (hos+Page Down)"
 
-#: plugins/gvnc/gvnc_plugin.c:840 plugins/vnc/vnc_plugin.c:1962
-#: plugins/vnc/vnc_plugin.c:1982 plugins/rdp/rdp_plugin.c:2661
-msgid "Colour depth"
-msgstr "Kedalaman warna"
-
-#: plugins/gvnc/gvnc_plugin.c:841
+#: src/remmina_ssh_plugin.c:828
 #, fuzzy
-msgid "Use JPEG Compression"
-msgstr "Guna Mampatan JPEG"
+msgid "Find text (host+G)"
+msgstr "Cari teks (hos+G)"
 
-#: plugins/gvnc/gvnc_plugin.c:841
+#: src/remmina_ssh_plugin.c:1448 data/ui/remmina_main.glade:177
+msgid "Copy"
+msgstr "Salin"
+
+#: src/remmina_ssh_plugin.c:1448
 #, fuzzy
-#| msgid "Browse the network to find a %s server"
-msgid "This might not work on all VNC servers"
-msgstr "Ini mungkin tidak berfungsi pada semua pelayan VNC"
+msgid "_Copy"
+msgstr "_Copy"
 
-#: plugins/gvnc/gvnc_plugin.c:842
+#: src/remmina_ssh_plugin.c:1449
+msgid "Paste"
+msgstr "Tampal"
+
+#: src/remmina_ssh_plugin.c:1449
 #, fuzzy
-msgid "Enable GTK-VNC debug"
-msgstr "Dayakan nyahpepijat GTK-VNC"
+msgid "_Paste"
+msgstr "_Paste"
 
-#: plugins/gvnc/gvnc_plugin.c:857 plugins/gvnc/gvnc_plugin.c:871
-#: plugins/spice/spice_plugin.c:693 plugins/spice/spice_plugin.c:706
-msgid "No clipboard sync"
-msgstr "Lumpuhkan segerakan papan keratan"
-
-#: plugins/gvnc/gvnc_plugin.c:858 plugins/www/www_plugin.c:904
-#: plugins/vnc/vnc_plugin.c:2005 plugins/spice/spice_plugin.c:694
-#: plugins/rdp/rdp_plugin.c:2718
-msgid "Forget passwords after use"
-msgstr "Kata laluan %s"
-
-#: plugins/gvnc/gvnc_plugin.c:859 plugins/vnc/vnc_plugin.c:2004
+#: src/remmina_ssh_plugin.c:1450
 #, fuzzy
-msgid "Ignore remote bell messages"
-msgstr "Abaikan mesej perut jauh"
+msgid "Select all"
+msgstr "Pilih semua"
 
-#: plugins/gvnc/gvnc_plugin.c:860 plugins/spice/spice_plugin.c:695
+#: src/remmina_ssh_plugin.c:1450
 #, fuzzy
-msgid "Enable audio channel"
-msgstr "Dayakan saluran audio"
+msgid "_Select all"
+msgstr "Pilih semua"
 
-#: plugins/gvnc/gvnc_plugin.c:861 plugins/gvnc/gvnc_plugin.c:870
-#: plugins/vnc/vnc_plugin.c:2000 plugins/vnc/vnc_plugin.c:2017
-#: plugins/spice/spice_plugin.c:697 plugins/spice/spice_plugin.c:705
-msgid "View only"
-msgstr "Papar sahaja"
-
-#: plugins/gvnc/gvnc_plugin.c:862
+#: src/remmina_ssh_plugin.c:1451
 #, fuzzy
-#| msgid "Per connection"
-msgid "Shared connection"
-msgstr "Sambungan dikongsi"
+msgid "Increase font size"
+msgstr "Tingkatkan saiz fon"
 
-#: plugins/gvnc/gvnc_plugin.c:862
+#: src/remmina_ssh_plugin.c:1451
+#, fuzzy
+msgid "_Increase font size"
+msgstr "_Increase fon"
+
+#: src/remmina_ssh_plugin.c:1452
+#, fuzzy
+msgid "Decrease font size"
+msgstr "Kurangkan saiz fon"
+
+#: src/remmina_ssh_plugin.c:1452
+#, fuzzy
+msgid "_Decrease font size"
+msgstr "_Decrease fon"
+
+#: src/remmina_ssh_plugin.c:1453
+#, fuzzy
+msgid "Find text"
+msgstr "Cari teks"
+
+#: src/remmina_ssh_plugin.c:1453
+#, fuzzy
+msgid "_Find text"
+msgstr "_Find teks"
+
+#: src/remmina_ssh_plugin.c:1474 plugins/spice/spice_plugin.c:666
+#: plugins/vnc/vnc_plugin.c:1961 plugins/vnc/vnc_plugin.c:1981
+#, fuzzy
+msgid "User password"
+msgstr "Kata laluan pengguna"
+
+#: src/remmina_ssh_plugin.c:1480 plugins/rdp/rdp_plugin.c:2693
+msgid "Start-up program"
+msgstr "Program permulaan"
+
+#: src/remmina_ssh_plugin.c:1485
 #, fuzzy
 msgid ""
-"If the server should try to share the desktop by leaving other clients "
-"connected"
+"The filename can use the following placeholders:\n"
+"\n"
+"  • %h is substituted with the server name\n"
+"  • %t is substituted with the SSH server name\n"
+"  • %u is substituted with the username\n"
+"  • %U is substituted with the SSH username\n"
+"  • %p is substituted with Remmina profile name\n"
+"  • %g is substituted with Remmina profile group name\n"
+"  • %d is substituted with local date and time in ISO 8601 format\n"
 msgstr ""
-"Jika pelayan harus cuba berkongsi desktop dengan meninggalkan pelanggan lain "
-"yang disambungkan"
+"Nama fail boleh menggunakan ruang letak berikut:\n"
+"\n"
+"• %h digantikan dengan nama pelayan\n"
+"  • %t digantikan dengan nama pelayan SSH\n"
+"  • %u digantikan dengan nama pengguna\n"
+"  • %U digantikan dengan nama pengguna SSH\n"
+"  • %p digantikan dengan nama profil Remmina\n"
+"  • %g digantikan dengan nama kumpulan profil Remmina\n"
+"  • %d digantikan dengan tarikh dan masa tempatan dalam format ISO 8601\n"
 
-#: plugins/gvnc/gvnc_plugin.c:872
+#: src/remmina_ssh_plugin.c:1507
 #, fuzzy
-msgid "Send Ctrl+Alt+_Del"
-msgstr "Hantar Ctrl+Alt+_Del"
+msgid "Terminal colour scheme"
+msgstr "Skim warna terminal"
 
-#: plugins/gvnc/gvnc_plugin.c:873
-#, fuzzy
-msgid "Send Ctrl+Alt+_Backspace"
-msgstr "Hantar Ctrl+Alt+_Backspace"
+#: src/remmina_ssh_plugin.c:1508
+msgid "Character set"
+msgstr "Set aksara"
 
-#: plugins/gvnc/gvnc_plugin.c:874
+#: src/remmina_ssh_plugin.c:1510
 #, fuzzy
-msgid "Send Ctrl+Alt+_F1"
-msgstr "Hantar Ctrl+Alt+_F1"
+msgid "KEX (Key Exchange) algorithms"
+msgstr "Algoritma KEX (Pertukaran Utama)"
 
-#: plugins/gvnc/gvnc_plugin.c:875
+#: src/remmina_ssh_plugin.c:1511
 #, fuzzy
-msgid "Send Ctrl+Alt+_F2"
-msgstr "Hantar Ctrl+Alt+_F2"
+msgid "Symmetric cipher client to server"
+msgstr "Klien symmetric cipher ke pelayan"
 
-#: plugins/gvnc/gvnc_plugin.c:876
+#: src/remmina_ssh_plugin.c:1512
 #, fuzzy
-msgid "Send Ctrl+Alt+_F3"
-msgstr "Hantar Ctrl+Alt+_F3"
+msgid "Preferred server host key types"
+msgstr "Jenis kekunci hos pelayan pilihan"
 
-#: plugins/gvnc/gvnc_plugin.c:877
-#, fuzzy
-msgid "Send Ctrl+Alt+_F4"
-msgstr "Hantar Ctrl+Alt+_F4"
+#: src/remmina_ssh_plugin.c:1513
+msgid "Folder for SSH session log"
+msgstr "Gagal memulakan sesi SSH: %s"
 
-#: plugins/gvnc/gvnc_plugin.c:878
+#: src/remmina_ssh_plugin.c:1514
 #, fuzzy
-msgid "Send Ctrl+Alt+_F5"
-msgstr "Hantar Ctrl+Alt+_F5"
+msgid "Filename for SSH session log"
+msgstr "Nama fail untuk log sesi SSH"
 
-#: plugins/gvnc/gvnc_plugin.c:879
+#: src/remmina_ssh_plugin.c:1515
 #, fuzzy
-msgid "Send Ctrl+Alt+_F6"
-msgstr "Hantar Ctrl+Alt+_F6"
+msgid "Log SSH session when exiting Remmina"
+msgstr "Log sesi SSH ketika keluar dari Remmina"
 
-#: plugins/gvnc/gvnc_plugin.c:880
+#: src/remmina_ssh_plugin.c:1516
 #, fuzzy
-msgid "Send Ctrl+Alt+_F7"
-msgstr "Hantar Ctrl+Alt+_F7"
+msgid "Log SSH session asynchronously"
+msgstr "Log sesi SSH secara asynchronously"
 
-#: plugins/gvnc/gvnc_plugin.c:881
+#: src/remmina_ssh_plugin.c:1516
 #, fuzzy
-msgid "Send Ctrl+Alt+_F8"
-msgstr "Hantar Ctrl+Alt+_F8"
-
-#: plugins/gvnc/gvnc_plugin.c:882
-#, fuzzy
-msgid "Send Ctrl+Alt+_F9"
-msgstr "Hantar Ctrl+Alt+_F9"
-
-#: plugins/gvnc/gvnc_plugin.c:883
-#, fuzzy
-msgid "Send Ctrl+Alt+_F10"
-msgstr "Hantar Ctrl+Alt+_F10"
-
-#: plugins/gvnc/gvnc_plugin.c:884
-#, fuzzy
-msgid "Send Ctrl+Alt+_F11"
-msgstr "Hantar Ctrl+Alt+_F11"
-
-#: plugins/gvnc/gvnc_plugin.c:885
-#, fuzzy
-msgid "Send Ctrl+Alt+_F12"
-msgstr "Hantar Ctrl+Alt+_F12"
-
-#: plugins/gvnc/gvnc_plugin.c:887
-#, fuzzy
-msgid "Reboot remote host"
-msgstr "But semula hos jauh"
-
-#: plugins/gvnc/gvnc_plugin.c:888
-#, fuzzy
-msgid "Reset remote host (hard reboot)"
-msgstr "Set semula hos jauh (but semula keras)"
-
-#: plugins/gvnc/gvnc_plugin.c:889
-#, fuzzy
-#| msgid "Show remote cursor"
-msgid "Shutdown remote host"
-msgstr "Hos jauh penutupan"
-
-#: plugins/exec/exec_plugin_config.h:41
-#, fuzzy
-msgid "Execute a command"
-msgstr "Laksanakan perintah"
-
-#: plugins/exec/exec_plugin.c:160
-#, fuzzy
-msgid "You did not set any command to be executed"
-msgstr "Anda tidak menetapkan sebarang perintah untuk dilaksanakan"
-
-#: plugins/exec/exec_plugin.c:206
-#, fuzzy
-msgid ""
-"Warning: Running a command synchronously may cause Remmina not to respond.\n"
-"Do you really want to continue?"
+msgid "Saving the session asynchronously may have a notable performance impact"
 msgstr ""
-"Amaran: Menjalankan perintah secara segerak boleh menyebabkan Remmina tidak "
-"bertindak balas.\n"
-"Adakah anda benar-benar mahu meneruskan?"
+"Menyelamatkan sesi secara asynchronously mungkin mempunyai kesan prestasi "
+"yang ketara"
 
-#: plugins/exec/exec_plugin.c:266
+#: src/remmina_ssh_plugin.c:1517
 #, fuzzy
-msgid "Command"
-msgstr "Perintah"
+msgid "Audible terminal bell"
+msgstr "Perut terminal yang boleh didengar"
 
-#: plugins/exec/exec_plugin.c:267
+#: src/remmina_ssh_plugin.c:1518
 #, fuzzy
-msgid "Asynchronous execution"
-msgstr "Perlaksanaan asynchronous"
+msgid "SSH compression"
+msgstr "Mampatan SSH"
 
-#: plugins/www/www_plugin.c:98
-#, fuzzy
-msgid "File downloaded"
-msgstr "Fail dimuat turun"
-
-#: plugins/www/www_plugin.c:574
-#, fuzzy
-msgid "Enter WWW authentication credentials"
-msgstr "Masukkan kelayakan pengesahan WWW"
-
-#: plugins/www/www_plugin.c:878
-#, fuzzy
-msgid "URL"
-msgstr "URL"
-
-#: plugins/www/www_plugin.c:878
-#, fuzzy
-msgid "http://address or https://address"
-msgstr "http://address atau https://address"
-
-#: plugins/www/www_plugin.c:895
-#, fuzzy
-msgid "User agent"
-msgstr "User Agent"
-
-#: plugins/www/www_plugin.c:896
-#, fuzzy
-msgid "Proxy URL"
-msgstr "URL proksi"
-
-#: plugins/www/www_plugin.c:896
-#, fuzzy
-msgid "E.g. https://example.org, socks://mysocks:1080"
-msgstr "Contohnya, https://example.org, socks://mysocks:1080"
-
-#: plugins/www/www_plugin.c:897
-#, fuzzy
-msgid "Turn on Java support"
-msgstr "Hidupkan sokongan Java"
-
-#: plugins/www/www_plugin.c:898
-msgid "Turn on smooth scrolling"
-msgstr "Pelicinan fon"
-
-#: plugins/www/www_plugin.c:899
-#, fuzzy
-msgid "Turn on spatial navigation"
-msgstr "Hidupkan navigasi spatial"
-
-#: plugins/www/www_plugin.c:900
-#, fuzzy
-msgid "Turn on plugin support"
-msgstr "Hidupkan sokongan plugin"
-
-#: plugins/www/www_plugin.c:901
-#, fuzzy
-msgid "Turn on WebGL support"
-msgstr "Hidupkan sokongan WebGL"
-
-#: plugins/www/www_plugin.c:902
-#, fuzzy
-msgid "Turn on HTML5 audio support"
-msgstr "Hidupkan sokongan audio HTML5"
-
-#: plugins/www/www_plugin.c:903
-#, fuzzy
-msgid "Ignore TLS errors"
-msgstr "Abaikan ralat TLS"
-
-#: plugins/www/www_plugin.c:906
-#, fuzzy
-msgid "Turn on Web Inspector"
-msgstr "Pasang Pemeriksa Web"
-
-#: plugins/www/www_config.h:43
-#, fuzzy
-msgid "Remmina web-browser plugin"
-msgstr "Plugin pelayar web Remmina"
-
-#: plugins/secret/src/glibsecret_plugin.c:188
-msgid "Secured password storage in the GNOME keyring"
-msgstr "Kata laluan %s"
-
-#: plugins/tool_hello_world/plugin_config.h:40
-#, fuzzy
-msgid "Hello, World!"
-msgstr "Helo dunia!"
-
-#: plugins/vnc/vnc_plugin.c:772
-msgid "Enter VNC password"
+#: src/remmina_ssh_plugin.c:1519
+msgid "Don't remember passwords"
 msgstr "Simpan kata laluan"
 
-#: plugins/vnc/vnc_plugin.c:936
-msgid "Unable to connect to VNC server"
-msgstr "Tidak boleh sambung ke pelayan VNC"
-
-#: plugins/vnc/vnc_plugin.c:937
-#, c-format
-msgid "Couldn’t convert '%s' to host address"
-msgstr "Tidak dapat tukar '%s' ke alamat hos"
-
-#: plugins/vnc/vnc_plugin.c:938
-#, c-format
-msgid "VNC connection failed: %s"
-msgstr "Sambungan VNC gagal: %s"
-
-#: plugins/vnc/vnc_plugin.c:939
-msgid "Your connection has been rejected."
-msgstr "Sambungan anda telah ditolak."
-
-#: plugins/vnc/vnc_plugin.c:966
-#, fuzzy, c-format
-msgid "The VNC server requested an unknown authentication method. %s"
-msgstr "Pelayan VNC meminta kaedah pengesahan yang tidak diketahui. %s"
-
-#: plugins/vnc/vnc_plugin.c:968
+#: src/remmina_ssh_plugin.c:1520
 #, fuzzy
-msgid "Please retry after turning on encryption for this profile."
-msgstr "Sila cuba semula selepas menghidupkan penyulitan untuk profil ini."
+msgid "Strict host key checking"
+msgstr "Semakan kekunci hos ketat"
 
-#: plugins/vnc/vnc_plugin.c:1922 plugins/rdp/rdp_plugin.c:2497
-msgid "True colour (32 bpp)"
-msgstr "Warna sebenar (32 bpp)"
+#: src/remmina_ssh_plugin.c:1534
+msgid "SSH - Secure Shell"
+msgstr "SSH - Shell Selamat"
 
-#: plugins/vnc/vnc_plugin.c:1923 plugins/rdp/rdp_plugin.c:2499
-msgid "High colour (16 bpp)"
-msgstr "Warna Tinggi (16 bpp)"
+#: plugins/kwallet/src/kwallet_plugin_main.c:118
+msgid "Secured password storage in KWallet"
+msgstr "Kata laluan %s"
 
-#: plugins/vnc/vnc_plugin.c:1924 plugins/rdp/rdp_plugin.c:2501
-msgid "256 colours (8 bpp)"
-msgstr "Warna 256 (8 bpp)"
+#: plugins/rdp/rdp_settings.c:205
+msgid "<Auto-detect>"
+msgstr "<kesan sendiri>"
 
-#: plugins/vnc/vnc_plugin.c:1931 plugins/rdp/rdp_plugin.c:2524
-#: plugins/rdp/rdp_settings.c:274
-msgid "Good"
-msgstr "Baik"
+#: plugins/rdp/rdp_settings.c:237
+#, fuzzy
+msgid "<Not set>"
+msgstr "<Seperetulkan>"
 
-#: plugins/vnc/vnc_plugin.c:1932 plugins/rdp/rdp_plugin.c:2525
-#: plugins/rdp/rdp_settings.c:276
-msgid "Best (slowest)"
-msgstr "Terbaik (paling lambat)"
+#: plugins/rdp/rdp_settings.c:268
+#, fuzzy
+msgid "<Choose a quality level to edit…>"
+msgstr "<Choose tahap kualiti untuk mengedit ... >"
 
-#: plugins/vnc/vnc_plugin.c:1933 plugins/rdp/rdp_plugin.c:2523
-#: plugins/rdp/rdp_settings.c:272
-msgid "Medium"
-msgstr "Sederhana"
-
-#: plugins/vnc/vnc_plugin.c:1934 plugins/rdp/rdp_plugin.c:2522
-#: plugins/rdp/rdp_settings.c:270
+#: plugins/rdp/rdp_settings.c:270 plugins/rdp/rdp_plugin.c:2522
+#: plugins/vnc/vnc_plugin.c:1934
 msgid "Poor (fastest)"
 msgstr "Teruk (paling pantas)"
 
-#: plugins/vnc/vnc_plugin.c:1939
+#: plugins/rdp/rdp_settings.c:272 plugins/rdp/rdp_plugin.c:2523
+#: plugins/vnc/vnc_plugin.c:1933
+msgid "Medium"
+msgstr "Sederhana"
+
+#: plugins/rdp/rdp_settings.c:274 plugins/rdp/rdp_plugin.c:2524
+#: plugins/vnc/vnc_plugin.c:1931
+msgid "Good"
+msgstr "Baik"
+
+#: plugins/rdp/rdp_settings.c:276 plugins/rdp/rdp_plugin.c:2525
+#: plugins/vnc/vnc_plugin.c:1932
+msgid "Best (slowest)"
+msgstr "Terbaik (paling lambat)"
+
+#: plugins/rdp/rdp_settings.c:415
+msgid "Keyboard layout"
+msgstr "Bentangan papan kekunci"
+
+#: plugins/rdp/rdp_settings.c:440
+msgid "Use client keyboard mapping"
+msgstr "Guna pemetaan papan kekunci klien"
+
+#: plugins/rdp/rdp_settings.c:450
 #, fuzzy
-msgid ""
-"Connect to VNC using a repeater:\n"
-"  • The server field must contain the repeater ID, e.g. ID:123456789\n"
-"  • The repeater field have to be set to the repeater IP and port, like:\n"
-"    10.10.10.12:5901\n"
-"  • From the remote VNC server, you will connect to\n"
-"    the repeater, e.g. with x11vnc:\n"
-"    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
-msgstr ""
-"Sambung ke VNC menggunakan pengulang:\n"
-"  • Medan pelayan mesti mengandungi ID pengulang, contohnya ID:123456789\n"
-"  • Medan pengulang perlu disetkan ke IP dan port berulang, seperti:\n"
-"    10.10.10.12:5901\n"
-"  • Dari pelayan VNC jauh, anda akan\n"
-"    pengulang, contohnya dengan x11vnc:\n"
-"    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
+msgid "Quality settings"
+msgstr "Pengesetan kualiti"
 
-#: plugins/vnc/vnc_plugin.c:1959
-msgid "Repeater"
-msgstr "Pengulang"
+#: plugins/rdp/rdp_settings.c:470
+msgid "Wallpaper"
+msgstr "Kertas Dinding"
 
-#: plugins/vnc/vnc_plugin.c:1963 plugins/vnc/vnc_plugin.c:1983
-#: plugins/rdp/rdp_plugin.c:2677
-msgid "Quality"
-msgstr "Kualiti"
+#: plugins/rdp/rdp_settings.c:477
+msgid "Window drag"
+msgstr "Seretan Tetingkap"
 
-#: plugins/vnc/vnc_plugin.c:1979
-msgid "Listen on port"
-msgstr "Dengar pada port"
+#: plugins/rdp/rdp_settings.c:484
+msgid "Menu animation"
+msgstr "Animasi menu"
 
-#: plugins/vnc/vnc_plugin.c:1999
-msgid "Show remote cursor"
-msgstr "Papar kursor jauh"
+#: plugins/rdp/rdp_settings.c:491
+msgid "Theme"
+msgstr "Tema"
 
-#: plugins/vnc/vnc_plugin.c:2001 plugins/rdp/rdp_plugin.c:2715
-msgid "Turn off clipboard sync"
-msgstr "Lumpuhkan segerakan papan keratan"
+#: plugins/rdp/rdp_settings.c:498
+msgid "Cursor shadow"
+msgstr "Bayang kursor"
 
-#: plugins/vnc/vnc_plugin.c:2002
-msgid "Turn off encryption"
-msgstr "Lumpuhkan segerakan papan keratan"
+#: plugins/rdp/rdp_settings.c:505
+msgid "Cursor blinking"
+msgstr "Kelipan kursor"
 
-#: plugins/vnc/vnc_plugin.c:2003 plugins/vnc/vnc_plugin.c:2018
+#: plugins/rdp/rdp_settings.c:512
+msgid "Font smoothing"
+msgstr "Pelicinan fon"
+
+#: plugins/rdp/rdp_settings.c:519
+msgid "Composition"
+msgstr "Gubahan"
+
+#: plugins/rdp/rdp_settings.c:529
 #, fuzzy
-msgid "Prevent local interaction on the server"
-msgstr "Halang interaksi setempat pada pelayan"
+msgid "Remote scale factor"
+msgstr "Faktor skala jauh"
 
-#: plugins/vnc/vnc_plugin.c:2006 plugins/rdp/rdp_plugin.c:2656
-#: plugins/rdp/rdp_settings.c:598
+#: plugins/rdp/rdp_settings.c:542
+#, fuzzy
+msgid "Desktop scale factor %"
+msgstr "Faktor skala desktop %"
+
+#: plugins/rdp/rdp_settings.c:553
+#, fuzzy
+msgid "Device scale factor %"
+msgstr "Faktor skala peranti %"
+
+#: plugins/rdp/rdp_settings.c:575
+#, fuzzy
+msgid "Desktop orientation"
+msgstr "Orientasi desktop"
+
+#: plugins/rdp/rdp_settings.c:592
+#, fuzzy
+#| msgid "Disable server input"
+msgid "Input device settings"
+msgstr "Pengesetan peranti input"
+
+#: plugins/rdp/rdp_settings.c:598 plugins/rdp/rdp_plugin.c:2656
+#: plugins/vnc/vnc_plugin.c:2006
 #, fuzzy
 #| msgid "Turn on smooth scrolling"
 msgid "Disable smooth scrolling"
 msgstr "Nyahddayakan skrol licin"
 
-#: plugins/vnc/vnc_plugin.c:2020
-msgid "Open Chat…"
-msgstr "Buka Sembang…"
-
-#: plugins/vnc/vnc_plugin.c:2021 plugins/spice/spice_plugin.c:707
-#: plugins/rdp/rdp_plugin.c:2744
+#: plugins/rdp/rdp_settings.c:608
 #, fuzzy
-msgid "Send Ctrl+Alt+Delete"
-msgstr "Hantar Ctrl+Alt+Delete"
+#| msgid "Disable server input"
+msgid "General settings"
+msgstr "Tetapan umum"
 
-#: plugins/vnc/vnc_plugin.h:41
+#: plugins/rdp/rdp_settings.c:613 plugins/rdp/rdp_plugin.c:2708
 #, fuzzy
-msgid "Remmina VNC Plugin"
-msgstr "Remmina VNC Plugin"
+#| msgid "Reconnection attempt %d of %d…"
+msgid "Reconnect attempts number"
+msgstr "Sambung semula nombor percubaan"
 
-#: plugins/vnc/vnc_plugin.h:46
+#: plugins/rdp/rdp_settings.c:619 plugins/rdp/rdp_plugin.c:2708
 #, fuzzy
-msgid "Remmina VNC listener Plugin"
-msgstr "Plugin pendengar Remmina VNC"
-
-#: plugins/spice/spice_plugin_usb.c:51 plugins/spice/spice_plugin.c:708
-#, fuzzy
-msgid "Select USB devices for redirection"
-msgstr "Pilih peranti USB untuk pengalihan semula"
-
-#: plugins/spice/spice_plugin_usb.c:54
-#, fuzzy
-msgid "_Close"
-msgstr "_Tutup"
-
-#: plugins/spice/spice_plugin_usb.c:94
-#, fuzzy
-msgid "USB redirection error"
-msgstr "Ralat pengalihan SEMULA USB"
-
-#: plugins/spice/spice_plugin.c:351
-msgid "Enter SPICE password"
-msgstr "Kata laluan SSH"
-
-#: plugins/spice/spice_plugin.c:386
-#, c-format
-msgid "Disconnected from the SPICE server “%s”."
-msgstr "Tidak boleh sambung ke pelayan RDP %s"
-
-#: plugins/spice/spice_plugin.c:402
-#, fuzzy
-msgid "TLS connection error."
-msgstr "Ralat sambungan TLS."
-
-#: plugins/spice/spice_plugin.c:408
-msgid "Connection to the SPICE server dropped."
-msgstr "Tidak boleh sambung ke pelayan RDP %s"
-
-#: plugins/spice/spice_plugin.c:616 plugins/spice/spice_plugin.c:634
-msgid "Default"
-msgstr "Lalai"
-
-#: plugins/spice/spice_plugin.c:635 plugins/rdp/rdp_plugin.c:2546
-#: data/ui/remmina_preferences.glade:677
-msgid "Off"
-msgstr "Dimatikan"
-
-#: plugins/spice/spice_plugin.c:636
-#, fuzzy
-msgid "Auto GLZ"
-msgstr "Auto GLZ"
-
-#: plugins/spice/spice_plugin.c:637
-#, fuzzy
-msgid "Auto LZ"
-msgstr "Auto LZ"
-
-#: plugins/spice/spice_plugin.c:650
-#, fuzzy
-msgid "Disable video overlay if videos are not displayed properly.\n"
-msgstr "Nyahdayakan tindih video jika video tidak dipaparkan dengan betul.\n"
-
-#: plugins/spice/spice_plugin.c:667
-#, fuzzy
-msgid "Use TLS encryption"
-msgstr "Gunakan penyulitan TLS"
-
-#: plugins/spice/spice_plugin.c:668
-#, fuzzy
-msgid "Server CA certificate"
-msgstr "Sijil CA pelayan"
-
-#: plugins/spice/spice_plugin.c:669 plugins/rdp/rdp_plugin.c:2654
-msgid "Share folder"
-msgstr "Folder kongsi"
-
-#: plugins/spice/spice_plugin.c:686
-msgid "Prefered video codec"
-msgstr "Keutamaan"
-
-#: plugins/spice/spice_plugin.c:687
-msgid "Turn off GStreamer overlay"
-msgstr "Lumpuhkan input pelayan"
-
-#: plugins/spice/spice_plugin.c:690
-#, fuzzy
-msgid "Prefered image compression"
-msgstr "Mampatan imej pilihan"
-
-#: plugins/spice/spice_plugin.c:696
-#, fuzzy
-msgid "Share smart card"
-msgstr "Kongsi kad pintar"
-
-#: plugins/spice/spice_plugin.c:719
-#, fuzzy
-msgid "SPICE - Simple Protocol for Independent Computing Environments"
-msgstr "SPICE - Protokol Mudah Untuk Persekitaran Pengkomputeran Bebas"
-
-#: plugins/spice/spice_plugin_file_transfer.c:82
-#, fuzzy
-msgid "File Transfers"
-msgstr "Pemindahan Fail"
-
-#: plugins/spice/spice_plugin_file_transfer.c:219
-#, fuzzy
-msgid "Transfer error"
-msgstr "Ralat pemindahan"
-
-#: plugins/spice/spice_plugin_file_transfer.c:220
-#, fuzzy, c-format
-msgid "%s: %s"
-msgstr "%s: %s"
-
-#: plugins/spice/spice_plugin_file_transfer.c:223
-#, fuzzy
-msgid "Transfer completed"
-msgstr "Pemindahan selesai"
-
-#: plugins/spice/spice_plugin_file_transfer.c:224
-#, fuzzy, c-format
-msgid "The %s file has been transferred"
-msgstr "Fail %s telah dipindahkan"
+msgid ""
+"The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
+msgstr ""
+"Bilangan maksimum percubaan sambung semula apabila RDP memutuskan sambungan "
+"(lalai: 20)"
 
 #: plugins/rdp/rdp_plugin.c:757 plugins/rdp/rdp_plugin.c:822
 #, fuzzy
@@ -2564,13 +2117,25 @@ msgstr "GFX RFX Progresif (32 bpp)"
 msgid "RemoteFX (32 bpp)"
 msgstr "RemoteFX (32 bpp)"
 
+#: plugins/rdp/rdp_plugin.c:2497 plugins/vnc/vnc_plugin.c:1922
+msgid "True colour (32 bpp)"
+msgstr "Warna sebenar (32 bpp)"
+
 #: plugins/rdp/rdp_plugin.c:2498
 msgid "True colour (24 bpp)"
 msgstr "Warna sebenar (24 bpp)"
 
+#: plugins/rdp/rdp_plugin.c:2499 plugins/vnc/vnc_plugin.c:1923
+msgid "High colour (16 bpp)"
+msgstr "Warna Tinggi (16 bpp)"
+
 #: plugins/rdp/rdp_plugin.c:2500
 msgid "High colour (15 bpp)"
 msgstr "Warna Tinggi (15 bpp)"
+
+#: plugins/rdp/rdp_plugin.c:2501 plugins/vnc/vnc_plugin.c:1924
+msgid "256 colours (8 bpp)"
+msgstr "Warna 256 (8 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2532 data/ui/remmina_preferences.glade:641
 #, fuzzy
@@ -2610,6 +2175,11 @@ msgstr "Wan"
 #, fuzzy
 msgid "LAN"
 msgstr "Lan"
+
+#: plugins/rdp/rdp_plugin.c:2546 plugins/spice/spice_plugin.c:635
+#: data/ui/remmina_preferences.glade:677
+msgid "Off"
+msgstr "Dimatikan"
 
 #: plugins/rdp/rdp_plugin.c:2555
 #, fuzzy
@@ -2777,6 +2347,10 @@ msgstr ""
 "  • hotplug,*\n"
 "\n"
 
+#: plugins/rdp/rdp_plugin.c:2654 plugins/spice/spice_plugin.c:669
+msgid "Share folder"
+msgstr "Folder kongsi"
+
 #: plugins/rdp/rdp_plugin.c:2654
 #, fuzzy
 msgid "Use “Redirect directory” in the advanced tab for multiple directories"
@@ -2810,9 +2384,19 @@ msgstr "Span skrin ke atas pelbagai monitor"
 msgid "List monitor IDs"
 msgstr "Senaraikan ID monitor"
 
+#: plugins/rdp/rdp_plugin.c:2661 plugins/vnc/vnc_plugin.c:1962
+#: plugins/vnc/vnc_plugin.c:1982 plugins/gvnc/gvnc_plugin.c:840
+msgid "Colour depth"
+msgstr "Kedalaman warna"
+
 #: plugins/rdp/rdp_plugin.c:2662
 msgid "Network connection type"
 msgstr "Sambungan VNC gagal: %s"
+
+#: plugins/rdp/rdp_plugin.c:2677 plugins/vnc/vnc_plugin.c:1963
+#: plugins/vnc/vnc_plugin.c:1983
+msgid "Quality"
+msgstr "Kualiti"
 
 #: plugins/rdp/rdp_plugin.c:2678
 #, fuzzy
@@ -2983,20 +2567,6 @@ msgstr "Pengalihan semula TCP"
 msgid "/PATH/TO/rdp2tcp"
 msgstr "/LALUAN/KE/rdp2tcp"
 
-#: plugins/rdp/rdp_plugin.c:2708 plugins/rdp/rdp_settings.c:613
-#, fuzzy
-#| msgid "Reconnection attempt %d of %d…"
-msgid "Reconnect attempts number"
-msgstr "Sambung semula nombor percubaan"
-
-#: plugins/rdp/rdp_plugin.c:2708 plugins/rdp/rdp_settings.c:619
-#, fuzzy
-msgid ""
-"The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
-msgstr ""
-"Bilangan maksimum percubaan sambung semula apabila RDP memutuskan sambungan "
-"(lalai: 20)"
-
 #: plugins/rdp/rdp_plugin.c:2709
 #, fuzzy
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
@@ -3027,6 +2597,10 @@ msgstr "Kongsi port selari"
 msgid "Share a smart card"
 msgstr "Kongsi kad pintar"
 
+#: plugins/rdp/rdp_plugin.c:2715 plugins/vnc/vnc_plugin.c:2001
+msgid "Turn off clipboard sync"
+msgstr "Lumpuhkan segerakan papan keratan"
+
 #: plugins/rdp/rdp_plugin.c:2716
 #, fuzzy
 msgid "Ignore certificate"
@@ -3041,6 +2615,12 @@ msgstr "Gunakan aliran kerja lesen lama"
 #, fuzzy
 msgid "It disables CAL and hwId is set to 0"
 msgstr "Ia melemah CAL dan hwId ditetapkan kepada 0"
+
+#: plugins/rdp/rdp_plugin.c:2718 plugins/spice/spice_plugin.c:694
+#: plugins/vnc/vnc_plugin.c:2005 plugins/www/www_plugin.c:904
+#: plugins/gvnc/gvnc_plugin.c:858
+msgid "Forget passwords after use"
+msgstr "Kata laluan %s"
 
 #: plugins/rdp/rdp_plugin.c:2719
 msgid "Attach to console (2003/2003 R2)"
@@ -3096,6 +2676,12 @@ msgstr "Gunakan kelayakan asas untuk get laluan juga"
 msgid "Enable Gateway websockets support"
 msgstr "Dayakan sokongan websockets Get Laluan"
 
+#: plugins/rdp/rdp_plugin.c:2744 plugins/spice/spice_plugin.c:707
+#: plugins/vnc/vnc_plugin.c:2021
+#, fuzzy
+msgid "Send Ctrl+Alt+Delete"
+msgstr "Hantar Ctrl+Alt+Delete"
+
 #: plugins/rdp/rdp_plugin.c:2757
 msgid "RDP - Remote Desktop Protocol"
 msgstr "RDP - Protokol Desktop Jauh"
@@ -3112,105 +2698,519 @@ msgstr "RDP - Keutamaan"
 msgid "Export connection in Windows .rdp file format"
 msgstr "Eksport sambungan dalam format fail .drp Windows"
 
-#: plugins/rdp/rdp_settings.c:205
-msgid "<Auto-detect>"
-msgstr "<kesan sendiri>"
-
-#: plugins/rdp/rdp_settings.c:237
-#, fuzzy
-msgid "<Not set>"
-msgstr "<Seperetulkan>"
-
-#: plugins/rdp/rdp_settings.c:268
-#, fuzzy
-msgid "<Choose a quality level to edit…>"
-msgstr "<Choose tahap kualiti untuk mengedit ... >"
-
-#: plugins/rdp/rdp_settings.c:415
-msgid "Keyboard layout"
-msgstr "Bentangan papan kekunci"
-
-#: plugins/rdp/rdp_settings.c:440
-msgid "Use client keyboard mapping"
-msgstr "Guna pemetaan papan kekunci klien"
-
-#: plugins/rdp/rdp_settings.c:450
-#, fuzzy
-msgid "Quality settings"
-msgstr "Pengesetan kualiti"
-
-#: plugins/rdp/rdp_settings.c:470
-msgid "Wallpaper"
-msgstr "Kertas Dinding"
-
-#: plugins/rdp/rdp_settings.c:477
-msgid "Window drag"
-msgstr "Seretan Tetingkap"
-
-#: plugins/rdp/rdp_settings.c:484
-msgid "Menu animation"
-msgstr "Animasi menu"
-
-#: plugins/rdp/rdp_settings.c:491
-msgid "Theme"
-msgstr "Tema"
-
-#: plugins/rdp/rdp_settings.c:498
-msgid "Cursor shadow"
-msgstr "Bayang kursor"
-
-#: plugins/rdp/rdp_settings.c:505
-msgid "Cursor blinking"
-msgstr "Kelipan kursor"
-
-#: plugins/rdp/rdp_settings.c:512
-msgid "Font smoothing"
-msgstr "Pelicinan fon"
-
-#: plugins/rdp/rdp_settings.c:519
-msgid "Composition"
-msgstr "Gubahan"
-
-#: plugins/rdp/rdp_settings.c:529
-#, fuzzy
-msgid "Remote scale factor"
-msgstr "Faktor skala jauh"
-
-#: plugins/rdp/rdp_settings.c:542
-#, fuzzy
-msgid "Desktop scale factor %"
-msgstr "Faktor skala desktop %"
-
-#: plugins/rdp/rdp_settings.c:553
-#, fuzzy
-msgid "Device scale factor %"
-msgstr "Faktor skala peranti %"
-
-#: plugins/rdp/rdp_settings.c:575
-#, fuzzy
-msgid "Desktop orientation"
-msgstr "Orientasi desktop"
-
-#: plugins/rdp/rdp_settings.c:592
-#, fuzzy
-#| msgid "Disable server input"
-msgid "Input device settings"
-msgstr "Pengesetan peranti input"
-
-#: plugins/rdp/rdp_settings.c:608
-#, fuzzy
-#| msgid "Disable server input"
-msgid "General settings"
-msgstr "Tetapan umum"
-
 #: plugins/rdp/rdp_event.c:344
 #, c-format
 msgid "Reconnection attempt %d of %d…"
 msgstr "Menyambung ke '%s'…"
 
-#: plugins/kwallet/src/kwallet_plugin_main.c:118
-msgid "Secured password storage in KWallet"
+#: plugins/spice/spice_plugin_file_transfer.c:82
+#, fuzzy
+msgid "File Transfers"
+msgstr "Pemindahan Fail"
+
+#: plugins/spice/spice_plugin_file_transfer.c:219
+#, fuzzy
+msgid "Transfer error"
+msgstr "Ralat pemindahan"
+
+#: plugins/spice/spice_plugin_file_transfer.c:220
+#, fuzzy, c-format
+msgid "%s: %s"
+msgstr "%s: %s"
+
+#: plugins/spice/spice_plugin_file_transfer.c:223
+#, fuzzy
+msgid "Transfer completed"
+msgstr "Pemindahan selesai"
+
+#: plugins/spice/spice_plugin_file_transfer.c:224
+#, fuzzy, c-format
+msgid "The %s file has been transferred"
+msgstr "Fail %s telah dipindahkan"
+
+#: plugins/spice/spice_plugin.c:351
+msgid "Enter SPICE password"
+msgstr "Kata laluan SSH"
+
+#: plugins/spice/spice_plugin.c:386
+#, c-format
+msgid "Disconnected from the SPICE server “%s”."
+msgstr "Tidak boleh sambung ke pelayan RDP %s"
+
+#: plugins/spice/spice_plugin.c:402
+#, fuzzy
+msgid "TLS connection error."
+msgstr "Ralat sambungan TLS."
+
+#: plugins/spice/spice_plugin.c:408
+msgid "Connection to the SPICE server dropped."
+msgstr "Tidak boleh sambung ke pelayan RDP %s"
+
+#: plugins/spice/spice_plugin.c:616 plugins/spice/spice_plugin.c:634
+msgid "Default"
+msgstr "Lalai"
+
+#: plugins/spice/spice_plugin.c:636
+#, fuzzy
+msgid "Auto GLZ"
+msgstr "Auto GLZ"
+
+#: plugins/spice/spice_plugin.c:637
+#, fuzzy
+msgid "Auto LZ"
+msgstr "Auto LZ"
+
+#: plugins/spice/spice_plugin.c:650
+#, fuzzy
+msgid "Disable video overlay if videos are not displayed properly.\n"
+msgstr "Nyahdayakan tindih video jika video tidak dipaparkan dengan betul.\n"
+
+#: plugins/spice/spice_plugin.c:667
+#, fuzzy
+msgid "Use TLS encryption"
+msgstr "Gunakan penyulitan TLS"
+
+#: plugins/spice/spice_plugin.c:668
+#, fuzzy
+msgid "Server CA certificate"
+msgstr "Sijil CA pelayan"
+
+#: plugins/spice/spice_plugin.c:686
+msgid "Prefered video codec"
+msgstr "Keutamaan"
+
+#: plugins/spice/spice_plugin.c:687
+msgid "Turn off GStreamer overlay"
+msgstr "Lumpuhkan input pelayan"
+
+#: plugins/spice/spice_plugin.c:690
+#, fuzzy
+msgid "Prefered image compression"
+msgstr "Mampatan imej pilihan"
+
+#: plugins/spice/spice_plugin.c:693 plugins/spice/spice_plugin.c:706
+#: plugins/gvnc/gvnc_plugin.c:857 plugins/gvnc/gvnc_plugin.c:871
+msgid "No clipboard sync"
+msgstr "Lumpuhkan segerakan papan keratan"
+
+#: plugins/spice/spice_plugin.c:695 plugins/gvnc/gvnc_plugin.c:860
+#, fuzzy
+msgid "Enable audio channel"
+msgstr "Dayakan saluran audio"
+
+#: plugins/spice/spice_plugin.c:696
+#, fuzzy
+msgid "Share smart card"
+msgstr "Kongsi kad pintar"
+
+#: plugins/spice/spice_plugin.c:697 plugins/spice/spice_plugin.c:705
+#: plugins/vnc/vnc_plugin.c:2000 plugins/vnc/vnc_plugin.c:2017
+#: plugins/gvnc/gvnc_plugin.c:861 plugins/gvnc/gvnc_plugin.c:870
+msgid "View only"
+msgstr "Papar sahaja"
+
+#: plugins/spice/spice_plugin.c:708 plugins/spice/spice_plugin_usb.c:51
+#, fuzzy
+msgid "Select USB devices for redirection"
+msgstr "Pilih peranti USB untuk pengalihan semula"
+
+#: plugins/spice/spice_plugin.c:719
+#, fuzzy
+msgid "SPICE - Simple Protocol for Independent Computing Environments"
+msgstr "SPICE - Protokol Mudah Untuk Persekitaran Pengkomputeran Bebas"
+
+#: plugins/spice/spice_plugin_usb.c:54
+#, fuzzy
+msgid "_Close"
+msgstr "_Tutup"
+
+#: plugins/spice/spice_plugin_usb.c:94
+#, fuzzy
+msgid "USB redirection error"
+msgstr "Ralat pengalihan SEMULA USB"
+
+#: plugins/vnc/vnc_plugin.c:772
+msgid "Enter VNC password"
+msgstr "Simpan kata laluan"
+
+#: plugins/vnc/vnc_plugin.c:825 plugins/gvnc/gvnc_plugin.c:539
+#, fuzzy
+msgid "Enter VNC authentication credentials"
+msgstr "Masukkan kelayakan pengesahan VNC"
+
+#: plugins/vnc/vnc_plugin.c:936
+msgid "Unable to connect to VNC server"
+msgstr "Tidak boleh sambung ke pelayan VNC"
+
+#: plugins/vnc/vnc_plugin.c:937
+#, c-format
+msgid "Couldn’t convert '%s' to host address"
+msgstr "Tidak dapat tukar '%s' ke alamat hos"
+
+#: plugins/vnc/vnc_plugin.c:938
+#, c-format
+msgid "VNC connection failed: %s"
+msgstr "Sambungan VNC gagal: %s"
+
+#: plugins/vnc/vnc_plugin.c:939
+msgid "Your connection has been rejected."
+msgstr "Sambungan anda telah ditolak."
+
+#: plugins/vnc/vnc_plugin.c:966
+#, fuzzy, c-format
+msgid "The VNC server requested an unknown authentication method. %s"
+msgstr "Pelayan VNC meminta kaedah pengesahan yang tidak diketahui. %s"
+
+#: plugins/vnc/vnc_plugin.c:968
+#, fuzzy
+msgid "Please retry after turning on encryption for this profile."
+msgstr "Sila cuba semula selepas menghidupkan penyulitan untuk profil ini."
+
+#: plugins/vnc/vnc_plugin.c:1939
+#, fuzzy
+msgid ""
+"Connect to VNC using a repeater:\n"
+"  • The server field must contain the repeater ID, e.g. ID:123456789\n"
+"  • The repeater field have to be set to the repeater IP and port, like:\n"
+"    10.10.10.12:5901\n"
+"  • From the remote VNC server, you will connect to\n"
+"    the repeater, e.g. with x11vnc:\n"
+"    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
+msgstr ""
+"Sambung ke VNC menggunakan pengulang:\n"
+"  • Medan pelayan mesti mengandungi ID pengulang, contohnya ID:123456789\n"
+"  • Medan pengulang perlu disetkan ke IP dan port berulang, seperti:\n"
+"    10.10.10.12:5901\n"
+"  • Dari pelayan VNC jauh, anda akan\n"
+"    pengulang, contohnya dengan x11vnc:\n"
+"    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
+
+#: plugins/vnc/vnc_plugin.c:1959
+msgid "Repeater"
+msgstr "Pengulang"
+
+#: plugins/vnc/vnc_plugin.c:1979
+msgid "Listen on port"
+msgstr "Dengar pada port"
+
+#: plugins/vnc/vnc_plugin.c:1999
+msgid "Show remote cursor"
+msgstr "Papar kursor jauh"
+
+#: plugins/vnc/vnc_plugin.c:2002
+msgid "Turn off encryption"
+msgstr "Lumpuhkan segerakan papan keratan"
+
+#: plugins/vnc/vnc_plugin.c:2003 plugins/vnc/vnc_plugin.c:2018
+#, fuzzy
+msgid "Prevent local interaction on the server"
+msgstr "Halang interaksi setempat pada pelayan"
+
+#: plugins/vnc/vnc_plugin.c:2004 plugins/gvnc/gvnc_plugin.c:859
+#, fuzzy
+msgid "Ignore remote bell messages"
+msgstr "Abaikan mesej perut jauh"
+
+#: plugins/vnc/vnc_plugin.c:2020
+msgid "Open Chat…"
+msgstr "Buka Sembang…"
+
+#: plugins/vnc/vnc_plugin.h:41
+#, fuzzy
+msgid "Remmina VNC Plugin"
+msgstr "Remmina VNC Plugin"
+
+#: plugins/vnc/vnc_plugin.h:46
+#, fuzzy
+msgid "Remmina VNC listener Plugin"
+msgstr "Plugin pendengar Remmina VNC"
+
+#: plugins/www/www_config.h:43
+#, fuzzy
+msgid "Remmina web-browser plugin"
+msgstr "Plugin pelayar web Remmina"
+
+#: plugins/www/www_plugin.c:98
+#, fuzzy
+msgid "File downloaded"
+msgstr "Fail dimuat turun"
+
+#: plugins/www/www_plugin.c:574
+#, fuzzy
+msgid "Enter WWW authentication credentials"
+msgstr "Masukkan kelayakan pengesahan WWW"
+
+#: plugins/www/www_plugin.c:878
+#, fuzzy
+msgid "URL"
+msgstr "URL"
+
+#: plugins/www/www_plugin.c:878
+#, fuzzy
+msgid "http://address or https://address"
+msgstr "http://address atau https://address"
+
+#: plugins/www/www_plugin.c:895
+#, fuzzy
+msgid "User agent"
+msgstr "User Agent"
+
+#: plugins/www/www_plugin.c:896
+#, fuzzy
+msgid "Proxy URL"
+msgstr "URL proksi"
+
+#: plugins/www/www_plugin.c:896
+#, fuzzy
+msgid "E.g. https://example.org, socks://mysocks:1080"
+msgstr "Contohnya, https://example.org, socks://mysocks:1080"
+
+#: plugins/www/www_plugin.c:897
+#, fuzzy
+msgid "Turn on Java support"
+msgstr "Hidupkan sokongan Java"
+
+#: plugins/www/www_plugin.c:898
+msgid "Turn on smooth scrolling"
+msgstr "Pelicinan fon"
+
+#: plugins/www/www_plugin.c:899
+#, fuzzy
+msgid "Turn on spatial navigation"
+msgstr "Hidupkan navigasi spatial"
+
+#: plugins/www/www_plugin.c:900
+#, fuzzy
+msgid "Turn on plugin support"
+msgstr "Hidupkan sokongan plugin"
+
+#: plugins/www/www_plugin.c:901
+#, fuzzy
+msgid "Turn on WebGL support"
+msgstr "Hidupkan sokongan WebGL"
+
+#: plugins/www/www_plugin.c:902
+#, fuzzy
+msgid "Turn on HTML5 audio support"
+msgstr "Hidupkan sokongan audio HTML5"
+
+#: plugins/www/www_plugin.c:903
+#, fuzzy
+msgid "Ignore TLS errors"
+msgstr "Abaikan ralat TLS"
+
+#: plugins/www/www_plugin.c:906
+#, fuzzy
+msgid "Turn on Web Inspector"
+msgstr "Pasang Pemeriksa Web"
+
+#: plugins/exec/exec_plugin.c:160
+#, fuzzy
+msgid "You did not set any command to be executed"
+msgstr "Anda tidak menetapkan sebarang perintah untuk dilaksanakan"
+
+#: plugins/exec/exec_plugin.c:206
+#, fuzzy
+msgid ""
+"Warning: Running a command synchronously may cause Remmina not to respond.\n"
+"Do you really want to continue?"
+msgstr ""
+"Amaran: Menjalankan perintah secara segerak boleh menyebabkan Remmina tidak "
+"bertindak balas.\n"
+"Adakah anda benar-benar mahu meneruskan?"
+
+#: plugins/exec/exec_plugin.c:266
+#, fuzzy
+msgid "Command"
+msgstr "Perintah"
+
+#: plugins/exec/exec_plugin.c:267
+#, fuzzy
+msgid "Asynchronous execution"
+msgstr "Perlaksanaan asynchronous"
+
+#: plugins/exec/exec_plugin_config.h:41
+#, fuzzy
+msgid "Execute a command"
+msgstr "Laksanakan perintah"
+
+#: plugins/tool_hello_world/plugin_config.h:40
+#, fuzzy
+msgid "Hello, World!"
+msgstr "Helo dunia!"
+
+#: plugins/secret/src/glibsecret_plugin.c:188
+msgid "Secured password storage in the GNOME keyring"
 msgstr "Kata laluan %s"
+
+#: plugins/gvnc/gvnc_plugin_config.h:40
+#, fuzzy
+msgid "Remmina VNC plugin for GNOME and KVM"
+msgstr "Plugin Remmina VNC untuk GNOME dan KVM"
+
+#: plugins/gvnc/gvnc_plugin.c:477
+#, fuzzy, c-format
+msgid "Unsupported authentication type %u"
+msgstr "Jenis pengesahan tidak disokong %u"
+
+#: plugins/gvnc/gvnc_plugin.c:489
+#, fuzzy, c-format
+#| msgid "SSH Authentication"
+msgid "Authentication failure: %s"
+msgstr "Kegagalan pengesahan: %s"
+
+#: plugins/gvnc/gvnc_plugin.c:820
+#, fuzzy
+#| msgid "Disable server input"
+msgid "Use server settings"
+msgstr "Guna pengesetan pelayan"
+
+#: plugins/gvnc/gvnc_plugin.c:821
+#, fuzzy
+#| msgid "True colour (24 bit)"
+msgid "True colour (24 bits)"
+msgstr "Warna sejati (24 bit)"
+
+#: plugins/gvnc/gvnc_plugin.c:822
+#, fuzzy
+#| msgid "High colour (16 bit)"
+msgid "High colour (16 bits)"
+msgstr "Warna tinggi (16 bit)"
+
+#: plugins/gvnc/gvnc_plugin.c:823
+#, fuzzy
+#| msgid "High colour (16 bit)"
+msgid "Low colour (8 bits)"
+msgstr "Warna rendah (8 bit)"
+
+#: plugins/gvnc/gvnc_plugin.c:824
+#, fuzzy
+#| msgid "True colour (24 bit)"
+msgid "Ultra low colour (3 bits)"
+msgstr "Warna ultra rendah (3 bit)"
+
+#: plugins/gvnc/gvnc_plugin.c:839
+#, fuzzy
+#| msgid "Enter VNC password"
+msgid "VNC password"
+msgstr "Kata laluan VNC"
+
+#: plugins/gvnc/gvnc_plugin.c:841
+#, fuzzy
+msgid "Use JPEG Compression"
+msgstr "Guna Mampatan JPEG"
+
+#: plugins/gvnc/gvnc_plugin.c:841
+#, fuzzy
+#| msgid "Browse the network to find a %s server"
+msgid "This might not work on all VNC servers"
+msgstr "Ini mungkin tidak berfungsi pada semua pelayan VNC"
+
+#: plugins/gvnc/gvnc_plugin.c:842
+#, fuzzy
+msgid "Enable GTK-VNC debug"
+msgstr "Dayakan nyahpepijat GTK-VNC"
+
+#: plugins/gvnc/gvnc_plugin.c:862
+#, fuzzy
+#| msgid "Per connection"
+msgid "Shared connection"
+msgstr "Sambungan dikongsi"
+
+#: plugins/gvnc/gvnc_plugin.c:862
+#, fuzzy
+msgid ""
+"If the server should try to share the desktop by leaving other clients "
+"connected"
+msgstr ""
+"Jika pelayan harus cuba berkongsi desktop dengan meninggalkan pelanggan lain "
+"yang disambungkan"
+
+#: plugins/gvnc/gvnc_plugin.c:872
+#, fuzzy
+msgid "Send Ctrl+Alt+_Del"
+msgstr "Hantar Ctrl+Alt+_Del"
+
+#: plugins/gvnc/gvnc_plugin.c:873
+#, fuzzy
+msgid "Send Ctrl+Alt+_Backspace"
+msgstr "Hantar Ctrl+Alt+_Backspace"
+
+#: plugins/gvnc/gvnc_plugin.c:874
+#, fuzzy
+msgid "Send Ctrl+Alt+_F1"
+msgstr "Hantar Ctrl+Alt+_F1"
+
+#: plugins/gvnc/gvnc_plugin.c:875
+#, fuzzy
+msgid "Send Ctrl+Alt+_F2"
+msgstr "Hantar Ctrl+Alt+_F2"
+
+#: plugins/gvnc/gvnc_plugin.c:876
+#, fuzzy
+msgid "Send Ctrl+Alt+_F3"
+msgstr "Hantar Ctrl+Alt+_F3"
+
+#: plugins/gvnc/gvnc_plugin.c:877
+#, fuzzy
+msgid "Send Ctrl+Alt+_F4"
+msgstr "Hantar Ctrl+Alt+_F4"
+
+#: plugins/gvnc/gvnc_plugin.c:878
+#, fuzzy
+msgid "Send Ctrl+Alt+_F5"
+msgstr "Hantar Ctrl+Alt+_F5"
+
+#: plugins/gvnc/gvnc_plugin.c:879
+#, fuzzy
+msgid "Send Ctrl+Alt+_F6"
+msgstr "Hantar Ctrl+Alt+_F6"
+
+#: plugins/gvnc/gvnc_plugin.c:880
+#, fuzzy
+msgid "Send Ctrl+Alt+_F7"
+msgstr "Hantar Ctrl+Alt+_F7"
+
+#: plugins/gvnc/gvnc_plugin.c:881
+#, fuzzy
+msgid "Send Ctrl+Alt+_F8"
+msgstr "Hantar Ctrl+Alt+_F8"
+
+#: plugins/gvnc/gvnc_plugin.c:882
+#, fuzzy
+msgid "Send Ctrl+Alt+_F9"
+msgstr "Hantar Ctrl+Alt+_F9"
+
+#: plugins/gvnc/gvnc_plugin.c:883
+#, fuzzy
+msgid "Send Ctrl+Alt+_F10"
+msgstr "Hantar Ctrl+Alt+_F10"
+
+#: plugins/gvnc/gvnc_plugin.c:884
+#, fuzzy
+msgid "Send Ctrl+Alt+_F11"
+msgstr "Hantar Ctrl+Alt+_F11"
+
+#: plugins/gvnc/gvnc_plugin.c:885
+#, fuzzy
+msgid "Send Ctrl+Alt+_F12"
+msgstr "Hantar Ctrl+Alt+_F12"
+
+#: plugins/gvnc/gvnc_plugin.c:887
+#, fuzzy
+msgid "Reboot remote host"
+msgstr "But semula hos jauh"
+
+#: plugins/gvnc/gvnc_plugin.c:888
+#, fuzzy
+msgid "Reset remote host (hard reboot)"
+msgstr "Set semula hos jauh (but semula keras)"
+
+#: plugins/gvnc/gvnc_plugin.c:889
+#, fuzzy
+#| msgid "Show remote cursor"
+msgid "Shutdown remote host"
+msgstr "Hos jauh penutupan"
 
 #: plugins/telepathy/telepathy_channel_handler.c:237
 #, c-format
@@ -3228,46 +3228,6 @@ msgstr "Jemputan perkongsian desktop"
 #: plugins/telepathy/telepathy_plugin.c:57
 msgid "Telepathy - Desktop Sharing"
 msgstr "Telepathy - Perkongsian Desktop"
-
-#: data/ui/remmina_search.glade:61 data/ui/remmina_search_popover.glade:56
-#, fuzzy
-msgid "Search"
-msgstr "Gelintar"
-
-#: data/ui/remmina_search.glade:75 data/ui/remmina_search_popover.glade:70
-#, fuzzy
-msgid "Search for previous occurrence"
-msgstr "Gelintar untuk kejadian sebelumnya"
-
-#: data/ui/remmina_search.glade:98 data/ui/remmina_search_popover.glade:93
-#, fuzzy
-msgid "Search for next occurrence"
-msgstr "Gelintar untuk kejadian seterusnya"
-
-#: data/ui/remmina_search.glade:130 data/ui/remmina_search_popover.glade:125
-#, fuzzy
-msgid "Toggle search options"
-msgstr "Pilihan carian togol"
-
-#: data/ui/remmina_search.glade:191 data/ui/remmina_search_popover.glade:186
-#, fuzzy
-msgid "_Match case"
-msgstr "_Match kes"
-
-#: data/ui/remmina_search.glade:208 data/ui/remmina_search_popover.glade:203
-#, fuzzy
-msgid "Match _entire word only"
-msgstr "Padankan _entire sahaja"
-
-#: data/ui/remmina_search.glade:225 data/ui/remmina_search_popover.glade:220
-#, fuzzy
-msgid "Match as _regular expression"
-msgstr "Padankan sebagai _regular anda"
-
-#: data/ui/remmina_search.glade:242 data/ui/remmina_search_popover.glade:237
-#, fuzzy
-msgid "_Wrap around"
-msgstr "_Wrap sekitar"
 
 #: data/ui/remmina_snap_info_dialog.glade:71
 #, fuzzy
@@ -3329,6 +3289,46 @@ msgstr "<big> Seting Snap</big>"
 msgid "Do not show this message again"
 msgstr "Jangan tayang mesej ini lagi"
 
+#: data/ui/remmina_search_popover.glade:56 data/ui/remmina_search.glade:61
+#, fuzzy
+msgid "Search"
+msgstr "Gelintar"
+
+#: data/ui/remmina_search_popover.glade:70 data/ui/remmina_search.glade:75
+#, fuzzy
+msgid "Search for previous occurrence"
+msgstr "Gelintar untuk kejadian sebelumnya"
+
+#: data/ui/remmina_search_popover.glade:93 data/ui/remmina_search.glade:98
+#, fuzzy
+msgid "Search for next occurrence"
+msgstr "Gelintar untuk kejadian seterusnya"
+
+#: data/ui/remmina_search_popover.glade:125 data/ui/remmina_search.glade:130
+#, fuzzy
+msgid "Toggle search options"
+msgstr "Pilihan carian togol"
+
+#: data/ui/remmina_search_popover.glade:186 data/ui/remmina_search.glade:191
+#, fuzzy
+msgid "_Match case"
+msgstr "_Match kes"
+
+#: data/ui/remmina_search_popover.glade:203 data/ui/remmina_search.glade:208
+#, fuzzy
+msgid "Match _entire word only"
+msgstr "Padankan _entire sahaja"
+
+#: data/ui/remmina_search_popover.glade:220 data/ui/remmina_search.glade:225
+#, fuzzy
+msgid "Match as _regular expression"
+msgstr "Padankan sebagai _regular anda"
+
+#: data/ui/remmina_search_popover.glade:237 data/ui/remmina_search.glade:242
+#, fuzzy
+msgid "_Wrap around"
+msgstr "_Wrap sekitar"
+
 #: data/ui/remmina_about.glade:30 data/ui/remmina_main.glade:395
 msgid "About"
 msgstr "Perihal"
@@ -3351,6 +3351,197 @@ msgstr ""
 #: data/ui/remmina_about.glade:40
 msgid "Website"
 msgstr "Laman Web"
+
+#: data/ui/remmina_string_list.glade:14 data/ui/remmina_string_list.glade:158
+#, fuzzy
+msgid "Add"
+msgstr "Tambah"
+
+#: data/ui/remmina_string_list.glade:20 data/ui/remmina_string_list.glade:137
+#: data/ui/remmina_key_chooser.glade:14 data/ui/remmina_key_chooser.glade:15
+#, fuzzy
+msgid "_Remove"
+msgstr "_Remove"
+
+#: data/ui/remmina_string_list.glade:26 data/ui/remmina_string_list.glade:116
+#, fuzzy
+msgid "Move up"
+msgstr "Bergerak ke atas"
+
+#: data/ui/remmina_string_list.glade:32 data/ui/remmina_string_list.glade:95
+#, fuzzy
+msgid "Move down"
+msgstr "Alih ke bawah"
+
+#: data/ui/remmina_mpc.glade:14
+#, fuzzy
+msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
+msgstr ""
+"<span weight='bold' size='larger'> Penarik Berbilang Kata Laluan</span>"
+
+#: data/ui/remmina_mpc.glade:32
+msgid "Change"
+msgstr "Tukar"
+
+#: data/ui/remmina_mpc.glade:201
+#, fuzzy
+msgid "Selection criteria"
+msgstr "Kriteria pemilihan"
+
+#: data/ui/remmina_mpc.glade:261
+#, fuzzy
+msgid "Confirm password"
+msgstr "Sahkan kata laluan"
+
+#: data/ui/remmina_mpc.glade:294
+msgid "Set new password"
+msgstr "Simpan kata laluan"
+
+#. A column table with multiple check-boxes
+#: data/ui/remmina_mpc.glade:331
+msgctxt "Multi password changer"
+msgid "Select"
+msgstr "Pilih"
+
+#: data/ui/remmina_mpc.glade:343
+msgctxt "Multi password changer table"
+msgid "Name"
+msgstr "Nama"
+
+#: data/ui/remmina_mpc.glade:354
+msgctxt "Multi password changer table"
+msgid "Group"
+msgstr "Kumpulan"
+
+#: data/ui/remmina_mpc.glade:365
+#, fuzzy
+msgctxt "Multi password changer table"
+msgid "Domain\\Username"
+msgstr "Domain\\Nama Pengguna"
+
+#: data/ui/remmina_news.glade:75
+#, fuzzy
+msgid ""
+"<big><b>The news are turned off</b></big>\n"
+"\n"
+"<span>\n"
+"Turning on news means the program connects to a Remmina server to download "
+"the release notes.\n"
+"</span>\n"
+"\n"
+"<span>\n"
+"Version checking can only be activated at compile time.\n"
+"</span>\n"
+"\n"
+"<span>\n"
+"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
+"release notes\"><i>Visit the website to read the release notes</i></a>.\n"
+"</span>"
+msgstr ""
+"<big> <b> Berita ini dimatikan</b></big>\n"
+"\n"
+"<span>\n"
+"Menghidupkan berita bermakna program menyambung ke pelayan Remmina untuk "
+"memuat turun nota keluaran.\n"
+"</span>\n"
+"\n"
+"<span>\n"
+"Semakan versi hanya boleh diaktifkan pada masa yang menyusun.\n"
+"</span>\n"
+"\n"
+"<span>\n"
+"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
+"release notes\"> <i> Lawati laman web untuk membaca nota keluaran</i></a>.\n"
+"</span>"
+
+#. The star (*) is a reference to privacy consent
+#: data/ui/remmina_news.glade:130 data/ui/remmina_preferences.glade:464
+#, fuzzy
+msgid ""
+"Send <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
+"remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
+"\">anonymous</a></b> statistics. (*)"
+msgstr ""
+"Hantar statistik <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
+"remmina__stats_8c.html#details\" title=\"Remmina usage statistics\">tanpa "
+"nama</a></b>. (*)"
+
+#: data/ui/remmina_news.glade:142 data/ui/remmina_news.glade:195
+#, fuzzy
+msgid "Send anonymous statistics"
+msgstr "Hantar statistik tanpa nama"
+
+#: data/ui/remmina_news.glade:156
+msgid "Use as default remote desktop client"
+msgstr "Klien Desktop Jauh Remmina"
+
+#: data/ui/remmina_news.glade:165
+#, fuzzy
+msgid "Apply"
+msgstr "Laksana"
+
+#: data/ui/remmina_news.glade:169
+#, fuzzy
+msgid "Allow Remmina to automatically open .rdp and .remmina files."
+msgstr ""
+"Benarkan Remmina untuk membuka fail .rdp dan .remmina secara automatik."
+
+#. The star (*) is a reference to privacy consent
+#: data/ui/remmina_news.glade:183 data/ui/remmina_preferences.glade:479
+#, fuzzy
+msgid ""
+"Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
+"\">remmina.org</a> (*)"
+msgstr ""
+"Fetch berita dari <a href=\"https://remmina.org\" title=\"Remmina news site"
+"\">remmina.org</a> (*)"
+
+#: data/ui/remmina_news.glade:208 data/ui/remmina_preferences.glade:446
+#, fuzzy
+msgid ""
+"* By enabling statistics and/or news you consent to send and fetch data to/"
+"from remmina.org"
+msgstr ""
+"* Dengan membolehkan statistik dan/atau berita yang anda bersetuju untuk "
+"menghantar dan mengambil data ke/remmina.org"
+
+#: data/ui/remmina_news.glade:231
+#, fuzzy
+msgid "<big>Take part</big>"
+msgstr "<big> Ambil bahagian</big>"
+
+#. Pay attention to the quoting characters as they may break the pango layout. If in doubt and cannot test, copy and paste the symbols from the English string.
+#: data/ui/remmina_news.glade:257
+#, fuzzy
+msgid ""
+"<span>\n"
+"<b>You have our gratitude in choosing copylefted libre software, <a href="
+"\"https://remmina.org/donations/\" title=\"Where’s the money, Lebowski? "
+"“blblblblblb”\">donations also make us happy</a>, and further help improve "
+"Remmina.</b>\n"
+"</span>\n"
+msgstr ""
+"<span>\n"
+"<b> Anda mempunyai kesyukuran kami dalam memilih perisian libre yang "
+"disalin, <a href=\"https://remmina.org/donations/\" title=\"Where’s the "
+"money, Lebowski? “blblblblblb”\">derma juga membuat kita gembira</a>, dan "
+"seterusnya membantu meningkatkan Remmina. </b>\n"
+"</span>\n"
+
+#: data/ui/remmina_news.glade:277
+#, fuzzy
+msgid "<big>Contribute</big>"
+msgstr "<big> Sumbang</big>"
+
+#: data/ui/remmina_key_chooser.glade:23
+#, fuzzy
+msgid "Choose a new key"
+msgstr "Pilih kekunci baru"
+
+#: data/ui/remmina_key_chooser.glade:82
+#, fuzzy
+msgid "Please press the new key…"
+msgstr "Sila tekan kekunci baru…"
 
 #: data/ui/remmina_main.glade:35
 #, fuzzy
@@ -3476,185 +3667,10 @@ msgstr "Tindakan"
 msgid "Toggle view"
 msgstr "Paparan togol"
 
-#: data/ui/remmina_unlock.glade:60
-#, fuzzy
-msgid "Unlock"
-msgstr "Buka kunci"
-
-#: data/ui/remmina_unlock.glade:94
-#, fuzzy
-msgid "Unlock Remmina"
-msgstr "Buka kunci Remmina"
-
-#: data/ui/remmina_unlock.glade:128
-#, fuzzy
-msgid "Master password"
-msgstr "Kata laluan induk"
-
 #: data/ui/remmina_spinner.glade:54
 #, fuzzy
 msgid "Please wait…"
 msgstr "Sila tunggu…"
-
-#: data/ui/remmina_news.glade:75
-#, fuzzy
-msgid ""
-"<big><b>The news are turned off</b></big>\n"
-"\n"
-"<span>\n"
-"Turning on news means the program connects to a Remmina server to download "
-"the release notes.\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"Version checking can only be activated at compile time.\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
-"release notes\"><i>Visit the website to read the release notes</i></a>.\n"
-"</span>"
-msgstr ""
-"<big> <b> Berita ini dimatikan</b></big>\n"
-"\n"
-"<span>\n"
-"Menghidupkan berita bermakna program menyambung ke pelayan Remmina untuk "
-"memuat turun nota keluaran.\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"Semakan versi hanya boleh diaktifkan pada masa yang menyusun.\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
-"release notes\"> <i> Lawati laman web untuk membaca nota keluaran</i></a>.\n"
-"</span>"
-
-#. The star (*) is a reference to privacy consent
-#: data/ui/remmina_news.glade:130 data/ui/remmina_preferences.glade:464
-#, fuzzy
-msgid ""
-"Send <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-"remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
-"\">anonymous</a></b> statistics. (*)"
-msgstr ""
-"Hantar statistik <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-"remmina__stats_8c.html#details\" title=\"Remmina usage statistics\">tanpa "
-"nama</a></b>. (*)"
-
-#: data/ui/remmina_news.glade:142 data/ui/remmina_news.glade:195
-#, fuzzy
-msgid "Send anonymous statistics"
-msgstr "Hantar statistik tanpa nama"
-
-#: data/ui/remmina_news.glade:156
-msgid "Use as default remote desktop client"
-msgstr "Klien Desktop Jauh Remmina"
-
-#: data/ui/remmina_news.glade:165
-#, fuzzy
-msgid "Apply"
-msgstr "Laksana"
-
-#: data/ui/remmina_news.glade:169
-#, fuzzy
-msgid "Allow Remmina to automatically open .rdp and .remmina files."
-msgstr ""
-"Benarkan Remmina untuk membuka fail .rdp dan .remmina secara automatik."
-
-#. The star (*) is a reference to privacy consent
-#: data/ui/remmina_news.glade:183 data/ui/remmina_preferences.glade:479
-#, fuzzy
-msgid ""
-"Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
-"\">remmina.org</a> (*)"
-msgstr ""
-"Fetch berita dari <a href=\"https://remmina.org\" title=\"Remmina news site"
-"\">remmina.org</a> (*)"
-
-#: data/ui/remmina_news.glade:208 data/ui/remmina_preferences.glade:446
-#, fuzzy
-msgid ""
-"* By enabling statistics and/or news you consent to send and fetch data to/"
-"from remmina.org"
-msgstr ""
-"* Dengan membolehkan statistik dan/atau berita yang anda bersetuju untuk "
-"menghantar dan mengambil data ke/remmina.org"
-
-#: data/ui/remmina_news.glade:231
-#, fuzzy
-msgid "<big>Take part</big>"
-msgstr "<big> Ambil bahagian</big>"
-
-#. Pay attention to the quoting characters as they may break the pango layout. If in doubt and cannot test, copy and paste the symbols from the English string.
-#: data/ui/remmina_news.glade:257
-#, fuzzy
-msgid ""
-"<span>\n"
-"<b>You have our gratitude in choosing copylefted libre software, <a href="
-"\"https://remmina.org/donations/\" title=\"Where’s the money, Lebowski? "
-"“blblblblblb”\">donations also make us happy</a>, and further help improve "
-"Remmina.</b>\n"
-"</span>\n"
-msgstr ""
-"<span>\n"
-"<b> Anda mempunyai kesyukuran kami dalam memilih perisian libre yang "
-"disalin, <a href=\"https://remmina.org/donations/\" title=\"Where’s the "
-"money, Lebowski? “blblblblblb”\">derma juga membuat kita gembira</a>, dan "
-"seterusnya membantu meningkatkan Remmina. </b>\n"
-"</span>\n"
-
-#: data/ui/remmina_news.glade:277
-#, fuzzy
-msgid "<big>Contribute</big>"
-msgstr "<big> Sumbang</big>"
-
-#: data/ui/remmina_mpc.glade:14
-#, fuzzy
-msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
-msgstr ""
-"<span weight='bold' size='larger'> Penarik Berbilang Kata Laluan</span>"
-
-#: data/ui/remmina_mpc.glade:32
-msgid "Change"
-msgstr "Tukar"
-
-#: data/ui/remmina_mpc.glade:201
-#, fuzzy
-msgid "Selection criteria"
-msgstr "Kriteria pemilihan"
-
-#: data/ui/remmina_mpc.glade:261
-#, fuzzy
-msgid "Confirm password"
-msgstr "Sahkan kata laluan"
-
-#: data/ui/remmina_mpc.glade:294
-msgid "Set new password"
-msgstr "Simpan kata laluan"
-
-#. A column table with multiple check-boxes
-#: data/ui/remmina_mpc.glade:331
-msgctxt "Multi password changer"
-msgid "Select"
-msgstr "Pilih"
-
-#: data/ui/remmina_mpc.glade:343
-msgctxt "Multi password changer table"
-msgid "Name"
-msgstr "Nama"
-
-#: data/ui/remmina_mpc.glade:354
-msgctxt "Multi password changer table"
-msgid "Group"
-msgstr "Kumpulan"
-
-#: data/ui/remmina_mpc.glade:365
-#, fuzzy
-msgctxt "Multi password changer table"
-msgid "Domain\\Username"
-msgstr "Domain\\Nama Pengguna"
 
 #: data/ui/remmina_preferences.glade:42
 #, fuzzy
@@ -4328,36 +4344,20 @@ msgstr "Terminal"
 msgid "Remmina Preferences"
 msgstr "Keutamaan Remmina"
 
-#: data/ui/remmina_string_list.glade:14 data/ui/remmina_string_list.glade:158
+#: data/ui/remmina_unlock.glade:60
 #, fuzzy
-msgid "Add"
-msgstr "Tambah"
+msgid "Unlock"
+msgstr "Buka kunci"
 
-#: data/ui/remmina_string_list.glade:20 data/ui/remmina_string_list.glade:137
-#: data/ui/remmina_key_chooser.glade:14 data/ui/remmina_key_chooser.glade:15
+#: data/ui/remmina_unlock.glade:94
 #, fuzzy
-msgid "_Remove"
-msgstr "_Remove"
+msgid "Unlock Remmina"
+msgstr "Buka kunci Remmina"
 
-#: data/ui/remmina_string_list.glade:26 data/ui/remmina_string_list.glade:116
+#: data/ui/remmina_unlock.glade:128
 #, fuzzy
-msgid "Move up"
-msgstr "Bergerak ke atas"
-
-#: data/ui/remmina_string_list.glade:32 data/ui/remmina_string_list.glade:95
-#, fuzzy
-msgid "Move down"
-msgstr "Alih ke bawah"
-
-#: data/ui/remmina_key_chooser.glade:23
-#, fuzzy
-msgid "Choose a new key"
-msgstr "Pilih kekunci baru"
-
-#: data/ui/remmina_key_chooser.glade:82
-#, fuzzy
-msgid "Please press the new key…"
-msgstr "Sila tekan kekunci baru…"
+msgid "Master password"
+msgstr "Kata laluan induk"
 
 #~ msgid "Could not run %s on SSH server."
 #~ msgstr "Gagal lakukan %s pada pelayan SSH."

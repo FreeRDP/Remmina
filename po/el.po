@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-07-16 21:21+0000\n"
+"POT-Creation-Date: 2021-07-29 20:50+0000\n"
 "PO-Revision-Date: 2021-07-09 08:26+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Greek <https://hosted.weblate.org/projects/remmina/remmina/el/"
@@ -25,146 +25,183 @@ msgstr ""
 "X-Generator: Weblate 4.8-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
 
-#: src/remmina_protocol_widget.c:283 src/remmina_sftp_plugin.c:328
-msgid "Connect via SSH from a new terminal"
-msgstr "Συνδεθείτε μέσω SSH από ένα νέο τερματικό"
-
-#: src/remmina_protocol_widget.c:290 src/remmina_ssh_plugin.c:829
-#: src/remmina_ssh_plugin.c:1454
-msgid "Open SFTP transfer…"
-msgstr "Άνοιγμα ασφαλούς μεταφοράς αρχείων…"
-
-#: src/remmina_protocol_widget.c:319
-msgid "Executing external commands…"
-msgstr "Εκτελούνται εξωτερικές εντολές…"
-
-#. TRANSLATORS: “%s” is a placeholder for the connection profile name
-#: src/remmina_protocol_widget.c:327
-#, c-format
-msgid "Connecting to “%s”…"
-msgstr "Γίνεται σύνδεση με '%s'…"
-
-#. TRANSLATORS: “%s” is a placeholder for an hostname or an IP address.
-#: src/remmina_protocol_widget.c:911 src/remmina_protocol_widget.c:1096
-#, c-format
-msgid "Connecting to “%s” via SSH…"
-msgstr "Γίνεται σύνδεση με '%s'…"
-
-#. TRANSLATORS: “%i” is a placeholder for a TCP port number.
-#: src/remmina_protocol_widget.c:1160
-#, c-format
-msgid "Awaiting incoming SSH connection on port %i…"
-msgstr "Αναμονή για ένα εισερχόμενο SSH tunnel στην θύρα %i…"
-
-#: src/remmina_protocol_widget.c:1213
-#, c-format
-msgid "The “%s” command is not available on the SSH server."
-msgstr "Η Εντολή %s δεν βρέθηκε στον εξυπηρετητή SSH."
-
-#: src/remmina_protocol_widget.c:1218
-#, c-format
-msgid "Could not run the “%s” command on the SSH server (status = %i)."
-msgstr "Αποτυχία εντολής %s στον εξυπηρετητή SSH (status =%i)."
-
-#. TRANSLATORS: %s is a placeholder for an error message
-#: src/remmina_protocol_widget.c:1226
-#, c-format
-msgid "Could not run command. %s"
-msgstr "Αποτυχία αίτησης port forwarding: %s"
-
-#. TRANSLATORS: “%s” is a placeholder for a hostname or IP address.
-#: src/remmina_protocol_widget.c:1296
-#, c-format
-msgid "Connecting to %s via SSH…"
-msgstr "Γίνεται σύνδεση με '%s'…"
-
+#: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:346
 #: src/remmina_protocol_widget.c:1672 src/remmina_protocol_widget.c:1691
-#: src/remmina_ssh_plugin.c:1369 src/remmina_sftp_plugin.c:310
-#: src/remmina_sftp_plugin.c:346 src/remmina_file_editor.c:846
-#: src/remmina_file_editor.c:967 plugins/www/www_plugin.c:880
-#: plugins/rdp/rdp_plugin.c:2652 data/ui/remmina_unlock.glade:116
-#: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1693
+#: src/remmina_file_editor.c:846 src/remmina_file_editor.c:967
+#: src/remmina_ssh_plugin.c:1369 plugins/rdp/rdp_plugin.c:2652
+#: plugins/www/www_plugin.c:880 data/ui/remmina_mpc.glade:236
+#: data/ui/remmina_preferences.glade:1693 data/ui/remmina_unlock.glade:116
 msgid "Password"
 msgstr "Κωδικός"
 
-#: src/remmina_protocol_widget.c:1690
-msgid "Type in SSH username and password."
-msgstr "Πληκτρολογήστε το όνομα χρήστη και τον κωδικό πρόσβασης SSH."
+#: src/remmina_sftp_plugin.c:311 src/remmina_sftp_plugin.c:348
+#: src/remmina_file_editor.c:847 src/remmina_ssh_plugin.c:1370
+#: src/remmina_ssh_plugin.c:1475
+msgid "SSH identity file"
+msgstr "Αρχείο ταυτότητας SSH"
 
-#: src/remmina_protocol_widget.c:1745 src/remmina_protocol_widget.c:1777
-msgid "Fingerprint automatically accepted"
-msgstr "Δακτυλικό αποτύπωμα αυτόματα αποδεκτό"
+#: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:848
+#: src/remmina_ssh_plugin.c:1371
+msgid "SSH agent"
+msgstr "Πράκτορας SSH"
 
-#. TRANSLATORS: The user is asked to verify a new SSL certificate.
-#: src/remmina_protocol_widget.c:1753
-msgid "Certificate details:"
-msgstr "Λεπτομέρειες πιστοποιητικού:"
+#: src/remmina_sftp_plugin.c:313 src/remmina_file_editor.c:849
+#: src/remmina_ssh_plugin.c:1372
+msgid "Public key (automatic)"
+msgstr "Δημόσιο κλειδί (αυτόματα)"
 
-#. TRANSLATORS: An SSL certificate subject is usually the remote server the user connect to.
-#: src/remmina_protocol_widget.c:1755 src/remmina_protocol_widget.c:1787
-msgid "Subject:"
-msgstr "Θέμα:"
+#: src/remmina_sftp_plugin.c:314 src/remmina_file_editor.c:850
+#: src/remmina_ssh_plugin.c:1373
+msgid "Kerberos (GSSAPI)"
+msgstr "Kerberos (GSSAPI)"
 
-#. TRANSLATORS: The name or email of the entity that have issued the SSL certificate
-#: src/remmina_protocol_widget.c:1757 src/remmina_protocol_widget.c:1789
-msgid "Issuer:"
-msgstr "Εκδότης:"
+#: src/remmina_sftp_plugin.c:323
+msgid "Show Hidden Files"
+msgstr "Εμφάνιση Κρυφών Αρχείων"
 
-#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
-#: src/remmina_protocol_widget.c:1759
-msgid "Fingerprint:"
-msgstr "Αποτύπωμα:"
+#: src/remmina_sftp_plugin.c:325
+msgid "Overwrite all files"
+msgstr "Αντικατάσταση όλων των αρχείων"
 
-#. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
-#: src/remmina_protocol_widget.c:1761
-msgid "Accept certificate?"
-msgstr "Αποδοχή του πιστοποιητικού;"
+#: src/remmina_sftp_plugin.c:327
+msgid "Resume all file transfers"
+msgstr "Συνέχιση όλων των μεταφορών αρχείων"
 
-#. TRANSLATORS: The user is asked to verify a new SSL certificate.
-#: src/remmina_protocol_widget.c:1785
-msgid "The certificate changed! Details:"
-msgstr "Το πιστοποιητικό άλλαξε! Λεπτομέρειες:"
+#: src/remmina_sftp_plugin.c:328 src/remmina_protocol_widget.c:283
+msgid "Connect via SSH from a new terminal"
+msgstr "Συνδεθείτε μέσω SSH από ένα νέο τερματικό"
 
-#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
-#: src/remmina_protocol_widget.c:1791
-msgid "Old fingerprint:"
-msgstr "Αποτύπωμα:"
+#: src/remmina_sftp_plugin.c:345 src/remmina_message_panel.c:330
+#: src/remmina_file_editor.c:961 src/remmina_ssh_plugin.c:1473
+#: plugins/rdp/rdp_plugin.c:2651 plugins/vnc/vnc_plugin.c:1960
+#: plugins/vnc/vnc_plugin.c:1980 plugins/www/www_plugin.c:879
+#: data/ui/remmina_mpc.glade:144
+msgid "Username"
+msgstr "Όνομα χρήστη"
 
-#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
-#: src/remmina_protocol_widget.c:1793
-msgid "New fingerprint:"
-msgstr "Αποτύπωμα:"
+#: src/remmina_sftp_plugin.c:347 src/remmina_file_editor.c:952
+#: src/remmina_ssh_plugin.c:1472
+msgid "Authentication type"
+msgstr "Τύπος ελέγχου ταυτότητας"
 
-#. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
-#: src/remmina_protocol_widget.c:1795
-msgid "Accept changed certificate?"
-msgstr "Αποδοχή του πιστοποιητικού;"
+#: src/remmina_sftp_plugin.c:349 src/remmina_file_editor.c:984
+#: src/remmina_ssh_plugin.c:1479
+msgid "Password to unlock private key"
+msgstr "Κωδικός πρόσβασης για ξεκλείδωμα ιδιωτικού κλειδιού"
 
-#. TRANSLATORS: “%i” is a placeholder for a port number. “%s”  is a placeholder for a protocol name (VNC).
-#: src/remmina_protocol_widget.c:1938
+#: src/remmina_sftp_plugin.c:350 src/remmina_ssh_plugin.c:1509
+msgid "SSH Proxy Command"
+msgstr "Εντολή διακομιστή μεσολάβησης SSH"
+
+#: src/remmina_sftp_plugin.c:359
+msgid "SFTP - Secure File Transfer"
+msgstr "SFTP - Ασφαλής Μεταφορά Αρχείων"
+
+#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1533
+msgid "Protocol"
+msgstr "Πρωτόκολο"
+
+#: src/remmina_plugin_manager.c:73
+msgid "Entry"
+msgstr "Καταχώρηση"
+
+#: src/remmina_plugin_manager.c:73
+msgid "File"
+msgstr "Αρχείο"
+
+#: src/remmina_plugin_manager.c:73
+msgid "Tool"
+msgstr "Εργαλείο"
+
+#: src/remmina_plugin_manager.c:73
+msgid "Preference"
+msgstr "Προτίμηση"
+
+#: src/remmina_plugin_manager.c:73
+msgid "Secret"
+msgstr "Απόρρητο"
+
+#: src/remmina_plugin_manager.c:456 data/ui/remmina_main.glade:305
+msgid "Plugins"
+msgstr "Πρόσθετες λειτουργίες"
+
+#: src/remmina_plugin_manager.c:456 src/remmina_message_panel.c:452
+#: src/remmina_message_panel.c:621 src/remmina_file_editor.c:152
+msgid "_OK"
+msgstr "_OK"
+
+#: src/remmina_plugin_manager.c:474 src/remmina_file_editor.c:1490
+#: data/ui/remmina_main.glade:442
+msgid "Name"
+msgstr "Όνομα"
+
+#: src/remmina_plugin_manager.c:480
+msgid "Type"
+msgstr "Τύπος"
+
+#: src/remmina_plugin_manager.c:486
+msgid "Description"
+msgstr "Περιγραφή"
+
+#: src/remmina_plugin_manager.c:492
+msgid "Version"
+msgstr "Έκδοση"
+
+#: src/remmina_chat_window.c:178
 #, c-format
-msgid "Listening on port %i for an incoming %s connection…"
-msgstr "Αναμονή στη θύρα %i για μια εισερχόμενη %s σύνδεση…"
+msgid "Chat with %s"
+msgstr "Συνομιλία με %s"
 
-#: src/remmina_protocol_widget.c:1963
-msgid "Could not authenticate, attempting reconnection…"
-msgstr "Αποτυχία ελέγχου ταυτότητας. Προσπάθεια επανασύνδεσης…"
+#: src/remmina_chat_window.c:230
+msgid "_Send"
+msgstr "_Aποστολή"
 
-#: src/remmina_protocol_widget.c:2025 src/remmina_file_editor.c:346
-#: src/remmina_file_editor.c:917 data/ui/remmina_main.glade:478
-msgid "Server"
-msgstr "Εξυπηρετητής"
+#: src/remmina_chat_window.c:240
+msgid "_Clear"
+msgstr "_Kαθαρισμός"
 
-#. TRANSLATORS: “%s” is a placeholder for a protocol name, like “RDP”.
-#: src/remmina_protocol_widget.c:2043
-#, c-format
-msgid "Install the %s protocol plugin first."
-msgstr "Εγκαταστήστε πρώτα το plugin πρωτοκόλλου %s."
+#: src/remmina_applet_menu_item.c:121
+msgid "Discovered"
+msgstr "Εντοπίστηκε"
 
-#: src/remmina_exec.c:475
-#, c-format
-msgid "Plugin %s is not registered."
-msgstr "Το πρόσθετο %s δεν έχει καταχωρηθεί."
+#: src/remmina_applet_menu_item.c:126
+msgid "New Connection"
+msgstr "Νέα σύνδεση"
+
+#: src/remmina_key_chooser.h:38
+#, fuzzy
+msgid "Shift+"
+msgstr "Shift+"
+
+#: src/remmina_key_chooser.h:39
+#, fuzzy
+msgid "Ctrl+"
+msgstr "Ctrl+"
+
+#: src/remmina_key_chooser.h:40
+#, fuzzy
+msgid "Alt+"
+msgstr "Alt+"
+
+#: src/remmina_key_chooser.h:41
+#, fuzzy
+msgid "Super+"
+msgstr "Σούπερ+"
+
+#: src/remmina_key_chooser.h:42
+#, fuzzy
+msgid "Hyper+"
+msgstr "Hyper+"
+
+#: src/remmina_key_chooser.h:43
+#, fuzzy
+msgid "Meta+"
+msgstr "Meta+"
+
+#: src/remmina_key_chooser.h:44
+#, fuzzy
+msgid "<None>"
+msgstr "<Κανένα>"
 
 #: src/remmina_pref_dialog.c:91 src/remmina_file_editor.c:435
 msgid "Resolutions"
@@ -209,249 +246,189 @@ msgstr ""
 "μπορεί να επιλεγεί από την καρτέλα \"Για προχωρημένους\" των συνδέσεων "
 "τερματικού και να τροποποιηθεί στην καρτέλα \"Τερματικό\" των ρυθμίσεων."
 
-#. TRANSLATORS: %s is a placeholder for an error message
-#: src/remmina_ssh_plugin.c:539
-#, c-format
-msgid "Error: %s"
-msgstr "Σφάλμα: %s"
+#: src/remmina_message_panel.c:163 data/ui/remmina_mpc.glade:46
+#: data/ui/remmina_unlock.glade:46
+msgid "Cancel"
+msgstr "Άκυρο"
 
-#: src/remmina_ssh_plugin.c:556
-msgid "Terminal content saved in"
-msgstr "Το περιεχόμενο του τερματικού αποθηκεύτηκε στο"
+#: src/remmina_message_panel.c:199 data/ui/remmina_snap_info_dialog.glade:28
+#: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
+#: data/ui/remmina_string_list.glade:63 data/ui/remmina_news.glade:33
+#: data/ui/remmina_preferences.glade:2640
+msgid "Close"
+msgstr "Κλείσιμο"
 
-#: src/remmina_ssh_plugin.c:822
-msgid "Select All (host+A)"
-msgstr "Επιλογή όλων"
+#: src/remmina_message_panel.c:260
+msgid "Yes"
+msgstr "Ναι"
 
-#: src/remmina_ssh_plugin.c:823
-msgid "Copy (host+C)"
-msgstr "Αντιγραφή (host+C)"
+#: src/remmina_message_panel.c:267
+msgid "No"
+msgstr "Όχι"
 
-#: src/remmina_ssh_plugin.c:824
-msgid "Paste (host+V)"
-msgstr "Επικόλληση (host+V)"
+#: src/remmina_message_panel.c:391 plugins/rdp/rdp_plugin.c:2653
+#: data/ui/remmina_mpc.glade:172
+msgid "Domain"
+msgstr "Τομέας (domain)"
 
-#: src/remmina_ssh_plugin.c:825
-msgid "Save session to file"
-msgstr "Αποθήκευση περιόδου λειτουργίας σε αρχείο"
-
-#: src/remmina_ssh_plugin.c:826
-msgid "Increase font size (host+Page Up)"
-msgstr "Αύξηση μεγέθους γραμματοσειράς (host+Page Up)"
-
-#: src/remmina_ssh_plugin.c:827
-msgid "Decrease font size (host+Page Down)"
-msgstr "Μείωση μεγέθους γραμματοσειράς (host+Page Down)"
-
-#: src/remmina_ssh_plugin.c:828
-msgid "Find text (host+G)"
-msgstr "Εύρεση κειμένου (host+G)"
-
-#: src/remmina_ssh_plugin.c:1370 src/remmina_ssh_plugin.c:1475
-#: src/remmina_sftp_plugin.c:311 src/remmina_sftp_plugin.c:348
-#: src/remmina_file_editor.c:847
-msgid "SSH identity file"
-msgstr "Αρχείο ταυτότητας SSH"
-
-#: src/remmina_ssh_plugin.c:1371 src/remmina_sftp_plugin.c:312
-#: src/remmina_file_editor.c:848
-msgid "SSH agent"
-msgstr "Πράκτορας SSH"
-
-#: src/remmina_ssh_plugin.c:1372 src/remmina_sftp_plugin.c:313
-#: src/remmina_file_editor.c:849
-msgid "Public key (automatic)"
-msgstr "Δημόσιο κλειδί (αυτόματα)"
-
-#: src/remmina_ssh_plugin.c:1373 src/remmina_sftp_plugin.c:314
-#: src/remmina_file_editor.c:850
-msgid "Kerberos (GSSAPI)"
-msgstr "Kerberos (GSSAPI)"
-
-#: src/remmina_ssh_plugin.c:1448 data/ui/remmina_main.glade:177
-msgid "Copy"
-msgstr "Αντιγραφή"
-
-#: src/remmina_ssh_plugin.c:1448
-#, fuzzy
-msgid "_Copy"
-msgstr "_Αντιγραφή"
-
-#: src/remmina_ssh_plugin.c:1449
-msgid "Paste"
-msgstr "Επικόλληση"
-
-#: src/remmina_ssh_plugin.c:1449
-#, fuzzy
-msgid "_Paste"
-msgstr "Επι_κόλληση"
-
-#: src/remmina_ssh_plugin.c:1450
-msgid "Select all"
-msgstr "Επιλογή όλων"
-
-#: src/remmina_ssh_plugin.c:1450
-#, fuzzy
-msgid "_Select all"
-msgstr "_Επιλογή όλων"
-
-#: src/remmina_ssh_plugin.c:1451
-msgid "Increase font size"
-msgstr "Αύξηση μεγέθους γραμματοσειράς"
-
-#: src/remmina_ssh_plugin.c:1451
-msgid "_Increase font size"
-msgstr "_Αύξηση μεγέθους γραμματοσειράς"
-
-#: src/remmina_ssh_plugin.c:1452
-msgid "Decrease font size"
-msgstr "Μείωση μεγέθους γραμματοσειράς"
-
-#: src/remmina_ssh_plugin.c:1452
-msgid "_Decrease font size"
-msgstr "_Μείωση μεγέθους γραμματοσειράς"
-
-#: src/remmina_ssh_plugin.c:1453
-msgid "Find text"
-msgstr "Εύρεση κειμένου"
-
-#: src/remmina_ssh_plugin.c:1453
-msgid "_Find text"
-msgstr "_Εύρεση κειμένου"
-
-#: src/remmina_ssh_plugin.c:1472 src/remmina_sftp_plugin.c:347
-#: src/remmina_file_editor.c:952
-msgid "Authentication type"
-msgstr "Τύπος ελέγχου ταυτότητας"
-
-#: src/remmina_ssh_plugin.c:1473 src/remmina_message_panel.c:330
-#: src/remmina_sftp_plugin.c:345 src/remmina_file_editor.c:961
-#: plugins/www/www_plugin.c:879 plugins/vnc/vnc_plugin.c:1960
-#: plugins/vnc/vnc_plugin.c:1980 plugins/rdp/rdp_plugin.c:2651
-#: data/ui/remmina_mpc.glade:144
-msgid "Username"
-msgstr "Όνομα χρήστη"
-
-#: src/remmina_ssh_plugin.c:1474 plugins/vnc/vnc_plugin.c:1961
-#: plugins/vnc/vnc_plugin.c:1981 plugins/spice/spice_plugin.c:666
-msgid "User password"
-msgstr "Κωδικός Χρήστη"
-
-#: src/remmina_ssh_plugin.c:1477 src/remmina_file_editor.c:979
-#, fuzzy
-#| msgid "CA Certificate File"
-msgid "SSH certificate file"
-msgstr "Αρχείο πιστοποιητικού SSH"
-
-#: src/remmina_ssh_plugin.c:1479 src/remmina_sftp_plugin.c:349
-#: src/remmina_file_editor.c:984
-msgid "Password to unlock private key"
-msgstr "Κωδικός πρόσβασης για ξεκλείδωμα ιδιωτικού κλειδιού"
-
-#: src/remmina_ssh_plugin.c:1480 plugins/rdp/rdp_plugin.c:2693
-msgid "Start-up program"
-msgstr "Πρόγραμμα Εκκίνησης"
-
-#: src/remmina_ssh_plugin.c:1485
-msgid ""
-"The filename can use the following placeholders:\n"
-"\n"
-"  • %h is substituted with the server name\n"
-"  • %t is substituted with the SSH server name\n"
-"  • %u is substituted with the username\n"
-"  • %U is substituted with the SSH username\n"
-"  • %p is substituted with Remmina profile name\n"
-"  • %g is substituted with Remmina profile group name\n"
-"  • %d is substituted with local date and time in ISO 8601 format\n"
-msgstr ""
-"Το όνομα αρχείου μπορεί να χρησιμοποιήσει τα ακόλουθα σύμβολα κράτησης "
-"θέσης:\n"
-"\n"
-"• %h αντικαθίσταται με το όνομα του διακομιστή\n"
-"  • %t αντικαθίσταται με το όνομα του διακομιστή SSH\n"
-"  • %u αντικαθίσταται με το όνομα χρήστη\n"
-"  • %U αντικαθίσταται με το όνομα χρήστη SSH\n"
-"  • %p αντικαθίσταται με το όνομα προφίλ Remmina\n"
-"  • %g αντικαθίσταται με το όνομα της ομάδας προφίλ Remmina\n"
-"  • %d αντικαθίσταται με τοπική ημερομηνία/ώρα σε μορφή ISO8601\n"
-
-#: src/remmina_ssh_plugin.c:1507
-#, fuzzy
-#| msgid "Terminal color scheme"
-msgid "Terminal colour scheme"
-msgstr "Συνδυασμός χρωμάτων τερματικού"
-
-#: src/remmina_ssh_plugin.c:1508
-msgid "Character set"
-msgstr "Κωδικοποίηση χαρακτήρων"
-
-#: src/remmina_ssh_plugin.c:1509 src/remmina_sftp_plugin.c:350
-msgid "SSH Proxy Command"
-msgstr "Εντολή διακομιστή μεσολάβησης SSH"
-
-#: src/remmina_ssh_plugin.c:1510
-msgid "KEX (Key Exchange) algorithms"
-msgstr "Αλγόριθμοι KEX (Ανταλλαγή κλειδιών)"
-
-#: src/remmina_ssh_plugin.c:1511
-msgid "Symmetric cipher client to server"
-msgstr "Symmetric cipher πελάτης σε διακομιστή"
-
-#: src/remmina_ssh_plugin.c:1512
-msgid "Preferred server host key types"
-msgstr "Προτιμώμενοι τύποι κλειδιών κεντρικού υπολογιστή διακομιστή"
-
-#: src/remmina_ssh_plugin.c:1513
-msgid "Folder for SSH session log"
-msgstr "Αποτυχία εκκίνησης της συνεδρίας SSH: %s"
-
-#: src/remmina_ssh_plugin.c:1514
-msgid "Filename for SSH session log"
-msgstr "Όνομα αρχείου για το αρχείο καταγραφής συνεδρίας SSH"
-
-#: src/remmina_ssh_plugin.c:1515
-msgid "Log SSH session when exiting Remmina"
-msgstr "Καταγραφή συνεδρίας SSH κατά την έξοδο από το Remmina"
-
-#: src/remmina_ssh_plugin.c:1516
-#, fuzzy
-msgid "Log SSH session asynchronously"
-msgstr "Ασύγχρονη καταγραφή συνόδου SSH"
-
-#: src/remmina_ssh_plugin.c:1516
-#, fuzzy
-msgid "Saving the session asynchronously may have a notable performance impact"
-msgstr ""
-"Η ασύγχρονη αποθήκευση της συνεδρίας μπορεί να έχει αξιοσημείωτο αντίκτυπο "
-"στις επιδόσεις"
-
-#: src/remmina_ssh_plugin.c:1517
-msgid "Audible terminal bell"
-msgstr "Ηχητικό κουδούνι τερματικού"
-
-#: src/remmina_ssh_plugin.c:1518
-msgid "SSH compression"
-msgstr "Συμπίεση SSH"
-
-#: src/remmina_ssh_plugin.c:1519
-msgid "Don't remember passwords"
+#: src/remmina_message_panel.c:420
+msgid "Save password"
 msgstr "Αποθήκευση κωδικού πρόσβασης"
 
-#: src/remmina_ssh_plugin.c:1520
-msgid "Strict host key checking"
-msgstr "Αυστηρός έλεγχος κλειδιού κεντρικού υπολογιστή"
+#: src/remmina_message_panel.c:457 src/remmina_message_panel.c:629
+#: src/remmina_sftp_client.c:947 src/remmina_file_editor.c:151
+#: src/remmina_file_editor.c:1365 plugins/spice/spice_plugin_file_transfer.c:84
+#: data/ui/remmina_key_chooser.glade:8 data/ui/remmina_key_chooser.glade:9
+#: data/ui/remmina_spinner.glade:8 data/ui/remmina_spinner.glade:9
+msgid "_Cancel"
+msgstr "_Άκυρο"
 
-#: src/remmina_ssh_plugin.c:1534
-msgid "SSH - Secure Shell"
-msgstr "SSH - Ασφαλές Κέλυφος"
+#: src/remmina_message_panel.c:513
+#, fuzzy
+msgid "Enter certificate authentication files"
+msgstr "Εισαγωγή αρχείων ελέγχου ταυτότητας πιστοποιητικών"
 
-#: src/remmina_applet_menu_item.c:121
-msgid "Discovered"
-msgstr "Εντοπίστηκε"
+#: src/remmina_message_panel.c:525
+msgid "CA Certificate File"
+msgstr "Αρχείο πιστοποιητικού CA"
 
-#: src/remmina_applet_menu_item.c:126
-msgid "New Connection"
-msgstr "Νέα σύνδεση"
+#: src/remmina_message_panel.c:547
+msgid "CA CRL File"
+msgstr "Αρχείο CA CRL"
+
+#: src/remmina_message_panel.c:569
+msgid "Client Certificate File"
+msgstr "Αρχείο πιστοποιητικού πελάτη"
+
+#: src/remmina_message_panel.c:591
+msgid "Client Certificate Key"
+msgstr "Κλειδί πιστοποιητικού πελάτη"
+
+#: src/rcw.c:658
+#, c-format
+msgid ""
+"Are you sure you want to close %i active connections in the current window?"
+msgstr ""
+"Υπάρχουν %i ενεργές συνδέσεις στο τρέχον παράθυρο. Είστε σίγουροι ότι θέλετε "
+"να τις κλείσετε;"
+
+#: src/rcw.c:1394
+msgid "Viewport fullscreen mode"
+msgstr "Κατάσταση πλήρους οθόνης θύρας όψης"
+
+#: src/rcw.c:1402 data/ui/remmina_preferences.glade:607
+msgid "Scrolled fullscreen"
+msgstr "Κυλιόμενη πλήρης οθόνη"
+
+#: src/rcw.c:1487
+msgid "Keep aspect ratio when scaled"
+msgstr "Διατήρηση της αναλογίας διαστάσεων κατά την κλιμάκωση"
+
+#: src/rcw.c:1495
+msgid "Fill client window when scaled"
+msgstr "Συμπλήρωση παραθύρου πελάτη κατά την κλιμάκωση"
+
+#: src/rcw.c:2043
+msgid "Send clipboard content as keystrokes"
+msgstr "Αποστολή περιεχομένου προχείρου ως πληκτρολογήσεις"
+
+#: src/rcw.c:2147
+msgid "Turn off scaling to avoid screenshot distortion."
+msgstr "Απενεργοποιήστε την κλιμάκωση για να αποφύγετε παραμόρφωση της οθόνης."
+
+#: src/rcw.c:2207 plugins/www/www_plugin.c:848
+msgid "Screenshot taken"
+msgstr "Στιγμιότυπο οθόνης που ελήφθη"
+
+#: src/rcw.c:2290
+#, fuzzy
+msgid "_Menu"
+msgstr "_Menu"
+
+#: src/rcw.c:2291
+#, fuzzy
+msgid "Menu"
+msgstr "Μενού"
+
+#: src/rcw.c:2300
+#, fuzzy
+#| msgid "Open Main Window"
+msgid "Open the Remmina main window"
+msgstr "Ανοίξτε το κύριο παράθυρο του Remmina"
+
+#: src/rcw.c:2310
+msgid "Duplicate current connection"
+msgstr "Αντιγραφή τρέχουσας σύνδεσης"
+
+#: src/rcw.c:2327
+msgid "Resize the window to fit in remote resolution"
+msgstr ""
+"Αλλαγή μεγέθους παραθύρου για ταίριασμα στην ανάλυση του απομακρυσμένου "
+"υπολογιστή"
+
+#: src/rcw.c:2338
+msgid "Toggle fullscreen mode"
+msgstr "Εναλλαγή πλήρους οθόνης"
+
+#: src/rcw.c:2384 data/ui/remmina_preferences.glade:1344
+#: data/ui/remmina_preferences.glade:1354
+msgid "Multi monitor"
+msgstr "Πολλαπλή οθόνη"
+
+#: src/rcw.c:2400
+#, fuzzy
+msgid "Toggle dynamic resolution update"
+msgstr "Εναλλαγή δυναμικής ενημέρωσης ανάλυσης"
+
+#: src/rcw.c:2410
+msgid "Toggle scaled mode"
+msgstr "Εναλλαγή κλιμακωτής κατάστασης"
+
+#: src/rcw.c:2450 data/ui/remmina_preferences.glade:1070
+msgid "Switch tab pages"
+msgstr "Εναλλαγή καρτέλας στις σελίδες"
+
+#: src/rcw.c:2460
+msgid "Grab all keyboard events"
+msgstr "Λήψη όλων των γεγονότων των πλήκτρων"
+
+#: src/rcw.c:2470
+msgid "Preferences"
+msgstr "_P Προτιμήσεις"
+
+#: src/rcw.c:2479
+msgid "_Tools"
+msgstr "Εργαλεία"
+
+#: src/rcw.c:2480 data/ui/remmina_main.glade:207
+msgid "Tools"
+msgstr "Εργαλεία"
+
+#: src/rcw.c:2493 data/ui/remmina_preferences.glade:1277
+#: data/ui/remmina_preferences.glade:1287
+#, fuzzy
+msgid "Screenshot"
+msgstr "Στιγμιότυπο οθόνης"
+
+#: src/rcw.c:2507 data/ui/remmina_preferences.glade:1181
+msgid "Minimize window"
+msgstr "Ελαχιστοποίηση του παραθύρου"
+
+#: src/rcw.c:2517 data/ui/remmina_preferences.glade:1213
+msgid "Disconnect"
+msgstr "Αποσύνδεση"
+
+#: src/rcw.c:4284
+#, fuzzy, c-format
+msgid "The file “%s” is corrupted, unreadable, or could not be found."
+msgstr "Το αρχείο \"%s\" είναι κατεστραμμένο, μη αναγνώσιμο ή δεν βρέθηκε."
+
+#: src/rcw.c:4452
+#, fuzzy
+msgid "Warning: This plugin requires GtkSocket, but it’s not available."
+msgstr ""
+"Προειδοποίηση: Αυτό το πρόσθετο απαιτεί το GtkSocket, αλλά δεν είναι "
+"διαθέσιμο."
 
 #: src/remmina_mpchange.c:234
 msgid "The passwords do not match"
@@ -477,149 +454,6 @@ msgid "%d password changed."
 msgid_plural "%d passwords changed."
 msgstr[0] "%d κωδικός πρόσβασης άλλαξε."
 msgstr[1] "%d κωδικοί πρόσβασης άλλαξαν."
-
-#: src/remmina_public.c:345
-#, fuzzy, c-format
-msgid "Address is too long for UNIX socket_path: %s"
-msgstr "Η διεύθυνση είναι πολύ μεγάλη για το UNIX socket_path: %s"
-
-#: src/remmina_public.c:355
-#, fuzzy, c-format
-msgid "Creating UNIX socket failed: %s"
-msgstr "Η δημιουργία υποδοχής UNIX απέτυχε: %s"
-
-#: src/remmina_public.c:361
-#, fuzzy, c-format
-#| msgid "VNC connection failed: %s"
-msgid "Connecting to UNIX socket failed: %s"
-msgstr "Η σύνδεση σε υποδοχή UNIX απέτυχε: %s"
-
-#: src/remmina_public.c:631
-msgid "Please enter format 'widthxheight'."
-msgstr "Παρακαλώ εισάγετε με μορφή 'πλάτοςxύψος'."
-
-#: src/remmina_public.c:653
-msgid "Change security settings"
-msgstr "Αλλαγή ρυθμίσεων ασφαλείας"
-
-#. TRANSLATORS: translator-credits should be replaced with a formatted list of translators in your own language
-#: src/remmina_about.c:54
-msgid "translator-credits"
-msgstr ""
-"Elias Sofronas <esofronas@gmail.com>\n"
-"\n"
-"Launchpad Contributions:\n"
-"  Apostolakis Spiros https://launchpad.net/~apostolakiss\n"
-"  Filippos Kolyvas https://launchpad.net/~fkol-k4\n"
-"  Simos Xenitellis https://launchpad.net/~simosx\n"
-"  Stathis Iosifidis https://launchpad.net/~diamond-gr\n"
-"  Vic https://launchpad.net/~llyzs\n"
-"  xoristzatziki https://launchpad.net/~simsonbike-bugs"
-
-#: src/remmina_ftp_client.c:389
-msgid "Choose download location"
-msgstr "Επέλεξε τοποθεσία λήψης"
-
-#: src/remmina_ftp_client.c:529
-msgid "Are you sure to delete the selected files on server?"
-msgstr ""
-"Είστε σίγουρος για την διαγραφή των επιλεγμένων αρχείων στον εξυπηρετητή;"
-
-#: src/remmina_ftp_client.c:586
-msgid "Choose a file to upload"
-msgstr "Επέλεξε αρχείο για μεταφόρτωση"
-
-#: src/remmina_ftp_client.c:593
-msgid "Upload folder"
-msgstr "Μεταφόρτωση φακέλου"
-
-#: src/remmina_ftp_client.c:649 src/remmina_ftp_client.c:763
-msgid "Download"
-msgstr "Λήψη"
-
-#: src/remmina_ftp_client.c:656 src/remmina_ftp_client.c:770
-msgid "Upload"
-msgstr "Μεταφόρτωση"
-
-#: src/remmina_ftp_client.c:663
-#, fuzzy
-msgid "_Delete"
-msgstr "Διαγραφή"
-
-#: src/remmina_ftp_client.c:748
-msgid "Home"
-msgstr "Αρχική"
-
-#: src/remmina_ftp_client.c:749
-msgid "Go to home folder"
-msgstr "Μετακίνηση στον προσωπικό κατάλογο"
-
-#: src/remmina_ftp_client.c:753
-#, fuzzy
-msgid "Up"
-msgstr "Πάνω"
-
-#: src/remmina_ftp_client.c:754
-msgid "Go to parent folder"
-msgstr "Μετακίνηση στον γονικό κατάλογο"
-
-#: src/remmina_ftp_client.c:758 plugins/vnc/vnc_plugin.c:2019
-#: plugins/rdp/rdp_plugin.c:2740
-msgid "Refresh"
-msgstr "Ανανέωση"
-
-#: src/remmina_ftp_client.c:759
-msgid "Refresh current folder"
-msgstr "Ανανέωση τρέχοντος καταλόγου"
-
-#: src/remmina_ftp_client.c:764
-msgid "Download from server"
-msgstr "Λήψη από τον εξυπηρετητή"
-
-#: src/remmina_ftp_client.c:771
-msgid "Upload to server"
-msgstr "Μεταφόρτωση στον εξυπηρετητή"
-
-#: src/remmina_ftp_client.c:775 data/ui/remmina_main.glade:197
-msgid "Delete"
-msgstr "Διαγραφή"
-
-#: src/remmina_ftp_client.c:776
-msgid "Delete files on server"
-msgstr "Διαγραφή αρχείων στον εξυπηρετητή"
-
-#: src/remmina_ftp_client.c:905 src/remmina_ftp_client.c:974
-msgid "Filename"
-msgstr "Όνομα Αρχείου"
-
-#: src/remmina_ftp_client.c:918 src/remmina_ftp_client.c:1003
-msgid "Size"
-msgstr "Μέγεθος"
-
-#: src/remmina_ftp_client.c:926
-msgid "User"
-msgstr "Χρήστης"
-
-#: src/remmina_ftp_client.c:932 src/remmina_file_editor.c:1515
-#: data/ui/remmina_main.glade:464 data/ui/remmina_mpc.glade:115
-msgid "Group"
-msgstr "Ομάδα"
-
-#: src/remmina_ftp_client.c:938
-msgid "Permission"
-msgstr "Διακαιώματα"
-
-#: src/remmina_ftp_client.c:990 plugins/rdp/rdp_plugin.c:2548
-msgid "Remote"
-msgstr "Απομακρυσμένο"
-
-#: src/remmina_ftp_client.c:997 plugins/rdp/rdp_plugin.c:2547
-msgid "Local"
-msgstr "Τοπικό"
-
-#: src/remmina_ftp_client.c:1011
-msgid "Progress"
-msgstr "Πρόοδος"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:86
@@ -804,444 +638,271 @@ msgstr ""
 "\tremmina --update-profile /PATH/TO/FOO.remmina --set-option username --set-"
 "option resolution_mode=2 --set-option password\n"
 
-#: src/remmina_icon.c:128
-msgid "Open Main Window"
-msgstr "Άνοιγμα κεντρικού παραθύρου"
-
-#: src/remmina_icon.c:133 data/ui/remmina_main.glade:254
-msgid "_Preferences"
-msgstr "_P Προτιμήσεις"
-
-#: src/remmina_icon.c:138
-msgid "_About"
-msgstr "_Περί του"
-
-#: src/remmina_icon.c:148
-msgid "Enable Service Discovery"
-msgstr "Ενεργοποίηση ανίχνευσης υπηρεσιών"
-
-#: src/remmina_icon.c:160 data/ui/remmina_main.glade:404
-msgid "_Quit"
-msgstr "_Καταργήστε"
-
-#. TRANSLATORS: Applet name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
-#. TRANSLATORS: Applet Name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
-#: src/remmina_icon.c:284 src/remmina_icon.c:416
-msgid "Remmina Applet"
-msgstr "Μικροεφαρμογή Remmina"
-
-#. TRANSLATORS: Applet comment/description as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
-#: src/remmina_icon.c:286 src/remmina_icon.c:418
-msgid "Connect to remote desktops through the applet menu"
-msgstr ""
-"Σύνδεση στους απομακρυσμένους υπολογιστές μέσω της μικροεφαρμογής του μενού"
-
-#: src/rcw.c:658
-#, c-format
-msgid ""
-"Are you sure you want to close %i active connections in the current window?"
-msgstr ""
-"Υπάρχουν %i ενεργές συνδέσεις στο τρέχον παράθυρο. Είστε σίγουροι ότι θέλετε "
-"να τις κλείσετε;"
-
-#: src/rcw.c:1394
-msgid "Viewport fullscreen mode"
-msgstr "Κατάσταση πλήρους οθόνης θύρας όψης"
-
-#: src/rcw.c:1402 data/ui/remmina_preferences.glade:607
-msgid "Scrolled fullscreen"
-msgstr "Κυλιόμενη πλήρης οθόνη"
-
-#: src/rcw.c:1487
-msgid "Keep aspect ratio when scaled"
-msgstr "Διατήρηση της αναλογίας διαστάσεων κατά την κλιμάκωση"
-
-#: src/rcw.c:1495
-msgid "Fill client window when scaled"
-msgstr "Συμπλήρωση παραθύρου πελάτη κατά την κλιμάκωση"
-
-#: src/rcw.c:2043
-msgid "Send clipboard content as keystrokes"
-msgstr "Αποστολή περιεχομένου προχείρου ως πληκτρολογήσεις"
-
-#: src/rcw.c:2147
-msgid "Turn off scaling to avoid screenshot distortion."
-msgstr "Απενεργοποιήστε την κλιμάκωση για να αποφύγετε παραμόρφωση της οθόνης."
-
-#: src/rcw.c:2207 plugins/www/www_plugin.c:848
-msgid "Screenshot taken"
-msgstr "Στιγμιότυπο οθόνης που ελήφθη"
-
-#: src/rcw.c:2290
-#, fuzzy
-msgid "_Menu"
-msgstr "_Menu"
-
-#: src/rcw.c:2291
-#, fuzzy
-msgid "Menu"
-msgstr "Μενού"
-
-#: src/rcw.c:2300
-#, fuzzy
-#| msgid "Open Main Window"
-msgid "Open the Remmina main window"
-msgstr "Ανοίξτε το κύριο παράθυρο του Remmina"
-
-#: src/rcw.c:2310
-msgid "Duplicate current connection"
-msgstr "Αντιγραφή τρέχουσας σύνδεσης"
-
-#: src/rcw.c:2327
-msgid "Resize the window to fit in remote resolution"
-msgstr ""
-"Αλλαγή μεγέθους παραθύρου για ταίριασμα στην ανάλυση του απομακρυσμένου "
-"υπολογιστή"
-
-#: src/rcw.c:2338
-msgid "Toggle fullscreen mode"
-msgstr "Εναλλαγή πλήρους οθόνης"
-
-#: src/rcw.c:2384 data/ui/remmina_preferences.glade:1344
-#: data/ui/remmina_preferences.glade:1354
-msgid "Multi monitor"
-msgstr "Πολλαπλή οθόνη"
-
-#: src/rcw.c:2400
-#, fuzzy
-msgid "Toggle dynamic resolution update"
-msgstr "Εναλλαγή δυναμικής ενημέρωσης ανάλυσης"
-
-#: src/rcw.c:2410
-msgid "Toggle scaled mode"
-msgstr "Εναλλαγή κλιμακωτής κατάστασης"
-
-#: src/rcw.c:2450 data/ui/remmina_preferences.glade:1070
-msgid "Switch tab pages"
-msgstr "Εναλλαγή καρτέλας στις σελίδες"
-
-#: src/rcw.c:2460
-msgid "Grab all keyboard events"
-msgstr "Λήψη όλων των γεγονότων των πλήκτρων"
-
-#: src/rcw.c:2470
-msgid "Preferences"
-msgstr "_P Προτιμήσεις"
-
-#: src/rcw.c:2479
-msgid "_Tools"
-msgstr "Εργαλεία"
-
-#: src/rcw.c:2480 data/ui/remmina_main.glade:207
-msgid "Tools"
-msgstr "Εργαλεία"
-
-#: src/rcw.c:2493 data/ui/remmina_preferences.glade:1277
-#: data/ui/remmina_preferences.glade:1287
-#, fuzzy
-msgid "Screenshot"
-msgstr "Στιγμιότυπο οθόνης"
-
-#: src/rcw.c:2507 data/ui/remmina_preferences.glade:1181
-msgid "Minimize window"
-msgstr "Ελαχιστοποίηση του παραθύρου"
-
-#: src/rcw.c:2517 data/ui/remmina_preferences.glade:1213
-msgid "Disconnect"
-msgstr "Αποσύνδεση"
-
-#: src/rcw.c:4284
+#: src/remmina_public.c:345
 #, fuzzy, c-format
-msgid "The file “%s” is corrupted, unreadable, or could not be found."
-msgstr "Το αρχείο \"%s\" είναι κατεστραμμένο, μη αναγνώσιμο ή δεν βρέθηκε."
+msgid "Address is too long for UNIX socket_path: %s"
+msgstr "Η διεύθυνση είναι πολύ μεγάλη για το UNIX socket_path: %s"
 
-#: src/rcw.c:4452
-#, fuzzy
-msgid "Warning: This plugin requires GtkSocket, but it’s not available."
+#: src/remmina_public.c:355
+#, fuzzy, c-format
+msgid "Creating UNIX socket failed: %s"
+msgstr "Η δημιουργία υποδοχής UNIX απέτυχε: %s"
+
+#: src/remmina_public.c:361
+#, fuzzy, c-format
+#| msgid "VNC connection failed: %s"
+msgid "Connecting to UNIX socket failed: %s"
+msgstr "Η σύνδεση σε υποδοχή UNIX απέτυχε: %s"
+
+#: src/remmina_public.c:631
+msgid "Please enter format 'widthxheight'."
+msgstr "Παρακαλώ εισάγετε με μορφή 'πλάτοςxύψος'."
+
+#: src/remmina_public.c:653
+msgid "Change security settings"
+msgstr "Αλλαγή ρυθμίσεων ασφαλείας"
+
+#. TRANSLATORS: translator-credits should be replaced with a formatted list of translators in your own language
+#: src/remmina_about.c:54
+msgid "translator-credits"
 msgstr ""
-"Προειδοποίηση: Αυτό το πρόσθετο απαιτεί το GtkSocket, αλλά δεν είναι "
-"διαθέσιμο."
+"Elias Sofronas <esofronas@gmail.com>\n"
+"\n"
+"Launchpad Contributions:\n"
+"  Apostolakis Spiros https://launchpad.net/~apostolakiss\n"
+"  Filippos Kolyvas https://launchpad.net/~fkol-k4\n"
+"  Simos Xenitellis https://launchpad.net/~simosx\n"
+"  Stathis Iosifidis https://launchpad.net/~diamond-gr\n"
+"  Vic https://launchpad.net/~llyzs\n"
+"  xoristzatziki https://launchpad.net/~simsonbike-bugs"
 
-#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1533
-msgid "Protocol"
-msgstr "Πρωτόκολο"
+#: src/remmina_ftp_client.c:389
+msgid "Choose download location"
+msgstr "Επέλεξε τοποθεσία λήψης"
 
-#: src/remmina_plugin_manager.c:73
-msgid "Entry"
-msgstr "Καταχώρηση"
-
-#: src/remmina_plugin_manager.c:73
-msgid "File"
-msgstr "Αρχείο"
-
-#: src/remmina_plugin_manager.c:73
-msgid "Tool"
-msgstr "Εργαλείο"
-
-#: src/remmina_plugin_manager.c:73
-msgid "Preference"
-msgstr "Προτίμηση"
-
-#: src/remmina_plugin_manager.c:73
-msgid "Secret"
-msgstr "Απόρρητο"
-
-#: src/remmina_plugin_manager.c:456 data/ui/remmina_main.glade:305
-msgid "Plugins"
-msgstr "Πρόσθετες λειτουργίες"
-
-#: src/remmina_plugin_manager.c:456 src/remmina_message_panel.c:452
-#: src/remmina_message_panel.c:621 src/remmina_file_editor.c:152
-msgid "_OK"
-msgstr "_OK"
-
-#: src/remmina_plugin_manager.c:474 src/remmina_file_editor.c:1490
-#: data/ui/remmina_main.glade:442
-msgid "Name"
-msgstr "Όνομα"
-
-#: src/remmina_plugin_manager.c:480
-msgid "Type"
-msgstr "Τύπος"
-
-#: src/remmina_plugin_manager.c:486
-msgid "Description"
-msgstr "Περιγραφή"
-
-#: src/remmina_plugin_manager.c:492
-msgid "Version"
-msgstr "Έκδοση"
-
-#: src/remmina_main.c:662
-#, c-format
-msgid "Total %i item."
-msgid_plural "Total %i items."
-msgstr[0] "Σύνολο %i αντικείμενο."
-msgstr[1] "Σύνολο %i αντικείμενα."
-
-#: src/remmina_main.c:853
-#, c-format
-msgid "Are you sure you want to delete “%s”?"
-msgstr "Είστε σίγουρη/ος για τη διαγραφή του: '%s'?"
-
-#: src/remmina_main.c:973
-#, c-format
-msgid ""
-"Unable to import:\n"
-"%s"
+#: src/remmina_ftp_client.c:529
+msgid "Are you sure to delete the selected files on server?"
 msgstr ""
-"Δεν είναι δυνατή η εισαγωγή του:\n"
-"%s"
+"Είστε σίγουρος για την διαγραφή των επιλεγμένων αρχείων στον εξυπηρετητή;"
 
-#: src/remmina_main.c:999 data/ui/remmina_main.glade:285
-msgid "Import"
-msgstr "Εισαγωγή"
+#: src/remmina_ftp_client.c:586
+msgid "Choose a file to upload"
+msgstr "Επέλεξε αρχείο για μεταφόρτωση"
 
-#: src/remmina_main.c:1022 src/remmina_file_editor.c:1373
-msgid "_Save"
-msgstr "_Αποθήκευση"
+#: src/remmina_ftp_client.c:593
+msgid "Upload folder"
+msgstr "Μεταφόρτωση φακέλου"
 
-#: src/remmina_main.c:1028
-msgid "This protocol does not support exporting."
-msgstr "Αυτό το πρωτόκολλο δεν υποστηρίζει την εξαγωγή."
+#: src/remmina_ftp_client.c:649 src/remmina_ftp_client.c:763
+msgid "Download"
+msgstr "Λήψη"
 
-#: src/remmina_main.c:1344
-msgid "Remmina Remote Desktop Client"
-msgstr "Διακομιστής απομακρυσμένης επιφάνειας εργασίας Remmina"
+#: src/remmina_ftp_client.c:656 src/remmina_ftp_client.c:770
+msgid "Upload"
+msgstr "Μεταφόρτωση"
 
-#: src/remmina_main.c:1346
-msgid "Remmina Kiosk"
-msgstr "Περίπτερο Ρεμίνα"
-
-#: src/remmina_key_chooser.h:38
+#: src/remmina_ftp_client.c:663
 #, fuzzy
-msgid "Shift+"
-msgstr "Shift+"
+msgid "_Delete"
+msgstr "Διαγραφή"
 
-#: src/remmina_key_chooser.h:39
+#: src/remmina_ftp_client.c:748
+msgid "Home"
+msgstr "Αρχική"
+
+#: src/remmina_ftp_client.c:749
+msgid "Go to home folder"
+msgstr "Μετακίνηση στον προσωπικό κατάλογο"
+
+#: src/remmina_ftp_client.c:753
 #, fuzzy
-msgid "Ctrl+"
-msgstr "Ctrl+"
+msgid "Up"
+msgstr "Πάνω"
 
-#: src/remmina_key_chooser.h:40
-#, fuzzy
-msgid "Alt+"
-msgstr "Alt+"
+#: src/remmina_ftp_client.c:754
+msgid "Go to parent folder"
+msgstr "Μετακίνηση στον γονικό κατάλογο"
 
-#: src/remmina_key_chooser.h:41
-#, fuzzy
-msgid "Super+"
-msgstr "Σούπερ+"
+#: src/remmina_ftp_client.c:758 plugins/rdp/rdp_plugin.c:2740
+#: plugins/vnc/vnc_plugin.c:2019
+msgid "Refresh"
+msgstr "Ανανέωση"
 
-#: src/remmina_key_chooser.h:42
-#, fuzzy
-msgid "Hyper+"
-msgstr "Hyper+"
+#: src/remmina_ftp_client.c:759
+msgid "Refresh current folder"
+msgstr "Ανανέωση τρέχοντος καταλόγου"
 
-#: src/remmina_key_chooser.h:43
-#, fuzzy
-msgid "Meta+"
-msgstr "Meta+"
+#: src/remmina_ftp_client.c:764
+msgid "Download from server"
+msgstr "Λήψη από τον εξυπηρετητή"
 
-#: src/remmina_key_chooser.h:44
-#, fuzzy
-msgid "<None>"
-msgstr "<Κανένα>"
+#: src/remmina_ftp_client.c:771
+msgid "Upload to server"
+msgstr "Μεταφόρτωση στον εξυπηρετητή"
 
-#. TRANSLATORS: The placeholder %s is a directory path
-#: src/remmina_sftp_client.c:173
+#: src/remmina_ftp_client.c:775 data/ui/remmina_main.glade:197
+msgid "Delete"
+msgstr "Διαγραφή"
+
+#: src/remmina_ftp_client.c:776
+msgid "Delete files on server"
+msgstr "Διαγραφή αρχείων στον εξυπηρετητή"
+
+#: src/remmina_ftp_client.c:905 src/remmina_ftp_client.c:974
+msgid "Filename"
+msgstr "Όνομα Αρχείου"
+
+#: src/remmina_ftp_client.c:918 src/remmina_ftp_client.c:1003
+msgid "Size"
+msgstr "Μέγεθος"
+
+#: src/remmina_ftp_client.c:926
+msgid "User"
+msgstr "Χρήστης"
+
+#: src/remmina_ftp_client.c:932 src/remmina_file_editor.c:1515
+#: data/ui/remmina_mpc.glade:115 data/ui/remmina_main.glade:464
+msgid "Group"
+msgstr "Ομάδα"
+
+#: src/remmina_ftp_client.c:938
+msgid "Permission"
+msgstr "Διακαιώματα"
+
+#: src/remmina_ftp_client.c:990 plugins/rdp/rdp_plugin.c:2548
+msgid "Remote"
+msgstr "Απομακρυσμένο"
+
+#: src/remmina_ftp_client.c:997 plugins/rdp/rdp_plugin.c:2547
+msgid "Local"
+msgstr "Τοπικό"
+
+#: src/remmina_ftp_client.c:1011
+msgid "Progress"
+msgstr "Πρόοδος"
+
+#: src/remmina_protocol_widget.c:290 src/remmina_ssh_plugin.c:829
+#: src/remmina_ssh_plugin.c:1454
+msgid "Open SFTP transfer…"
+msgstr "Άνοιγμα ασφαλούς μεταφοράς αρχείων…"
+
+#: src/remmina_protocol_widget.c:319
+msgid "Executing external commands…"
+msgstr "Εκτελούνται εξωτερικές εντολές…"
+
+#. TRANSLATORS: “%s” is a placeholder for the connection profile name
+#: src/remmina_protocol_widget.c:327
 #, c-format
-msgid "Could not create the folder “%s”."
-msgstr "Δεν ήταν δυνατή η δημιουργία του φακέλου \"%s\"."
+msgid "Connecting to “%s”…"
+msgstr "Γίνεται σύνδεση με '%s'…"
 
-#. TRANSLATORS: The placeholder %s is a file path
-#: src/remmina_sftp_client.c:181 src/remmina_sftp_client.c:202
+#. TRANSLATORS: “%s” is a placeholder for an hostname or an IP address.
+#: src/remmina_protocol_widget.c:911 src/remmina_protocol_widget.c:1096
 #, c-format
-msgid "Could not create the file “%s”."
-msgstr "Δεν ήταν δυνατή η δημιουργία του αρχείου \"%s\"."
+msgid "Connecting to “%s” via SSH…"
+msgstr "Γίνεται σύνδεση με '%s'…"
 
-#. TRANSLATORS: The placeholders %s are a file path, and an error message.
-#: src/remmina_sftp_client.c:220
+#. TRANSLATORS: “%i” is a placeholder for a TCP port number.
+#: src/remmina_protocol_widget.c:1160
 #, c-format
-msgid "Could not open the file “%s” on the server. %s"
-msgstr "Δεν ήταν δυνατό το άνοιγμα του αρχείου \"%s\" στο διακομιστή. %s"
+msgid "Awaiting incoming SSH connection on port %i…"
+msgstr "Αναμονή για ένα εισερχόμενο SSH tunnel στην θύρα %i…"
 
-#: src/remmina_sftp_client.c:242
+#: src/remmina_protocol_widget.c:1213
 #, c-format
-msgid "Could not save the file “%s”."
-msgstr "Δεν ήταν δυνατή η αποθήκευση του αρχείου \"%s\"."
+msgid "The “%s” command is not available on the SSH server."
+msgstr "Η Εντολή %s δεν βρέθηκε στον εξυπηρετητή SSH."
 
-#: src/remmina_sftp_client.c:281 src/remmina_sftp_client.c:698
-#: src/remmina_sftp_client.c:761
+#: src/remmina_protocol_widget.c:1218
 #, c-format
-msgid "Could not open the folder “%s”. %s"
-msgstr "Δεν ήταν δυνατό το άνοιγμα του φακέλου \"%s\". %s"
+msgid "Could not run the “%s” command on the SSH server (status = %i)."
+msgstr "Αποτυχία εντολής %s στον εξυπηρετητή SSH (status =%i)."
 
-#: src/remmina_sftp_client.c:385
+#. TRANSLATORS: %s is a placeholder for an error message
+#: src/remmina_protocol_widget.c:1226
 #, c-format
-msgid "Could not create the folder “%s” on the server. %s"
-msgstr "Δεν ήταν δυνατή η δημιουργία του φακέλου \"%s\" στο διακομιστή. %s"
+msgid "Could not run command. %s"
+msgstr "Αποτυχία αίτησης port forwarding: %s"
 
-#: src/remmina_sftp_client.c:413 src/remmina_sftp_client.c:435
+#. TRANSLATORS: “%s” is a placeholder for a hostname or IP address.
+#: src/remmina_protocol_widget.c:1296
 #, c-format
-msgid "Could not create the file “%s” on the server. %s"
-msgstr "Δεν ήταν δυνατή η δημιουργία του αρχείου \"%s\" στο διακομιστή. %s"
+msgid "Connecting to %s via SSH…"
+msgstr "Γίνεται σύνδεση με '%s'…"
 
-#: src/remmina_sftp_client.c:456
+#: src/remmina_protocol_widget.c:1690
+msgid "Type in SSH username and password."
+msgstr "Πληκτρολογήστε το όνομα χρήστη και τον κωδικό πρόσβασης SSH."
+
+#: src/remmina_protocol_widget.c:1745 src/remmina_protocol_widget.c:1777
+msgid "Fingerprint automatically accepted"
+msgstr "Δακτυλικό αποτύπωμα αυτόματα αποδεκτό"
+
+#. TRANSLATORS: The user is asked to verify a new SSL certificate.
+#: src/remmina_protocol_widget.c:1753
+msgid "Certificate details:"
+msgstr "Λεπτομέρειες πιστοποιητικού:"
+
+#. TRANSLATORS: An SSL certificate subject is usually the remote server the user connect to.
+#: src/remmina_protocol_widget.c:1755 src/remmina_protocol_widget.c:1787
+msgid "Subject:"
+msgstr "Θέμα:"
+
+#. TRANSLATORS: The name or email of the entity that have issued the SSL certificate
+#: src/remmina_protocol_widget.c:1757 src/remmina_protocol_widget.c:1789
+msgid "Issuer:"
+msgstr "Εκδότης:"
+
+#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
+#: src/remmina_protocol_widget.c:1759
+msgid "Fingerprint:"
+msgstr "Αποτύπωμα:"
+
+#. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
+#: src/remmina_protocol_widget.c:1761
+msgid "Accept certificate?"
+msgstr "Αποδοχή του πιστοποιητικού;"
+
+#. TRANSLATORS: The user is asked to verify a new SSL certificate.
+#: src/remmina_protocol_widget.c:1785
+msgid "The certificate changed! Details:"
+msgstr "Το πιστοποιητικό άλλαξε! Λεπτομέρειες:"
+
+#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
+#: src/remmina_protocol_widget.c:1791
+msgid "Old fingerprint:"
+msgstr "Αποτύπωμα:"
+
+#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
+#: src/remmina_protocol_widget.c:1793
+msgid "New fingerprint:"
+msgstr "Αποτύπωμα:"
+
+#. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
+#: src/remmina_protocol_widget.c:1795
+msgid "Accept changed certificate?"
+msgstr "Αποδοχή του πιστοποιητικού;"
+
+#. TRANSLATORS: “%i” is a placeholder for a port number. “%s”  is a placeholder for a protocol name (VNC).
+#: src/remmina_protocol_widget.c:1938
 #, c-format
-msgid "Could not open the file “%s”."
-msgstr "Δεν ήταν δυνατό το άνοιγμα του αρχείου \"%s\"."
+msgid "Listening on port %i for an incoming %s connection…"
+msgstr "Αναμονή στη θύρα %i για μια εισερχόμενη %s σύνδεση…"
 
-#: src/remmina_sftp_client.c:476
+#: src/remmina_protocol_widget.c:1963
+msgid "Could not authenticate, attempting reconnection…"
+msgstr "Αποτυχία ελέγχου ταυτότητας. Προσπάθεια επανασύνδεσης…"
+
+#: src/remmina_protocol_widget.c:2025 src/remmina_file_editor.c:346
+#: src/remmina_file_editor.c:917 data/ui/remmina_main.glade:478
+msgid "Server"
+msgstr "Εξυπηρετητής"
+
+#. TRANSLATORS: “%s” is a placeholder for a protocol name, like “RDP”.
+#: src/remmina_protocol_widget.c:2043
 #, c-format
-msgid "Could not write to the file “%s” on the server. %s"
-msgstr "Δεν ήταν δυνατή η εγγραφή στο αρχείο \"%s\" στο διακομιστή. %s"
-
-#: src/remmina_sftp_client.c:716
-#, c-format
-msgid "Could not read from the folder. %s"
-msgstr "Δεν ήταν δυνατή η ανάγνωση από το φάκελο. %s"
-
-#: src/remmina_sftp_client.c:823
-msgid "Are you sure you want to cancel the file transfer in progress?"
-msgstr ""
-"Είστε βέβαιοι ότι θέλετε να ακυρώσετε τη μεταφορά αρχείων που βρίσκεται σε "
-"εξέλιξη;"
-
-#: src/remmina_sftp_client.c:857
-#, c-format
-msgid "Could not delete “%s”. %s"
-msgstr "Αποτυχία διαγραφής του '%s'. %s"
-
-#: src/remmina_sftp_client.c:942
-msgid "The file exists already"
-msgstr "Το αρχείο υπάρχει ήδη"
-
-#: src/remmina_sftp_client.c:945
-msgid "Resume"
-msgstr "Συνέχιση"
-
-#: src/remmina_sftp_client.c:946
-msgid "Overwrite"
-msgstr "Αντικατάσταση"
-
-#: src/remmina_sftp_client.c:947 src/remmina_message_panel.c:457
-#: src/remmina_message_panel.c:629 src/remmina_file_editor.c:151
-#: src/remmina_file_editor.c:1365 plugins/spice/spice_plugin_file_transfer.c:84
-#: data/ui/remmina_spinner.glade:8 data/ui/remmina_spinner.glade:9
-#: data/ui/remmina_key_chooser.glade:8 data/ui/remmina_key_chooser.glade:9
-msgid "_Cancel"
-msgstr "_Άκυρο"
-
-#: src/remmina_sftp_client.c:964
-msgid "The following file already exists in the target folder:"
-msgstr "Το ακόλουθο αρχείο υπάρχει ήδη στον φάκελο προορισμού:"
-
-#: src/remmina_message_panel.c:163 data/ui/remmina_unlock.glade:46
-#: data/ui/remmina_mpc.glade:46
-msgid "Cancel"
-msgstr "Άκυρο"
-
-#: src/remmina_message_panel.c:199 data/ui/remmina_snap_info_dialog.glade:28
-#: data/ui/remmina_news.glade:33 data/ui/remmina_preferences.glade:2640
-#: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
-#: data/ui/remmina_string_list.glade:63
-msgid "Close"
-msgstr "Κλείσιμο"
-
-#: src/remmina_message_panel.c:260
-msgid "Yes"
-msgstr "Ναι"
-
-#: src/remmina_message_panel.c:267
-msgid "No"
-msgstr "Όχι"
-
-#: src/remmina_message_panel.c:391 plugins/rdp/rdp_plugin.c:2653
-#: data/ui/remmina_mpc.glade:172
-msgid "Domain"
-msgstr "Τομέας (domain)"
-
-#: src/remmina_message_panel.c:420
-msgid "Save password"
-msgstr "Αποθήκευση κωδικού πρόσβασης"
-
-#: src/remmina_message_panel.c:513
-#, fuzzy
-msgid "Enter certificate authentication files"
-msgstr "Εισαγωγή αρχείων ελέγχου ταυτότητας πιστοποιητικών"
-
-#: src/remmina_message_panel.c:525
-msgid "CA Certificate File"
-msgstr "Αρχείο πιστοποιητικού CA"
-
-#: src/remmina_message_panel.c:547
-msgid "CA CRL File"
-msgstr "Αρχείο CA CRL"
-
-#: src/remmina_message_panel.c:569
-msgid "Client Certificate File"
-msgstr "Αρχείο πιστοποιητικού πελάτη"
-
-#: src/remmina_message_panel.c:591
-msgid "Client Certificate Key"
-msgstr "Κλειδί πιστοποιητικού πελάτη"
-
-#: src/remmina_sftp_plugin.c:323
-msgid "Show Hidden Files"
-msgstr "Εμφάνιση Κρυφών Αρχείων"
-
-#: src/remmina_sftp_plugin.c:325
-msgid "Overwrite all files"
-msgstr "Αντικατάσταση όλων των αρχείων"
-
-#: src/remmina_sftp_plugin.c:327
-msgid "Resume all file transfers"
-msgstr "Συνέχιση όλων των μεταφορών αρχείων"
-
-#: src/remmina_sftp_plugin.c:359
-msgid "SFTP - Secure File Transfer"
-msgstr "SFTP - Ασφαλής Μεταφορά Αρχείων"
+msgid "Install the %s protocol plugin first."
+msgstr "Εγκαταστήστε πρώτα το plugin πρωτοκόλλου %s."
 
 #: src/remmina_ssh.c:236
 #, c-format
@@ -1528,6 +1189,133 @@ msgstr "Αποτυχία δημιουργίας συνεδρίας sftp: %s"
 msgid "Could not create PTY device."
 msgstr "Δεν ήταν δυνατή η δημιουργία συσκευής PTY."
 
+#: src/remmina_exec.c:475
+#, c-format
+msgid "Plugin %s is not registered."
+msgstr "Το πρόσθετο %s δεν έχει καταχωρηθεί."
+
+#: src/remmina_main.c:662
+#, c-format
+msgid "Total %i item."
+msgid_plural "Total %i items."
+msgstr[0] "Σύνολο %i αντικείμενο."
+msgstr[1] "Σύνολο %i αντικείμενα."
+
+#: src/remmina_main.c:853
+#, c-format
+msgid "Are you sure you want to delete “%s”?"
+msgstr "Είστε σίγουρη/ος για τη διαγραφή του: '%s'?"
+
+#: src/remmina_main.c:973
+#, c-format
+msgid ""
+"Unable to import:\n"
+"%s"
+msgstr ""
+"Δεν είναι δυνατή η εισαγωγή του:\n"
+"%s"
+
+#: src/remmina_main.c:999 data/ui/remmina_main.glade:285
+msgid "Import"
+msgstr "Εισαγωγή"
+
+#: src/remmina_main.c:1022 src/remmina_file_editor.c:1373
+msgid "_Save"
+msgstr "_Αποθήκευση"
+
+#: src/remmina_main.c:1028
+msgid "This protocol does not support exporting."
+msgstr "Αυτό το πρωτόκολλο δεν υποστηρίζει την εξαγωγή."
+
+#: src/remmina_main.c:1344
+msgid "Remmina Remote Desktop Client"
+msgstr "Διακομιστής απομακρυσμένης επιφάνειας εργασίας Remmina"
+
+#: src/remmina_main.c:1346
+msgid "Remmina Kiosk"
+msgstr "Περίπτερο Ρεμίνα"
+
+#. TRANSLATORS: The placeholder %s is a directory path
+#: src/remmina_sftp_client.c:173
+#, c-format
+msgid "Could not create the folder “%s”."
+msgstr "Δεν ήταν δυνατή η δημιουργία του φακέλου \"%s\"."
+
+#. TRANSLATORS: The placeholder %s is a file path
+#: src/remmina_sftp_client.c:181 src/remmina_sftp_client.c:202
+#, c-format
+msgid "Could not create the file “%s”."
+msgstr "Δεν ήταν δυνατή η δημιουργία του αρχείου \"%s\"."
+
+#. TRANSLATORS: The placeholders %s are a file path, and an error message.
+#: src/remmina_sftp_client.c:220
+#, c-format
+msgid "Could not open the file “%s” on the server. %s"
+msgstr "Δεν ήταν δυνατό το άνοιγμα του αρχείου \"%s\" στο διακομιστή. %s"
+
+#: src/remmina_sftp_client.c:242
+#, c-format
+msgid "Could not save the file “%s”."
+msgstr "Δεν ήταν δυνατή η αποθήκευση του αρχείου \"%s\"."
+
+#: src/remmina_sftp_client.c:281 src/remmina_sftp_client.c:698
+#: src/remmina_sftp_client.c:761
+#, c-format
+msgid "Could not open the folder “%s”. %s"
+msgstr "Δεν ήταν δυνατό το άνοιγμα του φακέλου \"%s\". %s"
+
+#: src/remmina_sftp_client.c:385
+#, c-format
+msgid "Could not create the folder “%s” on the server. %s"
+msgstr "Δεν ήταν δυνατή η δημιουργία του φακέλου \"%s\" στο διακομιστή. %s"
+
+#: src/remmina_sftp_client.c:413 src/remmina_sftp_client.c:435
+#, c-format
+msgid "Could not create the file “%s” on the server. %s"
+msgstr "Δεν ήταν δυνατή η δημιουργία του αρχείου \"%s\" στο διακομιστή. %s"
+
+#: src/remmina_sftp_client.c:456
+#, c-format
+msgid "Could not open the file “%s”."
+msgstr "Δεν ήταν δυνατό το άνοιγμα του αρχείου \"%s\"."
+
+#: src/remmina_sftp_client.c:476
+#, c-format
+msgid "Could not write to the file “%s” on the server. %s"
+msgstr "Δεν ήταν δυνατή η εγγραφή στο αρχείο \"%s\" στο διακομιστή. %s"
+
+#: src/remmina_sftp_client.c:716
+#, c-format
+msgid "Could not read from the folder. %s"
+msgstr "Δεν ήταν δυνατή η ανάγνωση από το φάκελο. %s"
+
+#: src/remmina_sftp_client.c:823
+msgid "Are you sure you want to cancel the file transfer in progress?"
+msgstr ""
+"Είστε βέβαιοι ότι θέλετε να ακυρώσετε τη μεταφορά αρχείων που βρίσκεται σε "
+"εξέλιξη;"
+
+#: src/remmina_sftp_client.c:857
+#, c-format
+msgid "Could not delete “%s”. %s"
+msgstr "Αποτυχία διαγραφής του '%s'. %s"
+
+#: src/remmina_sftp_client.c:942
+msgid "The file exists already"
+msgstr "Το αρχείο υπάρχει ήδη"
+
+#: src/remmina_sftp_client.c:945
+msgid "Resume"
+msgstr "Συνέχιση"
+
+#: src/remmina_sftp_client.c:946
+msgid "Overwrite"
+msgstr "Αντικατάσταση"
+
+#: src/remmina_sftp_client.c:964
+msgid "The following file already exists in the target folder:"
+msgstr "Το ακόλουθο αρχείο υπάρχει ήδη στον φάκελο προορισμού:"
+
 #: src/remmina_file_editor.c:60
 #, fuzzy
 #| msgid ""
@@ -1711,6 +1499,12 @@ msgstr "Πιστοποίηση SSH"
 msgid "SSH private key file"
 msgstr "Αρχείο ιδιωτικού κλειδιού SSH"
 
+#: src/remmina_file_editor.c:979 src/remmina_ssh_plugin.c:1477
+#, fuzzy
+#| msgid "CA Certificate File"
+msgid "SSH certificate file"
+msgstr "Αρχείο πιστοποιητικού SSH"
+
 #: src/remmina_file_editor.c:1037
 msgid "Basic"
 msgstr "Βασικό"
@@ -1767,607 +1561,360 @@ msgstr "Χρήση '%s' ως υποομάδα οριοθέτη"
 msgid "Could not find the file “%s”."
 msgstr "Δεν ήταν δυνατό το άνοιγμα του αρχείου \"%s\"."
 
-#: src/remmina_chat_window.c:178
+#: src/remmina_icon.c:128
+msgid "Open Main Window"
+msgstr "Άνοιγμα κεντρικού παραθύρου"
+
+#: src/remmina_icon.c:133 data/ui/remmina_main.glade:254
+msgid "_Preferences"
+msgstr "_P Προτιμήσεις"
+
+#: src/remmina_icon.c:138
+msgid "_About"
+msgstr "_Περί του"
+
+#: src/remmina_icon.c:148
+msgid "Enable Service Discovery"
+msgstr "Ενεργοποίηση ανίχνευσης υπηρεσιών"
+
+#: src/remmina_icon.c:160 data/ui/remmina_main.glade:404
+msgid "_Quit"
+msgstr "_Καταργήστε"
+
+#. TRANSLATORS: Applet name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
+#. TRANSLATORS: Applet Name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
+#: src/remmina_icon.c:284 src/remmina_icon.c:416
+msgid "Remmina Applet"
+msgstr "Μικροεφαρμογή Remmina"
+
+#. TRANSLATORS: Applet comment/description as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
+#: src/remmina_icon.c:286 src/remmina_icon.c:418
+msgid "Connect to remote desktops through the applet menu"
+msgstr ""
+"Σύνδεση στους απομακρυσμένους υπολογιστές μέσω της μικροεφαρμογής του μενού"
+
+#. TRANSLATORS: %s is a placeholder for an error message
+#: src/remmina_ssh_plugin.c:539
 #, c-format
-msgid "Chat with %s"
-msgstr "Συνομιλία με %s"
+msgid "Error: %s"
+msgstr "Σφάλμα: %s"
 
-#: src/remmina_chat_window.c:230
-msgid "_Send"
-msgstr "_Aποστολή"
+#: src/remmina_ssh_plugin.c:556
+msgid "Terminal content saved in"
+msgstr "Το περιεχόμενο του τερματικού αποθηκεύτηκε στο"
 
-#: src/remmina_chat_window.c:240
-msgid "_Clear"
-msgstr "_Kαθαρισμός"
+#: src/remmina_ssh_plugin.c:822
+msgid "Select All (host+A)"
+msgstr "Επιλογή όλων"
 
-#: plugins/gvnc/gvnc_plugin_config.h:40
+#: src/remmina_ssh_plugin.c:823
+msgid "Copy (host+C)"
+msgstr "Αντιγραφή (host+C)"
+
+#: src/remmina_ssh_plugin.c:824
+msgid "Paste (host+V)"
+msgstr "Επικόλληση (host+V)"
+
+#: src/remmina_ssh_plugin.c:825
+msgid "Save session to file"
+msgstr "Αποθήκευση περιόδου λειτουργίας σε αρχείο"
+
+#: src/remmina_ssh_plugin.c:826
+msgid "Increase font size (host+Page Up)"
+msgstr "Αύξηση μεγέθους γραμματοσειράς (host+Page Up)"
+
+#: src/remmina_ssh_plugin.c:827
+msgid "Decrease font size (host+Page Down)"
+msgstr "Μείωση μεγέθους γραμματοσειράς (host+Page Down)"
+
+#: src/remmina_ssh_plugin.c:828
+msgid "Find text (host+G)"
+msgstr "Εύρεση κειμένου (host+G)"
+
+#: src/remmina_ssh_plugin.c:1448 data/ui/remmina_main.glade:177
+msgid "Copy"
+msgstr "Αντιγραφή"
+
+#: src/remmina_ssh_plugin.c:1448
 #, fuzzy
-msgid "Remmina VNC plugin for GNOME and KVM"
-msgstr "Πρόσθετο Remmina VNC για GNOME και KVM"
+msgid "_Copy"
+msgstr "_Αντιγραφή"
 
-#: plugins/gvnc/gvnc_plugin.c:477
-#, fuzzy, c-format
-#| msgid "Authentication type"
-msgid "Unsupported authentication type %u"
-msgstr "Μη υποστηριζόμενος τύπος ελέγχου ταυτότητας %u"
+#: src/remmina_ssh_plugin.c:1449
+msgid "Paste"
+msgstr "Επικόλληση"
 
-#: plugins/gvnc/gvnc_plugin.c:489
-#, fuzzy, c-format
-#| msgid "Authentication type"
-msgid "Authentication failure: %s"
-msgstr "Αποτυχία ελέγχου ταυτότητας: %s"
-
-#: plugins/gvnc/gvnc_plugin.c:539 plugins/vnc/vnc_plugin.c:825
+#: src/remmina_ssh_plugin.c:1449
 #, fuzzy
-msgid "Enter VNC authentication credentials"
-msgstr "Εισάγετε τα διαπιστευτήρια ελέγχου ταυτότητας VNC"
+msgid "_Paste"
+msgstr "Επι_κόλληση"
 
-#: plugins/gvnc/gvnc_plugin.c:820
+#: src/remmina_ssh_plugin.c:1450
+msgid "Select all"
+msgstr "Επιλογή όλων"
+
+#: src/remmina_ssh_plugin.c:1450
 #, fuzzy
-#| msgid "Disable server input"
-msgid "Use server settings"
-msgstr "Χρήση ρυθμίσεων διακομιστή"
+msgid "_Select all"
+msgstr "_Επιλογή όλων"
 
-#: plugins/gvnc/gvnc_plugin.c:821
-#, fuzzy
-#| msgid "True colour (24 bit)"
-msgid "True colour (24 bits)"
-msgstr "Αληθινό χρώμα (24 bit)"
+#: src/remmina_ssh_plugin.c:1451
+msgid "Increase font size"
+msgstr "Αύξηση μεγέθους γραμματοσειράς"
 
-#: plugins/gvnc/gvnc_plugin.c:822
-#, fuzzy
-#| msgid "High colour (16 bit)"
-msgid "High colour (16 bits)"
-msgstr "Υψηλό χρώμα (16 bits)"
+#: src/remmina_ssh_plugin.c:1451
+msgid "_Increase font size"
+msgstr "_Αύξηση μεγέθους γραμματοσειράς"
 
-#: plugins/gvnc/gvnc_plugin.c:823
-#, fuzzy
-#| msgid "High colour (16 bit)"
-msgid "Low colour (8 bits)"
-msgstr "Χαμηλό χρώμα (8 bit)"
+#: src/remmina_ssh_plugin.c:1452
+msgid "Decrease font size"
+msgstr "Μείωση μεγέθους γραμματοσειράς"
 
-#: plugins/gvnc/gvnc_plugin.c:824
-#, fuzzy
-#| msgid "True colour (24 bit)"
-msgid "Ultra low colour (3 bits)"
-msgstr "Εξαιρετικά χαμηλό χρώμα (3 bits)"
+#: src/remmina_ssh_plugin.c:1452
+msgid "_Decrease font size"
+msgstr "_Μείωση μεγέθους γραμματοσειράς"
 
-#: plugins/gvnc/gvnc_plugin.c:839
-#, fuzzy
-#| msgid "Enter VNC password"
-msgid "VNC password"
-msgstr "Κωδικός πρόσβασης VNC"
+#: src/remmina_ssh_plugin.c:1453
+msgid "Find text"
+msgstr "Εύρεση κειμένου"
 
-#: plugins/gvnc/gvnc_plugin.c:840 plugins/vnc/vnc_plugin.c:1962
-#: plugins/vnc/vnc_plugin.c:1982 plugins/rdp/rdp_plugin.c:2661
-msgid "Colour depth"
-msgstr "Βάθος χρώματος"
+#: src/remmina_ssh_plugin.c:1453
+msgid "_Find text"
+msgstr "_Εύρεση κειμένου"
 
-#: plugins/gvnc/gvnc_plugin.c:841
-#, fuzzy
-#| msgid "SSH compression"
-msgid "Use JPEG Compression"
-msgstr "Χρήση συμπίεσης JPEG"
+#: src/remmina_ssh_plugin.c:1474 plugins/spice/spice_plugin.c:666
+#: plugins/vnc/vnc_plugin.c:1961 plugins/vnc/vnc_plugin.c:1981
+msgid "User password"
+msgstr "Κωδικός Χρήστη"
 
-#: plugins/gvnc/gvnc_plugin.c:841
-#, fuzzy
-#| msgid "Browse the network to find a %s server"
-msgid "This might not work on all VNC servers"
-msgstr "Αυτό μπορεί να μην λειτουργεί σε όλους τους διακομιστές VNC"
+#: src/remmina_ssh_plugin.c:1480 plugins/rdp/rdp_plugin.c:2693
+msgid "Start-up program"
+msgstr "Πρόγραμμα Εκκίνησης"
 
-#: plugins/gvnc/gvnc_plugin.c:842
-#, fuzzy
-msgid "Enable GTK-VNC debug"
-msgstr "Ενεργοποίηση της αποσφαλμάτωσης GTK-VNC"
-
-#: plugins/gvnc/gvnc_plugin.c:857 plugins/gvnc/gvnc_plugin.c:871
-#: plugins/spice/spice_plugin.c:693 plugins/spice/spice_plugin.c:706
-msgid "No clipboard sync"
-msgstr "Απενεργοποίηση συγχρονισμού προχείρου"
-
-#: plugins/gvnc/gvnc_plugin.c:858 plugins/www/www_plugin.c:904
-#: plugins/vnc/vnc_plugin.c:2005 plugins/spice/spice_plugin.c:694
-#: plugins/rdp/rdp_plugin.c:2718
-msgid "Forget passwords after use"
-msgstr "%s κωδικός πρόσβασης"
-
-#: plugins/gvnc/gvnc_plugin.c:859 plugins/vnc/vnc_plugin.c:2004
-#, fuzzy
-msgid "Ignore remote bell messages"
-msgstr "Αγνοήστε τα μηνύματα απομακρυσμένου κουδουνιού"
-
-#: plugins/gvnc/gvnc_plugin.c:860 plugins/spice/spice_plugin.c:695
-#, fuzzy
-msgid "Enable audio channel"
-msgstr "Ενεργοποίηση καναλιού ήχου"
-
-#: plugins/gvnc/gvnc_plugin.c:861 plugins/gvnc/gvnc_plugin.c:870
-#: plugins/vnc/vnc_plugin.c:2000 plugins/vnc/vnc_plugin.c:2017
-#: plugins/spice/spice_plugin.c:697 plugins/spice/spice_plugin.c:705
-msgid "View only"
-msgstr "Μόνο προβολή"
-
-#: plugins/gvnc/gvnc_plugin.c:862
-#, fuzzy
-#| msgid "Per connection"
-msgid "Shared connection"
-msgstr "Κοινή σύνδεση"
-
-#: plugins/gvnc/gvnc_plugin.c:862
-#, fuzzy
+#: src/remmina_ssh_plugin.c:1485
 msgid ""
-"If the server should try to share the desktop by leaving other clients "
-"connected"
+"The filename can use the following placeholders:\n"
+"\n"
+"  • %h is substituted with the server name\n"
+"  • %t is substituted with the SSH server name\n"
+"  • %u is substituted with the username\n"
+"  • %U is substituted with the SSH username\n"
+"  • %p is substituted with Remmina profile name\n"
+"  • %g is substituted with Remmina profile group name\n"
+"  • %d is substituted with local date and time in ISO 8601 format\n"
 msgstr ""
-"Εάν ο διακομιστής προσπαθήσει να μοιραστεί την επιφάνεια εργασίας αφήνοντας "
-"άλλους πελάτες συνδεδεμένους"
+"Το όνομα αρχείου μπορεί να χρησιμοποιήσει τα ακόλουθα σύμβολα κράτησης "
+"θέσης:\n"
+"\n"
+"• %h αντικαθίσταται με το όνομα του διακομιστή\n"
+"  • %t αντικαθίσταται με το όνομα του διακομιστή SSH\n"
+"  • %u αντικαθίσταται με το όνομα χρήστη\n"
+"  • %U αντικαθίσταται με το όνομα χρήστη SSH\n"
+"  • %p αντικαθίσταται με το όνομα προφίλ Remmina\n"
+"  • %g αντικαθίσταται με το όνομα της ομάδας προφίλ Remmina\n"
+"  • %d αντικαθίσταται με τοπική ημερομηνία/ώρα σε μορφή ISO8601\n"
 
-#: plugins/gvnc/gvnc_plugin.c:872
+#: src/remmina_ssh_plugin.c:1507
 #, fuzzy
-msgid "Send Ctrl+Alt+_Del"
-msgstr "Αποστολή Ctrl+Alt+_Del"
+#| msgid "Terminal color scheme"
+msgid "Terminal colour scheme"
+msgstr "Συνδυασμός χρωμάτων τερματικού"
 
-#: plugins/gvnc/gvnc_plugin.c:873
-#, fuzzy
-msgid "Send Ctrl+Alt+_Backspace"
-msgstr "Αποστολή Ctrl+Alt+_Backspace"
+#: src/remmina_ssh_plugin.c:1508
+msgid "Character set"
+msgstr "Κωδικοποίηση χαρακτήρων"
 
-#: plugins/gvnc/gvnc_plugin.c:874
-#, fuzzy
-msgid "Send Ctrl+Alt+_F1"
-msgstr "Αποστολή Ctrl+Alt+_F1"
+#: src/remmina_ssh_plugin.c:1510
+msgid "KEX (Key Exchange) algorithms"
+msgstr "Αλγόριθμοι KEX (Ανταλλαγή κλειδιών)"
 
-#: plugins/gvnc/gvnc_plugin.c:875
-#, fuzzy
-msgid "Send Ctrl+Alt+_F2"
-msgstr "Αποστολή Ctrl+Alt+_F2"
+#: src/remmina_ssh_plugin.c:1511
+msgid "Symmetric cipher client to server"
+msgstr "Symmetric cipher πελάτης σε διακομιστή"
 
-#: plugins/gvnc/gvnc_plugin.c:876
-#, fuzzy
-msgid "Send Ctrl+Alt+_F3"
-msgstr "Αποστολή Ctrl+Alt+_F3"
+#: src/remmina_ssh_plugin.c:1512
+msgid "Preferred server host key types"
+msgstr "Προτιμώμενοι τύποι κλειδιών κεντρικού υπολογιστή διακομιστή"
 
-#: plugins/gvnc/gvnc_plugin.c:877
-#, fuzzy
-msgid "Send Ctrl+Alt+_F4"
-msgstr "Αποστολή Ctrl+Alt+_F4"
+#: src/remmina_ssh_plugin.c:1513
+msgid "Folder for SSH session log"
+msgstr "Αποτυχία εκκίνησης της συνεδρίας SSH: %s"
 
-#: plugins/gvnc/gvnc_plugin.c:878
-#, fuzzy
-msgid "Send Ctrl+Alt+_F5"
-msgstr "Αποστολή Ctrl+Alt+_F5"
+#: src/remmina_ssh_plugin.c:1514
+msgid "Filename for SSH session log"
+msgstr "Όνομα αρχείου για το αρχείο καταγραφής συνεδρίας SSH"
 
-#: plugins/gvnc/gvnc_plugin.c:879
-#, fuzzy
-msgid "Send Ctrl+Alt+_F6"
-msgstr "Αποστολή Ctrl+Alt+_F6"
+#: src/remmina_ssh_plugin.c:1515
+msgid "Log SSH session when exiting Remmina"
+msgstr "Καταγραφή συνεδρίας SSH κατά την έξοδο από το Remmina"
 
-#: plugins/gvnc/gvnc_plugin.c:880
+#: src/remmina_ssh_plugin.c:1516
 #, fuzzy
-msgid "Send Ctrl+Alt+_F7"
-msgstr "Αποστολή Ctrl+Alt+_F7"
+msgid "Log SSH session asynchronously"
+msgstr "Ασύγχρονη καταγραφή συνόδου SSH"
 
-#: plugins/gvnc/gvnc_plugin.c:881
+#: src/remmina_ssh_plugin.c:1516
 #, fuzzy
-msgid "Send Ctrl+Alt+_F8"
-msgstr "Αποστολή Ctrl+Alt+_F8"
-
-#: plugins/gvnc/gvnc_plugin.c:882
-#, fuzzy
-msgid "Send Ctrl+Alt+_F9"
-msgstr "Αποστολή Ctrl+Alt+_F9"
-
-#: plugins/gvnc/gvnc_plugin.c:883
-#, fuzzy
-msgid "Send Ctrl+Alt+_F10"
-msgstr "Αποστολή Ctrl+Alt+_F10"
-
-#: plugins/gvnc/gvnc_plugin.c:884
-#, fuzzy
-msgid "Send Ctrl+Alt+_F11"
-msgstr "Αποστολή Ctrl+Alt+_F11"
-
-#: plugins/gvnc/gvnc_plugin.c:885
-#, fuzzy
-msgid "Send Ctrl+Alt+_F12"
-msgstr "Αποστολή Ctrl+Alt+_F12"
-
-#: plugins/gvnc/gvnc_plugin.c:887
-#, fuzzy
-msgid "Reboot remote host"
-msgstr "Επανεκκίνηση απομακρυσμένου υπολογιστή"
-
-#: plugins/gvnc/gvnc_plugin.c:888
-#, fuzzy
-msgid "Reset remote host (hard reboot)"
-msgstr "Επαναφορά απομακρυσμένου κεντρικού υπολογιστή (σκληρή επανεκκίνηση)"
-
-#: plugins/gvnc/gvnc_plugin.c:889
-#, fuzzy
-#| msgid "Show remote cursor"
-msgid "Shutdown remote host"
-msgstr "Τερματισμός απομακρυσμένου υπολογιστή"
-
-#: plugins/exec/exec_plugin_config.h:41
-#, fuzzy
-msgid "Execute a command"
-msgstr "Εκτέλεση μιας εντολής"
-
-#: plugins/exec/exec_plugin.c:160
-#, fuzzy
-msgid "You did not set any command to be executed"
-msgstr "Δεν ορίσατε καμία εντολή προς εκτέλεση"
-
-#: plugins/exec/exec_plugin.c:206
-#, fuzzy
-msgid ""
-"Warning: Running a command synchronously may cause Remmina not to respond.\n"
-"Do you really want to continue?"
+msgid "Saving the session asynchronously may have a notable performance impact"
 msgstr ""
-"Προειδοποίηση: Η σύγχρονη εκτέλεση μιας εντολής μπορεί να προκαλέσει τη μη "
-"ανταπόκριση του Remmina.\n"
-"Θέλετε πραγματικά να συνεχίσετε;"
+"Η ασύγχρονη αποθήκευση της συνεδρίας μπορεί να έχει αξιοσημείωτο αντίκτυπο "
+"στις επιδόσεις"
 
-#: plugins/exec/exec_plugin.c:266
-#, fuzzy
-msgid "Command"
-msgstr "Εντολή"
+#: src/remmina_ssh_plugin.c:1517
+msgid "Audible terminal bell"
+msgstr "Ηχητικό κουδούνι τερματικού"
 
-#: plugins/exec/exec_plugin.c:267
-#, fuzzy
-msgid "Asynchronous execution"
-msgstr "Ασύγχρονη εκτέλεση"
+#: src/remmina_ssh_plugin.c:1518
+msgid "SSH compression"
+msgstr "Συμπίεση SSH"
 
-#: plugins/www/www_plugin.c:98
-#, fuzzy
-msgid "File downloaded"
-msgstr "Αρχείο που έχει ληφθεί"
-
-#: plugins/www/www_plugin.c:574
-#, fuzzy
-msgid "Enter WWW authentication credentials"
-msgstr "Εισάγετε διαπιστευτήρια ελέγχου ταυτότητας WWW"
-
-#: plugins/www/www_plugin.c:878
-#, fuzzy
-msgid "URL"
-msgstr "URL"
-
-#: plugins/www/www_plugin.c:878
-#, fuzzy
-msgid "http://address or https://address"
-msgstr "http://address ή https://address"
-
-#: plugins/www/www_plugin.c:895
-#, fuzzy
-msgid "User agent"
-msgstr "Πράκτορας χρήστη"
-
-#: plugins/www/www_plugin.c:896
-#, fuzzy
-msgid "Proxy URL"
-msgstr "URL μεσολάβησης"
-
-#: plugins/www/www_plugin.c:896
-#, fuzzy
-msgid "E.g. https://example.org, socks://mysocks:1080"
-msgstr "Π.χ. https://example.org, socks://mysocks:1080"
-
-#: plugins/www/www_plugin.c:897
-#, fuzzy
-msgid "Turn on Java support"
-msgstr "Ενεργοποιήστε την υποστήριξη Java"
-
-#: plugins/www/www_plugin.c:898
-msgid "Turn on smooth scrolling"
-msgstr "Εξομάλυνση γραμματοσειρών"
-
-#: plugins/www/www_plugin.c:899
-#, fuzzy
-msgid "Turn on spatial navigation"
-msgstr "Ενεργοποίηση της χωρικής πλοήγησης"
-
-#: plugins/www/www_plugin.c:900
-#, fuzzy
-msgid "Turn on plugin support"
-msgstr "Ενεργοποιήστε την υποστήριξη plugin"
-
-#: plugins/www/www_plugin.c:901
-#, fuzzy
-msgid "Turn on WebGL support"
-msgstr "Ενεργοποιήστε την υποστήριξη WebGL"
-
-#: plugins/www/www_plugin.c:902
-#, fuzzy
-msgid "Turn on HTML5 audio support"
-msgstr "Ενεργοποιήστε την υποστήριξη ήχου HTML5"
-
-#: plugins/www/www_plugin.c:903
-#, fuzzy
-msgid "Ignore TLS errors"
-msgstr "Αγνοήστε τα σφάλματα TLS"
-
-#: plugins/www/www_plugin.c:906
-#, fuzzy
-msgid "Turn on Web Inspector"
-msgstr "Ενεργοποίηση του Web Inspector"
-
-#: plugins/www/www_config.h:43
-#, fuzzy
-msgid "Remmina web-browser plugin"
-msgstr "Remmina web-browser plugin"
-
-#: plugins/secret/src/glibsecret_plugin.c:188
-msgid "Secured password storage in the GNOME keyring"
-msgstr "%s κωδικός πρόσβασης"
-
-#: plugins/tool_hello_world/plugin_config.h:40
-#, fuzzy
-msgid "Hello, World!"
-msgstr "Γεια σας!"
-
-#: plugins/vnc/vnc_plugin.c:772
-msgid "Enter VNC password"
+#: src/remmina_ssh_plugin.c:1519
+msgid "Don't remember passwords"
 msgstr "Αποθήκευση κωδικού πρόσβασης"
 
-#: plugins/vnc/vnc_plugin.c:936
-msgid "Unable to connect to VNC server"
-msgstr "Αδύνατη η σύνδεση στον εξυπηρετητή VNC"
+#: src/remmina_ssh_plugin.c:1520
+msgid "Strict host key checking"
+msgstr "Αυστηρός έλεγχος κλειδιού κεντρικού υπολογιστή"
 
-#: plugins/vnc/vnc_plugin.c:937
-#, c-format
-msgid "Couldn’t convert '%s' to host address"
-msgstr "Αδύνατη η μετατροπή του '%s' στην διεύθυνση του διακομιστή"
+#: src/remmina_ssh_plugin.c:1534
+msgid "SSH - Secure Shell"
+msgstr "SSH - Ασφαλές Κέλυφος"
 
-#: plugins/vnc/vnc_plugin.c:938
-#, c-format
-msgid "VNC connection failed: %s"
-msgstr "Αποτυχία σύνδεσης VNC: %s"
+#: plugins/kwallet/src/kwallet_plugin_main.c:118
+msgid "Secured password storage in KWallet"
+msgstr "%s κωδικός πρόσβασης"
 
-#: plugins/vnc/vnc_plugin.c:939
-msgid "Your connection has been rejected."
-msgstr "Η σύνδεσή σας απορρίφθηκε."
+#: plugins/rdp/rdp_settings.c:205
+msgid "<Auto-detect>"
+msgstr "<Αυτόματος εντοπισμός>"
 
-#: plugins/vnc/vnc_plugin.c:966
-#, fuzzy, c-format
-msgid "The VNC server requested an unknown authentication method. %s"
-msgstr "Ο διακομιστής VNC ζήτησε μια άγνωστη μέθοδο ελέγχου ταυτότητας. %s"
-
-#: plugins/vnc/vnc_plugin.c:968
+#: plugins/rdp/rdp_settings.c:237
 #, fuzzy
-msgid "Please retry after turning on encryption for this profile."
-msgstr ""
-"Επαναλάβετε την προσπάθεια αφού ενεργοποιήσετε την κρυπτογράφηση για αυτό το "
-"προφίλ."
+msgid "<Not set>"
+msgstr "<Δεν έχει οριστεί>"
 
-#: plugins/vnc/vnc_plugin.c:1922 plugins/rdp/rdp_plugin.c:2497
-msgid "True colour (32 bpp)"
-msgstr "Ρεαλιστικό χρώμα (32 bpp)"
+#: plugins/rdp/rdp_settings.c:268
+#, fuzzy
+msgid "<Choose a quality level to edit…>"
+msgstr "<Επιλογή επιπέδου ποιότητας για επεξεργασία...>"
 
-#: plugins/vnc/vnc_plugin.c:1923 plugins/rdp/rdp_plugin.c:2499
-msgid "High colour (16 bpp)"
-msgstr "Χρώμα υψηλής ποιότητας (16 bpp)"
-
-#: plugins/vnc/vnc_plugin.c:1924 plugins/rdp/rdp_plugin.c:2501
-msgid "256 colours (8 bpp)"
-msgstr "256 χρώματα (8 bpp)"
-
-#: plugins/vnc/vnc_plugin.c:1931 plugins/rdp/rdp_plugin.c:2524
-#: plugins/rdp/rdp_settings.c:274
-msgid "Good"
-msgstr "Καλή"
-
-#: plugins/vnc/vnc_plugin.c:1932 plugins/rdp/rdp_plugin.c:2525
-#: plugins/rdp/rdp_settings.c:276
-msgid "Best (slowest)"
-msgstr "Βέλτιστη (αργότερο)"
-
-#: plugins/vnc/vnc_plugin.c:1933 plugins/rdp/rdp_plugin.c:2523
-#: plugins/rdp/rdp_settings.c:272
-msgid "Medium"
-msgstr "Μέτρια"
-
-#: plugins/vnc/vnc_plugin.c:1934 plugins/rdp/rdp_plugin.c:2522
-#: plugins/rdp/rdp_settings.c:270
+#: plugins/rdp/rdp_settings.c:270 plugins/rdp/rdp_plugin.c:2522
+#: plugins/vnc/vnc_plugin.c:1934
 msgid "Poor (fastest)"
 msgstr "Χαμηλή (γρηγορότερο)"
 
-#: plugins/vnc/vnc_plugin.c:1939
+#: plugins/rdp/rdp_settings.c:272 plugins/rdp/rdp_plugin.c:2523
+#: plugins/vnc/vnc_plugin.c:1933
+msgid "Medium"
+msgstr "Μέτρια"
+
+#: plugins/rdp/rdp_settings.c:274 plugins/rdp/rdp_plugin.c:2524
+#: plugins/vnc/vnc_plugin.c:1931
+msgid "Good"
+msgstr "Καλή"
+
+#: plugins/rdp/rdp_settings.c:276 plugins/rdp/rdp_plugin.c:2525
+#: plugins/vnc/vnc_plugin.c:1932
+msgid "Best (slowest)"
+msgstr "Βέλτιστη (αργότερο)"
+
+#: plugins/rdp/rdp_settings.c:415
+msgid "Keyboard layout"
+msgstr "Διάταξη πληκτρολογίου"
+
+#: plugins/rdp/rdp_settings.c:440
+msgid "Use client keyboard mapping"
+msgstr "Χρήση χαρτογράφησης πληκτρολογίου πελάτη"
+
+#: plugins/rdp/rdp_settings.c:450
 #, fuzzy
-msgid ""
-"Connect to VNC using a repeater:\n"
-"  • The server field must contain the repeater ID, e.g. ID:123456789\n"
-"  • The repeater field have to be set to the repeater IP and port, like:\n"
-"    10.10.10.12:5901\n"
-"  • From the remote VNC server, you will connect to\n"
-"    the repeater, e.g. with x11vnc:\n"
-"    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
-msgstr ""
-"Συνδεθείτε στο VNC χρησιμοποιώντας έναν επαναλήπτη:\n"
-"  - π.χ. ID:123456789\n"
-"  - Το πεδίο επαναλήπτη πρέπει να οριστεί στην IP και τη θύρα του "
-"επαναλήπτη, π.χ:\n"
-"    10.10.10.12:5901\n"
-"  - Από τον απομακρυσμένο διακομιστή VNC, θα συνδεθείτε στη διεύθυνση\n"
-"    στον επαναλήπτη, π.χ. με το x11vnc:\n"
-"    x11vnc -connect repeater=ID:123456789+10.10.10.10.12:5500"
+msgid "Quality settings"
+msgstr "Ρυθμίσεις ποιότητας"
 
-#: plugins/vnc/vnc_plugin.c:1959
-msgid "Repeater"
-msgstr "Επαναλήπτης"
+#: plugins/rdp/rdp_settings.c:470
+msgid "Wallpaper"
+msgstr "Ταπετσαρία"
 
-#: plugins/vnc/vnc_plugin.c:1963 plugins/vnc/vnc_plugin.c:1983
-#: plugins/rdp/rdp_plugin.c:2677
-msgid "Quality"
-msgstr "Ποιότητα"
+#: plugins/rdp/rdp_settings.c:477
+msgid "Window drag"
+msgstr "Σύρσιμο Παραθύρου"
 
-#: plugins/vnc/vnc_plugin.c:1979
-msgid "Listen on port"
-msgstr "Ακρόαση στη θύρα"
+#: plugins/rdp/rdp_settings.c:484
+msgid "Menu animation"
+msgstr "Εφέ κίνησης μενού"
 
-#: plugins/vnc/vnc_plugin.c:1999
-msgid "Show remote cursor"
-msgstr "Προβολή απομακρυσμένου δείκτη ποντικιού"
+#: plugins/rdp/rdp_settings.c:491
+msgid "Theme"
+msgstr "Θέμα"
 
-#: plugins/vnc/vnc_plugin.c:2001 plugins/rdp/rdp_plugin.c:2715
-msgid "Turn off clipboard sync"
-msgstr "Απενεργοποίηση συγχρονισμού προχείρου"
+#: plugins/rdp/rdp_settings.c:498
+msgid "Cursor shadow"
+msgstr "Σκιά δείκτη ποντικιού"
 
-#: plugins/vnc/vnc_plugin.c:2002
-msgid "Turn off encryption"
-msgstr "Απενεργοποίηση συγχρονισμού προχείρου"
+#: plugins/rdp/rdp_settings.c:505
+msgid "Cursor blinking"
+msgstr "Ο δείκτης ποντικιού αναβοσβήνει"
 
-#: plugins/vnc/vnc_plugin.c:2003 plugins/vnc/vnc_plugin.c:2018
+#: plugins/rdp/rdp_settings.c:512
+msgid "Font smoothing"
+msgstr "Εξομάλυνση γραμματοσειρών"
+
+#: plugins/rdp/rdp_settings.c:519
+msgid "Composition"
+msgstr "Σύνθεση"
+
+#: plugins/rdp/rdp_settings.c:529
 #, fuzzy
-msgid "Prevent local interaction on the server"
-msgstr "Αποτροπή τοπικής αλληλεπίδρασης στο διακομιστή"
+msgid "Remote scale factor"
+msgstr "Απομακρυσμένος συντελεστής κλίμακας"
 
-#: plugins/vnc/vnc_plugin.c:2006 plugins/rdp/rdp_plugin.c:2656
-#: plugins/rdp/rdp_settings.c:598
+#: plugins/rdp/rdp_settings.c:542
+#, fuzzy
+msgid "Desktop scale factor %"
+msgstr "Συντελεστής κλίμακας επιφάνειας εργασίας %"
+
+#: plugins/rdp/rdp_settings.c:553
+#, fuzzy
+msgid "Device scale factor %"
+msgstr "Συντελεστής κλίμακας συσκευής %"
+
+#: plugins/rdp/rdp_settings.c:575
+#, fuzzy
+msgid "Desktop orientation"
+msgstr "Προσανατολισμός επιφάνειας εργασίας"
+
+#: plugins/rdp/rdp_settings.c:592
+#, fuzzy
+#| msgid "Disable server input"
+msgid "Input device settings"
+msgstr "Ρυθμίσεις συσκευής εισόδου"
+
+#: plugins/rdp/rdp_settings.c:598 plugins/rdp/rdp_plugin.c:2656
+#: plugins/vnc/vnc_plugin.c:2006
 #, fuzzy
 #| msgid "Turn on smooth scrolling"
 msgid "Disable smooth scrolling"
 msgstr "Απενεργοποίηση ομαλής κύλισης"
 
-#: plugins/vnc/vnc_plugin.c:2020
-msgid "Open Chat…"
-msgstr "Άνοιγμα συνομιλίας…"
-
-#: plugins/vnc/vnc_plugin.c:2021 plugins/spice/spice_plugin.c:707
-#: plugins/rdp/rdp_plugin.c:2744
+#: plugins/rdp/rdp_settings.c:608
 #, fuzzy
-msgid "Send Ctrl+Alt+Delete"
-msgstr "Αποστολή Ctrl+Alt+Delete"
+#| msgid "Disable server input"
+msgid "General settings"
+msgstr "Γενικές ρυθμίσεις"
 
-#: plugins/vnc/vnc_plugin.h:41
+#: plugins/rdp/rdp_settings.c:613 plugins/rdp/rdp_plugin.c:2708
 #, fuzzy
-msgid "Remmina VNC Plugin"
-msgstr "Remmina VNC Plugin"
+#| msgid "Reconnection attempt %d of %d…"
+msgid "Reconnect attempts number"
+msgstr "Αριθμός προσπαθειών επανασύνδεσης"
 
-#: plugins/vnc/vnc_plugin.h:46
+#: plugins/rdp/rdp_settings.c:619 plugins/rdp/rdp_plugin.c:2708
 #, fuzzy
-msgid "Remmina VNC listener Plugin"
-msgstr "Remmina VNC listener Plugin"
-
-#: plugins/spice/spice_plugin_usb.c:51 plugins/spice/spice_plugin.c:708
-#, fuzzy
-msgid "Select USB devices for redirection"
-msgstr "Επιλογή συσκευών USB για ανακατεύθυνση"
-
-#: plugins/spice/spice_plugin_usb.c:54
-#, fuzzy
-msgid "_Close"
-msgstr "_Κλείσιμο"
-
-#: plugins/spice/spice_plugin_usb.c:94
-#, fuzzy
-msgid "USB redirection error"
-msgstr "Σφάλμα ανακατεύθυνσης USB"
-
-#: plugins/spice/spice_plugin.c:351
-msgid "Enter SPICE password"
-msgstr "Κωδικός SSH"
-
-#: plugins/spice/spice_plugin.c:386
-#, c-format
-msgid "Disconnected from the SPICE server “%s”."
-msgstr "Αποσυνδεδεμένος από το διακομιστή SPICE \"%s\"."
-
-#: plugins/spice/spice_plugin.c:402
-#, fuzzy
-msgid "TLS connection error."
-msgstr "Σφάλμα σύνδεσης TLS."
-
-#: plugins/spice/spice_plugin.c:408
-msgid "Connection to the SPICE server dropped."
-msgstr "Η σύνδεση με το διακομιστή SPICE διακόπηκε."
-
-#: plugins/spice/spice_plugin.c:616 plugins/spice/spice_plugin.c:634
-msgid "Default"
-msgstr "Προεπιλογή"
-
-#: plugins/spice/spice_plugin.c:635 plugins/rdp/rdp_plugin.c:2546
-#: data/ui/remmina_preferences.glade:677
-msgid "Off"
-msgstr "Απενεργοποιημένο"
-
-#: plugins/spice/spice_plugin.c:636
-#, fuzzy
-msgid "Auto GLZ"
-msgstr "Αυτόματο GLZ"
-
-#: plugins/spice/spice_plugin.c:637
-#, fuzzy
-msgid "Auto LZ"
-msgstr "Αυτόματη LZ"
-
-#: plugins/spice/spice_plugin.c:650
-#, fuzzy
-msgid "Disable video overlay if videos are not displayed properly.\n"
+msgid ""
+"The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
 msgstr ""
-"Απενεργοποιήστε την επικάλυψη βίντεο εάν τα βίντεο δεν εμφανίζονται σωστά.\n"
-
-#: plugins/spice/spice_plugin.c:667
-#, fuzzy
-msgid "Use TLS encryption"
-msgstr "Χρήση κρυπτογράφησης TLS"
-
-#: plugins/spice/spice_plugin.c:668
-#, fuzzy
-msgid "Server CA certificate"
-msgstr "Πιστοποιητικό CA διακομιστή"
-
-#: plugins/spice/spice_plugin.c:669 plugins/rdp/rdp_plugin.c:2654
-msgid "Share folder"
-msgstr "Διαμοιρασμός Φακέλου"
-
-#: plugins/spice/spice_plugin.c:686
-msgid "Prefered video codec"
-msgstr "Προτίμηση"
-
-#: plugins/spice/spice_plugin.c:687
-msgid "Turn off GStreamer overlay"
-msgstr "Απενεργοποίηση εισόδου εξυπηρετητή"
-
-#: plugins/spice/spice_plugin.c:690
-#, fuzzy
-msgid "Prefered image compression"
-msgstr "Προτιμώμενη συμπίεση εικόνας"
-
-#: plugins/spice/spice_plugin.c:696
-#, fuzzy
-msgid "Share smart card"
-msgstr "Μοιραστείτε την έξυπνη κάρτα"
-
-#: plugins/spice/spice_plugin.c:719
-#, fuzzy
-msgid "SPICE - Simple Protocol for Independent Computing Environments"
-msgstr "SPICE - Απλό πρωτόκολλο για ανεξάρτητα υπολογιστικά περιβάλλοντα"
-
-#: plugins/spice/spice_plugin_file_transfer.c:82
-#, fuzzy
-msgid "File Transfers"
-msgstr "Μεταφορές αρχείων"
-
-#: plugins/spice/spice_plugin_file_transfer.c:219
-#, fuzzy
-msgid "Transfer error"
-msgstr "Σφάλμα μεταφοράς"
-
-#: plugins/spice/spice_plugin_file_transfer.c:220
-#, fuzzy, c-format
-msgid "%s: %s"
-msgstr "%s: %s"
-
-#: plugins/spice/spice_plugin_file_transfer.c:223
-#, fuzzy
-msgid "Transfer completed"
-msgstr "Η μεταφορά ολοκληρώθηκε"
-
-#: plugins/spice/spice_plugin_file_transfer.c:224
-#, fuzzy, c-format
-msgid "The %s file has been transferred"
-msgstr "Το αρχείο %s έχει μεταφερθεί"
+"Ο μέγιστος αριθμός προσπαθειών επανασύνδεσης μετά από αποσύνδεση RDP "
+"(προεπιλογή: 20)"
 
 #: plugins/rdp/rdp_plugin.c:757 plugins/rdp/rdp_plugin.c:822
 #, fuzzy
@@ -2542,13 +2089,25 @@ msgstr "GFX RFX Progressive (32 bpp)"
 msgid "RemoteFX (32 bpp)"
 msgstr "RemoteFX (32 bpp)"
 
+#: plugins/rdp/rdp_plugin.c:2497 plugins/vnc/vnc_plugin.c:1922
+msgid "True colour (32 bpp)"
+msgstr "Ρεαλιστικό χρώμα (32 bpp)"
+
 #: plugins/rdp/rdp_plugin.c:2498
 msgid "True colour (24 bpp)"
 msgstr "Ρεαλιστικό χρώμα (24 bpp)"
 
+#: plugins/rdp/rdp_plugin.c:2499 plugins/vnc/vnc_plugin.c:1923
+msgid "High colour (16 bpp)"
+msgstr "Χρώμα υψηλής ποιότητας (16 bpp)"
+
 #: plugins/rdp/rdp_plugin.c:2500
 msgid "High colour (15 bpp)"
 msgstr "Χρώμα υψηλής ποιότητας (15 bpp)"
+
+#: plugins/rdp/rdp_plugin.c:2501 plugins/vnc/vnc_plugin.c:1924
+msgid "256 colours (8 bpp)"
+msgstr "256 χρώματα (8 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2532 data/ui/remmina_preferences.glade:641
 #, fuzzy
@@ -2588,6 +2147,11 @@ msgstr "WAN"
 #, fuzzy
 msgid "LAN"
 msgstr "Τοπικό δίκτυο"
+
+#: plugins/rdp/rdp_plugin.c:2546 plugins/spice/spice_plugin.c:635
+#: data/ui/remmina_preferences.glade:677
+msgid "Off"
+msgstr "Απενεργοποιημένο"
 
 #: plugins/rdp/rdp_plugin.c:2555
 msgid "Automatic negotiation"
@@ -2757,6 +2321,10 @@ msgstr ""
 "  - *\n"
 "\n"
 
+#: plugins/rdp/rdp_plugin.c:2654 plugins/spice/spice_plugin.c:669
+msgid "Share folder"
+msgstr "Διαμοιρασμός Φακέλου"
+
 #: plugins/rdp/rdp_plugin.c:2654
 #, fuzzy
 msgid "Use “Redirect directory” in the advanced tab for multiple directories"
@@ -2792,9 +2360,19 @@ msgstr "Εκτείνετε την οθόνη σε πολλαπλές οθόνε�
 msgid "List monitor IDs"
 msgstr "Λίστα αναγνωριστικών οθόνης"
 
+#: plugins/rdp/rdp_plugin.c:2661 plugins/vnc/vnc_plugin.c:1962
+#: plugins/vnc/vnc_plugin.c:1982 plugins/gvnc/gvnc_plugin.c:840
+msgid "Colour depth"
+msgstr "Βάθος χρώματος"
+
 #: plugins/rdp/rdp_plugin.c:2662
 msgid "Network connection type"
 msgstr "Αποτυχία σύνδεσης VNC: %s"
+
+#: plugins/rdp/rdp_plugin.c:2677 plugins/vnc/vnc_plugin.c:1963
+#: plugins/vnc/vnc_plugin.c:1983
+msgid "Quality"
+msgstr "Ποιότητα"
 
 #: plugins/rdp/rdp_plugin.c:2678
 #, fuzzy
@@ -2965,20 +2543,6 @@ msgstr "Επανακατεύθυνση TCP"
 msgid "/PATH/TO/rdp2tcp"
 msgstr "/PATH/TO/rdp2tcp"
 
-#: plugins/rdp/rdp_plugin.c:2708 plugins/rdp/rdp_settings.c:613
-#, fuzzy
-#| msgid "Reconnection attempt %d of %d…"
-msgid "Reconnect attempts number"
-msgstr "Αριθμός προσπαθειών επανασύνδεσης"
-
-#: plugins/rdp/rdp_plugin.c:2708 plugins/rdp/rdp_settings.c:619
-#, fuzzy
-msgid ""
-"The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
-msgstr ""
-"Ο μέγιστος αριθμός προσπαθειών επανασύνδεσης μετά από αποσύνδεση RDP "
-"(προεπιλογή: 20)"
-
 #: plugins/rdp/rdp_plugin.c:2709
 #, fuzzy
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
@@ -3009,6 +2573,10 @@ msgstr "Κοινή χρήση παράλληλων θυρών"
 msgid "Share a smart card"
 msgstr "Μοιραστείτε μια έξυπνη κάρτα"
 
+#: plugins/rdp/rdp_plugin.c:2715 plugins/vnc/vnc_plugin.c:2001
+msgid "Turn off clipboard sync"
+msgstr "Απενεργοποίηση συγχρονισμού προχείρου"
+
 #: plugins/rdp/rdp_plugin.c:2716
 #, fuzzy
 msgid "Ignore certificate"
@@ -3023,6 +2591,12 @@ msgstr "Χρήση της παλιάς ροής εργασίας αδειών"
 #, fuzzy
 msgid "It disables CAL and hwId is set to 0"
 msgstr "Απενεργοποιεί το CAL και το hwId τίθεται σε 0"
+
+#: plugins/rdp/rdp_plugin.c:2718 plugins/spice/spice_plugin.c:694
+#: plugins/vnc/vnc_plugin.c:2005 plugins/www/www_plugin.c:904
+#: plugins/gvnc/gvnc_plugin.c:858
+msgid "Forget passwords after use"
+msgstr "%s κωδικός πρόσβασης"
 
 #: plugins/rdp/rdp_plugin.c:2719
 msgid "Attach to console (2003/2003 R2)"
@@ -3079,6 +2653,12 @@ msgstr "Χρησιμοποιήστε βασικά διαπιστευτήρια �
 msgid "Enable Gateway websockets support"
 msgstr "Ενεργοποίηση της υποστήριξης websockets της πύλης"
 
+#: plugins/rdp/rdp_plugin.c:2744 plugins/spice/spice_plugin.c:707
+#: plugins/vnc/vnc_plugin.c:2021
+#, fuzzy
+msgid "Send Ctrl+Alt+Delete"
+msgstr "Αποστολή Ctrl+Alt+Delete"
+
 #: plugins/rdp/rdp_plugin.c:2757
 msgid "RDP - Remote Desktop Protocol"
 msgstr "RDP - Πρωτόκολλο απομακρυσμένης επιφάνειας εργασίας"
@@ -3095,105 +2675,525 @@ msgstr "RDP - Προτιμήσεις"
 msgid "Export connection in Windows .rdp file format"
 msgstr "Εξαγωγή σύνδεσης σε τύπο αρχείου .rdp των Windows"
 
-#: plugins/rdp/rdp_settings.c:205
-msgid "<Auto-detect>"
-msgstr "<Αυτόματος εντοπισμός>"
-
-#: plugins/rdp/rdp_settings.c:237
-#, fuzzy
-msgid "<Not set>"
-msgstr "<Δεν έχει οριστεί>"
-
-#: plugins/rdp/rdp_settings.c:268
-#, fuzzy
-msgid "<Choose a quality level to edit…>"
-msgstr "<Επιλογή επιπέδου ποιότητας για επεξεργασία...>"
-
-#: plugins/rdp/rdp_settings.c:415
-msgid "Keyboard layout"
-msgstr "Διάταξη πληκτρολογίου"
-
-#: plugins/rdp/rdp_settings.c:440
-msgid "Use client keyboard mapping"
-msgstr "Χρήση χαρτογράφησης πληκτρολογίου πελάτη"
-
-#: plugins/rdp/rdp_settings.c:450
-#, fuzzy
-msgid "Quality settings"
-msgstr "Ρυθμίσεις ποιότητας"
-
-#: plugins/rdp/rdp_settings.c:470
-msgid "Wallpaper"
-msgstr "Ταπετσαρία"
-
-#: plugins/rdp/rdp_settings.c:477
-msgid "Window drag"
-msgstr "Σύρσιμο Παραθύρου"
-
-#: plugins/rdp/rdp_settings.c:484
-msgid "Menu animation"
-msgstr "Εφέ κίνησης μενού"
-
-#: plugins/rdp/rdp_settings.c:491
-msgid "Theme"
-msgstr "Θέμα"
-
-#: plugins/rdp/rdp_settings.c:498
-msgid "Cursor shadow"
-msgstr "Σκιά δείκτη ποντικιού"
-
-#: plugins/rdp/rdp_settings.c:505
-msgid "Cursor blinking"
-msgstr "Ο δείκτης ποντικιού αναβοσβήνει"
-
-#: plugins/rdp/rdp_settings.c:512
-msgid "Font smoothing"
-msgstr "Εξομάλυνση γραμματοσειρών"
-
-#: plugins/rdp/rdp_settings.c:519
-msgid "Composition"
-msgstr "Σύνθεση"
-
-#: plugins/rdp/rdp_settings.c:529
-#, fuzzy
-msgid "Remote scale factor"
-msgstr "Απομακρυσμένος συντελεστής κλίμακας"
-
-#: plugins/rdp/rdp_settings.c:542
-#, fuzzy
-msgid "Desktop scale factor %"
-msgstr "Συντελεστής κλίμακας επιφάνειας εργασίας %"
-
-#: plugins/rdp/rdp_settings.c:553
-#, fuzzy
-msgid "Device scale factor %"
-msgstr "Συντελεστής κλίμακας συσκευής %"
-
-#: plugins/rdp/rdp_settings.c:575
-#, fuzzy
-msgid "Desktop orientation"
-msgstr "Προσανατολισμός επιφάνειας εργασίας"
-
-#: plugins/rdp/rdp_settings.c:592
-#, fuzzy
-#| msgid "Disable server input"
-msgid "Input device settings"
-msgstr "Ρυθμίσεις συσκευής εισόδου"
-
-#: plugins/rdp/rdp_settings.c:608
-#, fuzzy
-#| msgid "Disable server input"
-msgid "General settings"
-msgstr "Γενικές ρυθμίσεις"
-
 #: plugins/rdp/rdp_event.c:344
 #, c-format
 msgid "Reconnection attempt %d of %d…"
 msgstr "Προσπάθεια επανασύνδεσης %d του %d…"
 
-#: plugins/kwallet/src/kwallet_plugin_main.c:118
-msgid "Secured password storage in KWallet"
+#: plugins/spice/spice_plugin_file_transfer.c:82
+#, fuzzy
+msgid "File Transfers"
+msgstr "Μεταφορές αρχείων"
+
+#: plugins/spice/spice_plugin_file_transfer.c:219
+#, fuzzy
+msgid "Transfer error"
+msgstr "Σφάλμα μεταφοράς"
+
+#: plugins/spice/spice_plugin_file_transfer.c:220
+#, fuzzy, c-format
+msgid "%s: %s"
+msgstr "%s: %s"
+
+#: plugins/spice/spice_plugin_file_transfer.c:223
+#, fuzzy
+msgid "Transfer completed"
+msgstr "Η μεταφορά ολοκληρώθηκε"
+
+#: plugins/spice/spice_plugin_file_transfer.c:224
+#, fuzzy, c-format
+msgid "The %s file has been transferred"
+msgstr "Το αρχείο %s έχει μεταφερθεί"
+
+#: plugins/spice/spice_plugin.c:351
+msgid "Enter SPICE password"
+msgstr "Κωδικός SSH"
+
+#: plugins/spice/spice_plugin.c:386
+#, c-format
+msgid "Disconnected from the SPICE server “%s”."
+msgstr "Αποσυνδεδεμένος από το διακομιστή SPICE \"%s\"."
+
+#: plugins/spice/spice_plugin.c:402
+#, fuzzy
+msgid "TLS connection error."
+msgstr "Σφάλμα σύνδεσης TLS."
+
+#: plugins/spice/spice_plugin.c:408
+msgid "Connection to the SPICE server dropped."
+msgstr "Η σύνδεση με το διακομιστή SPICE διακόπηκε."
+
+#: plugins/spice/spice_plugin.c:616 plugins/spice/spice_plugin.c:634
+msgid "Default"
+msgstr "Προεπιλογή"
+
+#: plugins/spice/spice_plugin.c:636
+#, fuzzy
+msgid "Auto GLZ"
+msgstr "Αυτόματο GLZ"
+
+#: plugins/spice/spice_plugin.c:637
+#, fuzzy
+msgid "Auto LZ"
+msgstr "Αυτόματη LZ"
+
+#: plugins/spice/spice_plugin.c:650
+#, fuzzy
+msgid "Disable video overlay if videos are not displayed properly.\n"
+msgstr ""
+"Απενεργοποιήστε την επικάλυψη βίντεο εάν τα βίντεο δεν εμφανίζονται σωστά.\n"
+
+#: plugins/spice/spice_plugin.c:667
+#, fuzzy
+msgid "Use TLS encryption"
+msgstr "Χρήση κρυπτογράφησης TLS"
+
+#: plugins/spice/spice_plugin.c:668
+#, fuzzy
+msgid "Server CA certificate"
+msgstr "Πιστοποιητικό CA διακομιστή"
+
+#: plugins/spice/spice_plugin.c:686
+msgid "Prefered video codec"
+msgstr "Προτίμηση"
+
+#: plugins/spice/spice_plugin.c:687
+msgid "Turn off GStreamer overlay"
+msgstr "Απενεργοποίηση εισόδου εξυπηρετητή"
+
+#: plugins/spice/spice_plugin.c:690
+#, fuzzy
+msgid "Prefered image compression"
+msgstr "Προτιμώμενη συμπίεση εικόνας"
+
+#: plugins/spice/spice_plugin.c:693 plugins/spice/spice_plugin.c:706
+#: plugins/gvnc/gvnc_plugin.c:857 plugins/gvnc/gvnc_plugin.c:871
+msgid "No clipboard sync"
+msgstr "Απενεργοποίηση συγχρονισμού προχείρου"
+
+#: plugins/spice/spice_plugin.c:695 plugins/gvnc/gvnc_plugin.c:860
+#, fuzzy
+msgid "Enable audio channel"
+msgstr "Ενεργοποίηση καναλιού ήχου"
+
+#: plugins/spice/spice_plugin.c:696
+#, fuzzy
+msgid "Share smart card"
+msgstr "Μοιραστείτε την έξυπνη κάρτα"
+
+#: plugins/spice/spice_plugin.c:697 plugins/spice/spice_plugin.c:705
+#: plugins/vnc/vnc_plugin.c:2000 plugins/vnc/vnc_plugin.c:2017
+#: plugins/gvnc/gvnc_plugin.c:861 plugins/gvnc/gvnc_plugin.c:870
+msgid "View only"
+msgstr "Μόνο προβολή"
+
+#: plugins/spice/spice_plugin.c:708 plugins/spice/spice_plugin_usb.c:51
+#, fuzzy
+msgid "Select USB devices for redirection"
+msgstr "Επιλογή συσκευών USB για ανακατεύθυνση"
+
+#: plugins/spice/spice_plugin.c:719
+#, fuzzy
+msgid "SPICE - Simple Protocol for Independent Computing Environments"
+msgstr "SPICE - Απλό πρωτόκολλο για ανεξάρτητα υπολογιστικά περιβάλλοντα"
+
+#: plugins/spice/spice_plugin_usb.c:54
+#, fuzzy
+msgid "_Close"
+msgstr "_Κλείσιμο"
+
+#: plugins/spice/spice_plugin_usb.c:94
+#, fuzzy
+msgid "USB redirection error"
+msgstr "Σφάλμα ανακατεύθυνσης USB"
+
+#: plugins/vnc/vnc_plugin.c:772
+msgid "Enter VNC password"
+msgstr "Αποθήκευση κωδικού πρόσβασης"
+
+#: plugins/vnc/vnc_plugin.c:825 plugins/gvnc/gvnc_plugin.c:539
+#, fuzzy
+msgid "Enter VNC authentication credentials"
+msgstr "Εισάγετε τα διαπιστευτήρια ελέγχου ταυτότητας VNC"
+
+#: plugins/vnc/vnc_plugin.c:936
+msgid "Unable to connect to VNC server"
+msgstr "Αδύνατη η σύνδεση στον εξυπηρετητή VNC"
+
+#: plugins/vnc/vnc_plugin.c:937
+#, c-format
+msgid "Couldn’t convert '%s' to host address"
+msgstr "Αδύνατη η μετατροπή του '%s' στην διεύθυνση του διακομιστή"
+
+#: plugins/vnc/vnc_plugin.c:938
+#, c-format
+msgid "VNC connection failed: %s"
+msgstr "Αποτυχία σύνδεσης VNC: %s"
+
+#: plugins/vnc/vnc_plugin.c:939
+msgid "Your connection has been rejected."
+msgstr "Η σύνδεσή σας απορρίφθηκε."
+
+#: plugins/vnc/vnc_plugin.c:966
+#, fuzzy, c-format
+msgid "The VNC server requested an unknown authentication method. %s"
+msgstr "Ο διακομιστής VNC ζήτησε μια άγνωστη μέθοδο ελέγχου ταυτότητας. %s"
+
+#: plugins/vnc/vnc_plugin.c:968
+#, fuzzy
+msgid "Please retry after turning on encryption for this profile."
+msgstr ""
+"Επαναλάβετε την προσπάθεια αφού ενεργοποιήσετε την κρυπτογράφηση για αυτό το "
+"προφίλ."
+
+#: plugins/vnc/vnc_plugin.c:1939
+#, fuzzy
+msgid ""
+"Connect to VNC using a repeater:\n"
+"  • The server field must contain the repeater ID, e.g. ID:123456789\n"
+"  • The repeater field have to be set to the repeater IP and port, like:\n"
+"    10.10.10.12:5901\n"
+"  • From the remote VNC server, you will connect to\n"
+"    the repeater, e.g. with x11vnc:\n"
+"    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
+msgstr ""
+"Συνδεθείτε στο VNC χρησιμοποιώντας έναν επαναλήπτη:\n"
+"  - π.χ. ID:123456789\n"
+"  - Το πεδίο επαναλήπτη πρέπει να οριστεί στην IP και τη θύρα του "
+"επαναλήπτη, π.χ:\n"
+"    10.10.10.12:5901\n"
+"  - Από τον απομακρυσμένο διακομιστή VNC, θα συνδεθείτε στη διεύθυνση\n"
+"    στον επαναλήπτη, π.χ. με το x11vnc:\n"
+"    x11vnc -connect repeater=ID:123456789+10.10.10.10.12:5500"
+
+#: plugins/vnc/vnc_plugin.c:1959
+msgid "Repeater"
+msgstr "Επαναλήπτης"
+
+#: plugins/vnc/vnc_plugin.c:1979
+msgid "Listen on port"
+msgstr "Ακρόαση στη θύρα"
+
+#: plugins/vnc/vnc_plugin.c:1999
+msgid "Show remote cursor"
+msgstr "Προβολή απομακρυσμένου δείκτη ποντικιού"
+
+#: plugins/vnc/vnc_plugin.c:2002
+msgid "Turn off encryption"
+msgstr "Απενεργοποίηση συγχρονισμού προχείρου"
+
+#: plugins/vnc/vnc_plugin.c:2003 plugins/vnc/vnc_plugin.c:2018
+#, fuzzy
+msgid "Prevent local interaction on the server"
+msgstr "Αποτροπή τοπικής αλληλεπίδρασης στο διακομιστή"
+
+#: plugins/vnc/vnc_plugin.c:2004 plugins/gvnc/gvnc_plugin.c:859
+#, fuzzy
+msgid "Ignore remote bell messages"
+msgstr "Αγνοήστε τα μηνύματα απομακρυσμένου κουδουνιού"
+
+#: plugins/vnc/vnc_plugin.c:2020
+msgid "Open Chat…"
+msgstr "Άνοιγμα συνομιλίας…"
+
+#: plugins/vnc/vnc_plugin.h:41
+#, fuzzy
+msgid "Remmina VNC Plugin"
+msgstr "Remmina VNC Plugin"
+
+#: plugins/vnc/vnc_plugin.h:46
+#, fuzzy
+msgid "Remmina VNC listener Plugin"
+msgstr "Remmina VNC listener Plugin"
+
+#: plugins/www/www_config.h:43
+#, fuzzy
+msgid "Remmina web-browser plugin"
+msgstr "Remmina web-browser plugin"
+
+#: plugins/www/www_plugin.c:98
+#, fuzzy
+msgid "File downloaded"
+msgstr "Αρχείο που έχει ληφθεί"
+
+#: plugins/www/www_plugin.c:574
+#, fuzzy
+msgid "Enter WWW authentication credentials"
+msgstr "Εισάγετε διαπιστευτήρια ελέγχου ταυτότητας WWW"
+
+#: plugins/www/www_plugin.c:878
+#, fuzzy
+msgid "URL"
+msgstr "URL"
+
+#: plugins/www/www_plugin.c:878
+#, fuzzy
+msgid "http://address or https://address"
+msgstr "http://address ή https://address"
+
+#: plugins/www/www_plugin.c:895
+#, fuzzy
+msgid "User agent"
+msgstr "Πράκτορας χρήστη"
+
+#: plugins/www/www_plugin.c:896
+#, fuzzy
+msgid "Proxy URL"
+msgstr "URL μεσολάβησης"
+
+#: plugins/www/www_plugin.c:896
+#, fuzzy
+msgid "E.g. https://example.org, socks://mysocks:1080"
+msgstr "Π.χ. https://example.org, socks://mysocks:1080"
+
+#: plugins/www/www_plugin.c:897
+#, fuzzy
+msgid "Turn on Java support"
+msgstr "Ενεργοποιήστε την υποστήριξη Java"
+
+#: plugins/www/www_plugin.c:898
+msgid "Turn on smooth scrolling"
+msgstr "Εξομάλυνση γραμματοσειρών"
+
+#: plugins/www/www_plugin.c:899
+#, fuzzy
+msgid "Turn on spatial navigation"
+msgstr "Ενεργοποίηση της χωρικής πλοήγησης"
+
+#: plugins/www/www_plugin.c:900
+#, fuzzy
+msgid "Turn on plugin support"
+msgstr "Ενεργοποιήστε την υποστήριξη plugin"
+
+#: plugins/www/www_plugin.c:901
+#, fuzzy
+msgid "Turn on WebGL support"
+msgstr "Ενεργοποιήστε την υποστήριξη WebGL"
+
+#: plugins/www/www_plugin.c:902
+#, fuzzy
+msgid "Turn on HTML5 audio support"
+msgstr "Ενεργοποιήστε την υποστήριξη ήχου HTML5"
+
+#: plugins/www/www_plugin.c:903
+#, fuzzy
+msgid "Ignore TLS errors"
+msgstr "Αγνοήστε τα σφάλματα TLS"
+
+#: plugins/www/www_plugin.c:906
+#, fuzzy
+msgid "Turn on Web Inspector"
+msgstr "Ενεργοποίηση του Web Inspector"
+
+#: plugins/exec/exec_plugin.c:160
+#, fuzzy
+msgid "You did not set any command to be executed"
+msgstr "Δεν ορίσατε καμία εντολή προς εκτέλεση"
+
+#: plugins/exec/exec_plugin.c:206
+#, fuzzy
+msgid ""
+"Warning: Running a command synchronously may cause Remmina not to respond.\n"
+"Do you really want to continue?"
+msgstr ""
+"Προειδοποίηση: Η σύγχρονη εκτέλεση μιας εντολής μπορεί να προκαλέσει τη μη "
+"ανταπόκριση του Remmina.\n"
+"Θέλετε πραγματικά να συνεχίσετε;"
+
+#: plugins/exec/exec_plugin.c:266
+#, fuzzy
+msgid "Command"
+msgstr "Εντολή"
+
+#: plugins/exec/exec_plugin.c:267
+#, fuzzy
+msgid "Asynchronous execution"
+msgstr "Ασύγχρονη εκτέλεση"
+
+#: plugins/exec/exec_plugin_config.h:41
+#, fuzzy
+msgid "Execute a command"
+msgstr "Εκτέλεση μιας εντολής"
+
+#: plugins/tool_hello_world/plugin_config.h:40
+#, fuzzy
+msgid "Hello, World!"
+msgstr "Γεια σας!"
+
+#: plugins/secret/src/glibsecret_plugin.c:188
+msgid "Secured password storage in the GNOME keyring"
 msgstr "%s κωδικός πρόσβασης"
+
+#: plugins/gvnc/gvnc_plugin_config.h:40
+#, fuzzy
+msgid "Remmina VNC plugin for GNOME and KVM"
+msgstr "Πρόσθετο Remmina VNC για GNOME και KVM"
+
+#: plugins/gvnc/gvnc_plugin.c:477
+#, fuzzy, c-format
+#| msgid "Authentication type"
+msgid "Unsupported authentication type %u"
+msgstr "Μη υποστηριζόμενος τύπος ελέγχου ταυτότητας %u"
+
+#: plugins/gvnc/gvnc_plugin.c:489
+#, fuzzy, c-format
+#| msgid "Authentication type"
+msgid "Authentication failure: %s"
+msgstr "Αποτυχία ελέγχου ταυτότητας: %s"
+
+#: plugins/gvnc/gvnc_plugin.c:820
+#, fuzzy
+#| msgid "Disable server input"
+msgid "Use server settings"
+msgstr "Χρήση ρυθμίσεων διακομιστή"
+
+#: plugins/gvnc/gvnc_plugin.c:821
+#, fuzzy
+#| msgid "True colour (24 bit)"
+msgid "True colour (24 bits)"
+msgstr "Αληθινό χρώμα (24 bit)"
+
+#: plugins/gvnc/gvnc_plugin.c:822
+#, fuzzy
+#| msgid "High colour (16 bit)"
+msgid "High colour (16 bits)"
+msgstr "Υψηλό χρώμα (16 bits)"
+
+#: plugins/gvnc/gvnc_plugin.c:823
+#, fuzzy
+#| msgid "High colour (16 bit)"
+msgid "Low colour (8 bits)"
+msgstr "Χαμηλό χρώμα (8 bit)"
+
+#: plugins/gvnc/gvnc_plugin.c:824
+#, fuzzy
+#| msgid "True colour (24 bit)"
+msgid "Ultra low colour (3 bits)"
+msgstr "Εξαιρετικά χαμηλό χρώμα (3 bits)"
+
+#: plugins/gvnc/gvnc_plugin.c:839
+#, fuzzy
+#| msgid "Enter VNC password"
+msgid "VNC password"
+msgstr "Κωδικός πρόσβασης VNC"
+
+#: plugins/gvnc/gvnc_plugin.c:841
+#, fuzzy
+#| msgid "SSH compression"
+msgid "Use JPEG Compression"
+msgstr "Χρήση συμπίεσης JPEG"
+
+#: plugins/gvnc/gvnc_plugin.c:841
+#, fuzzy
+#| msgid "Browse the network to find a %s server"
+msgid "This might not work on all VNC servers"
+msgstr "Αυτό μπορεί να μην λειτουργεί σε όλους τους διακομιστές VNC"
+
+#: plugins/gvnc/gvnc_plugin.c:842
+#, fuzzy
+msgid "Enable GTK-VNC debug"
+msgstr "Ενεργοποίηση της αποσφαλμάτωσης GTK-VNC"
+
+#: plugins/gvnc/gvnc_plugin.c:862
+#, fuzzy
+#| msgid "Per connection"
+msgid "Shared connection"
+msgstr "Κοινή σύνδεση"
+
+#: plugins/gvnc/gvnc_plugin.c:862
+#, fuzzy
+msgid ""
+"If the server should try to share the desktop by leaving other clients "
+"connected"
+msgstr ""
+"Εάν ο διακομιστής προσπαθήσει να μοιραστεί την επιφάνεια εργασίας αφήνοντας "
+"άλλους πελάτες συνδεδεμένους"
+
+#: plugins/gvnc/gvnc_plugin.c:872
+#, fuzzy
+msgid "Send Ctrl+Alt+_Del"
+msgstr "Αποστολή Ctrl+Alt+_Del"
+
+#: plugins/gvnc/gvnc_plugin.c:873
+#, fuzzy
+msgid "Send Ctrl+Alt+_Backspace"
+msgstr "Αποστολή Ctrl+Alt+_Backspace"
+
+#: plugins/gvnc/gvnc_plugin.c:874
+#, fuzzy
+msgid "Send Ctrl+Alt+_F1"
+msgstr "Αποστολή Ctrl+Alt+_F1"
+
+#: plugins/gvnc/gvnc_plugin.c:875
+#, fuzzy
+msgid "Send Ctrl+Alt+_F2"
+msgstr "Αποστολή Ctrl+Alt+_F2"
+
+#: plugins/gvnc/gvnc_plugin.c:876
+#, fuzzy
+msgid "Send Ctrl+Alt+_F3"
+msgstr "Αποστολή Ctrl+Alt+_F3"
+
+#: plugins/gvnc/gvnc_plugin.c:877
+#, fuzzy
+msgid "Send Ctrl+Alt+_F4"
+msgstr "Αποστολή Ctrl+Alt+_F4"
+
+#: plugins/gvnc/gvnc_plugin.c:878
+#, fuzzy
+msgid "Send Ctrl+Alt+_F5"
+msgstr "Αποστολή Ctrl+Alt+_F5"
+
+#: plugins/gvnc/gvnc_plugin.c:879
+#, fuzzy
+msgid "Send Ctrl+Alt+_F6"
+msgstr "Αποστολή Ctrl+Alt+_F6"
+
+#: plugins/gvnc/gvnc_plugin.c:880
+#, fuzzy
+msgid "Send Ctrl+Alt+_F7"
+msgstr "Αποστολή Ctrl+Alt+_F7"
+
+#: plugins/gvnc/gvnc_plugin.c:881
+#, fuzzy
+msgid "Send Ctrl+Alt+_F8"
+msgstr "Αποστολή Ctrl+Alt+_F8"
+
+#: plugins/gvnc/gvnc_plugin.c:882
+#, fuzzy
+msgid "Send Ctrl+Alt+_F9"
+msgstr "Αποστολή Ctrl+Alt+_F9"
+
+#: plugins/gvnc/gvnc_plugin.c:883
+#, fuzzy
+msgid "Send Ctrl+Alt+_F10"
+msgstr "Αποστολή Ctrl+Alt+_F10"
+
+#: plugins/gvnc/gvnc_plugin.c:884
+#, fuzzy
+msgid "Send Ctrl+Alt+_F11"
+msgstr "Αποστολή Ctrl+Alt+_F11"
+
+#: plugins/gvnc/gvnc_plugin.c:885
+#, fuzzy
+msgid "Send Ctrl+Alt+_F12"
+msgstr "Αποστολή Ctrl+Alt+_F12"
+
+#: plugins/gvnc/gvnc_plugin.c:887
+#, fuzzy
+msgid "Reboot remote host"
+msgstr "Επανεκκίνηση απομακρυσμένου υπολογιστή"
+
+#: plugins/gvnc/gvnc_plugin.c:888
+#, fuzzy
+msgid "Reset remote host (hard reboot)"
+msgstr "Επαναφορά απομακρυσμένου κεντρικού υπολογιστή (σκληρή επανεκκίνηση)"
+
+#: plugins/gvnc/gvnc_plugin.c:889
+#, fuzzy
+#| msgid "Show remote cursor"
+msgid "Shutdown remote host"
+msgstr "Τερματισμός απομακρυσμένου υπολογιστή"
 
 #: plugins/telepathy/telepathy_channel_handler.c:237
 #, c-format
@@ -3211,46 +3211,6 @@ msgstr "Πρόσκληση διαμοιρασμού επιφάνειας εργ�
 #: plugins/telepathy/telepathy_plugin.c:57
 msgid "Telepathy - Desktop Sharing"
 msgstr "Telepathy - Διαμοιρασμός επιφάνειας εργασίας"
-
-#: data/ui/remmina_search.glade:61 data/ui/remmina_search_popover.glade:56
-#, fuzzy
-msgid "Search"
-msgstr "Αναζήτηση"
-
-#: data/ui/remmina_search.glade:75 data/ui/remmina_search_popover.glade:70
-#, fuzzy
-msgid "Search for previous occurrence"
-msgstr "Αναζήτηση για προηγούμενη εμφάνιση"
-
-#: data/ui/remmina_search.glade:98 data/ui/remmina_search_popover.glade:93
-#, fuzzy
-msgid "Search for next occurrence"
-msgstr "Αναζήτηση για την επόμενη εμφάνιση"
-
-#: data/ui/remmina_search.glade:130 data/ui/remmina_search_popover.glade:125
-#, fuzzy
-msgid "Toggle search options"
-msgstr "Εναλλαγή επιλογών αναζήτησης"
-
-#: data/ui/remmina_search.glade:191 data/ui/remmina_search_popover.glade:186
-#, fuzzy
-msgid "_Match case"
-msgstr "_Match case"
-
-#: data/ui/remmina_search.glade:208 data/ui/remmina_search_popover.glade:203
-#, fuzzy
-msgid "Match _entire word only"
-msgstr "Ταίριασμα μόνο ολόκληρης λέξης"
-
-#: data/ui/remmina_search.glade:225 data/ui/remmina_search_popover.glade:220
-#, fuzzy
-msgid "Match as _regular expression"
-msgstr "Ταίριασμα ως κανονική έκφραση"
-
-#: data/ui/remmina_search.glade:242 data/ui/remmina_search_popover.glade:237
-#, fuzzy
-msgid "_Wrap around"
-msgstr "Αναδίπλωση γύρω"
 
 #: data/ui/remmina_snap_info_dialog.glade:71
 #, fuzzy
@@ -3314,6 +3274,46 @@ msgstr "<big>Ρυθμίσεις Snap</big>"
 msgid "Do not show this message again"
 msgstr "Να μην εμφανιστεί ξανά αυτό το μήνυμα"
 
+#: data/ui/remmina_search_popover.glade:56 data/ui/remmina_search.glade:61
+#, fuzzy
+msgid "Search"
+msgstr "Αναζήτηση"
+
+#: data/ui/remmina_search_popover.glade:70 data/ui/remmina_search.glade:75
+#, fuzzy
+msgid "Search for previous occurrence"
+msgstr "Αναζήτηση για προηγούμενη εμφάνιση"
+
+#: data/ui/remmina_search_popover.glade:93 data/ui/remmina_search.glade:98
+#, fuzzy
+msgid "Search for next occurrence"
+msgstr "Αναζήτηση για την επόμενη εμφάνιση"
+
+#: data/ui/remmina_search_popover.glade:125 data/ui/remmina_search.glade:130
+#, fuzzy
+msgid "Toggle search options"
+msgstr "Εναλλαγή επιλογών αναζήτησης"
+
+#: data/ui/remmina_search_popover.glade:186 data/ui/remmina_search.glade:191
+#, fuzzy
+msgid "_Match case"
+msgstr "_Match case"
+
+#: data/ui/remmina_search_popover.glade:203 data/ui/remmina_search.glade:208
+#, fuzzy
+msgid "Match _entire word only"
+msgstr "Ταίριασμα μόνο ολόκληρης λέξης"
+
+#: data/ui/remmina_search_popover.glade:220 data/ui/remmina_search.glade:225
+#, fuzzy
+msgid "Match as _regular expression"
+msgstr "Ταίριασμα ως κανονική έκφραση"
+
+#: data/ui/remmina_search_popover.glade:237 data/ui/remmina_search.glade:242
+#, fuzzy
+msgid "_Wrap around"
+msgstr "Αναδίπλωση γύρω"
+
 #: data/ui/remmina_about.glade:30 data/ui/remmina_main.glade:395
 msgid "About"
 msgstr "Σχετικά"
@@ -3336,6 +3336,191 @@ msgstr ""
 #: data/ui/remmina_about.glade:40
 msgid "Website"
 msgstr "Ιστότοπος"
+
+#: data/ui/remmina_string_list.glade:14 data/ui/remmina_string_list.glade:158
+msgid "Add"
+msgstr "Προσθήκη"
+
+#: data/ui/remmina_string_list.glade:20 data/ui/remmina_string_list.glade:137
+#: data/ui/remmina_key_chooser.glade:14 data/ui/remmina_key_chooser.glade:15
+#, fuzzy
+msgid "_Remove"
+msgstr "_Αφαίρεση"
+
+#: data/ui/remmina_string_list.glade:26 data/ui/remmina_string_list.glade:116
+msgid "Move up"
+msgstr "Μετακίνηση προς τα επάνω"
+
+#: data/ui/remmina_string_list.glade:32 data/ui/remmina_string_list.glade:95
+msgid "Move down"
+msgstr "Μετακίνηση προς τα κάτω"
+
+#: data/ui/remmina_mpc.glade:14
+#, fuzzy
+msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
+msgstr "<span weight='bold' size='larger'>Multi Password Changer</span>"
+
+#: data/ui/remmina_mpc.glade:32
+msgid "Change"
+msgstr "Αλλαγή"
+
+#: data/ui/remmina_mpc.glade:201
+#, fuzzy
+msgid "Selection criteria"
+msgstr "Κριτήρια επιλογής"
+
+#: data/ui/remmina_mpc.glade:261
+msgid "Confirm password"
+msgstr "Επιβεβαίωση κωδικού"
+
+#: data/ui/remmina_mpc.glade:294
+msgid "Set new password"
+msgstr "Αποθήκευση κωδικού πρόσβασης"
+
+#. A column table with multiple check-boxes
+#: data/ui/remmina_mpc.glade:331
+msgctxt "Multi password changer"
+msgid "Select"
+msgstr "Επιλογή"
+
+#: data/ui/remmina_mpc.glade:343
+msgctxt "Multi password changer table"
+msgid "Name"
+msgstr "Όνομα"
+
+#: data/ui/remmina_mpc.glade:354
+msgctxt "Multi password changer table"
+msgid "Group"
+msgstr "Ομάδα"
+
+#: data/ui/remmina_mpc.glade:365
+#, fuzzy
+msgctxt "Multi password changer table"
+msgid "Domain\\Username"
+msgstr "Τομέας\\Όνομα χρήστη"
+
+#: data/ui/remmina_news.glade:75
+#, fuzzy
+msgid ""
+"<big><b>The news are turned off</b></big>\n"
+"\n"
+"<span>\n"
+"Turning on news means the program connects to a Remmina server to download "
+"the release notes.\n"
+"</span>\n"
+"\n"
+"<span>\n"
+"Version checking can only be activated at compile time.\n"
+"</span>\n"
+"\n"
+"<span>\n"
+"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
+"release notes\"><i>Visit the website to read the release notes</i></a>.\n"
+"</span>"
+msgstr ""
+"<big><b>Οι ειδήσεις είναι απενεργοποιημένες</b></big>\n"
+"\n"
+"<span>\n"
+"Η ενεργοποίηση των ειδήσεων σημαίνει ότι το πρόγραμμα συνδέεται με έναν "
+"διακομιστή Remmina για να κατεβάσει τις σημειώσεις έκδοσης.\n"
+"</span>\n"
+"\n"
+"<span>\n"
+"Ο έλεγχος έκδοσης μπορεί να ενεργοποιηθεί μόνο κατά τη μεταγλώττιση.\n"
+"</span>\n"
+"\n"
+"<span>\n"
+"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
+"release notes\"><i>Επισκεφθείτε τον ιστότοπο για να διαβάσετε τις σημειώσεις "
+"έκδοσης</i></a>.\n"
+"</span>"
+
+#. The star (*) is a reference to privacy consent
+#: data/ui/remmina_news.glade:130 data/ui/remmina_preferences.glade:464
+#, fuzzy
+msgid ""
+"Send <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
+"remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
+"\">anonymous</a></b> statistics. (*)"
+msgstr ""
+"Αποστολή <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
+"remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
+"\">ανώνυμων</a></b> στατιστικών στοιχείων. (*)"
+
+#: data/ui/remmina_news.glade:142 data/ui/remmina_news.glade:195
+#, fuzzy
+msgid "Send anonymous statistics"
+msgstr "Αποστολή ανώνυμων στατιστικών στοιχείων"
+
+#: data/ui/remmina_news.glade:156
+msgid "Use as default remote desktop client"
+msgstr "Διακομιστής απομακρυσμένης επιφάνειας εργασίας Remmina"
+
+#: data/ui/remmina_news.glade:165
+msgid "Apply"
+msgstr "Εφαρμογή"
+
+#: data/ui/remmina_news.glade:169
+#, fuzzy
+msgid "Allow Remmina to automatically open .rdp and .remmina files."
+msgstr "Επιτρέψτε στο Remmina να ανοίγει αυτόματα τα αρχεία .rdp και .remmina."
+
+#. The star (*) is a reference to privacy consent
+#: data/ui/remmina_news.glade:183 data/ui/remmina_preferences.glade:479
+#, fuzzy
+msgid ""
+"Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
+"\">remmina.org</a> (*)"
+msgstr ""
+"Λήψη ειδήσεων από <a href=\"https://remmina.org\" title=\"Remmina news site"
+"\">remmina.org</a> (*)"
+
+#: data/ui/remmina_news.glade:208 data/ui/remmina_preferences.glade:446
+#, fuzzy
+msgid ""
+"* By enabling statistics and/or news you consent to send and fetch data to/"
+"from remmina.org"
+msgstr ""
+"* Ενεργοποιώντας τα στατιστικά στοιχεία και/ή τις ειδήσεις, συναινείτε στην "
+"αποστολή και την άντληση δεδομένων από/προς το remmina.org"
+
+#: data/ui/remmina_news.glade:231
+#, fuzzy
+msgid "<big>Take part</big>"
+msgstr "<big>Πάρτε μέρος</big>"
+
+#. Pay attention to the quoting characters as they may break the pango layout. If in doubt and cannot test, copy and paste the symbols from the English string.
+#: data/ui/remmina_news.glade:257
+#, fuzzy
+msgid ""
+"<span>\n"
+"<b>You have our gratitude in choosing copylefted libre software, <a href="
+"\"https://remmina.org/donations/\" title=\"Where’s the money, Lebowski? "
+"“blblblblblb”\">donations also make us happy</a>, and further help improve "
+"Remmina.</b>\n"
+"</span>\n"
+msgstr ""
+"<span>\n"
+"<b>Σας ευχαριστούμε που επιλέξατε λογισμικό με copylefted libre, <a href="
+"\"https://remmina.org/donations/\" title=\"Where’s the money, Lebowski? "
+"“blblblblblb”\">οι δωρεές μας κάνουν επίσης ευτυχισμένους</a>, και βοηθούν "
+"περαιτέρω στη βελτίωση του Remmina</b>.\n"
+"</span>\n"
+
+#: data/ui/remmina_news.glade:277
+#, fuzzy
+msgid "<big>Contribute</big>"
+msgstr "<big>Συνεισφορά</big>"
+
+#: data/ui/remmina_key_chooser.glade:23
+#, fuzzy
+msgid "Choose a new key"
+msgstr "Επιλέξτε ένα νέο κλειδί"
+
+#: data/ui/remmina_key_chooser.glade:82
+#, fuzzy
+msgid "Please press the new key…"
+msgstr "Παρακαλώ πατήστε το νέο πλήκτρο…"
 
 #: data/ui/remmina_main.glade:35
 #, fuzzy
@@ -3465,182 +3650,10 @@ msgstr "Ενέργειες"
 msgid "Toggle view"
 msgstr "Εναλλαγή προβολής"
 
-#: data/ui/remmina_unlock.glade:60
-#, fuzzy
-msgid "Unlock"
-msgstr "Ξεκλείδωμα"
-
-#: data/ui/remmina_unlock.glade:94
-#, fuzzy
-msgid "Unlock Remmina"
-msgstr "Ξεκλειδώστε τη Remmina"
-
-#: data/ui/remmina_unlock.glade:128
-#, fuzzy
-msgid "Master password"
-msgstr "Κύριος κωδικός πρόσβασης"
-
 #: data/ui/remmina_spinner.glade:54
 #, fuzzy
 msgid "Please wait…"
 msgstr "Παρακαλώ περιμένετε…"
-
-#: data/ui/remmina_news.glade:75
-#, fuzzy
-msgid ""
-"<big><b>The news are turned off</b></big>\n"
-"\n"
-"<span>\n"
-"Turning on news means the program connects to a Remmina server to download "
-"the release notes.\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"Version checking can only be activated at compile time.\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
-"release notes\"><i>Visit the website to read the release notes</i></a>.\n"
-"</span>"
-msgstr ""
-"<big><b>Οι ειδήσεις είναι απενεργοποιημένες</b></big>\n"
-"\n"
-"<span>\n"
-"Η ενεργοποίηση των ειδήσεων σημαίνει ότι το πρόγραμμα συνδέεται με έναν "
-"διακομιστή Remmina για να κατεβάσει τις σημειώσεις έκδοσης.\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"Ο έλεγχος έκδοσης μπορεί να ενεργοποιηθεί μόνο κατά τη μεταγλώττιση.\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
-"release notes\"><i>Επισκεφθείτε τον ιστότοπο για να διαβάσετε τις σημειώσεις "
-"έκδοσης</i></a>.\n"
-"</span>"
-
-#. The star (*) is a reference to privacy consent
-#: data/ui/remmina_news.glade:130 data/ui/remmina_preferences.glade:464
-#, fuzzy
-msgid ""
-"Send <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-"remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
-"\">anonymous</a></b> statistics. (*)"
-msgstr ""
-"Αποστολή <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-"remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
-"\">ανώνυμων</a></b> στατιστικών στοιχείων. (*)"
-
-#: data/ui/remmina_news.glade:142 data/ui/remmina_news.glade:195
-#, fuzzy
-msgid "Send anonymous statistics"
-msgstr "Αποστολή ανώνυμων στατιστικών στοιχείων"
-
-#: data/ui/remmina_news.glade:156
-msgid "Use as default remote desktop client"
-msgstr "Διακομιστής απομακρυσμένης επιφάνειας εργασίας Remmina"
-
-#: data/ui/remmina_news.glade:165
-msgid "Apply"
-msgstr "Εφαρμογή"
-
-#: data/ui/remmina_news.glade:169
-#, fuzzy
-msgid "Allow Remmina to automatically open .rdp and .remmina files."
-msgstr "Επιτρέψτε στο Remmina να ανοίγει αυτόματα τα αρχεία .rdp και .remmina."
-
-#. The star (*) is a reference to privacy consent
-#: data/ui/remmina_news.glade:183 data/ui/remmina_preferences.glade:479
-#, fuzzy
-msgid ""
-"Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
-"\">remmina.org</a> (*)"
-msgstr ""
-"Λήψη ειδήσεων από <a href=\"https://remmina.org\" title=\"Remmina news site"
-"\">remmina.org</a> (*)"
-
-#: data/ui/remmina_news.glade:208 data/ui/remmina_preferences.glade:446
-#, fuzzy
-msgid ""
-"* By enabling statistics and/or news you consent to send and fetch data to/"
-"from remmina.org"
-msgstr ""
-"* Ενεργοποιώντας τα στατιστικά στοιχεία και/ή τις ειδήσεις, συναινείτε στην "
-"αποστολή και την άντληση δεδομένων από/προς το remmina.org"
-
-#: data/ui/remmina_news.glade:231
-#, fuzzy
-msgid "<big>Take part</big>"
-msgstr "<big>Πάρτε μέρος</big>"
-
-#. Pay attention to the quoting characters as they may break the pango layout. If in doubt and cannot test, copy and paste the symbols from the English string.
-#: data/ui/remmina_news.glade:257
-#, fuzzy
-msgid ""
-"<span>\n"
-"<b>You have our gratitude in choosing copylefted libre software, <a href="
-"\"https://remmina.org/donations/\" title=\"Where’s the money, Lebowski? "
-"“blblblblblb”\">donations also make us happy</a>, and further help improve "
-"Remmina.</b>\n"
-"</span>\n"
-msgstr ""
-"<span>\n"
-"<b>Σας ευχαριστούμε που επιλέξατε λογισμικό με copylefted libre, <a href="
-"\"https://remmina.org/donations/\" title=\"Where’s the money, Lebowski? "
-"“blblblblblb”\">οι δωρεές μας κάνουν επίσης ευτυχισμένους</a>, και βοηθούν "
-"περαιτέρω στη βελτίωση του Remmina</b>.\n"
-"</span>\n"
-
-#: data/ui/remmina_news.glade:277
-#, fuzzy
-msgid "<big>Contribute</big>"
-msgstr "<big>Συνεισφορά</big>"
-
-#: data/ui/remmina_mpc.glade:14
-#, fuzzy
-msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
-msgstr "<span weight='bold' size='larger'>Multi Password Changer</span>"
-
-#: data/ui/remmina_mpc.glade:32
-msgid "Change"
-msgstr "Αλλαγή"
-
-#: data/ui/remmina_mpc.glade:201
-#, fuzzy
-msgid "Selection criteria"
-msgstr "Κριτήρια επιλογής"
-
-#: data/ui/remmina_mpc.glade:261
-msgid "Confirm password"
-msgstr "Επιβεβαίωση κωδικού"
-
-#: data/ui/remmina_mpc.glade:294
-msgid "Set new password"
-msgstr "Αποθήκευση κωδικού πρόσβασης"
-
-#. A column table with multiple check-boxes
-#: data/ui/remmina_mpc.glade:331
-msgctxt "Multi password changer"
-msgid "Select"
-msgstr "Επιλογή"
-
-#: data/ui/remmina_mpc.glade:343
-msgctxt "Multi password changer table"
-msgid "Name"
-msgstr "Όνομα"
-
-#: data/ui/remmina_mpc.glade:354
-msgctxt "Multi password changer table"
-msgid "Group"
-msgstr "Ομάδα"
-
-#: data/ui/remmina_mpc.glade:365
-#, fuzzy
-msgctxt "Multi password changer table"
-msgid "Domain\\Username"
-msgstr "Τομέας\\Όνομα χρήστη"
 
 #: data/ui/remmina_preferences.glade:42
 #, fuzzy
@@ -4326,33 +4339,20 @@ msgstr "Τερματικό"
 msgid "Remmina Preferences"
 msgstr "Προτιμήσεις Remmina"
 
-#: data/ui/remmina_string_list.glade:14 data/ui/remmina_string_list.glade:158
-msgid "Add"
-msgstr "Προσθήκη"
-
-#: data/ui/remmina_string_list.glade:20 data/ui/remmina_string_list.glade:137
-#: data/ui/remmina_key_chooser.glade:14 data/ui/remmina_key_chooser.glade:15
+#: data/ui/remmina_unlock.glade:60
 #, fuzzy
-msgid "_Remove"
-msgstr "_Αφαίρεση"
+msgid "Unlock"
+msgstr "Ξεκλείδωμα"
 
-#: data/ui/remmina_string_list.glade:26 data/ui/remmina_string_list.glade:116
-msgid "Move up"
-msgstr "Μετακίνηση προς τα επάνω"
-
-#: data/ui/remmina_string_list.glade:32 data/ui/remmina_string_list.glade:95
-msgid "Move down"
-msgstr "Μετακίνηση προς τα κάτω"
-
-#: data/ui/remmina_key_chooser.glade:23
+#: data/ui/remmina_unlock.glade:94
 #, fuzzy
-msgid "Choose a new key"
-msgstr "Επιλέξτε ένα νέο κλειδί"
+msgid "Unlock Remmina"
+msgstr "Ξεκλειδώστε τη Remmina"
 
-#: data/ui/remmina_key_chooser.glade:82
+#: data/ui/remmina_unlock.glade:128
 #, fuzzy
-msgid "Please press the new key…"
-msgstr "Παρακαλώ πατήστε το νέο πλήκτρο…"
+msgid "Master password"
+msgstr "Κύριος κωδικός πρόσβασης"
 
 #~ msgid "Could not run %s on SSH server."
 #~ msgstr "Αποτυχία εκτέλεσης του %s στον εξυπηρετητή SSH."

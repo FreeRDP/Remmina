@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-07-16 21:21+0000\n"
+"POT-Creation-Date: 2021-07-29 20:50+0000\n"
 "PO-Revision-Date: 2021-07-23 00:43+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/remmina/"
@@ -23,146 +23,176 @@ msgstr ""
 "X-Generator: Weblate 4.7.2-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
 
-#: src/remmina_protocol_widget.c:283 src/remmina_sftp_plugin.c:328
-msgid "Connect via SSH from a new terminal"
-msgstr "Koble til via SSH fra en ny terminal"
-
-#: src/remmina_protocol_widget.c:290 src/remmina_ssh_plugin.c:829
-#: src/remmina_ssh_plugin.c:1454
-msgid "Open SFTP transfer…"
-msgstr "Åpne SFTP-overføring…"
-
-#: src/remmina_protocol_widget.c:319
-msgid "Executing external commands…"
-msgstr "Kjører eksterne kommandoer …"
-
-#. TRANSLATORS: “%s” is a placeholder for the connection profile name
-#: src/remmina_protocol_widget.c:327
-#, c-format
-msgid "Connecting to “%s”…"
-msgstr "Kobler til «%s» …"
-
-#. TRANSLATORS: “%s” is a placeholder for an hostname or an IP address.
-#: src/remmina_protocol_widget.c:911 src/remmina_protocol_widget.c:1096
-#, c-format
-msgid "Connecting to “%s” via SSH…"
-msgstr "Kobler til «%s» via SSH…"
-
-#. TRANSLATORS: “%i” is a placeholder for a TCP port number.
-#: src/remmina_protocol_widget.c:1160
-#, c-format
-msgid "Awaiting incoming SSH connection on port %i…"
-msgstr "Venter på innkommende SSH-tilkobling på port %i …"
-
-#: src/remmina_protocol_widget.c:1213
-#, c-format
-msgid "The “%s” command is not available on the SSH server."
-msgstr "Fant ikke kommandoen «%s» på SSH-tjeneren."
-
-#: src/remmina_protocol_widget.c:1218
-#, c-format
-msgid "Could not run the “%s” command on the SSH server (status = %i)."
-msgstr "Kunne ikke kjøre kommandoen «%s» på SSH-tjeneren (status = %i)."
-
-#. TRANSLATORS: %s is a placeholder for an error message
-#: src/remmina_protocol_widget.c:1226
-#, c-format
-msgid "Could not run command. %s"
-msgstr "Kunne ikke kjøre kommandoen. %s"
-
-#. TRANSLATORS: “%s” is a placeholder for a hostname or IP address.
-#: src/remmina_protocol_widget.c:1296
-#, c-format
-msgid "Connecting to %s via SSH…"
-msgstr "Kobler til «%s» via SSH…"
-
+#: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:346
 #: src/remmina_protocol_widget.c:1672 src/remmina_protocol_widget.c:1691
-#: src/remmina_ssh_plugin.c:1369 src/remmina_sftp_plugin.c:310
-#: src/remmina_sftp_plugin.c:346 src/remmina_file_editor.c:846
-#: src/remmina_file_editor.c:967 plugins/www/www_plugin.c:880
-#: plugins/rdp/rdp_plugin.c:2652 data/ui/remmina_unlock.glade:116
-#: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1693
+#: src/remmina_file_editor.c:846 src/remmina_file_editor.c:967
+#: src/remmina_ssh_plugin.c:1369 plugins/rdp/rdp_plugin.c:2652
+#: plugins/www/www_plugin.c:880 data/ui/remmina_mpc.glade:236
+#: data/ui/remmina_preferences.glade:1693 data/ui/remmina_unlock.glade:116
 msgid "Password"
 msgstr "Passord"
 
-#: src/remmina_protocol_widget.c:1690
-msgid "Type in SSH username and password."
-msgstr "Skriv inn brukernavn og passord for SSH."
+#: src/remmina_sftp_plugin.c:311 src/remmina_sftp_plugin.c:348
+#: src/remmina_file_editor.c:847 src/remmina_ssh_plugin.c:1370
+#: src/remmina_ssh_plugin.c:1475
+msgid "SSH identity file"
+msgstr "SSH-identitetsfil"
 
-#: src/remmina_protocol_widget.c:1745 src/remmina_protocol_widget.c:1777
-msgid "Fingerprint automatically accepted"
-msgstr "Fingeravtrykk automatisk godkjent"
+#: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:848
+#: src/remmina_ssh_plugin.c:1371
+msgid "SSH agent"
+msgstr "SSH-agent"
 
-#. TRANSLATORS: The user is asked to verify a new SSL certificate.
-#: src/remmina_protocol_widget.c:1753
-msgid "Certificate details:"
-msgstr "Sertifikatsdetaljer:"
+#: src/remmina_sftp_plugin.c:313 src/remmina_file_editor.c:849
+#: src/remmina_ssh_plugin.c:1372
+msgid "Public key (automatic)"
+msgstr "Offentlig nøkkel (automatisk)"
 
-#. TRANSLATORS: An SSL certificate subject is usually the remote server the user connect to.
-#: src/remmina_protocol_widget.c:1755 src/remmina_protocol_widget.c:1787
-msgid "Subject:"
-msgstr "Emne:"
+#: src/remmina_sftp_plugin.c:314 src/remmina_file_editor.c:850
+#: src/remmina_ssh_plugin.c:1373
+msgid "Kerberos (GSSAPI)"
+msgstr "Kerberos (GSSAPI)"
 
-#. TRANSLATORS: The name or email of the entity that have issued the SSL certificate
-#: src/remmina_protocol_widget.c:1757 src/remmina_protocol_widget.c:1789
-msgid "Issuer:"
-msgstr "Utsteder:"
+#: src/remmina_sftp_plugin.c:323
+msgid "Show Hidden Files"
+msgstr "Vis skjulte filer"
 
-#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
-#: src/remmina_protocol_widget.c:1759
-msgid "Fingerprint:"
-msgstr "Fingeravtrykk:"
+#: src/remmina_sftp_plugin.c:325
+msgid "Overwrite all files"
+msgstr "Overskriv alle filer"
 
-#. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
-#: src/remmina_protocol_widget.c:1761
-msgid "Accept certificate?"
-msgstr "Godta sertifikat?"
+#: src/remmina_sftp_plugin.c:327
+msgid "Resume all file transfers"
+msgstr "Gjenoppta alle filoverføringer"
 
-#. TRANSLATORS: The user is asked to verify a new SSL certificate.
-#: src/remmina_protocol_widget.c:1785
-msgid "The certificate changed! Details:"
-msgstr "Sertifikat endret! Detaljer:"
+#: src/remmina_sftp_plugin.c:328 src/remmina_protocol_widget.c:283
+msgid "Connect via SSH from a new terminal"
+msgstr "Koble til via SSH fra en ny terminal"
 
-#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
-#: src/remmina_protocol_widget.c:1791
-msgid "Old fingerprint:"
-msgstr "Gammelt fingeravtrykk:"
+#: src/remmina_sftp_plugin.c:345 src/remmina_message_panel.c:330
+#: src/remmina_file_editor.c:961 src/remmina_ssh_plugin.c:1473
+#: plugins/rdp/rdp_plugin.c:2651 plugins/vnc/vnc_plugin.c:1960
+#: plugins/vnc/vnc_plugin.c:1980 plugins/www/www_plugin.c:879
+#: data/ui/remmina_mpc.glade:144
+msgid "Username"
+msgstr "Brukernavn"
 
-#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
-#: src/remmina_protocol_widget.c:1793
-msgid "New fingerprint:"
-msgstr "Nytt fingeravtrykk:"
+#: src/remmina_sftp_plugin.c:347 src/remmina_file_editor.c:952
+#: src/remmina_ssh_plugin.c:1472
+msgid "Authentication type"
+msgstr "Identitetsbekreftelsestype"
 
-#. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
-#: src/remmina_protocol_widget.c:1795
-msgid "Accept changed certificate?"
-msgstr "Godta endret sertifikat?"
+#: src/remmina_sftp_plugin.c:349 src/remmina_file_editor.c:984
+#: src/remmina_ssh_plugin.c:1479
+msgid "Password to unlock private key"
+msgstr "Passord for opplåsing av privat nøkkel"
 
-#. TRANSLATORS: “%i” is a placeholder for a port number. “%s”  is a placeholder for a protocol name (VNC).
-#: src/remmina_protocol_widget.c:1938
+#: src/remmina_sftp_plugin.c:350 src/remmina_ssh_plugin.c:1509
+msgid "SSH Proxy Command"
+msgstr "SSH-mellomtjenerkommando"
+
+#: src/remmina_sftp_plugin.c:359
+msgid "SFTP - Secure File Transfer"
+msgstr "SFTP - sikker filoverføring"
+
+#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1533
+msgid "Protocol"
+msgstr "Protokoll"
+
+#: src/remmina_plugin_manager.c:73
+msgid "Entry"
+msgstr "Oppføring"
+
+#: src/remmina_plugin_manager.c:73
+msgid "File"
+msgstr "Fil"
+
+#: src/remmina_plugin_manager.c:73
+msgid "Tool"
+msgstr "Verktøy"
+
+#: src/remmina_plugin_manager.c:73
+msgid "Preference"
+msgstr "Innstilling"
+
+#: src/remmina_plugin_manager.c:73
+msgid "Secret"
+msgstr "Hemmelighet"
+
+#: src/remmina_plugin_manager.c:456 data/ui/remmina_main.glade:305
+msgid "Plugins"
+msgstr "Programtillegg"
+
+#: src/remmina_plugin_manager.c:456 src/remmina_message_panel.c:452
+#: src/remmina_message_panel.c:621 src/remmina_file_editor.c:152
+msgid "_OK"
+msgstr "_OK"
+
+#: src/remmina_plugin_manager.c:474 src/remmina_file_editor.c:1490
+#: data/ui/remmina_main.glade:442
+msgid "Name"
+msgstr "Navn"
+
+#: src/remmina_plugin_manager.c:480
+msgid "Type"
+msgstr "Type"
+
+#: src/remmina_plugin_manager.c:486
+msgid "Description"
+msgstr "Beskrivelse"
+
+#: src/remmina_plugin_manager.c:492
+msgid "Version"
+msgstr "Versjon"
+
+#: src/remmina_chat_window.c:178
 #, c-format
-msgid "Listening on port %i for an incoming %s connection…"
-msgstr "Lytter til port nr. %i i påvente av en %s-tilkobling …"
+msgid "Chat with %s"
+msgstr "Sludre med %s"
 
-#: src/remmina_protocol_widget.c:1963
-msgid "Could not authenticate, attempting reconnection…"
-msgstr "Kunne ikke identitetsbekrefte. Prøver å koble til på ny …"
+#: src/remmina_chat_window.c:230
+msgid "_Send"
+msgstr "_Send"
 
-#: src/remmina_protocol_widget.c:2025 src/remmina_file_editor.c:346
-#: src/remmina_file_editor.c:917 data/ui/remmina_main.glade:478
-msgid "Server"
-msgstr "Tjener"
+#: src/remmina_chat_window.c:240
+msgid "_Clear"
+msgstr "_Tøm"
 
-#. TRANSLATORS: “%s” is a placeholder for a protocol name, like “RDP”.
-#: src/remmina_protocol_widget.c:2043
-#, c-format
-msgid "Install the %s protocol plugin first."
-msgstr "Installer %s-protokollprogramtillegget først."
+#: src/remmina_applet_menu_item.c:121
+msgid "Discovered"
+msgstr "Oppdaget"
 
-#: src/remmina_exec.c:475
-#, c-format
-msgid "Plugin %s is not registered."
-msgstr "Tillegget «%s» er ikke registrert."
+#: src/remmina_applet_menu_item.c:126
+msgid "New Connection"
+msgstr "Ny tilkobling"
+
+#: src/remmina_key_chooser.h:38
+msgid "Shift+"
+msgstr "Shift+"
+
+#: src/remmina_key_chooser.h:39
+msgid "Ctrl+"
+msgstr "Ctrl+"
+
+#: src/remmina_key_chooser.h:40
+msgid "Alt+"
+msgstr "Alt+"
+
+#: src/remmina_key_chooser.h:41
+msgid "Super+"
+msgstr "Super+"
+
+#: src/remmina_key_chooser.h:42
+msgid "Hyper+"
+msgstr "Hyper+"
+
+#: src/remmina_key_chooser.h:43
+msgid "Meta+"
+msgstr "Meta+"
+
+#: src/remmina_key_chooser.h:44
+msgid "<None>"
+msgstr "<Ingen>"
 
 #: src/remmina_pref_dialog.c:91 src/remmina_file_editor.c:435
 msgid "Resolutions"
@@ -204,239 +234,178 @@ msgstr ""
 "fra «Avansert»-fanen for terminaltilkoblinger og kan redigeres fra "
 "«Terminal»-fanen i innstillingene."
 
-#. TRANSLATORS: %s is a placeholder for an error message
-#: src/remmina_ssh_plugin.c:539
+#: src/remmina_message_panel.c:163 data/ui/remmina_mpc.glade:46
+#: data/ui/remmina_unlock.glade:46
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: src/remmina_message_panel.c:199 data/ui/remmina_snap_info_dialog.glade:28
+#: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
+#: data/ui/remmina_string_list.glade:63 data/ui/remmina_news.glade:33
+#: data/ui/remmina_preferences.glade:2640
+msgid "Close"
+msgstr "Lukk"
+
+#: src/remmina_message_panel.c:260
+msgid "Yes"
+msgstr "Ja"
+
+#: src/remmina_message_panel.c:267
+msgid "No"
+msgstr "Nei"
+
+#: src/remmina_message_panel.c:391 plugins/rdp/rdp_plugin.c:2653
+#: data/ui/remmina_mpc.glade:172
+msgid "Domain"
+msgstr "Domene"
+
+#: src/remmina_message_panel.c:420
+msgid "Save password"
+msgstr "Lagre passord"
+
+#: src/remmina_message_panel.c:457 src/remmina_message_panel.c:629
+#: src/remmina_sftp_client.c:947 src/remmina_file_editor.c:151
+#: src/remmina_file_editor.c:1365 plugins/spice/spice_plugin_file_transfer.c:84
+#: data/ui/remmina_key_chooser.glade:8 data/ui/remmina_key_chooser.glade:9
+#: data/ui/remmina_spinner.glade:8 data/ui/remmina_spinner.glade:9
+msgid "_Cancel"
+msgstr "_Avbryt"
+
+#: src/remmina_message_panel.c:513
+msgid "Enter certificate authentication files"
+msgstr "Angi filer for sertifikatsidentitetsbekreftelse"
+
+#: src/remmina_message_panel.c:525
+msgid "CA Certificate File"
+msgstr "CA-sertifikatsfil"
+
+#: src/remmina_message_panel.c:547
+msgid "CA CRL File"
+msgstr "CA CRL-fil"
+
+#: src/remmina_message_panel.c:569
+msgid "Client Certificate File"
+msgstr "Klientsertifikatsfil"
+
+#: src/remmina_message_panel.c:591
+msgid "Client Certificate Key"
+msgstr "Klientsertifikatsnøkkel"
+
+#: src/rcw.c:658
 #, c-format
-msgid "Error: %s"
-msgstr "Feil: %s"
-
-#: src/remmina_ssh_plugin.c:556
-msgid "Terminal content saved in"
-msgstr "Terminalinnhold lagret i"
-
-#: src/remmina_ssh_plugin.c:822
-msgid "Select All (host+A)"
-msgstr "Velg alt (vert+A)"
-
-#: src/remmina_ssh_plugin.c:823
-msgid "Copy (host+C)"
-msgstr "Kopier (vert+C)"
-
-#: src/remmina_ssh_plugin.c:824
-msgid "Paste (host+V)"
-msgstr "Lim inn (vert+V)"
-
-#: src/remmina_ssh_plugin.c:825
-msgid "Save session to file"
-msgstr "Lagre økt til fil"
-
-#: src/remmina_ssh_plugin.c:826
-msgid "Increase font size (host+Page Up)"
-msgstr "Øk skriftstørrelse (vert+Page Up)"
-
-#: src/remmina_ssh_plugin.c:827
-msgid "Decrease font size (host+Page Down)"
-msgstr "Forminsk skriftstørrelse (vert+Page Down)"
-
-#: src/remmina_ssh_plugin.c:828
-msgid "Find text (host+G)"
-msgstr "Finn tekst (vert+G)"
-
-#: src/remmina_ssh_plugin.c:1370 src/remmina_ssh_plugin.c:1475
-#: src/remmina_sftp_plugin.c:311 src/remmina_sftp_plugin.c:348
-#: src/remmina_file_editor.c:847
-msgid "SSH identity file"
-msgstr "SSH-identitetsfil"
-
-#: src/remmina_ssh_plugin.c:1371 src/remmina_sftp_plugin.c:312
-#: src/remmina_file_editor.c:848
-msgid "SSH agent"
-msgstr "SSH-agent"
-
-#: src/remmina_ssh_plugin.c:1372 src/remmina_sftp_plugin.c:313
-#: src/remmina_file_editor.c:849
-msgid "Public key (automatic)"
-msgstr "Offentlig nøkkel (automatisk)"
-
-#: src/remmina_ssh_plugin.c:1373 src/remmina_sftp_plugin.c:314
-#: src/remmina_file_editor.c:850
-msgid "Kerberos (GSSAPI)"
-msgstr "Kerberos (GSSAPI)"
-
-#: src/remmina_ssh_plugin.c:1448 data/ui/remmina_main.glade:177
-msgid "Copy"
-msgstr "Kopier"
-
-#: src/remmina_ssh_plugin.c:1448
-msgid "_Copy"
-msgstr "_Kopier"
-
-#: src/remmina_ssh_plugin.c:1449
-msgid "Paste"
-msgstr "Lim inn"
-
-#: src/remmina_ssh_plugin.c:1449
-msgid "_Paste"
-msgstr "_Lim inn"
-
-#: src/remmina_ssh_plugin.c:1450
-msgid "Select all"
-msgstr "Velg alt"
-
-#: src/remmina_ssh_plugin.c:1450
-msgid "_Select all"
-msgstr "_Velg alt"
-
-#: src/remmina_ssh_plugin.c:1451
-msgid "Increase font size"
-msgstr "Øk skriftstørrelse"
-
-#: src/remmina_ssh_plugin.c:1451
-msgid "_Increase font size"
-msgstr "_Øk skriftstørrelse"
-
-#: src/remmina_ssh_plugin.c:1452
-msgid "Decrease font size"
-msgstr "Forminsk skriftstørrelse"
-
-#: src/remmina_ssh_plugin.c:1452
-msgid "_Decrease font size"
-msgstr "_Forminsk skriftstørrelse"
-
-#: src/remmina_ssh_plugin.c:1453
-msgid "Find text"
-msgstr "Finn tekst"
-
-#: src/remmina_ssh_plugin.c:1453
-msgid "_Find text"
-msgstr "_Finn tekst"
-
-#: src/remmina_ssh_plugin.c:1472 src/remmina_sftp_plugin.c:347
-#: src/remmina_file_editor.c:952
-msgid "Authentication type"
-msgstr "Identitetsbekreftelsestype"
-
-#: src/remmina_ssh_plugin.c:1473 src/remmina_message_panel.c:330
-#: src/remmina_sftp_plugin.c:345 src/remmina_file_editor.c:961
-#: plugins/www/www_plugin.c:879 plugins/vnc/vnc_plugin.c:1960
-#: plugins/vnc/vnc_plugin.c:1980 plugins/rdp/rdp_plugin.c:2651
-#: data/ui/remmina_mpc.glade:144
-msgid "Username"
-msgstr "Brukernavn"
-
-#: src/remmina_ssh_plugin.c:1474 plugins/vnc/vnc_plugin.c:1961
-#: plugins/vnc/vnc_plugin.c:1981 plugins/spice/spice_plugin.c:666
-msgid "User password"
-msgstr "Brukerpassord"
-
-#: src/remmina_ssh_plugin.c:1477 src/remmina_file_editor.c:979
-msgid "SSH certificate file"
-msgstr "SSH-sertifikatsfil"
-
-#: src/remmina_ssh_plugin.c:1479 src/remmina_sftp_plugin.c:349
-#: src/remmina_file_editor.c:984
-msgid "Password to unlock private key"
-msgstr "Passord for opplåsing av privat nøkkel"
-
-#: src/remmina_ssh_plugin.c:1480 plugins/rdp/rdp_plugin.c:2693
-msgid "Start-up program"
-msgstr "Oppstartsprogram"
-
-#: src/remmina_ssh_plugin.c:1485
 msgid ""
-"The filename can use the following placeholders:\n"
-"\n"
-"  • %h is substituted with the server name\n"
-"  • %t is substituted with the SSH server name\n"
-"  • %u is substituted with the username\n"
-"  • %U is substituted with the SSH username\n"
-"  • %p is substituted with Remmina profile name\n"
-"  • %g is substituted with Remmina profile group name\n"
-"  • %d is substituted with local date and time in ISO 8601 format\n"
+"Are you sure you want to close %i active connections in the current window?"
 msgstr ""
-"Filnavnet kan bruke følgende plassholdere:\n"
-"\n"
-"  • %h erstattes med tjenernavnet\n"
-"  • %t erstattes med SSH-tjenernavnet\n"
-"  • %u erstattes med brukernavnet\n"
-"  • %U erstattes med SSH-brukernavnet\n"
-"  • %p erstattes med Remmina-profilnavnet\n"
-"  • %g erstattes med Remmina-profilgruppenavnet\n"
-"  • %d erstattes av lokal datotid i iso8601-format\n"
+"Er du sikker på at du vil lukke %i aktive tilkoblinger i det aktive vinduet?"
 
-#: src/remmina_ssh_plugin.c:1507
-msgid "Terminal colour scheme"
-msgstr "Terminalfargedrakt"
+#: src/rcw.c:1394
+msgid "Viewport fullscreen mode"
+msgstr "Fullskjermsmodus"
 
-#: src/remmina_ssh_plugin.c:1508
-msgid "Character set"
-msgstr "Tegnsett"
+#: src/rcw.c:1402 data/ui/remmina_preferences.glade:607
+msgid "Scrolled fullscreen"
+msgstr "Rullet fullskjermsvisning"
 
-#: src/remmina_ssh_plugin.c:1509 src/remmina_sftp_plugin.c:350
-msgid "SSH Proxy Command"
-msgstr "SSH-mellomtjenerkommando"
+#: src/rcw.c:1487
+msgid "Keep aspect ratio when scaled"
+msgstr "Behold sideforhold når skalert"
 
-#: src/remmina_ssh_plugin.c:1510
-msgid "KEX (Key Exchange) algorithms"
-msgstr "KEX (nøkkelutveksling)-algoritmer"
+#: src/rcw.c:1495
+msgid "Fill client window when scaled"
+msgstr "Fyll klientvindu når skalert"
 
-#: src/remmina_ssh_plugin.c:1511
-msgid "Symmetric cipher client to server"
-msgstr "Symmetrisk chifferklient til tjener"
+#: src/rcw.c:2043
+msgid "Send clipboard content as keystrokes"
+msgstr "Send utklippstavleinnhold som tastetrykk"
 
-#: src/remmina_ssh_plugin.c:1512
-msgid "Preferred server host key types"
-msgstr "Foretrukne tjenervertsnøkkeltyper"
+#: src/rcw.c:2147
+msgid "Turn off scaling to avoid screenshot distortion."
+msgstr "Skru av skalering for å unngå fordreining av skjermavbildninger."
 
-#: src/remmina_ssh_plugin.c:1513
-msgid "Folder for SSH session log"
-msgstr "Kunne ikke starte SSH-økt. %s"
+#: src/rcw.c:2207 plugins/www/www_plugin.c:848
+msgid "Screenshot taken"
+msgstr "Skjermavbildning utført"
 
-#: src/remmina_ssh_plugin.c:1514
-msgid "Filename for SSH session log"
-msgstr "Skru på SSH-øktlogging ved avslutning"
+#: src/rcw.c:2290
+msgid "_Menu"
+msgstr "_Meny"
 
-#: src/remmina_ssh_plugin.c:1515
-msgid "Log SSH session when exiting Remmina"
-msgstr "Logg SSH-økter når Remmina avsluttes"
+#: src/rcw.c:2291
+msgid "Menu"
+msgstr "Meny"
 
-#: src/remmina_ssh_plugin.c:1516
-msgid "Log SSH session asynchronously"
-msgstr "Loggfør SSH-økt asynkront"
+#: src/rcw.c:2300
+msgid "Open the Remmina main window"
+msgstr "Åpne hovedvinduet i Remmina"
 
-#: src/remmina_ssh_plugin.c:1516
-#, fuzzy
-msgid "Saving the session asynchronously may have a notable performance impact"
+#: src/rcw.c:2310
+msgid "Duplicate current connection"
+msgstr "Dupliser nåværende tilkobling"
+
+#: src/rcw.c:2327
+msgid "Resize the window to fit in remote resolution"
+msgstr "Tilpass vindustørrelsen slik at den passer med ekstern oppløsning"
+
+#: src/rcw.c:2338
+msgid "Toggle fullscreen mode"
+msgstr "Slå av/på fullskjermmodus"
+
+#: src/rcw.c:2384 data/ui/remmina_preferences.glade:1344
+#: data/ui/remmina_preferences.glade:1354
+msgid "Multi monitor"
+msgstr "Multi-monitor"
+
+#: src/rcw.c:2400
+msgid "Toggle dynamic resolution update"
+msgstr "Veksle dynamisk oppløsningsoppdatering"
+
+#: src/rcw.c:2410
+msgid "Toggle scaled mode"
+msgstr "Skru av/på skalert modus"
+
+#: src/rcw.c:2450 data/ui/remmina_preferences.glade:1070
+msgid "Switch tab pages"
+msgstr "Bytt mellom fanesider"
+
+#: src/rcw.c:2460
+msgid "Grab all keyboard events"
+msgstr "Fang alle tastaturtastetrykk"
+
+#: src/rcw.c:2470
+msgid "Preferences"
+msgstr "_Innstillinger"
+
+#: src/rcw.c:2479
+msgid "_Tools"
+msgstr "Verktøy"
+
+#: src/rcw.c:2480 data/ui/remmina_main.glade:207
+msgid "Tools"
+msgstr "Verktøy"
+
+#: src/rcw.c:2493 data/ui/remmina_preferences.glade:1277
+#: data/ui/remmina_preferences.glade:1287
+msgid "Screenshot"
+msgstr "Skjermavbildning"
+
+#: src/rcw.c:2507 data/ui/remmina_preferences.glade:1181
+msgid "Minimize window"
+msgstr "Minimer vindu"
+
+#: src/rcw.c:2517 data/ui/remmina_preferences.glade:1213
+msgid "Disconnect"
+msgstr "Koble fra"
+
+#: src/rcw.c:4284
+#, c-format
+msgid "The file “%s” is corrupted, unreadable, or could not be found."
+msgstr "Filen \"%s\" er skadet, kan ikke leses, eller ble ikke funnet."
+
+#: src/rcw.c:4452
+msgid "Warning: This plugin requires GtkSocket, but it’s not available."
 msgstr ""
-"Hvis du lagrer økten asynkront, kan det ha en merkbar innvirkning på ytelsen"
-
-#: src/remmina_ssh_plugin.c:1517
-msgid "Audible terminal bell"
-msgstr "Skru på klokke med lyd i terminalen"
-
-#: src/remmina_ssh_plugin.c:1518
-msgid "SSH compression"
-msgstr "SSH-komprimering"
-
-#: src/remmina_ssh_plugin.c:1519
-msgid "Don't remember passwords"
-msgstr "Ikke husk passord"
-
-#: src/remmina_ssh_plugin.c:1520
-msgid "Strict host key checking"
-msgstr "Streng vertsnøkkelsjekking"
-
-#: src/remmina_ssh_plugin.c:1534
-msgid "SSH - Secure Shell"
-msgstr "SSH - sikkert skall"
-
-#: src/remmina_applet_menu_item.c:121
-msgid "Discovered"
-msgstr "Oppdaget"
-
-#: src/remmina_applet_menu_item.c:126
-msgid "New Connection"
-msgstr "Ny tilkobling"
+"Advarsel: Dette programtillegget krever GtkSocket, men det er ikke "
+"tilgjengelig."
 
 #: src/remmina_mpchange.c:234
 msgid "The passwords do not match"
@@ -461,142 +430,6 @@ msgid "%d password changed."
 msgid_plural "%d passwords changed."
 msgstr[0] "%d passord endret."
 msgstr[1] "%d passord endret."
-
-#: src/remmina_public.c:345
-#, fuzzy, c-format
-msgid "Address is too long for UNIX socket_path: %s"
-msgstr "Adressen er for lang for UNIX-socket_path: %s"
-
-#: src/remmina_public.c:355
-#, fuzzy, c-format
-msgid "Creating UNIX socket failed: %s"
-msgstr "Oppretting av UNIX-socket mislyktes: %s"
-
-#: src/remmina_public.c:361
-#, fuzzy, c-format
-#| msgid "VNC connection failed: %s"
-msgid "Connecting to UNIX socket failed: %s"
-msgstr "Tilkobling til UNIX-kontakt mislyktes: %s"
-
-#: src/remmina_public.c:631
-msgid "Please enter format 'widthxheight'."
-msgstr "Skriv inn format «breddexhøyde»."
-
-#: src/remmina_public.c:653
-msgid "Change security settings"
-msgstr "Kvalitetsinnstillinger"
-
-#. TRANSLATORS: translator-credits should be replaced with a formatted list of translators in your own language
-#: src/remmina_about.c:54
-msgid "translator-credits"
-msgstr ""
-"hosted.weblate.org/projects/remmina\n"
-"  Allan Nordhøy\n"
-"\n"
-"Tidligere Launchpad-bidrag:\n"
-"  Åka Sikrom https://launchpad.net/~akrosikam"
-
-#: src/remmina_ftp_client.c:389
-msgid "Choose download location"
-msgstr "Velg lagringssted for nedlasting"
-
-#: src/remmina_ftp_client.c:529
-msgid "Are you sure to delete the selected files on server?"
-msgstr "Er du sikker på at du vil slette de merkede filene på tjeneren?"
-
-#: src/remmina_ftp_client.c:586
-msgid "Choose a file to upload"
-msgstr "Velg en fil som skal lastes opp"
-
-#: src/remmina_ftp_client.c:593
-msgid "Upload folder"
-msgstr "Opplastingsmappe"
-
-#: src/remmina_ftp_client.c:649 src/remmina_ftp_client.c:763
-msgid "Download"
-msgstr "Last ned"
-
-#: src/remmina_ftp_client.c:656 src/remmina_ftp_client.c:770
-msgid "Upload"
-msgstr "Last opp"
-
-#: src/remmina_ftp_client.c:663
-msgid "_Delete"
-msgstr "_Slett"
-
-#: src/remmina_ftp_client.c:748
-msgid "Home"
-msgstr "Hjem"
-
-#: src/remmina_ftp_client.c:749
-msgid "Go to home folder"
-msgstr "Gå til hjemmemappe"
-
-#: src/remmina_ftp_client.c:753
-msgid "Up"
-msgstr "Oppover"
-
-#: src/remmina_ftp_client.c:754
-msgid "Go to parent folder"
-msgstr "Gå til foreldremappe"
-
-#: src/remmina_ftp_client.c:758 plugins/vnc/vnc_plugin.c:2019
-#: plugins/rdp/rdp_plugin.c:2740
-msgid "Refresh"
-msgstr "Oppdater"
-
-#: src/remmina_ftp_client.c:759
-msgid "Refresh current folder"
-msgstr "Oppdater gjeldende mappe"
-
-#: src/remmina_ftp_client.c:764
-msgid "Download from server"
-msgstr "Last ned fra tjeneren"
-
-#: src/remmina_ftp_client.c:771
-msgid "Upload to server"
-msgstr "Last opp til tjeneren"
-
-#: src/remmina_ftp_client.c:775 data/ui/remmina_main.glade:197
-msgid "Delete"
-msgstr "Slett"
-
-#: src/remmina_ftp_client.c:776
-msgid "Delete files on server"
-msgstr "Slett filer på tjeneren"
-
-#: src/remmina_ftp_client.c:905 src/remmina_ftp_client.c:974
-msgid "Filename"
-msgstr "Filnavn"
-
-#: src/remmina_ftp_client.c:918 src/remmina_ftp_client.c:1003
-msgid "Size"
-msgstr "Størrelse"
-
-#: src/remmina_ftp_client.c:926
-msgid "User"
-msgstr "Bruker"
-
-#: src/remmina_ftp_client.c:932 src/remmina_file_editor.c:1515
-#: data/ui/remmina_main.glade:464 data/ui/remmina_mpc.glade:115
-msgid "Group"
-msgstr "Gruppe"
-
-#: src/remmina_ftp_client.c:938
-msgid "Permission"
-msgstr "Rettighet"
-
-#: src/remmina_ftp_client.c:990 plugins/rdp/rdp_plugin.c:2548
-msgid "Remote"
-msgstr "Eksternt"
-
-#: src/remmina_ftp_client.c:997 plugins/rdp/rdp_plugin.c:2547
-msgid "Local"
-msgstr "Lokalt"
-
-#: src/remmina_ftp_client.c:1011
-msgid "Progress"
-msgstr "Framdrift"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:86
@@ -779,423 +612,264 @@ msgstr ""
 "remmina --set-option brukernavn --set-option resolution_mode=2 --set-option "
 "passord\n"
 
-#: src/remmina_icon.c:128
-msgid "Open Main Window"
-msgstr "Åpne hovedvindu"
+#: src/remmina_public.c:345
+#, fuzzy, c-format
+msgid "Address is too long for UNIX socket_path: %s"
+msgstr "Adressen er for lang for UNIX-socket_path: %s"
 
-#: src/remmina_icon.c:133 data/ui/remmina_main.glade:254
-msgid "_Preferences"
-msgstr "_Innstillinger"
+#: src/remmina_public.c:355
+#, fuzzy, c-format
+msgid "Creating UNIX socket failed: %s"
+msgstr "Oppretting av UNIX-socket mislyktes: %s"
 
-#: src/remmina_icon.c:138
-msgid "_About"
-msgstr "_Om"
+#: src/remmina_public.c:361
+#, fuzzy, c-format
+#| msgid "VNC connection failed: %s"
+msgid "Connecting to UNIX socket failed: %s"
+msgstr "Tilkobling til UNIX-kontakt mislyktes: %s"
 
-#: src/remmina_icon.c:148
-msgid "Enable Service Discovery"
-msgstr "Oppdag tjenester"
+#: src/remmina_public.c:631
+msgid "Please enter format 'widthxheight'."
+msgstr "Skriv inn format «breddexhøyde»."
 
-#: src/remmina_icon.c:160 data/ui/remmina_main.glade:404
-msgid "_Quit"
-msgstr "_Avslutt"
+#: src/remmina_public.c:653
+msgid "Change security settings"
+msgstr "Kvalitetsinnstillinger"
 
-#. TRANSLATORS: Applet name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
-#. TRANSLATORS: Applet Name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
-#: src/remmina_icon.c:284 src/remmina_icon.c:416
-msgid "Remmina Applet"
-msgstr "Remmina-miniprogram"
-
-#. TRANSLATORS: Applet comment/description as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
-#: src/remmina_icon.c:286 src/remmina_icon.c:418
-msgid "Connect to remote desktops through the applet menu"
-msgstr "Koble til eksterne skrivebord via miniprogramsmenyen"
-
-#: src/rcw.c:658
-#, c-format
-msgid ""
-"Are you sure you want to close %i active connections in the current window?"
+#. TRANSLATORS: translator-credits should be replaced with a formatted list of translators in your own language
+#: src/remmina_about.c:54
+msgid "translator-credits"
 msgstr ""
-"Er du sikker på at du vil lukke %i aktive tilkoblinger i det aktive vinduet?"
+"hosted.weblate.org/projects/remmina\n"
+"  Allan Nordhøy\n"
+"\n"
+"Tidligere Launchpad-bidrag:\n"
+"  Åka Sikrom https://launchpad.net/~akrosikam"
 
-#: src/rcw.c:1394
-msgid "Viewport fullscreen mode"
-msgstr "Fullskjermsmodus"
+#: src/remmina_ftp_client.c:389
+msgid "Choose download location"
+msgstr "Velg lagringssted for nedlasting"
 
-#: src/rcw.c:1402 data/ui/remmina_preferences.glade:607
-msgid "Scrolled fullscreen"
-msgstr "Rullet fullskjermsvisning"
+#: src/remmina_ftp_client.c:529
+msgid "Are you sure to delete the selected files on server?"
+msgstr "Er du sikker på at du vil slette de merkede filene på tjeneren?"
 
-#: src/rcw.c:1487
-msgid "Keep aspect ratio when scaled"
-msgstr "Behold sideforhold når skalert"
+#: src/remmina_ftp_client.c:586
+msgid "Choose a file to upload"
+msgstr "Velg en fil som skal lastes opp"
 
-#: src/rcw.c:1495
-msgid "Fill client window when scaled"
-msgstr "Fyll klientvindu når skalert"
+#: src/remmina_ftp_client.c:593
+msgid "Upload folder"
+msgstr "Opplastingsmappe"
 
-#: src/rcw.c:2043
-msgid "Send clipboard content as keystrokes"
-msgstr "Send utklippstavleinnhold som tastetrykk"
+#: src/remmina_ftp_client.c:649 src/remmina_ftp_client.c:763
+msgid "Download"
+msgstr "Last ned"
 
-#: src/rcw.c:2147
-msgid "Turn off scaling to avoid screenshot distortion."
-msgstr "Skru av skalering for å unngå fordreining av skjermavbildninger."
+#: src/remmina_ftp_client.c:656 src/remmina_ftp_client.c:770
+msgid "Upload"
+msgstr "Last opp"
 
-#: src/rcw.c:2207 plugins/www/www_plugin.c:848
-msgid "Screenshot taken"
-msgstr "Skjermavbildning utført"
+#: src/remmina_ftp_client.c:663
+msgid "_Delete"
+msgstr "_Slett"
 
-#: src/rcw.c:2290
-msgid "_Menu"
-msgstr "_Meny"
+#: src/remmina_ftp_client.c:748
+msgid "Home"
+msgstr "Hjem"
 
-#: src/rcw.c:2291
-msgid "Menu"
-msgstr "Meny"
+#: src/remmina_ftp_client.c:749
+msgid "Go to home folder"
+msgstr "Gå til hjemmemappe"
 
-#: src/rcw.c:2300
-msgid "Open the Remmina main window"
-msgstr "Åpne hovedvinduet i Remmina"
+#: src/remmina_ftp_client.c:753
+msgid "Up"
+msgstr "Oppover"
 
-#: src/rcw.c:2310
-msgid "Duplicate current connection"
-msgstr "Dupliser nåværende tilkobling"
+#: src/remmina_ftp_client.c:754
+msgid "Go to parent folder"
+msgstr "Gå til foreldremappe"
 
-#: src/rcw.c:2327
-msgid "Resize the window to fit in remote resolution"
-msgstr "Tilpass vindustørrelsen slik at den passer med ekstern oppløsning"
+#: src/remmina_ftp_client.c:758 plugins/rdp/rdp_plugin.c:2740
+#: plugins/vnc/vnc_plugin.c:2019
+msgid "Refresh"
+msgstr "Oppdater"
 
-#: src/rcw.c:2338
-msgid "Toggle fullscreen mode"
-msgstr "Slå av/på fullskjermmodus"
+#: src/remmina_ftp_client.c:759
+msgid "Refresh current folder"
+msgstr "Oppdater gjeldende mappe"
 
-#: src/rcw.c:2384 data/ui/remmina_preferences.glade:1344
-#: data/ui/remmina_preferences.glade:1354
-msgid "Multi monitor"
-msgstr "Multi-monitor"
+#: src/remmina_ftp_client.c:764
+msgid "Download from server"
+msgstr "Last ned fra tjeneren"
 
-#: src/rcw.c:2400
-msgid "Toggle dynamic resolution update"
-msgstr "Veksle dynamisk oppløsningsoppdatering"
+#: src/remmina_ftp_client.c:771
+msgid "Upload to server"
+msgstr "Last opp til tjeneren"
 
-#: src/rcw.c:2410
-msgid "Toggle scaled mode"
-msgstr "Skru av/på skalert modus"
+#: src/remmina_ftp_client.c:775 data/ui/remmina_main.glade:197
+msgid "Delete"
+msgstr "Slett"
 
-#: src/rcw.c:2450 data/ui/remmina_preferences.glade:1070
-msgid "Switch tab pages"
-msgstr "Bytt mellom fanesider"
+#: src/remmina_ftp_client.c:776
+msgid "Delete files on server"
+msgstr "Slett filer på tjeneren"
 
-#: src/rcw.c:2460
-msgid "Grab all keyboard events"
-msgstr "Fang alle tastaturtastetrykk"
+#: src/remmina_ftp_client.c:905 src/remmina_ftp_client.c:974
+msgid "Filename"
+msgstr "Filnavn"
 
-#: src/rcw.c:2470
-msgid "Preferences"
-msgstr "_Innstillinger"
+#: src/remmina_ftp_client.c:918 src/remmina_ftp_client.c:1003
+msgid "Size"
+msgstr "Størrelse"
 
-#: src/rcw.c:2479
-msgid "_Tools"
-msgstr "Verktøy"
+#: src/remmina_ftp_client.c:926
+msgid "User"
+msgstr "Bruker"
 
-#: src/rcw.c:2480 data/ui/remmina_main.glade:207
-msgid "Tools"
-msgstr "Verktøy"
+#: src/remmina_ftp_client.c:932 src/remmina_file_editor.c:1515
+#: data/ui/remmina_mpc.glade:115 data/ui/remmina_main.glade:464
+msgid "Group"
+msgstr "Gruppe"
 
-#: src/rcw.c:2493 data/ui/remmina_preferences.glade:1277
-#: data/ui/remmina_preferences.glade:1287
-msgid "Screenshot"
-msgstr "Skjermavbildning"
+#: src/remmina_ftp_client.c:938
+msgid "Permission"
+msgstr "Rettighet"
 
-#: src/rcw.c:2507 data/ui/remmina_preferences.glade:1181
-msgid "Minimize window"
-msgstr "Minimer vindu"
+#: src/remmina_ftp_client.c:990 plugins/rdp/rdp_plugin.c:2548
+msgid "Remote"
+msgstr "Eksternt"
 
-#: src/rcw.c:2517 data/ui/remmina_preferences.glade:1213
-msgid "Disconnect"
-msgstr "Koble fra"
+#: src/remmina_ftp_client.c:997 plugins/rdp/rdp_plugin.c:2547
+msgid "Local"
+msgstr "Lokalt"
 
-#: src/rcw.c:4284
+#: src/remmina_ftp_client.c:1011
+msgid "Progress"
+msgstr "Framdrift"
+
+#: src/remmina_protocol_widget.c:290 src/remmina_ssh_plugin.c:829
+#: src/remmina_ssh_plugin.c:1454
+msgid "Open SFTP transfer…"
+msgstr "Åpne SFTP-overføring…"
+
+#: src/remmina_protocol_widget.c:319
+msgid "Executing external commands…"
+msgstr "Kjører eksterne kommandoer …"
+
+#. TRANSLATORS: “%s” is a placeholder for the connection profile name
+#: src/remmina_protocol_widget.c:327
 #, c-format
-msgid "The file “%s” is corrupted, unreadable, or could not be found."
-msgstr "Filen \"%s\" er skadet, kan ikke leses, eller ble ikke funnet."
+msgid "Connecting to “%s”…"
+msgstr "Kobler til «%s» …"
 
-#: src/rcw.c:4452
-msgid "Warning: This plugin requires GtkSocket, but it’s not available."
-msgstr ""
-"Advarsel: Dette programtillegget krever GtkSocket, men det er ikke "
-"tilgjengelig."
-
-#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1533
-msgid "Protocol"
-msgstr "Protokoll"
-
-#: src/remmina_plugin_manager.c:73
-msgid "Entry"
-msgstr "Oppføring"
-
-#: src/remmina_plugin_manager.c:73
-msgid "File"
-msgstr "Fil"
-
-#: src/remmina_plugin_manager.c:73
-msgid "Tool"
-msgstr "Verktøy"
-
-#: src/remmina_plugin_manager.c:73
-msgid "Preference"
-msgstr "Innstilling"
-
-#: src/remmina_plugin_manager.c:73
-msgid "Secret"
-msgstr "Hemmelighet"
-
-#: src/remmina_plugin_manager.c:456 data/ui/remmina_main.glade:305
-msgid "Plugins"
-msgstr "Programtillegg"
-
-#: src/remmina_plugin_manager.c:456 src/remmina_message_panel.c:452
-#: src/remmina_message_panel.c:621 src/remmina_file_editor.c:152
-msgid "_OK"
-msgstr "_OK"
-
-#: src/remmina_plugin_manager.c:474 src/remmina_file_editor.c:1490
-#: data/ui/remmina_main.glade:442
-msgid "Name"
-msgstr "Navn"
-
-#: src/remmina_plugin_manager.c:480
-msgid "Type"
-msgstr "Type"
-
-#: src/remmina_plugin_manager.c:486
-msgid "Description"
-msgstr "Beskrivelse"
-
-#: src/remmina_plugin_manager.c:492
-msgid "Version"
-msgstr "Versjon"
-
-#: src/remmina_main.c:662
+#. TRANSLATORS: “%s” is a placeholder for an hostname or an IP address.
+#: src/remmina_protocol_widget.c:911 src/remmina_protocol_widget.c:1096
 #, c-format
-msgid "Total %i item."
-msgid_plural "Total %i items."
-msgstr[0] "%i element totalt."
-msgstr[1] "%i elementer totalt."
+msgid "Connecting to “%s” via SSH…"
+msgstr "Kobler til «%s» via SSH…"
 
-#: src/remmina_main.c:853
+#. TRANSLATORS: “%i” is a placeholder for a TCP port number.
+#: src/remmina_protocol_widget.c:1160
 #, c-format
-msgid "Are you sure you want to delete “%s”?"
-msgstr "Er du sikker på at du vil slette «%s»?"
+msgid "Awaiting incoming SSH connection on port %i…"
+msgstr "Venter på innkommende SSH-tilkobling på port %i …"
 
-#: src/remmina_main.c:973
+#: src/remmina_protocol_widget.c:1213
 #, c-format
-msgid ""
-"Unable to import:\n"
-"%s"
-msgstr ""
-"Klarte ikke å importere:\n"
-"%s"
+msgid "The “%s” command is not available on the SSH server."
+msgstr "Fant ikke kommandoen «%s» på SSH-tjeneren."
 
-#: src/remmina_main.c:999 data/ui/remmina_main.glade:285
-msgid "Import"
-msgstr "Importer"
-
-#: src/remmina_main.c:1022 src/remmina_file_editor.c:1373
-msgid "_Save"
-msgstr "_Lagre"
-
-#: src/remmina_main.c:1028
-msgid "This protocol does not support exporting."
-msgstr "Denne protokollen støtter ikke eksportering."
-
-#: src/remmina_main.c:1344
-msgid "Remmina Remote Desktop Client"
-msgstr "Remmina-klient for eksterne skrivebord"
-
-#: src/remmina_main.c:1346
-msgid "Remmina Kiosk"
-msgstr "Remmina-kiosk"
-
-#: src/remmina_key_chooser.h:38
-msgid "Shift+"
-msgstr "Shift+"
-
-#: src/remmina_key_chooser.h:39
-msgid "Ctrl+"
-msgstr "Ctrl+"
-
-#: src/remmina_key_chooser.h:40
-msgid "Alt+"
-msgstr "Alt+"
-
-#: src/remmina_key_chooser.h:41
-msgid "Super+"
-msgstr "Super+"
-
-#: src/remmina_key_chooser.h:42
-msgid "Hyper+"
-msgstr "Hyper+"
-
-#: src/remmina_key_chooser.h:43
-msgid "Meta+"
-msgstr "Meta+"
-
-#: src/remmina_key_chooser.h:44
-msgid "<None>"
-msgstr "<Ingen>"
-
-#. TRANSLATORS: The placeholder %s is a directory path
-#: src/remmina_sftp_client.c:173
+#: src/remmina_protocol_widget.c:1218
 #, c-format
-msgid "Could not create the folder “%s”."
-msgstr "Klarte ikke å opprette mappen: %s."
+msgid "Could not run the “%s” command on the SSH server (status = %i)."
+msgstr "Kunne ikke kjøre kommandoen «%s» på SSH-tjeneren (status = %i)."
 
-#. TRANSLATORS: The placeholder %s is a file path
-#: src/remmina_sftp_client.c:181 src/remmina_sftp_client.c:202
+#. TRANSLATORS: %s is a placeholder for an error message
+#: src/remmina_protocol_widget.c:1226
 #, c-format
-msgid "Could not create the file “%s”."
-msgstr "Klarte ikke å opprette filen: %s."
+msgid "Could not run command. %s"
+msgstr "Kunne ikke kjøre kommandoen. %s"
 
-#. TRANSLATORS: The placeholders %s are a file path, and an error message.
-#: src/remmina_sftp_client.c:220
+#. TRANSLATORS: “%s” is a placeholder for a hostname or IP address.
+#: src/remmina_protocol_widget.c:1296
 #, c-format
-msgid "Could not open the file “%s” on the server. %s"
-msgstr "Kunne ikke åpne filen \"%s\" på tjeneren. %s"
+msgid "Connecting to %s via SSH…"
+msgstr "Kobler til «%s» via SSH…"
 
-#: src/remmina_sftp_client.c:242
+#: src/remmina_protocol_widget.c:1690
+msgid "Type in SSH username and password."
+msgstr "Skriv inn brukernavn og passord for SSH."
+
+#: src/remmina_protocol_widget.c:1745 src/remmina_protocol_widget.c:1777
+msgid "Fingerprint automatically accepted"
+msgstr "Fingeravtrykk automatisk godkjent"
+
+#. TRANSLATORS: The user is asked to verify a new SSL certificate.
+#: src/remmina_protocol_widget.c:1753
+msgid "Certificate details:"
+msgstr "Sertifikatsdetaljer:"
+
+#. TRANSLATORS: An SSL certificate subject is usually the remote server the user connect to.
+#: src/remmina_protocol_widget.c:1755 src/remmina_protocol_widget.c:1787
+msgid "Subject:"
+msgstr "Emne:"
+
+#. TRANSLATORS: The name or email of the entity that have issued the SSL certificate
+#: src/remmina_protocol_widget.c:1757 src/remmina_protocol_widget.c:1789
+msgid "Issuer:"
+msgstr "Utsteder:"
+
+#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
+#: src/remmina_protocol_widget.c:1759
+msgid "Fingerprint:"
+msgstr "Fingeravtrykk:"
+
+#. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
+#: src/remmina_protocol_widget.c:1761
+msgid "Accept certificate?"
+msgstr "Godta sertifikat?"
+
+#. TRANSLATORS: The user is asked to verify a new SSL certificate.
+#: src/remmina_protocol_widget.c:1785
+msgid "The certificate changed! Details:"
+msgstr "Sertifikat endret! Detaljer:"
+
+#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
+#: src/remmina_protocol_widget.c:1791
+msgid "Old fingerprint:"
+msgstr "Gammelt fingeravtrykk:"
+
+#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
+#: src/remmina_protocol_widget.c:1793
+msgid "New fingerprint:"
+msgstr "Nytt fingeravtrykk:"
+
+#. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
+#: src/remmina_protocol_widget.c:1795
+msgid "Accept changed certificate?"
+msgstr "Godta endret sertifikat?"
+
+#. TRANSLATORS: “%i” is a placeholder for a port number. “%s”  is a placeholder for a protocol name (VNC).
+#: src/remmina_protocol_widget.c:1938
 #, c-format
-msgid "Could not save the file “%s”."
-msgstr "Klarte ikke å lagre filen \"%s\"."
+msgid "Listening on port %i for an incoming %s connection…"
+msgstr "Lytter til port nr. %i i påvente av en %s-tilkobling …"
 
-#: src/remmina_sftp_client.c:281 src/remmina_sftp_client.c:698
-#: src/remmina_sftp_client.c:761
+#: src/remmina_protocol_widget.c:1963
+msgid "Could not authenticate, attempting reconnection…"
+msgstr "Kunne ikke identitetsbekrefte. Prøver å koble til på ny …"
+
+#: src/remmina_protocol_widget.c:2025 src/remmina_file_editor.c:346
+#: src/remmina_file_editor.c:917 data/ui/remmina_main.glade:478
+msgid "Server"
+msgstr "Tjener"
+
+#. TRANSLATORS: “%s” is a placeholder for a protocol name, like “RDP”.
+#: src/remmina_protocol_widget.c:2043
 #, c-format
-msgid "Could not open the folder “%s”. %s"
-msgstr "Klarte ikke å åpne mappen \"%s\". %s"
-
-#: src/remmina_sftp_client.c:385
-#, c-format
-msgid "Could not create the folder “%s” on the server. %s"
-msgstr "Klarte ikke å lage mappen \"%s\" på tjeneren. %s"
-
-#: src/remmina_sftp_client.c:413 src/remmina_sftp_client.c:435
-#, c-format
-msgid "Could not create the file “%s” on the server. %s"
-msgstr "Klarte ikke å lage filen \"%s\" på tjeneren. %s"
-
-#: src/remmina_sftp_client.c:456
-#, c-format
-msgid "Could not open the file “%s”."
-msgstr "Kunne ikke åpne filen \"%s\"."
-
-#: src/remmina_sftp_client.c:476
-#, c-format
-msgid "Could not write to the file “%s” on the server. %s"
-msgstr "Klarte ikke å skrive til filen \"%s\" på tjeneren. %s"
-
-#: src/remmina_sftp_client.c:716
-#, c-format
-msgid "Could not read from the folder. %s"
-msgstr "Kunne ikke lese fra mappen. %s"
-
-#: src/remmina_sftp_client.c:823
-msgid "Are you sure you want to cancel the file transfer in progress?"
-msgstr "Er du sikker på at du vil avbryte filoverføringen som er underveis?"
-
-#: src/remmina_sftp_client.c:857
-#, c-format
-msgid "Could not delete “%s”. %s"
-msgstr "Klarte ikke å slette \"%s\". %s"
-
-#: src/remmina_sftp_client.c:942
-msgid "The file exists already"
-msgstr "Filen finnes allerede"
-
-#: src/remmina_sftp_client.c:945
-msgid "Resume"
-msgstr "Fortsett"
-
-#: src/remmina_sftp_client.c:946
-msgid "Overwrite"
-msgstr "Overskriv"
-
-#: src/remmina_sftp_client.c:947 src/remmina_message_panel.c:457
-#: src/remmina_message_panel.c:629 src/remmina_file_editor.c:151
-#: src/remmina_file_editor.c:1365 plugins/spice/spice_plugin_file_transfer.c:84
-#: data/ui/remmina_spinner.glade:8 data/ui/remmina_spinner.glade:9
-#: data/ui/remmina_key_chooser.glade:8 data/ui/remmina_key_chooser.glade:9
-msgid "_Cancel"
-msgstr "_Avbryt"
-
-#: src/remmina_sftp_client.c:964
-msgid "The following file already exists in the target folder:"
-msgstr "Følgende fil eksisterer allerede i målmappa:"
-
-#: src/remmina_message_panel.c:163 data/ui/remmina_unlock.glade:46
-#: data/ui/remmina_mpc.glade:46
-msgid "Cancel"
-msgstr "Avbryt"
-
-#: src/remmina_message_panel.c:199 data/ui/remmina_snap_info_dialog.glade:28
-#: data/ui/remmina_news.glade:33 data/ui/remmina_preferences.glade:2640
-#: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
-#: data/ui/remmina_string_list.glade:63
-msgid "Close"
-msgstr "Lukk"
-
-#: src/remmina_message_panel.c:260
-msgid "Yes"
-msgstr "Ja"
-
-#: src/remmina_message_panel.c:267
-msgid "No"
-msgstr "Nei"
-
-#: src/remmina_message_panel.c:391 plugins/rdp/rdp_plugin.c:2653
-#: data/ui/remmina_mpc.glade:172
-msgid "Domain"
-msgstr "Domene"
-
-#: src/remmina_message_panel.c:420
-msgid "Save password"
-msgstr "Lagre passord"
-
-#: src/remmina_message_panel.c:513
-msgid "Enter certificate authentication files"
-msgstr "Angi filer for sertifikatsidentitetsbekreftelse"
-
-#: src/remmina_message_panel.c:525
-msgid "CA Certificate File"
-msgstr "CA-sertifikatsfil"
-
-#: src/remmina_message_panel.c:547
-msgid "CA CRL File"
-msgstr "CA CRL-fil"
-
-#: src/remmina_message_panel.c:569
-msgid "Client Certificate File"
-msgstr "Klientsertifikatsfil"
-
-#: src/remmina_message_panel.c:591
-msgid "Client Certificate Key"
-msgstr "Klientsertifikatsnøkkel"
-
-#: src/remmina_sftp_plugin.c:323
-msgid "Show Hidden Files"
-msgstr "Vis skjulte filer"
-
-#: src/remmina_sftp_plugin.c:325
-msgid "Overwrite all files"
-msgstr "Overskriv alle filer"
-
-#: src/remmina_sftp_plugin.c:327
-msgid "Resume all file transfers"
-msgstr "Gjenoppta alle filoverføringer"
-
-#: src/remmina_sftp_plugin.c:359
-msgid "SFTP - Secure File Transfer"
-msgstr "SFTP - sikker filoverføring"
+msgid "Install the %s protocol plugin first."
+msgstr "Installer %s-protokollprogramtillegget først."
 
 #: src/remmina_ssh.c:236
 #, c-format
@@ -1459,6 +1133,131 @@ msgstr "Kunne ikke forespørre skall. %s"
 msgid "Could not create PTY device."
 msgstr "Klarte ikke å opprette PTY-enhet."
 
+#: src/remmina_exec.c:475
+#, c-format
+msgid "Plugin %s is not registered."
+msgstr "Tillegget «%s» er ikke registrert."
+
+#: src/remmina_main.c:662
+#, c-format
+msgid "Total %i item."
+msgid_plural "Total %i items."
+msgstr[0] "%i element totalt."
+msgstr[1] "%i elementer totalt."
+
+#: src/remmina_main.c:853
+#, c-format
+msgid "Are you sure you want to delete “%s”?"
+msgstr "Er du sikker på at du vil slette «%s»?"
+
+#: src/remmina_main.c:973
+#, c-format
+msgid ""
+"Unable to import:\n"
+"%s"
+msgstr ""
+"Klarte ikke å importere:\n"
+"%s"
+
+#: src/remmina_main.c:999 data/ui/remmina_main.glade:285
+msgid "Import"
+msgstr "Importer"
+
+#: src/remmina_main.c:1022 src/remmina_file_editor.c:1373
+msgid "_Save"
+msgstr "_Lagre"
+
+#: src/remmina_main.c:1028
+msgid "This protocol does not support exporting."
+msgstr "Denne protokollen støtter ikke eksportering."
+
+#: src/remmina_main.c:1344
+msgid "Remmina Remote Desktop Client"
+msgstr "Remmina-klient for eksterne skrivebord"
+
+#: src/remmina_main.c:1346
+msgid "Remmina Kiosk"
+msgstr "Remmina-kiosk"
+
+#. TRANSLATORS: The placeholder %s is a directory path
+#: src/remmina_sftp_client.c:173
+#, c-format
+msgid "Could not create the folder “%s”."
+msgstr "Klarte ikke å opprette mappen: %s."
+
+#. TRANSLATORS: The placeholder %s is a file path
+#: src/remmina_sftp_client.c:181 src/remmina_sftp_client.c:202
+#, c-format
+msgid "Could not create the file “%s”."
+msgstr "Klarte ikke å opprette filen: %s."
+
+#. TRANSLATORS: The placeholders %s are a file path, and an error message.
+#: src/remmina_sftp_client.c:220
+#, c-format
+msgid "Could not open the file “%s” on the server. %s"
+msgstr "Kunne ikke åpne filen \"%s\" på tjeneren. %s"
+
+#: src/remmina_sftp_client.c:242
+#, c-format
+msgid "Could not save the file “%s”."
+msgstr "Klarte ikke å lagre filen \"%s\"."
+
+#: src/remmina_sftp_client.c:281 src/remmina_sftp_client.c:698
+#: src/remmina_sftp_client.c:761
+#, c-format
+msgid "Could not open the folder “%s”. %s"
+msgstr "Klarte ikke å åpne mappen \"%s\". %s"
+
+#: src/remmina_sftp_client.c:385
+#, c-format
+msgid "Could not create the folder “%s” on the server. %s"
+msgstr "Klarte ikke å lage mappen \"%s\" på tjeneren. %s"
+
+#: src/remmina_sftp_client.c:413 src/remmina_sftp_client.c:435
+#, c-format
+msgid "Could not create the file “%s” on the server. %s"
+msgstr "Klarte ikke å lage filen \"%s\" på tjeneren. %s"
+
+#: src/remmina_sftp_client.c:456
+#, c-format
+msgid "Could not open the file “%s”."
+msgstr "Kunne ikke åpne filen \"%s\"."
+
+#: src/remmina_sftp_client.c:476
+#, c-format
+msgid "Could not write to the file “%s” on the server. %s"
+msgstr "Klarte ikke å skrive til filen \"%s\" på tjeneren. %s"
+
+#: src/remmina_sftp_client.c:716
+#, c-format
+msgid "Could not read from the folder. %s"
+msgstr "Kunne ikke lese fra mappen. %s"
+
+#: src/remmina_sftp_client.c:823
+msgid "Are you sure you want to cancel the file transfer in progress?"
+msgstr "Er du sikker på at du vil avbryte filoverføringen som er underveis?"
+
+#: src/remmina_sftp_client.c:857
+#, c-format
+msgid "Could not delete “%s”. %s"
+msgstr "Klarte ikke å slette \"%s\". %s"
+
+#: src/remmina_sftp_client.c:942
+msgid "The file exists already"
+msgstr "Filen finnes allerede"
+
+#: src/remmina_sftp_client.c:945
+msgid "Resume"
+msgstr "Fortsett"
+
+#: src/remmina_sftp_client.c:946
+msgid "Overwrite"
+msgstr "Overskriv"
+
+#: src/remmina_sftp_client.c:964
+msgid "The following file already exists in the target folder:"
+msgstr "Følgende fil eksisterer allerede i målmappa:"
+
 #: src/remmina_file_editor.c:60
 #, fuzzy
 #| msgid ""
@@ -1613,6 +1412,10 @@ msgstr "SSH-identitetsbekreftelse"
 msgid "SSH private key file"
 msgstr "SSH privatnøkkel fil"
 
+#: src/remmina_file_editor.c:979 src/remmina_ssh_plugin.c:1477
+msgid "SSH certificate file"
+msgstr "SSH-sertifikatsfil"
+
 #: src/remmina_file_editor.c:1037
 msgid "Basic"
 msgstr "Enkel"
@@ -1664,529 +1467,341 @@ msgstr "Bruk «%s» som skilletegn for undergrupper"
 msgid "Could not find the file “%s”."
 msgstr "Klarte ikke å finne filen «%s»."
 
-#: src/remmina_chat_window.c:178
+#: src/remmina_icon.c:128
+msgid "Open Main Window"
+msgstr "Åpne hovedvindu"
+
+#: src/remmina_icon.c:133 data/ui/remmina_main.glade:254
+msgid "_Preferences"
+msgstr "_Innstillinger"
+
+#: src/remmina_icon.c:138
+msgid "_About"
+msgstr "_Om"
+
+#: src/remmina_icon.c:148
+msgid "Enable Service Discovery"
+msgstr "Oppdag tjenester"
+
+#: src/remmina_icon.c:160 data/ui/remmina_main.glade:404
+msgid "_Quit"
+msgstr "_Avslutt"
+
+#. TRANSLATORS: Applet name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
+#. TRANSLATORS: Applet Name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
+#: src/remmina_icon.c:284 src/remmina_icon.c:416
+msgid "Remmina Applet"
+msgstr "Remmina-miniprogram"
+
+#. TRANSLATORS: Applet comment/description as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
+#: src/remmina_icon.c:286 src/remmina_icon.c:418
+msgid "Connect to remote desktops through the applet menu"
+msgstr "Koble til eksterne skrivebord via miniprogramsmenyen"
+
+#. TRANSLATORS: %s is a placeholder for an error message
+#: src/remmina_ssh_plugin.c:539
 #, c-format
-msgid "Chat with %s"
-msgstr "Sludre med %s"
+msgid "Error: %s"
+msgstr "Feil: %s"
 
-#: src/remmina_chat_window.c:230
-msgid "_Send"
-msgstr "_Send"
+#: src/remmina_ssh_plugin.c:556
+msgid "Terminal content saved in"
+msgstr "Terminalinnhold lagret i"
 
-#: src/remmina_chat_window.c:240
-msgid "_Clear"
-msgstr "_Tøm"
+#: src/remmina_ssh_plugin.c:822
+msgid "Select All (host+A)"
+msgstr "Velg alt (vert+A)"
 
-#: plugins/gvnc/gvnc_plugin_config.h:40
-msgid "Remmina VNC plugin for GNOME and KVM"
-msgstr "Remmina VNC-programtillegg for GNOME og KVM"
+#: src/remmina_ssh_plugin.c:823
+msgid "Copy (host+C)"
+msgstr "Kopier (vert+C)"
 
-#: plugins/gvnc/gvnc_plugin.c:477
-#, fuzzy, c-format
-#| msgid "Authentication type"
-msgid "Unsupported authentication type %u"
-msgstr "Godkjenningstypen %u støttes ikke"
+#: src/remmina_ssh_plugin.c:824
+msgid "Paste (host+V)"
+msgstr "Lim inn (vert+V)"
 
-#: plugins/gvnc/gvnc_plugin.c:489
-#, fuzzy, c-format
-#| msgid "Authentication type"
-msgid "Authentication failure: %s"
-msgstr "Godkjenningsfeil: %s"
+#: src/remmina_ssh_plugin.c:825
+msgid "Save session to file"
+msgstr "Lagre økt til fil"
 
-#: plugins/gvnc/gvnc_plugin.c:539 plugins/vnc/vnc_plugin.c:825
-msgid "Enter VNC authentication credentials"
-msgstr "Skriv inn VNC-identitetsbekreftelsesdetaljer"
+#: src/remmina_ssh_plugin.c:826
+msgid "Increase font size (host+Page Up)"
+msgstr "Øk skriftstørrelse (vert+Page Up)"
 
-#: plugins/gvnc/gvnc_plugin.c:820
-msgid "Use server settings"
-msgstr "Bruk tjenerinnstillinger"
+#: src/remmina_ssh_plugin.c:827
+msgid "Decrease font size (host+Page Down)"
+msgstr "Forminsk skriftstørrelse (vert+Page Down)"
 
-#: plugins/gvnc/gvnc_plugin.c:821
-msgid "True colour (24 bits)"
-msgstr "Millioner av farger (24 biter)"
+#: src/remmina_ssh_plugin.c:828
+msgid "Find text (host+G)"
+msgstr "Finn tekst (vert+G)"
 
-#: plugins/gvnc/gvnc_plugin.c:822
-msgid "High colour (16 bits)"
-msgstr "Høy farge (16 biter)"
+#: src/remmina_ssh_plugin.c:1448 data/ui/remmina_main.glade:177
+msgid "Copy"
+msgstr "Kopier"
 
-#: plugins/gvnc/gvnc_plugin.c:823
-msgid "Low colour (8 bits)"
-msgstr "Lav farge (8 biter)"
+#: src/remmina_ssh_plugin.c:1448
+msgid "_Copy"
+msgstr "_Kopier"
 
-#: plugins/gvnc/gvnc_plugin.c:824
-msgid "Ultra low colour (3 bits)"
-msgstr "Svært lav farge (3 biter)"
+#: src/remmina_ssh_plugin.c:1449
+msgid "Paste"
+msgstr "Lim inn"
 
-#: plugins/gvnc/gvnc_plugin.c:839
-msgid "VNC password"
-msgstr "VNC-passord"
+#: src/remmina_ssh_plugin.c:1449
+msgid "_Paste"
+msgstr "_Lim inn"
 
-#: plugins/gvnc/gvnc_plugin.c:840 plugins/vnc/vnc_plugin.c:1962
-#: plugins/vnc/vnc_plugin.c:1982 plugins/rdp/rdp_plugin.c:2661
-msgid "Colour depth"
-msgstr "Fargedybde"
+#: src/remmina_ssh_plugin.c:1450
+msgid "Select all"
+msgstr "Velg alt"
 
-#: plugins/gvnc/gvnc_plugin.c:841
-msgid "Use JPEG Compression"
-msgstr "Bruk JPEG-komprimering"
+#: src/remmina_ssh_plugin.c:1450
+msgid "_Select all"
+msgstr "_Velg alt"
 
-#: plugins/gvnc/gvnc_plugin.c:841
-msgid "This might not work on all VNC servers"
-msgstr "Dette fungerer kanskje ikke på alle VNC-tjenere"
+#: src/remmina_ssh_plugin.c:1451
+msgid "Increase font size"
+msgstr "Øk skriftstørrelse"
 
-#: plugins/gvnc/gvnc_plugin.c:842
-#, fuzzy
-msgid "Enable GTK-VNC debug"
-msgstr "Aktiver GTK-VNC-feilsøking"
+#: src/remmina_ssh_plugin.c:1451
+msgid "_Increase font size"
+msgstr "_Øk skriftstørrelse"
 
-#: plugins/gvnc/gvnc_plugin.c:857 plugins/gvnc/gvnc_plugin.c:871
-#: plugins/spice/spice_plugin.c:693 plugins/spice/spice_plugin.c:706
-msgid "No clipboard sync"
-msgstr "Skru av utklippstavlesynkronisering"
+#: src/remmina_ssh_plugin.c:1452
+msgid "Decrease font size"
+msgstr "Forminsk skriftstørrelse"
 
-#: plugins/gvnc/gvnc_plugin.c:858 plugins/www/www_plugin.c:904
-#: plugins/vnc/vnc_plugin.c:2005 plugins/spice/spice_plugin.c:694
-#: plugins/rdp/rdp_plugin.c:2718
-msgid "Forget passwords after use"
-msgstr "Ingen passordslagring"
+#: src/remmina_ssh_plugin.c:1452
+msgid "_Decrease font size"
+msgstr "_Forminsk skriftstørrelse"
 
-#: plugins/gvnc/gvnc_plugin.c:859 plugins/vnc/vnc_plugin.c:2004
-#, fuzzy
-msgid "Ignore remote bell messages"
-msgstr "Ignorer eksterne bjellemeldinger"
+#: src/remmina_ssh_plugin.c:1453
+msgid "Find text"
+msgstr "Finn tekst"
 
-#: plugins/gvnc/gvnc_plugin.c:860 plugins/spice/spice_plugin.c:695
-msgid "Enable audio channel"
-msgstr "Skru på lydkanal"
+#: src/remmina_ssh_plugin.c:1453
+msgid "_Find text"
+msgstr "_Finn tekst"
 
-#: plugins/gvnc/gvnc_plugin.c:861 plugins/gvnc/gvnc_plugin.c:870
-#: plugins/vnc/vnc_plugin.c:2000 plugins/vnc/vnc_plugin.c:2017
-#: plugins/spice/spice_plugin.c:697 plugins/spice/spice_plugin.c:705
-msgid "View only"
-msgstr "Kun vis"
+#: src/remmina_ssh_plugin.c:1474 plugins/spice/spice_plugin.c:666
+#: plugins/vnc/vnc_plugin.c:1961 plugins/vnc/vnc_plugin.c:1981
+msgid "User password"
+msgstr "Brukerpassord"
 
-#: plugins/gvnc/gvnc_plugin.c:862
-msgid "Shared connection"
-msgstr "Delt tilkobling"
+#: src/remmina_ssh_plugin.c:1480 plugins/rdp/rdp_plugin.c:2693
+msgid "Start-up program"
+msgstr "Oppstartsprogram"
 
-#: plugins/gvnc/gvnc_plugin.c:862
-#, fuzzy
+#: src/remmina_ssh_plugin.c:1485
 msgid ""
-"If the server should try to share the desktop by leaving other clients "
-"connected"
+"The filename can use the following placeholders:\n"
+"\n"
+"  • %h is substituted with the server name\n"
+"  • %t is substituted with the SSH server name\n"
+"  • %u is substituted with the username\n"
+"  • %U is substituted with the SSH username\n"
+"  • %p is substituted with Remmina profile name\n"
+"  • %g is substituted with Remmina profile group name\n"
+"  • %d is substituted with local date and time in ISO 8601 format\n"
 msgstr ""
-"Hvis serveren skal prøve å dele skrivebordet ved å la andre klienter være "
-"tilkoblet"
+"Filnavnet kan bruke følgende plassholdere:\n"
+"\n"
+"  • %h erstattes med tjenernavnet\n"
+"  • %t erstattes med SSH-tjenernavnet\n"
+"  • %u erstattes med brukernavnet\n"
+"  • %U erstattes med SSH-brukernavnet\n"
+"  • %p erstattes med Remmina-profilnavnet\n"
+"  • %g erstattes med Remmina-profilgruppenavnet\n"
+"  • %d erstattes av lokal datotid i iso8601-format\n"
 
-#: plugins/gvnc/gvnc_plugin.c:872
+#: src/remmina_ssh_plugin.c:1507
+msgid "Terminal colour scheme"
+msgstr "Terminalfargedrakt"
+
+#: src/remmina_ssh_plugin.c:1508
+msgid "Character set"
+msgstr "Tegnsett"
+
+#: src/remmina_ssh_plugin.c:1510
+msgid "KEX (Key Exchange) algorithms"
+msgstr "KEX (nøkkelutveksling)-algoritmer"
+
+#: src/remmina_ssh_plugin.c:1511
+msgid "Symmetric cipher client to server"
+msgstr "Symmetrisk chifferklient til tjener"
+
+#: src/remmina_ssh_plugin.c:1512
+msgid "Preferred server host key types"
+msgstr "Foretrukne tjenervertsnøkkeltyper"
+
+#: src/remmina_ssh_plugin.c:1513
+msgid "Folder for SSH session log"
+msgstr "Kunne ikke starte SSH-økt. %s"
+
+#: src/remmina_ssh_plugin.c:1514
+msgid "Filename for SSH session log"
+msgstr "Skru på SSH-øktlogging ved avslutning"
+
+#: src/remmina_ssh_plugin.c:1515
+msgid "Log SSH session when exiting Remmina"
+msgstr "Logg SSH-økter når Remmina avsluttes"
+
+#: src/remmina_ssh_plugin.c:1516
+msgid "Log SSH session asynchronously"
+msgstr "Loggfør SSH-økt asynkront"
+
+#: src/remmina_ssh_plugin.c:1516
 #, fuzzy
-#| msgid "Send Ctrl+Alt+Del"
-msgid "Send Ctrl+Alt+_Del"
-msgstr "Send Ctrl+Alt+_Del"
-
-#: plugins/gvnc/gvnc_plugin.c:873
-msgid "Send Ctrl+Alt+_Backspace"
-msgstr "Send Ctrl+Alt+_Rettetast"
-
-#: plugins/gvnc/gvnc_plugin.c:874
-msgid "Send Ctrl+Alt+_F1"
-msgstr "Send Ctrl+Alt+_F1"
-
-#: plugins/gvnc/gvnc_plugin.c:875
-msgid "Send Ctrl+Alt+_F2"
-msgstr "Send Ctrl+Alt+_F2"
-
-#: plugins/gvnc/gvnc_plugin.c:876
-msgid "Send Ctrl+Alt+_F3"
-msgstr "Send Ctrl+Alt+_F3"
-
-#: plugins/gvnc/gvnc_plugin.c:877
-msgid "Send Ctrl+Alt+_F4"
-msgstr "Send Ctrl+Alt+_F4"
-
-#: plugins/gvnc/gvnc_plugin.c:878
-msgid "Send Ctrl+Alt+_F5"
-msgstr "Send Ctrl+Alt+_F5"
-
-#: plugins/gvnc/gvnc_plugin.c:879
-msgid "Send Ctrl+Alt+_F6"
-msgstr "Send Ctrl+Alt+_F6"
-
-#: plugins/gvnc/gvnc_plugin.c:880
-msgid "Send Ctrl+Alt+_F7"
-msgstr "Send Ctrl+Alt+_F7"
-
-#: plugins/gvnc/gvnc_plugin.c:881
-msgid "Send Ctrl+Alt+_F8"
-msgstr "Send Ctrl+Alt+_F8"
-
-#: plugins/gvnc/gvnc_plugin.c:882
-msgid "Send Ctrl+Alt+_F9"
-msgstr "Send Ctrl+Alt+_F9"
-
-#: plugins/gvnc/gvnc_plugin.c:883
-msgid "Send Ctrl+Alt+_F10"
-msgstr "Send Ctrl+Alt+_F10"
-
-#: plugins/gvnc/gvnc_plugin.c:884
-msgid "Send Ctrl+Alt+_F11"
-msgstr "Send Ctrl+Alt+_F11"
-
-#: plugins/gvnc/gvnc_plugin.c:885
-msgid "Send Ctrl+Alt+_F12"
-msgstr "Send Ctrl+Alt+_F12"
-
-#: plugins/gvnc/gvnc_plugin.c:887
-msgid "Reboot remote host"
-msgstr "Utfør omstart av fjernvert"
-
-#: plugins/gvnc/gvnc_plugin.c:888
-#, fuzzy
-msgid "Reset remote host (hard reboot)"
-msgstr "Tilbakestill ekstern vert (hard omstart)"
-
-#: plugins/gvnc/gvnc_plugin.c:889
-#, fuzzy
-#| msgid "Show remote cursor"
-msgid "Shutdown remote host"
-msgstr "Slå av ekstern vert"
-
-#: plugins/exec/exec_plugin_config.h:41
-msgid "Execute a command"
-msgstr "Kjør en kommando"
-
-#: plugins/exec/exec_plugin.c:160
-msgid "You did not set any command to be executed"
-msgstr "Du har ikke satt noen kommando for kjøring"
-
-#: plugins/exec/exec_plugin.c:206
-msgid ""
-"Warning: Running a command synchronously may cause Remmina not to respond.\n"
-"Do you really want to continue?"
+msgid "Saving the session asynchronously may have a notable performance impact"
 msgstr ""
-"ADVARSEL! Å kjøre en kommando synkront kan lede til at Remmina ikke svarer.\n"
-"Ønsker du virkelig å fortsette?"
+"Hvis du lagrer økten asynkront, kan det ha en merkbar innvirkning på ytelsen"
 
-#: plugins/exec/exec_plugin.c:266
-msgid "Command"
-msgstr "Kommando"
+#: src/remmina_ssh_plugin.c:1517
+msgid "Audible terminal bell"
+msgstr "Skru på klokke med lyd i terminalen"
 
-#: plugins/exec/exec_plugin.c:267
-msgid "Asynchronous execution"
-msgstr "Asynkron kjøring"
+#: src/remmina_ssh_plugin.c:1518
+msgid "SSH compression"
+msgstr "SSH-komprimering"
 
-#: plugins/www/www_plugin.c:98
-msgid "File downloaded"
-msgstr "Fil nedlastet"
+#: src/remmina_ssh_plugin.c:1519
+msgid "Don't remember passwords"
+msgstr "Ikke husk passord"
 
-#: plugins/www/www_plugin.c:574
-msgid "Enter WWW authentication credentials"
-msgstr "Skriv inn WWW-identitetsbekreftelsesdetaljer"
+#: src/remmina_ssh_plugin.c:1520
+msgid "Strict host key checking"
+msgstr "Streng vertsnøkkelsjekking"
 
-#: plugins/www/www_plugin.c:878
-msgid "URL"
-msgstr "Nettadresse"
+#: src/remmina_ssh_plugin.c:1534
+msgid "SSH - Secure Shell"
+msgstr "SSH - sikkert skall"
 
-#: plugins/www/www_plugin.c:878
-msgid "http://address or https://address"
-msgstr "http://adresse eller https://adresse"
+#: plugins/kwallet/src/kwallet_plugin_main.c:118
+msgid "Secured password storage in KWallet"
+msgstr "Sikker passordslagring i KDE-lommeboken"
 
-#: plugins/www/www_plugin.c:895
-msgid "User agent"
-msgstr "Brukeragent"
+#: plugins/rdp/rdp_settings.c:205
+msgid "<Auto-detect>"
+msgstr "<Oppdag automatisk>"
 
-#: plugins/www/www_plugin.c:896
-msgid "Proxy URL"
-msgstr "Mellomtjener-nettadresse"
+#: plugins/rdp/rdp_settings.c:237
+msgid "<Not set>"
+msgstr "<Ikke satt>"
 
-#: plugins/www/www_plugin.c:896
-msgid "E.g. https://example.org, socks://mysocks:1080"
-msgstr "F.eks. https://eksempel.no, socks://mysocks:1080"
+#: plugins/rdp/rdp_settings.c:268
+msgid "<Choose a quality level to edit…>"
+msgstr "<Velg kvalitetsnivå å redigere…>"
 
-#: plugins/www/www_plugin.c:897
-msgid "Turn on Java support"
-msgstr "Skru på Java-støtte"
-
-#: plugins/www/www_plugin.c:898
-msgid "Turn on smooth scrolling"
-msgstr "Skru på myk rulling"
-
-#: plugins/www/www_plugin.c:899
-msgid "Turn on spatial navigation"
-msgstr "Skru på romnavigering"
-
-#: plugins/www/www_plugin.c:900
-msgid "Turn on plugin support"
-msgstr "Skru på programtilleggsstøtte"
-
-#: plugins/www/www_plugin.c:901
-msgid "Turn on WebGL support"
-msgstr "Skru på WebGL-støtte"
-
-#: plugins/www/www_plugin.c:902
-msgid "Turn on HTML5 audio support"
-msgstr "Skru på HTML5-lydstøtte"
-
-#: plugins/www/www_plugin.c:903
-msgid "Ignore TLS errors"
-msgstr "Ignorer TLS-feil"
-
-#: plugins/www/www_plugin.c:906
-msgid "Turn on Web Inspector"
-msgstr "Skru på vev-inspektør"
-
-#: plugins/www/www_config.h:43
-msgid "Remmina web-browser plugin"
-msgstr "Remmina-nettleserprogramtillegg"
-
-#: plugins/secret/src/glibsecret_plugin.c:188
-msgid "Secured password storage in the GNOME keyring"
-msgstr "Sikker passordslagring i GNOME-nøkkelringen"
-
-#: plugins/tool_hello_world/plugin_config.h:40
-msgid "Hello, World!"
-msgstr "Hei verden!"
-
-#: plugins/vnc/vnc_plugin.c:772
-msgid "Enter VNC password"
-msgstr "Skriv inn VNC-passord"
-
-#: plugins/vnc/vnc_plugin.c:936
-msgid "Unable to connect to VNC server"
-msgstr "Klarte ikke å koble til VNC-tjener"
-
-#: plugins/vnc/vnc_plugin.c:937
-#, c-format
-msgid "Couldn’t convert '%s' to host address"
-msgstr "Klarte ikke å konvertere «%s» til vertsadresse"
-
-#: plugins/vnc/vnc_plugin.c:938
-#, c-format
-msgid "VNC connection failed: %s"
-msgstr "Feil ved VNC-tilkobling: %s"
-
-#: plugins/vnc/vnc_plugin.c:939
-msgid "Your connection has been rejected."
-msgstr "Tilkoblingen ble nektet."
-
-#: plugins/vnc/vnc_plugin.c:966
-#, c-format
-msgid "The VNC server requested an unknown authentication method. %s"
-msgstr "VNC-tjeneren forespurte en ukjent identitetsbekreftelsesmetode. %s"
-
-#: plugins/vnc/vnc_plugin.c:968
-msgid "Please retry after turning on encryption for this profile."
-msgstr "Skru på kryptering for denne profilen og prøv igjen."
-
-#: plugins/vnc/vnc_plugin.c:1922 plugins/rdp/rdp_plugin.c:2497
-msgid "True colour (32 bpp)"
-msgstr "Sann fargeoppløsning (32 bpp)"
-
-#: plugins/vnc/vnc_plugin.c:1923 plugins/rdp/rdp_plugin.c:2499
-msgid "High colour (16 bpp)"
-msgstr "Høy fargeoppløsning (16 bpp)"
-
-#: plugins/vnc/vnc_plugin.c:1924 plugins/rdp/rdp_plugin.c:2501
-msgid "256 colours (8 bpp)"
-msgstr "256 farger (8 bpp)"
-
-#: plugins/vnc/vnc_plugin.c:1931 plugins/rdp/rdp_plugin.c:2524
-#: plugins/rdp/rdp_settings.c:274
-msgid "Good"
-msgstr "God"
-
-#: plugins/vnc/vnc_plugin.c:1932 plugins/rdp/rdp_plugin.c:2525
-#: plugins/rdp/rdp_settings.c:276
-msgid "Best (slowest)"
-msgstr "Høyeste kvalitet (treigest)"
-
-#: plugins/vnc/vnc_plugin.c:1933 plugins/rdp/rdp_plugin.c:2523
-#: plugins/rdp/rdp_settings.c:272
-msgid "Medium"
-msgstr "Middels"
-
-#: plugins/vnc/vnc_plugin.c:1934 plugins/rdp/rdp_plugin.c:2522
-#: plugins/rdp/rdp_settings.c:270
+#: plugins/rdp/rdp_settings.c:270 plugins/rdp/rdp_plugin.c:2522
+#: plugins/vnc/vnc_plugin.c:1934
 msgid "Poor (fastest)"
 msgstr "Lav kvalitet (raskest)"
 
-#: plugins/vnc/vnc_plugin.c:1939
+#: plugins/rdp/rdp_settings.c:272 plugins/rdp/rdp_plugin.c:2523
+#: plugins/vnc/vnc_plugin.c:1933
+msgid "Medium"
+msgstr "Middels"
+
+#: plugins/rdp/rdp_settings.c:274 plugins/rdp/rdp_plugin.c:2524
+#: plugins/vnc/vnc_plugin.c:1931
+msgid "Good"
+msgstr "God"
+
+#: plugins/rdp/rdp_settings.c:276 plugins/rdp/rdp_plugin.c:2525
+#: plugins/vnc/vnc_plugin.c:1932
+msgid "Best (slowest)"
+msgstr "Høyeste kvalitet (treigest)"
+
+#: plugins/rdp/rdp_settings.c:415
+msgid "Keyboard layout"
+msgstr "Tastaturoppsett"
+
+#: plugins/rdp/rdp_settings.c:440
+msgid "Use client keyboard mapping"
+msgstr "Bruk klientens tastaturkobling"
+
+#: plugins/rdp/rdp_settings.c:450
+msgid "Quality settings"
+msgstr "Kvalitetsinnstillinger"
+
+#: plugins/rdp/rdp_settings.c:470
+msgid "Wallpaper"
+msgstr "Bakgrunn"
+
+#: plugins/rdp/rdp_settings.c:477
+msgid "Window drag"
+msgstr "Dra vindu"
+
+#: plugins/rdp/rdp_settings.c:484
+msgid "Menu animation"
+msgstr "Menyanimasjon"
+
+#: plugins/rdp/rdp_settings.c:491
+msgid "Theme"
+msgstr "Drakt"
+
+#: plugins/rdp/rdp_settings.c:498
+msgid "Cursor shadow"
+msgstr "Pekerskygge"
+
+#: plugins/rdp/rdp_settings.c:505
+msgid "Cursor blinking"
+msgstr "Pekerblinking"
+
+#: plugins/rdp/rdp_settings.c:512
+msgid "Font smoothing"
+msgstr "Skriftutjevning"
+
+#: plugins/rdp/rdp_settings.c:519
+msgid "Composition"
+msgstr "Komposisjon"
+
+#: plugins/rdp/rdp_settings.c:529
+msgid "Remote scale factor"
+msgstr "Fjernskaleringsfaktor"
+
+#: plugins/rdp/rdp_settings.c:542
+msgid "Desktop scale factor %"
+msgstr "Skrivebordsskaleringsfaktor %"
+
+#: plugins/rdp/rdp_settings.c:553
+msgid "Device scale factor %"
+msgstr "Enhetsskaleringsfaktorprosent"
+
+#: plugins/rdp/rdp_settings.c:575
+msgid "Desktop orientation"
+msgstr "Skrivebordssideretning"
+
+#: plugins/rdp/rdp_settings.c:592
 #, fuzzy
-msgid ""
-"Connect to VNC using a repeater:\n"
-"  • The server field must contain the repeater ID, e.g. ID:123456789\n"
-"  • The repeater field have to be set to the repeater IP and port, like:\n"
-"    10.10.10.12:5901\n"
-"  • From the remote VNC server, you will connect to\n"
-"    the repeater, e.g. with x11vnc:\n"
-"    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
-msgstr ""
-"Koble til VNC ved hjelp av en repeater:\n"
-"  • Serverfeltet må inneholde repeater-IDen, for eksempel ID:123456789\n"
-"  • Repeaterfeltet må settes til repeater-IP og port, som:\n"
-"    10.10.10.12:5901\n"
-"  • Fra den eksterne VNC-serveren vil du koble til\n"
-"    repeateren, for eksempel med x11vnc:\n"
-"    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
+#| msgid "Use system proxy settings"
+msgid "Input device settings"
+msgstr "Innstillinger for inndataenhet"
 
-#: plugins/vnc/vnc_plugin.c:1959
-msgid "Repeater"
-msgstr "Reléstasjon"
-
-#: plugins/vnc/vnc_plugin.c:1963 plugins/vnc/vnc_plugin.c:1983
-#: plugins/rdp/rdp_plugin.c:2677
-msgid "Quality"
-msgstr "Kvalitet"
-
-#: plugins/vnc/vnc_plugin.c:1979
-msgid "Listen on port"
-msgstr "Lytt til port"
-
-#: plugins/vnc/vnc_plugin.c:1999
-msgid "Show remote cursor"
-msgstr "Vis ekstern peker"
-
-#: plugins/vnc/vnc_plugin.c:2001 plugins/rdp/rdp_plugin.c:2715
-msgid "Turn off clipboard sync"
-msgstr "Skru av utklippstavlesynkronisering"
-
-#: plugins/vnc/vnc_plugin.c:2002
-msgid "Turn off encryption"
-msgstr "Bruk TLS-kryptering"
-
-#: plugins/vnc/vnc_plugin.c:2003 plugins/vnc/vnc_plugin.c:2018
-msgid "Prevent local interaction on the server"
-msgstr "Forhindre lokal interaksjon på tjeneren"
-
-#: plugins/vnc/vnc_plugin.c:2006 plugins/rdp/rdp_plugin.c:2656
-#: plugins/rdp/rdp_settings.c:598
+#: plugins/rdp/rdp_settings.c:598 plugins/rdp/rdp_plugin.c:2656
+#: plugins/vnc/vnc_plugin.c:2006
 #, fuzzy
 #| msgid "Turn on smooth scrolling"
 msgid "Disable smooth scrolling"
 msgstr "Slå av myk rulling"
 
-#: plugins/vnc/vnc_plugin.c:2020
-msgid "Open Chat…"
-msgstr "Åpne sludrevindu …"
+#: plugins/rdp/rdp_settings.c:608
+msgid "General settings"
+msgstr "Hovedinnstillinger"
 
-#: plugins/vnc/vnc_plugin.c:2021 plugins/spice/spice_plugin.c:707
-#: plugins/rdp/rdp_plugin.c:2744
-msgid "Send Ctrl+Alt+Delete"
-msgstr "Send Ctrl+Alt+Delete"
-
-#: plugins/vnc/vnc_plugin.h:41
-msgid "Remmina VNC Plugin"
-msgstr "Remmina VNC-programtillegg"
-
-#: plugins/vnc/vnc_plugin.h:46
-msgid "Remmina VNC listener Plugin"
-msgstr "Remmina VNC-lytteprogramtillegg"
-
-#: plugins/spice/spice_plugin_usb.c:51 plugins/spice/spice_plugin.c:708
-msgid "Select USB devices for redirection"
-msgstr "Velg USB-enheter for videresendelse"
-
-#: plugins/spice/spice_plugin_usb.c:54
-msgid "_Close"
-msgstr "_Lukk"
-
-#: plugins/spice/spice_plugin_usb.c:94
-msgid "USB redirection error"
-msgstr "USB-videresendingsfeil"
-
-#: plugins/spice/spice_plugin.c:351
-msgid "Enter SPICE password"
-msgstr "Skriv inn SPICE-passord"
-
-#: plugins/spice/spice_plugin.c:386
-#, c-format
-msgid "Disconnected from the SPICE server “%s”."
-msgstr "Frakoblet fra SPICE-tjeneren %s."
-
-#: plugins/spice/spice_plugin.c:402
-msgid "TLS connection error."
-msgstr "TLS-tilkoblingsfeil."
-
-#: plugins/spice/spice_plugin.c:408
-msgid "Connection to the SPICE server dropped."
-msgstr "Klarte ikke å koble til SPICE-tjener."
-
-#: plugins/spice/spice_plugin.c:616 plugins/spice/spice_plugin.c:634
-msgid "Default"
-msgstr "Forvalg"
-
-#: plugins/spice/spice_plugin.c:635 plugins/rdp/rdp_plugin.c:2546
-#: data/ui/remmina_preferences.glade:677
-msgid "Off"
-msgstr "Av"
-
-#: plugins/spice/spice_plugin.c:636
+#: plugins/rdp/rdp_settings.c:613 plugins/rdp/rdp_plugin.c:2708
 #, fuzzy
-msgid "Auto GLZ"
-msgstr "Automatisk GLZ"
+#| msgid "Reconnection attempt %d of %d…"
+msgid "Reconnect attempts number"
+msgstr "Nummer for nye forsøk"
 
-#: plugins/spice/spice_plugin.c:637
+#: plugins/rdp/rdp_settings.c:619 plugins/rdp/rdp_plugin.c:2708
 #, fuzzy
-msgid "Auto LZ"
-msgstr "Automatisk LZ"
-
-#: plugins/spice/spice_plugin.c:650
-msgid "Disable video overlay if videos are not displayed properly.\n"
-msgstr "Skru av video-overlag hvis videoer ikke vises riktig.\n"
-
-#: plugins/spice/spice_plugin.c:667
-msgid "Use TLS encryption"
-msgstr "Bruk TLS-kryptering"
-
-#: plugins/spice/spice_plugin.c:668
-msgid "Server CA certificate"
-msgstr "Tjenerens CA-sertifikat"
-
-#: plugins/spice/spice_plugin.c:669 plugins/rdp/rdp_plugin.c:2654
-msgid "Share folder"
-msgstr "Del mappe"
-
-#: plugins/spice/spice_plugin.c:686
-msgid "Prefered video codec"
-msgstr "Innstilling"
-
-#: plugins/spice/spice_plugin.c:687
-msgid "Turn off GStreamer overlay"
-msgstr "Skru av tjener-inndata"
-
-#: plugins/spice/spice_plugin.c:690
-msgid "Prefered image compression"
-msgstr "Foretrukken bildekomprimering"
-
-#: plugins/spice/spice_plugin.c:696
-msgid "Share smart card"
-msgstr "Del smartkort"
-
-#: plugins/spice/spice_plugin.c:719
-msgid "SPICE - Simple Protocol for Independent Computing Environments"
-msgstr "SPICE - Enkel protokoll for uavhengig datamaskinsmiljø"
-
-#: plugins/spice/spice_plugin_file_transfer.c:82
-msgid "File Transfers"
-msgstr "Filoverføringer"
-
-#: plugins/spice/spice_plugin_file_transfer.c:219
-msgid "Transfer error"
-msgstr "Overføringsfeil"
-
-#: plugins/spice/spice_plugin_file_transfer.c:220
-#, c-format
-msgid "%s: %s"
-msgstr "%s: %s"
-
-#: plugins/spice/spice_plugin_file_transfer.c:223
-msgid "Transfer completed"
-msgstr "Overført"
-
-#: plugins/spice/spice_plugin_file_transfer.c:224
-#, c-format
-msgid "The %s file has been transferred"
-msgstr "%s-filen har blitt overført"
+msgid ""
+"The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
+msgstr ""
+"Maksimalt antall gjentilkoblingsforsøk ved RDP-frakobling (forvalg: 20)"
 
 #: plugins/rdp/rdp_plugin.c:757 plugins/rdp/rdp_plugin.c:822
 msgid "Enter RDP authentication credentials"
@@ -2349,13 +1964,25 @@ msgstr "GFX RFX-progressiv (32 bpp)"
 msgid "RemoteFX (32 bpp)"
 msgstr "Eksterne effekter (32 bpp)"
 
+#: plugins/rdp/rdp_plugin.c:2497 plugins/vnc/vnc_plugin.c:1922
+msgid "True colour (32 bpp)"
+msgstr "Sann fargeoppløsning (32 bpp)"
+
 #: plugins/rdp/rdp_plugin.c:2498
 msgid "True colour (24 bpp)"
 msgstr "Sann fargeoppløsning (24 bpp)"
 
+#: plugins/rdp/rdp_plugin.c:2499 plugins/vnc/vnc_plugin.c:1923
+msgid "High colour (16 bpp)"
+msgstr "Høy fargeoppløsning (16 bpp)"
+
 #: plugins/rdp/rdp_plugin.c:2500
 msgid "High colour (15 bpp)"
 msgstr "Høy fargeoppløsning (15 bpp)"
+
+#: plugins/rdp/rdp_plugin.c:2501 plugins/vnc/vnc_plugin.c:1924
+msgid "256 colours (8 bpp)"
+msgstr "256 farger (8 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2532 data/ui/remmina_preferences.glade:641
 msgid "None"
@@ -2388,6 +2015,11 @@ msgstr "WAN"
 #: plugins/rdp/rdp_plugin.c:2539
 msgid "LAN"
 msgstr "Lokalnett"
+
+#: plugins/rdp/rdp_plugin.c:2546 plugins/spice/spice_plugin.c:635
+#: data/ui/remmina_preferences.glade:677
+msgid "Off"
+msgstr "Av"
 
 #: plugins/rdp/rdp_plugin.c:2555
 msgid "Automatic negotiation"
@@ -2546,6 +2178,10 @@ msgstr ""
 "  • hotplug,*\n"
 "\n"
 
+#: plugins/rdp/rdp_plugin.c:2654 plugins/spice/spice_plugin.c:669
+msgid "Share folder"
+msgstr "Del mappe"
+
 #: plugins/rdp/rdp_plugin.c:2654
 msgid "Use “Redirect directory” in the advanced tab for multiple directories"
 msgstr "Bruk «Videresendingsmappe» i den avanserte fanen for flere mapper"
@@ -2574,9 +2210,19 @@ msgstr "Span-skjermen over flere skjermer"
 msgid "List monitor IDs"
 msgstr "List opp skjerm-ID-er"
 
+#: plugins/rdp/rdp_plugin.c:2661 plugins/vnc/vnc_plugin.c:1962
+#: plugins/vnc/vnc_plugin.c:1982 plugins/gvnc/gvnc_plugin.c:840
+msgid "Colour depth"
+msgstr "Fargedybde"
+
 #: plugins/rdp/rdp_plugin.c:2662
 msgid "Network connection type"
 msgstr "Ny tilkoblingsprofil"
+
+#: plugins/rdp/rdp_plugin.c:2677 plugins/vnc/vnc_plugin.c:1963
+#: plugins/vnc/vnc_plugin.c:1983
+msgid "Quality"
+msgstr "Kvalitet"
 
 #: plugins/rdp/rdp_plugin.c:2678
 msgid "Security protocol negotiation"
@@ -2720,19 +2366,6 @@ msgstr "TCP-videresending"
 msgid "/PATH/TO/rdp2tcp"
 msgstr "/STI/TIL/r2p2tcp"
 
-#: plugins/rdp/rdp_plugin.c:2708 plugins/rdp/rdp_settings.c:613
-#, fuzzy
-#| msgid "Reconnection attempt %d of %d…"
-msgid "Reconnect attempts number"
-msgstr "Nummer for nye forsøk"
-
-#: plugins/rdp/rdp_plugin.c:2708 plugins/rdp/rdp_settings.c:619
-#, fuzzy
-msgid ""
-"The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
-msgstr ""
-"Maksimalt antall gjentilkoblingsforsøk ved RDP-frakobling (forvalg: 20)"
-
 #: plugins/rdp/rdp_plugin.c:2709
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
 msgstr "Foretrekk IPv6 AAAA-oppføring over IPv4 A-oppføring"
@@ -2757,6 +2390,10 @@ msgstr "Del parallellporter"
 msgid "Share a smart card"
 msgstr "Del smartkort"
 
+#: plugins/rdp/rdp_plugin.c:2715 plugins/vnc/vnc_plugin.c:2001
+msgid "Turn off clipboard sync"
+msgstr "Skru av utklippstavlesynkronisering"
+
 #: plugins/rdp/rdp_plugin.c:2716
 msgid "Ignore certificate"
 msgstr "Ignorer sertifikat"
@@ -2768,6 +2405,12 @@ msgstr "Bruk arbeidsflyt fra gammel lisens"
 #: plugins/rdp/rdp_plugin.c:2717
 msgid "It disables CAL and hwId is set to 0"
 msgstr "Det skrur av CAL, og hwld settes til 0"
+
+#: plugins/rdp/rdp_plugin.c:2718 plugins/spice/spice_plugin.c:694
+#: plugins/vnc/vnc_plugin.c:2005 plugins/www/www_plugin.c:904
+#: plugins/gvnc/gvnc_plugin.c:858
+msgid "Forget passwords after use"
+msgstr "Ingen passordslagring"
 
 #: plugins/rdp/rdp_plugin.c:2719
 msgid "Attach to console (2003/2003 R2)"
@@ -2814,6 +2457,11 @@ msgstr "Bruk grunnidentitetsdetaljer for portner også"
 msgid "Enable Gateway websockets support"
 msgstr "Aktiver støtte for Gateway-websockets"
 
+#: plugins/rdp/rdp_plugin.c:2744 plugins/spice/spice_plugin.c:707
+#: plugins/vnc/vnc_plugin.c:2021
+msgid "Send Ctrl+Alt+Delete"
+msgstr "Send Ctrl+Alt+Delete"
+
 #: plugins/rdp/rdp_plugin.c:2757
 msgid "RDP - Remote Desktop Protocol"
 msgstr "RDP - protokoll for eksterne skrivebord"
@@ -2830,96 +2478,448 @@ msgstr "RDP - innstillinger"
 msgid "Export connection in Windows .rdp file format"
 msgstr "Eksporter tilkoblingsoppsettet i Windows .rdp-filformat"
 
-#: plugins/rdp/rdp_settings.c:205
-msgid "<Auto-detect>"
-msgstr "<Oppdag automatisk>"
-
-#: plugins/rdp/rdp_settings.c:237
-msgid "<Not set>"
-msgstr "<Ikke satt>"
-
-#: plugins/rdp/rdp_settings.c:268
-msgid "<Choose a quality level to edit…>"
-msgstr "<Velg kvalitetsnivå å redigere…>"
-
-#: plugins/rdp/rdp_settings.c:415
-msgid "Keyboard layout"
-msgstr "Tastaturoppsett"
-
-#: plugins/rdp/rdp_settings.c:440
-msgid "Use client keyboard mapping"
-msgstr "Bruk klientens tastaturkobling"
-
-#: plugins/rdp/rdp_settings.c:450
-msgid "Quality settings"
-msgstr "Kvalitetsinnstillinger"
-
-#: plugins/rdp/rdp_settings.c:470
-msgid "Wallpaper"
-msgstr "Bakgrunn"
-
-#: plugins/rdp/rdp_settings.c:477
-msgid "Window drag"
-msgstr "Dra vindu"
-
-#: plugins/rdp/rdp_settings.c:484
-msgid "Menu animation"
-msgstr "Menyanimasjon"
-
-#: plugins/rdp/rdp_settings.c:491
-msgid "Theme"
-msgstr "Drakt"
-
-#: plugins/rdp/rdp_settings.c:498
-msgid "Cursor shadow"
-msgstr "Pekerskygge"
-
-#: plugins/rdp/rdp_settings.c:505
-msgid "Cursor blinking"
-msgstr "Pekerblinking"
-
-#: plugins/rdp/rdp_settings.c:512
-msgid "Font smoothing"
-msgstr "Skriftutjevning"
-
-#: plugins/rdp/rdp_settings.c:519
-msgid "Composition"
-msgstr "Komposisjon"
-
-#: plugins/rdp/rdp_settings.c:529
-msgid "Remote scale factor"
-msgstr "Fjernskaleringsfaktor"
-
-#: plugins/rdp/rdp_settings.c:542
-msgid "Desktop scale factor %"
-msgstr "Skrivebordsskaleringsfaktor %"
-
-#: plugins/rdp/rdp_settings.c:553
-msgid "Device scale factor %"
-msgstr "Enhetsskaleringsfaktorprosent"
-
-#: plugins/rdp/rdp_settings.c:575
-msgid "Desktop orientation"
-msgstr "Skrivebordssideretning"
-
-#: plugins/rdp/rdp_settings.c:592
-#, fuzzy
-#| msgid "Use system proxy settings"
-msgid "Input device settings"
-msgstr "Innstillinger for inndataenhet"
-
-#: plugins/rdp/rdp_settings.c:608
-msgid "General settings"
-msgstr "Hovedinnstillinger"
-
 #: plugins/rdp/rdp_event.c:344
 #, c-format
 msgid "Reconnection attempt %d of %d…"
 msgstr "Gjentilkoblingsforsøk %d av %d…"
 
-#: plugins/kwallet/src/kwallet_plugin_main.c:118
-msgid "Secured password storage in KWallet"
-msgstr "Sikker passordslagring i KDE-lommeboken"
+#: plugins/spice/spice_plugin_file_transfer.c:82
+msgid "File Transfers"
+msgstr "Filoverføringer"
+
+#: plugins/spice/spice_plugin_file_transfer.c:219
+msgid "Transfer error"
+msgstr "Overføringsfeil"
+
+#: plugins/spice/spice_plugin_file_transfer.c:220
+#, c-format
+msgid "%s: %s"
+msgstr "%s: %s"
+
+#: plugins/spice/spice_plugin_file_transfer.c:223
+msgid "Transfer completed"
+msgstr "Overført"
+
+#: plugins/spice/spice_plugin_file_transfer.c:224
+#, c-format
+msgid "The %s file has been transferred"
+msgstr "%s-filen har blitt overført"
+
+#: plugins/spice/spice_plugin.c:351
+msgid "Enter SPICE password"
+msgstr "Skriv inn SPICE-passord"
+
+#: plugins/spice/spice_plugin.c:386
+#, c-format
+msgid "Disconnected from the SPICE server “%s”."
+msgstr "Frakoblet fra SPICE-tjeneren %s."
+
+#: plugins/spice/spice_plugin.c:402
+msgid "TLS connection error."
+msgstr "TLS-tilkoblingsfeil."
+
+#: plugins/spice/spice_plugin.c:408
+msgid "Connection to the SPICE server dropped."
+msgstr "Klarte ikke å koble til SPICE-tjener."
+
+#: plugins/spice/spice_plugin.c:616 plugins/spice/spice_plugin.c:634
+msgid "Default"
+msgstr "Forvalg"
+
+#: plugins/spice/spice_plugin.c:636
+#, fuzzy
+msgid "Auto GLZ"
+msgstr "Automatisk GLZ"
+
+#: plugins/spice/spice_plugin.c:637
+#, fuzzy
+msgid "Auto LZ"
+msgstr "Automatisk LZ"
+
+#: plugins/spice/spice_plugin.c:650
+msgid "Disable video overlay if videos are not displayed properly.\n"
+msgstr "Skru av video-overlag hvis videoer ikke vises riktig.\n"
+
+#: plugins/spice/spice_plugin.c:667
+msgid "Use TLS encryption"
+msgstr "Bruk TLS-kryptering"
+
+#: plugins/spice/spice_plugin.c:668
+msgid "Server CA certificate"
+msgstr "Tjenerens CA-sertifikat"
+
+#: plugins/spice/spice_plugin.c:686
+msgid "Prefered video codec"
+msgstr "Innstilling"
+
+#: plugins/spice/spice_plugin.c:687
+msgid "Turn off GStreamer overlay"
+msgstr "Skru av tjener-inndata"
+
+#: plugins/spice/spice_plugin.c:690
+msgid "Prefered image compression"
+msgstr "Foretrukken bildekomprimering"
+
+#: plugins/spice/spice_plugin.c:693 plugins/spice/spice_plugin.c:706
+#: plugins/gvnc/gvnc_plugin.c:857 plugins/gvnc/gvnc_plugin.c:871
+msgid "No clipboard sync"
+msgstr "Skru av utklippstavlesynkronisering"
+
+#: plugins/spice/spice_plugin.c:695 plugins/gvnc/gvnc_plugin.c:860
+msgid "Enable audio channel"
+msgstr "Skru på lydkanal"
+
+#: plugins/spice/spice_plugin.c:696
+msgid "Share smart card"
+msgstr "Del smartkort"
+
+#: plugins/spice/spice_plugin.c:697 plugins/spice/spice_plugin.c:705
+#: plugins/vnc/vnc_plugin.c:2000 plugins/vnc/vnc_plugin.c:2017
+#: plugins/gvnc/gvnc_plugin.c:861 plugins/gvnc/gvnc_plugin.c:870
+msgid "View only"
+msgstr "Kun vis"
+
+#: plugins/spice/spice_plugin.c:708 plugins/spice/spice_plugin_usb.c:51
+msgid "Select USB devices for redirection"
+msgstr "Velg USB-enheter for videresendelse"
+
+#: plugins/spice/spice_plugin.c:719
+msgid "SPICE - Simple Protocol for Independent Computing Environments"
+msgstr "SPICE - Enkel protokoll for uavhengig datamaskinsmiljø"
+
+#: plugins/spice/spice_plugin_usb.c:54
+msgid "_Close"
+msgstr "_Lukk"
+
+#: plugins/spice/spice_plugin_usb.c:94
+msgid "USB redirection error"
+msgstr "USB-videresendingsfeil"
+
+#: plugins/vnc/vnc_plugin.c:772
+msgid "Enter VNC password"
+msgstr "Skriv inn VNC-passord"
+
+#: plugins/vnc/vnc_plugin.c:825 plugins/gvnc/gvnc_plugin.c:539
+msgid "Enter VNC authentication credentials"
+msgstr "Skriv inn VNC-identitetsbekreftelsesdetaljer"
+
+#: plugins/vnc/vnc_plugin.c:936
+msgid "Unable to connect to VNC server"
+msgstr "Klarte ikke å koble til VNC-tjener"
+
+#: plugins/vnc/vnc_plugin.c:937
+#, c-format
+msgid "Couldn’t convert '%s' to host address"
+msgstr "Klarte ikke å konvertere «%s» til vertsadresse"
+
+#: plugins/vnc/vnc_plugin.c:938
+#, c-format
+msgid "VNC connection failed: %s"
+msgstr "Feil ved VNC-tilkobling: %s"
+
+#: plugins/vnc/vnc_plugin.c:939
+msgid "Your connection has been rejected."
+msgstr "Tilkoblingen ble nektet."
+
+#: plugins/vnc/vnc_plugin.c:966
+#, c-format
+msgid "The VNC server requested an unknown authentication method. %s"
+msgstr "VNC-tjeneren forespurte en ukjent identitetsbekreftelsesmetode. %s"
+
+#: plugins/vnc/vnc_plugin.c:968
+msgid "Please retry after turning on encryption for this profile."
+msgstr "Skru på kryptering for denne profilen og prøv igjen."
+
+#: plugins/vnc/vnc_plugin.c:1939
+#, fuzzy
+msgid ""
+"Connect to VNC using a repeater:\n"
+"  • The server field must contain the repeater ID, e.g. ID:123456789\n"
+"  • The repeater field have to be set to the repeater IP and port, like:\n"
+"    10.10.10.12:5901\n"
+"  • From the remote VNC server, you will connect to\n"
+"    the repeater, e.g. with x11vnc:\n"
+"    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
+msgstr ""
+"Koble til VNC ved hjelp av en repeater:\n"
+"  • Serverfeltet må inneholde repeater-IDen, for eksempel ID:123456789\n"
+"  • Repeaterfeltet må settes til repeater-IP og port, som:\n"
+"    10.10.10.12:5901\n"
+"  • Fra den eksterne VNC-serveren vil du koble til\n"
+"    repeateren, for eksempel med x11vnc:\n"
+"    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
+
+#: plugins/vnc/vnc_plugin.c:1959
+msgid "Repeater"
+msgstr "Reléstasjon"
+
+#: plugins/vnc/vnc_plugin.c:1979
+msgid "Listen on port"
+msgstr "Lytt til port"
+
+#: plugins/vnc/vnc_plugin.c:1999
+msgid "Show remote cursor"
+msgstr "Vis ekstern peker"
+
+#: plugins/vnc/vnc_plugin.c:2002
+msgid "Turn off encryption"
+msgstr "Bruk TLS-kryptering"
+
+#: plugins/vnc/vnc_plugin.c:2003 plugins/vnc/vnc_plugin.c:2018
+msgid "Prevent local interaction on the server"
+msgstr "Forhindre lokal interaksjon på tjeneren"
+
+#: plugins/vnc/vnc_plugin.c:2004 plugins/gvnc/gvnc_plugin.c:859
+#, fuzzy
+msgid "Ignore remote bell messages"
+msgstr "Ignorer eksterne bjellemeldinger"
+
+#: plugins/vnc/vnc_plugin.c:2020
+msgid "Open Chat…"
+msgstr "Åpne sludrevindu …"
+
+#: plugins/vnc/vnc_plugin.h:41
+msgid "Remmina VNC Plugin"
+msgstr "Remmina VNC-programtillegg"
+
+#: plugins/vnc/vnc_plugin.h:46
+msgid "Remmina VNC listener Plugin"
+msgstr "Remmina VNC-lytteprogramtillegg"
+
+#: plugins/www/www_config.h:43
+msgid "Remmina web-browser plugin"
+msgstr "Remmina-nettleserprogramtillegg"
+
+#: plugins/www/www_plugin.c:98
+msgid "File downloaded"
+msgstr "Fil nedlastet"
+
+#: plugins/www/www_plugin.c:574
+msgid "Enter WWW authentication credentials"
+msgstr "Skriv inn WWW-identitetsbekreftelsesdetaljer"
+
+#: plugins/www/www_plugin.c:878
+msgid "URL"
+msgstr "Nettadresse"
+
+#: plugins/www/www_plugin.c:878
+msgid "http://address or https://address"
+msgstr "http://adresse eller https://adresse"
+
+#: plugins/www/www_plugin.c:895
+msgid "User agent"
+msgstr "Brukeragent"
+
+#: plugins/www/www_plugin.c:896
+msgid "Proxy URL"
+msgstr "Mellomtjener-nettadresse"
+
+#: plugins/www/www_plugin.c:896
+msgid "E.g. https://example.org, socks://mysocks:1080"
+msgstr "F.eks. https://eksempel.no, socks://mysocks:1080"
+
+#: plugins/www/www_plugin.c:897
+msgid "Turn on Java support"
+msgstr "Skru på Java-støtte"
+
+#: plugins/www/www_plugin.c:898
+msgid "Turn on smooth scrolling"
+msgstr "Skru på myk rulling"
+
+#: plugins/www/www_plugin.c:899
+msgid "Turn on spatial navigation"
+msgstr "Skru på romnavigering"
+
+#: plugins/www/www_plugin.c:900
+msgid "Turn on plugin support"
+msgstr "Skru på programtilleggsstøtte"
+
+#: plugins/www/www_plugin.c:901
+msgid "Turn on WebGL support"
+msgstr "Skru på WebGL-støtte"
+
+#: plugins/www/www_plugin.c:902
+msgid "Turn on HTML5 audio support"
+msgstr "Skru på HTML5-lydstøtte"
+
+#: plugins/www/www_plugin.c:903
+msgid "Ignore TLS errors"
+msgstr "Ignorer TLS-feil"
+
+#: plugins/www/www_plugin.c:906
+msgid "Turn on Web Inspector"
+msgstr "Skru på vev-inspektør"
+
+#: plugins/exec/exec_plugin.c:160
+msgid "You did not set any command to be executed"
+msgstr "Du har ikke satt noen kommando for kjøring"
+
+#: plugins/exec/exec_plugin.c:206
+msgid ""
+"Warning: Running a command synchronously may cause Remmina not to respond.\n"
+"Do you really want to continue?"
+msgstr ""
+"ADVARSEL! Å kjøre en kommando synkront kan lede til at Remmina ikke svarer.\n"
+"Ønsker du virkelig å fortsette?"
+
+#: plugins/exec/exec_plugin.c:266
+msgid "Command"
+msgstr "Kommando"
+
+#: plugins/exec/exec_plugin.c:267
+msgid "Asynchronous execution"
+msgstr "Asynkron kjøring"
+
+#: plugins/exec/exec_plugin_config.h:41
+msgid "Execute a command"
+msgstr "Kjør en kommando"
+
+#: plugins/tool_hello_world/plugin_config.h:40
+msgid "Hello, World!"
+msgstr "Hei verden!"
+
+#: plugins/secret/src/glibsecret_plugin.c:188
+msgid "Secured password storage in the GNOME keyring"
+msgstr "Sikker passordslagring i GNOME-nøkkelringen"
+
+#: plugins/gvnc/gvnc_plugin_config.h:40
+msgid "Remmina VNC plugin for GNOME and KVM"
+msgstr "Remmina VNC-programtillegg for GNOME og KVM"
+
+#: plugins/gvnc/gvnc_plugin.c:477
+#, fuzzy, c-format
+#| msgid "Authentication type"
+msgid "Unsupported authentication type %u"
+msgstr "Godkjenningstypen %u støttes ikke"
+
+#: plugins/gvnc/gvnc_plugin.c:489
+#, fuzzy, c-format
+#| msgid "Authentication type"
+msgid "Authentication failure: %s"
+msgstr "Godkjenningsfeil: %s"
+
+#: plugins/gvnc/gvnc_plugin.c:820
+msgid "Use server settings"
+msgstr "Bruk tjenerinnstillinger"
+
+#: plugins/gvnc/gvnc_plugin.c:821
+msgid "True colour (24 bits)"
+msgstr "Millioner av farger (24 biter)"
+
+#: plugins/gvnc/gvnc_plugin.c:822
+msgid "High colour (16 bits)"
+msgstr "Høy farge (16 biter)"
+
+#: plugins/gvnc/gvnc_plugin.c:823
+msgid "Low colour (8 bits)"
+msgstr "Lav farge (8 biter)"
+
+#: plugins/gvnc/gvnc_plugin.c:824
+msgid "Ultra low colour (3 bits)"
+msgstr "Svært lav farge (3 biter)"
+
+#: plugins/gvnc/gvnc_plugin.c:839
+msgid "VNC password"
+msgstr "VNC-passord"
+
+#: plugins/gvnc/gvnc_plugin.c:841
+msgid "Use JPEG Compression"
+msgstr "Bruk JPEG-komprimering"
+
+#: plugins/gvnc/gvnc_plugin.c:841
+msgid "This might not work on all VNC servers"
+msgstr "Dette fungerer kanskje ikke på alle VNC-tjenere"
+
+#: plugins/gvnc/gvnc_plugin.c:842
+#, fuzzy
+msgid "Enable GTK-VNC debug"
+msgstr "Aktiver GTK-VNC-feilsøking"
+
+#: plugins/gvnc/gvnc_plugin.c:862
+msgid "Shared connection"
+msgstr "Delt tilkobling"
+
+#: plugins/gvnc/gvnc_plugin.c:862
+#, fuzzy
+msgid ""
+"If the server should try to share the desktop by leaving other clients "
+"connected"
+msgstr ""
+"Hvis serveren skal prøve å dele skrivebordet ved å la andre klienter være "
+"tilkoblet"
+
+#: plugins/gvnc/gvnc_plugin.c:872
+#, fuzzy
+#| msgid "Send Ctrl+Alt+Del"
+msgid "Send Ctrl+Alt+_Del"
+msgstr "Send Ctrl+Alt+_Del"
+
+#: plugins/gvnc/gvnc_plugin.c:873
+msgid "Send Ctrl+Alt+_Backspace"
+msgstr "Send Ctrl+Alt+_Rettetast"
+
+#: plugins/gvnc/gvnc_plugin.c:874
+msgid "Send Ctrl+Alt+_F1"
+msgstr "Send Ctrl+Alt+_F1"
+
+#: plugins/gvnc/gvnc_plugin.c:875
+msgid "Send Ctrl+Alt+_F2"
+msgstr "Send Ctrl+Alt+_F2"
+
+#: plugins/gvnc/gvnc_plugin.c:876
+msgid "Send Ctrl+Alt+_F3"
+msgstr "Send Ctrl+Alt+_F3"
+
+#: plugins/gvnc/gvnc_plugin.c:877
+msgid "Send Ctrl+Alt+_F4"
+msgstr "Send Ctrl+Alt+_F4"
+
+#: plugins/gvnc/gvnc_plugin.c:878
+msgid "Send Ctrl+Alt+_F5"
+msgstr "Send Ctrl+Alt+_F5"
+
+#: plugins/gvnc/gvnc_plugin.c:879
+msgid "Send Ctrl+Alt+_F6"
+msgstr "Send Ctrl+Alt+_F6"
+
+#: plugins/gvnc/gvnc_plugin.c:880
+msgid "Send Ctrl+Alt+_F7"
+msgstr "Send Ctrl+Alt+_F7"
+
+#: plugins/gvnc/gvnc_plugin.c:881
+msgid "Send Ctrl+Alt+_F8"
+msgstr "Send Ctrl+Alt+_F8"
+
+#: plugins/gvnc/gvnc_plugin.c:882
+msgid "Send Ctrl+Alt+_F9"
+msgstr "Send Ctrl+Alt+_F9"
+
+#: plugins/gvnc/gvnc_plugin.c:883
+msgid "Send Ctrl+Alt+_F10"
+msgstr "Send Ctrl+Alt+_F10"
+
+#: plugins/gvnc/gvnc_plugin.c:884
+msgid "Send Ctrl+Alt+_F11"
+msgstr "Send Ctrl+Alt+_F11"
+
+#: plugins/gvnc/gvnc_plugin.c:885
+msgid "Send Ctrl+Alt+_F12"
+msgstr "Send Ctrl+Alt+_F12"
+
+#: plugins/gvnc/gvnc_plugin.c:887
+msgid "Reboot remote host"
+msgstr "Utfør omstart av fjernvert"
+
+#: plugins/gvnc/gvnc_plugin.c:888
+#, fuzzy
+msgid "Reset remote host (hard reboot)"
+msgstr "Tilbakestill ekstern vert (hard omstart)"
+
+#: plugins/gvnc/gvnc_plugin.c:889
+#, fuzzy
+#| msgid "Show remote cursor"
+msgid "Shutdown remote host"
+msgstr "Slå av ekstern vert"
 
 #: plugins/telepathy/telepathy_channel_handler.c:237
 #, c-format
@@ -2937,38 +2937,6 @@ msgstr "Invitasjon til delt skrivebord"
 #: plugins/telepathy/telepathy_plugin.c:57
 msgid "Telepathy - Desktop Sharing"
 msgstr "Telepathy - skrivebordsdeling"
-
-#: data/ui/remmina_search.glade:61 data/ui/remmina_search_popover.glade:56
-msgid "Search"
-msgstr "Søk"
-
-#: data/ui/remmina_search.glade:75 data/ui/remmina_search_popover.glade:70
-msgid "Search for previous occurrence"
-msgstr "Søk etter forrige forekomst"
-
-#: data/ui/remmina_search.glade:98 data/ui/remmina_search_popover.glade:93
-msgid "Search for next occurrence"
-msgstr "Søk etter neste forekomst"
-
-#: data/ui/remmina_search.glade:130 data/ui/remmina_search_popover.glade:125
-msgid "Toggle search options"
-msgstr "Veksle søkevalg"
-
-#: data/ui/remmina_search.glade:191 data/ui/remmina_search_popover.glade:186
-msgid "_Match case"
-msgstr "_Finn i samme bokstavhøyde"
-
-#: data/ui/remmina_search.glade:208 data/ui/remmina_search_popover.glade:203
-msgid "Match _entire word only"
-msgstr "Finn _treff på hele ord"
-
-#: data/ui/remmina_search.glade:225 data/ui/remmina_search_popover.glade:220
-msgid "Match as _regular expression"
-msgstr "Finn som _regulært uttrykk"
-
-#: data/ui/remmina_search.glade:242 data/ui/remmina_search_popover.glade:237
-msgid "_Wrap around"
-msgstr "_Linjebrytning"
 
 #: data/ui/remmina_snap_info_dialog.glade:71
 msgid ""
@@ -3024,6 +2992,38 @@ msgstr "<big>Snap-innstillinger</big>"
 msgid "Do not show this message again"
 msgstr "Ikke vis denne meldingen igjen"
 
+#: data/ui/remmina_search_popover.glade:56 data/ui/remmina_search.glade:61
+msgid "Search"
+msgstr "Søk"
+
+#: data/ui/remmina_search_popover.glade:70 data/ui/remmina_search.glade:75
+msgid "Search for previous occurrence"
+msgstr "Søk etter forrige forekomst"
+
+#: data/ui/remmina_search_popover.glade:93 data/ui/remmina_search.glade:98
+msgid "Search for next occurrence"
+msgstr "Søk etter neste forekomst"
+
+#: data/ui/remmina_search_popover.glade:125 data/ui/remmina_search.glade:130
+msgid "Toggle search options"
+msgstr "Veksle søkevalg"
+
+#: data/ui/remmina_search_popover.glade:186 data/ui/remmina_search.glade:191
+msgid "_Match case"
+msgstr "_Finn i samme bokstavhøyde"
+
+#: data/ui/remmina_search_popover.glade:203 data/ui/remmina_search.glade:208
+msgid "Match _entire word only"
+msgstr "Finn _treff på hele ord"
+
+#: data/ui/remmina_search_popover.glade:220 data/ui/remmina_search.glade:225
+msgid "Match as _regular expression"
+msgstr "Finn som _regulært uttrykk"
+
+#: data/ui/remmina_search_popover.glade:237 data/ui/remmina_search.glade:242
+msgid "_Wrap around"
+msgstr "_Linjebrytning"
+
 #: data/ui/remmina_about.glade:30 data/ui/remmina_main.glade:395
 msgid "About"
 msgstr "Om"
@@ -3045,6 +3045,175 @@ msgstr ""
 #: data/ui/remmina_about.glade:40
 msgid "Website"
 msgstr "Nettside"
+
+#: data/ui/remmina_string_list.glade:14 data/ui/remmina_string_list.glade:158
+msgid "Add"
+msgstr "Legg til"
+
+#: data/ui/remmina_string_list.glade:20 data/ui/remmina_string_list.glade:137
+#: data/ui/remmina_key_chooser.glade:14 data/ui/remmina_key_chooser.glade:15
+msgid "_Remove"
+msgstr "_Fjern"
+
+#: data/ui/remmina_string_list.glade:26 data/ui/remmina_string_list.glade:116
+msgid "Move up"
+msgstr "Flytt oppover"
+
+#: data/ui/remmina_string_list.glade:32 data/ui/remmina_string_list.glade:95
+msgid "Move down"
+msgstr "Flytt nedover"
+
+#: data/ui/remmina_mpc.glade:14
+msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
+msgstr "<span weight='bold' size='larger'>Multipassordsendrer</span>"
+
+#: data/ui/remmina_mpc.glade:32
+msgid "Change"
+msgstr "Endre"
+
+#: data/ui/remmina_mpc.glade:201
+msgid "Selection criteria"
+msgstr "Utvalgskriterium"
+
+#: data/ui/remmina_mpc.glade:261
+msgid "Confirm password"
+msgstr "Bekreft passord"
+
+#: data/ui/remmina_mpc.glade:294
+msgid "Set new password"
+msgstr "Sett nytt passord"
+
+#. A column table with multiple check-boxes
+#: data/ui/remmina_mpc.glade:331
+msgctxt "Multi password changer"
+msgid "Select"
+msgstr "Velg"
+
+#: data/ui/remmina_mpc.glade:343
+msgctxt "Multi password changer table"
+msgid "Name"
+msgstr "Navn"
+
+#: data/ui/remmina_mpc.glade:354
+msgctxt "Multi password changer table"
+msgid "Group"
+msgstr "Gruppe"
+
+#: data/ui/remmina_mpc.glade:365
+msgctxt "Multi password changer table"
+msgid "Domain\\Username"
+msgstr "Domene\\brukernavn"
+
+#: data/ui/remmina_news.glade:75
+msgid ""
+"<big><b>The news are turned off</b></big>\n"
+"\n"
+"<span>\n"
+"Turning on news means the program connects to a Remmina server to download "
+"the release notes.\n"
+"</span>\n"
+"\n"
+"<span>\n"
+"Version checking can only be activated at compile time.\n"
+"</span>\n"
+"\n"
+"<span>\n"
+"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
+"release notes\"><i>Visit the website to read the release notes</i></a>.\n"
+"</span>"
+msgstr ""
+"<big><b>Nyheter er avskrudd</b></big>\n"
+"\n"
+"<span>\n"
+"Å skru på nyhetene betyr at programmet kobler til en Remmina-tjener for å "
+"laste ned versjonsnotatene.\n"
+"</span>\n"
+"\n"
+"<span>\n"
+"Versjonssjekking kan kun aktiveres ved kompilering.\n"
+"</span>\n"
+"\n"
+"<span>\n"
+"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina-"
+"versjonsnotater\"><i>Besøk nettsiden for å lese versjonsnotatene</i></a>.\n"
+"</span>"
+
+#. The star (*) is a reference to privacy consent
+#: data/ui/remmina_news.glade:130 data/ui/remmina_preferences.glade:464
+msgid ""
+"Send <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
+"remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
+"\">anonymous</a></b> statistics. (*)"
+msgstr ""
+"Send <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
+"remmina__stats_8c.html#details\" title=\"Remmina-bruksstatistikk\">anonym</"
+"a></b> statistikk. (*)"
+
+#: data/ui/remmina_news.glade:142 data/ui/remmina_news.glade:195
+msgid "Send anonymous statistics"
+msgstr "Send anonym statistikk"
+
+#: data/ui/remmina_news.glade:156
+msgid "Use as default remote desktop client"
+msgstr "Bruk som forvalgt klient for eksterne skrivebord"
+
+#: data/ui/remmina_news.glade:165
+msgid "Apply"
+msgstr "Bruk"
+
+#: data/ui/remmina_news.glade:169
+msgid "Allow Remmina to automatically open .rdp and .remmina files."
+msgstr "Tillat Remmina å åpne .rdp og .remmina-filer automatisk."
+
+#. The star (*) is a reference to privacy consent
+#: data/ui/remmina_news.glade:183 data/ui/remmina_preferences.glade:479
+msgid ""
+"Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
+"\">remmina.org</a> (*)"
+msgstr ""
+"Hent nyheter fra <a href=\"https://remmina.org\" title=\"Remmina news site"
+"\">remmina.org</a> (*)"
+
+#: data/ui/remmina_news.glade:208 data/ui/remmina_preferences.glade:446
+msgid ""
+"* By enabling statistics and/or news you consent to send and fetch data to/"
+"from remmina.org"
+msgstr ""
+"* Ved å skru på statistikk og/eller nyheter samtykker du til å sende og "
+"hente data til/fra remmina.org"
+
+#: data/ui/remmina_news.glade:231
+msgid "<big>Take part</big>"
+msgstr "<big>Vær med</big>"
+
+#. Pay attention to the quoting characters as they may break the pango layout. If in doubt and cannot test, copy and paste the symbols from the English string.
+#: data/ui/remmina_news.glade:257
+msgid ""
+"<span>\n"
+"<b>You have our gratitude in choosing copylefted libre software, <a href="
+"\"https://remmina.org/donations/\" title=\"Where’s the money, Lebowski? "
+"“blblblblblb”\">donations also make us happy</a>, and further help improve "
+"Remmina.</b>\n"
+"</span>\n"
+msgstr ""
+"<span>\n"
+"<b>Du er storartet i din bruk av gemenslig fri programvare, <a href="
+"\"https://remmina.org/donations/\" title=\"Hvor er pengene Lebowski? "
+"“blblblblblb”\">doner en slant</a>, for å gjøre oss glade, og forbedre "
+"programmet enda mer.</b>\n"
+"</span>\n"
+
+#: data/ui/remmina_news.glade:277
+msgid "<big>Contribute</big>"
+msgstr "<big>Bidra</big>"
+
+#: data/ui/remmina_key_chooser.glade:23
+msgid "Choose a new key"
+msgstr "Velg en ny tast"
+
+#: data/ui/remmina_key_chooser.glade:82
+msgid "Please press the new key…"
+msgstr "Trykk på den nye tasten…"
 
 #: data/ui/remmina_main.glade:35
 msgid "Hide or show the search bar"
@@ -3152,165 +3321,9 @@ msgstr "Handlinger"
 msgid "Toggle view"
 msgstr "Veksle visning"
 
-#: data/ui/remmina_unlock.glade:60
-msgid "Unlock"
-msgstr "Lås opp"
-
-#: data/ui/remmina_unlock.glade:94
-msgid "Unlock Remmina"
-msgstr "Lås opp Remmina"
-
-#: data/ui/remmina_unlock.glade:128
-msgid "Master password"
-msgstr "Hovedpassord"
-
 #: data/ui/remmina_spinner.glade:54
 msgid "Please wait…"
 msgstr "Vent…"
-
-#: data/ui/remmina_news.glade:75
-msgid ""
-"<big><b>The news are turned off</b></big>\n"
-"\n"
-"<span>\n"
-"Turning on news means the program connects to a Remmina server to download "
-"the release notes.\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"Version checking can only be activated at compile time.\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
-"release notes\"><i>Visit the website to read the release notes</i></a>.\n"
-"</span>"
-msgstr ""
-"<big><b>Nyheter er avskrudd</b></big>\n"
-"\n"
-"<span>\n"
-"Å skru på nyhetene betyr at programmet kobler til en Remmina-tjener for å "
-"laste ned versjonsnotatene.\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"Versjonssjekking kan kun aktiveres ved kompilering.\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina-"
-"versjonsnotater\"><i>Besøk nettsiden for å lese versjonsnotatene</i></a>.\n"
-"</span>"
-
-#. The star (*) is a reference to privacy consent
-#: data/ui/remmina_news.glade:130 data/ui/remmina_preferences.glade:464
-msgid ""
-"Send <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-"remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
-"\">anonymous</a></b> statistics. (*)"
-msgstr ""
-"Send <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-"remmina__stats_8c.html#details\" title=\"Remmina-bruksstatistikk\">anonym</"
-"a></b> statistikk. (*)"
-
-#: data/ui/remmina_news.glade:142 data/ui/remmina_news.glade:195
-msgid "Send anonymous statistics"
-msgstr "Send anonym statistikk"
-
-#: data/ui/remmina_news.glade:156
-msgid "Use as default remote desktop client"
-msgstr "Bruk som forvalgt klient for eksterne skrivebord"
-
-#: data/ui/remmina_news.glade:165
-msgid "Apply"
-msgstr "Bruk"
-
-#: data/ui/remmina_news.glade:169
-msgid "Allow Remmina to automatically open .rdp and .remmina files."
-msgstr "Tillat Remmina å åpne .rdp og .remmina-filer automatisk."
-
-#. The star (*) is a reference to privacy consent
-#: data/ui/remmina_news.glade:183 data/ui/remmina_preferences.glade:479
-msgid ""
-"Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
-"\">remmina.org</a> (*)"
-msgstr ""
-"Hent nyheter fra <a href=\"https://remmina.org\" title=\"Remmina news site"
-"\">remmina.org</a> (*)"
-
-#: data/ui/remmina_news.glade:208 data/ui/remmina_preferences.glade:446
-msgid ""
-"* By enabling statistics and/or news you consent to send and fetch data to/"
-"from remmina.org"
-msgstr ""
-"* Ved å skru på statistikk og/eller nyheter samtykker du til å sende og "
-"hente data til/fra remmina.org"
-
-#: data/ui/remmina_news.glade:231
-msgid "<big>Take part</big>"
-msgstr "<big>Vær med</big>"
-
-#. Pay attention to the quoting characters as they may break the pango layout. If in doubt and cannot test, copy and paste the symbols from the English string.
-#: data/ui/remmina_news.glade:257
-msgid ""
-"<span>\n"
-"<b>You have our gratitude in choosing copylefted libre software, <a href="
-"\"https://remmina.org/donations/\" title=\"Where’s the money, Lebowski? "
-"“blblblblblb”\">donations also make us happy</a>, and further help improve "
-"Remmina.</b>\n"
-"</span>\n"
-msgstr ""
-"<span>\n"
-"<b>Du er storartet i din bruk av gemenslig fri programvare, <a href="
-"\"https://remmina.org/donations/\" title=\"Hvor er pengene Lebowski? "
-"“blblblblblb”\">doner en slant</a>, for å gjøre oss glade, og forbedre "
-"programmet enda mer.</b>\n"
-"</span>\n"
-
-#: data/ui/remmina_news.glade:277
-msgid "<big>Contribute</big>"
-msgstr "<big>Bidra</big>"
-
-#: data/ui/remmina_mpc.glade:14
-msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
-msgstr "<span weight='bold' size='larger'>Multipassordsendrer</span>"
-
-#: data/ui/remmina_mpc.glade:32
-msgid "Change"
-msgstr "Endre"
-
-#: data/ui/remmina_mpc.glade:201
-msgid "Selection criteria"
-msgstr "Utvalgskriterium"
-
-#: data/ui/remmina_mpc.glade:261
-msgid "Confirm password"
-msgstr "Bekreft passord"
-
-#: data/ui/remmina_mpc.glade:294
-msgid "Set new password"
-msgstr "Sett nytt passord"
-
-#. A column table with multiple check-boxes
-#: data/ui/remmina_mpc.glade:331
-msgctxt "Multi password changer"
-msgid "Select"
-msgstr "Velg"
-
-#: data/ui/remmina_mpc.glade:343
-msgctxt "Multi password changer table"
-msgid "Name"
-msgstr "Navn"
-
-#: data/ui/remmina_mpc.glade:354
-msgctxt "Multi password changer table"
-msgid "Group"
-msgstr "Gruppe"
-
-#: data/ui/remmina_mpc.glade:365
-msgctxt "Multi password changer table"
-msgid "Domain\\Username"
-msgstr "Domene\\brukernavn"
 
 #: data/ui/remmina_preferences.glade:42
 msgid "Double-click action"
@@ -3882,30 +3895,17 @@ msgstr "Terminal"
 msgid "Remmina Preferences"
 msgstr "Remmina-innstillinger"
 
-#: data/ui/remmina_string_list.glade:14 data/ui/remmina_string_list.glade:158
-msgid "Add"
-msgstr "Legg til"
+#: data/ui/remmina_unlock.glade:60
+msgid "Unlock"
+msgstr "Lås opp"
 
-#: data/ui/remmina_string_list.glade:20 data/ui/remmina_string_list.glade:137
-#: data/ui/remmina_key_chooser.glade:14 data/ui/remmina_key_chooser.glade:15
-msgid "_Remove"
-msgstr "_Fjern"
+#: data/ui/remmina_unlock.glade:94
+msgid "Unlock Remmina"
+msgstr "Lås opp Remmina"
 
-#: data/ui/remmina_string_list.glade:26 data/ui/remmina_string_list.glade:116
-msgid "Move up"
-msgstr "Flytt oppover"
-
-#: data/ui/remmina_string_list.glade:32 data/ui/remmina_string_list.glade:95
-msgid "Move down"
-msgstr "Flytt nedover"
-
-#: data/ui/remmina_key_chooser.glade:23
-msgid "Choose a new key"
-msgstr "Velg en ny tast"
-
-#: data/ui/remmina_key_chooser.glade:82
-msgid "Please press the new key…"
-msgstr "Trykk på den nye tasten…"
+#: data/ui/remmina_unlock.glade:128
+msgid "Master password"
+msgstr "Hovedpassord"
 
 #~ msgid "Could not run %s on SSH server."
 #~ msgstr "Klarte ikke å kjøre «%s» på SSH-tjeneren."

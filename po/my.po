@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-07-16 21:21+0000\n"
+"POT-Creation-Date: 2021-07-29 20:50+0000\n"
 "PO-Revision-Date: 2021-07-16 08:59+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Burmese <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -21,161 +21,208 @@ msgstr ""
 "X-Generator: Weblate 4.7.2-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
 
-#: src/remmina_protocol_widget.c:283 src/remmina_sftp_plugin.c:328
+#: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:346
+#: src/remmina_protocol_widget.c:1672 src/remmina_protocol_widget.c:1691
+#: src/remmina_file_editor.c:846 src/remmina_file_editor.c:967
+#: src/remmina_ssh_plugin.c:1369 plugins/rdp/rdp_plugin.c:2652
+#: plugins/www/www_plugin.c:880 data/ui/remmina_mpc.glade:236
+#: data/ui/remmina_preferences.glade:1693 data/ui/remmina_unlock.glade:116
+msgid "Password"
+msgstr "စကားဝှက်"
+
+#: src/remmina_sftp_plugin.c:311 src/remmina_sftp_plugin.c:348
+#: src/remmina_file_editor.c:847 src/remmina_ssh_plugin.c:1370
+#: src/remmina_ssh_plugin.c:1475
+#, fuzzy
+msgid "SSH identity file"
+msgstr "SSH ident ဖိုင်"
+
+#: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:848
+#: src/remmina_ssh_plugin.c:1371
+#, fuzzy
+msgid "SSH agent"
+msgstr "SSH ကိုယ်စားလှယ်"
+
+#: src/remmina_sftp_plugin.c:313 src/remmina_file_editor.c:849
+#: src/remmina_ssh_plugin.c:1372
+#, fuzzy
+msgid "Public key (automatic)"
+msgstr "ပြည်သူ့ခလုတ် (အလိုအလျောက်)"
+
+#: src/remmina_sftp_plugin.c:314 src/remmina_file_editor.c:850
+#: src/remmina_ssh_plugin.c:1373
+#, fuzzy
+msgid "Kerberos (GSSAPI)"
+msgstr "Kerberos (GSAPI)"
+
+#: src/remmina_sftp_plugin.c:323
+#, fuzzy
+msgid "Show Hidden Files"
+msgstr "ဝှက်ထားတဲ့ဖိုင်တွေကို ပြပါ"
+
+#: src/remmina_sftp_plugin.c:325
+#, fuzzy
+msgid "Overwrite all files"
+msgstr "ဖိုင်အားလုံးကို ကျော်လွှားရေးသားပါ"
+
+#: src/remmina_sftp_plugin.c:327
+#, fuzzy
+msgid "Resume all file transfers"
+msgstr "ဖိုင် လွှဲပြောင်းမှုအားလုံးကို ပြန်လုပ်ပါ"
+
+#: src/remmina_sftp_plugin.c:328 src/remmina_protocol_widget.c:283
 #, fuzzy
 msgid "Connect via SSH from a new terminal"
 msgstr "terminal အသစ်မှ SSH မှတစ်ဆင့် ဆက်သွယ်ပါ"
 
-#: src/remmina_protocol_widget.c:290 src/remmina_ssh_plugin.c:829
-#: src/remmina_ssh_plugin.c:1454
+#: src/remmina_sftp_plugin.c:345 src/remmina_message_panel.c:330
+#: src/remmina_file_editor.c:961 src/remmina_ssh_plugin.c:1473
+#: plugins/rdp/rdp_plugin.c:2651 plugins/vnc/vnc_plugin.c:1960
+#: plugins/vnc/vnc_plugin.c:1980 plugins/www/www_plugin.c:879
+#: data/ui/remmina_mpc.glade:144
 #, fuzzy
-msgid "Open SFTP transfer…"
-msgstr "အက်စ်အက်ဖ်တီပီ လွှဲပြောင်းခြင်း…"
+msgid "Username"
+msgstr "အသုံးပြုသူအမည်"
 
-#: src/remmina_protocol_widget.c:319
+#: src/remmina_sftp_plugin.c:347 src/remmina_file_editor.c:952
+#: src/remmina_ssh_plugin.c:1472
 #, fuzzy
-msgid "Executing external commands…"
-msgstr "ပြင်ပအမိန့်များကို ဆောင်ရွက်ခြင်း...…"
+msgid "Authentication type"
+msgstr "စစ်ဆေးခြင်း အမျိုးအစား"
 
-#. TRANSLATORS: “%s” is a placeholder for the connection profile name
-#: src/remmina_protocol_widget.c:327
-#, fuzzy, c-format
-msgid "Connecting to “%s”…"
-msgstr "\"[%s\" ကို ဆက်သွယ်ခြင်း…"
-
-#. TRANSLATORS: “%s” is a placeholder for an hostname or an IP address.
-#: src/remmina_protocol_widget.c:911 src/remmina_protocol_widget.c:1096
-#, fuzzy, c-format
-msgid "Connecting to “%s” via SSH…"
-msgstr "SSH မှတစ်ဆင့် \"[%s\" သို့ ဆက်သွယ်ခြင်း…"
-
-#. TRANSLATORS: “%i” is a placeholder for a TCP port number.
-#: src/remmina_protocol_widget.c:1160
-#, fuzzy, c-format
-msgid "Awaiting incoming SSH connection on port %i…"
-msgstr "ဆိပ်ကမ်းတွင် ဝင်လာမည့် SSH ဆက်သွယ်မှုကို စောင့်မျှော်နေ [၄၁]"
-
-#: src/remmina_protocol_widget.c:1213
-#, fuzzy, c-format
-msgid "The “%s” command is not available on the SSH server."
-msgstr "\"[၅]\" ညွှန်ကြားချက်ကို SSH ဆာဗာမှာ မရရှိနိုင်ပါဘူး။"
-
-#: src/remmina_protocol_widget.c:1218
-#, fuzzy, c-format
-msgid "Could not run the “%s” command on the SSH server (status = %i)."
-msgstr "SSH ဆာဗာ (အခြေအနေ = [၅၉] အမိန့်ကို မလုပ်ဆောင်နိုင်ဘူး။"
-
-#. TRANSLATORS: %s is a placeholder for an error message
-#: src/remmina_protocol_widget.c:1226
-#, fuzzy, c-format
-msgid "Could not run command. %s"
-msgstr "ညွှန်ကြားချက်ကို မလုပ်ဆောင်နိုင်ဘူး။ %s"
-
-#. TRANSLATORS: “%s” is a placeholder for a hostname or IP address.
-#: src/remmina_protocol_widget.c:1296
-#, fuzzy, c-format
-msgid "Connecting to %s via SSH…"
-msgstr "SSH မှတစ်ဆင့် [၁၄] သို့ ဆက်သွယ်ခြင်း…"
-
-#: src/remmina_protocol_widget.c:1672 src/remmina_protocol_widget.c:1691
-#: src/remmina_ssh_plugin.c:1369 src/remmina_sftp_plugin.c:310
-#: src/remmina_sftp_plugin.c:346 src/remmina_file_editor.c:846
-#: src/remmina_file_editor.c:967 plugins/www/www_plugin.c:880
-#: plugins/rdp/rdp_plugin.c:2652 data/ui/remmina_unlock.glade:116
-#: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1693
-msgid "Password"
-msgstr "စကားဝှက်"
-
-#: src/remmina_protocol_widget.c:1690
+#: src/remmina_sftp_plugin.c:349 src/remmina_file_editor.c:984
+#: src/remmina_ssh_plugin.c:1479
 #, fuzzy
-msgid "Type in SSH username and password."
-msgstr "SSH အသုံးပြုသူအမည်နဲ့ စကားဝှက်ထဲက အမျိုးအစား။"
+msgid "Password to unlock private key"
+msgstr "ပုဂ္ဂလိကခလုတ်ကိုဖွင့်ရန် စကားဝှက်"
 
-#: src/remmina_protocol_widget.c:1745 src/remmina_protocol_widget.c:1777
+#: src/remmina_sftp_plugin.c:350 src/remmina_ssh_plugin.c:1509
 #, fuzzy
-msgid "Fingerprint automatically accepted"
-msgstr "လက်ဗွေရာကို အလိုအလျောက်လက်ခံ"
+msgid "SSH Proxy Command"
+msgstr "SSH Prox အမိန့်"
 
-#. TRANSLATORS: The user is asked to verify a new SSL certificate.
-#: src/remmina_protocol_widget.c:1753
+#: src/remmina_sftp_plugin.c:359
 #, fuzzy
-msgid "Certificate details:"
-msgstr "Certificate details"
+msgid "SFTP - Secure File Transfer"
+msgstr "SFTP - လုံခြုံတဲ့ ဖိုင် လွှဲပြောင်း"
 
-#. TRANSLATORS: An SSL certificate subject is usually the remote server the user connect to.
-#: src/remmina_protocol_widget.c:1755 src/remmina_protocol_widget.c:1787
+#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1533
 #, fuzzy
-msgid "Subject:"
-msgstr "အကြောင်းအရာ -"
+msgid "Protocol"
+msgstr "Protocol"
 
-#. TRANSLATORS: The name or email of the entity that have issued the SSL certificate
-#: src/remmina_protocol_widget.c:1757 src/remmina_protocol_widget.c:1789
+#: src/remmina_plugin_manager.c:73
 #, fuzzy
-msgid "Issuer:"
-msgstr "ထုတ်ဝေသူ -"
+msgid "Entry"
+msgstr "ဝင် ဝင် ဝင်"
 
-#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
-#: src/remmina_protocol_widget.c:1759
+#: src/remmina_plugin_manager.c:73
 #, fuzzy
-msgid "Fingerprint:"
-msgstr "Fingerprint"
+msgid "File"
+msgstr "ဖိုင်"
 
-#. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
-#: src/remmina_protocol_widget.c:1761
+#: src/remmina_plugin_manager.c:73
 #, fuzzy
-msgid "Accept certificate?"
-msgstr "လက်မှတ်ကို လက်ခံပါသလား။"
+msgid "Tool"
+msgstr "ကိရိယာ"
 
-#. TRANSLATORS: The user is asked to verify a new SSL certificate.
-#: src/remmina_protocol_widget.c:1785
+#: src/remmina_plugin_manager.c:73
 #, fuzzy
-msgid "The certificate changed! Details:"
-msgstr "အသိအမှတ်ပြုလက်မှတ်ပြောင်းလဲသွားလေသည်! အသေးစိတ်အချက်အလက်များ -"
+msgid "Preference"
+msgstr "ကြိုက်နှစ်သက်မှု"
 
-#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
-#: src/remmina_protocol_widget.c:1791
+#: src/remmina_plugin_manager.c:73
 #, fuzzy
-msgid "Old fingerprint:"
-msgstr "လက်ချောင်းအဟောင်း -"
+msgid "Secret"
+msgstr "လျှို့ဝှက်ချက်"
 
-#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
-#: src/remmina_protocol_widget.c:1793
+#: src/remmina_plugin_manager.c:456 data/ui/remmina_main.glade:305
 #, fuzzy
-msgid "New fingerprint:"
-msgstr "လက်ဗွေအသစ် -"
+msgid "Plugins"
+msgstr "Plugins"
 
-#. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
-#: src/remmina_protocol_widget.c:1795
+#: src/remmina_plugin_manager.c:456 src/remmina_message_panel.c:452
+#: src/remmina_message_panel.c:621 src/remmina_file_editor.c:152
 #, fuzzy
-msgid "Accept changed certificate?"
-msgstr "အပြောင်းအလဲလက်မှတ်ကို လက်ခံပါသလား။"
+msgid "_OK"
+msgstr "_OK"
 
-#. TRANSLATORS: “%i” is a placeholder for a port number. “%s”  is a placeholder for a protocol name (VNC).
-#: src/remmina_protocol_widget.c:1938
-#, fuzzy, c-format
-msgid "Listening on port %i for an incoming %s connection…"
-msgstr "[ ၃၇] ဆက် သွယ် မှု အတွက် ဆိပ်ကမ်း [၁၈] ကို နားထောင် ခြင်း…"
-
-#: src/remmina_protocol_widget.c:1963
+#: src/remmina_plugin_manager.c:474 src/remmina_file_editor.c:1490
+#: data/ui/remmina_main.glade:442
 #, fuzzy
-msgid "Could not authenticate, attempting reconnection…"
-msgstr "ပြန်လည်ဆက်သွယ်ရန်ကြိုးစားခြင်း မရှိနိုင်ပါ...…"
+msgid "Name"
+msgstr "အမည်"
 
-#: src/remmina_protocol_widget.c:2025 src/remmina_file_editor.c:346
-#: src/remmina_file_editor.c:917 data/ui/remmina_main.glade:478
-msgid "Server"
-msgstr "ဆာဗာ"
+#: src/remmina_plugin_manager.c:480
+#, fuzzy
+msgid "Type"
+msgstr "Type"
 
-#. TRANSLATORS: “%s” is a placeholder for a protocol name, like “RDP”.
-#: src/remmina_protocol_widget.c:2043
-#, fuzzy, c-format
-msgid "Install the %s protocol plugin first."
-msgstr "%s protocol plugin ကို ပထမဆုံး သွင်းပါ။"
+#: src/remmina_plugin_manager.c:486
+#, fuzzy
+msgid "Description"
+msgstr "ေဖာ္ျပခ်က္"
 
-#: src/remmina_exec.c:475
-#, fuzzy, c-format
-msgid "Plugin %s is not registered."
-msgstr "Plugin %s မှာ မှတ်ပုံတင်မထားဘူး။"
+#: src/remmina_plugin_manager.c:492
+#, fuzzy
+msgid "Version"
+msgstr "ဗားရွင္း"
+
+#: src/remmina_chat_window.c:178
+#, c-format
+msgid "Chat with %s"
+msgstr "%s နှင့်Chat မည်"
+
+#: src/remmina_chat_window.c:230
+msgid "_Send"
+msgstr "_S ပို့မည်"
+
+#: src/remmina_chat_window.c:240
+msgid "_Clear"
+msgstr "_C ရှင်းလင်းမည်"
+
+#: src/remmina_applet_menu_item.c:121
+msgid "Discovered"
+msgstr "ရှာဖွေမည်"
+
+#: src/remmina_applet_menu_item.c:126
+msgid "New Connection"
+msgstr "ချိတ်ဆက်မှု့အသစ်"
+
+#: src/remmina_key_chooser.h:38
+#, fuzzy
+msgid "Shift+"
+msgstr "အပြောင်းအလဲ +"
+
+#: src/remmina_key_chooser.h:39
+#, fuzzy
+msgid "Ctrl+"
+msgstr "Ctrl + Ctrl +"
+
+#: src/remmina_key_chooser.h:40
+#, fuzzy
+msgid "Alt+"
+msgstr "နှုတ်ခမ်း +"
+
+#: src/remmina_key_chooser.h:41
+#, fuzzy
+msgid "Super+"
+msgstr "Super + Super +"
+
+#: src/remmina_key_chooser.h:42
+#, fuzzy
+msgid "Hyper+"
+msgstr "ဟိုက်ပါ +"
+
+#: src/remmina_key_chooser.h:43
+#, fuzzy
+msgid "Meta+"
+msgstr "မီတာ + မီတာ +"
+
+#: src/remmina_key_chooser.h:44
+#, fuzzy
+msgid "<None>"
+msgstr "<None>"
 
 #: src/remmina_pref_dialog.c:91 src/remmina_file_editor.c:435
 #, fuzzy
@@ -224,284 +271,209 @@ msgstr ""
 "ဤဖိုင်တွင် သတ်မှတ်ချက်များတွင် \"Terminal\" tab တွင် တည်းဖြတ်နိုင်သည့် \"အဆင့်မြင့်\" အရောင် အစီအစဉ်မှ "
 "ရွေးချယ်ရသော \"ဓလေ့ထုံးစံ\" အရောင်စီမံကိန်းပါဝင်သည်။"
 
-#. TRANSLATORS: %s is a placeholder for an error message
-#: src/remmina_ssh_plugin.c:539
+#: src/remmina_message_panel.c:163 data/ui/remmina_mpc.glade:46
+#: data/ui/remmina_unlock.glade:46
+#, fuzzy
+msgid "Cancel"
+msgstr "ပယ်ဖြတ်ခြင်း ။"
+
+#: src/remmina_message_panel.c:199 data/ui/remmina_snap_info_dialog.glade:28
+#: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
+#: data/ui/remmina_string_list.glade:63 data/ui/remmina_news.glade:33
+#: data/ui/remmina_preferences.glade:2640
+#, fuzzy
+msgid "Close"
+msgstr "ပိတ်ပါ"
+
+#: src/remmina_message_panel.c:260
+#, fuzzy
+msgid "Yes"
+msgstr "Yes"
+
+#: src/remmina_message_panel.c:267
+#, fuzzy
+msgid "No"
+msgstr "No"
+
+#: src/remmina_message_panel.c:391 plugins/rdp/rdp_plugin.c:2653
+#: data/ui/remmina_mpc.glade:172
+#, fuzzy
+msgid "Domain"
+msgstr "Domain"
+
+#: src/remmina_message_panel.c:420
+#, fuzzy
+msgid "Save password"
+msgstr "စကားဝှက်ကို သိမ်းဆည်းပါ"
+
+#: src/remmina_message_panel.c:457 src/remmina_message_panel.c:629
+#: src/remmina_sftp_client.c:947 src/remmina_file_editor.c:151
+#: src/remmina_file_editor.c:1365 plugins/spice/spice_plugin_file_transfer.c:84
+#: data/ui/remmina_key_chooser.glade:8 data/ui/remmina_key_chooser.glade:9
+#: data/ui/remmina_spinner.glade:8 data/ui/remmina_spinner.glade:9
+#, fuzzy
+msgid "_Cancel"
+msgstr "_Cancel"
+
+#: src/remmina_message_panel.c:513
+#, fuzzy
+msgid "Enter certificate authentication files"
+msgstr "အသိအမှတ်ပြုလွှာ စစ်ဆေးရေးဖိုင်များ ဝင်ရောက်ပါ"
+
+#: src/remmina_message_panel.c:525
+#, fuzzy
+msgid "CA Certificate File"
+msgstr "စီအေ လက်မှတ်ဖိုင်"
+
+#: src/remmina_message_panel.c:547
+#, fuzzy
+msgid "CA CRL File"
+msgstr "CRL ဖိုင်"
+
+#: src/remmina_message_panel.c:569
+#, fuzzy
+msgid "Client Certificate File"
+msgstr "Certicate Certicate ဖိုင်"
+
+#: src/remmina_message_panel.c:591
+#, fuzzy
+msgid "Client Certificate Key"
+msgstr "Certicate Certicate key"
+
+#: src/rcw.c:658
 #, fuzzy, c-format
-msgid "Error: %s"
-msgstr "အမှား - [၇]"
-
-#: src/remmina_ssh_plugin.c:556
-#, fuzzy
-msgid "Terminal content saved in"
-msgstr "Terminal အကြောင်းအရာများကို သိမ်းဆည်းထားခဲ့"
-
-#: src/remmina_ssh_plugin.c:822
-#, fuzzy
-msgid "Select All (host+A)"
-msgstr "အားလုံးရွေးချယ် (အိမ်ရှင်+အေ)"
-
-#: src/remmina_ssh_plugin.c:823
-#, fuzzy
-msgid "Copy (host+C)"
-msgstr "မိတ္တူကူး (အိမ်ရှင်+စီ)"
-
-#: src/remmina_ssh_plugin.c:824
-#, fuzzy
-msgid "Paste (host+V)"
-msgstr "ပါစတီ (အိမ်ရှင်+V)"
-
-#: src/remmina_ssh_plugin.c:825
-#, fuzzy
-msgid "Save session to file"
-msgstr "ဖိုင်အတွက် သိမ်းဆည်းထားပါ"
-
-#: src/remmina_ssh_plugin.c:826
-#, fuzzy
-msgid "Increase font size (host+Page Up)"
-msgstr "ဖောင့်အရွယ်အစားကို တိုးမြှင့် (အိမ်ရှင်+ပေ့ပ်)"
-
-#: src/remmina_ssh_plugin.c:827
-#, fuzzy
-msgid "Decrease font size (host+Page Down)"
-msgstr "ဖောင့်အရွယ် (အိမ်ရှင်+စာမျက်နှာအောက်)"
-
-#: src/remmina_ssh_plugin.c:828
-#, fuzzy
-msgid "Find text (host+G)"
-msgstr "စာသားကိုရှာ (အိမ်ရှင်+G)"
-
-#: src/remmina_ssh_plugin.c:1370 src/remmina_ssh_plugin.c:1475
-#: src/remmina_sftp_plugin.c:311 src/remmina_sftp_plugin.c:348
-#: src/remmina_file_editor.c:847
-#, fuzzy
-msgid "SSH identity file"
-msgstr "SSH ident ဖိုင်"
-
-#: src/remmina_ssh_plugin.c:1371 src/remmina_sftp_plugin.c:312
-#: src/remmina_file_editor.c:848
-#, fuzzy
-msgid "SSH agent"
-msgstr "SSH ကိုယ်စားလှယ်"
-
-#: src/remmina_ssh_plugin.c:1372 src/remmina_sftp_plugin.c:313
-#: src/remmina_file_editor.c:849
-#, fuzzy
-msgid "Public key (automatic)"
-msgstr "ပြည်သူ့ခလုတ် (အလိုအလျောက်)"
-
-#: src/remmina_ssh_plugin.c:1373 src/remmina_sftp_plugin.c:314
-#: src/remmina_file_editor.c:850
-#, fuzzy
-msgid "Kerberos (GSSAPI)"
-msgstr "Kerberos (GSAPI)"
-
-#: src/remmina_ssh_plugin.c:1448 data/ui/remmina_main.glade:177
-#, fuzzy
-msgid "Copy"
-msgstr "ကူးရန်"
-
-#: src/remmina_ssh_plugin.c:1448
-#, fuzzy
-msgid "_Copy"
-msgstr "_Copy"
-
-#: src/remmina_ssh_plugin.c:1449
-#, fuzzy
-msgid "Paste"
-msgstr "ပွားယူပါ"
-
-#: src/remmina_ssh_plugin.c:1449
-#, fuzzy
-msgid "_Paste"
-msgstr "_Paste"
-
-#: src/remmina_ssh_plugin.c:1450
-#, fuzzy
-msgid "Select all"
-msgstr "Select all"
-
-#: src/remmina_ssh_plugin.c:1450
-#, fuzzy
-msgid "_Select all"
-msgstr "Select all"
-
-#: src/remmina_ssh_plugin.c:1451
-#, fuzzy
-msgid "Increase font size"
-msgstr "ဖောင့်အရွယ်အစားကို တိုးမြှင့်ပါ"
-
-#: src/remmina_ssh_plugin.c:1451
-#, fuzzy
-msgid "_Increase font size"
-msgstr "_Increase ဖောင့်အရွယ်အစား"
-
-#: src/remmina_ssh_plugin.c:1452
-#, fuzzy
-msgid "Decrease font size"
-msgstr "ဖောင့်အရွယ်အစားကို လျှော့ချပါ"
-
-#: src/remmina_ssh_plugin.c:1452
-#, fuzzy
-msgid "_Decrease font size"
-msgstr "_Decrease ဖောင့်အရွယ်အစား"
-
-#: src/remmina_ssh_plugin.c:1453
-#, fuzzy
-msgid "Find text"
-msgstr "စာသားကို ရှာဖွေပါ"
-
-#: src/remmina_ssh_plugin.c:1453
-#, fuzzy
-msgid "_Find text"
-msgstr "_Find စာသား"
-
-#: src/remmina_ssh_plugin.c:1472 src/remmina_sftp_plugin.c:347
-#: src/remmina_file_editor.c:952
-#, fuzzy
-msgid "Authentication type"
-msgstr "စစ်ဆေးခြင်း အမျိုးအစား"
-
-#: src/remmina_ssh_plugin.c:1473 src/remmina_message_panel.c:330
-#: src/remmina_sftp_plugin.c:345 src/remmina_file_editor.c:961
-#: plugins/www/www_plugin.c:879 plugins/vnc/vnc_plugin.c:1960
-#: plugins/vnc/vnc_plugin.c:1980 plugins/rdp/rdp_plugin.c:2651
-#: data/ui/remmina_mpc.glade:144
-#, fuzzy
-msgid "Username"
-msgstr "အသုံးပြုသူအမည်"
-
-#: src/remmina_ssh_plugin.c:1474 plugins/vnc/vnc_plugin.c:1961
-#: plugins/vnc/vnc_plugin.c:1981 plugins/spice/spice_plugin.c:666
-#, fuzzy
-msgid "User password"
-msgstr "အသုံးပြုသူ စကားဝှက်"
-
-#: src/remmina_ssh_plugin.c:1477 src/remmina_file_editor.c:979
-#, fuzzy
-msgid "SSH certificate file"
-msgstr "SSH certicate ဖိုင်"
-
-#: src/remmina_ssh_plugin.c:1479 src/remmina_sftp_plugin.c:349
-#: src/remmina_file_editor.c:984
-#, fuzzy
-msgid "Password to unlock private key"
-msgstr "ပုဂ္ဂလိကခလုတ်ကိုဖွင့်ရန် စကားဝှက်"
-
-#: src/remmina_ssh_plugin.c:1480 plugins/rdp/rdp_plugin.c:2693
-#, fuzzy
-msgid "Start-up program"
-msgstr "စတင်ပရိုဂရမ်"
-
-#: src/remmina_ssh_plugin.c:1485
-#, fuzzy
 msgid ""
-"The filename can use the following placeholders:\n"
-"\n"
-"  • %h is substituted with the server name\n"
-"  • %t is substituted with the SSH server name\n"
-"  • %u is substituted with the username\n"
-"  • %U is substituted with the SSH username\n"
-"  • %p is substituted with Remmina profile name\n"
-"  • %g is substituted with Remmina profile group name\n"
-"  • %d is substituted with local date and time in ISO 8601 format\n"
-msgstr ""
-"ဖိုင်အမည်သည် အောက်ပါ နေရာပိုင်ရှင်များကို အသုံးပြုနိုင်သည်-\n"
-"\n"
-"• %h ကို ဆာဗာအမည်ဖြင့် အစားထိုးပါ\n"
-"  • %t ကို SSH ဆာဗာအမည်ဖြင့် အစားထိုးပါ\n"
-"  • %u ကို သုံးစွဲသူအမည်ဖြင့် အစားထိုး\n"
-"  • %U ကို SSH အသုံးပြုသူအမည်ဖြင့် အစားထိုးပါ\n"
-"  • %p ကို Remmina profile အမည်ဖြင့် အစားထိုးပါ\n"
-"  • %g ကို Remmina Profile အုပ်စုအမည်ဖြင့် အစားထိုးပါ\n"
-"  • %d ကို ဒေသတွင်း ရက်စွဲနှင့် အချိန်ကို ISO 8601 ပုံစံဖြင့် အစားထိုး\n"
+"Are you sure you want to close %i active connections in the current window?"
+msgstr "လက်ရှိ ပြတင်းပေါက်မှာ တက်ကြွတဲ့ဆက်သွယ်မှုတွေကို ပိတ်ချင်တယ်ဆိုတာ သေချာလား။"
 
-#: src/remmina_ssh_plugin.c:1507
+#: src/rcw.c:1394
 #, fuzzy
-msgid "Terminal colour scheme"
-msgstr "Terminal အရောင် စီမံကိန်း"
+msgid "Viewport fullscreen mode"
+msgstr "မြင်ကွင်းအပြည့် မျက်နှာပြင်ပုံစံ"
 
-#: src/remmina_ssh_plugin.c:1508
+#: src/rcw.c:1402 data/ui/remmina_preferences.glade:607
 #, fuzzy
-msgid "Character set"
-msgstr "ဇာတ်ကောင်အစု"
+msgid "Scrolled fullscreen"
+msgstr "လိပ်ထားတဲ့ ဆင်ခြေဖြူ"
 
-#: src/remmina_ssh_plugin.c:1509 src/remmina_sftp_plugin.c:350
+#: src/rcw.c:1487
 #, fuzzy
-msgid "SSH Proxy Command"
-msgstr "SSH Prox အမိန့်"
+msgid "Keep aspect ratio when scaled"
+msgstr "ချိန်ခွင်ချိန်တွင် ရှုထောင့်အချိုးကို ထိန်းသိမ်းထားပါ"
 
-#: src/remmina_ssh_plugin.c:1510
+#: src/rcw.c:1495
 #, fuzzy
-msgid "KEX (Key Exchange) algorithms"
-msgstr "KEX (Key Exchange) အယ်ဂိုရီသမ်များ"
+msgid "Fill client window when scaled"
+msgstr "ဖောက်သည် ဝင်းဒိုး ဖြည့်ပါ"
 
-#: src/remmina_ssh_plugin.c:1511
+#: src/rcw.c:2043
 #, fuzzy
-msgid "Symmetric cipher client to server"
-msgstr "symmmtric cipher ဖောက်သည် ဆာဗာ"
+msgid "Send clipboard content as keystrokes"
+msgstr "Clipboard အကြောင်းအရာကို ကီးစထရိုက်တာအဖြစ် ပေးပို့ပါ"
 
-#: src/remmina_ssh_plugin.c:1512
+#: src/rcw.c:2147
 #, fuzzy
-msgid "Preferred server host key types"
-msgstr "ကြိုက်နှစ်သက်သော ဆာဗာ အိမ်ရှင် အဓိကအမျိုးအစားများ"
+msgid "Turn off scaling to avoid screenshot distortion."
+msgstr "ဖန်သားပြင် လွဲမှား မှု ကို ရှောင်ရှား ရန် စကေး ပိတ် ပါ ။"
 
-#: src/remmina_ssh_plugin.c:1513
+#: src/rcw.c:2207 plugins/www/www_plugin.c:848
 #, fuzzy
-msgid "Folder for SSH session log"
-msgstr "SSH SSH ssion မှတ်စုအတွက် ဖိုင်တွဲ"
+msgid "Screenshot taken"
+msgstr "ရုပ်ရှင်ရိုက်ယူမှု"
 
-#: src/remmina_ssh_plugin.c:1514
+#: src/rcw.c:2290
 #, fuzzy
-msgid "Filename for SSH session log"
-msgstr "SSH SSH ssion မှတ်စုအတွက် Fililename"
+msgid "_Menu"
+msgstr "_Menu"
 
-#: src/remmina_ssh_plugin.c:1515
+#: src/rcw.c:2291
 #, fuzzy
-msgid "Log SSH session when exiting Remmina"
-msgstr "Remmina ကနေထွက်ချိန်မှာ Log SSH အစီအစဉ်"
+msgid "Menu"
+msgstr "မီနူး"
 
-#: src/remmina_ssh_plugin.c:1516
+#: src/rcw.c:2300
 #, fuzzy
-msgid "Log SSH session asynchronously"
-msgstr "သစ်အက်စ်အက်စ်အိပ်ခ်ျ အစီအစဉ်"
+msgid "Open the Remmina main window"
+msgstr "Remmina အဓိက ပြတင်းပေါက်ကို ဖွင့်ပါ"
 
-#: src/remmina_ssh_plugin.c:1516
+#: src/rcw.c:2310
 #, fuzzy
-msgid "Saving the session asynchronously may have a notable performance impact"
-msgstr "အစည်းအဝေးကို ထိန်းသိမ်းခြင်းဟာ ထူးခြားတဲ့ စွမ်းဆောင်ရည် အကျိုးသက်ရောက်မှု ရှိနိုင်တယ်"
+msgid "Duplicate current connection"
+msgstr "လက်ရှိ ဆက်သွယ်မှုကို တုပပါ"
 
-#: src/remmina_ssh_plugin.c:1517
+#: src/rcw.c:2327
 #, fuzzy
-msgid "Audible terminal bell"
-msgstr "ကြားနိုင်သော terminal ခေါင်းလောင်း"
+msgid "Resize the window to fit in remote resolution"
+msgstr "ဝေးလံသောဖြေရှင်းချက်တွင် အံဝင်ခွင်ကျဖြစ်စေရန် ပြတင်းပေါက်ကို ပြင်ဆင်ပါ"
 
-#: src/remmina_ssh_plugin.c:1518
+#: src/rcw.c:2338
 #, fuzzy
-msgid "SSH compression"
-msgstr "SSH ဖိသိပ်ခြင်း"
+msgid "Toggle fullscreen mode"
+msgstr "Toggle အပြည့် မျက်နှာပြင်ပုံစံ"
 
-#: src/remmina_ssh_plugin.c:1519
+#: src/rcw.c:2384 data/ui/remmina_preferences.glade:1344
+#: data/ui/remmina_preferences.glade:1354
 #, fuzzy
-msgid "Don't remember passwords"
-msgstr "စကားဝှက်တွေကို မမှတ်မိပါနဲ့"
+msgid "Multi monitor"
+msgstr "Multi မော်နီတာ"
 
-#: src/remmina_ssh_plugin.c:1520
+#: src/rcw.c:2400
 #, fuzzy
-msgid "Strict host key checking"
-msgstr "တင်းကျပ်တဲ့ အိမ်ရှင် အဓိကစစ်ဆေးမှု"
+msgid "Toggle dynamic resolution update"
+msgstr "Toggle dynnamic ဖြေရှင်းချက် အသစ်ပြင်ဆင်ချက်"
 
-#: src/remmina_ssh_plugin.c:1534
+#: src/rcw.c:2410
 #, fuzzy
-msgid "SSH - Secure Shell"
-msgstr "SSH - လုံခြုံသောခွေး"
+msgid "Toggle scaled mode"
+msgstr "Toggle စကေးချထားတဲ့ ပုံစံ"
 
-#: src/remmina_applet_menu_item.c:121
-msgid "Discovered"
-msgstr "ရှာဖွေမည်"
+#: src/rcw.c:2450 data/ui/remmina_preferences.glade:1070
+#, fuzzy
+msgid "Switch tab pages"
+msgstr "Swech tab စာမျက်နှာများ"
 
-#: src/remmina_applet_menu_item.c:126
-msgid "New Connection"
-msgstr "ချိတ်ဆက်မှု့အသစ်"
+#: src/rcw.c:2460
+#, fuzzy
+msgid "Grab all keyboard events"
+msgstr "ကီးဘုတ်အဖြစ်အပျက်အားလုံးကို ရယူပါ"
+
+#: src/rcw.c:2470
+#, fuzzy
+msgid "Preferences"
+msgstr "အပြင်အဆင်"
+
+#: src/rcw.c:2479
+msgid "_Tools"
+msgstr "Tools"
+
+#: src/rcw.c:2480 data/ui/remmina_main.glade:207
+msgid "Tools"
+msgstr "Tools"
+
+#: src/rcw.c:2493 data/ui/remmina_preferences.glade:1277
+#: data/ui/remmina_preferences.glade:1287
+#, fuzzy
+msgid "Screenshot"
+msgstr "ဖန်သားပြင်ပုံရိပ်"
+
+#: src/rcw.c:2507 data/ui/remmina_preferences.glade:1181
+#, fuzzy
+msgid "Minimize window"
+msgstr "ဝင်းဒိုးကို လျော့နည်းစေပါ"
+
+#: src/rcw.c:2517 data/ui/remmina_preferences.glade:1213
+msgid "Disconnect"
+msgstr "အဆက်အသွယ်ဖြတ်မည်။"
+
+#: src/rcw.c:4284
+#, fuzzy, c-format
+msgid "The file “%s” is corrupted, unreadable, or could not be found."
+msgstr "\"%s ဖိုင်သည် ယိုယွင်းပျက်စီးနေပြီး မဖြည့်ဆည်းနိုင်၊ မတွေ့ရပါ။"
+
+#: src/rcw.c:4452
+#, fuzzy
+msgid "Warning: This plugin requires GtkSocket, but it’s not available."
+msgstr "သတိပေးချက်- ဒီပလက်ဂျင်က GtkSocket လိုအပ်ပေမဲ့ မရရှိနိုင်ပါဘူး။"
 
 #: src/remmina_mpchange.c:234
 #, fuzzy
@@ -528,165 +500,6 @@ msgstr "စကားဝှက်ပြောင်းလဲသူမှာ လ�
 msgid "%d password changed."
 msgid_plural "%d passwords changed."
 msgstr[0] "[၀] စကားဝှက် ပြောင်းလဲသွားတယ်။"
-
-#: src/remmina_public.c:345
-#, fuzzy, c-format
-msgid "Address is too long for UNIX socket_path: %s"
-msgstr "socket_path [ ၄၂]"
-
-#: src/remmina_public.c:355
-#, fuzzy, c-format
-msgid "Creating UNIX socket failed: %s"
-msgstr "UNIX ဆိုကက်ဖန်တီးခြင်း မအောင်မြင်ခဲ့ပါ ။ [၂၉]"
-
-#: src/remmina_public.c:361
-#, fuzzy, c-format
-msgid "Connecting to UNIX socket failed: %s"
-msgstr "UNIX ဆိုကက်နှင့်ဆက်သွယ်ခြင်း ပျက်ကွက်ခဲ့သည်။ [၃၄]"
-
-#: src/remmina_public.c:631
-#, fuzzy
-msgid "Please enter format 'widthxheight'."
-msgstr "ကျေးဇူးပြု၍ 'ဝစ်ဒက်ဇ်ဟိုက်' ပုံစံကို ဝင်ကြည့်ပါ။"
-
-#: src/remmina_public.c:653
-#, fuzzy
-msgid "Change security settings"
-msgstr "လုံခြုံရေးနေရာများကို ပြောင်းလဲပါ"
-
-#. TRANSLATORS: translator-credits should be replaced with a formatted list of translators in your own language
-#: src/remmina_about.c:54
-msgid "translator-credits"
-msgstr ""
-"Launchpad Contributions:\n"
-"  Pyae Sone https://launchpad.net/~gipsyhnh"
-
-#: src/remmina_ftp_client.c:389
-#, fuzzy
-msgid "Choose download location"
-msgstr "ဒေါင်းလုတ်ဆွဲတဲ့နေရာကို ရွေးပါ"
-
-#: src/remmina_ftp_client.c:529
-#, fuzzy
-msgid "Are you sure to delete the selected files on server?"
-msgstr "ဆာဗာပေါ်က ရွေးထားတဲ့ဖိုင်တွေကို ဖျက်ပစ်မယ်ဆိုတာ သေချာလား။"
-
-#: src/remmina_ftp_client.c:586
-#, fuzzy
-msgid "Choose a file to upload"
-msgstr "တင်ရန် ဖိုင်တစ်ခုရွေးချယ်ပါ"
-
-#: src/remmina_ftp_client.c:593
-#, fuzzy
-msgid "Upload folder"
-msgstr "ဖိုင်တွဲ"
-
-#: src/remmina_ftp_client.c:649 src/remmina_ftp_client.c:763
-#, fuzzy
-msgid "Download"
-msgstr "ဒေါင်းလုဒ်"
-
-#: src/remmina_ftp_client.c:656 src/remmina_ftp_client.c:770
-#, fuzzy
-msgid "Upload"
-msgstr "တင်ပါ"
-
-#: src/remmina_ftp_client.c:663
-#, fuzzy
-msgid "_Delete"
-msgstr "_Delete"
-
-#: src/remmina_ftp_client.c:748
-#, fuzzy
-msgid "Home"
-msgstr "ပင်မစာမျက်နှာ"
-
-#: src/remmina_ftp_client.c:749
-#, fuzzy
-msgid "Go to home folder"
-msgstr "အိမ်ဖိုင်တွဲကို သွားပါ"
-
-#: src/remmina_ftp_client.c:753
-#, fuzzy
-msgid "Up"
-msgstr "အထက်"
-
-#: src/remmina_ftp_client.c:754
-#, fuzzy
-msgid "Go to parent folder"
-msgstr "မိဘဖိုင်တွဲကို သွားပါ"
-
-#: src/remmina_ftp_client.c:758 plugins/vnc/vnc_plugin.c:2019
-#: plugins/rdp/rdp_plugin.c:2740
-#, fuzzy
-msgid "Refresh"
-msgstr "ပြန်စမည်"
-
-#: src/remmina_ftp_client.c:759
-#, fuzzy
-msgid "Refresh current folder"
-msgstr "လတ်လတ်ဆတ်ဆတ် ဖိုင်တွဲကို လန်းဆန်းစေပါ"
-
-#: src/remmina_ftp_client.c:764
-#, fuzzy
-msgid "Download from server"
-msgstr "ဆာဗာကနေ ဒေါင်းလုတ်ဆွဲပါ"
-
-#: src/remmina_ftp_client.c:771
-#, fuzzy
-msgid "Upload to server"
-msgstr "ဆာဗာသို့ ကူးယူပါ"
-
-#: src/remmina_ftp_client.c:775 data/ui/remmina_main.glade:197
-#, fuzzy
-msgid "Delete"
-msgstr "ပယ်ဖျက်"
-
-#: src/remmina_ftp_client.c:776
-#, fuzzy
-msgid "Delete files on server"
-msgstr "ဆာဗာပေါ်က ဖိုင်တွေကို ဖျက်ပါ"
-
-#: src/remmina_ftp_client.c:905 src/remmina_ftp_client.c:974
-#, fuzzy
-msgid "Filename"
-msgstr "ဖိုင်လန်နာမ်"
-
-#: src/remmina_ftp_client.c:918 src/remmina_ftp_client.c:1003
-#, fuzzy
-msgid "Size"
-msgstr "Size"
-
-#: src/remmina_ftp_client.c:926
-#, fuzzy
-msgid "User"
-msgstr "User"
-
-#: src/remmina_ftp_client.c:932 src/remmina_file_editor.c:1515
-#: data/ui/remmina_main.glade:464 data/ui/remmina_mpc.glade:115
-#, fuzzy
-msgid "Group"
-msgstr "Group"
-
-#: src/remmina_ftp_client.c:938
-#, fuzzy
-msgid "Permission"
-msgstr "ခွင့်ပြုချက်များ"
-
-#: src/remmina_ftp_client.c:990 plugins/rdp/rdp_plugin.c:2548
-#, fuzzy
-msgid "Remote"
-msgstr "အဝေး"
-
-#: src/remmina_ftp_client.c:997 plugins/rdp/rdp_plugin.c:2547
-#, fuzzy
-msgid "Local"
-msgstr "Local"
-
-#: src/remmina_ftp_client.c:1011
-#, fuzzy
-msgid "Progress"
-msgstr "တိုးတက်မှု"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:86
@@ -886,493 +699,301 @@ msgstr ""
 "\"သုံးစွဲသူအမည်\\ နာပါ့စ်ဝေါ့\"| Remmina --redate-redate-profile /PATH/FO/FO.FO."
 "Remmina -- ရွေးချယ်ပိုင်ခွင့် သုံးစွဲသူအမည် -- resolution_mode =2-s- 2-s- ရွေးချယ်မှု စကားဝှက်\n"
 
-#: src/remmina_icon.c:128
-#, fuzzy
-msgid "Open Main Window"
-msgstr "အဓိက ဝင်းဒိုးကိုဖွင့်ပါ"
-
-#: src/remmina_icon.c:133 data/ui/remmina_main.glade:254
-#, fuzzy
-msgid "_Preferences"
-msgstr "အပြင်အဆင်"
-
-#: src/remmina_icon.c:138
-#, fuzzy
-msgid "_About"
-msgstr "_About"
-
-#: src/remmina_icon.c:148
-#, fuzzy
-msgid "Enable Service Discovery"
-msgstr "ဝန်ဆောင်မှု ရှာဖွေတွေ့ရှိမှု"
-
-#: src/remmina_icon.c:160 data/ui/remmina_main.glade:404
-#, fuzzy
-msgid "_Quit"
-msgstr "_Quit"
-
-#. TRANSLATORS: Applet name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
-#. TRANSLATORS: Applet Name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
-#: src/remmina_icon.c:284 src/remmina_icon.c:416
-#, fuzzy
-msgid "Remmina Applet"
-msgstr "Remmina Applele"
-
-#. TRANSLATORS: Applet comment/description as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
-#: src/remmina_icon.c:286 src/remmina_icon.c:418
-#, fuzzy
-msgid "Connect to remote desktops through the applet menu"
-msgstr "ပန်းသီးစာရင်းမှတစ်ဆင့် ဝေးလံတဲ့ ဒက်စ်တော့ပ်တွေနဲ့ ချိတ်ဆက်ပါ"
-
-#: src/rcw.c:658
+#: src/remmina_public.c:345
 #, fuzzy, c-format
-msgid ""
-"Are you sure you want to close %i active connections in the current window?"
-msgstr "လက်ရှိ ပြတင်းပေါက်မှာ တက်ကြွတဲ့ဆက်သွယ်မှုတွေကို ပိတ်ချင်တယ်ဆိုတာ သေချာလား။"
+msgid "Address is too long for UNIX socket_path: %s"
+msgstr "socket_path [ ၄၂]"
 
-#: src/rcw.c:1394
-#, fuzzy
-msgid "Viewport fullscreen mode"
-msgstr "မြင်ကွင်းအပြည့် မျက်နှာပြင်ပုံစံ"
-
-#: src/rcw.c:1402 data/ui/remmina_preferences.glade:607
-#, fuzzy
-msgid "Scrolled fullscreen"
-msgstr "လိပ်ထားတဲ့ ဆင်ခြေဖြူ"
-
-#: src/rcw.c:1487
-#, fuzzy
-msgid "Keep aspect ratio when scaled"
-msgstr "ချိန်ခွင်ချိန်တွင် ရှုထောင့်အချိုးကို ထိန်းသိမ်းထားပါ"
-
-#: src/rcw.c:1495
-#, fuzzy
-msgid "Fill client window when scaled"
-msgstr "ဖောက်သည် ဝင်းဒိုး ဖြည့်ပါ"
-
-#: src/rcw.c:2043
-#, fuzzy
-msgid "Send clipboard content as keystrokes"
-msgstr "Clipboard အကြောင်းအရာကို ကီးစထရိုက်တာအဖြစ် ပေးပို့ပါ"
-
-#: src/rcw.c:2147
-#, fuzzy
-msgid "Turn off scaling to avoid screenshot distortion."
-msgstr "ဖန်သားပြင် လွဲမှား မှု ကို ရှောင်ရှား ရန် စကေး ပိတ် ပါ ။"
-
-#: src/rcw.c:2207 plugins/www/www_plugin.c:848
-#, fuzzy
-msgid "Screenshot taken"
-msgstr "ရုပ်ရှင်ရိုက်ယူမှု"
-
-#: src/rcw.c:2290
-#, fuzzy
-msgid "_Menu"
-msgstr "_Menu"
-
-#: src/rcw.c:2291
-#, fuzzy
-msgid "Menu"
-msgstr "မီနူး"
-
-#: src/rcw.c:2300
-#, fuzzy
-msgid "Open the Remmina main window"
-msgstr "Remmina အဓိက ပြတင်းပေါက်ကို ဖွင့်ပါ"
-
-#: src/rcw.c:2310
-#, fuzzy
-msgid "Duplicate current connection"
-msgstr "လက်ရှိ ဆက်သွယ်မှုကို တုပပါ"
-
-#: src/rcw.c:2327
-#, fuzzy
-msgid "Resize the window to fit in remote resolution"
-msgstr "ဝေးလံသောဖြေရှင်းချက်တွင် အံဝင်ခွင်ကျဖြစ်စေရန် ပြတင်းပေါက်ကို ပြင်ဆင်ပါ"
-
-#: src/rcw.c:2338
-#, fuzzy
-msgid "Toggle fullscreen mode"
-msgstr "Toggle အပြည့် မျက်နှာပြင်ပုံစံ"
-
-#: src/rcw.c:2384 data/ui/remmina_preferences.glade:1344
-#: data/ui/remmina_preferences.glade:1354
-#, fuzzy
-msgid "Multi monitor"
-msgstr "Multi မော်နီတာ"
-
-#: src/rcw.c:2400
-#, fuzzy
-msgid "Toggle dynamic resolution update"
-msgstr "Toggle dynnamic ဖြေရှင်းချက် အသစ်ပြင်ဆင်ချက်"
-
-#: src/rcw.c:2410
-#, fuzzy
-msgid "Toggle scaled mode"
-msgstr "Toggle စကေးချထားတဲ့ ပုံစံ"
-
-#: src/rcw.c:2450 data/ui/remmina_preferences.glade:1070
-#, fuzzy
-msgid "Switch tab pages"
-msgstr "Swech tab စာမျက်နှာများ"
-
-#: src/rcw.c:2460
-#, fuzzy
-msgid "Grab all keyboard events"
-msgstr "ကီးဘုတ်အဖြစ်အပျက်အားလုံးကို ရယူပါ"
-
-#: src/rcw.c:2470
-#, fuzzy
-msgid "Preferences"
-msgstr "အပြင်အဆင်"
-
-#: src/rcw.c:2479
-msgid "_Tools"
-msgstr "Tools"
-
-#: src/rcw.c:2480 data/ui/remmina_main.glade:207
-msgid "Tools"
-msgstr "Tools"
-
-#: src/rcw.c:2493 data/ui/remmina_preferences.glade:1277
-#: data/ui/remmina_preferences.glade:1287
-#, fuzzy
-msgid "Screenshot"
-msgstr "ဖန်သားပြင်ပုံရိပ်"
-
-#: src/rcw.c:2507 data/ui/remmina_preferences.glade:1181
-#, fuzzy
-msgid "Minimize window"
-msgstr "ဝင်းဒိုးကို လျော့နည်းစေပါ"
-
-#: src/rcw.c:2517 data/ui/remmina_preferences.glade:1213
-msgid "Disconnect"
-msgstr "အဆက်အသွယ်ဖြတ်မည်။"
-
-#: src/rcw.c:4284
+#: src/remmina_public.c:355
 #, fuzzy, c-format
-msgid "The file “%s” is corrupted, unreadable, or could not be found."
-msgstr "\"%s ဖိုင်သည် ယိုယွင်းပျက်စီးနေပြီး မဖြည့်ဆည်းနိုင်၊ မတွေ့ရပါ။"
+msgid "Creating UNIX socket failed: %s"
+msgstr "UNIX ဆိုကက်ဖန်တီးခြင်း မအောင်မြင်ခဲ့ပါ ။ [၂၉]"
 
-#: src/rcw.c:4452
-#, fuzzy
-msgid "Warning: This plugin requires GtkSocket, but it’s not available."
-msgstr "သတိပေးချက်- ဒီပလက်ဂျင်က GtkSocket လိုအပ်ပေမဲ့ မရရှိနိုင်ပါဘူး။"
-
-#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1533
-#, fuzzy
-msgid "Protocol"
-msgstr "Protocol"
-
-#: src/remmina_plugin_manager.c:73
-#, fuzzy
-msgid "Entry"
-msgstr "ဝင် ဝင် ဝင်"
-
-#: src/remmina_plugin_manager.c:73
-#, fuzzy
-msgid "File"
-msgstr "ဖိုင်"
-
-#: src/remmina_plugin_manager.c:73
-#, fuzzy
-msgid "Tool"
-msgstr "ကိရိယာ"
-
-#: src/remmina_plugin_manager.c:73
-#, fuzzy
-msgid "Preference"
-msgstr "ကြိုက်နှစ်သက်မှု"
-
-#: src/remmina_plugin_manager.c:73
-#, fuzzy
-msgid "Secret"
-msgstr "လျှို့ဝှက်ချက်"
-
-#: src/remmina_plugin_manager.c:456 data/ui/remmina_main.glade:305
-#, fuzzy
-msgid "Plugins"
-msgstr "Plugins"
-
-#: src/remmina_plugin_manager.c:456 src/remmina_message_panel.c:452
-#: src/remmina_message_panel.c:621 src/remmina_file_editor.c:152
-#, fuzzy
-msgid "_OK"
-msgstr "_OK"
-
-#: src/remmina_plugin_manager.c:474 src/remmina_file_editor.c:1490
-#: data/ui/remmina_main.glade:442
-#, fuzzy
-msgid "Name"
-msgstr "အမည်"
-
-#: src/remmina_plugin_manager.c:480
-#, fuzzy
-msgid "Type"
-msgstr "Type"
-
-#: src/remmina_plugin_manager.c:486
-#, fuzzy
-msgid "Description"
-msgstr "ေဖာ္ျပခ်က္"
-
-#: src/remmina_plugin_manager.c:492
-#, fuzzy
-msgid "Version"
-msgstr "ဗားရွင္း"
-
-#: src/remmina_main.c:662
+#: src/remmina_public.c:361
 #, fuzzy, c-format
-msgid "Total %i item."
-msgid_plural "Total %i items."
-msgstr[0] "စုစုပေါင်း [၆] ပစ္စည်းစုပေါင်း။"
+msgid "Connecting to UNIX socket failed: %s"
+msgstr "UNIX ဆိုကက်နှင့်ဆက်သွယ်ခြင်း ပျက်ကွက်ခဲ့သည်။ [၃၄]"
 
-#: src/remmina_main.c:853
-#, fuzzy, c-format
-msgid "Are you sure you want to delete “%s”?"
-msgstr "%s ကို ပယ်ဖျက်ဖို့ သင် သေချာသလား။"
+#: src/remmina_public.c:631
+#, fuzzy
+msgid "Please enter format 'widthxheight'."
+msgstr "ကျေးဇူးပြု၍ 'ဝစ်ဒက်ဇ်ဟိုက်' ပုံစံကို ဝင်ကြည့်ပါ။"
 
-#: src/remmina_main.c:973
-#, fuzzy, c-format
-msgid ""
-"Unable to import:\n"
-"%s"
+#: src/remmina_public.c:653
+#, fuzzy
+msgid "Change security settings"
+msgstr "လုံခြုံရေးနေရာများကို ပြောင်းလဲပါ"
+
+#. TRANSLATORS: translator-credits should be replaced with a formatted list of translators in your own language
+#: src/remmina_about.c:54
+msgid "translator-credits"
 msgstr ""
-"တင်သွင်းရန် မစွမ်းဆောင်နိုင်ပါ -\n"
-"%s"
+"Launchpad Contributions:\n"
+"  Pyae Sone https://launchpad.net/~gipsyhnh"
 
-#: src/remmina_main.c:999 data/ui/remmina_main.glade:285
+#: src/remmina_ftp_client.c:389
 #, fuzzy
-msgid "Import"
-msgstr "တင်သွင်းပါ"
+msgid "Choose download location"
+msgstr "ဒေါင်းလုတ်ဆွဲတဲ့နေရာကို ရွေးပါ"
 
-#: src/remmina_main.c:1022 src/remmina_file_editor.c:1373
+#: src/remmina_ftp_client.c:529
 #, fuzzy
-msgid "_Save"
-msgstr "_Save"
+msgid "Are you sure to delete the selected files on server?"
+msgstr "ဆာဗာပေါ်က ရွေးထားတဲ့ဖိုင်တွေကို ဖျက်ပစ်မယ်ဆိုတာ သေချာလား။"
 
-#: src/remmina_main.c:1028
+#: src/remmina_ftp_client.c:586
 #, fuzzy
-msgid "This protocol does not support exporting."
-msgstr "ဒီပရိုတိုကောက တင်ပို့မှုကို မထောက်ခံပါဘူး။"
+msgid "Choose a file to upload"
+msgstr "တင်ရန် ဖိုင်တစ်ခုရွေးချယ်ပါ"
 
-#: src/remmina_main.c:1344
+#: src/remmina_ftp_client.c:593
 #, fuzzy
-msgid "Remmina Remote Desktop Client"
-msgstr "Remmina ဝေးလံတဲ့ Desktop Client"
+msgid "Upload folder"
+msgstr "ဖိုင်တွဲ"
 
-#: src/remmina_main.c:1346
+#: src/remmina_ftp_client.c:649 src/remmina_ftp_client.c:763
 #, fuzzy
-msgid "Remmina Kiosk"
-msgstr "ရမ်မီနာ Kiossk"
+msgid "Download"
+msgstr "ဒေါင်းလုဒ်"
 
-#: src/remmina_key_chooser.h:38
+#: src/remmina_ftp_client.c:656 src/remmina_ftp_client.c:770
 #, fuzzy
-msgid "Shift+"
-msgstr "အပြောင်းအလဲ +"
+msgid "Upload"
+msgstr "တင်ပါ"
 
-#: src/remmina_key_chooser.h:39
+#: src/remmina_ftp_client.c:663
 #, fuzzy
-msgid "Ctrl+"
-msgstr "Ctrl + Ctrl +"
+msgid "_Delete"
+msgstr "_Delete"
 
-#: src/remmina_key_chooser.h:40
+#: src/remmina_ftp_client.c:748
 #, fuzzy
-msgid "Alt+"
-msgstr "နှုတ်ခမ်း +"
+msgid "Home"
+msgstr "ပင်မစာမျက်နှာ"
 
-#: src/remmina_key_chooser.h:41
+#: src/remmina_ftp_client.c:749
 #, fuzzy
-msgid "Super+"
-msgstr "Super + Super +"
+msgid "Go to home folder"
+msgstr "အိမ်ဖိုင်တွဲကို သွားပါ"
 
-#: src/remmina_key_chooser.h:42
+#: src/remmina_ftp_client.c:753
 #, fuzzy
-msgid "Hyper+"
-msgstr "ဟိုက်ပါ +"
+msgid "Up"
+msgstr "အထက်"
 
-#: src/remmina_key_chooser.h:43
+#: src/remmina_ftp_client.c:754
 #, fuzzy
-msgid "Meta+"
-msgstr "မီတာ + မီတာ +"
+msgid "Go to parent folder"
+msgstr "မိဘဖိုင်တွဲကို သွားပါ"
 
-#: src/remmina_key_chooser.h:44
+#: src/remmina_ftp_client.c:758 plugins/rdp/rdp_plugin.c:2740
+#: plugins/vnc/vnc_plugin.c:2019
 #, fuzzy
-msgid "<None>"
-msgstr "<None>"
+msgid "Refresh"
+msgstr "ပြန်စမည်"
 
-#. TRANSLATORS: The placeholder %s is a directory path
-#: src/remmina_sftp_client.c:173
+#: src/remmina_ftp_client.c:759
+#, fuzzy
+msgid "Refresh current folder"
+msgstr "လတ်လတ်ဆတ်ဆတ် ဖိုင်တွဲကို လန်းဆန်းစေပါ"
+
+#: src/remmina_ftp_client.c:764
+#, fuzzy
+msgid "Download from server"
+msgstr "ဆာဗာကနေ ဒေါင်းလုတ်ဆွဲပါ"
+
+#: src/remmina_ftp_client.c:771
+#, fuzzy
+msgid "Upload to server"
+msgstr "ဆာဗာသို့ ကူးယူပါ"
+
+#: src/remmina_ftp_client.c:775 data/ui/remmina_main.glade:197
+#, fuzzy
+msgid "Delete"
+msgstr "ပယ်ဖျက်"
+
+#: src/remmina_ftp_client.c:776
+#, fuzzy
+msgid "Delete files on server"
+msgstr "ဆာဗာပေါ်က ဖိုင်တွေကို ဖျက်ပါ"
+
+#: src/remmina_ftp_client.c:905 src/remmina_ftp_client.c:974
+#, fuzzy
+msgid "Filename"
+msgstr "ဖိုင်လန်နာမ်"
+
+#: src/remmina_ftp_client.c:918 src/remmina_ftp_client.c:1003
+#, fuzzy
+msgid "Size"
+msgstr "Size"
+
+#: src/remmina_ftp_client.c:926
+#, fuzzy
+msgid "User"
+msgstr "User"
+
+#: src/remmina_ftp_client.c:932 src/remmina_file_editor.c:1515
+#: data/ui/remmina_mpc.glade:115 data/ui/remmina_main.glade:464
+#, fuzzy
+msgid "Group"
+msgstr "Group"
+
+#: src/remmina_ftp_client.c:938
+#, fuzzy
+msgid "Permission"
+msgstr "ခွင့်ပြုချက်များ"
+
+#: src/remmina_ftp_client.c:990 plugins/rdp/rdp_plugin.c:2548
+#, fuzzy
+msgid "Remote"
+msgstr "အဝေး"
+
+#: src/remmina_ftp_client.c:997 plugins/rdp/rdp_plugin.c:2547
+#, fuzzy
+msgid "Local"
+msgstr "Local"
+
+#: src/remmina_ftp_client.c:1011
+#, fuzzy
+msgid "Progress"
+msgstr "တိုးတက်မှု"
+
+#: src/remmina_protocol_widget.c:290 src/remmina_ssh_plugin.c:829
+#: src/remmina_ssh_plugin.c:1454
+#, fuzzy
+msgid "Open SFTP transfer…"
+msgstr "အက်စ်အက်ဖ်တီပီ လွှဲပြောင်းခြင်း…"
+
+#: src/remmina_protocol_widget.c:319
+#, fuzzy
+msgid "Executing external commands…"
+msgstr "ပြင်ပအမိန့်များကို ဆောင်ရွက်ခြင်း...…"
+
+#. TRANSLATORS: “%s” is a placeholder for the connection profile name
+#: src/remmina_protocol_widget.c:327
 #, fuzzy, c-format
-msgid "Could not create the folder “%s”."
-msgstr "ဖိုင်တွဲကို \"[၂၉]\" ကို မဖန်တီးနိုင်ဘူး။"
+msgid "Connecting to “%s”…"
+msgstr "\"[%s\" ကို ဆက်သွယ်ခြင်း…"
 
-#. TRANSLATORS: The placeholder %s is a file path
-#: src/remmina_sftp_client.c:181 src/remmina_sftp_client.c:202
+#. TRANSLATORS: “%s” is a placeholder for an hostname or an IP address.
+#: src/remmina_protocol_widget.c:911 src/remmina_protocol_widget.c:1096
 #, fuzzy, c-format
-msgid "Could not create the file “%s”."
-msgstr "\"[%s] ဖိုင်ကို မဖန်တီးနိုင်ဘူး။"
+msgid "Connecting to “%s” via SSH…"
+msgstr "SSH မှတစ်ဆင့် \"[%s\" သို့ ဆက်သွယ်ခြင်း…"
 
-#. TRANSLATORS: The placeholders %s are a file path, and an error message.
-#: src/remmina_sftp_client.c:220
+#. TRANSLATORS: “%i” is a placeholder for a TCP port number.
+#: src/remmina_protocol_widget.c:1160
 #, fuzzy, c-format
-msgid "Could not open the file “%s” on the server. %s"
-msgstr "\"[%s ဖိုင်ကို ဆာဗာမှာ မဖွင့်နိုင်ဘူး။ %s"
+msgid "Awaiting incoming SSH connection on port %i…"
+msgstr "ဆိပ်ကမ်းတွင် ဝင်လာမည့် SSH ဆက်သွယ်မှုကို စောင့်မျှော်နေ [၄၁]"
 
-#: src/remmina_sftp_client.c:242
+#: src/remmina_protocol_widget.c:1213
 #, fuzzy, c-format
-msgid "Could not save the file “%s”."
-msgstr "\"[%s] ဖိုင်ကို မသိမ်းဆည်းနိုင်ဘူး။"
+msgid "The “%s” command is not available on the SSH server."
+msgstr "\"[၅]\" ညွှန်ကြားချက်ကို SSH ဆာဗာမှာ မရရှိနိုင်ပါဘူး။"
 
-#: src/remmina_sftp_client.c:281 src/remmina_sftp_client.c:698
-#: src/remmina_sftp_client.c:761
+#: src/remmina_protocol_widget.c:1218
 #, fuzzy, c-format
-msgid "Could not open the folder “%s”. %s"
-msgstr "ဖိုင်တွဲ \"[[၂၇]\" ကို မဖွင့်နိုင်ဘူး။ %s"
+msgid "Could not run the “%s” command on the SSH server (status = %i)."
+msgstr "SSH ဆာဗာ (အခြေအနေ = [၅၉] အမိန့်ကို မလုပ်ဆောင်နိုင်ဘူး။"
 
-#: src/remmina_sftp_client.c:385
+#. TRANSLATORS: %s is a placeholder for an error message
+#: src/remmina_protocol_widget.c:1226
 #, fuzzy, c-format
-msgid "Could not create the folder “%s” on the server. %s"
-msgstr "ဆာဗာမှာ ဖိုင်တွဲ \"%s ကို မဖန်တီးနိုင်ဘူး။ %s"
+msgid "Could not run command. %s"
+msgstr "ညွှန်ကြားချက်ကို မလုပ်ဆောင်နိုင်ဘူး။ %s"
 
-#: src/remmina_sftp_client.c:413 src/remmina_sftp_client.c:435
+#. TRANSLATORS: “%s” is a placeholder for a hostname or IP address.
+#: src/remmina_protocol_widget.c:1296
 #, fuzzy, c-format
-msgid "Could not create the file “%s” on the server. %s"
-msgstr "ဆာဗာပေါ်မှာ \"%s ဖိုင်ကို မဖန်တီးနိုင်ဘူး။ %s"
+msgid "Connecting to %s via SSH…"
+msgstr "SSH မှတစ်ဆင့် [၁၄] သို့ ဆက်သွယ်ခြင်း…"
 
-#: src/remmina_sftp_client.c:456
+#: src/remmina_protocol_widget.c:1690
+#, fuzzy
+msgid "Type in SSH username and password."
+msgstr "SSH အသုံးပြုသူအမည်နဲ့ စကားဝှက်ထဲက အမျိုးအစား။"
+
+#: src/remmina_protocol_widget.c:1745 src/remmina_protocol_widget.c:1777
+#, fuzzy
+msgid "Fingerprint automatically accepted"
+msgstr "လက်ဗွေရာကို အလိုအလျောက်လက်ခံ"
+
+#. TRANSLATORS: The user is asked to verify a new SSL certificate.
+#: src/remmina_protocol_widget.c:1753
+#, fuzzy
+msgid "Certificate details:"
+msgstr "Certificate details"
+
+#. TRANSLATORS: An SSL certificate subject is usually the remote server the user connect to.
+#: src/remmina_protocol_widget.c:1755 src/remmina_protocol_widget.c:1787
+#, fuzzy
+msgid "Subject:"
+msgstr "အကြောင်းအရာ -"
+
+#. TRANSLATORS: The name or email of the entity that have issued the SSL certificate
+#: src/remmina_protocol_widget.c:1757 src/remmina_protocol_widget.c:1789
+#, fuzzy
+msgid "Issuer:"
+msgstr "ထုတ်ဝေသူ -"
+
+#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
+#: src/remmina_protocol_widget.c:1759
+#, fuzzy
+msgid "Fingerprint:"
+msgstr "Fingerprint"
+
+#. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
+#: src/remmina_protocol_widget.c:1761
+#, fuzzy
+msgid "Accept certificate?"
+msgstr "လက်မှတ်ကို လက်ခံပါသလား။"
+
+#. TRANSLATORS: The user is asked to verify a new SSL certificate.
+#: src/remmina_protocol_widget.c:1785
+#, fuzzy
+msgid "The certificate changed! Details:"
+msgstr "အသိအမှတ်ပြုလက်မှတ်ပြောင်းလဲသွားလေသည်! အသေးစိတ်အချက်အလက်များ -"
+
+#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
+#: src/remmina_protocol_widget.c:1791
+#, fuzzy
+msgid "Old fingerprint:"
+msgstr "လက်ချောင်းအဟောင်း -"
+
+#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
+#: src/remmina_protocol_widget.c:1793
+#, fuzzy
+msgid "New fingerprint:"
+msgstr "လက်ဗွေအသစ် -"
+
+#. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
+#: src/remmina_protocol_widget.c:1795
+#, fuzzy
+msgid "Accept changed certificate?"
+msgstr "အပြောင်းအလဲလက်မှတ်ကို လက်ခံပါသလား။"
+
+#. TRANSLATORS: “%i” is a placeholder for a port number. “%s”  is a placeholder for a protocol name (VNC).
+#: src/remmina_protocol_widget.c:1938
 #, fuzzy, c-format
-msgid "Could not open the file “%s”."
-msgstr "\"[%s] ဖိုင်ကို မဖွင့်နိုင်ဘူး။"
+msgid "Listening on port %i for an incoming %s connection…"
+msgstr "[ ၃၇] ဆက် သွယ် မှု အတွက် ဆိပ်ကမ်း [၁၈] ကို နားထောင် ခြင်း…"
 
-#: src/remmina_sftp_client.c:476
+#: src/remmina_protocol_widget.c:1963
+#, fuzzy
+msgid "Could not authenticate, attempting reconnection…"
+msgstr "ပြန်လည်ဆက်သွယ်ရန်ကြိုးစားခြင်း မရှိနိုင်ပါ...…"
+
+#: src/remmina_protocol_widget.c:2025 src/remmina_file_editor.c:346
+#: src/remmina_file_editor.c:917 data/ui/remmina_main.glade:478
+msgid "Server"
+msgstr "ဆာဗာ"
+
+#. TRANSLATORS: “%s” is a placeholder for a protocol name, like “RDP”.
+#: src/remmina_protocol_widget.c:2043
 #, fuzzy, c-format
-msgid "Could not write to the file “%s” on the server. %s"
-msgstr "ဆာဗာပေါ်က \"%s ဖိုင်ကို စာရေးလို့မရဘူး။ %s"
-
-#: src/remmina_sftp_client.c:716
-#, fuzzy, c-format
-msgid "Could not read from the folder. %s"
-msgstr "ဖိုင်တွဲကနေ မဖတ်နိုင်ဘူး။ %s"
-
-#: src/remmina_sftp_client.c:823
-#, fuzzy
-msgid "Are you sure you want to cancel the file transfer in progress?"
-msgstr "ဖိုင် လွှဲပြောင်းမှုကို ဖျက်သိမ်းချင်တယ်ဆိုတာ သေချာပါသလား။"
-
-#: src/remmina_sftp_client.c:857
-#, fuzzy, c-format
-msgid "Could not delete “%s”. %s"
-msgstr "\"[၁၈]\" ကို မဖျက်နိုင်ဘူး။ %s"
-
-#: src/remmina_sftp_client.c:942
-#, fuzzy
-msgid "The file exists already"
-msgstr "ဖိုင်တည်ရှိပြီးသား"
-
-#: src/remmina_sftp_client.c:945
-#, fuzzy
-msgid "Resume"
-msgstr "ဆက်ကူးမည်"
-
-#: src/remmina_sftp_client.c:946
-#, fuzzy
-msgid "Overwrite"
-msgstr "ထပ္ေရးမည္"
-
-#: src/remmina_sftp_client.c:947 src/remmina_message_panel.c:457
-#: src/remmina_message_panel.c:629 src/remmina_file_editor.c:151
-#: src/remmina_file_editor.c:1365 plugins/spice/spice_plugin_file_transfer.c:84
-#: data/ui/remmina_spinner.glade:8 data/ui/remmina_spinner.glade:9
-#: data/ui/remmina_key_chooser.glade:8 data/ui/remmina_key_chooser.glade:9
-#, fuzzy
-msgid "_Cancel"
-msgstr "_Cancel"
-
-#: src/remmina_sftp_client.c:964
-#, fuzzy
-msgid "The following file already exists in the target folder:"
-msgstr "အောက်ပါဖိုင်သည် ပစ်မှတ်ဖိုင်တွဲတွင် ရှိနှင့်ပြီးဖြစ်သည်-"
-
-#: src/remmina_message_panel.c:163 data/ui/remmina_unlock.glade:46
-#: data/ui/remmina_mpc.glade:46
-#, fuzzy
-msgid "Cancel"
-msgstr "ပယ်ဖြတ်ခြင်း ။"
-
-#: src/remmina_message_panel.c:199 data/ui/remmina_snap_info_dialog.glade:28
-#: data/ui/remmina_news.glade:33 data/ui/remmina_preferences.glade:2640
-#: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
-#: data/ui/remmina_string_list.glade:63
-#, fuzzy
-msgid "Close"
-msgstr "ပိတ်ပါ"
-
-#: src/remmina_message_panel.c:260
-#, fuzzy
-msgid "Yes"
-msgstr "Yes"
-
-#: src/remmina_message_panel.c:267
-#, fuzzy
-msgid "No"
-msgstr "No"
-
-#: src/remmina_message_panel.c:391 plugins/rdp/rdp_plugin.c:2653
-#: data/ui/remmina_mpc.glade:172
-#, fuzzy
-msgid "Domain"
-msgstr "Domain"
-
-#: src/remmina_message_panel.c:420
-#, fuzzy
-msgid "Save password"
-msgstr "စကားဝှက်ကို သိမ်းဆည်းပါ"
-
-#: src/remmina_message_panel.c:513
-#, fuzzy
-msgid "Enter certificate authentication files"
-msgstr "အသိအမှတ်ပြုလွှာ စစ်ဆေးရေးဖိုင်များ ဝင်ရောက်ပါ"
-
-#: src/remmina_message_panel.c:525
-#, fuzzy
-msgid "CA Certificate File"
-msgstr "စီအေ လက်မှတ်ဖိုင်"
-
-#: src/remmina_message_panel.c:547
-#, fuzzy
-msgid "CA CRL File"
-msgstr "CRL ဖိုင်"
-
-#: src/remmina_message_panel.c:569
-#, fuzzy
-msgid "Client Certificate File"
-msgstr "Certicate Certicate ဖိုင်"
-
-#: src/remmina_message_panel.c:591
-#, fuzzy
-msgid "Client Certificate Key"
-msgstr "Certicate Certicate key"
-
-#: src/remmina_sftp_plugin.c:323
-#, fuzzy
-msgid "Show Hidden Files"
-msgstr "ဝှက်ထားတဲ့ဖိုင်တွေကို ပြပါ"
-
-#: src/remmina_sftp_plugin.c:325
-#, fuzzy
-msgid "Overwrite all files"
-msgstr "ဖိုင်အားလုံးကို ကျော်လွှားရေးသားပါ"
-
-#: src/remmina_sftp_plugin.c:327
-#, fuzzy
-msgid "Resume all file transfers"
-msgstr "ဖိုင် လွှဲပြောင်းမှုအားလုံးကို ပြန်လုပ်ပါ"
-
-#: src/remmina_sftp_plugin.c:359
-#, fuzzy
-msgid "SFTP - Secure File Transfer"
-msgstr "SFTP - လုံခြုံတဲ့ ဖိုင် လွှဲပြောင်း"
+msgid "Install the %s protocol plugin first."
+msgstr "%s protocol plugin ကို ပထမဆုံး သွင်းပါ။"
 
 #: src/remmina_ssh.c:236
 #, fuzzy, c-format
@@ -1653,6 +1274,140 @@ msgstr "အခွံကို မတောင်းဆိုနိုင်ဘ�
 msgid "Could not create PTY device."
 msgstr "PTY ကိရိယာကို မဖန်တီးနိုင်ဘူး။"
 
+#: src/remmina_exec.c:475
+#, fuzzy, c-format
+msgid "Plugin %s is not registered."
+msgstr "Plugin %s မှာ မှတ်ပုံတင်မထားဘူး။"
+
+#: src/remmina_main.c:662
+#, fuzzy, c-format
+msgid "Total %i item."
+msgid_plural "Total %i items."
+msgstr[0] "စုစုပေါင်း [၆] ပစ္စည်းစုပေါင်း။"
+
+#: src/remmina_main.c:853
+#, fuzzy, c-format
+msgid "Are you sure you want to delete “%s”?"
+msgstr "%s ကို ပယ်ဖျက်ဖို့ သင် သေချာသလား။"
+
+#: src/remmina_main.c:973
+#, fuzzy, c-format
+msgid ""
+"Unable to import:\n"
+"%s"
+msgstr ""
+"တင်သွင်းရန် မစွမ်းဆောင်နိုင်ပါ -\n"
+"%s"
+
+#: src/remmina_main.c:999 data/ui/remmina_main.glade:285
+#, fuzzy
+msgid "Import"
+msgstr "တင်သွင်းပါ"
+
+#: src/remmina_main.c:1022 src/remmina_file_editor.c:1373
+#, fuzzy
+msgid "_Save"
+msgstr "_Save"
+
+#: src/remmina_main.c:1028
+#, fuzzy
+msgid "This protocol does not support exporting."
+msgstr "ဒီပရိုတိုကောက တင်ပို့မှုကို မထောက်ခံပါဘူး။"
+
+#: src/remmina_main.c:1344
+#, fuzzy
+msgid "Remmina Remote Desktop Client"
+msgstr "Remmina ဝေးလံတဲ့ Desktop Client"
+
+#: src/remmina_main.c:1346
+#, fuzzy
+msgid "Remmina Kiosk"
+msgstr "ရမ်မီနာ Kiossk"
+
+#. TRANSLATORS: The placeholder %s is a directory path
+#: src/remmina_sftp_client.c:173
+#, fuzzy, c-format
+msgid "Could not create the folder “%s”."
+msgstr "ဖိုင်တွဲကို \"[၂၉]\" ကို မဖန်တီးနိုင်ဘူး။"
+
+#. TRANSLATORS: The placeholder %s is a file path
+#: src/remmina_sftp_client.c:181 src/remmina_sftp_client.c:202
+#, fuzzy, c-format
+msgid "Could not create the file “%s”."
+msgstr "\"[%s] ဖိုင်ကို မဖန်တီးနိုင်ဘူး။"
+
+#. TRANSLATORS: The placeholders %s are a file path, and an error message.
+#: src/remmina_sftp_client.c:220
+#, fuzzy, c-format
+msgid "Could not open the file “%s” on the server. %s"
+msgstr "\"[%s ဖိုင်ကို ဆာဗာမှာ မဖွင့်နိုင်ဘူး။ %s"
+
+#: src/remmina_sftp_client.c:242
+#, fuzzy, c-format
+msgid "Could not save the file “%s”."
+msgstr "\"[%s] ဖိုင်ကို မသိမ်းဆည်းနိုင်ဘူး။"
+
+#: src/remmina_sftp_client.c:281 src/remmina_sftp_client.c:698
+#: src/remmina_sftp_client.c:761
+#, fuzzy, c-format
+msgid "Could not open the folder “%s”. %s"
+msgstr "ဖိုင်တွဲ \"[[၂၇]\" ကို မဖွင့်နိုင်ဘူး။ %s"
+
+#: src/remmina_sftp_client.c:385
+#, fuzzy, c-format
+msgid "Could not create the folder “%s” on the server. %s"
+msgstr "ဆာဗာမှာ ဖိုင်တွဲ \"%s ကို မဖန်တီးနိုင်ဘူး။ %s"
+
+#: src/remmina_sftp_client.c:413 src/remmina_sftp_client.c:435
+#, fuzzy, c-format
+msgid "Could not create the file “%s” on the server. %s"
+msgstr "ဆာဗာပေါ်မှာ \"%s ဖိုင်ကို မဖန်တီးနိုင်ဘူး။ %s"
+
+#: src/remmina_sftp_client.c:456
+#, fuzzy, c-format
+msgid "Could not open the file “%s”."
+msgstr "\"[%s] ဖိုင်ကို မဖွင့်နိုင်ဘူး။"
+
+#: src/remmina_sftp_client.c:476
+#, fuzzy, c-format
+msgid "Could not write to the file “%s” on the server. %s"
+msgstr "ဆာဗာပေါ်က \"%s ဖိုင်ကို စာရေးလို့မရဘူး။ %s"
+
+#: src/remmina_sftp_client.c:716
+#, fuzzy, c-format
+msgid "Could not read from the folder. %s"
+msgstr "ဖိုင်တွဲကနေ မဖတ်နိုင်ဘူး။ %s"
+
+#: src/remmina_sftp_client.c:823
+#, fuzzy
+msgid "Are you sure you want to cancel the file transfer in progress?"
+msgstr "ဖိုင် လွှဲပြောင်းမှုကို ဖျက်သိမ်းချင်တယ်ဆိုတာ သေချာပါသလား။"
+
+#: src/remmina_sftp_client.c:857
+#, fuzzy, c-format
+msgid "Could not delete “%s”. %s"
+msgstr "\"[၁၈]\" ကို မဖျက်နိုင်ဘူး။ %s"
+
+#: src/remmina_sftp_client.c:942
+#, fuzzy
+msgid "The file exists already"
+msgstr "ဖိုင်တည်ရှိပြီးသား"
+
+#: src/remmina_sftp_client.c:945
+#, fuzzy
+msgid "Resume"
+msgstr "ဆက်ကူးမည်"
+
+#: src/remmina_sftp_client.c:946
+#, fuzzy
+msgid "Overwrite"
+msgstr "ထပ္ေရးမည္"
+
+#: src/remmina_sftp_client.c:964
+#, fuzzy
+msgid "The following file already exists in the target folder:"
+msgstr "အောက်ပါဖိုင်သည် ပစ်မှတ်ဖိုင်တွဲတွင် ရှိနှင့်ပြီးဖြစ်သည်-"
+
 #: src/remmina_file_editor.c:60
 #, fuzzy
 #| msgid ""
@@ -1829,6 +1584,11 @@ msgstr "SSH Auuentation"
 msgid "SSH private key file"
 msgstr "SSH ပုဂ္ဂလိက သော့ဖိုင်"
 
+#: src/remmina_file_editor.c:979 src/remmina_ssh_plugin.c:1477
+#, fuzzy
+msgid "SSH certificate file"
+msgstr "SSH certicate ဖိုင်"
+
 #: src/remmina_file_editor.c:1037
 #, fuzzy
 msgid "Basic"
@@ -1888,619 +1648,406 @@ msgstr "'[၅]ကို စုစည်းထားတဲ့ ဒီလီမီ�
 msgid "Could not find the file “%s”."
 msgstr "\"[%s] ဖိုင်ကို ရှာမတွေ့နိုင်ဘူး။"
 
-#: src/remmina_chat_window.c:178
-#, c-format
-msgid "Chat with %s"
-msgstr "%s နှင့်Chat မည်"
-
-#: src/remmina_chat_window.c:230
-msgid "_Send"
-msgstr "_S ပို့မည်"
-
-#: src/remmina_chat_window.c:240
-msgid "_Clear"
-msgstr "_C ရှင်းလင်းမည်"
-
-#: plugins/gvnc/gvnc_plugin_config.h:40
+#: src/remmina_icon.c:128
 #, fuzzy
-msgid "Remmina VNC plugin for GNOME and KVM"
-msgstr "GNOME နဲ့ KVM အတွက် Remmina VNC plugy"
+msgid "Open Main Window"
+msgstr "အဓိက ဝင်းဒိုးကိုဖွင့်ပါ"
 
-#: plugins/gvnc/gvnc_plugin.c:477
+#: src/remmina_icon.c:133 data/ui/remmina_main.glade:254
+#, fuzzy
+msgid "_Preferences"
+msgstr "အပြင်အဆင်"
+
+#: src/remmina_icon.c:138
+#, fuzzy
+msgid "_About"
+msgstr "_About"
+
+#: src/remmina_icon.c:148
+#, fuzzy
+msgid "Enable Service Discovery"
+msgstr "ဝန်ဆောင်မှု ရှာဖွေတွေ့ရှိမှု"
+
+#: src/remmina_icon.c:160 data/ui/remmina_main.glade:404
+#, fuzzy
+msgid "_Quit"
+msgstr "_Quit"
+
+#. TRANSLATORS: Applet name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
+#. TRANSLATORS: Applet Name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
+#: src/remmina_icon.c:284 src/remmina_icon.c:416
+#, fuzzy
+msgid "Remmina Applet"
+msgstr "Remmina Applele"
+
+#. TRANSLATORS: Applet comment/description as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
+#: src/remmina_icon.c:286 src/remmina_icon.c:418
+#, fuzzy
+msgid "Connect to remote desktops through the applet menu"
+msgstr "ပန်းသီးစာရင်းမှတစ်ဆင့် ဝေးလံတဲ့ ဒက်စ်တော့ပ်တွေနဲ့ ချိတ်ဆက်ပါ"
+
+#. TRANSLATORS: %s is a placeholder for an error message
+#: src/remmina_ssh_plugin.c:539
 #, fuzzy, c-format
-msgid "Unsupported authentication type %u"
-msgstr "အတည်မပြုရသေးသော စစ်ဆေးမှုအမျိုးအစား [၃၂]"
+msgid "Error: %s"
+msgstr "အမှား - [၇]"
 
-#: plugins/gvnc/gvnc_plugin.c:489
-#, fuzzy, c-format
-msgid "Authentication failure: %s"
-msgstr "စစ်ဆေးရေးပျက်ကွက်မှု - [၂၄]"
-
-#: plugins/gvnc/gvnc_plugin.c:539 plugins/vnc/vnc_plugin.c:825
+#: src/remmina_ssh_plugin.c:556
 #, fuzzy
-msgid "Enter VNC authentication credentials"
-msgstr "VNC စစ်ဆေးရေး အသိအမှတ်ပြုချက်များကို ဝင်ကြည့်ပါ"
+msgid "Terminal content saved in"
+msgstr "Terminal အကြောင်းအရာများကို သိမ်းဆည်းထားခဲ့"
 
-#: plugins/gvnc/gvnc_plugin.c:820
+#: src/remmina_ssh_plugin.c:822
 #, fuzzy
-msgid "Use server settings"
-msgstr "ဆာဗာနေရာများကို အသုံးပြုပါ"
+msgid "Select All (host+A)"
+msgstr "အားလုံးရွေးချယ် (အိမ်ရှင်+အေ)"
 
-#: plugins/gvnc/gvnc_plugin.c:821
+#: src/remmina_ssh_plugin.c:823
 #, fuzzy
-msgid "True colour (24 bits)"
-msgstr "စစ်မှန်တဲ့အရောင် (၂၄ လုံး)"
+msgid "Copy (host+C)"
+msgstr "မိတ္တူကူး (အိမ်ရှင်+စီ)"
 
-#: plugins/gvnc/gvnc_plugin.c:822
+#: src/remmina_ssh_plugin.c:824
 #, fuzzy
-msgid "High colour (16 bits)"
-msgstr "အရောင်မြင့် (၁၆ လုံး)"
+msgid "Paste (host+V)"
+msgstr "ပါစတီ (အိမ်ရှင်+V)"
 
-#: plugins/gvnc/gvnc_plugin.c:823
+#: src/remmina_ssh_plugin.c:825
 #, fuzzy
-msgid "Low colour (8 bits)"
-msgstr "အရောင်နိမ့် (၈ ဘစ်)"
+msgid "Save session to file"
+msgstr "ဖိုင်အတွက် သိမ်းဆည်းထားပါ"
 
-#: plugins/gvnc/gvnc_plugin.c:824
+#: src/remmina_ssh_plugin.c:826
 #, fuzzy
-msgid "Ultra low colour (3 bits)"
-msgstr "Ultra အရောင် နိမ့် (၃ အပိုင်း)"
+msgid "Increase font size (host+Page Up)"
+msgstr "ဖောင့်အရွယ်အစားကို တိုးမြှင့် (အိမ်ရှင်+ပေ့ပ်)"
 
-#: plugins/gvnc/gvnc_plugin.c:839
+#: src/remmina_ssh_plugin.c:827
 #, fuzzy
-#| msgid "Password"
-msgid "VNC password"
-msgstr "VNC စကားဝှက်"
+msgid "Decrease font size (host+Page Down)"
+msgstr "ဖောင့်အရွယ် (အိမ်ရှင်+စာမျက်နှာအောက်)"
 
-#: plugins/gvnc/gvnc_plugin.c:840 plugins/vnc/vnc_plugin.c:1962
-#: plugins/vnc/vnc_plugin.c:1982 plugins/rdp/rdp_plugin.c:2661
+#: src/remmina_ssh_plugin.c:828
 #, fuzzy
-msgid "Colour depth"
-msgstr "အရောင် ညစ်ညမ်းမှု"
+msgid "Find text (host+G)"
+msgstr "စာသားကိုရှာ (အိမ်ရှင်+G)"
 
-#: plugins/gvnc/gvnc_plugin.c:841
+#: src/remmina_ssh_plugin.c:1448 data/ui/remmina_main.glade:177
 #, fuzzy
-msgid "Use JPEG Compression"
-msgstr "JPEG ဖိသိပ်မှုကို အသုံးပြုပါ"
+msgid "Copy"
+msgstr "ကူးရန်"
 
-#: plugins/gvnc/gvnc_plugin.c:841
+#: src/remmina_ssh_plugin.c:1448
 #, fuzzy
-msgid "This might not work on all VNC servers"
-msgstr "ဒါက VNC ဆာဗာအားလုံးမှာ အလုပ်မလုပ်နိုင်ဘူး"
+msgid "_Copy"
+msgstr "_Copy"
 
-#: plugins/gvnc/gvnc_plugin.c:842
+#: src/remmina_ssh_plugin.c:1449
 #, fuzzy
-msgid "Enable GTK-VNC debug"
-msgstr "ဂျီတီကေ-ဗွီအန်စီ ဒေဝါဘူတာကို ဖန်တီးပါ"
+msgid "Paste"
+msgstr "ပွားယူပါ"
 
-#: plugins/gvnc/gvnc_plugin.c:857 plugins/gvnc/gvnc_plugin.c:871
-#: plugins/spice/spice_plugin.c:693 plugins/spice/spice_plugin.c:706
+#: src/remmina_ssh_plugin.c:1449
 #, fuzzy
-msgid "No clipboard sync"
-msgstr "Clipbod sync မရှိဘူး"
+msgid "_Paste"
+msgstr "_Paste"
 
-#: plugins/gvnc/gvnc_plugin.c:858 plugins/www/www_plugin.c:904
-#: plugins/vnc/vnc_plugin.c:2005 plugins/spice/spice_plugin.c:694
-#: plugins/rdp/rdp_plugin.c:2718
+#: src/remmina_ssh_plugin.c:1450
 #, fuzzy
-msgid "Forget passwords after use"
-msgstr "အသုံးပြုပြီးနောက် စကားဝှက်များကို မေ့လျော့ပါ"
+msgid "Select all"
+msgstr "Select all"
 
-#: plugins/gvnc/gvnc_plugin.c:859 plugins/vnc/vnc_plugin.c:2004
+#: src/remmina_ssh_plugin.c:1450
 #, fuzzy
-msgid "Ignore remote bell messages"
-msgstr "ဝေးလံတဲ့ ခေါင်းလောင်းသတင်းအချက်အလက်တွေကို လျစ်လျူရှုပါ"
+msgid "_Select all"
+msgstr "Select all"
 
-#: plugins/gvnc/gvnc_plugin.c:860 plugins/spice/spice_plugin.c:695
+#: src/remmina_ssh_plugin.c:1451
 #, fuzzy
-msgid "Enable audio channel"
-msgstr "အသံလိုင်းကို ခွင့်ပြုပါ"
+msgid "Increase font size"
+msgstr "ဖောင့်အရွယ်အစားကို တိုးမြှင့်ပါ"
 
-#: plugins/gvnc/gvnc_plugin.c:861 plugins/gvnc/gvnc_plugin.c:870
-#: plugins/vnc/vnc_plugin.c:2000 plugins/vnc/vnc_plugin.c:2017
-#: plugins/spice/spice_plugin.c:697 plugins/spice/spice_plugin.c:705
+#: src/remmina_ssh_plugin.c:1451
 #, fuzzy
-msgid "View only"
-msgstr "မြင်ကွင်းကိုသာ ရှု"
+msgid "_Increase font size"
+msgstr "_Increase ဖောင့်အရွယ်အစား"
 
-#: plugins/gvnc/gvnc_plugin.c:862
+#: src/remmina_ssh_plugin.c:1452
 #, fuzzy
-#| msgid "Per connection"
-msgid "Shared connection"
-msgstr "ဝေမျှဆက်သွယ်မှု"
+msgid "Decrease font size"
+msgstr "ဖောင့်အရွယ်အစားကို လျှော့ချပါ"
 
-#: plugins/gvnc/gvnc_plugin.c:862
+#: src/remmina_ssh_plugin.c:1452
+#, fuzzy
+msgid "_Decrease font size"
+msgstr "_Decrease ဖောင့်အရွယ်အစား"
+
+#: src/remmina_ssh_plugin.c:1453
+#, fuzzy
+msgid "Find text"
+msgstr "စာသားကို ရှာဖွေပါ"
+
+#: src/remmina_ssh_plugin.c:1453
+#, fuzzy
+msgid "_Find text"
+msgstr "_Find စာသား"
+
+#: src/remmina_ssh_plugin.c:1474 plugins/spice/spice_plugin.c:666
+#: plugins/vnc/vnc_plugin.c:1961 plugins/vnc/vnc_plugin.c:1981
+#, fuzzy
+msgid "User password"
+msgstr "အသုံးပြုသူ စကားဝှက်"
+
+#: src/remmina_ssh_plugin.c:1480 plugins/rdp/rdp_plugin.c:2693
+#, fuzzy
+msgid "Start-up program"
+msgstr "စတင်ပရိုဂရမ်"
+
+#: src/remmina_ssh_plugin.c:1485
 #, fuzzy
 msgid ""
-"If the server should try to share the desktop by leaving other clients "
-"connected"
-msgstr "အကယ်၍ ဆာဗာက တခြားဖောက်သည်တွေကို ချိတ်ဆက်ထားပြီး Desktop ကို ဝေမျှဖို့ ကြိုးစားသင့်တယ်ဆိုရင်"
-
-#: plugins/gvnc/gvnc_plugin.c:872
-#, fuzzy
-msgid "Send Ctrl+Alt+_Del"
-msgstr "Ctrl+Alt++++ _Del"
-
-#: plugins/gvnc/gvnc_plugin.c:873
-#, fuzzy
-msgid "Send Ctrl+Alt+_Backspace"
-msgstr "Ctrl+Alt+++ _Backspace"
-
-#: plugins/gvnc/gvnc_plugin.c:874
-#, fuzzy
-msgid "Send Ctrl+Alt+_F1"
-msgstr "Ctrl+Alt+++ _F1"
-
-#: plugins/gvnc/gvnc_plugin.c:875
-#, fuzzy
-msgid "Send Ctrl+Alt+_F2"
-msgstr "Ctrl+Alt+Alt++ _F2"
-
-#: plugins/gvnc/gvnc_plugin.c:876
-#, fuzzy
-msgid "Send Ctrl+Alt+_F3"
-msgstr "Ctrl+Alt+++ _F3"
-
-#: plugins/gvnc/gvnc_plugin.c:877
-#, fuzzy
-msgid "Send Ctrl+Alt+_F4"
-msgstr "Ctrl+Alt+++ _F4"
-
-#: plugins/gvnc/gvnc_plugin.c:878
-#, fuzzy
-msgid "Send Ctrl+Alt+_F5"
-msgstr "Ctrl+Alt+++ _F5"
-
-#: plugins/gvnc/gvnc_plugin.c:879
-#, fuzzy
-msgid "Send Ctrl+Alt+_F6"
-msgstr "Ctrl+Alt+++ _F6"
-
-#: plugins/gvnc/gvnc_plugin.c:880
-#, fuzzy
-msgid "Send Ctrl+Alt+_F7"
-msgstr "Ctrl+Alt+++ _F7"
-
-#: plugins/gvnc/gvnc_plugin.c:881
-#, fuzzy
-msgid "Send Ctrl+Alt+_F8"
-msgstr "Ctrl+Alt++++ _F8"
-
-#: plugins/gvnc/gvnc_plugin.c:882
-#, fuzzy
-msgid "Send Ctrl+Alt+_F9"
-msgstr "Ctrl+Alt+Alt++ _F9"
-
-#: plugins/gvnc/gvnc_plugin.c:883
-#, fuzzy
-msgid "Send Ctrl+Alt+_F10"
-msgstr "Ctrl+Alt+++ _F10"
-
-#: plugins/gvnc/gvnc_plugin.c:884
-#, fuzzy
-msgid "Send Ctrl+Alt+_F11"
-msgstr "Ctrl+Alt+++ _F11"
-
-#: plugins/gvnc/gvnc_plugin.c:885
-#, fuzzy
-msgid "Send Ctrl+Alt+_F12"
-msgstr "Ctrl+Alt+++ _F12"
-
-#: plugins/gvnc/gvnc_plugin.c:887
-#, fuzzy
-msgid "Reboot remote host"
-msgstr "ဝေးလံတဲ့ အိမ်ရှင်"
-
-#: plugins/gvnc/gvnc_plugin.c:888
-#, fuzzy
-msgid "Reset remote host (hard reboot)"
-msgstr "ဝေးလံတဲ့ အိမ်ရှင် (ခက်ခဲတဲ့ ပြန်လည်ပြုပြင်မှု)"
-
-#: plugins/gvnc/gvnc_plugin.c:889
-#, fuzzy
-msgid "Shutdown remote host"
-msgstr "ဝေးလံတဲ့ အိမ်ရှင်ကို ပိတ်လိုက်"
-
-#: plugins/exec/exec_plugin_config.h:41
-#, fuzzy
-msgid "Execute a command"
-msgstr "အမိန့်ကို အကောင်အထည်ဖော်ပါ"
-
-#: plugins/exec/exec_plugin.c:160
-#, fuzzy
-msgid "You did not set any command to be executed"
-msgstr "ကွပ်မျက်ရန် မည်သည့်အမိန့်ကိုမျှ မချမှတ်ခဲ့ပါ"
-
-#: plugins/exec/exec_plugin.c:206
-#, fuzzy
-msgid ""
-"Warning: Running a command synchronously may cause Remmina not to respond.\n"
-"Do you really want to continue?"
+"The filename can use the following placeholders:\n"
+"\n"
+"  • %h is substituted with the server name\n"
+"  • %t is substituted with the SSH server name\n"
+"  • %u is substituted with the username\n"
+"  • %U is substituted with the SSH username\n"
+"  • %p is substituted with Remmina profile name\n"
+"  • %g is substituted with Remmina profile group name\n"
+"  • %d is substituted with local date and time in ISO 8601 format\n"
 msgstr ""
-"သတိပေးချက်– အမိန့်ကို တစ်ပြိုင်တည်းပြေးခြင်းက ရမ်မီနာကို မတုံ့ပြန်စေနိုင်ပါ။\n"
-"သင် အမှန်တကယ် ဆက်လက်လုပ်ဆောင်လိုပါသလော။"
+"ဖိုင်အမည်သည် အောက်ပါ နေရာပိုင်ရှင်များကို အသုံးပြုနိုင်သည်-\n"
+"\n"
+"• %h ကို ဆာဗာအမည်ဖြင့် အစားထိုးပါ\n"
+"  • %t ကို SSH ဆာဗာအမည်ဖြင့် အစားထိုးပါ\n"
+"  • %u ကို သုံးစွဲသူအမည်ဖြင့် အစားထိုး\n"
+"  • %U ကို SSH အသုံးပြုသူအမည်ဖြင့် အစားထိုးပါ\n"
+"  • %p ကို Remmina profile အမည်ဖြင့် အစားထိုးပါ\n"
+"  • %g ကို Remmina Profile အုပ်စုအမည်ဖြင့် အစားထိုးပါ\n"
+"  • %d ကို ဒေသတွင်း ရက်စွဲနှင့် အချိန်ကို ISO 8601 ပုံစံဖြင့် အစားထိုး\n"
 
-#: plugins/exec/exec_plugin.c:266
+#: src/remmina_ssh_plugin.c:1507
 #, fuzzy
-msgid "Command"
-msgstr "ညွှန်ကြားချက်"
+msgid "Terminal colour scheme"
+msgstr "Terminal အရောင် စီမံကိန်း"
 
-#: plugins/exec/exec_plugin.c:267
+#: src/remmina_ssh_plugin.c:1508
 #, fuzzy
-msgid "Asynchronous execution"
-msgstr "အက်စိန်ခရိုဏ်းချုပ် ကွပ်မျက်ခြင်း"
+msgid "Character set"
+msgstr "ဇာတ်ကောင်အစု"
 
-#: plugins/www/www_plugin.c:98
+#: src/remmina_ssh_plugin.c:1510
 #, fuzzy
-msgid "File downloaded"
-msgstr "ဖိုင်ကူးယူထားတဲ့ ဖိုင်"
+msgid "KEX (Key Exchange) algorithms"
+msgstr "KEX (Key Exchange) အယ်ဂိုရီသမ်များ"
 
-#: plugins/www/www_plugin.c:574
+#: src/remmina_ssh_plugin.c:1511
 #, fuzzy
-msgid "Enter WWW authentication credentials"
-msgstr "ဒဗလျူဒဗလျူ စစ်ဆေးရေး အသိအမှတ်ပြုချက်များကို ဝင်ရောက်ပါ"
+msgid "Symmetric cipher client to server"
+msgstr "symmmtric cipher ဖောက်သည် ဆာဗာ"
 
-#: plugins/www/www_plugin.c:878
+#: src/remmina_ssh_plugin.c:1512
 #, fuzzy
-msgid "URL"
-msgstr "ယူအာအယ်"
+msgid "Preferred server host key types"
+msgstr "ကြိုက်နှစ်သက်သော ဆာဗာ အိမ်ရှင် အဓိကအမျိုးအစားများ"
 
-#: plugins/www/www_plugin.c:878
+#: src/remmina_ssh_plugin.c:1513
 #, fuzzy
-msgid "http://address or https://address"
-msgstr "http://address ဒါမှမဟုတ် https://address"
+msgid "Folder for SSH session log"
+msgstr "SSH SSH ssion မှတ်စုအတွက် ဖိုင်တွဲ"
 
-#: plugins/www/www_plugin.c:895
+#: src/remmina_ssh_plugin.c:1514
 #, fuzzy
-msgid "User agent"
-msgstr "အသုံးပြုသူ ကိုယ်စားလှယ်"
+msgid "Filename for SSH session log"
+msgstr "SSH SSH ssion မှတ်စုအတွက် Fililename"
 
-#: plugins/www/www_plugin.c:896
+#: src/remmina_ssh_plugin.c:1515
 #, fuzzy
-msgid "Proxy URL"
-msgstr "Proxy URL"
+msgid "Log SSH session when exiting Remmina"
+msgstr "Remmina ကနေထွက်ချိန်မှာ Log SSH အစီအစဉ်"
 
-#: plugins/www/www_plugin.c:896
+#: src/remmina_ssh_plugin.c:1516
 #, fuzzy
-msgid "E.g. https://example.org, socks://mysocks:1080"
-msgstr "https://example.org socks://mysocks:1080"
+msgid "Log SSH session asynchronously"
+msgstr "သစ်အက်စ်အက်စ်အိပ်ခ်ျ အစီအစဉ်"
 
-#: plugins/www/www_plugin.c:897
+#: src/remmina_ssh_plugin.c:1516
 #, fuzzy
-msgid "Turn on Java support"
-msgstr "Java ထောက်ပံ့မှု"
+msgid "Saving the session asynchronously may have a notable performance impact"
+msgstr "အစည်းအဝေးကို ထိန်းသိမ်းခြင်းဟာ ထူးခြားတဲ့ စွမ်းဆောင်ရည် အကျိုးသက်ရောက်မှု ရှိနိုင်တယ်"
 
-#: plugins/www/www_plugin.c:898
+#: src/remmina_ssh_plugin.c:1517
 #, fuzzy
-msgid "Turn on smooth scrolling"
-msgstr "ချောမွေ့တဲ့ လိပ်စာကို ဖွင့်ပါ"
+msgid "Audible terminal bell"
+msgstr "ကြားနိုင်သော terminal ခေါင်းလောင်း"
 
-#: plugins/www/www_plugin.c:899
+#: src/remmina_ssh_plugin.c:1518
 #, fuzzy
-msgid "Turn on spatial navigation"
-msgstr "အာကာသလမ်းကြောင်းကို ဖွင့်ပါ"
+msgid "SSH compression"
+msgstr "SSH ဖိသိပ်ခြင်း"
 
-#: plugins/www/www_plugin.c:900
+#: src/remmina_ssh_plugin.c:1519
 #, fuzzy
-msgid "Turn on plugin support"
-msgstr "plugin ထောက်ပံ့ပေးပါ"
+msgid "Don't remember passwords"
+msgstr "စကားဝှက်တွေကို မမှတ်မိပါနဲ့"
 
-#: plugins/www/www_plugin.c:901
+#: src/remmina_ssh_plugin.c:1520
 #, fuzzy
-msgid "Turn on WebGL support"
-msgstr "WebGL ထောက်ပံ့မှု"
+msgid "Strict host key checking"
+msgstr "တင်းကျပ်တဲ့ အိမ်ရှင် အဓိကစစ်ဆေးမှု"
 
-#: plugins/www/www_plugin.c:902
+#: src/remmina_ssh_plugin.c:1534
 #, fuzzy
-msgid "Turn on HTML5 audio support"
-msgstr "HTML5 အသံထောက်အပံ့ကိုဖွင့်ပါ"
+msgid "SSH - Secure Shell"
+msgstr "SSH - လုံခြုံသောခွေး"
 
-#: plugins/www/www_plugin.c:903
+#: plugins/kwallet/src/kwallet_plugin_main.c:118
 #, fuzzy
-msgid "Ignore TLS errors"
-msgstr "TLS အမှားများကို လျစ်လျူရှုခြင်း"
+msgid "Secured password storage in KWallet"
+msgstr "ကဝေါလက်မြို့တွင် လုံခြုံသော စကားဝှက်သိုလှောင်မှု"
 
-#: plugins/www/www_plugin.c:906
+#: plugins/rdp/rdp_settings.c:205
 #, fuzzy
-msgid "Turn on Web Inspector"
-msgstr "ဝက်ဘ်စစ်ဆေးရေးယာဉ်ကိုဖွင့်ပါ"
+msgid "<Auto-detect>"
+msgstr "<Auto-detect>"
 
-#: plugins/www/www_config.h:43
+#: plugins/rdp/rdp_settings.c:237
 #, fuzzy
-msgid "Remmina web-browser plugin"
-msgstr "Remmina ဝက်ဘ်-ဘရောက်ဇာ ပလက်ဂျင်း"
+msgid "<Not set>"
+msgstr "< သတ်မှတ်ထားတဲ့ >>"
 
-#: plugins/secret/src/glibsecret_plugin.c:188
+#: plugins/rdp/rdp_settings.c:268
 #, fuzzy
-msgid "Secured password storage in the GNOME keyring"
-msgstr "GNOME keying မှာ လုံခြုံတဲ့ စကားဝှက်သိုလှောင်မှု"
+msgid "<Choose a quality level to edit…>"
+msgstr "< တည်းခိုရန် အရည်အသွေးအဆင့်အဆင့်အဆင့်ကို >"
 
-#: plugins/tool_hello_world/plugin_config.h:40
-#, fuzzy
-msgid "Hello, World!"
-msgstr "မင်္ဂလာပါကမ္ဘာလောက!"
-
-#: plugins/vnc/vnc_plugin.c:772
-#, fuzzy
-msgid "Enter VNC password"
-msgstr "VNC စကားဝှက်ထဲထည့်ပါ"
-
-#: plugins/vnc/vnc_plugin.c:936
-#, fuzzy
-msgid "Unable to connect to VNC server"
-msgstr "VNC ဆာဗာနဲ့ ချိတ်ဆက်လို့မရဘူး"
-
-#: plugins/vnc/vnc_plugin.c:937
-#, fuzzy, c-format
-msgid "Couldn’t convert '%s' to host address"
-msgstr "'[%s] ကို အိမ်ရှင်လိပ်စာအဖြစ် မပြောင်းလဲနိုင်ပါ"
-
-#: plugins/vnc/vnc_plugin.c:938
-#, fuzzy, c-format
-msgid "VNC connection failed: %s"
-msgstr "VNC ဆက်သွယ်မှု ပျက်ကွက်ခဲ့သည်။ [၂၃]"
-
-#: plugins/vnc/vnc_plugin.c:939
-#, fuzzy
-msgid "Your connection has been rejected."
-msgstr "ခင်ဗျားတို့ရဲ့ ဆက်သွယ်မှုကို ငြင်းပယ်လိုက်ပြီ။"
-
-#: plugins/vnc/vnc_plugin.c:966
-#, fuzzy, c-format
-msgid "The VNC server requested an unknown authentication method. %s"
-msgstr "ဗွီအန်စီ ဆာဗာ က အမည် မ သိ စစ်ဆေး မှု နည်းလမ်း တစ် ခု ကို တောင်းဆို ခဲ့ သည် ။ %s"
-
-#: plugins/vnc/vnc_plugin.c:968
-#, fuzzy
-msgid "Please retry after turning on encryption for this profile."
-msgstr "ဒီမှတ်တမ်းအတွက် စာဝှက်ဖွင့်ပြီးတဲ့နောက် ပြန်သုံးပါ။"
-
-#: plugins/vnc/vnc_plugin.c:1922 plugins/rdp/rdp_plugin.c:2497
-#, fuzzy
-msgid "True colour (32 bpp)"
-msgstr "စစ်မှန်တဲ့အရောင် (၃၂ ဘီပီ)"
-
-#: plugins/vnc/vnc_plugin.c:1923 plugins/rdp/rdp_plugin.c:2499
-#, fuzzy
-msgid "High colour (16 bpp)"
-msgstr "အရောင်မြင့် (၁၆ ဘီပီ)"
-
-#: plugins/vnc/vnc_plugin.c:1924 plugins/rdp/rdp_plugin.c:2501
-#, fuzzy
-msgid "256 colours (8 bpp)"
-msgstr "၂၅၆ အရောင် (၈ ဘီပီ)"
-
-#: plugins/vnc/vnc_plugin.c:1931 plugins/rdp/rdp_plugin.c:2524
-#: plugins/rdp/rdp_settings.c:274
-#, fuzzy
-msgid "Good"
-msgstr "အကောင်းစား"
-
-#: plugins/vnc/vnc_plugin.c:1932 plugins/rdp/rdp_plugin.c:2525
-#: plugins/rdp/rdp_settings.c:276
-#, fuzzy
-msgid "Best (slowest)"
-msgstr "အကောင်းဆုံး (နှေးဆုံး)"
-
-#: plugins/vnc/vnc_plugin.c:1933 plugins/rdp/rdp_plugin.c:2523
-#: plugins/rdp/rdp_settings.c:272
-#, fuzzy
-msgid "Medium"
-msgstr "အလယ်အလတ်"
-
-#: plugins/vnc/vnc_plugin.c:1934 plugins/rdp/rdp_plugin.c:2522
-#: plugins/rdp/rdp_settings.c:270
+#: plugins/rdp/rdp_settings.c:270 plugins/rdp/rdp_plugin.c:2522
+#: plugins/vnc/vnc_plugin.c:1934
 #, fuzzy
 msgid "Poor (fastest)"
 msgstr "ဆင်းရဲနွမ်းပါး (အမြန်ဆုံး)"
 
-#: plugins/vnc/vnc_plugin.c:1939
+#: plugins/rdp/rdp_settings.c:272 plugins/rdp/rdp_plugin.c:2523
+#: plugins/vnc/vnc_plugin.c:1933
 #, fuzzy
-msgid ""
-"Connect to VNC using a repeater:\n"
-"  • The server field must contain the repeater ID, e.g. ID:123456789\n"
-"  • The repeater field have to be set to the repeater IP and port, like:\n"
-"    10.10.10.12:5901\n"
-"  • From the remote VNC server, you will connect to\n"
-"    the repeater, e.g. with x11vnc:\n"
-"    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
-msgstr ""
-"ထပ်တလဲလဲ သုံးပြီး VNC ကို ဆက်သွယ်ပါ\n"
-"  • ဆာဗာလယ်ကွင်းတွင် ထပ်တလဲလဲ ID, e.id:123456789 ပါဝင်ရမည်\n"
-"  • ထပ်ခါထပ်ခါ လယ်ကွင်းကို ထပ်ခါထပ်ခါ အိုင်ပီနဲ့ ဆိပ်ကမ်းကို သတ်မှတ်ပေးရမယ်\n"
-"    10.10.10.12:5901\n"
-"  • ဝေးလံတဲ့ VNC ဆာဗာကနေ ဆက်သွယ်ပါလိမ့်မယ်\n"
-"    x11vnc နဲ့ ထပ်ပြောသူ၊ အီး.ဂီ.\n"
-"    x11vnc - id:12345789+10.10.10.10.10.5500"
+msgid "Medium"
+msgstr "အလယ်အလတ်"
 
-#: plugins/vnc/vnc_plugin.c:1959
+#: plugins/rdp/rdp_settings.c:274 plugins/rdp/rdp_plugin.c:2524
+#: plugins/vnc/vnc_plugin.c:1931
 #, fuzzy
-msgid "Repeater"
-msgstr "ထပ်ခါထပ်ခါ ထပ်ခါထပ်ခါ"
+msgid "Good"
+msgstr "အကောင်းစား"
 
-#: plugins/vnc/vnc_plugin.c:1963 plugins/vnc/vnc_plugin.c:1983
-#: plugins/rdp/rdp_plugin.c:2677
+#: plugins/rdp/rdp_settings.c:276 plugins/rdp/rdp_plugin.c:2525
+#: plugins/vnc/vnc_plugin.c:1932
 #, fuzzy
-msgid "Quality"
-msgstr "အရည်အသွေး"
+msgid "Best (slowest)"
+msgstr "အကောင်းဆုံး (နှေးဆုံး)"
 
-#: plugins/vnc/vnc_plugin.c:1979
+#: plugins/rdp/rdp_settings.c:415
 #, fuzzy
-msgid "Listen on port"
-msgstr "ဆိပ်ကမ်းမှာ နားထောင်ပါ"
+msgid "Keyboard layout"
+msgstr "ကီးဘုတ်လက်ကွက် -"
 
-#: plugins/vnc/vnc_plugin.c:1999
+#: plugins/rdp/rdp_settings.c:440
 #, fuzzy
-msgid "Show remote cursor"
-msgstr "ဝေးလံတဲ့ ကျိန်စာပြပါ"
+msgid "Use client keyboard mapping"
+msgstr "ဖောက်သည် ကီးဘုတ် မြေပုံရေးဆွဲရာတွင် အသုံးပြုပါ"
 
-#: plugins/vnc/vnc_plugin.c:2001 plugins/rdp/rdp_plugin.c:2715
+#: plugins/rdp/rdp_settings.c:450
 #, fuzzy
-msgid "Turn off clipboard sync"
-msgstr "ကလစ်ဘုတ် အစုလိုက်အပြုံလိုက် ပိတ်ပါ"
+msgid "Quality settings"
+msgstr "အရည်အသွေး သတ်မှတ်ချက်များ"
 
-#: plugins/vnc/vnc_plugin.c:2002
+#: plugins/rdp/rdp_settings.c:470
 #, fuzzy
-msgid "Turn off encryption"
-msgstr "လျှို့ဝှက်ချက်ကို ပိတ်လိုက်ပါ"
+msgid "Wallpaper"
+msgstr "ဝေါလ်ပါ"
 
-#: plugins/vnc/vnc_plugin.c:2003 plugins/vnc/vnc_plugin.c:2018
+#: plugins/rdp/rdp_settings.c:477
 #, fuzzy
-msgid "Prevent local interaction on the server"
-msgstr "ဆာဗာမှာ ဒေသခံ အပြန်အလှန် အပြန်အလှန်ဆက်သွယ်မှုကို တားဆီးပါ"
+msgid "Window drag"
+msgstr "Window ဒရိုက်"
 
-#: plugins/vnc/vnc_plugin.c:2006 plugins/rdp/rdp_plugin.c:2656
-#: plugins/rdp/rdp_settings.c:598
+#: plugins/rdp/rdp_settings.c:484
+#, fuzzy
+msgid "Menu animation"
+msgstr "မီနူး သက်၀င်မှု"
+
+#: plugins/rdp/rdp_settings.c:491
+#, fuzzy
+msgid "Theme"
+msgstr "အျပင္အဆင္"
+
+#: plugins/rdp/rdp_settings.c:498
+#, fuzzy
+msgid "Cursor shadow"
+msgstr "ကျူဆာအရိပ်"
+
+#: plugins/rdp/rdp_settings.c:505
+#, fuzzy
+msgid "Cursor blinking"
+msgstr "မျက်ခတ်ခြင်း"
+
+#: plugins/rdp/rdp_settings.c:512
+#, fuzzy
+msgid "Font smoothing"
+msgstr "ဖောင့်ချောချောမောခြင်း"
+
+#: plugins/rdp/rdp_settings.c:519
+#, fuzzy
+msgid "Composition"
+msgstr "သီချင်းဆိုခြင်း"
+
+#: plugins/rdp/rdp_settings.c:529
+#, fuzzy
+msgid "Remote scale factor"
+msgstr "ဝေးလံတဲ့ စကေးအချက်"
+
+#: plugins/rdp/rdp_settings.c:542
+#, fuzzy
+msgid "Desktop scale factor %"
+msgstr "Desktop စကေး အချက်အလက် %"
+
+#: plugins/rdp/rdp_settings.c:553
+#, fuzzy
+msgid "Device scale factor %"
+msgstr "စက်ကိရိယာ စကေး အချက်အလက် %"
+
+#: plugins/rdp/rdp_settings.c:575
+#, fuzzy
+msgid "Desktop orientation"
+msgstr "Desktop ဦးတည်ချက်"
+
+#: plugins/rdp/rdp_settings.c:592
+#, fuzzy
+msgid "Input device settings"
+msgstr "ထည့်သွင်းကိရိယာ တပ်ဆင်မှုများ"
+
+#: plugins/rdp/rdp_settings.c:598 plugins/rdp/rdp_plugin.c:2656
+#: plugins/vnc/vnc_plugin.c:2006
 #, fuzzy
 msgid "Disable smooth scrolling"
 msgstr "ချောမွေ့တဲ့ လိပ်စာ"
 
-#: plugins/vnc/vnc_plugin.c:2020
+#: plugins/rdp/rdp_settings.c:608
 #, fuzzy
-msgid "Open Chat…"
-msgstr "ဖွင့်ပါ…"
+msgid "General settings"
+msgstr "General settings"
 
-#: plugins/vnc/vnc_plugin.c:2021 plugins/spice/spice_plugin.c:707
-#: plugins/rdp/rdp_plugin.c:2744
+#: plugins/rdp/rdp_settings.c:613 plugins/rdp/rdp_plugin.c:2708
 #, fuzzy
-msgid "Send Ctrl+Alt+Delete"
-msgstr "Ctrl+Alt+Dele"
+msgid "Reconnect attempts number"
+msgstr "ပြန်လည်ဆက်သွယ်ရန် ကြိုးပမ်းမှု နံပါတ်များ"
 
-#: plugins/vnc/vnc_plugin.h:41
+#: plugins/rdp/rdp_settings.c:619 plugins/rdp/rdp_plugin.c:2708
 #, fuzzy
-msgid "Remmina VNC Plugin"
-msgstr "Remmina VNC Plugingy"
-
-#: plugins/vnc/vnc_plugin.h:46
-#, fuzzy
-msgid "Remmina VNC listener Plugin"
-msgstr "Remmina VNC နားထောင်သူ ပလူဂျင်း"
-
-#: plugins/spice/spice_plugin_usb.c:51 plugins/spice/spice_plugin.c:708
-#, fuzzy
-msgid "Select USB devices for redirection"
-msgstr "ပြန်လည်လမ်းညွှန်မှုအတွက် USB ကိရိယာတွေကို ရွေးပါ"
-
-#: plugins/spice/spice_plugin_usb.c:54
-#, fuzzy
-msgid "_Close"
-msgstr "_Close"
-
-#: plugins/spice/spice_plugin_usb.c:94
-#, fuzzy
-msgid "USB redirection error"
-msgstr "ယူအက်စ်ဘီ အပြောင်းအလဲ အမှား"
-
-#: plugins/spice/spice_plugin.c:351
-#, fuzzy
-msgid "Enter SPICE password"
-msgstr "SPICE စကားဝှက်ထဲထည့်ပါ"
-
-#: plugins/spice/spice_plugin.c:386
-#, fuzzy, c-format
-msgid "Disconnected from the SPICE server “%s”."
-msgstr "SPICE ဆာဗာကနေ အဆက်အသွယ်ပြတ်သွားတဲ့ \"[[၃၆]\""
-
-#: plugins/spice/spice_plugin.c:402
-#, fuzzy
-msgid "TLS connection error."
-msgstr "TLS ဆက်သွယ်မှု အမှားပါ။"
-
-#: plugins/spice/spice_plugin.c:408
-#, fuzzy
-msgid "Connection to the SPICE server dropped."
-msgstr "SPICE ဆာဗာနဲ့ ဆက်သွယ်မှု ကျဆင်းသွားတယ်။"
-
-#: plugins/spice/spice_plugin.c:616 plugins/spice/spice_plugin.c:634
-#, fuzzy
-msgid "Default"
-msgstr "Default"
-
-#: plugins/spice/spice_plugin.c:635 plugins/rdp/rdp_plugin.c:2546
-#: data/ui/remmina_preferences.glade:677
-#, fuzzy
-msgid "Off"
-msgstr "Off"
-
-#: plugins/spice/spice_plugin.c:636
-#, fuzzy
-msgid "Auto GLZ"
-msgstr "အလိုအလျောက် GLZ"
-
-#: plugins/spice/spice_plugin.c:637
-#, fuzzy
-msgid "Auto LZ"
-msgstr "Auto LZ"
-
-#: plugins/spice/spice_plugin.c:650
-#, fuzzy
-msgid "Disable video overlay if videos are not displayed properly.\n"
-msgstr "ဗီဒီယိုများကို ကောင်းစွာတင်ပြမထားပါက မသန်မစွမ်း ဗီဒီယိုများ လွှင့်တင်ပါ။\n"
-
-#: plugins/spice/spice_plugin.c:667
-#, fuzzy
-msgid "Use TLS encryption"
-msgstr "TLS လျှို့ဝှက်ချက်ကို အသုံးပြုပါ"
-
-#: plugins/spice/spice_plugin.c:668
-#, fuzzy
-msgid "Server CA certificate"
-msgstr "ဆာဗာ စီအေ လက်မှတ်"
-
-#: plugins/spice/spice_plugin.c:669 plugins/rdp/rdp_plugin.c:2654
-#, fuzzy
-msgid "Share folder"
-msgstr "ဖိုင်တွဲကို ဝေမျှပါ"
-
-#: plugins/spice/spice_plugin.c:686
-#, fuzzy
-msgid "Prefered video codec"
-msgstr "ကြိုက်နှစ်သက်တဲ့ ဗီဒီယိုကိုဒက်"
-
-#: plugins/spice/spice_plugin.c:687
-#, fuzzy
-msgid "Turn off GStreamer overlay"
-msgstr "GStreamer အပိတ်ပါ"
-
-#: plugins/spice/spice_plugin.c:690
-#, fuzzy
-msgid "Prefered image compression"
-msgstr "ကြိုက်နှစ်သက်သော ရုပ်ပုံဖိသိပ်မှု"
-
-#: plugins/spice/spice_plugin.c:696
-#, fuzzy
-msgid "Share smart card"
-msgstr "စမတ်ကတ် ဝေမျှပါ"
-
-#: plugins/spice/spice_plugin.c:719
-#, fuzzy
-msgid "SPICE - Simple Protocol for Independent Computing Environments"
-msgstr "SPICE - လွတ်လပ်သော ကွန်ပျူတာ ပတ်ဝန်းကျင်အတွက် ရိုးရှင်းသော ပရိုတိုကော"
-
-#: plugins/spice/spice_plugin_file_transfer.c:82
-#, fuzzy
-msgid "File Transfers"
-msgstr "ဖိုင် လွှဲပြောင်းမှုများ"
-
-#: plugins/spice/spice_plugin_file_transfer.c:219
-#, fuzzy
-msgid "Transfer error"
-msgstr "Transfer error"
-
-#: plugins/spice/spice_plugin_file_transfer.c:220
-#, fuzzy, c-format
-msgid "%s: %s"
-msgstr "%s: %s"
-
-#: plugins/spice/spice_plugin_file_transfer.c:223
-#, fuzzy
-msgid "Transfer completed"
-msgstr "လွှဲပြောင်းပြီး"
-
-#: plugins/spice/spice_plugin_file_transfer.c:224
-#, fuzzy, c-format
-msgid "The %s file has been transferred"
-msgstr "[၄] ဖိုင်ကို လွှဲပြောင်းပေးလိုက်ပြီ"
+msgid ""
+"The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
+msgstr ""
+"အာဒီပီ အဆက်အသွယ် ပြတ်တောက် မှု တစ် ခု အပေါ် ပြန်လည် ဆက်သွယ်ရေး ကြိုးပမ်း မှု ၏ အများဆုံး အရေအတွက် "
+"( ပျက်ကွက် မှု : ၂၀ )"
 
 #: plugins/rdp/rdp_plugin.c:757 plugins/rdp/rdp_plugin.c:822
 #, fuzzy
@@ -2671,15 +2218,30 @@ msgstr "GFX RFX တိုးတက်မှု (32 bpp)"
 msgid "RemoteFX (32 bpp)"
 msgstr "RemoteFX (32 bpp)"
 
+#: plugins/rdp/rdp_plugin.c:2497 plugins/vnc/vnc_plugin.c:1922
+#, fuzzy
+msgid "True colour (32 bpp)"
+msgstr "စစ်မှန်တဲ့အရောင် (၃၂ ဘီပီ)"
+
 #: plugins/rdp/rdp_plugin.c:2498
 #, fuzzy
 msgid "True colour (24 bpp)"
 msgstr "စစ်မှန်တဲ့အရောင် (၂၄ ဘီပီ)"
 
+#: plugins/rdp/rdp_plugin.c:2499 plugins/vnc/vnc_plugin.c:1923
+#, fuzzy
+msgid "High colour (16 bpp)"
+msgstr "အရောင်မြင့် (၁၆ ဘီပီ)"
+
 #: plugins/rdp/rdp_plugin.c:2500
 #, fuzzy
 msgid "High colour (15 bpp)"
 msgstr "အရောင်မြင့် (၁၅ ဘီပီ)"
+
+#: plugins/rdp/rdp_plugin.c:2501 plugins/vnc/vnc_plugin.c:1924
+#, fuzzy
+msgid "256 colours (8 bpp)"
+msgstr "၂၅၆ အရောင် (၈ ဘီပီ)"
 
 #: plugins/rdp/rdp_plugin.c:2532 data/ui/remmina_preferences.glade:641
 #, fuzzy
@@ -2720,6 +2282,12 @@ msgstr "ဝေါ့"
 #, fuzzy
 msgid "LAN"
 msgstr "LAN"
+
+#: plugins/rdp/rdp_plugin.c:2546 plugins/spice/spice_plugin.c:635
+#: data/ui/remmina_preferences.glade:677
+#, fuzzy
+msgid "Off"
+msgstr "Off"
 
 #: plugins/rdp/rdp_plugin.c:2555
 #, fuzzy
@@ -2890,6 +2458,11 @@ msgstr ""
 "  • hoplug *\n"
 "\n"
 
+#: plugins/rdp/rdp_plugin.c:2654 plugins/spice/spice_plugin.c:669
+#, fuzzy
+msgid "Share folder"
+msgstr "ဖိုင်တွဲကို ဝေမျှပါ"
+
 #: plugins/rdp/rdp_plugin.c:2654
 #, fuzzy
 msgid "Use “Redirect directory” in the advanced tab for multiple directories"
@@ -2920,9 +2493,21 @@ msgstr "မော်နီတာ အများအပြားပေါ်မ�
 msgid "List monitor IDs"
 msgstr "စာရင်း စောင့်ကြည့်ရေး IDs"
 
+#: plugins/rdp/rdp_plugin.c:2661 plugins/vnc/vnc_plugin.c:1962
+#: plugins/vnc/vnc_plugin.c:1982 plugins/gvnc/gvnc_plugin.c:840
+#, fuzzy
+msgid "Colour depth"
+msgstr "အရောင် ညစ်ညမ်းမှု"
+
 #: plugins/rdp/rdp_plugin.c:2662
 msgid "Network connection type"
 msgstr "ချိတ်ဆက်မှု့အသစ်"
+
+#: plugins/rdp/rdp_plugin.c:2677 plugins/vnc/vnc_plugin.c:1963
+#: plugins/vnc/vnc_plugin.c:1983
+#, fuzzy
+msgid "Quality"
+msgstr "အရည်အသွေး"
 
 #: plugins/rdp/rdp_plugin.c:2678
 #, fuzzy
@@ -3099,19 +2684,6 @@ msgstr "တီစီပီ အပြန်အလှန် ညွှန်ကြ�
 msgid "/PATH/TO/rdp2tcp"
 msgstr "/PATH/PATH/rdp2tp"
 
-#: plugins/rdp/rdp_plugin.c:2708 plugins/rdp/rdp_settings.c:613
-#, fuzzy
-msgid "Reconnect attempts number"
-msgstr "ပြန်လည်ဆက်သွယ်ရန် ကြိုးပမ်းမှု နံပါတ်များ"
-
-#: plugins/rdp/rdp_plugin.c:2708 plugins/rdp/rdp_settings.c:619
-#, fuzzy
-msgid ""
-"The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
-msgstr ""
-"အာဒီပီ အဆက်အသွယ် ပြတ်တောက် မှု တစ် ခု အပေါ် ပြန်လည် ဆက်သွယ်ရေး ကြိုးပမ်း မှု ၏ အများဆုံး အရေအတွက် "
-"( ပျက်ကွက် မှု : ၂၀ )"
-
 #: plugins/rdp/rdp_plugin.c:2709
 #, fuzzy
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
@@ -3142,6 +2714,11 @@ msgstr "အပြိုင် ဆိပ်ကမ်းများကို ဝ�
 msgid "Share a smart card"
 msgstr "စမတ်ကတ်ကို မျှဝေပါ"
 
+#: plugins/rdp/rdp_plugin.c:2715 plugins/vnc/vnc_plugin.c:2001
+#, fuzzy
+msgid "Turn off clipboard sync"
+msgstr "ကလစ်ဘုတ် အစုလိုက်အပြုံလိုက် ပိတ်ပါ"
+
 #: plugins/rdp/rdp_plugin.c:2716
 #, fuzzy
 msgid "Ignore certificate"
@@ -3156,6 +2733,13 @@ msgstr "လိုင်စင်အလုပ်အဟောင်းကို �
 #, fuzzy
 msgid "It disables CAL and hwId is set to 0"
 msgstr "CAL နှင့်hwid ကို ၀"
+
+#: plugins/rdp/rdp_plugin.c:2718 plugins/spice/spice_plugin.c:694
+#: plugins/vnc/vnc_plugin.c:2005 plugins/www/www_plugin.c:904
+#: plugins/gvnc/gvnc_plugin.c:858
+#, fuzzy
+msgid "Forget passwords after use"
+msgstr "အသုံးပြုပြီးနောက် စကားဝှက်များကို မေ့လျော့ပါ"
 
 #: plugins/rdp/rdp_plugin.c:2719
 #, fuzzy
@@ -3212,6 +2796,12 @@ msgstr "ဂိတ်ဝအတွက် အခြေခံအချက်အလ�
 msgid "Enable Gateway websockets support"
 msgstr "Gatewa ဝက်ဘ်ဆိုက်များကို ထောက်ပံ့ပေးရန် ဂိတ်ဝေး ဝက်ဘ်ဆိုက်များ ထောက်ပံ့ပေးနိုင်စေပါ"
 
+#: plugins/rdp/rdp_plugin.c:2744 plugins/spice/spice_plugin.c:707
+#: plugins/vnc/vnc_plugin.c:2021
+#, fuzzy
+msgid "Send Ctrl+Alt+Delete"
+msgstr "Ctrl+Alt+Dele"
+
 #: plugins/rdp/rdp_plugin.c:2757
 #, fuzzy
 msgid "RDP - Remote Desktop Protocol"
@@ -3232,115 +2822,525 @@ msgstr "RDP - ကြိုက်နှစ်သက်မှုများ"
 msgid "Export connection in Windows .rdp file format"
 msgstr "Windows.rdp ဖိုင်ပုံစံထဲက ထုတ်ကုန်ဆက်သွယ်မှု"
 
-#: plugins/rdp/rdp_settings.c:205
-#, fuzzy
-msgid "<Auto-detect>"
-msgstr "<Auto-detect>"
-
-#: plugins/rdp/rdp_settings.c:237
-#, fuzzy
-msgid "<Not set>"
-msgstr "< သတ်မှတ်ထားတဲ့ >>"
-
-#: plugins/rdp/rdp_settings.c:268
-#, fuzzy
-msgid "<Choose a quality level to edit…>"
-msgstr "< တည်းခိုရန် အရည်အသွေးအဆင့်အဆင့်အဆင့်ကို >"
-
-#: plugins/rdp/rdp_settings.c:415
-#, fuzzy
-msgid "Keyboard layout"
-msgstr "ကီးဘုတ်လက်ကွက် -"
-
-#: plugins/rdp/rdp_settings.c:440
-#, fuzzy
-msgid "Use client keyboard mapping"
-msgstr "ဖောက်သည် ကီးဘုတ် မြေပုံရေးဆွဲရာတွင် အသုံးပြုပါ"
-
-#: plugins/rdp/rdp_settings.c:450
-#, fuzzy
-msgid "Quality settings"
-msgstr "အရည်အသွေး သတ်မှတ်ချက်များ"
-
-#: plugins/rdp/rdp_settings.c:470
-#, fuzzy
-msgid "Wallpaper"
-msgstr "ဝေါလ်ပါ"
-
-#: plugins/rdp/rdp_settings.c:477
-#, fuzzy
-msgid "Window drag"
-msgstr "Window ဒရိုက်"
-
-#: plugins/rdp/rdp_settings.c:484
-#, fuzzy
-msgid "Menu animation"
-msgstr "မီနူး သက်၀င်မှု"
-
-#: plugins/rdp/rdp_settings.c:491
-#, fuzzy
-msgid "Theme"
-msgstr "အျပင္အဆင္"
-
-#: plugins/rdp/rdp_settings.c:498
-#, fuzzy
-msgid "Cursor shadow"
-msgstr "ကျူဆာအရိပ်"
-
-#: plugins/rdp/rdp_settings.c:505
-#, fuzzy
-msgid "Cursor blinking"
-msgstr "မျက်ခတ်ခြင်း"
-
-#: plugins/rdp/rdp_settings.c:512
-#, fuzzy
-msgid "Font smoothing"
-msgstr "ဖောင့်ချောချောမောခြင်း"
-
-#: plugins/rdp/rdp_settings.c:519
-#, fuzzy
-msgid "Composition"
-msgstr "သီချင်းဆိုခြင်း"
-
-#: plugins/rdp/rdp_settings.c:529
-#, fuzzy
-msgid "Remote scale factor"
-msgstr "ဝေးလံတဲ့ စကေးအချက်"
-
-#: plugins/rdp/rdp_settings.c:542
-#, fuzzy
-msgid "Desktop scale factor %"
-msgstr "Desktop စကေး အချက်အလက် %"
-
-#: plugins/rdp/rdp_settings.c:553
-#, fuzzy
-msgid "Device scale factor %"
-msgstr "စက်ကိရိယာ စကေး အချက်အလက် %"
-
-#: plugins/rdp/rdp_settings.c:575
-#, fuzzy
-msgid "Desktop orientation"
-msgstr "Desktop ဦးတည်ချက်"
-
-#: plugins/rdp/rdp_settings.c:592
-#, fuzzy
-msgid "Input device settings"
-msgstr "ထည့်သွင်းကိရိယာ တပ်ဆင်မှုများ"
-
-#: plugins/rdp/rdp_settings.c:608
-#, fuzzy
-msgid "General settings"
-msgstr "General settings"
-
 #: plugins/rdp/rdp_event.c:344
 #, fuzzy, c-format
 msgid "Reconnection attempt %d of %d…"
 msgstr "[၂၇] ၏ ပြန်လည် ဆက်သွယ်ရေး ကြိုးပမ်း မှု [၂၁]"
 
-#: plugins/kwallet/src/kwallet_plugin_main.c:118
+#: plugins/spice/spice_plugin_file_transfer.c:82
 #, fuzzy
-msgid "Secured password storage in KWallet"
-msgstr "ကဝေါလက်မြို့တွင် လုံခြုံသော စကားဝှက်သိုလှောင်မှု"
+msgid "File Transfers"
+msgstr "ဖိုင် လွှဲပြောင်းမှုများ"
+
+#: plugins/spice/spice_plugin_file_transfer.c:219
+#, fuzzy
+msgid "Transfer error"
+msgstr "Transfer error"
+
+#: plugins/spice/spice_plugin_file_transfer.c:220
+#, fuzzy, c-format
+msgid "%s: %s"
+msgstr "%s: %s"
+
+#: plugins/spice/spice_plugin_file_transfer.c:223
+#, fuzzy
+msgid "Transfer completed"
+msgstr "လွှဲပြောင်းပြီး"
+
+#: plugins/spice/spice_plugin_file_transfer.c:224
+#, fuzzy, c-format
+msgid "The %s file has been transferred"
+msgstr "[၄] ဖိုင်ကို လွှဲပြောင်းပေးလိုက်ပြီ"
+
+#: plugins/spice/spice_plugin.c:351
+#, fuzzy
+msgid "Enter SPICE password"
+msgstr "SPICE စကားဝှက်ထဲထည့်ပါ"
+
+#: plugins/spice/spice_plugin.c:386
+#, fuzzy, c-format
+msgid "Disconnected from the SPICE server “%s”."
+msgstr "SPICE ဆာဗာကနေ အဆက်အသွယ်ပြတ်သွားတဲ့ \"[[၃၆]\""
+
+#: plugins/spice/spice_plugin.c:402
+#, fuzzy
+msgid "TLS connection error."
+msgstr "TLS ဆက်သွယ်မှု အမှားပါ။"
+
+#: plugins/spice/spice_plugin.c:408
+#, fuzzy
+msgid "Connection to the SPICE server dropped."
+msgstr "SPICE ဆာဗာနဲ့ ဆက်သွယ်မှု ကျဆင်းသွားတယ်။"
+
+#: plugins/spice/spice_plugin.c:616 plugins/spice/spice_plugin.c:634
+#, fuzzy
+msgid "Default"
+msgstr "Default"
+
+#: plugins/spice/spice_plugin.c:636
+#, fuzzy
+msgid "Auto GLZ"
+msgstr "အလိုအလျောက် GLZ"
+
+#: plugins/spice/spice_plugin.c:637
+#, fuzzy
+msgid "Auto LZ"
+msgstr "Auto LZ"
+
+#: plugins/spice/spice_plugin.c:650
+#, fuzzy
+msgid "Disable video overlay if videos are not displayed properly.\n"
+msgstr "ဗီဒီယိုများကို ကောင်းစွာတင်ပြမထားပါက မသန်မစွမ်း ဗီဒီယိုများ လွှင့်တင်ပါ။\n"
+
+#: plugins/spice/spice_plugin.c:667
+#, fuzzy
+msgid "Use TLS encryption"
+msgstr "TLS လျှို့ဝှက်ချက်ကို အသုံးပြုပါ"
+
+#: plugins/spice/spice_plugin.c:668
+#, fuzzy
+msgid "Server CA certificate"
+msgstr "ဆာဗာ စီအေ လက်မှတ်"
+
+#: plugins/spice/spice_plugin.c:686
+#, fuzzy
+msgid "Prefered video codec"
+msgstr "ကြိုက်နှစ်သက်တဲ့ ဗီဒီယိုကိုဒက်"
+
+#: plugins/spice/spice_plugin.c:687
+#, fuzzy
+msgid "Turn off GStreamer overlay"
+msgstr "GStreamer အပိတ်ပါ"
+
+#: plugins/spice/spice_plugin.c:690
+#, fuzzy
+msgid "Prefered image compression"
+msgstr "ကြိုက်နှစ်သက်သော ရုပ်ပုံဖိသိပ်မှု"
+
+#: plugins/spice/spice_plugin.c:693 plugins/spice/spice_plugin.c:706
+#: plugins/gvnc/gvnc_plugin.c:857 plugins/gvnc/gvnc_plugin.c:871
+#, fuzzy
+msgid "No clipboard sync"
+msgstr "Clipbod sync မရှိဘူး"
+
+#: plugins/spice/spice_plugin.c:695 plugins/gvnc/gvnc_plugin.c:860
+#, fuzzy
+msgid "Enable audio channel"
+msgstr "အသံလိုင်းကို ခွင့်ပြုပါ"
+
+#: plugins/spice/spice_plugin.c:696
+#, fuzzy
+msgid "Share smart card"
+msgstr "စမတ်ကတ် ဝေမျှပါ"
+
+#: plugins/spice/spice_plugin.c:697 plugins/spice/spice_plugin.c:705
+#: plugins/vnc/vnc_plugin.c:2000 plugins/vnc/vnc_plugin.c:2017
+#: plugins/gvnc/gvnc_plugin.c:861 plugins/gvnc/gvnc_plugin.c:870
+#, fuzzy
+msgid "View only"
+msgstr "မြင်ကွင်းကိုသာ ရှု"
+
+#: plugins/spice/spice_plugin.c:708 plugins/spice/spice_plugin_usb.c:51
+#, fuzzy
+msgid "Select USB devices for redirection"
+msgstr "ပြန်လည်လမ်းညွှန်မှုအတွက် USB ကိရိယာတွေကို ရွေးပါ"
+
+#: plugins/spice/spice_plugin.c:719
+#, fuzzy
+msgid "SPICE - Simple Protocol for Independent Computing Environments"
+msgstr "SPICE - လွတ်လပ်သော ကွန်ပျူတာ ပတ်ဝန်းကျင်အတွက် ရိုးရှင်းသော ပရိုတိုကော"
+
+#: plugins/spice/spice_plugin_usb.c:54
+#, fuzzy
+msgid "_Close"
+msgstr "_Close"
+
+#: plugins/spice/spice_plugin_usb.c:94
+#, fuzzy
+msgid "USB redirection error"
+msgstr "ယူအက်စ်ဘီ အပြောင်းအလဲ အမှား"
+
+#: plugins/vnc/vnc_plugin.c:772
+#, fuzzy
+msgid "Enter VNC password"
+msgstr "VNC စကားဝှက်ထဲထည့်ပါ"
+
+#: plugins/vnc/vnc_plugin.c:825 plugins/gvnc/gvnc_plugin.c:539
+#, fuzzy
+msgid "Enter VNC authentication credentials"
+msgstr "VNC စစ်ဆေးရေး အသိအမှတ်ပြုချက်များကို ဝင်ကြည့်ပါ"
+
+#: plugins/vnc/vnc_plugin.c:936
+#, fuzzy
+msgid "Unable to connect to VNC server"
+msgstr "VNC ဆာဗာနဲ့ ချိတ်ဆက်လို့မရဘူး"
+
+#: plugins/vnc/vnc_plugin.c:937
+#, fuzzy, c-format
+msgid "Couldn’t convert '%s' to host address"
+msgstr "'[%s] ကို အိမ်ရှင်လိပ်စာအဖြစ် မပြောင်းလဲနိုင်ပါ"
+
+#: plugins/vnc/vnc_plugin.c:938
+#, fuzzy, c-format
+msgid "VNC connection failed: %s"
+msgstr "VNC ဆက်သွယ်မှု ပျက်ကွက်ခဲ့သည်။ [၂၃]"
+
+#: plugins/vnc/vnc_plugin.c:939
+#, fuzzy
+msgid "Your connection has been rejected."
+msgstr "ခင်ဗျားတို့ရဲ့ ဆက်သွယ်မှုကို ငြင်းပယ်လိုက်ပြီ။"
+
+#: plugins/vnc/vnc_plugin.c:966
+#, fuzzy, c-format
+msgid "The VNC server requested an unknown authentication method. %s"
+msgstr "ဗွီအန်စီ ဆာဗာ က အမည် မ သိ စစ်ဆေး မှု နည်းလမ်း တစ် ခု ကို တောင်းဆို ခဲ့ သည် ။ %s"
+
+#: plugins/vnc/vnc_plugin.c:968
+#, fuzzy
+msgid "Please retry after turning on encryption for this profile."
+msgstr "ဒီမှတ်တမ်းအတွက် စာဝှက်ဖွင့်ပြီးတဲ့နောက် ပြန်သုံးပါ။"
+
+#: plugins/vnc/vnc_plugin.c:1939
+#, fuzzy
+msgid ""
+"Connect to VNC using a repeater:\n"
+"  • The server field must contain the repeater ID, e.g. ID:123456789\n"
+"  • The repeater field have to be set to the repeater IP and port, like:\n"
+"    10.10.10.12:5901\n"
+"  • From the remote VNC server, you will connect to\n"
+"    the repeater, e.g. with x11vnc:\n"
+"    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
+msgstr ""
+"ထပ်တလဲလဲ သုံးပြီး VNC ကို ဆက်သွယ်ပါ\n"
+"  • ဆာဗာလယ်ကွင်းတွင် ထပ်တလဲလဲ ID, e.id:123456789 ပါဝင်ရမည်\n"
+"  • ထပ်ခါထပ်ခါ လယ်ကွင်းကို ထပ်ခါထပ်ခါ အိုင်ပီနဲ့ ဆိပ်ကမ်းကို သတ်မှတ်ပေးရမယ်\n"
+"    10.10.10.12:5901\n"
+"  • ဝေးလံတဲ့ VNC ဆာဗာကနေ ဆက်သွယ်ပါလိမ့်မယ်\n"
+"    x11vnc နဲ့ ထပ်ပြောသူ၊ အီး.ဂီ.\n"
+"    x11vnc - id:12345789+10.10.10.10.10.5500"
+
+#: plugins/vnc/vnc_plugin.c:1959
+#, fuzzy
+msgid "Repeater"
+msgstr "ထပ်ခါထပ်ခါ ထပ်ခါထပ်ခါ"
+
+#: plugins/vnc/vnc_plugin.c:1979
+#, fuzzy
+msgid "Listen on port"
+msgstr "ဆိပ်ကမ်းမှာ နားထောင်ပါ"
+
+#: plugins/vnc/vnc_plugin.c:1999
+#, fuzzy
+msgid "Show remote cursor"
+msgstr "ဝေးလံတဲ့ ကျိန်စာပြပါ"
+
+#: plugins/vnc/vnc_plugin.c:2002
+#, fuzzy
+msgid "Turn off encryption"
+msgstr "လျှို့ဝှက်ချက်ကို ပိတ်လိုက်ပါ"
+
+#: plugins/vnc/vnc_plugin.c:2003 plugins/vnc/vnc_plugin.c:2018
+#, fuzzy
+msgid "Prevent local interaction on the server"
+msgstr "ဆာဗာမှာ ဒေသခံ အပြန်အလှန် အပြန်အလှန်ဆက်သွယ်မှုကို တားဆီးပါ"
+
+#: plugins/vnc/vnc_plugin.c:2004 plugins/gvnc/gvnc_plugin.c:859
+#, fuzzy
+msgid "Ignore remote bell messages"
+msgstr "ဝေးလံတဲ့ ခေါင်းလောင်းသတင်းအချက်အလက်တွေကို လျစ်လျူရှုပါ"
+
+#: plugins/vnc/vnc_plugin.c:2020
+#, fuzzy
+msgid "Open Chat…"
+msgstr "ဖွင့်ပါ…"
+
+#: plugins/vnc/vnc_plugin.h:41
+#, fuzzy
+msgid "Remmina VNC Plugin"
+msgstr "Remmina VNC Plugingy"
+
+#: plugins/vnc/vnc_plugin.h:46
+#, fuzzy
+msgid "Remmina VNC listener Plugin"
+msgstr "Remmina VNC နားထောင်သူ ပလူဂျင်း"
+
+#: plugins/www/www_config.h:43
+#, fuzzy
+msgid "Remmina web-browser plugin"
+msgstr "Remmina ဝက်ဘ်-ဘရောက်ဇာ ပလက်ဂျင်း"
+
+#: plugins/www/www_plugin.c:98
+#, fuzzy
+msgid "File downloaded"
+msgstr "ဖိုင်ကူးယူထားတဲ့ ဖိုင်"
+
+#: plugins/www/www_plugin.c:574
+#, fuzzy
+msgid "Enter WWW authentication credentials"
+msgstr "ဒဗလျူဒဗလျူ စစ်ဆေးရေး အသိအမှတ်ပြုချက်များကို ဝင်ရောက်ပါ"
+
+#: plugins/www/www_plugin.c:878
+#, fuzzy
+msgid "URL"
+msgstr "ယူအာအယ်"
+
+#: plugins/www/www_plugin.c:878
+#, fuzzy
+msgid "http://address or https://address"
+msgstr "http://address ဒါမှမဟုတ် https://address"
+
+#: plugins/www/www_plugin.c:895
+#, fuzzy
+msgid "User agent"
+msgstr "အသုံးပြုသူ ကိုယ်စားလှယ်"
+
+#: plugins/www/www_plugin.c:896
+#, fuzzy
+msgid "Proxy URL"
+msgstr "Proxy URL"
+
+#: plugins/www/www_plugin.c:896
+#, fuzzy
+msgid "E.g. https://example.org, socks://mysocks:1080"
+msgstr "https://example.org socks://mysocks:1080"
+
+#: plugins/www/www_plugin.c:897
+#, fuzzy
+msgid "Turn on Java support"
+msgstr "Java ထောက်ပံ့မှု"
+
+#: plugins/www/www_plugin.c:898
+#, fuzzy
+msgid "Turn on smooth scrolling"
+msgstr "ချောမွေ့တဲ့ လိပ်စာကို ဖွင့်ပါ"
+
+#: plugins/www/www_plugin.c:899
+#, fuzzy
+msgid "Turn on spatial navigation"
+msgstr "အာကာသလမ်းကြောင်းကို ဖွင့်ပါ"
+
+#: plugins/www/www_plugin.c:900
+#, fuzzy
+msgid "Turn on plugin support"
+msgstr "plugin ထောက်ပံ့ပေးပါ"
+
+#: plugins/www/www_plugin.c:901
+#, fuzzy
+msgid "Turn on WebGL support"
+msgstr "WebGL ထောက်ပံ့မှု"
+
+#: plugins/www/www_plugin.c:902
+#, fuzzy
+msgid "Turn on HTML5 audio support"
+msgstr "HTML5 အသံထောက်အပံ့ကိုဖွင့်ပါ"
+
+#: plugins/www/www_plugin.c:903
+#, fuzzy
+msgid "Ignore TLS errors"
+msgstr "TLS အမှားများကို လျစ်လျူရှုခြင်း"
+
+#: plugins/www/www_plugin.c:906
+#, fuzzy
+msgid "Turn on Web Inspector"
+msgstr "ဝက်ဘ်စစ်ဆေးရေးယာဉ်ကိုဖွင့်ပါ"
+
+#: plugins/exec/exec_plugin.c:160
+#, fuzzy
+msgid "You did not set any command to be executed"
+msgstr "ကွပ်မျက်ရန် မည်သည့်အမိန့်ကိုမျှ မချမှတ်ခဲ့ပါ"
+
+#: plugins/exec/exec_plugin.c:206
+#, fuzzy
+msgid ""
+"Warning: Running a command synchronously may cause Remmina not to respond.\n"
+"Do you really want to continue?"
+msgstr ""
+"သတိပေးချက်– အမိန့်ကို တစ်ပြိုင်တည်းပြေးခြင်းက ရမ်မီနာကို မတုံ့ပြန်စေနိုင်ပါ။\n"
+"သင် အမှန်တကယ် ဆက်လက်လုပ်ဆောင်လိုပါသလော။"
+
+#: plugins/exec/exec_plugin.c:266
+#, fuzzy
+msgid "Command"
+msgstr "ညွှန်ကြားချက်"
+
+#: plugins/exec/exec_plugin.c:267
+#, fuzzy
+msgid "Asynchronous execution"
+msgstr "အက်စိန်ခရိုဏ်းချုပ် ကွပ်မျက်ခြင်း"
+
+#: plugins/exec/exec_plugin_config.h:41
+#, fuzzy
+msgid "Execute a command"
+msgstr "အမိန့်ကို အကောင်အထည်ဖော်ပါ"
+
+#: plugins/tool_hello_world/plugin_config.h:40
+#, fuzzy
+msgid "Hello, World!"
+msgstr "မင်္ဂလာပါကမ္ဘာလောက!"
+
+#: plugins/secret/src/glibsecret_plugin.c:188
+#, fuzzy
+msgid "Secured password storage in the GNOME keyring"
+msgstr "GNOME keying မှာ လုံခြုံတဲ့ စကားဝှက်သိုလှောင်မှု"
+
+#: plugins/gvnc/gvnc_plugin_config.h:40
+#, fuzzy
+msgid "Remmina VNC plugin for GNOME and KVM"
+msgstr "GNOME နဲ့ KVM အတွက် Remmina VNC plugy"
+
+#: plugins/gvnc/gvnc_plugin.c:477
+#, fuzzy, c-format
+msgid "Unsupported authentication type %u"
+msgstr "အတည်မပြုရသေးသော စစ်ဆေးမှုအမျိုးအစား [၃၂]"
+
+#: plugins/gvnc/gvnc_plugin.c:489
+#, fuzzy, c-format
+msgid "Authentication failure: %s"
+msgstr "စစ်ဆေးရေးပျက်ကွက်မှု - [၂၄]"
+
+#: plugins/gvnc/gvnc_plugin.c:820
+#, fuzzy
+msgid "Use server settings"
+msgstr "ဆာဗာနေရာများကို အသုံးပြုပါ"
+
+#: plugins/gvnc/gvnc_plugin.c:821
+#, fuzzy
+msgid "True colour (24 bits)"
+msgstr "စစ်မှန်တဲ့အရောင် (၂၄ လုံး)"
+
+#: plugins/gvnc/gvnc_plugin.c:822
+#, fuzzy
+msgid "High colour (16 bits)"
+msgstr "အရောင်မြင့် (၁၆ လုံး)"
+
+#: plugins/gvnc/gvnc_plugin.c:823
+#, fuzzy
+msgid "Low colour (8 bits)"
+msgstr "အရောင်နိမ့် (၈ ဘစ်)"
+
+#: plugins/gvnc/gvnc_plugin.c:824
+#, fuzzy
+msgid "Ultra low colour (3 bits)"
+msgstr "Ultra အရောင် နိမ့် (၃ အပိုင်း)"
+
+#: plugins/gvnc/gvnc_plugin.c:839
+#, fuzzy
+#| msgid "Password"
+msgid "VNC password"
+msgstr "VNC စကားဝှက်"
+
+#: plugins/gvnc/gvnc_plugin.c:841
+#, fuzzy
+msgid "Use JPEG Compression"
+msgstr "JPEG ဖိသိပ်မှုကို အသုံးပြုပါ"
+
+#: plugins/gvnc/gvnc_plugin.c:841
+#, fuzzy
+msgid "This might not work on all VNC servers"
+msgstr "ဒါက VNC ဆာဗာအားလုံးမှာ အလုပ်မလုပ်နိုင်ဘူး"
+
+#: plugins/gvnc/gvnc_plugin.c:842
+#, fuzzy
+msgid "Enable GTK-VNC debug"
+msgstr "ဂျီတီကေ-ဗွီအန်စီ ဒေဝါဘူတာကို ဖန်တီးပါ"
+
+#: plugins/gvnc/gvnc_plugin.c:862
+#, fuzzy
+#| msgid "Per connection"
+msgid "Shared connection"
+msgstr "ဝေမျှဆက်သွယ်မှု"
+
+#: plugins/gvnc/gvnc_plugin.c:862
+#, fuzzy
+msgid ""
+"If the server should try to share the desktop by leaving other clients "
+"connected"
+msgstr "အကယ်၍ ဆာဗာက တခြားဖောက်သည်တွေကို ချိတ်ဆက်ထားပြီး Desktop ကို ဝေမျှဖို့ ကြိုးစားသင့်တယ်ဆိုရင်"
+
+#: plugins/gvnc/gvnc_plugin.c:872
+#, fuzzy
+msgid "Send Ctrl+Alt+_Del"
+msgstr "Ctrl+Alt++++ _Del"
+
+#: plugins/gvnc/gvnc_plugin.c:873
+#, fuzzy
+msgid "Send Ctrl+Alt+_Backspace"
+msgstr "Ctrl+Alt+++ _Backspace"
+
+#: plugins/gvnc/gvnc_plugin.c:874
+#, fuzzy
+msgid "Send Ctrl+Alt+_F1"
+msgstr "Ctrl+Alt+++ _F1"
+
+#: plugins/gvnc/gvnc_plugin.c:875
+#, fuzzy
+msgid "Send Ctrl+Alt+_F2"
+msgstr "Ctrl+Alt+Alt++ _F2"
+
+#: plugins/gvnc/gvnc_plugin.c:876
+#, fuzzy
+msgid "Send Ctrl+Alt+_F3"
+msgstr "Ctrl+Alt+++ _F3"
+
+#: plugins/gvnc/gvnc_plugin.c:877
+#, fuzzy
+msgid "Send Ctrl+Alt+_F4"
+msgstr "Ctrl+Alt+++ _F4"
+
+#: plugins/gvnc/gvnc_plugin.c:878
+#, fuzzy
+msgid "Send Ctrl+Alt+_F5"
+msgstr "Ctrl+Alt+++ _F5"
+
+#: plugins/gvnc/gvnc_plugin.c:879
+#, fuzzy
+msgid "Send Ctrl+Alt+_F6"
+msgstr "Ctrl+Alt+++ _F6"
+
+#: plugins/gvnc/gvnc_plugin.c:880
+#, fuzzy
+msgid "Send Ctrl+Alt+_F7"
+msgstr "Ctrl+Alt+++ _F7"
+
+#: plugins/gvnc/gvnc_plugin.c:881
+#, fuzzy
+msgid "Send Ctrl+Alt+_F8"
+msgstr "Ctrl+Alt++++ _F8"
+
+#: plugins/gvnc/gvnc_plugin.c:882
+#, fuzzy
+msgid "Send Ctrl+Alt+_F9"
+msgstr "Ctrl+Alt+Alt++ _F9"
+
+#: plugins/gvnc/gvnc_plugin.c:883
+#, fuzzy
+msgid "Send Ctrl+Alt+_F10"
+msgstr "Ctrl+Alt+++ _F10"
+
+#: plugins/gvnc/gvnc_plugin.c:884
+#, fuzzy
+msgid "Send Ctrl+Alt+_F11"
+msgstr "Ctrl+Alt+++ _F11"
+
+#: plugins/gvnc/gvnc_plugin.c:885
+#, fuzzy
+msgid "Send Ctrl+Alt+_F12"
+msgstr "Ctrl+Alt+++ _F12"
+
+#: plugins/gvnc/gvnc_plugin.c:887
+#, fuzzy
+msgid "Reboot remote host"
+msgstr "ဝေးလံတဲ့ အိမ်ရှင်"
+
+#: plugins/gvnc/gvnc_plugin.c:888
+#, fuzzy
+msgid "Reset remote host (hard reboot)"
+msgstr "ဝေးလံတဲ့ အိမ်ရှင် (ခက်ခဲတဲ့ ပြန်လည်ပြုပြင်မှု)"
+
+#: plugins/gvnc/gvnc_plugin.c:889
+#, fuzzy
+msgid "Shutdown remote host"
+msgstr "ဝေးလံတဲ့ အိမ်ရှင်ကို ပိတ်လိုက်"
 
 #: plugins/telepathy/telepathy_channel_handler.c:237
 #, fuzzy, c-format
@@ -3360,46 +3360,6 @@ msgstr "Desktop ဖိတ်ကြားချက် ဝေမျှခြင်
 #, fuzzy
 msgid "Telepathy - Desktop Sharing"
 msgstr "Telepathth - Desktop ဝေမျှခြင်း"
-
-#: data/ui/remmina_search.glade:61 data/ui/remmina_search_popover.glade:56
-#, fuzzy
-msgid "Search"
-msgstr "ရှာဖွေခြင်း"
-
-#: data/ui/remmina_search.glade:75 data/ui/remmina_search_popover.glade:70
-#, fuzzy
-msgid "Search for previous occurrence"
-msgstr "ယခင်ဖြစ်ရပ်ကို ရှာဖွေပါ"
-
-#: data/ui/remmina_search.glade:98 data/ui/remmina_search_popover.glade:93
-#, fuzzy
-msgid "Search for next occurrence"
-msgstr "နောက်ဖြစ်ရပ်ကို ရှာဖွေပါ"
-
-#: data/ui/remmina_search.glade:130 data/ui/remmina_search_popover.glade:125
-#, fuzzy
-msgid "Toggle search options"
-msgstr "Toggle ရှာဖွေရေး ရွေးချယ်စရာများ"
-
-#: data/ui/remmina_search.glade:191 data/ui/remmina_search_popover.glade:186
-#, fuzzy
-msgid "_Match case"
-msgstr "_Match ကိစ္စ _Match ကိစ္စကို _Match"
-
-#: data/ui/remmina_search.glade:208 data/ui/remmina_search_popover.glade:203
-#, fuzzy
-msgid "Match _entire word only"
-msgstr "_entire"
-
-#: data/ui/remmina_search.glade:225 data/ui/remmina_search_popover.glade:220
-#, fuzzy
-msgid "Match as _regular expression"
-msgstr "_regular"
-
-#: data/ui/remmina_search.glade:242 data/ui/remmina_search_popover.glade:237
-#, fuzzy
-msgid "_Wrap around"
-msgstr "_Wrap ပတ်ဝန်းကျင်မှာ _Wrap"
 
 #: data/ui/remmina_snap_info_dialog.glade:71
 #, fuzzy
@@ -3462,6 +3422,46 @@ msgstr "<big> [၁၈]"
 msgid "Do not show this message again"
 msgstr "ဒီသတင်းကို နောက်တစ်ခေါက် မပြပါနဲ့။"
 
+#: data/ui/remmina_search_popover.glade:56 data/ui/remmina_search.glade:61
+#, fuzzy
+msgid "Search"
+msgstr "ရှာဖွေခြင်း"
+
+#: data/ui/remmina_search_popover.glade:70 data/ui/remmina_search.glade:75
+#, fuzzy
+msgid "Search for previous occurrence"
+msgstr "ယခင်ဖြစ်ရပ်ကို ရှာဖွေပါ"
+
+#: data/ui/remmina_search_popover.glade:93 data/ui/remmina_search.glade:98
+#, fuzzy
+msgid "Search for next occurrence"
+msgstr "နောက်ဖြစ်ရပ်ကို ရှာဖွေပါ"
+
+#: data/ui/remmina_search_popover.glade:125 data/ui/remmina_search.glade:130
+#, fuzzy
+msgid "Toggle search options"
+msgstr "Toggle ရှာဖွေရေး ရွေးချယ်စရာများ"
+
+#: data/ui/remmina_search_popover.glade:186 data/ui/remmina_search.glade:191
+#, fuzzy
+msgid "_Match case"
+msgstr "_Match ကိစ္စ _Match ကိစ္စကို _Match"
+
+#: data/ui/remmina_search_popover.glade:203 data/ui/remmina_search.glade:208
+#, fuzzy
+msgid "Match _entire word only"
+msgstr "_entire"
+
+#: data/ui/remmina_search_popover.glade:220 data/ui/remmina_search.glade:225
+#, fuzzy
+msgid "Match as _regular expression"
+msgstr "_regular"
+
+#: data/ui/remmina_search_popover.glade:237 data/ui/remmina_search.glade:242
+#, fuzzy
+msgid "_Wrap around"
+msgstr "_Wrap ပတ်ဝန်းကျင်မှာ _Wrap"
+
 #: data/ui/remmina_about.glade:30 data/ui/remmina_main.glade:395
 #, fuzzy
 msgid "About"
@@ -3486,6 +3486,192 @@ msgstr ""
 #, fuzzy
 msgid "Website"
 msgstr "ဝဘ္ဆုိဒ္"
+
+#: data/ui/remmina_string_list.glade:14 data/ui/remmina_string_list.glade:158
+#, fuzzy
+msgid "Add"
+msgstr "ေပါင္းထည့္မည္"
+
+#: data/ui/remmina_string_list.glade:20 data/ui/remmina_string_list.glade:137
+#: data/ui/remmina_key_chooser.glade:14 data/ui/remmina_key_chooser.glade:15
+#, fuzzy
+msgid "_Remove"
+msgstr "_Remove"
+
+#: data/ui/remmina_string_list.glade:26 data/ui/remmina_string_list.glade:116
+#, fuzzy
+msgid "Move up"
+msgstr "ရွေ့လျားခြင်း"
+
+#: data/ui/remmina_string_list.glade:32 data/ui/remmina_string_list.glade:95
+#, fuzzy
+msgid "Move down"
+msgstr "ရွေ့လျားမှု"
+
+#: data/ui/remmina_mpc.glade:14
+#, fuzzy
+msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
+msgstr "<span weight='bold' size='larger'> Multi စကားဝှက် အပြောင်းအလဲ [၅၆]"
+
+#: data/ui/remmina_mpc.glade:32
+#, fuzzy
+msgid "Change"
+msgstr "Change"
+
+#: data/ui/remmina_mpc.glade:201
+#, fuzzy
+msgid "Selection criteria"
+msgstr "ရွေးချယ်မှုစံနှုန်းများ"
+
+#: data/ui/remmina_mpc.glade:261
+#, fuzzy
+msgid "Confirm password"
+msgstr "စကားဝှက်ကို အတည်ပြုပါ"
+
+#: data/ui/remmina_mpc.glade:294
+#, fuzzy
+msgid "Set new password"
+msgstr "စကားဝှက်အသစ်ကို သတ်မှတ်ပါ"
+
+#. A column table with multiple check-boxes
+#: data/ui/remmina_mpc.glade:331
+#, fuzzy
+msgctxt "Multi password changer"
+msgid "Select"
+msgstr "ရွေးချယ်ပါ"
+
+#: data/ui/remmina_mpc.glade:343
+#, fuzzy
+msgctxt "Multi password changer table"
+msgid "Name"
+msgstr "အမည်"
+
+#: data/ui/remmina_mpc.glade:354
+#, fuzzy
+msgctxt "Multi password changer table"
+msgid "Group"
+msgstr "Group"
+
+#: data/ui/remmina_mpc.glade:365
+#, fuzzy
+msgctxt "Multi password changer table"
+msgid "Domain\\Username"
+msgstr "ဒိုမိန်း \\"
+
+#: data/ui/remmina_news.glade:75
+#, fuzzy
+msgid ""
+"<big><b>The news are turned off</b></big>\n"
+"\n"
+"<span>\n"
+"Turning on news means the program connects to a Remmina server to download "
+"the release notes.\n"
+"</span>\n"
+"\n"
+"<span>\n"
+"Version checking can only be activated at compile time.\n"
+"</span>\n"
+"\n"
+"<span>\n"
+"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
+"release notes\"><i>Visit the website to read the release notes</i></a>.\n"
+"</span>"
+msgstr ""
+"<big> <b> သတင်းကို ပိတ်လိုက်[၃၁][၃၅]]\n"
+"\n"
+"<span>\n"
+"သတင်း များ ကို ဖွင့် ခြင်း သည် အစီအစဉ် သည် ထုတ်ပြန် ချက် မှတ်စု များ ကို ဒေါင်းလုတ်ဆွဲ ရန် ရီမီနာ ဆာဗာ "
+"တစ် ခု နှင့် ဆက်သွယ် ထား သည် ဟု ဆိုလို သည် ။\n"
+"</span>\n"
+"\n"
+"<span>\n"
+"ဗားရှင်းစစ်ဆေးခြင်းကို စုစည်းချိန်တွင်သာ လှုပ်ရှားနိုင်သည်။\n"
+"</span>\n"
+"\n"
+"<span>\n"
+"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
+"release notes\"> <i> [၃၆၁[၃၆၅]ကို ဖတ်ရှုရန် ဝက်ဘ်ဆိုက်သို့ ဝင်ကြည့်ပါ။\n"
+"</span>"
+
+#. The star (*) is a reference to privacy consent
+#: data/ui/remmina_news.glade:130 data/ui/remmina_preferences.glade:464
+#, fuzzy
+msgid ""
+"Send <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
+"remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
+"\">anonymous</a></b> statistics. (*)"
+msgstr "[၅][၈][၈]စာရင်းဇယားများကို ပေးပို့ပါ။ (*)"
+
+#: data/ui/remmina_news.glade:142 data/ui/remmina_news.glade:195
+#, fuzzy
+msgid "Send anonymous statistics"
+msgstr "အမည်မသိ စာရင်းဇယားများ ပေးပို့ပါ"
+
+#: data/ui/remmina_news.glade:156
+msgid "Use as default remote desktop client"
+msgstr "Remote Desktop Server တစ်ခုကိုရွေးပါ"
+
+#: data/ui/remmina_news.glade:165
+#, fuzzy
+msgid "Apply"
+msgstr "Apply"
+
+#: data/ui/remmina_news.glade:169
+#, fuzzy
+msgid "Allow Remmina to automatically open .rdp and .remmina files."
+msgstr "Remmina ကို .rdp နှင့် .Remmina ဖိုင်များကို အလိုအလျောက်ဖွင့်ခွင့်ပြုပါ။"
+
+#. The star (*) is a reference to privacy consent
+#: data/ui/remmina_news.glade:183 data/ui/remmina_preferences.glade:479
+#, fuzzy
+msgid ""
+"Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
+"\">remmina.org</a> (*)"
+msgstr "[၁၆]remmina.org[၈၃] ထံမှ ဖက်ယမ်းသတင်း (*"
+
+#: data/ui/remmina_news.glade:208 data/ui/remmina_preferences.glade:446
+#, fuzzy
+msgid ""
+"* By enabling statistics and/or news you consent to send and fetch data to/"
+"from remmina.org"
+msgstr ""
+"* စာရင်းဇယားများနှင့်/သို့မဟုတ်သတင်းများကို ပို့ပေးခြင်းဖြင့် အချက်အလက်များကို ပေးပို့ရန်နှင့် remmina.org"
+
+#: data/ui/remmina_news.glade:231
+#, fuzzy
+msgid "<big>Take part</big>"
+msgstr "<big> [၁၄] ပါဝင်ပါ"
+
+#. Pay attention to the quoting characters as they may break the pango layout. If in doubt and cannot test, copy and paste the symbols from the English string.
+#: data/ui/remmina_news.glade:257
+#, fuzzy
+msgid ""
+"<span>\n"
+"<b>You have our gratitude in choosing copylefted libre software, <a href="
+"\"https://remmina.org/donations/\" title=\"Where’s the money, Lebowski? "
+"“blblblblblb”\">donations also make us happy</a>, and further help improve "
+"Remmina.</b>\n"
+"</span>\n"
+msgstr ""
+"<span>\n"
+"<b> [ ၇၂] လှူဒါန်း မှု များ က လည်း ကျွန်ုပ် တို့ ကို ပျော် ရွှင် စေသည် [၁၉၂] ကို ရွေးချယ် ရာ တွင် ကျွန်ုပ် "
+"တို့ ၏ ကျေးဇူးတင် မှု ရှိ ပါ သည် ။ </b>\n"
+"</span>\n"
+
+#: data/ui/remmina_news.glade:277
+#, fuzzy
+msgid "<big>Contribute</big>"
+msgstr "<big> လှူဒါန်းခြင်း [၁၅]"
+
+#: data/ui/remmina_key_chooser.glade:23
+#, fuzzy
+msgid "Choose a new key"
+msgstr "သော့အသစ်ကိုရွေးပါ"
+
+#: data/ui/remmina_key_chooser.glade:82
+#, fuzzy
+msgid "Please press the new key…"
+msgstr "သော့အသစ်ကို နှိပ်ပါ…"
 
 #: data/ui/remmina_main.glade:35
 #, fuzzy
@@ -3617,180 +3803,10 @@ msgstr "လုပ်ဆောင်ချက်များ"
 msgid "Toggle view"
 msgstr "Togggle မြင်ကွင်း"
 
-#: data/ui/remmina_unlock.glade:60
-#, fuzzy
-msgid "Unlock"
-msgstr "Unlock"
-
-#: data/ui/remmina_unlock.glade:94
-#, fuzzy
-msgid "Unlock Remmina"
-msgstr "ရမ်မီနာကိုဖွင့်ပါ"
-
-#: data/ui/remmina_unlock.glade:128
-#, fuzzy
-msgid "Master password"
-msgstr "Master စကားဝှက်"
-
 #: data/ui/remmina_spinner.glade:54
 #, fuzzy
 msgid "Please wait…"
 msgstr "ကျေးဇူးပြုပြီးခဏစောင့်ပါ…"
-
-#: data/ui/remmina_news.glade:75
-#, fuzzy
-msgid ""
-"<big><b>The news are turned off</b></big>\n"
-"\n"
-"<span>\n"
-"Turning on news means the program connects to a Remmina server to download "
-"the release notes.\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"Version checking can only be activated at compile time.\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
-"release notes\"><i>Visit the website to read the release notes</i></a>.\n"
-"</span>"
-msgstr ""
-"<big> <b> သတင်းကို ပိတ်လိုက်[၃၁][၃၅]]\n"
-"\n"
-"<span>\n"
-"သတင်း များ ကို ဖွင့် ခြင်း သည် အစီအစဉ် သည် ထုတ်ပြန် ချက် မှတ်စု များ ကို ဒေါင်းလုတ်ဆွဲ ရန် ရီမီနာ ဆာဗာ "
-"တစ် ခု နှင့် ဆက်သွယ် ထား သည် ဟု ဆိုလို သည် ။\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"ဗားရှင်းစစ်ဆေးခြင်းကို စုစည်းချိန်တွင်သာ လှုပ်ရှားနိုင်သည်။\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
-"release notes\"> <i> [၃၆၁[၃၆၅]ကို ဖတ်ရှုရန် ဝက်ဘ်ဆိုက်သို့ ဝင်ကြည့်ပါ။\n"
-"</span>"
-
-#. The star (*) is a reference to privacy consent
-#: data/ui/remmina_news.glade:130 data/ui/remmina_preferences.glade:464
-#, fuzzy
-msgid ""
-"Send <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-"remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
-"\">anonymous</a></b> statistics. (*)"
-msgstr "[၅][၈][၈]စာရင်းဇယားများကို ပေးပို့ပါ။ (*)"
-
-#: data/ui/remmina_news.glade:142 data/ui/remmina_news.glade:195
-#, fuzzy
-msgid "Send anonymous statistics"
-msgstr "အမည်မသိ စာရင်းဇယားများ ပေးပို့ပါ"
-
-#: data/ui/remmina_news.glade:156
-msgid "Use as default remote desktop client"
-msgstr "Remote Desktop Server တစ်ခုကိုရွေးပါ"
-
-#: data/ui/remmina_news.glade:165
-#, fuzzy
-msgid "Apply"
-msgstr "Apply"
-
-#: data/ui/remmina_news.glade:169
-#, fuzzy
-msgid "Allow Remmina to automatically open .rdp and .remmina files."
-msgstr "Remmina ကို .rdp နှင့် .Remmina ဖိုင်များကို အလိုအလျောက်ဖွင့်ခွင့်ပြုပါ။"
-
-#. The star (*) is a reference to privacy consent
-#: data/ui/remmina_news.glade:183 data/ui/remmina_preferences.glade:479
-#, fuzzy
-msgid ""
-"Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
-"\">remmina.org</a> (*)"
-msgstr "[၁၆]remmina.org[၈၃] ထံမှ ဖက်ယမ်းသတင်း (*"
-
-#: data/ui/remmina_news.glade:208 data/ui/remmina_preferences.glade:446
-#, fuzzy
-msgid ""
-"* By enabling statistics and/or news you consent to send and fetch data to/"
-"from remmina.org"
-msgstr ""
-"* စာရင်းဇယားများနှင့်/သို့မဟုတ်သတင်းများကို ပို့ပေးခြင်းဖြင့် အချက်အလက်များကို ပေးပို့ရန်နှင့် remmina.org"
-
-#: data/ui/remmina_news.glade:231
-#, fuzzy
-msgid "<big>Take part</big>"
-msgstr "<big> [၁၄] ပါဝင်ပါ"
-
-#. Pay attention to the quoting characters as they may break the pango layout. If in doubt and cannot test, copy and paste the symbols from the English string.
-#: data/ui/remmina_news.glade:257
-#, fuzzy
-msgid ""
-"<span>\n"
-"<b>You have our gratitude in choosing copylefted libre software, <a href="
-"\"https://remmina.org/donations/\" title=\"Where’s the money, Lebowski? "
-"“blblblblblb”\">donations also make us happy</a>, and further help improve "
-"Remmina.</b>\n"
-"</span>\n"
-msgstr ""
-"<span>\n"
-"<b> [ ၇၂] လှူဒါန်း မှု များ က လည်း ကျွန်ုပ် တို့ ကို ပျော် ရွှင် စေသည် [၁၉၂] ကို ရွေးချယ် ရာ တွင် ကျွန်ုပ် "
-"တို့ ၏ ကျေးဇူးတင် မှု ရှိ ပါ သည် ။ </b>\n"
-"</span>\n"
-
-#: data/ui/remmina_news.glade:277
-#, fuzzy
-msgid "<big>Contribute</big>"
-msgstr "<big> လှူဒါန်းခြင်း [၁၅]"
-
-#: data/ui/remmina_mpc.glade:14
-#, fuzzy
-msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
-msgstr "<span weight='bold' size='larger'> Multi စကားဝှက် အပြောင်းအလဲ [၅၆]"
-
-#: data/ui/remmina_mpc.glade:32
-#, fuzzy
-msgid "Change"
-msgstr "Change"
-
-#: data/ui/remmina_mpc.glade:201
-#, fuzzy
-msgid "Selection criteria"
-msgstr "ရွေးချယ်မှုစံနှုန်းများ"
-
-#: data/ui/remmina_mpc.glade:261
-#, fuzzy
-msgid "Confirm password"
-msgstr "စကားဝှက်ကို အတည်ပြုပါ"
-
-#: data/ui/remmina_mpc.glade:294
-#, fuzzy
-msgid "Set new password"
-msgstr "စကားဝှက်အသစ်ကို သတ်မှတ်ပါ"
-
-#. A column table with multiple check-boxes
-#: data/ui/remmina_mpc.glade:331
-#, fuzzy
-msgctxt "Multi password changer"
-msgid "Select"
-msgstr "ရွေးချယ်ပါ"
-
-#: data/ui/remmina_mpc.glade:343
-#, fuzzy
-msgctxt "Multi password changer table"
-msgid "Name"
-msgstr "အမည်"
-
-#: data/ui/remmina_mpc.glade:354
-#, fuzzy
-msgctxt "Multi password changer table"
-msgid "Group"
-msgstr "Group"
-
-#: data/ui/remmina_mpc.glade:365
-#, fuzzy
-msgctxt "Multi password changer table"
-msgid "Domain\\Username"
-msgstr "ဒိုမိန်း \\"
 
 #: data/ui/remmina_preferences.glade:42
 #, fuzzy
@@ -4478,36 +4494,20 @@ msgstr "Terminal"
 msgid "Remmina Preferences"
 msgstr "Remmina ကြိုက်နှစ်သက်မှုများ"
 
-#: data/ui/remmina_string_list.glade:14 data/ui/remmina_string_list.glade:158
+#: data/ui/remmina_unlock.glade:60
 #, fuzzy
-msgid "Add"
-msgstr "ေပါင္းထည့္မည္"
+msgid "Unlock"
+msgstr "Unlock"
 
-#: data/ui/remmina_string_list.glade:20 data/ui/remmina_string_list.glade:137
-#: data/ui/remmina_key_chooser.glade:14 data/ui/remmina_key_chooser.glade:15
+#: data/ui/remmina_unlock.glade:94
 #, fuzzy
-msgid "_Remove"
-msgstr "_Remove"
+msgid "Unlock Remmina"
+msgstr "ရမ်မီနာကိုဖွင့်ပါ"
 
-#: data/ui/remmina_string_list.glade:26 data/ui/remmina_string_list.glade:116
+#: data/ui/remmina_unlock.glade:128
 #, fuzzy
-msgid "Move up"
-msgstr "ရွေ့လျားခြင်း"
-
-#: data/ui/remmina_string_list.glade:32 data/ui/remmina_string_list.glade:95
-#, fuzzy
-msgid "Move down"
-msgstr "ရွေ့လျားမှု"
-
-#: data/ui/remmina_key_chooser.glade:23
-#, fuzzy
-msgid "Choose a new key"
-msgstr "သော့အသစ်ကိုရွေးပါ"
-
-#: data/ui/remmina_key_chooser.glade:82
-#, fuzzy
-msgid "Please press the new key…"
-msgstr "သော့အသစ်ကို နှိပ်ပါ…"
+msgid "Master password"
+msgstr "Master စကားဝှက်"
 
 #~ msgid "Listen for TCP connections"
 #~ msgstr "ချိတ်ဆက်မှု့အသစ်"

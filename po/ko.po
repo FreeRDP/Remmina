@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-07-16 21:21+0000\n"
+"POT-Creation-Date: 2021-07-29 20:50+0000\n"
 "PO-Revision-Date: 2021-07-16 08:59+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -23,146 +23,176 @@ msgstr ""
 "X-Generator: Weblate 4.7.2-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
 
-#: src/remmina_protocol_widget.c:283 src/remmina_sftp_plugin.c:328
-msgid "Connect via SSH from a new terminal"
-msgstr "새 터미널에서 SSH로 연결하기"
-
-#: src/remmina_protocol_widget.c:290 src/remmina_ssh_plugin.c:829
-#: src/remmina_ssh_plugin.c:1454
-msgid "Open SFTP transfer…"
-msgstr "SFTP 전송 열기…"
-
-#: src/remmina_protocol_widget.c:319
-msgid "Executing external commands…"
-msgstr "외부 명령 실행 중…"
-
-#. TRANSLATORS: “%s” is a placeholder for the connection profile name
-#: src/remmina_protocol_widget.c:327
-#, c-format
-msgid "Connecting to “%s”…"
-msgstr "'%s'에 연결하는 중…"
-
-#. TRANSLATORS: “%s” is a placeholder for an hostname or an IP address.
-#: src/remmina_protocol_widget.c:911 src/remmina_protocol_widget.c:1096
-#, c-format
-msgid "Connecting to “%s” via SSH…"
-msgstr "SSH로 '%s'에 연결하는 중…"
-
-#. TRANSLATORS: “%i” is a placeholder for a TCP port number.
-#: src/remmina_protocol_widget.c:1160
-#, c-format
-msgid "Awaiting incoming SSH connection on port %i…"
-msgstr "%i 포트에서 SSH 연결을 기다리는 중…"
-
-#: src/remmina_protocol_widget.c:1213
-#, c-format
-msgid "The “%s” command is not available on the SSH server."
-msgstr "SSH 서버에서 %s 명령을 사용할 수 없습니다."
-
-#: src/remmina_protocol_widget.c:1218
-#, c-format
-msgid "Could not run the “%s” command on the SSH server (status = %i)."
-msgstr "SSH 서버에서 \"%s\" 명령을 실행할 수 없습니다 (상태 = %i)."
-
-#. TRANSLATORS: %s is a placeholder for an error message
-#: src/remmina_protocol_widget.c:1226
-#, c-format
-msgid "Could not run command. %s"
-msgstr "명령을 실행할 수 없습니다. %s"
-
-#. TRANSLATORS: “%s” is a placeholder for a hostname or IP address.
-#: src/remmina_protocol_widget.c:1296
-#, c-format
-msgid "Connecting to %s via SSH…"
-msgstr "SSH로 '%s'에 연결하는 중…"
-
+#: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:346
 #: src/remmina_protocol_widget.c:1672 src/remmina_protocol_widget.c:1691
-#: src/remmina_ssh_plugin.c:1369 src/remmina_sftp_plugin.c:310
-#: src/remmina_sftp_plugin.c:346 src/remmina_file_editor.c:846
-#: src/remmina_file_editor.c:967 plugins/www/www_plugin.c:880
-#: plugins/rdp/rdp_plugin.c:2652 data/ui/remmina_unlock.glade:116
-#: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1693
+#: src/remmina_file_editor.c:846 src/remmina_file_editor.c:967
+#: src/remmina_ssh_plugin.c:1369 plugins/rdp/rdp_plugin.c:2652
+#: plugins/www/www_plugin.c:880 data/ui/remmina_mpc.glade:236
+#: data/ui/remmina_preferences.glade:1693 data/ui/remmina_unlock.glade:116
 msgid "Password"
 msgstr "비밀번호"
 
-#: src/remmina_protocol_widget.c:1690
-msgid "Type in SSH username and password."
-msgstr "SSH 사용자 이름과 비밀번호를 입력하세요."
+#: src/remmina_sftp_plugin.c:311 src/remmina_sftp_plugin.c:348
+#: src/remmina_file_editor.c:847 src/remmina_ssh_plugin.c:1370
+#: src/remmina_ssh_plugin.c:1475
+msgid "SSH identity file"
+msgstr "SSH 인증 키 파일"
 
-#: src/remmina_protocol_widget.c:1745 src/remmina_protocol_widget.c:1777
-msgid "Fingerprint automatically accepted"
-msgstr "지문으로 자동 허용"
+#: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:848
+#: src/remmina_ssh_plugin.c:1371
+msgid "SSH agent"
+msgstr "SSH 에이전트"
 
-#. TRANSLATORS: The user is asked to verify a new SSL certificate.
-#: src/remmina_protocol_widget.c:1753
-msgid "Certificate details:"
-msgstr "인증서 세부정보:"
+#: src/remmina_sftp_plugin.c:313 src/remmina_file_editor.c:849
+#: src/remmina_ssh_plugin.c:1372
+msgid "Public key (automatic)"
+msgstr "공개 키 (자동)"
 
-#. TRANSLATORS: An SSL certificate subject is usually the remote server the user connect to.
-#: src/remmina_protocol_widget.c:1755 src/remmina_protocol_widget.c:1787
-msgid "Subject:"
-msgstr "주제:"
+#: src/remmina_sftp_plugin.c:314 src/remmina_file_editor.c:850
+#: src/remmina_ssh_plugin.c:1373
+msgid "Kerberos (GSSAPI)"
+msgstr "커베로스 (GSSAPI)"
 
-#. TRANSLATORS: The name or email of the entity that have issued the SSL certificate
-#: src/remmina_protocol_widget.c:1757 src/remmina_protocol_widget.c:1789
-msgid "Issuer:"
-msgstr "발급자:"
+#: src/remmina_sftp_plugin.c:323
+msgid "Show Hidden Files"
+msgstr "숨긴 파일 보기"
 
-#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
-#: src/remmina_protocol_widget.c:1759
-msgid "Fingerprint:"
-msgstr "지문:"
+#: src/remmina_sftp_plugin.c:325
+msgid "Overwrite all files"
+msgstr "모두 덮어 쓰기"
 
-#. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
-#: src/remmina_protocol_widget.c:1761
-msgid "Accept certificate?"
-msgstr "인증서를 허용하시겠습니까?"
+#: src/remmina_sftp_plugin.c:327
+msgid "Resume all file transfers"
+msgstr "파일 전송"
 
-#. TRANSLATORS: The user is asked to verify a new SSL certificate.
-#: src/remmina_protocol_widget.c:1785
-msgid "The certificate changed! Details:"
-msgstr "인증서가 변경되었습니다! 세부 내용:"
+#: src/remmina_sftp_plugin.c:328 src/remmina_protocol_widget.c:283
+msgid "Connect via SSH from a new terminal"
+msgstr "새 터미널에서 SSH로 연결하기"
 
-#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
-#: src/remmina_protocol_widget.c:1791
-msgid "Old fingerprint:"
-msgstr "이전 지문:"
+#: src/remmina_sftp_plugin.c:345 src/remmina_message_panel.c:330
+#: src/remmina_file_editor.c:961 src/remmina_ssh_plugin.c:1473
+#: plugins/rdp/rdp_plugin.c:2651 plugins/vnc/vnc_plugin.c:1960
+#: plugins/vnc/vnc_plugin.c:1980 plugins/www/www_plugin.c:879
+#: data/ui/remmina_mpc.glade:144
+msgid "Username"
+msgstr "사용자명"
 
-#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
-#: src/remmina_protocol_widget.c:1793
-msgid "New fingerprint:"
-msgstr "새 지문:"
+#: src/remmina_sftp_plugin.c:347 src/remmina_file_editor.c:952
+#: src/remmina_ssh_plugin.c:1472
+msgid "Authentication type"
+msgstr "인증 유형"
 
-#. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
-#: src/remmina_protocol_widget.c:1795
-msgid "Accept changed certificate?"
-msgstr "변경된 인증서를 허용하시겠습니까?"
+#: src/remmina_sftp_plugin.c:349 src/remmina_file_editor.c:984
+#: src/remmina_ssh_plugin.c:1479
+msgid "Password to unlock private key"
+msgstr "개인 키 잠금 해제 비밀번호"
 
-#. TRANSLATORS: “%i” is a placeholder for a port number. “%s”  is a placeholder for a protocol name (VNC).
-#: src/remmina_protocol_widget.c:1938
+#: src/remmina_sftp_plugin.c:350 src/remmina_ssh_plugin.c:1509
+msgid "SSH Proxy Command"
+msgstr "SSH 프록시 명령"
+
+#: src/remmina_sftp_plugin.c:359
+msgid "SFTP - Secure File Transfer"
+msgstr "SFTP - 보안 파일 전송"
+
+#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1533
+msgid "Protocol"
+msgstr "프로토콜"
+
+#: src/remmina_plugin_manager.c:73
+msgid "Entry"
+msgstr "항목"
+
+#: src/remmina_plugin_manager.c:73
+msgid "File"
+msgstr "파일"
+
+#: src/remmina_plugin_manager.c:73
+msgid "Tool"
+msgstr "도구"
+
+#: src/remmina_plugin_manager.c:73
+msgid "Preference"
+msgstr "설정"
+
+#: src/remmina_plugin_manager.c:73
+msgid "Secret"
+msgstr "보안"
+
+#: src/remmina_plugin_manager.c:456 data/ui/remmina_main.glade:305
+msgid "Plugins"
+msgstr "부가 기능"
+
+#: src/remmina_plugin_manager.c:456 src/remmina_message_panel.c:452
+#: src/remmina_message_panel.c:621 src/remmina_file_editor.c:152
+msgid "_OK"
+msgstr "_OK"
+
+#: src/remmina_plugin_manager.c:474 src/remmina_file_editor.c:1490
+#: data/ui/remmina_main.glade:442
+msgid "Name"
+msgstr "이름"
+
+#: src/remmina_plugin_manager.c:480
+msgid "Type"
+msgstr "형식"
+
+#: src/remmina_plugin_manager.c:486
+msgid "Description"
+msgstr "설명"
+
+#: src/remmina_plugin_manager.c:492
+msgid "Version"
+msgstr "버전"
+
+#: src/remmina_chat_window.c:178
 #, c-format
-msgid "Listening on port %i for an incoming %s connection…"
-msgstr "%s 연결을 위해서 %i 포트에서 대기 중…"
+msgid "Chat with %s"
+msgstr "%s 와(/과) 대화"
 
-#: src/remmina_protocol_widget.c:1963
-msgid "Could not authenticate, attempting reconnection…"
-msgstr "인증할 수 없습니다, 다시 접속 중…"
+#: src/remmina_chat_window.c:230
+msgid "_Send"
+msgstr "보내기(_S)"
 
-#: src/remmina_protocol_widget.c:2025 src/remmina_file_editor.c:346
-#: src/remmina_file_editor.c:917 data/ui/remmina_main.glade:478
-msgid "Server"
-msgstr "서버"
+#: src/remmina_chat_window.c:240
+msgid "_Clear"
+msgstr "지우기(_C)"
 
-#. TRANSLATORS: “%s” is a placeholder for a protocol name, like “RDP”.
-#: src/remmina_protocol_widget.c:2043
-#, c-format
-msgid "Install the %s protocol plugin first."
-msgstr "먼저 %s 프로토콜 플러그인을 설치하세요."
+#: src/remmina_applet_menu_item.c:121
+msgid "Discovered"
+msgstr "발견함"
 
-#: src/remmina_exec.c:475
-#, c-format
-msgid "Plugin %s is not registered."
-msgstr "%s 는 등록되지 않은 플러그인 입니다."
+#: src/remmina_applet_menu_item.c:126
+msgid "New Connection"
+msgstr "새 연결"
+
+#: src/remmina_key_chooser.h:38
+msgid "Shift+"
+msgstr "Shift+"
+
+#: src/remmina_key_chooser.h:39
+msgid "Ctrl+"
+msgstr "Ctrl+"
+
+#: src/remmina_key_chooser.h:40
+msgid "Alt+"
+msgstr "Alt+"
+
+#: src/remmina_key_chooser.h:41
+msgid "Super+"
+msgstr "슈퍼+"
+
+#: src/remmina_key_chooser.h:42
+msgid "Hyper+"
+msgstr "하이퍼+"
+
+#: src/remmina_key_chooser.h:43
+msgid "Meta+"
+msgstr "메타+"
+
+#: src/remmina_key_chooser.h:44
+msgid "<None>"
+msgstr "<없음>"
 
 #: src/remmina_pref_dialog.c:91 src/remmina_file_editor.c:435
 msgid "Resolutions"
@@ -208,237 +238,177 @@ msgstr ""
 "이 파일에는 터미널 연결의 \"고급\" 탭에서 선택할 수 있는 \"사용자 지정\" 터미"
 "널 색상 구성표가 포함되어 있으며 설정의 \"터미널\" 탭에서 편집할 수 있습니다."
 
-#. TRANSLATORS: %s is a placeholder for an error message
-#: src/remmina_ssh_plugin.c:539
+#: src/remmina_message_panel.c:163 data/ui/remmina_mpc.glade:46
+#: data/ui/remmina_unlock.glade:46
+msgid "Cancel"
+msgstr "취소"
+
+#: src/remmina_message_panel.c:199 data/ui/remmina_snap_info_dialog.glade:28
+#: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
+#: data/ui/remmina_string_list.glade:63 data/ui/remmina_news.glade:33
+#: data/ui/remmina_preferences.glade:2640
+msgid "Close"
+msgstr "닫기"
+
+#: src/remmina_message_panel.c:260
+msgid "Yes"
+msgstr "예"
+
+#: src/remmina_message_panel.c:267
+msgid "No"
+msgstr "아니오"
+
+#: src/remmina_message_panel.c:391 plugins/rdp/rdp_plugin.c:2653
+#: data/ui/remmina_mpc.glade:172
+msgid "Domain"
+msgstr "도메인"
+
+#: src/remmina_message_panel.c:420
+msgid "Save password"
+msgstr "비밀번호 저장"
+
+#: src/remmina_message_panel.c:457 src/remmina_message_panel.c:629
+#: src/remmina_sftp_client.c:947 src/remmina_file_editor.c:151
+#: src/remmina_file_editor.c:1365 plugins/spice/spice_plugin_file_transfer.c:84
+#: data/ui/remmina_key_chooser.glade:8 data/ui/remmina_key_chooser.glade:9
+#: data/ui/remmina_spinner.glade:8 data/ui/remmina_spinner.glade:9
+msgid "_Cancel"
+msgstr "_취소"
+
+#: src/remmina_message_panel.c:513
+msgid "Enter certificate authentication files"
+msgstr "인증서의 인증 파일을 입력하세요"
+
+#: src/remmina_message_panel.c:525
+msgid "CA Certificate File"
+msgstr "CA 인증서 파일"
+
+#: src/remmina_message_panel.c:547
+msgid "CA CRL File"
+msgstr "CA CRL 파일"
+
+#: src/remmina_message_panel.c:569
+msgid "Client Certificate File"
+msgstr "클라이언트 인증서 파일"
+
+#: src/remmina_message_panel.c:591
+msgid "Client Certificate Key"
+msgstr "클라이언트 인증서 키"
+
+#: src/rcw.c:658
 #, c-format
-msgid "Error: %s"
-msgstr "에러: %s"
-
-#: src/remmina_ssh_plugin.c:556
-msgid "Terminal content saved in"
-msgstr "터미널 내용이 저장되었습니다"
-
-#: src/remmina_ssh_plugin.c:822
-msgid "Select All (host+A)"
-msgstr "전체 선택 (Host + A)"
-
-#: src/remmina_ssh_plugin.c:823
-msgid "Copy (host+C)"
-msgstr "복사 (host + C)"
-
-#: src/remmina_ssh_plugin.c:824
-msgid "Paste (host+V)"
-msgstr "붙여넣기 (host + V)"
-
-#: src/remmina_ssh_plugin.c:825
-msgid "Save session to file"
-msgstr "세션을 파일로 저장"
-
-#: src/remmina_ssh_plugin.c:826
-msgid "Increase font size (host+Page Up)"
-msgstr "글자 크기 키우기 (host+Page Up)"
-
-#: src/remmina_ssh_plugin.c:827
-msgid "Decrease font size (host+Page Down)"
-msgstr "글자 크기 줄이기 (host+Page Down)"
-
-#: src/remmina_ssh_plugin.c:828
-msgid "Find text (host+G)"
-msgstr "붙여넣기 (host + V)"
-
-#: src/remmina_ssh_plugin.c:1370 src/remmina_ssh_plugin.c:1475
-#: src/remmina_sftp_plugin.c:311 src/remmina_sftp_plugin.c:348
-#: src/remmina_file_editor.c:847
-msgid "SSH identity file"
-msgstr "SSH 인증 키 파일"
-
-#: src/remmina_ssh_plugin.c:1371 src/remmina_sftp_plugin.c:312
-#: src/remmina_file_editor.c:848
-msgid "SSH agent"
-msgstr "SSH 에이전트"
-
-#: src/remmina_ssh_plugin.c:1372 src/remmina_sftp_plugin.c:313
-#: src/remmina_file_editor.c:849
-msgid "Public key (automatic)"
-msgstr "공개 키 (자동)"
-
-#: src/remmina_ssh_plugin.c:1373 src/remmina_sftp_plugin.c:314
-#: src/remmina_file_editor.c:850
-msgid "Kerberos (GSSAPI)"
-msgstr "커베로스 (GSSAPI)"
-
-#: src/remmina_ssh_plugin.c:1448 data/ui/remmina_main.glade:177
-msgid "Copy"
-msgstr "복사"
-
-#: src/remmina_ssh_plugin.c:1448
-msgid "_Copy"
-msgstr "_복사"
-
-#: src/remmina_ssh_plugin.c:1449
-msgid "Paste"
-msgstr "붙여넣기"
-
-#: src/remmina_ssh_plugin.c:1449
-msgid "_Paste"
-msgstr "_붙여넣기"
-
-#: src/remmina_ssh_plugin.c:1450
-msgid "Select all"
-msgstr "모두 선택"
-
-#: src/remmina_ssh_plugin.c:1450
-msgid "_Select all"
-msgstr "_모두 선택"
-
-#: src/remmina_ssh_plugin.c:1451
-msgid "Increase font size"
-msgstr "글자 크기 크게"
-
-#: src/remmina_ssh_plugin.c:1451
-msgid "_Increase font size"
-msgstr "_글자 크기 크게"
-
-#: src/remmina_ssh_plugin.c:1452
-msgid "Decrease font size"
-msgstr "글자 크기 줄이기"
-
-#: src/remmina_ssh_plugin.c:1452
-msgid "_Decrease font size"
-msgstr "_글자 크기 줄이기"
-
-#: src/remmina_ssh_plugin.c:1453
-msgid "Find text"
-msgstr "텍스트 찾기"
-
-#: src/remmina_ssh_plugin.c:1453
-msgid "_Find text"
-msgstr "_텍스트 찾기"
-
-#: src/remmina_ssh_plugin.c:1472 src/remmina_sftp_plugin.c:347
-#: src/remmina_file_editor.c:952
-msgid "Authentication type"
-msgstr "인증 유형"
-
-#: src/remmina_ssh_plugin.c:1473 src/remmina_message_panel.c:330
-#: src/remmina_sftp_plugin.c:345 src/remmina_file_editor.c:961
-#: plugins/www/www_plugin.c:879 plugins/vnc/vnc_plugin.c:1960
-#: plugins/vnc/vnc_plugin.c:1980 plugins/rdp/rdp_plugin.c:2651
-#: data/ui/remmina_mpc.glade:144
-msgid "Username"
-msgstr "사용자명"
-
-#: src/remmina_ssh_plugin.c:1474 plugins/vnc/vnc_plugin.c:1961
-#: plugins/vnc/vnc_plugin.c:1981 plugins/spice/spice_plugin.c:666
-msgid "User password"
-msgstr "사용자 비밀번호"
-
-#: src/remmina_ssh_plugin.c:1477 src/remmina_file_editor.c:979
-msgid "SSH certificate file"
-msgstr "SSH 인증서 파일"
-
-#: src/remmina_ssh_plugin.c:1479 src/remmina_sftp_plugin.c:349
-#: src/remmina_file_editor.c:984
-msgid "Password to unlock private key"
-msgstr "개인 키 잠금 해제 비밀번호"
-
-#: src/remmina_ssh_plugin.c:1480 plugins/rdp/rdp_plugin.c:2693
-msgid "Start-up program"
-msgstr "시작 프로그램"
-
-#: src/remmina_ssh_plugin.c:1485
 msgid ""
-"The filename can use the following placeholders:\n"
-"\n"
-"  • %h is substituted with the server name\n"
-"  • %t is substituted with the SSH server name\n"
-"  • %u is substituted with the username\n"
-"  • %U is substituted with the SSH username\n"
-"  • %p is substituted with Remmina profile name\n"
-"  • %g is substituted with Remmina profile group name\n"
-"  • %d is substituted with local date and time in ISO 8601 format\n"
-msgstr ""
-"아래의 지시자를 사용해서 파일 이름을 사용할 수 있다:\n"
-"\n"
-"  • %h 는 서버 이름으로 대체됩니다\n"
-"  • %t 는 SSH 서버 이름으로 대체됩니다\n"
-"  • %u 는 사용자 이름으로 대체됩니다\n"
-"  • %U 는 SSH 사용자 이름으로 대체됩니다\n"
-"  • %p 는 레미나 프로필 이름으로 대체됩니다\n"
-"  • %g 는 레미나 프로필 그룹 이름으로 대체됩니다\n"
-"  • %d 는 ISO8601 형식의 로컬 날짜로 대체됩니다\n"
+"Are you sure you want to close %i active connections in the current window?"
+msgstr "현재 %i 과(와) 연결되어 있습니다. 종료 하시겠습니까?"
 
-#: src/remmina_ssh_plugin.c:1507
-msgid "Terminal colour scheme"
-msgstr "터미널 색 스키마"
+#: src/rcw.c:1394
+msgid "Viewport fullscreen mode"
+msgstr "전체 화면 모드 뷰포트"
 
-#: src/remmina_ssh_plugin.c:1508
-msgid "Character set"
-msgstr "문자표"
+#: src/rcw.c:1402 data/ui/remmina_preferences.glade:607
+msgid "Scrolled fullscreen"
+msgstr "스크롤 전체 화면"
 
-#: src/remmina_ssh_plugin.c:1509 src/remmina_sftp_plugin.c:350
-msgid "SSH Proxy Command"
-msgstr "SSH 프록시 명령"
+#: src/rcw.c:1487
+msgid "Keep aspect ratio when scaled"
+msgstr "크기 조정시 비율 유지"
 
-#: src/remmina_ssh_plugin.c:1510
-msgid "KEX (Key Exchange) algorithms"
-msgstr "KEX (키 교환) 알고리즘"
+#: src/rcw.c:1495
+msgid "Fill client window when scaled"
+msgstr "크기 조정시 클라이언트 윈도 채우기"
 
-#: src/remmina_ssh_plugin.c:1511
-msgid "Symmetric cipher client to server"
-msgstr "클라이언트 서버 대칭키 암호"
+#: src/rcw.c:2043
+msgid "Send clipboard content as keystrokes"
+msgstr "클립 보드 내용을 키 입력으로 보내기"
 
-#: src/remmina_ssh_plugin.c:1512
-msgid "Preferred server host key types"
-msgstr "기본 서버 호스트 키 종류"
+#: src/rcw.c:2147
+msgid "Turn off scaling to avoid screenshot distortion."
+msgstr "스크린 샷 왜곡 방지를 위해서 크기 조정 끄기."
 
-#: src/remmina_ssh_plugin.c:1513
-msgid "Folder for SSH session log"
-msgstr "SSH 세션 로그 폴더"
+#: src/rcw.c:2207 plugins/www/www_plugin.c:848
+msgid "Screenshot taken"
+msgstr "스크린 샷을 성공했습니다"
 
-#: src/remmina_ssh_plugin.c:1514
-msgid "Filename for SSH session log"
-msgstr "SSH 세션 로그 파일 이름"
+#: src/rcw.c:2290
+#, fuzzy
+msgid "_Menu"
+msgstr "_Menu"
 
-#: src/remmina_ssh_plugin.c:1515
-msgid "Log SSH session when exiting Remmina"
-msgstr "Remmina를 종료 할 때 SSH 세션 기록"
+#: src/rcw.c:2291
+#, fuzzy
+msgid "Menu"
+msgstr "메뉴"
 
-#: src/remmina_ssh_plugin.c:1516
-msgid "Log SSH session asynchronously"
-msgstr "SSH 세션을 비동기로 로깅"
+#: src/rcw.c:2300
+msgid "Open the Remmina main window"
+msgstr "레미나 메인 윈도 열기"
 
-#: src/remmina_ssh_plugin.c:1516
-msgid "Saving the session asynchronously may have a notable performance impact"
-msgstr "세션을 비동기로 저장하면 성능을 크게 개선할 수 있습니다"
+#: src/rcw.c:2310
+msgid "Duplicate current connection"
+msgstr "현재 연결 중복"
 
-#: src/remmina_ssh_plugin.c:1517
-msgid "Audible terminal bell"
-msgstr "오디오 터미널 벨"
+#: src/rcw.c:2327
+msgid "Resize the window to fit in remote resolution"
+msgstr "원격 접속 해상도에 맞게 윈도 크기 조정"
 
-#: src/remmina_ssh_plugin.c:1518
-msgid "SSH compression"
-msgstr "SSH 압축"
+#: src/rcw.c:2338
+msgid "Toggle fullscreen mode"
+msgstr "전체 화면 모드 전환"
 
-#: src/remmina_ssh_plugin.c:1519
-msgid "Don't remember passwords"
-msgstr "비밀번호 저장하지 않기"
+#: src/rcw.c:2384 data/ui/remmina_preferences.glade:1344
+#: data/ui/remmina_preferences.glade:1354
+msgid "Multi monitor"
+msgstr "멀티 모니터"
 
-#: src/remmina_ssh_plugin.c:1520
-msgid "Strict host key checking"
-msgstr "엄격한 호스트 키 확인"
+#: src/rcw.c:2400
+msgid "Toggle dynamic resolution update"
+msgstr "동적 해상도 갱신 전환"
 
-#: src/remmina_ssh_plugin.c:1534
-msgid "SSH - Secure Shell"
-msgstr "SSH - 보안 쉘"
+#: src/rcw.c:2410
+msgid "Toggle scaled mode"
+msgstr "크기 조정 모드 전환"
 
-#: src/remmina_applet_menu_item.c:121
-msgid "Discovered"
-msgstr "발견함"
+#: src/rcw.c:2450 data/ui/remmina_preferences.glade:1070
+msgid "Switch tab pages"
+msgstr "탭 페이지 전환"
 
-#: src/remmina_applet_menu_item.c:126
-msgid "New Connection"
-msgstr "새 연결"
+#: src/rcw.c:2460
+msgid "Grab all keyboard events"
+msgstr "모든 키보드 이벤트 기록"
+
+#: src/rcw.c:2470
+msgid "Preferences"
+msgstr "_설정"
+
+#: src/rcw.c:2479
+msgid "_Tools"
+msgstr "도구"
+
+#: src/rcw.c:2480 data/ui/remmina_main.glade:207
+msgid "Tools"
+msgstr "도구"
+
+#: src/rcw.c:2493 data/ui/remmina_preferences.glade:1277
+#: data/ui/remmina_preferences.glade:1287
+msgid "Screenshot"
+msgstr "스크린샷"
+
+#: src/rcw.c:2507 data/ui/remmina_preferences.glade:1181
+msgid "Minimize window"
+msgstr "창 최소화"
+
+#: src/rcw.c:2517 data/ui/remmina_preferences.glade:1213
+msgid "Disconnect"
+msgstr "연결 끊기"
+
+#: src/rcw.c:4284
+#, c-format
+msgid "The file “%s” is corrupted, unreadable, or could not be found."
+msgstr "\"%s\" 파일이 손상 또는 읽을 수 없거나 찾을 수 없습니다."
+
+#: src/rcw.c:4452
+msgid "Warning: This plugin requires GtkSocket, but it’s not available."
+msgstr "경고: 이 플러그인에는 GtkSocket이 필요하지만 사용할 수 없습니다."
 
 #: src/remmina_mpchange.c:234
 msgid "The passwords do not match"
@@ -461,136 +431,6 @@ msgstr "다중 비밀번호 변경 도구는 비밀 유지(secrecy) 플러그인
 msgid "%d password changed."
 msgid_plural "%d passwords changed."
 msgstr[0] "%d 개의 비밀번호를 변경했습니다."
-
-#: src/remmina_public.c:345
-#, c-format
-msgid "Address is too long for UNIX socket_path: %s"
-msgstr "UNIX socket_path 주소가 너무 깁니다: %s"
-
-#: src/remmina_public.c:355
-#, c-format
-msgid "Creating UNIX socket failed: %s"
-msgstr "UNIX 소켓을 만들지 못 했습니다: %s"
-
-#: src/remmina_public.c:361
-#, c-format
-msgid "Connecting to UNIX socket failed: %s"
-msgstr "UNIX 소켓에 연결하지 못 했습니다: %s"
-
-#: src/remmina_public.c:631
-msgid "Please enter format 'widthxheight'."
-msgstr "'가로x세로' 형태로 입력하세요."
-
-#: src/remmina_public.c:653
-msgid "Change security settings"
-msgstr "퀄리티 설정"
-
-#. TRANSLATORS: translator-credits should be replaced with a formatted list of translators in your own language
-#: src/remmina_about.c:54
-msgid "translator-credits"
-msgstr "번역자-크레딧"
-
-#: src/remmina_ftp_client.c:389
-msgid "Choose download location"
-msgstr "내려받기 위치 선택"
-
-#: src/remmina_ftp_client.c:529
-msgid "Are you sure to delete the selected files on server?"
-msgstr "선택한 파일을 삭제 하시겠습니까?"
-
-#: src/remmina_ftp_client.c:586
-msgid "Choose a file to upload"
-msgstr "업로드할 파일을 선택하세요"
-
-#: src/remmina_ftp_client.c:593
-msgid "Upload folder"
-msgstr "업로드 위치"
-
-#: src/remmina_ftp_client.c:649 src/remmina_ftp_client.c:763
-msgid "Download"
-msgstr "다운로드"
-
-#: src/remmina_ftp_client.c:656 src/remmina_ftp_client.c:770
-msgid "Upload"
-msgstr "업로드"
-
-#: src/remmina_ftp_client.c:663
-msgid "_Delete"
-msgstr "_삭제"
-
-#: src/remmina_ftp_client.c:748
-msgid "Home"
-msgstr "홈"
-
-#: src/remmina_ftp_client.c:749
-msgid "Go to home folder"
-msgstr "홈 폴더로 가기"
-
-#: src/remmina_ftp_client.c:753
-msgid "Up"
-msgstr "위로"
-
-#: src/remmina_ftp_client.c:754
-msgid "Go to parent folder"
-msgstr "상위 폴더로 가기"
-
-#: src/remmina_ftp_client.c:758 plugins/vnc/vnc_plugin.c:2019
-#: plugins/rdp/rdp_plugin.c:2740
-msgid "Refresh"
-msgstr "새로 고침"
-
-#: src/remmina_ftp_client.c:759
-msgid "Refresh current folder"
-msgstr "현재 폴더 새로 고침"
-
-#: src/remmina_ftp_client.c:764
-msgid "Download from server"
-msgstr "서버에서 다운로드"
-
-#: src/remmina_ftp_client.c:771
-msgid "Upload to server"
-msgstr "서버에 업로드"
-
-#: src/remmina_ftp_client.c:775 data/ui/remmina_main.glade:197
-msgid "Delete"
-msgstr "삭제"
-
-#: src/remmina_ftp_client.c:776
-msgid "Delete files on server"
-msgstr "서버에서 파일 삭제"
-
-#: src/remmina_ftp_client.c:905 src/remmina_ftp_client.c:974
-msgid "Filename"
-msgstr "파일 이름"
-
-#: src/remmina_ftp_client.c:918 src/remmina_ftp_client.c:1003
-msgid "Size"
-msgstr "크기"
-
-#: src/remmina_ftp_client.c:926
-msgid "User"
-msgstr "사용자"
-
-#: src/remmina_ftp_client.c:932 src/remmina_file_editor.c:1515
-#: data/ui/remmina_main.glade:464 data/ui/remmina_mpc.glade:115
-msgid "Group"
-msgstr "그룹"
-
-#: src/remmina_ftp_client.c:938
-msgid "Permission"
-msgstr "권한"
-
-#: src/remmina_ftp_client.c:990 plugins/rdp/rdp_plugin.c:2548
-msgid "Remote"
-msgstr "리모트"
-
-#: src/remmina_ftp_client.c:997 plugins/rdp/rdp_plugin.c:2547
-msgid "Local"
-msgstr "로컬"
-
-#: src/remmina_ftp_client.c:1011
-msgid "Progress"
-msgstr "진행"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:86
@@ -765,421 +605,258 @@ msgstr ""
 "remmina --set-option username --set-option resolution_mode=2 --set-option "
 "password\n"
 
-#: src/remmina_icon.c:128
-msgid "Open Main Window"
-msgstr "메인 윈도 열기"
-
-#: src/remmina_icon.c:133 data/ui/remmina_main.glade:254
-msgid "_Preferences"
-msgstr "_설정"
-
-#: src/remmina_icon.c:138
-msgid "_About"
-msgstr "_정보"
-
-#: src/remmina_icon.c:148
-msgid "Enable Service Discovery"
-msgstr "서비스 찾기 활성화"
-
-#: src/remmina_icon.c:160 data/ui/remmina_main.glade:404
-msgid "_Quit"
-msgstr "_종료"
-
-#. TRANSLATORS: Applet name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
-#. TRANSLATORS: Applet Name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
-#: src/remmina_icon.c:284 src/remmina_icon.c:416
-msgid "Remmina Applet"
-msgstr "렘미나 애플릿"
-
-#. TRANSLATORS: Applet comment/description as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
-#: src/remmina_icon.c:286 src/remmina_icon.c:418
-msgid "Connect to remote desktops through the applet menu"
-msgstr "애플릿 메뉴로 원격 데스크톱에 연결"
-
-#: src/rcw.c:658
+#: src/remmina_public.c:345
 #, c-format
-msgid ""
-"Are you sure you want to close %i active connections in the current window?"
-msgstr "현재 %i 과(와) 연결되어 있습니다. 종료 하시겠습니까?"
+msgid "Address is too long for UNIX socket_path: %s"
+msgstr "UNIX socket_path 주소가 너무 깁니다: %s"
 
-#: src/rcw.c:1394
-msgid "Viewport fullscreen mode"
-msgstr "전체 화면 모드 뷰포트"
-
-#: src/rcw.c:1402 data/ui/remmina_preferences.glade:607
-msgid "Scrolled fullscreen"
-msgstr "스크롤 전체 화면"
-
-#: src/rcw.c:1487
-msgid "Keep aspect ratio when scaled"
-msgstr "크기 조정시 비율 유지"
-
-#: src/rcw.c:1495
-msgid "Fill client window when scaled"
-msgstr "크기 조정시 클라이언트 윈도 채우기"
-
-#: src/rcw.c:2043
-msgid "Send clipboard content as keystrokes"
-msgstr "클립 보드 내용을 키 입력으로 보내기"
-
-#: src/rcw.c:2147
-msgid "Turn off scaling to avoid screenshot distortion."
-msgstr "스크린 샷 왜곡 방지를 위해서 크기 조정 끄기."
-
-#: src/rcw.c:2207 plugins/www/www_plugin.c:848
-msgid "Screenshot taken"
-msgstr "스크린 샷을 성공했습니다"
-
-#: src/rcw.c:2290
-#, fuzzy
-msgid "_Menu"
-msgstr "_Menu"
-
-#: src/rcw.c:2291
-#, fuzzy
-msgid "Menu"
-msgstr "메뉴"
-
-#: src/rcw.c:2300
-msgid "Open the Remmina main window"
-msgstr "레미나 메인 윈도 열기"
-
-#: src/rcw.c:2310
-msgid "Duplicate current connection"
-msgstr "현재 연결 중복"
-
-#: src/rcw.c:2327
-msgid "Resize the window to fit in remote resolution"
-msgstr "원격 접속 해상도에 맞게 윈도 크기 조정"
-
-#: src/rcw.c:2338
-msgid "Toggle fullscreen mode"
-msgstr "전체 화면 모드 전환"
-
-#: src/rcw.c:2384 data/ui/remmina_preferences.glade:1344
-#: data/ui/remmina_preferences.glade:1354
-msgid "Multi monitor"
-msgstr "멀티 모니터"
-
-#: src/rcw.c:2400
-msgid "Toggle dynamic resolution update"
-msgstr "동적 해상도 갱신 전환"
-
-#: src/rcw.c:2410
-msgid "Toggle scaled mode"
-msgstr "크기 조정 모드 전환"
-
-#: src/rcw.c:2450 data/ui/remmina_preferences.glade:1070
-msgid "Switch tab pages"
-msgstr "탭 페이지 전환"
-
-#: src/rcw.c:2460
-msgid "Grab all keyboard events"
-msgstr "모든 키보드 이벤트 기록"
-
-#: src/rcw.c:2470
-msgid "Preferences"
-msgstr "_설정"
-
-#: src/rcw.c:2479
-msgid "_Tools"
-msgstr "도구"
-
-#: src/rcw.c:2480 data/ui/remmina_main.glade:207
-msgid "Tools"
-msgstr "도구"
-
-#: src/rcw.c:2493 data/ui/remmina_preferences.glade:1277
-#: data/ui/remmina_preferences.glade:1287
-msgid "Screenshot"
-msgstr "스크린샷"
-
-#: src/rcw.c:2507 data/ui/remmina_preferences.glade:1181
-msgid "Minimize window"
-msgstr "창 최소화"
-
-#: src/rcw.c:2517 data/ui/remmina_preferences.glade:1213
-msgid "Disconnect"
-msgstr "연결 끊기"
-
-#: src/rcw.c:4284
+#: src/remmina_public.c:355
 #, c-format
-msgid "The file “%s” is corrupted, unreadable, or could not be found."
-msgstr "\"%s\" 파일이 손상 또는 읽을 수 없거나 찾을 수 없습니다."
+msgid "Creating UNIX socket failed: %s"
+msgstr "UNIX 소켓을 만들지 못 했습니다: %s"
 
-#: src/rcw.c:4452
-msgid "Warning: This plugin requires GtkSocket, but it’s not available."
-msgstr "경고: 이 플러그인에는 GtkSocket이 필요하지만 사용할 수 없습니다."
-
-#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1533
-msgid "Protocol"
-msgstr "프로토콜"
-
-#: src/remmina_plugin_manager.c:73
-msgid "Entry"
-msgstr "항목"
-
-#: src/remmina_plugin_manager.c:73
-msgid "File"
-msgstr "파일"
-
-#: src/remmina_plugin_manager.c:73
-msgid "Tool"
-msgstr "도구"
-
-#: src/remmina_plugin_manager.c:73
-msgid "Preference"
-msgstr "설정"
-
-#: src/remmina_plugin_manager.c:73
-msgid "Secret"
-msgstr "보안"
-
-#: src/remmina_plugin_manager.c:456 data/ui/remmina_main.glade:305
-msgid "Plugins"
-msgstr "부가 기능"
-
-#: src/remmina_plugin_manager.c:456 src/remmina_message_panel.c:452
-#: src/remmina_message_panel.c:621 src/remmina_file_editor.c:152
-msgid "_OK"
-msgstr "_OK"
-
-#: src/remmina_plugin_manager.c:474 src/remmina_file_editor.c:1490
-#: data/ui/remmina_main.glade:442
-msgid "Name"
-msgstr "이름"
-
-#: src/remmina_plugin_manager.c:480
-msgid "Type"
-msgstr "형식"
-
-#: src/remmina_plugin_manager.c:486
-msgid "Description"
-msgstr "설명"
-
-#: src/remmina_plugin_manager.c:492
-msgid "Version"
-msgstr "버전"
-
-#: src/remmina_main.c:662
+#: src/remmina_public.c:361
 #, c-format
-msgid "Total %i item."
-msgid_plural "Total %i items."
-msgstr[0] "총 %i개의 항목."
+msgid "Connecting to UNIX socket failed: %s"
+msgstr "UNIX 소켓에 연결하지 못 했습니다: %s"
 
-#: src/remmina_main.c:853
+#: src/remmina_public.c:631
+msgid "Please enter format 'widthxheight'."
+msgstr "'가로x세로' 형태로 입력하세요."
+
+#: src/remmina_public.c:653
+msgid "Change security settings"
+msgstr "퀄리티 설정"
+
+#. TRANSLATORS: translator-credits should be replaced with a formatted list of translators in your own language
+#: src/remmina_about.c:54
+msgid "translator-credits"
+msgstr "번역자-크레딧"
+
+#: src/remmina_ftp_client.c:389
+msgid "Choose download location"
+msgstr "내려받기 위치 선택"
+
+#: src/remmina_ftp_client.c:529
+msgid "Are you sure to delete the selected files on server?"
+msgstr "선택한 파일을 삭제 하시겠습니까?"
+
+#: src/remmina_ftp_client.c:586
+msgid "Choose a file to upload"
+msgstr "업로드할 파일을 선택하세요"
+
+#: src/remmina_ftp_client.c:593
+msgid "Upload folder"
+msgstr "업로드 위치"
+
+#: src/remmina_ftp_client.c:649 src/remmina_ftp_client.c:763
+msgid "Download"
+msgstr "다운로드"
+
+#: src/remmina_ftp_client.c:656 src/remmina_ftp_client.c:770
+msgid "Upload"
+msgstr "업로드"
+
+#: src/remmina_ftp_client.c:663
+msgid "_Delete"
+msgstr "_삭제"
+
+#: src/remmina_ftp_client.c:748
+msgid "Home"
+msgstr "홈"
+
+#: src/remmina_ftp_client.c:749
+msgid "Go to home folder"
+msgstr "홈 폴더로 가기"
+
+#: src/remmina_ftp_client.c:753
+msgid "Up"
+msgstr "위로"
+
+#: src/remmina_ftp_client.c:754
+msgid "Go to parent folder"
+msgstr "상위 폴더로 가기"
+
+#: src/remmina_ftp_client.c:758 plugins/rdp/rdp_plugin.c:2740
+#: plugins/vnc/vnc_plugin.c:2019
+msgid "Refresh"
+msgstr "새로 고침"
+
+#: src/remmina_ftp_client.c:759
+msgid "Refresh current folder"
+msgstr "현재 폴더 새로 고침"
+
+#: src/remmina_ftp_client.c:764
+msgid "Download from server"
+msgstr "서버에서 다운로드"
+
+#: src/remmina_ftp_client.c:771
+msgid "Upload to server"
+msgstr "서버에 업로드"
+
+#: src/remmina_ftp_client.c:775 data/ui/remmina_main.glade:197
+msgid "Delete"
+msgstr "삭제"
+
+#: src/remmina_ftp_client.c:776
+msgid "Delete files on server"
+msgstr "서버에서 파일 삭제"
+
+#: src/remmina_ftp_client.c:905 src/remmina_ftp_client.c:974
+msgid "Filename"
+msgstr "파일 이름"
+
+#: src/remmina_ftp_client.c:918 src/remmina_ftp_client.c:1003
+msgid "Size"
+msgstr "크기"
+
+#: src/remmina_ftp_client.c:926
+msgid "User"
+msgstr "사용자"
+
+#: src/remmina_ftp_client.c:932 src/remmina_file_editor.c:1515
+#: data/ui/remmina_mpc.glade:115 data/ui/remmina_main.glade:464
+msgid "Group"
+msgstr "그룹"
+
+#: src/remmina_ftp_client.c:938
+msgid "Permission"
+msgstr "권한"
+
+#: src/remmina_ftp_client.c:990 plugins/rdp/rdp_plugin.c:2548
+msgid "Remote"
+msgstr "리모트"
+
+#: src/remmina_ftp_client.c:997 plugins/rdp/rdp_plugin.c:2547
+msgid "Local"
+msgstr "로컬"
+
+#: src/remmina_ftp_client.c:1011
+msgid "Progress"
+msgstr "진행"
+
+#: src/remmina_protocol_widget.c:290 src/remmina_ssh_plugin.c:829
+#: src/remmina_ssh_plugin.c:1454
+msgid "Open SFTP transfer…"
+msgstr "SFTP 전송 열기…"
+
+#: src/remmina_protocol_widget.c:319
+msgid "Executing external commands…"
+msgstr "외부 명령 실행 중…"
+
+#. TRANSLATORS: “%s” is a placeholder for the connection profile name
+#: src/remmina_protocol_widget.c:327
 #, c-format
-msgid "Are you sure you want to delete “%s”?"
-msgstr "\"%s\"을(를) 삭제 하시겠습니까?"
+msgid "Connecting to “%s”…"
+msgstr "'%s'에 연결하는 중…"
 
-#: src/remmina_main.c:973
+#. TRANSLATORS: “%s” is a placeholder for an hostname or an IP address.
+#: src/remmina_protocol_widget.c:911 src/remmina_protocol_widget.c:1096
 #, c-format
-msgid ""
-"Unable to import:\n"
-"%s"
-msgstr ""
-"가져 올 수 없음:\n"
-"%s"
+msgid "Connecting to “%s” via SSH…"
+msgstr "SSH로 '%s'에 연결하는 중…"
 
-#: src/remmina_main.c:999 data/ui/remmina_main.glade:285
-msgid "Import"
-msgstr "가져오기"
-
-#: src/remmina_main.c:1022 src/remmina_file_editor.c:1373
-msgid "_Save"
-msgstr "_저장"
-
-#: src/remmina_main.c:1028
-msgid "This protocol does not support exporting."
-msgstr "이 프로토콜은 '내보내기'를 지원하지 않습니다."
-
-#: src/remmina_main.c:1344
-msgid "Remmina Remote Desktop Client"
-msgstr "렘미나 원격 데스크톱 클라이언트"
-
-#: src/remmina_main.c:1346
-msgid "Remmina Kiosk"
-msgstr "렘미나 키오스크"
-
-#: src/remmina_key_chooser.h:38
-msgid "Shift+"
-msgstr "Shift+"
-
-#: src/remmina_key_chooser.h:39
-msgid "Ctrl+"
-msgstr "Ctrl+"
-
-#: src/remmina_key_chooser.h:40
-msgid "Alt+"
-msgstr "Alt+"
-
-#: src/remmina_key_chooser.h:41
-msgid "Super+"
-msgstr "슈퍼+"
-
-#: src/remmina_key_chooser.h:42
-msgid "Hyper+"
-msgstr "하이퍼+"
-
-#: src/remmina_key_chooser.h:43
-msgid "Meta+"
-msgstr "메타+"
-
-#: src/remmina_key_chooser.h:44
-msgid "<None>"
-msgstr "<없음>"
-
-#. TRANSLATORS: The placeholder %s is a directory path
-#: src/remmina_sftp_client.c:173
+#. TRANSLATORS: “%i” is a placeholder for a TCP port number.
+#: src/remmina_protocol_widget.c:1160
 #, c-format
-msgid "Could not create the folder “%s”."
-msgstr "\"%s\" 폴더를 만들 수 없습니다."
+msgid "Awaiting incoming SSH connection on port %i…"
+msgstr "%i 포트에서 SSH 연결을 기다리는 중…"
 
-#. TRANSLATORS: The placeholder %s is a file path
-#: src/remmina_sftp_client.c:181 src/remmina_sftp_client.c:202
+#: src/remmina_protocol_widget.c:1213
 #, c-format
-msgid "Could not create the file “%s”."
-msgstr "\"%s\" 파일을 만들 수 없습니다."
+msgid "The “%s” command is not available on the SSH server."
+msgstr "SSH 서버에서 %s 명령을 사용할 수 없습니다."
 
-#. TRANSLATORS: The placeholders %s are a file path, and an error message.
-#: src/remmina_sftp_client.c:220
+#: src/remmina_protocol_widget.c:1218
 #, c-format
-msgid "Could not open the file “%s” on the server. %s"
-msgstr "서버에서 파일 \"%s\"을(를) 열 수 없습니다. %s"
+msgid "Could not run the “%s” command on the SSH server (status = %i)."
+msgstr "SSH 서버에서 \"%s\" 명령을 실행할 수 없습니다 (상태 = %i)."
 
-#: src/remmina_sftp_client.c:242
+#. TRANSLATORS: %s is a placeholder for an error message
+#: src/remmina_protocol_widget.c:1226
 #, c-format
-msgid "Could not save the file “%s”."
-msgstr "파일 \"%s\"을(를) 저장할 수 없습니다."
+msgid "Could not run command. %s"
+msgstr "명령을 실행할 수 없습니다. %s"
 
-#: src/remmina_sftp_client.c:281 src/remmina_sftp_client.c:698
-#: src/remmina_sftp_client.c:761
+#. TRANSLATORS: “%s” is a placeholder for a hostname or IP address.
+#: src/remmina_protocol_widget.c:1296
 #, c-format
-msgid "Could not open the folder “%s”. %s"
-msgstr "\"%s\" 폴더를 열 수 없습니다. %s"
+msgid "Connecting to %s via SSH…"
+msgstr "SSH로 '%s'에 연결하는 중…"
 
-#: src/remmina_sftp_client.c:385
+#: src/remmina_protocol_widget.c:1690
+msgid "Type in SSH username and password."
+msgstr "SSH 사용자 이름과 비밀번호를 입력하세요."
+
+#: src/remmina_protocol_widget.c:1745 src/remmina_protocol_widget.c:1777
+msgid "Fingerprint automatically accepted"
+msgstr "지문으로 자동 허용"
+
+#. TRANSLATORS: The user is asked to verify a new SSL certificate.
+#: src/remmina_protocol_widget.c:1753
+msgid "Certificate details:"
+msgstr "인증서 세부정보:"
+
+#. TRANSLATORS: An SSL certificate subject is usually the remote server the user connect to.
+#: src/remmina_protocol_widget.c:1755 src/remmina_protocol_widget.c:1787
+msgid "Subject:"
+msgstr "주제:"
+
+#. TRANSLATORS: The name or email of the entity that have issued the SSL certificate
+#: src/remmina_protocol_widget.c:1757 src/remmina_protocol_widget.c:1789
+msgid "Issuer:"
+msgstr "발급자:"
+
+#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
+#: src/remmina_protocol_widget.c:1759
+msgid "Fingerprint:"
+msgstr "지문:"
+
+#. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
+#: src/remmina_protocol_widget.c:1761
+msgid "Accept certificate?"
+msgstr "인증서를 허용하시겠습니까?"
+
+#. TRANSLATORS: The user is asked to verify a new SSL certificate.
+#: src/remmina_protocol_widget.c:1785
+msgid "The certificate changed! Details:"
+msgstr "인증서가 변경되었습니다! 세부 내용:"
+
+#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
+#: src/remmina_protocol_widget.c:1791
+msgid "Old fingerprint:"
+msgstr "이전 지문:"
+
+#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
+#: src/remmina_protocol_widget.c:1793
+msgid "New fingerprint:"
+msgstr "새 지문:"
+
+#. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
+#: src/remmina_protocol_widget.c:1795
+msgid "Accept changed certificate?"
+msgstr "변경된 인증서를 허용하시겠습니까?"
+
+#. TRANSLATORS: “%i” is a placeholder for a port number. “%s”  is a placeholder for a protocol name (VNC).
+#: src/remmina_protocol_widget.c:1938
 #, c-format
-msgid "Could not create the folder “%s” on the server. %s"
-msgstr "%s 서버에 폴더 만들기 오류. %s"
+msgid "Listening on port %i for an incoming %s connection…"
+msgstr "%s 연결을 위해서 %i 포트에서 대기 중…"
 
-#: src/remmina_sftp_client.c:413 src/remmina_sftp_client.c:435
+#: src/remmina_protocol_widget.c:1963
+msgid "Could not authenticate, attempting reconnection…"
+msgstr "인증할 수 없습니다, 다시 접속 중…"
+
+#: src/remmina_protocol_widget.c:2025 src/remmina_file_editor.c:346
+#: src/remmina_file_editor.c:917 data/ui/remmina_main.glade:478
+msgid "Server"
+msgstr "서버"
+
+#. TRANSLATORS: “%s” is a placeholder for a protocol name, like “RDP”.
+#: src/remmina_protocol_widget.c:2043
 #, c-format
-msgid "Could not create the file “%s” on the server. %s"
-msgstr "서버에 %s 파일을 만들지 못 했습니다. %s"
-
-#: src/remmina_sftp_client.c:456
-#, c-format
-msgid "Could not open the file “%s”."
-msgstr "\"%s\" 파일을 열 수 없습니다."
-
-#: src/remmina_sftp_client.c:476
-#, c-format
-msgid "Could not write to the file “%s” on the server. %s"
-msgstr "서버의 %s 파일에 쓸 수 없습니다. %s"
-
-#: src/remmina_sftp_client.c:716
-#, c-format
-msgid "Could not read from the folder. %s"
-msgstr "폴더에서 읽을 수 없습니다. %s"
-
-#: src/remmina_sftp_client.c:823
-msgid "Are you sure you want to cancel the file transfer in progress?"
-msgstr "전송 중인 파일을 취소 하시겠습니까?"
-
-#: src/remmina_sftp_client.c:857
-#, c-format
-msgid "Could not delete “%s”. %s"
-msgstr "\"%s\" 를 삭제할 수 없습니다. %s"
-
-#: src/remmina_sftp_client.c:942
-msgid "The file exists already"
-msgstr "파일이 이미 존재합니다"
-
-#: src/remmina_sftp_client.c:945
-msgid "Resume"
-msgstr "다시 진행"
-
-#: src/remmina_sftp_client.c:946
-msgid "Overwrite"
-msgstr "덮어쓰기"
-
-#: src/remmina_sftp_client.c:947 src/remmina_message_panel.c:457
-#: src/remmina_message_panel.c:629 src/remmina_file_editor.c:151
-#: src/remmina_file_editor.c:1365 plugins/spice/spice_plugin_file_transfer.c:84
-#: data/ui/remmina_spinner.glade:8 data/ui/remmina_spinner.glade:9
-#: data/ui/remmina_key_chooser.glade:8 data/ui/remmina_key_chooser.glade:9
-msgid "_Cancel"
-msgstr "_취소"
-
-#: src/remmina_sftp_client.c:964
-msgid "The following file already exists in the target folder:"
-msgstr "이미 존재하는 파일이 다음 폴더에 있음:"
-
-#: src/remmina_message_panel.c:163 data/ui/remmina_unlock.glade:46
-#: data/ui/remmina_mpc.glade:46
-msgid "Cancel"
-msgstr "취소"
-
-#: src/remmina_message_panel.c:199 data/ui/remmina_snap_info_dialog.glade:28
-#: data/ui/remmina_news.glade:33 data/ui/remmina_preferences.glade:2640
-#: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
-#: data/ui/remmina_string_list.glade:63
-msgid "Close"
-msgstr "닫기"
-
-#: src/remmina_message_panel.c:260
-msgid "Yes"
-msgstr "예"
-
-#: src/remmina_message_panel.c:267
-msgid "No"
-msgstr "아니오"
-
-#: src/remmina_message_panel.c:391 plugins/rdp/rdp_plugin.c:2653
-#: data/ui/remmina_mpc.glade:172
-msgid "Domain"
-msgstr "도메인"
-
-#: src/remmina_message_panel.c:420
-msgid "Save password"
-msgstr "비밀번호 저장"
-
-#: src/remmina_message_panel.c:513
-msgid "Enter certificate authentication files"
-msgstr "인증서의 인증 파일을 입력하세요"
-
-#: src/remmina_message_panel.c:525
-msgid "CA Certificate File"
-msgstr "CA 인증서 파일"
-
-#: src/remmina_message_panel.c:547
-msgid "CA CRL File"
-msgstr "CA CRL 파일"
-
-#: src/remmina_message_panel.c:569
-msgid "Client Certificate File"
-msgstr "클라이언트 인증서 파일"
-
-#: src/remmina_message_panel.c:591
-msgid "Client Certificate Key"
-msgstr "클라이언트 인증서 키"
-
-#: src/remmina_sftp_plugin.c:323
-msgid "Show Hidden Files"
-msgstr "숨긴 파일 보기"
-
-#: src/remmina_sftp_plugin.c:325
-msgid "Overwrite all files"
-msgstr "모두 덮어 쓰기"
-
-#: src/remmina_sftp_plugin.c:327
-msgid "Resume all file transfers"
-msgstr "파일 전송"
-
-#: src/remmina_sftp_plugin.c:359
-msgid "SFTP - Secure File Transfer"
-msgstr "SFTP - 보안 파일 전송"
+msgid "Install the %s protocol plugin first."
+msgstr "먼저 %s 프로토콜 플러그인을 설치하세요."
 
 #: src/remmina_ssh.c:236
 #, c-format
@@ -1440,6 +1117,130 @@ msgstr "쉘을 요청할 수 없습니다. %s"
 msgid "Could not create PTY device."
 msgstr "PTY 기기를 생성할 수 없습니다."
 
+#: src/remmina_exec.c:475
+#, c-format
+msgid "Plugin %s is not registered."
+msgstr "%s 는 등록되지 않은 플러그인 입니다."
+
+#: src/remmina_main.c:662
+#, c-format
+msgid "Total %i item."
+msgid_plural "Total %i items."
+msgstr[0] "총 %i개의 항목."
+
+#: src/remmina_main.c:853
+#, c-format
+msgid "Are you sure you want to delete “%s”?"
+msgstr "\"%s\"을(를) 삭제 하시겠습니까?"
+
+#: src/remmina_main.c:973
+#, c-format
+msgid ""
+"Unable to import:\n"
+"%s"
+msgstr ""
+"가져 올 수 없음:\n"
+"%s"
+
+#: src/remmina_main.c:999 data/ui/remmina_main.glade:285
+msgid "Import"
+msgstr "가져오기"
+
+#: src/remmina_main.c:1022 src/remmina_file_editor.c:1373
+msgid "_Save"
+msgstr "_저장"
+
+#: src/remmina_main.c:1028
+msgid "This protocol does not support exporting."
+msgstr "이 프로토콜은 '내보내기'를 지원하지 않습니다."
+
+#: src/remmina_main.c:1344
+msgid "Remmina Remote Desktop Client"
+msgstr "렘미나 원격 데스크톱 클라이언트"
+
+#: src/remmina_main.c:1346
+msgid "Remmina Kiosk"
+msgstr "렘미나 키오스크"
+
+#. TRANSLATORS: The placeholder %s is a directory path
+#: src/remmina_sftp_client.c:173
+#, c-format
+msgid "Could not create the folder “%s”."
+msgstr "\"%s\" 폴더를 만들 수 없습니다."
+
+#. TRANSLATORS: The placeholder %s is a file path
+#: src/remmina_sftp_client.c:181 src/remmina_sftp_client.c:202
+#, c-format
+msgid "Could not create the file “%s”."
+msgstr "\"%s\" 파일을 만들 수 없습니다."
+
+#. TRANSLATORS: The placeholders %s are a file path, and an error message.
+#: src/remmina_sftp_client.c:220
+#, c-format
+msgid "Could not open the file “%s” on the server. %s"
+msgstr "서버에서 파일 \"%s\"을(를) 열 수 없습니다. %s"
+
+#: src/remmina_sftp_client.c:242
+#, c-format
+msgid "Could not save the file “%s”."
+msgstr "파일 \"%s\"을(를) 저장할 수 없습니다."
+
+#: src/remmina_sftp_client.c:281 src/remmina_sftp_client.c:698
+#: src/remmina_sftp_client.c:761
+#, c-format
+msgid "Could not open the folder “%s”. %s"
+msgstr "\"%s\" 폴더를 열 수 없습니다. %s"
+
+#: src/remmina_sftp_client.c:385
+#, c-format
+msgid "Could not create the folder “%s” on the server. %s"
+msgstr "%s 서버에 폴더 만들기 오류. %s"
+
+#: src/remmina_sftp_client.c:413 src/remmina_sftp_client.c:435
+#, c-format
+msgid "Could not create the file “%s” on the server. %s"
+msgstr "서버에 %s 파일을 만들지 못 했습니다. %s"
+
+#: src/remmina_sftp_client.c:456
+#, c-format
+msgid "Could not open the file “%s”."
+msgstr "\"%s\" 파일을 열 수 없습니다."
+
+#: src/remmina_sftp_client.c:476
+#, c-format
+msgid "Could not write to the file “%s” on the server. %s"
+msgstr "서버의 %s 파일에 쓸 수 없습니다. %s"
+
+#: src/remmina_sftp_client.c:716
+#, c-format
+msgid "Could not read from the folder. %s"
+msgstr "폴더에서 읽을 수 없습니다. %s"
+
+#: src/remmina_sftp_client.c:823
+msgid "Are you sure you want to cancel the file transfer in progress?"
+msgstr "전송 중인 파일을 취소 하시겠습니까?"
+
+#: src/remmina_sftp_client.c:857
+#, c-format
+msgid "Could not delete “%s”. %s"
+msgstr "\"%s\" 를 삭제할 수 없습니다. %s"
+
+#: src/remmina_sftp_client.c:942
+msgid "The file exists already"
+msgstr "파일이 이미 존재합니다"
+
+#: src/remmina_sftp_client.c:945
+msgid "Resume"
+msgstr "다시 진행"
+
+#: src/remmina_sftp_client.c:946
+msgid "Overwrite"
+msgstr "덮어쓰기"
+
+#: src/remmina_sftp_client.c:964
+msgid "The following file already exists in the target folder:"
+msgstr "이미 존재하는 파일이 다음 폴더에 있음:"
+
 #: src/remmina_file_editor.c:60
 msgid ""
 "<big>Supported formats\n"
@@ -1585,6 +1386,10 @@ msgstr "SSH 확인"
 msgid "SSH private key file"
 msgstr "SSH 개인 키 파일"
 
+#: src/remmina_file_editor.c:979 src/remmina_ssh_plugin.c:1477
+msgid "SSH certificate file"
+msgstr "SSH 인증서 파일"
+
 #: src/remmina_file_editor.c:1037
 msgid "Basic"
 msgstr "기본 설정"
@@ -1635,514 +1440,331 @@ msgstr "'%s' 하위그룹 구분자 사용"
 msgid "Could not find the file “%s”."
 msgstr "\"%s\" 파일을 찾을 수 없습니다."
 
-#: src/remmina_chat_window.c:178
+#: src/remmina_icon.c:128
+msgid "Open Main Window"
+msgstr "메인 윈도 열기"
+
+#: src/remmina_icon.c:133 data/ui/remmina_main.glade:254
+msgid "_Preferences"
+msgstr "_설정"
+
+#: src/remmina_icon.c:138
+msgid "_About"
+msgstr "_정보"
+
+#: src/remmina_icon.c:148
+msgid "Enable Service Discovery"
+msgstr "서비스 찾기 활성화"
+
+#: src/remmina_icon.c:160 data/ui/remmina_main.glade:404
+msgid "_Quit"
+msgstr "_종료"
+
+#. TRANSLATORS: Applet name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
+#. TRANSLATORS: Applet Name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
+#: src/remmina_icon.c:284 src/remmina_icon.c:416
+msgid "Remmina Applet"
+msgstr "렘미나 애플릿"
+
+#. TRANSLATORS: Applet comment/description as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
+#: src/remmina_icon.c:286 src/remmina_icon.c:418
+msgid "Connect to remote desktops through the applet menu"
+msgstr "애플릿 메뉴로 원격 데스크톱에 연결"
+
+#. TRANSLATORS: %s is a placeholder for an error message
+#: src/remmina_ssh_plugin.c:539
 #, c-format
-msgid "Chat with %s"
-msgstr "%s 와(/과) 대화"
+msgid "Error: %s"
+msgstr "에러: %s"
 
-#: src/remmina_chat_window.c:230
-msgid "_Send"
-msgstr "보내기(_S)"
+#: src/remmina_ssh_plugin.c:556
+msgid "Terminal content saved in"
+msgstr "터미널 내용이 저장되었습니다"
 
-#: src/remmina_chat_window.c:240
-msgid "_Clear"
-msgstr "지우기(_C)"
+#: src/remmina_ssh_plugin.c:822
+msgid "Select All (host+A)"
+msgstr "전체 선택 (Host + A)"
 
-#: plugins/gvnc/gvnc_plugin_config.h:40
-msgid "Remmina VNC plugin for GNOME and KVM"
-msgstr "그놈(GNOME) 및 KVM용 레미나 VNC 플러그인"
+#: src/remmina_ssh_plugin.c:823
+msgid "Copy (host+C)"
+msgstr "복사 (host + C)"
 
-#: plugins/gvnc/gvnc_plugin.c:477
-#, c-format
-msgid "Unsupported authentication type %u"
-msgstr "지원하지 않는 인증 유형 %u"
+#: src/remmina_ssh_plugin.c:824
+msgid "Paste (host+V)"
+msgstr "붙여넣기 (host + V)"
 
-#: plugins/gvnc/gvnc_plugin.c:489
-#, c-format
-msgid "Authentication failure: %s"
-msgstr "인증 실패: %s"
+#: src/remmina_ssh_plugin.c:825
+msgid "Save session to file"
+msgstr "세션을 파일로 저장"
 
-#: plugins/gvnc/gvnc_plugin.c:539 plugins/vnc/vnc_plugin.c:825
-msgid "Enter VNC authentication credentials"
-msgstr "VNC 인증 자격을 입력하세요"
+#: src/remmina_ssh_plugin.c:826
+msgid "Increase font size (host+Page Up)"
+msgstr "글자 크기 키우기 (host+Page Up)"
 
-#: plugins/gvnc/gvnc_plugin.c:820
-msgid "Use server settings"
-msgstr "서버 설정 사용"
+#: src/remmina_ssh_plugin.c:827
+msgid "Decrease font size (host+Page Down)"
+msgstr "글자 크기 줄이기 (host+Page Down)"
 
-#: plugins/gvnc/gvnc_plugin.c:821
-msgid "True colour (24 bits)"
-msgstr "트루 컬러 (24 비트)"
+#: src/remmina_ssh_plugin.c:828
+msgid "Find text (host+G)"
+msgstr "붙여넣기 (host + V)"
 
-#: plugins/gvnc/gvnc_plugin.c:822
-msgid "High colour (16 bits)"
-msgstr "하이 컬러 (16 비트)"
+#: src/remmina_ssh_plugin.c:1448 data/ui/remmina_main.glade:177
+msgid "Copy"
+msgstr "복사"
 
-#: plugins/gvnc/gvnc_plugin.c:823
-msgid "Low colour (8 bits)"
-msgstr "로 컬러 (8 비트)"
+#: src/remmina_ssh_plugin.c:1448
+msgid "_Copy"
+msgstr "_복사"
 
-#: plugins/gvnc/gvnc_plugin.c:824
-msgid "Ultra low colour (3 bits)"
-msgstr "울트라 로 컬러 (3 비트)"
+#: src/remmina_ssh_plugin.c:1449
+msgid "Paste"
+msgstr "붙여넣기"
 
-#: plugins/gvnc/gvnc_plugin.c:839
-msgid "VNC password"
-msgstr "VNC 비밀번호"
+#: src/remmina_ssh_plugin.c:1449
+msgid "_Paste"
+msgstr "_붙여넣기"
 
-#: plugins/gvnc/gvnc_plugin.c:840 plugins/vnc/vnc_plugin.c:1962
-#: plugins/vnc/vnc_plugin.c:1982 plugins/rdp/rdp_plugin.c:2661
-msgid "Colour depth"
-msgstr "색 심도(Color depth)"
+#: src/remmina_ssh_plugin.c:1450
+msgid "Select all"
+msgstr "모두 선택"
 
-#: plugins/gvnc/gvnc_plugin.c:841
-msgid "Use JPEG Compression"
-msgstr "JPEG 압축 사용"
+#: src/remmina_ssh_plugin.c:1450
+msgid "_Select all"
+msgstr "_모두 선택"
 
-#: plugins/gvnc/gvnc_plugin.c:841
-msgid "This might not work on all VNC servers"
-msgstr "이것은 모든 VNC 서버에서 동작하지 않을 수 있습니다"
+#: src/remmina_ssh_plugin.c:1451
+msgid "Increase font size"
+msgstr "글자 크기 크게"
 
-#: plugins/gvnc/gvnc_plugin.c:842
-msgid "Enable GTK-VNC debug"
-msgstr "GTK-VNC 디버그 사용"
+#: src/remmina_ssh_plugin.c:1451
+msgid "_Increase font size"
+msgstr "_글자 크기 크게"
 
-#: plugins/gvnc/gvnc_plugin.c:857 plugins/gvnc/gvnc_plugin.c:871
-#: plugins/spice/spice_plugin.c:693 plugins/spice/spice_plugin.c:706
-msgid "No clipboard sync"
-msgstr "클립보드 동기화 끄기"
+#: src/remmina_ssh_plugin.c:1452
+msgid "Decrease font size"
+msgstr "글자 크기 줄이기"
 
-#: plugins/gvnc/gvnc_plugin.c:858 plugins/www/www_plugin.c:904
-#: plugins/vnc/vnc_plugin.c:2005 plugins/spice/spice_plugin.c:694
-#: plugins/rdp/rdp_plugin.c:2718
-msgid "Forget passwords after use"
-msgstr "비밀번호 저장 안함"
+#: src/remmina_ssh_plugin.c:1452
+msgid "_Decrease font size"
+msgstr "_글자 크기 줄이기"
 
-#: plugins/gvnc/gvnc_plugin.c:859 plugins/vnc/vnc_plugin.c:2004
-msgid "Ignore remote bell messages"
-msgstr "리모트 벨 메시지 무시"
+#: src/remmina_ssh_plugin.c:1453
+msgid "Find text"
+msgstr "텍스트 찾기"
 
-#: plugins/gvnc/gvnc_plugin.c:860 plugins/spice/spice_plugin.c:695
-msgid "Enable audio channel"
-msgstr "오디오 채널 활성화"
+#: src/remmina_ssh_plugin.c:1453
+msgid "_Find text"
+msgstr "_텍스트 찾기"
 
-#: plugins/gvnc/gvnc_plugin.c:861 plugins/gvnc/gvnc_plugin.c:870
-#: plugins/vnc/vnc_plugin.c:2000 plugins/vnc/vnc_plugin.c:2017
-#: plugins/spice/spice_plugin.c:697 plugins/spice/spice_plugin.c:705
-msgid "View only"
-msgstr "뷰 전용"
+#: src/remmina_ssh_plugin.c:1474 plugins/spice/spice_plugin.c:666
+#: plugins/vnc/vnc_plugin.c:1961 plugins/vnc/vnc_plugin.c:1981
+msgid "User password"
+msgstr "사용자 비밀번호"
 
-#: plugins/gvnc/gvnc_plugin.c:862
-msgid "Shared connection"
-msgstr "공유한 연결"
+#: src/remmina_ssh_plugin.c:1480 plugins/rdp/rdp_plugin.c:2693
+msgid "Start-up program"
+msgstr "시작 프로그램"
 
-#: plugins/gvnc/gvnc_plugin.c:862
+#: src/remmina_ssh_plugin.c:1485
 msgid ""
-"If the server should try to share the desktop by leaving other clients "
-"connected"
+"The filename can use the following placeholders:\n"
+"\n"
+"  • %h is substituted with the server name\n"
+"  • %t is substituted with the SSH server name\n"
+"  • %u is substituted with the username\n"
+"  • %U is substituted with the SSH username\n"
+"  • %p is substituted with Remmina profile name\n"
+"  • %g is substituted with Remmina profile group name\n"
+"  • %d is substituted with local date and time in ISO 8601 format\n"
 msgstr ""
-"다른 클라이언트가 서버에 연결된 상태에서, 서버가 데스크톱을 공유하려는 경우"
+"아래의 지시자를 사용해서 파일 이름을 사용할 수 있다:\n"
+"\n"
+"  • %h 는 서버 이름으로 대체됩니다\n"
+"  • %t 는 SSH 서버 이름으로 대체됩니다\n"
+"  • %u 는 사용자 이름으로 대체됩니다\n"
+"  • %U 는 SSH 사용자 이름으로 대체됩니다\n"
+"  • %p 는 레미나 프로필 이름으로 대체됩니다\n"
+"  • %g 는 레미나 프로필 그룹 이름으로 대체됩니다\n"
+"  • %d 는 ISO8601 형식의 로컬 날짜로 대체됩니다\n"
 
-#: plugins/gvnc/gvnc_plugin.c:872
-msgid "Send Ctrl+Alt+_Del"
-msgstr "Ctrl+Alt+_Del 전송"
+#: src/remmina_ssh_plugin.c:1507
+msgid "Terminal colour scheme"
+msgstr "터미널 색 스키마"
 
-#: plugins/gvnc/gvnc_plugin.c:873
-msgid "Send Ctrl+Alt+_Backspace"
-msgstr "Ctrl+Alt+_Backspace 전송"
+#: src/remmina_ssh_plugin.c:1508
+msgid "Character set"
+msgstr "문자표"
 
-#: plugins/gvnc/gvnc_plugin.c:874
-msgid "Send Ctrl+Alt+_F1"
-msgstr "Ctrl+Alt+_F1 전송"
+#: src/remmina_ssh_plugin.c:1510
+msgid "KEX (Key Exchange) algorithms"
+msgstr "KEX (키 교환) 알고리즘"
 
-#: plugins/gvnc/gvnc_plugin.c:875
-msgid "Send Ctrl+Alt+_F2"
-msgstr "Ctrl+Alt+_F2 전송"
+#: src/remmina_ssh_plugin.c:1511
+msgid "Symmetric cipher client to server"
+msgstr "클라이언트 서버 대칭키 암호"
 
-#: plugins/gvnc/gvnc_plugin.c:876
-msgid "Send Ctrl+Alt+_F3"
-msgstr "Ctrl+Alt+_F3 전송"
+#: src/remmina_ssh_plugin.c:1512
+msgid "Preferred server host key types"
+msgstr "기본 서버 호스트 키 종류"
 
-#: plugins/gvnc/gvnc_plugin.c:877
-msgid "Send Ctrl+Alt+_F4"
-msgstr "Ctrl+Alt+_F4 전송"
+#: src/remmina_ssh_plugin.c:1513
+msgid "Folder for SSH session log"
+msgstr "SSH 세션 로그 폴더"
 
-#: plugins/gvnc/gvnc_plugin.c:878
-msgid "Send Ctrl+Alt+_F5"
-msgstr "Ctrl+Alt+_F5 전송"
+#: src/remmina_ssh_plugin.c:1514
+msgid "Filename for SSH session log"
+msgstr "SSH 세션 로그 파일 이름"
 
-#: plugins/gvnc/gvnc_plugin.c:879
-msgid "Send Ctrl+Alt+_F6"
-msgstr "Ctrl+Alt+_F6 전송"
+#: src/remmina_ssh_plugin.c:1515
+msgid "Log SSH session when exiting Remmina"
+msgstr "Remmina를 종료 할 때 SSH 세션 기록"
 
-#: plugins/gvnc/gvnc_plugin.c:880
-msgid "Send Ctrl+Alt+_F7"
-msgstr "Ctrl+Alt+_F7 전송"
+#: src/remmina_ssh_plugin.c:1516
+msgid "Log SSH session asynchronously"
+msgstr "SSH 세션을 비동기로 로깅"
 
-#: plugins/gvnc/gvnc_plugin.c:881
-msgid "Send Ctrl+Alt+_F8"
-msgstr "Ctrl+Alt+_F8 전송"
+#: src/remmina_ssh_plugin.c:1516
+msgid "Saving the session asynchronously may have a notable performance impact"
+msgstr "세션을 비동기로 저장하면 성능을 크게 개선할 수 있습니다"
 
-#: plugins/gvnc/gvnc_plugin.c:882
-msgid "Send Ctrl+Alt+_F9"
-msgstr "Ctrl+Alt+_F9 전송"
+#: src/remmina_ssh_plugin.c:1517
+msgid "Audible terminal bell"
+msgstr "오디오 터미널 벨"
 
-#: plugins/gvnc/gvnc_plugin.c:883
-msgid "Send Ctrl+Alt+_F10"
-msgstr "Ctrl+Alt+_F10 전송"
+#: src/remmina_ssh_plugin.c:1518
+msgid "SSH compression"
+msgstr "SSH 압축"
 
-#: plugins/gvnc/gvnc_plugin.c:884
-msgid "Send Ctrl+Alt+_F11"
-msgstr "Ctrl+Alt+_F11 전송"
+#: src/remmina_ssh_plugin.c:1519
+msgid "Don't remember passwords"
+msgstr "비밀번호 저장하지 않기"
 
-#: plugins/gvnc/gvnc_plugin.c:885
-msgid "Send Ctrl+Alt+_F12"
-msgstr "Ctrl+Alt+_F12 전송"
+#: src/remmina_ssh_plugin.c:1520
+msgid "Strict host key checking"
+msgstr "엄격한 호스트 키 확인"
 
-#: plugins/gvnc/gvnc_plugin.c:887
-msgid "Reboot remote host"
-msgstr "원격 호스트 재시작"
+#: src/remmina_ssh_plugin.c:1534
+msgid "SSH - Secure Shell"
+msgstr "SSH - 보안 쉘"
 
-#: plugins/gvnc/gvnc_plugin.c:888
-msgid "Reset remote host (hard reboot)"
-msgstr "원격 호스트 재설정 (하드 재시작)"
+#: plugins/kwallet/src/kwallet_plugin_main.c:118
+msgid "Secured password storage in KWallet"
+msgstr "KWallet에 안전한 비밀번호 저장"
 
-#: plugins/gvnc/gvnc_plugin.c:889
-msgid "Shutdown remote host"
-msgstr "원격 호스트 종료"
+#: plugins/rdp/rdp_settings.c:205
+msgid "<Auto-detect>"
+msgstr "<자동 구성>"
 
-#: plugins/exec/exec_plugin_config.h:41
-msgid "Execute a command"
-msgstr "명령 실행"
+#: plugins/rdp/rdp_settings.c:237
+msgid "<Not set>"
+msgstr "<설정되지 않음>"
 
-#: plugins/exec/exec_plugin.c:160
-msgid "You did not set any command to be executed"
-msgstr "실행할 명령을 설정하지 않았습니다"
+#: plugins/rdp/rdp_settings.c:268
+msgid "<Choose a quality level to edit…>"
+msgstr "<편집 할 품질 수준을 선택하세요…>"
 
-#: plugins/exec/exec_plugin.c:206
-msgid ""
-"Warning: Running a command synchronously may cause Remmina not to respond.\n"
-"Do you really want to continue?"
-msgstr ""
-"주의: 동기식으로 명령을 실행하면 렘미나가 응답하지 않을 수도 있습니다.\n"
-"계속 하시겠습니까?"
-
-#: plugins/exec/exec_plugin.c:266
-msgid "Command"
-msgstr "명령"
-
-#: plugins/exec/exec_plugin.c:267
-msgid "Asynchronous execution"
-msgstr "비동기 실행"
-
-#: plugins/www/www_plugin.c:98
-msgid "File downloaded"
-msgstr "파일을 내려받았습니다"
-
-#: plugins/www/www_plugin.c:574
-msgid "Enter WWW authentication credentials"
-msgstr "WWW 인증 자격을 입력하세요"
-
-#: plugins/www/www_plugin.c:878
-msgid "URL"
-msgstr "URL"
-
-#: plugins/www/www_plugin.c:878
-msgid "http://address or https://address"
-msgstr "http://address 또는 https://address"
-
-#: plugins/www/www_plugin.c:895
-msgid "User agent"
-msgstr "사용자 에이전트"
-
-#: plugins/www/www_plugin.c:896
-msgid "Proxy URL"
-msgstr "프록시 URL"
-
-#: plugins/www/www_plugin.c:896
-msgid "E.g. https://example.org, socks://mysocks:1080"
-msgstr "예제) https://example.org, socks://mysocks:1080"
-
-#: plugins/www/www_plugin.c:897
-msgid "Turn on Java support"
-msgstr "자바(Java) 지원"
-
-#: plugins/www/www_plugin.c:898
-msgid "Turn on smooth scrolling"
-msgstr "부드러운 스크롤"
-
-#: plugins/www/www_plugin.c:899
-msgid "Turn on spatial navigation"
-msgstr "스파셜 네비게이션(spatial navigation)"
-
-#: plugins/www/www_plugin.c:900
-msgid "Turn on plugin support"
-msgstr "플러그인 지원"
-
-#: plugins/www/www_plugin.c:901
-msgid "Turn on WebGL support"
-msgstr "WebGL 지원"
-
-#: plugins/www/www_plugin.c:902
-msgid "Turn on HTML5 audio support"
-msgstr "HTML5 오디오 지원"
-
-#: plugins/www/www_plugin.c:903
-msgid "Ignore TLS errors"
-msgstr "TLS 에러 무시"
-
-#: plugins/www/www_plugin.c:906
-msgid "Turn on Web Inspector"
-msgstr "웹 인스펙터 지원"
-
-#: plugins/www/www_config.h:43
-msgid "Remmina web-browser plugin"
-msgstr "레미나 웹 브라우저 플러그인"
-
-#: plugins/secret/src/glibsecret_plugin.c:188
-msgid "Secured password storage in the GNOME keyring"
-msgstr "그놈(GNOME) 키링에 안전한 비밀번호 저장"
-
-#: plugins/tool_hello_world/plugin_config.h:40
-msgid "Hello, World!"
-msgstr "헬로 월드!"
-
-#: plugins/vnc/vnc_plugin.c:772
-msgid "Enter VNC password"
-msgstr "VNC 비밀번호 입력"
-
-#: plugins/vnc/vnc_plugin.c:936
-msgid "Unable to connect to VNC server"
-msgstr "VNC 서버에 연결할 수 없습니다"
-
-#: plugins/vnc/vnc_plugin.c:937
-#, c-format
-msgid "Couldn’t convert '%s' to host address"
-msgstr "호스트 주소를 '%s' 로 바꿀 수 없습니다"
-
-#: plugins/vnc/vnc_plugin.c:938
-#, c-format
-msgid "VNC connection failed: %s"
-msgstr "VNC 연결 실패: %s"
-
-#: plugins/vnc/vnc_plugin.c:939
-msgid "Your connection has been rejected."
-msgstr "연결이 거부 됐습니다."
-
-#: plugins/vnc/vnc_plugin.c:966
-#, c-format
-msgid "The VNC server requested an unknown authentication method. %s"
-msgstr "VNC 서버가 알 수 없는 인증 방법을 요청했습니다. %s"
-
-#: plugins/vnc/vnc_plugin.c:968
-msgid "Please retry after turning on encryption for this profile."
-msgstr "프로필의 암호화를 키신 후에 다시 시도하세요."
-
-#: plugins/vnc/vnc_plugin.c:1922 plugins/rdp/rdp_plugin.c:2497
-msgid "True colour (32 bpp)"
-msgstr "실제 색감 (32 bpp)"
-
-#: plugins/vnc/vnc_plugin.c:1923 plugins/rdp/rdp_plugin.c:2499
-msgid "High colour (16 bpp)"
-msgstr "고화질 (16 bpp)"
-
-#: plugins/vnc/vnc_plugin.c:1924 plugins/rdp/rdp_plugin.c:2501
-msgid "256 colours (8 bpp)"
-msgstr "256 색 (8 bpp)"
-
-#: plugins/vnc/vnc_plugin.c:1931 plugins/rdp/rdp_plugin.c:2524
-#: plugins/rdp/rdp_settings.c:274
-msgid "Good"
-msgstr "좋음"
-
-#: plugins/vnc/vnc_plugin.c:1932 plugins/rdp/rdp_plugin.c:2525
-#: plugins/rdp/rdp_settings.c:276
-msgid "Best (slowest)"
-msgstr "최고 (느림)"
-
-#: plugins/vnc/vnc_plugin.c:1933 plugins/rdp/rdp_plugin.c:2523
-#: plugins/rdp/rdp_settings.c:272
-msgid "Medium"
-msgstr "보통"
-
-#: plugins/vnc/vnc_plugin.c:1934 plugins/rdp/rdp_plugin.c:2522
-#: plugins/rdp/rdp_settings.c:270
+#: plugins/rdp/rdp_settings.c:270 plugins/rdp/rdp_plugin.c:2522
+#: plugins/vnc/vnc_plugin.c:1934
 msgid "Poor (fastest)"
 msgstr "낮음 (빠름)"
 
-#: plugins/vnc/vnc_plugin.c:1939
-msgid ""
-"Connect to VNC using a repeater:\n"
-"  • The server field must contain the repeater ID, e.g. ID:123456789\n"
-"  • The repeater field have to be set to the repeater IP and port, like:\n"
-"    10.10.10.12:5901\n"
-"  • From the remote VNC server, you will connect to\n"
-"    the repeater, e.g. with x11vnc:\n"
-"    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
-msgstr ""
-"리피터를 사용해서 VNC에 연결:\n"
-"  • 서버 필드는 리피터 ID를 포함해야 한다, 예) ID:123456789\n"
-"  • 리피터 필드에 리피터 IP와 포트를 다음과 같이 설정해야 한다:\n"
-"    10.10.10.12:5901\n"
-"  • From the remote VNC server, you will connect to\n"
-"    the repeater, e.g. with x11vnc:\n"
-"    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
+#: plugins/rdp/rdp_settings.c:272 plugins/rdp/rdp_plugin.c:2523
+#: plugins/vnc/vnc_plugin.c:1933
+msgid "Medium"
+msgstr "보통"
 
-#: plugins/vnc/vnc_plugin.c:1959
-msgid "Repeater"
-msgstr "리피터"
+#: plugins/rdp/rdp_settings.c:274 plugins/rdp/rdp_plugin.c:2524
+#: plugins/vnc/vnc_plugin.c:1931
+msgid "Good"
+msgstr "좋음"
 
-#: plugins/vnc/vnc_plugin.c:1963 plugins/vnc/vnc_plugin.c:1983
-#: plugins/rdp/rdp_plugin.c:2677
-msgid "Quality"
-msgstr "품질"
+#: plugins/rdp/rdp_settings.c:276 plugins/rdp/rdp_plugin.c:2525
+#: plugins/vnc/vnc_plugin.c:1932
+msgid "Best (slowest)"
+msgstr "최고 (느림)"
 
-#: plugins/vnc/vnc_plugin.c:1979
-msgid "Listen on port"
-msgstr "수신 포트"
+#: plugins/rdp/rdp_settings.c:415
+msgid "Keyboard layout"
+msgstr "키보드 레이아웃"
 
-#: plugins/vnc/vnc_plugin.c:1999
-msgid "Show remote cursor"
-msgstr "원격 커서 보기"
+#: plugins/rdp/rdp_settings.c:440
+msgid "Use client keyboard mapping"
+msgstr "클라이언트 키보드 매핑 사용"
 
-#: plugins/vnc/vnc_plugin.c:2001 plugins/rdp/rdp_plugin.c:2715
-msgid "Turn off clipboard sync"
-msgstr "클립보드 동기화 끄기"
+#: plugins/rdp/rdp_settings.c:450
+msgid "Quality settings"
+msgstr "퀄리티 설정"
 
-#: plugins/vnc/vnc_plugin.c:2002
-msgid "Turn off encryption"
-msgstr "TLS 암호화 사용"
+#: plugins/rdp/rdp_settings.c:470
+msgid "Wallpaper"
+msgstr "배경 화면"
 
-#: plugins/vnc/vnc_plugin.c:2003 plugins/vnc/vnc_plugin.c:2018
-msgid "Prevent local interaction on the server"
-msgstr "서버에서 로컬 인터렉션 방지"
+#: plugins/rdp/rdp_settings.c:477
+msgid "Window drag"
+msgstr "윈도 끌기"
 
-#: plugins/vnc/vnc_plugin.c:2006 plugins/rdp/rdp_plugin.c:2656
-#: plugins/rdp/rdp_settings.c:598
+#: plugins/rdp/rdp_settings.c:484
+msgid "Menu animation"
+msgstr "메뉴 에니메이션"
+
+#: plugins/rdp/rdp_settings.c:491
+msgid "Theme"
+msgstr "테마"
+
+#: plugins/rdp/rdp_settings.c:498
+msgid "Cursor shadow"
+msgstr "커서 그림자"
+
+#: plugins/rdp/rdp_settings.c:505
+msgid "Cursor blinking"
+msgstr "커서 깜박임"
+
+#: plugins/rdp/rdp_settings.c:512
+msgid "Font smoothing"
+msgstr "부드러운 글꼴"
+
+#: plugins/rdp/rdp_settings.c:519
+msgid "Composition"
+msgstr "합성"
+
+#: plugins/rdp/rdp_settings.c:529
+msgid "Remote scale factor"
+msgstr "원격 크기 조정 비율"
+
+#: plugins/rdp/rdp_settings.c:542
+msgid "Desktop scale factor %"
+msgstr "데스크톱 크기 비율 %"
+
+#: plugins/rdp/rdp_settings.c:553
+msgid "Device scale factor %"
+msgstr "기기 크기 비율 %"
+
+#: plugins/rdp/rdp_settings.c:575
+msgid "Desktop orientation"
+msgstr "데스크톱 방향"
+
+#: plugins/rdp/rdp_settings.c:592
+msgid "Input device settings"
+msgstr "입력 기기 설정"
+
+#: plugins/rdp/rdp_settings.c:598 plugins/rdp/rdp_plugin.c:2656
+#: plugins/vnc/vnc_plugin.c:2006
 msgid "Disable smooth scrolling"
 msgstr "부드러운 스크롤 비활성화"
 
-#: plugins/vnc/vnc_plugin.c:2020
-msgid "Open Chat…"
-msgstr "대화창 열기…"
+#: plugins/rdp/rdp_settings.c:608
+msgid "General settings"
+msgstr "일반 설정"
 
-#: plugins/vnc/vnc_plugin.c:2021 plugins/spice/spice_plugin.c:707
-#: plugins/rdp/rdp_plugin.c:2744
-msgid "Send Ctrl+Alt+Delete"
-msgstr "Ctrl+Alt+Delete 전송"
+#: plugins/rdp/rdp_settings.c:613 plugins/rdp/rdp_plugin.c:2708
+msgid "Reconnect attempts number"
+msgstr "다시 연결 시도 횟수"
 
-#: plugins/vnc/vnc_plugin.h:41
-msgid "Remmina VNC Plugin"
-msgstr "레미나 VNC 플러그인"
-
-#: plugins/vnc/vnc_plugin.h:46
-msgid "Remmina VNC listener Plugin"
-msgstr "레미나 VNC 리스너 플러그인"
-
-#: plugins/spice/spice_plugin_usb.c:51 plugins/spice/spice_plugin.c:708
-msgid "Select USB devices for redirection"
-msgstr "리디렉션 할 USB 기기 선택"
-
-#: plugins/spice/spice_plugin_usb.c:54
-msgid "_Close"
-msgstr "_종료"
-
-#: plugins/spice/spice_plugin_usb.c:94
-msgid "USB redirection error"
-msgstr "USB 리디렉션 에러"
-
-#: plugins/spice/spice_plugin.c:351
-msgid "Enter SPICE password"
-msgstr "SPICE 비밀번호를 입력하세요"
-
-#: plugins/spice/spice_plugin.c:386
-#, c-format
-msgid "Disconnected from the SPICE server “%s”."
-msgstr "SPICE 서버 \"%s\"와 연결이 끊어졌습니다."
-
-#: plugins/spice/spice_plugin.c:402
-msgid "TLS connection error."
-msgstr "TLS 연결 에러."
-
-#: plugins/spice/spice_plugin.c:408
-msgid "Connection to the SPICE server dropped."
-msgstr "SPICE 서버에 대한 연결이 끊어졌습니다."
-
-#: plugins/spice/spice_plugin.c:616 plugins/spice/spice_plugin.c:634
-msgid "Default"
-msgstr "기본값"
-
-#: plugins/spice/spice_plugin.c:635 plugins/rdp/rdp_plugin.c:2546
-#: data/ui/remmina_preferences.glade:677
-msgid "Off"
-msgstr "끄기"
-
-#: plugins/spice/spice_plugin.c:636
-msgid "Auto GLZ"
-msgstr "Auto GLZ"
-
-#: plugins/spice/spice_plugin.c:637
-msgid "Auto LZ"
-msgstr "Auto LZ"
-
-#: plugins/spice/spice_plugin.c:650
-msgid "Disable video overlay if videos are not displayed properly.\n"
-msgstr "비디오가 잘 보여지지 않으면, 비디오 오버레이를 비활성화 하세요.\n"
-
-#: plugins/spice/spice_plugin.c:667
-msgid "Use TLS encryption"
-msgstr "TLS 암호화 사용"
-
-#: plugins/spice/spice_plugin.c:668
-msgid "Server CA certificate"
-msgstr "서버 CA 인증서"
-
-#: plugins/spice/spice_plugin.c:669 plugins/rdp/rdp_plugin.c:2654
-msgid "Share folder"
-msgstr "공유 폴더"
-
-#: plugins/spice/spice_plugin.c:686
-msgid "Prefered video codec"
-msgstr "설정"
-
-#: plugins/spice/spice_plugin.c:687
-msgid "Turn off GStreamer overlay"
-msgstr "서버 입력 비활성화"
-
-#: plugins/spice/spice_plugin.c:690
-msgid "Prefered image compression"
-msgstr "사용하기 원하는 이미지 압축"
-
-#: plugins/spice/spice_plugin.c:696
-msgid "Share smart card"
-msgstr "스마트 카드 공유"
-
-#: plugins/spice/spice_plugin.c:719
-msgid "SPICE - Simple Protocol for Independent Computing Environments"
-msgstr ""
-"스파이스(SPICE) - Simple Protocol for Independent Computing Environments"
-
-#: plugins/spice/spice_plugin_file_transfer.c:82
-msgid "File Transfers"
-msgstr "파일 전송"
-
-#: plugins/spice/spice_plugin_file_transfer.c:219
-msgid "Transfer error"
-msgstr "전송 에러"
-
-#: plugins/spice/spice_plugin_file_transfer.c:220
-#, c-format
-msgid "%s: %s"
-msgstr "%s: %s"
-
-#: plugins/spice/spice_plugin_file_transfer.c:223
-msgid "Transfer completed"
-msgstr "전송 완료"
-
-#: plugins/spice/spice_plugin_file_transfer.c:224
-#, c-format
-msgid "The %s file has been transferred"
-msgstr "%s 파일이 전송되었습니다"
+#: plugins/rdp/rdp_settings.c:619 plugins/rdp/rdp_plugin.c:2708
+msgid ""
+"The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
+msgstr "RDP 연결이 끊어진 경우 다시 연결 시도의 최대 횟수 (기본: 20)"
 
 #: plugins/rdp/rdp_plugin.c:757 plugins/rdp/rdp_plugin.c:822
 msgid "Enter RDP authentication credentials"
@@ -2311,13 +1933,25 @@ msgstr "GFX RFX (32 bpp)"
 msgid "RemoteFX (32 bpp)"
 msgstr "리모트FX (32 bpp)"
 
+#: plugins/rdp/rdp_plugin.c:2497 plugins/vnc/vnc_plugin.c:1922
+msgid "True colour (32 bpp)"
+msgstr "실제 색감 (32 bpp)"
+
 #: plugins/rdp/rdp_plugin.c:2498
 msgid "True colour (24 bpp)"
 msgstr "실제 색감 (24 bpp)"
 
+#: plugins/rdp/rdp_plugin.c:2499 plugins/vnc/vnc_plugin.c:1923
+msgid "High colour (16 bpp)"
+msgstr "고화질 (16 bpp)"
+
 #: plugins/rdp/rdp_plugin.c:2500
 msgid "High colour (15 bpp)"
 msgstr "고화질 (15 bpp)"
+
+#: plugins/rdp/rdp_plugin.c:2501 plugins/vnc/vnc_plugin.c:1924
+msgid "256 colours (8 bpp)"
+msgstr "256 색 (8 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2532 data/ui/remmina_preferences.glade:641
 msgid "None"
@@ -2350,6 +1984,11 @@ msgstr "WAN"
 #: plugins/rdp/rdp_plugin.c:2539
 msgid "LAN"
 msgstr "LAN"
+
+#: plugins/rdp/rdp_plugin.c:2546 plugins/spice/spice_plugin.c:635
+#: data/ui/remmina_preferences.glade:677
+msgid "Off"
+msgstr "끄기"
 
 #: plugins/rdp/rdp_plugin.c:2555
 msgid "Automatic negotiation"
@@ -2510,6 +2149,10 @@ msgstr ""
 "  • hotplug,*\n"
 "\n"
 
+#: plugins/rdp/rdp_plugin.c:2654 plugins/spice/spice_plugin.c:669
+msgid "Share folder"
+msgstr "공유 폴더"
+
 #: plugins/rdp/rdp_plugin.c:2654
 #, fuzzy
 #| msgid ""
@@ -2537,9 +2180,19 @@ msgstr "다중 모니터로 화면 확장"
 msgid "List monitor IDs"
 msgstr "모니터 ID 목록"
 
+#: plugins/rdp/rdp_plugin.c:2661 plugins/vnc/vnc_plugin.c:1962
+#: plugins/vnc/vnc_plugin.c:1982 plugins/gvnc/gvnc_plugin.c:840
+msgid "Colour depth"
+msgstr "색 심도(Color depth)"
+
 #: plugins/rdp/rdp_plugin.c:2662
 msgid "Network connection type"
 msgstr "네트웍 연결 형태"
+
+#: plugins/rdp/rdp_plugin.c:2677 plugins/vnc/vnc_plugin.c:1963
+#: plugins/vnc/vnc_plugin.c:1983
+msgid "Quality"
+msgstr "품질"
 
 #: plugins/rdp/rdp_plugin.c:2678
 msgid "Security protocol negotiation"
@@ -2682,15 +2335,6 @@ msgstr "TCP 전달"
 msgid "/PATH/TO/rdp2tcp"
 msgstr "/PATH/TO/rdp2tcp"
 
-#: plugins/rdp/rdp_plugin.c:2708 plugins/rdp/rdp_settings.c:613
-msgid "Reconnect attempts number"
-msgstr "다시 연결 시도 횟수"
-
-#: plugins/rdp/rdp_plugin.c:2708 plugins/rdp/rdp_settings.c:619
-msgid ""
-"The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
-msgstr "RDP 연결이 끊어진 경우 다시 연결 시도의 최대 횟수 (기본: 20)"
-
 #: plugins/rdp/rdp_plugin.c:2709
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
 msgstr "IPv4 A 레코드보다 IPv6 AAAA 레코드 선호"
@@ -2715,6 +2359,10 @@ msgstr "병렬(parallel) 포트 공유"
 msgid "Share a smart card"
 msgstr "스마트 카드 공유"
 
+#: plugins/rdp/rdp_plugin.c:2715 plugins/vnc/vnc_plugin.c:2001
+msgid "Turn off clipboard sync"
+msgstr "클립보드 동기화 끄기"
+
 #: plugins/rdp/rdp_plugin.c:2716
 msgid "Ignore certificate"
 msgstr "인증서 무시"
@@ -2726,6 +2374,12 @@ msgstr "기존 라이선스 워크 플로우 사용"
 #: plugins/rdp/rdp_plugin.c:2717
 msgid "It disables CAL and hwId is set to 0"
 msgstr "CAL을 비활성화하고 hwId를 0으로 설정"
+
+#: plugins/rdp/rdp_plugin.c:2718 plugins/spice/spice_plugin.c:694
+#: plugins/vnc/vnc_plugin.c:2005 plugins/www/www_plugin.c:904
+#: plugins/gvnc/gvnc_plugin.c:858
+msgid "Forget passwords after use"
+msgstr "비밀번호 저장 안함"
 
 #: plugins/rdp/rdp_plugin.c:2719
 msgid "Attach to console (2003/2003 R2)"
@@ -2771,6 +2425,11 @@ msgstr "게이트웨이에도 기본 자격 증명 사용"
 msgid "Enable Gateway websockets support"
 msgstr "게이트웨이 웹소켓 지원 활성화"
 
+#: plugins/rdp/rdp_plugin.c:2744 plugins/spice/spice_plugin.c:707
+#: plugins/vnc/vnc_plugin.c:2021
+msgid "Send Ctrl+Alt+Delete"
+msgstr "Ctrl+Alt+Delete 전송"
+
 #: plugins/rdp/rdp_plugin.c:2757
 msgid "RDP - Remote Desktop Protocol"
 msgstr "RDP - 리모트 데스크톱 프로토콜(Remote Desktop Protocol)"
@@ -2787,94 +2446,435 @@ msgstr "RDP - 설정"
 msgid "Export connection in Windows .rdp file format"
 msgstr "윈도 .rdp 파일로 연결 내보내기"
 
-#: plugins/rdp/rdp_settings.c:205
-msgid "<Auto-detect>"
-msgstr "<자동 구성>"
-
-#: plugins/rdp/rdp_settings.c:237
-msgid "<Not set>"
-msgstr "<설정되지 않음>"
-
-#: plugins/rdp/rdp_settings.c:268
-msgid "<Choose a quality level to edit…>"
-msgstr "<편집 할 품질 수준을 선택하세요…>"
-
-#: plugins/rdp/rdp_settings.c:415
-msgid "Keyboard layout"
-msgstr "키보드 레이아웃"
-
-#: plugins/rdp/rdp_settings.c:440
-msgid "Use client keyboard mapping"
-msgstr "클라이언트 키보드 매핑 사용"
-
-#: plugins/rdp/rdp_settings.c:450
-msgid "Quality settings"
-msgstr "퀄리티 설정"
-
-#: plugins/rdp/rdp_settings.c:470
-msgid "Wallpaper"
-msgstr "배경 화면"
-
-#: plugins/rdp/rdp_settings.c:477
-msgid "Window drag"
-msgstr "윈도 끌기"
-
-#: plugins/rdp/rdp_settings.c:484
-msgid "Menu animation"
-msgstr "메뉴 에니메이션"
-
-#: plugins/rdp/rdp_settings.c:491
-msgid "Theme"
-msgstr "테마"
-
-#: plugins/rdp/rdp_settings.c:498
-msgid "Cursor shadow"
-msgstr "커서 그림자"
-
-#: plugins/rdp/rdp_settings.c:505
-msgid "Cursor blinking"
-msgstr "커서 깜박임"
-
-#: plugins/rdp/rdp_settings.c:512
-msgid "Font smoothing"
-msgstr "부드러운 글꼴"
-
-#: plugins/rdp/rdp_settings.c:519
-msgid "Composition"
-msgstr "합성"
-
-#: plugins/rdp/rdp_settings.c:529
-msgid "Remote scale factor"
-msgstr "원격 크기 조정 비율"
-
-#: plugins/rdp/rdp_settings.c:542
-msgid "Desktop scale factor %"
-msgstr "데스크톱 크기 비율 %"
-
-#: plugins/rdp/rdp_settings.c:553
-msgid "Device scale factor %"
-msgstr "기기 크기 비율 %"
-
-#: plugins/rdp/rdp_settings.c:575
-msgid "Desktop orientation"
-msgstr "데스크톱 방향"
-
-#: plugins/rdp/rdp_settings.c:592
-msgid "Input device settings"
-msgstr "입력 기기 설정"
-
-#: plugins/rdp/rdp_settings.c:608
-msgid "General settings"
-msgstr "일반 설정"
-
 #: plugins/rdp/rdp_event.c:344
 #, c-format
 msgid "Reconnection attempt %d of %d…"
 msgstr "%d (%d 개중에) 번째 재 연결 시도중…"
 
-#: plugins/kwallet/src/kwallet_plugin_main.c:118
-msgid "Secured password storage in KWallet"
-msgstr "KWallet에 안전한 비밀번호 저장"
+#: plugins/spice/spice_plugin_file_transfer.c:82
+msgid "File Transfers"
+msgstr "파일 전송"
+
+#: plugins/spice/spice_plugin_file_transfer.c:219
+msgid "Transfer error"
+msgstr "전송 에러"
+
+#: plugins/spice/spice_plugin_file_transfer.c:220
+#, c-format
+msgid "%s: %s"
+msgstr "%s: %s"
+
+#: plugins/spice/spice_plugin_file_transfer.c:223
+msgid "Transfer completed"
+msgstr "전송 완료"
+
+#: plugins/spice/spice_plugin_file_transfer.c:224
+#, c-format
+msgid "The %s file has been transferred"
+msgstr "%s 파일이 전송되었습니다"
+
+#: plugins/spice/spice_plugin.c:351
+msgid "Enter SPICE password"
+msgstr "SPICE 비밀번호를 입력하세요"
+
+#: plugins/spice/spice_plugin.c:386
+#, c-format
+msgid "Disconnected from the SPICE server “%s”."
+msgstr "SPICE 서버 \"%s\"와 연결이 끊어졌습니다."
+
+#: plugins/spice/spice_plugin.c:402
+msgid "TLS connection error."
+msgstr "TLS 연결 에러."
+
+#: plugins/spice/spice_plugin.c:408
+msgid "Connection to the SPICE server dropped."
+msgstr "SPICE 서버에 대한 연결이 끊어졌습니다."
+
+#: plugins/spice/spice_plugin.c:616 plugins/spice/spice_plugin.c:634
+msgid "Default"
+msgstr "기본값"
+
+#: plugins/spice/spice_plugin.c:636
+msgid "Auto GLZ"
+msgstr "Auto GLZ"
+
+#: plugins/spice/spice_plugin.c:637
+msgid "Auto LZ"
+msgstr "Auto LZ"
+
+#: plugins/spice/spice_plugin.c:650
+msgid "Disable video overlay if videos are not displayed properly.\n"
+msgstr "비디오가 잘 보여지지 않으면, 비디오 오버레이를 비활성화 하세요.\n"
+
+#: plugins/spice/spice_plugin.c:667
+msgid "Use TLS encryption"
+msgstr "TLS 암호화 사용"
+
+#: plugins/spice/spice_plugin.c:668
+msgid "Server CA certificate"
+msgstr "서버 CA 인증서"
+
+#: plugins/spice/spice_plugin.c:686
+msgid "Prefered video codec"
+msgstr "설정"
+
+#: plugins/spice/spice_plugin.c:687
+msgid "Turn off GStreamer overlay"
+msgstr "서버 입력 비활성화"
+
+#: plugins/spice/spice_plugin.c:690
+msgid "Prefered image compression"
+msgstr "사용하기 원하는 이미지 압축"
+
+#: plugins/spice/spice_plugin.c:693 plugins/spice/spice_plugin.c:706
+#: plugins/gvnc/gvnc_plugin.c:857 plugins/gvnc/gvnc_plugin.c:871
+msgid "No clipboard sync"
+msgstr "클립보드 동기화 끄기"
+
+#: plugins/spice/spice_plugin.c:695 plugins/gvnc/gvnc_plugin.c:860
+msgid "Enable audio channel"
+msgstr "오디오 채널 활성화"
+
+#: plugins/spice/spice_plugin.c:696
+msgid "Share smart card"
+msgstr "스마트 카드 공유"
+
+#: plugins/spice/spice_plugin.c:697 plugins/spice/spice_plugin.c:705
+#: plugins/vnc/vnc_plugin.c:2000 plugins/vnc/vnc_plugin.c:2017
+#: plugins/gvnc/gvnc_plugin.c:861 plugins/gvnc/gvnc_plugin.c:870
+msgid "View only"
+msgstr "뷰 전용"
+
+#: plugins/spice/spice_plugin.c:708 plugins/spice/spice_plugin_usb.c:51
+msgid "Select USB devices for redirection"
+msgstr "리디렉션 할 USB 기기 선택"
+
+#: plugins/spice/spice_plugin.c:719
+msgid "SPICE - Simple Protocol for Independent Computing Environments"
+msgstr ""
+"스파이스(SPICE) - Simple Protocol for Independent Computing Environments"
+
+#: plugins/spice/spice_plugin_usb.c:54
+msgid "_Close"
+msgstr "_종료"
+
+#: plugins/spice/spice_plugin_usb.c:94
+msgid "USB redirection error"
+msgstr "USB 리디렉션 에러"
+
+#: plugins/vnc/vnc_plugin.c:772
+msgid "Enter VNC password"
+msgstr "VNC 비밀번호 입력"
+
+#: plugins/vnc/vnc_plugin.c:825 plugins/gvnc/gvnc_plugin.c:539
+msgid "Enter VNC authentication credentials"
+msgstr "VNC 인증 자격을 입력하세요"
+
+#: plugins/vnc/vnc_plugin.c:936
+msgid "Unable to connect to VNC server"
+msgstr "VNC 서버에 연결할 수 없습니다"
+
+#: plugins/vnc/vnc_plugin.c:937
+#, c-format
+msgid "Couldn’t convert '%s' to host address"
+msgstr "호스트 주소를 '%s' 로 바꿀 수 없습니다"
+
+#: plugins/vnc/vnc_plugin.c:938
+#, c-format
+msgid "VNC connection failed: %s"
+msgstr "VNC 연결 실패: %s"
+
+#: plugins/vnc/vnc_plugin.c:939
+msgid "Your connection has been rejected."
+msgstr "연결이 거부 됐습니다."
+
+#: plugins/vnc/vnc_plugin.c:966
+#, c-format
+msgid "The VNC server requested an unknown authentication method. %s"
+msgstr "VNC 서버가 알 수 없는 인증 방법을 요청했습니다. %s"
+
+#: plugins/vnc/vnc_plugin.c:968
+msgid "Please retry after turning on encryption for this profile."
+msgstr "프로필의 암호화를 키신 후에 다시 시도하세요."
+
+#: plugins/vnc/vnc_plugin.c:1939
+msgid ""
+"Connect to VNC using a repeater:\n"
+"  • The server field must contain the repeater ID, e.g. ID:123456789\n"
+"  • The repeater field have to be set to the repeater IP and port, like:\n"
+"    10.10.10.12:5901\n"
+"  • From the remote VNC server, you will connect to\n"
+"    the repeater, e.g. with x11vnc:\n"
+"    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
+msgstr ""
+"리피터를 사용해서 VNC에 연결:\n"
+"  • 서버 필드는 리피터 ID를 포함해야 한다, 예) ID:123456789\n"
+"  • 리피터 필드에 리피터 IP와 포트를 다음과 같이 설정해야 한다:\n"
+"    10.10.10.12:5901\n"
+"  • From the remote VNC server, you will connect to\n"
+"    the repeater, e.g. with x11vnc:\n"
+"    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
+
+#: plugins/vnc/vnc_plugin.c:1959
+msgid "Repeater"
+msgstr "리피터"
+
+#: plugins/vnc/vnc_plugin.c:1979
+msgid "Listen on port"
+msgstr "수신 포트"
+
+#: plugins/vnc/vnc_plugin.c:1999
+msgid "Show remote cursor"
+msgstr "원격 커서 보기"
+
+#: plugins/vnc/vnc_plugin.c:2002
+msgid "Turn off encryption"
+msgstr "TLS 암호화 사용"
+
+#: plugins/vnc/vnc_plugin.c:2003 plugins/vnc/vnc_plugin.c:2018
+msgid "Prevent local interaction on the server"
+msgstr "서버에서 로컬 인터렉션 방지"
+
+#: plugins/vnc/vnc_plugin.c:2004 plugins/gvnc/gvnc_plugin.c:859
+msgid "Ignore remote bell messages"
+msgstr "리모트 벨 메시지 무시"
+
+#: plugins/vnc/vnc_plugin.c:2020
+msgid "Open Chat…"
+msgstr "대화창 열기…"
+
+#: plugins/vnc/vnc_plugin.h:41
+msgid "Remmina VNC Plugin"
+msgstr "레미나 VNC 플러그인"
+
+#: plugins/vnc/vnc_plugin.h:46
+msgid "Remmina VNC listener Plugin"
+msgstr "레미나 VNC 리스너 플러그인"
+
+#: plugins/www/www_config.h:43
+msgid "Remmina web-browser plugin"
+msgstr "레미나 웹 브라우저 플러그인"
+
+#: plugins/www/www_plugin.c:98
+msgid "File downloaded"
+msgstr "파일을 내려받았습니다"
+
+#: plugins/www/www_plugin.c:574
+msgid "Enter WWW authentication credentials"
+msgstr "WWW 인증 자격을 입력하세요"
+
+#: plugins/www/www_plugin.c:878
+msgid "URL"
+msgstr "URL"
+
+#: plugins/www/www_plugin.c:878
+msgid "http://address or https://address"
+msgstr "http://address 또는 https://address"
+
+#: plugins/www/www_plugin.c:895
+msgid "User agent"
+msgstr "사용자 에이전트"
+
+#: plugins/www/www_plugin.c:896
+msgid "Proxy URL"
+msgstr "프록시 URL"
+
+#: plugins/www/www_plugin.c:896
+msgid "E.g. https://example.org, socks://mysocks:1080"
+msgstr "예제) https://example.org, socks://mysocks:1080"
+
+#: plugins/www/www_plugin.c:897
+msgid "Turn on Java support"
+msgstr "자바(Java) 지원"
+
+#: plugins/www/www_plugin.c:898
+msgid "Turn on smooth scrolling"
+msgstr "부드러운 스크롤"
+
+#: plugins/www/www_plugin.c:899
+msgid "Turn on spatial navigation"
+msgstr "스파셜 네비게이션(spatial navigation)"
+
+#: plugins/www/www_plugin.c:900
+msgid "Turn on plugin support"
+msgstr "플러그인 지원"
+
+#: plugins/www/www_plugin.c:901
+msgid "Turn on WebGL support"
+msgstr "WebGL 지원"
+
+#: plugins/www/www_plugin.c:902
+msgid "Turn on HTML5 audio support"
+msgstr "HTML5 오디오 지원"
+
+#: plugins/www/www_plugin.c:903
+msgid "Ignore TLS errors"
+msgstr "TLS 에러 무시"
+
+#: plugins/www/www_plugin.c:906
+msgid "Turn on Web Inspector"
+msgstr "웹 인스펙터 지원"
+
+#: plugins/exec/exec_plugin.c:160
+msgid "You did not set any command to be executed"
+msgstr "실행할 명령을 설정하지 않았습니다"
+
+#: plugins/exec/exec_plugin.c:206
+msgid ""
+"Warning: Running a command synchronously may cause Remmina not to respond.\n"
+"Do you really want to continue?"
+msgstr ""
+"주의: 동기식으로 명령을 실행하면 렘미나가 응답하지 않을 수도 있습니다.\n"
+"계속 하시겠습니까?"
+
+#: plugins/exec/exec_plugin.c:266
+msgid "Command"
+msgstr "명령"
+
+#: plugins/exec/exec_plugin.c:267
+msgid "Asynchronous execution"
+msgstr "비동기 실행"
+
+#: plugins/exec/exec_plugin_config.h:41
+msgid "Execute a command"
+msgstr "명령 실행"
+
+#: plugins/tool_hello_world/plugin_config.h:40
+msgid "Hello, World!"
+msgstr "헬로 월드!"
+
+#: plugins/secret/src/glibsecret_plugin.c:188
+msgid "Secured password storage in the GNOME keyring"
+msgstr "그놈(GNOME) 키링에 안전한 비밀번호 저장"
+
+#: plugins/gvnc/gvnc_plugin_config.h:40
+msgid "Remmina VNC plugin for GNOME and KVM"
+msgstr "그놈(GNOME) 및 KVM용 레미나 VNC 플러그인"
+
+#: plugins/gvnc/gvnc_plugin.c:477
+#, c-format
+msgid "Unsupported authentication type %u"
+msgstr "지원하지 않는 인증 유형 %u"
+
+#: plugins/gvnc/gvnc_plugin.c:489
+#, c-format
+msgid "Authentication failure: %s"
+msgstr "인증 실패: %s"
+
+#: plugins/gvnc/gvnc_plugin.c:820
+msgid "Use server settings"
+msgstr "서버 설정 사용"
+
+#: plugins/gvnc/gvnc_plugin.c:821
+msgid "True colour (24 bits)"
+msgstr "트루 컬러 (24 비트)"
+
+#: plugins/gvnc/gvnc_plugin.c:822
+msgid "High colour (16 bits)"
+msgstr "하이 컬러 (16 비트)"
+
+#: plugins/gvnc/gvnc_plugin.c:823
+msgid "Low colour (8 bits)"
+msgstr "로 컬러 (8 비트)"
+
+#: plugins/gvnc/gvnc_plugin.c:824
+msgid "Ultra low colour (3 bits)"
+msgstr "울트라 로 컬러 (3 비트)"
+
+#: plugins/gvnc/gvnc_plugin.c:839
+msgid "VNC password"
+msgstr "VNC 비밀번호"
+
+#: plugins/gvnc/gvnc_plugin.c:841
+msgid "Use JPEG Compression"
+msgstr "JPEG 압축 사용"
+
+#: plugins/gvnc/gvnc_plugin.c:841
+msgid "This might not work on all VNC servers"
+msgstr "이것은 모든 VNC 서버에서 동작하지 않을 수 있습니다"
+
+#: plugins/gvnc/gvnc_plugin.c:842
+msgid "Enable GTK-VNC debug"
+msgstr "GTK-VNC 디버그 사용"
+
+#: plugins/gvnc/gvnc_plugin.c:862
+msgid "Shared connection"
+msgstr "공유한 연결"
+
+#: plugins/gvnc/gvnc_plugin.c:862
+msgid ""
+"If the server should try to share the desktop by leaving other clients "
+"connected"
+msgstr ""
+"다른 클라이언트가 서버에 연결된 상태에서, 서버가 데스크톱을 공유하려는 경우"
+
+#: plugins/gvnc/gvnc_plugin.c:872
+msgid "Send Ctrl+Alt+_Del"
+msgstr "Ctrl+Alt+_Del 전송"
+
+#: plugins/gvnc/gvnc_plugin.c:873
+msgid "Send Ctrl+Alt+_Backspace"
+msgstr "Ctrl+Alt+_Backspace 전송"
+
+#: plugins/gvnc/gvnc_plugin.c:874
+msgid "Send Ctrl+Alt+_F1"
+msgstr "Ctrl+Alt+_F1 전송"
+
+#: plugins/gvnc/gvnc_plugin.c:875
+msgid "Send Ctrl+Alt+_F2"
+msgstr "Ctrl+Alt+_F2 전송"
+
+#: plugins/gvnc/gvnc_plugin.c:876
+msgid "Send Ctrl+Alt+_F3"
+msgstr "Ctrl+Alt+_F3 전송"
+
+#: plugins/gvnc/gvnc_plugin.c:877
+msgid "Send Ctrl+Alt+_F4"
+msgstr "Ctrl+Alt+_F4 전송"
+
+#: plugins/gvnc/gvnc_plugin.c:878
+msgid "Send Ctrl+Alt+_F5"
+msgstr "Ctrl+Alt+_F5 전송"
+
+#: plugins/gvnc/gvnc_plugin.c:879
+msgid "Send Ctrl+Alt+_F6"
+msgstr "Ctrl+Alt+_F6 전송"
+
+#: plugins/gvnc/gvnc_plugin.c:880
+msgid "Send Ctrl+Alt+_F7"
+msgstr "Ctrl+Alt+_F7 전송"
+
+#: plugins/gvnc/gvnc_plugin.c:881
+msgid "Send Ctrl+Alt+_F8"
+msgstr "Ctrl+Alt+_F8 전송"
+
+#: plugins/gvnc/gvnc_plugin.c:882
+msgid "Send Ctrl+Alt+_F9"
+msgstr "Ctrl+Alt+_F9 전송"
+
+#: plugins/gvnc/gvnc_plugin.c:883
+msgid "Send Ctrl+Alt+_F10"
+msgstr "Ctrl+Alt+_F10 전송"
+
+#: plugins/gvnc/gvnc_plugin.c:884
+msgid "Send Ctrl+Alt+_F11"
+msgstr "Ctrl+Alt+_F11 전송"
+
+#: plugins/gvnc/gvnc_plugin.c:885
+msgid "Send Ctrl+Alt+_F12"
+msgstr "Ctrl+Alt+_F12 전송"
+
+#: plugins/gvnc/gvnc_plugin.c:887
+msgid "Reboot remote host"
+msgstr "원격 호스트 재시작"
+
+#: plugins/gvnc/gvnc_plugin.c:888
+msgid "Reset remote host (hard reboot)"
+msgstr "원격 호스트 재설정 (하드 재시작)"
+
+#: plugins/gvnc/gvnc_plugin.c:889
+msgid "Shutdown remote host"
+msgstr "원격 호스트 종료"
 
 #: plugins/telepathy/telepathy_channel_handler.c:237
 #, c-format
@@ -2892,38 +2892,6 @@ msgstr "데스크탑 공유 초대"
 #: plugins/telepathy/telepathy_plugin.c:57
 msgid "Telepathy - Desktop Sharing"
 msgstr "Telepathy - 데스크탑 공유"
-
-#: data/ui/remmina_search.glade:61 data/ui/remmina_search_popover.glade:56
-msgid "Search"
-msgstr "검색"
-
-#: data/ui/remmina_search.glade:75 data/ui/remmina_search_popover.glade:70
-msgid "Search for previous occurrence"
-msgstr "이전 항목 검색"
-
-#: data/ui/remmina_search.glade:98 data/ui/remmina_search_popover.glade:93
-msgid "Search for next occurrence"
-msgstr "다음 항목 검색"
-
-#: data/ui/remmina_search.glade:130 data/ui/remmina_search_popover.glade:125
-msgid "Toggle search options"
-msgstr "검색 옵션 토글"
-
-#: data/ui/remmina_search.glade:191 data/ui/remmina_search_popover.glade:186
-msgid "_Match case"
-msgstr "_매치 케이스"
-
-#: data/ui/remmina_search.glade:208 data/ui/remmina_search_popover.glade:203
-msgid "Match _entire word only"
-msgstr "_ 단어 전체 일치"
-
-#: data/ui/remmina_search.glade:225 data/ui/remmina_search_popover.glade:220
-msgid "Match as _regular expression"
-msgstr "_정규 표현식으로 일치"
-
-#: data/ui/remmina_search.glade:242 data/ui/remmina_search_popover.glade:237
-msgid "_Wrap around"
-msgstr "_줄 바꿈"
 
 #: data/ui/remmina_snap_info_dialog.glade:71
 msgid ""
@@ -2979,6 +2947,38 @@ msgstr "<big>기여</big>"
 msgid "Do not show this message again"
 msgstr "이 메시지를 다시 보여주지 마세요"
 
+#: data/ui/remmina_search_popover.glade:56 data/ui/remmina_search.glade:61
+msgid "Search"
+msgstr "검색"
+
+#: data/ui/remmina_search_popover.glade:70 data/ui/remmina_search.glade:75
+msgid "Search for previous occurrence"
+msgstr "이전 항목 검색"
+
+#: data/ui/remmina_search_popover.glade:93 data/ui/remmina_search.glade:98
+msgid "Search for next occurrence"
+msgstr "다음 항목 검색"
+
+#: data/ui/remmina_search_popover.glade:125 data/ui/remmina_search.glade:130
+msgid "Toggle search options"
+msgstr "검색 옵션 토글"
+
+#: data/ui/remmina_search_popover.glade:186 data/ui/remmina_search.glade:191
+msgid "_Match case"
+msgstr "_매치 케이스"
+
+#: data/ui/remmina_search_popover.glade:203 data/ui/remmina_search.glade:208
+msgid "Match _entire word only"
+msgstr "_ 단어 전체 일치"
+
+#: data/ui/remmina_search_popover.glade:220 data/ui/remmina_search.glade:225
+msgid "Match as _regular expression"
+msgstr "_정규 표현식으로 일치"
+
+#: data/ui/remmina_search_popover.glade:237 data/ui/remmina_search.glade:242
+msgid "_Wrap around"
+msgstr "_줄 바꿈"
+
 #: data/ui/remmina_about.glade:30 data/ui/remmina_main.glade:395
 msgid "About"
 msgstr "정보"
@@ -3000,6 +3000,174 @@ msgstr ""
 #: data/ui/remmina_about.glade:40
 msgid "Website"
 msgstr "웹사이트"
+
+#: data/ui/remmina_string_list.glade:14 data/ui/remmina_string_list.glade:158
+msgid "Add"
+msgstr "추가"
+
+#: data/ui/remmina_string_list.glade:20 data/ui/remmina_string_list.glade:137
+#: data/ui/remmina_key_chooser.glade:14 data/ui/remmina_key_chooser.glade:15
+msgid "_Remove"
+msgstr "_삭제"
+
+#: data/ui/remmina_string_list.glade:26 data/ui/remmina_string_list.glade:116
+msgid "Move up"
+msgstr "위로 이동"
+
+#: data/ui/remmina_string_list.glade:32 data/ui/remmina_string_list.glade:95
+msgid "Move down"
+msgstr "아래로 이동"
+
+#: data/ui/remmina_mpc.glade:14
+msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
+msgstr "<span weight='bold' size='larger'>다중 비밀번호 변경 도구</span>"
+
+#: data/ui/remmina_mpc.glade:32
+msgid "Change"
+msgstr "변경"
+
+#: data/ui/remmina_mpc.glade:201
+msgid "Selection criteria"
+msgstr "선택 기준"
+
+#: data/ui/remmina_mpc.glade:261
+msgid "Confirm password"
+msgstr "비밀번호 확인"
+
+#: data/ui/remmina_mpc.glade:294
+msgid "Set new password"
+msgstr "새 비밀번호 설정"
+
+#. A column table with multiple check-boxes
+#: data/ui/remmina_mpc.glade:331
+msgctxt "Multi password changer"
+msgid "Select"
+msgstr "선택"
+
+#: data/ui/remmina_mpc.glade:343
+msgctxt "Multi password changer table"
+msgid "Name"
+msgstr "이름"
+
+#: data/ui/remmina_mpc.glade:354
+msgctxt "Multi password changer table"
+msgid "Group"
+msgstr "그룹"
+
+#: data/ui/remmina_mpc.glade:365
+msgctxt "Multi password changer table"
+msgid "Domain\\Username"
+msgstr "도메인\\사용자 이름"
+
+#: data/ui/remmina_news.glade:75
+msgid ""
+"<big><b>The news are turned off</b></big>\n"
+"\n"
+"<span>\n"
+"Turning on news means the program connects to a Remmina server to download "
+"the release notes.\n"
+"</span>\n"
+"\n"
+"<span>\n"
+"Version checking can only be activated at compile time.\n"
+"</span>\n"
+"\n"
+"<span>\n"
+"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
+"release notes\"><i>Visit the website to read the release notes</i></a>.\n"
+"</span>"
+msgstr ""
+"<big> <b> 뉴스가 꺼져 있습니다. </b> </big>\n"
+"\n"
+"<span>\n"
+"뉴스를 켜면, 프로그램이 Remmina 서버에 연결하여 릴리스 정보를 다운로드 합니"
+"다. \n"
+"</span>\n"
+"\n"
+"<span>\n"
+"버전 확인은 컴파일 타임에만 활성화할 수 있습니다.\n"
+"</span>\n"
+"\n"
+"<span>\n"
+"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina 출시 "
+"노트\"> <i> 웹 사이트를 방문해서 출시 노트를 읽어보세요 </i> </a>.\n"
+"</span>"
+
+#. The star (*) is a reference to privacy consent
+#: data/ui/remmina_news.glade:130 data/ui/remmina_preferences.glade:464
+msgid ""
+"Send <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
+"remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
+"\">anonymous</a></b> statistics. (*)"
+msgstr ""
+"전송 <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
+"remmina__stats_8c.html#details\" title=\"Remmina usage statistics\">익명</"
+"a></b> remmina.org에 사용량"
+
+#: data/ui/remmina_news.glade:142 data/ui/remmina_news.glade:195
+msgid "Send anonymous statistics"
+msgstr "remmina.org에 사용량 보내기"
+
+#: data/ui/remmina_news.glade:156
+msgid "Use as default remote desktop client"
+msgstr "레미나를 기본 원격 데스크톱 클라이언트로 설정"
+
+#: data/ui/remmina_news.glade:165
+msgid "Apply"
+msgstr "적용"
+
+#: data/ui/remmina_news.glade:169
+msgid "Allow Remmina to automatically open .rdp and .remmina files."
+msgstr "Remmina가 .rdp, .remmina 파일을 자동으로 열 수 있게 허용"
+
+#. The star (*) is a reference to privacy consent
+#: data/ui/remmina_news.glade:183 data/ui/remmina_preferences.glade:479
+msgid ""
+"Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
+"\">remmina.org</a> (*)"
+msgstr ""
+"<a href=\"https://remmina.org\" title=\"Remmina 뉴스 사이트\"> remmina.org </"
+"a>에서 뉴스 가져 오기 (*)"
+
+#: data/ui/remmina_news.glade:208 data/ui/remmina_preferences.glade:446
+msgid ""
+"* By enabling statistics and/or news you consent to send and fetch data to/"
+"from remmina.org"
+msgstr ""
+"* 통계, 또는 뉴스를 활성화하면 remmina.org와 데이터를 주고받는 데 동의하는 것"
+"입니다."
+
+#: data/ui/remmina_news.glade:231
+msgid "<big>Take part</big>"
+msgstr "<big>기여</big>"
+
+#. Pay attention to the quoting characters as they may break the pango layout. If in doubt and cannot test, copy and paste the symbols from the English string.
+#: data/ui/remmina_news.glade:257
+msgid ""
+"<span>\n"
+"<b>You have our gratitude in choosing copylefted libre software, <a href="
+"\"https://remmina.org/donations/\" title=\"Where’s the money, Lebowski? "
+"“blblblblblb”\">donations also make us happy</a>, and further help improve "
+"Remmina.</b>\n"
+"</span>\n"
+msgstr ""
+"<span>\n"
+"<b>카피 레프트인 리브레(libre) 소프트웨어를 사용하는 것이 좋습니다, <a href="
+"\"https://remmina.org/donations/\" title=\"Awesome Remmina donations\">기부"
+"해 주세요</a>, 기부는 프로그램을 더 좋게 만들고 행복하게 합니다.</b>\n"
+"</span>\n"
+
+#: data/ui/remmina_news.glade:277
+msgid "<big>Contribute</big>"
+msgstr "<big>기여</big>"
+
+#: data/ui/remmina_key_chooser.glade:23
+msgid "Choose a new key"
+msgstr "새 키 선택"
+
+#: data/ui/remmina_key_chooser.glade:82
+msgid "Please press the new key…"
+msgstr "새 키를 누르세요…"
 
 #: data/ui/remmina_main.glade:35
 msgid "Hide or show the search bar"
@@ -3107,164 +3275,9 @@ msgstr "액션"
 msgid "Toggle view"
 msgstr "뷰 토글"
 
-#: data/ui/remmina_unlock.glade:60
-msgid "Unlock"
-msgstr "잠금 해제"
-
-#: data/ui/remmina_unlock.glade:94
-msgid "Unlock Remmina"
-msgstr "레미나 잠금 해제"
-
-#: data/ui/remmina_unlock.glade:128
-msgid "Master password"
-msgstr "마스터 비밀번호"
-
 #: data/ui/remmina_spinner.glade:54
 msgid "Please wait…"
 msgstr "잠시 기다려주세요…"
-
-#: data/ui/remmina_news.glade:75
-msgid ""
-"<big><b>The news are turned off</b></big>\n"
-"\n"
-"<span>\n"
-"Turning on news means the program connects to a Remmina server to download "
-"the release notes.\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"Version checking can only be activated at compile time.\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
-"release notes\"><i>Visit the website to read the release notes</i></a>.\n"
-"</span>"
-msgstr ""
-"<big> <b> 뉴스가 꺼져 있습니다. </b> </big>\n"
-"\n"
-"<span>\n"
-"뉴스를 켜면, 프로그램이 Remmina 서버에 연결하여 릴리스 정보를 다운로드 합니"
-"다. \n"
-"</span>\n"
-"\n"
-"<span>\n"
-"버전 확인은 컴파일 타임에만 활성화할 수 있습니다.\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina 출시 "
-"노트\"> <i> 웹 사이트를 방문해서 출시 노트를 읽어보세요 </i> </a>.\n"
-"</span>"
-
-#. The star (*) is a reference to privacy consent
-#: data/ui/remmina_news.glade:130 data/ui/remmina_preferences.glade:464
-msgid ""
-"Send <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-"remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
-"\">anonymous</a></b> statistics. (*)"
-msgstr ""
-"전송 <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-"remmina__stats_8c.html#details\" title=\"Remmina usage statistics\">익명</"
-"a></b> remmina.org에 사용량"
-
-#: data/ui/remmina_news.glade:142 data/ui/remmina_news.glade:195
-msgid "Send anonymous statistics"
-msgstr "remmina.org에 사용량 보내기"
-
-#: data/ui/remmina_news.glade:156
-msgid "Use as default remote desktop client"
-msgstr "레미나를 기본 원격 데스크톱 클라이언트로 설정"
-
-#: data/ui/remmina_news.glade:165
-msgid "Apply"
-msgstr "적용"
-
-#: data/ui/remmina_news.glade:169
-msgid "Allow Remmina to automatically open .rdp and .remmina files."
-msgstr "Remmina가 .rdp, .remmina 파일을 자동으로 열 수 있게 허용"
-
-#. The star (*) is a reference to privacy consent
-#: data/ui/remmina_news.glade:183 data/ui/remmina_preferences.glade:479
-msgid ""
-"Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
-"\">remmina.org</a> (*)"
-msgstr ""
-"<a href=\"https://remmina.org\" title=\"Remmina 뉴스 사이트\"> remmina.org </"
-"a>에서 뉴스 가져 오기 (*)"
-
-#: data/ui/remmina_news.glade:208 data/ui/remmina_preferences.glade:446
-msgid ""
-"* By enabling statistics and/or news you consent to send and fetch data to/"
-"from remmina.org"
-msgstr ""
-"* 통계, 또는 뉴스를 활성화하면 remmina.org와 데이터를 주고받는 데 동의하는 것"
-"입니다."
-
-#: data/ui/remmina_news.glade:231
-msgid "<big>Take part</big>"
-msgstr "<big>기여</big>"
-
-#. Pay attention to the quoting characters as they may break the pango layout. If in doubt and cannot test, copy and paste the symbols from the English string.
-#: data/ui/remmina_news.glade:257
-msgid ""
-"<span>\n"
-"<b>You have our gratitude in choosing copylefted libre software, <a href="
-"\"https://remmina.org/donations/\" title=\"Where’s the money, Lebowski? "
-"“blblblblblb”\">donations also make us happy</a>, and further help improve "
-"Remmina.</b>\n"
-"</span>\n"
-msgstr ""
-"<span>\n"
-"<b>카피 레프트인 리브레(libre) 소프트웨어를 사용하는 것이 좋습니다, <a href="
-"\"https://remmina.org/donations/\" title=\"Awesome Remmina donations\">기부"
-"해 주세요</a>, 기부는 프로그램을 더 좋게 만들고 행복하게 합니다.</b>\n"
-"</span>\n"
-
-#: data/ui/remmina_news.glade:277
-msgid "<big>Contribute</big>"
-msgstr "<big>기여</big>"
-
-#: data/ui/remmina_mpc.glade:14
-msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
-msgstr "<span weight='bold' size='larger'>다중 비밀번호 변경 도구</span>"
-
-#: data/ui/remmina_mpc.glade:32
-msgid "Change"
-msgstr "변경"
-
-#: data/ui/remmina_mpc.glade:201
-msgid "Selection criteria"
-msgstr "선택 기준"
-
-#: data/ui/remmina_mpc.glade:261
-msgid "Confirm password"
-msgstr "비밀번호 확인"
-
-#: data/ui/remmina_mpc.glade:294
-msgid "Set new password"
-msgstr "새 비밀번호 설정"
-
-#. A column table with multiple check-boxes
-#: data/ui/remmina_mpc.glade:331
-msgctxt "Multi password changer"
-msgid "Select"
-msgstr "선택"
-
-#: data/ui/remmina_mpc.glade:343
-msgctxt "Multi password changer table"
-msgid "Name"
-msgstr "이름"
-
-#: data/ui/remmina_mpc.glade:354
-msgctxt "Multi password changer table"
-msgid "Group"
-msgstr "그룹"
-
-#: data/ui/remmina_mpc.glade:365
-msgctxt "Multi password changer table"
-msgid "Domain\\Username"
-msgstr "도메인\\사용자 이름"
 
 #: data/ui/remmina_preferences.glade:42
 msgid "Double-click action"
@@ -3825,30 +3838,17 @@ msgstr "터미널"
 msgid "Remmina Preferences"
 msgstr "레미나 환경 설정"
 
-#: data/ui/remmina_string_list.glade:14 data/ui/remmina_string_list.glade:158
-msgid "Add"
-msgstr "추가"
+#: data/ui/remmina_unlock.glade:60
+msgid "Unlock"
+msgstr "잠금 해제"
 
-#: data/ui/remmina_string_list.glade:20 data/ui/remmina_string_list.glade:137
-#: data/ui/remmina_key_chooser.glade:14 data/ui/remmina_key_chooser.glade:15
-msgid "_Remove"
-msgstr "_삭제"
+#: data/ui/remmina_unlock.glade:94
+msgid "Unlock Remmina"
+msgstr "레미나 잠금 해제"
 
-#: data/ui/remmina_string_list.glade:26 data/ui/remmina_string_list.glade:116
-msgid "Move up"
-msgstr "위로 이동"
-
-#: data/ui/remmina_string_list.glade:32 data/ui/remmina_string_list.glade:95
-msgid "Move down"
-msgstr "아래로 이동"
-
-#: data/ui/remmina_key_chooser.glade:23
-msgid "Choose a new key"
-msgstr "새 키 선택"
-
-#: data/ui/remmina_key_chooser.glade:82
-msgid "Please press the new key…"
-msgstr "새 키를 누르세요…"
+#: data/ui/remmina_unlock.glade:128
+msgid "Master password"
+msgstr "마스터 비밀번호"
 
 #~ msgid "Could not run %s on SSH server."
 #~ msgstr "SSH 서버에서 %s 을(를) 실행할 수 없습니다."

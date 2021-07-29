@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-07-16 21:21+0000\n"
+"POT-Creation-Date: 2021-07-29 20:50+0000\n"
 "PO-Revision-Date: 2021-07-16 08:58+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Bengali <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -21,163 +21,210 @@ msgstr ""
 "X-Generator: Weblate 4.7.2-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
 
-#: src/remmina_protocol_widget.c:283 src/remmina_sftp_plugin.c:328
-#, fuzzy
-msgid "Connect via SSH from a new terminal"
-msgstr "একটি নতুন টার্মিনাল থেকে এসএসএইচ-এর মাধ্যমে সংযোগ করুন"
-
-#: src/remmina_protocol_widget.c:290 src/remmina_ssh_plugin.c:829
-#: src/remmina_ssh_plugin.c:1454
-#, fuzzy
-msgid "Open SFTP transfer…"
-msgstr "খোলা এসএফটিপি স্থানান্তর…"
-
-#: src/remmina_protocol_widget.c:319
-#, fuzzy
-msgid "Executing external commands…"
-msgstr "বাহ্যিক আদেশগুলি কার্যকর করা হচ্ছে…"
-
-#. TRANSLATORS: “%s” is a placeholder for the connection profile name
-#: src/remmina_protocol_widget.c:327
-#, fuzzy, c-format
-msgid "Connecting to “%s”…"
-msgstr "\"[১৫]\"-এর সাথে সংযোগ করা হচ্ছে…"
-
-#. TRANSLATORS: “%s” is a placeholder for an hostname or an IP address.
-#: src/remmina_protocol_widget.c:911 src/remmina_protocol_widget.c:1096
-#, fuzzy, c-format
-msgid "Connecting to “%s” via SSH…"
-msgstr "এসএসএইচ-এর মাধ্যমে \"%s\" এর সাথে সংযোগ করা হচ্ছে…"
-
-#. TRANSLATORS: “%i” is a placeholder for a TCP port number.
-#: src/remmina_protocol_widget.c:1160
-#, fuzzy, c-format
-msgid "Awaiting incoming SSH connection on port %i…"
-msgstr "বন্দরে আগত এসএসএইচ সংযোগের অপেক্ষায় %i…"
-
-#: src/remmina_protocol_widget.c:1213
-#, fuzzy, c-format
-msgid "The “%s” command is not available on the SSH server."
-msgstr "\"%s\" কমান্ডটি এসএসএইচ সার্ভারে উপলভ্য নয়।"
-
-#: src/remmina_protocol_widget.c:1218
-#, fuzzy, c-format
-msgid "Could not run the “%s” command on the SSH server (status = %i)."
-msgstr "এসএসএইচ সার্ভারে (স্থিতি = %i) \"%s\" কমান্ড চালানো যায়নি।"
-
-#. TRANSLATORS: %s is a placeholder for an error message
-#: src/remmina_protocol_widget.c:1226
-#, fuzzy, c-format
-msgid "Could not run command. %s"
-msgstr "কমান্ড চালানো যায়নি। %s"
-
-#. TRANSLATORS: “%s” is a placeholder for a hostname or IP address.
-#: src/remmina_protocol_widget.c:1296
-#, fuzzy, c-format
-msgid "Connecting to %s via SSH…"
-msgstr "এসএসএইচ-এর মাধ্যমে %s এর সাথে সংযোগ করা হচ্ছে…"
-
+#: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:346
 #: src/remmina_protocol_widget.c:1672 src/remmina_protocol_widget.c:1691
-#: src/remmina_ssh_plugin.c:1369 src/remmina_sftp_plugin.c:310
-#: src/remmina_sftp_plugin.c:346 src/remmina_file_editor.c:846
-#: src/remmina_file_editor.c:967 plugins/www/www_plugin.c:880
-#: plugins/rdp/rdp_plugin.c:2652 data/ui/remmina_unlock.glade:116
-#: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1693
+#: src/remmina_file_editor.c:846 src/remmina_file_editor.c:967
+#: src/remmina_ssh_plugin.c:1369 plugins/rdp/rdp_plugin.c:2652
+#: plugins/www/www_plugin.c:880 data/ui/remmina_mpc.glade:236
+#: data/ui/remmina_preferences.glade:1693 data/ui/remmina_unlock.glade:116
 #, fuzzy
 msgid "Password"
 msgstr "পাসওয়ার্ড"
 
-#: src/remmina_protocol_widget.c:1690
+#: src/remmina_sftp_plugin.c:311 src/remmina_sftp_plugin.c:348
+#: src/remmina_file_editor.c:847 src/remmina_ssh_plugin.c:1370
+#: src/remmina_ssh_plugin.c:1475
 #, fuzzy
-msgid "Type in SSH username and password."
-msgstr "এসএসএইচ ব্যবহারকারীর নাম এবং পাসওয়ার্ড টাইপ করুন।"
+msgid "SSH identity file"
+msgstr "এসএসএইচ পরিচয় ফাইল"
 
-#: src/remmina_protocol_widget.c:1745 src/remmina_protocol_widget.c:1777
+#: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:848
+#: src/remmina_ssh_plugin.c:1371
 #, fuzzy
-msgid "Fingerprint automatically accepted"
-msgstr "আঙুলের ছাপ স্বয়ংক্রিয়ভাবে গৃহীত হয়েছে"
+msgid "SSH agent"
+msgstr "এসএসএইচ এজেন্ট"
 
-#. TRANSLATORS: The user is asked to verify a new SSL certificate.
-#: src/remmina_protocol_widget.c:1753
+#: src/remmina_sftp_plugin.c:313 src/remmina_file_editor.c:849
+#: src/remmina_ssh_plugin.c:1372
 #, fuzzy
-msgid "Certificate details:"
-msgstr "সার্টিফিকেটের বিবরণ:"
+msgid "Public key (automatic)"
+msgstr "পাবলিক কী (স্বয়ংক্রিয়)"
 
-#. TRANSLATORS: An SSL certificate subject is usually the remote server the user connect to.
-#: src/remmina_protocol_widget.c:1755 src/remmina_protocol_widget.c:1787
+#: src/remmina_sftp_plugin.c:314 src/remmina_file_editor.c:850
+#: src/remmina_ssh_plugin.c:1373
 #, fuzzy
-msgid "Subject:"
-msgstr "বিষয়:"
+msgid "Kerberos (GSSAPI)"
+msgstr "কের্বেরোস (জিএসএসএপিআই)"
 
-#. TRANSLATORS: The name or email of the entity that have issued the SSL certificate
-#: src/remmina_protocol_widget.c:1757 src/remmina_protocol_widget.c:1789
+#: src/remmina_sftp_plugin.c:323
 #, fuzzy
-msgid "Issuer:"
-msgstr "প্রদানকারী:"
+msgid "Show Hidden Files"
+msgstr "লুকানো ফাইলগুলি দেখান"
 
-#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
-#: src/remmina_protocol_widget.c:1759
+#: src/remmina_sftp_plugin.c:325
 #, fuzzy
-msgid "Fingerprint:"
-msgstr "আঙুলের ছাপ:"
+msgid "Overwrite all files"
+msgstr "সমস্ত ফাইল ওভাররাইট করুন"
 
-#. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
-#: src/remmina_protocol_widget.c:1761
+#: src/remmina_sftp_plugin.c:327
 #, fuzzy
-msgid "Accept certificate?"
-msgstr "শংসাপত্র গ্রহণ করবেন?"
+msgid "Resume all file transfers"
+msgstr "সমস্ত ফাইল স্থানান্তর পুনরায় শুরু করুন"
 
-#. TRANSLATORS: The user is asked to verify a new SSL certificate.
-#: src/remmina_protocol_widget.c:1785
+#: src/remmina_sftp_plugin.c:328 src/remmina_protocol_widget.c:283
 #, fuzzy
-msgid "The certificate changed! Details:"
-msgstr "শংসাপত্র টি পরিবর্তিত হয়েছে! বিস্তারিত:"
+msgid "Connect via SSH from a new terminal"
+msgstr "একটি নতুন টার্মিনাল থেকে এসএসএইচ-এর মাধ্যমে সংযোগ করুন"
 
-#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
-#: src/remmina_protocol_widget.c:1791
+#: src/remmina_sftp_plugin.c:345 src/remmina_message_panel.c:330
+#: src/remmina_file_editor.c:961 src/remmina_ssh_plugin.c:1473
+#: plugins/rdp/rdp_plugin.c:2651 plugins/vnc/vnc_plugin.c:1960
+#: plugins/vnc/vnc_plugin.c:1980 plugins/www/www_plugin.c:879
+#: data/ui/remmina_mpc.glade:144
 #, fuzzy
-msgid "Old fingerprint:"
-msgstr "পুরানো আঙুলের ছাপ:"
+msgid "Username"
+msgstr "নাম"
 
-#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
-#: src/remmina_protocol_widget.c:1793
+#: src/remmina_sftp_plugin.c:347 src/remmina_file_editor.c:952
+#: src/remmina_ssh_plugin.c:1472
 #, fuzzy
-msgid "New fingerprint:"
-msgstr "নতুন আঙুলের ছাপ:"
+msgid "Authentication type"
+msgstr "প্রমাণীকরণের ধরন"
 
-#. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
-#: src/remmina_protocol_widget.c:1795
+#: src/remmina_sftp_plugin.c:349 src/remmina_file_editor.c:984
+#: src/remmina_ssh_plugin.c:1479
 #, fuzzy
-msgid "Accept changed certificate?"
-msgstr "পরিবর্তিত শংসাপত্র গ্রহণ করবেন?"
+msgid "Password to unlock private key"
+msgstr "ব্যক্তিগত কী আনলক করতে পাসওয়ার্ড"
 
-#. TRANSLATORS: “%i” is a placeholder for a port number. “%s”  is a placeholder for a protocol name (VNC).
-#: src/remmina_protocol_widget.c:1938
-#, fuzzy, c-format
-msgid "Listening on port %i for an incoming %s connection…"
-msgstr "একটি আগত %s সংযোগের জন্য বন্দরে %i শোনা…"
-
-#: src/remmina_protocol_widget.c:1963
+#: src/remmina_sftp_plugin.c:350 src/remmina_ssh_plugin.c:1509
 #, fuzzy
-msgid "Could not authenticate, attempting reconnection…"
-msgstr "প্রমাণীকরণ করা যায়নি, পুনরায় সংযোগের চেষ্টা করা হচ্ছে…"
+msgid "SSH Proxy Command"
+msgstr "এসএসএইচ প্রক্সি কমান্ড"
 
-#: src/remmina_protocol_widget.c:2025 src/remmina_file_editor.c:346
-#: src/remmina_file_editor.c:917 data/ui/remmina_main.glade:478
+#: src/remmina_sftp_plugin.c:359
 #, fuzzy
-msgid "Server"
-msgstr "সার্ভার"
+msgid "SFTP - Secure File Transfer"
+msgstr "এসএফটিপি - নিরাপদ ফাইল স্থানান্তর"
 
-#. TRANSLATORS: “%s” is a placeholder for a protocol name, like “RDP”.
-#: src/remmina_protocol_widget.c:2043
-#, fuzzy, c-format
-msgid "Install the %s protocol plugin first."
-msgstr "প্রথমে %s প্রোটোকল প্লাগইন ইনস্টল করুন।"
+#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1533
+#, fuzzy
+msgid "Protocol"
+msgstr "প্রোটোকল"
 
-#: src/remmina_exec.c:475
-#, fuzzy, c-format
-msgid "Plugin %s is not registered."
-msgstr "প্লাগইন %s নিবন্ধিত নয়।"
+#: src/remmina_plugin_manager.c:73
+#, fuzzy
+msgid "Entry"
+msgstr "প্রবেশকার্য"
+
+#: src/remmina_plugin_manager.c:73
+#, fuzzy
+msgid "File"
+msgstr "ফাইল"
+
+#: src/remmina_plugin_manager.c:73
+#, fuzzy
+msgid "Tool"
+msgstr "সরঞ্জাম"
+
+#: src/remmina_plugin_manager.c:73
+#, fuzzy
+msgid "Preference"
+msgstr "পছন্দগুলি"
+
+#: src/remmina_plugin_manager.c:73
+#, fuzzy
+msgid "Secret"
+msgstr "গোপন"
+
+#: src/remmina_plugin_manager.c:456 data/ui/remmina_main.glade:305
+#, fuzzy
+msgid "Plugins"
+msgstr "প্লাগইন"
+
+#: src/remmina_plugin_manager.c:456 src/remmina_message_panel.c:452
+#: src/remmina_message_panel.c:621 src/remmina_file_editor.c:152
+#, fuzzy
+msgid "_OK"
+msgstr "_OK"
+
+#: src/remmina_plugin_manager.c:474 src/remmina_file_editor.c:1490
+#: data/ui/remmina_main.glade:442
+#, fuzzy
+msgid "Name"
+msgstr "নাম"
+
+#: src/remmina_plugin_manager.c:480
+#, fuzzy
+msgid "Type"
+msgstr "ধরণ"
+
+#: src/remmina_plugin_manager.c:486
+#, fuzzy
+msgid "Description"
+msgstr "বিস্তারিত"
+
+#: src/remmina_plugin_manager.c:492
+#, fuzzy
+msgid "Version"
+msgstr "সংস্করণ"
+
+#: src/remmina_chat_window.c:178
+#, c-format
+msgid "Chat with %s"
+msgstr "%s এর সাথে কথোপকথন"
+
+#: src/remmina_chat_window.c:230
+msgid "_Send"
+msgstr "প্রেরণ (_S)"
+
+#: src/remmina_chat_window.c:240
+msgid "_Clear"
+msgstr "অপসারণ (_C)"
+
+#: src/remmina_applet_menu_item.c:121
+#, fuzzy
+msgid "Discovered"
+msgstr "আবিষ্কার"
+
+#: src/remmina_applet_menu_item.c:126
+msgid "New Connection"
+msgstr "নতুন সংযোগ"
+
+#: src/remmina_key_chooser.h:38
+#, fuzzy
+msgid "Shift+"
+msgstr "শিফট+"
+
+#: src/remmina_key_chooser.h:39
+#, fuzzy
+msgid "Ctrl+"
+msgstr "সিটিআরএল+"
+
+#: src/remmina_key_chooser.h:40
+#, fuzzy
+msgid "Alt+"
+msgstr "অল্ট+"
+
+#: src/remmina_key_chooser.h:41
+#, fuzzy
+msgid "Super+"
+msgstr "সুপার+"
+
+#: src/remmina_key_chooser.h:42
+#, fuzzy
+msgid "Hyper+"
+msgstr "হাইপার+"
+
+#: src/remmina_key_chooser.h:43
+#, fuzzy
+msgid "Meta+"
+msgstr "মেটা+"
+
+#: src/remmina_key_chooser.h:44
+#, fuzzy
+msgid "<None>"
+msgstr "<None>"
 
 #: src/remmina_pref_dialog.c:91 src/remmina_file_editor.c:435
 #, fuzzy
@@ -226,286 +273,211 @@ msgstr ""
 "এই ফাইলে টার্মিনাল সংযোগের \"উন্নত\" ট্যাব থেকে নির্বাচনযোগ্য এবং সেটিংসে "
 "\"টার্মিনাল\" ট্যাবে সম্পাদনাযোগ্য \"কাস্টম\" টার্মিনাল রঙের স্কিম রয়েছে।"
 
-#. TRANSLATORS: %s is a placeholder for an error message
-#: src/remmina_ssh_plugin.c:539
-#, fuzzy, c-format
-msgid "Error: %s"
-msgstr "ত্রুটি: %s"
-
-#: src/remmina_ssh_plugin.c:556
+#: src/remmina_message_panel.c:163 data/ui/remmina_mpc.glade:46
+#: data/ui/remmina_unlock.glade:46
 #, fuzzy
-msgid "Terminal content saved in"
-msgstr "টার্মিনাল সামগ্রী সংরক্ষিত হয়েছে"
+msgid "Cancel"
+msgstr "বাতিল"
 
-#: src/remmina_ssh_plugin.c:822
+#: src/remmina_message_panel.c:199 data/ui/remmina_snap_info_dialog.glade:28
+#: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
+#: data/ui/remmina_string_list.glade:63 data/ui/remmina_news.glade:33
+#: data/ui/remmina_preferences.glade:2640
 #, fuzzy
-msgid "Select All (host+A)"
-msgstr "সব নির্বাচন করুন (হোস্ট+এ)"
+msgid "Close"
+msgstr "বন্ধ"
 
-#: src/remmina_ssh_plugin.c:823
-#, fuzzy
-msgid "Copy (host+C)"
-msgstr "অনুলিপি করুন (হোস্ট+সি)"
+#: src/remmina_message_panel.c:260
+msgid "Yes"
+msgstr "হ্য"
 
-#: src/remmina_ssh_plugin.c:824
-#, fuzzy
-msgid "Paste (host+V)"
-msgstr "পেস্ট করুন (হোস্ট+ভি)"
+#: src/remmina_message_panel.c:267
+msgid "No"
+msgstr "না"
 
-#: src/remmina_ssh_plugin.c:825
+#: src/remmina_message_panel.c:391 plugins/rdp/rdp_plugin.c:2653
+#: data/ui/remmina_mpc.glade:172
 #, fuzzy
-msgid "Save session to file"
-msgstr "ফাইলে সেশন সংরক্ষণ করুন"
+msgid "Domain"
+msgstr "ডোমেন"
 
-#: src/remmina_ssh_plugin.c:826
+#: src/remmina_message_panel.c:420
 #, fuzzy
-msgid "Increase font size (host+Page Up)"
-msgstr "ফন্টের আকার বাড়ান (হোস্ট+পৃষ্ঠা আপ)"
+msgid "Save password"
+msgstr "পাসওয়ার্ড সংরক্ষণ করুন"
 
-#: src/remmina_ssh_plugin.c:827
+#: src/remmina_message_panel.c:457 src/remmina_message_panel.c:629
+#: src/remmina_sftp_client.c:947 src/remmina_file_editor.c:151
+#: src/remmina_file_editor.c:1365 plugins/spice/spice_plugin_file_transfer.c:84
+#: data/ui/remmina_key_chooser.glade:8 data/ui/remmina_key_chooser.glade:9
+#: data/ui/remmina_spinner.glade:8 data/ui/remmina_spinner.glade:9
 #, fuzzy
-msgid "Decrease font size (host+Page Down)"
-msgstr "ফন্টের আকার হ্রাস করুন (হোস্ট+পৃষ্ঠা নিচে)"
+msgid "_Cancel"
+msgstr "_বাতিল"
 
-#: src/remmina_ssh_plugin.c:828
+#: src/remmina_message_panel.c:513
 #, fuzzy
-msgid "Find text (host+G)"
-msgstr "পাঠ্য খুঁজুন (হোস্ট+জি)"
+msgid "Enter certificate authentication files"
+msgstr "শংসাপত্র প্রমাণীকরণ ফাইলগুলি লিখুন"
 
-#: src/remmina_ssh_plugin.c:1370 src/remmina_ssh_plugin.c:1475
-#: src/remmina_sftp_plugin.c:311 src/remmina_sftp_plugin.c:348
-#: src/remmina_file_editor.c:847
+#: src/remmina_message_panel.c:525
 #, fuzzy
-msgid "SSH identity file"
-msgstr "এসএসএইচ পরিচয় ফাইল"
+msgid "CA Certificate File"
+msgstr "সিএ সার্টিফিকেট ফাইল"
 
-#: src/remmina_ssh_plugin.c:1371 src/remmina_sftp_plugin.c:312
-#: src/remmina_file_editor.c:848
+#: src/remmina_message_panel.c:547
 #, fuzzy
-msgid "SSH agent"
-msgstr "এসএসএইচ এজেন্ট"
+msgid "CA CRL File"
+msgstr "সিএ সিআরএল ফাইল"
 
-#: src/remmina_ssh_plugin.c:1372 src/remmina_sftp_plugin.c:313
-#: src/remmina_file_editor.c:849
+#: src/remmina_message_panel.c:569
 #, fuzzy
-msgid "Public key (automatic)"
-msgstr "পাবলিক কী (স্বয়ংক্রিয়)"
+msgid "Client Certificate File"
+msgstr "ক্লায়েন্ট সার্টিফিকেট ফাইল"
 
-#: src/remmina_ssh_plugin.c:1373 src/remmina_sftp_plugin.c:314
-#: src/remmina_file_editor.c:850
+#: src/remmina_message_panel.c:591
 #, fuzzy
-msgid "Kerberos (GSSAPI)"
-msgstr "কের্বেরোস (জিএসএসএপিআই)"
+msgid "Client Certificate Key"
+msgstr "ক্লায়েন্ট সার্টিফিকেট কী"
 
-#: src/remmina_ssh_plugin.c:1448 data/ui/remmina_main.glade:177
-#, fuzzy
-msgid "Copy"
-msgstr "অনুলিপি"
-
-#: src/remmina_ssh_plugin.c:1448
-#, fuzzy
-msgid "_Copy"
-msgstr "_Copy"
-
-#: src/remmina_ssh_plugin.c:1449
-#, fuzzy
-msgid "Paste"
-msgstr "সাঁটো"
-
-#: src/remmina_ssh_plugin.c:1449
-#, fuzzy
-msgid "_Paste"
-msgstr "_Paste"
-
-#: src/remmina_ssh_plugin.c:1450
-#, fuzzy
-msgid "Select all"
-msgstr "সব নির্বাচন"
-
-#: src/remmina_ssh_plugin.c:1450
-#, fuzzy
-msgid "_Select all"
-msgstr "সবগুলো নির্বাচন"
-
-#: src/remmina_ssh_plugin.c:1451
-#, fuzzy
-msgid "Increase font size"
-msgstr "ফন্টের আকার বাড়ান"
-
-#: src/remmina_ssh_plugin.c:1451
-#, fuzzy
-msgid "_Increase font size"
-msgstr "_Increase ফন্টের আকার"
-
-#: src/remmina_ssh_plugin.c:1452
-#, fuzzy
-msgid "Decrease font size"
-msgstr "ফন্টের আকার হ্রাস করুন"
-
-#: src/remmina_ssh_plugin.c:1452
-#, fuzzy
-msgid "_Decrease font size"
-msgstr "_Decrease ফন্টের আকার"
-
-#: src/remmina_ssh_plugin.c:1453
-#, fuzzy
-msgid "Find text"
-msgstr "পাঠ্য খুঁজুন"
-
-#: src/remmina_ssh_plugin.c:1453
-#, fuzzy
-msgid "_Find text"
-msgstr "_Find লেখা"
-
-#: src/remmina_ssh_plugin.c:1472 src/remmina_sftp_plugin.c:347
-#: src/remmina_file_editor.c:952
-#, fuzzy
-msgid "Authentication type"
-msgstr "প্রমাণীকরণের ধরন"
-
-#: src/remmina_ssh_plugin.c:1473 src/remmina_message_panel.c:330
-#: src/remmina_sftp_plugin.c:345 src/remmina_file_editor.c:961
-#: plugins/www/www_plugin.c:879 plugins/vnc/vnc_plugin.c:1960
-#: plugins/vnc/vnc_plugin.c:1980 plugins/rdp/rdp_plugin.c:2651
-#: data/ui/remmina_mpc.glade:144
-#, fuzzy
-msgid "Username"
-msgstr "নাম"
-
-#: src/remmina_ssh_plugin.c:1474 plugins/vnc/vnc_plugin.c:1961
-#: plugins/vnc/vnc_plugin.c:1981 plugins/spice/spice_plugin.c:666
-#, fuzzy
-msgid "User password"
-msgstr "ব্যবহারকারীর পাসওয়ার্ড"
-
-#: src/remmina_ssh_plugin.c:1477 src/remmina_file_editor.c:979
-#, fuzzy
-msgid "SSH certificate file"
-msgstr "এসএসএইচ সার্টিফিকেট ফাইল"
-
-#: src/remmina_ssh_plugin.c:1479 src/remmina_sftp_plugin.c:349
-#: src/remmina_file_editor.c:984
-#, fuzzy
-msgid "Password to unlock private key"
-msgstr "ব্যক্তিগত কী আনলক করতে পাসওয়ার্ড"
-
-#: src/remmina_ssh_plugin.c:1480 plugins/rdp/rdp_plugin.c:2693
-#, fuzzy
-msgid "Start-up program"
-msgstr "স্টার্ট-আপ প্রোগ্রাম"
-
-#: src/remmina_ssh_plugin.c:1485
-#, fuzzy
+#: src/rcw.c:658
+#, c-format
 msgid ""
-"The filename can use the following placeholders:\n"
-"\n"
-"  • %h is substituted with the server name\n"
-"  • %t is substituted with the SSH server name\n"
-"  • %u is substituted with the username\n"
-"  • %U is substituted with the SSH username\n"
-"  • %p is substituted with Remmina profile name\n"
-"  • %g is substituted with Remmina profile group name\n"
-"  • %d is substituted with local date and time in ISO 8601 format\n"
+"Are you sure you want to close %i active connections in the current window?"
 msgstr ""
-"ফাইলনামনিম্নলিখিত স্থানধারীদের ব্যবহার করতে পারে:\n"
-"\n"
-"• %এইচ সার্ভারের নামের সাথে প্রতিস্থাপিত\n"
-"  • %t এসএসএইচ সার্ভার নামের সাথে প্রতিস্থাপিত\n"
-"  • %ইউ ব্যবহারকারীর নামের সাথে প্রতিস্থাপিত\n"
-"  • %ইউ এসএসএইচ ব্যবহারকারীর নামের সাথে প্রতিস্থাপিত\n"
-"  • %পি রেমিনা প্রোফাইল নামের সাথে প্রতিস্থাপিত\n"
-"  • %g রেমিনা প্রোফাইল গ্রুপের নামের সাথে প্রতিস্থাপিত\n"
-"  • %1$%-এর পরিবর্তে আইএসও 8601 বিন্যাসে স্থানীয় তারিখ ও সময় দেওয়া হয়েছে\n"
+"বর্তমানে উইন্ডোতে %i টি সক্রিয় সংযোগ রয়েছে। আপনি নিশ্চিত যে এটি বন্ধ করতে চান?"
 
-#: src/remmina_ssh_plugin.c:1507
+#: src/rcw.c:1394
 #, fuzzy
-msgid "Terminal colour scheme"
-msgstr "টার্মিনাল রঙের স্কিম"
+msgid "Viewport fullscreen mode"
+msgstr "পূর্ণস্ক্রিন মোড প্রদর্শন করুন"
 
-#: src/remmina_ssh_plugin.c:1508
+#: src/rcw.c:1402 data/ui/remmina_preferences.glade:607
 #, fuzzy
-msgid "Character set"
-msgstr "অক্ষর সেট"
+msgid "Scrolled fullscreen"
+msgstr "ফুলস্ক্রিনে স্ক্রোল করা হয়েছে"
 
-#: src/remmina_ssh_plugin.c:1509 src/remmina_sftp_plugin.c:350
+#: src/rcw.c:1487
 #, fuzzy
-msgid "SSH Proxy Command"
-msgstr "এসএসএইচ প্রক্সি কমান্ড"
+msgid "Keep aspect ratio when scaled"
+msgstr "স্কেল করা হলে অ্যাসপেক্ট রেশিও রাখুন"
 
-#: src/remmina_ssh_plugin.c:1510
+#: src/rcw.c:1495
 #, fuzzy
-msgid "KEX (Key Exchange) algorithms"
-msgstr "কেইএক্স (কী এক্সচেঞ্জ) অ্যালগরিদম"
+msgid "Fill client window when scaled"
+msgstr "স্কেল করা হলে ক্লায়েন্ট উইন্ডো পূরণ করুন"
 
-#: src/remmina_ssh_plugin.c:1511
+#: src/rcw.c:2043
 #, fuzzy
-msgid "Symmetric cipher client to server"
-msgstr "সার্ভারে প্রতিসাম্য সাইফার ক্লায়েন্ট"
+msgid "Send clipboard content as keystrokes"
+msgstr "কীস্ট্রোক হিসাবে ক্লিপবোর্ড সামগ্রী পাঠান"
 
-#: src/remmina_ssh_plugin.c:1512
+#: src/rcw.c:2147
 #, fuzzy
-msgid "Preferred server host key types"
-msgstr "পছন্দসই সার্ভার হোস্ট কী প্রকার"
+msgid "Turn off scaling to avoid screenshot distortion."
+msgstr "স্ক্রিনশট বিকৃতি এড়াতে স্কেলিং বন্ধ করুন।"
 
-#: src/remmina_ssh_plugin.c:1513
+#: src/rcw.c:2207 plugins/www/www_plugin.c:848
 #, fuzzy
-msgid "Folder for SSH session log"
-msgstr "এসএসএইচ সেশন লগের জন্য ফোল্ডার"
+msgid "Screenshot taken"
+msgstr "স্ক্রিনশট নেওয়া হয়েছে"
 
-#: src/remmina_ssh_plugin.c:1514
+#: src/rcw.c:2290
 #, fuzzy
-msgid "Filename for SSH session log"
-msgstr "এসএসএইচ সেশন লগের জন্য ফাইলনাম"
+msgid "_Menu"
+msgstr "_Menu"
 
-#: src/remmina_ssh_plugin.c:1515
+#: src/rcw.c:2291
 #, fuzzy
-msgid "Log SSH session when exiting Remmina"
-msgstr "রেমিনা থেকে প্রস্থান করার সময় লগ এসএসএইচ সেশন"
+msgid "Menu"
+msgstr "সূচী"
 
-#: src/remmina_ssh_plugin.c:1516
+#: src/rcw.c:2300
 #, fuzzy
-msgid "Log SSH session asynchronously"
-msgstr "লগ এসএসএইচ সেশন টি এককালবর্তীভাবে"
+msgid "Open the Remmina main window"
+msgstr "রেমিনা প্রধান উইন্ডো খুলুন"
 
-#: src/remmina_ssh_plugin.c:1516
+#: src/rcw.c:2310
 #, fuzzy
-msgid "Saving the session asynchronously may have a notable performance impact"
-msgstr ""
-"সেশনটি অসিঙ্ক্রোনাসভাবে সংরক্ষণ করা একটি উল্লেখযোগ্য কর্মক্ষমতার প্রভাব ফেলতে পারে"
+msgid "Duplicate current connection"
+msgstr "ডুপ্লিকেট বর্তমান সংযোগ"
 
-#: src/remmina_ssh_plugin.c:1517
+#: src/rcw.c:2327
 #, fuzzy
-msgid "Audible terminal bell"
-msgstr "শ্রবণযোগ্য টার্মিনাল ঘন্টা"
+msgid "Resize the window to fit in remote resolution"
+msgstr "দূরবর্তী রেজোলিউশনে ফিট করতে উইন্ডোটি পুনরায় আকার দিন"
 
-#: src/remmina_ssh_plugin.c:1518
+#: src/rcw.c:2338
 #, fuzzy
-msgid "SSH compression"
-msgstr "এসএসএইচ কম্প্রেশন"
+msgid "Toggle fullscreen mode"
+msgstr "ফুলস্ক্রিন মোড টগল করুন"
 
-#: src/remmina_ssh_plugin.c:1519
+#: src/rcw.c:2384 data/ui/remmina_preferences.glade:1344
+#: data/ui/remmina_preferences.glade:1354
 #, fuzzy
-msgid "Don't remember passwords"
-msgstr "পাসওয়ার্ড মনে নেই"
+msgid "Multi monitor"
+msgstr "মাল্টি মনিটর"
 
-#: src/remmina_ssh_plugin.c:1520
+#: src/rcw.c:2400
 #, fuzzy
-msgid "Strict host key checking"
-msgstr "কঠোর হোস্ট কী চেকিং"
+msgid "Toggle dynamic resolution update"
+msgstr "গতিশীল রেজোলিউশন আপডেট টগল করুন"
 
-#: src/remmina_ssh_plugin.c:1534
+#: src/rcw.c:2410
 #, fuzzy
-msgid "SSH - Secure Shell"
-msgstr "এসএসএইচ - নিরাপদ শেল"
+msgid "Toggle scaled mode"
+msgstr "স্কেল মোড টগল করুন"
 
-#: src/remmina_applet_menu_item.c:121
+#: src/rcw.c:2450 data/ui/remmina_preferences.glade:1070
 #, fuzzy
-msgid "Discovered"
-msgstr "আবিষ্কার"
+msgid "Switch tab pages"
+msgstr "ট্যাব পৃষ্ঠাগুলি স্যুইচ করুন"
 
-#: src/remmina_applet_menu_item.c:126
-msgid "New Connection"
-msgstr "নতুন সংযোগ"
+#: src/rcw.c:2460
+#, fuzzy
+msgid "Grab all keyboard events"
+msgstr "সমস্ত কীবোর্ড ইভেন্ট গুলি ধরুন"
+
+#: src/rcw.c:2470
+#, fuzzy
+msgid "Preferences"
+msgstr "পছন্দগুলি"
+
+#: src/rcw.c:2479
+#, fuzzy
+msgid "_Tools"
+msgstr "_Tools"
+
+#: src/rcw.c:2480 data/ui/remmina_main.glade:207
+#, fuzzy
+msgid "Tools"
+msgstr "সরঞ্জাম-সমূহ"
+
+#: src/rcw.c:2493 data/ui/remmina_preferences.glade:1277
+#: data/ui/remmina_preferences.glade:1287
+#, fuzzy
+msgid "Screenshot"
+msgstr "পর্দাচিত্র"
+
+#: src/rcw.c:2507 data/ui/remmina_preferences.glade:1181
+#, fuzzy
+msgid "Minimize window"
+msgstr "উইন্ডো টি ছোট করুন"
+
+#: src/rcw.c:2517 data/ui/remmina_preferences.glade:1213
+#, fuzzy
+msgid "Disconnect"
+msgstr "সংযোগ বিচ্ছিন্ন করুন"
+
+#: src/rcw.c:4284
+#, fuzzy, c-format
+msgid "The file “%s” is corrupted, unreadable, or could not be found."
+msgstr "\"[১০]\" ফাইলটি দূষিত, অপঠিত বা খুঁজে পাওয়া যায়নি।"
+
+#: src/rcw.c:4452
+#, fuzzy
+msgid "Warning: This plugin requires GtkSocket, but it’s not available."
+msgstr "সতর্কীকরণ: এই প্লাগইনের জন্য জিটিকেসকেট প্রয়োজন, কিন্তু এটি উপলব্ধ নয়।"
 
 #: src/remmina_mpchange.c:234
 #, fuzzy
@@ -533,166 +505,6 @@ msgid "%d password changed."
 msgid_plural "%d passwords changed."
 msgstr[0] "%d পাসওয়ার্ড পরিবর্তিত হয়েছে।"
 msgstr[1] ""
-
-#: src/remmina_public.c:345
-#, fuzzy, c-format
-msgid "Address is too long for UNIX socket_path: %s"
-msgstr "ইউএনআইএক্স socket_path জন্য ঠিকানাটি খুব দীর্ঘ: [৪২]"
-
-#: src/remmina_public.c:355
-#, fuzzy, c-format
-msgid "Creating UNIX socket failed: %s"
-msgstr "ইউএনআইএক্স সকেট তৈরি ব্যর্থ হয়েছে: [২৯]"
-
-#: src/remmina_public.c:361
-#, fuzzy, c-format
-msgid "Connecting to UNIX socket failed: %s"
-msgstr "ইউএনআইএক্স সকেটে সংযোগ ব্যর্থ হয়েছে: %s"
-
-#: src/remmina_public.c:631
-#, fuzzy
-msgid "Please enter format 'widthxheight'."
-msgstr "অনুগ্রহ করে 'প্রস্থউচ্চতা' বিন্যাস লিখুন।"
-
-#: src/remmina_public.c:653
-#, fuzzy
-msgid "Change security settings"
-msgstr "নিরাপত্তা সেটিংস পরিবর্তন করুন"
-
-#. TRANSLATORS: translator-credits should be replaced with a formatted list of translators in your own language
-#: src/remmina_about.c:54
-msgid "translator-credits"
-msgstr ""
-"Launchpad Contributions:\n"
-"  Aniruddha Adhikary https://launchpad.net/~tuxboy\n"
-"  Fahim al Islam https://launchpad.net/~fahimalislam-t\n"
-"  রাব্বি হোসেন https://launchpad.net/~rabbihossain"
-
-#: src/remmina_ftp_client.c:389
-#, fuzzy
-msgid "Choose download location"
-msgstr "ডাউনলোড অবস্থান চয়ন করুন"
-
-#: src/remmina_ftp_client.c:529
-#, fuzzy
-msgid "Are you sure to delete the selected files on server?"
-msgstr "আপনি কি সার্ভারে নির্বাচিত ফাইলগুলি মুছে ফেলার বিষয়ে নিশ্চিত?"
-
-#: src/remmina_ftp_client.c:586
-#, fuzzy
-msgid "Choose a file to upload"
-msgstr "আপলোড করার জন্য একটি ফাইল চয়ন করুন"
-
-#: src/remmina_ftp_client.c:593
-#, fuzzy
-msgid "Upload folder"
-msgstr "ফোল্ডার আপলোড করুন"
-
-#: src/remmina_ftp_client.c:649 src/remmina_ftp_client.c:763
-#, fuzzy
-msgid "Download"
-msgstr "ডাউনলোড"
-
-#: src/remmina_ftp_client.c:656 src/remmina_ftp_client.c:770
-#, fuzzy
-msgid "Upload"
-msgstr "আপলোড"
-
-#: src/remmina_ftp_client.c:663
-#, fuzzy
-msgid "_Delete"
-msgstr "_Delete"
-
-#: src/remmina_ftp_client.c:748
-#, fuzzy
-msgid "Home"
-msgstr "হোম"
-
-#: src/remmina_ftp_client.c:749
-#, fuzzy
-msgid "Go to home folder"
-msgstr "হোম ফোল্ডারে যান"
-
-#: src/remmina_ftp_client.c:753
-#, fuzzy
-msgid "Up"
-msgstr "উপরে"
-
-#: src/remmina_ftp_client.c:754
-#, fuzzy
-msgid "Go to parent folder"
-msgstr "মূল ফোল্ডারে যান"
-
-#: src/remmina_ftp_client.c:758 plugins/vnc/vnc_plugin.c:2019
-#: plugins/rdp/rdp_plugin.c:2740
-#, fuzzy
-msgid "Refresh"
-msgstr "রেফ্রেস করুন"
-
-#: src/remmina_ftp_client.c:759
-#, fuzzy
-msgid "Refresh current folder"
-msgstr "বর্তমান ফোল্ডার রিফ্রেশ করুন"
-
-#: src/remmina_ftp_client.c:764
-#, fuzzy
-msgid "Download from server"
-msgstr "সার্ভার থেকে ডাউনলোড করুন"
-
-#: src/remmina_ftp_client.c:771
-#, fuzzy
-msgid "Upload to server"
-msgstr "সার্ভারে আপলোড করুন"
-
-#: src/remmina_ftp_client.c:775 data/ui/remmina_main.glade:197
-msgid "Delete"
-msgstr "ডিলিট করুন"
-
-#: src/remmina_ftp_client.c:776
-#, fuzzy
-msgid "Delete files on server"
-msgstr "সার্ভারে ফাইল গুলি মুছুন"
-
-#: src/remmina_ftp_client.c:905 src/remmina_ftp_client.c:974
-#, fuzzy
-msgid "Filename"
-msgstr "ফাইলের নাম"
-
-#: src/remmina_ftp_client.c:918 src/remmina_ftp_client.c:1003
-#, fuzzy
-msgid "Size"
-msgstr "আকার"
-
-#: src/remmina_ftp_client.c:926
-#, fuzzy
-msgid "User"
-msgstr "ব্যবহারকারী"
-
-#: src/remmina_ftp_client.c:932 src/remmina_file_editor.c:1515
-#: data/ui/remmina_main.glade:464 data/ui/remmina_mpc.glade:115
-#, fuzzy
-msgid "Group"
-msgstr "গোষ্ঠী"
-
-#: src/remmina_ftp_client.c:938
-#, fuzzy
-msgid "Permission"
-msgstr "অনুমতি"
-
-#: src/remmina_ftp_client.c:990 plugins/rdp/rdp_plugin.c:2548
-#, fuzzy
-msgid "Remote"
-msgstr "দূরবর্তী"
-
-#: src/remmina_ftp_client.c:997 plugins/rdp/rdp_plugin.c:2547
-#, fuzzy
-msgid "Local"
-msgstr "স্থানীয়"
-
-#: src/remmina_ftp_client.c:1011
-#, fuzzy
-msgid "Progress"
-msgstr "অগ্রগতি"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:86
@@ -891,496 +703,303 @@ msgstr ""
 "টিও/এফইউ.রেমিনা -- সেট-অপশন ব্যবহারকারীর নাম -- সেট-অপশন resolution_mode=2 --"
 "সেট-অপশন পাসওয়ার্ড\n"
 
-#: src/remmina_icon.c:128
-#, fuzzy
-msgid "Open Main Window"
-msgstr "প্রধান উইন্ডো খুলুন"
+#: src/remmina_public.c:345
+#, fuzzy, c-format
+msgid "Address is too long for UNIX socket_path: %s"
+msgstr "ইউএনআইএক্স socket_path জন্য ঠিকানাটি খুব দীর্ঘ: [৪২]"
 
-#: src/remmina_icon.c:133 data/ui/remmina_main.glade:254
-#, fuzzy
-msgid "_Preferences"
-msgstr "_পছন্দসমূহ"
+#: src/remmina_public.c:355
+#, fuzzy, c-format
+msgid "Creating UNIX socket failed: %s"
+msgstr "ইউএনআইএক্স সকেট তৈরি ব্যর্থ হয়েছে: [২৯]"
 
-#: src/remmina_icon.c:138
-#, fuzzy
-msgid "_About"
-msgstr "_About"
+#: src/remmina_public.c:361
+#, fuzzy, c-format
+msgid "Connecting to UNIX socket failed: %s"
+msgstr "ইউএনআইএক্স সকেটে সংযোগ ব্যর্থ হয়েছে: %s"
 
-#: src/remmina_icon.c:148
+#: src/remmina_public.c:631
 #, fuzzy
-msgid "Enable Service Discovery"
-msgstr "পরিষেবা আবিষ্কার সক্ষম করুন"
+msgid "Please enter format 'widthxheight'."
+msgstr "অনুগ্রহ করে 'প্রস্থউচ্চতা' বিন্যাস লিখুন।"
 
-#: src/remmina_icon.c:160 data/ui/remmina_main.glade:404
+#: src/remmina_public.c:653
 #, fuzzy
-msgid "_Quit"
-msgstr "_Quit"
+msgid "Change security settings"
+msgstr "নিরাপত্তা সেটিংস পরিবর্তন করুন"
 
-#. TRANSLATORS: Applet name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
-#. TRANSLATORS: Applet Name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
-#: src/remmina_icon.c:284 src/remmina_icon.c:416
-#, fuzzy
-msgid "Remmina Applet"
-msgstr "রেমিনা অ্যাপলেট"
-
-#. TRANSLATORS: Applet comment/description as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
-#: src/remmina_icon.c:286 src/remmina_icon.c:418
-#, fuzzy
-msgid "Connect to remote desktops through the applet menu"
-msgstr "অ্যাপলেট মেনুর মাধ্যমে দূরবর্তী ডেস্কটপগুলিতে সংযোগ করুন"
-
-#: src/rcw.c:658
-#, c-format
-msgid ""
-"Are you sure you want to close %i active connections in the current window?"
+#. TRANSLATORS: translator-credits should be replaced with a formatted list of translators in your own language
+#: src/remmina_about.c:54
+msgid "translator-credits"
 msgstr ""
-"বর্তমানে উইন্ডোতে %i টি সক্রিয় সংযোগ রয়েছে। আপনি নিশ্চিত যে এটি বন্ধ করতে চান?"
+"Launchpad Contributions:\n"
+"  Aniruddha Adhikary https://launchpad.net/~tuxboy\n"
+"  Fahim al Islam https://launchpad.net/~fahimalislam-t\n"
+"  রাব্বি হোসেন https://launchpad.net/~rabbihossain"
 
-#: src/rcw.c:1394
+#: src/remmina_ftp_client.c:389
 #, fuzzy
-msgid "Viewport fullscreen mode"
-msgstr "পূর্ণস্ক্রিন মোড প্রদর্শন করুন"
+msgid "Choose download location"
+msgstr "ডাউনলোড অবস্থান চয়ন করুন"
 
-#: src/rcw.c:1402 data/ui/remmina_preferences.glade:607
+#: src/remmina_ftp_client.c:529
 #, fuzzy
-msgid "Scrolled fullscreen"
-msgstr "ফুলস্ক্রিনে স্ক্রোল করা হয়েছে"
+msgid "Are you sure to delete the selected files on server?"
+msgstr "আপনি কি সার্ভারে নির্বাচিত ফাইলগুলি মুছে ফেলার বিষয়ে নিশ্চিত?"
 
-#: src/rcw.c:1487
+#: src/remmina_ftp_client.c:586
 #, fuzzy
-msgid "Keep aspect ratio when scaled"
-msgstr "স্কেল করা হলে অ্যাসপেক্ট রেশিও রাখুন"
+msgid "Choose a file to upload"
+msgstr "আপলোড করার জন্য একটি ফাইল চয়ন করুন"
 
-#: src/rcw.c:1495
+#: src/remmina_ftp_client.c:593
 #, fuzzy
-msgid "Fill client window when scaled"
-msgstr "স্কেল করা হলে ক্লায়েন্ট উইন্ডো পূরণ করুন"
+msgid "Upload folder"
+msgstr "ফোল্ডার আপলোড করুন"
 
-#: src/rcw.c:2043
+#: src/remmina_ftp_client.c:649 src/remmina_ftp_client.c:763
 #, fuzzy
-msgid "Send clipboard content as keystrokes"
-msgstr "কীস্ট্রোক হিসাবে ক্লিপবোর্ড সামগ্রী পাঠান"
+msgid "Download"
+msgstr "ডাউনলোড"
 
-#: src/rcw.c:2147
+#: src/remmina_ftp_client.c:656 src/remmina_ftp_client.c:770
 #, fuzzy
-msgid "Turn off scaling to avoid screenshot distortion."
-msgstr "স্ক্রিনশট বিকৃতি এড়াতে স্কেলিং বন্ধ করুন।"
+msgid "Upload"
+msgstr "আপলোড"
 
-#: src/rcw.c:2207 plugins/www/www_plugin.c:848
+#: src/remmina_ftp_client.c:663
 #, fuzzy
-msgid "Screenshot taken"
-msgstr "স্ক্রিনশট নেওয়া হয়েছে"
+msgid "_Delete"
+msgstr "_Delete"
 
-#: src/rcw.c:2290
+#: src/remmina_ftp_client.c:748
 #, fuzzy
-msgid "_Menu"
-msgstr "_Menu"
+msgid "Home"
+msgstr "হোম"
 
-#: src/rcw.c:2291
+#: src/remmina_ftp_client.c:749
 #, fuzzy
-msgid "Menu"
-msgstr "সূচী"
+msgid "Go to home folder"
+msgstr "হোম ফোল্ডারে যান"
 
-#: src/rcw.c:2300
+#: src/remmina_ftp_client.c:753
 #, fuzzy
-msgid "Open the Remmina main window"
-msgstr "রেমিনা প্রধান উইন্ডো খুলুন"
+msgid "Up"
+msgstr "উপরে"
 
-#: src/rcw.c:2310
+#: src/remmina_ftp_client.c:754
 #, fuzzy
-msgid "Duplicate current connection"
-msgstr "ডুপ্লিকেট বর্তমান সংযোগ"
+msgid "Go to parent folder"
+msgstr "মূল ফোল্ডারে যান"
 
-#: src/rcw.c:2327
+#: src/remmina_ftp_client.c:758 plugins/rdp/rdp_plugin.c:2740
+#: plugins/vnc/vnc_plugin.c:2019
 #, fuzzy
-msgid "Resize the window to fit in remote resolution"
-msgstr "দূরবর্তী রেজোলিউশনে ফিট করতে উইন্ডোটি পুনরায় আকার দিন"
+msgid "Refresh"
+msgstr "রেফ্রেস করুন"
 
-#: src/rcw.c:2338
+#: src/remmina_ftp_client.c:759
 #, fuzzy
-msgid "Toggle fullscreen mode"
-msgstr "ফুলস্ক্রিন মোড টগল করুন"
+msgid "Refresh current folder"
+msgstr "বর্তমান ফোল্ডার রিফ্রেশ করুন"
 
-#: src/rcw.c:2384 data/ui/remmina_preferences.glade:1344
-#: data/ui/remmina_preferences.glade:1354
+#: src/remmina_ftp_client.c:764
 #, fuzzy
-msgid "Multi monitor"
-msgstr "মাল্টি মনিটর"
+msgid "Download from server"
+msgstr "সার্ভার থেকে ডাউনলোড করুন"
 
-#: src/rcw.c:2400
+#: src/remmina_ftp_client.c:771
 #, fuzzy
-msgid "Toggle dynamic resolution update"
-msgstr "গতিশীল রেজোলিউশন আপডেট টগল করুন"
+msgid "Upload to server"
+msgstr "সার্ভারে আপলোড করুন"
 
-#: src/rcw.c:2410
+#: src/remmina_ftp_client.c:775 data/ui/remmina_main.glade:197
+msgid "Delete"
+msgstr "ডিলিট করুন"
+
+#: src/remmina_ftp_client.c:776
 #, fuzzy
-msgid "Toggle scaled mode"
-msgstr "স্কেল মোড টগল করুন"
+msgid "Delete files on server"
+msgstr "সার্ভারে ফাইল গুলি মুছুন"
 
-#: src/rcw.c:2450 data/ui/remmina_preferences.glade:1070
+#: src/remmina_ftp_client.c:905 src/remmina_ftp_client.c:974
 #, fuzzy
-msgid "Switch tab pages"
-msgstr "ট্যাব পৃষ্ঠাগুলি স্যুইচ করুন"
+msgid "Filename"
+msgstr "ফাইলের নাম"
 
-#: src/rcw.c:2460
+#: src/remmina_ftp_client.c:918 src/remmina_ftp_client.c:1003
 #, fuzzy
-msgid "Grab all keyboard events"
-msgstr "সমস্ত কীবোর্ড ইভেন্ট গুলি ধরুন"
+msgid "Size"
+msgstr "আকার"
 
-#: src/rcw.c:2470
+#: src/remmina_ftp_client.c:926
 #, fuzzy
-msgid "Preferences"
-msgstr "পছন্দগুলি"
+msgid "User"
+msgstr "ব্যবহারকারী"
 
-#: src/rcw.c:2479
+#: src/remmina_ftp_client.c:932 src/remmina_file_editor.c:1515
+#: data/ui/remmina_mpc.glade:115 data/ui/remmina_main.glade:464
 #, fuzzy
-msgid "_Tools"
-msgstr "_Tools"
+msgid "Group"
+msgstr "গোষ্ঠী"
 
-#: src/rcw.c:2480 data/ui/remmina_main.glade:207
+#: src/remmina_ftp_client.c:938
 #, fuzzy
-msgid "Tools"
-msgstr "সরঞ্জাম-সমূহ"
+msgid "Permission"
+msgstr "অনুমতি"
 
-#: src/rcw.c:2493 data/ui/remmina_preferences.glade:1277
-#: data/ui/remmina_preferences.glade:1287
+#: src/remmina_ftp_client.c:990 plugins/rdp/rdp_plugin.c:2548
 #, fuzzy
-msgid "Screenshot"
-msgstr "পর্দাচিত্র"
+msgid "Remote"
+msgstr "দূরবর্তী"
 
-#: src/rcw.c:2507 data/ui/remmina_preferences.glade:1181
+#: src/remmina_ftp_client.c:997 plugins/rdp/rdp_plugin.c:2547
 #, fuzzy
-msgid "Minimize window"
-msgstr "উইন্ডো টি ছোট করুন"
+msgid "Local"
+msgstr "স্থানীয়"
 
-#: src/rcw.c:2517 data/ui/remmina_preferences.glade:1213
+#: src/remmina_ftp_client.c:1011
 #, fuzzy
-msgid "Disconnect"
-msgstr "সংযোগ বিচ্ছিন্ন করুন"
+msgid "Progress"
+msgstr "অগ্রগতি"
 
-#: src/rcw.c:4284
+#: src/remmina_protocol_widget.c:290 src/remmina_ssh_plugin.c:829
+#: src/remmina_ssh_plugin.c:1454
+#, fuzzy
+msgid "Open SFTP transfer…"
+msgstr "খোলা এসএফটিপি স্থানান্তর…"
+
+#: src/remmina_protocol_widget.c:319
+#, fuzzy
+msgid "Executing external commands…"
+msgstr "বাহ্যিক আদেশগুলি কার্যকর করা হচ্ছে…"
+
+#. TRANSLATORS: “%s” is a placeholder for the connection profile name
+#: src/remmina_protocol_widget.c:327
 #, fuzzy, c-format
-msgid "The file “%s” is corrupted, unreadable, or could not be found."
-msgstr "\"[১০]\" ফাইলটি দূষিত, অপঠিত বা খুঁজে পাওয়া যায়নি।"
+msgid "Connecting to “%s”…"
+msgstr "\"[১৫]\"-এর সাথে সংযোগ করা হচ্ছে…"
 
-#: src/rcw.c:4452
-#, fuzzy
-msgid "Warning: This plugin requires GtkSocket, but it’s not available."
-msgstr "সতর্কীকরণ: এই প্লাগইনের জন্য জিটিকেসকেট প্রয়োজন, কিন্তু এটি উপলব্ধ নয়।"
-
-#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1533
-#, fuzzy
-msgid "Protocol"
-msgstr "প্রোটোকল"
-
-#: src/remmina_plugin_manager.c:73
-#, fuzzy
-msgid "Entry"
-msgstr "প্রবেশকার্য"
-
-#: src/remmina_plugin_manager.c:73
-#, fuzzy
-msgid "File"
-msgstr "ফাইল"
-
-#: src/remmina_plugin_manager.c:73
-#, fuzzy
-msgid "Tool"
-msgstr "সরঞ্জাম"
-
-#: src/remmina_plugin_manager.c:73
-#, fuzzy
-msgid "Preference"
-msgstr "পছন্দগুলি"
-
-#: src/remmina_plugin_manager.c:73
-#, fuzzy
-msgid "Secret"
-msgstr "গোপন"
-
-#: src/remmina_plugin_manager.c:456 data/ui/remmina_main.glade:305
-#, fuzzy
-msgid "Plugins"
-msgstr "প্লাগইন"
-
-#: src/remmina_plugin_manager.c:456 src/remmina_message_panel.c:452
-#: src/remmina_message_panel.c:621 src/remmina_file_editor.c:152
-#, fuzzy
-msgid "_OK"
-msgstr "_OK"
-
-#: src/remmina_plugin_manager.c:474 src/remmina_file_editor.c:1490
-#: data/ui/remmina_main.glade:442
-#, fuzzy
-msgid "Name"
-msgstr "নাম"
-
-#: src/remmina_plugin_manager.c:480
-#, fuzzy
-msgid "Type"
-msgstr "ধরণ"
-
-#: src/remmina_plugin_manager.c:486
-#, fuzzy
-msgid "Description"
-msgstr "বিস্তারিত"
-
-#: src/remmina_plugin_manager.c:492
-#, fuzzy
-msgid "Version"
-msgstr "সংস্করণ"
-
-#: src/remmina_main.c:662
+#. TRANSLATORS: “%s” is a placeholder for an hostname or an IP address.
+#: src/remmina_protocol_widget.c:911 src/remmina_protocol_widget.c:1096
 #, fuzzy, c-format
-msgid "Total %i item."
-msgid_plural "Total %i items."
-msgstr[0] "মোট %i আইটেম।"
-msgstr[1] ""
+msgid "Connecting to “%s” via SSH…"
+msgstr "এসএসএইচ-এর মাধ্যমে \"%s\" এর সাথে সংযোগ করা হচ্ছে…"
 
-#: src/remmina_main.c:853
-#, c-format
-msgid "Are you sure you want to delete “%s”?"
-msgstr ""
-"বর্তমানে উইন্ডোতে %i টি সক্রিয় সংযোগ রয়েছে। আপনি নিশ্চিত যে এটি বন্ধ করতে চান?"
-
-#: src/remmina_main.c:973
+#. TRANSLATORS: “%i” is a placeholder for a TCP port number.
+#: src/remmina_protocol_widget.c:1160
 #, fuzzy, c-format
-msgid ""
-"Unable to import:\n"
-"%s"
-msgstr ""
-"আমদানি করতে অক্ষম:\n"
-"%s"
+msgid "Awaiting incoming SSH connection on port %i…"
+msgstr "বন্দরে আগত এসএসএইচ সংযোগের অপেক্ষায় %i…"
 
-#: src/remmina_main.c:999 data/ui/remmina_main.glade:285
-#, fuzzy
-msgid "Import"
-msgstr "আমদানি"
-
-#: src/remmina_main.c:1022 src/remmina_file_editor.c:1373
-#, fuzzy
-msgid "_Save"
-msgstr "_সংরক্ষণ"
-
-#: src/remmina_main.c:1028
-#, fuzzy
-msgid "This protocol does not support exporting."
-msgstr "এই প্রোটোকল রপ্তানি সমর্থন করে না।"
-
-#: src/remmina_main.c:1344
-msgid "Remmina Remote Desktop Client"
-msgstr "Remmina দূরবর্তী ডেস্কটপ ক্লায়েন্ট"
-
-#: src/remmina_main.c:1346
-#, fuzzy
-msgid "Remmina Kiosk"
-msgstr "রেমিনা কিয়স্ক"
-
-#: src/remmina_key_chooser.h:38
-#, fuzzy
-msgid "Shift+"
-msgstr "শিফট+"
-
-#: src/remmina_key_chooser.h:39
-#, fuzzy
-msgid "Ctrl+"
-msgstr "সিটিআরএল+"
-
-#: src/remmina_key_chooser.h:40
-#, fuzzy
-msgid "Alt+"
-msgstr "অল্ট+"
-
-#: src/remmina_key_chooser.h:41
-#, fuzzy
-msgid "Super+"
-msgstr "সুপার+"
-
-#: src/remmina_key_chooser.h:42
-#, fuzzy
-msgid "Hyper+"
-msgstr "হাইপার+"
-
-#: src/remmina_key_chooser.h:43
-#, fuzzy
-msgid "Meta+"
-msgstr "মেটা+"
-
-#: src/remmina_key_chooser.h:44
-#, fuzzy
-msgid "<None>"
-msgstr "<None>"
-
-#. TRANSLATORS: The placeholder %s is a directory path
-#: src/remmina_sftp_client.c:173
+#: src/remmina_protocol_widget.c:1213
 #, fuzzy, c-format
-msgid "Could not create the folder “%s”."
-msgstr "ফোল্ডারটি তৈরি করা যায়নি \"%s\"।"
+msgid "The “%s” command is not available on the SSH server."
+msgstr "\"%s\" কমান্ডটি এসএসএইচ সার্ভারে উপলভ্য নয়।"
 
-#. TRANSLATORS: The placeholder %s is a file path
-#: src/remmina_sftp_client.c:181 src/remmina_sftp_client.c:202
+#: src/remmina_protocol_widget.c:1218
 #, fuzzy, c-format
-msgid "Could not create the file “%s”."
-msgstr "ফাইলটি তৈরি করা যায়নি \"[২৭]\"।"
+msgid "Could not run the “%s” command on the SSH server (status = %i)."
+msgstr "এসএসএইচ সার্ভারে (স্থিতি = %i) \"%s\" কমান্ড চালানো যায়নি।"
 
-#. TRANSLATORS: The placeholders %s are a file path, and an error message.
-#: src/remmina_sftp_client.c:220
+#. TRANSLATORS: %s is a placeholder for an error message
+#: src/remmina_protocol_widget.c:1226
 #, fuzzy, c-format
-msgid "Could not open the file “%s” on the server. %s"
-msgstr "সার্ভারে ফাইলটি \"%s\" খুলতে পারেনি। %s"
+msgid "Could not run command. %s"
+msgstr "কমান্ড চালানো যায়নি। %s"
 
-#: src/remmina_sftp_client.c:242
+#. TRANSLATORS: “%s” is a placeholder for a hostname or IP address.
+#: src/remmina_protocol_widget.c:1296
 #, fuzzy, c-format
-msgid "Could not save the file “%s”."
-msgstr "ফাইলটি সংরক্ষণ করা যায়নি \"[২৫]\"।"
+msgid "Connecting to %s via SSH…"
+msgstr "এসএসএইচ-এর মাধ্যমে %s এর সাথে সংযোগ করা হচ্ছে…"
 
-#: src/remmina_sftp_client.c:281 src/remmina_sftp_client.c:698
-#: src/remmina_sftp_client.c:761
+#: src/remmina_protocol_widget.c:1690
+#, fuzzy
+msgid "Type in SSH username and password."
+msgstr "এসএসএইচ ব্যবহারকারীর নাম এবং পাসওয়ার্ড টাইপ করুন।"
+
+#: src/remmina_protocol_widget.c:1745 src/remmina_protocol_widget.c:1777
+#, fuzzy
+msgid "Fingerprint automatically accepted"
+msgstr "আঙুলের ছাপ স্বয়ংক্রিয়ভাবে গৃহীত হয়েছে"
+
+#. TRANSLATORS: The user is asked to verify a new SSL certificate.
+#: src/remmina_protocol_widget.c:1753
+#, fuzzy
+msgid "Certificate details:"
+msgstr "সার্টিফিকেটের বিবরণ:"
+
+#. TRANSLATORS: An SSL certificate subject is usually the remote server the user connect to.
+#: src/remmina_protocol_widget.c:1755 src/remmina_protocol_widget.c:1787
+#, fuzzy
+msgid "Subject:"
+msgstr "বিষয়:"
+
+#. TRANSLATORS: The name or email of the entity that have issued the SSL certificate
+#: src/remmina_protocol_widget.c:1757 src/remmina_protocol_widget.c:1789
+#, fuzzy
+msgid "Issuer:"
+msgstr "প্রদানকারী:"
+
+#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
+#: src/remmina_protocol_widget.c:1759
+#, fuzzy
+msgid "Fingerprint:"
+msgstr "আঙুলের ছাপ:"
+
+#. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
+#: src/remmina_protocol_widget.c:1761
+#, fuzzy
+msgid "Accept certificate?"
+msgstr "শংসাপত্র গ্রহণ করবেন?"
+
+#. TRANSLATORS: The user is asked to verify a new SSL certificate.
+#: src/remmina_protocol_widget.c:1785
+#, fuzzy
+msgid "The certificate changed! Details:"
+msgstr "শংসাপত্র টি পরিবর্তিত হয়েছে! বিস্তারিত:"
+
+#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
+#: src/remmina_protocol_widget.c:1791
+#, fuzzy
+msgid "Old fingerprint:"
+msgstr "পুরানো আঙুলের ছাপ:"
+
+#. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
+#: src/remmina_protocol_widget.c:1793
+#, fuzzy
+msgid "New fingerprint:"
+msgstr "নতুন আঙুলের ছাপ:"
+
+#. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
+#: src/remmina_protocol_widget.c:1795
+#, fuzzy
+msgid "Accept changed certificate?"
+msgstr "পরিবর্তিত শংসাপত্র গ্রহণ করবেন?"
+
+#. TRANSLATORS: “%i” is a placeholder for a port number. “%s”  is a placeholder for a protocol name (VNC).
+#: src/remmina_protocol_widget.c:1938
 #, fuzzy, c-format
-msgid "Could not open the folder “%s”. %s"
-msgstr "ফোল্ডারটি খুলতে পারেনি \"[২৭]\"। %s"
+msgid "Listening on port %i for an incoming %s connection…"
+msgstr "একটি আগত %s সংযোগের জন্য বন্দরে %i শোনা…"
 
-#: src/remmina_sftp_client.c:385
+#: src/remmina_protocol_widget.c:1963
+#, fuzzy
+msgid "Could not authenticate, attempting reconnection…"
+msgstr "প্রমাণীকরণ করা যায়নি, পুনরায় সংযোগের চেষ্টা করা হচ্ছে…"
+
+#: src/remmina_protocol_widget.c:2025 src/remmina_file_editor.c:346
+#: src/remmina_file_editor.c:917 data/ui/remmina_main.glade:478
+#, fuzzy
+msgid "Server"
+msgstr "সার্ভার"
+
+#. TRANSLATORS: “%s” is a placeholder for a protocol name, like “RDP”.
+#: src/remmina_protocol_widget.c:2043
 #, fuzzy, c-format
-msgid "Could not create the folder “%s” on the server. %s"
-msgstr "সার্ভারে ফোল্ডার \"%s\" তৈরি করা যায়নি। %s"
-
-#: src/remmina_sftp_client.c:413 src/remmina_sftp_client.c:435
-#, fuzzy, c-format
-msgid "Could not create the file “%s” on the server. %s"
-msgstr "সার্ভারে ফাইলটি \"%s\" তৈরি করা যায়নি। %s"
-
-#: src/remmina_sftp_client.c:456
-#, fuzzy, c-format
-msgid "Could not open the file “%s”."
-msgstr "ফাইলটি খুলতে পারেনি \"[২৫]\"।"
-
-#: src/remmina_sftp_client.c:476
-#, fuzzy, c-format
-msgid "Could not write to the file “%s” on the server. %s"
-msgstr "সার্ভারে ফাইল \"%s\" লিখতে পারেনি। %s"
-
-#: src/remmina_sftp_client.c:716
-#, fuzzy, c-format
-msgid "Could not read from the folder. %s"
-msgstr "ফোল্ডার থেকে পড়া যায়নি। %s"
-
-#: src/remmina_sftp_client.c:823
-msgid "Are you sure you want to cancel the file transfer in progress?"
-msgstr ""
-"বর্তমানে উইন্ডোতে %i টি সক্রিয় সংযোগ রয়েছে। আপনি নিশ্চিত যে এটি বন্ধ করতে চান?"
-
-#: src/remmina_sftp_client.c:857
-#, fuzzy, c-format
-msgid "Could not delete “%s”. %s"
-msgstr "\"[১৮]\" মুছে ফেলা যায়নি। %s"
-
-#: src/remmina_sftp_client.c:942
-#, fuzzy
-msgid "The file exists already"
-msgstr "ফাইলটি ইতিমধ্যে বিদ্যমান"
-
-#: src/remmina_sftp_client.c:945
-#, fuzzy
-msgid "Resume"
-msgstr "পুনরারম্ভ"
-
-#: src/remmina_sftp_client.c:946
-#, fuzzy
-msgid "Overwrite"
-msgstr "ওভাররাইট"
-
-#: src/remmina_sftp_client.c:947 src/remmina_message_panel.c:457
-#: src/remmina_message_panel.c:629 src/remmina_file_editor.c:151
-#: src/remmina_file_editor.c:1365 plugins/spice/spice_plugin_file_transfer.c:84
-#: data/ui/remmina_spinner.glade:8 data/ui/remmina_spinner.glade:9
-#: data/ui/remmina_key_chooser.glade:8 data/ui/remmina_key_chooser.glade:9
-#, fuzzy
-msgid "_Cancel"
-msgstr "_বাতিল"
-
-#: src/remmina_sftp_client.c:964
-#, fuzzy
-msgid "The following file already exists in the target folder:"
-msgstr "নিম্নলিখিত ফাইলটি ইতিমধ্যে লক্ষ্য ফোল্ডারে বিদ্যমান:"
-
-#: src/remmina_message_panel.c:163 data/ui/remmina_unlock.glade:46
-#: data/ui/remmina_mpc.glade:46
-#, fuzzy
-msgid "Cancel"
-msgstr "বাতিল"
-
-#: src/remmina_message_panel.c:199 data/ui/remmina_snap_info_dialog.glade:28
-#: data/ui/remmina_news.glade:33 data/ui/remmina_preferences.glade:2640
-#: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
-#: data/ui/remmina_string_list.glade:63
-#, fuzzy
-msgid "Close"
-msgstr "বন্ধ"
-
-#: src/remmina_message_panel.c:260
-msgid "Yes"
-msgstr "হ্য"
-
-#: src/remmina_message_panel.c:267
-msgid "No"
-msgstr "না"
-
-#: src/remmina_message_panel.c:391 plugins/rdp/rdp_plugin.c:2653
-#: data/ui/remmina_mpc.glade:172
-#, fuzzy
-msgid "Domain"
-msgstr "ডোমেন"
-
-#: src/remmina_message_panel.c:420
-#, fuzzy
-msgid "Save password"
-msgstr "পাসওয়ার্ড সংরক্ষণ করুন"
-
-#: src/remmina_message_panel.c:513
-#, fuzzy
-msgid "Enter certificate authentication files"
-msgstr "শংসাপত্র প্রমাণীকরণ ফাইলগুলি লিখুন"
-
-#: src/remmina_message_panel.c:525
-#, fuzzy
-msgid "CA Certificate File"
-msgstr "সিএ সার্টিফিকেট ফাইল"
-
-#: src/remmina_message_panel.c:547
-#, fuzzy
-msgid "CA CRL File"
-msgstr "সিএ সিআরএল ফাইল"
-
-#: src/remmina_message_panel.c:569
-#, fuzzy
-msgid "Client Certificate File"
-msgstr "ক্লায়েন্ট সার্টিফিকেট ফাইল"
-
-#: src/remmina_message_panel.c:591
-#, fuzzy
-msgid "Client Certificate Key"
-msgstr "ক্লায়েন্ট সার্টিফিকেট কী"
-
-#: src/remmina_sftp_plugin.c:323
-#, fuzzy
-msgid "Show Hidden Files"
-msgstr "লুকানো ফাইলগুলি দেখান"
-
-#: src/remmina_sftp_plugin.c:325
-#, fuzzy
-msgid "Overwrite all files"
-msgstr "সমস্ত ফাইল ওভাররাইট করুন"
-
-#: src/remmina_sftp_plugin.c:327
-#, fuzzy
-msgid "Resume all file transfers"
-msgstr "সমস্ত ফাইল স্থানান্তর পুনরায় শুরু করুন"
-
-#: src/remmina_sftp_plugin.c:359
-#, fuzzy
-msgid "SFTP - Secure File Transfer"
-msgstr "এসএফটিপি - নিরাপদ ফাইল স্থানান্তর"
+msgid "Install the %s protocol plugin first."
+msgstr "প্রথমে %s প্রোটোকল প্লাগইন ইনস্টল করুন।"
 
 #: src/remmina_ssh.c:236
 #, fuzzy, c-format
@@ -1664,6 +1283,141 @@ msgstr "শেলের অনুরোধ করা যায়নি। %s"
 msgid "Could not create PTY device."
 msgstr "পিটিওয়াই ডিভাইস তৈরি করা যায়নি।"
 
+#: src/remmina_exec.c:475
+#, fuzzy, c-format
+msgid "Plugin %s is not registered."
+msgstr "প্লাগইন %s নিবন্ধিত নয়।"
+
+#: src/remmina_main.c:662
+#, fuzzy, c-format
+msgid "Total %i item."
+msgid_plural "Total %i items."
+msgstr[0] "মোট %i আইটেম।"
+msgstr[1] ""
+
+#: src/remmina_main.c:853
+#, c-format
+msgid "Are you sure you want to delete “%s”?"
+msgstr ""
+"বর্তমানে উইন্ডোতে %i টি সক্রিয় সংযোগ রয়েছে। আপনি নিশ্চিত যে এটি বন্ধ করতে চান?"
+
+#: src/remmina_main.c:973
+#, fuzzy, c-format
+msgid ""
+"Unable to import:\n"
+"%s"
+msgstr ""
+"আমদানি করতে অক্ষম:\n"
+"%s"
+
+#: src/remmina_main.c:999 data/ui/remmina_main.glade:285
+#, fuzzy
+msgid "Import"
+msgstr "আমদানি"
+
+#: src/remmina_main.c:1022 src/remmina_file_editor.c:1373
+#, fuzzy
+msgid "_Save"
+msgstr "_সংরক্ষণ"
+
+#: src/remmina_main.c:1028
+#, fuzzy
+msgid "This protocol does not support exporting."
+msgstr "এই প্রোটোকল রপ্তানি সমর্থন করে না।"
+
+#: src/remmina_main.c:1344
+msgid "Remmina Remote Desktop Client"
+msgstr "Remmina দূরবর্তী ডেস্কটপ ক্লায়েন্ট"
+
+#: src/remmina_main.c:1346
+#, fuzzy
+msgid "Remmina Kiosk"
+msgstr "রেমিনা কিয়স্ক"
+
+#. TRANSLATORS: The placeholder %s is a directory path
+#: src/remmina_sftp_client.c:173
+#, fuzzy, c-format
+msgid "Could not create the folder “%s”."
+msgstr "ফোল্ডারটি তৈরি করা যায়নি \"%s\"।"
+
+#. TRANSLATORS: The placeholder %s is a file path
+#: src/remmina_sftp_client.c:181 src/remmina_sftp_client.c:202
+#, fuzzy, c-format
+msgid "Could not create the file “%s”."
+msgstr "ফাইলটি তৈরি করা যায়নি \"[২৭]\"।"
+
+#. TRANSLATORS: The placeholders %s are a file path, and an error message.
+#: src/remmina_sftp_client.c:220
+#, fuzzy, c-format
+msgid "Could not open the file “%s” on the server. %s"
+msgstr "সার্ভারে ফাইলটি \"%s\" খুলতে পারেনি। %s"
+
+#: src/remmina_sftp_client.c:242
+#, fuzzy, c-format
+msgid "Could not save the file “%s”."
+msgstr "ফাইলটি সংরক্ষণ করা যায়নি \"[২৫]\"।"
+
+#: src/remmina_sftp_client.c:281 src/remmina_sftp_client.c:698
+#: src/remmina_sftp_client.c:761
+#, fuzzy, c-format
+msgid "Could not open the folder “%s”. %s"
+msgstr "ফোল্ডারটি খুলতে পারেনি \"[২৭]\"। %s"
+
+#: src/remmina_sftp_client.c:385
+#, fuzzy, c-format
+msgid "Could not create the folder “%s” on the server. %s"
+msgstr "সার্ভারে ফোল্ডার \"%s\" তৈরি করা যায়নি। %s"
+
+#: src/remmina_sftp_client.c:413 src/remmina_sftp_client.c:435
+#, fuzzy, c-format
+msgid "Could not create the file “%s” on the server. %s"
+msgstr "সার্ভারে ফাইলটি \"%s\" তৈরি করা যায়নি। %s"
+
+#: src/remmina_sftp_client.c:456
+#, fuzzy, c-format
+msgid "Could not open the file “%s”."
+msgstr "ফাইলটি খুলতে পারেনি \"[২৫]\"।"
+
+#: src/remmina_sftp_client.c:476
+#, fuzzy, c-format
+msgid "Could not write to the file “%s” on the server. %s"
+msgstr "সার্ভারে ফাইল \"%s\" লিখতে পারেনি। %s"
+
+#: src/remmina_sftp_client.c:716
+#, fuzzy, c-format
+msgid "Could not read from the folder. %s"
+msgstr "ফোল্ডার থেকে পড়া যায়নি। %s"
+
+#: src/remmina_sftp_client.c:823
+msgid "Are you sure you want to cancel the file transfer in progress?"
+msgstr ""
+"বর্তমানে উইন্ডোতে %i টি সক্রিয় সংযোগ রয়েছে। আপনি নিশ্চিত যে এটি বন্ধ করতে চান?"
+
+#: src/remmina_sftp_client.c:857
+#, fuzzy, c-format
+msgid "Could not delete “%s”. %s"
+msgstr "\"[১৮]\" মুছে ফেলা যায়নি। %s"
+
+#: src/remmina_sftp_client.c:942
+#, fuzzy
+msgid "The file exists already"
+msgstr "ফাইলটি ইতিমধ্যে বিদ্যমান"
+
+#: src/remmina_sftp_client.c:945
+#, fuzzy
+msgid "Resume"
+msgstr "পুনরারম্ভ"
+
+#: src/remmina_sftp_client.c:946
+#, fuzzy
+msgid "Overwrite"
+msgstr "ওভাররাইট"
+
+#: src/remmina_sftp_client.c:964
+#, fuzzy
+msgid "The following file already exists in the target folder:"
+msgstr "নিম্নলিখিত ফাইলটি ইতিমধ্যে লক্ষ্য ফোল্ডারে বিদ্যমান:"
+
 #: src/remmina_file_editor.c:60
 #, fuzzy
 msgid ""
@@ -1830,6 +1584,11 @@ msgstr "এসএসএইচ প্রমাণীকরণ"
 msgid "SSH private key file"
 msgstr "এসএসএইচ ব্যক্তিগত কী ফাইল"
 
+#: src/remmina_file_editor.c:979 src/remmina_ssh_plugin.c:1477
+#, fuzzy
+msgid "SSH certificate file"
+msgstr "এসএসএইচ সার্টিফিকেট ফাইল"
+
 #: src/remmina_file_editor.c:1037
 #, fuzzy
 msgid "Basic"
@@ -1889,618 +1648,406 @@ msgstr "উপ-গোষ্ঠী সীমাহ্রাসকারী হি
 msgid "Could not find the file “%s”."
 msgstr "ফাইলটি খুঁজে পাওয়া যায়নি \"[২৫]\"।"
 
-#: src/remmina_chat_window.c:178
-#, c-format
-msgid "Chat with %s"
-msgstr "%s এর সাথে কথোপকথন"
-
-#: src/remmina_chat_window.c:230
-msgid "_Send"
-msgstr "প্রেরণ (_S)"
-
-#: src/remmina_chat_window.c:240
-msgid "_Clear"
-msgstr "অপসারণ (_C)"
-
-#: plugins/gvnc/gvnc_plugin_config.h:40
+#: src/remmina_icon.c:128
 #, fuzzy
-msgid "Remmina VNC plugin for GNOME and KVM"
-msgstr "GGওএম এবং কেভিএম এর জন্য রেমিনা ভিএনসি প্লাগইন"
+msgid "Open Main Window"
+msgstr "প্রধান উইন্ডো খুলুন"
 
-#: plugins/gvnc/gvnc_plugin.c:477
+#: src/remmina_icon.c:133 data/ui/remmina_main.glade:254
+#, fuzzy
+msgid "_Preferences"
+msgstr "_পছন্দসমূহ"
+
+#: src/remmina_icon.c:138
+#, fuzzy
+msgid "_About"
+msgstr "_About"
+
+#: src/remmina_icon.c:148
+#, fuzzy
+msgid "Enable Service Discovery"
+msgstr "পরিষেবা আবিষ্কার সক্ষম করুন"
+
+#: src/remmina_icon.c:160 data/ui/remmina_main.glade:404
+#, fuzzy
+msgid "_Quit"
+msgstr "_Quit"
+
+#. TRANSLATORS: Applet name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
+#. TRANSLATORS: Applet Name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
+#: src/remmina_icon.c:284 src/remmina_icon.c:416
+#, fuzzy
+msgid "Remmina Applet"
+msgstr "রেমিনা অ্যাপলেট"
+
+#. TRANSLATORS: Applet comment/description as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
+#: src/remmina_icon.c:286 src/remmina_icon.c:418
+#, fuzzy
+msgid "Connect to remote desktops through the applet menu"
+msgstr "অ্যাপলেট মেনুর মাধ্যমে দূরবর্তী ডেস্কটপগুলিতে সংযোগ করুন"
+
+#. TRANSLATORS: %s is a placeholder for an error message
+#: src/remmina_ssh_plugin.c:539
 #, fuzzy, c-format
-msgid "Unsupported authentication type %u"
-msgstr "অসমর্থিত প্রমাণীকরণের ধরন %u"
+msgid "Error: %s"
+msgstr "ত্রুটি: %s"
 
-#: plugins/gvnc/gvnc_plugin.c:489
-#, fuzzy, c-format
-msgid "Authentication failure: %s"
-msgstr "প্রমাণীকরণ ব্যর্থতা: %s"
-
-#: plugins/gvnc/gvnc_plugin.c:539 plugins/vnc/vnc_plugin.c:825
+#: src/remmina_ssh_plugin.c:556
 #, fuzzy
-msgid "Enter VNC authentication credentials"
-msgstr "ভিএনসি প্রমাণীকরণ প্রমাণপত্রাদি লিখুন"
+msgid "Terminal content saved in"
+msgstr "টার্মিনাল সামগ্রী সংরক্ষিত হয়েছে"
 
-#: plugins/gvnc/gvnc_plugin.c:820
+#: src/remmina_ssh_plugin.c:822
 #, fuzzy
-msgid "Use server settings"
-msgstr "সার্ভার সেটিংস ব্যবহার করুন"
+msgid "Select All (host+A)"
+msgstr "সব নির্বাচন করুন (হোস্ট+এ)"
 
-#: plugins/gvnc/gvnc_plugin.c:821
+#: src/remmina_ssh_plugin.c:823
 #, fuzzy
-msgid "True colour (24 bits)"
-msgstr "সত্যিকারের রঙ (24 বিট)"
+msgid "Copy (host+C)"
+msgstr "অনুলিপি করুন (হোস্ট+সি)"
 
-#: plugins/gvnc/gvnc_plugin.c:822
+#: src/remmina_ssh_plugin.c:824
 #, fuzzy
-msgid "High colour (16 bits)"
-msgstr "উচ্চ রঙ (16 বিট)"
+msgid "Paste (host+V)"
+msgstr "পেস্ট করুন (হোস্ট+ভি)"
 
-#: plugins/gvnc/gvnc_plugin.c:823
+#: src/remmina_ssh_plugin.c:825
 #, fuzzy
-msgid "Low colour (8 bits)"
-msgstr "কম রঙ (8 বিট)"
+msgid "Save session to file"
+msgstr "ফাইলে সেশন সংরক্ষণ করুন"
 
-#: plugins/gvnc/gvnc_plugin.c:824
+#: src/remmina_ssh_plugin.c:826
 #, fuzzy
-msgid "Ultra low colour (3 bits)"
-msgstr "আল্ট্রা লো কালার (3 বিট)"
+msgid "Increase font size (host+Page Up)"
+msgstr "ফন্টের আকার বাড়ান (হোস্ট+পৃষ্ঠা আপ)"
 
-#: plugins/gvnc/gvnc_plugin.c:839
+#: src/remmina_ssh_plugin.c:827
 #, fuzzy
-msgid "VNC password"
-msgstr "ভিএনসি পাসওয়ার্ড"
+msgid "Decrease font size (host+Page Down)"
+msgstr "ফন্টের আকার হ্রাস করুন (হোস্ট+পৃষ্ঠা নিচে)"
 
-#: plugins/gvnc/gvnc_plugin.c:840 plugins/vnc/vnc_plugin.c:1962
-#: plugins/vnc/vnc_plugin.c:1982 plugins/rdp/rdp_plugin.c:2661
+#: src/remmina_ssh_plugin.c:828
 #, fuzzy
-msgid "Colour depth"
-msgstr "রঙ গভীরতা"
+msgid "Find text (host+G)"
+msgstr "পাঠ্য খুঁজুন (হোস্ট+জি)"
 
-#: plugins/gvnc/gvnc_plugin.c:841
+#: src/remmina_ssh_plugin.c:1448 data/ui/remmina_main.glade:177
 #, fuzzy
-msgid "Use JPEG Compression"
-msgstr "জেপিইজি কম্প্রেশন ব্যবহার করুন"
+msgid "Copy"
+msgstr "অনুলিপি"
 
-#: plugins/gvnc/gvnc_plugin.c:841
+#: src/remmina_ssh_plugin.c:1448
 #, fuzzy
-msgid "This might not work on all VNC servers"
-msgstr "এটি সমস্ত ভিএনসি সার্ভারে কাজ নাও করতে পারে"
+msgid "_Copy"
+msgstr "_Copy"
 
-#: plugins/gvnc/gvnc_plugin.c:842
+#: src/remmina_ssh_plugin.c:1449
 #, fuzzy
-msgid "Enable GTK-VNC debug"
-msgstr "GTকে-ভিএনসি ডিবাগ সক্ষম করুন"
+msgid "Paste"
+msgstr "সাঁটো"
 
-#: plugins/gvnc/gvnc_plugin.c:857 plugins/gvnc/gvnc_plugin.c:871
-#: plugins/spice/spice_plugin.c:693 plugins/spice/spice_plugin.c:706
+#: src/remmina_ssh_plugin.c:1449
 #, fuzzy
-msgid "No clipboard sync"
-msgstr "কোনও ক্লিপবোর্ড সিঙ্ক নেই"
+msgid "_Paste"
+msgstr "_Paste"
 
-#: plugins/gvnc/gvnc_plugin.c:858 plugins/www/www_plugin.c:904
-#: plugins/vnc/vnc_plugin.c:2005 plugins/spice/spice_plugin.c:694
-#: plugins/rdp/rdp_plugin.c:2718
+#: src/remmina_ssh_plugin.c:1450
 #, fuzzy
-msgid "Forget passwords after use"
-msgstr "ব্যবহারের পরে পাসওয়ার্ডগুলি ভুলে যান"
+msgid "Select all"
+msgstr "সব নির্বাচন"
 
-#: plugins/gvnc/gvnc_plugin.c:859 plugins/vnc/vnc_plugin.c:2004
+#: src/remmina_ssh_plugin.c:1450
 #, fuzzy
-msgid "Ignore remote bell messages"
-msgstr "দূরবর্তী বেল বার্তাগুলি উপেক্ষা করুন"
+msgid "_Select all"
+msgstr "সবগুলো নির্বাচন"
 
-#: plugins/gvnc/gvnc_plugin.c:860 plugins/spice/spice_plugin.c:695
+#: src/remmina_ssh_plugin.c:1451
 #, fuzzy
-msgid "Enable audio channel"
-msgstr "অডিও চ্যানেল সক্রিয় করুন"
+msgid "Increase font size"
+msgstr "ফন্টের আকার বাড়ান"
 
-#: plugins/gvnc/gvnc_plugin.c:861 plugins/gvnc/gvnc_plugin.c:870
-#: plugins/vnc/vnc_plugin.c:2000 plugins/vnc/vnc_plugin.c:2017
-#: plugins/spice/spice_plugin.c:697 plugins/spice/spice_plugin.c:705
+#: src/remmina_ssh_plugin.c:1451
 #, fuzzy
-msgid "View only"
-msgstr "শুধু দেখার জন্য"
+msgid "_Increase font size"
+msgstr "_Increase ফন্টের আকার"
 
-#: plugins/gvnc/gvnc_plugin.c:862
+#: src/remmina_ssh_plugin.c:1452
 #, fuzzy
-#| msgid "Per connection"
-msgid "Shared connection"
-msgstr "অংশীদারি সংযোগ"
+msgid "Decrease font size"
+msgstr "ফন্টের আকার হ্রাস করুন"
 
-#: plugins/gvnc/gvnc_plugin.c:862
+#: src/remmina_ssh_plugin.c:1452
+#, fuzzy
+msgid "_Decrease font size"
+msgstr "_Decrease ফন্টের আকার"
+
+#: src/remmina_ssh_plugin.c:1453
+#, fuzzy
+msgid "Find text"
+msgstr "পাঠ্য খুঁজুন"
+
+#: src/remmina_ssh_plugin.c:1453
+#, fuzzy
+msgid "_Find text"
+msgstr "_Find লেখা"
+
+#: src/remmina_ssh_plugin.c:1474 plugins/spice/spice_plugin.c:666
+#: plugins/vnc/vnc_plugin.c:1961 plugins/vnc/vnc_plugin.c:1981
+#, fuzzy
+msgid "User password"
+msgstr "ব্যবহারকারীর পাসওয়ার্ড"
+
+#: src/remmina_ssh_plugin.c:1480 plugins/rdp/rdp_plugin.c:2693
+#, fuzzy
+msgid "Start-up program"
+msgstr "স্টার্ট-আপ প্রোগ্রাম"
+
+#: src/remmina_ssh_plugin.c:1485
 #, fuzzy
 msgid ""
-"If the server should try to share the desktop by leaving other clients "
-"connected"
+"The filename can use the following placeholders:\n"
+"\n"
+"  • %h is substituted with the server name\n"
+"  • %t is substituted with the SSH server name\n"
+"  • %u is substituted with the username\n"
+"  • %U is substituted with the SSH username\n"
+"  • %p is substituted with Remmina profile name\n"
+"  • %g is substituted with Remmina profile group name\n"
+"  • %d is substituted with local date and time in ISO 8601 format\n"
 msgstr ""
-"সার্ভারের যদি অন্য ক্লায়েন্টদের সংযুক্ত রেখে ডেস্কটপ শেয়ার করার চেষ্টা করা উচিত"
+"ফাইলনামনিম্নলিখিত স্থানধারীদের ব্যবহার করতে পারে:\n"
+"\n"
+"• %এইচ সার্ভারের নামের সাথে প্রতিস্থাপিত\n"
+"  • %t এসএসএইচ সার্ভার নামের সাথে প্রতিস্থাপিত\n"
+"  • %ইউ ব্যবহারকারীর নামের সাথে প্রতিস্থাপিত\n"
+"  • %ইউ এসএসএইচ ব্যবহারকারীর নামের সাথে প্রতিস্থাপিত\n"
+"  • %পি রেমিনা প্রোফাইল নামের সাথে প্রতিস্থাপিত\n"
+"  • %g রেমিনা প্রোফাইল গ্রুপের নামের সাথে প্রতিস্থাপিত\n"
+"  • %1$%-এর পরিবর্তে আইএসও 8601 বিন্যাসে স্থানীয় তারিখ ও সময় দেওয়া হয়েছে\n"
 
-#: plugins/gvnc/gvnc_plugin.c:872
+#: src/remmina_ssh_plugin.c:1507
 #, fuzzy
-msgid "Send Ctrl+Alt+_Del"
-msgstr "tআরএল+অল্ট+_Del পাঠান"
+msgid "Terminal colour scheme"
+msgstr "টার্মিনাল রঙের স্কিম"
 
-#: plugins/gvnc/gvnc_plugin.c:873
+#: src/remmina_ssh_plugin.c:1508
 #, fuzzy
-msgid "Send Ctrl+Alt+_Backspace"
-msgstr "_Backspace পাঠান"
+msgid "Character set"
+msgstr "অক্ষর সেট"
 
-#: plugins/gvnc/gvnc_plugin.c:874
+#: src/remmina_ssh_plugin.c:1510
 #, fuzzy
-msgid "Send Ctrl+Alt+_F1"
-msgstr "t+অল্ট+_F1 পাঠান"
+msgid "KEX (Key Exchange) algorithms"
+msgstr "কেইএক্স (কী এক্সচেঞ্জ) অ্যালগরিদম"
 
-#: plugins/gvnc/gvnc_plugin.c:875
+#: src/remmina_ssh_plugin.c:1511
 #, fuzzy
-msgid "Send Ctrl+Alt+_F2"
-msgstr "_F2 পাঠান"
+msgid "Symmetric cipher client to server"
+msgstr "সার্ভারে প্রতিসাম্য সাইফার ক্লায়েন্ট"
 
-#: plugins/gvnc/gvnc_plugin.c:876
+#: src/remmina_ssh_plugin.c:1512
 #, fuzzy
-msgid "Send Ctrl+Alt+_F3"
-msgstr "tআরএল+অল্ট+_F3 পাঠান"
+msgid "Preferred server host key types"
+msgstr "পছন্দসই সার্ভার হোস্ট কী প্রকার"
 
-#: plugins/gvnc/gvnc_plugin.c:877
+#: src/remmina_ssh_plugin.c:1513
 #, fuzzy
-msgid "Send Ctrl+Alt+_F4"
-msgstr "_F4 পাঠান"
+msgid "Folder for SSH session log"
+msgstr "এসএসএইচ সেশন লগের জন্য ফোল্ডার"
 
-#: plugins/gvnc/gvnc_plugin.c:878
+#: src/remmina_ssh_plugin.c:1514
 #, fuzzy
-msgid "Send Ctrl+Alt+_F5"
-msgstr "_F5 পাঠান"
+msgid "Filename for SSH session log"
+msgstr "এসএসএইচ সেশন লগের জন্য ফাইলনাম"
 
-#: plugins/gvnc/gvnc_plugin.c:879
+#: src/remmina_ssh_plugin.c:1515
 #, fuzzy
-msgid "Send Ctrl+Alt+_F6"
-msgstr "tআরএল+অল্ট+_F6 পাঠান"
+msgid "Log SSH session when exiting Remmina"
+msgstr "রেমিনা থেকে প্রস্থান করার সময় লগ এসএসএইচ সেশন"
 
-#: plugins/gvnc/gvnc_plugin.c:880
+#: src/remmina_ssh_plugin.c:1516
 #, fuzzy
-msgid "Send Ctrl+Alt+_F7"
-msgstr "_F7 পাঠান"
+msgid "Log SSH session asynchronously"
+msgstr "লগ এসএসএইচ সেশন টি এককালবর্তীভাবে"
 
-#: plugins/gvnc/gvnc_plugin.c:881
+#: src/remmina_ssh_plugin.c:1516
 #, fuzzy
-msgid "Send Ctrl+Alt+_F8"
-msgstr "_F8 পাঠান"
-
-#: plugins/gvnc/gvnc_plugin.c:882
-#, fuzzy
-msgid "Send Ctrl+Alt+_F9"
-msgstr "_F9 পাঠান"
-
-#: plugins/gvnc/gvnc_plugin.c:883
-#, fuzzy
-msgid "Send Ctrl+Alt+_F10"
-msgstr "_F10 পাঠান"
-
-#: plugins/gvnc/gvnc_plugin.c:884
-#, fuzzy
-msgid "Send Ctrl+Alt+_F11"
-msgstr "সিটিআরএল+অল্ট+_F11 পাঠান"
-
-#: plugins/gvnc/gvnc_plugin.c:885
-#, fuzzy
-msgid "Send Ctrl+Alt+_F12"
-msgstr "_F12 পাঠান"
-
-#: plugins/gvnc/gvnc_plugin.c:887
-#, fuzzy
-msgid "Reboot remote host"
-msgstr "রিমোট হোস্ট রিবুট করুন"
-
-#: plugins/gvnc/gvnc_plugin.c:888
-#, fuzzy
-msgid "Reset remote host (hard reboot)"
-msgstr "রিমোট হোস্ট রিসেট করুন (হার্ড রিবুট)"
-
-#: plugins/gvnc/gvnc_plugin.c:889
-#, fuzzy
-msgid "Shutdown remote host"
-msgstr "রিমোট হোস্ট বন্ধ করা"
-
-#: plugins/exec/exec_plugin_config.h:41
-#, fuzzy
-msgid "Execute a command"
-msgstr "একটি আদেশ কার্যকর করুন"
-
-#: plugins/exec/exec_plugin.c:160
-#, fuzzy
-msgid "You did not set any command to be executed"
-msgstr "আপনি কার্যকর করার জন্য কোনও আদেশ নির্ধারণ করেননি"
-
-#: plugins/exec/exec_plugin.c:206
-#, fuzzy
-msgid ""
-"Warning: Running a command synchronously may cause Remmina not to respond.\n"
-"Do you really want to continue?"
+msgid "Saving the session asynchronously may have a notable performance impact"
 msgstr ""
-"সতর্কীকরণ: একটি কমান্ড সমকালীনভাবে চালানোর ফলে রেমিনা সাড়া না দিতে পারে।\n"
-"আপনি কি সত্যিই চালিয়ে যেতে চান?"
+"সেশনটি অসিঙ্ক্রোনাসভাবে সংরক্ষণ করা একটি উল্লেখযোগ্য কর্মক্ষমতার প্রভাব ফেলতে পারে"
 
-#: plugins/exec/exec_plugin.c:266
+#: src/remmina_ssh_plugin.c:1517
 #, fuzzy
-msgid "Command"
-msgstr "কমান্ড"
+msgid "Audible terminal bell"
+msgstr "শ্রবণযোগ্য টার্মিনাল ঘন্টা"
 
-#: plugins/exec/exec_plugin.c:267
+#: src/remmina_ssh_plugin.c:1518
 #, fuzzy
-msgid "Asynchronous execution"
-msgstr "অ্যাসিঙ্ক্রোনাস এক্সিকিউশন"
+msgid "SSH compression"
+msgstr "এসএসএইচ কম্প্রেশন"
 
-#: plugins/www/www_plugin.c:98
+#: src/remmina_ssh_plugin.c:1519
 #, fuzzy
-msgid "File downloaded"
-msgstr "ফাইল ডাউনলোড করা হয়েছে"
+msgid "Don't remember passwords"
+msgstr "পাসওয়ার্ড মনে নেই"
 
-#: plugins/www/www_plugin.c:574
+#: src/remmina_ssh_plugin.c:1520
 #, fuzzy
-msgid "Enter WWW authentication credentials"
-msgstr "ডাব্লুডাব্লিউডাব্লিউ প্রমাণীকরণ প্রমাণপত্রাদি লিখুন"
+msgid "Strict host key checking"
+msgstr "কঠোর হোস্ট কী চেকিং"
 
-#: plugins/www/www_plugin.c:878
+#: src/remmina_ssh_plugin.c:1534
 #, fuzzy
-msgid "URL"
-msgstr "ইউআরএল (URL)"
+msgid "SSH - Secure Shell"
+msgstr "এসএসএইচ - নিরাপদ শেল"
 
-#: plugins/www/www_plugin.c:878
+#: plugins/kwallet/src/kwallet_plugin_main.c:118
 #, fuzzy
-msgid "http://address or https://address"
-msgstr "http://address বা https://address"
+msgid "Secured password storage in KWallet"
+msgstr "কেওয়ালেটে সুরক্ষিত পাসওয়ার্ড সঞ্চয়স্থান"
 
-#: plugins/www/www_plugin.c:895
+#: plugins/rdp/rdp_settings.c:205
 #, fuzzy
-msgid "User agent"
-msgstr "ব্যবহারকারী এজেন্ট"
+msgid "<Auto-detect>"
+msgstr "<Auto-detect>"
 
-#: plugins/www/www_plugin.c:896
+#: plugins/rdp/rdp_settings.c:237
 #, fuzzy
-msgid "Proxy URL"
-msgstr "প্রক্সি ইউআরএল"
+msgid "<Not set>"
+msgstr "<সেট নয়>"
 
-#: plugins/www/www_plugin.c:896
+#: plugins/rdp/rdp_settings.c:268
 #, fuzzy
-msgid "E.g. https://example.org, socks://mysocks:1080"
-msgstr "যেমন https://example.org, socks://mysocks:1080"
+msgid "<Choose a quality level to edit…>"
+msgstr "< সম্পাদনা করার জন্য একটি গুণমানের স্তর চয়ন করুন... >"
 
-#: plugins/www/www_plugin.c:897
-#, fuzzy
-msgid "Turn on Java support"
-msgstr "জাভা সমর্থন চালু করুন"
-
-#: plugins/www/www_plugin.c:898
-#, fuzzy
-msgid "Turn on smooth scrolling"
-msgstr "মসৃণ স্ক্রোলিং চালু করুন"
-
-#: plugins/www/www_plugin.c:899
-#, fuzzy
-msgid "Turn on spatial navigation"
-msgstr "স্থানিক নেভিগেশন চালু করুন"
-
-#: plugins/www/www_plugin.c:900
-#, fuzzy
-msgid "Turn on plugin support"
-msgstr "প্লাগইন সমর্থন চালু করুন"
-
-#: plugins/www/www_plugin.c:901
-#, fuzzy
-msgid "Turn on WebGL support"
-msgstr "ওয়েবজিএল সমর্থন চালু করুন"
-
-#: plugins/www/www_plugin.c:902
-#, fuzzy
-msgid "Turn on HTML5 audio support"
-msgstr "এইচটিএমএল5 অডিও সমর্থন চালু করুন"
-
-#: plugins/www/www_plugin.c:903
-#, fuzzy
-msgid "Ignore TLS errors"
-msgstr "টিএলএস ত্রুটিউপেক্ষা করুন"
-
-#: plugins/www/www_plugin.c:906
-#, fuzzy
-msgid "Turn on Web Inspector"
-msgstr "ওয়েব পরিদর্শক চালু করুন"
-
-#: plugins/www/www_config.h:43
-#, fuzzy
-msgid "Remmina web-browser plugin"
-msgstr "রেমিনা ওয়েব ব্রাউজার প্লাগইন"
-
-#: plugins/secret/src/glibsecret_plugin.c:188
-#, fuzzy
-msgid "Secured password storage in the GNOME keyring"
-msgstr "GTTTT"
-
-#: plugins/tool_hello_world/plugin_config.h:40
-#, fuzzy
-msgid "Hello, World!"
-msgstr "হ্যালো ওয়ার্ল্ড!"
-
-#: plugins/vnc/vnc_plugin.c:772
-#, fuzzy
-msgid "Enter VNC password"
-msgstr "ভিএনসি পাসওয়ার্ড লিখুন"
-
-#: plugins/vnc/vnc_plugin.c:936
-#, fuzzy
-msgid "Unable to connect to VNC server"
-msgstr "ভিএনসি সার্ভারে সংযোগ করতে অক্ষম"
-
-#: plugins/vnc/vnc_plugin.c:937
-#, fuzzy, c-format
-msgid "Couldn’t convert '%s' to host address"
-msgstr "'%s' হোস্ট ঠিকানায় রূপান্তর করা যায়নি"
-
-#: plugins/vnc/vnc_plugin.c:938
-#, fuzzy, c-format
-msgid "VNC connection failed: %s"
-msgstr "ভিএনসি সংযোগ ব্যর্থ হয়েছে: %s"
-
-#: plugins/vnc/vnc_plugin.c:939
-#, fuzzy
-msgid "Your connection has been rejected."
-msgstr "আপনার সংযোগ প্রত্যাখ্যান করা হয়েছে।"
-
-#: plugins/vnc/vnc_plugin.c:966
-#, fuzzy, c-format
-msgid "The VNC server requested an unknown authentication method. %s"
-msgstr "ভিএনসি সার্ভার একটি অজানা প্রমাণীকরণ পদ্ধতির অনুরোধ করেছিল। %s"
-
-#: plugins/vnc/vnc_plugin.c:968
-#, fuzzy
-msgid "Please retry after turning on encryption for this profile."
-msgstr "এই প্রোফাইলের জন্য এনক্রিপশন চালু করার পরে অনুগ্রহ করে পুনরায় চেষ্টা করুন।"
-
-#: plugins/vnc/vnc_plugin.c:1922 plugins/rdp/rdp_plugin.c:2497
-#, fuzzy
-msgid "True colour (32 bpp)"
-msgstr "আসল রঙ (32 বিপিপি)"
-
-#: plugins/vnc/vnc_plugin.c:1923 plugins/rdp/rdp_plugin.c:2499
-#, fuzzy
-msgid "High colour (16 bpp)"
-msgstr "উচ্চ রঙ (16 বিপিপি)"
-
-#: plugins/vnc/vnc_plugin.c:1924 plugins/rdp/rdp_plugin.c:2501
-#, fuzzy
-msgid "256 colours (8 bpp)"
-msgstr "256 রঙ (8 বিপিপি)"
-
-#: plugins/vnc/vnc_plugin.c:1931 plugins/rdp/rdp_plugin.c:2524
-#: plugins/rdp/rdp_settings.c:274
-#, fuzzy
-msgid "Good"
-msgstr "ভালো"
-
-#: plugins/vnc/vnc_plugin.c:1932 plugins/rdp/rdp_plugin.c:2525
-#: plugins/rdp/rdp_settings.c:276
-#, fuzzy
-msgid "Best (slowest)"
-msgstr "সেরা (ধীরগতির)"
-
-#: plugins/vnc/vnc_plugin.c:1933 plugins/rdp/rdp_plugin.c:2523
-#: plugins/rdp/rdp_settings.c:272
-#, fuzzy
-msgid "Medium"
-msgstr "মাঝারি।"
-
-#: plugins/vnc/vnc_plugin.c:1934 plugins/rdp/rdp_plugin.c:2522
-#: plugins/rdp/rdp_settings.c:270
+#: plugins/rdp/rdp_settings.c:270 plugins/rdp/rdp_plugin.c:2522
+#: plugins/vnc/vnc_plugin.c:1934
 #, fuzzy
 msgid "Poor (fastest)"
 msgstr "দরিদ্র (দ্রুততম)"
 
-#: plugins/vnc/vnc_plugin.c:1939
+#: plugins/rdp/rdp_settings.c:272 plugins/rdp/rdp_plugin.c:2523
+#: plugins/vnc/vnc_plugin.c:1933
 #, fuzzy
-msgid ""
-"Connect to VNC using a repeater:\n"
-"  • The server field must contain the repeater ID, e.g. ID:123456789\n"
-"  • The repeater field have to be set to the repeater IP and port, like:\n"
-"    10.10.10.12:5901\n"
-"  • From the remote VNC server, you will connect to\n"
-"    the repeater, e.g. with x11vnc:\n"
-"    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
-msgstr ""
-"পুনরাবৃত্তিকারী ব্যবহার করে ভিএনসিতে সংযোগ করুন:\n"
-"  • সার্ভার ফিল্ডে অবশ্যই রিপিটার আইডি থাকতে হবে, যেমন আইডি:123456789\n"
-"  • রিপিটার ক্ষেত্রটি রিপিটার আইপি এবং পোর্টে সেট করতে হবে, যেমন:\n"
-"    10.10.10.12:5901\n"
-"  • দূরবর্তী ভিএনসি সার্ভার থেকে আপনি সংযোগ করবেন\n"
-"    পুনরাবৃত্তিকারী, যেমন এক্স11ভিএনসি সহ:\n"
-"    এক্স১১ভিএনসি -কানেক্ট রিপিটার=আইডি:১২৩৪৫৬৭৮৯+১০.১০.১০.১২:৫৫০০"
+msgid "Medium"
+msgstr "মাঝারি।"
 
-#: plugins/vnc/vnc_plugin.c:1959
+#: plugins/rdp/rdp_settings.c:274 plugins/rdp/rdp_plugin.c:2524
+#: plugins/vnc/vnc_plugin.c:1931
 #, fuzzy
-msgid "Repeater"
-msgstr "পুনরাবৃত্তিকারী"
+msgid "Good"
+msgstr "ভালো"
 
-#: plugins/vnc/vnc_plugin.c:1963 plugins/vnc/vnc_plugin.c:1983
-#: plugins/rdp/rdp_plugin.c:2677
+#: plugins/rdp/rdp_settings.c:276 plugins/rdp/rdp_plugin.c:2525
+#: plugins/vnc/vnc_plugin.c:1932
 #, fuzzy
-msgid "Quality"
-msgstr "কোয়ালিটি"
+msgid "Best (slowest)"
+msgstr "সেরা (ধীরগতির)"
 
-#: plugins/vnc/vnc_plugin.c:1979
+#: plugins/rdp/rdp_settings.c:415
 #, fuzzy
-msgid "Listen on port"
-msgstr "বন্দরে শুনুন"
+msgid "Keyboard layout"
+msgstr "কীবোর্ড লেআউট"
 
-#: plugins/vnc/vnc_plugin.c:1999
+#: plugins/rdp/rdp_settings.c:440
 #, fuzzy
-msgid "Show remote cursor"
-msgstr "দূরবর্তী কার্সার দেখান"
+msgid "Use client keyboard mapping"
+msgstr "ক্লায়েন্ট কীবোর্ড ম্যাপিং ব্যবহার করুন"
 
-#: plugins/vnc/vnc_plugin.c:2001 plugins/rdp/rdp_plugin.c:2715
+#: plugins/rdp/rdp_settings.c:450
 #, fuzzy
-msgid "Turn off clipboard sync"
-msgstr "ক্লিপবোর্ড সিঙ্ক বন্ধ করুন"
+msgid "Quality settings"
+msgstr "গুণমান সেটিংস"
 
-#: plugins/vnc/vnc_plugin.c:2002
+#: plugins/rdp/rdp_settings.c:470
 #, fuzzy
-msgid "Turn off encryption"
-msgstr "এনক্রিপশন বন্ধ করুন"
+msgid "Wallpaper"
+msgstr "ওয়ালপেপার"
 
-#: plugins/vnc/vnc_plugin.c:2003 plugins/vnc/vnc_plugin.c:2018
+#: plugins/rdp/rdp_settings.c:477
 #, fuzzy
-msgid "Prevent local interaction on the server"
-msgstr "সার্ভারে স্থানীয় মিথস্ক্রিয়া প্রতিরোধ করুন"
+msgid "Window drag"
+msgstr "উইন্ডো টেনে আনুন"
 
-#: plugins/vnc/vnc_plugin.c:2006 plugins/rdp/rdp_plugin.c:2656
-#: plugins/rdp/rdp_settings.c:598
+#: plugins/rdp/rdp_settings.c:484
+#, fuzzy
+msgid "Menu animation"
+msgstr "মেনু অ্যানিমেশন"
+
+#: plugins/rdp/rdp_settings.c:491
+#, fuzzy
+msgid "Theme"
+msgstr "থিম"
+
+#: plugins/rdp/rdp_settings.c:498
+#, fuzzy
+msgid "Cursor shadow"
+msgstr "কার্সার ছায়া"
+
+#: plugins/rdp/rdp_settings.c:505
+#, fuzzy
+msgid "Cursor blinking"
+msgstr "কার্সার ের পলক ফেলা"
+
+#: plugins/rdp/rdp_settings.c:512
+#, fuzzy
+msgid "Font smoothing"
+msgstr "ফন্ট মসৃণ হচ্ছে"
+
+#: plugins/rdp/rdp_settings.c:519
+#, fuzzy
+msgid "Composition"
+msgstr "রচনা"
+
+#: plugins/rdp/rdp_settings.c:529
+#, fuzzy
+msgid "Remote scale factor"
+msgstr "রিমোট স্কেল ফ্যাক্টর"
+
+#: plugins/rdp/rdp_settings.c:542
+#, fuzzy
+msgid "Desktop scale factor %"
+msgstr "ডেস্কটপ স্কেল ফ্যাক্টর %"
+
+#: plugins/rdp/rdp_settings.c:553
+#, fuzzy
+msgid "Device scale factor %"
+msgstr "ডিভাইস স্কেল ফ্যাক্টর %"
+
+#: plugins/rdp/rdp_settings.c:575
+#, fuzzy
+msgid "Desktop orientation"
+msgstr "ডেস্কটপ অভিমুখিতা"
+
+#: plugins/rdp/rdp_settings.c:592
+#, fuzzy
+msgid "Input device settings"
+msgstr "ইনপুট ডিভাইস সেটিংস"
+
+#: plugins/rdp/rdp_settings.c:598 plugins/rdp/rdp_plugin.c:2656
+#: plugins/vnc/vnc_plugin.c:2006
 #, fuzzy
 msgid "Disable smooth scrolling"
 msgstr "মসৃণ স্ক্রোলিং অক্ষম করুন"
 
-#: plugins/vnc/vnc_plugin.c:2020
+#: plugins/rdp/rdp_settings.c:608
 #, fuzzy
-msgid "Open Chat…"
-msgstr "চ্যাট খুলুন…"
+msgid "General settings"
+msgstr "সাধারণ সেটিংস"
 
-#: plugins/vnc/vnc_plugin.c:2021 plugins/spice/spice_plugin.c:707
-#: plugins/rdp/rdp_plugin.c:2744
+#: plugins/rdp/rdp_settings.c:613 plugins/rdp/rdp_plugin.c:2708
 #, fuzzy
-msgid "Send Ctrl+Alt+Delete"
-msgstr "Tttআরএল+অল্ট+মুছুন পাঠান"
+msgid "Reconnect attempts number"
+msgstr "প্রয়াস নম্বর পুনঃসংযোগ করুন"
 
-#: plugins/vnc/vnc_plugin.h:41
+#: plugins/rdp/rdp_settings.c:619 plugins/rdp/rdp_plugin.c:2708
 #, fuzzy
-msgid "Remmina VNC Plugin"
-msgstr "রেমিনা ভিএনসি প্লাগইন"
-
-#: plugins/vnc/vnc_plugin.h:46
-#, fuzzy
-msgid "Remmina VNC listener Plugin"
-msgstr "রেমিনা ভিএনসি শ্রোতা প্লাগইন"
-
-#: plugins/spice/spice_plugin_usb.c:51 plugins/spice/spice_plugin.c:708
-#, fuzzy
-msgid "Select USB devices for redirection"
-msgstr "পুনঃনির্দেশনার জন্য ইউএসবি ডিভাইসগুলি নির্বাচন করুন"
-
-#: plugins/spice/spice_plugin_usb.c:54
-#, fuzzy
-msgid "_Close"
-msgstr "_Close"
-
-#: plugins/spice/spice_plugin_usb.c:94
-#, fuzzy
-msgid "USB redirection error"
-msgstr "ইউএসবি পুনঃনির্দেশক ত্রুটি"
-
-#: plugins/spice/spice_plugin.c:351
-#, fuzzy
-msgid "Enter SPICE password"
-msgstr "স্পাইস পাসওয়ার্ড লিখুন"
-
-#: plugins/spice/spice_plugin.c:386
-#, fuzzy, c-format
-msgid "Disconnected from the SPICE server “%s”."
-msgstr "স্পাইস সার্ভার থেকে সংযোগ বিচ্ছিন্ন \"%s\"।"
-
-#: plugins/spice/spice_plugin.c:402
-#, fuzzy
-msgid "TLS connection error."
-msgstr "TTTসংযোগ ত্রুটি।"
-
-#: plugins/spice/spice_plugin.c:408
-#, fuzzy
-msgid "Connection to the SPICE server dropped."
-msgstr "স্পাইস সার্ভারের সংযোগ বাদ দেওয়া হয়েছে।"
-
-#: plugins/spice/spice_plugin.c:616 plugins/spice/spice_plugin.c:634
-msgid "Default"
-msgstr "ডিফল্ট"
-
-#: plugins/spice/spice_plugin.c:635 plugins/rdp/rdp_plugin.c:2546
-#: data/ui/remmina_preferences.glade:677
-#, fuzzy
-msgid "Off"
-msgstr "বন্ধ"
-
-#: plugins/spice/spice_plugin.c:636
-#, fuzzy
-msgid "Auto GLZ"
-msgstr "অটো জিএলজেড"
-
-#: plugins/spice/spice_plugin.c:637
-#, fuzzy
-msgid "Auto LZ"
-msgstr "অটো এলজেড"
-
-#: plugins/spice/spice_plugin.c:650
-#, fuzzy
-msgid "Disable video overlay if videos are not displayed properly.\n"
-msgstr "ভিডিওগুলি সঠিকভাবে প্রদর্শিত না হলে ভিডিও ওভারলে অক্ষম করুন।\n"
-
-#: plugins/spice/spice_plugin.c:667
-#, fuzzy
-msgid "Use TLS encryption"
-msgstr "TTT এনক্রিপশন ব্যবহার করুন"
-
-#: plugins/spice/spice_plugin.c:668
-#, fuzzy
-msgid "Server CA certificate"
-msgstr "সার্ভার সিএ সার্টিফিকেট"
-
-#: plugins/spice/spice_plugin.c:669 plugins/rdp/rdp_plugin.c:2654
-#, fuzzy
-msgid "Share folder"
-msgstr "ফোল্ডার শেয়ার করুন"
-
-#: plugins/spice/spice_plugin.c:686
-#, fuzzy
-msgid "Prefered video codec"
-msgstr "পছন্দসই ভিডিও কোডেক"
-
-#: plugins/spice/spice_plugin.c:687
-#, fuzzy
-msgid "Turn off GStreamer overlay"
-msgstr "Gg1 ওভারলে বন্ধ করুন"
-
-#: plugins/spice/spice_plugin.c:690
-#, fuzzy
-msgid "Prefered image compression"
-msgstr "পছন্দসই চিত্র সংকোচন"
-
-#: plugins/spice/spice_plugin.c:696
-#, fuzzy
-msgid "Share smart card"
-msgstr "স্মার্ট কার্ড শেয়ার করুন"
-
-#: plugins/spice/spice_plugin.c:719
-#, fuzzy
-msgid "SPICE - Simple Protocol for Independent Computing Environments"
-msgstr "স্পাইস - স্বাধীন কম্পিউটিং পরিবেশের জন্য সহজ প্রোটোকল"
-
-#: plugins/spice/spice_plugin_file_transfer.c:82
-#, fuzzy
-msgid "File Transfers"
-msgstr "ফাইল স্থানান্তর"
-
-#: plugins/spice/spice_plugin_file_transfer.c:219
-#, fuzzy
-msgid "Transfer error"
-msgstr "স্থানান্তর ত্রুটি"
-
-#: plugins/spice/spice_plugin_file_transfer.c:220
-#, fuzzy, c-format
-msgid "%s: %s"
-msgstr "%s: %s"
-
-#: plugins/spice/spice_plugin_file_transfer.c:223
-#, fuzzy
-msgid "Transfer completed"
-msgstr "স্থানান্তর সম্পন্ন হয়েছে"
-
-#: plugins/spice/spice_plugin_file_transfer.c:224
-#, fuzzy, c-format
-msgid "The %s file has been transferred"
-msgstr "%s ফাইলটি স্থানান্তরিত হয়েছে"
+msgid ""
+"The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
+msgstr ""
+"আরডিপি সংযোগ বিচ্ছিন্ন করার সময় পুনঃসংযোগ প্রচেষ্টার সর্বাধিক সংখ্যা (ডিফল্ট: 20)"
 
 #: plugins/rdp/rdp_plugin.c:757 plugins/rdp/rdp_plugin.c:822
 #, fuzzy
@@ -2673,15 +2220,30 @@ msgstr "জিএফএক্স আরএফএক্স প্রোগ্র�
 msgid "RemoteFX (32 bpp)"
 msgstr "রিমোটএফএক্স (32 বিপিপি)"
 
+#: plugins/rdp/rdp_plugin.c:2497 plugins/vnc/vnc_plugin.c:1922
+#, fuzzy
+msgid "True colour (32 bpp)"
+msgstr "আসল রঙ (32 বিপিপি)"
+
 #: plugins/rdp/rdp_plugin.c:2498
 #, fuzzy
 msgid "True colour (24 bpp)"
 msgstr "আসল রঙ (24 বিপিপি)"
 
+#: plugins/rdp/rdp_plugin.c:2499 plugins/vnc/vnc_plugin.c:1923
+#, fuzzy
+msgid "High colour (16 bpp)"
+msgstr "উচ্চ রঙ (16 বিপিপি)"
+
 #: plugins/rdp/rdp_plugin.c:2500
 #, fuzzy
 msgid "High colour (15 bpp)"
 msgstr "উচ্চ রঙ (15 বিপিপি)"
+
+#: plugins/rdp/rdp_plugin.c:2501 plugins/vnc/vnc_plugin.c:1924
+#, fuzzy
+msgid "256 colours (8 bpp)"
+msgstr "256 রঙ (8 বিপিপি)"
 
 #: plugins/rdp/rdp_plugin.c:2532 data/ui/remmina_preferences.glade:641
 #, fuzzy
@@ -2722,6 +2284,12 @@ msgstr "ওয়ান"
 #, fuzzy
 msgid "LAN"
 msgstr "ল্যান"
+
+#: plugins/rdp/rdp_plugin.c:2546 plugins/spice/spice_plugin.c:635
+#: data/ui/remmina_preferences.glade:677
+#, fuzzy
+msgid "Off"
+msgstr "বন্ধ"
 
 #: plugins/rdp/rdp_plugin.c:2555
 #, fuzzy
@@ -2890,6 +2458,11 @@ msgstr ""
 "  • হটপ্লাগ,*\n"
 "\n"
 
+#: plugins/rdp/rdp_plugin.c:2654 plugins/spice/spice_plugin.c:669
+#, fuzzy
+msgid "Share folder"
+msgstr "ফোল্ডার শেয়ার করুন"
+
 #: plugins/rdp/rdp_plugin.c:2654
 #, fuzzy
 msgid "Use “Redirect directory” in the advanced tab for multiple directories"
@@ -2920,9 +2493,21 @@ msgstr "একাধিক মনিটরের উপর স্প্যান
 msgid "List monitor IDs"
 msgstr "মনিটর আইডি তালিকা"
 
+#: plugins/rdp/rdp_plugin.c:2661 plugins/vnc/vnc_plugin.c:1962
+#: plugins/vnc/vnc_plugin.c:1982 plugins/gvnc/gvnc_plugin.c:840
+#, fuzzy
+msgid "Colour depth"
+msgstr "রঙ গভীরতা"
+
 #: plugins/rdp/rdp_plugin.c:2662
 msgid "Network connection type"
 msgstr "নতুন সংযোগ"
+
+#: plugins/rdp/rdp_plugin.c:2677 plugins/vnc/vnc_plugin.c:1963
+#: plugins/vnc/vnc_plugin.c:1983
+#, fuzzy
+msgid "Quality"
+msgstr "কোয়ালিটি"
 
 #: plugins/rdp/rdp_plugin.c:2678
 #, fuzzy
@@ -3100,18 +2685,6 @@ msgstr "টিসিপি পুনঃনির্দেশনা"
 msgid "/PATH/TO/rdp2tcp"
 msgstr "/পিএএইচটি/টিও/আরডিপি২টিসিপি"
 
-#: plugins/rdp/rdp_plugin.c:2708 plugins/rdp/rdp_settings.c:613
-#, fuzzy
-msgid "Reconnect attempts number"
-msgstr "প্রয়াস নম্বর পুনঃসংযোগ করুন"
-
-#: plugins/rdp/rdp_plugin.c:2708 plugins/rdp/rdp_settings.c:619
-#, fuzzy
-msgid ""
-"The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
-msgstr ""
-"আরডিপি সংযোগ বিচ্ছিন্ন করার সময় পুনঃসংযোগ প্রচেষ্টার সর্বাধিক সংখ্যা (ডিফল্ট: 20)"
-
 #: plugins/rdp/rdp_plugin.c:2709
 #, fuzzy
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
@@ -3142,6 +2715,11 @@ msgstr "সমান্তরাল পোর্টগুলি শেয়া�
 msgid "Share a smart card"
 msgstr "একটি স্মার্ট কার্ড শেয়ার করুন"
 
+#: plugins/rdp/rdp_plugin.c:2715 plugins/vnc/vnc_plugin.c:2001
+#, fuzzy
+msgid "Turn off clipboard sync"
+msgstr "ক্লিপবোর্ড সিঙ্ক বন্ধ করুন"
+
 #: plugins/rdp/rdp_plugin.c:2716
 #, fuzzy
 msgid "Ignore certificate"
@@ -3156,6 +2734,13 @@ msgstr "পুরানো লাইসেন্স ওয়ার্কফ্�
 #, fuzzy
 msgid "It disables CAL and hwId is set to 0"
 msgstr "এটি সিএএল অক্ষম করে এবং এইচডব্লিউআইডি 0-এ সেট করা হয়"
+
+#: plugins/rdp/rdp_plugin.c:2718 plugins/spice/spice_plugin.c:694
+#: plugins/vnc/vnc_plugin.c:2005 plugins/www/www_plugin.c:904
+#: plugins/gvnc/gvnc_plugin.c:858
+#, fuzzy
+msgid "Forget passwords after use"
+msgstr "ব্যবহারের পরে পাসওয়ার্ডগুলি ভুলে যান"
 
 #: plugins/rdp/rdp_plugin.c:2719
 #, fuzzy
@@ -3212,6 +2797,12 @@ msgstr "গেটওয়ের জন্যও বেস প্রমাণপ
 msgid "Enable Gateway websockets support"
 msgstr "গেটওয়ে ওয়েবসকেট সমর্থন সক্ষম করুন"
 
+#: plugins/rdp/rdp_plugin.c:2744 plugins/spice/spice_plugin.c:707
+#: plugins/vnc/vnc_plugin.c:2021
+#, fuzzy
+msgid "Send Ctrl+Alt+Delete"
+msgstr "Tttআরএল+অল্ট+মুছুন পাঠান"
+
 #: plugins/rdp/rdp_plugin.c:2757
 #, fuzzy
 msgid "RDP - Remote Desktop Protocol"
@@ -3232,115 +2823,524 @@ msgstr "আরডিপি - পছন্দ"
 msgid "Export connection in Windows .rdp file format"
 msgstr "উইন্ডোজ .আরডিপি ফাইল ফরম্যাটে সংযোগ রপ্তানি করুন"
 
-#: plugins/rdp/rdp_settings.c:205
-#, fuzzy
-msgid "<Auto-detect>"
-msgstr "<Auto-detect>"
-
-#: plugins/rdp/rdp_settings.c:237
-#, fuzzy
-msgid "<Not set>"
-msgstr "<সেট নয়>"
-
-#: plugins/rdp/rdp_settings.c:268
-#, fuzzy
-msgid "<Choose a quality level to edit…>"
-msgstr "< সম্পাদনা করার জন্য একটি গুণমানের স্তর চয়ন করুন... >"
-
-#: plugins/rdp/rdp_settings.c:415
-#, fuzzy
-msgid "Keyboard layout"
-msgstr "কীবোর্ড লেআউট"
-
-#: plugins/rdp/rdp_settings.c:440
-#, fuzzy
-msgid "Use client keyboard mapping"
-msgstr "ক্লায়েন্ট কীবোর্ড ম্যাপিং ব্যবহার করুন"
-
-#: plugins/rdp/rdp_settings.c:450
-#, fuzzy
-msgid "Quality settings"
-msgstr "গুণমান সেটিংস"
-
-#: plugins/rdp/rdp_settings.c:470
-#, fuzzy
-msgid "Wallpaper"
-msgstr "ওয়ালপেপার"
-
-#: plugins/rdp/rdp_settings.c:477
-#, fuzzy
-msgid "Window drag"
-msgstr "উইন্ডো টেনে আনুন"
-
-#: plugins/rdp/rdp_settings.c:484
-#, fuzzy
-msgid "Menu animation"
-msgstr "মেনু অ্যানিমেশন"
-
-#: plugins/rdp/rdp_settings.c:491
-#, fuzzy
-msgid "Theme"
-msgstr "থিম"
-
-#: plugins/rdp/rdp_settings.c:498
-#, fuzzy
-msgid "Cursor shadow"
-msgstr "কার্সার ছায়া"
-
-#: plugins/rdp/rdp_settings.c:505
-#, fuzzy
-msgid "Cursor blinking"
-msgstr "কার্সার ের পলক ফেলা"
-
-#: plugins/rdp/rdp_settings.c:512
-#, fuzzy
-msgid "Font smoothing"
-msgstr "ফন্ট মসৃণ হচ্ছে"
-
-#: plugins/rdp/rdp_settings.c:519
-#, fuzzy
-msgid "Composition"
-msgstr "রচনা"
-
-#: plugins/rdp/rdp_settings.c:529
-#, fuzzy
-msgid "Remote scale factor"
-msgstr "রিমোট স্কেল ফ্যাক্টর"
-
-#: plugins/rdp/rdp_settings.c:542
-#, fuzzy
-msgid "Desktop scale factor %"
-msgstr "ডেস্কটপ স্কেল ফ্যাক্টর %"
-
-#: plugins/rdp/rdp_settings.c:553
-#, fuzzy
-msgid "Device scale factor %"
-msgstr "ডিভাইস স্কেল ফ্যাক্টর %"
-
-#: plugins/rdp/rdp_settings.c:575
-#, fuzzy
-msgid "Desktop orientation"
-msgstr "ডেস্কটপ অভিমুখিতা"
-
-#: plugins/rdp/rdp_settings.c:592
-#, fuzzy
-msgid "Input device settings"
-msgstr "ইনপুট ডিভাইস সেটিংস"
-
-#: plugins/rdp/rdp_settings.c:608
-#, fuzzy
-msgid "General settings"
-msgstr "সাধারণ সেটিংস"
-
 #: plugins/rdp/rdp_event.c:344
 #, fuzzy, c-format
 msgid "Reconnection attempt %d of %d…"
 msgstr "%d এর পুনরায় সংযোগ প্রচেষ্টা %d…"
 
-#: plugins/kwallet/src/kwallet_plugin_main.c:118
+#: plugins/spice/spice_plugin_file_transfer.c:82
 #, fuzzy
-msgid "Secured password storage in KWallet"
-msgstr "কেওয়ালেটে সুরক্ষিত পাসওয়ার্ড সঞ্চয়স্থান"
+msgid "File Transfers"
+msgstr "ফাইল স্থানান্তর"
+
+#: plugins/spice/spice_plugin_file_transfer.c:219
+#, fuzzy
+msgid "Transfer error"
+msgstr "স্থানান্তর ত্রুটি"
+
+#: plugins/spice/spice_plugin_file_transfer.c:220
+#, fuzzy, c-format
+msgid "%s: %s"
+msgstr "%s: %s"
+
+#: plugins/spice/spice_plugin_file_transfer.c:223
+#, fuzzy
+msgid "Transfer completed"
+msgstr "স্থানান্তর সম্পন্ন হয়েছে"
+
+#: plugins/spice/spice_plugin_file_transfer.c:224
+#, fuzzy, c-format
+msgid "The %s file has been transferred"
+msgstr "%s ফাইলটি স্থানান্তরিত হয়েছে"
+
+#: plugins/spice/spice_plugin.c:351
+#, fuzzy
+msgid "Enter SPICE password"
+msgstr "স্পাইস পাসওয়ার্ড লিখুন"
+
+#: plugins/spice/spice_plugin.c:386
+#, fuzzy, c-format
+msgid "Disconnected from the SPICE server “%s”."
+msgstr "স্পাইস সার্ভার থেকে সংযোগ বিচ্ছিন্ন \"%s\"।"
+
+#: plugins/spice/spice_plugin.c:402
+#, fuzzy
+msgid "TLS connection error."
+msgstr "TTTসংযোগ ত্রুটি।"
+
+#: plugins/spice/spice_plugin.c:408
+#, fuzzy
+msgid "Connection to the SPICE server dropped."
+msgstr "স্পাইস সার্ভারের সংযোগ বাদ দেওয়া হয়েছে।"
+
+#: plugins/spice/spice_plugin.c:616 plugins/spice/spice_plugin.c:634
+msgid "Default"
+msgstr "ডিফল্ট"
+
+#: plugins/spice/spice_plugin.c:636
+#, fuzzy
+msgid "Auto GLZ"
+msgstr "অটো জিএলজেড"
+
+#: plugins/spice/spice_plugin.c:637
+#, fuzzy
+msgid "Auto LZ"
+msgstr "অটো এলজেড"
+
+#: plugins/spice/spice_plugin.c:650
+#, fuzzy
+msgid "Disable video overlay if videos are not displayed properly.\n"
+msgstr "ভিডিওগুলি সঠিকভাবে প্রদর্শিত না হলে ভিডিও ওভারলে অক্ষম করুন।\n"
+
+#: plugins/spice/spice_plugin.c:667
+#, fuzzy
+msgid "Use TLS encryption"
+msgstr "TTT এনক্রিপশন ব্যবহার করুন"
+
+#: plugins/spice/spice_plugin.c:668
+#, fuzzy
+msgid "Server CA certificate"
+msgstr "সার্ভার সিএ সার্টিফিকেট"
+
+#: plugins/spice/spice_plugin.c:686
+#, fuzzy
+msgid "Prefered video codec"
+msgstr "পছন্দসই ভিডিও কোডেক"
+
+#: plugins/spice/spice_plugin.c:687
+#, fuzzy
+msgid "Turn off GStreamer overlay"
+msgstr "Gg1 ওভারলে বন্ধ করুন"
+
+#: plugins/spice/spice_plugin.c:690
+#, fuzzy
+msgid "Prefered image compression"
+msgstr "পছন্দসই চিত্র সংকোচন"
+
+#: plugins/spice/spice_plugin.c:693 plugins/spice/spice_plugin.c:706
+#: plugins/gvnc/gvnc_plugin.c:857 plugins/gvnc/gvnc_plugin.c:871
+#, fuzzy
+msgid "No clipboard sync"
+msgstr "কোনও ক্লিপবোর্ড সিঙ্ক নেই"
+
+#: plugins/spice/spice_plugin.c:695 plugins/gvnc/gvnc_plugin.c:860
+#, fuzzy
+msgid "Enable audio channel"
+msgstr "অডিও চ্যানেল সক্রিয় করুন"
+
+#: plugins/spice/spice_plugin.c:696
+#, fuzzy
+msgid "Share smart card"
+msgstr "স্মার্ট কার্ড শেয়ার করুন"
+
+#: plugins/spice/spice_plugin.c:697 plugins/spice/spice_plugin.c:705
+#: plugins/vnc/vnc_plugin.c:2000 plugins/vnc/vnc_plugin.c:2017
+#: plugins/gvnc/gvnc_plugin.c:861 plugins/gvnc/gvnc_plugin.c:870
+#, fuzzy
+msgid "View only"
+msgstr "শুধু দেখার জন্য"
+
+#: plugins/spice/spice_plugin.c:708 plugins/spice/spice_plugin_usb.c:51
+#, fuzzy
+msgid "Select USB devices for redirection"
+msgstr "পুনঃনির্দেশনার জন্য ইউএসবি ডিভাইসগুলি নির্বাচন করুন"
+
+#: plugins/spice/spice_plugin.c:719
+#, fuzzy
+msgid "SPICE - Simple Protocol for Independent Computing Environments"
+msgstr "স্পাইস - স্বাধীন কম্পিউটিং পরিবেশের জন্য সহজ প্রোটোকল"
+
+#: plugins/spice/spice_plugin_usb.c:54
+#, fuzzy
+msgid "_Close"
+msgstr "_Close"
+
+#: plugins/spice/spice_plugin_usb.c:94
+#, fuzzy
+msgid "USB redirection error"
+msgstr "ইউএসবি পুনঃনির্দেশক ত্রুটি"
+
+#: plugins/vnc/vnc_plugin.c:772
+#, fuzzy
+msgid "Enter VNC password"
+msgstr "ভিএনসি পাসওয়ার্ড লিখুন"
+
+#: plugins/vnc/vnc_plugin.c:825 plugins/gvnc/gvnc_plugin.c:539
+#, fuzzy
+msgid "Enter VNC authentication credentials"
+msgstr "ভিএনসি প্রমাণীকরণ প্রমাণপত্রাদি লিখুন"
+
+#: plugins/vnc/vnc_plugin.c:936
+#, fuzzy
+msgid "Unable to connect to VNC server"
+msgstr "ভিএনসি সার্ভারে সংযোগ করতে অক্ষম"
+
+#: plugins/vnc/vnc_plugin.c:937
+#, fuzzy, c-format
+msgid "Couldn’t convert '%s' to host address"
+msgstr "'%s' হোস্ট ঠিকানায় রূপান্তর করা যায়নি"
+
+#: plugins/vnc/vnc_plugin.c:938
+#, fuzzy, c-format
+msgid "VNC connection failed: %s"
+msgstr "ভিএনসি সংযোগ ব্যর্থ হয়েছে: %s"
+
+#: plugins/vnc/vnc_plugin.c:939
+#, fuzzy
+msgid "Your connection has been rejected."
+msgstr "আপনার সংযোগ প্রত্যাখ্যান করা হয়েছে।"
+
+#: plugins/vnc/vnc_plugin.c:966
+#, fuzzy, c-format
+msgid "The VNC server requested an unknown authentication method. %s"
+msgstr "ভিএনসি সার্ভার একটি অজানা প্রমাণীকরণ পদ্ধতির অনুরোধ করেছিল। %s"
+
+#: plugins/vnc/vnc_plugin.c:968
+#, fuzzy
+msgid "Please retry after turning on encryption for this profile."
+msgstr "এই প্রোফাইলের জন্য এনক্রিপশন চালু করার পরে অনুগ্রহ করে পুনরায় চেষ্টা করুন।"
+
+#: plugins/vnc/vnc_plugin.c:1939
+#, fuzzy
+msgid ""
+"Connect to VNC using a repeater:\n"
+"  • The server field must contain the repeater ID, e.g. ID:123456789\n"
+"  • The repeater field have to be set to the repeater IP and port, like:\n"
+"    10.10.10.12:5901\n"
+"  • From the remote VNC server, you will connect to\n"
+"    the repeater, e.g. with x11vnc:\n"
+"    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
+msgstr ""
+"পুনরাবৃত্তিকারী ব্যবহার করে ভিএনসিতে সংযোগ করুন:\n"
+"  • সার্ভার ফিল্ডে অবশ্যই রিপিটার আইডি থাকতে হবে, যেমন আইডি:123456789\n"
+"  • রিপিটার ক্ষেত্রটি রিপিটার আইপি এবং পোর্টে সেট করতে হবে, যেমন:\n"
+"    10.10.10.12:5901\n"
+"  • দূরবর্তী ভিএনসি সার্ভার থেকে আপনি সংযোগ করবেন\n"
+"    পুনরাবৃত্তিকারী, যেমন এক্স11ভিএনসি সহ:\n"
+"    এক্স১১ভিএনসি -কানেক্ট রিপিটার=আইডি:১২৩৪৫৬৭৮৯+১০.১০.১০.১২:৫৫০০"
+
+#: plugins/vnc/vnc_plugin.c:1959
+#, fuzzy
+msgid "Repeater"
+msgstr "পুনরাবৃত্তিকারী"
+
+#: plugins/vnc/vnc_plugin.c:1979
+#, fuzzy
+msgid "Listen on port"
+msgstr "বন্দরে শুনুন"
+
+#: plugins/vnc/vnc_plugin.c:1999
+#, fuzzy
+msgid "Show remote cursor"
+msgstr "দূরবর্তী কার্সার দেখান"
+
+#: plugins/vnc/vnc_plugin.c:2002
+#, fuzzy
+msgid "Turn off encryption"
+msgstr "এনক্রিপশন বন্ধ করুন"
+
+#: plugins/vnc/vnc_plugin.c:2003 plugins/vnc/vnc_plugin.c:2018
+#, fuzzy
+msgid "Prevent local interaction on the server"
+msgstr "সার্ভারে স্থানীয় মিথস্ক্রিয়া প্রতিরোধ করুন"
+
+#: plugins/vnc/vnc_plugin.c:2004 plugins/gvnc/gvnc_plugin.c:859
+#, fuzzy
+msgid "Ignore remote bell messages"
+msgstr "দূরবর্তী বেল বার্তাগুলি উপেক্ষা করুন"
+
+#: plugins/vnc/vnc_plugin.c:2020
+#, fuzzy
+msgid "Open Chat…"
+msgstr "চ্যাট খুলুন…"
+
+#: plugins/vnc/vnc_plugin.h:41
+#, fuzzy
+msgid "Remmina VNC Plugin"
+msgstr "রেমিনা ভিএনসি প্লাগইন"
+
+#: plugins/vnc/vnc_plugin.h:46
+#, fuzzy
+msgid "Remmina VNC listener Plugin"
+msgstr "রেমিনা ভিএনসি শ্রোতা প্লাগইন"
+
+#: plugins/www/www_config.h:43
+#, fuzzy
+msgid "Remmina web-browser plugin"
+msgstr "রেমিনা ওয়েব ব্রাউজার প্লাগইন"
+
+#: plugins/www/www_plugin.c:98
+#, fuzzy
+msgid "File downloaded"
+msgstr "ফাইল ডাউনলোড করা হয়েছে"
+
+#: plugins/www/www_plugin.c:574
+#, fuzzy
+msgid "Enter WWW authentication credentials"
+msgstr "ডাব্লুডাব্লিউডাব্লিউ প্রমাণীকরণ প্রমাণপত্রাদি লিখুন"
+
+#: plugins/www/www_plugin.c:878
+#, fuzzy
+msgid "URL"
+msgstr "ইউআরএল (URL)"
+
+#: plugins/www/www_plugin.c:878
+#, fuzzy
+msgid "http://address or https://address"
+msgstr "http://address বা https://address"
+
+#: plugins/www/www_plugin.c:895
+#, fuzzy
+msgid "User agent"
+msgstr "ব্যবহারকারী এজেন্ট"
+
+#: plugins/www/www_plugin.c:896
+#, fuzzy
+msgid "Proxy URL"
+msgstr "প্রক্সি ইউআরএল"
+
+#: plugins/www/www_plugin.c:896
+#, fuzzy
+msgid "E.g. https://example.org, socks://mysocks:1080"
+msgstr "যেমন https://example.org, socks://mysocks:1080"
+
+#: plugins/www/www_plugin.c:897
+#, fuzzy
+msgid "Turn on Java support"
+msgstr "জাভা সমর্থন চালু করুন"
+
+#: plugins/www/www_plugin.c:898
+#, fuzzy
+msgid "Turn on smooth scrolling"
+msgstr "মসৃণ স্ক্রোলিং চালু করুন"
+
+#: plugins/www/www_plugin.c:899
+#, fuzzy
+msgid "Turn on spatial navigation"
+msgstr "স্থানিক নেভিগেশন চালু করুন"
+
+#: plugins/www/www_plugin.c:900
+#, fuzzy
+msgid "Turn on plugin support"
+msgstr "প্লাগইন সমর্থন চালু করুন"
+
+#: plugins/www/www_plugin.c:901
+#, fuzzy
+msgid "Turn on WebGL support"
+msgstr "ওয়েবজিএল সমর্থন চালু করুন"
+
+#: plugins/www/www_plugin.c:902
+#, fuzzy
+msgid "Turn on HTML5 audio support"
+msgstr "এইচটিএমএল5 অডিও সমর্থন চালু করুন"
+
+#: plugins/www/www_plugin.c:903
+#, fuzzy
+msgid "Ignore TLS errors"
+msgstr "টিএলএস ত্রুটিউপেক্ষা করুন"
+
+#: plugins/www/www_plugin.c:906
+#, fuzzy
+msgid "Turn on Web Inspector"
+msgstr "ওয়েব পরিদর্শক চালু করুন"
+
+#: plugins/exec/exec_plugin.c:160
+#, fuzzy
+msgid "You did not set any command to be executed"
+msgstr "আপনি কার্যকর করার জন্য কোনও আদেশ নির্ধারণ করেননি"
+
+#: plugins/exec/exec_plugin.c:206
+#, fuzzy
+msgid ""
+"Warning: Running a command synchronously may cause Remmina not to respond.\n"
+"Do you really want to continue?"
+msgstr ""
+"সতর্কীকরণ: একটি কমান্ড সমকালীনভাবে চালানোর ফলে রেমিনা সাড়া না দিতে পারে।\n"
+"আপনি কি সত্যিই চালিয়ে যেতে চান?"
+
+#: plugins/exec/exec_plugin.c:266
+#, fuzzy
+msgid "Command"
+msgstr "কমান্ড"
+
+#: plugins/exec/exec_plugin.c:267
+#, fuzzy
+msgid "Asynchronous execution"
+msgstr "অ্যাসিঙ্ক্রোনাস এক্সিকিউশন"
+
+#: plugins/exec/exec_plugin_config.h:41
+#, fuzzy
+msgid "Execute a command"
+msgstr "একটি আদেশ কার্যকর করুন"
+
+#: plugins/tool_hello_world/plugin_config.h:40
+#, fuzzy
+msgid "Hello, World!"
+msgstr "হ্যালো ওয়ার্ল্ড!"
+
+#: plugins/secret/src/glibsecret_plugin.c:188
+#, fuzzy
+msgid "Secured password storage in the GNOME keyring"
+msgstr "GTTTT"
+
+#: plugins/gvnc/gvnc_plugin_config.h:40
+#, fuzzy
+msgid "Remmina VNC plugin for GNOME and KVM"
+msgstr "GGওএম এবং কেভিএম এর জন্য রেমিনা ভিএনসি প্লাগইন"
+
+#: plugins/gvnc/gvnc_plugin.c:477
+#, fuzzy, c-format
+msgid "Unsupported authentication type %u"
+msgstr "অসমর্থিত প্রমাণীকরণের ধরন %u"
+
+#: plugins/gvnc/gvnc_plugin.c:489
+#, fuzzy, c-format
+msgid "Authentication failure: %s"
+msgstr "প্রমাণীকরণ ব্যর্থতা: %s"
+
+#: plugins/gvnc/gvnc_plugin.c:820
+#, fuzzy
+msgid "Use server settings"
+msgstr "সার্ভার সেটিংস ব্যবহার করুন"
+
+#: plugins/gvnc/gvnc_plugin.c:821
+#, fuzzy
+msgid "True colour (24 bits)"
+msgstr "সত্যিকারের রঙ (24 বিট)"
+
+#: plugins/gvnc/gvnc_plugin.c:822
+#, fuzzy
+msgid "High colour (16 bits)"
+msgstr "উচ্চ রঙ (16 বিট)"
+
+#: plugins/gvnc/gvnc_plugin.c:823
+#, fuzzy
+msgid "Low colour (8 bits)"
+msgstr "কম রঙ (8 বিট)"
+
+#: plugins/gvnc/gvnc_plugin.c:824
+#, fuzzy
+msgid "Ultra low colour (3 bits)"
+msgstr "আল্ট্রা লো কালার (3 বিট)"
+
+#: plugins/gvnc/gvnc_plugin.c:839
+#, fuzzy
+msgid "VNC password"
+msgstr "ভিএনসি পাসওয়ার্ড"
+
+#: plugins/gvnc/gvnc_plugin.c:841
+#, fuzzy
+msgid "Use JPEG Compression"
+msgstr "জেপিইজি কম্প্রেশন ব্যবহার করুন"
+
+#: plugins/gvnc/gvnc_plugin.c:841
+#, fuzzy
+msgid "This might not work on all VNC servers"
+msgstr "এটি সমস্ত ভিএনসি সার্ভারে কাজ নাও করতে পারে"
+
+#: plugins/gvnc/gvnc_plugin.c:842
+#, fuzzy
+msgid "Enable GTK-VNC debug"
+msgstr "GTকে-ভিএনসি ডিবাগ সক্ষম করুন"
+
+#: plugins/gvnc/gvnc_plugin.c:862
+#, fuzzy
+#| msgid "Per connection"
+msgid "Shared connection"
+msgstr "অংশীদারি সংযোগ"
+
+#: plugins/gvnc/gvnc_plugin.c:862
+#, fuzzy
+msgid ""
+"If the server should try to share the desktop by leaving other clients "
+"connected"
+msgstr ""
+"সার্ভারের যদি অন্য ক্লায়েন্টদের সংযুক্ত রেখে ডেস্কটপ শেয়ার করার চেষ্টা করা উচিত"
+
+#: plugins/gvnc/gvnc_plugin.c:872
+#, fuzzy
+msgid "Send Ctrl+Alt+_Del"
+msgstr "tআরএল+অল্ট+_Del পাঠান"
+
+#: plugins/gvnc/gvnc_plugin.c:873
+#, fuzzy
+msgid "Send Ctrl+Alt+_Backspace"
+msgstr "_Backspace পাঠান"
+
+#: plugins/gvnc/gvnc_plugin.c:874
+#, fuzzy
+msgid "Send Ctrl+Alt+_F1"
+msgstr "t+অল্ট+_F1 পাঠান"
+
+#: plugins/gvnc/gvnc_plugin.c:875
+#, fuzzy
+msgid "Send Ctrl+Alt+_F2"
+msgstr "_F2 পাঠান"
+
+#: plugins/gvnc/gvnc_plugin.c:876
+#, fuzzy
+msgid "Send Ctrl+Alt+_F3"
+msgstr "tআরএল+অল্ট+_F3 পাঠান"
+
+#: plugins/gvnc/gvnc_plugin.c:877
+#, fuzzy
+msgid "Send Ctrl+Alt+_F4"
+msgstr "_F4 পাঠান"
+
+#: plugins/gvnc/gvnc_plugin.c:878
+#, fuzzy
+msgid "Send Ctrl+Alt+_F5"
+msgstr "_F5 পাঠান"
+
+#: plugins/gvnc/gvnc_plugin.c:879
+#, fuzzy
+msgid "Send Ctrl+Alt+_F6"
+msgstr "tআরএল+অল্ট+_F6 পাঠান"
+
+#: plugins/gvnc/gvnc_plugin.c:880
+#, fuzzy
+msgid "Send Ctrl+Alt+_F7"
+msgstr "_F7 পাঠান"
+
+#: plugins/gvnc/gvnc_plugin.c:881
+#, fuzzy
+msgid "Send Ctrl+Alt+_F8"
+msgstr "_F8 পাঠান"
+
+#: plugins/gvnc/gvnc_plugin.c:882
+#, fuzzy
+msgid "Send Ctrl+Alt+_F9"
+msgstr "_F9 পাঠান"
+
+#: plugins/gvnc/gvnc_plugin.c:883
+#, fuzzy
+msgid "Send Ctrl+Alt+_F10"
+msgstr "_F10 পাঠান"
+
+#: plugins/gvnc/gvnc_plugin.c:884
+#, fuzzy
+msgid "Send Ctrl+Alt+_F11"
+msgstr "সিটিআরএল+অল্ট+_F11 পাঠান"
+
+#: plugins/gvnc/gvnc_plugin.c:885
+#, fuzzy
+msgid "Send Ctrl+Alt+_F12"
+msgstr "_F12 পাঠান"
+
+#: plugins/gvnc/gvnc_plugin.c:887
+#, fuzzy
+msgid "Reboot remote host"
+msgstr "রিমোট হোস্ট রিবুট করুন"
+
+#: plugins/gvnc/gvnc_plugin.c:888
+#, fuzzy
+msgid "Reset remote host (hard reboot)"
+msgstr "রিমোট হোস্ট রিসেট করুন (হার্ড রিবুট)"
+
+#: plugins/gvnc/gvnc_plugin.c:889
+#, fuzzy
+msgid "Shutdown remote host"
+msgstr "রিমোট হোস্ট বন্ধ করা"
 
 #: plugins/telepathy/telepathy_channel_handler.c:237
 #, fuzzy, c-format
@@ -3360,46 +3360,6 @@ msgstr "ডেস্কটপ শেয়ারিং আমন্ত্রণ"
 #, fuzzy
 msgid "Telepathy - Desktop Sharing"
 msgstr "টেলিপ্যাথি - ডেস্কটপ শেয়ারিং"
-
-#: data/ui/remmina_search.glade:61 data/ui/remmina_search_popover.glade:56
-#, fuzzy
-msgid "Search"
-msgstr "অনুসন্ধান"
-
-#: data/ui/remmina_search.glade:75 data/ui/remmina_search_popover.glade:70
-#, fuzzy
-msgid "Search for previous occurrence"
-msgstr "পূর্ববর্তী ঘটনার জন্য অনুসন্ধান করুন"
-
-#: data/ui/remmina_search.glade:98 data/ui/remmina_search_popover.glade:93
-#, fuzzy
-msgid "Search for next occurrence"
-msgstr "পরবর্তী ঘটনার জন্য অনুসন্ধান করুন"
-
-#: data/ui/remmina_search.glade:130 data/ui/remmina_search_popover.glade:125
-#, fuzzy
-msgid "Toggle search options"
-msgstr "অনুসন্ধান বিকল্পগুলি টগল করুন"
-
-#: data/ui/remmina_search.glade:191 data/ui/remmina_search_popover.glade:186
-#, fuzzy
-msgid "_Match case"
-msgstr "_Match মামলা"
-
-#: data/ui/remmina_search.glade:208 data/ui/remmina_search_popover.glade:203
-#, fuzzy
-msgid "Match _entire word only"
-msgstr "শুধুমাত্র _entire শব্দ মেলান"
-
-#: data/ui/remmina_search.glade:225 data/ui/remmina_search_popover.glade:220
-#, fuzzy
-msgid "Match as _regular expression"
-msgstr "_regular অভিব্যক্তি হিসাবে মেলে"
-
-#: data/ui/remmina_search.glade:242 data/ui/remmina_search_popover.glade:237
-#, fuzzy
-msgid "_Wrap around"
-msgstr "চারপাশে _Wrap"
 
 #: data/ui/remmina_snap_info_dialog.glade:71
 #, fuzzy
@@ -3462,6 +3422,46 @@ msgstr "<big> স্ন্যাপ সেটিংস</big>"
 msgid "Do not show this message again"
 msgstr "এই বার্তাটি আর দেখাবেন না"
 
+#: data/ui/remmina_search_popover.glade:56 data/ui/remmina_search.glade:61
+#, fuzzy
+msgid "Search"
+msgstr "অনুসন্ধান"
+
+#: data/ui/remmina_search_popover.glade:70 data/ui/remmina_search.glade:75
+#, fuzzy
+msgid "Search for previous occurrence"
+msgstr "পূর্ববর্তী ঘটনার জন্য অনুসন্ধান করুন"
+
+#: data/ui/remmina_search_popover.glade:93 data/ui/remmina_search.glade:98
+#, fuzzy
+msgid "Search for next occurrence"
+msgstr "পরবর্তী ঘটনার জন্য অনুসন্ধান করুন"
+
+#: data/ui/remmina_search_popover.glade:125 data/ui/remmina_search.glade:130
+#, fuzzy
+msgid "Toggle search options"
+msgstr "অনুসন্ধান বিকল্পগুলি টগল করুন"
+
+#: data/ui/remmina_search_popover.glade:186 data/ui/remmina_search.glade:191
+#, fuzzy
+msgid "_Match case"
+msgstr "_Match মামলা"
+
+#: data/ui/remmina_search_popover.glade:203 data/ui/remmina_search.glade:208
+#, fuzzy
+msgid "Match _entire word only"
+msgstr "শুধুমাত্র _entire শব্দ মেলান"
+
+#: data/ui/remmina_search_popover.glade:220 data/ui/remmina_search.glade:225
+#, fuzzy
+msgid "Match as _regular expression"
+msgstr "_regular অভিব্যক্তি হিসাবে মেলে"
+
+#: data/ui/remmina_search_popover.glade:237 data/ui/remmina_search.glade:242
+#, fuzzy
+msgid "_Wrap around"
+msgstr "চারপাশে _Wrap"
+
 #: data/ui/remmina_about.glade:30 data/ui/remmina_main.glade:395
 #, fuzzy
 msgid "About"
@@ -3486,6 +3486,194 @@ msgstr ""
 #, fuzzy
 msgid "Website"
 msgstr "ওয়েবসাইট"
+
+#: data/ui/remmina_string_list.glade:14 data/ui/remmina_string_list.glade:158
+msgid "Add"
+msgstr "যোগ করুন"
+
+#: data/ui/remmina_string_list.glade:20 data/ui/remmina_string_list.glade:137
+#: data/ui/remmina_key_chooser.glade:14 data/ui/remmina_key_chooser.glade:15
+#, fuzzy
+msgid "_Remove"
+msgstr "_Remove"
+
+#: data/ui/remmina_string_list.glade:26 data/ui/remmina_string_list.glade:116
+#, fuzzy
+msgid "Move up"
+msgstr "উপরে সরান"
+
+#: data/ui/remmina_string_list.glade:32 data/ui/remmina_string_list.glade:95
+#, fuzzy
+msgid "Move down"
+msgstr "নিচে সরান"
+
+#: data/ui/remmina_mpc.glade:14
+#, fuzzy
+msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
+msgstr "<span weight='bold' size='larger'> মাল্টি পাসওয়ার্ড চেঞ্জার[৫৬]"
+
+#: data/ui/remmina_mpc.glade:32
+#, fuzzy
+msgid "Change"
+msgstr "পাল্টান"
+
+#: data/ui/remmina_mpc.glade:201
+#, fuzzy
+msgid "Selection criteria"
+msgstr "নির্বাচনের মানদণ্ড"
+
+#: data/ui/remmina_mpc.glade:261
+#, fuzzy
+msgid "Confirm password"
+msgstr "পাসওয়ার্ড নিশ্চিত করুন"
+
+#: data/ui/remmina_mpc.glade:294
+#, fuzzy
+msgid "Set new password"
+msgstr "নতুন পাসওয়ার্ড সেট করুন"
+
+#. A column table with multiple check-boxes
+#: data/ui/remmina_mpc.glade:331
+#, fuzzy
+msgctxt "Multi password changer"
+msgid "Select"
+msgstr "নির্বাচন"
+
+#: data/ui/remmina_mpc.glade:343
+#, fuzzy
+msgctxt "Multi password changer table"
+msgid "Name"
+msgstr "নাম"
+
+#: data/ui/remmina_mpc.glade:354
+#, fuzzy
+msgctxt "Multi password changer table"
+msgid "Group"
+msgstr "গোষ্ঠী"
+
+#: data/ui/remmina_mpc.glade:365
+#, fuzzy
+msgctxt "Multi password changer table"
+msgid "Domain\\Username"
+msgstr "ডোমেইন\\ব্যবহারকারীর নাম"
+
+#: data/ui/remmina_news.glade:75
+#, fuzzy
+msgid ""
+"<big><b>The news are turned off</b></big>\n"
+"\n"
+"<span>\n"
+"Turning on news means the program connects to a Remmina server to download "
+"the release notes.\n"
+"</span>\n"
+"\n"
+"<span>\n"
+"Version checking can only be activated at compile time.\n"
+"</span>\n"
+"\n"
+"<span>\n"
+"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
+"release notes\"><i>Visit the website to read the release notes</i></a>.\n"
+"</span>"
+msgstr ""
+"<big> <b> খবরটি বন্ধ[৩১][৩৫]\n"
+"\n"
+"<span>\n"
+"সংবাদ চালু করার অর্থ প্রোগ্রামটি রিলিজ নোটগুলি ডাউনলোড করতে একটি রেমিনা সার্ভারের "
+"সাথে সংযোগ করে।\n"
+"</span>\n"
+"\n"
+"<span>\n"
+"সংস্করণ পরীক্ষণ শুধুমাত্র কম্পাইল সময়ে সক্রিয় করা যেতে পারে।\n"
+"</span>\n"
+"\n"
+"<span>\n"
+"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
+"release notes\"> <i> রিলিজ নোটগুলি পড়তে ওয়েবসাইটটি দেখুন</i></a>।\n"
+"</span>"
+
+#. The star (*) is a reference to privacy consent
+#: data/ui/remmina_news.glade:130 data/ui/remmina_preferences.glade:464
+#, fuzzy
+msgid ""
+"Send <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
+"remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
+"\">anonymous</a></b> statistics. (*)"
+msgstr "[৫][৮] বেনামী[১৩৮][১৪২] পরিসংখ্যান প্রেরণ করুন। (*)"
+
+#: data/ui/remmina_news.glade:142 data/ui/remmina_news.glade:195
+#, fuzzy
+msgid "Send anonymous statistics"
+msgstr "বেনামী পরিসংখ্যান পাঠান"
+
+#: data/ui/remmina_news.glade:156
+msgid "Use as default remote desktop client"
+msgstr "Remmina দূরবর্তী ডেস্কটপ ক্লায়েন্ট"
+
+#: data/ui/remmina_news.glade:165
+#, fuzzy
+msgid "Apply"
+msgstr "প্রয়োগ"
+
+#: data/ui/remmina_news.glade:169
+#, fuzzy
+msgid "Allow Remmina to automatically open .rdp and .remmina files."
+msgstr "রেমিনাকে স্বয়ংক্রিয়ভাবে .আরডিপি এবং .রেমিনা ফাইলগুলি খুলতে অনুমতি দিন।"
+
+#. The star (*) is a reference to privacy consent
+#: data/ui/remmina_news.glade:183 data/ui/remmina_preferences.glade:479
+#, fuzzy
+msgid ""
+"Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
+"\">remmina.org</a> (*)"
+msgstr "[১৬] remmina.org থেকে সংবাদ আনো[৮৩] (*)"
+
+#: data/ui/remmina_news.glade:208 data/ui/remmina_preferences.glade:446
+#, fuzzy
+msgid ""
+"* By enabling statistics and/or news you consent to send and fetch data to/"
+"from remmina.org"
+msgstr ""
+"* পরিসংখ্যান এবং/অথবা সংবাদ সক্রিয় করে আপনি remmina.org থেকে তথ্য পাঠাতে এবং "
+"আনতে সম্মতি দিন"
+
+#: data/ui/remmina_news.glade:231
+#, fuzzy
+msgid "<big>Take part</big>"
+msgstr "<big> অংশ নিন[১৪]"
+
+#. Pay attention to the quoting characters as they may break the pango layout. If in doubt and cannot test, copy and paste the symbols from the English string.
+#: data/ui/remmina_news.glade:257
+#, fuzzy
+msgid ""
+"<span>\n"
+"<b>You have our gratitude in choosing copylefted libre software, <a href="
+"\"https://remmina.org/donations/\" title=\"Where’s the money, Lebowski? "
+"“blblblblblb”\">donations also make us happy</a>, and further help improve "
+"Remmina.</b>\n"
+"</span>\n"
+msgstr ""
+"<span>\n"
+"<b> কপিলেফটেড লিব্রে সফ্টওয়্যার চয়ন করার ক্ষেত্রে আপনার কৃতজ্ঞতা রয়েছে, <a href="
+"\"https://remmina.org/donations/\" title=\"Where’s the money, Lebowski? "
+"“blblblblblb”\">অনুদান গুলি আমাদের খুশি করে</a>, এবং রেমিনাকে উন্নত করতে আরও "
+"সহায়তা করে। </b>\n"
+"</span>\n"
+
+#: data/ui/remmina_news.glade:277
+#, fuzzy
+msgid "<big>Contribute</big>"
+msgstr "<big> অবদান রাখুন[১৫]"
+
+#: data/ui/remmina_key_chooser.glade:23
+#, fuzzy
+msgid "Choose a new key"
+msgstr "একটি নতুন কী চয়ন করুন"
+
+#: data/ui/remmina_key_chooser.glade:82
+#, fuzzy
+msgid "Please press the new key…"
+msgstr "অনুগ্রহ করে নতুন কীটি টিপুন…"
 
 #: data/ui/remmina_main.glade:35
 #, fuzzy
@@ -3616,183 +3804,10 @@ msgstr "ক্রিয়া"
 msgid "Toggle view"
 msgstr "দর্শন টগল করুন"
 
-#: data/ui/remmina_unlock.glade:60
-#, fuzzy
-msgid "Unlock"
-msgstr "খোলা"
-
-#: data/ui/remmina_unlock.glade:94
-#, fuzzy
-msgid "Unlock Remmina"
-msgstr "রেমিনা আনলক করুন"
-
-#: data/ui/remmina_unlock.glade:128
-#, fuzzy
-msgid "Master password"
-msgstr "মাস্টার পাসওয়ার্ড"
-
 #: data/ui/remmina_spinner.glade:54
 #, fuzzy
 msgid "Please wait…"
 msgstr "অনুগ্রহপূর্বক অপেক্ষা করো…"
-
-#: data/ui/remmina_news.glade:75
-#, fuzzy
-msgid ""
-"<big><b>The news are turned off</b></big>\n"
-"\n"
-"<span>\n"
-"Turning on news means the program connects to a Remmina server to download "
-"the release notes.\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"Version checking can only be activated at compile time.\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
-"release notes\"><i>Visit the website to read the release notes</i></a>.\n"
-"</span>"
-msgstr ""
-"<big> <b> খবরটি বন্ধ[৩১][৩৫]\n"
-"\n"
-"<span>\n"
-"সংবাদ চালু করার অর্থ প্রোগ্রামটি রিলিজ নোটগুলি ডাউনলোড করতে একটি রেমিনা সার্ভারের "
-"সাথে সংযোগ করে।\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"সংস্করণ পরীক্ষণ শুধুমাত্র কম্পাইল সময়ে সক্রিয় করা যেতে পারে।\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
-"release notes\"> <i> রিলিজ নোটগুলি পড়তে ওয়েবসাইটটি দেখুন</i></a>।\n"
-"</span>"
-
-#. The star (*) is a reference to privacy consent
-#: data/ui/remmina_news.glade:130 data/ui/remmina_preferences.glade:464
-#, fuzzy
-msgid ""
-"Send <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-"remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
-"\">anonymous</a></b> statistics. (*)"
-msgstr "[৫][৮] বেনামী[১৩৮][১৪২] পরিসংখ্যান প্রেরণ করুন। (*)"
-
-#: data/ui/remmina_news.glade:142 data/ui/remmina_news.glade:195
-#, fuzzy
-msgid "Send anonymous statistics"
-msgstr "বেনামী পরিসংখ্যান পাঠান"
-
-#: data/ui/remmina_news.glade:156
-msgid "Use as default remote desktop client"
-msgstr "Remmina দূরবর্তী ডেস্কটপ ক্লায়েন্ট"
-
-#: data/ui/remmina_news.glade:165
-#, fuzzy
-msgid "Apply"
-msgstr "প্রয়োগ"
-
-#: data/ui/remmina_news.glade:169
-#, fuzzy
-msgid "Allow Remmina to automatically open .rdp and .remmina files."
-msgstr "রেমিনাকে স্বয়ংক্রিয়ভাবে .আরডিপি এবং .রেমিনা ফাইলগুলি খুলতে অনুমতি দিন।"
-
-#. The star (*) is a reference to privacy consent
-#: data/ui/remmina_news.glade:183 data/ui/remmina_preferences.glade:479
-#, fuzzy
-msgid ""
-"Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
-"\">remmina.org</a> (*)"
-msgstr "[১৬] remmina.org থেকে সংবাদ আনো[৮৩] (*)"
-
-#: data/ui/remmina_news.glade:208 data/ui/remmina_preferences.glade:446
-#, fuzzy
-msgid ""
-"* By enabling statistics and/or news you consent to send and fetch data to/"
-"from remmina.org"
-msgstr ""
-"* পরিসংখ্যান এবং/অথবা সংবাদ সক্রিয় করে আপনি remmina.org থেকে তথ্য পাঠাতে এবং "
-"আনতে সম্মতি দিন"
-
-#: data/ui/remmina_news.glade:231
-#, fuzzy
-msgid "<big>Take part</big>"
-msgstr "<big> অংশ নিন[১৪]"
-
-#. Pay attention to the quoting characters as they may break the pango layout. If in doubt and cannot test, copy and paste the symbols from the English string.
-#: data/ui/remmina_news.glade:257
-#, fuzzy
-msgid ""
-"<span>\n"
-"<b>You have our gratitude in choosing copylefted libre software, <a href="
-"\"https://remmina.org/donations/\" title=\"Where’s the money, Lebowski? "
-"“blblblblblb”\">donations also make us happy</a>, and further help improve "
-"Remmina.</b>\n"
-"</span>\n"
-msgstr ""
-"<span>\n"
-"<b> কপিলেফটেড লিব্রে সফ্টওয়্যার চয়ন করার ক্ষেত্রে আপনার কৃতজ্ঞতা রয়েছে, <a href="
-"\"https://remmina.org/donations/\" title=\"Where’s the money, Lebowski? "
-"“blblblblblb”\">অনুদান গুলি আমাদের খুশি করে</a>, এবং রেমিনাকে উন্নত করতে আরও "
-"সহায়তা করে। </b>\n"
-"</span>\n"
-
-#: data/ui/remmina_news.glade:277
-#, fuzzy
-msgid "<big>Contribute</big>"
-msgstr "<big> অবদান রাখুন[১৫]"
-
-#: data/ui/remmina_mpc.glade:14
-#, fuzzy
-msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
-msgstr "<span weight='bold' size='larger'> মাল্টি পাসওয়ার্ড চেঞ্জার[৫৬]"
-
-#: data/ui/remmina_mpc.glade:32
-#, fuzzy
-msgid "Change"
-msgstr "পাল্টান"
-
-#: data/ui/remmina_mpc.glade:201
-#, fuzzy
-msgid "Selection criteria"
-msgstr "নির্বাচনের মানদণ্ড"
-
-#: data/ui/remmina_mpc.glade:261
-#, fuzzy
-msgid "Confirm password"
-msgstr "পাসওয়ার্ড নিশ্চিত করুন"
-
-#: data/ui/remmina_mpc.glade:294
-#, fuzzy
-msgid "Set new password"
-msgstr "নতুন পাসওয়ার্ড সেট করুন"
-
-#. A column table with multiple check-boxes
-#: data/ui/remmina_mpc.glade:331
-#, fuzzy
-msgctxt "Multi password changer"
-msgid "Select"
-msgstr "নির্বাচন"
-
-#: data/ui/remmina_mpc.glade:343
-#, fuzzy
-msgctxt "Multi password changer table"
-msgid "Name"
-msgstr "নাম"
-
-#: data/ui/remmina_mpc.glade:354
-#, fuzzy
-msgctxt "Multi password changer table"
-msgid "Group"
-msgstr "গোষ্ঠী"
-
-#: data/ui/remmina_mpc.glade:365
-#, fuzzy
-msgctxt "Multi password changer table"
-msgid "Domain\\Username"
-msgstr "ডোমেইন\\ব্যবহারকারীর নাম"
 
 #: data/ui/remmina_preferences.glade:42
 #, fuzzy
@@ -4476,35 +4491,20 @@ msgstr "টার্মিনাল"
 msgid "Remmina Preferences"
 msgstr "রেমিনা পছন্দ"
 
-#: data/ui/remmina_string_list.glade:14 data/ui/remmina_string_list.glade:158
-msgid "Add"
-msgstr "যোগ করুন"
-
-#: data/ui/remmina_string_list.glade:20 data/ui/remmina_string_list.glade:137
-#: data/ui/remmina_key_chooser.glade:14 data/ui/remmina_key_chooser.glade:15
+#: data/ui/remmina_unlock.glade:60
 #, fuzzy
-msgid "_Remove"
-msgstr "_Remove"
+msgid "Unlock"
+msgstr "খোলা"
 
-#: data/ui/remmina_string_list.glade:26 data/ui/remmina_string_list.glade:116
+#: data/ui/remmina_unlock.glade:94
 #, fuzzy
-msgid "Move up"
-msgstr "উপরে সরান"
+msgid "Unlock Remmina"
+msgstr "রেমিনা আনলক করুন"
 
-#: data/ui/remmina_string_list.glade:32 data/ui/remmina_string_list.glade:95
+#: data/ui/remmina_unlock.glade:128
 #, fuzzy
-msgid "Move down"
-msgstr "নিচে সরান"
-
-#: data/ui/remmina_key_chooser.glade:23
-#, fuzzy
-msgid "Choose a new key"
-msgstr "একটি নতুন কী চয়ন করুন"
-
-#: data/ui/remmina_key_chooser.glade:82
-#, fuzzy
-msgid "Please press the new key…"
-msgstr "অনুগ্রহ করে নতুন কীটি টিপুন…"
+msgid "Master password"
+msgstr "মাস্টার পাসওয়ার্ড"
 
 #~ msgid "Listen for TCP connections"
 #~ msgstr "নতুন সংযোগ"
