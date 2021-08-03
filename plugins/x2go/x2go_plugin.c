@@ -8,6 +8,7 @@
  *              2015 Antenore Gatta
  *              2016-2018 Antenore Gatta, Giovanni Panozzo
  *              2019 Mike Gabriel
+ *              2021 Daniel Teichmann
  *     License: GPL-2+
  *
  * This program is free software; you can redistribute it and/or modify
@@ -157,6 +158,7 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
                                               gchar *command,
                                               gchar *kbdlayout,
                                               gchar *kbdtype,
+                                              gchar *audio,
                                               gchar *resolution,
                                               RemminaProtocolWidget *gp,
                                               gchar *errmsg)
@@ -248,6 +250,13 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
 	argv[argc++] = g_strdup_printf ("%s", resolution);
 	argv[argc++] = g_strdup("--try-resume");
 	argv[argc++] = g_strdup("--terminate-on-ctrl-c");
+	if (audio) {
+		argv[argc++] = g_strdup("--sound");
+		argv[argc++] = g_strdup_printf ("%s", audio);
+	}else{
+		argv[argc++] = g_strdup("--sound");
+		argv[argc++] = g_strdup("none");
+	}
 	argv[argc++] = NULL;
 
 	envp = g_get_environ();
@@ -483,7 +492,7 @@ static gboolean remmina_plugin_x2go_start_session(RemminaProtocolWidget *gp)
 	const gchar errmsg[512] = {0};
 	gboolean ret = TRUE;
 
-	gchar *servstr, *host, *username, *password, *command, *kbdlayout, *kbdtype, *res;
+	gchar *servstr, *host, *username, *password, *command, *kbdlayout, *kbdtype, *audio, *res;
 	gint sshport;
 	GdkDisplay *default_dsp;
 	gint width, height;
@@ -510,6 +519,7 @@ static gboolean remmina_plugin_x2go_start_session(RemminaProtocolWidget *gp)
 		command = "TERMINAL";
 	kbdlayout = GET_PLUGIN_STRING("kbdlayout");
 	kbdtype = GET_PLUGIN_STRING("kbdtype");
+	audio = GET_PLUGIN_STRING("audio");
 
 	width = remmina_plugin_service->protocol_plugin_get_width(gp);
 	height = remmina_plugin_service->protocol_plugin_get_height(gp);
@@ -527,7 +537,7 @@ static gboolean remmina_plugin_x2go_start_session(RemminaProtocolWidget *gp)
 
 	/* trigger the session start, session window should appear soon after this */
 	if (ret)
-		ret = remmina_plugin_x2go_exec_x2go(host, sshport, username, password, command, kbdlayout, kbdtype, res, gp, (gchar*)&errmsg);
+		ret = remmina_plugin_x2go_exec_x2go(host, sshport, username, password, command, kbdlayout, kbdtype, audio, res, gp, (gchar*)&errmsg);
 
 	/* get the window id of the remote x2goagent */
 	if (ret)
@@ -655,6 +665,8 @@ static const RemminaProtocolSetting remmina_plugin_x2go_basic_settings[] = {
 	{ REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION, "resolution",               NULL,                                       FALSE,      NULL,               NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "kbdlayout", N_("Keyboard Layout (auto)"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "kbdtype", N_("Keyboard type (auto)"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_COMBO, "audio", N_("Audio support"), FALSE,
+		"pulse,esd,none", NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "showcursor", N_("Use local cursor"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "once", N_("Disconnect after one session"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
