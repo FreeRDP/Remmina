@@ -729,7 +729,7 @@ void remmina_protocol_widget_emit_signal(RemminaProtocolWidget *gp, const gchar 
 {
 	TRACE_CALL(__func__);
 
-	g_print("Emitting signals should be used from the object itself, not from another object");
+	g_print("Emitting signals should be used from the object itself, not from another object\n");
 	raise(SIGINT);
 
 	if (!remmina_masterthread_exec_is_main_thread()) {

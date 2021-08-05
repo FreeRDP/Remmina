@@ -301,7 +301,7 @@ static void remmina_plugin_x2go_on_plug_added(GtkSocket *socket, RemminaProtocol
 	TRACE_CALL(__func__);
 	RemminaPluginX2GoData *gpdata = GET_PLUGIN_DATA(gp);
 	printf("[%s] remmina_plugin_x2go_on_plug_added socket %d\n", PLUGIN_NAME, gpdata->socket_id);
-	remmina_plugin_service->protocol_plugin_emit_signal(gp, "connect");
+	remmina_plugin_service->protocol_plugin_signal_connection_opened(gp);
 	return;
 }
 
@@ -654,7 +654,7 @@ static gboolean remmina_plugin_x2go_close_connection(RemminaProtocolWidget *gp)
 		gpdata->display = NULL;
 	}
 
-	remmina_plugin_service->protocol_plugin_emit_signal(gp, "disconnect");
+	remmina_plugin_service->protocol_plugin_signal_connection_closed(gp);
 	return FALSE;
 }
 
