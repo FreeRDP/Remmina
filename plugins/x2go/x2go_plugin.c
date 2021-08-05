@@ -42,13 +42,15 @@
  */
 
 #include "x2go_plugin.h"
-#include <common/remmina_plugin.h>
+#include "common/remmina_plugin.h"
 #include <gtk/gtkx.h>
 #include <gdk/gdkx.h>
 #include <X11/Xlib.h>
 #include <X11/XKBlib.h>
 #include <X11/extensions/XKBrules.h>
-
+#include <sys/types.h>
+#include <signal.h>
+#include <time.h>
 
 #define GET_PLUGIN_DATA(gp) (RemminaPluginX2GoData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
 
@@ -181,7 +183,14 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
 	disablepasswordstoring = remmina_plugin_service->file_get_int(remminafile, "disablepasswordstoring", FALSE);
-	ret = remmina_plugin_service->protocol_plugin_init_authuserpwd(gp, FALSE, !disablepasswordstoring);
+	ret = remmina_plugin_service->protocol_plugin_init_auth(gp,
+			(disablepasswordstoring ? 0 : REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD),
+			_("Enter X2GO password"),
+			NULL,
+			remmina_plugin_service->file_get_string(remminafile, "password"),
+			NULL,
+			NULL);
+
 
 	if (ret == GTK_RESPONSE_OK) {
 		s_username = remmina_plugin_service->protocol_plugin_init_get_username(gp);
@@ -286,7 +295,7 @@ static void remmina_plugin_x2go_on_plug_removed(GtkSocket *socket, RemminaProtoc
 {
 	TRACE_CALL(__func__);
 	printf("[%s] remmina_plugin_x2go_on_plug_removed\n", PLUGIN_NAME);
-	remmina_plugin_service->protocol_plugin_close_connection(gp);
+	remmina_plugin_service->protocol_plugin_signal_connection_closed(gp);
 }
 
 static void remmina_plugin_x2go_init(RemminaProtocolWidget *gp)
@@ -574,7 +583,7 @@ static gpointer remmina_plugin_x2go_main_thread(gpointer data)
 
 	CANCEL_ASYNC
 	if (!remmina_plugin_x2go_main((RemminaProtocolWidget*)data)) {
-		IDLE_ADD((GSourceFunc)remmina_plugin_service->protocol_plugin_close_connection, data);
+		IDLE_ADD((GSourceFunc)remmina_plugin_service->protocol_plugin_signal_connection_closed, data);
 	}
 	return NULL;
 }
