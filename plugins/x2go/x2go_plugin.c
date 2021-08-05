@@ -185,7 +185,7 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
 	disablepasswordstoring = remmina_plugin_service->file_get_int(remminafile, "disablepasswordstoring", FALSE);
 	ret = remmina_plugin_service->protocol_plugin_init_auth(gp,
 			(disablepasswordstoring ? 0 : REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD),
-			_("Enter X2GO password"),
+			_("Enter X2Go password"),
 			NULL,
 			remmina_plugin_service->file_get_string(remminafile, "password"),
 			NULL,
