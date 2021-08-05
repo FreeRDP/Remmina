@@ -276,8 +276,22 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
 		g_printf ("failed to start PyHoca CLI: %s\n", error->message);
 		return FALSE;
 	}
-	for (i = 0; i < argc; i++)
-		g_free (argv[i]);
+
+	g_printf("[%s] Started pyhoca-cli with arguments: ", PLUGIN_NAME);
+	for (i = 0; i < argc - 1; i++) {
+		// Don't just print the password out.
+		if (strcmp(argv[i], "--password") == 0) {
+			g_printf("%s ", argv[i]);
+			g_printf("XXXXXX ");
+			g_free (argv[i]);
+			g_free (argv[++i]);
+			continue;
+		} else {
+			g_printf("%s ", argv[i]);
+			g_free (argv[i]);
+		}
+	}
+	g_printf("\n");
 
 	return TRUE;
 }
