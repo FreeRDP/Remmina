@@ -666,8 +666,8 @@ static gboolean remmina_plugin_x2go_query_feature(RemminaProtocolWidget* gp, con
 
 static const RemminaProtocolFeature remmina_plugin_x2go_features[] =
 {
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_GTKSOCKET, REMMINA_PLUGIN_X2GO_FEATURE_GTKSOCKET,           NULL,          NULL,        NULL },
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_END,       0,                                               NULL,          NULL,        NULL }
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_GTKSOCKET, REMMINA_PLUGIN_X2GO_FEATURE_GTKSOCKET, NULL, NULL, NULL },
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_END,       0,                                     NULL, NULL, NULL }
 };
 
 /* Array of RemminaProtocolSetting for basic settings.
@@ -677,21 +677,23 @@ static const RemminaProtocolFeature remmina_plugin_x2go_features[] =
  * c) Setting description
  * d) Compact disposition
  * e) Values for REMMINA_PROTOCOL_SETTING_TYPE_SELECT or REMMINA_PROTOCOL_SETTING_TYPE_COMBO
- * f) Unused pointer  --->    TODO: used for sensitive
+ * f) Setting Tooltip
  */
 static const RemminaProtocolSetting remmina_plugin_x2go_basic_settings[] = {
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER, "server", NULL, FALSE, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "username", N_("User name"), FALSE, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "password", N_("Password"), FALSE, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_COMBO, "command", N_("Startup program"), FALSE,
-		"MATE,KDE,XFCE,LXDE,TERMINAL", NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION, "resolution",               NULL,                                       FALSE,      NULL,               NULL},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "kbdlayout", N_("Keyboard Layout (auto)"), FALSE, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "kbdtype", N_("Keyboard type (auto)"), FALSE, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_COMBO, "audio", N_("Audio support"), FALSE,
-		"pulse,esd,none", NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "showcursor", N_("Use local cursor"), FALSE, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "once", N_("Disconnect after one session"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER,     "server",     NULL,                               FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,       "username",   N_("User name"),                    FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD,   "password",   N_("Password"),                     FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_COMBO,      "command",    N_("Startup program"),              FALSE,
+	/* Options to select (or custom user string) */ "MATE,KDE,XFCE,LXDE,TERMINAL",
+	/* Tooltip */ N_("Which command should be executed after creating the X2Go session?") },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION, "resolution", NULL,                               FALSE, NULL, NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,       "kbdlayout",  N_("Keyboard Layout (auto)"),       FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,       "kbdtype",    N_("Keyboard type (auto)"),         FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_COMBO,     "audio",      N_("Audio support"),                FALSE,
+	/* Options to select (or custom user string) */ "pulse,esd,none",
+	/* Tooltip */ N_("X2Go server's sound system (default: 'pulse').") },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,      "showcursor", N_("Use local cursor"),             FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,      "once",       N_("Disconnect after one session"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
 };
 
