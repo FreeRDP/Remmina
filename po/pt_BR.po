@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-08-02 22:40+0000\n"
-"PO-Revision-Date: 2021-08-02 22:40+0000\n"
+"PO-Revision-Date: 2021-08-06 12:33+0000\n"
 "Last-Translator: William Weber Berrutti <wwberrutti@protonmail.ch>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "remmina/remmina/pt_BR/>\n"
@@ -332,7 +332,6 @@ msgid "_Menu"
 msgstr "_Menu"
 
 #: src/rcw.c:2291
-#, fuzzy
 msgid "Menu"
 msgstr "Menu"
 
@@ -1886,10 +1885,7 @@ msgstr ""
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:2112
-#, fuzzy, c-format
-#| msgid ""
-#| "Unable to establish a connection to the RDP server “%s”. Check \"Security "
-#| "protocol negotiation\"."
+#, c-format
 msgid ""
 "Unable to establish a connection to the RDP server “%s”. Check “Security "
 "protocol negotiation”."
@@ -1953,7 +1949,7 @@ msgstr "GFX RFX (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2495
 msgid "GFX RFX Progressive (32 bpp)"
-msgstr "GFX RFX Progressive (32 bpp)"
+msgstr "GFX RFX Progressivo (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2496
 msgid "RemoteFX (32 bpp)"
@@ -2118,12 +2114,6 @@ msgstr ""
 "O valor mais alto possível é 600000 ms (10 minutos).\n"
 
 #: plugins/rdp/rdp_plugin.c:2613
-#, fuzzy
-#| msgid ""
-#| "Performance optimisations based on the network connection type:\n"
-#| "Using auto-detection is advised.\n"
-#| "If \"Auto-detect\" fails, choose the most appropriate option in the "
-#| "list.\n"
 msgid ""
 "Performance optimisations based on the network connection type:\n"
 "Using auto-detection is advised.\n"
@@ -2131,7 +2121,7 @@ msgid ""
 msgstr ""
 "Otimizações de desempenho baseadas no tipo de conexão de rede:\n"
 "Usar detecção automática é recomendado.\n"
-"Se \"Detectar automaticamente\" falhar, escolha a opção mais adequada na "
+"Se \"Detectar automaticamente\" falhar, selecione a opção mais adequada na "
 "lista.\n"
 
 #: plugins/rdp/rdp_plugin.c:2618
@@ -2159,7 +2149,6 @@ msgstr ""
 "\n"
 
 #: plugins/rdp/rdp_plugin.c:2630
-#, fuzzy
 msgid ""
 "Redirect directory <path> as named share <name>.\n"
 "  • <name>,<fullpath>[;<name>,<fullpath>[;…]]\n"
@@ -2170,11 +2159,11 @@ msgid ""
 "  • hotplug,*\n"
 "\n"
 msgstr ""
-"Redireccionar directório <caminho> como nome de partilha <nome>.\n"
+"Redirecionar o diretório <caminho> como nome de compartilhamento <nome>.\n"
 "  - <nome>,<caminho completo>[;<nome>,<caminho completo>[;...]]\n"
-"  - MyHome,/home/remminer\n"
+"  - MeuHome,/home/remminer\n"
 "  - /home/reminer\n"
-"  - MyHome,/home/remminer;SomePath,/caminho/para/somente\n"
+"  - MeuHome,/home/remminer;AlgumCaminho,/caminho/para/algumcaminho\n"
 "O suporte a hotplug está habilitado:\n"
 "  - hotplug,*\n"
 "\n"
@@ -2184,7 +2173,6 @@ msgid "Share folder"
 msgstr "Compartilhar pasta"
 
 #: plugins/rdp/rdp_plugin.c:2654
-#, fuzzy
 msgid "Use “Redirect directory” in the advanced tab for multiple directories"
 msgstr ""
 "Use \"Redirecionar diretório\" na guia avançada para múltiplos diretórios"
@@ -2277,9 +2265,8 @@ msgid "Remote Desktop Gateway domain"
 msgstr "Domínio do gateway de área de trabalho"
 
 #: plugins/rdp/rdp_plugin.c:2690
-#, fuzzy
 msgid "Redirect directory"
-msgstr "Diretório redirecionado"
+msgstr "Redirecionar diretório"
 
 #: plugins/rdp/rdp_plugin.c:2691
 msgid "Client name"
@@ -2359,15 +2346,12 @@ msgid "Static virtual channel"
 msgstr "Canal virtual estático"
 
 #: plugins/rdp/rdp_plugin.c:2707
-#, fuzzy
-#| msgid "USB redirection error"
 msgid "TCP redirection"
-msgstr "redirecionamento de TCP"
+msgstr "Redirecionamento de TCP"
 
 #: plugins/rdp/rdp_plugin.c:2707
-#, fuzzy
 msgid "/PATH/TO/rdp2tcp"
-msgstr "/PATH/TO/rdp2tcp"
+msgstr "/CAMINHO/PARA/rdp2tcp"
 
 #: plugins/rdp/rdp_plugin.c:2709
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
@@ -2456,9 +2440,8 @@ msgid "Use base credentials for gateway too"
 msgstr "Use credenciais base para gateway também"
 
 #: plugins/rdp/rdp_plugin.c:2731
-#, fuzzy
 msgid "Enable Gateway websockets support"
-msgstr "Habilite o suporte para websockets Gateway"
+msgstr "Habilitar o suporte de websockets de Gateway"
 
 #: plugins/rdp/rdp_plugin.c:2744 plugins/spice/spice_plugin.c:707
 #: plugins/vnc/vnc_plugin.c:2021
@@ -2785,100 +2768,72 @@ msgid "Secured password storage in the GNOME keyring"
 msgstr "Armazenamento seguro de senhas no chaveiro do GNOME"
 
 #: plugins/gvnc/gvnc_plugin_config.h:40
-#, fuzzy
-#| msgid "Remmina VNC Plugin"
 msgid "Remmina VNC plugin for GNOME and KVM"
 msgstr "Plugin Remmina VNC para GNOME e KVM"
 
 #: plugins/gvnc/gvnc_plugin.c:477
-#, fuzzy, c-format
-#| msgid "Authentication type"
+#, c-format
 msgid "Unsupported authentication type %u"
 msgstr "Tipo de autenticação não suportada %u"
 
 #: plugins/gvnc/gvnc_plugin.c:489
-#, fuzzy, c-format
-#| msgid "Authentication type"
+#, c-format
 msgid "Authentication failure: %s"
 msgstr "Falha de autenticação: %s"
 
 #: plugins/gvnc/gvnc_plugin.c:820
-#, fuzzy
-#| msgid "Use system proxy settings"
 msgid "Use server settings"
 msgstr "Use as configurações do servidor"
 
 #: plugins/gvnc/gvnc_plugin.c:821
-#, fuzzy
-#| msgid "True colour (24 bit)"
 msgid "True colour (24 bits)"
-msgstr "True color (24 bits)"
+msgstr "Qualidade alta (24 bits)"
 
 #: plugins/gvnc/gvnc_plugin.c:822
-#, fuzzy
-#| msgid "High colour (16 bit)"
 msgid "High colour (16 bits)"
-msgstr "Alta qualidade (16 bits)"
+msgstr "Qualidade média (16 bits)"
 
 #: plugins/gvnc/gvnc_plugin.c:823
-#, fuzzy
-#| msgid "High colour (16 bit)"
 msgid "Low colour (8 bits)"
-msgstr "Cor baixa (8 bits)"
+msgstr "Qualidade baixa (8 bits)"
 
 #: plugins/gvnc/gvnc_plugin.c:824
-#, fuzzy
-#| msgid "True colour (24 bit)"
 msgid "Ultra low colour (3 bits)"
-msgstr "Cor ultra baixa (3 bits)"
+msgstr "Qualidade ultra baixa (3 bits)"
 
 #: plugins/gvnc/gvnc_plugin.c:839
-#, fuzzy
-#| msgid "Enter VNC password"
 msgid "VNC password"
-msgstr "senha VNC"
+msgstr "Senha VNC"
 
 #: plugins/gvnc/gvnc_plugin.c:841
-#, fuzzy
-#| msgid "SSH compression"
 msgid "Use JPEG Compression"
-msgstr "Use a compressão JPEG"
+msgstr "Usar compressão JPEG"
 
 #: plugins/gvnc/gvnc_plugin.c:841
-#, fuzzy
-#| msgid "Browse the network to find a %s server"
 msgid "This might not work on all VNC servers"
 msgstr "Isto pode não funcionar em todos os servidores VNC"
 
 #: plugins/gvnc/gvnc_plugin.c:842
-#, fuzzy
 msgid "Enable GTK-VNC debug"
 msgstr "Habilitar depuração GTK-VNC"
 
 #: plugins/gvnc/gvnc_plugin.c:862
-#, fuzzy
-#| msgid "Per connection"
 msgid "Shared connection"
 msgstr "Conexão compartilhada"
 
 #: plugins/gvnc/gvnc_plugin.c:862
-#, fuzzy
 msgid ""
 "If the server should try to share the desktop by leaving other clients "
 "connected"
 msgstr ""
-"Se o servidor deve tentar compartilhar o desktop deixando outros clientes "
-"conectados"
+"Se o servidor deve tentar compartilhar a área de trabalho deixando outros "
+"clientes conectados"
 
 #: plugins/gvnc/gvnc_plugin.c:872
-#, fuzzy
-#| msgid "Send Ctrl+Alt+Del"
 msgid "Send Ctrl+Alt+_Del"
-msgstr "Enviar Ctrl+Alt+Del"
+msgstr "Enviar Ctrl+Alt+_Del"
 
 #: plugins/gvnc/gvnc_plugin.c:873
-#, fuzzy
-#| msgid "Send Ctrl+Alt+Del"
 msgid "Send Ctrl+Alt+_Backspace"
 msgstr "Enviar Ctrl+Alt+_Backspace"
 
@@ -2931,18 +2886,14 @@ msgid "Send Ctrl+Alt+_F12"
 msgstr "Enviar Ctrl+Alt+_F12"
 
 #: plugins/gvnc/gvnc_plugin.c:887
-#, fuzzy
 msgid "Reboot remote host"
-msgstr "Reiniciar o host remoto"
+msgstr "Reiniciar o anfitrião remoto"
 
 #: plugins/gvnc/gvnc_plugin.c:888
-#, fuzzy
 msgid "Reset remote host (hard reboot)"
-msgstr "Reiniciar o anfitrião remoto (reinicialização dura)"
+msgstr "Reiniciar o anfitrião remoto (reinicialização forçada)"
 
 #: plugins/gvnc/gvnc_plugin.c:889
-#, fuzzy
-#| msgid "Show remote cursor"
 msgid "Shutdown remote host"
 msgstr "Desligar o anfitrião remoto"
 
@@ -3441,10 +3392,8 @@ msgid "Remmina data folder"
 msgstr "Pasta de dados do Remmina"
 
 #: data/ui/remmina_preferences.glade:297
-#, fuzzy
-#| msgid "Choose a folder to save screenshots from Remmina in."
 msgid "Choose a folder to save connection profiles from Remmina in."
-msgstr "Escolha uma pasta para guardar os perfis de ligação de Remmina."
+msgstr "Selecione uma pasta para salvar os perfis de conexão do Remmina."
 
 #: data/ui/remmina_preferences.glade:315
 msgid "Remember last view for each connection"
@@ -3523,7 +3472,6 @@ msgstr "Viewport em tela cheia"
 
 #. How tabs are grouped in the Remmina connection window
 #: data/ui/remmina_preferences.glade:624
-#, fuzzy
 msgctxt "Appearance preferences"
 msgid "Tabs grouping"
 msgstr "Agrupamento de abas"
@@ -3577,11 +3525,9 @@ msgid "“Grab all keyboard events” status colour"
 msgstr "Cor de status de “Captura todos eventos do teclado”"
 
 #: data/ui/remmina_preferences.glade:754
-#, fuzzy
-#| msgid "“Grab all keyboard events” status colour"
 msgid "Enable/Disable “Grab all keyboard events” status colour"
 msgstr ""
-"Activar/desactivar a cor de estado \"Agarrar todos os eventos do teclado"
+"Ativar/desativar a cor de estado \"Capturar todos os eventos do teclado\""
 
 #: data/ui/remmina_preferences.glade:770
 msgid ""
@@ -3758,8 +3704,6 @@ msgid "Scrollback lines"
 msgstr "Linhas de rolagem"
 
 #: data/ui/remmina_preferences.glade:1902
-#, fuzzy
-#| msgid "Shortcut for copying to clipboard"
 msgid "Shortcuts for copying and pasting"
 msgstr "Atalhos para copiar e colar"
 
@@ -3897,14 +3841,10 @@ msgid "Foreground colour"
 msgstr "Cor de primeiro plano"
 
 #: data/ui/remmina_preferences.glade:2385
-#, fuzzy
-#| msgid "Increase font size"
 msgid "Increase and decrease font size"
 msgstr "Aumentar e diminuir o tamanho da fonte"
 
 #: data/ui/remmina_preferences.glade:2415
-#, fuzzy
-#| msgid "Search text"
 msgid "Search text shortcut"
 msgstr "Pesquisar atalho de texto"
 
