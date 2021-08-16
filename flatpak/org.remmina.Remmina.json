@@ -1,7 +1,7 @@
 {
     "app-id": "org.remmina.Remmina",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "3.38",
+    "runtime-version": "40",
     "sdk": "org.gnome.Sdk",
     "command": "remmina",
     "cleanup": [
@@ -79,7 +79,7 @@
                     "sha256": "9b92ed0316bf2486121d8bac88bd1878f16b43bd335f18009b1f941f1eca93a1",
                     "x-checker-data": {
                         "type": "anitya",
-                        "project-id": "14958",
+                        "project-id": 14958,
                         "url-template": "https://xorg.freedesktop.org/archive/individual/app/xprop-$version.tar.bz2"
                     }
                 }
@@ -87,7 +87,9 @@
         },
         {
             "name": "libcups",
-            "make-args": ["libs"],
+            "make-args": [
+                "libs"
+            ],
             "no-make-install": true,
             "post-install": [
                 "make install-headers install-libs"
@@ -96,8 +98,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/OpenPrinting/cups.git",
-                    "tag": "v2.3.3op2",
-                    "commit": "3b566f73587ffa8ad9690f2399efc4508b3a9016",
+                    "tag": "v2.3.3",
+                    "commit": "82e3ee0e3230287b76a76fb8f16b92ca6e50b444",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^v([\\d.]+)$"
@@ -123,8 +125,8 @@
                 {
                     "type": "git",
                     "url": "https://gitlab.gnome.org/GNOME/vte.git",
-                    "tag": "0.64.1",
-                    "commit": "109a6cf6e05ef55b79f768a30fdf95723ebba0d3",
+                    "tag": "0.64.2",
+                    "commit": "a913a6de14047c1939b84617f2dd483d37e89194",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^([\\d.]+)$"
@@ -170,7 +172,7 @@
                     "sha256": "060309d7a333d38d951bc27598c677af1796934dbd98e1024e7ad8de798fedda",
                     "x-checker-data": {
                         "type": "anitya",
-                        "project-id": "147",
+                        "project-id": 147,
                         "url-template": "https://www.avahi.org/download/avahi-$version.tar.gz"
                     }
                 }
@@ -185,7 +187,7 @@
                             "sha256": "92e6de1be9ec176428fd2367677e61ceffc2ee1cb119035037a27d346b0403bb",
                             "x-checker-data": {
                                 "type": "anitya",
-                                "project-id": "1606",
+                                "project-id": 1606,
                                 "url-template": "https://github.com/libevent/libevent/releases/download/release-$version-stable//libevent-$version-stable.tar.gz"
                             }
                         }
@@ -235,7 +237,7 @@
                     "sha256": "23acbee197eaaec9bce6e6bfd885bd8f79708332639243ff04833020865713cd",
                     "x-checker-data": {
                         "type": "anitya",
-                        "project-id": "11576",
+                        "project-id": 11576,
                         "url-template": "https://www.spice-space.org/download/gtk/spice-gtk-$version.tar.xz"
                     }
                 }
@@ -273,7 +275,7 @@
                             "sha256": "8005b93c3139ff739057efb19f9dac1d0993ffb0b913111505af6a91711ef22b",
                             "x-checker-data": {
                                 "type": "anitya",
-                                "project-id": "18776",
+                                "project-id": 18776,
                                 "url-template": "https://www.spice-space.org/download/libcacard/libcacard-$version.tar.xz"
                             }
                         }
@@ -296,7 +298,7 @@
                             "sha256": "030644df4611007ff7dc962d981f390361e6c97a34e5cbc393ddfbe019ffe2c1",
                             "x-checker-data": {
                                 "type": "anitya",
-                                "project-id": "1865",
+                                "project-id": 1865,
                                 "url-template": "https://github.com/lz4/lz4/archive/v$version/lz4-$version.tar.gz"
                             }
                         }
@@ -323,7 +325,7 @@
                             "sha256": "71f0a9cd70afd4dd1412a0298331dbb8ac71c0377f52117afc15eb88dc6fb910",
                             "x-checker-data": {
                                 "type": "anitya",
-                                "project-id": "9670",
+                                "project-id": 9670,
                                 "url-template": "http://download.gnome.org/sources/phodav/$version/phodav-$version.tar.xz"
                             }
                         }
@@ -339,7 +341,7 @@
                             "sha256": "f986e5bc2a1598532c4897f889afb0df9257ac21c160c083703ae7c8de99487a",
                             "x-checker-data": {
                                 "type": "anitya",
-                                "project-id": "14892",
+                                "project-id": 14892,
                                 "url-template": "https://www.spice-space.org/download/releases/spice-protocol-$version.tar.xz"
                             }
                         }
@@ -391,7 +393,7 @@
                     "sha256": "acffef2da98e761fc1fd9c4fddde0f3af60ab44c4f5af05cd1b2d60a3fa08718",
                     "x-checker-data": {
                         "type": "anitya",
-                        "project-id": "1729",
+                        "project-id": 1729,
                         "url-template": "https://www.libssh.org/files/0.9/libssh-$version.tar.xz"
                     }
                 }
@@ -415,89 +417,16 @@
                     "sha256": "0ae5bb9175dc0a602fe85c1cf591ac47ee5247b87f2bf164c16b05f87cbfa81a",
                     "x-checker-data": {
                         "type": "anitya",
-                        "project-id": "1756",
+                        "project-id": 1756,
                         "url-template": "https://github.com/LibVNC/libvncserver/archive/LibVNCServer-$version.tar.gz"
                     }
                 }
             ]
         },
         {
-            /**
-            * Xephyr version 1.17.0 and later don't work fine with GtkSocket,
-            * therefore we remain at version 1.16.4:
-            *   - https://gitlab.com//Remmina//Remmina//issues//366
-            *   - https://bugs.freedesktop.org//show_bug.cgi?id=91700
-            */
-            "name": "xephyr",
-            "config-opts": [
-                "--enable-kdrive",
-                "--enable-kdrive-evdev",
-                "--disable-kdrive-kbd",
-                "--disable-kdrive-mouse",
-                "--enable-xephyr",
-                "--disable-xorg",
-                "--disable-xvfb",
-                "--disable-xnest",
-                "--disable-xquartz",
-                "--disable-xwayland",
-                "--disable-standalone-xpbproxy",
-                "--disable-xwin",
-                "--disable-xfake",
-                "--disable-xfbdev",
-                "--disable-dmx",
-                "--with-fontrootdir=/usr/share/fonts",
-                "--with-xkb-bin-directory=/usr/bin",
-                "--with-xkb-path=/usr/share/X11/xkb",
-                "--with-xkb-output=/var/lib/xkb"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-1.16.4.tar.bz2",
-                    "sha256": "abb6e1cc9213a9915a121f48576ff6739a0b8cdb3d32796f9a7743c9a6efc871"
-                }
-            ],
-            "modules": [
-                {
-                    "name": "libfontenc",
-                    "config-opts": [
-                        "--with-fontrootdir=/usr/share/fonts"
-                    ],
-                    "sources": [
-                        {
-                            "type": "archive",
-                            "url": "https://xorg.freedesktop.org/releases/individual/lib/libfontenc-1.1.4.tar.bz2",
-                            "sha256": "2cfcce810ddd48f2e5dc658d28c1808e86dcf303eaff16728b9aa3dbc0092079",
-                            "x-checker-data": {
-                                "type": "anitya",
-                                "project-id": "1613",
-                                "url-template": "https://xorg.freedesktop.org/releases/individual/lib/libfontenc-$version.tar.bz2"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "libXfont",
-                    "sources": [
-                        {
-                            "type": "archive",
-                            "url": "https://xorg.freedesktop.org/releases/individual/lib/libXfont-1.5.4.tar.bz2",
-                            "sha256": "1a7f7490774c87f2052d146d1e0e64518d32e6848184a18654e8d0bb57883242",
-                            "x-checker-data": {
-                                "type": "anitya",
-                                "project-id": "1776",
-                                "url-template": "https://xorg.freedesktop.org/releases/individual/lib/libXfont-$version.tar.bz2"
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
             "name": "freerdp",
             "buildsystem": "cmake-ninja",
-            "cleanup": [
-            ],
+            "cleanup": [],
             "config-opts": [
                 "-DCMAKE_BUILD_TYPE:STRING=Release",
                 "-DCMAKE_INSTALL_LIBDIR:PATH=lib",
@@ -513,7 +442,6 @@
                 "-DWITH_FFMPEG:BOOL=ON",
                 "-DWITH_OSS:BOOL=OFF",
                 "-DWITH_PULSE:BOOL=ON",
-                "-DBUILTIN_CHANNELS:BOOL=ON",
                 "-DWITH_CHANNELS:BOOL=ON",
                 "-DWITH_LIBSYSTEMD:BOOL=OFF"
             ],
@@ -521,8 +449,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/FreeRDP/FreeRDP.git",
-                    "tag": "2.3.2",
-                    "commit": "c3df0be63953ed98525d9b736ba878ad733de059",
+                    "tag": "2.4.0",
+                    "commit": "f797e200a2cd47fd42318359b8ae4d46e6507eec",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^([\\d.]+)$"

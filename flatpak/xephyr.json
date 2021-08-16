@@ -1,0 +1,73 @@
+        {
+            /**
+            * Xephyr version 1.17.0 and later don't work fine with GtkSocket,
+            * therefore we remain at version 1.16.4:
+            *   - https://gitlab.com//Remmina//Remmina//issues//366
+            *   - https://bugs.freedesktop.org//show_bug.cgi?id=91700
+            */
+            "name": "xephyr",
+            "config-opts": [
+                "--enable-kdrive",
+                "--enable-kdrive-evdev",
+                "--disable-kdrive-kbd",
+                "--disable-kdrive-mouse",
+                "--enable-xephyr",
+                "--disable-xorg",
+                "--disable-xvfb",
+                "--disable-xnest",
+                "--disable-xquartz",
+                "--disable-xwayland",
+                "--disable-standalone-xpbproxy",
+                "--disable-xwin",
+                "--disable-xfake",
+                "--disable-xfbdev",
+                "--disable-dmx",
+                "--with-fontrootdir=/usr/share/fonts",
+                "--with-xkb-bin-directory=/usr/bin",
+                "--with-xkb-path=/usr/share/X11/xkb",
+                "--with-xkb-output=/var/lib/xkb"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-1.16.4.tar.bz2",
+                    "sha256": "abb6e1cc9213a9915a121f48576ff6739a0b8cdb3d32796f9a7743c9a6efc871"
+                }
+            ],
+            "modules": [
+                {
+                    "name": "libfontenc",
+                    "config-opts": [
+                        "--with-fontrootdir=/usr/share/fonts"
+                    ],
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://xorg.freedesktop.org/releases/individual/lib/libfontenc-1.1.4.tar.bz2",
+                            "sha256": "2cfcce810ddd48f2e5dc658d28c1808e86dcf303eaff16728b9aa3dbc0092079",
+                            "x-checker-data": {
+                                "type": "anitya",
+                                "project-id": "1613",
+                                "url-template": "https://xorg.freedesktop.org/releases/individual/lib/libfontenc-$version.tar.bz2"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "libXfont",
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://xorg.freedesktop.org/releases/individual/lib/libXfont-1.5.4.tar.bz2",
+                            "sha256": "1a7f7490774c87f2052d146d1e0e64518d32e6848184a18654e8d0bb57883242",
+                            "x-checker-data": {
+                                "type": "anitya",
+                                "project-id": "1776",
+                                "url-template": "https://xorg.freedesktop.org/releases/individual/lib/libXfont-$version.tar.bz2"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+
