@@ -2,7 +2,7 @@
 # See https://docs.gitlab.com/ee/user/application_security/sast/#customizing-the-sast-settings
 # Note that environment variables can be set in several places
 # See https://docs.gitlab.com/ee/ci/variables/#priority-of-environment-variables
-image: registry.gitlab.com/remmina/remmina/ubuntu:18.04
+image: registry.gitlab.com/remmina/remmina/ubuntu:20.04
 stages:
 - build
 - test
@@ -11,7 +11,7 @@ variables:
   BUILD_FOLDER: build
   DEB_PPA: ppa:remmina-ppa-team/remmina-next
   FREERDP_DAILY_PPA: ppa:remmina-ppa-team/remmina-next-daily
-  DOCKER_IMAGE: ubuntu:bionic
+  DOCKER_IMAGE: ubuntu:latest
   CMAKE_BUILD_OPTIONS: "-DCMAKE_BUILD_TYPE=Release -DWITH_APPINDICATOR=on -DWITH_FREERDP3=OFF"
   FLATPAK_ARCH: x86_64
 cache: &global_cache
@@ -67,7 +67,7 @@ appimage:build:
     - build/Remmina-x86_64.AppImage
     expire_in: 7 days
 flatpak:test:
-  image: registry.gitlab.com/remmina/remmina/ubuntu:18.04
+  image: registry.gitlab.com/remmina/remmina/ubuntu:20.04
   stage: build
   variables:
     BUNDLE: remmina-dev.flatpak
@@ -99,7 +99,6 @@ flatpak:test:
   - web
   - schedules
 snap:build:
-  #image: ubuntudesktop/gnome-3-28-1804
   image: registry.gitlab.com/remmina/remmina/gnome-3-28:18.04
   stage: build
   script:
