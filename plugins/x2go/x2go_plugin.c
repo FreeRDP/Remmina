@@ -235,6 +235,9 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
 		argv[argc++] = g_strdup_printf ("%s", username);
 	}
 	if (password) {
+		argv[argc++] = g_strdup("--force-password");
+		argv[argc++] = g_strdup("--auth-attempts");
+		argv[argc++] = g_strdup_printf ("%i", 0);
 		argv[argc++] = g_strdup("--password");
 		argv[argc++] = g_strdup_printf ("%s", password);
 	}
