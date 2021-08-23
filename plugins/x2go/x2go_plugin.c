@@ -226,6 +226,8 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
                                               gchar *kbdlayout,
                                               gchar *kbdtype,
                                               gchar *audio,
+                                              gchar *clipboard,
+                                              gint dpi,
                                               gchar *resolution,
                                               RemminaProtocolWidget *gp,
                                               gchar *errmsg)
@@ -334,6 +336,20 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
 		argv[argc++] = g_strdup("--sound");
 		argv[argc++] = g_strdup("none");
 	}
+	if (clipboard) {
+		argv[argc++] = g_strdup("--clipboard-mode");
+		argv[argc++] = g_strdup_printf ("%s", clipboard);
+	} else {
+		// Assuming an error in configuration:
+		// we want clipboard support most of the time.
+		argv[argc++] = g_strdup("--clipboard");
+		argv[argc++] = g_strdup("both");
+	}
+	if (dpi) {
+		argv[argc++] = g_strdup("--dpi");
+		argv[argc++] = g_strdup_printf ("%i", dpi);
+	}
+
 	argv[argc++] = NULL;
 
 	envp = g_get_environ();
@@ -560,8 +576,8 @@ static gboolean remmina_plugin_x2go_start_session(RemminaProtocolWidget *gp)
 	const gchar errmsg[512] = {0};
 	gboolean ret = TRUE;
 
-	gchar *servstr, *host, *username, *password, *command, *kbdlayout, *kbdtype, *audio, *res;
-	gint sshport;
+	gchar *servstr, *host, *username, *password, *command, *kbdlayout, *kbdtype, *audio, *clipboard, *res;
+	gint sshport, dpi;
 	GdkDisplay *default_dsp;
 	gint width, height;
 
@@ -588,6 +604,8 @@ static gboolean remmina_plugin_x2go_start_session(RemminaProtocolWidget *gp)
 	kbdlayout = GET_PLUGIN_STRING("kbdlayout");
 	kbdtype = GET_PLUGIN_STRING("kbdtype");
 	audio = GET_PLUGIN_STRING("audio");
+	clipboard = GET_PLUGIN_STRING("clipboard");
+	dpi = GET_PLUGIN_INT("dpi", 0);
 
 	width = remmina_plugin_service->protocol_plugin_get_width(gp);
 	height = remmina_plugin_service->protocol_plugin_get_height(gp);
@@ -605,7 +623,9 @@ static gboolean remmina_plugin_x2go_start_session(RemminaProtocolWidget *gp)
 
 	/* trigger the session start, session window should appear soon after this */
 	if (ret)
-		ret = remmina_plugin_x2go_exec_x2go(host, sshport, username, password, command, kbdlayout, kbdtype, audio, res, gp, (gchar*)&errmsg);
+		ret = remmina_plugin_x2go_exec_x2go(host, sshport, username, password, command,
+											kbdlayout, kbdtype, audio, clipboard, dpi, res,
+											gp, (gchar*)&errmsg);
 
 	/* get the window id of the remote x2goagent */
 	if (ret)
@@ -701,11 +721,17 @@ static const RemminaProtocolSetting remmina_plugin_x2go_basic_settings[] = {
 	{ REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION, "resolution", NULL,                               FALSE, NULL, NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,       "kbdlayout",  N_("Keyboard Layout (auto)"),       FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,       "kbdtype",    N_("Keyboard type (auto)"),         FALSE, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_COMBO,     "audio",      N_("Audio support"),                FALSE,
+	{ REMMINA_PROTOCOL_SETTING_TYPE_COMBO,      "audio",      N_("Audio support"),                FALSE,
 	/* Options to select (or custom user string) */ "pulse,esd,none",
 	/* Tooltip */ N_("X2Go server's sound system (default: 'pulse').") },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,      "showcursor", N_("Use local cursor"),             FALSE, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,      "once",       N_("Disconnect after one session"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_COMBO,      "clipboard",  N_("Clipboard direction"),          FALSE,
+	/* Options to select (or custom user string) */ "none,server,client,both",
+	/* Tooltip */ N_("In which direction should clipboard content be copied? (default: 'both').") },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,        "dpi",       N_("DPI resolution (int)"),         FALSE, NULL,
+	/* Tooltip */ N_("Launch session with a specific resolution (in dots per inch). Must be between 20 and 400") },
+	// The next two have no effect (yet). Commenting them out.
+	//{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,      "showcursor", N_("Use local cursor"),             FALSE, NULL, NULL },
+	//{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,      "once",       N_("Disconnect after one session"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
 };
 
