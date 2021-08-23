@@ -65,6 +65,8 @@ typedef struct _RemminaPluginX2GoData {
 	int (*orig_handler)(Display *, XErrorEvent *);
 
 	GPid pidx2go;
+
+	gboolean disconnected;
 } RemminaPluginX2GoData;
 
 static RemminaPluginService *remmina_plugin_service = NULL;
@@ -371,11 +373,12 @@ static void remmina_plugin_x2go_on_plug_added(GtkSocket *socket, RemminaProtocol
 	return;
 }
 
-static void remmina_plugin_x2go_on_plug_removed(GtkSocket *socket, RemminaProtocolWidget *gp)
+static gboolean remmina_plugin_x2go_on_plug_removed(GtkSocket *socket, RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
 	printf("[%s] remmina_plugin_x2go_on_plug_removed\n", PLUGIN_NAME);
-	remmina_plugin_service->protocol_plugin_signal_connection_closed(gp);
+	remmina_plugin_x2go_close_connection(gp);
+	return TRUE;
 }
 
 static void remmina_plugin_x2go_init(RemminaProtocolWidget *gp)
