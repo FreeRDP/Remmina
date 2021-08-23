@@ -218,6 +218,17 @@ static gboolean remmina_plugin_x2go_close_connection(RemminaProtocolWidget *gp)
 	return FALSE;
 }
 
+static void remmina_plugin_x2go_pyhoca_cli_exited(GPid pid, int status, RemminaProtocolWidget *gp) {
+	RemminaPluginX2GoData *gpdata = GET_PLUGIN_DATA(gp);
+	if (gpdata->pidx2go <= 0) {
+		printf("[%s] remmina_plugin_x2go_pyhoca_cli_exited: pidx2go <= 0!\n", PLUGIN_NAME);
+		return;
+	}
+
+	printf("[%s] remmina_plugin_x2go_pyhoca_cli_exited: sending close connection signal now.\n", PLUGIN_NAME);
+	remmina_plugin_x2go_close_connection(gp);
+}
+
 static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
                                               gint sshport,
                                               gchar *username,
@@ -354,9 +365,9 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
 
 	envp = g_get_environ();
 
-	g_spawn_async (NULL, argv, envp, G_SPAWN_SEARCH_PATH, NULL, NULL, &gpdata->pidx2go, &error);
+	gboolean success = g_spawn_async (NULL, argv, envp, G_SPAWN_DO_NOT_REAP_CHILD | G_SPAWN_SEARCH_PATH, NULL, NULL, &gpdata->pidx2go, &error);
 
-	if (error) {
+	if (!success || error) {
 		g_printf ("failed to start PyHoca CLI: %s\n", error->message);
 		return FALSE;
 	}
@@ -376,6 +387,9 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
 		}
 	}
 	g_printf("\n");
+
+	g_printf("[%s] Watching child PyHoca CLI process now.", PLUGIN_NAME);
+	g_child_watch_add(&gpdata->pidx2go, G_CALLBACK(remmina_plugin_x2go_pyhoca_cli_exited), gp);
 
 	return TRUE;
 }
