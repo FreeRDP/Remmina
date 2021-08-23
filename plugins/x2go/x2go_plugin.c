@@ -152,6 +152,69 @@ static void onMainThread_gtk_socket_add_id( GtkSocket* sk, Window w)
 
 /* --------------------------------------- */
 
+static void remmina_plugin_x2go_remove_window_id (Window window_id)
+{
+	gint i;
+	gboolean already_seen = FALSE;
+
+	pthread_mutex_lock (&remmina_x2go_init_mutex);
+	for (i = 0; i < remmina_x2go_window_id_array->len; i++)
+	{
+		if (g_array_index (remmina_x2go_window_id_array, Window, i) == window_id)
+		{
+			already_seen = TRUE;
+			printf("[%s] remmina_plugin_x2go_remove_window_id: X2Go Agent window with ID [0x%lx] already seen\n", PLUGIN_NAME, window_id);
+			break;
+		}
+	}
+	if (already_seen)
+	{
+		g_array_remove_index_fast (remmina_x2go_window_id_array, i);
+		printf("[%s] remmina_plugin_x2go_remove_window_id: forgetting about X2Go Agent window with ID [0x%lx]\n", PLUGIN_NAME, window_id);
+	}
+	pthread_mutex_unlock (&remmina_x2go_init_mutex);
+}
+
+static gboolean remmina_plugin_x2go_close_connection(RemminaProtocolWidget *gp)
+{
+	TRACE_CALL(__func__);
+	RemminaPluginX2GoData *gpdata = GET_PLUGIN_DATA(gp);
+
+	printf("[%s] remmina_plugin_x2go_close_connection\n", PLUGIN_NAME);
+
+	if (gpdata->disconnected) {
+		printf("[%s] remmina_plugin_x2go_close_connection: disconnected already.\n", PLUGIN_NAME);
+		return FALSE;
+	}
+
+	if (gpdata->thread) {
+		pthread_cancel(gpdata->thread);
+		if (gpdata->thread)
+			pthread_join(gpdata->thread, NULL);
+	}
+
+	if (gpdata->window_id) {
+		remmina_plugin_x2go_remove_window_id(gpdata->window_id);
+	}
+
+	if (gpdata->pidx2go) {
+		kill(gpdata->pidx2go, SIGTERM);
+		g_spawn_close_pid(gpdata->pidx2go);
+		gpdata->pidx2go = 0;
+	}
+
+	if (gpdata->display) {
+		XSetErrorHandler(gpdata->orig_handler);
+		XCloseDisplay(gpdata->display);
+		gpdata->display = NULL;
+	}
+
+	remmina_plugin_service->protocol_plugin_signal_connection_closed(gp);
+
+	gpdata->disconnected = TRUE;
+
+	return FALSE;
+}
 
 static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
                                               gint sshport,
@@ -265,7 +328,7 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
 	if (audio) {
 		argv[argc++] = g_strdup("--sound");
 		argv[argc++] = g_strdup_printf ("%s", audio);
-	}else{
+	} else {
 		argv[argc++] = g_strdup("--sound");
 		argv[argc++] = g_strdup("none");
 	}
@@ -280,9 +343,9 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
 		return FALSE;
 	}
 
-	g_printf("[%s] Started pyhoca-cli with arguments: ", PLUGIN_NAME);
+	g_printf("[%s] Started PyHoca CLI with arguments: ", PLUGIN_NAME);
+	// Print every argument except passwords. Free all args.
 	for (i = 0; i < argc - 1; i++) {
-		// Don't just print the password out.
 		if (strcmp(argv[i], "--password") == 0) {
 			g_printf("%s ", argv[i]);
 			g_printf("XXXXXX ");
@@ -362,37 +425,13 @@ static gboolean remmina_plugin_x2go_try_window_id(Window window_id)
 			break;
 		}
 	}
-	if (TRUE != already_seen) {
+	if (!already_seen) {
 		g_array_append_val(remmina_x2go_window_id_array, window_id);
 		printf("[%s] remmina_plugin_x2go_try_window_id: registered new X2Go Agent window with ID [0x%lx]\n", PLUGIN_NAME, window_id);
 	}
 	pthread_mutex_unlock(&remmina_x2go_init_mutex);
 
 	return (!already_seen);
-}
-
-static void
-remmina_plugin_x2go_remove_window_id (Window window_id)
-{
-	gint i;
-	gboolean already_seen = FALSE;
-
-	pthread_mutex_lock (&remmina_x2go_init_mutex);
-	for (i = 0; i < remmina_x2go_window_id_array->len; i++)
-	{
-		if (g_array_index (remmina_x2go_window_id_array, Window, i) == window_id)
-		{
-			already_seen = TRUE;
-			printf("[%s] remmina_plugin_x2go_remove_window_id: X2Go Agent window with ID [0x%lx] already seen\n", PLUGIN_NAME, window_id);
-			break;
-		}
-	}
-	if (TRUE == already_seen)
-	{
-		g_array_remove_index_fast (remmina_x2go_window_id_array, i);
-		printf("[%s] remmina_plugin_x2go_remove_window_id: forgetting about X2Go Agent window with ID [0x%lx]\n", PLUGIN_NAME, window_id);
-	}
-	pthread_mutex_unlock (&remmina_x2go_init_mutex);
 }
 
 static int remmina_plugin_x2go_dummy_handler(Display *dsp, XErrorEvent *err)
@@ -628,39 +667,6 @@ static gboolean remmina_plugin_x2go_open_connection(RemminaProtocolWidget *gp)
 	}
 }
 
-static gboolean remmina_plugin_x2go_close_connection(RemminaProtocolWidget *gp)
-{
-	TRACE_CALL(__func__);
-	RemminaPluginX2GoData *gpdata = GET_PLUGIN_DATA(gp);
-
-	printf("[%s] remmina_plugin_x2go_close_connection\n", PLUGIN_NAME);
-
-	if (gpdata->thread) {
-		pthread_cancel(gpdata->thread);
-		if (gpdata->thread)
-			pthread_join(gpdata->thread, NULL);
-	}
-
-	if (gpdata->window_id) {
-		remmina_plugin_x2go_remove_window_id(gpdata->window_id);
-	}
-
-	if (gpdata->pidx2go) {
-		kill(gpdata->pidx2go, SIGTERM);
-		g_spawn_close_pid(gpdata->pidx2go);
-		gpdata->pidx2go = 0;
-	}
-
-	if (gpdata->display) {
-		XSetErrorHandler(gpdata->orig_handler);
-		XCloseDisplay(gpdata->display);
-		gpdata->display = NULL;
-	}
-
-	remmina_plugin_service->protocol_plugin_signal_connection_closed(gp);
-	return FALSE;
-}
-
 static gboolean remmina_plugin_x2go_query_feature(RemminaProtocolWidget* gp, const RemminaProtocolFeature* feature)
 {
 	TRACE_CALL(__func__);
@@ -714,9 +720,9 @@ static RemminaProtocolPlugin remmina_plugin_x2go = {
 	REMMINA_PROTOCOL_SSH_SETTING_TUNNEL,    // SSH settings type
 	/* REMMINA_PROTOCOL_SSH_SETTING_NONE,   // SSH settings type */
 	remmina_plugin_x2go_features,           // Array for available features
-	remmina_plugin_x2go_init,               // Plugin initialization
-	remmina_plugin_x2go_open_connection,    // Plugin open connection
-	remmina_plugin_x2go_close_connection,   // Plugin close connection
+	remmina_plugin_x2go_init,               // Plugin initialization method
+	remmina_plugin_x2go_open_connection,    // Plugin open connection method
+	remmina_plugin_x2go_close_connection,   // Plugin close connection method
 	remmina_plugin_x2go_query_feature,      // Query for available features
 	NULL,                                   // Call a feature
 	NULL,                                   // Send a keystroke
