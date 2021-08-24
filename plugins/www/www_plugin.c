@@ -351,8 +351,6 @@ static void remmina_www_web_view_js_finished(GObject *object, GAsyncResult *resu
 {
 	TRACE_CALL(__func__);
 
-	RemminaProtocolWidget *gp = (RemminaProtocolWidget *)user_data;
-	RemminaPluginWWWData *gpdata = GET_PLUGIN_DATA(gp);
 	WebKitJavascriptResult *js_result;
 	GError *error = NULL;
 
@@ -383,7 +381,6 @@ static void remmina_www_web_view_js_finished(GObject *object, GAsyncResult *resu
 	}
 #endif
 	if (js_result) webkit_javascript_result_unref(js_result);
-	gpdata->formauthenticated = TRUE;
 }
 
 static gboolean remmina_www_query_feature(RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
