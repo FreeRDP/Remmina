@@ -43,16 +43,26 @@
 
 #include "x2go_plugin.h"
 #include "common/remmina_plugin.h"
+
 #include <gtk/gtkx.h>
 #include <gdk/gdkx.h>
+
 #include <X11/Xlib.h>
 #include <X11/XKBlib.h>
 #include <X11/extensions/XKBrules.h>
+
 #include <sys/types.h>
 #include <signal.h>
 #include <time.h>
 
 #define GET_PLUGIN_DATA(gp) (RemminaPluginX2GoData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
+
+#define REMMINA_PLUGIN_INFO(fmt, ...)     remmina_plugin_service->_remmina_info("[%s] " fmt, PLUGIN_NAME, ##__VA_ARGS__)
+#define REMMINA_PLUGIN_MESSAGE(fmt, ...)  remmina_plugin_service->_remmina_message("[%s] " fmt, PLUGIN_NAME, ##__VA_ARGS__)
+#define REMMINA_PLUGIN_DEBUG(fmt, ...)    remmina_plugin_service->_remmina_debug(__func__, "[%s] " fmt, PLUGIN_NAME, ##__VA_ARGS__)
+#define REMMINA_PLUGIN_WARNING(fmt, ...)  remmina_plugin_service->_remmina_warning(__func__, "[%s] " fmt, PLUGIN_NAME, ##__VA_ARGS__)
+#define REMMINA_PLUGIN_ERROR(fmt, ...)    remmina_plugin_service->_remmina_error(__func__, "[%s] " fmt, PLUGIN_NAME, ##__VA_ARGS__)
+#define REMMINA_PLUGIN_CRITICAL(fmt, ...) remmina_plugin_service->_remmina_critical(__func__, "[%s] " fmt, PLUGIN_NAME, ##__VA_ARGS__)
 
 typedef struct _RemminaPluginX2GoData {
 	GtkWidget *socket;
