@@ -175,14 +175,14 @@ static void remmina_plugin_x2go_remove_window_id (Window window_id)
 		if (g_array_index (remmina_x2go_window_id_array, Window, i) == window_id)
 		{
 			already_seen = TRUE;
-			printf("[%s] remmina_plugin_x2go_remove_window_id: X2Go Agent window with ID [0x%lx] already seen\n", PLUGIN_NAME, window_id);
+			REMMINA_PLUGIN_DEBUG("X2Go Agent window with ID [0x%lx] already seen.", window_id);
 			break;
 		}
 	}
 	if (already_seen)
 	{
 		g_array_remove_index_fast (remmina_x2go_window_id_array, i);
-		printf("[%s] remmina_plugin_x2go_remove_window_id: forgetting about X2Go Agent window with ID [0x%lx]\n", PLUGIN_NAME, window_id);
+		REMMINA_PLUGIN_DEBUG("forgetting about X2Go Agent window with ID [0x%lx]", window_id);
 	}
 	pthread_mutex_unlock (&remmina_x2go_init_mutex);
 }
@@ -192,10 +192,10 @@ static gboolean remmina_plugin_x2go_close_connection(RemminaProtocolWidget *gp)
 	TRACE_CALL(__func__);
 	RemminaPluginX2GoData *gpdata = GET_PLUGIN_DATA(gp);
 
-	printf("[%s] remmina_plugin_x2go_close_connection\n", PLUGIN_NAME);
+	REMMINA_PLUGIN_DEBUG("function entry.");
 
 	if (gpdata->disconnected) {
-		printf("[%s] remmina_plugin_x2go_close_connection: disconnected already.\n", PLUGIN_NAME);
+		REMMINA_PLUGIN_DEBUG("plugin disconnected already. No need for a second time.");
 		return FALSE;
 	}
 
@@ -229,13 +229,15 @@ static gboolean remmina_plugin_x2go_close_connection(RemminaProtocolWidget *gp)
 }
 
 static void remmina_plugin_x2go_pyhoca_cli_exited(GPid pid, int status, RemminaProtocolWidget *gp) {
+	REMMINA_PLUGIN_DEBUG("function entry.");
+
 	RemminaPluginX2GoData *gpdata = GET_PLUGIN_DATA(gp);
 	if (gpdata->pidx2go <= 0) {
-		printf("[%s] remmina_plugin_x2go_pyhoca_cli_exited: pidx2go <= 0!\n", PLUGIN_NAME);
+		REMMINA_PLUGIN_DEBUG("pidx2go <= 0! -> Doing nothing then.");
 		return;
 	}
 
-	printf("[%s] remmina_plugin_x2go_pyhoca_cli_exited: sending close connection signal now.\n", PLUGIN_NAME);
+	REMMINA_PLUGIN_CRITICAL("pyhoca-cli exited unexpectedly. This connection will now be closed.");
 	remmina_plugin_x2go_close_connection(gp);
 }
 
@@ -305,7 +307,7 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
 		}
 	} else  {
 		g_strlcpy(errmsg, "Authentication cancelled.", 512);
-		printf("[%s] remmina_plugin_x2go_exec_x2go: %s\n", PLUGIN_NAME, errmsg);
+		REMMINA_PLUGIN_DEBUG("%s", errmsg);
 		return FALSE;
 	}
 
@@ -382,8 +384,8 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
 		return FALSE;
 	}
 
-	g_printf("[%s] Started PyHoca CLI with arguments: ", PLUGIN_NAME);
-	// Print every argument except passwords. Free all args.
+	REMMINA_PLUGIN_DEBUG("starting pyhoca-cli with following arguments:");
+	// Print every argument except passwords. Free all arg strings.
 	for (i = 0; i < argc - 1; i++) {
 		if (strcmp(argv[i], "--password") == 0) {
 			g_printf("%s ", argv[i]);
@@ -398,7 +400,8 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
 	}
 	g_printf("\n");
 
-	g_printf("[%s] Watching child PyHoca CLI process now.", PLUGIN_NAME);
+       // TODO: race condition happening! Sometimes pyhoca-cli is not yet started and pid = 0!!!
+	REMMINA_PLUGIN_DEBUG("Watching child pyhoca-cli process now.");
 	g_child_watch_add(&gpdata->pidx2go, G_CALLBACK(remmina_plugin_x2go_pyhoca_cli_exited), gp);
 
 	return TRUE;
@@ -408,7 +411,7 @@ static void remmina_plugin_x2go_on_plug_added(GtkSocket *socket, RemminaProtocol
 {
 	TRACE_CALL(__func__);
 	RemminaPluginX2GoData *gpdata = GET_PLUGIN_DATA(gp);
-	printf("[%s] remmina_plugin_x2go_on_plug_added socket %d\n", PLUGIN_NAME, gpdata->socket_id);
+	REMMINA_PLUGIN_DEBUG("socket %d", gpdata->socket_id);
 	remmina_plugin_service->protocol_plugin_signal_connection_opened(gp);
 	return;
 }
@@ -416,7 +419,7 @@ static void remmina_plugin_x2go_on_plug_added(GtkSocket *socket, RemminaProtocol
 static gboolean remmina_plugin_x2go_on_plug_removed(GtkSocket *socket, RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
-	printf("[%s] remmina_plugin_x2go_on_plug_removed\n", PLUGIN_NAME);
+	REMMINA_PLUGIN_DEBUG("function entry.");
 	remmina_plugin_x2go_close_connection(gp);
 	return TRUE;
 }
@@ -424,7 +427,7 @@ static gboolean remmina_plugin_x2go_on_plug_removed(GtkSocket *socket, RemminaPr
 static void remmina_plugin_x2go_init(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
-	printf("[%s] remmina_plugin_x2go_init\n", PLUGIN_NAME);
+	REMMINA_PLUGIN_DEBUG("function entry.", PLUGIN_NAME);
 	RemminaPluginX2GoData *gpdata;
 
 	gpdata = g_new0(RemminaPluginX2GoData, 1);
@@ -458,19 +461,19 @@ static gboolean remmina_plugin_x2go_try_window_id(Window window_id)
 	gint i;
 	gboolean already_seen = FALSE;
 
-	printf("[%s] remmina_plugin_x2go_start_create_notify: check if X2Go Agent window [0x%lx] is already known or if it needs registration\n", PLUGIN_NAME, window_id);
+	REMMINA_PLUGIN_DEBUG("check if X2Go Agent window [0x%lx] is already known or if it needs registration", window_id);
 
 	pthread_mutex_lock(&remmina_x2go_init_mutex);
 	for (i = 0; i < remmina_x2go_window_id_array->len; i++) {
 		if (g_array_index(remmina_x2go_window_id_array, Window, i) == window_id) {
 			already_seen = TRUE;
-			printf("[%s] remmina_plugin_x2go_try_window_id: X2Go Agent window with ID [0x%lx] already seen\n", PLUGIN_NAME, window_id);
+			REMMINA_PLUGIN_DEBUG("X2Go Agent window with ID [0x%lx] already seen.", window_id);
 			break;
 		}
 	}
 	if (!already_seen) {
 		g_array_append_val(remmina_x2go_window_id_array, window_id);
-		printf("[%s] remmina_plugin_x2go_try_window_id: registered new X2Go Agent window with ID [0x%lx]\n", PLUGIN_NAME, window_id);
+		REMMINA_PLUGIN_DEBUG("registered new X2Go Agent window with ID [0x%lx].", window_id);
 	}
 	pthread_mutex_unlock(&remmina_x2go_init_mutex);
 
@@ -498,7 +501,7 @@ static gboolean remmina_plugin_x2go_start_create_notify(RemminaProtocolWidget *g
 
 	XSelectInput(gpdata->display, XDefaultRootWindow(gpdata->display), SubstructureNotifyMask);
 
-	printf("[%s] remmina_plugin_x2go_start_create_notify: X11 event watcher created\n", PLUGIN_NAME);
+	REMMINA_PLUGIN_DEBUG("X11 event watcher created.");
 
 	return TRUE;
 }
@@ -520,7 +523,7 @@ static gboolean remmina_plugin_x2go_monitor_create_notify(RemminaProtocolWidget 
 
 	CANCEL_DEFER
 
-	printf("[%s] remmina_plugin_x2go_monitor_create_notify: waiting for X2Go Agent window to appear\n", PLUGIN_NAME);
+	REMMINA_PLUGIN_DEBUG("waiting for X2Go Agent window to appear.");
 
 	gpdata = GET_PLUGIN_DATA(gp);
 	atom = XInternAtom(gpdata->display, "WM_COMMAND", True);
@@ -536,28 +539,34 @@ static gboolean remmina_plugin_x2go_monitor_create_notify(RemminaProtocolWidget 
 		pthread_testcancel();
 		if (!(gpdata->pidx2go > 0)) {
 			nanosleep(&ts, NULL);
-			printf("[%s] remmina_plugin_x2go_monitor_create_notify: waiting for X2Go session to be launched\n", PLUGIN_NAME);
+			REMMINA_PLUGIN_DEBUG("waiting for X2Go session to be launched.");
 			continue;
 		}
+
 		while (!XPending(gpdata->display)) {
 			nanosleep(&ts, NULL);
 			wait_period--;
-			printf("[%s] remmina_plugin_x2go_monitor_create_notify: still XPending for this DISPLAY\n", PLUGIN_NAME);
+			// Don't spam the console. Print every second though.
+			if (wait_period % 5 == 0) {
+				REMMINA_PLUGIN_INFO("Waiting for pyhoca-cli to show the session's window.");
+			}
 			continue;
 		}
+
 		XNextEvent(gpdata->display, &xev);
 		if (xev.type != CreateNotify) {
-			printf("[%s] remmina_plugin_x2go_monitor_create_notify: saw an X11 event, but it wasn't CreateNotify\n", PLUGIN_NAME);
+			REMMINA_PLUGIN_DEBUG("saw an X11 event, but it wasn't CreateNotify.");
 			continue;
 		}
+
 		w = xev.xcreatewindow.window;
 		if (XGetWindowProperty(gpdata->display, w, atom, 0, 255, False, AnyPropertyType, &type, &format, &nitems, &rest,
 			&data) != Success) {
-			printf("[%s] remmina_plugin_x2go_monitor_create_notify: failed to get WM_COMMAND property from X11 window ID [0x%lx]\n", PLUGIN_NAME, w);
+			REMMINA_PLUGIN_DEBUG("failed to get WM_COMMAND property from X11 window ID [0x%lx].", w);
 			continue;
 	}
 		if (data)
-			printf("[%s] remmina_plugin_x2go_monitor_create_notify: found X11 window with WM_COMMAND set to '%s', window ID is [0x%lx]\n", PLUGIN_NAME, (char*)data, w);
+			REMMINA_PLUGIN_DEBUG("found X11 window with WM_COMMAND set to '%s', window ID is [0x%lx].", (char*)data, w);
 		if (data && strstr((char*)data, cmd) && remmina_plugin_x2go_try_window_id(w)) {
 			gpdata->window_id = w;
 			agent_window_found = TRUE;
@@ -585,7 +594,7 @@ static gboolean remmina_plugin_x2go_monitor_create_notify(RemminaProtocolWidget 
 static gboolean remmina_plugin_x2go_start_session(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
-	printf("[%s] remmina_plugin_x2go_start_session\n", PLUGIN_NAME);
+	REMMINA_PLUGIN_DEBUG("function entry.");
 #define GET_PLUGIN_STRING(value) \
 		g_strdup(remmina_plugin_service->file_get_string(remminafile, value))
 #define GET_PLUGIN_PASSWORD(value) \
@@ -608,7 +617,7 @@ static gboolean remmina_plugin_x2go_start_session(RemminaProtocolWidget *gp)
 	/* We save the X Display name (:0) as we will need to synchronize the clipboards */
 	default_dsp = gdk_display_get_default();
 	const gchar *default_dsp_name = gdk_display_get_name(default_dsp);
-	printf("[%s] Default display is %s\n", PLUGIN_NAME, default_dsp_name);
+	REMMINA_PLUGIN_DEBUG("Default display is '%s'.", default_dsp_name);
 
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
@@ -637,9 +646,9 @@ static gboolean remmina_plugin_x2go_start_session(RemminaProtocolWidget *gp)
 		res = g_strdup_printf ("%dx%d", width, height);
 	else
 		res = "800x600";
-	printf("[%s] remmina_plugin_x2go_start_session: guessing optimal X2Go session geometry %s\n", PLUGIN_NAME, res);
+	REMMINA_PLUGIN_DEBUG("guessing optimal X2Go session geometry '%s'.", res);
 
-	printf("[%s] attached window to socket %d\n", PLUGIN_NAME, gpdata->socket_id);
+	REMMINA_PLUGIN_DEBUG("attached window to socket '%d'.", gpdata->socket_id);
 
 	/* register for notifications of window creation events */
 	if (ret)
@@ -656,7 +665,7 @@ static gboolean remmina_plugin_x2go_start_session(RemminaProtocolWidget *gp)
 		ret = remmina_plugin_x2go_monitor_create_notify(gp, "x2goagent", (gchar*)&errmsg);
 
 	if (!ret) {
-		printf ("%s\n", errmsg);
+		REMMINA_PLUGIN_CRITICAL("%s", errmsg);
 		remmina_plugin_service->protocol_plugin_set_error(gp, "%s", errmsg);
 		return FALSE;
 	}
@@ -797,6 +806,8 @@ remmina_plugin_entry(RemminaPluginService *service)
 
 	pthread_mutex_init(&remmina_x2go_init_mutex, NULL);
 	remmina_x2go_window_id_array = g_array_new(FALSE, TRUE, sizeof(Window));
+
+	REMMINA_PLUGIN_MESSAGE("X2Go plugin loaded.");
 
 	return TRUE;
 }
