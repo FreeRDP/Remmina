@@ -1,6 +1,6 @@
 /*
  *     Project: Remmina Plugin X2Go
- * Description: Remmina protocol plugin to connect via X2Go using PyHoca
+ * Description: Remmina protocol plugin to connect via X2Go using PyHocaCLI
  *      Author: Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
  *              Antenore Gatta <antenore@simbiosi.org>
  *   Copyright: 2010-2011 Vic Lee
@@ -332,7 +332,7 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
 		argv[argc++] = g_strdup_printf ("%s", password);
 	}
 	argv[argc++] = g_strdup("-c");
-//FIXME: pyhoca-cli is picky about multiple quotes around the command string...
+//  FIXME: pyhoca-cli is picky about multiple quotes around the command string...
 //	argv[argc++] = g_strdup_printf ("%s", g_shell_quote(command));
 	argv[argc++] = g_strdup(command);
 	if (kbdlayout) {
@@ -363,7 +363,7 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
 		argv[argc++] = g_strdup("--clipboard-mode");
 		argv[argc++] = g_strdup_printf ("%s", clipboard);
 	} else {
-		// Assuming an error in configuration:
+		// Assuming an error in configuration.
 		// we want clipboard support most of the time.
 		argv[argc++] = g_strdup("--clipboard");
 		argv[argc++] = g_strdup("both");
@@ -376,13 +376,7 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
 	argv[argc++] = NULL;
 
 	envp = g_get_environ();
-
 	gboolean success = g_spawn_async (NULL, argv, envp, G_SPAWN_DO_NOT_REAP_CHILD | G_SPAWN_SEARCH_PATH, NULL, NULL, &gpdata->pidx2go, &error);
-
-	if (!success || error) {
-		g_printf ("failed to start PyHoca CLI: %s\n", error->message);
-		return FALSE;
-	}
 
 	REMMINA_PLUGIN_DEBUG("starting pyhoca-cli with following arguments:");
 	// Print every argument except passwords. Free all arg strings.
@@ -400,7 +394,12 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
 	}
 	g_printf("\n");
 
-       // TODO: race condition happening! Sometimes pyhoca-cli is not yet started and pid = 0!!!
+	if (!success || error) {
+		REMMINA_PLUGIN_ERROR("failed to start pyhoca-cli: '%s'", error->message);
+		return FALSE;
+	}
+
+	// TODO: race condition happening! Sometimes pyhoca-cli is not yet started and pid = 0!!!
 	REMMINA_PLUGIN_DEBUG("Watching child pyhoca-cli process now.");
 	g_child_watch_add(&gpdata->pidx2go, G_CALLBACK(remmina_plugin_x2go_pyhoca_cli_exited), gp);
 
@@ -510,6 +509,8 @@ static gboolean remmina_plugin_x2go_monitor_create_notify(RemminaProtocolWidget 
 {
 	TRACE_CALL(__func__);
 	RemminaPluginX2GoData *gpdata;
+
+	gboolean agent_window_found = FALSE;
 	Atom atom;
 	XEvent xev;
 	Window w;
@@ -517,9 +518,11 @@ static gboolean remmina_plugin_x2go_monitor_create_notify(RemminaProtocolWidget 
 	int format;
 	unsigned long nitems, rest;
 	unsigned char *data = NULL;
+
 	struct timespec ts;
-	gboolean agent_window_found = FALSE;
-	int wait_period = 100; // 100 * 0.2msec = 20sec
+	// wait_amount * tv_nsec = 20s
+	// 100 * 0.2s = 20s
+	int wait_amount = 100;
 
 	CANCEL_DEFER
 
@@ -533,9 +536,10 @@ static gboolean remmina_plugin_x2go_monitor_create_notify(RemminaProtocolWidget 
 	}
 
 	ts.tv_sec = 0;
+	// 0.2s = 200000000ns
 	ts.tv_nsec = 200000000;
 
-	while (wait_period > 0) {
+	while (wait_amount > 0) {
 		pthread_testcancel();
 		if (!(gpdata->pidx2go > 0)) {
 			nanosleep(&ts, NULL);
@@ -545,15 +549,16 @@ static gboolean remmina_plugin_x2go_monitor_create_notify(RemminaProtocolWidget 
 
 		while (!XPending(gpdata->display)) {
 			nanosleep(&ts, NULL);
-			wait_period--;
+			wait_amount--;
 			// Don't spam the console. Print every second though.
-			if (wait_period % 5 == 0) {
+			if (wait_amount % 5 == 0) {
 				REMMINA_PLUGIN_INFO("Waiting for pyhoca-cli to show the session's window.");
 			}
 			continue;
 		}
 
 		XNextEvent(gpdata->display, &xev);
+		// Just ignore non CreatNotify events.
 		if (xev.type != CreateNotify) {
 			REMMINA_PLUGIN_DEBUG("saw an X11 event, but it wasn't CreateNotify.");
 			continue;
@@ -564,7 +569,8 @@ static gboolean remmina_plugin_x2go_monitor_create_notify(RemminaProtocolWidget 
 			&data) != Success) {
 			REMMINA_PLUGIN_DEBUG("failed to get WM_COMMAND property from X11 window ID [0x%lx].", w);
 			continue;
-	}
+		}
+
 		if (data)
 			REMMINA_PLUGIN_DEBUG("found X11 window with WM_COMMAND set to '%s', window ID is [0x%lx].", (char*)data, w);
 		if (data && strstr((char*)data, cmd) && remmina_plugin_x2go_try_window_id(w)) {
@@ -575,7 +581,7 @@ static gboolean remmina_plugin_x2go_monitor_create_notify(RemminaProtocolWidget 
 		}
 		if (data)
 			XFree(data);
-		}
+	}
 
 	XSetErrorHandler(gpdata->orig_handler);
 	XCloseDisplay(gpdata->display);
@@ -708,7 +714,7 @@ static gboolean remmina_plugin_x2go_open_connection(RemminaProtocolWidget *gp)
 	if (!remmina_plugin_service->gtksocket_available()) {
 		remmina_plugin_service->protocol_plugin_set_error(gp,
 		    _("Protocol %s is unavailable because GtkSocket only works under X.org"),
-		    remmina_plugin_x2go.name);
+		    PLUGIN_NAME);
 		return FALSE;
 	}
 
