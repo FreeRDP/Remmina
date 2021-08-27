@@ -67,14 +67,21 @@ elseif(FREERDP_FOUND)
 endif()
 
 # X2Go
-find_program(PYHOCA_EXECUTABLE pyhoca-cli)
+option(WITH_X2GO "Build X2Go plugin" OFF)
+if(WITH_X2GO)
+    message(STATUS "Enabling X2Go plugin.")
 
-# FIXME: pyhoca-cli is a run-time dependency, not relevant at build-time
-if(PYHOCA_EXECUTABLE)
-	message(STATUS "pyhoca-cli was found. The X2Go plugin will be installed")
-	add_subdirectory(x2go)
+	find_program(PYHOCA_EXECUTABLE pyhoca-cli)
+
+	# FIXME: pyhoca-cli is a run-time dependency, not relevant at build-time
+	if(PYHOCA_EXECUTABLE)
+		message(STATUS "pyhoca-cli was found. The X2Go plugin will be installed")
+		add_subdirectory(x2go)
+	else()
+		message(WARNING "pyhoca-cli was not found. X2Go plugin won't be built")
+	endif()
 else()
-	message(WARNING "pyhoca-cli was not found. X2Go plugin won't be built")
+	message(STATUS "Disabling X2Go plugin.")
 endif()
 
 find_suggested_package(LIBVNCSERVER)
