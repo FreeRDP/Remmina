@@ -247,6 +247,20 @@ static void remmina_plugin_x2go_pyhoca_cli_exited(GPid pid, int status, RemminaP
 	}
 
 	REMMINA_PLUGIN_CRITICAL("pyhoca-cli exited unexpectedly. This connection will now be closed.");
+
+	GtkWidget *widget;
+	widget = gtk_message_dialog_new(NULL,
+									GTK_DIALOG_MODAL,
+									GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
+									_("An error occured."));
+
+	gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG (widget),
+											_("Necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
+											"Please check pyhoca-cli's output for errors and check your "
+											"profile settings for possible errors."));
+	g_signal_connect(G_OBJECT(widget), "response", G_CALLBACK(gtk_widget_destroy), NULL);
+	gtk_widget_show(widget);
+
 	remmina_plugin_x2go_close_connection(gp);
 }
 
@@ -404,7 +418,23 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
 	g_printf("\n");
 
 	if (!success || error) {
-		REMMINA_PLUGIN_ERROR("failed to start pyhoca-cli: '%s'", error->message);
+		REMMINA_PLUGIN_CRITICAL("failed to start pyhoca-cli: '%s'", error->message);
+
+		GtkWidget *widget;
+		// FIXME: Seems to crash sometimes? 'Fatal IO error 0 (Erfolg) on X server :0.'
+		widget = gtk_message_dialog_new(NULL,
+										GTK_DIALOG_MODAL,
+										GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
+										_("An error occured while starting a X2Go session."));
+
+		gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG (widget),
+												_("Failed to start pyhoca-cli: %s"),
+												error->message);
+
+		g_error_free(error);
+
+		g_signal_connect(G_OBJECT(widget), "response", G_CALLBACK(gtk_widget_destroy), NULL);
+		gtk_widget_show(widget);
 		return FALSE;
 	}
 
