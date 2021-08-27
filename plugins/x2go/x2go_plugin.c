@@ -64,6 +64,15 @@
 #define REMMINA_PLUGIN_ERROR(fmt, ...)    remmina_plugin_service->_remmina_error(__func__, "[%s] " fmt, PLUGIN_NAME, ##__VA_ARGS__)
 #define REMMINA_PLUGIN_CRITICAL(fmt, ...) remmina_plugin_service->_remmina_critical(__func__, "[%s] " fmt, PLUGIN_NAME, ##__VA_ARGS__)
 
+#define GET_PLUGIN_STRING(value) \
+		g_strdup(remmina_plugin_service->file_get_string(remminafile, value))
+#define GET_PLUGIN_PASSWORD(value) \
+		GET_PLUGIN_STRING(value)
+#define GET_PLUGIN_INT(value, default_value) \
+		remmina_plugin_service->file_get_int(remminafile, value, default_value)
+#define GET_PLUGIN_BOOLEAN(value) \
+		remmina_plugin_service->file_get_int(remminafile, value, FALSE)
+
 typedef struct _RemminaPluginX2GoData {
 	GtkWidget *socket;
 	gint socket_id;
@@ -601,14 +610,6 @@ static gboolean remmina_plugin_x2go_start_session(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
 	REMMINA_PLUGIN_DEBUG("function entry.");
-#define GET_PLUGIN_STRING(value) \
-		g_strdup(remmina_plugin_service->file_get_string(remminafile, value))
-#define GET_PLUGIN_PASSWORD(value) \
-		GET_PLUGIN_STRING(value)
-#define GET_PLUGIN_INT(value, default_value) \
-		remmina_plugin_service->file_get_int(remminafile, value, default_value)
-#define GET_PLUGIN_BOOLEAN(value) \
-		remmina_plugin_service->file_get_int(remminafile, value, FALSE)
 
 	RemminaPluginX2GoData *gpdata = GET_PLUGIN_DATA(gp);;
 	RemminaFile *remminafile;
