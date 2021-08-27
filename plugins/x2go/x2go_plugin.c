@@ -440,7 +440,7 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
 
 	// TODO: race condition happening! Sometimes pyhoca-cli is not yet started and pid = 0!!!
 	REMMINA_PLUGIN_DEBUG("Watching child pyhoca-cli process now.");
-	g_child_watch_add(&gpdata->pidx2go, G_CALLBACK(remmina_plugin_x2go_pyhoca_cli_exited), gp);
+	g_child_watch_add(gpdata->pidx2go, (GChildWatchFunc) remmina_plugin_x2go_pyhoca_cli_exited, gp);
 
 	return TRUE;
 }
