@@ -14,8 +14,8 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-08-24 11:40+0000\n"
-"PO-Revision-Date: 2021-08-11 10:35+0000\n"
-"Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
+"PO-Revision-Date: 2021-08-28 17:34+0000\n"
+"Last-Translator: Tuomas Lähteenmäki <lahtis@gmail.com>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/remmina/remmina/"
 "fi/>\n"
 "Language: fi\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.8-dev\n"
+"X-Generator: Weblate 4.8.1-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:346
@@ -228,19 +228,14 @@ msgid "Picking a terminal colouring file replaces the file: "
 msgstr "Valitse päätteen väritystiedosto"
 
 #: src/remmina_pref_dialog.c:810
-#, fuzzy
-#| msgid ""
-#| "This file contains the \"Custom\" terminal colour scheme selectable from "
-#| "the \"Advanced\" tab of terminal connections and editable in the "
-#| "\"Terminal\" tab in the settings."
 msgid ""
 "This file contains the “Custom” terminal colour scheme selectable from the "
 "“Advanced” tab of terminal connections and editable in the “Terminal” tab in "
 "the settings."
 msgstr ""
 "Tämä tiedosto sisältää \"Mukautetun\" päätelaitteen värimaailman, joka "
-"voidaan valita päätelaiteyhteyksien \"Advanced\"-välilehdeltä ja jota "
-"voidaan muokata asetusten \"Terminal\"-välilehdellä."
+"voidaan valita päätelaiteyhteyksien \"Lisäasetukset\"-välilehdeltä ja jota "
+"voidaan muokata asetusten \"Pääte\"-välilehdellä."
 
 #: src/remmina_message_panel.c:163 data/ui/remmina_mpc.glade:46
 #: data/ui/remmina_unlock.glade:46
@@ -617,9 +612,9 @@ msgstr ""
 "password\n"
 
 #: src/remmina_public.c:345
-#, fuzzy, c-format
+#, c-format
 msgid "Address is too long for UNIX socket_path: %s"
-msgstr "Osoite on liian pitkä UNIX socket_pathille: %s"
+msgstr "Osoite on liian pitkä UNIX-pistorasian polulle: %s"
 
 #: src/remmina_public.c:355
 #, c-format
@@ -1265,12 +1260,6 @@ msgid "The following file already exists in the target folder:"
 msgstr "Seuraava tiedosto on jo olemassa kohdekansiossa:"
 
 #: src/remmina_file_editor.c:60
-#, fuzzy
-#| msgid ""
-#| "<tt><big>Supported formats\n"
-#| "• server\n"
-#| "• server:port\n"
-#| "• [server]:port</big></tt>"
 msgid ""
 "<big>Supported formats\n"
 "• server\n"
@@ -1281,26 +1270,12 @@ msgid ""
 msgstr ""
 "<big>Tuetut formaatit\n"
 "- palvelin\n"
-"- palvelin[:portti]\n"
+"- palvelin:portti\n"
 "VNC:n lisäformaatit\n"
 "- ID:toistimen ID-numero\n"
 "- unix:///path/socket.sock</big>"
 
 #: src/remmina_file_editor.c:69
-#, fuzzy
-#| msgid ""
-#| "<tt><big>• command in PATH args %h\n"
-#| "• /path/to/foo -options %h %u\n"
-#| "• %h is substituted with the server name\n"
-#| "• %t is substituted with the SSH server name\n"
-#| "• %u is substituted with the username\n"
-#| "• %U is substituted with the SSH username\n"
-#| "• %p is substituted with Remmina profile name\n"
-#| "• %g is substituted with Remmina profile group name\n"
-#| "• %d is substituted with local date and time in ISO 8601 format\n"
-#| "Do not run in background if you want the command to be executed before "
-#| "connecting.\n"
-#| "</big></tt>"
 msgid ""
 "<big>• command in PATH args %h\n"
 "• /path/to/foo -options %h %u\n"
@@ -1315,7 +1290,7 @@ msgid ""
 "connecting.\n"
 "</big>"
 msgstr ""
-"<tt><big>• command in PATH args %h\n"
+"<big>• command in PATH args %h\n"
 "• /path/to/foo -options %h %u\n"
 "• %h on korvattu palvelimen nimellä \n"
 "• %t on korvattu SSH-palvelimen nimellä \n"
@@ -1326,7 +1301,7 @@ msgstr ""
 "• %d korvataan paikallisella päivämääräajalla iso8601-muodossa\n"
 "Älä käynnistä taustalla, jos haluat, että komento suoritetaan ennen yhteyden "
 "muodostamista.\n"
-"</big></tt>"
+"</big>"
 
 #: src/remmina_file_editor.c:83
 msgid ""
@@ -1666,16 +1641,14 @@ msgid "Log SSH session when exiting Remmina"
 msgstr "Lokita SSH-istunto poistuessaan Remminasta"
 
 #: src/remmina_ssh_plugin.c:1516
-#, fuzzy
 msgid "Log SSH session asynchronously"
 msgstr "SSH-istunnon kirjaaminen asynkronisesti"
 
 #: src/remmina_ssh_plugin.c:1516
-#, fuzzy
 msgid "Saving the session asynchronously may have a notable performance impact"
 msgstr ""
 "Istunnon tallentaminen asynkronisesti voi vaikuttaa merkittävästi "
-"suorituskykyyn."
+"suorituskykyyn"
 
 #: src/remmina_ssh_plugin.c:1517
 msgid "Audible terminal bell"
@@ -1742,18 +1715,19 @@ msgid "Use client keyboard mapping"
 msgstr "Käytä asiakasnäppäimistön kartoitusta"
 
 #: plugins/rdp/rdp_settings.c:468
-#, fuzzy
-#| msgid "Keyboard mapping"
 msgid "Keyboard scancode remapping"
-msgstr "Näppäimistöasettelu"
+msgstr "Näppäimistöasettelun uudelleenmääritys"
 
 #: plugins/rdp/rdp_settings.c:483
+#, fuzzy
 msgid "List of key=value,… pairs to remap scancodes. E.g. 0x56=0x29,0x29=0x56"
 msgstr ""
+"Luettelo key=value,... -pareista scancodien uudelleenkoodausta varten. Esim. "
+"0x56=0x29,0x29=0x56."
 
 #: plugins/rdp/rdp_settings.c:486
 msgid "FreeRDP > 2.3.0 is required to map scancodes"
-msgstr ""
+msgstr "FreeRDP> 2.3.0 vaaditaan skannauskoodien kartoittamiseen"
 
 #: plugins/rdp/rdp_settings.c:494
 msgid "Quality settings"
@@ -1821,18 +1795,15 @@ msgid "General settings"
 msgstr "Yleiset asetukset"
 
 #: plugins/rdp/rdp_settings.c:676 plugins/rdp/rdp_plugin.c:2712
-#, fuzzy
-#| msgid "Reconnection attempt %d of %d…"
 msgid "Reconnect attempts number"
 msgstr "Yhteyden uudelleen muodostamisyritysten määrä"
 
 #: plugins/rdp/rdp_settings.c:689 plugins/rdp/rdp_plugin.c:2712
-#, fuzzy
 msgid ""
 "The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
 msgstr ""
 "RDP-yhteyden katkaisun yhteydessä tehtävien uudelleenyhdistysyritysten "
-"enimmäismäärä (oletusarvo: 20)."
+"enimmäismäärä (oletusarvo: 20)"
 
 #: plugins/rdp/rdp_plugin.c:757 plugins/rdp/rdp_plugin.c:822
 msgid "Enter RDP authentication credentials"
@@ -1926,10 +1897,7 @@ msgstr ""
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:2116
-#, fuzzy, c-format
-#| msgid ""
-#| "Unable to establish a connection to the RDP server “%s”. Check \"Security "
-#| "protocol negotiation\"."
+#, c-format
 msgid ""
 "Unable to establish a connection to the RDP server “%s”. Check “Security "
 "protocol negotiation”."
@@ -1961,16 +1929,13 @@ msgid "The “%s” server refused the connection."
 msgstr "Palvelin \"%s\" esti yhteyden."
 
 #: plugins/rdp/rdp_plugin.c:2142
-#, fuzzy, c-format
-#| msgid ""
-#| "The Remote Desktop Gateway “%s” denied the user \"%s\\%s\" access due to "
-#| "policy."
+#, c-format
 msgid ""
 "The Remote Desktop Gateway “%s” denied the user “%s\\%s” access due to "
 "policy."
 msgstr ""
-"Etätyöpöytäyhdyskäytävä \"%s\" esti käyttäjän \"%s\\%s\" pääsyn käytännön "
-"toimesta."
+"Etätyöpöytäyhdyskäytävä \"%s\" esti käyttäjän \"%s\\%s\" pääsyn policy-"
+"käytännön vuoksi."
 
 #: plugins/rdp/rdp_plugin.c:2152
 #, c-format
@@ -2159,12 +2124,6 @@ msgstr ""
 "Suurin mahdollinen arvo on 600000 ms (kymmenen minuuttia).\n"
 
 #: plugins/rdp/rdp_plugin.c:2617
-#, fuzzy
-#| msgid ""
-#| "Performance optimisations based on the network connection type:\n"
-#| "Using auto-detection is advised.\n"
-#| "If \"Auto-detect\" fails, choose the most appropriate option in the "
-#| "list.\n"
 msgid ""
 "Performance optimisations based on the network connection type:\n"
 "Using auto-detection is advised.\n"
@@ -2176,18 +2135,6 @@ msgstr ""
 "luettelosta.\n"
 
 #: plugins/rdp/rdp_plugin.c:2622
-#, fuzzy
-#| msgid ""
-#| "Comma separated list of monitor IDs and desktop orientations:\n"
-#| "  • [<id>:<orientation-in-degrees>,]\n"
-#| "  • 0,1,2,3\n"
-#| "  • 0:270,1:90\n"
-#| "Orientations are specified in degrees, valid values are:\n"
-#| "  •   0 (landscape)\n"
-#| "  •  90 (portrait)\n"
-#| "  • 180 (landscape flipped)\n"
-#| "  • 270 (portrait flipped)\n"
-#| "\n"
 msgid ""
 "Comma-separated list of monitor IDs and desktop orientations:\n"
 "  • [<id>:<orientation-in-degrees>,]\n"
@@ -2212,7 +2159,6 @@ msgstr ""
 "\n"
 
 #: plugins/rdp/rdp_plugin.c:2634
-#, fuzzy
 msgid ""
 "Redirect directory <path> as named share <name>.\n"
 "  • <name>,<fullpath>[;<name>,<fullpath>[;…]]\n"
@@ -2237,7 +2183,6 @@ msgid "Share folder"
 msgstr "Jaa kansio"
 
 #: plugins/rdp/rdp_plugin.c:2658
-#, fuzzy
 msgid "Use “Redirect directory” in the advanced tab for multiple directories"
 msgstr ""
 "Käytä \"Ohjaa hakemisto uudelleen\" lisäasetukset-välilehdellä useita "
@@ -2260,8 +2205,6 @@ msgid "Span screen over multiple monitors"
 msgstr "Jatka näyttöä useiden näyttöjen yli"
 
 #: plugins/rdp/rdp_plugin.c:2663
-#, fuzzy
-#| msgid "Monitor ID list"
 msgid "List monitor IDs"
 msgstr "Luettelo monitorin tunnuksista"
 
@@ -2332,9 +2275,8 @@ msgid "Remote Desktop Gateway domain"
 msgstr "Etätyöpöydän yhdyskäytävän verkkotunnus"
 
 #: plugins/rdp/rdp_plugin.c:2694
-#, fuzzy
 msgid "Redirect directory"
-msgstr "Ohjaa hakemisto uudelleen"
+msgstr "Uudelleenohjaushakemisto"
 
 #: plugins/rdp/rdp_plugin.c:2695
 msgid "Client name"
@@ -2418,7 +2360,6 @@ msgid "TCP redirection"
 msgstr "TCP-uudelleenohjaus"
 
 #: plugins/rdp/rdp_plugin.c:2711
-#, fuzzy
 msgid "/PATH/TO/rdp2tcp"
 msgstr "/PATH/TO/rdp2tcp"
 
@@ -2686,7 +2627,6 @@ msgid "Please retry after turning on encryption for this profile."
 msgstr "Yritä uudelleen, kun salaus on otettu käyttöön tässä profiilissa."
 
 #: plugins/vnc/vnc_plugin.c:1939
-#, fuzzy
 msgid ""
 "Connect to VNC using a repeater:\n"
 "  • The server field must contain the repeater ID, e.g. ID:123456789\n"
@@ -2698,8 +2638,8 @@ msgid ""
 msgstr ""
 "Muodosta yhteys VNC:hen toistimen avulla:\n"
 "  - ID:123456789.\n"
-"  - Toistin-kenttään on asetettava toistimen IP ja portti, esim. "
-"seuraavasti:\n"
+"  - Toistin-kenttään on asetettava toistimen IP ja portti, esim. seuraavasti:"
+"\n"
 "    10.10.10.12:5901\n"
 "  - Etäisestä VNC-palvelimesta muodostetaan yhteys osoitteeseen\n"
 "    toistimeen esimerkiksi x11vnc:llä:\n"
@@ -2726,9 +2666,8 @@ msgid "Prevent local interaction on the server"
 msgstr "Estä paikallinen vuorovaikutus palvelimella"
 
 #: plugins/vnc/vnc_plugin.c:2004 plugins/gvnc/gvnc_plugin.c:859
-#, fuzzy
 msgid "Ignore remote bell messages"
-msgstr "Etäkelloviestien huomiotta jättäminen"
+msgstr "Ohita etäkelloviestit"
 
 #: plugins/vnc/vnc_plugin.c:2020
 msgid "Open Chat…"
@@ -2886,7 +2825,6 @@ msgid "This might not work on all VNC servers"
 msgstr "Tämä ei välttämättä toimi kaikilla VNC-palvelimilla"
 
 #: plugins/gvnc/gvnc_plugin.c:842
-#, fuzzy
 msgid "Enable GTK-VNC debug"
 msgstr "Ota GTK-VNC-vianmääritys käyttöön"
 

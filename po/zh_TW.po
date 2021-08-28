@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-08-24 11:40+0000\n"
-"PO-Revision-Date: 2021-07-16 09:01+0000\n"
+"PO-Revision-Date: 2021-08-28 17:34+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
 "remmina/remmina/zh_Hant/>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.7.2-dev\n"
+"X-Generator: Weblate 4.8.1-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:25+0000\n"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:346
@@ -897,7 +897,7 @@ msgstr "无法用公共SSH密钥进行认证。%s"
 #, fuzzy, c-format
 #| msgid "Public SSH key cannot be imported. %s"
 msgid "SSH certificate cannot be imported. %s"
-msgstr "不能导入SSH证书。%s"
+msgstr "SSH证书不能被导入。%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:345
@@ -1765,15 +1765,17 @@ msgstr "使用客戶端鍵盤映射"
 #, fuzzy
 #| msgid "Keyboard mapping"
 msgid "Keyboard scancode remapping"
-msgstr "鍵盤映射"
+msgstr "键盘扫描码重映射"
 
 #: plugins/rdp/rdp_settings.c:483
+#, fuzzy
 msgid "List of key=value,… pairs to remap scancodes. E.g. 0x56=0x29,0x29=0x56"
-msgstr ""
+msgstr "列表中的key=value,......对可以重新映射scancodes。例如：0x56=0x29,0x29=0x56"
 
 #: plugins/rdp/rdp_settings.c:486
+#, fuzzy
 msgid "FreeRDP > 2.3.0 is required to map scancodes"
-msgstr ""
+msgstr "需要FreeRDP > 2.3.0来映射scancodes。"
 
 #: plugins/rdp/rdp_settings.c:494
 msgid "Quality settings"
@@ -2053,7 +2055,7 @@ msgstr "<自動偵測>"
 #: plugins/rdp/rdp_plugin.c:2538
 #, fuzzy
 msgid "Modem"
-msgstr "调制解调器"
+msgstr "數據機"
 
 #: plugins/rdp/rdp_plugin.c:2539
 #, fuzzy
@@ -2738,7 +2740,7 @@ msgstr ""
 "  - 服务器字段必须包含中继器ID，例如：ID:123456789\n"
 "  - 中继器字段必须设置为中继器的IP和端口，例如。\n"
 "    10.10.10.12:5901\n"
-"  - 从远程VNC服务器上，你将连接到\n"
+"  - 从远程VNC服务器，你将连接到\n"
 "    中继器，例如，用x11vnc。\n"
 "    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
 
