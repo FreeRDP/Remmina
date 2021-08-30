@@ -43,7 +43,7 @@ From our store on [TEEPUBLIC](http://tee.pub/lic/CfbUoWiygXM) you can get [mugge
 
 ## Report bugs, ideas, issues
 Install it, use it and report What doesn&#8217;t work, is missing, or ugly. Don&#8217;t hesitate to let us know.
-For bug and feature requests, use [GitLab issues](https://gitlab.com/Remmina/Remmina/issues) or ask on IRC. #remmina on freenode.
+For bug and feature requests, use [GitLab issues](https://gitlab.com/Remmina/Remmina/issues) or ask on IRC. #remmina on libera.chat.
 
 ## Screenshots
 Send in pictures or screengrabs of your setup.

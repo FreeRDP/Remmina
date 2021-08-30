@@ -11,7 +11,7 @@
 
 
 * RDP, VNC, SPICE, NX, XDMCP, SSH and EXEC network protocols are supported.
-* Written in GTK, with a port to Qt underway. 
+* Written in GTK, with a port to Qt underway.
 * Released as "remmina" (the main program) and "remmina-plugins".
 
 ### Installation
@@ -31,7 +31,7 @@ Set up everything from the graphical interface, or from $HOME/.config/remmina
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new merge request
 
-There are [other ways](CONTRIBUTING.md) to contribute too, get in contact on IRC (#remmina on freenode), or send an e-mail to the [mailing list](https://lists.remmina.org/listinfo/users).
+There are [other ways](CONTRIBUTING.md) to contribute too, get in contact on IRC (#remmina on libera.chat), or send an e-mail to the [mailing list](https://lists.remmina.org/listinfo/users).
 
 ### Donations
 
