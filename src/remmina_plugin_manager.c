@@ -354,7 +354,7 @@ void remmina_plugin_manager_init()
 	while(sple != NULL) {
 		sp = (RemminaSecretPlugin*)sple->data;
 		if (sp->init()) {
-			g_print("The %s secret plugin  has been initialized and it will be your default secret plugin\n",
+			g_print("The %s secret plugin has been initialized and it will be your default secret plugin\n",
 				sp->name);
 			remmina_secret_plugin = sp;
 			break;
