@@ -706,15 +706,18 @@ static gboolean remmina_plugin_x2go_start_session(RemminaProtocolWidget *gp)
 	clipboard = GET_PLUGIN_STRING("clipboard");
 	dpi = GET_PLUGIN_INT("dpi", 0);
 
-	width = remmina_plugin_service->protocol_plugin_get_width(gp);
-	height = remmina_plugin_service->protocol_plugin_get_height(gp);
+	width = remmina_plugin_service->get_profile_remote_width(gp);
+	height = remmina_plugin_service->get_profile_remote_height(gp);
+	/* multiple of 4 */
+	width = (width + 3) & ~0x3;
+	height = (height + 3) & ~0x3;
 	if( (width > 0) && (height  > 0))
 		res = g_strdup_printf ("%dx%d", width, height);
 	else
 		res = "800x600";
-	REMMINA_PLUGIN_DEBUG("guessing optimal X2Go session geometry '%s'.", res);
+	REMMINA_PLUGIN_DEBUG("Resolution set by user: '%s'.", res);
 
-	REMMINA_PLUGIN_DEBUG("attached window to socket '%d'.", gpdata->socket_id);
+	REMMINA_PLUGIN_DEBUG("Attached window to socket '%d'.", gpdata->socket_id);
 
 	/* register for notifications of window creation events */
 	if (ret)
