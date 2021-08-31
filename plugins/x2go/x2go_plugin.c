@@ -196,16 +196,13 @@ static void remmina_plugin_x2go_remove_window_id (Window window_id)
 	pthread_mutex_unlock (&remmina_x2go_init_mutex);
 }
 
-static gboolean remmina_plugin_x2go_close_connection(RemminaProtocolWidget *gp)
-{
-	TRACE_CALL(__func__);
+static void remmina_plugin_x2go_cleanup(RemminaProtocolWidget *gp) {
+	REMMINA_PLUGIN_DEBUG("Function entry.");
+
 	RemminaPluginX2GoData *gpdata = GET_PLUGIN_DATA(gp);
-
-	REMMINA_PLUGIN_DEBUG("function entry.");
-
-	if (gpdata->disconnected) {
-		REMMINA_PLUGIN_DEBUG("plugin disconnected already. No need for a second time.");
-		return FALSE;
+	if (gpdata == NULL) {
+		REMMINA_PLUGIN_DEBUG("gpdata was already null. Exiting.");
+		return;
 	}
 
 	if (gpdata->thread) {
@@ -230,17 +227,36 @@ static gboolean remmina_plugin_x2go_close_connection(RemminaProtocolWidget *gp)
 		gpdata->display = NULL;
 	}
 
+	g_object_steal_data(G_OBJECT(gp), "plugin-data");
 	remmina_plugin_service->protocol_plugin_signal_connection_closed(gp);
+}
 
-	gpdata->disconnected = TRUE;
+static gboolean remmina_plugin_x2go_close_connection(RemminaProtocolWidget *gp)
+{
+	TRACE_CALL(__func__);
+	RemminaPluginX2GoData *gpdata = GET_PLUGIN_DATA(gp);
 
-	return FALSE;
+	REMMINA_PLUGIN_DEBUG("function entry.");
+
+	if (gpdata->disconnected) {
+		REMMINA_PLUGIN_DEBUG("plugin disconnected already. No need for a second time.");
+		return FALSE;
+	}
+
+	remmina_plugin_x2go_cleanup(gp);
+
+	return TRUE;
 }
 
 static void remmina_plugin_x2go_pyhoca_cli_exited(GPid pid, int status, RemminaProtocolWidget *gp) {
-	REMMINA_PLUGIN_DEBUG("function entry.");
+	REMMINA_PLUGIN_DEBUG("Function entry.");
 
 	RemminaPluginX2GoData *gpdata = GET_PLUGIN_DATA(gp);
+	if (!gpdata) {
+		REMMINA_PLUGIN_DEBUG("gpdata already null. Doing nothing then.");
+		return;
+	}
+	
 	if (gpdata->pidx2go <= 0) {
 		REMMINA_PLUGIN_DEBUG("pidx2go <= 0! -> Doing nothing then.");
 		return;
@@ -258,8 +274,12 @@ static void remmina_plugin_x2go_pyhoca_cli_exited(GPid pid, int status, RemminaP
 											_("Necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
 											"Please check pyhoca-cli's output for errors and check your "
 											"profile settings for possible errors."));
+
 	g_signal_connect(G_OBJECT(widget), "response", G_CALLBACK(gtk_widget_destroy), NULL);
 	gtk_widget_show(widget);
+
+	// 1 Second. Give Dialog chance to open.
+	usleep(1000 * 1000);
 
 	remmina_plugin_x2go_close_connection(gp);
 }
@@ -333,7 +353,7 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
 			g_free(s_password);
 		}
 	} else  {
-		g_strlcpy(errmsg, "Authentication cancelled.", 512);
+		g_strlcpy(errmsg, "Authentication cancelled. Aborting.", 512);
 		REMMINA_PLUGIN_DEBUG("%s", errmsg);
 		return FALSE;
 	}
@@ -741,7 +761,7 @@ static gpointer remmina_plugin_x2go_main_thread(gpointer data)
 
 	CANCEL_ASYNC
 	if (!remmina_plugin_x2go_main((RemminaProtocolWidget*)data)) {
-		IDLE_ADD((GSourceFunc)remmina_plugin_service->protocol_plugin_signal_connection_closed, data);
+		IDLE_ADD((GSourceFunc) remmina_plugin_x2go_cleanup, data);
 	}
 	return NULL;
 }
