@@ -297,10 +297,10 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
 
 	disablepasswordstoring = remmina_plugin_service->file_get_int(remminafile, "disablepasswordstoring", FALSE);
 	ret = remmina_plugin_service->protocol_plugin_init_auth(gp,
-			(disablepasswordstoring ? 0 : REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD),
-			_("Enter X2Go password"),
-			NULL,
-			remmina_plugin_service->file_get_string(remminafile, "password"),
+			(disablepasswordstoring ? 0 : REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD | REMMINA_MESSAGE_PANEL_FLAG_USERNAME),
+			_("Enter X2Go credentials"),
+			username, // function arg 'username' is default username
+			password, // function arg 'password' is default password
 			NULL,
 			NULL);
 
@@ -317,8 +317,12 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
 			// into remminafile->settings. They will be saved later, on successful connection, by
 			// rcw.c
 
-			remmina_plugin_service->file_set_string(remminafile, "username", s_username);
-			remmina_plugin_service->file_set_string(remminafile, "password", s_password);
+			if (s_password) {
+				remmina_plugin_service->file_set_string(remminafile, "password", s_password);
+			} else {
+				REMMINA_PLUGIN_WARNING("%s", N_("User has requested to save credentials but 'password' "
+												"is not set! Can't set this password to default then."));
+			}
 		}
 		if (s_username) {
 			g_stpcpy(username, s_username);
