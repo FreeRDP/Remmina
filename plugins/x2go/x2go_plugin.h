@@ -40,6 +40,6 @@
 #pragma once
 
 #define PLUGIN_NAME        "X2GO"
-#define PLUGIN_DESCRIPTION "X2Go - Launch an X2Go session"
-#define PLUGIN_VERSION     VERSION      /* Remmina version */
+#define PLUGIN_DESCRIPTION N_("X2Go - Launch an X2Go session")
+#define PLUGIN_VERSION     "2.0.0"
 #define PLUGIN_APPICON     "remmina-x2go"
