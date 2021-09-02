@@ -831,9 +831,6 @@ static const RemminaProtocolSetting remmina_plugin_x2go_basic_settings[] = {
 	/* Tooltip */ N_("In which direction should clipboard content be copied? (default: 'both').") },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,        "dpi",       N_("DPI resolution (int)"),         FALSE, NULL,
 	/* Tooltip */ N_("Launch session with a specific resolution (in dots per inch). Must be between 20 and 400") },
-	// The next two have no effect (yet). Commenting them out.
-	//{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,      "showcursor", N_("Use local cursor"),             FALSE, NULL, NULL },
-	//{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,      "once",       N_("Disconnect after one session"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
 };
 
