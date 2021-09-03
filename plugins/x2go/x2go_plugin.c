@@ -55,14 +55,36 @@
 #include <signal.h>
 #include <time.h>
 
-#define GET_PLUGIN_DATA(gp) (RemminaPluginX2GoData*) g_object_get_data(G_OBJECT(gp), "plugin-data")
+#define GET_PLUGIN_DATA(gp) \
+	(RemminaPluginX2GoData*) g_object_get_data(G_OBJECT(gp), "plugin-data")
 
-#define REMMINA_PLUGIN_INFO(fmt, ...)     remmina_plugin_service->_remmina_info("[%s] " fmt, PLUGIN_NAME, ##__VA_ARGS__)
-#define REMMINA_PLUGIN_MESSAGE(fmt, ...)  remmina_plugin_service->_remmina_message("[%s] " fmt, PLUGIN_NAME, ##__VA_ARGS__)
-#define REMMINA_PLUGIN_DEBUG(fmt, ...)    remmina_plugin_service->_remmina_debug(__func__, "[%s] " fmt, PLUGIN_NAME, ##__VA_ARGS__)
-#define REMMINA_PLUGIN_WARNING(fmt, ...)  remmina_plugin_service->_remmina_warning(__func__, "[%s] " fmt, PLUGIN_NAME, ##__VA_ARGS__)
-#define REMMINA_PLUGIN_ERROR(fmt, ...)    remmina_plugin_service->_remmina_error(__func__, "[%s] " fmt, PLUGIN_NAME, ##__VA_ARGS__)
-#define REMMINA_PLUGIN_CRITICAL(fmt, ...) remmina_plugin_service->_remmina_critical(__func__, "[%s] " fmt, PLUGIN_NAME, ##__VA_ARGS__)
+#define SET_DIALOG_DATA(gp, ddata) \
+	g_object_set_data_full(G_OBJECT(gp), "dialog-data", ddata, g_free);
+
+#define GET_DIALOG_DATA(gp) \
+	(DialogData*) g_object_get_data(G_OBJECT(gp), "dialog-data");
+
+#define REMMINA_PLUGIN_INFO(fmt, ...)\
+	remmina_plugin_service->_remmina_info("[%s] " fmt, PLUGIN_NAME, ##__VA_ARGS__)
+
+#define REMMINA_PLUGIN_MESSAGE(fmt, ...)\
+	remmina_plugin_service->_remmina_message("[%s] " fmt, PLUGIN_NAME, ##__VA_ARGS__)
+
+#define REMMINA_PLUGIN_DEBUG(fmt, ...)\
+	remmina_plugin_service->_remmina_debug(__func__, "[%s] " fmt, \
+										   PLUGIN_NAME, ##__VA_ARGS__)
+
+#define REMMINA_PLUGIN_WARNING(fmt, ...)\
+	remmina_plugin_service->_remmina_warning(__func__, "[%s] " fmt, \
+											 PLUGIN_NAME, ##__VA_ARGS__)
+
+#define REMMINA_PLUGIN_ERROR(fmt, ...)\
+	remmina_plugin_service->_remmina_error(__func__, "[%s] " fmt, \
+										   PLUGIN_NAME, ##__VA_ARGS__)
+
+#define REMMINA_PLUGIN_CRITICAL(fmt, ...)\
+	remmina_plugin_service->_remmina_critical(__func__, "[%s] " fmt, \
+											  PLUGIN_NAME, ##__VA_ARGS__)
 
 #define GET_PLUGIN_STRING(value) \
 		g_strdup(remmina_plugin_service->file_get_string(remminafile, value))
@@ -72,6 +94,94 @@
 		remmina_plugin_service->file_get_int(remminafile, value, default_value)
 #define GET_PLUGIN_BOOLEAN(value) \
 		remmina_plugin_service->file_get_int(remminafile, value, FALSE)
+
+static RemminaPluginService *remmina_plugin_service = NULL;
+
+/**
+ * DialogData:
+ * @flags: see GtkDialogFlags
+ * @type: see GtkMessageType
+ * @buttons: see GtkButtonsType
+ * @title: Title of the Dialog
+ * @message: Message of the Dialog
+ * @callbackfunc: A GCallback function like
+ * 				  callback(RemminaProtocolWidget *gp, GtkWidget *dialog)
+ * 				  which will be executed on the dialogs 'response' signal.
+ *				  The callback function is not obliged to destroy
+ *				  the dialog widget.
+ *
+ * The `DialogData` structure contains all information needed
+ * to open a gtk dialog with remmina_plugin_x2go_open_dialog()
+ *
+ * Quick example of a callback function.
+ * static void remmina_plugin_x2go_test_callback(RemminaProtocolWidget *gp,
+ *											     gint response_id,
+ * 											     GtkDialog *self) {
+ *		REMMINA_PLUGIN_DEBUG("response: %i", response_id);
+ *		if (response_id == GTK_RESPONSE_OK) {
+ *	 		REMMINA_PLUGIN_DEBUG("OK!");
+ * 		}
+ * 		gtk_widget_destroy(self);
+ * }
+ *
+ *
+ */
+
+struct _DialogData {
+  GtkWindow      *parent;
+  GtkDialogFlags flags;
+  GtkMessageType type;
+  GtkButtonsType buttons;
+  gchar          *title;
+  gchar          *message;
+  GCallback      callbackfunc;
+};
+typedef struct _DialogData DialogData;
+
+static void remmina_plugin_x2go_open_dialog(RemminaProtocolWidget *gp) {
+	REMMINA_PLUGIN_DEBUG("Function entry.");
+
+	DialogData *ddata = GET_DIALOG_DATA(gp);
+
+	if (ddata) {
+		// Can't check type, flags or buttons
+		// because they are enums and '0' is a valid value
+		if (!ddata->title || !ddata->message) {
+			REMMINA_PLUGIN_CRITICAL("Broken DialogData! Aborting.");
+			return;
+		}
+	} else {
+		REMMINA_PLUGIN_CRITICAL("Can't retrieve DialogData! Aborting.");
+		return;
+	}
+
+	REMMINA_PLUGIN_DEBUG("DialogData checks passed. Dialog will now be shown.");
+
+	GtkDialog *widget_gtk_dialog;
+	widget_gtk_dialog = gtk_message_dialog_new(ddata->parent,
+											   ddata->flags,
+											   ddata->type,
+											   ddata->buttons,
+											   ddata->title);
+
+	gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG (widget_gtk_dialog),
+											 ddata->message);
+
+	if (ddata->callbackfunc) {
+		g_signal_connect_swapped(G_OBJECT(widget_gtk_dialog),
+					 "response",
+					 G_CALLBACK(ddata->callbackfunc),
+					 gp);
+	} else {
+		g_signal_connect(G_OBJECT(widget_gtk_dialog),
+						"response",
+						G_CALLBACK(gtk_widget_destroy),
+						NULL);
+	}
+
+	gtk_widget_show_all(widget_gtk_dialog);
+	g_free(ddata);
+}
 
 typedef struct _RemminaPluginX2GoData {
 	GtkWidget *socket;
@@ -87,8 +197,6 @@ typedef struct _RemminaPluginX2GoData {
 
 	gboolean disconnected;
 } RemminaPluginX2GoData;
-
-static RemminaPluginService *remmina_plugin_service = NULL;
 
 #define REMMINA_PLUGIN_X2GO_FEATURE_GTKSOCKET 1
 
@@ -262,21 +370,21 @@ static void remmina_plugin_x2go_pyhoca_cli_exited(GPid pid, int status, RemminaP
 		return;
 	}
 
-	REMMINA_PLUGIN_CRITICAL("pyhoca-cli exited unexpectedly. This connection will now be closed.");
+	REMMINA_PLUGIN_CRITICAL("pyhoca-cli exited unexpectedly. "
+							"This connection will now be closed.");
 
-	GtkWidget *widget;
-	widget = gtk_message_dialog_new(NULL,
-									GTK_DIALOG_MODAL,
-									GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
-									_("An error occured."));
-
-	gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG (widget),
-											_("Necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
-											"Please check pyhoca-cli's output for errors and check your "
-											"profile settings for possible errors."));
-
-	g_signal_connect(G_OBJECT(widget), "response", G_CALLBACK(gtk_widget_destroy), NULL);
-	gtk_widget_show(widget);
+	DialogData *ddata = g_new0(DialogData, 1);
+	SET_DIALOG_DATA(gp, ddata);
+	ddata->parent = NULL;
+	ddata->flags = GTK_DIALOG_MODAL;
+	ddata->type = GTK_MESSAGE_INFO;
+	ddata->buttons = GTK_BUTTONS_OK;
+	ddata->title = N_("An error occured.");
+	ddata->message = N_("Necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
+						"Please check pyhoca-cli's output for errors and "
+						"check your profile settings for possible errors.");
+	ddata->callbackfunc = NULL;
+	IDLE_ADD((GSourceFunc) remmina_plugin_x2go_open_dialog, gp);
 
 	// 1 Second. Give Dialog chance to open.
 	usleep(1000 * 1000);
@@ -442,23 +550,31 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
 	g_printf("\n");
 
 	if (!success || error) {
-		REMMINA_PLUGIN_CRITICAL("Failed to start pyhoca-cli: '%s'", error->message);
+		if (!error)
+			error = g_error_new(0, 0, "<error not available>");
 
-		GtkWidget *widget;
-		// FIXME: Seems to crash sometimes? 'Fatal IO error 0 (Erfolg) on X server :0.'
-		widget = gtk_message_dialog_new(NULL,
-										GTK_DIALOG_MODAL,
-										GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
-										_("An error occured while starting a X2Go session."));
+		gchar *error_title = N_("An error occured while "
+						        "starting a X2Go session.");
 
-		gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG (widget),
-												_("Failed to start pyhoca-cli: %s"),
-												error->message);
+		DialogData *ddata = g_new0(DialogData, 1);
+		SET_DIALOG_DATA(gp, ddata);
+		ddata->parent = NULL;
+		ddata->flags = GTK_DIALOG_MODAL;
+		ddata->type = GTK_MESSAGE_INFO;
+		ddata->buttons = GTK_BUTTONS_OK;
+		ddata->title = N_("An error occured while starting a X2Go session.");
+		ddata->message = g_strdup_printf(N_("Failed to start pyhoca-cli (%i): '%s'"),
+										 error->message,
+										 error->code);
+		ddata->callbackfunc = NULL;
+		IDLE_ADD((GSourceFunc) remmina_plugin_x2go_open_dialog, gp);
+
+		g_strlcpy(errmsg, error->message, 512);
+
+		// No need to output here. remmina_plugin_x2go_start_session will do this.
 
 		g_error_free(error);
 
-		g_signal_connect(G_OBJECT(widget), "response", G_CALLBACK(gtk_widget_destroy), NULL);
-		gtk_widget_show(widget);
 		return FALSE;
 	}
 
