@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-08-24 11:40+0000\n"
+"POT-Creation-Date: 2021-09-05 21:04+0000\n"
 "PO-Revision-Date: 2021-08-24 21:08+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/remmina/"
@@ -28,7 +28,7 @@ msgstr ""
 #: src/remmina_protocol_widget.c:1672 src/remmina_protocol_widget.c:1691
 #: src/remmina_file_editor.c:846 src/remmina_file_editor.c:967
 #: src/remmina_ssh_plugin.c:1369 plugins/rdp/rdp_plugin.c:2656
-#: plugins/www/www_plugin.c:877 data/ui/remmina_mpc.glade:236
+#: plugins/www/www_plugin.c:887 data/ui/remmina_mpc.glade:236
 #: data/ui/remmina_preferences.glade:1675 data/ui/remmina_unlock.glade:116
 msgid "Password"
 msgstr "Пароль"
@@ -73,7 +73,7 @@ msgstr "З'єднатися за допомогою SSH з нового терм
 #: src/remmina_sftp_plugin.c:345 src/remmina_message_panel.c:330
 #: src/remmina_file_editor.c:961 src/remmina_ssh_plugin.c:1473
 #: plugins/rdp/rdp_plugin.c:2655 plugins/vnc/vnc_plugin.c:1960
-#: plugins/vnc/vnc_plugin.c:1980 plugins/www/www_plugin.c:876
+#: plugins/vnc/vnc_plugin.c:1980 plugins/www/www_plugin.c:886
 #: data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr "Ім'я користувача"
@@ -323,7 +323,7 @@ msgstr "Надіслати вміст буфера обміну як натис�
 msgid "Turn off scaling to avoid screenshot distortion."
 msgstr "Вимкніть масштабування для запобігання спотворенню знімків екрана."
 
-#: src/rcw.c:2207 plugins/www/www_plugin.c:845
+#: src/rcw.c:2207 plugins/www/www_plugin.c:855
 msgid "Screenshot taken"
 msgstr "Знімок екрана готовий"
 
@@ -1724,8 +1724,8 @@ msgstr "Перепов'язування сканкодів клавіатури"
 #: plugins/rdp/rdp_settings.c:483
 msgid "List of key=value,… pairs to remap scancodes. E.g. 0x56=0x29,0x29=0x56"
 msgstr ""
-"Список записів ключ=значення,… пари для переприв'язування сканкодів. Приклад:"
-" 0x56=0x29,0x29=0x56"
+"Список записів ключ=значення,… пари для переприв'язування сканкодів. "
+"Приклад: 0x56=0x29,0x29=0x56"
 
 #: plugins/rdp/rdp_settings.c:486
 msgid "FreeRDP > 2.3.0 is required to map scancodes"
@@ -2412,7 +2412,7 @@ msgid "It disables CAL and hwId is set to 0"
 msgstr "Вимкне CAL і встановить для hwId значення 0"
 
 #: plugins/rdp/rdp_plugin.c:2722 plugins/spice/spice_plugin.c:694
-#: plugins/vnc/vnc_plugin.c:2005 plugins/www/www_plugin.c:901
+#: plugins/vnc/vnc_plugin.c:2005 plugins/www/www_plugin.c:911
 #: plugins/gvnc/gvnc_plugin.c:858
 msgid "Forget passwords after use"
 msgstr "Забути паролі після використання"
@@ -2697,59 +2697,59 @@ msgstr "Додаток веббраузера Remmina"
 msgid "File downloaded"
 msgstr "Файл отримано"
 
-#: plugins/www/www_plugin.c:571
+#: plugins/www/www_plugin.c:581
 msgid "Enter WWW authentication credentials"
 msgstr "Введіть дані розпізнавання у WWW"
 
-#: plugins/www/www_plugin.c:875
+#: plugins/www/www_plugin.c:885
 msgid "URL"
 msgstr "Адреса"
 
-#: plugins/www/www_plugin.c:875
+#: plugins/www/www_plugin.c:885
 msgid "http://address or https://address"
 msgstr "http://адреса або https://адреса"
 
-#: plugins/www/www_plugin.c:892
+#: plugins/www/www_plugin.c:902
 msgid "User agent"
 msgstr "Агент користувача"
 
-#: plugins/www/www_plugin.c:893
+#: plugins/www/www_plugin.c:903
 msgid "Proxy URL"
 msgstr "Адреса проксі"
 
-#: plugins/www/www_plugin.c:893
+#: plugins/www/www_plugin.c:903
 msgid "E.g. https://example.org, socks://mysocks:1080"
 msgstr "Приклад: https://example.org, socks://mysocks:1080"
 
-#: plugins/www/www_plugin.c:894
+#: plugins/www/www_plugin.c:904
 msgid "Turn on Java support"
 msgstr "Увімкнути підтримку Java"
 
-#: plugins/www/www_plugin.c:895
+#: plugins/www/www_plugin.c:905
 msgid "Turn on smooth scrolling"
 msgstr "Увімкнути плавне гортання"
 
-#: plugins/www/www_plugin.c:896
+#: plugins/www/www_plugin.c:906
 msgid "Turn on spatial navigation"
 msgstr "Увімкнути просторову навігацію"
 
-#: plugins/www/www_plugin.c:897
+#: plugins/www/www_plugin.c:907
 msgid "Turn on plugin support"
 msgstr "Увімкнути підтримку додатків"
 
-#: plugins/www/www_plugin.c:898
+#: plugins/www/www_plugin.c:908
 msgid "Turn on WebGL support"
 msgstr "Увімкнути підтримку WebGL"
 
-#: plugins/www/www_plugin.c:899
+#: plugins/www/www_plugin.c:909
 msgid "Turn on HTML5 audio support"
 msgstr "Увімкнути підтримку HTML5-аудіо"
 
-#: plugins/www/www_plugin.c:900
+#: plugins/www/www_plugin.c:910
 msgid "Ignore TLS errors"
 msgstr "Ігнорувати помилки TLS"
 
-#: plugins/www/www_plugin.c:903
+#: plugins/www/www_plugin.c:913
 msgid "Turn on Web Inspector"
 msgstr "Увімкнути Web-інспектор"
 

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-08-24 11:40+0000\n"
+"POT-Creation-Date: 2021-09-05 21:04+0000\n"
 "PO-Revision-Date: 2021-08-24 21:07+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Malay <https://hosted.weblate.org/projects/remmina/remmina/ms/"
@@ -27,7 +27,7 @@ msgstr ""
 #: src/remmina_protocol_widget.c:1672 src/remmina_protocol_widget.c:1691
 #: src/remmina_file_editor.c:846 src/remmina_file_editor.c:967
 #: src/remmina_ssh_plugin.c:1369 plugins/rdp/rdp_plugin.c:2656
-#: plugins/www/www_plugin.c:877 data/ui/remmina_mpc.glade:236
+#: plugins/www/www_plugin.c:887 data/ui/remmina_mpc.glade:236
 #: data/ui/remmina_preferences.glade:1675 data/ui/remmina_unlock.glade:116
 msgid "Password"
 msgstr "Kata laluan"
@@ -77,7 +77,7 @@ msgstr "Sambung melalui SSH dari terminal baru"
 #: src/remmina_sftp_plugin.c:345 src/remmina_message_panel.c:330
 #: src/remmina_file_editor.c:961 src/remmina_ssh_plugin.c:1473
 #: plugins/rdp/rdp_plugin.c:2655 plugins/vnc/vnc_plugin.c:1960
-#: plugins/vnc/vnc_plugin.c:1980 plugins/www/www_plugin.c:876
+#: plugins/vnc/vnc_plugin.c:1980 plugins/www/www_plugin.c:886
 #: data/ui/remmina_mpc.glade:144
 #, fuzzy
 msgid "Username"
@@ -360,7 +360,7 @@ msgstr "Hantar kandungan papan klip sebagai ketukan kekunci"
 msgid "Turn off scaling to avoid screenshot distortion."
 msgstr "Matikan penskalaan untuk mengelakkan penyelewengan tangkapan skrin."
 
-#: src/rcw.c:2207 plugins/www/www_plugin.c:845
+#: src/rcw.c:2207 plugins/www/www_plugin.c:855
 #, fuzzy
 msgid "Screenshot taken"
 msgstr "Petikan skrin diambil"
@@ -677,9 +677,9 @@ msgstr ""
 "Untuk mengemaskini nama pengguna dan kata laluan dan menetapkan mod resolusi "
 "lain bagi profil sambungan Remmina, gunakan:\n"
 "\n"
-"echo \"username\\n"
-"apassword\" | remmina --update-profile /PATH/TO/FOO.remmina --set-option "
-"username --set-option resolution_mode=2 --set-option kata laluan\n"
+"echo \"username\\napassword\" | remmina --update-profile /PATH/TO/FOO."
+"remmina --set-option username --set-option resolution_mode=2 --set-option "
+"kata laluan\n"
 
 #: src/remmina_public.c:345
 #, fuzzy, c-format
@@ -2379,7 +2379,8 @@ msgstr "Sokongan tetikus sebelah kiri"
 #: plugins/rdp/rdp_plugin.c:2659
 #, fuzzy
 msgid "Swap left and right mouse buttons for left-handed mouse support"
-msgstr "Tukar butang kiri dan kanan tetikus untuk sokongan tetikus sebelah kiri"
+msgstr ""
+"Tukar butang kiri dan kanan tetikus untuk sokongan tetikus sebelah kiri"
 
 #: plugins/rdp/rdp_plugin.c:2661
 #, fuzzy
@@ -2630,7 +2631,7 @@ msgid "It disables CAL and hwId is set to 0"
 msgstr "Ia melumpuhkan CAL dan hwId ditetapkan kepada 0"
 
 #: plugins/rdp/rdp_plugin.c:2722 plugins/spice/spice_plugin.c:694
-#: plugins/vnc/vnc_plugin.c:2005 plugins/www/www_plugin.c:901
+#: plugins/vnc/vnc_plugin.c:2005 plugins/www/www_plugin.c:911
 #: plugins/gvnc/gvnc_plugin.c:858
 msgid "Forget passwords after use"
 msgstr "Kata laluan %s"
@@ -2949,71 +2950,71 @@ msgstr "Plugin pelayar-web Remmina"
 msgid "File downloaded"
 msgstr "Fail dimuat turun"
 
-#: plugins/www/www_plugin.c:571
+#: plugins/www/www_plugin.c:581
 #, fuzzy
 msgid "Enter WWW authentication credentials"
 msgstr "Masukkan kelayakan pengesahan WWW"
 
-#: plugins/www/www_plugin.c:875
+#: plugins/www/www_plugin.c:885
 #, fuzzy
 msgid "URL"
 msgstr "URL"
 
-#: plugins/www/www_plugin.c:875
+#: plugins/www/www_plugin.c:885
 #, fuzzy
 msgid "http://address or https://address"
 msgstr "http://address atau https://address"
 
-#: plugins/www/www_plugin.c:892
+#: plugins/www/www_plugin.c:902
 #, fuzzy
 msgid "User agent"
 msgstr "User Agent"
 
-#: plugins/www/www_plugin.c:893
+#: plugins/www/www_plugin.c:903
 #, fuzzy
 msgid "Proxy URL"
 msgstr "URL proksi"
 
-#: plugins/www/www_plugin.c:893
+#: plugins/www/www_plugin.c:903
 #, fuzzy
 msgid "E.g. https://example.org, socks://mysocks:1080"
 msgstr "Contohnya https://example.org, socks://mysocks:1080"
 
-#: plugins/www/www_plugin.c:894
+#: plugins/www/www_plugin.c:904
 #, fuzzy
 msgid "Turn on Java support"
 msgstr "Hidupkan sokongan Java"
 
-#: plugins/www/www_plugin.c:895
+#: plugins/www/www_plugin.c:905
 msgid "Turn on smooth scrolling"
 msgstr "Pelicinan fon"
 
-#: plugins/www/www_plugin.c:896
+#: plugins/www/www_plugin.c:906
 #, fuzzy
 msgid "Turn on spatial navigation"
 msgstr "Hidupkan navigasi spatial"
 
-#: plugins/www/www_plugin.c:897
+#: plugins/www/www_plugin.c:907
 #, fuzzy
 msgid "Turn on plugin support"
 msgstr "Hidupkan sokongan pemalam"
 
-#: plugins/www/www_plugin.c:898
+#: plugins/www/www_plugin.c:908
 #, fuzzy
 msgid "Turn on WebGL support"
 msgstr "Hidupkan sokongan WebGL"
 
-#: plugins/www/www_plugin.c:899
+#: plugins/www/www_plugin.c:909
 #, fuzzy
 msgid "Turn on HTML5 audio support"
 msgstr "Hidupkan sokongan audio HTML5"
 
-#: plugins/www/www_plugin.c:900
+#: plugins/www/www_plugin.c:910
 #, fuzzy
 msgid "Ignore TLS errors"
 msgstr "Abai ralat TLS"
 
-#: plugins/www/www_plugin.c:903
+#: plugins/www/www_plugin.c:913
 #, fuzzy
 msgid "Turn on Web Inspector"
 msgstr "Pasang Inspektor Web"
@@ -3476,8 +3477,8 @@ msgid ""
 "\">anonymous</a></b> statistics. (*)"
 msgstr ""
 "Hantar <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-"remmina__stats_8c.html#details\" title=\"Remmina usage statistics\""
-">anonymous</a></b> statistik. (*)"
+"remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
+"\">anonymous</a></b> statistik. (*)"
 
 #: data/ui/remmina_news.glade:142 data/ui/remmina_news.glade:195
 #, fuzzy
@@ -3505,8 +3506,8 @@ msgid ""
 "Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
 "\">remmina.org</a> (*)"
 msgstr ""
-"Ambil berita dari <a href=\"https://remmina.org\" title=\"Remmina news site\""
-">remmina.org</a> (*)"
+"Ambil berita dari <a href=\"https://remmina.org\" title=\"Remmina news site"
+"\">remmina.org</a> (*)"
 
 #: data/ui/remmina_news.glade:208 data/ui/remmina_preferences.glade:446
 #, fuzzy

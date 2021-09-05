@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-08-24 11:40+0000\n"
+"POT-Creation-Date: 2021-09-05 21:04+0000\n"
 "PO-Revision-Date: 2021-08-28 17:34+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Kazakh <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -24,7 +24,7 @@ msgstr ""
 #: src/remmina_protocol_widget.c:1672 src/remmina_protocol_widget.c:1691
 #: src/remmina_file_editor.c:846 src/remmina_file_editor.c:967
 #: src/remmina_ssh_plugin.c:1369 plugins/rdp/rdp_plugin.c:2656
-#: plugins/www/www_plugin.c:877 data/ui/remmina_mpc.glade:236
+#: plugins/www/www_plugin.c:887 data/ui/remmina_mpc.glade:236
 #: data/ui/remmina_preferences.glade:1675 data/ui/remmina_unlock.glade:116
 msgid "Password"
 msgstr "Құпия сөз"
@@ -76,7 +76,7 @@ msgstr "Жаңа терминалдан SSH арқылы қосылу"
 #: src/remmina_sftp_plugin.c:345 src/remmina_message_panel.c:330
 #: src/remmina_file_editor.c:961 src/remmina_ssh_plugin.c:1473
 #: plugins/rdp/rdp_plugin.c:2655 plugins/vnc/vnc_plugin.c:1960
-#: plugins/vnc/vnc_plugin.c:1980 plugins/www/www_plugin.c:876
+#: plugins/vnc/vnc_plugin.c:1980 plugins/www/www_plugin.c:886
 #: data/ui/remmina_mpc.glade:144
 #, fuzzy
 msgid "Username"
@@ -373,7 +373,7 @@ msgstr "Алмасу буферінің мазмұнын пернелер тір
 msgid "Turn off scaling to avoid screenshot distortion."
 msgstr "Скриншоттың бұрмалануын болдырмау үшін масштабтауды өшіру."
 
-#: src/rcw.c:2207 plugins/www/www_plugin.c:845
+#: src/rcw.c:2207 plugins/www/www_plugin.c:855
 #, fuzzy
 msgid "Screenshot taken"
 msgstr "Скриншот түсірілді"
@@ -690,9 +690,9 @@ msgstr ""
 "Пайдаланушы аты мен құпия сөзді жаңарту және Remmina қосылым профилінің "
 "басқа ажыратымдылық режимін орнату үшін мынаны пайдаланыңыз:\n"
 "\n"
-"жаңғырық «пайдаланушы аты\\напассөз» | remmina --update-профиль /PATH/TO/"
-"FOO.remmina --set-option пайдаланушы аты --set-option resolution_mode=2 "
-"--set-option құпия сөзі\n"
+"жаңғырық «пайдаланушы аты\\напассөз» | remmina --update-профиль /PATH/TO/FOO."
+"remmina --set-option пайдаланушы аты --set-option resolution_mode=2 --set-"
+"option құпия сөзі\n"
 
 #: src/remmina_public.c:345
 #, fuzzy, c-format
@@ -1001,7 +1001,8 @@ msgstr "SSH құпия сөзімен аутентификациялау мүм�
 #: src/remmina_ssh.c:322 src/remmina_ssh.c:389
 #, fuzzy
 msgid "No saved SSH passphrase supplied. Asking user to enter it."
-msgstr "Сақталған SSH паролі жеткізілмеді. Пайдаланушыдан оны енгізуді сұраңыз."
+msgstr ""
+"Сақталған SSH паролі жеткізілмеді. Пайдаланушыдан оны енгізуді сұраңыз."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:327 src/remmina_ssh.c:368 src/remmina_ssh.c:394
@@ -2165,8 +2166,8 @@ msgid ""
 "The Remote Desktop Gateway “%s” denied the user “%s\\%s” access due to "
 "policy."
 msgstr ""
-"Қашықтағы жұмыс үстелі шлюзі \"%s\" саясатқа байланысты пайдаланушыға \"%s\\%"
-"s\" қатынасудан бас тартты."
+"Қашықтағы жұмыс үстелі шлюзі \"%s\" саясатқа байланысты пайдаланушыға \"%s\\"
+"%s\" қатынасудан бас тартты."
 
 #: plugins/rdp/rdp_plugin.c:2152
 #, c-format
@@ -2717,7 +2718,7 @@ msgid "It disables CAL and hwId is set to 0"
 msgstr "CAL және hwId өшіреді 0"
 
 #: plugins/rdp/rdp_plugin.c:2722 plugins/spice/spice_plugin.c:694
-#: plugins/vnc/vnc_plugin.c:2005 plugins/www/www_plugin.c:901
+#: plugins/vnc/vnc_plugin.c:2005 plugins/www/www_plugin.c:911
 #: plugins/gvnc/gvnc_plugin.c:858
 msgid "Forget passwords after use"
 msgstr "%s құпия сөзі"
@@ -3053,72 +3054,72 @@ msgstr "Remmina веб-браузер плагин модулі"
 msgid "File downloaded"
 msgstr "Жүктелетін файл"
 
-#: plugins/www/www_plugin.c:571
+#: plugins/www/www_plugin.c:581
 #, fuzzy
 msgid "Enter WWW authentication credentials"
 msgstr "WWW аутентификация тіркелгі деректерін енгізу"
 
-#: plugins/www/www_plugin.c:875
+#: plugins/www/www_plugin.c:885
 #, fuzzy
 msgid "URL"
 msgstr "URL-dar"
 
-#: plugins/www/www_plugin.c:875
+#: plugins/www/www_plugin.c:885
 #, fuzzy
 msgid "http://address or https://address"
 msgstr "http://address немесе https://address"
 
-#: plugins/www/www_plugin.c:892
+#: plugins/www/www_plugin.c:902
 #, fuzzy
 msgid "User agent"
 msgstr "Paıdalanýshy agenti"
 
-#: plugins/www/www_plugin.c:893
+#: plugins/www/www_plugin.c:903
 #, fuzzy
 msgid "Proxy URL"
 msgstr "Прокси URL"
 
-#: plugins/www/www_plugin.c:893
+#: plugins/www/www_plugin.c:903
 #, fuzzy
 msgid "E.g. https://example.org, socks://mysocks:1080"
 msgstr "Мысалы, https://example.org, socks://mysocks:1080"
 
-#: plugins/www/www_plugin.c:894
+#: plugins/www/www_plugin.c:904
 #, fuzzy
 msgid "Turn on Java support"
 msgstr "Java қолдауын қосу"
 
-#: plugins/www/www_plugin.c:895
+#: plugins/www/www_plugin.c:905
 #, fuzzy
 msgid "Turn on smooth scrolling"
 msgstr "Тегіс айналдыруды қосу"
 
-#: plugins/www/www_plugin.c:896
+#: plugins/www/www_plugin.c:906
 #, fuzzy
 msgid "Turn on spatial navigation"
 msgstr "Кеңістіктегі шарлауды қосу"
 
-#: plugins/www/www_plugin.c:897
+#: plugins/www/www_plugin.c:907
 #, fuzzy
 msgid "Turn on plugin support"
 msgstr "Плагин модулінің қолдауын қосу"
 
-#: plugins/www/www_plugin.c:898
+#: plugins/www/www_plugin.c:908
 #, fuzzy
 msgid "Turn on WebGL support"
 msgstr "WebGL қолдауын қосу"
 
-#: plugins/www/www_plugin.c:899
+#: plugins/www/www_plugin.c:909
 #, fuzzy
 msgid "Turn on HTML5 audio support"
 msgstr "HTML5 дыбыстық қолдауын қосу"
 
-#: plugins/www/www_plugin.c:900
+#: plugins/www/www_plugin.c:910
 #, fuzzy
 msgid "Ignore TLS errors"
 msgstr "TLS қателерін елемеу"
 
-#: plugins/www/www_plugin.c:903
+#: plugins/www/www_plugin.c:913
 #, fuzzy
 msgid "Turn on Web Inspector"
 msgstr "Веб-инспекторды қосу"
@@ -3570,8 +3571,8 @@ msgstr ""
 "\n"
 "<span>\n"
 "<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
-"release notes\"> <i> Шығарылым жазбаларын оқу үшін веб-сайтқа "
-"кіріңіз</i></a>.\n"
+"release notes\"> <i> Шығарылым жазбаларын оқу үшін веб-сайтқа кіріңіз</i></"
+"a>.\n"
 "</span>"
 
 #. The star (*) is a reference to privacy consent
@@ -3582,9 +3583,9 @@ msgid ""
 "remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
 "\">anonymous</a></b> statistics. (*)"
 msgstr ""
-"<b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/remmina__stats_8c"
-".html#details\" title=\"Remmina usage statistics\">анонимді</a></b> "
-"статистикалық деректерді жіберіңіз. (*)"
+"<b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
+"remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
+"\">анонимді</a></b> статистикалық деректерді жіберіңіз. (*)"
 
 #: data/ui/remmina_news.glade:142 data/ui/remmina_news.glade:195
 #, fuzzy
@@ -3951,7 +3952,8 @@ msgstr ""
 #: data/ui/remmina_preferences.glade:397
 #, fuzzy
 msgid "Only save generated screenshots, don't copy them to clipboard."
-msgstr "Тек жасалған скриншоттарды сақтаңыз, оларды алмасу буферіне көшірмеңіз."
+msgstr ""
+"Тек жасалған скриншоттарды сақтаңыз, оларды алмасу буферіне көшірмеңіз."
 
 #: data/ui/remmina_preferences.glade:402
 #, fuzzy
