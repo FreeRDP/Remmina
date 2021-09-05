@@ -518,15 +518,25 @@ static void remmina_plugin_www_init(RemminaProtocolWidget *gp)
 	}
 
 	if (remmina_plugin_service->file_get_int(remminafile, "ignore-tls-errors", FALSE)) {
-		webkit_website_data_manager_set_tls_errors_policy
-			(gpdata->data_mgr, WEBKIT_TLS_ERRORS_POLICY_IGNORE);
+#if WEBKIT_CHECK_VERSION(2, 32, 0)
+		webkit_website_data_manager_set_tls_errors_policy(
+			gpdata->data_mgr, WEBKIT_TLS_ERRORS_POLICY_IGNORE);
+#else
+		webkit_web_context_set_tls_errors_policy(
+			gpdata->context, WEBKIT_TLS_ERRORS_POLICY_IGNORE);
+#endif
 		g_info("Ignore TLS errors");
 	}
 	if (remmina_plugin_service->file_get_string(remminafile, "proxy-url")) {
 		gchar *proxyurl = g_strdup(remmina_plugin_service->file_get_string(remminafile, "proxy-url"));
 		WebKitNetworkProxySettings *proxy_settings = webkit_network_proxy_settings_new (proxyurl, NULL);
-		webkit_website_data_manager_set_network_proxy_settings
-			(gpdata->data_mgr, WEBKIT_NETWORK_PROXY_MODE_CUSTOM, proxy_settings);
+#if WEBKIT_CHECK_VERSION(2, 32, 0)
+		webkit_website_data_manager_set_network_proxy_settings(
+			gpdata->data_mgr, WEBKIT_NETWORK_PROXY_MODE_CUSTOM, proxy_settings);
+#else
+		webkit_web_context_set_network_proxy_settings(
+				gpdata->context, WEBKIT_NETWORK_PROXY_MODE_CUSTOM,proxy_settings);
+#endif
 		webkit_network_proxy_settings_free(proxy_settings);
 		g_free(proxyurl);
 	}
