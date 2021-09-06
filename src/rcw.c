@@ -2187,16 +2187,16 @@ static void rcw_toolbar_screenshot(GtkToolItem *toggle, RemminaConnectionWindow 
 					 remmina_file_get_string(cnnobj->remmina_file, "server"));
 	remmina_utils_string_replace_all(pngstr, "%Y",
 					 g_strdup_printf("%d", g_date_time_get_year(date)));
-	remmina_utils_string_replace_all(pngstr, "%m", g_strdup_printf("%d",
+	remmina_utils_string_replace_all(pngstr, "%m", g_strdup_printf("%02d",
 								       g_date_time_get_month(date)));
 	remmina_utils_string_replace_all(pngstr, "%d",
-					 g_strdup_printf("%d", g_date_time_get_day_of_month(date)));
+					 g_strdup_printf("%02d", g_date_time_get_day_of_month(date)));
 	remmina_utils_string_replace_all(pngstr, "%H",
-					 g_strdup_printf("%d", g_date_time_get_hour(date)));
+					 g_strdup_printf("%02d", g_date_time_get_hour(date)));
 	remmina_utils_string_replace_all(pngstr, "%M",
-					 g_strdup_printf("%d", g_date_time_get_minute(date)));
+					 g_strdup_printf("%02d", g_date_time_get_minute(date)));
 	remmina_utils_string_replace_all(pngstr, "%S",
-					 g_strdup_printf("%d", g_date_time_get_second(date)));
+					 g_strdup_printf("%02d", g_date_time_get_second(date)));
 	g_date_time_unref(date);
 	pngname = g_string_free(pngstr, FALSE);
 
