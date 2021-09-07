@@ -55,6 +55,13 @@
 #include <signal.h>
 #include <time.h>
 
+#define FEATURE_AVAILABLE(gpdata, feature) \
+	gpdata->available_features ? \
+						(g_list_find_custom(gpdata->available_features, \
+											feature, \
+											remmina_plugin_x2go_safe_strcmp) \
+											? TRUE : FALSE) : FALSE
+
 #define GET_PLUGIN_DATA(gp) \
 	(RemminaPluginX2GoData*) g_object_get_data(G_OBJECT(gp), "plugin-data")
 
@@ -96,6 +103,15 @@
 		remmina_plugin_service->file_get_int(remminafile, value, FALSE)
 
 static RemminaPluginService *remmina_plugin_service = NULL;
+
+// Wrapper for strcmp which doesn't throw an exception when 'a' or 'b' are a nullpointer.
+static gint remmina_plugin_x2go_safe_strcmp(gconstpointer a, gconstpointer b) {
+	if (a && b) {
+		return strcmp(a, b);
+	}
+
+	return -1;
+}
 
 /**
  * DialogData:
@@ -196,6 +212,8 @@ typedef struct _RemminaPluginX2GoData {
 	GPid pidx2go;
 
 	gboolean disconnected;
+
+	GList* available_features;
 } RemminaPluginX2GoData;
 
 #define REMMINA_PLUGIN_X2GO_FEATURE_GTKSOCKET 1
@@ -392,6 +410,88 @@ static void remmina_plugin_x2go_pyhoca_cli_exited(GPid pid, int status, RemminaP
 	remmina_plugin_x2go_close_connection(gp);
 }
 
+// Returns either all features separated with a '\n' or NULL if it failed.
+static gchar* remmina_plugin_x2go_get_pyhoca_features() {
+	REMMINA_PLUGIN_DEBUG("Function entry.");
+
+	// We will now start pyhoca-cli with only the '--list-cmdline-features' option
+	// and depending on the exit code and stdout output we will determine if some features
+	// are available or not.
+	gchar *argv[50];
+	gint argc = 0;
+	GError *error = NULL;
+	gint exit_code = 0;
+	gchar *standard_out;
+	// just supresses pyhoca-cli help message. (When pyhoca-cli has old version)
+	gchar *standard_err;
+
+	argv[argc++] = g_strdup("pyhoca-cli");
+	argv[argc++] = g_strdup("--list-cmdline-features");
+	argv[argc++] = NULL;
+
+	gchar **envp = g_get_environ();
+	gboolean success_ret = g_spawn_sync (NULL, argv, envp, G_SPAWN_SEARCH_PATH,
+									     NULL, NULL, &standard_out, &standard_err,
+										 &exit_code, &error);
+
+	if (!success_ret || error || strcmp(standard_out, "") == 0 || exit_code) {
+		if (!error) {
+			REMMINA_PLUGIN_WARNING("%s",
+						g_strdup_printf(_("An unknown error happened while retrieving "
+										  "pyhoca-cli's cmdline features! "
+								          "Exit code: %i"), exit_code));
+		} else {
+			REMMINA_PLUGIN_WARNING("%s",
+								   g_strdup_printf(_("Error: '%s'"), error->message));
+			g_error_free(error);
+		}
+
+		return NULL;
+	}
+
+	return standard_out;
+}
+
+// Returns a string (gchar*) array (gchar**) of all available features
+// if the parse was sucessfull. If not NULL gets returned and size == 0;
+static gchar** remmina_plugin_x2go_parse_pyhoca_features(gchar* features_string,
+												         uint32_t *size) {
+    REMMINA_PLUGIN_DEBUG("Function entry.");
+	char delim[] = "\n";
+
+	// Counts the occurence of '\n', so the number of features passed.
+	int i = 0;
+	// work on a copy of the string, because strchr alters the string.
+	char *pch = strchr(g_strdup(features_string), '\n');
+	while (pch != NULL) {
+		i++;
+		pch = strchr(pch+1, '\n');
+	}
+
+	if (i <= 0) {
+		// Something went wrong, there can't be 0 features.
+		return NULL;
+		*size = 0;
+	}
+
+	gchar **feature_list = NULL;
+	// 50 characters per feature should do the trick, right?
+	feature_list = malloc(sizeof(char) * i * 50);
+	*size = i;
+
+	// Split 'features_string' into array 'feature_list' using 'delim' as delimiter.
+	char *ptr = strtok(g_strdup(features_string), delim);
+	for(gint j = 0; (j < i && ptr != NULL); j++) {
+		// Add feature to list
+		feature_list[j] = g_strdup_printf(ptr);
+
+		// Get next feature
+		ptr = strtok(NULL, delim);
+	}
+
+	return feature_list;
+}
+
 static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
                                               gint sshport,
                                               gchar *username,
@@ -514,16 +614,12 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
 		argv[argc++] = g_strdup("--sound");
 		argv[argc++] = g_strdup("none");
 	}
-	if (clipboard) {
+	if (clipboard && FEATURE_AVAILABLE(gpdata, "CLIPBOARD_MODE")) {
 		argv[argc++] = g_strdup("--clipboard-mode");
 		argv[argc++] = g_strdup_printf ("%s", clipboard);
-	} else {
-		// Assuming an error in configuration.
-		// we want clipboard support most of the time.
-		argv[argc++] = g_strdup("--clipboard");
-		argv[argc++] = g_strdup("both");
 	}
-	if (dpi) {
+
+	if (dpi && FEATURE_AVAILABLE(gpdata, "DPI")) {
 		argv[argc++] = g_strdup("--dpi");
 		argv[argc++] = g_strdup_printf ("%i", dpi);
 	}
@@ -590,6 +686,76 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
 	return TRUE;
 }
 
+// Returns a GList* with all features which pyhoca-cli had before even
+// implementing the feature system. (It can't change since its an old version)
+static GList* remmina_plugin_x2go_old_pyhoca_features() {
+	REMMINA_PLUGIN_DEBUG("Function entry.");
+
+	#define AMOUNT_FEATURES 43
+	gchar* features[AMOUNT_FEATURES] = {
+		"ADD_TO_KNOWN_HOSTS", "AUTH_ATTEMPTS", "BROKER_PASSWORD", "BROKER_URL",
+		"CLEAN_SESSIONS", "COMMAND", "DEBUG", "FORCE_PASSWORD",	"FORWARD_SSHAGENT",
+		"GEOMETRY", "KBD_LAYOUT", "KBD_TYPE", "LIBDEBUG", "LIBDEBUG_SFTPXFER", "LINK",
+		"LIST_CLIENT_FEATURES", "LIST_DESKTOPS", "LIST_SESSIONS", "NEW", "PACK",
+		"PASSWORD", "PDFVIEW_CMD", "PRINTER", "PRINTING", "PRINT_ACTION", "PRINT_CMD",
+		"QUIET", "REMOTE_SSH_PORT",	"RESUME", "SAVE_TO_FOLDER",	"SESSION_PROFILE",
+		"SESSION_TYPE", "SHARE_DESKTOP", "SHARE_LOCAL_FOLDERS", "SHARE_MODE", "SOUND",
+		"SSH_PRIVKEY", "SUSPEND", "TERMINATE", "TERMINATE_ON_CTRL_C", "TRY_RESUME",
+		"USERNAME", "XINERAMA"
+	};
+
+	GList *features_list = NULL;
+	for (int i = 0; i < AMOUNT_FEATURES; i++) {
+		features_list = g_list_append(features_list, features[i]);
+	}
+	return features_list;
+}
+
+// Returns a GList* which includes all features we *can* use.
+static GList* remmina_plugin_x2go_populate_available_features_list() {
+	REMMINA_PLUGIN_DEBUG("Function entry.");
+
+	GList* returning_glist = NULL;
+
+	// Querying pyhoca-cli's command line features.
+	gchar* features_string = remmina_plugin_x2go_get_pyhoca_features();
+
+	if (!features_string) {
+		// We added the '--list-cmdline-features' on commit 17d1be1319ba6 of
+		// pyhoca-cli. In order to protect setups which don't have the newest
+		// version of pyhoca-cli available yet we artificially create a list
+		// of an old limited set of features.
+
+		REMMINA_PLUGIN_WARNING("%s", _("Couldn't get pyhoca-cli's cmdline-features. This "
+							   "indicates that either your pyhoca-cli version is too old "
+							   "or pyhoca-cli is not installed! An old limited set of "
+							   "features will be used now."));
+
+		return remmina_plugin_x2go_old_pyhoca_features();
+	} else {
+		uint32_t features_size = 0;
+		gchar **features = NULL;
+		features = remmina_plugin_x2go_parse_pyhoca_features(features_string,
+															 &features_size);
+		if (features == NULL && features_size > 0) {
+			gchar *error_msg = _("parsing pyhoca-cli features was not possible! "
+							      "Using limited feature set now.");
+			REMMINA_PLUGIN_CRITICAL("%s", error_msg);
+			return remmina_plugin_x2go_old_pyhoca_features();
+		}
+
+		REMMINA_PLUGIN_INFO("%s", _("Successfully retrived "
+									"following pyhoca-cli features:"));
+
+		for(int k = 0; k < features_size; k++) {
+			REMMINA_PLUGIN_INFO("%s", g_strdup_printf(_("Available feature[%i]: '%s'"),
+														k+1, features[k]));
+			returning_glist = g_list_append(returning_glist, features[k]);
+		}
+		return returning_glist;
+	}
+}
+
 static void remmina_plugin_x2go_on_plug_added(GtkSocket *socket, RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
@@ -620,6 +786,12 @@ static void remmina_plugin_x2go_init(RemminaProtocolWidget *gp)
 		/* report this in open_connection, not reportable here... */
 		return;
 	}
+
+	GList* available_features = remmina_plugin_x2go_populate_available_features_list();
+
+	// available_features can't be NULL cause if it fails, it gets populated with an
+	// old standard feature set.
+	gpdata->available_features = available_features;
 
 	gpdata->socket_id = 0;
 	gpdata->thread = 0;
