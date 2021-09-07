@@ -374,7 +374,9 @@ static gboolean remmina_plugin_x2go_close_connection(RemminaProtocolWidget *gp)
 	return TRUE;
 }
 
-static void remmina_plugin_x2go_pyhoca_cli_exited(GPid pid, int status, RemminaProtocolWidget *gp) {
+static void remmina_plugin_x2go_pyhoca_cli_exited(GPid pid,
+												  int status,
+												  struct _RemminaProtocolWidget *gp) {
 	REMMINA_PLUGIN_DEBUG("Function entry.");
 
 	RemminaPluginX2GoData *gpdata = GET_PLUGIN_DATA(gp);
@@ -504,8 +506,7 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
                                               gint dpi,
                                               gchar *resolution,
                                               RemminaProtocolWidget *gp,
-                                              gchar *errmsg)
-{
+                                              gchar *errmsg) {
 	TRACE_CALL(__func__);
 	RemminaPluginX2GoData *gpdata = GET_PLUGIN_DATA(gp);
 	GError *error = NULL;
@@ -518,8 +519,8 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
 	gchar **envp;
 
 	gchar *argv[50];
-	gint argc;
-	gint i;
+	gint argc = 0;
+	gint i = 0;
 
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
@@ -628,9 +629,13 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
 	argv[argc++] = NULL;
 
 	envp = g_get_environ();
-	gboolean success = g_spawn_async (NULL, argv, envp, G_SPAWN_DO_NOT_REAP_CHILD | G_SPAWN_SEARCH_PATH, NULL, NULL, &gpdata->pidx2go, &error);
+	gboolean success = g_spawn_async_with_pipes (NULL, argv, envp,
+												 G_SPAWN_DO_NOT_REAP_CHILD |
+												 G_SPAWN_SEARCH_PATH, NULL,
+												 NULL, &gpdata->pidx2go,
+												 NULL, NULL, NULL, &error);
 
-	REMMINA_PLUGIN_DEBUG("Starting pyhoca-cli with following arguments:");
+	REMMINA_PLUGIN_DEBUG("Started pyhoca-cli with following arguments:");
 	// Print every argument except passwords. Free all arg strings.
 	for (i = 0; i < argc - 1; i++) {
 		if (strcmp(argv[i], "--password") == 0) {
@@ -1056,7 +1061,7 @@ static gpointer remmina_plugin_x2go_main_thread(gpointer data)
 
 	CANCEL_ASYNC
 	if (!remmina_plugin_x2go_main((RemminaProtocolWidget*)data)) {
-		IDLE_ADD((GSourceFunc) remmina_plugin_x2go_cleanup, data);
+		IDLE_ADD((GSourceFunc) remmina_plugin_x2go_cleanup, (RemminaProtocolWidget*) data);
 	}
 	return NULL;
 }
