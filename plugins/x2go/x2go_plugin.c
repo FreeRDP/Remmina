@@ -397,7 +397,7 @@ static void remmina_plugin_x2go_pyhoca_cli_exited(GPid pid,
 	SET_DIALOG_DATA(gp, ddata);
 	ddata->parent = NULL;
 	ddata->flags = GTK_DIALOG_MODAL;
-	ddata->type = GTK_MESSAGE_INFO;
+	ddata->type = GTK_MESSAGE_ERROR;
 	ddata->buttons = GTK_BUTTONS_OK;
 	ddata->title = N_("An error occured.");
 	ddata->message = N_("Necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
@@ -662,7 +662,7 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
 		SET_DIALOG_DATA(gp, ddata);
 		ddata->parent = NULL;
 		ddata->flags = GTK_DIALOG_MODAL;
-		ddata->type = GTK_MESSAGE_INFO;
+		ddata->type = GTK_MESSAGE_ERROR;
 		ddata->buttons = GTK_BUTTONS_OK;
 		ddata->title = N_("An error occured while starting a X2Go session.");
 		ddata->message = g_strdup_printf(N_("Failed to start pyhoca-cli (%i): '%s'"),
