@@ -671,7 +671,7 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
 		ddata->callbackfunc = NULL; // Dialog frees itself, no need for an callbackfunc.
 		IDLE_ADD((GSourceFunc) remmina_plugin_x2go_open_dialog, gp);
 
-		g_strlcpy(errmsg, error->message, 512);
+		g_strlcpy(errmsg, error_title, 512);
 
 		// No need to output here. remmina_plugin_x2go_start_session will do this.
 
