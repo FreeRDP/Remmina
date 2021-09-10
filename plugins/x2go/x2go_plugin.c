@@ -163,11 +163,11 @@ static void remmina_plugin_x2go_open_dialog(RemminaProtocolWidget *gp) {
 		// Can't check type, flags or buttons
 		// because they are enums and '0' is a valid value
 		if (!ddata->title || !ddata->message) {
-			REMMINA_PLUGIN_CRITICAL("Broken DialogData! Aborting.");
+			REMMINA_PLUGIN_CRITICAL("%s", _("Broken DialogData! Aborting."));
 			return;
 		}
 	} else {
-		REMMINA_PLUGIN_CRITICAL("Can't retrieve DialogData! Aborting.");
+		REMMINA_PLUGIN_CRITICAL("%s", _("Can't retrieve DialogData! Aborting."));
 		return;
 	}
 
@@ -388,8 +388,8 @@ static void remmina_plugin_x2go_pyhoca_cli_exited(GPid pid, int status, RemminaP
 		return;
 	}
 
-	REMMINA_PLUGIN_CRITICAL("pyhoca-cli exited unexpectedly. "
-							"This connection will now be closed.");
+	REMMINA_PLUGIN_CRITICAL("%s", _("pyhoca-cli exited unexpectedly. "
+							        "This connection will now be closed."));
 
 	DialogData *ddata = g_new0(DialogData, 1);
 	SET_DIALOG_DATA(gp, ddata);
@@ -401,7 +401,7 @@ static void remmina_plugin_x2go_pyhoca_cli_exited(GPid pid, int status, RemminaP
 	ddata->message = N_("Necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
 						"Please check pyhoca-cli's output for errors and "
 						"check your profile settings for possible errors.");
-	ddata->callbackfunc = NULL;
+	ddata->callbackfunc = NULL; // Dialog frees itself, no need for an callbackfunc.
 	IDLE_ADD((GSourceFunc) remmina_plugin_x2go_open_dialog, gp);
 
 	// 1 Second. Give Dialog chance to open.
@@ -548,8 +548,9 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
 			if (s_password) {
 				remmina_plugin_service->file_set_string(remminafile, "password", s_password);
 			} else {
-				REMMINA_PLUGIN_WARNING("%s", N_("User has requested to save credentials but 'password' "
-												"is not set! Can't set this password to default then."));
+				REMMINA_PLUGIN_WARNING("%s", _("User has requested to save credentials "
+											   "but 'password' is not set! Can't set "
+											   "a new default password then."));
 			}
 		}
 		if (s_username) {
@@ -569,7 +570,7 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
 	argc = 0;
 
 	argv[argc++] = g_strdup("pyhoca-cli");
-	argv[argc++] = g_strdup("--server");
+	argv[argc++] = g_strdup("--server"); // Not listed as feature.
 	argv[argc++] = g_strdup_printf ("%s", host);
 	argv[argc++] = g_strdup("-p");
 	argv[argc++] = g_strdup_printf ("%d", sshport);
@@ -597,7 +598,7 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
 	if (kbdtype) {
 		argv[argc++] = g_strdup("--kbd-type");
 		argv[argc++] = g_strdup_printf ("%s", kbdtype);
-	}else{
+	} else {
 		argv[argc++] = g_strdup("--kbd-type");
 		argv[argc++] = g_strdup("auto");
 	}
@@ -660,9 +661,9 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
 		ddata->buttons = GTK_BUTTONS_OK;
 		ddata->title = N_("An error occured while starting a X2Go session.");
 		ddata->message = g_strdup_printf(N_("Failed to start pyhoca-cli (%i): '%s'"),
-										 error->message,
-										 error->code);
-		ddata->callbackfunc = NULL;
+										 error->code,
+										 error->message);
+		ddata->callbackfunc = NULL; // Dialog frees itself, no need for an callbackfunc.
 		IDLE_ADD((GSourceFunc) remmina_plugin_x2go_open_dialog, gp);
 
 		g_strlcpy(errmsg, error->message, 512);
@@ -681,7 +682,9 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
 	};
 
 	REMMINA_PLUGIN_DEBUG("Watching child pyhoca-cli process now.");
-	g_child_watch_add(gpdata->pidx2go, (GChildWatchFunc) remmina_plugin_x2go_pyhoca_cli_exited, gp);
+	g_child_watch_add(gpdata->pidx2go,
+					  (GChildWatchFunc) remmina_plugin_x2go_pyhoca_cli_exited,
+					  gp);
 
 	return TRUE;
 }
@@ -882,7 +885,7 @@ static gboolean remmina_plugin_x2go_monitor_create_notify(RemminaProtocolWidget 
 
 	CANCEL_DEFER
 
-	REMMINA_PLUGIN_DEBUG("Waiting for X2Go Agent window to appear.");
+	REMMINA_PLUGIN_DEBUG("%s", _("Waiting for X2Go Agent window to appear."));
 
 	gpdata = GET_PLUGIN_DATA(gp);
 	atom = XInternAtom(gpdata->display, "WM_COMMAND", True);
@@ -908,7 +911,8 @@ static gboolean remmina_plugin_x2go_monitor_create_notify(RemminaProtocolWidget 
 			wait_amount--;
 			// Don't spam the console. Print every second though.
 			if (wait_amount % 5 == 0) {
-				REMMINA_PLUGIN_INFO("Waiting for pyhoca-cli to show the session's window.");
+				REMMINA_PLUGIN_INFO("%s", _("Waiting for pyhoca-cli "
+				                            "to show the session's window."));
 			}
 			continue;
 		}
@@ -1072,7 +1076,7 @@ static gboolean remmina_plugin_x2go_open_connection(RemminaProtocolWidget *gp)
 	gpdata->socket_id = gtk_socket_get_id(GTK_SOCKET(gpdata->socket));
 	if (pthread_create(&gpdata->thread, NULL, remmina_plugin_x2go_main_thread, gp)) {
 		remmina_plugin_service->protocol_plugin_set_error(gp,
-		        "Failed to initialize pthread. Falling back to non-thread mode...");
+					"Failed to initialize pthread. Falling back to non-thread mode...");
 		gpdata->thread = 0;
 		return FALSE;
 	} else  {
@@ -1161,7 +1165,7 @@ remmina_plugin_entry(RemminaPluginService *service)
 	pthread_mutex_init(&remmina_x2go_init_mutex, NULL);
 	remmina_x2go_window_id_array = g_array_new(FALSE, TRUE, sizeof(Window));
 
-	REMMINA_PLUGIN_MESSAGE("X2Go plugin loaded.");
+	REMMINA_PLUGIN_MESSAGE("%s", _("X2Go plugin loaded."));
 
 	return TRUE;
 }
