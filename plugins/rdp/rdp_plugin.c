@@ -1897,8 +1897,8 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 					gchar **rot_items;
 					temp_items = g_strsplit(monitorids_string, ",", -1);
 					for (i = 0; i < g_strv_length(temp_items); i++) {
-						rdpMonitor *current = &base[atoi(rot_items[0])];
 						rot_items = g_strsplit(temp_items[i], ":", -1);
+						rdpMonitor *current = &base[atoi(rot_items[0])];
 						if (i == 0)
 							monitorids = g_strdup(rot_items[0]);
 						else
