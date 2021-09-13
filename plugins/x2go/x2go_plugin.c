@@ -923,6 +923,8 @@ static gboolean remmina_plugin_x2go_monitor_create_notify(RemminaProtocolWidget 
 	unsigned long nitems, rest;
 	unsigned char *data = NULL;
 
+	guint16 counter_x11_event_non_createnotify = 0;
+
 	struct timespec ts;
 	// wait_amount * tv_nsec = 20s
 	// 100 * 0.2s = 20s
@@ -965,7 +967,10 @@ static gboolean remmina_plugin_x2go_monitor_create_notify(RemminaProtocolWidget 
 		XNextEvent(gpdata->display, &xev);
 		// Just ignore non CreatNotify events.
 		if (xev.type != CreateNotify) {
-			REMMINA_PLUGIN_DEBUG("Saw an X11 event, but it wasn't CreateNotify.");
+			counter_x11_event_non_createnotify++;
+			if (counter_x11_event_non_createnotify % 5 == 0) {
+				REMMINA_PLUGIN_DEBUG("Saw '%i' X11 events, which weren't CreateNotify.", counter_x11_event_non_createnotify);
+			}
 			continue;
 		}
 
@@ -976,8 +981,10 @@ static gboolean remmina_plugin_x2go_monitor_create_notify(RemminaProtocolWidget 
 			continue;
 		}
 
-		if (data)
+		if (data) {
+			REMMINA_PLUGIN_DEBUG("Saw '%i' X11 events, which weren't CreateNotify.", counter_x11_event_non_createnotify);
 			REMMINA_PLUGIN_DEBUG("Found X11 window with WM_COMMAND set to '%s', window ID is [0x%lx].", (char*)data, w);
+		}
 		if (data && strstr((char*)data, cmd) && remmina_plugin_x2go_try_window_id(w)) {
 			gpdata->window_id = w;
 			agent_window_found = TRUE;
