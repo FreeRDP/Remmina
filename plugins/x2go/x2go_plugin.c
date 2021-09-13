@@ -569,59 +569,99 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
 	}
 
 	argc = 0;
-
 	argv[argc++] = g_strdup("pyhoca-cli");
+
 	argv[argc++] = g_strdup("--server"); // Not listed as feature.
 	argv[argc++] = g_strdup_printf ("%s", host);
-	argv[argc++] = g_strdup("-p");
-	argv[argc++] = g_strdup_printf ("%d", sshport);
-	argv[argc++] = g_strdup("-u");
-	if (!username){
-		argv[argc++] = g_strdup_printf ("%s", g_get_user_name());
-	}else{
-		argv[argc++] = g_strdup_printf ("%s", username);
+
+	if (FEATURE_AVAILABLE(gpdata, "REMOTE_SSH_PORT")) {
+		argv[argc++] = g_strdup("-p");
+		argv[argc++] = g_strdup_printf ("%d", sshport);
 	}
-	if (password) {
+
+	if (FEATURE_AVAILABLE(gpdata, "USERNAME")) {
+		argv[argc++] = g_strdup("-u");
+		if (username){
+			argv[argc++] = g_strdup_printf ("%s", username);
+		} else {
+			argv[argc++] = g_strdup_printf ("%s", g_get_user_name());
+		}
+	}
+
+	if (password && FEATURE_AVAILABLE(gpdata, "PASSWORD")) {
 		argv[argc++] = g_strdup("--force-password");
-		argv[argc++] = g_strdup("--auth-attempts");
-		argv[argc++] = g_strdup_printf ("%i", 0);
 		argv[argc++] = g_strdup("--password");
 		argv[argc++] = g_strdup_printf ("%s", password);
 	}
-	argv[argc++] = g_strdup("-c");
-//  FIXME: pyhoca-cli is picky about multiple quotes around the command string...
-//	argv[argc++] = g_strdup_printf ("%s", g_shell_quote(command));
-	argv[argc++] = g_strdup(command);
-	if (kbdlayout) {
-		argv[argc++] = g_strdup("--kbd-layout");
-		argv[argc++] = g_strdup_printf ("%s", kbdlayout);
+
+	if (FEATURE_AVAILABLE(gpdata, "AUTH_ATTEMPTS")) {
+		argv[argc++] = g_strdup("--auth-attempts");
+		argv[argc++] = g_strdup_printf ("%i", 0);
 	}
-	if (kbdtype) {
-		argv[argc++] = g_strdup("--kbd-type");
-		argv[argc++] = g_strdup_printf ("%s", kbdtype);
-	} else {
-		argv[argc++] = g_strdup("--kbd-type");
-		argv[argc++] = g_strdup("auto");
+
+	if (FEATURE_AVAILABLE(gpdata, "COMMAND")) {
+		argv[argc++] = g_strdup("-c");
+	    //  FIXME: pyhoca-cli is picky about multiple quotes around the command string...
+	    //	argv[argc++] = g_strdup_printf ("%s", g_shell_quote(command));
+		argv[argc++] = g_strdup(command);
 	}
-	if (!resolution)
-		resolution = "800x600";
-	argv[argc++] = g_strdup("-g");
-	argv[argc++] = g_strdup_printf ("%s", resolution);
-	argv[argc++] = g_strdup("--try-resume");
-	argv[argc++] = g_strdup("--terminate-on-ctrl-c");
-	if (audio) {
-		argv[argc++] = g_strdup("--sound");
-		argv[argc++] = g_strdup_printf ("%s", audio);
-	} else {
-		argv[argc++] = g_strdup("--sound");
-		argv[argc++] = g_strdup("none");
+	
+	if (FEATURE_AVAILABLE(gpdata, "KBD_LAYOUT")) {
+		if (kbdlayout) {
+			argv[argc++] = g_strdup("--kbd-layout");
+			argv[argc++] = g_strdup_printf ("%s", kbdlayout);
+		}
 	}
+
+	if (FEATURE_AVAILABLE(gpdata, "KBD_TYPE")) {
+		if (kbdtype) {
+			argv[argc++] = g_strdup("--kbd-type");
+			argv[argc++] = g_strdup_printf ("%s", kbdtype);
+		} else {
+			argv[argc++] = g_strdup("--kbd-type");
+			argv[argc++] = g_strdup("auto");
+		}
+	}
+
+	if (FEATURE_AVAILABLE(gpdata, "GEOMETRY")) {
+		if (!resolution)
+			resolution = "800x600";
+		argv[argc++] = g_strdup("-g");
+		argv[argc++] = g_strdup_printf ("%s", resolution);
+	}
+
+	if (FEATURE_AVAILABLE(gpdata, "TRY_RESUME")) {
+		argv[argc++] = g_strdup("--try-resume");
+	}
+	
+	if (FEATURE_AVAILABLE(gpdata, "TERMINATE_ON_CTRL_C")) {
+		argv[argc++] = g_strdup("--terminate-on-ctrl-c");
+	}
+
+	if (FEATURE_AVAILABLE(gpdata, "SOUND")) {
+		if (audio) {
+			argv[argc++] = g_strdup("--sound");
+			argv[argc++] = g_strdup_printf ("%s", audio);
+		} else {
+			argv[argc++] = g_strdup("--sound");
+			argv[argc++] = g_strdup("none");
+		}
+	}
+
 	if (clipboard && FEATURE_AVAILABLE(gpdata, "CLIPBOARD_MODE")) {
 		argv[argc++] = g_strdup("--clipboard-mode");
 		argv[argc++] = g_strdup_printf ("%s", clipboard);
 	}
 
-	if (dpi && FEATURE_AVAILABLE(gpdata, "DPI")) {
+	if (FEATURE_AVAILABLE(gpdata, "DPI")) {
+		// Values are extracted from pyhoca-cli.
+		if (dpi < 20 || dpi > 400) {
+			g_strlcpy(errmsg, N_("DPI setting is out of bounds. "
+							     "Please adjust in profile settings!"), 512);
+			// No need, start_session() will handle output.
+			//REMMINA_PLUGIN_CRITICAL("%s", errmsg);
+			return FALSE;
+		}
 		argv[argc++] = g_strdup("--dpi");
 		argv[argc++] = g_strdup_printf ("%i", dpi);
 	}
