@@ -1157,24 +1157,47 @@ static const RemminaProtocolFeature remmina_plugin_x2go_features[] =
  * e) Values for REMMINA_PROTOCOL_SETTING_TYPE_SELECT or REMMINA_PROTOCOL_SETTING_TYPE_COMBO
  * f) Setting Tooltip
  */
+
 static const RemminaProtocolSetting remmina_plugin_x2go_basic_settings[] = {
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER,     "server",     NULL,                               FALSE, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,       "username",   N_("User name"),                    FALSE, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD,   "password",   N_("Password"),                     FALSE, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_COMBO,      "command",    N_("Startup program"),              FALSE,
-	/* Options to select (or custom user string) */ "MATE,KDE,XFCE,LXDE,TERMINAL",
-	/* Tooltip */ N_("Which command should be executed after creating the X2Go session?") },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION, "resolution", NULL,                               FALSE, NULL, NULL},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,       "kbdlayout",  N_("Keyboard Layout (auto)"),       FALSE, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,       "kbdtype",    N_("Keyboard type (auto)"),         FALSE, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_COMBO,      "audio",      N_("Audio support"),                FALSE,
-	/* Options to select (or custom user string) */ "pulse,esd,none",
-	/* Tooltip */ N_("X2Go server's sound system (default: 'pulse').") },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_COMBO,      "clipboard",  N_("Clipboard direction"),          FALSE,
-	/* Options to select (or custom user string) */ "none,server,client,both",
-	/* Tooltip */ N_("In which direction should clipboard content be copied? (default: 'both').") },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,        "dpi",       N_("DPI resolution (int)"),         FALSE, NULL,
-	/* Tooltip */ N_("Launch session with a specific resolution (in dots per inch). Must be between 20 and 400") },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER,
+		"server", NULL, FALSE, NULL, NULL
+	},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,
+	    "username", N_("User name"), FALSE, NULL, NULL
+	},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD,
+		"password", N_("Password"), FALSE, NULL, NULL
+	},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_COMBO,
+		"command", N_("Startup program"), FALSE,
+		/* Options to select (or custom user string) */ "MATE,KDE,XFCE,LXDE,TERMINAL",
+		/* Tooltip */ N_("Which command should be executed after creating the X2Go session?")
+	},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION,
+		"resolution", NULL, FALSE, NULL, NULL
+	},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,
+		"kbdlayout", N_("Keyboard Layout (auto)"), FALSE, NULL, NULL
+	},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,
+		"kbdtype", N_("Keyboard type (auto)"), FALSE, NULL, NULL
+	},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_COMBO,
+		"audio", N_("Audio support"), FALSE,
+		/* Options to select (or custom user string) */ "pulse,esd,none",
+		/* Tooltip */ N_("X2Go server's sound system (default: 'pulse').")
+	},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_COMBO,
+		"clipboard", N_("Clipboard direction"), FALSE,
+		/* Options to select (or custom user string) */ "none,server,client,both",
+		/* Tooltip */ N_("In which direction should clipboard content be copied? "
+						 "(default: 'both').")
+	},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,
+		"dpi", N_("DPI resolution (int!)"), FALSE, NULL,
+		/* Tooltip */ N_("Launch session with a specific resolution (in dots per inch). "
+						 "Must be between 20 and 400")
+	},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
 };
 
