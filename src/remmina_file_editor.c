@@ -683,7 +683,7 @@ void remmina_file_editor_number_insert_text_event(GtkEditable *editable, const g
 									              gint length, gint *position, gpointer data)
 {
     for (int i = 0; i < length; i++) {
-        if (!isdigit(text[i])) {
+        if (!isdigit(text[i]) && text[i] != '-') {
             g_signal_stop_emission_by_name(G_OBJECT(editable), "insert-text");
             return;
         }
