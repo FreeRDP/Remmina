@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-09-13 09:35+0000\n"
-"PO-Revision-Date: 2021-08-28 17:34+0000\n"
+"PO-Revision-Date: 2021-09-16 10:37+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
 "remmina/remmina/zh_Hant/>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.8.1-dev\n"
+"X-Generator: Weblate 4.9-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:25+0000\n"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:346
@@ -617,13 +617,13 @@ msgstr "地址对于UNIX的socket_path来说太长了。%s"
 #: src/remmina_public.c:355
 #, fuzzy, c-format
 msgid "Creating UNIX socket failed: %s"
-msgstr "创建UNIX套接字失败。%s"
+msgstr "创建UNIX套接字失败。%s。"
 
 #: src/remmina_public.c:361
 #, fuzzy, c-format
 #| msgid "VNC connection failed: %s"
 msgid "Connecting to UNIX socket failed: %s"
-msgstr "连接到UNIX套接字失败。%s"
+msgstr "连接到UNIX套接字失败。%s。"
 
 #: src/remmina_public.c:631
 msgid "Please enter format 'widthxheight'."
@@ -911,7 +911,7 @@ msgstr "SSH证书不能被复制到私人SSH密钥中。%s"
 #, fuzzy, c-format
 #| msgid "Could not authenticate with SSH password. %s"
 msgid "Could not authenticate using SSH certificate. %s"
-msgstr "无法使用SSH证书进行认证。%s"
+msgstr "无法使用SSH证书进行认证。%s。"
 
 #: src/remmina_ssh.c:369
 msgid "SSH identity file not selected."
@@ -1340,8 +1340,8 @@ msgid ""
 msgstr ""
 "<big>支持的格式\n"
 "- 服务器\n"
-"- server[:port]\n"
-"- username@server[:port] (仅SSH协议)</big> 。"
+"- 服务器[:端口]\n"
+"- username@server[:port] (仅SSH协议)</big>"
 
 #: src/remmina_file_editor.c:149
 msgid "Choose a Remote Desktop Server"
@@ -1841,7 +1841,7 @@ msgstr "输入设备设置"
 #, fuzzy
 #| msgid "Turn on smooth scrolling"
 msgid "Disable smooth scrolling"
-msgstr "禁用平滑捲動"
+msgstr "停用平滑捲動"
 
 #: plugins/rdp/rdp_settings.c:669
 #, fuzzy
@@ -1993,7 +1993,7 @@ msgstr "伺服器 %s 拒絕連線。"
 msgid ""
 "The Remote Desktop Gateway “%s” denied the user “%s\\%s” access due to "
 "policy."
-msgstr "远程桌面网关\"%s\"由于政策原因拒绝用户\"%s/%s\"访问。"
+msgstr "远程桌面网关\"%s\"由于政策原因拒绝用户\"%s\\%s\"访问。"
 
 #: plugins/rdp/rdp_plugin.c:2163
 #, c-format
@@ -2262,18 +2262,20 @@ msgid "Use “Redirect directory” in the advanced tab for multiple directories
 msgstr "对多个目录使用高级标签中的 \"重定向目录\"。"
 
 #: plugins/rdp/rdp_plugin.c:2670
+#, fuzzy
 msgid "Restricted admin mode"
-msgstr ""
+msgstr "限制性管理模式"
 
 #: plugins/rdp/rdp_plugin.c:2671
 #, fuzzy
 #| msgid "Password"
 msgid "Password hash"
-msgstr "密碼"
+msgstr "密码哈希值"
 
 #: plugins/rdp/rdp_plugin.c:2671
+#, fuzzy
 msgid "Restricted admin mode password hash"
-msgstr ""
+msgstr "受限制的管理模式密码哈希"
 
 #: plugins/rdp/rdp_plugin.c:2672
 #, fuzzy
@@ -2911,7 +2913,7 @@ msgstr "不支持的认证类型%u"
 #, fuzzy, c-format
 #| msgid "Authentication type"
 msgid "Authentication failure: %s"
-msgstr "认证失败。%s"
+msgstr "认证失败。%s。"
 
 #: plugins/gvnc/gvnc_plugin.c:820
 #, fuzzy
@@ -3082,7 +3084,7 @@ msgid ""
 "Some Remmina functions need to be set up to work properly.\n"
 "</span>\n"
 msgstr ""
-"<big><b>Remmina Snap package</b></big> 。\n"
+"<big><b>Remmina Snap包</b></big> 。\n"
 "\n"
 "<span>\n"
 "Remmina作为一个Snap包在你的系统上运行。\n"
@@ -3267,7 +3269,7 @@ msgid ""
 "release notes\"><i>Visit the website to read the release notes</i></a>.\n"
 "</span>"
 msgstr ""
-"<big><b>新闻被关闭</b></big>\n"
+"<big><b>新闻被关闭</b></big> 。\n"
 "\n"
 "<span>\n"
 "打开新闻意味着程序会连接到Remmina服务器来下载发行说明。\n"
@@ -3680,7 +3682,7 @@ msgstr "在主視窗隱藏搜尋列"
 #: data/ui/remmina_preferences.glade:719
 #, fuzzy
 msgid "Prefer dark theme"
-msgstr "倾向于深色主题"
+msgstr "使用暗色主題"
 
 #: data/ui/remmina_preferences.glade:723
 #, fuzzy
