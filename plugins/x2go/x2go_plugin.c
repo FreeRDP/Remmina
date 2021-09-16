@@ -241,8 +241,7 @@ struct onMainThread_cb_data {
 	gboolean cancelled;
 };
 
-static gboolean onMainThread_cb(struct onMainThread_cb_data *d)
-{
+static gboolean onMainThread_cb(struct onMainThread_cb_data *d) {
 	TRACE_CALL(__func__);
 	if ( !d->cancelled ) {
 		switch ( d->func ) {
@@ -259,15 +258,13 @@ static gboolean onMainThread_cb(struct onMainThread_cb_data *d)
 }
 
 
-static void onMainThread_cleanup_handler(gpointer data)
-{
+static void onMainThread_cleanup_handler(gpointer data) {
 	TRACE_CALL(__func__);
 	struct onMainThread_cb_data *d = data;
 	d->cancelled = TRUE;
 }
 
-static void onMainThread_schedule_callback_and_wait( struct onMainThread_cb_data *d )
-{
+static void onMainThread_schedule_callback_and_wait( struct onMainThread_cb_data *d) {
 	TRACE_CALL(__func__);
 	d->cancelled = FALSE;
 	pthread_cleanup_push( onMainThread_cleanup_handler, d );
@@ -282,13 +279,12 @@ static void onMainThread_schedule_callback_and_wait( struct onMainThread_cb_data
 	pthread_mutex_destroy( &d->mu );
 }
 
-static void onMainThread_gtk_socket_add_id( GtkSocket* sk, Window w)
-{
+static void onMainThread_gtk_socket_add_id( GtkSocket* sk, Window w) {
 	TRACE_CALL(__func__);
 
 	struct onMainThread_cb_data *d;
 
-	d = (struct onMainThread_cb_data *)g_malloc( sizeof(struct onMainThread_cb_data) );
+	d = g_new0(struct onMainThread_cb_data, 1);
 	d->func = FUNC_GTK_SOCKET_ADD_ID;
 	d->sk = sk;
 	d->w = w;
@@ -299,8 +295,7 @@ static void onMainThread_gtk_socket_add_id( GtkSocket* sk, Window w)
 
 /* --------------------------------------- */
 
-static void remmina_plugin_x2go_remove_window_id (Window window_id)
-{
+static void remmina_plugin_x2go_remove_window_id (Window window_id) {
 	gint i;
 	gboolean already_seen = FALSE;
 
@@ -310,14 +305,16 @@ static void remmina_plugin_x2go_remove_window_id (Window window_id)
 		if (g_array_index (remmina_x2go_window_id_array, Window, i) == window_id)
 		{
 			already_seen = TRUE;
-			REMMINA_PLUGIN_DEBUG("X2Go Agent window with ID [0x%lx] already seen.", window_id);
+			REMMINA_PLUGIN_DEBUG("X2Go Agent window with ID [0x%lx] already seen.",
+								 window_id);
 			break;
 		}
 	}
 	if (already_seen)
 	{
 		g_array_remove_index_fast (remmina_x2go_window_id_array, i);
-		REMMINA_PLUGIN_DEBUG("forgetting about X2Go Agent window with ID [0x%lx]", window_id);
+		REMMINA_PLUGIN_DEBUG("forgetting about X2Go Agent window with ID [0x%lx]",
+							 window_id);
 	}
 	pthread_mutex_unlock (&remmina_x2go_init_mutex);
 }
@@ -357,8 +354,7 @@ static void remmina_plugin_x2go_cleanup(RemminaProtocolWidget *gp) {
 	remmina_plugin_service->protocol_plugin_signal_connection_closed(gp);
 }
 
-static gboolean remmina_plugin_x2go_close_connection(RemminaProtocolWidget *gp)
-{
+static gboolean remmina_plugin_x2go_close_connection(RemminaProtocolWidget *gp) {
 	TRACE_CALL(__func__);
 	RemminaPluginX2GoData *gpdata = GET_PLUGIN_DATA(gp);
 
@@ -513,7 +509,7 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
 	gchar *s_username, *s_password;
 	gint ret;
 	gboolean save;
-	gboolean disablepasswordstoring;
+	gboolean password_storing_disabled;
 	RemminaFile *remminafile;
 
 	gchar **envp;
@@ -524,9 +520,14 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
 
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
-	disablepasswordstoring = remmina_plugin_service->file_get_int(remminafile, "disablepasswordstoring", FALSE);
-	ret = remmina_plugin_service->protocol_plugin_init_auth(gp,
-			(disablepasswordstoring ? 0 : REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD | REMMINA_MESSAGE_PANEL_FLAG_USERNAME),
+	password_storing_disabled = remmina_plugin_service->file_get_int(
+																 remminafile,
+																 "disablepasswordstoring",
+																 FALSE);
+	ret = remmina_plugin_service->protocol_plugin_init_auth(
+			gp,
+			(password_storing_disabled ? 0 : REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD |
+											 REMMINA_MESSAGE_PANEL_FLAG_USERNAME),
 			_("Enter X2Go credentials"),
 			username, // function arg 'username' is default username
 			password, // function arg 'password' is default password
@@ -543,11 +544,13 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
 		save = remmina_plugin_service->protocol_plugin_init_get_savepassword(gp);
 		if (save) {
 			// User has requested to save credentials. We put all the new credentials
-			// into remminafile->settings. They will be saved later, on successful connection, by
-			// rcw.c
+			// into remminafile->settings. They will be saved later, on successful
+			// connection, by rcw.c
 
 			if (s_password) {
-				remmina_plugin_service->file_set_string(remminafile, "password", s_password);
+				remmina_plugin_service->file_set_string(remminafile,
+														"password",
+														s_password);
 			} else {
 				REMMINA_PLUGIN_WARNING("%s", _("User has requested to save credentials "
 											   "but 'password' is not set! Can't set "
@@ -633,7 +636,7 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
 	if (FEATURE_AVAILABLE(gpdata, "TRY_RESUME")) {
 		argv[argc++] = g_strdup("--try-resume");
 	}
-	
+
 	if (FEATURE_AVAILABLE(gpdata, "TERMINATE_ON_CTRL_C")) {
 		argv[argc++] = g_strdup("--terminate-on-ctrl-c");
 	}
@@ -804,8 +807,8 @@ static GList* remmina_plugin_x2go_populate_available_features_list() {
 	}
 }
 
-static void remmina_plugin_x2go_on_plug_added(GtkSocket *socket, RemminaProtocolWidget *gp)
-{
+static void remmina_plugin_x2go_on_plug_added(GtkSocket *socket,
+											  RemminaProtocolWidget *gp) {
 	TRACE_CALL(__func__);
 	RemminaPluginX2GoData *gpdata = GET_PLUGIN_DATA(gp);
 	REMMINA_PLUGIN_DEBUG("Socket %d", gpdata->socket_id);
@@ -813,16 +816,15 @@ static void remmina_plugin_x2go_on_plug_added(GtkSocket *socket, RemminaProtocol
 	return;
 }
 
-static gboolean remmina_plugin_x2go_on_plug_removed(GtkSocket *socket, RemminaProtocolWidget *gp)
-{
+static gboolean remmina_plugin_x2go_on_plug_removed(GtkSocket *socket,
+													RemminaProtocolWidget *gp) {
 	TRACE_CALL(__func__);
 	REMMINA_PLUGIN_DEBUG("Function entry.");
 	remmina_plugin_x2go_close_connection(gp);
 	return TRUE;
 }
 
-static void remmina_plugin_x2go_init(RemminaProtocolWidget *gp)
-{
+static void remmina_plugin_x2go_init(RemminaProtocolWidget *gp) {
 	TRACE_CALL(__func__);
 	REMMINA_PLUGIN_DEBUG("Function entry.", PLUGIN_NAME);
 	RemminaPluginX2GoData *gpdata;
@@ -853,44 +855,47 @@ static void remmina_plugin_x2go_init(RemminaProtocolWidget *gp)
 	remmina_plugin_service->protocol_plugin_register_hostkey(gp, gpdata->socket);
 	gtk_widget_show(gpdata->socket);
 
-	g_signal_connect(G_OBJECT(gpdata->socket), "plug-added", G_CALLBACK(remmina_plugin_x2go_on_plug_added), gp);
-	g_signal_connect(G_OBJECT(gpdata->socket), "plug-removed", G_CALLBACK(remmina_plugin_x2go_on_plug_removed), gp);
+	g_signal_connect(G_OBJECT(gpdata->socket), "plug-added",
+					 G_CALLBACK(remmina_plugin_x2go_on_plug_added), gp);
+	g_signal_connect(G_OBJECT(gpdata->socket), "plug-removed",
+					 G_CALLBACK(remmina_plugin_x2go_on_plug_removed), gp);
 	gtk_container_add(GTK_CONTAINER(gp), gpdata->socket);
 }
 
-static gboolean remmina_plugin_x2go_try_window_id(Window window_id)
-{
+static gboolean remmina_plugin_x2go_try_window_id(Window window_id) {
 	TRACE_CALL(__func__);
 	gint i;
 	gboolean already_seen = FALSE;
 
-	REMMINA_PLUGIN_DEBUG("Check if X2Go Agent window [0x%lx] is already known or if it needs registration", window_id);
+	REMMINA_PLUGIN_DEBUG("Check if X2Go Agent window [0x%lx] is already known or if it "
+						 "needs registration", window_id);
 
 	pthread_mutex_lock(&remmina_x2go_init_mutex);
 	for (i = 0; i < remmina_x2go_window_id_array->len; i++) {
 		if (g_array_index(remmina_x2go_window_id_array, Window, i) == window_id) {
 			already_seen = TRUE;
-			REMMINA_PLUGIN_DEBUG("X2Go Agent window with ID [0x%lx] already seen.", window_id);
+			REMMINA_PLUGIN_DEBUG("X2Go Agent window with ID [0x%lx] already seen.",
+								 window_id);
 			break;
 		}
 	}
 	if (!already_seen) {
 		g_array_append_val(remmina_x2go_window_id_array, window_id);
-		REMMINA_PLUGIN_DEBUG("Registered new X2Go Agent window with ID [0x%lx].", window_id);
+		REMMINA_PLUGIN_DEBUG("Registered new X2Go Agent window with ID [0x%lx].",
+							 window_id);
 	}
 	pthread_mutex_unlock(&remmina_x2go_init_mutex);
 
 	return (!already_seen);
 }
 
-static int remmina_plugin_x2go_dummy_handler(Display *dsp, XErrorEvent *err)
-{
+static int remmina_plugin_x2go_dummy_handler(Display *dsp, XErrorEvent *err) {
 	TRACE_CALL(__func__);
 	return 0;
 }
 
-static gboolean remmina_plugin_x2go_start_create_notify(RemminaProtocolWidget *gp, gchar *errmsg)
-{
+static gboolean remmina_plugin_x2go_start_create_notify(RemminaProtocolWidget *gp,
+														gchar *errmsg) {
 	TRACE_CALL(__func__);
 	RemminaPluginX2GoData *gpdata = GET_PLUGIN_DATA(gp);
 
@@ -902,7 +907,9 @@ static gboolean remmina_plugin_x2go_start_create_notify(RemminaProtocolWidget *g
 
 	gpdata->orig_handler = XSetErrorHandler(remmina_plugin_x2go_dummy_handler);
 
-	XSelectInput(gpdata->display, XDefaultRootWindow(gpdata->display), SubstructureNotifyMask);
+	XSelectInput(gpdata->display,
+				 XDefaultRootWindow(gpdata->display),
+				 SubstructureNotifyMask);
 
 	REMMINA_PLUGIN_DEBUG("X11 event watcher created.");
 
@@ -926,7 +933,7 @@ static gboolean remmina_plugin_x2go_monitor_create_notify(RemminaProtocolWidget 
 	guint16 counter_x11_event_non_createnotify = 0;
 
 	struct timespec ts;
-	// wait_amount * tv_nsec = 20s
+	// wait_amount * ts.tv_nsec = 20s
 	// 100 * 0.2s = 20s
 	int wait_amount = 100;
 
@@ -969,7 +976,8 @@ static gboolean remmina_plugin_x2go_monitor_create_notify(RemminaProtocolWidget 
 		if (xev.type != CreateNotify) {
 			counter_x11_event_non_createnotify++;
 			if (counter_x11_event_non_createnotify % 5 == 0) {
-				REMMINA_PLUGIN_DEBUG("Saw '%i' X11 events, which weren't CreateNotify.", counter_x11_event_non_createnotify);
+				REMMINA_PLUGIN_DEBUG("Saw '%i' X11 events, which weren't CreateNotify.",
+									 counter_x11_event_non_createnotify);
 			}
 			continue;
 		}
@@ -985,7 +993,10 @@ static gboolean remmina_plugin_x2go_monitor_create_notify(RemminaProtocolWidget 
 			REMMINA_PLUGIN_DEBUG("Saw '%i' X11 events, which weren't CreateNotify.", counter_x11_event_non_createnotify);
 			REMMINA_PLUGIN_DEBUG("Found X11 window with WM_COMMAND set to '%s', window ID is [0x%lx].", (char*)data, w);
 		}
-		if (data && strstr((char*)data, cmd) && remmina_plugin_x2go_try_window_id(w)) {
+		if (data &&
+			g_strrstr((gchar*)data, backend) &&
+			remmina_plugin_x2go_try_window_id(w)) {
+
 			gpdata->window_id = w;
 			agent_window_found = TRUE;
 			XFree(data);
@@ -1002,15 +1013,15 @@ static gboolean remmina_plugin_x2go_monitor_create_notify(RemminaProtocolWidget 
 	CANCEL_ASYNC
 
 	if (!agent_window_found) {
-		g_strlcpy(errmsg, "X2Go session window did not appear. Something went wrong...", 512);
+		g_strlcpy(errmsg, "X2Go session window did not appear. Something went wrong...",
+				  512);
 		return FALSE;
 	}
 
 	return TRUE;
 }
 
-static gboolean remmina_plugin_x2go_start_session(RemminaProtocolWidget *gp)
-{
+static gboolean remmina_plugin_x2go_start_session(RemminaProtocolWidget *gp) {
 	TRACE_CALL(__func__);
 	REMMINA_PLUGIN_DEBUG("Function entry.");
 
@@ -1089,8 +1100,7 @@ static gboolean remmina_plugin_x2go_start_session(RemminaProtocolWidget *gp)
 	return TRUE;
 }
 
-static gboolean remmina_plugin_x2go_main(RemminaProtocolWidget *gp)
-{
+static gboolean remmina_plugin_x2go_main(RemminaProtocolWidget *gp) {
 	TRACE_CALL(__func__);
 	RemminaPluginX2GoData *gpdata = GET_PLUGIN_DATA(gp);
 	gboolean ret = FALSE;
@@ -1101,20 +1111,21 @@ static gboolean remmina_plugin_x2go_main(RemminaProtocolWidget *gp)
 	return ret;
 }
 
-static gpointer remmina_plugin_x2go_main_thread(gpointer data)
-{
+static gpointer remmina_plugin_x2go_main_thread(gpointer data) {
 	TRACE_CALL(__func__);
 	pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, NULL);
 
 	CANCEL_ASYNC
 	if (!remmina_plugin_x2go_main((RemminaProtocolWidget*)data)) {
-		IDLE_ADD((GSourceFunc) remmina_plugin_x2go_cleanup, (RemminaProtocolWidget*) data);
+		IDLE_ADD(
+					(GSourceFunc) remmina_plugin_x2go_cleanup,
+					(RemminaProtocolWidget*) data
+				);
 	}
 	return NULL;
 }
 
-static gboolean remmina_plugin_x2go_open_connection(RemminaProtocolWidget *gp)
-{
+static gboolean remmina_plugin_x2go_open_connection(RemminaProtocolWidget *gp) {
 	TRACE_CALL(__func__);
 	RemminaPluginX2GoData *gpdata = GET_PLUGIN_DATA(gp);
 
@@ -1136,16 +1147,17 @@ static gboolean remmina_plugin_x2go_open_connection(RemminaProtocolWidget *gp)
 	}
 }
 
-static gboolean remmina_plugin_x2go_query_feature(RemminaProtocolWidget* gp, const RemminaProtocolFeature* feature)
-{
+static gboolean remmina_plugin_x2go_query_feature(RemminaProtocolWidget* gp,
+												  const RemminaProtocolFeature* feature) {
 	TRACE_CALL(__func__);
 	return TRUE;
 }
 
-static const RemminaProtocolFeature remmina_plugin_x2go_features[] =
-{
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_GTKSOCKET, REMMINA_PLUGIN_X2GO_FEATURE_GTKSOCKET, NULL, NULL, NULL },
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_END,       0,                                     NULL, NULL, NULL }
+static const RemminaProtocolFeature remmina_plugin_x2go_features[] = {
+	{REMMINA_PROTOCOL_FEATURE_TYPE_GTKSOCKET,
+		REMMINA_PLUGIN_X2GO_FEATURE_GTKSOCKET, NULL, NULL, NULL},
+	{REMMINA_PROTOCOL_FEATURE_TYPE_END,
+		0, NULL, NULL, NULL}
 };
 
 /* Array of RemminaProtocolSetting for basic settings.
@@ -1171,7 +1183,8 @@ static const RemminaProtocolSetting remmina_plugin_x2go_basic_settings[] = {
 	{ REMMINA_PROTOCOL_SETTING_TYPE_COMBO,
 		"command", N_("Startup program"), FALSE,
 		/* Options to select (or custom user string) */ "MATE,KDE,XFCE,LXDE,TERMINAL",
-		/* Tooltip */ N_("Which command should be executed after creating the X2Go session?")
+		/* Tooltip */ N_("Which command should be "
+						 "executed after creating the X2Go session?")
 	},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION,
 		"resolution", NULL, FALSE, NULL, NULL
@@ -1224,9 +1237,7 @@ static RemminaProtocolPlugin remmina_plugin_x2go = {
 	NULL,                                   // Screenshot
 };
 
-G_MODULE_EXPORT gboolean
-remmina_plugin_entry(RemminaPluginService *service)
-{
+G_MODULE_EXPORT gboolean remmina_plugin_entry(RemminaPluginService *service) {
 	TRACE_CALL("remmina_plugin_entry");
 	remmina_plugin_service = service;
 
