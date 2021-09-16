@@ -608,11 +608,14 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
 	    //	argv[argc++] = g_strdup_printf ("%s", g_shell_quote(command));
 		argv[argc++] = g_strdup(command);
 	}
-	
+
 	if (FEATURE_AVAILABLE(gpdata, "KBD_LAYOUT")) {
 		if (kbdlayout) {
 			argv[argc++] = g_strdup("--kbd-layout");
 			argv[argc++] = g_strdup_printf ("%s", kbdlayout);
+		} else {
+			argv[argc++] = g_strdup("--kbd-layout");
+			argv[argc++] = g_strdup("auto");
 		}
 	}
 
