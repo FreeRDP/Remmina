@@ -753,7 +753,7 @@ static GList* remmina_plugin_x2go_old_pyhoca_features() {
 		"GEOMETRY", "KBD_LAYOUT", "KBD_TYPE", "LIBDEBUG", "LIBDEBUG_SFTPXFER", "LINK",
 		"LIST_CLIENT_FEATURES", "LIST_DESKTOPS", "LIST_SESSIONS", "NEW", "PACK",
 		"PASSWORD", "PDFVIEW_CMD", "PRINTER", "PRINTING", "PRINT_ACTION", "PRINT_CMD",
-		"QUIET", "REMOTE_SSH_PORT",	"RESUME", "SAVE_TO_FOLDER",	"SESSION_PROFILE",
+		"QUIET", "REMOTE_SSH_PORT", "RESUME", "SAVE_TO_FOLDER", "SESSION_PROFILE",
 		"SESSION_TYPE", "SHARE_DESKTOP", "SHARE_LOCAL_FOLDERS", "SHARE_MODE", "SOUND",
 		"SSH_PRIVKEY", "SUSPEND", "TERMINATE", "TERMINATE_ON_CTRL_C", "TRY_RESUME",
 		"USERNAME", "XINERAMA"
@@ -920,7 +920,9 @@ static gboolean remmina_plugin_x2go_start_create_notify(RemminaProtocolWidget *g
 	return TRUE;
 }
 
-static gboolean remmina_plugin_x2go_monitor_create_notify(RemminaProtocolWidget *gp, const gchar *cmd, gchar *errmsg)
+static gboolean remmina_plugin_x2go_monitor_create_notify(RemminaProtocolWidget *gp,
+												          const gchar *cmd,
+														  gchar *errmsg)
 {
 	TRACE_CALL(__func__);
 	RemminaPluginX2GoData *gpdata;
@@ -987,15 +989,19 @@ static gboolean remmina_plugin_x2go_monitor_create_notify(RemminaProtocolWidget 
 		}
 
 		w = xev.xcreatewindow.window;
-		if (XGetWindowProperty(gpdata->display, w, atom, 0, 255, False, AnyPropertyType, &type, &format, &nitems, &rest,
-			&data) != Success) {
-			REMMINA_PLUGIN_DEBUG("Failed to get WM_COMMAND property from X11 window ID [0x%lx].", w);
+		if (XGetWindowProperty(gpdata->display, w, atom, 0, 255, False, AnyPropertyType,
+							   &type, &format, &nitems, &rest,
+			                   &data) != Success) {
+			REMMINA_PLUGIN_DEBUG("Failed to get WM_COMMAND property from X11 window ID "
+								 "[0x%lx].", w);
 			continue;
 		}
 
 		if (data) {
-			REMMINA_PLUGIN_DEBUG("Saw '%i' X11 events, which weren't CreateNotify.", counter_x11_event_non_createnotify);
-			REMMINA_PLUGIN_DEBUG("Found X11 window with WM_COMMAND set to '%s', window ID is [0x%lx].", (char*)data, w);
+			REMMINA_PLUGIN_DEBUG("Saw '%i' X11 events, which weren't CreateNotify.",
+								 counter_x11_event_non_createnotify);
+			REMMINA_PLUGIN_DEBUG("Found X11 window with WM_COMMAND set to '%s', "
+								 "window ID is [0x%lx].", (char*)data, w);
 		}
 		if (data &&
 			g_strrstr((gchar*)data, backend) &&
@@ -1034,7 +1040,8 @@ static gboolean remmina_plugin_x2go_start_session(RemminaProtocolWidget *gp) {
 	const gchar errmsg[512] = {0};
 	gboolean ret = TRUE;
 
-	gchar *servstr, *host, *username, *password, *command, *kbdlayout, *kbdtype, *audio, *clipboard, *res;
+	gchar *servstr, *host, *username, *password, *command, *kbdlayout, *kbdtype, *audio,
+		  *clipboard, *res;
 	gint sshport, dpi;
 	GdkDisplay *default_dsp;
 	gint width, height;
@@ -1085,8 +1092,8 @@ static gboolean remmina_plugin_x2go_start_session(RemminaProtocolWidget *gp) {
 	/* trigger the session start, session window should appear soon after this */
 	if (ret)
 		ret = remmina_plugin_x2go_exec_x2go(host, sshport, username, password, command,
-											kbdlayout, kbdtype, audio, clipboard, dpi, res,
-											gp, (gchar*)&errmsg);
+											kbdlayout, kbdtype, audio, clipboard, dpi,
+											res, gp, (gchar*)&errmsg);
 
 	/* get the window id of the remote x2goagent */
 	if (ret)
