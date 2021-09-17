@@ -397,8 +397,9 @@ static void remmina_plugin_x2go_pyhoca_cli_exited(GPid pid,
 	ddata->buttons = GTK_BUTTONS_OK;
 	ddata->title = N_("An error occured.");
 	ddata->message = N_("Necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
-						"Please check pyhoca-cli's output for errors and "
-						"check your profile settings for possible errors.");
+						"Please check your profile settings and pyhoca-cli's output for "
+						"possible errors and make sure that the remote server is "
+						"reachable.");
 	ddata->callbackfunc = NULL; // Dialog frees itself, no need for an callbackfunc.
 	IDLE_ADD((GSourceFunc) remmina_plugin_x2go_open_dialog, gp);
 
