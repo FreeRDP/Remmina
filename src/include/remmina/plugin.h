@@ -216,7 +216,12 @@ typedef struct _RemminaPluginService {
 	gboolean (*pref_get_ssh_parseconfig)(void);
 	guint (*pref_keymap_get_keyval)(const gchar *keymap, guint keyval);
 
+	void (*_remmina_info)(const gchar *fmt, ...);
+	void (*_remmina_message)(const gchar *fmt, ...);
 	void (*_remmina_debug)(const gchar *func, const gchar *fmt, ...);
+	void (*_remmina_warning)(const gchar *func, const gchar *fmt, ...);
+	void (*_remmina_error)(const gchar *func, const gchar *fmt, ...);
+	void (*_remmina_critical)(const gchar *func, const gchar *fmt, ...);
 	void (*log_print)(const gchar *text);
 	void (*log_printf)(const gchar *fmt, ...);
 

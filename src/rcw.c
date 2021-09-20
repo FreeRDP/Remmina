@@ -4334,7 +4334,7 @@ GtkWidget *rcw_open_from_file_full(RemminaFile *remminafile, GCallback disconnec
 	const gchar *msg;
 
 	if (disconnect_cb) {
-		g_print("disconnect_cb is deprecated inside rcw_open_from_file_full() and should be null");
+		g_print("disconnect_cb is deprecated inside rcw_open_from_file_full() and should be null\n");
 		return NULL;
 	}
 

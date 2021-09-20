@@ -238,7 +238,12 @@ RemminaPluginService remmina_plugin_manager_service =
 	remmina_pref_get_ssh_parseconfig,
 	remmina_pref_keymap_get_keyval,
 
+	_remmina_info,
+	_remmina_message,
 	_remmina_debug,
+	_remmina_warning,
+	_remmina_error,
+	_remmina_critical,
 	remmina_log_print,
 	remmina_log_printf,
 
@@ -349,7 +354,7 @@ void remmina_plugin_manager_init()
 	while(sple != NULL) {
 		sp = (RemminaSecretPlugin*)sple->data;
 		if (sp->init()) {
-			g_print("The %s secret plugin  has been initialized and it will be your default secret plugin\n",
+			g_print("The %s secret plugin has been initialized and it will be your default secret plugin\n",
 				sp->name);
 			remmina_secret_plugin = sp;
 			break;
