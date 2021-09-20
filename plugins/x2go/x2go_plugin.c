@@ -1004,7 +1004,7 @@ static gboolean remmina_plugin_x2go_monitor_create_notify(RemminaProtocolWidget 
 								 "window ID is [0x%lx].", (char*)data, w);
 		}
 		if (data &&
-			g_strrstr((gchar*)data, backend) &&
+			g_strrstr((gchar*)data, cmd) &&
 			remmina_plugin_x2go_try_window_id(w)) {
 
 			gpdata->window_id = w;
