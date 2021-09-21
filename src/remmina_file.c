@@ -535,7 +535,7 @@ gint remmina_file_get_int(RemminaFile *remminafile, const gchar *setting, gint d
 }
 
 // sscanf uses the set language to convert the float.
-// therfore '.' and ',' cannot be used interchangeable.
+// therefore '.' and ',' cannot be used interchangeably.
 gdouble remmina_file_get_double(RemminaFile *remminafile,
 							   const gchar *setting,
 							   gdouble default_value)

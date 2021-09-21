@@ -679,6 +679,7 @@ remmina_file_editor_create_chooser(RemminaFileEditor *gfe, GtkWidget *grid, gint
 	return widget;
 }
 
+// used to filter out invalid characters for REMMINA_PROTOCOL_SETTING_TYPE_INT
 void remmina_file_editor_int_setting_filter(GtkEditable *editable, const gchar *text,
 									        gint length, gint *position, gpointer data)
 {
@@ -690,6 +691,9 @@ void remmina_file_editor_int_setting_filter(GtkEditable *editable, const gchar *
     }
 }
 
+// used to filter out invalid characters for REMMINA_PROTOCOL_SETTING_TYPE_DOUBLE
+// '.' and ',' can't be used interchangeably! It depends on the language setting
+// of the user.
 void remmina_file_editor_double_setting_filter(GtkEditable *editable, const gchar *text,
 									           gint length, gint *position, gpointer data)
 {
@@ -702,7 +706,8 @@ void remmina_file_editor_double_setting_filter(GtkEditable *editable, const gcha
 }
 
 static GtkWidget *remmina_file_editor_create_int(RemminaFileEditor *gfe, GtkWidget *grid,
-						  gint row, gint col, const gchar *label, const gint value, gint left, gint right)
+								gint row, gint col, const gchar *label, const gint value,
+								gint left, gint right)
 {
 	TRACE_CALL(__func__);
 	GtkWidget *widget;
@@ -740,8 +745,10 @@ static GtkWidget *remmina_file_editor_create_int(RemminaFileEditor *gfe, GtkWidg
 	return widget;
 }
 
-static GtkWidget *remmina_file_editor_create_double(RemminaFileEditor *gfe, GtkWidget *grid,
-						  gint row, gint col, const gchar *label, gdouble value, gint left, gint right)
+static GtkWidget *remmina_file_editor_create_double(RemminaFileEditor *gfe,
+									GtkWidget *grid, gint row, gint col,
+									const gchar *label, gdouble value, gint left,
+									gint right)
 {
 	TRACE_CALL(__func__);
 	GtkWidget *widget;
