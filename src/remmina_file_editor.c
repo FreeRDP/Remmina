@@ -34,6 +34,7 @@
  *
  */
 
+#include <ctype.h>
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
 #include <stdlib.h>
@@ -678,6 +679,117 @@ remmina_file_editor_create_chooser(RemminaFileEditor *gfe, GtkWidget *grid, gint
 	return widget;
 }
 
+// used to filter out invalid characters for REMMINA_PROTOCOL_SETTING_TYPE_INT
+void remmina_file_editor_int_setting_filter(GtkEditable *editable, const gchar *text,
+									        gint length, gint *position, gpointer data)
+{
+    for (int i = 0; i < length; i++) {
+        if (!isdigit(text[i]) && text[i] != '-') {
+            g_signal_stop_emission_by_name(G_OBJECT(editable), "insert-text");
+            return;
+        }
+    }
+}
+
+// used to filter out invalid characters for REMMINA_PROTOCOL_SETTING_TYPE_DOUBLE
+// '.' and ',' can't be used interchangeably! It depends on the language setting
+// of the user.
+void remmina_file_editor_double_setting_filter(GtkEditable *editable, const gchar *text,
+									           gint length, gint *position, gpointer data)
+{
+    for (int i = 0; i < length; i++) {
+        if (!isdigit(text[i]) && text[i] != '-' && text[i] != '.' && text[i] != ',') {
+            g_signal_stop_emission_by_name(G_OBJECT(editable), "insert-text");
+            return;
+        }
+    }
+}
+
+static GtkWidget *remmina_file_editor_create_int(RemminaFileEditor *gfe, GtkWidget *grid,
+								gint row, gint col, const gchar *label, const gint value,
+								gint left, gint right)
+{
+	TRACE_CALL(__func__);
+	GtkWidget *widget;
+
+	widget = gtk_label_new(label);
+	gtk_widget_show(widget);
+#if GTK_CHECK_VERSION(3, 12, 0)
+	gtk_widget_set_margin_start(widget, left);
+	gtk_widget_set_margin_end(widget, right);
+#else
+	gtk_widget_set_margin_left(widget, left);
+	gtk_widget_set_margin_right(widget, right);
+#endif
+	gtk_widget_set_valign(widget, GTK_ALIGN_START);
+	gtk_widget_set_halign(widget, GTK_ALIGN_START);
+	gtk_grid_attach(GTK_GRID(grid), widget, col, row, 1, 1);
+
+	widget = gtk_entry_new();
+	gtk_widget_show(widget);
+	gtk_grid_attach(GTK_GRID(grid), widget, col + 1, row, 1, 1);
+	gtk_entry_set_max_length(GTK_ENTRY(widget), 300);
+	gtk_widget_set_hexpand(widget, TRUE);
+
+	// Convert int to str.
+	int length = snprintf(NULL, 0, "%d", value) + 1; // +1 '\0' byte
+	char* str = malloc(length);
+	snprintf(str, length, "%d", value);
+
+	gtk_entry_set_text(GTK_ENTRY(widget), str);
+	free(str);
+
+	g_signal_connect(G_OBJECT(widget), "insert-text",
+					 G_CALLBACK(remmina_file_editor_int_setting_filter), NULL);
+
+	return widget;
+}
+
+static GtkWidget *remmina_file_editor_create_double(RemminaFileEditor *gfe,
+									GtkWidget *grid, gint row, gint col,
+									const gchar *label, gdouble value, gint left,
+									gint right)
+{
+	TRACE_CALL(__func__);
+	GtkWidget *widget;
+
+	widget = gtk_label_new(label);
+	gtk_widget_show(widget);
+#if GTK_CHECK_VERSION(3, 12, 0)
+	gtk_widget_set_margin_start(widget, left);
+	gtk_widget_set_margin_end(widget, right);
+#else
+	gtk_widget_set_margin_left(widget, left);
+	gtk_widget_set_margin_right(widget, right);
+#endif
+	gtk_widget_set_valign(widget, GTK_ALIGN_START);
+	gtk_widget_set_halign(widget, GTK_ALIGN_START);
+	gtk_grid_attach(GTK_GRID(grid), widget, col, row, 1, 1);
+
+	widget = gtk_entry_new();
+	gtk_widget_show(widget);
+	gtk_grid_attach(GTK_GRID(grid), widget, col + 1, row, 1, 1);
+	gtk_entry_set_max_length(GTK_ENTRY(widget), 300);
+	gtk_widget_set_hexpand(widget, TRUE);
+
+	// Convert double to str.
+	int length = snprintf(NULL, 0, "%.8g", value) + 1; // +1 '\0' byte
+	char* str = malloc(length);
+	snprintf(str, length, "%f", value);
+
+	gtk_entry_set_text(GTK_ENTRY(widget), str);
+	free(str);
+
+	g_signal_connect(G_OBJECT(widget), "insert-text",
+					 G_CALLBACK(remmina_file_editor_double_setting_filter), NULL);
+
+	return widget;
+}
+
+gdouble remmina_file_get_double(RemminaFile *remminafile,
+							  const gchar *setting,
+							  gfloat default_value);
+
 static void remmina_file_editor_create_settings(RemminaFileEditor *gfe, GtkWidget *grid,
 						const RemminaProtocolSetting *settings)
 {
@@ -786,6 +898,26 @@ static void remmina_file_editor_create_settings(RemminaFileEditor *gfe, GtkWidge
 			g_hash_table_insert(priv->setting_widgets, setting_name, widget);
 			if (settings->opt2)
 				gtk_widget_set_tooltip_text(widget, (const gchar *)settings->opt2);
+			break;
+		case REMMINA_PROTOCOL_SETTING_TYPE_INT:
+			widget = remmina_file_editor_create_int(gfe, grid, grid_row, 0,
+								g_dgettext(priv->plugin->domain, settings->label),
+								remmina_file_get_int(priv->remmina_file, setting_name, 0),
+								0, 40);
+			g_hash_table_insert(priv->setting_widgets, setting_name, widget);
+			if (settings->opt2)
+				gtk_widget_set_tooltip_text(widget, (const gchar *)settings->opt2);
+			grid_row++;
+			break;
+		case REMMINA_PROTOCOL_SETTING_TYPE_DOUBLE:
+			widget = remmina_file_editor_create_double(gfe, grid, grid_row, 0,
+						g_dgettext(priv->plugin->domain, settings->label),
+						remmina_file_get_double(priv->remmina_file,setting_name, 0.0f),
+						0, 40);
+			g_hash_table_insert(priv->setting_widgets, setting_name, widget);
+			if (settings->opt2)
+				gtk_widget_set_tooltip_text(widget, (const gchar *)settings->opt2);
+			grid_row++;
 			break;
 
 		default:
