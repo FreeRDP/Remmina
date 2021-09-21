@@ -799,7 +799,7 @@ static GList* remmina_plugin_x2go_populate_available_features_list() {
 			return remmina_plugin_x2go_old_pyhoca_features();
 		}
 
-		REMMINA_PLUGIN_INFO("%s", _("Successfully retrived "
+		REMMINA_PLUGIN_INFO("%s", _("Successfully retrieved "
 									"following pyhoca-cli features:"));
 
 		for(int k = 0; k < features_size; k++) {
