@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-09-13 09:35+0000\n"
+"POT-Creation-Date: 2021-09-21 12:13+0000\n"
 "PO-Revision-Date: 2021-09-01 11:33+0000\n"
 "Last-Translator: HelaBasa <R45XvezA@protonmail.ch>\n"
 "Language-Team: Sinhala <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -26,8 +26,9 @@ msgstr ""
 #: src/remmina_protocol_widget.c:1672 src/remmina_protocol_widget.c:1691
 #: src/remmina_file_editor.c:846 src/remmina_file_editor.c:967
 #: src/remmina_ssh_plugin.c:1369 plugins/rdp/rdp_plugin.c:2667
-#: plugins/www/www_plugin.c:887 data/ui/remmina_mpc.glade:236
-#: data/ui/remmina_preferences.glade:1675 data/ui/remmina_unlock.glade:116
+#: plugins/www/www_plugin.c:887 plugins/x2go/x2go_plugin.c:1192
+#: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1675
+#: data/ui/remmina_unlock.glade:116
 msgid "Password"
 msgstr "මුරපදය"
 
@@ -120,30 +121,30 @@ msgstr "අභිරුචි"
 msgid "Secret"
 msgstr "රහස්‍ය"
 
-#: src/remmina_plugin_manager.c:456 data/ui/remmina_main.glade:305
+#: src/remmina_plugin_manager.c:461 data/ui/remmina_main.glade:305
 #, fuzzy
 msgid "Plugins"
 msgstr "ප්ලගීන"
 
-#: src/remmina_plugin_manager.c:456 src/remmina_message_panel.c:452
+#: src/remmina_plugin_manager.c:461 src/remmina_message_panel.c:452
 #: src/remmina_message_panel.c:621 src/remmina_file_editor.c:152
 msgid "_OK"
 msgstr "හරි"
 
-#: src/remmina_plugin_manager.c:474 src/remmina_file_editor.c:1490
+#: src/remmina_plugin_manager.c:479 src/remmina_file_editor.c:1490
 #: data/ui/remmina_main.glade:442
 msgid "Name"
 msgstr "නම"
 
-#: src/remmina_plugin_manager.c:480
+#: src/remmina_plugin_manager.c:485
 msgid "Type"
 msgstr "වර්ගය"
 
-#: src/remmina_plugin_manager.c:486
+#: src/remmina_plugin_manager.c:491
 msgid "Description"
 msgstr "විස්තරය"
 
-#: src/remmina_plugin_manager.c:492
+#: src/remmina_plugin_manager.c:497
 msgid "Version"
 msgstr "අනුවාදය"
 
@@ -2632,6 +2633,162 @@ msgstr "ආයුබෝවන්, ලෝකය!"
 
 #: plugins/secret/src/glibsecret_plugin.c:188
 msgid "Secured password storage in the GNOME keyring"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:166
+msgid "Broken DialogData! Aborting."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:170
+msgid "Can't retrieve DialogData! Aborting."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:389
+msgid "pyhoca-cli exited unexpectedly. This connection will now be closed."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:398
+msgid "An error occured."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:399
+msgid ""
+"Necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
+"Please check your profile settings and pyhoca-cli's output for possible "
+"errors and make sure that the remote server is reachable."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:439
+#, c-format
+msgid ""
+"An unknown error happened while retrieving pyhoca-cli's cmdline features! "
+"Exit code: %i"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:444
+#, fuzzy, c-format
+#| msgid "Error: %s"
+msgid "Error: '%s'"
+msgstr "දෝෂය: %s"
+
+#: plugins/x2go/x2go_plugin.c:532
+#, fuzzy
+#| msgid "Enter VNC authentication credentials"
+msgid "Enter X2Go credentials"
+msgstr "අ.ජා.ප. (VNC) සත්‍යාපන අක්තපත්‍ර යොදන්න"
+
+#: plugins/x2go/x2go_plugin.c:556
+msgid ""
+"User has requested to save credentials but 'password' is not set! Can't set "
+"a new default password then."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:666
+msgid "DPI setting is out of bounds. Please adjust in profile settings!"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:705 plugins/x2go/x2go_plugin.c:714
+msgid "An error occured while starting a X2Go session."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:715
+#, c-format
+msgid "Failed to start pyhoca-cli (%i): '%s'"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:784
+msgid ""
+"Couldn't get pyhoca-cli's cmdline-features. This indicates that either your "
+"pyhoca-cli version is too old or pyhoca-cli is not installed! An old limited "
+"set of features will be used now."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:796
+msgid ""
+"parsing pyhoca-cli features was not possible! Using limited feature set now."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:802
+msgid "Successfully retrieved following pyhoca-cli features:"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:806
+#, c-format
+msgid "Available feature[%i]: '%s'"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:948
+msgid "Waiting for X2Go Agent window to appear."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:974
+msgid "Waiting for pyhoca-cli to show the session's window."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1145
+#, c-format
+msgid "Protocol %s is unavailable because GtkSocket only works under X.org"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1189
+#, fuzzy
+#| msgid "Username"
+msgid "User name"
+msgstr "පරිශීලක නාමය"
+
+#: plugins/x2go/x2go_plugin.c:1195
+msgid "Startup program"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1197
+msgid "Which command should be executed after creating the X2Go session?"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1204
+#, fuzzy
+msgid "Keyboard Layout (auto)"
+msgstr "යතුරුපුවරු ආකෘතිය:"
+
+#: plugins/x2go/x2go_plugin.c:1207
+#, fuzzy
+msgid "Keyboard type (auto)"
+msgstr "යතුරුපුවරු ආකෘතිය:"
+
+#: plugins/x2go/x2go_plugin.c:1210
+#, fuzzy
+#| msgid "Turn on Java support"
+msgid "Audio support"
+msgstr "ජාවා සහාය සක්‍රිය කරන්න"
+
+#: plugins/x2go/x2go_plugin.c:1212
+msgid "X2Go server's sound system (default: 'pulse')."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1215
+msgid "Clipboard direction"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1217
+msgid ""
+"In which direction should clipboard content be copied? (default: 'both')."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1221
+msgid "DPI resolution (int!)"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1222
+msgid ""
+"Launch session with a specific resolution (in dots per inch). Must be "
+"between 20 and 400"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1265
+msgid "X2Go plugin loaded."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.h:43
+msgid "X2Go - Launch an X2Go session"
 msgstr ""
 
 #: plugins/gvnc/gvnc_plugin_config.h:40

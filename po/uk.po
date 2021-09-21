@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-09-13 09:35+0000\n"
-"PO-Revision-Date: 2021-09-16 10:37+0000\n"
+"POT-Creation-Date: 2021-09-21 12:13+0000\n"
+"PO-Revision-Date: 2021-09-21 14:50+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/remmina/"
 "remmina/uk/>\n"
@@ -28,8 +28,9 @@ msgstr ""
 #: src/remmina_protocol_widget.c:1672 src/remmina_protocol_widget.c:1691
 #: src/remmina_file_editor.c:846 src/remmina_file_editor.c:967
 #: src/remmina_ssh_plugin.c:1369 plugins/rdp/rdp_plugin.c:2667
-#: plugins/www/www_plugin.c:887 data/ui/remmina_mpc.glade:236
-#: data/ui/remmina_preferences.glade:1675 data/ui/remmina_unlock.glade:116
+#: plugins/www/www_plugin.c:887 plugins/x2go/x2go_plugin.c:1192
+#: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1675
+#: data/ui/remmina_unlock.glade:116
 msgid "Password"
 msgstr "Пароль"
 
@@ -120,29 +121,29 @@ msgstr "Налаштування"
 msgid "Secret"
 msgstr "Захист"
 
-#: src/remmina_plugin_manager.c:456 data/ui/remmina_main.glade:305
+#: src/remmina_plugin_manager.c:461 data/ui/remmina_main.glade:305
 msgid "Plugins"
 msgstr "Додатки"
 
-#: src/remmina_plugin_manager.c:456 src/remmina_message_panel.c:452
+#: src/remmina_plugin_manager.c:461 src/remmina_message_panel.c:452
 #: src/remmina_message_panel.c:621 src/remmina_file_editor.c:152
 msgid "_OK"
 msgstr "_Гаразд"
 
-#: src/remmina_plugin_manager.c:474 src/remmina_file_editor.c:1490
+#: src/remmina_plugin_manager.c:479 src/remmina_file_editor.c:1490
 #: data/ui/remmina_main.glade:442
 msgid "Name"
 msgstr "Назва"
 
-#: src/remmina_plugin_manager.c:480
+#: src/remmina_plugin_manager.c:485
 msgid "Type"
 msgstr "Тип"
 
-#: src/remmina_plugin_manager.c:486
+#: src/remmina_plugin_manager.c:491
 msgid "Description"
 msgstr "Опис"
 
-#: src/remmina_plugin_manager.c:492
+#: src/remmina_plugin_manager.c:497
 msgid "Version"
 msgstr "Версія"
 
@@ -2798,6 +2799,177 @@ msgstr "Привіт, світе!"
 msgid "Secured password storage in the GNOME keyring"
 msgstr "Безпечне зберігання паролів у зв'язці ключів GNOME"
 
+#: plugins/x2go/x2go_plugin.c:166
+msgid "Broken DialogData! Aborting."
+msgstr "Помилкове значення DialogData! Перериваємо обробку."
+
+#: plugins/x2go/x2go_plugin.c:170
+msgid "Can't retrieve DialogData! Aborting."
+msgstr "Не вдалося отримати DialogData! Перериваємо обробку."
+
+#: plugins/x2go/x2go_plugin.c:389
+msgid "pyhoca-cli exited unexpectedly. This connection will now be closed."
+msgstr ""
+"Програма pyhoca-cli несподівано завершила роботу. Тепер це з'єднання "
+"доведеться розірвати."
+
+#: plugins/x2go/x2go_plugin.c:398
+msgid "An error occured."
+msgstr "Сталася помилка."
+
+#: plugins/x2go/x2go_plugin.c:399
+msgid ""
+"Necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
+"Please check your profile settings and pyhoca-cli's output for possible "
+"errors and make sure that the remote server is reachable."
+msgstr ""
+"Потрібний для роботи дочірниій процес «pyhoca-cli» неочікувано припинив "
+"роботу.\n"
+"Будь ласка, перевірте параметри профілю та ознайомтеся із виведеними pyhoca-"
+"cli даними, щоб усунути можливі помилки і переконатися, що віддалений сервер "
+"є досяжним."
+
+#: plugins/x2go/x2go_plugin.c:439
+#, c-format
+msgid ""
+"An unknown error happened while retrieving pyhoca-cli's cmdline features! "
+"Exit code: %i"
+msgstr ""
+"Під час спроби отримання списку можливостей командного рядка pyhoca-cli "
+"сталася невідома помилка! Код виходу: %i"
+
+#: plugins/x2go/x2go_plugin.c:444
+#, c-format
+msgid "Error: '%s'"
+msgstr "Помилка: «%s»"
+
+#: plugins/x2go/x2go_plugin.c:532
+msgid "Enter X2Go credentials"
+msgstr "Вкажіть реєстраційні дані X2Go"
+
+#: plugins/x2go/x2go_plugin.c:556
+msgid ""
+"User has requested to save credentials but 'password' is not set! Can't set "
+"a new default password then."
+msgstr ""
+"Користувачем надіслано запит щодо збереження реєстраційних даних, але не "
+"встановлено пароль! У таких випадках неможливо встановити новий типовий "
+"пароль."
+
+#: plugins/x2go/x2go_plugin.c:666
+msgid "DPI setting is out of bounds. Please adjust in profile settings!"
+msgstr ""
+"Параметр роздільності не лежить у прийнятному діапазоні. Будь ласка, "
+"скоригуйте цей параметр у профілі!"
+
+#: plugins/x2go/x2go_plugin.c:705 plugins/x2go/x2go_plugin.c:714
+msgid "An error occured while starting a X2Go session."
+msgstr "Під час спроби започаткувати сеанс X2Go сталася помилка."
+
+#: plugins/x2go/x2go_plugin.c:715
+#, c-format
+msgid "Failed to start pyhoca-cli (%i): '%s'"
+msgstr "Не вдалося запустити pyhoca-cli (%i): «%s»"
+
+#: plugins/x2go/x2go_plugin.c:784
+msgid ""
+"Couldn't get pyhoca-cli's cmdline-features. This indicates that either your "
+"pyhoca-cli version is too old or pyhoca-cli is not installed! An old limited "
+"set of features will be used now."
+msgstr ""
+"Не вдалося отримати список можливостей командного рядка pyhoca-cli. Це "
+"означає, що або ваша версія pyhoca-cli є надто давньою, або pyhoca-cli не "
+"встановлено! Зараз же ми зможемо скористатися лише старим обмеженим набором "
+"можливостей."
+
+#: plugins/x2go/x2go_plugin.c:796
+msgid ""
+"parsing pyhoca-cli features was not possible! Using limited feature set now."
+msgstr ""
+"Не вдалося обробити список можливостей pyhoca-cli! Доведеться користуватися "
+"обмеженим набором можливостей."
+
+#: plugins/x2go/x2go_plugin.c:802
+msgid "Successfully retrieved following pyhoca-cli features:"
+msgstr "Успішно отримано дані щодо таких можливостей pyhoca-cli:"
+
+#: plugins/x2go/x2go_plugin.c:806
+#, c-format
+msgid "Available feature[%i]: '%s'"
+msgstr "Доступна можливість[%i]: «%s»"
+
+#: plugins/x2go/x2go_plugin.c:948
+msgid "Waiting for X2Go Agent window to appear."
+msgstr "Очікуємо на появу вікна агента X2Go."
+
+#: plugins/x2go/x2go_plugin.c:974
+msgid "Waiting for pyhoca-cli to show the session's window."
+msgstr "Очікуємо на показ pyhoca-cli вікна сеансу."
+
+#: plugins/x2go/x2go_plugin.c:1145
+#, c-format
+msgid "Protocol %s is unavailable because GtkSocket only works under X.org"
+msgstr "Протокол %s недоступний, оскільки GtkSocket працює тільки під X.org"
+
+#: plugins/x2go/x2go_plugin.c:1189
+msgid "User name"
+msgstr "Ім'я користувача"
+
+#: plugins/x2go/x2go_plugin.c:1195
+msgid "Startup program"
+msgstr "Запускати програму"
+
+#: plugins/x2go/x2go_plugin.c:1197
+msgid "Which command should be executed after creating the X2Go session?"
+msgstr "Яку команду має бути виконано після створення сеансу X2Go?"
+
+#: plugins/x2go/x2go_plugin.c:1204
+msgid "Keyboard Layout (auto)"
+msgstr "Розкладка клавіатури (авто)"
+
+#: plugins/x2go/x2go_plugin.c:1207
+msgid "Keyboard type (auto)"
+msgstr "Тип клавіатури (авто)"
+
+#: plugins/x2go/x2go_plugin.c:1210
+msgid "Audio support"
+msgstr "Підтримка звуку"
+
+#: plugins/x2go/x2go_plugin.c:1212
+msgid "X2Go server's sound system (default: 'pulse')."
+msgstr "Звукова підсистема сервера X2Go (типове значення — «pulse»)."
+
+#: plugins/x2go/x2go_plugin.c:1215
+msgid "Clipboard direction"
+msgstr "Напрямок у буфері обміну"
+
+#: plugins/x2go/x2go_plugin.c:1217
+msgid ""
+"In which direction should clipboard content be copied? (default: 'both')."
+msgstr ""
+"У якому напрямку слід копіювати вміст буфера обміну? (типове значення — "
+"«both» (у обох))."
+
+#: plugins/x2go/x2go_plugin.c:1221
+msgid "DPI resolution (int!)"
+msgstr "Роздільна здатність (ціле!)"
+
+#: plugins/x2go/x2go_plugin.c:1222
+msgid ""
+"Launch session with a specific resolution (in dots per inch). Must be "
+"between 20 and 400"
+msgstr ""
+"Запускати сеанс із вказаною роздільною здатністю (у точках на дюйм). Має "
+"бути цілим числом від 20 до 400"
+
+#: plugins/x2go/x2go_plugin.c:1265
+msgid "X2Go plugin loaded."
+msgstr "Завантажено додаток X2Go."
+
+#: plugins/x2go/x2go_plugin.h:43
+msgid "X2Go - Launch an X2Go session"
+msgstr "X2Go — запустити сеанс X2Go"
+
 #: plugins/gvnc/gvnc_plugin_config.h:40
 msgid "Remmina VNC plugin for GNOME and KVM"
 msgstr "Додаток VNC Remmina для GNOME та KVM"
@@ -3925,11 +4097,6 @@ msgstr "Майстер-пароль"
 #~ msgid "Ran out of available local X display numbers."
 #~ msgstr "Скінчились доступні номери для локальних X-дисплеїв."
 
-#~ msgid ""
-#~ "The protocol “%s” is unavailable because GtkSocket only works under X.Org."
-#~ msgstr ""
-#~ "Протокол «%s» недоступний, оскільки GtkSocket працює тільки під X.Org."
-
 #~ msgid "Grayscale"
 #~ msgstr "Тони сірого"
 
@@ -3992,9 +4159,6 @@ msgstr "Майстер-пароль"
 
 #~ msgid "Password for private SSH key"
 #~ msgstr "Пароль до закритого ключа SSH"
-
-#~ msgid "Enter NX authentication credentials"
-#~ msgstr "Введіть дані розпізнавання NX"
 
 #~ msgid "Disable clipboard sync"
 #~ msgstr "Не використовувати синхронізацію буферів обміну"

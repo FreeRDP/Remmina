@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-09-13 09:35+0000\n"
-"PO-Revision-Date: 2021-07-08 20:11+0000\n"
+"POT-Creation-Date: 2021-09-21 12:13+0000\n"
+"PO-Revision-Date: 2021-09-21 14:50+0000\n"
 "Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/remmina/remmina/"
 "it/>\n"
@@ -25,15 +25,16 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.8-dev\n"
+"X-Generator: Weblate 4.9-dev\n"
 "X-Launchpad-Export-Date: 2011-01-18 05:16+0000\n"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:346
 #: src/remmina_protocol_widget.c:1672 src/remmina_protocol_widget.c:1691
 #: src/remmina_file_editor.c:846 src/remmina_file_editor.c:967
 #: src/remmina_ssh_plugin.c:1369 plugins/rdp/rdp_plugin.c:2667
-#: plugins/www/www_plugin.c:887 data/ui/remmina_mpc.glade:236
-#: data/ui/remmina_preferences.glade:1675 data/ui/remmina_unlock.glade:116
+#: plugins/www/www_plugin.c:887 plugins/x2go/x2go_plugin.c:1192
+#: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1675
+#: data/ui/remmina_unlock.glade:116
 msgid "Password"
 msgstr "Password"
 
@@ -124,29 +125,29 @@ msgstr "Preferenza"
 msgid "Secret"
 msgstr "Segreto"
 
-#: src/remmina_plugin_manager.c:456 data/ui/remmina_main.glade:305
+#: src/remmina_plugin_manager.c:461 data/ui/remmina_main.glade:305
 msgid "Plugins"
 msgstr "Plugins"
 
-#: src/remmina_plugin_manager.c:456 src/remmina_message_panel.c:452
+#: src/remmina_plugin_manager.c:461 src/remmina_message_panel.c:452
 #: src/remmina_message_panel.c:621 src/remmina_file_editor.c:152
 msgid "_OK"
 msgstr "_OK"
 
-#: src/remmina_plugin_manager.c:474 src/remmina_file_editor.c:1490
+#: src/remmina_plugin_manager.c:479 src/remmina_file_editor.c:1490
 #: data/ui/remmina_main.glade:442
 msgid "Name"
 msgstr "Nome"
 
-#: src/remmina_plugin_manager.c:480
+#: src/remmina_plugin_manager.c:485
 msgid "Type"
 msgstr "Tipo"
 
-#: src/remmina_plugin_manager.c:486
+#: src/remmina_plugin_manager.c:491
 msgid "Description"
 msgstr "Descrizione"
 
-#: src/remmina_plugin_manager.c:492
+#: src/remmina_plugin_manager.c:497
 msgid "Version"
 msgstr "Versione"
 
@@ -1719,18 +1720,18 @@ msgid "Use client keyboard mapping"
 msgstr "Usare la diposizione della tastiera del client"
 
 #: plugins/rdp/rdp_settings.c:468
-#, fuzzy
-#| msgid "Keyboard mapping"
 msgid "Keyboard scancode remapping"
-msgstr "Mappatura tastiera"
+msgstr "Rimappatura del codice di scansione della tastiera"
 
 #: plugins/rdp/rdp_settings.c:483
 msgid "List of key=value,… pairs to remap scancodes. E.g. 0x56=0x29,0x29=0x56"
 msgstr ""
+"Elenco delle coppie chiave=valore, … Per rimappare i codici di scansione. Es:"
+" 0x56=0x29,0x29=0x56"
 
 #: plugins/rdp/rdp_settings.c:486
 msgid "FreeRDP > 2.3.0 is required to map scancodes"
-msgstr ""
+msgstr "È richiesto FreeRDP > 2.3.0 per mappare i codici di scansione"
 
 #: plugins/rdp/rdp_settings.c:494
 msgid "Quality settings"
@@ -2196,17 +2197,15 @@ msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:2670
 msgid "Restricted admin mode"
-msgstr ""
+msgstr "Modalità amministratore con restrizioni"
 
 #: plugins/rdp/rdp_plugin.c:2671
-#, fuzzy
-#| msgid "Password"
 msgid "Password hash"
-msgstr "Password"
+msgstr "Hash della password"
 
 #: plugins/rdp/rdp_plugin.c:2671
 msgid "Restricted admin mode password hash"
-msgstr ""
+msgstr "Hash della password della modalità amministratore con restrizioni"
 
 #: plugins/rdp/rdp_plugin.c:2672
 msgid "Left-handed mouse support"
@@ -2655,11 +2654,14 @@ msgid ""
 "    the repeater, e.g. with x11vnc:\n"
 "    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
 msgstr ""
-"Per connettersi con il protocollo  VNC tramite un ripetitore:\n"
-"  • Il campo server deve contenere l'ID del ripetitore, ad es. ID:123456789\n"
-"  • Nel campo ripetitore devono essere inseriti l'IP e la porta, come: "
-"10.10.10.12:5901\n"
-"  • Dal server VNC remoto ti connetterai al ripetitore, ad es. con x11vnc:\n"
+"Per connettersi con il protocollo VNC tramite un ripetitore:\n"
+"  - Il campo server deve contenere l'ID del ripetitore, ad esempio ID:"
+"123456789\n"
+"  - Il campo ripetitore deve essere impostato con l'IP e la porta del "
+"ripetitore, come:\n"
+"    10.10.10.12:5901\n"
+"  - Dal server VNC remoto, vi connetterete al ripetitore, \n"
+"    ad esempio con x11vnc:\n"
 "    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
 
 #: plugins/vnc/vnc_plugin.c:1959
@@ -2794,6 +2796,173 @@ msgstr "Salve, mondo!"
 #: plugins/secret/src/glibsecret_plugin.c:188
 msgid "Secured password storage in the GNOME keyring"
 msgstr "Salvataggio protetto delle password nel keyring di GNOME"
+
+#: plugins/x2go/x2go_plugin.c:166
+msgid "Broken DialogData! Aborting."
+msgstr "DialogData non valido. Interruzione."
+
+#: plugins/x2go/x2go_plugin.c:170
+msgid "Can't retrieve DialogData! Aborting."
+msgstr "Impossibile recuperare DialogData! Interruzione."
+
+#: plugins/x2go/x2go_plugin.c:389
+msgid "pyhoca-cli exited unexpectedly. This connection will now be closed."
+msgstr ""
+"pyhoca-cli si è interrotto inaspettatamente. Questa connessione verrà chiusa."
+
+#: plugins/x2go/x2go_plugin.c:398
+msgid "An error occured."
+msgstr "Si è verificato un errore."
+
+#: plugins/x2go/x2go_plugin.c:399
+msgid ""
+"Necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
+"Please check your profile settings and pyhoca-cli's output for possible "
+"errors and make sure that the remote server is reachable."
+msgstr ""
+"Il processo figlio necessario 'pyhoca-cli' si è interrotto in modo "
+"imprevisto.\n"
+"Controlla le impostazioni del tuo profilo e l'output di pyhoca-cli per "
+"possibili errori e assicurati che il server remoto sia raggiungibile."
+
+#: plugins/x2go/x2go_plugin.c:439
+#, c-format
+msgid ""
+"An unknown error happened while retrieving pyhoca-cli's cmdline features! "
+"Exit code: %i"
+msgstr ""
+"Si è verificato un errore sconosciuto durante il recupero delle funzionalità "
+"da riga di comando di pyhoca-cli! Codice di uscita: %i"
+
+#: plugins/x2go/x2go_plugin.c:444
+#, c-format
+msgid "Error: '%s'"
+msgstr "Errore: '%s'"
+
+#: plugins/x2go/x2go_plugin.c:532
+msgid "Enter X2Go credentials"
+msgstr "Immettere le credenziali X2Go"
+
+#: plugins/x2go/x2go_plugin.c:556
+msgid ""
+"User has requested to save credentials but 'password' is not set! Can't set "
+"a new default password then."
+msgstr ""
+"L'utente ha richiesto di salvare le credenziali ma 'password' non è "
+"impostata! Impossibile impostare una nuova password predefinita."
+
+#: plugins/x2go/x2go_plugin.c:666
+msgid "DPI setting is out of bounds. Please adjust in profile settings!"
+msgstr ""
+"L'impostazione DPI è fuori dai limiti. Si prega di regolare nelle "
+"impostazioni del profilo!"
+
+#: plugins/x2go/x2go_plugin.c:705 plugins/x2go/x2go_plugin.c:714
+msgid "An error occured while starting a X2Go session."
+msgstr "Si è verificato un errore durante l'avvio di una sessione X2Go."
+
+#: plugins/x2go/x2go_plugin.c:715
+#, c-format
+msgid "Failed to start pyhoca-cli (%i): '%s'"
+msgstr "Impossibile avviare pyhoca-cli (%i): '%s'"
+
+#: plugins/x2go/x2go_plugin.c:784
+msgid ""
+"Couldn't get pyhoca-cli's cmdline-features. This indicates that either your "
+"pyhoca-cli version is too old or pyhoca-cli is not installed! An old limited "
+"set of features will be used now."
+msgstr ""
+"Impossibile ottenere le funzionalità da riga di comando di pyhoca-cli. Ciò "
+"indica che la tua versione di pyhoca-cli è troppo vecchia o che pyhoca-cli "
+"non è installato! Verrà utilizzato un vecchio set limitato di funzionalità."
+
+#: plugins/x2go/x2go_plugin.c:796
+msgid ""
+"parsing pyhoca-cli features was not possible! Using limited feature set now."
+msgstr ""
+"l'analisi delle funzionalità di pyhoca-cli non è stata possibile! Viene "
+"usato un set di funzionalità limitato."
+
+#: plugins/x2go/x2go_plugin.c:802
+msgid "Successfully retrieved following pyhoca-cli features:"
+msgstr "Recupero riuscito delle seguenti funzionalità di pyhoca-cli:"
+
+#: plugins/x2go/x2go_plugin.c:806
+#, c-format
+msgid "Available feature[%i]: '%s'"
+msgstr "Funzione disponibile[%i]: '%s'"
+
+#: plugins/x2go/x2go_plugin.c:948
+msgid "Waiting for X2Go Agent window to appear."
+msgstr "In attesa che venga visualizzata la finestra dell'agente X2Go."
+
+#: plugins/x2go/x2go_plugin.c:974
+msgid "Waiting for pyhoca-cli to show the session's window."
+msgstr "In attesa che pyhoca-cli mostri la finestra della sessione."
+
+#: plugins/x2go/x2go_plugin.c:1145
+#, c-format
+msgid "Protocol %s is unavailable because GtkSocket only works under X.org"
+msgstr "Protocollo %s non disponibile perché GtkSocket funziona solo in X.org"
+
+#: plugins/x2go/x2go_plugin.c:1189
+msgid "User name"
+msgstr "Nome utente"
+
+#: plugins/x2go/x2go_plugin.c:1195
+msgid "Startup program"
+msgstr "Programma all’avvio"
+
+#: plugins/x2go/x2go_plugin.c:1197
+msgid "Which command should be executed after creating the X2Go session?"
+msgstr "Quale comando deve essere eseguito dopo aver creato la sessione X2Go?"
+
+#: plugins/x2go/x2go_plugin.c:1204
+msgid "Keyboard Layout (auto)"
+msgstr "Layout tastiera (auto)"
+
+#: plugins/x2go/x2go_plugin.c:1207
+msgid "Keyboard type (auto)"
+msgstr "Tipo di tastiera (auto)"
+
+#: plugins/x2go/x2go_plugin.c:1210
+msgid "Audio support"
+msgstr "Supporto audio"
+
+#: plugins/x2go/x2go_plugin.c:1212
+msgid "X2Go server's sound system (default: 'pulse')."
+msgstr "Sistema audio del server X2Go (predefinito: 'pulse')."
+
+#: plugins/x2go/x2go_plugin.c:1215
+msgid "Clipboard direction"
+msgstr "Direzione degli appunti"
+
+#: plugins/x2go/x2go_plugin.c:1217
+msgid ""
+"In which direction should clipboard content be copied? (default: 'both')."
+msgstr ""
+"In quale direzione deve essere copiato il contenuto degli appunti? "
+"(predefinito: 'entrambi')."
+
+#: plugins/x2go/x2go_plugin.c:1221
+msgid "DPI resolution (int!)"
+msgstr "Risoluzione DPI (int!)"
+
+#: plugins/x2go/x2go_plugin.c:1222
+msgid ""
+"Launch session with a specific resolution (in dots per inch). Must be "
+"between 20 and 400"
+msgstr ""
+"Avvia la sessione con una risoluzione specifica (in punti per pollice). Deve "
+"essere compreso tra 20 e 400"
+
+#: plugins/x2go/x2go_plugin.c:1265
+msgid "X2Go plugin loaded."
+msgstr "Plugin X2Go caricato."
+
+#: plugins/x2go/x2go_plugin.h:43
+msgid "X2Go - Launch an X2Go session"
+msgstr "X2Go - Avvia una sessione X2Go"
 
 #: plugins/gvnc/gvnc_plugin_config.h:40
 msgid "Remmina VNC plugin for GNOME and KVM"
@@ -3924,12 +4093,6 @@ msgstr "Password principale"
 #~ msgid "Ran out of available local X display numbers."
 #~ msgstr "I numeri locali di display X sono terminati."
 
-#~ msgid ""
-#~ "The protocol “%s” is unavailable because GtkSocket only works under X.Org."
-#~ msgstr ""
-#~ "Il protocollo “%s” non è disponibile perché GtkSocket funziona solo in X."
-#~ "Org."
-
 #~ msgid "Grayscale"
 #~ msgstr "Scala di grigi"
 
@@ -3992,9 +4155,6 @@ msgstr "Password principale"
 
 #~ msgid "Password for private SSH key"
 #~ msgstr "Password per la chiave SSH privata"
-
-#~ msgid "Enter NX authentication credentials"
-#~ msgstr "Immettere le credenziali di autenticazione NX"
 
 #~ msgid "Disable clipboard sync"
 #~ msgstr "Disabilita la sincronizzazione degli appunti"
