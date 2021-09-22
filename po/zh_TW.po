@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-09-21 12:13+0000\n"
-"PO-Revision-Date: 2021-09-16 10:37+0000\n"
+"POT-Creation-Date: 2021-09-21 21:02+0000\n"
+"PO-Revision-Date: 2021-09-22 20:10+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
 "remmina/remmina/zh_Hant/>\n"
@@ -24,7 +24,7 @@ msgstr ""
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:346
 #: src/remmina_protocol_widget.c:1672 src/remmina_protocol_widget.c:1691
-#: src/remmina_file_editor.c:846 src/remmina_file_editor.c:967
+#: src/remmina_file_editor.c:978 src/remmina_file_editor.c:1099
 #: src/remmina_ssh_plugin.c:1369 plugins/rdp/rdp_plugin.c:2667
 #: plugins/www/www_plugin.c:887 plugins/x2go/x2go_plugin.c:1192
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1675
@@ -33,22 +33,22 @@ msgid "Password"
 msgstr "密碼"
 
 #: src/remmina_sftp_plugin.c:311 src/remmina_sftp_plugin.c:348
-#: src/remmina_file_editor.c:847 src/remmina_ssh_plugin.c:1370
+#: src/remmina_file_editor.c:979 src/remmina_ssh_plugin.c:1370
 #: src/remmina_ssh_plugin.c:1475
 msgid "SSH identity file"
 msgstr "SSH 身份檔案"
 
-#: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:848
+#: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:980
 #: src/remmina_ssh_plugin.c:1371
 msgid "SSH agent"
 msgstr "SSH 代理"
 
-#: src/remmina_sftp_plugin.c:313 src/remmina_file_editor.c:849
+#: src/remmina_sftp_plugin.c:313 src/remmina_file_editor.c:981
 #: src/remmina_ssh_plugin.c:1372
 msgid "Public key (automatic)"
 msgstr "公鑰 (自動)"
 
-#: src/remmina_sftp_plugin.c:314 src/remmina_file_editor.c:850
+#: src/remmina_sftp_plugin.c:314 src/remmina_file_editor.c:982
 #: src/remmina_ssh_plugin.c:1373
 msgid "Kerberos (GSSAPI)"
 msgstr "Kerberos (GSSAPI)"
@@ -70,19 +70,19 @@ msgid "Connect via SSH from a new terminal"
 msgstr "從新的終端機以 SSH 連接"
 
 #: src/remmina_sftp_plugin.c:345 src/remmina_message_panel.c:330
-#: src/remmina_file_editor.c:961 src/remmina_ssh_plugin.c:1473
+#: src/remmina_file_editor.c:1093 src/remmina_ssh_plugin.c:1473
 #: plugins/rdp/rdp_plugin.c:2666 plugins/vnc/vnc_plugin.c:1960
 #: plugins/vnc/vnc_plugin.c:1980 plugins/www/www_plugin.c:886
 #: data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr "使用者名稱"
 
-#: src/remmina_sftp_plugin.c:347 src/remmina_file_editor.c:952
+#: src/remmina_sftp_plugin.c:347 src/remmina_file_editor.c:1084
 #: src/remmina_ssh_plugin.c:1472
 msgid "Authentication type"
 msgstr "認證類型"
 
-#: src/remmina_sftp_plugin.c:349 src/remmina_file_editor.c:984
+#: src/remmina_sftp_plugin.c:349 src/remmina_file_editor.c:1116
 #: src/remmina_ssh_plugin.c:1479
 #, fuzzy
 msgid "Password to unlock private key"
@@ -96,7 +96,7 @@ msgstr "SSH 代理伺服器指令"
 msgid "SFTP - Secure File Transfer"
 msgstr "SFTP - 安全檔案傳輸"
 
-#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1533
+#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1665
 msgid "Protocol"
 msgstr "協定"
 
@@ -125,11 +125,11 @@ msgid "Plugins"
 msgstr "外掛"
 
 #: src/remmina_plugin_manager.c:461 src/remmina_message_panel.c:452
-#: src/remmina_message_panel.c:621 src/remmina_file_editor.c:152
+#: src/remmina_message_panel.c:621 src/remmina_file_editor.c:153
 msgid "_OK"
 msgstr "確定(_O)"
 
-#: src/remmina_plugin_manager.c:479 src/remmina_file_editor.c:1490
+#: src/remmina_plugin_manager.c:479 src/remmina_file_editor.c:1622
 #: data/ui/remmina_main.glade:442
 msgid "Name"
 msgstr "名稱"
@@ -195,11 +195,11 @@ msgstr "Meta+"
 msgid "<None>"
 msgstr "<無>"
 
-#: src/remmina_pref_dialog.c:91 src/remmina_file_editor.c:435
+#: src/remmina_pref_dialog.c:91 src/remmina_file_editor.c:436
 msgid "Resolutions"
 msgstr "解析度"
 
-#: src/remmina_pref_dialog.c:91 src/remmina_file_editor.c:435
+#: src/remmina_pref_dialog.c:91 src/remmina_file_editor.c:436
 msgid "Configure the available resolutions"
 msgstr "設定可用的解析度"
 
@@ -265,8 +265,8 @@ msgid "Save password"
 msgstr "儲存密碼"
 
 #: src/remmina_message_panel.c:457 src/remmina_message_panel.c:629
-#: src/remmina_sftp_client.c:947 src/remmina_file_editor.c:151
-#: src/remmina_file_editor.c:1365 plugins/spice/spice_plugin_file_transfer.c:84
+#: src/remmina_sftp_client.c:947 src/remmina_file_editor.c:152
+#: src/remmina_file_editor.c:1497 plugins/spice/spice_plugin_file_transfer.c:84
 #: data/ui/remmina_key_chooser.glade:8 data/ui/remmina_key_chooser.glade:9
 #: data/ui/remmina_spinner.glade:8 data/ui/remmina_spinner.glade:9
 msgid "_Cancel"
@@ -726,7 +726,7 @@ msgstr "大小"
 msgid "User"
 msgstr "使用者"
 
-#: src/remmina_ftp_client.c:932 src/remmina_file_editor.c:1515
+#: src/remmina_ftp_client.c:932 src/remmina_file_editor.c:1647
 #: data/ui/remmina_mpc.glade:115 data/ui/remmina_main.glade:464
 msgid "Group"
 msgstr "群組"
@@ -860,8 +860,8 @@ msgstr "正於 %i 連接埠上監聽傳入的 %s 連接…"
 msgid "Could not authenticate, attempting reconnection…"
 msgstr "驗證失敗。正試著重新連接…"
 
-#: src/remmina_protocol_widget.c:2025 src/remmina_file_editor.c:346
-#: src/remmina_file_editor.c:917 data/ui/remmina_main.glade:478
+#: src/remmina_protocol_widget.c:2025 src/remmina_file_editor.c:347
+#: src/remmina_file_editor.c:1049 data/ui/remmina_main.glade:478
 msgid "Server"
 msgstr "伺服器"
 
@@ -1165,7 +1165,7 @@ msgstr ""
 msgid "Import"
 msgstr "匯入"
 
-#: src/remmina_main.c:1022 src/remmina_file_editor.c:1373
+#: src/remmina_main.c:1022 src/remmina_file_editor.c:1505
 msgid "_Save"
 msgstr "儲存(_S)"
 
@@ -1261,7 +1261,7 @@ msgstr "覆寫"
 msgid "The following file already exists in the target folder:"
 msgstr "下列檔案已經存在於目標資料夾中："
 
-#: src/remmina_file_editor.c:60
+#: src/remmina_file_editor.c:61
 #, fuzzy
 #| msgid ""
 #| "<tt><big>Supported formats\n"
@@ -1283,7 +1283,7 @@ msgstr ""
 "- ID:中继器ID号\n"
 "- unix://path/socket.sock</big>"
 
-#: src/remmina_file_editor.c:69
+#: src/remmina_file_editor.c:70
 #, fuzzy
 #| msgid ""
 #| "<tt><big>• command in PATH args %h\n"
@@ -1324,7 +1324,7 @@ msgstr ""
 "如果您希望在连接前执行命令，请不要在后台运行。\n"
 "</big></tt>"
 
-#: src/remmina_file_editor.c:83
+#: src/remmina_file_editor.c:84
 #, fuzzy
 #| msgid ""
 #| "<tt><big>Supported formats\n"
@@ -1344,155 +1344,155 @@ msgstr ""
 "- 服务器[:端口]\n"
 "- username@server[:port] (仅SSH协议)</big>"
 
-#: src/remmina_file_editor.c:149
+#: src/remmina_file_editor.c:150
 msgid "Choose a Remote Desktop Server"
 msgstr "選擇一個遠端桌面伺服器"
 
-#: src/remmina_file_editor.c:370
+#: src/remmina_file_editor.c:371
 #, c-format
 msgid "Browse the network to find a %s server"
 msgstr "瀏覽網路以尋找 %s 伺服器"
 
-#: src/remmina_file_editor.c:471
+#: src/remmina_file_editor.c:472
 msgid "Resolution"
 msgstr "解析度"
 
-#: src/remmina_file_editor.c:478
+#: src/remmina_file_editor.c:479
 msgid "Use initial window size"
 msgstr "使用初始視窗大小"
 
-#: src/remmina_file_editor.c:482
+#: src/remmina_file_editor.c:483
 msgid "Use client resolution"
 msgstr "使用客戶端解析度"
 
-#: src/remmina_file_editor.c:493 src/remmina_file_editor.c:897
+#: src/remmina_file_editor.c:494 src/remmina_file_editor.c:1029
 msgid "Custom"
 msgstr "自訂"
 
-#: src/remmina_file_editor.c:717
+#: src/remmina_file_editor.c:829
 msgid "Keyboard mapping"
 msgstr "鍵盤映射"
 
-#: src/remmina_file_editor.c:817
+#: src/remmina_file_editor.c:949
 #, fuzzy
 msgid "Behavior"
 msgstr "行為"
 
-#: src/remmina_file_editor.c:820
+#: src/remmina_file_editor.c:952
 msgid "Execute a Command"
 msgstr "執行指令"
 
-#: src/remmina_file_editor.c:824
+#: src/remmina_file_editor.c:956
 msgid "Before connecting"
 msgstr "開啟連線"
 
-#: src/remmina_file_editor.c:826
+#: src/remmina_file_editor.c:958
 #, fuzzy
 msgid "command %h %u %t %U %p %g --option"
 msgstr "命令 %h %u %t %U %p %g --option"
 
-#: src/remmina_file_editor.c:831
+#: src/remmina_file_editor.c:963
 msgid "After connecting"
 msgstr "開啟連線"
 
-#: src/remmina_file_editor.c:833
+#: src/remmina_file_editor.c:965
 #, fuzzy
 msgid "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
 msgstr "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
 
-#: src/remmina_file_editor.c:837
+#: src/remmina_file_editor.c:969
 msgid "Start-up"
 msgstr "啟動"
 
-#: src/remmina_file_editor.c:840
+#: src/remmina_file_editor.c:972
 #, fuzzy
 msgid "Auto-start this profile"
 msgstr "自动启动此配置文件"
 
-#: src/remmina_file_editor.c:870
+#: src/remmina_file_editor.c:1002
 msgid "SSH Tunnel"
 msgstr "SSH 通道"
 
-#: src/remmina_file_editor.c:871
+#: src/remmina_file_editor.c:1003
 msgid "Enable SSH tunnel"
 msgstr "啟用 SSH 通道"
 
-#: src/remmina_file_editor.c:878
+#: src/remmina_file_editor.c:1010
 msgid "Tunnel via loopback address"
 msgstr "透過 loopback 位址穿隧"
 
-#: src/remmina_file_editor.c:888
+#: src/remmina_file_editor.c:1020
 #, c-format
 msgid "Same server at port %i"
 msgstr "相同伺服器上的 %i 連接埠"
 
-#: src/remmina_file_editor.c:938 plugins/rdp/rdp_plugin.c:2711
+#: src/remmina_file_editor.c:1070 plugins/rdp/rdp_plugin.c:2711
 msgid "Start-up path"
 msgstr "啟動路徑"
 
-#: src/remmina_file_editor.c:947
+#: src/remmina_file_editor.c:1079
 msgid "SSH Authentication"
 msgstr "SSH 驗證"
 
-#: src/remmina_file_editor.c:973
+#: src/remmina_file_editor.c:1105
 #, fuzzy
 #| msgid "SSH private key passphrase"
 msgid "SSH private key file"
 msgstr "SSH私钥文件"
 
-#: src/remmina_file_editor.c:979 src/remmina_ssh_plugin.c:1477
+#: src/remmina_file_editor.c:1111 src/remmina_ssh_plugin.c:1477
 #, fuzzy
 #| msgid "CA Certificate File"
 msgid "SSH certificate file"
 msgstr "SSH证书文件"
 
-#: src/remmina_file_editor.c:1037
+#: src/remmina_file_editor.c:1169
 msgid "Basic"
 msgstr "基本"
 
-#: src/remmina_file_editor.c:1043
+#: src/remmina_file_editor.c:1175
 msgid "Advanced"
 msgstr "進階"
 
-#: src/remmina_file_editor.c:1054
+#: src/remmina_file_editor.c:1186
 #, fuzzy
 msgid "Notes"
 msgstr "備註"
 
-#: src/remmina_file_editor.c:1293
+#: src/remmina_file_editor.c:1425
 msgid "Default settings saved."
 msgstr "預設值已儲存。"
 
-#: src/remmina_file_editor.c:1363
+#: src/remmina_file_editor.c:1495
 msgid "Remote Connection Profile"
 msgstr "建立新的連線設定檔"
 
-#: src/remmina_file_editor.c:1369
+#: src/remmina_file_editor.c:1501
 msgid "Save as Default"
 msgstr "儲存為預設值"
 
-#: src/remmina_file_editor.c:1370
+#: src/remmina_file_editor.c:1502
 msgid "Use the current settings as the default for all new connection profiles"
 msgstr "將目前的設定設為新連線設定檔的預設值"
 
-#: src/remmina_file_editor.c:1378 data/ui/remmina_main.glade:160
+#: src/remmina_file_editor.c:1510 data/ui/remmina_main.glade:160
 msgid "Connect"
 msgstr "連接"
 
-#: src/remmina_file_editor.c:1381
+#: src/remmina_file_editor.c:1513
 msgid "_Save and Connect"
 msgstr "儲存並連接(_S)"
 
-#: src/remmina_file_editor.c:1504
+#: src/remmina_file_editor.c:1636
 msgid "Quick Connect"
 msgstr "快速連線"
 
-#: src/remmina_file_editor.c:1528
+#: src/remmina_file_editor.c:1660
 #, c-format
 msgid "Use '%s' as subgroup delimiter"
 msgstr "使用「%s」作為子群組分隔符"
 
-#: src/remmina_file_editor.c:1594 src/remmina_file_editor.c:1612
+#: src/remmina_file_editor.c:1726 src/remmina_file_editor.c:1744
 #, c-format
 msgid "Could not find the file “%s”."
 msgstr "無法開啟通道：%s"
@@ -2899,106 +2899,123 @@ msgid "Secured password storage in the GNOME keyring"
 msgstr "儲存在 GNOME 鑰匙圈的安全密碼"
 
 #: plugins/x2go/x2go_plugin.c:166
+#, fuzzy
 msgid "Broken DialogData! Aborting."
-msgstr ""
+msgstr "破碎的DialogData!终止了。"
 
 #: plugins/x2go/x2go_plugin.c:170
+#, fuzzy
 msgid "Can't retrieve DialogData! Aborting."
-msgstr ""
+msgstr "无法检索到DialogData!终止了。"
 
 #: plugins/x2go/x2go_plugin.c:389
+#, fuzzy
 msgid "pyhoca-cli exited unexpectedly. This connection will now be closed."
-msgstr ""
+msgstr "pyhoca-cli意外地退出了。这个连接现在将被关闭。"
 
 #: plugins/x2go/x2go_plugin.c:398
+#, fuzzy
 msgid "An error occured."
-msgstr ""
+msgstr "发生了一个错误。"
 
 #: plugins/x2go/x2go_plugin.c:399
+#, fuzzy
 msgid ""
 "Necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
 "Please check your profile settings and pyhoca-cli's output for possible "
 "errors and make sure that the remote server is reachable."
 msgstr ""
+"必要的子进程'pyhoca-cli'意外停止。\n"
+"请检查你的配置文件设置和 pyhoca-cli 的输出是否有错误，并确保远程服务器是可以到达的。"
 
 #: plugins/x2go/x2go_plugin.c:439
-#, c-format
+#, c-format, fuzzy
 msgid ""
 "An unknown error happened while retrieving pyhoca-cli's cmdline features! "
 "Exit code: %i"
-msgstr ""
+msgstr "在检索pyhoca-cli的cmdline功能时，发生了一个未知的错误!退出代码。%i"
 
 #: plugins/x2go/x2go_plugin.c:444
 #, fuzzy, c-format
 msgid "Error: '%s'"
-msgstr "錯誤：%s"
+msgstr "错误：'%s'"
 
 #: plugins/x2go/x2go_plugin.c:532
 #, fuzzy
 #| msgid "Enter NX authentication credentials"
 msgid "Enter X2Go credentials"
-msgstr "輸入 NX 驗證身分資料"
+msgstr "输入X2Go凭证"
 
 #: plugins/x2go/x2go_plugin.c:556
+#, fuzzy
 msgid ""
 "User has requested to save credentials but 'password' is not set! Can't set "
 "a new default password then."
-msgstr ""
+msgstr "用户要求保存凭证，但'密码'没有设置!那就不能设置新的默认密码。"
 
 #: plugins/x2go/x2go_plugin.c:666
+#, fuzzy
 msgid "DPI setting is out of bounds. Please adjust in profile settings!"
-msgstr ""
+msgstr "DPI设置超出了范围。请在配置文件设置中调整!"
 
 #: plugins/x2go/x2go_plugin.c:705 plugins/x2go/x2go_plugin.c:714
+#, fuzzy
 msgid "An error occured while starting a X2Go session."
-msgstr ""
+msgstr "在启动X2Go会话时发生了一个错误。"
 
 #: plugins/x2go/x2go_plugin.c:715
-#, c-format
+#, c-format, fuzzy
 msgid "Failed to start pyhoca-cli (%i): '%s'"
-msgstr ""
+msgstr "启动 pyhoca-cli（%i）失败：'%s'"
 
 #: plugins/x2go/x2go_plugin.c:784
+#, fuzzy
 msgid ""
 "Couldn't get pyhoca-cli's cmdline-features. This indicates that either your "
 "pyhoca-cli version is too old or pyhoca-cli is not installed! An old limited "
 "set of features will be used now."
 msgstr ""
+"无法获得 pyhoca-cli 的 cmdline-features。这表明要么你的 pyhoca-cli 版本太旧，要么 pyhoca-cli "
+"没有被安装现在将使用一个旧的有限的功能集。"
 
 #: plugins/x2go/x2go_plugin.c:796
+#, fuzzy
 msgid ""
 "parsing pyhoca-cli features was not possible! Using limited feature set now."
-msgstr ""
+msgstr "解析pyhoca-cli的功能是不可能的!现在使用有限的功能集。"
 
 #: plugins/x2go/x2go_plugin.c:802
+#, fuzzy
 msgid "Successfully retrieved following pyhoca-cli features:"
-msgstr ""
+msgstr "成功检索到以下pyhoca-cli特征。"
 
 #: plugins/x2go/x2go_plugin.c:806
-#, c-format
+#, c-format, fuzzy
 msgid "Available feature[%i]: '%s'"
-msgstr ""
+msgstr "可用功能[%i]：'%s'"
 
 #: plugins/x2go/x2go_plugin.c:948
+#, fuzzy
 msgid "Waiting for X2Go Agent window to appear."
-msgstr ""
+msgstr "等待X2Go代理窗口出现。"
 
 #: plugins/x2go/x2go_plugin.c:974
+#, fuzzy
 msgid "Waiting for pyhoca-cli to show the session's window."
-msgstr ""
+msgstr "等待 pyhoca-cli 显示会话的窗口。"
 
 #: plugins/x2go/x2go_plugin.c:1145
 #, fuzzy, c-format
 #| msgid ""
 #| "The protocol “%s” is unavailable because GtkSocket only works under X.Org."
 msgid "Protocol %s is unavailable because GtkSocket only works under X.org"
-msgstr "協定 %s 不可用，因為 GtkSocket 僅能在 X.Org 下使用"
+msgstr "协议%s不可用，因为GtkSocket只在X.org下工作。"
 
 #: plugins/x2go/x2go_plugin.c:1189
 #, fuzzy
 #| msgid "Username"
 msgid "User name"
-msgstr "使用者名稱"
+msgstr "User name"
 
 #: plugins/x2go/x2go_plugin.c:1195
 #, fuzzy
@@ -3007,59 +3024,67 @@ msgid "Startup program"
 msgstr "啟動程式"
 
 #: plugins/x2go/x2go_plugin.c:1197
+#, fuzzy
 msgid "Which command should be executed after creating the X2Go session?"
-msgstr ""
+msgstr "创建X2Go会话后应执行哪条命令？"
 
 #: plugins/x2go/x2go_plugin.c:1204
 #, fuzzy
 #| msgid "Keyboard layout"
 msgid "Keyboard Layout (auto)"
-msgstr "鍵盤配置"
+msgstr "键盘布局（自动"
 
 #: plugins/x2go/x2go_plugin.c:1207
 #, fuzzy
 #| msgid "Keyboard layout"
 msgid "Keyboard type (auto)"
-msgstr "鍵盤配置"
+msgstr "键盘类型(自动)"
 
 #: plugins/x2go/x2go_plugin.c:1210
 #, fuzzy
 #| msgid "Turn on Java support"
 msgid "Audio support"
-msgstr "啟用 Java 支援"
+msgstr "音频支持"
 
 #: plugins/x2go/x2go_plugin.c:1212
+#, fuzzy
 msgid "X2Go server's sound system (default: 'pulse')."
-msgstr ""
+msgstr "X2Go服务器的声音系统（默认：'脉冲'）。"
 
 #: plugins/x2go/x2go_plugin.c:1215
 #, fuzzy
 #| msgid "USB redirection error"
 msgid "Clipboard direction"
-msgstr "TCP重定向"
+msgstr "剪贴板方向"
 
 #: plugins/x2go/x2go_plugin.c:1217
+#, fuzzy
 msgid ""
 "In which direction should clipboard content be copied? (default: 'both')."
-msgstr ""
+msgstr "剪贴板内容应该向哪个方向复制？(默认：'两个')。"
 
 #: plugins/x2go/x2go_plugin.c:1221
-msgid "DPI resolution (int!)"
-msgstr ""
+#, fuzzy
+#| msgid "Resolution"
+msgid "DPI resolution"
+msgstr "DPI分辨率"
 
 #: plugins/x2go/x2go_plugin.c:1222
+#, fuzzy
 msgid ""
 "Launch session with a specific resolution (in dots per inch). Must be "
 "between 20 and 400"
-msgstr ""
+msgstr "以特定的分辨率（以每英寸点数为单位）启动会议。必须在20和400之间"
 
 #: plugins/x2go/x2go_plugin.c:1265
+#, fuzzy
 msgid "X2Go plugin loaded."
-msgstr ""
+msgstr "已加载X2Go插件。"
 
 #: plugins/x2go/x2go_plugin.h:43
+#, fuzzy
 msgid "X2Go - Launch an X2Go session"
-msgstr ""
+msgstr "X2Go - 启动一个X2Go会话"
 
 #: plugins/gvnc/gvnc_plugin_config.h:40
 #, fuzzy

@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-09-21 12:13+0000\n"
-"PO-Revision-Date: 2021-08-24 21:07+0000\n"
+"POT-Creation-Date: 2021-09-21 21:02+0000\n"
+"PO-Revision-Date: 2021-09-21 21:03+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/remmina/"
 "remmina/nb_NO/>\n"
@@ -20,12 +20,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.8.1-dev\n"
+"X-Generator: Weblate 4.9-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:346
 #: src/remmina_protocol_widget.c:1672 src/remmina_protocol_widget.c:1691
-#: src/remmina_file_editor.c:846 src/remmina_file_editor.c:967
+#: src/remmina_file_editor.c:978 src/remmina_file_editor.c:1099
 #: src/remmina_ssh_plugin.c:1369 plugins/rdp/rdp_plugin.c:2667
 #: plugins/www/www_plugin.c:887 plugins/x2go/x2go_plugin.c:1192
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1675
@@ -34,22 +34,22 @@ msgid "Password"
 msgstr "Passord"
 
 #: src/remmina_sftp_plugin.c:311 src/remmina_sftp_plugin.c:348
-#: src/remmina_file_editor.c:847 src/remmina_ssh_plugin.c:1370
+#: src/remmina_file_editor.c:979 src/remmina_ssh_plugin.c:1370
 #: src/remmina_ssh_plugin.c:1475
 msgid "SSH identity file"
 msgstr "SSH-identitetsfil"
 
-#: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:848
+#: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:980
 #: src/remmina_ssh_plugin.c:1371
 msgid "SSH agent"
 msgstr "SSH-agent"
 
-#: src/remmina_sftp_plugin.c:313 src/remmina_file_editor.c:849
+#: src/remmina_sftp_plugin.c:313 src/remmina_file_editor.c:981
 #: src/remmina_ssh_plugin.c:1372
 msgid "Public key (automatic)"
 msgstr "Offentlig nøkkel (automatisk)"
 
-#: src/remmina_sftp_plugin.c:314 src/remmina_file_editor.c:850
+#: src/remmina_sftp_plugin.c:314 src/remmina_file_editor.c:982
 #: src/remmina_ssh_plugin.c:1373
 msgid "Kerberos (GSSAPI)"
 msgstr "Kerberos (GSSAPI)"
@@ -71,19 +71,19 @@ msgid "Connect via SSH from a new terminal"
 msgstr "Koble til via SSH fra en ny terminal"
 
 #: src/remmina_sftp_plugin.c:345 src/remmina_message_panel.c:330
-#: src/remmina_file_editor.c:961 src/remmina_ssh_plugin.c:1473
+#: src/remmina_file_editor.c:1093 src/remmina_ssh_plugin.c:1473
 #: plugins/rdp/rdp_plugin.c:2666 plugins/vnc/vnc_plugin.c:1960
 #: plugins/vnc/vnc_plugin.c:1980 plugins/www/www_plugin.c:886
 #: data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr "Brukernavn"
 
-#: src/remmina_sftp_plugin.c:347 src/remmina_file_editor.c:952
+#: src/remmina_sftp_plugin.c:347 src/remmina_file_editor.c:1084
 #: src/remmina_ssh_plugin.c:1472
 msgid "Authentication type"
 msgstr "Identitetsbekreftelsestype"
 
-#: src/remmina_sftp_plugin.c:349 src/remmina_file_editor.c:984
+#: src/remmina_sftp_plugin.c:349 src/remmina_file_editor.c:1116
 #: src/remmina_ssh_plugin.c:1479
 msgid "Password to unlock private key"
 msgstr "Passord for opplåsing av privat nøkkel"
@@ -96,7 +96,7 @@ msgstr "SSH-mellomtjenerkommando"
 msgid "SFTP - Secure File Transfer"
 msgstr "SFTP - sikker filoverføring"
 
-#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1533
+#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1665
 msgid "Protocol"
 msgstr "Protokoll"
 
@@ -125,11 +125,11 @@ msgid "Plugins"
 msgstr "Programtillegg"
 
 #: src/remmina_plugin_manager.c:461 src/remmina_message_panel.c:452
-#: src/remmina_message_panel.c:621 src/remmina_file_editor.c:152
+#: src/remmina_message_panel.c:621 src/remmina_file_editor.c:153
 msgid "_OK"
 msgstr "_OK"
 
-#: src/remmina_plugin_manager.c:479 src/remmina_file_editor.c:1490
+#: src/remmina_plugin_manager.c:479 src/remmina_file_editor.c:1622
 #: data/ui/remmina_main.glade:442
 msgid "Name"
 msgstr "Navn"
@@ -195,11 +195,11 @@ msgstr "Meta+"
 msgid "<None>"
 msgstr "<Ingen>"
 
-#: src/remmina_pref_dialog.c:91 src/remmina_file_editor.c:435
+#: src/remmina_pref_dialog.c:91 src/remmina_file_editor.c:436
 msgid "Resolutions"
 msgstr "Oppløsninger"
 
-#: src/remmina_pref_dialog.c:91 src/remmina_file_editor.c:435
+#: src/remmina_pref_dialog.c:91 src/remmina_file_editor.c:436
 msgid "Configure the available resolutions"
 msgstr "Sett opp de tilgjengelige oppløsningene"
 
@@ -265,8 +265,8 @@ msgid "Save password"
 msgstr "Lagre passord"
 
 #: src/remmina_message_panel.c:457 src/remmina_message_panel.c:629
-#: src/remmina_sftp_client.c:947 src/remmina_file_editor.c:151
-#: src/remmina_file_editor.c:1365 plugins/spice/spice_plugin_file_transfer.c:84
+#: src/remmina_sftp_client.c:947 src/remmina_file_editor.c:152
+#: src/remmina_file_editor.c:1497 plugins/spice/spice_plugin_file_transfer.c:84
 #: data/ui/remmina_key_chooser.glade:8 data/ui/remmina_key_chooser.glade:9
 #: data/ui/remmina_spinner.glade:8 data/ui/remmina_spinner.glade:9
 msgid "_Cancel"
@@ -728,7 +728,7 @@ msgstr "Størrelse"
 msgid "User"
 msgstr "Bruker"
 
-#: src/remmina_ftp_client.c:932 src/remmina_file_editor.c:1515
+#: src/remmina_ftp_client.c:932 src/remmina_file_editor.c:1647
 #: data/ui/remmina_mpc.glade:115 data/ui/remmina_main.glade:464
 msgid "Group"
 msgstr "Gruppe"
@@ -861,8 +861,8 @@ msgstr "Lytter til port nr. %i i påvente av en %s-tilkobling …"
 msgid "Could not authenticate, attempting reconnection…"
 msgstr "Kunne ikke identitetsbekrefte. Prøver å koble til på ny …"
 
-#: src/remmina_protocol_widget.c:2025 src/remmina_file_editor.c:346
-#: src/remmina_file_editor.c:917 data/ui/remmina_main.glade:478
+#: src/remmina_protocol_widget.c:2025 src/remmina_file_editor.c:347
+#: src/remmina_file_editor.c:1049 data/ui/remmina_main.glade:478
 msgid "Server"
 msgstr "Tjener"
 
@@ -1164,7 +1164,7 @@ msgstr ""
 msgid "Import"
 msgstr "Importer"
 
-#: src/remmina_main.c:1022 src/remmina_file_editor.c:1373
+#: src/remmina_main.c:1022 src/remmina_file_editor.c:1505
 msgid "_Save"
 msgstr "_Lagre"
 
@@ -1259,7 +1259,7 @@ msgstr "Overskriv"
 msgid "The following file already exists in the target folder:"
 msgstr "Følgende fil eksisterer allerede i målmappa:"
 
-#: src/remmina_file_editor.c:60
+#: src/remmina_file_editor.c:61
 #, fuzzy
 #| msgid ""
 #| "<tt><big>Supported formats\n"
@@ -1281,7 +1281,7 @@ msgstr ""
 "• ID: repeater-ID-nummer\n"
 "• unix:///sti/socket.sock</big>"
 
-#: src/remmina_file_editor.c:69
+#: src/remmina_file_editor.c:70
 msgid ""
 "<big>• command in PATH args %h\n"
 "• /path/to/foo -options %h %u\n"
@@ -1309,7 +1309,7 @@ msgstr ""
 "tilknytning.\n"
 "</big>"
 
-#: src/remmina_file_editor.c:83
+#: src/remmina_file_editor.c:84
 msgid ""
 "<big>Supported formats\n"
 "• server\n"
@@ -1321,149 +1321,149 @@ msgstr ""
 "• tjener:[port]\n"
 "• bruernavn@tjener:[port] (kun SSH-protokoll)</big>"
 
-#: src/remmina_file_editor.c:149
+#: src/remmina_file_editor.c:150
 msgid "Choose a Remote Desktop Server"
 msgstr "Velg en ekstern skrivebordstjener"
 
-#: src/remmina_file_editor.c:370
+#: src/remmina_file_editor.c:371
 #, c-format
 msgid "Browse the network to find a %s server"
 msgstr "Bla gjennom nettverket for å finne en %s-tjener"
 
-#: src/remmina_file_editor.c:471
+#: src/remmina_file_editor.c:472
 msgid "Resolution"
 msgstr "Oppløsning"
 
-#: src/remmina_file_editor.c:478
+#: src/remmina_file_editor.c:479
 msgid "Use initial window size"
 msgstr "Bruk opprinnelig vindusstørrelse"
 
-#: src/remmina_file_editor.c:482
+#: src/remmina_file_editor.c:483
 msgid "Use client resolution"
 msgstr "Bruk klientens oppløsning"
 
-#: src/remmina_file_editor.c:493 src/remmina_file_editor.c:897
+#: src/remmina_file_editor.c:494 src/remmina_file_editor.c:1029
 msgid "Custom"
 msgstr "Egendefinert"
 
-#: src/remmina_file_editor.c:717
+#: src/remmina_file_editor.c:829
 msgid "Keyboard mapping"
 msgstr "Tastaturkobling"
 
-#: src/remmina_file_editor.c:817
+#: src/remmina_file_editor.c:949
 msgid "Behavior"
 msgstr "Oppførsel"
 
-#: src/remmina_file_editor.c:820
+#: src/remmina_file_editor.c:952
 msgid "Execute a Command"
 msgstr "Kjør en kommando"
 
-#: src/remmina_file_editor.c:824
+#: src/remmina_file_editor.c:956
 msgid "Before connecting"
 msgstr "Før tilkobling"
 
-#: src/remmina_file_editor.c:826
+#: src/remmina_file_editor.c:958
 msgid "command %h %u %t %U %p %g --option"
 msgstr "kommando %h %u %t %U %p %g --valg"
 
-#: src/remmina_file_editor.c:831
+#: src/remmina_file_editor.c:963
 msgid "After connecting"
 msgstr "Etter tilkobling"
 
-#: src/remmina_file_editor.c:833
+#: src/remmina_file_editor.c:965
 msgid "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
 msgstr "/sti/til/kommando -alt1 arg %h %u %t -alt2 %U %p %g"
 
-#: src/remmina_file_editor.c:837
+#: src/remmina_file_editor.c:969
 msgid "Start-up"
 msgstr "Oppstart"
 
-#: src/remmina_file_editor.c:840
+#: src/remmina_file_editor.c:972
 msgid "Auto-start this profile"
 msgstr "Skru på autostart for denne profilen"
 
-#: src/remmina_file_editor.c:870
+#: src/remmina_file_editor.c:1002
 msgid "SSH Tunnel"
 msgstr "SSH-tunnel"
 
-#: src/remmina_file_editor.c:871
+#: src/remmina_file_editor.c:1003
 msgid "Enable SSH tunnel"
 msgstr "Skru på SSH-tunnel"
 
-#: src/remmina_file_editor.c:878
+#: src/remmina_file_editor.c:1010
 msgid "Tunnel via loopback address"
 msgstr "Lag tunnel via egen sløyfeadresse («loopback»)"
 
-#: src/remmina_file_editor.c:888
+#: src/remmina_file_editor.c:1020
 #, c-format
 msgid "Same server at port %i"
 msgstr "Samme tjener på port %i"
 
-#: src/remmina_file_editor.c:938 plugins/rdp/rdp_plugin.c:2711
+#: src/remmina_file_editor.c:1070 plugins/rdp/rdp_plugin.c:2711
 msgid "Start-up path"
 msgstr "Oppstartssti"
 
-#: src/remmina_file_editor.c:947
+#: src/remmina_file_editor.c:1079
 msgid "SSH Authentication"
 msgstr "SSH-identitetsbekreftelse"
 
-#: src/remmina_file_editor.c:973
+#: src/remmina_file_editor.c:1105
 #, fuzzy
 #| msgid "SSH private key passphrase"
 msgid "SSH private key file"
 msgstr "SSH privatnøkkel fil"
 
-#: src/remmina_file_editor.c:979 src/remmina_ssh_plugin.c:1477
+#: src/remmina_file_editor.c:1111 src/remmina_ssh_plugin.c:1477
 msgid "SSH certificate file"
 msgstr "SSH-sertifikatsfil"
 
-#: src/remmina_file_editor.c:1037
+#: src/remmina_file_editor.c:1169
 msgid "Basic"
 msgstr "Enkel"
 
-#: src/remmina_file_editor.c:1043
+#: src/remmina_file_editor.c:1175
 msgid "Advanced"
 msgstr "Avansert"
 
-#: src/remmina_file_editor.c:1054
+#: src/remmina_file_editor.c:1186
 msgid "Notes"
 msgstr "Merknader"
 
-#: src/remmina_file_editor.c:1293
+#: src/remmina_file_editor.c:1425
 msgid "Default settings saved."
 msgstr "Forvalgte innstillinger lagret."
 
-#: src/remmina_file_editor.c:1363
+#: src/remmina_file_editor.c:1495
 msgid "Remote Connection Profile"
 msgstr "Ny tilkoblingsprofil"
 
-#: src/remmina_file_editor.c:1369
+#: src/remmina_file_editor.c:1501
 msgid "Save as Default"
 msgstr "Lagre som forvalg"
 
-#: src/remmina_file_editor.c:1370
+#: src/remmina_file_editor.c:1502
 msgid "Use the current settings as the default for all new connection profiles"
 msgstr ""
 "Benytt nåværende innstillinger som forvalg for alle nye tilknytningsprofiler"
 
-#: src/remmina_file_editor.c:1378 data/ui/remmina_main.glade:160
+#: src/remmina_file_editor.c:1510 data/ui/remmina_main.glade:160
 msgid "Connect"
 msgstr "Koble til"
 
-#: src/remmina_file_editor.c:1381
+#: src/remmina_file_editor.c:1513
 msgid "_Save and Connect"
 msgstr "_Lagre og koble til"
 
-#: src/remmina_file_editor.c:1504
+#: src/remmina_file_editor.c:1636
 msgid "Quick Connect"
 msgstr "Hurtigtilkobling"
 
-#: src/remmina_file_editor.c:1528
+#: src/remmina_file_editor.c:1660
 #, c-format
 msgid "Use '%s' as subgroup delimiter"
 msgstr "Bruk «%s» som skilletegn for undergrupper"
 
-#: src/remmina_file_editor.c:1594 src/remmina_file_editor.c:1612
+#: src/remmina_file_editor.c:1726 src/remmina_file_editor.c:1744
 #, c-format
 msgid "Could not find the file “%s”."
 msgstr "Klarte ikke å finne filen «%s»."
@@ -2207,17 +2207,16 @@ msgstr "Bruk «Videresendingsmappe» i den avanserte fanen for flere mapper"
 
 #: plugins/rdp/rdp_plugin.c:2670
 msgid "Restricted admin mode"
-msgstr ""
+msgstr "Begrenset administratormodus"
+
+#: plugins/rdp/rdp_plugin.c:2671
+msgid "Password hash"
+msgstr "Passordsjekksum"
 
 #: plugins/rdp/rdp_plugin.c:2671
 #, fuzzy
-#| msgid "Password"
-msgid "Password hash"
-msgstr "Passord"
-
-#: plugins/rdp/rdp_plugin.c:2671
 msgid "Restricted admin mode password hash"
-msgstr ""
+msgstr "Passordsjekksum for begrenset administratormodus"
 
 #: plugins/rdp/rdp_plugin.c:2672
 #, fuzzy
@@ -2816,34 +2815,44 @@ msgid "Secured password storage in the GNOME keyring"
 msgstr "Sikker passordslagring i GNOME-nøkkelringen"
 
 #: plugins/x2go/x2go_plugin.c:166
+#, fuzzy
 msgid "Broken DialogData! Aborting."
-msgstr ""
+msgstr "Feilaktig dialogdata. Avbryter …"
 
 #: plugins/x2go/x2go_plugin.c:170
+#, fuzzy
 msgid "Can't retrieve DialogData! Aborting."
-msgstr ""
+msgstr "Kan ikke hente dialogdata. Avbryter …"
 
 #: plugins/x2go/x2go_plugin.c:389
+#, fuzzy
 msgid "pyhoca-cli exited unexpectedly. This connection will now be closed."
-msgstr ""
+msgstr "pyhoca-cli avsluttet uventet. Tilkoblingen vil nå lukkes."
 
 #: plugins/x2go/x2go_plugin.c:398
+#, fuzzy
 msgid "An error occured."
-msgstr ""
+msgstr "En feil inntraff."
 
 #: plugins/x2go/x2go_plugin.c:399
+#, fuzzy
 msgid ""
 "Necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
 "Please check your profile settings and pyhoca-cli's output for possible "
 "errors and make sure that the remote server is reachable."
 msgstr ""
+"Den nødvendige underprosessen «pyhoca-cli» avsluttet uventet.\n"
+"Sjekk dine profilinnstillinger og pyhoca-cli sin utdata for mulige feil og "
+"forsikre deg om at tjeneren annensteds hen kan nås."
 
 #: plugins/x2go/x2go_plugin.c:439
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "An unknown error happened while retrieving pyhoca-cli's cmdline features! "
 "Exit code: %i"
 msgstr ""
+"En ukjent feil inntraff under innhenting av pyhoca-cli sine "
+"kommandolinjefunksjoner. Avslutningskode: %i"
 
 #: plugins/x2go/x2go_plugin.c:444
 #, fuzzy, c-format
@@ -2858,23 +2867,30 @@ msgid "Enter X2Go credentials"
 msgstr "Skriv inn NX-identitetsbekreftelsesdetaljer"
 
 #: plugins/x2go/x2go_plugin.c:556
+#, fuzzy
 msgid ""
 "User has requested to save credentials but 'password' is not set! Can't set "
 "a new default password then."
 msgstr ""
+"Bruker forespurte lagring av identitetsdetaljer, men «passord» er ikke satt. "
+"Kan dermed ikke sette et nytt forvalgt passord."
 
 #: plugins/x2go/x2go_plugin.c:666
+#, fuzzy
 msgid "DPI setting is out of bounds. Please adjust in profile settings!"
 msgstr ""
+"DPI-innstillingen er utenfor tillatt område. Juster den i "
+"profilinnstillingene."
 
 #: plugins/x2go/x2go_plugin.c:705 plugins/x2go/x2go_plugin.c:714
+#, fuzzy
 msgid "An error occured while starting a X2Go session."
-msgstr ""
+msgstr "En feil inntraff under starting av X2Go-økt."
 
 #: plugins/x2go/x2go_plugin.c:715
-#, c-format
+#, fuzzy, c-format
 msgid "Failed to start pyhoca-cli (%i): '%s'"
-msgstr ""
+msgstr "Klarte ikke å starte pyhoca-cli (%i): «%s»"
 
 #: plugins/x2go/x2go_plugin.c:784
 msgid ""
@@ -2884,26 +2900,32 @@ msgid ""
 msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:796
+#, fuzzy
 msgid ""
 "parsing pyhoca-cli features was not possible! Using limited feature set now."
 msgstr ""
+"Tolkning av pyhoca-cli-funksjoner var ikke mulig. Bruker begrenset "
+"funksjonsett."
 
 #: plugins/x2go/x2go_plugin.c:802
+#, fuzzy
 msgid "Successfully retrieved following pyhoca-cli features:"
-msgstr ""
+msgstr "Mottok følgende pyhoca-cli-funksjoner:"
 
 #: plugins/x2go/x2go_plugin.c:806
-#, c-format
+#, fuzzy, c-format
 msgid "Available feature[%i]: '%s'"
-msgstr ""
+msgstr "Tilgjengelig funksjon[%i]: «%s»"
 
 #: plugins/x2go/x2go_plugin.c:948
+#, fuzzy
 msgid "Waiting for X2Go Agent window to appear."
-msgstr ""
+msgstr "Venter på at X2Go-agentvinduet skal vises …"
 
 #: plugins/x2go/x2go_plugin.c:974
+#, fuzzy
 msgid "Waiting for pyhoca-cli to show the session's window."
-msgstr ""
+msgstr "Venter på at pyhoca-cli skal vise øktvinduet."
 
 #: plugins/x2go/x2go_plugin.c:1145
 #, fuzzy, c-format
@@ -2926,8 +2948,9 @@ msgid "Startup program"
 msgstr "Oppstartsprogram"
 
 #: plugins/x2go/x2go_plugin.c:1197
+#, fuzzy
 msgid "Which command should be executed after creating the X2Go session?"
-msgstr ""
+msgstr "Hvilken kommando skal kjøres etter opprettelse av X2Go-økten?"
 
 #: plugins/x2go/x2go_plugin.c:1204
 #, fuzzy
@@ -2948,8 +2971,9 @@ msgid "Audio support"
 msgstr "Skru på Java-støtte"
 
 #: plugins/x2go/x2go_plugin.c:1212
+#, fuzzy
 msgid "X2Go server's sound system (default: 'pulse')."
-msgstr ""
+msgstr "Forvalgt lydtjener for X2Go (forvalg: «pulse»)."
 
 #: plugins/x2go/x2go_plugin.c:1215
 #, fuzzy
@@ -2958,27 +2982,34 @@ msgid "Clipboard direction"
 msgstr "TCP-videresending"
 
 #: plugins/x2go/x2go_plugin.c:1217
+#, fuzzy
 msgid ""
 "In which direction should clipboard content be copied? (default: 'both')."
 msgstr ""
+"Hvilken retning skal utklippstavleinnholdet kopieres? (forvalg: «begge "
+"retninger»)."
 
 #: plugins/x2go/x2go_plugin.c:1221
-msgid "DPI resolution (int!)"
-msgstr ""
+#, fuzzy
+msgid "DPI resolution"
+msgstr "DPI-oppløsning (kun heltall)"
 
 #: plugins/x2go/x2go_plugin.c:1222
+#, fuzzy
 msgid ""
 "Launch session with a specific resolution (in dots per inch). Must be "
 "between 20 and 400"
 msgstr ""
+"Kjør økt med en spesifikk oppløsning (i punkter per tomme). Må være mellom "
+"20 og 400"
 
 #: plugins/x2go/x2go_plugin.c:1265
 msgid "X2Go plugin loaded."
-msgstr ""
+msgstr "X2Go-programtillegg innlastet."
 
 #: plugins/x2go/x2go_plugin.h:43
 msgid "X2Go - Launch an X2Go session"
-msgstr ""
+msgstr "X2Go – Kjør en X2Go-økt"
 
 #: plugins/gvnc/gvnc_plugin_config.h:40
 msgid "Remmina VNC plugin for GNOME and KVM"

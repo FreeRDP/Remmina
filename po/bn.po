@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-09-21 12:13+0000\n"
+"POT-Creation-Date: 2021-09-21 21:02+0000\n"
 "PO-Revision-Date: 2021-07-16 08:58+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Bengali <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -23,7 +23,7 @@ msgstr ""
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:346
 #: src/remmina_protocol_widget.c:1672 src/remmina_protocol_widget.c:1691
-#: src/remmina_file_editor.c:846 src/remmina_file_editor.c:967
+#: src/remmina_file_editor.c:978 src/remmina_file_editor.c:1099
 #: src/remmina_ssh_plugin.c:1369 plugins/rdp/rdp_plugin.c:2667
 #: plugins/www/www_plugin.c:887 plugins/x2go/x2go_plugin.c:1192
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1675
@@ -33,25 +33,25 @@ msgid "Password"
 msgstr "পাসওয়ার্ড"
 
 #: src/remmina_sftp_plugin.c:311 src/remmina_sftp_plugin.c:348
-#: src/remmina_file_editor.c:847 src/remmina_ssh_plugin.c:1370
+#: src/remmina_file_editor.c:979 src/remmina_ssh_plugin.c:1370
 #: src/remmina_ssh_plugin.c:1475
 #, fuzzy
 msgid "SSH identity file"
 msgstr "এসএসএইচ পরিচয় ফাইল"
 
-#: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:848
+#: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:980
 #: src/remmina_ssh_plugin.c:1371
 #, fuzzy
 msgid "SSH agent"
 msgstr "এসএসএইচ এজেন্ট"
 
-#: src/remmina_sftp_plugin.c:313 src/remmina_file_editor.c:849
+#: src/remmina_sftp_plugin.c:313 src/remmina_file_editor.c:981
 #: src/remmina_ssh_plugin.c:1372
 #, fuzzy
 msgid "Public key (automatic)"
 msgstr "পাবলিক কী (স্বয়ংক্রিয়)"
 
-#: src/remmina_sftp_plugin.c:314 src/remmina_file_editor.c:850
+#: src/remmina_sftp_plugin.c:314 src/remmina_file_editor.c:982
 #: src/remmina_ssh_plugin.c:1373
 #, fuzzy
 msgid "Kerberos (GSSAPI)"
@@ -78,7 +78,7 @@ msgid "Connect via SSH from a new terminal"
 msgstr "একটি নতুন টার্মিনাল থেকে এসএসএইচ-এর মাধ্যমে সংযোগ করুন"
 
 #: src/remmina_sftp_plugin.c:345 src/remmina_message_panel.c:330
-#: src/remmina_file_editor.c:961 src/remmina_ssh_plugin.c:1473
+#: src/remmina_file_editor.c:1093 src/remmina_ssh_plugin.c:1473
 #: plugins/rdp/rdp_plugin.c:2666 plugins/vnc/vnc_plugin.c:1960
 #: plugins/vnc/vnc_plugin.c:1980 plugins/www/www_plugin.c:886
 #: data/ui/remmina_mpc.glade:144
@@ -86,13 +86,13 @@ msgstr "একটি নতুন টার্মিনাল থেকে এ�
 msgid "Username"
 msgstr "নাম"
 
-#: src/remmina_sftp_plugin.c:347 src/remmina_file_editor.c:952
+#: src/remmina_sftp_plugin.c:347 src/remmina_file_editor.c:1084
 #: src/remmina_ssh_plugin.c:1472
 #, fuzzy
 msgid "Authentication type"
 msgstr "প্রমাণীকরণের ধরন"
 
-#: src/remmina_sftp_plugin.c:349 src/remmina_file_editor.c:984
+#: src/remmina_sftp_plugin.c:349 src/remmina_file_editor.c:1116
 #: src/remmina_ssh_plugin.c:1479
 #, fuzzy
 msgid "Password to unlock private key"
@@ -108,7 +108,7 @@ msgstr "এসএসএইচ প্রক্সি কমান্ড"
 msgid "SFTP - Secure File Transfer"
 msgstr "এসএফটিপি - নিরাপদ ফাইল স্থানান্তর"
 
-#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1533
+#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1665
 #, fuzzy
 msgid "Protocol"
 msgstr "প্রোটোকল"
@@ -144,12 +144,12 @@ msgid "Plugins"
 msgstr "প্লাগইন"
 
 #: src/remmina_plugin_manager.c:461 src/remmina_message_panel.c:452
-#: src/remmina_message_panel.c:621 src/remmina_file_editor.c:152
+#: src/remmina_message_panel.c:621 src/remmina_file_editor.c:153
 #, fuzzy
 msgid "_OK"
 msgstr "_OK"
 
-#: src/remmina_plugin_manager.c:479 src/remmina_file_editor.c:1490
+#: src/remmina_plugin_manager.c:479 src/remmina_file_editor.c:1622
 #: data/ui/remmina_main.glade:442
 #, fuzzy
 msgid "Name"
@@ -227,12 +227,12 @@ msgstr "মেটা+"
 msgid "<None>"
 msgstr "<None>"
 
-#: src/remmina_pref_dialog.c:91 src/remmina_file_editor.c:435
+#: src/remmina_pref_dialog.c:91 src/remmina_file_editor.c:436
 #, fuzzy
 msgid "Resolutions"
 msgstr "রেজোলিউশন"
 
-#: src/remmina_pref_dialog.c:91 src/remmina_file_editor.c:435
+#: src/remmina_pref_dialog.c:91 src/remmina_file_editor.c:436
 #, fuzzy
 msgid "Configure the available resolutions"
 msgstr "উপলব্ধ রেজোলিউশনগুলি কনফিগার করুন"
@@ -308,8 +308,8 @@ msgid "Save password"
 msgstr "পাসওয়ার্ড সংরক্ষণ করুন"
 
 #: src/remmina_message_panel.c:457 src/remmina_message_panel.c:629
-#: src/remmina_sftp_client.c:947 src/remmina_file_editor.c:151
-#: src/remmina_file_editor.c:1365 plugins/spice/spice_plugin_file_transfer.c:84
+#: src/remmina_sftp_client.c:947 src/remmina_file_editor.c:152
+#: src/remmina_file_editor.c:1497 plugins/spice/spice_plugin_file_transfer.c:84
 #: data/ui/remmina_key_chooser.glade:8 data/ui/remmina_key_chooser.glade:9
 #: data/ui/remmina_spinner.glade:8 data/ui/remmina_spinner.glade:9
 #, fuzzy
@@ -838,7 +838,7 @@ msgstr "আকার"
 msgid "User"
 msgstr "ব্যবহারকারী"
 
-#: src/remmina_ftp_client.c:932 src/remmina_file_editor.c:1515
+#: src/remmina_ftp_client.c:932 src/remmina_file_editor.c:1647
 #: data/ui/remmina_mpc.glade:115 data/ui/remmina_main.glade:464
 #, fuzzy
 msgid "Group"
@@ -990,8 +990,8 @@ msgstr "একটি আগত %s সংযোগের জন্য বন্�
 msgid "Could not authenticate, attempting reconnection…"
 msgstr "প্রমাণীকরণ করা যায়নি, পুনরায় সংযোগের চেষ্টা করা হচ্ছে…"
 
-#: src/remmina_protocol_widget.c:2025 src/remmina_file_editor.c:346
-#: src/remmina_file_editor.c:917 data/ui/remmina_main.glade:478
+#: src/remmina_protocol_widget.c:2025 src/remmina_file_editor.c:347
+#: src/remmina_file_editor.c:1049 data/ui/remmina_main.glade:478
 #, fuzzy
 msgid "Server"
 msgstr "সার্ভার"
@@ -1316,7 +1316,7 @@ msgstr ""
 msgid "Import"
 msgstr "আমদানি"
 
-#: src/remmina_main.c:1022 src/remmina_file_editor.c:1373
+#: src/remmina_main.c:1022 src/remmina_file_editor.c:1505
 #, fuzzy
 msgid "_Save"
 msgstr "_সংরক্ষণ"
@@ -1419,7 +1419,7 @@ msgstr "ওভাররাইট"
 msgid "The following file already exists in the target folder:"
 msgstr "নিম্নলিখিত ফাইলটি ইতিমধ্যে লক্ষ্য ফোল্ডারে বিদ্যমান:"
 
-#: src/remmina_file_editor.c:60
+#: src/remmina_file_editor.c:61
 #, fuzzy
 msgid ""
 "<big>Supported formats\n"
@@ -1436,7 +1436,7 @@ msgstr ""
 "• আইডি:রিপিটার আইডি নম্বর\n"
 "• unix:///path/socket.sock[১২১]"
 
-#: src/remmina_file_editor.c:69
+#: src/remmina_file_editor.c:70
 #, fuzzy
 msgid ""
 "<big>• command in PATH args %h\n"
@@ -1464,7 +1464,7 @@ msgstr ""
 "সংযোগ করার আগে কমান্ডটি কার্যকর করতে চাইলে ব্যাকগ্রাউন্ডে চলবেন না।\n"
 "</big>"
 
-#: src/remmina_file_editor.c:83
+#: src/remmina_file_editor.c:84
 #, fuzzy
 msgid ""
 "<big>Supported formats\n"
@@ -1477,174 +1477,174 @@ msgstr ""
 "• সার্ভার[:p রট]\n"
 "• username@server[:p রট] (শুধুমাত্র এসএসএইচ প্রোটোকল)[৯২]"
 
-#: src/remmina_file_editor.c:149
+#: src/remmina_file_editor.c:150
 #, fuzzy
 msgid "Choose a Remote Desktop Server"
 msgstr "একটি দূরবর্তী ডেস্কটপ সার্ভার চয়ন করুন"
 
-#: src/remmina_file_editor.c:370
+#: src/remmina_file_editor.c:371
 #, fuzzy, c-format
 msgid "Browse the network to find a %s server"
 msgstr "একটি %s সার্ভার খুঁজতে নেটওয়ার্কব্রাউজ করুন"
 
-#: src/remmina_file_editor.c:471
+#: src/remmina_file_editor.c:472
 #, fuzzy
 msgid "Resolution"
 msgstr "স্পষ্টতা"
 
-#: src/remmina_file_editor.c:478
+#: src/remmina_file_editor.c:479
 #, fuzzy
 msgid "Use initial window size"
 msgstr "প্রাথমিক উইন্ডোর আকার ব্যবহার করুন"
 
-#: src/remmina_file_editor.c:482
+#: src/remmina_file_editor.c:483
 #, fuzzy
 msgid "Use client resolution"
 msgstr "ক্লায়েন্ট রেজোলিউশন ব্যবহার করুন"
 
-#: src/remmina_file_editor.c:493 src/remmina_file_editor.c:897
+#: src/remmina_file_editor.c:494 src/remmina_file_editor.c:1029
 #, fuzzy
 msgid "Custom"
 msgstr "স্বনির্ধারিত"
 
-#: src/remmina_file_editor.c:717
+#: src/remmina_file_editor.c:829
 #, fuzzy
 msgid "Keyboard mapping"
 msgstr "কীবোর্ড ম্যাপিং"
 
-#: src/remmina_file_editor.c:817
+#: src/remmina_file_editor.c:949
 #, fuzzy
 msgid "Behavior"
 msgstr "ব্যাবহার"
 
-#: src/remmina_file_editor.c:820
+#: src/remmina_file_editor.c:952
 #, fuzzy
 msgid "Execute a Command"
 msgstr "একটি কমান্ড কার্যকর করুন"
 
-#: src/remmina_file_editor.c:824
+#: src/remmina_file_editor.c:956
 msgid "Before connecting"
 msgstr "নতুন সংযোগ"
 
-#: src/remmina_file_editor.c:826
+#: src/remmina_file_editor.c:958
 #, fuzzy
 msgid "command %h %u %t %U %p %g --option"
 msgstr "কমান্ড %%%%t %ইউ %পি %G --বিকল্প"
 
-#: src/remmina_file_editor.c:831
+#: src/remmina_file_editor.c:963
 msgid "After connecting"
 msgstr "নতুন সংযোগ"
 
-#: src/remmina_file_editor.c:833
+#: src/remmina_file_editor.c:965
 #, fuzzy
 msgid "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
 msgstr "/পথ/থেকে/কমান্ড -অপ্ট1 আর্গ %%%ইউ %T -অপ্ট2 %ইউ %পি %G"
 
-#: src/remmina_file_editor.c:837
+#: src/remmina_file_editor.c:969
 #, fuzzy
 msgid "Start-up"
 msgstr "স্টার্টআপ"
 
-#: src/remmina_file_editor.c:840
+#: src/remmina_file_editor.c:972
 #, fuzzy
 msgid "Auto-start this profile"
 msgstr "এই প্রোফাইলটি স্বতঃ-শুরু করুন"
 
-#: src/remmina_file_editor.c:870
+#: src/remmina_file_editor.c:1002
 #, fuzzy
 msgid "SSH Tunnel"
 msgstr "এসএসএইচ টানেল"
 
-#: src/remmina_file_editor.c:871
+#: src/remmina_file_editor.c:1003
 #, fuzzy
 msgid "Enable SSH tunnel"
 msgstr "এসএসএইচ টানেল সক্ষম করুন"
 
-#: src/remmina_file_editor.c:878
+#: src/remmina_file_editor.c:1010
 #, fuzzy
 msgid "Tunnel via loopback address"
 msgstr "লুপব্যাক ঠিকানার মাধ্যমে টানেল"
 
-#: src/remmina_file_editor.c:888
+#: src/remmina_file_editor.c:1020
 #, fuzzy, c-format
 msgid "Same server at port %i"
 msgstr "পোর্টে একই সার্ভার %i"
 
-#: src/remmina_file_editor.c:938 plugins/rdp/rdp_plugin.c:2711
+#: src/remmina_file_editor.c:1070 plugins/rdp/rdp_plugin.c:2711
 #, fuzzy
 msgid "Start-up path"
 msgstr "স্টার্ট-আপ পথ"
 
-#: src/remmina_file_editor.c:947
+#: src/remmina_file_editor.c:1079
 #, fuzzy
 msgid "SSH Authentication"
 msgstr "এসএসএইচ প্রমাণীকরণ"
 
-#: src/remmina_file_editor.c:973
+#: src/remmina_file_editor.c:1105
 #, fuzzy
 msgid "SSH private key file"
 msgstr "এসএসএইচ ব্যক্তিগত কী ফাইল"
 
-#: src/remmina_file_editor.c:979 src/remmina_ssh_plugin.c:1477
+#: src/remmina_file_editor.c:1111 src/remmina_ssh_plugin.c:1477
 #, fuzzy
 msgid "SSH certificate file"
 msgstr "এসএসএইচ সার্টিফিকেট ফাইল"
 
-#: src/remmina_file_editor.c:1037
+#: src/remmina_file_editor.c:1169
 #, fuzzy
 msgid "Basic"
 msgstr "মৌলিক"
 
-#: src/remmina_file_editor.c:1043
+#: src/remmina_file_editor.c:1175
 #, fuzzy
 msgid "Advanced"
 msgstr "উন্নত"
 
-#: src/remmina_file_editor.c:1054
+#: src/remmina_file_editor.c:1186
 #, fuzzy
 msgid "Notes"
 msgstr "নোট"
 
-#: src/remmina_file_editor.c:1293
+#: src/remmina_file_editor.c:1425
 #, fuzzy
 msgid "Default settings saved."
 msgstr "ডিফল্ট সেটিংস সংরক্ষিত হয়েছে।"
 
-#: src/remmina_file_editor.c:1363
+#: src/remmina_file_editor.c:1495
 msgid "Remote Connection Profile"
 msgstr "নতুন সংযোগ"
 
-#: src/remmina_file_editor.c:1369
+#: src/remmina_file_editor.c:1501
 #, fuzzy
 msgid "Save as Default"
 msgstr "ডিফল্ট হিসাবে সংরক্ষণ করুন"
 
-#: src/remmina_file_editor.c:1370
+#: src/remmina_file_editor.c:1502
 #, fuzzy
 msgid "Use the current settings as the default for all new connection profiles"
 msgstr "সমস্ত নতুন সংযোগ প্রোফাইলের জন্য ডিফল্ট হিসাবে বর্তমান সেটিংস ব্যবহার করুন"
 
-#: src/remmina_file_editor.c:1378 data/ui/remmina_main.glade:160
+#: src/remmina_file_editor.c:1510 data/ui/remmina_main.glade:160
 #, fuzzy
 msgid "Connect"
 msgstr "সংযোগ"
 
-#: src/remmina_file_editor.c:1381
+#: src/remmina_file_editor.c:1513
 #, fuzzy
 msgid "_Save and Connect"
 msgstr "_Save এবং সংযোগ করুন"
 
-#: src/remmina_file_editor.c:1504
+#: src/remmina_file_editor.c:1636
 #, fuzzy
 msgid "Quick Connect"
 msgstr "দ্রুত সংযোগ"
 
-#: src/remmina_file_editor.c:1528
+#: src/remmina_file_editor.c:1660
 #, fuzzy, c-format
 msgid "Use '%s' as subgroup delimiter"
 msgstr "উপ-গোষ্ঠী সীমাহ্রাসকারী হিসাবে '%s' ব্যবহার করুন"
 
-#: src/remmina_file_editor.c:1594 src/remmina_file_editor.c:1612
+#: src/remmina_file_editor.c:1726 src/remmina_file_editor.c:1744
 #, fuzzy, c-format
 msgid "Could not find the file “%s”."
 msgstr "ফাইলটি খুঁজে পাওয়া যায়নি \"[২৫]\"।"
@@ -3348,8 +3348,9 @@ msgid ""
 msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:1221
-msgid "DPI resolution (int!)"
-msgstr ""
+#, fuzzy
+msgid "DPI resolution"
+msgstr "স্পষ্টতা"
 
 #: plugins/x2go/x2go_plugin.c:1222
 msgid ""

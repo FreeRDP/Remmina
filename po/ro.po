@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-09-21 12:13+0000\n"
-"PO-Revision-Date: 2021-08-28 17:34+0000\n"
+"POT-Creation-Date: 2021-09-21 21:02+0000\n"
+"PO-Revision-Date: 2021-09-22 20:10+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/remmina/remmina/"
 "ro/>\n"
@@ -21,12 +21,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
-"X-Generator: Weblate 4.8.1-dev\n"
+"X-Generator: Weblate 4.9-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:346
 #: src/remmina_protocol_widget.c:1672 src/remmina_protocol_widget.c:1691
-#: src/remmina_file_editor.c:846 src/remmina_file_editor.c:967
+#: src/remmina_file_editor.c:978 src/remmina_file_editor.c:1099
 #: src/remmina_ssh_plugin.c:1369 plugins/rdp/rdp_plugin.c:2667
 #: plugins/www/www_plugin.c:887 plugins/x2go/x2go_plugin.c:1192
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1675
@@ -35,24 +35,24 @@ msgid "Password"
 msgstr "Parolă"
 
 #: src/remmina_sftp_plugin.c:311 src/remmina_sftp_plugin.c:348
-#: src/remmina_file_editor.c:847 src/remmina_ssh_plugin.c:1370
+#: src/remmina_file_editor.c:979 src/remmina_ssh_plugin.c:1370
 #: src/remmina_ssh_plugin.c:1475
 #, fuzzy
 msgid "SSH identity file"
 msgstr "Fișier de identitate SSH"
 
-#: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:848
+#: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:980
 #: src/remmina_ssh_plugin.c:1371
 #, fuzzy
 msgid "SSH agent"
 msgstr "Agent SSH"
 
-#: src/remmina_sftp_plugin.c:313 src/remmina_file_editor.c:849
+#: src/remmina_sftp_plugin.c:313 src/remmina_file_editor.c:981
 #: src/remmina_ssh_plugin.c:1372
 msgid "Public key (automatic)"
 msgstr "Cheie publică (automat)"
 
-#: src/remmina_sftp_plugin.c:314 src/remmina_file_editor.c:850
+#: src/remmina_sftp_plugin.c:314 src/remmina_file_editor.c:982
 #: src/remmina_ssh_plugin.c:1373
 #, fuzzy
 msgid "Kerberos (GSSAPI)"
@@ -77,20 +77,20 @@ msgid "Connect via SSH from a new terminal"
 msgstr "Conectați-vă prin SSH de la un nou terminal"
 
 #: src/remmina_sftp_plugin.c:345 src/remmina_message_panel.c:330
-#: src/remmina_file_editor.c:961 src/remmina_ssh_plugin.c:1473
+#: src/remmina_file_editor.c:1093 src/remmina_ssh_plugin.c:1473
 #: plugins/rdp/rdp_plugin.c:2666 plugins/vnc/vnc_plugin.c:1960
 #: plugins/vnc/vnc_plugin.c:1980 plugins/www/www_plugin.c:886
 #: data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr "Nume de utilizator"
 
-#: src/remmina_sftp_plugin.c:347 src/remmina_file_editor.c:952
+#: src/remmina_sftp_plugin.c:347 src/remmina_file_editor.c:1084
 #: src/remmina_ssh_plugin.c:1472
 #, fuzzy
 msgid "Authentication type"
 msgstr "Tip de autentificare"
 
-#: src/remmina_sftp_plugin.c:349 src/remmina_file_editor.c:984
+#: src/remmina_sftp_plugin.c:349 src/remmina_file_editor.c:1116
 #: src/remmina_ssh_plugin.c:1479
 #, fuzzy
 msgid "Password to unlock private key"
@@ -105,7 +105,7 @@ msgstr "Comandă SSH Proxy"
 msgid "SFTP - Secure File Transfer"
 msgstr "SFTP - Transfer de fișiere securizat"
 
-#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1533
+#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1665
 msgid "Protocol"
 msgstr "Protocol"
 
@@ -134,12 +134,12 @@ msgid "Plugins"
 msgstr "Module"
 
 #: src/remmina_plugin_manager.c:461 src/remmina_message_panel.c:452
-#: src/remmina_message_panel.c:621 src/remmina_file_editor.c:152
+#: src/remmina_message_panel.c:621 src/remmina_file_editor.c:153
 #, fuzzy
 msgid "_OK"
 msgstr "_OK"
 
-#: src/remmina_plugin_manager.c:479 src/remmina_file_editor.c:1490
+#: src/remmina_plugin_manager.c:479 src/remmina_file_editor.c:1622
 #: data/ui/remmina_main.glade:442
 msgid "Name"
 msgstr "Denumire"
@@ -212,11 +212,11 @@ msgstr "Meta+"
 msgid "<None>"
 msgstr "<Nimic>"
 
-#: src/remmina_pref_dialog.c:91 src/remmina_file_editor.c:435
+#: src/remmina_pref_dialog.c:91 src/remmina_file_editor.c:436
 msgid "Resolutions"
 msgstr "Rezoluții"
 
-#: src/remmina_pref_dialog.c:91 src/remmina_file_editor.c:435
+#: src/remmina_pref_dialog.c:91 src/remmina_file_editor.c:436
 #, fuzzy
 msgid "Configure the available resolutions"
 msgstr "Configurați rezoluțiile disponibile"
@@ -293,8 +293,8 @@ msgid "Save password"
 msgstr "Salvați parola"
 
 #: src/remmina_message_panel.c:457 src/remmina_message_panel.c:629
-#: src/remmina_sftp_client.c:947 src/remmina_file_editor.c:151
-#: src/remmina_file_editor.c:1365 plugins/spice/spice_plugin_file_transfer.c:84
+#: src/remmina_sftp_client.c:947 src/remmina_file_editor.c:152
+#: src/remmina_file_editor.c:1497 plugins/spice/spice_plugin_file_transfer.c:84
 #: data/ui/remmina_key_chooser.glade:8 data/ui/remmina_key_chooser.glade:9
 #: data/ui/remmina_spinner.glade:8 data/ui/remmina_spinner.glade:9
 #, fuzzy
@@ -787,7 +787,7 @@ msgstr "Încarcă pe server"
 #: src/remmina_ftp_client.c:775 data/ui/remmina_main.glade:197
 #, fuzzy
 msgid "Delete"
-msgstr "Șterge"
+msgstr "Ștergeți"
 
 #: src/remmina_ftp_client.c:776
 msgid "Delete files on server"
@@ -805,7 +805,7 @@ msgstr "Dimensiune"
 msgid "User"
 msgstr "Utilizator"
 
-#: src/remmina_ftp_client.c:932 src/remmina_file_editor.c:1515
+#: src/remmina_ftp_client.c:932 src/remmina_file_editor.c:1647
 #: data/ui/remmina_mpc.glade:115 data/ui/remmina_main.glade:464
 msgid "Group"
 msgstr "Grup"
@@ -943,8 +943,8 @@ msgstr "Se ascultă portul %i pentru o conexiune %s…"
 msgid "Could not authenticate, attempting reconnection…"
 msgstr "Autentificarea a eșuat. Se încearcă reconectarea…"
 
-#: src/remmina_protocol_widget.c:2025 src/remmina_file_editor.c:346
-#: src/remmina_file_editor.c:917 data/ui/remmina_main.glade:478
+#: src/remmina_protocol_widget.c:2025 src/remmina_file_editor.c:347
+#: src/remmina_file_editor.c:1049 data/ui/remmina_main.glade:478
 msgid "Server"
 msgstr "Server"
 
@@ -1262,7 +1262,7 @@ msgstr ""
 msgid "Import"
 msgstr "Importă"
 
-#: src/remmina_main.c:1022 src/remmina_file_editor.c:1373
+#: src/remmina_main.c:1022 src/remmina_file_editor.c:1505
 #, fuzzy
 msgid "_Save"
 msgstr "_Salvare"
@@ -1360,7 +1360,7 @@ msgstr "Suprascrie"
 msgid "The following file already exists in the target folder:"
 msgstr "Fișierul următor există deja în dosarul de destinație:"
 
-#: src/remmina_file_editor.c:60
+#: src/remmina_file_editor.c:61
 #, fuzzy
 #| msgid ""
 #| "<tt><big>Supported formats\n"
@@ -1382,7 +1382,7 @@ msgstr ""
 "- ID:numărul ID al repetorului\n"
 "- unix:///path/socket.sock</big>"
 
-#: src/remmina_file_editor.c:69
+#: src/remmina_file_editor.c:70
 #, fuzzy
 msgid ""
 "<big>• command in PATH args %h\n"
@@ -1411,7 +1411,7 @@ msgstr ""
 "conectare.\n"
 "</big>"
 
-#: src/remmina_file_editor.c:83
+#: src/remmina_file_editor.c:84
 #, fuzzy
 #| msgid ""
 #| "<tt><big>Supported formats\n"
@@ -1431,164 +1431,164 @@ msgstr ""
 "- server[:port]\n"
 "- username@server[:port] (numai pentru protocolul SSH)</big>"
 
-#: src/remmina_file_editor.c:149
+#: src/remmina_file_editor.c:150
 msgid "Choose a Remote Desktop Server"
 msgstr "Alegeți un server pentru desktop la distanță"
 
-#: src/remmina_file_editor.c:370
+#: src/remmina_file_editor.c:371
 #, c-format
 msgid "Browse the network to find a %s server"
 msgstr "Navigați prin rețea pentru a găsi un server %s"
 
-#: src/remmina_file_editor.c:471
+#: src/remmina_file_editor.c:472
 msgid "Resolution"
 msgstr "Rezoluție"
 
-#: src/remmina_file_editor.c:478
+#: src/remmina_file_editor.c:479
 #, fuzzy
 msgid "Use initial window size"
 msgstr "Utilizați dimensiunea inițială a ferestrei"
 
-#: src/remmina_file_editor.c:482
+#: src/remmina_file_editor.c:483
 msgid "Use client resolution"
 msgstr "Utilizează rezoluția clientului"
 
-#: src/remmina_file_editor.c:493 src/remmina_file_editor.c:897
+#: src/remmina_file_editor.c:494 src/remmina_file_editor.c:1029
 msgid "Custom"
 msgstr "Personalizat"
 
-#: src/remmina_file_editor.c:717
+#: src/remmina_file_editor.c:829
 msgid "Keyboard mapping"
 msgstr "Mapare tastatură"
 
-#: src/remmina_file_editor.c:817
+#: src/remmina_file_editor.c:949
 #, fuzzy
 msgid "Behavior"
 msgstr "Comportament"
 
-#: src/remmina_file_editor.c:820
+#: src/remmina_file_editor.c:952
 #, fuzzy
 msgid "Execute a Command"
 msgstr "Executarea unei comenzi"
 
-#: src/remmina_file_editor.c:824
+#: src/remmina_file_editor.c:956
 msgid "Before connecting"
 msgstr "Conexiune nouă"
 
-#: src/remmina_file_editor.c:826
+#: src/remmina_file_editor.c:958
 #, fuzzy
 msgid "command %h %u %t %U %p %g --option"
 msgstr "comandă %h %u %t %U %p %g --opțiune"
 
-#: src/remmina_file_editor.c:831
+#: src/remmina_file_editor.c:963
 msgid "After connecting"
 msgstr "Conexiune nouă"
 
-#: src/remmina_file_editor.c:833
+#: src/remmina_file_editor.c:965
 #, fuzzy
 msgid "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
 msgstr "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
 
-#: src/remmina_file_editor.c:837
+#: src/remmina_file_editor.c:969
 msgid "Start-up"
 msgstr "Start"
 
-#: src/remmina_file_editor.c:840
+#: src/remmina_file_editor.c:972
 #, fuzzy
 msgid "Auto-start this profile"
 msgstr "Pornirea automată a acestui profil"
 
-#: src/remmina_file_editor.c:870
+#: src/remmina_file_editor.c:1002
 #, fuzzy
 msgid "SSH Tunnel"
 msgstr "Tunel SSH"
 
-#: src/remmina_file_editor.c:871
+#: src/remmina_file_editor.c:1003
 msgid "Enable SSH tunnel"
 msgstr "Activează un tunel SSH"
 
-#: src/remmina_file_editor.c:878
+#: src/remmina_file_editor.c:1010
 msgid "Tunnel via loopback address"
 msgstr "Tunel via adresă loopback"
 
-#: src/remmina_file_editor.c:888
+#: src/remmina_file_editor.c:1020
 #, c-format
 msgid "Same server at port %i"
 msgstr "Același server la portul %i"
 
-#: src/remmina_file_editor.c:938 plugins/rdp/rdp_plugin.c:2711
+#: src/remmina_file_editor.c:1070 plugins/rdp/rdp_plugin.c:2711
 msgid "Start-up path"
 msgstr "Calea de pornire"
 
-#: src/remmina_file_editor.c:947
+#: src/remmina_file_editor.c:1079
 msgid "SSH Authentication"
 msgstr "Autentificare SSH"
 
-#: src/remmina_file_editor.c:973
+#: src/remmina_file_editor.c:1105
 #, fuzzy
 #| msgid "SSH private key passphrase"
 msgid "SSH private key file"
 msgstr "Fișier cu cheie privată SSH"
 
-#: src/remmina_file_editor.c:979 src/remmina_ssh_plugin.c:1477
+#: src/remmina_file_editor.c:1111 src/remmina_ssh_plugin.c:1477
 #, fuzzy
 #| msgid "Accept certificate?"
 msgid "SSH certificate file"
 msgstr "Fișier certificat SSH"
 
-#: src/remmina_file_editor.c:1037
+#: src/remmina_file_editor.c:1169
 msgid "Basic"
 msgstr "Standard"
 
-#: src/remmina_file_editor.c:1043
+#: src/remmina_file_editor.c:1175
 msgid "Advanced"
 msgstr "Avansat"
 
-#: src/remmina_file_editor.c:1054
+#: src/remmina_file_editor.c:1186
 #, fuzzy
 msgid "Notes"
 msgstr "Note"
 
-#: src/remmina_file_editor.c:1293
+#: src/remmina_file_editor.c:1425
 msgid "Default settings saved."
 msgstr "Configurările implicite au fost salvate"
 
-#: src/remmina_file_editor.c:1363
+#: src/remmina_file_editor.c:1495
 msgid "Remote Connection Profile"
 msgstr "Conexiunea VNC a eșuat: %s"
 
-#: src/remmina_file_editor.c:1369
+#: src/remmina_file_editor.c:1501
 #, fuzzy
 msgid "Save as Default"
 msgstr "Salvează ca Implicit"
 
-#: src/remmina_file_editor.c:1370
+#: src/remmina_file_editor.c:1502
 #, fuzzy
 msgid "Use the current settings as the default for all new connection profiles"
 msgstr ""
 "Utilizați setările curente ca valori implicite pentru toate profilurile de "
 "conectare noi"
 
-#: src/remmina_file_editor.c:1378 data/ui/remmina_main.glade:160
+#: src/remmina_file_editor.c:1510 data/ui/remmina_main.glade:160
 #, fuzzy
 msgid "Connect"
 msgstr "Conectare"
 
-#: src/remmina_file_editor.c:1381
+#: src/remmina_file_editor.c:1513
 #, fuzzy
 msgid "_Save and Connect"
 msgstr "Salvează și conectează-te"
 
-#: src/remmina_file_editor.c:1504
+#: src/remmina_file_editor.c:1636
 msgid "Quick Connect"
 msgstr "Conectare rapidă"
 
-#: src/remmina_file_editor.c:1528
+#: src/remmina_file_editor.c:1660
 #, c-format
 msgid "Use '%s' as subgroup delimiter"
 msgstr "Folosește „%s” ca delimitator pentru subgrup"
 
-#: src/remmina_file_editor.c:1594 src/remmina_file_editor.c:1612
+#: src/remmina_file_editor.c:1726 src/remmina_file_editor.c:1744
 #, c-format
 msgid "Could not find the file “%s”."
 msgstr "Eșec la crearea unei sesiuni sftp: %s"
@@ -1968,7 +1968,7 @@ msgstr "Setări ale dispozitivului de intrare"
 #, fuzzy
 #| msgid "Turn on smooth scrolling"
 msgid "Disable smooth scrolling"
-msgstr "Dezactivați derularea fără probleme"
+msgstr "Dezactivați derularea lină"
 
 #: plugins/rdp/rdp_settings.c:669
 #, fuzzy
@@ -2095,7 +2095,7 @@ msgid ""
 "You requested a H.264 GFX mode for the server “%s”, but your libfreerdp does "
 "not support H.264. Please use a non-AVC colour depth setting."
 msgstr ""
-"Ați solicitat un mod H.264 GFX pentru serverul \"%s\", dar libfreerdp nu "
+"Ați solicitat un mod GFX H.264 pentru serverul \"%s\", dar libfreerdp nu "
 "acceptă H.264. Vă rugăm să folosiți o setare de adâncime a culorilor non-AVC."
 
 #: plugins/rdp/rdp_plugin.c:2148
@@ -2169,7 +2169,7 @@ msgstr "256 de culori (8 bpp)"
 #: plugins/rdp/rdp_plugin.c:2547 data/ui/remmina_preferences.glade:641
 #, fuzzy
 msgid "None"
-msgstr "Nimic"
+msgstr "Niciuna"
 
 #: plugins/rdp/rdp_plugin.c:2548
 msgid "Auto-detect"
@@ -2391,18 +2391,20 @@ msgstr ""
 "directoare."
 
 #: plugins/rdp/rdp_plugin.c:2670
+#, fuzzy
 msgid "Restricted admin mode"
-msgstr ""
+msgstr "Mod de administrare restricționat"
 
 #: plugins/rdp/rdp_plugin.c:2671
 #, fuzzy
 #| msgid "Password"
 msgid "Password hash"
-msgstr "Parolă"
+msgstr "Parola hash"
 
 #: plugins/rdp/rdp_plugin.c:2671
+#, fuzzy
 msgid "Restricted admin mode password hash"
-msgstr ""
+msgstr "Hash de parolă în modul admin restricționat"
 
 #: plugins/rdp/rdp_plugin.c:2672
 #, fuzzy
@@ -3098,103 +3100,133 @@ msgid "Secured password storage in the GNOME keyring"
 msgstr "Parola %s"
 
 #: plugins/x2go/x2go_plugin.c:166
+#, fuzzy
 msgid "Broken DialogData! Aborting."
-msgstr ""
+msgstr "DialogData stricat! Abandonarea."
 
 #: plugins/x2go/x2go_plugin.c:170
+#, fuzzy
 msgid "Can't retrieve DialogData! Aborting."
-msgstr ""
+msgstr "Nu se poate prelua DialogData! Anulare."
 
 #: plugins/x2go/x2go_plugin.c:389
+#, fuzzy
 msgid "pyhoca-cli exited unexpectedly. This connection will now be closed."
 msgstr ""
+"pyhoca-cli a ieșit în mod neașteptat. Această conexiune va fi închisă acum."
 
 #: plugins/x2go/x2go_plugin.c:398
+#, fuzzy
 msgid "An error occured."
-msgstr ""
+msgstr "A apărut o eroare"
 
 #: plugins/x2go/x2go_plugin.c:399
+#, fuzzy
 msgid ""
 "Necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
 "Please check your profile settings and pyhoca-cli's output for possible "
 "errors and make sure that the remote server is reachable."
 msgstr ""
+"Procesul copil necesar 'pyhoca-cli' s-a oprit în mod neașteptat.\n"
+"Vă rugăm să verificați setările de profil și ieșirea lui pyhoca-cli pentru "
+"posibile erori și asigurați-vă că serverul la distanță este accesibil."
 
 #: plugins/x2go/x2go_plugin.c:439
-#, c-format
+#, c-format, fuzzy
 msgid ""
 "An unknown error happened while retrieving pyhoca-cli's cmdline features! "
 "Exit code: %i"
 msgstr ""
+"S-a produs o eroare necunoscută în timpul recuperării funcțiilor cmdline ale "
+"pyhoca-cli! Cod de ieșire: %i"
 
 #: plugins/x2go/x2go_plugin.c:444
 #, fuzzy, c-format
 msgid "Error: '%s'"
-msgstr "Eroare:"
+msgstr "Eroare: \"%s"
 
 #: plugins/x2go/x2go_plugin.c:532
 #, fuzzy
 msgid "Enter X2Go credentials"
-msgstr "Introduceți acreditările de autentificare RDP"
+msgstr "Introduceți acreditările X2Go"
 
 #: plugins/x2go/x2go_plugin.c:556
+#, fuzzy
 msgid ""
 "User has requested to save credentials but 'password' is not set! Can't set "
 "a new default password then."
 msgstr ""
+"Utilizatorul a cerut să salveze datele de identificare, dar 'parola' nu este "
+"setată! Atunci nu se poate seta o nouă parolă implicită."
 
 #: plugins/x2go/x2go_plugin.c:666
+#, fuzzy
 msgid "DPI setting is out of bounds. Please adjust in profile settings!"
 msgstr ""
+"Setarea DPI este în afara limitelor. Vă rugăm să ajustați în setările "
+"profilului!"
 
 #: plugins/x2go/x2go_plugin.c:705 plugins/x2go/x2go_plugin.c:714
+#, fuzzy
 msgid "An error occured while starting a X2Go session."
-msgstr ""
+msgstr "S-a produs o eroare la pornirea unei sesiuni X2Go."
 
 #: plugins/x2go/x2go_plugin.c:715
-#, c-format
+#, c-format, fuzzy
 msgid "Failed to start pyhoca-cli (%i): '%s'"
-msgstr ""
+msgstr "Nu a reușit să pornească pyhoca-cli (%i): '%s'"
 
 #: plugins/x2go/x2go_plugin.c:784
+#, fuzzy
 msgid ""
 "Couldn't get pyhoca-cli's cmdline-features. This indicates that either your "
 "pyhoca-cli version is too old or pyhoca-cli is not installed! An old limited "
 "set of features will be used now."
 msgstr ""
+"Nu am putut obține caracteristicile cmdline ale pyhoca-cli. Acest lucru "
+"indică faptul că fie versiunea pyhoca-cli este prea veche, fie pyhoca-cli nu "
+"este instalat! Acum se va utiliza un set vechi și limitat de caracteristici."
 
 #: plugins/x2go/x2go_plugin.c:796
+#, fuzzy
 msgid ""
 "parsing pyhoca-cli features was not possible! Using limited feature set now."
 msgstr ""
+"parsarea caracteristicilor pyhoca-cli nu a fost posibilă! Folosind acum un "
+"set limitat de caracteristici."
 
 #: plugins/x2go/x2go_plugin.c:802
+#, fuzzy
 msgid "Successfully retrieved following pyhoca-cli features:"
-msgstr ""
+msgstr "A recuperat cu succes următoarele caracteristici pyhoca-cli:"
 
 #: plugins/x2go/x2go_plugin.c:806
-#, c-format
+#, c-format, fuzzy
 msgid "Available feature[%i]: '%s'"
-msgstr ""
+msgstr "Caracteristică disponibilă[%i]: '%s]'"
 
 #: plugins/x2go/x2go_plugin.c:948
+#, fuzzy
 msgid "Waiting for X2Go Agent window to appear."
-msgstr ""
+msgstr "Așteptați să apară fereastra X2Go Agent."
 
 #: plugins/x2go/x2go_plugin.c:974
+#, fuzzy
 msgid "Waiting for pyhoca-cli to show the session's window."
-msgstr ""
+msgstr "Așteptând ca pyhoca-cli să afișeze fereastra sesiunii."
 
 #: plugins/x2go/x2go_plugin.c:1145
-#, c-format
+#, c-format, fuzzy
 msgid "Protocol %s is unavailable because GtkSocket only works under X.org"
 msgstr ""
+"Protocolul %s nu este disponibil deoarece GtkSocket funcționează numai sub X."
+"org"
 
 #: plugins/x2go/x2go_plugin.c:1189
 #, fuzzy
 #| msgid "Username"
 msgid "User name"
-msgstr "Nume de utilizator"
+msgstr "Nume utilizator"
 
 #: plugins/x2go/x2go_plugin.c:1195
 #, fuzzy
@@ -3203,58 +3235,70 @@ msgid "Startup program"
 msgstr "Program pornire"
 
 #: plugins/x2go/x2go_plugin.c:1197
+#, fuzzy
 msgid "Which command should be executed after creating the X2Go session?"
-msgstr ""
+msgstr "Ce comandă trebuie executată după crearea sesiunii X2Go?"
 
 #: plugins/x2go/x2go_plugin.c:1204
 #, fuzzy
 #| msgid "Keyboard layout"
 msgid "Keyboard Layout (auto)"
-msgstr "Aranjament tastatură"
+msgstr "Dispunerea tastaturii (auto)"
 
 #: plugins/x2go/x2go_plugin.c:1207
 #, fuzzy
 #| msgid "Keyboard layout"
 msgid "Keyboard type (auto)"
-msgstr "Aranjament tastatură"
+msgstr "Tip de tastatură (auto)"
 
 #: plugins/x2go/x2go_plugin.c:1210
 #, fuzzy
 msgid "Audio support"
-msgstr "Activați suportul Java"
+msgstr "Suport audio"
 
 #: plugins/x2go/x2go_plugin.c:1212
+#, fuzzy
 msgid "X2Go server's sound system (default: 'pulse')."
-msgstr ""
+msgstr "Sistemul de sunet al serverului X2Go (implicit: \"pulse\")."
 
 #: plugins/x2go/x2go_plugin.c:1215
 #, fuzzy
 #| msgid "Per connection"
 msgid "Clipboard direction"
-msgstr "Redirecționarea TCP"
+msgstr "Direcția clipboard-ului"
 
 #: plugins/x2go/x2go_plugin.c:1217
+#, fuzzy
 msgid ""
 "In which direction should clipboard content be copied? (default: 'both')."
 msgstr ""
+"În ce direcție trebuie copiat conținutul clipboard-ului? (implicit: \"ambele"
+"\")."
 
 #: plugins/x2go/x2go_plugin.c:1221
-msgid "DPI resolution (int!)"
-msgstr ""
+#, fuzzy
+#| msgid "Resolution"
+msgid "DPI resolution"
+msgstr "Rezoluția DPI"
 
 #: plugins/x2go/x2go_plugin.c:1222
+#, fuzzy
 msgid ""
 "Launch session with a specific resolution (in dots per inch). Must be "
 "between 20 and 400"
 msgstr ""
+"Lansarea sesiunii cu o anumită rezoluție (în puncte pe inch). Trebuie să fie "
+"între 20 și 400"
 
 #: plugins/x2go/x2go_plugin.c:1265
+#, fuzzy
 msgid "X2Go plugin loaded."
-msgstr ""
+msgstr "Plugin-ul X2Go a fost încărcat."
 
 #: plugins/x2go/x2go_plugin.h:43
+#, fuzzy
 msgid "X2Go - Launch an X2Go session"
-msgstr ""
+msgstr "X2Go - Lansarea unei sesiuni X2Go"
 
 #: plugins/gvnc/gvnc_plugin_config.h:40
 #, fuzzy
@@ -3451,7 +3495,7 @@ msgid ""
 "Some Remmina functions need to be set up to work properly.\n"
 "</span>\n"
 msgstr ""
-"<big><b>Remmina Snap package</b></big>\n"
+"<big><b>Remmina Snap package</b></big></big>\n"
 "\n"
 "<span>\n"
 "Remmina rulează pe sistemul dumneavoastră ca pachet Snap.\n"
@@ -3565,7 +3609,7 @@ msgstr ""
 #: data/ui/remmina_about.glade:40
 #, fuzzy
 msgid "Website"
-msgstr "Site-ul"
+msgstr "Site web"
 
 #: data/ui/remmina_string_list.glade:14 data/ui/remmina_string_list.glade:158
 msgid "Add"
@@ -3650,7 +3694,7 @@ msgid ""
 "release notes\"><i>Visit the website to read the release notes</i></a>.\n"
 "</span>"
 msgstr ""
-"<big><b>Știrile sunt oprite</b></big>\n"
+"<big><b>Știrile sunt închise</b></big></big>\n"
 "\n"
 "<span>\n"
 "Activarea noutăților înseamnă că programul se conectează la un server "
@@ -3663,8 +3707,8 @@ msgstr ""
 "\n"
 "<span>\n"
 "<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
-"release notes\"><i>Vizitați site-ul web pentru a citi notele de lansare</i></"
-"a>.\n"
+"release notes\"><i><i>Vizitați site-ul web pentru a citi notele de "
+"lansare</i></a>.\n"
 "</span>"
 
 #. The star (*) is a reference to privacy consent
@@ -3675,9 +3719,9 @@ msgid ""
 "remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
 "\">anonymous</a></b> statistics. (*)"
 msgstr ""
-"Trimiteți statistici <b><a href=\"https://remmina.gitlab.io/remminadoc."
-"gitlab.io/remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
-"\">anonime</a></b>. (*)"
+"Trimiteți statistici <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab"
+".io/remmina__stats_8c.html#details\" title=\"Remmina usage statistics\""
+">anonime</a></b></b>. (*)"
 
 #: data/ui/remmina_news.glade:142 data/ui/remmina_news.glade:195
 #, fuzzy
@@ -3736,14 +3780,14 @@ msgstr ""
 "<span>\n"
 "<b>Aveți recunoștința noastră pentru că ați ales un software liber cu "
 "copyleft, <a href=\"https://remmina.org/donations/\" title=\"Where’s the "
-"money, Lebowski? “blblblblblb”\">donațiile ne fac fericiți</a> și ne ajută "
-"să îmbunătățim Remmina.</b>\n"
+"money, Lebowski? “blblblblblb”\">donațiile ne fac de asemenea fericiți</a>, "
+"și ne ajută să îmbunătățim în continuare Remmina.</b>\n"
 "</span>\n"
 
 #: data/ui/remmina_news.glade:277
 #, fuzzy
 msgid "<big>Contribute</big>"
-msgstr "<big>Contribuiți</big>"
+msgstr "<big>Contribute</big>"
 
 #: data/ui/remmina_key_chooser.glade:23
 #, fuzzy

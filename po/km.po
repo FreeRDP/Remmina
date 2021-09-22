@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-09-21 12:13+0000\n"
+"POT-Creation-Date: 2021-09-21 21:02+0000\n"
 "PO-Revision-Date: 2021-07-16 08:59+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Khmer (Central) <https://hosted.weblate.org/projects/remmina/"
@@ -23,7 +23,7 @@ msgstr ""
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:346
 #: src/remmina_protocol_widget.c:1672 src/remmina_protocol_widget.c:1691
-#: src/remmina_file_editor.c:846 src/remmina_file_editor.c:967
+#: src/remmina_file_editor.c:978 src/remmina_file_editor.c:1099
 #: src/remmina_ssh_plugin.c:1369 plugins/rdp/rdp_plugin.c:2667
 #: plugins/www/www_plugin.c:887 plugins/x2go/x2go_plugin.c:1192
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1675
@@ -32,25 +32,25 @@ msgid "Password"
 msgstr "ពាក្យសម្ងាត់"
 
 #: src/remmina_sftp_plugin.c:311 src/remmina_sftp_plugin.c:348
-#: src/remmina_file_editor.c:847 src/remmina_ssh_plugin.c:1370
+#: src/remmina_file_editor.c:979 src/remmina_ssh_plugin.c:1370
 #: src/remmina_ssh_plugin.c:1475
 #, fuzzy
 msgid "SSH identity file"
 msgstr "ឯកសារអត្តសញ្ញាណ SSH"
 
-#: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:848
+#: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:980
 #: src/remmina_ssh_plugin.c:1371
 #, fuzzy
 msgid "SSH agent"
 msgstr "ភ្នាក់ងារ SSH"
 
-#: src/remmina_sftp_plugin.c:313 src/remmina_file_editor.c:849
+#: src/remmina_sftp_plugin.c:313 src/remmina_file_editor.c:981
 #: src/remmina_ssh_plugin.c:1372
 #, fuzzy
 msgid "Public key (automatic)"
 msgstr "គន្លឹះសាធារណៈ (ស្វ័យប្រវត្តិ)"
 
-#: src/remmina_sftp_plugin.c:314 src/remmina_file_editor.c:850
+#: src/remmina_sftp_plugin.c:314 src/remmina_file_editor.c:982
 #: src/remmina_ssh_plugin.c:1373
 #, fuzzy
 msgid "Kerberos (GSSAPI)"
@@ -77,7 +77,7 @@ msgid "Connect via SSH from a new terminal"
 msgstr "តភ្ជាប់តាមរយៈ SSH ពីស្ថានីយថ្មី"
 
 #: src/remmina_sftp_plugin.c:345 src/remmina_message_panel.c:330
-#: src/remmina_file_editor.c:961 src/remmina_ssh_plugin.c:1473
+#: src/remmina_file_editor.c:1093 src/remmina_ssh_plugin.c:1473
 #: plugins/rdp/rdp_plugin.c:2666 plugins/vnc/vnc_plugin.c:1960
 #: plugins/vnc/vnc_plugin.c:1980 plugins/www/www_plugin.c:886
 #: data/ui/remmina_mpc.glade:144
@@ -85,13 +85,13 @@ msgstr "តភ្ជាប់តាមរយៈ SSH ពីស្ថានីយ�
 msgid "Username"
 msgstr "ឈ្មោះ​គណនី"
 
-#: src/remmina_sftp_plugin.c:347 src/remmina_file_editor.c:952
+#: src/remmina_sftp_plugin.c:347 src/remmina_file_editor.c:1084
 #: src/remmina_ssh_plugin.c:1472
 #, fuzzy
 msgid "Authentication type"
 msgstr "ប្រភេទ authentication"
 
-#: src/remmina_sftp_plugin.c:349 src/remmina_file_editor.c:984
+#: src/remmina_sftp_plugin.c:349 src/remmina_file_editor.c:1116
 #: src/remmina_ssh_plugin.c:1479
 #, fuzzy
 msgid "Password to unlock private key"
@@ -107,7 +107,7 @@ msgstr "បញ្ជា SSH Proxy"
 msgid "SFTP - Secure File Transfer"
 msgstr "SFTP - ការផ្ទេរឯកសារសុវត្ថិភាព"
 
-#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1533
+#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1665
 msgid "Protocol"
 msgstr "ពិធីការ"
 
@@ -136,12 +136,12 @@ msgid "Plugins"
 msgstr "កម្មវិធី​ជំនួយ"
 
 #: src/remmina_plugin_manager.c:461 src/remmina_message_panel.c:452
-#: src/remmina_message_panel.c:621 src/remmina_file_editor.c:152
+#: src/remmina_message_panel.c:621 src/remmina_file_editor.c:153
 #, fuzzy
 msgid "_OK"
 msgstr "_OK"
 
-#: src/remmina_plugin_manager.c:479 src/remmina_file_editor.c:1490
+#: src/remmina_plugin_manager.c:479 src/remmina_file_editor.c:1622
 #: data/ui/remmina_main.glade:442
 msgid "Name"
 msgstr "ឈ្មោះ"
@@ -214,11 +214,11 @@ msgstr "មេតា+"
 msgid "<None>"
 msgstr "<None>"
 
-#: src/remmina_pref_dialog.c:91 src/remmina_file_editor.c:435
+#: src/remmina_pref_dialog.c:91 src/remmina_file_editor.c:436
 msgid "Resolutions"
 msgstr "គុណភាព​បង្ហាញ"
 
-#: src/remmina_pref_dialog.c:91 src/remmina_file_editor.c:435
+#: src/remmina_pref_dialog.c:91 src/remmina_file_editor.c:436
 #, fuzzy
 msgid "Configure the available resolutions"
 msgstr "កំណត់ រចនា សម្ព័ន្ធ សេចក្តីសម្រេច ដែល អាច រក បាន"
@@ -295,8 +295,8 @@ msgid "Save password"
 msgstr "រក្សា​​ទុក​​​ពាក្យ​​​សម្ងាត់"
 
 #: src/remmina_message_panel.c:457 src/remmina_message_panel.c:629
-#: src/remmina_sftp_client.c:947 src/remmina_file_editor.c:151
-#: src/remmina_file_editor.c:1365 plugins/spice/spice_plugin_file_transfer.c:84
+#: src/remmina_sftp_client.c:947 src/remmina_file_editor.c:152
+#: src/remmina_file_editor.c:1497 plugins/spice/spice_plugin_file_transfer.c:84
 #: data/ui/remmina_key_chooser.glade:8 data/ui/remmina_key_chooser.glade:9
 #: data/ui/remmina_spinner.glade:8 data/ui/remmina_spinner.glade:9
 #, fuzzy
@@ -816,7 +816,7 @@ msgstr "ទំហំ"
 msgid "User"
 msgstr "អ្នក​ប្រើ"
 
-#: src/remmina_ftp_client.c:932 src/remmina_file_editor.c:1515
+#: src/remmina_ftp_client.c:932 src/remmina_file_editor.c:1647
 #: data/ui/remmina_mpc.glade:115 data/ui/remmina_main.glade:464
 msgid "Group"
 msgstr "ដាក់​ជា​ក្រុម"
@@ -958,8 +958,8 @@ msgstr "ស្តាប់នៅកំពង់ផែ [១៨] សម្រា�
 msgid "Could not authenticate, attempting reconnection…"
 msgstr "មិន អាច ផ្ទៀងផ្ទាត់ បាន ទេ ការ ប៉ុនប៉ង តភ្ជាប់ ឡើង វិញ…"
 
-#: src/remmina_protocol_widget.c:2025 src/remmina_file_editor.c:346
-#: src/remmina_file_editor.c:917 data/ui/remmina_main.glade:478
+#: src/remmina_protocol_widget.c:2025 src/remmina_file_editor.c:347
+#: src/remmina_file_editor.c:1049 data/ui/remmina_main.glade:478
 msgid "Server"
 msgstr "ម៉ាស៊ីន​បម្រើ"
 
@@ -1278,7 +1278,7 @@ msgstr ""
 msgid "Import"
 msgstr "នាំ​ចូល"
 
-#: src/remmina_main.c:1022 src/remmina_file_editor.c:1373
+#: src/remmina_main.c:1022 src/remmina_file_editor.c:1505
 #, fuzzy
 msgid "_Save"
 msgstr "_Save"
@@ -1379,7 +1379,7 @@ msgstr "ករ លើសលវង"
 msgid "The following file already exists in the target folder:"
 msgstr "ឯកសារ ខាង ក្រោម មាន រួច ហើយ នៅ ក្នុង ថត គោលដៅ & # 160; ៖"
 
-#: src/remmina_file_editor.c:60
+#: src/remmina_file_editor.c:61
 #, fuzzy
 msgid ""
 "<big>Supported formats\n"
@@ -1396,7 +1396,7 @@ msgstr ""
 "• ID:repeater ID number\n"
 "• unix:///path/socket.sock</big>"
 
-#: src/remmina_file_editor.c:69
+#: src/remmina_file_editor.c:70
 #, fuzzy
 msgid ""
 "<big>• command in PATH args %h\n"
@@ -1425,7 +1425,7 @@ msgstr ""
 "ភ្ជាប់ ។\n"
 "</big>"
 
-#: src/remmina_file_editor.c:83
+#: src/remmina_file_editor.c:84
 #, fuzzy
 msgid ""
 "<big>Supported formats\n"
@@ -1438,167 +1438,167 @@ msgstr ""
 "• ម៉ាស៊ីន បម្រើ[:p]\n"
 "• username@server[:p] (SSH protocol only)</big>"
 
-#: src/remmina_file_editor.c:149
+#: src/remmina_file_editor.c:150
 #, fuzzy
 msgid "Choose a Remote Desktop Server"
 msgstr "ជ្រើស ម៉ាស៊ីន បម្រើ ផ្ទៃតុ ពី ចម្ងាយ"
 
-#: src/remmina_file_editor.c:370
+#: src/remmina_file_editor.c:371
 #, fuzzy, c-format
 msgid "Browse the network to find a %s server"
 msgstr "មកមើលបណ្តាញដើម្បីស្វែងរក server %s"
 
-#: src/remmina_file_editor.c:471
+#: src/remmina_file_editor.c:472
 msgid "Resolution"
 msgstr "​គុណភាព​បង្ហាញ"
 
-#: src/remmina_file_editor.c:478
+#: src/remmina_file_editor.c:479
 #, fuzzy
 msgid "Use initial window size"
 msgstr "ប្រើ ទំហំ បង្អួច ដំបូង"
 
-#: src/remmina_file_editor.c:482
+#: src/remmina_file_editor.c:483
 #, fuzzy
 msgid "Use client resolution"
 msgstr "ការប្រើប្រាស់ដំណោះស្រាយអតិថិជន"
 
-#: src/remmina_file_editor.c:493 src/remmina_file_editor.c:897
+#: src/remmina_file_editor.c:494 src/remmina_file_editor.c:1029
 msgid "Custom"
 msgstr "ផ្ទាល់​ខ្លួន​"
 
-#: src/remmina_file_editor.c:717
+#: src/remmina_file_editor.c:829
 #, fuzzy
 msgid "Keyboard mapping"
 msgstr "ការ ផ្គូផ្គង ក្ដារ ចុច"
 
-#: src/remmina_file_editor.c:817
+#: src/remmina_file_editor.c:949
 #, fuzzy
 msgid "Behavior"
 msgstr "ឥរិយាបថ"
 
-#: src/remmina_file_editor.c:820
+#: src/remmina_file_editor.c:952
 #, fuzzy
 msgid "Execute a Command"
 msgstr "កាត់ទោសបញ្ជា"
 
-#: src/remmina_file_editor.c:824
+#: src/remmina_file_editor.c:956
 msgid "Before connecting"
 msgstr "ការ​​​តភ្ជាប់​​ថ្មី"
 
-#: src/remmina_file_editor.c:826
+#: src/remmina_file_editor.c:958
 #, fuzzy
 msgid "command %h %u %t %U %p %g --option"
 msgstr "តើ អ្នក នឹង ឆ្លើយ យ៉ាង ណា?"
 
-#: src/remmina_file_editor.c:831
+#: src/remmina_file_editor.c:963
 msgid "After connecting"
 msgstr "ការ​​​តភ្ជាប់​​ថ្មី"
 
-#: src/remmina_file_editor.c:833
+#: src/remmina_file_editor.c:965
 #, fuzzy
 msgid "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
 msgstr "តើ អ្នក នឹង ឆ្លើយ យ៉ាង ណា?"
 
-#: src/remmina_file_editor.c:837
+#: src/remmina_file_editor.c:969
 msgid "Start-up"
 msgstr "ចាប់ផ្ដើម​កម្មវិធី"
 
-#: src/remmina_file_editor.c:840
+#: src/remmina_file_editor.c:972
 #, fuzzy
 msgid "Auto-start this profile"
 msgstr "ការ ចាប់ ផ្តើម ទម្រង់ នេះ ដោយ ស្វ័យ ប្រវត្តិ"
 
-#: src/remmina_file_editor.c:870
+#: src/remmina_file_editor.c:1002
 #, fuzzy
 msgid "SSH Tunnel"
 msgstr "ផ្លូវ រូង ក្រោម ដី SSH"
 
-#: src/remmina_file_editor.c:871
+#: src/remmina_file_editor.c:1003
 #, fuzzy
 msgid "Enable SSH tunnel"
 msgstr "ធ្វើអោយផ្លូវរូងក្រោមដី SSH អាច"
 
-#: src/remmina_file_editor.c:878
+#: src/remmina_file_editor.c:1010
 #, fuzzy
 msgid "Tunnel via loopback address"
 msgstr "ផ្លូវ រូង ក្រោម ដី តាម រយៈ អាសយដ្ឋាន loopback"
 
-#: src/remmina_file_editor.c:888
+#: src/remmina_file_editor.c:1020
 #, fuzzy, c-format
 msgid "Same server at port %i"
 msgstr "ម៉ាស៊ីនបម្រើដូចគ្នានៅ port %i"
 
-#: src/remmina_file_editor.c:938 plugins/rdp/rdp_plugin.c:2711
+#: src/remmina_file_editor.c:1070 plugins/rdp/rdp_plugin.c:2711
 msgid "Start-up path"
 msgstr "ចាប់ផ្ដើម​កម្មវិធី"
 
-#: src/remmina_file_editor.c:947
+#: src/remmina_file_editor.c:1079
 #, fuzzy
 msgid "SSH Authentication"
 msgstr "SSH Authentication"
 
-#: src/remmina_file_editor.c:973
+#: src/remmina_file_editor.c:1105
 #, fuzzy
 msgid "SSH private key file"
 msgstr "ឯកសារគន្លឹះឯកជន SSH"
 
-#: src/remmina_file_editor.c:979 src/remmina_ssh_plugin.c:1477
+#: src/remmina_file_editor.c:1111 src/remmina_ssh_plugin.c:1477
 #, fuzzy
 msgid "SSH certificate file"
 msgstr "ឯកសារវិញ្ញាបនបត្រ SSH"
 
-#: src/remmina_file_editor.c:1037
+#: src/remmina_file_editor.c:1169
 msgid "Basic"
 msgstr "បឋម"
 
-#: src/remmina_file_editor.c:1043
+#: src/remmina_file_editor.c:1175
 msgid "Advanced"
 msgstr "កម្រិត​ខ្ពស់"
 
-#: src/remmina_file_editor.c:1054
+#: src/remmina_file_editor.c:1186
 #, fuzzy
 msgid "Notes"
 msgstr "សម្គាល់"
 
-#: src/remmina_file_editor.c:1293
+#: src/remmina_file_editor.c:1425
 #, fuzzy
 msgid "Default settings saved."
 msgstr "ការ កំណត់ លំនាំ ដើម បាន រក្សា ទុក & # 160; ។"
 
-#: src/remmina_file_editor.c:1363
+#: src/remmina_file_editor.c:1495
 msgid "Remote Connection Profile"
 msgstr "ការ​​​តភ្ជាប់​​ថ្មី"
 
-#: src/remmina_file_editor.c:1369
+#: src/remmina_file_editor.c:1501
 #, fuzzy
 msgid "Save as Default"
 msgstr "រក្សាទុកជាលំនាំដើម"
 
-#: src/remmina_file_editor.c:1370
+#: src/remmina_file_editor.c:1502
 #, fuzzy
 msgid "Use the current settings as the default for all new connection profiles"
 msgstr "ប្រើ ការកំណត់ បច្ចុប្បន្ន ជា លំនាំដើម សម្រាប់ ទម្រង់ តភ្ជាប់ ថ្មី ទាំងអស់"
 
-#: src/remmina_file_editor.c:1378 data/ui/remmina_main.glade:160
+#: src/remmina_file_editor.c:1510 data/ui/remmina_main.glade:160
 #, fuzzy
 msgid "Connect"
 msgstr "Connect"
 
-#: src/remmina_file_editor.c:1381
+#: src/remmina_file_editor.c:1513
 #, fuzzy
 msgid "_Save and Connect"
 msgstr "_Save និង Connect"
 
-#: src/remmina_file_editor.c:1504
+#: src/remmina_file_editor.c:1636
 msgid "Quick Connect"
 msgstr "តភ្ជាប់រហ័ស"
 
-#: src/remmina_file_editor.c:1528
+#: src/remmina_file_editor.c:1660
 #, fuzzy, c-format
 msgid "Use '%s' as subgroup delimiter"
 msgstr "ប្រើ '%s' ជា អនុក្រុម"
 
-#: src/remmina_file_editor.c:1594 src/remmina_file_editor.c:1612
+#: src/remmina_file_editor.c:1726 src/remmina_file_editor.c:1744
 #, fuzzy, c-format
 msgid "Could not find the file “%s”."
 msgstr "មិន អាច រក ឯកសារ \"%s\"បាន ទេ។"
@@ -3290,8 +3290,10 @@ msgid ""
 msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:1221
-msgid "DPI resolution (int!)"
-msgstr ""
+#, fuzzy
+#| msgid "Resolution"
+msgid "DPI resolution"
+msgstr "​គុណភាព​បង្ហាញ"
 
 #: plugins/x2go/x2go_plugin.c:1222
 msgid ""

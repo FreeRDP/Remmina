@@ -16,8 +16,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-09-21 12:13+0000\n"
-"PO-Revision-Date: 2021-09-16 10:37+0000\n"
+"POT-Creation-Date: 2021-09-21 21:02+0000\n"
+"PO-Revision-Date: 2021-09-22 20:10+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/remmina/remmina/"
 "ja/>\n"
@@ -31,7 +31,7 @@ msgstr ""
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:346
 #: src/remmina_protocol_widget.c:1672 src/remmina_protocol_widget.c:1691
-#: src/remmina_file_editor.c:846 src/remmina_file_editor.c:967
+#: src/remmina_file_editor.c:978 src/remmina_file_editor.c:1099
 #: src/remmina_ssh_plugin.c:1369 plugins/rdp/rdp_plugin.c:2667
 #: plugins/www/www_plugin.c:887 plugins/x2go/x2go_plugin.c:1192
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1675
@@ -40,22 +40,22 @@ msgid "Password"
 msgstr "パスワード"
 
 #: src/remmina_sftp_plugin.c:311 src/remmina_sftp_plugin.c:348
-#: src/remmina_file_editor.c:847 src/remmina_ssh_plugin.c:1370
+#: src/remmina_file_editor.c:979 src/remmina_ssh_plugin.c:1370
 #: src/remmina_ssh_plugin.c:1475
 msgid "SSH identity file"
 msgstr "SSH 秘密鍵ファイル"
 
-#: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:848
+#: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:980
 #: src/remmina_ssh_plugin.c:1371
 msgid "SSH agent"
 msgstr "SSH エージェント"
 
-#: src/remmina_sftp_plugin.c:313 src/remmina_file_editor.c:849
+#: src/remmina_sftp_plugin.c:313 src/remmina_file_editor.c:981
 #: src/remmina_ssh_plugin.c:1372
 msgid "Public key (automatic)"
 msgstr "公開鍵 (自動)"
 
-#: src/remmina_sftp_plugin.c:314 src/remmina_file_editor.c:850
+#: src/remmina_sftp_plugin.c:314 src/remmina_file_editor.c:982
 #: src/remmina_ssh_plugin.c:1373
 msgid "Kerberos (GSSAPI)"
 msgstr "Kerberos (GSSAPI)"
@@ -77,19 +77,19 @@ msgid "Connect via SSH from a new terminal"
 msgstr "新しい端末から SSH で接続"
 
 #: src/remmina_sftp_plugin.c:345 src/remmina_message_panel.c:330
-#: src/remmina_file_editor.c:961 src/remmina_ssh_plugin.c:1473
+#: src/remmina_file_editor.c:1093 src/remmina_ssh_plugin.c:1473
 #: plugins/rdp/rdp_plugin.c:2666 plugins/vnc/vnc_plugin.c:1960
 #: plugins/vnc/vnc_plugin.c:1980 plugins/www/www_plugin.c:886
 #: data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr "ユーザー名"
 
-#: src/remmina_sftp_plugin.c:347 src/remmina_file_editor.c:952
+#: src/remmina_sftp_plugin.c:347 src/remmina_file_editor.c:1084
 #: src/remmina_ssh_plugin.c:1472
 msgid "Authentication type"
 msgstr "認証方式"
 
-#: src/remmina_sftp_plugin.c:349 src/remmina_file_editor.c:984
+#: src/remmina_sftp_plugin.c:349 src/remmina_file_editor.c:1116
 #: src/remmina_ssh_plugin.c:1479
 msgid "Password to unlock private key"
 msgstr "秘密鍵のロックを解除するパスワード"
@@ -102,7 +102,7 @@ msgstr "SSH プロキシコマンド"
 msgid "SFTP - Secure File Transfer"
 msgstr "SFTP - セキュアなファイル転送"
 
-#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1533
+#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1665
 msgid "Protocol"
 msgstr "プロトコル"
 
@@ -131,11 +131,11 @@ msgid "Plugins"
 msgstr "プラグイン"
 
 #: src/remmina_plugin_manager.c:461 src/remmina_message_panel.c:452
-#: src/remmina_message_panel.c:621 src/remmina_file_editor.c:152
+#: src/remmina_message_panel.c:621 src/remmina_file_editor.c:153
 msgid "_OK"
 msgstr "OK(_O)"
 
-#: src/remmina_plugin_manager.c:479 src/remmina_file_editor.c:1490
+#: src/remmina_plugin_manager.c:479 src/remmina_file_editor.c:1622
 #: data/ui/remmina_main.glade:442
 msgid "Name"
 msgstr "名前"
@@ -201,11 +201,11 @@ msgstr "Meta+"
 msgid "<None>"
 msgstr "<なし>"
 
-#: src/remmina_pref_dialog.c:91 src/remmina_file_editor.c:435
+#: src/remmina_pref_dialog.c:91 src/remmina_file_editor.c:436
 msgid "Resolutions"
 msgstr "解像度"
 
-#: src/remmina_pref_dialog.c:91 src/remmina_file_editor.c:435
+#: src/remmina_pref_dialog.c:91 src/remmina_file_editor.c:436
 msgid "Configure the available resolutions"
 msgstr "利用可能な解像度の設定"
 
@@ -275,8 +275,8 @@ msgid "Save password"
 msgstr "パスワードを保存する"
 
 #: src/remmina_message_panel.c:457 src/remmina_message_panel.c:629
-#: src/remmina_sftp_client.c:947 src/remmina_file_editor.c:151
-#: src/remmina_file_editor.c:1365 plugins/spice/spice_plugin_file_transfer.c:84
+#: src/remmina_sftp_client.c:947 src/remmina_file_editor.c:152
+#: src/remmina_file_editor.c:1497 plugins/spice/spice_plugin_file_transfer.c:84
 #: data/ui/remmina_key_chooser.glade:8 data/ui/remmina_key_chooser.glade:9
 #: data/ui/remmina_spinner.glade:8 data/ui/remmina_spinner.glade:9
 msgid "_Cancel"
@@ -751,7 +751,7 @@ msgstr "サイズ"
 msgid "User"
 msgstr "ユーザー"
 
-#: src/remmina_ftp_client.c:932 src/remmina_file_editor.c:1515
+#: src/remmina_ftp_client.c:932 src/remmina_file_editor.c:1647
 #: data/ui/remmina_mpc.glade:115 data/ui/remmina_main.glade:464
 msgid "Group"
 msgstr "グループ"
@@ -885,8 +885,8 @@ msgstr "ポート %i への %s 接続を待ち受け中…"
 msgid "Could not authenticate, attempting reconnection…"
 msgstr "認証できませんでした。再接続しています…"
 
-#: src/remmina_protocol_widget.c:2025 src/remmina_file_editor.c:346
-#: src/remmina_file_editor.c:917 data/ui/remmina_main.glade:478
+#: src/remmina_protocol_widget.c:2025 src/remmina_file_editor.c:347
+#: src/remmina_file_editor.c:1049 data/ui/remmina_main.glade:478
 msgid "Server"
 msgstr "サーバー"
 
@@ -1186,7 +1186,7 @@ msgstr ""
 msgid "Import"
 msgstr "インポート"
 
-#: src/remmina_main.c:1022 src/remmina_file_editor.c:1373
+#: src/remmina_main.c:1022 src/remmina_file_editor.c:1505
 msgid "_Save"
 msgstr "保存(_S)"
 
@@ -1281,7 +1281,7 @@ msgstr "上書き"
 msgid "The following file already exists in the target folder:"
 msgstr "対象のファイルが目的のフォルダーにすでに存在します:"
 
-#: src/remmina_file_editor.c:60
+#: src/remmina_file_editor.c:61
 #, fuzzy
 #| msgid ""
 #| "<tt><big>Supported formats\n"
@@ -1303,7 +1303,7 @@ msgstr ""
 "- ID:リピーターのID番号\n"
 "- unix:///path/socket.sock</big>."
 
-#: src/remmina_file_editor.c:69
+#: src/remmina_file_editor.c:70
 #, fuzzy
 #| msgid ""
 #| "<tt><big>• command in PATH args %h\n"
@@ -1345,7 +1345,7 @@ msgstr ""
 "い。\n"
 "</big></tt>"
 
-#: src/remmina_file_editor.c:83
+#: src/remmina_file_editor.c:84
 #, fuzzy
 #| msgid ""
 #| "<tt><big>Supported formats\n"
@@ -1364,146 +1364,146 @@ msgstr ""
 "- サーバー[:ポート]\n"
 "- username@server[:port] (SSHプロトコルのみ)</big>."
 
-#: src/remmina_file_editor.c:149
+#: src/remmina_file_editor.c:150
 msgid "Choose a Remote Desktop Server"
 msgstr "リモートデスクトップサーバーを選択"
 
-#: src/remmina_file_editor.c:370
+#: src/remmina_file_editor.c:371
 #, c-format
 msgid "Browse the network to find a %s server"
 msgstr "ネットワークからサーバー %s を探す"
 
-#: src/remmina_file_editor.c:471
+#: src/remmina_file_editor.c:472
 msgid "Resolution"
 msgstr "解像度"
 
-#: src/remmina_file_editor.c:478
+#: src/remmina_file_editor.c:479
 msgid "Use initial window size"
 msgstr "初期ウィンドウサイズを使用する"
 
-#: src/remmina_file_editor.c:482
+#: src/remmina_file_editor.c:483
 msgid "Use client resolution"
 msgstr "クライアントの解像度を使用する"
 
-#: src/remmina_file_editor.c:493 src/remmina_file_editor.c:897
+#: src/remmina_file_editor.c:494 src/remmina_file_editor.c:1029
 msgid "Custom"
 msgstr "カスタム"
 
-#: src/remmina_file_editor.c:717
+#: src/remmina_file_editor.c:829
 msgid "Keyboard mapping"
 msgstr "キーボードマッピング"
 
-#: src/remmina_file_editor.c:817
+#: src/remmina_file_editor.c:949
 msgid "Behavior"
 msgstr "挙動"
 
-#: src/remmina_file_editor.c:820
+#: src/remmina_file_editor.c:952
 msgid "Execute a Command"
 msgstr "コマンドの実行"
 
-#: src/remmina_file_editor.c:824
+#: src/remmina_file_editor.c:956
 msgid "Before connecting"
 msgstr "接続前"
 
-#: src/remmina_file_editor.c:826
+#: src/remmina_file_editor.c:958
 msgid "command %h %u %t %U %p %g --option"
 msgstr "コマンド %h %u %t %U %p %g --オプション"
 
-#: src/remmina_file_editor.c:831
+#: src/remmina_file_editor.c:963
 msgid "After connecting"
 msgstr "接続後"
 
-#: src/remmina_file_editor.c:833
+#: src/remmina_file_editor.c:965
 msgid "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
 msgstr "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
 
-#: src/remmina_file_editor.c:837
+#: src/remmina_file_editor.c:969
 msgid "Start-up"
 msgstr "起動時"
 
-#: src/remmina_file_editor.c:840
+#: src/remmina_file_editor.c:972
 msgid "Auto-start this profile"
 msgstr "このプロファイルを自動起動する"
 
-#: src/remmina_file_editor.c:870
+#: src/remmina_file_editor.c:1002
 msgid "SSH Tunnel"
 msgstr "SSH トンネル"
 
-#: src/remmina_file_editor.c:871
+#: src/remmina_file_editor.c:1003
 msgid "Enable SSH tunnel"
 msgstr "SSH トンネルを有効にする"
 
-#: src/remmina_file_editor.c:878
+#: src/remmina_file_editor.c:1010
 msgid "Tunnel via loopback address"
 msgstr "ループバックアドレス経由のトンネル"
 
-#: src/remmina_file_editor.c:888
+#: src/remmina_file_editor.c:1020
 #, c-format
 msgid "Same server at port %i"
 msgstr "ポート %i の同じサーバー"
 
-#: src/remmina_file_editor.c:938 plugins/rdp/rdp_plugin.c:2711
+#: src/remmina_file_editor.c:1070 plugins/rdp/rdp_plugin.c:2711
 msgid "Start-up path"
 msgstr "起動パス"
 
-#: src/remmina_file_editor.c:947
+#: src/remmina_file_editor.c:1079
 msgid "SSH Authentication"
 msgstr "SSH 認証"
 
-#: src/remmina_file_editor.c:973
+#: src/remmina_file_editor.c:1105
 msgid "SSH private key file"
 msgstr "SSH 秘密鍵のキーファイル"
 
-#: src/remmina_file_editor.c:979 src/remmina_ssh_plugin.c:1477
+#: src/remmina_file_editor.c:1111 src/remmina_ssh_plugin.c:1477
 msgid "SSH certificate file"
 msgstr "SSH 証明書ファイル"
 
-#: src/remmina_file_editor.c:1037
+#: src/remmina_file_editor.c:1169
 msgid "Basic"
 msgstr "基本設定"
 
-#: src/remmina_file_editor.c:1043
+#: src/remmina_file_editor.c:1175
 msgid "Advanced"
 msgstr "高度な設定"
 
-#: src/remmina_file_editor.c:1054
+#: src/remmina_file_editor.c:1186
 msgid "Notes"
 msgstr "メモ"
 
-#: src/remmina_file_editor.c:1293
+#: src/remmina_file_editor.c:1425
 msgid "Default settings saved."
 msgstr "既定の設定を保存しました。"
 
-#: src/remmina_file_editor.c:1363
+#: src/remmina_file_editor.c:1495
 msgid "Remote Connection Profile"
 msgstr "リモート接続プロファイル"
 
-#: src/remmina_file_editor.c:1369
+#: src/remmina_file_editor.c:1501
 msgid "Save as Default"
 msgstr "既定値として保存"
 
-#: src/remmina_file_editor.c:1370
+#: src/remmina_file_editor.c:1502
 msgid "Use the current settings as the default for all new connection profiles"
 msgstr "現在の設定をすべての新規接続プロファイルの既定値として使用する"
 
-#: src/remmina_file_editor.c:1378 data/ui/remmina_main.glade:160
+#: src/remmina_file_editor.c:1510 data/ui/remmina_main.glade:160
 msgid "Connect"
 msgstr "接続"
 
-#: src/remmina_file_editor.c:1381
+#: src/remmina_file_editor.c:1513
 msgid "_Save and Connect"
 msgstr "保存して接続(_S)"
 
-#: src/remmina_file_editor.c:1504
+#: src/remmina_file_editor.c:1636
 msgid "Quick Connect"
 msgstr "クイック接続"
 
-#: src/remmina_file_editor.c:1528
+#: src/remmina_file_editor.c:1660
 #, c-format
 msgid "Use '%s' as subgroup delimiter"
 msgstr "サブグループの区切り文字には '%s' を使用してください"
 
-#: src/remmina_file_editor.c:1594 src/remmina_file_editor.c:1612
+#: src/remmina_file_editor.c:1726 src/remmina_file_editor.c:1744
 #, c-format
 msgid "Could not find the file “%s”."
 msgstr "“%s” が見つかりませんでした。"
@@ -2876,108 +2876,124 @@ msgid "Secured password storage in the GNOME keyring"
 msgstr "GNOME キーリングで安全にパスワード保存"
 
 #: plugins/x2go/x2go_plugin.c:166
+#, fuzzy
 msgid "Broken DialogData! Aborting."
-msgstr ""
+msgstr "壊れたDialogData!中止します。"
 
 #: plugins/x2go/x2go_plugin.c:170
+#, fuzzy
 msgid "Can't retrieve DialogData! Aborting."
-msgstr ""
+msgstr "Can't retrieve DialogData!中止します。"
 
 #: plugins/x2go/x2go_plugin.c:389
+#, fuzzy
 msgid "pyhoca-cli exited unexpectedly. This connection will now be closed."
-msgstr ""
+msgstr "pyhoca-cliが予期せず終了しました。この接続はこれで終了します。"
 
 #: plugins/x2go/x2go_plugin.c:398
+#, fuzzy
 msgid "An error occured."
-msgstr ""
+msgstr "エラーが発生しました。"
 
 #: plugins/x2go/x2go_plugin.c:399
+#, fuzzy
 msgid ""
 "Necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
 "Please check your profile settings and pyhoca-cli's output for possible "
 "errors and make sure that the remote server is reachable."
 msgstr ""
+"必要な子プロセス 'pyhoca-cli' が予期せず停止しました。\n"
+"プロファイルの設定やpyhoca-cliの出力にエラーがないか、また、リモートサーバーに到達できるかどうかを確認してください。"
 
 #: plugins/x2go/x2go_plugin.c:439
-#, c-format
+#, c-format, fuzzy
 msgid ""
 "An unknown error happened while retrieving pyhoca-cli's cmdline features! "
 "Exit code: %i"
-msgstr ""
+msgstr "pyhoca-cliのcmdline機能の取得中に未知のエラーが発生しました。終了コードです。%i です。"
 
 #: plugins/x2go/x2go_plugin.c:444
 #, fuzzy, c-format
 #| msgid "Error: %s"
 msgid "Error: '%s'"
-msgstr "エラー: %s"
+msgstr "エラー： '%s'"
 
 #: plugins/x2go/x2go_plugin.c:532
 #, fuzzy
 #| msgid "Enter NX authentication credentials"
 msgid "Enter X2Go credentials"
-msgstr "NX 認証資格情報を入力してください"
+msgstr "X2Goの認証情報を入力する"
 
 #: plugins/x2go/x2go_plugin.c:556
+#, fuzzy
 msgid ""
 "User has requested to save credentials but 'password' is not set! Can't set "
 "a new default password then."
-msgstr ""
+msgstr "ユーザーが認証情報の保存を要求しましたが、「パスワード」が設定されていません。これでは新しいデフォルトパスワードを設定できません。"
 
 #: plugins/x2go/x2go_plugin.c:666
+#, fuzzy
 msgid "DPI setting is out of bounds. Please adjust in profile settings!"
-msgstr ""
+msgstr "DPI設定が圏外です。プロファイル設定で調整してください。"
 
 #: plugins/x2go/x2go_plugin.c:705 plugins/x2go/x2go_plugin.c:714
+#, fuzzy
 msgid "An error occured while starting a X2Go session."
-msgstr ""
+msgstr "X2Goセッションの開始時にエラーが発生しました。"
 
 #: plugins/x2go/x2go_plugin.c:715
-#, c-format
+#, c-format, fuzzy
 msgid "Failed to start pyhoca-cli (%i): '%s'"
-msgstr ""
+msgstr "pyhoca-cliの起動に失敗しました (%i): '%s'"
 
 #: plugins/x2go/x2go_plugin.c:784
+#, fuzzy
 msgid ""
 "Couldn't get pyhoca-cli's cmdline-features. This indicates that either your "
 "pyhoca-cli version is too old or pyhoca-cli is not installed! An old limited "
 "set of features will be used now."
 msgstr ""
+"pyhoca-cli の cmdline-features を取得できませんでした。これは、pyhoca-cliのバージョンが古すぎるか、pyhoca-"
+"cliがインストールされていないことを示しています。古い限定された機能のセットが現在使用されます。"
 
 #: plugins/x2go/x2go_plugin.c:796
+#, fuzzy
 msgid ""
 "parsing pyhoca-cli features was not possible! Using limited feature set now."
-msgstr ""
+msgstr "pyhoca-cliの機能を解析することができませんでした。現在は限られた機能を使用しています。"
 
 #: plugins/x2go/x2go_plugin.c:802
+#, fuzzy
 msgid "Successfully retrieved following pyhoca-cli features:"
-msgstr ""
+msgstr "以下のpyhoca-cliの機能の取得に成功しました。"
 
 #: plugins/x2go/x2go_plugin.c:806
-#, c-format
+#, c-format, fuzzy
 msgid "Available feature[%i]: '%s'"
-msgstr ""
+msgstr "利用可能な機能[%i]： '%s'"
 
 #: plugins/x2go/x2go_plugin.c:948
+#, fuzzy
 msgid "Waiting for X2Go Agent window to appear."
-msgstr ""
+msgstr "X2Go Agentのウィンドウが表示されるのを待ちます。"
 
 #: plugins/x2go/x2go_plugin.c:974
+#, fuzzy
 msgid "Waiting for pyhoca-cli to show the session's window."
-msgstr ""
+msgstr "pyhoca-cliがセッションのウィンドウを表示するのを待っています。"
 
 #: plugins/x2go/x2go_plugin.c:1145
 #, fuzzy, c-format
 #| msgid ""
 #| "The protocol “%s” is unavailable because GtkSocket only works under X.Org."
 msgid "Protocol %s is unavailable because GtkSocket only works under X.org"
-msgstr ""
-"GtkSocket は X.Org でのみ動作するため、“%s” プロトコルは利用できません。"
+msgstr "GtkSocket は X.org でしか動作しないため、プロトコル %s は利用できません。"
 
 #: plugins/x2go/x2go_plugin.c:1189
 #, fuzzy
 #| msgid "Username"
 msgid "User name"
-msgstr "ユーザー名"
+msgstr "ユーザ名"
 
 #: plugins/x2go/x2go_plugin.c:1195
 #, fuzzy
@@ -2986,59 +3002,67 @@ msgid "Startup program"
 msgstr "起動プログラム"
 
 #: plugins/x2go/x2go_plugin.c:1197
+#, fuzzy
 msgid "Which command should be executed after creating the X2Go session?"
-msgstr ""
+msgstr "X2Goのセッション作成後に実行すべきコマンドは？"
 
 #: plugins/x2go/x2go_plugin.c:1204
 #, fuzzy
 #| msgid "Keyboard layout"
 msgid "Keyboard Layout (auto)"
-msgstr "キーボードレイアウト"
+msgstr "キーボードレイアウト（オート"
 
 #: plugins/x2go/x2go_plugin.c:1207
 #, fuzzy
 #| msgid "Keyboard layout"
 msgid "Keyboard type (auto)"
-msgstr "キーボードレイアウト"
+msgstr "キーボードタイプ（オート"
 
 #: plugins/x2go/x2go_plugin.c:1210
 #, fuzzy
 #| msgid "Turn on Java support"
 msgid "Audio support"
-msgstr "Java サポートをオン"
+msgstr "オーディオ対応"
 
 #: plugins/x2go/x2go_plugin.c:1212
+#, fuzzy
 msgid "X2Go server's sound system (default: 'pulse')."
-msgstr ""
+msgstr "X2Goサーバーのサウンドシステム（デフォルト：「pulse」）。"
 
 #: plugins/x2go/x2go_plugin.c:1215
 #, fuzzy
 #| msgid "USB redirection error"
 msgid "Clipboard direction"
-msgstr "TCPリダイレクション"
+msgstr "クリップボードの方向"
 
 #: plugins/x2go/x2go_plugin.c:1217
+#, fuzzy
 msgid ""
 "In which direction should clipboard content be copied? (default: 'both')."
-msgstr ""
+msgstr "クリップボードの内容をどの方向にコピーするか？(を設定します（デフォルト：「両方」）。)"
 
 #: plugins/x2go/x2go_plugin.c:1221
-msgid "DPI resolution (int!)"
-msgstr ""
+#, fuzzy
+#| msgid "Resolution"
+msgid "DPI resolution"
+msgstr "DPI解像度"
 
 #: plugins/x2go/x2go_plugin.c:1222
+#, fuzzy
 msgid ""
 "Launch session with a specific resolution (in dots per inch). Must be "
 "between 20 and 400"
-msgstr ""
+msgstr "特定の解像度（1インチあたりのドット数）でセッションを開始する。20から400の間であること"
 
 #: plugins/x2go/x2go_plugin.c:1265
+#, fuzzy
 msgid "X2Go plugin loaded."
-msgstr ""
+msgstr "X2Goプラグインが読み込まれました。"
 
 #: plugins/x2go/x2go_plugin.h:43
+#, fuzzy
 msgid "X2Go - Launch an X2Go session"
-msgstr ""
+msgstr "X2Go - X2Goセッションの起動"
 
 #: plugins/gvnc/gvnc_plugin_config.h:40
 #, fuzzy

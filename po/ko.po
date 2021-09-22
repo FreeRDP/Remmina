@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-09-21 12:13+0000\n"
-"PO-Revision-Date: 2021-07-16 08:59+0000\n"
+"POT-Creation-Date: 2021-09-21 21:02+0000\n"
+"PO-Revision-Date: 2021-09-22 20:10+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/remmina/remmina/"
 "ko/>\n"
@@ -20,12 +20,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.7.2-dev\n"
+"X-Generator: Weblate 4.9-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:346
 #: src/remmina_protocol_widget.c:1672 src/remmina_protocol_widget.c:1691
-#: src/remmina_file_editor.c:846 src/remmina_file_editor.c:967
+#: src/remmina_file_editor.c:978 src/remmina_file_editor.c:1099
 #: src/remmina_ssh_plugin.c:1369 plugins/rdp/rdp_plugin.c:2667
 #: plugins/www/www_plugin.c:887 plugins/x2go/x2go_plugin.c:1192
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1675
@@ -34,22 +34,22 @@ msgid "Password"
 msgstr "비밀번호"
 
 #: src/remmina_sftp_plugin.c:311 src/remmina_sftp_plugin.c:348
-#: src/remmina_file_editor.c:847 src/remmina_ssh_plugin.c:1370
+#: src/remmina_file_editor.c:979 src/remmina_ssh_plugin.c:1370
 #: src/remmina_ssh_plugin.c:1475
 msgid "SSH identity file"
 msgstr "SSH 인증 키 파일"
 
-#: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:848
+#: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:980
 #: src/remmina_ssh_plugin.c:1371
 msgid "SSH agent"
 msgstr "SSH 에이전트"
 
-#: src/remmina_sftp_plugin.c:313 src/remmina_file_editor.c:849
+#: src/remmina_sftp_plugin.c:313 src/remmina_file_editor.c:981
 #: src/remmina_ssh_plugin.c:1372
 msgid "Public key (automatic)"
 msgstr "공개 키 (자동)"
 
-#: src/remmina_sftp_plugin.c:314 src/remmina_file_editor.c:850
+#: src/remmina_sftp_plugin.c:314 src/remmina_file_editor.c:982
 #: src/remmina_ssh_plugin.c:1373
 msgid "Kerberos (GSSAPI)"
 msgstr "커베로스 (GSSAPI)"
@@ -71,19 +71,19 @@ msgid "Connect via SSH from a new terminal"
 msgstr "새 터미널에서 SSH로 연결하기"
 
 #: src/remmina_sftp_plugin.c:345 src/remmina_message_panel.c:330
-#: src/remmina_file_editor.c:961 src/remmina_ssh_plugin.c:1473
+#: src/remmina_file_editor.c:1093 src/remmina_ssh_plugin.c:1473
 #: plugins/rdp/rdp_plugin.c:2666 plugins/vnc/vnc_plugin.c:1960
 #: plugins/vnc/vnc_plugin.c:1980 plugins/www/www_plugin.c:886
 #: data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr "사용자명"
 
-#: src/remmina_sftp_plugin.c:347 src/remmina_file_editor.c:952
+#: src/remmina_sftp_plugin.c:347 src/remmina_file_editor.c:1084
 #: src/remmina_ssh_plugin.c:1472
 msgid "Authentication type"
 msgstr "인증 유형"
 
-#: src/remmina_sftp_plugin.c:349 src/remmina_file_editor.c:984
+#: src/remmina_sftp_plugin.c:349 src/remmina_file_editor.c:1116
 #: src/remmina_ssh_plugin.c:1479
 msgid "Password to unlock private key"
 msgstr "개인 키 잠금 해제 비밀번호"
@@ -96,7 +96,7 @@ msgstr "SSH 프록시 명령"
 msgid "SFTP - Secure File Transfer"
 msgstr "SFTP - 보안 파일 전송"
 
-#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1533
+#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1665
 msgid "Protocol"
 msgstr "프로토콜"
 
@@ -125,11 +125,11 @@ msgid "Plugins"
 msgstr "부가 기능"
 
 #: src/remmina_plugin_manager.c:461 src/remmina_message_panel.c:452
-#: src/remmina_message_panel.c:621 src/remmina_file_editor.c:152
+#: src/remmina_message_panel.c:621 src/remmina_file_editor.c:153
 msgid "_OK"
 msgstr "_OK"
 
-#: src/remmina_plugin_manager.c:479 src/remmina_file_editor.c:1490
+#: src/remmina_plugin_manager.c:479 src/remmina_file_editor.c:1622
 #: data/ui/remmina_main.glade:442
 msgid "Name"
 msgstr "이름"
@@ -195,11 +195,11 @@ msgstr "메타+"
 msgid "<None>"
 msgstr "<없음>"
 
-#: src/remmina_pref_dialog.c:91 src/remmina_file_editor.c:435
+#: src/remmina_pref_dialog.c:91 src/remmina_file_editor.c:436
 msgid "Resolutions"
 msgstr "해상도"
 
-#: src/remmina_pref_dialog.c:91 src/remmina_file_editor.c:435
+#: src/remmina_pref_dialog.c:91 src/remmina_file_editor.c:436
 msgid "Configure the available resolutions"
 msgstr "사용할 수 있는 해상도 설정"
 
@@ -269,8 +269,8 @@ msgid "Save password"
 msgstr "비밀번호 저장"
 
 #: src/remmina_message_panel.c:457 src/remmina_message_panel.c:629
-#: src/remmina_sftp_client.c:947 src/remmina_file_editor.c:151
-#: src/remmina_file_editor.c:1365 plugins/spice/spice_plugin_file_transfer.c:84
+#: src/remmina_sftp_client.c:947 src/remmina_file_editor.c:152
+#: src/remmina_file_editor.c:1497 plugins/spice/spice_plugin_file_transfer.c:84
 #: data/ui/remmina_key_chooser.glade:8 data/ui/remmina_key_chooser.glade:9
 #: data/ui/remmina_spinner.glade:8 data/ui/remmina_spinner.glade:9
 msgid "_Cancel"
@@ -715,7 +715,7 @@ msgstr "크기"
 msgid "User"
 msgstr "사용자"
 
-#: src/remmina_ftp_client.c:932 src/remmina_file_editor.c:1515
+#: src/remmina_ftp_client.c:932 src/remmina_file_editor.c:1647
 #: data/ui/remmina_mpc.glade:115 data/ui/remmina_main.glade:464
 msgid "Group"
 msgstr "그룹"
@@ -848,8 +848,8 @@ msgstr "%s 연결을 위해서 %i 포트에서 대기 중…"
 msgid "Could not authenticate, attempting reconnection…"
 msgstr "인증할 수 없습니다, 다시 접속 중…"
 
-#: src/remmina_protocol_widget.c:2025 src/remmina_file_editor.c:346
-#: src/remmina_file_editor.c:917 data/ui/remmina_main.glade:478
+#: src/remmina_protocol_widget.c:2025 src/remmina_file_editor.c:347
+#: src/remmina_file_editor.c:1049 data/ui/remmina_main.glade:478
 msgid "Server"
 msgstr "서버"
 
@@ -1147,7 +1147,7 @@ msgstr ""
 msgid "Import"
 msgstr "가져오기"
 
-#: src/remmina_main.c:1022 src/remmina_file_editor.c:1373
+#: src/remmina_main.c:1022 src/remmina_file_editor.c:1505
 msgid "_Save"
 msgstr "_저장"
 
@@ -1242,7 +1242,7 @@ msgstr "덮어쓰기"
 msgid "The following file already exists in the target folder:"
 msgstr "이미 존재하는 파일이 다음 폴더에 있음:"
 
-#: src/remmina_file_editor.c:60
+#: src/remmina_file_editor.c:61
 msgid ""
 "<big>Supported formats\n"
 "• server\n"
@@ -1258,7 +1258,7 @@ msgstr ""
 "• ID:리피터 ID 번호\n"
 "• unix:///path/socket.sock</big>"
 
-#: src/remmina_file_editor.c:69
+#: src/remmina_file_editor.c:70
 msgid ""
 "<big>• command in PATH args %h\n"
 "• /path/to/foo -options %h %u\n"
@@ -1285,7 +1285,7 @@ msgstr ""
 "연결하기 전에 명령을 실행하려면 백그라운드에서 실행하지 마세요. \n"
 "</big>"
 
-#: src/remmina_file_editor.c:83
+#: src/remmina_file_editor.c:84
 msgid ""
 "<big>Supported formats\n"
 "• server\n"
@@ -1297,146 +1297,146 @@ msgstr ""
 "• 서버[:포트]\n"
 "• 사용자 이름@서버[:포트] (SSH 프로토콜 전용)</big>"
 
-#: src/remmina_file_editor.c:149
+#: src/remmina_file_editor.c:150
 msgid "Choose a Remote Desktop Server"
 msgstr "원격 데스크탑 서버 선택"
 
-#: src/remmina_file_editor.c:370
+#: src/remmina_file_editor.c:371
 #, c-format
 msgid "Browse the network to find a %s server"
 msgstr "네트워크에서 %s 서버 찾아보기"
 
-#: src/remmina_file_editor.c:471
+#: src/remmina_file_editor.c:472
 msgid "Resolution"
 msgstr "해상도"
 
-#: src/remmina_file_editor.c:478
+#: src/remmina_file_editor.c:479
 msgid "Use initial window size"
 msgstr "초기 윈도 크기 사용"
 
-#: src/remmina_file_editor.c:482
+#: src/remmina_file_editor.c:483
 msgid "Use client resolution"
 msgstr "클라이언트 해상도에 맞춤"
 
-#: src/remmina_file_editor.c:493 src/remmina_file_editor.c:897
+#: src/remmina_file_editor.c:494 src/remmina_file_editor.c:1029
 msgid "Custom"
 msgstr "사용자 정의"
 
-#: src/remmina_file_editor.c:717
+#: src/remmina_file_editor.c:829
 msgid "Keyboard mapping"
 msgstr "사용자키 지정"
 
-#: src/remmina_file_editor.c:817
+#: src/remmina_file_editor.c:949
 msgid "Behavior"
 msgstr "행동"
 
-#: src/remmina_file_editor.c:820
+#: src/remmina_file_editor.c:952
 msgid "Execute a Command"
 msgstr "명령 실행"
 
-#: src/remmina_file_editor.c:824
+#: src/remmina_file_editor.c:956
 msgid "Before connecting"
 msgstr "연결 시작"
 
-#: src/remmina_file_editor.c:826
+#: src/remmina_file_editor.c:958
 msgid "command %h %u %t %U %p %g --option"
 msgstr "command %h %u %t %U %p %g --option"
 
-#: src/remmina_file_editor.c:831
+#: src/remmina_file_editor.c:963
 msgid "After connecting"
 msgstr "연결 시작"
 
-#: src/remmina_file_editor.c:833
+#: src/remmina_file_editor.c:965
 msgid "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
 msgstr "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
 
-#: src/remmina_file_editor.c:837
+#: src/remmina_file_editor.c:969
 msgid "Start-up"
 msgstr "시작"
 
-#: src/remmina_file_editor.c:840
+#: src/remmina_file_editor.c:972
 msgid "Auto-start this profile"
 msgstr "프로필에 대해 \"자동 시작\" 키기"
 
-#: src/remmina_file_editor.c:870
+#: src/remmina_file_editor.c:1002
 msgid "SSH Tunnel"
 msgstr "SSH 터널"
 
-#: src/remmina_file_editor.c:871
+#: src/remmina_file_editor.c:1003
 msgid "Enable SSH tunnel"
 msgstr "SSH 암호화 사용"
 
-#: src/remmina_file_editor.c:878
+#: src/remmina_file_editor.c:1010
 msgid "Tunnel via loopback address"
 msgstr "반향(=반송) 주소를 통한 터널링"
 
-#: src/remmina_file_editor.c:888
+#: src/remmina_file_editor.c:1020
 #, c-format
 msgid "Same server at port %i"
 msgstr "포트 %i와 같은 서버"
 
-#: src/remmina_file_editor.c:938 plugins/rdp/rdp_plugin.c:2711
+#: src/remmina_file_editor.c:1070 plugins/rdp/rdp_plugin.c:2711
 msgid "Start-up path"
 msgstr "시작 프로그램 경로"
 
-#: src/remmina_file_editor.c:947
+#: src/remmina_file_editor.c:1079
 msgid "SSH Authentication"
 msgstr "SSH 확인"
 
-#: src/remmina_file_editor.c:973
+#: src/remmina_file_editor.c:1105
 msgid "SSH private key file"
 msgstr "SSH 개인 키 파일"
 
-#: src/remmina_file_editor.c:979 src/remmina_ssh_plugin.c:1477
+#: src/remmina_file_editor.c:1111 src/remmina_ssh_plugin.c:1477
 msgid "SSH certificate file"
 msgstr "SSH 인증서 파일"
 
-#: src/remmina_file_editor.c:1037
+#: src/remmina_file_editor.c:1169
 msgid "Basic"
 msgstr "기본 설정"
 
-#: src/remmina_file_editor.c:1043
+#: src/remmina_file_editor.c:1175
 msgid "Advanced"
 msgstr "고급 설정"
 
-#: src/remmina_file_editor.c:1054
+#: src/remmina_file_editor.c:1186
 msgid "Notes"
 msgstr "노트"
 
-#: src/remmina_file_editor.c:1293
+#: src/remmina_file_editor.c:1425
 msgid "Default settings saved."
 msgstr "기본 설정으로 저장됨."
 
-#: src/remmina_file_editor.c:1363
+#: src/remmina_file_editor.c:1495
 msgid "Remote Connection Profile"
 msgstr "새 연결 프로필"
 
-#: src/remmina_file_editor.c:1369
+#: src/remmina_file_editor.c:1501
 msgid "Save as Default"
 msgstr "기본값으로 저장"
 
-#: src/remmina_file_editor.c:1370
+#: src/remmina_file_editor.c:1502
 msgid "Use the current settings as the default for all new connection profiles"
 msgstr "모든 새 연결 프로필의 기본값으로 현재 설정 사용"
 
-#: src/remmina_file_editor.c:1378 data/ui/remmina_main.glade:160
+#: src/remmina_file_editor.c:1510 data/ui/remmina_main.glade:160
 msgid "Connect"
 msgstr "연결"
 
-#: src/remmina_file_editor.c:1381
+#: src/remmina_file_editor.c:1513
 msgid "_Save and Connect"
 msgstr "_저장 및 연결"
 
-#: src/remmina_file_editor.c:1504
+#: src/remmina_file_editor.c:1636
 msgid "Quick Connect"
 msgstr "빠른 접속"
 
-#: src/remmina_file_editor.c:1528
+#: src/remmina_file_editor.c:1660
 #, c-format
 msgid "Use '%s' as subgroup delimiter"
 msgstr "'%s' 하위그룹 구분자 사용"
 
-#: src/remmina_file_editor.c:1594 src/remmina_file_editor.c:1612
+#: src/remmina_file_editor.c:1726 src/remmina_file_editor.c:1744
 #, c-format
 msgid "Could not find the file “%s”."
 msgstr "\"%s\" 파일을 찾을 수 없습니다."
@@ -1697,15 +1697,17 @@ msgstr "클라이언트 키보드 매핑 사용"
 #, fuzzy
 #| msgid "Keyboard mapping"
 msgid "Keyboard scancode remapping"
-msgstr "사용자키 지정"
+msgstr "키보드 스캔 코드 다시 매핑"
 
 #: plugins/rdp/rdp_settings.c:483
+#, fuzzy
 msgid "List of key=value,… pairs to remap scancodes. E.g. 0x56=0x29,0x29=0x56"
-msgstr ""
+msgstr "키=값 목록,... 쌍을 이면 스캔 코드를 다시 매핑합니다. 예를 들어 0x56=0x29,0x29=0x56"
 
 #: plugins/rdp/rdp_settings.c:486
+#, fuzzy
 msgid "FreeRDP > 2.3.0 is required to map scancodes"
-msgstr ""
+msgstr "FreeRDP > 2.3.0은 스캔 코드를 매핑하는 데 필요합니다."
 
 #: plugins/rdp/rdp_settings.c:494
 msgid "Quality settings"
@@ -2176,18 +2178,20 @@ msgid "Use “Redirect directory” in the advanced tab for multiple directories
 msgstr "여러 디렉토리의 경우에는 고급 탭에서 \"디렉토리 전달\"을 사용하세요"
 
 #: plugins/rdp/rdp_plugin.c:2670
+#, fuzzy
 msgid "Restricted admin mode"
-msgstr ""
+msgstr "제한된 관리자 모드"
 
 #: plugins/rdp/rdp_plugin.c:2671
 #, fuzzy
 #| msgid "Password"
 msgid "Password hash"
-msgstr "비밀번호"
+msgstr "암호 해시"
 
 #: plugins/rdp/rdp_plugin.c:2671
+#, fuzzy
 msgid "Restricted admin mode password hash"
-msgstr ""
+msgstr "제한된 관리자 모드 암호 해시"
 
 #: plugins/rdp/rdp_plugin.c:2672
 msgid "Left-handed mouse support"
@@ -2777,108 +2781,124 @@ msgid "Secured password storage in the GNOME keyring"
 msgstr "그놈(GNOME) 키링에 안전한 비밀번호 저장"
 
 #: plugins/x2go/x2go_plugin.c:166
+#, fuzzy
 msgid "Broken DialogData! Aborting."
-msgstr ""
+msgstr "깨진 대화 데이터! 중단."
 
 #: plugins/x2go/x2go_plugin.c:170
+#, fuzzy
 msgid "Can't retrieve DialogData! Aborting."
-msgstr ""
+msgstr "대화 데이터를 검색 할 수 없습니다! 중단."
 
 #: plugins/x2go/x2go_plugin.c:389
+#, fuzzy
 msgid "pyhoca-cli exited unexpectedly. This connection will now be closed."
-msgstr ""
+msgstr "피호카 클리는 예기치 않게 빠져나갔습니다. 이제 이 연결이 닫힙습니다."
 
 #: plugins/x2go/x2go_plugin.c:398
+#, fuzzy
 msgid "An error occured."
-msgstr ""
+msgstr "오류가 발생했습니다."
 
 #: plugins/x2go/x2go_plugin.c:399
+#, fuzzy
 msgid ""
 "Necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
 "Please check your profile settings and pyhoca-cli's output for possible "
 "errors and make sure that the remote server is reachable."
 msgstr ""
+"필요한 아동 과정 '피호카-클리'는 예기치 않게 멈췄다.\n"
+"프로필 설정 및 피호카-클리의 출력을 확인하여 가능한 오류에 대해 확인하고 원격 서버에 연결할 수 있는지 확인하십시오."
 
 #: plugins/x2go/x2go_plugin.c:439
-#, c-format
+#, c-format, fuzzy
 msgid ""
 "An unknown error happened while retrieving pyhoca-cli's cmdline features! "
 "Exit code: %i"
-msgstr ""
+msgstr "피호카-클리의 cmdline 기능을 검색하는 동안 알 수없는 오류가 발생했습니다! 종료 코드: %i"
 
 #: plugins/x2go/x2go_plugin.c:444
 #, fuzzy, c-format
 #| msgid "Error: %s"
 msgid "Error: '%s'"
-msgstr "에러: %s"
+msgstr "오류: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:532
 #, fuzzy
 #| msgid "Enter NX authentication credentials"
 msgid "Enter X2Go credentials"
-msgstr "NX 인증 정보를 입력하세요"
+msgstr "X2Go 자격 증명 입력"
 
 #: plugins/x2go/x2go_plugin.c:556
+#, fuzzy
 msgid ""
 "User has requested to save credentials but 'password' is not set! Can't set "
 "a new default password then."
-msgstr ""
+msgstr "사용자는 자격 증명을 저장하도록 요청했지만 '암호'가 설정되지 않았습니다! 그런 다음 새 기본 암호를 설정할 수 없습니다."
 
 #: plugins/x2go/x2go_plugin.c:666
+#, fuzzy
 msgid "DPI setting is out of bounds. Please adjust in profile settings!"
-msgstr ""
+msgstr "DPI 설정은 범위를 벗어났습니다. 프로필 설정에서 조정하십시오!"
 
 #: plugins/x2go/x2go_plugin.c:705 plugins/x2go/x2go_plugin.c:714
+#, fuzzy
 msgid "An error occured while starting a X2Go session."
-msgstr ""
+msgstr "X2Go 세션을 시작하는 동안 오류가 발생했습니다."
 
 #: plugins/x2go/x2go_plugin.c:715
-#, c-format
+#, c-format, fuzzy
 msgid "Failed to start pyhoca-cli (%i): '%s'"
-msgstr ""
+msgstr "피호카 클리 (%i를 시작하지 못했습니다: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:784
+#, fuzzy
 msgid ""
 "Couldn't get pyhoca-cli's cmdline-features. This indicates that either your "
 "pyhoca-cli version is too old or pyhoca-cli is not installed! An old limited "
 "set of features will be used now."
 msgstr ""
+"피호카 클리의 cmdline 기능을 얻을 수 없습니다. 이것은 당신의 피호카 클라이 버전이 너무 오래되었거나 피호카 클라이가 설치되지 "
+"않았다는 것을 나타냅니다! 이제 이전 제한된 기능 집합이 사용됩니다."
 
 #: plugins/x2go/x2go_plugin.c:796
+#, fuzzy
 msgid ""
 "parsing pyhoca-cli features was not possible! Using limited feature set now."
-msgstr ""
+msgstr "파싱 피호카-클리 기능은 불가능했습니다! 지금 제한된 피쳐 세트를 사용하십시오."
 
 #: plugins/x2go/x2go_plugin.c:802
+#, fuzzy
 msgid "Successfully retrieved following pyhoca-cli features:"
-msgstr ""
+msgstr "피호카-클라이 기능을 따라 성공적으로 검색:"
 
 #: plugins/x2go/x2go_plugin.c:806
-#, c-format
+#, c-format, fuzzy
 msgid "Available feature[%i]: '%s'"
-msgstr ""
+msgstr "사용 가능한 기능[%i]: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:948
+#, fuzzy
 msgid "Waiting for X2Go Agent window to appear."
-msgstr ""
+msgstr "X2Go 에이전트 창이 나타날 때까지 기다리는 중입니다."
 
 #: plugins/x2go/x2go_plugin.c:974
+#, fuzzy
 msgid "Waiting for pyhoca-cli to show the session's window."
-msgstr ""
+msgstr "파일호카-클리가 세션의 창을 보여주기를 기다리고 있습니다."
 
 #: plugins/x2go/x2go_plugin.c:1145
 #, fuzzy, c-format
 #| msgid ""
 #| "The protocol “%s” is unavailable because GtkSocket only works under X.Org."
 msgid "Protocol %s is unavailable because GtkSocket only works under X.org"
-msgstr ""
-"GtkSocket은 X.Org에서만 동작하기에 \"%s\" 프로토콜을 사용할 수 없습니다."
+msgstr "GtkSocket은 X.org 하에서만 작동하기 때문에 프로토콜 %s을 사용할 수 없습니다."
 
 #: plugins/x2go/x2go_plugin.c:1189
 #, fuzzy
 #| msgid "Username"
 msgid "User name"
-msgstr "사용자명"
+msgstr "사용자 이름"
 
 #: plugins/x2go/x2go_plugin.c:1195
 #, fuzzy
@@ -2887,59 +2907,67 @@ msgid "Startup program"
 msgstr "시작 프로그램"
 
 #: plugins/x2go/x2go_plugin.c:1197
+#, fuzzy
 msgid "Which command should be executed after creating the X2Go session?"
-msgstr ""
+msgstr "X2Go 세션을 만든 후 실행해야 하는 명령은 무엇입니까?"
 
 #: plugins/x2go/x2go_plugin.c:1204
 #, fuzzy
 #| msgid "Keyboard layout"
 msgid "Keyboard Layout (auto)"
-msgstr "키보드 레이아웃"
+msgstr "키보드 레이아웃(자동)"
 
 #: plugins/x2go/x2go_plugin.c:1207
 #, fuzzy
 #| msgid "Keyboard layout"
 msgid "Keyboard type (auto)"
-msgstr "키보드 레이아웃"
+msgstr "키보드 유형(자동)"
 
 #: plugins/x2go/x2go_plugin.c:1210
 #, fuzzy
 #| msgid "Turn on Java support"
 msgid "Audio support"
-msgstr "자바(Java) 지원"
+msgstr "오디오 지원"
 
 #: plugins/x2go/x2go_plugin.c:1212
+#, fuzzy
 msgid "X2Go server's sound system (default: 'pulse')."
-msgstr ""
+msgstr "X2Go 서버의 사운드 시스템(기본값: '펄스')."
 
 #: plugins/x2go/x2go_plugin.c:1215
 #, fuzzy
 #| msgid "TCP redirection"
 msgid "Clipboard direction"
-msgstr "TCP 전달"
+msgstr "클립보드 방향"
 
 #: plugins/x2go/x2go_plugin.c:1217
+#, fuzzy
 msgid ""
 "In which direction should clipboard content be copied? (default: 'both')."
-msgstr ""
+msgstr "클립보드 콘텐츠를 복사해야 하는 방향은 어느 방향으로? (기본값: '둘 다')."
 
 #: plugins/x2go/x2go_plugin.c:1221
-msgid "DPI resolution (int!)"
-msgstr ""
+#, fuzzy
+#| msgid "Resolution"
+msgid "DPI resolution"
+msgstr "DPI 해상도"
 
 #: plugins/x2go/x2go_plugin.c:1222
+#, fuzzy
 msgid ""
 "Launch session with a specific resolution (in dots per inch). Must be "
 "between 20 and 400"
-msgstr ""
+msgstr "특정 해상도로 세션을 시작합니다(인치당 점). 20~400세 사이여야 합니다."
 
 #: plugins/x2go/x2go_plugin.c:1265
+#, fuzzy
 msgid "X2Go plugin loaded."
-msgstr ""
+msgstr "X2Go 플러그인로드."
 
 #: plugins/x2go/x2go_plugin.h:43
+#, fuzzy
 msgid "X2Go - Launch an X2Go session"
-msgstr ""
+msgstr "X2Go - X2Go 세션 시작"
 
 #: plugins/gvnc/gvnc_plugin_config.h:40
 msgid "Remmina VNC plugin for GNOME and KVM"

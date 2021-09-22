@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-09-21 12:13+0000\n"
+"POT-Creation-Date: 2021-09-21 21:02+0000\n"
 "PO-Revision-Date: 2021-07-16 08:58+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -30,7 +30,7 @@ msgstr ""
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:346
 #: src/remmina_protocol_widget.c:1672 src/remmina_protocol_widget.c:1691
-#: src/remmina_file_editor.c:846 src/remmina_file_editor.c:967
+#: src/remmina_file_editor.c:978 src/remmina_file_editor.c:1099
 #: src/remmina_ssh_plugin.c:1369 plugins/rdp/rdp_plugin.c:2667
 #: plugins/www/www_plugin.c:887 plugins/x2go/x2go_plugin.c:1192
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1675
@@ -39,22 +39,22 @@ msgid "Password"
 msgstr "كلمة السر"
 
 #: src/remmina_sftp_plugin.c:311 src/remmina_sftp_plugin.c:348
-#: src/remmina_file_editor.c:847 src/remmina_ssh_plugin.c:1370
+#: src/remmina_file_editor.c:979 src/remmina_ssh_plugin.c:1370
 #: src/remmina_ssh_plugin.c:1475
 msgid "SSH identity file"
 msgstr "ملف هوية SSH"
 
-#: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:848
+#: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:980
 #: src/remmina_ssh_plugin.c:1371
 msgid "SSH agent"
 msgstr "مفوض SSH"
 
-#: src/remmina_sftp_plugin.c:313 src/remmina_file_editor.c:849
+#: src/remmina_sftp_plugin.c:313 src/remmina_file_editor.c:981
 #: src/remmina_ssh_plugin.c:1372
 msgid "Public key (automatic)"
 msgstr "المفتاح العمومي (افتراضي)"
 
-#: src/remmina_sftp_plugin.c:314 src/remmina_file_editor.c:850
+#: src/remmina_sftp_plugin.c:314 src/remmina_file_editor.c:982
 #: src/remmina_ssh_plugin.c:1373
 #, fuzzy
 msgid "Kerberos (GSSAPI)"
@@ -77,19 +77,19 @@ msgid "Connect via SSH from a new terminal"
 msgstr "الإتصال عبر SSH من طرفية جديدة"
 
 #: src/remmina_sftp_plugin.c:345 src/remmina_message_panel.c:330
-#: src/remmina_file_editor.c:961 src/remmina_ssh_plugin.c:1473
+#: src/remmina_file_editor.c:1093 src/remmina_ssh_plugin.c:1473
 #: plugins/rdp/rdp_plugin.c:2666 plugins/vnc/vnc_plugin.c:1960
 #: plugins/vnc/vnc_plugin.c:1980 plugins/www/www_plugin.c:886
 #: data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr "إسم المستخدم"
 
-#: src/remmina_sftp_plugin.c:347 src/remmina_file_editor.c:952
+#: src/remmina_sftp_plugin.c:347 src/remmina_file_editor.c:1084
 #: src/remmina_ssh_plugin.c:1472
 msgid "Authentication type"
 msgstr "أسلوب المصادقة"
 
-#: src/remmina_sftp_plugin.c:349 src/remmina_file_editor.c:984
+#: src/remmina_sftp_plugin.c:349 src/remmina_file_editor.c:1116
 #: src/remmina_ssh_plugin.c:1479
 msgid "Password to unlock private key"
 msgstr "كلمة السر لفتح المفتاح الخاص"
@@ -104,7 +104,7 @@ msgstr "الأمر الوكيل SSH"
 msgid "SFTP - Secure File Transfer"
 msgstr "SFTP - نقل الملفات الآمنة"
 
-#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1533
+#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1665
 msgid "Protocol"
 msgstr "البروتوكول"
 
@@ -133,11 +133,11 @@ msgid "Plugins"
 msgstr "الإضافات"
 
 #: src/remmina_plugin_manager.c:461 src/remmina_message_panel.c:452
-#: src/remmina_message_panel.c:621 src/remmina_file_editor.c:152
+#: src/remmina_message_panel.c:621 src/remmina_file_editor.c:153
 msgid "_OK"
 msgstr "_أوكي"
 
-#: src/remmina_plugin_manager.c:479 src/remmina_file_editor.c:1490
+#: src/remmina_plugin_manager.c:479 src/remmina_file_editor.c:1622
 #: data/ui/remmina_main.glade:442
 msgid "Name"
 msgstr "إسم"
@@ -205,11 +205,11 @@ msgstr "Meta+"
 msgid "<None>"
 msgstr "<لا شيئ>"
 
-#: src/remmina_pref_dialog.c:91 src/remmina_file_editor.c:435
+#: src/remmina_pref_dialog.c:91 src/remmina_file_editor.c:436
 msgid "Resolutions"
 msgstr "إستبانات"
 
-#: src/remmina_pref_dialog.c:91 src/remmina_file_editor.c:435
+#: src/remmina_pref_dialog.c:91 src/remmina_file_editor.c:436
 #, fuzzy
 msgid "Configure the available resolutions"
 msgstr "تكوين الحلول المتوفرة"
@@ -278,8 +278,8 @@ msgid "Save password"
 msgstr "حفظ كلمة سر"
 
 #: src/remmina_message_panel.c:457 src/remmina_message_panel.c:629
-#: src/remmina_sftp_client.c:947 src/remmina_file_editor.c:151
-#: src/remmina_file_editor.c:1365 plugins/spice/spice_plugin_file_transfer.c:84
+#: src/remmina_sftp_client.c:947 src/remmina_file_editor.c:152
+#: src/remmina_file_editor.c:1497 plugins/spice/spice_plugin_file_transfer.c:84
 #: data/ui/remmina_key_chooser.glade:8 data/ui/remmina_key_chooser.glade:9
 #: data/ui/remmina_spinner.glade:8 data/ui/remmina_spinner.glade:9
 msgid "_Cancel"
@@ -772,7 +772,7 @@ msgstr "الحجم"
 msgid "User"
 msgstr "المستخدم"
 
-#: src/remmina_ftp_client.c:932 src/remmina_file_editor.c:1515
+#: src/remmina_ftp_client.c:932 src/remmina_file_editor.c:1647
 #: data/ui/remmina_mpc.glade:115 data/ui/remmina_main.glade:464
 msgid "Group"
 msgstr "الفريق"
@@ -906,8 +906,8 @@ msgstr "جاري الاستماع على المنفذ %i لاتصال %s الو�
 msgid "Could not authenticate, attempting reconnection…"
 msgstr "لا يمكن المصادقة ، محاولة إعادة الاتصال …"
 
-#: src/remmina_protocol_widget.c:2025 src/remmina_file_editor.c:346
-#: src/remmina_file_editor.c:917 data/ui/remmina_main.glade:478
+#: src/remmina_protocol_widget.c:2025 src/remmina_file_editor.c:347
+#: src/remmina_file_editor.c:1049 data/ui/remmina_main.glade:478
 msgid "Server"
 msgstr "خادم"
 
@@ -1225,7 +1225,7 @@ msgstr ""
 msgid "Import"
 msgstr "إستيراد"
 
-#: src/remmina_main.c:1022 src/remmina_file_editor.c:1373
+#: src/remmina_main.c:1022 src/remmina_file_editor.c:1505
 msgid "_Save"
 msgstr "_حفظ"
 
@@ -1320,7 +1320,7 @@ msgstr "إعادة الكتابة"
 msgid "The following file already exists in the target folder:"
 msgstr "الملف التالي موجود من قبل في المجلد الهدف:"
 
-#: src/remmina_file_editor.c:60
+#: src/remmina_file_editor.c:61
 #, fuzzy
 msgid ""
 "<big>Supported formats\n"
@@ -1337,7 +1337,7 @@ msgstr ""
 "• معرف: رقم معرف مكرر\n"
 "• unix:///path/socket.sock</big>"
 
-#: src/remmina_file_editor.c:69
+#: src/remmina_file_editor.c:70
 #, fuzzy
 msgid ""
 "<big>• command in PATH args %h\n"
@@ -1365,7 +1365,7 @@ msgstr ""
 "لا تعمل في الخلفية إذا كنت تريد تنفيذ الأمر قبل الاتصال.\n"
 "</big>"
 
-#: src/remmina_file_editor.c:83
+#: src/remmina_file_editor.c:84
 #, fuzzy
 msgid ""
 "<big>Supported formats\n"
@@ -1378,171 +1378,171 @@ msgstr ""
 "• الخادم [:p النقم]\n"
 "• username@server[:p النشوة] (بروتوكول SSH فقط)</big>"
 
-#: src/remmina_file_editor.c:149
+#: src/remmina_file_editor.c:150
 #, fuzzy
 msgid "Choose a Remote Desktop Server"
 msgstr "اختيار ملقم سطح المكتب البعيد"
 
-#: src/remmina_file_editor.c:370
+#: src/remmina_file_editor.c:371
 #, fuzzy, c-format
 msgid "Browse the network to find a %s server"
 msgstr "تصفح الشبكة للعثور على خادم %s"
 
-#: src/remmina_file_editor.c:471
+#: src/remmina_file_editor.c:472
 msgid "Resolution"
 msgstr "الدِّقَّة"
 
-#: src/remmina_file_editor.c:478
+#: src/remmina_file_editor.c:479
 #, fuzzy
 msgid "Use initial window size"
 msgstr "استخدام حجم الإطار الأولي"
 
-#: src/remmina_file_editor.c:482
+#: src/remmina_file_editor.c:483
 #, fuzzy
 msgid "Use client resolution"
 msgstr "استخدام دقة العميل"
 
-#: src/remmina_file_editor.c:493 src/remmina_file_editor.c:897
+#: src/remmina_file_editor.c:494 src/remmina_file_editor.c:1029
 #, fuzzy
 msgid "Custom"
 msgstr "تخصيص"
 
-#: src/remmina_file_editor.c:717
+#: src/remmina_file_editor.c:829
 #, fuzzy
 msgid "Keyboard mapping"
 msgstr "تعيين لوحة المفاتيح"
 
-#: src/remmina_file_editor.c:817
+#: src/remmina_file_editor.c:949
 #, fuzzy
 msgid "Behavior"
 msgstr "السلوك"
 
-#: src/remmina_file_editor.c:820
+#: src/remmina_file_editor.c:952
 msgid "Execute a Command"
 msgstr "تنفيذ أمر"
 
-#: src/remmina_file_editor.c:824
+#: src/remmina_file_editor.c:956
 msgid "Before connecting"
 msgstr "قبل الاتصال"
 
-#: src/remmina_file_editor.c:826
+#: src/remmina_file_editor.c:958
 #, fuzzy
 msgid "command %h %u %t %U %p %g --option"
 msgstr "الأمر ٪h ٪u ٪t ٪U ٪p ٪g -option"
 
-#: src/remmina_file_editor.c:831
+#: src/remmina_file_editor.c:963
 msgid "After connecting"
 msgstr "بعد الاتصال"
 
-#: src/remmina_file_editor.c:833
+#: src/remmina_file_editor.c:965
 #, fuzzy
 msgid "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
 msgstr "/path/to/command-opt1 arg ٪h ٪u ٪t-opt2 ٪U ٪p ٪g"
 
-#: src/remmina_file_editor.c:837
+#: src/remmina_file_editor.c:969
 msgid "Start-up"
 msgstr "بدء"
 
-#: src/remmina_file_editor.c:840
+#: src/remmina_file_editor.c:972
 #, fuzzy
 msgid "Auto-start this profile"
 msgstr "بدء تشغيل ملف التعريف هذا تلقائيا"
 
-#: src/remmina_file_editor.c:870
+#: src/remmina_file_editor.c:1002
 #, fuzzy
 msgid "SSH Tunnel"
 msgstr "نفق SSH"
 
-#: src/remmina_file_editor.c:871
+#: src/remmina_file_editor.c:1003
 #, fuzzy
 msgid "Enable SSH tunnel"
 msgstr "تمكين نفق SSH"
 
-#: src/remmina_file_editor.c:878
+#: src/remmina_file_editor.c:1010
 #, fuzzy
 msgid "Tunnel via loopback address"
 msgstr "نفق عبر عنوان الاسترجاع"
 
-#: src/remmina_file_editor.c:888
+#: src/remmina_file_editor.c:1020
 #, fuzzy, c-format
 msgid "Same server at port %i"
 msgstr "نفس الخادم في المنفذ %i"
 
-#: src/remmina_file_editor.c:938 plugins/rdp/rdp_plugin.c:2711
+#: src/remmina_file_editor.c:1070 plugins/rdp/rdp_plugin.c:2711
 msgid "Start-up path"
 msgstr "برنامج بدء التشغيل"
 
-#: src/remmina_file_editor.c:947
+#: src/remmina_file_editor.c:1079
 #, fuzzy
 msgid "SSH Authentication"
 msgstr "مصادقة SSH"
 
-#: src/remmina_file_editor.c:973
+#: src/remmina_file_editor.c:1105
 #, fuzzy
 #| msgid "SSH identity file"
 msgid "SSH private key file"
 msgstr "ملف المفتاح الخاص SSH"
 
-#: src/remmina_file_editor.c:979 src/remmina_ssh_plugin.c:1477
+#: src/remmina_file_editor.c:1111 src/remmina_ssh_plugin.c:1477
 #, fuzzy
 #| msgid "SSH identity file"
 msgid "SSH certificate file"
 msgstr "ملف شهادة SSH"
 
-#: src/remmina_file_editor.c:1037
+#: src/remmina_file_editor.c:1169
 #, fuzzy
 msgid "Basic"
 msgstr "أساسي"
 
-#: src/remmina_file_editor.c:1043
+#: src/remmina_file_editor.c:1175
 #, fuzzy
 msgid "Advanced"
 msgstr "متقدم"
 
-#: src/remmina_file_editor.c:1054
+#: src/remmina_file_editor.c:1186
 #, fuzzy
 msgid "Notes"
 msgstr "ملاحظات"
 
-#: src/remmina_file_editor.c:1293
+#: src/remmina_file_editor.c:1425
 #, fuzzy
 msgid "Default settings saved."
 msgstr "تمّ حفظ الإعدادات الأوّليّة."
 
-#: src/remmina_file_editor.c:1363
+#: src/remmina_file_editor.c:1495
 msgid "Remote Connection Profile"
 msgstr "ملف تعريفي جديد للإتصال"
 
-#: src/remmina_file_editor.c:1369
+#: src/remmina_file_editor.c:1501
 #, fuzzy
 msgid "Save as Default"
 msgstr "حفظ كإفتراضي"
 
-#: src/remmina_file_editor.c:1370
+#: src/remmina_file_editor.c:1502
 #, fuzzy
 msgid "Use the current settings as the default for all new connection profiles"
 msgstr ""
 "استخدام الإعدادات الحالية كإعداد افتراضي لكافة ملفات تعريف الاتصال الجديدة"
 
-#: src/remmina_file_editor.c:1378 data/ui/remmina_main.glade:160
+#: src/remmina_file_editor.c:1510 data/ui/remmina_main.glade:160
 msgid "Connect"
 msgstr "اتصل"
 
-#: src/remmina_file_editor.c:1381
+#: src/remmina_file_editor.c:1513
 msgid "_Save and Connect"
 msgstr "ا_حفظ واتصل"
 
-#: src/remmina_file_editor.c:1504
+#: src/remmina_file_editor.c:1636
 #, fuzzy
 msgid "Quick Connect"
 msgstr "الاتصال السريع"
 
-#: src/remmina_file_editor.c:1528
+#: src/remmina_file_editor.c:1660
 #, fuzzy, c-format
 msgid "Use '%s' as subgroup delimiter"
 msgstr "استخدام '%s' كمحدد للمجموعة الفرعية"
 
-#: src/remmina_file_editor.c:1594 src/remmina_file_editor.c:1612
+#: src/remmina_file_editor.c:1726 src/remmina_file_editor.c:1744
 #, c-format
 msgid "Could not find the file “%s”."
 msgstr "لم يمكن العثور على الملّف \"%s\"."
@@ -3201,8 +3201,10 @@ msgid ""
 msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:1221
-msgid "DPI resolution (int!)"
-msgstr ""
+#, fuzzy
+#| msgid "Resolution"
+msgid "DPI resolution"
+msgstr "الدِّقَّة"
 
 #: plugins/x2go/x2go_plugin.c:1222
 msgid ""

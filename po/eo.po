@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Remmina v1.4.3\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-09-21 12:13+0000\n"
-"PO-Revision-Date: 2021-08-28 17:34+0000\n"
+"POT-Creation-Date: 2021-09-21 21:02+0000\n"
+"PO-Revision-Date: 2021-09-21 21:03+0000\n"
 "Last-Translator: phlostically <phlostically@mailinator.com>\n"
 "Language-Team: Esperanto <https://hosted.weblate.org/projects/remmina/"
 "remmina/eo/>\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.8.1-dev\n"
+"X-Generator: Weblate 4.9-dev\n"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:346
 #: src/remmina_protocol_widget.c:1672 src/remmina_protocol_widget.c:1691
-#: src/remmina_file_editor.c:846 src/remmina_file_editor.c:967
+#: src/remmina_file_editor.c:978 src/remmina_file_editor.c:1099
 #: src/remmina_ssh_plugin.c:1369 plugins/rdp/rdp_plugin.c:2667
 #: plugins/www/www_plugin.c:887 plugins/x2go/x2go_plugin.c:1192
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1675
@@ -30,22 +30,22 @@ msgid "Password"
 msgstr "Pasvorto"
 
 #: src/remmina_sftp_plugin.c:311 src/remmina_sftp_plugin.c:348
-#: src/remmina_file_editor.c:847 src/remmina_ssh_plugin.c:1370
+#: src/remmina_file_editor.c:979 src/remmina_ssh_plugin.c:1370
 #: src/remmina_ssh_plugin.c:1475
 msgid "SSH identity file"
 msgstr "SSH-identiga dosiero"
 
-#: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:848
+#: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:980
 #: src/remmina_ssh_plugin.c:1371
 msgid "SSH agent"
 msgstr "SSH-agento"
 
-#: src/remmina_sftp_plugin.c:313 src/remmina_file_editor.c:849
+#: src/remmina_sftp_plugin.c:313 src/remmina_file_editor.c:981
 #: src/remmina_ssh_plugin.c:1372
 msgid "Public key (automatic)"
 msgstr "Publika ŝlosilo (aŭtomata)"
 
-#: src/remmina_sftp_plugin.c:314 src/remmina_file_editor.c:850
+#: src/remmina_sftp_plugin.c:314 src/remmina_file_editor.c:982
 #: src/remmina_ssh_plugin.c:1373
 msgid "Kerberos (GSSAPI)"
 msgstr "Kerberos (GSSAPI)"
@@ -67,19 +67,19 @@ msgid "Connect via SSH from a new terminal"
 msgstr "Konekti per SSH el nova terminalo"
 
 #: src/remmina_sftp_plugin.c:345 src/remmina_message_panel.c:330
-#: src/remmina_file_editor.c:961 src/remmina_ssh_plugin.c:1473
+#: src/remmina_file_editor.c:1093 src/remmina_ssh_plugin.c:1473
 #: plugins/rdp/rdp_plugin.c:2666 plugins/vnc/vnc_plugin.c:1960
 #: plugins/vnc/vnc_plugin.c:1980 plugins/www/www_plugin.c:886
 #: data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr "Salutnomo"
 
-#: src/remmina_sftp_plugin.c:347 src/remmina_file_editor.c:952
+#: src/remmina_sftp_plugin.c:347 src/remmina_file_editor.c:1084
 #: src/remmina_ssh_plugin.c:1472
 msgid "Authentication type"
 msgstr "Tipo de aŭtentikigo"
 
-#: src/remmina_sftp_plugin.c:349 src/remmina_file_editor.c:984
+#: src/remmina_sftp_plugin.c:349 src/remmina_file_editor.c:1116
 #: src/remmina_ssh_plugin.c:1479
 msgid "Password to unlock private key"
 msgstr "Pasvorto por malŝlosi privatan ŝlosilon"
@@ -92,7 +92,7 @@ msgstr "SSH-Prokurila Komando"
 msgid "SFTP - Secure File Transfer"
 msgstr "SFTP - Sekura Dosiertransigo"
 
-#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1533
+#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1665
 msgid "Protocol"
 msgstr "Protokolo"
 
@@ -121,11 +121,11 @@ msgid "Plugins"
 msgstr "Kromprogramoj"
 
 #: src/remmina_plugin_manager.c:461 src/remmina_message_panel.c:452
-#: src/remmina_message_panel.c:621 src/remmina_file_editor.c:152
+#: src/remmina_message_panel.c:621 src/remmina_file_editor.c:153
 msgid "_OK"
 msgstr "_Bone"
 
-#: src/remmina_plugin_manager.c:479 src/remmina_file_editor.c:1490
+#: src/remmina_plugin_manager.c:479 src/remmina_file_editor.c:1622
 #: data/ui/remmina_main.glade:442
 msgid "Name"
 msgstr "Nomo"
@@ -191,11 +191,11 @@ msgstr "Meta+"
 msgid "<None>"
 msgstr "<Nenio>"
 
-#: src/remmina_pref_dialog.c:91 src/remmina_file_editor.c:435
+#: src/remmina_pref_dialog.c:91 src/remmina_file_editor.c:436
 msgid "Resolutions"
 msgstr "Ekrandistingivoj"
 
-#: src/remmina_pref_dialog.c:91 src/remmina_file_editor.c:435
+#: src/remmina_pref_dialog.c:91 src/remmina_file_editor.c:436
 msgid "Configure the available resolutions"
 msgstr "Agordi la haveblajn ekrandistingivojn"
 
@@ -262,8 +262,8 @@ msgid "Save password"
 msgstr "Konservi pasvorton"
 
 #: src/remmina_message_panel.c:457 src/remmina_message_panel.c:629
-#: src/remmina_sftp_client.c:947 src/remmina_file_editor.c:151
-#: src/remmina_file_editor.c:1365 plugins/spice/spice_plugin_file_transfer.c:84
+#: src/remmina_sftp_client.c:947 src/remmina_file_editor.c:152
+#: src/remmina_file_editor.c:1497 plugins/spice/spice_plugin_file_transfer.c:84
 #: data/ui/remmina_key_chooser.glade:8 data/ui/remmina_key_chooser.glade:9
 #: data/ui/remmina_spinner.glade:8 data/ui/remmina_spinner.glade:9
 msgid "_Cancel"
@@ -718,7 +718,7 @@ msgstr "Grando"
 msgid "User"
 msgstr "Uzanto"
 
-#: src/remmina_ftp_client.c:932 src/remmina_file_editor.c:1515
+#: src/remmina_ftp_client.c:932 src/remmina_file_editor.c:1647
 #: data/ui/remmina_mpc.glade:115 data/ui/remmina_main.glade:464
 msgid "Group"
 msgstr "Grupo"
@@ -851,8 +851,8 @@ msgstr "Aŭskultante ĉe pordo %i por envenonta %s-konekto…"
 msgid "Could not authenticate, attempting reconnection…"
 msgstr "Aŭtentikigo ne sukcesis, provante rekonekton…"
 
-#: src/remmina_protocol_widget.c:2025 src/remmina_file_editor.c:346
-#: src/remmina_file_editor.c:917 data/ui/remmina_main.glade:478
+#: src/remmina_protocol_widget.c:2025 src/remmina_file_editor.c:347
+#: src/remmina_file_editor.c:1049 data/ui/remmina_main.glade:478
 msgid "Server"
 msgstr "Servilo"
 
@@ -1154,7 +1154,7 @@ msgstr ""
 msgid "Import"
 msgstr "Enporti"
 
-#: src/remmina_main.c:1022 src/remmina_file_editor.c:1373
+#: src/remmina_main.c:1022 src/remmina_file_editor.c:1505
 msgid "_Save"
 msgstr "_Konservi"
 
@@ -1249,7 +1249,7 @@ msgstr "Superskribi"
 msgid "The following file already exists in the target folder:"
 msgstr "La jena dosiero jam ekzistas en la cela dosierujo:"
 
-#: src/remmina_file_editor.c:60
+#: src/remmina_file_editor.c:61
 msgid ""
 "<big>Supported formats\n"
 "• server\n"
@@ -1265,7 +1265,7 @@ msgstr ""
 " • ID:numero-de-ripetilo\n"
 " • unix:///dosierindiko/konektingo.sock</big>"
 
-#: src/remmina_file_editor.c:69
+#: src/remmina_file_editor.c:70
 msgid ""
 "<big>• command in PATH args %h\n"
 "• /path/to/foo -options %h %u\n"
@@ -1292,7 +1292,7 @@ msgstr ""
 "Ne rulu fone se vi deziras, ke la komando ruliĝu antaŭ konekto.\n"
 "</big>"
 
-#: src/remmina_file_editor.c:83
+#: src/remmina_file_editor.c:84
 msgid ""
 "<big>Supported formats\n"
 "• server\n"
@@ -1304,147 +1304,147 @@ msgstr ""
 "• servilo[:pordo]\n"
 "• salutnomo@servilo[:pordo] (nur por la protokolo SSH)</big>"
 
-#: src/remmina_file_editor.c:149
+#: src/remmina_file_editor.c:150
 msgid "Choose a Remote Desktop Server"
 msgstr "Elektu servilon de fora ekrano"
 
-#: src/remmina_file_editor.c:370
+#: src/remmina_file_editor.c:371
 #, c-format
 msgid "Browse the network to find a %s server"
 msgstr "Trarigardi la reton por trovi servilon de %s"
 
-#: src/remmina_file_editor.c:471
+#: src/remmina_file_editor.c:472
 msgid "Resolution"
 msgstr "Ekrandistingivo"
 
-#: src/remmina_file_editor.c:478
+#: src/remmina_file_editor.c:479
 msgid "Use initial window size"
 msgstr "Uzi aprioran fenestrograndon"
 
-#: src/remmina_file_editor.c:482
+#: src/remmina_file_editor.c:483
 msgid "Use client resolution"
 msgstr "Uzi klientan ekrandistingivon"
 
-#: src/remmina_file_editor.c:493 src/remmina_file_editor.c:897
+#: src/remmina_file_editor.c:494 src/remmina_file_editor.c:1029
 msgid "Custom"
 msgstr "Alia"
 
-#: src/remmina_file_editor.c:717
+#: src/remmina_file_editor.c:829
 msgid "Keyboard mapping"
 msgstr "Klavarmapo"
 
-#: src/remmina_file_editor.c:817
+#: src/remmina_file_editor.c:949
 msgid "Behavior"
 msgstr "Konduto"
 
-#: src/remmina_file_editor.c:820
+#: src/remmina_file_editor.c:952
 msgid "Execute a Command"
 msgstr "Ruli Komandon"
 
-#: src/remmina_file_editor.c:824
+#: src/remmina_file_editor.c:956
 msgid "Before connecting"
 msgstr "Antaŭ konekto"
 
-#: src/remmina_file_editor.c:826
+#: src/remmina_file_editor.c:958
 msgid "command %h %u %t %U %p %g --option"
 msgstr "komando %h %u %t %U %p %g --opcio"
 
-#: src/remmina_file_editor.c:831
+#: src/remmina_file_editor.c:963
 msgid "After connecting"
 msgstr "Post konekto"
 
-#: src/remmina_file_editor.c:833
+#: src/remmina_file_editor.c:965
 msgid "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
 msgstr "/dosierindiko/al/komando -opcio1 argumento %h %u %t -opcio2 %U %p %g"
 
-#: src/remmina_file_editor.c:837
+#: src/remmina_file_editor.c:969
 msgid "Start-up"
 msgstr "Starto"
 
-#: src/remmina_file_editor.c:840
+#: src/remmina_file_editor.c:972
 msgid "Auto-start this profile"
 msgstr "Aŭtomate startigi laŭ ĉi tiu profilo"
 
-#: src/remmina_file_editor.c:870
+#: src/remmina_file_editor.c:1002
 msgid "SSH Tunnel"
 msgstr "SSH-Tunelo"
 
-#: src/remmina_file_editor.c:871
+#: src/remmina_file_editor.c:1003
 msgid "Enable SSH tunnel"
 msgstr "Ŝalti SSH-tunelon"
 
-#: src/remmina_file_editor.c:878
+#: src/remmina_file_editor.c:1010
 msgid "Tunnel via loopback address"
 msgstr "Tunelo per retrosenda adreso"
 
-#: src/remmina_file_editor.c:888
+#: src/remmina_file_editor.c:1020
 #, c-format
 msgid "Same server at port %i"
 msgstr "Sama servilo ĉe pordo %i"
 
-#: src/remmina_file_editor.c:938 plugins/rdp/rdp_plugin.c:2711
+#: src/remmina_file_editor.c:1070 plugins/rdp/rdp_plugin.c:2711
 msgid "Start-up path"
 msgstr "Dosierindiko de starto"
 
-#: src/remmina_file_editor.c:947
+#: src/remmina_file_editor.c:1079
 msgid "SSH Authentication"
 msgstr "SSH-Aŭtentikigo"
 
-#: src/remmina_file_editor.c:973
+#: src/remmina_file_editor.c:1105
 msgid "SSH private key file"
 msgstr "Dosiero de privata SSH-ŝlosilo"
 
-#: src/remmina_file_editor.c:979 src/remmina_ssh_plugin.c:1477
+#: src/remmina_file_editor.c:1111 src/remmina_ssh_plugin.c:1477
 msgid "SSH certificate file"
 msgstr "SSH-atestila dosiero"
 
-#: src/remmina_file_editor.c:1037
+#: src/remmina_file_editor.c:1169
 msgid "Basic"
 msgstr "Baznivela"
 
-#: src/remmina_file_editor.c:1043
+#: src/remmina_file_editor.c:1175
 msgid "Advanced"
 msgstr "Altnivela"
 
-#: src/remmina_file_editor.c:1054
+#: src/remmina_file_editor.c:1186
 msgid "Notes"
 msgstr "Notoj"
 
-#: src/remmina_file_editor.c:1293
+#: src/remmina_file_editor.c:1425
 msgid "Default settings saved."
 msgstr "Agordoj implicitigitaj."
 
-#: src/remmina_file_editor.c:1363
+#: src/remmina_file_editor.c:1495
 msgid "Remote Connection Profile"
 msgstr "Fora Konektoprofilo"
 
-#: src/remmina_file_editor.c:1369
+#: src/remmina_file_editor.c:1501
 msgid "Save as Default"
 msgstr "Konservi kiel Impliciton"
 
-#: src/remmina_file_editor.c:1370
+#: src/remmina_file_editor.c:1502
 msgid "Use the current settings as the default for all new connection profiles"
 msgstr ""
 "Uzi la aktualajn agordojn kiel implicitojn por ĉiuj novaj konektoprofiloj"
 
-#: src/remmina_file_editor.c:1378 data/ui/remmina_main.glade:160
+#: src/remmina_file_editor.c:1510 data/ui/remmina_main.glade:160
 msgid "Connect"
 msgstr "Konekti"
 
-#: src/remmina_file_editor.c:1381
+#: src/remmina_file_editor.c:1513
 msgid "_Save and Connect"
 msgstr "_Konservi kaj Konekti"
 
-#: src/remmina_file_editor.c:1504
+#: src/remmina_file_editor.c:1636
 msgid "Quick Connect"
 msgstr "Rapida Konekto"
 
-#: src/remmina_file_editor.c:1528
+#: src/remmina_file_editor.c:1660
 #, c-format
 msgid "Use '%s' as subgroup delimiter"
 msgstr "Uzi ‘%s’ kiel disigilon de subgrupoj"
 
-#: src/remmina_file_editor.c:1594 src/remmina_file_editor.c:1612
+#: src/remmina_file_editor.c:1726 src/remmina_file_editor.c:1744
 #, c-format
 msgid "Could not find the file “%s”."
 msgstr "Ne povis trovi la dosieron «%s»."
@@ -2178,17 +2178,15 @@ msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:2670
 msgid "Restricted admin mode"
-msgstr ""
+msgstr "Limigita administra reĝimo"
 
 #: plugins/rdp/rdp_plugin.c:2671
-#, fuzzy
-#| msgid "Password"
 msgid "Password hash"
-msgstr "Pasvorto"
+msgstr "Pasvorta haketaĵo"
 
 #: plugins/rdp/rdp_plugin.c:2671
 msgid "Restricted admin mode password hash"
-msgstr ""
+msgstr "Pasvorta haketaĵo de limigita administra reĝimo"
 
 #: plugins/rdp/rdp_plugin.c:2672
 msgid "Left-handed mouse support"
@@ -2779,19 +2777,20 @@ msgstr "Sekura konservado de pasvortoj per GNOME-ŝlosilaro"
 
 #: plugins/x2go/x2go_plugin.c:166
 msgid "Broken DialogData! Aborting."
-msgstr ""
+msgstr "Nevalida DialogData! Kolapsante."
 
 #: plugins/x2go/x2go_plugin.c:170
 msgid "Can't retrieve DialogData! Aborting."
-msgstr ""
+msgstr "Ne eblas akiri DialogData! Kolapsante."
 
 #: plugins/x2go/x2go_plugin.c:389
 msgid "pyhoca-cli exited unexpectedly. This connection will now be closed."
 msgstr ""
+"La programo pyhoca-cli finiĝis neatendite. Ĉi tiu konekto nun fermiĝos."
 
 #: plugins/x2go/x2go_plugin.c:398
 msgid "An error occured."
-msgstr ""
+msgstr "Eraro okazis."
 
 #: plugins/x2go/x2go_plugin.c:399
 msgid ""
@@ -2799,6 +2798,9 @@ msgid ""
 "Please check your profile settings and pyhoca-cli's output for possible "
 "errors and make sure that the remote server is reachable."
 msgstr ""
+"Nepra ida procezo «pyhoca-cli» haltis neatendite.\n"
+"Bonvolu kontroli viajn profilajn agordojn kaj la eligaĵon de pyhoca-cli pri "
+"eblaj eraroj kaj certigi, ke la fora servilo estas atingebla."
 
 #: plugins/x2go/x2go_plugin.c:439
 #, c-format
@@ -2806,18 +2808,16 @@ msgid ""
 "An unknown error happened while retrieving pyhoca-cli's cmdline features! "
 "Exit code: %i"
 msgstr ""
+"Nekonata eraro okazis dum akirado de la funkcioj de pyhoca-cli! Elirkodo: %i"
 
 #: plugins/x2go/x2go_plugin.c:444
-#, fuzzy, c-format
-#| msgid "Error: %s"
+#, c-format
 msgid "Error: '%s'"
-msgstr "Eraro: %s"
+msgstr "Eraro: «%s»"
 
 #: plugins/x2go/x2go_plugin.c:532
-#, fuzzy
-#| msgid "Enter NX authentication credentials"
 msgid "Enter X2Go credentials"
-msgstr "Entajpu akreditilojn de NX-aŭtentikigo"
+msgstr "Entajpu akreditilojn de X2Go"
 
 #: plugins/x2go/x2go_plugin.c:556
 msgid ""
@@ -2831,12 +2831,12 @@ msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:705 plugins/x2go/x2go_plugin.c:714
 msgid "An error occured while starting a X2Go session."
-msgstr ""
+msgstr "Eraro okazis dum lanĉo de seanco X2Go."
 
 #: plugins/x2go/x2go_plugin.c:715
 #, c-format
 msgid "Failed to start pyhoca-cli (%i): '%s'"
-msgstr ""
+msgstr "Malsukcesis lanĉi la programon pyhoca-cli (%i): «%s»"
 
 #: plugins/x2go/x2go_plugin.c:784
 msgid ""
@@ -2844,6 +2844,9 @@ msgid ""
 "pyhoca-cli version is too old or pyhoca-cli is not installed! An old limited "
 "set of features will be used now."
 msgstr ""
+"Ne eblis akiri la funkciojn de pyhoca-cli. Ĉi tio indikas, ke aŭ via versio "
+"de pyhoca-cli estas tro malnova aŭ pyhoca-cli ne estas instalita! Malnova "
+"limigita aro de funkcioj ekuziĝos."
 
 #: plugins/x2go/x2go_plugin.c:796
 msgid ""
@@ -2852,81 +2855,71 @@ msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:802
 msgid "Successfully retrieved following pyhoca-cli features:"
-msgstr ""
+msgstr "Sukcese akiriĝis la jenaj funkcioj de pyhoca-cli:"
 
 #: plugins/x2go/x2go_plugin.c:806
 #, c-format
 msgid "Available feature[%i]: '%s'"
-msgstr ""
+msgstr "Havebla funkcio[%i]: «%s»"
 
 #: plugins/x2go/x2go_plugin.c:948
 msgid "Waiting for X2Go Agent window to appear."
-msgstr ""
+msgstr "Atendante la aperon de la fenestro de X2Go Agent."
 
 #: plugins/x2go/x2go_plugin.c:974
 msgid "Waiting for pyhoca-cli to show the session's window."
-msgstr ""
+msgstr "Atendante la montron de la seanca fenestro per pyhoca-cli."
 
 #: plugins/x2go/x2go_plugin.c:1145
-#, fuzzy, c-format
-#| msgid ""
-#| "The protocol “%s” is unavailable because GtkSocket only works under X.Org."
+#, c-format
 msgid "Protocol %s is unavailable because GtkSocket only works under X.org"
 msgstr ""
-"La protokolo «%s» ne estas disponebla ĉar GtkSocket funkcias nur sub X.Org."
+"La protokolo %s ne estas disponebla ĉar GtkSocket funkcias nur sub X.org"
 
 #: plugins/x2go/x2go_plugin.c:1189
-#, fuzzy
-#| msgid "Username"
 msgid "User name"
 msgstr "Salutnomo"
 
 #: plugins/x2go/x2go_plugin.c:1195
-#, fuzzy
-#| msgid "Start-up program"
 msgid "Startup program"
 msgstr "Starta programo"
 
 #: plugins/x2go/x2go_plugin.c:1197
 msgid "Which command should be executed after creating the X2Go session?"
-msgstr ""
+msgstr "Kiun komandon ruli post kreo de la seanco X2Go?"
 
 #: plugins/x2go/x2go_plugin.c:1204
-#, fuzzy
-#| msgid "Keyboard layout"
 msgid "Keyboard Layout (auto)"
-msgstr "Klavarfasono"
+msgstr "Klavarfasono (aŭtomata)"
 
 #: plugins/x2go/x2go_plugin.c:1207
-#, fuzzy
-#| msgid "Keyboard layout"
 msgid "Keyboard type (auto)"
-msgstr "Klavarfasono"
+msgstr "Klavartipo (aŭtomata)"
 
 #: plugins/x2go/x2go_plugin.c:1210
-#, fuzzy
-#| msgid "Turn on Java support"
 msgid "Audio support"
-msgstr "Ebligi subtenon de Java"
+msgstr "Subteno de sono"
 
 #: plugins/x2go/x2go_plugin.c:1212
 msgid "X2Go server's sound system (default: 'pulse')."
-msgstr ""
+msgstr "La sonsistemo de la servilo X2Go (implicite: «pulse»)."
 
 #: plugins/x2go/x2go_plugin.c:1215
-#, fuzzy
-#| msgid "TCP redirection"
 msgid "Clipboard direction"
-msgstr "TCP-alidirektado"
+msgstr "Tonduja direkto"
 
 #: plugins/x2go/x2go_plugin.c:1217
 msgid ""
 "In which direction should clipboard content be copied? (default: 'both')."
 msgstr ""
+"Kiudirekten kopii la enhavon de la tondujo? (implicite: "
+"«both» (ambaŭdirekte))."
 
 #: plugins/x2go/x2go_plugin.c:1221
-msgid "DPI resolution (int!)"
-msgstr ""
+#, fuzzy
+#| msgid "Resolution"
+msgid "DPI resolution"
+msgstr "Ekrandistingivo"
 
 #: plugins/x2go/x2go_plugin.c:1222
 msgid ""
@@ -2936,11 +2929,11 @@ msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:1265
 msgid "X2Go plugin loaded."
-msgstr ""
+msgstr "Ŝargiĝis la kromprogramo X2Go."
 
 #: plugins/x2go/x2go_plugin.h:43
 msgid "X2Go - Launch an X2Go session"
-msgstr ""
+msgstr "X2Go — Lanĉi seancon de X2Go"
 
 #: plugins/gvnc/gvnc_plugin_config.h:40
 msgid "Remmina VNC plugin for GNOME and KVM"
