@@ -1944,6 +1944,14 @@ static gchar repeater_tooltip[] =
 	   "    the repeater, e.g. with x11vnc:\n"
 	   "    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500");
 
+static gchar vnciport_tooltip[] =
+	N_("Listening for remote VNC connection:\n"
+	   "  • The \"Listen on port\" field is the port Remmina will listen to,\n"
+	   "    e.g. 8888\n"
+	   "  • From the remote VNC server, you will connect to\n"
+	   "    Remmina, e.g. with x11vnc:\n"
+	   "    x11vnc -display :0 -connect 192.168.1.36:8888");
+
 /* Array of RemminaProtocolSetting for basic settings.
  * Each item is composed by:
  * a) RemminaProtocolSettingType for setting type
@@ -1976,7 +1984,7 @@ static const RemminaProtocolSetting remmina_plugin_vnc_basic_settings[] =
  */
 static const RemminaProtocolSetting remmina_plugin_vnci_basic_settings[] =
 {
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "listenport", N_("Listen on port"), FALSE, NULL,	      NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "listenport", N_("Listen on port"), FALSE, NULL,	      vnciport_tooltip },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "username",	N_("Username"),	      FALSE, NULL,	      NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "password",	N_("User password"),  FALSE, NULL,	      NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "colordepth", N_("Colour depth"),   FALSE, colordepth_list, NULL },
