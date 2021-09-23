@@ -1641,8 +1641,8 @@ static void remmina_file_editor_on_default(GtkWidget *button, RemminaFileEditor 
 	remmina_file_save(gf);
 	remmina_file_free(gf);
 
-	dialog = gtk_message_dialog_new(GTK_WINDOW(gfe), GTK_DIALOG_MODAL, GTK_MESSAGE_INFO, GTK_BUTTONS_OK,
-					_("Default settings saved."));
+	dialog = gtk_message_dialog_new(GTK_WINDOW(gfe), GTK_DIALOG_MODAL, GTK_MESSAGE_INFO,
+									GTK_BUTTONS_OK, _("Default settings saved."));
 	gtk_dialog_run(GTK_DIALOG(dialog));
 	gtk_widget_destroy(dialog);
 }
