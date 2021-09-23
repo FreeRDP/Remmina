@@ -276,6 +276,8 @@ parts:
       snapcraftctl prime
       # Fix application icon lookup
       sed --in-place 's|^Icon=.*|Icon=snap.remmina.org.remmina.Remmina|' usr/share/applications/org.remmina.Remmina.desktop
+      # Remove forbidden links (I'm sure the audio won't work anymore)
+      rm -f etc/pulse/client.conf.d/01-enable-autospawn.conf lib/systemd/system/pulseaudio-enable-autospawn.service
 
   app:
     plugin: nil
