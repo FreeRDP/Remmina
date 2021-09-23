@@ -558,46 +558,6 @@ static gchar* remmina_plugin_x2go_get_pyhoca_features() {
 	return standard_out;
 }
 
-// Returns a string (gchar*) array (gchar**) of all available features
-// if the parse was sucessfull. If not NULL gets returned and size == 0;
-static gchar** remmina_plugin_x2go_parse_pyhoca_features(gchar* features_string,
-												         uint32_t *size) {
-    REMMINA_PLUGIN_DEBUG("Function entry.");
-	char delim[] = "\n";
-
-	// Counts the occurence of '\n', so the number of features passed.
-	int i = 0;
-	// work on a copy of the string, because strchr alters the string.
-	char *pch = strchr(g_strdup(features_string), '\n');
-	while (pch != NULL) {
-		i++;
-		pch = strchr(pch+1, '\n');
-	}
-
-	if (i <= 0) {
-		// Something went wrong, there can't be 0 features.
-		return NULL;
-		*size = 0;
-	}
-
-	gchar **feature_list = NULL;
-	// 50 characters per feature should do the trick, right?
-	feature_list = malloc(sizeof(char) * i * 50);
-	*size = i;
-
-	// Split 'features_string' into array 'feature_list' using 'delim' as delimiter.
-	char *ptr = strtok(g_strdup(features_string), delim);
-	for(gint j = 0; (j < i && ptr != NULL); j++) {
-		// Add feature to list
-		feature_list[j] = g_strdup_printf(ptr);
-
-		// Get next feature
-		ptr = strtok(NULL, delim);
-	}
-
-	return feature_list;
-}
-
 static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
                                               gint sshport,
                                               gchar *username,
@@ -889,30 +849,28 @@ static GList* remmina_plugin_x2go_populate_available_features_list() {
 		// of an old limited set of features.
 
 		REMMINA_PLUGIN_WARNING("%s", _("Couldn't get pyhoca-cli's cmdline-features. This "
-							   "indicates either your pyhoca-cli version is too old "
-							   "or pyhoca-cli is not installed! An old limited set of "
-							   "features will be used now."));
+								"indicates either your pyhoca-cli version is too "
+								"old or pyhoca-cli is not installed! An old limited set "
+								"of features will be used now."));
 
 		return remmina_plugin_x2go_old_pyhoca_features();
 	} else {
-		uint32_t features_size = 0;
-		gchar **features = NULL;
-		features = remmina_plugin_x2go_parse_pyhoca_features(features_string,
-															 &features_size);
-		if (features == NULL && features_size > 0) {
+		guint features_amount = 0;
+		gchar **features_list = remmina_plugin_x2go_split_string(features_string,
+															     '\n', &features_amount);
+		if (features_list == NULL || features_amount <= 0) {
 			gchar *error_msg = _("parsing pyhoca-cli functionality was not possible! "
-							      "Using a limited feature-set for now.");
-			REMMINA_PLUGIN_CRITICAL("%s", error_msg);
+							     "Using a limited feature-set for now.");
+			REMMINA_PLUGIN_WARNING("%s", error_msg);
 			return remmina_plugin_x2go_old_pyhoca_features();
 		}
 
-		REMMINA_PLUGIN_INFO("%s", _("Retrieved the "
-									"following pyhoca-cli functionality:"));
+		REMMINA_PLUGIN_INFO("%s", _("Retrieved the following pyhoca-cli functionality:"));
 
-		for(int k = 0; k < features_size; k++) {
+		for(int k = 0; k < features_amount; k++) {
 			REMMINA_PLUGIN_INFO("%s", g_strdup_printf(_("Available feature[%i]: '%s'"),
-														k+1, features[k]));
-			returning_glist = g_list_append(returning_glist, features[k]);
+													  k+1, features_list[k]));
+			returning_glist = g_list_append(returning_glist, features_list[k]);
 		}
 		return returning_glist;
 	}
