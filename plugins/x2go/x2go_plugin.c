@@ -212,45 +212,55 @@ static gint remmina_plugin_x2go_safe_strcmp(gconstpointer a, gconstpointer b) {
 
 /**
  * DialogData:
- * @flags: see GtkDialogFlags
- * @type: see GtkMessageType
- * @buttons: see GtkButtonsType
- * @title: Title of the Dialog
- * @message: Message of the Dialog
- * @callbackfunc: A GCallback function like
- * 				  callback(RemminaProtocolWidget *gp, GtkWidget *dialog)
- * 				  which will be executed on the Dialog's 'response' signal.
- *				  The callback function is not obliged to destroy
- *				  the dialog widget.
+ * @param flags see GtkDialogFlags
+ * @param type see GtkMessageType
+ * @param buttons see GtkButtonsType
+ * @param title Title of the Dialog
+ * @param message Message of the Dialog
+ * @param callbackfunc A GCallback function like
+ *					   callback(RemminaProtocolWidget *gp, GtkWidget *dialog)
+ *					   which will be executed on the dialogs 'response' signal.
+ *					   The callback function is obliged to destroy
+ *					   the dialog widget.
  *
  * The `DialogData` structure contains all info needed
- * to open a GTK dialog with remmina_plugin_x2go_open_dialog()
+ * to open a GTK dialog with remmina_plugin_x2go_open_dialog() \n
  *
- * Quick example of a callback function.
- * static void remmina_plugin_x2go_test_callback(RemminaProtocolWidget *gp,
- *											     gint response_id,
- * 											     GtkDialog *self) {
- *		REMMINA_PLUGIN_DEBUG("response: %i", response_id);
- *		if (response_id == GTK_RESPONSE_OK) {
- *	 		REMMINA_PLUGIN_DEBUG("OK!");
- * 		}
- * 		gtk_widget_destroy(self);
+ * Quick example of a callback function: \n
+ * static void remmina_plugin_x2go_test_callback(RemminaProtocolWidget *gp, \n
+ *											     gint response_id, \n
+ * 											     GtkDialog *self) { \n
+ *		REMMINA_PLUGIN_DEBUG("response: %i", response_id); \n
+ *		if (response_id == GTK_RESPONSE_OK) { \n
+ *	 		REMMINA_PLUGIN_DEBUG("OK!"); \n
+ * 		} \n
+ * 		gtk_widget_destroy(self); \n
  * }
  *
- *
  */
-
 struct _DialogData {
+  /** see GtkWindow */
   GtkWindow      *parent;
+  /** see GtkDialogFlags */
   GtkDialogFlags flags;
+  /** see GtkMessageType */
   GtkMessageType type;
+  /** see GtkButtonsType */
   GtkButtonsType buttons;
+  /** Title of the Dialog */
   gchar          *title;
+  /** Message of the Dialog */
   gchar          *message;
+  /** Calls this function if
+   *  the user pressed a button. */
   GCallback      callbackfunc;
 };
 typedef struct _DialogData DialogData;
 
+/**
+ * @param gp getting DialogData via dialog-data saved in gp.
+ * 			 See define GET_DIALOG_DATA
+ */
 static void remmina_plugin_x2go_open_dialog(RemminaProtocolWidget *gp) {
 	REMMINA_PLUGIN_DEBUG("Function entry.");
 
