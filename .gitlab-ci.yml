@@ -99,7 +99,7 @@ flatpak:test:
   - web
   - schedules
 snap:build:
-  image: registry.gitlab.com/remmina/remmina/gnome-3-28:18.04
+  image: ubuntudesktop/gnome-3-38-2004
   stage: build
   script:
   - export LC_ALL=C.UTF-8
@@ -107,7 +107,8 @@ snap:build:
   - export SNAP_ARCH=amd64
   - export SNAPCRAFT_BUILD_INFO=1
   - apt-get -y update
-  - snapcraft --destructive-mode
+  - apt-get install -y git
+  - SNAPCRAFT_SETUP_CORE=1 snapcraft --destructive-mode
   - |
     if [ "$CI_COMMIT_REF_NAME" = "master" ]; then
       echo $SNAPCRAFT_LOGIN | base64 --decode --ignore-garbage > snapcraft.login

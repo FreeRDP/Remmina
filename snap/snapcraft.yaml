@@ -1,14 +1,15 @@
 name: remmina
 version: git
 adopt-info: remmina
-grade: stable
-confinement: strict
-base: core18
-
 architectures:
   - build-on: amd64
   - build-on: arm64
   - build-on: armhf
+
+base: core20
+
+grade: stable
+confinement: strict
 
 # this line enables LZO compression for the snap
 compression: lzo
@@ -42,8 +43,8 @@ environment:
 
 apps:
   remmina:
-    command: bin/remmina
-    extensions: [gnome-3-34]
+    command: usr/bin/remmina
+    extensions: [gnome-3-38]
     common-id: org.remmina.Remmina.desktop
     plugs:
       - alsa
@@ -76,16 +77,16 @@ apps:
       - remmina-gapp
 
   winpr-makecert:
-    command: winpr-makecert
+    command: usr/bin/winpr-makecert
 
   winpr-hash:
-    command: winpr-hash
+    command: usr/bin/winpr-hash
 
   xfreerdp:
-    command: xfreerdp
+    command: usr/bin/xfreerdp
 
   wlfreerdp:
-    command: wlfreerdp
+    command: usr/bin/wlfreerdp
 
   ssh-agent:
     command: usr/bin/ssh-agent -D -a $SSH_AUTH_SOCK
@@ -164,11 +165,10 @@ parts:
       - libusb-1.0-0
       - libzvbi0
       - x11-utils
-    configflags:
+    cmake-parameters:
       # Workaround for ubuntu 18.04 armhf: build fails with "unable to find a register to spill"
       # remember to remove when snapcraft will be built in ubuntu >= 20.04
       # This must be at the beginning
-      - -DCMAKE_C_FLAGS_RELEASE=-O1 -g -DNDEBUG
       - -DCMAKE_BUILD_TYPE=Release
       - -DWITH_WAYLAND=on
       - -DWITH_SERVER=off
@@ -243,7 +243,7 @@ parts:
       - xauth
       - xterm
       - openssh-client
-    configflags:
+    cmake-parameters:
       - -DCMAKE_BUILD_TYPE=Release
       - -DWITH_NEWS:BOOL=ON
       - -DWITH_FREERDP3=OFF
@@ -285,31 +285,32 @@ parts:
       - libdbusmenu-glib4
       - libdbusmenu-gtk3-4
       - libindicator3-7
-      - libgdbm5
+      - libgdbm6
       - libavahi-ui-gtk3-0
       - libxkbfile1
       - libvncclient1
-      - libavcodec57
+      - libavcodec58
+      - libavcodec-extra
       - libspice-client-glib-2.0-8
       - libspice-client-gtk-3.0-5
-      - libavutil55
+      - libavutil56
       - libopus0
-      - libswresample2
+      - libswresample3
       - libpulse-mainloop-glib0
       - libcacard0
       - libva2
       - libzvbi0
       - libxvidcore4
       - libusbredirhost1
-      - libx265-146
+      - libx265-179
       - libusbredirparser1
-      - libx264-152
+      - libx264-155
       - libphodav-2.0-0
       - libwebpmux3
       - libnss3
       - libwavpack1
       - libnspr4
-      - libvpx5
+      - libvpx6
       - libtwolame0
       - libtheora0
       - libspeex1
@@ -348,10 +349,10 @@ parts:
   cleanup:
     after: [pulse-utils, freerdp, remmina, app]  # Make this part run last; list all your other parts here
     plugin: nil
-    build-snaps: [core18, gnome-3-34-1804, gtk-common-themes]  # List all content-snaps you're using here
+    build-snaps: [core20, gnome-3-38-2004, gtk-common-themes]  # List all content-snaps you're using here
     override-prime: |
       set -eux
-      for snap in "core18" "gnome-3-34-1804" "gtk-common-themes"; do  # List all content-snaps you're using here
+      for snap in "core20" "gnome-3-38-2004" "gtk-common-themes"; do  # List all content-snaps you're using here
         cd "/snap/$snap/current" && find . -type f,l -exec rm -f "$SNAPCRAFT_PRIME/{}" \;
       done
       for CRUFT in bug lintian man; do
