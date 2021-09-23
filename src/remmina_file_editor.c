@@ -139,6 +139,98 @@ static void remmina_file_editor_class_init(RemminaFileEditorClass *klass)
 	TRACE_CALL(__func__);
 }
 
+/**
+ * @brief Shows a tooltip-like window which tells the user what they did wrong
+ * 		  to trigger the validation function of a ProtocolSetting widget.
+ *
+ * @param gfe GtkWindow gfe
+ * @param failed_widget Widget which failed validation
+ * @param err Contains error message for user
+ *
+ *
+ * Mouse click and focus-loss will delete the window. \n
+ * TODO: when Remmina Editor's content is scrollable and failed_widget is not even
+ * 		 visible anymore, the window gets shown where failed_widget would be if
+ *       Remmina Editor would be big enough. \n
+ * TODO: Responsive text size and line wrap.
+ */
+static void remmina_file_editor_show_validation_error_popup(RemminaFileEditor *gfe,
+															GtkWidget *failed_widget,
+															GError *err) {
+	if (!err) {
+		err = NULL; // g_set_error doesn't like overwriting errors.
+		g_set_error(&err, 1, 1, _("Input is invalid."));
+	}
+
+	if(!gfe || !failed_widget) {
+		g_critical("(%s): either passed RemminaFileEditor 'gfe' or "
+				   "GtkWidget* 'failed_widget' is NULL!", __func__);
+		return;
+	}
+
+	gint widget_width = gtk_widget_get_allocated_width(failed_widget);
+	gint widget_height = gtk_widget_get_allocated_height(failed_widget);
+
+	GtkWidget *err_label = gtk_label_new("");
+	GtkWidget *alert_icon = NULL;
+	GtkWindow *err_window = GTK_WINDOW(gtk_window_new(GTK_WINDOW_TOPLEVEL));
+	GtkWidget *box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+	GdkWindow *window = gtk_widget_get_window(failed_widget);
+
+	GtkAllocation allocation;
+	gint failed_widget_x, failed_widget_y;
+
+	gchar *markup = g_strdup_printf("<span size='large'>%s</span>", err->message);
+
+	// Setup err_window
+	gtk_window_set_decorated(err_window, FALSE);
+	gtk_window_set_type_hint(err_window, GDK_WINDOW_TYPE_HINT_TOOLTIP);
+	gtk_window_set_default_size(err_window, widget_width, widget_height);
+	gtk_window_set_title(err_window, "Error");
+	gtk_window_set_resizable(err_window, TRUE);
+
+	// Move err_window under failed_widget
+	gtk_window_set_attached_to(err_window, failed_widget);
+	gtk_window_set_transient_for(err_window, GTK_WINDOW(gfe));
+	gdk_window_get_origin(GDK_WINDOW(window), &failed_widget_x, &failed_widget_y);
+	gtk_widget_get_allocation(failed_widget, &allocation);
+	failed_widget_x += allocation.x;
+	failed_widget_y += allocation.y + allocation.height;
+	gtk_window_move(err_window, failed_widget_x, failed_widget_y);
+
+	// Setup label
+	gtk_label_set_selectable(GTK_LABEL(err_label), FALSE);
+	gtk_label_set_max_width_chars(GTK_LABEL(err_label), 1);
+	gtk_widget_set_hexpand(GTK_WIDGET(err_label), TRUE);
+	gtk_widget_set_vexpand(GTK_WIDGET(err_label), TRUE);
+	gtk_label_set_ellipsize(GTK_LABEL(err_label), PANGO_ELLIPSIZE_END);
+	gtk_label_set_line_wrap(GTK_LABEL(err_label), TRUE);
+	gtk_label_set_line_wrap_mode(GTK_LABEL(err_label), PANGO_WRAP_WORD_CHAR);
+	gtk_label_set_markup(GTK_LABEL(err_label), markup);
+
+	// Loading alert icon
+	// https://de.wikipedia.org/wiki/Datei:OOjs_UI_icon_alert-warning.svg#/media/Datei:OOj
+	// s_UI_icon_alert_destructive.svg
+	// Has MIT license
+	alert_icon = gtk_image_new_from_file ("/home/daniel/Bilder/alert_icon.svg");
+
+	// Fill icon and label into a box.
+	gtk_box_pack_start(GTK_BOX(box), GTK_WIDGET(alert_icon), FALSE, FALSE, 0);
+	gtk_box_pack_start(GTK_BOX(box), GTK_WIDGET(err_label), TRUE, TRUE, 5);
+
+	// Attach box to err_window
+	gtk_container_add(GTK_CONTAINER(err_window), GTK_WIDGET(box));
+
+	// Display everything.
+	gtk_widget_show_all(GTK_WIDGET(err_window));
+
+	// Mouse click and focus-loss will delete the err_window.
+	g_signal_connect(G_OBJECT (err_window), "focus-out-event",
+						G_CALLBACK(gtk_window_close), NULL);
+	g_signal_connect(G_OBJECT (err_window), "button-press-event",
+						G_CALLBACK(gtk_window_close), NULL);
+}
+
 #ifdef HAVE_LIBAVAHI_UI
 
 static void remmina_file_editor_browse_avahi(GtkWidget *button, RemminaFileEditor *gfe)
@@ -1304,46 +1396,168 @@ static void remmina_file_editor_save_ssh_tunnel_tab(RemminaFileEditor *gfe)
 			gtk_entry_get_text(GTK_ENTRY(priv->ssh_tunnel_passphrase)) : NULL);
 }
 
-static void remmina_file_editor_update_settings(RemminaFileEditor *gfe)
+static gboolean remmina_file_editor_validate_settings(RemminaFileEditor *gfe,
+												      gchar* key,
+												      gconstpointer value,
+													  GError **err)
+{
+	if (!key || !value || !gfe) {
+		g_set_error (err, 0, 0,
+					_("(%s: %i): key, value or gfe are NULL!"),
+					__func__, __LINE__);
+		return FALSE;
+	}
+
+	if (strcmp(key, "notes_text") == 0) {
+		// Not a plugin setting. Bail out early.
+		return TRUE;
+	}
+
+	const RemminaProtocolSetting *setting_iter;
+	RemminaProtocolPlugin *protocol_plugin;
+	RemminaFileEditorPriv *priv = gfe->priv;
+	protocol_plugin = priv->plugin;
+
+	setting_iter = protocol_plugin->basic_settings;
+	if (setting_iter) {
+		gboolean found = FALSE;
+		while (setting_iter->type != REMMINA_PROTOCOL_SETTING_TYPE_END) {
+			if (setting_iter->name == NULL) {
+				g_error("Internal error: a setting name in protocol plugin %s is "
+						"null. Please fix RemminaProtocolSetting struct content.",
+						protocol_plugin->name);
+			} else if ((gchar*) key){
+				if (strcmp((gchar*) key, setting_iter->name) == 0) {
+					found = TRUE;
+
+					gpointer validator_data = setting_iter->validator_data;
+					GCallback validator = setting_iter->validator;
+
+					// Default behaviour is that everything is valid,
+					// except a validator is given and its returned GError is not NULL.
+					GError *err_ret = NULL;
+
+					g_debug("Checking setting '%s' for validation.", setting_iter->name);
+					if (validator != NULL) {
+						// Looks weird but it calls the setting's validator
+						// function using key, value and validator_data as
+						// parameters and it returns a GError*.
+						err_ret = ((GError* (*)(gpointer, gconstpointer, gpointer))validator)
+															 (key, value, validator_data);
+					}
+
+					if (err_ret) {
+						g_debug("it has a validator function and it had an error!");
+						// pass err (returned value) to function caller.
+						*err = err_ret;
+						return FALSE;
+					}
+
+					break;
+				}
+			}
+			setting_iter++;
+		}
+
+		if (!found) {
+			g_warning("%s is not a plugin setting!", key);
+		}
+	}
+
+	return TRUE;
+}
+
+static GError* remmina_file_editor_update_settings(RemminaFileEditor *gfe,
+												   GtkWidget **failed_widget)
 {
 	TRACE_CALL(__func__);
 	RemminaFileEditorPriv *priv = gfe->priv;
 	GHashTableIter iter;
-	gpointer key, value;
+	gpointer key;
+	gpointer widget;
 	GtkTextBuffer *buffer;
 	gchar *escaped, *unescaped;
 	GtkTextIter start, end;
 
+	GError *err = NULL;
+	*failed_widget = NULL;
+
 	g_hash_table_iter_init(&iter, priv->setting_widgets);
-	while (g_hash_table_iter_next(&iter, &key, &value)) {
-		if (GTK_IS_ENTRY(value)) {
-			remmina_file_set_string(priv->remmina_file, (gchar *)key, gtk_entry_get_text(GTK_ENTRY(value)));
-		} else if (GTK_IS_TEXT_VIEW(value)) {
-			buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(value));
+	while (g_hash_table_iter_next(&iter, &key, &widget)) {
+		if (GTK_IS_ENTRY(widget)) {
+			const gchar *value = gtk_entry_get_text(GTK_ENTRY(widget));
+
+			if (!remmina_file_editor_validate_settings(gfe, (gchar*) key, value, &err)) {
+				// Error while validating!
+				// err should be set now.
+				*failed_widget = widget;
+				break;
+			}
+
+			remmina_file_set_string(priv->remmina_file, (gchar *)key, value);
+		} else if (GTK_IS_TEXT_VIEW(widget)) {
+			buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(widget));
 			gtk_text_buffer_get_start_iter (buffer, &start);
 			gtk_text_buffer_get_end_iter (buffer, &end);
 			unescaped = gtk_text_buffer_get_text(buffer, &start, &end, FALSE);
 			escaped = g_uri_escape_string (unescaped, NULL, TRUE);
+
+			if (!remmina_file_editor_validate_settings(gfe, (gchar*) key, escaped, &err)) {
+				// Error while validating!
+				// err should be set now.
+				*failed_widget = widget;
+				break;
+			}
+
 			remmina_file_set_string(priv->remmina_file, (gchar *)key, escaped);
 			g_free(escaped);
-		} else if (GTK_IS_COMBO_BOX(value)) {
-			remmina_file_set_string_ref(priv->remmina_file, (gchar *)key,
-						    remmina_public_combo_get_active_text(GTK_COMBO_BOX(value)));
-		} else if (GTK_IS_FILE_CHOOSER(value)) {
-			remmina_file_set_string(
-				priv->remmina_file,
-				(gchar *)key,
-				gtk_widget_get_sensitive(GTK_WIDGET(value)) ?
-				gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(value)) :
-				NULL);
-		} else if (GTK_IS_TOGGLE_BUTTON(value)) {
-			remmina_file_set_int(priv->remmina_file, (gchar *)key,
-					     gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(value)));
+		} else if (GTK_IS_COMBO_BOX(widget)) {
+			gchar *value = remmina_public_combo_get_active_text(GTK_COMBO_BOX(widget));
+
+			if (!remmina_file_editor_validate_settings(gfe, (gchar*) key, value, &err)) {
+				// Error while validating!
+				// err should be set now.
+				*failed_widget = widget;
+				break;
+			}
+
+			remmina_file_set_string_ref(priv->remmina_file, (gchar *)key, value);
+		} else if (GTK_IS_FILE_CHOOSER(widget)) {
+			gchar *value = gtk_widget_get_sensitive(GTK_WIDGET(widget)) ?
+								  gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(widget)) :
+								  NULL;
+
+			if (!remmina_file_editor_validate_settings(gfe, (gchar*) key, value, &err)) {
+				// Error while validating!
+				// err should be set now.
+				*failed_widget = widget;
+				break;
+			}
+
+			remmina_file_set_string(priv->remmina_file,	(gchar *)key, value);
+		} else if (GTK_IS_TOGGLE_BUTTON(widget)) {
+			gboolean value = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget));
+
+			if (!remmina_file_editor_validate_settings(gfe, (gchar*) key, &value, &err)) {
+				// Error while validating!
+				// err should be set now.
+				*failed_widget = widget;
+				break;
+			}
+
+			remmina_file_set_int(priv->remmina_file, (gchar *)key, value);
 		}
 	}
+
+	if (err) {
+		return err;
+	}
+
+	return NULL;
 }
 
-static void remmina_file_editor_update(RemminaFileEditor *gfe)
+static GError* remmina_file_editor_update(RemminaFileEditor *gfe,
+										  GtkWidget **failed_widget)
 {
 	TRACE_CALL(__func__);
 	int res_w, res_h;
@@ -1392,7 +1606,7 @@ static void remmina_file_editor_update(RemminaFileEditor *gfe)
 
 	remmina_file_editor_save_behavior_tab(gfe);
 	remmina_file_editor_save_ssh_tunnel_tab(gfe);
-	remmina_file_editor_update_settings(gfe);
+	return remmina_file_editor_update_settings(gfe, failed_widget);
 }
 
 static void remmina_file_editor_on_default(GtkWidget *button, RemminaFileEditor *gfe)
@@ -1401,7 +1615,13 @@ static void remmina_file_editor_on_default(GtkWidget *button, RemminaFileEditor 
 	RemminaFile *gf;
 	GtkWidget *dialog;
 
-	remmina_file_editor_update(gfe);
+	GtkWidget *failed_widget = NULL;
+	GError *err = remmina_file_editor_update(gfe, &failed_widget);
+	if (err) {
+		g_warning(_("Couldn't validate user input. %s"), err->message);
+		remmina_file_editor_show_validation_error_popup(gfe, failed_widget, err);
+		return;
+	}
 
 	gf = remmina_file_dup(gfe->priv->remmina_file);
 
@@ -1431,7 +1651,14 @@ static void remmina_file_editor_on_save(GtkWidget *button, RemminaFileEditor *gf
 {
 	TRACE_CALL(__func__);
 
-	remmina_file_editor_update(gfe);
+	GtkWidget *failed_widget = NULL;
+	GError *err = remmina_file_editor_update(gfe, &failed_widget);
+	if (err) {
+		g_warning(_("Couldn't validate user input. %s"), err->message);
+		remmina_file_editor_show_validation_error_popup(gfe, failed_widget, err);
+		return;
+	}
+
 	remmina_file_editor_file_save(gfe);
 
 	remmina_file_save(gfe->priv->remmina_file);
@@ -1445,7 +1672,13 @@ static void remmina_file_editor_on_connect(GtkWidget *button, RemminaFileEditor 
 	TRACE_CALL(__func__);
 	RemminaFile *gf;
 
-	remmina_file_editor_update(gfe);
+	GtkWidget *failed_widget = NULL;
+	GError *err = remmina_file_editor_update(gfe, &failed_widget);
+	if (err) {
+		g_warning(_("Couldn't validate user input. %s"), err->message);
+		remmina_file_editor_show_validation_error_popup(gfe, failed_widget, err);
+		return;
+	}
 
 	gf = remmina_file_dup(gfe->priv->remmina_file);
 	/* Put server into name for "Quick Connect" */
@@ -1462,7 +1695,14 @@ static void remmina_file_editor_on_save_connect(GtkWidget *button, RemminaFileEd
 	/** @TODO: Call remmina_file_editor_on_save */
 	RemminaFile *gf;
 
-	remmina_file_editor_update(gfe);
+	GtkWidget *failed_widget = NULL;
+	GError *err = remmina_file_editor_update(gfe, &failed_widget);
+	if (err) {
+		g_warning(_("Couldn't validate user input. %s"), err->message);
+		remmina_file_editor_show_validation_error_popup(gfe, failed_widget, err);
+		return;
+	}
+
 	remmina_file_editor_file_save(gfe);
 
 	remmina_file_save(gfe->priv->remmina_file);

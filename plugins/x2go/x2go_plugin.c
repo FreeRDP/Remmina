@@ -54,6 +54,7 @@
 #include <sys/types.h>
 #include <signal.h>
 #include <time.h>
+#include <ctype.h>
 
 #define FEATURE_AVAILABLE(gpdata, feature) \
 	gpdata->available_features ? \
@@ -103,6 +104,102 @@
 		remmina_plugin_service->file_get_int(remminafile, value, FALSE)
 
 static RemminaPluginService *remmina_plugin_service = NULL;
+
+// Following str2int code was copied from Stackoverflow:
+// https://stackoverflow.com/questions/7021725/how-to-convert-a-string-to-integer-in-c
+typedef enum {
+    STR2INT_SUCCESS,
+    STR2INT_OVERFLOW,
+    STR2INT_UNDERFLOW,
+    STR2INT_INCONVERTIBLE,
+    STR2INT_INVALID_DATA
+} str2int_errno;
+
+/**
+ * @brief Convert string s to int out.
+ *
+ * @param out The converted int. Cannot be NULL.
+ *
+ * @param s Input string to be converted. \n
+ * 			The format is the same as strtol,
+ *			except that the following are inconvertible: \n
+ *				empty string, leading whitespace \n
+ *				or any trailing characters that are not part of the number \n
+ *			Cannot be NULL.
+ * @param base Base to interpret string in. Same range as strtol (2 to 36).
+ *
+ * @return Indicates if the operation succeeded, or why it failed with str2int_errno enum.
+ */
+str2int_errno str2int(gint *out, gchar *s, gint base) {
+    gchar *end;
+
+	if (!s || !out || base <= 0)
+		return STR2INT_INVALID_DATA;
+
+    if (s[0] == '\0' || isspace(s[0]))
+        return STR2INT_INCONVERTIBLE;
+    errno = 0;
+    glong l = strtol(s, &end, base);
+    /* Both checks are needed because INT_MAX == LONG_MAX is possible. */
+    if (l > INT_MAX || (errno == ERANGE && l == LONG_MAX))
+        return STR2INT_OVERFLOW;
+    if (l < INT_MIN || (errno == ERANGE && l == LONG_MIN))
+        return STR2INT_UNDERFLOW;
+    if (*end != '\0')
+        return STR2INT_INCONVERTIBLE;
+    *out = l;
+    return STR2INT_SUCCESS;
+}
+
+/**
+ * @param data Actual string to split
+ * @param delim Used as delimeter character for splitting string
+ * @param occurences How many times did the delimeter occur
+ * @returns gchar**, so a gchar* list of all occurences.
+ *
+ * @brief Splits a string into a gchar* list using delim as a single-character delimeter.
+ *
+ */
+static gchar** remmina_plugin_x2go_split_string(gchar* data,
+												gchar delim,
+												guint *occurences) {
+	// Counts the occurence of 'delim', so the amount of numbers passed.
+	guint delim_occurence = 0;
+	// Counts characters of everything between occurences
+	guint char_amount = strlen(data) + 1; // + one '\0' byte
+	// work on a copy of the string, because strchr alters the string.
+	gchar *pch = strchr(g_strdup(data), delim);
+	while (pch != NULL) {
+		delim_occurence++;
+		pch = strchr(pch + 1, delim);
+	}
+
+	if (delim_occurence <= 0) {
+		return NULL;
+	}
+
+	gchar **returning_string_list = NULL;
+	returning_string_list = malloc(sizeof(gchar) * char_amount);
+
+	(*occurences) = 0;
+	// Split 'data' into array 'returning_string_list' using 'delim' as delimiter.
+	gchar *ptr = strtok(g_strdup(data), &delim);
+	for(gint j = 0; (j <= delim_occurence && ptr != NULL); j++) {
+		// Add occurence to list
+		returning_string_list[j] = g_strdup_printf(ptr);
+
+		// Get next occurence
+		ptr = strtok(NULL, &delim);
+
+		(*occurences)++;
+	}
+
+	if (*occurences <= 0) {
+		return NULL;
+	}
+
+	return returning_string_list;
+}
 
 // Wrapper for strcmp which doesn't throw an exception when 'a' or 'b' are a nullpointer.
 static gint remmina_plugin_x2go_safe_strcmp(gconstpointer a, gconstpointer b) {
@@ -1171,6 +1268,123 @@ static const RemminaProtocolFeature remmina_plugin_x2go_features[] = {
 		0, NULL, NULL, NULL}
 };
 
+/**
+ * @brief Gets executed when the user wants to save profile settings.
+ * 		  It uses the given data (See RemminaProtocolSetting array) to determine
+ * 		  which strings are allowed.
+ *
+ */
+static GError* remmina_plugin_x2go_string_setting_validator(gchar* key,
+															   gchar* value,
+															   gchar* data) {
+	GError *error = NULL;
+
+	if (!data) {
+		g_set_error(&error, 1, 1, _("Validation data in ProtocolSettings "
+									"array is invalid!"));
+		return error;
+	}
+
+	guint direction_amount = 0;
+	gchar **direction_list = remmina_plugin_x2go_split_string(data, ',',
+															  &direction_amount);
+
+	if (direction_amount <= 0 || direction_list == NULL) {
+		// Something went wrong, there can't be less than or 0 directions.
+		// And direction_list can't be NULL!
+		g_set_error(&error, 1, 1, _("Validation data in ProtocolSettings "
+									"array is invalid!"));
+		return error;
+	}
+
+	g_set_error(&error, 1, 1, _("Allowed values are: '%s'."),
+				data);
+
+	if (!key || !value) return error;
+
+	for (int i = 0; i < direction_amount; i++) {
+		// Don't wanna crash if direction_list[i] is NULL.
+		gchar* occurence = direction_list[i] ? direction_list[i] : "";
+		if (strcmp(value, occurence) == 0) {
+			return NULL;
+		}
+	}
+
+	return error;
+}
+
+static GError* remmina_plugin_x2go_int_setting_validator(gchar* key,
+														 gpointer value,
+														 gchar* data) {
+	GError *error = NULL;
+
+	guint integer_amount = 0;
+	gchar **integer_list = remmina_plugin_x2go_split_string(data, ';', &integer_amount);
+
+	if (integer_amount != 2 || integer_list == NULL) {
+		// Something went wrong, there can't be more or less than 2 list entries.
+		// And integer_list can't be NULL!
+		g_set_error(&error, 1, 1, _("Validation data in ProtocolSettings "
+									"array is invalid!"));
+		return error;
+	}
+
+	gint minimum;
+	str2int_errno err = str2int(&minimum, integer_list[0], 10);
+	if (err == STR2INT_INCONVERTIBLE) {
+		g_set_error(&error, 1, 1, _("Limit minimum is not a valid integer!"));
+	} else if (err == STR2INT_OVERFLOW) {
+		g_set_error(&error, 1, 1, _("Limit minimum is too large!"));
+	} else if (err == STR2INT_UNDERFLOW) {
+		g_set_error(&error, 1, 1, _("Limit minimum is too small!"));
+	} else if (err == STR2INT_INVALID_DATA) {
+		g_set_error(&error, 1, 1, _("Something went wrong."));
+	}
+
+	if (error) return error;
+
+	gint maximum;
+	err = str2int(&maximum, integer_list[1], 10);
+	if (err == STR2INT_INCONVERTIBLE) {
+		g_set_error(&error, 1, 1, _("Limit maximum is not a valid integer!"));
+	} else if (err == STR2INT_OVERFLOW) {
+		g_set_error(&error, 1, 1, _("Limit maximum is too large!"));
+	} else if (err == STR2INT_UNDERFLOW) {
+		g_set_error(&error, 1, 1, _("Limit maximum is too small!"));
+	} else if (err == STR2INT_INVALID_DATA) {
+		g_set_error(&error, 1, 1, _("Something went wrong."));
+	}
+
+	if (error) return error;
+
+	gint int_value;
+	err = str2int(&int_value, value, 10);
+	if (err == STR2INT_INCONVERTIBLE) {
+		g_set_error(&error, 1, 1, _("Input is not a valid integer!"));
+	} else if (err == STR2INT_OVERFLOW) {
+		g_set_error(&error, 1, 1, _("Input is too large!"));
+	} else if (err == STR2INT_UNDERFLOW) {
+		g_set_error(&error, 1, 1, _("Input is too small!"));
+	} else if (err == STR2INT_INVALID_DATA) {
+		g_set_error(&error, 1, 1, _("Something went wrong."));
+	}
+
+	if (error) return error;
+
+	REMMINA_PLUGIN_DEBUG("Key:  \t%s", (gchar*) key);
+	REMMINA_PLUGIN_DEBUG("Value:\t%s", (gchar*) value);
+	REMMINA_PLUGIN_DEBUG("Data: \t%s", data);
+	REMMINA_PLUGIN_DEBUG("Min: %i, Max: %i", minimum, maximum);
+	REMMINA_PLUGIN_DEBUG("Value converted:\t%i", int_value);
+
+	if (err == STR2INT_SUCCESS && (minimum > int_value || int_value > maximum)) {
+		g_set_error(&error, 1, 1, _("Your input should be a number between %i and %i."),
+					minimum, maximum);
+	}
+
+	return error;
+}
+
 /* Array of RemminaProtocolSetting for basic settings.
  * Each item is composed by:
  * a) RemminaProtocolSettingType for setting type
@@ -1179,48 +1393,76 @@ static const RemminaProtocolFeature remmina_plugin_x2go_features[] = {
  * d) Compact disposition
  * e) Values for REMMINA_PROTOCOL_SETTING_TYPE_SELECT or REMMINA_PROTOCOL_SETTING_TYPE_COMBO
  * f) Setting Tooltip
+ * g) Validation Data Pointer, will be passed to the validation callback method.
+ * h) Validation callback method (Can be null. Every entry will be valid then.)
+ *		use following prototype:
+ *		gboolean mysetting_validator_method(gpointer key, gpointer value,
+ * 											gpointer validator_data);
+ *		gpointer key is a gchar* containing the setting's name,
+ *		gpointer value contains the value which should be validated,
+ *		gpointer validator_data contains your passed data.
  */
 
 static const RemminaProtocolSetting remmina_plugin_x2go_basic_settings[] = {
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER,
-		"server", NULL, FALSE, NULL, NULL
+		"server", NULL, FALSE, NULL, NULL,
+		/* Validation Data */ NULL,
+		/* Validation Method */ NULL
 	},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,
-	    "username", N_("Username"), FALSE, NULL, NULL
+	    "username", N_("Username"), FALSE, NULL, NULL,
+		/* Validation Data */ NULL,
+		/* Validation Method */ NULL
 	},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD,
-		"password", N_("Password"), FALSE, NULL, NULL
+		"password", N_("Password"), FALSE, NULL, NULL,
+		/* Validation Data */ NULL,
+		/* Validation Method */ NULL
 	},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_COMBO,
 		"command", N_("Startup program"), FALSE,
 		/* Options to select (or custom user string) */ "MATE,KDE,XFCE,LXDE,TERMINAL",
 		/* Tooltip */ N_("Which command should be "
-						 "executed after creating the X2Go session?")
+						 "executed after creating the X2Go session?"),
+		/* Validation Data */ NULL,
+		/* Validation Method */ NULL
 	},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION,
-		"resolution", NULL, FALSE, NULL, NULL
+		"resolution", NULL, FALSE, NULL, NULL,
+		/* Validation Data */ NULL,
+		/* Validation Method */ NULL
 	},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,
-		"kbdlayout", N_("Keyboard Layout (auto)"), FALSE, NULL, NULL
+		"kbdlayout", N_("Keyboard Layout (auto)"), FALSE, NULL, NULL,
+		/* Validation Data */ NULL,
+		/* Validation Method */ NULL
 	},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,
-		"kbdtype", N_("Keyboard type (auto)"), FALSE, NULL, NULL
+		"kbdtype", N_("Keyboard type (auto)"), FALSE, NULL, NULL,
+		/* Validation Data */ "1,2,3,4,5",
+		/* Validation Method */ (GCallback) remmina_plugin_x2go_string_setting_validator
 	},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_COMBO,
 		"audio", N_("Audio support"), FALSE,
 		/* Options to select (or custom user string) */ "pulse,esd,none",
-		/* Tooltip */ N_("The X2Go server's sound system (default: 'pulse').")
+		/* Tooltip */ N_("The X2Go server's sound system (default: 'pulse')."),
+		/* Validation Data */ NULL,
+		/* Validation Method */ NULL
 	},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_COMBO,
 		"clipboard", N_("Clipboard direction"), FALSE,
 		/* Options to select (or custom user string) */ "none,server,client,both",
 		/* Tooltip */ N_("Which direction should clipboard content be copied? "
-						 "(default: 'both').")
+						 "(default: 'both')."),
+		/* Validation Data */ "none,server,client,both",
+		/* Validation Method */ (GCallback) remmina_plugin_x2go_string_setting_validator
 	},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_INT,
 		"dpi", N_("DPI resolution"), FALSE, NULL,
 		/* Tooltip */ N_("Launch session with a specific resolution (in dots per inch). "
-						 "Must be between 20 and 400")
+						 "Must be between 20 and 400"),
+		/* Validation Data */ "20;400", // "<min>;<max>;"
+		/* Validation Method */ (GCallback) remmina_plugin_x2go_int_setting_validator
 	},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
 };
