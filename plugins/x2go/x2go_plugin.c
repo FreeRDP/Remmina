@@ -350,16 +350,16 @@ struct onMainThread_cb_data {
 
 static gboolean onMainThread_cb(struct onMainThread_cb_data *d) {
 	TRACE_CALL(__func__);
-	if ( !d->cancelled ) {
-		switch ( d->func ) {
+	if (!d->cancelled) {
+		switch (d->func) {
 		case FUNC_GTK_SOCKET_ADD_ID:
-			gtk_socket_add_id( d->sk, d->w );
+			gtk_socket_add_id(d->sk, d->w);
 			break;
 		}
-		pthread_mutex_unlock( &d->mu );
+		pthread_mutex_unlock(&d->mu);
 	} else {
 		/* thread has been cancelled, so we must free d memory here */
-		g_free( d );
+		g_free(d);
 	}
 	return G_SOURCE_REMOVE;
 }
@@ -371,22 +371,22 @@ static void onMainThread_cleanup_handler(gpointer data) {
 	d->cancelled = TRUE;
 }
 
-static void onMainThread_schedule_callback_and_wait( struct onMainThread_cb_data *d) {
+static void onMainThread_schedule_callback_and_wait(struct onMainThread_cb_data *d) {
 	TRACE_CALL(__func__);
 	d->cancelled = FALSE;
-	pthread_cleanup_push( onMainThread_cleanup_handler, d );
-	pthread_mutex_init( &d->mu, NULL );
-	pthread_mutex_lock( &d->mu );
-	gdk_threads_add_idle( (GSourceFunc)onMainThread_cb, (gpointer)d );
+	pthread_cleanup_push(onMainThread_cleanup_handler, d);
+	pthread_mutex_init(&d->mu, NULL);
+	pthread_mutex_lock(&d->mu);
+	gdk_threads_add_idle((GSourceFunc)onMainThread_cb, (gpointer) d);
 
-	pthread_mutex_lock( &d->mu );
+	pthread_mutex_lock(&d->mu);
 
 	pthread_cleanup_pop(0);
-	pthread_mutex_unlock( &d->mu );
-	pthread_mutex_destroy( &d->mu );
+	pthread_mutex_unlock(&d->mu);
+	pthread_mutex_destroy(&d->mu);
 }
 
-static void onMainThread_gtk_socket_add_id( GtkSocket* sk, Window w) {
+static void onMainThread_gtk_socket_add_id(GtkSocket* sk, Window w) {
 	TRACE_CALL(__func__);
 
 	struct onMainThread_cb_data *d;
@@ -396,7 +396,7 @@ static void onMainThread_gtk_socket_add_id( GtkSocket* sk, Window w) {
 	d->sk = sk;
 	d->w = w;
 
-	onMainThread_schedule_callback_and_wait( d );
+	onMainThread_schedule_callback_and_wait(d);
 	g_free(d);
 }
 
@@ -1161,7 +1161,7 @@ static gboolean remmina_plugin_x2go_start_session(RemminaProtocolWidget *gp) {
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
 	servstr = GET_PLUGIN_STRING("server");
-	if ( servstr ) {
+	if (servstr) {
 		remmina_plugin_service->get_server_port(servstr, 22, &host, &sshport);
 	} else {
 		return FALSE;
@@ -1184,10 +1184,11 @@ static gboolean remmina_plugin_x2go_start_session(RemminaProtocolWidget *gp) {
 	/* multiple of 4 */
 	width = (width + 3) & ~0x3;
 	height = (height + 3) & ~0x3;
-	if( (width > 0) && (height  > 0))
+	if ((width > 0) && (height  > 0)) {
 		res = g_strdup_printf ("%dx%d", width, height);
-	else
+	} else {
 		res = "800x600";
+	}
 	REMMINA_PLUGIN_DEBUG("Resolution set by user: '%s'.", res);
 
 	REMMINA_PLUGIN_DEBUG("Attached window to socket '%d'.", gpdata->socket_id);
