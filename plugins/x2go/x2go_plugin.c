@@ -609,20 +609,28 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
 		if (remmina_plugin_service->protocol_plugin_init_get_savepassword(gp))
 			remmina_plugin_service->file_set_string(remminafile, "password", s_password);
 
+		// Should be renamed to protocol_plugin_init_get_savecredentials()?!
 		save = remmina_plugin_service->protocol_plugin_init_get_savepassword(gp);
 		if (save) {
 			// User has requested to save credentials. We put all the new credentials
 			// into remminafile->settings. They will be saved later, on successful
 			// connection, by rcw.c
 
-			if (s_password) {
-				remmina_plugin_service->file_set_string(remminafile,
-														"password",
+			if (s_password && s_username) {
+				if (strcmp(s_username, "") == 0) {
+					REMMINA_PLUGIN_WARNING("%s", _("The user has requested to save a new "
+											   "username but it couldn't get saved since "
+											   "the given username is empty!"));
+				}
+
+				// We allow the possibility to set an empty password because a X2Go
+				// session can be still made using keyfiles or similar.
+				remmina_plugin_service->file_set_string(remminafile, "password",
 														s_password);
 			} else {
-				REMMINA_PLUGIN_WARNING("%s", _("User requested storing credentials "
-											   "but 'password' is not set! Can't set "
-											   "a new default password then."));
+				REMMINA_PLUGIN_CRITICAL("%s", _("An error occured while trying to save "
+												"new credentials: 's_password' or "
+												"'s_username' strings were not set."));
 			}
 		}
 		if (s_username) {
