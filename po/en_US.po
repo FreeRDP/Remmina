@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Remmina v1.4.11\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-09-21 21:02+0000\n"
+"POT-Creation-Date: 2021-09-23 06:08+0000\n"
 "PO-Revision-Date: 2021-07-16 09:01+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: English (United States) <https://hosted.weblate.org/projects/"
@@ -70,8 +70,8 @@ msgstr "Connect via SSH from a new terminal"
 
 #: src/remmina_sftp_plugin.c:345 src/remmina_message_panel.c:330
 #: src/remmina_file_editor.c:1093 src/remmina_ssh_plugin.c:1473
-#: plugins/rdp/rdp_plugin.c:2666 plugins/vnc/vnc_plugin.c:1960
-#: plugins/vnc/vnc_plugin.c:1980 plugins/www/www_plugin.c:886
+#: plugins/rdp/rdp_plugin.c:2666 plugins/vnc/vnc_plugin.c:1968
+#: plugins/vnc/vnc_plugin.c:1988 plugins/www/www_plugin.c:886
 #: data/ui/remmina_mpc.glade:144
 #, fuzzy
 msgid "Username"
@@ -678,7 +678,7 @@ msgid "Go to parent folder"
 msgstr ""
 
 #: src/remmina_ftp_client.c:758 plugins/rdp/rdp_plugin.c:2757
-#: plugins/vnc/vnc_plugin.c:2019
+#: plugins/vnc/vnc_plugin.c:2027
 #, fuzzy
 msgid "Refresh"
 msgstr "Refresh"
@@ -1566,7 +1566,7 @@ msgid "_Find text"
 msgstr ""
 
 #: src/remmina_ssh_plugin.c:1474 plugins/spice/spice_plugin.c:666
-#: plugins/vnc/vnc_plugin.c:1961 plugins/vnc/vnc_plugin.c:1981
+#: plugins/vnc/vnc_plugin.c:1969 plugins/vnc/vnc_plugin.c:1989
 msgid "User password"
 msgstr ""
 
@@ -1766,7 +1766,7 @@ msgid "Input device settings"
 msgstr ""
 
 #: plugins/rdp/rdp_settings.c:658 plugins/rdp/rdp_plugin.c:2673
-#: plugins/vnc/vnc_plugin.c:2006
+#: plugins/vnc/vnc_plugin.c:2014
 msgid "Disable smooth scrolling"
 msgstr ""
 
@@ -2132,8 +2132,8 @@ msgstr ""
 msgid "List monitor IDs"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2678 plugins/vnc/vnc_plugin.c:1962
-#: plugins/vnc/vnc_plugin.c:1982 plugins/gvnc/gvnc_plugin.c:840
+#: plugins/rdp/rdp_plugin.c:2678 plugins/vnc/vnc_plugin.c:1970
+#: plugins/vnc/vnc_plugin.c:1990 plugins/gvnc/gvnc_plugin.c:840
 msgid "Colour depth"
 msgstr "Color depth"
 
@@ -2141,8 +2141,8 @@ msgstr "Color depth"
 msgid "Network connection type"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2694 plugins/vnc/vnc_plugin.c:1963
-#: plugins/vnc/vnc_plugin.c:1983
+#: plugins/rdp/rdp_plugin.c:2694 plugins/vnc/vnc_plugin.c:1971
+#: plugins/vnc/vnc_plugin.c:1991
 msgid "Quality"
 msgstr ""
 
@@ -2310,7 +2310,7 @@ msgstr ""
 msgid "Share a smart card"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2732 plugins/vnc/vnc_plugin.c:2001
+#: plugins/rdp/rdp_plugin.c:2732 plugins/vnc/vnc_plugin.c:2009
 msgid "Turn off clipboard sync"
 msgstr ""
 
@@ -2327,7 +2327,7 @@ msgid "It disables CAL and hwId is set to 0"
 msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:2735 plugins/spice/spice_plugin.c:694
-#: plugins/vnc/vnc_plugin.c:2005 plugins/www/www_plugin.c:911
+#: plugins/vnc/vnc_plugin.c:2013 plugins/www/www_plugin.c:911
 #: plugins/gvnc/gvnc_plugin.c:858
 msgid "Forget passwords after use"
 msgstr ""
@@ -2377,7 +2377,7 @@ msgid "Enable Gateway websockets support"
 msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:2761 plugins/spice/spice_plugin.c:707
-#: plugins/vnc/vnc_plugin.c:2021
+#: plugins/vnc/vnc_plugin.c:2029
 msgid "Send Ctrl+Alt+Delete"
 msgstr ""
 
@@ -2493,7 +2493,7 @@ msgid "Share smart card"
 msgstr ""
 
 #: plugins/spice/spice_plugin.c:697 plugins/spice/spice_plugin.c:705
-#: plugins/vnc/vnc_plugin.c:2000 plugins/vnc/vnc_plugin.c:2017
+#: plugins/vnc/vnc_plugin.c:2008 plugins/vnc/vnc_plugin.c:2025
 #: plugins/gvnc/gvnc_plugin.c:861 plugins/gvnc/gvnc_plugin.c:870
 msgid "View only"
 msgstr ""
@@ -2561,31 +2561,41 @@ msgid ""
 "    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
 msgstr ""
 
-#: plugins/vnc/vnc_plugin.c:1959
+#: plugins/vnc/vnc_plugin.c:1948
+msgid ""
+"Listening for remote VNC connection:\n"
+"  • The \"Listen on port\" field is the port Remmina will listen to,\n"
+"    e.g. 8888\n"
+"  • From the remote VNC server, you will connect to\n"
+"    Remmina, e.g. with x11vnc:\n"
+"    x11vnc -display :0 -connect 192.168.1.36:8888"
+msgstr ""
+
+#: plugins/vnc/vnc_plugin.c:1967
 msgid "Repeater"
 msgstr ""
 
-#: plugins/vnc/vnc_plugin.c:1979
+#: plugins/vnc/vnc_plugin.c:1987
 msgid "Listen on port"
 msgstr ""
 
-#: plugins/vnc/vnc_plugin.c:1999
+#: plugins/vnc/vnc_plugin.c:2007
 msgid "Show remote cursor"
 msgstr ""
 
-#: plugins/vnc/vnc_plugin.c:2002
+#: plugins/vnc/vnc_plugin.c:2010
 msgid "Turn off encryption"
 msgstr ""
 
-#: plugins/vnc/vnc_plugin.c:2003 plugins/vnc/vnc_plugin.c:2018
+#: plugins/vnc/vnc_plugin.c:2011 plugins/vnc/vnc_plugin.c:2026
 msgid "Prevent local interaction on the server"
 msgstr ""
 
-#: plugins/vnc/vnc_plugin.c:2004 plugins/gvnc/gvnc_plugin.c:859
+#: plugins/vnc/vnc_plugin.c:2012 plugins/gvnc/gvnc_plugin.c:859
 msgid "Ignore remote bell messages"
 msgstr ""
 
-#: plugins/vnc/vnc_plugin.c:2020
+#: plugins/vnc/vnc_plugin.c:2028
 msgid "Open Chat…"
 msgstr ""
 

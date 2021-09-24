@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-09-21 21:02+0000\n"
+"POT-Creation-Date: 2021-09-23 06:08+0000\n"
 "PO-Revision-Date: 2021-09-22 20:10+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -78,8 +78,8 @@ msgstr "新しい端末から SSH で接続"
 
 #: src/remmina_sftp_plugin.c:345 src/remmina_message_panel.c:330
 #: src/remmina_file_editor.c:1093 src/remmina_ssh_plugin.c:1473
-#: plugins/rdp/rdp_plugin.c:2666 plugins/vnc/vnc_plugin.c:1960
-#: plugins/vnc/vnc_plugin.c:1980 plugins/www/www_plugin.c:886
+#: plugins/rdp/rdp_plugin.c:2666 plugins/vnc/vnc_plugin.c:1968
+#: plugins/vnc/vnc_plugin.c:1988 plugins/www/www_plugin.c:886
 #: data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr "ユーザー名"
@@ -715,7 +715,7 @@ msgid "Go to parent folder"
 msgstr "親フォルダーに移動"
 
 #: src/remmina_ftp_client.c:758 plugins/rdp/rdp_plugin.c:2757
-#: plugins/vnc/vnc_plugin.c:2019
+#: plugins/vnc/vnc_plugin.c:2027
 msgid "Refresh"
 msgstr "更新"
 
@@ -1626,7 +1626,7 @@ msgid "_Find text"
 msgstr "文字列を検索(_F)"
 
 #: src/remmina_ssh_plugin.c:1474 plugins/spice/spice_plugin.c:666
-#: plugins/vnc/vnc_plugin.c:1961 plugins/vnc/vnc_plugin.c:1981
+#: plugins/vnc/vnc_plugin.c:1969 plugins/vnc/vnc_plugin.c:1989
 msgid "User password"
 msgstr "ユーザーパスワード"
 
@@ -1841,7 +1841,7 @@ msgid "Input device settings"
 msgstr "入力デバイスの設定"
 
 #: plugins/rdp/rdp_settings.c:658 plugins/rdp/rdp_plugin.c:2673
-#: plugins/vnc/vnc_plugin.c:2006
+#: plugins/vnc/vnc_plugin.c:2014
 #, fuzzy
 #| msgid "Turn on smooth scrolling"
 msgid "Disable smooth scrolling"
@@ -2301,8 +2301,8 @@ msgstr "画面を複数のモニターに合わせて広げる"
 msgid "List monitor IDs"
 msgstr "モニターID一覧"
 
-#: plugins/rdp/rdp_plugin.c:2678 plugins/vnc/vnc_plugin.c:1962
-#: plugins/vnc/vnc_plugin.c:1982 plugins/gvnc/gvnc_plugin.c:840
+#: plugins/rdp/rdp_plugin.c:2678 plugins/vnc/vnc_plugin.c:1970
+#: plugins/vnc/vnc_plugin.c:1990 plugins/gvnc/gvnc_plugin.c:840
 msgid "Colour depth"
 msgstr "色数"
 
@@ -2310,8 +2310,8 @@ msgstr "色数"
 msgid "Network connection type"
 msgstr "ネットワーク接続形式"
 
-#: plugins/rdp/rdp_plugin.c:2694 plugins/vnc/vnc_plugin.c:1963
-#: plugins/vnc/vnc_plugin.c:1983
+#: plugins/rdp/rdp_plugin.c:2694 plugins/vnc/vnc_plugin.c:1971
+#: plugins/vnc/vnc_plugin.c:1991
 msgid "Quality"
 msgstr "品質"
 
@@ -2484,7 +2484,7 @@ msgstr "パラレルポートを共有する"
 msgid "Share a smart card"
 msgstr "スマートカードを共有する"
 
-#: plugins/rdp/rdp_plugin.c:2732 plugins/vnc/vnc_plugin.c:2001
+#: plugins/rdp/rdp_plugin.c:2732 plugins/vnc/vnc_plugin.c:2009
 msgid "Turn off clipboard sync"
 msgstr "クリップボードの同期をオフにする"
 
@@ -2501,7 +2501,7 @@ msgid "It disables CAL and hwId is set to 0"
 msgstr "CAL が無効になり HWID が 0 に設定されます"
 
 #: plugins/rdp/rdp_plugin.c:2735 plugins/spice/spice_plugin.c:694
-#: plugins/vnc/vnc_plugin.c:2005 plugins/www/www_plugin.c:911
+#: plugins/vnc/vnc_plugin.c:2013 plugins/www/www_plugin.c:911
 #: plugins/gvnc/gvnc_plugin.c:858
 msgid "Forget passwords after use"
 msgstr "パスワードを使用後に消去する"
@@ -2552,7 +2552,7 @@ msgid "Enable Gateway websockets support"
 msgstr "ゲートウェイ・ウェブソケットのサポートを有効にする"
 
 #: plugins/rdp/rdp_plugin.c:2761 plugins/spice/spice_plugin.c:707
-#: plugins/vnc/vnc_plugin.c:2021
+#: plugins/vnc/vnc_plugin.c:2029
 msgid "Send Ctrl+Alt+Delete"
 msgstr "Ctrl+Alt+Delete を送る"
 
@@ -2666,7 +2666,7 @@ msgid "Share smart card"
 msgstr "スマートカードを共有する"
 
 #: plugins/spice/spice_plugin.c:697 plugins/spice/spice_plugin.c:705
-#: plugins/vnc/vnc_plugin.c:2000 plugins/vnc/vnc_plugin.c:2017
+#: plugins/vnc/vnc_plugin.c:2008 plugins/vnc/vnc_plugin.c:2025
 #: plugins/gvnc/gvnc_plugin.c:861 plugins/gvnc/gvnc_plugin.c:870
 msgid "View only"
 msgstr "表示専用"
@@ -2742,32 +2742,42 @@ msgstr ""
 "    例えば、x11vncを使って、リモートVNCサーバーからリピータに接続します。\n"
 "    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
 
-#: plugins/vnc/vnc_plugin.c:1959
+#: plugins/vnc/vnc_plugin.c:1948
+msgid ""
+"Listening for remote VNC connection:\n"
+"  • The \"Listen on port\" field is the port Remmina will listen to,\n"
+"    e.g. 8888\n"
+"  • From the remote VNC server, you will connect to\n"
+"    Remmina, e.g. with x11vnc:\n"
+"    x11vnc -display :0 -connect 192.168.1.36:8888"
+msgstr ""
+
+#: plugins/vnc/vnc_plugin.c:1967
 msgid "Repeater"
 msgstr "リピーター"
 
-#: plugins/vnc/vnc_plugin.c:1979
+#: plugins/vnc/vnc_plugin.c:1987
 msgid "Listen on port"
 msgstr "ポートを開く"
 
-#: plugins/vnc/vnc_plugin.c:1999
+#: plugins/vnc/vnc_plugin.c:2007
 msgid "Show remote cursor"
 msgstr "リモートのカーソルを表示する"
 
-#: plugins/vnc/vnc_plugin.c:2002
+#: plugins/vnc/vnc_plugin.c:2010
 msgid "Turn off encryption"
 msgstr "TLS 暗号化をオフにする"
 
-#: plugins/vnc/vnc_plugin.c:2003 plugins/vnc/vnc_plugin.c:2018
+#: plugins/vnc/vnc_plugin.c:2011 plugins/vnc/vnc_plugin.c:2026
 msgid "Prevent local interaction on the server"
 msgstr "ローカル側からサーバー側への入力を防ぐ"
 
-#: plugins/vnc/vnc_plugin.c:2004 plugins/gvnc/gvnc_plugin.c:859
+#: plugins/vnc/vnc_plugin.c:2012 plugins/gvnc/gvnc_plugin.c:859
 #, fuzzy
 msgid "Ignore remote bell messages"
 msgstr "リモートベルのメッセージを無視する"
 
-#: plugins/vnc/vnc_plugin.c:2020
+#: plugins/vnc/vnc_plugin.c:2028
 msgid "Open Chat…"
 msgstr "チャット開始…"
 
@@ -2903,14 +2913,17 @@ msgid ""
 "errors and make sure that the remote server is reachable."
 msgstr ""
 "必要な子プロセス 'pyhoca-cli' が予期せず停止しました。\n"
-"プロファイルの設定やpyhoca-cliの出力にエラーがないか、また、リモートサーバーに到達できるかどうかを確認してください。"
+"プロファイルの設定やpyhoca-cliの出力にエラーがないか、また、リモートサーバー"
+"に到達できるかどうかを確認してください。"
 
 #: plugins/x2go/x2go_plugin.c:439
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "An unknown error happened while retrieving pyhoca-cli's cmdline features! "
 "Exit code: %i"
-msgstr "pyhoca-cliのcmdline機能の取得中に未知のエラーが発生しました。終了コードです。%i です。"
+msgstr ""
+"pyhoca-cliのcmdline機能の取得中に未知のエラーが発生しました。終了コードで"
+"す。%i です。"
 
 #: plugins/x2go/x2go_plugin.c:444
 #, fuzzy, c-format
@@ -2929,7 +2942,9 @@ msgstr "X2Goの認証情報を入力する"
 msgid ""
 "User has requested to save credentials but 'password' is not set! Can't set "
 "a new default password then."
-msgstr "ユーザーが認証情報の保存を要求しましたが、「パスワード」が設定されていません。これでは新しいデフォルトパスワードを設定できません。"
+msgstr ""
+"ユーザーが認証情報の保存を要求しましたが、「パスワード」が設定されていませ"
+"ん。これでは新しいデフォルトパスワードを設定できません。"
 
 #: plugins/x2go/x2go_plugin.c:666
 #, fuzzy
@@ -2942,7 +2957,7 @@ msgid "An error occured while starting a X2Go session."
 msgstr "X2Goセッションの開始時にエラーが発生しました。"
 
 #: plugins/x2go/x2go_plugin.c:715
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Failed to start pyhoca-cli (%i): '%s'"
 msgstr "pyhoca-cliの起動に失敗しました (%i): '%s'"
 
@@ -2953,14 +2968,17 @@ msgid ""
 "pyhoca-cli version is too old or pyhoca-cli is not installed! An old limited "
 "set of features will be used now."
 msgstr ""
-"pyhoca-cli の cmdline-features を取得できませんでした。これは、pyhoca-cliのバージョンが古すぎるか、pyhoca-"
-"cliがインストールされていないことを示しています。古い限定された機能のセットが現在使用されます。"
+"pyhoca-cli の cmdline-features を取得できませんでした。これは、pyhoca-cliの"
+"バージョンが古すぎるか、pyhoca-cliがインストールされていないことを示していま"
+"す。古い限定された機能のセットが現在使用されます。"
 
 #: plugins/x2go/x2go_plugin.c:796
 #, fuzzy
 msgid ""
 "parsing pyhoca-cli features was not possible! Using limited feature set now."
-msgstr "pyhoca-cliの機能を解析することができませんでした。現在は限られた機能を使用しています。"
+msgstr ""
+"pyhoca-cliの機能を解析することができませんでした。現在は限られた機能を使用し"
+"ています。"
 
 #: plugins/x2go/x2go_plugin.c:802
 #, fuzzy
@@ -2968,7 +2986,7 @@ msgid "Successfully retrieved following pyhoca-cli features:"
 msgstr "以下のpyhoca-cliの機能の取得に成功しました。"
 
 #: plugins/x2go/x2go_plugin.c:806
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Available feature[%i]: '%s'"
 msgstr "利用可能な機能[%i]： '%s'"
 
@@ -2987,7 +3005,8 @@ msgstr "pyhoca-cliがセッションのウィンドウを表示するのを待�
 #| msgid ""
 #| "The protocol “%s” is unavailable because GtkSocket only works under X.Org."
 msgid "Protocol %s is unavailable because GtkSocket only works under X.org"
-msgstr "GtkSocket は X.org でしか動作しないため、プロトコル %s は利用できません。"
+msgstr ""
+"GtkSocket は X.org でしか動作しないため、プロトコル %s は利用できません。"
 
 #: plugins/x2go/x2go_plugin.c:1189
 #, fuzzy
@@ -3039,7 +3058,9 @@ msgstr "クリップボードの方向"
 #, fuzzy
 msgid ""
 "In which direction should clipboard content be copied? (default: 'both')."
-msgstr "クリップボードの内容をどの方向にコピーするか？(を設定します（デフォルト：「両方」）。)"
+msgstr ""
+"クリップボードの内容をどの方向にコピーするか？(を設定します（デフォルト：「両"
+"方」）。)"
 
 #: plugins/x2go/x2go_plugin.c:1221
 #, fuzzy
@@ -3052,7 +3073,9 @@ msgstr "DPI解像度"
 msgid ""
 "Launch session with a specific resolution (in dots per inch). Must be "
 "between 20 and 400"
-msgstr "特定の解像度（1インチあたりのドット数）でセッションを開始する。20から400の間であること"
+msgstr ""
+"特定の解像度（1インチあたりのドット数）でセッションを開始する。20から400の間"
+"であること"
 
 #: plugins/x2go/x2go_plugin.c:1265
 #, fuzzy
