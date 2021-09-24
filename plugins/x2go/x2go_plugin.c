@@ -1257,6 +1257,8 @@ static GError* remmina_plugin_x2go_string_setting_validator(gchar* key,
 	GError *error = NULL;
 
 	if (!data) {
+		REMMINA_PLUGIN_CRITICAL("%s",
+							  _("Validation data in ProtocolSettings array is invalid!"));
 		g_set_error(&error, 1, 1, _("Validation data in ProtocolSettings "
 									"array is invalid!"));
 		return error;
@@ -1269,6 +1271,8 @@ static GError* remmina_plugin_x2go_string_setting_validator(gchar* key,
 	if (direction_amount <= 0 || direction_list == NULL) {
 		// Something went wrong, there can't be less than or 0 directions.
 		// And direction_list can't be NULL!
+		REMMINA_PLUGIN_CRITICAL("%s",
+							  _("Validation data in ProtocolSettings array is invalid!"));
 		g_set_error(&error, 1, 1, _("Validation data in ProtocolSettings "
 									"array is invalid!"));
 		return error;
@@ -1301,6 +1305,8 @@ static GError* remmina_plugin_x2go_int_setting_validator(gchar* key,
 	if (integer_amount != 2 || integer_list == NULL) {
 		// Something went wrong, there can't be more or less than 2 list entries.
 		// And integer_list can't be NULL!
+		REMMINA_PLUGIN_CRITICAL("%s",
+							  _("Validation data in ProtocolSettings array is invalid!"));
 		g_set_error(&error, 1, 1, _("Validation data in ProtocolSettings "
 									"array is invalid!"));
 		return error;
