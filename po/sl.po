@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-09-23 06:08+0000\n"
-"PO-Revision-Date: 2021-09-16 10:37+0000\n"
+"PO-Revision-Date: 2021-09-24 22:51+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Slovenian <https://hosted.weblate.org/projects/remmina/"
 "remmina/sl/>\n"
@@ -2926,6 +2926,7 @@ msgstr ""
 "    x11vnc -connect repeater=ID:123456789+10.10.10.10.12:5500"
 
 #: plugins/vnc/vnc_plugin.c:1948
+#, fuzzy
 msgid ""
 "Listening for remote VNC connection:\n"
 "  • The \"Listen on port\" field is the port Remmina will listen to,\n"
@@ -2934,6 +2935,13 @@ msgid ""
 "    Remmina, e.g. with x11vnc:\n"
 "    x11vnc -display :0 -connect 192.168.1.36:8888"
 msgstr ""
+"Poslušanje za oddaljeno povezavo VNC:\n"
+"  - V polju \"Poslušaj na vratih\" so navedena vrata, ki jih bo Remmina "
+"poslušala,\n"
+"    npr. 8888\n"
+"  - Iz oddaljenega strežnika VNC se boste povezali na\n"
+"    Remmina, npr. z x11vnc:\n"
+"    x11vnc -display :0 -connect 192.168.1.36:8888"
 
 #: plugins/vnc/vnc_plugin.c:1967
 msgid "Repeater"
@@ -2988,7 +2996,7 @@ msgstr "Prenesena datoteka"
 #: plugins/www/www_plugin.c:581
 #, fuzzy
 msgid "Enter WWW authentication credentials"
-msgstr "Vnesite poverilnice za avtentikacijo WWW"
+msgstr "Vnesite poverilnice za preverjanje pristnosti WWW"
 
 #: plugins/www/www_plugin.c:885
 #, fuzzy
@@ -3094,97 +3102,122 @@ msgid "Secured password storage in the GNOME keyring"
 msgstr "%s geslo"
 
 #: plugins/x2go/x2go_plugin.c:166
+#, fuzzy
 msgid "Broken DialogData! Aborting."
-msgstr ""
+msgstr "Pokvarjeni DialogData! Prekinitev."
 
 #: plugins/x2go/x2go_plugin.c:170
+#, fuzzy
 msgid "Can't retrieve DialogData! Aborting."
-msgstr ""
+msgstr "Ni mogoče pridobiti podatkov DialogData! Prekinitev."
 
 #: plugins/x2go/x2go_plugin.c:389
+#, fuzzy
 msgid "pyhoca-cli exited unexpectedly. This connection will now be closed."
-msgstr ""
+msgstr "pyhoca-cli se je nepričakovano končal. Ta povezava bo zdaj zaprta."
 
 #: plugins/x2go/x2go_plugin.c:398
+#, fuzzy
 msgid "An error occured."
-msgstr ""
+msgstr "Napaka"
 
 #: plugins/x2go/x2go_plugin.c:399
+#, fuzzy
 msgid ""
 "Necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
 "Please check your profile settings and pyhoca-cli's output for possible "
 "errors and make sure that the remote server is reachable."
 msgstr ""
+"Potrebni podrejeni proces 'pyhoca-cli' se je nepričakovano ustavil.\n"
+"Prosimo, preverite nastavitve svojega profila in izhodne podatke pyhoca-cli "
+"za morebitne napake ter se prepričajte, da je oddaljeni strežnik dosegljiv."
 
 #: plugins/x2go/x2go_plugin.c:439
-#, c-format
+#, c-format, fuzzy
 msgid ""
 "An unknown error happened while retrieving pyhoca-cli's cmdline features! "
 "Exit code: %i"
 msgstr ""
+"Med pridobivanjem funkcij cmdline programa pyhoca-cli se je zgodila neznana "
+"napaka! Izhodna koda: %i"
 
 #: plugins/x2go/x2go_plugin.c:444
 #, fuzzy, c-format
 msgid "Error: '%s'"
-msgstr "Napaka:  %s"
+msgstr "Napaka: \"%s"
 
 #: plugins/x2go/x2go_plugin.c:532
 #, fuzzy
 msgid "Enter X2Go credentials"
-msgstr "Vnesite poverilnice za avtentikacijo RDP"
+msgstr "Vnesite poverilnice X2Go"
 
 #: plugins/x2go/x2go_plugin.c:556
+#, fuzzy
 msgid ""
 "User has requested to save credentials but 'password' is not set! Can't set "
 "a new default password then."
 msgstr ""
+"Uporabnik je zahteval shranjevanje poverilnic, vendar geslo ni nastavljeno! "
+"Ne morete nastaviti novega privzetega gesla."
 
 #: plugins/x2go/x2go_plugin.c:666
+#, fuzzy
 msgid "DPI setting is out of bounds. Please adjust in profile settings!"
-msgstr ""
+msgstr "Nastavitev DPI je zunaj omejitev. V nastavitvah profila ga prilagodite!"
 
 #: plugins/x2go/x2go_plugin.c:705 plugins/x2go/x2go_plugin.c:714
+#, fuzzy
 msgid "An error occured while starting a X2Go session."
-msgstr ""
+msgstr "Pri zagonu seje X2Go je prišlo do napake."
 
 #: plugins/x2go/x2go_plugin.c:715
-#, c-format
+#, c-format, fuzzy
 msgid "Failed to start pyhoca-cli (%i): '%s'"
-msgstr ""
+msgstr "Ni uspelo zagnati pyhoca-cli (%i): '%s'"
 
 #: plugins/x2go/x2go_plugin.c:784
+#, fuzzy
 msgid ""
 "Couldn't get pyhoca-cli's cmdline-features. This indicates that either your "
 "pyhoca-cli version is too old or pyhoca-cli is not installed! An old limited "
 "set of features will be used now."
 msgstr ""
+"Nisem mogel dobiti cmdline-funkcije pyhoca-cli. To pomeni, da je vaša "
+"različica pyhoca-cli prestara ali pa pyhoca-cli ni nameščen! Zdaj bo "
+"uporabljen star omejen nabor funkcij."
 
 #: plugins/x2go/x2go_plugin.c:796
+#, fuzzy
 msgid ""
 "parsing pyhoca-cli features was not possible! Using limited feature set now."
 msgstr ""
+"parsing pyhoca-cli funkcije ni bilo mogoče! Zdaj se uporablja omejen nabor "
+"funkcij."
 
 #: plugins/x2go/x2go_plugin.c:802
+#, fuzzy
 msgid "Successfully retrieved following pyhoca-cli features:"
-msgstr ""
+msgstr "Uspešno je pridobil naslednje funkcije pyhoca-cli:"
 
 #: plugins/x2go/x2go_plugin.c:806
-#, c-format
+#, c-format, fuzzy
 msgid "Available feature[%i]: '%s'"
-msgstr ""
+msgstr "Razpoložljiva funkcija[%i]: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:948
+#, fuzzy
 msgid "Waiting for X2Go Agent window to appear."
-msgstr ""
+msgstr "Čakajte, da se prikaže okno agenta X2Go."
 
 #: plugins/x2go/x2go_plugin.c:974
+#, fuzzy
 msgid "Waiting for pyhoca-cli to show the session's window."
-msgstr ""
+msgstr "Čakanje, da pyhoca-cli prikaže okno seje."
 
 #: plugins/x2go/x2go_plugin.c:1145
-#, c-format
+#, c-format, fuzzy
 msgid "Protocol %s is unavailable because GtkSocket only works under X.org"
-msgstr ""
+msgstr "Protokol %s ni na voljo, ker GtkSocket deluje samo pod X.org"
 
 #: plugins/x2go/x2go_plugin.c:1189
 #, fuzzy
@@ -3198,60 +3231,68 @@ msgid "Startup program"
 msgstr "Zagonski program"
 
 #: plugins/x2go/x2go_plugin.c:1197
+#, fuzzy
 msgid "Which command should be executed after creating the X2Go session?"
-msgstr ""
+msgstr "Kateri ukaz je treba izvesti po ustvarjanju seje X2Go?"
 
 #: plugins/x2go/x2go_plugin.c:1204
 #, fuzzy
 #| msgid "Keyboard layout"
 msgid "Keyboard Layout (auto)"
-msgstr "Razporeditev tipk"
+msgstr "Postavitev tipkovnice (samodejno)"
 
 #: plugins/x2go/x2go_plugin.c:1207
 #, fuzzy
 #| msgid "Keyboard layout"
 msgid "Keyboard type (auto)"
-msgstr "Razporeditev tipk"
+msgstr "Vrsta tipkovnice (samodejno)"
 
 #: plugins/x2go/x2go_plugin.c:1210
 #, fuzzy
 msgid "Audio support"
-msgstr "Vključite podporo za Javo"
+msgstr "Zvočna podpora"
 
 #: plugins/x2go/x2go_plugin.c:1212
+#, fuzzy
 msgid "X2Go server's sound system (default: 'pulse')."
-msgstr ""
+msgstr "zvočni sistem strežnika X2Go (privzeto: 'pulse')."
 
 #: plugins/x2go/x2go_plugin.c:1215
 #, fuzzy
 #| msgid "Per connection"
 msgid "Clipboard direction"
-msgstr "Preusmeritev TCP"
+msgstr "Smer delovanja odložišča"
 
 #: plugins/x2go/x2go_plugin.c:1217
+#, fuzzy
 msgid ""
 "In which direction should clipboard content be copied? (default: 'both')."
-msgstr ""
+msgstr "V katero smer je treba kopirati vsebino odložišča? (privzeto: 'obe')."
 
 #: plugins/x2go/x2go_plugin.c:1221
 #, fuzzy
 #| msgid "Resolution"
 msgid "DPI resolution"
-msgstr "Ločljivost"
+msgstr "Ločljivost DPI"
 
 #: plugins/x2go/x2go_plugin.c:1222
+#, fuzzy
 msgid ""
 "Launch session with a specific resolution (in dots per inch). Must be "
 "between 20 and 400"
 msgstr ""
+"Zagon seje z določeno ločljivostjo (v točkah na palec). Biti mora med 20 in "
+"400"
 
 #: plugins/x2go/x2go_plugin.c:1265
+#, fuzzy
 msgid "X2Go plugin loaded."
-msgstr ""
+msgstr "Vtičnik X2Go je naložen."
 
 #: plugins/x2go/x2go_plugin.h:43
+#, fuzzy
 msgid "X2Go - Launch an X2Go session"
-msgstr ""
+msgstr "X2Go - Začetek seje X2Go"
 
 #: plugins/gvnc/gvnc_plugin_config.h:40
 #, fuzzy
@@ -4143,7 +4184,7 @@ msgstr ""
 #, fuzzy
 #| msgid "Grab all keyboard events"
 msgid "“Grab all keyboard events” status colour"
-msgstr "\"Zgrabi vse dogodke tipkovnice\" barva stanja"
+msgstr "\"Zgrabi vse dogodke na tipkovnici\" barva stanja"
 
 #: data/ui/remmina_preferences.glade:754
 #, fuzzy
