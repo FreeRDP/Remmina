@@ -1429,18 +1429,18 @@ static void remmina_file_editor_save_ssh_tunnel_tab(RemminaFileEditor *gfe)
 }
 
 static gboolean remmina_file_editor_validate_settings(RemminaFileEditor *gfe,
-												      gchar* key,
+												      gchar* setting_name_to_validate,
 												      gconstpointer value,
 													  GError **err)
 {
-	if (!key || !value || !gfe) {
+	if (!setting_name_to_validate || !value || !gfe) {
 		g_set_error (err, 0, 0,
-					_("(%s: %i): key, value or gfe are NULL!"),
+					_("(%s: %i): setting_name_to_validate, value or gfe are NULL!"),
 					__func__, __LINE__);
 		return FALSE;
 	}
 
-	if (strcmp(key, "notes_text") == 0) {
+	if (strcmp(setting_name_to_validate, "notes_text") == 0) {
 		// Not a plugin setting. Bail out early.
 		return TRUE;
 	}
@@ -1452,15 +1452,15 @@ static gboolean remmina_file_editor_validate_settings(RemminaFileEditor *gfe,
 
 	setting_iter = protocol_plugin->basic_settings;
 	if (setting_iter) {
-		gboolean found = FALSE;
+		// gboolean found = FALSE;
 		while (setting_iter->type != REMMINA_PROTOCOL_SETTING_TYPE_END) {
 			if (setting_iter->name == NULL) {
 				g_error("Internal error: a setting name in protocol plugin %s is "
 						"null. Please fix RemminaProtocolSetting struct content.",
 						protocol_plugin->name);
-			} else if ((gchar*) key){
-				if (strcmp((gchar*) key, setting_iter->name) == 0) {
-					found = TRUE;
+			} else if ((gchar*) setting_name_to_validate){
+				if (strcmp((gchar*) setting_name_to_validate, setting_iter->name) == 0) {
+					// found = TRUE;
 
 					gpointer validator_data = setting_iter->validator_data;
 					GCallback validator = setting_iter->validator;
@@ -1472,10 +1472,10 @@ static gboolean remmina_file_editor_validate_settings(RemminaFileEditor *gfe,
 					g_debug("Checking setting '%s' for validation.", setting_iter->name);
 					if (validator != NULL) {
 						// Looks weird but it calls the setting's validator
-						// function using key, value and validator_data as
-						// parameters and it returns a GError*.
+						// function using setting_name_to_validate, value and
+						// validator_data as parameters and it returns a GError*.
 						err_ret = ((GError* (*)(gpointer, gconstpointer, gpointer))validator)
-															 (key, value, validator_data);
+										(setting_name_to_validate, value, validator_data);
 					}
 
 					if (err_ret) {
@@ -1491,9 +1491,10 @@ static gboolean remmina_file_editor_validate_settings(RemminaFileEditor *gfe,
 			setting_iter++;
 		}
 
-		if (!found) {
-			g_warning("%s is not a plugin setting!", key);
-		}
+		// if (!found) {
+		// 	 TOO VERBOSE:
+		// 	 g_warning("%s is not a plugin setting!", setting_name_to_validate);
+		// }
 	}
 
 	return TRUE;
