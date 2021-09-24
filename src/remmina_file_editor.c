@@ -208,11 +208,8 @@ static void remmina_file_editor_show_validation_error_popup(RemminaFileEditor *g
 	gtk_label_set_line_wrap_mode(GTK_LABEL(err_label), PANGO_WRAP_WORD_CHAR);
 	gtk_label_set_markup(GTK_LABEL(err_label), markup);
 
-	// Loading alert icon
-	// https://de.wikipedia.org/wiki/Datei:OOjs_UI_icon_alert-warning.svg#/media/Datei:OOj
-	// s_UI_icon_alert_destructive.svg
-	// Has MIT license
-	alert_icon = gtk_image_new_from_file ("/home/daniel/Bilder/alert_icon.svg");
+	alert_icon = gtk_image_new_from_icon_name("dialog-warning-symbolic",
+											  GTK_ICON_SIZE_DND);
 
 	// Fill icon and label into a box.
 	gtk_box_pack_start(GTK_BOX(box), GTK_WIDGET(alert_icon), FALSE, FALSE, 0);
