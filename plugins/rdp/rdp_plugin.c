@@ -244,6 +244,8 @@ static BOOL rf_process_event_queue(RemminaProtocolWidget *gp)
 			break;
 
 		case REMMINA_RDP_EVENT_TYPE_CLIPBOARD_SEND_CLIENT_FORMAT_DATA_REQUEST:
+			REMMINA_PLUGIN_DEBUG("Sending client FormatDataRequest to server");
+			gettimeofday(&(rfi->clipboard.clientformatdatarequest_tv), NULL);
 			rfi->clipboard.context->ClientFormatDataRequest(rfi->clipboard.context, event->clipboard_formatdatarequest.pFormatDataRequest);
 			free(event->clipboard_formatdatarequest.pFormatDataRequest);
 			break;
