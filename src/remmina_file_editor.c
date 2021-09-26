@@ -838,7 +838,7 @@ static void remmina_file_editor_create_settings(RemminaFileEditor *gfe, GtkWidge
 								 remmina_file_get_string(priv->remmina_file, setting_name));
 			g_hash_table_insert(priv->setting_widgets, setting_name, widget);
 			if (settings->opt2)
-				gtk_widget_set_tooltip_text(widget, (const gchar *)settings->opt2);
+				gtk_widget_set_tooltip_text(widget, _((const gchar *)settings->opt2));
 			grid_row++;
 			break;
 
@@ -858,7 +858,7 @@ static void remmina_file_editor_create_settings(RemminaFileEditor *gfe, GtkWidge
 								   remmina_file_get_string(priv->remmina_file, setting_name));
 			g_hash_table_insert(priv->setting_widgets, setting_name, widget);
 			if (settings->opt2)
-				gtk_widget_set_tooltip_text(widget, (const gchar *)settings->opt2);
+				gtk_widget_set_tooltip_text(widget, _((const gchar *)settings->opt2));
 			break;
 
 		case REMMINA_PROTOCOL_SETTING_TYPE_COMBO:
@@ -868,7 +868,7 @@ static void remmina_file_editor_create_settings(RemminaFileEditor *gfe, GtkWidge
 								  remmina_file_get_string(priv->remmina_file, setting_name));
 			g_hash_table_insert(priv->setting_widgets, setting_name, widget);
 			if (settings->opt2)
-				gtk_widget_set_tooltip_text(widget, (const gchar *)settings->opt2);
+				gtk_widget_set_tooltip_text(widget, _((const gchar *)settings->opt2));
 			break;
 
 		case REMMINA_PROTOCOL_SETTING_TYPE_CHECK:
@@ -877,7 +877,7 @@ static void remmina_file_editor_create_settings(RemminaFileEditor *gfe, GtkWidge
 								  remmina_file_get_int(priv->remmina_file, setting_name, FALSE));
 			g_hash_table_insert(priv->setting_widgets, setting_name, widget);
 			if (settings->opt2)
-				gtk_widget_set_tooltip_text(widget, (const gchar *)settings->opt2);
+				gtk_widget_set_tooltip_text(widget, _((const gchar *)settings->opt2));
 			break;
 
 		case REMMINA_PROTOCOL_SETTING_TYPE_FILE:
@@ -887,7 +887,7 @@ static void remmina_file_editor_create_settings(RemminaFileEditor *gfe, GtkWidge
 								    GTK_FILE_CHOOSER_ACTION_OPEN);
 			g_hash_table_insert(priv->setting_widgets, setting_name, widget);
 			if (settings->opt2)
-				gtk_widget_set_tooltip_text(widget, (const gchar *)settings->opt2);
+				gtk_widget_set_tooltip_text(widget, _((const gchar *)settings->opt2));
 			break;
 
 		case REMMINA_PROTOCOL_SETTING_TYPE_FOLDER:
@@ -897,7 +897,7 @@ static void remmina_file_editor_create_settings(RemminaFileEditor *gfe, GtkWidge
 								    GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER);
 			g_hash_table_insert(priv->setting_widgets, setting_name, widget);
 			if (settings->opt2)
-				gtk_widget_set_tooltip_text(widget, (const gchar *)settings->opt2);
+				gtk_widget_set_tooltip_text(widget, _((const gchar *)settings->opt2));
 			break;
 		case REMMINA_PROTOCOL_SETTING_TYPE_INT:
 			widget = remmina_file_editor_create_int(gfe, grid, grid_row, 0,
@@ -906,7 +906,7 @@ static void remmina_file_editor_create_settings(RemminaFileEditor *gfe, GtkWidge
 								0, 40);
 			g_hash_table_insert(priv->setting_widgets, setting_name, widget);
 			if (settings->opt2)
-				gtk_widget_set_tooltip_text(widget, (const gchar *)settings->opt2);
+				gtk_widget_set_tooltip_text(widget, _((const gchar *)settings->opt2));
 			grid_row++;
 			break;
 		case REMMINA_PROTOCOL_SETTING_TYPE_DOUBLE:
@@ -916,7 +916,7 @@ static void remmina_file_editor_create_settings(RemminaFileEditor *gfe, GtkWidge
 						0, 40);
 			g_hash_table_insert(priv->setting_widgets, setting_name, widget);
 			if (settings->opt2)
-				gtk_widget_set_tooltip_text(widget, (const gchar *)settings->opt2);
+				gtk_widget_set_tooltip_text(widget, _((const gchar *)settings->opt2));
 			grid_row++;
 			break;
 
