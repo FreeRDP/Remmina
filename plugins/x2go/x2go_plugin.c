@@ -1264,13 +1264,13 @@ static GError* remmina_plugin_x2go_string_setting_validator(gchar* key,
 		return error;
 	}
 
-	guint direction_amount = 0;
-	gchar **direction_list = remmina_plugin_x2go_split_string(data, ',',
-															  &direction_amount);
+	guint elements_amount = 0;
+	gchar **elements_list = remmina_plugin_x2go_split_string(data, ',',
+															 &elements_amount);
 
-	if (direction_amount <= 0 || direction_list == NULL) {
+	if (elements_amount <= 0 || elements_list == NULL) {
 		// Something went wrong, there can't be less than or 0 directions.
-		// And direction_list can't be NULL!
+		// And elements_list can't be NULL!
 		REMMINA_PLUGIN_CRITICAL("%s",
 							  _("Validation data in ProtocolSettings array is invalid!"));
 		g_set_error(&error, 1, 1, _("Validation data in ProtocolSettings "
@@ -1283,9 +1283,9 @@ static GError* remmina_plugin_x2go_string_setting_validator(gchar* key,
 
 	if (!key || !value) return error;
 
-	for (int i = 0; i < direction_amount; i++) {
-		// Don't wanna crash if direction_list[i] is NULL.
-		gchar* occurence = direction_list[i] ? direction_list[i] : "";
+	for (int i = 0; i < elements_amount; i++) {
+		// Don't wanna crash if elements_list[i] is NULL.
+		gchar* occurence = elements_list[i] ? elements_list[i] : "";
 		if (strcmp(value, occurence) == 0) {
 			return NULL;
 		}
