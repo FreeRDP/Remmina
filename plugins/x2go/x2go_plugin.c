@@ -105,7 +105,7 @@
 
 static RemminaPluginService *remmina_plugin_service = NULL;
 
-// Following str2int code was copied from Stackoverflow:
+// Following str2int code was adapted from Stackoverflow:
 // https://stackoverflow.com/questions/7021725/how-to-convert-a-string-to-integer-in-c
 typedef enum {
     STR2INT_SUCCESS,
@@ -165,8 +165,6 @@ static gchar** remmina_plugin_x2go_split_string(gchar* data,
 												guint *occurences) {
 	// Counts the occurence of 'delim', so the amount of numbers passed.
 	guint delim_occurence = 0;
-	// Counts characters of everything between occurences
-	guint char_amount = strlen(data) + 1; // + one '\0' byte
 	// work on a copy of the string, because strchr alters the string.
 	gchar *pch = strchr(g_strdup(data), delim);
 	while (pch != NULL) {
@@ -179,14 +177,15 @@ static gchar** remmina_plugin_x2go_split_string(gchar* data,
 	}
 
 	gchar **returning_string_list = NULL;
-	returning_string_list = malloc(sizeof(gchar) * char_amount);
+	// We are just storing gchar pointers not actual gchars.
+	returning_string_list = malloc(sizeof(gchar*) * (delim_occurence + 1));
 
 	(*occurences) = 0;
 	// Split 'data' into array 'returning_string_list' using 'delim' as delimiter.
 	gchar *ptr = strtok(g_strdup(data), &delim);
 	for(gint j = 0; (j <= delim_occurence && ptr != NULL); j++) {
 		// Add occurence to list
-		returning_string_list[j] = g_strdup_printf(ptr);
+		returning_string_list[j] = g_strdup(ptr);
 
 		// Get next occurence
 		ptr = strtok(NULL, &delim);
