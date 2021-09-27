@@ -1405,68 +1405,47 @@ static GError* remmina_plugin_x2go_int_setting_validator(gchar* key,
  */
 
 static const RemminaProtocolSetting remmina_plugin_x2go_basic_settings[] = {
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER,
-		"server", NULL, FALSE, NULL, NULL,
+	{REMMINA_PROTOCOL_SETTING_TYPE_SERVER, "server", NULL, FALSE, NULL, NULL,
 		/* Validation Data */ NULL,
-		/* Validation Method */ NULL
-	},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,
-	    "username", N_("Username"), FALSE, NULL, NULL,
+		/* Validation Method */ NULL},
+	{REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "username", N_("Username"), FALSE, NULL, NULL,
 		/* Validation Data */ NULL,
-		/* Validation Method */ NULL
-	},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD,
-		"password", N_("Password"), FALSE, NULL, NULL,
+		/* Validation Method */ NULL},
+	{REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "password", N_("Password"), FALSE, NULL, NULL,
 		/* Validation Data */ NULL,
-		/* Validation Method */ NULL
-	},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_COMBO,
-		"command", N_("Startup program"), FALSE,
+		/* Validation Method */ NULL},
+	{REMMINA_PROTOCOL_SETTING_TYPE_COMBO, "command", N_("Startup program"), FALSE,
 		/* Options to select (or custom user string) */ "MATE,KDE,XFCE,LXDE,TERMINAL",
 		/* Tooltip */ N_("Which command should be "
 						 "executed after creating the X2Go session?"),
 		/* Validation Data */ NULL,
-		/* Validation Method */ NULL
-	},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION,
-		"resolution", NULL, FALSE, NULL, NULL,
+		/* Validation Method */ NULL},
+	{REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION, "resolution", NULL, FALSE, NULL, NULL,
 		/* Validation Data */ NULL,
-		/* Validation Method */ NULL
-	},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,
-		"kbdlayout", N_("Keyboard Layout (auto)"), FALSE, NULL, NULL,
+		/* Validation Method */ NULL},
+	{REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "kbdlayout", N_("Keyboard Layout (auto)"), FALSE, NULL, NULL,
 		/* Validation Data */ NULL,
-		/* Validation Method */ NULL
-	},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,
-		"kbdtype", N_("Keyboard type (auto)"), FALSE, NULL, NULL,
-		/* Validation Data */ "1,2,3,4,5",
-		/* Validation Method */ (GCallback) remmina_plugin_x2go_string_setting_validator
-	},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_COMBO,
-		"audio", N_("Audio support"), FALSE,
+		/* Validation Method */ NULL},
+	{REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "kbdtype", N_("Keyboard type (auto)"), FALSE, NULL, NULL,
+		/* Validation Data */ NULL,
+		/* Validation Method */ NULL},
+	{REMMINA_PROTOCOL_SETTING_TYPE_COMBO, "audio", N_("Audio support"), FALSE,
 		/* Options to select (or custom user string) */ "pulse,esd,none",
 		/* Tooltip */ N_("The X2Go server's sound system (default: 'pulse')."),
-		/* Validation Data */ NULL,
-		/* Validation Method */ NULL
-	},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_COMBO,
-		"clipboard", N_("Clipboard direction"), FALSE,
+		/* Validation Data */ "pulse,esd,none",
+		/* Validation Method */ G_CALLBACK(remmina_plugin_x2go_string_setting_validator)},
+	{REMMINA_PROTOCOL_SETTING_TYPE_COMBO, "clipboard", N_("Clipboard direction"), FALSE,
 		/* Options to select (or custom user string) */ "none,server,client,both",
 		/* Tooltip */ N_("Which direction should clipboard content be copied? "
 						 "(default: 'both')."),
 		/* Validation Data */ "none,server,client,both",
-		/* Validation Method */ (GCallback) remmina_plugin_x2go_string_setting_validator
-	},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_INT,
-		"dpi", N_("DPI resolution"), FALSE, NULL,
+		/* Validation Method */ G_CALLBACK(remmina_plugin_x2go_string_setting_validator)},
+	{REMMINA_PROTOCOL_SETTING_TYPE_INT, "dpi", N_("DPI resolution"), FALSE, NULL,
 		/* Tooltip */ N_("Launch session with a specific resolution (in dots per inch). "
-						 "Must be between 20 and 400"),
+						"Must be between 20 and 400."),
 		/* Validation Data */ "20;400", // "<min>;<max>;"
-		/* Validation Method */ (GCallback) remmina_plugin_x2go_int_setting_validator
-	},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
-};
+		/* Validation Method */ G_CALLBACK(remmina_plugin_x2go_int_setting_validator)},
+	{REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL}};
 
 /* Protocol plugin definition and features */
 static RemminaProtocolPlugin remmina_plugin_x2go = {
