@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Remmina v1.4.3\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-09-23 06:08+0000\n"
-"PO-Revision-Date: 2021-09-21 21:03+0000\n"
+"PO-Revision-Date: 2021-09-27 09:38+0000\n"
 "Last-Translator: phlostically <phlostically@mailinator.com>\n"
 "Language-Team: Esperanto <https://hosted.weblate.org/projects/remmina/"
 "remmina/eo/>\n"
@@ -845,7 +845,7 @@ msgstr "Ĉu akcepti ŝanĝitan atestilon?"
 #: src/remmina_protocol_widget.c:1938
 #, c-format
 msgid "Listening on port %i for an incoming %s connection…"
-msgstr "Aŭskultante ĉe pordo %i por envenonta %s-konekto…"
+msgstr "Aŭskultante al pordo %i por envenonta %s-konekto…"
 
 #: src/remmina_protocol_widget.c:1963
 msgid "Could not authenticate, attempting reconnection…"
@@ -2652,6 +2652,12 @@ msgid ""
 "    Remmina, e.g. with x11vnc:\n"
 "    x11vnc -display :0 -connect 192.168.1.36:8888"
 msgstr ""
+"Aŭskultante foran VNC-konekton:\n"
+"  • La kampo «Aŭskulti al pordo» estas la pordo, ĉe kiu Remmina aŭskultos,\n"
+"    ekz. 8888\n"
+"  • De la fora VNC-servilo, vi konektos al\n"
+"    Remmina, ekz. per x11vnc:\n"
+"    x11vnc -display :0 -connect 192.168.1.36:8888"
 
 #: plugins/vnc/vnc_plugin.c:1967
 msgid "Repeater"
@@ -2834,10 +2840,12 @@ msgid ""
 "User has requested to save credentials but 'password' is not set! Can't set "
 "a new default password then."
 msgstr ""
+"Uzanto petis konservi akreditilojn, sed pasvorto ne estas agordita! Tial ne "
+"eblas agordi novan implicitan pasvorton."
 
 #: plugins/x2go/x2go_plugin.c:666
 msgid "DPI setting is out of bounds. Please adjust in profile settings!"
-msgstr ""
+msgstr "Distingivo estas ekster limoj. Bonvolu agordi en la profilaj agordoj!"
 
 #: plugins/x2go/x2go_plugin.c:705 plugins/x2go/x2go_plugin.c:714
 msgid "An error occured while starting a X2Go session."
@@ -2862,6 +2870,8 @@ msgstr ""
 msgid ""
 "parsing pyhoca-cli features was not possible! Using limited feature set now."
 msgstr ""
+"Ne eblis eltrovi funkciojn de pyhoca-cli! Nun uzante limigitan aron de "
+"funkcioj."
 
 #: plugins/x2go/x2go_plugin.c:802
 msgid "Successfully retrieved following pyhoca-cli features:"
@@ -2926,8 +2936,6 @@ msgstr ""
 "«both» (ambaŭdirekte))."
 
 #: plugins/x2go/x2go_plugin.c:1221
-#, fuzzy
-#| msgid "Resolution"
 msgid "DPI resolution"
 msgstr "Ekrandistingivo"
 
@@ -2936,6 +2944,8 @@ msgid ""
 "Launch session with a specific resolution (in dots per inch). Must be "
 "between 20 and 400"
 msgstr ""
+"Lanĉi seancon je distingivo specifita de nombro de bilderoj en colo. Devas "
+"esti inter 20 kaj 400"
 
 #: plugins/x2go/x2go_plugin.c:1265
 msgid "X2Go plugin loaded."
