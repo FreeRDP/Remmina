@@ -1293,6 +1293,7 @@ static GError* remmina_plugin_x2go_string_setting_validator(gchar* key,
 		// Don't wanna crash if elements_list[i] is NULL.
 		gchar* occurence = elements_list[i] ? elements_list[i] : "";
 		if (strcmp(value, occurence) == 0) {
+			// We found value in elements_list. Value passed validation.
 			return NULL;
 		}
 	}
@@ -1371,16 +1372,14 @@ static GError* remmina_plugin_x2go_int_setting_validator(gchar* key,
 		g_set_error(&error, 1, 1, _("Something went wrong."));
 	}
 
-	if (error) return error;
-
-	REMMINA_PLUGIN_DEBUG("Key:  \t%s", (gchar*) key);
+	/*REMMINA_PLUGIN_DEBUG("Key:  \t%s", (gchar*) key);
 	REMMINA_PLUGIN_DEBUG("Value:\t%s", (gchar*) value);
 	REMMINA_PLUGIN_DEBUG("Data: \t%s", data);
 	REMMINA_PLUGIN_DEBUG("Min: %i, Max: %i", minimum, maximum);
-	REMMINA_PLUGIN_DEBUG("Value converted:\t%i", int_value);
+	REMMINA_PLUGIN_DEBUG("Value converted:\t%i", int_value);*/
 
 	if (err == STR2INT_SUCCESS && (minimum > int_value || int_value > maximum)) {
-		g_set_error(&error, 1, 1, _("Your input should be a number between %i and %i."),
+		g_set_error(&error, 1, 1, _("Input must be a number between %i and %i."),
 					minimum, maximum);
 	}
 
