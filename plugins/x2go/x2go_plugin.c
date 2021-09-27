@@ -1246,9 +1246,16 @@ static const RemminaProtocolFeature remmina_plugin_x2go_features[] = {
 };
 
 /**
- * @brief Gets executed when the user wants to save profile settings.
- * 		  It uses the given data (See RemminaProtocolSetting array) to determine
- * 		  which strings are allowed.
+ * @brief Validator-functions are getting executed when the user wants to save profile
+ * 		  settings. It uses the given data (See RemminaProtocolSetting array) to determine
+ * 		  which strings are allowed and returns a end-user friendly error message.
+ *
+ * @param key Key is the setting's name.
+ * @param value Value to validate.
+ * @param data Data needed for validation process. See RemminaProtocolSetting array.
+ *
+ * @returns End-user friendly and translated error message, explaining why the given
+ *			value is invalid. If the given value is error-free then NULL gets returned.
  *
  */
 static GError* remmina_plugin_x2go_string_setting_validator(gchar* key,
@@ -1294,6 +1301,20 @@ static GError* remmina_plugin_x2go_string_setting_validator(gchar* key,
 	return error;
 }
 
+/**
+ * @brief Validator-functions are getting executed when the user wants to save profile
+ * 		  settings. It uses the given data (See RemminaProtocolSetting array) to determine
+ * 		  if the given value is a valid integer is in range and returns
+ *		  a end-user friendly error message.
+ *
+ * @param key Key is the setting's name.
+ * @param value Value to validate.
+ * @param data Data needed for validation process. See RemminaProtocolSetting array.
+ *
+ * @returns End-user friendly and translated error message, explaining why the given
+ *			value is invalid. If the given value is error-free then NULL gets returned.
+ *
+ */
 static GError* remmina_plugin_x2go_int_setting_validator(gchar* key,
 														 gpointer value,
 														 gchar* data) {
