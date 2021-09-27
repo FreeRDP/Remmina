@@ -292,9 +292,9 @@ static void remmina_plugin_x2go_open_dialog(RemminaProtocolWidget *gp) {
 
 	if (ddata->callbackfunc) {
 		g_signal_connect_swapped(G_OBJECT(widget_gtk_dialog),
-					 "response",
-					 G_CALLBACK(ddata->callbackfunc),
-					 gp);
+								 "response",
+								 G_CALLBACK(ddata->callbackfunc),
+								 gp);
 	} else {
 		g_signal_connect(G_OBJECT(widget_gtk_dialog),
 						"response",
@@ -303,7 +303,9 @@ static void remmina_plugin_x2go_open_dialog(RemminaProtocolWidget *gp) {
 	}
 
 	gtk_widget_show_all(widget_gtk_dialog);
-	g_free(ddata);
+
+	// Delete ddata object and reference 'dialog-data' in gp.
+	g_object_set_data(G_OBJECT(gp), "dialog-data", NULL);
 }
 
 typedef struct _RemminaPluginX2GoData {
@@ -502,12 +504,12 @@ static void remmina_plugin_x2go_pyhoca_cli_exited(GPid pid,
 	ddata->flags = GTK_DIALOG_MODAL;
 	ddata->type = GTK_MESSAGE_ERROR;
 	ddata->buttons = GTK_BUTTONS_OK;
-	ddata->title = N_("An error occured.");
-	ddata->message = N_("The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
-						"Please check your profile settings and pyhoca-cli's output for "
-						"possible errors and ensure the remote server is "
-						"reachable.");
-	ddata->callbackfunc = NULL; // `Dialog` frees itself, no need for an callbackfunc.
+	ddata->title = _("An error occured.");
+	ddata->message = _("The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
+					   "Please check your profile settings and pyhoca-cli's output for "
+					   "possible errors and ensure the remote server is "
+					   "reachable.");
+	ddata->callbackfunc = NULL; // Dialog frees itself, no need for an callbackfunc.
 	IDLE_ADD((GSourceFunc) remmina_plugin_x2go_open_dialog, gp);
 
 	// 1 Second. Give `Dialog` chance to open.
@@ -738,8 +740,8 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
 	if (FEATURE_AVAILABLE(gpdata, "DPI")) {
 		// Values are extracted from pyhoca-cli.
 		if (dpi < 20 || dpi > 400) {
-			g_strlcpy(errmsg, N_("DPI setting is out of bounds. "
-							     "Please adjust it in the profile settings."), 512);
+			g_strlcpy(errmsg, _("DPI setting is out of bounds. "
+							    "Please adjust it in profile settings."), 512);
 			// No need, start_session() will handle output.
 			//REMMINA_PLUGIN_CRITICAL("%s", errmsg);
 			return FALSE;
@@ -777,8 +779,8 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
 		if (!error)
 			error = g_error_new(0, 0, "<error not available>");
 
-		gchar *error_title = N_("An error occured while "
-						        "starting an X2Go session…");
+		gchar *error_title = _("An error occured while "
+						       "starting an X2Go session…");
 
 		DialogData *ddata = g_new0(DialogData, 1);
 		SET_DIALOG_DATA(gp, ddata);
@@ -786,8 +788,8 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
 		ddata->flags = GTK_DIALOG_MODAL;
 		ddata->type = GTK_MESSAGE_ERROR;
 		ddata->buttons = GTK_BUTTONS_OK;
-		ddata->title = N_("Could not start X2Go session.");
-		ddata->message = g_strdup_printf(N_("Could not start PyHoca-CLI (%i): '%s'"),
+		ddata->title = _("Could not start X2Go session.");
+		ddata->message = g_strdup_printf(_("Could not start PyHoca-CLI (%i): '%s'"),
 										 error->code,
 										 error->message);
 		ddata->callbackfunc = NULL; // Dialog frees itself, no need for an callbackfunc.
