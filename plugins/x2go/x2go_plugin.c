@@ -1288,10 +1288,13 @@ static GError* remmina_plugin_x2go_string_setting_validator(gchar* key,
 		return error;
 	}
 
-	g_set_error(&error, 1, 1, _("Allowed values are: '%s'."),
-				data);
+	gchar *data_str = "";
 
-	if (!key || !value) return error;
+	if (!key || !value) {
+		REMMINA_PLUGIN_CRITICAL("key or value is NULL!");
+		g_set_error(&error, 1, 1, _("Internal error."));
+		return error;
+	}
 
 	for (int i = 0; i < elements_amount; i++) {
 		// Don't wanna crash if elements_list[i] is NULL.
@@ -1300,7 +1303,21 @@ static GError* remmina_plugin_x2go_string_setting_validator(gchar* key,
 			// We found value in elements_list. Value passed validation.
 			return NULL;
 		}
+
+		if (elements_amount > 1) {
+			if (i == elements_amount - 1) {
+				data_str = g_strdup_printf(_("%sand '%s'"), data_str, occurence);
+			}
+			else if (i == elements_amount - 2) {
+				data_str = g_strdup_printf(_("%s'%s' "), data_str, occurence);
+			}
+			else {
+				data_str = g_strdup_printf(_("%s'%s', "), data_str, occurence);
+			}
+		}
 	}
+
+	g_set_error(&error, 1, 1, _("Allowed values are %s."), data_str);
 
 	return error;
 }
