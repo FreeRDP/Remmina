@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-09-23 06:08+0000\n"
+"POT-Creation-Date: 2021-09-28 11:28+0000\n"
 "PO-Revision-Date: 2021-09-23 10:45+0000\n"
 "Last-Translator: Eric <spice2wolf@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -76,7 +76,7 @@ msgstr "通过 SSH 从新终端连接"
 #: src/remmina_file_editor.c:1093 src/remmina_ssh_plugin.c:1473
 #: plugins/rdp/rdp_plugin.c:2666 plugins/vnc/vnc_plugin.c:1968
 #: plugins/vnc/vnc_plugin.c:1988 plugins/www/www_plugin.c:886
-#: data/ui/remmina_mpc.glade:144
+#: plugins/x2go/x2go_plugin.c:1189 data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr "用户名"
 
@@ -2775,11 +2775,15 @@ msgid "Secured password storage in the GNOME keyring"
 msgstr "存储在 GNOME 密钥环中的安全密码"
 
 #: plugins/x2go/x2go_plugin.c:166
-msgid "Broken DialogData! Aborting."
+#, fuzzy
+#| msgid "Broken DialogData! Aborting."
+msgid "Broken `DialogData`! Aborting…"
 msgstr "损坏的 DialogData！正在中止。"
 
 #: plugins/x2go/x2go_plugin.c:170
-msgid "Can't retrieve DialogData! Aborting."
+#, fuzzy
+#| msgid "Can't retrieve DialogData! Aborting."
+msgid "Can't retrieve `DialogData`! Aborting…"
 msgstr "无法取回 DialogData！正在中止。"
 
 #: plugins/x2go/x2go_plugin.c:389
@@ -2791,10 +2795,15 @@ msgid "An error occured."
 msgstr "发生了一个错误。"
 
 #: plugins/x2go/x2go_plugin.c:399
+#, fuzzy
+#| msgid ""
+#| "Necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
+#| "Please check your profile settings and pyhoca-cli's output for possible "
+#| "errors and make sure that the remote server is reachable."
 msgid ""
-"Necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
+"The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
 "Please check your profile settings and pyhoca-cli's output for possible "
-"errors and make sure that the remote server is reachable."
+"errors and ensure the remote server is reachable."
 msgstr ""
 "必需的子进程 'pyhoca-cli' 意外停止。\n"
 "请检查您的配置文件设置和 pyhoca-cli 的输出是否存在错误，并确保远程服务器可访"
@@ -2817,27 +2826,47 @@ msgid "Enter X2Go credentials"
 msgstr "输入 X2Go 凭据"
 
 #: plugins/x2go/x2go_plugin.c:556
+#, fuzzy
+#| msgid ""
+#| "User has requested to save credentials but 'password' is not set! Can't "
+#| "set a new default password then."
 msgid ""
-"User has requested to save credentials but 'password' is not set! Can't set "
-"a new default password then."
+"User requested storing credentials but 'password' is not set! Can't set a "
+"new default password then."
 msgstr "用户已请求保存凭据，但未设置 'password'！无法设置新的默认密码。"
 
 #: plugins/x2go/x2go_plugin.c:666
-msgid "DPI setting is out of bounds. Please adjust in profile settings!"
+#, fuzzy
+#| msgid "DPI setting is out of bounds. Please adjust in profile settings!"
+msgid "DPI setting is out of bounds. Please adjust it in the profile settings."
 msgstr "DPI 设置越界。请在配置文件设置中进行调整！"
 
-#: plugins/x2go/x2go_plugin.c:705 plugins/x2go/x2go_plugin.c:714
-msgid "An error occured while starting a X2Go session."
+#: plugins/x2go/x2go_plugin.c:705
+#, fuzzy
+#| msgid "An error occured while starting a X2Go session."
+msgid "An error occured while starting an X2Go session…"
 msgstr "启动 X2Go 会话时发生了一个错误。"
 
+#: plugins/x2go/x2go_plugin.c:714
+#, fuzzy
+#| msgid "Could not start SSH session. %s"
+msgid "Could not start X2Go session."
+msgstr "无法启动 SSH 会话。%s"
+
 #: plugins/x2go/x2go_plugin.c:715
-#, c-format
-msgid "Failed to start pyhoca-cli (%i): '%s'"
+#, fuzzy, c-format
+#| msgid "Failed to start pyhoca-cli (%i): '%s'"
+msgid "Could not start PyHoca-CLI (%i): '%s'"
 msgstr "未能启动 pyhoca-cli (%i): '%s'"
 
 #: plugins/x2go/x2go_plugin.c:784
+#, fuzzy
+#| msgid ""
+#| "Couldn't get pyhoca-cli's cmdline-features. This indicates that either "
+#| "your pyhoca-cli version is too old or pyhoca-cli is not installed! An old "
+#| "limited set of features will be used now."
 msgid ""
-"Couldn't get pyhoca-cli's cmdline-features. This indicates that either your "
+"Couldn't get pyhoca-cli's cmdline-features. This indicates either your "
 "pyhoca-cli version is too old or pyhoca-cli is not installed! An old limited "
 "set of features will be used now."
 msgstr ""
@@ -2845,12 +2874,19 @@ msgstr ""
 "pyhoca-cli！现在将使用旧的有限的功能集。"
 
 #: plugins/x2go/x2go_plugin.c:796
+#, fuzzy
+#| msgid ""
+#| "parsing pyhoca-cli features was not possible! Using limited feature set "
+#| "now."
 msgid ""
-"parsing pyhoca-cli features was not possible! Using limited feature set now."
+"parsing pyhoca-cli functionality was not possible! Using a limited feature-"
+"set for now."
 msgstr "无法解析 pyhoca-cli 功能！现在使用有限的特功能集。"
 
 #: plugins/x2go/x2go_plugin.c:802
-msgid "Successfully retrieved following pyhoca-cli features:"
+#, fuzzy
+#| msgid "Successfully retrieved following pyhoca-cli features:"
+msgid "Retrieved the following pyhoca-cli functionality:"
 msgstr "成功获取以下 pyhoca-cli 功能："
 
 #: plugins/x2go/x2go_plugin.c:806
@@ -2867,13 +2903,10 @@ msgid "Waiting for pyhoca-cli to show the session's window."
 msgstr "等待 pyhoca-cli 显示会话窗口。"
 
 #: plugins/x2go/x2go_plugin.c:1145
-#, c-format
-msgid "Protocol %s is unavailable because GtkSocket only works under X.org"
+#, fuzzy, c-format
+#| msgid "Protocol %s is unavailable because GtkSocket only works under X.org"
+msgid "The protocol %s is unavailable because GtkSocket only works under X.org"
 msgstr "协议 %s 不可用，因为 GtkSocket 仅在 X.org 下工作"
-
-#: plugins/x2go/x2go_plugin.c:1189
-msgid "User name"
-msgstr "用户名"
 
 #: plugins/x2go/x2go_plugin.c:1195
 msgid "Startup program"
@@ -2896,7 +2929,9 @@ msgid "Audio support"
 msgstr "音频支持"
 
 #: plugins/x2go/x2go_plugin.c:1212
-msgid "X2Go server's sound system (default: 'pulse')."
+#, fuzzy
+#| msgid "X2Go server's sound system (default: 'pulse')."
+msgid "The X2Go server's sound system (default: 'pulse')."
 msgstr "X2Go 服务器的声音系统 (默认为'pulse')。"
 
 #: plugins/x2go/x2go_plugin.c:1215
@@ -2904,8 +2939,10 @@ msgid "Clipboard direction"
 msgstr "剪贴板方向"
 
 #: plugins/x2go/x2go_plugin.c:1217
-msgid ""
-"In which direction should clipboard content be copied? (default: 'both')."
+#, fuzzy
+#| msgid ""
+#| "In which direction should clipboard content be copied? (default: 'both')."
+msgid "Which direction should clipboard content be copied? (default: 'both')."
 msgstr "应按哪个方向复制剪贴板内容？(默认:“both”)。"
 
 #: plugins/x2go/x2go_plugin.c:1221
@@ -4017,6 +4054,9 @@ msgstr "解锁 Remmina"
 #: data/ui/remmina_unlock.glade:128
 msgid "Master password"
 msgstr "管控密码"
+
+#~ msgid "User name"
+#~ msgstr "用户名"
 
 #~ msgid "Could not run %s on SSH server."
 #~ msgstr "无法在 SSH 服务器上运行 %s。"

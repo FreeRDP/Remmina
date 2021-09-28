@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Remmina v1.3.9\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-09-23 06:08+0000\n"
+"POT-Creation-Date: 2021-09-28 11:28+0000\n"
 "PO-Revision-Date: 2021-08-28 17:34+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Hindi <https://hosted.weblate.org/projects/remmina/remmina/hi/"
@@ -78,7 +78,7 @@ msgstr "एक नए टर्मिनल से एसएसएच के म
 #: src/remmina_file_editor.c:1093 src/remmina_ssh_plugin.c:1473
 #: plugins/rdp/rdp_plugin.c:2666 plugins/vnc/vnc_plugin.c:1968
 #: plugins/vnc/vnc_plugin.c:1988 plugins/www/www_plugin.c:886
-#: data/ui/remmina_mpc.glade:144
+#: plugins/x2go/x2go_plugin.c:1189 data/ui/remmina_mpc.glade:144
 #, fuzzy
 msgid "Username"
 msgstr "उपयोगकर्ता नाम"
@@ -3222,11 +3222,11 @@ msgid "Secured password storage in the GNOME keyring"
 msgstr "GNOME कुंजीरिंग में सुरक्षित पासवर्ड भंडारण"
 
 #: plugins/x2go/x2go_plugin.c:166
-msgid "Broken DialogData! Aborting."
+msgid "Broken `DialogData`! Aborting…"
 msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:170
-msgid "Can't retrieve DialogData! Aborting."
+msgid "Can't retrieve `DialogData`! Aborting…"
 msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:389
@@ -3239,9 +3239,9 @@ msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:399
 msgid ""
-"Necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
+"The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
 "Please check your profile settings and pyhoca-cli's output for possible "
-"errors and make sure that the remote server is reachable."
+"errors and ensure the remote server is reachable."
 msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:439
@@ -3263,37 +3263,43 @@ msgstr "आरडीपी प्रमाणीकरण साख दर्ज
 
 #: plugins/x2go/x2go_plugin.c:556
 msgid ""
-"User has requested to save credentials but 'password' is not set! Can't set "
-"a new default password then."
+"User requested storing credentials but 'password' is not set! Can't set a "
+"new default password then."
 msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:666
-msgid "DPI setting is out of bounds. Please adjust in profile settings!"
+msgid "DPI setting is out of bounds. Please adjust it in the profile settings."
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:705 plugins/x2go/x2go_plugin.c:714
-msgid "An error occured while starting a X2Go session."
+#: plugins/x2go/x2go_plugin.c:705
+msgid "An error occured while starting an X2Go session…"
 msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:714
+#, fuzzy
+msgid "Could not start X2Go session."
+msgstr "एसएसएच सत्र शुरू नहीं कर सका। %s"
 
 #: plugins/x2go/x2go_plugin.c:715
-#, c-format
-msgid "Failed to start pyhoca-cli (%i): '%s'"
-msgstr ""
+#, fuzzy, c-format
+msgid "Could not start PyHoca-CLI (%i): '%s'"
+msgstr "एसएसएच सत्र शुरू नहीं कर सका। %s"
 
 #: plugins/x2go/x2go_plugin.c:784
 msgid ""
-"Couldn't get pyhoca-cli's cmdline-features. This indicates that either your "
+"Couldn't get pyhoca-cli's cmdline-features. This indicates either your "
 "pyhoca-cli version is too old or pyhoca-cli is not installed! An old limited "
 "set of features will be used now."
 msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:796
 msgid ""
-"parsing pyhoca-cli features was not possible! Using limited feature set now."
+"parsing pyhoca-cli functionality was not possible! Using a limited feature-"
+"set for now."
 msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:802
-msgid "Successfully retrieved following pyhoca-cli features:"
+msgid "Retrieved the following pyhoca-cli functionality:"
 msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:806
@@ -3311,13 +3317,8 @@ msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:1145
 #, c-format
-msgid "Protocol %s is unavailable because GtkSocket only works under X.org"
+msgid "The protocol %s is unavailable because GtkSocket only works under X.org"
 msgstr ""
-
-#: plugins/x2go/x2go_plugin.c:1189
-#, fuzzy
-msgid "User name"
-msgstr "उपयोगकर्ता नाम"
 
 #: plugins/x2go/x2go_plugin.c:1195
 #, fuzzy
@@ -3344,7 +3345,7 @@ msgid "Audio support"
 msgstr "जावा समर्थन चालू करें"
 
 #: plugins/x2go/x2go_plugin.c:1212
-msgid "X2Go server's sound system (default: 'pulse')."
+msgid "The X2Go server's sound system (default: 'pulse')."
 msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:1215
@@ -3353,8 +3354,7 @@ msgid "Clipboard direction"
 msgstr "टीसीपी पुनर्निर्देशन"
 
 #: plugins/x2go/x2go_plugin.c:1217
-msgid ""
-"In which direction should clipboard content be copied? (default: 'both')."
+msgid "Which direction should clipboard content be copied? (default: 'both')."
 msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:1221
@@ -4701,3 +4701,7 @@ msgstr "रेम्मीना अनलॉक करें"
 #, fuzzy
 msgid "Master password"
 msgstr "मास्टर पासवर्ड"
+
+#, fuzzy
+#~ msgid "User name"
+#~ msgstr "उपयोगकर्ता नाम"

@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-09-23 06:08+0000\n"
+"POT-Creation-Date: 2021-09-28 11:28+0000\n"
 "PO-Revision-Date: 2021-09-24 16:52+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -81,7 +81,7 @@ msgstr "Se connecter via SSH depuis un nouveau terminal"
 #: src/remmina_file_editor.c:1093 src/remmina_ssh_plugin.c:1473
 #: plugins/rdp/rdp_plugin.c:2666 plugins/vnc/vnc_plugin.c:1968
 #: plugins/vnc/vnc_plugin.c:1988 plugins/www/www_plugin.c:886
-#: data/ui/remmina_mpc.glade:144
+#: plugins/x2go/x2go_plugin.c:1189 data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr "Nom d’utilisateur"
 
@@ -2877,12 +2877,12 @@ msgstr "Stockage sécurisé des mots de passe dans le porte-clé GNOME"
 
 #: plugins/x2go/x2go_plugin.c:166
 #, fuzzy
-msgid "Broken DialogData! Aborting."
+msgid "Broken `DialogData`! Aborting…"
 msgstr "Données de dialogue cassées ! Abandon."
 
 #: plugins/x2go/x2go_plugin.c:170
 #, fuzzy
-msgid "Can't retrieve DialogData! Aborting."
+msgid "Can't retrieve `DialogData`! Aborting…"
 msgstr "Impossible de récupérer les DialogData ! Abandon."
 
 #: plugins/x2go/x2go_plugin.c:389
@@ -2900,9 +2900,9 @@ msgstr "Une erreur s’est produite."
 #: plugins/x2go/x2go_plugin.c:399
 #, fuzzy
 msgid ""
-"Necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
+"The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
 "Please check your profile settings and pyhoca-cli's output for possible "
-"errors and make sure that the remote server is reachable."
+"errors and ensure the remote server is reachable."
 msgstr ""
 "Le processus enfant nécessaire 'pyhoca-cli' s'est arrêté de manière "
 "inattendue.\n"
@@ -2934,8 +2934,8 @@ msgstr "Entrez les informations d'identification X2Go"
 #: plugins/x2go/x2go_plugin.c:556
 #, fuzzy
 msgid ""
-"User has requested to save credentials but 'password' is not set! Can't set "
-"a new default password then."
+"User requested storing credentials but 'password' is not set! Can't set a "
+"new default password then."
 msgstr ""
 "L'utilisateur a demandé à enregistrer ses informations d'identification mais "
 "le mot de passe n'est pas défini ! Il est donc impossible de définir un "
@@ -2943,25 +2943,31 @@ msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:666
 #, fuzzy
-msgid "DPI setting is out of bounds. Please adjust in profile settings!"
+msgid "DPI setting is out of bounds. Please adjust it in the profile settings."
 msgstr ""
 "Le paramètre DPI est hors limites. Veuillez l'ajuster dans les paramètres du "
 "profil !"
 
-#: plugins/x2go/x2go_plugin.c:705 plugins/x2go/x2go_plugin.c:714
+#: plugins/x2go/x2go_plugin.c:705
 #, fuzzy
-msgid "An error occured while starting a X2Go session."
+msgid "An error occured while starting an X2Go session…"
 msgstr "Une erreur s'est produite lors du démarrage d'une session X2Go."
+
+#: plugins/x2go/x2go_plugin.c:714
+#, fuzzy
+#| msgid "Could not start SSH session. %s"
+msgid "Could not start X2Go session."
+msgstr "Impossible d’établir la connexion SSH. %s"
 
 #: plugins/x2go/x2go_plugin.c:715
 #, fuzzy, c-format
-msgid "Failed to start pyhoca-cli (%i): '%s'"
+msgid "Could not start PyHoca-CLI (%i): '%s'"
 msgstr "Échec du démarrage de pyhoca-cli (%i) : '%s'."
 
 #: plugins/x2go/x2go_plugin.c:784
 #, fuzzy
 msgid ""
-"Couldn't get pyhoca-cli's cmdline-features. This indicates that either your "
+"Couldn't get pyhoca-cli's cmdline-features. This indicates either your "
 "pyhoca-cli version is too old or pyhoca-cli is not installed! An old limited "
 "set of features will be used now."
 msgstr ""
@@ -2973,14 +2979,15 @@ msgstr ""
 #: plugins/x2go/x2go_plugin.c:796
 #, fuzzy
 msgid ""
-"parsing pyhoca-cli features was not possible! Using limited feature set now."
+"parsing pyhoca-cli functionality was not possible! Using a limited feature-"
+"set for now."
 msgstr ""
 "L'analyse des caractéristiques de pyhoca-cli n'était pas possible ! "
 "Utilisation d'un ensemble limité de fonctionnalités maintenant."
 
 #: plugins/x2go/x2go_plugin.c:802
 #, fuzzy
-msgid "Successfully retrieved following pyhoca-cli features:"
+msgid "Retrieved the following pyhoca-cli functionality:"
 msgstr "On a réussi à récupérer les fonctionnalités suivantes de pyhoca-cli :"
 
 #: plugins/x2go/x2go_plugin.c:806
@@ -3002,16 +3009,10 @@ msgstr "Attendre que pyhoca-cli affiche la fenêtre de la session."
 #, fuzzy, c-format
 #| msgid ""
 #| "The protocol “%s” is unavailable because GtkSocket only works under X.Org."
-msgid "Protocol %s is unavailable because GtkSocket only works under X.org"
+msgid "The protocol %s is unavailable because GtkSocket only works under X.org"
 msgstr ""
 "Le protocole %s n'est pas disponible car GtkSocket ne fonctionne que sous X."
 "org."
-
-#: plugins/x2go/x2go_plugin.c:1189
-#, fuzzy
-#| msgid "Username"
-msgid "User name"
-msgstr "Nom d'utilisateur"
 
 #: plugins/x2go/x2go_plugin.c:1195
 #, fuzzy
@@ -3045,7 +3046,7 @@ msgstr "Support audio"
 
 #: plugins/x2go/x2go_plugin.c:1212
 #, fuzzy
-msgid "X2Go server's sound system (default: 'pulse')."
+msgid "The X2Go server's sound system (default: 'pulse')."
 msgstr "Système sonore du serveur X2Go (par défaut : 'pulse')."
 
 #: plugins/x2go/x2go_plugin.c:1215
@@ -3056,8 +3057,7 @@ msgstr "Direction du presse-papiers"
 
 #: plugins/x2go/x2go_plugin.c:1217
 #, fuzzy
-msgid ""
-"In which direction should clipboard content be copied? (default: 'both')."
+msgid "Which direction should clipboard content be copied? (default: 'both')."
 msgstr ""
 "Dans quelle direction le contenu du presse-papiers doit-il être copié ? (par "
 "défaut : 'both')."
@@ -4228,6 +4228,11 @@ msgstr "Déverrouiller Remmina"
 #: data/ui/remmina_unlock.glade:128
 msgid "Master password"
 msgstr "Mot de passe principal"
+
+#, fuzzy
+#~| msgid "Username"
+#~ msgid "User name"
+#~ msgstr "Nom d'utilisateur"
 
 #~ msgid "Could not run %s on SSH server."
 #~ msgstr "Impossible d’exécuter %s sur le serveur SSH."

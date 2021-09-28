@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Remmina v1.4.3\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-09-23 06:08+0000\n"
+"POT-Creation-Date: 2021-09-28 11:28+0000\n"
 "PO-Revision-Date: 2021-09-27 09:38+0000\n"
 "Last-Translator: phlostically <phlostically@mailinator.com>\n"
 "Language-Team: Esperanto <https://hosted.weblate.org/projects/remmina/"
@@ -70,7 +70,7 @@ msgstr "Konekti per SSH el nova terminalo"
 #: src/remmina_file_editor.c:1093 src/remmina_ssh_plugin.c:1473
 #: plugins/rdp/rdp_plugin.c:2666 plugins/vnc/vnc_plugin.c:1968
 #: plugins/vnc/vnc_plugin.c:1988 plugins/www/www_plugin.c:886
-#: data/ui/remmina_mpc.glade:144
+#: plugins/x2go/x2go_plugin.c:1189 data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr "Salutnomo"
 
@@ -2792,11 +2792,15 @@ msgid "Secured password storage in the GNOME keyring"
 msgstr "Sekura konservado de pasvortoj per GNOME-ŝlosilaro"
 
 #: plugins/x2go/x2go_plugin.c:166
-msgid "Broken DialogData! Aborting."
+#, fuzzy
+#| msgid "Broken DialogData! Aborting."
+msgid "Broken `DialogData`! Aborting…"
 msgstr "Nevalida DialogData! Kolapsante."
 
 #: plugins/x2go/x2go_plugin.c:170
-msgid "Can't retrieve DialogData! Aborting."
+#, fuzzy
+#| msgid "Can't retrieve DialogData! Aborting."
+msgid "Can't retrieve `DialogData`! Aborting…"
 msgstr "Ne eblas akiri DialogData! Kolapsante."
 
 #: plugins/x2go/x2go_plugin.c:389
@@ -2809,10 +2813,15 @@ msgid "An error occured."
 msgstr "Eraro okazis."
 
 #: plugins/x2go/x2go_plugin.c:399
+#, fuzzy
+#| msgid ""
+#| "Necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
+#| "Please check your profile settings and pyhoca-cli's output for possible "
+#| "errors and make sure that the remote server is reachable."
 msgid ""
-"Necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
+"The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
 "Please check your profile settings and pyhoca-cli's output for possible "
-"errors and make sure that the remote server is reachable."
+"errors and ensure the remote server is reachable."
 msgstr ""
 "Nepra ida procezo «pyhoca-cli» haltis neatendite.\n"
 "Bonvolu kontroli viajn profilajn agordojn kaj la eligaĵon de pyhoca-cli pri "
@@ -2836,29 +2845,49 @@ msgid "Enter X2Go credentials"
 msgstr "Entajpu akreditilojn de X2Go"
 
 #: plugins/x2go/x2go_plugin.c:556
+#, fuzzy
+#| msgid ""
+#| "User has requested to save credentials but 'password' is not set! Can't "
+#| "set a new default password then."
 msgid ""
-"User has requested to save credentials but 'password' is not set! Can't set "
-"a new default password then."
+"User requested storing credentials but 'password' is not set! Can't set a "
+"new default password then."
 msgstr ""
 "Uzanto petis konservi akreditilojn, sed pasvorto ne estas agordita! Tial ne "
 "eblas agordi novan implicitan pasvorton."
 
 #: plugins/x2go/x2go_plugin.c:666
-msgid "DPI setting is out of bounds. Please adjust in profile settings!"
+#, fuzzy
+#| msgid "DPI setting is out of bounds. Please adjust in profile settings!"
+msgid "DPI setting is out of bounds. Please adjust it in the profile settings."
 msgstr "Distingivo estas ekster limoj. Bonvolu agordi en la profilaj agordoj!"
 
-#: plugins/x2go/x2go_plugin.c:705 plugins/x2go/x2go_plugin.c:714
-msgid "An error occured while starting a X2Go session."
+#: plugins/x2go/x2go_plugin.c:705
+#, fuzzy
+#| msgid "An error occured while starting a X2Go session."
+msgid "An error occured while starting an X2Go session…"
 msgstr "Eraro okazis dum lanĉo de seanco X2Go."
 
+#: plugins/x2go/x2go_plugin.c:714
+#, fuzzy
+#| msgid "Could not start SSH session. %s"
+msgid "Could not start X2Go session."
+msgstr "Ne povis komenci SSH-seancon. %s"
+
 #: plugins/x2go/x2go_plugin.c:715
-#, c-format
-msgid "Failed to start pyhoca-cli (%i): '%s'"
+#, fuzzy, c-format
+#| msgid "Failed to start pyhoca-cli (%i): '%s'"
+msgid "Could not start PyHoca-CLI (%i): '%s'"
 msgstr "Malsukcesis lanĉi la programon pyhoca-cli (%i): «%s»"
 
 #: plugins/x2go/x2go_plugin.c:784
+#, fuzzy
+#| msgid ""
+#| "Couldn't get pyhoca-cli's cmdline-features. This indicates that either "
+#| "your pyhoca-cli version is too old or pyhoca-cli is not installed! An old "
+#| "limited set of features will be used now."
 msgid ""
-"Couldn't get pyhoca-cli's cmdline-features. This indicates that either your "
+"Couldn't get pyhoca-cli's cmdline-features. This indicates either your "
 "pyhoca-cli version is too old or pyhoca-cli is not installed! An old limited "
 "set of features will be used now."
 msgstr ""
@@ -2867,14 +2896,21 @@ msgstr ""
 "limigita aro de funkcioj ekuziĝos."
 
 #: plugins/x2go/x2go_plugin.c:796
+#, fuzzy
+#| msgid ""
+#| "parsing pyhoca-cli features was not possible! Using limited feature set "
+#| "now."
 msgid ""
-"parsing pyhoca-cli features was not possible! Using limited feature set now."
+"parsing pyhoca-cli functionality was not possible! Using a limited feature-"
+"set for now."
 msgstr ""
 "Ne eblis eltrovi funkciojn de pyhoca-cli! Nun uzante limigitan aron de "
 "funkcioj."
 
 #: plugins/x2go/x2go_plugin.c:802
-msgid "Successfully retrieved following pyhoca-cli features:"
+#, fuzzy
+#| msgid "Successfully retrieved following pyhoca-cli features:"
+msgid "Retrieved the following pyhoca-cli functionality:"
 msgstr "Sukcese akiriĝis la jenaj funkcioj de pyhoca-cli:"
 
 #: plugins/x2go/x2go_plugin.c:806
@@ -2891,14 +2927,11 @@ msgid "Waiting for pyhoca-cli to show the session's window."
 msgstr "Atendante la montron de la seanca fenestro per pyhoca-cli."
 
 #: plugins/x2go/x2go_plugin.c:1145
-#, c-format
-msgid "Protocol %s is unavailable because GtkSocket only works under X.org"
+#, fuzzy, c-format
+#| msgid "Protocol %s is unavailable because GtkSocket only works under X.org"
+msgid "The protocol %s is unavailable because GtkSocket only works under X.org"
 msgstr ""
 "La protokolo %s ne estas disponebla ĉar GtkSocket funkcias nur sub X.org"
-
-#: plugins/x2go/x2go_plugin.c:1189
-msgid "User name"
-msgstr "Salutnomo"
 
 #: plugins/x2go/x2go_plugin.c:1195
 msgid "Startup program"
@@ -2921,7 +2954,9 @@ msgid "Audio support"
 msgstr "Subteno de sono"
 
 #: plugins/x2go/x2go_plugin.c:1212
-msgid "X2Go server's sound system (default: 'pulse')."
+#, fuzzy
+#| msgid "X2Go server's sound system (default: 'pulse')."
+msgid "The X2Go server's sound system (default: 'pulse')."
 msgstr "La sonsistemo de la servilo X2Go (implicite: «pulse»)."
 
 #: plugins/x2go/x2go_plugin.c:1215
@@ -2929,8 +2964,10 @@ msgid "Clipboard direction"
 msgstr "Tonduja direkto"
 
 #: plugins/x2go/x2go_plugin.c:1217
-msgid ""
-"In which direction should clipboard content be copied? (default: 'both')."
+#, fuzzy
+#| msgid ""
+#| "In which direction should clipboard content be copied? (default: 'both')."
+msgid "Which direction should clipboard content be copied? (default: 'both')."
 msgstr ""
 "Kiudirekten kopii la enhavon de la tondujo? (implicite: "
 "«both» (ambaŭdirekte))."
@@ -4065,6 +4102,9 @@ msgstr "Malŝlosu Remmina"
 #: data/ui/remmina_unlock.glade:128
 msgid "Master password"
 msgstr "Ĉefpasvorto"
+
+#~ msgid "User name"
+#~ msgstr "Salutnomo"
 
 #~ msgid "Could not run %s on SSH server."
 #~ msgstr "Ne povis ruli la komandon %s ĉe la SSH-servilo."

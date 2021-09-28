@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-09-23 06:08+0000\n"
+"POT-Creation-Date: 2021-09-28 11:28+0000\n"
 "PO-Revision-Date: 2021-09-25 00:03+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -74,7 +74,7 @@ msgstr "새 터미널에서 SSH로 연결하기"
 #: src/remmina_file_editor.c:1093 src/remmina_ssh_plugin.c:1473
 #: plugins/rdp/rdp_plugin.c:2666 plugins/vnc/vnc_plugin.c:1968
 #: plugins/vnc/vnc_plugin.c:1988 plugins/www/www_plugin.c:886
-#: data/ui/remmina_mpc.glade:144
+#: plugins/x2go/x2go_plugin.c:1189 data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr "사용자명"
 
@@ -2801,12 +2801,12 @@ msgstr "그놈(GNOME) 키링에 안전한 비밀번호 저장"
 
 #: plugins/x2go/x2go_plugin.c:166
 #, fuzzy
-msgid "Broken DialogData! Aborting."
+msgid "Broken `DialogData`! Aborting…"
 msgstr "깨진 대화 데이터! 중단."
 
 #: plugins/x2go/x2go_plugin.c:170
 #, fuzzy
-msgid "Can't retrieve DialogData! Aborting."
+msgid "Can't retrieve `DialogData`! Aborting…"
 msgstr "대화 데이터를 검색 할 수 없습니다! 중단."
 
 #: plugins/x2go/x2go_plugin.c:389
@@ -2822,9 +2822,9 @@ msgstr "오류가 발생했습니다."
 #: plugins/x2go/x2go_plugin.c:399
 #, fuzzy
 msgid ""
-"Necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
+"The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
 "Please check your profile settings and pyhoca-cli's output for possible "
-"errors and make sure that the remote server is reachable."
+"errors and ensure the remote server is reachable."
 msgstr ""
 "필요한 아동 과정 '피호카-클리'는 예기치 않게 멈췄다.\n"
 "프로필 설정 및 피호카-클리의 출력을 확인하여 가능한 오류에 대해 확인하고 원"
@@ -2854,31 +2854,37 @@ msgstr "X2Go 자격 증명 입력"
 #: plugins/x2go/x2go_plugin.c:556
 #, fuzzy
 msgid ""
-"User has requested to save credentials but 'password' is not set! Can't set "
-"a new default password then."
+"User requested storing credentials but 'password' is not set! Can't set a "
+"new default password then."
 msgstr ""
 "사용자는 자격 증명을 저장하도록 요청했지만 '암호'가 설정되지 않았습니다! 그"
 "런 다음 새 기본 암호를 설정할 수 없습니다."
 
 #: plugins/x2go/x2go_plugin.c:666
 #, fuzzy
-msgid "DPI setting is out of bounds. Please adjust in profile settings!"
+msgid "DPI setting is out of bounds. Please adjust it in the profile settings."
 msgstr "DPI 설정은 범위를 벗어났습니다. 프로필 설정에서 조정하십시오!"
 
-#: plugins/x2go/x2go_plugin.c:705 plugins/x2go/x2go_plugin.c:714
+#: plugins/x2go/x2go_plugin.c:705
 #, fuzzy
-msgid "An error occured while starting a X2Go session."
+msgid "An error occured while starting an X2Go session…"
 msgstr "X2Go 세션을 시작하는 동안 오류가 발생했습니다."
+
+#: plugins/x2go/x2go_plugin.c:714
+#, fuzzy
+#| msgid "Could not start SSH session. %s"
+msgid "Could not start X2Go session."
+msgstr "SSH 세션을 시작하지 못 했습니다. %s"
 
 #: plugins/x2go/x2go_plugin.c:715
 #, fuzzy, c-format
-msgid "Failed to start pyhoca-cli (%i): '%s'"
+msgid "Could not start PyHoca-CLI (%i): '%s'"
 msgstr "피호카 클리 (%i를 시작하지 못했습니다: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:784
 #, fuzzy
 msgid ""
-"Couldn't get pyhoca-cli's cmdline-features. This indicates that either your "
+"Couldn't get pyhoca-cli's cmdline-features. This indicates either your "
 "pyhoca-cli version is too old or pyhoca-cli is not installed! An old limited "
 "set of features will be used now."
 msgstr ""
@@ -2889,13 +2895,14 @@ msgstr ""
 #: plugins/x2go/x2go_plugin.c:796
 #, fuzzy
 msgid ""
-"parsing pyhoca-cli features was not possible! Using limited feature set now."
+"parsing pyhoca-cli functionality was not possible! Using a limited feature-"
+"set for now."
 msgstr ""
 "파싱 피호카-클리 기능은 불가능했습니다! 지금 제한된 피쳐 세트를 사용하십시오."
 
 #: plugins/x2go/x2go_plugin.c:802
 #, fuzzy
-msgid "Successfully retrieved following pyhoca-cli features:"
+msgid "Retrieved the following pyhoca-cli functionality:"
 msgstr "피호카-클라이 기능을 따라 성공적으로 검색:"
 
 #: plugins/x2go/x2go_plugin.c:806
@@ -2917,15 +2924,9 @@ msgstr "파일호카-클리가 세션의 창을 보여주기를 기다리고 있
 #, fuzzy, c-format
 #| msgid ""
 #| "The protocol “%s” is unavailable because GtkSocket only works under X.Org."
-msgid "Protocol %s is unavailable because GtkSocket only works under X.org"
+msgid "The protocol %s is unavailable because GtkSocket only works under X.org"
 msgstr ""
 "GtkSocket은 X.org 하에서만 작동하기 때문에 프로토콜 %s을 사용할 수 없습니다."
-
-#: plugins/x2go/x2go_plugin.c:1189
-#, fuzzy
-#| msgid "Username"
-msgid "User name"
-msgstr "사용자 이름"
 
 #: plugins/x2go/x2go_plugin.c:1195
 #, fuzzy
@@ -2958,7 +2959,7 @@ msgstr "오디오 지원"
 
 #: plugins/x2go/x2go_plugin.c:1212
 #, fuzzy
-msgid "X2Go server's sound system (default: 'pulse')."
+msgid "The X2Go server's sound system (default: 'pulse')."
 msgstr "X2Go 서버의 사운드 시스템(기본값: '펄스')."
 
 #: plugins/x2go/x2go_plugin.c:1215
@@ -2969,8 +2970,7 @@ msgstr "클립보드 방향"
 
 #: plugins/x2go/x2go_plugin.c:1217
 #, fuzzy
-msgid ""
-"In which direction should clipboard content be copied? (default: 'both')."
+msgid "Which direction should clipboard content be copied? (default: 'both')."
 msgstr ""
 "클립보드 콘텐츠를 복사해야 하는 방향은 어느 방향으로? (기본값: '둘 다')."
 
@@ -4099,6 +4099,11 @@ msgstr "레미나 잠금 해제"
 #: data/ui/remmina_unlock.glade:128
 msgid "Master password"
 msgstr "마스터 비밀번호"
+
+#, fuzzy
+#~| msgid "Username"
+#~ msgid "User name"
+#~ msgstr "사용자 이름"
 
 #~ msgid "Could not run %s on SSH server."
 #~ msgstr "SSH 서버에서 %s 을(를) 실행할 수 없습니다."

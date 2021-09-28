@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-09-23 06:08+0000\n"
+"POT-Creation-Date: 2021-09-28 11:28+0000\n"
 "PO-Revision-Date: 2021-09-27 09:38+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
@@ -73,7 +73,7 @@ msgstr "從新的終端機以 SSH 連接"
 #: src/remmina_file_editor.c:1093 src/remmina_ssh_plugin.c:1473
 #: plugins/rdp/rdp_plugin.c:2666 plugins/vnc/vnc_plugin.c:1968
 #: plugins/vnc/vnc_plugin.c:1988 plugins/www/www_plugin.c:886
-#: data/ui/remmina_mpc.glade:144
+#: plugins/x2go/x2go_plugin.c:1189 data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr "使用者名稱"
 
@@ -2917,12 +2917,12 @@ msgstr "儲存在 GNOME 鑰匙圈的安全密碼"
 
 #: plugins/x2go/x2go_plugin.c:166
 #, fuzzy
-msgid "Broken DialogData! Aborting."
+msgid "Broken `DialogData`! Aborting…"
 msgstr "破碎的DialogData!终止了。"
 
 #: plugins/x2go/x2go_plugin.c:170
 #, fuzzy
-msgid "Can't retrieve DialogData! Aborting."
+msgid "Can't retrieve `DialogData`! Aborting…"
 msgstr "无法检索到DialogData!终止了。"
 
 #: plugins/x2go/x2go_plugin.c:389
@@ -2938,9 +2938,9 @@ msgstr "发生了一个错误。"
 #: plugins/x2go/x2go_plugin.c:399
 #, fuzzy
 msgid ""
-"Necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
+"The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
 "Please check your profile settings and pyhoca-cli's output for possible "
-"errors and make sure that the remote server is reachable."
+"errors and ensure the remote server is reachable."
 msgstr ""
 "必要的子进程'pyhoca-cli'意外停止。\n"
 "请检查你的配置文件设置和 pyhoca-cli 的输出是否有错误，并确保远程服务器是可以"
@@ -2967,29 +2967,35 @@ msgstr "输入X2Go凭证"
 #: plugins/x2go/x2go_plugin.c:556
 #, fuzzy
 msgid ""
-"User has requested to save credentials but 'password' is not set! Can't set "
-"a new default password then."
+"User requested storing credentials but 'password' is not set! Can't set a "
+"new default password then."
 msgstr "用户要求保存凭证，但'密码'没有设置!那就不能设置新的默认密码。"
 
 #: plugins/x2go/x2go_plugin.c:666
 #, fuzzy
-msgid "DPI setting is out of bounds. Please adjust in profile settings!"
+msgid "DPI setting is out of bounds. Please adjust it in the profile settings."
 msgstr "DPI设置超出了范围。请在配置文件设置中调整!"
 
-#: plugins/x2go/x2go_plugin.c:705 plugins/x2go/x2go_plugin.c:714
+#: plugins/x2go/x2go_plugin.c:705
 #, fuzzy
-msgid "An error occured while starting a X2Go session."
+msgid "An error occured while starting an X2Go session…"
 msgstr "在启动X2Go会话时发生了一个错误。"
+
+#: plugins/x2go/x2go_plugin.c:714
+#, fuzzy
+#| msgid "Could not start SSH session. %s"
+msgid "Could not start X2Go session."
+msgstr "未能啟動 SSH 作業階段：%s"
 
 #: plugins/x2go/x2go_plugin.c:715
 #, fuzzy, c-format
-msgid "Failed to start pyhoca-cli (%i): '%s'"
+msgid "Could not start PyHoca-CLI (%i): '%s'"
 msgstr "启动 pyhoca-cli（%i）失败：'%s'"
 
 #: plugins/x2go/x2go_plugin.c:784
 #, fuzzy
 msgid ""
-"Couldn't get pyhoca-cli's cmdline-features. This indicates that either your "
+"Couldn't get pyhoca-cli's cmdline-features. This indicates either your "
 "pyhoca-cli version is too old or pyhoca-cli is not installed! An old limited "
 "set of features will be used now."
 msgstr ""
@@ -2999,12 +3005,13 @@ msgstr ""
 #: plugins/x2go/x2go_plugin.c:796
 #, fuzzy
 msgid ""
-"parsing pyhoca-cli features was not possible! Using limited feature set now."
+"parsing pyhoca-cli functionality was not possible! Using a limited feature-"
+"set for now."
 msgstr "解析pyhoca-cli的功能是不可能的!现在使用有限的功能集。"
 
 #: plugins/x2go/x2go_plugin.c:802
 #, fuzzy
-msgid "Successfully retrieved following pyhoca-cli features:"
+msgid "Retrieved the following pyhoca-cli functionality:"
 msgstr "成功检索到以下pyhoca-cli特征。"
 
 #: plugins/x2go/x2go_plugin.c:806
@@ -3026,14 +3033,8 @@ msgstr "等待 pyhoca-cli 显示会话的窗口。"
 #, fuzzy, c-format
 #| msgid ""
 #| "The protocol “%s” is unavailable because GtkSocket only works under X.Org."
-msgid "Protocol %s is unavailable because GtkSocket only works under X.org"
+msgid "The protocol %s is unavailable because GtkSocket only works under X.org"
 msgstr "协议%s不可用，因为GtkSocket只在X.org下工作。"
-
-#: plugins/x2go/x2go_plugin.c:1189
-#, fuzzy
-#| msgid "Username"
-msgid "User name"
-msgstr "User name"
 
 #: plugins/x2go/x2go_plugin.c:1195
 #, fuzzy
@@ -3066,7 +3067,7 @@ msgstr "音频支持"
 
 #: plugins/x2go/x2go_plugin.c:1212
 #, fuzzy
-msgid "X2Go server's sound system (default: 'pulse')."
+msgid "The X2Go server's sound system (default: 'pulse')."
 msgstr "X2Go服务器的声音系统（默认：'脉冲'）。"
 
 #: plugins/x2go/x2go_plugin.c:1215
@@ -3077,8 +3078,7 @@ msgstr "剪贴板方向"
 
 #: plugins/x2go/x2go_plugin.c:1217
 #, fuzzy
-msgid ""
-"In which direction should clipboard content be copied? (default: 'both')."
+msgid "Which direction should clipboard content be copied? (default: 'both')."
 msgstr "剪贴板内容应该向哪个方向复制？(默认：'两个')。"
 
 #: plugins/x2go/x2go_plugin.c:1221
@@ -4280,6 +4280,11 @@ msgstr "解鎖 Remmina"
 #: data/ui/remmina_unlock.glade:128
 msgid "Master password"
 msgstr "主密碼"
+
+#, fuzzy
+#~| msgid "Username"
+#~ msgid "User name"
+#~ msgstr "User name"
 
 #~ msgid "Could not run %s on SSH server."
 #~ msgstr "未能在 SSH 伺服器執行 %s."
