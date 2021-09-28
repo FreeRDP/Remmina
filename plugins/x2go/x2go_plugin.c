@@ -561,33 +561,22 @@ static gchar* remmina_plugin_x2go_get_pyhoca_features() {
 	return standard_out;
 }
 
-static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
-                                              gint sshport,
-                                              gchar *username,
-                                              gchar *password,
-                                              gchar *command,
-                                              gchar *kbdlayout,
-                                              gchar *kbdtype,
-                                              gchar *audio,
-                                              gchar *clipboard,
-                                              gint dpi,
-                                              gchar *resolution,
-                                              RemminaProtocolWidget *gp,
-                                              gchar *errmsg) {
-	TRACE_CALL(__func__);
-	RemminaPluginX2GoData *gpdata = GET_PLUGIN_DATA(gp);
-	GError *error = NULL;
+/**
+ * @brief Asks the user for a username and password.
+ *
+ * @param errmsg Error message if function failed.
+ * @param username Default username. Gets set to new username on success.
+ * @param password Default password. Gets set to new password on success.
+ *
+ * @returns FALSE if auth failed and TRUE on success.
+ */
+static gboolean remmina_plugin_x2go_get_auth(RemminaProtocolWidget *gp, gchar* errmsg,
+											 gchar* username, gchar* password) {
 	gchar *s_username, *s_password;
 	gint ret;
 	gboolean save;
 	gboolean password_storing_disabled;
 	RemminaFile *remminafile;
-
-	gchar **envp;
-
-	gchar *argv[50];
-	gint argc = 0;
-	gint i = 0;
 
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
@@ -621,19 +610,24 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
 
 			if (s_password && s_username) {
 				if (strcmp(s_username, "") == 0) {
-					REMMINA_PLUGIN_WARNING("%s", _("The user has requested to save a new "
-											   "username but it couldn't get saved since "
-											   "the given username is empty!"));
+					g_strlcpy(errmsg, _("Given username can't get saved since "
+										"it's empty!"), 512);
+					//REMMINA_PLUGIN_CRITICAL("%s", errmsg);
+					return FALSE;
 				}
 
 				// We allow the possibility to set an empty password because a X2Go
 				// session can be still made using keyfiles or similar.
 				remmina_plugin_service->file_set_string(remminafile, "password",
 														s_password);
+				remmina_plugin_service->file_set_string(remminafile, "username",
+														s_username);
 			} else {
-				REMMINA_PLUGIN_CRITICAL("%s", _("An error occured while trying to save "
-												"new credentials: 's_password' or "
-												"'s_username' strings were not set."));
+				g_strlcpy(errmsg, _("An error occured while trying to save "
+									"new credentials: 's_password' or "
+									"'s_username' strings were not set."), 512);
+				//REMMINA_PLUGIN_CRITICAL("%s", errmsg);
+				return FALSE;
 			}
 		}
 		if (s_username) {
@@ -647,6 +641,32 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
 	} else  {
 		g_strlcpy(errmsg, "Authentication cancelled. Aborting…", 512);
 		REMMINA_PLUGIN_DEBUG("%s", errmsg);
+		return FALSE;
+	}
+
+	return TRUE;
+}
+
+static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
+                                              gint sshport,
+                                              gchar *username,
+                                              gchar *password,
+                                              gchar *command,
+                                              gchar *kbdlayout,
+                                              gchar *kbdtype,
+                                              gchar *audio,
+                                              gchar *clipboard,
+                                              gint dpi,
+                                              gchar *resolution,
+                                              RemminaProtocolWidget *gp,
+                                              gchar *errmsg) {
+	TRACE_CALL(__func__);
+	RemminaPluginX2GoData *gpdata = GET_PLUGIN_DATA(gp);
+
+	gchar *argv[50];
+	gint argc = 0;
+
+	if(!remmina_plugin_x2go_get_auth(gp, errmsg, username, password)) {
 		return FALSE;
 	}
 
@@ -752,8 +772,9 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
 	}
 
 	argv[argc++] = NULL;
-
-	envp = g_get_environ();
+	
+	GError *error = NULL;
+	gchar **envp = g_get_environ();
 	gboolean success = g_spawn_async_with_pipes (NULL, argv, envp,
 												 G_SPAWN_DO_NOT_REAP_CHILD |
 												 G_SPAWN_SEARCH_PATH, NULL,
@@ -762,7 +783,7 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
 
 	REMMINA_PLUGIN_DEBUG("Started pyhoca-cli with following arguments:");
 	// Print every argument except passwords. Free all arg strings.
-	for (i = 0; i < argc - 1; i++) {
+	for (gint i = 0; i < argc - 1; i++) {
 		if (strcmp(argv[i], "--password") == 0) {
 			g_printf("%s ", argv[i]);
 			g_printf("XXXXXX ");
