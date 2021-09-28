@@ -427,13 +427,13 @@ static void remmina_plugin_x2go_remove_window_id (Window window_id) {
 	pthread_mutex_unlock (&remmina_x2go_init_mutex);
 }
 
-static void remmina_plugin_x2go_cleanup(RemminaProtocolWidget *gp) {
+static gboolean remmina_plugin_x2go_cleanup(RemminaProtocolWidget *gp) {
 	REMMINA_PLUGIN_DEBUG("Function entry.");
 
 	RemminaPluginX2GoData *gpdata = GET_PLUGIN_DATA(gp);
 	if (gpdata == NULL) {
 		REMMINA_PLUGIN_DEBUG("gpdata was already null. Exiting…");
-		return;
+		return FALSE;
 	}
 
 	if (gpdata->thread) {
@@ -460,6 +460,8 @@ static void remmina_plugin_x2go_cleanup(RemminaProtocolWidget *gp) {
 
 	g_object_steal_data(G_OBJECT(gp), "plugin-data");
 	remmina_plugin_service->protocol_plugin_signal_connection_closed(gp);
+
+	return FALSE;
 }
 
 static gboolean remmina_plugin_x2go_close_connection(RemminaProtocolWidget *gp) {
