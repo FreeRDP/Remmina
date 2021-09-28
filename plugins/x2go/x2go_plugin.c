@@ -172,14 +172,10 @@ static gchar** remmina_plugin_x2go_split_string(gchar* data,
 		pch = strchr(pch + 1, delim);
 	}
 
-	if (delim_occurence <= 0) {
-		return NULL;
-	}
-
 	gchar **returning_string_list = NULL;
 	// We are just storing gchar pointers not actual gchars.
 	returning_string_list = malloc(sizeof(gchar*) * (delim_occurence + 1));
-	if (returning_string_list) {
+	if (!returning_string_list) {
 		REMMINA_PLUGIN_CRITICAL("malloc failed to reserve memory!");
 		return NULL;
 	}
