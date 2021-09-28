@@ -1301,25 +1301,32 @@ static GError* remmina_plugin_x2go_string_setting_validator(gchar* key,
 		}
 
 		if (elements_amount > 2) {
-			/* TRANSLATORS: once %s is finished building it will look like this:
-			 * "'value1', 'value2', 'value3', 'valueN-1' and 'valueN'"
-			 * Presumably you just want to translate 'and' into your language.
-			 */
 			if (i == elements_amount - 1) {
+				// TRANSLATORS: Presumably you just want to translate 'and'
+				// into your language. (Except your listing-grammar differs from english.)
+				// 'value1', 'value2', 'valueN-1' and 'valueN'
 				data_str = g_strdup_printf(_("%sand '%s'"), data_str, element);
 			} else if (i == elements_amount - 2) {
+				// TRANSLATORS: Presumably you just want to leave it english.
+				// (Except your listing-grammar differs from english.)
+				// 'value1', 'value2', 'valueN-1' and 'valueN'
 				data_str = g_strdup_printf(_("%s'%s' "), data_str, element);
 			} else {
+				// TRANSLATORS: Presumably you just want to leave it english.
+				// (Except your listing-grammar differs from english.)
+				// 'value1', 'value2', 'valueN-1' and 'valueN'
 				data_str = g_strdup_printf(_("%s'%s', "), data_str, element);
 			}
 		} else if (elements_amount == 2) {
-			/* TRANSLATORS: once %s is finished building it will look like this:
-			 * "'value1' and 'value2'"
-			 * Presumably you just want to translate 'and' into your language.
-			 */
 			if (i == elements_amount - 1) {
+				// TRANSLATORS: Presumably you just want to translate 'and'
+				// into your language. (Except your listing-grammar differs from english.)
+				// 'value1' and 'value2'
 				data_str = g_strdup_printf(_("%sand '%s'"), data_str, element);
 			} else {
+				// TRANSLATORS: Presumably you just want to leave it english.
+				// (Except your listing-grammar differs from english.)
+				// 'value1' and 'value2'
 				data_str = g_strdup_printf(_("%s'%s' "), data_str, element);
 			}
 		} else {
@@ -1401,11 +1408,12 @@ static GError* remmina_plugin_x2go_int_setting_validator(gchar* key,
 	gint int_value;
 	err = str2int(&int_value, value, 10);
 	if (err == STR2INT_INCONVERTIBLE) {
+		// Can't happen in theory since non-numerical characters are can't
+		// be entered but, let's be safe.
 		g_set_error(&error, 1, 1, _("Input is not a valid integer!"));
-	} else if (err == STR2INT_OVERFLOW) {
-		g_set_error(&error, 1, 1, _("Input is too large!"));
-	} else if (err == STR2INT_UNDERFLOW) {
-		g_set_error(&error, 1, 1, _("Input is too small!"));
+	} else if (err == STR2INT_OVERFLOW || err == STR2INT_UNDERFLOW) {
+		g_set_error(&error, 1, 1, _("Input must be a number between %i and %i."),
+					minimum, maximum);
 	} else if (err == STR2INT_INVALID_DATA) {
 		g_set_error(&error, 1, 1, _("Something went wrong."));
 	}
