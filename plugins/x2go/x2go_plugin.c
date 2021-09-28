@@ -122,12 +122,12 @@ static gint remmina_plugin_x2go_safe_strcmp(gconstpointer a, gconstpointer b) {
  * @message: Message of the Dialog
  * @callbackfunc: A GCallback function like
  * 				  callback(RemminaProtocolWidget *gp, GtkWidget *dialog)
- * 				  which will be executed on the dialogs 'response' signal.
+ * 				  which will be executed on the Dialog's 'response' signal.
  *				  The callback function is not obliged to destroy
  *				  the dialog widget.
  *
- * The `DialogData` structure contains all information needed
- * to open a gtk dialog with remmina_plugin_x2go_open_dialog()
+ * The `DialogData` structure contains all info needed
+ * to open a GTK dialog with remmina_plugin_x2go_open_dialog()
  *
  * Quick example of a callback function.
  * static void remmina_plugin_x2go_test_callback(RemminaProtocolWidget *gp,
@@ -163,15 +163,15 @@ static void remmina_plugin_x2go_open_dialog(RemminaProtocolWidget *gp) {
 		// Can't check type, flags or buttons
 		// because they are enums and '0' is a valid value
 		if (!ddata->title || !ddata->message) {
-			REMMINA_PLUGIN_CRITICAL("%s", _("Broken DialogData! Aborting."));
+			REMMINA_PLUGIN_CRITICAL("%s", _("Broken `DialogData`! Aborting…"));
 			return;
 		}
 	} else {
-		REMMINA_PLUGIN_CRITICAL("%s", _("Can't retrieve DialogData! Aborting."));
+		REMMINA_PLUGIN_CRITICAL("%s", _("Can't retrieve `DialogData`! Aborting…"));
 		return;
 	}
 
-	REMMINA_PLUGIN_DEBUG("DialogData checks passed. Dialog will now be shown.");
+	REMMINA_PLUGIN_DEBUG("`DialogData` checks passed. Will now show `Dialog`.");
 
 	GtkWidget *widget_gtk_dialog;
 	widget_gtk_dialog = gtk_message_dialog_new(ddata->parent,
@@ -222,7 +222,7 @@ typedef struct _RemminaPluginX2GoData {
 static RemminaProtocolPlugin remmina_plugin_x2go;
 
 /* When more than one NX sessions is connecting in progress, we need this mutex and array
- * to prevent them from stealing the same window id.
+ * to prevent them from stealing the same window ID.
  */
 static pthread_mutex_t remmina_x2go_init_mutex;
 static GArray *remmina_x2go_window_id_array;
@@ -305,7 +305,7 @@ static void remmina_plugin_x2go_remove_window_id (Window window_id) {
 		if (g_array_index (remmina_x2go_window_id_array, Window, i) == window_id)
 		{
 			already_seen = TRUE;
-			REMMINA_PLUGIN_DEBUG("X2Go Agent window with ID [0x%lx] already seen.",
+			REMMINA_PLUGIN_DEBUG("Window for X2Go Agent with ID [0x%lx] already seen.",
 								 window_id);
 			break;
 		}
@@ -313,7 +313,7 @@ static void remmina_plugin_x2go_remove_window_id (Window window_id) {
 	if (already_seen)
 	{
 		g_array_remove_index_fast (remmina_x2go_window_id_array, i);
-		REMMINA_PLUGIN_DEBUG("forgetting about X2Go Agent window with ID [0x%lx]",
+		REMMINA_PLUGIN_DEBUG("forgetting about window for X2Go Agent with ID [0x%lx]",
 							 window_id);
 	}
 	pthread_mutex_unlock (&remmina_x2go_init_mutex);
@@ -324,7 +324,7 @@ static void remmina_plugin_x2go_cleanup(RemminaProtocolWidget *gp) {
 
 	RemminaPluginX2GoData *gpdata = GET_PLUGIN_DATA(gp);
 	if (gpdata == NULL) {
-		REMMINA_PLUGIN_DEBUG("gpdata was already null. Exiting.");
+		REMMINA_PLUGIN_DEBUG("gpdata was already null. Exiting…");
 		return;
 	}
 
@@ -361,7 +361,7 @@ static gboolean remmina_plugin_x2go_close_connection(RemminaProtocolWidget *gp) 
 	REMMINA_PLUGIN_DEBUG("function entry.");
 
 	if (gpdata->disconnected) {
-		REMMINA_PLUGIN_DEBUG("plugin disconnected already. No need for a second time.");
+		REMMINA_PLUGIN_DEBUG("plugin already disconnected. No need to do it again.");
 		return FALSE;
 	}
 
@@ -396,14 +396,14 @@ static void remmina_plugin_x2go_pyhoca_cli_exited(GPid pid,
 	ddata->type = GTK_MESSAGE_ERROR;
 	ddata->buttons = GTK_BUTTONS_OK;
 	ddata->title = N_("An error occured.");
-	ddata->message = N_("Necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
+	ddata->message = N_("The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
 						"Please check your profile settings and pyhoca-cli's output for "
-						"possible errors and make sure that the remote server is "
+						"possible errors and ensure the remote server is "
 						"reachable.");
-	ddata->callbackfunc = NULL; // Dialog frees itself, no need for an callbackfunc.
+	ddata->callbackfunc = NULL; // `Dialog` frees itself, no need for an callbackfunc.
 	IDLE_ADD((GSourceFunc) remmina_plugin_x2go_open_dialog, gp);
 
-	// 1 Second. Give Dialog chance to open.
+	// 1 Second. Give `Dialog` chance to open.
 	usleep(1000 * 1000);
 
 	remmina_plugin_x2go_close_connection(gp);
@@ -553,7 +553,7 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
 														"password",
 														s_password);
 			} else {
-				REMMINA_PLUGIN_WARNING("%s", _("User has requested to save credentials "
+				REMMINA_PLUGIN_WARNING("%s", _("User requested storing credentials "
 											   "but 'password' is not set! Can't set "
 											   "a new default password then."));
 			}
@@ -567,7 +567,7 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
 			g_free(s_password);
 		}
 	} else  {
-		g_strlcpy(errmsg, "Authentication cancelled. Aborting.", 512);
+		g_strlcpy(errmsg, "Authentication cancelled. Aborting…", 512);
 		REMMINA_PLUGIN_DEBUG("%s", errmsg);
 		return FALSE;
 	}
@@ -664,7 +664,7 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
 		// Values are extracted from pyhoca-cli.
 		if (dpi < 20 || dpi > 400) {
 			g_strlcpy(errmsg, N_("DPI setting is out of bounds. "
-							     "Please adjust in profile settings!"), 512);
+							     "Please adjust it in the profile settings."), 512);
 			// No need, start_session() will handle output.
 			//REMMINA_PLUGIN_CRITICAL("%s", errmsg);
 			return FALSE;
@@ -703,7 +703,7 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
 			error = g_error_new(0, 0, "<error not available>");
 
 		gchar *error_title = N_("An error occured while "
-						        "starting a X2Go session.");
+						        "starting an X2Go session…");
 
 		DialogData *ddata = g_new0(DialogData, 1);
 		SET_DIALOG_DATA(gp, ddata);
@@ -711,8 +711,8 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
 		ddata->flags = GTK_DIALOG_MODAL;
 		ddata->type = GTK_MESSAGE_ERROR;
 		ddata->buttons = GTK_BUTTONS_OK;
-		ddata->title = N_("An error occured while starting a X2Go session.");
-		ddata->message = g_strdup_printf(N_("Failed to start pyhoca-cli (%i): '%s'"),
+		ddata->title = N_("Could not start X2Go session.");
+		ddata->message = g_strdup_printf(N_("Could not start PyHoca-CLI (%i): '%s'"),
 										 error->code,
 										 error->message);
 		ddata->callbackfunc = NULL; // Dialog frees itself, no need for an callbackfunc.
@@ -730,10 +730,10 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
 	// Prevent a race condition where pyhoca-cli is not
 	// started yet (pidx2go == 0) but a watcher is added.
 	while (gpdata->pidx2go == 0) {
-		REMMINA_PLUGIN_DEBUG("Waiting for pyhoca-cli to start...");
+		REMMINA_PLUGIN_DEBUG("Awaiting pyhoca-cli start…");
 	};
 
-	REMMINA_PLUGIN_DEBUG("Watching child pyhoca-cli process now.");
+	REMMINA_PLUGIN_DEBUG("Watching child pyhoca-cli process now…");
 	g_child_watch_add(gpdata->pidx2go,
 					  (GChildWatchFunc) remmina_plugin_x2go_pyhoca_cli_exited,
 					  gp);
@@ -782,7 +782,7 @@ static GList* remmina_plugin_x2go_populate_available_features_list() {
 		// of an old limited set of features.
 
 		REMMINA_PLUGIN_WARNING("%s", _("Couldn't get pyhoca-cli's cmdline-features. This "
-							   "indicates that either your pyhoca-cli version is too old "
+							   "indicates either your pyhoca-cli version is too old "
 							   "or pyhoca-cli is not installed! An old limited set of "
 							   "features will be used now."));
 
@@ -793,14 +793,14 @@ static GList* remmina_plugin_x2go_populate_available_features_list() {
 		features = remmina_plugin_x2go_parse_pyhoca_features(features_string,
 															 &features_size);
 		if (features == NULL && features_size > 0) {
-			gchar *error_msg = _("parsing pyhoca-cli features was not possible! "
-							      "Using limited feature set now.");
+			gchar *error_msg = _("parsing pyhoca-cli functionality was not possible! "
+							      "Using a limited feature-set for now.");
 			REMMINA_PLUGIN_CRITICAL("%s", error_msg);
 			return remmina_plugin_x2go_old_pyhoca_features();
 		}
 
-		REMMINA_PLUGIN_INFO("%s", _("Successfully retrieved "
-									"following pyhoca-cli features:"));
+		REMMINA_PLUGIN_INFO("%s", _("Retrieved the "
+									"following pyhoca-cli functionality:"));
 
 		for(int k = 0; k < features_size; k++) {
 			REMMINA_PLUGIN_INFO("%s", g_strdup_printf(_("Available feature[%i]: '%s'"),
@@ -878,14 +878,14 @@ static gboolean remmina_plugin_x2go_try_window_id(Window window_id) {
 	for (i = 0; i < remmina_x2go_window_id_array->len; i++) {
 		if (g_array_index(remmina_x2go_window_id_array, Window, i) == window_id) {
 			already_seen = TRUE;
-			REMMINA_PLUGIN_DEBUG("X2Go Agent window with ID [0x%lx] already seen.",
+			REMMINA_PLUGIN_DEBUG("X2Go window for Agent with ID [0x%lx] already seen.",
 								 window_id);
 			break;
 		}
 	}
 	if (!already_seen) {
 		g_array_append_val(remmina_x2go_window_id_array, window_id);
-		REMMINA_PLUGIN_DEBUG("Registered new X2Go Agent window with ID [0x%lx].",
+		REMMINA_PLUGIN_DEBUG("Registered new window for X2Go Agent with ID [0x%lx].",
 							 window_id);
 	}
 	pthread_mutex_unlock(&remmina_x2go_init_mutex);
@@ -905,7 +905,7 @@ static gboolean remmina_plugin_x2go_start_create_notify(RemminaProtocolWidget *g
 
 	gpdata->display = XOpenDisplay(gdk_display_get_name(gdk_display_get_default()));
 	if (gpdata->display == NULL) {
-		g_strlcpy(errmsg, "Failed to open X11 DISPLAY.", 512);
+		g_strlcpy(errmsg, "Could not open X11 DISPLAY.", 512);
 		return FALSE;
 	}
 
@@ -992,7 +992,7 @@ static gboolean remmina_plugin_x2go_monitor_create_notify(RemminaProtocolWidget 
 		if (XGetWindowProperty(gpdata->display, w, atom, 0, 255, False, AnyPropertyType,
 							   &type, &format, &nitems, &rest,
 			                   &data) != Success) {
-			REMMINA_PLUGIN_DEBUG("Failed to get WM_COMMAND property from X11 window ID "
+			REMMINA_PLUGIN_DEBUG("Could not get WM_COMMAND property from X11 window ID "
 								 "[0x%lx].", w);
 			continue;
 		}
@@ -1001,7 +1001,7 @@ static gboolean remmina_plugin_x2go_monitor_create_notify(RemminaProtocolWidget 
 			REMMINA_PLUGIN_DEBUG("Saw '%i' X11 events, which weren't CreateNotify.",
 								 counter_x11_event_non_createnotify);
 			REMMINA_PLUGIN_DEBUG("Found X11 window with WM_COMMAND set to '%s', "
-								 "window ID is [0x%lx].", (char*)data, w);
+								 "the window ID is [0x%lx].", (char*)data, w);
 		}
 		if (data &&
 			g_strrstr((gchar*)data, cmd) &&
@@ -1023,7 +1023,7 @@ static gboolean remmina_plugin_x2go_monitor_create_notify(RemminaProtocolWidget 
 	CANCEL_ASYNC
 
 	if (!agent_window_found) {
-		g_strlcpy(errmsg, "X2Go session window did not appear. Something went wrong...",
+		g_strlcpy(errmsg, "No X2Go session window appeared. Something went wrong…",
 				  512);
 		return FALSE;
 	}
@@ -1142,7 +1142,7 @@ static gboolean remmina_plugin_x2go_open_connection(RemminaProtocolWidget *gp) {
 
 	if (!remmina_plugin_service->gtksocket_available()) {
 		remmina_plugin_service->protocol_plugin_set_error(gp,
-		    _("Protocol %s is unavailable because GtkSocket only works under X.org"),
+		    _("The protocol %s is unavailable because GtkSocket only works under X.org"),
 		    PLUGIN_NAME);
 		return FALSE;
 	}
@@ -1150,7 +1150,7 @@ static gboolean remmina_plugin_x2go_open_connection(RemminaProtocolWidget *gp) {
 	gpdata->socket_id = gtk_socket_get_id(GTK_SOCKET(gpdata->socket));
 	if (pthread_create(&gpdata->thread, NULL, remmina_plugin_x2go_main_thread, gp)) {
 		remmina_plugin_service->protocol_plugin_set_error(gp,
-					"Failed to initialize pthread. Falling back to non-thread mode...");
+					"Could not initialize pthread. Falling back to non-threaded mode…");
 		gpdata->thread = 0;
 		return FALSE;
 	} else  {
@@ -1186,7 +1186,7 @@ static const RemminaProtocolSetting remmina_plugin_x2go_basic_settings[] = {
 		"server", NULL, FALSE, NULL, NULL
 	},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,
-	    "username", N_("User name"), FALSE, NULL, NULL
+	    "username", N_("Username"), FALSE, NULL, NULL
 	},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD,
 		"password", N_("Password"), FALSE, NULL, NULL
@@ -1209,12 +1209,12 @@ static const RemminaProtocolSetting remmina_plugin_x2go_basic_settings[] = {
 	{ REMMINA_PROTOCOL_SETTING_TYPE_COMBO,
 		"audio", N_("Audio support"), FALSE,
 		/* Options to select (or custom user string) */ "pulse,esd,none",
-		/* Tooltip */ N_("X2Go server's sound system (default: 'pulse').")
+		/* Tooltip */ N_("The X2Go server's sound system (default: 'pulse').")
 	},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_COMBO,
 		"clipboard", N_("Clipboard direction"), FALSE,
 		/* Options to select (or custom user string) */ "none,server,client,both",
-		/* Tooltip */ N_("In which direction should clipboard content be copied? "
+		/* Tooltip */ N_("Which direction should clipboard content be copied? "
 						 "(default: 'both').")
 	},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_INT,
@@ -1241,7 +1241,7 @@ static RemminaProtocolPlugin remmina_plugin_x2go = {
 	remmina_plugin_x2go_features,           // Array for available features
 	remmina_plugin_x2go_init,               // Plugin initialization method
 	remmina_plugin_x2go_open_connection,    // Plugin open connection method
-	remmina_plugin_x2go_close_connection,   // Plugin close connection method
+	remmina_plugin_x2go_close_connection,   // Plugin connection-method closure
 	remmina_plugin_x2go_query_feature,      // Query for available features
 	NULL,                                   // Call a feature
 	NULL,                                   // Send a keystroke
