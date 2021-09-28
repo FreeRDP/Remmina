@@ -1294,26 +1294,47 @@ static GError* remmina_plugin_x2go_string_setting_validator(gchar* key,
 
 	for (int i = 0; i < elements_amount; i++) {
 		// Don't wanna crash if elements_list[i] is NULL.
-		gchar* occurence = elements_list[i] ? elements_list[i] : "";
-		if (strcmp(value, occurence) == 0) {
+		gchar* element = elements_list[i] ? elements_list[i] : "";
+		if (strcmp(value, element) == 0) {
 			// We found value in elements_list. Value passed validation.
 			return NULL;
 		}
 
-		if (elements_amount > 1) {
+		if (elements_amount > 2) {
+			/* TRANSLATORS: once %s is finished building it will look like this:
+			 * "'value1', 'value2', 'value3', 'valueN-1' and 'valueN'"
+			 * Presumably you just want to translate 'and' into your language.
+			 */
 			if (i == elements_amount - 1) {
-				data_str = g_strdup_printf(_("%sand '%s'"), data_str, occurence);
+				data_str = g_strdup_printf(_("%sand '%s'"), data_str, element);
+			} else if (i == elements_amount - 2) {
+				data_str = g_strdup_printf(_("%s'%s' "), data_str, element);
+			} else {
+				data_str = g_strdup_printf(_("%s'%s', "), data_str, element);
 			}
-			else if (i == elements_amount - 2) {
-				data_str = g_strdup_printf(_("%s'%s' "), data_str, occurence);
+		} else if (elements_amount == 2) {
+			/* TRANSLATORS: once %s is finished building it will look like this:
+			 * "'value1' and 'value2'"
+			 * Presumably you just want to translate 'and' into your language.
+			 */
+			if (i == elements_amount - 1) {
+				data_str = g_strdup_printf(_("%sand '%s'"), data_str, element);
+			} else {
+				data_str = g_strdup_printf(_("%s'%s' "), data_str, element);
 			}
-			else {
-				data_str = g_strdup_printf(_("%s'%s', "), data_str, occurence);
-			}
+		} else {
+			data_str = g_strdup(element);
 		}
 	}
 
-	g_set_error(&error, 1, 1, _("Allowed values are %s."), data_str);
+	if (elements_amount > 1) {
+		g_set_error(&error, 1, 1, _("Allowed values are %s."), data_str);
+	} else {
+		g_set_error(&error, 1, 1, _("Only allowed value is '%s'."), data_str);
+	}
+
+	g_free(data_str);
+	g_free(elements_list);
 
 	return error;
 }
