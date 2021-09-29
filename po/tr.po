@@ -15,8 +15,8 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-09-28 11:28+0000\n"
-"PO-Revision-Date: 2021-09-27 09:38+0000\n"
-"Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
+"PO-Revision-Date: 2021-09-29 01:08+0000\n"
+"Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/remmina/remmina/"
 "tr/>\n"
 "Language: tr\n"
@@ -2796,16 +2796,12 @@ msgid "Secured password storage in the GNOME keyring"
 msgstr "Gnome Keyring ile güvenli parola deposu"
 
 #: plugins/x2go/x2go_plugin.c:166
-#, fuzzy
-#| msgid "Broken DialogData! Aborting."
 msgid "Broken `DialogData`! Aborting…"
-msgstr "Bozuk DialogData! Durduruluyor."
+msgstr "Bozuk `DialogData`! Durduruluyor…"
 
 #: plugins/x2go/x2go_plugin.c:170
-#, fuzzy
-#| msgid "Can't retrieve DialogData! Aborting."
 msgid "Can't retrieve `DialogData`! Aborting…"
-msgstr "DialogData alınamadı! Durduruluyor."
+msgstr "`DialogData` alınamadı! Durduruluyor…"
 
 #: plugins/x2go/x2go_plugin.c:389
 msgid "pyhoca-cli exited unexpectedly. This connection will now be closed."
@@ -2816,11 +2812,6 @@ msgid "An error occured."
 msgstr "Hata oluştu."
 
 #: plugins/x2go/x2go_plugin.c:399
-#, fuzzy
-#| msgid ""
-#| "Necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
-#| "Please check your profile settings and pyhoca-cli's output for possible "
-#| "errors and make sure that the remote server is reachable."
 msgid ""
 "The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
 "Please check your profile settings and pyhoca-cli's output for possible "
@@ -2828,7 +2819,7 @@ msgid ""
 msgstr ""
 "Gerekli 'pyhoca-cli' alt süreci beklenmedik biçimde durdu.\n"
 "Profil ayarlarınızı ve olası hatalar için pyhoca-cli'nin çıktısını gözden "
-"geçirin; uzak sunucunun erişilebildiğinden emin olun."
+"geçirin; uzak sunucunun erişilebilir olduğundan emin olun."
 
 #: plugins/x2go/x2go_plugin.c:439
 #, c-format
@@ -2849,47 +2840,31 @@ msgid "Enter X2Go credentials"
 msgstr "X2Go kimlik doğrulama bilgilerini gir"
 
 #: plugins/x2go/x2go_plugin.c:556
-#, fuzzy
-#| msgid ""
-#| "User has requested to save credentials but 'password' is not set! Can't "
-#| "set a new default password then."
 msgid ""
 "User requested storing credentials but 'password' is not set! Can't set a "
 "new default password then."
 msgstr ""
-"Kullanıcı, kimlik doğrulama bilgilerini kaydetmeyi istedi ancak 'parola' "
+"Kullanıcı, kimlik doğrulama bilgilerini saklamayı istedi ancak 'parola' "
 "belirlenmedi! Bu nedenle öntanımlı parola belirlenemedi."
 
 #: plugins/x2go/x2go_plugin.c:666
-#, fuzzy
-#| msgid "DPI setting is out of bounds. Please adjust in profile settings!"
 msgid "DPI setting is out of bounds. Please adjust it in the profile settings."
-msgstr "DPI ayarları sınırların dışında. Lütfen profil ayarlarında uyarlayın!"
+msgstr "DPI ayarları sınırların dışında. Lütfen profil ayarlarında uyarlayın."
 
 #: plugins/x2go/x2go_plugin.c:705
-#, fuzzy
-#| msgid "An error occured while starting a X2Go session."
 msgid "An error occured while starting an X2Go session…"
-msgstr "X2Go oturumu başlatılırken hata oluştu."
+msgstr "X2Go oturumu başlatılırken hata oluştu…"
 
 #: plugins/x2go/x2go_plugin.c:714
-#, fuzzy
-#| msgid "Could not start SSH session. %s"
 msgid "Could not start X2Go session."
-msgstr "SSH oturumu başlatılamadı: %s"
+msgstr "X2Go oturumu başlatılamadı."
 
 #: plugins/x2go/x2go_plugin.c:715
-#, fuzzy, c-format
-#| msgid "Failed to start pyhoca-cli (%i): '%s'"
+#, c-format
 msgid "Could not start PyHoca-CLI (%i): '%s'"
-msgstr "pyhoca-cli (%i) başlatılamadı: '%s'"
+msgstr "PyHoca-CLI (%i) başlatılamadı: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:784
-#, fuzzy
-#| msgid ""
-#| "Couldn't get pyhoca-cli's cmdline-features. This indicates that either "
-#| "your pyhoca-cli version is too old or pyhoca-cli is not installed! An old "
-#| "limited set of features will be used now."
 msgid ""
 "Couldn't get pyhoca-cli's cmdline-features. This indicates either your "
 "pyhoca-cli version is too old or pyhoca-cli is not installed! An old limited "
@@ -2900,22 +2875,16 @@ msgstr ""
 "Şimdi eski kısıtlı özellik takımı kullanılabilecek."
 
 #: plugins/x2go/x2go_plugin.c:796
-#, fuzzy
-#| msgid ""
-#| "parsing pyhoca-cli features was not possible! Using limited feature set "
-#| "now."
 msgid ""
 "parsing pyhoca-cli functionality was not possible! Using a limited feature-"
 "set for now."
 msgstr ""
-"pyhoca-cli özellikleri ayrıştırılamıyor! Şimdi kısıtlı özellik takımı "
+"pyhoca-cli işlevselliği ayrıştırılamadı! Şimdilik kısıtlı bir özellik takımı "
 "kullanılıyor."
 
 #: plugins/x2go/x2go_plugin.c:802
-#, fuzzy
-#| msgid "Successfully retrieved following pyhoca-cli features:"
 msgid "Retrieved the following pyhoca-cli functionality:"
-msgstr "pyhoca-cli özellikleri başarıyla alındı:"
+msgstr "Şu pyhoca-cli işlevselliği alındı:"
 
 #: plugins/x2go/x2go_plugin.c:806
 #, c-format
@@ -2931,8 +2900,7 @@ msgid "Waiting for pyhoca-cli to show the session's window."
 msgstr "pyhoca-cli'nin oturumun penceresini göstermesi bekleniyor."
 
 #: plugins/x2go/x2go_plugin.c:1145
-#, fuzzy, c-format
-#| msgid "Protocol %s is unavailable because GtkSocket only works under X.org"
+#, c-format
 msgid "The protocol %s is unavailable because GtkSocket only works under X.org"
 msgstr ""
 "GtkSocket yalnızca X.org altında çalıştığından %s iletişim kuralı "
@@ -2959,8 +2927,6 @@ msgid "Audio support"
 msgstr "Ses desteği"
 
 #: plugins/x2go/x2go_plugin.c:1212
-#, fuzzy
-#| msgid "X2Go server's sound system (default: 'pulse')."
 msgid "The X2Go server's sound system (default: 'pulse')."
 msgstr "X2Go sunucusunun ses sistemi (öntanımlı: 'pulse')."
 
@@ -2969,9 +2935,6 @@ msgid "Clipboard direction"
 msgstr "Pano yönü"
 
 #: plugins/x2go/x2go_plugin.c:1217
-#, fuzzy
-#| msgid ""
-#| "In which direction should clipboard content be copied? (default: 'both')."
 msgid "Which direction should clipboard content be copied? (default: 'both')."
 msgstr "Pano içeriği hangi yönde kopyalanmalıdır? (öntanımlı: 'both')."
 

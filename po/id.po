@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-09-28 11:28+0000\n"
-"PO-Revision-Date: 2021-09-23 10:45+0000\n"
+"PO-Revision-Date: 2021-09-29 01:08+0000\n"
 "Last-Translator: Andika Triwidada <andika@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/remmina/"
 "remmina/id/>\n"
@@ -2806,16 +2806,12 @@ msgid "Secured password storage in the GNOME keyring"
 msgstr "Penyimpanan kata sandi aman dalam ring kunci GNOME"
 
 #: plugins/x2go/x2go_plugin.c:166
-#, fuzzy
-#| msgid "Broken DialogData! Aborting."
 msgid "Broken `DialogData`! Aborting…"
-msgstr "DialogData yang Rusak! Menggugurkan."
+msgstr "`DialogData` Rusak! Menggugurkan…"
 
 #: plugins/x2go/x2go_plugin.c:170
-#, fuzzy
-#| msgid "Can't retrieve DialogData! Aborting."
 msgid "Can't retrieve `DialogData`! Aborting…"
-msgstr "Tak bisa mengambil DialogData! Menggugurkan."
+msgstr "Tak bisa mengambil `DialogData`! Menggugurkan…"
 
 #: plugins/x2go/x2go_plugin.c:389
 msgid "pyhoca-cli exited unexpectedly. This connection will now be closed."
@@ -2827,11 +2823,6 @@ msgid "An error occured."
 msgstr "Timbul galat."
 
 #: plugins/x2go/x2go_plugin.c:399
-#, fuzzy
-#| msgid ""
-#| "Necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
-#| "Please check your profile settings and pyhoca-cli's output for possible "
-#| "errors and make sure that the remote server is reachable."
 msgid ""
 "The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
 "Please check your profile settings and pyhoca-cli's output for possible "
@@ -2860,47 +2851,31 @@ msgid "Enter X2Go credentials"
 msgstr "Masukkan kredensial X2Go"
 
 #: plugins/x2go/x2go_plugin.c:556
-#, fuzzy
-#| msgid ""
-#| "User has requested to save credentials but 'password' is not set! Can't "
-#| "set a new default password then."
 msgid ""
 "User requested storing credentials but 'password' is not set! Can't set a "
 "new default password then."
 msgstr ""
-"Pengguna telah meminta untuk menyimpan kredensial tetapi 'kata sandi' tidak "
+"Pengguna meminta untuk menyimpan kredensial tetapi 'kata sandi' tidak "
 "disetel! Tidak dapat menetapkan kata sandi baku baru."
 
 #: plugins/x2go/x2go_plugin.c:666
-#, fuzzy
-#| msgid "DPI setting is out of bounds. Please adjust in profile settings!"
 msgid "DPI setting is out of bounds. Please adjust it in the profile settings."
-msgstr "Pengaturan DPI di luar batas. Harap sesuaikan di pengaturan profil!"
+msgstr "Pengaturan DPI di luar batas. Harap sesuaikan di pengaturan profil."
 
 #: plugins/x2go/x2go_plugin.c:705
-#, fuzzy
-#| msgid "An error occured while starting a X2Go session."
 msgid "An error occured while starting an X2Go session…"
-msgstr "Terjadi kesalahan saat memulai sesi X2Go."
+msgstr "Terjadi kesalahan saat memulai sesi X2Go…"
 
 #: plugins/x2go/x2go_plugin.c:714
-#, fuzzy
-#| msgid "Could not start SSH session. %s"
 msgid "Could not start X2Go session."
-msgstr "Tidak bisa memulai sesi SSH. %s"
+msgstr "Tidak bisa memulai sesi X2Go."
 
 #: plugins/x2go/x2go_plugin.c:715
-#, fuzzy, c-format
-#| msgid "Failed to start pyhoca-cli (%i): '%s'"
+#, c-format
 msgid "Could not start PyHoca-CLI (%i): '%s'"
-msgstr "Gagal memulai pyhoca-cli (%i): '%s'"
+msgstr "Tidak bisa memulai PyHoca-CLI (%i): '%s'"
 
 #: plugins/x2go/x2go_plugin.c:784
-#, fuzzy
-#| msgid ""
-#| "Couldn't get pyhoca-cli's cmdline-features. This indicates that either "
-#| "your pyhoca-cli version is too old or pyhoca-cli is not installed! An old "
-#| "limited set of features will be used now."
 msgid ""
 "Couldn't get pyhoca-cli's cmdline-features. This indicates either your "
 "pyhoca-cli version is too old or pyhoca-cli is not installed! An old limited "
@@ -2911,22 +2886,16 @@ msgstr ""
 "terbatas lama akan digunakan sekarang."
 
 #: plugins/x2go/x2go_plugin.c:796
-#, fuzzy
-#| msgid ""
-#| "parsing pyhoca-cli features was not possible! Using limited feature set "
-#| "now."
 msgid ""
 "parsing pyhoca-cli functionality was not possible! Using a limited feature-"
 "set for now."
 msgstr ""
-"mengurai fitur pyhoca-cli tidak mungkin! Menggunakan set fitur terbatas "
-"sekarang."
+"mengurai fungsionalitas pyhoca-cli tidak mungkin! Menggunakan set fitur "
+"terbatas untuk saat ini."
 
 #: plugins/x2go/x2go_plugin.c:802
-#, fuzzy
-#| msgid "Successfully retrieved following pyhoca-cli features:"
 msgid "Retrieved the following pyhoca-cli functionality:"
-msgstr "Berhasil mengambil fitur pyhoca-cli berikut:"
+msgstr "Mengambil fungsionalitas pyhoca-cli berikut:"
 
 #: plugins/x2go/x2go_plugin.c:806
 #, c-format
@@ -2942,8 +2911,7 @@ msgid "Waiting for pyhoca-cli to show the session's window."
 msgstr "Menunggu pyhoca-cli untuk menampilkan jendela sesi."
 
 #: plugins/x2go/x2go_plugin.c:1145
-#, fuzzy, c-format
-#| msgid "Protocol %s is unavailable because GtkSocket only works under X.org"
+#, c-format
 msgid "The protocol %s is unavailable because GtkSocket only works under X.org"
 msgstr ""
 "Protokol %s tidak tersedia karena GtkSocket hanya bekerja di bawah X.org"
@@ -2969,8 +2937,6 @@ msgid "Audio support"
 msgstr "Dukungan audio"
 
 #: plugins/x2go/x2go_plugin.c:1212
-#, fuzzy
-#| msgid "X2Go server's sound system (default: 'pulse')."
 msgid "The X2Go server's sound system (default: 'pulse')."
 msgstr "Sistem suara server X2Go (baku: 'pulse')."
 
@@ -2979,9 +2945,6 @@ msgid "Clipboard direction"
 msgstr "Arah papan klip"
 
 #: plugins/x2go/x2go_plugin.c:1217
-#, fuzzy
-#| msgid ""
-#| "In which direction should clipboard content be copied? (default: 'both')."
 msgid "Which direction should clipboard content be copied? (default: 'both')."
 msgstr "Ke arah mana konten papan klip harus disalin? (baku: 'both'/keduanya)."
 

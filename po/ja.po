@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-09-28 11:28+0000\n"
-"PO-Revision-Date: 2021-09-25 00:33+0000\n"
+"PO-Revision-Date: 2021-09-29 01:08+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/remmina/remmina/"
 "ja/>\n"
@@ -2895,12 +2895,12 @@ msgstr "GNOME キーリングで安全にパスワード保存"
 #: plugins/x2go/x2go_plugin.c:166
 #, fuzzy
 msgid "Broken `DialogData`! Aborting…"
-msgstr "壊れたDialogData!中止します。"
+msgstr "壊れた `DialogData`!中止します…"
 
 #: plugins/x2go/x2go_plugin.c:170
 #, fuzzy
 msgid "Can't retrieve `DialogData`! Aborting…"
-msgstr "Can't retrieve DialogData!中止します。"
+msgstr "Can't retrieve `DialogData`!Aborting…"
 
 #: plugins/x2go/x2go_plugin.c:389
 #, fuzzy
@@ -2920,8 +2920,7 @@ msgid ""
 "errors and ensure the remote server is reachable."
 msgstr ""
 "必要な子プロセス 'pyhoca-cli' が予期せず停止しました。\n"
-"プロファイルの設定やpyhoca-cliの出力にエラーがないか、また、リモートサーバー"
-"に到達できるかどうかを確認してください。"
+"プロファイルの設定とpyhoca-cliの出力にエラーがないか確認し、リモートサーバーに到達できるかどうか確認してください。"
 
 #: plugins/x2go/x2go_plugin.c:439
 #, fuzzy, c-format
@@ -2949,9 +2948,7 @@ msgstr "X2Goの認証情報を入力する"
 msgid ""
 "User requested storing credentials but 'password' is not set! Can't set a "
 "new default password then."
-msgstr ""
-"ユーザーが認証情報の保存を要求しましたが、「パスワード」が設定されていませ"
-"ん。これでは新しいデフォルトパスワードを設定できません。"
+msgstr "ユーザーが認証情報の保存を要求しましたが、「パスワード」が設定されていません。これでは新しいデフォルトのパスワードを設定できません。"
 
 #: plugins/x2go/x2go_plugin.c:666
 #, fuzzy
@@ -2961,18 +2958,18 @@ msgstr "DPI設定が圏外です。プロファイル設定で調整してくだ
 #: plugins/x2go/x2go_plugin.c:705
 #, fuzzy
 msgid "An error occured while starting an X2Go session…"
-msgstr "X2Goセッションの開始時にエラーが発生しました。"
+msgstr "X2Goセッションの開始時にエラーが発生しました…"
 
 #: plugins/x2go/x2go_plugin.c:714
 #, fuzzy
 #| msgid "Could not start SSH session. %s"
 msgid "Could not start X2Go session."
-msgstr "SSH セッションを開始できませんでした: %s"
+msgstr "X2Goのセッションを開始できませんでした。"
 
 #: plugins/x2go/x2go_plugin.c:715
 #, fuzzy, c-format
 msgid "Could not start PyHoca-CLI (%i): '%s'"
-msgstr "pyhoca-cliの起動に失敗しました (%i): '%s'"
+msgstr "PyHoca-CLI を起動できませんでした (%i): '%s'"
 
 #: plugins/x2go/x2go_plugin.c:784
 #, fuzzy
@@ -2981,23 +2978,20 @@ msgid ""
 "pyhoca-cli version is too old or pyhoca-cli is not installed! An old limited "
 "set of features will be used now."
 msgstr ""
-"pyhoca-cli の cmdline-features を取得できませんでした。これは、pyhoca-cliの"
-"バージョンが古すぎるか、pyhoca-cliがインストールされていないことを示していま"
-"す。古い限定された機能のセットが現在使用されます。"
+"pyhoca-cli の cmdline-features を取得できませんでした。これは、pyhoca-cliのバージョンが古すぎるか、pyhoca-"
+"cliがインストールされていないことを示しています。古い限定された機能のセットが現在使用されています。"
 
 #: plugins/x2go/x2go_plugin.c:796
 #, fuzzy
 msgid ""
 "parsing pyhoca-cli functionality was not possible! Using a limited feature-"
 "set for now."
-msgstr ""
-"pyhoca-cliの機能を解析することができませんでした。現在は限られた機能を使用し"
-"ています。"
+msgstr "pyhoca-cliの機能を解析することができませんでした。今のところ、限られた機能セットを使用しています。"
 
 #: plugins/x2go/x2go_plugin.c:802
 #, fuzzy
 msgid "Retrieved the following pyhoca-cli functionality:"
-msgstr "以下のpyhoca-cliの機能の取得に成功しました。"
+msgstr "以下のpyhoca-cliの機能を取得しました。"
 
 #: plugins/x2go/x2go_plugin.c:806
 #, fuzzy, c-format
@@ -3019,8 +3013,7 @@ msgstr "pyhoca-cliがセッションのウィンドウを表示するのを待�
 #| msgid ""
 #| "The protocol “%s” is unavailable because GtkSocket only works under X.Org."
 msgid "The protocol %s is unavailable because GtkSocket only works under X.org"
-msgstr ""
-"GtkSocket は X.org でしか動作しないため、プロトコル %s は利用できません。"
+msgstr "GtkSocket は X.Org でのみ動作するため、プロトコル \"%s\" は利用できません。"
 
 #: plugins/x2go/x2go_plugin.c:1195
 #, fuzzy
@@ -3065,9 +3058,7 @@ msgstr "クリップボードの方向"
 #: plugins/x2go/x2go_plugin.c:1217
 #, fuzzy
 msgid "Which direction should clipboard content be copied? (default: 'both')."
-msgstr ""
-"クリップボードの内容をどの方向にコピーするか？(を設定します（デフォルト：「両"
-"方」）。)"
+msgstr "クリップボードの内容をどの方向にコピーするか？(を設定します（デフォルト：'both'）。)"
 
 #: plugins/x2go/x2go_plugin.c:1221
 #, fuzzy
