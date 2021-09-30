@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-09-28 11:28+0000\n"
-"PO-Revision-Date: 2021-09-16 10:37+0000\n"
-"Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
+"PO-Revision-Date: 2021-09-30 22:05+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "remmina/remmina/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -2663,6 +2663,7 @@ msgstr ""
 "    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
 
 #: plugins/vnc/vnc_plugin.c:1948
+#, fuzzy
 msgid ""
 "Listening for remote VNC connection:\n"
 "  • The \"Listen on port\" field is the port Remmina will listen to,\n"
@@ -2671,6 +2672,12 @@ msgid ""
 "    Remmina, e.g. with x11vnc:\n"
 "    x11vnc -display :0 -connect 192.168.1.36:8888"
 msgstr ""
+"Ouvir para conexão VNC remota:\n"
+"  - O campo \"Escuta na porta\" é a porta que a Remmina vai ouvir,\n"
+"    por exemplo, 8888\n"
+"  - A partir do servidor VNC remoto, você vai se conectar a\n"
+"    Remmina, por exemplo, com x11vnc:\n"
+"    x11vnc -display :0 -connect 192.168.1.36:8888"
 
 #: plugins/vnc/vnc_plugin.c:1967
 msgid "Repeater"
@@ -2805,102 +2812,129 @@ msgid "Secured password storage in the GNOME keyring"
 msgstr "Armazenamento seguro de senhas no chaveiro do GNOME"
 
 #: plugins/x2go/x2go_plugin.c:166
+#, fuzzy
 msgid "Broken `DialogData`! Aborting…"
-msgstr ""
+msgstr "Quebrado `DialogData`! Abortando…"
 
 #: plugins/x2go/x2go_plugin.c:170
+#, fuzzy
 msgid "Can't retrieve `DialogData`! Aborting…"
-msgstr ""
+msgstr "Não consigo recuperar `DialogData`! Abortar…"
 
 #: plugins/x2go/x2go_plugin.c:389
+#, fuzzy
 msgid "pyhoca-cli exited unexpectedly. This connection will now be closed."
-msgstr ""
+msgstr "pyhoca-cli saiu inesperadamente. Esta ligação será agora fechada."
 
 #: plugins/x2go/x2go_plugin.c:398
+#, fuzzy
 msgid "An error occured."
-msgstr ""
+msgstr "Ocorreu um erro"
 
 #: plugins/x2go/x2go_plugin.c:399
+#, fuzzy
 msgid ""
 "The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
 "Please check your profile settings and pyhoca-cli's output for possible "
 "errors and ensure the remote server is reachable."
 msgstr ""
+"O necessário processo infantil 'pyhoca-cli' parou inesperadamente.\n"
+"Verifique as configurações do seu perfil e a saída do pyhoca-cli para "
+"possíveis erros e certifique-se de que o servidor remoto está acessível."
 
 #: plugins/x2go/x2go_plugin.c:439
-#, c-format
+#, c-format, fuzzy
 msgid ""
 "An unknown error happened while retrieving pyhoca-cli's cmdline features! "
 "Exit code: %i"
 msgstr ""
+"Um erro desconhecido aconteceu enquanto se recuperavam as características "
+"cmdline do pyhoca-cli! Código de saída: %i"
 
 #: plugins/x2go/x2go_plugin.c:444
 #, fuzzy, c-format
 #| msgid "Error: %s"
 msgid "Error: '%s'"
-msgstr "Erro: %s"
+msgstr "Erro: '%s''."
 
 #: plugins/x2go/x2go_plugin.c:532
 #, fuzzy
 #| msgid "Enter NX authentication credentials"
 msgid "Enter X2Go credentials"
-msgstr "Insira as credenciais de autenticação NX"
+msgstr "Introduza as credenciais X2Go"
 
 #: plugins/x2go/x2go_plugin.c:556
+#, fuzzy
 msgid ""
 "User requested storing credentials but 'password' is not set! Can't set a "
 "new default password then."
 msgstr ""
+"O usuário solicitou o armazenamento de credenciais, mas a 'senha' não está "
+"definida! Não é possível definir uma nova senha padrão então."
 
 #: plugins/x2go/x2go_plugin.c:666
+#, fuzzy
 msgid "DPI setting is out of bounds. Please adjust it in the profile settings."
 msgstr ""
+"A definição do DPI está fora dos limites. Por favor, ajuste-o nas "
+"configurações de perfil."
 
 #: plugins/x2go/x2go_plugin.c:705
+#, fuzzy
 msgid "An error occured while starting an X2Go session…"
-msgstr ""
+msgstr "Ocorreu um erro ao iniciar uma sessão X2Go…"
 
 #: plugins/x2go/x2go_plugin.c:714
 #, fuzzy
 #| msgid "Could not start SSH session. %s"
 msgid "Could not start X2Go session."
-msgstr "Não foi possível iniciar sessão SSH. %s"
+msgstr "Não foi possível iniciar a sessão X2Go."
 
 #: plugins/x2go/x2go_plugin.c:715
 #, fuzzy, c-format
 #| msgid "Could not start SSH session. %s"
 msgid "Could not start PyHoca-CLI (%i): '%s'"
-msgstr "Não foi possível iniciar sessão SSH. %s"
+msgstr "Não foi possível iniciar PyHoca-CLI (%i): '%s''."
 
 #: plugins/x2go/x2go_plugin.c:784
+#, fuzzy
 msgid ""
 "Couldn't get pyhoca-cli's cmdline-features. This indicates either your "
 "pyhoca-cli version is too old or pyhoca-cli is not installed! An old limited "
 "set of features will be used now."
 msgstr ""
+"Não consegui obter as características cmdline do pyhoca-cli. Isto indica que "
+"ou a sua versão pyhoca-cli é muito antiga ou o pyhoca-cli não está "
+"instalado! Um antigo conjunto limitado de funcionalidades será usado agora."
 
 #: plugins/x2go/x2go_plugin.c:796
+#, fuzzy
 msgid ""
 "parsing pyhoca-cli functionality was not possible! Using a limited feature-"
 "set for now."
 msgstr ""
+"não era possível a funcionalidade parsing pyhoca-cli! Usando um conjunto "
+"limitado de funcionalidades, por enquanto."
 
 #: plugins/x2go/x2go_plugin.c:802
+#, fuzzy
 msgid "Retrieved the following pyhoca-cli functionality:"
-msgstr ""
+msgstr "Recuperou a seguinte funcionalidade pyhoca-cli:"
 
 #: plugins/x2go/x2go_plugin.c:806
-#, c-format
+#, c-format, fuzzy
 msgid "Available feature[%i]: '%s'"
-msgstr ""
+msgstr "Funcionalidade disponível[%i]: '%s''."
 
 #: plugins/x2go/x2go_plugin.c:948
+#, fuzzy
 msgid "Waiting for X2Go Agent window to appear."
-msgstr ""
+msgstr "À espera que a janela do Agente X2Go apareça."
 
 #: plugins/x2go/x2go_plugin.c:974
+#, fuzzy
 msgid "Waiting for pyhoca-cli to show the session's window."
-msgstr ""
+msgstr "À espera que o pyhoca-cli mostre a janela da sessão."
 
 #: plugins/x2go/x2go_plugin.c:1145
 #, fuzzy, c-format
@@ -2917,60 +2951,69 @@ msgid "Startup program"
 msgstr "Programa de inicialização"
 
 #: plugins/x2go/x2go_plugin.c:1197
+#, fuzzy
 msgid "Which command should be executed after creating the X2Go session?"
-msgstr ""
+msgstr "Que comando deve ser executado após a criação da sessão X2Go?"
 
 #: plugins/x2go/x2go_plugin.c:1204
 #, fuzzy
 #| msgid "Keyboard layout"
 msgid "Keyboard Layout (auto)"
-msgstr "Layout do teclado"
+msgstr "Layout do teclado (automático)"
 
 #: plugins/x2go/x2go_plugin.c:1207
 #, fuzzy
 #| msgid "Keyboard layout"
 msgid "Keyboard type (auto)"
-msgstr "Layout do teclado"
+msgstr "Tipo de teclado (automático)"
 
 #: plugins/x2go/x2go_plugin.c:1210
 #, fuzzy
 #| msgid "Turn on Java support"
 msgid "Audio support"
-msgstr "Ativa suporte a Java"
+msgstr "Suporte de áudio"
 
 #: plugins/x2go/x2go_plugin.c:1212
+#, fuzzy
 msgid "The X2Go server's sound system (default: 'pulse')."
-msgstr ""
+msgstr "O sistema de som do servidor X2Go (predefinido: 'pulse')."
 
 #: plugins/x2go/x2go_plugin.c:1215
 #, fuzzy
 #| msgid "TCP redirection"
 msgid "Clipboard direction"
-msgstr "Redirecionamento de TCP"
+msgstr "Direcção da prancheta"
 
 #: plugins/x2go/x2go_plugin.c:1217
+#, fuzzy
 msgid "Which direction should clipboard content be copied? (default: 'both')."
 msgstr ""
+"Em que direção o conteúdo da prancheta deve ser copiado? (padrão: 'ambos')."
 
 #: plugins/x2go/x2go_plugin.c:1221
 #, fuzzy
 #| msgid "Resolution"
 msgid "DPI resolution"
-msgstr "Resolução"
+msgstr "resolução DPI"
 
 #: plugins/x2go/x2go_plugin.c:1222
+#, fuzzy
 msgid ""
 "Launch session with a specific resolution (in dots per inch). Must be "
 "between 20 and 400"
 msgstr ""
+"Sessão de lançamento com uma resolução específica (em pontos por polegada). "
+"Deve estar entre 20 e 400"
 
 #: plugins/x2go/x2go_plugin.c:1265
+#, fuzzy
 msgid "X2Go plugin loaded."
-msgstr ""
+msgstr "Plug-in X2Go carregado."
 
 #: plugins/x2go/x2go_plugin.h:43
+#, fuzzy
 msgid "X2Go - Launch an X2Go session"
-msgstr ""
+msgstr "X2Go - Iniciar uma sessão X2Go"
 
 #: plugins/gvnc/gvnc_plugin_config.h:40
 msgid "Remmina VNC plugin for GNOME and KVM"
