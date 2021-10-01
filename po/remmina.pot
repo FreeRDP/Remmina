@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Remmina v1.4.20\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-09-28 11:28+0000\n"
+"POT-Creation-Date: 2021-10-01 14:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,31 +20,31 @@ msgstr ""
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:346
 #: src/remmina_protocol_widget.c:1672 src/remmina_protocol_widget.c:1691
-#: src/remmina_file_editor.c:978 src/remmina_file_editor.c:1099
+#: src/remmina_file_editor.c:1101 src/remmina_file_editor.c:1222
 #: src/remmina_ssh_plugin.c:1369 plugins/rdp/rdp_plugin.c:2667
-#: plugins/www/www_plugin.c:887 plugins/x2go/x2go_plugin.c:1192
+#: plugins/www/www_plugin.c:887 plugins/x2go/x2go_plugin.c:1579
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1675
 #: data/ui/remmina_unlock.glade:116
 msgid "Password"
 msgstr ""
 
 #: src/remmina_sftp_plugin.c:311 src/remmina_sftp_plugin.c:348
-#: src/remmina_file_editor.c:979 src/remmina_ssh_plugin.c:1370
+#: src/remmina_file_editor.c:1102 src/remmina_ssh_plugin.c:1370
 #: src/remmina_ssh_plugin.c:1475
 msgid "SSH identity file"
 msgstr ""
 
-#: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:980
+#: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:1103
 #: src/remmina_ssh_plugin.c:1371
 msgid "SSH agent"
 msgstr ""
 
-#: src/remmina_sftp_plugin.c:313 src/remmina_file_editor.c:981
+#: src/remmina_sftp_plugin.c:313 src/remmina_file_editor.c:1104
 #: src/remmina_ssh_plugin.c:1372
 msgid "Public key (automatic)"
 msgstr ""
 
-#: src/remmina_sftp_plugin.c:314 src/remmina_file_editor.c:982
+#: src/remmina_sftp_plugin.c:314 src/remmina_file_editor.c:1105
 #: src/remmina_ssh_plugin.c:1373
 msgid "Kerberos (GSSAPI)"
 msgstr ""
@@ -66,19 +66,19 @@ msgid "Connect via SSH from a new terminal"
 msgstr ""
 
 #: src/remmina_sftp_plugin.c:345 src/remmina_message_panel.c:330
-#: src/remmina_file_editor.c:1093 src/remmina_ssh_plugin.c:1473
+#: src/remmina_file_editor.c:1216 src/remmina_ssh_plugin.c:1473
 #: plugins/rdp/rdp_plugin.c:2666 plugins/vnc/vnc_plugin.c:1968
 #: plugins/vnc/vnc_plugin.c:1988 plugins/www/www_plugin.c:886
-#: plugins/x2go/x2go_plugin.c:1189 data/ui/remmina_mpc.glade:144
+#: plugins/x2go/x2go_plugin.c:1576 data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr ""
 
-#: src/remmina_sftp_plugin.c:347 src/remmina_file_editor.c:1084
+#: src/remmina_sftp_plugin.c:347 src/remmina_file_editor.c:1207
 #: src/remmina_ssh_plugin.c:1472
 msgid "Authentication type"
 msgstr ""
 
-#: src/remmina_sftp_plugin.c:349 src/remmina_file_editor.c:1116
+#: src/remmina_sftp_plugin.c:349 src/remmina_file_editor.c:1240
 #: src/remmina_ssh_plugin.c:1479
 msgid "Password to unlock private key"
 msgstr ""
@@ -91,7 +91,7 @@ msgstr ""
 msgid "SFTP - Secure File Transfer"
 msgstr ""
 
-#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1665
+#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1945
 msgid "Protocol"
 msgstr ""
 
@@ -120,11 +120,11 @@ msgid "Plugins"
 msgstr ""
 
 #: src/remmina_plugin_manager.c:461 src/remmina_message_panel.c:452
-#: src/remmina_message_panel.c:621 src/remmina_file_editor.c:153
+#: src/remmina_message_panel.c:621 src/remmina_file_editor.c:242
 msgid "_OK"
 msgstr ""
 
-#: src/remmina_plugin_manager.c:479 src/remmina_file_editor.c:1622
+#: src/remmina_plugin_manager.c:479 src/remmina_file_editor.c:1902
 #: data/ui/remmina_main.glade:442
 msgid "Name"
 msgstr ""
@@ -190,11 +190,11 @@ msgstr ""
 msgid "<None>"
 msgstr ""
 
-#: src/remmina_pref_dialog.c:91 src/remmina_file_editor.c:436
+#: src/remmina_pref_dialog.c:91 src/remmina_file_editor.c:528
 msgid "Resolutions"
 msgstr ""
 
-#: src/remmina_pref_dialog.c:91 src/remmina_file_editor.c:436
+#: src/remmina_pref_dialog.c:91 src/remmina_file_editor.c:528
 msgid "Configure the available resolutions"
 msgstr ""
 
@@ -257,8 +257,8 @@ msgid "Save password"
 msgstr ""
 
 #: src/remmina_message_panel.c:457 src/remmina_message_panel.c:629
-#: src/remmina_sftp_client.c:947 src/remmina_file_editor.c:152
-#: src/remmina_file_editor.c:1497 plugins/spice/spice_plugin_file_transfer.c:84
+#: src/remmina_sftp_client.c:947 src/remmina_file_editor.c:241
+#: src/remmina_file_editor.c:1777 plugins/spice/spice_plugin_file_transfer.c:84
 #: data/ui/remmina_key_chooser.glade:8 data/ui/remmina_key_chooser.glade:9
 #: data/ui/remmina_spinner.glade:8 data/ui/remmina_spinner.glade:9
 msgid "_Cancel"
@@ -670,7 +670,7 @@ msgstr ""
 msgid "User"
 msgstr ""
 
-#: src/remmina_ftp_client.c:932 src/remmina_file_editor.c:1647
+#: src/remmina_ftp_client.c:932 src/remmina_file_editor.c:1927
 #: data/ui/remmina_mpc.glade:115 data/ui/remmina_main.glade:464
 msgid "Group"
 msgstr ""
@@ -803,8 +803,8 @@ msgstr ""
 msgid "Could not authenticate, attempting reconnection…"
 msgstr ""
 
-#: src/remmina_protocol_widget.c:2025 src/remmina_file_editor.c:347
-#: src/remmina_file_editor.c:1049 data/ui/remmina_main.glade:478
+#: src/remmina_protocol_widget.c:2025 src/remmina_file_editor.c:436
+#: src/remmina_file_editor.c:1172 data/ui/remmina_main.glade:478
 msgid "Server"
 msgstr ""
 
@@ -1099,7 +1099,7 @@ msgstr ""
 msgid "Import"
 msgstr ""
 
-#: src/remmina_main.c:1022 src/remmina_file_editor.c:1505
+#: src/remmina_main.c:1022 src/remmina_file_editor.c:1785
 msgid "_Save"
 msgstr ""
 
@@ -1228,146 +1228,161 @@ msgid ""
 "• username@server[:port] (SSH protocol only)</big>"
 msgstr ""
 
-#: src/remmina_file_editor.c:150
+#: src/remmina_file_editor.c:162
+msgid "Input is invalid."
+msgstr ""
+
+#: src/remmina_file_editor.c:239
 msgid "Choose a Remote Desktop Server"
 msgstr ""
 
-#: src/remmina_file_editor.c:371
+#: src/remmina_file_editor.c:460
 #, c-format
 msgid "Browse the network to find a %s server"
 msgstr ""
 
-#: src/remmina_file_editor.c:472
+#: src/remmina_file_editor.c:564
 msgid "Resolution"
 msgstr ""
 
-#: src/remmina_file_editor.c:479
+#: src/remmina_file_editor.c:571
 msgid "Use initial window size"
 msgstr ""
 
-#: src/remmina_file_editor.c:483
+#: src/remmina_file_editor.c:575
 msgid "Use client resolution"
 msgstr ""
 
-#: src/remmina_file_editor.c:494 src/remmina_file_editor.c:1029
+#: src/remmina_file_editor.c:586 src/remmina_file_editor.c:1152
 msgid "Custom"
 msgstr ""
 
-#: src/remmina_file_editor.c:829
+#: src/remmina_file_editor.c:945
 msgid "Keyboard mapping"
 msgstr ""
 
-#: src/remmina_file_editor.c:949
+#: src/remmina_file_editor.c:1072
 msgid "Behavior"
 msgstr ""
 
-#: src/remmina_file_editor.c:952
+#: src/remmina_file_editor.c:1075
 msgid "Execute a Command"
 msgstr ""
 
-#: src/remmina_file_editor.c:956
+#: src/remmina_file_editor.c:1079
 msgid "Before connecting"
 msgstr ""
 
-#: src/remmina_file_editor.c:958
+#: src/remmina_file_editor.c:1081
 msgid "command %h %u %t %U %p %g --option"
 msgstr ""
 
-#: src/remmina_file_editor.c:963
+#: src/remmina_file_editor.c:1086
 msgid "After connecting"
 msgstr ""
 
-#: src/remmina_file_editor.c:965
+#: src/remmina_file_editor.c:1088
 msgid "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
 msgstr ""
 
-#: src/remmina_file_editor.c:969
+#: src/remmina_file_editor.c:1092
 msgid "Start-up"
 msgstr ""
 
-#: src/remmina_file_editor.c:972
+#: src/remmina_file_editor.c:1095
 msgid "Auto-start this profile"
 msgstr ""
 
-#: src/remmina_file_editor.c:1002
+#: src/remmina_file_editor.c:1125
 msgid "SSH Tunnel"
 msgstr ""
 
-#: src/remmina_file_editor.c:1003
+#: src/remmina_file_editor.c:1126
 msgid "Enable SSH tunnel"
 msgstr ""
 
-#: src/remmina_file_editor.c:1010
+#: src/remmina_file_editor.c:1133
 msgid "Tunnel via loopback address"
 msgstr ""
 
-#: src/remmina_file_editor.c:1020
+#: src/remmina_file_editor.c:1143
 #, c-format
 msgid "Same server at port %i"
 msgstr ""
 
-#: src/remmina_file_editor.c:1070 plugins/rdp/rdp_plugin.c:2711
+#: src/remmina_file_editor.c:1193 plugins/rdp/rdp_plugin.c:2711
 msgid "Start-up path"
 msgstr ""
 
-#: src/remmina_file_editor.c:1079
+#: src/remmina_file_editor.c:1202
 msgid "SSH Authentication"
 msgstr ""
 
-#: src/remmina_file_editor.c:1105
+#: src/remmina_file_editor.c:1229
 msgid "SSH private key file"
 msgstr ""
 
-#: src/remmina_file_editor.c:1111 src/remmina_ssh_plugin.c:1477
+#: src/remmina_file_editor.c:1235 src/remmina_ssh_plugin.c:1477
 msgid "SSH certificate file"
 msgstr ""
 
-#: src/remmina_file_editor.c:1169
+#: src/remmina_file_editor.c:1293
 msgid "Basic"
 msgstr ""
 
-#: src/remmina_file_editor.c:1175
+#: src/remmina_file_editor.c:1299
 msgid "Advanced"
 msgstr ""
 
-#: src/remmina_file_editor.c:1186
+#: src/remmina_file_editor.c:1310
 msgid "Notes"
 msgstr ""
 
-#: src/remmina_file_editor.c:1425
+#: src/remmina_file_editor.c:1438
+#, c-format
+msgid "(%s: %i): setting_name_to_validate, value or gfe are NULL!"
+msgstr ""
+
+#: src/remmina_file_editor.c:1661 src/remmina_file_editor.c:1697
+#: src/remmina_file_editor.c:1718 src/remmina_file_editor.c:1741
+#, c-format
+msgid "Couldn't validate user input. %s"
+msgstr ""
+
+#: src/remmina_file_editor.c:1685
 msgid "Default settings saved."
 msgstr ""
 
-#: src/remmina_file_editor.c:1495
+#: src/remmina_file_editor.c:1775
 msgid "Remote Connection Profile"
 msgstr ""
 
-#: src/remmina_file_editor.c:1501
+#: src/remmina_file_editor.c:1781
 msgid "Save as Default"
 msgstr ""
 
-#: src/remmina_file_editor.c:1502
+#: src/remmina_file_editor.c:1782
 msgid "Use the current settings as the default for all new connection profiles"
 msgstr ""
 
-#: src/remmina_file_editor.c:1510 data/ui/remmina_main.glade:160
+#: src/remmina_file_editor.c:1790 data/ui/remmina_main.glade:160
 msgid "Connect"
 msgstr ""
 
-#: src/remmina_file_editor.c:1513
+#: src/remmina_file_editor.c:1793
 msgid "_Save and Connect"
 msgstr ""
 
-#: src/remmina_file_editor.c:1636
+#: src/remmina_file_editor.c:1916
 msgid "Quick Connect"
 msgstr ""
 
-#: src/remmina_file_editor.c:1660
+#: src/remmina_file_editor.c:1940
 #, c-format
 msgid "Use '%s' as subgroup delimiter"
 msgstr ""
 
-#: src/remmina_file_editor.c:1726 src/remmina_file_editor.c:1744
+#: src/remmina_file_editor.c:2006 src/remmina_file_editor.c:2024
 #, c-format
 msgid "Could not find the file “%s”."
 msgstr ""
@@ -2607,146 +2622,260 @@ msgstr ""
 msgid "Secured password storage in the GNOME keyring"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:166
+#: plugins/x2go/x2go_plugin.c:275
 msgid "Broken `DialogData`! Aborting…"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:170
+#: plugins/x2go/x2go_plugin.c:279
 msgid "Can't retrieve `DialogData`! Aborting…"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:389
+#: plugins/x2go/x2go_plugin.c:505
 msgid "pyhoca-cli exited unexpectedly. This connection will now be closed."
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:398
+#: plugins/x2go/x2go_plugin.c:514
 msgid "An error occured."
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:399
+#: plugins/x2go/x2go_plugin.c:515
 msgid ""
 "The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
 "Please check your profile settings and pyhoca-cli's output for possible "
 "errors and ensure the remote server is reachable."
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:439
+#: plugins/x2go/x2go_plugin.c:561 plugins/x2go/x2go_plugin.c:838
+msgid "Started pyhoca-cli with following arguments:"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:580
 #, c-format
 msgid ""
 "An unknown error happened while retrieving pyhoca-cli's cmdline features! "
 "Exit code: %i"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:444
+#: plugins/x2go/x2go_plugin.c:585
 #, c-format
 msgid "Error: '%s'"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:532
+#: plugins/x2go/x2go_plugin.c:609
+msgid "Given username can't get saved since it's empty!"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:622
+msgid ""
+"An error occured while trying to save new credentials: 's_password' or "
+"'s_username' strings were not set."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:659
 msgid "Enter X2Go credentials"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:556
-msgid ""
-"User requested storing credentials but 'password' is not set! Can't set a "
-"new default password then."
+#: plugins/x2go/x2go_plugin.c:818
+msgid "DPI setting is out of bounds. Please adjust it in profile settings."
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:666
-msgid "DPI setting is out of bounds. Please adjust it in the profile settings."
+#. TRANSLATORS: Meta-error. Shouldn't be visible.
+#: plugins/x2go/x2go_plugin.c:856 plugins/x2go/x2go_plugin.c:1441
+msgid "Internal error."
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:705
+#: plugins/x2go/x2go_plugin.c:858
 msgid "An error occured while starting an X2Go session…"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:714
+#: plugins/x2go/x2go_plugin.c:867
 msgid "Could not start X2Go session."
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:715
+#: plugins/x2go/x2go_plugin.c:868
 #, c-format
 msgid "Could not start PyHoca-CLI (%i): '%s'"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:784
+#: plugins/x2go/x2go_plugin.c:945
 msgid ""
 "Couldn't get pyhoca-cli's cmdline-features. This indicates either your "
 "pyhoca-cli version is too old or pyhoca-cli is not installed! An old limited "
 "set of features will be used now."
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:796
+#: plugins/x2go/x2go_plugin.c:957
 msgid ""
-"parsing pyhoca-cli functionality was not possible! Using a limited feature-"
+"Parsing pyhoca-cli functionality was not possible! Using a limited feature-"
 "set for now."
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:802
+#: plugins/x2go/x2go_plugin.c:964
 msgid "Retrieved the following pyhoca-cli functionality:"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:806
+#: plugins/x2go/x2go_plugin.c:969
 #, c-format
 msgid "Available feature[%i]: '%s'"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:948
+#: plugins/x2go/x2go_plugin.c:1074
+msgid "Could not open X11 DISPLAY."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1114
 msgid "Waiting for X2Go Agent window to appear."
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:974
+#: plugins/x2go/x2go_plugin.c:1140
 msgid "Waiting for pyhoca-cli to show the session's window."
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1145
+#: plugins/x2go/x2go_plugin.c:1191
+msgid "No X2Go session window appeared. Something went wrong…"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1300
+msgid "RemminaProtocolWidget* gp is null!"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1320
 #, c-format
 msgid "The protocol %s is unavailable because GtkSocket only works under X.org"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1195
+#: plugins/x2go/x2go_plugin.c:1328
+msgid "Could not initialize pthread. Falling back to non-threaded mode…"
+msgstr ""
+
+#. TRANSLATORS: Presumably you just want to translate 'and' into
+#. your language.
+#. (Except your listing-grammar differs from english.)
+#. 'value1', 'value2', 'valueN-1' and 'valueN'
+#. TRANSLATORS: Presumably you just want to translate 'and' into
+#. your language.
+#. (Except your listing-grammar differs from english.)
+#. 'value1' and 'value2'
+#: plugins/x2go/x2go_plugin.c:1371 plugins/x2go/x2go_plugin.c:1389
+#, c-format
+msgid "%sand '%s'"
+msgstr ""
+
+#. TRANSLATORS: Presumably you just want to leave it english.
+#. (Except your listing-grammar differs from english.)
+#. 'value1', 'value2', 'valueN-1' and 'valueN'
+#. TRANSLATORS: Presumably you just want to leave it english.
+#. (Except your listing-grammar differs from english.)
+#. 'value1' and 'value2'
+#: plugins/x2go/x2go_plugin.c:1376 plugins/x2go/x2go_plugin.c:1394
+#, c-format
+msgid "%s'%s' "
+msgstr ""
+
+#. TRANSLATORS: Presumably you just want to leave it english.
+#. (Except your listing-grammar differs from english.)
+#. 'value1', 'value2', 'valueN-1' and 'valueN'
+#: plugins/x2go/x2go_plugin.c:1381
+#, c-format
+msgid "%s'%s', "
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1419 plugins/x2go/x2go_plugin.c:1431
+#: plugins/x2go/x2go_plugin.c:1493
+msgid "Validation data in ProtocolSettings array is invalid!"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1458
+#, c-format
+msgid "Allowed values are %s."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1460
+#, c-format
+msgid "Only allowed value is '%s'."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1502
+msgid "Limit minimum is not a valid integer!"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1504
+msgid "Limit minimum is too large!"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1506
+msgid "Limit minimum is too small!"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1508 plugins/x2go/x2go_plugin.c:1522
+#: plugins/x2go/x2go_plugin.c:1537
+msgid "Something went wrong."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1516
+msgid "Limit maximum is not a valid integer!"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1518
+msgid "Limit maximum is too large!"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1520
+msgid "Limit maximum is too small!"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1532
+msgid "Input is not a valid integer!"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1534 plugins/x2go/x2go_plugin.c:1547
+#, c-format
+msgid "Input must be a number between %i and %i."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1582
 msgid "Startup program"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1197
+#: plugins/x2go/x2go_plugin.c:1584
 msgid "Which command should be executed after creating the X2Go session?"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1204
+#: plugins/x2go/x2go_plugin.c:1591
 msgid "Keyboard Layout (auto)"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1207
+#: plugins/x2go/x2go_plugin.c:1594
 msgid "Keyboard type (auto)"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1210
+#: plugins/x2go/x2go_plugin.c:1597
 msgid "Audio support"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1212
+#: plugins/x2go/x2go_plugin.c:1599
 msgid "The X2Go server's sound system (default: 'pulse')."
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1215
+#: plugins/x2go/x2go_plugin.c:1602
 msgid "Clipboard direction"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1217
+#: plugins/x2go/x2go_plugin.c:1604
 msgid "Which direction should clipboard content be copied? (default: 'both')."
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1221
+#: plugins/x2go/x2go_plugin.c:1608
 msgid "DPI resolution"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1222
+#: plugins/x2go/x2go_plugin.c:1609
 msgid ""
 "Launch session with a specific resolution (in dots per inch). Must be "
-"between 20 and 400"
+"between 20 and 400."
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1265
+#: plugins/x2go/x2go_plugin.c:1653
 msgid "X2Go plugin loaded."
 msgstr ""
 
