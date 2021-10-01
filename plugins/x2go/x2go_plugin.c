@@ -1297,7 +1297,8 @@ static gpointer rmplugin_x2go_main_thread(RemminaProtocolWidget* gp)
 {
 	TRACE_CALL(__func__);
 	if (!gp) {
-		REMMINA_PLUGIN_CRITICAL("%s", _("RemminaProtocolWidget* gp is null!"));
+		REMMINA_PLUGIN_CRITICAL("%s", _("Internal error: RemminaProtocolWidget* "
+						"gp is NULL!"));
 		return NULL;
 	}
 
