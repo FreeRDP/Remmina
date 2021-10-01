@@ -1558,59 +1558,43 @@ static GError* rmplugin_x2go_int_setting_validator(gchar* key, gpointer value, g
  * c) Setting description
  * d) Compact disposition
  * e) Values for REMMINA_PROTOCOL_SETTING_TYPE_SELECT or REMMINA_PROTOCOL_SETTING_TYPE_COMBO
- * f) Setting Tooltip
- * g) Validation Data Pointer, will be passed to the validation callback method.
- * h) Validation callback method (Can be null. Every entry will be valid then.)
+ * f) Setting tooltip
+ * g) Validation data pointer, will be passed to the validation callback method.
+ * h) Validation callback method (Can be NULL. Every entry will be valid then.)
  *		use following prototype:
  *		gboolean mysetting_validator_method(gpointer key, gpointer value,
- *		gpointer validator_data);
+ *						    gpointer validator_data);
  *		gpointer key is a gchar* containing the setting's name,
  *		gpointer value contains the value which should be validated,
  *		gpointer validator_data contains your passed data.
  */
-
 static const RemminaProtocolSetting rmplugin_x2go_basic_settings[] = {
-	{REMMINA_PROTOCOL_SETTING_TYPE_SERVER, "server", NULL, FALSE, NULL, NULL,
-		/* Validation Data */ NULL,
-		/* Validation Method */ NULL},
-	{REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "username", N_("Username"), FALSE, NULL, NULL,
-		/* Validation Data */ NULL,
-		/* Validation Method */ NULL},
-	{REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "password", N_("Password"), FALSE, NULL, NULL,
-		/* Validation Data */ NULL,
-		/* Validation Method */ NULL},
-	{REMMINA_PROTOCOL_SETTING_TYPE_COMBO, "command", N_("Startup program"), FALSE,
-		/* Options to select (or custom user string) */ "MATE,KDE,XFCE,LXDE,TERMINAL",
-		/* Tooltip */ N_("Which command should be "
-						 "executed after creating the X2Go session?"),
-		/* Validation Data */ NULL,
-		/* Validation Method */ NULL},
-	{REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION, "resolution", NULL, FALSE, NULL, NULL,
-		/* Validation Data */ NULL,
-		/* Validation Method */ NULL},
-	{REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "kbdlayout", N_("Keyboard Layout (auto)"), FALSE, NULL, NULL,
-		/* Validation Data */ NULL,
-		/* Validation Method */ NULL},
-	{REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "kbdtype", N_("Keyboard type (auto)"), FALSE, NULL, NULL,
-		/* Validation Data */ NULL,
-		/* Validation Method */ NULL},
-	{REMMINA_PROTOCOL_SETTING_TYPE_COMBO, "audio", N_("Audio support"), FALSE,
-		/* Options to select (or custom user string) */ "pulse,esd,none",
-		/* Tooltip */ N_("The X2Go server's sound system (default: 'pulse')."),
-		/* Validation Data */ "pulse,esd,none",
-		/* Validation Method */ G_CALLBACK(rmplugin_x2go_string_setting_validator)},
-	{REMMINA_PROTOCOL_SETTING_TYPE_COMBO, "clipboard", N_("Clipboard direction"), FALSE,
-		/* Options to select (or custom user string) */ "none,server,client,both",
-		/* Tooltip */ N_("Which direction should clipboard content be copied? "
-						 "(default: 'both')."),
-		/* Validation Data */ "none,server,client,both",
-		/* Validation Method */ G_CALLBACK(rmplugin_x2go_string_setting_validator)},
-	{REMMINA_PROTOCOL_SETTING_TYPE_INT, "dpi", N_("DPI resolution"), FALSE, NULL,
-		/* Tooltip */ N_("Launch session with a specific resolution (in dots per inch). "
-						"Must be between 20 and 400."),
-		/* Validation Data */ "20;400", // "<min>;<max>;"
-		/* Validation Method */ G_CALLBACK(rmplugin_x2go_int_setting_validator)},
-	{REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL}};
+    {REMMINA_PROTOCOL_SETTING_TYPE_SERVER,	"server",	NULL,				FALSE, NULL, NULL, NULL, NULL},
+    {REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	"username",	N_("Username"), 		FALSE, NULL, NULL, NULL, NULL},
+    {REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD,	"password",	N_("Password"), 		FALSE, NULL, NULL, NULL, NULL},
+    {REMMINA_PROTOCOL_SETTING_TYPE_COMBO,	"command",	N_("Startup program"),		FALSE,
+     /* SELECT & COMBO Values */ "MATE,KDE,XFCE,LXDE,TERMINAL",
+     /* Tooltip */ N_("Which command should be executed after creating the X2Go session?"), 			   NULL, NULL},
+    {REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION,	"resolution",	NULL, 				FALSE, NULL, NULL, NULL, NULL},
+    {REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	"kbdlayout", 	N_("Keyboard Layout (auto)"), 	FALSE, NULL, NULL, NULL, NULL},
+    {REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	"kbdtype", 	N_("Keyboard type (auto)"), 	FALSE, NULL, NULL, NULL, NULL},
+    {REMMINA_PROTOCOL_SETTING_TYPE_COMBO,	"audio", 	N_("Audio support"), 		FALSE,
+     /* SELECT & COMBO Values */ "pulse,esd,none",
+     /* Tooltip */ N_("The X2Go server's sound system (default: 'pulse')."),
+     /* Validation data */ "pulse,esd,none",
+     /* Validation method */ G_CALLBACK(rmplugin_x2go_string_setting_validator)},
+    {REMMINA_PROTOCOL_SETTING_TYPE_COMBO,	"clipboard", 	N_("Clipboard direction"), 	FALSE,
+     /* SELECT & COMBO Values */ "none,server,client,both",
+     /* Tooltip */ N_("Which direction should clipboard content be copied? "
+		      "(default: 'both')."),
+     /* Validation data */ "none,server,client,both",
+     /* Validation method */ G_CALLBACK(rmplugin_x2go_string_setting_validator)},
+    {REMMINA_PROTOCOL_SETTING_TYPE_INT,		"dpi", 		N_("DPI resolution"), 		FALSE,	NULL,
+     /* Tooltip */ N_("Launch session with a specific resolution (in dots per inch). "
+		      "Must be between 20 and 400."),
+     /* Validation data */ "20;400", // "<min>;<max>;"
+     /* Validation method */ G_CALLBACK(rmplugin_x2go_int_setting_validator)},
+    {REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL, NULL, NULL}};
 
 /* Protocol plugin definition and features */
 static RemminaProtocolPlugin rmplugin_x2go = {

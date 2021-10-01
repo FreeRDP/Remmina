@@ -337,18 +337,26 @@ static const RemminaProtocolFeature remmina_plugin_sftp_features[] =
  * c) Setting description
  * d) Compact disposition
  * e) Values for REMMINA_PROTOCOL_SETTING_TYPE_SELECT or REMMINA_PROTOCOL_SETTING_TYPE_COMBO
- * f) Setting Tooltip
+ * f) Setting tooltip
+ * g) Validation data pointer, will be passed to the validation callback method.
+ * h) Validation callback method (Can be NULL. Every entry will be valid then.)
+ *		use following prototype:
+ *		gboolean mysetting_validator_method(gpointer key, gpointer value,
+ *						    gpointer validator_data);
+ *		gpointer key is a gchar* containing the setting's name,
+ *		gpointer value contains the value which should be validated,
+ *		gpointer validator_data contains your passed data.
  */
 static const RemminaProtocolSetting remmina_sftp_basic_settings[] =
 {
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER,	  "server",	      NULL,				    FALSE, "_sftp-ssh._tcp", NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "username",	      N_("Username"),			    FALSE, NULL,	     NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "password",	      N_("Password"),			    FALSE, NULL,	     NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "ssh_auth",	      N_("Authentication type"),	    FALSE, ssh_auth,	     NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_FILE,	  "ssh_privatekey",   N_("SSH identity file"),		    FALSE, NULL,	     NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "ssh_passphrase",   N_("Password to unlock private key"), FALSE, NULL,	     NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "ssh_proxycommand", N_("SSH Proxy Command"),		    FALSE, NULL,	     NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	  NULL,		      NULL,				    FALSE, NULL,	     NULL }
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER,	  "server",	      NULL,				    FALSE, "_sftp-ssh._tcp", NULL, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "username",	      N_("Username"),			    FALSE, NULL,	     NULL, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "password",	      N_("Password"),			    FALSE, NULL,	     NULL, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "ssh_auth",	      N_("Authentication type"),	    FALSE, ssh_auth,	     NULL, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_FILE,	  "ssh_privatekey",   N_("SSH identity file"),		    FALSE, NULL,	     NULL, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "ssh_passphrase",   N_("Password to unlock private key"), FALSE, NULL,	     NULL, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "ssh_proxycommand", N_("SSH Proxy Command"),		    FALSE, NULL,	     NULL, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	  NULL,		      NULL,				    FALSE, NULL,	     NULL, NULL, NULL }
 };
 
 /* Protocol plugin definition and features */

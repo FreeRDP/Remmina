@@ -1455,30 +1455,36 @@ static RemminaProtocolFeature remmina_plugin_ssh_features[] =
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_END,  0,					     NULL,			NULL,			   NULL }
 };
 
-/**
- * Array of RemminaProtocolSetting for basic settings.
- * - Each item is composed by:
- *  1. RemminaProtocolSettingType for setting type.
- *  2. Setting name.
- *  3. Setting description.
- *  4. Compact disposition.
- *  5. Values for REMMINA_PROTOCOL_SETTING_TYPE_SELECT or REMMINA_PROTOCOL_SETTING_TYPE_COMBO.
- *  6. Setting Tooltip.
- * .
+/* Array of RemminaProtocolSetting for basic settings.
+ * Each item is composed by:
+ * a) RemminaProtocolSettingType for setting type
+ * b) Setting name
+ * c) Setting description
+ * d) Compact disposition
+ * e) Values for REMMINA_PROTOCOL_SETTING_TYPE_SELECT or REMMINA_PROTOCOL_SETTING_TYPE_COMBO
+ * f) Setting tooltip
+ * g) Validation data pointer, will be passed to the validation callback method.
+ * h) Validation callback method (Can be NULL. Every entry will be valid then.)
+ *		use following prototype:
+ *		gboolean mysetting_validator_method(gpointer key, gpointer value,
+ *						    gpointer validator_data);
+ *		gpointer key is a gchar* containing the setting's name,
+ *		gpointer value contains the value which should be validated,
+ *		gpointer validator_data contains your passed data.
  */
 static const RemminaProtocolSetting remmina_ssh_basic_settings[] =
 {
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER,	  "server",	    NULL,				  FALSE, "_ssh._tcp", NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "ssh_auth",	    N_("Authentication type"),		  FALSE, ssh_auth,    NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "username",	    N_("Username"),			  FALSE, NULL,	      NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "password",	    N_("User password"),		  FALSE, NULL,	      NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_FILE,	  "ssh_privatekey", N_("SSH identity file"),		  FALSE, NULL,	      NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER,	  "server",	    NULL,				  FALSE, "_ssh._tcp", NULL, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "ssh_auth",	    N_("Authentication type"),		  FALSE, ssh_auth,    NULL, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "username",	    N_("Username"),			  FALSE, NULL,	      NULL, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "password",	    N_("User password"),		  FALSE, NULL,	      NULL, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_FILE,	  "ssh_privatekey", N_("SSH identity file"),		  FALSE, NULL,	      NULL, NULL, NULL },
 #if LIBSSH_VERSION_INT >= SSH_VERSION_INT(0, 9, 0)
-	{ REMMINA_PROTOCOL_SETTING_TYPE_FILE,	  "ssh_certfile",   N_("SSH certificate file"),		  FALSE, NULL,	      NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_FILE,	  "ssh_certfile",   N_("SSH certificate file"),		  FALSE, NULL,	      NULL, NULL, NULL },
 #endif
-	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "ssh_passphrase", N_("Password to unlock private key"), FALSE, NULL,	      NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "exec",	    N_("Start-up program"),		  FALSE, NULL,	      NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	  NULL,		    NULL,				  FALSE, NULL,	      NULL }
+	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "ssh_passphrase", N_("Password to unlock private key"), FALSE, NULL,	      NULL, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "exec",	    N_("Start-up program"),		  FALSE, NULL,	      NULL, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	  NULL,		    NULL,				  FALSE, NULL,	      NULL, NULL, NULL }
 };
 
 static gchar log_tips[] =
