@@ -104,6 +104,8 @@ typedef struct _RemminaProtocolSetting {
 	gboolean			compact;
 	gpointer			opt1;
 	gpointer			opt2;
+	gpointer			validator_data;
+	GCallback			validator;
 } RemminaProtocolSetting;
 
 typedef enum {

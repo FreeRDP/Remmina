@@ -519,7 +519,10 @@ gchar *remmina_file_format_properties(RemminaFile *remminafile, const gchar *set
 void remmina_file_set_int(RemminaFile *remminafile, const gchar *setting, gint value)
 {
 	TRACE_CALL(__func__);
-	g_hash_table_insert(remminafile->settings, g_strdup(setting), g_strdup_printf("%i", value));
+	if (remminafile)
+		g_hash_table_insert(remminafile->settings,
+							g_strdup(setting),
+							g_strdup_printf("%i", value));
 }
 
 gint remmina_file_get_int(RemminaFile *remminafile, const gchar *setting, gint default_value)
@@ -581,9 +584,13 @@ void remmina_file_free(RemminaFile *remminafile)
 	if (remminafile == NULL)
 		return;
 
-	g_free(remminafile->filename);
-	g_hash_table_destroy(remminafile->settings);
-	g_hash_table_destroy(remminafile->spsettings);
+	if (remminafile->filename)
+		g_free(remminafile->filename);
+	if (remminafile->settings)
+		g_hash_table_destroy(remminafile->settings);
+	if (remminafile->spsettings)
+		g_hash_table_destroy(remminafile->spsettings);
+
 	g_free(remminafile);
 }
 
@@ -782,7 +789,7 @@ void remmina_file_unsave_passwords(RemminaFile *remminafile)
 			setting_iter = protocol_plugin->basic_settings;
 			if (setting_iter) {
 				while (setting_iter->type != REMMINA_PROTOCOL_SETTING_TYPE_END) {
-					g_debug("setting name: %s", setting_iter->name);
+					// TOO VERBOSE: g_debug("setting name: %s", setting_iter->name);
 					if (setting_iter->name == NULL) {
 						g_error("Internal error: a setting name in protocol plugin %s is null. Please fix RemminaProtocolSetting struct content.", proto);
 					} else {
