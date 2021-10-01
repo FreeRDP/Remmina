@@ -824,6 +824,7 @@ static gpointer colordepth_list[] =
 	"4", N_("Ultra low colour (3 bits)"),
 	NULL
 };
+
 /* Array of RemminaProtocolSetting for basic settings.
  * Each item is composed by:
  * a) RemminaProtocolSettingType for setting type
@@ -831,16 +832,24 @@ static gpointer colordepth_list[] =
  * c) Setting description
  * d) Compact disposition
  * e) Values for REMMINA_PROTOCOL_SETTING_TYPE_SELECT or REMMINA_PROTOCOL_SETTING_TYPE_COMBO
- * f) Setting Tooltip
+ * f) Setting tooltip
+ * g) Validation data pointer, will be passed to the validation callback method.
+ * h) Validation callback method (Can be NULL. Every entry will be valid then.)
+ *		use following prototype:
+ *		gboolean mysetting_validator_method(gpointer key, gpointer value,
+ *						    gpointer validator_data);
+ *		gpointer key is a gchar* containing the setting's name,
+ *		gpointer value contains the value which should be validated,
+ *		gpointer validator_data contains your passed data.
  */
 static const RemminaProtocolSetting gvnc_plugin_basic_settings[] =
 {
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER,	  "server",	    NULL,			FALSE, NULL,		NULL					     },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "password",	    N_("VNC password"),		FALSE, NULL,		NULL					     },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "depth_profile",  N_("Colour depth"),		FALSE, colordepth_list, NULL					     },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "lossy_encoding", N_("Use JPEG Compression"), TRUE,  NULL,		N_("This might not work on all VNC servers") },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "gvncdebug",	    N_("Enable GTK-VNC debug"), FALSE, NULL,		NULL					     },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	  NULL,		    NULL,			FALSE, NULL,		NULL					     }
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER,	  "server",	    NULL,			FALSE, NULL,		NULL, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "password",	    N_("VNC password"),		FALSE, NULL,		NULL, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "depth_profile",  N_("Colour depth"),		FALSE, colordepth_list, NULL, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "lossy_encoding", N_("Use JPEG Compression"), TRUE,  NULL,		N_("This might not work on all VNC servers"), NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "gvncdebug",	    N_("Enable GTK-VNC debug"), FALSE, NULL,		NULL, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	  NULL,		    NULL,			FALSE, NULL,		NULL, NULL, NULL }
 };
 
 /* Array of RemminaProtocolSetting for advanced settings.
