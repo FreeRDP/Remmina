@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-10-01 22:36+0000\n"
-"PO-Revision-Date: 2021-09-30 04:37+0000\n"
+"POT-Creation-Date: 2021-10-01 23:50+0000\n"
+"PO-Revision-Date: 2021-10-02 01:29+0000\n"
 "Last-Translator: Eric <spice2wolf@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "remmina/remmina/zh_Hans/>\n"
@@ -29,7 +29,7 @@ msgstr ""
 #: src/remmina_protocol_widget.c:1672 src/remmina_protocol_widget.c:1691
 #: src/remmina_file_editor.c:1101 src/remmina_file_editor.c:1222
 #: src/remmina_ssh_plugin.c:1369 plugins/rdp/rdp_plugin.c:2675
-#: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:1574
+#: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:1575
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1675
 #: data/ui/remmina_unlock.glade:116
 msgid "Password"
@@ -76,7 +76,7 @@ msgstr "通过 SSH 从新终端连接"
 #: src/remmina_file_editor.c:1216 src/remmina_ssh_plugin.c:1479
 #: plugins/rdp/rdp_plugin.c:2674 plugins/vnc/vnc_plugin.c:1976
 #: plugins/vnc/vnc_plugin.c:1988 plugins/www/www_plugin.c:894
-#: plugins/x2go/x2go_plugin.c:1573 data/ui/remmina_mpc.glade:144
+#: plugins/x2go/x2go_plugin.c:1574 data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr "用户名"
 
@@ -98,7 +98,7 @@ msgstr "SSH 代理命令"
 msgid "SFTP - Secure File Transfer"
 msgstr "SFTP - 安全文件传输"
 
-#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1945
+#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1951
 msgid "Protocol"
 msgstr "协议"
 
@@ -131,7 +131,7 @@ msgstr "插件"
 msgid "_OK"
 msgstr "确定(_O)"
 
-#: src/remmina_plugin_manager.c:479 src/remmina_file_editor.c:1902
+#: src/remmina_plugin_manager.c:479 src/remmina_file_editor.c:1908
 #: data/ui/remmina_main.glade:442
 msgid "Name"
 msgstr "名称"
@@ -267,7 +267,7 @@ msgstr "保存密码"
 
 #: src/remmina_message_panel.c:457 src/remmina_message_panel.c:629
 #: src/remmina_sftp_client.c:947 src/remmina_file_editor.c:241
-#: src/remmina_file_editor.c:1777 plugins/spice/spice_plugin_file_transfer.c:84
+#: src/remmina_file_editor.c:1783 plugins/spice/spice_plugin_file_transfer.c:84
 #: data/ui/remmina_key_chooser.glade:8 data/ui/remmina_key_chooser.glade:9
 #: data/ui/remmina_spinner.glade:8 data/ui/remmina_spinner.glade:9
 msgid "_Cancel"
@@ -721,7 +721,7 @@ msgstr "大小"
 msgid "User"
 msgstr "用户名"
 
-#: src/remmina_ftp_client.c:932 src/remmina_file_editor.c:1927
+#: src/remmina_ftp_client.c:932 src/remmina_file_editor.c:1933
 #: data/ui/remmina_mpc.glade:115 data/ui/remmina_main.glade:464
 msgid "Group"
 msgstr "分组"
@@ -1153,7 +1153,7 @@ msgstr ""
 msgid "Import"
 msgstr "导入"
 
-#: src/remmina_main.c:1022 src/remmina_file_editor.c:1785
+#: src/remmina_main.c:1022 src/remmina_file_editor.c:1791
 msgid "_Save"
 msgstr "保存(_S)"
 
@@ -1305,7 +1305,7 @@ msgstr ""
 
 #: src/remmina_file_editor.c:162
 msgid "Input is invalid."
-msgstr ""
+msgstr "输入无效。"
 
 #: src/remmina_file_editor.c:239
 msgid "Choose a Remote Desktop Server"
@@ -1415,50 +1415,62 @@ msgstr "备注"
 
 #: src/remmina_file_editor.c:1438
 #, c-format
-msgid "(%s: %i): setting_name_to_validate, value or gfe are NULL!"
-msgstr ""
+msgid "(%s: %i): Can't validate setting '%s' since 'value' or 'gfe' are NULL!"
+msgstr "(%s: %i): 无法验证设置 '%s' ，因 'value' 或'gfe' 为 NULL！"
 
-#: src/remmina_file_editor.c:1661 src/remmina_file_editor.c:1697
-#: src/remmina_file_editor.c:1718 src/remmina_file_editor.c:1741
-#, fuzzy, c-format
-#| msgid "Could not create SFTP session. %s"
+#: src/remmina_file_editor.c:1441
+#, c-format
+msgid ""
+"(%s: %i): Can't validate user input since 'setting_name_to_validate', "
+"'value' or 'gfe' are NULL!"
+msgstr "(%s: %i): 无法验证用户输入，因'setting_name_to_validate'、'value' 或 'gfe' 为 NULL！"
+
+#. TRANSLATORS: Meta-error. Shouldn't be visible.
+#: src/remmina_file_editor.c:1445 plugins/x2go/x2go_plugin.c:856
+#: plugins/x2go/x2go_plugin.c:1442
+msgid "Internal error."
+msgstr "内部错误。"
+
+#: src/remmina_file_editor.c:1667 src/remmina_file_editor.c:1703
+#: src/remmina_file_editor.c:1724 src/remmina_file_editor.c:1747
+#, c-format
 msgid "Couldn't validate user input. %s"
-msgstr "无法创建 SFTP 会话。%s"
+msgstr "无法验证用户输入。%s"
 
-#: src/remmina_file_editor.c:1685
+#: src/remmina_file_editor.c:1691
 msgid "Default settings saved."
 msgstr "默认值已保存。"
 
-#: src/remmina_file_editor.c:1775
+#: src/remmina_file_editor.c:1781
 msgid "Remote Connection Profile"
 msgstr "远程连接配置文件"
 
-#: src/remmina_file_editor.c:1781
+#: src/remmina_file_editor.c:1787
 msgid "Save as Default"
 msgstr "保存为默认值"
 
-#: src/remmina_file_editor.c:1782
+#: src/remmina_file_editor.c:1788
 msgid "Use the current settings as the default for all new connection profiles"
 msgstr "将当前设置用作所有新连接配置文件的默认设置"
 
-#: src/remmina_file_editor.c:1790 data/ui/remmina_main.glade:160
+#: src/remmina_file_editor.c:1796 data/ui/remmina_main.glade:160
 msgid "Connect"
 msgstr "连接"
 
-#: src/remmina_file_editor.c:1793
+#: src/remmina_file_editor.c:1799
 msgid "_Save and Connect"
 msgstr "保存并连接(_S)"
 
-#: src/remmina_file_editor.c:1916
+#: src/remmina_file_editor.c:1922
 msgid "Quick Connect"
 msgstr "快速连接"
 
-#: src/remmina_file_editor.c:1940
+#: src/remmina_file_editor.c:1946
 #, c-format
 msgid "Use '%s' as subgroup delimiter"
 msgstr "使用“%s”作为分组分隔符"
 
-#: src/remmina_file_editor.c:2006 src/remmina_file_editor.c:2024
+#: src/remmina_file_editor.c:2012 src/remmina_file_editor.c:2030
 #, c-format
 msgid "Could not find the file “%s”."
 msgstr "找不到文件 “%s”。"
@@ -2818,7 +2830,7 @@ msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:561 plugins/x2go/x2go_plugin.c:838
 msgid "Started pyhoca-cli with following arguments:"
-msgstr ""
+msgstr "使用以下参数启动了pyhoca-cli："
 
 #: plugins/x2go/x2go_plugin.c:580
 #, c-format
@@ -2847,18 +2859,8 @@ msgid "Enter X2Go credentials"
 msgstr "输入 X2Go 凭据"
 
 #: plugins/x2go/x2go_plugin.c:818
-#, fuzzy
-#| msgid ""
-#| "DPI setting is out of bounds. Please adjust it in the profile settings."
 msgid "DPI setting is out of bounds. Please adjust it in profile settings."
 msgstr "DPI 设置越界。请在配置文件设置中进行调整。"
-
-#. TRANSLATORS: Meta-error. Shouldn't be visible.
-#: plugins/x2go/x2go_plugin.c:856 plugins/x2go/x2go_plugin.c:1441
-#, fuzzy
-#| msgid "Transfer error"
-msgid "Internal error."
-msgstr "传输错误"
 
 #: plugins/x2go/x2go_plugin.c:858
 msgid "An error occured while starting an X2Go session…"
@@ -2883,10 +2885,6 @@ msgstr ""
 "pyhoca-cli！现在将使用旧的有限的功能集。"
 
 #: plugins/x2go/x2go_plugin.c:957
-#, fuzzy
-#| msgid ""
-#| "parsing pyhoca-cli functionality was not possible! Using a limited "
-#| "feature-set for now."
 msgid ""
 "Parsing pyhoca-cli functionality was not possible! Using a limited feature-"
 "set for now."
@@ -2902,10 +2900,8 @@ msgid "Available feature[%i]: '%s'"
 msgstr "可用功能[%i]: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:1074
-#, fuzzy
-#| msgid "Could not open channel. %s"
 msgid "Could not open X11 DISPLAY."
-msgstr "打开通道失败。%s"
+msgstr "无法打开 X11 DISPLAY。"
 
 #: plugins/x2go/x2go_plugin.c:1114
 msgid "Waiting for X2Go Agent window to appear."
@@ -2920,15 +2916,15 @@ msgid "No X2Go session window appeared. Something went wrong…"
 msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:1300
-msgid "RemminaProtocolWidget* gp is null!"
+msgid "Internal error: RemminaProtocolWidget* gp is NULL!"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1320
+#: plugins/x2go/x2go_plugin.c:1321
 #, c-format
 msgid "The protocol %s is unavailable because GtkSocket only works under X.org"
 msgstr "协议 %s 不可用，因为 GtkSocket 仅在 X.org 下工作"
 
-#: plugins/x2go/x2go_plugin.c:1328
+#: plugins/x2go/x2go_plugin.c:1329
 msgid "Could not initialize pthread. Falling back to non-threaded mode…"
 msgstr ""
 
@@ -2940,7 +2936,7 @@ msgstr ""
 #. your language.
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
-#: plugins/x2go/x2go_plugin.c:1371 plugins/x2go/x2go_plugin.c:1389
+#: plugins/x2go/x2go_plugin.c:1372 plugins/x2go/x2go_plugin.c:1390
 #, c-format
 msgid "%sand '%s'"
 msgstr ""
@@ -2951,7 +2947,7 @@ msgstr ""
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
-#: plugins/x2go/x2go_plugin.c:1376 plugins/x2go/x2go_plugin.c:1394
+#: plugins/x2go/x2go_plugin.c:1377 plugins/x2go/x2go_plugin.c:1395
 #, c-format
 msgid "%s'%s' "
 msgstr ""
@@ -2959,111 +2955,107 @@ msgstr ""
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
 #. 'value1', 'value2', 'valueN-1' and 'valueN'
-#: plugins/x2go/x2go_plugin.c:1381
+#: plugins/x2go/x2go_plugin.c:1382
 #, c-format
 msgid "%s'%s', "
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1419 plugins/x2go/x2go_plugin.c:1431
-#: plugins/x2go/x2go_plugin.c:1493
+#: plugins/x2go/x2go_plugin.c:1420 plugins/x2go/x2go_plugin.c:1432
+#: plugins/x2go/x2go_plugin.c:1494
 msgid "Validation data in ProtocolSettings array is invalid!"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1458
+#: plugins/x2go/x2go_plugin.c:1459
 #, c-format
 msgid "Allowed values are %s."
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1460
+#: plugins/x2go/x2go_plugin.c:1461
 #, c-format
 msgid "Only allowed value is '%s'."
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1502
+#: plugins/x2go/x2go_plugin.c:1503
 msgid "Limit minimum is not a valid integer!"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1504
+#: plugins/x2go/x2go_plugin.c:1505
 msgid "Limit minimum is too large!"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1506
+#: plugins/x2go/x2go_plugin.c:1507
 msgid "Limit minimum is too small!"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1508 plugins/x2go/x2go_plugin.c:1522
-#: plugins/x2go/x2go_plugin.c:1537
+#: plugins/x2go/x2go_plugin.c:1509 plugins/x2go/x2go_plugin.c:1523
+#: plugins/x2go/x2go_plugin.c:1538
 msgid "Something went wrong."
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1516
+#: plugins/x2go/x2go_plugin.c:1517
 msgid "Limit maximum is not a valid integer!"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1518
+#: plugins/x2go/x2go_plugin.c:1519
 msgid "Limit maximum is too large!"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1520
+#: plugins/x2go/x2go_plugin.c:1521
 msgid "Limit maximum is too small!"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1532
+#: plugins/x2go/x2go_plugin.c:1533
 msgid "Input is not a valid integer!"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1534 plugins/x2go/x2go_plugin.c:1547
+#: plugins/x2go/x2go_plugin.c:1535 plugins/x2go/x2go_plugin.c:1548
 #, c-format
 msgid "Input must be a number between %i and %i."
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1575
+#: plugins/x2go/x2go_plugin.c:1576
 msgid "Startup program"
 msgstr "启动程序"
 
-#: plugins/x2go/x2go_plugin.c:1577
+#: plugins/x2go/x2go_plugin.c:1578
 msgid "Which command should be executed after creating the X2Go session?"
 msgstr "创建 X2Go 会话后应该执行哪个命令？"
 
-#: plugins/x2go/x2go_plugin.c:1579
+#: plugins/x2go/x2go_plugin.c:1580
 msgid "Keyboard Layout (auto)"
 msgstr "键盘布局 (自动)"
 
-#: plugins/x2go/x2go_plugin.c:1580
+#: plugins/x2go/x2go_plugin.c:1581
 msgid "Keyboard type (auto)"
 msgstr "键盘类型 (自动)"
 
-#: plugins/x2go/x2go_plugin.c:1581
+#: plugins/x2go/x2go_plugin.c:1582
 msgid "Audio support"
 msgstr "音频支持"
 
-#: plugins/x2go/x2go_plugin.c:1583
+#: plugins/x2go/x2go_plugin.c:1584
 msgid "The X2Go server's sound system (default: 'pulse')."
 msgstr "X2Go 服务器的声音系统 (默认为'pulse')。"
 
-#: plugins/x2go/x2go_plugin.c:1586
+#: plugins/x2go/x2go_plugin.c:1587
 msgid "Clipboard direction"
 msgstr "剪贴板方向"
 
-#: plugins/x2go/x2go_plugin.c:1588
+#: plugins/x2go/x2go_plugin.c:1589
 msgid "Which direction should clipboard content be copied? (default: 'both')."
 msgstr "应在哪个方向复制剪贴板内容？(默认:“both”)。"
 
-#: plugins/x2go/x2go_plugin.c:1592
+#: plugins/x2go/x2go_plugin.c:1593
 msgid "DPI resolution"
 msgstr "DPI 分辨率"
 
-#: plugins/x2go/x2go_plugin.c:1593
-#, fuzzy
-#| msgid ""
-#| "Launch session with a specific resolution (in dots per inch). Must be "
-#| "between 20 and 400"
+#: plugins/x2go/x2go_plugin.c:1594
 msgid ""
 "Launch session with a specific resolution (in dots per inch). Must be "
 "between 20 and 400."
-msgstr "以特定的分辨率 (点每英寸) 启动会话。必须在20到400之间"
+msgstr "以特定的分辨率 (点每英寸) 启动会话。值必须在 20 到 400 之间。"
 
-#: plugins/x2go/x2go_plugin.c:1637
+#: plugins/x2go/x2go_plugin.c:1638
 msgid "X2Go plugin loaded."
 msgstr "已加载 X2Go 插件。"
 

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-10-01 22:36+0000\n"
+"POT-Creation-Date: 2021-10-01 23:50+0000\n"
 "PO-Revision-Date: 2021-07-16 08:59+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/remmina/"
@@ -28,7 +28,7 @@ msgstr ""
 #: src/remmina_protocol_widget.c:1672 src/remmina_protocol_widget.c:1691
 #: src/remmina_file_editor.c:1101 src/remmina_file_editor.c:1222
 #: src/remmina_ssh_plugin.c:1369 plugins/rdp/rdp_plugin.c:2675
-#: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:1574
+#: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:1575
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1675
 #: data/ui/remmina_unlock.glade:116
 msgid "Password"
@@ -75,7 +75,7 @@ msgstr "Kapcsolódás SSH-val új terminálban"
 #: src/remmina_file_editor.c:1216 src/remmina_ssh_plugin.c:1479
 #: plugins/rdp/rdp_plugin.c:2674 plugins/vnc/vnc_plugin.c:1976
 #: plugins/vnc/vnc_plugin.c:1988 plugins/www/www_plugin.c:894
-#: plugins/x2go/x2go_plugin.c:1573 data/ui/remmina_mpc.glade:144
+#: plugins/x2go/x2go_plugin.c:1574 data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr "Felhasználónév"
 
@@ -97,7 +97,7 @@ msgstr "SSH-proxy parancs"
 msgid "SFTP - Secure File Transfer"
 msgstr "SFTP – Biztonságos fájlátvitel"
 
-#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1945
+#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1951
 msgid "Protocol"
 msgstr "Protokoll"
 
@@ -130,7 +130,7 @@ msgstr "Bővítmények"
 msgid "_OK"
 msgstr "_OK"
 
-#: src/remmina_plugin_manager.c:479 src/remmina_file_editor.c:1902
+#: src/remmina_plugin_manager.c:479 src/remmina_file_editor.c:1908
 #: data/ui/remmina_main.glade:442
 msgid "Name"
 msgstr "Név"
@@ -268,7 +268,7 @@ msgstr "Jelszó mentése"
 
 #: src/remmina_message_panel.c:457 src/remmina_message_panel.c:629
 #: src/remmina_sftp_client.c:947 src/remmina_file_editor.c:241
-#: src/remmina_file_editor.c:1777 plugins/spice/spice_plugin_file_transfer.c:84
+#: src/remmina_file_editor.c:1783 plugins/spice/spice_plugin_file_transfer.c:84
 #: data/ui/remmina_key_chooser.glade:8 data/ui/remmina_key_chooser.glade:9
 #: data/ui/remmina_spinner.glade:8 data/ui/remmina_spinner.glade:9
 msgid "_Cancel"
@@ -743,7 +743,7 @@ msgstr "Méret"
 msgid "User"
 msgstr "Felhasználó"
 
-#: src/remmina_ftp_client.c:932 src/remmina_file_editor.c:1927
+#: src/remmina_ftp_client.c:932 src/remmina_file_editor.c:1933
 #: data/ui/remmina_mpc.glade:115 data/ui/remmina_main.glade:464
 msgid "Group"
 msgstr "Csoport"
@@ -1184,7 +1184,7 @@ msgstr ""
 msgid "Import"
 msgstr "Importálás"
 
-#: src/remmina_main.c:1022 src/remmina_file_editor.c:1785
+#: src/remmina_main.c:1022 src/remmina_file_editor.c:1791
 msgid "_Save"
 msgstr "Me_ntés"
 
@@ -1478,52 +1478,67 @@ msgstr "Jegyzetek"
 
 #: src/remmina_file_editor.c:1438
 #, c-format
-msgid "(%s: %i): setting_name_to_validate, value or gfe are NULL!"
+msgid "(%s: %i): Can't validate setting '%s' since 'value' or 'gfe' are NULL!"
 msgstr ""
 
-#: src/remmina_file_editor.c:1661 src/remmina_file_editor.c:1697
-#: src/remmina_file_editor.c:1718 src/remmina_file_editor.c:1741
+#: src/remmina_file_editor.c:1441
+#, c-format
+msgid ""
+"(%s: %i): Can't validate user input since 'setting_name_to_validate', "
+"'value' or 'gfe' are NULL!"
+msgstr ""
+
+#. TRANSLATORS: Meta-error. Shouldn't be visible.
+#: src/remmina_file_editor.c:1445 plugins/x2go/x2go_plugin.c:856
+#: plugins/x2go/x2go_plugin.c:1442
+#, fuzzy
+#| msgid "Transfer error"
+msgid "Internal error."
+msgstr "Átviteli hiba"
+
+#: src/remmina_file_editor.c:1667 src/remmina_file_editor.c:1703
+#: src/remmina_file_editor.c:1724 src/remmina_file_editor.c:1747
 #, fuzzy, c-format
 #| msgid "Could not create SFTP session. %s"
 msgid "Couldn't validate user input. %s"
 msgstr "Nem sikerült létrehozni az SFTP kapcsolatot. %s"
 
-#: src/remmina_file_editor.c:1685
+#: src/remmina_file_editor.c:1691
 msgid "Default settings saved."
 msgstr "Alapértelmezett beállítások mentve."
 
-#: src/remmina_file_editor.c:1775
+#: src/remmina_file_editor.c:1781
 msgid "Remote Connection Profile"
 msgstr "Új kapcsolódási profil"
 
-#: src/remmina_file_editor.c:1781
+#: src/remmina_file_editor.c:1787
 msgid "Save as Default"
 msgstr "Mentés alapértelmezettként"
 
-#: src/remmina_file_editor.c:1782
+#: src/remmina_file_editor.c:1788
 msgid "Use the current settings as the default for all new connection profiles"
 msgstr ""
 "Az aktuális beállítások használata alapértelmezettként minden új kapcsolat "
 "profilhoz"
 
-#: src/remmina_file_editor.c:1790 data/ui/remmina_main.glade:160
+#: src/remmina_file_editor.c:1796 data/ui/remmina_main.glade:160
 msgid "Connect"
 msgstr "Kapcsolódás"
 
-#: src/remmina_file_editor.c:1793
+#: src/remmina_file_editor.c:1799
 msgid "_Save and Connect"
 msgstr "_Mentés és kapcsolódás"
 
-#: src/remmina_file_editor.c:1916
+#: src/remmina_file_editor.c:1922
 msgid "Quick Connect"
 msgstr "Gyors csatlakozás"
 
-#: src/remmina_file_editor.c:1940
+#: src/remmina_file_editor.c:1946
 #, c-format
 msgid "Use '%s' as subgroup delimiter"
 msgstr "A(z) „%s” használata alcsoport elválasztóként"
 
-#: src/remmina_file_editor.c:2006 src/remmina_file_editor.c:2024
+#: src/remmina_file_editor.c:2012 src/remmina_file_editor.c:2030
 #, c-format
 msgid "Could not find the file “%s”."
 msgstr "Nem található a \"%s\" fájl."
@@ -2980,13 +2995,6 @@ msgstr "Adja meg az NX hitelesítő adatokat"
 msgid "DPI setting is out of bounds. Please adjust it in profile settings."
 msgstr ""
 
-#. TRANSLATORS: Meta-error. Shouldn't be visible.
-#: plugins/x2go/x2go_plugin.c:856 plugins/x2go/x2go_plugin.c:1441
-#, fuzzy
-#| msgid "Transfer error"
-msgid "Internal error."
-msgstr "Átviteli hiba"
-
 #: plugins/x2go/x2go_plugin.c:858
 msgid "An error occured while starting an X2Go session…"
 msgstr ""
@@ -3044,10 +3052,10 @@ msgid "No X2Go session window appeared. Something went wrong…"
 msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:1300
-msgid "RemminaProtocolWidget* gp is null!"
+msgid "Internal error: RemminaProtocolWidget* gp is NULL!"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1320
+#: plugins/x2go/x2go_plugin.c:1321
 #, fuzzy, c-format
 #| msgid ""
 #| "The protocol “%s” is unavailable because GtkSocket only works under X.Org."
@@ -3055,7 +3063,7 @@ msgid "The protocol %s is unavailable because GtkSocket only works under X.org"
 msgstr ""
 "A \"%s\" protokoll nem elérhető, mert a GtkSocket csak X.Org alatt működik."
 
-#: plugins/x2go/x2go_plugin.c:1328
+#: plugins/x2go/x2go_plugin.c:1329
 msgid "Could not initialize pthread. Falling back to non-threaded mode…"
 msgstr ""
 
@@ -3067,7 +3075,7 @@ msgstr ""
 #. your language.
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
-#: plugins/x2go/x2go_plugin.c:1371 plugins/x2go/x2go_plugin.c:1389
+#: plugins/x2go/x2go_plugin.c:1372 plugins/x2go/x2go_plugin.c:1390
 #, c-format
 msgid "%sand '%s'"
 msgstr ""
@@ -3078,7 +3086,7 @@ msgstr ""
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
-#: plugins/x2go/x2go_plugin.c:1376 plugins/x2go/x2go_plugin.c:1394
+#: plugins/x2go/x2go_plugin.c:1377 plugins/x2go/x2go_plugin.c:1395
 #, c-format
 msgid "%s'%s' "
 msgstr ""
@@ -3086,119 +3094,119 @@ msgstr ""
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
 #. 'value1', 'value2', 'valueN-1' and 'valueN'
-#: plugins/x2go/x2go_plugin.c:1381
+#: plugins/x2go/x2go_plugin.c:1382
 #, c-format
 msgid "%s'%s', "
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1419 plugins/x2go/x2go_plugin.c:1431
-#: plugins/x2go/x2go_plugin.c:1493
+#: plugins/x2go/x2go_plugin.c:1420 plugins/x2go/x2go_plugin.c:1432
+#: plugins/x2go/x2go_plugin.c:1494
 msgid "Validation data in ProtocolSettings array is invalid!"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1458
+#: plugins/x2go/x2go_plugin.c:1459
 #, c-format
 msgid "Allowed values are %s."
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1460
+#: plugins/x2go/x2go_plugin.c:1461
 #, c-format
 msgid "Only allowed value is '%s'."
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1502
+#: plugins/x2go/x2go_plugin.c:1503
 msgid "Limit minimum is not a valid integer!"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1504
+#: plugins/x2go/x2go_plugin.c:1505
 msgid "Limit minimum is too large!"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1506
+#: plugins/x2go/x2go_plugin.c:1507
 msgid "Limit minimum is too small!"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1508 plugins/x2go/x2go_plugin.c:1522
-#: plugins/x2go/x2go_plugin.c:1537
+#: plugins/x2go/x2go_plugin.c:1509 plugins/x2go/x2go_plugin.c:1523
+#: plugins/x2go/x2go_plugin.c:1538
 msgid "Something went wrong."
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1516
+#: plugins/x2go/x2go_plugin.c:1517
 msgid "Limit maximum is not a valid integer!"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1518
+#: plugins/x2go/x2go_plugin.c:1519
 msgid "Limit maximum is too large!"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1520
+#: plugins/x2go/x2go_plugin.c:1521
 msgid "Limit maximum is too small!"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1532
+#: plugins/x2go/x2go_plugin.c:1533
 msgid "Input is not a valid integer!"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1534 plugins/x2go/x2go_plugin.c:1547
+#: plugins/x2go/x2go_plugin.c:1535 plugins/x2go/x2go_plugin.c:1548
 #, c-format
 msgid "Input must be a number between %i and %i."
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1575
+#: plugins/x2go/x2go_plugin.c:1576
 #, fuzzy
 #| msgid "Start-up program"
 msgid "Startup program"
 msgstr "Induló program"
 
-#: plugins/x2go/x2go_plugin.c:1577
+#: plugins/x2go/x2go_plugin.c:1578
 msgid "Which command should be executed after creating the X2Go session?"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1579
+#: plugins/x2go/x2go_plugin.c:1580
 #, fuzzy
 #| msgid "Keyboard layout"
 msgid "Keyboard Layout (auto)"
 msgstr "Billentyűzetkiosztás"
 
-#: plugins/x2go/x2go_plugin.c:1580
+#: plugins/x2go/x2go_plugin.c:1581
 #, fuzzy
 #| msgid "Keyboard layout"
 msgid "Keyboard type (auto)"
 msgstr "Billentyűzetkiosztás"
 
-#: plugins/x2go/x2go_plugin.c:1581
+#: plugins/x2go/x2go_plugin.c:1582
 #, fuzzy
 #| msgid "Turn on Java support"
 msgid "Audio support"
 msgstr "Java támogatás bekapcsolása"
 
-#: plugins/x2go/x2go_plugin.c:1583
+#: plugins/x2go/x2go_plugin.c:1584
 msgid "The X2Go server's sound system (default: 'pulse')."
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1586
+#: plugins/x2go/x2go_plugin.c:1587
 #, fuzzy
 #| msgid "USB redirection error"
 msgid "Clipboard direction"
 msgstr "TCP átirányítás"
 
-#: plugins/x2go/x2go_plugin.c:1588
+#: plugins/x2go/x2go_plugin.c:1589
 msgid "Which direction should clipboard content be copied? (default: 'both')."
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1592
+#: plugins/x2go/x2go_plugin.c:1593
 #, fuzzy
 #| msgid "Resolution"
 msgid "DPI resolution"
 msgstr "Felbontás"
 
-#: plugins/x2go/x2go_plugin.c:1593
+#: plugins/x2go/x2go_plugin.c:1594
 msgid ""
 "Launch session with a specific resolution (in dots per inch). Must be "
 "between 20 and 400."
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1637
+#: plugins/x2go/x2go_plugin.c:1638
 msgid "X2Go plugin loaded."
 msgstr ""
 

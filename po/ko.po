@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-10-01 22:36+0000\n"
+"POT-Creation-Date: 2021-10-01 23:50+0000\n"
 "PO-Revision-Date: 2021-10-01 22:31+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -27,7 +27,7 @@ msgstr ""
 #: src/remmina_protocol_widget.c:1672 src/remmina_protocol_widget.c:1691
 #: src/remmina_file_editor.c:1101 src/remmina_file_editor.c:1222
 #: src/remmina_ssh_plugin.c:1369 plugins/rdp/rdp_plugin.c:2675
-#: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:1574
+#: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:1575
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1675
 #: data/ui/remmina_unlock.glade:116
 msgid "Password"
@@ -74,7 +74,7 @@ msgstr "새 터미널에서 SSH로 연결하기"
 #: src/remmina_file_editor.c:1216 src/remmina_ssh_plugin.c:1479
 #: plugins/rdp/rdp_plugin.c:2674 plugins/vnc/vnc_plugin.c:1976
 #: plugins/vnc/vnc_plugin.c:1988 plugins/www/www_plugin.c:894
-#: plugins/x2go/x2go_plugin.c:1573 data/ui/remmina_mpc.glade:144
+#: plugins/x2go/x2go_plugin.c:1574 data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr "사용자명"
 
@@ -96,7 +96,7 @@ msgstr "SSH 프록시 명령"
 msgid "SFTP - Secure File Transfer"
 msgstr "SFTP - 보안 파일 전송"
 
-#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1945
+#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1951
 msgid "Protocol"
 msgstr "프로토콜"
 
@@ -129,7 +129,7 @@ msgstr "부가 기능"
 msgid "_OK"
 msgstr "_OK"
 
-#: src/remmina_plugin_manager.c:479 src/remmina_file_editor.c:1902
+#: src/remmina_plugin_manager.c:479 src/remmina_file_editor.c:1908
 #: data/ui/remmina_main.glade:442
 msgid "Name"
 msgstr "이름"
@@ -270,7 +270,7 @@ msgstr "비밀번호 저장"
 
 #: src/remmina_message_panel.c:457 src/remmina_message_panel.c:629
 #: src/remmina_sftp_client.c:947 src/remmina_file_editor.c:241
-#: src/remmina_file_editor.c:1777 plugins/spice/spice_plugin_file_transfer.c:84
+#: src/remmina_file_editor.c:1783 plugins/spice/spice_plugin_file_transfer.c:84
 #: data/ui/remmina_key_chooser.glade:8 data/ui/remmina_key_chooser.glade:9
 #: data/ui/remmina_spinner.glade:8 data/ui/remmina_spinner.glade:9
 msgid "_Cancel"
@@ -715,7 +715,7 @@ msgstr "크기"
 msgid "User"
 msgstr "사용자"
 
-#: src/remmina_ftp_client.c:932 src/remmina_file_editor.c:1927
+#: src/remmina_ftp_client.c:932 src/remmina_file_editor.c:1933
 #: data/ui/remmina_mpc.glade:115 data/ui/remmina_main.glade:464
 msgid "Group"
 msgstr "그룹"
@@ -1147,7 +1147,7 @@ msgstr ""
 msgid "Import"
 msgstr "가져오기"
 
-#: src/remmina_main.c:1022 src/remmina_file_editor.c:1785
+#: src/remmina_main.c:1022 src/remmina_file_editor.c:1791
 msgid "_Save"
 msgstr "_저장"
 
@@ -1410,50 +1410,65 @@ msgstr "노트"
 
 #: src/remmina_file_editor.c:1438
 #, fuzzy, c-format
-msgid "(%s: %i): setting_name_to_validate, value or gfe are NULL!"
+msgid "(%s: %i): Can't validate setting '%s' since 'value' or 'gfe' are NULL!"
 msgstr "(%s: %i): setting_name_to_validate, 값 또는 gfe는 NULL입니다!"
 
-#: src/remmina_file_editor.c:1661 src/remmina_file_editor.c:1697
-#: src/remmina_file_editor.c:1718 src/remmina_file_editor.c:1741
+#: src/remmina_file_editor.c:1441
+#, fuzzy, c-format
+msgid ""
+"(%s: %i): Can't validate user input since 'setting_name_to_validate', "
+"'value' or 'gfe' are NULL!"
+msgstr "(%s: %i): setting_name_to_validate, 값 또는 gfe는 NULL입니다!"
+
+#. TRANSLATORS: Meta-error. Shouldn't be visible.
+#: src/remmina_file_editor.c:1445 plugins/x2go/x2go_plugin.c:856
+#: plugins/x2go/x2go_plugin.c:1442
+#, fuzzy
+#| msgid "Transfer error"
+msgid "Internal error."
+msgstr "내부 에러"
+
+#: src/remmina_file_editor.c:1667 src/remmina_file_editor.c:1703
+#: src/remmina_file_editor.c:1724 src/remmina_file_editor.c:1747
 #, fuzzy, c-format
 #| msgid "Could not create SFTP session. %s"
 msgid "Couldn't validate user input. %s"
 msgstr "사용자 입력의 유효성을 검사할 수 없습니다. 【X30X】"
 
-#: src/remmina_file_editor.c:1685
+#: src/remmina_file_editor.c:1691
 msgid "Default settings saved."
 msgstr "기본 설정으로 저장됨."
 
-#: src/remmina_file_editor.c:1775
+#: src/remmina_file_editor.c:1781
 msgid "Remote Connection Profile"
 msgstr "새 연결 프로필"
 
-#: src/remmina_file_editor.c:1781
+#: src/remmina_file_editor.c:1787
 msgid "Save as Default"
 msgstr "기본값으로 저장"
 
-#: src/remmina_file_editor.c:1782
+#: src/remmina_file_editor.c:1788
 msgid "Use the current settings as the default for all new connection profiles"
 msgstr "모든 새 연결 프로필의 기본값으로 현재 설정 사용"
 
-#: src/remmina_file_editor.c:1790 data/ui/remmina_main.glade:160
+#: src/remmina_file_editor.c:1796 data/ui/remmina_main.glade:160
 msgid "Connect"
 msgstr "연결"
 
-#: src/remmina_file_editor.c:1793
+#: src/remmina_file_editor.c:1799
 msgid "_Save and Connect"
 msgstr "_저장 및 연결"
 
-#: src/remmina_file_editor.c:1916
+#: src/remmina_file_editor.c:1922
 msgid "Quick Connect"
 msgstr "빠른 접속"
 
-#: src/remmina_file_editor.c:1940
+#: src/remmina_file_editor.c:1946
 #, c-format
 msgid "Use '%s' as subgroup delimiter"
 msgstr "'%s' 하위그룹 구분자 사용"
 
-#: src/remmina_file_editor.c:2006 src/remmina_file_editor.c:2024
+#: src/remmina_file_editor.c:2012 src/remmina_file_editor.c:2030
 #, c-format
 msgid "Could not find the file “%s”."
 msgstr "\"%s\" 파일을 찾을 수 없습니다."
@@ -2892,13 +2907,6 @@ msgstr "X2Go 자격 증명 입력"
 msgid "DPI setting is out of bounds. Please adjust it in profile settings."
 msgstr "DPI 설정은 범위를 벗어났습니다. 프로필 설정에서 조정하십시오."
 
-#. TRANSLATORS: Meta-error. Shouldn't be visible.
-#: plugins/x2go/x2go_plugin.c:856 plugins/x2go/x2go_plugin.c:1441
-#, fuzzy
-#| msgid "Transfer error"
-msgid "Internal error."
-msgstr "내부 에러"
-
 #: plugins/x2go/x2go_plugin.c:858
 #, fuzzy
 msgid "An error occured while starting an X2Go session…"
@@ -2968,10 +2976,10 @@ msgstr "X2Go 세션 창이 나타나지 않았습니다. 뭔가 잘못되었습�
 
 #: plugins/x2go/x2go_plugin.c:1300
 #, fuzzy
-msgid "RemminaProtocolWidget* gp is null!"
+msgid "Internal error: RemminaProtocolWidget* gp is NULL!"
 msgstr "렘미나 의정서 위젯 * gp는 null입니다!"
 
-#: plugins/x2go/x2go_plugin.c:1320
+#: plugins/x2go/x2go_plugin.c:1321
 #, fuzzy, c-format
 #| msgid ""
 #| "The protocol “%s” is unavailable because GtkSocket only works under X.Org."
@@ -2979,7 +2987,7 @@ msgid "The protocol %s is unavailable because GtkSocket only works under X.org"
 msgstr ""
 "GtkSocket은 X.Org에서만 동작하기에 \"%s\" 프로토콜을 사용할 수 없습니다."
 
-#: plugins/x2go/x2go_plugin.c:1328
+#: plugins/x2go/x2go_plugin.c:1329
 #, fuzzy
 msgid "Could not initialize pthread. Falling back to non-threaded mode…"
 msgstr "pthread를 초기화할 수 없습니다. 스레드가 아닌 모드로 다시 떨어지는…"
@@ -2992,7 +3000,7 @@ msgstr "pthread를 초기화할 수 없습니다. 스레드가 아닌 모드로 
 #. your language.
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
-#: plugins/x2go/x2go_plugin.c:1371 plugins/x2go/x2go_plugin.c:1389
+#: plugins/x2go/x2go_plugin.c:1372 plugins/x2go/x2go_plugin.c:1390
 #, fuzzy, c-format
 msgid "%sand '%s'"
 msgstr "%s와 '%s'"
@@ -3003,7 +3011,7 @@ msgstr "%s와 '%s'"
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
-#: plugins/x2go/x2go_plugin.c:1376 plugins/x2go/x2go_plugin.c:1394
+#: plugins/x2go/x2go_plugin.c:1377 plugins/x2go/x2go_plugin.c:1395
 #, fuzzy, c-format
 msgid "%s'%s' "
 msgstr "%s'%s' "
@@ -3011,125 +3019,125 @@ msgstr "%s'%s' "
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
 #. 'value1', 'value2', 'valueN-1' and 'valueN'
-#: plugins/x2go/x2go_plugin.c:1381
+#: plugins/x2go/x2go_plugin.c:1382
 #, fuzzy, c-format
 msgid "%s'%s', "
 msgstr "%s'%s', "
 
-#: plugins/x2go/x2go_plugin.c:1419 plugins/x2go/x2go_plugin.c:1431
-#: plugins/x2go/x2go_plugin.c:1493
+#: plugins/x2go/x2go_plugin.c:1420 plugins/x2go/x2go_plugin.c:1432
+#: plugins/x2go/x2go_plugin.c:1494
 #, fuzzy
 msgid "Validation data in ProtocolSettings array is invalid!"
 msgstr "프로토콜 설정 배열의 유효성 검사 데이터는 유효하지 않습니다!"
 
-#: plugins/x2go/x2go_plugin.c:1458
+#: plugins/x2go/x2go_plugin.c:1459
 #, fuzzy, c-format
 msgid "Allowed values are %s."
 msgstr "허용값은 %s입니다."
 
-#: plugins/x2go/x2go_plugin.c:1460
+#: plugins/x2go/x2go_plugin.c:1461
 #, fuzzy, c-format
 msgid "Only allowed value is '%s'."
 msgstr "허용된 값만 '%s'입니다."
 
-#: plugins/x2go/x2go_plugin.c:1502
+#: plugins/x2go/x2go_plugin.c:1503
 #, fuzzy
 msgid "Limit minimum is not a valid integer!"
 msgstr "최소 한도는 유효 정수가 아닙니다!"
 
-#: plugins/x2go/x2go_plugin.c:1504
+#: plugins/x2go/x2go_plugin.c:1505
 #, fuzzy
 msgid "Limit minimum is too large!"
 msgstr "최소 한도가 너무 큽습니다!"
 
-#: plugins/x2go/x2go_plugin.c:1506
+#: plugins/x2go/x2go_plugin.c:1507
 #, fuzzy
 msgid "Limit minimum is too small!"
 msgstr "최소 한도가 너무 작습니다!"
 
-#: plugins/x2go/x2go_plugin.c:1508 plugins/x2go/x2go_plugin.c:1522
-#: plugins/x2go/x2go_plugin.c:1537
+#: plugins/x2go/x2go_plugin.c:1509 plugins/x2go/x2go_plugin.c:1523
+#: plugins/x2go/x2go_plugin.c:1538
 #, fuzzy
 msgid "Something went wrong."
 msgstr "문제가 발생했습니다."
 
-#: plugins/x2go/x2go_plugin.c:1516
+#: plugins/x2go/x2go_plugin.c:1517
 #, fuzzy
 msgid "Limit maximum is not a valid integer!"
 msgstr "최대한도는 유효 정수가 아닙니다!"
 
-#: plugins/x2go/x2go_plugin.c:1518
+#: plugins/x2go/x2go_plugin.c:1519
 #, fuzzy
 msgid "Limit maximum is too large!"
 msgstr "최대한도가 너무 큽다!"
 
-#: plugins/x2go/x2go_plugin.c:1520
+#: plugins/x2go/x2go_plugin.c:1521
 #, fuzzy
 msgid "Limit maximum is too small!"
 msgstr "최대한도가 너무 작습니다!"
 
-#: plugins/x2go/x2go_plugin.c:1532
+#: plugins/x2go/x2go_plugin.c:1533
 #, fuzzy
 msgid "Input is not a valid integer!"
 msgstr "입력은 유효 정수 없습니다!"
 
-#: plugins/x2go/x2go_plugin.c:1534 plugins/x2go/x2go_plugin.c:1547
+#: plugins/x2go/x2go_plugin.c:1535 plugins/x2go/x2go_plugin.c:1548
 #, fuzzy, c-format
 msgid "Input must be a number between %i and %i."
 msgstr "입력은 %i와 %i 사이의 숫자여야 합니다."
 
-#: plugins/x2go/x2go_plugin.c:1575
+#: plugins/x2go/x2go_plugin.c:1576
 #, fuzzy
 #| msgid "Start-up program"
 msgid "Startup program"
 msgstr "시작 프로그램"
 
-#: plugins/x2go/x2go_plugin.c:1577
+#: plugins/x2go/x2go_plugin.c:1578
 #, fuzzy
 msgid "Which command should be executed after creating the X2Go session?"
 msgstr "X2Go 세션을 만든 후 실행해야 하는 명령은 무엇입니까?"
 
-#: plugins/x2go/x2go_plugin.c:1579
+#: plugins/x2go/x2go_plugin.c:1580
 #, fuzzy
 #| msgid "Keyboard layout"
 msgid "Keyboard Layout (auto)"
 msgstr "키보드 레이아웃(자동)"
 
-#: plugins/x2go/x2go_plugin.c:1580
+#: plugins/x2go/x2go_plugin.c:1581
 #, fuzzy
 #| msgid "Keyboard layout"
 msgid "Keyboard type (auto)"
 msgstr "키보드 유형(자동)"
 
-#: plugins/x2go/x2go_plugin.c:1581
+#: plugins/x2go/x2go_plugin.c:1582
 #, fuzzy
 #| msgid "Turn on Java support"
 msgid "Audio support"
 msgstr "오디오 지원"
 
-#: plugins/x2go/x2go_plugin.c:1583
+#: plugins/x2go/x2go_plugin.c:1584
 #, fuzzy
 msgid "The X2Go server's sound system (default: 'pulse')."
 msgstr "X2Go 서버의 사운드 시스템(기본값: '펄스')."
 
-#: plugins/x2go/x2go_plugin.c:1586
+#: plugins/x2go/x2go_plugin.c:1587
 #, fuzzy
 #| msgid "TCP redirection"
 msgid "Clipboard direction"
 msgstr "클립보드 방향"
 
-#: plugins/x2go/x2go_plugin.c:1588
+#: plugins/x2go/x2go_plugin.c:1589
 #, fuzzy
 msgid "Which direction should clipboard content be copied? (default: 'both')."
 msgstr "클립보드 콘텐츠를 복사해야 하는 방향은 무엇입니까? (기본값: '둘 다')."
 
-#: plugins/x2go/x2go_plugin.c:1592
+#: plugins/x2go/x2go_plugin.c:1593
 #, fuzzy
 #| msgid "Resolution"
 msgid "DPI resolution"
 msgstr "DPI 해상도"
 
-#: plugins/x2go/x2go_plugin.c:1593
+#: plugins/x2go/x2go_plugin.c:1594
 #, fuzzy
 msgid ""
 "Launch session with a specific resolution (in dots per inch). Must be "
@@ -3137,7 +3145,7 @@ msgid ""
 msgstr ""
 "특정 해상도로 세션을 시작합니다(인치당 점). 20에서 400 사이여야 합니다."
 
-#: plugins/x2go/x2go_plugin.c:1637
+#: plugins/x2go/x2go_plugin.c:1638
 #, fuzzy
 msgid "X2Go plugin loaded."
 msgstr "X2Go 플러그인로드."

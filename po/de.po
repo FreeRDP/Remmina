@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-10-01 22:36+0000\n"
-"PO-Revision-Date: 2021-10-01 22:31+0000\n"
+"POT-Creation-Date: 2021-10-01 23:50+0000\n"
+"PO-Revision-Date: 2021-10-02 01:29+0000\n"
 "Last-Translator: Daniel <daniel@teichm-sh.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/remmina/remmina/"
 "de/>\n"
@@ -31,7 +31,7 @@ msgstr ""
 #: src/remmina_protocol_widget.c:1672 src/remmina_protocol_widget.c:1691
 #: src/remmina_file_editor.c:1101 src/remmina_file_editor.c:1222
 #: src/remmina_ssh_plugin.c:1369 plugins/rdp/rdp_plugin.c:2675
-#: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:1574
+#: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:1575
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1675
 #: data/ui/remmina_unlock.glade:116
 msgid "Password"
@@ -78,7 +78,7 @@ msgstr "Über ein neues Terminal via SSH verbinden"
 #: src/remmina_file_editor.c:1216 src/remmina_ssh_plugin.c:1479
 #: plugins/rdp/rdp_plugin.c:2674 plugins/vnc/vnc_plugin.c:1976
 #: plugins/vnc/vnc_plugin.c:1988 plugins/www/www_plugin.c:894
-#: plugins/x2go/x2go_plugin.c:1573 data/ui/remmina_mpc.glade:144
+#: plugins/x2go/x2go_plugin.c:1574 data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr "Benutzername"
 
@@ -100,7 +100,7 @@ msgstr "SSH Proxy Befehl"
 msgid "SFTP - Secure File Transfer"
 msgstr "SFTP - Sichere Dateiübertragung"
 
-#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1945
+#: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1951
 msgid "Protocol"
 msgstr "Protokoll"
 
@@ -133,7 +133,7 @@ msgstr "Plugins"
 msgid "_OK"
 msgstr "_Ok"
 
-#: src/remmina_plugin_manager.c:479 src/remmina_file_editor.c:1902
+#: src/remmina_plugin_manager.c:479 src/remmina_file_editor.c:1908
 #: data/ui/remmina_main.glade:442
 msgid "Name"
 msgstr "Bezeichnung"
@@ -271,7 +271,7 @@ msgstr "Passwort speichern"
 
 #: src/remmina_message_panel.c:457 src/remmina_message_panel.c:629
 #: src/remmina_sftp_client.c:947 src/remmina_file_editor.c:241
-#: src/remmina_file_editor.c:1777 plugins/spice/spice_plugin_file_transfer.c:84
+#: src/remmina_file_editor.c:1783 plugins/spice/spice_plugin_file_transfer.c:84
 #: data/ui/remmina_key_chooser.glade:8 data/ui/remmina_key_chooser.glade:9
 #: data/ui/remmina_spinner.glade:8 data/ui/remmina_spinner.glade:9
 msgid "_Cancel"
@@ -727,7 +727,7 @@ msgstr "Größe"
 msgid "User"
 msgstr "Benutzer"
 
-#: src/remmina_ftp_client.c:932 src/remmina_file_editor.c:1927
+#: src/remmina_ftp_client.c:932 src/remmina_file_editor.c:1933
 #: data/ui/remmina_mpc.glade:115 data/ui/remmina_main.glade:464
 msgid "Group"
 msgstr "Gruppe"
@@ -1174,7 +1174,7 @@ msgstr ""
 msgid "Import"
 msgstr "Importieren"
 
-#: src/remmina_main.c:1022 src/remmina_file_editor.c:1785
+#: src/remmina_main.c:1022 src/remmina_file_editor.c:1791
 msgid "_Save"
 msgstr "_Speichern"
 
@@ -1437,51 +1437,67 @@ msgstr "Anmerkungen"
 
 #: src/remmina_file_editor.c:1438
 #, c-format
-msgid "(%s: %i): setting_name_to_validate, value or gfe are NULL!"
+msgid "(%s: %i): Can't validate setting '%s' since 'value' or 'gfe' are NULL!"
 msgstr ""
+"(%s: %i): Konnte die Einstellung '%s' nicht validieren, da 'value' oder "
+"'gfe' NULL sind!"
 
-#: src/remmina_file_editor.c:1661 src/remmina_file_editor.c:1697
-#: src/remmina_file_editor.c:1718 src/remmina_file_editor.c:1741
-#, fuzzy, c-format
-#| msgid "Could not create SFTP session. %s"
+#: src/remmina_file_editor.c:1441
+#, c-format
+msgid ""
+"(%s: %i): Can't validate user input since 'setting_name_to_validate', "
+"'value' or 'gfe' are NULL!"
+msgstr ""
+"(%s: %i): Konnte Benutzereingabe nicht validieren, da "
+"'setting_name_to_validate', 'value' oder 'gfe' NULL sind!"
+
+#. TRANSLATORS: Meta-error. Shouldn't be visible.
+#: src/remmina_file_editor.c:1445 plugins/x2go/x2go_plugin.c:856
+#: plugins/x2go/x2go_plugin.c:1442
+msgid "Internal error."
+msgstr "Interner Fehler."
+
+#: src/remmina_file_editor.c:1667 src/remmina_file_editor.c:1703
+#: src/remmina_file_editor.c:1724 src/remmina_file_editor.c:1747
+#, c-format
 msgid "Couldn't validate user input. %s"
-msgstr "SFTP‐Sitzung kann nicht erzeugt werden: %s"
+msgstr "Konnte Benutzereingabe nicht validieren. %s"
 
-#: src/remmina_file_editor.c:1685
+#: src/remmina_file_editor.c:1691
 msgid "Default settings saved."
 msgstr "Standard‐Einstellungen wurden gespeichert."
 
-#: src/remmina_file_editor.c:1775
+#: src/remmina_file_editor.c:1781
 msgid "Remote Connection Profile"
 msgstr "Neues Verbindungsprofil"
 
-#: src/remmina_file_editor.c:1781
+#: src/remmina_file_editor.c:1787
 msgid "Save as Default"
 msgstr "Als Standard speichern"
 
-#: src/remmina_file_editor.c:1782
+#: src/remmina_file_editor.c:1788
 msgid "Use the current settings as the default for all new connection profiles"
 msgstr ""
 "Die aktuellen Einstellungen als Vorgabe für alle neuen Profile verwenden"
 
-#: src/remmina_file_editor.c:1790 data/ui/remmina_main.glade:160
+#: src/remmina_file_editor.c:1796 data/ui/remmina_main.glade:160
 msgid "Connect"
 msgstr "Verbinden"
 
-#: src/remmina_file_editor.c:1793
+#: src/remmina_file_editor.c:1799
 msgid "_Save and Connect"
 msgstr "_Speichern und verbinden"
 
-#: src/remmina_file_editor.c:1916
+#: src/remmina_file_editor.c:1922
 msgid "Quick Connect"
 msgstr "Schnellverbindung"
 
-#: src/remmina_file_editor.c:1940
+#: src/remmina_file_editor.c:1946
 #, c-format
 msgid "Use '%s' as subgroup delimiter"
 msgstr "Benutze '%s' als Untergruppenteiler"
 
-#: src/remmina_file_editor.c:2006 src/remmina_file_editor.c:2024
+#: src/remmina_file_editor.c:2012 src/remmina_file_editor.c:2030
 #, c-format
 msgid "Could not find the file “%s”."
 msgstr "Kann die Datei „%s“ nicht finden."
@@ -2865,7 +2881,7 @@ msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:561 plugins/x2go/x2go_plugin.c:838
 msgid "Started pyhoca-cli with following arguments:"
-msgstr ""
+msgstr "pyhoca-cli wurde mit Folgenden Argumenten gestartet:"
 
 #: plugins/x2go/x2go_plugin.c:580
 #, c-format
@@ -2883,33 +2899,25 @@ msgstr "Fehler: ‚%s‘"
 
 #: plugins/x2go/x2go_plugin.c:609
 msgid "Given username can't get saved since it's empty!"
-msgstr ""
+msgstr "Benutzername konnte nicht gespeichert werden, da er leer ist!"
 
 #: plugins/x2go/x2go_plugin.c:622
 msgid ""
 "An error occured while trying to save new credentials: 's_password' or "
 "'s_username' strings were not set."
 msgstr ""
+"Ein Fehler trat auf, beim Versuch die Anmeldedaten zu Speichern: "
+"Zeichenfolgen 's_password' oder 's_username' sind nicht gesetzt."
 
 #: plugins/x2go/x2go_plugin.c:659
 msgid "Enter X2Go credentials"
 msgstr "Geben Sie die X2Go Anmeldedaten ein"
 
 #: plugins/x2go/x2go_plugin.c:818
-#, fuzzy
-#| msgid ""
-#| "DPI setting is out of bounds. Please adjust it in the profile settings."
 msgid "DPI setting is out of bounds. Please adjust it in profile settings."
 msgstr ""
-"Die DPI-Einstellung liegt außerhalb des erlaubten Bereiches . Bitte stellen "
+"Die DPI-Einstellung liegt außerhalb des erlaubten Bereiches. Bitte stellen "
 "Sie das in den Profileinstellungen richtig."
-
-#. TRANSLATORS: Meta-error. Shouldn't be visible.
-#: plugins/x2go/x2go_plugin.c:856 plugins/x2go/x2go_plugin.c:1441
-#, fuzzy
-#| msgid "Transfer error"
-msgid "Internal error."
-msgstr "Übertragungsfehler"
 
 #: plugins/x2go/x2go_plugin.c:858
 msgid "An error occured while starting an X2Go session…"
@@ -2935,10 +2943,6 @@ msgstr ""
 "installiert. Es wird ein altes, limitiertes Set an Features genutzt."
 
 #: plugins/x2go/x2go_plugin.c:957
-#, fuzzy
-#| msgid ""
-#| "parsing pyhoca-cli functionality was not possible! Using a limited "
-#| "feature-set for now."
 msgid ""
 "Parsing pyhoca-cli functionality was not possible! Using a limited feature-"
 "set for now."
@@ -2956,10 +2960,8 @@ msgid "Available feature[%i]: '%s'"
 msgstr "Verfügbares Feature[%i]: ‚%s‘"
 
 #: plugins/x2go/x2go_plugin.c:1074
-#, fuzzy
-#| msgid "Could not open channel. %s"
 msgid "Could not open X11 DISPLAY."
-msgstr "Das Öffnen des Kanals ist fehlgeschlagen: %s"
+msgstr "Konnte X11-Display nicht öffnen."
 
 #: plugins/x2go/x2go_plugin.c:1114
 msgid "Waiting for X2Go Agent window to appear."
@@ -2971,22 +2973,23 @@ msgstr "Warte, dass pyhoca-cli das Sitzungsfenster anzeigt."
 
 #: plugins/x2go/x2go_plugin.c:1191
 msgid "No X2Go session window appeared. Something went wrong…"
-msgstr ""
+msgstr "Es tauchte kein X2Go-Sitzungsfenster auf. Etwas ging schief…"
 
 #: plugins/x2go/x2go_plugin.c:1300
-msgid "RemminaProtocolWidget* gp is null!"
-msgstr ""
+msgid "Internal error: RemminaProtocolWidget* gp is NULL!"
+msgstr "Interner Fehler: RemminaProtocolWidget* gp ist NULL!"
 
-#: plugins/x2go/x2go_plugin.c:1320
+#: plugins/x2go/x2go_plugin.c:1321
 #, c-format
 msgid "The protocol %s is unavailable because GtkSocket only works under X.org"
 msgstr ""
 "Protokoll %s ist nicht verfügbar, da der GtkSocket nur unter X.org "
 "funktioniert"
 
-#: plugins/x2go/x2go_plugin.c:1328
+#: plugins/x2go/x2go_plugin.c:1329
 msgid "Could not initialize pthread. Falling back to non-threaded mode…"
 msgstr ""
+"Konnte pthread nicht initialisieren. Falle in Single-Thread Modus zurück…"
 
 #. TRANSLATORS: Presumably you just want to translate 'and' into
 #. your language.
@@ -2996,10 +2999,10 @@ msgstr ""
 #. your language.
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
-#: plugins/x2go/x2go_plugin.c:1371 plugins/x2go/x2go_plugin.c:1389
+#: plugins/x2go/x2go_plugin.c:1372 plugins/x2go/x2go_plugin.c:1390
 #, c-format
 msgid "%sand '%s'"
-msgstr ""
+msgstr "%sund '%s'"
 
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
@@ -3007,124 +3010,120 @@ msgstr ""
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
-#: plugins/x2go/x2go_plugin.c:1376 plugins/x2go/x2go_plugin.c:1394
+#: plugins/x2go/x2go_plugin.c:1377 plugins/x2go/x2go_plugin.c:1395
 #, c-format
 msgid "%s'%s' "
-msgstr ""
+msgstr "%s'%s' "
 
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
 #. 'value1', 'value2', 'valueN-1' and 'valueN'
-#: plugins/x2go/x2go_plugin.c:1381
+#: plugins/x2go/x2go_plugin.c:1382
 #, c-format
 msgid "%s'%s', "
-msgstr ""
+msgstr "%s'%s', "
 
-#: plugins/x2go/x2go_plugin.c:1419 plugins/x2go/x2go_plugin.c:1431
-#: plugins/x2go/x2go_plugin.c:1493
+#: plugins/x2go/x2go_plugin.c:1420 plugins/x2go/x2go_plugin.c:1432
+#: plugins/x2go/x2go_plugin.c:1494
 msgid "Validation data in ProtocolSettings array is invalid!"
-msgstr ""
+msgstr "Validationsdaten in ProtocolSettings-Array sind ungültig!"
 
-#: plugins/x2go/x2go_plugin.c:1458
+#: plugins/x2go/x2go_plugin.c:1459
 #, c-format
 msgid "Allowed values are %s."
-msgstr ""
+msgstr "Erlaubte Werte sind %s."
 
-#: plugins/x2go/x2go_plugin.c:1460
+#: plugins/x2go/x2go_plugin.c:1461
 #, c-format
 msgid "Only allowed value is '%s'."
-msgstr ""
+msgstr "Einzig erlaubter Wert ist '%s'."
 
-#: plugins/x2go/x2go_plugin.c:1502
+#: plugins/x2go/x2go_plugin.c:1503
 msgid "Limit minimum is not a valid integer!"
-msgstr ""
+msgstr "Untergrenze ist keine gültige Ganzzahl!"
 
-#: plugins/x2go/x2go_plugin.c:1504
+#: plugins/x2go/x2go_plugin.c:1505
 msgid "Limit minimum is too large!"
-msgstr ""
+msgstr "Untergrenze ist zu groß!"
 
-#: plugins/x2go/x2go_plugin.c:1506
+#: plugins/x2go/x2go_plugin.c:1507
 msgid "Limit minimum is too small!"
-msgstr ""
+msgstr "Untergrenze ist zu klein!"
 
-#: plugins/x2go/x2go_plugin.c:1508 plugins/x2go/x2go_plugin.c:1522
-#: plugins/x2go/x2go_plugin.c:1537
+#: plugins/x2go/x2go_plugin.c:1509 plugins/x2go/x2go_plugin.c:1523
+#: plugins/x2go/x2go_plugin.c:1538
 msgid "Something went wrong."
-msgstr ""
+msgstr "Etwas ging schief."
 
-#: plugins/x2go/x2go_plugin.c:1516
+#: plugins/x2go/x2go_plugin.c:1517
 msgid "Limit maximum is not a valid integer!"
-msgstr ""
+msgstr "Obergrenze ist keine gültige Ganzzahl!"
 
-#: plugins/x2go/x2go_plugin.c:1518
+#: plugins/x2go/x2go_plugin.c:1519
 msgid "Limit maximum is too large!"
-msgstr ""
+msgstr "Obergrenze ist zu groß!"
 
-#: plugins/x2go/x2go_plugin.c:1520
+#: plugins/x2go/x2go_plugin.c:1521
 msgid "Limit maximum is too small!"
-msgstr ""
+msgstr "Obergrenze ist zu klein!"
 
-#: plugins/x2go/x2go_plugin.c:1532
+#: plugins/x2go/x2go_plugin.c:1533
 msgid "Input is not a valid integer!"
-msgstr ""
+msgstr "Die Eingabe ist keine gültige Ganzzahl!"
 
-#: plugins/x2go/x2go_plugin.c:1534 plugins/x2go/x2go_plugin.c:1547
+#: plugins/x2go/x2go_plugin.c:1535 plugins/x2go/x2go_plugin.c:1548
 #, c-format
 msgid "Input must be a number between %i and %i."
-msgstr ""
+msgstr "Die Eingabe muss eine Zahl zwischen %i und %i sein."
 
-#: plugins/x2go/x2go_plugin.c:1575
+#: plugins/x2go/x2go_plugin.c:1576
 msgid "Startup program"
 msgstr "Startprogramm"
 
-#: plugins/x2go/x2go_plugin.c:1577
+#: plugins/x2go/x2go_plugin.c:1578
 msgid "Which command should be executed after creating the X2Go session?"
 msgstr ""
 "Welches Kommando soll nach dem Erzeugen der X2Go-Sitzung ausgeführt werden?"
 
-#: plugins/x2go/x2go_plugin.c:1579
+#: plugins/x2go/x2go_plugin.c:1580
 msgid "Keyboard Layout (auto)"
 msgstr "Tastenbelegung (automatisch)"
 
-#: plugins/x2go/x2go_plugin.c:1580
+#: plugins/x2go/x2go_plugin.c:1581
 msgid "Keyboard type (auto)"
 msgstr "Tastatur-Typ (automatisch)"
 
-#: plugins/x2go/x2go_plugin.c:1581
+#: plugins/x2go/x2go_plugin.c:1582
 msgid "Audio support"
 msgstr "Audio-Unterstützung"
 
-#: plugins/x2go/x2go_plugin.c:1583
+#: plugins/x2go/x2go_plugin.c:1584
 msgid "The X2Go server's sound system (default: 'pulse')."
 msgstr "X2Go Audio-System (Standard: ‚pulse‘)."
 
-#: plugins/x2go/x2go_plugin.c:1586
+#: plugins/x2go/x2go_plugin.c:1587
 msgid "Clipboard direction"
 msgstr "Richtung der Zwischenablage"
 
-#: plugins/x2go/x2go_plugin.c:1588
+#: plugins/x2go/x2go_plugin.c:1589
 msgid "Which direction should clipboard content be copied? (default: 'both')."
 msgstr ""
 "In welche Richtungen soll der Inhalt der Zwischenablage übertragen werden? "
 "Standard: in beide Richtungen."
 
-#: plugins/x2go/x2go_plugin.c:1592
+#: plugins/x2go/x2go_plugin.c:1593
 msgid "DPI resolution"
 msgstr "DPI-Auflösung"
 
-#: plugins/x2go/x2go_plugin.c:1593
-#, fuzzy
-#| msgid ""
-#| "Launch session with a specific resolution (in dots per inch). Must be "
-#| "between 20 and 400"
+#: plugins/x2go/x2go_plugin.c:1594
 msgid ""
 "Launch session with a specific resolution (in dots per inch). Must be "
 "between 20 and 400."
 msgstr ""
 "Sitzung mit einer spezifischen Auflösung starten (in Punkten pro Zoll). Muss "
-"zwischen 20 und 400 liegen"
+"zwischen 20 und 400 liegen."
 
-#: plugins/x2go/x2go_plugin.c:1637
+#: plugins/x2go/x2go_plugin.c:1638
 msgid "X2Go plugin loaded."
 msgstr "X2Go-Plugin geladen."
 
