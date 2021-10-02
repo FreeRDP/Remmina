@@ -1433,7 +1433,7 @@ static gboolean remmina_file_editor_validate_settings(RemminaFileEditor *gfe,
 												      gconstpointer value,
 													  GError **err)
 {
-	if (setting_name_to_validate || !value || !gfe) {
+	if (!setting_name_to_validate || !value || !gfe) {
 		if (!setting_name_to_validate) {
 			g_critical(_("(%s: %i): Can't validate setting '%s' since 'value' or 'gfe' "
 						 "are NULL!"), __func__, __LINE__, setting_name_to_validate);
