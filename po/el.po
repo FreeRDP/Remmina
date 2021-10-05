@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-10-01 23:50+0000\n"
-"PO-Revision-Date: 2021-10-01 14:59+0000\n"
+"PO-Revision-Date: 2021-10-05 14:04+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Greek <https://hosted.weblate.org/projects/remmina/remmina/el/"
 ">\n"
@@ -1381,8 +1381,9 @@ msgstr ""
 "- username@server[:port] (μόνο πρωτόκολλο SSH)</big>"
 
 #: src/remmina_file_editor.c:162
+#, fuzzy
 msgid "Input is invalid."
-msgstr ""
+msgstr "Η είσοδος είναι άκυρη."
 
 #: src/remmina_file_editor.c:239
 msgid "Choose a Remote Desktop Server"
@@ -1501,30 +1502,34 @@ msgid "Notes"
 msgstr "Σημειώσεις"
 
 #: src/remmina_file_editor.c:1438
-#, c-format
+#, c-format, fuzzy
 msgid "(%s: %i): Can't validate setting '%s' since 'value' or 'gfe' are NULL!"
 msgstr ""
+"(%s: %i): Δεν μπορεί να επικυρωθεί η ρύθμιση '%s', καθώς η 'value' ή η 'gfe' "
+"είναι NULL!"
 
 #: src/remmina_file_editor.c:1441
-#, c-format
+#, c-format, fuzzy
 msgid ""
 "(%s: %i): Can't validate user input since 'setting_name_to_validate', "
 "'value' or 'gfe' are NULL!"
 msgstr ""
+"(%s: %i): Δεν μπορεί να επικυρώσει την είσοδο του χρήστη αφού τα "
+"'setting_name_to_validate', 'value' ή 'gfe' είναι NULL!"
 
 #. TRANSLATORS: Meta-error. Shouldn't be visible.
 #: src/remmina_file_editor.c:1445 plugins/x2go/x2go_plugin.c:856
 #: plugins/x2go/x2go_plugin.c:1442
 #, fuzzy
 msgid "Internal error."
-msgstr "Σφάλμα μεταφοράς"
+msgstr "Εσωτερικό σφάλμα."
 
 #: src/remmina_file_editor.c:1667 src/remmina_file_editor.c:1703
 #: src/remmina_file_editor.c:1724 src/remmina_file_editor.c:1747
 #, fuzzy, c-format
 #| msgid "Could not create SFTP session. %s"
 msgid "Couldn't validate user input. %s"
-msgstr "Αποτυχία δημιουργίας συνεδρίας sftp: %s"
+msgstr "Δεν μπόρεσε να επικυρώσει την είσοδο του χρήστη. %s"
 
 #: src/remmina_file_editor.c:1691
 msgid "Default settings saved."
@@ -1586,7 +1591,7 @@ msgstr "Ενεργοποίηση ανίχνευσης υπηρεσιών"
 
 #: src/remmina_icon.c:160 data/ui/remmina_main.glade:404
 msgid "_Quit"
-msgstr "_Καταργήστε"
+msgstr "_Τερματισμός"
 
 #. TRANSLATORS: Applet name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
 #. TRANSLATORS: Applet Name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
@@ -2957,11 +2962,11 @@ msgstr "Άνοιγμα συνομιλίας…"
 
 #: plugins/vnc/vnc_plugin.h:41
 msgid "Remmina VNC Plugin"
-msgstr "Remmina VNC Plugin"
+msgstr "Προσαρτώμενη μονάδα του Remmina VNC"
 
 #: plugins/vnc/vnc_plugin.h:46
 msgid "Remmina VNC listener Plugin"
-msgstr "Remmina VNC listener Plugin"
+msgstr "Παρακολουθητής προσαρτώμενης μονάδας του Remmina VNC"
 
 #: plugins/www/www_config.h:43
 #, fuzzy
@@ -3113,8 +3118,9 @@ msgstr ""
 "σφάλματα και βεβαιωθείτε ότι ο απομακρυσμένος διακομιστής είναι προσβάσιμος."
 
 #: plugins/x2go/x2go_plugin.c:561 plugins/x2go/x2go_plugin.c:838
+#, fuzzy
 msgid "Started pyhoca-cli with following arguments:"
-msgstr ""
+msgstr "Ξεκίνησε το pyhoca-cli με τα ακόλουθα ορίσματα:"
 
 #: plugins/x2go/x2go_plugin.c:580
 #, fuzzy, c-format
@@ -3132,14 +3138,18 @@ msgid "Error: '%s'"
 msgstr "Σφάλμα: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:609
+#, fuzzy
 msgid "Given username can't get saved since it's empty!"
-msgstr ""
+msgstr "Το δεδομένο όνομα χρήστη δεν μπορεί να αποθηκευτεί αφού είναι κενό!"
 
 #: plugins/x2go/x2go_plugin.c:622
+#, fuzzy
 msgid ""
 "An error occured while trying to save new credentials: 's_password' or "
 "'s_username' strings were not set."
 msgstr ""
+"Παρουσιάστηκε σφάλμα κατά την προσπάθεια αποθήκευσης νέων διαπιστευτηρίων: "
+"οι συμβολοσειρές 's_password' ή 's_username' δεν είχαν οριστεί."
 
 #: plugins/x2go/x2go_plugin.c:659
 #, fuzzy
@@ -3188,7 +3198,7 @@ msgid ""
 "Parsing pyhoca-cli functionality was not possible! Using a limited feature-"
 "set for now."
 msgstr ""
-"η ανάλυση της λειτουργικότητας του pyhoca-cli δεν ήταν δυνατή! "
+"Η ανάλυση της λειτουργικότητας του pyhoca-cli δεν ήταν δυνατή! "
 "Χρησιμοποιώντας ένα περιορισμένο σύνολο χαρακτηριστικών προς το παρόν."
 
 #: plugins/x2go/x2go_plugin.c:964
@@ -3205,7 +3215,7 @@ msgstr "Διαθέσιμο χαρακτηριστικό[%i]: '%s''"
 #, fuzzy
 #| msgid "Could not open channel. %s"
 msgid "Could not open X11 DISPLAY."
-msgstr "Αποτυχία δημιουργίας συνεδρίας sftp: %s"
+msgstr "Δεν μπόρεσε να ανοίξει το X11 DISPLAY."
 
 #: plugins/x2go/x2go_plugin.c:1114
 #, fuzzy
@@ -3218,12 +3228,14 @@ msgid "Waiting for pyhoca-cli to show the session's window."
 msgstr "Περιμένουμε το pyhoca-cli να εμφανίσει το παράθυρο της συνεδρίας."
 
 #: plugins/x2go/x2go_plugin.c:1191
+#, fuzzy
 msgid "No X2Go session window appeared. Something went wrong…"
-msgstr ""
+msgstr "Δεν εμφανίστηκε παράθυρο συνεδρίας X2Go. Κάτι πήγε στραβά…"
 
 #: plugins/x2go/x2go_plugin.c:1300
+#, fuzzy
 msgid "Internal error: RemminaProtocolWidget* gp is NULL!"
-msgstr ""
+msgstr "Εσωτερικό σφάλμα: RemminaProtocolWidget* gp είναι NULL!"
 
 #: plugins/x2go/x2go_plugin.c:1321
 #, fuzzy, c-format
@@ -3233,8 +3245,11 @@ msgstr ""
 "κάτω από X.org"
 
 #: plugins/x2go/x2go_plugin.c:1329
+#, fuzzy
 msgid "Could not initialize pthread. Falling back to non-threaded mode…"
 msgstr ""
+"Δεν ήταν δυνατή η αρχικοποίηση του pthread. Επιστροφή σε λειτουργία χωρίς "
+"νήμα…"
 
 #. TRANSLATORS: Presumably you just want to translate 'and' into
 #. your language.
@@ -3245,9 +3260,9 @@ msgstr ""
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
 #: plugins/x2go/x2go_plugin.c:1372 plugins/x2go/x2go_plugin.c:1390
-#, c-format
+#, c-format, fuzzy
 msgid "%sand '%s'"
-msgstr ""
+msgstr "%sκαι '%s'."
 
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
@@ -3256,70 +3271,79 @@ msgstr ""
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
 #: plugins/x2go/x2go_plugin.c:1377 plugins/x2go/x2go_plugin.c:1395
-#, c-format
+#, c-format, fuzzy
 msgid "%s'%s' "
-msgstr ""
+msgstr "%s'%s' "
 
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
 #. 'value1', 'value2', 'valueN-1' and 'valueN'
 #: plugins/x2go/x2go_plugin.c:1382
-#, c-format
+#, c-format, fuzzy
 msgid "%s'%s', "
-msgstr ""
+msgstr "%s'%s', "
 
 #: plugins/x2go/x2go_plugin.c:1420 plugins/x2go/x2go_plugin.c:1432
 #: plugins/x2go/x2go_plugin.c:1494
+#, fuzzy
 msgid "Validation data in ProtocolSettings array is invalid!"
-msgstr ""
+msgstr "Τα δεδομένα επικύρωσης στον πίνακα ProtocolSettings είναι άκυρα!"
 
 #: plugins/x2go/x2go_plugin.c:1459
-#, c-format
+#, c-format, fuzzy
 msgid "Allowed values are %s."
-msgstr ""
+msgstr "Οι επιτρεπόμενες τιμές είναι %s."
 
 #: plugins/x2go/x2go_plugin.c:1461
-#, c-format
+#, c-format, fuzzy
 msgid "Only allowed value is '%s'."
-msgstr ""
+msgstr "Η μόνη επιτρεπόμενη τιμή είναι \"%s\"."
 
 #: plugins/x2go/x2go_plugin.c:1503
+#, fuzzy
 msgid "Limit minimum is not a valid integer!"
-msgstr ""
+msgstr "Το ελάχιστο όριο δεν είναι έγκυρος ακέραιος αριθμός!"
 
 #: plugins/x2go/x2go_plugin.c:1505
+#, fuzzy
 msgid "Limit minimum is too large!"
-msgstr ""
+msgstr "Το ελάχιστο όριο είναι πολύ μεγάλο!"
 
 #: plugins/x2go/x2go_plugin.c:1507
+#, fuzzy
 msgid "Limit minimum is too small!"
-msgstr ""
+msgstr "Το ελάχιστο όριο είναι πολύ μικρό!"
 
 #: plugins/x2go/x2go_plugin.c:1509 plugins/x2go/x2go_plugin.c:1523
 #: plugins/x2go/x2go_plugin.c:1538
+#, fuzzy
 msgid "Something went wrong."
-msgstr ""
+msgstr "Κάτι πήγε στραβά."
 
 #: plugins/x2go/x2go_plugin.c:1517
+#, fuzzy
 msgid "Limit maximum is not a valid integer!"
-msgstr ""
+msgstr "Το μέγιστο όριο δεν είναι έγκυρος ακέραιος αριθμός!"
 
 #: plugins/x2go/x2go_plugin.c:1519
+#, fuzzy
 msgid "Limit maximum is too large!"
-msgstr ""
+msgstr "Το μέγιστο όριο είναι πολύ μεγάλο!"
 
 #: plugins/x2go/x2go_plugin.c:1521
+#, fuzzy
 msgid "Limit maximum is too small!"
-msgstr ""
+msgstr "Το μέγιστο όριο είναι πολύ μικρό!"
 
 #: plugins/x2go/x2go_plugin.c:1533
+#, fuzzy
 msgid "Input is not a valid integer!"
-msgstr ""
+msgstr "Η είσοδος δεν είναι έγκυρος ακέραιος αριθμός!"
 
 #: plugins/x2go/x2go_plugin.c:1535 plugins/x2go/x2go_plugin.c:1548
-#, c-format
+#, c-format, fuzzy
 msgid "Input must be a number between %i and %i."
-msgstr ""
+msgstr "Η είσοδος πρέπει να είναι ένας αριθμός μεταξύ %i και %i."
 
 #: plugins/x2go/x2go_plugin.c:1576
 #, fuzzy
@@ -3381,7 +3405,7 @@ msgid ""
 "between 20 and 400."
 msgstr ""
 "Εκκίνηση συνεδρίας με συγκεκριμένη ανάλυση (σε κουκκίδες ανά ίντσα). Πρέπει "
-"να είναι μεταξύ 20 και 400"
+"να είναι μεταξύ 20 και 400."
 
 #: plugins/x2go/x2go_plugin.c:1638
 #, fuzzy

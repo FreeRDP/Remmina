@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-10-01 23:50+0000\n"
-"PO-Revision-Date: 2021-10-03 17:33+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2021-10-05 14:04+0000\n"
+"Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/remmina/remmina/"
 "he/>\n"
 "Language: he\n"
@@ -1299,9 +1299,8 @@ msgstr ""
 "• username@server[:port] (פרוטוקול SSH בלבד)</big>"
 
 #: src/remmina_file_editor.c:162
-#, fuzzy
 msgid "Input is invalid."
-msgstr "הקלט אינו חוקי."
+msgstr "הקלט שגוי."
 
 #: src/remmina_file_editor.c:239
 msgid "Choose a Remote Desktop Server"
@@ -1410,34 +1409,31 @@ msgid "Notes"
 msgstr "הערות"
 
 #: src/remmina_file_editor.c:1438
-#, c-format, fuzzy
+#, c-format
 msgid "(%s: %i): Can't validate setting '%s' since 'value' or 'gfe' are NULL!"
 msgstr ""
-"(%s: %i): אין אפשרות לאמת את ההגדרה '%s' מאחר ש- 'value' או 'gfe' הם NULL! ."
+"(%s: %i): אין אפשרות לאמת את ההגדרה ‚%s’ מאחר ש־‚value’ או ‚gfe’ הם NULL!"
 
 #: src/remmina_file_editor.c:1441
-#, c-format, fuzzy
+#, c-format
 msgid ""
 "(%s: %i): Can't validate user input since 'setting_name_to_validate', "
 "'value' or 'gfe' are NULL!"
 msgstr ""
-"(%s: %i): אין אפשרות לאמת קלט משתמש מאחר ש-'setting_name_to_validate', 'ערך' "
-"או 'gfe' הם NULL! ."
+"(%s: %i): אי אפשר לאמת את קלט המשתמש מאחר ש־‚setting_name_to_validate’,‏ "
+"‚value’ או ‚gfe’ הם NULL!"
 
 #. TRANSLATORS: Meta-error. Shouldn't be visible.
 #: src/remmina_file_editor.c:1445 plugins/x2go/x2go_plugin.c:856
 #: plugins/x2go/x2go_plugin.c:1442
-#, fuzzy
-#| msgid "Transfer error"
 msgid "Internal error."
-msgstr "שגיאה פנימית"
+msgstr "שגיאה פנימית."
 
 #: src/remmina_file_editor.c:1667 src/remmina_file_editor.c:1703
 #: src/remmina_file_editor.c:1724 src/remmina_file_editor.c:1747
-#, fuzzy, c-format
-#| msgid "Could not create SFTP session. %s"
+#, c-format
 msgid "Couldn't validate user input. %s"
-msgstr "לא היתה אפשרות לאמת קלט משתמש. %s"
+msgstr "אי אפשר לאמת קלט משתמש. %s"
 
 #: src/remmina_file_editor.c:1691
 msgid "Default settings saved."
@@ -2667,7 +2663,6 @@ msgstr ""
 "    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
 
 #: plugins/vnc/vnc_plugin.c:1948
-#, fuzzy
 msgid ""
 "Listening for remote VNC connection:\n"
 "  • The \"Listen on port\" field is the port Remmina will listen to,\n"
@@ -2676,12 +2671,12 @@ msgid ""
 "    Remmina, e.g. with x11vnc:\n"
 "    x11vnc -display :0 -connect 192.168.1.36:8888"
 msgstr ""
-"האזנה לחיבור VNC מרוחק:\n"
-"  • השדה \"האזינו ביציאה\" הוא הנמל שרחמינה תקשיב לו,\n"
-"    למשל 8888\n"
-"  • משרת VNC המרוחק, תתחבר אל\n"
-"    Remmina, למשל עם x11vnc:\n"
-"    x11vnc -תצוגה :0 -להתחבר 192.168.1.36:8888"
+"בהאזנה לחיבור VNC מרוחק:\n"
+"  • השדה „האזנה לפתחה” היא הפתחה אליה Remmina תאזין,\n"
+"    למשל: 8888\n"
+"  • משרת ה־VNC המרוחק, יש להתחבר אל\n"
+"    Remmina, למשל, עם x11vnc:\n"
+"    x11vnc -display :0 -connect 192.168.1.36:8888"
 
 #: plugins/vnc/vnc_plugin.c:1975
 msgid "Repeater"
@@ -2816,14 +2811,12 @@ msgid "Secured password storage in the GNOME keyring"
 msgstr "אחסון ססמאות מאובטח בצרור המפתחות של GNOME"
 
 #: plugins/x2go/x2go_plugin.c:275
-#, fuzzy
 msgid "Broken `DialogData`! Aborting…"
-msgstr "שבור 'DialogData'! ביטול…"
+msgstr "‚DialogData’ פגום! הפעולה מבוטלת…"
 
 #: plugins/x2go/x2go_plugin.c:279
-#, fuzzy
 msgid "Can't retrieve `DialogData`! Aborting…"
-msgstr "אין אפשרות לאחזר את 'דו-שיח'! ביטול…"
+msgstr "אי אפשר למשוך את ‚DialogData’! הפעולה מבוטלת…"
 
 #: plugins/x2go/x2go_plugin.c:505
 msgid "pyhoca-cli exited unexpectedly. This connection will now be closed."
@@ -2834,28 +2827,27 @@ msgid "An error occured."
 msgstr "אירעה שגיאה."
 
 #: plugins/x2go/x2go_plugin.c:515
-#, fuzzy
 msgid ""
 "The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
 "Please check your profile settings and pyhoca-cli's output for possible "
 "errors and ensure the remote server is reachable."
 msgstr ""
-"תהליך הילד הדרוש 'pyhoca-cli' נעצר באופן בלתי צפוי.\n"
-"נא בדוק אם קיימות שגיאות אפשריות בהגדרות הפרופיל ובפלט של pyhoca-cli וודא "
-"שניתן להגיע לשרת המרוחק."
+"תהליך הצאצא ההכרחי ‚pyhoca-cli’ נעצר בפתאומיות.\n"
+"נא לבדוק את הגדרות הפרופיל שלך ואת הפלט של pyhoca-cli לאיתור שגיאות אפשריות "
+"ולוודא שהשרת המרוחק נגיש."
 
 #: plugins/x2go/x2go_plugin.c:561 plugins/x2go/x2go_plugin.c:838
-#, fuzzy
 msgid "Started pyhoca-cli with following arguments:"
-msgstr "התחיל pyhoca-cli עם הארגומנטים הבאים:"
+msgstr "pyhoca-cli הופעל עם הארגומנטים הבאים:"
 
 #: plugins/x2go/x2go_plugin.c:580
-#, c-format, fuzzy
+#, c-format
 msgid ""
 "An unknown error happened while retrieving pyhoca-cli's cmdline features! "
 "Exit code: %i"
 msgstr ""
-"אירעה שגיאה לא ידועה בעת אחזור תכונות cmdline של pyhoca-cli! קוד יציאה: %i"
+"אירעה שגיאה בלתי ידועה בעת משיכת יכולות שורת הפקודה של pyhoca-cli! קוד יציאה:"
+" %i"
 
 #: plugins/x2go/x2go_plugin.c:585
 #, c-format
@@ -2863,27 +2855,24 @@ msgid "Error: '%s'"
 msgstr "שגיאה: ‚%s’"
 
 #: plugins/x2go/x2go_plugin.c:609
-#, fuzzy
 msgid "Given username can't get saved since it's empty!"
-msgstr "בהתחשב בשם המשתמש לא יכול להישמר מכיוון שהוא ריק!"
+msgstr "אי אפשר לשמור את שם המשתמש שסופק כי הוא ריק!"
 
 #: plugins/x2go/x2go_plugin.c:622
-#, fuzzy
 msgid ""
 "An error occured while trying to save new credentials: 's_password' or "
 "'s_username' strings were not set."
 msgstr ""
-"אירעה שגיאה בעת ניסיון לשמור אישורים חדשים: מחרוזות 's_password' או "
-"'s_username' לא הוגדרו."
+"אירעה שגיאה בעת ניסיון לשמור אישורים חדשים: המחרוזות ‚s_password’ או "
+"‚s_username’ לא הוגדרו."
 
 #: plugins/x2go/x2go_plugin.c:659
 msgid "Enter X2Go credentials"
 msgstr "נא להקליד פרטי גישה ל־X2Go"
 
 #: plugins/x2go/x2go_plugin.c:818
-#, fuzzy
 msgid "DPI setting is out of bounds. Please adjust it in profile settings."
-msgstr "הגדרת DPI היא מחוץ לתחום. נא התאם אותו בהגדרות הפרופיל."
+msgstr "הגדרת נק׳ לאינטש היא מחוץ לתחום. נא להתאים אותה בהגדרות הפרופיל."
 
 #: plugins/x2go/x2go_plugin.c:858
 msgid "An error occured while starting an X2Go session…"
@@ -2894,62 +2883,54 @@ msgid "Could not start X2Go session."
 msgstr "אי אפשר להתחיל הפעלת X2Go."
 
 #: plugins/x2go/x2go_plugin.c:868
-#, fuzzy, c-format
-#| msgid "Could not start SSH session. %s"
+#, c-format
 msgid "Could not start PyHoca-CLI (%i): '%s'"
-msgstr "לא היתה אפשרות להפעיל את PyHoca-CLI (%i): '%s'"
+msgstr "לא ניתן להפעיל את PyHoca-CLI (%i):‏ ‚%s’"
 
 #: plugins/x2go/x2go_plugin.c:945
-#, fuzzy
 msgid ""
 "Couldn't get pyhoca-cli's cmdline-features. This indicates either your "
 "pyhoca-cli version is too old or pyhoca-cli is not installed! An old limited "
 "set of features will be used now."
 msgstr ""
-"לא הצלחתי להשיג את תכונות ה-cmdline של פיוקה-קלי. זה מציין שגירסת הפיוקה-cli "
-"שלך ישנה מדי או ש-pyhoca-cli לא מותקנת! כעת ייעשה שימוש בערכה מוגבלת ישנה של "
-"תכונות."
+"לא ניתן לקבל את יכולות שורת הפקודה של pyhoca-cli. זה מעיד על כך שאו שגרסת ה"
+"־pyhoca-cli שלך ישנה מדי או שאינה מותקנת! ייעשה שימוש בסדרה מצומצמת ומוגבלת "
+"של יכולות."
 
 #: plugins/x2go/x2go_plugin.c:957
-#, fuzzy
 msgid ""
 "Parsing pyhoca-cli functionality was not possible! Using a limited feature-"
 "set for now."
 msgstr ""
-"ניתוח פונקציונליות פיוקה-cli לא היה אפשרי! משתמש בערכת תכונות מוגבלת לעת עתה."
+"פענוח היכולות של pyhoca-cli לא הצליחה! נעשה שימוש בערכת יכולות מצומצמת "
+"לבינתיים."
 
 #: plugins/x2go/x2go_plugin.c:964
-#, fuzzy
 msgid "Retrieved the following pyhoca-cli functionality:"
-msgstr "אחזור הפונקציונליות הבאה pyhoca-cli:"
+msgstr "היכולות הבאות pyhoca-cli התקבלו:"
 
 #: plugins/x2go/x2go_plugin.c:969
-#, c-format, fuzzy
+#, c-format
 msgid "Available feature[%i]: '%s'"
-msgstr "תכונה זמינה[%i]: '%s'"
+msgstr "יכולת זמינה[%i]: ‚%s’"
 
 #: plugins/x2go/x2go_plugin.c:1074
-#, fuzzy
-#| msgid "Could not open channel. %s"
 msgid "Could not open X11 DISPLAY."
-msgstr "לא היתה אפשרות לפתוח את תצוגת X11."
+msgstr "לא ניתן לפתוח X11 DISPLAY (תצוגה)."
 
 #: plugins/x2go/x2go_plugin.c:1114
 msgid "Waiting for X2Go Agent window to appear."
 msgstr "בהמתנה להופעת חלון סוכן X2Go."
 
 #: plugins/x2go/x2go_plugin.c:1140
-#, fuzzy
 msgid "Waiting for pyhoca-cli to show the session's window."
-msgstr "מחכה לפיוקה-cli כדי להציג את חלון ההפעלה."
+msgstr "בהמתנה עד ש־pyhoca-cli יציג את חלון ההפעלה."
 
 #: plugins/x2go/x2go_plugin.c:1191
-#, fuzzy
 msgid "No X2Go session window appeared. Something went wrong…"
 msgstr "לא הופיע חלון הפעלה של X2Go. משהו השתבש…"
 
 #: plugins/x2go/x2go_plugin.c:1300
-#, fuzzy
 msgid "Internal error: RemminaProtocolWidget* gp is NULL!"
 msgstr "שגיאה פנימית: RemminaProtocolWidget* gp הוא NULL!"
 
@@ -2959,9 +2940,8 @@ msgid "The protocol %s is unavailable because GtkSocket only works under X.org"
 msgstr "הפרוטוקול %s אינו זמין כיוון ש־GtkSocket עובד רק תחת X.org"
 
 #: plugins/x2go/x2go_plugin.c:1329
-#, fuzzy
 msgid "Could not initialize pthread. Falling back to non-threaded mode…"
-msgstr "לא היתה אפשרות לאתחל את הלחם. חוזר למצב לא משורשר…"
+msgstr "לא היתה אפשרות לאתחל את pthread. תתבצע נסיגה למצב לא משורשר…"
 
 #. TRANSLATORS: Presumably you just want to translate 'and' into
 #. your language.
@@ -2972,9 +2952,9 @@ msgstr "לא היתה אפשרות לאתחל את הלחם. חוזר למצב �
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
 #: plugins/x2go/x2go_plugin.c:1372 plugins/x2go/x2go_plugin.c:1390
-#, c-format, fuzzy
+#, c-format
 msgid "%sand '%s'"
-msgstr "%s ו-'%s'"
+msgstr "%sו־‚%s’"
 
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
@@ -2983,88 +2963,78 @@ msgstr "%s ו-'%s'"
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
 #: plugins/x2go/x2go_plugin.c:1377 plugins/x2go/x2go_plugin.c:1395
-#, c-format, fuzzy
+#, c-format
 msgid "%s'%s' "
-msgstr "%s'%s' "
+msgstr "%s‚%s’ "
 
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
 #. 'value1', 'value2', 'valueN-1' and 'valueN'
 #: plugins/x2go/x2go_plugin.c:1382
-#, c-format, fuzzy
+#, c-format
 msgid "%s'%s', "
-msgstr "%s'%s', "
+msgstr "%s‚%s’, "
 
 #: plugins/x2go/x2go_plugin.c:1420 plugins/x2go/x2go_plugin.c:1432
 #: plugins/x2go/x2go_plugin.c:1494
-#, fuzzy
 msgid "Validation data in ProtocolSettings array is invalid!"
-msgstr "נתוני אימות במערך ProtocolSettings אינם חוקיים!"
+msgstr "נתוני האימות במערך ProtocolSettings שגויים!"
 
 #: plugins/x2go/x2go_plugin.c:1459
-#, c-format, fuzzy
+#, c-format
 msgid "Allowed values are %s."
-msgstr "הערכים המותרים הם %s."
+msgstr "הערכים המורשים הם %s."
 
 #: plugins/x2go/x2go_plugin.c:1461
-#, c-format, fuzzy
+#, c-format
 msgid "Only allowed value is '%s'."
-msgstr "הערך המותר בלבד הוא '%s'."
+msgstr "הערך היחידי שמורשה הוא ‚%s’."
 
 #: plugins/x2go/x2go_plugin.c:1503
-#, fuzzy
 msgid "Limit minimum is not a valid integer!"
-msgstr "המינימום של המגבלה אינו מספר שלם חוקי!"
+msgstr "תחתית המגבלה אינה מספר שלם תקף!"
 
 #: plugins/x2go/x2go_plugin.c:1505
-#, fuzzy
 msgid "Limit minimum is too large!"
-msgstr "המינימום של המגבלה גדול מדי!"
+msgstr "תחתית המגבלה גדולה מדי!"
 
 #: plugins/x2go/x2go_plugin.c:1507
-#, fuzzy
 msgid "Limit minimum is too small!"
-msgstr "המינימום של המגבלה קטן מדי!"
+msgstr "תחתית המגבלה קטנה מדי!"
 
 #: plugins/x2go/x2go_plugin.c:1509 plugins/x2go/x2go_plugin.c:1523
 #: plugins/x2go/x2go_plugin.c:1538
-#, fuzzy
 msgid "Something went wrong."
-msgstr "משהו השתבש"
+msgstr "משהו השתבש."
 
 #: plugins/x2go/x2go_plugin.c:1517
-#, fuzzy
 msgid "Limit maximum is not a valid integer!"
-msgstr "מספר מרבי של מגבלה אינו מספר שלם חוקי!"
+msgstr "תחתית המגבלה אינה מספר שלם תקף!"
 
 #: plugins/x2go/x2go_plugin.c:1519
-#, fuzzy
 msgid "Limit maximum is too large!"
-msgstr "המגבלה המרבית גדולה מדי!"
+msgstr "תקורת המגבלה גדולה מדי!"
 
 #: plugins/x2go/x2go_plugin.c:1521
-#, fuzzy
 msgid "Limit maximum is too small!"
-msgstr "מקסימום המגבלה קטן מדי!"
+msgstr "תקורת המגבלה קטנה מדי!"
 
 #: plugins/x2go/x2go_plugin.c:1533
-#, fuzzy
 msgid "Input is not a valid integer!"
-msgstr "הקלט אינו מספר שלם חוקי!"
+msgstr "הקלט אינו מספר שלם תקף!"
 
 #: plugins/x2go/x2go_plugin.c:1535 plugins/x2go/x2go_plugin.c:1548
-#, c-format, fuzzy
+#, c-format
 msgid "Input must be a number between %i and %i."
-msgstr "הקלט חייב להיות מספר בין %i ל- %i."
+msgstr "הקלט חייב להיות מספר בין %i ל־%i."
 
 #: plugins/x2go/x2go_plugin.c:1576
 msgid "Startup program"
 msgstr "תכנית להתחלה"
 
 #: plugins/x2go/x2go_plugin.c:1578
-#, fuzzy
 msgid "Which command should be executed after creating the X2Go session?"
-msgstr "איזו פקודה יש לבצע לאחר יצירת הפעלת X2Go?"
+msgstr "איזו פקודה לבצע לאחר הקמת הפעלת X2Go?"
 
 #: plugins/x2go/x2go_plugin.c:1580
 msgid "Keyboard Layout (auto)"
@@ -3087,24 +3057,19 @@ msgid "Clipboard direction"
 msgstr "כיוון לוח גזירים"
 
 #: plugins/x2go/x2go_plugin.c:1589
-#, fuzzy
 msgid "Which direction should clipboard content be copied? (default: 'both')."
-msgstr "לאיזה כיוון יש להעתיק תוכן לוח? (ברירת מחדל: 'שניהם')."
+msgstr "לאיזה כיוון להעתיק תוכן לוח גזירים? (בררת מחדל: ‚שניהם’)."
 
 #: plugins/x2go/x2go_plugin.c:1593
 msgid "DPI resolution"
 msgstr "רזולוציה בנקודות לאינטש"
 
 #: plugins/x2go/x2go_plugin.c:1594
-#, fuzzy
-#| msgid ""
-#| "Launch session with a specific resolution (in dots per inch). Must be "
-#| "between 20 and 400"
 msgid ""
 "Launch session with a specific resolution (in dots per inch). Must be "
 "between 20 and 400."
 msgstr ""
-"הקמת הפעלה עם רזולוציה מסוימת (בנקודות לאינטש). חייב להיות בין 20 ל־400"
+"הקמת הפעלה עם רזולוציה מסוימת (בנקודות לאינטש). חייב להיות בין 20 ל־400."
 
 #: plugins/x2go/x2go_plugin.c:1638
 msgid "X2Go plugin loaded."

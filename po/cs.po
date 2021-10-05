@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-10-01 23:50+0000\n"
-"PO-Revision-Date: 2021-10-01 14:59+0000\n"
+"PO-Revision-Date: 2021-10-05 14:04+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/remmina/remmina/cs/"
 ">\n"
@@ -1365,8 +1365,9 @@ msgstr ""
 "- username@server[:port] (pouze protokol SSH)</big>"
 
 #: src/remmina_file_editor.c:162
+#, fuzzy
 msgid "Input is invalid."
-msgstr ""
+msgstr "Vstup je neplatný."
 
 #: src/remmina_file_editor.c:239
 msgid "Choose a Remote Desktop Server"
@@ -1479,16 +1480,19 @@ msgid "Notes"
 msgstr "Poznámky"
 
 #: src/remmina_file_editor.c:1438
-#, c-format
+#, c-format, fuzzy
 msgid "(%s: %i): Can't validate setting '%s' since 'value' or 'gfe' are NULL!"
 msgstr ""
+"(%s: %i): Nelze ověřit nastavení '%s', protože 'value' nebo 'gfe' jsou NULL!"
 
 #: src/remmina_file_editor.c:1441
-#, c-format
+#, c-format, fuzzy
 msgid ""
 "(%s: %i): Can't validate user input since 'setting_name_to_validate', "
 "'value' or 'gfe' are NULL!"
 msgstr ""
+"(%s: %i): Nelze ověřit uživatelský vstup, protože "
+"'setting_name_to_validate', 'value' nebo 'gfe' jsou NULL!"
 
 #. TRANSLATORS: Meta-error. Shouldn't be visible.
 #: src/remmina_file_editor.c:1445 plugins/x2go/x2go_plugin.c:856
@@ -1496,14 +1500,14 @@ msgstr ""
 #, fuzzy
 #| msgid "Transfer error"
 msgid "Internal error."
-msgstr "Chyba přenosu"
+msgstr "Interní chyba"
 
 #: src/remmina_file_editor.c:1667 src/remmina_file_editor.c:1703
 #: src/remmina_file_editor.c:1724 src/remmina_file_editor.c:1747
 #, fuzzy, c-format
 #| msgid "Could not create SFTP session. %s"
 msgid "Couldn't validate user input. %s"
-msgstr "Nedaří se vytvořit SFTP relaci: %s"
+msgstr "Nepodařilo se ověřit vstup uživatele. %s"
 
 #: src/remmina_file_editor.c:1691
 msgid "Default settings saved."
@@ -2983,8 +2987,9 @@ msgstr ""
 "chybě, a ujistěte se, že je vzdálený server dosažitelný."
 
 #: plugins/x2go/x2go_plugin.c:561 plugins/x2go/x2go_plugin.c:838
+#, fuzzy
 msgid "Started pyhoca-cli with following arguments:"
-msgstr ""
+msgstr "Spuštěno pyhoca-cli s následujícími argumenty:"
 
 #: plugins/x2go/x2go_plugin.c:580
 #, fuzzy, c-format
@@ -3002,14 +3007,18 @@ msgid "Error: '%s'"
 msgstr "Chyba: \"%s"
 
 #: plugins/x2go/x2go_plugin.c:609
+#, fuzzy
 msgid "Given username can't get saved since it's empty!"
-msgstr ""
+msgstr "Zadané uživatelské jméno nelze uložit, protože je prázdné!"
 
 #: plugins/x2go/x2go_plugin.c:622
+#, fuzzy
 msgid ""
 "An error occured while trying to save new credentials: 's_password' or "
 "'s_username' strings were not set."
 msgstr ""
+"Při pokusu o uložení nových pověření došlo k chybě: řetězce 's_password' "
+"nebo 's_username' nebyly nastaveny."
 
 #: plugins/x2go/x2go_plugin.c:659
 #, fuzzy
@@ -3056,8 +3065,7 @@ msgid ""
 "Parsing pyhoca-cli functionality was not possible! Using a limited feature-"
 "set for now."
 msgstr ""
-"parsování funkcí pyhoca-cli nebylo možné! Prozatím používáme omezenou sadu "
-"funkcí."
+"Parsování funkcí pyhoca-cli nebylo možné! Prozatím s omezenou sadou funkcí."
 
 #: plugins/x2go/x2go_plugin.c:964
 #, fuzzy
@@ -3073,7 +3081,7 @@ msgstr "Dostupná funkce[%i]: '%s'"
 #, fuzzy
 #| msgid "Could not open channel. %s"
 msgid "Could not open X11 DISPLAY."
-msgstr "Nepodařilo se otevřít kanál: %s"
+msgstr "Nepodařilo se otevřít X11 DISPLAY."
 
 #: plugins/x2go/x2go_plugin.c:1114
 #, fuzzy
@@ -3086,12 +3094,14 @@ msgid "Waiting for pyhoca-cli to show the session's window."
 msgstr "Čekání na zobrazení okna relace pyhoca-cli."
 
 #: plugins/x2go/x2go_plugin.c:1191
+#, fuzzy
 msgid "No X2Go session window appeared. Something went wrong…"
-msgstr ""
+msgstr "Nezobrazilo se žádné okno relace X2Go. Něco se pokazilo…"
 
 #: plugins/x2go/x2go_plugin.c:1300
+#, fuzzy
 msgid "Internal error: RemminaProtocolWidget* gp is NULL!"
-msgstr ""
+msgstr "Interní chyba: RemminaProtocolWidget* gp is NULL!"
 
 #: plugins/x2go/x2go_plugin.c:1321
 #, fuzzy, c-format
@@ -3102,8 +3112,9 @@ msgstr ""
 "Protokol „%s“ není k dispozici protože GtkSocket funguje pouze pod X.Org."
 
 #: plugins/x2go/x2go_plugin.c:1329
+#, fuzzy
 msgid "Could not initialize pthread. Falling back to non-threaded mode…"
-msgstr ""
+msgstr "Nepodařilo se inicializovat pthread. Pád zpět do nevláknového režimu…"
 
 #. TRANSLATORS: Presumably you just want to translate 'and' into
 #. your language.
@@ -3114,9 +3125,9 @@ msgstr ""
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
 #: plugins/x2go/x2go_plugin.c:1372 plugins/x2go/x2go_plugin.c:1390
-#, c-format
+#, c-format, fuzzy
 msgid "%sand '%s'"
-msgstr ""
+msgstr "%sa '%s'"
 
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
@@ -3125,70 +3136,79 @@ msgstr ""
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
 #: plugins/x2go/x2go_plugin.c:1377 plugins/x2go/x2go_plugin.c:1395
-#, c-format
+#, c-format, fuzzy
 msgid "%s'%s' "
-msgstr ""
+msgstr "%s'%s' "
 
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
 #. 'value1', 'value2', 'valueN-1' and 'valueN'
 #: plugins/x2go/x2go_plugin.c:1382
-#, c-format
+#, c-format, fuzzy
 msgid "%s'%s', "
-msgstr ""
+msgstr "%s'%s', "
 
 #: plugins/x2go/x2go_plugin.c:1420 plugins/x2go/x2go_plugin.c:1432
 #: plugins/x2go/x2go_plugin.c:1494
+#, fuzzy
 msgid "Validation data in ProtocolSettings array is invalid!"
-msgstr ""
+msgstr "Ověřovací údaje v poli ProtocolSettings jsou neplatné!"
 
 #: plugins/x2go/x2go_plugin.c:1459
-#, c-format
+#, c-format, fuzzy
 msgid "Allowed values are %s."
-msgstr ""
+msgstr "Přípustné hodnoty jsou %s."
 
 #: plugins/x2go/x2go_plugin.c:1461
-#, c-format
+#, c-format, fuzzy
 msgid "Only allowed value is '%s'."
-msgstr ""
+msgstr "Jediná povolená hodnota je \"%s\"."
 
 #: plugins/x2go/x2go_plugin.c:1503
+#, fuzzy
 msgid "Limit minimum is not a valid integer!"
-msgstr ""
+msgstr "Limitní minimum není platné celé číslo!"
 
 #: plugins/x2go/x2go_plugin.c:1505
+#, fuzzy
 msgid "Limit minimum is too large!"
-msgstr ""
+msgstr "Minimální limit je příliš velký!"
 
 #: plugins/x2go/x2go_plugin.c:1507
+#, fuzzy
 msgid "Limit minimum is too small!"
-msgstr ""
+msgstr "Minimální limit je příliš malý!"
 
 #: plugins/x2go/x2go_plugin.c:1509 plugins/x2go/x2go_plugin.c:1523
 #: plugins/x2go/x2go_plugin.c:1538
+#, fuzzy
 msgid "Something went wrong."
-msgstr ""
+msgstr "Něco se pokazilo."
 
 #: plugins/x2go/x2go_plugin.c:1517
+#, fuzzy
 msgid "Limit maximum is not a valid integer!"
-msgstr ""
+msgstr "Limit maximum není platné celé číslo!"
 
 #: plugins/x2go/x2go_plugin.c:1519
+#, fuzzy
 msgid "Limit maximum is too large!"
-msgstr ""
+msgstr "Maximální limit je příliš velký!"
 
 #: plugins/x2go/x2go_plugin.c:1521
+#, fuzzy
 msgid "Limit maximum is too small!"
-msgstr ""
+msgstr "Maximální limit je příliš malý!"
 
 #: plugins/x2go/x2go_plugin.c:1533
+#, fuzzy
 msgid "Input is not a valid integer!"
-msgstr ""
+msgstr "Na vstupu není platné celé číslo!"
 
 #: plugins/x2go/x2go_plugin.c:1535 plugins/x2go/x2go_plugin.c:1548
-#, c-format
+#, c-format, fuzzy
 msgid "Input must be a number between %i and %i."
-msgstr ""
+msgstr "Vstupem musí být číslo mezi %i a %i."
 
 #: plugins/x2go/x2go_plugin.c:1576
 #, fuzzy
@@ -3248,7 +3268,7 @@ msgid ""
 "between 20 and 400."
 msgstr ""
 "Spuštění relace s určitým rozlišením (v bodech na palec). Musí být v rozmezí "
-"20 až 400"
+"20 až 400."
 
 #: plugins/x2go/x2go_plugin.c:1638
 #, fuzzy

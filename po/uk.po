@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-10-01 23:50+0000\n"
-"PO-Revision-Date: 2021-10-01 22:31+0000\n"
+"PO-Revision-Date: 2021-10-05 14:04+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/remmina/"
 "remmina/uk/>\n"
@@ -1431,18 +1431,20 @@ msgid "Notes"
 msgstr "Нотатки"
 
 #: src/remmina_file_editor.c:1438
-#, fuzzy, c-format
-#| msgid "(%s: %i): setting_name_to_validate, value or gfe are NULL!"
+#, c-format
 msgid "(%s: %i): Can't validate setting '%s' since 'value' or 'gfe' are NULL!"
-msgstr "(%s: %i): setting_name_to_validate, значення або gfe дорівнюють NULL!"
+msgstr ""
+"(%s: %i): не вдалося перевірити чинність параметра «%s» оскільки «value» або "
+"«gfe» має значення NULL!"
 
 #: src/remmina_file_editor.c:1441
-#, fuzzy, c-format
-#| msgid "(%s: %i): setting_name_to_validate, value or gfe are NULL!"
+#, c-format
 msgid ""
 "(%s: %i): Can't validate user input since 'setting_name_to_validate', "
 "'value' or 'gfe' are NULL!"
-msgstr "(%s: %i): setting_name_to_validate, значення або gfe дорівнюють NULL!"
+msgstr ""
+"(%s: %i): не вдалося перевірити чинність введених користувачем даних, "
+"оскільки «setting_name_to_validate», «value» або «gfe» дорівнює NULL!"
 
 #. TRANSLATORS: Meta-error. Shouldn't be visible.
 #: src/remmina_file_editor.c:1445 plugins/x2go/x2go_plugin.c:856
@@ -2974,10 +2976,8 @@ msgid "No X2Go session window appeared. Something went wrong…"
 msgstr "Вікно сеансу X2Go не з'явилося. Щось не так…"
 
 #: plugins/x2go/x2go_plugin.c:1300
-#, fuzzy
-#| msgid "RemminaProtocolWidget* gp is null!"
 msgid "Internal error: RemminaProtocolWidget* gp is NULL!"
-msgstr "RemminaProtocolWidget* gp дорівнює null!"
+msgstr "Внутрішня помилка: RemminaProtocolWidget* gp дорівнює NULL!"
 
 #: plugins/x2go/x2go_plugin.c:1321
 #, c-format

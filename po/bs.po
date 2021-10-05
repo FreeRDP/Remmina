@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-10-01 23:50+0000\n"
-"PO-Revision-Date: 2021-08-28 17:34+0000\n"
+"PO-Revision-Date: 2021-10-05 14:04+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Bosnian <https://hosted.weblate.org/projects/remmina/remmina/"
 "bs/>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.8.1-dev\n"
+"X-Generator: Weblate 4.9-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:354
@@ -207,8 +207,9 @@ msgid "Meta+"
 msgstr "Meta+"
 
 #: src/remmina_key_chooser.h:44
+#, fuzzy
 msgid "<None>"
-msgstr ""
+msgstr "<None>"
 
 #: src/remmina_pref_dialog.c:91 src/remmina_file_editor.c:528
 msgid "Resolutions"
@@ -449,7 +450,7 @@ msgstr "Prekini vezu"
 #: src/rcw.c:4284
 #, fuzzy, c-format
 msgid "The file “%s” is corrupted, unreadable, or could not be found."
-msgstr "Datoteka \"%s\" je oštećena, ne čita se ili nije mogla biti pronađena."
+msgstr "Datoteka \"%s\" je oštećena, neprocitava ili nije mogla biti pronađena."
 
 #: src/rcw.c:4452
 #, fuzzy
@@ -756,8 +757,9 @@ msgid "Go to home folder"
 msgstr "Idi na početni folder"
 
 #: src/remmina_ftp_client.c:753
+#, fuzzy
 msgid "Up"
-msgstr ""
+msgstr "Up"
 
 #: src/remmina_ftp_client.c:754
 msgid "Go to parent folder"
@@ -1139,7 +1141,7 @@ msgstr "Server nije odgovorio."
 #: src/remmina_ssh.c:1916
 #, fuzzy, c-format
 msgid "Cannot connect to local port %i."
-msgstr "Ne mogu se povezati sa lokalnim portom %i."
+msgstr "Nije moguće povezati se sa lokalnim portom %i."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1965
@@ -1426,8 +1428,9 @@ msgstr ""
 "• username@server[:p ort] (samo SSH protokol)</big>"
 
 #: src/remmina_file_editor.c:162
+#, fuzzy
 msgid "Input is invalid."
-msgstr ""
+msgstr "Ulaz je nevažeći."
 
 #: src/remmina_file_editor.c:239
 msgid "Choose a Remote Desktop Server"
@@ -1548,30 +1551,34 @@ msgid "Notes"
 msgstr "Napomene"
 
 #: src/remmina_file_editor.c:1438
-#, c-format
+#, c-format, fuzzy
 msgid "(%s: %i): Can't validate setting '%s' since 'value' or 'gfe' are NULL!"
 msgstr ""
+"(%s: %i): Ne mogu potvrditi postavku '%s' budući da su 'value' ili 'gfe' "
+"NULL!"
 
 #: src/remmina_file_editor.c:1441
-#, c-format
+#, c-format, fuzzy
 msgid ""
 "(%s: %i): Can't validate user input since 'setting_name_to_validate', "
 "'value' or 'gfe' are NULL!"
 msgstr ""
+"(%s: %i): Ne mogu potvrditi korisnički unos budući da su "
+"'setting_name_to_validate', 'value' ili 'gfe' NULL!"
 
 #. TRANSLATORS: Meta-error. Shouldn't be visible.
 #: src/remmina_file_editor.c:1445 plugins/x2go/x2go_plugin.c:856
 #: plugins/x2go/x2go_plugin.c:1442
 #, fuzzy
 msgid "Internal error."
-msgstr "Greška pri prijenosu"
+msgstr "Unutrašnja greška."
 
 #: src/remmina_file_editor.c:1667 src/remmina_file_editor.c:1703
 #: src/remmina_file_editor.c:1724 src/remmina_file_editor.c:1747
 #, fuzzy, c-format
 #| msgid "Could not create SFTP session. %s"
 msgid "Couldn't validate user input. %s"
-msgstr "Neuspjelo kreiranje SFTP sesije: %s"
+msgstr "Nisam mogao potvrditi korisnički unos. %s"
 
 #: src/remmina_file_editor.c:1691
 msgid "Default settings saved."
@@ -1716,12 +1723,12 @@ msgstr "_Paste"
 #: src/remmina_ssh_plugin.c:1450
 #, fuzzy
 msgid "Select all"
-msgstr "Odaberi sve"
+msgstr "Select all"
 
 #: src/remmina_ssh_plugin.c:1450
 #, fuzzy
 msgid "_Select all"
-msgstr "Odaberi sve"
+msgstr "Select all"
 
 #: src/remmina_ssh_plugin.c:1451
 #, fuzzy
@@ -2085,7 +2092,7 @@ msgid ""
 "Could not connect to the RDP server “%s” via TLS. Check that client and "
 "server support a common TLS version."
 msgstr ""
-"Ne mogu se povezati sa RDP serverom \"%s\" preko TLS-a. Provjerite da "
+"Nisam se mogao povezati sa RDP serverom \"%s\" preko TLS-a. Provjerite da "
 "klijent i server podržavaju uobičajenu TLS verziju."
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
@@ -2131,8 +2138,8 @@ msgid ""
 "The Remote Desktop Gateway “%s” denied the user “%s\\%s” access due to "
 "policy."
 msgstr ""
-"Pristup udaljenoj radnoj površini \"%s\" uskraćivao je korisniku \"%s\\%s\" "
-"pristup zbog politike."
+"Mrežni prolaz udaljene radne površine \"%s\" je uskratio korisniku pristup \""
+"%s\\%s\" zbog politike."
 
 #: plugins/rdp/rdp_plugin.c:2163
 #, c-format
@@ -2407,18 +2414,20 @@ msgstr ""
 "Koristi \"Preusmjeri direktorij\" u naprednoj kartici za više direktorija"
 
 #: plugins/rdp/rdp_plugin.c:2678
+#, fuzzy
 msgid "Restricted admin mode"
-msgstr ""
+msgstr "Ograničeni režim admina"
 
 #: plugins/rdp/rdp_plugin.c:2679
 #, fuzzy
 #| msgid "Password"
 msgid "Password hash"
-msgstr "Lozinka"
+msgstr "Hash lozinke"
 
 #: plugins/rdp/rdp_plugin.c:2679
+#, fuzzy
 msgid "Restricted admin mode password hash"
-msgstr ""
+msgstr "Ograničeni hash lozinke admin moda"
 
 #: plugins/rdp/rdp_plugin.c:2680
 #, fuzzy
@@ -2788,7 +2797,7 @@ msgstr "Transfer završen"
 #: plugins/spice/spice_plugin_file_transfer.c:224
 #, fuzzy, c-format
 msgid "The %s file has been transferred"
-msgstr "%s datoteka je prenesena"
+msgstr "Datoteka %s je prenesena"
 
 #: plugins/spice/spice_plugin.c:351
 msgid "Enter SPICE password"
@@ -2950,6 +2959,7 @@ msgstr ""
 "    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
 
 #: plugins/vnc/vnc_plugin.c:1948
+#, fuzzy
 msgid ""
 "Listening for remote VNC connection:\n"
 "  • The \"Listen on port\" field is the port Remmina will listen to,\n"
@@ -2958,6 +2968,12 @@ msgid ""
 "    Remmina, e.g. with x11vnc:\n"
 "    x11vnc -display :0 -connect 192.168.1.36:8888"
 msgstr ""
+"Slušanje udaljene VNC veze:\n"
+"  • Polje \"Slušaj na portu\" je luka koju će Remmina slušati,\n"
+"    npr. 8888\n"
+"  • Sa udaljenog VNC servera povezaćete se sa\n"
+"    Remmina, npr. sa x11vnc:\n"
+"    x11vnc -display :0 -connect 192.168.1.36:8888"
 
 #: plugins/vnc/vnc_plugin.c:1975
 msgid "Repeater"
@@ -3118,131 +3134,162 @@ msgid "Secured password storage in the GNOME keyring"
 msgstr "%s lozinka"
 
 #: plugins/x2go/x2go_plugin.c:275
+#, fuzzy
 msgid "Broken `DialogData`! Aborting…"
-msgstr ""
+msgstr "Slomljena 'DijaloškiData'! Prekidam…"
 
 #: plugins/x2go/x2go_plugin.c:279
+#, fuzzy
 msgid "Can't retrieve `DialogData`! Aborting…"
-msgstr ""
+msgstr "Ne mogu dohvatiti 'DijaloškiData'! Prekidam…"
 
 #: plugins/x2go/x2go_plugin.c:505
+#, fuzzy
 msgid "pyhoca-cli exited unexpectedly. This connection will now be closed."
-msgstr ""
+msgstr "Pyhoca-cli je izašao neočekivano. Ova veza će sada biti zatvorena."
 
 #: plugins/x2go/x2go_plugin.c:514
+#, fuzzy
 msgid "An error occured."
-msgstr ""
+msgstr "Došlo je do greške."
 
 #: plugins/x2go/x2go_plugin.c:515
+#, fuzzy
 msgid ""
 "The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
 "Please check your profile settings and pyhoca-cli's output for possible "
 "errors and ensure the remote server is reachable."
 msgstr ""
+"Neophodan dječiji proces 'pyhoca-cli' je neočekivano prestao.\n"
+"Molimo provjerite postavke profila i izlaz Pyhoca-clia za moguće greške i "
+"osigurajte da je udaljeni server dosegljiv."
 
 #: plugins/x2go/x2go_plugin.c:561 plugins/x2go/x2go_plugin.c:838
+#, fuzzy
 msgid "Started pyhoca-cli with following arguments:"
-msgstr ""
+msgstr "Počeo pyhoca-cli sa sljedećim argumentima:"
 
 #: plugins/x2go/x2go_plugin.c:580
-#, c-format
+#, c-format, fuzzy
 msgid ""
 "An unknown error happened while retrieving pyhoca-cli's cmdline features! "
 "Exit code: %i"
 msgstr ""
+"Dogodila se nepoznata greška dok je dohvaæao pyhoca-cli-ove cmdline "
+"funkcije! Izlazni kod: %i"
 
 #: plugins/x2go/x2go_plugin.c:585
 #, fuzzy, c-format
 msgid "Error: '%s'"
-msgstr "Greška:"
+msgstr "Greška: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:609
+#, fuzzy
 msgid "Given username can't get saved since it's empty!"
-msgstr ""
+msgstr "S obzirom na korisničko ime ne može biti spašeno pošto je prazno!"
 
 #: plugins/x2go/x2go_plugin.c:622
+#, fuzzy
 msgid ""
 "An error occured while trying to save new credentials: 's_password' or "
 "'s_username' strings were not set."
 msgstr ""
+"Došlo je do greške prilikom pokušaja čuvanja novih akreditiva: niske "
+"'s_password' ili 's_username' nisu bile postavljene."
 
 #: plugins/x2go/x2go_plugin.c:659
 #, fuzzy
 msgid "Enter X2Go credentials"
-msgstr "Unesite Akreditive za potvrdu autentičnosti RDP-a"
+msgstr "Unesite X2Go akreditive"
 
 #: plugins/x2go/x2go_plugin.c:818
+#, fuzzy
 msgid "DPI setting is out of bounds. Please adjust it in profile settings."
 msgstr ""
+"Postavka DPI je van granica. Molim vas podesite ga u postavkama profila."
 
 #: plugins/x2go/x2go_plugin.c:858
+#, fuzzy
 msgid "An error occured while starting an X2Go session…"
-msgstr ""
+msgstr "Došlo je do greške prilikom pokretanja X2Go sesije…"
 
 #: plugins/x2go/x2go_plugin.c:867
 #, fuzzy
 #| msgid "Could not start SSH session. %s"
 msgid "Could not start X2Go session."
-msgstr "Neuspjelo pokretanje SSH sesije: %s"
+msgstr "Nisam mogao pokrenuti X2Go sesiju."
 
 #: plugins/x2go/x2go_plugin.c:868
 #, fuzzy, c-format
 #| msgid "Could not start SSH session. %s"
 msgid "Could not start PyHoca-CLI (%i): '%s'"
-msgstr "Neuspjelo pokretanje SSH sesije: %s"
+msgstr "Nisam mogao pokrenuti PyHoca-CLI (%i): '%s'"
 
 #: plugins/x2go/x2go_plugin.c:945
+#, fuzzy
 msgid ""
 "Couldn't get pyhoca-cli's cmdline-features. This indicates either your "
 "pyhoca-cli version is too old or pyhoca-cli is not installed! An old limited "
 "set of features will be used now."
 msgstr ""
+"Nisam mogao dobiti Pyhoca-cli-ove cmdline-osobine. Ovo ukazuje ili je vaša "
+"pyhoca-cli verzija prestar ili pyhoca-cli nije instaliran! Sada će se "
+"koristiti stari ograničeni skup funkcija."
 
 #: plugins/x2go/x2go_plugin.c:957
+#, fuzzy
 msgid ""
 "Parsing pyhoca-cli functionality was not possible! Using a limited feature-"
 "set for now."
 msgstr ""
+"Parsing pyhoca-cli funkcionalnost nije bio moguć! Koristim ograničen skup "
+"funkcija za sada."
 
 #: plugins/x2go/x2go_plugin.c:964
+#, fuzzy
 msgid "Retrieved the following pyhoca-cli functionality:"
-msgstr ""
+msgstr "Retrieved the following pyhoca-cli functionality:"
 
 #: plugins/x2go/x2go_plugin.c:969
-#, c-format
+#, c-format, fuzzy
 msgid "Available feature[%i]: '%s'"
-msgstr ""
+msgstr "Dostupna funkcija[%i]: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:1074
 #, fuzzy
 #| msgid "Could not open channel. %s"
 msgid "Could not open X11 DISPLAY."
-msgstr "Neuspjelo kreiranje SFTP sesije: %s"
+msgstr "Nisam mogao otvoriti X11 DISPLAY."
 
 #: plugins/x2go/x2go_plugin.c:1114
+#, fuzzy
 msgid "Waiting for X2Go Agent window to appear."
-msgstr ""
+msgstr "Čekam da se pojavi prozor X2Go agenta."
 
 #: plugins/x2go/x2go_plugin.c:1140
+#, fuzzy
 msgid "Waiting for pyhoca-cli to show the session's window."
-msgstr ""
+msgstr "Čekam da Pyhoca-cli pokaže prozor sesije."
 
 #: plugins/x2go/x2go_plugin.c:1191
+#, fuzzy
 msgid "No X2Go session window appeared. Something went wrong…"
-msgstr ""
+msgstr "Nije se pojavio prozor X2Go sesije. Nešto je pošlo po zlu…"
 
 #: plugins/x2go/x2go_plugin.c:1300
+#, fuzzy
 msgid "Internal error: RemminaProtocolWidget* gp is NULL!"
-msgstr ""
+msgstr "Unutrašnja greška: RemminaProtocolWidget* gp je NULL!"
 
 #: plugins/x2go/x2go_plugin.c:1321
-#, c-format
+#, c-format, fuzzy
 msgid "The protocol %s is unavailable because GtkSocket only works under X.org"
-msgstr ""
+msgstr "Protokol %s je nedostupan jer GtkSocket radi samo pod X.org"
 
 #: plugins/x2go/x2go_plugin.c:1329
+#, fuzzy
 msgid "Could not initialize pthread. Falling back to non-threaded mode…"
-msgstr ""
+msgstr "Nisam mogao inicijalizirati nit. Vraćam se u ne-navlaka način…"
 
 #. TRANSLATORS: Presumably you just want to translate 'and' into
 #. your language.
@@ -3253,9 +3300,9 @@ msgstr ""
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
 #: plugins/x2go/x2go_plugin.c:1372 plugins/x2go/x2go_plugin.c:1390
-#, c-format
+#, c-format, fuzzy
 msgid "%sand '%s'"
-msgstr ""
+msgstr "%si '%s'"
 
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
@@ -3264,70 +3311,79 @@ msgstr ""
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
 #: plugins/x2go/x2go_plugin.c:1377 plugins/x2go/x2go_plugin.c:1395
-#, c-format
+#, c-format, fuzzy
 msgid "%s'%s' "
-msgstr ""
+msgstr "%s'%s' "
 
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
 #. 'value1', 'value2', 'valueN-1' and 'valueN'
 #: plugins/x2go/x2go_plugin.c:1382
-#, c-format
+#, c-format, fuzzy
 msgid "%s'%s', "
-msgstr ""
+msgstr "%s'%s', "
 
 #: plugins/x2go/x2go_plugin.c:1420 plugins/x2go/x2go_plugin.c:1432
 #: plugins/x2go/x2go_plugin.c:1494
+#, fuzzy
 msgid "Validation data in ProtocolSettings array is invalid!"
-msgstr ""
+msgstr "Podaci o validaciji u ProtocolSettings arrayu su nevažeći!"
 
 #: plugins/x2go/x2go_plugin.c:1459
-#, c-format
+#, c-format, fuzzy
 msgid "Allowed values are %s."
-msgstr ""
+msgstr "Dozvoljene vrijednosti su %s."
 
 #: plugins/x2go/x2go_plugin.c:1461
-#, c-format
+#, c-format, fuzzy
 msgid "Only allowed value is '%s'."
-msgstr ""
+msgstr "Samo dozvoljena vrijednost je '%s'."
 
 #: plugins/x2go/x2go_plugin.c:1503
+#, fuzzy
 msgid "Limit minimum is not a valid integer!"
-msgstr ""
+msgstr "Limit minimum nije važeći integer!"
 
 #: plugins/x2go/x2go_plugin.c:1505
+#, fuzzy
 msgid "Limit minimum is too large!"
-msgstr ""
+msgstr "Limit minimum je prevelik!"
 
 #: plugins/x2go/x2go_plugin.c:1507
+#, fuzzy
 msgid "Limit minimum is too small!"
-msgstr ""
+msgstr "Limit minimum je premali!"
 
 #: plugins/x2go/x2go_plugin.c:1509 plugins/x2go/x2go_plugin.c:1523
 #: plugins/x2go/x2go_plugin.c:1538
+#, fuzzy
 msgid "Something went wrong."
-msgstr ""
+msgstr "Nešto je pošlo po zlu."
 
 #: plugins/x2go/x2go_plugin.c:1517
+#, fuzzy
 msgid "Limit maximum is not a valid integer!"
-msgstr ""
+msgstr "Maksimalno ograničenje nije važeći integer!"
 
 #: plugins/x2go/x2go_plugin.c:1519
+#, fuzzy
 msgid "Limit maximum is too large!"
-msgstr ""
+msgstr "Maksimalna granica je prevelika!"
 
 #: plugins/x2go/x2go_plugin.c:1521
+#, fuzzy
 msgid "Limit maximum is too small!"
-msgstr ""
+msgstr "Maksimalna granica je premala!"
 
 #: plugins/x2go/x2go_plugin.c:1533
+#, fuzzy
 msgid "Input is not a valid integer!"
-msgstr ""
+msgstr "Ulaz nije važeći integer!"
 
 #: plugins/x2go/x2go_plugin.c:1535 plugins/x2go/x2go_plugin.c:1548
-#, c-format
+#, c-format, fuzzy
 msgid "Input must be a number between %i and %i."
-msgstr ""
+msgstr "Ulaz mora biti broj između %i i %i."
 
 #: plugins/x2go/x2go_plugin.c:1576
 #, fuzzy
@@ -3336,59 +3392,67 @@ msgid "Startup program"
 msgstr "Program koji se pokreće"
 
 #: plugins/x2go/x2go_plugin.c:1578
+#, fuzzy
 msgid "Which command should be executed after creating the X2Go session?"
-msgstr ""
+msgstr "Koja komanda treba da se izvrši nakon kreiranja X2Go sesije?"
 
 #: plugins/x2go/x2go_plugin.c:1580
 #, fuzzy
 #| msgid "Keyboard layout"
 msgid "Keyboard Layout (auto)"
-msgstr "Raspored tastature"
+msgstr "Raspored tastature (automatski)"
 
 #: plugins/x2go/x2go_plugin.c:1581
 #, fuzzy
 #| msgid "Keyboard layout"
 msgid "Keyboard type (auto)"
-msgstr "Raspored tastature"
+msgstr "Tip tastature (auto)"
 
 #: plugins/x2go/x2go_plugin.c:1582
 #, fuzzy
 msgid "Audio support"
-msgstr "Uključi podršku za Java"
+msgstr "Audio podrška"
 
 #: plugins/x2go/x2go_plugin.c:1584
+#, fuzzy
 msgid "The X2Go server's sound system (default: 'pulse')."
-msgstr ""
+msgstr "Zvučni sistem X2Go servera (zadano: 'puls')."
 
 #: plugins/x2go/x2go_plugin.c:1587
 #, fuzzy
 #| msgid "Per connection"
 msgid "Clipboard direction"
-msgstr "TCP preusmjeravanje"
+msgstr "Smjer međuspremnika"
 
 #: plugins/x2go/x2go_plugin.c:1589
+#, fuzzy
 msgid "Which direction should clipboard content be copied? (default: 'both')."
-msgstr ""
+msgstr "Koji pravac treba kopirati sadržaj međuspremnika? (default: 'both')."
 
 #: plugins/x2go/x2go_plugin.c:1593
 #, fuzzy
 #| msgid "Resolution"
 msgid "DPI resolution"
-msgstr "Rezolucija"
+msgstr "DPI rezolucija"
 
 #: plugins/x2go/x2go_plugin.c:1594
+#, fuzzy
 msgid ""
 "Launch session with a specific resolution (in dots per inch). Must be "
 "between 20 and 400."
 msgstr ""
+"Pokretanje sesije sa određenom rezolucijom (u tačci po inču). Mora da je "
+"između 20 i 400."
 
 #: plugins/x2go/x2go_plugin.c:1638
+#, fuzzy
 msgid "X2Go plugin loaded."
-msgstr ""
+msgstr "X2Go plugin napunjen."
 
 #: plugins/x2go/x2go_plugin.h:43
+#, fuzzy
 msgid "X2Go - Launch an X2Go session"
-msgstr ""
+msgstr "X2Go - Pokretanje X2Go sesije"
 
 #: plugins/gvnc/gvnc_plugin_config.h:40
 #, fuzzy
@@ -3858,7 +3922,7 @@ msgstr ""
 #: data/ui/remmina_news.glade:231
 #, fuzzy
 msgid "<big>Take part</big>"
-msgstr "<big> Uzmite dio</big>"
+msgstr "<big> Uzmi dio</big>"
 
 #. Pay attention to the quoting characters as they may break the pango layout. If in doubt and cannot test, copy and paste the symbols from the English string.
 #: data/ui/remmina_news.glade:257
@@ -3874,8 +3938,8 @@ msgstr ""
 "<span>\n"
 "<b> Imate našu zahvalnost u odabiru copylefted libre softvera, <a href="
 "\"https://remmina.org/donations/\" title=\"Where’s the money, Lebowski? "
-"“blblblblblb”\">donacije nas također usrecuju</a>, i dodatno pomažu u "
-"poboljšanju Remmine. </b>\n"
+"“blblblblblb”\">donacije nas također čine sretnima</a>, i dodatno pomažu u "
+"poboljšanju Remmina. </b>\n"
 "</span>\n"
 
 #: data/ui/remmina_news.glade:277
@@ -3957,7 +4021,7 @@ msgstr "Debugging"
 #: data/ui/remmina_main.glade:295
 #, fuzzy
 msgid "Export"
-msgstr "Izvezi"
+msgstr "Izvoz"
 
 #: data/ui/remmina_main.glade:322
 msgid "Make Remmina your default remote desktop client"

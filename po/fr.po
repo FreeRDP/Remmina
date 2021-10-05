@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-10-01 23:50+0000\n"
-"PO-Revision-Date: 2021-09-29 01:08+0000\n"
+"PO-Revision-Date: 2021-10-05 14:04+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/remmina/remmina/"
 "fr/>\n"
@@ -1356,8 +1356,9 @@ msgstr ""
 "big>"
 
 #: src/remmina_file_editor.c:162
+#, fuzzy
 msgid "Input is invalid."
-msgstr ""
+msgstr "L'entrée n'est pas valide."
 
 #: src/remmina_file_editor.c:239
 msgid "Choose a Remote Desktop Server"
@@ -1466,16 +1467,20 @@ msgid "Notes"
 msgstr "Notes"
 
 #: src/remmina_file_editor.c:1438
-#, c-format
+#, c-format, fuzzy
 msgid "(%s: %i): Can't validate setting '%s' since 'value' or 'gfe' are NULL!"
 msgstr ""
+"(%s : %i) : Impossible de valider le paramètre '%s] puisque 'value' ou 'gfe' "
+"sont NULL !"
 
 #: src/remmina_file_editor.c:1441
-#, c-format
+#, c-format, fuzzy
 msgid ""
 "(%s: %i): Can't validate user input since 'setting_name_to_validate', "
 "'value' or 'gfe' are NULL!"
 msgstr ""
+"(%s : %i) : Impossible de valider l'entrée utilisateur car "
+"'setting_name_to_validate', 'value' ou 'gfe' sont NULL !"
 
 #. TRANSLATORS: Meta-error. Shouldn't be visible.
 #: src/remmina_file_editor.c:1445 plugins/x2go/x2go_plugin.c:856
@@ -1483,14 +1488,14 @@ msgstr ""
 #, fuzzy
 #| msgid "Transfer error"
 msgid "Internal error."
-msgstr "Erreur de transfert"
+msgstr "Erreur interne"
 
 #: src/remmina_file_editor.c:1667 src/remmina_file_editor.c:1703
 #: src/remmina_file_editor.c:1724 src/remmina_file_editor.c:1747
 #, fuzzy, c-format
 #| msgid "Could not create SFTP session. %s"
 msgid "Couldn't validate user input. %s"
-msgstr "Impossible d’établir la session SFTP. %s"
+msgstr "Impossible de valider la saisie de l'utilisateur. %s"
 
 #: src/remmina_file_editor.c:1691
 msgid "Default settings saved."
@@ -2942,8 +2947,9 @@ msgstr ""
 "accessible."
 
 #: plugins/x2go/x2go_plugin.c:561 plugins/x2go/x2go_plugin.c:838
+#, fuzzy
 msgid "Started pyhoca-cli with following arguments:"
-msgstr ""
+msgstr "Démarrage de pyhoca-cli avec les arguments suivants :"
 
 #: plugins/x2go/x2go_plugin.c:580
 #, fuzzy, c-format
@@ -2961,14 +2967,20 @@ msgid "Error: '%s'"
 msgstr "Erreur : \"%s"
 
 #: plugins/x2go/x2go_plugin.c:609
+#, fuzzy
 msgid "Given username can't get saved since it's empty!"
 msgstr ""
+"Le nom d'utilisateur donné ne peut pas être enregistré puisqu'il est vide !"
 
 #: plugins/x2go/x2go_plugin.c:622
+#, fuzzy
 msgid ""
 "An error occured while trying to save new credentials: 's_password' or "
 "'s_username' strings were not set."
 msgstr ""
+"Une erreur s'est produite lors de l'enregistrement de nouvelles informations "
+"d'identification : les chaînes 's_password' ou 's_username' n'ont pas été "
+"définies."
 
 #: plugins/x2go/x2go_plugin.c:659
 #, fuzzy
@@ -3017,7 +3029,7 @@ msgid ""
 "Parsing pyhoca-cli functionality was not possible! Using a limited feature-"
 "set for now."
 msgstr ""
-"l'analyse des fonctionnalités de pyhoca-cli n'était pas possible ! "
+"L'analyse des fonctionnalités de pyhoca-cli n'était pas possible ! "
 "Utilisation d'un ensemble limité de fonctionnalités pour le moment."
 
 #: plugins/x2go/x2go_plugin.c:964
@@ -3034,7 +3046,7 @@ msgstr "Fonctionnalité disponible : '%i] : '%s'."
 #, fuzzy
 #| msgid "Could not open channel. %s"
 msgid "Could not open X11 DISPLAY."
-msgstr "Ouverture du canal impossible. %s"
+msgstr "Impossible d'ouvrir l'AFFICHAGE X11."
 
 #: plugins/x2go/x2go_plugin.c:1114
 #, fuzzy
@@ -3047,12 +3059,15 @@ msgid "Waiting for pyhoca-cli to show the session's window."
 msgstr "Attendre que pyhoca-cli affiche la fenêtre de la session."
 
 #: plugins/x2go/x2go_plugin.c:1191
+#, fuzzy
 msgid "No X2Go session window appeared. Something went wrong…"
 msgstr ""
+"Aucune fenêtre de session X2Go n'est apparue. Quelque chose a mal tourné…"
 
 #: plugins/x2go/x2go_plugin.c:1300
+#, fuzzy
 msgid "Internal error: RemminaProtocolWidget* gp is NULL!"
-msgstr ""
+msgstr "Erreur interne : RemminaProtocolWidget* gp est NULL !"
 
 #: plugins/x2go/x2go_plugin.c:1321
 #, fuzzy, c-format
@@ -3064,8 +3079,9 @@ msgstr ""
 "Org."
 
 #: plugins/x2go/x2go_plugin.c:1329
+#, fuzzy
 msgid "Could not initialize pthread. Falling back to non-threaded mode…"
-msgstr ""
+msgstr "Impossible d'initialiser pthread. Retour au mode non-threadé…"
 
 #. TRANSLATORS: Presumably you just want to translate 'and' into
 #. your language.
@@ -3076,9 +3092,9 @@ msgstr ""
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
 #: plugins/x2go/x2go_plugin.c:1372 plugins/x2go/x2go_plugin.c:1390
-#, c-format
+#, c-format, fuzzy
 msgid "%sand '%s'"
-msgstr ""
+msgstr "%s et '%s'."
 
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
@@ -3087,70 +3103,81 @@ msgstr ""
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
 #: plugins/x2go/x2go_plugin.c:1377 plugins/x2go/x2go_plugin.c:1395
-#, c-format
+#, c-format, fuzzy
 msgid "%s'%s' "
-msgstr ""
+msgstr "%s' %s' "
 
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
 #. 'value1', 'value2', 'valueN-1' and 'valueN'
 #: plugins/x2go/x2go_plugin.c:1382
-#, c-format
+#, c-format, fuzzy
 msgid "%s'%s', "
-msgstr ""
+msgstr "%s'%s', "
 
 #: plugins/x2go/x2go_plugin.c:1420 plugins/x2go/x2go_plugin.c:1432
 #: plugins/x2go/x2go_plugin.c:1494
+#, fuzzy
 msgid "Validation data in ProtocolSettings array is invalid!"
 msgstr ""
+"Les données de validation dans le tableau ProtocolSettings ne sont pas "
+"valides !"
 
 #: plugins/x2go/x2go_plugin.c:1459
-#, c-format
+#, c-format, fuzzy
 msgid "Allowed values are %s."
-msgstr ""
+msgstr "Les valeurs autorisées sont %s."
 
 #: plugins/x2go/x2go_plugin.c:1461
-#, c-format
+#, c-format, fuzzy
 msgid "Only allowed value is '%s'."
-msgstr ""
+msgstr "La seule valeur autorisée est \"%s\"."
 
 #: plugins/x2go/x2go_plugin.c:1503
+#, fuzzy
 msgid "Limit minimum is not a valid integer!"
-msgstr ""
+msgstr "Limite minimum n'est pas un entier valide !"
 
 #: plugins/x2go/x2go_plugin.c:1505
+#, fuzzy
 msgid "Limit minimum is too large!"
-msgstr ""
+msgstr "La limite minimale est trop élevée !"
 
 #: plugins/x2go/x2go_plugin.c:1507
+#, fuzzy
 msgid "Limit minimum is too small!"
-msgstr ""
+msgstr "La limite minimale est trop petite !"
 
 #: plugins/x2go/x2go_plugin.c:1509 plugins/x2go/x2go_plugin.c:1523
 #: plugins/x2go/x2go_plugin.c:1538
+#, fuzzy
 msgid "Something went wrong."
-msgstr ""
+msgstr "Quelque chose s'est mal passé."
 
 #: plugins/x2go/x2go_plugin.c:1517
+#, fuzzy
 msgid "Limit maximum is not a valid integer!"
-msgstr ""
+msgstr "La limite maximale n'est pas un nombre entier valide !"
 
 #: plugins/x2go/x2go_plugin.c:1519
+#, fuzzy
 msgid "Limit maximum is too large!"
-msgstr ""
+msgstr "La limite maximale est trop élevée !"
 
 #: plugins/x2go/x2go_plugin.c:1521
+#, fuzzy
 msgid "Limit maximum is too small!"
-msgstr ""
+msgstr "La limite maximale est trop petite !"
 
 #: plugins/x2go/x2go_plugin.c:1533
+#, fuzzy
 msgid "Input is not a valid integer!"
-msgstr ""
+msgstr "L'entrée n'est pas un nombre entier valide !"
 
 #: plugins/x2go/x2go_plugin.c:1535 plugins/x2go/x2go_plugin.c:1548
-#, c-format
+#, c-format, fuzzy
 msgid "Input must be a number between %i and %i."
-msgstr ""
+msgstr "L'entrée doit être un numéro entre %i et %i."
 
 #: plugins/x2go/x2go_plugin.c:1576
 #, fuzzy
@@ -3213,7 +3240,7 @@ msgid ""
 "between 20 and 400."
 msgstr ""
 "Lancez la session avec une résolution spécifique (en points par pouce). Elle "
-"doit être comprise entre 20 et 400"
+"doit être comprise entre 20 et 400."
 
 #: plugins/x2go/x2go_plugin.c:1638
 #, fuzzy

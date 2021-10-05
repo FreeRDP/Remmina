@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Remmina v1.4.3\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-10-01 23:50+0000\n"
-"PO-Revision-Date: 2021-10-01 22:31+0000\n"
+"PO-Revision-Date: 2021-10-05 14:05+0000\n"
 "Last-Translator: phlostically <phlostically@mailinator.com>\n"
 "Language-Team: Esperanto <https://hosted.weblate.org/projects/remmina/"
 "remmina/eo/>\n"
@@ -1415,18 +1415,20 @@ msgid "Notes"
 msgstr "Notoj"
 
 #: src/remmina_file_editor.c:1438
-#, fuzzy, c-format
-#| msgid "(%s: %i): setting_name_to_validate, value or gfe are NULL!"
+#, c-format
 msgid "(%s: %i): Can't validate setting '%s' since 'value' or 'gfe' are NULL!"
-msgstr "(%s: %i): setting_name_to_validate, value aŭ gfe estas nula!"
+msgstr ""
+"(%s: %i): Ne eblas kontroli validecon de agordo «%s», ĉar aŭ «value» aŭ «gfe»"
+" estas nula!"
 
 #: src/remmina_file_editor.c:1441
-#, fuzzy, c-format
-#| msgid "(%s: %i): setting_name_to_validate, value or gfe are NULL!"
+#, c-format
 msgid ""
 "(%s: %i): Can't validate user input since 'setting_name_to_validate', "
 "'value' or 'gfe' are NULL!"
-msgstr "(%s: %i): setting_name_to_validate, value aŭ gfe estas nula!"
+msgstr ""
+"(%s: %i): Ne eblas kontroli validecon de enigo de uzanto ĉar aŭ "
+"«setting_name_to_validate», «value» aŭ «gfe» estas nula!"
 
 #. TRANSLATORS: Meta-error. Shouldn't be visible.
 #: src/remmina_file_editor.c:1445 plugins/x2go/x2go_plugin.c:856
@@ -2943,10 +2945,8 @@ msgid "No X2Go session window appeared. Something went wrong…"
 msgstr "Neniu fenestro de X2Go-seanco aperis. Io fuŝiĝis…"
 
 #: plugins/x2go/x2go_plugin.c:1300
-#, fuzzy
-#| msgid "RemminaProtocolWidget* gp is null!"
 msgid "Internal error: RemminaProtocolWidget* gp is NULL!"
-msgstr "RemminaProtocolWidget* gp estas nula!"
+msgstr "Interna eraro: «RemminaProtocolWidget* gp» estas nula!"
 
 #: plugins/x2go/x2go_plugin.c:1321
 #, c-format

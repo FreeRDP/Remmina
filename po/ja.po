@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-10-01 23:50+0000\n"
-"PO-Revision-Date: 2021-10-01 22:31+0000\n"
+"PO-Revision-Date: 2021-10-05 14:04+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/remmina/remmina/"
 "ja/>\n"
@@ -326,7 +326,6 @@ msgid "Fill client window when scaled"
 msgstr "拡大縮小時にクライアントウィンドウ全体に表示"
 
 #: src/rcw.c:2043
-#, fuzzy
 msgid "Send clipboard content as keystrokes"
 msgstr "クリップボードの内容をキーストロークとして送信"
 
@@ -345,7 +344,6 @@ msgid "_Menu"
 msgstr "_Menu"
 
 #: src/rcw.c:2291
-#, fuzzy
 msgid "Menu"
 msgstr "メニュー"
 
@@ -1478,14 +1476,16 @@ msgstr "メモ"
 #: src/remmina_file_editor.c:1438
 #, fuzzy, c-format
 msgid "(%s: %i): Can't validate setting '%s' since 'value' or 'gfe' are NULL!"
-msgstr "(%s: %i): setting_name_to_validate、valueまたはgfeがNULL!"
+msgstr "([x1x]: [x5x])と表示されました。設定「%s」は、「value」や「gfe」がNULLなので検証できません。"
 
 #: src/remmina_file_editor.c:1441
 #, fuzzy, c-format
 msgid ""
 "(%s: %i): Can't validate user input since 'setting_name_to_validate', "
 "'value' or 'gfe' are NULL!"
-msgstr "(%s: %i): setting_name_to_validate、valueまたはgfeがNULL!"
+msgstr ""
+"([x1x]: [x5x])と表示されました。setting_name_to_validate'、'value'、'gfe'がNULLなので、ユーザーの入"
+"力を検証できません。"
 
 #. TRANSLATORS: Meta-error. Shouldn't be visible.
 #: src/remmina_file_editor.c:1445 plugins/x2go/x2go_plugin.c:856
@@ -3071,7 +3071,7 @@ msgstr ""
 #: plugins/x2go/x2go_plugin.c:1300
 #, fuzzy
 msgid "Internal error: RemminaProtocolWidget* gp is NULL!"
-msgstr "RemminaProtocolWidget* gp is null!"
+msgstr "内部エラーが発生しました。RemminaProtocolWidget* gp is NULL!"
 
 #: plugins/x2go/x2go_plugin.c:1321
 #, fuzzy, c-format
@@ -3302,8 +3302,6 @@ msgid "Ultra low colour (3 bits)"
 msgstr "ウルトラローカラー（3ビット"
 
 #: plugins/gvnc/gvnc_plugin.c:848
-#, fuzzy
-#| msgid "Enter VNC password"
 msgid "VNC password"
 msgstr "VNCパスワード"
 
@@ -3409,8 +3407,6 @@ msgid "Reset remote host (hard reboot)"
 msgstr "リモートホストのリセット（ハードリブート"
 
 #: plugins/gvnc/gvnc_plugin.c:898
-#, fuzzy
-#| msgid "Show remote cursor"
 msgid "Shutdown remote host"
 msgstr "リモートホストのシャットダウン"
 
@@ -3985,7 +3981,6 @@ msgstr "全画面表示 (ウィンドウモード)"
 
 #. How tabs are grouped in the Remmina connection window
 #: data/ui/remmina_preferences.glade:624
-#, fuzzy
 msgctxt "Appearance preferences"
 msgid "Tabs grouping"
 msgstr "タブのグループ化"
@@ -4212,8 +4207,6 @@ msgid "Scrollback lines"
 msgstr "スクロールして戻れる行数"
 
 #: data/ui/remmina_preferences.glade:1902
-#, fuzzy
-#| msgid "Shortcut for copying to clipboard"
 msgid "Shortcuts for copying and pasting"
 msgstr "コピー＆ペーストのショートカット"
 
@@ -4351,8 +4344,6 @@ msgid "Foreground colour"
 msgstr "前景色"
 
 #: data/ui/remmina_preferences.glade:2385
-#, fuzzy
-#| msgid "Increase font size"
 msgid "Increase and decrease font size"
 msgstr "文字サイズの拡大・縮小"
 
