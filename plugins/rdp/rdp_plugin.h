@@ -118,6 +118,9 @@ struct rf_clipboard {
 	pthread_cond_t		transfer_clip_cond;
 	enum  { SCDW_NONE, SCDW_BUSY_WAIT, SCDW_ABORTING } srv_clip_data_wait;
 	gpointer		srv_data;
+
+	/* Stats for clipboard download */
+	struct timeval clientformatdatarequest_tv;
 };
 typedef struct rf_clipboard rfClipboard;
 

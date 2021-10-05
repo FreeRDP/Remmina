@@ -815,25 +815,29 @@ gboolean remmina_rdp_event_on_clipboard(GtkClipboard *gtkClipboard, GdkEvent *ev
 	TRACE_CALL(__func__);
 	RemminaPluginRdpEvent rdp_event = { 0 };
 	CLIPRDR_FORMAT_LIST *pFormatList;
+	GObject *new_owner;
 
-	/* Usually "owner-change" is fired when a user pres "COPY" on the client
+	/* Usually "owner-change" is fired when a user presses "COPY" on the client
 	 * OR when this plugin calls gtk_clipboard_set_with_owner()
-	 * after receivina a RDP server format list in remmina_rdp_cliprdr_server_format_list()
+	 * after receiving a RDP server format list in remmina_rdp_cliprdr_server_format_list()
 	 * In the latter case, we must ignore owner change */
 
-	REMMINA_PLUGIN_DEBUG("owner-change event received");
+	REMMINA_PLUGIN_DEBUG("gp=%p: owner-change event received", gp);
 
 	rfContext *rfi = GET_PLUGIN_DATA(gp);
 
 	if (rfi)
-		remmina_rdp_clipboard_abort_transfer(rfi);
+		remmina_rdp_clipboard_abort_client_format_data_request(rfi);
 
-	if (gtk_clipboard_get_owner(gtkClipboard) != (GObject *)gp) {
+	new_owner = gtk_clipboard_get_owner(gtkClipboard);
+	if (new_owner != (GObject *)gp) {
 		/* To do: avoid this when the new owner is another remmina protocol widget of
 		 * the same remmina application */
-		REMMINA_PLUGIN_DEBUG("     new owner is different than me: new=%p me=%p. Sending local clipboard format list to server.",
-				     gtk_clipboard_get_owner(gtkClipboard), (GObject *)gp);
+		REMMINA_PLUGIN_DEBUG("gp=%p owner-change: new owner is different than me: new=%p me=%p",
+				     gp, new_owner, gp);
 
+		REMMINA_PLUGIN_DEBUG("gp=%p owner-change: new owner is not me: Sending local clipboard format list to server.",
+			gp, new_owner, gp);
 		pFormatList = remmina_rdp_cliprdr_get_client_format_list(gp);
 		rdp_event.type = REMMINA_RDP_EVENT_TYPE_CLIPBOARD_SEND_CLIENT_FORMAT_LIST;
 		rdp_event.clipboard_formatlist.pFormatList = pFormatList;
