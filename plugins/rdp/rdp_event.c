@@ -1342,7 +1342,7 @@ static void remmina_rdp_event_queue_ui(RemminaProtocolWidget *gp, RemminaPluginR
 	gboolean ui_sync_save;
 	int oldcanceltype;
 
-	if (rfi->thread_cancelled)
+	if (!rfi || rfi->thread_cancelled)
 		return;
 
 	if (remmina_plugin_service->is_main_thread()) {
