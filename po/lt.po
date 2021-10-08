@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-10-01 23:50+0000\n"
-"PO-Revision-Date: 2021-07-16 08:59+0000\n"
+"POT-Creation-Date: 2021-10-05 22:10+0000\n"
+"PO-Revision-Date: 2021-10-06 11:20+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Lithuanian <https://hosted.weblate.org/projects/remmina/"
 "remmina/lt/>\n"
@@ -18,15 +18,16 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
-"%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 4.7.2-dev\n"
+"Plural-Forms: nplurals=3; plural=(n % 10 == 1 && (n % 100 < 11 || n % 100 > "
+"19)) ? 0 : ((n % 10 >= 2 && n % 10 <= 9 && (n % 100 < 11 || n % 100 > 19)) ? "
+"1 : 2);\n"
+"X-Generator: Weblate 4.9-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:354
 #: src/remmina_protocol_widget.c:1672 src/remmina_protocol_widget.c:1691
 #: src/remmina_file_editor.c:1101 src/remmina_file_editor.c:1222
-#: src/remmina_ssh_plugin.c:1369 plugins/rdp/rdp_plugin.c:2675
+#: src/remmina_ssh_plugin.c:1369 plugins/rdp/rdp_plugin.c:2677
 #: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:1575
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1675
 #: data/ui/remmina_unlock.glade:116
@@ -73,7 +74,7 @@ msgstr "Prisijungti per SSH iš naujo terminalo"
 
 #: src/remmina_sftp_plugin.c:353 src/remmina_message_panel.c:330
 #: src/remmina_file_editor.c:1216 src/remmina_ssh_plugin.c:1479
-#: plugins/rdp/rdp_plugin.c:2674 plugins/vnc/vnc_plugin.c:1976
+#: plugins/rdp/rdp_plugin.c:2676 plugins/vnc/vnc_plugin.c:1976
 #: plugins/vnc/vnc_plugin.c:1988 plugins/www/www_plugin.c:894
 #: plugins/x2go/x2go_plugin.c:1574 data/ui/remmina_mpc.glade:144
 msgid "Username"
@@ -253,7 +254,7 @@ msgstr ""
 #: data/ui/remmina_unlock.glade:46
 #, fuzzy
 msgid "Cancel"
-msgstr "Atsisakyti"
+msgstr "Atšaukti"
 
 #: src/remmina_message_panel.c:199 data/ui/remmina_snap_info_dialog.glade:28
 #: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
@@ -273,7 +274,7 @@ msgstr "Taip"
 msgid "No"
 msgstr "Ne"
 
-#: src/remmina_message_panel.c:391 plugins/rdp/rdp_plugin.c:2676
+#: src/remmina_message_panel.c:391 plugins/rdp/rdp_plugin.c:2678
 #: data/ui/remmina_mpc.glade:172
 msgid "Domain"
 msgstr "Sritis"
@@ -736,7 +737,7 @@ msgstr "_Pašalinti"
 #: src/remmina_ftp_client.c:748
 #, fuzzy
 msgid "Home"
-msgstr "Pradžia"
+msgstr "Pagrindinis"
 
 #: src/remmina_ftp_client.c:749
 msgid "Go to home folder"
@@ -751,7 +752,7 @@ msgstr "Aukštyn"
 msgid "Go to parent folder"
 msgstr "Eiti į virškatalogį"
 
-#: src/remmina_ftp_client.c:758 plugins/rdp/rdp_plugin.c:2765
+#: src/remmina_ftp_client.c:758 plugins/rdp/rdp_plugin.c:2767
 #: plugins/vnc/vnc_plugin.c:2027
 msgid "Refresh"
 msgstr "Atnaujinti"
@@ -798,11 +799,11 @@ msgstr "Grupė"
 msgid "Permission"
 msgstr "Leidimas"
 
-#: src/remmina_ftp_client.c:990 plugins/rdp/rdp_plugin.c:2563
+#: src/remmina_ftp_client.c:990 plugins/rdp/rdp_plugin.c:2565
 msgid "Remote"
 msgstr "Nutolęs"
 
-#: src/remmina_ftp_client.c:997 plugins/rdp/rdp_plugin.c:2562
+#: src/remmina_ftp_client.c:997 plugins/rdp/rdp_plugin.c:2564
 msgid "Local"
 msgstr "Vietinis"
 
@@ -1414,8 +1415,9 @@ msgstr ""
 "- username@server[:port] (tik SSH protokolas)</big>"
 
 #: src/remmina_file_editor.c:162
+#, fuzzy
 msgid "Input is invalid."
-msgstr ""
+msgstr "Įvestis negalioja."
 
 #: src/remmina_file_editor.c:239
 msgid "Choose a Remote Desktop Server"
@@ -1502,7 +1504,7 @@ msgstr "Tunelis per loopback adresą"
 msgid "Same server at port %i"
 msgstr "Tas pats serveris, prievadas %i"
 
-#: src/remmina_file_editor.c:1193 plugins/rdp/rdp_plugin.c:2719
+#: src/remmina_file_editor.c:1193 plugins/rdp/rdp_plugin.c:2721
 msgid "Start-up path"
 msgstr "Paleidimo kelias"
 
@@ -1536,30 +1538,34 @@ msgid "Notes"
 msgstr "Pastabos"
 
 #: src/remmina_file_editor.c:1438
-#, c-format
+#, c-format, fuzzy
 msgid "(%s: %i): Can't validate setting '%s' since 'value' or 'gfe' are NULL!"
 msgstr ""
+"(%s: %i): Negalima patvirtinti parametro \"%s\", nes 'value' arba 'gfe' yra "
+"NULL!"
 
 #: src/remmina_file_editor.c:1441
-#, c-format
+#, c-format, fuzzy
 msgid ""
 "(%s: %i): Can't validate user input since 'setting_name_to_validate', "
 "'value' or 'gfe' are NULL!"
 msgstr ""
+"(%s: %i): Negalima patvirtinti naudotojo įvesties, nes "
+"'setting_name_to_validate', 'value' arba 'gfe' yra NULL!"
 
 #. TRANSLATORS: Meta-error. Shouldn't be visible.
 #: src/remmina_file_editor.c:1445 plugins/x2go/x2go_plugin.c:856
 #: plugins/x2go/x2go_plugin.c:1442
 #, fuzzy
 msgid "Internal error."
-msgstr "Perdavimo klaida"
+msgstr "Vidinė klaida."
 
 #: src/remmina_file_editor.c:1667 src/remmina_file_editor.c:1703
 #: src/remmina_file_editor.c:1724 src/remmina_file_editor.c:1747
 #, fuzzy, c-format
 #| msgid "Could not create SFTP session. %s"
 msgid "Couldn't validate user input. %s"
-msgstr "Nepavyko sukurti SFTP seanso: %s"
+msgstr "Nepavyko patvirtinti naudotojo įvesties. %s"
 
 #: src/remmina_file_editor.c:1691
 msgid "Default settings saved."
@@ -1698,7 +1704,7 @@ msgstr "Į_dėti"
 #: src/remmina_ssh_plugin.c:1450
 #, fuzzy
 msgid "Select all"
-msgstr "Parinkti viską"
+msgstr "Žymėti visus"
 
 #: src/remmina_ssh_plugin.c:1450
 #, fuzzy
@@ -1736,7 +1742,7 @@ msgstr "_Rasti tekstą"
 msgid "User password"
 msgstr "Vartotojo slaptažodis"
 
-#: src/remmina_ssh_plugin.c:1486 plugins/rdp/rdp_plugin.c:2718
+#: src/remmina_ssh_plugin.c:1486 plugins/rdp/rdp_plugin.c:2720
 msgid "Start-up program"
 msgstr "Paleidimo programa"
 
@@ -1852,22 +1858,22 @@ msgstr "<Nenustatyta>"
 msgid "<Choose a quality level to edit…>"
 msgstr "<Pasirinkite kokybės lygį, kurį norite redaguoti...>"
 
-#: plugins/rdp/rdp_settings.c:282 plugins/rdp/rdp_plugin.c:2537
+#: plugins/rdp/rdp_settings.c:282 plugins/rdp/rdp_plugin.c:2539
 #: plugins/vnc/vnc_plugin.c:1934
 msgid "Poor (fastest)"
 msgstr "Prasta (greičiausia)"
 
-#: plugins/rdp/rdp_settings.c:284 plugins/rdp/rdp_plugin.c:2538
+#: plugins/rdp/rdp_settings.c:284 plugins/rdp/rdp_plugin.c:2540
 #: plugins/vnc/vnc_plugin.c:1933
 msgid "Medium"
 msgstr "Vidutinė"
 
-#: plugins/rdp/rdp_settings.c:286 plugins/rdp/rdp_plugin.c:2539
+#: plugins/rdp/rdp_settings.c:286 plugins/rdp/rdp_plugin.c:2541
 #: plugins/vnc/vnc_plugin.c:1931
 msgid "Good"
 msgstr "Gera"
 
-#: plugins/rdp/rdp_settings.c:288 plugins/rdp/rdp_plugin.c:2540
+#: plugins/rdp/rdp_settings.c:288 plugins/rdp/rdp_plugin.c:2542
 #: plugins/vnc/vnc_plugin.c:1932
 msgid "Best (slowest)"
 msgstr "Geriausia (lėčiausia)"
@@ -1884,15 +1890,20 @@ msgstr "Naudoti kliento klaviatūros atvaizdį"
 #, fuzzy
 #| msgid "Keyboard mapping"
 msgid "Keyboard scancode remapping"
-msgstr "Klaviatūros atvaizdavimas"
+msgstr "Klaviatūros skanduotės kodų pertvarkymas"
 
 #: plugins/rdp/rdp_settings.c:483
+#, fuzzy
 msgid "List of key=value,… pairs to remap scancodes. E.g. 0x56=0x29,0x29=0x56"
 msgstr ""
+"Rakto=vertės,... porų, skirtų pertvarkyti skanduotėms, sąrašas. Pvz., "
+"0x56=0x29,0x29=0x56"
 
 #: plugins/rdp/rdp_settings.c:486
+#, fuzzy
 msgid "FreeRDP > 2.3.0 is required to map scancodes"
 msgstr ""
+"Reikalinga \"FreeRDP\" > 2.3.0, kad būtų galima atvaizduoti skenavimo kodus"
 
 #: plugins/rdp/rdp_settings.c:494
 #, fuzzy
@@ -1957,7 +1968,7 @@ msgstr "Darbalaukio orientacija"
 msgid "Input device settings"
 msgstr "Įvesties įrenginio nustatymai"
 
-#: plugins/rdp/rdp_settings.c:658 plugins/rdp/rdp_plugin.c:2681
+#: plugins/rdp/rdp_settings.c:658 plugins/rdp/rdp_plugin.c:2683
 #: plugins/vnc/vnc_plugin.c:2014
 #, fuzzy
 #| msgid "Turn on smooth scrolling"
@@ -1970,13 +1981,13 @@ msgstr "Išjungti Smooth Scrolling"
 msgid "General settings"
 msgstr "Bendri nustatymai"
 
-#: plugins/rdp/rdp_settings.c:676 plugins/rdp/rdp_plugin.c:2733
+#: plugins/rdp/rdp_settings.c:676 plugins/rdp/rdp_plugin.c:2735
 #, fuzzy
 #| msgid "Reconnection attempt %d of %d…"
 msgid "Reconnect attempts number"
 msgstr "Bandymų pakartotinai prisijungti skaičius"
 
-#: plugins/rdp/rdp_settings.c:689 plugins/rdp/rdp_plugin.c:2733
+#: plugins/rdp/rdp_settings.c:689 plugins/rdp/rdp_plugin.c:2735
 #, fuzzy
 msgid ""
 "The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
@@ -1984,76 +1995,76 @@ msgstr ""
 "Didžiausias pakartotinio prisijungimo bandymų skaičius atsijungus RDP "
 "(numatytoji reikšmė: 20)"
 
-#: plugins/rdp/rdp_plugin.c:757 plugins/rdp/rdp_plugin.c:822
+#: plugins/rdp/rdp_plugin.c:759 plugins/rdp/rdp_plugin.c:824
 #, fuzzy
 msgid "Enter RDP authentication credentials"
 msgstr "Įveskite RDP autentifikavimo duomenis"
 
-#: plugins/rdp/rdp_plugin.c:830
+#: plugins/rdp/rdp_plugin.c:832
 #, fuzzy
 msgid "Enter RDP gateway authentication credentials"
 msgstr "Įveskite RDP šliuzo autentifikavimo įgaliojimus"
 
-#: plugins/rdp/rdp_plugin.c:2068
+#: plugins/rdp/rdp_plugin.c:2070
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account locked out."
 msgstr "Komanda %s nerasta SSH serveryje"
 
-#: plugins/rdp/rdp_plugin.c:2075
+#: plugins/rdp/rdp_plugin.c:2077
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account expired."
 msgstr "Komanda %s nerasta SSH serveryje"
 
-#: plugins/rdp/rdp_plugin.c:2082
+#: plugins/rdp/rdp_plugin.c:2084
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Password expired."
 msgstr "Komanda %s nerasta SSH serveryje"
 
-#: plugins/rdp/rdp_plugin.c:2089
+#: plugins/rdp/rdp_plugin.c:2091
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account disabled."
 msgstr "Komanda %s nerasta SSH serveryje"
 
-#: plugins/rdp/rdp_plugin.c:2095
+#: plugins/rdp/rdp_plugin.c:2097
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Insufficient user privileges."
 msgstr "Komanda %s nerasta SSH serveryje"
 
-#: plugins/rdp/rdp_plugin.c:2103
+#: plugins/rdp/rdp_plugin.c:2105
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account restricted."
 msgstr "Komanda %s nerasta SSH serveryje"
 
-#: plugins/rdp/rdp_plugin.c:2111
+#: plugins/rdp/rdp_plugin.c:2113
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Change user password before connecting."
 msgstr "Komanda %s nerasta SSH serveryje"
 
-#: plugins/rdp/rdp_plugin.c:2116
+#: plugins/rdp/rdp_plugin.c:2118
 #, c-format
 msgid "Lost connection to the RDP server “%s”."
 msgstr "Nepavyko prisijungti prie RDP serverio %s"
 
-#: plugins/rdp/rdp_plugin.c:2119
+#: plugins/rdp/rdp_plugin.c:2121
 #, c-format
 msgid "Could not find the address for the RDP server “%s”."
 msgstr "Komanda %s nerasta SSH serveryje"
 
-#: plugins/rdp/rdp_plugin.c:2123
+#: plugins/rdp/rdp_plugin.c:2125
 #, fuzzy, c-format
 msgid ""
 "Could not connect to the RDP server “%s” via TLS. Check that client and "
@@ -2063,7 +2074,7 @@ msgstr ""
 "klientas ir serveris palaiko bendrą TLS versiją."
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
-#: plugins/rdp/rdp_plugin.c:2127
+#: plugins/rdp/rdp_plugin.c:2129
 #, fuzzy, c-format
 #| msgid ""
 #| "Unable to establish a connection to the RDP server “%s”. Check \"Security "
@@ -2075,17 +2086,17 @@ msgstr ""
 "Nepavyksta užmegzti ryšio su RDP serveriu \"%s\". Patikrinkite \"Saugumo "
 "protokolo derybos\"."
 
-#: plugins/rdp/rdp_plugin.c:2135
+#: plugins/rdp/rdp_plugin.c:2137
 #, c-format
 msgid "Cannot connect to the RDP server “%s”."
 msgstr "Nepavyko prisijungti prie RDP serverio %s"
 
-#: plugins/rdp/rdp_plugin.c:2138
+#: plugins/rdp/rdp_plugin.c:2140
 #, fuzzy
 msgid "Could not start libfreerdp-gdi."
 msgstr "Nepavyko paleisti libfreerdp-gdi."
 
-#: plugins/rdp/rdp_plugin.c:2141
+#: plugins/rdp/rdp_plugin.c:2143
 #, fuzzy, c-format
 msgid ""
 "You requested a H.264 GFX mode for the server “%s”, but your libfreerdp does "
@@ -2094,12 +2105,12 @@ msgstr ""
 "Prašėte serverio \"%s\" H.264 GFX režimo, tačiau jūsų libfreerdp nepalaiko "
 "H.264. Prašome naudoti ne AVC spalvų gylio nustatymą."
 
-#: plugins/rdp/rdp_plugin.c:2148
+#: plugins/rdp/rdp_plugin.c:2150
 #, fuzzy, c-format
 msgid "The “%s” server refused the connection."
-msgstr "\"%s\" serveris atsisakė užmegzti ryšį."
+msgstr "\"%s\" serveris atsisakė prisijungti."
 
-#: plugins/rdp/rdp_plugin.c:2153
+#: plugins/rdp/rdp_plugin.c:2155
 #, fuzzy, c-format
 msgid ""
 "The Remote Desktop Gateway “%s” denied the user “%s\\%s” access due to "
@@ -2108,134 +2119,134 @@ msgstr ""
 "Nuotolinio darbalaukio šliuzas \"%s\" neleido naudotojui \"%s\\%s\" "
 "prisijungti dėl politikos."
 
-#: plugins/rdp/rdp_plugin.c:2163
+#: plugins/rdp/rdp_plugin.c:2165
 #, c-format
 msgid "Cannot connect to the “%s” RDP server."
 msgstr "Nepavyko prisijungti prie RDP serverio %s"
 
-#: plugins/rdp/rdp_plugin.c:2506
+#: plugins/rdp/rdp_plugin.c:2508
 #, fuzzy
 msgid "Automatic (32 bpp) (Server chooses its best format)"
 msgstr "Automatinis (32 bpp) (serveris pasirenka geriausią formatą)"
 
-#: plugins/rdp/rdp_plugin.c:2507
+#: plugins/rdp/rdp_plugin.c:2509
 #, fuzzy
 msgid "GFX AVC444 (32 bpp)"
 msgstr "GFX AVC444 (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2508
+#: plugins/rdp/rdp_plugin.c:2510
 #, fuzzy
 msgid "GFX AVC420 (32 bpp)"
 msgstr "GFX AVC420 (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2509
+#: plugins/rdp/rdp_plugin.c:2511
 #, fuzzy
 msgid "GFX RFX (32 bpp)"
 msgstr "GFX RFX (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2510
+#: plugins/rdp/rdp_plugin.c:2512
 #, fuzzy
 msgid "GFX RFX Progressive (32 bpp)"
 msgstr "GFX RFX Progressive (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2511
+#: plugins/rdp/rdp_plugin.c:2513
 msgid "RemoteFX (32 bpp)"
 msgstr "RemoteFX (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2512 plugins/vnc/vnc_plugin.c:1922
+#: plugins/rdp/rdp_plugin.c:2514 plugins/vnc/vnc_plugin.c:1922
 msgid "True colour (32 bpp)"
 msgstr "Tikrosios spalvos (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2513
+#: plugins/rdp/rdp_plugin.c:2515
 msgid "True colour (24 bpp)"
 msgstr "Tikrosios spalvos (24 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2514 plugins/vnc/vnc_plugin.c:1923
+#: plugins/rdp/rdp_plugin.c:2516 plugins/vnc/vnc_plugin.c:1923
 msgid "High colour (16 bpp)"
 msgstr "Daug spalvų (16 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2515
+#: plugins/rdp/rdp_plugin.c:2517
 msgid "High colour (15 bpp)"
 msgstr "Daug spalvų (15 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2516 plugins/vnc/vnc_plugin.c:1924
+#: plugins/rdp/rdp_plugin.c:2518 plugins/vnc/vnc_plugin.c:1924
 msgid "256 colours (8 bpp)"
 msgstr "256 spalvos (8 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2547 data/ui/remmina_preferences.glade:641
+#: plugins/rdp/rdp_plugin.c:2549 data/ui/remmina_preferences.glade:641
 #, fuzzy
 msgid "None"
 msgstr "Nėra"
 
-#: plugins/rdp/rdp_plugin.c:2548
+#: plugins/rdp/rdp_plugin.c:2550
 msgid "Auto-detect"
 msgstr "<automati6kai aptikti>"
 
-#: plugins/rdp/rdp_plugin.c:2549
+#: plugins/rdp/rdp_plugin.c:2551
 #, fuzzy
 msgid "Modem"
 msgstr "Modemas"
 
-#: plugins/rdp/rdp_plugin.c:2550
+#: plugins/rdp/rdp_plugin.c:2552
 #, fuzzy
 msgid "Low performance broadband"
 msgstr "Mažo našumo plačiajuostis ryšys"
 
-#: plugins/rdp/rdp_plugin.c:2551
+#: plugins/rdp/rdp_plugin.c:2553
 #, fuzzy
 msgid "Satellite"
 msgstr "Palydovas"
 
-#: plugins/rdp/rdp_plugin.c:2552
+#: plugins/rdp/rdp_plugin.c:2554
 #, fuzzy
 msgid "High performance broadband"
 msgstr "Didelio našumo plačiajuostis ryšys"
 
-#: plugins/rdp/rdp_plugin.c:2553
+#: plugins/rdp/rdp_plugin.c:2555
 #, fuzzy
 msgid "WAN"
 msgstr "WAN"
 
-#: plugins/rdp/rdp_plugin.c:2554
+#: plugins/rdp/rdp_plugin.c:2556
 #, fuzzy
 msgid "LAN"
 msgstr "LAN"
 
-#: plugins/rdp/rdp_plugin.c:2561 plugins/spice/spice_plugin.c:635
+#: plugins/rdp/rdp_plugin.c:2563 plugins/spice/spice_plugin.c:635
 #: data/ui/remmina_preferences.glade:677
 msgid "Off"
 msgstr "Išjungta"
 
-#: plugins/rdp/rdp_plugin.c:2570
+#: plugins/rdp/rdp_plugin.c:2572
 #, fuzzy
 msgid "Automatic negotiation"
 msgstr "Automatinės derybos"
 
-#: plugins/rdp/rdp_plugin.c:2571
+#: plugins/rdp/rdp_plugin.c:2573
 msgid "NLA protocol security"
 msgstr "Protokolas"
 
-#: plugins/rdp/rdp_plugin.c:2572
+#: plugins/rdp/rdp_plugin.c:2574
 msgid "TLS protocol security"
 msgstr "Protokolas"
 
-#: plugins/rdp/rdp_plugin.c:2573
+#: plugins/rdp/rdp_plugin.c:2575
 msgid "RDP protocol security"
 msgstr "Protokolas"
 
-#: plugins/rdp/rdp_plugin.c:2574
+#: plugins/rdp/rdp_plugin.c:2576
 #, fuzzy
 msgid "NLA extended protocol security"
 msgstr "NLA išplėstinis protokolo saugumas"
 
-#: plugins/rdp/rdp_plugin.c:2587
+#: plugins/rdp/rdp_plugin.c:2589
 #, fuzzy
 msgid "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 and newer)"
 msgstr ""
 "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 ir naujesnės "
 "versijos)"
 
-#: plugins/rdp/rdp_plugin.c:2590
+#: plugins/rdp/rdp_plugin.c:2592
 #, fuzzy
 msgid ""
 "Used i.a. by terminal services in a smart card channel to distinguish client "
@@ -2254,7 +2265,7 @@ msgstr ""
 "  - >= 7065: Windows 8 ir naujesnės versijos: SCardGetReaderIcon(),\n"
 "    SCardGetDeviceTypeId()"
 
-#: plugins/rdp/rdp_plugin.c:2598
+#: plugins/rdp/rdp_plugin.c:2600
 #, fuzzy
 msgid ""
 "Options for redirection of audio input:\n"
@@ -2273,7 +2284,7 @@ msgstr ""
 "  - sys:oss,dev:1,format:1\n"
 "  - sys:alsa"
 
-#: plugins/rdp/rdp_plugin.c:2607
+#: plugins/rdp/rdp_plugin.c:2609
 #, fuzzy
 msgid ""
 "Options for redirection of audio output:\n"
@@ -2292,7 +2303,7 @@ msgstr ""
 "  - sys:oss,dev:1,format:1\n"
 "  - sys:alsa"
 
-#: plugins/rdp/rdp_plugin.c:2617
+#: plugins/rdp/rdp_plugin.c:2619
 #, fuzzy
 msgid ""
 "Options for redirection of USB device:\n"
@@ -2305,7 +2316,7 @@ msgstr ""
 "  - auto\n"
 "  • id:054c:0268#4669:6e6b,addr:04:0c"
 
-#: plugins/rdp/rdp_plugin.c:2623
+#: plugins/rdp/rdp_plugin.c:2625
 #, fuzzy
 msgid ""
 "Advanced setting for high latency links:\n"
@@ -2316,7 +2327,7 @@ msgstr ""
 "Nustato ryšio trukmę. Naudokite, jei jūsų ryšys nutrūksta.\n"
 "Didžiausia galima reikšmė yra 600000 ms (10 minučių).\n"
 
-#: plugins/rdp/rdp_plugin.c:2628
+#: plugins/rdp/rdp_plugin.c:2630
 #, fuzzy
 msgid ""
 "Performance optimisations based on the network connection type:\n"
@@ -2327,7 +2338,7 @@ msgstr ""
 "Rekomenduojama naudoti automatinį aptikimą.\n"
 "Jei \"Auto-detect\" nepavyksta, sąraše pasirinkite tinkamiausią parinktį.\n"
 
-#: plugins/rdp/rdp_plugin.c:2633
+#: plugins/rdp/rdp_plugin.c:2635
 #, fuzzy
 msgid ""
 "Comma-separated list of monitor IDs and desktop orientations:\n"
@@ -2352,7 +2363,7 @@ msgstr ""
 "  - 270 (portretas apverstas)\n"
 "\n"
 
-#: plugins/rdp/rdp_plugin.c:2645
+#: plugins/rdp/rdp_plugin.c:2647
 #, fuzzy
 msgid ""
 "Redirect directory <path> as named share <name>.\n"
@@ -2373,157 +2384,159 @@ msgstr ""
 "  - Hotplug,*\n"
 "\n"
 
-#: plugins/rdp/rdp_plugin.c:2677 plugins/spice/spice_plugin.c:677
+#: plugins/rdp/rdp_plugin.c:2679 plugins/spice/spice_plugin.c:677
 msgid "Share folder"
 msgstr "Dalintis aplanku"
 
-#: plugins/rdp/rdp_plugin.c:2677
+#: plugins/rdp/rdp_plugin.c:2679
 #, fuzzy
 msgid "Use “Redirect directory” in the advanced tab for multiple directories"
 msgstr ""
 "Naudokite \"Peradresuoti katalogą\" išplėstiniame skirtuke keliems katalogams"
 
-#: plugins/rdp/rdp_plugin.c:2678
+#: plugins/rdp/rdp_plugin.c:2680
+#, fuzzy
 msgid "Restricted admin mode"
-msgstr ""
+msgstr "Apribotas administratoriaus režimas"
 
-#: plugins/rdp/rdp_plugin.c:2679
+#: plugins/rdp/rdp_plugin.c:2681
 #, fuzzy
 #| msgid "Password"
 msgid "Password hash"
-msgstr "Slaptažodis"
+msgstr "Slaptažodžio hash"
 
-#: plugins/rdp/rdp_plugin.c:2679
+#: plugins/rdp/rdp_plugin.c:2681
+#, fuzzy
 msgid "Restricted admin mode password hash"
-msgstr ""
+msgstr "Apriboto administratoriaus režimo slaptažodžio hash"
 
-#: plugins/rdp/rdp_plugin.c:2680
+#: plugins/rdp/rdp_plugin.c:2682
 #, fuzzy
 msgid "Left-handed mouse support"
 msgstr "Pelės palaikymas kairiąja ranka"
 
-#: plugins/rdp/rdp_plugin.c:2680
+#: plugins/rdp/rdp_plugin.c:2682
 #, fuzzy
 msgid "Swap left and right mouse buttons for left-handed mouse support"
 msgstr ""
 "Sukeisti kairįjį ir dešinįjį pelės mygtukus, kad būtų palaikoma kairės "
 "rankos pelė"
 
-#: plugins/rdp/rdp_plugin.c:2682
+#: plugins/rdp/rdp_plugin.c:2684
 #, fuzzy
 msgid "Enable multi monitor"
 msgstr "Įjungti kelių monitorių"
 
-#: plugins/rdp/rdp_plugin.c:2683
+#: plugins/rdp/rdp_plugin.c:2685
 #, fuzzy
 msgid "Span screen over multiple monitors"
 msgstr "Išskleisti ekraną per kelis monitorius"
 
-#: plugins/rdp/rdp_plugin.c:2684
+#: plugins/rdp/rdp_plugin.c:2686
 #, fuzzy
 #| msgid "Listen on port"
 msgid "List monitor IDs"
 msgstr "Monitoriaus ID sąrašas"
 
-#: plugins/rdp/rdp_plugin.c:2686 plugins/vnc/vnc_plugin.c:1978
+#: plugins/rdp/rdp_plugin.c:2688 plugins/vnc/vnc_plugin.c:1978
 #: plugins/vnc/vnc_plugin.c:1990 plugins/gvnc/gvnc_plugin.c:849
 msgid "Colour depth"
 msgstr "Spalvų skaičius"
 
-#: plugins/rdp/rdp_plugin.c:2687
+#: plugins/rdp/rdp_plugin.c:2689
 msgid "Network connection type"
 msgstr "VNC ryšys nepavyko: %s"
 
-#: plugins/rdp/rdp_plugin.c:2702 plugins/vnc/vnc_plugin.c:1979
+#: plugins/rdp/rdp_plugin.c:2704 plugins/vnc/vnc_plugin.c:1979
 #: plugins/vnc/vnc_plugin.c:1991
 msgid "Quality"
 msgstr "Kokybė"
 
-#: plugins/rdp/rdp_plugin.c:2703
+#: plugins/rdp/rdp_plugin.c:2705
 #, fuzzy
 msgid "Security protocol negotiation"
 msgstr "Derybos dėl saugumo protokolo"
 
-#: plugins/rdp/rdp_plugin.c:2704
+#: plugins/rdp/rdp_plugin.c:2706
 #, fuzzy
 msgid "Gateway transport type"
 msgstr "Vartų transporto tipas"
 
-#: plugins/rdp/rdp_plugin.c:2705
+#: plugins/rdp/rdp_plugin.c:2707
 #, fuzzy
 msgid "FreeRDP log level"
 msgstr "\"FreeRDP\" žurnalo lygis"
 
-#: plugins/rdp/rdp_plugin.c:2706
+#: plugins/rdp/rdp_plugin.c:2708
 #, fuzzy
 msgid "FreeRDP log filters"
 msgstr "\"FreeRDP\" žurnalo filtrai"
 
-#: plugins/rdp/rdp_plugin.c:2706
+#: plugins/rdp/rdp_plugin.c:2708
 #, fuzzy
 msgid "tag:level[,tag:level[,…]]"
 msgstr "tag:level[,tag:level[,...]]"
 
-#: plugins/rdp/rdp_plugin.c:2707
+#: plugins/rdp/rdp_plugin.c:2709
 #, fuzzy
 msgid "Audio output mode"
 msgstr "Garso išvesties režimas"
 
-#: plugins/rdp/rdp_plugin.c:2708
+#: plugins/rdp/rdp_plugin.c:2710
 #, fuzzy
 msgid "Redirect local audio output"
 msgstr "Vietinės garso išvesties nukreipimas"
 
-#: plugins/rdp/rdp_plugin.c:2709
+#: plugins/rdp/rdp_plugin.c:2711
 #, fuzzy
 msgid "Redirect local microphone"
 msgstr "Vietinio mikrofono nukreipimas"
 
-#: plugins/rdp/rdp_plugin.c:2710
+#: plugins/rdp/rdp_plugin.c:2712
 msgid "Connection timeout in ms"
 msgstr "Jungiamasi prie „%s“…"
 
-#: plugins/rdp/rdp_plugin.c:2711
+#: plugins/rdp/rdp_plugin.c:2713
 msgid "Remote Desktop Gateway server"
 msgstr "Nutolusio darbastalio nustatymai"
 
-#: plugins/rdp/rdp_plugin.c:2712
+#: plugins/rdp/rdp_plugin.c:2714
 msgid "Remote Desktop Gateway username"
 msgstr "Nutolusio darbastalio nustatymai"
 
-#: plugins/rdp/rdp_plugin.c:2713
+#: plugins/rdp/rdp_plugin.c:2715
 msgid "Remote Desktop Gateway password"
 msgstr "Nutolusio darbastalio nustatymai"
 
-#: plugins/rdp/rdp_plugin.c:2714
+#: plugins/rdp/rdp_plugin.c:2716
 msgid "Remote Desktop Gateway domain"
 msgstr "Nutolusio darbastalio nustatymai"
 
-#: plugins/rdp/rdp_plugin.c:2715
+#: plugins/rdp/rdp_plugin.c:2717
 #, fuzzy
 msgid "Redirect directory"
 msgstr "Peradresavimo katalogas"
 
-#: plugins/rdp/rdp_plugin.c:2716
+#: plugins/rdp/rdp_plugin.c:2718
 msgid "Client name"
 msgstr "Kliento vardas"
 
-#: plugins/rdp/rdp_plugin.c:2717
+#: plugins/rdp/rdp_plugin.c:2719
 msgid "Client build"
 msgstr "Kliento vardas"
 
-#: plugins/rdp/rdp_plugin.c:2720
+#: plugins/rdp/rdp_plugin.c:2722
 #, fuzzy
 msgid "Load balance info"
 msgstr "Apkrovos balanso informacija"
 
 #. TRANSLATORS: Do not use typographic quotation marks, these must stay as "double quote", also know as “Typewriter ("programmer's") quote, ambidextrous.”
-#: plugins/rdp/rdp_plugin.c:2722
+#: plugins/rdp/rdp_plugin.c:2724
 #, fuzzy
 msgid "Override printer drivers"
 msgstr "Spausdintuvų tvarkyklių pakeitimas"
 
-#: plugins/rdp/rdp_plugin.c:2722
+#: plugins/rdp/rdp_plugin.c:2724
 #, fuzzy
 msgid ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
@@ -2532,210 +2545,210 @@ msgstr ""
 "\"Samsung_CLX-3300_Series\": \"Samsung CLX-3300 Series PS\"; \"Canon "
 "MF410\": \"Canon MF410 Series UFR II\""
 
-#: plugins/rdp/rdp_plugin.c:2723
+#: plugins/rdp/rdp_plugin.c:2725
 #, fuzzy
 msgid "USB device redirection"
 msgstr "USB įrenginio nukreipimas"
 
-#: plugins/rdp/rdp_plugin.c:2724
+#: plugins/rdp/rdp_plugin.c:2726
 #, fuzzy
 msgid "Local serial name"
 msgstr "Vietinis serijinis pavadinimas"
 
-#: plugins/rdp/rdp_plugin.c:2724
+#: plugins/rdp/rdp_plugin.c:2726
 #, fuzzy
 msgid "COM1, COM2, etc."
 msgstr "COM1, COM2 ir t. t."
 
-#: plugins/rdp/rdp_plugin.c:2725
+#: plugins/rdp/rdp_plugin.c:2727
 #, fuzzy
 msgid "Local serial driver"
 msgstr "Vietinė nuoseklioji tvarkyklė"
 
-#: plugins/rdp/rdp_plugin.c:2725
+#: plugins/rdp/rdp_plugin.c:2727
 #, fuzzy
 msgid "Serial"
 msgstr "Serijinis"
 
-#: plugins/rdp/rdp_plugin.c:2726
+#: plugins/rdp/rdp_plugin.c:2728
 #, fuzzy
 msgid "Local serial path"
 msgstr "Vietinis nuoseklusis kelias"
 
-#: plugins/rdp/rdp_plugin.c:2726
+#: plugins/rdp/rdp_plugin.c:2728
 #, fuzzy
 msgid "/dev/ttyS0, /dev/ttyS1, etc."
 msgstr "/dev/ttyS0, /dev/ttyS1 ir t. t."
 
-#: plugins/rdp/rdp_plugin.c:2727
+#: plugins/rdp/rdp_plugin.c:2729
 #, fuzzy
 msgid "Local parallel name"
 msgstr "Vietinis lygiagretusis pavadinimas"
 
-#: plugins/rdp/rdp_plugin.c:2728
+#: plugins/rdp/rdp_plugin.c:2730
 #, fuzzy
 msgid "Local parallel device"
 msgstr "Vietinis lygiagretusis įrenginys"
 
-#: plugins/rdp/rdp_plugin.c:2729
+#: plugins/rdp/rdp_plugin.c:2731
 #, fuzzy
 msgid "Name of smart card"
 msgstr "Išmaniosios kortelės pavadinimas"
 
-#: plugins/rdp/rdp_plugin.c:2730
+#: plugins/rdp/rdp_plugin.c:2732
 #, fuzzy
 msgid "Dynamic virtual channel"
 msgstr "Dinaminis virtualus kanalas"
 
-#: plugins/rdp/rdp_plugin.c:2730 plugins/rdp/rdp_plugin.c:2731
+#: plugins/rdp/rdp_plugin.c:2732 plugins/rdp/rdp_plugin.c:2733
 #, fuzzy
 msgid "<channel>[,<options>]"
 msgstr "<kanalas>[,<galimybės>]"
 
-#: plugins/rdp/rdp_plugin.c:2731
+#: plugins/rdp/rdp_plugin.c:2733
 #, fuzzy
 msgid "Static virtual channel"
 msgstr "Statinis virtualus kanalas"
 
-#: plugins/rdp/rdp_plugin.c:2732
+#: plugins/rdp/rdp_plugin.c:2734
 #, fuzzy
 #| msgid "Per connection"
 msgid "TCP redirection"
 msgstr "TCP nukreipimas"
 
-#: plugins/rdp/rdp_plugin.c:2732
+#: plugins/rdp/rdp_plugin.c:2734
 #, fuzzy
 msgid "/PATH/TO/rdp2tcp"
 msgstr "/PATH/TO/rdp2tcp"
 
-#: plugins/rdp/rdp_plugin.c:2734
+#: plugins/rdp/rdp_plugin.c:2736
 #, fuzzy
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
 msgstr "Pirmenybė IPv6 AAAA įrašui, o ne IPv4 A įrašui"
 
-#: plugins/rdp/rdp_plugin.c:2735
+#: plugins/rdp/rdp_plugin.c:2737
 #, fuzzy
 msgid "Share printers"
 msgstr "Dalytis spausdintuvais"
 
-#: plugins/rdp/rdp_plugin.c:2736
+#: plugins/rdp/rdp_plugin.c:2738
 #, fuzzy
 msgid "Share serial ports"
 msgstr "Bendrinti nuosekliuosius prievadus"
 
-#: plugins/rdp/rdp_plugin.c:2737
+#: plugins/rdp/rdp_plugin.c:2739
 #, fuzzy
 msgid "(SELinux) permissive mode for serial ports"
 msgstr "(SELinux) leistinasis režimas serijiniams prievadams"
 
-#: plugins/rdp/rdp_plugin.c:2738
+#: plugins/rdp/rdp_plugin.c:2740
 #, fuzzy
 msgid "Share parallel ports"
 msgstr "Dalytis lygiagrečiaisiais prievadais"
 
-#: plugins/rdp/rdp_plugin.c:2739
+#: plugins/rdp/rdp_plugin.c:2741
 #, fuzzy
 msgid "Share a smart card"
 msgstr "Bendrinti išmaniąją kortelę"
 
-#: plugins/rdp/rdp_plugin.c:2740 plugins/vnc/vnc_plugin.c:2009
+#: plugins/rdp/rdp_plugin.c:2742 plugins/vnc/vnc_plugin.c:2009
 msgid "Turn off clipboard sync"
 msgstr "Išjungti iškarpinės sinchronizavimą"
 
-#: plugins/rdp/rdp_plugin.c:2741
+#: plugins/rdp/rdp_plugin.c:2743
 #, fuzzy
 msgid "Ignore certificate"
 msgstr "Ignoruoti sertifikatą"
 
-#: plugins/rdp/rdp_plugin.c:2742
+#: plugins/rdp/rdp_plugin.c:2744
 #, fuzzy
 msgid "Use the old license workflow"
 msgstr "Naudokite senąją licencijos darbo eigą"
 
-#: plugins/rdp/rdp_plugin.c:2742
+#: plugins/rdp/rdp_plugin.c:2744
 #, fuzzy
 msgid "It disables CAL and hwId is set to 0"
 msgstr "CAL išjungiama, o hwId nustatomas į 0"
 
-#: plugins/rdp/rdp_plugin.c:2743 plugins/spice/spice_plugin.c:702
+#: plugins/rdp/rdp_plugin.c:2745 plugins/spice/spice_plugin.c:702
 #: plugins/vnc/vnc_plugin.c:2013 plugins/www/www_plugin.c:919
 #: plugins/gvnc/gvnc_plugin.c:867
 msgid "Forget passwords after use"
 msgstr "%s slaptažodis"
 
-#: plugins/rdp/rdp_plugin.c:2744
+#: plugins/rdp/rdp_plugin.c:2746
 msgid "Attach to console (2003/2003 R2)"
 msgstr "Prisijungti prie pulto (Windows 2003 / 2003 R2)"
 
-#: plugins/rdp/rdp_plugin.c:2745
+#: plugins/rdp/rdp_plugin.c:2747
 #, fuzzy
 msgid "Turn off fast-path"
 msgstr "Išjungti greitąjį kelią"
 
-#: plugins/rdp/rdp_plugin.c:2746
+#: plugins/rdp/rdp_plugin.c:2748
 #, fuzzy
 msgid "Server detection using Remote Desktop Gateway"
 msgstr "Serverio aptikimas naudojant \"Remote Desktop Gateway"
 
-#: plugins/rdp/rdp_plugin.c:2748
+#: plugins/rdp/rdp_plugin.c:2750
 #, fuzzy
 msgid "Use system proxy settings"
 msgstr "Naudoti sistemos tarpinio serverio nustatymus"
 
-#: plugins/rdp/rdp_plugin.c:2750
+#: plugins/rdp/rdp_plugin.c:2752
 #, fuzzy
 msgid "Turn off automatic reconnection"
 msgstr "Išjungti automatinį pakartotinį prisijungimą"
 
-#: plugins/rdp/rdp_plugin.c:2751
+#: plugins/rdp/rdp_plugin.c:2753
 #, fuzzy
 msgid "Relax order checks"
 msgstr "Atsipalaiduoti užsakymo patikrinimai"
 
-#: plugins/rdp/rdp_plugin.c:2752
+#: plugins/rdp/rdp_plugin.c:2754
 #, fuzzy
 msgid "Glyph cache"
 msgstr "Glifų talpykla"
 
-#: plugins/rdp/rdp_plugin.c:2753
+#: plugins/rdp/rdp_plugin.c:2755
 #, fuzzy
 msgid "Enable multitransport protocol (UDP)"
 msgstr "Įjungti daugiaproporcinį protokolą (UDP)"
 
-#: plugins/rdp/rdp_plugin.c:2753
+#: plugins/rdp/rdp_plugin.c:2755
 #, fuzzy
 msgid "Using the UDP protocol may improve performance"
 msgstr "Naudojant UDP protokolą gali pagerėti našumas"
 
-#: plugins/rdp/rdp_plugin.c:2754
+#: plugins/rdp/rdp_plugin.c:2756
 #, fuzzy
 msgid "Use base credentials for gateway too"
 msgstr "Naudokite bazinius įgaliojimus ir vartams"
 
-#: plugins/rdp/rdp_plugin.c:2756
+#: plugins/rdp/rdp_plugin.c:2758
 #, fuzzy
 msgid "Enable Gateway websockets support"
 msgstr "Įjungti \"Gateway\" žiniatinklio lizdų palaikymą"
 
-#: plugins/rdp/rdp_plugin.c:2769 plugins/spice/spice_plugin.c:715
+#: plugins/rdp/rdp_plugin.c:2771 plugins/spice/spice_plugin.c:715
 #: plugins/vnc/vnc_plugin.c:2029
 #, fuzzy
 msgid "Send Ctrl+Alt+Delete"
 msgstr "Siųsti Ctrl+Alt+Delete"
 
-#: plugins/rdp/rdp_plugin.c:2782
+#: plugins/rdp/rdp_plugin.c:2784
 msgid "RDP - Remote Desktop Protocol"
 msgstr "RDP – nutolusių kompiuterių valdymo protokolas"
 
-#: plugins/rdp/rdp_plugin.c:2807
+#: plugins/rdp/rdp_plugin.c:2809
 msgid "RDP - RDP File Handler"
 msgstr "RDP - RDP failų doroklė"
 
-#: plugins/rdp/rdp_plugin.c:2822
+#: plugins/rdp/rdp_plugin.c:2824
 msgid "RDP - Preferences"
 msgstr "RDP - nuostatos"
 
-#: plugins/rdp/rdp_plugin.c:2875
+#: plugins/rdp/rdp_plugin.c:2877
 msgid "Export connection in Windows .rdp file format"
 msgstr "Eksportuoti prisijungimą Windows .rdp failo formatu"
 
@@ -2927,6 +2940,7 @@ msgstr ""
 "    x11vnc -connect repeater=ID:123456789+10.10.10.10.12:5500"
 
 #: plugins/vnc/vnc_plugin.c:1948
+#, fuzzy
 msgid ""
 "Listening for remote VNC connection:\n"
 "  • The \"Listen on port\" field is the port Remmina will listen to,\n"
@@ -2935,6 +2949,13 @@ msgid ""
 "    Remmina, e.g. with x11vnc:\n"
 "    x11vnc -display :0 -connect 192.168.1.36:8888"
 msgstr ""
+"Nuotolinio VNC ryšio klausymasis:\n"
+"  - Lauke \"Listen on port\" nurodomas prievadas, kurio klausysis \"Remmina\""
+",\n"
+"    pvz., 8888\n"
+"  - Iš nuotolinio VNC serverio prisijungsite prie\n"
+"    Remmina, pvz., naudodami x11vnc:\n"
+"    x11vnc -display :0 -connect 192.168.1.36:8888"
 
 #: plugins/vnc/vnc_plugin.c:1975
 msgid "Repeater"
@@ -3094,132 +3115,161 @@ msgid "Secured password storage in the GNOME keyring"
 msgstr "%s slaptažodis"
 
 #: plugins/x2go/x2go_plugin.c:275
+#, fuzzy
 msgid "Broken `DialogData`! Aborting…"
-msgstr ""
+msgstr "Sugedo `DialogData`! Nutraukta…"
 
 #: plugins/x2go/x2go_plugin.c:279
+#, fuzzy
 msgid "Can't retrieve `DialogData`! Aborting…"
-msgstr ""
+msgstr "Negalima gauti `DialogData`! Nutraukta…"
 
 #: plugins/x2go/x2go_plugin.c:505
+#, fuzzy
 msgid "pyhoca-cli exited unexpectedly. This connection will now be closed."
-msgstr ""
+msgstr "pyhoca-cli netikėtai baigėsi. Dabar šis ryšys bus uždarytas."
 
 #: plugins/x2go/x2go_plugin.c:514
+#, fuzzy
 msgid "An error occured."
-msgstr ""
+msgstr "Įvyko klaida"
 
 #: plugins/x2go/x2go_plugin.c:515
+#, fuzzy
 msgid ""
 "The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
 "Please check your profile settings and pyhoca-cli's output for possible "
 "errors and ensure the remote server is reachable."
 msgstr ""
+"Būtinas antrinis procesas 'pyhoca-cli' netikėtai sustojo.\n"
+"Patikrinkite savo profilio nustatymus ir pyhoca-cli išvestį, ar nėra galimų "
+"klaidų, ir įsitikinkite, kad nuotolinis serveris yra pasiekiamas."
 
 #: plugins/x2go/x2go_plugin.c:561 plugins/x2go/x2go_plugin.c:838
+#, fuzzy
 msgid "Started pyhoca-cli with following arguments:"
-msgstr ""
+msgstr "Paleista pyhoca-cli su šiais argumentais:"
 
 #: plugins/x2go/x2go_plugin.c:580
-#, c-format
+#, c-format, fuzzy
 msgid ""
 "An unknown error happened while retrieving pyhoca-cli's cmdline features! "
 "Exit code: %i"
 msgstr ""
+"Gaunant pyhoca-cli cmdline funkcijas įvyko nežinoma klaida! Išėjimo kodas: %i"
 
 #: plugins/x2go/x2go_plugin.c:585
 #, fuzzy, c-format
 #| msgid "Error: %s"
 msgid "Error: '%s'"
-msgstr "Klaida: %s"
+msgstr "Klaida: \"%s"
 
 #: plugins/x2go/x2go_plugin.c:609
+#, fuzzy
 msgid "Given username can't get saved since it's empty!"
-msgstr ""
+msgstr "Pateiktas vartotojo vardas negali būti išsaugotas, nes jis tuščias!"
 
 #: plugins/x2go/x2go_plugin.c:622
+#, fuzzy
 msgid ""
 "An error occured while trying to save new credentials: 's_password' or "
 "'s_username' strings were not set."
 msgstr ""
+"Bandant išsaugoti naujus įgaliojimus įvyko klaida: nebuvo nustatytos eilutės "
+"'s_password' arba 's_username'."
 
 #: plugins/x2go/x2go_plugin.c:659
 #, fuzzy
 msgid "Enter X2Go credentials"
-msgstr "Įveskite RDP autentifikavimo duomenis"
+msgstr "Įveskite \"X2Go\" kredencialus"
 
 #: plugins/x2go/x2go_plugin.c:818
+#, fuzzy
 msgid "DPI setting is out of bounds. Please adjust it in profile settings."
-msgstr ""
+msgstr "DPI nustatymas yra už ribų. Pakoreguokite jį profilio nustatymuose."
 
 #: plugins/x2go/x2go_plugin.c:858
+#, fuzzy
 msgid "An error occured while starting an X2Go session…"
-msgstr ""
+msgstr "Paleidžiant \"X2Go\" sesiją įvyko klaida…"
 
 #: plugins/x2go/x2go_plugin.c:867
 #, fuzzy
 #| msgid "Could not start SSH session. %s"
 msgid "Could not start X2Go session."
-msgstr "Nepavyko paleisti SSH seanso: %s"
+msgstr "Nepavyko paleisti \"X2Go\" sesijos."
 
 #: plugins/x2go/x2go_plugin.c:868
 #, fuzzy, c-format
 #| msgid "Could not start SSH session. %s"
 msgid "Could not start PyHoca-CLI (%i): '%s'"
-msgstr "Nepavyko paleisti SSH seanso: %s"
+msgstr "Nepavyko paleisti PyHoca-CLI (%i): '%s'"
 
 #: plugins/x2go/x2go_plugin.c:945
+#, fuzzy
 msgid ""
 "Couldn't get pyhoca-cli's cmdline-features. This indicates either your "
 "pyhoca-cli version is too old or pyhoca-cli is not installed! An old limited "
 "set of features will be used now."
 msgstr ""
+"Nepavyko gauti pyhoca-cli cmdline funkcijų. Tai rodo, kad jūsų pyhoca-cli "
+"versija yra per sena arba pyhoca-cli nėra įdiegta! Dabar bus naudojamas "
+"senas ribotas funkcijų rinkinys."
 
 #: plugins/x2go/x2go_plugin.c:957
+#, fuzzy
 msgid ""
 "Parsing pyhoca-cli functionality was not possible! Using a limited feature-"
 "set for now."
 msgstr ""
+"Pyhoca-cli funkcionalumo analizė buvo neįmanoma! Kol kas naudojamas ribotas "
+"funkcijų rinkinys."
 
 #: plugins/x2go/x2go_plugin.c:964
+#, fuzzy
 msgid "Retrieved the following pyhoca-cli functionality:"
-msgstr ""
+msgstr "Grąžintos šios pyhoca-cli funkcijos:"
 
 #: plugins/x2go/x2go_plugin.c:969
-#, c-format
+#, c-format, fuzzy
 msgid "Available feature[%i]: '%s'"
-msgstr ""
+msgstr "Turima funkcija[%i]: \"%s"
 
 #: plugins/x2go/x2go_plugin.c:1074
 #, fuzzy
 #| msgid "Could not open channel. %s"
 msgid "Could not open X11 DISPLAY."
-msgstr "Nepavyko sukurti SFTP seanso: %s"
+msgstr "Nepavyko atidaryti X11 DISPLAY."
 
 #: plugins/x2go/x2go_plugin.c:1114
+#, fuzzy
 msgid "Waiting for X2Go Agent window to appear."
-msgstr ""
+msgstr "Laukiama, kol pasirodys \"X2Go Agent\" langas."
 
 #: plugins/x2go/x2go_plugin.c:1140
+#, fuzzy
 msgid "Waiting for pyhoca-cli to show the session's window."
-msgstr ""
+msgstr "Laukiama, kol pyhoca-cli parodys sesijos langą."
 
 #: plugins/x2go/x2go_plugin.c:1191
+#, fuzzy
 msgid "No X2Go session window appeared. Something went wrong…"
-msgstr ""
+msgstr "X2Go sesijos langas nepasirodė. Kažkas nutiko ne taip…"
 
 #: plugins/x2go/x2go_plugin.c:1300
+#, fuzzy
 msgid "Internal error: RemminaProtocolWidget* gp is NULL!"
-msgstr ""
+msgstr "Vidinė klaida: RemminaProtocolWidget* gp is NULL!"
 
 #: plugins/x2go/x2go_plugin.c:1321
-#, c-format
+#, c-format, fuzzy
 msgid "The protocol %s is unavailable because GtkSocket only works under X.org"
-msgstr ""
+msgstr "Protokolas %s nepasiekiamas, nes \"GtkSocket\" veikia tik su X.org"
 
 #: plugins/x2go/x2go_plugin.c:1329
+#, fuzzy
 msgid "Could not initialize pthread. Falling back to non-threaded mode…"
-msgstr ""
+msgstr "Nepavyko inicializuoti pthread. Grįžtama į ne gijų režimą…"
 
 #. TRANSLATORS: Presumably you just want to translate 'and' into
 #. your language.
@@ -3230,9 +3280,9 @@ msgstr ""
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
 #: plugins/x2go/x2go_plugin.c:1372 plugins/x2go/x2go_plugin.c:1390
-#, c-format
+#, c-format, fuzzy
 msgid "%sand '%s'"
-msgstr ""
+msgstr "%s ir \"%s"
 
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
@@ -3241,70 +3291,79 @@ msgstr ""
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
 #: plugins/x2go/x2go_plugin.c:1377 plugins/x2go/x2go_plugin.c:1395
-#, c-format
+#, c-format, fuzzy
 msgid "%s'%s' "
-msgstr ""
+msgstr "%s'%s' "
 
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
 #. 'value1', 'value2', 'valueN-1' and 'valueN'
 #: plugins/x2go/x2go_plugin.c:1382
-#, c-format
+#, c-format, fuzzy
 msgid "%s'%s', "
-msgstr ""
+msgstr "%s'%s', "
 
 #: plugins/x2go/x2go_plugin.c:1420 plugins/x2go/x2go_plugin.c:1432
 #: plugins/x2go/x2go_plugin.c:1494
+#, fuzzy
 msgid "Validation data in ProtocolSettings array is invalid!"
-msgstr ""
+msgstr "Patvirtinimo duomenys \"ProtocolSettings\" masyve negalioja!"
 
 #: plugins/x2go/x2go_plugin.c:1459
-#, c-format
+#, c-format, fuzzy
 msgid "Allowed values are %s."
-msgstr ""
+msgstr "Leistinos reikšmės yra %s."
 
 #: plugins/x2go/x2go_plugin.c:1461
-#, c-format
+#, c-format, fuzzy
 msgid "Only allowed value is '%s'."
-msgstr ""
+msgstr "Vienintelė leidžiama reikšmė yra \"%s\"."
 
 #: plugins/x2go/x2go_plugin.c:1503
+#, fuzzy
 msgid "Limit minimum is not a valid integer!"
-msgstr ""
+msgstr "Ribinis minimumas nėra galiojantis sveikasis skaičius!"
 
 #: plugins/x2go/x2go_plugin.c:1505
+#, fuzzy
 msgid "Limit minimum is too large!"
-msgstr ""
+msgstr "Minimali riba yra per didelė!"
 
 #: plugins/x2go/x2go_plugin.c:1507
+#, fuzzy
 msgid "Limit minimum is too small!"
-msgstr ""
+msgstr "Minimali riba yra per maža!"
 
 #: plugins/x2go/x2go_plugin.c:1509 plugins/x2go/x2go_plugin.c:1523
 #: plugins/x2go/x2go_plugin.c:1538
+#, fuzzy
 msgid "Something went wrong."
-msgstr ""
+msgstr "Kažkas nutiko ne taip."
 
 #: plugins/x2go/x2go_plugin.c:1517
+#, fuzzy
 msgid "Limit maximum is not a valid integer!"
-msgstr ""
+msgstr "Ribos maksimumas nėra galiojantis sveikasis skaičius!"
 
 #: plugins/x2go/x2go_plugin.c:1519
+#, fuzzy
 msgid "Limit maximum is too large!"
-msgstr ""
+msgstr "Didžiausia riba yra per didelė!"
 
 #: plugins/x2go/x2go_plugin.c:1521
+#, fuzzy
 msgid "Limit maximum is too small!"
-msgstr ""
+msgstr "Didžiausia riba yra per maža!"
 
 #: plugins/x2go/x2go_plugin.c:1533
+#, fuzzy
 msgid "Input is not a valid integer!"
-msgstr ""
+msgstr "Įvestis nėra galiojantis sveikasis skaičius!"
 
 #: plugins/x2go/x2go_plugin.c:1535 plugins/x2go/x2go_plugin.c:1548
-#, c-format
+#, c-format, fuzzy
 msgid "Input must be a number between %i and %i."
-msgstr ""
+msgstr "Turi būti įvestas skaičius nuo %i iki %i."
 
 #: plugins/x2go/x2go_plugin.c:1576
 #, fuzzy
@@ -3313,59 +3372,69 @@ msgid "Startup program"
 msgstr "Paleidimo programa"
 
 #: plugins/x2go/x2go_plugin.c:1578
+#, fuzzy
 msgid "Which command should be executed after creating the X2Go session?"
-msgstr ""
+msgstr "Kurią komandą reikia atlikti sukūrus X2Go sesiją?"
 
 #: plugins/x2go/x2go_plugin.c:1580
 #, fuzzy
 #| msgid "Keyboard layout"
 msgid "Keyboard Layout (auto)"
-msgstr "Klaviatūros išdėstymas"
+msgstr "Klaviatūros išdėstymas (automatinis)"
 
 #: plugins/x2go/x2go_plugin.c:1581
 #, fuzzy
 #| msgid "Keyboard layout"
 msgid "Keyboard type (auto)"
-msgstr "Klaviatūros išdėstymas"
+msgstr "Klaviatūros tipas (automatinis)"
 
 #: plugins/x2go/x2go_plugin.c:1582
 #, fuzzy
 msgid "Audio support"
-msgstr "Įjunkite \"Java\" palaikymą"
+msgstr "Garso palaikymas"
 
 #: plugins/x2go/x2go_plugin.c:1584
+#, fuzzy
 msgid "The X2Go server's sound system (default: 'pulse')."
-msgstr ""
+msgstr "X2Go serverio garso sistema (numatytoji reikšmė: 'pulse')."
 
 #: plugins/x2go/x2go_plugin.c:1587
 #, fuzzy
 #| msgid "Per connection"
 msgid "Clipboard direction"
-msgstr "TCP nukreipimas"
+msgstr "Prisegtuko kryptis"
 
 #: plugins/x2go/x2go_plugin.c:1589
+#, fuzzy
 msgid "Which direction should clipboard content be copied? (default: 'both')."
 msgstr ""
+"Kuria kryptimi turėtų būti kopijuojamas iškarpinės turinys? (numatytoji "
+"reikšmė: \"abi\")."
 
 #: plugins/x2go/x2go_plugin.c:1593
 #, fuzzy
 #| msgid "Resolution"
 msgid "DPI resolution"
-msgstr "Skiriamoji geba"
+msgstr "DPI skiriamoji geba"
 
 #: plugins/x2go/x2go_plugin.c:1594
+#, fuzzy
 msgid ""
 "Launch session with a specific resolution (in dots per inch). Must be "
 "between 20 and 400."
 msgstr ""
+"Paleiskite seansą su tam tikra skiriamąja geba (taškais colyje). Turi būti "
+"nuo 20 iki 400."
 
 #: plugins/x2go/x2go_plugin.c:1638
+#, fuzzy
 msgid "X2Go plugin loaded."
-msgstr ""
+msgstr "Įkeltas \"X2Go\" įskiepis."
 
 #: plugins/x2go/x2go_plugin.h:43
+#, fuzzy
 msgid "X2Go - Launch an X2Go session"
-msgstr ""
+msgstr "X2Go - paleiskite X2Go sesiją"
 
 #: plugins/gvnc/gvnc_plugin_config.h:40
 #, fuzzy
@@ -3767,7 +3836,7 @@ msgid ""
 "release notes\"><i>Visit the website to read the release notes</i></a>.\n"
 "</span>"
 msgstr ""
-"<big><b>Naujienos yra išjungtos</b></big>\n"
+"<big><b>Naujienos išjungtos</b></big>\n"
 "\n"
 "<span>\n"
 "Naujienų įjungimas reiškia, kad programa jungiasi prie \"Remmina\" serverio, "
@@ -3775,13 +3844,13 @@ msgstr ""
 "</span>\n"
 "\n"
 "<span>\n"
-"Versijų tikrinimą galima įjungti tik kompiliavimo metu.\n"
+"Versijos tikrinimą galima įjungti tik kompiliavimo metu.\n"
 "</span>\n"
 "\n"
 "<span>\n"
 "<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
-"release notes\"> <i>Apsilankykite svetainėje ir perskaitykite išleidimo "
-"pastabas </i> </a>.\n"
+"release notes\"><i>Apsilankykite svetainėje ir perskaitykite išleidimo "
+"pastabas </i></a>.\n"
 "</span>"
 
 #. The star (*) is a reference to privacy consent
@@ -3792,9 +3861,9 @@ msgid ""
 "remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
 "\">anonymous</a></b> statistics. (*)"
 msgstr ""
-"Siųsti <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-"remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
-"\">anoniminę</a></b> statistiką. (*)"
+"Siųskite <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
+"remmina__stats_8c.html#details\" title=\"Remmina usage statistics\""
+">anoniminę</a></b> statistiką. (*)"
 
 #: data/ui/remmina_news.glade:142 data/ui/remmina_news.glade:195
 #, fuzzy
@@ -3813,7 +3882,7 @@ msgstr "Taikyti"
 #: data/ui/remmina_news.glade:169
 #, fuzzy
 msgid "Allow Remmina to automatically open .rdp and .remmina files."
-msgstr "Leiskite \"Remmina\" automatiškai atidaryti .rdp ir .remmina failus."
+msgstr "Leiskite \"Remmina\" automatiškai atverti .rdp ir .remmina failus."
 
 #. The star (*) is a reference to privacy consent
 #: data/ui/remmina_news.glade:183 data/ui/remmina_preferences.glade:479
@@ -3851,16 +3920,16 @@ msgid ""
 "</span>\n"
 msgstr ""
 "<span>\n"
-"<b>Esame dėkingi, kad renkatės laisvai platinamą programinę įrangą, <a href="
-"\"https://remmina.org/donations/\" title=\"Where’s the money, Lebowski? "
-"“blblblblblb”\">aukos taip pat mus džiugina </a> ir padeda tobulinti Remminą "
-"</b>.\n"
+"<b>Esame dėkingi, kad pasirinkote \"copyleft\" saugomą \"libre\" programinę "
+"įrangą, <a href=\"https://remmina.org/donations/\" title=\"Where’s the "
+"money, Lebowski? “blblblblblb”\">aukos taip pat mus džiugina </a> ir padeda "
+"toliau tobulinti \"Remmina\" </b>.\n"
 "</span>\n"
 
 #: data/ui/remmina_news.glade:277
 #, fuzzy
 msgid "<big>Contribute</big>"
-msgstr "<big>Prisidėti</big>"
+msgstr "<big>Contribute</big>"
 
 #: data/ui/remmina_key_chooser.glade:23
 #, fuzzy
@@ -3913,7 +3982,7 @@ msgstr "Išvalyti"
 #: data/ui/remmina_main.glade:187
 #, fuzzy
 msgid "Edit"
-msgstr "Taisyti"
+msgstr "Redaguoti"
 
 #: data/ui/remmina_main.glade:217
 #, fuzzy
@@ -4030,7 +4099,7 @@ msgstr "Vietinis – aukšta kokybė"
 #: data/ui/remmina_preferences.glade:91
 #, fuzzy
 msgid "Nearest"
-msgstr "Artimiausias"
+msgstr "Arčiausias"
 
 #: data/ui/remmina_preferences.glade:92
 #, fuzzy
@@ -4192,7 +4261,7 @@ msgstr "Numatytasis"
 #: data/ui/remmina_preferences.glade:605
 #, fuzzy
 msgid "Automatic"
-msgstr "Automatiškai"
+msgstr "Automatinis"
 
 #: data/ui/remmina_preferences.glade:606
 #, fuzzy
