@@ -260,9 +260,12 @@ typedef struct _DialogData DialogData;
 
 /**
  * @param gp getting DialogData via dialog-data saved in gp.
- * 			 See define GET_DIALOG_DATA
+ *	     See define GET_DIALOG_DATA
+ * @returns: FALSE. This source should be removed from main loop.
+ * 	     #G_SOURCE_CONTINUE and #G_SOURCE_REMOVE are more memorable
+ *	     names for the return value.
  */
-static void rmplugin_x2go_open_dialog(RemminaProtocolWidget *gp)
+static gboolean rmplugin_x2go_open_dialog(RemminaProtocolWidget *gp)
 {
 	REMMINA_PLUGIN_DEBUG("Function entry.");
 
@@ -273,11 +276,11 @@ static void rmplugin_x2go_open_dialog(RemminaProtocolWidget *gp)
 		// because they are enums and '0' is a valid value
 		if (!ddata->title || !ddata->message) {
 			REMMINA_PLUGIN_CRITICAL("%s", _("Broken `DialogData`! Aborting…"));
-			return;
+			return G_SOURCE_REMOVE;
 		}
 	} else {
 		REMMINA_PLUGIN_CRITICAL("%s", _("Can't retrieve `DialogData`! Aborting…"));
-		return;
+		return G_SOURCE_REMOVE;
 	}
 
 	REMMINA_PLUGIN_DEBUG("`DialogData` checks passed. Now showing dialog…");
@@ -306,6 +309,8 @@ static void rmplugin_x2go_open_dialog(RemminaProtocolWidget *gp)
 
 	// Delete ddata object and reference 'dialog-data' in gp.
 	g_object_set_data(G_OBJECT(gp), "dialog-data", NULL);
+
+	return G_SOURCE_REMOVE;
 }
 
 typedef struct _RemminaPluginX2GoData {
@@ -431,6 +436,11 @@ static void rmplugin_x2go_remove_window_id (Window window_id)
 	pthread_mutex_unlock(&remmina_x2go_init_mutex);
 }
 
+/**
+ * @returns: FALSE. This source should be removed from main loop.
+ * 	     #G_SOURCE_CONTINUE and #G_SOURCE_REMOVE are more memorable
+ *	     names for the return value.
+ */
 static gboolean rmplugin_x2go_cleanup(RemminaProtocolWidget *gp)
 {
 	REMMINA_PLUGIN_DEBUG("Function entry.");
@@ -438,7 +448,7 @@ static gboolean rmplugin_x2go_cleanup(RemminaProtocolWidget *gp)
 	RemminaPluginX2GoData *gpdata = GET_PLUGIN_DATA(gp);
 	if (gpdata == NULL) {
 		REMMINA_PLUGIN_DEBUG("Exiting since gpdata is already 'NULL'…");
-		return FALSE;
+		return G_SOURCE_REMOVE;
 	}
 
 	if (gpdata->thread) {
@@ -465,7 +475,7 @@ static gboolean rmplugin_x2go_cleanup(RemminaProtocolWidget *gp)
 	g_object_steal_data(G_OBJECT(gp), "plugin-data");
 	rm_plugin_service->protocol_plugin_signal_connection_closed(gp);
 
-	return FALSE;
+	return G_SOURCE_REMOVE;
 }
 
 static gboolean rmplugin_x2go_close_connection(RemminaProtocolWidget *gp)
@@ -477,12 +487,13 @@ static gboolean rmplugin_x2go_close_connection(RemminaProtocolWidget *gp)
 
 	if (gpdata->disconnected) {
 		REMMINA_PLUGIN_DEBUG("Doing nothing since the plugin is already disconnected.");
-		return FALSE;
+		return G_SOURCE_REMOVE;
 	}
 
 	rmplugin_x2go_cleanup(gp);
 
-	return TRUE;
+	// Try again.
+	return G_SOURCE_CONTINUE;
 }
 
 static void rmplugin_x2go_pyhoca_cli_exited(GPid pid,
@@ -986,7 +997,7 @@ static gboolean rmplugin_x2go_on_plug_removed(GtkSocket *socket, RemminaProtocol
 	TRACE_CALL(__func__);
 	REMMINA_PLUGIN_DEBUG("Function entry.");
 	rmplugin_x2go_close_connection(gp);
-	return TRUE;
+	return G_SOURCE_CONTINUE;
 }
 
 static void rmplugin_x2go_init(RemminaProtocolWidget *gp)
@@ -1357,9 +1368,9 @@ static const RemminaProtocolFeature rmplugin_x2go_features[] = {
  * @param string The string to which `element_to_add` will be added.
  */
 static gchar* rmplugin_x2go_enumeration_prettifier(const guint max_elements,
-						 const guint current_element,
-						 gchar* element_to_add,
-						 gchar* string)
+						   const guint current_element,
+						   gchar* element_to_add,
+						   gchar* string)
 {
 	if (max_elements > 2) {
 		if (current_element == max_elements - 1) {
@@ -1410,7 +1421,8 @@ static gchar* rmplugin_x2go_enumeration_prettifier(const guint max_elements,
  *	    value is invalid. If the given value is error-free then NULL gets returned.
  *
  */
-static GError* rmplugin_x2go_string_setting_validator(gchar* key, gchar* value, gchar* data)
+static GError* rmplugin_x2go_string_setting_validator(gchar* key, gchar* value,
+						      gchar* data)
 {
 	GError *error = NULL;
 
@@ -1479,7 +1491,8 @@ static GError* rmplugin_x2go_string_setting_validator(gchar* key, gchar* value, 
  *	    value is invalid. If the given value is error-free then NULL gets returned.
  *
  */
-static GError* rmplugin_x2go_int_setting_validator(gchar* key, gpointer value, gchar* data)
+static GError* rmplugin_x2go_int_setting_validator(gchar* key, gpointer value,
+						   gchar* data)
 {
 	GError *error = NULL;
 
