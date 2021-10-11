@@ -263,8 +263,6 @@ static UINT remmina_rdp_cliprdr_server_format_list(CliprdrClientContext *context
 	REMMINA_PLUGIN_DEBUG("gp=%p: Received a new ServerFormatList from server clipboard. Remmina version = %s",
 						 gp, VERSION);
 
-
-
 	GtkTargetList *list = gtk_target_list_new(NULL, 0);
 
 	if (clipboard->srv_clip_data_wait == SCDW_BUSY_WAIT) {
@@ -273,18 +271,22 @@ static UINT remmina_rdp_cliprdr_server_format_list(CliprdrClientContext *context
 	}
 
 	remmina_rdp_cliprdr_cached_clipboard_free(clipboard);
+	clipboard->server_html_format_id = 0;
 
 	REMMINA_PLUGIN_DEBUG("gp=%p: format list from the server:", gp);
 	for (i = 0; i < formatList->numFormats; i++) {
 		format = &formatList->formats[i];
 		const char *serverFormatName = format->formatName;
+		gchar *gtkFormatName = NULL;
 		if (format->formatId == CF_UNICODETEXT) {
 			serverFormatName = "CF_UNICODETEXT";
-			GdkAtom atom = gdk_atom_intern("UTF8_STRING", TRUE);
+			gtkFormatName = "UTF8_STRING";
+			GdkAtom atom = gdk_atom_intern(gtkFormatName, TRUE);
 			gtk_target_list_add(list, atom, 0, CF_UNICODETEXT);
 		} else if (format->formatId == CF_TEXT) {
 			serverFormatName = "CF_TEXT";
-			GdkAtom atom = gdk_atom_intern("TEXT", TRUE);
+			gtkFormatName = "TEXT";
+			GdkAtom atom = gdk_atom_intern(gtkFormatName, TRUE);
 			gtk_target_list_add(list, atom, 0, CF_TEXT);
 		} else if (format->formatId == CF_DIB) {
 			serverFormatName = "CF_DIB";
@@ -296,26 +298,35 @@ static UINT remmina_rdp_cliprdr_server_format_list(CliprdrClientContext *context
 				has_dib_level = 5;
 		} else if (format->formatId == CB_FORMAT_JPEG) {
 			serverFormatName = "CB_FORMAT_JPEG";
-			GdkAtom atom = gdk_atom_intern("image/jpeg", TRUE);
+			gtkFormatName = "image/jpeg";
+			GdkAtom atom = gdk_atom_intern(gtkFormatName, TRUE);
 			gtk_target_list_add(list, atom, 0, CB_FORMAT_JPEG);
 		} else if (format->formatId == CB_FORMAT_PNG) {
 			serverFormatName = "CB_FORMAT_PNG";
-			GdkAtom atom = gdk_atom_intern("image/png", TRUE);
+			gtkFormatName = "image/png";
+			GdkAtom atom = gdk_atom_intern(gtkFormatName, TRUE);
 			gtk_target_list_add(list, atom, 0, CB_FORMAT_PNG);
 		} else if (format->formatId == CB_FORMAT_HTML) {
 			serverFormatName = "CB_FORMAT_HTML";
-			GdkAtom atom = gdk_atom_intern("text/html", TRUE);
+			gtkFormatName = "text/html";
+			GdkAtom atom = gdk_atom_intern(gtkFormatName, TRUE);
 			gtk_target_list_add(list, atom, 0, CB_FORMAT_HTML);
 		} else if (format->formatId == CB_FORMAT_TEXTURILIST) {
 			serverFormatName = "CB_FORMAT_TEXTURILIST";
-			GdkAtom atom = gdk_atom_intern("text/uri-list", TRUE);
+			gtkFormatName = "text/uri-list";
+			GdkAtom atom = gdk_atom_intern(gtkFormatName, TRUE);
 			gtk_target_list_add(list, atom, 0, CB_FORMAT_TEXTURILIST);
 		} else if (format->formatId == CF_LOCALE) {
 			serverFormatName = "CF_LOCALE";
 		} else if (format->formatId == CF_METAFILEPICT) {
 			serverFormatName = "CF_METAFILEPICT";
+		} else if (serverFormatName != NULL && strcmp(serverFormatName, "HTML Format") == 0) {
+			gtkFormatName = "text/html";
+			GdkAtom atom = gdk_atom_intern(gtkFormatName, TRUE);
+			gtk_target_list_add(list, atom, 0, format->formatId);
+			clipboard->server_html_format_id = format->formatId;
 		}
-		REMMINA_PLUGIN_DEBUG("the server has clipboard format %d: %s", format->formatId, serverFormatName);
+		REMMINA_PLUGIN_DEBUG("the server has clipboard format %d: %s -> GTK %s", format->formatId, serverFormatName, gtkFormatName);
 	}
 
 	/* Keep only one DIB format, if present */
@@ -517,6 +528,30 @@ static UINT remmina_rdp_cliprdr_server_format_data_response(CliprdrClientContext
 			g_object_unref(loader);
 			break;
 		}
+		default:
+		{
+			if (rfi->clipboard.format == clipboard->server_html_format_id) {
+				/* Converting from Microsoft HTML Clipboard Format to pure text/html
+				 * https://docs.microsoft.com/en-us/windows/win32/dataxchg/html-clipboard-format */
+				int p = 0, lstart = 0;
+				size_t osize;
+				char c;
+				/* Find the 1st starting with '<' */
+				while(p < size && (c = data[p]) != 0) {
+					if (c == '<' && p == lstart) break;
+					if (c == '\n') lstart = p + 1;
+					p++;
+				}
+				if (p < size) {
+					osize = size - lstart;
+					output = (gpointer)calloc(1, osize + 1);
+					if (output) {
+						memcpy(output, data + lstart, osize);
+						((char *)output)[osize] = 0;
+					}
+				}
+			}
+		}
 		}
 	}
 
@@ -638,6 +673,10 @@ void remmina_rdp_cliprdr_request_data(GtkClipboard *gtkClipboard, GtkSelectionDa
 		/* We have data in cache, just paste it */
 		if (info == CB_FORMAT_PNG || info == CF_DIB || info == CF_DIBV5 || info == CB_FORMAT_JPEG) {
 			gtk_selection_data_set_pixbuf(selection_data, clipboard->srv_data);
+		} else if (info == CB_FORMAT_HTML || info == clipboard->server_html_format_id) {
+			REMMINA_PLUGIN_DEBUG("gp=%p returning %zu bytes of HTML in clipboard to requesting application", gp, strlen(clipboard->srv_data));
+			GdkAtom atom = gdk_atom_intern("text/html", TRUE);
+			gtk_selection_data_set(selection_data, atom, 8, clipboard->srv_data, strlen(clipboard->srv_data));
 		} else {
 			REMMINA_PLUGIN_DEBUG("gp=%p returning %zu bytes of text in clipboard to requesting application", gp, strlen(clipboard->srv_data));
 			gtk_selection_data_set_text(selection_data, clipboard->srv_data, -1);
@@ -819,22 +858,6 @@ void remmina_rdp_cliprdr_get_clipboard_data(RemminaProtocolWidget *gp, RemminaPl
 	remmina_rdp_event_event_push(gp, &rdp_event);
 }
 
-void remmina_rdp_cliprdr_set_clipboard_content(RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *ui)
-{
-	TRACE_CALL(__func__);
-	GtkClipboard *gtkClipboard;
-	rfContext *rfi = GET_PLUGIN_DATA(gp);
-
-	gtkClipboard = gtk_widget_get_clipboard(rfi->drawing_area, GDK_SELECTION_CLIPBOARD);
-	if (ui->clipboard.format == CB_FORMAT_PNG || ui->clipboard.format == CF_DIB || ui->clipboard.format == CF_DIBV5 || ui->clipboard.format == CB_FORMAT_JPEG) {
-		gtk_clipboard_set_image(gtkClipboard, ui->clipboard.data);
-		g_object_unref(ui->clipboard.data);
-	} else {
-		gtk_clipboard_set_text(gtkClipboard, ui->clipboard.data, -1);
-		free(ui->clipboard.data);
-	}
-}
-
 void remmina_rdp_cliprdr_set_clipboard_data(RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *ui)
 {
 	TRACE_CALL(__func__);
@@ -893,9 +916,6 @@ void remmina_rdp_event_process_clipboard(RemminaProtocolWidget *gp, RemminaPlugi
 		remmina_rdp_cliprdr_set_clipboard_data(gp, ui);
 		break;
 
-	case REMMINA_RDP_UI_CLIPBOARD_SET_CONTENT:
-		remmina_rdp_cliprdr_set_clipboard_content(gp, ui);
-		break;
 	}
 }
 
