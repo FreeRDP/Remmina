@@ -77,9 +77,6 @@ flatpak:test:
   - apt-get update -qq
   - add-apt-repository $FLATPAK_PPA -y
   - apt-get update -qq
-  # These are temporary needed. Let's Encrypt has changed their root certificate.
-  - apt-get install --reinstall ca-certificates
-  - git config --global http.sslverify false
   - apt-get install -y -qq flatpak-builder flatpak build-essential git-core
   - flatpak --user remote-add --if-not-exists flathub $FLATHUB_REPO
   script:
