@@ -1,7 +1,7 @@
 {
     "app-id": "org.remmina.Remmina",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "40",
+    "runtime-version": "41",
     "sdk": "org.gnome.Sdk",
     "command": "remmina",
     "cleanup": [
@@ -47,7 +47,7 @@
     "add-extensions": {
         "org.freedesktop.Platform.ffmpeg-full": {
             "directory": "lib/ffmpeg",
-            "version": "20.08",
+            "version": "21.08",
             "add-ld-path": ".",
             "no-autodownload": false,
             "autodelete": false
@@ -96,13 +96,14 @@
             ],
             "sources": [
                 {
-                    "type": "git",
-                    "url": "https://github.com/OpenPrinting/cups.git",
-                    "tag": "v2.3.3",
-                    "commit": "82e3ee0e3230287b76a76fb8f16b92ca6e50b444",
+                    "type": "archive",
+                    "url": "https://github.com/OpenPrinting/cups/archive/refs/tags/v2.3.3op2.tar.gz",
+                    "sha256": "5d7dc1f05cde3d5c31d3a2b3b54d519ca74e42c1b25df1add9a1802cd13c65ad",
                     "x-checker-data": {
-                        "type": "git",
-                        "tag-pattern": "^v([\\d.]+)$"
+                        "type": "anitya",
+                        "project-id": 380,
+                        "stable-only": false,
+                        "url-template": "https://github.com/OpenPrinting/cups/archive/refs/tags/v$version.tar.gz"
                     }
                 }
             ]
@@ -114,7 +115,12 @@
                 {
                     "type": "archive",
                     "url": "https://download.gnome.org/sources/gtk-vnc/1.2/gtk-vnc-1.2.0.tar.xz",
-                    "sha256": "7aaf80040d47134a963742fb6c94e970fcb6bf52dc975d7ae542b2ef5f34b94a"
+                    "sha256": "7aaf80040d47134a963742fb6c94e970fcb6bf52dc975d7ae542b2ef5f34b94a",
+                    "x-checker-data": {
+                        "type": "anitya",
+                        "project-id": 13142,
+                        "url-template": "https://download.gnome.org/sources/gtk-vnc/1.2/gtk-vnc-$version.tar.xz"
+                    }
                 }
             ]
         },
@@ -125,8 +131,8 @@
                 {
                     "type": "git",
                     "url": "https://gitlab.gnome.org/GNOME/vte.git",
-                    "tag": "0.64.2",
-                    "commit": "a913a6de14047c1939b84617f2dd483d37e89194",
+                    "tag": "0.66.0",
+                    "commit": "956d3bbd265279c296c56d9fb5ada1fee94768ee",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^([\\d.]+)$"
@@ -271,8 +277,8 @@
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://www.spice-space.org/download/libcacard/libcacard-2.8.0.tar.xz",
-                            "sha256": "8005b93c3139ff739057efb19f9dac1d0993ffb0b913111505af6a91711ef22b",
+                            "url": "https://www.spice-space.org/download/libcacard/libcacard-2.8.1.tar.xz",
+                            "sha256": "fbbf4de8cb7db5bdff5ecb672ff0dbe6939fb9f344b900d51ba6295329a332e7",
                             "x-checker-data": {
                                 "type": "anitya",
                                 "project-id": 18776,
@@ -369,7 +375,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/jedisct1/libsodium.git",
-                    "branch": "stable"
+                    "branch": "stable",
+                    "commit": "100ccb452d2cce99763c3dfcfba057df9a76d0b9"
                 }
             ],
             "post-install": [
@@ -389,8 +396,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://www.libssh.org/files/0.9/libssh-0.9.5.tar.xz",
-                    "sha256": "acffef2da98e761fc1fd9c4fddde0f3af60ab44c4f5af05cd1b2d60a3fa08718",
+                    "url": "https://www.libssh.org/files/0.9/libssh-0.9.6.tar.xz",
+                    "sha256": "86bcf885bd9b80466fe0e05453c58b877df61afa8ba947a58c356d7f0fab829b",
                     "x-checker-data": {
                         "type": "anitya",
                         "project-id": 1729,
