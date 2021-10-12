@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-10-05 22:10+0000\n"
+"POT-Creation-Date: 2021-10-12 09:46+0000\n"
 "PO-Revision-Date: 2021-10-05 14:04+0000\n"
 "Last-Translator: Eric <spice2wolf@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -29,7 +29,7 @@ msgstr ""
 #: src/remmina_protocol_widget.c:1672 src/remmina_protocol_widget.c:1691
 #: src/remmina_file_editor.c:1101 src/remmina_file_editor.c:1222
 #: src/remmina_ssh_plugin.c:1369 plugins/rdp/rdp_plugin.c:2677
-#: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:1575
+#: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:1596
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1675
 #: data/ui/remmina_unlock.glade:116
 msgid "Password"
@@ -76,7 +76,7 @@ msgstr "通过 SSH 从新终端连接"
 #: src/remmina_file_editor.c:1216 src/remmina_ssh_plugin.c:1479
 #: plugins/rdp/rdp_plugin.c:2676 plugins/vnc/vnc_plugin.c:1976
 #: plugins/vnc/vnc_plugin.c:1988 plugins/www/www_plugin.c:894
-#: plugins/x2go/x2go_plugin.c:1574 data/ui/remmina_mpc.glade:144
+#: plugins/x2go/x2go_plugin.c:1595 data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr "用户名"
 
@@ -1429,7 +1429,7 @@ msgstr ""
 
 #. TRANSLATORS: Meta-error. Shouldn't be visible.
 #: src/remmina_file_editor.c:1445 plugins/x2go/x2go_plugin.c:856
-#: plugins/x2go/x2go_plugin.c:1442
+#: plugins/x2go/x2go_plugin.c:1440
 msgid "Internal error."
 msgstr "内部错误。"
 
@@ -2813,7 +2813,9 @@ msgid "Can't retrieve `DialogData`! Aborting…"
 msgstr "无法取回 `DialogData`！终止中…"
 
 #: plugins/x2go/x2go_plugin.c:505
-msgid "pyhoca-cli exited unexpectedly. This connection will now be closed."
+#, fuzzy
+#| msgid "pyhoca-cli exited unexpectedly. This connection will now be closed."
+msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
 msgstr "pyhoca-cli 意外退出。此连接将被关闭。"
 
 #: plugins/x2go/x2go_plugin.c:514
@@ -2821,24 +2823,32 @@ msgid "An error occured."
 msgstr "发生了一个错误。"
 
 #: plugins/x2go/x2go_plugin.c:515
+#, fuzzy
+#| msgid ""
+#| "The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
+#| "Please check your profile settings and pyhoca-cli's output for possible "
+#| "errors and ensure the remote server is reachable."
 msgid ""
 "The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
-"Please check your profile settings and pyhoca-cli's output for possible "
-"errors and ensure the remote server is reachable."
+"Please check your profile settings and PyHoca-CLI's output for possible "
+"errors. Also ensure the remote server is reachable."
 msgstr ""
 "必需的子进程 'pyhoca-cli' 意外停止。\n"
 "请检查您的配置文件设置和 pyhoca-cli 的输出是否存在错误，并确保远程服务器可访"
 "问。"
 
-#: plugins/x2go/x2go_plugin.c:561 plugins/x2go/x2go_plugin.c:838
-msgid "Started pyhoca-cli with following arguments:"
+#: plugins/x2go/x2go_plugin.c:561
+#, fuzzy
+#| msgid "Started pyhoca-cli with following arguments:"
+msgid "Started PyHoca-CLI with the following arguments:"
 msgstr "使用以下参数启动了pyhoca-cli："
 
 #: plugins/x2go/x2go_plugin.c:580
-#, c-format
-msgid ""
-"An unknown error happened while retrieving pyhoca-cli's cmdline features! "
-"Exit code: %i"
+#, fuzzy, c-format
+#| msgid ""
+#| "An unknown error happened while retrieving pyhoca-cli's cmdline features! "
+#| "Exit code: %i"
+msgid "Could not retrieve PyHoca-CLI's command-line features! Exit code: %i"
 msgstr "检索 pyhoca-cli 的命令行特性时发生了一个未知错误！退出代码：%i"
 
 #: plugins/x2go/x2go_plugin.c:585
@@ -2847,10 +2857,14 @@ msgid "Error: '%s'"
 msgstr "错误： '%s'"
 
 #: plugins/x2go/x2go_plugin.c:609
-msgid "Given username can't get saved since it's empty!"
-msgstr "无法保存给定的用户名，因为它是空的！"
+msgid "Can't save empty username!"
+msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:622
+#: plugins/x2go/x2go_plugin.c:621
+msgid "Internal error: Could not save new credentials."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:623
 msgid ""
 "An error occured while trying to save new credentials: 's_password' or "
 "'s_username' strings were not set."
@@ -2863,6 +2877,10 @@ msgstr "输入 X2Go 凭据"
 #: plugins/x2go/x2go_plugin.c:818
 msgid "DPI setting is out of bounds. Please adjust it in profile settings."
 msgstr "DPI 设置越界。请在配置文件设置中进行调整。"
+
+#: plugins/x2go/x2go_plugin.c:838
+msgid "Started pyhoca-cli with following arguments:"
+msgstr "使用以下参数启动了pyhoca-cli："
 
 #: plugins/x2go/x2go_plugin.c:858
 msgid "An error occured while starting an X2Go session…"
@@ -2878,55 +2896,72 @@ msgid "Could not start PyHoca-CLI (%i): '%s'"
 msgstr "未能启动 PyHoca-CLI (%i): '%s'"
 
 #: plugins/x2go/x2go_plugin.c:945
+#, fuzzy
+#| msgid ""
+#| "Couldn't get pyhoca-cli's cmdline-features. This indicates either your "
+#| "pyhoca-cli version is too old or pyhoca-cli is not installed! An old "
+#| "limited set of features will be used now."
 msgid ""
-"Couldn't get pyhoca-cli's cmdline-features. This indicates either your "
-"pyhoca-cli version is too old or pyhoca-cli is not installed! An old limited "
-"set of features will be used now."
+"Couldn't get PyHoca-CLI's command-line features. This indicates it is either "
+"too old, or not installed. An old limited set of features will be used for "
+"now."
 msgstr ""
 "无法获得 pyhoca-cli 的命令行功能。这表明您的 pyhoca-cli 版本太旧或未安装 "
 "pyhoca-cli！现在将使用旧的有限的功能集。"
 
-#: plugins/x2go/x2go_plugin.c:957
+#: plugins/x2go/x2go_plugin.c:956
+#, fuzzy
+#| msgid ""
+#| "Parsing pyhoca-cli functionality was not possible! Using a limited "
+#| "feature-set for now."
 msgid ""
-"Parsing pyhoca-cli functionality was not possible! Using a limited feature-"
+"Could not parse PyHoca-CLI's command-line features. Using a limited feature-"
 "set for now."
 msgstr "无法解析 pyhoca-cli 功能！暂时使用有限的功能集。"
 
-#: plugins/x2go/x2go_plugin.c:964
-msgid "Retrieved the following pyhoca-cli functionality:"
+#: plugins/x2go/x2go_plugin.c:962
+#, fuzzy
+#| msgid "Retrieved the following pyhoca-cli functionality:"
+msgid "Retrieved the following PyHoca-CLI command-line features:"
 msgstr "获取了以下 pyhoca-cli 功能："
 
-#: plugins/x2go/x2go_plugin.c:969
+#: plugins/x2go/x2go_plugin.c:967
 #, c-format
 msgid "Available feature[%i]: '%s'"
 msgstr "可用功能[%i]: '%s'"
 
-#: plugins/x2go/x2go_plugin.c:1074
+#: plugins/x2go/x2go_plugin.c:1072
 msgid "Could not open X11 DISPLAY."
 msgstr "无法打开 X11 DISPLAY。"
 
-#: plugins/x2go/x2go_plugin.c:1114
-msgid "Waiting for X2Go Agent window to appear."
+#: plugins/x2go/x2go_plugin.c:1112
+#, fuzzy
+#| msgid "Waiting for X2Go Agent window to appear."
+msgid "Waiting for window of X2Go Agent to appear…"
 msgstr "等待 X2Go Agent 窗口出现。"
 
-#: plugins/x2go/x2go_plugin.c:1140
-msgid "Waiting for pyhoca-cli to show the session's window."
+#: plugins/x2go/x2go_plugin.c:1138
+#, fuzzy
+#| msgid "Waiting for pyhoca-cli to show the session's window."
+msgid "Waiting for PyHoca-CLI to show the session's window…"
 msgstr "等待 pyhoca-cli 显示会话窗口。"
 
-#: plugins/x2go/x2go_plugin.c:1191
+#: plugins/x2go/x2go_plugin.c:1189
 msgid "No X2Go session window appeared. Something went wrong…"
 msgstr "没有出现 X2Go 会话窗口。出了些问题…"
 
-#: plugins/x2go/x2go_plugin.c:1300
+#: plugins/x2go/x2go_plugin.c:1298
 msgid "Internal error: RemminaProtocolWidget* gp is NULL!"
 msgstr "内部错误：RemminaProtocolWidget* gp 为 NULL！"
 
-#: plugins/x2go/x2go_plugin.c:1321
-#, c-format
-msgid "The protocol %s is unavailable because GtkSocket only works under X.org"
+#: plugins/x2go/x2go_plugin.c:1319
+#, fuzzy, c-format
+#| msgid ""
+#| "The protocol %s is unavailable because GtkSocket only works under X.org"
+msgid "The %s protocol is unavailable because GtkSocket only works under X.org"
 msgstr "协议 %s 不可用，因为 GtkSocket 仅在 X.org 下工作"
 
-#: plugins/x2go/x2go_plugin.c:1329
+#: plugins/x2go/x2go_plugin.c:1327
 msgid "Could not initialize pthread. Falling back to non-threaded mode…"
 msgstr "无法初始化 pthread。退回到非线程模式…"
 
@@ -2938,7 +2973,7 @@ msgstr "无法初始化 pthread。退回到非线程模式…"
 #. your language.
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
-#: plugins/x2go/x2go_plugin.c:1372 plugins/x2go/x2go_plugin.c:1390
+#: plugins/x2go/x2go_plugin.c:1370 plugins/x2go/x2go_plugin.c:1388
 #, c-format
 msgid "%sand '%s'"
 msgstr "%s及'%s'"
@@ -2949,7 +2984,7 @@ msgstr "%s及'%s'"
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
-#: plugins/x2go/x2go_plugin.c:1377 plugins/x2go/x2go_plugin.c:1395
+#: plugins/x2go/x2go_plugin.c:1375 plugins/x2go/x2go_plugin.c:1393
 #, c-format
 msgid "%s'%s' "
 msgstr "%s'%s' "
@@ -2957,107 +2992,133 @@ msgstr "%s'%s' "
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
 #. 'value1', 'value2', 'valueN-1' and 'valueN'
-#: plugins/x2go/x2go_plugin.c:1382
+#: plugins/x2go/x2go_plugin.c:1380
 #, c-format
 msgid "%s'%s', "
 msgstr "%s'%s', "
 
-#: plugins/x2go/x2go_plugin.c:1420 plugins/x2go/x2go_plugin.c:1432
-#: plugins/x2go/x2go_plugin.c:1494
+#: plugins/x2go/x2go_plugin.c:1418
+#, fuzzy
+#| msgid "Validation data in ProtocolSettings array is invalid!"
+msgid "Invalid validation data in ProtocolSettings array!"
+msgstr "ProtocolSettings 数组中的验证数据无效！"
+
+#: plugins/x2go/x2go_plugin.c:1430 plugins/x2go/x2go_plugin.c:1492
 msgid "Validation data in ProtocolSettings array is invalid!"
 msgstr "ProtocolSettings 数组中的验证数据无效！"
 
-#: plugins/x2go/x2go_plugin.c:1459
+#: plugins/x2go/x2go_plugin.c:1457
 #, c-format
 msgid "Allowed values are %s."
 msgstr "允许的值为 %s。"
 
-#: plugins/x2go/x2go_plugin.c:1461
-#, c-format
-msgid "Only allowed value is '%s'."
+#: plugins/x2go/x2go_plugin.c:1459
+#, fuzzy, c-format
+#| msgid "Only allowed value is '%s'."
+msgid "The only allowed value is '%s'."
 msgstr "唯一允许的值为 '%s'。"
 
-#: plugins/x2go/x2go_plugin.c:1503
-msgid "Limit minimum is not a valid integer!"
+#: plugins/x2go/x2go_plugin.c:1501
+#, fuzzy
+#| msgid "Limit minimum is not a valid integer!"
+msgid "The lower limit is not a valid integer!"
 msgstr "限制最小值不是有效整数！"
 
+#: plugins/x2go/x2go_plugin.c:1503
+msgid "The lower limit is too high!"
+msgstr ""
+
 #: plugins/x2go/x2go_plugin.c:1505
-msgid "Limit minimum is too large!"
-msgstr "限制最小值过大！"
+msgid "The lower limit is too low!"
+msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1507
-msgid "Limit minimum is too small!"
-msgstr "限制最小值太小！"
-
-#: plugins/x2go/x2go_plugin.c:1509 plugins/x2go/x2go_plugin.c:1523
-#: plugins/x2go/x2go_plugin.c:1538
+#: plugins/x2go/x2go_plugin.c:1507 plugins/x2go/x2go_plugin.c:1533
+#: plugins/x2go/x2go_plugin.c:1552
 msgid "Something went wrong."
 msgstr "出了些问题。"
 
-#: plugins/x2go/x2go_plugin.c:1517
-msgid "Limit maximum is not a valid integer!"
-msgstr "限制最大值不是有效整数！"
+#: plugins/x2go/x2go_plugin.c:1511 plugins/x2go/x2go_plugin.c:1537
+#: plugins/x2go/x2go_plugin.c:1556
+msgid "Please check the RemminaProtocolSetting array for possible errors."
+msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1519
-msgid "Limit maximum is too large!"
-msgstr "限制最大值太大！"
+#: plugins/x2go/x2go_plugin.c:1520 plugins/x2go/x2go_plugin.c:1524
+#: plugins/x2go/x2go_plugin.c:1528 plugins/x2go/x2go_plugin.c:1532
+#, fuzzy
+#| msgid "Internal error."
+msgid "Internal error: "
+msgstr "内部错误。"
 
 #: plugins/x2go/x2go_plugin.c:1521
-msgid "Limit maximum is too small!"
-msgstr "限制最大值太小！"
-
-#: plugins/x2go/x2go_plugin.c:1533
-msgid "Input is not a valid integer!"
+#, fuzzy
+#| msgid "Input is not a valid integer!"
+msgid "The upper limit is not a valid integer!"
 msgstr "输入不是有效整数！"
 
-#: plugins/x2go/x2go_plugin.c:1535 plugins/x2go/x2go_plugin.c:1548
+#: plugins/x2go/x2go_plugin.c:1525
+msgid "The upper limit is too high!"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1529
+msgid "The upper limit is too low!"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1547
+#, fuzzy
+#| msgid "Input is not a valid integer!"
+msgid "The input is not a valid integer!"
+msgstr "输入不是有效整数！"
+
+#: plugins/x2go/x2go_plugin.c:1549 plugins/x2go/x2go_plugin.c:1568
 #, c-format
 msgid "Input must be a number between %i and %i."
 msgstr "输入值必须在 %i 和 %i 之间。"
 
-#: plugins/x2go/x2go_plugin.c:1576
+#: plugins/x2go/x2go_plugin.c:1597
 msgid "Startup program"
 msgstr "启动程序"
 
-#: plugins/x2go/x2go_plugin.c:1578
+#: plugins/x2go/x2go_plugin.c:1599
 msgid "Which command should be executed after creating the X2Go session?"
 msgstr "创建 X2Go 会话后应该执行哪个命令？"
 
-#: plugins/x2go/x2go_plugin.c:1580
+#: plugins/x2go/x2go_plugin.c:1601
 msgid "Keyboard Layout (auto)"
 msgstr "键盘布局 (自动)"
 
-#: plugins/x2go/x2go_plugin.c:1581
+#: plugins/x2go/x2go_plugin.c:1602
 msgid "Keyboard type (auto)"
 msgstr "键盘类型 (自动)"
 
-#: plugins/x2go/x2go_plugin.c:1582
+#: plugins/x2go/x2go_plugin.c:1603
 msgid "Audio support"
 msgstr "音频支持"
 
-#: plugins/x2go/x2go_plugin.c:1584
-msgid "The X2Go server's sound system (default: 'pulse')."
+#: plugins/x2go/x2go_plugin.c:1605
+#, fuzzy
+#| msgid "The X2Go server's sound system (default: 'pulse')."
+msgid "The sound system of the X2Go server (default: 'pulse')."
 msgstr "X2Go 服务器的声音系统 (默认为'pulse')。"
 
-#: plugins/x2go/x2go_plugin.c:1587
+#: plugins/x2go/x2go_plugin.c:1608
 msgid "Clipboard direction"
 msgstr "剪贴板方向"
 
-#: plugins/x2go/x2go_plugin.c:1589
+#: plugins/x2go/x2go_plugin.c:1610
 msgid "Which direction should clipboard content be copied? (default: 'both')."
 msgstr "应在哪个方向复制剪贴板内容？(默认:“both”)。"
 
-#: plugins/x2go/x2go_plugin.c:1593
+#: plugins/x2go/x2go_plugin.c:1614
 msgid "DPI resolution"
 msgstr "DPI 分辨率"
 
-#: plugins/x2go/x2go_plugin.c:1594
+#: plugins/x2go/x2go_plugin.c:1615
 msgid ""
 "Launch session with a specific resolution (in dots per inch). Must be "
 "between 20 and 400."
 msgstr "以特定的分辨率 (点每英寸) 启动会话。值必须在 20 到 400 之间。"
 
-#: plugins/x2go/x2go_plugin.c:1638
+#: plugins/x2go/x2go_plugin.c:1659
 msgid "X2Go plugin loaded."
 msgstr "已加载 X2Go 插件。"
 
@@ -4156,6 +4217,24 @@ msgstr "解锁 Remmina"
 #: data/ui/remmina_unlock.glade:128
 msgid "Master password"
 msgstr "管控密码"
+
+#~ msgid "Given username can't get saved since it's empty!"
+#~ msgstr "无法保存给定的用户名，因为它是空的！"
+
+#~ msgid "Limit minimum is too large!"
+#~ msgstr "限制最小值过大！"
+
+#~ msgid "Limit minimum is too small!"
+#~ msgstr "限制最小值太小！"
+
+#~ msgid "Limit maximum is not a valid integer!"
+#~ msgstr "限制最大值不是有效整数！"
+
+#~ msgid "Limit maximum is too large!"
+#~ msgstr "限制最大值太大！"
+
+#~ msgid "Limit maximum is too small!"
+#~ msgstr "限制最大值太小！"
 
 #~ msgid ""
 #~ "User requested storing credentials but 'password' is not set! Can't set a "

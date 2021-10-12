@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-10-05 22:10+0000\n"
+"POT-Creation-Date: 2021-10-12 09:46+0000\n"
 "PO-Revision-Date: 2021-10-08 08:03+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Khmer (Central) <https://hosted.weblate.org/projects/remmina/"
@@ -25,7 +25,7 @@ msgstr ""
 #: src/remmina_protocol_widget.c:1672 src/remmina_protocol_widget.c:1691
 #: src/remmina_file_editor.c:1101 src/remmina_file_editor.c:1222
 #: src/remmina_ssh_plugin.c:1369 plugins/rdp/rdp_plugin.c:2677
-#: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:1575
+#: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:1596
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1675
 #: data/ui/remmina_unlock.glade:116
 msgid "Password"
@@ -80,7 +80,7 @@ msgstr "ភ្ជាប់តាមរយៈ SSH ពីស្ថានីយថ�
 #: src/remmina_file_editor.c:1216 src/remmina_ssh_plugin.c:1479
 #: plugins/rdp/rdp_plugin.c:2676 plugins/vnc/vnc_plugin.c:1976
 #: plugins/vnc/vnc_plugin.c:1988 plugins/www/www_plugin.c:894
-#: plugins/x2go/x2go_plugin.c:1574 data/ui/remmina_mpc.glade:144
+#: plugins/x2go/x2go_plugin.c:1595 data/ui/remmina_mpc.glade:144
 #, fuzzy
 msgid "Username"
 msgstr "ឈ្មោះ​គណនី"
@@ -257,9 +257,8 @@ msgid ""
 "“Advanced” tab of terminal connections and editable in the “Terminal” tab in "
 "the settings."
 msgstr ""
-"ឯកសារ នេះ មាន គំរោង ពណ៌ ស្ថានីយ \"Custom\" ដែល អាច ជ្រើស បាន ពី ផ្ទាំង "
-"\"Advanced\" នៃ ការ តភ្ជាប់ ស្ថានីយ និង អាច កែសម្រួល បាន នៅ ក្នុង ផ្ទាំង "
-"\"Terminal\" ក្នុង ការកំណត់ ។"
+"ឯកសារ នេះ មាន គំរោង ពណ៌ ស្ថានីយ \"Custom\" ដែល អាច ជ្រើស បាន ពី ផ្ទាំង \"Advanced\" "
+"នៃ ការ តភ្ជាប់ ស្ថានីយ និង អាច កែសម្រួល បាន នៅ ក្នុង ផ្ទាំង \"Terminal\" ក្នុង ការកំណត់ ។"
 
 #: src/remmina_message_panel.c:163 data/ui/remmina_mpc.glade:46
 #: data/ui/remmina_unlock.glade:46
@@ -362,8 +361,7 @@ msgstr "ផ្ញើមាតិកា clipboard ជា keytrokes"
 #: src/rcw.c:2147
 #, fuzzy
 msgid "Turn off scaling to avoid screenshot distortion."
-msgstr ""
-"បិទ ការ ធ្វើ មាត្រដ្ឋាន ដើម្បី ចៀស វាង ការ បង្ខូច រូប ថត អេក្រង់ & # 160; ។"
+msgstr "បិទ ការ ធ្វើ មាត្រដ្ឋាន ដើម្បី ចៀស វាង ការ បង្ខូច រូប ថត អេក្រង់ & # 160; ។"
 
 #: src/rcw.c:2207 plugins/www/www_plugin.c:855
 #, fuzzy
@@ -475,15 +473,12 @@ msgstr "ការកំណត់លេខសម្ងាត់ឡើងវិញ
 #: src/remmina_mpchange.c:327
 #, fuzzy
 msgid "The multi password changer requires a secrecy plugin.\n"
-msgstr ""
-"អ្នក ផ្លាស់ប្ដូរ ពាក្យ សម្ងាត់ ច្រើន តម្រូវ ឲ្យ មាន កម្មវិធី ជំនួយ សម្ងាត់ & "
-"# 160; ។\n"
+msgstr "អ្នក ផ្លាស់ប្ដូរ ពាក្យ សម្ងាត់ ច្រើន តម្រូវ ឲ្យ មាន កម្មវិធី ជំនួយ សម្ងាត់ & # 160; ។\n"
 
 #: src/remmina_mpchange.c:330
 #, fuzzy
 msgid "The multi password changer requires a secrecy service.\n"
-msgstr ""
-"អ្នក ផ្លាស់ប្ដូរ ពាក្យ សម្ងាត់ ច្រើន តម្រូវ ឲ្យ មាន សេវា សម្ងាត់ មួយ ។\n"
+msgstr "អ្នក ផ្លាស់ប្ដូរ ពាក្យ សម្ងាត់ ច្រើន តម្រូវ ឲ្យ មាន សេវា សម្ងាត់ មួយ ។\n"
 
 #: src/remmina_mpchange.c:409
 #, fuzzy, c-format
@@ -504,8 +499,8 @@ msgid ""
 "Connect either to a desktop described in a file (.remmina or a filetype "
 "supported by a plugin) or a supported URI (RDP, VNC, SSH or SPICE)"
 msgstr ""
-"ភ្ជាប់ទៅផ្ទៃតុ ដែលបានរៀបរាប់ក្នុងឯកសារ (.remmina ឬ filetype ដែលគាំទ្រដោយ "
-"plugin) ឬ URI ដែលគាំទ្រ (RDP, VNC, SSH ឬ SPICE)"
+"ភ្ជាប់ទៅផ្ទៃតុ ដែលបានរៀបរាប់ក្នុងឯកសារ (.remmina ឬ filetype ដែលគាំទ្រដោយ plugin) ឬ "
+"URI ដែលគាំទ្រ (RDP, VNC, SSH ឬ SPICE)"
 
 #: src/remmina.c:88 src/remmina.c:90 src/remmina.c:92
 #, fuzzy
@@ -519,8 +514,7 @@ msgid ""
 "Connect to a desktop described in a file (.remmina or a type supported by a "
 "plugin)"
 msgstr ""
-"ភ្ជាប់ ទៅ ផ្ទៃតុ ដែល បាន រៀបរាប់ ក្នុង ឯកសារ (.remmina ឬ ប្រភេទ ដែល គាំទ្រ ដោ"
-"យ plugin)"
+"ភ្ជាប់ ទៅ ផ្ទៃតុ ដែល បាន រៀបរាប់ ក្នុង ឯកសារ (.remmina ឬ ប្រភេទ ដែល គាំទ្រ ដោយ plugin)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:92
@@ -529,8 +523,8 @@ msgid ""
 "Edit desktop connection described in file (.remmina or type supported by "
 "plugin)"
 msgstr ""
-"កែសម្រួល ការ តភ្ជាប់ ផ្ទៃតុ ដែល បាន រៀបរាប់ ក្នុង ឯកសារ (.remmina ឬ វាយ គាំទ្"
-"រ ដោយ plugin)"
+"កែសម្រួល ការ តភ្ជាប់ ផ្ទៃតុ ដែល បាន រៀបរាប់ ក្នុង ឯកសារ (.remmina ឬ វាយ គាំទ្រ ដោយ "
+"plugin)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:95
@@ -670,8 +664,7 @@ msgstr ""
 "\tremmina -c ssh://user@server\n"
 "\tremmina -c spice://server\n"
 "\n"
-"ដើម្បី តភ្ជាប់ រហ័ស ដោយ ប្រើ URI រួម ជាមួយ ពាក្យ សម្ងាត់ ដែល បាន អ៊ិនគ្រីប ៖"
-"\n"
+"ដើម្បី តភ្ជាប់ រហ័ស ដោយ ប្រើ URI រួម ជាមួយ ពាក្យ សម្ងាត់ ដែល បាន អ៊ិនគ្រីប ៖\n"
 "\n"
 "remmina -c rdp://username:encrypted-password@server\n"
 "\tremmina -c vnc://username:encrypted-password@server\n"
@@ -682,12 +675,12 @@ msgstr ""
 "\n"
 "remmina --encrypt-password\n"
 "\n"
-"ដើម្បី update username និង password រួចកំណត់របៀប resolution ផ្សេងគ្នានៃទម្រង់"
-" Remmina connection, ប្រើ:\n"
+"ដើម្បី update username និង password រួចកំណត់របៀប resolution ផ្សេងគ្នានៃទម្រង់ Remmina "
+"connection, ប្រើ:\n"
 "\n"
-"echo \"username\\n"
-"apassword\" | remmina --update-profile /PATH/TO/FOO.remmina --set-option "
-"username --set-option resolution_mode=2 --set-option password\n"
+"echo \"username\\napassword\" | remmina --update-profile /PATH/TO/FOO."
+"remmina --set-option username --set-option resolution_mode=2 --set-option "
+"password\n"
 
 #: src/remmina_public.c:345
 #, fuzzy, c-format
@@ -985,8 +978,7 @@ msgstr "មិនអាចផ្ទៀងផ្ទាត់ជាមួយពា
 #, fuzzy
 msgid "No saved SSH passphrase supplied. Asking user to enter it."
 msgstr ""
-"មិន បាន រក្សា ទុក SSH passphrase ដែល បាន ផ្គត់ផ្គង់ ឡើយ ។ សុំ ឲ្យ អ្នក ប្រើ "
-"បញ្ចូល វា ។"
+"មិន បាន រក្សា ទុក SSH passphrase ដែល បាន ផ្គត់ផ្គង់ ឡើយ ។ សុំ ឲ្យ អ្នក ប្រើ បញ្ចូល វា ។"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:327 src/remmina_ssh.c:368 src/remmina_ssh.c:394
@@ -1028,8 +1020,7 @@ msgstr "សោ SSH សាធារណៈមិនអាចនាំចូលប�
 #, fuzzy, c-format
 msgid "Could not authenticate automatically with public SSH key. %s"
 msgstr ""
-"មិន អាច ផ្ទៀង ផ្ទាត់ ដោយ ស្វ័យ ប្រវត្តិ ជាមួយ នឹង គន្លឹះ SSH សាធារណៈ បាន ទេ "
-"& # 160; ។ %s"
+"មិន អាច ផ្ទៀង ផ្ទាត់ ដោយ ស្វ័យ ប្រវត្តិ ជាមួយ នឹង គន្លឹះ SSH សាធារណៈ បាន ទេ & # 160; ។ %s"
 
 #: src/remmina_ssh.c:523
 #, fuzzy, c-format
@@ -1049,16 +1040,13 @@ msgstr "គន្លឹះ SSH សាធារណៈបានផ្លាស់�
 #: src/remmina_ssh.c:711
 #, fuzzy, c-format
 msgid "Could not authenticate with keyboard-interactive. %s"
-msgstr ""
-"មិន អាច ផ្ទៀង ផ្ទាត់ ភាព ត្រឹមត្រូវ ជាមួយ ក្ដារ ចុច-អន្តរកម្ម បាន ទេ & # 160;"
-" ។ %s"
+msgstr "មិន អាច ផ្ទៀង ផ្ទាត់ ភាព ត្រឹមត្រូវ ជាមួយ ក្ដារ ចុច-អន្តរកម្ម បាន ទេ & # 160; ។ %s"
 
 #: src/remmina_ssh.c:813
 #, fuzzy, c-format
 msgid "Could not authenticate with automatic public SSH key. %s"
 msgstr ""
-"មិន អាច ផ្ទៀង ផ្ទាត់ ជាមួយ នឹង គន្លឹះ SSH សាធារណៈ ដោយ ស្វ័យ ប្រវត្តិ បាន ទេ "
-"& # 160; ។ %s"
+"មិន អាច ផ្ទៀង ផ្ទាត់ ជាមួយ នឹង គន្លឹះ SSH សាធារណៈ ដោយ ស្វ័យ ប្រវត្តិ បាន ទេ & # 160; ។ %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:921
@@ -1101,8 +1089,7 @@ msgstr ""
 #: src/remmina_ssh.c:979
 #, fuzzy, c-format
 msgid "Could not check list of known SSH hosts. %s"
-msgstr ""
-"មិន អាច ពិនិត្យ មើល បញ្ជី ម្ចាស់ ផ្ទះ SSH ដែល គេ ស្គាល់ បាន ទេ & # 160; ។ %s"
+msgstr "មិន អាច ពិនិត្យ មើល បញ្ជី ម្ចាស់ ផ្ទះ SSH ដែល គេ ស្គាល់ បាន ទេ & # 160; ។ %s"
 
 #: src/remmina_ssh.c:988
 #, fuzzy
@@ -1201,8 +1188,7 @@ msgstr "មិន អាច អាន ប៉ុស្តិ៍ SSH តាម វ
 #: src/remmina_ssh.c:2018
 #, fuzzy, c-format
 msgid "Could not send data to tunnel listening socket. %s"
-msgstr ""
-"មិន អាច ផ្ញើ ទិន្នន័យ ទៅ រន្ធ ស្តាប់ ផ្លូវ រូង ក្រោម ដី បាន ទេ & # 160; ។ %s"
+msgstr "មិន អាច ផ្ញើ ទិន្នន័យ ទៅ រន្ធ ស្តាប់ ផ្លូវ រូង ក្រោម ដី បាន ទេ & # 160; ។ %s"
 
 #: src/remmina_ssh.c:2120
 #, fuzzy
@@ -1431,8 +1417,8 @@ msgstr ""
 "• % p ត្រូវ បាន ជំនួស ដោយ ឈ្មោះ ទម្រង់ Remmina\n"
 "• % g ត្រូវ បាន ជំនួស ដោយ ឈ្មោះ ក្រុម ទម្រង់ Remmina\n"
 "• %d ត្រូវបាន ជំនួស ដោយ កាលបរិច្ឆេទ និង ពេលវេលា ក្នុង ទ្រង់ទ្រាយ ISO 8601\n"
-"កុំ រត់ ក្នុង ផ្ទៃ ខាង ក្រោយ ប្រសិន បើ អ្នក ចង់ ឲ្យ ពាក្យ បញ្ជា ត្រូវ បាន "
-"អនុវត្ត មុន ពេល ភ្ជាប់ & # 160; ។\n"
+"កុំ រត់ ក្នុង ផ្ទៃ ខាង ក្រោយ ប្រសិន បើ អ្នក ចង់ ឲ្យ ពាក្យ បញ្ជា ត្រូវ បាន អនុវត្ត មុន ពេល ភ្ជាប់ "
+"& # 160; ។\n"
 "</big>"
 
 #: src/remmina_file_editor.c:84
@@ -1503,9 +1489,7 @@ msgstr "ការ​​​តភ្ជាប់​​ថ្មី"
 #: src/remmina_file_editor.c:1081
 #, fuzzy
 msgid "command %h %u %t %U %p %g --option"
-msgstr ""
-"ការ ជូនដំណឹង នេះ ត្រូវ បាន ជូនដំណឹង ថា ជា ការ ជូនដំណឹង ដែល បាន ជ្រើស & # 160;"
-" ។"
+msgstr "ការ ជូនដំណឹង នេះ ត្រូវ បាន ជូនដំណឹង ថា ជា ការ ជូនដំណឹង ដែល បាន ជ្រើស & # 160; ។"
 
 #: src/remmina_file_editor.c:1086
 msgid "After connecting"
@@ -1578,13 +1562,12 @@ msgid "Notes"
 msgstr "សម្គាល់"
 
 #: src/remmina_file_editor.c:1438
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "(%s: %i): Can't validate setting '%s' since 'value' or 'gfe' are NULL!"
-msgstr ""
-"(%s: %i) : មិនអាចកំណត់សុពលភាព '%s' ចាប់តាំងពី 'តម្លៃ' ឬ 'gfe' គឺជា NULL!"
+msgstr "(%s: %i) : មិនអាចកំណត់សុពលភាព '%s' ចាប់តាំងពី 'តម្លៃ' ឬ 'gfe' គឺជា NULL!"
 
 #: src/remmina_file_editor.c:1441
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "(%s: %i): Can't validate user input since 'setting_name_to_validate', "
 "'value' or 'gfe' are NULL!"
@@ -1594,7 +1577,7 @@ msgstr ""
 
 #. TRANSLATORS: Meta-error. Shouldn't be visible.
 #: src/remmina_file_editor.c:1445 plugins/x2go/x2go_plugin.c:856
-#: plugins/x2go/x2go_plugin.c:1442
+#: plugins/x2go/x2go_plugin.c:1440
 #, fuzzy
 msgid "Internal error."
 msgstr "កំហុសខាងក្នុង។"
@@ -1603,8 +1586,7 @@ msgstr "កំហុសខាងក្នុង។"
 #: src/remmina_file_editor.c:1724 src/remmina_file_editor.c:1747
 #, fuzzy, c-format
 msgid "Couldn't validate user input. %s"
-msgstr ""
-"មិន អាច ធ្វើ ឲ្យ ការ បញ្ចូល របស់ អ្នក ប្រើ មាន សុពលភាព បាន ទេ & # 160; ។ %s"
+msgstr "មិន អាច ធ្វើ ឲ្យ ការ បញ្ចូល របស់ អ្នក ប្រើ មាន សុពលភាព បាន ទេ & # 160; ។ %s"
 
 #: src/remmina_file_editor.c:1691
 #, fuzzy
@@ -1623,8 +1605,7 @@ msgstr "រក្សាទុកជា Default"
 #: src/remmina_file_editor.c:1788
 #, fuzzy
 msgid "Use the current settings as the default for all new connection profiles"
-msgstr ""
-"ប្រើ ការកំណត់ បច្ចុប្បន្ន ជា លំនាំ ដើម សម្រាប់ ទម្រង់ តភ្ជាប់ ថ្មី ទាំងអស់"
+msgstr "ប្រើ ការកំណត់ បច្ចុប្បន្ន ជា លំនាំ ដើម សម្រាប់ ទម្រង់ តភ្ជាប់ ថ្មី ទាំងអស់"
 
 #: src/remmina_file_editor.c:1796 data/ui/remmina_main.glade:160
 #, fuzzy
@@ -1872,8 +1853,7 @@ msgstr "កំណត់ហេតុ SSH session asynchronously"
 #, fuzzy
 msgid "Saving the session asynchronously may have a notable performance impact"
 msgstr ""
-"ការ សង្គ្រោះ សម័យ នេះ ប្រហែល ជា មាន ផល ប៉ះ ពាល់ ដល់ ការ សម្តែង ដ៏ គួរ ឲ្យ កត់"
-" សម្គាល់ មួយ"
+"ការ សង្គ្រោះ សម័យ នេះ ប្រហែល ជា មាន ផល ប៉ះ ពាល់ ដល់ ការ សម្តែង ដ៏ គួរ ឲ្យ កត់ សម្គាល់ មួយ"
 
 #: src/remmina_ssh_plugin.c:1523
 #, fuzzy
@@ -2150,8 +2130,8 @@ msgid ""
 "Could not connect to the RDP server “%s” via TLS. Check that client and "
 "server support a common TLS version."
 msgstr ""
-"មិនអាចភ្ជាប់ទៅកាន់ RDP server \"%s\" តាមរយៈ TLS បាន។ ពិនិត្យ មើល ថា ម៉ាស៊ីន "
-"បម្រើ និង ម៉ាស៊ីន បម្រើ គាំទ្រ កំណែ TLS ទូទៅ & # 160; ។"
+"មិនអាចភ្ជាប់ទៅកាន់ RDP server \"%s\" តាមរយៈ TLS បាន។ ពិនិត្យ មើល ថា ម៉ាស៊ីន បម្រើ និង "
+"ម៉ាស៊ីន បម្រើ គាំទ្រ កំណែ TLS ទូទៅ & # 160; ។"
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:2129
@@ -2160,8 +2140,7 @@ msgid ""
 "Unable to establish a connection to the RDP server “%s”. Check “Security "
 "protocol negotiation”."
 msgstr ""
-"មិនអាចបង្កើតការតភ្ជាប់ទៅកាន់ម៉ាស៊ីនបម្រើ RDP \"%s\"។ ពិនិត្យមើល \"ក"
-"ារចរចាពិធីការសុវត្ថិភាព\"។"
+"មិនអាចបង្កើតការតភ្ជាប់ទៅកាន់ម៉ាស៊ីនបម្រើ RDP \"%s\"។ ពិនិត្យមើល \"ការចរចាពិធីការសុវត្ថិភាព\"។"
 
 #: plugins/rdp/rdp_plugin.c:2137
 #, fuzzy, c-format
@@ -2179,9 +2158,8 @@ msgid ""
 "You requested a H.264 GFX mode for the server “%s”, but your libfreerdp does "
 "not support H.264. Please use a non-AVC colour depth setting."
 msgstr ""
-"អ្នក បាន ស្នើ សុំ របៀប H.264 GFX សម្រាប់ server \"%s\" ប៉ុន្តែ libfreerdp "
-"របស់ អ្នក មិន គាំទ្រ H.264 ទេ។ សូម ប្រើ ការកំណត់ ជម្រៅ ពណ៌ AVC ដែល មិន មែន ជា"
-" AVC ។"
+"អ្នក បាន ស្នើ សុំ របៀប H.264 GFX សម្រាប់ server \"%s\" ប៉ុន្តែ libfreerdp របស់ អ្នក មិន "
+"គាំទ្រ H.264 ទេ។ សូម ប្រើ ការកំណត់ ជម្រៅ ពណ៌ AVC ដែល មិន មែន ជា AVC ។"
 
 #: plugins/rdp/rdp_plugin.c:2150
 #, fuzzy, c-format
@@ -2193,9 +2171,7 @@ msgstr "ម៉ាស៊ីន បម្រើ \"%s\" បាន បដិសេ�
 msgid ""
 "The Remote Desktop Gateway “%s” denied the user “%s\\%s” access due to "
 "policy."
-msgstr ""
-"ច្រកចូលពីចម្ងាយ \"%s\" បានបដិសេធអ្នកប្រើ \"%s\\%s\" ចូលទៅកាន់ដោយ "
-"សារគោលនយោបាយ។"
+msgstr "ច្រកចូលពីចម្ងាយ \"%s\" បានបដិសេធអ្នកប្រើ \"%s\\%s\" ចូលទៅកាន់ដោយ សារគោលនយោបាយ។"
 
 #: plugins/rdp/rdp_plugin.c:2165
 #, fuzzy, c-format
@@ -2341,8 +2317,8 @@ msgid ""
 "  • >= 7065: Windows 8 and newer: SCardGetReaderIcon(),\n"
 "    SCardGetDeviceTypeId()"
 msgstr ""
-"ប្រើ i.a. ដោយ terminal services ក្នុង smart card channel ដើម្បី សម្គាល់ "
-"សមត្ថភាព របស់ អតិថិជន ៖\n"
+"ប្រើ i.a. ដោយ terminal services ក្នុង smart card channel ដើម្បី សម្គាល់ សមត្ថភាព របស់ "
+"អតិថិជន ៖\n"
 "  • < 4034: មុខងារកាតឆ្លាតវៃ Windows XP base • 4034-7064: Windows Vista/7: "
 "SCardReadCache(), SCardWriteCache(), SCardGetTransmitCount() • >= 7065: "
 "Windows 8 និង newer: SCardGetReaderIcon(),\n"
@@ -2407,8 +2383,8 @@ msgid ""
 "The highest possible value is 600000 ms (10 minutes).\n"
 msgstr ""
 "ការ កំណត់ កម្រិត ខ្ពស់ សម្រាប់ តំណ latency ខ្ពស់ & # 160; ៖\n"
-"លៃតម្រូវពេលវេលាតភ្ជាប់។ ប្រើ ប្រសិន បើ ពេល វេលា នៃ ការ តភ្ជាប់ របស់ អ្នក ចេញ "
-"& # 160; ។\n"
+"លៃតម្រូវពេលវេលាតភ្ជាប់។ ប្រើ ប្រសិន បើ ពេល វេលា នៃ ការ តភ្ជាប់ របស់ អ្នក ចេញ & # 160; "
+"។\n"
 "តម្លៃ ខ្ពស់ បំផុត ដែល អាច ធ្វើ ទៅ បាន គឺ 600000 ms ( 10 នាទី ) ។\n"
 
 #: plugins/rdp/rdp_plugin.c:2630
@@ -2914,8 +2890,7 @@ msgstr "Auto LZ"
 #: plugins/spice/spice_plugin.c:650
 #, fuzzy
 msgid "Disable video overlay if videos are not displayed properly.\n"
-msgstr ""
-"បិទ វីដេអូ ហួស ហេតុ បើ វីដេអូ មិន ត្រូវ បាន បង្ហាញ ឲ្យ បាន ត្រឹមត្រូវ ។\n"
+msgstr "បិទ វីដេអូ ហួស ហេតុ បើ វីដេអូ មិន ត្រូវ បាន បង្ហាញ ឲ្យ បាន ត្រឹមត្រូវ ។\n"
 
 #: plugins/spice/spice_plugin.c:675
 #, fuzzy
@@ -3016,8 +2991,7 @@ msgstr "ការតភ្ជាប់របស់អ្នកត្រូវប
 #: plugins/vnc/vnc_plugin.c:966
 #, fuzzy, c-format
 msgid "The VNC server requested an unknown authentication method. %s"
-msgstr ""
-"ម៉ាស៊ីន បម្រើ VNC បាន ស្នើ សុំ វិធី សាស្ត្រ ផ្ទៀង ផ្ទាត់ ដែល មិន ស្គាល់ ។ %s"
+msgstr "ម៉ាស៊ីន បម្រើ VNC បាន ស្នើ សុំ វិធី សាស្ត្រ ផ្ទៀង ផ្ទាត់ ដែល មិន ស្គាល់ ។ %s"
 
 #: plugins/vnc/vnc_plugin.c:968
 #, fuzzy
@@ -3236,10 +3210,10 @@ msgstr "មិនអាចយក 'DialogData'បានទេ! ពន្លូត
 
 #: plugins/x2go/x2go_plugin.c:505
 #, fuzzy
-msgid "pyhoca-cli exited unexpectedly. This connection will now be closed."
+msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
 msgstr ""
-"pyhoca-cli បាន ចេញ ដោយ មិន បាន រំពឹង ទុក ។ ឥឡូវ នេះ ការ ត ភ្ជាប់ នេះ នឹង ត្រូ"
-"វ បិទ & # 160; ។"
+"pyhoca-cli បាន ចេញ ដោយ មិន បាន រំពឹង ទុក ។ ឥឡូវ នេះ ការ ត ភ្ជាប់ នេះ នឹង ត្រូវ បិទ & # "
+"160; ។"
 
 #: plugins/x2go/x2go_plugin.c:514
 #, fuzzy
@@ -3250,27 +3224,24 @@ msgstr "កំហុស មួយ បាន កើត ឡើង ។"
 #, fuzzy
 msgid ""
 "The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
-"Please check your profile settings and pyhoca-cli's output for possible "
-"errors and ensure the remote server is reachable."
+"Please check your profile settings and PyHoca-CLI's output for possible "
+"errors. Also ensure the remote server is reachable."
 msgstr ""
 "ដំណើរ ការ កុមារ ដែល ចាំបាច់ ' pyhoca-cli ' បាន ឈប់ ដោយ មិន បាន រំពឹង ទុក ។\n"
-"សូម ពិនិត្យ មើល ការ កំណត់ ទម្រង់ របស់ អ្នក និង លទ្ធផល របស់ pyhoca-cli សម្រាប់"
-" កំហុស ដែល អាច ធ្វើ ទៅ បាន និង ធានា ថា ម៉ាស៊ីន បម្រើ ពី ចម្ងាយ អាច ទៅ ដល់ បា"
-"ន ។"
+"សូម ពិនិត្យ មើល ការ កំណត់ ទម្រង់ របស់ អ្នក និង លទ្ធផល របស់ pyhoca-cli សម្រាប់ កំហុស ដែល អាច "
+"ធ្វើ ទៅ បាន និង ធានា ថា ម៉ាស៊ីន បម្រើ ពី ចម្ងាយ អាច ទៅ ដល់ បាន ។"
 
-#: plugins/x2go/x2go_plugin.c:561 plugins/x2go/x2go_plugin.c:838
+#: plugins/x2go/x2go_plugin.c:561
 #, fuzzy
-msgid "Started pyhoca-cli with following arguments:"
+msgid "Started PyHoca-CLI with the following arguments:"
 msgstr "បាន ចាប់ផ្ដើម pyhoca-cli ជាមួយ នឹង អាគុយម៉ង់ ដូច ខាង ក្រោម ៖"
 
 #: plugins/x2go/x2go_plugin.c:580
-#, c-format, fuzzy
-msgid ""
-"An unknown error happened while retrieving pyhoca-cli's cmdline features! "
-"Exit code: %i"
+#, fuzzy, c-format
+msgid "Could not retrieve PyHoca-CLI's command-line features! Exit code: %i"
 msgstr ""
-"កំហុស ដែល មិន ស្គាល់ មួយ បាន កើត ឡើង នៅ ពេល យក លក្ខណៈពិសេស cmdline របស់ "
-"pyhoca-cli ! ចេញកូដ: %i"
+"កំហុស ដែល មិន ស្គាល់ មួយ បាន កើត ឡើង នៅ ពេល យក លក្ខណៈពិសេស cmdline របស់ pyhoca-cli ! "
+"ចេញកូដ: %i"
 
 #: plugins/x2go/x2go_plugin.c:585
 #, fuzzy, c-format
@@ -3278,18 +3249,21 @@ msgid "Error: '%s'"
 msgstr "កំហុស: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:609
-#, fuzzy
-msgid "Given username can't get saved since it's empty!"
-msgstr "ដោយ សារ តែ ឈ្មោះ អ្នក ប្រើ មិន អាច សន្សំ បាន ទេ ចាប់ តាំង ពី វា ទទេ !"
+msgid "Can't save empty username!"
+msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:622
+#: plugins/x2go/x2go_plugin.c:621
+msgid "Internal error: Could not save new credentials."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:623
 #, fuzzy
 msgid ""
 "An error occured while trying to save new credentials: 's_password' or "
 "'s_username' strings were not set."
 msgstr ""
-"កំហុស មួយ បាន កើត ឡើង នៅ ពេល ព្យាយាម សន្សំ សំចៃ សមត្ថ ភាព ថ្មី ៖ "
-"'s_password' ឬ ខ្សែ អក្សរ 's_username' មិន ត្រូវ បាន កំណត់ ឡើយ ។"
+"កំហុស មួយ បាន កើត ឡើង នៅ ពេល ព្យាយាម សន្សំ សំចៃ សមត្ថ ភាព ថ្មី ៖ 's_password' ឬ ខ្សែ "
+"អក្សរ 's_username' មិន ត្រូវ បាន កំណត់ ឡើយ ។"
 
 #: plugins/x2go/x2go_plugin.c:659
 #, fuzzy
@@ -3299,8 +3273,12 @@ msgstr "បញ្ចូល សមត្ថ ភាព X2Go"
 #: plugins/x2go/x2go_plugin.c:818
 #, fuzzy
 msgid "DPI setting is out of bounds. Please adjust it in profile settings."
-msgstr ""
-"ការ កំណត់ DPI គឺ ហួស ព្រំ ដែន ។ សូម លៃ តម្រូវ វា នៅ ក្នុង ការ កំណត់ ទម្រង់ ។"
+msgstr "ការ កំណត់ DPI គឺ ហួស ព្រំ ដែន ។ សូម លៃ តម្រូវ វា នៅ ក្នុង ការ កំណត់ ទម្រង់ ។"
+
+#: plugins/x2go/x2go_plugin.c:838
+#, fuzzy
+msgid "Started pyhoca-cli with following arguments:"
+msgstr "បាន ចាប់ផ្ដើម pyhoca-cli ជាមួយ នឹង អាគុយម៉ង់ ដូច ខាង ក្រោម ៖"
 
 #: plugins/x2go/x2go_plugin.c:858
 #, fuzzy
@@ -3320,64 +3298,63 @@ msgstr "មិនអាចចាប់ផ្តើម PyHoca-CLI (%i: '%s'"
 #: plugins/x2go/x2go_plugin.c:945
 #, fuzzy
 msgid ""
-"Couldn't get pyhoca-cli's cmdline-features. This indicates either your "
-"pyhoca-cli version is too old or pyhoca-cli is not installed! An old limited "
-"set of features will be used now."
+"Couldn't get PyHoca-CLI's command-line features. This indicates it is either "
+"too old, or not installed. An old limited set of features will be used for "
+"now."
 msgstr ""
-"មិន អាច ទទួល បាន លក្ខណៈ ពិសេស cmdline-5 របស់ pyhoca-cli បាន ទេ ។ នេះ បង្ហាញ "
-"ថា កំណែ pyhoca-cli របស់ អ្នក គឺ ចាស់ ពេក ឬ pyhoca-cli មិន ត្រូវ បាន ដំឡើង ទេ "
-"! សំណុំ លក្ខណៈពិសេស ដែល មាន កំណត់ ចាស់ នឹង ត្រូវ បាន ប្រើ ឥឡូវ នេះ & # 160; ។"
+"មិន អាច ទទួល បាន លក្ខណៈ ពិសេស cmdline-5 របស់ pyhoca-cli បាន ទេ ។ នេះ បង្ហាញ ថា កំណែ "
+"pyhoca-cli របស់ អ្នក គឺ ចាស់ ពេក ឬ pyhoca-cli មិន ត្រូវ បាន ដំឡើង ទេ ! សំណុំ លក្ខណៈពិសេស "
+"ដែល មាន កំណត់ ចាស់ នឹង ត្រូវ បាន ប្រើ ឥឡូវ នេះ & # 160; ។"
 
-#: plugins/x2go/x2go_plugin.c:957
+#: plugins/x2go/x2go_plugin.c:956
 #, fuzzy
 msgid ""
-"Parsing pyhoca-cli functionality was not possible! Using a limited feature-"
+"Could not parse PyHoca-CLI's command-line features. Using a limited feature-"
 "set for now."
 msgstr ""
-"អនុគមន៍ Parsing pyhoca-cli មិនអាចទៅរួចទេ! "
-"ការប្រើលក្ខណៈពិសេសដែលមានកំណត់សម្រាប់ឥឡូវនេះ។"
+"អនុគមន៍ Parsing pyhoca-cli មិនអាចទៅរួចទេ! ការប្រើលក្ខណៈពិសេសដែលមានកំណត់សម្រាប់ឥឡូវនេះ។"
 
-#: plugins/x2go/x2go_plugin.c:964
+#: plugins/x2go/x2go_plugin.c:962
 #, fuzzy
-msgid "Retrieved the following pyhoca-cli functionality:"
+msgid "Retrieved the following PyHoca-CLI command-line features:"
 msgstr "ទទួលយកមុខងារ pyhoca-cli ដូចខាងក្រោម៖"
 
-#: plugins/x2go/x2go_plugin.c:969
-#, c-format, fuzzy
+#: plugins/x2go/x2go_plugin.c:967
+#, fuzzy, c-format
 msgid "Available feature[%i]: '%s'"
 msgstr "មានលក្ខណៈពិសេស[%i]: '%s'"
 
-#: plugins/x2go/x2go_plugin.c:1074
+#: plugins/x2go/x2go_plugin.c:1072
 #, fuzzy
 msgid "Could not open X11 DISPLAY."
 msgstr "មិន អាច បើក X11 DISPLAY បាន ទេ ។"
 
-#: plugins/x2go/x2go_plugin.c:1114
+#: plugins/x2go/x2go_plugin.c:1112
 #, fuzzy
-msgid "Waiting for X2Go Agent window to appear."
+msgid "Waiting for window of X2Go Agent to appear…"
 msgstr "រង់ចាំ បង្អួច ភ្នាក់ងារ X2Go ដើម្បី បង្ហាញ ខ្លួន ។"
 
-#: plugins/x2go/x2go_plugin.c:1140
+#: plugins/x2go/x2go_plugin.c:1138
 #, fuzzy
-msgid "Waiting for pyhoca-cli to show the session's window."
+msgid "Waiting for PyHoca-CLI to show the session's window…"
 msgstr "រង់ចាំ pyhoca-cli ដើម្បី បង្ហាញ បង្អួច សម័យ ។"
 
-#: plugins/x2go/x2go_plugin.c:1191
+#: plugins/x2go/x2go_plugin.c:1189
 #, fuzzy
 msgid "No X2Go session window appeared. Something went wrong…"
 msgstr "គ្មាន បង្អួច សម័យ X2Go បាន លេច ឡើង ទេ & # 160; ។ មានអីខុស…"
 
-#: plugins/x2go/x2go_plugin.c:1300
+#: plugins/x2go/x2go_plugin.c:1298
 #, fuzzy
 msgid "Internal error: RemminaProtocolWidget* gp is NULL!"
 msgstr "កំហុសខាងក្នុង: RemminaProtocolWidget* gp is NULL!"
 
-#: plugins/x2go/x2go_plugin.c:1321
-#, c-format, fuzzy
-msgid "The protocol %s is unavailable because GtkSocket only works under X.org"
+#: plugins/x2go/x2go_plugin.c:1319
+#, fuzzy, c-format
+msgid "The %s protocol is unavailable because GtkSocket only works under X.org"
 msgstr "ពិធីការ %s មិន អាច រក បាន ទេ ព្រោះ ថា GtkSocket ធ្វើ ការ តែ ក្រោម X.org"
 
-#: plugins/x2go/x2go_plugin.c:1329
+#: plugins/x2go/x2go_plugin.c:1327
 #, fuzzy
 msgid "Could not initialize pthread. Falling back to non-threaded mode…"
 msgstr "មិន អាច ធ្វើ ឲ្យ ព្យាង្គ ដំបូង បាន ទេ ។ ធ្លាក់ ចុះ ទៅ រក របៀប មិន ស៊…"
@@ -3390,8 +3367,8 @@ msgstr "មិន អាច ធ្វើ ឲ្យ ព្យាង្គ ដំ�
 #. your language.
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
-#: plugins/x2go/x2go_plugin.c:1372 plugins/x2go/x2go_plugin.c:1390
-#, c-format, fuzzy
+#: plugins/x2go/x2go_plugin.c:1370 plugins/x2go/x2go_plugin.c:1388
+#, fuzzy, c-format
 msgid "%sand '%s'"
 msgstr "%sនិង '%s'"
 
@@ -3401,140 +3378,150 @@ msgstr "%sនិង '%s'"
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
-#: plugins/x2go/x2go_plugin.c:1377 plugins/x2go/x2go_plugin.c:1395
-#, c-format, fuzzy
+#: plugins/x2go/x2go_plugin.c:1375 plugins/x2go/x2go_plugin.c:1393
+#, fuzzy, c-format
 msgid "%s'%s' "
 msgstr "%s'%s' "
 
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
 #. 'value1', 'value2', 'valueN-1' and 'valueN'
-#: plugins/x2go/x2go_plugin.c:1382
-#, c-format, fuzzy
+#: plugins/x2go/x2go_plugin.c:1380
+#, fuzzy, c-format
 msgid "%s'%s', "
 msgstr "%s'%s', "
 
-#: plugins/x2go/x2go_plugin.c:1420 plugins/x2go/x2go_plugin.c:1432
-#: plugins/x2go/x2go_plugin.c:1494
+#: plugins/x2go/x2go_plugin.c:1418
+#, fuzzy
+msgid "Invalid validation data in ProtocolSettings array!"
+msgstr "ទិន្នន័យសុពលភាពនៅក្នុង ProtocolSettings array គឺមិនត្រឹមត្រូវ!"
+
+#: plugins/x2go/x2go_plugin.c:1430 plugins/x2go/x2go_plugin.c:1492
 #, fuzzy
 msgid "Validation data in ProtocolSettings array is invalid!"
 msgstr "ទិន្នន័យសុពលភាពនៅក្នុង ProtocolSettings array គឺមិនត្រឹមត្រូវ!"
 
-#: plugins/x2go/x2go_plugin.c:1459
-#, c-format, fuzzy
+#: plugins/x2go/x2go_plugin.c:1457
+#, fuzzy, c-format
 msgid "Allowed values are %s."
 msgstr "តម្លៃដែលបានអនុញ្ញាតគឺ %s។"
 
-#: plugins/x2go/x2go_plugin.c:1461
-#, c-format, fuzzy
-msgid "Only allowed value is '%s'."
+#: plugins/x2go/x2go_plugin.c:1459
+#, fuzzy, c-format
+msgid "The only allowed value is '%s'."
 msgstr "មាន តែ តម្លៃ ដែល បាន អនុញ្ញាត ប៉ុណ្ណោះ គឺ '%s'។"
 
-#: plugins/x2go/x2go_plugin.c:1503
+#: plugins/x2go/x2go_plugin.c:1501
 #, fuzzy
-msgid "Limit minimum is not a valid integer!"
+msgid "The lower limit is not a valid integer!"
 msgstr "កំណត់អប្បបរមាមិនមែនជាអាំងតេហ្គ័រត្រឹមត្រូវទេ!"
 
+#: plugins/x2go/x2go_plugin.c:1503
+msgid "The lower limit is too high!"
+msgstr ""
+
 #: plugins/x2go/x2go_plugin.c:1505
-#, fuzzy
-msgid "Limit minimum is too large!"
-msgstr "កំណត់អប្បបរមាគឺធំពេកហើយ!"
+msgid "The lower limit is too low!"
+msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1507
-#, fuzzy
-msgid "Limit minimum is too small!"
-msgstr "កម្រិតអប្បបរមាគឺតូចពេក!"
-
-#: plugins/x2go/x2go_plugin.c:1509 plugins/x2go/x2go_plugin.c:1523
-#: plugins/x2go/x2go_plugin.c:1538
+#: plugins/x2go/x2go_plugin.c:1507 plugins/x2go/x2go_plugin.c:1533
+#: plugins/x2go/x2go_plugin.c:1552
 #, fuzzy
 msgid "Something went wrong."
 msgstr "មានអីខុស។"
 
-#: plugins/x2go/x2go_plugin.c:1517
-#, fuzzy
-msgid "Limit maximum is not a valid integer!"
-msgstr "កំណត់អតិបរមាមិនមែនជាគត់ដែលមានសុពលភាពទេ!"
+#: plugins/x2go/x2go_plugin.c:1511 plugins/x2go/x2go_plugin.c:1537
+#: plugins/x2go/x2go_plugin.c:1556
+msgid "Please check the RemminaProtocolSetting array for possible errors."
+msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1519
+#: plugins/x2go/x2go_plugin.c:1520 plugins/x2go/x2go_plugin.c:1524
+#: plugins/x2go/x2go_plugin.c:1528 plugins/x2go/x2go_plugin.c:1532
 #, fuzzy
-msgid "Limit maximum is too large!"
-msgstr "កំណត់អតិបរមាគឺធំពេក!"
+msgid "Internal error: "
+msgstr "កំហុសខាងក្នុង។"
 
 #: plugins/x2go/x2go_plugin.c:1521
 #, fuzzy
-msgid "Limit maximum is too small!"
-msgstr "កំណត់អតិបរមាគឺតូចពេក!"
-
-#: plugins/x2go/x2go_plugin.c:1533
-#, fuzzy
-msgid "Input is not a valid integer!"
+msgid "The upper limit is not a valid integer!"
 msgstr "បញ្ចូលមិនមែនជាអាំងតេហ្គ័រត្រឹមត្រូវទេ!"
 
-#: plugins/x2go/x2go_plugin.c:1535 plugins/x2go/x2go_plugin.c:1548
-#, c-format, fuzzy
+#: plugins/x2go/x2go_plugin.c:1525
+msgid "The upper limit is too high!"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1529
+msgid "The upper limit is too low!"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1547
+#, fuzzy
+msgid "The input is not a valid integer!"
+msgstr "បញ្ចូលមិនមែនជាអាំងតេហ្គ័រត្រឹមត្រូវទេ!"
+
+#: plugins/x2go/x2go_plugin.c:1549 plugins/x2go/x2go_plugin.c:1568
+#, fuzzy, c-format
 msgid "Input must be a number between %i and %i."
 msgstr "បញ្ចូលត្រូវជាលេខរវាង %i និង %i។"
 
-#: plugins/x2go/x2go_plugin.c:1576
+#: plugins/x2go/x2go_plugin.c:1597
 #, fuzzy
 #| msgid "Start-up program"
 msgid "Startup program"
 msgstr "ចាប់ផ្ដើម​កម្មវិធី"
 
-#: plugins/x2go/x2go_plugin.c:1578
+#: plugins/x2go/x2go_plugin.c:1599
 #, fuzzy
 msgid "Which command should be executed after creating the X2Go session?"
 msgstr "តើ គួរ អនុវត្ត ពាក្យ បញ្ជា មួយ ណា បន្ទាប់ ពី បង្កើត សម័យ X2Go?"
 
-#: plugins/x2go/x2go_plugin.c:1580
+#: plugins/x2go/x2go_plugin.c:1601
 #, fuzzy
 msgid "Keyboard Layout (auto)"
 msgstr "ប្លង់ក្តារចុច (auto)"
 
-#: plugins/x2go/x2go_plugin.c:1581
+#: plugins/x2go/x2go_plugin.c:1602
 #, fuzzy
 msgid "Keyboard type (auto)"
 msgstr "ប្រភេទក្តារចុច (auto)"
 
-#: plugins/x2go/x2go_plugin.c:1582
+#: plugins/x2go/x2go_plugin.c:1603
 #, fuzzy
 msgid "Audio support"
 msgstr "ការ គាំទ្រ អូឌីយ៉ូ"
 
-#: plugins/x2go/x2go_plugin.c:1584
+#: plugins/x2go/x2go_plugin.c:1605
 #, fuzzy
-msgid "The X2Go server's sound system (default: 'pulse')."
+msgid "The sound system of the X2Go server (default: 'pulse')."
 msgstr "ប្រព័ន្ធសំឡេងរបស់ X2Go server (default: 'pulse') ។"
 
-#: plugins/x2go/x2go_plugin.c:1587
+#: plugins/x2go/x2go_plugin.c:1608
 #, fuzzy
 #| msgid "Per connection"
 msgid "Clipboard direction"
 msgstr "ទិស ក្តារ បន្ទះ"
 
-#: plugins/x2go/x2go_plugin.c:1589
+#: plugins/x2go/x2go_plugin.c:1610
 #, fuzzy
 msgid "Which direction should clipboard content be copied? (default: 'both')."
-msgstr ""
-"តើ មាតិកា ក្ដារខៀន គួរ តែ ត្រូវ បាន ចម្លង ទិស មួយ ណា ? (default: 'ទាំងពីរ') ។"
+msgstr "តើ មាតិកា ក្ដារខៀន គួរ តែ ត្រូវ បាន ចម្លង ទិស មួយ ណា ? (default: 'ទាំងពីរ') ។"
 
-#: plugins/x2go/x2go_plugin.c:1593
+#: plugins/x2go/x2go_plugin.c:1614
 #, fuzzy
 #| msgid "Resolution"
 msgid "DPI resolution"
 msgstr "DPI resolution"
 
-#: plugins/x2go/x2go_plugin.c:1594
+#: plugins/x2go/x2go_plugin.c:1615
 #, fuzzy
 msgid ""
 "Launch session with a specific resolution (in dots per inch). Must be "
 "between 20 and 400."
 msgstr ""
-"ចាប់ផ្ដើម session ជាមួយ resolution ជាក់លាក់ (ក្នុង dots per inch) ។ ត្រូវ មា"
-"ន ចន្លោះ ពី ២០ ទៅ ៤០០ ។"
+"ចាប់ផ្ដើម session ជាមួយ resolution ជាក់លាក់ (ក្នុង dots per inch) ។ ត្រូវ មាន ចន្លោះ ពី "
+"២០ ទៅ ៤០០ ។"
 
-#: plugins/x2go/x2go_plugin.c:1638
+#: plugins/x2go/x2go_plugin.c:1659
 #, fuzzy
 msgid "X2Go plugin loaded."
 msgstr "X2Go plugin បានផ្ទុក។"
@@ -3617,8 +3604,8 @@ msgid ""
 "If the server should try to share the desktop by leaving other clients "
 "connected"
 msgstr ""
-"ប្រសិន បើ ម៉ាស៊ីន បម្រើ គួរ តែ ព្យាយាម ចែក រំលែក ផ្ទៃតុ ដោយ ទុក ឲ្យ ម៉ាស៊ីន "
-"បម្រើ ផ្សេង ទៀត ត ភ្ជាប់"
+"ប្រសិន បើ ម៉ាស៊ីន បម្រើ គួរ តែ ព្យាយាម ចែក រំលែក ផ្ទៃតុ ដោយ ទុក ឲ្យ ម៉ាស៊ីន បម្រើ ផ្សេង ទៀត ត "
+"ភ្ជាប់"
 
 #: plugins/gvnc/gvnc_plugin.c:881
 #, fuzzy
@@ -3738,8 +3725,7 @@ msgstr ""
 "\n"
 "<span>\n"
 "Remmina កំពុង ដំណើរការ លើ ប្រព័ន្ធ របស់ អ្នក ជា កញ្ចប់ Snap ។\n"
-"មុខងារ Remmina មួយ ចំនួន ត្រូវ រៀបចំ ឡើង ដើម្បី ធ្វើការ ឲ្យ បាន ត្រឹមត្រូវ ។"
-"\n"
+"មុខងារ Remmina មួយ ចំនួន ត្រូវ រៀបចំ ឡើង ដើម្បី ធ្វើការ ឲ្យ បាន ត្រឹមត្រូវ ។\n"
 "</span>\n"
 
 #: data/ui/remmina_snap_info_dialog.glade:120
@@ -3750,11 +3736,10 @@ msgid ""
 "the appropriate permissions to Remmina. As an alternative you can enter the "
 "following commands in a terminal window:"
 msgstr ""
-"ដើម្បី អាច ចូល ដំណើរ ការ ទៅ កាន់ លក្ខណៈ ពិសេស សំខាន់ ៗ មួយ ចំនួន ដូច ជា ការ "
-"សន្សំ សំចៃ ពាក្យ សម្ងាត់ នៅ ក្នុង ការ ចែក រំលែក ម៉ាស៊ីន បោះ ពុម្ព RDP និង "
-"RDP របស់ អ្នក សូម បើក មជ្ឈមណ្ឌល កម្មវិធី របស់ អ្នក និង ផ្តល់ ការ អនុញ្ញាត "
-"សមរម្យ ដល់ Remmina ។ ជា ជម្រើស មួយ អ្នក អាច បញ្ចូល ពាក្យ បញ្ជា ដូច ខាង ក្រោម "
-"នៅ ក្នុង បង្អួច ស្ថានីយ ៖"
+"ដើម្បី អាច ចូល ដំណើរ ការ ទៅ កាន់ លក្ខណៈ ពិសេស សំខាន់ ៗ មួយ ចំនួន ដូច ជា ការ សន្សំ សំចៃ ពាក្យ "
+"សម្ងាត់ នៅ ក្នុង ការ ចែក រំលែក ម៉ាស៊ីន បោះ ពុម្ព RDP និង RDP របស់ អ្នក សូម បើក មជ្ឈមណ្ឌល "
+"កម្មវិធី របស់ អ្នក និង ផ្តល់ ការ អនុញ្ញាត សមរម្យ ដល់ Remmina ។ ជា ជម្រើស មួយ អ្នក អាច បញ្ចូល "
+"ពាក្យ បញ្ជា ដូច ខាង ក្រោម នៅ ក្នុង បង្អួច ស្ថានីយ ៖"
 
 #: data/ui/remmina_snap_info_dialog.glade:167
 msgid "<big>Permissions</big>"
@@ -3767,9 +3752,9 @@ msgid ""
 "profiles are saved inside the Snap file system by default. You can change "
 "the location in the Remmina preferences."
 msgstr ""
-"ចាប់ តាំង ពី Snap កញ្ចប់ រត់ ដែល បាន កំណត់ ពី ប្រព័ន្ធ ដែល នៅ សល់ ទម្រង់ "
-"Remmina ត្រូវ បាន រក្សា ទុក នៅ ក្នុង ប្រព័ន្ធ Snap file តាម លំនាំ ដើម ។ អ្នក "
-"អាច ផ្លាស់ប្ដូរ ទីតាំង ក្នុង ចំណង់ ចំណូល ចិត្ត Remmina ។"
+"ចាប់ តាំង ពី Snap កញ្ចប់ រត់ ដែល បាន កំណត់ ពី ប្រព័ន្ធ ដែល នៅ សល់ ទម្រង់ Remmina ត្រូវ បាន "
+"រក្សា ទុក នៅ ក្នុង ប្រព័ន្ធ Snap file តាម លំនាំ ដើម ។ អ្នក អាច ផ្លាស់ប្ដូរ ទីតាំង ក្នុង ចំណង់ "
+"ចំណូល ចិត្ត Remmina ។"
 
 #: data/ui/remmina_snap_info_dialog.glade:222
 #, fuzzy
@@ -3941,19 +3926,17 @@ msgstr ""
 "<big> <b> ដំណឹងត្រូវបានបិទ</b></big>\n"
 "\n"
 "<span>\n"
-"ការ បើក មើល ព័ត៌មាន មាន ន័យ ថា កម្មវិធី ភ្ជាប់ ទៅ ម៉ាស៊ីន បម្រើ Remmina "
-"ដើម្បី ទាញ យក កំណត់ ត្រា ចេញ ផ្សាយ ។\n"
+"ការ បើក មើល ព័ត៌មាន មាន ន័យ ថា កម្មវិធី ភ្ជាប់ ទៅ ម៉ាស៊ីន បម្រើ Remmina ដើម្បី ទាញ យក កំណត់ "
+"ត្រា ចេញ ផ្សាយ ។\n"
 "</span>\n"
 "\n"
 "<span>\n"
-"ការ ពិនិត្យ មើល កំណែ អាច ត្រូវ បាន ធ្វើ ឲ្យ សកម្ម តែ នៅ ពេល ចង ក្រង ប៉ុណ្ណោះ "
-"& # 160; ។\n"
+"ការ ពិនិត្យ មើល កំណែ អាច ត្រូវ បាន ធ្វើ ឲ្យ សកម្ម តែ នៅ ពេល ចង ក្រង ប៉ុណ្ណោះ & # 160; ។\n"
 "</span>\n"
 "\n"
 "<span>\n"
 "<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
-"release notes\"> <i> "
-"សូមចូលទៅកាន់គេហទំព័រដើម្បីអានកំណត់ត្រានៃការចេញផ្សាយ</i></a>។\n"
+"release notes\"> <i> សូមចូលទៅកាន់គេហទំព័រដើម្បីអានកំណត់ត្រានៃការចេញផ្សាយ</i></a>។\n"
 "</span>"
 
 #. The star (*) is a reference to privacy consent
@@ -3965,8 +3948,8 @@ msgid ""
 "\">anonymous</a></b> statistics. (*)"
 msgstr ""
 "ផ្ញើ <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-"remmina__stats_8c.html#details\" title=\"Remmina usage statistics\""
-">anonymous</a></b> statistics. (*)"
+"remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
+"\">anonymous</a></b> statistics. (*)"
 
 #: data/ui/remmina_news.glade:142 data/ui/remmina_news.glade:195
 #, fuzzy
@@ -3994,17 +3977,15 @@ msgid ""
 "Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
 "\">remmina.org</a> (*)"
 msgstr ""
-"ព័ត៌មាន Fetch ពី <a href=\"https://remmina.org\" title=\"Remmina news site\""
-">remmina.org</a> (*)"
+"ព័ត៌មាន Fetch ពី <a href=\"https://remmina.org\" title=\"Remmina news site"
+"\">remmina.org</a> (*)"
 
 #: data/ui/remmina_news.glade:208 data/ui/remmina_preferences.glade:446
 #, fuzzy
 msgid ""
 "* By enabling statistics and/or news you consent to send and fetch data to/"
 "from remmina.org"
-msgstr ""
-"* ដោយអាចធ្វើស្ថិតិ និង/ឬព័ត៌មានដែលអ្នកយល់ព្រមក្នុងការផ្ញើនិងចាប់ទិន្នន័យទៅ/ពី"
-" remmina.org"
+msgstr "* ដោយអាចធ្វើស្ថិតិ និង/ឬព័ត៌មានដែលអ្នកយល់ព្រមក្នុងការផ្ញើនិងចាប់ទិន្នន័យទៅ/ពី remmina.org"
 
 #: data/ui/remmina_news.glade:231
 #, fuzzy
@@ -4023,10 +4004,10 @@ msgid ""
 "</span>\n"
 msgstr ""
 "<span>\n"
-"<b> អ្នក មាន ការ ដឹង គុណ របស់ យើង ក្នុង ការ ជ្រើស រើស កម្មវិធី libre ដែល មាន "
-"ថត ចម្លង <a href=\"https://remmina.org/donations/\" title=\"Where’s the "
-"money, Lebowski? “blblblblblb”\"> ការ បរិច្ចាគ ក៏ ធ្វើ ឲ្យ យើង សប្បាយ ចិត្ត</"
-"a>, និង ជួយ បន្ថែម ទៀត ដើម្បី ធ្វើ ឲ្យ Remmina ប្រសើរ ឡើង ថែម ទៀត។ </b>\n"
+"<b> អ្នក មាន ការ ដឹង គុណ របស់ យើង ក្នុង ការ ជ្រើស រើស កម្មវិធី libre ដែល មាន ថត ចម្លង "
+"<a href=\"https://remmina.org/donations/\" title=\"Where’s the money, "
+"Lebowski? “blblblblblb”\"> ការ បរិច្ចាគ ក៏ ធ្វើ ឲ្យ យើង សប្បាយ ចិត្ត</a>, និង ជួយ "
+"បន្ថែម ទៀត ដើម្បី ធ្វើ ឲ្យ Remmina ប្រសើរ ឡើង ថែម ទៀត។ </b>\n"
 "</span>\n"
 
 #: data/ui/remmina_news.glade:277
@@ -4303,8 +4284,8 @@ msgid ""
 "Set a custom filename for your Remmina connection profiles, using a "
 "formatting string."
 msgstr ""
-"កំណត់ ឈ្មោះ ឯកសារ ផ្ទាល់ ខ្លួន សម្រាប់ ទម្រង់ ការ តភ្ជាប់ Remmina របស់ អ្នក "
-"ដោយ ប្រើ ខ្សែ អក្សរ ទ្រង់ទ្រាយ & # 160; ។"
+"កំណត់ ឈ្មោះ ឯកសារ ផ្ទាល់ ខ្លួន សម្រាប់ ទម្រង់ ការ តភ្ជាប់ Remmina របស់ អ្នក ដោយ ប្រើ ខ្សែ "
+"អក្សរ ទ្រង់ទ្រាយ & # 160; ។"
 
 #: data/ui/remmina_preferences.glade:363
 #, fuzzy
@@ -4331,8 +4312,7 @@ msgstr ""
 #: data/ui/remmina_preferences.glade:397
 #, fuzzy
 msgid "Only save generated screenshots, don't copy them to clipboard."
-msgstr ""
-"គ្រាន់តែរក្សាទុកអេក្រង់ដែលបានបង្កើតប៉ុណ្ណោះ កុំចម្លងពួកវាទៅផ្ទាំង clipboard។"
+msgstr "គ្រាន់តែរក្សាទុកអេក្រង់ដែលបានបង្កើតប៉ុណ្ណោះ កុំចម្លងពួកវាទៅផ្ទាំង clipboard។"
 
 #: data/ui/remmina_preferences.glade:402
 #, fuzzy
@@ -4428,8 +4408,8 @@ msgid ""
 "If a GTK theme includes a dark variant, it will be used instead of the "
 "configured theme."
 msgstr ""
-"ប្រសិន បើ ស្បែក GTK រួម មាន វ៉ារ្យ៉ង់ ងងឹត វា នឹង ត្រូវ បាន ប្រើ ជំនួស ឲ្យ "
-"ស្បែក ដែល បាន កំណត់ រចនា សម្ព័ន្ធ ។"
+"ប្រសិន បើ ស្បែក GTK រួម មាន វ៉ារ្យ៉ង់ ងងឹត វា នឹង ត្រូវ បាន ប្រើ ជំនួស ឲ្យ ស្បែក ដែល បាន កំណត់ "
+"រចនា សម្ព័ន្ធ ។"
 
 #: data/ui/remmina_preferences.glade:743
 #, fuzzy
@@ -4449,8 +4429,8 @@ msgid ""
 "connection toolbar (when in fullscreen)."
 msgstr ""
 "ឈ្មោះ Hexadecimal- ឬ ពណ៌ (ក្រហម, #ff0000) ។\n"
-"វា ផ្លាស់ប្ដូរ ពណ៌ ផ្ទៃ ខាង ក្រោយ នៃ ឈ្មោះ តភ្ជាប់ នៅ ក្នុង របារ ឧបករណ៍ "
-"តភ្ជាប់ Remmina (ពេល នៅ ក្នុង អេក្រង់ ពេញ )។"
+"វា ផ្លាស់ប្ដូរ ពណ៌ ផ្ទៃ ខាង ក្រោយ នៃ ឈ្មោះ តភ្ជាប់ នៅ ក្នុង របារ ឧបករណ៍ តភ្ជាប់ Remmina "
+"(ពេល នៅ ក្នុង អេក្រង់ ពេញ )។"
 
 #: data/ui/remmina_preferences.glade:827
 #, fuzzy
@@ -4567,8 +4547,7 @@ msgstr "កម្រិតកំណត់ហេតុ SSH"
 #, fuzzy
 msgid "Seconds of connection idleness before TCP keepalive probes are sent."
 msgstr ""
-"វិនាទី នៃ ភាព ទំនេរ នៃ ការ ត ភ្ជាប់ មុន ពេល ការ ស៊ើប អង្កេត រក្សា TCP ត្រូវ "
-"បាន ផ្ញើ ។"
+"វិនាទី នៃ ភាព ទំនេរ នៃ ការ ត ភ្ជាប់ មុន ពេល ការ ស៊ើប អង្កេត រក្សា TCP ត្រូវ បាន ផ្ញើ ។"
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
 #: data/ui/remmina_preferences.glade:1559
@@ -4582,8 +4561,8 @@ msgstr "វិនាទី រវាង ការ ស៊ើប អង្កេ�
 msgid ""
 "Number of keepalive probes sent via TCP connection before it is dropped."
 msgstr ""
-"ចំនួន នៃ ការ ស៊ើប អង្កេត រក្សា ទុក ដែល បាន ផ្ញើ តាម រយៈ ការ ត ភ្ជាប់ TCP មុន "
-"ពេល វា ត្រូវ បាន ទម្លាក់ ។"
+"ចំនួន នៃ ការ ស៊ើប អង្កេត រក្សា ទុក ដែល បាន ផ្ញើ តាម រយៈ ការ ត ភ្ជាប់ TCP មុន ពេល វា "
+"ត្រូវ បាន ទម្លាក់ ។"
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
 #: data/ui/remmina_preferences.glade:1591
@@ -4592,8 +4571,8 @@ msgid ""
 "Amount of milliseconds to attempt acknowledging data before closing the "
 "corresponding TCP connection forcibly."
 msgstr ""
-"ចំនួន មីល្លីវិនាទី ដើម្បី ព្យាយាម ទទួល ស្គាល់ ទិន្នន័យ មុន ពេល បិទ ការ ត "
-"ភ្ជាប់ TCP ដែល ត្រូវ គ្នា ដោយ បង្ខំ ។"
+"ចំនួន មីល្លីវិនាទី ដើម្បី ព្យាយាម ទទួល ស្គាល់ ទិន្នន័យ មុន ពេល បិទ ការ ត ភ្ជាប់ TCP ដែល ត្រូវ គ្នា "
+"ដោយ បង្ខំ ។"
 
 #: data/ui/remmina_preferences.glade:1617
 #, fuzzy
@@ -4624,8 +4603,7 @@ msgstr "រក្សា​​ទុក​​​ពាក្យ​​​សម្
 #: data/ui/remmina_preferences.glade:1699
 #, fuzzy
 msgid "Automatically accept all fingerprints and certificates"
-msgstr ""
-"ដោយស្វ័យប្រវត្តិទទួលយកស្នាមម្រាមដៃនិងវិញ្ញាបនបត្រទាំងអស់ដោយស្វ័យប្រវត្តិ"
+msgstr "ដោយស្វ័យប្រវត្តិទទួលយកស្នាមម្រាមដៃនិងវិញ្ញាបនបត្រទាំងអស់ដោយស្វ័យប្រវត្តិ"
 
 #: data/ui/remmina_preferences.glade:1703
 #, fuzzy
@@ -4683,8 +4661,8 @@ msgid ""
 "Selecting “SGR 1” also switches to the bright counterparts of the first 8 "
 "palette colours (in addition to making text bold)."
 msgstr ""
-"ការ ជ្រើស រើស \"SGR 1\" ក៏ ប្ដូរ ទៅ ជា ដៃ គូ ដ៏ ភ្លឺ ស្វាង នៃ ពណ៌ សម្បុរ ៨ ដើ"
-"ម (បន្ថែម ពី លើ ការ បង្កើត អត្ថបទ ដិត ចុះ)។"
+"ការ ជ្រើស រើស \"SGR 1\" ក៏ ប្ដូរ ទៅ ជា ដៃ គូ ដ៏ ភ្លឺ ស្វាង នៃ ពណ៌ សម្បុរ ៨ ដើម (បន្ថែម ពី "
+"លើ ការ បង្កើត អត្ថបទ ដិត ចុះ)។"
 
 #: data/ui/remmina_preferences.glade:2004
 #, fuzzy
@@ -4702,8 +4680,8 @@ msgid ""
 "Choose a colour scheme file. Usually available in /usr/share/remmina/theme. "
 "https://github.com/mbadolato/iTerm2-Color-Schemes has more details."
 msgstr ""
-"ជ្រើស ឯកសារ គំរោង ពណ៌ ។ ជាធម្មតាមាននៅក្នុង /usr/share/remmina/theme។ "
-"https://github.com/mbadolato/iTerm2-Color-Schemes មាន ព័ត៌មាន លម្អិត បន្ថែម ។"
+"ជ្រើស ឯកសារ គំរោង ពណ៌ ។ ជាធម្មតាមាននៅក្នុង /usr/share/remmina/theme។ https://"
+"github.com/mbadolato/iTerm2-Color-Schemes មាន ព័ត៌មាន លម្អិត បន្ថែម ។"
 
 #: data/ui/remmina_preferences.glade:2033
 #, fuzzy
@@ -4876,6 +4854,30 @@ msgstr "ដោះសោ Remmina"
 #, fuzzy
 msgid "Master password"
 msgstr "ពាក្យ សម្ងាត់ មេ"
+
+#, fuzzy
+#~ msgid "Given username can't get saved since it's empty!"
+#~ msgstr "ដោយ សារ តែ ឈ្មោះ អ្នក ប្រើ មិន អាច សន្សំ បាន ទេ ចាប់ តាំង ពី វា ទទេ !"
+
+#, fuzzy
+#~ msgid "Limit minimum is too large!"
+#~ msgstr "កំណត់អប្បបរមាគឺធំពេកហើយ!"
+
+#, fuzzy
+#~ msgid "Limit minimum is too small!"
+#~ msgstr "កម្រិតអប្បបរមាគឺតូចពេក!"
+
+#, fuzzy
+#~ msgid "Limit maximum is not a valid integer!"
+#~ msgstr "កំណត់អតិបរមាមិនមែនជាគត់ដែលមានសុពលភាពទេ!"
+
+#, fuzzy
+#~ msgid "Limit maximum is too large!"
+#~ msgstr "កំណត់អតិបរមាគឺធំពេក!"
+
+#, fuzzy
+#~ msgid "Limit maximum is too small!"
+#~ msgstr "កំណត់អតិបរមាគឺតូចពេក!"
 
 #, fuzzy
 #~ msgid "User name"

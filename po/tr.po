@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-10-05 22:10+0000\n"
+"POT-Creation-Date: 2021-10-12 09:46+0000\n"
 "PO-Revision-Date: 2021-10-05 22:11+0000\n"
 "Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -31,7 +31,7 @@ msgstr ""
 #: src/remmina_protocol_widget.c:1672 src/remmina_protocol_widget.c:1691
 #: src/remmina_file_editor.c:1101 src/remmina_file_editor.c:1222
 #: src/remmina_ssh_plugin.c:1369 plugins/rdp/rdp_plugin.c:2677
-#: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:1575
+#: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:1596
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1675
 #: data/ui/remmina_unlock.glade:116
 msgid "Password"
@@ -78,7 +78,7 @@ msgstr "Yeni uçbirimden SSH ile bağlan"
 #: src/remmina_file_editor.c:1216 src/remmina_ssh_plugin.c:1479
 #: plugins/rdp/rdp_plugin.c:2676 plugins/vnc/vnc_plugin.c:1976
 #: plugins/vnc/vnc_plugin.c:1988 plugins/www/www_plugin.c:894
-#: plugins/x2go/x2go_plugin.c:1574 data/ui/remmina_mpc.glade:144
+#: plugins/x2go/x2go_plugin.c:1595 data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr "Kullanıcı adı"
 
@@ -1436,7 +1436,7 @@ msgstr ""
 
 #. TRANSLATORS: Meta-error. Shouldn't be visible.
 #: src/remmina_file_editor.c:1445 plugins/x2go/x2go_plugin.c:856
-#: plugins/x2go/x2go_plugin.c:1442
+#: plugins/x2go/x2go_plugin.c:1440
 msgid "Internal error."
 msgstr "İç hata."
 
@@ -2835,7 +2835,9 @@ msgid "Can't retrieve `DialogData`! Aborting…"
 msgstr "`DialogData` alınamadı! Durduruluyor…"
 
 #: plugins/x2go/x2go_plugin.c:505
-msgid "pyhoca-cli exited unexpectedly. This connection will now be closed."
+#, fuzzy
+#| msgid "pyhoca-cli exited unexpectedly. This connection will now be closed."
+msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
 msgstr "pyhoca-cli beklenmedik biçimde çıktı. Bu bağlantı şimdi kapatılacak."
 
 #: plugins/x2go/x2go_plugin.c:514
@@ -2843,24 +2845,32 @@ msgid "An error occured."
 msgstr "Hata oluştu."
 
 #: plugins/x2go/x2go_plugin.c:515
+#, fuzzy
+#| msgid ""
+#| "The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
+#| "Please check your profile settings and pyhoca-cli's output for possible "
+#| "errors and ensure the remote server is reachable."
 msgid ""
 "The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
-"Please check your profile settings and pyhoca-cli's output for possible "
-"errors and ensure the remote server is reachable."
+"Please check your profile settings and PyHoca-CLI's output for possible "
+"errors. Also ensure the remote server is reachable."
 msgstr ""
 "Gerekli 'pyhoca-cli' alt süreci beklenmedik biçimde durdu.\n"
 "Profil ayarlarınızı ve olası hatalar için pyhoca-cli'nin çıktısını gözden "
 "geçirin; uzak sunucunun erişilebilir olduğundan emin olun."
 
-#: plugins/x2go/x2go_plugin.c:561 plugins/x2go/x2go_plugin.c:838
-msgid "Started pyhoca-cli with following arguments:"
+#: plugins/x2go/x2go_plugin.c:561
+#, fuzzy
+#| msgid "Started pyhoca-cli with following arguments:"
+msgid "Started PyHoca-CLI with the following arguments:"
 msgstr "pyhoca-cli aşağıdaki değişkenlerle başlatıldı:"
 
 #: plugins/x2go/x2go_plugin.c:580
-#, c-format
-msgid ""
-"An unknown error happened while retrieving pyhoca-cli's cmdline features! "
-"Exit code: %i"
+#, fuzzy, c-format
+#| msgid ""
+#| "An unknown error happened while retrieving pyhoca-cli's cmdline features! "
+#| "Exit code: %i"
+msgid "Could not retrieve PyHoca-CLI's command-line features! Exit code: %i"
 msgstr ""
 "pyhoca-cli'nin komut satırıcı özellikleri alınırken hata oluştu! Çıkış kodu: "
 "%i"
@@ -2871,10 +2881,14 @@ msgid "Error: '%s'"
 msgstr "Hata: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:609
-msgid "Given username can't get saved since it's empty!"
-msgstr "Verilen kullanıcı adı boş olduğundan kaydedilemiyor!"
+msgid "Can't save empty username!"
+msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:622
+#: plugins/x2go/x2go_plugin.c:621
+msgid "Internal error: Could not save new credentials."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:623
 msgid ""
 "An error occured while trying to save new credentials: 's_password' or "
 "'s_username' strings were not set."
@@ -2890,6 +2904,10 @@ msgstr "X2Go kimlik doğrulama bilgilerini gir"
 msgid "DPI setting is out of bounds. Please adjust it in profile settings."
 msgstr "DPI ayarları sınırların dışında. Lütfen profil ayarlarında uyarlayın."
 
+#: plugins/x2go/x2go_plugin.c:838
+msgid "Started pyhoca-cli with following arguments:"
+msgstr "pyhoca-cli aşağıdaki değişkenlerle başlatıldı:"
+
 #: plugins/x2go/x2go_plugin.c:858
 msgid "An error occured while starting an X2Go session…"
 msgstr "X2Go oturumu başlatılırken hata oluştu…"
@@ -2904,60 +2922,77 @@ msgid "Could not start PyHoca-CLI (%i): '%s'"
 msgstr "PyHoca-CLI (%i) başlatılamadı: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:945
+#, fuzzy
+#| msgid ""
+#| "Couldn't get pyhoca-cli's cmdline-features. This indicates either your "
+#| "pyhoca-cli version is too old or pyhoca-cli is not installed! An old "
+#| "limited set of features will be used now."
 msgid ""
-"Couldn't get pyhoca-cli's cmdline-features. This indicates either your "
-"pyhoca-cli version is too old or pyhoca-cli is not installed! An old limited "
-"set of features will be used now."
+"Couldn't get PyHoca-CLI's command-line features. This indicates it is either "
+"too old, or not installed. An old limited set of features will be used for "
+"now."
 msgstr ""
 "pyhoca-cli'nin komut satırı özellikleri alanamadı. Bu ya pyhoca-cli "
 "sürümünüzün çok eski olduğu ya da pythoca-cli'nin kurulmadığı anlamındadır. "
 "Şimdi eski kısıtlı özellik takımı kullanılabilecek."
 
-#: plugins/x2go/x2go_plugin.c:957
+#: plugins/x2go/x2go_plugin.c:956
+#, fuzzy
+#| msgid ""
+#| "Parsing pyhoca-cli functionality was not possible! Using a limited "
+#| "feature-set for now."
 msgid ""
-"Parsing pyhoca-cli functionality was not possible! Using a limited feature-"
+"Could not parse PyHoca-CLI's command-line features. Using a limited feature-"
 "set for now."
 msgstr ""
 "pyhoca-cli işlevselliği ayrıştırılamadı! Şimdilik kısıtlı bir özellik takımı "
 "kullanılıyor."
 
-#: plugins/x2go/x2go_plugin.c:964
-msgid "Retrieved the following pyhoca-cli functionality:"
+#: plugins/x2go/x2go_plugin.c:962
+#, fuzzy
+#| msgid "Retrieved the following pyhoca-cli functionality:"
+msgid "Retrieved the following PyHoca-CLI command-line features:"
 msgstr "Şu pyhoca-cli işlevselliği alındı:"
 
-#: plugins/x2go/x2go_plugin.c:969
+#: plugins/x2go/x2go_plugin.c:967
 #, c-format
 msgid "Available feature[%i]: '%s'"
 msgstr "Kullanılabilir özellik[%i]: '%s'"
 
-#: plugins/x2go/x2go_plugin.c:1074
+#: plugins/x2go/x2go_plugin.c:1072
 msgid "Could not open X11 DISPLAY."
 msgstr "X11 DISPLAY açılamadı."
 
-#: plugins/x2go/x2go_plugin.c:1114
-msgid "Waiting for X2Go Agent window to appear."
+#: plugins/x2go/x2go_plugin.c:1112
+#, fuzzy
+#| msgid "Waiting for X2Go Agent window to appear."
+msgid "Waiting for window of X2Go Agent to appear…"
 msgstr "X2Go Aracısı penceresinin görünmesi bekleniyor."
 
-#: plugins/x2go/x2go_plugin.c:1140
-msgid "Waiting for pyhoca-cli to show the session's window."
+#: plugins/x2go/x2go_plugin.c:1138
+#, fuzzy
+#| msgid "Waiting for pyhoca-cli to show the session's window."
+msgid "Waiting for PyHoca-CLI to show the session's window…"
 msgstr "pyhoca-cli'nin oturumun penceresini göstermesi bekleniyor."
 
-#: plugins/x2go/x2go_plugin.c:1191
+#: plugins/x2go/x2go_plugin.c:1189
 msgid "No X2Go session window appeared. Something went wrong…"
 msgstr "X2Go oturum penceresi görünmedi. Bir şeyler ters gitti…"
 
-#: plugins/x2go/x2go_plugin.c:1300
+#: plugins/x2go/x2go_plugin.c:1298
 msgid "Internal error: RemminaProtocolWidget* gp is NULL!"
 msgstr "İç hata: RemminaProtocolWidget* gp değeri NULL!"
 
-#: plugins/x2go/x2go_plugin.c:1321
-#, c-format
-msgid "The protocol %s is unavailable because GtkSocket only works under X.org"
+#: plugins/x2go/x2go_plugin.c:1319
+#, fuzzy, c-format
+#| msgid ""
+#| "The protocol %s is unavailable because GtkSocket only works under X.org"
+msgid "The %s protocol is unavailable because GtkSocket only works under X.org"
 msgstr ""
 "GtkSocket yalnızca X.org altında çalıştığından %s iletişim kuralı "
 "kullanılamıyor"
 
-#: plugins/x2go/x2go_plugin.c:1329
+#: plugins/x2go/x2go_plugin.c:1327
 msgid "Could not initialize pthread. Falling back to non-threaded mode…"
 msgstr "pthread başlatılamadı. İş parçacıksız kipe geri dönülüyor…"
 
@@ -2969,7 +3004,7 @@ msgstr "pthread başlatılamadı. İş parçacıksız kipe geri dönülüyor…"
 #. your language.
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
-#: plugins/x2go/x2go_plugin.c:1372 plugins/x2go/x2go_plugin.c:1390
+#: plugins/x2go/x2go_plugin.c:1370 plugins/x2go/x2go_plugin.c:1388
 #, c-format
 msgid "%sand '%s'"
 msgstr "%sve '%s'"
@@ -2980,7 +3015,7 @@ msgstr "%sve '%s'"
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
-#: plugins/x2go/x2go_plugin.c:1377 plugins/x2go/x2go_plugin.c:1395
+#: plugins/x2go/x2go_plugin.c:1375 plugins/x2go/x2go_plugin.c:1393
 #, c-format
 msgid "%s'%s' "
 msgstr "%s'%s' "
@@ -2988,101 +3023,127 @@ msgstr "%s'%s' "
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
 #. 'value1', 'value2', 'valueN-1' and 'valueN'
-#: plugins/x2go/x2go_plugin.c:1382
+#: plugins/x2go/x2go_plugin.c:1380
 #, c-format
 msgid "%s'%s', "
 msgstr "%s'%s', "
 
-#: plugins/x2go/x2go_plugin.c:1420 plugins/x2go/x2go_plugin.c:1432
-#: plugins/x2go/x2go_plugin.c:1494
+#: plugins/x2go/x2go_plugin.c:1418
+#, fuzzy
+#| msgid "Validation data in ProtocolSettings array is invalid!"
+msgid "Invalid validation data in ProtocolSettings array!"
+msgstr "ProtocolSettings dizgesindeki doğrulama verisi geçersiz!"
+
+#: plugins/x2go/x2go_plugin.c:1430 plugins/x2go/x2go_plugin.c:1492
 msgid "Validation data in ProtocolSettings array is invalid!"
 msgstr "ProtocolSettings dizgesindeki doğrulama verisi geçersiz!"
 
-#: plugins/x2go/x2go_plugin.c:1459
+#: plugins/x2go/x2go_plugin.c:1457
 #, c-format
 msgid "Allowed values are %s."
 msgstr "İzin verilen değerler şunlardır: %s."
 
-#: plugins/x2go/x2go_plugin.c:1461
-#, c-format
-msgid "Only allowed value is '%s'."
+#: plugins/x2go/x2go_plugin.c:1459
+#, fuzzy, c-format
+#| msgid "Only allowed value is '%s'."
+msgid "The only allowed value is '%s'."
 msgstr "Yalnızca '%s' değerine izin verilmektedir."
 
-#: plugins/x2go/x2go_plugin.c:1503
-msgid "Limit minimum is not a valid integer!"
+#: plugins/x2go/x2go_plugin.c:1501
+#, fuzzy
+#| msgid "Limit minimum is not a valid integer!"
+msgid "The lower limit is not a valid integer!"
 msgstr "Minimum sınırı geçerli bir tam sayı değil!"
 
+#: plugins/x2go/x2go_plugin.c:1503
+msgid "The lower limit is too high!"
+msgstr ""
+
 #: plugins/x2go/x2go_plugin.c:1505
-msgid "Limit minimum is too large!"
-msgstr "Minimum sınırı çok büyük!"
+msgid "The lower limit is too low!"
+msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1507
-msgid "Limit minimum is too small!"
-msgstr "Minimum sınırı çok küçük!"
-
-#: plugins/x2go/x2go_plugin.c:1509 plugins/x2go/x2go_plugin.c:1523
-#: plugins/x2go/x2go_plugin.c:1538
+#: plugins/x2go/x2go_plugin.c:1507 plugins/x2go/x2go_plugin.c:1533
+#: plugins/x2go/x2go_plugin.c:1552
 msgid "Something went wrong."
 msgstr "Bir şeyler yanlış gitti."
 
-#: plugins/x2go/x2go_plugin.c:1517
-msgid "Limit maximum is not a valid integer!"
-msgstr "Maksimum sınırı geçerli bir tam sayı değil!"
+#: plugins/x2go/x2go_plugin.c:1511 plugins/x2go/x2go_plugin.c:1537
+#: plugins/x2go/x2go_plugin.c:1556
+msgid "Please check the RemminaProtocolSetting array for possible errors."
+msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1519
-msgid "Limit maximum is too large!"
-msgstr "Maksimum sınırı çok büyük!"
+#: plugins/x2go/x2go_plugin.c:1520 plugins/x2go/x2go_plugin.c:1524
+#: plugins/x2go/x2go_plugin.c:1528 plugins/x2go/x2go_plugin.c:1532
+#, fuzzy
+#| msgid "Internal error."
+msgid "Internal error: "
+msgstr "İç hata."
 
 #: plugins/x2go/x2go_plugin.c:1521
-msgid "Limit maximum is too small!"
-msgstr "Maksimum sınırı çok küçük!"
-
-#: plugins/x2go/x2go_plugin.c:1533
-msgid "Input is not a valid integer!"
+#, fuzzy
+#| msgid "Input is not a valid integer!"
+msgid "The upper limit is not a valid integer!"
 msgstr "Girdi geçerli bir tam sayı değil!"
 
-#: plugins/x2go/x2go_plugin.c:1535 plugins/x2go/x2go_plugin.c:1548
+#: plugins/x2go/x2go_plugin.c:1525
+msgid "The upper limit is too high!"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1529
+msgid "The upper limit is too low!"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1547
+#, fuzzy
+#| msgid "Input is not a valid integer!"
+msgid "The input is not a valid integer!"
+msgstr "Girdi geçerli bir tam sayı değil!"
+
+#: plugins/x2go/x2go_plugin.c:1549 plugins/x2go/x2go_plugin.c:1568
 #, c-format
 msgid "Input must be a number between %i and %i."
 msgstr "Girdi %i ve %i arasında sayı olmalıdır."
 
-#: plugins/x2go/x2go_plugin.c:1576
+#: plugins/x2go/x2go_plugin.c:1597
 msgid "Startup program"
 msgstr "Başlangıç programı"
 
-#: plugins/x2go/x2go_plugin.c:1578
+#: plugins/x2go/x2go_plugin.c:1599
 msgid "Which command should be executed after creating the X2Go session?"
 msgstr "X2Go oturumu oluşturulduktan sonra hangi komut çalıştırılmalıdır?"
 
-#: plugins/x2go/x2go_plugin.c:1580
+#: plugins/x2go/x2go_plugin.c:1601
 msgid "Keyboard Layout (auto)"
 msgstr "Klavye Düzeni (kendiliğinden)"
 
-#: plugins/x2go/x2go_plugin.c:1581
+#: plugins/x2go/x2go_plugin.c:1602
 msgid "Keyboard type (auto)"
 msgstr "Klavye türü (kendiliğinden)"
 
-#: plugins/x2go/x2go_plugin.c:1582
+#: plugins/x2go/x2go_plugin.c:1603
 msgid "Audio support"
 msgstr "Ses desteği"
 
-#: plugins/x2go/x2go_plugin.c:1584
-msgid "The X2Go server's sound system (default: 'pulse')."
+#: plugins/x2go/x2go_plugin.c:1605
+#, fuzzy
+#| msgid "The X2Go server's sound system (default: 'pulse')."
+msgid "The sound system of the X2Go server (default: 'pulse')."
 msgstr "X2Go sunucusunun ses sistemi (öntanımlı: 'pulse')."
 
-#: plugins/x2go/x2go_plugin.c:1587
+#: plugins/x2go/x2go_plugin.c:1608
 msgid "Clipboard direction"
 msgstr "Pano yönü"
 
-#: plugins/x2go/x2go_plugin.c:1589
+#: plugins/x2go/x2go_plugin.c:1610
 msgid "Which direction should clipboard content be copied? (default: 'both')."
 msgstr "Pano içeriği hangi yönde kopyalanmalıdır? (öntanımlı: 'both')."
 
-#: plugins/x2go/x2go_plugin.c:1593
+#: plugins/x2go/x2go_plugin.c:1614
 msgid "DPI resolution"
 msgstr "DPI çözünürlüğü"
 
-#: plugins/x2go/x2go_plugin.c:1594
+#: plugins/x2go/x2go_plugin.c:1615
 msgid ""
 "Launch session with a specific resolution (in dots per inch). Must be "
 "between 20 and 400."
@@ -3090,7 +3151,7 @@ msgstr ""
 "Oturumu (inç başı nokta türünde) belirli çözünürlükte aç. 20 ve 400 arası "
 "olmalıdır."
 
-#: plugins/x2go/x2go_plugin.c:1638
+#: plugins/x2go/x2go_plugin.c:1659
 msgid "X2Go plugin loaded."
 msgstr "X2Go eklentisi yüklendi."
 
@@ -4209,6 +4270,24 @@ msgstr "Remmina Kilidini Aç"
 #: data/ui/remmina_unlock.glade:128
 msgid "Master password"
 msgstr "Ana parola"
+
+#~ msgid "Given username can't get saved since it's empty!"
+#~ msgstr "Verilen kullanıcı adı boş olduğundan kaydedilemiyor!"
+
+#~ msgid "Limit minimum is too large!"
+#~ msgstr "Minimum sınırı çok büyük!"
+
+#~ msgid "Limit minimum is too small!"
+#~ msgstr "Minimum sınırı çok küçük!"
+
+#~ msgid "Limit maximum is not a valid integer!"
+#~ msgstr "Maksimum sınırı geçerli bir tam sayı değil!"
+
+#~ msgid "Limit maximum is too large!"
+#~ msgstr "Maksimum sınırı çok büyük!"
+
+#~ msgid "Limit maximum is too small!"
+#~ msgstr "Maksimum sınırı çok küçük!"
 
 #~ msgid ""
 #~ "User requested storing credentials but 'password' is not set! Can't set a "

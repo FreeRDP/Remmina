@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Remmina v1.3.9\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-10-05 22:10+0000\n"
+"POT-Creation-Date: 2021-10-12 09:46+0000\n"
 "PO-Revision-Date: 2021-10-05 14:05+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Hindi <https://hosted.weblate.org/projects/remmina/remmina/hi/"
@@ -22,7 +22,7 @@ msgstr ""
 #: src/remmina_protocol_widget.c:1672 src/remmina_protocol_widget.c:1691
 #: src/remmina_file_editor.c:1101 src/remmina_file_editor.c:1222
 #: src/remmina_ssh_plugin.c:1369 plugins/rdp/rdp_plugin.c:2677
-#: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:1575
+#: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:1596
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1675
 #: data/ui/remmina_unlock.glade:116
 #, fuzzy
@@ -78,7 +78,7 @@ msgstr "एक नए टर्मिनल से एसएसएच के म
 #: src/remmina_file_editor.c:1216 src/remmina_ssh_plugin.c:1479
 #: plugins/rdp/rdp_plugin.c:2676 plugins/vnc/vnc_plugin.c:1976
 #: plugins/vnc/vnc_plugin.c:1988 plugins/www/www_plugin.c:894
-#: plugins/x2go/x2go_plugin.c:1574 data/ui/remmina_mpc.glade:144
+#: plugins/x2go/x2go_plugin.c:1595 data/ui/remmina_mpc.glade:144
 #, fuzzy
 msgid "Username"
 msgstr "उपयोगकर्ता नाम"
@@ -1625,7 +1625,7 @@ msgstr ""
 
 #. TRANSLATORS: Meta-error. Shouldn't be visible.
 #: src/remmina_file_editor.c:1445 plugins/x2go/x2go_plugin.c:856
-#: plugins/x2go/x2go_plugin.c:1442
+#: plugins/x2go/x2go_plugin.c:1440
 #, fuzzy
 msgid "Internal error."
 msgstr "आंतरिक त्रुटि।"
@@ -3275,7 +3275,7 @@ msgstr "'संवाद) को पुनः प्राप्त नहीं
 
 #: plugins/x2go/x2go_plugin.c:505
 #, fuzzy
-msgid "pyhoca-cli exited unexpectedly. This connection will now be closed."
+msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
 msgstr "पाइहोका-क्लि अप्रत्याशित रूप से बाहर निकल गया। अब यह कनेक्शन बंद हो जाएगा।"
 
 #: plugins/x2go/x2go_plugin.c:514
@@ -3287,23 +3287,21 @@ msgstr "एक त्रुटि हुई।"
 #, fuzzy
 msgid ""
 "The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
-"Please check your profile settings and pyhoca-cli's output for possible "
-"errors and ensure the remote server is reachable."
+"Please check your profile settings and PyHoca-CLI's output for possible "
+"errors. Also ensure the remote server is reachable."
 msgstr ""
 "आवश्यक बच्चे की प्रक्रिया 'पाइहोका-क्ली' अप्रत्याशित रूप से बंद हो गई।\n"
 "कृपया संभावित त्रुटियों के लिए अपनी प्रोफ़ाइल सेटिंग्स और पाइहोका-क्ली के आउटपुट की जांच करें "
 "और यह सुनिश्चित करें कि रिमोट सर्वर पहुंच योग्य है।"
 
-#: plugins/x2go/x2go_plugin.c:561 plugins/x2go/x2go_plugin.c:838
+#: plugins/x2go/x2go_plugin.c:561
 #, fuzzy
-msgid "Started pyhoca-cli with following arguments:"
+msgid "Started PyHoca-CLI with the following arguments:"
 msgstr "निम्नलिखित तर्कों के साथ पाइहोका-क्ली शुरू किया:"
 
 #: plugins/x2go/x2go_plugin.c:580
 #, fuzzy, c-format
-msgid ""
-"An unknown error happened while retrieving pyhoca-cli's cmdline features! "
-"Exit code: %i"
+msgid "Could not retrieve PyHoca-CLI's command-line features! Exit code: %i"
 msgstr ""
 "पाइहोका-क्ली की सीएमडीलाइन सुविधाओं को पुनः प्राप्त करते समय एक अज्ञात त्रुटि हुई! "
 "एग्जिट कोड: %i"
@@ -3314,11 +3312,14 @@ msgid "Error: '%s'"
 msgstr "त्रुटि: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:609
-#, fuzzy
-msgid "Given username can't get saved since it's empty!"
-msgstr "दिया उपयोगकर्ता नाम बचाया नहीं मिल सकता है क्योंकि यह खाली है!"
+msgid "Can't save empty username!"
+msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:622
+#: plugins/x2go/x2go_plugin.c:621
+msgid "Internal error: Could not save new credentials."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:623
 #, fuzzy
 msgid ""
 "An error occured while trying to save new credentials: 's_password' or "
@@ -3336,6 +3337,11 @@ msgstr "X2Go क्रेडेंशियल्स दर्ज करें"
 #, fuzzy
 msgid "DPI setting is out of bounds. Please adjust it in profile settings."
 msgstr "डीपीआई सेटिंग सीमा से बाहर है। कृपया इसे प्रोफाइल सेटिंग में एडजस्ट करें।"
+
+#: plugins/x2go/x2go_plugin.c:838
+#, fuzzy
+msgid "Started pyhoca-cli with following arguments:"
+msgstr "निम्नलिखित तर्कों के साथ पाइहोका-क्ली शुरू किया:"
 
 #: plugins/x2go/x2go_plugin.c:858
 #, fuzzy
@@ -3355,64 +3361,64 @@ msgstr "PyHoca-CLI (%i): '%s शुरू नहीं कर सका'"
 #: plugins/x2go/x2go_plugin.c:945
 #, fuzzy
 msgid ""
-"Couldn't get pyhoca-cli's cmdline-features. This indicates either your "
-"pyhoca-cli version is too old or pyhoca-cli is not installed! An old limited "
-"set of features will be used now."
+"Couldn't get PyHoca-CLI's command-line features. This indicates it is either "
+"too old, or not installed. An old limited set of features will be used for "
+"now."
 msgstr ""
 "पाइहोका-क्ली की सीएमडीलाइन-फीचर्स नहीं मिल सके । यह इंगित करता है कि या तो आपका "
 "पाइहोका-क्ली संस्करण बहुत पुराना है या पाइहोका-क्ली स्थापित नहीं है! सुविधाओं का एक "
 "पुराना सीमित सेट अब इस्तेमाल किया जाएगा ।"
 
-#: plugins/x2go/x2go_plugin.c:957
+#: plugins/x2go/x2go_plugin.c:956
 #, fuzzy
 msgid ""
-"Parsing pyhoca-cli functionality was not possible! Using a limited feature-"
+"Could not parse PyHoca-CLI's command-line features. Using a limited feature-"
 "set for now."
 msgstr ""
 "पाहोका-क्लि कार्यक्षमता पार्सिंग संभव नहीं था! अभी के लिए एक सीमित सुविधा सेट का उपयोग "
 "करना।"
 
-#: plugins/x2go/x2go_plugin.c:964
+#: plugins/x2go/x2go_plugin.c:962
 #, fuzzy
-msgid "Retrieved the following pyhoca-cli functionality:"
+msgid "Retrieved the following PyHoca-CLI command-line features:"
 msgstr "निम्नलिखित पाइहोका-क्ली कार्यक्षमता प्राप्त की:"
 
-#: plugins/x2go/x2go_plugin.c:969
+#: plugins/x2go/x2go_plugin.c:967
 #, fuzzy, c-format
 msgid "Available feature[%i]: '%s'"
 msgstr "उपलब्ध सुविधा [%i: '%s'"
 
-#: plugins/x2go/x2go_plugin.c:1074
+#: plugins/x2go/x2go_plugin.c:1072
 #, fuzzy
 msgid "Could not open X11 DISPLAY."
 msgstr "X11 डिस्प्ले नहीं खोल सका।"
 
-#: plugins/x2go/x2go_plugin.c:1114
+#: plugins/x2go/x2go_plugin.c:1112
 #, fuzzy
-msgid "Waiting for X2Go Agent window to appear."
+msgid "Waiting for window of X2Go Agent to appear…"
 msgstr "X2Go एजेंट विंडो के प्रदर्शित होने की प्रतीक्षा कर रहा है।"
 
-#: plugins/x2go/x2go_plugin.c:1140
+#: plugins/x2go/x2go_plugin.c:1138
 #, fuzzy
-msgid "Waiting for pyhoca-cli to show the session's window."
+msgid "Waiting for PyHoca-CLI to show the session's window…"
 msgstr "सत्र की खिड़की दिखाने के लिए पाइहोका-क्ली का इंतजार करना ।"
 
-#: plugins/x2go/x2go_plugin.c:1191
+#: plugins/x2go/x2go_plugin.c:1189
 #, fuzzy
 msgid "No X2Go session window appeared. Something went wrong…"
 msgstr "कोई X2Go सत्र खिड़की दिखाई दी। कुछ गलत हो गया …"
 
-#: plugins/x2go/x2go_plugin.c:1300
+#: plugins/x2go/x2go_plugin.c:1298
 #, fuzzy
 msgid "Internal error: RemminaProtocolWidget* gp is NULL!"
 msgstr "आंतरिक त्रुटि: रेम्मिनाप्रोटोकोलविकेट * जीपी शून्य है!"
 
-#: plugins/x2go/x2go_plugin.c:1321
+#: plugins/x2go/x2go_plugin.c:1319
 #, fuzzy, c-format
-msgid "The protocol %s is unavailable because GtkSocket only works under X.org"
+msgid "The %s protocol is unavailable because GtkSocket only works under X.org"
 msgstr "प्रोटोकॉल %s अनुपलब्ध है क्योंकि GtkSocket केवल X.org के तहत काम करता है"
 
-#: plugins/x2go/x2go_plugin.c:1329
+#: plugins/x2go/x2go_plugin.c:1327
 #, fuzzy
 msgid "Could not initialize pthread. Falling back to non-threaded mode…"
 msgstr "पीटीरेड को शुरू नहीं कर सके। गैर-पिरोया मोड पर वापस गिरना …"
@@ -3425,7 +3431,7 @@ msgstr "पीटीरेड को शुरू नहीं कर सके�
 #. your language.
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
-#: plugins/x2go/x2go_plugin.c:1372 plugins/x2go/x2go_plugin.c:1390
+#: plugins/x2go/x2go_plugin.c:1370 plugins/x2go/x2go_plugin.c:1388
 #, fuzzy, c-format
 msgid "%sand '%s'"
 msgstr "%sऔर '%s'"
@@ -3436,7 +3442,7 @@ msgstr "%sऔर '%s'"
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
-#: plugins/x2go/x2go_plugin.c:1377 plugins/x2go/x2go_plugin.c:1395
+#: plugins/x2go/x2go_plugin.c:1375 plugins/x2go/x2go_plugin.c:1393
 #, fuzzy, c-format
 msgid "%s'%s' "
 msgstr "%s'%s' "
@@ -3444,119 +3450,130 @@ msgstr "%s'%s' "
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
 #. 'value1', 'value2', 'valueN-1' and 'valueN'
-#: plugins/x2go/x2go_plugin.c:1382
+#: plugins/x2go/x2go_plugin.c:1380
 #, fuzzy, c-format
 msgid "%s'%s', "
 msgstr "%s'%s,, "
 
-#: plugins/x2go/x2go_plugin.c:1420 plugins/x2go/x2go_plugin.c:1432
-#: plugins/x2go/x2go_plugin.c:1494
+#: plugins/x2go/x2go_plugin.c:1418
+#, fuzzy
+msgid "Invalid validation data in ProtocolSettings array!"
+msgstr "प्रोटोकॉलसेटिंग सरणी में सत्यापन डेटा अमान्य है!"
+
+#: plugins/x2go/x2go_plugin.c:1430 plugins/x2go/x2go_plugin.c:1492
 #, fuzzy
 msgid "Validation data in ProtocolSettings array is invalid!"
 msgstr "प्रोटोकॉलसेटिंग सरणी में सत्यापन डेटा अमान्य है!"
 
-#: plugins/x2go/x2go_plugin.c:1459
+#: plugins/x2go/x2go_plugin.c:1457
 #, fuzzy, c-format
 msgid "Allowed values are %s."
 msgstr "अनुमानित मान %s हैं।"
 
-#: plugins/x2go/x2go_plugin.c:1461
+#: plugins/x2go/x2go_plugin.c:1459
 #, fuzzy, c-format
-msgid "Only allowed value is '%s'."
+msgid "The only allowed value is '%s'."
 msgstr "केवल अनुमेई मूल्य '%s है।"
 
-#: plugins/x2go/x2go_plugin.c:1503
+#: plugins/x2go/x2go_plugin.c:1501
 #, fuzzy
-msgid "Limit minimum is not a valid integer!"
+msgid "The lower limit is not a valid integer!"
 msgstr "न्यूनतम सीमा एक वैध पूर्णांक नहीं है!"
 
+#: plugins/x2go/x2go_plugin.c:1503
+msgid "The lower limit is too high!"
+msgstr ""
+
 #: plugins/x2go/x2go_plugin.c:1505
-#, fuzzy
-msgid "Limit minimum is too large!"
-msgstr "सीमा न्यूनतम बहुत बड़ी है!"
+msgid "The lower limit is too low!"
+msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1507
-#, fuzzy
-msgid "Limit minimum is too small!"
-msgstr "सीमा न्यूनतम बहुत छोटा है!"
-
-#: plugins/x2go/x2go_plugin.c:1509 plugins/x2go/x2go_plugin.c:1523
-#: plugins/x2go/x2go_plugin.c:1538
+#: plugins/x2go/x2go_plugin.c:1507 plugins/x2go/x2go_plugin.c:1533
+#: plugins/x2go/x2go_plugin.c:1552
 #, fuzzy
 msgid "Something went wrong."
 msgstr "कुछ गलत हो गया"
 
-#: plugins/x2go/x2go_plugin.c:1517
-#, fuzzy
-msgid "Limit maximum is not a valid integer!"
-msgstr "अधिकतम सीमा एक वैध पूर्णांक नहीं है!"
+#: plugins/x2go/x2go_plugin.c:1511 plugins/x2go/x2go_plugin.c:1537
+#: plugins/x2go/x2go_plugin.c:1556
+msgid "Please check the RemminaProtocolSetting array for possible errors."
+msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1519
+#: plugins/x2go/x2go_plugin.c:1520 plugins/x2go/x2go_plugin.c:1524
+#: plugins/x2go/x2go_plugin.c:1528 plugins/x2go/x2go_plugin.c:1532
 #, fuzzy
-msgid "Limit maximum is too large!"
-msgstr "सीमा अधिकतम बहुत बड़ा है!"
+msgid "Internal error: "
+msgstr "आंतरिक त्रुटि।"
 
 #: plugins/x2go/x2go_plugin.c:1521
 #, fuzzy
-msgid "Limit maximum is too small!"
-msgstr "सीमा अधिकतम बहुत छोटा है!"
-
-#: plugins/x2go/x2go_plugin.c:1533
-#, fuzzy
-msgid "Input is not a valid integer!"
+msgid "The upper limit is not a valid integer!"
 msgstr "इनपुट एक वैध पूर्णांक नहीं है!"
 
-#: plugins/x2go/x2go_plugin.c:1535 plugins/x2go/x2go_plugin.c:1548
+#: plugins/x2go/x2go_plugin.c:1525
+msgid "The upper limit is too high!"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1529
+msgid "The upper limit is too low!"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1547
+#, fuzzy
+msgid "The input is not a valid integer!"
+msgstr "इनपुट एक वैध पूर्णांक नहीं है!"
+
+#: plugins/x2go/x2go_plugin.c:1549 plugins/x2go/x2go_plugin.c:1568
 #, fuzzy, c-format
 msgid "Input must be a number between %i and %i."
 msgstr "इनपुट %i और %i के बीच एक नंबर होना चाहिए।"
 
-#: plugins/x2go/x2go_plugin.c:1576
+#: plugins/x2go/x2go_plugin.c:1597
 #, fuzzy
 msgid "Startup program"
 msgstr "स्टार्टअप कार्यक्रम"
 
-#: plugins/x2go/x2go_plugin.c:1578
+#: plugins/x2go/x2go_plugin.c:1599
 #, fuzzy
 msgid "Which command should be executed after creating the X2Go session?"
 msgstr "X2Go सत्र बनाने के बाद कौन सा आदेश निष्पादित किया जाना चाहिए?"
 
-#: plugins/x2go/x2go_plugin.c:1580
+#: plugins/x2go/x2go_plugin.c:1601
 #, fuzzy
 msgid "Keyboard Layout (auto)"
 msgstr "कीबोर्ड लेआउट (ऑटो)"
 
-#: plugins/x2go/x2go_plugin.c:1581
+#: plugins/x2go/x2go_plugin.c:1602
 #, fuzzy
 msgid "Keyboard type (auto)"
 msgstr "कीबोर्ड प्रकार (ऑटो)"
 
-#: plugins/x2go/x2go_plugin.c:1582
+#: plugins/x2go/x2go_plugin.c:1603
 #, fuzzy
 msgid "Audio support"
 msgstr "ऑडियो समर्थन"
 
-#: plugins/x2go/x2go_plugin.c:1584
+#: plugins/x2go/x2go_plugin.c:1605
 #, fuzzy
-msgid "The X2Go server's sound system (default: 'pulse')."
+msgid "The sound system of the X2Go server (default: 'pulse')."
 msgstr "X2Go सर्वर का साउंड सिस्टम (डिफ़ॉल्ट: 'पल्स')।"
 
-#: plugins/x2go/x2go_plugin.c:1587
+#: plugins/x2go/x2go_plugin.c:1608
 #, fuzzy
 msgid "Clipboard direction"
 msgstr "क्लिपबोर्ड दिशा"
 
-#: plugins/x2go/x2go_plugin.c:1589
+#: plugins/x2go/x2go_plugin.c:1610
 #, fuzzy
 msgid "Which direction should clipboard content be copied? (default: 'both')."
 msgstr "क्लिपबोर्ड सामग्री को किस दिशा में कॉपी किया जाना चाहिए? (डिफ़ॉल्ट: 'दोनों') ।"
 
-#: plugins/x2go/x2go_plugin.c:1593
+#: plugins/x2go/x2go_plugin.c:1614
 #, fuzzy
 msgid "DPI resolution"
 msgstr "डीपीआई संकल्प"
 
-#: plugins/x2go/x2go_plugin.c:1594
+#: plugins/x2go/x2go_plugin.c:1615
 #, fuzzy
 msgid ""
 "Launch session with a specific resolution (in dots per inch). Must be "
@@ -3565,7 +3582,7 @@ msgstr ""
 "एक विशिष्ट संकल्प (प्रति इंच डॉट्स में) के साथ सत्र लॉन्च करें। 20 से 400 के बीच होना जरूरी "
 "है।"
 
-#: plugins/x2go/x2go_plugin.c:1638
+#: plugins/x2go/x2go_plugin.c:1659
 #, fuzzy
 msgid "X2Go plugin loaded."
 msgstr "X2Go प्लगइन लोड किया गया।"
@@ -4901,6 +4918,30 @@ msgstr "रेम्मीना अनलॉक करें"
 #, fuzzy
 msgid "Master password"
 msgstr "मास्टर पासवर्ड"
+
+#, fuzzy
+#~ msgid "Given username can't get saved since it's empty!"
+#~ msgstr "दिया उपयोगकर्ता नाम बचाया नहीं मिल सकता है क्योंकि यह खाली है!"
+
+#, fuzzy
+#~ msgid "Limit minimum is too large!"
+#~ msgstr "सीमा न्यूनतम बहुत बड़ी है!"
+
+#, fuzzy
+#~ msgid "Limit minimum is too small!"
+#~ msgstr "सीमा न्यूनतम बहुत छोटा है!"
+
+#, fuzzy
+#~ msgid "Limit maximum is not a valid integer!"
+#~ msgstr "अधिकतम सीमा एक वैध पूर्णांक नहीं है!"
+
+#, fuzzy
+#~ msgid "Limit maximum is too large!"
+#~ msgstr "सीमा अधिकतम बहुत बड़ा है!"
+
+#, fuzzy
+#~ msgid "Limit maximum is too small!"
+#~ msgstr "सीमा अधिकतम बहुत छोटा है!"
 
 #, fuzzy
 #~ msgid "User name"
