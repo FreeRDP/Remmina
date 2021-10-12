@@ -63,6 +63,10 @@
 						rmplugin_x2go_safe_strcmp \
 					     ) ? TRUE : FALSE) : FALSE
 
+#define FEATURE_NOT_AVAIL_STR(feature) \
+	g_strdup_printf(_("The command-line feature '%s' is not available! Attempting " \
+			  "to start PyHoca-CLI without using this feature…"), feature)
+
 #define GET_PLUGIN_DATA(gp) \
 		(RemminaPluginX2GoData*) g_object_get_data(G_OBJECT(gp), "plugin-data")
 
@@ -72,27 +76,27 @@
 #define GET_DIALOG_DATA(gp) \
 		(DialogData*) g_object_get_data(G_OBJECT(gp), "dialog-data");
 
-#define REMMINA_PLUGIN_INFO(fmt, ...)\
+#define REMMINA_PLUGIN_INFO(fmt, ...) \
 		rm_plugin_service->_remmina_info("[%s] " fmt, \
 						 PLUGIN_NAME, ##__VA_ARGS__)
 
-#define REMMINA_PLUGIN_MESSAGE(fmt, ...)\
+#define REMMINA_PLUGIN_MESSAGE(fmt, ...) \
 		rm_plugin_service->_remmina_message("[%s] " fmt, \
 						    PLUGIN_NAME, ##__VA_ARGS__)
 
-#define REMMINA_PLUGIN_DEBUG(fmt, ...)\
+#define REMMINA_PLUGIN_DEBUG(fmt, ...) \
 		rm_plugin_service->_remmina_debug(__func__, "[%s] " fmt, \
 						  PLUGIN_NAME, ##__VA_ARGS__)
 
-#define REMMINA_PLUGIN_WARNING(fmt, ...)\
+#define REMMINA_PLUGIN_WARNING(fmt, ...) \
 		rm_plugin_service->_remmina_warning(__func__, "[%s] " fmt, \
 						    PLUGIN_NAME, ##__VA_ARGS__)
 
-#define REMMINA_PLUGIN_ERROR(fmt, ...)\
+#define REMMINA_PLUGIN_ERROR(fmt, ...) \
 		rm_plugin_service->_remmina_error(__func__, "[%s] " fmt, \
 						  PLUGIN_NAME, ##__VA_ARGS__)
 
-#define REMMINA_PLUGIN_CRITICAL(fmt, ...)\
+#define REMMINA_PLUGIN_CRITICAL(fmt, ...) \
 		rm_plugin_service->_remmina_critical(__func__, "[%s] " fmt, \
 						     PLUGIN_NAME, ##__VA_ARGS__)
 
@@ -741,6 +745,8 @@ static gboolean rmplugin_x2go_exec_x2go(gchar *host,
 	if (FEATURE_AVAILABLE(gpdata, "REMOTE_SSH_PORT")) {
 		argv[argc++] = g_strdup("-p");
 		argv[argc++] = g_strdup_printf ("%d", sshport);
+	} else {
+		REMMINA_PLUGIN_DEBUG("%s", FEATURE_NOT_AVAIL_STR("REMOTE_SSH_PORT"));
 	}
 
 	if (FEATURE_AVAILABLE(gpdata, "USERNAME")) {
@@ -750,17 +756,23 @@ static gboolean rmplugin_x2go_exec_x2go(gchar *host,
 		} else {
 			argv[argc++] = g_strdup_printf ("%s", g_get_user_name());
 		}
+	} else {
+		REMMINA_PLUGIN_DEBUG("%s", FEATURE_NOT_AVAIL_STR("USERNAME"));
 	}
 
 	if (password && FEATURE_AVAILABLE(gpdata, "PASSWORD")) {
 		argv[argc++] = g_strdup("--force-password");
 		argv[argc++] = g_strdup("--password");
 		argv[argc++] = g_strdup_printf ("%s", password);
+	} else {
+		REMMINA_PLUGIN_DEBUG("%s", FEATURE_NOT_AVAIL_STR("PASSWORD"));
 	}
 
 	if (FEATURE_AVAILABLE(gpdata, "AUTH_ATTEMPTS")) {
 		argv[argc++] = g_strdup("--auth-attempts");
 		argv[argc++] = g_strdup_printf ("%i", 0);
+	} else {
+		REMMINA_PLUGIN_DEBUG("%s", FEATURE_NOT_AVAIL_STR("AUTH_ATTEMPTS"));
 	}
 
 	if (FEATURE_AVAILABLE(gpdata, "COMMAND")) {
@@ -769,6 +781,8 @@ static gboolean rmplugin_x2go_exec_x2go(gchar *host,
 		// 	  the command string...
 		// argv[argc++] = g_strdup_printf ("%s", g_shell_quote(command));
 		argv[argc++] = g_strdup(command);
+	} else {
+		REMMINA_PLUGIN_DEBUG("%s", FEATURE_NOT_AVAIL_STR("COMMAND"));
 	}
 
 	if (FEATURE_AVAILABLE(gpdata, "KBD_LAYOUT")) {
@@ -779,6 +793,8 @@ static gboolean rmplugin_x2go_exec_x2go(gchar *host,
 			argv[argc++] = g_strdup("--kbd-layout");
 			argv[argc++] = g_strdup("auto");
 		}
+	} else {
+		REMMINA_PLUGIN_DEBUG("%s", FEATURE_NOT_AVAIL_STR("KBD_LAYOUT"));
 	}
 
 	if (FEATURE_AVAILABLE(gpdata, "KBD_TYPE")) {
@@ -789,6 +805,8 @@ static gboolean rmplugin_x2go_exec_x2go(gchar *host,
 			argv[argc++] = g_strdup("--kbd-type");
 			argv[argc++] = g_strdup("auto");
 		}
+	} else {
+		REMMINA_PLUGIN_DEBUG("%s", FEATURE_NOT_AVAIL_STR("KBD_TYPE"));
 	}
 
 	if (FEATURE_AVAILABLE(gpdata, "GEOMETRY")) {
@@ -796,6 +814,8 @@ static gboolean rmplugin_x2go_exec_x2go(gchar *host,
 			resolution = "800x600";
 		argv[argc++] = g_strdup("-g");
 		argv[argc++] = g_strdup_printf ("%s", resolution);
+	} else {
+		REMMINA_PLUGIN_DEBUG("%s", FEATURE_NOT_AVAIL_STR("GEOMETRY"));
 	}
 
 	if (FEATURE_AVAILABLE(gpdata, "TRY_RESUME")) {
@@ -804,6 +824,8 @@ static gboolean rmplugin_x2go_exec_x2go(gchar *host,
 
 	if (FEATURE_AVAILABLE(gpdata, "TERMINATE_ON_CTRL_C")) {
 		argv[argc++] = g_strdup("--terminate-on-ctrl-c");
+	} else {
+		REMMINA_PLUGIN_DEBUG("%s", FEATURE_NOT_AVAIL_STR("TERMINATE_ON_CTRL_C"));
 	}
 
 	if (FEATURE_AVAILABLE(gpdata, "SOUND")) {
@@ -814,11 +836,17 @@ static gboolean rmplugin_x2go_exec_x2go(gchar *host,
 			argv[argc++] = g_strdup("--sound");
 			argv[argc++] = g_strdup("none");
 		}
+	} else {
+		REMMINA_PLUGIN_DEBUG("%s", FEATURE_NOT_AVAIL_STR("SOUND"));
 	}
 
-	if (clipboard && FEATURE_AVAILABLE(gpdata, "CLIPBOARD_MODE")) {
-		argv[argc++] = g_strdup("--clipboard-mode");
-		argv[argc++] = g_strdup_printf ("%s", clipboard);
+	if (FEATURE_AVAILABLE(gpdata, "CLIPBOARD_MODE")) {
+		if (clipboard) {
+			argv[argc++] = g_strdup("--clipboard-mode");
+			argv[argc++] = g_strdup_printf("%s", clipboard);
+		}
+	} else {
+		REMMINA_PLUGIN_DEBUG("%s", FEATURE_NOT_AVAIL_STR("CLIPBOARD_MODE"));
 	}
 
 	if (FEATURE_AVAILABLE(gpdata, "DPI")) {
@@ -834,6 +862,8 @@ static gboolean rmplugin_x2go_exec_x2go(gchar *host,
 		}
 		argv[argc++] = g_strdup("--dpi");
 		argv[argc++] = g_strdup_printf ("%i", dpi);
+	} else {
+		REMMINA_PLUGIN_DEBUG("%s", FEATURE_NOT_AVAIL_STR("DPI"));
 	}
 
 	argv[argc++] = NULL;
