@@ -2,15 +2,15 @@
 
 To update/push images you need permissions for this repository:
 
-https://cloud.docker.com/u/remmina/repository/docker/remmina/ubuntu
+https://gitlab.com/Remmina/Remmina/container_registry/
 
 To build and push:
 
 ```shell
 # cd where is the Dockerfile
-# login with your docker account
-docker build -t remmina/ubuntu:18.04 --no-cache --force-rm --compress .
-docker push remmina/ubuntu:18.04
+# login with your Gitlab account and a personal access token
+docker build -t registry.gitlab.com/remmina/remmina/ubuntu:20.04 --no-cache --force-rm --compress .
+docker push registry.gitlab.com/remmina/remmina/ubuntu:20.04
 ```
 
 
