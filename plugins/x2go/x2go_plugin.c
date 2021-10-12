@@ -1373,7 +1373,8 @@ static gboolean rmplugin_x2go_open_connection(RemminaProtocolWidget *gp)
 	}
 
 	gpdata->socket_id = gtk_socket_get_id(GTK_SOCKET(gpdata->socket));
-	if (pthread_create(&gpdata->thread, NULL, rmplugin_x2go_main_thread, gp)) {
+	// casting to void* is allowed since return type 'gpointer' is actually void*.
+	if (pthread_create(&gpdata->thread, NULL, (void*) rmplugin_x2go_main_thread, gp)) {
 		rm_plugin_service->protocol_plugin_set_error(gp, _("Could not initialize "
 					  "pthread. Falling back to non-threaded mode…"));
 		gpdata->thread = 0;
