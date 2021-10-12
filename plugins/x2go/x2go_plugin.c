@@ -171,6 +171,14 @@ str2int_errno str2int(gint *out, gchar *s, gint base)
  */
 static gchar** rmplugin_x2go_split_string(gchar* data, gchar delim, guint *occurences)
 {
+	REMMINA_PLUGIN_DEBUG("Function entry.");
+
+	if (!data || !delim || !occurences) {
+		REMMINA_PLUGIN_CRITICAL("%s%s", _("Internal error: "),
+			      _("parameter 'data', 'delim' or 'occurences' are 'NULL'!"));
+		return NULL;
+	}
+
 	// Counts the occurence of 'delim', so the amount of numbers passed.
 	guint delim_occurence = 0;
 	// work on a copy of the string, because strchr alters the string.
@@ -184,19 +192,20 @@ static gchar** rmplugin_x2go_split_string(gchar* data, gchar delim, guint *occur
 	// We are just storing gchar pointers not actual gchars.
 	returning_string_list = malloc(sizeof(gchar*) * (delim_occurence + 1));
 	if (!returning_string_list) {
-		REMMINA_PLUGIN_CRITICAL("Could not allocate memory!");
+		REMMINA_PLUGIN_CRITICAL("%s%s", _("Internal error: "),
+						_("could not allocate enough memory!"));
 		return NULL;
 	}
 
 	(*occurences) = 0;
 	// Split 'data' into array 'returning_string_list' using 'delim' as delimiter.
-	gchar *ptr = strtok(g_strdup(data), &delim);
+	gchar *ptr = strtok(g_strdup(data), g_strdup_printf("%c", delim));
 	for(gint j = 0; (j <= delim_occurence && ptr != NULL); j++) {
 		// Add occurence to list
 		returning_string_list[j] = g_strdup(ptr);
 
 		// Get next occurence
-		ptr = strtok(NULL, &delim);
+		ptr = strtok(NULL, g_strdup_printf("%c", delim));
 
 		(*occurences)++;
 	}
@@ -1336,8 +1345,8 @@ static gpointer rmplugin_x2go_main_thread(RemminaProtocolWidget* gp)
 {
 	TRACE_CALL(__func__);
 	if (!gp) {
-		REMMINA_PLUGIN_CRITICAL("%s", _("Internal error: RemminaProtocolWidget* "
-						"gp is NULL!"));
+		REMMINA_PLUGIN_CRITICAL("%s%s", _("Internal error: "),
+						_("RemminaProtocolWidget* gp is 'NULL'!"));
 		return NULL;
 	}
 
@@ -1478,7 +1487,7 @@ static GError* rmplugin_x2go_string_setting_validator(gchar* key, gchar* value,
 	gchar *data_str = "";
 
 	if (!key || !value) {
-		REMMINA_PLUGIN_CRITICAL("key or value is NULL!");
+		REMMINA_PLUGIN_CRITICAL("%s", _("Parameters 'key' or 'value' are 'NULL'!"));
 		g_set_error(&error, 1, 1, _("Internal error."));
 		return error;
 	}
@@ -1541,13 +1550,17 @@ static GError* rmplugin_x2go_int_setting_validator(gchar* key, gpointer value,
 	gint minimum;
 	str2int_errno err = str2int(&minimum, integer_list[0], 10);
 	if (err == STR2INT_INCONVERTIBLE) {
-		g_set_error(&error, 1, 1, _("The lower limit is not a valid integer!"));
+		g_set_error(&error, 1, 1, g_strdup_printf("%s%s", _("Internal error: "),
+					   _("The lower limit is not a valid integer!")));
 	} else if (err == STR2INT_OVERFLOW) {
-		g_set_error(&error, 1, 1, _("The lower limit is too high!"));
+		g_set_error(&error, 1, 1, g_strdup_printf("%s%s", _("Internal error: "),
+						      _("The lower limit is too high!")));
 	} else if (err == STR2INT_UNDERFLOW) {
-		g_set_error(&error, 1, 1, _("The lower limit is too low!"));
+		g_set_error(&error, 1, 1, g_strdup_printf("%s%s", _("Internal error: "),
+						       _("The lower limit is too low!")));
 	} else if (err == STR2INT_INVALID_DATA) {
-		g_set_error(&error, 1, 1, _("Something went wrong."));
+		g_set_error(&error, 1, 1, g_strdup_printf("%s%s", _("Internal error: "),
+							     _("Something went wrong.")));
 	}
 
 	if (error) {
@@ -1559,21 +1572,17 @@ static GError* rmplugin_x2go_int_setting_validator(gchar* key, gpointer value,
 	gint maximum;
 	err = str2int(&maximum, integer_list[1], 10);
 	if (err == STR2INT_INCONVERTIBLE) {
-		g_set_error(&error, 1, 1, g_strdup_printf("%s%s",
-									_("Internal error: "),
-									_("The upper limit is not a valid integer!")));
+		g_set_error(&error, 1, 1, g_strdup_printf("%s%s", _("Internal error: "),
+					   _("The upper limit is not a valid integer!")));
 	} else if (err == STR2INT_OVERFLOW) {
-		g_set_error(&error, 1, 1, g_strdup_printf("%s%s",
-									_("Internal error: "),
-									_("The upper limit is too high!")));
+		g_set_error(&error, 1, 1, g_strdup_printf("%s%s", _("Internal error: "),
+						      _("The upper limit is too high!")));
 	} else if (err == STR2INT_UNDERFLOW) {
-		g_set_error(&error, 1, 1, g_strdup_printf("%s%s",
-									_("Internal error: "),
-									_("The upper limit is too low!")));
+		g_set_error(&error, 1, 1, g_strdup_printf("%s%s", _("Internal error: "),
+						       _("The upper limit is too low!")));
 	} else if (err == STR2INT_INVALID_DATA) {
-		g_set_error(&error, 1, 1, g_strdup_printf("%s%s",
-									_("Internal error: "),
-									_("Something went wrong.")));
+		g_set_error(&error, 1, 1, g_strdup_printf("%s%s", _("Internal error: "),
+							     _("Something went wrong.")));
 	}
 
 	if (error) {
