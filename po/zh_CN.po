@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-10-12 09:46+0000\n"
-"PO-Revision-Date: 2021-10-12 10:05+0000\n"
+"PO-Revision-Date: 2021-10-13 19:30+0000\n"
 "Last-Translator: Eric <spice2wolf@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "remmina/remmina/zh_Hans/>\n"
@@ -2845,11 +2845,11 @@ msgstr "错误： '%s'"
 
 #: plugins/x2go/x2go_plugin.c:609
 msgid "Can't save empty username!"
-msgstr ""
+msgstr "无法保存空的用户名！"
 
 #: plugins/x2go/x2go_plugin.c:621
 msgid "Internal error: Could not save new credentials."
-msgstr ""
+msgstr "内部错误：无法保存新凭证。"
 
 #: plugins/x2go/x2go_plugin.c:623
 msgid ""
@@ -2914,10 +2914,8 @@ msgid "Waiting for window of X2Go Agent to appear…"
 msgstr "等待 X2Go Agent 窗口出现…"
 
 #: plugins/x2go/x2go_plugin.c:1138
-#, fuzzy
-#| msgid "Waiting for pyhoca-cli to show the session's window."
 msgid "Waiting for PyHoca-CLI to show the session's window…"
-msgstr "等待 pyhoca-cli 显示会话窗口。"
+msgstr "等待 PyHoca-CLI 显示会话窗口…"
 
 #: plugins/x2go/x2go_plugin.c:1189
 msgid "No X2Go session window appeared. Something went wrong…"
@@ -2928,11 +2926,9 @@ msgid "Internal error: RemminaProtocolWidget* gp is NULL!"
 msgstr "内部错误：RemminaProtocolWidget* gp 为 NULL！"
 
 #: plugins/x2go/x2go_plugin.c:1319
-#, fuzzy, c-format
-#| msgid ""
-#| "The protocol %s is unavailable because GtkSocket only works under X.org"
+#, c-format
 msgid "The %s protocol is unavailable because GtkSocket only works under X.org"
-msgstr "协议 %s 不可用，因为 GtkSocket 仅在 X.org 下工作"
+msgstr "%s 协议不可用，因为 GtkSocket 仅在 X.org 下工作"
 
 #: plugins/x2go/x2go_plugin.c:1327
 msgid "Could not initialize pthread. Falling back to non-threaded mode…"
@@ -2971,8 +2967,6 @@ msgid "%s'%s', "
 msgstr "%s'%s', "
 
 #: plugins/x2go/x2go_plugin.c:1418
-#, fuzzy
-#| msgid "Validation data in ProtocolSettings array is invalid!"
 msgid "Invalid validation data in ProtocolSettings array!"
 msgstr "ProtocolSettings 数组中的验证数据无效！"
 
@@ -2986,24 +2980,21 @@ msgid "Allowed values are %s."
 msgstr "允许的值为 %s。"
 
 #: plugins/x2go/x2go_plugin.c:1459
-#, fuzzy, c-format
-#| msgid "Only allowed value is '%s'."
+#, c-format
 msgid "The only allowed value is '%s'."
 msgstr "唯一允许的值为 '%s'。"
 
 #: plugins/x2go/x2go_plugin.c:1501
-#, fuzzy
-#| msgid "Limit minimum is not a valid integer!"
 msgid "The lower limit is not a valid integer!"
-msgstr "限制最小值不是有效整数！"
+msgstr "下限不是有效整数！"
 
 #: plugins/x2go/x2go_plugin.c:1503
 msgid "The lower limit is too high!"
-msgstr ""
+msgstr "下限过高！"
 
 #: plugins/x2go/x2go_plugin.c:1505
 msgid "The lower limit is too low!"
-msgstr ""
+msgstr "下限过低！"
 
 #: plugins/x2go/x2go_plugin.c:1507 plugins/x2go/x2go_plugin.c:1533
 #: plugins/x2go/x2go_plugin.c:1552
@@ -3013,32 +3004,26 @@ msgstr "出了些问题。"
 #: plugins/x2go/x2go_plugin.c:1511 plugins/x2go/x2go_plugin.c:1537
 #: plugins/x2go/x2go_plugin.c:1556
 msgid "Please check the RemminaProtocolSetting array for possible errors."
-msgstr ""
+msgstr "请检查 RemminaProtocolSetting 数组是否存在错误。"
 
 #: plugins/x2go/x2go_plugin.c:1520 plugins/x2go/x2go_plugin.c:1524
 #: plugins/x2go/x2go_plugin.c:1528 plugins/x2go/x2go_plugin.c:1532
-#, fuzzy
-#| msgid "Internal error."
 msgid "Internal error: "
-msgstr "内部错误。"
+msgstr "内部错误： "
 
 #: plugins/x2go/x2go_plugin.c:1521
-#, fuzzy
-#| msgid "Input is not a valid integer!"
 msgid "The upper limit is not a valid integer!"
-msgstr "输入不是有效整数！"
+msgstr "上限不是有效整数！"
 
 #: plugins/x2go/x2go_plugin.c:1525
 msgid "The upper limit is too high!"
-msgstr ""
+msgstr "上限过高！"
 
 #: plugins/x2go/x2go_plugin.c:1529
 msgid "The upper limit is too low!"
-msgstr ""
+msgstr "上限过低！"
 
 #: plugins/x2go/x2go_plugin.c:1547
-#, fuzzy
-#| msgid "Input is not a valid integer!"
 msgid "The input is not a valid integer!"
 msgstr "输入不是有效整数！"
 
@@ -3068,10 +3053,8 @@ msgid "Audio support"
 msgstr "音频支持"
 
 #: plugins/x2go/x2go_plugin.c:1605
-#, fuzzy
-#| msgid "The X2Go server's sound system (default: 'pulse')."
 msgid "The sound system of the X2Go server (default: 'pulse')."
-msgstr "X2Go 服务器的声音系统 (默认为'pulse')。"
+msgstr "X2Go 服务器的声音系统 (默认值：'pulse')。"
 
 #: plugins/x2go/x2go_plugin.c:1608
 msgid "Clipboard direction"

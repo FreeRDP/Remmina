@@ -15,8 +15,8 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-10-12 09:46+0000\n"
-"PO-Revision-Date: 2021-10-12 10:05+0000\n"
-"Last-Translator: Andika Triwidada <andika@gmail.com>\n"
+"PO-Revision-Date: 2021-10-13 19:30+0000\n"
+"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/remmina/"
 "remmina/id/>\n"
 "Language: id\n"
@@ -169,7 +169,7 @@ msgstr "Ditemukan"
 
 #: src/remmina_applet_menu_item.c:126
 msgid "New Connection"
-msgstr "Koneksi baru"
+msgstr "Koneksi Baru"
 
 #: src/remmina_key_chooser.h:38
 msgid "Shift+"
@@ -227,7 +227,7 @@ msgstr "libsodium >= 1.9.0 diperlukan untuk menggunakan kata sandi induk"
 
 #: src/remmina_pref_dialog.c:806
 msgid "Picking a terminal colouring file replaces the file: "
-msgstr "Pilih suatu berkas pewarnaan terminal"
+msgstr "Memilih suatu berkas pewarnaan terminal menggantikan berkas: "
 
 #: src/remmina_pref_dialog.c:810
 msgid ""
@@ -308,7 +308,7 @@ msgstr "Mode layar penuh viewport"
 
 #: src/rcw.c:1402 data/ui/remmina_preferences.glade:607
 msgid "Scrolled fullscreen"
-msgstr "Jendela penuh gulung"
+msgstr "Layar penuh tergulung"
 
 #: src/rcw.c:1487
 msgid "Keep aspect ratio when scaled"
@@ -340,7 +340,7 @@ msgstr "Menu"
 
 #: src/rcw.c:2300
 msgid "Open the Remmina main window"
-msgstr "Buka Jendela Remmina Utama"
+msgstr "Buka jendela utama Remmina"
 
 #: src/rcw.c:2310
 msgid "Duplicate current connection"
@@ -352,7 +352,7 @@ msgstr "Mengubah ukuran jendela agar sesuai dalam resolusi jauh"
 
 #: src/rcw.c:2338
 msgid "Toggle fullscreen mode"
-msgstr "Mengubah mode layar penuh"
+msgstr "Jungkitkan mode layar penuh"
 
 #: src/rcw.c:2384 data/ui/remmina_preferences.glade:1332
 #: data/ui/remmina_preferences.glade:1342
@@ -2855,34 +2855,23 @@ msgid "An error occured."
 msgstr "Timbul galat."
 
 #: plugins/x2go/x2go_plugin.c:515
-#, fuzzy
-#| msgid ""
-#| "The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
-#| "Please check your profile settings and pyhoca-cli's output for possible "
-#| "errors and ensure the remote server is reachable."
 msgid ""
 "The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
 "Please check your profile settings and PyHoca-CLI's output for possible "
 "errors. Also ensure the remote server is reachable."
 msgstr ""
 "Proses anak yang diperlukan 'pyhoca-cli' berhenti secara tak terduga.\n"
-"Silakan periksa pengaturan profil Anda dan keluaran pyhoca-cli untuk "
+"Silakan periksa pengaturan profil Anda dan keluaran PyHoca-CLI untuk "
 "kemungkinan kesalahan dan pastikan server jarak jauh dapat dijangkau."
 
 #: plugins/x2go/x2go_plugin.c:561
-#, fuzzy
 msgid "Started PyHoca-CLI with the following arguments:"
-msgstr "Mulai pyhoca-cli dengan argumen berikut:"
+msgstr "Memulai PyHoca-CLI dengan argumen berikut:"
 
 #: plugins/x2go/x2go_plugin.c:580
-#, fuzzy, c-format
-#| msgid ""
-#| "An unknown error happened while retrieving pyhoca-cli's cmdline features! "
-#| "Exit code: %i"
+#, c-format
 msgid "Could not retrieve PyHoca-CLI's command-line features! Exit code: %i"
-msgstr ""
-"Terjadi kesalahan yang tidak diketahui saat mengambil fitur cmdline pyhoca-"
-"cli! Kode keluar: %i"
+msgstr "Tidak bisa mengambil fitur baris perintah PyHoca-CLI! Kode keluar: %i"
 
 #: plugins/x2go/x2go_plugin.c:585
 #, c-format
@@ -2891,14 +2880,13 @@ msgstr "Galat: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:609
 msgid "Can't save empty username!"
-msgstr ""
+msgstr "Tak bisa menyimpan nama pengguna yang kosong!"
 
 #: plugins/x2go/x2go_plugin.c:621
 msgid "Internal error: Could not save new credentials."
-msgstr ""
+msgstr "Kesalahan internal: Tidak bisa menyimpan kredensial baru."
 
 #: plugins/x2go/x2go_plugin.c:623
-#, fuzzy
 msgid ""
 "An error occured while trying to save new credentials: 's_password' or "
 "'s_username' strings were not set."
@@ -2911,16 +2899,12 @@ msgid "Enter X2Go credentials"
 msgstr "Masukkan kredensial X2Go"
 
 #: plugins/x2go/x2go_plugin.c:818
-#, fuzzy
-#| msgid ""
-#| "DPI setting is out of bounds. Please adjust it in the profile settings."
 msgid "DPI setting is out of bounds. Please adjust it in profile settings."
 msgstr "Pengaturan DPI di luar batas. Harap sesuaikan di pengaturan profil."
 
 #: plugins/x2go/x2go_plugin.c:838
-#, fuzzy
 msgid "Started pyhoca-cli with following arguments:"
-msgstr "Mulai pyhoca-cli dengan argumen berikut:"
+msgstr "Memulai pyhoca-cli dengan argumen berikut:"
 
 #: plugins/x2go/x2go_plugin.c:858
 msgid "An error occured while starting an X2Go session…"
@@ -2936,37 +2920,26 @@ msgid "Could not start PyHoca-CLI (%i): '%s'"
 msgstr "Tidak bisa memulai PyHoca-CLI (%i): '%s'"
 
 #: plugins/x2go/x2go_plugin.c:945
-#, fuzzy
-#| msgid ""
-#| "Couldn't get pyhoca-cli's cmdline-features. This indicates either your "
-#| "pyhoca-cli version is too old or pyhoca-cli is not installed! An old "
-#| "limited set of features will be used now."
 msgid ""
 "Couldn't get PyHoca-CLI's command-line features. This indicates it is either "
 "too old, or not installed. An old limited set of features will be used for "
 "now."
 msgstr ""
-"Tidak bisa mendapatkan fitur cmdline pyhoca-cli. Ini menunjukkan bahwa versi "
-"pyhoca-cli Anda terlalu tua atau pyhoca-cli tidak diinstal! Satu set fitur "
-"terbatas lama akan digunakan sekarang."
+"Tidak bisa mendapatkan fitur baris perintah PyHoca-CLI. Ini menunjukkan "
+"bahwa itu terlalu tua atau tidak terpasang! Satu set fitur terbatas lama "
+"akan digunakan untuk saat ini."
 
 #: plugins/x2go/x2go_plugin.c:956
-#, fuzzy
-#| msgid ""
-#| "parsing pyhoca-cli functionality was not possible! Using a limited "
-#| "feature-set for now."
 msgid ""
 "Could not parse PyHoca-CLI's command-line features. Using a limited feature-"
 "set for now."
 msgstr ""
-"mengurai fungsionalitas pyhoca-cli tidak mungkin! Menggunakan set fitur "
+"Tidak bisa mengurai fitur baris perintah PyHoca-CLI. Menggunakan set fitur "
 "terbatas untuk saat ini."
 
 #: plugins/x2go/x2go_plugin.c:962
-#, fuzzy
-#| msgid "Retrieved the following pyhoca-cli functionality:"
 msgid "Retrieved the following PyHoca-CLI command-line features:"
-msgstr "Mengambil fungsionalitas pyhoca-cli berikut:"
+msgstr "Mengambil fitur baris perintah PyHoca-CLI berikut:"
 
 #: plugins/x2go/x2go_plugin.c:967
 #, c-format
@@ -2974,46 +2947,34 @@ msgid "Available feature[%i]: '%s'"
 msgstr "Fitur yang tersedia[%i]: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:1072
-#, fuzzy
-#| msgid "Could not open channel. %s"
 msgid "Could not open X11 DISPLAY."
-msgstr "Tak bisa membuka TAMPILAN X11."
+msgstr "Tidak bisa membuka DISPLAY X11."
 
 #: plugins/x2go/x2go_plugin.c:1112
-#, fuzzy
-#| msgid "Waiting for X2Go Agent window to appear."
 msgid "Waiting for window of X2Go Agent to appear…"
-msgstr "Menunggu jendela Agen X2Go muncul."
+msgstr "Menunggu jendela Agen X2Go muncul…"
 
 #: plugins/x2go/x2go_plugin.c:1138
-#, fuzzy
-#| msgid "Waiting for pyhoca-cli to show the session's window."
 msgid "Waiting for PyHoca-CLI to show the session's window…"
-msgstr "Menunggu pyhoca-cli untuk menampilkan jendela sesi."
+msgstr "Menunggu PyHoca-CLI menampilkan jendela sesi…"
 
 #: plugins/x2go/x2go_plugin.c:1189
-#, fuzzy
 msgid "No X2Go session window appeared. Something went wrong…"
-msgstr "Jendela sesi X2Go tidak muncul. Ada yang tidak beres…"
+msgstr "Tidak ada jendela sesi X2Go yang muncul. Ada yang tidak beres…"
 
 #: plugins/x2go/x2go_plugin.c:1298
-#, fuzzy
 msgid "Internal error: RemminaProtocolWidget* gp is NULL!"
-msgstr "Kesalahan internal: RemminaProtocolWidget* gp is NULL!"
+msgstr "Kesalahan internal: RemminaProtocolWidget* gp adalah NULL!"
 
 #: plugins/x2go/x2go_plugin.c:1319
-#, fuzzy, c-format
-#| msgid ""
-#| "The protocol %s is unavailable because GtkSocket only works under X.org"
+#, c-format
 msgid "The %s protocol is unavailable because GtkSocket only works under X.org"
 msgstr ""
 "Protokol %s tidak tersedia karena GtkSocket hanya bekerja di bawah X.org"
 
 #: plugins/x2go/x2go_plugin.c:1327
-#, fuzzy
 msgid "Could not initialize pthread. Falling back to non-threaded mode…"
-msgstr ""
-"Tidak bisa menginisialisasi pthread. Jatuh kembali ke mode non-threaded …"
+msgstr "Tidak bisa menginisialisasi pthread. Kembali ke mode non-threaded…"
 
 #. TRANSLATORS: Presumably you just want to translate 'and' into
 #. your language.
@@ -3024,7 +2985,7 @@ msgstr ""
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
 #: plugins/x2go/x2go_plugin.c:1370 plugins/x2go/x2go_plugin.c:1388
-#, fuzzy, c-format
+#, c-format
 msgid "%sand '%s'"
 msgstr "%s dan '%s'"
 
@@ -3035,7 +2996,7 @@ msgstr "%s dan '%s'"
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
 #: plugins/x2go/x2go_plugin.c:1375 plugins/x2go/x2go_plugin.c:1393
-#, fuzzy, c-format
+#, c-format
 msgid "%s'%s' "
 msgstr "%s'%s' "
 
@@ -3043,83 +3004,75 @@ msgstr "%s'%s' "
 #. (Except your listing-grammar differs from english.)
 #. 'value1', 'value2', 'valueN-1' and 'valueN'
 #: plugins/x2go/x2go_plugin.c:1380
-#, fuzzy, c-format
+#, c-format
 msgid "%s'%s', "
 msgstr "%s'%s', "
 
 #: plugins/x2go/x2go_plugin.c:1418
-#, fuzzy
 msgid "Invalid validation data in ProtocolSettings array!"
 msgstr "Data validasi dalam array ProtocolSettings tidak valid!"
 
 #: plugins/x2go/x2go_plugin.c:1430 plugins/x2go/x2go_plugin.c:1492
-#, fuzzy
 msgid "Validation data in ProtocolSettings array is invalid!"
 msgstr "Data validasi dalam array ProtocolSettings tidak valid!"
 
 #: plugins/x2go/x2go_plugin.c:1457
-#, fuzzy, c-format
+#, c-format
 msgid "Allowed values are %s."
-msgstr "Nilai yang diizinkan adalah %s."
+msgstr "Nilai-nilai yang diizinkan adalah %s."
 
 #: plugins/x2go/x2go_plugin.c:1459
-#, fuzzy, c-format
+#, c-format
 msgid "The only allowed value is '%s'."
-msgstr "Hanya nilai yang diizinkan adalah '%s'."
+msgstr "Nilai yang diizinkan hanya '%s'."
 
 #: plugins/x2go/x2go_plugin.c:1501
-#, fuzzy
 msgid "The lower limit is not a valid integer!"
-msgstr "Batas minimum bukanlah integer yang valid!"
+msgstr "Batas bawah bukanlah integer yang valid!"
 
 #: plugins/x2go/x2go_plugin.c:1503
 msgid "The lower limit is too high!"
-msgstr ""
+msgstr "Batas bawah terlalu tinggi!"
 
 #: plugins/x2go/x2go_plugin.c:1505
 msgid "The lower limit is too low!"
-msgstr ""
+msgstr "Batas bawah terlalu rendah!"
 
 #: plugins/x2go/x2go_plugin.c:1507 plugins/x2go/x2go_plugin.c:1533
 #: plugins/x2go/x2go_plugin.c:1552
-#, fuzzy
 msgid "Something went wrong."
 msgstr "Ada yang salah."
 
 #: plugins/x2go/x2go_plugin.c:1511 plugins/x2go/x2go_plugin.c:1537
 #: plugins/x2go/x2go_plugin.c:1556
 msgid "Please check the RemminaProtocolSetting array for possible errors."
-msgstr ""
+msgstr "Harap periksa array RemminaProtocolSetting untuk kemungkinan kesalahan."
 
 #: plugins/x2go/x2go_plugin.c:1520 plugins/x2go/x2go_plugin.c:1524
 #: plugins/x2go/x2go_plugin.c:1528 plugins/x2go/x2go_plugin.c:1532
-#, fuzzy
-#| msgid "Transfer error"
 msgid "Internal error: "
-msgstr "Kesalahan internal"
+msgstr "Kesalahan internal: "
 
 #: plugins/x2go/x2go_plugin.c:1521
-#, fuzzy
 msgid "The upper limit is not a valid integer!"
-msgstr "Input bukanlah bilangan bulat yang valid!"
+msgstr "Batas atas bukan integer yang valid!"
 
 #: plugins/x2go/x2go_plugin.c:1525
 msgid "The upper limit is too high!"
-msgstr ""
+msgstr "Batas atas terlalu tinggi!"
 
 #: plugins/x2go/x2go_plugin.c:1529
 msgid "The upper limit is too low!"
-msgstr ""
+msgstr "Batas atas terlalu rendah!"
 
 #: plugins/x2go/x2go_plugin.c:1547
-#, fuzzy
 msgid "The input is not a valid integer!"
-msgstr "Input bukanlah bilangan bulat yang valid!"
+msgstr "Masukan bukanlah bilangan bulat yang valid!"
 
 #: plugins/x2go/x2go_plugin.c:1549 plugins/x2go/x2go_plugin.c:1568
-#, fuzzy, c-format
+#, c-format
 msgid "Input must be a number between %i and %i."
-msgstr "Input harus menjadi angka antara %i dan %i."
+msgstr "Masukan harus berupa angka antara %i dan %i."
 
 #: plugins/x2go/x2go_plugin.c:1597
 msgid "Startup program"
@@ -3142,8 +3095,6 @@ msgid "Audio support"
 msgstr "Dukungan audio"
 
 #: plugins/x2go/x2go_plugin.c:1605
-#, fuzzy
-#| msgid "The X2Go server's sound system (default: 'pulse')."
 msgid "The sound system of the X2Go server (default: 'pulse')."
 msgstr "Sistem suara server X2Go (baku: 'pulse')."
 
@@ -3160,16 +3111,12 @@ msgid "DPI resolution"
 msgstr "Resolusi DPI"
 
 #: plugins/x2go/x2go_plugin.c:1615
-#, fuzzy
-#| msgid ""
-#| "Launch session with a specific resolution (in dots per inch). Must be "
-#| "between 20 and 400"
 msgid ""
 "Launch session with a specific resolution (in dots per inch). Must be "
 "between 20 and 400."
 msgstr ""
 "Luncurkan sesi dengan resolusi tertentu (dalam titik per inci). Harus antara "
-"20 dan 400"
+"20 dan 400."
 
 #: plugins/x2go/x2go_plugin.c:1659
 msgid "X2Go plugin loaded."
@@ -4255,7 +4202,7 @@ msgstr "Pintasan mencari teks"
 #: data/ui/remmina_preferences.glade:2446
 #: data/ui/remmina_preferences.glade:2461
 msgid "Bold colour"
-msgstr "Warna normal"
+msgstr "Warna tebal"
 
 #: data/ui/remmina_preferences.glade:2475
 #: data/ui/remmina_preferences.glade:2516

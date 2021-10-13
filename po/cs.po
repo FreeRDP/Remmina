@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-10-12 09:46+0000\n"
-"PO-Revision-Date: 2021-10-06 11:20+0000\n"
+"PO-Revision-Date: 2021-10-13 19:30+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/remmina/remmina/cs/"
 ">\n"
@@ -2968,7 +2968,7 @@ msgstr "Nelze načíst `DialogData`! Přerušení…"
 #: plugins/x2go/x2go_plugin.c:505
 #, fuzzy
 msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
-msgstr "pyhoca-cli neočekávaně skončil. Toto spojení bude nyní uzavřeno."
+msgstr "PyHoca-CLI se neočekávaně ukončil. Toto spojení bude nyní uzavřeno."
 
 #: plugins/x2go/x2go_plugin.c:514
 #, fuzzy
@@ -2983,20 +2983,19 @@ msgid ""
 "errors. Also ensure the remote server is reachable."
 msgstr ""
 "Nezbytný podřízený proces 'pyhoca-cli' se neočekávaně zastavil.\n"
-"Zkontrolujte prosím nastavení profilu a výstup pyhoca-cli, zda nedošlo k "
-"chybě, a ujistěte se, že je vzdálený server dosažitelný."
+"Zkontrolujte prosím nastavení svého profilu a výstup PyHoca-CLI, zda nedošlo "
+"k chybě. Zkontrolujte také, zda je vzdálený server dosažitelný."
 
 #: plugins/x2go/x2go_plugin.c:561
 #, fuzzy
 msgid "Started PyHoca-CLI with the following arguments:"
-msgstr "Spuštěno pyhoca-cli s následujícími argumenty:"
+msgstr "Spustil PyHoca-CLI s následujícími argumenty:"
 
 #: plugins/x2go/x2go_plugin.c:580
 #, fuzzy, c-format
 msgid "Could not retrieve PyHoca-CLI's command-line features! Exit code: %i"
 msgstr ""
-"Při načítání funkcí cmdline pyhoca-cli došlo k neznámé chybě! Ukončovací "
-"kód: %i"
+"Nepodařilo se načíst funkce příkazového řádku PyHoca-CLI! Ukončovací kód: %i"
 
 #: plugins/x2go/x2go_plugin.c:585
 #, fuzzy, c-format
@@ -3005,12 +3004,14 @@ msgid "Error: '%s'"
 msgstr "Chyba: \"%s"
 
 #: plugins/x2go/x2go_plugin.c:609
+#, fuzzy
 msgid "Can't save empty username!"
-msgstr ""
+msgstr "Nelze uložit prázdné uživatelské jméno!"
 
 #: plugins/x2go/x2go_plugin.c:621
+#, fuzzy
 msgid "Internal error: Could not save new credentials."
-msgstr ""
+msgstr "Interní chyba: Nelze uložit nové pověření."
 
 #: plugins/x2go/x2go_plugin.c:623
 #, fuzzy
@@ -3061,9 +3062,9 @@ msgid ""
 "too old, or not installed. An old limited set of features will be used for "
 "now."
 msgstr ""
-"Nemohl jsem získat cmdline-features pyhoca-cli. To znamená, že buď je vaše "
-"verze pyhoca-cli příliš stará, nebo pyhoca-cli není nainstalováno! Nyní bude "
-"použita stará omezená sada funkcí."
+"Nemohl jsem získat funkce příkazového řádku PyHoca-CLI. To znamená, že je "
+"buď příliš starý, nebo není nainstalován. Prozatím bude použita stará "
+"omezená sada funkcí."
 
 #: plugins/x2go/x2go_plugin.c:956
 #, fuzzy
@@ -3071,12 +3072,13 @@ msgid ""
 "Could not parse PyHoca-CLI's command-line features. Using a limited feature-"
 "set for now."
 msgstr ""
-"Parsování funkcí pyhoca-cli nebylo možné! Prozatím s omezenou sadou funkcí."
+"Nepodařilo se analyzovat funkce příkazového řádku PyHoca-CLI. Prozatím "
+"používá omezenou sadu funkcí."
 
 #: plugins/x2go/x2go_plugin.c:962
 #, fuzzy
 msgid "Retrieved the following PyHoca-CLI command-line features:"
-msgstr "Získal následující funkce pyhoca-cli:"
+msgstr "Získal následující funkce příkazového řádku PyHoca-CLI:"
 
 #: plugins/x2go/x2go_plugin.c:967
 #, fuzzy, c-format
@@ -3092,12 +3094,12 @@ msgstr "Nepodařilo se otevřít X11 DISPLAY."
 #: plugins/x2go/x2go_plugin.c:1112
 #, fuzzy
 msgid "Waiting for window of X2Go Agent to appear…"
-msgstr "Čekání na zobrazení okna agenta X2Go."
+msgstr "Čekání na zobrazení okna agenta X2Go…"
 
 #: plugins/x2go/x2go_plugin.c:1138
 #, fuzzy
 msgid "Waiting for PyHoca-CLI to show the session's window…"
-msgstr "Čekání na zobrazení okna relace pyhoca-cli."
+msgstr "Čekáme, až PyHoca-CLI zobrazí okno relace…"
 
 #: plugins/x2go/x2go_plugin.c:1189
 #, fuzzy
@@ -3115,7 +3117,7 @@ msgstr "Interní chyba: RemminaProtocolWidget* gp is NULL!"
 #| "The protocol “%s” is unavailable because GtkSocket only works under X.Org."
 msgid "The %s protocol is unavailable because GtkSocket only works under X.org"
 msgstr ""
-"Protokol „%s“ není k dispozici protože GtkSocket funguje pouze pod X.Org."
+"Protokol %s není k dispozici, protože GtkSocket funguje pouze pod X.org."
 
 #: plugins/x2go/x2go_plugin.c:1327
 #, fuzzy
@@ -3157,7 +3159,7 @@ msgstr "%s'%s', "
 #: plugins/x2go/x2go_plugin.c:1418
 #, fuzzy
 msgid "Invalid validation data in ProtocolSettings array!"
-msgstr "Ověřovací údaje v poli ProtocolSettings jsou neplatné!"
+msgstr "Neplatná validační data v poli ProtocolSettings!"
 
 #: plugins/x2go/x2go_plugin.c:1430 plugins/x2go/x2go_plugin.c:1492
 #, fuzzy
@@ -3177,15 +3179,17 @@ msgstr "Jediná povolená hodnota je \"%s\"."
 #: plugins/x2go/x2go_plugin.c:1501
 #, fuzzy
 msgid "The lower limit is not a valid integer!"
-msgstr "Limitní minimum není platné celé číslo!"
+msgstr "Dolní mez není platné celé číslo!"
 
 #: plugins/x2go/x2go_plugin.c:1503
+#, fuzzy
 msgid "The lower limit is too high!"
-msgstr ""
+msgstr "Spodní hranice je příliš vysoká!"
 
 #: plugins/x2go/x2go_plugin.c:1505
+#, fuzzy
 msgid "The lower limit is too low!"
-msgstr ""
+msgstr "Spodní hranice je příliš nízká!"
 
 #: plugins/x2go/x2go_plugin.c:1507 plugins/x2go/x2go_plugin.c:1533
 #: plugins/x2go/x2go_plugin.c:1552
@@ -3195,28 +3199,31 @@ msgstr "Něco se pokazilo."
 
 #: plugins/x2go/x2go_plugin.c:1511 plugins/x2go/x2go_plugin.c:1537
 #: plugins/x2go/x2go_plugin.c:1556
+#, fuzzy
 msgid "Please check the RemminaProtocolSetting array for possible errors."
-msgstr ""
+msgstr "Zkontrolujte, zda v poli RemminaProtocolSetting nejsou možné chyby."
 
 #: plugins/x2go/x2go_plugin.c:1520 plugins/x2go/x2go_plugin.c:1524
 #: plugins/x2go/x2go_plugin.c:1528 plugins/x2go/x2go_plugin.c:1532
 #, fuzzy
 #| msgid "Transfer error"
 msgid "Internal error: "
-msgstr "Interní chyba"
+msgstr "Interní chyba: "
 
 #: plugins/x2go/x2go_plugin.c:1521
 #, fuzzy
 msgid "The upper limit is not a valid integer!"
-msgstr "Na vstupu není platné celé číslo!"
+msgstr "Horní mez není platné celé číslo!"
 
 #: plugins/x2go/x2go_plugin.c:1525
+#, fuzzy
 msgid "The upper limit is too high!"
-msgstr ""
+msgstr "Horní hranice je příliš vysoká!"
 
 #: plugins/x2go/x2go_plugin.c:1529
+#, fuzzy
 msgid "The upper limit is too low!"
-msgstr ""
+msgstr "Horní hranice je příliš nízká!"
 
 #: plugins/x2go/x2go_plugin.c:1547
 #, fuzzy

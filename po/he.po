@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-10-12 09:46+0000\n"
-"PO-Revision-Date: 2021-10-05 14:04+0000\n"
+"PO-Revision-Date: 2021-10-13 19:30+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/remmina/remmina/"
 "he/>\n"
@@ -2819,35 +2819,26 @@ msgid "Can't retrieve `DialogData`! Aborting…"
 msgstr "אי אפשר למשוך את ‚DialogData’! הפעולה מבוטלת…"
 
 #: plugins/x2go/x2go_plugin.c:505
-#, fuzzy
-#| msgid "pyhoca-cli exited unexpectedly. This connection will now be closed."
 msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
-msgstr "pyhoca-cli יצא במפתיע. החיבור הזה ייסגר כעת."
+msgstr "PyHoca-CLI יצא במפתיע. החיבור הזה ייסגר כעת."
 
 #: plugins/x2go/x2go_plugin.c:514
 msgid "An error occured."
 msgstr "אירעה שגיאה."
 
 #: plugins/x2go/x2go_plugin.c:515
-#, fuzzy
-#| msgid ""
-#| "The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
-#| "Please check your profile settings and pyhoca-cli's output for possible "
-#| "errors and ensure the remote server is reachable."
 msgid ""
 "The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
 "Please check your profile settings and PyHoca-CLI's output for possible "
 "errors. Also ensure the remote server is reachable."
 msgstr ""
 "תהליך הצאצא ההכרחי ‚pyhoca-cli’ נעצר בפתאומיות.\n"
-"נא לבדוק את הגדרות הפרופיל שלך ואת הפלט של pyhoca-cli לאיתור שגיאות אפשריות "
+"נא לבדוק את הגדרות הפרופיל שלך ואת הפלט של PyHoca-CLI לאיתור שגיאות אפשריות "
 "ולוודא שהשרת המרוחק נגיש."
 
 #: plugins/x2go/x2go_plugin.c:561
-#, fuzzy
-#| msgid "Started pyhoca-cli with following arguments:"
 msgid "Started PyHoca-CLI with the following arguments:"
-msgstr "pyhoca-cli הופעל עם הארגומנטים הבאים:"
+msgstr "PyHoca-CLI הופעל עם הארגומנטים הבאים:"
 
 #: plugins/x2go/x2go_plugin.c:580
 #, fuzzy, c-format
@@ -2866,11 +2857,11 @@ msgstr "שגיאה: ‚%s’"
 
 #: plugins/x2go/x2go_plugin.c:609
 msgid "Can't save empty username!"
-msgstr ""
+msgstr "לא ניתן לשמור שם משתמש ריק!"
 
 #: plugins/x2go/x2go_plugin.c:621
 msgid "Internal error: Could not save new credentials."
-msgstr ""
+msgstr "שגיאה פנימית: לא ניתן לשמור פרטי גישה חדשים."
 
 #: plugins/x2go/x2go_plugin.c:623
 msgid ""
@@ -2933,10 +2924,8 @@ msgstr ""
 "לבינתיים."
 
 #: plugins/x2go/x2go_plugin.c:962
-#, fuzzy
-#| msgid "Retrieved the following pyhoca-cli functionality:"
 msgid "Retrieved the following PyHoca-CLI command-line features:"
-msgstr "היכולות הבאות pyhoca-cli התקבלו:"
+msgstr "יכולות שורת הפקודה הבאות של PyHoca-CLI התקבלו:"
 
 #: plugins/x2go/x2go_plugin.c:967
 #, c-format
@@ -2948,16 +2937,12 @@ msgid "Could not open X11 DISPLAY."
 msgstr "לא ניתן לפתוח X11 DISPLAY (תצוגה)."
 
 #: plugins/x2go/x2go_plugin.c:1112
-#, fuzzy
-#| msgid "Waiting for X2Go Agent window to appear."
 msgid "Waiting for window of X2Go Agent to appear…"
-msgstr "בהמתנה להופעת חלון סוכן X2Go."
+msgstr "בהמתנה להופעת חלון סוכן X2Go…"
 
 #: plugins/x2go/x2go_plugin.c:1138
-#, fuzzy
-#| msgid "Waiting for pyhoca-cli to show the session's window."
 msgid "Waiting for PyHoca-CLI to show the session's window…"
-msgstr "בהמתנה עד ש־pyhoca-cli יציג את חלון ההפעלה."
+msgstr "בהמתנה עד ש־PyHoca-CLI יציג את חלון ההפעלה…"
 
 #: plugins/x2go/x2go_plugin.c:1189
 msgid "No X2Go session window appeared. Something went wrong…"
@@ -2968,9 +2953,7 @@ msgid "Internal error: RemminaProtocolWidget* gp is NULL!"
 msgstr "שגיאה פנימית: RemminaProtocolWidget* gp הוא NULL!"
 
 #: plugins/x2go/x2go_plugin.c:1319
-#, fuzzy, c-format
-#| msgid ""
-#| "The protocol %s is unavailable because GtkSocket only works under X.org"
+#, c-format
 msgid "The %s protocol is unavailable because GtkSocket only works under X.org"
 msgstr "הפרוטוקול %s אינו זמין כיוון ש־GtkSocket עובד רק תחת X.org"
 
@@ -3011,8 +2994,6 @@ msgid "%s'%s', "
 msgstr "%s‚%s’, "
 
 #: plugins/x2go/x2go_plugin.c:1418
-#, fuzzy
-#| msgid "Validation data in ProtocolSettings array is invalid!"
 msgid "Invalid validation data in ProtocolSettings array!"
 msgstr "נתוני האימות במערך ProtocolSettings שגויים!"
 
@@ -3026,24 +3007,21 @@ msgid "Allowed values are %s."
 msgstr "הערכים המורשים הם %s."
 
 #: plugins/x2go/x2go_plugin.c:1459
-#, fuzzy, c-format
-#| msgid "Only allowed value is '%s'."
+#, c-format
 msgid "The only allowed value is '%s'."
 msgstr "הערך היחידי שמורשה הוא ‚%s’."
 
 #: plugins/x2go/x2go_plugin.c:1501
-#, fuzzy
-#| msgid "Limit minimum is not a valid integer!"
 msgid "The lower limit is not a valid integer!"
-msgstr "תחתית המגבלה אינה מספר שלם תקף!"
+msgstr "הגבול התחתון אינו מספר שלם תקף!"
 
 #: plugins/x2go/x2go_plugin.c:1503
 msgid "The lower limit is too high!"
-msgstr ""
+msgstr "הגבול התחתון גבוה מדי!"
 
 #: plugins/x2go/x2go_plugin.c:1505
 msgid "The lower limit is too low!"
-msgstr ""
+msgstr "הגבול התחתון נמוך מדי!"
 
 #: plugins/x2go/x2go_plugin.c:1507 plugins/x2go/x2go_plugin.c:1533
 #: plugins/x2go/x2go_plugin.c:1552
@@ -3053,32 +3031,26 @@ msgstr "משהו השתבש."
 #: plugins/x2go/x2go_plugin.c:1511 plugins/x2go/x2go_plugin.c:1537
 #: plugins/x2go/x2go_plugin.c:1556
 msgid "Please check the RemminaProtocolSetting array for possible errors."
-msgstr ""
+msgstr "נא לבדוק שאין שגיאות במערך RemminaProtocolSetting."
 
 #: plugins/x2go/x2go_plugin.c:1520 plugins/x2go/x2go_plugin.c:1524
 #: plugins/x2go/x2go_plugin.c:1528 plugins/x2go/x2go_plugin.c:1532
-#, fuzzy
-#| msgid "Internal error."
 msgid "Internal error: "
-msgstr "שגיאה פנימית."
+msgstr "שגיאה פנימית: "
 
 #: plugins/x2go/x2go_plugin.c:1521
-#, fuzzy
-#| msgid "Input is not a valid integer!"
 msgid "The upper limit is not a valid integer!"
-msgstr "הקלט אינו מספר שלם תקף!"
+msgstr "הגבול העליון אינו מספר שלם תקף!"
 
 #: plugins/x2go/x2go_plugin.c:1525
 msgid "The upper limit is too high!"
-msgstr ""
+msgstr "הגבול העליון גבוה מדי!"
 
 #: plugins/x2go/x2go_plugin.c:1529
 msgid "The upper limit is too low!"
-msgstr ""
+msgstr "הגבול העליון נמוך מדי!"
 
 #: plugins/x2go/x2go_plugin.c:1547
-#, fuzzy
-#| msgid "Input is not a valid integer!"
 msgid "The input is not a valid integer!"
 msgstr "הקלט אינו מספר שלם תקף!"
 
@@ -3108,8 +3080,6 @@ msgid "Audio support"
 msgstr "תמיכה בשמע"
 
 #: plugins/x2go/x2go_plugin.c:1605
-#, fuzzy
-#| msgid "The X2Go server's sound system (default: 'pulse')."
 msgid "The sound system of the X2Go server (default: 'pulse')."
 msgstr "מערכת השמע של שרת ה־X2Go (בררת מחדל: ‚pulse’)."
 

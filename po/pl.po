@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-10-12 09:46+0000\n"
-"PO-Revision-Date: 2021-10-05 14:04+0000\n"
+"PO-Revision-Date: 2021-10-13 19:30+0000\n"
 "Last-Translator: Matthaiks <kitynska@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/remmina/remmina/"
 "pl/>\n"
@@ -2855,11 +2855,9 @@ msgid "Can't retrieve `DialogData`! Aborting…"
 msgstr "Nie można pobrać `DialogData`! Przerywam…"
 
 #: plugins/x2go/x2go_plugin.c:505
-#, fuzzy
-#| msgid "pyhoca-cli exited unexpectedly. This connection will now be closed."
 msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
 msgstr ""
-"pyhoca-cli niespodziewanie się zakończył. To połączenie zostanie teraz "
+"PyHoca-CLI niespodziewanie się zakończył. To połączenie zostanie teraz "
 "zamknięte."
 
 #: plugins/x2go/x2go_plugin.c:514
@@ -2867,35 +2865,23 @@ msgid "An error occured."
 msgstr "Wystąpił błąd."
 
 #: plugins/x2go/x2go_plugin.c:515
-#, fuzzy
-#| msgid ""
-#| "The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
-#| "Please check your profile settings and pyhoca-cli's output for possible "
-#| "errors and ensure the remote server is reachable."
 msgid ""
 "The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
 "Please check your profile settings and PyHoca-CLI's output for possible "
 "errors. Also ensure the remote server is reachable."
 msgstr ""
 "Niezbędny proces potomny 'pyhoca-cli' niespodziewanie zatrzymał się.\n"
-"Sprawdź ustawienia profilu i dane wyjściowe pyhoca-cli pod kątem "
-"ewentualnych błędów i upewnij się, że zdalny serwer jest osiągalny."
+"Sprawdź ustawienia profilu i dane wyjściowe PyHoca-CLI pod kątem "
+"ewentualnych błędów. Również upewnij się, że zdalny serwer jest osiągalny."
 
 #: plugins/x2go/x2go_plugin.c:561
-#, fuzzy
-#| msgid "Started pyhoca-cli with following arguments:"
 msgid "Started PyHoca-CLI with the following arguments:"
-msgstr "Uruchomiono pyhoca-cli z następującymi argumentami:"
+msgstr "Uruchomiono PyHoca-CLI z następującymi argumentami:"
 
 #: plugins/x2go/x2go_plugin.c:580
-#, fuzzy, c-format
-#| msgid ""
-#| "An unknown error happened while retrieving pyhoca-cli's cmdline features! "
-#| "Exit code: %i"
+#, c-format
 msgid "Could not retrieve PyHoca-CLI's command-line features! Exit code: %i"
-msgstr ""
-"Wystąpił nieznany błąd podczas odbierania funkcji cmdline pyhoca-cli! Kod "
-"wyjścia: %i"
+msgstr "Nie można pobrać funkcji wiersza poleceń PyHoca-CLI! Kod wyjścia: %i"
 
 #: plugins/x2go/x2go_plugin.c:585
 #, c-format
@@ -2904,11 +2890,11 @@ msgstr "Błąd: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:609
 msgid "Can't save empty username!"
-msgstr ""
+msgstr "Nie można zapisać pustej nazwy użytkownika!"
 
 #: plugins/x2go/x2go_plugin.c:621
 msgid "Internal error: Could not save new credentials."
-msgstr ""
+msgstr "Błąd wewnętrzny: Nie można zapisać nowych danych uwierzytelniających."
 
 #: plugins/x2go/x2go_plugin.c:623
 msgid ""
@@ -2944,37 +2930,26 @@ msgid "Could not start PyHoca-CLI (%i): '%s'"
 msgstr "Nie można uruchomić PyHoca-CLI (%i): '%s'"
 
 #: plugins/x2go/x2go_plugin.c:945
-#, fuzzy
-#| msgid ""
-#| "Couldn't get pyhoca-cli's cmdline-features. This indicates either your "
-#| "pyhoca-cli version is too old or pyhoca-cli is not installed! An old "
-#| "limited set of features will be used now."
 msgid ""
 "Couldn't get PyHoca-CLI's command-line features. This indicates it is either "
 "too old, or not installed. An old limited set of features will be used for "
 "now."
 msgstr ""
-"Nie udało się uzyskać funkcji cmdline pyhoca-cli. Oznacza to, że twoja "
-"wersja pyhoca-cli jest za stara lub pyhoca-cli nie jest zainstalowany! "
-"Stary, ograniczony zestaw funkcji będzie teraz używany."
+"Nie można uzyskać funkcji wiersza poleceń PyHoca-CLI. Oznacza to, że jest "
+"albo za stary, albo nie jest zainstalowany. Na razie będzie używany stary, "
+"ograniczony zestaw funkcji."
 
 #: plugins/x2go/x2go_plugin.c:956
-#, fuzzy
-#| msgid ""
-#| "Parsing pyhoca-cli functionality was not possible! Using a limited "
-#| "feature-set for now."
 msgid ""
 "Could not parse PyHoca-CLI's command-line features. Using a limited feature-"
 "set for now."
 msgstr ""
-"Parsowanie funkcjonalności pyhoca-cli nie było możliwe! Na razie korzystanie "
-"z ograniczonego zestawu funkcji."
+"Nie można przeanalizować funkcji wiersza poleceń PyHoca-CLI. Na razie będzie "
+"używany ograniczony zestaw funkcji."
 
 #: plugins/x2go/x2go_plugin.c:962
-#, fuzzy
-#| msgid "Retrieved the following pyhoca-cli functionality:"
 msgid "Retrieved the following PyHoca-CLI command-line features:"
-msgstr "Odebrano następującą funkcjonalność pyhoca-cli:"
+msgstr "Pobrano następujące funkcje wiersza polecenia PyHoca-CLI:"
 
 #: plugins/x2go/x2go_plugin.c:967
 #, c-format
@@ -2986,16 +2961,12 @@ msgid "Could not open X11 DISPLAY."
 msgstr "Nie można otworzyć X11 DISPLAY."
 
 #: plugins/x2go/x2go_plugin.c:1112
-#, fuzzy
-#| msgid "Waiting for X2Go Agent window to appear."
 msgid "Waiting for window of X2Go Agent to appear…"
-msgstr "Czekam na pojawienie się okna agenta X2Go."
+msgstr "Oczekiwanie na pojawienie się okna agenta X2Go…"
 
 #: plugins/x2go/x2go_plugin.c:1138
-#, fuzzy
-#| msgid "Waiting for pyhoca-cli to show the session's window."
 msgid "Waiting for PyHoca-CLI to show the session's window…"
-msgstr "Oczekiwanie na pyhoca-cli, aby wyświetlić okno sesji."
+msgstr "Oczekiwanie na PyHoca-CLI, aby wyświetlić okno sesji…"
 
 #: plugins/x2go/x2go_plugin.c:1189
 msgid "No X2Go session window appeared. Something went wrong…"
@@ -3006,12 +2977,9 @@ msgid "Internal error: RemminaProtocolWidget* gp is NULL!"
 msgstr "Błąd wewnętrzny: RemminaProtocolWidget* gp jest NULL!"
 
 #: plugins/x2go/x2go_plugin.c:1319
-#, fuzzy, c-format
-#| msgid ""
-#| "The protocol %s is unavailable because GtkSocket only works under X.org"
+#, c-format
 msgid "The %s protocol is unavailable because GtkSocket only works under X.org"
-msgstr ""
-"Protokół %s jest niedostępny, ponieważ GtkSocket działa tylko pod X.org"
+msgstr "Protokół %s jest niedostępny, ponieważ GtkSocket działa tylko pod X.org"
 
 #: plugins/x2go/x2go_plugin.c:1327
 msgid "Could not initialize pthread. Falling back to non-threaded mode…"
@@ -3050,11 +3018,8 @@ msgid "%s'%s', "
 msgstr "%s'%s', "
 
 #: plugins/x2go/x2go_plugin.c:1418
-#, fuzzy
-#| msgid "Validation data in ProtocolSettings array is invalid!"
 msgid "Invalid validation data in ProtocolSettings array!"
-msgstr ""
-"Dane sprawdzania poprawności w tablicy ProtocolSettings są nieprawidłowe!"
+msgstr "Nieprawidłowe dane sprawdzania poprawności w tablicy ProtocolSettings!"
 
 #: plugins/x2go/x2go_plugin.c:1430 plugins/x2go/x2go_plugin.c:1492
 msgid "Validation data in ProtocolSettings array is invalid!"
@@ -3067,24 +3032,21 @@ msgid "Allowed values are %s."
 msgstr "Dozwolone wartości to %s."
 
 #: plugins/x2go/x2go_plugin.c:1459
-#, fuzzy, c-format
-#| msgid "Only allowed value is '%s'."
+#, c-format
 msgid "The only allowed value is '%s'."
 msgstr "Jedyną dozwoloną wartością jest '%s'."
 
 #: plugins/x2go/x2go_plugin.c:1501
-#, fuzzy
-#| msgid "Limit minimum is not a valid integer!"
 msgid "The lower limit is not a valid integer!"
-msgstr "Limit minimum nie jest poprawną liczbą całkowitą!"
+msgstr "Dolna granica nie jest prawidłową liczbą całkowitą!"
 
 #: plugins/x2go/x2go_plugin.c:1503
 msgid "The lower limit is too high!"
-msgstr ""
+msgstr "Dolna granica jest za wysoka!"
 
 #: plugins/x2go/x2go_plugin.c:1505
 msgid "The lower limit is too low!"
-msgstr ""
+msgstr "Dolna granica jest za niska!"
 
 #: plugins/x2go/x2go_plugin.c:1507 plugins/x2go/x2go_plugin.c:1533
 #: plugins/x2go/x2go_plugin.c:1552
@@ -3095,33 +3057,29 @@ msgstr "Coś poszło nie tak."
 #: plugins/x2go/x2go_plugin.c:1556
 msgid "Please check the RemminaProtocolSetting array for possible errors."
 msgstr ""
+"Proszę sprawdzić tablicę RemminaProtocolSetting pod kątem ewentualnych "
+"błędów."
 
 #: plugins/x2go/x2go_plugin.c:1520 plugins/x2go/x2go_plugin.c:1524
 #: plugins/x2go/x2go_plugin.c:1528 plugins/x2go/x2go_plugin.c:1532
-#, fuzzy
-#| msgid "Internal error."
 msgid "Internal error: "
-msgstr "Błąd wewnętrzny."
+msgstr "Błąd wewnętrzny: "
 
 #: plugins/x2go/x2go_plugin.c:1521
-#, fuzzy
-#| msgid "Input is not a valid integer!"
 msgid "The upper limit is not a valid integer!"
-msgstr "Dane wejściowe nie są poprawną liczbą całkowitą!"
+msgstr "Górna granica nie jest prawidłową liczbą całkowitą!"
 
 #: plugins/x2go/x2go_plugin.c:1525
 msgid "The upper limit is too high!"
-msgstr ""
+msgstr "Górna granica jest za wysoka!"
 
 #: plugins/x2go/x2go_plugin.c:1529
 msgid "The upper limit is too low!"
-msgstr ""
+msgstr "Górna granica jest za niska!"
 
 #: plugins/x2go/x2go_plugin.c:1547
-#, fuzzy
-#| msgid "Input is not a valid integer!"
 msgid "The input is not a valid integer!"
-msgstr "Dane wejściowe nie są poprawną liczbą całkowitą!"
+msgstr "Dane wejściowe nie są prawidłową liczbą całkowitą!"
 
 #: plugins/x2go/x2go_plugin.c:1549 plugins/x2go/x2go_plugin.c:1568
 #, c-format
@@ -3149,8 +3107,6 @@ msgid "Audio support"
 msgstr "Obsługa audio"
 
 #: plugins/x2go/x2go_plugin.c:1605
-#, fuzzy
-#| msgid "The X2Go server's sound system (default: 'pulse')."
 msgid "The sound system of the X2Go server (default: 'pulse')."
 msgstr "System dźwiękowy serwera X2Go (domyślnie: 'pulse')."
 

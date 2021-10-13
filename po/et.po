@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-10-12 09:46+0000\n"
-"PO-Revision-Date: 2021-10-06 11:20+0000\n"
+"PO-Revision-Date: 2021-10-13 19:30+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/remmina/remmina/"
 "et/>\n"
@@ -3191,7 +3191,7 @@ msgstr "Ei saa kätte `DialogData`! Katkestab…"
 #: plugins/x2go/x2go_plugin.c:505
 #, fuzzy
 msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
-msgstr "pyhoca-cli väljus ootamatult. See ühendus suletakse nüüd."
+msgstr "PyHoca-CLI väljus ootamatult. See ühendus suletakse nüüd."
 
 #: plugins/x2go/x2go_plugin.c:514
 #, fuzzy
@@ -3206,20 +3206,19 @@ msgid ""
 "errors. Also ensure the remote server is reachable."
 msgstr ""
 "Vajalik lapsprotsess 'pyhoca-cli' peatus ootamatult.\n"
-"Palun kontrollige oma profiili seadeid ja pyhoca-cli väljundit võimalike "
-"vigade suhtes ning veenduge, et kaugserver on kättesaadav."
+"Palun kontrollige oma profiili seadeid ja PyHoca-CLI väljundit võimalike "
+"vigade suhtes. Veenduge ka, et kaugserver on kättesaadav."
 
 #: plugins/x2go/x2go_plugin.c:561
 #, fuzzy
 msgid "Started PyHoca-CLI with the following arguments:"
-msgstr "Käivitati pyhoca-cli järgmiste argumentidega:"
+msgstr "Käivitati PyHoca-CLI järgmiste argumentidega:"
 
 #: plugins/x2go/x2go_plugin.c:580
 #, fuzzy, c-format
 msgid "Could not retrieve PyHoca-CLI's command-line features! Exit code: %i"
 msgstr ""
-"Pyhoca-cli's cmdline funktsioonide otsimisel juhtus tundmatu viga! "
-"Väljumiskood: %i"
+"PyHoca-CLI käsurea funktsioone ei õnnestunud kätte saada! Väljumiskood: %i"
 
 #: plugins/x2go/x2go_plugin.c:585
 #, fuzzy, c-format
@@ -3227,12 +3226,14 @@ msgid "Error: '%s'"
 msgstr "Viga: \"%s"
 
 #: plugins/x2go/x2go_plugin.c:609
+#, fuzzy
 msgid "Can't save empty username!"
-msgstr ""
+msgstr "Tühja kasutajanime ei saa salvestada!"
 
 #: plugins/x2go/x2go_plugin.c:621
+#, fuzzy
 msgid "Internal error: Could not save new credentials."
-msgstr ""
+msgstr "Sisemine viga: Sisemine tõrge: Ei õnnestunud salvestada uusi volitusi."
 
 #: plugins/x2go/x2go_plugin.c:623
 #, fuzzy
@@ -3281,9 +3282,8 @@ msgid ""
 "too old, or not installed. An old limited set of features will be used for "
 "now."
 msgstr ""
-"Ei saanud pyhoca-cli's cmdline-features. See näitab, et kas teie pyhoca-cli "
-"versioon on liiga vana või pyhoca-cli ei ole paigaldatud! Nüüd kasutatakse "
-"vanu piiratud funktsioone."
+"Ei saanud PyHoca-CLI käsurea funktsioone. See näitab, et see on kas liiga "
+"vana või ei ole paigaldatud. Praegu kasutatakse vanu piiratud funktsioone."
 
 #: plugins/x2go/x2go_plugin.c:956
 #, fuzzy
@@ -3291,13 +3291,13 @@ msgid ""
 "Could not parse PyHoca-CLI's command-line features. Using a limited feature-"
 "set for now."
 msgstr ""
-"Pyhoca-cli funktsionaalsuse analüüsimine ei olnud võimalik! Kasutades praegu "
+"Ei suutnud analüüsida PyHoca-CLI käsurea funktsioone. Kasutatakse praegu "
 "piiratud funktsioonikomplekti."
 
 #: plugins/x2go/x2go_plugin.c:962
 #, fuzzy
 msgid "Retrieved the following PyHoca-CLI command-line features:"
-msgstr "Võeti kasutusele järgmine pyhoca-cli funktsionaalsus:"
+msgstr "Võtab kasutusele järgmised PyHoca-CLI käsurea funktsioonid:"
 
 #: plugins/x2go/x2go_plugin.c:967
 #, fuzzy, c-format
@@ -3312,12 +3312,12 @@ msgstr "Ei saanud avada X11 DISPLAY."
 #: plugins/x2go/x2go_plugin.c:1112
 #, fuzzy
 msgid "Waiting for window of X2Go Agent to appear…"
-msgstr "Ootan X2Go Agent akna ilmumist."
+msgstr "Ootan X2Go Agenti akna ilmumist…"
 
 #: plugins/x2go/x2go_plugin.c:1138
 #, fuzzy
 msgid "Waiting for PyHoca-CLI to show the session's window…"
-msgstr "Ootab, et pyhoca-cli näitaks sessiooni akent."
+msgstr "Ootame, et PyHoca-CLI näitaks sessiooni akent…"
 
 #: plugins/x2go/x2go_plugin.c:1189
 #, fuzzy
@@ -3333,7 +3333,8 @@ msgstr "Sisemine viga: RemminaProtocolWidget* gp on NULL!"
 #, fuzzy, c-format
 msgid "The %s protocol is unavailable because GtkSocket only works under X.org"
 msgstr ""
-"Protokoll %s ei ole saadaval, sest GtkSocket töötab ainult X.org-i all."
+"Protokolli %s ei ole võimalik kasutada, sest GtkSocket töötab ainult X.org-i "
+"all."
 
 #: plugins/x2go/x2go_plugin.c:1327
 #, fuzzy
@@ -3377,7 +3378,7 @@ msgstr "%s'%s', "
 #: plugins/x2go/x2go_plugin.c:1418
 #, fuzzy
 msgid "Invalid validation data in ProtocolSettings array!"
-msgstr "Valideerimisandmed ProtocolSettings massiivis on kehtetud!"
+msgstr "Väärad valideerimisandmed ProtocolSettings massiivis!"
 
 #: plugins/x2go/x2go_plugin.c:1430 plugins/x2go/x2go_plugin.c:1492
 #, fuzzy
@@ -3397,15 +3398,17 @@ msgstr "Ainus lubatud väärtus on \"%s\"."
 #: plugins/x2go/x2go_plugin.c:1501
 #, fuzzy
 msgid "The lower limit is not a valid integer!"
-msgstr "Limiit miinimum ei ole kehtiv täisarv!"
+msgstr "Alumine piir ei ole kehtiv täisarv!"
 
 #: plugins/x2go/x2go_plugin.c:1503
+#, fuzzy
 msgid "The lower limit is too high!"
-msgstr ""
+msgstr "Alumine piir on liiga kõrge!"
 
 #: plugins/x2go/x2go_plugin.c:1505
+#, fuzzy
 msgid "The lower limit is too low!"
-msgstr ""
+msgstr "Alumine piir on liiga madal!"
 
 #: plugins/x2go/x2go_plugin.c:1507 plugins/x2go/x2go_plugin.c:1533
 #: plugins/x2go/x2go_plugin.c:1552
@@ -3415,27 +3418,31 @@ msgstr "Midagi läks valesti."
 
 #: plugins/x2go/x2go_plugin.c:1511 plugins/x2go/x2go_plugin.c:1537
 #: plugins/x2go/x2go_plugin.c:1556
+#, fuzzy
 msgid "Please check the RemminaProtocolSetting array for possible errors."
 msgstr ""
+"Palun kontrollige võimalike vigade osas massiivi RemminaProtocolSetting."
 
 #: plugins/x2go/x2go_plugin.c:1520 plugins/x2go/x2go_plugin.c:1524
 #: plugins/x2go/x2go_plugin.c:1528 plugins/x2go/x2go_plugin.c:1532
 #, fuzzy
 msgid "Internal error: "
-msgstr "Sisemine viga"
+msgstr "Sisemine viga: "
 
 #: plugins/x2go/x2go_plugin.c:1521
 #, fuzzy
 msgid "The upper limit is not a valid integer!"
-msgstr "Sisend ei ole kehtiv täisarv!"
+msgstr "Ülempiir ei ole kehtiv täisarv!"
 
 #: plugins/x2go/x2go_plugin.c:1525
+#, fuzzy
 msgid "The upper limit is too high!"
-msgstr ""
+msgstr "Ülempiir on liiga kõrge!"
 
 #: plugins/x2go/x2go_plugin.c:1529
+#, fuzzy
 msgid "The upper limit is too low!"
-msgstr ""
+msgstr "Ülempiir on liiga madal!"
 
 #: plugins/x2go/x2go_plugin.c:1547
 #, fuzzy

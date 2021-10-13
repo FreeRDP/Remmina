@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-10-12 09:46+0000\n"
-"PO-Revision-Date: 2021-10-08 08:03+0000\n"
+"PO-Revision-Date: 2021-10-13 19:30+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/remmina/"
 "remmina/nb_NO/>\n"
@@ -545,7 +545,6 @@ msgid "- or protocol://username:encryptedpassword@host:port"
 msgstr "- eller protokoll://brukernavn:kryptertpassord@vert:port"
 
 #: src/remmina.c:378
-#, fuzzy
 msgid ""
 "Examples:\n"
 "To connect using an existing connection profile, use:\n"
@@ -594,8 +593,8 @@ msgstr ""
 "\tremmina -c ssh://user@server\n"
 "\tremmina -c spice://server\n"
 "\n"
-"Slik kobler du raskt til ved hjelp av en URI sammen med et kryptert "
-"passord:\n"
+"Slik kobler du raskt til ved hjelp av en URI sammen med et kryptert passord:"
+"\n"
 "\n"
 "remmina -c rdp://username:encrypted-password@server\n"
 "\tremmina -c vnc://username:encrypted-password@server\n"
@@ -609,9 +608,9 @@ msgstr ""
 "Hvis du vil oppdatere brukernavn og passord og angi en annen "
 "oppløsningsmodus for en Remmina-tilkoblingsprofil, bruker du følgende:\n"
 "\n"
-"echo \"brukernavn\\napassword\" | remmina --update-profile /PATH/TO/FOO."
-"remmina --set-option brukernavn --set-option resolution_mode=2 --set-option "
-"passord\n"
+"echo \"brukernavn\\n"
+"apassword\" | remmina --update-profile /PATH/TO/FOO.remmina --set-option "
+"brukernavn --set-option resolution_mode=2 --set-option passord\n"
 
 #: src/remmina_public.c:345
 #, fuzzy, c-format
@@ -2914,12 +2913,14 @@ msgid "Error: '%s'"
 msgstr "Feil: %s'"
 
 #: plugins/x2go/x2go_plugin.c:609
+#, fuzzy
 msgid "Can't save empty username!"
-msgstr ""
+msgstr "Kan ikke lagre tomt brukernavn."
 
 #: plugins/x2go/x2go_plugin.c:621
+#, fuzzy
 msgid "Internal error: Could not save new credentials."
-msgstr ""
+msgstr "Intern feil: Kunne ikke lagre nye identitetsdetaljer."
 
 #: plugins/x2go/x2go_plugin.c:623
 #, fuzzy
@@ -3090,11 +3091,11 @@ msgstr "Grenseminimum er ikke et gyldig heltall."
 
 #: plugins/x2go/x2go_plugin.c:1503
 msgid "The lower limit is too high!"
-msgstr ""
+msgstr "Den nedre grensen er for høy."
 
 #: plugins/x2go/x2go_plugin.c:1505
 msgid "The lower limit is too low!"
-msgstr ""
+msgstr "Den nedre grensen er for lav."
 
 #: plugins/x2go/x2go_plugin.c:1507 plugins/x2go/x2go_plugin.c:1533
 #: plugins/x2go/x2go_plugin.c:1552
@@ -3104,7 +3105,7 @@ msgstr "Noe gikk galt."
 #: plugins/x2go/x2go_plugin.c:1511 plugins/x2go/x2go_plugin.c:1537
 #: plugins/x2go/x2go_plugin.c:1556
 msgid "Please check the RemminaProtocolSetting array for possible errors."
-msgstr ""
+msgstr "Sjekk om det er feil i RemminaProtocolSetting-tabellen."
 
 #: plugins/x2go/x2go_plugin.c:1520 plugins/x2go/x2go_plugin.c:1524
 #: plugins/x2go/x2go_plugin.c:1528 plugins/x2go/x2go_plugin.c:1532
@@ -3120,11 +3121,11 @@ msgstr "Inndata er ikke et gyldig heltall."
 
 #: plugins/x2go/x2go_plugin.c:1525
 msgid "The upper limit is too high!"
-msgstr ""
+msgstr "Den øvre grensen er for høy-"
 
 #: plugins/x2go/x2go_plugin.c:1529
 msgid "The upper limit is too low!"
-msgstr ""
+msgstr "Den øvre grensen er for lav."
 
 #: plugins/x2go/x2go_plugin.c:1547
 #, fuzzy
