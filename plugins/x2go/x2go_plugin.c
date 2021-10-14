@@ -60,7 +60,7 @@
 		gpdata->available_features ? (g_list_find_custom( \
 						gpdata->available_features, \
 						feature, \
-						rmplugin_x2go_safe_strcmp \
+						g_strcmp0 \
 					     ) ? TRUE : FALSE) : FALSE
 
 #define FEATURE_NOT_AVAIL_STR(feature) \
@@ -215,15 +215,6 @@ static gchar** rmplugin_x2go_split_string(gchar* data, gchar delim, guint *occur
 	}
 
 	return returning_string_list;
-}
-
-/**
- * @brief Wrapper for strcmp which doesn't throw an exception
- *	   when 'a' or 'b' are a nullpointer.
- */
-static gint rmplugin_x2go_safe_strcmp(gconstpointer a, gconstpointer b) {
-	if (a && b) return strcmp(a, b);
-	return -1;
 }
 
 /**
@@ -585,15 +576,15 @@ static gchar* rmplugin_x2go_get_pyhoca_features()
 	REMMINA_PLUGIN_INFO("%s", _("Started PyHoca-CLI with the following arguments:"));
 	// Print every argument except passwords. Free all arg strings.
 	for (gint i = 0; i < argc - 1; i++) {
-		if (strcmp(argv[i], "--password") == 0) {
+		if (g_strcmp0(argv[i], "--password") == 0) {
 			g_printf("%s ", argv[i]);
 			g_printf("XXXXXX ");
-			g_free (argv[i]);
-			g_free (argv[++i]);
+			g_free(argv[i]);
+			g_free(argv[++i]);
 			continue;
 		} else {
 			g_printf("%s ", argv[i]);
-			g_free (argv[i]);
+			g_free(argv[i]);
 		}
 	}
 	g_printf("\n");
@@ -629,7 +620,7 @@ static gboolean rmplugin_x2go_save_credentials(RemminaFile* remminafile,
 	// into remminafile->settings. They will be saved later, on successful
 	// connection, by rcw.c
 	if (s_password && s_username) {
-		if (strcmp(s_username, "") == 0) {
+		if (g_strcmp0(s_username, "") == 0) {
 			g_strlcpy(errmsg, _("Can't save empty username!"), 512);
 			//REMMINA_PLUGIN_CRITICAL("%s", errmsg); // No need.
 			return FALSE;
@@ -888,7 +879,7 @@ static gboolean rmplugin_x2go_exec_x2go(gchar *host,
 	REMMINA_PLUGIN_INFO("%s", _("Started pyhoca-cli with following arguments:"));
 	// Print every argument except passwords. Free all arg strings.
 	for (gint i = 0; i < argc - 1; i++) {
-		if (strcmp(argv[i], "--password") == 0) {
+		if (g_strcmp0(argv[i], "--password") == 0) {
 			g_printf("%s ", argv[i]);
 			g_printf("XXXXXX ");
 			g_free (argv[i]);
@@ -1496,7 +1487,7 @@ static GError* rmplugin_x2go_string_setting_validator(gchar* key, gchar* value,
 	for (int i = 0; i < elements_amount; i++) {
 		// Don't wanna crash if elements_list[i] is NULL.
 		gchar* element = elements_list[i] ? elements_list[i] : "";
-		if (strcmp(value, element) == 0) {
+		if (g_strcmp0(value, element) == 0) {
 			// We found value in elements_list. Value passed validation.
 			return NULL;
 		}
