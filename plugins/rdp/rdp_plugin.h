@@ -119,6 +119,8 @@ struct rf_clipboard {
 	enum  { SCDW_NONE, SCDW_BUSY_WAIT, SCDW_ABORTING } srv_clip_data_wait;
 	gpointer		srv_data;
 
+	UINT32			server_html_format_id;
+
 	/* Stats for clipboard download */
 	struct timeval clientformatdatarequest_tv;
 };
@@ -209,8 +211,7 @@ typedef enum {
 typedef enum {
 	REMMINA_RDP_UI_CLIPBOARD_FORMATLIST,
 	REMMINA_RDP_UI_CLIPBOARD_GET_DATA,
-	REMMINA_RDP_UI_CLIPBOARD_SET_DATA,
-	REMMINA_RDP_UI_CLIPBOARD_SET_CONTENT
+	REMMINA_RDP_UI_CLIPBOARD_SET_DATA
 } RemminaPluginRdpUiClipboardType;
 
 typedef enum {
