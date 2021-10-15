@@ -170,6 +170,7 @@ parts:
       # remember to remove when snapcraft will be built in ubuntu >= 20.04
       # This must be at the beginning
       - -DCMAKE_BUILD_TYPE=Release
+      - -DWITH_ICU=on
       - -DWITH_WAYLAND=on
       - -DWITH_SERVER=off
       - -DWITH_PULSE=on
