@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-10-14 10:08+0000\n"
-"PO-Revision-Date: 2021-10-06 11:20+0000\n"
+"PO-Revision-Date: 2021-10-17 14:36+0000\n"
 "Last-Translator: gogogogi <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/remmina/remmina/"
 "hr/>\n"
@@ -2835,46 +2835,32 @@ msgid "Can't retrieve `DialogData`! Aborting…"
 msgstr "Nemoguće primanje `DialogData`! Prekidanje…"
 
 #: plugins/x2go/x2go_plugin.c:505
-#, fuzzy
-#| msgid "pyhoca-cli exited unexpectedly. This connection will now be closed."
 msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
 msgstr ""
-"pyhoca-cli je neočekivano završio. Ovo povezivanje će sada biti prekinuto."
+"PyHoca-CLI je neočekivano završio. Ovo povezivanje će sada biti prekinuto."
 
 #: plugins/x2go/x2go_plugin.c:514
 msgid "An error occured."
 msgstr "Dogodila se greška."
 
 #: plugins/x2go/x2go_plugin.c:515
-#, fuzzy
-#| msgid ""
-#| "The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
-#| "Please check your profile settings and pyhoca-cli's output for possible "
-#| "errors and ensure the remote server is reachable."
 msgid ""
 "The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
 "Please check your profile settings and PyHoca-CLI's output for possible "
 "errors. Also ensure the remote server is reachable."
 msgstr ""
 "Potreban sadržani proces 'pyhoca-cli' je neočekivano završio.\n"
-"Provjerite svoje postavke profila i pyhoca-cli ispis za moguće greške i "
+"Provjerite svoje postavke profila i PyHoca-CLI ispis za moguće greške i "
 "pobrinite se da je udaljeni poslužitelj dostupan."
 
 #: plugins/x2go/x2go_plugin.c:561
-#, fuzzy
-#| msgid "Started pyhoca-cli with following arguments:"
 msgid "Started PyHoca-CLI with the following arguments:"
-msgstr "Pokrenuta je pyhoca-cli sa sljedećim značajkama:"
+msgstr "Pokrenut je PyHoca-CLI sa sljedećim argumentima:"
 
 #: plugins/x2go/x2go_plugin.c:580
-#, fuzzy, c-format
-#| msgid ""
-#| "An unknown error happened while retrieving pyhoca-cli's cmdline features! "
-#| "Exit code: %i"
+#, c-format
 msgid "Could not retrieve PyHoca-CLI's command-line features! Exit code: %i"
-msgstr ""
-"Nepoznata greška se dogodila pri primanju pyhoca-cli's značajki naredbenog "
-"retka! Izlazni kôd: %i"
+msgstr "Nemoguće primanje PyHoca-CLI značajki naredbenog retka! Izlazni kôd: %i"
 
 #: plugins/x2go/x2go_plugin.c:585
 #, c-format
@@ -2883,11 +2869,11 @@ msgstr "Greška: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:609
 msgid "Can't save empty username!"
-msgstr ""
+msgstr "Nemoguće spremanje praznog korisničkog imena!"
 
 #: plugins/x2go/x2go_plugin.c:621
 msgid "Internal error: Could not save new credentials."
-msgstr ""
+msgstr "Unutrašnja greška: Nemoguće spremanje novih vjerodajnica."
 
 #: plugins/x2go/x2go_plugin.c:623
 msgid ""
@@ -2923,36 +2909,26 @@ msgid "Could not start PyHoca-CLI (%i): '%s'"
 msgstr "Neuspjelo pokretanje PyHoca-CLI (%i): '%s'"
 
 #: plugins/x2go/x2go_plugin.c:945
-#, fuzzy
-#| msgid ""
-#| "Couldn't get pyhoca-cli's cmdline-features. This indicates either your "
-#| "pyhoca-cli version is too old or pyhoca-cli is not installed! An old "
-#| "limited set of features will be used now."
 msgid ""
 "Couldn't get PyHoca-CLI's command-line features. This indicates it is either "
 "too old, or not installed. An old limited set of features will be used for "
 "now."
 msgstr ""
-"Nemoguće dobivanje pyhoca-cli značajki naredbenog retka. To znači da je vaša "
-"pyhoca-cli inačica zastarjela ili pyhoca-cli nije instaliran! Stoga će se "
-"koristiti zastarjeli ograničeni skup značajki."
+"Nemoguće dobivanje PyHoca-CLI značajki naredbenog retka. To znači da je vaša "
+"pyhoca-cli inačica zastarjela ili nije instaliran! Stoga će se koristiti "
+"zastarjeli ograničeni skup značajki."
 
 #: plugins/x2go/x2go_plugin.c:956
-#, fuzzy
-#| msgid ""
-#| "Parsing pyhoca-cli functionality was not possible! Using a limited "
-#| "feature-set for now."
 msgid ""
 "Could not parse PyHoca-CLI's command-line features. Using a limited feature-"
 "set for now."
 msgstr ""
-"Obrada pyhoca-cli značajki nije moguće! Koristi se ograničeni skup značajki."
+"Nemoguća Obrada PyHoca-CLI značajki naredbenog retka! Koristi se ograničeni "
+"skup značajki."
 
 #: plugins/x2go/x2go_plugin.c:962
-#, fuzzy
-#| msgid "Retrieved the following pyhoca-cli functionality:"
 msgid "Retrieved the following PyHoca-CLI command-line features:"
-msgstr "Primljene su sljedeće pyhoca-cli funkcionalnosti:"
+msgstr "Primljene su sljedeće PyHoca-CLI značajke naredbenog redka:"
 
 #: plugins/x2go/x2go_plugin.c:967
 #, c-format
@@ -2964,16 +2940,12 @@ msgid "Could not open X11 DISPLAY."
 msgstr "Neuspjelo otvaranje X11 ZASLONA."
 
 #: plugins/x2go/x2go_plugin.c:1112
-#, fuzzy
-#| msgid "Waiting for X2Go Agent window to appear."
 msgid "Waiting for window of X2Go Agent to appear…"
-msgstr "Čekanje pojavljivanja X2Go agent prozora."
+msgstr "Čekanje pojavljivanja prozora X2Go agenta…"
 
 #: plugins/x2go/x2go_plugin.c:1138
-#, fuzzy
-#| msgid "Waiting for pyhoca-cli to show the session's window."
 msgid "Waiting for PyHoca-CLI to show the session's window…"
-msgstr "Čekanje da pyhoca-cli prikaže prozor sesije."
+msgstr "Čekanje da PyHoca-CLI prikaže prozor sesije…"
 
 #: plugins/x2go/x2go_plugin.c:1189
 msgid "No X2Go session window appeared. Something went wrong…"
@@ -2984,9 +2956,7 @@ msgid "Internal error: RemminaProtocolWidget* gp is NULL!"
 msgstr "Unutrašnja greška: RemminaProtocolWidget* gp je NULA!"
 
 #: plugins/x2go/x2go_plugin.c:1319
-#, fuzzy, c-format
-#| msgid ""
-#| "The protocol %s is unavailable because GtkSocket only works under X.org"
+#, c-format
 msgid "The %s protocol is unavailable because GtkSocket only works under X.org"
 msgstr "Protokol %s je nedostupan jer GtkSocket radi samo pod X.Org-om"
 
@@ -3027,10 +2997,8 @@ msgid "%s'%s', "
 msgstr "%s'%s', "
 
 #: plugins/x2go/x2go_plugin.c:1418
-#, fuzzy
-#| msgid "Validation data in ProtocolSettings array is invalid!"
 msgid "Invalid validation data in ProtocolSettings array!"
-msgstr "Provjera podataka u polju ProtocolSettings je neispravna!"
+msgstr "Nevaljana provjera podataka ProtocolSettings polju!"
 
 #: plugins/x2go/x2go_plugin.c:1430 plugins/x2go/x2go_plugin.c:1492
 msgid "Validation data in ProtocolSettings array is invalid!"
@@ -3042,24 +3010,21 @@ msgid "Allowed values are %s."
 msgstr "Dopuštene vrijednosti su %s."
 
 #: plugins/x2go/x2go_plugin.c:1459
-#, fuzzy, c-format
-#| msgid "Only allowed value is '%s'."
+#, c-format
 msgid "The only allowed value is '%s'."
 msgstr "Samo dopuštena vrijednost je '%s'."
 
 #: plugins/x2go/x2go_plugin.c:1501
-#, fuzzy
-#| msgid "Limit minimum is not a valid integer!"
 msgid "The lower limit is not a valid integer!"
-msgstr "Ograničenje minimuma nije valjani cijeli broj!"
+msgstr "Niže ograničenje nije valjani cijeli broj!"
 
 #: plugins/x2go/x2go_plugin.c:1503
 msgid "The lower limit is too high!"
-msgstr ""
+msgstr "Niže ograničenje je preveliko!"
 
 #: plugins/x2go/x2go_plugin.c:1505
 msgid "The lower limit is too low!"
-msgstr ""
+msgstr "Niže ograničenje je premalo!"
 
 #: plugins/x2go/x2go_plugin.c:1507 plugins/x2go/x2go_plugin.c:1533
 #: plugins/x2go/x2go_plugin.c:1552
@@ -3069,32 +3034,26 @@ msgstr "Nešto je pošlo po krivu."
 #: plugins/x2go/x2go_plugin.c:1511 plugins/x2go/x2go_plugin.c:1537
 #: plugins/x2go/x2go_plugin.c:1556
 msgid "Please check the RemminaProtocolSetting array for possible errors."
-msgstr ""
+msgstr "Provjerite RemminaProtocolSetting polje za moguće greške."
 
 #: plugins/x2go/x2go_plugin.c:1520 plugins/x2go/x2go_plugin.c:1524
 #: plugins/x2go/x2go_plugin.c:1528 plugins/x2go/x2go_plugin.c:1532
-#, fuzzy
-#| msgid "Internal error."
 msgid "Internal error: "
-msgstr "Unutrašnja greška."
+msgstr "Unutrašnja greška: "
 
 #: plugins/x2go/x2go_plugin.c:1521
-#, fuzzy
-#| msgid "Input is not a valid integer!"
 msgid "The upper limit is not a valid integer!"
-msgstr "Unos nije valjan cijeli broj!"
+msgstr "Gornje ograničenje nije valjan cijeli broj!"
 
 #: plugins/x2go/x2go_plugin.c:1525
 msgid "The upper limit is too high!"
-msgstr ""
+msgstr "Gornje ograničenje je preveliko!"
 
 #: plugins/x2go/x2go_plugin.c:1529
 msgid "The upper limit is too low!"
-msgstr ""
+msgstr "Gornje ograničenje je premalo!"
 
 #: plugins/x2go/x2go_plugin.c:1547
-#, fuzzy
-#| msgid "Input is not a valid integer!"
 msgid "The input is not a valid integer!"
 msgstr "Unos nije valjan cijeli broj!"
 
@@ -3124,8 +3083,6 @@ msgid "Audio support"
 msgstr "Podrška zvuka"
 
 #: plugins/x2go/x2go_plugin.c:1605
-#, fuzzy
-#| msgid "The X2Go server's sound system (default: 'pulse')."
 msgid "The sound system of the X2Go server (default: 'pulse')."
 msgstr "Zvučni sustav X2Go poslužitelja (zadan: 'pulse')."
 
