@@ -60,7 +60,7 @@
 		gpdata->available_features ? (g_list_find_custom( \
 						gpdata->available_features, \
 						feature, \
-						g_strcmp0 \
+						(GCompareFunc) g_strcmp0 \
 					     ) ? TRUE : FALSE) : FALSE
 
 #define FEATURE_NOT_AVAIL_STR(feature) \
