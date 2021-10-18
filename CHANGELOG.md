@@ -1,3 +1,35 @@
+## v1.4.21
+[full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.20...v1.4.21)
+
+* Nullify host if qucikconnect isn't a valid address [!2298](https://gitlab.com/Remmina/Remmina/merge_requests/2298) *@antenore*
+* rdp_plugin.c: Fix dereferencing of NULL variable when profile name is empty [!2299](https://gitlab.com/Remmina/Remmina/merge_requests/2299) *@agunnerson-ibm*
+* Resolve label spacing in preferences window [!2300](https://gitlab.com/Remmina/Remmina/merge_requests/2300) *@antenore*
+* GNOME 40 runtime and other updates [!2302](https://gitlab.com/Remmina/Remmina/merge_requests/2302) *@antenore*
+* Add support for ESX web console login [!2303](https://gitlab.com/Remmina/Remmina/merge_requests/2303) *@antenore*
+* Added RDP general option to remap scancodes [!2304](https://gitlab.com/Remmina/Remmina/merge_requests/2304) *@antenore*
+* Back compatibility with WebKit < 2.32.0 [!2305](https://gitlab.com/Remmina/Remmina/merge_requests/2305) *@antenore*
+* Make screenshot file names iso8601 compliant [!2306](https://gitlab.com/Remmina/Remmina/merge_requests/2306) *@antenore*
+* Typo in bug-report template [!2308](https://gitlab.com/Remmina/Remmina/merge_requests/2308) *@kingu*
+* Typo in merge-request template [!2309](https://gitlab.com/Remmina/Remmina/merge_requests/2309) *@kingu*
+* Implementing restricted-mode and password hash [!2307](https://gitlab.com/Remmina/Remmina/merge_requests/2307) *@antenore*
+* Unitialized var by @qarmin (Rafał Mikrut ). Closes #2594 [!2310](https://gitlab.com/Remmina/Remmina/merge_requests/2310) *@antenore*
+* Include X2Go plugin [!2301](https://gitlab.com/Remmina/Remmina/merge_requests/2301) *@D0n1elT*
+* Add integer-only input field for plugin settings in Remmina Editor [!2311](https://gitlab.com/Remmina/Remmina/merge_requests/2311) *@D0n1elT*
+* Adding VNCI Listen port field tooltip [!2314](https://gitlab.com/Remmina/Remmina/merge_requests/2314) *@antenore*
+* Using core20 for snap [!2315](https://gitlab.com/Remmina/Remmina/merge_requests/2315) *@antenore*
+* Fix the translation problem of "tooltip" in ssh window [!2317](https://gitlab.com/Remmina/Remmina/merge_requests/2317) *@HeroesLoveToRoujiamo*
+* X2Go plugin language reworked [!2313](https://gitlab.com/Remmina/Remmina/merge_requests/2313) *@kingu*
+* Rework x2go_plugin.c to comply with remmina coding style. [!2319](https://gitlab.com/Remmina/Remmina/merge_requests/2319) *@D0n1elT*
+* Add validation system for Remmina Editor [!2312](https://gitlab.com/Remmina/Remmina/merge_requests/2312) *@D0n1elT*
+* Small changes to README, AUTHORS and error message adjusting in remmina_file_editor.c [!2320](https://gitlab.com/Remmina/Remmina/merge_requests/2320) *@D0n1elT*
+* remmina_file_editor.c: Readd by mistake removed '!' [!2322](https://gitlab.com/Remmina/Remmina/merge_requests/2322) *@D0n1elT*
+* Mitigation for #1951 and extra RDP clibpoard debug messages [!2323](https://gitlab.com/Remmina/Remmina/merge_requests/2323) *@giox069*
+* X2Go plugin language reworked 2 [!2321](https://gitlab.com/Remmina/Remmina/merge_requests/2321) *@kingu*
+* Rollback Let's Encrypt SSL workaround [!2324](https://gitlab.com/Remmina/Remmina/merge_requests/2324) *@antenore*
+* Add RDP clipboard support for Microsoft HTML Clipboard Format [!2325](https://gitlab.com/Remmina/Remmina/merge_requests/2325) *@giox069*
+* Building FreeRDP with icu support [!2326](https://gitlab.com/Remmina/Remmina/merge_requests/2326) *@antenore*
+* Resource renaming to comply with the Freedesktop rules [!2327](https://gitlab.com/Remmina/Remmina/merge_requests/2327) *@antenore*
+
 ## v1.4.20
 [full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.19...v1.4.20)
 
