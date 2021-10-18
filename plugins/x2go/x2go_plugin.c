@@ -161,63 +161,6 @@ str2int_errno str2int(gint *out, gchar *s, gint base)
 }
 
 /**
- * @param data Actual string to split
- * @param delim Used as delimeter character for splitting string
- * @param occurences How many times did the delimeter occur
- * @returns gchar**, so a gchar* list of all occurences.
- *
- * @brief Splits a string into a gchar* list using delim as a single-character delimeter.
- *
- */
-static gchar** rmplugin_x2go_split_string(gchar* data, gchar delim, guint *occurences)
-{
-	REMMINA_PLUGIN_DEBUG("Function entry.");
-
-	if (!data || !delim || !occurences) {
-		REMMINA_PLUGIN_CRITICAL("%s%s", _("Internal error: "),
-			      _("parameter 'data', 'delim' or 'occurences' are 'NULL'!"));
-		return NULL;
-	}
-
-	// Counts the occurence of 'delim', so the amount of numbers passed.
-	guint delim_occurence = 0;
-	// work on a copy of the string, because strchr alters the string.
-	gchar *pch = strchr(g_strdup(data), delim);
-	while (pch != NULL) {
-		delim_occurence++;
-		pch = strchr(pch + 1, delim);
-	}
-
-	gchar **returning_string_list = NULL;
-	// We are just storing gchar pointers not actual gchars.
-	returning_string_list = malloc(sizeof(gchar*) * (delim_occurence + 1));
-	if (!returning_string_list) {
-		REMMINA_PLUGIN_CRITICAL("%s%s", _("Internal error: "),
-						_("could not allocate enough memory!"));
-		return NULL;
-	}
-
-	(*occurences) = 0;
-	// Split 'data' into array 'returning_string_list' using 'delim' as delimiter.
-	gchar *ptr = strtok(g_strdup(data), g_strdup_printf("%c", delim));
-	for(gint j = 0; (j <= delim_occurence && ptr != NULL); j++) {
-		// Add occurence to list
-		returning_string_list[j] = g_strdup(ptr);
-
-		// Get next occurence
-		ptr = strtok(NULL, g_strdup_printf("%c", delim));
-
-		(*occurences)++;
-	}
-
-	if (*occurences <= 0) {
-		return NULL;
-	}
-
-	return returning_string_list;
-}
-
-/**
  * DialogData:
  * @param flags see GtkDialogFlags
  * @param type see GtkMessageType
@@ -989,11 +932,9 @@ static GList* rmplugin_x2go_populate_available_features_list()
 
 		return rmplugin_x2go_old_pyhoca_features();
 	} else {
-		guint features_amount = 0;
-		gchar **features_list = rmplugin_x2go_split_string(features_string, '\n',
-								   &features_amount);
+		gchar **features_list = g_strsplit(features_string, "\n", 0);
 
-		if (features_list == NULL || features_amount <= 0) {
+		if (features_list == NULL) {
 			gchar *error_msg = _("Could not parse PyHoca-CLI's command-line "
 					     "features. Using a limited feature-set for now.");
 			REMMINA_PLUGIN_WARNING("%s", error_msg);
@@ -1003,7 +944,10 @@ static GList* rmplugin_x2go_populate_available_features_list()
 		REMMINA_PLUGIN_INFO("%s", _("Retrieved the following PyHoca-CLI "
 					    "command-line features:"));
 
-		for(int k = 0; k < features_amount; k++) {
+		for(int k = 0; features_list[k] != NULL; k++) {
+			// Filter out emptry strings
+			if (strlen(features_list[k]) <= 0) continue;
+
 			REMMINA_PLUGIN_INFO("%s",
 					 g_strdup_printf(_("Available feature[%i]: '%s'"),
 							 k+1, features_list[k]));
@@ -1464,12 +1408,17 @@ static GError* rmplugin_x2go_string_setting_validator(gchar* key, gchar* value,
 		return error;
 	}
 
-	guint elements_amount = 0;
-	gchar **elements_list = rmplugin_x2go_split_string(data, ',', &elements_amount);
+	gchar **elements_list = g_strsplit(data, ",", 0);
 
-	if (elements_amount <= 0 || elements_list == NULL) {
-		// Something went wrong, there can't be less than 1 element!
-		// And elements_list can't be NULL!
+	guint elements_amount = 0;
+	for (; elements_list[elements_amount] != NULL; elements_amount++) {
+		// Just advance elements_amount...
+	}
+
+	if (elements_list == NULL ||
+	    elements_list[0] == NULL ||
+	    strlen(elements_list[0]) <= 0)
+	{
 		gchar *error_msg = _("Validation data in ProtocolSettings array is invalid!");
 		REMMINA_PLUGIN_CRITICAL("%s", error_msg);
 		g_set_error(&error, 1, 1, error_msg);
@@ -1484,7 +1433,7 @@ static GError* rmplugin_x2go_string_setting_validator(gchar* key, gchar* value,
 		return error;
 	}
 
-	for (int i = 0; i < elements_amount; i++) {
+	for (guint i = 0; elements_list[i] != NULL; i++) {
 		// Don't wanna crash if elements_list[i] is NULL.
 		gchar* element = elements_list[i] ? elements_list[i] : "";
 		if (g_strcmp0(value, element) == 0) {
@@ -1503,7 +1452,7 @@ static GError* rmplugin_x2go_string_setting_validator(gchar* key, gchar* value,
 	}
 
 	g_free(data_str);
-	g_free(elements_list);
+	g_strfreev(elements_list);
 
 	return error;
 }
@@ -1527,12 +1476,14 @@ static GError* rmplugin_x2go_int_setting_validator(gchar* key, gpointer value,
 {
 	GError *error = NULL;
 
-	guint integer_amount = 0;
-	gchar **integer_list = rmplugin_x2go_split_string(data, ';', &integer_amount);
+	gchar **integer_list = g_strsplit(data, ";", 0);
 
-	if (integer_amount != 2 || integer_list == NULL) {
-		// Something went wrong, there can't be more or less than 2 list entries.
-		// And integer_list can't be NULL!
+	if (integer_list == NULL ||
+	    integer_list[0] == NULL ||
+	    integer_list[1] == NULL ||
+	    strlen(integer_list[0]) <= 0 ||
+	    strlen(integer_list[1]) <= 0)
+	{
 		gchar *error_msg = _("Validation data in ProtocolSettings array is invalid!");
 		REMMINA_PLUGIN_CRITICAL("%s", error_msg);
 		g_set_error(&error, 1, 1, error_msg);
