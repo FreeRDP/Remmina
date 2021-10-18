@@ -39,5 +39,5 @@
 #define PLUGIN_NAME        "HELLO"
 #define PLUGIN_DESCRIPTION N_("Hello, World!")
 #define PLUGIN_VERSION     "1.0"
-#define PLUGIN_APPICON     "remmina-tool"
+#define PLUGIN_APPICON     "org.remmina.Remmina-tool-symbolic"
 #endif

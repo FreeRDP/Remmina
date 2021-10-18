@@ -66,12 +66,12 @@ set(ICON96_DATA 96x96/apps/${REMMINA_ICON}.png)
 set(ICON128_DATA 128x128/apps/${REMMINA_ICON}.png)
 set(ICON256_DATA 256x256/apps/${REMMINA_ICON}.png)
 set(ICON512_DATA 512x512/apps/${REMMINA_ICON}.png)
-set(STATUS16_DATA 16x16/status/remmina-status.svg)
-set(STATUS22_DATA 22x22/status/remmina-status.svg)
-set(STATUS24_DATA 24x24/status/remmina-status.svg)
-set(STATUS32_DATA 32x32/status/remmina-status.svg)
-set(STATUS48_DATA 48x48/status/remmina-status.svg)
-set(STATUS64_DATA 64x64/status/remmina-status.svg)
+set(STATUS16_DATA 16x16/status/org.remmina.Remmina-status.svg)
+set(STATUS22_DATA 22x22/status/org.remmina.Remmina-status.svg)
+set(STATUS24_DATA 24x24/status/org.remmina.Remmina-status.svg)
+set(STATUS32_DATA 32x32/status/org.remmina.Remmina-status.svg)
+set(STATUS48_DATA 48x48/status/org.remmina.Remmina-status.svg)
+set(STATUS64_DATA 64x64/status/org.remmina.Remmina-status.svg)
 set(ICONSVG_DATA scalable/apps/${REMMINA_ICON}.svg)
 set(ICONSVG_RM_DATA scalable/apps/remmina-symbolic.svg)
 set(ICONSVG_ORG_DATA scalable/apps/${REMMINA_ICON}-symbolic.svg)
@@ -104,13 +104,13 @@ set(REMMINA_BINARY_PATH ${CMAKE_INSTALL_FULL_BINDIR}/remmina)
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/${REMMINA_APP_ID}.desktop.in
     ${CMAKE_CURRENT_BINARY_DIR}/${REMMINA_APP_ID}.desktop @ONLY)
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/remmina-file.desktop.in
-    ${CMAKE_CURRENT_BINARY_DIR}/remmina-file.desktop @ONLY)
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/org.remmina.Remmina-file.desktop.in
+    ${CMAKE_CURRENT_BINARY_DIR}/org.remmina.Remmina-file.desktop @ONLY)
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/remmina-file-wrapper.in
     ${CMAKE_CURRENT_BINARY_DIR}/remmina-file-wrapper @ONLY)
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${REMMINA_APP_ID}.desktop
     DESTINATION "${REMMINA_DATADIR}/applications")
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/remmina-file.desktop
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/org.remmina.Remmina-file.desktop
     DESTINATION "${REMMINA_DATADIR}/applications")
 install(FILES ${REMMINA_APP_ID}.appdata.xml
     DESTINATION "${REMMINA_DATADIR}/metainfo")

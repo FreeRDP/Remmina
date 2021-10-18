@@ -46,8 +46,8 @@ target_link_libraries(remmina-plugin-spice ${REMMINA_COMMON_LIBRARIES} ${SPICE_L
 install(TARGETS remmina-plugin-spice DESTINATION ${REMMINA_PLUGINDIR})
 
 install(FILES
-    scalable/emblems/remmina-spice-ssh-symbolic.svg
-    scalable/emblems/remmina-spice-symbolic.svg
+    scalable/emblems/org.remmina.Remmina-spice-ssh-symbolic.svg
+    scalable/emblems/org.remmina.Remmina-spice-symbolic.svg
     DESTINATION ${APPICONSCALE_EMBLEMS_DIR})
 
 if(WITH_ICON_CACHE)

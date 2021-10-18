@@ -23,10 +23,10 @@ class Plugin:
         self.type = "protocol"
         self.description = "VNC but in Python!"
         self.version  = "1.0"
-        self.icon_name = "remmina-vnc-symbolic"
-        self.icon_name_ssh = "remmina-vnc-ssh-symbolic"
+        self.icon_name = "org.remmina.Remmina-vnc-symbolic"
+        self.icon_name_ssh = "org.remmina.Remmina-vnc-ssh-symbolic"
         self.ssh_setting = remmina.PROTOCOL_SSH_SETTING_TUNNEL
-        
+
         self.features = [
             remmina.Feature(
                 type=remmina.PROTOCOL_FEATURE_TYPE_PREF,
@@ -42,7 +42,7 @@ class Plugin:
             ,remmina.Feature(remmina.PROTOCOL_FEATURE_TYPE_SCALE, VncFeature.Scale, None, None, None)
             ,remmina.Feature(remmina.PROTOCOL_FEATURE_TYPE_UNFOCUS, VncFeature.Unfocus, None, None, None)
         ]
-        
+
         colordepths = ("8", "256 colors (8 bpp)", "16", "High color (16 bpp)", "32", "True color (32 bpp)")
         print(type(colordepths))
         qualities = ("0", "Poor (fastest)", "1","Medium", "2","Good", "9","Best (slowest)")
@@ -64,7 +64,7 @@ class Plugin:
             , remmina.Setting(remmina.PROTOCOL_SETTING_TYPE_CHECK, "disableserverinput",     "Disable server input",     True,  None, None)
             , remmina.Setting(remmina.PROTOCOL_SETTING_TYPE_CHECK, "disablepasswordstoring", "Disable password storing", False, None, None)
         ]
-        
+
     def init(self, gp):
         print("[PyVNC.init]: Called!")
         pass

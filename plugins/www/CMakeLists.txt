@@ -50,7 +50,7 @@ target_link_libraries(remmina-plugin-www ${REMMINA_COMMON_LIBRARIES} ${WEBKIT2_L
 install(TARGETS remmina-plugin-www DESTINATION ${REMMINA_PLUGINDIR})
 
 install(FILES
-    scalable/emblems/remmina-www-symbolic.svg
+    scalable/emblems/org.remmina.Remmina-www-symbolic.svg
     DESTINATION ${APPICONSCALE_EMBLEMS_DIR})
 
 if(WITH_ICON_CACHE)

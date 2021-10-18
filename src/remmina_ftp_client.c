@@ -648,14 +648,14 @@ static void remmina_ftp_client_popup_menu(RemminaFTPClient *client, GdkEventButt
 
 	menuitem = gtk_menu_item_new_with_label(_("Download"));
 	gtk_widget_show(menuitem);
-	image = gtk_image_new_from_icon_name("remmina-document-save-symbolic", GTK_ICON_SIZE_MENU);
+	image = gtk_image_new_from_icon_name("org.remmina.Remmina-document-save-symbolic", GTK_ICON_SIZE_MENU);
 	gtk_widget_show(image);
 	gtk_menu_shell_append(GTK_MENU_SHELL(menu), menuitem);
 	g_signal_connect(G_OBJECT(menuitem), "activate", G_CALLBACK(remmina_ftp_client_action_download), client);
 
 	menuitem = gtk_menu_item_new_with_label(_("Upload"));
 	gtk_widget_show(menuitem);
-	image = gtk_image_new_from_icon_name("remmina-document-send-symbolic", GTK_ICON_SIZE_MENU);
+	image = gtk_image_new_from_icon_name("org.remmina.Remmina-document-send-symbolic", GTK_ICON_SIZE_MENU);
 	gtk_widget_show(image);
 	gtk_menu_shell_append(GTK_MENU_SHELL(menu), menuitem);
 	g_signal_connect(G_OBJECT(menuitem), "activate", G_CALLBACK(remmina_ftp_client_action_upload), client);

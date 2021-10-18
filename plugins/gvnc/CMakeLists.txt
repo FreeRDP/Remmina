@@ -46,7 +46,7 @@ target_link_libraries(remmina-plugin-gvnc ${REMMINA_COMMON_LIBRARIES} ${GTK-VNC_
 install(TARGETS remmina-plugin-gvnc DESTINATION ${REMMINA_PLUGINDIR})
 
 install(FILES
-    scalable/emblems/remmina-gvnc-symbolic.svg
+    scalable/emblems/org.remmina.Remmina-gvnc-symbolic.svg
     DESTINATION ${APPICONSCALE_EMBLEMS_DIR})
 
 if(WITH_ICON_CACHE)

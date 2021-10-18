@@ -15,8 +15,8 @@ class HelloPlugin:
         self.type = "protocol"
         self.description = "Hello World!"
         self.version  = "1.0"
-        self.icon_name = "remmina-tool"
-        self.icon_name_ssh = "remmina-tool"
+        self.icon_name = "org.remmina.Remmina-tool-symbolic"
+        self.icon_name_ssh = "org.remmina.Remmina-tool-symbolic"
         self.btn = Gtk.Button(label="Hello!")
         self.btn.connect("clicked", self.callback_add, "hello")
         pass
