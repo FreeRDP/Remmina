@@ -2787,8 +2787,8 @@ static RemminaProtocolPlugin remmina_rdp =
 	N_("RDP - Remote Desktop Protocol"),            // Description
 	GETTEXT_PACKAGE,                                // Translation domain
 	remmina_plugin_rdp_version,                     // Version number
-	"remmina-rdp-symbolic",                         // Icon for normal connection
-	"remmina-rdp-ssh-symbolic",                     // Icon for SSH connection
+	"org.remmina.Remmina-rdp-symbolic",                         // Icon for normal connection
+	"org.remmina.Remmina-rdp-ssh-symbolic",                     // Icon for SSH connection
 	remmina_rdp_basic_settings,                     // Array for basic settings
 	remmina_rdp_advanced_settings,                  // Array for advanced settings
 	REMMINA_PROTOCOL_SSH_SETTING_TUNNEL,            // SSH settings type

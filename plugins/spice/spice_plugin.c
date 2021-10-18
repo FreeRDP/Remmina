@@ -727,8 +727,8 @@ static RemminaProtocolPlugin remmina_plugin_spice =
 	N_("SPICE - Simple Protocol for Independent Computing Environments"),   // Description
 	GETTEXT_PACKAGE,                                                        // Translation domain
 	VERSION,                                                                // Version number
-	"remmina-spice-symbolic",                                               // Icon for normal connection
-	"remmina-spice-ssh-symbolic",                                               // Icon for SSH connection
+	"org.remmina.Remmina-spice-symbolic",                                   // Icon for normal connection
+	"org.remmina.Remmina-spice-ssh-symbolic",                               // Icon for SSH connection
 	remmina_plugin_spice_basic_settings,                                    // Array for basic settings
 	remmina_plugin_spice_advanced_settings,                                 // Array for advanced settings
 	REMMINA_PROTOCOL_SSH_SETTING_TUNNEL,                                    // SSH settings type

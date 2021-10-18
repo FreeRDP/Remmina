@@ -97,8 +97,8 @@ endif()
 install(TARGETS remmina-plugin-rdp DESTINATION ${REMMINA_PLUGINDIR})
 
 install(FILES
-    scalable/emblems/remmina-rdp-ssh-symbolic.svg
-    scalable/emblems/remmina-rdp-symbolic.svg
+    scalable/emblems/org.remmina.Remmina-rdp-ssh-symbolic.svg
+    scalable/emblems/org.remmina.Remmina-rdp-symbolic.svg
     DESTINATION ${APPICONSCALE_EMBLEMS_DIR})
 
 if(WITH_ICON_CACHE)

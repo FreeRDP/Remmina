@@ -224,7 +224,7 @@ remmina_chat_window_new(GtkWindow* parent, const gchar* chat_with)
 	window->send_text = widget;
 
 	/* Send button */
-	image = gtk_image_new_from_icon_name("remmina-document-send-symbolic", GTK_ICON_SIZE_BUTTON);
+	image = gtk_image_new_from_icon_name("org.remmina.Remmina-document-send-symbolic", GTK_ICON_SIZE_BUTTON);
 	gtk_widget_show(image);
 
 	widget = gtk_button_new_with_mnemonic(_("_Send"));

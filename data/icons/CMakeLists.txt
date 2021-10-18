@@ -36,32 +36,31 @@ set(APPICONSCALE_ACTIONS_DIR "${REMMINA_DATADIR}/icons/hicolor/scalable/actions"
 set(APPICONSCALE_EMBLEMS_DIR "${REMMINA_DATADIR}/icons/hicolor/scalable/emblems")
 
 set(APPICONSCALE_ACTIONS_DATA
-    scalable/actions/remmina-camera-photo-symbolic.svg
-    scalable/actions/remmina-connect-symbolic.svg
-    scalable/actions/remmina-disconnect-symbolic.svg
-    scalable/actions/remmina-document-save-symbolic.svg
-    scalable/actions/remmina-document-send-symbolic.svg
-    scalable/actions/remmina-duplicate-symbolic.svg
-    scalable/actions/remmina-dynres-symbolic.svg
-    scalable/actions/remmina-fit-window-symbolic.svg
-    scalable/actions/remmina-fullscreen-symbolic.svg
-    scalable/actions/remmina-multi-monitor-symbolic.svg
-    scalable/actions/remmina-go-bottom-symbolic.svg
-    scalable/actions/remmina-keyboard-symbolic.svg
-    scalable/actions/remmina-pan-down-symbolic.svg
-    scalable/actions/remmina-pan-up-symbolic.svg
-    scalable/actions/remmina-pin-down-symbolic.svg
-    scalable/actions/remmina-pin-up-symbolic.svg
-    scalable/actions/remmina-preferences-system-symbolic.svg
-    scalable/actions/remmina-scale-symbolic.svg
-    scalable/actions/remmina-switch-page-symbolic.svg
-    scalable/actions/remmina-system-run-symbolic.svg
-    scalable/actions/view-list.svg
+    scalable/actions/org.remmina.Remmina-camera-photo-symbolic.svg
+    scalable/actions/org.remmina.Remmina-connect-symbolic.svg
+    scalable/actions/org.remmina.Remmina-disconnect-symbolic.svg
+    scalable/actions/org.remmina.Remmina-document-save-symbolic.svg
+    scalable/actions/org.remmina.Remmina-document-send-symbolic.svg
+    scalable/actions/org.remmina.Remmina-duplicate-symbolic.svg
+    scalable/actions/org.remmina.Remmina-dynres-symbolic.svg
+    scalable/actions/org.remmina.Remmina-fit-window-symbolic.svg
+    scalable/actions/org.remmina.Remmina-fullscreen-symbolic.svg
+    scalable/actions/org.remmina.Remmina-multi-monitor-symbolic.svg
+    scalable/actions/org.remmina.Remmina-go-bottom-symbolic.svg
+    scalable/actions/org.remmina.Remmina-keyboard-symbolic.svg
+    scalable/actions/org.remmina.Remmina-pan-down-symbolic.svg
+    scalable/actions/org.remmina.Remmina-pan-up-symbolic.svg
+    scalable/actions/org.remmina.Remmina-pin-down-symbolic.svg
+    scalable/actions/org.remmina.Remmina-pin-up-symbolic.svg
+    scalable/actions/org.remmina.Remmina-preferences-system-symbolic.svg
+    scalable/actions/org.remmina.Remmina-scale-symbolic.svg
+    scalable/actions/org.remmina.Remmina-switch-page-symbolic.svg
+    scalable/actions/org.remmina.Remmina-system-run-symbolic.svg
     )
 
 set(APPICONSCALE_EMBLEMS_DATA
-    scalable/emblems/remmina-sftp-symbolic.svg
-    scalable/emblems/remmina-ssh-symbolic.svg
+    scalable/emblems/org.remmina.Remmina-sftp-symbolic.svg
+    scalable/emblems/org.remmina.Remmina-ssh-symbolic.svg
     )
 
 install(FILES ${APPICONSCALE_ACTIONS_DATA} DESTINATION ${APPICONSCALE_ACTIONS_DIR})

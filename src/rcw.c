@@ -2306,7 +2306,7 @@ rcw_create_toolbar(RemminaConnectionWindow *cnnwin, gint mode)
 
 	/* Duplicate session */
 	toolitem = gtk_tool_button_new(NULL, "Duplicate connection");
-	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-duplicate-symbolic");
+	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "org.remmina.Remmina-duplicate-symbolic");
 	gtk_tool_item_set_tooltip_text(toolitem, _("Duplicate current connection"));
 	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
 	gtk_widget_show(GTK_WIDGET(toolitem));
@@ -2323,7 +2323,7 @@ rcw_create_toolbar(RemminaConnectionWindow *cnnwin, gint mode)
 
 	/* Auto-Fit */
 	toolitem = gtk_tool_button_new(NULL, NULL);
-	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-fit-window-symbolic");
+	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "org.remmina.Remmina-fit-window-symbolic");
 	rcw_set_tooltip(GTK_WIDGET(toolitem), _("Resize the window to fit in remote resolution"),
 			remmina_pref.shortcutkey_autofit, 0);
 	g_signal_connect(G_OBJECT(toolitem), "clicked", G_CALLBACK(rcw_toolbar_autofit), cnnwin);
@@ -2334,7 +2334,7 @@ rcw_create_toolbar(RemminaConnectionWindow *cnnwin, gint mode)
 
 	/* Fullscreen toggle */
 	toolitem = gtk_toggle_tool_button_new();
-	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-fullscreen-symbolic");
+	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "org.remmina.Remmina-fullscreen-symbolic");
 	rcw_set_tooltip(GTK_WIDGET(toolitem), _("Toggle fullscreen mode"),
 			remmina_pref.shortcutkey_fullscreen, 0);
 	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
@@ -2366,7 +2366,7 @@ rcw_create_toolbar(RemminaConnectionWindow *cnnwin, gint mode)
 	gtk_container_add(GTK_CONTAINER(toolitem), widget);
 
 #if GTK_CHECK_VERSION(3, 14, 0)
-	arrow = gtk_image_new_from_icon_name("remmina-pan-down-symbolic", GTK_ICON_SIZE_SMALL_TOOLBAR);
+	arrow = gtk_image_new_from_icon_name("org.remmina.Remmina-pan-down-symbolic", GTK_ICON_SIZE_SMALL_TOOLBAR);
 #else
 	arrow = gtk_arrow_new(GTK_ARROW_DOWN, GTK_SHADOW_NONE);
 #endif
@@ -2380,7 +2380,7 @@ rcw_create_toolbar(RemminaConnectionWindow *cnnwin, gint mode)
 	/* Multi monitor */
 	if (n_monitors > 1) {
 		toolitem = gtk_toggle_tool_button_new();
-		gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-multi-monitor-symbolic");
+		gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "org.remmina.Remmina-multi-monitor-symbolic");
 		rcw_set_tooltip(GTK_WIDGET(toolitem), _("Multi monitor"),
 				remmina_pref.shortcutkey_multimon, 0);
 		gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
@@ -2396,7 +2396,7 @@ rcw_create_toolbar(RemminaConnectionWindow *cnnwin, gint mode)
 
 	/* Dynamic Resolution Update */
 	toolitem = gtk_toggle_tool_button_new();
-	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-dynres-symbolic");
+	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "org.remmina.Remmina-dynres-symbolic");
 	rcw_set_tooltip(GTK_WIDGET(toolitem), _("Toggle dynamic resolution update"),
 			remmina_pref.shortcutkey_dynres, 0);
 	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
@@ -2406,7 +2406,7 @@ rcw_create_toolbar(RemminaConnectionWindow *cnnwin, gint mode)
 
 	/* Scaler button */
 	toolitem = gtk_toggle_tool_button_new();
-	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-scale-symbolic");
+	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "org.remmina.Remmina-scale-symbolic");
 	rcw_set_tooltip(GTK_WIDGET(toolitem), _("Toggle scaled mode"), remmina_pref.shortcutkey_scale, 0);
 	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
 	gtk_widget_show(GTK_WIDGET(toolitem));
@@ -2430,7 +2430,7 @@ rcw_create_toolbar(RemminaConnectionWindow *cnnwin, gint mode)
 		gtk_widget_set_name(widget, "remmina-small-button");
 	gtk_container_add(GTK_CONTAINER(toolitem), widget);
 #if GTK_CHECK_VERSION(3, 14, 0)
-	arrow = gtk_image_new_from_icon_name("remmina-pan-down-symbolic", GTK_ICON_SIZE_SMALL_TOOLBAR);
+	arrow = gtk_image_new_from_icon_name("org.remmina.Remmina-pan-down-symbolic", GTK_ICON_SIZE_SMALL_TOOLBAR);
 #else
 	arrow = gtk_arrow_new(GTK_ARROW_DOWN, GTK_SHADOW_NONE);
 #endif
@@ -2446,7 +2446,7 @@ rcw_create_toolbar(RemminaConnectionWindow *cnnwin, gint mode)
 
 	/* Switch tabs */
 	toolitem = gtk_toggle_tool_button_new();
-	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-switch-page-symbolic");
+	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "org.remmina.Remmina-switch-page-symbolic");
 	rcw_set_tooltip(GTK_WIDGET(toolitem), _("Switch tab pages"), remmina_pref.shortcutkey_prevtab,
 			remmina_pref.shortcutkey_nexttab);
 	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
@@ -2456,7 +2456,7 @@ rcw_create_toolbar(RemminaConnectionWindow *cnnwin, gint mode)
 
 	/* Grab keyboard button */
 	toolitem = gtk_toggle_tool_button_new();
-	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-keyboard-symbolic");
+	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "org.remmina.Remmina-keyboard-symbolic");
 	rcw_set_tooltip(GTK_WIDGET(toolitem), _("Grab all keyboard events"),
 			remmina_pref.shortcutkey_grab, 0);
 	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
@@ -2466,7 +2466,7 @@ rcw_create_toolbar(RemminaConnectionWindow *cnnwin, gint mode)
 
 	/* Preferences */
 	toolitem = gtk_toggle_tool_button_new();
-	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-preferences-system-symbolic");
+	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "org.remmina.Remmina-preferences-system-symbolic");
 	gtk_tool_item_set_tooltip_text(toolitem, _("Preferences"));
 	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
 	gtk_widget_show(GTK_WIDGET(toolitem));
@@ -2475,7 +2475,7 @@ rcw_create_toolbar(RemminaConnectionWindow *cnnwin, gint mode)
 
 	/* Tools */
 	toolitem = gtk_toggle_tool_button_new();
-	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-system-run-symbolic");
+	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "org.remmina.Remmina-system-run-symbolic");
 	gtk_tool_button_set_label(GTK_TOOL_BUTTON(toolitem), _("_Tools"));
 	gtk_tool_item_set_tooltip_text(toolitem, _("Tools"));
 	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
@@ -2489,7 +2489,7 @@ rcw_create_toolbar(RemminaConnectionWindow *cnnwin, gint mode)
 	gtk_widget_show(GTK_WIDGET(toolitem));
 
 	toolitem = gtk_tool_button_new(NULL, "_Screenshot");
-	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-camera-photo-symbolic");
+	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "org.remmina.Remmina-camera-photo-symbolic");
 	rcw_set_tooltip(GTK_WIDGET(toolitem), _("Screenshot"), remmina_pref.shortcutkey_screenshot, 0);
 	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
 	gtk_widget_show(GTK_WIDGET(toolitem));
@@ -2503,7 +2503,7 @@ rcw_create_toolbar(RemminaConnectionWindow *cnnwin, gint mode)
 
 	/* Minimize */
 	toolitem = gtk_tool_button_new(NULL, "_Bottom");
-	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-go-bottom-symbolic");
+	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "org.remmina.Remmina-go-bottom-symbolic");
 	rcw_set_tooltip(GTK_WIDGET(toolitem), _("Minimize window"), remmina_pref.shortcutkey_minimize, 0);
 	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
 	gtk_widget_show(GTK_WIDGET(toolitem));
@@ -2513,7 +2513,7 @@ rcw_create_toolbar(RemminaConnectionWindow *cnnwin, gint mode)
 
 	/* Disconnect */
 	toolitem = gtk_tool_button_new(NULL, "_Disconnect");
-	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-disconnect-symbolic");
+	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "org.remmina.Remmina-disconnect-symbolic");
 	rcw_set_tooltip(GTK_WIDGET(toolitem), _("Disconnect"), remmina_pref.shortcutkey_disconnect, 0);
 	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
 	gtk_widget_show(GTK_WIDGET(toolitem));
@@ -3022,10 +3022,10 @@ static void rcw_update_pin(RemminaConnectionWindow *cnnwin)
 	TRACE_CALL(__func__);
 	if (cnnwin->priv->pin_down)
 		gtk_button_set_image(GTK_BUTTON(cnnwin->priv->pin_button),
-				     gtk_image_new_from_icon_name("remmina-pin-down-symbolic", GTK_ICON_SIZE_MENU));
+				     gtk_image_new_from_icon_name("org.remmina.Remmina-pin-down-symbolic", GTK_ICON_SIZE_MENU));
 	else
 		gtk_button_set_image(GTK_BUTTON(cnnwin->priv->pin_button),
-				     gtk_image_new_from_icon_name("remmina-pin-up-symbolic", GTK_ICON_SIZE_MENU));
+				     gtk_image_new_from_icon_name("org.remmina.Remmina-pin-up-symbolic", GTK_ICON_SIZE_MENU));
 }
 
 static void rcw_toolbar_pin(GtkWidget *widget, RemminaConnectionWindow *cnnwin)

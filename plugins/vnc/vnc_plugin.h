@@ -40,13 +40,13 @@
 #define VNC_PLUGIN_NAME        "VNC"
 #define VNC_PLUGIN_DESCRIPTION N_("Remmina VNC Plugin")
 #define VNC_PLUGIN_VERSION     VERSION
-#define VNC_PLUGIN_APPICON     "remmina-vnc-symbolic"
-#define VNC_PLUGIN_SSH_APPICON     "remmina-vnc-ssh-symbolic"
+#define VNC_PLUGIN_APPICON     "org.remmina.Remmina-vnc-symbolic"
+#define VNC_PLUGIN_SSH_APPICON     "org.remmina.Remmina-vnc-ssh-symbolic"
 #define VNCI_PLUGIN_NAME        "VNCI"
 #define VNCI_PLUGIN_DESCRIPTION N_("Remmina VNC listener Plugin")
 #define VNCI_PLUGIN_VERSION     VERSION
-#define VNCI_PLUGIN_APPICON     "remmina-vnc-symbolic"
-#define VNCI_PLUGIN_SSH_APPICON     "remmina-vnc-ssh-symbolic"
+#define VNCI_PLUGIN_APPICON     "org.remmina.Remmina-vnc-symbolic"
+#define VNCI_PLUGIN_SSH_APPICON     "org.remmina.Remmina-vnc-ssh-symbolic"
 #endif
 
 typedef struct _RemminaPluginVncData {

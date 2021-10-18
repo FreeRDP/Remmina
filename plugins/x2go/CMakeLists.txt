@@ -58,9 +58,9 @@ target_link_libraries(remmina-plugin-x2go
 install(TARGETS remmina-plugin-x2go DESTINATION ${REMMINA_PLUGINDIR})
 
 set(APPICON16_EMBLEMS_DIR "${REMMINA_DATADIR}/icons/hicolor/16x16/emblems")
-install(FILES 16x16/emblems/remmina-x2go.png DESTINATION ${APPICON16_EMBLEMS_DIR})
+install(FILES 16x16/emblems/org.remmina.Remmina-x2go.png DESTINATION ${APPICON16_EMBLEMS_DIR})
 
 set(APPICON22_EMBLEMS_DIR "${REMMINA_DATADIR}/icons/hicolor/22x22/emblems")
-install(FILES 22x22/emblems/remmina-x2go.png DESTINATION ${APPICON22_EMBLEMS_DIR})
+install(FILES 22x22/emblems/org.remmina.Remmina-x2go.png DESTINATION ${APPICON22_EMBLEMS_DIR})
 
 gtk_update_icon_cache("${REMMINA_DATADIR}/icons/hicolor")
