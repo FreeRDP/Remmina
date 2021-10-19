@@ -691,8 +691,7 @@ void remmina_file_save(RemminaFile *remminafile)
 	g_free(content);
 	g_key_file_free(gkeyfile);
 
-	if (!remmina_pref.list_refresh_workaround)
-		remmina_main_update_file_datetime(remminafile);
+	remmina_main_update_file_datetime(remminafile);
 }
 
 void remmina_file_store_secret_plugin_password(RemminaFile *remminafile, const gchar *key, const gchar *value)
