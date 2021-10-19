@@ -706,6 +706,9 @@ void remmina_main_on_action_connection_external_tools(GSimpleAction *action, GVa
 static void remmina_main_file_editor_destroy(GtkWidget *widget, gpointer user_data)
 {
 	TRACE_CALL(__func__);
+
+	if (!remminamain)
+		return;
 	remmina_main_load_files();
 }
 
