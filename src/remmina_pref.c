@@ -504,6 +504,11 @@ void remmina_pref_init(void)
 	else
 		remmina_pref.dark_theme = FALSE;
 
+	if (g_key_file_has_key(gkeyfile, "remmina_pref", "list_refresh_workaround", NULL))
+		remmina_pref.list_refresh_workaround = g_key_file_get_boolean(gkeyfile, "remmina_pref", "list_refresh_workaround", NULL);
+	else
+		remmina_pref.list_refresh_workaround = FALSE;
+
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "grab_color_switch", NULL))
 		remmina_pref.grab_color_switch = g_key_file_get_boolean(gkeyfile, "remmina_pref", "grab_color_switch", NULL);
 	else
