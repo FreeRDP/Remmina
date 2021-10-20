@@ -74,7 +74,7 @@
 		g_object_set_data_full(G_OBJECT(gp), "dialog-data", ddata, g_free);
 
 #define GET_DIALOG_DATA(gp) \
-		(DialogData*) g_object_get_data(G_OBJECT(gp), "dialog-data");
+		(struct _DialogData*) g_object_get_data(G_OBJECT(gp), "dialog-data");
 
 #define REMMINA_PLUGIN_INFO(fmt, ...) \
 		rm_plugin_service->_remmina_info("[%s] " fmt, \
@@ -172,38 +172,31 @@ str2int_errno str2int(gint *out, gchar *s, gint base)
  *		       which will be executed on the dialogs 'response' signal.
  *		       The callback function is obliged to destroy the dialog widget.
  *
- * The `DialogData` structure contains all info needed to open a
- * GTK dialog with rmplugin_x2go_open_dialog() \n
+ * The `DialogData` structure contains all info needed to open a GTK dialog with
+ * rmplugin_x2go_open_dialog()
  *
  * Quick example of a callback function: \n
- * static void rmplugin_x2go_test_callback(RemminaProtocolWidget *gp, gint response_id, \n
- *					   GtkDialog *self) { \n
+ * static gboolean rmplugin_x2go_test_callback(RemminaProtocolWidget *gp, gint response_id, \n
+ *					       GtkDialog *self) { \n
  *	REMMINA_PLUGIN_DEBUG("response: %i", response_id); \n
  *	if (response_id == GTK_RESPONSE_OK) { \n
  *		REMMINA_PLUGIN_DEBUG("OK!"); \n
  *	} \n
  *	gtk_widget_destroy(self); \n
+ *	return G_SOURCE_REMOVE; \n
  * }
  *
  */
-struct _DialogData {
-	/** see GtkWindow */
-	GtkWindow* parent;
-	/** see GtkDialogFlags */
-	GtkDialogFlags flags;
-	/** see GtkMessageType */
-	GtkMessageType type;
-	/** see GtkButtonsType */
-	GtkButtonsType buttons;
-	/** Title of the Dialog */
-	gchar* title;
-	/** Message of the Dialog */
-	gchar* message;
-	/** Calls this function if
-	 *  the user pressed a button. */
-	GCallback callbackfunc;
+struct _DialogData
+{
+	GtkWindow 	*parent;
+	GtkDialogFlags	flags;
+	GtkMessageType	type;
+	GtkButtonsType	buttons;
+	gchar		*title;
+	gchar		*message;
+	GCallback 	callbackfunc;
 };
-typedef struct _DialogData DialogData;
 
 /**
  * @param gp getting DialogData via dialog-data saved in gp.
@@ -216,7 +209,7 @@ static gboolean rmplugin_x2go_open_dialog(RemminaProtocolWidget *gp)
 {
 	REMMINA_PLUGIN_DEBUG("Function entry.");
 
-	DialogData *ddata = GET_DIALOG_DATA(gp);
+	struct _DialogData* ddata = GET_DIALOG_DATA(gp);
 
 	if (ddata) {
 		// Can't check type, flags or buttons
@@ -464,7 +457,7 @@ static void rmplugin_x2go_pyhoca_cli_exited(GPid pid,
 	REMMINA_PLUGIN_CRITICAL("%s", _("PyHoca-CLI exited unexpectedly. "
 					"This connection will now be closed."));
 
-	DialogData *ddata = g_new0(DialogData, 1);
+	struct _DialogData *ddata = g_new0(struct _DialogData, 1);
 	SET_DIALOG_DATA(gp, ddata);
 	ddata->parent = NULL;
 	ddata->flags = GTK_DIALOG_MODAL;
