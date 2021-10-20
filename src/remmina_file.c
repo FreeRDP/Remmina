@@ -36,10 +36,10 @@
 
 #include "config.h"
 
-#include <sys/stat.h>
 
 #include <errno.h>
 #include <fcntl.h>
+#include <sys/stat.h>
 #include <locale.h>
 #include <langinfo.h>
 #include <stdlib.h>
@@ -329,12 +329,9 @@ remmina_file_load(const gchar *filename)
 	TRACE_CALL(__func__);
 	GKeyFile *gkeyfile;
 	RemminaFile *remminafile;
-	gchar *proto;
-	gchar **keys;
 	gchar *key;
-	gchar *resolution_str;
 	gint i;
-	gchar *s, *sec;
+	gchar *s;
 	RemminaProtocolPlugin *protocol_plugin;
 	RemminaSecretPlugin *secret_plugin;
 	gboolean secret_service_available;
@@ -357,7 +354,7 @@ remmina_file_load(const gchar *filename)
 		protocol_plugin = NULL;
 
 		/* Identify the protocol plugin and get pointers to its RemminaProtocolSetting structs */
-		proto = g_key_file_get_string(gkeyfile, KEYFILE_GROUP_REMMINA, "protocol", NULL);
+		gchar *proto = g_key_file_get_string(gkeyfile, KEYFILE_GROUP_REMMINA, "protocol", NULL);
 		if (proto) {
 			protocol_plugin = (RemminaProtocolPlugin *)remmina_plugin_manager_get_plugin(REMMINA_PLUGIN_TYPE_PROTOCOL, proto);
 			g_free(proto);
@@ -367,7 +364,7 @@ remmina_file_load(const gchar *filename)
 		secret_service_available = secret_plugin && secret_plugin->is_service_available();
 
 		remminafile->filename = g_strdup(filename);
-		keys = g_key_file_get_keys(gkeyfile, KEYFILE_GROUP_REMMINA, NULL, NULL);
+		gchar **keys = g_key_file_get_keys(gkeyfile, KEYFILE_GROUP_REMMINA, NULL, NULL);
 		if (keys) {
 
 			for (i = 0; keys[i]; i++) {
@@ -376,7 +373,7 @@ remmina_file_load(const gchar *filename)
 					s = g_key_file_get_string(gkeyfile, KEYFILE_GROUP_REMMINA, key, NULL);
 					if (g_strcmp0(s, ".") == 0) {
 						if (secret_service_available) {
-							sec = secret_plugin->get_password(remminafile, key);
+							gchar *sec = secret_plugin->get_password(remminafile, key);
 							remmina_file_set_string(remminafile, key, sec);
 							/* Annotate in spsettings that this value comes from secret_plugin */
 							g_hash_table_insert(remminafile->spsettings, g_strdup(key), NULL);
@@ -391,7 +388,7 @@ remmina_file_load(const gchar *filename)
 				} else {
 					/* If we find "resolution", then we split it in two */
 					if (strcmp(key, "resolution") == 0) {
-						resolution_str = g_key_file_get_string(gkeyfile, KEYFILE_GROUP_REMMINA, key, NULL);
+						gchar *resolution_str = g_key_file_get_string(gkeyfile, KEYFILE_GROUP_REMMINA, key, NULL);
 						if (remmina_public_split_resolution_string(resolution_str, &w, &h)) {
 							remmina_file_set_string_ref(remminafile, "resolution_width", g_strdup_printf("%i", w));
 							remmina_file_set_string_ref(remminafile, "resolution_height", g_strdup_printf("%i", h));

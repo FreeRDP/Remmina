@@ -36,9 +36,11 @@
 
 #include "config.h"
 
+#include <errno.h>
 #include <gtk/gtk.h>
 #include <string.h>
 
+#include "remmina_log.h"
 #include "remmina_public.h"
 #include "remmina_pref.h"
 #include "remmina_string_array.h"
@@ -49,8 +51,11 @@
 static gchar *remminadir;
 static gchar *cachedir;
 
-/* return first found data dir as per XDG specs.
- * The returned string must be freed by the caller with g_free */
+/**
+ * Return datadir_path from pref or first found data dir as per XDG specs.
+ *
+ * The returned string must be freed by the caller with g_free
+ */
 gchar *remmina_file_get_datadir(void)
 {
 	TRACE_CALL(__func__);
@@ -99,6 +104,12 @@ static gboolean remmina_file_manager_do_copy(const char *src_path, const char *d
 	return ok;
 }
 
+/**
+ * It creates the Remmina data and cache folders
+ *
+ * If it finds the legacy ~/.remmina folder it copies the connection profiles in the new folder.
+ *
+ * If it finds default profiles in the XDG_DATA_DIRS it copies the profiles in the user data folder.
 void remmina_file_manager_init(void)
 {
 	TRACE_CALL(__func__);
@@ -107,10 +118,21 @@ void remmina_file_manager_init(void)
 	const gchar *filename;
 	int i;
 
-	remminadir = g_build_path("/", g_get_user_data_dir(), "remmina", NULL);
-	/* Create the XDG_USER_DATA directory */
-	g_mkdir_with_parents(remminadir, 0750);
-	g_free(remminadir), remminadir = NULL;
+	/* Get and create the XDG_DATA_HOME directory */
+	remminadir = remmina_pref_get_value("datadir_path");
+	if (g_mkdir_with_parents(remminadir, 0750) == 0) {
+		REMMINA_DEBUG ("Remmina data folder %s initialized successfully", remminadir);
+		g_free(remminadir), remminadir = NULL;
+	} else {
+		g_free(remminadir), remminadir = NULL;
+		/* Get and create the XDG_DATA_HOME directory */
+		remminadir = g_build_path("/", g_get_user_data_dir(), "remmina", NULL);
+		if (g_mkdir_with_parents(remminadir, 0750) == 0)
+			REMMINA_DEBUG ("Remmina data folder %s initialized successfully", remminadir);
+		else
+			REMMINA_CRITICAL("Cannot create data folder %s", remminadir);
+		g_free(remminadir), remminadir = NULL;
+	}
 	/* Create the XDG_CACHE_HOME directory */
 	cachedir = g_build_path("/", g_get_user_cache_dir(), "remmina", NULL);
 	g_mkdir_with_parents(cachedir, 0750);
