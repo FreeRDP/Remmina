@@ -443,7 +443,7 @@ static UINT remmina_rdp_cliprdr_server_format_data_response(CliprdrClientContext
 	/* Calculate stats */
 	mstrans = timeval_diff(&(clipboard->clientformatdatarequest_tv), &now);
 	REMMINA_PLUGIN_DEBUG("gp=%p %zu bytes transferred from server in %d ms. Speed is %d bytes/sec",
-		gp, (size_t)size, mstrans, (int)((int64_t)size * 1000 / mstrans));
+		gp, (size_t)size, mstrans, mstrans != 0 ? (int)((int64_t)size * 1000 / mstrans) : 0);
 
 	if (size > 0) {
 		switch (rfi->clipboard.format) {
