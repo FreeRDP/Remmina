@@ -1981,9 +1981,7 @@ static GError* rmplugin_x2go_string_setting_validator(gchar* key, gchar* value,
 	gchar **elements_list = g_strsplit(data, ",", 0);
 
 	guint elements_amount = 0;
-	for (; elements_list[elements_amount] != NULL; elements_amount++) {
-		// Just advance elements_amount...
-	}
+	elements_amount = g_strv_length(elements_list);
 
 	if (elements_list == NULL ||
 	    elements_list[0] == NULL ||
