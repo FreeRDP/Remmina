@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-10-19 13:44+0000\n"
-"PO-Revision-Date: 2021-10-13 19:30+0000\n"
-"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"PO-Revision-Date: 2021-10-21 04:45+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/remmina/"
 "remmina/nb_NO/>\n"
 "Language: nb\n"
@@ -2890,21 +2890,20 @@ msgid ""
 "Please check your profile settings and PyHoca-CLI's output for possible "
 "errors. Also ensure the remote server is reachable."
 msgstr ""
-"Den nødvendige underprosessen «pyhoca-cli» avsluttet uventet.\n"
-"Sjekk dine profilinnstillinger og pyhoca-cli sin utdata for mulige feil og "
-"forsikre deg om at tjeneren annensteds hen kan nås."
+"Den nødvendige barnsprosessen 'pyhoca-cli' stoppet uventet.\n"
+"Kontroller profilinnstillingene og PyHoca-CLI-utdataene for mulige feil. "
+"Kontroller også at den eksterne serveren kan nås."
 
 #: plugins/x2go/x2go_plugin.c:561
 #, fuzzy
 msgid "Started PyHoca-CLI with the following arguments:"
-msgstr "Startet pyhoca-cli med følgende argumenter:"
+msgstr "Startet PyHoca-CLI med følgende argumenter:"
 
 #: plugins/x2go/x2go_plugin.c:580
 #, fuzzy, c-format
 msgid "Could not retrieve PyHoca-CLI's command-line features! Exit code: %i"
 msgstr ""
-"En ukjent feil inntraff under innhenting av pyhoca-cli sine "
-"kommandolinjefunksjoner. Avslutningskode: %i"
+"Kan ikke hente PyHoca-CLI sine kommandolinjefunksjoner! Avslutningskode: %i"
 
 #: plugins/x2go/x2go_plugin.c:585
 #, fuzzy, c-format
@@ -2970,9 +2969,9 @@ msgid ""
 "too old, or not installed. An old limited set of features will be used for "
 "now."
 msgstr ""
-"Kunne ikke få pyhoca-clis cmdline-funksjoner. Dette indikerer at enten din "
-"pyhoca-cli versjon er for gammel eller pyhoca-cli er ikke installert! Et "
-"gammelt begrenset sett med funksjoner vil bli brukt nå."
+"Kunne ikke få PyHoca-CLI kommandolinjefunksjoner. Dette angir at den enten "
+"er for gammel eller ikke installert. Et gammelt begrenset sett med "
+"funksjoner vil bli brukt til nå."
 
 #: plugins/x2go/x2go_plugin.c:956
 #, fuzzy
@@ -2980,13 +2979,13 @@ msgid ""
 "Could not parse PyHoca-CLI's command-line features. Using a limited feature-"
 "set for now."
 msgstr ""
-"Analyse av pyhoca-cli-funksjonalitet var ikke mulig! Bruker et begrenset "
-"funksjonssett for nå."
+"Kan ikke analysere Kommandolinjefunksjonene i PyHoca-CLI. Bruker et "
+"begrenset funksjonssett for nå."
 
 #: plugins/x2go/x2go_plugin.c:962
 #, fuzzy
 msgid "Retrieved the following PyHoca-CLI command-line features:"
-msgstr "Hentet følgende pyhoca-cli-funksjonalitet:"
+msgstr "Hentet følgende PyHoca-CLI kommandolinjefunksjoner:"
 
 #: plugins/x2go/x2go_plugin.c:967
 #, fuzzy, c-format
@@ -3002,12 +3001,12 @@ msgstr "Kan ikke åpne X11 DISPLAY."
 #: plugins/x2go/x2go_plugin.c:1112
 #, fuzzy
 msgid "Waiting for window of X2Go Agent to appear…"
-msgstr "Venter på at X2Go-agentvinduet skal vises …"
+msgstr "Venter på at vinduet til X2Go Agent skal vises…"
 
 #: plugins/x2go/x2go_plugin.c:1138
 #, fuzzy
 msgid "Waiting for PyHoca-CLI to show the session's window…"
-msgstr "Venter på at pyhoca-cli skal vise øktvinduet."
+msgstr "Venter på at PyHoca-CLI skal vise øktens vindu…"
 
 #: plugins/x2go/x2go_plugin.c:1189
 #, fuzzy
@@ -3025,7 +3024,7 @@ msgstr "Intern feil: RemminaProtocolWidget* gp er NULL!"
 #| "The protocol “%s” is unavailable because GtkSocket only works under X.Org."
 msgid "The %s protocol is unavailable because GtkSocket only works under X.org"
 msgstr ""
-"Protokollen %s er utilgjengelig fordi GtkSocket kun fungerer under X.Org."
+"Protokollen %s er ikke tilgjengelig fordi GtkSocket bare fungerer under X.org"
 
 #: plugins/x2go/x2go_plugin.c:1327
 #, fuzzy
@@ -3067,7 +3066,7 @@ msgstr "%s'%s', "
 #: plugins/x2go/x2go_plugin.c:1418
 #, fuzzy
 msgid "Invalid validation data in ProtocolSettings array!"
-msgstr "Valideringsdata i ProtocolSettings-matrisen er ugyldige."
+msgstr "Ugyldige valideringsdata i ProtocolSettings-matrisen."
 
 #: plugins/x2go/x2go_plugin.c:1430 plugins/x2go/x2go_plugin.c:1492
 #, fuzzy
@@ -3082,12 +3081,12 @@ msgstr "Tillatte verdier er %s."
 #: plugins/x2go/x2go_plugin.c:1459
 #, fuzzy, c-format
 msgid "The only allowed value is '%s'."
-msgstr "Bare tillatt verdi er %s."
+msgstr "Den eneste tillatte verdien er %s."
 
 #: plugins/x2go/x2go_plugin.c:1501
 #, fuzzy
 msgid "The lower limit is not a valid integer!"
-msgstr "Grenseminimum er ikke et gyldig heltall."
+msgstr "Den nedre grensen er ikke et gyldig heltall."
 
 #: plugins/x2go/x2go_plugin.c:1503
 msgid "The lower limit is too high!"
@@ -3112,12 +3111,12 @@ msgstr "Sjekk om det er feil i RemminaProtocolSetting-tabellen."
 #, fuzzy
 #| msgid "Transfer error"
 msgid "Internal error: "
-msgstr "Intern feil."
+msgstr "Intern feil: "
 
 #: plugins/x2go/x2go_plugin.c:1521
 #, fuzzy
 msgid "The upper limit is not a valid integer!"
-msgstr "Inndata er ikke et gyldig heltall."
+msgstr "Den øvre grensen er ikke et gyldig heltall."
 
 #: plugins/x2go/x2go_plugin.c:1525
 msgid "The upper limit is too high!"
@@ -3130,7 +3129,7 @@ msgstr "Den øvre grensen er for lav."
 #: plugins/x2go/x2go_plugin.c:1547
 #, fuzzy
 msgid "The input is not a valid integer!"
-msgstr "Inndata er ikke et gyldig heltall."
+msgstr "Inndataene er ikke et gyldig heltall."
 
 #: plugins/x2go/x2go_plugin.c:1549 plugins/x2go/x2go_plugin.c:1568
 #, fuzzy, c-format
@@ -3169,7 +3168,7 @@ msgstr "Støtte for lyd"
 #: plugins/x2go/x2go_plugin.c:1605
 #, fuzzy
 msgid "The sound system of the X2Go server (default: 'pulse')."
-msgstr "Forvalgt lydtjener for X2Go (forvalg: «pulse»)."
+msgstr "Lydsystemet til X2Go-serveren (standard: 'puls')."
 
 #: plugins/x2go/x2go_plugin.c:1608
 #, fuzzy

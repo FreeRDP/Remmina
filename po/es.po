@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-10-19 13:44+0000\n"
-"PO-Revision-Date: 2021-10-08 08:02+0000\n"
+"PO-Revision-Date: 2021-10-21 04:45+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/remmina/remmina/"
 "es/>\n"
@@ -2967,14 +2967,14 @@ msgid ""
 "errors. Also ensure the remote server is reachable."
 msgstr ""
 "El proceso hijo necesario 'pyhoca-cli' se detuvo inesperadamente.\n"
-"Por favor, compruebe la configuración de su perfil y la salida de pyhoca-cli "
-"en busca de posibles errores y asegúrese de que el servidor remoto es "
+"Por favor, compruebe la configuración de su perfil y la salida de PyHoca-CLI "
+"en busca de posibles errores. También asegúrese de que el servidor remoto es "
 "accesible."
 
 #: plugins/x2go/x2go_plugin.c:561
 #, fuzzy
 msgid "Started PyHoca-CLI with the following arguments:"
-msgstr "Inició pyhoca-cli con los siguientes argumentos:"
+msgstr "Inició PyHoca-CLI con los siguientes argumentos:"
 
 #: plugins/x2go/x2go_plugin.c:580
 #, fuzzy, c-format
@@ -2983,8 +2983,8 @@ msgstr "Inició pyhoca-cli con los siguientes argumentos:"
 #| "Exit code: %i"
 msgid "Could not retrieve PyHoca-CLI's command-line features! Exit code: %i"
 msgstr ""
-"Error desconocido mientras se obtenían las opciones de línea de comando de "
-"pyhoca-cli! Código de escape: %i"
+"No se han podido recuperar las funciones de la línea de comandos de PyHoca-"
+"CLI. Código de salida: %i"
 
 #: plugins/x2go/x2go_plugin.c:585
 #, fuzzy, c-format
@@ -2993,12 +2993,14 @@ msgid "Error: '%s'"
 msgstr "Error: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:609
+#, fuzzy
 msgid "Can't save empty username!"
-msgstr ""
+msgstr "No se puede guardar un nombre de usuario vacío."
 
 #: plugins/x2go/x2go_plugin.c:621
+#, fuzzy
 msgid "Internal error: Could not save new credentials."
-msgstr ""
+msgstr "Error interno: No se han podido guardar las nuevas credenciales."
 
 #: plugins/x2go/x2go_plugin.c:623
 #, fuzzy
@@ -3050,10 +3052,9 @@ msgid ""
 "too old, or not installed. An old limited set of features will be used for "
 "now."
 msgstr ""
-"No se han podido obtener las características de cmdline de pyhoca-cli. Esto "
-"indica que su versión de pyhoca-cli es demasiado antigua o que pyhoca-cli no "
-"está instalado. Ahora se utilizará un conjunto limitado de características "
-"antiguas."
+"No se pueden obtener las características de la línea de comandos de PyHoca-"
+"CLI. Esto indica que es demasiado viejo, o que no está instalado. Por ahora "
+"se utilizará un conjunto limitado de características antiguas."
 
 #: plugins/x2go/x2go_plugin.c:956
 #, fuzzy
@@ -3061,13 +3062,15 @@ msgid ""
 "Could not parse PyHoca-CLI's command-line features. Using a limited feature-"
 "set for now."
 msgstr ""
-"No se ha podido analizar la funcionalidad de pyhoca-cli. Usando un conjunto "
-"de características limitadas por ahora."
+"No se pueden analizar las características de la línea de comandos de PyHoca-"
+"CLI. Usando un conjunto de características limitadas por ahora."
 
 #: plugins/x2go/x2go_plugin.c:962
 #, fuzzy
 msgid "Retrieved the following PyHoca-CLI command-line features:"
-msgstr "Recuperó la siguiente funcionalidad de pyhoca-cli:"
+msgstr ""
+"Recuperó las siguientes características de la línea de comandos de PyHoca-"
+"CLI:"
 
 #: plugins/x2go/x2go_plugin.c:967
 #, fuzzy, c-format
@@ -3083,12 +3086,12 @@ msgstr "No se ha podido abrir X11 DISPLAY."
 #: plugins/x2go/x2go_plugin.c:1112
 #, fuzzy
 msgid "Waiting for window of X2Go Agent to appear…"
-msgstr "Esperando a que aparezca la ventana del Agente X2Go."
+msgstr "Esperando que aparezca la ventana del Agente X2Go…"
 
 #: plugins/x2go/x2go_plugin.c:1138
 #, fuzzy
 msgid "Waiting for PyHoca-CLI to show the session's window…"
-msgstr "Esperando que pyhoca-cli muestre la ventana de la sesión."
+msgstr "Esperando que PyHoca-CLI muestre la ventana de la sesión…"
 
 #: plugins/x2go/x2go_plugin.c:1189
 #, fuzzy
@@ -3106,8 +3109,7 @@ msgstr "Error interno: ¡RemminaProtocolWidget* gp es NULL!"
 #| "The protocol “%s” is unavailable because GtkSocket only works under X.Org."
 msgid "The %s protocol is unavailable because GtkSocket only works under X.org"
 msgstr ""
-"El protocolo \"%s\" no está disponible porque GtkSocket solo funciona con X."
-"Org"
+"El protocolo %s no está disponible porque GtkSocket sólo funciona bajo X.org"
 
 #: plugins/x2go/x2go_plugin.c:1327
 #, fuzzy
@@ -3149,7 +3151,7 @@ msgstr "%s'%s', "
 #: plugins/x2go/x2go_plugin.c:1418
 #, fuzzy
 msgid "Invalid validation data in ProtocolSettings array!"
-msgstr "Los datos de validación de la matriz ProtocolSettings no son válidos."
+msgstr "¡Datos de validación no válidos en la matriz ProtocolSettings!"
 
 #: plugins/x2go/x2go_plugin.c:1430 plugins/x2go/x2go_plugin.c:1492
 #, fuzzy
@@ -3169,15 +3171,17 @@ msgstr "El único valor permitido es '%s'."
 #: plugins/x2go/x2go_plugin.c:1501
 #, fuzzy
 msgid "The lower limit is not a valid integer!"
-msgstr "El límite mínimo no es un número entero válido."
+msgstr "El límite inferior no es un número entero válido."
 
 #: plugins/x2go/x2go_plugin.c:1503
+#, fuzzy
 msgid "The lower limit is too high!"
-msgstr ""
+msgstr "El límite inferior es demasiado alto."
 
 #: plugins/x2go/x2go_plugin.c:1505
+#, fuzzy
 msgid "The lower limit is too low!"
-msgstr ""
+msgstr "El límite inferior es demasiado bajo."
 
 #: plugins/x2go/x2go_plugin.c:1507 plugins/x2go/x2go_plugin.c:1533
 #: plugins/x2go/x2go_plugin.c:1552
@@ -3187,28 +3191,32 @@ msgstr "Algo salió mal."
 
 #: plugins/x2go/x2go_plugin.c:1511 plugins/x2go/x2go_plugin.c:1537
 #: plugins/x2go/x2go_plugin.c:1556
+#, fuzzy
 msgid "Please check the RemminaProtocolSetting array for possible errors."
 msgstr ""
+"Por favor, compruebe la matriz RemminaProtocolSetting para posibles errores."
 
 #: plugins/x2go/x2go_plugin.c:1520 plugins/x2go/x2go_plugin.c:1524
 #: plugins/x2go/x2go_plugin.c:1528 plugins/x2go/x2go_plugin.c:1532
 #, fuzzy
 #| msgid "Transfer error"
 msgid "Internal error: "
-msgstr "Error interno"
+msgstr "Error interno: "
 
 #: plugins/x2go/x2go_plugin.c:1521
 #, fuzzy
 msgid "The upper limit is not a valid integer!"
-msgstr "La entrada no es un número entero válido."
+msgstr "El límite superior no es un número entero válido."
 
 #: plugins/x2go/x2go_plugin.c:1525
+#, fuzzy
 msgid "The upper limit is too high!"
-msgstr ""
+msgstr "El límite superior es demasiado alto."
 
 #: plugins/x2go/x2go_plugin.c:1529
+#, fuzzy
 msgid "The upper limit is too low!"
-msgstr ""
+msgstr "El límite superior es demasiado bajo."
 
 #: plugins/x2go/x2go_plugin.c:1547
 #, fuzzy
@@ -3575,15 +3583,14 @@ msgid ""
 "Copyright © 2009–2014 Vic Lee\n"
 "More details in COPYING"
 msgstr ""
-"\n"
 "Derechos de autor © 2014-2021 Antenore Gatta, Giovanni Panozzo.\n"
 "Derechos de autor © 2009-2014 Vic Lee\n"
-"Más detalles en COPYING\n"
-"    "
+"Más detalles en COPYING"
 
 #: data/ui/remmina_about.glade:38
+#, fuzzy
 msgid "https://www.remmina.org/"
-msgstr ""
+msgstr "https://www.remmina.org/"
 
 #: data/ui/remmina_string_list.glade:14 data/ui/remmina_string_list.glade:158
 msgid "Add"
