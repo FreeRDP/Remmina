@@ -105,19 +105,21 @@ remmina_file_new(void)
 	return remminafile;
 }
 
+/**
+ * Generate a new Remmina connection profile file name.
+ */
 void remmina_file_generate_filename(RemminaFile *remminafile)
 {
 	TRACE_CALL(__func__);
-	GDir *dir;
 
-	/* File name restrictions:
-	 * - Do not start with space
-	 * - Do not end with space or dot
-	 * - No more than 255 chars
-	 * - Do not contain \0
-	 * - Avoid % and $
-	 * - Avoid underscores and spaces for interoperabiility with everything else
-	 * - Better all lowercase
+	/** File name restrictions:
+	 * - Do not start with space.
+	 * - Do not end with space or dot.
+	 * - No more than 255 chars.
+	 * - Do not contain \0.
+	 * - Avoid % and $.
+	 * - Avoid underscores and spaces for interoperabiility with everything else.
+	 * - Better all lowercase.
 	 */
 	gchar *invalid_chars = "\\%|/$?<>:*. \"";
 	GString *filenamestr;
@@ -125,7 +127,7 @@ void remmina_file_generate_filename(RemminaFile *remminafile)
 	const gchar *s;
 
 
-	/** functions we can use
+	/* functions we can use
 	 * g_strstrip( string )
 	 *	Removes leading and trailing whitespace from a string
 	 * g_strdelimit (str, invalid_chars, '-'))
@@ -165,7 +167,7 @@ void remmina_file_generate_filename(RemminaFile *remminafile)
 	filename = g_strdelimit(g_ascii_strdown(g_strstrip(g_string_free(filenamestr, FALSE)), -1),
 				invalid_chars, '-');
 
-	dir = g_dir_open(remmina_file_get_datadir(), 0, NULL);
+	GDir *dir = g_dir_open(remmina_file_get_datadir(), 0, NULL);
 	if (dir != NULL)
 		remminafile->filename = g_strdup_printf("%s/%s.remmina", remmina_file_get_datadir(), filename);
 	else

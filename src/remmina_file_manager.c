@@ -110,6 +110,7 @@ static gboolean remmina_file_manager_do_copy(const char *src_path, const char *d
  * If it finds the legacy ~/.remmina folder it copies the connection profiles in the new folder.
  *
  * If it finds default profiles in the XDG_DATA_DIRS it copies the profiles in the user data folder.
+ */
 void remmina_file_manager_init(void)
 {
 	TRACE_CALL(__func__);

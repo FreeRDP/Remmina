@@ -42,6 +42,8 @@ G_BEGIN_DECLS
 
 struct _RemminaFile {
 	gchar *		filename;
+	// @todo Add a cache file with content remminafile->filename = last_success
+	gchar *		statefile;
 	GHashTable *	settings;
 	GHashTable *	spsettings;
 	gboolean	prevent_saving;
