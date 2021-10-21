@@ -921,6 +921,12 @@ static gchar* rmplugin_x2go_get_pyhoca_sessions(RemminaProtocolWidget* gp, GErro
 		return NULL;
 	}
 
+	// No need to catch feature-not-available error.
+	// `--quiet` is not that important.
+	if (FEATURE_AVAILABLE(gpdata, "QUIET")) {
+		argv[argc++] = g_strdup("--quiet");
+	}
+
 	argv[argc++] = NULL;
 
 	gchar* std_out = rmplugin_x2go_spawn_pyhoca_process(argc, argv, error);
