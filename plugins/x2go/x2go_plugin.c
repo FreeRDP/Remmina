@@ -376,13 +376,11 @@ static GtkWidget* rmplugin_x2go_choose_session_dialog_builder(RemminaProtocolWid
 	return widget_gtk_dialog;
 }
 
-static gboolean rmplugin_x2go_test_callback(RemminaProtocolWidget* gp, gint response_id,
-					    GtkDialog *self)
+static gboolean rmplugin_x2go_session_chooser_callback(RemminaProtocolWidget* gp,
+						       gint response_id,
+						       GtkDialog *self)
 {
 	REMMINA_PLUGIN_DEBUG("Function entry.");
-
-	REMMINA_PLUGIN_DEBUG("response: %i", response_id);
-
 
 	if (response_id == GTK_RESPONSE_OK) {
 		GList *sessions_list = GET_CURRENT_SESSIONS(gp);
@@ -417,7 +415,7 @@ static gboolean rmplugin_x2go_test_callback(RemminaProtocolWidget* gp, gint resp
 
 	// Unstucking main process. Telling it that a session has been selected.
 	// We use a trick here. As long as there is something other
-	// than 0 stored, a session is selected.
+	// than 0 stored, a session is selected. So we use the gpointer as a gboolean.
 	SET_SESSION_SELECTED(gp, (gpointer) TRUE);
 
 	gtk_widget_destroy(GTK_WIDGET(self));
@@ -1127,11 +1125,11 @@ static struct _Session* rmplugin_x2go_ask_session(RemminaProtocolWidget *gp, GEr
 	ddata->buttons = GTK_BUTTONS_OK;
 	ddata->title = _("Choose a session to resume:");
 	ddata->message = "Normal dailog factory function.";
-	ddata->callbackfunc = G_CALLBACK(rmplugin_x2go_test_callback);
+	ddata->callbackfunc = G_CALLBACK(rmplugin_x2go_session_chooser_callback);
 	ddata->dialog_factory_func = G_CALLBACK(rmplugin_x2go_choose_session_dialog_builder);
 	ddata->dialog_factory_data = sessions_list;
 
-	// Open dialog here. Dialog rmplugin_x2go_test_callback (callbackfunc)
+	// Open dialog here. Dialog rmplugin_x2go_session_chooser_callback (callbackfunc)
 	// should set SET_RESUME_SESSION_DATA.
 	IDLE_ADD((GSourceFunc)rmplugin_x2go_open_dialog, gp);
 
