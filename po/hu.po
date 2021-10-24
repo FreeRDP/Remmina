@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-10-19 13:44+0000\n"
-"PO-Revision-Date: 2021-07-16 08:59+0000\n"
+"PO-Revision-Date: 2021-10-24 22:37+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/remmina/"
 "remmina/hu/>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.7.2-dev\n"
+"X-Generator: Weblate 4.9-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:354
@@ -1295,7 +1295,7 @@ msgid ""
 "• unix:///path/socket.sock</big>"
 msgstr ""
 "<big>Támogatott formátumok\n"
-"- szerver\n"
+"- kiszolgáló\n"
 "- server[:port]\n"
 "VNC további formátumok\n"
 "- ID:ismétlő azonosító száma\n"
@@ -1358,13 +1358,14 @@ msgid ""
 "• username@server[:port] (SSH protocol only)</big>"
 msgstr ""
 "<big>Támogatott formátumok\n"
-"- szerver\n"
+"- kiszolgáló\n"
 "- server[:port]\n"
 "- username@server[:port] (csak SSH protokoll)</big>"
 
 #: src/remmina_file_editor.c:162
+#, fuzzy
 msgid "Input is invalid."
-msgstr ""
+msgstr "A bemenet érvénytelen."
 
 #: src/remmina_file_editor.c:239
 msgid "Choose a Remote Desktop Server"
@@ -1477,16 +1478,20 @@ msgid "Notes"
 msgstr "Jegyzetek"
 
 #: src/remmina_file_editor.c:1438
-#, c-format
+#, c-format, fuzzy
 msgid "(%s: %i): Can't validate setting '%s' since 'value' or 'gfe' are NULL!"
 msgstr ""
+"(%s: %i): Nem tudja érvényesíteni a '%s' beállítást, mivel az 'érték' vagy a "
+"'gfe' NULL!"
 
 #: src/remmina_file_editor.c:1441
-#, c-format
+#, c-format, fuzzy
 msgid ""
 "(%s: %i): Can't validate user input since 'setting_name_to_validate', "
 "'value' or 'gfe' are NULL!"
 msgstr ""
+"(%s: %i): Nem tudja érvényesíteni a felhasználói bemenetet, mivel a "
+"'setting_name_to_validate', 'value' vagy 'gfe' NULL!"
 
 #. TRANSLATORS: Meta-error. Shouldn't be visible.
 #: src/remmina_file_editor.c:1445 plugins/x2go/x2go_plugin.c:856
@@ -1494,14 +1499,14 @@ msgstr ""
 #, fuzzy
 #| msgid "Transfer error"
 msgid "Internal error."
-msgstr "Átviteli hiba"
+msgstr "Belső hiba."
 
 #: src/remmina_file_editor.c:1667 src/remmina_file_editor.c:1703
 #: src/remmina_file_editor.c:1724 src/remmina_file_editor.c:1747
 #, fuzzy, c-format
 #| msgid "Could not create SFTP session. %s"
 msgid "Couldn't validate user input. %s"
-msgstr "Nem sikerült létrehozni az SFTP kapcsolatot. %s"
+msgstr "Nem sikerült érvényesíteni a felhasználói bemenetet. %s"
 
 #: src/remmina_file_editor.c:1691
 msgid "Default settings saved."
@@ -1804,15 +1809,19 @@ msgstr "Ügyfél billentyűkiosztásának használata"
 #, fuzzy
 #| msgid "Keyboard mapping"
 msgid "Keyboard scancode remapping"
-msgstr "Billentyűzetkiosztás"
+msgstr "Billentyűzet scancode remapping"
 
 #: plugins/rdp/rdp_settings.c:483
+#, fuzzy
 msgid "List of key=value,… pairs to remap scancodes. E.g. 0x56=0x29,0x29=0x56"
 msgstr ""
+"A kulcs=érték,... párok listája a scancodok újrakódolásához. Pl. "
+"0x56=0x29,0x29=0x56"
 
 #: plugins/rdp/rdp_settings.c:486
+#, fuzzy
 msgid "FreeRDP > 2.3.0 is required to map scancodes"
-msgstr ""
+msgstr "FreeRDP > 2.3.0 szükséges a scancodes leképezéséhez"
 
 #: plugins/rdp/rdp_settings.c:494
 msgid "Quality settings"
@@ -2302,18 +2311,20 @@ msgstr ""
 "esetén."
 
 #: plugins/rdp/rdp_plugin.c:2683
+#, fuzzy
 msgid "Restricted admin mode"
-msgstr ""
+msgstr "Korlátozott admin mód"
 
 #: plugins/rdp/rdp_plugin.c:2684
 #, fuzzy
 #| msgid "Password"
 msgid "Password hash"
-msgstr "Jelszó"
+msgstr "Jelszó hash"
 
 #: plugins/rdp/rdp_plugin.c:2684
+#, fuzzy
 msgid "Restricted admin mode password hash"
-msgstr ""
+msgstr "Korlátozott admin mód jelszó hash"
 
 #: plugins/rdp/rdp_plugin.c:2685
 #, fuzzy
@@ -2792,6 +2803,7 @@ msgstr ""
 "repeater=ID:123456789+10.10.10.12:5500"
 
 #: plugins/vnc/vnc_plugin.c:1948
+#, fuzzy
 msgid ""
 "Listening for remote VNC connection:\n"
 "  • The \"Listen on port\" field is the port Remmina will listen to,\n"
@@ -2800,6 +2812,12 @@ msgid ""
 "    Remmina, e.g. with x11vnc:\n"
 "    x11vnc -display :0 -connect 192.168.1.36:8888"
 msgstr ""
+"Távoli VNC-kapcsolat figyelése:\n"
+"  - A \"Listen on port\" mezőben a Remmina a portot fogja hallgatni,\n"
+"    pl. 8888\n"
+"  - A távoli VNC-kiszolgálóról a következőhöz fog csatlakozni\n"
+"    Remminához, pl. az x11vnc segítségével:\n"
+"    x11vnc -display :0 -connect 192.168.1.36:8888"
 
 #: plugins/vnc/vnc_plugin.c:1975
 msgid "Repeater"
@@ -2936,130 +2954,163 @@ msgid "Secured password storage in the GNOME keyring"
 msgstr "Biztonságos jelszó tárolás a GNOME kulcsátolóban"
 
 #: plugins/x2go/x2go_plugin.c:275
+#, fuzzy
 msgid "Broken `DialogData`! Aborting…"
-msgstr ""
+msgstr "Törött `DialogData`! Megszakítás…"
 
 #: plugins/x2go/x2go_plugin.c:279
+#, fuzzy
 msgid "Can't retrieve `DialogData`! Aborting…"
-msgstr ""
+msgstr "Nem lehet lekérdezni a `DialogData`-t! Megszakítás…"
 
 #: plugins/x2go/x2go_plugin.c:505
+#, fuzzy
 msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
 msgstr ""
+"A PyHoca-CLI váratlanul kilépett. Ez a kapcsolat mostantól lezárásra kerül."
 
 #: plugins/x2go/x2go_plugin.c:514
+#, fuzzy
 msgid "An error occured."
-msgstr ""
+msgstr "Hiba történt"
 
 #: plugins/x2go/x2go_plugin.c:515
+#, fuzzy
 msgid ""
 "The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
 "Please check your profile settings and PyHoca-CLI's output for possible "
 "errors. Also ensure the remote server is reachable."
 msgstr ""
+"A szükséges 'pyhoca-cli' gyermekfolyamat váratlanul leállt.\n"
+"Kérjük, ellenőrizze a profil beállításait és a PyHoca-CLI kimenetét az "
+"esetleges hibák miatt. Győződjön meg arról is, hogy a távoli szerver "
+"elérhető."
 
 #: plugins/x2go/x2go_plugin.c:561
+#, fuzzy
 msgid "Started PyHoca-CLI with the following arguments:"
-msgstr ""
+msgstr "Elindította a PyHoca-CLI-t a következő argumentumokkal:"
 
 #: plugins/x2go/x2go_plugin.c:580
-#, c-format
+#, c-format, fuzzy
 msgid "Could not retrieve PyHoca-CLI's command-line features! Exit code: %i"
 msgstr ""
+"Nem sikerült lekérni a PyHoca-CLI parancssori funkcióit! Kilépési kód: %i"
 
 #: plugins/x2go/x2go_plugin.c:585
 #, fuzzy, c-format
 #| msgid "Error: %s"
 msgid "Error: '%s'"
-msgstr "Hiba: %s"
+msgstr "Hiba: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:609
+#, fuzzy
 msgid "Can't save empty username!"
-msgstr ""
+msgstr "Nem lehet üres felhasználónevet menteni!"
 
 #: plugins/x2go/x2go_plugin.c:621
+#, fuzzy
 msgid "Internal error: Could not save new credentials."
-msgstr ""
+msgstr "Belső hiba: Belső hiba: Nem sikerült új hitelesítő adatokat menteni."
 
 #: plugins/x2go/x2go_plugin.c:623
+#, fuzzy
 msgid ""
 "An error occured while trying to save new credentials: 's_password' or "
 "'s_username' strings were not set."
 msgstr ""
+"Hiba történt az új hitelesítő adatok mentése során: az 's_password' vagy "
+"'s_username' karakterláncok nem voltak beállítva."
 
 #: plugins/x2go/x2go_plugin.c:659
 #, fuzzy
 #| msgid "Enter NX authentication credentials"
 msgid "Enter X2Go credentials"
-msgstr "Adja meg az NX hitelesítő adatokat"
+msgstr "X2Go hitelesítő adatok megadása"
 
 #: plugins/x2go/x2go_plugin.c:818
+#, fuzzy
 msgid "DPI setting is out of bounds. Please adjust it in profile settings."
 msgstr ""
+"A DPI-beállítás nem megengedett. Kérjük, állítsa be a profilbeállításokban."
 
 #: plugins/x2go/x2go_plugin.c:838
+#, fuzzy
 msgid "Started pyhoca-cli with following arguments:"
-msgstr ""
+msgstr "Elindította a pyhoca-cli-t a következő argumentumokkal:"
 
 #: plugins/x2go/x2go_plugin.c:858
+#, fuzzy
 msgid "An error occured while starting an X2Go session…"
-msgstr ""
+msgstr "Hiba történt az X2Go munkamenet indítása közben…"
 
 #: plugins/x2go/x2go_plugin.c:867
 #, fuzzy
 #| msgid "Could not start SSH session. %s"
 msgid "Could not start X2Go session."
-msgstr "Nem sikerült elindítani az SSH-kapcsolatot. %s"
+msgstr "Nem sikerült elindítani az X2Go munkamenetet."
 
 #: plugins/x2go/x2go_plugin.c:868
 #, fuzzy, c-format
 #| msgid "Could not start SSH session. %s"
 msgid "Could not start PyHoca-CLI (%i): '%s'"
-msgstr "Nem sikerült elindítani az SSH-kapcsolatot. %s"
+msgstr "Nem tudta elindítani a PyHoca-CLI-t (%i): '%s'"
 
 #: plugins/x2go/x2go_plugin.c:945
+#, fuzzy
 msgid ""
 "Couldn't get PyHoca-CLI's command-line features. This indicates it is either "
 "too old, or not installed. An old limited set of features will be used for "
 "now."
 msgstr ""
+"Nem tudta elérni a PyHoca-CLI parancssori funkcióit. Ez azt jelzi, hogy vagy "
+"túl régi, vagy nincs telepítve. Egyelőre egy régi, korlátozott számú "
+"funkciót fogunk használni."
 
 #: plugins/x2go/x2go_plugin.c:956
+#, fuzzy
 msgid ""
 "Could not parse PyHoca-CLI's command-line features. Using a limited feature-"
 "set for now."
 msgstr ""
+"Nem sikerült elemezni a PyHoca-CLI parancssori funkcióit. Egyelőre "
+"korlátozott funkciókészletet használ."
 
 #: plugins/x2go/x2go_plugin.c:962
+#, fuzzy
 msgid "Retrieved the following PyHoca-CLI command-line features:"
-msgstr ""
+msgstr "A következő PyHoca-CLI parancssori funkciókat hívta le:"
 
 #: plugins/x2go/x2go_plugin.c:967
-#, c-format
+#, c-format, fuzzy
 msgid "Available feature[%i]: '%s'"
-msgstr ""
+msgstr "Elérhető funkció[%i]: '%s''"
 
 #: plugins/x2go/x2go_plugin.c:1072
 #, fuzzy
 #| msgid "Could not open channel. %s"
 msgid "Could not open X11 DISPLAY."
-msgstr "Nem sikerült csatornát nyitni. %s"
+msgstr "Nem sikerült megnyitni az X11 DISPLAY-t."
 
 #: plugins/x2go/x2go_plugin.c:1112
+#, fuzzy
 msgid "Waiting for window of X2Go Agent to appear…"
-msgstr ""
+msgstr "Várom az X2Go Agent ablakának megjelenését…"
 
 #: plugins/x2go/x2go_plugin.c:1138
+#, fuzzy
 msgid "Waiting for PyHoca-CLI to show the session's window…"
-msgstr ""
+msgstr "Várjuk, hogy a PyHoca-CLI megjelenítse a munkamenet ablakát…"
 
 #: plugins/x2go/x2go_plugin.c:1189
+#, fuzzy
 msgid "No X2Go session window appeared. Something went wrong…"
-msgstr ""
+msgstr "Nem jelent meg az X2Go munkamenet ablak. Valami elromlott…"
 
 #: plugins/x2go/x2go_plugin.c:1298
+#, fuzzy
 msgid "Internal error: RemminaProtocolWidget* gp is NULL!"
-msgstr ""
+msgstr "Belső hiba: RemminaProtocolWidget* gp is NULL!"
 
 #: plugins/x2go/x2go_plugin.c:1319
 #, fuzzy, c-format
@@ -3067,11 +3118,13 @@ msgstr ""
 #| "The protocol “%s” is unavailable because GtkSocket only works under X.Org."
 msgid "The %s protocol is unavailable because GtkSocket only works under X.org"
 msgstr ""
-"A \"%s\" protokoll nem elérhető, mert a GtkSocket csak X.Org alatt működik."
+"Az %s protokoll nem érhető el, mivel a GtkSocket csak X.org alatt működik."
 
 #: plugins/x2go/x2go_plugin.c:1327
+#, fuzzy
 msgid "Could not initialize pthread. Falling back to non-threaded mode…"
 msgstr ""
+"Nem sikerült inicializálni a pthread-et. Visszalépés a nem szálas üzemmódba…"
 
 #. TRANSLATORS: Presumably you just want to translate 'and' into
 #. your language.
@@ -3082,9 +3135,9 @@ msgstr ""
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
 #: plugins/x2go/x2go_plugin.c:1370 plugins/x2go/x2go_plugin.c:1388
-#, c-format
+#, c-format, fuzzy
 msgid "%sand '%s'"
-msgstr ""
+msgstr "%sés \"%s\"."
 
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
@@ -3093,85 +3146,97 @@ msgstr ""
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
 #: plugins/x2go/x2go_plugin.c:1375 plugins/x2go/x2go_plugin.c:1393
-#, c-format
+#, c-format, fuzzy
 msgid "%s'%s' "
-msgstr ""
+msgstr "%s'%s' "
 
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
 #. 'value1', 'value2', 'valueN-1' and 'valueN'
 #: plugins/x2go/x2go_plugin.c:1380
-#, c-format
+#, c-format, fuzzy
 msgid "%s'%s', "
-msgstr ""
+msgstr "%s'%s', "
 
 #: plugins/x2go/x2go_plugin.c:1418
+#, fuzzy
 msgid "Invalid validation data in ProtocolSettings array!"
-msgstr ""
+msgstr "Érvénytelen érvényesítési adatok a ProtocolSettings tömbben!"
 
 #: plugins/x2go/x2go_plugin.c:1430 plugins/x2go/x2go_plugin.c:1492
+#, fuzzy
 msgid "Validation data in ProtocolSettings array is invalid!"
-msgstr ""
+msgstr "A ProtocolSettings tömb érvényesítési adatai érvénytelenek!"
 
 #: plugins/x2go/x2go_plugin.c:1457
-#, c-format
+#, c-format, fuzzy
 msgid "Allowed values are %s."
-msgstr ""
+msgstr "A megengedett értékek a következők: %s."
 
 #: plugins/x2go/x2go_plugin.c:1459
-#, c-format
+#, c-format, fuzzy
 msgid "The only allowed value is '%s'."
-msgstr ""
+msgstr "Az egyetlen megengedett érték az \"%s\"."
 
 #: plugins/x2go/x2go_plugin.c:1501
+#, fuzzy
 msgid "The lower limit is not a valid integer!"
-msgstr ""
+msgstr "Az alsó határérték nem érvényes egész szám!"
 
 #: plugins/x2go/x2go_plugin.c:1503
+#, fuzzy
 msgid "The lower limit is too high!"
-msgstr ""
+msgstr "Az alsó határ túl magas!"
 
 #: plugins/x2go/x2go_plugin.c:1505
+#, fuzzy
 msgid "The lower limit is too low!"
-msgstr ""
+msgstr "Az alsó határ túl alacsony!"
 
 #: plugins/x2go/x2go_plugin.c:1507 plugins/x2go/x2go_plugin.c:1533
 #: plugins/x2go/x2go_plugin.c:1552
+#, fuzzy
 msgid "Something went wrong."
-msgstr ""
+msgstr "Valami hiba történt."
 
 #: plugins/x2go/x2go_plugin.c:1511 plugins/x2go/x2go_plugin.c:1537
 #: plugins/x2go/x2go_plugin.c:1556
+#, fuzzy
 msgid "Please check the RemminaProtocolSetting array for possible errors."
 msgstr ""
+"Kérjük, ellenőrizze a RemminaProtocolSetting tömböt az esetleges hibák miatt."
 
 #: plugins/x2go/x2go_plugin.c:1520 plugins/x2go/x2go_plugin.c:1524
 #: plugins/x2go/x2go_plugin.c:1528 plugins/x2go/x2go_plugin.c:1532
 #, fuzzy
 #| msgid "Transfer error"
 msgid "Internal error: "
-msgstr "Átviteli hiba"
+msgstr "Belső hiba: "
 
 #: plugins/x2go/x2go_plugin.c:1521
+#, fuzzy
 msgid "The upper limit is not a valid integer!"
-msgstr ""
+msgstr "A felső határérték nem érvényes egész szám!"
 
 #: plugins/x2go/x2go_plugin.c:1525
+#, fuzzy
 msgid "The upper limit is too high!"
-msgstr ""
+msgstr "A felső határ túl magas!"
 
 #: plugins/x2go/x2go_plugin.c:1529
+#, fuzzy
 msgid "The upper limit is too low!"
-msgstr ""
+msgstr "A felső határ túl alacsony!"
 
 #: plugins/x2go/x2go_plugin.c:1547
+#, fuzzy
 msgid "The input is not a valid integer!"
-msgstr ""
+msgstr "A bemenet nem érvényes egész szám!"
 
 #: plugins/x2go/x2go_plugin.c:1549 plugins/x2go/x2go_plugin.c:1568
-#, c-format
+#, c-format, fuzzy
 msgid "Input must be a number between %i and %i."
-msgstr ""
+msgstr "A bemenetnek egy %i és %i közötti számnak kell lennie."
 
 #: plugins/x2go/x2go_plugin.c:1597
 #, fuzzy
@@ -3180,60 +3245,69 @@ msgid "Startup program"
 msgstr "Induló program"
 
 #: plugins/x2go/x2go_plugin.c:1599
+#, fuzzy
 msgid "Which command should be executed after creating the X2Go session?"
-msgstr ""
+msgstr "Melyik parancsot kell végrehajtani az X2Go munkamenet létrehozása után?"
 
 #: plugins/x2go/x2go_plugin.c:1601
 #, fuzzy
 #| msgid "Keyboard layout"
 msgid "Keyboard Layout (auto)"
-msgstr "Billentyűzetkiosztás"
+msgstr "Billentyűzetelrendezés (automatikus)"
 
 #: plugins/x2go/x2go_plugin.c:1602
 #, fuzzy
 #| msgid "Keyboard layout"
 msgid "Keyboard type (auto)"
-msgstr "Billentyűzetkiosztás"
+msgstr "Billentyűzet típusa (automatikus)"
 
 #: plugins/x2go/x2go_plugin.c:1603
 #, fuzzy
 #| msgid "Turn on Java support"
 msgid "Audio support"
-msgstr "Java támogatás bekapcsolása"
+msgstr "Hangtámogatás"
 
 #: plugins/x2go/x2go_plugin.c:1605
+#, fuzzy
 msgid "The sound system of the X2Go server (default: 'pulse')."
-msgstr ""
+msgstr "Az X2Go szerver hangrendszere (alapértelmezett: 'pulse')."
 
 #: plugins/x2go/x2go_plugin.c:1608
 #, fuzzy
 #| msgid "USB redirection error"
 msgid "Clipboard direction"
-msgstr "TCP átirányítás"
+msgstr "Vágólap iránya"
 
 #: plugins/x2go/x2go_plugin.c:1610
+#, fuzzy
 msgid "Which direction should clipboard content be copied? (default: 'both')."
 msgstr ""
+"Melyik irányba másolja a vágólap tartalmát? (alapértelmezett: 'mindkettő')."
 
 #: plugins/x2go/x2go_plugin.c:1614
 #, fuzzy
 #| msgid "Resolution"
 msgid "DPI resolution"
-msgstr "Felbontás"
+msgstr "DPI felbontás"
 
 #: plugins/x2go/x2go_plugin.c:1615
+#, fuzzy
 msgid ""
 "Launch session with a specific resolution (in dots per inch). Must be "
 "between 20 and 400."
 msgstr ""
+"A munkamenet elindítása egy adott felbontással (pont per hüvelykben). Ennek "
+"20 és 400 között kell lennie."
 
 #: plugins/x2go/x2go_plugin.c:1659
+#, fuzzy
 msgid "X2Go plugin loaded."
-msgstr ""
+msgstr "X2Go plugin betöltve."
 
 #: plugins/x2go/x2go_plugin.h:43
+#, fuzzy
 msgid "X2Go - Launch an X2Go session"
-msgstr ""
+msgstr "X2Go - X2Go munkamenet indítása"
 
 #: plugins/gvnc/gvnc_plugin_config.h:40
 #, fuzzy
@@ -3524,15 +3598,14 @@ msgid ""
 "Copyright © 2009–2014 Vic Lee\n"
 "More details in COPYING"
 msgstr ""
-"\n"
 "Copyright © 2014–2021 Antenore Gatta, Giovanni Panozzo.\n"
 "Copyright © 2009–2014 Vic Lee\n"
-"Részletek a MÁSOLÁS alatt\n"
-"    "
+"Részletek a MÁSOLÁS alatt"
 
 #: data/ui/remmina_about.glade:38
+#, fuzzy
 msgid "https://www.remmina.org/"
-msgstr ""
+msgstr "https://www.remmina.org/"
 
 #: data/ui/remmina_string_list.glade:14 data/ui/remmina_string_list.glade:158
 msgid "Add"
