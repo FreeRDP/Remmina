@@ -67,6 +67,7 @@
 #define MIN_WINDOW_HEIGHT 10
 
 #define KEYFILE_GROUP_REMMINA "remmina"
+#define KEYFILE_GROUP_STATE "Remmina Connection States"
 
 static struct timespec times[2];
 
@@ -78,6 +79,7 @@ remmina_file_new_empty(void)
 
 	remminafile = g_new0(RemminaFile, 1);
 	remminafile->settings = g_hash_table_new_full(g_str_hash, g_str_equal, g_free, g_free);
+	remminafile->states = g_hash_table_new_full(g_str_hash, g_str_equal, g_free, g_free);
 	/* spsettings contains settings that are loaded from the secure_plugin.
 	 * it’s used by remmina_file_store_secret_plugin_password() to know
 	 * where to change */
@@ -182,11 +184,34 @@ void remmina_file_set_filename(RemminaFile *remminafile, const gchar *filename)
 	remminafile->filename = g_strdup(filename);
 }
 
+void remmina_file_set_statefile(RemminaFile *remminafile)
+{
+	TRACE_CALL(__func__);
+
+	if (!remminafile)
+		return;
+	else
+		g_free(remminafile->statefile);
+
+	gchar *basename = g_path_get_basename (remminafile->filename);
+	gchar *cachedir = g_build_path("/", g_get_user_cache_dir(), "remmina", NULL);
+	GString *fname = g_string_new(g_strdup(basename));
+
+	remminafile->statefile = g_strdup_printf("%s/%s.state", cachedir, fname->str);
+}
+
 const gchar *
 remmina_file_get_filename(RemminaFile *remminafile)
 {
 	TRACE_CALL(__func__);
 	return remminafile->filename;
+}
+
+const gchar *
+remmina_file_get_statefile(RemminaFile *remminafile)
+{
+	TRACE_CALL(__func__);
+	return remminafile->statefile;
 }
 
 RemminaFile *
@@ -415,6 +440,8 @@ remmina_file_load(const gchar *filename)
 		remminafile = NULL;
 	}
 
+	remmina_file_set_statefile(remminafile);
+
 	g_key_file_free(gkeyfile);
 
 	return remminafile;
@@ -429,20 +456,31 @@ void remmina_file_set_string(RemminaFile *remminafile, const gchar *setting, con
 void remmina_file_set_string_ref(RemminaFile *remminafile, const gchar *setting, gchar *value)
 {
 	TRACE_CALL(__func__);
-	const gchar *message;
 
 	if (value) {
 		/* We refuse to accept to set the "resolution" field */
 		if (strcmp(setting, "resolution") == 0) {
-			message = "WARNING: the “resolution” setting in .pref files is deprecated, but some code in remmina or in a plugin is trying to set it.\n";
-			fputs(message, stdout);
+			// TRANSLATORS: This is a message that pop-up when an external Remmina plugin tries to set the windows resolution using a legacy parameter.
+			const gchar *message = _("Using the «resolution» parameter in the Remmina preferences file is deprecated.\n");
+			REMMINA_CRITICAL(message);
 			remmina_main_show_warning_dialog(message);
 			return;
 		}
 		g_hash_table_insert(remminafile->settings, g_strdup(setting), value);
-	} else {
+	} else
 		g_hash_table_insert(remminafile->settings, g_strdup(setting), g_strdup(""));
-	}
+
+}
+
+void remmina_file_set_state(RemminaFile *remminafile, const gchar *setting, gchar *value)
+{
+	TRACE_CALL(__func__);
+
+	if(value && value[0] != 0) {
+		g_hash_table_insert(remminafile->states, g_strdup(setting), g_strdup(value));
+	} else
+		g_hash_table_insert(remminafile->states, g_strdup(setting), g_strdup(""));
+
 }
 
 const gchar *
@@ -450,7 +488,6 @@ remmina_file_get_string(RemminaFile *remminafile, const gchar *setting)
 {
 	TRACE_CALL(__func__);
 	gchar *value;
-	const gchar *message;
 
 	/* Returned value is a pointer to the string stored on the hash table,
 	 * please do not free it or the hash table will contain invalid pointer */
@@ -470,8 +507,9 @@ remmina_file_get_string(RemminaFile *remminafile, const gchar *setting)
 	}
 
 	if (strcmp(setting, "resolution") == 0) {
-		message = "WARNING: the “resolution” setting in .pref files is deprecated, but some code in remmina or in a plugin is trying to read it.\n";
-		fputs(message, stdout);
+		// TRANSLATORS: This is a message that pop-up when an external Remmina plugin tries to set the windows resolution using a legacy parameter.
+		const gchar *message = _("Using the «resolution» parameter in the Remmina preferences file is deprecated.\n");
+		REMMINA_CRITICAL(message);
 		remmina_main_show_warning_dialog(message);
 		return NULL;
 	}
@@ -585,6 +623,8 @@ void remmina_file_free(RemminaFile *remminafile)
 
 	if (remminafile->filename)
 		g_free(remminafile->filename);
+	if (remminafile->statefile)
+		g_free(remminafile->statefile);
 	if (remminafile->settings)
 		g_hash_table_destroy(remminafile->settings);
 	if (remminafile->spsettings)
@@ -619,10 +659,10 @@ void remmina_file_save(RemminaFile *remminafile)
 	nopasswdsave = remmina_file_get_int(remminafile, "disablepasswordstoring", 0);
 	/* Identify the protocol plugin and get pointers to its RemminaProtocolSetting structs */
 	proto = (gchar *)g_hash_table_lookup(remminafile->settings, "protocol");
-	if (proto) {
+	if (proto)
 		protocol_plugin = (RemminaProtocolPlugin *)remmina_plugin_manager_get_plugin(REMMINA_PLUGIN_TYPE_PROTOCOL, proto);
-	} else {
-		g_warning("Saving settings for unknown protocol, because remminafile has non proto key\n");
+	else {
+		REMMINA_CRITICAL("Saving settings for unknown protocol:", proto);
 		protocol_plugin = NULL;
 	}
 
@@ -770,6 +810,57 @@ void remmina_file_delete(const gchar *filename)
 	g_unlink(filename);
 }
 
+const gchar *
+remmina_file_get_state(RemminaFile *remminafile, const gchar *setting)
+{
+	TRACE_CALL(__func__);
+	g_autoptr(GError) error = NULL;
+	g_autoptr(GKeyFile) key_file = g_key_file_new ();
+
+	if (!g_key_file_load_from_file (key_file, remminafile->statefile, G_KEY_FILE_NONE, &error)) {
+		if (!g_error_matches (error, G_FILE_ERROR, G_FILE_ERROR_NOENT))
+			REMMINA_CRITICAL ("Error loading state file: %s", error->message);
+		return NULL;
+	}
+
+	g_autofree gchar *val = g_key_file_get_string (key_file, KEYFILE_GROUP_STATE, setting, &error);
+	if (val == NULL &&
+			!g_error_matches (error, G_KEY_FILE_ERROR, G_KEY_FILE_ERROR_KEY_NOT_FOUND)) {
+		REMMINA_CRITICAL ("Error finding %s in state file %s: %s",
+				setting, remminafile->statefile, error->message);
+		return NULL;
+	}
+	return val && val[0] ? val : NULL;
+}
+
+
+void remmina_file_state_last_success(RemminaFile *remminafile)
+{
+	TRACE_CALL(__func__);
+
+	g_autoptr(GKeyFile) key_statefile = g_key_file_new ();
+	g_autoptr(GKeyFile) key_remminafile = g_key_file_new ();
+	g_autoptr(GError) error = NULL;
+
+	const gchar *date = NULL;
+	GDateTime *d = g_date_time_new_now_utc();
+
+	date = g_strdup_printf("%d%02d%02d",
+				       g_date_time_get_year(d),
+				       g_date_time_get_month(d),
+				       g_date_time_get_day_of_month(d));
+
+	g_key_file_set_string (key_statefile, KEYFILE_GROUP_STATE, "last_success", date);
+
+	if (!g_key_file_save_to_file (key_statefile, remminafile->statefile, &error)) {
+		REMMINA_CRITICAL ("Error saving key file: %s", error->message);
+		return;
+	}
+	/* Delete old pre-1.5 keys */
+	g_key_file_remove_key(key_remminafile, KEYFILE_GROUP_REMMINA, "last_success", NULL);
+	REMMINA_DEBUG("Last connection made on %s.", date);
+}
+
 void remmina_file_unsave_passwords(RemminaFile *remminafile)
 {
 	/* Delete all saved secrets for this profile */
@@ -813,10 +904,10 @@ void remmina_file_unsave_passwords(RemminaFile *remminafile)
 }
 
 /**
- * Return the string date of the last time a file has been modified.
+ * Return the string date of the last time a Remmina state file has been modified.
  *
  * This is used to return the modification date of a file and it’s used
- * to return the modification date and time of a givwn remmina file.
+ * to return the modification date and time of a given remmina file.
  * If it fails it will return "26/01/1976 23:30:00", that is just a date to don't
  * return an empty string (challenge: what was happened that day at that time?).
  * @return A date string in the form "%d/%m/%Y %H:%M:%S".
@@ -837,7 +928,12 @@ remmina_file_get_datetime(RemminaFile *remminafile)
 	guint64 mtime;
 	gchar *modtime_string;
 
-	file = g_file_new_for_path(remminafile->filename);
+
+	if (remminafile->statefile) {
+		//REMMINA_DEBUG ("remminafile->statefile: %s", remminafile->statefile);
+		file = g_file_new_for_path(remminafile->statefile);
+	} else
+		file = g_file_new_for_path(remminafile->filename);
 
 	info = g_file_query_info(file,
 				 G_FILE_ATTRIBUTE_TIME_MODIFIED,
@@ -848,11 +944,29 @@ remmina_file_get_datetime(RemminaFile *remminafile)
 	g_object_unref(file);
 
 	if (info == NULL) {
-		g_print("couldn’t get time info\n");
-		return "26/01/1976 23:30:00";
+		//REMMINA_DEBUG("couldn’t get time info");
+
+		mtime = 191543400;
+		const gchar *last_success = remmina_file_get_string(remminafile, "last_success");
+		if (last_success) {
+			//REMMINA_DEBUG ("Last success is %s", last_success);
+			GDateTime *dt;
+			dt = g_date_time_new_from_iso8601 (g_strconcat (last_success,"T00:00:00Z", NULL), NULL);
+			if (dt) {
+				//REMMINA_DEBUG("Converting last_success");
+				mtime = g_ascii_strtoull (g_date_time_format(dt, "%s"), NULL, 10);
+				g_date_time_unref (dt);
+			} else {
+				//REMMINA_DEBUG("dt was null");
+				mtime = 191543400;
+			}
+		}
+		//return g_strdup ("26/01/1976 23:30:00");
+	} else {
+		mtime = g_file_info_get_attribute_uint64(info, G_FILE_ATTRIBUTE_TIME_MODIFIED);
+		g_object_unref(info);
 	}
 
-	mtime = g_file_info_get_attribute_uint64(info, G_FILE_ATTRIBUTE_TIME_MODIFIED);
 	tv.tv_sec = mtime;
 
 	ptm = localtime(&tv.tv_sec);
@@ -860,7 +974,6 @@ remmina_file_get_datetime(RemminaFile *remminafile)
 
 	modtime_string = g_locale_to_utf8(time_string, -1, NULL, NULL, NULL);
 
-	g_object_unref(info);
 
 	return modtime_string;
 }
@@ -880,19 +993,19 @@ remmina_file_touch(RemminaFile *remminafile)
 	struct stat st;
 	int r;
 
-	if ((r = stat(remminafile->filename, &st)) < 0) {
+	if ((r = stat(remminafile->statefile, &st)) < 0) {
 		if (errno != ENOENT)
-			REMMINA_DEBUG("stat %s:", remminafile->filename);
+			REMMINA_DEBUG("stat %s:", remminafile->statefile);
 	} else if (!r) {
 		times[0] = st.st_atim;
 		times[1] = st.st_mtim;
-		if (utimensat(AT_FDCWD, remminafile->filename, times, 0) < 0)
-			REMMINA_DEBUG("utimensat %s:", remminafile->filename);
+		if (utimensat(AT_FDCWD, remminafile->statefile, times, 0) < 0)
+			REMMINA_DEBUG("utimensat %s:", remminafile->statefile);
 		return;
 	}
 
-	if ((fd = open(remminafile->filename, O_CREAT | O_EXCL, 0644)) < 0)
-		REMMINA_DEBUG("open %s:", remminafile->filename);
+	if ((fd = open(remminafile->statefile, O_CREAT | O_EXCL, 0644)) < 0)
+		REMMINA_DEBUG("open %s:", remminafile->statefile);
 	close(fd);
 
 	remmina_file_touch(remminafile);

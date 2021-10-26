@@ -34,6 +34,9 @@
  *
  */
 
+#include <glib-object.h>
+#include <gobject/gvaluecollector.h>
+
 #include "remmina/types.h"
 
 #pragma once
@@ -45,6 +48,7 @@ struct _RemminaFile {
 	// @todo Add a cache file with content remminafile->filename = last_success
 	gchar *		statefile;
 	GHashTable *	settings;
+	GHashTable *	states;
 	GHashTable *	spsettings;
 	gboolean	prevent_saving;
 };
@@ -78,13 +82,17 @@ RemminaFile *remmina_file_new(void);
 RemminaFile *remmina_file_copy(const gchar *filename);
 void remmina_file_generate_filename(RemminaFile *remminafile);
 void remmina_file_set_filename(RemminaFile *remminafile, const gchar *filename);
+void remmina_file_set_statefile(RemminaFile *remminafile);
+void remmina_file_state_last_success(RemminaFile *remminafile);
 const gchar *remmina_file_get_filename(RemminaFile *remminafile);
+const gchar *remmina_file_get_statefile(RemminaFile *remminafile);
 /* Load a new .remmina file and return the allocated RemminaFile object */
 RemminaFile *remmina_file_load(const gchar *filename);
 /* Settings get/set functions */
 void remmina_file_set_string(RemminaFile *remminafile, const gchar *setting, const gchar *value);
 void remmina_file_set_string_ref(RemminaFile *remminafile, const gchar *setting, gchar *value);
 const gchar *remmina_file_get_string(RemminaFile *remminafile, const gchar *setting);
+const gchar *remmina_file_get_state(RemminaFile *remminafile, const gchar *setting);
 gchar *remmina_file_get_secret(RemminaFile *remminafile, const gchar *setting);
 gchar *remmina_file_format_properties(RemminaFile *remminafile, const gchar *setting);
 void remmina_file_set_int(RemminaFile *remminafile, const gchar *setting, gint value);

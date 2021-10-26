@@ -486,6 +486,7 @@ static void remmina_main_load_file_tree_callback(RemminaFile *remminafile, gpoin
 							 remmina_file_get_string(remminafile, "group"));
 
 	datetime = remmina_file_get_datetime(remminafile);
+	REMMINA_DEBUG ("Date is: %s", datetime);
 	gtk_tree_store_append(store, &child, (found ? &iter : NULL));
 	gtk_tree_store_set(store, &child,
 			   PROTOCOL_COLUMN, remmina_file_get_icon_name(remminafile),

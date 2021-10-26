@@ -364,11 +364,10 @@ static gboolean conn_opened(gpointer data)
 {
 	TRACE_CALL(__func__);
 	RemminaProtocolWidget *gp = (RemminaProtocolWidget *)data;
-	guint i;
 
 #ifdef HAVE_LIBSSH
 	if (gp->priv->ssh_tunnels) {
-		for(i = 0;i < gp->priv->ssh_tunnels->len; i++) {
+		for(guint i = 0;i < gp->priv->ssh_tunnels->len; i++) {
 			remmina_ssh_tunnel_cancel_accept((RemminaSSHTunnel *)gp->priv->ssh_tunnels->pdata[i]);
 		}
 	}
@@ -387,7 +386,7 @@ static gboolean conn_opened(gpointer data)
 
 void remmina_protocol_widget_signal_connection_opened(RemminaProtocolWidget *gp)
 {
-	/* Plugin told us that it closed the connection,
+	/* Plugin told us that it opened the connection,
 	 * add async event to main thread to complete our close tasks */
 	TRACE_CALL(__func__);
 	g_idle_add(conn_opened, (gpointer)gp);
@@ -485,7 +484,6 @@ void remmina_protocol_widget_close_connection(RemminaProtocolWidget *gp)
 
 	return;
 }
-
 
 /** Check if the plugin accepts keystrokes.
  */
@@ -729,7 +727,7 @@ void remmina_protocol_widget_emit_signal(RemminaProtocolWidget *gp, const gchar 
 {
 	TRACE_CALL(__func__);
 
-	g_print("Emitting signals should be used from the object itself, not from another object\n");
+	REMMINA_DEBUG("Emitting signals should be used from the object itself, not from another object");
 	raise(SIGINT);
 
 	if (!remmina_masterthread_exec_is_main_thread()) {

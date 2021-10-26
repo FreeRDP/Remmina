@@ -367,7 +367,7 @@ remmina_plugin_ssh_main_thread(gpointer data)
 	}
 
 BREAK:
-	REMMINA_DEBUG("Authentication terminted with exit status %d", ret);
+	REMMINA_DEBUG("Authentication terminated with exit status %d", ret);
 
 	g_free(hostport);
 
