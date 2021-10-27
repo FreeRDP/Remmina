@@ -107,9 +107,9 @@ static gboolean remmina_file_manager_do_copy(const char *src_path, const char *d
 /**
  * It creates the Remmina data and cache folders
  *
- * If it finds the legacy ~/.remmina folder it copies the connection profiles in the new folder.
+ * If it finds the legacy ~/.remmina folder it copies the connection profiles into the new folder.
  *
- * If it finds default profiles in the XDG_DATA_DIRS it copies the profiles in the user data folder.
+ * If it finds default profiles in the XDG_DATA_DIRS it copies the profiles into the user data-folder.
  */
 void remmina_file_manager_init(void)
 {
@@ -122,16 +122,16 @@ void remmina_file_manager_init(void)
 	/* Get and create the XDG_DATA_HOME directory */
 	remminadir = remmina_pref_get_value("datadir_path");
 	if (g_mkdir_with_parents(remminadir, 0750) == 0) {
-		REMMINA_DEBUG ("Remmina data folder %s initialized successfully", remminadir);
+		REMMINA_DEBUG ("Initialized the \"%s\" data folder", remminadir);
 		g_free(remminadir), remminadir = NULL;
 	} else {
 		g_free(remminadir), remminadir = NULL;
 		/* Get and create the XDG_DATA_HOME directory */
 		remminadir = g_build_path("/", g_get_user_data_dir(), "remmina", NULL);
 		if (g_mkdir_with_parents(remminadir, 0750) == 0)
-			REMMINA_DEBUG ("Remmina data folder %s initialized successfully", remminadir);
+			REMMINA_DEBUG ("Initialized the \"%s\" data folder", remminadir);
 		else
-			REMMINA_CRITICAL("Cannot create data folder %s", remminadir);
+			REMMINA_CRITICAL("Cannot create the \"%s\" data folder", remminadir);
 		g_free(remminadir), remminadir = NULL;
 	}
 	/* Create the XDG_CACHE_HOME directory */

@@ -460,7 +460,7 @@ void remmina_file_set_string_ref(RemminaFile *remminafile, const gchar *setting,
 	if (value) {
 		/* We refuse to accept to set the "resolution" field */
 		if (strcmp(setting, "resolution") == 0) {
-			// TRANSLATORS: This is a message that pop-up when an external Remmina plugin tries to set the windows resolution using a legacy parameter.
+			// TRANSLATORS: This is a message that pops up when an external Remmina plugin tries to set the window resolution using a legacy parameter.
 			const gchar *message = _("Using the «resolution» parameter in the Remmina preferences file is deprecated.\n");
 			REMMINA_CRITICAL(message);
 			remmina_main_show_warning_dialog(message);
@@ -819,14 +819,14 @@ remmina_file_get_state(RemminaFile *remminafile, const gchar *setting)
 
 	if (!g_key_file_load_from_file (key_file, remminafile->statefile, G_KEY_FILE_NONE, &error)) {
 		if (!g_error_matches (error, G_FILE_ERROR, G_FILE_ERROR_NOENT))
-			REMMINA_CRITICAL ("Error loading state file: %s", error->message);
+			REMMINA_CRITICAL ("Could not load the state file. %s", error->message);
 		return NULL;
 	}
 
 	g_autofree gchar *val = g_key_file_get_string (key_file, KEYFILE_GROUP_STATE, setting, &error);
 	if (val == NULL &&
 			!g_error_matches (error, G_KEY_FILE_ERROR, G_KEY_FILE_ERROR_KEY_NOT_FOUND)) {
-		REMMINA_CRITICAL ("Error finding %s in state file %s: %s",
+		REMMINA_CRITICAL ("Could not find  \"%s\" in the \"%s\" state file. %s",
 				setting, remminafile->statefile, error->message);
 		return NULL;
 	}
@@ -853,7 +853,7 @@ void remmina_file_state_last_success(RemminaFile *remminafile)
 	g_key_file_set_string (key_statefile, KEYFILE_GROUP_STATE, "last_success", date);
 
 	if (!g_key_file_save_to_file (key_statefile, remminafile->statefile, &error)) {
-		REMMINA_CRITICAL ("Error saving key file: %s", error->message);
+		REMMINA_CRITICAL ("Could not save the key file. %s", error->message);
 		return;
 	}
 	/* Delete old pre-1.5 keys */
@@ -907,7 +907,7 @@ void remmina_file_unsave_passwords(RemminaFile *remminafile)
  * Return the string date of the last time a Remmina state file has been modified.
  *
  * This is used to return the modification date of a file and it’s used
- * to return the modification date and time of a given remmina file.
+ * to return the modification date and time of a given Remmina file.
  * If it fails it will return "26/01/1976 23:30:00", that is just a date to don't
  * return an empty string (challenge: what was happened that day at that time?).
  * @return A date string in the form "%d/%m/%Y %H:%M:%S".
@@ -944,7 +944,7 @@ remmina_file_get_datetime(RemminaFile *remminafile)
 	g_object_unref(file);
 
 	if (info == NULL) {
-		//REMMINA_DEBUG("couldn’t get time info");
+		//REMMINA_DEBUG("could not get time info");
 
 		mtime = 191543400;
 		const gchar *last_success = remmina_file_get_string(remminafile, "last_success");
