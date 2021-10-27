@@ -720,6 +720,10 @@ static gchar* rmplugin_x2go_spawn_pyhoca_process(guint argc, gchar* argv[],
 	}
 	g_printf("\n");
 
+	REMMINA_PLUGIN_DEBUG("%s", _("Started PyHoca-CLI with the "
+				    "following environment variables:"));
+	REMMINA_PLUGIN_DEBUG("%s", g_strjoinv("\n", env));
+
 	if (!success_ret || (*error) || g_strcmp0(standard_out, "") == 0 || exit_code) {
 		if (!(*error)) {
 			REMMINA_PLUGIN_WARNING("%s", g_strdup_printf(
