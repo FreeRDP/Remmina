@@ -125,7 +125,6 @@ void remmina_file_generate_filename(RemminaFile *remminafile)
 	 */
 	gchar *invalid_chars = "\\%|/$?<>:*. \"";
 	GString *filenamestr;
-	gchar *filename;
 	const gchar *s;
 
 
@@ -144,7 +143,7 @@ void remmina_file_generate_filename(RemminaFile *remminafile)
 	 *	Validates UTF-8 encoded text.
 	 */
 
-	g_free(remminafile->filename);
+	//g_free(remminafile->filename), remminafile->filename = NULL;
 
 	filenamestr = g_string_new(g_strdup_printf("%s",
 						   remmina_pref.remmina_file_name));
@@ -166,7 +165,7 @@ void remmina_file_generate_filename(RemminaFile *remminafile)
 
 	s = NULL;
 
-	filename = g_strdelimit(g_ascii_strdown(g_strstrip(g_string_free(filenamestr, FALSE)), -1),
+	g_autofree gchar *filename = g_strdelimit(g_ascii_strdown(g_strstrip(g_string_free(filenamestr, FALSE)), -1),
 				invalid_chars, '-');
 
 	GDir *dir = g_dir_open(remmina_file_get_datadir(), 0, NULL);
@@ -205,13 +204,6 @@ remmina_file_get_filename(RemminaFile *remminafile)
 {
 	TRACE_CALL(__func__);
 	return remminafile->filename;
-}
-
-const gchar *
-remmina_file_get_statefile(RemminaFile *remminafile)
-{
-	TRACE_CALL(__func__);
-	return remminafile->statefile;
 }
 
 RemminaFile *
@@ -472,7 +464,7 @@ void remmina_file_set_string_ref(RemminaFile *remminafile, const gchar *setting,
 
 }
 
-void remmina_file_set_state(RemminaFile *remminafile, const gchar *setting, gchar *value)
+void remmina_file_set_state(RemminaFile *remminafile, const gchar *setting, const gchar *value)
 {
 	TRACE_CALL(__func__);
 
@@ -562,6 +554,15 @@ void remmina_file_set_int(RemminaFile *remminafile, const gchar *setting, gint v
 							g_strdup_printf("%i", value));
 }
 
+void remmina_file_set_state_int(RemminaFile *remminafile, const gchar *setting, gint value)
+{
+	TRACE_CALL(__func__);
+	if (remminafile)
+		g_hash_table_insert(remminafile->states,
+							g_strdup(setting),
+							g_strdup_printf("%i", value));
+}
+
 gint remmina_file_get_int(RemminaFile *remminafile, const gchar *setting, gint default_value)
 {
 	TRACE_CALL(__func__);
@@ -569,6 +570,18 @@ gint remmina_file_get_int(RemminaFile *remminafile, const gchar *setting, gint d
 	gint r;
 
 	value = g_hash_table_lookup(remminafile->settings, setting);
+	r = value == NULL ? default_value : (value[0] == 't' ? TRUE : atoi(value));
+	// TOO verbose: REMMINA_DEBUG ("Integer value is: %d", r);
+	return r;
+}
+
+gint remmina_file_get_state_int(RemminaFile *remminafile, const gchar *setting, gint default_value)
+{
+	TRACE_CALL(__func__);
+	gchar *value;
+	gint r;
+
+	value = g_hash_table_lookup(remminafile->states, setting);
 	r = value == NULL ? default_value : (value[0] == 't' ? TRUE : atoi(value));
 	// TOO verbose: REMMINA_DEBUG ("Integer value is: %d", r);
 	return r;
@@ -600,6 +613,32 @@ gdouble remmina_file_get_double(RemminaFile *remminafile,
 	return d;
 }
 
+// sscanf uses the set language to convert the float.
+// therefore '.' and ',' cannot be used interchangeably.
+gdouble remmina_file_get_state_double(RemminaFile *remminafile,
+							   const gchar *setting,
+							   gdouble default_value)
+{
+	TRACE_CALL(__func__);
+	gchar *value;
+
+	value = g_hash_table_lookup(remminafile->states, setting);
+	if (!value)
+		return default_value;
+
+	// str to double.
+	// https://stackoverflow.com/questions/10075294/converting-string-to-a-double-variable-in-c
+	gdouble d;
+	gint ret = sscanf(value, "%lf", &d);
+	if (ret != 1) {
+		// failed.
+		d = default_value;
+	}
+
+	// TOO VERBOSE: REMMINA_DEBUG("Double value is: %lf", d);
+	return d;
+}
+
 static GKeyFile *
 remmina_file_get_keyfile(RemminaFile *remminafile)
 {
@@ -610,6 +649,21 @@ remmina_file_get_keyfile(RemminaFile *remminafile)
 		return NULL;
 	gkeyfile = g_key_file_new();
 	if (!g_key_file_load_from_file(gkeyfile, remminafile->filename, G_KEY_FILE_NONE, NULL)) {
+		/* it will fail if it’s a new file, but shouldn’t matter. */
+	}
+	return gkeyfile;
+}
+
+static GKeyFile *
+remmina_file_get_keystate(RemminaFile *remminafile)
+{
+	TRACE_CALL(__func__);
+	GKeyFile *gkeyfile;
+
+	if (remminafile->statefile == NULL)
+		return NULL;
+	gkeyfile = g_key_file_new();
+	if (!g_key_file_load_from_file(gkeyfile, remminafile->statefile, G_KEY_FILE_NONE, NULL)) {
 		/* it will fail if it’s a new file, but shouldn’t matter. */
 	}
 	return gkeyfile;
@@ -645,6 +699,7 @@ void remmina_file_save(RemminaFile *remminafile)
 	gchar *s, *proto, *content;
 	gint nopasswdsave;
 	GKeyFile *gkeyfile;
+	GKeyFile *gkeystate;
 	gsize length = 0;
 	GError *err = NULL;
 
@@ -652,6 +707,9 @@ void remmina_file_save(RemminaFile *remminafile)
 		return;
 
 	if ((gkeyfile = remmina_file_get_keyfile(remminafile)) == NULL)
+		return;
+
+	if ((gkeystate = remmina_file_get_keystate(remminafile)) == NULL)
 		return;
 
 	REMMINA_DEBUG ("Saving profile");
@@ -722,13 +780,28 @@ void remmina_file_save(RemminaFile *remminafile)
 	if (g_file_set_contents(remminafile->filename, content, length, &err)) {
 		REMMINA_DEBUG ("Profile saved");
 	} else {
-		g_warning("Remmina connection profile cannot be saved, with error %d (%s)", err->code, err->message);
+		REMMINA_WARNING("Remmina connection profile cannot be saved, with error %d (%s)", err->code, err->message);
 	}
 	if (err != NULL)
 		g_error_free (err);
 
-	g_free(content);
+	g_free(content), content = NULL;
+	/* Saving states */
+	g_hash_table_iter_init(&iter, remminafile->states);
+	while (g_hash_table_iter_next(&iter, (gpointer *)&key, (gpointer *)&value)) {
+		g_key_file_set_string(gkeyfile, KEYFILE_GROUP_STATE, key, value);
+	}
+	content = g_key_file_to_data(gkeystate, &length, NULL);
+	if (g_file_set_contents(remminafile->statefile, content, length, &err)) {
+		REMMINA_DEBUG ("Connection profile states saved");
+	} else {
+		REMMINA_WARNING("Remmina connection profile cannot be saved, with error %d (%s)", err->code, err->message);
+	}
+	if (err != NULL)
+		g_error_free (err);
+	g_free(content), content = NULL;
 	g_key_file_free(gkeyfile);
+	g_key_file_free(gkeystate);
 
 	if (!remmina_pref.list_refresh_workaround)
 		remmina_main_update_file_datetime(remminafile);
@@ -832,7 +905,6 @@ remmina_file_get_state(RemminaFile *remminafile, const gchar *setting)
 	}
 	return val && val[0] ? val : NULL;
 }
-
 
 void remmina_file_state_last_success(RemminaFile *remminafile)
 {
