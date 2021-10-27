@@ -655,10 +655,14 @@ static void rmplugin_x2go_pyhoca_cli_exited(GPid pid,
  *	       Last elements has to be NULL. \n
  *	       Strings will get freed automatically.
  * @param error Will be filled with an error message on fail.
+ * @param env String array of enviroment variables. \n
+ *	      The list is NULL terminated and each item in
+ *	      the list is of the form ‘NAME=VALUE’.
  *
  * @returns Returns either standard output string or NULL if it failed.
  */
-static gchar* rmplugin_x2go_spawn_pyhoca_process(guint argc, gchar* argv[], GError **error)
+static gchar* rmplugin_x2go_spawn_pyhoca_process(guint argc, gchar* argv[],
+						 GError** error, gchar** env)
 {
 	REMMINA_PLUGIN_DEBUG("Function entry.");
 
@@ -681,13 +685,22 @@ static gchar* rmplugin_x2go_spawn_pyhoca_process(guint argc, gchar* argv[], GErr
 		return NULL;
 	}
 
+	if (!env || !env[0]) {
+		gchar* errmsg = g_strdup_printf(
+			_("Internal error: %s"),
+			_("parameter 'env' is either invalid or uninitialized.")
+		);
+		REMMINA_PLUGIN_CRITICAL("%s", errmsg);
+		g_set_error(error, 1, 1, errmsg);
+		return NULL;
+	}
+
 	gint exit_code = 0;
 	gchar *standard_out;
 	// Just supresses pyhoca-cli's help message when pyhoca-cli's version is too old.
 	gchar *standard_err;
 
-	gchar **envp = g_get_environ();
-	gboolean success_ret = g_spawn_sync(NULL, argv, envp, G_SPAWN_SEARCH_PATH, NULL,
+	gboolean success_ret = g_spawn_sync(NULL, argv, env, G_SPAWN_SEARCH_PATH, NULL,
 					    NULL, &standard_out, &standard_err,
 					    &exit_code, error);
 
@@ -768,15 +781,38 @@ static gboolean rmplugin_x2go_save_credentials(RemminaFile* remminafile,
 /**
  * @brief Asks the user for a username and password.
  *
- * @param errmsg Error message if function failed.
- * @param username Default username. Gets set to new username on success.
- * @param password Default password. Gets set to new password on success.
+ * @param errmsg Pointer to error message string (set if function failed).
+ * @param username Pointer to default username. Gets set to new username on success.
+ * @param password Pointer to default password. Gets set to new password on success.
  *
  * @returns FALSE if auth failed and TRUE on success.
  */
-static gboolean rmplugin_x2go_get_auth(RemminaProtocolWidget *gp, gchar* errmsg,
-				       gchar* username, gchar* password)
+static gboolean rmplugin_x2go_get_auth(RemminaProtocolWidget *gp, gchar** errmsg,
+				       gchar** default_username, gchar** default_password)
 {
+	REMMINA_PLUGIN_DEBUG("Function entry.");
+
+	g_assert(errmsg != NULL);
+	g_assert(gp != NULL);
+	g_assert(default_username != NULL);
+	g_assert(default_password != NULL);
+
+	if (!(*default_username)) {
+		(*errmsg) = g_strdup_printf(
+			_("Internal error: %s"),
+			_("Parameter 'default_username' is uninitialized.")
+		);
+		REMMINA_PLUGIN_CRITICAL("%s", errmsg);
+		return FALSE;
+	}
+
+	// We can handle ((*default_password) == NULL).
+	// Password is probably NULL because something did go wrong at the secret-plugin.
+	// For example: The user didn't input a password for keyring.
+	if ((*default_password) == NULL) {
+		(*default_password) = g_strdup("");
+	}
+
 	gchar *s_username, *s_password;
 	gint ret;
 	gboolean save;
@@ -785,46 +821,44 @@ static gboolean rmplugin_x2go_get_auth(RemminaProtocolWidget *gp, gchar* errmsg,
 
 	remminafile = rm_plugin_service->protocol_plugin_get_file(gp);
 
-	disable_password_storing = rm_plugin_service->file_get_int(remminafile,
-								   "disablepasswordstoring",
-								   FALSE);
+	disable_password_storing = rm_plugin_service->file_get_int(
+		remminafile, "disablepasswordstoring", FALSE
+	);
+
 	ret = rm_plugin_service->protocol_plugin_init_auth(
 			gp, (disable_password_storing ? 0 :
 			     REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD |
 			     REMMINA_MESSAGE_PANEL_FLAG_USERNAME),
 			_("Enter X2Go credentials"),
-			username, // function arg 'username' is default username
-			password, // function arg 'password' is default password
-			NULL,
-			NULL);
-
+			(*default_username), (*default_password), NULL, NULL
+	);
 
 	if (ret == GTK_RESPONSE_OK) {
 		s_username = rm_plugin_service->protocol_plugin_init_get_username(gp);
 		s_password = rm_plugin_service->protocol_plugin_init_get_password(gp);
 		if (rm_plugin_service->protocol_plugin_init_get_savepassword(gp))
-			rm_plugin_service->file_set_string(remminafile, "password",
-							   s_password);
+			rm_plugin_service->file_set_string(
+				remminafile, "password", s_password
+			);
 
 		// Should be renamed to protocol_plugin_init_get_savecredentials()?!
 		save = rm_plugin_service->protocol_plugin_init_get_savepassword(gp);
 		if (save) {
 			if (!rmplugin_x2go_save_credentials(remminafile, s_username,
-							    s_password, errmsg)) {
+							    s_password, (*errmsg))) {
 				return FALSE;
 			}
 		}
 		if (s_username) {
-			g_stpcpy(username, s_username);
+			(*default_username) = g_strdup(s_username);
 			g_free(s_username);
 		}
 		if (s_password) {
-			g_stpcpy(password, s_password);
+			(*default_password) = g_strdup(s_password);
 			g_free(s_password);
 		}
 	} else  {
-		g_strlcpy(errmsg, "Authentication cancelled. Aborting…", 512);
-		REMMINA_PLUGIN_DEBUG("%s", errmsg);
+		(*errmsg) = g_strdup("Authentication cancelled. Aborting…");
 		return FALSE;
 	}
 
@@ -929,7 +963,23 @@ static gchar* rmplugin_x2go_get_pyhoca_sessions(RemminaProtocolWidget* gp, GErro
 
 	argv[argc++] = NULL;
 
-	gchar* std_out = rmplugin_x2go_spawn_pyhoca_process(argc, argv, error);
+	//#ifndef GLIB_AVAILABLE_IN_2_68
+		gchar** envp = g_get_environ();
+		gchar* envp_splitted = g_strjoinv(";", envp);
+		envp_splitted = g_strconcat(envp_splitted, ";LANG=C", (void*) NULL);
+		envp = g_strsplit(envp_splitted, ";", 0);
+	/*
+	* #else
+	*	// Only available after glib version 2.68.
+	*	// TODO: FIXME: NOT TESTED!
+	*	GStrvBuilder* builder = g_strv_builder_new();
+	*	g_strv_builder_add(builder, "LANG=C");
+	*	GStrv envp = g_strv_builder_end(builder);
+	* #endif
+	*/
+
+	gchar* std_out = rmplugin_x2go_spawn_pyhoca_process(argc, argv, error, envp);
+	g_strfreev(envp);
 
 	if (!std_out || *error) {
 		// If no error is set but std_out is NULL
@@ -1186,7 +1236,7 @@ static gboolean rmplugin_x2go_exec_x2go(gchar *host,
 	gint argc = 0;
 
 	// Sets `username` and `password`.
-	if (!rmplugin_x2go_get_auth(gp, errmsg, username, password)) {
+	if (!rmplugin_x2go_get_auth(gp, &errmsg, &username, &password)) {
 		return FALSE;
 	}
 
@@ -1485,7 +1535,10 @@ static GList* rmplugin_x2go_populate_available_features_list()
 	GError* error = NULL; // Won't be actually used.
 
 	// Querying pyhoca-cli's command line features.
-	gchar* features_string = rmplugin_x2go_spawn_pyhoca_process(argc, argv, &error);
+	gchar** envp = g_get_environ();
+	gchar* features_string = rmplugin_x2go_spawn_pyhoca_process(argc, argv,
+								    &error, envp);
+	g_strfreev(envp);
 
 	if (!features_string || error) {
 		// We added the '--list-cmdline-features' on commit 17d1be1319ba6 of
