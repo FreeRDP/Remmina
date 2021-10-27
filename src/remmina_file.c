@@ -980,7 +980,7 @@ void remmina_file_unsave_passwords(RemminaFile *remminafile)
  *
  * This is used to return the modification date of a file and it’s used
  * to return the modification date and time of a given Remmina file.
- * If it fails it will return "26/01/1976 23:30:00", that is just a date to don't
+ * If it fails it will return "Fri, 16 Oct 2009 07:04:46 GMT", that is just a date to don't
  * return an empty string (challenge: what was happened that day at that time?).
  * @return A date string in the form "%d/%m/%Y %H:%M:%S".
  * @todo This should be moved to remmina_utils.c
@@ -998,8 +998,6 @@ remmina_file_get_datetime(RemminaFile *remminafile)
 	char time_string[256];
 
 	guint64 mtime;
-	gchar *modtime_string;
-
 
 	if (remminafile->statefile) {
 		//REMMINA_DEBUG ("remminafile->statefile: %s", remminafile->statefile);
@@ -1018,7 +1016,8 @@ remmina_file_get_datetime(RemminaFile *remminafile)
 	if (info == NULL) {
 		//REMMINA_DEBUG("could not get time info");
 
-		mtime = 191543400;
+		// The BDAY "Fri, 16 Oct 2009 07:04:46 GMT"
+		mtime = 1255676686;
 		const gchar *last_success = remmina_file_get_string(remminafile, "last_success");
 		if (last_success) {
 			//REMMINA_DEBUG ("Last success is %s", last_success);
@@ -1033,7 +1032,6 @@ remmina_file_get_datetime(RemminaFile *remminafile)
 				mtime = 191543400;
 			}
 		}
-		//return g_strdup ("26/01/1976 23:30:00");
 	} else {
 		mtime = g_file_info_get_attribute_uint64(info, G_FILE_ATTRIBUTE_TIME_MODIFIED);
 		g_object_unref(info);
@@ -1044,9 +1042,7 @@ remmina_file_get_datetime(RemminaFile *remminafile)
 	ptm = localtime(&tv.tv_sec);
 	strftime(time_string, sizeof(time_string), "%F - %T", ptm);
 
-	modtime_string = g_locale_to_utf8(time_string, -1, NULL, NULL, NULL);
-
-
+	gchar *modtime_string = g_locale_to_utf8(time_string, -1, NULL, NULL, NULL);
 	return modtime_string;
 }
 

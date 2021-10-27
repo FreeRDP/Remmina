@@ -659,6 +659,11 @@ static void remmina_main_load_files()
 		remmina_main_select_file(save_selected_filename);
 		g_free(save_selected_filename);
 	}
+	gtk_tree_view_column_set_widget (remminamain->column_files_list_date, NULL);
+
+	GtkWidget *label = gtk_tree_view_column_get_button (remminamain->column_files_list_date);
+	gtk_widget_set_tooltip_text(GTK_WIDGET(label),
+			_("The latest successful connection attempt, or a pre-computed date"));
 	/* Show in the status bar the total number of connections found */
 	g_snprintf(buf, sizeof(buf), ngettext("Total %i item.", "Total %i items.", items_count), items_count);
 	context_id = gtk_statusbar_get_context_id(remminamain->statusbar_main, "status");
@@ -1456,7 +1461,11 @@ GtkWidget *remmina_main_new(void)
 	remminamain->entry_quick_connect_server = GTK_ENTRY(RM_GET_OBJECT("entry_quick_connect_server"));
 	/* Other widgets */
 	remminamain->tree_files_list = GTK_TREE_VIEW(RM_GET_OBJECT("tree_files_list"));
+	remminamain->column_files_list_name = GTK_TREE_VIEW_COLUMN(RM_GET_OBJECT("column_files_list_name"));
 	remminamain->column_files_list_group = GTK_TREE_VIEW_COLUMN(RM_GET_OBJECT("column_files_list_group"));
+	remminamain->column_files_list_server = GTK_TREE_VIEW_COLUMN(RM_GET_OBJECT("column_files_list_server"));
+	remminamain->column_files_list_plugin = GTK_TREE_VIEW_COLUMN(RM_GET_OBJECT("column_files_list_plugin"));
+	remminamain->column_files_list_date = GTK_TREE_VIEW_COLUMN(RM_GET_OBJECT("column_files_list_date"));
 	remminamain->statusbar_main = GTK_STATUSBAR(RM_GET_OBJECT("statusbar_main"));
 	/* signals */
 	g_signal_connect (remminamain->entry_quick_connect_server, "key-release-event", G_CALLBACK (remmina_main_search_key_event), NULL);
