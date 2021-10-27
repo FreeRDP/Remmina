@@ -251,19 +251,22 @@
             ],
             "modules": [
                 {
+                    /**
+                    * Do not upgrade to 3.0.x till we discover why spice-common cannot find pyparsing
+                    */
                     "name": "python-pyparsing",
                     "buildsystem": "simple",
                     "build-commands": [
-                        "python3 setup.py install --prefix=${FLATPAK_DEST} --root=/ --optimize=1"
+                        "pip3 install --no-deps --no-build-isolation --verbose --prefix=${FLATPAK_DEST} ."
                     ],
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://files.pythonhosted.org/packages/a0/e4/2bae99e2bbdeb17c7cb9c2f7ef6022383ffcab8461d2ec339ff19ce4a969/pyparsing-3.0.3.tar.gz",
-                            "sha256": "9e3511118010f112a4b4b435ae50e1eaa610cda191acb9e421d60cf5fde83455",
+                            "url": "https://files.pythonhosted.org/packages/c1/47/dfc9c342c9842bbe0036c7f763d2d6686bcf5eb1808ba3e170afdb282210/pyparsing-2.4.7.tar.gz",
+                            "sha256": "c203ec8783bf771a155b207279b9bccb8dea02d8f0c9e5f8ead507bc3246ecc1",
                             "x-checker-data": {
                                 "type": "pypi",
-                                "name": "pyparsing"
+                                "name": "wheel"
                             }
                         }
                     ]
