@@ -98,8 +98,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/OpenPrinting/cups/archive/refs/tags/v2.3.3op2.tar.gz",
-                    "sha256": "5d7dc1f05cde3d5c31d3a2b3b54d519ca74e42c1b25df1add9a1802cd13c65ad",
+                    "url": "https://github.com/OpenPrinting/cups/archive/refs/tags/v2.4b1.tar.gz",
+                    "sha256": "cabb3c41a536153cd75072621039f7a47cacde078ed44e0346cb1b6068806b01",
                     "x-checker-data": {
                         "type": "anitya",
                         "project-id": 380,
@@ -254,13 +254,13 @@
                     "name": "python-pyparsing",
                     "buildsystem": "simple",
                     "build-commands": [
-                        "pip3 install --no-deps --no-build-isolation --verbose --prefix=${FLATPAK_DEST} ."
+                        "python3 setup.py install --prefix=${FLATPAK_DEST} --root=/ --optimize=1"
                     ],
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://files.pythonhosted.org/packages/c1/47/dfc9c342c9842bbe0036c7f763d2d6686bcf5eb1808ba3e170afdb282210/pyparsing-2.4.7.tar.gz",
-                            "sha256": "c203ec8783bf771a155b207279b9bccb8dea02d8f0c9e5f8ead507bc3246ecc1",
+                            "url": "https://files.pythonhosted.org/packages/a0/e4/2bae99e2bbdeb17c7cb9c2f7ef6022383ffcab8461d2ec339ff19ce4a969/pyparsing-3.0.3.tar.gz",
+                            "sha256": "9e3511118010f112a4b4b435ae50e1eaa610cda191acb9e421d60cf5fde83455",
                             "x-checker-data": {
                                 "type": "pypi",
                                 "name": "pyparsing"
@@ -458,8 +458,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/FreeRDP/FreeRDP.git",
-                    "tag": "2.4.0",
-                    "commit": "f797e200a2cd47fd42318359b8ae4d46e6507eec",
+                    "tag": "2.4.1",
+                    "commit": "d39a7ba5c38e3ba3b99b1558dc2ab0970cbfb0c5",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^([\\d.]+)$"
