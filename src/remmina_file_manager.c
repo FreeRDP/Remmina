@@ -61,6 +61,7 @@ gchar *remmina_file_get_datadir(void)
 	TRACE_CALL(__func__);
 	const gchar *dir = ".remmina";
 	int i;
+
 	/* From preferences, datadir_path */
 	remminadir = remmina_pref_get_value("datadir_path");
 	if (remminadir != NULL && strlen(remminadir) > 0)
@@ -79,6 +80,7 @@ gchar *remmina_file_get_datadir(void)
 	g_free(remminadir), remminadir = NULL;
 	/* /usr/local/share/remmina */
 	const gchar *const *dirs = g_get_system_data_dirs();
+
 	g_free(remminadir), remminadir = NULL;
 	for (i = 0; dirs[i] != NULL; ++i) {
 		remminadir = g_build_path("/", dirs[i], "remmina", NULL);
@@ -122,14 +124,14 @@ void remmina_file_manager_init(void)
 	/* Get and create the XDG_DATA_HOME directory */
 	remminadir = remmina_pref_get_value("datadir_path");
 	if (g_mkdir_with_parents(remminadir, 0750) == 0) {
-		REMMINA_DEBUG ("Initialized the \"%s\" data folder", remminadir);
+		REMMINA_DEBUG("Initialized the \"%s\" data folder", remminadir);
 		g_free(remminadir), remminadir = NULL;
 	} else {
 		g_free(remminadir), remminadir = NULL;
 		/* Get and create the XDG_DATA_HOME directory */
 		remminadir = g_build_path("/", g_get_user_data_dir(), "remmina", NULL);
 		if (g_mkdir_with_parents(remminadir, 0750) == 0)
-			REMMINA_DEBUG ("Initialized the \"%s\" data folder", remminadir);
+			REMMINA_DEBUG("Initialized the \"%s\" data folder", remminadir);
 		else
 			REMMINA_CRITICAL("Cannot create the \"%s\" data folder", remminadir);
 		g_free(remminadir), remminadir = NULL;
@@ -152,6 +154,7 @@ void remmina_file_manager_init(void)
 
 	/* XDG_DATA_DIRS, i.e. /usr/local/share/remmina */
 	const gchar *const *dirs = g_get_system_data_dirs();
+
 	g_free(remminadir), remminadir = NULL;
 	for (i = 0; dirs[i] != NULL; ++i) {
 		remminadir = g_build_path("/", dirs[i], "remmina", NULL);

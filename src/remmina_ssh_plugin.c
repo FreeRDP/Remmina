@@ -244,12 +244,12 @@ static gboolean
 remmina_plugin_ssh_on_size_allocate(GtkWidget *widget, GtkAllocation *alloc, RemminaProtocolWidget *gp);
 
 static gboolean
-valid_color(GdkRGBA const* color)
+valid_color(GdkRGBA const *color)
 {
-        return color->red >= 0. && color->red <= 1. &&
-               color->green >= 0. && color->green <= 1. &&
-               color->blue >= 0. && color->blue <= 1. &&
-               color->alpha >= 0. && color->alpha <= 1.;
+	return color->red >= 0. && color->red <= 1. &&
+	       color->green >= 0. && color->green <= 1. &&
+	       color->blue >= 0. && color->blue <= 1. &&
+	       color->alpha >= 0. && color->alpha <= 1.;
 }
 
 
@@ -1037,9 +1037,8 @@ remmina_plugin_ssh_init(RemminaProtocolWidget *gp)
 			cp[12], cp[13], cp[14], cp[15]
 		};
 
-		for(i = 0; i < PALETTE_SIZE; i++) {
+		for (i = 0; i < PALETTE_SIZE; i++)
 			palette[i] = custom_palette[i];
-		}
 	} else {
 		/* Set colors to GdkRGBA */
 		switch (remmina_plugin_service->file_get_int(remminafile, "ssh_color_scheme", FALSE)) {
@@ -1051,9 +1050,8 @@ remmina_plugin_ssh_init(RemminaProtocolWidget *gp)
 			gdk_rgba_parse(&highlight, "#ffffff");
 			gdk_rgba_parse(&highlight_foreground, "#00000");
 			gdk_rgba_parse(&colorBD, "#ffffff");
-			for(i = 0; i < PALETTE_SIZE; i++) {
+			for (i = 0; i < PALETTE_SIZE; i++)
 				palette[i] = linux_palette[i];
-			}
 			break;
 		case TANGO:
 			gdk_rgba_parse(&foreground_color, "#ffffff");
@@ -1063,9 +1061,8 @@ remmina_plugin_ssh_init(RemminaProtocolWidget *gp)
 			gdk_rgba_parse(&highlight, "#ffffff");
 			gdk_rgba_parse(&highlight_foreground, "#00000");
 			gdk_rgba_parse(&colorBD, "#000000");
-			for(i = 0; i < PALETTE_SIZE; i++) {
+			for (i = 0; i < PALETTE_SIZE; i++)
 				palette[i] = tango_palette[i];
-			}
 			break;
 		case GRUVBOX:
 			gdk_rgba_parse(&foreground_color, "#e6d4a3");
@@ -1075,9 +1072,8 @@ remmina_plugin_ssh_init(RemminaProtocolWidget *gp)
 			gdk_rgba_parse(&highlight, "#e6d4a3");
 			gdk_rgba_parse(&highlight_foreground, "#1e1e1e");
 			gdk_rgba_parse(&colorBD, "#ffffff");
-			for(i = 0; i < PALETTE_SIZE; i++) {
+			for (i = 0; i < PALETTE_SIZE; i++)
 				palette[i] = gruvbox_palette[i];
-			}
 			break;
 		case SOLARIZED_DARK:
 			gdk_rgba_parse(&foreground_color, "#839496");
@@ -1087,9 +1083,8 @@ remmina_plugin_ssh_init(RemminaProtocolWidget *gp)
 			gdk_rgba_parse(&highlight, "#839496");
 			gdk_rgba_parse(&highlight_foreground, "#002b36");
 			gdk_rgba_parse(&colorBD, "#819090");
-			for(i = 0; i < PALETTE_SIZE; i++) {
+			for (i = 0; i < PALETTE_SIZE; i++)
 				palette[i] = solarized_dark_palette[i];
-			}
 			break;
 		case SOLARIZED_LIGHT:
 			gdk_rgba_parse(&foreground_color, "#657b83");
@@ -1099,9 +1094,8 @@ remmina_plugin_ssh_init(RemminaProtocolWidget *gp)
 			gdk_rgba_parse(&highlight, "#657b83");
 			gdk_rgba_parse(&highlight_foreground, "#fdf6e3");
 			gdk_rgba_parse(&colorBD, "#475b62");
-			for(i = 0; i < PALETTE_SIZE; i++) {
+			for (i = 0; i < PALETTE_SIZE; i++)
 				palette[i] = solarized_light_palette[i];
-			}
 			break;
 		case XTERM:
 			gdk_rgba_parse(&foreground_color, "#000000");
@@ -1111,9 +1105,8 @@ remmina_plugin_ssh_init(RemminaProtocolWidget *gp)
 			gdk_rgba_parse(&highlight, "#000000");
 			gdk_rgba_parse(&highlight_foreground, "#ffffff");
 			gdk_rgba_parse(&colorBD, "#000000");
-			for(i = 0; i < PALETTE_SIZE; i++) {
+			for (i = 0; i < PALETTE_SIZE; i++)
 				palette[i] = xterm_palette[i];
-			}
 			break;
 		case CUSTOM:
 			REMMINA_DEBUG("Custom colors");
@@ -1143,33 +1136,31 @@ remmina_plugin_ssh_init(RemminaProtocolWidget *gp)
 			g_warn_if_fail(gdk_rgba_parse(&cp[15], remmina_pref.color_pref.color15));
 
 			const GdkRGBA custom_palette[PALETTE_SIZE] = {
-				cp[0],		//  remmina_pref.color_pref.color0
-				cp[1],		//  remmina_pref.color_pref.color1
-				cp[2],		//  remmina_pref.color_pref.color2
-				cp[3],		//  remmina_pref.color_pref.color3
-				cp[4],		//  remmina_pref.color_pref.color4
-				cp[5],		//  remmina_pref.color_pref.color5
-				cp[6],		//  remmina_pref.color_pref.color6
-				cp[7],		//  remmina_pref.color_pref.color7
-				cp[8],		//  remmina_pref.color_pref.color8
-				cp[9],		//  remmina_pref.color_pref.color9
-				cp[10],		//  remmina_pref.color_pref.color10
-				cp[11],		//  remmina_pref.color_pref.color11
-				cp[12],		//  remmina_pref.color_pref.color12
-				cp[13],		//  remmina_pref.color_pref.color13
-				cp[14],		//  remmina_pref.color_pref.color14
-				cp[15]		//  remmina_pref.color_pref.color15
+				cp[0],          //  remmina_pref.color_pref.color0
+				cp[1],          //  remmina_pref.color_pref.color1
+				cp[2],          //  remmina_pref.color_pref.color2
+				cp[3],          //  remmina_pref.color_pref.color3
+				cp[4],          //  remmina_pref.color_pref.color4
+				cp[5],          //  remmina_pref.color_pref.color5
+				cp[6],          //  remmina_pref.color_pref.color6
+				cp[7],          //  remmina_pref.color_pref.color7
+				cp[8],          //  remmina_pref.color_pref.color8
+				cp[9],          //  remmina_pref.color_pref.color9
+				cp[10],         //  remmina_pref.color_pref.color10
+				cp[11],         //  remmina_pref.color_pref.color11
+				cp[12],         //  remmina_pref.color_pref.color12
+				cp[13],         //  remmina_pref.color_pref.color13
+				cp[14],         //  remmina_pref.color_pref.color14
+				cp[15]          //  remmina_pref.color_pref.color15
 			};
 
-			for(i = 0; i < PALETTE_SIZE; i++) {
+			for (i = 0; i < PALETTE_SIZE; i++)
 				palette[i] = custom_palette[i];
-			}
 			break;
 		default:
 			REMMINA_DEBUG("Linux paelette colors");
-			for(i = 0; i < PALETTE_SIZE; i++) {
+			for (i = 0; i < PALETTE_SIZE; i++)
 				palette[i] = linux_palette[i];
-			}
 			break;
 		}
 	}
@@ -1178,12 +1169,12 @@ remmina_plugin_ssh_init(RemminaProtocolWidget *gp)
 	REMMINA_DEBUG("foreground_color.blue %f, background_color.blue %f", foreground_color.blue, background_color.blue);
 	REMMINA_DEBUG("foreground_color.green %f, background_color.green %f", foreground_color.green, background_color.green);
 	REMMINA_DEBUG("foreground_color.alpha %f, background_color.alpha %f", foreground_color.alpha, background_color.alpha);
-        for (i = 0; i < PALETTE_SIZE; i++) {
+	for (i = 0; i < PALETTE_SIZE; i++) {
 		REMMINA_DEBUG("index: %d, palette validation for red: %f", i, palette[i].red);
 		REMMINA_DEBUG("index: %d, palette validation for green: %f", i, palette[i].green);
 		REMMINA_DEBUG("index: %d, palette validation for blue: %f", i, palette[i].blue);
 		REMMINA_DEBUG("index: %d, palette validation for alpha: %f", i, palette[i].alpha);
-                g_warn_if_fail(valid_color(&palette[i]));
+		g_warn_if_fail(valid_color(&palette[i]));
 	}
 	vte_terminal_set_colors(VTE_TERMINAL(vte), &foreground_color, &background_color, palette, PALETTE_SIZE);
 	vte_terminal_set_color_foreground(VTE_TERMINAL(vte), &foreground_color);
@@ -1245,9 +1236,9 @@ remmina_plugin_ssh_init(RemminaProtocolWidget *gp)
 	gpdata->vte_session_file = g_file_new_for_path(fp);
 
 	g_signal_connect(G_OBJECT(vte), "size-allocate", G_CALLBACK(remmina_plugin_ssh_on_size_allocate), gp);
-	g_signal_connect (G_OBJECT(vte), "unrealize", G_CALLBACK(remmina_plugin_ssh_eof), gp);
-	g_signal_connect (G_OBJECT(vte), "eof", G_CALLBACK(remmina_plugin_ssh_eof), gp);
-	g_signal_connect (G_OBJECT(vte), "child-exited", G_CALLBACK(remmina_plugin_ssh_eof), gp);
+	g_signal_connect(G_OBJECT(vte), "unrealize", G_CALLBACK(remmina_plugin_ssh_eof), gp);
+	g_signal_connect(G_OBJECT(vte), "eof", G_CALLBACK(remmina_plugin_ssh_eof), gp);
+	g_signal_connect(G_OBJECT(vte), "child-exited", G_CALLBACK(remmina_plugin_ssh_eof), gp);
 	remmina_plugin_ssh_popup_ui(gp);
 	gtk_widget_show_all(hbox);
 }
@@ -1510,21 +1501,21 @@ static gchar log_tips[] =
  */
 static const RemminaProtocolSetting remmina_ssh_advanced_settings[] =
 {
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT, "ssh_color_scheme",	  N_("Terminal colour scheme"),		      FALSE, ssh_terminal_palette, NULL	    },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT, "ssh_charset",		  N_("Character set"),			      FALSE, ssh_charset_list,	   NULL	    },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	"ssh_proxycommand",	  N_("SSH Proxy Command"),		      FALSE, NULL,		   NULL	    },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	"ssh_kex_algorithms",	  N_("KEX (Key Exchange) algorithms"),	      FALSE, NULL,		   NULL	    },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	"ssh_ciphers",		  N_("Symmetric cipher client to server"),    FALSE, NULL,		   NULL	    },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	"ssh_hostkeytypes",	  N_("Preferred server host key types"),      FALSE, NULL,		   NULL	    },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_FOLDER, "sshlogfolder",		  N_("Folder for SSH session log"),	      FALSE, NULL,		   NULL	    },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	"sshlogname",		  N_("Filename for SSH session log"),	      FALSE, NULL,		   log_tips },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"sshlogenabled",	  N_("Log SSH session when exiting Remmina"), FALSE, NULL,		   NULL	    },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"sshsavesession",	  N_("Log SSH session asynchronously"), FALSE, NULL,		   N_("Saving the session asynchronously may have a notable performance impact")	    },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"audiblebell",		  N_("Audible terminal bell"),		      FALSE, NULL,		   NULL	    },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"ssh_compression",	  N_("SSH compression"),		      FALSE, NULL,		   NULL	    },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"disablepasswordstoring", N_("Don't remember passwords"),	      TRUE,  NULL,		   NULL	    },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"ssh_stricthostkeycheck", N_("Strict host key checking"),	      TRUE,  NULL,		   NULL	    },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	NULL,			  NULL,					      FALSE, NULL,		   NULL	    }
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT, "ssh_color_scheme",	  N_("Terminal colour scheme"),		      FALSE, ssh_terminal_palette, NULL										 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT, "ssh_charset",		  N_("Character set"),			      FALSE, ssh_charset_list,	   NULL										 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	"ssh_proxycommand",	  N_("SSH Proxy Command"),		      FALSE, NULL,		   NULL										 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	"ssh_kex_algorithms",	  N_("KEX (Key Exchange) algorithms"),	      FALSE, NULL,		   NULL										 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	"ssh_ciphers",		  N_("Symmetric cipher client to server"),    FALSE, NULL,		   NULL										 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	"ssh_hostkeytypes",	  N_("Preferred server host key types"),      FALSE, NULL,		   NULL										 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_FOLDER, "sshlogfolder",		  N_("Folder for SSH session log"),	      FALSE, NULL,		   NULL										 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	"sshlogname",		  N_("Filename for SSH session log"),	      FALSE, NULL,		   log_tips									 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"sshlogenabled",	  N_("Log SSH session when exiting Remmina"), FALSE, NULL,		   NULL										 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"sshsavesession",	  N_("Log SSH session asynchronously"),	      FALSE, NULL,		   N_("Saving the session asynchronously may have a notable performance impact") },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"audiblebell",		  N_("Audible terminal bell"),		      FALSE, NULL,		   NULL										 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"ssh_compression",	  N_("SSH compression"),		      FALSE, NULL,		   NULL										 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"disablepasswordstoring", N_("Don't remember passwords"),	      TRUE,  NULL,		   NULL										 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"ssh_stricthostkeycheck", N_("Strict host key checking"),	      TRUE,  NULL,		   NULL										 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	NULL,			  NULL,					      FALSE, NULL,		   NULL										 }
 };
 
 /**
@@ -1540,8 +1531,8 @@ static RemminaProtocolPlugin remmina_plugin_ssh =
 	N_("SSH - Secure Shell"),                       /**< Description */
 	GETTEXT_PACKAGE,                                /**< Translation domain */
 	VERSION,                                        /**< Version number */
-	"org.remmina.Remmina-ssh-symbolic",                         /**< Icon for normal connection */
-	"org.remmina.Remmina-ssh-symbolic",                         /**< Icon for SSH connection */
+	"org.remmina.Remmina-ssh-symbolic",             /**< Icon for normal connection */
+	"org.remmina.Remmina-ssh-symbolic",             /**< Icon for SSH connection */
 	remmina_ssh_basic_settings,                     /**< Array for basic settings */
 	remmina_ssh_advanced_settings,                  /**< Array for advanced settings */
 	REMMINA_PROTOCOL_SSH_SETTING_TUNNEL,            /**< SSH settings type */

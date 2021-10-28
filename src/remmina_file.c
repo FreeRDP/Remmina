@@ -166,9 +166,10 @@ void remmina_file_generate_filename(RemminaFile *remminafile)
 	s = NULL;
 
 	g_autofree gchar *filename = g_strdelimit(g_ascii_strdown(g_strstrip(g_string_free(filenamestr, FALSE)), -1),
-				invalid_chars, '-');
+						  invalid_chars, '-');
 
 	GDir *dir = g_dir_open(remmina_file_get_datadir(), 0, NULL);
+
 	if (dir != NULL)
 		remminafile->filename = g_strdup_printf("%s/%s.remmina", remmina_file_get_datadir(), filename);
 	else
@@ -192,7 +193,7 @@ void remmina_file_set_statefile(RemminaFile *remminafile)
 	else
 		g_free(remminafile->statefile);
 
-	gchar *basename = g_path_get_basename (remminafile->filename);
+	gchar *basename = g_path_get_basename(remminafile->filename);
 	gchar *cachedir = g_build_path("/", g_get_user_cache_dir(), "remmina", NULL);
 	GString *fname = g_string_new(g_strdup(basename));
 
@@ -214,10 +215,10 @@ remmina_file_copy(const gchar *filename)
 
 	remminafile = remmina_file_load(filename);
 	remmina_file_set_string(remminafile,
-			"name",
-			g_strdup_printf(
-				"COPY %s",
-				remmina_file_get_string(remminafile, "name")));
+				"name",
+				g_strdup_printf(
+					"COPY %s",
+					remmina_file_get_string(remminafile, "name")));
 
 	if (remminafile)
 		remmina_file_generate_filename(remminafile);
@@ -290,7 +291,6 @@ static void upgrade_sshkeys_202001(RemminaFile *remminafile)
 	const gchar *val;
 
 	if (remmina_file_get_string(remminafile, "ssh_enabled")) {
-
 		/* Upgrade ssh params from remmina pre 1.4 */
 
 		ssh_enabled = remmina_file_get_int(remminafile, "ssh_enabled", 0);
@@ -337,9 +337,7 @@ static void upgrade_sshkeys_202001(RemminaFile *remminafile)
 		/* Real key removal will be done by remmina_file_save() */
 
 		remmina_file_set_int(remminafile, "ssh_tunnel_enabled", ssh_enabled);
-
 	}
-
 }
 
 RemminaFile *
@@ -361,13 +359,12 @@ remmina_file_load(const gchar *filename)
 	if (g_file_test(filename, G_FILE_TEST_IS_REGULAR | G_FILE_TEST_EXISTS)) {
 		if (!g_key_file_load_from_file(gkeyfile, filename, G_KEY_FILE_NONE, NULL)) {
 			g_key_file_free(gkeyfile);
-			REMMINA_DEBUG ("Unable to load remmina profile file %s: g_key_file_load_from_file() returned NULL.\n", filename);
+			REMMINA_DEBUG("Unable to load remmina profile file %s: g_key_file_load_from_file() returned NULL.\n", filename);
 			return NULL;
 		}
 	}
 
 	if (g_key_file_has_key(gkeyfile, KEYFILE_GROUP_REMMINA, "name", NULL)) {
-
 		remminafile = remmina_file_new_empty();
 
 		protocol_plugin = NULL;
@@ -385,7 +382,6 @@ remmina_file_load(const gchar *filename)
 		remminafile->filename = g_strdup(filename);
 		gchar **keys = g_key_file_get_keys(gkeyfile, KEYFILE_GROUP_REMMINA, NULL, NULL);
 		if (keys) {
-
 			for (i = 0; keys[i]; i++) {
 				key = keys[i];
 				if (protocol_plugin && remmina_plugin_manager_is_encrypted_setting(protocol_plugin, key)) {
@@ -424,11 +420,10 @@ remmina_file_load(const gchar *filename)
 			}
 
 			upgrade_sshkeys_202001(remminafile);
-
 		}
 		g_strfreev(keys);
 	} else {
-		REMMINA_DEBUG ("Unable to load remmina profile file %s: cannot find key name= in section remmina.\n", filename);
+		REMMINA_DEBUG("Unable to load remmina profile file %s: cannot find key name= in section remmina.\n", filename);
 		remminafile = NULL;
 	}
 
@@ -459,20 +454,19 @@ void remmina_file_set_string_ref(RemminaFile *remminafile, const gchar *setting,
 			return;
 		}
 		g_hash_table_insert(remminafile->settings, g_strdup(setting), value);
-	} else
+	} else {
 		g_hash_table_insert(remminafile->settings, g_strdup(setting), g_strdup(""));
-
+	}
 }
 
 void remmina_file_set_state(RemminaFile *remminafile, const gchar *setting, const gchar *value)
 {
 	TRACE_CALL(__func__);
 
-	if(value && value[0] != 0) {
+	if (value && value[0] != 0)
 		g_hash_table_insert(remminafile->states, g_strdup(setting), g_strdup(value));
-	} else
+	else
 		g_hash_table_insert(remminafile->states, g_strdup(setting), g_strdup(""));
-
 }
 
 const gchar *
@@ -536,7 +530,7 @@ gchar *remmina_file_format_properties(RemminaFile *remminafile, const gchar *set
 	remmina_utils_string_replace_all(fmt_str, "%p", remmina_file_get_string(remminafile, "name"));
 	remmina_utils_string_replace_all(fmt_str, "%g", remmina_file_get_string(remminafile, "group"));
 
-	now = g_date_time_new_now_local ();
+	now = g_date_time_new_now_local();
 	date_str = g_date_time_format(now, "%FT%TZ");
 	remmina_utils_string_replace_all(fmt_str, "%d", date_str);
 	g_free(date_str);
@@ -550,8 +544,8 @@ void remmina_file_set_int(RemminaFile *remminafile, const gchar *setting, gint v
 	TRACE_CALL(__func__);
 	if (remminafile)
 		g_hash_table_insert(remminafile->settings,
-							g_strdup(setting),
-							g_strdup_printf("%i", value));
+				    g_strdup(setting),
+				    g_strdup_printf("%i", value));
 }
 
 void remmina_file_set_state_int(RemminaFile *remminafile, const gchar *setting, gint value)
@@ -559,8 +553,8 @@ void remmina_file_set_state_int(RemminaFile *remminafile, const gchar *setting, 
 	TRACE_CALL(__func__);
 	if (remminafile)
 		g_hash_table_insert(remminafile->states,
-							g_strdup(setting),
-							g_strdup_printf("%i", value));
+				    g_strdup(setting),
+				    g_strdup_printf("%i", value));
 }
 
 gint remmina_file_get_int(RemminaFile *remminafile, const gchar *setting, gint default_value)
@@ -589,9 +583,9 @@ gint remmina_file_get_state_int(RemminaFile *remminafile, const gchar *setting, 
 
 // sscanf uses the set language to convert the float.
 // therefore '.' and ',' cannot be used interchangeably.
-gdouble remmina_file_get_double(RemminaFile *remminafile,
-							   const gchar *setting,
-							   gdouble default_value)
+gdouble remmina_file_get_double(RemminaFile *	remminafile,
+				const gchar *	setting,
+				gdouble		default_value)
 {
 	TRACE_CALL(__func__);
 	gchar *value;
@@ -604,10 +598,10 @@ gdouble remmina_file_get_double(RemminaFile *remminafile,
 	// https://stackoverflow.com/questions/10075294/converting-string-to-a-double-variable-in-c
 	gdouble d;
 	gint ret = sscanf(value, "%lf", &d);
-	if (ret != 1) {
+
+	if (ret != 1)
 		// failed.
 		d = default_value;
-	}
 
 	// TOO VERBOSE: REMMINA_DEBUG("Double value is: %lf", d);
 	return d;
@@ -615,9 +609,9 @@ gdouble remmina_file_get_double(RemminaFile *remminafile,
 
 // sscanf uses the set language to convert the float.
 // therefore '.' and ',' cannot be used interchangeably.
-gdouble remmina_file_get_state_double(RemminaFile *remminafile,
-							   const gchar *setting,
-							   gdouble default_value)
+gdouble remmina_file_get_state_double(RemminaFile *	remminafile,
+				      const gchar *	setting,
+				      gdouble		default_value)
 {
 	TRACE_CALL(__func__);
 	gchar *value;
@@ -630,10 +624,10 @@ gdouble remmina_file_get_state_double(RemminaFile *remminafile,
 	// https://stackoverflow.com/questions/10075294/converting-string-to-a-double-variable-in-c
 	gdouble d;
 	gint ret = sscanf(value, "%lf", &d);
-	if (ret != 1) {
+
+	if (ret != 1)
 		// failed.
 		d = default_value;
-	}
 
 	// TOO VERBOSE: REMMINA_DEBUG("Double value is: %lf", d);
 	return d;
@@ -712,14 +706,14 @@ void remmina_file_save(RemminaFile *remminafile)
 	if ((gkeystate = remmina_file_get_keystate(remminafile)) == NULL)
 		return;
 
-	REMMINA_DEBUG ("Saving profile");
+	REMMINA_DEBUG("Saving profile");
 	/* get disablepasswordstoring */
 	nopasswdsave = remmina_file_get_int(remminafile, "disablepasswordstoring", 0);
 	/* Identify the protocol plugin and get pointers to its RemminaProtocolSetting structs */
 	proto = (gchar *)g_hash_table_lookup(remminafile->settings, "protocol");
-	if (proto)
+	if (proto) {
 		protocol_plugin = (RemminaProtocolPlugin *)remmina_plugin_manager_get_plugin(REMMINA_PLUGIN_TYPE_PROTOCOL, proto);
-	else {
+	} else {
 		REMMINA_CRITICAL("Saving settings for unknown protocol:", proto);
 		protocol_plugin = NULL;
 	}
@@ -732,7 +726,7 @@ void remmina_file_save(RemminaFile *remminafile)
 		if (remmina_plugin_manager_is_encrypted_setting(protocol_plugin, key)) {
 			if (remminafile->filename && g_strcmp0(remminafile->filename, remmina_pref_file)) {
 				if (secret_service_available && nopasswdsave == 0) {
-					REMMINA_DEBUG ("We have a secret and disablepasswordstoring=0");
+					REMMINA_DEBUG("We have a secret and disablepasswordstoring=0");
 					if (value && value[0]) {
 						if (g_strcmp0(value, ".") != 0)
 							secret_plugin->store_password(remminafile, key, value);
@@ -742,7 +736,7 @@ void remmina_file_save(RemminaFile *remminafile)
 						secret_plugin->delete_password(remminafile, key);
 					}
 				} else {
-					REMMINA_DEBUG ("We have a password and disablepasswordstoring=0");
+					REMMINA_DEBUG("We have a password and disablepasswordstoring=0");
 					if (value && value[0] && nopasswdsave == 0) {
 						s = remmina_crypt_encrypt(value);
 						g_key_file_set_string(gkeyfile, KEYFILE_GROUP_REMMINA, key, s);
@@ -754,7 +748,7 @@ void remmina_file_save(RemminaFile *remminafile)
 				if (secret_service_available && nopasswdsave == 1) {
 					if (value && value[0]) {
 						if (g_strcmp0(value, ".") != 0) {
-							REMMINA_DEBUG ("Deleting the secret in the keyring as disablepasswordstoring=1");
+							REMMINA_DEBUG("Deleting the secret in the keyring as disablepasswordstoring=1");
 							secret_plugin->delete_password(remminafile, key);
 							g_key_file_set_string(gkeyfile, KEYFILE_GROUP_REMMINA, key, ".");
 						}
@@ -777,28 +771,25 @@ void remmina_file_save(RemminaFile *remminafile)
 	/* Store gkeyfile to disk (password are already sent to keyring) */
 	content = g_key_file_to_data(gkeyfile, &length, NULL);
 
-	if (g_file_set_contents(remminafile->filename, content, length, &err)) {
-		REMMINA_DEBUG ("Profile saved");
-	} else {
+	if (g_file_set_contents(remminafile->filename, content, length, &err))
+		REMMINA_DEBUG("Profile saved");
+	else
 		REMMINA_WARNING("Remmina connection profile cannot be saved, with error %d (%s)", err->code, err->message);
-	}
 	if (err != NULL)
-		g_error_free (err);
+		g_error_free(err);
 
 	g_free(content), content = NULL;
 	/* Saving states */
 	g_hash_table_iter_init(&iter, remminafile->states);
-	while (g_hash_table_iter_next(&iter, (gpointer *)&key, (gpointer *)&value)) {
+	while (g_hash_table_iter_next(&iter, (gpointer *)&key, (gpointer *)&value))
 		g_key_file_set_string(gkeyfile, KEYFILE_GROUP_STATE, key, value);
-	}
 	content = g_key_file_to_data(gkeystate, &length, NULL);
-	if (g_file_set_contents(remminafile->statefile, content, length, &err)) {
-		REMMINA_DEBUG ("Connection profile states saved");
-	} else {
+	if (g_file_set_contents(remminafile->statefile, content, length, &err))
+		REMMINA_DEBUG("Connection profile states saved");
+	else
 		REMMINA_WARNING("Remmina connection profile cannot be saved, with error %d (%s)", err->code, err->message);
-	}
 	if (err != NULL)
-		g_error_free (err);
+		g_error_free(err);
 	g_free(content), content = NULL;
 	g_key_file_free(gkeyfile);
 	g_key_file_free(gkeystate);
@@ -852,7 +843,7 @@ remmina_file_get_icon_name(RemminaFile *remminafile)
 	plugin = (RemminaProtocolPlugin *)remmina_plugin_manager_get_plugin(REMMINA_PLUGIN_TYPE_PROTOCOL,
 									    remmina_file_get_string(remminafile, "protocol"));
 	if (!plugin)
-		return g_strconcat (REMMINA_APP_ID, "-symbolic", NULL);
+		return g_strconcat(REMMINA_APP_ID, "-symbolic", NULL);
 
 	return remmina_file_get_int(remminafile, "ssh_tunnel_enabled", FALSE) ? plugin->icon_name_ssh : plugin->icon_name;
 }
@@ -888,19 +879,20 @@ remmina_file_get_state(RemminaFile *remminafile, const gchar *setting)
 {
 	TRACE_CALL(__func__);
 	g_autoptr(GError) error = NULL;
-	g_autoptr(GKeyFile) key_file = g_key_file_new ();
+	g_autoptr(GKeyFile) key_file = g_key_file_new();
 
-	if (!g_key_file_load_from_file (key_file, remminafile->statefile, G_KEY_FILE_NONE, &error)) {
-		if (!g_error_matches (error, G_FILE_ERROR, G_FILE_ERROR_NOENT))
-			REMMINA_CRITICAL ("Could not load the state file. %s", error->message);
+	if (!g_key_file_load_from_file(key_file, remminafile->statefile, G_KEY_FILE_NONE, &error)) {
+		if (!g_error_matches(error, G_FILE_ERROR, G_FILE_ERROR_NOENT))
+			REMMINA_CRITICAL("Could not load the state file. %s", error->message);
 		return NULL;
 	}
 
-	g_autofree gchar *val = g_key_file_get_string (key_file, KEYFILE_GROUP_STATE, setting, &error);
+	g_autofree gchar *val = g_key_file_get_string(key_file, KEYFILE_GROUP_STATE, setting, &error);
+
 	if (val == NULL &&
-			!g_error_matches (error, G_KEY_FILE_ERROR, G_KEY_FILE_ERROR_KEY_NOT_FOUND)) {
-		REMMINA_CRITICAL ("Could not find  \"%s\" in the \"%s\" state file. %s",
-				setting, remminafile->statefile, error->message);
+	    !g_error_matches(error, G_KEY_FILE_ERROR, G_KEY_FILE_ERROR_KEY_NOT_FOUND)) {
+		REMMINA_CRITICAL("Could not find  \"%s\" in the \"%s\" state file. %s",
+				 setting, remminafile->statefile, error->message);
 		return NULL;
 	}
 	return val && val[0] ? val : NULL;
@@ -910,22 +902,22 @@ void remmina_file_state_last_success(RemminaFile *remminafile)
 {
 	TRACE_CALL(__func__);
 
-	g_autoptr(GKeyFile) key_statefile = g_key_file_new ();
-	g_autoptr(GKeyFile) key_remminafile = g_key_file_new ();
+	g_autoptr(GKeyFile) key_statefile = g_key_file_new();
+	g_autoptr(GKeyFile) key_remminafile = g_key_file_new();
 	g_autoptr(GError) error = NULL;
 
 	const gchar *date = NULL;
 	GDateTime *d = g_date_time_new_now_utc();
 
 	date = g_strdup_printf("%d%02d%02d",
-				       g_date_time_get_year(d),
-				       g_date_time_get_month(d),
-				       g_date_time_get_day_of_month(d));
+			       g_date_time_get_year(d),
+			       g_date_time_get_month(d),
+			       g_date_time_get_day_of_month(d));
 
-	g_key_file_set_string (key_statefile, KEYFILE_GROUP_STATE, "last_success", date);
+	g_key_file_set_string(key_statefile, KEYFILE_GROUP_STATE, "last_success", date);
 
-	if (!g_key_file_save_to_file (key_statefile, remminafile->statefile, &error)) {
-		REMMINA_CRITICAL ("Could not save the key file. %s", error->message);
+	if (!g_key_file_save_to_file(key_statefile, remminafile->statefile, &error)) {
+		REMMINA_CRITICAL("Could not save the key file. %s", error->message);
 		return;
 	}
 	/* Delete old pre-1.5 keys */
@@ -941,6 +933,7 @@ void remmina_file_unsave_passwords(RemminaFile *remminafile)
 	const RemminaProtocolSetting *setting_iter;
 	RemminaProtocolPlugin *protocol_plugin;
 	gchar *proto;
+
 	protocol_plugin = NULL;
 
 	remmina_file_set_string(remminafile, "password", NULL);
@@ -953,12 +946,11 @@ void remmina_file_unsave_passwords(RemminaFile *remminafile)
 			if (setting_iter) {
 				while (setting_iter->type != REMMINA_PROTOCOL_SETTING_TYPE_END) {
 					// TOO VERBOSE: g_debug("setting name: %s", setting_iter->name);
-					if (setting_iter->name == NULL) {
+					if (setting_iter->name == NULL)
 						g_error("Internal error: a setting name in protocol plugin %s is null. Please fix RemminaProtocolSetting struct content.", proto);
-					} else {
+					else
 						if (remmina_plugin_manager_is_encrypted_setting(protocol_plugin, setting_iter->name))
 							remmina_file_set_string(remminafile, remmina_plugin_manager_get_canonical_setting_name(setting_iter), NULL);
-					}
 					setting_iter++;
 				}
 			}
@@ -999,10 +991,10 @@ remmina_file_get_datetime(RemminaFile *remminafile)
 
 	guint64 mtime;
 
-	if (remminafile->statefile) {
+	if (remminafile->statefile)
 		//REMMINA_DEBUG ("remminafile->statefile: %s", remminafile->statefile);
 		file = g_file_new_for_path(remminafile->statefile);
-	} else
+	else
 		file = g_file_new_for_path(remminafile->filename);
 
 	info = g_file_query_info(file,
@@ -1022,11 +1014,11 @@ remmina_file_get_datetime(RemminaFile *remminafile)
 		if (last_success) {
 			//REMMINA_DEBUG ("Last success is %s", last_success);
 			GDateTime *dt;
-			dt = g_date_time_new_from_iso8601 (g_strconcat (last_success,"T00:00:00Z", NULL), NULL);
+			dt = g_date_time_new_from_iso8601(g_strconcat(last_success, "T00:00:00Z", NULL), NULL);
 			if (dt) {
 				//REMMINA_DEBUG("Converting last_success");
-				mtime = g_ascii_strtoull (g_date_time_format(dt, "%s"), NULL, 10);
-				g_date_time_unref (dt);
+				mtime = g_ascii_strtoull(g_date_time_format(dt, "%s"), NULL, 10);
+				g_date_time_unref(dt);
 			} else {
 				//REMMINA_DEBUG("dt was null");
 				mtime = 191543400;
@@ -1043,6 +1035,7 @@ remmina_file_get_datetime(RemminaFile *remminafile)
 	strftime(time_string, sizeof(time_string), "%F - %T", ptm);
 
 	gchar *modtime_string = g_locale_to_utf8(time_string, -1, NULL, NULL, NULL);
+
 	return modtime_string;
 }
 
