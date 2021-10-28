@@ -337,20 +337,45 @@ void remmina_icon_init(void)
 
 	gchar remmina_panel[29];
 	gboolean sni_supported;
-	char msg[200];
 
 	g_stpcpy(remmina_panel, "org.remmina.Remmina-status");
 
 	/* Print on stdout the availability of appindicators on DBUS */
 	sni_supported = remmina_sysinfo_is_appindicator_available();
 
-	strcpy(msg, "StatusNotifier/Appindicator support: ");
+	g_autofree gchar* wmname = g_ascii_strdown(remmina_sysinfo_get_wm_name (), -1);
+	//TRANSLATORS: These are Linux desktop components to show icons in the system tray, after the “ there's the Desktop Name (like GNOME).
+	g_autofree gchar *msg = g_strconcat (
+			_("StatusNotifier/Appindicator support in “"),
+			wmname,
+			"”:",
+			NULL);
 	if (sni_supported) {
-		REMMINA_DEBUG("%s your desktop does support it", msg);
-		REMMINA_DEBUG("%s and libappindicator is compiled in Remmina. Good.", msg);
+		//TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
+		REMMINA_INFO(_("%s your desktop does support it"), msg);
+		//TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
+		REMMINA_INFO(_("%s and Remmina has built-in (compiled) support for libappindicator."), msg);
 	} else {
-		REMMINA_DEBUG("%snot supported by desktop. libappindicator will try to fallback to GtkStatusIcon/xembed", msg);
+		//TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
+		REMMINA_INFO(_("%s not supported natively by your Desktop Environment. libappindicator will try to fallback to GtkStatusIcon/xembed"), msg);
 	}
+	if (g_strrstr(wmname, "mate") != NULL) {
+		//TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
+		REMMINA_INFO(_("%s You may need to install, and use XApp Status Applet"), msg);
+	}
+	if (g_strrstr(wmname, "kde") != NULL) {
+		//TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
+		REMMINA_INFO(_("%s You may need to install, and use KStatusNotifierItem"), msg);
+	}
+	if (g_strrstr(wmname, "plasma") != NULL) {
+		//TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
+		REMMINA_INFO(_("%s You may need to install, and use XEmbed SNI Proxy"), msg);
+	}
+	if (g_strrstr(wmname, "gnome") != NULL) {
+		//TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
+		REMMINA_INFO(_("%s You may need to install, and use Gnome Shell Extension Appindicator"), msg);
+	}
+
 
 
 	if (!remmina_icon.icon && !remmina_pref.disable_tray_icon) {
