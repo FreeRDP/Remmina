@@ -10,6 +10,6 @@
 - [ ] Did you update the CHANGELOG.md file ?
 - [ ] Did you update the authors list in data/ui/remmina_about.glade ?
 
-/cc @bkohler @larchunix @slaanesh @jweberhofer @tukusejssirs @kingu @ToolsDevler @raghavgururajan
+/cc @bkohler @larchunix @slaanesh @jweberhofer @tukusejssirs @kingu @ToolsDevler @raghavgururajan @matty_r
 
 /label ~RELEASE
