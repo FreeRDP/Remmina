@@ -36,9 +36,9 @@
 #  files in the program, then also delete it here.
 
 set(REMMINA_PLUGIN_X2GO_SRCS
-	x2go_plugin.c
-	x2go_plugin.h
-)
+    x2go_plugin.c
+    x2go_plugin.h
+    )
 
 add_library(remmina-plugin-x2go ${REMMINA_PLUGIN_X2GO_SRCS})
 set_target_properties(remmina-plugin-x2go PROPERTIES PREFIX "")
@@ -57,10 +57,11 @@ target_link_libraries(remmina-plugin-x2go
 
 install(TARGETS remmina-plugin-x2go DESTINATION ${REMMINA_PLUGINDIR})
 
-set(APPICON16_EMBLEMS_DIR "${REMMINA_DATADIR}/icons/hicolor/16x16/emblems")
-install(FILES 16x16/emblems/org.remmina.Remmina-x2go.png DESTINATION ${APPICON16_EMBLEMS_DIR})
+install(FILES
+    scalable/emblems/org.remmina.Remmina-x2go-ssh-symbolic.svg
+    scalable/emblems/org.remmina.Remmina-x2go-symbolic.svg
+    DESTINATION ${APPICONSCALE_EMBLEMS_DIR})
 
-set(APPICON22_EMBLEMS_DIR "${REMMINA_DATADIR}/icons/hicolor/22x22/emblems")
-install(FILES 22x22/emblems/org.remmina.Remmina-x2go.png DESTINATION ${APPICON22_EMBLEMS_DIR})
-
-gtk_update_icon_cache("${REMMINA_DATADIR}/icons/hicolor")
+if(WITH_ICON_CACHE)
+    gtk_update_icon_cache("${REMMINA_DATADIR}/icons/hicolor")
+endif()

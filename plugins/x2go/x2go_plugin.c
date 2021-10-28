@@ -496,7 +496,7 @@ static void rmplugin_x2go_pyhoca_cli_exited(GPid pid,
 		REMMINA_PLUGIN_DEBUG("Doing nothing since gpdata is already 'NULL'.");
 		return;
 	}
-	
+
 	if (gpdata->pidx2go <= 0) {
 		REMMINA_PLUGIN_DEBUG("Doing nothing since pyhoca-cli was expected to stop.");
 		return;
@@ -619,7 +619,7 @@ static gboolean rmplugin_x2go_save_credentials(RemminaFile* remminafile,
 						   s_username);
 	} else {
 		g_strlcpy(errmsg, _("Internal error: Could not save new credentials."), 512);
-		
+
 				    REMMINA_PLUGIN_CRITICAL("%s", _("An error occured while trying to save "
 				"new credentials: 's_password' or "
 				"'s_username' strings were not set."));
@@ -826,7 +826,7 @@ static gboolean rmplugin_x2go_exec_x2go(gchar *host,
 	}
 
 	argv[argc++] = NULL;
-	
+
 	GError *error = NULL;
 	gchar **envp = g_get_environ();
 	gboolean success = g_spawn_async_with_pipes (NULL, argv, envp,
@@ -1626,7 +1626,7 @@ static RemminaProtocolPlugin rmplugin_x2go = {
 	GETTEXT_PACKAGE,			// Translation domain
 	PLUGIN_VERSION,				// Version number
 	PLUGIN_APPICON,				// Icon for normal connection
-	PLUGIN_APPICON,				// Icon for SSH connection
+	PLUGIN_SSH_APPICON,			// Icon for SSH connection
 	rmplugin_x2go_basic_settings,		// Array for basic settings
 	NULL,					// Array for advanced settings
 	REMMINA_PROTOCOL_SSH_SETTING_TUNNEL,	// SSH settings type

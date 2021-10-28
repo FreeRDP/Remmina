@@ -42,4 +42,5 @@
 #define PLUGIN_NAME        "X2GO"
 #define PLUGIN_DESCRIPTION N_("X2Go - Launch an X2Go session")
 #define PLUGIN_VERSION     "2.0.0"
-#define PLUGIN_APPICON     "org.remmina.Remmina-x2go"
+#define PLUGIN_APPICON     "org.remmina.Remmina-x2go-symbolic"
+#define PLUGIN_SSH_APPICON     "org.remmina.Remmina-x2go-ssh-symbolic"
