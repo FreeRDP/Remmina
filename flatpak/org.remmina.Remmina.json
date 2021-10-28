@@ -98,8 +98,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/OpenPrinting/cups/archive/refs/tags/v2.3.3op2.tar.gz",
-                    "sha256": "5d7dc1f05cde3d5c31d3a2b3b54d519ca74e42c1b25df1add9a1802cd13c65ad",
+                    "url": "https://github.com/OpenPrinting/cups/archive/refs/tags/v2.4b1.tar.gz",
+                    "sha256": "cabb3c41a536153cd75072621039f7a47cacde078ed44e0346cb1b6068806b01",
                     "x-checker-data": {
                         "type": "anitya",
                         "project-id": 380,
@@ -251,6 +251,9 @@
             ],
             "modules": [
                 {
+                    /**
+                    * Do not upgrade to 3.0.x till we discover why spice-common cannot find pyparsing
+                    */
                     "name": "python-pyparsing",
                     "buildsystem": "simple",
                     "build-commands": [
@@ -263,7 +266,7 @@
                             "sha256": "c203ec8783bf771a155b207279b9bccb8dea02d8f0c9e5f8ead507bc3246ecc1",
                             "x-checker-data": {
                                 "type": "pypi",
-                                "name": "pyparsing"
+                                "name": "wheel"
                             }
                         }
                     ]

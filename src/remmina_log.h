@@ -36,15 +36,16 @@
 #pragma once
 
 #include <stdarg.h>
+#include <glib.h>
 
 G_BEGIN_DECLS
 
-#define REMMINA_INFO(fmt, ...)     _remmina_info(fmt, ##__VA_ARGS__)
-#define REMMINA_MESSAGE(fmt, ...)  _remmina_message(fmt, ##__VA_ARGS__)
-#define REMMINA_DEBUG(fmt, ...)    _remmina_debug(__func__, fmt, ##__VA_ARGS__)
-#define REMMINA_WARNING(fmt, ...)  _remmina_warning(__func__, fmt, ##__VA_ARGS__)
-#define REMMINA_ERROR(fmt, ...)    _remmina_error(__func__, fmt, ##__VA_ARGS__)
-#define REMMINA_CRITICAL(fmt, ...) _remmina_critical(__func__, fmt, ##__VA_ARGS__)
+#define REMMINA_INFO(fmt, ...)     _remmina_info(fmt, ## __VA_ARGS__)
+#define REMMINA_MESSAGE(fmt, ...)  _remmina_message(fmt, ## __VA_ARGS__)
+#define REMMINA_DEBUG(fmt, ...)    _remmina_debug(__func__, fmt, ## __VA_ARGS__)
+#define REMMINA_WARNING(fmt, ...)  _remmina_warning(__func__, fmt, ## __VA_ARGS__)
+#define REMMINA_ERROR(fmt, ...)    _remmina_error(__func__, fmt, ## __VA_ARGS__)
+#define REMMINA_CRITICAL(fmt, ...) _remmina_critical(__func__, fmt, ## __VA_ARGS__)
 
 void remmina_log_start(void);
 gboolean remmina_log_running(void);

@@ -68,7 +68,11 @@ typedef struct _RemminaMain {
 	GtkButton *		button_quick_connect;
 	/* Other widgets */
 	GtkTreeView *		tree_files_list;
+	GtkTreeViewColumn *	column_files_list_name;
 	GtkTreeViewColumn *	column_files_list_group;
+	GtkTreeViewColumn *	column_files_list_server;
+	GtkTreeViewColumn *	column_files_list_plugin;
+	GtkTreeViewColumn *	column_files_list_date;
 	GtkStatusbar *		statusbar_main;
 	/* Non widget objects */
 	GtkAccelGroup *		accelgroup_shortcuts;
