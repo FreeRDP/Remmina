@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-10-19 13:44+0000\n"
+"POT-Creation-Date: 2021-10-28 14:11+0000\n"
 "PO-Revision-Date: 2021-10-23 01:08+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: English (Australia) <https://hosted.weblate.org/projects/"
@@ -25,9 +25,9 @@ msgstr ""
 "X-Launchpad-Export-Date: 2014-09-20 14:25+0000\n"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:354
-#: src/remmina_protocol_widget.c:1672 src/remmina_protocol_widget.c:1691
+#: src/remmina_protocol_widget.c:1676 src/remmina_protocol_widget.c:1695
 #: src/remmina_file_editor.c:1101 src/remmina_file_editor.c:1222
-#: src/remmina_ssh_plugin.c:1369 plugins/rdp/rdp_plugin.c:2680
+#: src/remmina_ssh_plugin.c:1360 plugins/rdp/rdp_plugin.c:2680
 #: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:1596
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1675
 #: data/ui/remmina_unlock.glade:116
@@ -35,23 +35,23 @@ msgid "Password"
 msgstr "Password"
 
 #: src/remmina_sftp_plugin.c:311 src/remmina_sftp_plugin.c:356
-#: src/remmina_file_editor.c:1102 src/remmina_ssh_plugin.c:1370
-#: src/remmina_ssh_plugin.c:1481
+#: src/remmina_file_editor.c:1102 src/remmina_ssh_plugin.c:1361
+#: src/remmina_ssh_plugin.c:1472
 msgid "SSH identity file"
 msgstr "SSH identity file"
 
 #: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:1103
-#: src/remmina_ssh_plugin.c:1371
+#: src/remmina_ssh_plugin.c:1362
 msgid "SSH agent"
 msgstr "SSH agent"
 
 #: src/remmina_sftp_plugin.c:313 src/remmina_file_editor.c:1104
-#: src/remmina_ssh_plugin.c:1372
+#: src/remmina_ssh_plugin.c:1363
 msgid "Public key (automatic)"
 msgstr "Public key (automatic)"
 
 #: src/remmina_sftp_plugin.c:314 src/remmina_file_editor.c:1105
-#: src/remmina_ssh_plugin.c:1373
+#: src/remmina_ssh_plugin.c:1364
 msgid "Kerberos (GSSAPI)"
 msgstr "Kerberos (GSSAPI)"
 
@@ -72,7 +72,7 @@ msgid "Connect via SSH from a new terminal"
 msgstr "Connect via SSH from a new terminal"
 
 #: src/remmina_sftp_plugin.c:353 src/remmina_message_panel.c:330
-#: src/remmina_file_editor.c:1216 src/remmina_ssh_plugin.c:1479
+#: src/remmina_file_editor.c:1216 src/remmina_ssh_plugin.c:1470
 #: plugins/rdp/rdp_plugin.c:2679 plugins/vnc/vnc_plugin.c:1976
 #: plugins/vnc/vnc_plugin.c:1988 plugins/www/www_plugin.c:894
 #: plugins/x2go/x2go_plugin.c:1595 data/ui/remmina_mpc.glade:144
@@ -80,16 +80,16 @@ msgid "Username"
 msgstr "Username"
 
 #: src/remmina_sftp_plugin.c:355 src/remmina_file_editor.c:1207
-#: src/remmina_ssh_plugin.c:1478
+#: src/remmina_ssh_plugin.c:1469
 msgid "Authentication type"
 msgstr "Authentication type"
 
 #: src/remmina_sftp_plugin.c:357 src/remmina_file_editor.c:1240
-#: src/remmina_ssh_plugin.c:1485
+#: src/remmina_ssh_plugin.c:1476
 msgid "Password to unlock private key"
 msgstr "Password to unlock private key"
 
-#: src/remmina_sftp_plugin.c:358 src/remmina_ssh_plugin.c:1515
+#: src/remmina_sftp_plugin.c:358 src/remmina_ssh_plugin.c:1506
 msgid "SSH Proxy Command"
 msgstr "SSH Proxy Command"
 
@@ -208,7 +208,7 @@ msgstr "Configure the available resolutions"
 msgid "Recent lists cleared."
 msgstr "Recent lists cleared."
 
-#: src/remmina_pref_dialog.c:154 src/rcw.c:2022
+#: src/remmina_pref_dialog.c:154 src/rcw.c:2030
 #: data/ui/remmina_preferences.glade:169 data/ui/remmina_preferences.glade:179
 msgid "Keystrokes"
 msgstr "Keystrokes"
@@ -298,121 +298,121 @@ msgstr "Client Certificate File"
 msgid "Client Certificate Key"
 msgstr "Client Certificate Key"
 
-#: src/rcw.c:658
+#: src/rcw.c:657
 #, c-format
 msgid ""
 "Are you sure you want to close %i active connections in the current window?"
 msgstr ""
 "Are you sure you want to close %i active connections in the current window?"
 
-#: src/rcw.c:1394
+#: src/rcw.c:1401
 msgid "Viewport fullscreen mode"
 msgstr "Viewport fullscreen mode"
 
-#: src/rcw.c:1402 data/ui/remmina_preferences.glade:607
+#: src/rcw.c:1409 data/ui/remmina_preferences.glade:607
 msgid "Scrolled fullscreen"
 msgstr "Scrolled fullscreen"
 
-#: src/rcw.c:1487
+#: src/rcw.c:1495
 msgid "Keep aspect ratio when scaled"
 msgstr "Keep aspect ratio when scaled"
 
-#: src/rcw.c:1495
+#: src/rcw.c:1503
 msgid "Fill client window when scaled"
 msgstr "Fill client window when scaled"
 
-#: src/rcw.c:2043
+#: src/rcw.c:2051
 msgid "Send clipboard content as keystrokes"
 msgstr ""
 
-#: src/rcw.c:2147
+#: src/rcw.c:2157
 msgid "Turn off scaling to avoid screenshot distortion."
 msgstr "Turn off scaling to avoid screenshot distortion."
 
-#: src/rcw.c:2207 plugins/www/www_plugin.c:855
+#: src/rcw.c:2217 plugins/www/www_plugin.c:855
 msgid "Screenshot taken"
 msgstr "Screenshot taken"
 
-#: src/rcw.c:2290
+#: src/rcw.c:2300
 #, fuzzy
 msgid "_Menu"
 msgstr "Menu"
 
-#: src/rcw.c:2291
+#: src/rcw.c:2301
 #, fuzzy
 msgid "Menu"
 msgstr "Menu"
 
-#: src/rcw.c:2300
+#: src/rcw.c:2310
 #, fuzzy
 #| msgid "Open Main Window"
 msgid "Open the Remmina main window"
 msgstr "Open Main Window"
 
-#: src/rcw.c:2310
+#: src/rcw.c:2320
 msgid "Duplicate current connection"
 msgstr "Duplicate current connection"
 
-#: src/rcw.c:2327
+#: src/rcw.c:2337
 msgid "Resize the window to fit in remote resolution"
 msgstr "Resize the window to fit in remote resolution"
 
-#: src/rcw.c:2338
+#: src/rcw.c:2348
 msgid "Toggle fullscreen mode"
 msgstr "Toggle fullscreen mode"
 
-#: src/rcw.c:2384 data/ui/remmina_preferences.glade:1332
+#: src/rcw.c:2394 data/ui/remmina_preferences.glade:1332
 #: data/ui/remmina_preferences.glade:1342
 msgid "Multi monitor"
 msgstr ""
 
-#: src/rcw.c:2400
+#: src/rcw.c:2410
 msgid "Toggle dynamic resolution update"
 msgstr "Toggle dynamic resolution update"
 
-#: src/rcw.c:2410
+#: src/rcw.c:2420
 msgid "Toggle scaled mode"
 msgstr "Toggle scaled mode"
 
-#: src/rcw.c:2450 data/ui/remmina_preferences.glade:1066
+#: src/rcw.c:2460 data/ui/remmina_preferences.glade:1066
 msgid "Switch tab pages"
 msgstr "Switch tab pages"
 
-#: src/rcw.c:2460
+#: src/rcw.c:2470
 msgid "Grab all keyboard events"
 msgstr "Grab all keyboard events"
 
-#: src/rcw.c:2470
+#: src/rcw.c:2480
 msgid "Preferences"
 msgstr "_Preferences"
 
-#: src/rcw.c:2479
+#: src/rcw.c:2489
 msgid "_Tools"
 msgstr "_Tools"
 
-#: src/rcw.c:2480 data/ui/remmina_main.glade:207
+#: src/rcw.c:2490 data/ui/remmina_main.glade:207
 msgid "Tools"
 msgstr "Tools"
 
-#: src/rcw.c:2493 data/ui/remmina_preferences.glade:1267
+#: src/rcw.c:2503 data/ui/remmina_preferences.glade:1267
 #: data/ui/remmina_preferences.glade:1277
 msgid "Screenshot"
 msgstr "Screenshot"
 
-#: src/rcw.c:2507 data/ui/remmina_preferences.glade:1174
+#: src/rcw.c:2517 data/ui/remmina_preferences.glade:1174
 msgid "Minimize window"
 msgstr "Minimize window"
 
-#: src/rcw.c:2517 data/ui/remmina_preferences.glade:1205
+#: src/rcw.c:2527 data/ui/remmina_preferences.glade:1205
 msgid "Disconnect"
 msgstr "Disconnect"
 
-#: src/rcw.c:4284
+#: src/rcw.c:4299
 #, c-format
 msgid "The file “%s” is corrupted, unreadable, or could not be found."
 msgstr "The file ‘%s’ is corrupted, unreadable, or could not be found."
 
-#: src/rcw.c:4452
+#: src/rcw.c:4468
 msgid "Warning: This plugin requires GtkSocket, but it’s not available."
 msgstr "Warning: This plugin requires GtkSocket, but it’s not available."
 
@@ -720,7 +720,7 @@ msgid "Progress"
 msgstr "Progress"
 
 #: src/remmina_protocol_widget.c:290 src/remmina_ssh_plugin.c:829
-#: src/remmina_ssh_plugin.c:1454
+#: src/remmina_ssh_plugin.c:1445
 msgid "Open SFTP transfer…"
 msgstr "Open SFTP transfer…"
 
@@ -735,109 +735,109 @@ msgid "Connecting to “%s”…"
 msgstr "Connecting to ‘%s’…"
 
 #. TRANSLATORS: “%s” is a placeholder for an hostname or an IP address.
-#: src/remmina_protocol_widget.c:911 src/remmina_protocol_widget.c:1096
+#: src/remmina_protocol_widget.c:915 src/remmina_protocol_widget.c:1100
 #, c-format
 msgid "Connecting to “%s” via SSH…"
 msgstr "Connecting to %s via SSH…"
 
 #. TRANSLATORS: “%i” is a placeholder for a TCP port number.
-#: src/remmina_protocol_widget.c:1160
+#: src/remmina_protocol_widget.c:1164
 #, c-format
 msgid "Awaiting incoming SSH connection on port %i…"
 msgstr "Awaiting incoming SSH connection on port %i…"
 
-#: src/remmina_protocol_widget.c:1213
+#: src/remmina_protocol_widget.c:1217
 #, c-format
 msgid "The “%s” command is not available on the SSH server."
 msgstr "The ‘%s’ command is not available on the SSH server."
 
-#: src/remmina_protocol_widget.c:1218
+#: src/remmina_protocol_widget.c:1222
 #, c-format
 msgid "Could not run the “%s” command on the SSH server (status = %i)."
 msgstr "Could not run the ‘%s’ command on the SSH server (status = %i)."
 
 #. TRANSLATORS: %s is a placeholder for an error message
-#: src/remmina_protocol_widget.c:1226
+#: src/remmina_protocol_widget.c:1230
 #, c-format
 msgid "Could not run command. %s"
 msgstr "Could not run command. %s"
 
 #. TRANSLATORS: “%s” is a placeholder for a hostname or IP address.
-#: src/remmina_protocol_widget.c:1296
+#: src/remmina_protocol_widget.c:1300
 #, c-format
 msgid "Connecting to %s via SSH…"
 msgstr "Connecting to %s via SSH…"
 
-#: src/remmina_protocol_widget.c:1690
+#: src/remmina_protocol_widget.c:1694
 msgid "Type in SSH username and password."
 msgstr "Type in SSH username and password."
 
-#: src/remmina_protocol_widget.c:1745 src/remmina_protocol_widget.c:1777
+#: src/remmina_protocol_widget.c:1749 src/remmina_protocol_widget.c:1781
 msgid "Fingerprint automatically accepted"
 msgstr "Fingerprint automatically accepted"
 
 #. TRANSLATORS: The user is asked to verify a new SSL certificate.
-#: src/remmina_protocol_widget.c:1753
+#: src/remmina_protocol_widget.c:1757
 msgid "Certificate details:"
 msgstr "Certificate details:"
 
 #. TRANSLATORS: An SSL certificate subject is usually the remote server the user connect to.
-#: src/remmina_protocol_widget.c:1755 src/remmina_protocol_widget.c:1787
+#: src/remmina_protocol_widget.c:1759 src/remmina_protocol_widget.c:1791
 msgid "Subject:"
 msgstr "Subject:"
 
 #. TRANSLATORS: The name or email of the entity that have issued the SSL certificate
-#: src/remmina_protocol_widget.c:1757 src/remmina_protocol_widget.c:1789
+#: src/remmina_protocol_widget.c:1761 src/remmina_protocol_widget.c:1793
 msgid "Issuer:"
 msgstr "Issuer:"
 
 #. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
-#: src/remmina_protocol_widget.c:1759
+#: src/remmina_protocol_widget.c:1763
 msgid "Fingerprint:"
 msgstr "Fingerprint:"
 
 #. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
-#: src/remmina_protocol_widget.c:1761
+#: src/remmina_protocol_widget.c:1765
 msgid "Accept certificate?"
 msgstr "Accept certificate?"
 
 #. TRANSLATORS: The user is asked to verify a new SSL certificate.
-#: src/remmina_protocol_widget.c:1785
+#: src/remmina_protocol_widget.c:1789
 msgid "The certificate changed! Details:"
 msgstr "The certificate changed! Details:"
 
 #. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
-#: src/remmina_protocol_widget.c:1791
+#: src/remmina_protocol_widget.c:1795
 msgid "Old fingerprint:"
 msgstr "Old fingerprint:"
 
 #. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
-#: src/remmina_protocol_widget.c:1793
+#: src/remmina_protocol_widget.c:1797
 msgid "New fingerprint:"
 msgstr "New fingerprint:"
 
 #. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
-#: src/remmina_protocol_widget.c:1795
+#: src/remmina_protocol_widget.c:1799
 msgid "Accept changed certificate?"
 msgstr "Accept changed certificate?"
 
 #. TRANSLATORS: “%i” is a placeholder for a port number. “%s”  is a placeholder for a protocol name (VNC).
-#: src/remmina_protocol_widget.c:1938
+#: src/remmina_protocol_widget.c:1942
 #, c-format
 msgid "Listening on port %i for an incoming %s connection…"
 msgstr "Listening on port %i for an incoming %s connection…"
 
-#: src/remmina_protocol_widget.c:1963
+#: src/remmina_protocol_widget.c:1967
 msgid "Could not authenticate, attempting reconnection…"
 msgstr "Could not authenticate, attempting reconnection…"
 
-#: src/remmina_protocol_widget.c:2025 src/remmina_file_editor.c:436
+#: src/remmina_protocol_widget.c:2029 src/remmina_file_editor.c:436
 #: src/remmina_file_editor.c:1172 data/ui/remmina_main.glade:478
 msgid "Server"
 msgstr "Server"
 
 #. TRANSLATORS: “%s” is a placeholder for a protocol name, like “RDP”.
-#: src/remmina_protocol_widget.c:2043
+#: src/remmina_protocol_widget.c:2047
 #, c-format
 msgid "Install the %s protocol plugin first."
 msgstr "Install the %s protocol plugin first."
@@ -1110,19 +1110,23 @@ msgstr "Could not create PTY device."
 msgid "Plugin %s is not registered."
 msgstr "Plugin %s is not registered."
 
-#: src/remmina_main.c:662
+#: src/remmina_main.c:669
+msgid "The latest successful connection attempt, or a pre-computed date"
+msgstr ""
+
+#: src/remmina_main.c:671
 #, c-format
 msgid "Total %i item."
 msgid_plural "Total %i items."
 msgstr[0] "Total %i item."
 msgstr[1] "Total %i items."
 
-#: src/remmina_main.c:856
+#: src/remmina_main.c:865
 #, c-format
 msgid "Are you sure you want to delete “%s”?"
 msgstr "Are you sure you want to delete ‘%s’?"
 
-#: src/remmina_main.c:976
+#: src/remmina_main.c:989
 #, c-format
 msgid ""
 "Unable to import:\n"
@@ -1131,23 +1135,23 @@ msgstr ""
 "Unable to import:\n"
 "%s"
 
-#: src/remmina_main.c:1002 data/ui/remmina_main.glade:285
+#: src/remmina_main.c:1015 data/ui/remmina_main.glade:285
 msgid "Import"
 msgstr "Import"
 
-#: src/remmina_main.c:1025 src/remmina_file_editor.c:1791
+#: src/remmina_main.c:1038 src/remmina_file_editor.c:1791
 msgid "_Save"
 msgstr "_Save"
 
-#: src/remmina_main.c:1031
+#: src/remmina_main.c:1044
 msgid "This protocol does not support exporting."
 msgstr "This protocol does not support exporting."
 
-#: src/remmina_main.c:1347
+#: src/remmina_main.c:1361
 msgid "Remmina Remote Desktop Client"
 msgstr "Remmina Remote Desktop Client"
 
-#: src/remmina_main.c:1349
+#: src/remmina_main.c:1363
 msgid "Remmina Kiosk"
 msgstr "Remmina Kiosk"
 
@@ -1410,7 +1414,7 @@ msgstr "SSH Authentication"
 msgid "SSH private key file"
 msgstr "SSH private key passphrase"
 
-#: src/remmina_file_editor.c:1235 src/remmina_ssh_plugin.c:1483
+#: src/remmina_file_editor.c:1235 src/remmina_ssh_plugin.c:1474
 #, fuzzy
 #| msgid "CA Certificate File"
 msgid "SSH certificate file"
@@ -1494,6 +1498,14 @@ msgstr "Use '%s' as subgroup delimiter"
 msgid "Could not find the file “%s”."
 msgstr "Could not find the file ‘%s’."
 
+#. TRANSLATORS: This is a message that pops up when an external Remmina plugin tries to set the window resolution using a legacy parameter.
+#. TRANSLATORS: This is a message that pop-up when an external Remmina plugin tries to set the windows resolution using a legacy parameter.
+#: src/remmina_file.c:451 src/remmina_file.c:497
+msgid ""
+"Using the «resolution» parameter in the Remmina preferences file is "
+"deprecated.\n"
+msgstr ""
+
 #: src/remmina_icon.c:128
 msgid "Open Main Window"
 msgstr "Open Main Window"
@@ -1516,14 +1528,62 @@ msgstr "_Quit"
 
 #. TRANSLATORS: Applet name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
 #. TRANSLATORS: Applet Name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
-#: src/remmina_icon.c:284 src/remmina_icon.c:416
+#: src/remmina_icon.c:284 src/remmina_icon.c:438
 msgid "Remmina Applet"
 msgstr "Remmina Applet"
 
 #. TRANSLATORS: Applet comment/description as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
-#: src/remmina_icon.c:286 src/remmina_icon.c:418
+#: src/remmina_icon.c:286 src/remmina_icon.c:440
 msgid "Connect to remote desktops through the applet menu"
 msgstr "Connect to remote desktops through the applet menu"
+
+#: src/remmina_icon.c:349
+msgid "StatusNotifier/Appindicator support in “"
+msgstr ""
+
+#. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
+#: src/remmina_icon.c:356
+#, c-format
+msgid "%s your desktop does support it"
+msgstr ""
+
+#. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
+#: src/remmina_icon.c:358
+#, c-format
+msgid "%s and Remmina has built-in (compiled) support for libappindicator."
+msgstr ""
+
+#. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
+#: src/remmina_icon.c:361
+#, c-format
+msgid ""
+"%s not supported natively by your Desktop Environment. libappindicator will "
+"try to fallback to GtkStatusIcon/xembed"
+msgstr ""
+
+#. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
+#: src/remmina_icon.c:365
+#, c-format
+msgid "%s You may need to install, and use XApp Status Applet"
+msgstr ""
+
+#. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
+#: src/remmina_icon.c:368
+#, c-format
+msgid "%s You may need to install, and use KStatusNotifierItem"
+msgstr ""
+
+#. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
+#: src/remmina_icon.c:371
+#, c-format
+msgid "%s You may need to install, and use XEmbed SNI Proxy"
+msgstr ""
+
+#. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
+#: src/remmina_icon.c:374
+#, c-format
+msgid "%s You may need to install, and use Gnome Shell Extension Appindicator"
+msgstr ""
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_ssh_plugin.c:539
@@ -1563,64 +1623,64 @@ msgstr "Decrease font size (host+Page Down)"
 msgid "Find text (host+G)"
 msgstr "Find text (host+G)"
 
-#: src/remmina_ssh_plugin.c:1448 data/ui/remmina_main.glade:177
+#: src/remmina_ssh_plugin.c:1439 data/ui/remmina_main.glade:177
 msgid "Copy"
 msgstr "Copy"
 
-#: src/remmina_ssh_plugin.c:1448
+#: src/remmina_ssh_plugin.c:1439
 msgid "_Copy"
 msgstr "_Copy"
 
-#: src/remmina_ssh_plugin.c:1449
+#: src/remmina_ssh_plugin.c:1440
 msgid "Paste"
 msgstr "Paste"
 
-#: src/remmina_ssh_plugin.c:1449
+#: src/remmina_ssh_plugin.c:1440
 msgid "_Paste"
 msgstr "_Paste"
 
-#: src/remmina_ssh_plugin.c:1450
+#: src/remmina_ssh_plugin.c:1441
 msgid "Select all"
 msgstr "Select all"
 
-#: src/remmina_ssh_plugin.c:1450
+#: src/remmina_ssh_plugin.c:1441
 msgid "_Select all"
 msgstr "_Select all"
 
-#: src/remmina_ssh_plugin.c:1451
+#: src/remmina_ssh_plugin.c:1442
 msgid "Increase font size"
 msgstr "Increase font size"
 
-#: src/remmina_ssh_plugin.c:1451
+#: src/remmina_ssh_plugin.c:1442
 msgid "_Increase font size"
 msgstr "_Increase font size"
 
-#: src/remmina_ssh_plugin.c:1452
+#: src/remmina_ssh_plugin.c:1443
 msgid "Decrease font size"
 msgstr "Decrease font size"
 
-#: src/remmina_ssh_plugin.c:1452
+#: src/remmina_ssh_plugin.c:1443
 msgid "_Decrease font size"
 msgstr "_Decrease font size"
 
-#: src/remmina_ssh_plugin.c:1453
+#: src/remmina_ssh_plugin.c:1444
 msgid "Find text"
 msgstr "Find text"
 
-#: src/remmina_ssh_plugin.c:1453
+#: src/remmina_ssh_plugin.c:1444
 msgid "_Find text"
 msgstr "_Find text"
 
-#: src/remmina_ssh_plugin.c:1480 plugins/spice/spice_plugin.c:674
+#: src/remmina_ssh_plugin.c:1471 plugins/spice/spice_plugin.c:674
 #: plugins/vnc/vnc_plugin.c:1977 plugins/vnc/vnc_plugin.c:1989
 msgid "User password"
 msgstr "User password"
 
-#: src/remmina_ssh_plugin.c:1486 plugins/rdp/rdp_plugin.c:2723
+#: src/remmina_ssh_plugin.c:1477 plugins/rdp/rdp_plugin.c:2723
 msgid "Start-up program"
 msgstr "Start-up program"
 
-#: src/remmina_ssh_plugin.c:1491
+#: src/remmina_ssh_plugin.c:1482
 msgid ""
 "The filename can use the following placeholders:\n"
 "\n"
@@ -1642,65 +1702,65 @@ msgstr ""
 "  • %g is substituted with Remmina profile group name\n"
 "  • %d is substituted with local datetime in iso8601 format\n"
 
-#: src/remmina_ssh_plugin.c:1513
+#: src/remmina_ssh_plugin.c:1504
 #, fuzzy
 #| msgid "Terminal color scheme"
 msgid "Terminal colour scheme"
 msgstr "Terminal colour scheme"
 
-#: src/remmina_ssh_plugin.c:1514
+#: src/remmina_ssh_plugin.c:1505
 msgid "Character set"
 msgstr "Character set"
 
-#: src/remmina_ssh_plugin.c:1516
+#: src/remmina_ssh_plugin.c:1507
 msgid "KEX (Key Exchange) algorithms"
 msgstr "KEX (Key Exchange) algorithms"
 
-#: src/remmina_ssh_plugin.c:1517
+#: src/remmina_ssh_plugin.c:1508
 msgid "Symmetric cipher client to server"
 msgstr "Symmetric cipher client to server"
 
-#: src/remmina_ssh_plugin.c:1518
+#: src/remmina_ssh_plugin.c:1509
 msgid "Preferred server host key types"
 msgstr "Preferred server host key types"
 
-#: src/remmina_ssh_plugin.c:1519
+#: src/remmina_ssh_plugin.c:1510
 msgid "Folder for SSH session log"
 msgstr "Folder for SSH session log"
 
-#: src/remmina_ssh_plugin.c:1520
+#: src/remmina_ssh_plugin.c:1511
 msgid "Filename for SSH session log"
 msgstr "Filename for SSH session log"
 
-#: src/remmina_ssh_plugin.c:1521
+#: src/remmina_ssh_plugin.c:1512
 msgid "Log SSH session when exiting Remmina"
 msgstr "Log SSH session when exiting Remmina"
 
-#: src/remmina_ssh_plugin.c:1522
+#: src/remmina_ssh_plugin.c:1513
 msgid "Log SSH session asynchronously"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1522
+#: src/remmina_ssh_plugin.c:1513
 msgid "Saving the session asynchronously may have a notable performance impact"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1523
+#: src/remmina_ssh_plugin.c:1514
 msgid "Audible terminal bell"
 msgstr "Audible terminal bell"
 
-#: src/remmina_ssh_plugin.c:1524
+#: src/remmina_ssh_plugin.c:1515
 msgid "SSH compression"
 msgstr "SSH compression"
 
-#: src/remmina_ssh_plugin.c:1525
+#: src/remmina_ssh_plugin.c:1516
 msgid "Don't remember passwords"
 msgstr "Don't remember passwords"
 
-#: src/remmina_ssh_plugin.c:1526
+#: src/remmina_ssh_plugin.c:1517
 msgid "Strict host key checking"
 msgstr "Strict host key checking"
 
-#: src/remmina_ssh_plugin.c:1540
+#: src/remmina_ssh_plugin.c:1531
 msgid "SSH - Secure Shell"
 msgstr "SSH - Secure Shell"
 

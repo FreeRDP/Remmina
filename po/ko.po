@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-10-19 13:44+0000\n"
+"POT-Creation-Date: 2021-10-28 14:11+0000\n"
 "PO-Revision-Date: 2021-10-05 14:04+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -24,9 +24,9 @@ msgstr ""
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:354
-#: src/remmina_protocol_widget.c:1672 src/remmina_protocol_widget.c:1691
+#: src/remmina_protocol_widget.c:1676 src/remmina_protocol_widget.c:1695
 #: src/remmina_file_editor.c:1101 src/remmina_file_editor.c:1222
-#: src/remmina_ssh_plugin.c:1369 plugins/rdp/rdp_plugin.c:2680
+#: src/remmina_ssh_plugin.c:1360 plugins/rdp/rdp_plugin.c:2680
 #: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:1596
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1675
 #: data/ui/remmina_unlock.glade:116
@@ -34,23 +34,23 @@ msgid "Password"
 msgstr "비밀번호"
 
 #: src/remmina_sftp_plugin.c:311 src/remmina_sftp_plugin.c:356
-#: src/remmina_file_editor.c:1102 src/remmina_ssh_plugin.c:1370
-#: src/remmina_ssh_plugin.c:1481
+#: src/remmina_file_editor.c:1102 src/remmina_ssh_plugin.c:1361
+#: src/remmina_ssh_plugin.c:1472
 msgid "SSH identity file"
 msgstr "SSH 인증 키 파일"
 
 #: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:1103
-#: src/remmina_ssh_plugin.c:1371
+#: src/remmina_ssh_plugin.c:1362
 msgid "SSH agent"
 msgstr "SSH 에이전트"
 
 #: src/remmina_sftp_plugin.c:313 src/remmina_file_editor.c:1104
-#: src/remmina_ssh_plugin.c:1372
+#: src/remmina_ssh_plugin.c:1363
 msgid "Public key (automatic)"
 msgstr "공개 키 (자동)"
 
 #: src/remmina_sftp_plugin.c:314 src/remmina_file_editor.c:1105
-#: src/remmina_ssh_plugin.c:1373
+#: src/remmina_ssh_plugin.c:1364
 msgid "Kerberos (GSSAPI)"
 msgstr "커베로스 (GSSAPI)"
 
@@ -71,7 +71,7 @@ msgid "Connect via SSH from a new terminal"
 msgstr "새 터미널에서 SSH로 연결하기"
 
 #: src/remmina_sftp_plugin.c:353 src/remmina_message_panel.c:330
-#: src/remmina_file_editor.c:1216 src/remmina_ssh_plugin.c:1479
+#: src/remmina_file_editor.c:1216 src/remmina_ssh_plugin.c:1470
 #: plugins/rdp/rdp_plugin.c:2679 plugins/vnc/vnc_plugin.c:1976
 #: plugins/vnc/vnc_plugin.c:1988 plugins/www/www_plugin.c:894
 #: plugins/x2go/x2go_plugin.c:1595 data/ui/remmina_mpc.glade:144
@@ -79,16 +79,16 @@ msgid "Username"
 msgstr "사용자명"
 
 #: src/remmina_sftp_plugin.c:355 src/remmina_file_editor.c:1207
-#: src/remmina_ssh_plugin.c:1478
+#: src/remmina_ssh_plugin.c:1469
 msgid "Authentication type"
 msgstr "인증 유형"
 
 #: src/remmina_sftp_plugin.c:357 src/remmina_file_editor.c:1240
-#: src/remmina_ssh_plugin.c:1485
+#: src/remmina_ssh_plugin.c:1476
 msgid "Password to unlock private key"
 msgstr "개인 키 잠금 해제 비밀번호"
 
-#: src/remmina_sftp_plugin.c:358 src/remmina_ssh_plugin.c:1515
+#: src/remmina_sftp_plugin.c:358 src/remmina_ssh_plugin.c:1506
 msgid "SSH Proxy Command"
 msgstr "SSH 프록시 명령"
 
@@ -207,7 +207,7 @@ msgstr "사용할 수 있는 해상도 설정"
 msgid "Recent lists cleared."
 msgstr "최근 목록을 지웠습니다."
 
-#: src/remmina_pref_dialog.c:154 src/rcw.c:2022
+#: src/remmina_pref_dialog.c:154 src/rcw.c:2030
 #: data/ui/remmina_preferences.glade:169 data/ui/remmina_preferences.glade:179
 msgid "Keystrokes"
 msgstr "키스트로크"
@@ -296,118 +296,118 @@ msgstr "클라이언트 인증서 파일"
 msgid "Client Certificate Key"
 msgstr "클라이언트 인증서 키"
 
-#: src/rcw.c:658
+#: src/rcw.c:657
 #, c-format
 msgid ""
 "Are you sure you want to close %i active connections in the current window?"
 msgstr "현재 %i 과(와) 연결되어 있습니다. 종료 하시겠습니까?"
 
-#: src/rcw.c:1394
+#: src/rcw.c:1401
 msgid "Viewport fullscreen mode"
 msgstr "전체 화면 모드 뷰포트"
 
-#: src/rcw.c:1402 data/ui/remmina_preferences.glade:607
+#: src/rcw.c:1409 data/ui/remmina_preferences.glade:607
 msgid "Scrolled fullscreen"
 msgstr "스크롤 전체 화면"
 
-#: src/rcw.c:1487
+#: src/rcw.c:1495
 msgid "Keep aspect ratio when scaled"
 msgstr "크기 조정시 비율 유지"
 
-#: src/rcw.c:1495
+#: src/rcw.c:1503
 msgid "Fill client window when scaled"
 msgstr "크기 조정시 클라이언트 윈도 채우기"
 
-#: src/rcw.c:2043
+#: src/rcw.c:2051
 msgid "Send clipboard content as keystrokes"
 msgstr "클립 보드 내용을 키 입력으로 보내기"
 
-#: src/rcw.c:2147
+#: src/rcw.c:2157
 msgid "Turn off scaling to avoid screenshot distortion."
 msgstr "스크린 샷 왜곡 방지를 위해서 크기 조정 끄기."
 
-#: src/rcw.c:2207 plugins/www/www_plugin.c:855
+#: src/rcw.c:2217 plugins/www/www_plugin.c:855
 msgid "Screenshot taken"
 msgstr "스크린 샷을 성공했습니다"
 
-#: src/rcw.c:2290
+#: src/rcw.c:2300
 #, fuzzy
 msgid "_Menu"
 msgstr "_Menu"
 
-#: src/rcw.c:2291
+#: src/rcw.c:2301
 #, fuzzy
 msgid "Menu"
 msgstr "메뉴"
 
-#: src/rcw.c:2300
+#: src/rcw.c:2310
 msgid "Open the Remmina main window"
 msgstr "레미나 메인 윈도 열기"
 
-#: src/rcw.c:2310
+#: src/rcw.c:2320
 msgid "Duplicate current connection"
 msgstr "현재 연결 중복"
 
-#: src/rcw.c:2327
+#: src/rcw.c:2337
 msgid "Resize the window to fit in remote resolution"
 msgstr "원격 접속 해상도에 맞게 윈도 크기 조정"
 
-#: src/rcw.c:2338
+#: src/rcw.c:2348
 msgid "Toggle fullscreen mode"
 msgstr "전체 화면 모드 전환"
 
-#: src/rcw.c:2384 data/ui/remmina_preferences.glade:1332
+#: src/rcw.c:2394 data/ui/remmina_preferences.glade:1332
 #: data/ui/remmina_preferences.glade:1342
 msgid "Multi monitor"
 msgstr "멀티 모니터"
 
-#: src/rcw.c:2400
+#: src/rcw.c:2410
 msgid "Toggle dynamic resolution update"
 msgstr "동적 해상도 갱신 전환"
 
-#: src/rcw.c:2410
+#: src/rcw.c:2420
 msgid "Toggle scaled mode"
 msgstr "크기 조정 모드 전환"
 
-#: src/rcw.c:2450 data/ui/remmina_preferences.glade:1066
+#: src/rcw.c:2460 data/ui/remmina_preferences.glade:1066
 msgid "Switch tab pages"
 msgstr "탭 페이지 전환"
 
-#: src/rcw.c:2460
+#: src/rcw.c:2470
 msgid "Grab all keyboard events"
 msgstr "모든 키보드 이벤트 기록"
 
-#: src/rcw.c:2470
+#: src/rcw.c:2480
 msgid "Preferences"
 msgstr "_설정"
 
-#: src/rcw.c:2479
+#: src/rcw.c:2489
 msgid "_Tools"
 msgstr "도구"
 
-#: src/rcw.c:2480 data/ui/remmina_main.glade:207
+#: src/rcw.c:2490 data/ui/remmina_main.glade:207
 msgid "Tools"
 msgstr "도구"
 
-#: src/rcw.c:2493 data/ui/remmina_preferences.glade:1267
+#: src/rcw.c:2503 data/ui/remmina_preferences.glade:1267
 #: data/ui/remmina_preferences.glade:1277
 msgid "Screenshot"
 msgstr "스크린샷"
 
-#: src/rcw.c:2507 data/ui/remmina_preferences.glade:1174
+#: src/rcw.c:2517 data/ui/remmina_preferences.glade:1174
 msgid "Minimize window"
 msgstr "창 최소화"
 
-#: src/rcw.c:2517 data/ui/remmina_preferences.glade:1205
+#: src/rcw.c:2527 data/ui/remmina_preferences.glade:1205
 msgid "Disconnect"
 msgstr "연결 끊기"
 
-#: src/rcw.c:4284
+#: src/rcw.c:4299
 #, c-format
 msgid "The file “%s” is corrupted, unreadable, or could not be found."
 msgstr "\"%s\" 파일이 손상 또는 읽을 수 없거나 찾을 수 없습니다."
 
-#: src/rcw.c:4452
+#: src/rcw.c:4468
 msgid "Warning: This plugin requires GtkSocket, but it’s not available."
 msgstr "경고: 이 플러그인에는 GtkSocket이 필요하지만 사용할 수 없습니다."
 
@@ -737,7 +737,7 @@ msgid "Progress"
 msgstr "진행"
 
 #: src/remmina_protocol_widget.c:290 src/remmina_ssh_plugin.c:829
-#: src/remmina_ssh_plugin.c:1454
+#: src/remmina_ssh_plugin.c:1445
 msgid "Open SFTP transfer…"
 msgstr "SFTP 전송 열기…"
 
@@ -752,109 +752,109 @@ msgid "Connecting to “%s”…"
 msgstr "'%s'에 연결하는 중…"
 
 #. TRANSLATORS: “%s” is a placeholder for an hostname or an IP address.
-#: src/remmina_protocol_widget.c:911 src/remmina_protocol_widget.c:1096
+#: src/remmina_protocol_widget.c:915 src/remmina_protocol_widget.c:1100
 #, c-format
 msgid "Connecting to “%s” via SSH…"
 msgstr "SSH로 '%s'에 연결하는 중…"
 
 #. TRANSLATORS: “%i” is a placeholder for a TCP port number.
-#: src/remmina_protocol_widget.c:1160
+#: src/remmina_protocol_widget.c:1164
 #, c-format
 msgid "Awaiting incoming SSH connection on port %i…"
 msgstr "%i 포트에서 SSH 연결을 기다리는 중…"
 
-#: src/remmina_protocol_widget.c:1213
+#: src/remmina_protocol_widget.c:1217
 #, c-format
 msgid "The “%s” command is not available on the SSH server."
 msgstr "SSH 서버에서 %s 명령을 사용할 수 없습니다."
 
-#: src/remmina_protocol_widget.c:1218
+#: src/remmina_protocol_widget.c:1222
 #, c-format
 msgid "Could not run the “%s” command on the SSH server (status = %i)."
 msgstr "SSH 서버에서 \"%s\" 명령을 실행할 수 없습니다 (상태 = %i)."
 
 #. TRANSLATORS: %s is a placeholder for an error message
-#: src/remmina_protocol_widget.c:1226
+#: src/remmina_protocol_widget.c:1230
 #, c-format
 msgid "Could not run command. %s"
 msgstr "명령을 실행할 수 없습니다. %s"
 
 #. TRANSLATORS: “%s” is a placeholder for a hostname or IP address.
-#: src/remmina_protocol_widget.c:1296
+#: src/remmina_protocol_widget.c:1300
 #, c-format
 msgid "Connecting to %s via SSH…"
 msgstr "SSH로 '%s'에 연결하는 중…"
 
-#: src/remmina_protocol_widget.c:1690
+#: src/remmina_protocol_widget.c:1694
 msgid "Type in SSH username and password."
 msgstr "SSH 사용자 이름과 비밀번호를 입력하세요."
 
-#: src/remmina_protocol_widget.c:1745 src/remmina_protocol_widget.c:1777
+#: src/remmina_protocol_widget.c:1749 src/remmina_protocol_widget.c:1781
 msgid "Fingerprint automatically accepted"
 msgstr "지문으로 자동 허용"
 
 #. TRANSLATORS: The user is asked to verify a new SSL certificate.
-#: src/remmina_protocol_widget.c:1753
+#: src/remmina_protocol_widget.c:1757
 msgid "Certificate details:"
 msgstr "인증서 세부정보:"
 
 #. TRANSLATORS: An SSL certificate subject is usually the remote server the user connect to.
-#: src/remmina_protocol_widget.c:1755 src/remmina_protocol_widget.c:1787
+#: src/remmina_protocol_widget.c:1759 src/remmina_protocol_widget.c:1791
 msgid "Subject:"
 msgstr "주제:"
 
 #. TRANSLATORS: The name or email of the entity that have issued the SSL certificate
-#: src/remmina_protocol_widget.c:1757 src/remmina_protocol_widget.c:1789
+#: src/remmina_protocol_widget.c:1761 src/remmina_protocol_widget.c:1793
 msgid "Issuer:"
 msgstr "발급자:"
 
 #. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
-#: src/remmina_protocol_widget.c:1759
+#: src/remmina_protocol_widget.c:1763
 msgid "Fingerprint:"
 msgstr "지문:"
 
 #. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
-#: src/remmina_protocol_widget.c:1761
+#: src/remmina_protocol_widget.c:1765
 msgid "Accept certificate?"
 msgstr "인증서를 허용하시겠습니까?"
 
 #. TRANSLATORS: The user is asked to verify a new SSL certificate.
-#: src/remmina_protocol_widget.c:1785
+#: src/remmina_protocol_widget.c:1789
 msgid "The certificate changed! Details:"
 msgstr "인증서가 변경되었습니다! 세부 내용:"
 
 #. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
-#: src/remmina_protocol_widget.c:1791
+#: src/remmina_protocol_widget.c:1795
 msgid "Old fingerprint:"
 msgstr "이전 지문:"
 
 #. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
-#: src/remmina_protocol_widget.c:1793
+#: src/remmina_protocol_widget.c:1797
 msgid "New fingerprint:"
 msgstr "새 지문:"
 
 #. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
-#: src/remmina_protocol_widget.c:1795
+#: src/remmina_protocol_widget.c:1799
 msgid "Accept changed certificate?"
 msgstr "변경된 인증서를 허용하시겠습니까?"
 
 #. TRANSLATORS: “%i” is a placeholder for a port number. “%s”  is a placeholder for a protocol name (VNC).
-#: src/remmina_protocol_widget.c:1938
+#: src/remmina_protocol_widget.c:1942
 #, c-format
 msgid "Listening on port %i for an incoming %s connection…"
 msgstr "%s 연결을 위해서 %i 포트에서 대기 중…"
 
-#: src/remmina_protocol_widget.c:1963
+#: src/remmina_protocol_widget.c:1967
 msgid "Could not authenticate, attempting reconnection…"
 msgstr "인증할 수 없습니다, 다시 접속 중…"
 
-#: src/remmina_protocol_widget.c:2025 src/remmina_file_editor.c:436
+#: src/remmina_protocol_widget.c:2029 src/remmina_file_editor.c:436
 #: src/remmina_file_editor.c:1172 data/ui/remmina_main.glade:478
 msgid "Server"
 msgstr "서버"
 
 #. TRANSLATORS: “%s” is a placeholder for a protocol name, like “RDP”.
-#: src/remmina_protocol_widget.c:2043
+#: src/remmina_protocol_widget.c:2047
 #, c-format
 msgid "Install the %s protocol plugin first."
 msgstr "먼저 %s 프로토콜 플러그인을 설치하세요."
@@ -1123,18 +1123,22 @@ msgstr "PTY 기기를 생성할 수 없습니다."
 msgid "Plugin %s is not registered."
 msgstr "%s 는 등록되지 않은 플러그인 입니다."
 
-#: src/remmina_main.c:662
+#: src/remmina_main.c:669
+msgid "The latest successful connection attempt, or a pre-computed date"
+msgstr ""
+
+#: src/remmina_main.c:671
 #, c-format
 msgid "Total %i item."
 msgid_plural "Total %i items."
 msgstr[0] "총 %i개의 항목."
 
-#: src/remmina_main.c:856
+#: src/remmina_main.c:865
 #, c-format
 msgid "Are you sure you want to delete “%s”?"
 msgstr "\"%s\"을(를) 삭제 하시겠습니까?"
 
-#: src/remmina_main.c:976
+#: src/remmina_main.c:989
 #, c-format
 msgid ""
 "Unable to import:\n"
@@ -1143,23 +1147,23 @@ msgstr ""
 "가져 올 수 없음:\n"
 "%s"
 
-#: src/remmina_main.c:1002 data/ui/remmina_main.glade:285
+#: src/remmina_main.c:1015 data/ui/remmina_main.glade:285
 msgid "Import"
 msgstr "가져오기"
 
-#: src/remmina_main.c:1025 src/remmina_file_editor.c:1791
+#: src/remmina_main.c:1038 src/remmina_file_editor.c:1791
 msgid "_Save"
 msgstr "_저장"
 
-#: src/remmina_main.c:1031
+#: src/remmina_main.c:1044
 msgid "This protocol does not support exporting."
 msgstr "이 프로토콜은 '내보내기'를 지원하지 않습니다."
 
-#: src/remmina_main.c:1347
+#: src/remmina_main.c:1361
 msgid "Remmina Remote Desktop Client"
 msgstr "렘미나 원격 데스크톱 클라이언트"
 
-#: src/remmina_main.c:1349
+#: src/remmina_main.c:1363
 msgid "Remmina Kiosk"
 msgstr "렘미나 키오스크"
 
@@ -1392,7 +1396,7 @@ msgstr "SSH 확인"
 msgid "SSH private key file"
 msgstr "SSH 개인 키 파일"
 
-#: src/remmina_file_editor.c:1235 src/remmina_ssh_plugin.c:1483
+#: src/remmina_file_editor.c:1235 src/remmina_ssh_plugin.c:1474
 msgid "SSH certificate file"
 msgstr "SSH 인증서 파일"
 
@@ -1477,6 +1481,14 @@ msgstr "'%s' 하위그룹 구분자 사용"
 msgid "Could not find the file “%s”."
 msgstr "\"%s\" 파일을 찾을 수 없습니다."
 
+#. TRANSLATORS: This is a message that pops up when an external Remmina plugin tries to set the window resolution using a legacy parameter.
+#. TRANSLATORS: This is a message that pop-up when an external Remmina plugin tries to set the windows resolution using a legacy parameter.
+#: src/remmina_file.c:451 src/remmina_file.c:497
+msgid ""
+"Using the «resolution» parameter in the Remmina preferences file is "
+"deprecated.\n"
+msgstr ""
+
 #: src/remmina_icon.c:128
 msgid "Open Main Window"
 msgstr "메인 윈도 열기"
@@ -1499,14 +1511,62 @@ msgstr "_종료"
 
 #. TRANSLATORS: Applet name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
 #. TRANSLATORS: Applet Name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
-#: src/remmina_icon.c:284 src/remmina_icon.c:416
+#: src/remmina_icon.c:284 src/remmina_icon.c:438
 msgid "Remmina Applet"
 msgstr "렘미나 애플릿"
 
 #. TRANSLATORS: Applet comment/description as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
-#: src/remmina_icon.c:286 src/remmina_icon.c:418
+#: src/remmina_icon.c:286 src/remmina_icon.c:440
 msgid "Connect to remote desktops through the applet menu"
 msgstr "애플릿 메뉴로 원격 데스크톱에 연결"
+
+#: src/remmina_icon.c:349
+msgid "StatusNotifier/Appindicator support in “"
+msgstr ""
+
+#. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
+#: src/remmina_icon.c:356
+#, c-format
+msgid "%s your desktop does support it"
+msgstr ""
+
+#. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
+#: src/remmina_icon.c:358
+#, c-format
+msgid "%s and Remmina has built-in (compiled) support for libappindicator."
+msgstr ""
+
+#. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
+#: src/remmina_icon.c:361
+#, c-format
+msgid ""
+"%s not supported natively by your Desktop Environment. libappindicator will "
+"try to fallback to GtkStatusIcon/xembed"
+msgstr ""
+
+#. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
+#: src/remmina_icon.c:365
+#, c-format
+msgid "%s You may need to install, and use XApp Status Applet"
+msgstr ""
+
+#. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
+#: src/remmina_icon.c:368
+#, c-format
+msgid "%s You may need to install, and use KStatusNotifierItem"
+msgstr ""
+
+#. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
+#: src/remmina_icon.c:371
+#, c-format
+msgid "%s You may need to install, and use XEmbed SNI Proxy"
+msgstr ""
+
+#. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
+#: src/remmina_icon.c:374
+#, c-format
+msgid "%s You may need to install, and use Gnome Shell Extension Appindicator"
+msgstr ""
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_ssh_plugin.c:539
@@ -1546,64 +1606,64 @@ msgstr "글자 크기 줄이기 (host+Page Down)"
 msgid "Find text (host+G)"
 msgstr "붙여넣기 (host + V)"
 
-#: src/remmina_ssh_plugin.c:1448 data/ui/remmina_main.glade:177
+#: src/remmina_ssh_plugin.c:1439 data/ui/remmina_main.glade:177
 msgid "Copy"
 msgstr "복사"
 
-#: src/remmina_ssh_plugin.c:1448
+#: src/remmina_ssh_plugin.c:1439
 msgid "_Copy"
 msgstr "_복사"
 
-#: src/remmina_ssh_plugin.c:1449
+#: src/remmina_ssh_plugin.c:1440
 msgid "Paste"
 msgstr "붙여넣기"
 
-#: src/remmina_ssh_plugin.c:1449
+#: src/remmina_ssh_plugin.c:1440
 msgid "_Paste"
 msgstr "_붙여넣기"
 
-#: src/remmina_ssh_plugin.c:1450
+#: src/remmina_ssh_plugin.c:1441
 msgid "Select all"
 msgstr "모두 선택"
 
-#: src/remmina_ssh_plugin.c:1450
+#: src/remmina_ssh_plugin.c:1441
 msgid "_Select all"
 msgstr "_모두 선택"
 
-#: src/remmina_ssh_plugin.c:1451
+#: src/remmina_ssh_plugin.c:1442
 msgid "Increase font size"
 msgstr "글자 크기 크게"
 
-#: src/remmina_ssh_plugin.c:1451
+#: src/remmina_ssh_plugin.c:1442
 msgid "_Increase font size"
 msgstr "_글자 크기 크게"
 
-#: src/remmina_ssh_plugin.c:1452
+#: src/remmina_ssh_plugin.c:1443
 msgid "Decrease font size"
 msgstr "글자 크기 줄이기"
 
-#: src/remmina_ssh_plugin.c:1452
+#: src/remmina_ssh_plugin.c:1443
 msgid "_Decrease font size"
 msgstr "_글자 크기 줄이기"
 
-#: src/remmina_ssh_plugin.c:1453
+#: src/remmina_ssh_plugin.c:1444
 msgid "Find text"
 msgstr "텍스트 찾기"
 
-#: src/remmina_ssh_plugin.c:1453
+#: src/remmina_ssh_plugin.c:1444
 msgid "_Find text"
 msgstr "_텍스트 찾기"
 
-#: src/remmina_ssh_plugin.c:1480 plugins/spice/spice_plugin.c:674
+#: src/remmina_ssh_plugin.c:1471 plugins/spice/spice_plugin.c:674
 #: plugins/vnc/vnc_plugin.c:1977 plugins/vnc/vnc_plugin.c:1989
 msgid "User password"
 msgstr "사용자 비밀번호"
 
-#: src/remmina_ssh_plugin.c:1486 plugins/rdp/rdp_plugin.c:2723
+#: src/remmina_ssh_plugin.c:1477 plugins/rdp/rdp_plugin.c:2723
 msgid "Start-up program"
 msgstr "시작 프로그램"
 
-#: src/remmina_ssh_plugin.c:1491
+#: src/remmina_ssh_plugin.c:1482
 msgid ""
 "The filename can use the following placeholders:\n"
 "\n"
@@ -1625,63 +1685,63 @@ msgstr ""
 "  • %g 는 레미나 프로필 그룹 이름으로 대체됩니다\n"
 "  • %d 는 ISO8601 형식의 로컬 날짜로 대체됩니다\n"
 
-#: src/remmina_ssh_plugin.c:1513
+#: src/remmina_ssh_plugin.c:1504
 msgid "Terminal colour scheme"
 msgstr "터미널 색 스키마"
 
-#: src/remmina_ssh_plugin.c:1514
+#: src/remmina_ssh_plugin.c:1505
 msgid "Character set"
 msgstr "문자표"
 
-#: src/remmina_ssh_plugin.c:1516
+#: src/remmina_ssh_plugin.c:1507
 msgid "KEX (Key Exchange) algorithms"
 msgstr "KEX (키 교환) 알고리즘"
 
-#: src/remmina_ssh_plugin.c:1517
+#: src/remmina_ssh_plugin.c:1508
 msgid "Symmetric cipher client to server"
 msgstr "클라이언트 서버 대칭키 암호"
 
-#: src/remmina_ssh_plugin.c:1518
+#: src/remmina_ssh_plugin.c:1509
 msgid "Preferred server host key types"
 msgstr "기본 서버 호스트 키 종류"
 
-#: src/remmina_ssh_plugin.c:1519
+#: src/remmina_ssh_plugin.c:1510
 msgid "Folder for SSH session log"
 msgstr "SSH 세션 로그 폴더"
 
-#: src/remmina_ssh_plugin.c:1520
+#: src/remmina_ssh_plugin.c:1511
 msgid "Filename for SSH session log"
 msgstr "SSH 세션 로그 파일 이름"
 
-#: src/remmina_ssh_plugin.c:1521
+#: src/remmina_ssh_plugin.c:1512
 msgid "Log SSH session when exiting Remmina"
 msgstr "Remmina를 종료 할 때 SSH 세션 기록"
 
-#: src/remmina_ssh_plugin.c:1522
+#: src/remmina_ssh_plugin.c:1513
 msgid "Log SSH session asynchronously"
 msgstr "SSH 세션을 비동기로 로깅"
 
-#: src/remmina_ssh_plugin.c:1522
+#: src/remmina_ssh_plugin.c:1513
 msgid "Saving the session asynchronously may have a notable performance impact"
 msgstr "세션을 비동기로 저장하면 성능을 크게 개선할 수 있습니다"
 
-#: src/remmina_ssh_plugin.c:1523
+#: src/remmina_ssh_plugin.c:1514
 msgid "Audible terminal bell"
 msgstr "오디오 터미널 벨"
 
-#: src/remmina_ssh_plugin.c:1524
+#: src/remmina_ssh_plugin.c:1515
 msgid "SSH compression"
 msgstr "SSH 압축"
 
-#: src/remmina_ssh_plugin.c:1525
+#: src/remmina_ssh_plugin.c:1516
 msgid "Don't remember passwords"
 msgstr "비밀번호 저장하지 않기"
 
-#: src/remmina_ssh_plugin.c:1526
+#: src/remmina_ssh_plugin.c:1517
 msgid "Strict host key checking"
 msgstr "엄격한 호스트 키 확인"
 
-#: src/remmina_ssh_plugin.c:1540
+#: src/remmina_ssh_plugin.c:1531
 msgid "SSH - Secure Shell"
 msgstr "SSH - 보안 쉘"
 
