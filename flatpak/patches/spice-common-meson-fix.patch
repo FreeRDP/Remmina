@@ -1,0 +1,11 @@
+--- spice-gtk-0.39/subprojects/spice-common/meson.build.ori	2021-10-28 14:58:33.813261077 +0200
++++ spice-gtk-0.39/subprojects/spice-common/meson.build	2021-10-28 14:59:13.585430093 +0200
+@@ -132,7 +132,7 @@ if spice_common_generate_client_code or
+   if get_option('python-checks')
+     foreach module : ['six', 'pyparsing']
+       message('Checking for python module @0@'.format(module))
+-      cmd = run_command(python, '-m', module)
++      cmd = run_command(python, '-c', 'import @0@'.format(module))
+       if cmd.returncode() != 0
+         error('Python module @0@ not found'.format(module))
+       endif
