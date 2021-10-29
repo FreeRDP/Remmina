@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-10-29 12:14+0000\n"
-"PO-Revision-Date: 2021-10-23 01:08+0000\n"
+"PO-Revision-Date: 2021-10-29 21:51+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/remmina/remmina/cs/"
 ">\n"
@@ -1160,8 +1160,9 @@ msgid "Plugin %s is not registered."
 msgstr "Zásuvný modul %s není zaregistrován."
 
 #: src/remmina_main.c:669
+#, fuzzy
 msgid "The latest successful connection attempt, or a pre-computed date"
-msgstr ""
+msgstr "Poslední úspěšný pokus o připojení nebo předem vypočtené datum."
 
 #: src/remmina_main.c:671
 #, c-format
@@ -1504,7 +1505,7 @@ msgstr ""
 #, fuzzy
 #| msgid "Transfer error"
 msgid "Internal error."
-msgstr "Interní chyba"
+msgstr "Vnitřní chyba"
 
 #: src/remmina_file_editor.c:1667 src/remmina_file_editor.c:1703
 #: src/remmina_file_editor.c:1724 src/remmina_file_editor.c:1747
@@ -1555,10 +1556,12 @@ msgstr "Nedaří se najít soubor „%s“."
 #. TRANSLATORS: This is a message that pops up when an external Remmina plugin tries to set the window resolution using a legacy parameter.
 #. TRANSLATORS: This is a message that pop-up when an external Remmina plugin tries to set the windows resolution using a legacy parameter.
 #: src/remmina_file.c:451 src/remmina_file.c:497
+#, fuzzy
 msgid ""
 "Using the «resolution» parameter in the Remmina preferences file is "
 "deprecated.\n"
 msgstr ""
+"Použití parametru \"rozlišení\" v souboru předvoleb Remmina je zastaralé.\n"
 
 #: src/remmina_icon.c:136
 msgid "Open Main Window"
@@ -1592,52 +1595,58 @@ msgid "Connect to remote desktops through the applet menu"
 msgstr "Připojovat se ke vzdáleným plochám z nabídky miniaplikace"
 
 #: src/remmina_icon.c:359
+#, fuzzy
 msgid "StatusNotifier/Appindicator support in “"
-msgstr ""
+msgstr "Podpora indikátoru stavu/aplikátoru v \""
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:366
-#, c-format
+#, c-format, fuzzy
 msgid "%s your desktop does support it"
-msgstr ""
+msgstr "%s váš počítač to podporuje"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:368
-#, c-format
+#, c-format, fuzzy
 msgid "%s and Remmina has built-in (compiled) support for libappindicator."
-msgstr ""
+msgstr "%s a Remmina má vestavěnou (zkompilovanou) podporu pro libappindicator."
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:371
-#, c-format
+#, c-format, fuzzy
 msgid ""
 "%s not supported natively by your Desktop Environment. libappindicator will "
 "try to fallback to GtkStatusIcon/xembed"
 msgstr ""
+"%s není nativně podporováno vaším desktopovým prostředím. libappindicator se "
+"pokusí vrátit k GtkStatusIcon/xembed"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:375
-#, c-format
+#, c-format, fuzzy
 msgid "%s You may need to install, and use XApp Status Applet"
 msgstr ""
+"%s Možná bude nutné nainstalovat a používat stavový applet aplikace XApp"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:378
-#, c-format
+#, c-format, fuzzy
 msgid "%s You may need to install, and use KStatusNotifierItem"
-msgstr ""
+msgstr "%s Možná budete muset nainstalovat a používat KStatusNotifierItem"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:381
-#, c-format
+#, c-format, fuzzy
 msgid "%s You may need to install, and use XEmbed SNI Proxy"
-msgstr ""
+msgstr "%s Možná bude nutné nainstalovat a používat XEmbed SNI Proxy."
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:384
-#, c-format
+#, c-format, fuzzy
 msgid "%s You may need to install, and use Gnome Shell Extension Appindicator"
 msgstr ""
+"%s Možná budete muset nainstalovat a používat rozšíření Gnome Shell "
+"Appindicator"
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_ssh_plugin.c:539
@@ -1720,7 +1729,7 @@ msgstr "_Zmenšit velikost písma"
 #: src/remmina_ssh_plugin.c:1444
 #, fuzzy
 msgid "Find text"
-msgstr "Hledat text"
+msgstr "Najít text"
 
 #: src/remmina_ssh_plugin.c:1444
 #, fuzzy
@@ -3033,7 +3042,7 @@ msgstr "PyHoca-CLI se neočekávaně ukončil. Toto spojení bude nyní uzavřen
 #: plugins/x2go/x2go_plugin.c:514
 #, fuzzy
 msgid "An error occured."
-msgstr "Došlo k chybě"
+msgstr "Došlo k chybě."
 
 #: plugins/x2go/x2go_plugin.c:515
 #, fuzzy
@@ -3629,17 +3638,17 @@ msgstr "_Match case"
 #: data/ui/remmina_search_popover.glade:203 data/ui/remmina_search.glade:208
 #, fuzzy
 msgid "Match _entire word only"
-msgstr "Hledat jen celá slova"
+msgstr "Shoda pouze s _celým slovem"
 
 #: data/ui/remmina_search_popover.glade:220 data/ui/remmina_search.glade:225
 #, fuzzy
 msgid "Match as _regular expression"
-msgstr "Hledat jako regulární výraz"
+msgstr "Shoda jako _regulární výraz"
 
 #: data/ui/remmina_search_popover.glade:237 data/ui/remmina_search.glade:242
 #, fuzzy
 msgid "_Wrap around"
-msgstr "Po dosažení konce pokračovat od začátku"
+msgstr "_Obalit"
 
 #: data/ui/remmina_about.glade:30 data/ui/remmina_main.glade:395
 msgid "About"
