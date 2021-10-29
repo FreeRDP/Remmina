@@ -427,7 +427,7 @@ static void rcw_kp_ungrab(RemminaConnectionWindow *cnnwin)
 	TRACE_CALL(__func__);
 	GdkDisplay *display;
 
-#if GTK_CHECK_VERSION(3, 24, 0)
+#if GTK_CHECK_VERSION(3, 20, 0)
 	GdkSeat *seat;
 #else
 	GdkDeviceManager *manager;
@@ -444,7 +444,7 @@ static void rcw_kp_ungrab(RemminaConnectionWindow *cnnwin)
 	}
 
 	display = gtk_widget_get_display(GTK_WIDGET(cnnwin));
-#if GTK_CHECK_VERSION(3, 24, 0)
+#if GTK_CHECK_VERSION(3, 20, 0)
 	seat = gdk_display_get_default_seat(display);
 	// keyboard = gdk_seat_get_pointer(seat);
 #else
@@ -461,7 +461,7 @@ static void rcw_kp_ungrab(RemminaConnectionWindow *cnnwin)
 
 
 
-#if GTK_CHECK_VERSION(3, 24, 0)
+#if GTK_CHECK_VERSION(3, 20, 0)
 	/* We can use gtk_seat_grab()/_ungrab() only after GTK 3.24 */
 	gdk_seat_ungrab(seat);
 #else
@@ -492,7 +492,7 @@ static gboolean rcw_keyboard_grab_retry(gpointer user_data)
 
 static void rcw_pointer_ungrab(RemminaConnectionWindow *cnnwin)
 {
-#if GTK_CHECK_VERSION(3, 24, 0)
+#if GTK_CHECK_VERSION(3, 20, 0)
 	GdkSeat *seat;
 	GdkDisplay *display;
 	if (!cnnwin->priv->pointer_captured)
@@ -507,7 +507,7 @@ static void rcw_pointer_ungrab(RemminaConnectionWindow *cnnwin)
 static void rcw_pointer_grab(RemminaConnectionWindow *cnnwin)
 {
 	TRACE_CALL(__func__);
-#if GTK_CHECK_VERSION(3, 24, 0)
+#if GTK_CHECK_VERSION(3, 20, 0)
 	GdkSeat *seat;
 	GdkDisplay *display;
 	GdkGrabStatus ggs;
@@ -538,7 +538,7 @@ static void rcw_keyboard_grab(RemminaConnectionWindow *cnnwin)
 	TRACE_CALL(__func__);
 	GdkDisplay *display;
 
-#if GTK_CHECK_VERSION(3, 24, 0)
+#if GTK_CHECK_VERSION(3, 20, 0)
 	GdkSeat *seat;
 #else
 	GdkDeviceManager *manager;
@@ -554,7 +554,7 @@ static void rcw_keyboard_grab(RemminaConnectionWindow *cnnwin)
 	}
 
 	display = gtk_widget_get_display(GTK_WIDGET(cnnwin));
-#if GTK_CHECK_VERSION(3, 24, 0)
+#if GTK_CHECK_VERSION(3, 20, 0)
 	seat = gdk_display_get_default_seat(display);
 	keyboard = gdk_seat_get_pointer(seat);
 #else
@@ -588,14 +588,12 @@ static void rcw_keyboard_grab(RemminaConnectionWindow *cnnwin)
 		 * Therefore is important for GTK to use Xinput2 instead of core X events
 		 * by unsetting GDK_CORE_DEVICE_EVENTS
 		 */
-#if GTK_CHECK_VERSION(3, 24, 0)
+#if GTK_CHECK_VERSION(3, 20, 0)
 		ggs = gdk_seat_grab(seat, gtk_widget_get_window(GTK_WIDGET(cnnwin)),
 				    GDK_SEAT_CAPABILITY_KEYBOARD, TRUE, NULL, NULL, NULL, NULL);
 #else
-		G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-			ggs = gdk_device_grab(keyboard, gtk_widget_get_window(GTK_WIDGET(cnnwin)), GDK_OWNERSHIP_WINDOW,
-					      TRUE, GDK_KEY_PRESS | GDK_KEY_RELEASE, NULL, GDK_CURRENT_TIME);
-		G_GNUC_END_IGNORE_DEPRECATIONS
+		ggs = gdk_device_grab(keyboard, gtk_widget_get_window(GTK_WIDGET(cnnwin)), GDK_OWNERSHIP_WINDOW,
+				TRUE, GDK_KEY_PRESS | GDK_KEY_RELEASE, NULL, GDK_CURRENT_TIME);
 #endif
 		if (ggs != GDK_GRAB_SUCCESS) {
 #if DEBUG_KB_GRABBING

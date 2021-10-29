@@ -711,8 +711,8 @@ CLIPRDR_FORMAT_LIST *remmina_rdp_cliprdr_get_client_format_list(RemminaProtocolW
 	} *retp;
 
 	formats = NULL;
-
 	retp = NULL;
+	loccount = 0;
 
 	gtkClipboard = gtk_widget_get_clipboard(rfi->drawing_area, GDK_SELECTION_CLIPBOARD);
 	if (gtkClipboard)
