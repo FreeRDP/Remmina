@@ -40,7 +40,9 @@
 #include "remmina_widget_pool.h"
 #include "remmina_pref.h"
 #include "remmina_exec.h"
+#ifdef HAVE_LIBAVAHI_CLIENT
 #include "remmina_avahi.h"
+#endif
 #include "remmina_applet_menu_item.h"
 #include "remmina_applet_menu.h"
 #include "rcw.h"
@@ -60,7 +62,9 @@
 typedef struct _RemminaIcon {
 	AppIndicator *	icon;
 	gboolean	indicator_connected;
+#ifdef HAVE_LIBAVAHI_CLIENT
 	RemminaAvahi *	avahi;
+#endif
 	guint32		popup_time;
 	gchar *		autostart_file;
 } RemminaIcon;
@@ -75,10 +79,12 @@ void remmina_icon_destroy(void)
 		app_indicator_set_status(remmina_icon.icon, APP_INDICATOR_STATUS_PASSIVE);
 		remmina_icon.icon = NULL;
 	}
+#ifdef HAVE_LIBAVAHI_CLIENT
 	if (remmina_icon.avahi) {
 		remmina_avahi_free(remmina_icon.avahi);
 		remmina_icon.avahi = NULL;
 	}
+#endif
 	if (remmina_icon.autostart_file) {
 		g_free(remmina_icon.autostart_file);
 		remmina_icon.autostart_file = NULL;
@@ -103,6 +109,7 @@ static void remmina_icon_about(void)
 	remmina_exec_command(REMMINA_COMMAND_ABOUT, NULL);
 }
 
+#ifdef HAVE_LIBAVAHI_CLIENT
 static void remmina_icon_enable_avahi(GtkCheckMenuItem *checkmenuitem, gpointer data)
 {
 	TRACE_CALL(__func__);
@@ -119,6 +126,7 @@ static void remmina_icon_enable_avahi(GtkCheckMenuItem *checkmenuitem, gpointer 
 	}
 	remmina_pref_save();
 }
+#endif
 
 static void remmina_icon_populate_additional_menu_item(GtkWidget *menu)
 {
@@ -208,11 +216,12 @@ static void remmina_icon_populate_extra_menu_item(GtkWidget *menu)
 	TRACE_CALL(__func__);
 	GtkWidget *menuitem;
 	gboolean new_ontop;
-	GHashTableIter iter;
-	gchar *tmp;
 
 	new_ontop = remmina_pref.applet_new_ontop;
 
+#ifdef HAVE_LIBAVAHI_CLIENT
+	GHashTableIter iter;
+	gchar *tmp;
 	/* Iterate all discovered services from Avahi */
 	if (remmina_icon.avahi) {
 		g_hash_table_iter_init(&iter, remmina_icon.avahi->discovered_services);
@@ -222,6 +231,7 @@ static void remmina_icon_populate_extra_menu_item(GtkWidget *menu)
 			remmina_applet_menu_add_item(REMMINA_APPLET_MENU(menu), REMMINA_APPLET_MENU_ITEM(menuitem));
 		}
 	}
+#endif
 
 	/* New Connection */
 	menuitem = remmina_applet_menu_item_new(REMMINA_APPLET_MENU_ITEM_NEW);
@@ -390,6 +400,7 @@ void remmina_icon_init(void)
 		/* With libappindicator we can also change the icon on the fly */
 		app_indicator_set_icon(remmina_icon.icon, remmina_panel);
 	}
+#ifdef HAVE_LIBAVAHI_CLIENT
 	if (!remmina_icon.avahi)
 		remmina_icon.avahi = remmina_avahi_new();
 	if (remmina_icon.avahi) {
@@ -400,6 +411,7 @@ void remmina_icon_init(void)
 			remmina_avahi_stop(remmina_icon.avahi);
 		}
 	}
+#endif
 	if (!remmina_icon.autostart_file && !remmina_pref.disable_tray_icon) {
 		remmina_icon.autostart_file = g_strdup_printf("%s/.config/autostart/remmina-applet.desktop", g_get_home_dir());
 		remmina_icon_create_autostart_file();

@@ -946,13 +946,13 @@ static gboolean vnc_encryption_disable_requested;
 static void remmina_plugin_vnc_rfb_output(const char *format, ...)
 {
 	TRACE_CALL(__func__);
-	va_list args;
-
-	va_start(args, format);
 	gchar *f, *p, *ff;
 
 	if (!rfbEnableClientLogging)
 		return;
+
+	va_list args;
+	va_start(args, format);
 	/* eliminate the last \n */
 	f = g_strdup(format);
 	if (f[strlen(f) - 1] == '\n') f[strlen(f) - 1] = '\0';
