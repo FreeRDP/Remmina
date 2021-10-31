@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-10-29 12:14+0000\n"
-"PO-Revision-Date: 2021-10-23 01:08+0000\n"
+"PO-Revision-Date: 2021-10-31 08:36+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Lithuanian <https://hosted.weblate.org/projects/remmina/"
 "remmina/lt/>\n"
@@ -131,7 +131,7 @@ msgstr "Papildiniai"
 #: src/remmina_message_panel.c:621 src/remmina_file_editor.c:242
 #, fuzzy
 msgid "_OK"
-msgstr "_Gerai"
+msgstr "_OK"
 
 #: src/remmina_plugin_manager.c:479 src/remmina_file_editor.c:1908
 #: data/ui/remmina_main.glade:442
@@ -222,7 +222,7 @@ msgstr "Paskiausių sąrašai išvalyti."
 #: data/ui/remmina_preferences.glade:169 data/ui/remmina_preferences.glade:179
 #, fuzzy
 msgid "Keystrokes"
-msgstr "Klavišai"
+msgstr "Klavišų paspaudimai"
 
 #: src/remmina_pref_dialog.c:154
 #, fuzzy
@@ -254,7 +254,7 @@ msgstr ""
 #: data/ui/remmina_unlock.glade:46
 #, fuzzy
 msgid "Cancel"
-msgstr "Atšaukti"
+msgstr "Atsisakyti"
 
 #: src/remmina_message_panel.c:199 data/ui/remmina_snap_info_dialog.glade:28
 #: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
@@ -426,7 +426,7 @@ msgstr "Įrankiai"
 #: data/ui/remmina_preferences.glade:1277
 #, fuzzy
 msgid "Screenshot"
-msgstr "Ekrano fotografija"
+msgstr "Ekrano nuotrauka"
 
 #: src/rcw.c:2515 data/ui/remmina_preferences.glade:1174
 msgid "Minimize window"
@@ -568,7 +568,7 @@ msgstr "PROTOKOLAS"
 #: src/remmina.c:112
 #, fuzzy
 msgid "Start in tray"
-msgstr "Paslėpti paleidus"
+msgstr "Pradėkite nuo dėklo"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:114
@@ -1220,8 +1220,10 @@ msgid "Plugin %s is not registered."
 msgstr "Papildinys %s neužregistruotas."
 
 #: src/remmina_main.c:669
+#, fuzzy
 msgid "The latest successful connection attempt, or a pre-computed date"
 msgstr ""
+"Paskutinis sėkmingas bandymas prisijungti arba iš anksto apskaičiuota data"
 
 #: src/remmina_main.c:671
 #, c-format
@@ -1582,7 +1584,7 @@ msgstr "VNC ryšys nepavyko: %s"
 #: src/remmina_file_editor.c:1787
 #, fuzzy
 msgid "Save as Default"
-msgstr "Išsaugoti pagal nutylėjimą:"
+msgstr "Išsaugoti kaip numatytąjį"
 
 #: src/remmina_file_editor.c:1788
 #, fuzzy
@@ -1618,10 +1620,13 @@ msgstr "Nepavyko atverti failo „%s“."
 #. TRANSLATORS: This is a message that pops up when an external Remmina plugin tries to set the window resolution using a legacy parameter.
 #. TRANSLATORS: This is a message that pop-up when an external Remmina plugin tries to set the windows resolution using a legacy parameter.
 #: src/remmina_file.c:451 src/remmina_file.c:497
+#, fuzzy
 msgid ""
 "Using the «resolution» parameter in the Remmina preferences file is "
 "deprecated.\n"
 msgstr ""
+"Parametro \"resolution\" naudojimas \"Remmina\" nustatymų faile yra "
+"nebenaudojamas.\n"
 
 #: src/remmina_icon.c:136
 msgid "Open Main Window"
@@ -1658,52 +1663,57 @@ msgid "Connect to remote desktops through the applet menu"
 msgstr "Prisijungti prie nutolusių kompiuterių naudojant meniu"
 
 #: src/remmina_icon.c:359
+#, fuzzy
 msgid "StatusNotifier/Appindicator support in “"
-msgstr ""
+msgstr "StatusNotifier/Appindicator palaikymas \""
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:366
-#, c-format
+#, c-format, fuzzy
 msgid "%s your desktop does support it"
-msgstr ""
+msgstr "%s jūsų darbalaukis palaiko šią funkciją"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:368
-#, c-format
+#, c-format, fuzzy
 msgid "%s and Remmina has built-in (compiled) support for libappindicator."
 msgstr ""
+"%s ir \"Remmina\" turi integruotą (sukompiliuotą) libappindicator palaikymą."
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:371
-#, c-format
+#, c-format, fuzzy
 msgid ""
 "%s not supported natively by your Desktop Environment. libappindicator will "
 "try to fallback to GtkStatusIcon/xembed"
 msgstr ""
+"%s nepalaikoma jūsų darbalaukio aplinkoje. libappindicator bandys grįžti "
+"prie GtkStatusIcon/xembed"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:375
-#, c-format
+#, c-format, fuzzy
 msgid "%s You may need to install, and use XApp Status Applet"
-msgstr ""
+msgstr "%s Gali prireikti įdiegti ir naudoti \"XApp\" būsenos programėlę"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:378
-#, c-format
+#, c-format, fuzzy
 msgid "%s You may need to install, and use KStatusNotifierItem"
-msgstr ""
+msgstr "%s Gali prireikti įdiegti ir naudoti KStatusNotifierItem"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:381
-#, c-format
+#, c-format, fuzzy
 msgid "%s You may need to install, and use XEmbed SNI Proxy"
-msgstr ""
+msgstr "%s Gali prireikti įdiegti ir naudoti \"XEmbed SNI Proxy"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:384
-#, c-format
+#, c-format, fuzzy
 msgid "%s You may need to install, and use Gnome Shell Extension Appindicator"
 msgstr ""
+"%s Gali prireikti įdiegti ir naudoti \"Gnome Shell\" plėtinį \"Appindicator"
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_ssh_plugin.c:539
@@ -2033,7 +2043,7 @@ msgstr "Įvesties įrenginio nustatymai"
 #, fuzzy
 #| msgid "Turn on smooth scrolling"
 msgid "Disable smooth scrolling"
-msgstr "Išjungti Smooth Scrolling"
+msgstr "Išjungti sklandų slinkimą"
 
 #: plugins/rdp/rdp_settings.c:669
 #, fuzzy
@@ -2236,7 +2246,7 @@ msgstr "256 spalvos (8 bpp)"
 #: plugins/rdp/rdp_plugin.c:2552 data/ui/remmina_preferences.glade:641
 #, fuzzy
 msgid "None"
-msgstr "Jokie"
+msgstr "Nieko"
 
 #: plugins/rdp/rdp_plugin.c:2553
 msgid "Auto-detect"
@@ -2820,7 +2830,7 @@ msgstr "Jungimosi bandymas %d iš %d…"
 #: plugins/spice/spice_plugin_file_transfer.c:82
 #, fuzzy
 msgid "File Transfers"
-msgstr "Failų persiuntimai"
+msgstr "Failų perkėlimas"
 
 #: plugins/spice/spice_plugin_file_transfer.c:219
 #, fuzzy
@@ -3192,7 +3202,7 @@ msgstr "PyHoca-CLI netikėtai baigėsi. Dabar šis ryšys bus uždarytas."
 #: plugins/x2go/x2go_plugin.c:514
 #, fuzzy
 msgid "An error occured."
-msgstr "Įvyko klaida"
+msgstr "Įvyko klaida."
 
 #: plugins/x2go/x2go_plugin.c:515
 #, fuzzy
@@ -3411,7 +3421,7 @@ msgstr "Apatinė riba yra per maža!"
 #: plugins/x2go/x2go_plugin.c:1552
 #, fuzzy
 msgid "Something went wrong."
-msgstr "Kažkas nutiko ne taip."
+msgstr "Kažkas nutiko ne taip"
 
 #: plugins/x2go/x2go_plugin.c:1511 plugins/x2go/x2go_plugin.c:1537
 #: plugins/x2go/x2go_plugin.c:1556
@@ -4063,7 +4073,7 @@ msgstr "Išvalyti"
 #: data/ui/remmina_main.glade:187
 #, fuzzy
 msgid "Edit"
-msgstr "Redaguoti"
+msgstr "Taisa"
 
 #: data/ui/remmina_main.glade:217
 #, fuzzy
@@ -4107,7 +4117,7 @@ msgstr "Pagrindinis puslapis"
 #: data/ui/remmina_main.glade:358
 #, fuzzy
 msgid "Donations"
-msgstr "Paremti"
+msgstr "Dovanos"
 
 #: data/ui/remmina_main.glade:368
 #, fuzzy
@@ -4180,7 +4190,7 @@ msgstr "Vietinis – aukšta kokybė"
 #: data/ui/remmina_preferences.glade:91
 #, fuzzy
 msgid "Nearest"
-msgstr "Arčiausias"
+msgstr "Artimiausias"
 
 #: data/ui/remmina_preferences.glade:92
 #, fuzzy
@@ -4401,7 +4411,7 @@ msgstr "Pagrindiniame lange rodomos paieškos juostos paslėpimas"
 #: data/ui/remmina_preferences.glade:719
 #, fuzzy
 msgid "Prefer dark theme"
-msgstr "Teikti pirmenybę tamsiai temai"
+msgstr "Pirmenybė teikiama tamsiai temai"
 
 #: data/ui/remmina_preferences.glade:723
 #, fuzzy
