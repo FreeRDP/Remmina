@@ -151,7 +151,7 @@ static void remmina_file_editor_class_init(RemminaFileEditorClass *klass)
  * Mouse click and focus-loss will delete the window. \n
  * TODO: when Remmina Editor's content is scrollable and failed_widget is not even
  *	 visible anymore, the window gets shown where failed_widget would be if
- *       Remmina Editor would be big enough. \n
+ *       the Remmina Editor was big enough. \n
  * TODO: Responsive text size and line wrap.
  */
 static void remmina_file_editor_show_validation_error_popup(RemminaFileEditor *gfe,
