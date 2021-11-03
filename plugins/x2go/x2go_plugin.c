@@ -429,19 +429,20 @@ static GtkWidget* rmplugin_x2go_choose_session_dialog_factory(RemminaProtocolWid
 
 	// create tree view
 	GtkListStore *store = gtk_list_store_newv(SESSION_NUM_PROPERTIES, types);
-	GtkWidget *treeview4 = gtk_tree_view_new_with_model(GTK_TREE_MODEL(store));
+	GtkWidget *tree_view = gtk_tree_view_new_with_model(GTK_TREE_MODEL(store));
 	g_object_unref (G_OBJECT (store));  // tree now holds reference
-	gtk_widget_set_size_request(treeview4, -1, 300);
+	gtk_widget_set_size_request(tree_view, -1, 300);
+	gtk_widget_set_name(GTK_WIDGET(tree_view), "session_chooser_treeview");
 
 	//create list view columns
-	gtk_tree_view_set_headers_visible(GTK_TREE_VIEW(treeview4), TRUE);
-	gtk_tree_view_set_headers_clickable (GTK_TREE_VIEW(treeview4), FALSE);
-	gtk_tree_view_set_enable_search(GTK_TREE_VIEW(treeview4), TRUE);
-	gtk_widget_show (treeview4);
-	gtk_container_add (GTK_CONTAINER(scrolled_window), treeview4);
+	gtk_tree_view_set_headers_visible(GTK_TREE_VIEW(tree_view), TRUE);
+	gtk_tree_view_set_headers_clickable (GTK_TREE_VIEW(tree_view), FALSE);
+	gtk_tree_view_set_enable_search(GTK_TREE_VIEW(tree_view), TRUE);
+	gtk_widget_show (tree_view);
+	gtk_container_add (GTK_CONTAINER(scrolled_window), tree_view);
 
-	GtkTreeViewColumn *col = NULL;
-	GtkCellRenderer *renderer = NULL;
+	GtkTreeViewColumn *tree_view_col = NULL;
+	GtkCellRenderer *cell_renderer = NULL;
 	gchar *header_title = NULL;
 
 	// First to last in SESSION_PROPERTIES.
@@ -466,18 +467,16 @@ static GtkWidget* rmplugin_x2go_choose_session_dialog_factory(RemminaProtocolWid
 				break;
 			}
 		}	
-		col = gtk_tree_view_column_new();
-		gtk_tree_view_column_set_title(col, header_title);
-		// allow column header clicks
-		gtk_tree_view_column_set_clickable(col, FALSE);
-		gtk_tree_view_column_set_sizing (col, GTK_TREE_VIEW_COLUMN_AUTOSIZE);
-		gtk_tree_view_column_set_resizable(col, TRUE);
-		//gtk_tree_view_column_set_fixed_width(col, 150);
+		tree_view_col = gtk_tree_view_column_new();
+		gtk_tree_view_column_set_title(tree_view_col, header_title);
+		gtk_tree_view_column_set_clickable(tree_view_col, FALSE);
+		gtk_tree_view_column_set_sizing (tree_view_col, GTK_TREE_VIEW_COLUMN_AUTOSIZE);
+		gtk_tree_view_column_set_resizable(tree_view_col, TRUE);
 
-		renderer = gtk_cell_renderer_text_new();
-		gtk_tree_view_column_pack_start(col, renderer, TRUE);
-		gtk_tree_view_column_add_attribute(col, renderer, "text", i);
-		gtk_tree_view_append_column(GTK_TREE_VIEW(treeview4), col);
+		cell_renderer = gtk_cell_renderer_text_new();
+		gtk_tree_view_column_pack_start(tree_view_col, cell_renderer, TRUE);
+		gtk_tree_view_column_add_attribute(tree_view_col, cell_renderer, "text", i);
+		gtk_tree_view_append_column(GTK_TREE_VIEW(tree_view), tree_view_col);
 	}
 
 	GList *elem = NULL;
@@ -495,16 +494,10 @@ static GtkWidget* rmplugin_x2go_choose_session_dialog_factory(RemminaProtocolWid
 			g_value_init(&a, G_TYPE_STRING);
 			g_assert (G_VALUE_HOLDS_STRING (&a));
 			g_value_set_static_string (&a, property);
-			REMMINA_PLUGIN_DEBUG("String: '%s'", g_value_get_string (&a));
 
 			gtk_list_store_set_value(store, &iter, i, &a);
 		}
 	}
-
-	const gchar* tree_name = gtk_widget_get_name(GTK_WIDGET(treeview4));
-	gtk_widget_set_name(GTK_WIDGET(treeview4), "session_chooser_treeview");
-	const gchar* tree_name_2d = gtk_widget_get_name(GTK_WIDGET(treeview4));
-	GtkWidget* child = rmplugin_x2go_find_child(GTK_WIDGET(widget_gtk_dialog), "session_chooser_treeview");
 
 	return widget_gtk_dialog;
 }
