@@ -1323,6 +1323,16 @@ static gboolean rmplugin_x2go_exec_x2go(gchar *host,
 		}
 	}
 
+	// Deprecated. The user either wants to continue a
+	// session or just not. No inbetween.
+	// if (!resume_session_id) {
+	// 	if (FEATURE_AVAILABLE(gpdata, "TRY_RESUME")) {
+	// 		argv[argc++] = g_strdup("--try-resume");
+	// 	} else {
+	// 		REMMINA_PLUGIN_DEBUG("%s", FEATURE_NOT_AVAIL_STR("TRY_RESUME"));
+	// 	}
+	// }
+
 	if (FEATURE_AVAILABLE(gpdata, "USERNAME")) {
 		argv[argc++] = g_strdup("-u");
 		if (username){
@@ -1390,14 +1400,6 @@ static gboolean rmplugin_x2go_exec_x2go(gchar *host,
 		argv[argc++] = g_strdup_printf ("%s", resolution);
 	} else {
 		REMMINA_PLUGIN_DEBUG("%s", FEATURE_NOT_AVAIL_STR("GEOMETRY"));
-	}
-
-	if (!resume_session) {
-		if (FEATURE_AVAILABLE(gpdata, "TRY_RESUME")) {
-			argv[argc++] = g_strdup("--try-resume");
-		} else {
-			REMMINA_PLUGIN_DEBUG("%s", FEATURE_NOT_AVAIL_STR("TRY_RESUME"));
-		}
 	}
 
 	if (FEATURE_AVAILABLE(gpdata, "TERMINATE_ON_CTRL_C")) {
