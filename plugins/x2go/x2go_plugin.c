@@ -364,6 +364,57 @@ static GtkWidget* rmplugin_x2go_find_child(GtkWidget* parent, const gchar* name)
 }
 
 /**
+ * @brief Used only by rmplugin_x2go_session_chooser_row_activated() to
+ *	  pass *both* gp and dialog.
+ */
+struct _RowActivatedUserData {
+	GtkWidget* dialog;
+	RemminaProtocolWidget* gp;
+};
+
+/**
+ * @brief Gets executed on "row-activated" signal. It is emitted when the method when
+ *	  the user double clicks a treeview row. It is also emitted when a non-editable
+ *	  row is selected and one of the keys: Space, Shift+Space, Return or Enter is
+ *	  pressed.
+ */
+static gboolean rmplugin_x2go_session_chooser_row_activated(GtkTreeView *treeview, 
+							    GtkTreePath *path, 
+							    GtkTreeViewColumn *column,
+							    struct _RowActivatedUserData* user_data)
+{
+	REMMINA_PLUGIN_DEBUG("Function entry.");
+
+	// Safety first.
+	g_assert(user_data);
+	g_assert(user_data->gp);
+	g_assert(user_data->dialog);
+
+	gchar *session_id;
+
+	GtkTreeIter iter;
+	GtkTreeModel *model = gtk_tree_view_get_model(treeview);
+
+	if (gtk_tree_model_get_iter(model, &iter, path)) {
+		gtk_tree_model_get(GTK_TREE_MODEL(model), &iter,
+				   SESSION_SESSION_ID, &session_id, -1);
+
+		// Silent bail out.
+		if (!session_id || strlen(session_id) <= 0) return G_SOURCE_REMOVE;
+
+		SET_RESUME_SESSION(user_data->gp, session_id);
+
+		// Unstucking main process. Telling it that a session has been selected.
+		// We use a trick here. As long as there is something other than 0
+		// stored, a session is selected. So we use the gpointer as a gboolean.
+		SET_SESSION_SELECTED(user_data->gp, (gpointer) TRUE);
+		gtk_widget_destroy(GTK_WIDGET(user_data->dialog));
+	}
+
+	return G_SOURCE_REMOVE;
+}
+
+/**
  * @brief Builds a dialog which contains all found X2Go-Sessions. of the remote server
  *	  And gives the user the option to choose between an existing session or
  *	  to create a new one.
@@ -499,16 +550,25 @@ static GtkWidget* rmplugin_x2go_choose_session_dialog_factory(RemminaProtocolWid
 		}
 	}
 
+	struct _RowActivatedUserData *user_data = g_new0(struct _RowActivatedUserData, 1);
+	user_data->gp = gp;
+	user_data->dialog = widget_gtk_dialog;
+
+	g_signal_connect(tree_view, "row-activated",
+			 G_CALLBACK(rmplugin_x2go_session_chooser_row_activated),
+			 user_data);
+
 	return widget_gtk_dialog;
 }
 
 /**
  * @brief Finds the GtkTreeView inside of the session chooser dialog,
  *	  determines the selected row and extracts a property.  
- * 
+ *
  * @param dialog GtkWidget* the dialog itself. 
- * @param property_index 
- * @return gchar* 
+ * @param property_index Index of property.
+ *
+ * @return gchar* The value of property.
  */
 static gchar* rmplugin_x2go_session_chooser_get_property(GtkWidget* dialog,
 							 gint property_index) {
