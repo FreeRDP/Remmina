@@ -724,17 +724,43 @@ static gchar* rmplugin_x2go_spawn_pyhoca_process(guint argc, gchar* argv[],
 				    "following environment variables:"));
 	REMMINA_PLUGIN_DEBUG("%s", g_strjoinv("\n", env));
 
-	if (!success_ret || (*error) || g_strcmp0(standard_out, "") == 0 || exit_code) {
+	if (standard_err && strlen(standard_err) > 0) {
+		if (g_str_has_prefix(standard_err, "pyhoca-cli: error: a socket error "
+				     "occured while establishing the connection:")) {
+			// Log error into GUI.
+			gchar* errmsg = g_strdup_printf(
+				_("The necessary PyHoca-CLI process has encountered a "
+				  "internet connection problem.")
+			);
+
+			// Log error into debug window and stdout
+			REMMINA_PLUGIN_CRITICAL("%s: '%s'",
+				_("The necessary PyHoca-CLI process has encountered the "
+				  "following internet connection problem:"), standard_err
+			);
+			g_set_error(error, 1, 1, errmsg);
+			return NULL;
+		} else {
+			gchar* errmsg = g_strdup_printf(
+				_("The necessary PyHoca-CLI process encountered an "
+				  "unknown error.")
+			);
+			REMMINA_PLUGIN_CRITICAL("%s: '%s'", errmsg, standard_err);
+			g_set_error(error, 1, 1, errmsg);
+			return NULL;
+		}
+	} else if (!success_ret || (*error) || g_strcmp0(standard_out, "") == 0 || exit_code) {
 		if (!(*error)) {
 			REMMINA_PLUGIN_WARNING("%s", g_strdup_printf(
 				      _("An unknown error occured while trying to start "
-					"PyHoca-CLI. Exit code: %i"), exit_code));
+					"PyHoca-CLI. Exit code: %i"), exit_code)
+			);
 		} else {
 			REMMINA_PLUGIN_WARNING("%s", g_strdup_printf(
 				      _("An unknown error occured while trying to start "
 					"PyHoca-CLI. Exit code: %i. Error: '%s'"),
-				      exit_code,
-				      (*error)->message));
+				      exit_code, (*error)->message)
+			);
 		}
 
 		return NULL;
