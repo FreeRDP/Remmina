@@ -71,21 +71,13 @@
 		(RemminaPluginX2GoData*) g_object_get_data(G_OBJECT(gp), "plugin-data")
 
 // --------- SESSIONS ------------
-#define SET_RESUME_SESSION_DATA(gp, resume_data) \
+#define SET_RESUME_SESSION(gp, resume_data) \
 		g_object_set_data_full(G_OBJECT(gp), "resume-session-data", \
 				       resume_data, \
 			               g_free)
 
-#define GET_RESUME_SESSION_DATA(gp) \
-		(struct _Session*) g_object_get_data(G_OBJECT(gp), "resume-session-data")
-
-#define GET_CURRENT_SESSIONS(gp) \
-		(GList*) g_object_get_data(G_OBJECT(gp), "current-sessions-list")
-
-#define SET_CURRENT_SESSIONS(gp, current_sessions_list) \
-		g_object_set_data_full(G_OBJECT(gp), "current-sessions-list", \
-					current_sessions_list, \
-					g_free)
+#define GET_RESUME_SESSION(gp) \
+		(gchar*) g_object_get_data(G_OBJECT(gp), "resume-session-data")
 
 // A session is selected if the returning value is something other than 0.
 #define IS_SESSION_SELECTED(gp) \
@@ -143,21 +135,26 @@
 static RemminaPluginService *rm_plugin_service = NULL;
 
 /**
- * @brief TODO: FIXME: Complete me!
+ * @brief Used for the session chooser dialog (GtkListStore)
+ *	  See the example at: https://docs.gtk.org/gtk3/class.ListStore.html
+ *	  The order is the exact same as the user sees in the dialog.
+ *	  SESSION_NUM_PROPERTIES is used to keep count of the properties
+ *	  and it must be the last object.
  */
-struct _Session {
-	gchar* session_id;
-	gchar* cookie;
-	gchar* agent_pid;
-	gchar* display;
-	gchar* status;
-	gchar* graphic_port;
-	gchar* snd_port;
-	gchar* sshfs_port;
-	gchar* username;
-	gchar* hostname;
-	gchar* create_date;
-	gchar* suspended_since;
+enum SESSION_PROPERTIES {
+	SESSION_DISPLAY = 0,
+	SESSION_STATUS,
+	SESSION_SESSION_ID,
+	SESSION_CREATE_DATE,
+	SESSION_SUSPENDED_SINCE,
+	SESSION_AGENT_PID,
+	SESSION_USERNAME,
+	SESSION_HOSTNAME,
+	SESSION_COOKIE,
+	SESSION_GRAPHIC_PORT,
+	SESSION_SND_PORT,
+	SESSION_SSHFS_PORT,
+	SESSION_NUM_PROPERTIES // Must be last. Counts all enum elements.
 };
 
 // Following str2int code was adapted from Stackoverflow:
@@ -322,95 +319,306 @@ static gboolean rmplugin_x2go_open_dialog(RemminaProtocolWidget *gp)
 	return G_SOURCE_REMOVE;
 }
 
-static GtkWidget* rmplugin_x2go_choose_session_dialog_builder(RemminaProtocolWidget* gp,
-							      gpointer factory_data)
+/**
+ * @brief These define the responses of session-chooser-dialog's buttons.
+ */
+enum SESSION_CHOOSER_RESPONSE_TYPE {
+  SESSION_CHOOSER_RESPONSE_NEW = 0,
+  SESSION_CHOOSER_RESPONSE_CHOOSE,
+};
+
+/**
+ * @brief Finds a child GtkWidget of a parent GtkWidget.
+ * 	  Copied from https://stackoverflow.com/a/23497087 ;)
+ *
+ * @param parent Parent GtkWidget*
+ * @param name Name string of child. (Must be set before, er else it will be a
+ *	       default string)
+ * @return GtkWidget*
+ */
+static GtkWidget* rmplugin_x2go_find_child(GtkWidget* parent, const gchar* name)
+{
+	const gchar* parent_name = gtk_widget_get_name((GtkWidget*) parent);
+	if (g_ascii_strcasecmp(parent_name, (gchar*) name) == 0) {
+		return parent;
+	}
+
+	if (GTK_IS_BIN(parent)) {
+		GtkWidget *child = gtk_bin_get_child(GTK_BIN(parent));
+		return rmplugin_x2go_find_child(child, name);
+	}
+
+	if (GTK_IS_CONTAINER(parent)) {
+		GList *children = gtk_container_get_children(GTK_CONTAINER(parent));
+		while (children != NULL) {
+			GtkWidget *widget = rmplugin_x2go_find_child(children->data, name);
+			if (widget != NULL) {
+				return widget;
+			}
+
+			children = g_list_next(children);
+		}
+	}
+
+	return NULL;
+}
+
+/**
+ * @brief Builds a dialog which contains all found X2Go-Sessions. of the remote server
+ *	  And gives the user the option to choose between an existing session or
+ *	  to create a new one.
+ *
+ * @param gp Gets used to get the struct _Dialogdata.
+ * @param sessions_list The GList* Should contain all found X2Go-Sessions.
+ *			Sessions are string arrays of properties.
+ *			The type of the GList is gchar**.
+ *
+ * @returns GtkWidget* custom dialog.
+ */
+static GtkWidget* rmplugin_x2go_choose_session_dialog_factory(RemminaProtocolWidget* gp,
+							      GList *sessions_list)
 {
 	REMMINA_PLUGIN_DEBUG("Function entry.");
 
 	struct _DialogData* ddata = GET_DIALOG_DATA(gp);
 
-	if (ddata && factory_data) {
-		// Can't check type, flags or buttons
-		// because they are enums and '0' is a valid value
-		if (!ddata->title || !ddata->message)
-		{
-			REMMINA_PLUGIN_CRITICAL("%s", _("Broken `DialogData`! Aborting…"));
-			return FALSE;
-		}
-	} else {
-		REMMINA_PLUGIN_CRITICAL("%s", _("Can't retrieve `DialogData` or "
-					       "`factory_data`! Aborting…"));
+	if (!ddata || !sessions_list || !ddata->title) {
+		REMMINA_PLUGIN_CRITICAL("%s", _("Couldn't retrieve valid `DialogData` or "
+					        "`sessions_list`! Aborting…"));
 		return FALSE;
 	}
 
 	GtkWidget *widget_gtk_dialog = NULL;
-	widget_gtk_dialog = gtk_message_dialog_new(ddata->parent,
-						   ddata->flags,
-						   ddata->type,
-						   ddata->buttons,
-						   ddata->title);
+	widget_gtk_dialog = gtk_dialog_new_with_buttons(ddata->title, ddata->parent,
+							ddata->flags, _("_New"),
+							SESSION_CHOOSER_RESPONSE_NEW,
+							_("_Select session"),
+							SESSION_CHOOSER_RESPONSE_CHOOSE,
+							NULL);
 
-	GtkWidget *combo = gtk_combo_box_new();
+	#define DEFAULT_DIALOG_WIDTH 500
+	#define DEFAULT_DIALOG_HEIGHT (DEFAULT_DIALOG_WIDTH * 9) / 16
+
+	gtk_widget_set_size_request(GTK_WIDGET(widget_gtk_dialog),
+				    DEFAULT_DIALOG_WIDTH, DEFAULT_DIALOG_HEIGHT);
+	gtk_window_set_default_size(GTK_WINDOW(widget_gtk_dialog),
+				    DEFAULT_DIALOG_WIDTH, DEFAULT_DIALOG_HEIGHT);
+
+	gtk_window_set_resizable(GTK_WINDOW(widget_gtk_dialog), TRUE);
+
+	GtkWidget *scrolled_window = gtk_scrolled_window_new(NULL, NULL);
+	//gtk_widget_show(scrolled_window);
+
 	gtk_box_pack_start(GTK_BOX(gtk_dialog_get_content_area(
-			       GTK_DIALOG(widget_gtk_dialog))),
-			   GTK_WIDGET(combo), TRUE, TRUE, 5);
+				GTK_DIALOG(widget_gtk_dialog))
+			   ), GTK_WIDGET(scrolled_window), TRUE, TRUE, 5);
 
-	GList *sessions_list = factory_data;
-	GList *elem;
+	gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW (scrolled_window),
+				       GTK_POLICY_AUTOMATIC,
+				       GTK_POLICY_AUTOMATIC);
 
-	// Make sessions_list available for callback function.
-	SET_CURRENT_SESSIONS(gp, sessions_list);
+
+	GType types[SESSION_NUM_PROPERTIES];
+
+	// First to last in SESSION_PROPERTIES.
+	for (gint i = 0; i < SESSION_NUM_PROPERTIES; ++i) {
+		// Everything is a String.
+		// If that changes one day, you could implement a switch case here.
+		types[i] = G_TYPE_STRING;
+	}
+
+	// create tree view
+	GtkListStore *store = gtk_list_store_newv(SESSION_NUM_PROPERTIES, types);
+	GtkWidget *treeview4 = gtk_tree_view_new_with_model(GTK_TREE_MODEL(store));
+	g_object_unref (G_OBJECT (store));  // tree now holds reference
+	gtk_widget_set_size_request(treeview4, -1, 300);
+
+	//create list view columns
+	gtk_tree_view_set_headers_visible(GTK_TREE_VIEW(treeview4), TRUE);
+	gtk_tree_view_set_headers_clickable (GTK_TREE_VIEW(treeview4), FALSE);
+	gtk_tree_view_set_enable_search(GTK_TREE_VIEW(treeview4), TRUE);
+	gtk_widget_show (treeview4);
+	gtk_container_add (GTK_CONTAINER(scrolled_window), treeview4);
+
+	GtkTreeViewColumn *col = NULL;
+	GtkCellRenderer *renderer = NULL;
+	gchar *header_title = NULL;
+
+	// First to last in SESSION_PROPERTIES.
+	for (gint i = 0; i < SESSION_NUM_PROPERTIES; ++i) {
+		switch (i) {
+			// I think we can close one eye here regarding max line-length.
+			case SESSION_DISPLAY:		header_title = g_strdup(_("Display"));		break;
+			case SESSION_STATUS:		header_title = g_strdup(_("Status"));		break;
+			case SESSION_SESSION_ID:	header_title = g_strdup(_("Session ID"));	break;
+			case SESSION_CREATE_DATE:	header_title = g_strdup(_("Create date"));	break;
+			case SESSION_SUSPENDED_SINCE:	header_title = g_strdup(_("Suspended since"));	break;
+			case SESSION_AGENT_PID:		header_title = g_strdup(_("Agent PID"));	break;
+			case SESSION_USERNAME:		header_title = g_strdup(_("Username"));		break;
+			case SESSION_HOSTNAME:		header_title = g_strdup(_("Hostname"));		break;
+			case SESSION_COOKIE:		header_title = g_strdup(_("Cookie"));		break;
+			case SESSION_GRAPHIC_PORT:	header_title = g_strdup(_("Graphic port"));	break;
+			case SESSION_SND_PORT:		header_title = g_strdup(_("SND port"));		break;
+			case SESSION_SSHFS_PORT:	header_title = g_strdup(_("SSHFS port"));	break;
+			default: {
+				header_title = g_strdup_printf(_("Internal error: %s"),
+							       _("Unknown property"));
+				break;
+			}
+		}	
+		col = gtk_tree_view_column_new();
+		gtk_tree_view_column_set_title(col, header_title);
+		// allow column header clicks
+		gtk_tree_view_column_set_clickable(col, FALSE);
+		gtk_tree_view_column_set_sizing (col, GTK_TREE_VIEW_COLUMN_AUTOSIZE);
+		gtk_tree_view_column_set_resizable(col, TRUE);
+		//gtk_tree_view_column_set_fixed_width(col, 150);
+
+		renderer = gtk_cell_renderer_text_new();
+		gtk_tree_view_column_pack_start(col, renderer, TRUE);
+		gtk_tree_view_column_add_attribute(col, renderer, "text", i);
+		gtk_tree_view_append_column(GTK_TREE_VIEW(treeview4), col);
+	}
+
+	GList *elem = NULL;
+	GtkTreeIter iter;
 
 	for (elem = sessions_list; elem; elem = elem->next) {
-		struct _Session* session = elem->data;
+		gchar** session = (gchar**) elem->data;
 		g_assert(session != NULL);
 
-		REMMINA_PLUGIN_INFO("%s", g_strdup_printf(
-			_("Found session: '%s'"),
-			session->session_id
-		));
+		gtk_list_store_append(store, &iter);
 
-		// TODO: FIXME: Build proper dialog now.
+		for (gint i = 0; i < SESSION_NUM_PROPERTIES; i++) {
+			gchar* property = session[i];
+			GValue a = G_VALUE_INIT;
+			g_value_init(&a, G_TYPE_STRING);
+			g_assert (G_VALUE_HOLDS_STRING (&a));
+			g_value_set_static_string (&a, property);
+			REMMINA_PLUGIN_DEBUG("String: '%s'", g_value_get_string (&a));
+
+			gtk_list_store_set_value(store, &iter, i, &a);
+		}
 	}
+
+	const gchar* tree_name = gtk_widget_get_name(GTK_WIDGET(treeview4));
+	gtk_widget_set_name(GTK_WIDGET(treeview4), "session_chooser_treeview");
+	const gchar* tree_name_2d = gtk_widget_get_name(GTK_WIDGET(treeview4));
+	GtkWidget* child = rmplugin_x2go_find_child(GTK_WIDGET(widget_gtk_dialog), "session_chooser_treeview");
 
 	return widget_gtk_dialog;
 }
 
+/**
+ * @brief Finds the GtkTreeView inside of the session chooser dialog,
+ *	  determines the selected row and extracts a property.  
+ * 
+ * @param dialog GtkWidget* the dialog itself. 
+ * @param property_index 
+ * @return gchar* 
+ */
+static gchar* rmplugin_x2go_session_chooser_get_property(GtkWidget* dialog,
+							 gint property_index) {
+	REMMINA_PLUGIN_DEBUG("Function entry.");
+
+	GtkWidget *treeview = rmplugin_x2go_find_child(GTK_WIDGET(dialog),
+						       "session_chooser_treeview");
+	if (!treeview) {
+		REMMINA_PLUGIN_CRITICAL("%s", g_strdup_printf(
+			_("Internal error: %s"),
+			_("Couldn't find child GtkTreeView of session chooser dialog.")
+		));
+		return NULL;
+	}
+
+	GtkTreeSelection *selection = gtk_tree_view_get_selection(GTK_TREE_VIEW(treeview));
+	GtkTreeModel *model = gtk_tree_view_get_model(GTK_TREE_VIEW(treeview));
+	GList *selected_rows = gtk_tree_selection_get_selected_rows(selection, &model);
+
+	// We only support single selection.
+	gint selected_rows_num = gtk_tree_selection_count_selected_rows(selection); 
+	if (selected_rows_num != 1) {
+		REMMINA_PLUGIN_CRITICAL("%s", g_strdup_printf(
+			_("Internal error: %s"),
+			_("only one session should be able to be selected.")
+		));
+		return NULL;
+	}
+
+	// This would be very dangerous if we hadn't just
+	// checked that only one row is selected. 
+	GtkTreePath *path = selected_rows->data;
+
+	GtkTreeIter iter;
+	gboolean success = gtk_tree_model_get_iter_from_string(model, &iter,
+							       gtk_tree_path_to_string(path));
+	if (!success) {
+		REMMINA_PLUGIN_CRITICAL("%s", g_strdup_printf(
+			_("Internal error: %s"),
+			_("Failed to fill 'GtkTreeIter'.")
+		));
+
+		return NULL;
+	}
+
+	gchar *property = NULL;
+	gtk_tree_model_get(model, &iter, property_index, &property, -1);
+
+	if (!property || strlen(property) <= 0) {
+		REMMINA_PLUGIN_CRITICAL("%s", g_strdup_printf(
+			_("Internal error: %s"),
+			_("Couldn't get session ID out of selected row.")
+		));
+
+		return NULL;
+	}
+
+	return property;
+}
+
+/**
+ * @brief Gets executed on dialog's 'response' signal
+ *
+ * @param gp Needed by SET_RESUME_SESSION to set the session id of the selected session.
+ * @param response_id See GTK 'response' signal.
+ * @param self The dialog itself.
+ *
+ * @return gboolean Used by GTK.
+ */
 static gboolean rmplugin_x2go_session_chooser_callback(RemminaProtocolWidget* gp,
 						       gint response_id,
 						       GtkDialog *self)
 {
 	REMMINA_PLUGIN_DEBUG("Function entry.");
 
-	if (response_id == GTK_RESPONSE_OK) {
-		GList *sessions_list = GET_CURRENT_SESSIONS(gp);
-		GList *elem;
+	if (response_id == SESSION_CHOOSER_RESPONSE_CHOOSE) {
+		gchar* session_id = rmplugin_x2go_session_chooser_get_property(
+			GTK_WIDGET(self),
+			SESSION_SESSION_ID
+		);
 
-		if (sessions_list == NULL) {
-			REMMINA_PLUGIN_INFO("%s", g_strdup_printf(
-				_("Internal error: %s"),
-				_("Couldn't get 'sessions_list' via GET_CURRENT_SESSIONS.")
-			));
-
-			SET_RESUME_SESSION_DATA(gp, NULL);
-		}
-
-		for (elem = sessions_list; elem; elem = elem->next) {
-			struct _Session* session = elem->data;
-			g_assert(session != NULL);
+		if (!session_id || strlen(session_id) <= 0) {
+			REMMINA_PLUGIN_DEBUG(
+				"%s",
+				_("Couldn't get session ID from session chooser dialog.")
+			);
+			SET_RESUME_SESSION(gp, NULL);
+		} else {
+			SET_RESUME_SESSION(gp, session_id);
 
 			REMMINA_PLUGIN_INFO("%s", g_strdup_printf(
-				_("Resuming session '%s'"),
-				session->session_id
+				_("Resuming session: '%s'"),
+				session_id
 			));
-
-			SET_RESUME_SESSION_DATA(gp, session);
-			break;
 		}
+	} else if (response_id == SESSION_CHOOSER_RESPONSE_NEW) {
+		REMMINA_PLUGIN_DEBUG("User explicitly wishes a new session. "
+			             "Creating a new session then.");
+		SET_RESUME_SESSION(gp, NULL);
 	} else {
-		REMMINA_PLUGIN_DEBUG("User clicked dialog away. Creating a new "
-				     "session then.");
-		SET_RESUME_SESSION_DATA(gp, NULL);
+		REMMINA_PLUGIN_DEBUG("User clicked dialog away. "
+				     "Creating a new session then.");
+		SET_RESUME_SESSION(gp, NULL);
 	}
 
 	// Unstucking main process. Telling it that a session has been selected.
@@ -734,18 +942,15 @@ static gchar* rmplugin_x2go_spawn_pyhoca_process(guint argc, gchar* argv[],
 			);
 
 			// Log error into debug window and stdout
-			REMMINA_PLUGIN_CRITICAL("%s: '%s'",
-				_("The necessary PyHoca-CLI process has encountered the "
-				  "following internet connection problem:"), standard_err
-			);
+			REMMINA_PLUGIN_CRITICAL("%s:\n%s", errmsg, standard_err);
 			g_set_error(error, 1, 1, errmsg);
 			return NULL;
 		} else {
 			gchar* errmsg = g_strdup_printf(
-				_("The necessary PyHoca-CLI process encountered an "
-				  "unknown error.")
+				_("An unknown error occured while trying to start "
+				  "PyHoca-CLI.")
 			);
-			REMMINA_PLUGIN_CRITICAL("%s: '%s'", errmsg, standard_err);
+			REMMINA_PLUGIN_CRITICAL("%s:\n%s", errmsg, standard_err);
 			g_set_error(error, 1, 1, errmsg);
 			return NULL;
 		}
@@ -1066,7 +1271,7 @@ static GList* rmplugin_x2go_parse_pyhoca_sessions(RemminaProtocolWidget* gp,
 
 	gboolean found_session = FALSE;
 	GList* sessions = NULL;
-	struct _Session *session = NULL;
+	gchar** session = NULL;
 
 	for (guint i = 0; lines_list[i] != NULL; i++) {
 		gchar* current_line = lines_list[i];
@@ -1095,16 +1300,20 @@ static GList* rmplugin_x2go_parse_pyhoca_sessions(RemminaProtocolWidget* gp,
 				continue;
 			}
 
-
-			session = g_new0(struct _Session, 1);
+			session = malloc(sizeof(gchar*) * (SESSION_NUM_PROPERTIES+1));
+			if (!session) {
+				REMMINA_PLUGIN_CRITICAL("%s", _("Couldn't allocate "
+								"enough memory!"));
+			}
+			session[SESSION_NUM_PROPERTIES] = NULL;
 			sessions = g_list_append(sessions, session);
 
 			session_id = line_list[1];
-			session->session_id = session_id;
+			session[SESSION_SESSION_ID] = session_id;
 
 			REMMINA_PLUGIN_INFO("%s", g_strdup_printf(
 				_("Found already existing X2Go session with ID: '%s'"),
-				session_id)
+				session[SESSION_SESSION_ID])
 			);
 
 			found_session = TRUE;
@@ -1136,37 +1345,37 @@ static GList* rmplugin_x2go_parse_pyhoca_sessions(RemminaProtocolWidget* gp,
 
 		if (g_str_has_prefix(current_line, "cookie: ")) {
 			REMMINA_PLUGIN_DEBUG("cookie:\t'%s'", value);
-			session->cookie = value;
+			session[SESSION_COOKIE] = value;
 		} else if (g_str_has_prefix(current_line, "agent PID: ")) {
 			REMMINA_PLUGIN_DEBUG("agent PID:\t'%s'", value);
-			session->agent_pid = value;
+			session[SESSION_AGENT_PID] = value;
 		} else if (g_str_has_prefix(current_line, "display: ")) {
 			REMMINA_PLUGIN_DEBUG("display:\t'%s'", value);
-			session->display = value;
+			session[SESSION_DISPLAY] = value;
 		} else if (g_str_has_prefix(current_line, "status: ")) {
 			REMMINA_PLUGIN_DEBUG("status:\t'%s'", value);
-			session->status = value;
+			session[SESSION_STATUS] = value;
 		} else if (g_str_has_prefix(current_line, "graphic port: ")) {
 			REMMINA_PLUGIN_DEBUG("graphic port:\t'%s'", value);
-			session->graphic_port = value;
+			session[SESSION_GRAPHIC_PORT] = value;
 		} else if (g_str_has_prefix(current_line, "snd port: ")) {
 			REMMINA_PLUGIN_DEBUG("snd port:\t'%s'", value);
-			session->snd_port = value;
+			session[SESSION_SND_PORT] = value;
 		} else if (g_str_has_prefix(current_line, "sshfs port: ")) {
 			REMMINA_PLUGIN_DEBUG("sshfs port:\t'%s'", value);
-			session->sshfs_port = value;
+			session[SESSION_SSHFS_PORT] = value;
 		} else if (g_str_has_prefix(current_line, "username: ")) {
 			REMMINA_PLUGIN_DEBUG("username:\t'%s'", value);
-			session->username = value;
+			session[SESSION_USERNAME] = value;
 		} else if (g_str_has_prefix(current_line, "hostname: ")) {
 			REMMINA_PLUGIN_DEBUG("hostname:\t'%s'", value);
-			session->hostname = value;
+			session[SESSION_HOSTNAME] = value;
 		} else if (g_str_has_prefix(current_line, "create date: ")) {
 			REMMINA_PLUGIN_DEBUG("create date:\t'%s'", value);
-			session->create_date = value;
+			session[SESSION_CREATE_DATE] = value;
 		} else if (g_str_has_prefix(current_line, "suspended since: ")) {
 			REMMINA_PLUGIN_DEBUG("suspended since:\t'%s'", value);
-			session->suspended_since = value;
+			session[SESSION_SUSPENDED_SINCE] = value;
 		} else {
 			REMMINA_PLUGIN_DEBUG("Not supported:\t'%s'", value);
 			found_session = FALSE;
@@ -1186,10 +1395,17 @@ static GList* rmplugin_x2go_parse_pyhoca_sessions(RemminaProtocolWidget* gp,
 }
 
 /**
- * @brief TODO: Complete me!
+ * @brief Asks the user, with the help of a dialog, whether he or she would like
+ *	  to continue an already existing session.
+ *
+ * @param error Is set if there is something to tell the user. \n
+ *		Not necessarily an *error* message.
+ * @param connect_data Stores all necessary information needed for
+ *		       etrieving sessions from a X2Go server.
+ * @return gchar* ID of session. Can be 'NULL' but then 'error' is set.
  */
-static struct _Session* rmplugin_x2go_ask_session(RemminaProtocolWidget *gp, GError **error,
-						  struct _ConnectionData* connect_data)
+static gchar* rmplugin_x2go_ask_session(RemminaProtocolWidget *gp, GError **error,
+					struct _ConnectionData* connect_data)
 {
 	GList *sessions_list = NULL;
 	sessions_list = rmplugin_x2go_parse_pyhoca_sessions(gp, error, connect_data);
@@ -1206,17 +1422,17 @@ static struct _Session* rmplugin_x2go_ask_session(RemminaProtocolWidget *gp, GEr
 	struct _DialogData *ddata = g_new0(struct _DialogData, 1);
 	SET_DIALOG_DATA(gp, ddata);
 	ddata->parent = NULL;
-	ddata->flags = GTK_DIALOG_MODAL;
-	ddata->type = GTK_MESSAGE_QUESTION;
-	ddata->buttons = GTK_BUTTONS_OK;
+	ddata->flags = GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT;
+	//ddata->type = GTK_MESSAGE_QUESTION;
+	//ddata->buttons = GTK_BUTTONS_OK; // Doesn't get used in our custom factory.
 	ddata->title = _("Choose a session to resume:");
-	ddata->message = "Normal dailog factory function.";
+	ddata->message = "";
 	ddata->callbackfunc = G_CALLBACK(rmplugin_x2go_session_chooser_callback);
-	ddata->dialog_factory_func = G_CALLBACK(rmplugin_x2go_choose_session_dialog_builder);
+	ddata->dialog_factory_func = G_CALLBACK(rmplugin_x2go_choose_session_dialog_factory);
 	ddata->dialog_factory_data = sessions_list;
 
 	// Open dialog here. Dialog rmplugin_x2go_session_chooser_callback (callbackfunc)
-	// should set SET_RESUME_SESSION_DATA.
+	// should set SET_RESUME_SESSION.
 	IDLE_ADD((GSourceFunc)rmplugin_x2go_open_dialog, gp);
 
 	guint counter = 0;
@@ -1226,21 +1442,17 @@ static struct _Session* rmplugin_x2go_ask_session(RemminaProtocolWidget *gp, GEr
 
 		// Every 5 seconds
 		if (counter % 10 == 0 || counter == 0) {
-			REMMINA_PLUGIN_INFO("%s", _("Waiting for user to respond to dialog…"));
+			REMMINA_PLUGIN_INFO("%s", _("Waiting for user to select a session…"));
 		}
 		counter++;
 	}
 
-	struct _Session* chosen_resume_session = GET_RESUME_SESSION_DATA(gp);
+	gchar* chosen_resume_session = GET_RESUME_SESSION(gp);
 
-	if (!chosen_resume_session) {
+	if (!chosen_resume_session || strlen(chosen_resume_session) <= 0) {
 		g_set_error(error, 1, 1, _("No session was selected. Creating a new one."));
 		return NULL;
 	}
-
-	// Safety first. If not set, crash.
-	g_assert(chosen_resume_session->session_id != NULL);
-	g_assert(strlen(chosen_resume_session->session_id) > 0);
 
 	return chosen_resume_session;
 }
@@ -1276,10 +1488,10 @@ static gboolean rmplugin_x2go_exec_x2go(gchar *host,
 	connect_data->password = password;
 
 	GError *session_error = NULL;
-	struct _Session* resume_session = rmplugin_x2go_ask_session(gp, &session_error,
-								    connect_data);
+	gchar* resume_session_id = rmplugin_x2go_ask_session(gp, &session_error,
+							     connect_data);
 
-	if (!resume_session || session_error) {
+	if (!resume_session_id || session_error || strlen(resume_session_id) <= 0) {
 		// If no error is set but session_id is NULL
 		// then something is not right at all.
 		// Most likely the developer forgot to add an error message. Crash.
@@ -1292,7 +1504,7 @@ static gboolean rmplugin_x2go_exec_x2go(gchar *host,
 	} else {
 		REMMINA_PLUGIN_INFO("%s", g_strdup_printf(
 			_("User chose to resume session with ID: '%s'"),
-			resume_session->session_id
+			resume_session_id
 		));
 	}
 
@@ -1309,15 +1521,15 @@ static gboolean rmplugin_x2go_exec_x2go(gchar *host,
 		REMMINA_PLUGIN_DEBUG("%s", FEATURE_NOT_AVAIL_STR("REMOTE_SSH_PORT"));
 	}
 
-	if (resume_session) {
-		REMMINA_PLUGIN_INFO(
-		    "%s", g_strdup_printf(_("Resuming session '%s'…"),
-		    resume_session->session_id)
-		);
+	if (resume_session_id && strlen(resume_session_id) > 0) {
+		REMMINA_PLUGIN_INFO("%s", g_strdup_printf(
+			_("Resuming session '%s'…"),
+			resume_session_id
+		));
 
 		if (FEATURE_AVAILABLE(gpdata, "RESUME")) {
 			argv[argc++] = g_strdup("--resume");
-			argv[argc++] = g_strdup_printf("%s", resume_session->session_id);
+			argv[argc++] = g_strdup_printf("%s", resume_session_id);
 		} else {
 			REMMINA_PLUGIN_DEBUG("%s", FEATURE_NOT_AVAIL_STR("RESUME"));
 		}
