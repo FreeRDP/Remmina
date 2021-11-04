@@ -381,16 +381,16 @@ static GtkWidget* rmplugin_x2go_find_child(GtkWidget* parent, const gchar* name)
 static gboolean rmplugin_x2go_session_chooser_row_activated(GtkTreeView *treeview, 
 							    GtkTreePath *path, 
 							    GtkTreeViewColumn *column,
-							    X2GoCustomUserData *user_data)
+							    X2GoCustomUserData *custom_data)
 {
 	REMMINA_PLUGIN_DEBUG("Function entry.");
 
 	// Safety first.
-	g_assert(user_data);
-	g_assert(user_data->gp);
-	g_assert(user_data->user_data);
+	g_assert(custom_data);
+	g_assert(custom_data->gp);
+	g_assert(custom_data->user_data);
 
-	GtkWidget* dialog = GTK_WIDGET(user_data);
+	GtkWidget* dialog = GTK_WIDGET(custom_data->user_data);
 	gchar *session_id;
 	GtkTreeIter iter;
 	GtkTreeModel *model = gtk_tree_view_get_model(treeview);
@@ -402,12 +402,13 @@ static gboolean rmplugin_x2go_session_chooser_row_activated(GtkTreeView *treevie
 		// Silent bail out.
 		if (!session_id || strlen(session_id) <= 0) return G_SOURCE_REMOVE;
 
-		SET_RESUME_SESSION(user_data->gp, session_id);
+		SET_RESUME_SESSION(custom_data->gp, session_id);
 
 		// Unstucking main process. Telling it that a session has been selected.
 		// We use a trick here. As long as there is something other than 0
 		// stored, a session is selected. So we use the gpointer as a gboolean.
-		SET_SESSION_SELECTED(user_data->gp, (gpointer) TRUE);
+		SET_SESSION_SELECTED(custom_data->gp, (gpointer) TRUE);
+		gtk_widget_hide(GTK_WIDGET(dialog));
 		gtk_widget_destroy(GTK_WIDGET(dialog));
 	}
 
