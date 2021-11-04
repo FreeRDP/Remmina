@@ -168,7 +168,7 @@ enum SESSION_PROPERTIES {
 
 // Following str2int code was adapted from Stackoverflow:
 // https://stackoverflow.com/questions/7021725/how-to-convert-a-string-to-integer-in-c
-typedef enum {
+typedef enum _str2int_errno {
 	STR2INT_SUCCESS,
 	STR2INT_OVERFLOW,
 	STR2INT_UNDERFLOW,
@@ -391,9 +391,7 @@ static gboolean rmplugin_x2go_session_chooser_row_activated(GtkTreeView *treevie
 	g_assert(user_data->user_data);
 
 	GtkWidget* dialog = GTK_WIDGET(user_data);
-
 	gchar *session_id;
-
 	GtkTreeIter iter;
 	GtkTreeModel *model = gtk_tree_view_get_model(treeview);
 
@@ -477,6 +475,8 @@ static GtkWidget* rmplugin_x2go_choose_session_dialog_factory(RemminaProtocolWid
 	for (gint i = 0; i < SESSION_NUM_PROPERTIES; ++i) {
 		// Everything is a String.
 		// If that changes one day, you could implement a switch case here.
+		// But you would propably need a *lot* of refactoring.
+		// Especially in the session parser.
 		types[i] = G_TYPE_STRING;
 	}
 
@@ -573,7 +573,8 @@ static GtkWidget* rmplugin_x2go_choose_session_dialog_factory(RemminaProtocolWid
  * @return gchar* The value of property.
  */
 static gchar* rmplugin_x2go_session_chooser_get_property(GtkWidget* dialog,
-							 gint property_index) {
+							 gint property_index)
+{
 	REMMINA_PLUGIN_DEBUG("Function entry.");
 
 	GtkWidget *treeview = rmplugin_x2go_find_child(GTK_WIDGET(dialog),
@@ -871,7 +872,7 @@ static gboolean rmplugin_x2go_close_connection(RemminaProtocolWidget *gp)
 
 static void rmplugin_x2go_pyhoca_cli_exited(GPid pid,
 					    gint status,
-					    struct _RemminaProtocolWidget *gp)
+					    RemminaProtocolWidget *gp)
 {
 	REMMINA_PLUGIN_DEBUG("Function entry.");
 
@@ -1159,7 +1160,7 @@ static gboolean rmplugin_x2go_get_auth(RemminaProtocolWidget *gp, gchar** errmsg
  * @brief Stores all necessary information needed for retrieving sessions from
  *	  a X2Go server.
  */
-struct _ConnectionData{
+struct _ConnectionData {
 	gchar* host;
 	gchar* username;
 	gchar* password;
@@ -1771,7 +1772,13 @@ static gboolean rmplugin_x2go_exec_x2go(gchar *host,
 
 	// Prevent a race condition where pyhoca-cli is not
 	// started yet (pidx2go == 0) but a watcher is added.
+
+	struct timespec ts;
+	// 0.001 seconds.
+	ts.tv_nsec = 1 * 1000 * 1000;
+	ts.tv_sec = 0;
 	while (gpdata->pidx2go == 0) {
+		nanosleep(&ts, NULL);
 		REMMINA_PLUGIN_DEBUG("Waiting for PyHoca-CLI to start…");
 	};
 
