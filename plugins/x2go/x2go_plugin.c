@@ -135,6 +135,15 @@
 static RemminaPluginService *rm_plugin_service = NULL;
 
 /**
+ * @brief Can be used to pass custom user data between functions and threads.
+ *	  *AND* pass the useful RemminaProtocolWidget with it along.
+ */
+typedef struct _X2GoCustomUserData {
+	RemminaProtocolWidget* gp;
+	gpointer user_data;
+} X2GoCustomUserData;
+
+/**
  * @brief Used for the session chooser dialog (GtkListStore)
  *	  See the example at: https://docs.gtk.org/gtk3/class.ListStore.html
  *	  The order is the exact same as the user sees in the dialog.
@@ -364,15 +373,6 @@ static GtkWidget* rmplugin_x2go_find_child(GtkWidget* parent, const gchar* name)
 }
 
 /**
- * @brief Used only by rmplugin_x2go_session_chooser_row_activated() to
- *	  pass *both* gp and dialog.
- */
-struct _RowActivatedUserData {
-	GtkWidget* dialog;
-	RemminaProtocolWidget* gp;
-};
-
-/**
  * @brief Gets executed on "row-activated" signal. It is emitted when the method when
  *	  the user double clicks a treeview row. It is also emitted when a non-editable
  *	  row is selected and one of the keys: Space, Shift+Space, Return or Enter is
@@ -381,14 +381,16 @@ struct _RowActivatedUserData {
 static gboolean rmplugin_x2go_session_chooser_row_activated(GtkTreeView *treeview, 
 							    GtkTreePath *path, 
 							    GtkTreeViewColumn *column,
-							    struct _RowActivatedUserData* user_data)
+							    X2GoCustomUserData *user_data)
 {
 	REMMINA_PLUGIN_DEBUG("Function entry.");
 
 	// Safety first.
 	g_assert(user_data);
 	g_assert(user_data->gp);
-	g_assert(user_data->dialog);
+	g_assert(user_data->user_data);
+
+	GtkWidget* dialog = GTK_WIDGET(user_data);
 
 	gchar *session_id;
 
@@ -408,7 +410,7 @@ static gboolean rmplugin_x2go_session_chooser_row_activated(GtkTreeView *treevie
 		// We use a trick here. As long as there is something other than 0
 		// stored, a session is selected. So we use the gpointer as a gboolean.
 		SET_SESSION_SELECTED(user_data->gp, (gpointer) TRUE);
-		gtk_widget_destroy(GTK_WIDGET(user_data->dialog));
+		gtk_widget_destroy(GTK_WIDGET(dialog));
 	}
 
 	return G_SOURCE_REMOVE;
@@ -550,9 +552,9 @@ static GtkWidget* rmplugin_x2go_choose_session_dialog_factory(RemminaProtocolWid
 		}
 	}
 
-	struct _RowActivatedUserData *user_data = g_new0(struct _RowActivatedUserData, 1);
+	X2GoCustomUserData *user_data = g_new0(X2GoCustomUserData, 1);
 	user_data->gp = gp;
-	user_data->dialog = widget_gtk_dialog;
+	user_data->user_data = widget_gtk_dialog;
 
 	g_signal_connect(tree_view, "row-activated",
 			 G_CALLBACK(rmplugin_x2go_session_chooser_row_activated),
