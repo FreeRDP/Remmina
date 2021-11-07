@@ -89,6 +89,13 @@
 
 #define REMMINA_CONNECTION_TYPE_NONE             0
 
+#ifdef WITH_FREERDP3
+	#define CLPARAM const char
+#else
+	#define CLPARAM char
+#endif
+
+
 RemminaPluginService *remmina_plugin_service = NULL;
 
 static BOOL gfx_h264_available = FALSE;
@@ -100,11 +107,11 @@ static BOOL gfx_h264_available = FALSE;
  *
  * (C) Copyright goes to the FreeRDP authors.
  */
-static char **remmina_rdp_CommandLineParseCommaSeparatedValuesEx(const char *name, const char *list, size_t *count)
+static CLPARAM **remmina_rdp_CommandLineParseCommaSeparatedValuesEx(const char *name, const char *list, size_t *count)
 {
 	TRACE_CALL(__func__);
 #if FREERDP_CHECK_VERSION(2, 0, 0)
-	return CommandLineParseCommaSeparatedValuesEx(name, list, count);
+	return (CLPARAM **)CommandLineParseCommaSeparatedValuesEx(name, list, count);
 #else
 	char **p;
 	char *str;
@@ -179,7 +186,7 @@ static char **remmina_rdp_CommandLineParseCommaSeparatedValuesEx(const char *nam
 #endif
 }
 
-static char **remmina_rdp_CommandLineParseCommaSeparatedValues(const char *list, size_t *count)
+static CLPARAM **remmina_rdp_CommandLineParseCommaSeparatedValues(const char *list, size_t *count)
 {
 	TRACE_CALL(__func__);
 	return remmina_rdp_CommandLineParseCommaSeparatedValuesEx(NULL, list, count);
@@ -1145,25 +1152,32 @@ int remmina_rdp_set_printers(void *user_data, unsigned flags, cups_dest_t *dest)
 	const gchar *s = remmina_plugin_service->file_get_string(remminafile, "printer_overrides");
 
 	RDPDR_PRINTER *printer;
-
 	printer = (RDPDR_PRINTER *)calloc(1, sizeof(RDPDR_PRINTER));
 
-	printer->Type = RDPDR_DTYP_PRINT;
-	REMMINA_PLUGIN_DEBUG("Printer Type: %d", printer->Type);
+#ifdef WITH_FREERDP3
+	RDPDR_DEVICE *pdev;
+	pdev = &(printer->device);
+#else
+	RDPDR_PRINTER *pdev;
+	pdev = printer;
+#endif
+
+	pdev->Type = RDPDR_DTYP_PRINT;
+	REMMINA_PLUGIN_DEBUG("Printer Type: %d", pdev->Type);
 
 	freerdp_settings_set_bool(rfi->settings, FreeRDP_RedirectPrinters, TRUE);
 	remmina_rdp_load_static_channel_addin(channels, rfi->settings, "rdpdr", rfi->settings);
 
 	REMMINA_PLUGIN_DEBUG("Destination: %s", dest->name);
-	if (!(printer->Name = _strdup(dest->name))) {
+	if (!(pdev->Name = _strdup(dest->name))) {
 		free(printer);
 		return 1;
 	}
 
-	REMMINA_PLUGIN_DEBUG("Printer Name: %s", printer->Name);
+	REMMINA_PLUGIN_DEBUG("Printer Name: %s", pdev->Name);
 
 	if (s) {
-		gchar *d = remmina_rdp_find_prdriver(strdup(s), printer->Name);
+		gchar *d = remmina_rdp_find_prdriver(strdup(s), pdev->Name);
 		if (d) {
 			printer->DriverName = strdup(d);
 			REMMINA_PLUGIN_DEBUG("Printer DriverName set to: %s", printer->DriverName);
@@ -1174,7 +1188,7 @@ int remmina_rdp_set_printers(void *user_data, unsigned flags, cups_dest_t *dest)
 			 * it means that we don't want to share that printer
 			 *
 			 */
-			free(printer->Name);
+			free(pdev->Name);
 			free(printer);
 			return 1;
 		}
@@ -1186,7 +1200,7 @@ int remmina_rdp_set_printers(void *user_data, unsigned flags, cups_dest_t *dest)
 	REMMINA_PLUGIN_DEBUG("Printer Driver: %s", printer->DriverName);
 	if (!freerdp_device_collection_add(rfi->settings, (RDPDR_DEVICE *)printer)) {
 		free(printer->DriverName);
-		free(printer->Name);
+		free(pdev->Name);
 		free(printer);
 		return 1;
 	}
@@ -1700,8 +1714,9 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 	 * dynamically resize remote desktop. This will automatically open
 	 * the "disp" dynamic channel, if available */
 	freerdp_settings_set_bool(rfi->settings, FreeRDP_SupportDisplayControl, TRUE);
+
 	if (freerdp_settings_get_bool(rfi->settings, FreeRDP_SupportDisplayControl)) {
-		char *d[1];
+		CLPARAM *d[1];
 		int dcount;
 
 		dcount = 1;
@@ -1710,7 +1725,8 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 	}
 
 	if (freerdp_settings_get_bool(rfi->settings, FreeRDP_SupportGraphicsPipeline)) {
-		char *d[1];
+		CLPARAM *d[1];
+
 		int dcount;
 
 		dcount = 1;
@@ -1739,7 +1755,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 		} else {
 			freerdp_settings_set_bool(rfi->settings, FreeRDP_AudioCapture, TRUE);
 			REMMINA_PLUGIN_DEBUG("“microphone” set to “%s”", cs);
-			char **p;
+			CLPARAM **p;
 			size_t count;
 
 			p = remmina_rdp_CommandLineParseCommaSeparatedValuesEx("audin", g_strdup(cs), &count);
@@ -1752,7 +1768,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 	cs = remmina_plugin_service->file_get_string(remminafile, "audio-output");
 	if (cs != NULL && cs[0] != '\0') {
 		REMMINA_PLUGIN_DEBUG("audio output set to %s", cs);
-		char **p;
+		CLPARAM **p;
 		size_t count;
 
 		p = remmina_rdp_CommandLineParseCommaSeparatedValuesEx("rdpsnd", g_strdup(cs), &count);
@@ -1782,7 +1798,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 
 	cs = remmina_plugin_service->file_get_string(remminafile, "usb");
 	if (cs != NULL && cs[0] != '\0') {
-		char **p;
+		CLPARAM **p;
 		size_t count;
 		p = remmina_rdp_CommandLineParseCommaSeparatedValuesEx("urbdrc", g_strdup(cs), &count);
 		freerdp_client_add_dynamic_channel(rfi->settings, count, p);
@@ -1791,7 +1807,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 
 	cs = remmina_plugin_service->file_get_string(remminafile, "vc");
 	if (cs != NULL && cs[0] != '\0') {
-		char **p;
+		CLPARAM **p;
 		size_t count;
 		p = remmina_rdp_CommandLineParseCommaSeparatedValues(g_strdup(cs), &count);
 		freerdp_client_add_static_channel(rfi->settings, count, p);
@@ -1800,7 +1816,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 
 	cs = remmina_plugin_service->file_get_string(remminafile, "dvc");
 	if (cs != NULL && cs[0] != '\0') {
-		char **p;
+		CLPARAM **p;
 		size_t count;
 		p = remmina_rdp_CommandLineParseCommaSeparatedValues(g_strdup(cs), &count);
 		freerdp_client_add_dynamic_channel(rfi->settings, count, p);
@@ -1837,7 +1853,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 	cs = remmina_plugin_service->file_get_string(remminafile, "sharefolder");
 	if (cs != NULL && cs[0] != '\0') {
 		REMMINA_PLUGIN_DEBUG("Share folder set to %s", cs);
-		char **p;
+		CLPARAM **p;
 		size_t count;
 		p = remmina_rdp_CommandLineParseCommaSeparatedValuesEx("drive", g_strdup(cs), &count);
 		status = freerdp_client_add_device_channel(rfi->settings, count, p);
@@ -1846,7 +1862,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 	cs = remmina_plugin_service->file_get_string(remminafile, "drive");
 	if (cs != NULL && cs[0] != '\0') {
 		REMMINA_PLUGIN_DEBUG("Redirect directory set to %s", cs);
-		char **p;
+		CLPARAM **p;
 		size_t count;
 
 		gchar **folders = g_strsplit(cs, ";", -1);
@@ -1951,14 +1967,22 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 		RDPDR_SMARTCARD *smartcard;
 		smartcard = (RDPDR_SMARTCARD *)calloc(1, sizeof(RDPDR_SMARTCARD));
 
-		smartcard->Type = RDPDR_DTYP_SMARTCARD;
+#ifdef WITH_FREERDP3
+		RDPDR_DEVICE *sdev;
+		sdev = &(smartcard->device);
+#else
+		RDPDR_SMARTCARD *sdev;
+		sdev = smartcard;
+#endif
+
+		sdev->Type = RDPDR_DTYP_SMARTCARD;
 
 		freerdp_settings_set_bool(rfi->settings, FreeRDP_DeviceRedirection, TRUE);
 		remmina_rdp_load_static_channel_addin(channels, rfi->settings, "rdpdr", rfi->settings);
 
 		const gchar *sn = remmina_plugin_service->file_get_string(remminafile, "smartcardname");
 		if (sn != NULL && sn[0] != '\0')
-			smartcard->Name = _strdup(sn);
+			sdev->Name = _strdup(sn);
 
 		freerdp_settings_set_bool(rfi->settings, FreeRDP_RedirectSmartCards, TRUE);
 
@@ -1975,14 +1999,22 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 		RDPDR_SERIAL *serial;
 		serial = (RDPDR_SERIAL *)calloc(1, sizeof(RDPDR_SERIAL));
 
-		serial->Type = RDPDR_DTYP_SERIAL;
+#ifdef WITH_FREERDP3
+		RDPDR_DEVICE *sdev;
+		sdev = &(serial->device);
+#else
+		RDPDR_SERIAL *sdev;
+		sdev = serial;
+#endif
+
+		sdev->Type = RDPDR_DTYP_SERIAL;
 
 		freerdp_settings_set_bool(rfi->settings, FreeRDP_DeviceRedirection, TRUE);
 		remmina_rdp_load_static_channel_addin(channels, rfi->settings, "rdpdr", rfi->settings);
 
 		const gchar *sn = remmina_plugin_service->file_get_string(remminafile, "serialname");
 		if (sn != NULL && sn[0] != '\0')
-			serial->Name = _strdup(sn);
+			sdev->Name = _strdup(sn);
 
 		const gchar *sd = remmina_plugin_service->file_get_string(remminafile, "serialdriver");
 		if (sd != NULL && sd[0] != '\0')
@@ -2004,7 +2036,15 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 		RDPDR_PARALLEL *parallel;
 		parallel = (RDPDR_PARALLEL *)calloc(1, sizeof(RDPDR_PARALLEL));
 
-		parallel->Type = RDPDR_DTYP_PARALLEL;
+#ifdef WITH_FREERDP3
+		RDPDR_DEVICE *pdev;
+		pdev = &(parallel->device);
+#else
+		RDPDR_PARALLEL *pdev;
+		pdev = parallel;
+#endif
+
+		pdev->Type = RDPDR_DTYP_PARALLEL;
 
 		freerdp_settings_set_bool(rfi->settings, FreeRDP_DeviceRedirection, TRUE);
 		remmina_rdp_load_static_channel_addin(channels, rfi->settings, "rdpdr", rfi->settings);
@@ -2013,7 +2053,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 
 		const gchar *pn = remmina_plugin_service->file_get_string(remminafile, "parallelname");
 		if (pn != NULL && pn[0] != '\0')
-			parallel->Name = _strdup(pn);
+			pdev->Name = _strdup(pn);
 		const gchar *dp = remmina_plugin_service->file_get_string(remminafile, "parallelpath");
 		if (dp != NULL && dp[0] != '\0')
 			parallel->Path = _strdup(dp);
