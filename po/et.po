@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-10-29 12:14+0000\n"
+"POT-Creation-Date: 2021-11-08 14:57+0000\n"
 "PO-Revision-Date: 2021-10-30 10:20+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -25,7 +25,7 @@ msgstr ""
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:354
 #: src/remmina_protocol_widget.c:1676 src/remmina_protocol_widget.c:1695
 #: src/remmina_file_editor.c:1101 src/remmina_file_editor.c:1222
-#: src/remmina_ssh_plugin.c:1360 plugins/rdp/rdp_plugin.c:2680
+#: src/remmina_ssh_plugin.c:1360 plugins/rdp/rdp_plugin.c:2720
 #: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:1596
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1675
 #: data/ui/remmina_unlock.glade:116
@@ -76,7 +76,7 @@ msgstr "Ühendage SSH kaudu uuest terminalist"
 
 #: src/remmina_sftp_plugin.c:353 src/remmina_message_panel.c:330
 #: src/remmina_file_editor.c:1216 src/remmina_ssh_plugin.c:1470
-#: plugins/rdp/rdp_plugin.c:2679 plugins/vnc/vnc_plugin.c:1976
+#: plugins/rdp/rdp_plugin.c:2719 plugins/vnc/vnc_plugin.c:1976
 #: plugins/vnc/vnc_plugin.c:1988 plugins/www/www_plugin.c:894
 #: plugins/x2go/x2go_plugin.c:1595 data/ui/remmina_mpc.glade:144
 #, fuzzy
@@ -282,7 +282,7 @@ msgstr "Jah"
 msgid "No"
 msgstr "Ei"
 
-#: src/remmina_message_panel.c:391 plugins/rdp/rdp_plugin.c:2681
+#: src/remmina_message_panel.c:391 plugins/rdp/rdp_plugin.c:2721
 #: data/ui/remmina_mpc.glade:172
 msgid "Domain"
 msgstr "Domeen"
@@ -765,7 +765,7 @@ msgstr "Üles"
 msgid "Go to parent folder"
 msgstr "Mine ülemkausta"
 
-#: src/remmina_ftp_client.c:758 plugins/rdp/rdp_plugin.c:2770
+#: src/remmina_ftp_client.c:758 plugins/rdp/rdp_plugin.c:2810
 #: plugins/vnc/vnc_plugin.c:2027
 msgid "Refresh"
 msgstr "Värskenda"
@@ -814,11 +814,11 @@ msgstr "Grupp"
 msgid "Permission"
 msgstr "Õigus"
 
-#: src/remmina_ftp_client.c:990 plugins/rdp/rdp_plugin.c:2568
+#: src/remmina_ftp_client.c:990 plugins/rdp/rdp_plugin.c:2608
 msgid "Remote"
 msgstr "Kaug"
 
-#: src/remmina_ftp_client.c:997 plugins/rdp/rdp_plugin.c:2567
+#: src/remmina_ftp_client.c:997 plugins/rdp/rdp_plugin.c:2607
 msgid "Local"
 msgstr "Kohalik"
 
@@ -1524,7 +1524,7 @@ msgstr "Tunnel tagasiside aadressi kaudu"
 msgid "Same server at port %i"
 msgstr "Sama server sadamas %i"
 
-#: src/remmina_file_editor.c:1193 plugins/rdp/rdp_plugin.c:2724
+#: src/remmina_file_editor.c:1193 plugins/rdp/rdp_plugin.c:2764
 msgid "Start-up path"
 msgstr "Baasrada"
 
@@ -1836,7 +1836,7 @@ msgstr "_Find text"
 msgid "User password"
 msgstr "kasutaja parool"
 
-#: src/remmina_ssh_plugin.c:1477 plugins/rdp/rdp_plugin.c:2723
+#: src/remmina_ssh_plugin.c:1477 plugins/rdp/rdp_plugin.c:2763
 msgid "Start-up program"
 msgstr "Käivituse programm"
 
@@ -1955,23 +1955,23 @@ msgstr "<Ei ole määratud>"
 msgid "<Choose a quality level to edit…>"
 msgstr "<Valige kvaliteeditase, mida soovite muuta...>"
 
-#: plugins/rdp/rdp_settings.c:282 plugins/rdp/rdp_plugin.c:2542
+#: plugins/rdp/rdp_settings.c:282 plugins/rdp/rdp_plugin.c:2582
 #: plugins/vnc/vnc_plugin.c:1934
 #, fuzzy
 msgid "Poor (fastest)"
 msgstr "Kehv (kiireim)"
 
-#: plugins/rdp/rdp_settings.c:284 plugins/rdp/rdp_plugin.c:2543
+#: plugins/rdp/rdp_settings.c:284 plugins/rdp/rdp_plugin.c:2583
 #: plugins/vnc/vnc_plugin.c:1933
 msgid "Medium"
 msgstr "Keskmine"
 
-#: plugins/rdp/rdp_settings.c:286 plugins/rdp/rdp_plugin.c:2544
+#: plugins/rdp/rdp_settings.c:286 plugins/rdp/rdp_plugin.c:2584
 #: plugins/vnc/vnc_plugin.c:1931
 msgid "Good"
 msgstr "Hea"
 
-#: plugins/rdp/rdp_settings.c:288 plugins/rdp/rdp_plugin.c:2545
+#: plugins/rdp/rdp_settings.c:288 plugins/rdp/rdp_plugin.c:2585
 #: plugins/vnc/vnc_plugin.c:1932
 msgid "Best (slowest)"
 msgstr "Parim (aeglaseim)"
@@ -2069,7 +2069,7 @@ msgstr "Orienteerumine töölaual"
 msgid "Input device settings"
 msgstr "Sisestusseadme seaded"
 
-#: plugins/rdp/rdp_settings.c:658 plugins/rdp/rdp_plugin.c:2686
+#: plugins/rdp/rdp_settings.c:658 plugins/rdp/rdp_plugin.c:2726
 #: plugins/vnc/vnc_plugin.c:2014
 #, fuzzy
 msgid "Disable smooth scrolling"
@@ -2081,13 +2081,13 @@ msgstr "Sujuv kerimine välja lülitada"
 msgid "General settings"
 msgstr "Üldised seaded"
 
-#: plugins/rdp/rdp_settings.c:676 plugins/rdp/rdp_plugin.c:2738
+#: plugins/rdp/rdp_settings.c:676 plugins/rdp/rdp_plugin.c:2778
 #, fuzzy
 #| msgid "Reconnection attempt %d of %d…"
 msgid "Reconnect attempts number"
 msgstr "Uuesti ühendamise katsete arv"
 
-#: plugins/rdp/rdp_settings.c:689 plugins/rdp/rdp_plugin.c:2738
+#: plugins/rdp/rdp_settings.c:689 plugins/rdp/rdp_plugin.c:2778
 #, fuzzy
 msgid ""
 "The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
@@ -2095,17 +2095,17 @@ msgstr ""
 "RDP-ühenduse katkestamise korral tehtavate uuesti ühendamise katsete "
 "maksimaalne arv (vaikimisi: 20)."
 
-#: plugins/rdp/rdp_plugin.c:762 plugins/rdp/rdp_plugin.c:827
+#: plugins/rdp/rdp_plugin.c:769 plugins/rdp/rdp_plugin.c:834
 #, fuzzy
 msgid "Enter RDP authentication credentials"
 msgstr "Sisestage RDP autentimisandmed"
 
-#: plugins/rdp/rdp_plugin.c:835
+#: plugins/rdp/rdp_plugin.c:842
 #, fuzzy
 msgid "Enter RDP gateway authentication credentials"
 msgstr "Sisestage RDP-värava autentimisandmed"
 
-#: plugins/rdp/rdp_plugin.c:2073
+#: plugins/rdp/rdp_plugin.c:2113
 #, fuzzy, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2114,7 +2114,7 @@ msgstr ""
 "Ei saanud juurdepääsu RDP-serverile \"%s\".\n"
 "Konto on lukustatud."
 
-#: plugins/rdp/rdp_plugin.c:2080
+#: plugins/rdp/rdp_plugin.c:2120
 #, fuzzy, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2123,7 +2123,7 @@ msgstr ""
 "Ei saanud juurdepääsu RDP-serverile \"%s\".\n"
 "Konto aegunud."
 
-#: plugins/rdp/rdp_plugin.c:2087
+#: plugins/rdp/rdp_plugin.c:2127
 #, fuzzy, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2132,7 +2132,7 @@ msgstr ""
 "Ei saanud juurdepääsu RDP-serverile \"%s\".\n"
 "Parool on aegunud."
 
-#: plugins/rdp/rdp_plugin.c:2094
+#: plugins/rdp/rdp_plugin.c:2134
 #, fuzzy, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2141,7 +2141,7 @@ msgstr ""
 "Ei saanud juurdepääsu RDP-serverile \"%s\".\n"
 "Konto keelatud."
 
-#: plugins/rdp/rdp_plugin.c:2100
+#: plugins/rdp/rdp_plugin.c:2140
 #, fuzzy, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2150,7 +2150,7 @@ msgstr ""
 "Ei saanud juurdepääsu RDP-serverile \"%s\".\n"
 "Ebapiisavad kasutajaõigused."
 
-#: plugins/rdp/rdp_plugin.c:2108
+#: plugins/rdp/rdp_plugin.c:2148
 #, fuzzy, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2159,7 +2159,7 @@ msgstr ""
 "Ei saanud juurdepääsu RDP-serverile \"%s\".\n"
 "Konto on piiratud."
 
-#: plugins/rdp/rdp_plugin.c:2116
+#: plugins/rdp/rdp_plugin.c:2156
 #, fuzzy, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2168,17 +2168,17 @@ msgstr ""
 "Ei saanud juurdepääsu RDP-serverile \"%s\".\n"
 "Muutke kasutaja parooli enne ühendamist."
 
-#: plugins/rdp/rdp_plugin.c:2121
+#: plugins/rdp/rdp_plugin.c:2161
 #, fuzzy, c-format
 msgid "Lost connection to the RDP server “%s”."
 msgstr "Ühendus RDP-serveriga \"%s\" katkes."
 
-#: plugins/rdp/rdp_plugin.c:2124
+#: plugins/rdp/rdp_plugin.c:2164
 #, fuzzy, c-format
 msgid "Could not find the address for the RDP server “%s”."
 msgstr "Ei leitud RDP-serveri aadressi \"%s\"."
 
-#: plugins/rdp/rdp_plugin.c:2128
+#: plugins/rdp/rdp_plugin.c:2168
 #, fuzzy, c-format
 msgid ""
 "Could not connect to the RDP server “%s” via TLS. Check that client and "
@@ -2188,7 +2188,7 @@ msgstr ""
 "kas klient ja server toetavad ühist TLS-versiooni."
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
-#: plugins/rdp/rdp_plugin.c:2132
+#: plugins/rdp/rdp_plugin.c:2172
 #, fuzzy, c-format
 msgid ""
 "Unable to establish a connection to the RDP server “%s”. Check “Security "
@@ -2197,17 +2197,17 @@ msgstr ""
 "RDP-serveriga \"%s\" ei ole võimalik ühendust luua. Kontrollige "
 "\"Turvalisusprotokolli läbirääkimised\"."
 
-#: plugins/rdp/rdp_plugin.c:2140
+#: plugins/rdp/rdp_plugin.c:2180
 #, fuzzy, c-format
 msgid "Cannot connect to the RDP server “%s”."
 msgstr "Ei saa ühendust RDP-serveriga \"%s\"."
 
-#: plugins/rdp/rdp_plugin.c:2143
+#: plugins/rdp/rdp_plugin.c:2183
 #, fuzzy
 msgid "Could not start libfreerdp-gdi."
 msgstr "Ei saanud käivitada libfreerdp-gdi."
 
-#: plugins/rdp/rdp_plugin.c:2146
+#: plugins/rdp/rdp_plugin.c:2186
 #, fuzzy, c-format
 msgid ""
 "You requested a H.264 GFX mode for the server “%s”, but your libfreerdp does "
@@ -2216,12 +2216,12 @@ msgstr ""
 "Sa soovisid H.264 GFX-režiimi serverile \"%s\", kuid sinu libfreerdp ei "
 "toeta H.264-i. Palun kasutage muud kui AVC-värvisügavuse seadistust."
 
-#: plugins/rdp/rdp_plugin.c:2153
+#: plugins/rdp/rdp_plugin.c:2193
 #, fuzzy, c-format
 msgid "The “%s” server refused the connection."
 msgstr "Server \"%s\" keeldus ühendusest."
 
-#: plugins/rdp/rdp_plugin.c:2158
+#: plugins/rdp/rdp_plugin.c:2198
 #, fuzzy, c-format
 msgid ""
 "The Remote Desktop Gateway “%s” denied the user “%s\\%s” access due to "
@@ -2230,134 +2230,134 @@ msgstr ""
 "Remote Desktop Gateway \"%s\" keelas kasutajale \"%s\\%s\" juurdepääsu "
 "poliitika tõttu."
 
-#: plugins/rdp/rdp_plugin.c:2168
+#: plugins/rdp/rdp_plugin.c:2208
 #, fuzzy, c-format
 msgid "Cannot connect to the “%s” RDP server."
 msgstr "Ei saa ühendust \"%s\" RDP-serveriga."
 
-#: plugins/rdp/rdp_plugin.c:2511
+#: plugins/rdp/rdp_plugin.c:2551
 #, fuzzy
 msgid "Automatic (32 bpp) (Server chooses its best format)"
 msgstr "Automaatne (32 bpp) (server valib oma parima formaadi)"
 
-#: plugins/rdp/rdp_plugin.c:2512
+#: plugins/rdp/rdp_plugin.c:2552
 #, fuzzy
 msgid "GFX AVC444 (32 bpp)"
 msgstr "GFX AVC444 (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2513
+#: plugins/rdp/rdp_plugin.c:2553
 #, fuzzy
 msgid "GFX AVC420 (32 bpp)"
 msgstr "GFX AVC420 (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2514
+#: plugins/rdp/rdp_plugin.c:2554
 #, fuzzy
 msgid "GFX RFX (32 bpp)"
 msgstr "GFX RFX (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2515
+#: plugins/rdp/rdp_plugin.c:2555
 #, fuzzy
 msgid "GFX RFX Progressive (32 bpp)"
 msgstr "GFX RFX Progressive (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2516
+#: plugins/rdp/rdp_plugin.c:2556
 #, fuzzy
 msgid "RemoteFX (32 bpp)"
 msgstr "RemoteFX (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2517 plugins/vnc/vnc_plugin.c:1922
+#: plugins/rdp/rdp_plugin.c:2557 plugins/vnc/vnc_plugin.c:1922
 msgid "True colour (32 bpp)"
 msgstr "256 värvi (8 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2518
+#: plugins/rdp/rdp_plugin.c:2558
 msgid "True colour (24 bpp)"
 msgstr "256 värvi (8 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2519 plugins/vnc/vnc_plugin.c:1923
+#: plugins/rdp/rdp_plugin.c:2559 plugins/vnc/vnc_plugin.c:1923
 msgid "High colour (16 bpp)"
 msgstr "256 värvi (8 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2520
+#: plugins/rdp/rdp_plugin.c:2560
 msgid "High colour (15 bpp)"
 msgstr "256 värvi (8 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2521 plugins/vnc/vnc_plugin.c:1924
+#: plugins/rdp/rdp_plugin.c:2561 plugins/vnc/vnc_plugin.c:1924
 msgid "256 colours (8 bpp)"
 msgstr "256 värvi (8 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2552 data/ui/remmina_preferences.glade:641
+#: plugins/rdp/rdp_plugin.c:2592 data/ui/remmina_preferences.glade:641
 #, fuzzy
 msgid "None"
 msgstr "Mitte midagi"
 
-#: plugins/rdp/rdp_plugin.c:2553
+#: plugins/rdp/rdp_plugin.c:2593
 #, fuzzy
 msgid "Auto-detect"
 msgstr "Automaatne tuvastamine"
 
-#: plugins/rdp/rdp_plugin.c:2554
+#: plugins/rdp/rdp_plugin.c:2594
 #, fuzzy
 msgid "Modem"
 msgstr "Modem"
 
-#: plugins/rdp/rdp_plugin.c:2555
+#: plugins/rdp/rdp_plugin.c:2595
 #, fuzzy
 msgid "Low performance broadband"
 msgstr "Madala jõudlusega lairibaühendus"
 
-#: plugins/rdp/rdp_plugin.c:2556
+#: plugins/rdp/rdp_plugin.c:2596
 #, fuzzy
 msgid "Satellite"
 msgstr "Satelliit"
 
-#: plugins/rdp/rdp_plugin.c:2557
+#: plugins/rdp/rdp_plugin.c:2597
 #, fuzzy
 msgid "High performance broadband"
 msgstr "Suure jõudlusega lairibaühendus"
 
-#: plugins/rdp/rdp_plugin.c:2558
+#: plugins/rdp/rdp_plugin.c:2598
 #, fuzzy
 msgid "WAN"
 msgstr "WAN"
 
-#: plugins/rdp/rdp_plugin.c:2559
+#: plugins/rdp/rdp_plugin.c:2599
 #, fuzzy
 msgid "LAN"
 msgstr "LAN"
 
-#: plugins/rdp/rdp_plugin.c:2566 plugins/spice/spice_plugin.c:635
+#: plugins/rdp/rdp_plugin.c:2606 plugins/spice/spice_plugin.c:635
 #: data/ui/remmina_preferences.glade:677
 msgid "Off"
 msgstr "Välja lülitatud"
 
-#: plugins/rdp/rdp_plugin.c:2575
+#: plugins/rdp/rdp_plugin.c:2615
 #, fuzzy
 msgid "Automatic negotiation"
 msgstr "Automaatne läbirääkimine"
 
-#: plugins/rdp/rdp_plugin.c:2576
+#: plugins/rdp/rdp_plugin.c:2616
 msgid "NLA protocol security"
 msgstr "Protokoll"
 
-#: plugins/rdp/rdp_plugin.c:2577
+#: plugins/rdp/rdp_plugin.c:2617
 msgid "TLS protocol security"
 msgstr "Protokoll"
 
-#: plugins/rdp/rdp_plugin.c:2578
+#: plugins/rdp/rdp_plugin.c:2618
 msgid "RDP protocol security"
 msgstr "Protokoll"
 
-#: plugins/rdp/rdp_plugin.c:2579
+#: plugins/rdp/rdp_plugin.c:2619
 #, fuzzy
 msgid "NLA extended protocol security"
 msgstr "NLA laiendatud protokolli turvalisus"
 
-#: plugins/rdp/rdp_plugin.c:2592
+#: plugins/rdp/rdp_plugin.c:2632
 #, fuzzy
 msgid "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 and newer)"
 msgstr "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 ja uuemad)"
 
-#: plugins/rdp/rdp_plugin.c:2595
+#: plugins/rdp/rdp_plugin.c:2635
 #, fuzzy
 msgid ""
 "Used i.a. by terminal services in a smart card channel to distinguish client "
@@ -2376,7 +2376,7 @@ msgstr ""
 "  - >= 7065: Windows 8 ja uuemad: SCardGetReaderIcon(),\n"
 "    SCardGetDeviceTypeId()"
 
-#: plugins/rdp/rdp_plugin.c:2603
+#: plugins/rdp/rdp_plugin.c:2643
 #, fuzzy
 msgid ""
 "Options for redirection of audio input:\n"
@@ -2395,7 +2395,7 @@ msgstr ""
 "  - sys:oss,dev:1,format:1\n"
 "  - sys:alsa"
 
-#: plugins/rdp/rdp_plugin.c:2612
+#: plugins/rdp/rdp_plugin.c:2652
 #, fuzzy
 msgid ""
 "Options for redirection of audio output:\n"
@@ -2414,7 +2414,7 @@ msgstr ""
 "  - sys:oss,dev:1,format:1\n"
 "  - sys:alsa"
 
-#: plugins/rdp/rdp_plugin.c:2622
+#: plugins/rdp/rdp_plugin.c:2662
 #, fuzzy
 msgid ""
 "Options for redirection of USB device:\n"
@@ -2427,7 +2427,7 @@ msgstr ""
 "  - auto\n"
 "  • id:054c:0268#4669:6e6b,addr:04:0c"
 
-#: plugins/rdp/rdp_plugin.c:2628
+#: plugins/rdp/rdp_plugin.c:2668
 #, fuzzy
 msgid ""
 "Advanced setting for high latency links:\n"
@@ -2438,7 +2438,7 @@ msgstr ""
 "Reguleerib ühenduse aegumistähtaega. Kasutage, kui ühendus aegub.\n"
 "Suurim võimalik väärtus on 600000 ms (10 minutit).\n"
 
-#: plugins/rdp/rdp_plugin.c:2633
+#: plugins/rdp/rdp_plugin.c:2673
 #, fuzzy
 msgid ""
 "Performance optimisations based on the network connection type:\n"
@@ -2450,7 +2450,7 @@ msgstr ""
 "Kui \"Automaatne tuvastamine\" ei õnnestu, valige loetelust kõige sobivam "
 "valik.\n"
 
-#: plugins/rdp/rdp_plugin.c:2638
+#: plugins/rdp/rdp_plugin.c:2678
 #, fuzzy
 msgid ""
 "Comma-separated list of monitor IDs and desktop orientations:\n"
@@ -2476,7 +2476,7 @@ msgstr ""
 "  - 270 (pööratud portree)\n"
 "\n"
 
-#: plugins/rdp/rdp_plugin.c:2650
+#: plugins/rdp/rdp_plugin.c:2690
 #, fuzzy
 msgid ""
 "Redirect directory <path> as named share <name>.\n"
@@ -2497,158 +2497,158 @@ msgstr ""
 "  - hotplug,*\n"
 "\n"
 
-#: plugins/rdp/rdp_plugin.c:2682 plugins/spice/spice_plugin.c:677
+#: plugins/rdp/rdp_plugin.c:2722 plugins/spice/spice_plugin.c:677
 msgid "Share folder"
 msgstr "Kataloogi jagamine"
 
-#: plugins/rdp/rdp_plugin.c:2682
+#: plugins/rdp/rdp_plugin.c:2722
 #, fuzzy
 msgid "Use “Redirect directory” in the advanced tab for multiple directories"
 msgstr ""
 "Kasutage mitme kataloogi jaoks vahekaardil \"Redirect directory\" (suunata "
 "kataloogi ümber)."
 
-#: plugins/rdp/rdp_plugin.c:2683
+#: plugins/rdp/rdp_plugin.c:2723
 #, fuzzy
 msgid "Restricted admin mode"
 msgstr "Piiratud haldusrežiim"
 
-#: plugins/rdp/rdp_plugin.c:2684
+#: plugins/rdp/rdp_plugin.c:2724
 #, fuzzy
 #| msgid "Password"
 msgid "Password hash"
 msgstr "Salasõna hash"
 
-#: plugins/rdp/rdp_plugin.c:2684
+#: plugins/rdp/rdp_plugin.c:2724
 #, fuzzy
 msgid "Restricted admin mode password hash"
 msgstr "Piiratud admin-režiimi salasõna hash"
 
-#: plugins/rdp/rdp_plugin.c:2685
+#: plugins/rdp/rdp_plugin.c:2725
 #, fuzzy
 msgid "Left-handed mouse support"
 msgstr "Vasakukäelise hiire tugi"
 
-#: plugins/rdp/rdp_plugin.c:2685
+#: plugins/rdp/rdp_plugin.c:2725
 #, fuzzy
 msgid "Swap left and right mouse buttons for left-handed mouse support"
 msgstr ""
 "Vasaku ja parema hiire nuppude vahetamine vasakukäeliste hiirte toetamiseks"
 
-#: plugins/rdp/rdp_plugin.c:2687
+#: plugins/rdp/rdp_plugin.c:2727
 #, fuzzy
 msgid "Enable multi monitor"
 msgstr "Mitme monitori lubamine"
 
-#: plugins/rdp/rdp_plugin.c:2688
+#: plugins/rdp/rdp_plugin.c:2728
 #, fuzzy
 msgid "Span screen over multiple monitors"
 msgstr "Ekraani laiendamine üle mitme monitori"
 
-#: plugins/rdp/rdp_plugin.c:2689
+#: plugins/rdp/rdp_plugin.c:2729
 #, fuzzy
 msgid "List monitor IDs"
 msgstr "Loetelu monitori ID-dest"
 
-#: plugins/rdp/rdp_plugin.c:2691 plugins/vnc/vnc_plugin.c:1978
+#: plugins/rdp/rdp_plugin.c:2731 plugins/vnc/vnc_plugin.c:1978
 #: plugins/vnc/vnc_plugin.c:1990 plugins/gvnc/gvnc_plugin.c:849
 msgid "Colour depth"
 msgstr "Värvisügavus"
 
-#: plugins/rdp/rdp_plugin.c:2692
+#: plugins/rdp/rdp_plugin.c:2732
 msgid "Network connection type"
 msgstr "Uus ühendus"
 
-#: plugins/rdp/rdp_plugin.c:2707 plugins/vnc/vnc_plugin.c:1979
+#: plugins/rdp/rdp_plugin.c:2747 plugins/vnc/vnc_plugin.c:1979
 #: plugins/vnc/vnc_plugin.c:1991
 msgid "Quality"
 msgstr "Kvaliteet"
 
-#: plugins/rdp/rdp_plugin.c:2708
+#: plugins/rdp/rdp_plugin.c:2748
 #, fuzzy
 msgid "Security protocol negotiation"
 msgstr "Turvaprotokolli läbirääkimised"
 
-#: plugins/rdp/rdp_plugin.c:2709
+#: plugins/rdp/rdp_plugin.c:2749
 #, fuzzy
 msgid "Gateway transport type"
 msgstr "Värava transpordi tüüp"
 
-#: plugins/rdp/rdp_plugin.c:2710
+#: plugins/rdp/rdp_plugin.c:2750
 #, fuzzy
 msgid "FreeRDP log level"
 msgstr "FreeRDP logi tase"
 
-#: plugins/rdp/rdp_plugin.c:2711
+#: plugins/rdp/rdp_plugin.c:2751
 #, fuzzy
 msgid "FreeRDP log filters"
 msgstr "FreeRDP logifiltrid"
 
-#: plugins/rdp/rdp_plugin.c:2711
+#: plugins/rdp/rdp_plugin.c:2751
 #, fuzzy
 msgid "tag:level[,tag:level[,…]]"
 msgstr "tag:level[,tag:level[,...]]"
 
-#: plugins/rdp/rdp_plugin.c:2712
+#: plugins/rdp/rdp_plugin.c:2752
 #, fuzzy
 msgid "Audio output mode"
 msgstr "Heliväljundi režiim"
 
-#: plugins/rdp/rdp_plugin.c:2713
+#: plugins/rdp/rdp_plugin.c:2753
 #, fuzzy
 msgid "Redirect local audio output"
 msgstr "Kohaliku heliväljundi ümbersuunamine"
 
-#: plugins/rdp/rdp_plugin.c:2714
+#: plugins/rdp/rdp_plugin.c:2754
 #, fuzzy
 msgid "Redirect local microphone"
 msgstr "Kohaliku mikrofoni ümbersuunamine"
 
-#: plugins/rdp/rdp_plugin.c:2715
+#: plugins/rdp/rdp_plugin.c:2755
 msgid "Connection timeout in ms"
 msgstr "Ühendumine seadmega '%s'…"
 
-#: plugins/rdp/rdp_plugin.c:2716
+#: plugins/rdp/rdp_plugin.c:2756
 msgid "Remote Desktop Gateway server"
 msgstr "Kaugtöölaua eelistus"
 
-#: plugins/rdp/rdp_plugin.c:2717
+#: plugins/rdp/rdp_plugin.c:2757
 msgid "Remote Desktop Gateway username"
 msgstr "Kaugtöölaua eelistus"
 
-#: plugins/rdp/rdp_plugin.c:2718
+#: plugins/rdp/rdp_plugin.c:2758
 msgid "Remote Desktop Gateway password"
 msgstr "Kaugtöölaua eelistus"
 
-#: plugins/rdp/rdp_plugin.c:2719
+#: plugins/rdp/rdp_plugin.c:2759
 msgid "Remote Desktop Gateway domain"
 msgstr "Kaugtöölaua eelistus"
 
-#: plugins/rdp/rdp_plugin.c:2720
+#: plugins/rdp/rdp_plugin.c:2760
 #, fuzzy
 msgid "Redirect directory"
 msgstr "Ümbersuunamine kataloogi"
 
-#: plugins/rdp/rdp_plugin.c:2721
+#: plugins/rdp/rdp_plugin.c:2761
 msgid "Client name"
 msgstr "Kliendi nimi"
 
-#: plugins/rdp/rdp_plugin.c:2722
+#: plugins/rdp/rdp_plugin.c:2762
 msgid "Client build"
 msgstr "Kliendi nimi"
 
-#: plugins/rdp/rdp_plugin.c:2725
+#: plugins/rdp/rdp_plugin.c:2765
 #, fuzzy
 msgid "Load balance info"
 msgstr "Info koormuse tasakaalu kohta"
 
 #. TRANSLATORS: Do not use typographic quotation marks, these must stay as "double quote", also know as “Typewriter ("programmer's") quote, ambidextrous.”
-#: plugins/rdp/rdp_plugin.c:2727
+#: plugins/rdp/rdp_plugin.c:2767
 #, fuzzy
 msgid "Override printer drivers"
 msgstr "Printeri draiverite ületamine"
 
-#: plugins/rdp/rdp_plugin.c:2727
+#: plugins/rdp/rdp_plugin.c:2767
 #, fuzzy
 msgid ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
@@ -2657,215 +2657,215 @@ msgstr ""
 "\"Samsung_CLX-3300_Series\": \"Samsung CLX-3300 Series PS\"; \"Canon "
 "MF410\": \"Canon MF410 Series UFR II\""
 
-#: plugins/rdp/rdp_plugin.c:2728
+#: plugins/rdp/rdp_plugin.c:2768
 #, fuzzy
 msgid "USB device redirection"
 msgstr "USB-seadme ümbersuunamine"
 
-#: plugins/rdp/rdp_plugin.c:2729
+#: plugins/rdp/rdp_plugin.c:2769
 #, fuzzy
 msgid "Local serial name"
 msgstr "Kohalik seerianimi"
 
-#: plugins/rdp/rdp_plugin.c:2729
+#: plugins/rdp/rdp_plugin.c:2769
 #, fuzzy
 msgid "COM1, COM2, etc."
 msgstr "COM1, COM2 jne."
 
-#: plugins/rdp/rdp_plugin.c:2730
+#: plugins/rdp/rdp_plugin.c:2770
 #, fuzzy
 msgid "Local serial driver"
 msgstr "Kohalik jadaajam"
 
-#: plugins/rdp/rdp_plugin.c:2730
+#: plugins/rdp/rdp_plugin.c:2770
 #, fuzzy
 msgid "Serial"
 msgstr "Seeriaviisiline"
 
-#: plugins/rdp/rdp_plugin.c:2731
+#: plugins/rdp/rdp_plugin.c:2771
 #, fuzzy
 msgid "Local serial path"
 msgstr "Kohalik jadapikkus"
 
-#: plugins/rdp/rdp_plugin.c:2731
+#: plugins/rdp/rdp_plugin.c:2771
 #, fuzzy
 msgid "/dev/ttyS0, /dev/ttyS1, etc."
 msgstr "/dev/ttyS0, /dev/ttyS1 jne."
 
-#: plugins/rdp/rdp_plugin.c:2732
+#: plugins/rdp/rdp_plugin.c:2772
 #, fuzzy
 msgid "Local parallel name"
 msgstr "Kohaliku paralleeli nimi"
 
-#: plugins/rdp/rdp_plugin.c:2733
+#: plugins/rdp/rdp_plugin.c:2773
 #, fuzzy
 msgid "Local parallel device"
 msgstr "Kohalik paralleelne seade"
 
-#: plugins/rdp/rdp_plugin.c:2734
+#: plugins/rdp/rdp_plugin.c:2774
 #, fuzzy
 msgid "Name of smart card"
 msgstr "Nutikaardi nimi"
 
-#: plugins/rdp/rdp_plugin.c:2735
+#: plugins/rdp/rdp_plugin.c:2775
 #, fuzzy
 msgid "Dynamic virtual channel"
 msgstr "Dünaamiline virtuaalne kanal"
 
-#: plugins/rdp/rdp_plugin.c:2735 plugins/rdp/rdp_plugin.c:2736
+#: plugins/rdp/rdp_plugin.c:2775 plugins/rdp/rdp_plugin.c:2776
 #, fuzzy
 msgid "<channel>[,<options>]"
 msgstr "<kanal>[,<options>]"
 
-#: plugins/rdp/rdp_plugin.c:2736
+#: plugins/rdp/rdp_plugin.c:2776
 #, fuzzy
 msgid "Static virtual channel"
 msgstr "Staatiline virtuaalne kanal"
 
-#: plugins/rdp/rdp_plugin.c:2737
+#: plugins/rdp/rdp_plugin.c:2777
 #, fuzzy
 #| msgid "Per connection"
 msgid "TCP redirection"
 msgstr "TCP ümbersuunamine"
 
-#: plugins/rdp/rdp_plugin.c:2737
+#: plugins/rdp/rdp_plugin.c:2777
 #, fuzzy
 msgid "/PATH/TO/rdp2tcp"
 msgstr "/PATH/TO/rdp2tcp"
 
-#: plugins/rdp/rdp_plugin.c:2739
+#: plugins/rdp/rdp_plugin.c:2779
 #, fuzzy
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
 msgstr "IPv6 AAAA kirje eelistamine IPv4 A-kirjele"
 
-#: plugins/rdp/rdp_plugin.c:2740
+#: plugins/rdp/rdp_plugin.c:2780
 #, fuzzy
 msgid "Share printers"
 msgstr "Jaga printerid"
 
-#: plugins/rdp/rdp_plugin.c:2741
+#: plugins/rdp/rdp_plugin.c:2781
 #, fuzzy
 msgid "Share serial ports"
 msgstr "Jaga jadaportid"
 
-#: plugins/rdp/rdp_plugin.c:2742
+#: plugins/rdp/rdp_plugin.c:2782
 #, fuzzy
 msgid "(SELinux) permissive mode for serial ports"
 msgstr "(SELinux) lubav režiim jadaportide jaoks"
 
-#: plugins/rdp/rdp_plugin.c:2743
+#: plugins/rdp/rdp_plugin.c:2783
 #, fuzzy
 msgid "Share parallel ports"
 msgstr "Jaga paralleelporti"
 
-#: plugins/rdp/rdp_plugin.c:2744
+#: plugins/rdp/rdp_plugin.c:2784
 #, fuzzy
 msgid "Share a smart card"
 msgstr "Jagage kiipkaarti"
 
-#: plugins/rdp/rdp_plugin.c:2745 plugins/vnc/vnc_plugin.c:2009
+#: plugins/rdp/rdp_plugin.c:2785 plugins/vnc/vnc_plugin.c:2009
 #, fuzzy
 msgid "Turn off clipboard sync"
 msgstr "Väljalülituskasti sünkroonimise väljalülitamine"
 
-#: plugins/rdp/rdp_plugin.c:2746
+#: plugins/rdp/rdp_plugin.c:2786
 #, fuzzy
 msgid "Ignore certificate"
 msgstr "Ignoreeri sertifikaat"
 
-#: plugins/rdp/rdp_plugin.c:2747
+#: plugins/rdp/rdp_plugin.c:2787
 #, fuzzy
 msgid "Use the old license workflow"
 msgstr "Kasutage vana litsentsi töökorraldust"
 
-#: plugins/rdp/rdp_plugin.c:2747
+#: plugins/rdp/rdp_plugin.c:2787
 #, fuzzy
 msgid "It disables CAL and hwId is set to 0"
 msgstr "See lülitab CAL-i välja ja hwId on seatud 0-ks."
 
-#: plugins/rdp/rdp_plugin.c:2748 plugins/spice/spice_plugin.c:702
+#: plugins/rdp/rdp_plugin.c:2788 plugins/spice/spice_plugin.c:702
 #: plugins/vnc/vnc_plugin.c:2013 plugins/www/www_plugin.c:919
 #: plugins/gvnc/gvnc_plugin.c:867
 msgid "Forget passwords after use"
 msgstr "%s parool"
 
-#: plugins/rdp/rdp_plugin.c:2749
+#: plugins/rdp/rdp_plugin.c:2789
 #, fuzzy
 msgid "Attach to console (2003/2003 R2)"
 msgstr "Konsoolile kinnitamine (2003/2003 R2)"
 
-#: plugins/rdp/rdp_plugin.c:2750
+#: plugins/rdp/rdp_plugin.c:2790
 #, fuzzy
 msgid "Turn off fast-path"
 msgstr "Lülita kiire tee välja"
 
-#: plugins/rdp/rdp_plugin.c:2751
+#: plugins/rdp/rdp_plugin.c:2791
 #, fuzzy
 msgid "Server detection using Remote Desktop Gateway"
 msgstr "Serveri tuvastamine Remote Desktop Gateway abil"
 
-#: plugins/rdp/rdp_plugin.c:2753
+#: plugins/rdp/rdp_plugin.c:2793
 #, fuzzy
 msgid "Use system proxy settings"
 msgstr "Kasutage süsteemi proxy seadeid"
 
-#: plugins/rdp/rdp_plugin.c:2755
+#: plugins/rdp/rdp_plugin.c:2795
 #, fuzzy
 msgid "Turn off automatic reconnection"
 msgstr "Lülitage automaatne taasühendus välja"
 
-#: plugins/rdp/rdp_plugin.c:2756
+#: plugins/rdp/rdp_plugin.c:2796
 #, fuzzy
 msgid "Relax order checks"
 msgstr "Lõdvestage tellimuse kontrollimist"
 
-#: plugins/rdp/rdp_plugin.c:2757
+#: plugins/rdp/rdp_plugin.c:2797
 #, fuzzy
 msgid "Glyph cache"
 msgstr "Glüüfide vahemälu"
 
-#: plugins/rdp/rdp_plugin.c:2758
+#: plugins/rdp/rdp_plugin.c:2798
 #, fuzzy
 msgid "Enable multitransport protocol (UDP)"
 msgstr "Multitranspordiprotokolli (UDP) lubamine"
 
-#: plugins/rdp/rdp_plugin.c:2758
+#: plugins/rdp/rdp_plugin.c:2798
 #, fuzzy
 msgid "Using the UDP protocol may improve performance"
 msgstr "UDP-protokolli kasutamine võib parandada jõudlust"
 
-#: plugins/rdp/rdp_plugin.c:2759
+#: plugins/rdp/rdp_plugin.c:2799
 #, fuzzy
 msgid "Use base credentials for gateway too"
 msgstr "Kasutage ka värava jaoks baasvolitusi"
 
-#: plugins/rdp/rdp_plugin.c:2761
+#: plugins/rdp/rdp_plugin.c:2801
 #, fuzzy
 msgid "Enable Gateway websockets support"
 msgstr "Värava veebisokkide toe lubamine"
 
-#: plugins/rdp/rdp_plugin.c:2774 plugins/spice/spice_plugin.c:715
+#: plugins/rdp/rdp_plugin.c:2814 plugins/spice/spice_plugin.c:715
 #: plugins/vnc/vnc_plugin.c:2029
 #, fuzzy
 msgid "Send Ctrl+Alt+Delete"
 msgstr "Saada Ctrl+Alt+Kustuta"
 
-#: plugins/rdp/rdp_plugin.c:2787
+#: plugins/rdp/rdp_plugin.c:2827
 #, fuzzy
 msgid "RDP - Remote Desktop Protocol"
 msgstr "RDP - kaugtöölaua protokoll"
 
-#: plugins/rdp/rdp_plugin.c:2812
+#: plugins/rdp/rdp_plugin.c:2852
 #, fuzzy
 msgid "RDP - RDP File Handler"
 msgstr "RDP - RDP failikäsitleja"
 
-#: plugins/rdp/rdp_plugin.c:2827
+#: plugins/rdp/rdp_plugin.c:2867
 #, fuzzy
 msgid "RDP - Preferences"
 msgstr "RDP - Eelistused"
 
-#: plugins/rdp/rdp_plugin.c:2880
+#: plugins/rdp/rdp_plugin.c:2920
 #, fuzzy
 msgid "Export connection in Windows .rdp file format"
 msgstr "Ekspordi ühendus Windowsi .rdp failiformaadis"
