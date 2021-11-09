@@ -150,21 +150,21 @@ static void remmina_file_editor_class_init(RemminaFileEditorClass *klass)
  *
  * Mouse click and focus-loss will delete the window. \n
  * TODO: when Remmina Editor's content is scrollable and failed_widget is not even
- * 		 visible anymore, the window gets shown where failed_widget would be if
- *       Remmina Editor would be big enough. \n
+ *	 visible anymore, the window gets shown where failed_widget would be if
+ *       the Remmina Editor was big enough. \n
  * TODO: Responsive text size and line wrap.
  */
 static void remmina_file_editor_show_validation_error_popup(RemminaFileEditor *gfe,
-															GtkWidget *failed_widget,
-															GError *err) {
+							    GtkWidget *failed_widget,
+							    GError *err) {
 	if (!err) {
 		err = NULL; // g_set_error doesn't like overwriting errors.
 		g_set_error(&err, 1, 1, _("Input is invalid."));
 	}
 
 	if(!gfe || !failed_widget) {
-		g_critical("(%s): either passed RemminaFileEditor 'gfe' or "
-				   "GtkWidget* 'failed_widget' is NULL!", __func__);
+		g_critical("(%s): Parameters RemminaFileEditor 'gfe' or "
+			   "GtkWidget* 'failed_widget' are 'NULL'!", __func__);
 		return;
 	}
 
@@ -209,7 +209,7 @@ static void remmina_file_editor_show_validation_error_popup(RemminaFileEditor *g
 	gtk_label_set_markup(GTK_LABEL(err_label), markup);
 
 	alert_icon = gtk_image_new_from_icon_name("dialog-warning-symbolic",
-											  GTK_ICON_SIZE_DND);
+						  GTK_ICON_SIZE_DND);
 
 	// Fill icon and label into a box.
 	gtk_box_pack_start(GTK_BOX(box), GTK_WIDGET(alert_icon), FALSE, FALSE, 0);
@@ -223,9 +223,9 @@ static void remmina_file_editor_show_validation_error_popup(RemminaFileEditor *g
 
 	// Mouse click and focus-loss will delete the err_window.
 	g_signal_connect(G_OBJECT (err_window), "focus-out-event",
-						G_CALLBACK(gtk_window_close), NULL);
+			 G_CALLBACK(gtk_window_close), NULL);
 	g_signal_connect(G_OBJECT (err_window), "button-press-event",
-						G_CALLBACK(gtk_window_close), NULL);
+			 G_CALLBACK(gtk_window_close), NULL);
 }
 
 #ifdef HAVE_LIBAVAHI_UI
