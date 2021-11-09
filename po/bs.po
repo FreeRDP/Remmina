@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-11-08 14:57+0000\n"
-"PO-Revision-Date: 2021-10-05 14:04+0000\n"
+"POT-Creation-Date: 2021-11-09 14:11+0000\n"
+"PO-Revision-Date: 2021-11-09 14:11+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Bosnian <https://hosted.weblate.org/projects/remmina/remmina/"
 "bs/>\n"
@@ -26,7 +26,7 @@ msgstr ""
 #: src/remmina_protocol_widget.c:1676 src/remmina_protocol_widget.c:1695
 #: src/remmina_file_editor.c:1101 src/remmina_file_editor.c:1222
 #: src/remmina_ssh_plugin.c:1360 plugins/rdp/rdp_plugin.c:2720
-#: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:1596
+#: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:2535
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1675
 #: data/ui/remmina_unlock.glade:116
 msgid "Password"
@@ -78,7 +78,8 @@ msgstr "Poveži se preko SSH-a sa novog terminala"
 #: src/remmina_file_editor.c:1216 src/remmina_ssh_plugin.c:1470
 #: plugins/rdp/rdp_plugin.c:2719 plugins/vnc/vnc_plugin.c:1976
 #: plugins/vnc/vnc_plugin.c:1988 plugins/www/www_plugin.c:894
-#: plugins/x2go/x2go_plugin.c:1595 data/ui/remmina_mpc.glade:144
+#: plugins/x2go/x2go_plugin.c:512 plugins/x2go/x2go_plugin.c:2534
+#: data/ui/remmina_mpc.glade:144
 #, fuzzy
 msgid "Username"
 msgstr "Korisničko ime"
@@ -261,7 +262,7 @@ msgstr ""
 #: data/ui/remmina_unlock.glade:46
 #, fuzzy
 msgid "Cancel"
-msgstr "Otkaži"
+msgstr "Odustani"
 
 #: src/remmina_message_panel.c:199 data/ui/remmina_snap_info_dialog.glade:28
 #: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
@@ -375,7 +376,7 @@ msgstr "_Menu"
 #: src/rcw.c:2299
 #, fuzzy
 msgid "Menu"
-msgstr "Meni"
+msgstr "Jelovnik"
 
 #: src/rcw.c:2308
 #, fuzzy
@@ -437,7 +438,7 @@ msgstr "Alati"
 #: data/ui/remmina_preferences.glade:1277
 #, fuzzy
 msgid "Screenshot"
-msgstr "Slika zaslona"
+msgstr "Snimak ekrana"
 
 #: src/rcw.c:2515 data/ui/remmina_preferences.glade:1174
 msgid "Minimize window"
@@ -552,7 +553,7 @@ msgstr "TABINDEX"
 #: src/remmina.c:106
 #, fuzzy
 msgid "Quit"
-msgstr "Izaći"
+msgstr "Prestani"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:108
@@ -760,7 +761,7 @@ msgstr "Idi na početni folder"
 #: src/remmina_ftp_client.c:753
 #, fuzzy
 msgid "Up"
-msgstr "Up"
+msgstr "Gore"
 
 #: src/remmina_ftp_client.c:754
 msgid "Go to parent folder"
@@ -1235,8 +1236,9 @@ msgid "Plugin %s is not registered."
 msgstr "Dodatak %s nije registrovan."
 
 #: src/remmina_main.c:669
+#, fuzzy
 msgid "The latest successful connection attempt, or a pre-computed date"
-msgstr ""
+msgstr "Najnoviji uspješan pokušaj povezivanja, ili pred-računalni datum"
 
 #: src/remmina_main.c:671
 #, c-format
@@ -1553,7 +1555,7 @@ msgstr "Napredno"
 #: src/remmina_file_editor.c:1310
 #, fuzzy
 msgid "Notes"
-msgstr "Napomene"
+msgstr "Zabilješke"
 
 #: src/remmina_file_editor.c:1438
 #, fuzzy, c-format
@@ -1572,8 +1574,8 @@ msgstr ""
 "'setting_name_to_validate', 'value' ili 'gfe' NULL!"
 
 #. TRANSLATORS: Meta-error. Shouldn't be visible.
-#: src/remmina_file_editor.c:1445 plugins/x2go/x2go_plugin.c:856
-#: plugins/x2go/x2go_plugin.c:1440
+#: src/remmina_file_editor.c:1445 plugins/x2go/x2go_plugin.c:1746
+#: plugins/x2go/x2go_plugin.c:2360
 #, fuzzy
 msgid "Internal error."
 msgstr "Unutrašnja greška."
@@ -1606,7 +1608,7 @@ msgstr "Koristi trenutne postavke kao zadane za sve nove profile veze"
 #: src/remmina_file_editor.c:1796 data/ui/remmina_main.glade:160
 #, fuzzy
 msgid "Connect"
-msgstr "Poveži"
+msgstr "Spoji se"
 
 #: src/remmina_file_editor.c:1799
 #, fuzzy
@@ -1630,10 +1632,13 @@ msgstr "Neuspjelo kreiranje SFTP sesije: %s"
 #. TRANSLATORS: This is a message that pops up when an external Remmina plugin tries to set the window resolution using a legacy parameter.
 #. TRANSLATORS: This is a message that pop-up when an external Remmina plugin tries to set the windows resolution using a legacy parameter.
 #: src/remmina_file.c:451 src/remmina_file.c:497
+#, fuzzy
 msgid ""
 "Using the «resolution» parameter in the Remmina preferences file is "
 "deprecated.\n"
 msgstr ""
+"Korištenje parametra \"rezolucija\" u datoteci Remmina preferences je "
+"zastarjelo.\n"
 
 #: src/remmina_icon.c:136
 msgid "Open Main Window"
@@ -1642,7 +1647,7 @@ msgstr "Otvori glavni prozor"
 #: src/remmina_icon.c:141 data/ui/remmina_main.glade:254
 #, fuzzy
 msgid "_Preferences"
-msgstr "Postavke ..."
+msgstr "Postavke"
 
 #: src/remmina_icon.c:146
 #, fuzzy
@@ -1670,58 +1675,63 @@ msgid "Connect to remote desktops through the applet menu"
 msgstr "Povezivanje sa udaljenim desktopima preko menija apleta"
 
 #: src/remmina_icon.c:359
+#, fuzzy
 msgid "StatusNotifier/Appindicator support in “"
-msgstr ""
+msgstr "Podrška za StatusNotifier/Appindicator u \""
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:366
-#, c-format
+#, fuzzy, c-format
 msgid "%s your desktop does support it"
-msgstr ""
+msgstr "%s vaša radna površina ga podržava"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:368
-#, c-format
+#, fuzzy, c-format
 msgid "%s and Remmina has built-in (compiled) support for libappindicator."
-msgstr ""
+msgstr "%s i Remmina ima ugrađenu (kompajliranu) podršku za libappindicator."
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:371
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "%s not supported natively by your Desktop Environment. libappindicator will "
 "try to fallback to GtkStatusIcon/xembed"
 msgstr ""
+"%s nije podržano nativno od strane vašeg Desktop Environmenta. "
+"libappindicator će pokušati da se vrati u GtkStatusIcon/xembed"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:375
-#, c-format
+#, fuzzy, c-format
 msgid "%s You may need to install, and use XApp Status Applet"
-msgstr ""
+msgstr "%s Možda ćete morati instalirati, i koristiti XApp Status Aplet"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:378
-#, c-format
+#, fuzzy, c-format
 msgid "%s You may need to install, and use KStatusNotifierItem"
-msgstr ""
+msgstr "%s Možda ćete morati instalirati, i koristiti KStatusNotifierItem"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:381
-#, c-format
+#, fuzzy, c-format
 msgid "%s You may need to install, and use XEmbed SNI Proxy"
-msgstr ""
+msgstr "%s Možda ćete morati instalirati, i koristiti XEmbed SNI Proxy"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:384
-#, c-format
+#, fuzzy, c-format
 msgid "%s You may need to install, and use Gnome Shell Extension Appindicator"
 msgstr ""
+"%s Možda ćete morati instalirati, i koristiti Gnome Shell Extension "
+"Appindicator"
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_ssh_plugin.c:539
 #, fuzzy, c-format
 msgid "Error: %s"
-msgstr "Greška:"
+msgstr "Greška: %s"
 
 #: src/remmina_ssh_plugin.c:556
 #, fuzzy
@@ -1784,12 +1794,12 @@ msgstr "_Paste"
 #: src/remmina_ssh_plugin.c:1441
 #, fuzzy
 msgid "Select all"
-msgstr "Select all"
+msgstr "Izaberi sve"
 
 #: src/remmina_ssh_plugin.c:1441
 #, fuzzy
 msgid "_Select all"
-msgstr "Select all"
+msgstr "_Select sve"
 
 #: src/remmina_ssh_plugin.c:1442
 #, fuzzy
@@ -3173,7 +3183,7 @@ msgstr ""
 #: plugins/exec/exec_plugin.c:274
 #, fuzzy
 msgid "Command"
-msgstr "Naredba"
+msgstr "Komandu"
 
 #: plugins/exec/exec_plugin.c:275
 #, fuzzy
@@ -3194,27 +3204,139 @@ msgstr "Zdravo svijete!"
 msgid "Secured password storage in the GNOME keyring"
 msgstr "%s lozinka"
 
-#: plugins/x2go/x2go_plugin.c:275
+#: plugins/x2go/x2go_plugin.c:67
+#, c-format
+msgid ""
+"The command-line feature '%s' is not available! Attempting to start PyHoca-"
+"CLI without using this feature…"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:277
 #, fuzzy
 msgid "Broken `DialogData`! Aborting…"
 msgstr "Slomljena 'DijaloškiData'! Prekidam…"
 
-#: plugins/x2go/x2go_plugin.c:279
+#: plugins/x2go/x2go_plugin.c:281
 #, fuzzy
 msgid "Can't retrieve `DialogData`! Aborting…"
 msgstr "Ne mogu dohvatiti 'DijaloškiData'! Prekidam…"
 
-#: plugins/x2go/x2go_plugin.c:505
+#: plugins/x2go/x2go_plugin.c:438
 #, fuzzy
-msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
-msgstr "Pyhoca-cli je izašao neočekivano. Ova veza će sada biti zatvorena."
+msgid "Couldn't retrieve valid `DialogData` or `sessions_list`! Aborting…"
+msgstr "Ne mogu dohvatiti 'DijaloškiData'! Prekidam…"
+
+#: plugins/x2go/x2go_plugin.c:445
+msgid "_New"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:447
+#, fuzzy
+msgid "_Select session"
+msgstr "_Select sve"
+
+#: plugins/x2go/x2go_plugin.c:506
+msgid "Display"
+msgstr "Prikaz"
+
+#: plugins/x2go/x2go_plugin.c:507
+msgid "Status"
+msgstr "Status"
+
+#: plugins/x2go/x2go_plugin.c:508
+#, fuzzy
+#| msgid "Permission"
+msgid "Session ID"
+msgstr "Dopuštenje"
+
+#: plugins/x2go/x2go_plugin.c:509
+msgid "Create date"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:510
+msgid "Suspended since"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:511
+msgid "Agent PID"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:513
+#, fuzzy
+msgid "Hostname"
+msgstr "Korisničko ime"
 
 #: plugins/x2go/x2go_plugin.c:514
+msgid "Cookie"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:515
+msgid "Graphic port"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:516
+msgid "SND port"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:517
+#, fuzzy
+msgid "SSHFS port"
+msgstr "Lokalna SSH luka"
+
+#: plugins/x2go/x2go_plugin.c:519 plugins/x2go/x2go_plugin.c:585
+#: plugins/x2go/x2go_plugin.c:599 plugins/x2go/x2go_plugin.c:614
+#: plugins/x2go/x2go_plugin.c:626 plugins/x2go/x2go_plugin.c:936
+#: plugins/x2go/x2go_plugin.c:947 plugins/x2go/x2go_plugin.c:955
+#: plugins/x2go/x2go_plugin.c:1060 plugins/x2go/x2go_plugin.c:1094
+#: plugins/x2go/x2go_plugin.c:1200 plugins/x2go/x2go_plugin.c:2212
+#: plugins/x2go/x2go_plugin.c:2425 plugins/x2go/x2go_plugin.c:2430
+#: plugins/x2go/x2go_plugin.c:2435 plugins/x2go/x2go_plugin.c:2440
+#: plugins/x2go/x2go_plugin.c:2455 plugins/x2go/x2go_plugin.c:2460
+#: plugins/x2go/x2go_plugin.c:2465 plugins/x2go/x2go_plugin.c:2470
+#, fuzzy, c-format
+msgid "Internal error: %s"
+msgstr "Unutrašnja greška: "
+
+#: plugins/x2go/x2go_plugin.c:520
+msgid "Unknown property"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:586
+msgid "Couldn't find child GtkTreeView of session chooser dialog."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:600
+msgid "only one session should be able to be selected."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:615
+msgid "Failed to fill 'GtkTreeIter'."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:627
+msgid "Couldn't get session ID out of selected row."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:660
+msgid "Couldn't get session ID from session chooser dialog."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:667
+#, c-format
+msgid "Resuming session: '%s'"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:892
+#, fuzzy
+msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
+msgstr "PyHoca-CLI je izašao neočekivano. Ova veza će sada biti zatvorena."
+
+#: plugins/x2go/x2go_plugin.c:901
 #, fuzzy
 msgid "An error occured."
 msgstr "Došlo je do greške."
 
-#: plugins/x2go/x2go_plugin.c:515
+#: plugins/x2go/x2go_plugin.c:902
 #, fuzzy
 msgid ""
 "The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
@@ -3222,35 +3344,66 @@ msgid ""
 "errors. Also ensure the remote server is reachable."
 msgstr ""
 "Neophodan dječiji proces 'pyhoca-cli' je neočekivano prestao.\n"
-"Molimo provjerite postavke profila i izlaz Pyhoca-clia za moguće greške i "
-"osigurajte da je udaljeni server dosegljiv."
+"Molimo provjerite postavke profila i izlaz PyHoca-CLI za moguće greške. "
+"Također osiguraj da je udaljeni server dosegljiv."
 
-#: plugins/x2go/x2go_plugin.c:561
+#: plugins/x2go/x2go_plugin.c:937
+msgid "parameter 'argv' is 'NULL'."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:948
+msgid "parameter 'error' is 'NULL'."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:956
+msgid "parameter 'env' is either invalid or uninitialized."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:972
 #, fuzzy
 msgid "Started PyHoca-CLI with the following arguments:"
-msgstr "Počeo pyhoca-cli sa sljedećim argumentima:"
+msgstr "Pokrenuo PyHoca-CLI sa sljedećim argumentima:"
 
-#: plugins/x2go/x2go_plugin.c:580
-#, fuzzy, c-format
-msgid "Could not retrieve PyHoca-CLI's command-line features! Exit code: %i"
+#: plugins/x2go/x2go_plugin.c:988
+#, fuzzy
+msgid "Started PyHoca-CLI with the following environment variables:"
+msgstr "Pokrenuo PyHoca-CLI sa sljedećim argumentima:"
+
+#: plugins/x2go/x2go_plugin.c:997
+msgid ""
+"The necessary PyHoca-CLI process has encountered a internet connection "
+"problem."
 msgstr ""
-"Dogodila se nepoznata greška dok je dohvaæao pyhoca-cli-ove cmdline "
-"funkcije! Izlazni kod: %i"
 
-#: plugins/x2go/x2go_plugin.c:585
-#, fuzzy, c-format
-msgid "Error: '%s'"
-msgstr "Greška: '%s'"
+#: plugins/x2go/x2go_plugin.c:1007
+#, fuzzy
+msgid "An unknown error occured while trying to start PyHoca-CLI."
+msgstr "Došlo je do greške prilikom pokretanja X2Go sesije…"
 
-#: plugins/x2go/x2go_plugin.c:609
+#: plugins/x2go/x2go_plugin.c:1017
+#, c-format
+msgid ""
+"An unknown error occured while trying to start PyHoca-CLI. Exit code: %i"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1022
+#, c-format
+msgid ""
+"An unknown error occured while trying to start PyHoca-CLI. Exit code: %i. "
+"Error: '%s'"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1047
+#, fuzzy
 msgid "Can't save empty username!"
-msgstr ""
+msgstr "Ne mogu sačuvati prazno korisničko ime!"
 
-#: plugins/x2go/x2go_plugin.c:621
-msgid "Internal error: Could not save new credentials."
-msgstr ""
+#: plugins/x2go/x2go_plugin.c:1061
+#, fuzzy
+msgid "Could not save new credentials."
+msgstr "Unutrašnja greška: ne mogu sačuvati nove akreditive."
 
-#: plugins/x2go/x2go_plugin.c:623
+#: plugins/x2go/x2go_plugin.c:1064
 #, fuzzy
 msgid ""
 "An error occured while trying to save new credentials: 's_password' or "
@@ -3259,101 +3412,161 @@ msgstr ""
 "Došlo je do greške prilikom pokušaja čuvanja novih akreditiva: niske "
 "'s_password' ili 's_username' nisu bile postavljene."
 
-#: plugins/x2go/x2go_plugin.c:659
+#: plugins/x2go/x2go_plugin.c:1095
+msgid "Parameter 'default_username' is uninitialized."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1124
 #, fuzzy
 msgid "Enter X2Go credentials"
 msgstr "Unesite X2Go akreditive"
 
-#: plugins/x2go/x2go_plugin.c:818
+#: plugins/x2go/x2go_plugin.c:1201
+#, fuzzy
+#| msgid "Per connection"
+msgid "'Invalid connection data.'"
+msgstr "Zajednička veza"
+
+#: plugins/x2go/x2go_plugin.c:1323
+msgid ""
+"Couldn't parse the output of PyHoca-CLI's --list-sessions option. Creating a "
+"new session now."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1362
+msgid "Couldn't allocate enough memory!"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1372
+#, c-format
+msgid "Found already existing X2Go session with ID: '%s'"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1444
+msgid ""
+"Could not find any sessions on remote machine. Creating a new session now."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1485
+#, fuzzy
+#| msgid "Choose a file to upload"
+msgid "Choose a session to resume:"
+msgstr "Odaberi datoteku za slanje"
+
+#: plugins/x2go/x2go_plugin.c:1502
+#, fuzzy
+msgid "Waiting for user to select a session…"
+msgstr "Čekam da PyHoca-CLI pokaže prozor sesije…"
+
+#: plugins/x2go/x2go_plugin.c:1510
+msgid "No session was selected. Creating a new one."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1558
+#, c-format
+msgid "A non-critical error happened: %s"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1563
+#, c-format
+msgid "User chose to resume session with ID: '%s'"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1583
+#, c-format
+msgid "Resuming session '%s'…"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1706
 #, fuzzy
 msgid "DPI setting is out of bounds. Please adjust it in profile settings."
 msgstr ""
 "Postavka DPI je van granica. Molim vas podesite ga u postavkama profila."
 
-#: plugins/x2go/x2go_plugin.c:838
+#: plugins/x2go/x2go_plugin.c:1728
 #, fuzzy
 msgid "Started pyhoca-cli with following arguments:"
 msgstr "Počeo pyhoca-cli sa sljedećim argumentima:"
 
-#: plugins/x2go/x2go_plugin.c:858
+#: plugins/x2go/x2go_plugin.c:1748
 #, fuzzy
 msgid "An error occured while starting an X2Go session…"
 msgstr "Došlo je do greške prilikom pokretanja X2Go sesije…"
 
-#: plugins/x2go/x2go_plugin.c:867
+#: plugins/x2go/x2go_plugin.c:1757
 #, fuzzy
 #| msgid "Could not start SSH session. %s"
 msgid "Could not start X2Go session."
 msgstr "Nisam mogao pokrenuti X2Go sesiju."
 
-#: plugins/x2go/x2go_plugin.c:868
+#: plugins/x2go/x2go_plugin.c:1758
 #, fuzzy, c-format
 #| msgid "Could not start SSH session. %s"
 msgid "Could not start PyHoca-CLI (%i): '%s'"
 msgstr "Nisam mogao pokrenuti PyHoca-CLI (%i): '%s'"
 
-#: plugins/x2go/x2go_plugin.c:945
+#: plugins/x2go/x2go_plugin.c:1857
 #, fuzzy
 msgid ""
 "Couldn't get PyHoca-CLI's command-line features. This indicates it is either "
 "too old, or not installed. An old limited set of features will be used for "
 "now."
 msgstr ""
-"Nisam mogao dobiti Pyhoca-cli-ove cmdline-osobine. Ovo ukazuje ili je vaša "
-"pyhoca-cli verzija prestar ili pyhoca-cli nije instaliran! Sada će se "
-"koristiti stari ograničeni skup funkcija."
+"Nisam mogao dobiti PyHoca-CLI-ove funkcije komandne linije. To ukazuje da je "
+"ili prestar, ili nije instaliran. Za sada će se koristiti stari ograničeni "
+"skup funkcija."
 
-#: plugins/x2go/x2go_plugin.c:956
+#: plugins/x2go/x2go_plugin.c:1866
 #, fuzzy
 msgid ""
 "Could not parse PyHoca-CLI's command-line features. Using a limited feature-"
 "set for now."
 msgstr ""
-"Parsing pyhoca-cli funkcionalnost nije bio moguć! Koristim ograničen skup "
-"funkcija za sada."
+"Nisam mogao da poređam PyHoca-CLI-ove funkcije komandne linije. Koristim "
+"ograničen skup funkcija za sada."
 
-#: plugins/x2go/x2go_plugin.c:962
+#: plugins/x2go/x2go_plugin.c:1872
 #, fuzzy
 msgid "Retrieved the following PyHoca-CLI command-line features:"
-msgstr "Retrieved the following pyhoca-cli functionality:"
+msgstr "Retrieved the following PyHoca-CLI command-line features:"
 
-#: plugins/x2go/x2go_plugin.c:967
+#: plugins/x2go/x2go_plugin.c:1880
 #, fuzzy, c-format
 msgid "Available feature[%i]: '%s'"
 msgstr "Dostupna funkcija[%i]: '%s'"
 
-#: plugins/x2go/x2go_plugin.c:1072
+#: plugins/x2go/x2go_plugin.c:1985
 #, fuzzy
 #| msgid "Could not open channel. %s"
 msgid "Could not open X11 DISPLAY."
 msgstr "Nisam mogao otvoriti X11 DISPLAY."
 
-#: plugins/x2go/x2go_plugin.c:1112
+#: plugins/x2go/x2go_plugin.c:2025
 #, fuzzy
 msgid "Waiting for window of X2Go Agent to appear…"
-msgstr "Čekam da se pojavi prozor X2Go agenta."
+msgstr "Čekam da se pojavi prozor X2Go agenta…"
 
-#: plugins/x2go/x2go_plugin.c:1138
+#: plugins/x2go/x2go_plugin.c:2051
 #, fuzzy
 msgid "Waiting for PyHoca-CLI to show the session's window…"
-msgstr "Čekam da Pyhoca-cli pokaže prozor sesije."
+msgstr "Čekam da PyHoca-CLI pokaže prozor sesije…"
 
-#: plugins/x2go/x2go_plugin.c:1189
+#: plugins/x2go/x2go_plugin.c:2102
 #, fuzzy
 msgid "No X2Go session window appeared. Something went wrong…"
 msgstr "Nije se pojavio prozor X2Go sesije. Nešto je pošlo po zlu…"
 
-#: plugins/x2go/x2go_plugin.c:1298
+#: plugins/x2go/x2go_plugin.c:2213
 #, fuzzy
-msgid "Internal error: RemminaProtocolWidget* gp is NULL!"
+msgid "RemminaProtocolWidget* gp is 'NULL'!"
 msgstr "Unutrašnja greška: RemminaProtocolWidget* gp je NULL!"
 
-#: plugins/x2go/x2go_plugin.c:1319
+#: plugins/x2go/x2go_plugin.c:2234
 #, fuzzy, c-format
 msgid "The %s protocol is unavailable because GtkSocket only works under X.org"
-msgstr "Protokol %s je nedostupan jer GtkSocket radi samo pod X.org"
+msgstr "%s protokol je nedostupan jer GtkSocket radi samo pod X.org"
 
-#: plugins/x2go/x2go_plugin.c:1327
+#: plugins/x2go/x2go_plugin.c:2243
 #, fuzzy
 msgid "Could not initialize pthread. Falling back to non-threaded mode…"
 msgstr "Nisam mogao inicijalizirati nit. Vraćam se u ne-navlaka način…"
@@ -3366,7 +3579,7 @@ msgstr "Nisam mogao inicijalizirati nit. Vraćam se u ne-navlaka način…"
 #. your language.
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
-#: plugins/x2go/x2go_plugin.c:1370 plugins/x2go/x2go_plugin.c:1388
+#: plugins/x2go/x2go_plugin.c:2286 plugins/x2go/x2go_plugin.c:2304
 #, fuzzy, c-format
 msgid "%sand '%s'"
 msgstr "%si '%s'"
@@ -3377,7 +3590,7 @@ msgstr "%si '%s'"
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
-#: plugins/x2go/x2go_plugin.c:1375 plugins/x2go/x2go_plugin.c:1393
+#: plugins/x2go/x2go_plugin.c:2291 plugins/x2go/x2go_plugin.c:2309
 #, fuzzy, c-format
 msgid "%s'%s' "
 msgstr "%s'%s' "
@@ -3385,135 +3598,138 @@ msgstr "%s'%s' "
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
 #. 'value1', 'value2', 'valueN-1' and 'valueN'
-#: plugins/x2go/x2go_plugin.c:1380
+#: plugins/x2go/x2go_plugin.c:2296
 #, fuzzy, c-format
 msgid "%s'%s', "
 msgstr "%s'%s', "
 
-#: plugins/x2go/x2go_plugin.c:1418
+#: plugins/x2go/x2go_plugin.c:2335
 #, fuzzy
 msgid "Invalid validation data in ProtocolSettings array!"
-msgstr "Podaci o validaciji u ProtocolSettings arrayu su nevažeći!"
+msgstr "Nevažeći podaci za validaciju u ProtocolSettings arrayu!"
 
-#: plugins/x2go/x2go_plugin.c:1430 plugins/x2go/x2go_plugin.c:1492
+#: plugins/x2go/x2go_plugin.c:2350 plugins/x2go/x2go_plugin.c:2415
 #, fuzzy
 msgid "Validation data in ProtocolSettings array is invalid!"
 msgstr "Podaci o validaciji u ProtocolSettings arrayu su nevažeći!"
 
-#: plugins/x2go/x2go_plugin.c:1457
+#: plugins/x2go/x2go_plugin.c:2359
+msgid "Parameters 'key' or 'value' are 'NULL'!"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:2377
 #, fuzzy, c-format
 msgid "Allowed values are %s."
 msgstr "Dozvoljene vrijednosti su %s."
 
-#: plugins/x2go/x2go_plugin.c:1459
+#: plugins/x2go/x2go_plugin.c:2379
 #, fuzzy, c-format
 msgid "The only allowed value is '%s'."
-msgstr "Samo dozvoljena vrijednost je '%s'."
+msgstr "Jedina dozvoljena vrijednost je '%s'."
 
-#: plugins/x2go/x2go_plugin.c:1501
+#: plugins/x2go/x2go_plugin.c:2426
 #, fuzzy
 msgid "The lower limit is not a valid integer!"
-msgstr "Limit minimum nije važeći integer!"
+msgstr "Donja granica nije važeći integer!"
 
-#: plugins/x2go/x2go_plugin.c:1503
-msgid "The lower limit is too high!"
-msgstr ""
-
-#: plugins/x2go/x2go_plugin.c:1505
-msgid "The lower limit is too low!"
-msgstr ""
-
-#: plugins/x2go/x2go_plugin.c:1507 plugins/x2go/x2go_plugin.c:1533
-#: plugins/x2go/x2go_plugin.c:1552
+#: plugins/x2go/x2go_plugin.c:2431
 #, fuzzy
-msgid "Something went wrong."
+msgid "The lower limit is too high!"
+msgstr "Donja granica je previsoka!"
+
+#: plugins/x2go/x2go_plugin.c:2436
+#, fuzzy
+msgid "The lower limit is too low!"
+msgstr "Donja granica je preniska!"
+
+#: plugins/x2go/x2go_plugin.c:2441 plugins/x2go/x2go_plugin.c:2471
+#: plugins/x2go/x2go_plugin.c:2491
+#, fuzzy
+msgid "Something unknown went wrong."
 msgstr "Nešto je pošlo po zlu."
 
-#: plugins/x2go/x2go_plugin.c:1511 plugins/x2go/x2go_plugin.c:1537
-#: plugins/x2go/x2go_plugin.c:1556
-msgid "Please check the RemminaProtocolSetting array for possible errors."
-msgstr ""
-
-#: plugins/x2go/x2go_plugin.c:1520 plugins/x2go/x2go_plugin.c:1524
-#: plugins/x2go/x2go_plugin.c:1528 plugins/x2go/x2go_plugin.c:1532
+#: plugins/x2go/x2go_plugin.c:2446 plugins/x2go/x2go_plugin.c:2476
+#: plugins/x2go/x2go_plugin.c:2495
 #, fuzzy
-msgid "Internal error: "
-msgstr "Unutrašnja greška."
+msgid "Please check the RemminaProtocolSetting array for possible errors."
+msgstr "Molimo provjerite RemminaProtocolSetting niz za moguće greške."
 
-#: plugins/x2go/x2go_plugin.c:1521
+#: plugins/x2go/x2go_plugin.c:2456
 #, fuzzy
 msgid "The upper limit is not a valid integer!"
-msgstr "Ulaz nije važeći integer!"
+msgstr "Gornje ograničenje nije važeći integer!"
 
-#: plugins/x2go/x2go_plugin.c:1525
+#: plugins/x2go/x2go_plugin.c:2461
+#, fuzzy
 msgid "The upper limit is too high!"
-msgstr ""
+msgstr "Gornji limit je previsok!"
 
-#: plugins/x2go/x2go_plugin.c:1529
+#: plugins/x2go/x2go_plugin.c:2466
+#, fuzzy
 msgid "The upper limit is too low!"
-msgstr ""
+msgstr "Gornje ograničenje je prenisko!"
 
-#: plugins/x2go/x2go_plugin.c:1547
+#: plugins/x2go/x2go_plugin.c:2486
 #, fuzzy
 msgid "The input is not a valid integer!"
 msgstr "Ulaz nije važeći integer!"
 
-#: plugins/x2go/x2go_plugin.c:1549 plugins/x2go/x2go_plugin.c:1568
+#: plugins/x2go/x2go_plugin.c:2488 plugins/x2go/x2go_plugin.c:2507
 #, fuzzy, c-format
 msgid "Input must be a number between %i and %i."
 msgstr "Ulaz mora biti broj između %i i %i."
 
-#: plugins/x2go/x2go_plugin.c:1597
+#: plugins/x2go/x2go_plugin.c:2536
 #, fuzzy
 #| msgid "Start-up program"
 msgid "Startup program"
 msgstr "Program koji se pokreće"
 
-#: plugins/x2go/x2go_plugin.c:1599
+#: plugins/x2go/x2go_plugin.c:2538
 #, fuzzy
 msgid "Which command should be executed after creating the X2Go session?"
 msgstr "Koja komanda treba da se izvrši nakon kreiranja X2Go sesije?"
 
-#: plugins/x2go/x2go_plugin.c:1601
+#: plugins/x2go/x2go_plugin.c:2540
 #, fuzzy
 #| msgid "Keyboard layout"
 msgid "Keyboard Layout (auto)"
 msgstr "Raspored tastature (automatski)"
 
-#: plugins/x2go/x2go_plugin.c:1602
+#: plugins/x2go/x2go_plugin.c:2541
 #, fuzzy
 #| msgid "Keyboard layout"
 msgid "Keyboard type (auto)"
 msgstr "Tip tastature (auto)"
 
-#: plugins/x2go/x2go_plugin.c:1603
+#: plugins/x2go/x2go_plugin.c:2542
 #, fuzzy
 msgid "Audio support"
 msgstr "Audio podrška"
 
-#: plugins/x2go/x2go_plugin.c:1605
+#: plugins/x2go/x2go_plugin.c:2544
 #, fuzzy
 msgid "The sound system of the X2Go server (default: 'pulse')."
 msgstr "Zvučni sistem X2Go servera (zadano: 'puls')."
 
-#: plugins/x2go/x2go_plugin.c:1608
+#: plugins/x2go/x2go_plugin.c:2547
 #, fuzzy
 #| msgid "Per connection"
 msgid "Clipboard direction"
 msgstr "Smjer međuspremnika"
 
-#: plugins/x2go/x2go_plugin.c:1610
+#: plugins/x2go/x2go_plugin.c:2549
 #, fuzzy
 msgid "Which direction should clipboard content be copied? (default: 'both')."
 msgstr "Koji pravac treba kopirati sadržaj međuspremnika? (default: 'both')."
 
-#: plugins/x2go/x2go_plugin.c:1614
+#: plugins/x2go/x2go_plugin.c:2553
 #, fuzzy
 #| msgid "Resolution"
 msgid "DPI resolution"
 msgstr "DPI rezolucija"
 
-#: plugins/x2go/x2go_plugin.c:1615
+#: plugins/x2go/x2go_plugin.c:2554
 #, fuzzy
 msgid ""
 "Launch session with a specific resolution (in dots per inch). Must be "
@@ -3522,7 +3738,7 @@ msgstr ""
 "Pokretanje sesije sa određenom rezolucijom (u tačci po inču). Mora da je "
 "između 20 i 400."
 
-#: plugins/x2go/x2go_plugin.c:1659
+#: plugins/x2go/x2go_plugin.c:2598
 #, fuzzy
 msgid "X2Go plugin loaded."
 msgstr "X2Go plugin napunjen."
@@ -3830,15 +4046,14 @@ msgid ""
 "Copyright © 2009–2014 Vic Lee\n"
 "More details in COPYING"
 msgstr ""
-"\n"
 "Copyright © 2014–2021 Antenore Gatta, Giovanni Panozzo.\n"
 "Copyright © 2009–2014 Vic Lee\n"
-"Više detalja u KOPIRANJU\n"
-"    "
+"Više detalja u KOPIRANJU"
 
 #: data/ui/remmina_about.glade:38
+#, fuzzy
 msgid "https://www.remmina.org/"
-msgstr ""
+msgstr "https://www.remmina.org/"
 
 #: data/ui/remmina_string_list.glade:14 data/ui/remmina_string_list.glade:158
 #, fuzzy
@@ -3869,7 +4084,7 @@ msgstr "<span weight='bold' size='larger'> Multi Password Changer</span>"
 #: data/ui/remmina_mpc.glade:32
 #, fuzzy
 msgid "Change"
-msgstr "Promijeni"
+msgstr "Izmijeniti"
 
 #: data/ui/remmina_mpc.glade:201
 #, fuzzy
@@ -3879,7 +4094,7 @@ msgstr "Kriteriji odabira"
 #: data/ui/remmina_mpc.glade:261
 #, fuzzy
 msgid "Confirm password"
-msgstr "Potvrdi novu lozinku"
+msgstr "Potvrdite lozinku"
 
 #: data/ui/remmina_mpc.glade:294
 msgid "Set new password"
@@ -3890,7 +4105,7 @@ msgstr "Sačuvaj šifru"
 #, fuzzy
 msgctxt "Multi password changer"
 msgid "Select"
-msgstr "Izaberi"
+msgstr "Izabrati"
 
 #: data/ui/remmina_mpc.glade:343
 msgctxt "Multi password changer table"
@@ -4066,12 +4281,12 @@ msgstr "Ime servera ili IP adresa"
 #: data/ui/remmina_preferences.glade:504
 #, fuzzy
 msgid "Clear"
-msgstr "Isprazni"
+msgstr "Čisto"
 
 #: data/ui/remmina_main.glade:187
 #, fuzzy
 msgid "Edit"
-msgstr "Uredi"
+msgstr "Izmijeni"
 
 #: data/ui/remmina_main.glade:217
 #, fuzzy
@@ -4154,7 +4369,7 @@ msgstr "Remmina Aplet"
 #: data/ui/remmina_main.glade:594
 #, fuzzy
 msgid "Actions"
-msgstr "Akcija"
+msgstr "Akcije"
 
 #: data/ui/remmina_main.glade:609
 #, fuzzy
@@ -4840,7 +5055,7 @@ msgstr "Remmina Preferences"
 #: data/ui/remmina_unlock.glade:60
 #, fuzzy
 msgid "Unlock"
-msgstr "Otključaj"
+msgstr "Otključati"
 
 #: data/ui/remmina_unlock.glade:94
 #, fuzzy
@@ -4851,6 +5066,16 @@ msgstr "Otključaj Remminu"
 #, fuzzy
 msgid "Master password"
 msgstr "Master lozinka"
+
+#, fuzzy, c-format
+#~ msgid "Could not retrieve PyHoca-CLI's command-line features! Exit code: %i"
+#~ msgstr ""
+#~ "Nisam mogao da povratim PyHoca-CLI-ove funkcije komandne linije! Izlazni "
+#~ "kod: %i"
+
+#, fuzzy, c-format
+#~ msgid "Error: '%s'"
+#~ msgstr "Greška: '%s'"
 
 #, fuzzy
 #~ msgid "Website"
@@ -4931,12 +5156,6 @@ msgstr "Master lozinka"
 
 #~ msgid "Terminate"
 #~ msgstr "Prekini"
-
-#~ msgid "Display"
-#~ msgstr "Prikaz"
-
-#~ msgid "Status"
-#~ msgstr "Status"
 
 #~ msgid "Disable clipboard sync"
 #~ msgstr "Onemogući clipboard sinhronizaciju"

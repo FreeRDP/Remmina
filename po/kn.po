@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-11-08 14:57+0000\n"
-"PO-Revision-Date: 2021-10-05 14:04+0000\n"
+"POT-Creation-Date: 2021-11-09 14:11+0000\n"
+"PO-Revision-Date: 2021-11-09 14:11+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Kannada <https://hosted.weblate.org/projects/remmina/remmina/"
 "kn/>\n"
@@ -25,12 +25,12 @@ msgstr ""
 #: src/remmina_protocol_widget.c:1676 src/remmina_protocol_widget.c:1695
 #: src/remmina_file_editor.c:1101 src/remmina_file_editor.c:1222
 #: src/remmina_ssh_plugin.c:1360 plugins/rdp/rdp_plugin.c:2720
-#: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:1596
+#: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:2535
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1675
 #: data/ui/remmina_unlock.glade:116
 #, fuzzy
 msgid "Password"
-msgstr "ಗುಪ್ತಪದ"
+msgstr "ಗುಪ್ತಪದ (ಪಾಸ್ ವರ್ಡ್)"
 
 #: src/remmina_sftp_plugin.c:311 src/remmina_sftp_plugin.c:356
 #: src/remmina_file_editor.c:1102 src/remmina_ssh_plugin.c:1361
@@ -80,7 +80,8 @@ msgstr "ಹೊಸ ಟರ್ಮಿನಲ್ ನಿಂದ ಎಸ್ ಎಸ್ ಎ�
 #: src/remmina_file_editor.c:1216 src/remmina_ssh_plugin.c:1470
 #: plugins/rdp/rdp_plugin.c:2719 plugins/vnc/vnc_plugin.c:1976
 #: plugins/vnc/vnc_plugin.c:1988 plugins/www/www_plugin.c:894
-#: plugins/x2go/x2go_plugin.c:1595 data/ui/remmina_mpc.glade:144
+#: plugins/x2go/x2go_plugin.c:512 plugins/x2go/x2go_plugin.c:2534
+#: data/ui/remmina_mpc.glade:144
 #, fuzzy
 msgid "Username"
 msgstr "ಬಳಕೆದಾರಹೆಸರು"
@@ -140,7 +141,7 @@ msgstr "ರಹಸ್ಯ"
 #: src/remmina_plugin_manager.c:461 data/ui/remmina_main.glade:305
 #, fuzzy
 msgid "Plugins"
-msgstr "ಪ್ಲಗಿನ್‌ಗಳು"
+msgstr "ಪ್ಲಗಿನ್ ಗಳು"
 
 #: src/remmina_plugin_manager.c:461 src/remmina_message_panel.c:452
 #: src/remmina_message_panel.c:621 src/remmina_file_editor.c:242
@@ -157,7 +158,7 @@ msgstr "ಹೆಸರು"
 #: src/remmina_plugin_manager.c:485
 #, fuzzy
 msgid "Type"
-msgstr "ಮಾದರಿ"
+msgstr "ಬಗೆ"
 
 #: src/remmina_plugin_manager.c:491
 #, fuzzy
@@ -461,7 +462,7 @@ msgstr "ಸಾಧನಗಳು"
 #: data/ui/remmina_preferences.glade:1277
 #, fuzzy
 msgid "Screenshot"
-msgstr "ಪರದೆ ಛಾಯಾಚಿತ್ರ"
+msgstr "ಸ್ಕ್ರೀನ್ ಶಾಟ್"
 
 #: src/rcw.c:2515 data/ui/remmina_preferences.glade:1174
 #, fuzzy
@@ -771,7 +772,7 @@ msgstr "ಇಳಿಸು"
 #: src/remmina_ftp_client.c:656 src/remmina_ftp_client.c:770
 #, fuzzy
 msgid "Upload"
-msgstr "ಅಪ್ಲೋಡ್"
+msgstr "ಅಪ್ ಲೋಡ್ ಮಾಡಿ"
 
 #: src/remmina_ftp_client.c:663
 #, fuzzy
@@ -822,7 +823,7 @@ msgstr "ಸರ್ವರ್ ಗೆ ಅಪ್ ಲೋಡ್ ಮಾಡಿ"
 #: src/remmina_ftp_client.c:775 data/ui/remmina_main.glade:197
 #, fuzzy
 msgid "Delete"
-msgstr "ಅಳಿಸಿ"
+msgstr "ಅಳಿಸು"
 
 #: src/remmina_ftp_client.c:776
 #, fuzzy
@@ -842,13 +843,13 @@ msgstr "ಗಾತ್ರ"
 #: src/remmina_ftp_client.c:926
 #, fuzzy
 msgid "User"
-msgstr "ಸದಸ್ಯ"
+msgstr "ಬಳಕೆದಾರ"
 
 #: src/remmina_ftp_client.c:932 src/remmina_file_editor.c:1933
 #: data/ui/remmina_mpc.glade:115 data/ui/remmina_main.glade:464
 #, fuzzy
 msgid "Group"
-msgstr "ಗುಂಪು"
+msgstr "ಸಮೂಹ"
 
 #: src/remmina_ftp_client.c:938
 #, fuzzy
@@ -1303,8 +1304,9 @@ msgid "Plugin %s is not registered."
 msgstr "ಪ್ಲಗಿನ್ [ಎಕ್ಸ್7ಎಕ್ಸ್] ನೋಂದಣಿಯಾಗಿಲ್ಲ."
 
 #: src/remmina_main.c:669
+#, fuzzy
 msgid "The latest successful connection attempt, or a pre-computed date"
-msgstr ""
+msgstr "ಇತ್ತೀಚಿನ ಯಶಸ್ವಿ ಸಂಪರ್ಕ ಪ್ರಯತ್ನ, ಅಥವಾ ಮೊದಲೇ ಲೆಕ್ಕಹಾಕಿದ ದಿನಾಂಕ"
 
 #: src/remmina_main.c:671
 #, c-format
@@ -1510,7 +1512,7 @@ msgstr "[ಎಕ್ಸ್29ಎಕ್ಸ್] ಸರ್ವರ್ ಹುಡುಕಲ
 #: src/remmina_file_editor.c:564
 #, fuzzy
 msgid "Resolution"
-msgstr "ರೆಸಲ್ಯೂಷನ್"
+msgstr "ರೆಸಲ್ಯೂಶನ್"
 
 #: src/remmina_file_editor.c:571
 #, fuzzy
@@ -1644,8 +1646,8 @@ msgstr ""
 "ಶೂನ್ಯವಾಗಿರುವುದರಿಂದ ಬಳಕೆದಾರರ ಇನ್ ಪುಟ್ ಅನ್ನು ಮೌಲ್ಯೀಕರಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ!"
 
 #. TRANSLATORS: Meta-error. Shouldn't be visible.
-#: src/remmina_file_editor.c:1445 plugins/x2go/x2go_plugin.c:856
-#: plugins/x2go/x2go_plugin.c:1440
+#: src/remmina_file_editor.c:1445 plugins/x2go/x2go_plugin.c:1746
+#: plugins/x2go/x2go_plugin.c:2360
 #, fuzzy
 msgid "Internal error."
 msgstr "ಆಂತರಿಕ ದೋಷ."
@@ -1704,10 +1706,11 @@ msgstr "ಫೈಲ್ ಅನ್ನು ಹುಡುಕಲು ಸಾಧ್ಯವಾ
 #. TRANSLATORS: This is a message that pops up when an external Remmina plugin tries to set the window resolution using a legacy parameter.
 #. TRANSLATORS: This is a message that pop-up when an external Remmina plugin tries to set the windows resolution using a legacy parameter.
 #: src/remmina_file.c:451 src/remmina_file.c:497
+#, fuzzy
 msgid ""
 "Using the «resolution» parameter in the Remmina preferences file is "
 "deprecated.\n"
-msgstr ""
+msgstr "ರೆಮ್ಮಿನ ಆದ್ಯತೆಗಳ ಫೈಲ್ ನಲ್ಲಿ «ರೆಸಲ್ಯೂಶನ್» ನಿಯತಾಂಕವನ್ನು ಅಪಪ್ರದಗೊಳಿಸಲಾಗಿದೆ.\n"
 
 #: src/remmina_icon.c:136
 #, fuzzy
@@ -1748,52 +1751,63 @@ msgid "Connect to remote desktops through the applet menu"
 msgstr "ಆಪಲ್ಟ್ ಮೆನು ಮೂಲಕ ದೂರದ ಡೆಸ್ಕ್ ಟಾಪ್ ಗಳಿಗೆ ಸಂಪರ್ಕಿಸಿ"
 
 #: src/remmina_icon.c:359
+#, fuzzy
 msgid "StatusNotifier/Appindicator support in “"
-msgstr ""
+msgstr "ಸ್ಥಿತಿಅಧಿಸೂಚಕ/ಅಪ್ಇಂಡಿಕೇಟರ್ ಬೆಂಬಲ \""
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:366
-#, c-format
+#, fuzzy, c-format
 msgid "%s your desktop does support it"
-msgstr ""
+msgstr "[ಎಕ್ಸ್0ಎಕ್ಸ್] ನಿಮ್ಮ ಡೆಸ್ಕ್ ಟಾಪ್ ಅದನ್ನು ಬೆಂಬಲಿಸುತ್ತದೆ"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:368
-#, c-format
+#, fuzzy, c-format
 msgid "%s and Remmina has built-in (compiled) support for libappindicator."
 msgstr ""
+"[ಎಕ್ಸ್0ಎಕ್ಸ್] ಮತ್ತು ರೆಮ್ಮಿನಾ ಲಿಬಪ್ಇಂಡಿಕೇಟರ್ ಗೆ ಅಂತರ್ನಿರ್ಮಿತ (ಸಂಕಲಿಸಲಾದ) ಬೆಂಬಲವನ್ನು "
+"ಹೊಂದಿದೆ."
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:371
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "%s not supported natively by your Desktop Environment. libappindicator will "
 "try to fallback to GtkStatusIcon/xembed"
 msgstr ""
+"[ಎಕ್ಸ್0ಎಕ್ಸ್] ನಿಮ್ಮ ಡೆಸ್ಕ್ ಟಾಪ್ ಪರಿಸರದಿಂದ ಸ್ಥಳೀಯವಾಗಿ ಬೆಂಬಲಿಸುವುದಿಲ್ಲ. ಲಿಬಪ್ ಇಂಡಿಕೇಟರ್ "
+"ಜಿಟಿಕೆಸ್ಟೇಟಸ್ಐಕಾನ್ /ಎಕ್ಸ್ ಎಂಬೆಡ್ ಗೆ ಹಿಂತಿರುಗಲು ಪ್ರಯತ್ನಿಸುತ್ತದೆ"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:375
-#, c-format
+#, fuzzy, c-format
 msgid "%s You may need to install, and use XApp Status Applet"
 msgstr ""
+"[ಎಕ್ಸ್0ಎಕ್ಸ್] ನೀವು ಸ್ಥಾಪನೆಗೊಳಿಸಬೇಕಾಗಬಹುದು, ಮತ್ತು ಎಕ್ಸ್ ಆಪ್ ಸ್ಟೇಟಸ್ ಆಪ್ಲೆಟ್ ಅನ್ನು "
+"ಬಳಸಬೇಕಾಗಬಹುದು"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:378
-#, c-format
+#, fuzzy, c-format
 msgid "%s You may need to install, and use KStatusNotifierItem"
-msgstr ""
+msgstr "[ಎಕ್ಸ್0ಎಕ್ಸ್] ನೀವು ಸ್ಥಾಪಿಸಬೇಕಾಗಬಹುದು, ಮತ್ತು ಕೆTATATATAPtatPtat"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:381
-#, c-format
+#, fuzzy, c-format
 msgid "%s You may need to install, and use XEmbed SNI Proxy"
 msgstr ""
+"[ಎಕ್ಸ್0ಎಕ್ಸ್] ನೀವು ಸ್ಥಾಪನೆಗೊಳಿಸಬೇಕಾಗಬಹುದು, ಮತ್ತು ಎಕ್ಸ್ ಎಂಬೆಡ್ ಎಸ್ಎನ್ಐ ಪ್ರಾಕ್ಸಿ ಯನ್ನು "
+"ಬಳಸಬೇಕಾಗಬಹುದು"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:384
-#, c-format
+#, fuzzy, c-format
 msgid "%s You may need to install, and use Gnome Shell Extension Appindicator"
 msgstr ""
+"[ಎಕ್ಸ್0ಎಕ್ಸ್] ನೀವು ಸ್ಥಾಪಿಸಬೇಕಾಗಬಹುದು, ಮತ್ತು Gನೋಮ್ ಶೆಲ್ ವಿಸ್ತರಣೆ ಅಪ್ಇಂಡಿಕೇಟರ್ ಅನ್ನು "
+"ಬಳಸಬೇಕಾಗಬಹುದು"
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_ssh_plugin.c:539
@@ -1869,7 +1883,7 @@ msgstr "ಎಲ್ಲಾ ಆಯ್ಕೆಮಾಡಿ"
 #: src/remmina_ssh_plugin.c:1441
 #, fuzzy
 msgid "_Select all"
-msgstr "ಎಲ್ಲವನ್ನು ಆರಿಸು"
+msgstr "ಎಲ್ಲವನ್ನೂ ಆಯ್ಕೆ ಮಾಡಿ (_S)"
 
 #: src/remmina_ssh_plugin.c:1442
 #, fuzzy
@@ -2059,7 +2073,7 @@ msgstr "ಅತ್ಯುತ್ತಮ (ನಿಧಾನ)"
 #: plugins/rdp/rdp_settings.c:427
 #, fuzzy
 msgid "Keyboard layout"
-msgstr "ಕೀಲಿಮಣೆಯ ವಿನ್ಯಾಸವನ್ನು ಸೂಚಿಸು"
+msgstr "ಕೀಲಿಮಣೆ ವಿನ್ಯಾಸ"
 
 #: plugins/rdp/rdp_settings.c:457
 #, fuzzy
@@ -3341,27 +3355,138 @@ msgstr "ನಮಸ್ಕಾರ, ಜಗತ್ತು!"
 msgid "Secured password storage in the GNOME keyring"
 msgstr "GMAMM ಕೀಲಿಯಲ್ಲಿ ಸುರಕ್ಷಿತ ಪಾಸ್ ವರ್ಡ್ ಸಂಗ್ರಹ"
 
-#: plugins/x2go/x2go_plugin.c:275
+#: plugins/x2go/x2go_plugin.c:67
+#, c-format
+msgid ""
+"The command-line feature '%s' is not available! Attempting to start PyHoca-"
+"CLI without using this feature…"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:277
 #, fuzzy
 msgid "Broken `DialogData`! Aborting…"
 msgstr "ಮುರಿದ 'ಸಂವಾದಡೇಟಾ'! ಅಬಾರ್ಟಿಂಗ್…"
 
-#: plugins/x2go/x2go_plugin.c:279
+#: plugins/x2go/x2go_plugin.c:281
 #, fuzzy
 msgid "Can't retrieve `DialogData`! Aborting…"
 msgstr "'ಸಂವಾದ ಡೇಟಾ' ಹಿಂಪಡೆಯಲು ಸಾಧ್ಯವಿಲ್ಲ! ಅಬಾರ್ಟಿಂಗ್…"
 
-#: plugins/x2go/x2go_plugin.c:505
+#: plugins/x2go/x2go_plugin.c:438
 #, fuzzy
-msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
-msgstr "ಪೈಹೋಕಾ-ಕ್ಲಿ ಅನಿರೀಕ್ಷಿತವಾಗಿ ನಿರ್ಗಮಿಸಿತು. ಈ ಸಂಪರ್ಕವನ್ನು ಈಗ ಮುಚ್ಚಲಾಗುವುದು."
+msgid "Couldn't retrieve valid `DialogData` or `sessions_list`! Aborting…"
+msgstr "'ಸಂವಾದ ಡೇಟಾ' ಹಿಂಪಡೆಯಲು ಸಾಧ್ಯವಿಲ್ಲ! ಅಬಾರ್ಟಿಂಗ್…"
+
+#: plugins/x2go/x2go_plugin.c:445
+msgid "_New"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:447
+#, fuzzy
+msgid "_Select session"
+msgstr "ಎಲ್ಲವನ್ನೂ ಆಯ್ಕೆ ಮಾಡಿ (_S)"
+
+#: plugins/x2go/x2go_plugin.c:506
+msgid "Display"
+msgstr "ಪ್ರದರ್ಶಿಸಿ"
+
+#: plugins/x2go/x2go_plugin.c:507
+msgid "Status"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:508
+#, fuzzy
+msgid "Session ID"
+msgstr "ಅನುಮತಿಗಳು"
+
+#: plugins/x2go/x2go_plugin.c:509
+msgid "Create date"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:510
+msgid "Suspended since"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:511
+msgid "Agent PID"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:513
+#, fuzzy
+msgid "Hostname"
+msgstr "ಬಳಕೆದಾರಹೆಸರು"
 
 #: plugins/x2go/x2go_plugin.c:514
+msgid "Cookie"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:515
+msgid "Graphic port"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:516
+msgid "SND port"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:517
+#, fuzzy
+msgid "SSHFS port"
+msgstr "ಸ್ಥಳೀಯ ಎಸ್.ಎಸ್.ಎಚ್. ಬಂದರು"
+
+#: plugins/x2go/x2go_plugin.c:519 plugins/x2go/x2go_plugin.c:585
+#: plugins/x2go/x2go_plugin.c:599 plugins/x2go/x2go_plugin.c:614
+#: plugins/x2go/x2go_plugin.c:626 plugins/x2go/x2go_plugin.c:936
+#: plugins/x2go/x2go_plugin.c:947 plugins/x2go/x2go_plugin.c:955
+#: plugins/x2go/x2go_plugin.c:1060 plugins/x2go/x2go_plugin.c:1094
+#: plugins/x2go/x2go_plugin.c:1200 plugins/x2go/x2go_plugin.c:2212
+#: plugins/x2go/x2go_plugin.c:2425 plugins/x2go/x2go_plugin.c:2430
+#: plugins/x2go/x2go_plugin.c:2435 plugins/x2go/x2go_plugin.c:2440
+#: plugins/x2go/x2go_plugin.c:2455 plugins/x2go/x2go_plugin.c:2460
+#: plugins/x2go/x2go_plugin.c:2465 plugins/x2go/x2go_plugin.c:2470
+#, fuzzy, c-format
+msgid "Internal error: %s"
+msgstr "ಆಂತರಿಕ ದೋಷ: "
+
+#: plugins/x2go/x2go_plugin.c:520
+msgid "Unknown property"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:586
+msgid "Couldn't find child GtkTreeView of session chooser dialog."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:600
+msgid "only one session should be able to be selected."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:615
+msgid "Failed to fill 'GtkTreeIter'."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:627
+msgid "Couldn't get session ID out of selected row."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:660
+msgid "Couldn't get session ID from session chooser dialog."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:667
+#, c-format
+msgid "Resuming session: '%s'"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:892
+#, fuzzy
+msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
+msgstr "ಪೈಹೋಸಾ-ಸಿಎಲ್ಐ ಅನಿರೀಕ್ಷಿತವಾಗಿ ನಿರ್ಗಮಿಸಿತು. ಈ ಸಂಪರ್ಕವನ್ನು ಈಗ ಮುಚ್ಚಲಾಗುವುದು."
+
+#: plugins/x2go/x2go_plugin.c:901
 #, fuzzy
 msgid "An error occured."
 msgstr "ದೋಷ ಸಂಭವಿಸಿದೆ."
 
-#: plugins/x2go/x2go_plugin.c:515
+#: plugins/x2go/x2go_plugin.c:902
 #, fuzzy
 msgid ""
 "The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
@@ -3369,35 +3494,66 @@ msgid ""
 "errors. Also ensure the remote server is reachable."
 msgstr ""
 "ಅಗತ್ಯವಾದ ಮಕ್ಕಳ ಪ್ರಕ್ರಿಯೆ 'ಪೈಹೋಕಾ-ಕ್ಲಿ' ಅನಿರೀಕ್ಷಿತವಾಗಿ ನಿಂತಿತು.\n"
-"ಸಂಭಾವ್ಯ ದೋಷಗಳಿಗಾಗಿ ದಯವಿಟ್ಟು ನಿಮ್ಮ ಪ್ರೊಫೈಲ್ ಸೆಟ್ಟಿಂಗ್ ಗಳು ಮತ್ತು ಪೈಹೋಸಾ-ಕ್ಲಿಯ ಔಟ್ ಪುಟ್ "
-"ಅನ್ನು ಪರಿಶೀಲಿಸಿ ಮತ್ತು ರಿಮೋಟ್ ಸರ್ವರ್ ತಲುಪಬಹುದಾದುದನ್ನು ಖಚಿತಪಡಿಸಿಕೊಳ್ಳಿ."
+"ಸಂಭಾವ್ಯ ದೋಷಗಳಿಗಾಗಿ ದಯವಿಟ್ಟು ನಿಮ್ಮ ಪ್ರೊಫೈಲ್ ಸೆಟ್ಟಿಂಗ್ ಗಳು ಮತ್ತು ಪೈಹೋಸಾ-ಸಿಎಲ್ಐ ನ ಔಟ್ ಪುಟ್ "
+"ಅನ್ನು ಪರಿಶೀಲಿಸಿ. ರಿಮೋಟ್ ಸರ್ವರ್ ತಲುಪಬಹುದಾದಂತೆ ಯೂ ಖಚಿತಪಡಿಸಿಕೊಳ್ಳಿ."
 
-#: plugins/x2go/x2go_plugin.c:561
+#: plugins/x2go/x2go_plugin.c:937
+msgid "parameter 'argv' is 'NULL'."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:948
+msgid "parameter 'error' is 'NULL'."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:956
+msgid "parameter 'env' is either invalid or uninitialized."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:972
 #, fuzzy
 msgid "Started PyHoca-CLI with the following arguments:"
-msgstr "ಈ ಕೆಳಗಿನ ವಾದಗಳೊಂದಿಗೆ ಪೈಹೋಕಾ-ಕ್ಲಿ ಯನ್ನು ಪ್ರಾರಂಭಿಸಲಾಗಿದೆ:"
+msgstr "ಈ ಕೆಳಗಿನ ವಾದಗಳೊಂದಿಗೆ ಪೈಹೋಸಾ-ಸಿಎಲ್ಐ ಅನ್ನು ಪ್ರಾರಂಭಿಸಿದೆ:"
 
-#: plugins/x2go/x2go_plugin.c:580
-#, fuzzy, c-format
-msgid "Could not retrieve PyHoca-CLI's command-line features! Exit code: %i"
+#: plugins/x2go/x2go_plugin.c:988
+#, fuzzy
+msgid "Started PyHoca-CLI with the following environment variables:"
+msgstr "ಈ ಕೆಳಗಿನ ವಾದಗಳೊಂದಿಗೆ ಪೈಹೋಸಾ-ಸಿಎಲ್ಐ ಅನ್ನು ಪ್ರಾರಂಭಿಸಿದೆ:"
+
+#: plugins/x2go/x2go_plugin.c:997
+msgid ""
+"The necessary PyHoca-CLI process has encountered a internet connection "
+"problem."
 msgstr ""
-"ಪೈಹೋಸಾ-ಕ್ಲಿಯ ಸಿ.ಎಂ.ಡಿ.ಲೈನ್ ಲಕ್ಷಣಗಳನ್ನು ಹಿಂಪಡೆಯುವಾಗ ಅಜ್ಞಾತ ದೋಷ ಸಂಭವಿಸಿದೆ! ನಿರ್ಗಮನ "
-"ಕೋಡ್: [ಎಕ್ಸ್85ಎಕ್ಸ್]"
 
-#: plugins/x2go/x2go_plugin.c:585
-#, fuzzy, c-format
-msgid "Error: '%s'"
-msgstr "ದೋಷ: '[ಎಕ್ಸ್8ಎಕ್ಸ್]'"
+#: plugins/x2go/x2go_plugin.c:1007
+#, fuzzy
+msgid "An unknown error occured while trying to start PyHoca-CLI."
+msgstr "ಎಕ್ಸ್2ಗೋ ಸೆಷನ್ ಪ್ರಾರಂಭಿಸುವಾಗ ದೋಷ ಸಂಭವಿಸಿದೆ…"
 
-#: plugins/x2go/x2go_plugin.c:609
+#: plugins/x2go/x2go_plugin.c:1017
+#, c-format
+msgid ""
+"An unknown error occured while trying to start PyHoca-CLI. Exit code: %i"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1022
+#, c-format
+msgid ""
+"An unknown error occured while trying to start PyHoca-CLI. Exit code: %i. "
+"Error: '%s'"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1047
+#, fuzzy
 msgid "Can't save empty username!"
-msgstr ""
+msgstr "ಖಾಲಿ ಬಳಕೆದಾರ ಹೆಸರನ್ನು ಉಳಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ!"
 
-#: plugins/x2go/x2go_plugin.c:621
-msgid "Internal error: Could not save new credentials."
-msgstr ""
+#: plugins/x2go/x2go_plugin.c:1061
+#, fuzzy
+msgid "Could not save new credentials."
+msgstr "ಆಂತರಿಕ ದೋಷ: ಹೊಸ ರುಜುವಾತುಗಳನ್ನು ಉಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ."
 
-#: plugins/x2go/x2go_plugin.c:623
+#: plugins/x2go/x2go_plugin.c:1064
 #, fuzzy
 msgid ""
 "An error occured while trying to save new credentials: 's_password' or "
@@ -3406,97 +3562,155 @@ msgstr ""
 "ಹೊಸ ರುಜುವಾತುಗಳನ್ನು ಉಳಿಸಲು ಪ್ರಯತ್ನಿಸುತ್ತಿರುವಾಗ ದೋಷ ಸಂಭವಿಸಿದೆ: 's_password' ಅಥವಾ "
 "'s_username' ತಂತಿಗಳನ್ನು ಹೊಂದಿಸಲಾಗಿಲ್ಲ."
 
-#: plugins/x2go/x2go_plugin.c:659
+#: plugins/x2go/x2go_plugin.c:1095
+msgid "Parameter 'default_username' is uninitialized."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1124
 #, fuzzy
 msgid "Enter X2Go credentials"
 msgstr "ಎಕ್ಸ್2ಗೋ ರುಜುವಾತುಗಳನ್ನು ನಮೂದಿಸಿ"
 
-#: plugins/x2go/x2go_plugin.c:818
+#: plugins/x2go/x2go_plugin.c:1201
+#, fuzzy
+msgid "'Invalid connection data.'"
+msgstr "ಹಂಚಿದ ಸಂಪರ್ಕ"
+
+#: plugins/x2go/x2go_plugin.c:1323
+msgid ""
+"Couldn't parse the output of PyHoca-CLI's --list-sessions option. Creating a "
+"new session now."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1362
+msgid "Couldn't allocate enough memory!"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1372
+#, c-format
+msgid "Found already existing X2Go session with ID: '%s'"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1444
+msgid ""
+"Could not find any sessions on remote machine. Creating a new session now."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1485
+#, fuzzy
+msgid "Choose a session to resume:"
+msgstr "ಅಪ್ ಲೋಡ್ ಮಾಡಲು ಫೈಲ್ ಆಯ್ಕೆಮಾಡಿ"
+
+#: plugins/x2go/x2go_plugin.c:1502
+#, fuzzy
+msgid "Waiting for user to select a session…"
+msgstr "ಸೆಷನ್ ನ ವಿಂಡೋ ತೋರಿಸಲು ಪೈಹೋಸಾ-ಸಿಎಲ್ಐ ಗಾಗಿ ಕಾಯುತ್ತಿದೆ…"
+
+#: plugins/x2go/x2go_plugin.c:1510
+msgid "No session was selected. Creating a new one."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1558
+#, c-format
+msgid "A non-critical error happened: %s"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1563
+#, c-format
+msgid "User chose to resume session with ID: '%s'"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1583
+#, c-format
+msgid "Resuming session '%s'…"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1706
 #, fuzzy
 msgid "DPI setting is out of bounds. Please adjust it in profile settings."
 msgstr "ಡಿಪಿಐ ಸೆಟ್ಟಿಂಗ್ ಮಿತಿಮೀರಿದೆ. ದಯವಿಟ್ಟು ಅದನ್ನು ಪ್ರೊಫೈಲ್ ಸೆಟ್ಟಿಂಗ್ ಗಳಲ್ಲಿ ಹೊಂದಿಸಿ."
 
-#: plugins/x2go/x2go_plugin.c:838
+#: plugins/x2go/x2go_plugin.c:1728
 #, fuzzy
 msgid "Started pyhoca-cli with following arguments:"
 msgstr "ಈ ಕೆಳಗಿನ ವಾದಗಳೊಂದಿಗೆ ಪೈಹೋಕಾ-ಕ್ಲಿ ಯನ್ನು ಪ್ರಾರಂಭಿಸಲಾಗಿದೆ:"
 
-#: plugins/x2go/x2go_plugin.c:858
+#: plugins/x2go/x2go_plugin.c:1748
 #, fuzzy
 msgid "An error occured while starting an X2Go session…"
 msgstr "ಎಕ್ಸ್2ಗೋ ಸೆಷನ್ ಪ್ರಾರಂಭಿಸುವಾಗ ದೋಷ ಸಂಭವಿಸಿದೆ…"
 
-#: plugins/x2go/x2go_plugin.c:867
+#: plugins/x2go/x2go_plugin.c:1757
 #, fuzzy
 msgid "Could not start X2Go session."
 msgstr "ಎಕ್ಸ್2ಗೋ ಸೆಷನ್ ಪ್ರಾರಂಭಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ."
 
-#: plugins/x2go/x2go_plugin.c:868
+#: plugins/x2go/x2go_plugin.c:1758
 #, fuzzy, c-format
 msgid "Could not start PyHoca-CLI (%i): '%s'"
 msgstr "ಪೈಹೋಸಾ-ಸಿಎಲ್ಐ ([ಎಕ್ಸ್28ಎಕ್ಸ್]] ಪ್ರಾರಂಭಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ): '[ಎಕ್ಸ್34ಎಕ್ಸ್]'"
 
-#: plugins/x2go/x2go_plugin.c:945
+#: plugins/x2go/x2go_plugin.c:1857
 #, fuzzy
 msgid ""
 "Couldn't get PyHoca-CLI's command-line features. This indicates it is either "
 "too old, or not installed. An old limited set of features will be used for "
 "now."
 msgstr ""
-"ಪೈಹೋಕಾ-ಕ್ಲಿಯ ಸಿ.ಎಂ.ಡಿ.ಲೈನ್-ವೈಶಿಷ್ಟ್ಯಗಳನ್ನು ಪಡೆಯಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ಇದು ನಿಮ್ಮ ಪೈಹೋಕಾ-"
-"ಕ್ಲಿ ಆವೃತ್ತಿಯು ತುಂಬಾ ಹಳೆಯದಾಗಿದೆ ಅಥವಾ ಪೈಹೋಸಾ-ಕ್ಲಿ ಸ್ಥಾಪಿಸಲಾಗಿಲ್ಲ ಎಂದು ಸೂಚಿಸುತ್ತದೆ! "
-"ಹಳೆಯ ಸೀಮಿತ ವೈಶಿಷ್ಟ್ಯಗಳ ಗುಂಪನ್ನು ಈಗ ಬಳಸಲಾಗುತ್ತದೆ."
+"ಪೈಹೋಸಾ-ಸಿಎಲ್ಐನ ಕಮಾಂಡ್-ಲೈನ್ ವೈಶಿಷ್ಟ್ಯಗಳನ್ನು ಪಡೆಯಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ಇದು ತುಂಬಾ "
+"ಹಳೆಯದಾಗಿದೆ, ಅಥವಾ ಸ್ಥಾಪಿಸಲಾಗಿಲ್ಲ ಎಂದು ಸೂಚಿಸುತ್ತದೆ. ಸದ್ಯಕ್ಕೆ ಹಳೆಯ ಸೀಮಿತ ವೈಶಿಷ್ಟ್ಯಗಳ "
+"ಗುಂಪನ್ನು ಬಳಸಲಾಗುತ್ತದೆ."
 
-#: plugins/x2go/x2go_plugin.c:956
+#: plugins/x2go/x2go_plugin.c:1866
 #, fuzzy
 msgid ""
 "Could not parse PyHoca-CLI's command-line features. Using a limited feature-"
 "set for now."
 msgstr ""
-"ಪೈಹೋಕಾ-ಕ್ಲಿ ಫಂಕ್ಷನಾಲಿಟಿ ಯನ್ನು ಪಾರ್ಸಿಂಗ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ! ಸದ್ಯಕ್ಕೆ ಸೀಮಿತ ವೈಶಿಷ್ಟ್ಯ-"
-"ಸೆಟ್ ಅನ್ನು ಬಳಸುವುದು."
+"ಪೈಹೋಸಾ-ಸಿಎಲ್ಐ ನ ಆದೇಶ-ಸಾಲು ವೈಶಿಷ್ಟ್ಯಗಳನ್ನು ಪಾರ್ಸ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ಸದ್ಯಕ್ಕೆ ಸೀಮಿತ "
+"ವೈಶಿಷ್ಟ್ಯ-ಸೆಟ್ ಅನ್ನು ಬಳಸುವುದು."
 
-#: plugins/x2go/x2go_plugin.c:962
+#: plugins/x2go/x2go_plugin.c:1872
 #, fuzzy
 msgid "Retrieved the following PyHoca-CLI command-line features:"
-msgstr "ಈ ಕೆಳಗಿನ ಪೈಹೋಕಾ-ಕ್ಲಿ ಕಾರ್ಯಾತ್ಮಕತೆಯನ್ನು ಮರಳಿ ಪಡೆಯಲಾಗಿದೆ:"
+msgstr "ಈ ಕೆಳಗಿನ ಪೈಹೋಸಾ-ಸಿಎಲ್ಐ ಆದೇಶ-ಸಾಲು ವೈಶಿಷ್ಟ್ಯಗಳನ್ನು ಮರಳಿ ಪಡೆಯಲಾಗಿದೆ:"
 
-#: plugins/x2go/x2go_plugin.c:967
+#: plugins/x2go/x2go_plugin.c:1880
 #, fuzzy, c-format
 msgid "Available feature[%i]: '%s'"
 msgstr "ಲಭ್ಯವಿರುವ ವೈಶಿಷ್ಟ್ಯ[[ಎಕ್ಸ್18ಎಕ್ಸ್]]: '[ಎಕ್ಸ್24ಎಕ್ಸ್]'"
 
-#: plugins/x2go/x2go_plugin.c:1072
+#: plugins/x2go/x2go_plugin.c:1985
 #, fuzzy
 msgid "Could not open X11 DISPLAY."
 msgstr "ಎಕ್ಸ್11 ಡಿಸ್ ಪ್ಲೇ ತೆರೆಯಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ."
 
-#: plugins/x2go/x2go_plugin.c:1112
+#: plugins/x2go/x2go_plugin.c:2025
 #, fuzzy
 msgid "Waiting for window of X2Go Agent to appear…"
-msgstr "ಎಕ್ಸ್2ಗೋ ಏಜೆಂಟ್ ವಿಂಡೋ ಕಾಣಿಸಿಕೊಳ್ಳಲು ಕಾಯುತ್ತಿದೆ."
+msgstr "ಎಕ್ಸ್2ಗೋ ಏಜೆಂಟ್ ನ ವಿಂಡೋ ಕಾಣಿಸಿಕೊಳ್ಳಲು ಕಾಯುತ್ತಿದೆ…"
 
-#: plugins/x2go/x2go_plugin.c:1138
+#: plugins/x2go/x2go_plugin.c:2051
 #, fuzzy
 msgid "Waiting for PyHoca-CLI to show the session's window…"
-msgstr "ಸೆಷನ್ ನ ವಿಂಡೋ ವನ್ನು ತೋರಿಸಲು ಪೈಹೋಕಾ-ಕ್ಲಿಗಾಗಿ ಕಾಯಲಾಗುತ್ತಿದೆ."
+msgstr "ಸೆಷನ್ ನ ವಿಂಡೋ ತೋರಿಸಲು ಪೈಹೋಸಾ-ಸಿಎಲ್ಐ ಗಾಗಿ ಕಾಯುತ್ತಿದೆ…"
 
-#: plugins/x2go/x2go_plugin.c:1189
+#: plugins/x2go/x2go_plugin.c:2102
 #, fuzzy
 msgid "No X2Go session window appeared. Something went wrong…"
 msgstr "ಯಾವುದೇ ಎಕ್ಸ್2ಗೋ ಸೆಷನ್ ವಿಂಡೋ ಕಾಣಿಸಿಕೊಂಡಿಲ್ಲ. ಏನೋ ತಪ್ಪಾಗಿದೆ…"
 
-#: plugins/x2go/x2go_plugin.c:1298
+#: plugins/x2go/x2go_plugin.c:2213
 #, fuzzy
-msgid "Internal error: RemminaProtocolWidget* gp is NULL!"
+msgid "RemminaProtocolWidget* gp is 'NULL'!"
 msgstr "ಆಂತರಿಕ ದೋಷ: ರೆಮ್ಮಿನಾಪ್ರೊಟೋಕಾಲ್ ವಿಡ್ಗೆಟ್* ಜಿಪಿ ಶೂನ್ಯ!"
 
-#: plugins/x2go/x2go_plugin.c:1319
+#: plugins/x2go/x2go_plugin.c:2234
 #, fuzzy, c-format
 msgid "The %s protocol is unavailable because GtkSocket only works under X.org"
-msgstr "ಪ್ರೊಟೋಕಾಲ್ [ಎಕ್ಸ್13ಎಕ್ಸ್] ಲಭ್ಯವಿಲ್ಲ ಏಕೆಂದರೆ ಜಿಟಿಕೆಸಾಕೆಟ್ ಕೇವಲ X.org"
+msgstr "[ಎಕ್ಸ್4ಎಕ್ಸ್] ಪ್ರೊಟೋಕಾಲ್ ಅಲಭ್ಯವಾಗಿದೆ ಏಕೆಂದರೆ ಜಿಟಿಕೆಸಾಕೆಟ್ ಕೇವಲ X.org"
 
-#: plugins/x2go/x2go_plugin.c:1327
+#: plugins/x2go/x2go_plugin.c:2243
 #, fuzzy
 msgid "Could not initialize pthread. Falling back to non-threaded mode…"
 msgstr "ಪ್ಥ್ರೆಡ್ ಅನ್ನು ಆರಂಭಗೊಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ಥ್ರೆಡ್ ಮಾಡದ ಮೋಡ್ ಗೆ ಹಿಂತಿರುಗುವುದು…"
@@ -3509,7 +3723,7 @@ msgstr "ಪ್ಥ್ರೆಡ್ ಅನ್ನು ಆರಂಭಗೊಳಿಸಲ�
 #. your language.
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
-#: plugins/x2go/x2go_plugin.c:1370 plugins/x2go/x2go_plugin.c:1388
+#: plugins/x2go/x2go_plugin.c:2286 plugins/x2go/x2go_plugin.c:2304
 #, fuzzy, c-format
 msgid "%sand '%s'"
 msgstr "[ಎಕ್ಸ್0ಎಕ್ಸ್]]ಮತ್ತು '[ಎಕ್ಸ್7ಎಕ್ಸ್]'"
@@ -3520,7 +3734,7 @@ msgstr "[ಎಕ್ಸ್0ಎಕ್ಸ್]]ಮತ್ತು '[ಎಕ್ಸ್7ಎ�
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
-#: plugins/x2go/x2go_plugin.c:1375 plugins/x2go/x2go_plugin.c:1393
+#: plugins/x2go/x2go_plugin.c:2291 plugins/x2go/x2go_plugin.c:2309
 #, fuzzy, c-format
 msgid "%s'%s' "
 msgstr "[ಎಕ್ಸ್0ಎಕ್ಸ್]'[ಎಕ್ಸ್3ಎಕ್ಸ್]' "
@@ -3528,130 +3742,133 @@ msgstr "[ಎಕ್ಸ್0ಎಕ್ಸ್]'[ಎಕ್ಸ್3ಎಕ್ಸ್]' "
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
 #. 'value1', 'value2', 'valueN-1' and 'valueN'
-#: plugins/x2go/x2go_plugin.c:1380
+#: plugins/x2go/x2go_plugin.c:2296
 #, fuzzy, c-format
 msgid "%s'%s', "
 msgstr "[ಎಕ್ಸ್0ಎಕ್ಸ್]'[ಎಕ್ಸ್3ಎಕ್ಸ್]', "
 
-#: plugins/x2go/x2go_plugin.c:1418
+#: plugins/x2go/x2go_plugin.c:2335
 #, fuzzy
 msgid "Invalid validation data in ProtocolSettings array!"
-msgstr "ಪ್ರೊಟೋಕಾಲ್ ಸೆಟ್ಟಿಂಗ್ ಗಳ ಸರಣಿಯಲ್ಲಿ ಪ್ರಮಾಣೀಕರಣ ಡೇಟಾ ಅಮಾನ್ಯವಾಗಿದೆ!"
+msgstr "ಪ್ರೊಟೋಕಾಲ್ ಸೆಟ್ಟಿಂಗ್ ಗಳ ಸರಣಿಯಲ್ಲಿ ಅಮಾನ್ಯ ಪ್ರಮಾಣೀಕರಣ ಡೇಟಾ!"
 
-#: plugins/x2go/x2go_plugin.c:1430 plugins/x2go/x2go_plugin.c:1492
+#: plugins/x2go/x2go_plugin.c:2350 plugins/x2go/x2go_plugin.c:2415
 #, fuzzy
 msgid "Validation data in ProtocolSettings array is invalid!"
 msgstr "ಪ್ರೊಟೋಕಾಲ್ ಸೆಟ್ಟಿಂಗ್ ಗಳ ಸರಣಿಯಲ್ಲಿ ಪ್ರಮಾಣೀಕರಣ ಡೇಟಾ ಅಮಾನ್ಯವಾಗಿದೆ!"
 
-#: plugins/x2go/x2go_plugin.c:1457
+#: plugins/x2go/x2go_plugin.c:2359
+msgid "Parameters 'key' or 'value' are 'NULL'!"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:2377
 #, fuzzy, c-format
 msgid "Allowed values are %s."
 msgstr "ಅನುಮತಿಸಿದ ಮೌಲ್ಯಗಳು [ಎಕ್ಸ್19ಎಕ್ಸ್]."
 
-#: plugins/x2go/x2go_plugin.c:1459
+#: plugins/x2go/x2go_plugin.c:2379
 #, fuzzy, c-format
 msgid "The only allowed value is '%s'."
-msgstr "ಅನುಮತಿಸಿದ ಮೌಲ್ಯವೆಂದರೆ '[ಎಕ್ಸ್23ಎಕ್ಸ್]]'."
+msgstr "ಅನುಮತಿಸಿದ ಏಕೈಕ ಮೌಲ್ಯವೆಂದರೆ '[ಎಕ್ಸ್27ಎಕ್ಸ್]'."
 
-#: plugins/x2go/x2go_plugin.c:1501
+#: plugins/x2go/x2go_plugin.c:2426
 #, fuzzy
 msgid "The lower limit is not a valid integer!"
-msgstr "ಕನಿಷ್ಠ ಮಿತಿ ಮಾನ್ಯ ಪೂರ್ಣಾಂಕವಲ್ಲ!"
+msgstr "ಕಡಿಮೆ ಮಿತಿಯು ಮಾನ್ಯ ಪೂರ್ಣಾಂಕವಲ್ಲ!"
 
-#: plugins/x2go/x2go_plugin.c:1503
+#: plugins/x2go/x2go_plugin.c:2431
+#, fuzzy
 msgid "The lower limit is too high!"
-msgstr ""
+msgstr "ಕಡಿಮೆ ಮಿತಿ ತುಂಬಾ ಹೆಚ್ಚಾಗಿದೆ!"
 
-#: plugins/x2go/x2go_plugin.c:1505
+#: plugins/x2go/x2go_plugin.c:2436
+#, fuzzy
 msgid "The lower limit is too low!"
-msgstr ""
+msgstr "ಕಡಿಮೆ ಮಿತಿ ತುಂಬಾ ಕಡಿಮೆ!"
 
-#: plugins/x2go/x2go_plugin.c:1507 plugins/x2go/x2go_plugin.c:1533
-#: plugins/x2go/x2go_plugin.c:1552
+#: plugins/x2go/x2go_plugin.c:2441 plugins/x2go/x2go_plugin.c:2471
+#: plugins/x2go/x2go_plugin.c:2491
 #, fuzzy
-msgid "Something went wrong."
-msgstr "ಏನೋ ತಪ್ಪಾಗಿದೆ."
+msgid "Something unknown went wrong."
+msgstr "ಏನೋ ತಪ್ಪಾಗಿದೆ"
 
-#: plugins/x2go/x2go_plugin.c:1511 plugins/x2go/x2go_plugin.c:1537
-#: plugins/x2go/x2go_plugin.c:1556
+#: plugins/x2go/x2go_plugin.c:2446 plugins/x2go/x2go_plugin.c:2476
+#: plugins/x2go/x2go_plugin.c:2495
+#, fuzzy
 msgid "Please check the RemminaProtocolSetting array for possible errors."
-msgstr ""
+msgstr "ಸಂಭವನೀಯ ದೋಷಗಳಿಗಾಗಿ ದಯವಿಟ್ಟು ರೆಮ್ಮಿನಾಪ್ರೊಟೋಕಾಲ್ ಸೆಟ್ಟಿಂಗ್ ಸರಣಿಯನ್ನು ಪರಿಶೀಲಿಸಿ."
 
-#: plugins/x2go/x2go_plugin.c:1520 plugins/x2go/x2go_plugin.c:1524
-#: plugins/x2go/x2go_plugin.c:1528 plugins/x2go/x2go_plugin.c:1532
-#, fuzzy
-msgid "Internal error: "
-msgstr "ಆಂತರಿಕ ದೋಷ."
-
-#: plugins/x2go/x2go_plugin.c:1521
+#: plugins/x2go/x2go_plugin.c:2456
 #, fuzzy
 msgid "The upper limit is not a valid integer!"
-msgstr "ಇನ್ ಪುಟ್ ಮಾನ್ಯ ಪೂರ್ಣಾಂಕವಲ್ಲ!"
+msgstr "ಗರಿಷ್ಠ ಮಿತಿಯು ಮಾನ್ಯ ಪೂರ್ಣಾಂಕವಲ್ಲ!"
 
-#: plugins/x2go/x2go_plugin.c:1525
+#: plugins/x2go/x2go_plugin.c:2461
+#, fuzzy
 msgid "The upper limit is too high!"
-msgstr ""
+msgstr "ಗರಿಷ್ಠ ಮಿತಿ ತುಂಬಾ ಹೆಚ್ಚಾಗಿದೆ!"
 
-#: plugins/x2go/x2go_plugin.c:1529
+#: plugins/x2go/x2go_plugin.c:2466
+#, fuzzy
 msgid "The upper limit is too low!"
-msgstr ""
+msgstr "ಗರಿಷ್ಠ ಮಿತಿ ತುಂಬಾ ಕಡಿಮೆ!"
 
-#: plugins/x2go/x2go_plugin.c:1547
+#: plugins/x2go/x2go_plugin.c:2486
 #, fuzzy
 msgid "The input is not a valid integer!"
 msgstr "ಇನ್ ಪುಟ್ ಮಾನ್ಯ ಪೂರ್ಣಾಂಕವಲ್ಲ!"
 
-#: plugins/x2go/x2go_plugin.c:1549 plugins/x2go/x2go_plugin.c:1568
+#: plugins/x2go/x2go_plugin.c:2488 plugins/x2go/x2go_plugin.c:2507
 #, fuzzy, c-format
 msgid "Input must be a number between %i and %i."
 msgstr "ಇನ್ ಪುಟ್ [ಎಕ್ಸ್31ಎಕ್ಸ್] ಮತ್ತು [ಎಕ್ಸ್38ಎಕ್ಸ್] ನಡುವೆ ಒಂದು ಸಂಖ್ಯೆಇರಬೇಕು."
 
-#: plugins/x2go/x2go_plugin.c:1597
+#: plugins/x2go/x2go_plugin.c:2536
 #, fuzzy
 msgid "Startup program"
 msgstr "ಪ್ರಾರಂಭ ಪ್ರೋಗ್ರಾಂ"
 
-#: plugins/x2go/x2go_plugin.c:1599
+#: plugins/x2go/x2go_plugin.c:2538
 #, fuzzy
 msgid "Which command should be executed after creating the X2Go session?"
 msgstr "ಎಕ್ಸ್2ಗೋ ಸೆಷನ್ ರಚಿಸಿದ ನಂತರ ಯಾವ ಆದೇಶವನ್ನು ಕಾರ್ಯಗತಗೊಳಿಸಬೇಕು?"
 
-#: plugins/x2go/x2go_plugin.c:1601
+#: plugins/x2go/x2go_plugin.c:2540
 #, fuzzy
 msgid "Keyboard Layout (auto)"
 msgstr "ಕೀಲಿಮಣೆ ಲೇಔಟ್ (ಸ್ವಯಂ)"
 
-#: plugins/x2go/x2go_plugin.c:1602
+#: plugins/x2go/x2go_plugin.c:2541
 #, fuzzy
 msgid "Keyboard type (auto)"
 msgstr "ಕೀಲಿಮಣೆ ಪ್ರಕಾರ (ಸ್ವಯಂ)"
 
-#: plugins/x2go/x2go_plugin.c:1603
+#: plugins/x2go/x2go_plugin.c:2542
 #, fuzzy
 msgid "Audio support"
 msgstr "ಆಡಿಯೋ ಬೆಂಬಲ"
 
-#: plugins/x2go/x2go_plugin.c:1605
+#: plugins/x2go/x2go_plugin.c:2544
 #, fuzzy
 msgid "The sound system of the X2Go server (default: 'pulse')."
 msgstr "ಎಕ್ಸ್2ಗೋ ಸರ್ವರ್ ನ ಧ್ವನಿ ವ್ಯವಸ್ಥೆ (ಡೀಫಾಲ್ಟ್: 'ಪಲ್ಸ್')."
 
-#: plugins/x2go/x2go_plugin.c:1608
+#: plugins/x2go/x2go_plugin.c:2547
 #, fuzzy
 msgid "Clipboard direction"
 msgstr "ಕ್ಲಿಪ್ ಬೋರ್ಡ್ ನಿರ್ದೇಶನ"
 
-#: plugins/x2go/x2go_plugin.c:1610
+#: plugins/x2go/x2go_plugin.c:2549
 #, fuzzy
 msgid "Which direction should clipboard content be copied? (default: 'both')."
 msgstr "ಕ್ಲಿಪ್ ಬೋರ್ಡ್ ವಿಷಯವನ್ನು ಯಾವ ದಿಕ್ಕಿನಲ್ಲಿ ನಕಲು ಮಾಡಬೇಕು? (ಪೂರ್ವನಿಯೋಜಿತ: 'ಎರಡೂ')."
 
-#: plugins/x2go/x2go_plugin.c:1614
+#: plugins/x2go/x2go_plugin.c:2553
 #, fuzzy
 msgid "DPI resolution"
 msgstr "ಡಿಪಿಐ ರೆಸಲ್ಯೂಶನ್"
 
-#: plugins/x2go/x2go_plugin.c:1615
+#: plugins/x2go/x2go_plugin.c:2554
 #, fuzzy
 msgid ""
 "Launch session with a specific resolution (in dots per inch). Must be "
@@ -3660,7 +3877,7 @@ msgstr ""
 "ನಿರ್ದಿಷ್ಟ ರೆಸಲ್ಯೂಶನ್ ನೊಂದಿಗೆ ಸೆಷನ್ ಅನ್ನು ಪ್ರಾರಂಭಿಸಿ (ಪ್ರತಿ ಇಂಚಕ್ಕೆ ಚುಕ್ಕೆಗಳಲ್ಲಿ). 20 "
 "ರಿಂದ 400 ರ ನಡುವೆ ಇರಬೇಕು."
 
-#: plugins/x2go/x2go_plugin.c:1659
+#: plugins/x2go/x2go_plugin.c:2598
 #, fuzzy
 msgid "X2Go plugin loaded."
 msgstr "ಎಕ್ಸ್2ಗೋ ಪ್ಲಗಿನ್ ಲೋಡ್ ಮಾಡಲಾಗಿದೆ."
@@ -3961,15 +4178,14 @@ msgid ""
 "Copyright © 2009–2014 Vic Lee\n"
 "More details in COPYING"
 msgstr ""
-"\n"
 "ಕೃತಿಸ್ವಾಮ್ಯ © 2014-2021 ಆಂಟೆನೋರೆ ಗಟ್ಟಾ, ಜಿಯೋವಾನಿ ಪನೋಜೋ.\n"
 "ಕೃತಿಸ್ವಾಮ್ಯ © 2009-2014 ವಿಕ್ ಲೀ\n"
-"ನಕಲು ಮಾಡುವಲ್ಲಿ ಹೆಚ್ಚಿನ ವಿವರಗಳು\n"
-"    "
+"ನಕಲು ಮಾಡುವಲ್ಲಿ ಹೆಚ್ಚಿನ ವಿವರಗಳು"
 
 #: data/ui/remmina_about.glade:38
+#, fuzzy
 msgid "https://www.remmina.org/"
-msgstr ""
+msgstr "https://www.remmina.org/"
 
 #: data/ui/remmina_string_list.glade:14 data/ui/remmina_string_list.glade:158
 #, fuzzy
@@ -3990,7 +4206,7 @@ msgstr "ಮೇಲೆ ಸರಿಸು"
 #: data/ui/remmina_string_list.glade:32 data/ui/remmina_string_list.glade:95
 #, fuzzy
 msgid "Move down"
-msgstr "ಕೆಳಕ್ಕೆ ಚಲಿಸಿ (_n)"
+msgstr "ಕೆಳಗೆ ಸರಿಸಿ"
 
 #: data/ui/remmina_mpc.glade:14
 #, fuzzy
@@ -4010,7 +4226,7 @@ msgstr "ಆಯ್ಕೆ ಮಾನದಂಡ"
 #: data/ui/remmina_mpc.glade:261
 #, fuzzy
 msgid "Confirm password"
-msgstr "ಪಾಸ್ ವರ್ಡ್ ದೃಢಪಡಿಸಿ"
+msgstr "ಗುಪ್ತಪದವನ್ನು ಧೃಢಪಡಿಸಿ"
 
 #: data/ui/remmina_mpc.glade:294
 #, fuzzy
@@ -4034,7 +4250,7 @@ msgstr "ಹೆಸರು"
 #, fuzzy
 msgctxt "Multi password changer table"
 msgid "Group"
-msgstr "ಗುಂಪು"
+msgstr "ಸಮೂಹ"
 
 #: data/ui/remmina_mpc.glade:365
 #, fuzzy
@@ -4997,6 +5213,16 @@ msgstr "ರೆಮ್ಮಿನಾ ಅನ್ ಲಾಕ್ ಮಾಡು"
 msgid "Master password"
 msgstr "ಪಾಸ್ ವರ್ಡ್ ಮಾಸ್ಟರ್ ಮಾಡಿ"
 
+#, fuzzy, c-format
+#~ msgid "Could not retrieve PyHoca-CLI's command-line features! Exit code: %i"
+#~ msgstr ""
+#~ "ಪೈಹೋಸಾ-ಸಿಎಲ್ಐನ ಆದೇಶ-ಸಾಲು ವೈಶಿಷ್ಟ್ಯಗಳನ್ನು ಹಿಂಪಡೆಯಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ! ನಿರ್ಗಮನ ಕೋಡ್: "
+#~ "[ಎಕ್ಸ್66ಎಕ್ಸ್]"
+
+#, fuzzy, c-format
+#~ msgid "Error: '%s'"
+#~ msgstr "ದೋಷ: '[ಎಕ್ಸ್8ಎಕ್ಸ್]'"
+
 #, fuzzy
 #~ msgid "Website"
 #~ msgstr "ಜಾಲತಾಣ"
@@ -5028,9 +5254,6 @@ msgstr "ಪಾಸ್ ವರ್ಡ್ ಮಾಸ್ಟರ್ ಮಾಡಿ"
 #, fuzzy
 #~ msgid "User name"
 #~ msgstr "ಬಳಕೆದಾರಹೆಸರು"
-
-#~ msgid "Display"
-#~ msgstr "ಪ್ರದರ್ಶಿಸಿ"
 
 #~ msgid "Remote Desktop Client"
 #~ msgstr "ರೆಮ್ಮಿನ ದೂರದ ಗಣಕತೆರೆ"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-11-08 14:57+0000\n"
+"POT-Creation-Date: 2021-11-09 14:11+0000\n"
 "PO-Revision-Date: 2021-10-31 08:36+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/remmina/remmina/cs/"
@@ -26,7 +26,7 @@ msgstr ""
 #: src/remmina_protocol_widget.c:1676 src/remmina_protocol_widget.c:1695
 #: src/remmina_file_editor.c:1101 src/remmina_file_editor.c:1222
 #: src/remmina_ssh_plugin.c:1360 plugins/rdp/rdp_plugin.c:2720
-#: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:1596
+#: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:2535
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1675
 #: data/ui/remmina_unlock.glade:116
 msgid "Password"
@@ -73,7 +73,8 @@ msgstr "Připojit prostřednictvím SSH z nového terminálu"
 #: src/remmina_file_editor.c:1216 src/remmina_ssh_plugin.c:1470
 #: plugins/rdp/rdp_plugin.c:2719 plugins/vnc/vnc_plugin.c:1976
 #: plugins/vnc/vnc_plugin.c:1988 plugins/www/www_plugin.c:894
-#: plugins/x2go/x2go_plugin.c:1595 data/ui/remmina_mpc.glade:144
+#: plugins/x2go/x2go_plugin.c:512 plugins/x2go/x2go_plugin.c:2534
+#: data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr "Uživatelské jméno"
 
@@ -1500,8 +1501,8 @@ msgstr ""
 "'setting_name_to_validate', 'value' nebo 'gfe' jsou NULL!"
 
 #. TRANSLATORS: Meta-error. Shouldn't be visible.
-#: src/remmina_file_editor.c:1445 plugins/x2go/x2go_plugin.c:856
-#: plugins/x2go/x2go_plugin.c:1440
+#: src/remmina_file_editor.c:1445 plugins/x2go/x2go_plugin.c:1746
+#: plugins/x2go/x2go_plugin.c:2360
 #, fuzzy
 #| msgid "Transfer error"
 msgid "Internal error."
@@ -3025,27 +3026,143 @@ msgstr "Ahoj světe!"
 msgid "Secured password storage in the GNOME keyring"
 msgstr "Zabezpečené ukládání hesel v klíčence GNOME"
 
-#: plugins/x2go/x2go_plugin.c:275
+#: plugins/x2go/x2go_plugin.c:67
+#, c-format
+msgid ""
+"The command-line feature '%s' is not available! Attempting to start PyHoca-"
+"CLI without using this feature…"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:277
 #, fuzzy
 msgid "Broken `DialogData`! Aborting…"
 msgstr "Rozbitý `DialogData`! Přerušení…"
 
-#: plugins/x2go/x2go_plugin.c:279
+#: plugins/x2go/x2go_plugin.c:281
 #, fuzzy
 msgid "Can't retrieve `DialogData`! Aborting…"
 msgstr "Nelze načíst `DialogData`! Přerušení…"
 
-#: plugins/x2go/x2go_plugin.c:505
+#: plugins/x2go/x2go_plugin.c:438
+#, fuzzy
+msgid "Couldn't retrieve valid `DialogData` or `sessions_list`! Aborting…"
+msgstr "Nelze načíst `DialogData`! Přerušení…"
+
+#: plugins/x2go/x2go_plugin.c:445
+msgid "_New"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:447
+#, fuzzy
+#| msgid "_Select all"
+msgid "_Select session"
+msgstr "_Vybrat vše"
+
+#: plugins/x2go/x2go_plugin.c:506
+msgid "Display"
+msgstr "Obrazovka"
+
+#: plugins/x2go/x2go_plugin.c:507
+msgid "Status"
+msgstr "Stav"
+
+#: plugins/x2go/x2go_plugin.c:508
+#, fuzzy
+#| msgid "Permission"
+msgid "Session ID"
+msgstr "Oprávnění"
+
+#: plugins/x2go/x2go_plugin.c:509
+msgid "Create date"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:510
+msgid "Suspended since"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:511
+msgid "Agent PID"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:513
+#, fuzzy
+#| msgid "Username"
+msgid "Hostname"
+msgstr "Uživatelské jméno"
+
+#: plugins/x2go/x2go_plugin.c:514
+msgid "Cookie"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:515
+msgid "Graphic port"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:516
+msgid "SND port"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:517
+#, fuzzy
+#| msgid "Local SSH port"
+msgid "SSHFS port"
+msgstr "Místní SSH port"
+
+#: plugins/x2go/x2go_plugin.c:519 plugins/x2go/x2go_plugin.c:585
+#: plugins/x2go/x2go_plugin.c:599 plugins/x2go/x2go_plugin.c:614
+#: plugins/x2go/x2go_plugin.c:626 plugins/x2go/x2go_plugin.c:936
+#: plugins/x2go/x2go_plugin.c:947 plugins/x2go/x2go_plugin.c:955
+#: plugins/x2go/x2go_plugin.c:1060 plugins/x2go/x2go_plugin.c:1094
+#: plugins/x2go/x2go_plugin.c:1200 plugins/x2go/x2go_plugin.c:2212
+#: plugins/x2go/x2go_plugin.c:2425 plugins/x2go/x2go_plugin.c:2430
+#: plugins/x2go/x2go_plugin.c:2435 plugins/x2go/x2go_plugin.c:2440
+#: plugins/x2go/x2go_plugin.c:2455 plugins/x2go/x2go_plugin.c:2460
+#: plugins/x2go/x2go_plugin.c:2465 plugins/x2go/x2go_plugin.c:2470
+#, fuzzy, c-format
+#| msgid "Transfer error"
+msgid "Internal error: %s"
+msgstr "Interní chyba: "
+
+#: plugins/x2go/x2go_plugin.c:520
+msgid "Unknown property"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:586
+msgid "Couldn't find child GtkTreeView of session chooser dialog."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:600
+msgid "only one session should be able to be selected."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:615
+msgid "Failed to fill 'GtkTreeIter'."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:627
+msgid "Couldn't get session ID out of selected row."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:660
+msgid "Couldn't get session ID from session chooser dialog."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:667
+#, c-format
+msgid "Resuming session: '%s'"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:892
 #, fuzzy
 msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
 msgstr "PyHoca-CLI se neočekávaně ukončil. Toto spojení bude nyní uzavřeno."
 
-#: plugins/x2go/x2go_plugin.c:514
+#: plugins/x2go/x2go_plugin.c:901
 #, fuzzy
 msgid "An error occured."
 msgstr "Došlo k chybě."
 
-#: plugins/x2go/x2go_plugin.c:515
+#: plugins/x2go/x2go_plugin.c:902
 #, fuzzy
 msgid ""
 "The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
@@ -3056,34 +3173,63 @@ msgstr ""
 "Zkontrolujte prosím nastavení svého profilu a výstup PyHoca-CLI, zda nedošlo "
 "k chybě. Zkontrolujte také, zda je vzdálený server dosažitelný."
 
-#: plugins/x2go/x2go_plugin.c:561
+#: plugins/x2go/x2go_plugin.c:937
+msgid "parameter 'argv' is 'NULL'."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:948
+msgid "parameter 'error' is 'NULL'."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:956
+msgid "parameter 'env' is either invalid or uninitialized."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:972
 #, fuzzy
 msgid "Started PyHoca-CLI with the following arguments:"
 msgstr "Spustil PyHoca-CLI s následujícími argumenty:"
 
-#: plugins/x2go/x2go_plugin.c:580
-#, fuzzy, c-format
-msgid "Could not retrieve PyHoca-CLI's command-line features! Exit code: %i"
+#: plugins/x2go/x2go_plugin.c:988
+#, fuzzy
+msgid "Started PyHoca-CLI with the following environment variables:"
+msgstr "Spustil PyHoca-CLI s následujícími argumenty:"
+
+#: plugins/x2go/x2go_plugin.c:997
+msgid ""
+"The necessary PyHoca-CLI process has encountered a internet connection "
+"problem."
 msgstr ""
-"Nepodařilo se načíst funkce příkazového řádku PyHoca-CLI! Ukončovací kód: %i"
 
-#: plugins/x2go/x2go_plugin.c:585
-#, fuzzy, c-format
-#| msgid "Error: %s"
-msgid "Error: '%s'"
-msgstr "Chyba: \"%s"
+#: plugins/x2go/x2go_plugin.c:1007
+#, fuzzy
+msgid "An unknown error occured while trying to start PyHoca-CLI."
+msgstr "Při spouštění relace X2Go došlo k chybě…"
 
-#: plugins/x2go/x2go_plugin.c:609
+#: plugins/x2go/x2go_plugin.c:1017
+#, c-format
+msgid ""
+"An unknown error occured while trying to start PyHoca-CLI. Exit code: %i"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1022
+#, c-format
+msgid ""
+"An unknown error occured while trying to start PyHoca-CLI. Exit code: %i. "
+"Error: '%s'"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1047
 #, fuzzy
 msgid "Can't save empty username!"
 msgstr "Nelze uložit prázdné uživatelské jméno!"
 
-#: plugins/x2go/x2go_plugin.c:621
+#: plugins/x2go/x2go_plugin.c:1061
 #, fuzzy
-msgid "Internal error: Could not save new credentials."
+msgid "Could not save new credentials."
 msgstr "Interní chyba: Nelze uložit nové pověření."
 
-#: plugins/x2go/x2go_plugin.c:623
+#: plugins/x2go/x2go_plugin.c:1064
 #, fuzzy
 msgid ""
 "An error occured while trying to save new credentials: 's_password' or "
@@ -3092,40 +3238,100 @@ msgstr ""
 "Při pokusu o uložení nových pověření došlo k chybě: řetězce 's_password' "
 "nebo 's_username' nebyly nastaveny."
 
-#: plugins/x2go/x2go_plugin.c:659
+#: plugins/x2go/x2go_plugin.c:1095
+msgid "Parameter 'default_username' is uninitialized."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1124
 #, fuzzy
 #| msgid "Enter NX authentication credentials"
 msgid "Enter X2Go credentials"
 msgstr "Zadejte pověření X2Go"
 
-#: plugins/x2go/x2go_plugin.c:818
+#: plugins/x2go/x2go_plugin.c:1201
+#, fuzzy
+#| msgid "Per connection"
+msgid "'Invalid connection data.'"
+msgstr "Sdílené připojení"
+
+#: plugins/x2go/x2go_plugin.c:1323
+msgid ""
+"Couldn't parse the output of PyHoca-CLI's --list-sessions option. Creating a "
+"new session now."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1362
+msgid "Couldn't allocate enough memory!"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1372
+#, c-format
+msgid "Found already existing X2Go session with ID: '%s'"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1444
+msgid ""
+"Could not find any sessions on remote machine. Creating a new session now."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1485
+#, fuzzy
+#| msgid "Choose a file to upload"
+msgid "Choose a session to resume:"
+msgstr "Zvolte soubor, který nahrát"
+
+#: plugins/x2go/x2go_plugin.c:1502
+#, fuzzy
+msgid "Waiting for user to select a session…"
+msgstr "Čekáme, až PyHoca-CLI zobrazí okno relace…"
+
+#: plugins/x2go/x2go_plugin.c:1510
+msgid "No session was selected. Creating a new one."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1558
+#, c-format
+msgid "A non-critical error happened: %s"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1563
+#, c-format
+msgid "User chose to resume session with ID: '%s'"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1583
+#, c-format
+msgid "Resuming session '%s'…"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1706
 #, fuzzy
 msgid "DPI setting is out of bounds. Please adjust it in profile settings."
 msgstr "Nastavení DPI je mimo meze. Upravte jej v nastavení profilu."
 
-#: plugins/x2go/x2go_plugin.c:838
+#: plugins/x2go/x2go_plugin.c:1728
 #, fuzzy
 msgid "Started pyhoca-cli with following arguments:"
 msgstr "Spuštěno pyhoca-cli s následujícími argumenty:"
 
-#: plugins/x2go/x2go_plugin.c:858
+#: plugins/x2go/x2go_plugin.c:1748
 #, fuzzy
 msgid "An error occured while starting an X2Go session…"
 msgstr "Při spouštění relace X2Go došlo k chybě…"
 
-#: plugins/x2go/x2go_plugin.c:867
+#: plugins/x2go/x2go_plugin.c:1757
 #, fuzzy
 #| msgid "Could not start SSH session. %s"
 msgid "Could not start X2Go session."
 msgstr "Nelze spustit relaci X2Go."
 
-#: plugins/x2go/x2go_plugin.c:868
+#: plugins/x2go/x2go_plugin.c:1758
 #, fuzzy, c-format
 #| msgid "Could not start SSH session. %s"
 msgid "Could not start PyHoca-CLI (%i): '%s'"
 msgstr "Nelze spustit PyHoca-CLI (%i): '%s'"
 
-#: plugins/x2go/x2go_plugin.c:945
+#: plugins/x2go/x2go_plugin.c:1857
 #, fuzzy
 msgid ""
 "Couldn't get PyHoca-CLI's command-line features. This indicates it is either "
@@ -3136,7 +3342,7 @@ msgstr ""
 "buď příliš starý, nebo není nainstalován. Prozatím bude použita stará "
 "omezená sada funkcí."
 
-#: plugins/x2go/x2go_plugin.c:956
+#: plugins/x2go/x2go_plugin.c:1866
 #, fuzzy
 msgid ""
 "Could not parse PyHoca-CLI's command-line features. Using a limited feature-"
@@ -3145,43 +3351,43 @@ msgstr ""
 "Nepodařilo se analyzovat funkce příkazového řádku PyHoca-CLI. Prozatím "
 "používá omezenou sadu funkcí."
 
-#: plugins/x2go/x2go_plugin.c:962
+#: plugins/x2go/x2go_plugin.c:1872
 #, fuzzy
 msgid "Retrieved the following PyHoca-CLI command-line features:"
 msgstr "Získal následující funkce příkazového řádku PyHoca-CLI:"
 
-#: plugins/x2go/x2go_plugin.c:967
+#: plugins/x2go/x2go_plugin.c:1880
 #, fuzzy, c-format
 msgid "Available feature[%i]: '%s'"
 msgstr "Dostupná funkce[%i]: '%s'"
 
-#: plugins/x2go/x2go_plugin.c:1072
+#: plugins/x2go/x2go_plugin.c:1985
 #, fuzzy
 #| msgid "Could not open channel. %s"
 msgid "Could not open X11 DISPLAY."
 msgstr "Nepodařilo se otevřít X11 DISPLAY."
 
-#: plugins/x2go/x2go_plugin.c:1112
+#: plugins/x2go/x2go_plugin.c:2025
 #, fuzzy
 msgid "Waiting for window of X2Go Agent to appear…"
 msgstr "Čekání na zobrazení okna agenta X2Go…"
 
-#: plugins/x2go/x2go_plugin.c:1138
+#: plugins/x2go/x2go_plugin.c:2051
 #, fuzzy
 msgid "Waiting for PyHoca-CLI to show the session's window…"
 msgstr "Čekáme, až PyHoca-CLI zobrazí okno relace…"
 
-#: plugins/x2go/x2go_plugin.c:1189
+#: plugins/x2go/x2go_plugin.c:2102
 #, fuzzy
 msgid "No X2Go session window appeared. Something went wrong…"
 msgstr "Nezobrazilo se žádné okno relace X2Go. Něco se pokazilo…"
 
-#: plugins/x2go/x2go_plugin.c:1298
+#: plugins/x2go/x2go_plugin.c:2213
 #, fuzzy
-msgid "Internal error: RemminaProtocolWidget* gp is NULL!"
+msgid "RemminaProtocolWidget* gp is 'NULL'!"
 msgstr "Interní chyba: RemminaProtocolWidget* gp is NULL!"
 
-#: plugins/x2go/x2go_plugin.c:1319
+#: plugins/x2go/x2go_plugin.c:2234
 #, fuzzy, c-format
 #| msgid ""
 #| "The protocol “%s” is unavailable because GtkSocket only works under X.Org."
@@ -3189,7 +3395,7 @@ msgid "The %s protocol is unavailable because GtkSocket only works under X.org"
 msgstr ""
 "Protokol %s není k dispozici, protože GtkSocket funguje pouze pod X.org."
 
-#: plugins/x2go/x2go_plugin.c:1327
+#: plugins/x2go/x2go_plugin.c:2243
 #, fuzzy
 msgid "Could not initialize pthread. Falling back to non-threaded mode…"
 msgstr "Nepodařilo se inicializovat pthread. Pád zpět do nevláknového režimu…"
@@ -3202,7 +3408,7 @@ msgstr "Nepodařilo se inicializovat pthread. Pád zpět do nevláknového reži
 #. your language.
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
-#: plugins/x2go/x2go_plugin.c:1370 plugins/x2go/x2go_plugin.c:1388
+#: plugins/x2go/x2go_plugin.c:2286 plugins/x2go/x2go_plugin.c:2304
 #, fuzzy, c-format
 msgid "%sand '%s'"
 msgstr "%sa '%s'"
@@ -3213,7 +3419,7 @@ msgstr "%sa '%s'"
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
-#: plugins/x2go/x2go_plugin.c:1375 plugins/x2go/x2go_plugin.c:1393
+#: plugins/x2go/x2go_plugin.c:2291 plugins/x2go/x2go_plugin.c:2309
 #, fuzzy, c-format
 msgid "%s'%s' "
 msgstr "%s'%s' "
@@ -3221,142 +3427,139 @@ msgstr "%s'%s' "
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
 #. 'value1', 'value2', 'valueN-1' and 'valueN'
-#: plugins/x2go/x2go_plugin.c:1380
+#: plugins/x2go/x2go_plugin.c:2296
 #, fuzzy, c-format
 msgid "%s'%s', "
 msgstr "%s'%s', "
 
-#: plugins/x2go/x2go_plugin.c:1418
+#: plugins/x2go/x2go_plugin.c:2335
 #, fuzzy
 msgid "Invalid validation data in ProtocolSettings array!"
 msgstr "Neplatná validační data v poli ProtocolSettings!"
 
-#: plugins/x2go/x2go_plugin.c:1430 plugins/x2go/x2go_plugin.c:1492
+#: plugins/x2go/x2go_plugin.c:2350 plugins/x2go/x2go_plugin.c:2415
 #, fuzzy
 msgid "Validation data in ProtocolSettings array is invalid!"
 msgstr "Ověřovací údaje v poli ProtocolSettings jsou neplatné!"
 
-#: plugins/x2go/x2go_plugin.c:1457
+#: plugins/x2go/x2go_plugin.c:2359
+msgid "Parameters 'key' or 'value' are 'NULL'!"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:2377
 #, fuzzy, c-format
 msgid "Allowed values are %s."
 msgstr "Přípustné hodnoty jsou %s."
 
-#: plugins/x2go/x2go_plugin.c:1459
+#: plugins/x2go/x2go_plugin.c:2379
 #, fuzzy, c-format
 msgid "The only allowed value is '%s'."
 msgstr "Jediná povolená hodnota je \"%s\"."
 
-#: plugins/x2go/x2go_plugin.c:1501
+#: plugins/x2go/x2go_plugin.c:2426
 #, fuzzy
 msgid "The lower limit is not a valid integer!"
 msgstr "Dolní mez není platné celé číslo!"
 
-#: plugins/x2go/x2go_plugin.c:1503
+#: plugins/x2go/x2go_plugin.c:2431
 #, fuzzy
 msgid "The lower limit is too high!"
 msgstr "Spodní hranice je příliš vysoká!"
 
-#: plugins/x2go/x2go_plugin.c:1505
+#: plugins/x2go/x2go_plugin.c:2436
 #, fuzzy
 msgid "The lower limit is too low!"
 msgstr "Spodní hranice je příliš nízká!"
 
-#: plugins/x2go/x2go_plugin.c:1507 plugins/x2go/x2go_plugin.c:1533
-#: plugins/x2go/x2go_plugin.c:1552
+#: plugins/x2go/x2go_plugin.c:2441 plugins/x2go/x2go_plugin.c:2471
+#: plugins/x2go/x2go_plugin.c:2491
 #, fuzzy
-msgid "Something went wrong."
+msgid "Something unknown went wrong."
 msgstr "Něco se pokazilo."
 
-#: plugins/x2go/x2go_plugin.c:1511 plugins/x2go/x2go_plugin.c:1537
-#: plugins/x2go/x2go_plugin.c:1556
+#: plugins/x2go/x2go_plugin.c:2446 plugins/x2go/x2go_plugin.c:2476
+#: plugins/x2go/x2go_plugin.c:2495
 #, fuzzy
 msgid "Please check the RemminaProtocolSetting array for possible errors."
 msgstr "Zkontrolujte, zda v poli RemminaProtocolSetting nejsou možné chyby."
 
-#: plugins/x2go/x2go_plugin.c:1520 plugins/x2go/x2go_plugin.c:1524
-#: plugins/x2go/x2go_plugin.c:1528 plugins/x2go/x2go_plugin.c:1532
-#, fuzzy
-#| msgid "Transfer error"
-msgid "Internal error: "
-msgstr "Interní chyba: "
-
-#: plugins/x2go/x2go_plugin.c:1521
+#: plugins/x2go/x2go_plugin.c:2456
 #, fuzzy
 msgid "The upper limit is not a valid integer!"
 msgstr "Horní mez není platné celé číslo!"
 
-#: plugins/x2go/x2go_plugin.c:1525
+#: plugins/x2go/x2go_plugin.c:2461
 #, fuzzy
 msgid "The upper limit is too high!"
 msgstr "Horní hranice je příliš vysoká!"
 
-#: plugins/x2go/x2go_plugin.c:1529
+#: plugins/x2go/x2go_plugin.c:2466
 #, fuzzy
 msgid "The upper limit is too low!"
 msgstr "Horní hranice je příliš nízká!"
 
-#: plugins/x2go/x2go_plugin.c:1547
+#: plugins/x2go/x2go_plugin.c:2486
 #, fuzzy
 msgid "The input is not a valid integer!"
 msgstr "Na vstupu není platné celé číslo!"
 
-#: plugins/x2go/x2go_plugin.c:1549 plugins/x2go/x2go_plugin.c:1568
+#: plugins/x2go/x2go_plugin.c:2488 plugins/x2go/x2go_plugin.c:2507
 #, fuzzy, c-format
 msgid "Input must be a number between %i and %i."
 msgstr "Vstupem musí být číslo mezi %i a %i."
 
-#: plugins/x2go/x2go_plugin.c:1597
+#: plugins/x2go/x2go_plugin.c:2536
 #, fuzzy
 #| msgid "Start-up program"
 msgid "Startup program"
 msgstr "Program při spouštění"
 
-#: plugins/x2go/x2go_plugin.c:1599
+#: plugins/x2go/x2go_plugin.c:2538
 #, fuzzy
 msgid "Which command should be executed after creating the X2Go session?"
 msgstr "Který příkaz by měl být proveden po vytvoření relace X2Go?"
 
-#: plugins/x2go/x2go_plugin.c:1601
+#: plugins/x2go/x2go_plugin.c:2540
 #, fuzzy
 #| msgid "Keyboard layout"
 msgid "Keyboard Layout (auto)"
 msgstr "Rozložení klávesnice (automatické)"
 
-#: plugins/x2go/x2go_plugin.c:1602
+#: plugins/x2go/x2go_plugin.c:2541
 #, fuzzy
 #| msgid "Keyboard layout"
 msgid "Keyboard type (auto)"
 msgstr "Typ klávesnice (auto)"
 
-#: plugins/x2go/x2go_plugin.c:1603
+#: plugins/x2go/x2go_plugin.c:2542
 #, fuzzy
 #| msgid "Turn on Java support"
 msgid "Audio support"
 msgstr "Podpora zvuku"
 
-#: plugins/x2go/x2go_plugin.c:1605
+#: plugins/x2go/x2go_plugin.c:2544
 #, fuzzy
 msgid "The sound system of the X2Go server (default: 'pulse')."
 msgstr "Zvukový systém serveru X2Go (výchozí: 'pulse')."
 
-#: plugins/x2go/x2go_plugin.c:1608
+#: plugins/x2go/x2go_plugin.c:2547
 #, fuzzy
 #| msgid "USB redirection error"
 msgid "Clipboard direction"
 msgstr "Směr schránky"
 
-#: plugins/x2go/x2go_plugin.c:1610
+#: plugins/x2go/x2go_plugin.c:2549
 #, fuzzy
 msgid "Which direction should clipboard content be copied? (default: 'both')."
 msgstr "Kterým směrem se má obsah schránky kopírovat? (výchozí: 'oba')."
 
-#: plugins/x2go/x2go_plugin.c:1614
+#: plugins/x2go/x2go_plugin.c:2553
 #, fuzzy
 #| msgid "Resolution"
 msgid "DPI resolution"
 msgstr "Rozlišení DPI"
 
-#: plugins/x2go/x2go_plugin.c:1615
+#: plugins/x2go/x2go_plugin.c:2554
 #, fuzzy
 msgid ""
 "Launch session with a specific resolution (in dots per inch). Must be "
@@ -3365,7 +3568,7 @@ msgstr ""
 "Spuštění relace s určitým rozlišením (v bodech na palec). Musí být v rozmezí "
 "20 až 400."
 
-#: plugins/x2go/x2go_plugin.c:1659
+#: plugins/x2go/x2go_plugin.c:2598
 #, fuzzy
 msgid "X2Go plugin loaded."
 msgstr "Načtení zásuvného modulu X2Go."
@@ -4567,6 +4770,17 @@ msgstr "Odemknout Remmina"
 msgid "Master password"
 msgstr "Hlavní heslo"
 
+#, fuzzy, c-format
+#~ msgid "Could not retrieve PyHoca-CLI's command-line features! Exit code: %i"
+#~ msgstr ""
+#~ "Nepodařilo se načíst funkce příkazového řádku PyHoca-CLI! Ukončovací kód: "
+#~ "%i"
+
+#, fuzzy, c-format
+#~| msgid "Error: %s"
+#~ msgid "Error: '%s'"
+#~ msgstr "Chyba: \"%s"
+
 #~ msgid "Website"
 #~ msgstr "Webové stránky"
 
@@ -4666,12 +4880,6 @@ msgstr "Hlavní heslo"
 
 #~ msgid "Terminate"
 #~ msgstr "Ukončit"
-
-#~ msgid "Display"
-#~ msgstr "Obrazovka"
-
-#~ msgid "Status"
-#~ msgstr "Stav"
 
 #~ msgid "Password for private SSH key"
 #~ msgstr "Heslo pro soukromou část SSH klíče"

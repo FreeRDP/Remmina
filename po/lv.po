@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-11-08 14:57+0000\n"
+"POT-Creation-Date: 2021-11-09 14:11+0000\n"
 "PO-Revision-Date: 2021-10-05 14:04+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Latvian <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -27,7 +27,7 @@ msgstr ""
 #: src/remmina_protocol_widget.c:1676 src/remmina_protocol_widget.c:1695
 #: src/remmina_file_editor.c:1101 src/remmina_file_editor.c:1222
 #: src/remmina_ssh_plugin.c:1360 plugins/rdp/rdp_plugin.c:2720
-#: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:1596
+#: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:2535
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1675
 #: data/ui/remmina_unlock.glade:116
 msgid "Password"
@@ -79,7 +79,8 @@ msgstr "Savienojums, izmantojot SSH no jauna termināļa"
 #: src/remmina_file_editor.c:1216 src/remmina_ssh_plugin.c:1470
 #: plugins/rdp/rdp_plugin.c:2719 plugins/vnc/vnc_plugin.c:1976
 #: plugins/vnc/vnc_plugin.c:1988 plugins/www/www_plugin.c:894
-#: plugins/x2go/x2go_plugin.c:1595 data/ui/remmina_mpc.glade:144
+#: plugins/x2go/x2go_plugin.c:512 plugins/x2go/x2go_plugin.c:2534
+#: data/ui/remmina_mpc.glade:144
 #, fuzzy
 msgid "Username"
 msgstr "Lietotājvārds"
@@ -1568,8 +1569,8 @@ msgstr ""
 "'value' vai 'gfe' ir NULL!"
 
 #. TRANSLATORS: Meta-error. Shouldn't be visible.
-#: src/remmina_file_editor.c:1445 plugins/x2go/x2go_plugin.c:856
-#: plugins/x2go/x2go_plugin.c:1440
+#: src/remmina_file_editor.c:1445 plugins/x2go/x2go_plugin.c:1746
+#: plugins/x2go/x2go_plugin.c:2360
 #, fuzzy
 msgid "Internal error."
 msgstr "Iekšējā kļūda."
@@ -3198,27 +3199,139 @@ msgstr "Sveika, pasaule!"
 msgid "Secured password storage in the GNOME keyring"
 msgstr "%s parole"
 
-#: plugins/x2go/x2go_plugin.c:275
+#: plugins/x2go/x2go_plugin.c:67
+#, c-format
+msgid ""
+"The command-line feature '%s' is not available! Attempting to start PyHoca-"
+"CLI without using this feature…"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:277
 #, fuzzy
 msgid "Broken `DialogData`! Aborting…"
 msgstr "Bojāts `DialogData`! Pārtrauc…"
 
-#: plugins/x2go/x2go_plugin.c:279
+#: plugins/x2go/x2go_plugin.c:281
 #, fuzzy
 msgid "Can't retrieve `DialogData`! Aborting…"
 msgstr "Nevar iegūt `DialogData`! Pārtrauc…"
 
-#: plugins/x2go/x2go_plugin.c:505
+#: plugins/x2go/x2go_plugin.c:438
+#, fuzzy
+msgid "Couldn't retrieve valid `DialogData` or `sessions_list`! Aborting…"
+msgstr "Nevar iegūt `DialogData`! Pārtrauc…"
+
+#: plugins/x2go/x2go_plugin.c:445
+msgid "_New"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:447
+#, fuzzy
+msgid "_Select session"
+msgstr "_Select all"
+
+#: plugins/x2go/x2go_plugin.c:506
+msgid "Display"
+msgstr "Displejs"
+
+#: plugins/x2go/x2go_plugin.c:507
+msgid "Status"
+msgstr "Statuss"
+
+#: plugins/x2go/x2go_plugin.c:508
+#, fuzzy
+#| msgid "Permission"
+msgid "Session ID"
+msgstr "Atļauja"
+
+#: plugins/x2go/x2go_plugin.c:509
+msgid "Create date"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:510
+msgid "Suspended since"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:511
+msgid "Agent PID"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:513
+#, fuzzy
+msgid "Hostname"
+msgstr "Lietotājvārds"
+
+#: plugins/x2go/x2go_plugin.c:514
+msgid "Cookie"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:515
+msgid "Graphic port"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:516
+msgid "SND port"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:517
+#, fuzzy
+msgid "SSHFS port"
+msgstr "Vietējais SSH ports"
+
+#: plugins/x2go/x2go_plugin.c:519 plugins/x2go/x2go_plugin.c:585
+#: plugins/x2go/x2go_plugin.c:599 plugins/x2go/x2go_plugin.c:614
+#: plugins/x2go/x2go_plugin.c:626 plugins/x2go/x2go_plugin.c:936
+#: plugins/x2go/x2go_plugin.c:947 plugins/x2go/x2go_plugin.c:955
+#: plugins/x2go/x2go_plugin.c:1060 plugins/x2go/x2go_plugin.c:1094
+#: plugins/x2go/x2go_plugin.c:1200 plugins/x2go/x2go_plugin.c:2212
+#: plugins/x2go/x2go_plugin.c:2425 plugins/x2go/x2go_plugin.c:2430
+#: plugins/x2go/x2go_plugin.c:2435 plugins/x2go/x2go_plugin.c:2440
+#: plugins/x2go/x2go_plugin.c:2455 plugins/x2go/x2go_plugin.c:2460
+#: plugins/x2go/x2go_plugin.c:2465 plugins/x2go/x2go_plugin.c:2470
+#, fuzzy, c-format
+msgid "Internal error: %s"
+msgstr "Iekšējā kļūda."
+
+#: plugins/x2go/x2go_plugin.c:520
+msgid "Unknown property"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:586
+msgid "Couldn't find child GtkTreeView of session chooser dialog."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:600
+msgid "only one session should be able to be selected."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:615
+msgid "Failed to fill 'GtkTreeIter'."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:627
+msgid "Couldn't get session ID out of selected row."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:660
+msgid "Couldn't get session ID from session chooser dialog."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:667
+#, c-format
+msgid "Resuming session: '%s'"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:892
 #, fuzzy
 msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
 msgstr "pyhoca-cli negaidīti beidzās. Tagad šis savienojums tiks slēgts."
 
-#: plugins/x2go/x2go_plugin.c:514
+#: plugins/x2go/x2go_plugin.c:901
 #, fuzzy
 msgid "An error occured."
 msgstr "Radās kļūda"
 
-#: plugins/x2go/x2go_plugin.c:515
+#: plugins/x2go/x2go_plugin.c:902
 #, fuzzy
 msgid ""
 "The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
@@ -3230,32 +3343,63 @@ msgstr ""
 "iespējamas kļūdas, un pārliecinieties, ka attālinātais serveris ir "
 "sasniedzams."
 
-#: plugins/x2go/x2go_plugin.c:561
+#: plugins/x2go/x2go_plugin.c:937
+msgid "parameter 'argv' is 'NULL'."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:948
+msgid "parameter 'error' is 'NULL'."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:956
+msgid "parameter 'env' is either invalid or uninitialized."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:972
 #, fuzzy
 msgid "Started PyHoca-CLI with the following arguments:"
 msgstr "Palaist pyhoca-cli ar šādiem argumentiem:"
 
-#: plugins/x2go/x2go_plugin.c:580
-#, fuzzy, c-format
-msgid "Could not retrieve PyHoca-CLI's command-line features! Exit code: %i"
+#: plugins/x2go/x2go_plugin.c:988
+#, fuzzy
+msgid "Started PyHoca-CLI with the following environment variables:"
+msgstr "Palaist pyhoca-cli ar šādiem argumentiem:"
+
+#: plugins/x2go/x2go_plugin.c:997
+msgid ""
+"The necessary PyHoca-CLI process has encountered a internet connection "
+"problem."
 msgstr ""
-"Nezināma kļūda notika, kamēr iegūt pyhoca-cli ir cmdline funkcijas! "
-"Iziešanas kods: %i"
 
-#: plugins/x2go/x2go_plugin.c:585
-#, fuzzy, c-format
-msgid "Error: '%s'"
-msgstr "Kļūda: \"%s"
+#: plugins/x2go/x2go_plugin.c:1007
+#, fuzzy
+msgid "An unknown error occured while trying to start PyHoca-CLI."
+msgstr "X2Go sesijas palaišanas laikā radās kļūda…"
 
-#: plugins/x2go/x2go_plugin.c:609
+#: plugins/x2go/x2go_plugin.c:1017
+#, c-format
+msgid ""
+"An unknown error occured while trying to start PyHoca-CLI. Exit code: %i"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1022
+#, c-format
+msgid ""
+"An unknown error occured while trying to start PyHoca-CLI. Exit code: %i. "
+"Error: '%s'"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1047
 msgid "Can't save empty username!"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:621
-msgid "Internal error: Could not save new credentials."
-msgstr ""
+#: plugins/x2go/x2go_plugin.c:1061
+#, fuzzy
+#| msgid "Could not save the file “%s”."
+msgid "Could not save new credentials."
+msgstr "Neizdevās izveidot SFTP sesiju — %s"
 
-#: plugins/x2go/x2go_plugin.c:623
+#: plugins/x2go/x2go_plugin.c:1064
 #, fuzzy
 msgid ""
 "An error occured while trying to save new credentials: 's_password' or "
@@ -3264,40 +3408,100 @@ msgstr ""
 "Mēģinot saglabāt jaunus akreditācijas datus, radās kļūda: 's_password' vai "
 "'s_username' virknes nebija iestatītas."
 
-#: plugins/x2go/x2go_plugin.c:659
+#: plugins/x2go/x2go_plugin.c:1095
+msgid "Parameter 'default_username' is uninitialized."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1124
 #, fuzzy
 msgid "Enter X2Go credentials"
 msgstr "Ievadiet X2Go akreditācijas datus"
 
-#: plugins/x2go/x2go_plugin.c:818
+#: plugins/x2go/x2go_plugin.c:1201
+#, fuzzy
+#| msgid "Per connection"
+msgid "'Invalid connection data.'"
+msgstr "Koplietošanas savienojums"
+
+#: plugins/x2go/x2go_plugin.c:1323
+msgid ""
+"Couldn't parse the output of PyHoca-CLI's --list-sessions option. Creating a "
+"new session now."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1362
+msgid "Couldn't allocate enough memory!"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1372
+#, c-format
+msgid "Found already existing X2Go session with ID: '%s'"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1444
+msgid ""
+"Could not find any sessions on remote machine. Creating a new session now."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1485
+#, fuzzy
+#| msgid "Choose a file to upload"
+msgid "Choose a session to resume:"
+msgstr "Izvēlieties augšupielādes datni"
+
+#: plugins/x2go/x2go_plugin.c:1502
+#, fuzzy
+msgid "Waiting for user to select a session…"
+msgstr "Gaidām, kad pyhoca-cli parādīs sesijas logu."
+
+#: plugins/x2go/x2go_plugin.c:1510
+msgid "No session was selected. Creating a new one."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1558
+#, c-format
+msgid "A non-critical error happened: %s"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1563
+#, c-format
+msgid "User chose to resume session with ID: '%s'"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1583
+#, c-format
+msgid "Resuming session '%s'…"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1706
 #, fuzzy
 msgid "DPI setting is out of bounds. Please adjust it in profile settings."
 msgstr ""
 "DPI iestatījums ir ārpus robežām. Lūdzu, pielāgojiet to profila iestatījumos."
 
-#: plugins/x2go/x2go_plugin.c:838
+#: plugins/x2go/x2go_plugin.c:1728
 #, fuzzy
 msgid "Started pyhoca-cli with following arguments:"
 msgstr "Palaist pyhoca-cli ar šādiem argumentiem:"
 
-#: plugins/x2go/x2go_plugin.c:858
+#: plugins/x2go/x2go_plugin.c:1748
 #, fuzzy
 msgid "An error occured while starting an X2Go session…"
 msgstr "X2Go sesijas palaišanas laikā radās kļūda…"
 
-#: plugins/x2go/x2go_plugin.c:867
+#: plugins/x2go/x2go_plugin.c:1757
 #, fuzzy
 #| msgid "Could not start SSH session. %s"
 msgid "Could not start X2Go session."
 msgstr "Nevar sākt X2Go sesiju."
 
-#: plugins/x2go/x2go_plugin.c:868
+#: plugins/x2go/x2go_plugin.c:1758
 #, fuzzy, c-format
 #| msgid "Could not start SSH session. %s"
 msgid "Could not start PyHoca-CLI (%i): '%s'"
 msgstr "Nevar palaist PyHoca-CLI (%i): '%s'"
 
-#: plugins/x2go/x2go_plugin.c:945
+#: plugins/x2go/x2go_plugin.c:1857
 #, fuzzy
 msgid ""
 "Couldn't get PyHoca-CLI's command-line features. This indicates it is either "
@@ -3308,7 +3512,7 @@ msgstr ""
 "pyhoca-cli versija ir pārāk veca, vai pyhoca-cli nav instalēta! Tagad tiks "
 "izmantots vecais ierobežotais funkciju komplekts."
 
-#: plugins/x2go/x2go_plugin.c:956
+#: plugins/x2go/x2go_plugin.c:1866
 #, fuzzy
 msgid ""
 "Could not parse PyHoca-CLI's command-line features. Using a limited feature-"
@@ -3317,48 +3521,48 @@ msgstr ""
 "Pyhoca-cli funkcionalitāte nebija iespējams! Pagaidām izmanto ierobežotu "
 "funkciju kopumu."
 
-#: plugins/x2go/x2go_plugin.c:962
+#: plugins/x2go/x2go_plugin.c:1872
 #, fuzzy
 msgid "Retrieved the following PyHoca-CLI command-line features:"
 msgstr "Ieguva šādu pyhoca-cli funkcionalitāti:"
 
-#: plugins/x2go/x2go_plugin.c:967
+#: plugins/x2go/x2go_plugin.c:1880
 #, fuzzy, c-format
 msgid "Available feature[%i]: '%s'"
 msgstr "Pieejamā funkcija[%i]: \"%s]"
 
-#: plugins/x2go/x2go_plugin.c:1072
+#: plugins/x2go/x2go_plugin.c:1985
 #, fuzzy
 #| msgid "Could not open channel. %s"
 msgid "Could not open X11 DISPLAY."
 msgstr "Nevar atvērt X11 DISPLAY."
 
-#: plugins/x2go/x2go_plugin.c:1112
+#: plugins/x2go/x2go_plugin.c:2025
 #, fuzzy
 msgid "Waiting for window of X2Go Agent to appear…"
 msgstr "X2Go aģenta loga parādīšanās gaidīšana."
 
-#: plugins/x2go/x2go_plugin.c:1138
+#: plugins/x2go/x2go_plugin.c:2051
 #, fuzzy
 msgid "Waiting for PyHoca-CLI to show the session's window…"
 msgstr "Gaidām, kad pyhoca-cli parādīs sesijas logu."
 
-#: plugins/x2go/x2go_plugin.c:1189
+#: plugins/x2go/x2go_plugin.c:2102
 #, fuzzy
 msgid "No X2Go session window appeared. Something went wrong…"
 msgstr "X2Go sesijas logs netika parādīts. Kaut kas notika nepareizi…"
 
-#: plugins/x2go/x2go_plugin.c:1298
+#: plugins/x2go/x2go_plugin.c:2213
 #, fuzzy
-msgid "Internal error: RemminaProtocolWidget* gp is NULL!"
+msgid "RemminaProtocolWidget* gp is 'NULL'!"
 msgstr "Iekšējā kļūda: RemminaProtocolWidget* gp ir NULL!"
 
-#: plugins/x2go/x2go_plugin.c:1319
+#: plugins/x2go/x2go_plugin.c:2234
 #, fuzzy, c-format
 msgid "The %s protocol is unavailable because GtkSocket only works under X.org"
 msgstr "Protokols %s nav pieejams, jo GtkSocket darbojas tikai zem X.org."
 
-#: plugins/x2go/x2go_plugin.c:1327
+#: plugins/x2go/x2go_plugin.c:2243
 #, fuzzy
 msgid "Could not initialize pthread. Falling back to non-threaded mode…"
 msgstr "Nevarēja inicializēt pthread. Atgriežas atpakaļ uz bezvītņu režīmā…"
@@ -3371,7 +3575,7 @@ msgstr "Nevarēja inicializēt pthread. Atgriežas atpakaļ uz bezvītņu režī
 #. your language.
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
-#: plugins/x2go/x2go_plugin.c:1370 plugins/x2go/x2go_plugin.c:1388
+#: plugins/x2go/x2go_plugin.c:2286 plugins/x2go/x2go_plugin.c:2304
 #, fuzzy, c-format
 msgid "%sand '%s'"
 msgstr "%sun \"%s\"."
@@ -3382,7 +3586,7 @@ msgstr "%sun \"%s\"."
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
-#: plugins/x2go/x2go_plugin.c:1375 plugins/x2go/x2go_plugin.c:1393
+#: plugins/x2go/x2go_plugin.c:2291 plugins/x2go/x2go_plugin.c:2309
 #, fuzzy, c-format
 msgid "%s'%s' "
 msgstr "%s' %s' "
@@ -3390,135 +3594,133 @@ msgstr "%s' %s' "
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
 #. 'value1', 'value2', 'valueN-1' and 'valueN'
-#: plugins/x2go/x2go_plugin.c:1380
+#: plugins/x2go/x2go_plugin.c:2296
 #, fuzzy, c-format
 msgid "%s'%s', "
 msgstr "%s'%s', "
 
-#: plugins/x2go/x2go_plugin.c:1418
+#: plugins/x2go/x2go_plugin.c:2335
 #, fuzzy
 msgid "Invalid validation data in ProtocolSettings array!"
 msgstr "Validācijas dati masīvā ProtocolSettings ir nederīgi!"
 
-#: plugins/x2go/x2go_plugin.c:1430 plugins/x2go/x2go_plugin.c:1492
+#: plugins/x2go/x2go_plugin.c:2350 plugins/x2go/x2go_plugin.c:2415
 #, fuzzy
 msgid "Validation data in ProtocolSettings array is invalid!"
 msgstr "Validācijas dati masīvā ProtocolSettings ir nederīgi!"
 
-#: plugins/x2go/x2go_plugin.c:1457
+#: plugins/x2go/x2go_plugin.c:2359
+msgid "Parameters 'key' or 'value' are 'NULL'!"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:2377
 #, fuzzy, c-format
 msgid "Allowed values are %s."
 msgstr "Pieļaujamās vērtības ir %s."
 
-#: plugins/x2go/x2go_plugin.c:1459
+#: plugins/x2go/x2go_plugin.c:2379
 #, fuzzy, c-format
 msgid "The only allowed value is '%s'."
 msgstr "Vienīgā atļautā vērtība ir \"%s\"."
 
-#: plugins/x2go/x2go_plugin.c:1501
+#: plugins/x2go/x2go_plugin.c:2426
 #, fuzzy
 msgid "The lower limit is not a valid integer!"
 msgstr "Minimālais ierobežojums nav derīgs vesels skaitlis!"
 
-#: plugins/x2go/x2go_plugin.c:1503
+#: plugins/x2go/x2go_plugin.c:2431
 msgid "The lower limit is too high!"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1505
+#: plugins/x2go/x2go_plugin.c:2436
 msgid "The lower limit is too low!"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1507 plugins/x2go/x2go_plugin.c:1533
-#: plugins/x2go/x2go_plugin.c:1552
+#: plugins/x2go/x2go_plugin.c:2441 plugins/x2go/x2go_plugin.c:2471
+#: plugins/x2go/x2go_plugin.c:2491
 #, fuzzy
-msgid "Something went wrong."
+msgid "Something unknown went wrong."
 msgstr "Kaut kas notika nepareizi."
 
-#: plugins/x2go/x2go_plugin.c:1511 plugins/x2go/x2go_plugin.c:1537
-#: plugins/x2go/x2go_plugin.c:1556
+#: plugins/x2go/x2go_plugin.c:2446 plugins/x2go/x2go_plugin.c:2476
+#: plugins/x2go/x2go_plugin.c:2495
 msgid "Please check the RemminaProtocolSetting array for possible errors."
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1520 plugins/x2go/x2go_plugin.c:1524
-#: plugins/x2go/x2go_plugin.c:1528 plugins/x2go/x2go_plugin.c:1532
-#, fuzzy
-msgid "Internal error: "
-msgstr "Iekšējā kļūda."
-
-#: plugins/x2go/x2go_plugin.c:1521
+#: plugins/x2go/x2go_plugin.c:2456
 #, fuzzy
 msgid "The upper limit is not a valid integer!"
 msgstr "Ievads nav derīgs vesels skaitlis!"
 
-#: plugins/x2go/x2go_plugin.c:1525
+#: plugins/x2go/x2go_plugin.c:2461
 msgid "The upper limit is too high!"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1529
+#: plugins/x2go/x2go_plugin.c:2466
 msgid "The upper limit is too low!"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1547
+#: plugins/x2go/x2go_plugin.c:2486
 #, fuzzy
 msgid "The input is not a valid integer!"
 msgstr "Ievads nav derīgs vesels skaitlis!"
 
-#: plugins/x2go/x2go_plugin.c:1549 plugins/x2go/x2go_plugin.c:1568
+#: plugins/x2go/x2go_plugin.c:2488 plugins/x2go/x2go_plugin.c:2507
 #, fuzzy, c-format
 msgid "Input must be a number between %i and %i."
 msgstr "Ievadam jābūt skaitlim no %i līdz %i."
 
-#: plugins/x2go/x2go_plugin.c:1597
+#: plugins/x2go/x2go_plugin.c:2536
 #, fuzzy
 #| msgid "Start-up program"
 msgid "Startup program"
 msgstr "Palaišanas programma"
 
-#: plugins/x2go/x2go_plugin.c:1599
+#: plugins/x2go/x2go_plugin.c:2538
 #, fuzzy
 msgid "Which command should be executed after creating the X2Go session?"
 msgstr "Kura komanda jāizpilda pēc X2Go sesijas izveides?"
 
-#: plugins/x2go/x2go_plugin.c:1601
+#: plugins/x2go/x2go_plugin.c:2540
 #, fuzzy
 #| msgid "Keyboard layout"
 msgid "Keyboard Layout (auto)"
 msgstr "Tastatūras izkārtojums (automātiskais)"
 
-#: plugins/x2go/x2go_plugin.c:1602
+#: plugins/x2go/x2go_plugin.c:2541
 #, fuzzy
 #| msgid "Keyboard layout"
 msgid "Keyboard type (auto)"
 msgstr "Tastatūras tips (automātiskais)"
 
-#: plugins/x2go/x2go_plugin.c:1603
+#: plugins/x2go/x2go_plugin.c:2542
 #, fuzzy
 msgid "Audio support"
 msgstr "Audio atbalsts"
 
-#: plugins/x2go/x2go_plugin.c:1605
+#: plugins/x2go/x2go_plugin.c:2544
 #, fuzzy
 msgid "The sound system of the X2Go server (default: 'pulse')."
 msgstr "X2Go servera skaņas sistēma (noklusējuma iestatījums: 'pulse')."
 
-#: plugins/x2go/x2go_plugin.c:1608
+#: plugins/x2go/x2go_plugin.c:2547
 #, fuzzy
 #| msgid "Per connection"
 msgid "Clipboard direction"
 msgstr "Spraudņa virziens"
 
-#: plugins/x2go/x2go_plugin.c:1610
+#: plugins/x2go/x2go_plugin.c:2549
 #, fuzzy
 msgid "Which direction should clipboard content be copied? (default: 'both')."
 msgstr "Kurā virzienā kopēt starpliktuves saturu? (pēc noklusējuma: 'abas')."
 
-#: plugins/x2go/x2go_plugin.c:1614
+#: plugins/x2go/x2go_plugin.c:2553
 #, fuzzy
 #| msgid "Resolution"
 msgid "DPI resolution"
 msgstr "DPI izšķirtspēja"
 
-#: plugins/x2go/x2go_plugin.c:1615
+#: plugins/x2go/x2go_plugin.c:2554
 #, fuzzy
 msgid ""
 "Launch session with a specific resolution (in dots per inch). Must be "
@@ -3527,7 +3729,7 @@ msgstr ""
 "Sākt sesiju ar noteiktu izšķirtspēju (punktos uz collu). Tai jābūt no 20 "
 "līdz 400."
 
-#: plugins/x2go/x2go_plugin.c:1659
+#: plugins/x2go/x2go_plugin.c:2598
 #, fuzzy
 msgid "X2Go plugin loaded."
 msgstr "X2Go spraudnis ir ielādēts."
@@ -4865,6 +5067,16 @@ msgstr "Remmina atbloķēšana"
 msgid "Master password"
 msgstr "Galvenā parole"
 
+#, fuzzy, c-format
+#~ msgid "Could not retrieve PyHoca-CLI's command-line features! Exit code: %i"
+#~ msgstr ""
+#~ "Nezināma kļūda notika, kamēr iegūt pyhoca-cli ir cmdline funkcijas! "
+#~ "Iziešanas kods: %i"
+
+#, fuzzy, c-format
+#~ msgid "Error: '%s'"
+#~ msgstr "Kļūda: \"%s"
+
 #, fuzzy
 #~ msgid "Website"
 #~ msgstr "Vietne"
@@ -4944,12 +5156,6 @@ msgstr "Galvenā parole"
 
 #~ msgid "Terminate"
 #~ msgstr "Pārtraukt"
-
-#~ msgid "Display"
-#~ msgstr "Displejs"
-
-#~ msgid "Status"
-#~ msgstr "Statuss"
 
 #~ msgid "Disable clipboard sync"
 #~ msgstr "Deaktivēt starpliktuves sinhronizāciju"

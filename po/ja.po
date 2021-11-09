@@ -16,8 +16,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-11-08 14:57+0000\n"
-"PO-Revision-Date: 2021-10-05 14:04+0000\n"
+"POT-Creation-Date: 2021-11-09 14:11+0000\n"
+"PO-Revision-Date: 2021-11-09 14:11+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/remmina/remmina/"
 "ja/>\n"
@@ -33,7 +33,7 @@ msgstr ""
 #: src/remmina_protocol_widget.c:1676 src/remmina_protocol_widget.c:1695
 #: src/remmina_file_editor.c:1101 src/remmina_file_editor.c:1222
 #: src/remmina_ssh_plugin.c:1360 plugins/rdp/rdp_plugin.c:2720
-#: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:1596
+#: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:2535
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1675
 #: data/ui/remmina_unlock.glade:116
 msgid "Password"
@@ -80,7 +80,8 @@ msgstr "新しい端末から SSH で接続"
 #: src/remmina_file_editor.c:1216 src/remmina_ssh_plugin.c:1470
 #: plugins/rdp/rdp_plugin.c:2719 plugins/vnc/vnc_plugin.c:1976
 #: plugins/vnc/vnc_plugin.c:1988 plugins/www/www_plugin.c:894
-#: plugins/x2go/x2go_plugin.c:1595 data/ui/remmina_mpc.glade:144
+#: plugins/x2go/x2go_plugin.c:512 plugins/x2go/x2go_plugin.c:2534
+#: data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr "ユーザー名"
 
@@ -1161,8 +1162,9 @@ msgid "Plugin %s is not registered."
 msgstr "プラグイン %s は登録されていません。"
 
 #: src/remmina_main.c:669
+#, fuzzy
 msgid "The latest successful connection attempt, or a pre-computed date"
-msgstr ""
+msgstr "最新の接続成功時、または事前に計算された日付"
 
 #: src/remmina_main.c:671
 #, c-format
@@ -1494,8 +1496,8 @@ msgstr ""
 "NULLなので、ユーザーの入力を検証できません。"
 
 #. TRANSLATORS: Meta-error. Shouldn't be visible.
-#: src/remmina_file_editor.c:1445 plugins/x2go/x2go_plugin.c:856
-#: plugins/x2go/x2go_plugin.c:1440
+#: src/remmina_file_editor.c:1445 plugins/x2go/x2go_plugin.c:1746
+#: plugins/x2go/x2go_plugin.c:2360
 #, fuzzy
 #| msgid "Transfer error"
 msgid "Internal error."
@@ -1549,10 +1551,12 @@ msgstr "“%s” が見つかりませんでした。"
 #. TRANSLATORS: This is a message that pops up when an external Remmina plugin tries to set the window resolution using a legacy parameter.
 #. TRANSLATORS: This is a message that pop-up when an external Remmina plugin tries to set the windows resolution using a legacy parameter.
 #: src/remmina_file.c:451 src/remmina_file.c:497
+#, fuzzy
 msgid ""
 "Using the «resolution» parameter in the Remmina preferences file is "
 "deprecated.\n"
 msgstr ""
+"Remmina環境設定ファイルの \"resolution \"パラメータの使用は非推奨です。\n"
 
 #: src/remmina_icon.c:136
 msgid "Open Main Window"
@@ -1586,52 +1590,62 @@ msgid "Connect to remote desktops through the applet menu"
 msgstr "アプレットメニューからリモートデスクトップに接続する"
 
 #: src/remmina_icon.c:359
+#, fuzzy
 msgid "StatusNotifier/Appindicator support in “"
-msgstr ""
+msgstr "\" の StatusNotifier/Appindicator のサポート。"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:366
-#, c-format
+#, fuzzy, c-format
 msgid "%s your desktop does support it"
-msgstr ""
+msgstr "%s あなたのデスクトップはそれをサポートしています。"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:368
-#, c-format
+#, fuzzy, c-format
 msgid "%s and Remmina has built-in (compiled) support for libappindicator."
 msgstr ""
+"%s そしてRemminaはlibappindicatorをビルトイン（コンパイル済み）でサポートして"
+"います。"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:371
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "%s not supported natively by your Desktop Environment. libappindicator will "
 "try to fallback to GtkStatusIcon/xembed"
 msgstr ""
+"%s はデスクトップ環境ではネイティブにサポートされていません。 "
+"libappindicator は GtkStatusIcon/xembed にフォールバックしようとします。"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:375
-#, c-format
+#, fuzzy, c-format
 msgid "%s You may need to install, and use XApp Status Applet"
 msgstr ""
+"%s XApp Status Appletをインストールして使用する必要があるかもしれません。"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:378
-#, c-format
+#, fuzzy, c-format
 msgid "%s You may need to install, and use KStatusNotifierItem"
 msgstr ""
+"%s KStatusNotifierItemをインストールして使用する必要があるかもしれません。"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:381
-#, c-format
+#, fuzzy, c-format
 msgid "%s You may need to install, and use XEmbed SNI Proxy"
 msgstr ""
+"%s XEmbed SNI Proxyをインストールして使用する必要があるかもしれません。"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:384
-#, c-format
+#, fuzzy, c-format
 msgid "%s You may need to install, and use Gnome Shell Extension Appindicator"
 msgstr ""
+"%s Gnome Shell Extension Appindicatorをインストールして使用する必要があるかも"
+"しれません。"
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_ssh_plugin.c:539
@@ -1939,13 +1953,13 @@ msgstr "入力デバイスの設定"
 #, fuzzy
 #| msgid "Turn on smooth scrolling"
 msgid "Disable smooth scrolling"
-msgstr "スムーズ スクロールの無効化"
+msgstr "スムーズスクロールの無効化"
 
 #: plugins/rdp/rdp_settings.c:669
 #, fuzzy
 #| msgid "Quality settings"
 msgid "General settings"
-msgstr "一般的設定"
+msgstr "一般設定"
 
 #: plugins/rdp/rdp_settings.c:676 plugins/rdp/rdp_plugin.c:2778
 #, fuzzy
@@ -1957,7 +1971,7 @@ msgstr "再接続試行回数"
 #, fuzzy
 msgid ""
 "The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
-msgstr "RDPの切断時に再接続を試みる最大数（デフォルト：20"
+msgstr "RDPの切断時に再接続を試みる最大数（デフォルト：20）"
 
 #: plugins/rdp/rdp_plugin.c:769 plugins/rdp/rdp_plugin.c:834
 msgid "Enter RDP authentication credentials"
@@ -2314,15 +2328,15 @@ msgid ""
 "  • 270 (portrait flipped)\n"
 "\n"
 msgstr ""
-"モニターのIDとデスクトップの向きをカンマで区切って指定します。\n"
+"モニターのIDとデスクトップの向きをカンマで区切って表示します。\n"
 "  - <id>:<orientation-in-degrees>,]と表示されます。\n"
 "  - 0,1,2,3\n"
 "  - 0:270,1:90\n"
 "向きは度数で指定し、有効な値は次のとおりです。\n"
 "  - 0 (横)\n"
 "  - 90 (縦)\n"
-"  - 180（横方向に反転\n"
-"  - 270（縦方向に反転\n"
+"  - 180（横方向に反転）\n"
+"  - 270（縦方向に反転）\n"
 "\n"
 
 #: plugins/rdp/rdp_plugin.c:2690
@@ -2986,27 +3000,143 @@ msgstr "Hello, World!"
 msgid "Secured password storage in the GNOME keyring"
 msgstr "GNOME キーリングで安全にパスワード保存"
 
-#: plugins/x2go/x2go_plugin.c:275
+#: plugins/x2go/x2go_plugin.c:67
+#, c-format
+msgid ""
+"The command-line feature '%s' is not available! Attempting to start PyHoca-"
+"CLI without using this feature…"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:277
 #, fuzzy
 msgid "Broken `DialogData`! Aborting…"
 msgstr "壊れた `DialogData`!中止します…"
 
-#: plugins/x2go/x2go_plugin.c:279
+#: plugins/x2go/x2go_plugin.c:281
 #, fuzzy
 msgid "Can't retrieve `DialogData`! Aborting…"
 msgstr "Can't retrieve `DialogData`!Aborting…"
 
-#: plugins/x2go/x2go_plugin.c:505
+#: plugins/x2go/x2go_plugin.c:438
 #, fuzzy
-msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
-msgstr "pyhoca-cliが予期せず終了しました。この接続はこれで終了します。"
+msgid "Couldn't retrieve valid `DialogData` or `sessions_list`! Aborting…"
+msgstr "Can't retrieve `DialogData`!Aborting…"
+
+#: plugins/x2go/x2go_plugin.c:445
+msgid "_New"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:447
+#, fuzzy
+#| msgid "_Select all"
+msgid "_Select session"
+msgstr "すべて選択(_S)"
+
+#: plugins/x2go/x2go_plugin.c:506
+msgid "Display"
+msgstr "表示"
+
+#: plugins/x2go/x2go_plugin.c:507
+msgid "Status"
+msgstr "状況"
+
+#: plugins/x2go/x2go_plugin.c:508
+#, fuzzy
+#| msgid "Permission"
+msgid "Session ID"
+msgstr "権限"
+
+#: plugins/x2go/x2go_plugin.c:509
+msgid "Create date"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:510
+msgid "Suspended since"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:511
+msgid "Agent PID"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:513
+#, fuzzy
+#| msgid "Username"
+msgid "Hostname"
+msgstr "ユーザー名"
 
 #: plugins/x2go/x2go_plugin.c:514
+msgid "Cookie"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:515
+msgid "Graphic port"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:516
+msgid "SND port"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:517
+#, fuzzy
+#| msgid "Local SSH port"
+msgid "SSHFS port"
+msgstr "ローカルの SSH ポート"
+
+#: plugins/x2go/x2go_plugin.c:519 plugins/x2go/x2go_plugin.c:585
+#: plugins/x2go/x2go_plugin.c:599 plugins/x2go/x2go_plugin.c:614
+#: plugins/x2go/x2go_plugin.c:626 plugins/x2go/x2go_plugin.c:936
+#: plugins/x2go/x2go_plugin.c:947 plugins/x2go/x2go_plugin.c:955
+#: plugins/x2go/x2go_plugin.c:1060 plugins/x2go/x2go_plugin.c:1094
+#: plugins/x2go/x2go_plugin.c:1200 plugins/x2go/x2go_plugin.c:2212
+#: plugins/x2go/x2go_plugin.c:2425 plugins/x2go/x2go_plugin.c:2430
+#: plugins/x2go/x2go_plugin.c:2435 plugins/x2go/x2go_plugin.c:2440
+#: plugins/x2go/x2go_plugin.c:2455 plugins/x2go/x2go_plugin.c:2460
+#: plugins/x2go/x2go_plugin.c:2465 plugins/x2go/x2go_plugin.c:2470
+#, fuzzy, c-format
+#| msgid "Transfer error"
+msgid "Internal error: %s"
+msgstr "内部エラーが発生しました。 "
+
+#: plugins/x2go/x2go_plugin.c:520
+msgid "Unknown property"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:586
+msgid "Couldn't find child GtkTreeView of session chooser dialog."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:600
+msgid "only one session should be able to be selected."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:615
+msgid "Failed to fill 'GtkTreeIter'."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:627
+msgid "Couldn't get session ID out of selected row."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:660
+msgid "Couldn't get session ID from session chooser dialog."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:667
+#, c-format
+msgid "Resuming session: '%s'"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:892
+#, fuzzy
+msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
+msgstr "PyHoca-CLIが予期せず終了しました。これでこの接続は終了します。"
+
+#: plugins/x2go/x2go_plugin.c:901
 #, fuzzy
 msgid "An error occured."
 msgstr "エラーが発生しました。"
 
-#: plugins/x2go/x2go_plugin.c:515
+#: plugins/x2go/x2go_plugin.c:902
 #, fuzzy
 msgid ""
 "The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
@@ -3014,36 +3144,66 @@ msgid ""
 "errors. Also ensure the remote server is reachable."
 msgstr ""
 "必要な子プロセス 'pyhoca-cli' が予期せず停止しました。\n"
-"プロファイルの設定とpyhoca-cliの出力にエラーがないか確認し、リモートサーバー"
-"に到達できるかどうか確認してください。"
+"プロファイルの設定とPyHoca-CLIの出力にエラーの可能性がないか確認してくださ"
+"い。また、リモート・サーバが到達可能であることを確認してください。"
 
-#: plugins/x2go/x2go_plugin.c:561
+#: plugins/x2go/x2go_plugin.c:937
+msgid "parameter 'argv' is 'NULL'."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:948
+msgid "parameter 'error' is 'NULL'."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:956
+msgid "parameter 'env' is either invalid or uninitialized."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:972
 #, fuzzy
 msgid "Started PyHoca-CLI with the following arguments:"
-msgstr "以下の引数でpyhoca-cliを起動しました。"
+msgstr "以下の引数でPyHoca-CLIを起動。"
 
-#: plugins/x2go/x2go_plugin.c:580
-#, fuzzy, c-format
-msgid "Could not retrieve PyHoca-CLI's command-line features! Exit code: %i"
+#: plugins/x2go/x2go_plugin.c:988
+#, fuzzy
+msgid "Started PyHoca-CLI with the following environment variables:"
+msgstr "以下の引数でPyHoca-CLIを起動。"
+
+#: plugins/x2go/x2go_plugin.c:997
+msgid ""
+"The necessary PyHoca-CLI process has encountered a internet connection "
+"problem."
 msgstr ""
-"pyhoca-cliのcmdline機能の取得中に未知のエラーが発生しました。終了コードで"
-"す。%i です。"
 
-#: plugins/x2go/x2go_plugin.c:585
-#, fuzzy, c-format
-#| msgid "Error: %s"
-msgid "Error: '%s'"
-msgstr "エラー： '%s'"
+#: plugins/x2go/x2go_plugin.c:1007
+#, fuzzy
+msgid "An unknown error occured while trying to start PyHoca-CLI."
+msgstr "X2Goセッションの開始時にエラーが発生しました…"
 
-#: plugins/x2go/x2go_plugin.c:609
+#: plugins/x2go/x2go_plugin.c:1017
+#, c-format
+msgid ""
+"An unknown error occured while trying to start PyHoca-CLI. Exit code: %i"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1022
+#, c-format
+msgid ""
+"An unknown error occured while trying to start PyHoca-CLI. Exit code: %i. "
+"Error: '%s'"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1047
+#, fuzzy
 msgid "Can't save empty username!"
-msgstr ""
+msgstr "空のユーザー名は保存できません。"
 
-#: plugins/x2go/x2go_plugin.c:621
-msgid "Internal error: Could not save new credentials."
-msgstr ""
+#: plugins/x2go/x2go_plugin.c:1061
+#, fuzzy
+msgid "Could not save new credentials."
+msgstr "内部エラーが発生しました。新しい認証情報を保存できませんでした。"
 
-#: plugins/x2go/x2go_plugin.c:623
+#: plugins/x2go/x2go_plugin.c:1064
 #, fuzzy
 msgid ""
 "An error occured while trying to save new credentials: 's_password' or "
@@ -3052,104 +3212,164 @@ msgstr ""
 "s_password」または「s_username」の文字列が設定されていなかったため、新しい認"
 "証情報を保存しようとしてエラーが発生しました。"
 
-#: plugins/x2go/x2go_plugin.c:659
+#: plugins/x2go/x2go_plugin.c:1095
+msgid "Parameter 'default_username' is uninitialized."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1124
 #, fuzzy
 #| msgid "Enter NX authentication credentials"
 msgid "Enter X2Go credentials"
 msgstr "X2Goの認証情報を入力する"
 
-#: plugins/x2go/x2go_plugin.c:818
+#: plugins/x2go/x2go_plugin.c:1201
+#, fuzzy
+#| msgid "Per connection"
+msgid "'Invalid connection data.'"
+msgstr "シェアード・コネクション"
+
+#: plugins/x2go/x2go_plugin.c:1323
+msgid ""
+"Couldn't parse the output of PyHoca-CLI's --list-sessions option. Creating a "
+"new session now."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1362
+msgid "Couldn't allocate enough memory!"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1372
+#, c-format
+msgid "Found already existing X2Go session with ID: '%s'"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1444
+msgid ""
+"Could not find any sessions on remote machine. Creating a new session now."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1485
+#, fuzzy
+#| msgid "Choose a file to upload"
+msgid "Choose a session to resume:"
+msgstr "アップロードファイルを選択"
+
+#: plugins/x2go/x2go_plugin.c:1502
+#, fuzzy
+msgid "Waiting for user to select a session…"
+msgstr "PyHoca-CLIがセッションのウィンドウを表示するのを待っています。"
+
+#: plugins/x2go/x2go_plugin.c:1510
+msgid "No session was selected. Creating a new one."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1558
+#, c-format
+msgid "A non-critical error happened: %s"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1563
+#, c-format
+msgid "User chose to resume session with ID: '%s'"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1583
+#, c-format
+msgid "Resuming session '%s'…"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1706
 #, fuzzy
 msgid "DPI setting is out of bounds. Please adjust it in profile settings."
 msgstr "DPI設定が圏外です。プロファイル設定で調整してください。"
 
-#: plugins/x2go/x2go_plugin.c:838
+#: plugins/x2go/x2go_plugin.c:1728
 #, fuzzy
 msgid "Started pyhoca-cli with following arguments:"
 msgstr "以下の引数でpyhoca-cliを起動しました。"
 
-#: plugins/x2go/x2go_plugin.c:858
+#: plugins/x2go/x2go_plugin.c:1748
 #, fuzzy
 msgid "An error occured while starting an X2Go session…"
 msgstr "X2Goセッションの開始時にエラーが発生しました…"
 
-#: plugins/x2go/x2go_plugin.c:867
+#: plugins/x2go/x2go_plugin.c:1757
 #, fuzzy
 #| msgid "Could not start SSH session. %s"
 msgid "Could not start X2Go session."
 msgstr "X2Goのセッションを開始できませんでした。"
 
-#: plugins/x2go/x2go_plugin.c:868
+#: plugins/x2go/x2go_plugin.c:1758
 #, fuzzy, c-format
 msgid "Could not start PyHoca-CLI (%i): '%s'"
 msgstr "PyHoca-CLI を起動できませんでした (%i): '%s'"
 
-#: plugins/x2go/x2go_plugin.c:945
+#: plugins/x2go/x2go_plugin.c:1857
 #, fuzzy
 msgid ""
 "Couldn't get PyHoca-CLI's command-line features. This indicates it is either "
 "too old, or not installed. An old limited set of features will be used for "
 "now."
 msgstr ""
-"pyhoca-cli の cmdline-features を取得できませんでした。これは、pyhoca-cliの"
-"バージョンが古すぎるか、pyhoca-cliがインストールされていないことを示していま"
-"す。古い限定された機能のセットが現在使用されています。"
+"PyHoca-CLIのコマンドライン機能が利用できませんでした。これは、PyHoca-CLIが古"
+"すぎるか、インストールされていないことを示しています。今のところ、古い限定的"
+"な機能が使われています。"
 
-#: plugins/x2go/x2go_plugin.c:956
+#: plugins/x2go/x2go_plugin.c:1866
 #, fuzzy
 msgid ""
 "Could not parse PyHoca-CLI's command-line features. Using a limited feature-"
 "set for now."
 msgstr ""
-"pyhoca-cliの機能を解析することができませんでした。今のところ、限られた機能"
-"セットを使用しています。"
+"PyHoca-CLIのコマンドライン機能を解析できませんでした。今のところ、限られた機"
+"能セットを使用しています。"
 
-#: plugins/x2go/x2go_plugin.c:962
+#: plugins/x2go/x2go_plugin.c:1872
 #, fuzzy
 msgid "Retrieved the following PyHoca-CLI command-line features:"
-msgstr "以下のpyhoca-cliの機能を取得しました。"
+msgstr "以下のPyHoca-CLIコマンドライン機能を取得しました。"
 
-#: plugins/x2go/x2go_plugin.c:967
+#: plugins/x2go/x2go_plugin.c:1880
 #, fuzzy, c-format
 msgid "Available feature[%i]: '%s'"
 msgstr "利用可能な機能[%i]： '%s'"
 
-#: plugins/x2go/x2go_plugin.c:1072
+#: plugins/x2go/x2go_plugin.c:1985
 #, fuzzy
 #| msgid "Could not open channel. %s"
 msgid "Could not open X11 DISPLAY."
 msgstr "X11 DISPLAYを開けませんでした。"
 
-#: plugins/x2go/x2go_plugin.c:1112
+#: plugins/x2go/x2go_plugin.c:2025
 #, fuzzy
 msgid "Waiting for window of X2Go Agent to appear…"
-msgstr "X2Go Agentのウィンドウが表示されるのを待ちます。"
+msgstr "X2Go Agentのウィンドウが表示されるのを待つ...。"
 
-#: plugins/x2go/x2go_plugin.c:1138
+#: plugins/x2go/x2go_plugin.c:2051
 #, fuzzy
 msgid "Waiting for PyHoca-CLI to show the session's window…"
-msgstr "pyhoca-cliがセッションのウィンドウを表示するのを待っています。"
+msgstr "PyHoca-CLIがセッションのウィンドウを表示するのを待っています。"
 
-#: plugins/x2go/x2go_plugin.c:1189
+#: plugins/x2go/x2go_plugin.c:2102
 #, fuzzy
 msgid "No X2Go session window appeared. Something went wrong…"
 msgstr ""
 "X2Goのセッションウィンドウが表示されませんでした。何かが間違っていた...。"
 
-#: plugins/x2go/x2go_plugin.c:1298
+#: plugins/x2go/x2go_plugin.c:2213
 #, fuzzy
-msgid "Internal error: RemminaProtocolWidget* gp is NULL!"
+msgid "RemminaProtocolWidget* gp is 'NULL'!"
 msgstr "内部エラーが発生しました。RemminaProtocolWidget* gp is NULL!"
 
-#: plugins/x2go/x2go_plugin.c:1319
+#: plugins/x2go/x2go_plugin.c:2234
 #, fuzzy, c-format
 #| msgid ""
 #| "The protocol “%s” is unavailable because GtkSocket only works under X.Org."
 msgid "The %s protocol is unavailable because GtkSocket only works under X.org"
 msgstr ""
-"GtkSocket は X.Org でのみ動作するため、プロトコル \"%s\" は利用できません。"
+"GtkSocket は X.org でしか動作しないため、%s プロトコルは利用できません。"
 
-#: plugins/x2go/x2go_plugin.c:1327
+#: plugins/x2go/x2go_plugin.c:2243
 #, fuzzy
 msgid "Could not initialize pthread. Falling back to non-threaded mode…"
 msgstr ""
@@ -3163,7 +3383,7 @@ msgstr ""
 #. your language.
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
-#: plugins/x2go/x2go_plugin.c:1370 plugins/x2go/x2go_plugin.c:1388
+#: plugins/x2go/x2go_plugin.c:2286 plugins/x2go/x2go_plugin.c:2304
 #, fuzzy, c-format
 msgid "%sand '%s'"
 msgstr "%sと「%s」。"
@@ -3174,7 +3394,7 @@ msgstr "%sと「%s」。"
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
-#: plugins/x2go/x2go_plugin.c:1375 plugins/x2go/x2go_plugin.c:1393
+#: plugins/x2go/x2go_plugin.c:2291 plugins/x2go/x2go_plugin.c:2309
 #, fuzzy, c-format
 msgid "%s'%s' "
 msgstr "%s'%s' "
@@ -3182,139 +3402,141 @@ msgstr "%s'%s' "
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
 #. 'value1', 'value2', 'valueN-1' and 'valueN'
-#: plugins/x2go/x2go_plugin.c:1380
+#: plugins/x2go/x2go_plugin.c:2296
 #, fuzzy, c-format
 msgid "%s'%s', "
 msgstr "%s'%s'です。 "
 
-#: plugins/x2go/x2go_plugin.c:1418
+#: plugins/x2go/x2go_plugin.c:2335
 #, fuzzy
 msgid "Invalid validation data in ProtocolSettings array!"
-msgstr "ProtocolSettings配列のバリデーションデータが無効です。"
+msgstr "ProtocolSettings配列の検証データが無効です。"
 
-#: plugins/x2go/x2go_plugin.c:1430 plugins/x2go/x2go_plugin.c:1492
+#: plugins/x2go/x2go_plugin.c:2350 plugins/x2go/x2go_plugin.c:2415
 #, fuzzy
 msgid "Validation data in ProtocolSettings array is invalid!"
 msgstr "ProtocolSettings配列のバリデーションデータが無効です。"
 
-#: plugins/x2go/x2go_plugin.c:1457
+#: plugins/x2go/x2go_plugin.c:2359
+msgid "Parameters 'key' or 'value' are 'NULL'!"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:2377
 #, fuzzy, c-format
 msgid "Allowed values are %s."
 msgstr "許容される値は%sです。"
 
-#: plugins/x2go/x2go_plugin.c:1459
+#: plugins/x2go/x2go_plugin.c:2379
 #, fuzzy, c-format
 msgid "The only allowed value is '%s'."
 msgstr "許容される値は「%s」のみです。"
 
-#: plugins/x2go/x2go_plugin.c:1501
+#: plugins/x2go/x2go_plugin.c:2426
 #, fuzzy
 msgid "The lower limit is not a valid integer!"
-msgstr "Limit minimum は有効な整数ではありません。"
+msgstr "下限値は有効な整数ではありません。"
 
-#: plugins/x2go/x2go_plugin.c:1503
-msgid "The lower limit is too high!"
-msgstr ""
-
-#: plugins/x2go/x2go_plugin.c:1505
-msgid "The lower limit is too low!"
-msgstr ""
-
-#: plugins/x2go/x2go_plugin.c:1507 plugins/x2go/x2go_plugin.c:1533
-#: plugins/x2go/x2go_plugin.c:1552
+#: plugins/x2go/x2go_plugin.c:2431
 #, fuzzy
-msgid "Something went wrong."
+msgid "The lower limit is too high!"
+msgstr "下限値が高すぎる!"
+
+#: plugins/x2go/x2go_plugin.c:2436
+#, fuzzy
+msgid "The lower limit is too low!"
+msgstr "下限が低すぎる!"
+
+#: plugins/x2go/x2go_plugin.c:2441 plugins/x2go/x2go_plugin.c:2471
+#: plugins/x2go/x2go_plugin.c:2491
+#, fuzzy
+msgid "Something unknown went wrong."
 msgstr "何かが間違っていました。"
 
-#: plugins/x2go/x2go_plugin.c:1511 plugins/x2go/x2go_plugin.c:1537
-#: plugins/x2go/x2go_plugin.c:1556
-msgid "Please check the RemminaProtocolSetting array for possible errors."
-msgstr ""
-
-#: plugins/x2go/x2go_plugin.c:1520 plugins/x2go/x2go_plugin.c:1524
-#: plugins/x2go/x2go_plugin.c:1528 plugins/x2go/x2go_plugin.c:1532
+#: plugins/x2go/x2go_plugin.c:2446 plugins/x2go/x2go_plugin.c:2476
+#: plugins/x2go/x2go_plugin.c:2495
 #, fuzzy
-#| msgid "Transfer error"
-msgid "Internal error: "
-msgstr "内部エラー"
+msgid "Please check the RemminaProtocolSetting array for possible errors."
+msgstr "RemminaProtocolSetting配列にエラーの可能性がないか確認してください。"
 
-#: plugins/x2go/x2go_plugin.c:1521
+#: plugins/x2go/x2go_plugin.c:2456
 #, fuzzy
 msgid "The upper limit is not a valid integer!"
-msgstr "入力は有効な整数ではありません。"
+msgstr "上限値は有効な整数ではありません。"
 
-#: plugins/x2go/x2go_plugin.c:1525
+#: plugins/x2go/x2go_plugin.c:2461
+#, fuzzy
 msgid "The upper limit is too high!"
-msgstr ""
+msgstr "上限値が高すぎます。"
 
-#: plugins/x2go/x2go_plugin.c:1529
+#: plugins/x2go/x2go_plugin.c:2466
+#, fuzzy
 msgid "The upper limit is too low!"
-msgstr ""
+msgstr "上限値が低すぎます。"
 
-#: plugins/x2go/x2go_plugin.c:1547
+#: plugins/x2go/x2go_plugin.c:2486
 #, fuzzy
 msgid "The input is not a valid integer!"
 msgstr "入力は有効な整数ではありません。"
 
-#: plugins/x2go/x2go_plugin.c:1549 plugins/x2go/x2go_plugin.c:1568
+#: plugins/x2go/x2go_plugin.c:2488 plugins/x2go/x2go_plugin.c:2507
 #, fuzzy, c-format
 msgid "Input must be a number between %i and %i."
 msgstr "入力は%iから%iの間の数字でなければなりません。"
 
-#: plugins/x2go/x2go_plugin.c:1597
+#: plugins/x2go/x2go_plugin.c:2536
 #, fuzzy
 #| msgid "Start-up program"
 msgid "Startup program"
 msgstr "起動プログラム"
 
-#: plugins/x2go/x2go_plugin.c:1599
+#: plugins/x2go/x2go_plugin.c:2538
 #, fuzzy
 msgid "Which command should be executed after creating the X2Go session?"
 msgstr "X2Goのセッション作成後に実行すべきコマンドは？"
 
-#: plugins/x2go/x2go_plugin.c:1601
+#: plugins/x2go/x2go_plugin.c:2540
 #, fuzzy
 #| msgid "Keyboard layout"
 msgid "Keyboard Layout (auto)"
-msgstr "キーボードレイアウト（オート"
+msgstr "キーボードレイアウト（オート）"
 
-#: plugins/x2go/x2go_plugin.c:1602
+#: plugins/x2go/x2go_plugin.c:2541
 #, fuzzy
 #| msgid "Keyboard layout"
 msgid "Keyboard type (auto)"
-msgstr "キーボードタイプ（オート"
+msgstr "キーボードタイプ（オート）"
 
-#: plugins/x2go/x2go_plugin.c:1603
+#: plugins/x2go/x2go_plugin.c:2542
 #, fuzzy
 #| msgid "Turn on Java support"
 msgid "Audio support"
 msgstr "オーディオ対応"
 
-#: plugins/x2go/x2go_plugin.c:1605
+#: plugins/x2go/x2go_plugin.c:2544
 #, fuzzy
 msgid "The sound system of the X2Go server (default: 'pulse')."
 msgstr "X2Goサーバーのサウンドシステム（デフォルト：「pulse」）。"
 
-#: plugins/x2go/x2go_plugin.c:1608
+#: plugins/x2go/x2go_plugin.c:2547
 #, fuzzy
 #| msgid "USB redirection error"
 msgid "Clipboard direction"
 msgstr "クリップボードの方向"
 
-#: plugins/x2go/x2go_plugin.c:1610
+#: plugins/x2go/x2go_plugin.c:2549
 #, fuzzy
 msgid "Which direction should clipboard content be copied? (default: 'both')."
 msgstr ""
-"クリップボードの内容をどの方向にコピーするか？(を設定します（デフォル"
-"ト：'both'）。)"
+"クリップボードの内容をどの方向にコピーするか？(を設定します（デフォルト：「両"
+"方」）。"
 
-#: plugins/x2go/x2go_plugin.c:1614
+#: plugins/x2go/x2go_plugin.c:2553
 #, fuzzy
 #| msgid "Resolution"
 msgid "DPI resolution"
 msgstr "DPI解像度"
 
-#: plugins/x2go/x2go_plugin.c:1615
+#: plugins/x2go/x2go_plugin.c:2554
 #, fuzzy
 msgid ""
 "Launch session with a specific resolution (in dots per inch). Must be "
@@ -3323,7 +3545,7 @@ msgstr ""
 "特定の解像度（1インチあたりのドット数）でセッションを開始します。20から400の"
 "間でなければなりません。"
 
-#: plugins/x2go/x2go_plugin.c:1659
+#: plugins/x2go/x2go_plugin.c:2598
 #, fuzzy
 msgid "X2Go plugin loaded."
 msgstr "X2Goプラグインが読み込まれました。"
@@ -3373,13 +3595,13 @@ msgstr "ハイカラー (16 bit)"
 #, fuzzy
 #| msgid "High colour (16 bit)"
 msgid "Low colour (8 bits)"
-msgstr "ローカラー（8ビット"
+msgstr "ローカラー（8ビット）"
 
 #: plugins/gvnc/gvnc_plugin.c:824
 #, fuzzy
 #| msgid "True colour (24 bit)"
 msgid "Ultra low colour (3 bits)"
-msgstr "ウルトラローカラー（3ビット"
+msgstr "ウルトラローカラー（3ビット）"
 
 #: plugins/gvnc/gvnc_plugin.c:848
 msgid "VNC password"
@@ -3484,7 +3706,7 @@ msgstr "リモートホストの再起動"
 #: plugins/gvnc/gvnc_plugin.c:897
 #, fuzzy
 msgid "Reset remote host (hard reboot)"
-msgstr "リモートホストのリセット（ハードリブート"
+msgstr "リモートホストのリセット（ハードリブート）"
 
 #: plugins/gvnc/gvnc_plugin.c:898
 msgid "Shutdown remote host"
@@ -3610,15 +3832,14 @@ msgid ""
 "Copyright © 2009–2014 Vic Lee\n"
 "More details in COPYING"
 msgstr ""
-"\n"
 "Copyright © 2014–2021 Antenore Gatta, Giovanni Panozzo.\n"
 "Copyright © 2009–2014 Vic Lee\n"
-"More details in COPYING\n"
-"    "
+"More details in COPYING"
 
 #: data/ui/remmina_about.glade:38
+#, fuzzy
 msgid "https://www.remmina.org/"
-msgstr ""
+msgstr "https://www.remmina.org/"
 
 #: data/ui/remmina_string_list.glade:14 data/ui/remmina_string_list.glade:158
 msgid "Add"
@@ -4478,6 +4699,17 @@ msgstr "Remmina のロックを解除"
 msgid "Master password"
 msgstr "マスターパスワード"
 
+#, fuzzy, c-format
+#~ msgid "Could not retrieve PyHoca-CLI's command-line features! Exit code: %i"
+#~ msgstr ""
+#~ "PyHoca-CLIのコマンドライン機能を取得できませんでした。終了コードです。%i "
+#~ "です。"
+
+#, fuzzy, c-format
+#~| msgid "Error: %s"
+#~ msgid "Error: '%s'"
+#~ msgstr "エラー： '%s'"
+
 #~ msgid "Website"
 #~ msgstr "ウェブサイト"
 
@@ -4577,12 +4809,6 @@ msgstr "マスターパスワード"
 
 #~ msgid "Terminate"
 #~ msgstr "終了"
-
-#~ msgid "Display"
-#~ msgstr "表示"
-
-#~ msgid "Status"
-#~ msgstr "状況"
 
 #~ msgid "Password for private SSH key"
 #~ msgstr "秘密 SSH 鍵のパスワード"

@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-11-08 14:57+0000\n"
-"PO-Revision-Date: 2021-07-16 09:00+0000\n"
+"POT-Creation-Date: 2021-11-09 14:11+0000\n"
+"PO-Revision-Date: 2021-11-09 14:12+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Albanian <https://hosted.weblate.org/projects/remmina/remmina/"
 "sq/>\n"
@@ -19,14 +19,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.7.2-dev\n"
+"X-Generator: Weblate 4.9-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:354
 #: src/remmina_protocol_widget.c:1676 src/remmina_protocol_widget.c:1695
 #: src/remmina_file_editor.c:1101 src/remmina_file_editor.c:1222
 #: src/remmina_ssh_plugin.c:1360 plugins/rdp/rdp_plugin.c:2720
-#: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:1596
+#: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:2535
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1675
 #: data/ui/remmina_unlock.glade:116
 msgid "Password"
@@ -37,19 +37,19 @@ msgstr "Fjalëkalimi"
 #: src/remmina_ssh_plugin.c:1472
 #, fuzzy
 msgid "SSH identity file"
-msgstr "File i identitetit SSH"
+msgstr "File i identitetit të SSH"
 
 #: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:1103
 #: src/remmina_ssh_plugin.c:1362
 #, fuzzy
 msgid "SSH agent"
-msgstr "Agjent sSH"
+msgstr "Agjent i SSH"
 
 #: src/remmina_sftp_plugin.c:313 src/remmina_file_editor.c:1104
 #: src/remmina_ssh_plugin.c:1363
 #, fuzzy
 msgid "Public key (automatic)"
-msgstr "Çelësi publik (automatik)"
+msgstr "Çelës publik (automatik)"
 
 #: src/remmina_sftp_plugin.c:314 src/remmina_file_editor.c:1105
 #: src/remmina_ssh_plugin.c:1364
@@ -68,7 +68,7 @@ msgstr "Mbishkruaje"
 #: src/remmina_sftp_plugin.c:327
 #, fuzzy
 msgid "Resume all file transfers"
-msgstr "Rinis të gjitha transferet e skedarëve"
+msgstr "Rinis të gjitha transferimet e file"
 
 #: src/remmina_sftp_plugin.c:328 src/remmina_protocol_widget.c:283
 #, fuzzy
@@ -79,7 +79,8 @@ msgstr "Lidhu nëpërmjet SSH nga një terminal i ri"
 #: src/remmina_file_editor.c:1216 src/remmina_ssh_plugin.c:1470
 #: plugins/rdp/rdp_plugin.c:2719 plugins/vnc/vnc_plugin.c:1976
 #: plugins/vnc/vnc_plugin.c:1988 plugins/www/www_plugin.c:894
-#: plugins/x2go/x2go_plugin.c:1595 data/ui/remmina_mpc.glade:144
+#: plugins/x2go/x2go_plugin.c:512 plugins/x2go/x2go_plugin.c:2534
+#: data/ui/remmina_mpc.glade:144
 #, fuzzy
 msgid "Username"
 msgstr "Emër përdoruesi"
@@ -88,23 +89,23 @@ msgstr "Emër përdoruesi"
 #: src/remmina_ssh_plugin.c:1469
 #, fuzzy
 msgid "Authentication type"
-msgstr "Tipi i autentifikimit"
+msgstr "Lloji i autentifikimit"
 
 #: src/remmina_sftp_plugin.c:357 src/remmina_file_editor.c:1240
 #: src/remmina_ssh_plugin.c:1476
 #, fuzzy
 msgid "Password to unlock private key"
-msgstr "Fjalëkalim për të zhbllokuar çelësin privat"
+msgstr "Fjalëkalimi për të zhbllokuar çelësin privat"
 
 #: src/remmina_sftp_plugin.c:358 src/remmina_ssh_plugin.c:1506
 #, fuzzy
 msgid "SSH Proxy Command"
-msgstr "Komanda e Proxy SSH"
+msgstr "Komanda Proxy SSH"
 
 #: src/remmina_sftp_plugin.c:367
 #, fuzzy
 msgid "SFTP - Secure File Transfer"
-msgstr "SFTP - Transferimi i sigurt i file"
+msgstr "SFTP - Transferim i Sigurt i Skedarëve"
 
 #: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1951
 msgid "Protocol"
@@ -220,12 +221,12 @@ msgstr "Rezolucionet"
 #: src/remmina_pref_dialog.c:91 src/remmina_file_editor.c:528
 #, fuzzy
 msgid "Configure the available resolutions"
-msgstr "Konfiguro zgjidhjet në dispozicion"
+msgstr "Konfiguro rezolucionet në dispozicion"
 
 #: src/remmina_pref_dialog.c:143
 #, fuzzy
 msgid "Recent lists cleared."
-msgstr "Listat e fundit janë pastruar."
+msgstr "Listat e fundit u pastrua."
 
 #: src/remmina_pref_dialog.c:154 src/rcw.c:2028
 #: data/ui/remmina_preferences.glade:169 data/ui/remmina_preferences.glade:179
@@ -236,19 +237,18 @@ msgstr "Taste:"
 #: src/remmina_pref_dialog.c:154
 #, fuzzy
 msgid "Configure the keystrokes"
-msgstr "Konfiguro çelësat"
+msgstr "Konfiguro goditjet e çelësave"
 
 #. TRANSLATORS: Do not translate libsodium, is the name of a library
 #: src/remmina_pref_dialog.c:487
 #, fuzzy
 msgid "libsodium >= 1.9.0 is required to use master password"
-msgstr ""
-"libsodium >= 1.9.0 është e nevojshme për të përdorur fjalëkalimin master"
+msgstr "libsodium >= 1.9.0 është i nevojshëm përdorimi i fjalëkalimit master"
 
 #: src/remmina_pref_dialog.c:806
 #, fuzzy
 msgid "Picking a terminal colouring file replaces the file: "
-msgstr "Duke zgjedhur një file për ngjyrosje terminali zëvendëson skedarin: "
+msgstr "Zgjedhja e file të ngjyrosjes së terminalit zëvendëson file: "
 
 #: src/remmina_pref_dialog.c:810
 #, fuzzy
@@ -257,9 +257,9 @@ msgid ""
 "“Advanced” tab of terminal connections and editable in the “Terminal” tab in "
 "the settings."
 msgstr ""
-"Ky skedar përmban skemën e ngjyrave terminale \"Custom\" të zgjedhur nga "
-"tabi \"Advanced\" i lidhjeve terminale dhe i editueshëm në tabin \"Terminal"
-"\" në rregullimet."
+"Ky file përmban skemën e ngjyrave terminale \"Custom\" të zgjedhur nga tabi "
+"\"Advanced\" i lidhjeve terminale dhe i editueshëm në tabin \"Terminal\" në "
+"rregullimet."
 
 #: src/remmina_message_panel.c:163 data/ui/remmina_mpc.glade:46
 #: data/ui/remmina_unlock.glade:46
@@ -300,17 +300,17 @@ msgstr "Ruaj fjalëkalimin"
 #: data/ui/remmina_spinner.glade:8 data/ui/remmina_spinner.glade:9
 #, fuzzy
 msgid "_Cancel"
-msgstr "_Anuloje"
+msgstr "_Cancel"
 
 #: src/remmina_message_panel.c:513
 #, fuzzy
 msgid "Enter certificate authentication files"
-msgstr "Fut file e autentifikimit të çertifikatës"
+msgstr "Shkruaj file e autentifikimit të çertifikatave"
 
 #: src/remmina_message_panel.c:525
 #, fuzzy
 msgid "CA Certificate File"
-msgstr "File i çertifikatës CA"
+msgstr "File i çertifikatave CA"
 
 #: src/remmina_message_panel.c:547
 #, fuzzy
@@ -320,19 +320,19 @@ msgstr "CA CRL File"
 #: src/remmina_message_panel.c:569
 #, fuzzy
 msgid "Client Certificate File"
-msgstr "File i Çertifikatës së Klientit"
+msgstr "File i çertifikatës së klientit"
 
 #: src/remmina_message_panel.c:591
 #, fuzzy
 msgid "Client Certificate Key"
-msgstr "Çelësi i çertifikatës së klientit"
+msgstr "Çelësi i çertifikatave të klientit"
 
 #: src/rcw.c:655
 #, fuzzy, c-format
 msgid ""
 "Are you sure you want to close %i active connections in the current window?"
 msgstr ""
-"A jeni i sigurt që doni të mbyllni %i lidhje aktive në dritaren aktuale?"
+"Jeni i sigurt që dëshironi të mbyllni lidhjet aktive %i në dritaren aktuale?"
 
 #: src/rcw.c:1399
 #, fuzzy
@@ -347,22 +347,22 @@ msgstr "Ekran i plotë i rrotulluar"
 #: src/rcw.c:1493
 #, fuzzy
 msgid "Keep aspect ratio when scaled"
-msgstr "Mbaj raportin e aspektit kur është shkallëzuar"
+msgstr "Mbaj raportin e aspektit kur të shkallëzuar"
 
 #: src/rcw.c:1501
 #, fuzzy
 msgid "Fill client window when scaled"
-msgstr "Mbush dritaren e klientit kur është shkallëzuar"
+msgstr "Mbush dritaren e klientit kur është e shkallëzuar"
 
 #: src/rcw.c:2049
 #, fuzzy
 msgid "Send clipboard content as keystrokes"
-msgstr "Dërgo përmbajtjen e clipboard si keystrokes"
+msgstr "Dërgo përmbajtjen e dërrasës si kyç"
 
 #: src/rcw.c:2155
 #, fuzzy
 msgid "Turn off scaling to avoid screenshot distortion."
-msgstr "Fike shkallën për të shmangur shtrembërimin e screenshot.."
+msgstr "Fike zmadhimin për të shmangur shtrembërimin e pamjes së ekranit."
 
 #: src/rcw.c:2215 plugins/www/www_plugin.c:855
 #, fuzzy
@@ -387,12 +387,12 @@ msgstr "Hap dritaren kryesore Remmina"
 #: src/rcw.c:2318
 #, fuzzy
 msgid "Duplicate current connection"
-msgstr "Rikrijo lidhjen aktuale"
+msgstr "Lidhja aktuale e dyfishuar"
 
 #: src/rcw.c:2335
 #, fuzzy
 msgid "Resize the window to fit in remote resolution"
-msgstr "Risize dritaren për t'u përshtatur me një zgjidhje të largët"
+msgstr "Risize dritaren për t'u përshtatur me rezolucionin e largët"
 
 #: src/rcw.c:2346
 msgid "Toggle fullscreen mode"
@@ -402,12 +402,12 @@ msgstr "Aktivizon/çaktivizon modalitetin me ekran të plotë"
 #: data/ui/remmina_preferences.glade:1342
 #, fuzzy
 msgid "Multi monitor"
-msgstr "Monitor shumë"
+msgstr "Monitor multi"
 
 #: src/rcw.c:2408
 #, fuzzy
 msgid "Toggle dynamic resolution update"
-msgstr "Rifreskimi i zgjidhjes dinamike"
+msgstr "Rifresko rifreskimin dinamik të rezolucionit"
 
 #: src/rcw.c:2418
 #, fuzzy
@@ -453,12 +453,13 @@ msgstr "Shkëputu"
 #: src/rcw.c:4297
 #, fuzzy, c-format
 msgid "The file “%s” is corrupted, unreadable, or could not be found."
-msgstr "Dosja %s\" është e korruptuar, e palexueshme ose nuk mund të gjendet."
+msgstr ""
+"File \"%s\" është i korruptuar, i palexueshëm, ose nuk mund të gjendet."
 
 #: src/rcw.c:4466
 #, fuzzy
 msgid "Warning: This plugin requires GtkSocket, but it’s not available."
-msgstr "Kujdes: Ky plugin kërkon GtkSocket, por nuk është në dispozicion."
+msgstr "Kujdes: Ky plugin kërkon GtkSocket, por nuk është i disponueshëm."
 
 #: src/remmina_mpchange.c:234
 #, fuzzy
@@ -468,17 +469,17 @@ msgstr "Fjalëkalimet nuk përputhen"
 #: src/remmina_mpchange.c:244
 #, fuzzy
 msgid "Resetting passwords, please wait…"
-msgstr "Duke rivendosur fjalëkalimet, ju lutem prisni…"
+msgstr "Ripensoni fjalëkalimet, ju lutem prisni…"
 
 #: src/remmina_mpchange.c:327
 #, fuzzy
 msgid "The multi password changer requires a secrecy plugin.\n"
-msgstr "Ndryshim shumë fjalëkalimesh kërkon një plugin fshehtësie.\n"
+msgstr "Ndryshuesi i shumë fjalëkalimeve kërkon një plugin fshehtësie.\n"
 
 #: src/remmina_mpchange.c:330
 #, fuzzy
 msgid "The multi password changer requires a secrecy service.\n"
-msgstr "Përdoruesi i shumë fjalëkalimeve kërkon një shërbim fshehtësie.\n"
+msgstr "Ndryshuesi i shumë fjalëkalimeve kërkon një shërbim fshehtësie.\n"
 
 #: src/remmina_mpchange.c:409
 #, fuzzy, c-format
@@ -491,7 +492,7 @@ msgstr[1] ""
 #: src/remmina.c:86
 #, fuzzy
 msgid "Show 'About'"
-msgstr "Shfaq 'About'"
+msgstr "Shfaq 'Për'"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:88
@@ -501,8 +502,8 @@ msgid ""
 "supported by a plugin) or a supported URI (RDP, VNC, SSH or SPICE)"
 msgstr ""
 "Lidhu ose me një desktop të përshkruar në një file (.remmina ose një "
-"filetype të mbështetur nga një plugin) ose një URI të mbështetur (RDP, VNC, "
-"SSH ose SPICE)"
+"filetype i suportuar nga një plugin) ose një URI e suportuar (RDP, VNC, SSH "
+"ose SPICE)"
 
 #: src/remmina.c:88 src/remmina.c:90 src/remmina.c:92
 #, fuzzy
@@ -516,8 +517,8 @@ msgid ""
 "Connect to a desktop described in a file (.remmina or a type supported by a "
 "plugin)"
 msgstr ""
-"Lidhu me një desktop të përshkruar në një skedar (.remmina ose një tip i "
-"mbështetur nga një plugin)"
+"Lidhu me një desktop të përshkruar në një file (.remmina ose një tip i "
+"suportuar nga një plugin)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:92
@@ -526,8 +527,8 @@ msgid ""
 "Edit desktop connection described in file (.remmina or type supported by "
 "plugin)"
 msgstr ""
-"Ndrysho lidhjen desktop të përshkruar në file (.remmina ose lloji i "
-"mbështetur nga plugin)"
+"Ndrysho lidhjen e desktopit të përshkruar në file (.remmina ose lloji i "
+"suportuar nga plugin)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:95
@@ -554,13 +555,13 @@ msgstr "TABINDEX"
 #: src/remmina.c:106
 #, fuzzy
 msgid "Quit"
-msgstr "Dilni"
+msgstr "Hiq dorë"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:108
 #, fuzzy
 msgid "Use default server name (for --new)"
-msgstr "Përdor emrin e prezgjedhur të serverit (për --new)"
+msgstr "Përdor emrin e prezgjedhur të serverit (për --i ri)"
 
 #: src/remmina.c:108
 #, fuzzy
@@ -571,7 +572,7 @@ msgstr "SERVER"
 #: src/remmina.c:110
 #, fuzzy
 msgid "Use default protocol (for --new)"
-msgstr "Përdor protokollin e prezgjedhur (për --new)"
+msgstr "Përdor protokollin e prezgjedhur (për --i ri)"
 
 #: src/remmina.c:110
 #, fuzzy
@@ -594,7 +595,7 @@ msgstr "Shfaq versionin e aplikimit"
 #: src/remmina.c:116
 #, fuzzy
 msgid "Show version of the application and its plugins"
-msgstr "Shfaq versionin e aplikacionit dhe plugins e tij"
+msgstr "Shfaq versionin e aplikativit dhe plugin e tij"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:118
@@ -607,7 +608,7 @@ msgstr "Ndrysho profilin e lidhjes (kërkon --set-option)"
 #, fuzzy
 msgid "Set one or more profile settings, to be used with --update-profile"
 msgstr ""
-"Vendos një ose më shumë rregullimet e profilit, për t'u përdorur me --update-"
+"Vendos një ose më shumë rregullime profili, për t'u përdorur me --update-"
 "profile"
 
 #: src/remmina.c:121
@@ -618,7 +619,7 @@ msgstr "Ruaj fjalëkalimin"
 #: src/remmina.c:375
 #, fuzzy
 msgid "- or protocol://username:encryptedpassword@host:port"
-msgstr "- ose protokolli://username:encryptedpassword@host:port"
+msgstr "- ose protokolli://përdoruesi:encryptedpassword@host:port"
 
 #: src/remmina.c:378
 #, fuzzy
@@ -656,7 +657,7 @@ msgid ""
 "password\n"
 msgstr ""
 "Shembuj:\n"
-"Për t'u lidhur duke përdorur një profil të lidhjes ekzistuese, përdorni:\n"
+"Për t'u lidhur duke përdorur një profil ekzistues lidhjeje, përdorni:\n"
 "\n"
 "remmina -c FILE.remmina\n"
 "\n"
@@ -665,11 +666,11 @@ msgstr ""
 "remmina -c rdp://username@server\n"
 "\tremmina -c rdp://domain\\\\username@server\n"
 "\tremmina -c vnc://username@server\n"
-"\tRemmina -c vnc://server? VncUsername=username\n"
+"\tRemmina -c vnc://server? VncUsername=përdoruesi\n"
 "\tremmina -c ssh://user@server\n"
 "\tremmina -c spice://server\n"
 "\n"
-"Për të lidhur shpejt duke përdorur një URI së bashku me një fjalëkalim të "
+"Për t'u lidhur shpejt duke përdorur një URI së bashku me një fjalëkalim të "
 "koduar:\n"
 "\n"
 "remmina -c rdp://username:encrypted-password@server\n"
@@ -682,32 +683,31 @@ msgstr ""
 "remmina --encrypt-password\n"
 "\n"
 "Për të përditësuar emrin e përdoruesit dhe fjalëkalimin dhe për të vendosur "
-"një mënyrë të ndryshme zgjidhjeje të një profili lidhjeje Remmina, "
-"përdorni:\n"
+"një mënyrë të ndryshme zgjidhjeje të profilit të lidhjes Remmina, përdorni:\n"
 "\n"
-"echo \"username\\napassword\" | remmina --update-profile /PATH/TO/FOO."
-"remmina --set-option username --set-option resolution_mode=2 --set-option "
-"password\n"
+"i bën jehonë \"përdoruesi\\napassword\" | remmina --update-profile /PATH/TO/"
+"FOO.remmina --set-option username --set-option resolution_mode=2 --set-"
+"option password\n"
 
 #: src/remmina_public.c:345
 #, fuzzy, c-format
 msgid "Address is too long for UNIX socket_path: %s"
-msgstr "Adresa është shumë e gjatë për UNIX socket_path: %s"
+msgstr "Adresa është shumë e gjatë për unIX socket_path: %s"
 
 #: src/remmina_public.c:355
 #, fuzzy, c-format
 msgid "Creating UNIX socket failed: %s"
-msgstr "Krijimi i socket UNIX dështoi: %s"
+msgstr "Krijimi i soketit UNIX dështoi: %s"
 
 #: src/remmina_public.c:361
 #, fuzzy, c-format
 msgid "Connecting to UNIX socket failed: %s"
-msgstr "Lidhja me socket UNIX dështoi: %s"
+msgstr "Lidhja me soketin UNIX dështoi: %s"
 
 #: src/remmina_public.c:631
 #, fuzzy
 msgid "Please enter format 'widthxheight'."
-msgstr "Ju lutem futni formatin 'widthxheight'."
+msgstr "Shkruaj formatin 'widthxheight'."
 
 #: src/remmina_public.c:653
 #, fuzzy
@@ -724,17 +724,17 @@ msgstr ""
 #: src/remmina_ftp_client.c:389
 #, fuzzy
 msgid "Choose download location"
-msgstr "Zgjidh vendndodhjen e shkarkimit"
+msgstr "Zgjidh pozicionin e shkarkimit"
 
 #: src/remmina_ftp_client.c:529
 #, fuzzy
 msgid "Are you sure to delete the selected files on server?"
-msgstr "A jeni i sigurt për të fshirë skedarët e zgjedhur në server?"
+msgstr "A jeni i sigurt për të eleminuar skedarët e zgjedhur në server?"
 
 #: src/remmina_ftp_client.c:586
 #, fuzzy
 msgid "Choose a file to upload"
-msgstr "Zgjidh një file për t'u ngarkuar"
+msgstr "Zgjidh një file për të ngarkuar"
 
 #: src/remmina_ftp_client.c:593
 #, fuzzy
@@ -762,7 +762,7 @@ msgstr "Ballina"
 #: src/remmina_ftp_client.c:749
 #, fuzzy
 msgid "Go to home folder"
-msgstr "Shko në kartelën e shtëpisë"
+msgstr "Shko tek kartela e shtëpisë"
 
 #: src/remmina_ftp_client.c:753
 #, fuzzy
@@ -772,7 +772,7 @@ msgstr "Lart"
 #: src/remmina_ftp_client.c:754
 #, fuzzy
 msgid "Go to parent folder"
-msgstr "Shko tek kartela e prindit"
+msgstr "Shko tek kartela e prindërve"
 
 #: src/remmina_ftp_client.c:758 plugins/rdp/rdp_plugin.c:2810
 #: plugins/vnc/vnc_plugin.c:2027
@@ -863,23 +863,23 @@ msgstr "Duke u lidhur me '%s'…"
 #: src/remmina_protocol_widget.c:1164
 #, fuzzy, c-format
 msgid "Awaiting incoming SSH connection on port %i…"
-msgstr "Në pritje të lidhjes hyrëse SSH në port %i…"
+msgstr "Duke pritur lidhjen e ardhshme SSH në port %i…"
 
 #: src/remmina_protocol_widget.c:1217
 #, fuzzy, c-format
 msgid "The “%s” command is not available on the SSH server."
-msgstr "Komanda \"%s\" nuk është e disponueshme në serverin SSH."
+msgstr "Komanda \"%s\" nuk është në dispozicion në serverin SSH."
 
 #: src/remmina_protocol_widget.c:1222
 #, fuzzy, c-format
 msgid "Could not run the “%s” command on the SSH server (status = %i)."
-msgstr "I pamundur kandidimi i komandës \"%s\" në serverin SSH (status = %i)."
+msgstr "E pamundur kryerja e komandës \"%s\" në serverin SSH (status = %i)."
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_protocol_widget.c:1230
 #, fuzzy, c-format
 msgid "Could not run command. %s"
-msgstr "Nuk mund të drejtoj komandën. %s"
+msgstr "E pamundur komanda. %s"
 
 #. TRANSLATORS: “%s” is a placeholder for a hostname or IP address.
 #: src/remmina_protocol_widget.c:1300
@@ -901,7 +901,7 @@ msgstr "Shenjat e gishtërinjve pranohen automatikisht"
 #: src/remmina_protocol_widget.c:1757
 #, fuzzy
 msgid "Certificate details:"
-msgstr "Detajet e çertifikimit:"
+msgstr "Detajet e çertifikatës:"
 
 #. TRANSLATORS: An SSL certificate subject is usually the remote server the user connect to.
 #: src/remmina_protocol_widget.c:1759 src/remmina_protocol_widget.c:1791
@@ -917,7 +917,7 @@ msgstr "Lëshuesi:"
 #: src/remmina_protocol_widget.c:1763
 #, fuzzy
 msgid "Fingerprint:"
-msgstr "Gjurmët e gishtave"
+msgstr "Shenja gishtash"
 
 #. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
 #: src/remmina_protocol_widget.c:1765
@@ -928,19 +928,19 @@ msgstr "Ta Pranoj Çertifikatën"
 #: src/remmina_protocol_widget.c:1789
 #, fuzzy
 msgid "The certificate changed! Details:"
-msgstr "Certifikata ndryshoi! Detajet:"
+msgstr "Çertifikata ndryshoi! Detajet:"
 
 #. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
 #: src/remmina_protocol_widget.c:1795
 #, fuzzy
 msgid "Old fingerprint:"
-msgstr "Shenjat e gishtërinjve të vjetër:"
+msgstr "Shenjat e vjetra të gishtave:"
 
 #. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
 #: src/remmina_protocol_widget.c:1797
 #, fuzzy
 msgid "New fingerprint:"
-msgstr "Shenjat e reja të gishtërinjve:"
+msgstr "Shenjat e reja të gishtave:"
 
 #. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
 #: src/remmina_protocol_widget.c:1799
@@ -951,12 +951,12 @@ msgstr "Ta Pranoj Çertifikatën"
 #: src/remmina_protocol_widget.c:1942
 #, fuzzy, c-format
 msgid "Listening on port %i for an incoming %s connection…"
-msgstr "Duke dëgjuar në port %i për një lidhje të ardhur %s …"
+msgstr "Duke dëgjuar në port %i për një lidhje hyrëse %s …"
 
 #: src/remmina_protocol_widget.c:1967
 #, fuzzy
 msgid "Could not authenticate, attempting reconnection…"
-msgstr "I pamundur autentifikimi, përpjekja për rilidhje…"
+msgstr "E pamundur autentifikimi, përpjekja për rilidhje…"
 
 #: src/remmina_protocol_widget.c:2029 src/remmina_file_editor.c:436
 #: src/remmina_file_editor.c:1172 data/ui/remmina_main.glade:478
@@ -967,49 +967,49 @@ msgstr "Serveri"
 #: src/remmina_protocol_widget.c:2047
 #, fuzzy, c-format
 msgid "Install the %s protocol plugin first."
-msgstr "Instalo në fillim plugin e protokollit %s."
+msgstr "Instalo së pari plugin e protokollit %s."
 
 #: src/remmina_ssh.c:236
 #, fuzzy, c-format
 msgid "Could not authenticate with TOTP/OTP/2FA. %s"
-msgstr "I pamundur autentifikimi me TOTP/OTP/2FA.%s"
+msgstr "I pamundur identifikimi me TOTP/OTP/2FA. %s"
 
 #: src/remmina_ssh.c:295 src/remmina_ssh.c:676
 #, fuzzy, c-format
 msgid "Could not authenticate with SSH password. %s"
-msgstr "I pamundur autentifikimi me fjalëkalimin SSH. %s"
+msgstr "E pamundur identifikimi me fjalëkalimin SSH. %s"
 
 #: src/remmina_ssh.c:322 src/remmina_ssh.c:389
 #, fuzzy
 msgid "No saved SSH passphrase supplied. Asking user to enter it."
 msgstr ""
-"Nuk ka shpëtuar SSH passphrase furnizuar. Duke i kërkuar përdoruesit të hyjë "
-"në të."
+"Nuk është siguruar asnjë passphrase SSH e ruajtur. Duke i kërkuar "
+"përdoruesit të hyjë në të."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:327 src/remmina_ssh.c:368 src/remmina_ssh.c:394
 #: src/remmina_ssh.c:433 src/remmina_ssh.c:746
 #, fuzzy, c-format
 msgid "Could not authenticate with public SSH key. %s"
-msgstr "I pamundur autentifikimi me çelësin publik SSH. %s"
+msgstr "E pamundur identifikimi me çelësin publik SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:336
 #, fuzzy, c-format
 msgid "SSH certificate cannot be imported. %s"
-msgstr "Çertifikatë SSH nuk mund të importohet. %s"
+msgstr "Çertifikata sSH nuk mund të importohet. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:345
 #, fuzzy, c-format
 msgid "SSH certificate cannot be copied into the private SSH key. %s"
-msgstr "Çertifikata SSH nuk mund të kopjohet në çelësin privat SSH. %s"
+msgstr "Çertifikata SSH nuk mund të kopjohet në çelësin privat të SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:355
 #, fuzzy, c-format
 msgid "Could not authenticate using SSH certificate. %s"
-msgstr "I pamundur autentifikimi duke përdorur çertifikatën SSH. %s"
+msgstr "E pamundur identifikimi duke përdorur çertifikatën SSH. %s"
 
 #: src/remmina_ssh.c:369
 #, fuzzy
@@ -1020,22 +1020,22 @@ msgstr "File i identitetit SSH nuk është zgjedhur."
 #: src/remmina_ssh.c:380
 #, fuzzy, c-format
 msgid "Public SSH key cannot be imported. %s"
-msgstr "Çelësi publik I SSH-së nuk mund të importohet. %s"
+msgstr "Çelësi publik i SSH nuk mund të importohet. %s"
 
 #: src/remmina_ssh.c:478
 #, fuzzy, c-format
 msgid "Could not authenticate automatically with public SSH key. %s"
-msgstr "I pamundur autentifikimi automatikisht me çelësin publik SSH. %s"
+msgstr "E pamundur identifikimi automatikisht me çelësin publik SSH. %s"
 
 #: src/remmina_ssh.c:523
 #, fuzzy, c-format
 msgid "Could not authenticate automatically with SSH agent. %s"
-msgstr "I pamundur autentifikimi automatikisht me agjentin SSH. %s"
+msgstr "I pamundur identifikimi automatikisht me agjentin e SSH. %s"
 
 #: src/remmina_ssh.c:569 src/remmina_ssh.c:856
 #, fuzzy, c-format
 msgid "Could not authenticate with SSH GSSAPI/Kerberos. %s"
-msgstr "I pamundur identifikimi me SSH GSSAPI/Kerberos. %s"
+msgstr "E pamundur identifikimi me SSH GSSAPI/Kerberos. %s"
 
 #: src/remmina_ssh.c:598
 #, fuzzy
@@ -1045,35 +1045,35 @@ msgstr "Çelësi publik i SSH ndryshoi!"
 #: src/remmina_ssh.c:711
 #, fuzzy, c-format
 msgid "Could not authenticate with keyboard-interactive. %s"
-msgstr "I pamundur autentifikimi me tastierën interaktive. %s"
+msgstr "E pamundur autentifikimi me tastierën interaktive. %s"
 
 #: src/remmina_ssh.c:813
 #, fuzzy, c-format
 msgid "Could not authenticate with automatic public SSH key. %s"
-msgstr "I pamundur autentifikimi me çelësin publik automatik SSH. %s"
+msgstr "E pamundur identifikimi me çelësin automatik publik SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:921
 #, fuzzy, c-format
 msgid "Could not fetch the server's public SSH key. %s"
-msgstr "Nuk arrij të marr çelësin publik SSH të serverit. %s"
+msgstr "E pamundur marrja e çelësit publik SSH të serverit. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:928
 #, fuzzy, c-format
 msgid "Could not fetch public SSH key. %s"
-msgstr "Nuk mund të merrja çelësin publik të SSH- së. %s"
+msgstr "E pamundur marrja e çelësit publik të SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:936
 #, fuzzy, c-format
 msgid "Could not fetch checksum of the public SSH key. %s"
-msgstr "I pamundur kontrolli i çelësit publik të SSH- së. %s"
+msgstr "E pamundur marrja e çeqeve të çelësit publik të SSH. %s"
 
 #: src/remmina_ssh.c:949
 #, fuzzy
 msgid "The server is unknown. The public key fingerprint is:"
-msgstr "Serveri është i panjohur. Shenjat e gishtave të çelësit publik janë:"
+msgstr "Serveri është i panjohur. Shenjat e gishtërinjve të kyçit publik janë:"
 
 #: src/remmina_ssh.c:951 src/remmina_ssh.c:957
 #, fuzzy
@@ -1087,26 +1087,26 @@ msgid ""
 "under attack,\n"
 "or the administrator has changed the key. The new public key fingerprint is:"
 msgstr ""
-"Kujdes: Serveri ka ndryshuar çelësin e tij publik. Kjo do të thotë se ju ose "
-"jeni nën sulm,\n"
-"ose administratori ka ndryshuar çelësin. Shenjat e reja të gishtave të "
-"çelësit publik janë:"
+"Kujdes: Serveri ka ndryshuar çelësin publik. Kjo do të thotë se ju ose jeni "
+"nën sulm,\n"
+"ose administratori ka ndryshuar çelësin. Shenjat e reja të gishtave të kyçit "
+"publik janë:"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:979
 #, fuzzy, c-format
 msgid "Could not check list of known SSH hosts. %s"
-msgstr "I pamundur kontrolli i listës së mikpritësve të njohur të SSH. %s"
+msgstr "E pamundur kontrolli i listës së pritësit të njohur të SSH. %s"
 
 #: src/remmina_ssh.c:988
 #, fuzzy
 msgid "SSH password"
-msgstr "Fjalëkalimi i SSH"
+msgstr "Fjalëkalimi sSH"
 
 #: src/remmina_ssh.c:995 src/remmina_ssh.c:1039
 #, fuzzy
 msgid "SSH private key passphrase"
-msgstr "SSH passphrase çelës privat"
+msgstr "SSH passphrase e çelësit privat"
 
 #: src/remmina_ssh.c:1000
 #, fuzzy
@@ -1116,7 +1116,7 @@ msgstr "SSH Kerberos/GSSAPI"
 #: src/remmina_ssh.c:1005
 #, fuzzy
 msgid "Enter TOTP/OTP/2FA code"
-msgstr "Fut kodin TOTP/OTP/2FA"
+msgstr "Shkruaj kodin TOTP/OTP/2FA"
 
 #: src/remmina_ssh.c:1035 src/remmina_ssh.c:1061
 #, fuzzy
@@ -1126,36 +1126,36 @@ msgstr "Kredencialet e tunelit SSH"
 #: src/remmina_ssh.c:1035 src/remmina_ssh.c:1061
 #, fuzzy
 msgid "SSH credentials"
-msgstr "Kredencialet sSH"
+msgstr "Kredencialet e SSH"
 
 #: src/remmina_ssh.c:1112
 #, fuzzy
 msgid "Keyboard interactive login, TOTP/OTP/2FA"
-msgstr "Login interaktiv i tastierës, TOTP/OTP/2FA"
+msgstr "Hyrje interaktive e tastierës, TOTP/OTP/2FA"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1337
 #, fuzzy, c-format
 msgid "Could not start SSH session. %s"
-msgstr "E pamundur fillimi i sesionit SSH. %s"
+msgstr "E pamundur nisja e seancës së SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1735
 #, fuzzy, c-format
 msgid "Could not create channel. %s"
-msgstr "I pamundur krijimi i kanalit. %s"
+msgstr "E pamundur krijimi i kanalit. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1746
 #, fuzzy, c-format
 msgid "Could not connect to SSH tunnel. %s"
-msgstr "I pamundur lidhja me tunelin SSH. %s"
+msgstr "E pamundur lidhja me tunelin SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1816 src/remmina_ssh.c:1837 src/remmina_ssh.c:1846
 #, fuzzy, c-format
 msgid "Could not request port forwarding. %s"
-msgstr "Nuk mund të kërkoj për të dërguar portin. %s"
+msgstr "E pamundur kërkesa për të dërguar portin. %s"
 
 #: src/remmina_ssh.c:1876
 #, fuzzy
@@ -1165,19 +1165,19 @@ msgstr "Serveri nuk u përgjigj."
 #: src/remmina_ssh.c:1916
 #, fuzzy, c-format
 msgid "Cannot connect to local port %i."
-msgstr "Nuk mund të lidhet me portin lokal %i."
+msgstr "I pamundur lidhja me portin lokal %i."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1965
 #, fuzzy, c-format
 msgid "Could not write to SSH channel. %s"
-msgstr "I pamundur shkrimi i kanalit SSH. %s"
+msgstr "I pamundur shkrimi tek kanali SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1972
 #, fuzzy, c-format
 msgid "Could not read from tunnel listening socket. %s"
-msgstr "Nuk mund të lexoja nga tuneli që dëgjonte. %s"
+msgstr "E pamundur leximi nga tunel i socket dëgjimit. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1992
@@ -1189,28 +1189,28 @@ msgstr "I pamundur sondazhi i kanalit SSH. %s"
 #: src/remmina_ssh.c:1999
 #, fuzzy, c-format
 msgid "Could not read SSH channel in a non-blocking way. %s"
-msgstr "I pamundur leximi i kanalit SSH në një mënyrë jo-bllokuese. %s"
+msgstr "E pamundur leximi i kanalit SSH në një mënyrë jo-bllokues. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:2018
 #, fuzzy, c-format
 msgid "Could not send data to tunnel listening socket. %s"
-msgstr "Nuk mund të dërgoj të dhëna në tunelin e dëgjimit. %s"
+msgstr "E pamundur dërgimi i të dhënave në socket-ët e dëgjimit të tunelit. %s"
 
 #: src/remmina_ssh.c:2120
 #, fuzzy
 msgid "Assign a destination port."
-msgstr "Cakto një port destinacioni."
+msgstr "Caktoni një port destinacioni."
 
 #: src/remmina_ssh.c:2127
 #, fuzzy
 msgid "Could not create socket."
-msgstr "E pamundur krijimi i socket."
+msgstr "E pamundur krijimi i soketit."
 
 #: src/remmina_ssh.c:2137
 #, fuzzy
 msgid "Could not bind server socket to local port."
-msgstr "I pamundur lidhja e serverit në portin lokal."
+msgstr "E pamundur lidhja e soketit të serverit në portin lokal."
 
 #: src/remmina_ssh.c:2143
 #, fuzzy
@@ -1221,19 +1221,19 @@ msgstr "Nuk mund të dëgjoja portin lokal."
 #: src/remmina_ssh.c:2153 src/remmina_ssh.c:2170 src/remmina_ssh.c:2188
 #, fuzzy
 msgid "Could not start pthread."
-msgstr "Nuk mund të filloja të shkelja."
+msgstr "Nuk mund të filloja të lexoja."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:2280
 #, fuzzy, c-format
 msgid "Could not create SFTP session. %s"
-msgstr "I pamundur krijimi i sesionit SFTP. %s"
+msgstr "E pamundur krijimi i seancës SFTP. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:2285
 #, fuzzy, c-format
 msgid "Could not start SFTP session. %s"
-msgstr "I pamundur fillimi i sesionit SFTP. %s"
+msgstr "E pamundur nisja e seancës SFTP. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:2378
@@ -1245,12 +1245,12 @@ msgstr "E pamundur hapja e kanalit. %s"
 #: src/remmina_ssh.c:2393
 #, fuzzy, c-format
 msgid "Could not request shell. %s"
-msgstr "Nuk mund të kërkoj shell. %s"
+msgstr "E pamundur kërkesa e predhës. %s"
 
 #: src/remmina_ssh.c:2511
 #, fuzzy
 msgid "Could not create PTY device."
-msgstr "I pamundur krijimi i pajisjes PTY."
+msgstr "E pamundur krijimi i pajisjes PTY."
 
 #: src/remmina_exec.c:475
 #, fuzzy, c-format
@@ -1258,20 +1258,22 @@ msgid "Plugin %s is not registered."
 msgstr "Plugin %s nuk është i regjistruar."
 
 #: src/remmina_main.c:669
+#, fuzzy
 msgid "The latest successful connection attempt, or a pre-computed date"
 msgstr ""
+"Përpjekja më e fundit e suksesshme e lidhjes, ose një datë e para-llogaritur"
 
 #: src/remmina_main.c:671
 #, fuzzy, c-format
 msgid "Total %i item."
 msgid_plural "Total %i items."
-msgstr[0] "Total %i item."
+msgstr[0] "Total %i element."
 msgstr[1] ""
 
 #: src/remmina_main.c:865
 #, fuzzy, c-format
 msgid "Are you sure you want to delete “%s”?"
-msgstr "A je i sigurt se dëshiron të fshish \"%s\"?"
+msgstr "A je i sigurt që dëshiron të eleminosh \"%s\"?"
 
 #: src/remmina_main.c:989
 #, fuzzy, c-format
@@ -1279,7 +1281,7 @@ msgid ""
 "Unable to import:\n"
 "%s"
 msgstr ""
-"I pamundur importimi:\n"
+"I pamundur importi:\n"
 "%s"
 
 #: src/remmina_main.c:1015 data/ui/remmina_main.glade:285
@@ -1289,12 +1291,12 @@ msgstr "Importo"
 #: src/remmina_main.c:1038 src/remmina_file_editor.c:1791
 #, fuzzy
 msgid "_Save"
-msgstr "_Ruaje"
+msgstr "_Save"
 
 #: src/remmina_main.c:1044
 #, fuzzy
 msgid "This protocol does not support exporting."
-msgstr "Ky protokoll nuk mbështet eksportin."
+msgstr "Ky protokoll nuk mbështet eksportimin."
 
 #: src/remmina_main.c:1361
 msgid "Remmina Remote Desktop Client"
@@ -1303,30 +1305,30 @@ msgstr "Remmina Klient i Desktopit të Largët"
 #: src/remmina_main.c:1363
 #, fuzzy
 msgid "Remmina Kiosk"
-msgstr "Kioska remmina"
+msgstr "Kioska Remmina"
 
 #. TRANSLATORS: The placeholder %s is a directory path
 #: src/remmina_sftp_client.c:173
 #, fuzzy, c-format
 msgid "Could not create the folder “%s”."
-msgstr "I pamundur krijimi i kartelës \"%s\"."
+msgstr "E pamundur krijimi i kartelës \"%s\"."
 
 #. TRANSLATORS: The placeholder %s is a file path
 #: src/remmina_sftp_client.c:181 src/remmina_sftp_client.c:202
 #, fuzzy, c-format
 msgid "Could not create the file “%s”."
-msgstr "I pamundur krijimi i skedarit \"%s\"."
+msgstr "I pamundur krijimi i file \"%s\"."
 
 #. TRANSLATORS: The placeholders %s are a file path, and an error message.
 #: src/remmina_sftp_client.c:220
 #, fuzzy, c-format
 msgid "Could not open the file “%s” on the server. %s"
-msgstr "E pamundur hapja e file %s\" në server. %s"
+msgstr "E pamundur hapja e file \"%s\" në server. %s"
 
 #: src/remmina_sftp_client.c:242
 #, fuzzy, c-format
 msgid "Could not save the file “%s”."
-msgstr "I pamundur ruajtja e dosjes \"%s\"."
+msgstr "I pamundur ruajtja e file \"%s\"."
 
 #: src/remmina_sftp_client.c:281 src/remmina_sftp_client.c:698
 #: src/remmina_sftp_client.c:761
@@ -1342,12 +1344,12 @@ msgstr "I pamundur krijimi i kartelës \"%s\" në server. %s"
 #: src/remmina_sftp_client.c:413 src/remmina_sftp_client.c:435
 #, fuzzy, c-format
 msgid "Could not create the file “%s” on the server. %s"
-msgstr "I pamundur krijimi i skedarit \"%s\" në server. %s"
+msgstr "I pamundur krijimi i file \"%s\" në server. %s"
 
 #: src/remmina_sftp_client.c:456
 #, fuzzy, c-format
 msgid "Could not open the file “%s”."
-msgstr "E pamundur hapja e dosjes \"%s\"."
+msgstr "E pamundur hapja e file \"%s\"."
 
 #: src/remmina_sftp_client.c:476
 #, fuzzy, c-format
@@ -1357,12 +1359,12 @@ msgstr "I pamundur shkrimi tek file \"%s\" në server. %s"
 #: src/remmina_sftp_client.c:716
 #, fuzzy, c-format
 msgid "Could not read from the folder. %s"
-msgstr "I pamundur leximi nga kartela. %s"
+msgstr "E pamundur leximi i kartelës. %s"
 
 #: src/remmina_sftp_client.c:823
 #, fuzzy
 msgid "Are you sure you want to cancel the file transfer in progress?"
-msgstr "Je i sigurt që dëshiron të anullosh transferimin e dosjeve në proces?"
+msgstr "Je i sigurt që dëshiron të anullosh transferimin e dosjes në proces?"
 
 #: src/remmina_sftp_client.c:857
 #, fuzzy, c-format
@@ -1385,7 +1387,7 @@ msgstr "Mbishkruaje"
 #: src/remmina_sftp_client.c:964
 #, fuzzy
 msgid "The following file already exists in the target folder:"
-msgstr "File i mëposhtëm ekziston tashmë në kartelën e synuar:"
+msgstr "File i mëposhtëm ekziston në kartelën e synuar:"
 
 #: src/remmina_file_editor.c:61
 #, fuzzy
@@ -1402,11 +1404,11 @@ msgid ""
 "• ID:repeater ID number\n"
 "• unix:///path/socket.sock</big>"
 msgstr ""
-"<big> Formatet e mbështetura\n"
+"<big> Formate të suportuar\n"
 "• server\n"
 "• server[:p ort]\n"
 "Formate shtesë VNC\n"
-"• Numri i ID:përsëritës i ID\n"
+"• ID:repeater numri i ID\n"
 "• unix:///path/socket.sock</big>"
 
 #: src/remmina_file_editor.c:70
@@ -1425,17 +1427,16 @@ msgid ""
 "connecting.\n"
 "</big>"
 msgstr ""
-"<big>• komanda në ARGS PATH %h\n"
-"• /path/to/foo -opsione %h %u\n"
+"<big>• komandë në PATH args %h\n"
+"• /path/to/foo -opsionet %h %u\n"
 "• %h është zëvendësuar me emrin e serverit\n"
 "• %t është zëvendësuar me emrin e serverit SSH\n"
-"• %u është zëvendësuar me emrin e përdoruesit\n"
-"• %U është zëvendësuar me emrin e përdoruesit SSH\n"
-"• %p është zëvendësuar me emrin e profilit Remmina\n"
-"• %g është zëvendësuar me emrin e grupit të profilit Remmina\n"
-"• %d është zëvendësuar me datën dhe orën lokale në formatin ISO 8601\n"
-"Mos vraponi në sfond nëse dëshironi që komanda të ekzekutohet para se të "
-"lidheni.\n"
+"• %u është zëvendësuar me përdoruesin\n"
+"• %U zëvendësohet me përdoruesin e SSH\n"
+"• %p zëvendësohet me emrin e profilit Remmina\n"
+"• %g zëvendësohet me emrin e grupit të profilit Remmina\n"
+"• %d zëvendësohet me datën dhe orën lokale në formatin ISO 8601\n"
+"Mos vrapo në sfond nëse dëshiron që komanda të ekzekutohet para lidhjes.\n"
 "</big>"
 
 #: src/remmina_file_editor.c:84
@@ -1453,19 +1454,20 @@ msgid ""
 "• server[:port]\n"
 "• username@server[:port] (SSH protocol only)</big>"
 msgstr ""
-"<big> Formatet e mbështetura\n"
+"<big> Formate të suportuar\n"
 "• server\n"
 "• server[:p ort]\n"
-"• username@server[:p ort] (SSH protokoll vetëm)</big>"
+"• username@server[:p ort] (protokolli sSH vetëm)</big>"
 
 #: src/remmina_file_editor.c:162
+#, fuzzy
 msgid "Input is invalid."
-msgstr ""
+msgstr "Hyrja është e pavlefshme."
 
 #: src/remmina_file_editor.c:239
 #, fuzzy
 msgid "Choose a Remote Desktop Server"
-msgstr "Zgjidh një Server Desktop në distancë"
+msgstr "Zgjidh një server desktopi në distancë"
 
 #: src/remmina_file_editor.c:460
 #, fuzzy, c-format
@@ -1493,7 +1495,7 @@ msgstr "E Personalizuar"
 #: src/remmina_file_editor.c:945
 #, fuzzy
 msgid "Keyboard mapping"
-msgstr "Hartografimi i tastierës"
+msgstr "Hartografia e tastierës"
 
 #: src/remmina_file_editor.c:1072
 #, fuzzy
@@ -1512,7 +1514,7 @@ msgstr "Lidhje e Re"
 #: src/remmina_file_editor.c:1081
 #, fuzzy
 msgid "command %h %u %t %U %p %g --option"
-msgstr "komanda %h %u %t %U %p %g --opsion"
+msgstr "komanda %h %u %t %U %p %g --option"
 
 #: src/remmina_file_editor.c:1086
 msgid "After connecting"
@@ -1530,12 +1532,12 @@ msgstr "Nisja"
 #: src/remmina_file_editor.c:1095
 #, fuzzy
 msgid "Auto-start this profile"
-msgstr "Starto këtë profil"
+msgstr "Nise këtë profil"
 
 #: src/remmina_file_editor.c:1125
 #, fuzzy
 msgid "SSH Tunnel"
-msgstr "Tuneli i SSH-së"
+msgstr "Tuneli sSH"
 
 #: src/remmina_file_editor.c:1126
 #, fuzzy
@@ -1545,12 +1547,12 @@ msgstr "Aktivo tunelin SSH"
 #: src/remmina_file_editor.c:1133
 #, fuzzy
 msgid "Tunnel via loopback address"
-msgstr "Tunel nëpërmjet adresës loopback"
+msgstr "Tunel nëpërmjet adresës së loopback"
 
 #: src/remmina_file_editor.c:1143
 #, fuzzy, c-format
 msgid "Same server at port %i"
-msgstr "Server i njëjtë në port %i"
+msgstr "I njëjti server në port %i"
 
 #: src/remmina_file_editor.c:1193 plugins/rdp/rdp_plugin.c:2764
 msgid "Start-up path"
@@ -1564,7 +1566,7 @@ msgstr "Autentifikimi SSH"
 #: src/remmina_file_editor.c:1229
 #, fuzzy
 msgid "SSH private key file"
-msgstr "Skedari i çelësit privat SSH"
+msgstr "File i çelësit privat SSH"
 
 #: src/remmina_file_editor.c:1235 src/remmina_ssh_plugin.c:1474
 #, fuzzy
@@ -1583,37 +1585,41 @@ msgstr "Të Avancuara"
 #: src/remmina_file_editor.c:1310
 #, fuzzy
 msgid "Notes"
-msgstr "Vërejtje"
+msgstr "Shënime"
 
 #: src/remmina_file_editor.c:1438
-#, c-format
+#, fuzzy, c-format
 msgid "(%s: %i): Can't validate setting '%s' since 'value' or 'gfe' are NULL!"
 msgstr ""
+"(%s: %i): Nuk mund të vleftësosh vendosjen '%s' pasi 'vlera' ose 'gfe' janë "
+"NULL!"
 
 #: src/remmina_file_editor.c:1441
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "(%s: %i): Can't validate user input since 'setting_name_to_validate', "
 "'value' or 'gfe' are NULL!"
 msgstr ""
+"(%s: %i): Nuk mund të vleftësosh hyrjen e përdoruesit pasi "
+"'setting_name_to_validate', 'vlera' ose 'gfe' janë NULL!"
 
 #. TRANSLATORS: Meta-error. Shouldn't be visible.
-#: src/remmina_file_editor.c:1445 plugins/x2go/x2go_plugin.c:856
-#: plugins/x2go/x2go_plugin.c:1440
+#: src/remmina_file_editor.c:1445 plugins/x2go/x2go_plugin.c:1746
+#: plugins/x2go/x2go_plugin.c:2360
 #, fuzzy
 msgid "Internal error."
-msgstr "Gabim transferimi"
+msgstr "Gabim i brendshëm."
 
 #: src/remmina_file_editor.c:1667 src/remmina_file_editor.c:1703
 #: src/remmina_file_editor.c:1724 src/remmina_file_editor.c:1747
 #, fuzzy, c-format
 msgid "Couldn't validate user input. %s"
-msgstr "I pamundur krijimi i sesionit SFTP. %s"
+msgstr "I pamundur vleftësimi i hyrjes së përdoruesit. %s"
 
 #: src/remmina_file_editor.c:1691
 #, fuzzy
 msgid "Default settings saved."
-msgstr "Rregullimet e prezgjedhur ruhen."
+msgstr "Rregullimet e prezgjedhura të ruajtura."
 
 #: src/remmina_file_editor.c:1781
 msgid "Remote Connection Profile"
@@ -1622,7 +1628,7 @@ msgstr "Lidhje e Re"
 #: src/remmina_file_editor.c:1787
 #, fuzzy
 msgid "Save as Default"
-msgstr "Ruaj si i prezgjedhur"
+msgstr "Ruaj si e prezgjedhur"
 
 #: src/remmina_file_editor.c:1788
 #, fuzzy
@@ -1634,7 +1640,7 @@ msgstr ""
 #: src/remmina_file_editor.c:1796 data/ui/remmina_main.glade:160
 #, fuzzy
 msgid "Connect"
-msgstr "Lidh"
+msgstr "Lidhu"
 
 #: src/remmina_file_editor.c:1799
 #, fuzzy
@@ -1648,20 +1654,23 @@ msgstr "Lidhje e Shpejtë"
 #: src/remmina_file_editor.c:1946
 #, fuzzy, c-format
 msgid "Use '%s' as subgroup delimiter"
-msgstr "Përdor '%s' si delimitues i nëngrupit"
+msgstr "Përdor '%s' si delimitues nëngrup"
 
 #: src/remmina_file_editor.c:2012 src/remmina_file_editor.c:2030
 #, fuzzy, c-format
 msgid "Could not find the file “%s”."
-msgstr "E pamundur gjeja e dosjes \"%s\"."
+msgstr "E pamundur gjetja e file \"%s\"."
 
 #. TRANSLATORS: This is a message that pops up when an external Remmina plugin tries to set the window resolution using a legacy parameter.
 #. TRANSLATORS: This is a message that pop-up when an external Remmina plugin tries to set the windows resolution using a legacy parameter.
 #: src/remmina_file.c:451 src/remmina_file.c:497
+#, fuzzy
 msgid ""
 "Using the «resolution» parameter in the Remmina preferences file is "
 "deprecated.\n"
 msgstr ""
+"Përdorimi i parametrit \"rezolucion\" në dosjen e preferencave Remmina është "
+"i çaktivizuar.\n"
 
 #: src/remmina_icon.c:136
 #, fuzzy
@@ -1676,7 +1685,7 @@ msgstr "_Preferencat"
 #: src/remmina_icon.c:146
 #, fuzzy
 msgid "_About"
-msgstr "_Rreth"
+msgstr "_About"
 
 #: src/remmina_icon.c:156
 #, fuzzy
@@ -1686,68 +1695,74 @@ msgstr "Aktivo zbulimin e shërbimit"
 #: src/remmina_icon.c:168 data/ui/remmina_main.glade:404
 #, fuzzy
 msgid "_Quit"
-msgstr "_Dil"
+msgstr "_Quit"
 
 #. TRANSLATORS: Applet name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
 #. TRANSLATORS: Applet Name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
 #: src/remmina_icon.c:294 src/remmina_icon.c:450
 #, fuzzy
 msgid "Remmina Applet"
-msgstr "Mollëz remmina"
+msgstr "Remmina Applet"
 
 #. TRANSLATORS: Applet comment/description as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
 #: src/remmina_icon.c:296 src/remmina_icon.c:452
 #, fuzzy
 msgid "Connect to remote desktops through the applet menu"
-msgstr "Lidhu me desktopët e largët nëpërmjet menysë së applet"
+msgstr "Lidhu me desktopët e largët nëpërmjet menusë applet"
 
 #: src/remmina_icon.c:359
+#, fuzzy
 msgid "StatusNotifier/Appindicator support in “"
-msgstr ""
+msgstr "StatusNotifier/Appindicator mbështetje në \""
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:366
-#, c-format
+#, fuzzy, c-format
 msgid "%s your desktop does support it"
-msgstr ""
+msgstr "%s desktopi juaj e mbështet atë"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:368
-#, c-format
+#, fuzzy, c-format
 msgid "%s and Remmina has built-in (compiled) support for libappindicator."
 msgstr ""
+"%s dhe Remmina ka ndërtuar-në (përpiluar) mbështetje për libappindicator."
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:371
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "%s not supported natively by your Desktop Environment. libappindicator will "
 "try to fallback to GtkStatusIcon/xembed"
 msgstr ""
+"%s nuk mbështetet në vend nga Mjedisi Juaj Desktop. libappindicator do të "
+"përpiqet të bjerë në GtkStatusIcon/xembed"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:375
-#, c-format
+#, fuzzy, c-format
 msgid "%s You may need to install, and use XApp Status Applet"
-msgstr ""
+msgstr "%s Mund t'ju duhet të instaloni, dhe të përdorni XApp Status Applet"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:378
-#, c-format
+#, fuzzy, c-format
 msgid "%s You may need to install, and use KStatusNotifierItem"
-msgstr ""
+msgstr "%s Mund t'ju duhet të instaloni, dhe të përdorni KStatusNotifierItem"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:381
-#, c-format
+#, fuzzy, c-format
 msgid "%s You may need to install, and use XEmbed SNI Proxy"
-msgstr ""
+msgstr "%s Mund t'ju duhet të instaloni dhe të përdorni XEmbed SNI Proxy"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:384
-#, c-format
+#, fuzzy, c-format
 msgid "%s You may need to install, and use Gnome Shell Extension Appindicator"
 msgstr ""
+"%s Mund t'ju duhet të instaloni dhe të përdorni Aplikatorin e Zgjatjes së "
+"Shell Gnome"
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_ssh_plugin.c:539
@@ -1758,12 +1773,12 @@ msgstr "Gabim: %s"
 #: src/remmina_ssh_plugin.c:556
 #, fuzzy
 msgid "Terminal content saved in"
-msgstr "Përmbajtje terminale e ruajtur në"
+msgstr "Përmbajtja terminale e ruajtur në"
 
 #: src/remmina_ssh_plugin.c:822
 #, fuzzy
 msgid "Select All (host+A)"
-msgstr "Zgjidh të gjitha (host+A)"
+msgstr "Zgjidh Gjithçka (host+A)"
 
 #: src/remmina_ssh_plugin.c:823
 #, fuzzy
@@ -1816,12 +1831,12 @@ msgstr "_Paste"
 #: src/remmina_ssh_plugin.c:1441
 #, fuzzy
 msgid "Select all"
-msgstr "Zgjedh të gjitha"
+msgstr "Përzgjidhni Tërë"
 
 #: src/remmina_ssh_plugin.c:1441
 #, fuzzy
 msgid "_Select all"
-msgstr "Zgjedh të gjitha"
+msgstr "_Select të gjitha"
 
 #: src/remmina_ssh_plugin.c:1442
 #, fuzzy
@@ -1831,7 +1846,7 @@ msgstr "Rrit madhësinë e gërmave"
 #: src/remmina_ssh_plugin.c:1442
 #, fuzzy
 msgid "_Increase font size"
-msgstr "_Increase madhësia e gërmave"
+msgstr "madhësia e gërmave _Increase"
 
 #: src/remmina_ssh_plugin.c:1443
 #, fuzzy
@@ -1841,7 +1856,7 @@ msgstr "Zvogëlo madhësinë e gërmave"
 #: src/remmina_ssh_plugin.c:1443
 #, fuzzy
 msgid "_Decrease font size"
-msgstr "_Decrease madhësia e gërmave"
+msgstr "madhësia e gërmave _Decrease"
 
 #: src/remmina_ssh_plugin.c:1444
 #, fuzzy
@@ -1876,15 +1891,15 @@ msgid ""
 "  • %g is substituted with Remmina profile group name\n"
 "  • %d is substituted with local date and time in ISO 8601 format\n"
 msgstr ""
-"Emri i file mund të përdorë lokaluesit e mëposhtëm:\n"
+"Emri i file mund të përdorë vendshënuesit e mëposhtëm:\n"
 "\n"
 "• %h është zëvendësuar me emrin e serverit\n"
 "  • %t është zëvendësuar me emrin e serverit SSH\n"
-"  • %u është zëvendësuar me emrin e përdoruesit\n"
-"  • %U është zëvendësuar me emrin e përdoruesit SSH\n"
-"  • %p është zëvendësuar me emrin e profilit Remmina\n"
-"  • %g është zëvendësuar me emrin e grupit të profilit Remmina\n"
-"  • %d është zëvendësuar me datën dhe orën lokale në formatin ISO 8601\n"
+"  • %u është zëvendësuar me përdoruesin\n"
+"  • %U zëvendësohet me përdoruesin e SSH\n"
+"  • %p zëvendësohet me emrin e profilit Remmina\n"
+"  • %g zëvendësohet me emrin e grupit të profilit Remmina\n"
+"  • %d zëvendësohet me datën dhe orën lokale në formatin ISO 8601\n"
 
 #: src/remmina_ssh_plugin.c:1504
 #, fuzzy
@@ -1898,54 +1913,54 @@ msgstr "Grupi i gërmave"
 #: src/remmina_ssh_plugin.c:1507
 #, fuzzy
 msgid "KEX (Key Exchange) algorithms"
-msgstr "Algoritme KEX (Key Exchange)"
+msgstr "Algoritmet KEX (Key Exchange)"
 
 #: src/remmina_ssh_plugin.c:1508
 #, fuzzy
 msgid "Symmetric cipher client to server"
-msgstr "Klient shifre simetrike në server"
+msgstr "Klient shifrimi simetrik në server"
 
 #: src/remmina_ssh_plugin.c:1509
 #, fuzzy
 msgid "Preferred server host key types"
-msgstr "Llojet e kyçit të hostimit të serverit të preferuar"
+msgstr "Lloji i preferuar i hostit të serverit"
 
 #: src/remmina_ssh_plugin.c:1510
 #, fuzzy
 msgid "Folder for SSH session log"
-msgstr "Kartelë për logun e sesionit SSH"
+msgstr "Kartelë për ditarin e seancës SSH"
 
 #: src/remmina_ssh_plugin.c:1511
 #, fuzzy
 msgid "Filename for SSH session log"
-msgstr "Emri i file për logun e sesionit SSH"
+msgstr "Emri i file për ditarin e seancës SSH"
 
 #: src/remmina_ssh_plugin.c:1512
 #, fuzzy
 msgid "Log SSH session when exiting Remmina"
-msgstr "Log SSH session kur del nga Remmina"
+msgstr "Log seanca SSH kur del nga Remmina"
 
 #: src/remmina_ssh_plugin.c:1513
 #, fuzzy
 msgid "Log SSH session asynchronously"
-msgstr "Log SSH session në mënyrë të qartë"
+msgstr "Log SSH seancën në mënyrë sinkrone"
 
 #: src/remmina_ssh_plugin.c:1513
 #, fuzzy
 msgid "Saving the session asynchronously may have a notable performance impact"
 msgstr ""
-"Ruajtja e sesionit në mënyrë të dukshme mund të ketë një ndikim të dukshëm "
-"të performancës"
+"Ruajtja e seancës në mënyrë sinkrone mund të ketë një ndikim të dukshëm në "
+"performancë"
 
 #: src/remmina_ssh_plugin.c:1514
 #, fuzzy
 msgid "Audible terminal bell"
-msgstr "Zile terminali i audible"
+msgstr "Zile terminali me audible"
 
 #: src/remmina_ssh_plugin.c:1515
 #, fuzzy
 msgid "SSH compression"
-msgstr "Kompresë SSH"
+msgstr "Ngjeshje SSH"
 
 #: src/remmina_ssh_plugin.c:1516
 msgid "Don't remember passwords"
@@ -1954,12 +1969,12 @@ msgstr "Ruaj fjalëkalimin"
 #: src/remmina_ssh_plugin.c:1517
 #, fuzzy
 msgid "Strict host key checking"
-msgstr "Kontroll i rreptë i çelësit të hostit"
+msgstr "Kontroll strikt i çelësit të host"
 
 #: src/remmina_ssh_plugin.c:1531
 #, fuzzy
 msgid "SSH - Secure Shell"
-msgstr "Guaskë e sigurt SSH"
+msgstr "SSH - Guaskë e sigurt"
 
 #: plugins/kwallet/src/kwallet_plugin_main.c:118
 msgid "Secured password storage in KWallet"
@@ -1972,18 +1987,18 @@ msgstr "<Vetë dalloje>"
 #: plugins/rdp/rdp_settings.c:249
 #, fuzzy
 msgid "<Not set>"
-msgstr "< Nuk është vendosur>"
+msgstr "<Në rregull>"
 
 #: plugins/rdp/rdp_settings.c:280
 #, fuzzy
 msgid "<Choose a quality level to edit…>"
-msgstr "< Një nivel cilësie për të redaktuar...>"
+msgstr "<Koz një nivel cilësie për të redaktuar...>"
 
 #: plugins/rdp/rdp_settings.c:282 plugins/rdp/rdp_plugin.c:2582
 #: plugins/vnc/vnc_plugin.c:1934
 #, fuzzy
 msgid "Poor (fastest)"
-msgstr "I varfër (më i shpejtë)"
+msgstr "I varfër (më i shpejti)"
 
 #: plugins/rdp/rdp_settings.c:284 plugins/rdp/rdp_plugin.c:2583
 #: plugins/vnc/vnc_plugin.c:1933
@@ -1999,7 +2014,7 @@ msgstr "Mirë"
 #: plugins/vnc/vnc_plugin.c:1932
 #, fuzzy
 msgid "Best (slowest)"
-msgstr "Më e mira (më e ngadalta)"
+msgstr "Më i miri (më i ngadalshmi)"
 
 #: plugins/rdp/rdp_settings.c:427
 msgid "Keyboard layout"
@@ -2013,20 +2028,24 @@ msgstr "Përdor hartografinë e tastierës së klientit"
 #: plugins/rdp/rdp_settings.c:468
 #, fuzzy
 msgid "Keyboard scancode remapping"
-msgstr "Hartografimi i tastierës"
+msgstr "Rimapping i kodeve të skanimit të tastierës"
 
 #: plugins/rdp/rdp_settings.c:483
+#, fuzzy
 msgid "List of key=value,… pairs to remap scancodes. E.g. 0x56=0x29,0x29=0x56"
 msgstr ""
+"Lista e key=value,... çifte për të rimafuar kodet e skanimit. P.sh. "
+"0x56=0x29,0x29=0x56"
 
 #: plugins/rdp/rdp_settings.c:486
+#, fuzzy
 msgid "FreeRDP > 2.3.0 is required to map scancodes"
-msgstr ""
+msgstr "FreeRDP > 2.3.0 kërkohet të hartojë kodet e skanimit"
 
 #: plugins/rdp/rdp_settings.c:494
 #, fuzzy
 msgid "Quality settings"
-msgstr "Rregullimet e cilësisë"
+msgstr "Parametrat e cilësisë"
 
 #: plugins/rdp/rdp_settings.c:517
 msgid "Wallpaper"
@@ -2035,12 +2054,12 @@ msgstr "Figura e Sfondit"
 #: plugins/rdp/rdp_settings.c:525
 #, fuzzy
 msgid "Window drag"
-msgstr "Zvarritja e dritareve"
+msgstr "Zvarritja e dritares"
 
 #: plugins/rdp/rdp_settings.c:532
 #, fuzzy
 msgid "Menu animation"
-msgstr "Animacion menuje"
+msgstr "Animacioni i menusë"
 
 #: plugins/rdp/rdp_settings.c:540
 msgid "Theme"
@@ -2054,12 +2073,12 @@ msgstr "Hije kursori"
 #: plugins/rdp/rdp_settings.c:555
 #, fuzzy
 msgid "Cursor blinking"
-msgstr "Kursori duke u dridhur"
+msgstr "Dridhje e kursorit"
 
 #: plugins/rdp/rdp_settings.c:562
 #, fuzzy
 msgid "Font smoothing"
-msgstr "Lim i gërmave"
+msgstr "Lëmimi i gërmave"
 
 #: plugins/rdp/rdp_settings.c:570
 msgid "Composition"
@@ -2073,12 +2092,12 @@ msgstr "Faktor i shkallës së largët"
 #: plugins/rdp/rdp_settings.c:595
 #, fuzzy
 msgid "Desktop scale factor %"
-msgstr "Shkalla e desktopit faktor %"
+msgstr "Faktori i shkallës së desktopit %"
 
 #: plugins/rdp/rdp_settings.c:607
 #, fuzzy
 msgid "Device scale factor %"
-msgstr "Faktor i shkallës së pajisjes %"
+msgstr "Faktori i shkallës së pajisjes %"
 
 #: plugins/rdp/rdp_settings.c:630
 #, fuzzy
@@ -2088,18 +2107,18 @@ msgstr "Orientimi i desktopit"
 #: plugins/rdp/rdp_settings.c:650
 #, fuzzy
 msgid "Input device settings"
-msgstr "Rregullimet e pajisjes hyrëse"
+msgstr "Rregullimet e pajisjes së hyrjes"
 
 #: plugins/rdp/rdp_settings.c:658 plugins/rdp/rdp_plugin.c:2726
 #: plugins/vnc/vnc_plugin.c:2014
 #, fuzzy
 msgid "Disable smooth scrolling"
-msgstr "Çaktivizo rrotullimin e lëmuar"
+msgstr "Ç'aktivo rrotullimin e lëmuar"
 
 #: plugins/rdp/rdp_settings.c:669
 #, fuzzy
 msgid "General settings"
-msgstr "Rregullime të përgjithshme"
+msgstr "Rregullimet e përgjithshme"
 
 #: plugins/rdp/rdp_settings.c:676 plugins/rdp/rdp_plugin.c:2778
 #, fuzzy
@@ -2112,7 +2131,8 @@ msgstr "Rilidh numrin e përpjekjeve"
 msgid ""
 "The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
 msgstr ""
-"Numri maksimal i përpjekjeve të rilidhjes së një DISCONNECT RDP (default: 20)"
+"Numri maksimal i përpjekjeve të rilidhjes me një shkëputje RDP (prezgjedhur: "
+"20)"
 
 #: plugins/rdp/rdp_plugin.c:769 plugins/rdp/rdp_plugin.c:834
 #, fuzzy
@@ -2122,7 +2142,7 @@ msgstr "Shkruaj kredencialet e autentifikimit RDP"
 #: plugins/rdp/rdp_plugin.c:842
 #, fuzzy
 msgid "Enter RDP gateway authentication credentials"
-msgstr "Fut kredencialet e autentifikimit të hyrjes RDP"
+msgstr "Shkruaj kredencialet e autentifikimit të hyrjes RDP"
 
 #: plugins/rdp/rdp_plugin.c:2113
 #, fuzzy, c-format
@@ -2130,8 +2150,8 @@ msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account locked out."
 msgstr ""
-"I pamundur hyrja në serverin RDP \"%s\".\n"
-"Llogaria e mbyllur."
+"E pamundur hyrja në serverin RDP \"%s\".\n"
+"Llogaria është mbyllur."
 
 #: plugins/rdp/rdp_plugin.c:2120
 #, fuzzy, c-format
@@ -2139,7 +2159,7 @@ msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account expired."
 msgstr ""
-"I pamundur hyrja në serverin RDP \"%s\".\n"
+"E pamundur hyrja në serverin RDP \"%s\".\n"
 "Llogaria skadoi."
 
 #: plugins/rdp/rdp_plugin.c:2127
@@ -2148,7 +2168,7 @@ msgid ""
 "Could not access the RDP server “%s”.\n"
 "Password expired."
 msgstr ""
-"I pamundur hyrja në serverin RDP \"%s\".\n"
+"E pamundur hyrja në serverin RDP \"%s\".\n"
 "Fjalëkalimi skadoi."
 
 #: plugins/rdp/rdp_plugin.c:2134
@@ -2157,7 +2177,7 @@ msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account disabled."
 msgstr ""
-"I pamundur hyrja në serverin RDP \"%s\".\n"
+"E pamundur hyrja në serverin RDP \"%s\".\n"
 "Llogaria është e çaktivizuar."
 
 #: plugins/rdp/rdp_plugin.c:2140
@@ -2166,8 +2186,8 @@ msgid ""
 "Could not access the RDP server “%s”.\n"
 "Insufficient user privileges."
 msgstr ""
-"I pamundur hyrja në serverin RDP \"%s\".\n"
-"Privilegje të pamjaftueshme përdoruesish."
+"E pamundur hyrja në serverin RDP \"%s\".\n"
+"Privilegjet e pamjaftueshme të përdoruesit."
 
 #: plugins/rdp/rdp_plugin.c:2148
 #, fuzzy, c-format
@@ -2175,8 +2195,8 @@ msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account restricted."
 msgstr ""
-"I pamundur hyrja në serverin RDP \"%s\".\n"
-"Llogaria e kufizuar."
+"E pamundur hyrja në serverin RDP \"%s\".\n"
+"Llogaria është e kufizuar."
 
 #: plugins/rdp/rdp_plugin.c:2156
 #, fuzzy, c-format
@@ -2184,8 +2204,8 @@ msgid ""
 "Could not access the RDP server “%s”.\n"
 "Change user password before connecting."
 msgstr ""
-"I pamundur hyrja në serverin RDP \"%s\".\n"
-"Ndrysho fjalëkalimin e përdoruesit para se të lidhesh."
+"E pamundur hyrja në serverin RDP \"%s\".\n"
+"Ndrysho fjalëkalimin e përdoruesit para lidhjes."
 
 #: plugins/rdp/rdp_plugin.c:2161
 #, fuzzy, c-format
@@ -2195,7 +2215,7 @@ msgstr "Lidhja e humbur me serverin RDP \"%s\"."
 #: plugins/rdp/rdp_plugin.c:2164
 #, fuzzy, c-format
 msgid "Could not find the address for the RDP server “%s”."
-msgstr "E pamundur gjeja e adresës për serverin RDP \"%s\"."
+msgstr "E pamundur gjetja e adresës për serverin RDP \"%s\"."
 
 #: plugins/rdp/rdp_plugin.c:2168
 #, fuzzy, c-format
@@ -2203,7 +2223,7 @@ msgid ""
 "Could not connect to the RDP server “%s” via TLS. Check that client and "
 "server support a common TLS version."
 msgstr ""
-"I pamundur lidhja me serverin RDP \"%s\" nëpërmjet TLS. Kontrolloni se "
+"E pamundur lidhja me serverin RDP \"%s\" nëpërmjet TLS. Kontrolloni që "
 "klienti dhe serveri mbështesin një version të përbashkët TLS."
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
@@ -2213,7 +2233,7 @@ msgid ""
 "Unable to establish a connection to the RDP server “%s”. Check “Security "
 "protocol negotiation”."
 msgstr ""
-"E pamundur krijimi i një lidhjeje me serverin RDP \"%s\". Kontrollo "
+"I pamundur krijimi i një lidhjeje me serverin RDP \"%s\". Kontrollo "
 "\"Negociatat e Protokollit të Sigurisë\"."
 
 #: plugins/rdp/rdp_plugin.c:2180
@@ -2224,7 +2244,7 @@ msgstr "I pamundur lidhja me serverin RDP \"%s\"."
 #: plugins/rdp/rdp_plugin.c:2183
 #, fuzzy
 msgid "Could not start libfreerdp-gdi."
-msgstr "I pamundur fillimi i libfreerdp-gdi."
+msgstr "E pamundur nisja e libfreerdp-gdi."
 
 #: plugins/rdp/rdp_plugin.c:2186
 #, fuzzy, c-format
@@ -2232,9 +2252,9 @@ msgid ""
 "You requested a H.264 GFX mode for the server “%s”, but your libfreerdp does "
 "not support H.264. Please use a non-AVC colour depth setting."
 msgstr ""
-"Ju kërkuat një H.264 GFX mode për server \"%s\", por libfreerdp juaj nuk "
-"mbështet H.264. Ju lutemi përdorni një mjedis të thellësisë së ngjyrave jo-"
-"AVC."
+"Ju kërkuat një modalitet H.264 GFX për serverin \"%s\", por libfreerdp-i "
+"juaj nuk suporton H.264. Ju lutem përdorni një vendosje jo-AVC të thellësisë "
+"së ngjyrave."
 
 #: plugins/rdp/rdp_plugin.c:2193
 #, fuzzy, c-format
@@ -2247,8 +2267,8 @@ msgid ""
 "The Remote Desktop Gateway “%s” denied the user “%s\\%s” access due to "
 "policy."
 msgstr ""
-"Remote Desktop Gateway \"%s\" i mohoi përdoruesit qasjen %s\\%s\" për shkak "
-"të politikës."
+"Porta e Desktopit të Largët \"%s\" mohoi aksesin e përdoruesit \"%s\\%s\" "
+"për shkak të politikës."
 
 #: plugins/rdp/rdp_plugin.c:2208
 #, fuzzy, c-format
@@ -2258,7 +2278,7 @@ msgstr "I pamundur lidhja me serverin RDP \"%s\"."
 #: plugins/rdp/rdp_plugin.c:2551
 #, fuzzy
 msgid "Automatic (32 bpp) (Server chooses its best format)"
-msgstr "Automatike (32 bpp) (Server zgjedh formatin e tij më të mirë)"
+msgstr "Automatik (32 bpp) (Serveri zgjedh formatin e tij më të mirë)"
 
 #: plugins/rdp/rdp_plugin.c:2552
 #, fuzzy
@@ -2331,7 +2351,7 @@ msgstr "Satelit"
 #: plugins/rdp/rdp_plugin.c:2597
 #, fuzzy
 msgid "High performance broadband"
-msgstr "Broadband me performancë të lartë"
+msgstr "Bandë bandëgjerë me performancë të lartë"
 
 #: plugins/rdp/rdp_plugin.c:2598
 #, fuzzy
@@ -2351,7 +2371,7 @@ msgstr "Fikur"
 #: plugins/rdp/rdp_plugin.c:2615
 #, fuzzy
 msgid "Automatic negotiation"
-msgstr "Negocim automatik"
+msgstr "Negociata automatike"
 
 #: plugins/rdp/rdp_plugin.c:2616
 msgid "NLA protocol security"
@@ -2387,9 +2407,9 @@ msgid ""
 "  • >= 7065: Windows 8 and newer: SCardGetReaderIcon(),\n"
 "    SCardGetDeviceTypeId()"
 msgstr ""
-"Përdorur i.a. nga shërbimet terminale në një kanal smart kartë për të "
+"Përdorur i.a. nga shërbimet terminale në një kanal me kartë smart për të "
 "dalluar aftësitë e klientit:\n"
-"  • < 4034: Funksionet e kartës së mençur bazë windows XP • 4034-7064: "
+"  • < 4034: Funksionet e kartelave smart bazë të Windows XP • 4034-7064: "
 "Windows Vista/7: SCardReadCache(), SCardWriteCache(), "
 "SCardGetTransmitCount() • >= 7065: Windows 8 dhe më i ri: "
 "SCardGetReaderIcon(),\n"
@@ -2407,7 +2427,7 @@ msgid ""
 "  • sys:alsa"
 msgstr ""
 "Opsionet për ridrejtimin e hyrjes audio:\n"
-"  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
+"  • [sys:<sys>,][dev:<dev>,][format:<format>,|rate:<rate>,]\n"
 "    [kanal:<channel>] Hyrje audio (mikrofon)\n"
 "  • sys:pulse\n"
 "  • formati:1\n"
@@ -2426,8 +2446,8 @@ msgid ""
 "  • sys:alsa"
 msgstr ""
 "Opsionet për ridrejtimin e daljes audio:\n"
-"  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
-"    [kanal:<channel>] Dalje audio\n"
+"  • [sys:<sys>,][dev:<dev>,][format:<format>,|rate:<rate>,]\n"
+"    [kanali:<channel>] Dalje audio\n"
 "  • sys:pulse\n"
 "  • formati:1\n"
 "  • sys:oss,dev:1,format:1\n"
@@ -2442,7 +2462,7 @@ msgid ""
 "  • id:054c:0268#4669:6e6b,addr:04:0c"
 msgstr ""
 "Opsionet për ridrejtimin e pajisjes USB:\n"
-"  • [dbg,][id:<vid>:<pid>#...,][addr:<bus>:<addr>#...,][auto]\n"
+"  • [dbg,][id:<vid>:<pid>#...,][addr:<bus>:<addr>#...,|auto]\n"
 "  • auto\n"
 "  • id:054c:0268#4669:6e6b,addr:04:0c"
 
@@ -2453,8 +2473,8 @@ msgid ""
 "Adjusts the connection timeout. Use if your connection times out.\n"
 "The highest possible value is 600000 ms (10 minutes).\n"
 msgstr ""
-"Rregullimi i avancuar për lidhjet e vona të larta:\n"
-"Rregullon kohën e lidhjes. Përdore nëse lidhja jote është jashtë.\n"
+"Vendosje e avancuar për lidhje të larta të latencave:\n"
+"Rregullon kohën e lidhjes. Përdore nëse lidhja jote del jashtë.\n"
 "Vlera më e lartë e mundshme është 600000 ms (10 minuta).\n"
 
 #: plugins/rdp/rdp_plugin.c:2673
@@ -2464,8 +2484,8 @@ msgid ""
 "Using auto-detection is advised.\n"
 "If “Auto-detect” fails, choose the most appropriate option in the list.\n"
 msgstr ""
-"Optimizim të performancës bazuar në llojin e lidhjes së rrjetit:\n"
-"Është e këshillushmë të përdorësh auto-zbulimin.\n"
+"Optimizimet e performancës bazuar në llojin e lidhjes së rrjetit:\n"
+"Këshillohet përdorimi i auto-detektimit.\n"
 "Nëse \"Auto-detect\" dështon, zgjidhni opsionin më të përshtatshëm në "
 "listë.\n"
 
@@ -2483,15 +2503,15 @@ msgid ""
 "  • 270 (portrait flipped)\n"
 "\n"
 msgstr ""
-"Lista e ID të monitorëve të ndarë nga comma dhe orientimet e desktopit:\n"
+"Lista e ndarë nga comma e ID të monitorit dhe orientimet e desktopit:\n"
 "  • [<id>:<orientation-in-degrees>,]\n"
 "  • 0,1,2,3\n"
 "  • 0:270,1:90\n"
-"Orientimet specifikohen në shkallë, vlerat e vlefshme janë:\n"
+"Orientimet janë specifikuar në shkallë, vlerat e vlefshme janë:\n"
 "  • 0 (peizazh)\n"
 "  • 90 (portret)\n"
 "  • 180 (peizazh i rrëshqitur)\n"
-"  • 270 (portreti rrëshqiti)\n"
+"  • 270 (portret i rrëshqitur)\n"
 "\n"
 
 #: plugins/rdp/rdp_plugin.c:2690
@@ -2506,12 +2526,12 @@ msgid ""
 "  • hotplug,*\n"
 "\n"
 msgstr ""
-"Redirect directory <path>s quajtur share <name>.\n"
+"Ridrejtuar directory <path>as emëruar share <name>.\n"
 "  • <name>,<fullpath>[;<name>,<fullpath>[;...]]\n"
 "  • MyHome,/home/remminer\n"
 "  • /home/remminer\n"
 "  • MyHome,/home/remminer; SomePath,/path/to/somepath\n"
-"Mbështetja Hotplug është aktivizuar me:\n"
+"Mbështetja e Hotplug është mundësuar me:\n"
 "  • hotplug,*\n"
 "\n"
 
@@ -2523,48 +2543,49 @@ msgstr "Dosje e përbashkët"
 #, fuzzy
 msgid "Use “Redirect directory” in the advanced tab for multiple directories"
 msgstr ""
-"Përdor \"Redirect directory\" në tabin e avancuar për drejtori të shumta"
+"Përdor directory \"Redirect\" në tabin e avancuar për shumë directories"
 
 #: plugins/rdp/rdp_plugin.c:2723
+#, fuzzy
 msgid "Restricted admin mode"
-msgstr ""
+msgstr "Modaliteti admin i kufizuar"
 
 #: plugins/rdp/rdp_plugin.c:2724
 #, fuzzy
 #| msgid "Password"
 msgid "Password hash"
-msgstr "Fjalëkalimi"
+msgstr "Hash fjalëkalimi"
 
 #: plugins/rdp/rdp_plugin.c:2724
+#, fuzzy
 msgid "Restricted admin mode password hash"
-msgstr ""
+msgstr "Hash i kufizuar i fjalëkalimit të mode admin"
 
 #: plugins/rdp/rdp_plugin.c:2725
 #, fuzzy
 msgid "Left-handed mouse support"
-msgstr "Mbështetja e miut me dorë të majtë"
+msgstr "Mbështetja e miut me dorën e majtë"
 
 #: plugins/rdp/rdp_plugin.c:2725
 #, fuzzy
 msgid "Swap left and right mouse buttons for left-handed mouse support"
 msgstr ""
-"Shkëmbe butonat e miut të majtë dhe të djathtë për mbështetjen e miut të "
-"majtë"
+"Shkëmbeni butonat majtas dhe djathtas të miut për mbështetjen e miut të majtë"
 
 #: plugins/rdp/rdp_plugin.c:2727
 #, fuzzy
 msgid "Enable multi monitor"
-msgstr "Aktivo monitorin multi"
+msgstr "Aktivo monitorin shumë"
 
 #: plugins/rdp/rdp_plugin.c:2728
 #, fuzzy
 msgid "Span screen over multiple monitors"
-msgstr "Shfaq ekran mbi monitorë të shumtë"
+msgstr "Ekrani i spanjes mbi monitorët e shumëfishtë"
 
 #: plugins/rdp/rdp_plugin.c:2729
 #, fuzzy
 msgid "List monitor IDs"
-msgstr "ID e monitorit të listës"
+msgstr "ID-të e monitoruesit të listës"
 
 #: plugins/rdp/rdp_plugin.c:2731 plugins/vnc/vnc_plugin.c:1978
 #: plugins/vnc/vnc_plugin.c:1990 plugins/gvnc/gvnc_plugin.c:849
@@ -2583,22 +2604,22 @@ msgstr "Cilësia"
 #: plugins/rdp/rdp_plugin.c:2748
 #, fuzzy
 msgid "Security protocol negotiation"
-msgstr "Negocim i protokollit të sigurisë"
+msgstr "Negociata për protokollin e sigurisë"
 
 #: plugins/rdp/rdp_plugin.c:2749
 #, fuzzy
 msgid "Gateway transport type"
-msgstr "Lloji i transportit gateway"
+msgstr "Lloji i transportit të portës"
 
 #: plugins/rdp/rdp_plugin.c:2750
 #, fuzzy
 msgid "FreeRDP log level"
-msgstr "Niveli i logit FreeRDP"
+msgstr "Niveli i log-ut FreeRDP"
 
 #: plugins/rdp/rdp_plugin.c:2751
 #, fuzzy
 msgid "FreeRDP log filters"
-msgstr "Filtrat e logëve FreeRDP"
+msgstr "Filtrat e log-ut FreeRDP"
 
 #: plugins/rdp/rdp_plugin.c:2751
 #, fuzzy
@@ -2608,17 +2629,17 @@ msgstr "tag:level[,tag:level[,...]]"
 #: plugins/rdp/rdp_plugin.c:2752
 #, fuzzy
 msgid "Audio output mode"
-msgstr "Modaliteti i daljes së audios"
+msgstr "Modaliteti i daljes audio"
 
 #: plugins/rdp/rdp_plugin.c:2753
 #, fuzzy
 msgid "Redirect local audio output"
-msgstr "Ridrejto daljen lokale të audios"
+msgstr "Ridrejton daljen lokale të audios"
 
 #: plugins/rdp/rdp_plugin.c:2754
 #, fuzzy
 msgid "Redirect local microphone"
-msgstr "Ridrejto mikrofonin lokal"
+msgstr "Ridrejton mikrofonin lokal"
 
 #: plugins/rdp/rdp_plugin.c:2755
 msgid "Connection timeout in ms"
@@ -2632,22 +2653,22 @@ msgstr "Serveri Remote Desktop Gateway"
 #: plugins/rdp/rdp_plugin.c:2757
 #, fuzzy
 msgid "Remote Desktop Gateway username"
-msgstr "Emri i përdoruesit i Remote Desktop Gateway"
+msgstr "Përdoruesi i portës së desktopit në distancë"
 
 #: plugins/rdp/rdp_plugin.c:2758
 #, fuzzy
 msgid "Remote Desktop Gateway password"
-msgstr "Fjalëkalimi i Portave të Desktopit të Largët"
+msgstr "Fjalëkalimi i Portës së Desktopit në distancë"
 
 #: plugins/rdp/rdp_plugin.c:2759
 #, fuzzy
 msgid "Remote Desktop Gateway domain"
-msgstr "Domain i Remote Desktop Gateway"
+msgstr "Domeni Remote Desktop Gateway"
 
 #: plugins/rdp/rdp_plugin.c:2760
 #, fuzzy
 msgid "Redirect directory"
-msgstr "Ridrejto directory"
+msgstr "Ridrejton directory"
 
 #: plugins/rdp/rdp_plugin.c:2761
 #, fuzzy
@@ -2657,18 +2678,18 @@ msgstr "Emri i klientit"
 #: plugins/rdp/rdp_plugin.c:2762
 #, fuzzy
 msgid "Client build"
-msgstr "Ndërtimi i klientit"
+msgstr "Ndërtimi i klientëve"
 
 #: plugins/rdp/rdp_plugin.c:2765
 #, fuzzy
 msgid "Load balance info"
-msgstr "Info i bilancit të ngarkesës"
+msgstr "Ngarko informacionet e bilancit"
 
 #. TRANSLATORS: Do not use typographic quotation marks, these must stay as "double quote", also know as “Typewriter ("programmer's") quote, ambidextrous.”
 #: plugins/rdp/rdp_plugin.c:2767
 #, fuzzy
 msgid "Override printer drivers"
-msgstr "Mbishkruaj shoferët e printerit"
+msgstr "Mbishkruaj shoferët e printerëve"
 
 #: plugins/rdp/rdp_plugin.c:2767
 #, fuzzy
@@ -2676,13 +2697,13 @@ msgid ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
 msgstr ""
-"\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\" Canon MF410\":"
+"\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Seri PS\";\" Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
 
 #: plugins/rdp/rdp_plugin.c:2768
 #, fuzzy
 msgid "USB device redirection"
-msgstr "Ridrejtimi i pajisjes USB"
+msgstr "Ridrejtim i pajisjes USB"
 
 #: plugins/rdp/rdp_plugin.c:2769
 #, fuzzy
@@ -2697,7 +2718,7 @@ msgstr "COM1, COM2, etj."
 #: plugins/rdp/rdp_plugin.c:2770
 #, fuzzy
 msgid "Local serial driver"
-msgstr "Shofer serik lokal"
+msgstr "Shofer serial lokal"
 
 #: plugins/rdp/rdp_plugin.c:2770
 #, fuzzy
@@ -2707,7 +2728,7 @@ msgstr "Serial"
 #: plugins/rdp/rdp_plugin.c:2771
 #, fuzzy
 msgid "Local serial path"
-msgstr "Rrugë serike lokale"
+msgstr "Rrugë lokale serike"
 
 #: plugins/rdp/rdp_plugin.c:2771
 #, fuzzy
@@ -2727,7 +2748,7 @@ msgstr "Pajisje paralele lokale"
 #: plugins/rdp/rdp_plugin.c:2774
 #, fuzzy
 msgid "Name of smart card"
-msgstr "Emri i kartës smart"
+msgstr "Emri i smart kartelës"
 
 #: plugins/rdp/rdp_plugin.c:2775
 #, fuzzy
@@ -2748,7 +2769,7 @@ msgstr "Kanal virtual statik"
 #, fuzzy
 #| msgid "Per connection"
 msgid "TCP redirection"
-msgstr "Ridrejtimi I TCP"
+msgstr "Ridrejtim TCP"
 
 #: plugins/rdp/rdp_plugin.c:2777
 #, fuzzy
@@ -2758,27 +2779,27 @@ msgstr "/PATH/TO/rdp2tcp"
 #: plugins/rdp/rdp_plugin.c:2779
 #, fuzzy
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
-msgstr "Prefer IPv6 AAAA record over IPv4 A record"
+msgstr "Preferoj IPv6 AAAA rekord mbi IPv4 A rekord"
 
 #: plugins/rdp/rdp_plugin.c:2780
 #, fuzzy
 msgid "Share printers"
-msgstr "Ndaje printerët"
+msgstr "Ndaj printera"
 
 #: plugins/rdp/rdp_plugin.c:2781
 #, fuzzy
 msgid "Share serial ports"
-msgstr "Ndaje portet serike"
+msgstr "Ndani portet serialë"
 
 #: plugins/rdp/rdp_plugin.c:2782
 #, fuzzy
 msgid "(SELinux) permissive mode for serial ports"
-msgstr "(SELinux) modaliteti tolerues për portet serike"
+msgstr "Modaliteti tolerant (SELinux) për portet serialë"
 
 #: plugins/rdp/rdp_plugin.c:2783
 #, fuzzy
 msgid "Share parallel ports"
-msgstr "Ndaje portet paralele"
+msgstr "Ndani portet paralelë"
 
 #: plugins/rdp/rdp_plugin.c:2784
 #, fuzzy
@@ -2788,7 +2809,7 @@ msgstr "Ndaje një kartë smart"
 #: plugins/rdp/rdp_plugin.c:2785 plugins/vnc/vnc_plugin.c:2009
 #, fuzzy
 msgid "Turn off clipboard sync"
-msgstr "Fik sinkronizimin e pjesëve të klipit"
+msgstr "Fik sinkronizimin e dërrasës"
 
 #: plugins/rdp/rdp_plugin.c:2786
 #, fuzzy
@@ -2798,7 +2819,7 @@ msgstr "Injoro çertifikatën"
 #: plugins/rdp/rdp_plugin.c:2787
 #, fuzzy
 msgid "Use the old license workflow"
-msgstr "Përdor workflow-ët e vjetër të liçensave"
+msgstr "Përdor kuadrën e vjetër të liçensës"
 
 #: plugins/rdp/rdp_plugin.c:2787
 #, fuzzy
@@ -2814,17 +2835,17 @@ msgstr "%s fjalëkalim"
 #: plugins/rdp/rdp_plugin.c:2789
 #, fuzzy
 msgid "Attach to console (2003/2003 R2)"
-msgstr "Bashkangjitur konsolës (2003/2003 R2)"
+msgstr "Bashkangjitu konsolës (2003/2003 R2)"
 
 #: plugins/rdp/rdp_plugin.c:2790
 #, fuzzy
 msgid "Turn off fast-path"
-msgstr "Fike rrugën e shpejtë"
+msgstr "Fike shtegun e shpejtë"
 
 #: plugins/rdp/rdp_plugin.c:2791
 #, fuzzy
 msgid "Server detection using Remote Desktop Gateway"
-msgstr "Zbulimi i serverit duke përdorur Remote Desktop Gateway"
+msgstr "Detektimi i serverit duke përdorur Portën e Desktopit në Distancë"
 
 #: plugins/rdp/rdp_plugin.c:2793
 #, fuzzy
@@ -2834,12 +2855,12 @@ msgstr "Përdor rregullimet e proxy të sistemit"
 #: plugins/rdp/rdp_plugin.c:2795
 #, fuzzy
 msgid "Turn off automatic reconnection"
-msgstr "Fike rilidhjen automatike"
+msgstr "Fik rilidhjen automatike"
 
 #: plugins/rdp/rdp_plugin.c:2796
 #, fuzzy
 msgid "Relax order checks"
-msgstr "Relakso kontrollet e porosive"
+msgstr "Kontrollat e porosive të relaksit"
 
 #: plugins/rdp/rdp_plugin.c:2797
 #, fuzzy
@@ -2859,12 +2880,12 @@ msgstr "Përdorimi i protokollit UDP mund të përmirësojë performancën"
 #: plugins/rdp/rdp_plugin.c:2799
 #, fuzzy
 msgid "Use base credentials for gateway too"
-msgstr "Përdor kredencialet bazë për portë gjithashtu"
+msgstr "Përdor kredencialet bazë edhe për portën"
 
 #: plugins/rdp/rdp_plugin.c:2801
 #, fuzzy
 msgid "Enable Gateway websockets support"
-msgstr "Aktivo mbështetjen e websockets Gateway"
+msgstr "Aktivo suportin e websockets Gateway"
 
 #: plugins/rdp/rdp_plugin.c:2814 plugins/spice/spice_plugin.c:715
 #: plugins/vnc/vnc_plugin.c:2029
@@ -2875,12 +2896,12 @@ msgstr "Dërgo Ctrl+Alt+Delete"
 #: plugins/rdp/rdp_plugin.c:2827
 #, fuzzy
 msgid "RDP - Remote Desktop Protocol"
-msgstr "RDP - Remote Desktop Protocol"
+msgstr "RDP - Protokolli i Desktopit në Distancë"
 
 #: plugins/rdp/rdp_plugin.c:2852
 #, fuzzy
 msgid "RDP - RDP File Handler"
-msgstr "RDP - RDP File Handler"
+msgstr "RDP - Trajtuesi i skedarëve RDP"
 
 #: plugins/rdp/rdp_plugin.c:2867
 #, fuzzy
@@ -2890,7 +2911,7 @@ msgstr "RDP - Preferencat"
 #: plugins/rdp/rdp_plugin.c:2920
 #, fuzzy
 msgid "Export connection in Windows .rdp file format"
-msgstr "Eksporto lidhjen në formatin e file windows .rdp"
+msgstr "Eksporto në formatin e file Windows .rdp"
 
 #: plugins/rdp/rdp_event.c:344
 #, c-format
@@ -2900,12 +2921,12 @@ msgstr "Duke u lidhur me '%s'…"
 #: plugins/spice/spice_plugin_file_transfer.c:82
 #, fuzzy
 msgid "File Transfers"
-msgstr "Transferimet e file"
+msgstr "Transferimet e skedarëve"
 
 #: plugins/spice/spice_plugin_file_transfer.c:219
 #, fuzzy
 msgid "Transfer error"
-msgstr "Gabim transferimi"
+msgstr "Gabim i transferimit"
 
 #: plugins/spice/spice_plugin_file_transfer.c:220
 #, fuzzy, c-format
@@ -2915,12 +2936,12 @@ msgstr "%s: %s"
 #: plugins/spice/spice_plugin_file_transfer.c:223
 #, fuzzy
 msgid "Transfer completed"
-msgstr "Transferimi u kompletua"
+msgstr "Transferimi u plotësua"
 
 #: plugins/spice/spice_plugin_file_transfer.c:224
 #, fuzzy, c-format
 msgid "The %s file has been transferred"
-msgstr "Dosja %s është transferuar"
+msgstr "File %s është transferuar"
 
 #: plugins/spice/spice_plugin.c:351
 msgid "Enter SPICE password"
@@ -2958,17 +2979,18 @@ msgstr "Auto LZ"
 #: plugins/spice/spice_plugin.c:650
 #, fuzzy
 msgid "Disable video overlay if videos are not displayed properly.\n"
-msgstr "Ç'aktivo videon nëse videot nuk janë të shfaqura siç duhet.\n"
+msgstr ""
+"Ç'aktivo mbishfshirjen e videove nëse videot nuk janë shfaqur siç duhet.\n"
 
 #: plugins/spice/spice_plugin.c:675
 #, fuzzy
 msgid "Use TLS encryption"
-msgstr "Përdor enkriptim TLS"
+msgstr "Përdor kriptim TLS"
 
 #: plugins/spice/spice_plugin.c:676
 #, fuzzy
 msgid "Server CA certificate"
-msgstr "Çertifikatë SERVER CA"
+msgstr "Çertifikata CA e serverit"
 
 #: plugins/spice/spice_plugin.c:694
 msgid "Prefered video codec"
@@ -2977,18 +2999,18 @@ msgstr "Parapëlqim"
 #: plugins/spice/spice_plugin.c:695
 #, fuzzy
 msgid "Turn off GStreamer overlay"
-msgstr "Fike kalimin e GStreamer"
+msgstr "Fike overlay GStreamer"
 
 #: plugins/spice/spice_plugin.c:698
 #, fuzzy
 msgid "Prefered image compression"
-msgstr "Kompresë e preferuar e figurës"
+msgstr "Kompresim i preferuar i figurës"
 
 #: plugins/spice/spice_plugin.c:701 plugins/spice/spice_plugin.c:714
 #: plugins/gvnc/gvnc_plugin.c:866 plugins/gvnc/gvnc_plugin.c:880
 #, fuzzy
 msgid "No clipboard sync"
-msgstr "Asnjë sinkronizim i pjesës së klipit"
+msgstr "Nuk ka sinkronizim të dërrasës"
 
 #: plugins/spice/spice_plugin.c:703 plugins/gvnc/gvnc_plugin.c:869
 #, fuzzy
@@ -2998,7 +3020,7 @@ msgstr "Aktivo kanalin audio"
 #: plugins/spice/spice_plugin.c:704
 #, fuzzy
 msgid "Share smart card"
-msgstr "Ndaje kartën e zgjuar"
+msgstr "Ndaje kartën e mençur"
 
 #: plugins/spice/spice_plugin.c:705 plugins/spice/spice_plugin.c:713
 #: plugins/vnc/vnc_plugin.c:2008 plugins/vnc/vnc_plugin.c:2025
@@ -3024,7 +3046,7 @@ msgstr "_Mbyll"
 #: plugins/spice/spice_plugin_usb.c:94
 #, fuzzy
 msgid "USB redirection error"
-msgstr "Gabim i ridrejtimit të USB"
+msgstr "Gabim i ridrejtimit usb"
 
 #: plugins/vnc/vnc_plugin.c:772
 msgid "Enter VNC password"
@@ -3038,12 +3060,12 @@ msgstr "Shkruaj kredencialet e autentifikimit VNC"
 #: plugins/vnc/vnc_plugin.c:936
 #, fuzzy
 msgid "Unable to connect to VNC server"
-msgstr "I pamundur lidhja me serverin VNC"
+msgstr "E pamundur lidhja me serverin VNC"
 
 #: plugins/vnc/vnc_plugin.c:937
 #, fuzzy, c-format
 msgid "Couldn’t convert '%s' to host address"
-msgstr "I pamundur konvertimi '%s' në adresën e host"
+msgstr "I pamundur konvertimi i '%s' në adresën e host"
 
 #: plugins/vnc/vnc_plugin.c:938
 #, fuzzy, c-format
@@ -3053,7 +3075,7 @@ msgstr "Lidhja VNC dështoi: %s"
 #: plugins/vnc/vnc_plugin.c:939
 #, fuzzy
 msgid "Your connection has been rejected."
-msgstr "Lidhja jote është refuzuar."
+msgstr "Lidhja juaj është refuzuar."
 
 #: plugins/vnc/vnc_plugin.c:966
 #, fuzzy, c-format
@@ -3063,7 +3085,7 @@ msgstr "Serveri VNC kërkoi një metodë të panjohur autentifikimi. %s"
 #: plugins/vnc/vnc_plugin.c:968
 #, fuzzy
 msgid "Please retry after turning on encryption for this profile."
-msgstr "Ju lutemi të ritry pasi të kthehet në enkriptim për këtë profil."
+msgstr "Të lutem ritrys pas ndezjes së enkriptimit për këtë profil."
 
 #: plugins/vnc/vnc_plugin.c:1939
 #, fuzzy
@@ -3077,15 +3099,15 @@ msgid ""
 "    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
 msgstr ""
 "Lidhu me VNC duke përdorur një përsëritës:\n"
-"  • Fusha e serverit duhet të përmbajë ID përsëritës, p.sh. ID:123456789\n"
-"  • Fusha e përsëritësve duhet të jetë e vendosur në IP përsëritës dhe port, "
-"si:\n"
+"  • Fusha e serverit duhet të përmbajë ID përsëritëse, p.sh. ID:123456789\n"
+"  • Fusha përsëritëse duhet të vendoset tek IP përsëritësi dhe porti, si:\n"
 "    10.10.10.12:5901\n"
-"  • Nga serveri i largët VNC, ju do të lidheni me\n"
-"    përsëritësja, p.sh. me x11vnc:\n"
-"    x11vnc +connect repeater=ID:123456789+10.10.10.12:5500"
+"  • Nga serveri I largët VNC, ju do të lidheni me\n"
+"    përsëritësi, p.sh. me x11vnc:\n"
+"    x11vnc -lidh përsëritësi=ID:123456789+10.10.10.12:5500"
 
 #: plugins/vnc/vnc_plugin.c:1948
+#, fuzzy
 msgid ""
 "Listening for remote VNC connection:\n"
 "  • The \"Listen on port\" field is the port Remmina will listen to,\n"
@@ -3094,6 +3116,12 @@ msgid ""
 "    Remmina, e.g. with x11vnc:\n"
 "    x11vnc -display :0 -connect 192.168.1.36:8888"
 msgstr ""
+"Duke dëgjuar për lidhje të largët VNC:\n"
+"  • Fusha \"Dëgjo në port\" është porti që Remmina do të dëgjojë,\n"
+"    p.sh. 8888\n"
+"  • Nga serveri I largët VNC, ju do të lidheni me\n"
+"    Remmina, p.sh. me x11vnc:\n"
+"    x11vnc -display :0 -lidhu 192.168.1.36:8888"
 
 #: plugins/vnc/vnc_plugin.c:1975
 msgid "Repeater"
@@ -3102,7 +3130,7 @@ msgstr "Përsëritës"
 #: plugins/vnc/vnc_plugin.c:1987
 #, fuzzy
 msgid "Listen on port"
-msgstr "Dëgjo në port."
+msgstr "Dëgjo në port"
 
 #: plugins/vnc/vnc_plugin.c:2007
 #, fuzzy
@@ -3112,17 +3140,17 @@ msgstr "Shfaq kursorin në distancë"
 #: plugins/vnc/vnc_plugin.c:2010
 #, fuzzy
 msgid "Turn off encryption"
-msgstr "Fik enkriptim"
+msgstr "Fik enkriptimi"
 
 #: plugins/vnc/vnc_plugin.c:2011 plugins/vnc/vnc_plugin.c:2026
 #, fuzzy
 msgid "Prevent local interaction on the server"
-msgstr "Parandaloni ndërveprimin lokal në server"
+msgstr "Parandalohet ndërveprimi lokal në server"
 
 #: plugins/vnc/vnc_plugin.c:2012 plugins/gvnc/gvnc_plugin.c:868
 #, fuzzy
 msgid "Ignore remote bell messages"
-msgstr "Injoro mesazhet e ziles së largët"
+msgstr "Injoro mesazhet e ziles në distancë"
 
 #: plugins/vnc/vnc_plugin.c:2028
 msgid "Open Chat…"
@@ -3136,17 +3164,17 @@ msgstr "Remmina VNC Plugin"
 #: plugins/vnc/vnc_plugin.h:46
 #, fuzzy
 msgid "Remmina VNC listener Plugin"
-msgstr "Plugin i dëgjuesit remmina VNC"
+msgstr "Plugin i dëgjuesve remmina VNC"
 
 #: plugins/www/www_config.h:43
 #, fuzzy
 msgid "Remmina web-browser plugin"
-msgstr "Plugin i shfletuesit të uebit Remmina"
+msgstr "Plugin i shfletuesit web remmina"
 
 #: plugins/www/www_plugin.c:98
 #, fuzzy
 msgid "File downloaded"
-msgstr "File i shkarkuar"
+msgstr "File u shkarkua"
 
 #: plugins/www/www_plugin.c:581
 #, fuzzy
@@ -3161,7 +3189,7 @@ msgstr "URL"
 #: plugins/www/www_plugin.c:893
 #, fuzzy
 msgid "http://address or https://address"
-msgstr "http://address ose https://address"
+msgstr "http://address apo https://address"
 
 #: plugins/www/www_plugin.c:910
 #, fuzzy
@@ -3181,32 +3209,32 @@ msgstr "P.sh. https://example.org, socks://mysocks:1080"
 #: plugins/www/www_plugin.c:912
 #, fuzzy
 msgid "Turn on Java support"
-msgstr "Ndize mbështetjen e Java"
+msgstr "Ndize suportin Java"
 
 #: plugins/www/www_plugin.c:913
 #, fuzzy
 msgid "Turn on smooth scrolling"
-msgstr "Ndiz rrotullimin e lëmuar"
+msgstr "Ndize rrotullimin e lëmuar"
 
 #: plugins/www/www_plugin.c:914
 #, fuzzy
 msgid "Turn on spatial navigation"
-msgstr "Ndiz lundrimin hapsinor"
+msgstr "Ndize lundrimin hapësinor"
 
 #: plugins/www/www_plugin.c:915
 #, fuzzy
 msgid "Turn on plugin support"
-msgstr "Ndize mbështetjen e plugin"
+msgstr "Ndize suportin e plugin"
 
 #: plugins/www/www_plugin.c:916
 #, fuzzy
 msgid "Turn on WebGL support"
-msgstr "Ndizni mbështetjen WebGL"
+msgstr "Ndez suportin WebGL"
 
 #: plugins/www/www_plugin.c:917
 #, fuzzy
 msgid "Turn on HTML5 audio support"
-msgstr "Ndizni mbështetjen audio HTML5"
+msgstr "Ndize suportin audio HTML5"
 
 #: plugins/www/www_plugin.c:918
 #, fuzzy
@@ -3216,12 +3244,12 @@ msgstr "Injoro gabimet e TLS"
 #: plugins/www/www_plugin.c:921
 #, fuzzy
 msgid "Turn on Web Inspector"
-msgstr "Ndiz inspektorin e uebit"
+msgstr "Ndize Inspektorin e Internetit"
 
 #: plugins/exec/exec_plugin.c:160
 #, fuzzy
 msgid "You did not set any command to be executed"
-msgstr "Ju nuk keni vendosur asnjë urdhër për t'u ekzekutuar"
+msgstr "Ju nuk keni vendosur ndonjë urdhër për t'u ekzekutuar"
 
 #: plugins/exec/exec_plugin.c:206
 #, fuzzy
@@ -3229,9 +3257,9 @@ msgid ""
 "Warning: Running a command synchronously may cause Remmina not to respond.\n"
 "Do you really want to continue?"
 msgstr ""
-"Paralajmërim: Të drejtosh një komandë në mënyrë sinkrone mund të shkaktojë "
-"që Remmina të mos përgjigjet.\n"
-"Vërtet dëshiron të vazhdosh?"
+"Kujdes: Bërja e një komande në mënyrë sinkrone mund të bëjë që Remmina të "
+"mos përgjigjet.\n"
+"Do vërtet të vazhdosh?"
 
 #: plugins/exec/exec_plugin.c:274
 #, fuzzy
@@ -3241,7 +3269,7 @@ msgstr "Urdhër"
 #: plugins/exec/exec_plugin.c:275
 #, fuzzy
 msgid "Asynchronous execution"
-msgstr "Ekzekutimi i 1000"
+msgstr "Ekzekutim sinkron"
 
 #: plugins/exec/exec_plugin_config.h:41
 #, fuzzy
@@ -3257,300 +3285,554 @@ msgstr "Përshëndetje botë!"
 msgid "Secured password storage in the GNOME keyring"
 msgstr "%s fjalëkalim"
 
-#: plugins/x2go/x2go_plugin.c:275
+#: plugins/x2go/x2go_plugin.c:67
+#, c-format
+msgid ""
+"The command-line feature '%s' is not available! Attempting to start PyHoca-"
+"CLI without using this feature…"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:277
+#, fuzzy
 msgid "Broken `DialogData`! Aborting…"
-msgstr ""
+msgstr "DialogData e thyer! Po abortoj…"
 
-#: plugins/x2go/x2go_plugin.c:279
+#: plugins/x2go/x2go_plugin.c:281
+#, fuzzy
 msgid "Can't retrieve `DialogData`! Aborting…"
+msgstr "Nuk arrij të marr 'DialogData'! Po abortoj…"
+
+#: plugins/x2go/x2go_plugin.c:438
+#, fuzzy
+msgid "Couldn't retrieve valid `DialogData` or `sessions_list`! Aborting…"
+msgstr "Nuk arrij të marr 'DialogData'! Po abortoj…"
+
+#: plugins/x2go/x2go_plugin.c:445
+msgid "_New"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:505
-msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
+#: plugins/x2go/x2go_plugin.c:447
+#, fuzzy
+msgid "_Select session"
+msgstr "_Select të gjitha"
+
+#: plugins/x2go/x2go_plugin.c:506
+msgid "Display"
+msgstr "Ekran"
+
+#: plugins/x2go/x2go_plugin.c:507
+msgid "Status"
+msgstr "Gjendja"
+
+#: plugins/x2go/x2go_plugin.c:508
+#, fuzzy
+#| msgid "Permission"
+msgid "Session ID"
+msgstr "Leje"
+
+#: plugins/x2go/x2go_plugin.c:509
+msgid "Create date"
 msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:510
+msgid "Suspended since"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:511
+msgid "Agent PID"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:513
+#, fuzzy
+msgid "Hostname"
+msgstr "Emër përdoruesi"
 
 #: plugins/x2go/x2go_plugin.c:514
-msgid "An error occured."
+msgid "Cookie"
 msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:515
+msgid "Graphic port"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:516
+msgid "SND port"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:517
+#, fuzzy
+msgid "SSHFS port"
+msgstr "Porti lokal i SSH"
+
+#: plugins/x2go/x2go_plugin.c:519 plugins/x2go/x2go_plugin.c:585
+#: plugins/x2go/x2go_plugin.c:599 plugins/x2go/x2go_plugin.c:614
+#: plugins/x2go/x2go_plugin.c:626 plugins/x2go/x2go_plugin.c:936
+#: plugins/x2go/x2go_plugin.c:947 plugins/x2go/x2go_plugin.c:955
+#: plugins/x2go/x2go_plugin.c:1060 plugins/x2go/x2go_plugin.c:1094
+#: plugins/x2go/x2go_plugin.c:1200 plugins/x2go/x2go_plugin.c:2212
+#: plugins/x2go/x2go_plugin.c:2425 plugins/x2go/x2go_plugin.c:2430
+#: plugins/x2go/x2go_plugin.c:2435 plugins/x2go/x2go_plugin.c:2440
+#: plugins/x2go/x2go_plugin.c:2455 plugins/x2go/x2go_plugin.c:2460
+#: plugins/x2go/x2go_plugin.c:2465 plugins/x2go/x2go_plugin.c:2470
+#, fuzzy, c-format
+msgid "Internal error: %s"
+msgstr "Gabim i brendshëm: "
+
+#: plugins/x2go/x2go_plugin.c:520
+msgid "Unknown property"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:586
+msgid "Couldn't find child GtkTreeView of session chooser dialog."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:600
+msgid "only one session should be able to be selected."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:615
+msgid "Failed to fill 'GtkTreeIter'."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:627
+msgid "Couldn't get session ID out of selected row."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:660
+msgid "Couldn't get session ID from session chooser dialog."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:667
+#, c-format
+msgid "Resuming session: '%s'"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:892
+#, fuzzy
+msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
+msgstr "PyHoca-CLI doli papritur. Kjo lidhje tani do të mbyllet."
+
+#: plugins/x2go/x2go_plugin.c:901
+#, fuzzy
+msgid "An error occured."
+msgstr "Ndodhi një gabim."
+
+#: plugins/x2go/x2go_plugin.c:902
+#, fuzzy
 msgid ""
 "The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
 "Please check your profile settings and PyHoca-CLI's output for possible "
 "errors. Also ensure the remote server is reachable."
 msgstr ""
+"Procesi i nevojshëm i fëmijës 'pyhoca-cli' ndaloi papritur.\n"
+"Ju lutem kontrolloni rregullimet e profilit tuaj dhe daljen e PyHoca-CLI për "
+"gabime të mundshme. Gjithashtu sigurohuni që serveri i largët të jetë i "
+"arritshëm."
 
-#: plugins/x2go/x2go_plugin.c:561
+#: plugins/x2go/x2go_plugin.c:937
+msgid "parameter 'argv' is 'NULL'."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:948
+msgid "parameter 'error' is 'NULL'."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:956
+msgid "parameter 'env' is either invalid or uninitialized."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:972
+#, fuzzy
 msgid "Started PyHoca-CLI with the following arguments:"
+msgstr "Filloi PyHoca-CLI me argumentet e mëposhtme:"
+
+#: plugins/x2go/x2go_plugin.c:988
+#, fuzzy
+msgid "Started PyHoca-CLI with the following environment variables:"
+msgstr "Filloi PyHoca-CLI me argumentet e mëposhtme:"
+
+#: plugins/x2go/x2go_plugin.c:997
+msgid ""
+"The necessary PyHoca-CLI process has encountered a internet connection "
+"problem."
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:580
+#: plugins/x2go/x2go_plugin.c:1007
+#, fuzzy
+msgid "An unknown error occured while trying to start PyHoca-CLI."
+msgstr "Një gabim ndodhi gjatë fillimit të një seance X2Go…"
+
+#: plugins/x2go/x2go_plugin.c:1017
 #, c-format
-msgid "Could not retrieve PyHoca-CLI's command-line features! Exit code: %i"
+msgid ""
+"An unknown error occured while trying to start PyHoca-CLI. Exit code: %i"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:585
-#, fuzzy, c-format
-msgid "Error: '%s'"
-msgstr "Gabim: %s"
+#: plugins/x2go/x2go_plugin.c:1022
+#, c-format
+msgid ""
+"An unknown error occured while trying to start PyHoca-CLI. Exit code: %i. "
+"Error: '%s'"
+msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:609
+#: plugins/x2go/x2go_plugin.c:1047
+#, fuzzy
 msgid "Can't save empty username!"
-msgstr ""
+msgstr "Nuk mund të ruaj përdoruesin bosh!"
 
-#: plugins/x2go/x2go_plugin.c:621
-msgid "Internal error: Could not save new credentials."
-msgstr ""
+#: plugins/x2go/x2go_plugin.c:1061
+#, fuzzy
+msgid "Could not save new credentials."
+msgstr "Gabim i brendshëm: I pamundur ruajtja e kredencialeve të reja."
 
-#: plugins/x2go/x2go_plugin.c:623
+#: plugins/x2go/x2go_plugin.c:1064
+#, fuzzy
 msgid ""
 "An error occured while trying to save new credentials: 's_password' or "
 "'s_username' strings were not set."
 msgstr ""
+"Një gabim ndodhi gjatë përpjekjes për të ruajtur kredenciale të reja: "
+"'s_password' ose 's_username' nuk u vunë."
 
-#: plugins/x2go/x2go_plugin.c:659
+#: plugins/x2go/x2go_plugin.c:1095
+msgid "Parameter 'default_username' is uninitialized."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1124
 #, fuzzy
 msgid "Enter X2Go credentials"
-msgstr "Shkruaj kredencialet e autentifikimit RDP"
+msgstr "Shkruaj kredencialet X2Go"
 
-#: plugins/x2go/x2go_plugin.c:818
+#: plugins/x2go/x2go_plugin.c:1201
+#, fuzzy
+#| msgid "Per connection"
+msgid "'Invalid connection data.'"
+msgstr "Lidhje e përbashkët"
+
+#: plugins/x2go/x2go_plugin.c:1323
+msgid ""
+"Couldn't parse the output of PyHoca-CLI's --list-sessions option. Creating a "
+"new session now."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1362
+msgid "Couldn't allocate enough memory!"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1372
+#, c-format
+msgid "Found already existing X2Go session with ID: '%s'"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1444
+msgid ""
+"Could not find any sessions on remote machine. Creating a new session now."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1485
+#, fuzzy
+msgid "Choose a session to resume:"
+msgstr "Zgjidh një file për të ngarkuar"
+
+#: plugins/x2go/x2go_plugin.c:1502
+#, fuzzy
+msgid "Waiting for user to select a session…"
+msgstr "Duke pritur që PyHoca-CLI të tregojë dritaren e seancës…"
+
+#: plugins/x2go/x2go_plugin.c:1510
+msgid "No session was selected. Creating a new one."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1558
+#, c-format
+msgid "A non-critical error happened: %s"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1563
+#, c-format
+msgid "User chose to resume session with ID: '%s'"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1583
+#, c-format
+msgid "Resuming session '%s'…"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1706
+#, fuzzy
 msgid "DPI setting is out of bounds. Please adjust it in profile settings."
 msgstr ""
+"Vendosja e DPI është jashtë kufijve. Të lutem rregulloje në rregullimet e "
+"profilit."
 
-#: plugins/x2go/x2go_plugin.c:838
+#: plugins/x2go/x2go_plugin.c:1728
+#, fuzzy
 msgid "Started pyhoca-cli with following arguments:"
-msgstr ""
+msgstr "Filloi pyhoca-cli me argumentet e mëposhtme:"
 
-#: plugins/x2go/x2go_plugin.c:858
+#: plugins/x2go/x2go_plugin.c:1748
+#, fuzzy
 msgid "An error occured while starting an X2Go session…"
-msgstr ""
+msgstr "Një gabim ndodhi gjatë fillimit të një seance X2Go…"
 
-#: plugins/x2go/x2go_plugin.c:867
+#: plugins/x2go/x2go_plugin.c:1757
 #, fuzzy
 msgid "Could not start X2Go session."
-msgstr "E pamundur fillimi i sesionit SSH. %s"
+msgstr "E pamundur nisja e seancës X2Go."
 
-#: plugins/x2go/x2go_plugin.c:868
+#: plugins/x2go/x2go_plugin.c:1758
 #, fuzzy, c-format
 msgid "Could not start PyHoca-CLI (%i): '%s'"
-msgstr "E pamundur fillimi i sesionit SSH. %s"
+msgstr "E pamundur nisja e PyHoca-CLI (%i): '%s'"
 
-#: plugins/x2go/x2go_plugin.c:945
+#: plugins/x2go/x2go_plugin.c:1857
+#, fuzzy
 msgid ""
 "Couldn't get PyHoca-CLI's command-line features. This indicates it is either "
 "too old, or not installed. An old limited set of features will be used for "
 "now."
 msgstr ""
+"Nuk mund të merrni karakteristikat e komandës së PyHoca-CLI. Kjo tregon se "
+"është ose shumë i vjetër, ose nuk është instaluar. Një grup i vjetër i "
+"kufizuar karakteristikash do të përdoret për tani."
 
-#: plugins/x2go/x2go_plugin.c:956
+#: plugins/x2go/x2go_plugin.c:1866
+#, fuzzy
 msgid ""
 "Could not parse PyHoca-CLI's command-line features. Using a limited feature-"
 "set for now."
 msgstr ""
+"E pamundur analizimi i karakteristikave komanduese të PyHoca-CLI. Duke "
+"përdorur një veçori të kufizuar për tani."
 
-#: plugins/x2go/x2go_plugin.c:962
+#: plugins/x2go/x2go_plugin.c:1872
+#, fuzzy
 msgid "Retrieved the following PyHoca-CLI command-line features:"
-msgstr ""
+msgstr "Marrë veçoritë e mëposhtme të linjës së komandës PyHoca-CLI:"
 
-#: plugins/x2go/x2go_plugin.c:967
-#, c-format
+#: plugins/x2go/x2go_plugin.c:1880
+#, fuzzy, c-format
 msgid "Available feature[%i]: '%s'"
-msgstr ""
+msgstr "Veçori e disponueshme[%i: '%s'"
 
-#: plugins/x2go/x2go_plugin.c:1072
+#: plugins/x2go/x2go_plugin.c:1985
 #, fuzzy
 msgid "Could not open X11 DISPLAY."
-msgstr "E pamundur hapja e kanalit. %s"
+msgstr "E pamundur hapja e display X11."
 
-#: plugins/x2go/x2go_plugin.c:1112
+#: plugins/x2go/x2go_plugin.c:2025
+#, fuzzy
 msgid "Waiting for window of X2Go Agent to appear…"
-msgstr ""
+msgstr "Duke pritur që dritarja e agjentit X2Go të shfaqet…"
 
-#: plugins/x2go/x2go_plugin.c:1138
+#: plugins/x2go/x2go_plugin.c:2051
+#, fuzzy
 msgid "Waiting for PyHoca-CLI to show the session's window…"
-msgstr ""
+msgstr "Duke pritur që PyHoca-CLI të tregojë dritaren e seancës…"
 
-#: plugins/x2go/x2go_plugin.c:1189
+#: plugins/x2go/x2go_plugin.c:2102
+#, fuzzy
 msgid "No X2Go session window appeared. Something went wrong…"
-msgstr ""
+msgstr "Nuk u shfaq dritarja e seancës X2Go. Diçka shkoi keq…"
 
-#: plugins/x2go/x2go_plugin.c:1298
-msgid "Internal error: RemminaProtocolWidget* gp is NULL!"
-msgstr ""
+#: plugins/x2go/x2go_plugin.c:2213
+#, fuzzy
+msgid "RemminaProtocolWidget* gp is 'NULL'!"
+msgstr "Gabim i brendshëm: RemminaProtocolWidget* gp është NULL!"
 
-#: plugins/x2go/x2go_plugin.c:1319
-#, c-format
+#: plugins/x2go/x2go_plugin.c:2234
+#, fuzzy, c-format
 msgid "The %s protocol is unavailable because GtkSocket only works under X.org"
 msgstr ""
+"Protokolli %s është i paarritshëm sepse GtkSocket punon vetëm nën X.org"
 
-#: plugins/x2go/x2go_plugin.c:1327
-msgid "Could not initialize pthread. Falling back to non-threaded mode…"
-msgstr ""
-
-#. TRANSLATORS: Presumably you just want to translate 'and' into
-#. your language.
-#. (Except your listing-grammar differs from english.)
-#. 'value1', 'value2', 'valueN-1' and 'valueN'
-#. TRANSLATORS: Presumably you just want to translate 'and' into
-#. your language.
-#. (Except your listing-grammar differs from english.)
-#. 'value1' and 'value2'
-#: plugins/x2go/x2go_plugin.c:1370 plugins/x2go/x2go_plugin.c:1388
-#, c-format
-msgid "%sand '%s'"
-msgstr ""
-
-#. TRANSLATORS: Presumably you just want to leave it english.
-#. (Except your listing-grammar differs from english.)
-#. 'value1', 'value2', 'valueN-1' and 'valueN'
-#. TRANSLATORS: Presumably you just want to leave it english.
-#. (Except your listing-grammar differs from english.)
-#. 'value1' and 'value2'
-#: plugins/x2go/x2go_plugin.c:1375 plugins/x2go/x2go_plugin.c:1393
-#, c-format
-msgid "%s'%s' "
-msgstr ""
-
-#. TRANSLATORS: Presumably you just want to leave it english.
-#. (Except your listing-grammar differs from english.)
-#. 'value1', 'value2', 'valueN-1' and 'valueN'
-#: plugins/x2go/x2go_plugin.c:1380
-#, c-format
-msgid "%s'%s', "
-msgstr ""
-
-#: plugins/x2go/x2go_plugin.c:1418
-msgid "Invalid validation data in ProtocolSettings array!"
-msgstr ""
-
-#: plugins/x2go/x2go_plugin.c:1430 plugins/x2go/x2go_plugin.c:1492
-msgid "Validation data in ProtocolSettings array is invalid!"
-msgstr ""
-
-#: plugins/x2go/x2go_plugin.c:1457
-#, c-format
-msgid "Allowed values are %s."
-msgstr ""
-
-#: plugins/x2go/x2go_plugin.c:1459
-#, c-format
-msgid "The only allowed value is '%s'."
-msgstr ""
-
-#: plugins/x2go/x2go_plugin.c:1501
-msgid "The lower limit is not a valid integer!"
-msgstr ""
-
-#: plugins/x2go/x2go_plugin.c:1503
-msgid "The lower limit is too high!"
-msgstr ""
-
-#: plugins/x2go/x2go_plugin.c:1505
-msgid "The lower limit is too low!"
-msgstr ""
-
-#: plugins/x2go/x2go_plugin.c:1507 plugins/x2go/x2go_plugin.c:1533
-#: plugins/x2go/x2go_plugin.c:1552
-msgid "Something went wrong."
-msgstr ""
-
-#: plugins/x2go/x2go_plugin.c:1511 plugins/x2go/x2go_plugin.c:1537
-#: plugins/x2go/x2go_plugin.c:1556
-msgid "Please check the RemminaProtocolSetting array for possible errors."
-msgstr ""
-
-#: plugins/x2go/x2go_plugin.c:1520 plugins/x2go/x2go_plugin.c:1524
-#: plugins/x2go/x2go_plugin.c:1528 plugins/x2go/x2go_plugin.c:1532
+#: plugins/x2go/x2go_plugin.c:2243
 #, fuzzy
-msgid "Internal error: "
-msgstr "Gabim transferimi"
+msgid "Could not initialize pthread. Falling back to non-threaded mode…"
+msgstr "E pamundur nisja e pthread. Duke u kthyer në modalitetin pa fije…"
 
-#: plugins/x2go/x2go_plugin.c:1521
+#. TRANSLATORS: Presumably you just want to translate 'and' into
+#. your language.
+#. (Except your listing-grammar differs from english.)
+#. 'value1', 'value2', 'valueN-1' and 'valueN'
+#. TRANSLATORS: Presumably you just want to translate 'and' into
+#. your language.
+#. (Except your listing-grammar differs from english.)
+#. 'value1' and 'value2'
+#: plugins/x2go/x2go_plugin.c:2286 plugins/x2go/x2go_plugin.c:2304
+#, fuzzy, c-format
+msgid "%sand '%s'"
+msgstr "%sdhe '%s'"
+
+#. TRANSLATORS: Presumably you just want to leave it english.
+#. (Except your listing-grammar differs from english.)
+#. 'value1', 'value2', 'valueN-1' and 'valueN'
+#. TRANSLATORS: Presumably you just want to leave it english.
+#. (Except your listing-grammar differs from english.)
+#. 'value1' and 'value2'
+#: plugins/x2go/x2go_plugin.c:2291 plugins/x2go/x2go_plugin.c:2309
+#, fuzzy, c-format
+msgid "%s'%s' "
+msgstr "%s'%s' "
+
+#. TRANSLATORS: Presumably you just want to leave it english.
+#. (Except your listing-grammar differs from english.)
+#. 'value1', 'value2', 'valueN-1' and 'valueN'
+#: plugins/x2go/x2go_plugin.c:2296
+#, fuzzy, c-format
+msgid "%s'%s', "
+msgstr "%s'%s', "
+
+#: plugins/x2go/x2go_plugin.c:2335
+#, fuzzy
+msgid "Invalid validation data in ProtocolSettings array!"
+msgstr "Të dhëna të pavlefshme vleftësimi në vargun ProtocolSettings!"
+
+#: plugins/x2go/x2go_plugin.c:2350 plugins/x2go/x2go_plugin.c:2415
+#, fuzzy
+msgid "Validation data in ProtocolSettings array is invalid!"
+msgstr "Të dhënat e vlefshmërisë në protocolSettings array janë të pavlefshme!"
+
+#: plugins/x2go/x2go_plugin.c:2359
+msgid "Parameters 'key' or 'value' are 'NULL'!"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:2377
+#, fuzzy, c-format
+msgid "Allowed values are %s."
+msgstr "Vlerat e lejuara janë %s."
+
+#: plugins/x2go/x2go_plugin.c:2379
+#, fuzzy, c-format
+msgid "The only allowed value is '%s'."
+msgstr "Vlera e vetme e lejuar është '%s'."
+
+#: plugins/x2go/x2go_plugin.c:2426
+#, fuzzy
+msgid "The lower limit is not a valid integer!"
+msgstr "Limiti i poshtëm nuk është një numër i plotë i vlefshëm!"
+
+#: plugins/x2go/x2go_plugin.c:2431
+#, fuzzy
+msgid "The lower limit is too high!"
+msgstr "Kufiri i poshtëm është shumë i lartë!"
+
+#: plugins/x2go/x2go_plugin.c:2436
+#, fuzzy
+msgid "The lower limit is too low!"
+msgstr "Kufiri më i ulët është shumë i ulët!"
+
+#: plugins/x2go/x2go_plugin.c:2441 plugins/x2go/x2go_plugin.c:2471
+#: plugins/x2go/x2go_plugin.c:2491
+#, fuzzy
+msgid "Something unknown went wrong."
+msgstr "Diçka shkoi keq."
+
+#: plugins/x2go/x2go_plugin.c:2446 plugins/x2go/x2go_plugin.c:2476
+#: plugins/x2go/x2go_plugin.c:2495
+#, fuzzy
+msgid "Please check the RemminaProtocolSetting array for possible errors."
+msgstr "Kontrollo rreshtin RemminaProtocolSetting për gabime të mundshme."
+
+#: plugins/x2go/x2go_plugin.c:2456
+#, fuzzy
 msgid "The upper limit is not a valid integer!"
-msgstr ""
+msgstr "Kufiri i sipërm nuk është një numër i plotë i vlefshëm!"
 
-#: plugins/x2go/x2go_plugin.c:1525
+#: plugins/x2go/x2go_plugin.c:2461
+#, fuzzy
 msgid "The upper limit is too high!"
-msgstr ""
+msgstr "Kufiri i sipërm është shumë i lartë!"
 
-#: plugins/x2go/x2go_plugin.c:1529
+#: plugins/x2go/x2go_plugin.c:2466
+#, fuzzy
 msgid "The upper limit is too low!"
-msgstr ""
+msgstr "Kufiri i sipërm është shumë i ulët!"
 
-#: plugins/x2go/x2go_plugin.c:1547
+#: plugins/x2go/x2go_plugin.c:2486
+#, fuzzy
 msgid "The input is not a valid integer!"
-msgstr ""
+msgstr "Hyrja nuk është një numër i plotë i vlefshëm!"
 
-#: plugins/x2go/x2go_plugin.c:1549 plugins/x2go/x2go_plugin.c:1568
-#, c-format
+#: plugins/x2go/x2go_plugin.c:2488 plugins/x2go/x2go_plugin.c:2507
+#, fuzzy, c-format
 msgid "Input must be a number between %i and %i."
-msgstr ""
+msgstr "Input duhet të jetë një numër midis %i dhe %i."
 
-#: plugins/x2go/x2go_plugin.c:1597
+#: plugins/x2go/x2go_plugin.c:2536
 #, fuzzy
 #| msgid "Start-up program"
 msgid "Startup program"
-msgstr "Nisja"
+msgstr "Programi i nisjes"
 
-#: plugins/x2go/x2go_plugin.c:1599
+#: plugins/x2go/x2go_plugin.c:2538
+#, fuzzy
 msgid "Which command should be executed after creating the X2Go session?"
-msgstr ""
+msgstr "Cila komandë duhet të ekzekutohet pas krijimit të seancës X2Go?"
 
-#: plugins/x2go/x2go_plugin.c:1601
+#: plugins/x2go/x2go_plugin.c:2540
 #, fuzzy
 #| msgid "Keyboard layout"
 msgid "Keyboard Layout (auto)"
-msgstr "Skema e tastierës"
+msgstr "Planimetria e tastierës (auto)"
 
-#: plugins/x2go/x2go_plugin.c:1602
+#: plugins/x2go/x2go_plugin.c:2541
 #, fuzzy
 #| msgid "Keyboard layout"
 msgid "Keyboard type (auto)"
-msgstr "Skema e tastierës"
+msgstr "Lloji i tastierës (auto)"
 
-#: plugins/x2go/x2go_plugin.c:1603
+#: plugins/x2go/x2go_plugin.c:2542
 #, fuzzy
 msgid "Audio support"
-msgstr "Ndize mbështetjen e Java"
+msgstr "Mbështetje audio"
 
-#: plugins/x2go/x2go_plugin.c:1605
+#: plugins/x2go/x2go_plugin.c:2544
+#, fuzzy
 msgid "The sound system of the X2Go server (default: 'pulse')."
-msgstr ""
+msgstr "Sistemi i zërit i serverit X2Go (prezgjedhur: 'pulse')."
 
-#: plugins/x2go/x2go_plugin.c:1608
+#: plugins/x2go/x2go_plugin.c:2547
 #, fuzzy
 #| msgid "Per connection"
 msgid "Clipboard direction"
-msgstr "Ridrejtimi I TCP"
+msgstr "Drejtimi i dërrasës"
 
-#: plugins/x2go/x2go_plugin.c:1610
+#: plugins/x2go/x2go_plugin.c:2549
+#, fuzzy
 msgid "Which direction should clipboard content be copied? (default: 'both')."
 msgstr ""
+"Cilin drejtim duhet kopjuar përmbajtja e dërrasës? (prezgjedhur: 'të dyja')."
 
-#: plugins/x2go/x2go_plugin.c:1614
+#: plugins/x2go/x2go_plugin.c:2553
 #, fuzzy
 #| msgid "Resolution"
 msgid "DPI resolution"
-msgstr "Rezolucioni"
+msgstr "Rezoluta dPI"
 
-#: plugins/x2go/x2go_plugin.c:1615
+#: plugins/x2go/x2go_plugin.c:2554
+#, fuzzy
 msgid ""
 "Launch session with a specific resolution (in dots per inch). Must be "
 "between 20 and 400."
 msgstr ""
+"Lansoni seancën me një rezolucion specifik (në pika për inç). Duhet të jetë "
+"midis 20 dhe 400."
 
-#: plugins/x2go/x2go_plugin.c:1659
+#: plugins/x2go/x2go_plugin.c:2598
+#, fuzzy
 msgid "X2Go plugin loaded."
-msgstr ""
+msgstr "Plugin X2Go i ngarkuar."
 
 #: plugins/x2go/x2go_plugin.h:43
+#, fuzzy
 msgid "X2Go - Launch an X2Go session"
-msgstr ""
+msgstr "X2Go - Nis një seancë X2Go"
 
 #: plugins/gvnc/gvnc_plugin_config.h:40
 #, fuzzy
 msgid "Remmina VNC plugin for GNOME and KVM"
-msgstr "Plugin remmina VNC për GNOME dhe KVM"
+msgstr "Plugin VNC remmina për GNOME dhe KVM"
 
 #: plugins/gvnc/gvnc_plugin.c:477
 #, fuzzy, c-format
@@ -3600,7 +3882,7 @@ msgstr "Fjalëkalimi VNC"
 #: plugins/gvnc/gvnc_plugin.c:850
 #, fuzzy
 msgid "Use JPEG Compression"
-msgstr "Përdor JPEG Compression"
+msgstr "Përdor kompresim JPEG"
 
 #: plugins/gvnc/gvnc_plugin.c:850
 #, fuzzy
@@ -3610,13 +3892,13 @@ msgstr "Kjo mund të mos funksionojë në të gjithë serverat VNC"
 #: plugins/gvnc/gvnc_plugin.c:851
 #, fuzzy
 msgid "Enable GTK-VNC debug"
-msgstr "Aktivo çaktivizimin e debug GTK-VNC"
+msgstr "Aktivo debug GTK-VNC"
 
 #: plugins/gvnc/gvnc_plugin.c:871
 #, fuzzy
 #| msgid "Per connection"
 msgid "Shared connection"
-msgstr "Lidhja e përbashkët"
+msgstr "Lidhje e përbashkët"
 
 #: plugins/gvnc/gvnc_plugin.c:871
 #, fuzzy
@@ -3624,8 +3906,8 @@ msgid ""
 "If the server should try to share the desktop by leaving other clients "
 "connected"
 msgstr ""
-"Nëse serveri duhet të përpiqet të ndajë desktopin duke lënë të lidhur "
-"klientët e tjerë"
+"Nëse serveri duhet të përpiqet të ndajë desktopin duke lënë klientët e tjerë "
+"të lidhur"
 
 #: plugins/gvnc/gvnc_plugin.c:881
 #, fuzzy
@@ -3705,12 +3987,12 @@ msgstr "Ristartoj hostin e largët"
 #: plugins/gvnc/gvnc_plugin.c:897
 #, fuzzy
 msgid "Reset remote host (hard reboot)"
-msgstr "Rivendos hostin e largët (ristart i vështirë)"
+msgstr "Rinis host në distancë (ristarto i vështirë)"
 
 #: plugins/gvnc/gvnc_plugin.c:898
 #, fuzzy
 msgid "Shutdown remote host"
-msgstr "Host i largët i fikjes"
+msgstr "Mbyll pritësin e largët"
 
 #: plugins/telepathy/telepathy_channel_handler.c:237
 #, fuzzy, c-format
@@ -3724,12 +4006,12 @@ msgstr ""
 #: plugins/telepathy/telepathy_channel_handler.c:240
 #, fuzzy
 msgid "Desktop sharing invitation"
-msgstr "Ftesë për ndarjen e desktopit"
+msgstr "Ftesa për ndarjen e desktopit"
 
 #: plugins/telepathy/telepathy_plugin.c:57
 #, fuzzy
 msgid "Telepathy - Desktop Sharing"
-msgstr "Telepati - Ndarjen e Desktopit"
+msgstr "Telepatia - Ndarja e Desktopit"
 
 #: data/ui/remmina_snap_info_dialog.glade:71
 #, fuzzy
@@ -3741,11 +4023,11 @@ msgid ""
 "Some Remmina functions need to be set up to work properly.\n"
 "</span>\n"
 msgstr ""
-"<big> <b> Paketa Remmina Snap</b></big>\n"
+"<big> <b> Paketa Remmina Snap[X28X|X32X]\n"
 "\n"
 "<span>\n"
-"Remmina është duke u konkuruar në sistemin tuaj si një paketë Snap.\n"
-"Disa funksione të Remminas duhen ngritur për të punuar siç duhet.\n"
+"Remmina po punon në sistemin tuaj si një paketë Snap.\n"
+"Disa funksione remmina duhen ngritur për të punuar siç duhet.\n"
 "</span>\n"
 
 #: data/ui/remmina_snap_info_dialog.glade:120
@@ -3756,11 +4038,10 @@ msgid ""
 "the appropriate permissions to Remmina. As an alternative you can enter the "
 "following commands in a terminal window:"
 msgstr ""
-"Për të bërë të mundur aksesin në disa karakteristika të rëndësishme, si "
-"kursimi i fjalëkalimit në keyring-in tuaj dhe ndarjen e printerit RDP, ju "
-"lutemi të hapni qendrën tuaj të softuerit dhe t'i jepni lejet e duhura "
-"Remminas. Si alternativë mund të hyni në komandat e mëposhtme në një dritare "
-"terminali:"
+"Për të mundësuar hyrjen në disa karakteristika të rëndësishme, si kursimi i "
+"fjalëkalimit në ndarjen e printerit tuaj keyring dhe RDP, ju lutemi të hapni "
+"qendrën tuaj të softuerit dhe t'i jepni të drejtat e duhura Remmina. Si "
+"alternativë mund të hyni në komandat e mëposhtme në një dritare terminali:"
 
 #: data/ui/remmina_snap_info_dialog.glade:167
 msgid "<big>Permissions</big>"
@@ -3773,19 +4054,19 @@ msgid ""
 "profiles are saved inside the Snap file system by default. You can change "
 "the location in the Remmina preferences."
 msgstr ""
-"Meqë paketat Snap janë të mbyllur nga pjesa tjetër e sistemit, profilet "
-"Remmina ruhen brenda sistemit të skedarëve Snap nga prezgjedhur. Ju mund të "
-"ndryshoni vendndodhjen në preferencat Remmina."
+"Pasi paketat Snap të drejtuara të izoluara nga pjesa tjetër e sistemit, "
+"profilet Remmina ruhen brenda sistemit të skedarëve Snap nga prezgjedhur. Ju "
+"mund të ndryshoni vendndodhjen në preferencat Remmina."
 
 #: data/ui/remmina_snap_info_dialog.glade:222
 #, fuzzy
 msgid "Change where Remmina profiles are stored"
-msgstr "Ndrysho ku ruhen profilet Remmina"
+msgstr "Ndrysho aty ku janë ruajtur profilet Remmina"
 
 #: data/ui/remmina_snap_info_dialog.glade:261
 #, fuzzy
 msgid "<big>Snap settings</big>"
-msgstr "<big> Rregullimet e snap</big>"
+msgstr "<big> Rregullimet Snap</big>"
 
 #: data/ui/remmina_snap_info_dialog.glade:274
 #, fuzzy
@@ -3810,27 +4091,27 @@ msgstr "Kërko për ndodhinë tjetër"
 #: data/ui/remmina_search_popover.glade:125 data/ui/remmina_search.glade:130
 #, fuzzy
 msgid "Toggle search options"
-msgstr "Opsionet e kërkimit"
+msgstr "Shkëmben opsionet e kërkimit"
 
 #: data/ui/remmina_search_popover.glade:186 data/ui/remmina_search.glade:191
 #, fuzzy
 msgid "_Match case"
-msgstr "Të përputhshme"
+msgstr "_Match rast."
 
 #: data/ui/remmina_search_popover.glade:203 data/ui/remmina_search.glade:208
 #, fuzzy
 msgid "Match _entire word only"
-msgstr "Përputh _entire vetëm fjalën"
+msgstr "Përputh vetëm fjalën _entire"
 
 #: data/ui/remmina_search_popover.glade:220 data/ui/remmina_search.glade:225
 #, fuzzy
 msgid "Match as _regular expression"
-msgstr "Përputhet me _regular shprehje"
+msgstr "Përputh si shprehje _regular"
 
 #: data/ui/remmina_search_popover.glade:237 data/ui/remmina_search.glade:242
 #, fuzzy
 msgid "_Wrap around"
-msgstr "_Wrap përreth."
+msgstr "_Wrap rrotull"
 
 #: data/ui/remmina_about.glade:30 data/ui/remmina_main.glade:395
 #, fuzzy
@@ -3844,15 +4125,14 @@ msgid ""
 "Copyright © 2009–2014 Vic Lee\n"
 "More details in COPYING"
 msgstr ""
-"\n"
 "Copyright © 2014-2021 Antenore Gatta, Giovanni Panozzo.\n"
 "Copyright © 2009-2014 Vic Lee\n"
-"Më shumë hollësi në kopjimin\n"
-"    "
+"Hollësi të tjera në KOPJIMIN"
 
 #: data/ui/remmina_about.glade:38
+#, fuzzy
 msgid "https://www.remmina.org/"
-msgstr ""
+msgstr "https://www.remmina.org/"
 
 #: data/ui/remmina_string_list.glade:14 data/ui/remmina_string_list.glade:158
 msgid "Add"
@@ -3862,7 +4142,7 @@ msgstr "Shto"
 #: data/ui/remmina_key_chooser.glade:14 data/ui/remmina_key_chooser.glade:15
 #, fuzzy
 msgid "_Remove"
-msgstr "_Largo"
+msgstr "_Remove"
 
 #: data/ui/remmina_string_list.glade:26 data/ui/remmina_string_list.glade:116
 #, fuzzy
@@ -3877,7 +4157,8 @@ msgstr "Lëviz poshtë"
 #: data/ui/remmina_mpc.glade:14
 #, fuzzy
 msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
-msgstr "<span weight='bold' size='larger'> Ndryshim shumë fjalëkalimesh</span>"
+msgstr ""
+"<span weight='bold' size='larger'> Ndryshues i Shumë Fjalëkalimeve</span>"
 
 #: data/ui/remmina_mpc.glade:32
 #, fuzzy
@@ -3892,7 +4173,7 @@ msgstr "Kriteret e përzgjedhjes"
 #: data/ui/remmina_mpc.glade:261
 #, fuzzy
 msgid "Confirm password"
-msgstr "Ripohoni fjalëkalimin"
+msgstr "Konfirmo fjalëkalimin"
 
 #: data/ui/remmina_mpc.glade:294
 msgid "Set new password"
@@ -3903,7 +4184,7 @@ msgstr "Ruaj fjalëkalimin"
 #, fuzzy
 msgctxt "Multi password changer"
 msgid "Select"
-msgstr "Përzgjedh"
+msgstr "Zgjidh"
 
 #: data/ui/remmina_mpc.glade:343
 msgctxt "Multi password changer table"
@@ -3940,15 +4221,15 @@ msgid ""
 "release notes\"><i>Visit the website to read the release notes</i></a>.\n"
 "</span>"
 msgstr ""
-"<big> <b> Lajmet fiken</b></big>\n"
+"<big> <b> Lajmet janë fikur</b></big>\n"
 "\n"
 "<span>\n"
-"Të kthesh lajme do të thotë se programi lidhet me një server Remmina për të "
+"Ndezja e lajmeve do të thotë se programi lidhet me një server Remmina për të "
 "shkarkuar shënimet e lëshimit.\n"
 "</span>\n"
 "\n"
 "<span>\n"
-"Kontrolli i versionit mund të aktivizohet vetëm në kohën e kompiluar.\n"
+"Kontrolli i versionit mund të aktivizohet vetëm në kohën e kompiluara.\n"
 "</span>\n"
 "\n"
 "<span>\n"
@@ -3966,8 +4247,8 @@ msgid ""
 "\">anonymous</a></b> statistics. (*)"
 msgstr ""
 "Dërgo <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-"remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
-"\">statistika anonime</a></b>. (*)"
+"remmina__stats_8c.html#details\" title=\"Remmina usage statistics\">anonim</"
+"a></b> statistikat. (*)"
 
 #: data/ui/remmina_news.glade:142 data/ui/remmina_news.glade:195
 #, fuzzy
@@ -4004,8 +4285,8 @@ msgid ""
 "* By enabling statistics and/or news you consent to send and fetch data to/"
 "from remmina.org"
 msgstr ""
-"* Duke bërë të ditur statistikat dhe/ose lajmet që ju miratoni për të "
-"dërguar dhe për të marrë të dhëna në/nga remmina.org"
+"* Duke mundësuar statistika dhe/ose lajme që ju i miratoni për të dërguar "
+"dhe për të marrë të dhëna në/nga remmina.org"
 
 #: data/ui/remmina_news.glade:231
 #, fuzzy
@@ -4024,16 +4305,16 @@ msgid ""
 "</span>\n"
 msgstr ""
 "<span>\n"
-"<b> Ju keni mirënjohjen tonë në zgjedhjen e copylefted software libre, <a "
+"<b> Ju keni mirënjohjen tonë në zgjedhjen e softuerit të lirë copylefted, <a "
 "href=\"https://remmina.org/donations/\" title=\"Where’s the money, Lebowski? "
-"“blblblblblb”\">donacionet gjithashtu na bëjnë të lumtur</a>, dhe të "
-"ndihmojë më tej për të përmirësuar Remmina. </b>\n"
+"“blblblblblb”\">donacionet gjithashtu na bëjnë të lumtur</a>, dhe më tej të "
+"ndihmojë për të përmirësuar Remmina. </b>\n"
 "</span>\n"
 
 #: data/ui/remmina_news.glade:277
 #, fuzzy
 msgid "<big>Contribute</big>"
-msgstr "<big> Kontribuo</big>"
+msgstr "<big> Kontribuu</big>"
 
 #: data/ui/remmina_key_chooser.glade:23
 #, fuzzy
@@ -4048,7 +4329,7 @@ msgstr "Ju lutem shtypni çelësin e ri…"
 #: data/ui/remmina_main.glade:35
 #, fuzzy
 msgid "Hide or show the search bar"
-msgstr "Fshih ose shfaq barin e kërkimit"
+msgstr "Fshih ose shfaq lokalin e kërkimit"
 
 #: data/ui/remmina_main.glade:41
 msgid "Add a new connection profile"
@@ -4057,17 +4338,18 @@ msgstr "Lidhje e Re"
 #: data/ui/remmina_main.glade:47
 #, fuzzy
 msgid "Switch from grouped to list view"
-msgstr "Ndrysho nga i grupuar në pamjen e listës"
+msgstr "Kalo nga paraqitja e grupuar në listë"
 
 #: data/ui/remmina_main.glade:79
 #, fuzzy
 msgid "Select the protocol to use with the quick connect bar."
-msgstr "Zgjidh protokollin për t'u përdorur me barin e lidhur të shpejtë."
+msgstr ""
+"Zgjidh protokollin që duhet përdorur me barin e shpejtë të ndërlidhjes."
 
 #: data/ui/remmina_main.glade:97
 #, fuzzy
 msgid "Search string or server name/IP address for “Quick Connect”"
-msgstr "Kërko emrin e serverit/adresën IP për \"Quick Connect\""
+msgstr "Kërko emrin/IP adresën e serverit për \"Quick Connect\""
 
 #: data/ui/remmina_main.glade:101 data/ui/remmina_main.glade:103
 #, fuzzy
@@ -4087,7 +4369,7 @@ msgstr "Modifiko"
 #: data/ui/remmina_main.glade:217
 #, fuzzy
 msgid "Collapse all"
-msgstr "Fshihe"
+msgstr "Shembi të gjitha."
 
 #: data/ui/remmina_main.glade:227
 #, fuzzy
@@ -4097,12 +4379,12 @@ msgstr "Zgjero të gjitha"
 #: data/ui/remmina_main.glade:265
 #, fuzzy
 msgid "Multi password changer"
-msgstr "Ndryshim shumë fjalëkalimesh"
+msgstr "Ndryshues shumë fjalëkalimesh"
 
 #: data/ui/remmina_main.glade:275
 #, fuzzy
 msgid "Debugging"
-msgstr "Zbulim gabimesh"
+msgstr "Debugging"
 
 #: data/ui/remmina_main.glade:295
 #, fuzzy
@@ -4142,12 +4424,12 @@ msgstr "Komuniteti"
 #: data/ui/remmina_main.glade:492
 #, fuzzy
 msgid "Plugin"
-msgstr "Shtojcë (plugin)"
+msgstr "Plugin"
 
 #: data/ui/remmina_main.glade:506
 #, fuzzy
 msgid "Last used"
-msgstr "Përdorur për herë të fundit"
+msgstr "E fundit e përdorur"
 
 #: data/ui/remmina_main.glade:555
 msgid "New connection profile"
@@ -4156,12 +4438,12 @@ msgstr "Lidhje e Re"
 #: data/ui/remmina_main.glade:567
 #, fuzzy
 msgid "Show search bar"
-msgstr "Shfaq barin e kërkimit"
+msgstr "Shfaq lokalin e kërkimit"
 
 #: data/ui/remmina_main.glade:587
 #, fuzzy
 msgid "Remmina main menu"
-msgstr "Menyja kryesore Remmina"
+msgstr "Menuja kryesore Remmina"
 
 #: data/ui/remmina_main.glade:594
 #, fuzzy
@@ -4171,7 +4453,7 @@ msgstr "Veprime"
 #: data/ui/remmina_main.glade:609
 #, fuzzy
 msgid "Toggle view"
-msgstr "Pamja e toggle"
+msgstr "Shfaqja e përvojes"
 
 #: data/ui/remmina_spinner.glade:54
 #, fuzzy
@@ -4181,12 +4463,12 @@ msgstr "Ju lutem prisni…"
 #: data/ui/remmina_preferences.glade:42
 #, fuzzy
 msgid "Double-click action"
-msgstr "Veprim me klikim të dyfishtë"
+msgstr "Veprim me dy klikim"
 
 #: data/ui/remmina_preferences.glade:58
 #, fuzzy
 msgid "Open connection"
-msgstr "Lidhja e hapur"
+msgstr "Hap lidhjen"
 
 #: data/ui/remmina_preferences.glade:59
 #, fuzzy
@@ -4196,17 +4478,17 @@ msgstr "Ndrysho rregullimet"
 #: data/ui/remmina_preferences.glade:75
 #, fuzzy
 msgid "Scaling quality"
-msgstr "Cilësia e skadimin"
+msgstr "Cilësia e shkallëzimit"
 
 #: data/ui/remmina_preferences.glade:91
 #, fuzzy
 msgid "Nearest"
-msgstr "Më i afërti"
+msgstr "Më e afërta"
 
 #: data/ui/remmina_preferences.glade:92
 #, fuzzy
 msgid "Tiles"
-msgstr "Tjegulla"
+msgstr "Pllaka"
 
 #: data/ui/remmina_preferences.glade:93
 #, fuzzy
@@ -4221,17 +4503,17 @@ msgstr "Hiper"
 #: data/ui/remmina_preferences.glade:110
 #, fuzzy
 msgid "Step size for auto-scroll"
-msgstr "Madhësia e hapit për auto-scroll"
+msgstr "Madhësia e hapit për auto-rrotulla"
 
 #: data/ui/remmina_preferences.glade:139
 #, fuzzy
 msgid "Maximal amount of recent items"
-msgstr "Sasia maksimale e artikujve të kohëve të fundit"
+msgstr "Sasi maksimale e artikujve të kohëve të fundit"
 
 #: data/ui/remmina_preferences.glade:154
 #, fuzzy
 msgid "Screen resolutions"
-msgstr "Zgjidhjet e ekranit"
+msgstr "Rezolucionet e ekranit"
 
 #: data/ui/remmina_preferences.glade:200
 #, fuzzy
@@ -4241,7 +4523,7 @@ msgstr "Kartelë për screenshots"
 #: data/ui/remmina_preferences.glade:212
 #, fuzzy
 msgid "Choose a folder to save screenshots from Remmina in."
-msgstr "Zgjidh një kartelë për të ruajtur screenshots nga Remmina in."
+msgstr "Zgjidh një kartelë për të ruajtur screenshots nga Remmina në."
 
 #: data/ui/remmina_preferences.glade:216 data/ui/remmina_preferences.glade:302
 msgid "Select a folder"
@@ -4265,26 +4547,26 @@ msgid ""
 msgstr ""
 "Emri i profilit %p\n"
 "%h Emri i serverit/IP\n"
-"%Y Viti, %m Muaji, %d Dita, %H Hour, %M Minute, %S Seconds (ora UTC)\n"
+"%Y Viti, Muaji %m, Dita %d, %H Ora, %M Minuta, %S Sekondat (ora UTC)\n"
 
 #: data/ui/remmina_preferences.glade:280
 #, fuzzy
 msgid ""
 "The folder connection profiles are saved in, it defaults to the XDG_USER_DATA"
 msgstr ""
-"Profilet e lidhjes së kartelës janë ruajtur, ajo është e prezgjedhur në "
+"Profili i lidhjes së kartelës është ruajtur, është i prezgjedhur në "
 "XDG_USER_DATA"
 
 #. The folder where profiles are saved
 #: data/ui/remmina_preferences.glade:285
 #, fuzzy
 msgid "Remmina data folder"
-msgstr "Kartela e të dhënave Remmina"
+msgstr "Kartela e të dhënave remmina"
 
 #: data/ui/remmina_preferences.glade:297
 #, fuzzy
 msgid "Choose a folder to save connection profiles from Remmina in."
-msgstr "Zgjidh një kartelë për të ruajtur profilet e lidhjes nga Remmina në."
+msgstr "Zgjidh një kartelë për të ruajtur profilet e lidhjes nga Remmina."
 
 #: data/ui/remmina_preferences.glade:315
 #, fuzzy
@@ -4303,13 +4585,13 @@ msgid ""
 "Set a custom filename for your Remmina connection profiles, using a "
 "formatting string."
 msgstr ""
-"Vendos një emër file të personalizuar për profilet e lidhjes Remmina, duke "
-"përdorur një varg të kurimit."
+"Vendos një emër të personalizuar file për profilet e lidhjes remmina, duke "
+"përdorur një stringë formatimi."
 
 #: data/ui/remmina_preferences.glade:363
 #, fuzzy
 msgid "Template for profile filenames"
-msgstr "Template për filenamet e profilit"
+msgstr "Shabllon për emrat e file të profilit"
 
 #: data/ui/remmina_preferences.glade:375
 #, fuzzy
@@ -4321,7 +4603,7 @@ msgid ""
 "\n"
 "\n"
 msgstr ""
-"%G Emri i Grupit (slash do të konvertohet në - automatikisht)\n"
+"Emri i grupit %G (slash do të konvertohet në - automatikisht)\n"
 "Emri i protokollit %P\n"
 "Emri i lidhjes %N\n"
 "%h Hostname/IP\n"
@@ -4331,12 +4613,12 @@ msgstr ""
 #: data/ui/remmina_preferences.glade:397
 #, fuzzy
 msgid "Only save generated screenshots, don't copy them to clipboard."
-msgstr "Ruaj vetëm screenshots gjeneruar, mos i kopjoni ato në clipboard."
+msgstr "Vetëm ruaj screenshots gjeneruar, mos kopjo ato në clipboard."
 
 #: data/ui/remmina_preferences.glade:402
 #, fuzzy
 msgid "Prevent screenshots from entering clipboard"
-msgstr "Ndalo screenshots nga hyrja në clipboard"
+msgstr "Parandalo hyrjen e screenshots"
 
 #: data/ui/remmina_preferences.glade:529
 #, fuzzy
@@ -4351,7 +4633,7 @@ msgstr "Shfaq gjithmonë skedat"
 #: data/ui/remmina_preferences.glade:570
 #, fuzzy
 msgid "Hide the toolbar shown in the tabbed interface"
-msgstr "Fshih panelin e veglave të shfaqura në ndërfaqen me tabbed"
+msgstr "Fshih panelin e instrumentëve të shfaqur në ndërfaqen me tabbed"
 
 #: data/ui/remmina_preferences.glade:591
 msgid "Default view"
@@ -4370,14 +4652,14 @@ msgstr "Dritare e rrotulluar"
 #: data/ui/remmina_preferences.glade:608
 #, fuzzy
 msgid "Viewport fullscreen"
-msgstr "Shfaq ekran të plotë"
+msgstr "Shfaq me ekran të plotë"
 
 #. How tabs are grouped in the Remmina connection window
 #: data/ui/remmina_preferences.glade:624
 #, fuzzy
 msgctxt "Appearance preferences"
 msgid "Tabs grouping"
-msgstr "Grupim i tabs"
+msgstr "Grupim tabs"
 
 #: data/ui/remmina_preferences.glade:638
 msgid "By group"
@@ -4394,12 +4676,12 @@ msgstr "Lidhje e Re"
 #: data/ui/remmina_preferences.glade:652
 #, fuzzy
 msgid "Fullscreen on the same screen as the connection window"
-msgstr "Ekran i plotë në të njëjtin ekran me dritaren e lidhjes"
+msgstr "Ekran i plotë në të njëjtin ekran si dritarja e lidhjes"
 
 #: data/ui/remmina_preferences.glade:675
 #, fuzzy
 msgid "Peeking"
-msgstr "Peeking"
+msgstr "Duke parë"
 
 #: data/ui/remmina_preferences.glade:676
 #, fuzzy
@@ -4409,17 +4691,17 @@ msgstr "Fshehur"
 #: data/ui/remmina_preferences.glade:693
 #, fuzzy
 msgid "Fullscreen toolbar visibility"
-msgstr "Dukshmëria e panelit të veglave me ekran të plotë"
+msgstr "Dukshmëria e panelit të instrumentëve me ekran të plotë"
 
 #: data/ui/remmina_preferences.glade:703
 #, fuzzy
 msgid "Hide the search bar shown in the main window"
-msgstr "Fshih barin e kërkimit të shfaqur në dritaren kryesore"
+msgstr "Fshih barin e kërkimit të treguar në dritaren kryesore"
 
 #: data/ui/remmina_preferences.glade:719
 #, fuzzy
 msgid "Prefer dark theme"
-msgstr "Prefero temën e errët"
+msgstr "Preferon temën e errët"
 
 #: data/ui/remmina_preferences.glade:723
 #, fuzzy
@@ -4427,19 +4709,19 @@ msgid ""
 "If a GTK theme includes a dark variant, it will be used instead of the "
 "configured theme."
 msgstr ""
-"Nëse një temë GTK përfshin një variant të errët, ajo do të përdoret në vend "
-"të temës së konfiguruar."
+"Nëse një temë GTK përfshin një variant të errët, do të përdoret në vend të "
+"temës së konfiguruar."
 
 #: data/ui/remmina_preferences.glade:743
 #, fuzzy
 msgid "“Grab all keyboard events” status colour"
-msgstr "Ngjyra e statusit \"Kap të gjitha ngjarjet e tastierës\""
+msgstr "\"Kap të gjitha ngjarjet e tastierës\" ngjyra e gjendjes"
 
 #: data/ui/remmina_preferences.glade:754
 #, fuzzy
 msgid "Enable/Disable “Grab all keyboard events” status colour"
 msgstr ""
-"Aktivo/Çaktivizo ngjyrën e statusit \"Kap të gjitha ngjarjet e tastierës\""
+"Aktivo/çaktivizo ngjyrën e gjëndjes \"Kap të gjitha ngjarjet e tastierës\""
 
 #: data/ui/remmina_preferences.glade:770
 #, fuzzy
@@ -4448,9 +4730,9 @@ msgid ""
 "It changes the background colour of connection names in the Remmina "
 "connection toolbar (when in fullscreen)."
 msgstr ""
-"Heksadecimal- ose emra ngjyrash (e kuqe, #ff0000).\n"
-"Ndryshon ngjyrën e sfondit të emrave të lidhjes në panelin e veglave të "
-"lidhjes Remmina (kur në fullscreen)."
+"Emrat hexadecimal ose të ngjyrave (e kuqe, #ff0000).\n"
+"Ndryshon ngjyrën e sfondit të emrave të lidhjes në panelin e instrumentëve "
+"të lidhjes Remmina (kur është në ekran të plotë)."
 
 #: data/ui/remmina_preferences.glade:827
 #, fuzzy
@@ -4465,7 +4747,7 @@ msgstr "Shfaq lidhjen e re në krye të menusë"
 #: data/ui/remmina_preferences.glade:872
 #, fuzzy
 msgid "Hide total count shown in the group menu"
-msgstr "Fshih numërimin total të shfaqur në menunë e grupit"
+msgstr "Fshih numërimin total të treguar në menunë e grupit"
 
 #: data/ui/remmina_preferences.glade:890
 #, fuzzy
@@ -4475,17 +4757,17 @@ msgstr "Asnjë ikonë tabakaje"
 #: data/ui/remmina_preferences.glade:909
 #, fuzzy
 msgid "Start in tray upon user login"
-msgstr "Fillo në tabaka me hyrjen e përdoruesit"
+msgstr "Nis në tabaka me hyrjen e përdoruesit"
 
 #: data/ui/remmina_preferences.glade:940
 #, fuzzy
 msgid "Applet"
-msgstr "Mollët"
+msgstr "Applet"
 
 #: data/ui/remmina_preferences.glade:972
 #, fuzzy
 msgid "Host key"
-msgstr "Kyçi i hostit"
+msgstr "Kyçi i host"
 
 #: data/ui/remmina_preferences.glade:1004
 msgid "Show/hide fullscreen"
@@ -4494,12 +4776,12 @@ msgstr "Aktivizon/çaktivizon modalitetin me ekran të plotë"
 #: data/ui/remmina_preferences.glade:1035
 #, fuzzy
 msgid "Auto-fit window"
-msgstr "Dritare auto-fit"
+msgstr "Dritare auto-përshtatës"
 
 #: data/ui/remmina_preferences.glade:1112
 #, fuzzy
 msgid "Apply/remove scaling"
-msgstr "Apliko/hiq shkallën"
+msgstr "Apliko/hiq shkallët"
 
 #: data/ui/remmina_preferences.glade:1143
 #, fuzzy
@@ -4509,23 +4791,23 @@ msgstr "Kap tastierën"
 #: data/ui/remmina_preferences.glade:1236
 #, fuzzy
 msgid "Show/hide toolbar"
-msgstr "Shfaq/fshih panelin e veglave"
+msgstr "Shfaq/fshih panelin e instrumentëve"
 
 #: data/ui/remmina_preferences.glade:1299
 #: data/ui/remmina_preferences.glade:1309
 #, fuzzy
 msgid "View-only mode"
-msgstr "Modaliteti i vetëm i pamjes"
+msgstr "Modaliteti vetëm për pamjen"
 
 #: data/ui/remmina_preferences.glade:1372
 #, fuzzy
 msgid "Keyboard"
-msgstr "Tastierë"
+msgstr "Tastiera"
 
 #: data/ui/remmina_preferences.glade:1403
 #, fuzzy
 msgid "Local SSH port"
-msgstr "Porti lokal I SSH"
+msgstr "Porti lokal i SSH"
 
 #: data/ui/remmina_preferences.glade:1427
 #, fuzzy
@@ -4545,35 +4827,34 @@ msgstr "Kushte ose paralajmërime të rralla"
 #: data/ui/remmina_preferences.glade:1453
 #, fuzzy
 msgid "API-accessible entrypoints"
-msgstr "Hyrjet e arritshme nga API"
+msgstr "Pozicioni i hyrjes i arritshëm nga API"
 
 #: data/ui/remmina_preferences.glade:1454
 #, fuzzy
 msgid "Lower level protocol info, packet level"
-msgstr "Niveli më i ulët i informacioneve të protokollit, niveli i paketës"
+msgstr "Niveli niveli"
 
 #: data/ui/remmina_preferences.glade:1455
 #, fuzzy
 msgid "Function entering and leaving"
-msgstr "Funksion hyrës dhe ikja"
+msgstr "Funksion duke hyrë dhe duke u larguar"
 
 #: data/ui/remmina_preferences.glade:1472
 #, fuzzy
 msgid "SSH log level"
-msgstr "Niveli i log-ut SSH"
+msgstr "Niveli i log sSH"
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
 #: data/ui/remmina_preferences.glade:1543
 #, fuzzy
 msgid "Seconds of connection idleness before TCP keepalive probes are sent."
-msgstr ""
-"Sekondat e pavleshmërisë së lidhjes para se TCP të dërgohen sondat keepalive."
+msgstr "Sekondat e idleness lidhje para TCP keepalive probes janë dërguar."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
 #: data/ui/remmina_preferences.glade:1559
 #, fuzzy
 msgid "Seconds between each keepalive probe."
-msgstr "Sekondat midis çdo sonde të mbajtur."
+msgstr "Sekonda në mes të çdo sonde të mbajtur."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
 #: data/ui/remmina_preferences.glade:1575
@@ -4581,8 +4862,7 @@ msgstr "Sekondat midis çdo sonde të mbajtur."
 msgid ""
 "Number of keepalive probes sent via TCP connection before it is dropped."
 msgstr ""
-"Numri i sondave të ruajtura të dërguara nëpërmjet lidhjes TCP para se të "
-"binte."
+"Numri i sondave keepalive të dërguara nëpërmjet lidhjes TCP para se të binte."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
 #: data/ui/remmina_preferences.glade:1591
@@ -4591,30 +4871,30 @@ msgid ""
 "Amount of milliseconds to attempt acknowledging data before closing the "
 "corresponding TCP connection forcibly."
 msgstr ""
-"Sasia e milisekondave për të kërkuar pranimin e të dhënave para mbylljes së "
+"Sasia e milisekondave për të tentuar pranimin e të dhënave para mbylljes së "
 "lidhjes përkatëse TCP me forcë."
 
 #: data/ui/remmina_preferences.glade:1617
 #, fuzzy
 msgid "SSH options"
-msgstr "Opsionet SSH"
+msgstr "Opsionet e SSH"
 
 #: data/ui/remmina_preferences.glade:1645
 #: data/ui/remmina_preferences.glade:1714
 #: data/ui/remmina_preferences.glade:1785
 #, fuzzy
 msgid "Use secret key authentication for some widgets"
-msgstr "Përdor autentifikimin e çelësit sekret për disa widget"
+msgstr "Përdor autentifikimin sekret të çelësit për disa widgets"
 
 #: data/ui/remmina_preferences.glade:1649
 #, fuzzy
 msgid "Use master password"
-msgstr "Përdor fjalëkalimin mjeshtër"
+msgstr "Përdor fjalëkalimin master"
 
 #: data/ui/remmina_preferences.glade:1662
 #, fuzzy
 msgid "Automatic lock interval"
-msgstr "Intervali automatik i kyçjes"
+msgstr "Intervali automatik i kyçit"
 
 #: data/ui/remmina_preferences.glade:1688
 msgid "Repeat the password"
@@ -4631,7 +4911,7 @@ msgstr "Ta Pranoj Çertifikatën"
 #: data/ui/remmina_preferences.glade:1746
 #, fuzzy
 msgid "Master password validity in seconds"
-msgstr "Vlefshmëria e fjalëkalimit master në sekonda"
+msgstr "Master vlefshmërinë e fjalëkalimit në sekonda"
 
 #: data/ui/remmina_preferences.glade:1810
 msgid "Security"
@@ -4645,7 +4925,7 @@ msgstr "Gërma terminale"
 #: data/ui/remmina_preferences.glade:1854
 #, fuzzy
 msgid "Scrollback lines"
-msgstr "Rreshtat e rrotullave"
+msgstr "Rreshta rrotullimesh"
 
 #: data/ui/remmina_preferences.glade:1902
 #, fuzzy
@@ -4678,8 +4958,8 @@ msgid ""
 "Selecting “SGR 1” also switches to the bright counterparts of the first 8 "
 "palette colours (in addition to making text bold)."
 msgstr ""
-"Përzgjedhja e \"SGR 1\" gjithashtu ndryshon në homologët e ndritshëm të 8 "
-"ngjyrave të para të paletës (përveç bërjes së tekstit të guximshëm)."
+"Zgjedhja \"SGR 1\" gjithashtu kalon në homologët e shndritshëm të 8 ngjyrave "
+"të para të paletës (përveç bërjes së tekstit të guximshëm)."
 
 #: data/ui/remmina_preferences.glade:2004
 #, fuzzy
@@ -4696,14 +4976,14 @@ msgid ""
 "Choose a colour scheme file. Usually available in /usr/share/remmina/theme. "
 "https://github.com/mbadolato/iTerm2-Color-Schemes has more details."
 msgstr ""
-"Zgjidh një dosje të skemës së ngjyrave. Zakonisht në dispozicion në / usr / "
-"share / remmina / temë. https://github.com/mbadolato/iTerm2-Color-Schemes ka "
-"më shumë detaje."
+"Zgjidh një skedar të skemës së ngjyrave. Zakonisht është në dispozicion në /"
+"usr/share/remmina/theme. https://github.com/mbadolato/iTerm2-Color-Schemes "
+"ka më shumë detaje."
 
 #: data/ui/remmina_preferences.glade:2033
 #, fuzzy
 msgid "Pick a terminal colouring file"
-msgstr "Zgjidh një file të ngjyrosjes së terminalit"
+msgstr "Zgjidh një file ngjyrosje terminali"
 
 #: data/ui/remmina_preferences.glade:2048
 #, fuzzy
@@ -4738,12 +5018,12 @@ msgstr "Zgjidh një ngjyrë blu të ndezur"
 #: data/ui/remmina_preferences.glade:2132
 #, fuzzy
 msgid "Pick a light magenta colour"
-msgstr "Zgjidh një ngjyrë të lehtë magenta"
+msgstr "Zgjidh një ngjyrë magenta të lehtë"
 
 #: data/ui/remmina_preferences.glade:2146
 #, fuzzy
 msgid "Pick a light cyan colour"
-msgstr "Zgjidh një ngjyrë të lehtë cyan"
+msgstr "Zgjidh një ngjyrë të lehtë ciani"
 
 #: data/ui/remmina_preferences.glade:2160
 #, fuzzy
@@ -4763,7 +5043,7 @@ msgstr "Zgjidh një ngjyrë të kuqe"
 #: data/ui/remmina_preferences.glade:2202
 #, fuzzy
 msgid "Pick a green colour"
-msgstr "Zgjidh një ngjyrë jeshile"
+msgstr "Zgjidh një ngjyrë të gjelbër"
 
 #: data/ui/remmina_preferences.glade:2216
 #, fuzzy
@@ -4783,7 +5063,7 @@ msgstr "Zgjidh një ngjyrë magenta"
 #: data/ui/remmina_preferences.glade:2258
 #, fuzzy
 msgid "Pick a cyan colour"
-msgstr "Zgjidh një ngjyrë cyan"
+msgstr "Zgjidh një ngjyrë ciani"
 
 #: data/ui/remmina_preferences.glade:2272
 #, fuzzy
@@ -4811,7 +5091,7 @@ msgstr "Ngjyra e sfondit"
 #: data/ui/remmina_preferences.glade:2372
 #, fuzzy
 msgid "Foreground colour"
-msgstr "Ngjyra në plan të parë"
+msgstr "Ngjyra e parë"
 
 #: data/ui/remmina_preferences.glade:2385
 #, fuzzy
@@ -4821,7 +5101,7 @@ msgstr "Rrit dhe zvogëlo madhësinë e gërmave"
 #: data/ui/remmina_preferences.glade:2415
 #, fuzzy
 msgid "Search text shortcut"
-msgstr "Kërko shkurtesë teksti"
+msgstr "Kërko shkurtuesin e tekstit"
 
 #: data/ui/remmina_preferences.glade:2446
 #: data/ui/remmina_preferences.glade:2461
@@ -4833,13 +5113,13 @@ msgstr "256 ngjyra"
 #, fuzzy
 #| msgid "High colour (16 bpp)"
 msgid "Highlight colour"
-msgstr "Ngjyra e theksuar"
+msgstr "Nxirr në pah ngjyrën"
 
 #: data/ui/remmina_preferences.glade:2488
 #: data/ui/remmina_preferences.glade:2532
 #, fuzzy
 msgid "Highlight foreground colour"
-msgstr "Ngjyra e parë e theksuar"
+msgstr "Nxirr në pah ngjyrën e parë"
 
 #: data/ui/remmina_preferences.glade:2501
 #: data/ui/remmina_preferences.glade:2548
@@ -4850,12 +5130,12 @@ msgstr "Ngjyra e parë e kursorit"
 #: data/ui/remmina_preferences.glade:2604
 #, fuzzy
 msgid "Terminal"
-msgstr "Terminal"
+msgstr "Terminali"
 
 #: data/ui/remmina_preferences.glade:2618
 #, fuzzy
 msgid "Remmina Preferences"
-msgstr "Preferencat e remminave"
+msgstr "Preferimet e ribërjes"
 
 #: data/ui/remmina_unlock.glade:60
 msgid "Unlock"
@@ -4869,7 +5149,17 @@ msgstr "Zhblloko Remmina"
 #: data/ui/remmina_unlock.glade:128
 #, fuzzy
 msgid "Master password"
-msgstr "Fjalëkalimi mjeshtër"
+msgstr "Fjalëkalimi master"
+
+#, fuzzy, c-format
+#~ msgid "Could not retrieve PyHoca-CLI's command-line features! Exit code: %i"
+#~ msgstr ""
+#~ "E pamundur marrja e karakteristikave të komandës së PyHoca-CLI! Kodi i "
+#~ "daljes: %i"
+
+#, fuzzy, c-format
+#~ msgid "Error: '%s'"
+#~ msgstr "Gabim: '%s'"
 
 #, fuzzy
 #~ msgid "Website"
@@ -4908,12 +5198,6 @@ msgstr "Fjalëkalimi mjeshtër"
 
 #~ msgid "Terminate"
 #~ msgstr "Përfundo"
-
-#~ msgid "Display"
-#~ msgstr "Ekran"
-
-#~ msgid "Status"
-#~ msgstr "Gjendja"
 
 #~ msgid "Fingerprints and certificates"
 #~ msgstr "Ta Pranoj Çertifikatën"

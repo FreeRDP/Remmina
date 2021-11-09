@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-11-08 14:57+0000\n"
-"PO-Revision-Date: 2021-11-08 08:52+0000\n"
-"Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
+"POT-Creation-Date: 2021-11-09 14:11+0000\n"
+"PO-Revision-Date: 2021-11-09 21:58+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/remmina/remmina/"
 "he/>\n"
 "Language: he\n"
@@ -26,7 +26,7 @@ msgstr ""
 #: src/remmina_protocol_widget.c:1676 src/remmina_protocol_widget.c:1695
 #: src/remmina_file_editor.c:1101 src/remmina_file_editor.c:1222
 #: src/remmina_ssh_plugin.c:1360 plugins/rdp/rdp_plugin.c:2720
-#: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:1596
+#: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:2535
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1675
 #: data/ui/remmina_unlock.glade:116
 msgid "Password"
@@ -73,7 +73,8 @@ msgstr "להתחבר דרך SSH ממסוף חדש"
 #: src/remmina_file_editor.c:1216 src/remmina_ssh_plugin.c:1470
 #: plugins/rdp/rdp_plugin.c:2719 plugins/vnc/vnc_plugin.c:1976
 #: plugins/vnc/vnc_plugin.c:1988 plugins/www/www_plugin.c:894
-#: plugins/x2go/x2go_plugin.c:1595 data/ui/remmina_mpc.glade:144
+#: plugins/x2go/x2go_plugin.c:512 plugins/x2go/x2go_plugin.c:2534
+#: data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr "שם משתמש"
 
@@ -1428,8 +1429,8 @@ msgstr ""
 "‚value’ או ‚gfe’ הם NULL!"
 
 #. TRANSLATORS: Meta-error. Shouldn't be visible.
-#: src/remmina_file_editor.c:1445 plugins/x2go/x2go_plugin.c:856
-#: plugins/x2go/x2go_plugin.c:1440
+#: src/remmina_file_editor.c:1445 plugins/x2go/x2go_plugin.c:1746
+#: plugins/x2go/x2go_plugin.c:2360
 msgid "Internal error."
 msgstr "שגיאה פנימית."
 
@@ -2872,23 +2873,137 @@ msgstr "שלום עולם!"
 msgid "Secured password storage in the GNOME keyring"
 msgstr "אחסון ססמאות מאובטח בצרור המפתחות של GNOME"
 
-#: plugins/x2go/x2go_plugin.c:275
+#: plugins/x2go/x2go_plugin.c:67
+#, c-format, fuzzy
+msgid ""
+"The command-line feature '%s' is not available! Attempting to start PyHoca-"
+"CLI without using this feature…"
+msgstr ""
+"תכונת שורת הפקודה '%s' אינה זמינה! מנסה להפעיל PyHoca-CLI מבלי להשתמש בתכונה "
+"זו…"
+
+#: plugins/x2go/x2go_plugin.c:277
 msgid "Broken `DialogData`! Aborting…"
 msgstr "‚DialogData’ פגום! הפעולה מבוטלת…"
 
-#: plugins/x2go/x2go_plugin.c:279
+#: plugins/x2go/x2go_plugin.c:281
 msgid "Can't retrieve `DialogData`! Aborting…"
 msgstr "אי אפשר למשוך את ‚DialogData’! הפעולה מבוטלת…"
 
-#: plugins/x2go/x2go_plugin.c:505
+#: plugins/x2go/x2go_plugin.c:438
+msgid "Couldn't retrieve valid `DialogData` or `sessions_list`! Aborting…"
+msgstr "אי אפשר למשוך את ‚DialogData’ או את ‚sessions_list’! הפעולה מבוטלת…"
+
+#: plugins/x2go/x2go_plugin.c:445
+msgid "_New"
+msgstr "_חדש"
+
+#: plugins/x2go/x2go_plugin.c:447
+msgid "_Select session"
+msgstr "לבחור ה_פעלה"
+
+#: plugins/x2go/x2go_plugin.c:506
+msgid "Display"
+msgstr "תצוגה"
+
+#: plugins/x2go/x2go_plugin.c:507
+msgid "Status"
+msgstr "מצב"
+
+#: plugins/x2go/x2go_plugin.c:508
+msgid "Session ID"
+msgstr "מזהה הפעלה"
+
+#: plugins/x2go/x2go_plugin.c:509
+msgid "Create date"
+msgstr "מועד יצירה"
+
+#: plugins/x2go/x2go_plugin.c:510
+msgid "Suspended since"
+msgstr "מושהה מאז"
+
+#: plugins/x2go/x2go_plugin.c:511
+msgid "Agent PID"
+msgstr "מזהה תהליך סוכן"
+
+#: plugins/x2go/x2go_plugin.c:513
+msgid "Hostname"
+msgstr "שם מארח"
+
+#: plugins/x2go/x2go_plugin.c:514
+msgid "Cookie"
+msgstr "עוגיה"
+
+#: plugins/x2go/x2go_plugin.c:515
+msgid "Graphic port"
+msgstr "פתחה גרפית"
+
+#: plugins/x2go/x2go_plugin.c:516
+msgid "SND port"
+msgstr "פתחת SND"
+
+#: plugins/x2go/x2go_plugin.c:517
+msgid "SSHFS port"
+msgstr "פתחת SSHFS"
+
+#: plugins/x2go/x2go_plugin.c:519 plugins/x2go/x2go_plugin.c:585
+#: plugins/x2go/x2go_plugin.c:599 plugins/x2go/x2go_plugin.c:614
+#: plugins/x2go/x2go_plugin.c:626 plugins/x2go/x2go_plugin.c:936
+#: plugins/x2go/x2go_plugin.c:947 plugins/x2go/x2go_plugin.c:955
+#: plugins/x2go/x2go_plugin.c:1060 plugins/x2go/x2go_plugin.c:1094
+#: plugins/x2go/x2go_plugin.c:1200 plugins/x2go/x2go_plugin.c:2212
+#: plugins/x2go/x2go_plugin.c:2425 plugins/x2go/x2go_plugin.c:2430
+#: plugins/x2go/x2go_plugin.c:2435 plugins/x2go/x2go_plugin.c:2440
+#: plugins/x2go/x2go_plugin.c:2455 plugins/x2go/x2go_plugin.c:2460
+#: plugins/x2go/x2go_plugin.c:2465 plugins/x2go/x2go_plugin.c:2470
+#, c-format
+msgid "Internal error: %s"
+msgstr "שגיאה פנימית: %s"
+
+#: plugins/x2go/x2go_plugin.c:520
+msgid "Unknown property"
+msgstr "מאפיין לא ידוע"
+
+#: plugins/x2go/x2go_plugin.c:586
+#, fuzzy
+msgid "Couldn't find child GtkTreeView of session chooser dialog."
+msgstr ""
+"לא היתה אפשרות למצוא את הילד GtkTreeView של תיבת הדו-שיח של בוחר ההפעלה."
+
+#: plugins/x2go/x2go_plugin.c:600
+#, fuzzy
+msgid "only one session should be able to be selected."
+msgstr "יש לבחור הפעלה אחת בלבד."
+
+#: plugins/x2go/x2go_plugin.c:615
+#, fuzzy
+msgid "Failed to fill 'GtkTreeIter'."
+msgstr "מילוי 'GtkTreeIter' נכשל."
+
+#: plugins/x2go/x2go_plugin.c:627
+#, fuzzy
+msgid "Couldn't get session ID out of selected row."
+msgstr "לא היתה אפשרות להוציא מזהה הפעלה מהשורה שנבחרה."
+
+#: plugins/x2go/x2go_plugin.c:660
+#, fuzzy
+msgid "Couldn't get session ID from session chooser dialog."
+msgstr "לא היתה באפשרות לקבל מזהה הפעלה מדף הדו-שיח של בוחר ההפעלה."
+
+#: plugins/x2go/x2go_plugin.c:667
+#, c-format, fuzzy
+msgid "Resuming session: '%s'"
+msgstr "ההפעלה ‚%s’ נמשכת…"
+
+#: plugins/x2go/x2go_plugin.c:892
 msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
 msgstr "PyHoca-CLI יצא במפתיע. החיבור הזה ייסגר כעת."
 
-#: plugins/x2go/x2go_plugin.c:514
+#: plugins/x2go/x2go_plugin.c:901
 msgid "An error occured."
 msgstr "אירעה שגיאה."
 
-#: plugins/x2go/x2go_plugin.c:515
+#: plugins/x2go/x2go_plugin.c:902
 msgid ""
 "The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
 "Please check your profile settings and PyHoca-CLI's output for possible "
@@ -2898,29 +3013,64 @@ msgstr ""
 "נא לבדוק את הגדרות הפרופיל שלך ואת הפלט של PyHoca-CLI לאיתור שגיאות אפשריות "
 "ולוודא שהשרת המרוחק נגיש."
 
-#: plugins/x2go/x2go_plugin.c:561
+#: plugins/x2go/x2go_plugin.c:937
+#, fuzzy
+msgid "parameter 'argv' is 'NULL'."
+msgstr "הפרמטר 'argv' הוא 'NULL'."
+
+#: plugins/x2go/x2go_plugin.c:948
+#, fuzzy
+msgid "parameter 'error' is 'NULL'."
+msgstr "הפרמטר 'error' הוא 'NULL'."
+
+#: plugins/x2go/x2go_plugin.c:956
+#, fuzzy
+msgid "parameter 'env' is either invalid or uninitialized."
+msgstr "הפרמטר 'env' אינו חוקי או שאינו מאותח."
+
+#: plugins/x2go/x2go_plugin.c:972
 msgid "Started PyHoca-CLI with the following arguments:"
 msgstr "PyHoca-CLI הופעל עם הארגומנטים הבאים:"
 
-#: plugins/x2go/x2go_plugin.c:580
-#, c-format
-msgid "Could not retrieve PyHoca-CLI's command-line features! Exit code: %i"
-msgstr "לא ניתן למשוך את יכולות שורת הפקודה של PyHoca-CLI! קוד היציאה: %i"
+#: plugins/x2go/x2go_plugin.c:988
+msgid "Started PyHoca-CLI with the following environment variables:"
+msgstr "PyHoca-CLI הופעל עם משתני הסביבה הבאים:"
 
-#: plugins/x2go/x2go_plugin.c:585
-#, c-format
-msgid "Error: '%s'"
-msgstr "שגיאה: ‚%s’"
+#: plugins/x2go/x2go_plugin.c:997
+#, fuzzy
+msgid ""
+"The necessary PyHoca-CLI process has encountered a internet connection "
+"problem."
+msgstr "תהליך PyHoca-CLI הדרוש נתקל בבעיית חיבור לאינטרנט."
 
-#: plugins/x2go/x2go_plugin.c:609
+#: plugins/x2go/x2go_plugin.c:1007
+msgid "An unknown error occured while trying to start PyHoca-CLI."
+msgstr "אירעה שגיאה בלתי ידועה בניסיון הפעלת PyHoca-CLI."
+
+#: plugins/x2go/x2go_plugin.c:1017
+#, c-format, fuzzy
+msgid ""
+"An unknown error occured while trying to start PyHoca-CLI. Exit code: %i"
+msgstr "אירעה שגיאה לא ידועה בעת ניסיון להפעיל את PyHoca-CLI. קוד יציאה: %i"
+
+#: plugins/x2go/x2go_plugin.c:1022
+#, c-format, fuzzy
+msgid ""
+"An unknown error occured while trying to start PyHoca-CLI. Exit code: %i. "
+"Error: '%s'"
+msgstr ""
+"אירעה שגיאה לא ידועה בעת ניסיון להפעיל את PyHoca-CLI. קוד יציאה: %i. שגיאה: "
+"'%s'"
+
+#: plugins/x2go/x2go_plugin.c:1047
 msgid "Can't save empty username!"
 msgstr "לא ניתן לשמור שם משתמש ריק!"
 
-#: plugins/x2go/x2go_plugin.c:621
-msgid "Internal error: Could not save new credentials."
-msgstr "שגיאה פנימית: לא ניתן לשמור פרטי גישה חדשים."
+#: plugins/x2go/x2go_plugin.c:1061
+msgid "Could not save new credentials."
+msgstr "לא ניתן לשמור פרטי גישה חדשים."
 
-#: plugins/x2go/x2go_plugin.c:623
+#: plugins/x2go/x2go_plugin.c:1064
 msgid ""
 "An error occured while trying to save new credentials: 's_password' or "
 "'s_username' strings were not set."
@@ -2928,32 +3078,94 @@ msgstr ""
 "אירעה שגיאה בעת ניסיון לשמור אישורים חדשים: המחרוזות ‚s_password’ או "
 "‚s_username’ לא הוגדרו."
 
-#: plugins/x2go/x2go_plugin.c:659
+#: plugins/x2go/x2go_plugin.c:1095
+#, fuzzy
+msgid "Parameter 'default_username' is uninitialized."
+msgstr "הפרמטר 'default_username' אינו מאותחל."
+
+#: plugins/x2go/x2go_plugin.c:1124
 msgid "Enter X2Go credentials"
 msgstr "נא להקליד פרטי גישה ל־X2Go"
 
-#: plugins/x2go/x2go_plugin.c:818
+#: plugins/x2go/x2go_plugin.c:1201
+msgid "'Invalid connection data.'"
+msgstr "‚נתוני חיבור שגויים.’"
+
+#: plugins/x2go/x2go_plugin.c:1323
+#, fuzzy
+msgid ""
+"Couldn't parse the output of PyHoca-CLI's --list-sessions option. Creating a "
+"new session now."
+msgstr ""
+"לא היתה אפשרות לנתח את הפלט של האפשרות -list-sessions של PyHoca-CLI. יוצר "
+"הפעלה חדשה כעת."
+
+#: plugins/x2go/x2go_plugin.c:1362
+#, fuzzy
+msgid "Couldn't allocate enough memory!"
+msgstr "לא היתה אפשרות להקצות מספיק זיכרון!"
+
+#: plugins/x2go/x2go_plugin.c:1372
+#, c-format, fuzzy
+msgid "Found already existing X2Go session with ID: '%s'"
+msgstr "נמצא כבר קיימת X2Go הפעלה עם מזהה: '%s'"
+
+#: plugins/x2go/x2go_plugin.c:1444
+#, fuzzy
+msgid ""
+"Could not find any sessions on remote machine. Creating a new session now."
+msgstr "לא היתה אפשרות למצוא הפעלות במחשב מרוחק. יוצר הפעלה חדשה כעת."
+
+#: plugins/x2go/x2go_plugin.c:1485
+msgid "Choose a session to resume:"
+msgstr "נא לבחור הפעלה להמשך:"
+
+#: plugins/x2go/x2go_plugin.c:1502
+msgid "Waiting for user to select a session…"
+msgstr "בהמתנה לבחירת הפעלה על ידי המשתמש…"
+
+#: plugins/x2go/x2go_plugin.c:1510
+#, fuzzy
+msgid "No session was selected. Creating a new one."
+msgstr "לא נבחרה הפעלה. יצירת אחד חדש."
+
+#: plugins/x2go/x2go_plugin.c:1558
+#, c-format, fuzzy
+msgid "A non-critical error happened: %s"
+msgstr "אירעה שגיאה לא קריטית: %s"
+
+#: plugins/x2go/x2go_plugin.c:1563
+#, c-format, fuzzy
+msgid "User chose to resume session with ID: '%s'"
+msgstr "המשתמש בחר לחדש את ההפעלה עם מזהה: '%s'"
+
+#: plugins/x2go/x2go_plugin.c:1583
+#, c-format
+msgid "Resuming session '%s'…"
+msgstr "ההפעלה ‚%s’ נמשכת…"
+
+#: plugins/x2go/x2go_plugin.c:1706
 msgid "DPI setting is out of bounds. Please adjust it in profile settings."
 msgstr "הגדרת נק׳ לאינטש היא מחוץ לתחום. נא להתאים אותה בהגדרות הפרופיל."
 
-#: plugins/x2go/x2go_plugin.c:838
+#: plugins/x2go/x2go_plugin.c:1728
 msgid "Started pyhoca-cli with following arguments:"
 msgstr "pyhoca-cli הופעל עם הארגומנטים הבאים:"
 
-#: plugins/x2go/x2go_plugin.c:858
+#: plugins/x2go/x2go_plugin.c:1748
 msgid "An error occured while starting an X2Go session…"
 msgstr "אירעה שגיאה בפתיחת הפעלת X2Go…"
 
-#: plugins/x2go/x2go_plugin.c:867
+#: plugins/x2go/x2go_plugin.c:1757
 msgid "Could not start X2Go session."
 msgstr "אי אפשר להתחיל הפעלת X2Go."
 
-#: plugins/x2go/x2go_plugin.c:868
+#: plugins/x2go/x2go_plugin.c:1758
 #, c-format
 msgid "Could not start PyHoca-CLI (%i): '%s'"
 msgstr "לא ניתן להפעיל את PyHoca-CLI (%i):‏ ‚%s’"
 
-#: plugins/x2go/x2go_plugin.c:945
+#: plugins/x2go/x2go_plugin.c:1857
 msgid ""
 "Couldn't get PyHoca-CLI's command-line features. This indicates it is either "
 "too old, or not installed. An old limited set of features will be used for "
@@ -2962,7 +3174,7 @@ msgstr ""
 "לא ניתן לקבל את יכולות שורת הפקודה של PyHoca-CLI. זה מעיד על כך שאו שהיא "
 "ישנה מדי או שאינה מותקנת. ייעשה שימוש בסדרה מצומצמת של יכולות לבינתיים."
 
-#: plugins/x2go/x2go_plugin.c:956
+#: plugins/x2go/x2go_plugin.c:1866
 msgid ""
 "Could not parse PyHoca-CLI's command-line features. Using a limited feature-"
 "set for now."
@@ -2970,41 +3182,41 @@ msgstr ""
 "לא ניתן לפענח את יכולות שורת הפקודה של PyHoca-CLI. נכון לעכשיו ייעשה שימוש "
 "במגוון מצומצם של יכולות."
 
-#: plugins/x2go/x2go_plugin.c:962
+#: plugins/x2go/x2go_plugin.c:1872
 msgid "Retrieved the following PyHoca-CLI command-line features:"
 msgstr "יכולות שורת הפקודה הבאות של PyHoca-CLI התקבלו:"
 
-#: plugins/x2go/x2go_plugin.c:967
+#: plugins/x2go/x2go_plugin.c:1880
 #, c-format
 msgid "Available feature[%i]: '%s'"
 msgstr "יכולת זמינה[%i]: ‚%s’"
 
-#: plugins/x2go/x2go_plugin.c:1072
+#: plugins/x2go/x2go_plugin.c:1985
 msgid "Could not open X11 DISPLAY."
 msgstr "לא ניתן לפתוח X11 DISPLAY (תצוגה)."
 
-#: plugins/x2go/x2go_plugin.c:1112
+#: plugins/x2go/x2go_plugin.c:2025
 msgid "Waiting for window of X2Go Agent to appear…"
 msgstr "בהמתנה להופעת חלון סוכן X2Go…"
 
-#: plugins/x2go/x2go_plugin.c:1138
+#: plugins/x2go/x2go_plugin.c:2051
 msgid "Waiting for PyHoca-CLI to show the session's window…"
 msgstr "בהמתנה עד ש־PyHoca-CLI יציג את חלון ההפעלה…"
 
-#: plugins/x2go/x2go_plugin.c:1189
+#: plugins/x2go/x2go_plugin.c:2102
 msgid "No X2Go session window appeared. Something went wrong…"
 msgstr "לא הופיע חלון הפעלה של X2Go. משהו השתבש…"
 
-#: plugins/x2go/x2go_plugin.c:1298
-msgid "Internal error: RemminaProtocolWidget* gp is NULL!"
-msgstr "שגיאה פנימית: RemminaProtocolWidget* gp הוא NULL!"
+#: plugins/x2go/x2go_plugin.c:2213
+msgid "RemminaProtocolWidget* gp is 'NULL'!"
+msgstr "RemminaProtocolWidget* gp הוא ‚NULL’!"
 
-#: plugins/x2go/x2go_plugin.c:1319
+#: plugins/x2go/x2go_plugin.c:2234
 #, c-format
 msgid "The %s protocol is unavailable because GtkSocket only works under X.org"
 msgstr "הפרוטוקול %s אינו זמין כיוון ש־GtkSocket עובד רק תחת X.org"
 
-#: plugins/x2go/x2go_plugin.c:1327
+#: plugins/x2go/x2go_plugin.c:2243
 msgid "Could not initialize pthread. Falling back to non-threaded mode…"
 msgstr "לא היתה אפשרות לאתחל את pthread. תתבצע נסיגה למצב לא משורשר…"
 
@@ -3016,7 +3228,7 @@ msgstr "לא היתה אפשרות לאתחל את pthread. תתבצע נסיג�
 #. your language.
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
-#: plugins/x2go/x2go_plugin.c:1370 plugins/x2go/x2go_plugin.c:1388
+#: plugins/x2go/x2go_plugin.c:2286 plugins/x2go/x2go_plugin.c:2304
 #, c-format
 msgid "%sand '%s'"
 msgstr "%sו־‚%s’"
@@ -3027,7 +3239,7 @@ msgstr "%sו־‚%s’"
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
-#: plugins/x2go/x2go_plugin.c:1375 plugins/x2go/x2go_plugin.c:1393
+#: plugins/x2go/x2go_plugin.c:2291 plugins/x2go/x2go_plugin.c:2309
 #, c-format
 msgid "%s'%s' "
 msgstr "%s‚%s’ "
@@ -3035,121 +3247,120 @@ msgstr "%s‚%s’ "
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
 #. 'value1', 'value2', 'valueN-1' and 'valueN'
-#: plugins/x2go/x2go_plugin.c:1380
+#: plugins/x2go/x2go_plugin.c:2296
 #, c-format
 msgid "%s'%s', "
 msgstr "%s‚%s’, "
 
-#: plugins/x2go/x2go_plugin.c:1418
+#: plugins/x2go/x2go_plugin.c:2335
 msgid "Invalid validation data in ProtocolSettings array!"
 msgstr "נתוני האימות במערך ProtocolSettings שגויים!"
 
-#: plugins/x2go/x2go_plugin.c:1430 plugins/x2go/x2go_plugin.c:1492
+#: plugins/x2go/x2go_plugin.c:2350 plugins/x2go/x2go_plugin.c:2415
 msgid "Validation data in ProtocolSettings array is invalid!"
 msgstr "נתוני האימות במערך ProtocolSettings שגויים!"
 
-#: plugins/x2go/x2go_plugin.c:1457
+#: plugins/x2go/x2go_plugin.c:2359
+msgid "Parameters 'key' or 'value' are 'NULL'!"
+msgstr "המשתנים ‚מפתח’ ו־‚ערך’ הם ‚NULL’!"
+
+#: plugins/x2go/x2go_plugin.c:2377
 #, c-format
 msgid "Allowed values are %s."
 msgstr "הערכים המורשים הם %s."
 
-#: plugins/x2go/x2go_plugin.c:1459
+#: plugins/x2go/x2go_plugin.c:2379
 #, c-format
 msgid "The only allowed value is '%s'."
 msgstr "הערך היחידי שמורשה הוא ‚%s’."
 
-#: plugins/x2go/x2go_plugin.c:1501
+#: plugins/x2go/x2go_plugin.c:2426
 msgid "The lower limit is not a valid integer!"
 msgstr "הגבול התחתון אינו מספר שלם תקף!"
 
-#: plugins/x2go/x2go_plugin.c:1503
+#: plugins/x2go/x2go_plugin.c:2431
 msgid "The lower limit is too high!"
 msgstr "הגבול התחתון גבוה מדי!"
 
-#: plugins/x2go/x2go_plugin.c:1505
+#: plugins/x2go/x2go_plugin.c:2436
 msgid "The lower limit is too low!"
 msgstr "הגבול התחתון נמוך מדי!"
 
-#: plugins/x2go/x2go_plugin.c:1507 plugins/x2go/x2go_plugin.c:1533
-#: plugins/x2go/x2go_plugin.c:1552
-msgid "Something went wrong."
-msgstr "משהו השתבש."
+#: plugins/x2go/x2go_plugin.c:2441 plugins/x2go/x2go_plugin.c:2471
+#: plugins/x2go/x2go_plugin.c:2491
+msgid "Something unknown went wrong."
+msgstr "משהו לא ידוע השתבש."
 
-#: plugins/x2go/x2go_plugin.c:1511 plugins/x2go/x2go_plugin.c:1537
-#: plugins/x2go/x2go_plugin.c:1556
+#: plugins/x2go/x2go_plugin.c:2446 plugins/x2go/x2go_plugin.c:2476
+#: plugins/x2go/x2go_plugin.c:2495
 msgid "Please check the RemminaProtocolSetting array for possible errors."
 msgstr "נא לבדוק שאין שגיאות במערך RemminaProtocolSetting."
 
-#: plugins/x2go/x2go_plugin.c:1520 plugins/x2go/x2go_plugin.c:1524
-#: plugins/x2go/x2go_plugin.c:1528 plugins/x2go/x2go_plugin.c:1532
-msgid "Internal error: "
-msgstr "שגיאה פנימית: "
-
-#: plugins/x2go/x2go_plugin.c:1521
+#: plugins/x2go/x2go_plugin.c:2456
 msgid "The upper limit is not a valid integer!"
 msgstr "הגבול העליון אינו מספר שלם תקף!"
 
-#: plugins/x2go/x2go_plugin.c:1525
+#: plugins/x2go/x2go_plugin.c:2461
 msgid "The upper limit is too high!"
 msgstr "הגבול העליון גבוה מדי!"
 
-#: plugins/x2go/x2go_plugin.c:1529
+#: plugins/x2go/x2go_plugin.c:2466
 msgid "The upper limit is too low!"
 msgstr "הגבול העליון נמוך מדי!"
 
-#: plugins/x2go/x2go_plugin.c:1547
+#: plugins/x2go/x2go_plugin.c:2486
 msgid "The input is not a valid integer!"
 msgstr "הקלט אינו מספר שלם תקף!"
 
-#: plugins/x2go/x2go_plugin.c:1549 plugins/x2go/x2go_plugin.c:1568
+#: plugins/x2go/x2go_plugin.c:2488 plugins/x2go/x2go_plugin.c:2507
 #, c-format
 msgid "Input must be a number between %i and %i."
 msgstr "הקלט חייב להיות מספר בין %i ל־%i."
 
-#: plugins/x2go/x2go_plugin.c:1597
+#: plugins/x2go/x2go_plugin.c:2536
 msgid "Startup program"
 msgstr "תכנית להתחלה"
 
-#: plugins/x2go/x2go_plugin.c:1599
+#: plugins/x2go/x2go_plugin.c:2538
 msgid "Which command should be executed after creating the X2Go session?"
 msgstr "איזו פקודה לבצע לאחר הקמת הפעלת X2Go?"
 
-#: plugins/x2go/x2go_plugin.c:1601
+#: plugins/x2go/x2go_plugin.c:2540
 msgid "Keyboard Layout (auto)"
 msgstr "פריסת מקלדת (אוטומטית)"
 
-#: plugins/x2go/x2go_plugin.c:1602
+#: plugins/x2go/x2go_plugin.c:2541
 msgid "Keyboard type (auto)"
 msgstr "סוג מקלדת (אוטומטי)"
 
-#: plugins/x2go/x2go_plugin.c:1603
+#: plugins/x2go/x2go_plugin.c:2542
 msgid "Audio support"
 msgstr "תמיכה בשמע"
 
-#: plugins/x2go/x2go_plugin.c:1605
+#: plugins/x2go/x2go_plugin.c:2544
 msgid "The sound system of the X2Go server (default: 'pulse')."
 msgstr "מערכת השמע של שרת ה־X2Go (בררת מחדל: ‚pulse’)."
 
-#: plugins/x2go/x2go_plugin.c:1608
+#: plugins/x2go/x2go_plugin.c:2547
 msgid "Clipboard direction"
 msgstr "כיוון לוח גזירים"
 
-#: plugins/x2go/x2go_plugin.c:1610
+#: plugins/x2go/x2go_plugin.c:2549
 msgid "Which direction should clipboard content be copied? (default: 'both')."
 msgstr "לאיזה כיוון להעתיק תוכן לוח גזירים? (בררת מחדל: ‚שניהם’)."
 
-#: plugins/x2go/x2go_plugin.c:1614
+#: plugins/x2go/x2go_plugin.c:2553
 msgid "DPI resolution"
 msgstr "רזולוציה בנקודות לאינטש"
 
-#: plugins/x2go/x2go_plugin.c:1615
+#: plugins/x2go/x2go_plugin.c:2554
 msgid ""
 "Launch session with a specific resolution (in dots per inch). Must be "
 "between 20 and 400."
 msgstr ""
 "הקמת הפעלה עם רזולוציה מסוימת (בנקודות לאינטש). חייב להיות בין 20 ל־400."
 
-#: plugins/x2go/x2go_plugin.c:1659
+#: plugins/x2go/x2go_plugin.c:2598
 msgid "X2Go plugin loaded."
 msgstr "תוסף X2Go נטען."
 
@@ -4256,6 +4467,14 @@ msgstr "שחרור Remmina"
 msgid "Master password"
 msgstr "ססמה ראשית"
 
+#, c-format
+#~ msgid "Could not retrieve PyHoca-CLI's command-line features! Exit code: %i"
+#~ msgstr "לא ניתן למשוך את יכולות שורת הפקודה של PyHoca-CLI! קוד היציאה: %i"
+
+#, c-format
+#~ msgid "Error: '%s'"
+#~ msgstr "שגיאה: ‚%s’"
+
 #~ msgid "Website"
 #~ msgstr "אתר"
 
@@ -4339,12 +4558,6 @@ msgstr "ססמה ראשית"
 
 #~ msgid "Terminate"
 #~ msgstr "הפסקה"
-
-#~ msgid "Display"
-#~ msgstr "תצוגה"
-
-#~ msgid "Status"
-#~ msgstr "מצב"
 
 #~ msgid "Password for private SSH key"
 #~ msgstr "ססמה למפתח SSH פרטי"

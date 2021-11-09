@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-11-08 14:57+0000\n"
-"PO-Revision-Date: 2021-07-16 08:59+0000\n"
+"POT-Creation-Date: 2021-11-09 14:11+0000\n"
+"PO-Revision-Date: 2021-11-09 14:11+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Burmese <https://hosted.weblate.org/projects/remmina/remmina/"
 "my/>\n"
@@ -18,14 +18,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.7.2-dev\n"
+"X-Generator: Weblate 4.9-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:354
 #: src/remmina_protocol_widget.c:1676 src/remmina_protocol_widget.c:1695
 #: src/remmina_file_editor.c:1101 src/remmina_file_editor.c:1222
 #: src/remmina_ssh_plugin.c:1360 plugins/rdp/rdp_plugin.c:2720
-#: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:1596
+#: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:2535
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1675
 #: data/ui/remmina_unlock.glade:116
 msgid "Password"
@@ -80,7 +80,8 @@ msgstr "terminal အသစ်မှ SSH မှတစ်ဆင့် ဆက်သ
 #: src/remmina_file_editor.c:1216 src/remmina_ssh_plugin.c:1470
 #: plugins/rdp/rdp_plugin.c:2719 plugins/vnc/vnc_plugin.c:1976
 #: plugins/vnc/vnc_plugin.c:1988 plugins/www/www_plugin.c:894
-#: plugins/x2go/x2go_plugin.c:1595 data/ui/remmina_mpc.glade:144
+#: plugins/x2go/x2go_plugin.c:512 plugins/x2go/x2go_plugin.c:2534
+#: data/ui/remmina_mpc.glade:144
 #, fuzzy
 msgid "Username"
 msgstr "အသုံးပြုသူအမည်"
@@ -130,7 +131,7 @@ msgstr "ကိရိယာ"
 #: src/remmina_plugin_manager.c:73
 #, fuzzy
 msgid "Preference"
-msgstr "ကြိုက်နှစ်သက်မှု"
+msgstr "အပြင်အဆင်"
 
 #: src/remmina_plugin_manager.c:73
 #, fuzzy
@@ -140,7 +141,7 @@ msgstr "လျှို့ဝှက်ချက်"
 #: src/remmina_plugin_manager.c:461 data/ui/remmina_main.glade:305
 #, fuzzy
 msgid "Plugins"
-msgstr "Plugins"
+msgstr "ပလက်ဂျင်း"
 
 #: src/remmina_plugin_manager.c:461 src/remmina_message_panel.c:452
 #: src/remmina_message_panel.c:621 src/remmina_file_editor.c:242
@@ -157,17 +158,17 @@ msgstr "အမည်"
 #: src/remmina_plugin_manager.c:485
 #, fuzzy
 msgid "Type"
-msgstr "Type"
+msgstr "အမျိုးအစား"
 
 #: src/remmina_plugin_manager.c:491
 #, fuzzy
 msgid "Description"
-msgstr "ေဖာ္ျပခ်က္"
+msgstr "ရှင်းလင်းဖော်ပြချက်"
 
 #: src/remmina_plugin_manager.c:497
 #, fuzzy
 msgid "Version"
-msgstr "ဗားရွင္း"
+msgstr "ဗားရှင်း"
 
 #: src/remmina_chat_window.c:178
 #, c-format
@@ -276,7 +277,7 @@ msgstr ""
 #: data/ui/remmina_unlock.glade:46
 #, fuzzy
 msgid "Cancel"
-msgstr "ပယ်ဖြတ်ခြင်း ။"
+msgstr "ပယ်ဖျက်"
 
 #: src/remmina_message_panel.c:199 data/ui/remmina_snap_info_dialog.glade:28
 #: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
@@ -289,18 +290,18 @@ msgstr "ပိတ်ပါ"
 #: src/remmina_message_panel.c:260
 #, fuzzy
 msgid "Yes"
-msgstr "Yes"
+msgstr "ဟုတ်"
 
 #: src/remmina_message_panel.c:267
 #, fuzzy
 msgid "No"
-msgstr "No"
+msgstr "မဟုတ်"
 
 #: src/remmina_message_panel.c:391 plugins/rdp/rdp_plugin.c:2721
 #: data/ui/remmina_mpc.glade:172
 #, fuzzy
 msgid "Domain"
-msgstr "Domain"
+msgstr "ဒိုမိန်း"
 
 #: src/remmina_message_panel.c:420
 #, fuzzy
@@ -345,7 +346,7 @@ msgstr "Certicate Certicate key"
 #, fuzzy, c-format
 msgid ""
 "Are you sure you want to close %i active connections in the current window?"
-msgstr "လက်ရှိ ပြတင်းပေါက်မှာ တက်ကြွတဲ့ဆက်သွယ်မှုတွေကို ပိတ်ချင်တယ်ဆိုတာ သေချာလား။"
+msgstr "လက်ရှိ ပြတင်းပေါက်မှာ %i တက်ကြွတဲ့ ချိတ်ဆက်မှုတွေကို ပိတ်ချင်တယ်ဆိုတာ သေချာလား။"
 
 #: src/rcw.c:1399
 #, fuzzy
@@ -455,7 +456,7 @@ msgstr "Tools"
 #: data/ui/remmina_preferences.glade:1277
 #, fuzzy
 msgid "Screenshot"
-msgstr "ဖန်သားပြင်ပုံရိပ်"
+msgstr "ဇာတ်ညွှန်း"
 
 #: src/rcw.c:2515 data/ui/remmina_preferences.glade:1174
 #, fuzzy
@@ -500,7 +501,7 @@ msgstr "စကားဝှက်ပြောင်းလဲသူမှာ လ�
 #, fuzzy, c-format
 msgid "%d password changed."
 msgid_plural "%d passwords changed."
-msgstr[0] "[၀] စကားဝှက် ပြောင်းလဲသွားတယ်။"
+msgstr[0] "%d စကားဝှက်ပြောင်းလဲခဲ့သည်။"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:86
@@ -569,7 +570,7 @@ msgstr "တာဘင်ဒက်စ်"
 #: src/remmina.c:106
 #, fuzzy
 msgid "Quit"
-msgstr "ထြက္မည္"
+msgstr "နှုတ်ထွက်ပါ"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:108
@@ -703,17 +704,17 @@ msgstr ""
 #: src/remmina_public.c:345
 #, fuzzy, c-format
 msgid "Address is too long for UNIX socket_path: %s"
-msgstr "socket_path [ ၄၂]"
+msgstr "[ X42X] သည် ယူနစ်စ် အတွက် အလွန် ရှည်လျား socket_path : %s"
 
 #: src/remmina_public.c:355
 #, fuzzy, c-format
 msgid "Creating UNIX socket failed: %s"
-msgstr "UNIX ဆိုကက်ဖန်တီးခြင်း မအောင်မြင်ခဲ့ပါ ။ [၂၉]"
+msgstr "UNIX ဆိုကက်ဖန်တီးခြင်း မအောင်မြင်ခဲ့ပါ ။ %s"
 
 #: src/remmina_public.c:361
 #, fuzzy, c-format
 msgid "Connecting to UNIX socket failed: %s"
-msgstr "UNIX ဆိုကက်နှင့်ဆက်သွယ်ခြင်း ပျက်ကွက်ခဲ့သည်။ [၃၄]"
+msgstr "UNIX ဆိုကက်နှင့်ဆက်သွယ်ခြင်း ပျက်ကွက်ခဲ့သည်။ %s"
 
 #: src/remmina_public.c:631
 #, fuzzy
@@ -755,7 +756,7 @@ msgstr "ဖိုင်တွဲ"
 #: src/remmina_ftp_client.c:649 src/remmina_ftp_client.c:763
 #, fuzzy
 msgid "Download"
-msgstr "ဒေါင်းလုဒ်"
+msgstr "ဒေါင်းမည်"
 
 #: src/remmina_ftp_client.c:656 src/remmina_ftp_client.c:770
 #, fuzzy
@@ -770,7 +771,7 @@ msgstr "_Delete"
 #: src/remmina_ftp_client.c:748
 #, fuzzy
 msgid "Home"
-msgstr "ပင်မစာမျက်နှာ"
+msgstr "အိမ်အိမ်"
 
 #: src/remmina_ftp_client.c:749
 #, fuzzy
@@ -780,7 +781,7 @@ msgstr "အိမ်ဖိုင်တွဲကို သွားပါ"
 #: src/remmina_ftp_client.c:753
 #, fuzzy
 msgid "Up"
-msgstr "အထက်"
+msgstr "အထက်သို့"
 
 #: src/remmina_ftp_client.c:754
 #, fuzzy
@@ -811,7 +812,7 @@ msgstr "ဆာဗာသို့ ကူးယူပါ"
 #: src/remmina_ftp_client.c:775 data/ui/remmina_main.glade:197
 #, fuzzy
 msgid "Delete"
-msgstr "ပယ်ဖျက်"
+msgstr "ဖျက်ပါ..."
 
 #: src/remmina_ftp_client.c:776
 #, fuzzy
@@ -826,18 +827,18 @@ msgstr "ဖိုင်လန်နာမ်"
 #: src/remmina_ftp_client.c:918 src/remmina_ftp_client.c:1003
 #, fuzzy
 msgid "Size"
-msgstr "Size"
+msgstr "အရွယ်အစား"
 
 #: src/remmina_ftp_client.c:926
 #, fuzzy
 msgid "User"
-msgstr "User"
+msgstr "အသုံးပြုသူ"
 
 #: src/remmina_ftp_client.c:932 src/remmina_file_editor.c:1933
 #: data/ui/remmina_mpc.glade:115 data/ui/remmina_main.glade:464
 #, fuzzy
 msgid "Group"
-msgstr "Group"
+msgstr "အုပ်စု"
 
 #: src/remmina_ftp_client.c:938
 #, fuzzy
@@ -852,7 +853,7 @@ msgstr "အဝေး"
 #: src/remmina_ftp_client.c:997 plugins/rdp/rdp_plugin.c:2607
 #, fuzzy
 msgid "Local"
-msgstr "Local"
+msgstr "ဒေသခံ"
 
 #: src/remmina_ftp_client.c:1011
 #, fuzzy
@@ -874,29 +875,29 @@ msgstr "ပြင်ပအမိန့်များကို ဆောင်�
 #: src/remmina_protocol_widget.c:327
 #, fuzzy, c-format
 msgid "Connecting to “%s”…"
-msgstr "\"[%s\" ကို ဆက်သွယ်ခြင်း…"
+msgstr "\"[%s\" သို့ ဆက်သွယ်ခြင်း…"
 
 #. TRANSLATORS: “%s” is a placeholder for an hostname or an IP address.
 #: src/remmina_protocol_widget.c:915 src/remmina_protocol_widget.c:1100
 #, fuzzy, c-format
 msgid "Connecting to “%s” via SSH…"
-msgstr "SSH မှတစ်ဆင့် \"[%s\" သို့ ဆက်သွယ်ခြင်း…"
+msgstr "SSH မှတစ်ဆင့် \"[%s သို့ ဆက်သွယ်ခြင်း…"
 
 #. TRANSLATORS: “%i” is a placeholder for a TCP port number.
 #: src/remmina_protocol_widget.c:1164
 #, fuzzy, c-format
 msgid "Awaiting incoming SSH connection on port %i…"
-msgstr "ဆိပ်ကမ်းတွင် ဝင်လာမည့် SSH ဆက်သွယ်မှုကို စောင့်မျှော်နေ [၄၁]"
+msgstr "ဆိပ်ကမ်းတွင် ဝင်ရောက်လာမည့် SSH ဆက်သွယ်မှုကို စောင့်မျှော်နေ %i…"
 
 #: src/remmina_protocol_widget.c:1217
 #, fuzzy, c-format
 msgid "The “%s” command is not available on the SSH server."
-msgstr "\"[၅]\" ညွှန်ကြားချက်ကို SSH ဆာဗာမှာ မရရှိနိုင်ပါဘူး။"
+msgstr "\"%s\" ညွှန်ကြားချက်ကို SSH ဆာဗာမှာ မရရှိနိုင်ပါဘူး။"
 
 #: src/remmina_protocol_widget.c:1222
 #, fuzzy, c-format
 msgid "Could not run the “%s” command on the SSH server (status = %i)."
-msgstr "SSH ဆာဗာ (အခြေအနေ = [၅၉] အမိန့်ကို မလုပ်ဆောင်နိုင်ဘူး။"
+msgstr "SSH ဆာဗာ (အခြေအနေ = %i အမိန့်ကို မလုပ်ဆောင်နိုင်ပါ။"
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_protocol_widget.c:1230
@@ -908,7 +909,7 @@ msgstr "ညွှန်ကြားချက်ကို မလုပ်ဆေ�
 #: src/remmina_protocol_widget.c:1300
 #, fuzzy, c-format
 msgid "Connecting to %s via SSH…"
-msgstr "SSH မှတစ်ဆင့် [၁၄] သို့ ဆက်သွယ်ခြင်း…"
+msgstr "SSH မှတစ်ဆင့် %s နှင့် ဆက်သွယ်ခြင်း…"
 
 #: src/remmina_protocol_widget.c:1694
 #, fuzzy
@@ -924,7 +925,7 @@ msgstr "လက်ဗွေရာကို အလိုအလျောက်လ�
 #: src/remmina_protocol_widget.c:1757
 #, fuzzy
 msgid "Certificate details:"
-msgstr "Certificate details"
+msgstr "လက်မှတ် အသေးစိတ် အချက်အလက်များ -"
 
 #. TRANSLATORS: An SSL certificate subject is usually the remote server the user connect to.
 #: src/remmina_protocol_widget.c:1759 src/remmina_protocol_widget.c:1791
@@ -942,7 +943,7 @@ msgstr "ထုတ်ဝေသူ -"
 #: src/remmina_protocol_widget.c:1763
 #, fuzzy
 msgid "Fingerprint:"
-msgstr "Fingerprint"
+msgstr "လက်ချောင်း -"
 
 #. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
 #: src/remmina_protocol_widget.c:1765
@@ -978,7 +979,7 @@ msgstr "အပြောင်းအလဲလက်မှတ်ကို လက�
 #: src/remmina_protocol_widget.c:1942
 #, fuzzy, c-format
 msgid "Listening on port %i for an incoming %s connection…"
-msgstr "[ ၃၇] ဆက် သွယ် မှု အတွက် ဆိပ်ကမ်း [၁၈] ကို နားထောင် ခြင်း…"
+msgstr "ဝင်ရောက်လာတဲ့ %s ဆက်သွယ်မှုအတွက် ဆိပ်ကမ်း %i ကို နားထောင်ခြင်း...…"
 
 #: src/remmina_protocol_widget.c:1967
 #, fuzzy
@@ -994,12 +995,12 @@ msgstr "ဆာဗာ"
 #: src/remmina_protocol_widget.c:2047
 #, fuzzy, c-format
 msgid "Install the %s protocol plugin first."
-msgstr "%s protocol plugin ကို ပထမဆုံး သွင်းပါ။"
+msgstr "%s Protocol plugin ကို ပထမဆုံး သွင်းပါ။"
 
 #: src/remmina_ssh.c:236
 #, fuzzy, c-format
 msgid "Could not authenticate with TOTP/OTP/2FA. %s"
-msgstr "TOTP/OTP/2FA နှင့် ခွင့်ပြုချက်မရနိုင်ပါ ။[၄၂]"
+msgstr "TOTP/OTP/2FA. [X442X] နှင့် ခွင့်ပြုချက်မရနိုင်ပါ။ %s"
 
 #: src/remmina_ssh.c:295 src/remmina_ssh.c:676
 #, fuzzy, c-format
@@ -1188,7 +1189,7 @@ msgstr "ဆာဗာက မတုံ့ပြန်ခဲ့ဘူး။"
 #: src/remmina_ssh.c:1916
 #, fuzzy, c-format
 msgid "Cannot connect to local port %i."
-msgstr "ဒေသခံဆိပ်ကမ်းသို့ မဆက်သွယ်နိုင် [၂၉]"
+msgstr "ဒေသခံဆိပ်ကမ်း %i ကို ဆက်သွယ်လို့မရဘူး။"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1965
@@ -1278,22 +1279,23 @@ msgstr "PTY ကိရိယာကို မဖန်တီးနိုင်ဘ�
 #: src/remmina_exec.c:475
 #, fuzzy, c-format
 msgid "Plugin %s is not registered."
-msgstr "Plugin %s မှာ မှတ်ပုံတင်မထားဘူး။"
+msgstr "Plugin %s ကို မှတ်ပုံတင်မထားပါ။"
 
 #: src/remmina_main.c:669
+#, fuzzy
 msgid "The latest successful connection attempt, or a pre-computed date"
-msgstr ""
+msgstr "နောက်ဆုံး အောင်မြင်တဲ့ ဆက်သွယ်ရေးကြိုးပမ်းမှု ဒါမှမဟုတ် ကြိုတင်တွက်ချက်ထားတဲ့ ရက်စွဲ"
 
 #: src/remmina_main.c:671
 #, fuzzy, c-format
 msgid "Total %i item."
 msgid_plural "Total %i items."
-msgstr[0] "စုစုပေါင်း [၆] ပစ္စည်းစုပေါင်း။"
+msgstr[0] "စုစုပေါင်း %i ပစ္စည်းစုစုပေါင်း။"
 
 #: src/remmina_main.c:865
 #, fuzzy, c-format
 msgid "Are you sure you want to delete “%s”?"
-msgstr "%s ကို ပယ်ဖျက်ဖို့ သင် သေချာသလား။"
+msgstr "\"%s ကို ဖျက်ချင်တယ်ဆိုတာ သေချာလား။"
 
 #: src/remmina_main.c:989
 #, fuzzy, c-format
@@ -1307,7 +1309,7 @@ msgstr ""
 #: src/remmina_main.c:1015 data/ui/remmina_main.glade:285
 #, fuzzy
 msgid "Import"
-msgstr "တင်သွင်းပါ"
+msgstr "တင်သွင်းခြင်း"
 
 #: src/remmina_main.c:1038 src/remmina_file_editor.c:1791
 #, fuzzy
@@ -1333,50 +1335,50 @@ msgstr "ရမ်မီနာ Kiossk"
 #: src/remmina_sftp_client.c:173
 #, fuzzy, c-format
 msgid "Could not create the folder “%s”."
-msgstr "ဖိုင်တွဲကို \"[၂၉]\" ကို မဖန်တီးနိုင်ဘူး။"
+msgstr "ဖိုင်တွဲ \"%s ကို မဖန်တီးနိုင်ပါဘူး။"
 
 #. TRANSLATORS: The placeholder %s is a file path
 #: src/remmina_sftp_client.c:181 src/remmina_sftp_client.c:202
 #, fuzzy, c-format
 msgid "Could not create the file “%s”."
-msgstr "\"[%s] ဖိုင်ကို မဖန်တီးနိုင်ဘူး။"
+msgstr "\"%s ဖိုင်ကို မဖန်တီးနိုင်ပါဘူး။"
 
 #. TRANSLATORS: The placeholders %s are a file path, and an error message.
 #: src/remmina_sftp_client.c:220
 #, fuzzy, c-format
 msgid "Could not open the file “%s” on the server. %s"
-msgstr "\"[%s ဖိုင်ကို ဆာဗာမှာ မဖွင့်နိုင်ဘူး။ %s"
+msgstr "\"%s ဖိုင်ကို ဆာဗာမှာ မဖွင့်နိုင်ဘူး။ %s"
 
 #: src/remmina_sftp_client.c:242
 #, fuzzy, c-format
 msgid "Could not save the file “%s”."
-msgstr "\"[%s] ဖိုင်ကို မသိမ်းဆည်းနိုင်ဘူး။"
+msgstr "\"%s ဖိုင်ကို မသိမ်းဆည်းနိုင်ပါဘူး။"
 
 #: src/remmina_sftp_client.c:281 src/remmina_sftp_client.c:698
 #: src/remmina_sftp_client.c:761
 #, fuzzy, c-format
 msgid "Could not open the folder “%s”. %s"
-msgstr "ဖိုင်တွဲ \"[[၂၇]\" ကို မဖွင့်နိုင်ဘူး။ %s"
+msgstr "ဖိုင်တွဲကို \"%s မဖွင့်နိုင်ဘူး။ %s"
 
 #: src/remmina_sftp_client.c:385
 #, fuzzy, c-format
 msgid "Could not create the folder “%s” on the server. %s"
-msgstr "ဆာဗာမှာ ဖိုင်တွဲ \"%s ကို မဖန်တီးနိုင်ဘူး။ %s"
+msgstr "ဆာဗာပေါ်တွင် ဖိုင်တွဲ \"%s ကို မဖန်တီးနိုင်ပါ။ %s"
 
 #: src/remmina_sftp_client.c:413 src/remmina_sftp_client.c:435
 #, fuzzy, c-format
 msgid "Could not create the file “%s” on the server. %s"
-msgstr "ဆာဗာပေါ်မှာ \"%s ဖိုင်ကို မဖန်တီးနိုင်ဘူး။ %s"
+msgstr "ဆာဗာပေါ်တွင် \"%s ဖိုင်ကို မဖန်တီးနိုင်ပါ။ %s"
 
 #: src/remmina_sftp_client.c:456
 #, fuzzy, c-format
 msgid "Could not open the file “%s”."
-msgstr "\"[%s] ဖိုင်ကို မဖွင့်နိုင်ဘူး။"
+msgstr "\"%s ဖိုင်ကို မဖွင့်နိုင်ပါဘူး။"
 
 #: src/remmina_sftp_client.c:476
 #, fuzzy, c-format
 msgid "Could not write to the file “%s” on the server. %s"
-msgstr "ဆာဗာပေါ်က \"%s ဖိုင်ကို စာရေးလို့မရဘူး။ %s"
+msgstr "ဆာဗာပေါ်က \"%s ဖိုင်ထဲသို့ စာရေးလို့မရဘူး။ %s"
 
 #: src/remmina_sftp_client.c:716
 #, fuzzy, c-format
@@ -1391,7 +1393,7 @@ msgstr "ဖိုင် လွှဲပြောင်းမှုကို ဖ�
 #: src/remmina_sftp_client.c:857
 #, fuzzy, c-format
 msgid "Could not delete “%s”. %s"
-msgstr "\"[၁၈]\" ကို မဖျက်နိုင်ဘူး။ %s"
+msgstr "\"%s ကို မဖျက်နိုင်ခဲ့ပါဘူး။ %s"
 
 #: src/remmina_sftp_client.c:942
 #, fuzzy
@@ -1433,7 +1435,7 @@ msgstr ""
 "• ဆာဗာ[:p]\n"
 "ဗွီအန်စီ ထပ်ဆင့် ပုံစံများ\n"
 "• ID:id ID နံပါတ်\n"
-"• unix:///path/socket.sock [၁၂၁]"
+"• unix:///path/socket.sock</big>"
 
 #: src/remmina_file_editor.c:70
 #, fuzzy
@@ -1451,7 +1453,7 @@ msgid ""
 "connecting.\n"
 "</big>"
 msgstr ""
-"<big>• PATH args %h တွင် ညွှန်ကြားချက်\n"
+"<big>• PATH args %h မှာ ညွှန်ကြားချက်\n"
 "• /path/po/Foo - ရွေးချယ်မှုများ %h %u\n"
 "• %h ကို ဆာဗာအမည်ဖြင့် အစားထိုးပါ\n"
 "• %t ကို SSH ဆာဗာအမည်ဖြင့် အစားထိုးပါ\n"
@@ -1481,11 +1483,12 @@ msgstr ""
 "<big> ထောက်ပံ့ထားသော ပုံစံများ\n"
 "• ဆာဗာ\n"
 "• ဆာဗာ[:p]\n"
-"• username@server[:p] (SSH Protocol)[၉၂]"
+"• username@server[:p :p :p] (SSH Protocol)</big>"
 
 #: src/remmina_file_editor.c:162
+#, fuzzy
 msgid "Input is invalid."
-msgstr ""
+msgstr "ထည့်သွင်းခြင်းသည် မ မှန်ကန်ပါ။"
 
 #: src/remmina_file_editor.c:239
 msgid "Choose a Remote Desktop Server"
@@ -1494,12 +1497,12 @@ msgstr "Remote Desktop Server တစ်ခုကိုရွေးပါ"
 #: src/remmina_file_editor.c:460
 #, fuzzy, c-format
 msgid "Browse the network to find a %s server"
-msgstr "[၂၉] ဆာဗာကိုရှာရန် ကွန်ရက်ကို ရှာဖွေပါ"
+msgstr "%s ဆာဗာကိုရှာရန် ကွန်ရက်ကို ရှာဖွေပါ"
 
 #: src/remmina_file_editor.c:564
 #, fuzzy
 msgid "Resolution"
-msgstr "Resolution"
+msgstr "ဖြေရှင်းချက်"
 
 #: src/remmina_file_editor.c:571
 #, fuzzy
@@ -1551,7 +1554,7 @@ msgstr "/path/com - opt1 arg %h %u %u %opt2 %U %P %g"
 #: src/remmina_file_editor.c:1092
 #, fuzzy
 msgid "Start-up"
-msgstr "Start-up"
+msgstr "စတင်ခြင်း"
 
 #: src/remmina_file_editor.c:1095
 #, fuzzy
@@ -1576,7 +1579,7 @@ msgstr "လိပ်စာမှတစ်ဆင့် ဥမင်လိုဏ�
 #: src/remmina_file_editor.c:1143
 #, fuzzy, c-format
 msgid "Same server at port %i"
-msgstr "ဆိပ်ကမ်းမှာပဲ တူညီတဲ့ ဆာဗာ [၂၀]"
+msgstr "ဆိပ်ကမ်းတွင်ပင် ထိုဆာဗာ %i"
 
 #: src/remmina_file_editor.c:1193 plugins/rdp/rdp_plugin.c:2764
 #, fuzzy
@@ -1601,7 +1604,7 @@ msgstr "SSH certicate ဖိုင်"
 #: src/remmina_file_editor.c:1293
 #, fuzzy
 msgid "Basic"
-msgstr "Basic"
+msgstr "အခြေခံ"
 
 #: src/remmina_file_editor.c:1299
 #, fuzzy
@@ -1611,32 +1614,32 @@ msgstr "အထူးအပြင်အဆင်များ"
 #: src/remmina_file_editor.c:1310
 #, fuzzy
 msgid "Notes"
-msgstr "Notes"
+msgstr "မှတ်စု"
 
 #: src/remmina_file_editor.c:1438
-#, c-format
+#, fuzzy, c-format
 msgid "(%s: %i): Can't validate setting '%s' since 'value' or 'gfe' are NULL!"
-msgstr ""
+msgstr "(%s: %i]: 'တန်ဖိုး' သို့မဟုတ် 'gfe' သည် NULL ဖြစ်ကြရာ '%s] သတ်မှတ်ခြင်းကို အတည်မပြုနိုင်ပါ။"
 
 #: src/remmina_file_editor.c:1441
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "(%s: %i): Can't validate user input since 'setting_name_to_validate', "
 "'value' or 'gfe' are NULL!"
-msgstr ""
+msgstr "(%s: %i]: 'setting_name_to_validate' သို့မဟုတ် 'gfe' သည် NULL!"
 
 #. TRANSLATORS: Meta-error. Shouldn't be visible.
-#: src/remmina_file_editor.c:1445 plugins/x2go/x2go_plugin.c:856
-#: plugins/x2go/x2go_plugin.c:1440
+#: src/remmina_file_editor.c:1445 plugins/x2go/x2go_plugin.c:1746
+#: plugins/x2go/x2go_plugin.c:2360
 #, fuzzy
 msgid "Internal error."
-msgstr "Transfer error"
+msgstr "ပြည်တွင်းအမှား။"
 
 #: src/remmina_file_editor.c:1667 src/remmina_file_editor.c:1703
 #: src/remmina_file_editor.c:1724 src/remmina_file_editor.c:1747
 #, fuzzy, c-format
 msgid "Couldn't validate user input. %s"
-msgstr "SFTP အစည်းအရုံးကို မဖန်တီးနိုင်ဘူး။ %s"
+msgstr "သုံးစွဲသူတွေရဲ့ ထည့်သွင်းထည့်သွင်းချက်ကို အကောင်အထည်မဖော်နိုင်ဘူး။ %s"
 
 #: src/remmina_file_editor.c:1691
 #, fuzzy
@@ -1660,7 +1663,7 @@ msgstr "ဆက်သွယ်ရေး ကိုယ်ရေးရာဇဝင�
 #: src/remmina_file_editor.c:1796 data/ui/remmina_main.glade:160
 #, fuzzy
 msgid "Connect"
-msgstr "ချိတ်ဆက်မည်"
+msgstr "ချိတ်ဆက်"
 
 #: src/remmina_file_editor.c:1799
 #, fuzzy
@@ -1675,20 +1678,21 @@ msgstr "မြန်မြန်ဆက်သွယ်မှု"
 #: src/remmina_file_editor.c:1946
 #, fuzzy, c-format
 msgid "Use '%s' as subgroup delimiter"
-msgstr "'[၅]ကို စုစည်းထားတဲ့ ဒီလီမီတာအဖြစ် သုံးပါ"
+msgstr "'%s' ကို စုစည်းထားတဲ့ အဖွဲ့အစည်း အောက်ပိုင်း ဒီလီမီတာအဖြစ် သုံးပါ"
 
 #: src/remmina_file_editor.c:2012 src/remmina_file_editor.c:2030
 #, fuzzy, c-format
 msgid "Could not find the file “%s”."
-msgstr "\"[%s] ဖိုင်ကို ရှာမတွေ့နိုင်ဘူး။"
+msgstr "\"%s ဖိုင်ကို ရှာမတွေ့နိုင်ပါဘူး။"
 
 #. TRANSLATORS: This is a message that pops up when an external Remmina plugin tries to set the window resolution using a legacy parameter.
 #. TRANSLATORS: This is a message that pop-up when an external Remmina plugin tries to set the windows resolution using a legacy parameter.
 #: src/remmina_file.c:451 src/remmina_file.c:497
+#, fuzzy
 msgid ""
 "Using the «resolution» parameter in the Remmina preferences file is "
 "deprecated.\n"
-msgstr ""
+msgstr "«» ရီမီနာ ကြိုက်နှစ်သက်တဲ့ ဖိုင်ထဲက ကိန်းဂဏန်းကိုသုံးပြီး စိတ်ဓာတ်ကျသွားတယ်။\n"
 
 #: src/remmina_icon.c:136
 #, fuzzy
@@ -1729,58 +1733,61 @@ msgid "Connect to remote desktops through the applet menu"
 msgstr "ပန်းသီးစာရင်းမှတစ်ဆင့် ဝေးလံတဲ့ ဒက်စ်တော့ပ်တွေနဲ့ ချိတ်ဆက်ပါ"
 
 #: src/remmina_icon.c:359
+#, fuzzy
 msgid "StatusNotifier/Appindicator support in “"
-msgstr ""
+msgstr "Statnotifier/Appindicator ထောက်ပံ့မှု \""
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:366
-#, c-format
+#, fuzzy, c-format
 msgid "%s your desktop does support it"
-msgstr ""
+msgstr "%s ခင်ဗျားရဲ့ desktop က ထောက်ခံပါတယ်"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:368
-#, c-format
+#, fuzzy, c-format
 msgid "%s and Remmina has built-in (compiled) support for libappindicator."
-msgstr ""
+msgstr "%s နှင့် Remmina တို့က Libapindicator အတွက် (စုစည်းထား) ထောက်ပံ့ပေးထားပါတယ်။"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:371
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "%s not supported natively by your Desktop Environment. libappindicator will "
 "try to fallback to GtkStatusIcon/xembed"
 msgstr ""
+"%s ကို Desktop ပတ်ဝန်းကျင်က ဇာတိအတိုင်း မထောက်ပံ့ခဲ့ပါဘူး။ Libappindicator သည် GtkStatusIcon/"
+"xembed သို့ ပြန်လှည့်ရန် ကြိုးစားမည်"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:375
-#, c-format
+#, fuzzy, c-format
 msgid "%s You may need to install, and use XApp Status Applet"
-msgstr ""
+msgstr "%s XApp Statatus Applet ကို သုံးဖို့ လိုအပ်နိုင်ပါတယ်"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:378
-#, c-format
+#, fuzzy, c-format
 msgid "%s You may need to install, and use KStatusNotifierItem"
-msgstr ""
+msgstr "%s တပ်ဆင်ရန်လိုအပ်ပေမည်။ KStatusNotifierTem"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:381
-#, c-format
+#, fuzzy, c-format
 msgid "%s You may need to install, and use XEmbed SNI Proxy"
-msgstr ""
+msgstr "%s ထည့်သွင်းရန် လိုအပ်ပေမည်။ Xembed SNI Proxy"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:384
-#, c-format
+#, fuzzy, c-format
 msgid "%s You may need to install, and use Gnome Shell Extension Appindicator"
-msgstr ""
+msgstr "%s သွင်းရန်လိုအပ်ပေမည်။ Gnome Shell Extendicator Appindicator"
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_ssh_plugin.c:539
 #, fuzzy, c-format
 msgid "Error: %s"
-msgstr "အမှား - [၇]"
+msgstr "အမှား - %s"
 
 #: src/remmina_ssh_plugin.c:556
 #, fuzzy
@@ -1835,7 +1842,7 @@ msgstr "_Copy"
 #: src/remmina_ssh_plugin.c:1440
 #, fuzzy
 msgid "Paste"
-msgstr "ပွားယူပါ"
+msgstr "ပက်စတီ"
 
 #: src/remmina_ssh_plugin.c:1440
 #, fuzzy
@@ -1845,12 +1852,12 @@ msgstr "_Paste"
 #: src/remmina_ssh_plugin.c:1441
 #, fuzzy
 msgid "Select all"
-msgstr "Select all"
+msgstr "အားလုံးရွေးချယ်ပါ"
 
 #: src/remmina_ssh_plugin.c:1441
 #, fuzzy
 msgid "_Select all"
-msgstr "Select all"
+msgstr "_Select အားလုံး _Select အားလုံး _Select အား"
 
 #: src/remmina_ssh_plugin.c:1442
 #, fuzzy
@@ -2027,7 +2034,7 @@ msgstr "အလယ်အလတ်"
 #: plugins/vnc/vnc_plugin.c:1931
 #, fuzzy
 msgid "Good"
-msgstr "အကောင်းစား"
+msgstr "ကောင်းမွန်စွာ"
 
 #: plugins/rdp/rdp_settings.c:288 plugins/rdp/rdp_plugin.c:2585
 #: plugins/vnc/vnc_plugin.c:1932
@@ -2038,7 +2045,7 @@ msgstr "အကောင်းဆုံး (နှေးဆုံး)"
 #: plugins/rdp/rdp_settings.c:427
 #, fuzzy
 msgid "Keyboard layout"
-msgstr "ကီးဘုတ်လက်ကွက် -"
+msgstr "ကီးဘုတ်ပုံစံ"
 
 #: plugins/rdp/rdp_settings.c:457
 #, fuzzy
@@ -2048,15 +2055,19 @@ msgstr "ဖောက်သည် ကီးဘုတ် မြေပုံရေ�
 #: plugins/rdp/rdp_settings.c:468
 #, fuzzy
 msgid "Keyboard scancode remapping"
-msgstr "ကီးဘုတ်မြေပုံရေးဆွဲခြင်း"
+msgstr "Keyboard Scancode ပြန်လည်ပြုပြင်ခြင်း"
 
 #: plugins/rdp/rdp_settings.c:483
+#, fuzzy
 msgid "List of key=value,… pairs to remap scancodes. E.g. 0x56=0x29,0x29=0x56"
 msgstr ""
+"သော့ချက်=တန်ဖိုးစာရင်း,... စကင်ကို့ဒ်များကို ပြန်လည်ရရှိရန် စုံတွဲများ။ E.g.0x56=0x29 0x29 "
+"0x29=0x56 0x56"
 
 #: plugins/rdp/rdp_settings.c:486
+#, fuzzy
 msgid "FreeRDP > 2.3.0 is required to map scancodes"
-msgstr ""
+msgstr "freeRDP > 2.3.0 ကို မြေပုံရေးသားရန် လိုအပ်"
 
 #: plugins/rdp/rdp_settings.c:494
 #, fuzzy
@@ -2137,7 +2148,7 @@ msgstr "ချောမွေ့တဲ့ လိပ်စာ"
 #: plugins/rdp/rdp_settings.c:669
 #, fuzzy
 msgid "General settings"
-msgstr "General settings"
+msgstr "အထွေထွေ အခြေအနေများ"
 
 #: plugins/rdp/rdp_settings.c:676 plugins/rdp/rdp_plugin.c:2778
 #, fuzzy
@@ -2168,7 +2179,7 @@ msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account locked out."
 msgstr ""
-"RDP ဆာဗာ \"[[၃၃] ကို ဝင်ရောက်ကြည့်ရှုလို့မရဘူး။\n"
+"RDP ဆာဗာ \"%s ကို ဝင်ရောက်ကြည့်ရှုလို့မရဘူး။\n"
 "အကောင့်ကို သော့ခတ်ထားတယ်။"
 
 #: plugins/rdp/rdp_plugin.c:2120
@@ -2177,7 +2188,7 @@ msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account expired."
 msgstr ""
-"RDP ဆာဗာ \"[[၃၃] ကို ဝင်ရောက်ကြည့်ရှုလို့မရဘူး။\n"
+"RDP ဆာဗာ \"%s ကို ဝင်ရောက်ကြည့်ရှုလို့မရဘူး။\n"
 "အကောင့် သက်တမ်းကုန်ဆုံးသွားလေသည်။"
 
 #: plugins/rdp/rdp_plugin.c:2127
@@ -2186,7 +2197,7 @@ msgid ""
 "Could not access the RDP server “%s”.\n"
 "Password expired."
 msgstr ""
-"RDP ဆာဗာ \"[[၃၃] ကို ဝင်ရောက်ကြည့်ရှုလို့မရဘူး။\n"
+"RDP ဆာဗာ \"%s ကို ဝင်ရောက်ကြည့်ရှုလို့မရဘူး။\n"
 "စကားဝှက် သက် ကုန်ဆုံးသွားလေသည်။"
 
 #: plugins/rdp/rdp_plugin.c:2134
@@ -2195,7 +2206,7 @@ msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account disabled."
 msgstr ""
-"RDP ဆာဗာ \"[[၃၃] ကို ဝင်ရောက်ကြည့်ရှုလို့မရဘူး။\n"
+"RDP ဆာဗာ \"%s ကို ဝင်ရောက်ကြည့်ရှုလို့မရဘူး။\n"
 "အကောင့် မသန်မစွမ်းဖြစ်နေသည်။"
 
 #: plugins/rdp/rdp_plugin.c:2140
@@ -2204,7 +2215,7 @@ msgid ""
 "Could not access the RDP server “%s”.\n"
 "Insufficient user privileges."
 msgstr ""
-"RDP ဆာဗာ \"[[၃၃] ကို ဝင်ရောက်ကြည့်ရှုလို့မရဘူး။\n"
+"RDP ဆာဗာ \"%s ကို ဝင်ရောက်ကြည့်ရှုလို့မရဘူး။\n"
 "သုံးစွဲသူတွေရဲ့ အခွင့်ထူးတွေ မလုံလောက်ဘူး။"
 
 #: plugins/rdp/rdp_plugin.c:2148
@@ -2213,7 +2224,7 @@ msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account restricted."
 msgstr ""
-"RDP ဆာဗာ \"[[၃၃] ကို ဝင်ရောက်ကြည့်ရှုလို့မရဘူး။\n"
+"RDP ဆာဗာ \"%s ကို ဝင်ရောက်ကြည့်ရှုလို့မရဘူး။\n"
 "အကောင့်ကန့်သတ်ထားသည်။"
 
 #: plugins/rdp/rdp_plugin.c:2156
@@ -2222,18 +2233,18 @@ msgid ""
 "Could not access the RDP server “%s”.\n"
 "Change user password before connecting."
 msgstr ""
-"RDP ဆာဗာ \"[[၃၃] ကို ဝင်ရောက်ကြည့်ရှုလို့မရဘူး။\n"
+"RDP ဆာဗာ \"%s ကို ဝင်ရောက်ကြည့်ရှုလို့မရဘူး။\n"
 "မဆက်သွယ်မီ အသုံးပြုသူ စကားဝှက်ကို ပြောင်းလဲပါ။"
 
 #: plugins/rdp/rdp_plugin.c:2161
 #, fuzzy, c-format
 msgid "Lost connection to the RDP server “%s”."
-msgstr "RDP ဆာဗာနဲ့ဆက်သွယ်မှု ပျောက်ဆုံးသွားတယ်။...[၃၅]"
+msgstr "RDP ဆာဗာ \"%s..."
 
 #: plugins/rdp/rdp_plugin.c:2164
 #, fuzzy, c-format
 msgid "Could not find the address for the RDP server “%s”."
-msgstr "RDP ဆာဗာအတွက် လိပ်စာ \"[[၄၇]\" အတွက် လိပ်စာကို ရှာမတွေ့နိုင်ဘူး။"
+msgstr "RDP ဆာဗာ \"%s အတွက် လိပ်စာကို ရှာမတွေ့နိုင်ဘူး။"
 
 #: plugins/rdp/rdp_plugin.c:2168
 #, fuzzy, c-format
@@ -2241,7 +2252,7 @@ msgid ""
 "Could not connect to the RDP server “%s” via TLS. Check that client and "
 "server support a common TLS version."
 msgstr ""
-"တီအယ်လ်အက်စ်မှတစ်ဆင့် RDP ဆာဗာ \"%s ကို ဆက်သွယ်လို့မရဘူး။ ထို ဖောက်သည် နှင့် ဆာဗာ သည် သာမန် တီအယ်လ်အက်စ် "
+"တီအယ်လ်အက်စ်မှတစ်ဆင့် RDP ဆာဗာ \"[%s \" ကို ဆက်သွယ်လို့မရဘူး။ ထို ဖောက်သည် နှင့် ဆာဗာ သည် သာမန် တီအယ်လ်အက်စ် "
 "ဗားရှင်း တစ် ခု ကို ထောက်ပံ့ ပေး သည် ကို စစ်ဆေး ပါ ။"
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
@@ -2250,14 +2261,12 @@ msgstr ""
 msgid ""
 "Unable to establish a connection to the RDP server “%s”. Check “Security "
 "protocol negotiation”."
-msgstr ""
-"RDP ဆာဗာ (RDP ဆာဗာ \"[၅၂]] သို့ ဆက်သွယ်မှုတစ်ခု မတည်ထောင်နိုင်ပါ။ \"လုံခြုံရေး ပရိုတိုကော စေ့စပ်ညှိနှိုင်းမှု"
-"\"ကို စစ်ဆေးပါ။"
+msgstr "RDP ဆာဗာ \"%s... \"လုံခြုံရေး ပရိုတိုကော စေ့စပ်ညှိနှိုင်းမှု\"ကို စစ်ဆေးပါ။"
 
 #: plugins/rdp/rdp_plugin.c:2180
 #, fuzzy, c-format
 msgid "Cannot connect to the RDP server “%s”."
-msgstr "RDP ဆာဗာ \"[[၃၄] ကို ဆက်သွယ်လို့မရဘူး။"
+msgstr "RDP ဆာဗာ \"%s ကို ဆက်သွယ်လို့မရဘူး။"
 
 #: plugins/rdp/rdp_plugin.c:2183
 #, fuzzy
@@ -2270,13 +2279,13 @@ msgid ""
 "You requested a H.264 GFX mode for the server “%s”, but your libfreerdp does "
 "not support H.264. Please use a non-AVC colour depth setting."
 msgstr ""
-"ဆာဗာအတွက် H.264 GFX ပုံစံ တောင်းဆိုခဲ့ပေမဲ့ ခင်ဗျားတို့ရဲ့ Libfredp က H.264 ကို မထောက်ပံ့ပါဘူး။ "
+"\"%s အတွက် H.264 GFX ပုံစံကို တောင်းဆိုခဲ့ပေမဲ့ ခင်ဗျားရဲ့ Libfredp က H.264 ကို မထောက်ပံ့ပါဘူး။ "
 "ကျေးဇူးပြု၍ အေဗွီစီမဟုတ်သော အရောင်နက်ကို သုံးပါ။"
 
 #: plugins/rdp/rdp_plugin.c:2193
 #, fuzzy, c-format
 msgid "The “%s” server refused the connection."
-msgstr "\"[၅]\" ဆာဗာက ဆက်သွယ်မှုကို ငြင်းဆိုခဲ့တယ်။"
+msgstr "\"%s ဆာဗာက ဆက်သွယ်မှုကို ငြင်းပယ်ခဲ့တယ်။"
 
 #: plugins/rdp/rdp_plugin.c:2198
 #, fuzzy, c-format
@@ -2284,12 +2293,13 @@ msgid ""
 "The Remote Desktop Gateway “%s” denied the user “%s\\%s” access due to "
 "policy."
 msgstr ""
-"ဝေးလံတဲ့ Desktop Gateway \"%s က အသုံးပြုသူကို \"[[၄၉]\\[၅၂] သုံးစွဲခွင့်ကို မူဝါဒကြောင့် ခွင့်မပြုခဲ့ဘူး။"
+"ဝေးလံတဲ့ Desktop Gateway \"%s \" အသုံးပြုသူအား မူဝါဒကြောင့် \"%s%s][\\ X49X]]%s%s] "
+"သုံးစွဲခွင့်ကို မူဝါဒကြောင့် ငြင်းဆိုခဲ့သည်။"
 
 #: plugins/rdp/rdp_plugin.c:2208
 #, fuzzy, c-format
 msgid "Cannot connect to the “%s” RDP server."
-msgstr "\"[%s\" RDP ဆာဗာနဲ့ ဆက်သွယ်လို့မရဘူး။"
+msgstr "\"[%s \" RDP ဆာဗာနဲ့ ဆက်သွယ်လို့မရဘူး။"
 
 #: plugins/rdp/rdp_plugin.c:2551
 #, fuzzy
@@ -2390,7 +2400,7 @@ msgstr "LAN"
 #: data/ui/remmina_preferences.glade:677
 #, fuzzy
 msgid "Off"
-msgstr "Off"
+msgstr "ပိတ်"
 
 #: plugins/rdp/rdp_plugin.c:2615
 #, fuzzy
@@ -2435,10 +2445,10 @@ msgid ""
 msgstr ""
 "i.a. ကို စမတ် ကတ် ချန်နယ်တစ်ခုမှာ အပြီးသတ် ဝန်ဆောင်မှုတွေနဲ့ သုံးပြီး ဖောက်သည်တွေရဲ့ စွမ်းဆောင်ရည်တွေကို "
 "ခွဲခြားသိရှိဖို့ပါ။\n"
-"  • < 4034: Windows XP အခြေစိုက် စမတ်ကတ် လုပ်ဆောင်ချက်များ • 4034-7064 : Windows "
-"Vista/7: SCardReadCache)၊ SCardWriteCache () SCardGetTransCount () • > = "
-"7065: Windows8 နဲ့ အသစ်ဖြစ်တဲ့ SCardGetReadericon "
-"(SCardGetReadreadericon(SCardGetReadericon)၊\n"
+"  • < 4034 : Windows XP အခြေစိုက် စမတ် ကတ် လုပ်ဆောင်ချက်များ • 4034-7064 : Windows "
+"Vista/7: SCardReadCache)၊ SCardWriteCache () ( SCardGetTransCount)"
+"( SCardGetTransCount() • > = 7065: Windows8 နှင့် အသစ် - SCardGetReadericon "
+"(SCardGetReadericon(SCardGetReadericon)၊\n"
 "    SCardGetDevicetyiid()"
 
 #: plugins/rdp/rdp_plugin.c:2643
@@ -2572,18 +2582,20 @@ msgid "Use “Redirect directory” in the advanced tab for multiple directories
 msgstr "လမ်းညွှန်များစွာအတွက် အဆင့်မြင့် တက်ဘ်မှာ \"Redirect ညွှန်ကြားရေးလမ်းညွှန်\"ကိုသုံးပါ"
 
 #: plugins/rdp/rdp_plugin.c:2723
+#, fuzzy
 msgid "Restricted admin mode"
-msgstr ""
+msgstr "ကန့်သတ်ထားတဲ့ စီမံခန့်ခွဲနည်း"
 
 #: plugins/rdp/rdp_plugin.c:2724
 #, fuzzy
 #| msgid "Password"
 msgid "Password hash"
-msgstr "စကားဝှက်"
+msgstr "စကားဝှက်ဟက်ရှ်"
 
 #: plugins/rdp/rdp_plugin.c:2724
+#, fuzzy
 msgid "Restricted admin mode password hash"
-msgstr ""
+msgstr "ကန့်သတ်ထားတဲ့ စီမံခန့်ခွဲမှုပုံစံ စကားဝှက်ဟက်ခ်ျ"
 
 #: plugins/rdp/rdp_plugin.c:2725
 #, fuzzy
@@ -2942,7 +2954,7 @@ msgstr "Windows.rdp ဖိုင်ပုံစံထဲက ထုတ်ကု�
 #: plugins/rdp/rdp_event.c:344
 #, fuzzy, c-format
 msgid "Reconnection attempt %d of %d…"
-msgstr "[၂၇] ၏ ပြန်လည် ဆက်သွယ်ရေး ကြိုးပမ်း မှု [၂၁]"
+msgstr "%d ရဲ့ ပြန်လည်ဆက်သွယ်ရေး ကြိုးပမ်းမှု %d"
 
 #: plugins/spice/spice_plugin_file_transfer.c:82
 #, fuzzy
@@ -2952,7 +2964,7 @@ msgstr "ဖိုင် လွှဲပြောင်းမှုများ"
 #: plugins/spice/spice_plugin_file_transfer.c:219
 #, fuzzy
 msgid "Transfer error"
-msgstr "Transfer error"
+msgstr "လွှဲပြောင်းအမှား"
 
 #: plugins/spice/spice_plugin_file_transfer.c:220
 #, fuzzy, c-format
@@ -2967,7 +2979,7 @@ msgstr "လွှဲပြောင်းပြီး"
 #: plugins/spice/spice_plugin_file_transfer.c:224
 #, fuzzy, c-format
 msgid "The %s file has been transferred"
-msgstr "[၄] ဖိုင်ကို လွှဲပြောင်းပေးလိုက်ပြီ"
+msgstr "%s ဖိုင်ကို လွှဲပြောင်းပေးလိုက်ပြီ"
 
 #: plugins/spice/spice_plugin.c:351
 #, fuzzy
@@ -2977,7 +2989,7 @@ msgstr "SPICE စကားဝှက်ထဲထည့်ပါ"
 #: plugins/spice/spice_plugin.c:386
 #, fuzzy, c-format
 msgid "Disconnected from the SPICE server “%s”."
-msgstr "SPICE ဆာဗာကနေ အဆက်အသွယ်ပြတ်သွားတဲ့ \"[[၃၆]\""
+msgstr "SPICE ဆာဗာ \"%s..."
 
 #: plugins/spice/spice_plugin.c:402
 #, fuzzy
@@ -2992,7 +3004,7 @@ msgstr "SPICE ဆာဗာနဲ့ ဆက်သွယ်မှု ကျဆင�
 #: plugins/spice/spice_plugin.c:616 plugins/spice/spice_plugin.c:634
 #, fuzzy
 msgid "Default"
-msgstr "Default"
+msgstr "မူလပုံ"
 
 #: plugins/spice/spice_plugin.c:636
 #, fuzzy
@@ -3095,12 +3107,12 @@ msgstr "VNC ဆာဗာနဲ့ ချိတ်ဆက်လို့မရဘ�
 #: plugins/vnc/vnc_plugin.c:937
 #, fuzzy, c-format
 msgid "Couldn’t convert '%s' to host address"
-msgstr "'[%s] ကို အိမ်ရှင်လိပ်စာအဖြစ် မပြောင်းလဲနိုင်ပါ"
+msgstr "'%s ကို အိမ်ရှင်လိပ်စာအဖြစ် မပြောင်းလဲနိုင်ပါ"
 
 #: plugins/vnc/vnc_plugin.c:938
 #, fuzzy, c-format
 msgid "VNC connection failed: %s"
-msgstr "VNC ဆက်သွယ်မှု ပျက်ကွက်ခဲ့သည်။ [၂၃]"
+msgstr "VNC ဆက်သွယ်မှု ပျက်ကွက်ခဲ့သည်။ %s"
 
 #: plugins/vnc/vnc_plugin.c:939
 #, fuzzy
@@ -3129,14 +3141,15 @@ msgid ""
 "    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
 msgstr ""
 "ထပ်တလဲလဲ သုံးပြီး VNC ကို ဆက်သွယ်ပါ\n"
-"  • ဆာဗာလယ်ကွင်းတွင် ထပ်တလဲလဲ ID, e.id:123456789 ပါဝင်ရမည်\n"
+"  • ဆာဗာလယ်ကွင်းတွင် ထပ်တလဲလဲ ID, e.id:123456789\n"
 "  • ထပ်ခါထပ်ခါ လယ်ကွင်းကို ထပ်ခါထပ်ခါ အိုင်ပီနဲ့ ဆိပ်ကမ်းကို သတ်မှတ်ပေးရမယ်\n"
 "    10.10.10.12:5901\n"
 "  • ဝေးလံတဲ့ VNC ဆာဗာကနေ ဆက်သွယ်ပါလိမ့်မယ်\n"
 "    x11vnc နဲ့ ထပ်ပြောသူ၊ အီး.ဂီ.\n"
-"    x11vnc - id:12345789+10.10.10.10.10.5500"
+"    x11vnc - ပြန်လည်ဆက်သွယ်သူ=ID:123456789+10.10.10.10.10.5500"
 
 #: plugins/vnc/vnc_plugin.c:1948
+#, fuzzy
 msgid ""
 "Listening for remote VNC connection:\n"
 "  • The \"Listen on port\" field is the port Remmina will listen to,\n"
@@ -3145,6 +3158,12 @@ msgid ""
 "    Remmina, e.g. with x11vnc:\n"
 "    x11vnc -display :0 -connect 192.168.1.36:8888"
 msgstr ""
+"ဝေးလံတဲ့ VNC ဆက်သွယ်မှုအတွက် နားထောင်ခြင်း -\n"
+"  • \"ဆိပ်ကမ်းနားထောင်\" လယ်ကွင်းကတော့ ဆိပ်ကမ်း ရမ်မီနာ နားထောင်ပေးမယ့် ဆိပ်ကမ်း ဖြစ်ပါတယ်။\n"
+"    e.g.88888\n"
+"  • ဝေးလံတဲ့ VNC ဆာဗာကနေ ဆက်သွယ်ပါလိမ့်မယ်\n"
+"    Remmina, e.g. x11vnc နဲ့\n"
+"    x11vnc -ပြပွဲ :0 -192.168.168:36:88888888"
 
 #: plugins/vnc/vnc_plugin.c:1975
 #, fuzzy
@@ -3288,7 +3307,7 @@ msgstr ""
 #: plugins/exec/exec_plugin.c:274
 #, fuzzy
 msgid "Command"
-msgstr "ညွှန်ကြားချက်"
+msgstr "ညွှန်"
 
 #: plugins/exec/exec_plugin.c:275
 #, fuzzy
@@ -3310,291 +3329,539 @@ msgstr "မင်္ဂလာပါကမ္ဘာလောက!"
 msgid "Secured password storage in the GNOME keyring"
 msgstr "GNOME keying မှာ လုံခြုံတဲ့ စကားဝှက်သိုလှောင်မှု"
 
-#: plugins/x2go/x2go_plugin.c:275
+#: plugins/x2go/x2go_plugin.c:67
+#, c-format
+msgid ""
+"The command-line feature '%s' is not available! Attempting to start PyHoca-"
+"CLI without using this feature…"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:277
+#, fuzzy
 msgid "Broken `DialogData`! Aborting…"
-msgstr ""
+msgstr "ကျိုးပဲ့နေတဲ့ 'DialogData'! ဖျက်ချခြင်း...…"
 
-#: plugins/x2go/x2go_plugin.c:279
+#: plugins/x2go/x2go_plugin.c:281
+#, fuzzy
 msgid "Can't retrieve `DialogData`! Aborting…"
+msgstr "'DialogData' ကို ပြန်မယူနိုင်ဘူး! ဖျက်ချခြင်း...…"
+
+#: plugins/x2go/x2go_plugin.c:438
+#, fuzzy
+msgid "Couldn't retrieve valid `DialogData` or `sessions_list`! Aborting…"
+msgstr "'DialogData' ကို ပြန်မယူနိုင်ဘူး! ဖျက်ချခြင်း...…"
+
+#: plugins/x2go/x2go_plugin.c:445
+msgid "_New"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:505
-msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
+#: plugins/x2go/x2go_plugin.c:447
+#, fuzzy
+msgid "_Select session"
+msgstr "_Select အားလုံး _Select အားလုံး _Select အား"
+
+#: plugins/x2go/x2go_plugin.c:506
+msgid "Display"
 msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:507
+msgid "Status"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:508
+#, fuzzy
+msgid "Session ID"
+msgstr "ခွင့်ပြုချက်များ"
+
+#: plugins/x2go/x2go_plugin.c:509
+msgid "Create date"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:510
+msgid "Suspended since"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:511
+msgid "Agent PID"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:513
+#, fuzzy
+msgid "Hostname"
+msgstr "အသုံးပြုသူအမည်"
 
 #: plugins/x2go/x2go_plugin.c:514
-msgid "An error occured."
+msgid "Cookie"
 msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:515
+msgid "Graphic port"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:516
+msgid "SND port"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:517
+#, fuzzy
+msgid "SSHFS port"
+msgstr "ဒေသန္တရ SSH ဆိပ်ကမ်း"
+
+#: plugins/x2go/x2go_plugin.c:519 plugins/x2go/x2go_plugin.c:585
+#: plugins/x2go/x2go_plugin.c:599 plugins/x2go/x2go_plugin.c:614
+#: plugins/x2go/x2go_plugin.c:626 plugins/x2go/x2go_plugin.c:936
+#: plugins/x2go/x2go_plugin.c:947 plugins/x2go/x2go_plugin.c:955
+#: plugins/x2go/x2go_plugin.c:1060 plugins/x2go/x2go_plugin.c:1094
+#: plugins/x2go/x2go_plugin.c:1200 plugins/x2go/x2go_plugin.c:2212
+#: plugins/x2go/x2go_plugin.c:2425 plugins/x2go/x2go_plugin.c:2430
+#: plugins/x2go/x2go_plugin.c:2435 plugins/x2go/x2go_plugin.c:2440
+#: plugins/x2go/x2go_plugin.c:2455 plugins/x2go/x2go_plugin.c:2460
+#: plugins/x2go/x2go_plugin.c:2465 plugins/x2go/x2go_plugin.c:2470
+#, fuzzy, c-format
+msgid "Internal error: %s"
+msgstr "ပြည်တွင်းအမှား - "
+
+#: plugins/x2go/x2go_plugin.c:520
+msgid "Unknown property"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:586
+msgid "Couldn't find child GtkTreeView of session chooser dialog."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:600
+msgid "only one session should be able to be selected."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:615
+msgid "Failed to fill 'GtkTreeIter'."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:627
+msgid "Couldn't get session ID out of selected row."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:660
+msgid "Couldn't get session ID from session chooser dialog."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:667
+#, c-format
+msgid "Resuming session: '%s'"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:892
+#, fuzzy
+msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
+msgstr "ပီဟိုကာ-စီအယ်လ်အိုင်က မမျှော်လင့်ဘဲ ထွက်သွားတယ်။ ဒီဆက်သွယ်မှုကို အခု ပိတ်ထားပါလိမ့်မယ်။"
+
+#: plugins/x2go/x2go_plugin.c:901
+#, fuzzy
+msgid "An error occured."
+msgstr "အမှားတစ်ခု ဖြစ်ပွားခဲ့တယ်။"
+
+#: plugins/x2go/x2go_plugin.c:902
+#, fuzzy
 msgid ""
 "The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
 "Please check your profile settings and PyHoca-CLI's output for possible "
 "errors. Also ensure the remote server is reachable."
 msgstr ""
+"လိုအပ်သောကလေးဖြစ်စဉ် 'pyhoca-cli' သည် မမျှော်လင့်ဘဲရပ်တန့်သွားခဲ့သည်။\n"
+"ဖြစ်နိုင်တဲ့ အမှားတွေအတွက် သင့်ကိုယ်ရေးရာဇဝင်အချက်အလက်တွေနဲ့ PyHoca-CLI ရဲ့ ထုတ်ကုန်တွေကို ကျေးဇူးပြု၍ "
+"စစ်ဆေးကြည့်ပါ။ ထို့ပြင် ဝေးလံသောဆာဗာကို ရောက်ရှိနိုင်ကြောင်း သေချာစေပါ။"
 
-#: plugins/x2go/x2go_plugin.c:561
+#: plugins/x2go/x2go_plugin.c:937
+msgid "parameter 'argv' is 'NULL'."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:948
+msgid "parameter 'error' is 'NULL'."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:956
+msgid "parameter 'env' is either invalid or uninitialized."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:972
+#, fuzzy
 msgid "Started PyHoca-CLI with the following arguments:"
+msgstr "Pyhoca-CLI ကို အောက်ပါ အငြင်းပွားမှုများဖြင့် စတင်ခဲ့သည်-"
+
+#: plugins/x2go/x2go_plugin.c:988
+#, fuzzy
+msgid "Started PyHoca-CLI with the following environment variables:"
+msgstr "Pyhoca-CLI ကို အောက်ပါ အငြင်းပွားမှုများဖြင့် စတင်ခဲ့သည်-"
+
+#: plugins/x2go/x2go_plugin.c:997
+msgid ""
+"The necessary PyHoca-CLI process has encountered a internet connection "
+"problem."
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:580
+#: plugins/x2go/x2go_plugin.c:1007
+#, fuzzy
+msgid "An unknown error occured while trying to start PyHoca-CLI."
+msgstr "X2Go အစည်းအရုံးစတင်ချိန်မှာ အမှားတစ်ခု ဖြစ်ပျက်ခဲ့တာ...…"
+
+#: plugins/x2go/x2go_plugin.c:1017
 #, c-format
-msgid "Could not retrieve PyHoca-CLI's command-line features! Exit code: %i"
+msgid ""
+"An unknown error occured while trying to start PyHoca-CLI. Exit code: %i"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:585
-#, fuzzy, c-format
-msgid "Error: '%s'"
-msgstr "အမှား - [၇]"
+#: plugins/x2go/x2go_plugin.c:1022
+#, c-format
+msgid ""
+"An unknown error occured while trying to start PyHoca-CLI. Exit code: %i. "
+"Error: '%s'"
+msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:609
+#: plugins/x2go/x2go_plugin.c:1047
+#, fuzzy
 msgid "Can't save empty username!"
-msgstr ""
+msgstr "သုံးစွဲသူအမည်အလွတ်ကို မသိမ်းနိုင်ပါဘူး!"
 
-#: plugins/x2go/x2go_plugin.c:621
-msgid "Internal error: Could not save new credentials."
-msgstr ""
+#: plugins/x2go/x2go_plugin.c:1061
+#, fuzzy
+msgid "Could not save new credentials."
+msgstr "ပြည်တွင်းအမှား– အသိအမှတ်ပြုချက်အသစ်တွေကို မသိမ်းနိုင်ဘူး။"
 
-#: plugins/x2go/x2go_plugin.c:623
+#: plugins/x2go/x2go_plugin.c:1064
+#, fuzzy
 msgid ""
 "An error occured while trying to save new credentials: 's_password' or "
 "'s_username' strings were not set."
 msgstr ""
+"'s_password' သို့မဟုတ် 's_password' သို့မဟုတ် 's_username' ကြိုးများ မချထားခဲ့ပါဟူသော "
+"အရည်အချင်းအသစ်များကို ချွေတာရန် ကြိုးစားနေစဉ် အမှားတစ်ခု ဖြစ်ပွားခဲ့သည်။"
 
-#: plugins/x2go/x2go_plugin.c:659
+#: plugins/x2go/x2go_plugin.c:1095
+msgid "Parameter 'default_username' is uninitialized."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1124
 #, fuzzy
 msgid "Enter X2Go credentials"
-msgstr "RDP စစ်ဆေးရေး အသိအမှတ်ပြုချက်များကို ဝင်ရောက်ပါ"
+msgstr "X2go အသိအမှတ်ပြုချက်များကို ဝင်ရောက်ပါ"
 
-#: plugins/x2go/x2go_plugin.c:818
+#: plugins/x2go/x2go_plugin.c:1201
+#, fuzzy
+#| msgid "Per connection"
+msgid "'Invalid connection data.'"
+msgstr "ဝေမျှဆက်သွယ်မှု"
+
+#: plugins/x2go/x2go_plugin.c:1323
+msgid ""
+"Couldn't parse the output of PyHoca-CLI's --list-sessions option. Creating a "
+"new session now."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1362
+msgid "Couldn't allocate enough memory!"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1372
+#, c-format
+msgid "Found already existing X2Go session with ID: '%s'"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1444
+msgid ""
+"Could not find any sessions on remote machine. Creating a new session now."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1485
+#, fuzzy
+msgid "Choose a session to resume:"
+msgstr "တင်ရန် ဖိုင်တစ်ခုရွေးချယ်ပါ"
+
+#: plugins/x2go/x2go_plugin.c:1502
+#, fuzzy
+msgid "Waiting for user to select a session…"
+msgstr "အစည်းအဝေးရဲ့ ပြတင်းပေါက်ပြဖို့ Pyhoca-CLI ကို စောင့်နေတာ...…"
+
+#: plugins/x2go/x2go_plugin.c:1510
+msgid "No session was selected. Creating a new one."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1558
+#, c-format
+msgid "A non-critical error happened: %s"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1563
+#, c-format
+msgid "User chose to resume session with ID: '%s'"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1583
+#, c-format
+msgid "Resuming session '%s'…"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1706
+#, fuzzy
 msgid "DPI setting is out of bounds. Please adjust it in profile settings."
 msgstr ""
+"ဒီပီအိုင် တပ်ဆင်မှုဟာ အကန့်အသတ်မရှိဘူး။ ကျေးဇူးပြု၍ ယင်းကို ကိုယ်ရေးရာဇဝင်အချက်အလက်များတွင် ညှိနှိုင်းပါ။"
 
-#: plugins/x2go/x2go_plugin.c:838
+#: plugins/x2go/x2go_plugin.c:1728
+#, fuzzy
 msgid "Started pyhoca-cli with following arguments:"
-msgstr ""
+msgstr "Pyhoca-cli ကို အောက်ပါ အငြင်းပွားမှုများဖြင့် စတင်ခဲ့သည်-"
 
-#: plugins/x2go/x2go_plugin.c:858
+#: plugins/x2go/x2go_plugin.c:1748
+#, fuzzy
 msgid "An error occured while starting an X2Go session…"
-msgstr ""
+msgstr "X2Go အစည်းအရုံးစတင်ချိန်မှာ အမှားတစ်ခု ဖြစ်ပျက်ခဲ့တာ...…"
 
-#: plugins/x2go/x2go_plugin.c:867
+#: plugins/x2go/x2go_plugin.c:1757
 #, fuzzy
 msgid "Could not start X2Go session."
-msgstr "SSH အစည်းအရုံးကို မစနိုင်ဘူး။ %s"
+msgstr "X2Go အစည်းအရုံးကို မစတင်နိုင်ပါဘူး။"
 
-#: plugins/x2go/x2go_plugin.c:868
+#: plugins/x2go/x2go_plugin.c:1758
 #, fuzzy, c-format
 msgid "Could not start PyHoca-CLI (%i): '%s'"
-msgstr "SSH အစည်းအရုံးကို မစနိုင်ဘူး။ %s"
+msgstr "Pyhoca-CLI ([%i] :'%s]"
 
-#: plugins/x2go/x2go_plugin.c:945
+#: plugins/x2go/x2go_plugin.c:1857
+#, fuzzy
 msgid ""
 "Couldn't get PyHoca-CLI's command-line features. This indicates it is either "
 "too old, or not installed. An old limited set of features will be used for "
 "now."
 msgstr ""
+"Pyhoca-CLI ရဲ့ အမိန့်လိုင်း အသွင်အပြင်တွေကို မရရှိနိုင်ဘူး။ ဒါက အရမ်းအသက်ကြီးလွန်းတယ် ဒါမှမဟုတ် "
+"ဝတ်ဆင်မထားဘူးဆိုတာ ဖော်ပြတယ်။ အကန့်အသတ်ရှိတဲ့ အင်္ဂါရပ်တွေကို အခုအတွက် အသုံးပြုပါလိမ့်မယ်။"
 
-#: plugins/x2go/x2go_plugin.c:956
+#: plugins/x2go/x2go_plugin.c:1866
+#, fuzzy
 msgid ""
 "Could not parse PyHoca-CLI's command-line features. Using a limited feature-"
 "set for now."
 msgstr ""
+"Pyhoca-CLI ရဲ့ ညွှန်ကြားချက်လိုင်း အသွင်အပြင်တွေကို မခွဲထုတ်နိုင်ဘူး။ အခုအတွက် အကန့်အသတ်ရှိတဲ့ အသွင်အပြင်တစ်ခုကို "
+"အသုံးပြုနေပါတယ်။"
 
-#: plugins/x2go/x2go_plugin.c:962
+#: plugins/x2go/x2go_plugin.c:1872
+#, fuzzy
 msgid "Retrieved the following PyHoca-CLI command-line features:"
-msgstr ""
+msgstr "အောက်ပါ Pyhoca-CLI ကွန်မန်လိုင်း အသွင်အပြင်များကို ပြန်လည်ရယူခဲ့သည်-"
 
-#: plugins/x2go/x2go_plugin.c:967
-#, c-format
+#: plugins/x2go/x2go_plugin.c:1880
+#, fuzzy, c-format
 msgid "Available feature[%i]: '%s'"
-msgstr ""
+msgstr "ရရှိနိုင်သော အင်္ဂါရပ်%i]: '%s]"
 
-#: plugins/x2go/x2go_plugin.c:1072
+#: plugins/x2go/x2go_plugin.c:1985
 #, fuzzy
 msgid "Could not open X11 DISPLAY."
-msgstr "ရုပ်သံလိုင်းကို မဖွင့်နိုင်ဘူး။ %s"
+msgstr "X11 ပြပွဲကို မဖွင့်နိုင်ပါဘူး။"
 
-#: plugins/x2go/x2go_plugin.c:1112
-msgid "Waiting for window of X2Go Agent to appear…"
-msgstr ""
-
-#: plugins/x2go/x2go_plugin.c:1138
-msgid "Waiting for PyHoca-CLI to show the session's window…"
-msgstr ""
-
-#: plugins/x2go/x2go_plugin.c:1189
-msgid "No X2Go session window appeared. Something went wrong…"
-msgstr ""
-
-#: plugins/x2go/x2go_plugin.c:1298
-msgid "Internal error: RemminaProtocolWidget* gp is NULL!"
-msgstr ""
-
-#: plugins/x2go/x2go_plugin.c:1319
-#, c-format
-msgid "The %s protocol is unavailable because GtkSocket only works under X.org"
-msgstr ""
-
-#: plugins/x2go/x2go_plugin.c:1327
-msgid "Could not initialize pthread. Falling back to non-threaded mode…"
-msgstr ""
-
-#. TRANSLATORS: Presumably you just want to translate 'and' into
-#. your language.
-#. (Except your listing-grammar differs from english.)
-#. 'value1', 'value2', 'valueN-1' and 'valueN'
-#. TRANSLATORS: Presumably you just want to translate 'and' into
-#. your language.
-#. (Except your listing-grammar differs from english.)
-#. 'value1' and 'value2'
-#: plugins/x2go/x2go_plugin.c:1370 plugins/x2go/x2go_plugin.c:1388
-#, c-format
-msgid "%sand '%s'"
-msgstr ""
-
-#. TRANSLATORS: Presumably you just want to leave it english.
-#. (Except your listing-grammar differs from english.)
-#. 'value1', 'value2', 'valueN-1' and 'valueN'
-#. TRANSLATORS: Presumably you just want to leave it english.
-#. (Except your listing-grammar differs from english.)
-#. 'value1' and 'value2'
-#: plugins/x2go/x2go_plugin.c:1375 plugins/x2go/x2go_plugin.c:1393
-#, c-format
-msgid "%s'%s' "
-msgstr ""
-
-#. TRANSLATORS: Presumably you just want to leave it english.
-#. (Except your listing-grammar differs from english.)
-#. 'value1', 'value2', 'valueN-1' and 'valueN'
-#: plugins/x2go/x2go_plugin.c:1380
-#, c-format
-msgid "%s'%s', "
-msgstr ""
-
-#: plugins/x2go/x2go_plugin.c:1418
-msgid "Invalid validation data in ProtocolSettings array!"
-msgstr ""
-
-#: plugins/x2go/x2go_plugin.c:1430 plugins/x2go/x2go_plugin.c:1492
-msgid "Validation data in ProtocolSettings array is invalid!"
-msgstr ""
-
-#: plugins/x2go/x2go_plugin.c:1457
-#, c-format
-msgid "Allowed values are %s."
-msgstr ""
-
-#: plugins/x2go/x2go_plugin.c:1459
-#, c-format
-msgid "The only allowed value is '%s'."
-msgstr ""
-
-#: plugins/x2go/x2go_plugin.c:1501
-msgid "The lower limit is not a valid integer!"
-msgstr ""
-
-#: plugins/x2go/x2go_plugin.c:1503
-msgid "The lower limit is too high!"
-msgstr ""
-
-#: plugins/x2go/x2go_plugin.c:1505
-msgid "The lower limit is too low!"
-msgstr ""
-
-#: plugins/x2go/x2go_plugin.c:1507 plugins/x2go/x2go_plugin.c:1533
-#: plugins/x2go/x2go_plugin.c:1552
-msgid "Something went wrong."
-msgstr ""
-
-#: plugins/x2go/x2go_plugin.c:1511 plugins/x2go/x2go_plugin.c:1537
-#: plugins/x2go/x2go_plugin.c:1556
-msgid "Please check the RemminaProtocolSetting array for possible errors."
-msgstr ""
-
-#: plugins/x2go/x2go_plugin.c:1520 plugins/x2go/x2go_plugin.c:1524
-#: plugins/x2go/x2go_plugin.c:1528 plugins/x2go/x2go_plugin.c:1532
+#: plugins/x2go/x2go_plugin.c:2025
 #, fuzzy
-msgid "Internal error: "
-msgstr "Transfer error"
+msgid "Waiting for window of X2Go Agent to appear…"
+msgstr "X2Go အေဂျင်စီရဲ့ ပြတင်းပေါက်ပေါ်လာဖို့ စောင့်နေတာ...…"
 
-#: plugins/x2go/x2go_plugin.c:1521
+#: plugins/x2go/x2go_plugin.c:2051
+#, fuzzy
+msgid "Waiting for PyHoca-CLI to show the session's window…"
+msgstr "အစည်းအဝေးရဲ့ ပြတင်းပေါက်ပြဖို့ Pyhoca-CLI ကို စောင့်နေတာ...…"
+
+#: plugins/x2go/x2go_plugin.c:2102
+#, fuzzy
+msgid "No X2Go session window appeared. Something went wrong…"
+msgstr "X2Go session window မရှိဘူး။ တစ်ခုခု မှားသွားတယ်...…"
+
+#: plugins/x2go/x2go_plugin.c:2213
+#, fuzzy
+msgid "RemminaProtocolWidget* gp is 'NULL'!"
+msgstr "ပြည်တွင်းအမှား– RemminaProtocolWidget * Gp က NULL!"
+
+#: plugins/x2go/x2go_plugin.c:2234
+#, fuzzy, c-format
+msgid "The %s protocol is unavailable because GtkSocket only works under X.org"
+msgstr "GtkSocket သည် လက်အောက်တွင်သာ အလုပ်လုပ်သောကြောင့် %s ပရိုတိုကော X.org ကို မရရှိနိုင်ပါ။"
+
+#: plugins/x2go/x2go_plugin.c:2243
+#, fuzzy
+msgid "Could not initialize pthread. Falling back to non-threaded mode…"
+msgstr "ပက်သ်ကို အစပျိုးလို့မရဘူး။ ချည်နှောင်မှုမရှိတဲ့ နည်းလမ်းဆီ ပြန်ကျသွားတာ...…"
+
+#. TRANSLATORS: Presumably you just want to translate 'and' into
+#. your language.
+#. (Except your listing-grammar differs from english.)
+#. 'value1', 'value2', 'valueN-1' and 'valueN'
+#. TRANSLATORS: Presumably you just want to translate 'and' into
+#. your language.
+#. (Except your listing-grammar differs from english.)
+#. 'value1' and 'value2'
+#: plugins/x2go/x2go_plugin.c:2286 plugins/x2go/x2go_plugin.c:2304
+#, fuzzy, c-format
+msgid "%sand '%s'"
+msgstr "%sနှင့် '%s"
+
+#. TRANSLATORS: Presumably you just want to leave it english.
+#. (Except your listing-grammar differs from english.)
+#. 'value1', 'value2', 'valueN-1' and 'valueN'
+#. TRANSLATORS: Presumably you just want to leave it english.
+#. (Except your listing-grammar differs from english.)
+#. 'value1' and 'value2'
+#: plugins/x2go/x2go_plugin.c:2291 plugins/x2go/x2go_plugin.c:2309
+#, fuzzy, c-format
+msgid "%s'%s' "
+msgstr "%s[X3X%s] "
+
+#. TRANSLATORS: Presumably you just want to leave it english.
+#. (Except your listing-grammar differs from english.)
+#. 'value1', 'value2', 'valueN-1' and 'valueN'
+#: plugins/x2go/x2go_plugin.c:2296
+#, fuzzy, c-format
+msgid "%s'%s', "
+msgstr "%s%s...%s'၊ "
+
+#: plugins/x2go/x2go_plugin.c:2335
+#, fuzzy
+msgid "Invalid validation data in ProtocolSettings array!"
+msgstr "ProtocolSettings အစီအစဉ်ထဲက မမှန်ကန်တဲ့ အတည်ပြုချက် အချက်အလက်များ!"
+
+#: plugins/x2go/x2go_plugin.c:2350 plugins/x2go/x2go_plugin.c:2415
+#, fuzzy
+msgid "Validation data in ProtocolSettings array is invalid!"
+msgstr "ProtocolSettings အစီအစဉ်မှ အတည်ပြုချက် အချက်အလက်များသည် မမှန်ကန်ပါ!"
+
+#: plugins/x2go/x2go_plugin.c:2359
+msgid "Parameters 'key' or 'value' are 'NULL'!"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:2377
+#, fuzzy, c-format
+msgid "Allowed values are %s."
+msgstr "ခွင့်ပြုထားတဲ့ တန်ဖိုးတွေက %s ဖြစ်ပါတယ်။"
+
+#: plugins/x2go/x2go_plugin.c:2379
+#, fuzzy, c-format
+msgid "The only allowed value is '%s'."
+msgstr "ခွင့်ပြုထားတဲ့ တန်ဖိုးကတော့ '%s] ဖြစ်ပါတယ်။"
+
+#: plugins/x2go/x2go_plugin.c:2426
+#, fuzzy
+msgid "The lower limit is not a valid integer!"
+msgstr "အောက်ကန့်သတ်ချက်က မှန်ကန်တဲ့ အင်တီဂျာ မဟုတ်ပါဘူး!"
+
+#: plugins/x2go/x2go_plugin.c:2431
+#, fuzzy
+msgid "The lower limit is too high!"
+msgstr "နိမ့်ကျတဲ့ ကန့်သတ်ချက်က အရမ်းမြင့်လွန်းတယ်!"
+
+#: plugins/x2go/x2go_plugin.c:2436
+#, fuzzy
+msgid "The lower limit is too low!"
+msgstr "နိမ့်ကျတဲ့ ကန့်သတ်ချက်က အရမ်းနည်းလွန်းတယ်!"
+
+#: plugins/x2go/x2go_plugin.c:2441 plugins/x2go/x2go_plugin.c:2471
+#: plugins/x2go/x2go_plugin.c:2491
+#, fuzzy
+msgid "Something unknown went wrong."
+msgstr "တစ်စုံတစ်ရာ မှားယွင်းနေသည်"
+
+#: plugins/x2go/x2go_plugin.c:2446 plugins/x2go/x2go_plugin.c:2476
+#: plugins/x2go/x2go_plugin.c:2495
+#, fuzzy
+msgid "Please check the RemminaProtocolSetting array for possible errors."
+msgstr "ဖြစ်နိုင်တဲ့ အမှားတွေအတွက် RemminaProtocolSetting အစီအစဉ်ကို ကျေးဇူးပြု၍ စစ်ဆေးပါ။"
+
+#: plugins/x2go/x2go_plugin.c:2456
+#, fuzzy
 msgid "The upper limit is not a valid integer!"
-msgstr ""
+msgstr "အထက်က ကန့်သတ်ချက်က မှန်ကန်တဲ့ အင်တီဂျာ မဟုတ်ပါဘူး!"
 
-#: plugins/x2go/x2go_plugin.c:1525
+#: plugins/x2go/x2go_plugin.c:2461
+#, fuzzy
 msgid "The upper limit is too high!"
-msgstr ""
+msgstr "အထက်က ကန့်သတ်ချက်က အရမ်းမြင့်လွန်းတယ်!"
 
-#: plugins/x2go/x2go_plugin.c:1529
+#: plugins/x2go/x2go_plugin.c:2466
+#, fuzzy
 msgid "The upper limit is too low!"
-msgstr ""
+msgstr "အထက်က ကန့်သတ်ချက်က အရမ်းနည်းလွန်းတယ်!"
 
-#: plugins/x2go/x2go_plugin.c:1547
+#: plugins/x2go/x2go_plugin.c:2486
+#, fuzzy
 msgid "The input is not a valid integer!"
-msgstr ""
+msgstr "ဝင်ငွေသည် တရားဝင်အင်တီဂျားမဟုတ်ပါ!"
 
-#: plugins/x2go/x2go_plugin.c:1549 plugins/x2go/x2go_plugin.c:1568
-#, c-format
+#: plugins/x2go/x2go_plugin.c:2488 plugins/x2go/x2go_plugin.c:2507
+#, fuzzy, c-format
 msgid "Input must be a number between %i and %i."
-msgstr ""
+msgstr "%i နှင့် %i အကြား နံပါတ်တစ်ခု ဖြစ်ရမည်။"
 
-#: plugins/x2go/x2go_plugin.c:1597
+#: plugins/x2go/x2go_plugin.c:2536
 #, fuzzy
 msgid "Startup program"
-msgstr "စတင်ပရိုဂရမ်"
+msgstr "စတော့ပရိုဂရမ်"
 
-#: plugins/x2go/x2go_plugin.c:1599
+#: plugins/x2go/x2go_plugin.c:2538
+#, fuzzy
 msgid "Which command should be executed after creating the X2Go session?"
-msgstr ""
+msgstr "X2GO အစည်းအရုံးကို ဖန်တီးပြီးတဲ့နောက် ဘယ်အမိန့်ကို ကွပ်မျက်သင့်သလဲ။"
 
-#: plugins/x2go/x2go_plugin.c:1601
+#: plugins/x2go/x2go_plugin.c:2540
 #, fuzzy
 msgid "Keyboard Layout (auto)"
-msgstr "ကီးဘုတ်လက်ကွက် -"
+msgstr "Keybod Layout (Auto)"
 
-#: plugins/x2go/x2go_plugin.c:1602
+#: plugins/x2go/x2go_plugin.c:2541
 #, fuzzy
 msgid "Keyboard type (auto)"
-msgstr "ကီးဘုတ်လက်ကွက် -"
+msgstr "ကီးဘုတ်အမျိုးအစား (အော်တို)"
 
-#: plugins/x2go/x2go_plugin.c:1603
+#: plugins/x2go/x2go_plugin.c:2542
 #, fuzzy
 msgid "Audio support"
-msgstr "Java ထောက်ပံ့မှု"
+msgstr "Audiioထောက်ပံ့မှု"
 
-#: plugins/x2go/x2go_plugin.c:1605
+#: plugins/x2go/x2go_plugin.c:2544
+#, fuzzy
 msgid "The sound system of the X2Go server (default: 'pulse')."
-msgstr ""
+msgstr "X2Go ဆာဗာ ၏အသံစနစ် (မူလ: 'Pulse') ၏ အသံစနစ်။"
 
-#: plugins/x2go/x2go_plugin.c:1608
+#: plugins/x2go/x2go_plugin.c:2547
 #, fuzzy
 #| msgid "Per connection"
 msgid "Clipboard direction"
-msgstr "တီစီပီ အပြန်အလှန် ညွှန်ကြားချက်"
+msgstr "ကလစ်ဘုတ် လမ်းညွှန်ချက်"
 
-#: plugins/x2go/x2go_plugin.c:1610
+#: plugins/x2go/x2go_plugin.c:2549
+#, fuzzy
 msgid "Which direction should clipboard content be copied? (default: 'both')."
-msgstr ""
+msgstr "ဘယ်လမ်းညွှန်ချက်ကို ကလစ်ဘုတ် အကြောင်းအရာတွေကို ကူးယူသင့်သလဲ။ (ပျက်ကွက်မှု - 'နှစ်ယောက်စလုံး')။"
 
-#: plugins/x2go/x2go_plugin.c:1614
+#: plugins/x2go/x2go_plugin.c:2553
 #, fuzzy
 msgid "DPI resolution"
-msgstr "Resolution"
+msgstr "DPI ဖြေရှင်းချက်"
 
-#: plugins/x2go/x2go_plugin.c:1615
+#: plugins/x2go/x2go_plugin.c:2554
+#, fuzzy
 msgid ""
 "Launch session with a specific resolution (in dots per inch). Must be "
 "between 20 and 400."
 msgstr ""
+"သတ်သတ်မှတ်မှတ် ဖြေရှင်းချက် (တစ်လက်မလျှင် အစက်များတွင်) သတ်မှတ်ထားသော ဖြေရှင်းချက်ဖြင့် လွှတ်တင်ပါ။ ၂၀ နဲ့ "
+"၄၀၀ ကြားမှာ ရှိရမယ်။"
 
-#: plugins/x2go/x2go_plugin.c:1659
+#: plugins/x2go/x2go_plugin.c:2598
+#, fuzzy
 msgid "X2Go plugin loaded."
-msgstr ""
+msgstr "X2Go plugin ဝန်တင်ထားပါတယ်။"
 
 #: plugins/x2go/x2go_plugin.h:43
+#, fuzzy
 msgid "X2Go - Launch an X2Go session"
-msgstr ""
+msgstr "X2Go - X2Go အစည်းအရုံးကို စတင်ဖွင့်လှစ်ပါ"
 
 #: plugins/gvnc/gvnc_plugin_config.h:40
 #, fuzzy
@@ -3604,12 +3871,12 @@ msgstr "GNOME နဲ့ KVM အတွက် Remmina VNC plugy"
 #: plugins/gvnc/gvnc_plugin.c:477
 #, fuzzy, c-format
 msgid "Unsupported authentication type %u"
-msgstr "အတည်မပြုရသေးသော စစ်ဆေးမှုအမျိုးအစား [၃၂]"
+msgstr "%u"
 
 #: plugins/gvnc/gvnc_plugin.c:489
 #, fuzzy, c-format
 msgid "Authentication failure: %s"
-msgstr "စစ်ဆေးရေးပျက်ကွက်မှု - [၂၄]"
+msgstr "စစ်ဆေးရေးပျက်ကွက်မှု - %s"
 
 #: plugins/gvnc/gvnc_plugin.c:820
 #, fuzzy
@@ -3761,7 +4028,7 @@ msgid ""
 "%s wants to share their desktop.\n"
 "Do you accept?"
 msgstr ""
-"%s သူတို့ရဲ့ desktop ကို ဝေမျှချင်တယ်။\n"
+"%s က သူတို့ရဲ့ desktop ကို မျှဝေချင်ပါတယ်။\n"
 "သင်လက်ခံပါသလား"
 
 #: plugins/telepathy/telepathy_channel_handler.c:240
@@ -3784,7 +4051,7 @@ msgid ""
 "Some Remmina functions need to be set up to work properly.\n"
 "</span>\n"
 msgstr ""
-"<big> <b> Remmina Snappackage[28</big>]\n"
+"<big> <b> Remmina Snappackage[X28X[X32X</big>\n"
 "\n"
 "<span>\n"
 "Remmina က Snap ပက်ကေ့ခ်ျအဖြစ် သင့်စနစ်မှာ လည်နေပါတယ်။\n"
@@ -3807,7 +4074,7 @@ msgstr ""
 #: data/ui/remmina_snap_info_dialog.glade:167
 #, fuzzy
 msgid "<big>Permissions</big>"
-msgstr "<big> ခွင့်ပြုချက် [၁၆]"
+msgstr "<big> ခွင့်ပြုချက်</big>"
 
 #: data/ui/remmina_snap_info_dialog.glade:202
 #, fuzzy
@@ -3828,7 +4095,7 @@ msgstr "Remmina profile များ သိုလှောင်ထားသည�
 #: data/ui/remmina_snap_info_dialog.glade:261
 #, fuzzy
 msgid "<big>Snap settings</big>"
-msgstr "<big> [၁၈]"
+msgstr "<big> Snap သတ်မှတ်ချက်များ </big>"
 
 #: data/ui/remmina_snap_info_dialog.glade:274
 #, fuzzy
@@ -3838,7 +4105,7 @@ msgstr "ဒီသတင်းကို နောက်တစ်ခေါက် �
 #: data/ui/remmina_search_popover.glade:56 data/ui/remmina_search.glade:61
 #, fuzzy
 msgid "Search"
-msgstr "ရှာဖွေခြင်း"
+msgstr "ရှာမည်"
 
 #: data/ui/remmina_search_popover.glade:70 data/ui/remmina_search.glade:75
 #, fuzzy
@@ -3887,15 +4154,14 @@ msgid ""
 "Copyright © 2009–2014 Vic Lee\n"
 "More details in COPYING"
 msgstr ""
-"\n"
 "မူပေါင်ရိုက် © ၂၀၁၄-၂၀၂၁ အန်တီနို ဂတ်တာ၊ ဂျိုဗန်နီ ပန်နိုဇို။\n"
 "မူရေးရာ © ၂၀၀၉-၂၀၁၄ ဗစ် လီ\n"
-"ကူးယူရေးလုပ်ငန်းတွင် ပိုမိုအသေးစိတ်အချက်အလက်များ\n"
-"    "
+"ကူးယူရေးလုပ်ငန်းတွင် ပိုမိုအသေးစိတ်အချက်အလက်များ"
 
 #: data/ui/remmina_about.glade:38
+#, fuzzy
 msgid "https://www.remmina.org/"
-msgstr ""
+msgstr "https://www.remmina.org/"
 
 #: data/ui/remmina_string_list.glade:14 data/ui/remmina_string_list.glade:158
 #, fuzzy
@@ -3921,12 +4187,12 @@ msgstr "ရွေ့လျားမှု"
 #: data/ui/remmina_mpc.glade:14
 #, fuzzy
 msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
-msgstr "<span weight='bold' size='larger'> Multi စကားဝှက် အပြောင်းအလဲ [၅၆]"
+msgstr "<span weight='bold' size='larger'> Multi Traord Changer</span>"
 
 #: data/ui/remmina_mpc.glade:32
 #, fuzzy
 msgid "Change"
-msgstr "Change"
+msgstr "အပြောင်းအလဲများ"
 
 #: data/ui/remmina_mpc.glade:201
 #, fuzzy
@@ -3936,7 +4202,7 @@ msgstr "ရွေးချယ်မှုစံနှုန်းများ"
 #: data/ui/remmina_mpc.glade:261
 #, fuzzy
 msgid "Confirm password"
-msgstr "စကားဝှက်ကို အတည်ပြုပါ"
+msgstr "စကားဝှက် အတည်ပြုပါ"
 
 #: data/ui/remmina_mpc.glade:294
 #, fuzzy
@@ -3960,7 +4226,7 @@ msgstr "အမည်"
 #, fuzzy
 msgctxt "Multi password changer table"
 msgid "Group"
-msgstr "Group"
+msgstr "အုပ်စု"
 
 #: data/ui/remmina_mpc.glade:365
 #, fuzzy
@@ -3987,7 +4253,7 @@ msgid ""
 "release notes\"><i>Visit the website to read the release notes</i></a>.\n"
 "</span>"
 msgstr ""
-"<big> <b> သတင်းကို ပိတ်လိုက်[၃၁][၃၅]]\n"
+"<big> <b> </b></b>[X31X</big>\n"
 "\n"
 "<span>\n"
 "သတင်း များ ကို ဖွင့် ခြင်း သည် အစီအစဉ် သည် ထုတ်ပြန် ချက် မှတ်စု များ ကို ဒေါင်းလုတ်ဆွဲ ရန် ရီမီနာ ဆာဗာ "
@@ -4000,7 +4266,7 @@ msgstr ""
 "\n"
 "<span>\n"
 "<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
-"release notes\"> <i> [၃၆၁[၃၆၅]ကို ဖတ်ရှုရန် ဝက်ဘ်ဆိုက်သို့ ဝင်ကြည့်ပါ။\n"
+"release notes\"> <i> </i>[X361X</a> ကို ဖတ်ရှုရန် ဝက်ဘ်ဆိုက်သို့ ဝင်ကြည့်ပါ။\n"
 "</span>"
 
 #. The star (*) is a reference to privacy consent
@@ -4010,7 +4276,12 @@ msgid ""
 "Send <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
 "remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
 "\">anonymous</a></b> statistics. (*)"
-msgstr "[၅][၈][၈]စာရင်းဇယားများကို ပေးပို့ပါ။ (*)"
+msgstr ""
+"<b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
+"remmina__stats_8c.html#details\" title=\"Remmina usage statistics\"><a href="
+"\"https://remmina.gitlab.io/remminadoc.gitlab.io/remmina__stats_8c."
+"html#details\" title=\"Remmina usage statistics\">] အမည်မသိ</a>[X138X</b> "
+"စာရင်းများကို ပေးပို့ပါ။ (*)"
 
 #: data/ui/remmina_news.glade:142 data/ui/remmina_news.glade:195
 #, fuzzy
@@ -4024,7 +4295,7 @@ msgstr "Remote Desktop Server တစ်ခုကိုရွေးပါ"
 #: data/ui/remmina_news.glade:165
 #, fuzzy
 msgid "Apply"
-msgstr "Apply"
+msgstr "App"
 
 #: data/ui/remmina_news.glade:169
 #, fuzzy
@@ -4037,7 +4308,9 @@ msgstr "Remmina ကို .rdp နှင့် .Remmina ဖိုင်မျာ
 msgid ""
 "Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
 "\">remmina.org</a> (*)"
-msgstr "[၁၆]remmina.org[၈၃] ထံမှ ဖက်ယမ်းသတင်း (*"
+msgstr ""
+"<a href=\"https://remmina.org\" title=\"Remmina news site\">remmina.org </a> "
+"(*"
 
 #: data/ui/remmina_news.glade:208 data/ui/remmina_preferences.glade:446
 #, fuzzy
@@ -4050,7 +4323,7 @@ msgstr ""
 #: data/ui/remmina_news.glade:231
 #, fuzzy
 msgid "<big>Take part</big>"
-msgstr "<big> [၁၄] ပါဝင်ပါ"
+msgstr "<big> </big> တွင်ပါဝင်ပါ</big>"
 
 #. Pay attention to the quoting characters as they may break the pango layout. If in doubt and cannot test, copy and paste the symbols from the English string.
 #: data/ui/remmina_news.glade:257
@@ -4064,14 +4337,15 @@ msgid ""
 "</span>\n"
 msgstr ""
 "<span>\n"
-"<b> [ ၇၂] လှူဒါန်း မှု များ က လည်း ကျွန်ုပ် တို့ ကို ပျော် ရွှင် စေသည် [၁၉၂] ကို ရွေးချယ် ရာ တွင် ကျွန်ုပ် "
-"တို့ ၏ ကျေးဇူးတင် မှု ရှိ ပါ သည် ။ </b>\n"
+"<b> <a href=\"https://remmina.org/donations/\" title=\"Where’s the money, "
+"Lebowski? “blblblblblb”\">လှူဒါန်းမှုများကလည်း ကျွန်ုပ်တို့ကို ပျော်ရွှင်စေပြီး ရမ်မီနာကို "
+"တိုးတက်ကောင်းမွန်စေပါသည်။ </b>\n"
 "</span>\n"
 
 #: data/ui/remmina_news.glade:277
 #, fuzzy
 msgid "<big>Contribute</big>"
-msgstr "<big> လှူဒါန်းခြင်း [၁၅]"
+msgstr "<big> လှူဒါန်းခြင်း</big>"
 
 #: data/ui/remmina_key_chooser.glade:23
 #, fuzzy
@@ -4116,12 +4390,12 @@ msgstr "ဆာဗာအမည် (သို့) IP လိပ်စာ"
 #: data/ui/remmina_preferences.glade:504
 #, fuzzy
 msgid "Clear"
-msgstr "ရှင်းလင်း"
+msgstr "ရှင်းပါ"
 
 #: data/ui/remmina_main.glade:187
 #, fuzzy
 msgid "Edit"
-msgstr "တည်းဖြတ်ပါ"
+msgstr "ပြင်ရန်"
 
 #: data/ui/remmina_main.glade:217
 #, fuzzy
@@ -4146,7 +4420,7 @@ msgstr "ညှိုးနွမ်းခြင်း"
 #: data/ui/remmina_main.glade:295
 #, fuzzy
 msgid "Export"
-msgstr "တင်ပို့ပါ"
+msgstr "ပို့ကုန်"
 
 #: data/ui/remmina_main.glade:322
 #, fuzzy
@@ -4187,7 +4461,7 @@ msgstr "Pluggy"
 #: data/ui/remmina_main.glade:506
 #, fuzzy
 msgid "Last used"
-msgstr "Last used"
+msgstr "နောက်ဆုံးအသုံးပြုခဲ့"
 
 #: data/ui/remmina_main.glade:555
 msgid "New connection profile"
@@ -4206,7 +4480,7 @@ msgstr "Remmina mama mamu"
 #: data/ui/remmina_main.glade:594
 #, fuzzy
 msgid "Actions"
-msgstr "လုပ်ဆောင်ချက်များ"
+msgstr "လုပ်ရပ်များ"
 
 #: data/ui/remmina_main.glade:609
 #, fuzzy
@@ -4380,7 +4654,7 @@ msgstr "ကလစ်ဘုတ်ထဲ ဝင်ဖို့ ဖန်သား�
 #: data/ui/remmina_preferences.glade:529
 #, fuzzy
 msgid "Options"
-msgstr "ရွေးချယ်ရန်"
+msgstr "ရွေးစရာများ"
 
 #: data/ui/remmina_preferences.glade:554
 #, fuzzy
@@ -4400,7 +4674,7 @@ msgstr "စံထားချက်အမြင်"
 #: data/ui/remmina_preferences.glade:605
 #, fuzzy
 msgid "Automatic"
-msgstr "အော်တိုမက်တစ်"
+msgstr "အလိုအလျောက်"
 
 #: data/ui/remmina_preferences.glade:606
 #, fuzzy
@@ -4446,7 +4720,7 @@ msgstr "ငေးကြည့်ခြင်း"
 #: data/ui/remmina_preferences.glade:676
 #, fuzzy
 msgid "Hidden"
-msgstr "Hidden"
+msgstr "ဝှက်ထားသော"
 
 #: data/ui/remmina_preferences.glade:693
 #, fuzzy
@@ -4907,7 +5181,7 @@ msgstr "Remmina ကြိုက်နှစ်သက်မှုများ"
 #: data/ui/remmina_unlock.glade:60
 #, fuzzy
 msgid "Unlock"
-msgstr "Unlock"
+msgstr "ဖွင့်ပါ"
 
 #: data/ui/remmina_unlock.glade:94
 #, fuzzy
@@ -4918,6 +5192,14 @@ msgstr "ရမ်မီနာကိုဖွင့်ပါ"
 #, fuzzy
 msgid "Master password"
 msgstr "Master စကားဝှက်"
+
+#, fuzzy, c-format
+#~ msgid "Could not retrieve PyHoca-CLI's command-line features! Exit code: %i"
+#~ msgstr "Pyhoca-CLI ရဲ့ အုပ်ချုပ်မှုလိုင်း အသွင်အပြင်တွေကို မရယူနိုင်ဘူး! %i"
+
+#, fuzzy, c-format
+#~ msgid "Error: '%s'"
+#~ msgstr "အမှား– '%s"
 
 #, fuzzy
 #~ msgid "Website"
