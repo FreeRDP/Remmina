@@ -326,6 +326,19 @@ int main(int argc, char *argv[])
 
 	g_unsetenv("GDK_CORE_DEVICE_EVENTS");
 
+	// Checking for environment variable "G_MESSAGES_DEBUG"
+	// Give the less familiar with GLib a tip on where to get
+	// more debugging information.
+	if(!getenv("G_MESSAGES_DEBUG")) {
+		g_message(_("Remmina does not log all output statements. To enable a "
+			    "more verbose output please use G_MESSAGES_DEBUG=all as an "
+			    "environment variable. "),
+			  // TRANSLATORS: This link should point to a resource explaining
+			  // TRANSLATORS: how to get Remmina to log debug statements.
+			  _("For more information, please visit the Remmina Wiki: "
+			    "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"));
+	}
+
 	/* Enable wayland backend only after GTK 3.22.27 or the clipboard
 	 * will not work. See GTK bug 790031 */
 	if (remmina_gtk_check_version(3, 22, 27))
