@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Remmina v1.4.11\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-11-09 14:11+0000\n"
-"PO-Revision-Date: 2021-11-09 14:12+0000\n"
+"POT-Creation-Date: 2021-11-11 20:00+0000\n"
+"PO-Revision-Date: 2021-11-11 20:01+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Georgian <https://hosted.weblate.org/projects/remmina/remmina/"
 "ka/>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.9-dev\n"
+"X-Generator: Weblate 4.9.1-dev\n"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:354
 #: src/remmina_protocol_widget.c:1676 src/remmina_protocol_widget.c:1695
@@ -535,12 +535,26 @@ msgstr ""
 msgid "Encrypt a password"
 msgstr ""
 
+#: src/remmina.c:333
+msgid ""
+"Remmina does not log all output statements. To enable a more verbose output "
+"please use G_MESSAGES_DEBUG=all as an environment variable. "
+msgstr ""
+
+#. TRANSLATORS: This link should point to a resource explaining
+#. TRANSLATORS: how to get Remmina to log debug statements.
+#: src/remmina.c:338
+msgid ""
+"For more information, please visit the Remmina Wiki: https://gitlab.com/"
+"Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
+msgstr ""
+
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:375
+#: src/remmina.c:388
 msgid "- or protocol://username:encryptedpassword@host:port"
 msgstr ""
 
-#: src/remmina.c:378
+#: src/remmina.c:391
 msgid ""
 "Examples:\n"
 "To connect using an existing connection profile, use:\n"
@@ -2818,11 +2832,13 @@ msgid "Secured password storage in the GNOME keyring"
 msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:67
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "The command-line feature '%s' is not available! Attempting to start PyHoca-"
 "CLI without using this feature…"
 msgstr ""
+"ბრძანების ხაზის ფუნქცია '%s' ხელმისაწვდომი არ არის! PyHoca-CLI- ს დაწყების "
+"მცდელობა ამ ფუნქციის გამოყენების გარეშე …"
 
 #: plugins/x2go/x2go_plugin.c:277
 #, fuzzy
@@ -2837,15 +2853,17 @@ msgstr "ვერ მოვახდინოთ \"დიალოგდატ�
 #: plugins/x2go/x2go_plugin.c:438
 #, fuzzy
 msgid "Couldn't retrieve valid `DialogData` or `sessions_list`! Aborting…"
-msgstr "ვერ მოვახდინოთ \"დიალოგდატა\"! აბორტი…"
+msgstr "ვერ მოვახდინოთ მოქმედი \"დიალოგდატა\" ან \"sessions_list\"! აბორტი…"
 
 #: plugins/x2go/x2go_plugin.c:445
+#, fuzzy
 msgid "_New"
-msgstr ""
+msgstr "_New"
 
 #: plugins/x2go/x2go_plugin.c:447
+#, fuzzy
 msgid "_Select session"
-msgstr ""
+msgstr "_Select სესია"
 
 #: plugins/x2go/x2go_plugin.c:506
 msgid "Display"
@@ -2856,40 +2874,49 @@ msgid "Status"
 msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:508
+#, fuzzy
 msgid "Session ID"
-msgstr ""
+msgstr "სხდომის ID"
 
 #: plugins/x2go/x2go_plugin.c:509
+#, fuzzy
 msgid "Create date"
-msgstr ""
+msgstr "თარიღის შექმნა"
 
 #: plugins/x2go/x2go_plugin.c:510
+#, fuzzy
 msgid "Suspended since"
-msgstr ""
+msgstr "მას შემდეგ შეჩერებულია"
 
 #: plugins/x2go/x2go_plugin.c:511
+#, fuzzy
 msgid "Agent PID"
-msgstr ""
+msgstr "აგენტი PID"
 
 #: plugins/x2go/x2go_plugin.c:513
+#, fuzzy
 msgid "Hostname"
-msgstr ""
+msgstr "ჰოსტის სახელი"
 
 #: plugins/x2go/x2go_plugin.c:514
+#, fuzzy
 msgid "Cookie"
-msgstr ""
+msgstr "ფუნთუშა"
 
 #: plugins/x2go/x2go_plugin.c:515
+#, fuzzy
 msgid "Graphic port"
-msgstr ""
+msgstr "გრაფიკული პორტი"
 
 #: plugins/x2go/x2go_plugin.c:516
+#, fuzzy
 msgid "SND port"
-msgstr ""
+msgstr "SND პორტი"
 
 #: plugins/x2go/x2go_plugin.c:517
+#, fuzzy
 msgid "SSHFS port"
-msgstr ""
+msgstr "SSHFS პორტი"
 
 #: plugins/x2go/x2go_plugin.c:519 plugins/x2go/x2go_plugin.c:585
 #: plugins/x2go/x2go_plugin.c:599 plugins/x2go/x2go_plugin.c:614
@@ -2903,36 +2930,42 @@ msgstr ""
 #: plugins/x2go/x2go_plugin.c:2465 plugins/x2go/x2go_plugin.c:2470
 #, fuzzy, c-format
 msgid "Internal error: %s"
-msgstr "შიდა შეცდომა: "
+msgstr "შიდა შეცდომა: %s"
 
 #: plugins/x2go/x2go_plugin.c:520
+#, fuzzy
 msgid "Unknown property"
-msgstr ""
+msgstr "უცნობი ქონება"
 
 #: plugins/x2go/x2go_plugin.c:586
+#, fuzzy
 msgid "Couldn't find child GtkTreeView of session chooser dialog."
-msgstr ""
+msgstr "ვერ ვპოულობ ბავშვს GtkTreeView სესიის არჩევის დიალოგის შესახებ."
 
 #: plugins/x2go/x2go_plugin.c:600
+#, fuzzy
 msgid "only one session should be able to be selected."
-msgstr ""
+msgstr "მხოლოდ ერთი სესია უნდა შეირჩეს."
 
 #: plugins/x2go/x2go_plugin.c:615
+#, fuzzy
 msgid "Failed to fill 'GtkTreeIter'."
-msgstr ""
+msgstr "ვერ შეავსო 'GtkTreeIter'."
 
 #: plugins/x2go/x2go_plugin.c:627
+#, fuzzy
 msgid "Couldn't get session ID out of selected row."
-msgstr ""
+msgstr "ვერ მოხერხდა სესიის პირადობის მოწმობა შერჩეული რიგიდან."
 
 #: plugins/x2go/x2go_plugin.c:660
+#, fuzzy
 msgid "Couldn't get session ID from session chooser dialog."
-msgstr ""
+msgstr "სესიის ID ვერ მივიღე სესიის ამომრჩევლის დიალოგიდან."
 
 #: plugins/x2go/x2go_plugin.c:667
-#, c-format
+#, fuzzy, c-format
 msgid "Resuming session: '%s'"
-msgstr ""
+msgstr "განახლების სესია: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:892
 #, fuzzy
@@ -2956,16 +2989,19 @@ msgstr ""
 "შესაძლო შეცდომებისთვის. ასევე უზრუნველყოს დისტანციური სერვერის მიღწევა."
 
 #: plugins/x2go/x2go_plugin.c:937
+#, fuzzy
 msgid "parameter 'argv' is 'NULL'."
-msgstr ""
+msgstr "პარამეტრი \"argv\" არის \"NULL\"."
 
 #: plugins/x2go/x2go_plugin.c:948
+#, fuzzy
 msgid "parameter 'error' is 'NULL'."
-msgstr ""
+msgstr "პარამეტრი 'შეცდომა' არის 'NULL'."
 
 #: plugins/x2go/x2go_plugin.c:956
+#, fuzzy
 msgid "parameter 'env' is either invalid or uninitialized."
-msgstr ""
+msgstr "პარამეტრი \"env\" ან არასწორია ან უნიტარიზებულია."
 
 #: plugins/x2go/x2go_plugin.c:972
 #, fuzzy
@@ -2975,31 +3011,35 @@ msgstr "დაიწყო PyHoca-CLI შემდეგი არგუმე�
 #: plugins/x2go/x2go_plugin.c:988
 #, fuzzy
 msgid "Started PyHoca-CLI with the following environment variables:"
-msgstr "დაიწყო PyHoca-CLI შემდეგი არგუმენტებით:"
+msgstr "დაიწყო PyHoca-CLI შემდეგი გარემოს ცვლადებით:"
 
 #: plugins/x2go/x2go_plugin.c:997
+#, fuzzy
 msgid ""
 "The necessary PyHoca-CLI process has encountered a internet connection "
 "problem."
-msgstr ""
+msgstr "აუცილებელი PyHoca-CLI პროცესი შეექმნა ინტერნეტ კავშირის პრობლემას."
 
 #: plugins/x2go/x2go_plugin.c:1007
 #, fuzzy
 msgid "An unknown error occured while trying to start PyHoca-CLI."
-msgstr "შეცდომა მოხდა X2Go სესიის დაწყებისას…"
+msgstr "უცნობი შეცდომა მოხდა PyHoca-CLI- ს დაწყების მცდელობისას."
 
 #: plugins/x2go/x2go_plugin.c:1017
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i"
 msgstr ""
+"უცნობი შეცდომა მოხდა PyHoca-CLI- ს დაწყების მცდელობისას. გასასვლელი კოდი: %i"
 
 #: plugins/x2go/x2go_plugin.c:1022
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i. "
 "Error: '%s'"
 msgstr ""
+"უცნობი შეცდომა მოხდა PyHoca-CLI- ს დაწყების მცდელობისას. გასასვლელი კოდი: "
+"%i. შეცდომა: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:1047
 #, fuzzy
@@ -3009,7 +3049,7 @@ msgstr "ცარიელი სახელის შენახვა არ
 #: plugins/x2go/x2go_plugin.c:1061
 #, fuzzy
 msgid "Could not save new credentials."
-msgstr "შიდა შეცდომა: ვერ შეინახეთ ახალი სერთიფიკატები."
+msgstr "ვერ ვზოგავ ახალ სერთიფიკატებს."
 
 #: plugins/x2go/x2go_plugin.c:1064
 #, fuzzy
@@ -3021,8 +3061,9 @@ msgstr ""
 "\"s_username\" სტრიქონები არ იყო მითითებული."
 
 #: plugins/x2go/x2go_plugin.c:1095
+#, fuzzy
 msgid "Parameter 'default_username' is uninitialized."
-msgstr ""
+msgstr "პარამეტრი \"default_username\" გაერთიანებულია."
 
 #: plugins/x2go/x2go_plugin.c:1124
 #, fuzzy
@@ -3032,55 +3073,62 @@ msgstr "შეიყვანეთ X2Go სერთიფიკატები
 #: plugins/x2go/x2go_plugin.c:1201
 #, fuzzy
 msgid "'Invalid connection data.'"
-msgstr "გაზიარებული კავშირი"
+msgstr "'არასწორი კავშირის მონაცემები'."
 
 #: plugins/x2go/x2go_plugin.c:1323
+#, fuzzy
 msgid ""
 "Couldn't parse the output of PyHoca-CLI's --list-sessions option. Creating a "
 "new session now."
 msgstr ""
+"ვერ გაანალიზებს PyHoca-CLI- ს გამომავალს --სია-სესიების ვარიანტს. ახლა ახალი "
+"სესიის შექმნა."
 
 #: plugins/x2go/x2go_plugin.c:1362
+#, fuzzy
 msgid "Couldn't allocate enough memory!"
-msgstr ""
+msgstr "ვერ გამოვყოფდი საკმარის მეხსიერებას!"
 
 #: plugins/x2go/x2go_plugin.c:1372
-#, c-format
+#, fuzzy, c-format
 msgid "Found already existing X2Go session with ID: '%s'"
-msgstr ""
+msgstr "მოიძებნა უკვე არსებული X2Go სესია ID- ით: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:1444
+#, fuzzy
 msgid ""
 "Could not find any sessions on remote machine. Creating a new session now."
-msgstr ""
+msgstr "ვერ ვპოულობ დისტანციურ მანქანას. ახლა ახალი სესიის შექმნა."
 
 #: plugins/x2go/x2go_plugin.c:1485
+#, fuzzy
 msgid "Choose a session to resume:"
-msgstr ""
+msgstr "აირჩიეთ სესია განახლებისთვის:"
 
 #: plugins/x2go/x2go_plugin.c:1502
 #, fuzzy
 msgid "Waiting for user to select a session…"
-msgstr "ველოდები PyHoca-CLI- ს სესიის ფანჯრის საჩვენებლად …"
+msgstr "ველოდები მომხმარებელს სესიის არჩევას…"
 
 #: plugins/x2go/x2go_plugin.c:1510
+#, fuzzy
 msgid "No session was selected. Creating a new one."
-msgstr ""
+msgstr "სესია არ შეირჩა. ახალის შექმნა."
 
 #: plugins/x2go/x2go_plugin.c:1558
-#, c-format
+#, fuzzy, c-format
 msgid "A non-critical error happened: %s"
-msgstr ""
+msgstr "მოხდა არაკრიტიკული შეცდომა: %s"
 
 #: plugins/x2go/x2go_plugin.c:1563
-#, c-format
+#, fuzzy, c-format
 msgid "User chose to resume session with ID: '%s'"
-msgstr ""
+msgstr "მომხმარებელმა აირჩია სხდომის განახლება ID- ით: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:1583
-#, c-format
+#, fuzzy, c-format
 msgid "Resuming session '%s'…"
-msgstr ""
+msgstr "განახლებული სესია '%s'…"
 
 #: plugins/x2go/x2go_plugin.c:1706
 #, fuzzy
@@ -3161,7 +3209,7 @@ msgstr "X2Go სესიის ფანჯარა არ გამოჩნ�
 #: plugins/x2go/x2go_plugin.c:2213
 #, fuzzy
 msgid "RemminaProtocolWidget* gp is 'NULL'!"
-msgstr "შიდა შეცდომა: RemminaProtocolWidget * gp არის NULL!"
+msgstr "RemminaProtocolWidget* gp არის \"NULL\"!"
 
 #: plugins/x2go/x2go_plugin.c:2234
 #, fuzzy, c-format
@@ -3218,8 +3266,9 @@ msgid "Validation data in ProtocolSettings array is invalid!"
 msgstr "Validation მონაცემები ProtocolSettings მასივი არასწორია!"
 
 #: plugins/x2go/x2go_plugin.c:2359
+#, fuzzy
 msgid "Parameters 'key' or 'value' are 'NULL'!"
-msgstr ""
+msgstr "პარამეტრები \"გასაღები\" ან \"მნიშვნელობა\" არის \"NULL\"!"
 
 #: plugins/x2go/x2go_plugin.c:2377
 #, fuzzy, c-format
@@ -3250,7 +3299,7 @@ msgstr "ქვედა ზღვარი ძალიან დაბალი
 #: plugins/x2go/x2go_plugin.c:2491
 #, fuzzy
 msgid "Something unknown went wrong."
-msgstr "ნვღჲ ნვ ვ ნაპვე."
+msgstr "რაღაც უცნობი არასწორია."
 
 #: plugins/x2go/x2go_plugin.c:2446 plugins/x2go/x2go_plugin.c:2476
 #: plugins/x2go/x2go_plugin.c:2495

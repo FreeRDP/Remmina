@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-11-09 14:11+0000\n"
-"PO-Revision-Date: 2021-10-29 12:15+0000\n"
+"POT-Creation-Date: 2021-11-11 20:00+0000\n"
+"PO-Revision-Date: 2021-11-11 20:01+0000\n"
 "Last-Translator: gogogogi <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/remmina/remmina/"
 "hr/>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.9-dev\n"
+"X-Generator: Weblate 4.9.1-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:25+0000\n"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:354
@@ -542,12 +542,26 @@ msgstr ""
 msgid "Encrypt a password"
 msgstr "Šifriraj lozinku"
 
+#: src/remmina.c:333
+msgid ""
+"Remmina does not log all output statements. To enable a more verbose output "
+"please use G_MESSAGES_DEBUG=all as an environment variable. "
+msgstr ""
+
+#. TRANSLATORS: This link should point to a resource explaining
+#. TRANSLATORS: how to get Remmina to log debug statements.
+#: src/remmina.c:338
+msgid ""
+"For more information, please visit the Remmina Wiki: https://gitlab.com/"
+"Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
+msgstr ""
+
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:375
+#: src/remmina.c:388
 msgid "- or protocol://username:encryptedpassword@host:port"
 msgstr "- ili protokol://korisničko ime:šifrirana lozinka@računalo:ulaz"
 
-#: src/remmina.c:378
+#: src/remmina.c:391
 msgid ""
 "Examples:\n"
 "To connect using an existing connection profile, use:\n"
@@ -2899,6 +2913,8 @@ msgid ""
 "The command-line feature '%s' is not available! Attempting to start PyHoca-"
 "CLI without using this feature…"
 msgstr ""
+"Značajka naredbenog retka '%s' nije dostupna! Pokušaj pokretanja PyHoca-CLI "
+"bez korištenja ove značajke…"
 
 #: plugins/x2go/x2go_plugin.c:277
 msgid "Broken `DialogData`! Aborting…"
@@ -2909,20 +2925,17 @@ msgid "Can't retrieve `DialogData`! Aborting…"
 msgstr "Nemoguće primanje `DialogData`! Prekidanje…"
 
 #: plugins/x2go/x2go_plugin.c:438
-#, fuzzy
-#| msgid "Can't retrieve `DialogData`! Aborting…"
 msgid "Couldn't retrieve valid `DialogData` or `sessions_list`! Aborting…"
-msgstr "Nemoguće primanje `DialogData`! Prekidanje…"
+msgstr ""
+"Nemoguće primanje valjanog `DialogData`ili `sessions_list`! Prekidanje…"
 
 #: plugins/x2go/x2go_plugin.c:445
 msgid "_New"
-msgstr ""
+msgstr "_Nova"
 
 #: plugins/x2go/x2go_plugin.c:447
-#, fuzzy
-#| msgid "_Select all"
 msgid "_Select session"
-msgstr "_Odaberi sve"
+msgstr "_Odaberi sesiju"
 
 #: plugins/x2go/x2go_plugin.c:506
 msgid "Display"
@@ -2933,46 +2946,40 @@ msgid "Status"
 msgstr "Stanje"
 
 #: plugins/x2go/x2go_plugin.c:508
-#, fuzzy
-#| msgid "Permission"
 msgid "Session ID"
-msgstr "Dozvola"
+msgstr "ID sesije"
 
 #: plugins/x2go/x2go_plugin.c:509
 msgid "Create date"
-msgstr ""
+msgstr "Datum stvaranja"
 
 #: plugins/x2go/x2go_plugin.c:510
 msgid "Suspended since"
-msgstr ""
+msgstr "Suspendirano od"
 
 #: plugins/x2go/x2go_plugin.c:511
 msgid "Agent PID"
-msgstr ""
+msgstr "PID agenta"
 
 #: plugins/x2go/x2go_plugin.c:513
-#, fuzzy
-#| msgid "Username"
 msgid "Hostname"
-msgstr "Korisničko ime"
+msgstr "Naziv računala"
 
 #: plugins/x2go/x2go_plugin.c:514
 msgid "Cookie"
-msgstr ""
+msgstr "Kolačić"
 
 #: plugins/x2go/x2go_plugin.c:515
 msgid "Graphic port"
-msgstr ""
+msgstr "Grafički ulaz"
 
 #: plugins/x2go/x2go_plugin.c:516
 msgid "SND port"
-msgstr ""
+msgstr "SND ulaz"
 
 #: plugins/x2go/x2go_plugin.c:517
-#, fuzzy
-#| msgid "Local SSH port"
 msgid "SSHFS port"
-msgstr "Lokalni SSH ulaz"
+msgstr "SSHFS ulaz"
 
 #: plugins/x2go/x2go_plugin.c:519 plugins/x2go/x2go_plugin.c:585
 #: plugins/x2go/x2go_plugin.c:599 plugins/x2go/x2go_plugin.c:614
@@ -2984,39 +2991,38 @@ msgstr "Lokalni SSH ulaz"
 #: plugins/x2go/x2go_plugin.c:2435 plugins/x2go/x2go_plugin.c:2440
 #: plugins/x2go/x2go_plugin.c:2455 plugins/x2go/x2go_plugin.c:2460
 #: plugins/x2go/x2go_plugin.c:2465 plugins/x2go/x2go_plugin.c:2470
-#, fuzzy, c-format
-#| msgid "Internal error: "
+#, c-format
 msgid "Internal error: %s"
-msgstr "Unutrašnja greška: "
+msgstr "Unutrašnja greška: %s"
 
 #: plugins/x2go/x2go_plugin.c:520
 msgid "Unknown property"
-msgstr ""
+msgstr "Nepoznato svojstvo"
 
 #: plugins/x2go/x2go_plugin.c:586
 msgid "Couldn't find child GtkTreeView of session chooser dialog."
-msgstr ""
+msgstr "Nemoguć pronalazak sadržanog GtkTreeView dijaloga odabiratelja sesije."
 
 #: plugins/x2go/x2go_plugin.c:600
 msgid "only one session should be able to be selected."
-msgstr ""
+msgstr "samo se jedna sesija može odabrati."
 
 #: plugins/x2go/x2go_plugin.c:615
 msgid "Failed to fill 'GtkTreeIter'."
-msgstr ""
+msgstr "Neuspjelo popunjavanje 'GtkTreeIter'."
 
 #: plugins/x2go/x2go_plugin.c:627
 msgid "Couldn't get session ID out of selected row."
-msgstr ""
+msgstr "Neuspjelo dobivanje ID sesije iz odabranog retka."
 
 #: plugins/x2go/x2go_plugin.c:660
 msgid "Couldn't get session ID from session chooser dialog."
-msgstr ""
+msgstr "Neuspjelo dobivanje ID sesije iz dijaloga odabiratelja sesije."
 
 #: plugins/x2go/x2go_plugin.c:667
 #, c-format
 msgid "Resuming session: '%s'"
-msgstr ""
+msgstr "Pokretanje sesije: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:892
 msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
@@ -3039,43 +3045,41 @@ msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:937
 msgid "parameter 'argv' is 'NULL'."
-msgstr ""
+msgstr "parametar 'argv' je 'NULL'."
 
 #: plugins/x2go/x2go_plugin.c:948
 msgid "parameter 'error' is 'NULL'."
-msgstr ""
+msgstr "parametar 'error' je 'NULL'."
 
 #: plugins/x2go/x2go_plugin.c:956
 msgid "parameter 'env' is either invalid or uninitialized."
-msgstr ""
+msgstr "parametar 'env' ili je nevaljan ili nije pokrenut."
 
 #: plugins/x2go/x2go_plugin.c:972
 msgid "Started PyHoca-CLI with the following arguments:"
 msgstr "Pokrenut je PyHoca-CLI sa sljedećim argumentima:"
 
 #: plugins/x2go/x2go_plugin.c:988
-#, fuzzy
-#| msgid "Started PyHoca-CLI with the following arguments:"
 msgid "Started PyHoca-CLI with the following environment variables:"
-msgstr "Pokrenut je PyHoca-CLI sa sljedećim argumentima:"
+msgstr "Pokrenut je PyHoca-CLI sa sljedećim argumentima okruženja:"
 
 #: plugins/x2go/x2go_plugin.c:997
 msgid ""
 "The necessary PyHoca-CLI process has encountered a internet connection "
 "problem."
 msgstr ""
+"Potreban PyHoca-CLI proces je naišao na unutrašnji problem povezivanja."
 
 #: plugins/x2go/x2go_plugin.c:1007
-#, fuzzy
-#| msgid "An error occured while starting an X2Go session…"
 msgid "An unknown error occured while trying to start PyHoca-CLI."
-msgstr "Greška se dogodila pri pokretanju X2Go sesije…"
+msgstr "Nepoznata greška se dogodila pri pokretanju PyHoca-CLI."
 
 #: plugins/x2go/x2go_plugin.c:1017
 #, c-format
 msgid ""
 "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i"
 msgstr ""
+"Nepoznata greška se dogodila pri pokretanju PyHoca-CLI. Izlazni kôd: %i"
 
 #: plugins/x2go/x2go_plugin.c:1022
 #, c-format
@@ -3083,16 +3087,16 @@ msgid ""
 "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i. "
 "Error: '%s'"
 msgstr ""
+"Nepoznata greška se dogodila pri pokretanju PyHoca-CLI. Izlazni kôd: %i. "
+"Greška: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:1047
 msgid "Can't save empty username!"
 msgstr "Nemoguće spremanje praznog korisničkog imena!"
 
 #: plugins/x2go/x2go_plugin.c:1061
-#, fuzzy
-#| msgid "Internal error: Could not save new credentials."
 msgid "Could not save new credentials."
-msgstr "Unutrašnja greška: Nemoguće spremanje novih vjerodajnica."
+msgstr "Nemoguće spremanje novih vjerodajnica."
 
 #: plugins/x2go/x2go_plugin.c:1064
 msgid ""
@@ -3104,68 +3108,65 @@ msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:1095
 msgid "Parameter 'default_username' is uninitialized."
-msgstr ""
+msgstr "Parametar 'default_username' nije pokrenut."
 
 #: plugins/x2go/x2go_plugin.c:1124
 msgid "Enter X2Go credentials"
 msgstr "Upišite X2Go vjerodajnice"
 
 #: plugins/x2go/x2go_plugin.c:1201
-#, fuzzy
-#| msgid "Shared connection"
 msgid "'Invalid connection data.'"
-msgstr "Dijeljena povezivanja"
+msgstr "'Nevaljani podaci povezivanja.'"
 
 #: plugins/x2go/x2go_plugin.c:1323
 msgid ""
 "Couldn't parse the output of PyHoca-CLI's --list-sessions option. Creating a "
 "new session now."
 msgstr ""
+"Nemoguća obrada izlaza PyHoca-CLI --list-sessions mogućnosti. Stvaranje nove "
+"sesije."
 
 #: plugins/x2go/x2go_plugin.c:1362
 msgid "Couldn't allocate enough memory!"
-msgstr ""
+msgstr "Nemoguće dodjeljivanje potrebne memorije!"
 
 #: plugins/x2go/x2go_plugin.c:1372
 #, c-format
 msgid "Found already existing X2Go session with ID: '%s'"
-msgstr ""
+msgstr "Već je pronađena postojeća X2Go sesija sa ID: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:1444
 msgid ""
 "Could not find any sessions on remote machine. Creating a new session now."
 msgstr ""
+"Nemoguć pronalazaka sesija na udaljenom računalu. Stvaranje nove sesije."
 
 #: plugins/x2go/x2go_plugin.c:1485
-#, fuzzy
-#| msgid "Choose a file to upload"
 msgid "Choose a session to resume:"
-msgstr "Odaberite datoteku za slanje"
+msgstr "Odaberite sesiju za pokretanje:"
 
 #: plugins/x2go/x2go_plugin.c:1502
-#, fuzzy
-#| msgid "Waiting for PyHoca-CLI to show the session's window…"
 msgid "Waiting for user to select a session…"
-msgstr "Čekanje da PyHoca-CLI prikaže prozor sesije…"
+msgstr "Čekanje korisnika da odabere sesiju…"
 
 #: plugins/x2go/x2go_plugin.c:1510
 msgid "No session was selected. Creating a new one."
-msgstr ""
+msgstr "Nema odabrane sesije. Stvaranje nove."
 
 #: plugins/x2go/x2go_plugin.c:1558
 #, c-format
 msgid "A non-critical error happened: %s"
-msgstr ""
+msgstr "Dogodila se nekritička greška: %s"
 
 #: plugins/x2go/x2go_plugin.c:1563
 #, c-format
 msgid "User chose to resume session with ID: '%s'"
-msgstr ""
+msgstr "Korisnik je odabrao pokretanje sesije sa ID: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:1583
 #, c-format
 msgid "Resuming session '%s'…"
-msgstr ""
+msgstr "Pokretanje sesije '%s'…"
 
 #: plugins/x2go/x2go_plugin.c:1706
 msgid "DPI setting is out of bounds. Please adjust it in profile settings."
@@ -3232,10 +3233,8 @@ msgid "No X2Go session window appeared. Something went wrong…"
 msgstr "Nije se pojavio prozor X2Go sesije. Nešto je pošlo po krivu…"
 
 #: plugins/x2go/x2go_plugin.c:2213
-#, fuzzy
-#| msgid "Internal error: RemminaProtocolWidget* gp is NULL!"
 msgid "RemminaProtocolWidget* gp is 'NULL'!"
-msgstr "Unutrašnja greška: RemminaProtocolWidget* gp je NULA!"
+msgstr "RemminaProtocolWidget* gp je 'NULL'!"
 
 #: plugins/x2go/x2go_plugin.c:2234
 #, c-format
@@ -3288,7 +3287,7 @@ msgstr "Provjera podataka u polju ProtocolSettings je neispravna!"
 
 #: plugins/x2go/x2go_plugin.c:2359
 msgid "Parameters 'key' or 'value' are 'NULL'!"
-msgstr ""
+msgstr "Parametri 'key' ili 'value' su 'NULL'!"
 
 #: plugins/x2go/x2go_plugin.c:2377
 #, c-format
@@ -3314,10 +3313,8 @@ msgstr "Niže ograničenje je premalo!"
 
 #: plugins/x2go/x2go_plugin.c:2441 plugins/x2go/x2go_plugin.c:2471
 #: plugins/x2go/x2go_plugin.c:2491
-#, fuzzy
-#| msgid "Something went wrong."
 msgid "Something unknown went wrong."
-msgstr "Nešto je pošlo po krivu."
+msgstr "Nešto nepoznato je pošlo po krivu."
 
 #: plugins/x2go/x2go_plugin.c:2446 plugins/x2go/x2go_plugin.c:2476
 #: plugins/x2go/x2go_plugin.c:2495

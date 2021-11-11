@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-11-09 14:11+0000\n"
-"PO-Revision-Date: 2021-11-10 13:58+0000\n"
+"POT-Creation-Date: 2021-11-11 20:00+0000\n"
+"PO-Revision-Date: 2021-11-11 21:52+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/remmina/remmina/"
 "et/>\n"
@@ -612,13 +612,33 @@ msgstr ""
 msgid "Encrypt a password"
 msgstr "Salvesta parool"
 
+#: src/remmina.c:333
+#, fuzzy
+msgid ""
+"Remmina does not log all output statements. To enable a more verbose output "
+"please use G_MESSAGES_DEBUG=all as an environment variable. "
+msgstr ""
+"Remmina ei logi kõiki väljundavaldusi. Kui soovite lubada üksikasjalikumat "
+"väljundit, kasutage keskkonnamuutujana G_MESSAGES_DEBUG=all. "
+
+#. TRANSLATORS: This link should point to a resource explaining
+#. TRANSLATORS: how to get Remmina to log debug statements.
+#: src/remmina.c:338
+#, fuzzy
+msgid ""
+"For more information, please visit the Remmina Wiki: https://gitlab.com/"
+"Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
+msgstr ""
+"Lisateabe saamiseks külastage Remmina Wiki: https://gitlab.com/Remmina/"
+"Remmina/-/wikis/Usage/Remmina-debugging."
+
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:375
+#: src/remmina.c:388
 #, fuzzy
 msgid "- or protocol://username:encryptedpassword@host:port"
 msgstr "- või protocol://username:encryptedpassword@host:port"
 
-#: src/remmina.c:378
+#: src/remmina.c:391
 #, fuzzy
 msgid ""
 "Examples:\n"
@@ -3249,7 +3269,7 @@ msgid "Secured password storage in the GNOME keyring"
 msgstr "%s parool"
 
 #: plugins/x2go/x2go_plugin.c:67
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "The command-line feature '%s' is not available! Attempting to start PyHoca-"
 "CLI without using this feature…"
@@ -3382,7 +3402,7 @@ msgid "Couldn't get session ID from session chooser dialog."
 msgstr "Seansi ID ei õnnestunud seansi valiku dialoogist saada."
 
 #: plugins/x2go/x2go_plugin.c:667
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Resuming session: '%s'"
 msgstr "Seansi jätkamine: '%s'"
 
@@ -3445,19 +3465,19 @@ msgid "An unknown error occured while trying to start PyHoca-CLI."
 msgstr "PyHoca-CLI käivitamisel tekkis tundmatu viga."
 
 #: plugins/x2go/x2go_plugin.c:1017
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i"
 msgstr "PyHoca-CLI käivitamisel tekkis tundmatu viga. Väljalangemiskood: %i"
 
 #: plugins/x2go/x2go_plugin.c:1022
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i. "
 "Error: '%s'"
 msgstr ""
-"PyHoca-CLI käivitamisel tekkis tundmatu viga. Väljalangemiskood: %i. Viga: \""
-"%s"
+"PyHoca-CLI käivitamisel tekkis tundmatu viga. Väljalangemiskood: %i. Viga: "
+"\"%s"
 
 #: plugins/x2go/x2go_plugin.c:1047
 #, fuzzy
@@ -3509,7 +3529,7 @@ msgid "Couldn't allocate enough memory!"
 msgstr "Ei suutnud eraldada piisavalt mälu!"
 
 #: plugins/x2go/x2go_plugin.c:1372
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Found already existing X2Go session with ID: '%s'"
 msgstr "Leiti juba olemasolev X2Go sessioon ID-ga: \"%s\"."
 
@@ -3535,17 +3555,17 @@ msgid "No session was selected. Creating a new one."
 msgstr "Ühtegi seanssi ei valitud. Luuakse uus."
 
 #: plugins/x2go/x2go_plugin.c:1558
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "A non-critical error happened: %s"
 msgstr "Juhtus mittekriitiline viga: %s"
 
 #: plugins/x2go/x2go_plugin.c:1563
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "User chose to resume session with ID: '%s'"
 msgstr "Kasutaja otsustas jätkata sessiooni ID-ga: \"%s\"."
 
 #: plugins/x2go/x2go_plugin.c:1583
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Resuming session '%s'…"
 msgstr "Seansi '%s' jätkamine…"
 

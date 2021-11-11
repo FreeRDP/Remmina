@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Remmina v1.4.3\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-11-09 14:11+0000\n"
-"PO-Revision-Date: 2021-11-02 11:36+0000\n"
+"POT-Creation-Date: 2021-11-11 20:00+0000\n"
+"PO-Revision-Date: 2021-11-11 20:01+0000\n"
 "Last-Translator: phlostically <phlostically@mailinator.com>\n"
 "Language-Team: Esperanto <https://hosted.weblate.org/projects/remmina/"
 "remmina/eo/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.9-dev\n"
+"X-Generator: Weblate 4.9.1-dev\n"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:354
 #: src/remmina_protocol_widget.c:1676 src/remmina_protocol_widget.c:1695
@@ -536,12 +536,26 @@ msgstr "Agordi unu aŭ plurajn profilojn, por uzo kune kun --update-profile"
 msgid "Encrypt a password"
 msgstr "Ĉifri pasvorton"
 
+#: src/remmina.c:333
+msgid ""
+"Remmina does not log all output statements. To enable a more verbose output "
+"please use G_MESSAGES_DEBUG=all as an environment variable. "
+msgstr ""
+
+#. TRANSLATORS: This link should point to a resource explaining
+#. TRANSLATORS: how to get Remmina to log debug statements.
+#: src/remmina.c:338
+msgid ""
+"For more information, please visit the Remmina Wiki: https://gitlab.com/"
+"Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
+msgstr ""
+
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:375
+#: src/remmina.c:388
 msgid "- or protocol://username:encryptedpassword@host:port"
 msgstr "- aŭ protokolo://salutnomo:ĉifritapasvorto@gastiganto:pordo"
 
-#: src/remmina.c:378
+#: src/remmina.c:391
 msgid ""
 "Examples:\n"
 "To connect using an existing connection profile, use:\n"
@@ -2894,6 +2908,8 @@ msgid ""
 "The command-line feature '%s' is not available! Attempting to start PyHoca-"
 "CLI without using this feature…"
 msgstr ""
+"La terminala funkcio «%s» ne disponeblas! Provante lanĉi PyHoca-CLI sen uzi "
+"ĉi tiun funkcion…"
 
 #: plugins/x2go/x2go_plugin.c:277
 msgid "Broken `DialogData`! Aborting…"
@@ -2904,20 +2920,16 @@ msgid "Can't retrieve `DialogData`! Aborting…"
 msgstr "Ne eblas akiri `DialogData`! Kolapsante…"
 
 #: plugins/x2go/x2go_plugin.c:438
-#, fuzzy
-#| msgid "Can't retrieve `DialogData`! Aborting…"
 msgid "Couldn't retrieve valid `DialogData` or `sessions_list`! Aborting…"
-msgstr "Ne eblas akiri `DialogData`! Kolapsante…"
+msgstr "Ne eblas akiri validan `DialogData` aŭ `sessions_list`! Kolapsante…"
 
 #: plugins/x2go/x2go_plugin.c:445
 msgid "_New"
-msgstr ""
+msgstr "_Nova"
 
 #: plugins/x2go/x2go_plugin.c:447
-#, fuzzy
-#| msgid "_Select all"
 msgid "_Select session"
-msgstr "_Elekti ĉion"
+msgstr "Elekti _seancon"
 
 #: plugins/x2go/x2go_plugin.c:506
 msgid "Display"
@@ -2928,46 +2940,40 @@ msgid "Status"
 msgstr "Stato"
 
 #: plugins/x2go/x2go_plugin.c:508
-#, fuzzy
-#| msgid "Permission"
 msgid "Session ID"
-msgstr "Permeso"
+msgstr "Identigilo de seanco"
 
 #: plugins/x2go/x2go_plugin.c:509
 msgid "Create date"
-msgstr ""
+msgstr "Dato de kreo"
 
 #: plugins/x2go/x2go_plugin.c:510
 msgid "Suspended since"
-msgstr ""
+msgstr "Malaktivigita ekde"
 
 #: plugins/x2go/x2go_plugin.c:511
 msgid "Agent PID"
-msgstr ""
+msgstr "Proceza identigilo de agento"
 
 #: plugins/x2go/x2go_plugin.c:513
-#, fuzzy
-#| msgid "Username"
 msgid "Hostname"
-msgstr "Salutnomo"
+msgstr "Gastiganto"
 
 #: plugins/x2go/x2go_plugin.c:514
 msgid "Cookie"
-msgstr ""
+msgstr "Kuketo"
 
 #: plugins/x2go/x2go_plugin.c:515
 msgid "Graphic port"
-msgstr ""
+msgstr "Grafika pordo"
 
 #: plugins/x2go/x2go_plugin.c:516
 msgid "SND port"
-msgstr ""
+msgstr "SND-pordo"
 
 #: plugins/x2go/x2go_plugin.c:517
-#, fuzzy
-#| msgid "Local SSH port"
 msgid "SSHFS port"
-msgstr "Loka SSH-pordo"
+msgstr "SSHFS-pordo"
 
 #: plugins/x2go/x2go_plugin.c:519 plugins/x2go/x2go_plugin.c:585
 #: plugins/x2go/x2go_plugin.c:599 plugins/x2go/x2go_plugin.c:614
@@ -2979,39 +2985,39 @@ msgstr "Loka SSH-pordo"
 #: plugins/x2go/x2go_plugin.c:2435 plugins/x2go/x2go_plugin.c:2440
 #: plugins/x2go/x2go_plugin.c:2455 plugins/x2go/x2go_plugin.c:2460
 #: plugins/x2go/x2go_plugin.c:2465 plugins/x2go/x2go_plugin.c:2470
-#, fuzzy, c-format
-#| msgid "Internal error: "
+#, c-format
 msgid "Internal error: %s"
-msgstr "Interna eraro: "
+msgstr "Interna eraro: %s"
 
 #: plugins/x2go/x2go_plugin.c:520
 msgid "Unknown property"
-msgstr ""
+msgstr "Nekonata atributo"
 
 #: plugins/x2go/x2go_plugin.c:586
 msgid "Couldn't find child GtkTreeView of session chooser dialog."
 msgstr ""
+"Ne eblis trovi idan objekton «GtkTreeView» de la seanco-elekta dialogo."
 
 #: plugins/x2go/x2go_plugin.c:600
 msgid "only one session should be able to be selected."
-msgstr ""
+msgstr "nur unu seanco estu elektebla."
 
 #: plugins/x2go/x2go_plugin.c:615
 msgid "Failed to fill 'GtkTreeIter'."
-msgstr ""
+msgstr "Malsukcesis akiri objekton «GtkTreeIter»."
 
 #: plugins/x2go/x2go_plugin.c:627
 msgid "Couldn't get session ID out of selected row."
-msgstr ""
+msgstr "Ne eblis akiri seancan identigilon el la elektita vico."
 
 #: plugins/x2go/x2go_plugin.c:660
 msgid "Couldn't get session ID from session chooser dialog."
-msgstr ""
+msgstr "Ne eblis akiri seancan identigilon el la seanco-elekta dialogo."
 
 #: plugins/x2go/x2go_plugin.c:667
 #, c-format
 msgid "Resuming session: '%s'"
-msgstr ""
+msgstr "Rekativigante seancon «%s»"
 
 #: plugins/x2go/x2go_plugin.c:892
 msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
@@ -3034,43 +3040,39 @@ msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:937
 msgid "parameter 'argv' is 'NULL'."
-msgstr ""
+msgstr "parametro «argv» estas nula."
 
 #: plugins/x2go/x2go_plugin.c:948
 msgid "parameter 'error' is 'NULL'."
-msgstr ""
+msgstr "parametro «error» estas nula."
 
 #: plugins/x2go/x2go_plugin.c:956
 msgid "parameter 'env' is either invalid or uninitialized."
-msgstr ""
+msgstr "la parametro «env» estas aŭ ne valida aŭ ne praŝargita."
 
 #: plugins/x2go/x2go_plugin.c:972
 msgid "Started PyHoca-CLI with the following arguments:"
 msgstr "Lanĉiĝis PyHoca-CLI per la jenaj argumentoj:"
 
 #: plugins/x2go/x2go_plugin.c:988
-#, fuzzy
-#| msgid "Started PyHoca-CLI with the following arguments:"
 msgid "Started PyHoca-CLI with the following environment variables:"
-msgstr "Lanĉiĝis PyHoca-CLI per la jenaj argumentoj:"
+msgstr "Lanĉiĝis PyHoca-CLI per la jenaj mediaj medivariabloj:"
 
 #: plugins/x2go/x2go_plugin.c:997
 msgid ""
 "The necessary PyHoca-CLI process has encountered a internet connection "
 "problem."
-msgstr ""
+msgstr "La nepra procezo «PyHoca-CLI» spertis problemon pri Interreta konekto."
 
 #: plugins/x2go/x2go_plugin.c:1007
-#, fuzzy
-#| msgid "An error occured while starting an X2Go session…"
 msgid "An unknown error occured while trying to start PyHoca-CLI."
-msgstr "Eraro okazis dum lanĉo de seanco X2Go…"
+msgstr "Nekonata eraro okazis dum provo lanĉi PyHoca-CLI."
 
 #: plugins/x2go/x2go_plugin.c:1017
 #, c-format
 msgid ""
 "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i"
-msgstr ""
+msgstr "Nekonata eraro okazis dum provo lanĉi PyHoca-CLI. Elirkodo: %i"
 
 #: plugins/x2go/x2go_plugin.c:1022
 #, c-format
@@ -3078,16 +3080,15 @@ msgid ""
 "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i. "
 "Error: '%s'"
 msgstr ""
+"Nekonata eraro okazis dum provo lanĉi PyHoca-CLI. Elirkodo: %i. Eraro: «%s»"
 
 #: plugins/x2go/x2go_plugin.c:1047
 msgid "Can't save empty username!"
 msgstr "Ne eblas konservi malplenan salutnomon!"
 
 #: plugins/x2go/x2go_plugin.c:1061
-#, fuzzy
-#| msgid "Internal error: Could not save new credentials."
 msgid "Could not save new credentials."
-msgstr "Interna eraro: ne eblis konservi novajn akreditilojn."
+msgstr "Ne eblis konservi novajn akreditilojn."
 
 #: plugins/x2go/x2go_plugin.c:1064
 msgid ""
@@ -3099,68 +3100,65 @@ msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:1095
 msgid "Parameter 'default_username' is uninitialized."
-msgstr ""
+msgstr "La parametro «default_username» estas ne praŝargita."
 
 #: plugins/x2go/x2go_plugin.c:1124
 msgid "Enter X2Go credentials"
 msgstr "Entajpu akreditilojn de X2Go"
 
 #: plugins/x2go/x2go_plugin.c:1201
-#, fuzzy
-#| msgid "Shared connection"
 msgid "'Invalid connection data.'"
-msgstr "Komuna konekto"
+msgstr "«Nevalidaj konektaj datenoj.»"
 
 #: plugins/x2go/x2go_plugin.c:1323
 msgid ""
 "Couldn't parse the output of PyHoca-CLI's --list-sessions option. Creating a "
 "new session now."
 msgstr ""
+"Ne eblis analizi la eligon de la opcio «--list-sessions» de PyHoca-CLI. "
+"Kreante novan seancon nun."
 
 #: plugins/x2go/x2go_plugin.c:1362
 msgid "Couldn't allocate enough memory!"
-msgstr ""
+msgstr "Malsukcesis akiri sufiĉe da memoro!"
 
 #: plugins/x2go/x2go_plugin.c:1372
 #, c-format
 msgid "Found already existing X2Go session with ID: '%s'"
-msgstr ""
+msgstr "Trovis jam ekzistantan X2Go-seancon, kies identigilo estas «%s»"
 
 #: plugins/x2go/x2go_plugin.c:1444
 msgid ""
 "Could not find any sessions on remote machine. Creating a new session now."
 msgstr ""
+"Ne eblis trovi ajnajn seancojn en fora maŝino. Kreante novan seancon nun."
 
 #: plugins/x2go/x2go_plugin.c:1485
-#, fuzzy
-#| msgid "Choose a file to upload"
 msgid "Choose a session to resume:"
-msgstr "Elekti alŝutotan dosieron"
+msgstr "Elektu reaktivigotan seancon:"
 
 #: plugins/x2go/x2go_plugin.c:1502
-#, fuzzy
-#| msgid "Waiting for PyHoca-CLI to show the session's window…"
 msgid "Waiting for user to select a session…"
-msgstr "Atendante la montron de la seanca fenestro per PyHoca-CLI…"
+msgstr "Atendante la elekton de seanco…"
 
 #: plugins/x2go/x2go_plugin.c:1510
 msgid "No session was selected. Creating a new one."
-msgstr ""
+msgstr "Neniu seanco estis elektita. Kreante novan."
 
 #: plugins/x2go/x2go_plugin.c:1558
 #, c-format
 msgid "A non-critical error happened: %s"
-msgstr ""
+msgstr "Okazis negrava eraro: %s"
 
 #: plugins/x2go/x2go_plugin.c:1563
 #, c-format
 msgid "User chose to resume session with ID: '%s'"
-msgstr ""
+msgstr "La uzanto elektis reaktivigi la seancon, kies identigilo estas «%s»"
 
 #: plugins/x2go/x2go_plugin.c:1583
 #, c-format
 msgid "Resuming session '%s'…"
-msgstr ""
+msgstr "Reaktivigante seancon «%s»…"
 
 #: plugins/x2go/x2go_plugin.c:1706
 msgid "DPI setting is out of bounds. Please adjust it in profile settings."
@@ -3228,10 +3226,8 @@ msgid "No X2Go session window appeared. Something went wrong…"
 msgstr "Neniu fenestro de X2Go-seanco aperis. Io fuŝiĝis…"
 
 #: plugins/x2go/x2go_plugin.c:2213
-#, fuzzy
-#| msgid "Internal error: RemminaProtocolWidget* gp is NULL!"
 msgid "RemminaProtocolWidget* gp is 'NULL'!"
-msgstr "Interna eraro: «RemminaProtocolWidget* gp» estas nula!"
+msgstr "«RemminaProtocolWidget* gp» estas nula!"
 
 #: plugins/x2go/x2go_plugin.c:2234
 #, c-format
@@ -3285,7 +3281,7 @@ msgstr "Ne validas valideckontrolaj datenoj en la tabelo ProtocolSettings!"
 
 #: plugins/x2go/x2go_plugin.c:2359
 msgid "Parameters 'key' or 'value' are 'NULL'!"
-msgstr ""
+msgstr "Parametro(j) «key» kaj/aŭ «value» estas nula(j)!"
 
 #: plugins/x2go/x2go_plugin.c:2377
 #, c-format
@@ -3311,10 +3307,8 @@ msgstr "La malsupra limo estas tro malgranda!"
 
 #: plugins/x2go/x2go_plugin.c:2441 plugins/x2go/x2go_plugin.c:2471
 #: plugins/x2go/x2go_plugin.c:2491
-#, fuzzy
-#| msgid "Something went wrong."
 msgid "Something unknown went wrong."
-msgstr "Io fuŝiĝis."
+msgstr "Io nekonata fuŝiĝis."
 
 #: plugins/x2go/x2go_plugin.c:2446 plugins/x2go/x2go_plugin.c:2476
 #: plugins/x2go/x2go_plugin.c:2495

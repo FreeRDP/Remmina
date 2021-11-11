@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-11-09 14:11+0000\n"
-"PO-Revision-Date: 2021-11-09 14:11+0000\n"
+"POT-Creation-Date: 2021-11-11 20:00+0000\n"
+"PO-Revision-Date: 2021-11-11 20:01+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Lithuanian <https://hosted.weblate.org/projects/remmina/"
 "remmina/lt/>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n % 10 == 1 && (n % 100 < 11 || n % 100 > "
 "19)) ? 0 : ((n % 10 >= 2 && n % 10 <= 9 && (n % 100 < 11 || n % 100 > 19)) ? "
 "1 : 2);\n"
-"X-Generator: Weblate 4.9-dev\n"
+"X-Generator: Weblate 4.9.1-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:354
@@ -600,13 +600,27 @@ msgstr ""
 msgid "Encrypt a password"
 msgstr "Užšifruoti slaptažodį"
 
+#: src/remmina.c:333
+msgid ""
+"Remmina does not log all output statements. To enable a more verbose output "
+"please use G_MESSAGES_DEBUG=all as an environment variable. "
+msgstr ""
+
+#. TRANSLATORS: This link should point to a resource explaining
+#. TRANSLATORS: how to get Remmina to log debug statements.
+#: src/remmina.c:338
+msgid ""
+"For more information, please visit the Remmina Wiki: https://gitlab.com/"
+"Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
+msgstr ""
+
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:375
+#: src/remmina.c:388
 #, fuzzy
 msgid "- or protocol://username:encryptedpassword@host:port"
 msgstr "- arba protocol://username:encryptedpassword@host:port"
 
-#: src/remmina.c:378
+#: src/remmina.c:391
 #, fuzzy
 msgid ""
 "Examples:\n"
@@ -3186,11 +3200,13 @@ msgid "Secured password storage in the GNOME keyring"
 msgstr "%s slaptažodis"
 
 #: plugins/x2go/x2go_plugin.c:67
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "The command-line feature '%s' is not available! Attempting to start PyHoca-"
 "CLI without using this feature…"
 msgstr ""
+"Komandinės eilutės funkcija \"%s\" nepasiekiama! Bandymas paleisti PyHoca-"
+"CLI nenaudojant šios funkcijos…"
 
 #: plugins/x2go/x2go_plugin.c:277
 #, fuzzy
@@ -3205,16 +3221,18 @@ msgstr "Negalima gauti `DialogData`! Nutraukta…"
 #: plugins/x2go/x2go_plugin.c:438
 #, fuzzy
 msgid "Couldn't retrieve valid `DialogData` or `sessions_list`! Aborting…"
-msgstr "Negalima gauti `DialogData`! Nutraukta…"
+msgstr ""
+"Nepavyko gauti galiojančio `DialogData` arba `sessions_list`! Nutraukta…"
 
 #: plugins/x2go/x2go_plugin.c:445
+#, fuzzy
 msgid "_New"
-msgstr ""
+msgstr "_Nauja"
 
 #: plugins/x2go/x2go_plugin.c:447
 #, fuzzy
 msgid "_Select session"
-msgstr "_Pasirinkite visus"
+msgstr "_Pasirinkite sesiją"
 
 #: plugins/x2go/x2go_plugin.c:506
 msgid "Display"
@@ -3228,42 +3246,48 @@ msgstr "Būsena"
 #, fuzzy
 #| msgid "Permission"
 msgid "Session ID"
-msgstr "Leidimas"
+msgstr "Sesijos ID"
 
 #: plugins/x2go/x2go_plugin.c:509
+#, fuzzy
 msgid "Create date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 #: plugins/x2go/x2go_plugin.c:510
+#, fuzzy
 msgid "Suspended since"
-msgstr ""
+msgstr "Sustabdyta nuo"
 
 #: plugins/x2go/x2go_plugin.c:511
+#, fuzzy
 msgid "Agent PID"
-msgstr ""
+msgstr "Agento PID"
 
 #: plugins/x2go/x2go_plugin.c:513
 #, fuzzy
 #| msgid "Username"
 msgid "Hostname"
-msgstr "Slapyvardis"
+msgstr "Prieglobsčio vardas"
 
 #: plugins/x2go/x2go_plugin.c:514
+#, fuzzy
 msgid "Cookie"
-msgstr ""
+msgstr "Slapukas"
 
 #: plugins/x2go/x2go_plugin.c:515
+#, fuzzy
 msgid "Graphic port"
-msgstr ""
+msgstr "Grafinis prievadas"
 
 #: plugins/x2go/x2go_plugin.c:516
+#, fuzzy
 msgid "SND port"
-msgstr ""
+msgstr "SND prievadas"
 
 #: plugins/x2go/x2go_plugin.c:517
 #, fuzzy
 msgid "SSHFS port"
-msgstr "Vietinis SSH prievadas"
+msgstr "SSHFS prievadas"
 
 #: plugins/x2go/x2go_plugin.c:519 plugins/x2go/x2go_plugin.c:585
 #: plugins/x2go/x2go_plugin.c:599 plugins/x2go/x2go_plugin.c:614
@@ -3277,36 +3301,43 @@ msgstr "Vietinis SSH prievadas"
 #: plugins/x2go/x2go_plugin.c:2465 plugins/x2go/x2go_plugin.c:2470
 #, fuzzy, c-format
 msgid "Internal error: %s"
-msgstr "Vidinė klaida: "
+msgstr "Vidinė klaida: %s"
 
 #: plugins/x2go/x2go_plugin.c:520
+#, fuzzy
 msgid "Unknown property"
-msgstr ""
+msgstr "Nežinomas turtas"
 
 #: plugins/x2go/x2go_plugin.c:586
+#, fuzzy
 msgid "Couldn't find child GtkTreeView of session chooser dialog."
 msgstr ""
+"Nepavyko rasti sesijos pasirinkimo dialogo lango \"GtkTreeView\" atžalos."
 
 #: plugins/x2go/x2go_plugin.c:600
+#, fuzzy
 msgid "only one session should be able to be selected."
-msgstr ""
+msgstr "turėtų būti galima pasirinkti tik vieną seansą."
 
 #: plugins/x2go/x2go_plugin.c:615
+#, fuzzy
 msgid "Failed to fill 'GtkTreeIter'."
-msgstr ""
+msgstr "Nepavyko užpildyti 'GtkTreeIter'."
 
 #: plugins/x2go/x2go_plugin.c:627
+#, fuzzy
 msgid "Couldn't get session ID out of selected row."
-msgstr ""
+msgstr "Nepavyko gauti sesijos ID iš pasirinktos eilutės."
 
 #: plugins/x2go/x2go_plugin.c:660
+#, fuzzy
 msgid "Couldn't get session ID from session chooser dialog."
-msgstr ""
+msgstr "Nepavyko gauti sesijos ID iš sesijos pasirinkimo dialogo lango."
 
 #: plugins/x2go/x2go_plugin.c:667
-#, c-format
+#, fuzzy, c-format
 msgid "Resuming session: '%s'"
-msgstr ""
+msgstr "Sesijos atnaujinimas: \"%s"
 
 #: plugins/x2go/x2go_plugin.c:892
 #, fuzzy
@@ -3331,16 +3362,19 @@ msgstr ""
 "pasiekiamas."
 
 #: plugins/x2go/x2go_plugin.c:937
+#, fuzzy
 msgid "parameter 'argv' is 'NULL'."
-msgstr ""
+msgstr "parametras 'argv' yra 'NULL'."
 
 #: plugins/x2go/x2go_plugin.c:948
+#, fuzzy
 msgid "parameter 'error' is 'NULL'."
-msgstr ""
+msgstr "parametras \"error\" yra \"NULL\"."
 
 #: plugins/x2go/x2go_plugin.c:956
+#, fuzzy
 msgid "parameter 'env' is either invalid or uninitialized."
-msgstr ""
+msgstr "parametras 'env' yra neteisingas arba neinicializuotas."
 
 #: plugins/x2go/x2go_plugin.c:972
 #, fuzzy
@@ -3350,31 +3384,34 @@ msgstr "Paleistas PyHoca-CLI su šiais argumentais:"
 #: plugins/x2go/x2go_plugin.c:988
 #, fuzzy
 msgid "Started PyHoca-CLI with the following environment variables:"
-msgstr "Paleistas PyHoca-CLI su šiais argumentais:"
+msgstr "Paleistas PyHoca-CLI su šiais aplinkos kintamaisiais:"
 
 #: plugins/x2go/x2go_plugin.c:997
+#, fuzzy
 msgid ""
 "The necessary PyHoca-CLI process has encountered a internet connection "
 "problem."
-msgstr ""
+msgstr "Būtinas \"PyHoca-CLI\" procesas susidūrė su interneto ryšio problema."
 
 #: plugins/x2go/x2go_plugin.c:1007
 #, fuzzy
 msgid "An unknown error occured while trying to start PyHoca-CLI."
-msgstr "Paleidžiant \"X2Go\" sesiją įvyko klaida…"
+msgstr "Bandant paleisti PyHoca-CLI įvyko nežinoma klaida."
 
 #: plugins/x2go/x2go_plugin.c:1017
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i"
-msgstr ""
+msgstr "Bandant paleisti PyHoca-CLI įvyko nežinoma klaida. Išėjimo kodas: %i"
 
 #: plugins/x2go/x2go_plugin.c:1022
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i. "
 "Error: '%s'"
 msgstr ""
+"Bandant paleisti PyHoca-CLI įvyko nežinoma klaida. Išėjimo kodas: %i. "
+"Klaida: \"%s"
 
 #: plugins/x2go/x2go_plugin.c:1047
 #, fuzzy
@@ -3384,7 +3421,7 @@ msgstr "Negalima išsaugoti tuščio vartotojo vardo!"
 #: plugins/x2go/x2go_plugin.c:1061
 #, fuzzy
 msgid "Could not save new credentials."
-msgstr "Vidinė klaida: Nepavyko išsaugoti naujų įgaliojimų."
+msgstr "Nepavyko išsaugoti naujų įgaliojimų."
 
 #: plugins/x2go/x2go_plugin.c:1064
 #, fuzzy
@@ -3396,8 +3433,9 @@ msgstr ""
 "'s_password' arba 's_username'."
 
 #: plugins/x2go/x2go_plugin.c:1095
+#, fuzzy
 msgid "Parameter 'default_username' is uninitialized."
-msgstr ""
+msgstr "Parametras 'default_username' yra neinicializuotas."
 
 #: plugins/x2go/x2go_plugin.c:1124
 #, fuzzy
@@ -3408,57 +3446,65 @@ msgstr "Įveskite \"X2Go\" kredencialus"
 #, fuzzy
 #| msgid "Per connection"
 msgid "'Invalid connection data.'"
-msgstr "Bendras ryšys"
+msgstr "\"Neteisingi ryšio duomenys."
 
 #: plugins/x2go/x2go_plugin.c:1323
+#, fuzzy
 msgid ""
 "Couldn't parse the output of PyHoca-CLI's --list-sessions option. Creating a "
 "new session now."
 msgstr ""
+"Nepavyko išanalizuoti PyHoca-CLI parinkties --list-sessions išvesties. Dabar "
+"kuriama nauja sesija."
 
 #: plugins/x2go/x2go_plugin.c:1362
+#, fuzzy
 msgid "Couldn't allocate enough memory!"
-msgstr ""
+msgstr "Nepavyko paskirstyti pakankamai atminties!"
 
 #: plugins/x2go/x2go_plugin.c:1372
-#, c-format
+#, fuzzy, c-format
 msgid "Found already existing X2Go session with ID: '%s'"
-msgstr ""
+msgstr "Rasta jau egzistuojanti \"X2Go\" sesija, kurios ID: \"%s"
 
 #: plugins/x2go/x2go_plugin.c:1444
+#, fuzzy
 msgid ""
 "Could not find any sessions on remote machine. Creating a new session now."
 msgstr ""
+"Nuotoliniame kompiuteryje nepavyko rasti jokių sesijų. Dabar kuriama nauja "
+"sesija."
 
 #: plugins/x2go/x2go_plugin.c:1485
 #, fuzzy
 #| msgid "Choose a file to upload"
 msgid "Choose a session to resume:"
-msgstr "Pasirinkite failą išsiuntimui"
+msgstr "Pasirinkite seansą, kurį norite tęsti:"
 
 #: plugins/x2go/x2go_plugin.c:1502
 #, fuzzy
 msgid "Waiting for user to select a session…"
-msgstr "Laukiama, kol PyHoca-CLI parodys sesijos langą…"
+msgstr "Laukiama, kol naudotojas pasirinks sesiją…"
 
 #: plugins/x2go/x2go_plugin.c:1510
+#, fuzzy
 msgid "No session was selected. Creating a new one."
-msgstr ""
+msgstr "Nebuvo pasirinkta jokia sesija. Kuriama nauja."
 
 #: plugins/x2go/x2go_plugin.c:1558
-#, c-format
+#, fuzzy, c-format
 msgid "A non-critical error happened: %s"
-msgstr ""
+msgstr "Įvyko nekritinė klaida: %s"
 
 #: plugins/x2go/x2go_plugin.c:1563
-#, c-format
+#, fuzzy, c-format
 msgid "User chose to resume session with ID: '%s'"
-msgstr ""
+msgstr "Vartotojas pasirinko atnaujinti seansą su ID: \"%s"
 
 #: plugins/x2go/x2go_plugin.c:1583
-#, c-format
+#, fuzzy, c-format
 msgid "Resuming session '%s'…"
-msgstr ""
+msgstr "Sesijos \"%s\" atnaujinimas…"
 
 #: plugins/x2go/x2go_plugin.c:1706
 #, fuzzy
@@ -3541,7 +3587,7 @@ msgstr "X2Go sesijos langas nepasirodė. Kažkas nutiko ne taip…"
 #: plugins/x2go/x2go_plugin.c:2213
 #, fuzzy
 msgid "RemminaProtocolWidget* gp is 'NULL'!"
-msgstr "Vidinė klaida: RemminaProtocolWidget* gp is NULL!"
+msgstr "RemminaProtocolWidget* gp yra 'NULL'!"
 
 #: plugins/x2go/x2go_plugin.c:2234
 #, fuzzy, c-format
@@ -3596,8 +3642,9 @@ msgid "Validation data in ProtocolSettings array is invalid!"
 msgstr "Patvirtinimo duomenys \"ProtocolSettings\" masyve negalioja!"
 
 #: plugins/x2go/x2go_plugin.c:2359
+#, fuzzy
 msgid "Parameters 'key' or 'value' are 'NULL'!"
-msgstr ""
+msgstr "Parametrai 'key' arba 'value' yra 'NULL'!"
 
 #: plugins/x2go/x2go_plugin.c:2377
 #, fuzzy, c-format
@@ -3628,7 +3675,7 @@ msgstr "Apatinė riba yra per maža!"
 #: plugins/x2go/x2go_plugin.c:2491
 #, fuzzy
 msgid "Something unknown went wrong."
-msgstr "Kažkas nutiko ne taip"
+msgstr "Kažkas nežinomo nutiko ne taip."
 
 #: plugins/x2go/x2go_plugin.c:2446 plugins/x2go/x2go_plugin.c:2476
 #: plugins/x2go/x2go_plugin.c:2495

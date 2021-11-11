@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Remmina v1.4.5\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-11-09 14:11+0000\n"
-"PO-Revision-Date: 2021-11-09 14:12+0000\n"
+"POT-Creation-Date: 2021-11-11 20:00+0000\n"
+"PO-Revision-Date: 2021-11-11 20:01+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/remmina/remmina/"
 "fa/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.9-dev\n"
+"X-Generator: Weblate 4.9.1-dev\n"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:354
 #: src/remmina_protocol_widget.c:1676 src/remmina_protocol_widget.c:1695
@@ -617,13 +617,27 @@ msgstr "تنظیم یک یا چند تنظیمات نمایه، برای است�
 msgid "Encrypt a password"
 msgstr "رمزعبور کاربر"
 
+#: src/remmina.c:333
+msgid ""
+"Remmina does not log all output statements. To enable a more verbose output "
+"please use G_MESSAGES_DEBUG=all as an environment variable. "
+msgstr ""
+
+#. TRANSLATORS: This link should point to a resource explaining
+#. TRANSLATORS: how to get Remmina to log debug statements.
+#: src/remmina.c:338
+msgid ""
+"For more information, please visit the Remmina Wiki: https://gitlab.com/"
+"Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
+msgstr ""
+
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:375
+#: src/remmina.c:388
 #, fuzzy
 msgid "- or protocol://username:encryptedpassword@host:port"
 msgstr "- یا پروتکل://username:encryptedpassword@host:port"
 
-#: src/remmina.c:378
+#: src/remmina.c:391
 #, fuzzy
 msgid ""
 "Examples:\n"
@@ -3256,11 +3270,13 @@ msgid "Secured password storage in the GNOME keyring"
 msgstr "ذخیره سازی رمز عبور امن در کلید گنوم"
 
 #: plugins/x2go/x2go_plugin.c:67
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "The command-line feature '%s' is not available! Attempting to start PyHoca-"
 "CLI without using this feature…"
 msgstr ""
+"ویژگی خط فرمان '%s' در دسترس نیست! تلاش برای شروع PyHoca - CLI بدون استفاده "
+"از این ویژگی…"
 
 #: plugins/x2go/x2go_plugin.c:277
 #, fuzzy
@@ -3275,65 +3291,74 @@ msgstr "نمی توان \"دیالوگ دیتا\" را بازیابی کرد! س
 #: plugins/x2go/x2go_plugin.c:438
 #, fuzzy
 msgid "Couldn't retrieve valid `DialogData` or `sessions_list`! Aborting…"
-msgstr "نمی توان \"دیالوگ دیتا\" را بازیابی کرد! سقط کردن…"
+msgstr "نمی تواند بازیابی معتبر 'DialogData' یا 'sessions_list'! سقط کردن…"
 
 #: plugins/x2go/x2go_plugin.c:445
+#, fuzzy
 msgid "_New"
-msgstr ""
+msgstr "_New"
 
 #: plugins/x2go/x2go_plugin.c:447
 #, fuzzy
 #| msgid "_Select all"
 msgid "_Select session"
-msgstr "_انتخاب همه"
+msgstr "_Select جلسه"
 
 #: plugins/x2go/x2go_plugin.c:506
+#, fuzzy
 msgid "Display"
-msgstr ""
+msgstr "نمایش"
 
 #: plugins/x2go/x2go_plugin.c:507
+#, fuzzy
 msgid "Status"
-msgstr ""
+msgstr "وضعیت فایل"
 
 #: plugins/x2go/x2go_plugin.c:508
 #, fuzzy
 msgid "Session ID"
-msgstr "اجازه‌ها"
+msgstr "شناسه جلسه"
 
 #: plugins/x2go/x2go_plugin.c:509
+#, fuzzy
 msgid "Create date"
-msgstr ""
+msgstr "ایجاد تاریخ"
 
 #: plugins/x2go/x2go_plugin.c:510
+#, fuzzy
 msgid "Suspended since"
-msgstr ""
+msgstr "معلق از آن زمان"
 
 #: plugins/x2go/x2go_plugin.c:511
+#, fuzzy
 msgid "Agent PID"
-msgstr ""
+msgstr "مامور PID"
 
 #: plugins/x2go/x2go_plugin.c:513
 #, fuzzy
 #| msgid "Username"
 msgid "Hostname"
-msgstr "نام کاربری"
+msgstr "نام میزبان"
 
 #: plugins/x2go/x2go_plugin.c:514
+#, fuzzy
 msgid "Cookie"
-msgstr ""
+msgstr "کوکی"
 
 #: plugins/x2go/x2go_plugin.c:515
+#, fuzzy
 msgid "Graphic port"
-msgstr ""
+msgstr "پورت گرافیکی"
 
 #: plugins/x2go/x2go_plugin.c:516
+#, fuzzy
 msgid "SND port"
-msgstr ""
+msgstr "پورت SND"
 
 #: plugins/x2go/x2go_plugin.c:517
 #, fuzzy
 msgid "SSHFS port"
-msgstr "پورت محلی SSH"
+msgstr "پورت SSHFS"
 
 #: plugins/x2go/x2go_plugin.c:519 plugins/x2go/x2go_plugin.c:585
 #: plugins/x2go/x2go_plugin.c:599 plugins/x2go/x2go_plugin.c:614
@@ -3347,36 +3372,42 @@ msgstr "پورت محلی SSH"
 #: plugins/x2go/x2go_plugin.c:2465 plugins/x2go/x2go_plugin.c:2470
 #, fuzzy, c-format
 msgid "Internal error: %s"
-msgstr "خطای داخلی: "
+msgstr "خطای داخلی: %s"
 
 #: plugins/x2go/x2go_plugin.c:520
+#, fuzzy
 msgid "Unknown property"
-msgstr ""
+msgstr "ملک ناشناخته"
 
 #: plugins/x2go/x2go_plugin.c:586
+#, fuzzy
 msgid "Couldn't find child GtkTreeView of session chooser dialog."
-msgstr ""
+msgstr "نتوانست فرزند GtkTreeView گفتگوی انتخاب کننده جلسه را پیدا کند."
 
 #: plugins/x2go/x2go_plugin.c:600
+#, fuzzy
 msgid "only one session should be able to be selected."
-msgstr ""
+msgstr "فقط یک جلسه باید قادر به انتخاب باشد."
 
 #: plugins/x2go/x2go_plugin.c:615
+#, fuzzy
 msgid "Failed to fill 'GtkTreeIter'."
-msgstr ""
+msgstr "موفق به پر کردن 'GtkTreeIter'."
 
 #: plugins/x2go/x2go_plugin.c:627
+#, fuzzy
 msgid "Couldn't get session ID out of selected row."
-msgstr ""
+msgstr "نمی توانست شناسه جلسه را از ردیف انتخاب شده خارج کند."
 
 #: plugins/x2go/x2go_plugin.c:660
+#, fuzzy
 msgid "Couldn't get session ID from session chooser dialog."
-msgstr ""
+msgstr "نتوانست شناسه جلسه را از گفتگوی انتخاب کننده جلسه دریافت کند."
 
 #: plugins/x2go/x2go_plugin.c:667
-#, c-format
+#, fuzzy, c-format
 msgid "Resuming session: '%s'"
-msgstr ""
+msgstr "جلسه از سر گرفتن: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:892
 #, fuzzy
@@ -3401,16 +3432,19 @@ msgstr ""
 "همچنین اطمینان حاصل کنید که سرور از راه دور قابل دسترسی است."
 
 #: plugins/x2go/x2go_plugin.c:937
+#, fuzzy
 msgid "parameter 'argv' is 'NULL'."
-msgstr ""
+msgstr "پارامتر 'argv' است 'NULL'."
 
 #: plugins/x2go/x2go_plugin.c:948
+#, fuzzy
 msgid "parameter 'error' is 'NULL'."
-msgstr ""
+msgstr "پارامتر 'خطا' است 'NULL'."
 
 #: plugins/x2go/x2go_plugin.c:956
+#, fuzzy
 msgid "parameter 'env' is either invalid or uninitialized."
-msgstr ""
+msgstr "پارامتر 'env' یا غیر معتبر است و یا uninitialized."
 
 #: plugins/x2go/x2go_plugin.c:972
 #, fuzzy
@@ -3420,31 +3454,36 @@ msgstr "آغاز شده PyHoca - CLI با استدلال های زیر :"
 #: plugins/x2go/x2go_plugin.c:988
 #, fuzzy
 msgid "Started PyHoca-CLI with the following environment variables:"
-msgstr "آغاز شده PyHoca - CLI با استدلال های زیر :"
+msgstr "شروع PyHoca-CLI با متغیرهای محیط زیر:"
 
 #: plugins/x2go/x2go_plugin.c:997
+#, fuzzy
 msgid ""
 "The necessary PyHoca-CLI process has encountered a internet connection "
 "problem."
-msgstr ""
+msgstr "فرایند لازم PyHoca-CLI با مشکل اتصال به اینترنت مواجه شده است."
 
 #: plugins/x2go/x2go_plugin.c:1007
 #, fuzzy
 msgid "An unknown error occured while trying to start PyHoca-CLI."
-msgstr "خطایی هنگام شروع جلسه X2Go رخ داد…"
+msgstr "خطای ناشناخته ای در حالی رخ داد که سعی می کرد PyHoca-CLI را شروع کند."
 
 #: plugins/x2go/x2go_plugin.c:1017
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i"
 msgstr ""
+"خطای ناشناخته ای در حالی رخ داد که سعی می کرد PyHoca-CLI را شروع کند. کد "
+"خروج: %i"
 
 #: plugins/x2go/x2go_plugin.c:1022
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i. "
 "Error: '%s'"
 msgstr ""
+"خطای ناشناخته ای در حالی رخ داد که سعی می کرد PyHoca-CLI را شروع کند. کد "
+"خروج: %i. خطا: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:1047
 #, fuzzy
@@ -3454,7 +3493,7 @@ msgstr "نمی توان نام کاربری خالی را ذخیره کرد!"
 #: plugins/x2go/x2go_plugin.c:1061
 #, fuzzy
 msgid "Could not save new credentials."
-msgstr "خطای داخلی: نمی تواند اعتبارنامه های جدید را ذخیره کند."
+msgstr "نمی توانست اعتبارنامه های جدید را ذخیره کند."
 
 #: plugins/x2go/x2go_plugin.c:1064
 #, fuzzy
@@ -3466,8 +3505,9 @@ msgstr ""
 "رشته های 's_username' یا 's_username' تنظیم نشده بودند."
 
 #: plugins/x2go/x2go_plugin.c:1095
+#, fuzzy
 msgid "Parameter 'default_username' is uninitialized."
-msgstr ""
+msgstr "پارامتر \"default_username\" غیر مهم است."
 
 #: plugins/x2go/x2go_plugin.c:1124
 #, fuzzy
@@ -3478,57 +3518,64 @@ msgstr "اعتبارنامه X2Go را وارد کنید"
 #, fuzzy
 #| msgid "New Connection"
 msgid "'Invalid connection data.'"
-msgstr "اتصال مشترک"
+msgstr "'داده های اتصال نامعتبر'"
 
 #: plugins/x2go/x2go_plugin.c:1323
+#, fuzzy
 msgid ""
 "Couldn't parse the output of PyHoca-CLI's --list-sessions option. Creating a "
 "new session now."
 msgstr ""
+"نمی توانست خروجی گزینه PyHoca-CLI را تجزیه کند --گزینه لیست جلسات. ایجاد یک "
+"جلسه جدید در حال حاضر."
 
 #: plugins/x2go/x2go_plugin.c:1362
+#, fuzzy
 msgid "Couldn't allocate enough memory!"
-msgstr ""
+msgstr "نمی توانست حافظه کافی را اختصاص دهد!"
 
 #: plugins/x2go/x2go_plugin.c:1372
-#, c-format
+#, fuzzy, c-format
 msgid "Found already existing X2Go session with ID: '%s'"
-msgstr ""
+msgstr "یافت شده در حال حاضر موجود جلسه X2Go با شناسه: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:1444
+#, fuzzy
 msgid ""
 "Could not find any sessions on remote machine. Creating a new session now."
 msgstr ""
+"هیچ جلسه ای روی ماشین از راه دور پیدا نکرد. ایجاد یک جلسه جدید در حال حاضر."
 
 #: plugins/x2go/x2go_plugin.c:1485
 #, fuzzy
 #| msgid "Choose a file to upload"
 msgid "Choose a session to resume:"
-msgstr "فایلی را برای بارگذاری انتخاب کنید"
+msgstr "جلسه ای را برای از سرگیری انتخاب کنید:"
 
 #: plugins/x2go/x2go_plugin.c:1502
 #, fuzzy
 msgid "Waiting for user to select a session…"
-msgstr "منتظر PyHoca-CLI برای نشان دادن پنجره جلسه…"
+msgstr "در انتظار کاربر برای انتخاب یک جلسه…"
 
 #: plugins/x2go/x2go_plugin.c:1510
+#, fuzzy
 msgid "No session was selected. Creating a new one."
-msgstr ""
+msgstr "هیچ جلسه ای انتخاب نشده بود. ایجاد یک جدید."
 
 #: plugins/x2go/x2go_plugin.c:1558
-#, c-format
+#, fuzzy, c-format
 msgid "A non-critical error happened: %s"
-msgstr ""
+msgstr "یک خطای غیر بحرانی اتفاق افتاد: %s"
 
 #: plugins/x2go/x2go_plugin.c:1563
-#, c-format
+#, fuzzy, c-format
 msgid "User chose to resume session with ID: '%s'"
-msgstr ""
+msgstr "کاربر انتخاب کرد که جلسه را با شناسه از سر گیری کند: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:1583
-#, c-format
+#, fuzzy, c-format
 msgid "Resuming session '%s'…"
-msgstr ""
+msgstr "از سر گرفتن جلسه '%s'…"
 
 #: plugins/x2go/x2go_plugin.c:1706
 #, fuzzy
@@ -3609,7 +3656,7 @@ msgstr "هیچ پنجره جلسه X2Go ظاهر شد. يه مشکلي پيش ا
 #: plugins/x2go/x2go_plugin.c:2213
 #, fuzzy
 msgid "RemminaProtocolWidget* gp is 'NULL'!"
-msgstr "خطای داخلی: RemminaProtocolWidget gp NULL است!"
+msgstr "RemminaProtocolWidget gp is 'NULL'!"
 
 #: plugins/x2go/x2go_plugin.c:2234
 #, fuzzy, c-format
@@ -3664,8 +3711,9 @@ msgid "Validation data in ProtocolSettings array is invalid!"
 msgstr "داده های اعتبارسنجی در آرایه ProtocolSettings نامعتبر است!"
 
 #: plugins/x2go/x2go_plugin.c:2359
+#, fuzzy
 msgid "Parameters 'key' or 'value' are 'NULL'!"
-msgstr ""
+msgstr "پارامترها 'کلید' یا 'مقدار' هستند 'NULL'!"
 
 #: plugins/x2go/x2go_plugin.c:2377
 #, fuzzy, c-format
@@ -3696,7 +3744,7 @@ msgstr "حد پایین تر خیلی کم است!"
 #: plugins/x2go/x2go_plugin.c:2491
 #, fuzzy
 msgid "Something unknown went wrong."
-msgstr "مشکلی پیش آمد"
+msgstr "يه چيز ناشناخته اشتباه پيش رفت"
 
 #: plugins/x2go/x2go_plugin.c:2446 plugins/x2go/x2go_plugin.c:2476
 #: plugins/x2go/x2go_plugin.c:2495

@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-11-09 14:11+0000\n"
-"PO-Revision-Date: 2021-11-09 21:58+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"POT-Creation-Date: 2021-11-11 20:00+0000\n"
+"PO-Revision-Date: 2021-11-11 21:52+0000\n"
+"Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/remmina/remmina/"
 "he/>\n"
 "Language: he\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Weblate 4.9-dev\n"
+"X-Generator: Weblate 4.9.1-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:354
@@ -532,12 +532,30 @@ msgstr "Set one or more profile settings, to be used with --update-profile"
 msgid "Encrypt a password"
 msgstr "Encrypt a password"
 
+#: src/remmina.c:333
+msgid ""
+"Remmina does not log all output statements. To enable a more verbose output "
+"please use G_MESSAGES_DEBUG=all as an environment variable. "
+msgstr ""
+"Remmina אינה מתעדת את כל ביטויי הפלט. כדי להפעיל מצב יותר מפורט נא להשתמש ב־"
+"G_MESSAGES_DEBUG=all כמשתנה סביבה. "
+
+#. TRANSLATORS: This link should point to a resource explaining
+#. TRANSLATORS: how to get Remmina to log debug statements.
+#: src/remmina.c:338
+msgid ""
+"For more information, please visit the Remmina Wiki: https://gitlab.com/"
+"Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
+msgstr ""
+"למידע נוסף ניתן לבקר בוויקי של Remmina: ‏https://gitlab.com/Remmina/Remmina/"
+"-/wikis/Usage/Remmina-debugging"
+
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:375
+#: src/remmina.c:388
 msgid "- or protocol://username:encryptedpassword@host:port"
 msgstr "- or protocol://username:encryptedpassword@host:port"
 
-#: src/remmina.c:378
+#: src/remmina.c:391
 msgid ""
 "Examples:\n"
 "To connect using an existing connection profile, use:\n"
@@ -2874,13 +2892,13 @@ msgid "Secured password storage in the GNOME keyring"
 msgstr "אחסון ססמאות מאובטח בצרור המפתחות של GNOME"
 
 #: plugins/x2go/x2go_plugin.c:67
-#, c-format, fuzzy
+#, c-format
 msgid ""
 "The command-line feature '%s' is not available! Attempting to start PyHoca-"
 "CLI without using this feature…"
 msgstr ""
-"תכונת שורת הפקודה '%s' אינה זמינה! מנסה להפעיל PyHoca-CLI מבלי להשתמש בתכונה "
-"זו…"
+"יכולת שורת הפקודה ‚%s’ אינה זמינה! מתבצע ניסיון להפעיל PyHoca-CLI מבלי "
+"להשתמש ביכולת זו…"
 
 #: plugins/x2go/x2go_plugin.c:277
 msgid "Broken `DialogData`! Aborting…"
@@ -2965,35 +2983,29 @@ msgid "Unknown property"
 msgstr "מאפיין לא ידוע"
 
 #: plugins/x2go/x2go_plugin.c:586
-#, fuzzy
 msgid "Couldn't find child GtkTreeView of session chooser dialog."
-msgstr ""
-"לא היתה אפשרות למצוא את הילד GtkTreeView של תיבת הדו-שיח של בוחר ההפעלה."
+msgstr "לא היתה אפשרות למצוא את הילד GtkTreeView של חלונית בוחר ההפעלה."
 
 #: plugins/x2go/x2go_plugin.c:600
-#, fuzzy
 msgid "only one session should be able to be selected."
 msgstr "יש לבחור הפעלה אחת בלבד."
 
 #: plugins/x2go/x2go_plugin.c:615
-#, fuzzy
 msgid "Failed to fill 'GtkTreeIter'."
-msgstr "מילוי 'GtkTreeIter' נכשל."
+msgstr "מילוי ‚GtkTreeIter’ נכשל."
 
 #: plugins/x2go/x2go_plugin.c:627
-#, fuzzy
 msgid "Couldn't get session ID out of selected row."
-msgstr "לא היתה אפשרות להוציא מזהה הפעלה מהשורה שנבחרה."
+msgstr "לא היתה אפשרות לקבל מזהה הפעלה מהשורה שנבחרה."
 
 #: plugins/x2go/x2go_plugin.c:660
-#, fuzzy
 msgid "Couldn't get session ID from session chooser dialog."
-msgstr "לא היתה באפשרות לקבל מזהה הפעלה מדף הדו-שיח של בוחר ההפעלה."
+msgstr "לא היתה אפשרות לקבל מזהה הפעלה מחלונית בוחר ההפעלה."
 
 #: plugins/x2go/x2go_plugin.c:667
-#, c-format, fuzzy
+#, c-format
 msgid "Resuming session: '%s'"
-msgstr "ההפעלה ‚%s’ נמשכת…"
+msgstr "הפעלה מחודשת: ‚%s’"
 
 #: plugins/x2go/x2go_plugin.c:892
 msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
@@ -3014,19 +3026,16 @@ msgstr ""
 "ולוודא שהשרת המרוחק נגיש."
 
 #: plugins/x2go/x2go_plugin.c:937
-#, fuzzy
 msgid "parameter 'argv' is 'NULL'."
-msgstr "הפרמטר 'argv' הוא 'NULL'."
+msgstr "המשתנה ‚argv’ הוא ‚NULL’."
 
 #: plugins/x2go/x2go_plugin.c:948
-#, fuzzy
 msgid "parameter 'error' is 'NULL'."
-msgstr "הפרמטר 'error' הוא 'NULL'."
+msgstr "המשתנה ‚error’ הוא ‚NULL’."
 
 #: plugins/x2go/x2go_plugin.c:956
-#, fuzzy
 msgid "parameter 'env' is either invalid or uninitialized."
-msgstr "הפרמטר 'env' אינו חוקי או שאינו מאותח."
+msgstr "המשתנה ‚env’ שגוי או שאינו מאותחל."
 
 #: plugins/x2go/x2go_plugin.c:972
 msgid "Started PyHoca-CLI with the following arguments:"
@@ -3037,30 +3046,29 @@ msgid "Started PyHoca-CLI with the following environment variables:"
 msgstr "PyHoca-CLI הופעל עם משתני הסביבה הבאים:"
 
 #: plugins/x2go/x2go_plugin.c:997
-#, fuzzy
 msgid ""
 "The necessary PyHoca-CLI process has encountered a internet connection "
 "problem."
-msgstr "תהליך PyHoca-CLI הדרוש נתקל בבעיית חיבור לאינטרנט."
+msgstr "תהליך PyHoca-CLI ההכרחי נתקל בבעיית חיבור לאינטרנט."
 
 #: plugins/x2go/x2go_plugin.c:1007
 msgid "An unknown error occured while trying to start PyHoca-CLI."
 msgstr "אירעה שגיאה בלתי ידועה בניסיון הפעלת PyHoca-CLI."
 
 #: plugins/x2go/x2go_plugin.c:1017
-#, c-format, fuzzy
+#, c-format
 msgid ""
 "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i"
 msgstr "אירעה שגיאה לא ידועה בעת ניסיון להפעיל את PyHoca-CLI. קוד יציאה: %i"
 
 #: plugins/x2go/x2go_plugin.c:1022
-#, c-format, fuzzy
+#, c-format
 msgid ""
 "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i. "
 "Error: '%s'"
 msgstr ""
-"אירעה שגיאה לא ידועה בעת ניסיון להפעיל את PyHoca-CLI. קוד יציאה: %i. שגיאה: "
-"'%s'"
+"אירעה שגיאה לא ידועה בעת הניסיון להפעיל את PyHoca-CLI. קוד יציאה: %i. שגיאה: "
+"‚%s’"
 
 #: plugins/x2go/x2go_plugin.c:1047
 msgid "Can't save empty username!"
@@ -3079,9 +3087,8 @@ msgstr ""
 "‚s_username’ לא הוגדרו."
 
 #: plugins/x2go/x2go_plugin.c:1095
-#, fuzzy
 msgid "Parameter 'default_username' is uninitialized."
-msgstr "הפרמטר 'default_username' אינו מאותחל."
+msgstr "המשתנה ‚default_username’ אינו מאותחל."
 
 #: plugins/x2go/x2go_plugin.c:1124
 msgid "Enter X2Go credentials"
@@ -3092,29 +3099,26 @@ msgid "'Invalid connection data.'"
 msgstr "‚נתוני חיבור שגויים.’"
 
 #: plugins/x2go/x2go_plugin.c:1323
-#, fuzzy
 msgid ""
 "Couldn't parse the output of PyHoca-CLI's --list-sessions option. Creating a "
 "new session now."
 msgstr ""
-"לא היתה אפשרות לנתח את הפלט של האפשרות -list-sessions של PyHoca-CLI. יוצר "
-"הפעלה חדשה כעת."
+"לא היתה אפשרות לנתח פלט האפשרות ‎--list-sessions של PyHoca-CLI. נוצרת הפעלה "
+"חדשה כעת."
 
 #: plugins/x2go/x2go_plugin.c:1362
-#, fuzzy
 msgid "Couldn't allocate enough memory!"
 msgstr "לא היתה אפשרות להקצות מספיק זיכרון!"
 
 #: plugins/x2go/x2go_plugin.c:1372
-#, c-format, fuzzy
+#, c-format
 msgid "Found already existing X2Go session with ID: '%s'"
-msgstr "נמצא כבר קיימת X2Go הפעלה עם מזהה: '%s'"
+msgstr "נמצאה הפעלה קיימת של X2Go המזהה: ‚%s’"
 
 #: plugins/x2go/x2go_plugin.c:1444
-#, fuzzy
 msgid ""
 "Could not find any sessions on remote machine. Creating a new session now."
-msgstr "לא היתה אפשרות למצוא הפעלות במחשב מרוחק. יוצר הפעלה חדשה כעת."
+msgstr "לא היתה אפשרות למצוא הפעלות במחשב המרוחק. נוצרת הפעלה חדשה כעת."
 
 #: plugins/x2go/x2go_plugin.c:1485
 msgid "Choose a session to resume:"
@@ -3125,19 +3129,18 @@ msgid "Waiting for user to select a session…"
 msgstr "בהמתנה לבחירת הפעלה על ידי המשתמש…"
 
 #: plugins/x2go/x2go_plugin.c:1510
-#, fuzzy
 msgid "No session was selected. Creating a new one."
-msgstr "לא נבחרה הפעלה. יצירת אחד חדש."
+msgstr "לא נבחרה הפעלה. נוצרת אחת חדשה."
 
 #: plugins/x2go/x2go_plugin.c:1558
-#, c-format, fuzzy
+#, c-format
 msgid "A non-critical error happened: %s"
 msgstr "אירעה שגיאה לא קריטית: %s"
 
 #: plugins/x2go/x2go_plugin.c:1563
-#, c-format, fuzzy
+#, c-format
 msgid "User chose to resume session with ID: '%s'"
-msgstr "המשתמש בחר לחדש את ההפעלה עם מזהה: '%s'"
+msgstr "המשתמש בחר לחדש את ההפעלה עם המזהה: ‚%s’"
 
 #: plugins/x2go/x2go_plugin.c:1583
 #, c-format

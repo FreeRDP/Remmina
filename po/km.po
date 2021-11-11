@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-11-09 14:11+0000\n"
-"PO-Revision-Date: 2021-11-09 14:11+0000\n"
+"POT-Creation-Date: 2021-11-11 20:00+0000\n"
+"PO-Revision-Date: 2021-11-11 20:01+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Khmer (Central) <https://hosted.weblate.org/projects/remmina/"
 "remmina/km/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.9-dev\n"
+"X-Generator: Weblate 4.9.1-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:354
@@ -610,13 +610,27 @@ msgstr "កំណត់ទម្រង់មួយឬច្រើន, ដើម�
 msgid "Encrypt a password"
 msgstr "រក្សា​​ទុក​​​ពាក្យ​​​សម្ងាត់"
 
+#: src/remmina.c:333
+msgid ""
+"Remmina does not log all output statements. To enable a more verbose output "
+"please use G_MESSAGES_DEBUG=all as an environment variable. "
+msgstr ""
+
+#. TRANSLATORS: This link should point to a resource explaining
+#. TRANSLATORS: how to get Remmina to log debug statements.
+#: src/remmina.c:338
+msgid ""
+"For more information, please visit the Remmina Wiki: https://gitlab.com/"
+"Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
+msgstr ""
+
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:375
+#: src/remmina.c:388
 #, fuzzy
 msgid "- or protocol://username:encryptedpassword@host:port"
 msgstr "- ឬ protocol://username:encryptedpassword@host:port"
 
-#: src/remmina.c:378
+#: src/remmina.c:391
 #, fuzzy
 msgid ""
 "Examples:\n"
@@ -3267,11 +3281,13 @@ msgid "Secured password storage in the GNOME keyring"
 msgstr "ការ ផ្ទុក ពាក្យ សម្ងាត់ ដែល មាន សុវត្ថិភាព នៅ ក្នុង keyring GNOME"
 
 #: plugins/x2go/x2go_plugin.c:67
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "The command-line feature '%s' is not available! Attempting to start PyHoca-"
 "CLI without using this feature…"
 msgstr ""
+"លក្ខណៈពិសេសនៃ command-line '%s' មិនអាចប្រើបាន! ការព្យាយាមចាប់ផ្តើម PyHoca-CLI "
+"ដោយមិនបាច់ប្រើលក្ខណៈពិសេសនេះ…"
 
 #: plugins/x2go/x2go_plugin.c:277
 #, fuzzy
@@ -3286,64 +3302,73 @@ msgstr "មិនអាចយក 'DialogData'បានទេ! ពន្លូត
 #: plugins/x2go/x2go_plugin.c:438
 #, fuzzy
 msgid "Couldn't retrieve valid `DialogData` or `sessions_list`! Aborting…"
-msgstr "មិនអាចយក 'DialogData'បានទេ! ពន្លូត…"
+msgstr "មិនអាចយក 'DialogData' ដែលមានសុពលភាពបានទេ ឬ 'sessions_list'! ពន្លូត…"
 
 #: plugins/x2go/x2go_plugin.c:445
+#, fuzzy
 msgid "_New"
-msgstr ""
+msgstr "_New"
 
 #: plugins/x2go/x2go_plugin.c:447
 #, fuzzy
 msgid "_Select session"
-msgstr "_Select ទាំងអស់"
+msgstr "សម័យ _Select"
 
 #: plugins/x2go/x2go_plugin.c:506
+#, fuzzy
 msgid "Display"
-msgstr ""
+msgstr "បង្ហាញ"
 
 #: plugins/x2go/x2go_plugin.c:507
+#, fuzzy
 msgid "Status"
-msgstr ""
+msgstr "ស្ថានភាព"
 
 #: plugins/x2go/x2go_plugin.c:508
 #, fuzzy
 #| msgid "Permission"
 msgid "Session ID"
-msgstr "សិទ្ធិ"
+msgstr "សំគាល់ សម័យ"
 
 #: plugins/x2go/x2go_plugin.c:509
+#, fuzzy
 msgid "Create date"
-msgstr ""
+msgstr "បង្កើត កាលបរិច្ឆេទ"
 
 #: plugins/x2go/x2go_plugin.c:510
+#, fuzzy
 msgid "Suspended since"
-msgstr ""
+msgstr "ព្យួរតាំងពី"
 
 #: plugins/x2go/x2go_plugin.c:511
+#, fuzzy
 msgid "Agent PID"
-msgstr ""
+msgstr "ភ្នាក់ងារ PID"
 
 #: plugins/x2go/x2go_plugin.c:513
 #, fuzzy
 msgid "Hostname"
-msgstr "ឈ្មោះ​គណនី"
+msgstr "ឈ្មោះ ម៉ាស៊ីន"
 
 #: plugins/x2go/x2go_plugin.c:514
+#, fuzzy
 msgid "Cookie"
-msgstr ""
+msgstr "ខូគី"
 
 #: plugins/x2go/x2go_plugin.c:515
+#, fuzzy
 msgid "Graphic port"
-msgstr ""
+msgstr "កំពង់ផែក្រាហ្វិច"
 
 #: plugins/x2go/x2go_plugin.c:516
+#, fuzzy
 msgid "SND port"
-msgstr ""
+msgstr "កំពង់ផែ SND"
 
 #: plugins/x2go/x2go_plugin.c:517
 #, fuzzy
 msgid "SSHFS port"
-msgstr "កំពង់ ផែ SSH ក្នុង ស្រុក"
+msgstr "កំពង់ផែ SSHFS"
 
 #: plugins/x2go/x2go_plugin.c:519 plugins/x2go/x2go_plugin.c:585
 #: plugins/x2go/x2go_plugin.c:599 plugins/x2go/x2go_plugin.c:614
@@ -3357,36 +3382,42 @@ msgstr "កំពង់ ផែ SSH ក្នុង ស្រុក"
 #: plugins/x2go/x2go_plugin.c:2465 plugins/x2go/x2go_plugin.c:2470
 #, fuzzy, c-format
 msgid "Internal error: %s"
-msgstr "កំហុសខាងក្នុង: "
+msgstr "កំហុសផ្ទៃក្នុង: %s"
 
 #: plugins/x2go/x2go_plugin.c:520
+#, fuzzy
 msgid "Unknown property"
-msgstr ""
+msgstr "មិនស្គាល់ទ្រព្យសម្បត្តិ"
 
 #: plugins/x2go/x2go_plugin.c:586
+#, fuzzy
 msgid "Couldn't find child GtkTreeView of session chooser dialog."
-msgstr ""
+msgstr "មិន អាច រក ឃើញ កូន GtkTreeView នៃ ប្រអប់ ជ្រើស រើស សម័យ បាន ទេ & # 160; ។"
 
 #: plugins/x2go/x2go_plugin.c:600
+#, fuzzy
 msgid "only one session should be able to be selected."
-msgstr ""
+msgstr "មាន តែ សម័យ មួយ ប៉ុណ្ណោះ ដែល គួរ តែ អាច ជ្រើស បាន & # 160; ។"
 
 #: plugins/x2go/x2go_plugin.c:615
+#, fuzzy
 msgid "Failed to fill 'GtkTreeIter'."
-msgstr ""
+msgstr "បរាជ័យក្នុងការបំពេញ 'GtkTreeIter'."
 
 #: plugins/x2go/x2go_plugin.c:627
+#, fuzzy
 msgid "Couldn't get session ID out of selected row."
-msgstr ""
+msgstr "មិន អាច យក អត្ត សញ្ញាណ សម័យ ចេញ ពី ជួរ ដេក ដែល បាន ជ្រើស បាន ទេ & # 160; ។"
 
 #: plugins/x2go/x2go_plugin.c:660
+#, fuzzy
 msgid "Couldn't get session ID from session chooser dialog."
-msgstr ""
+msgstr "មិន អាច ទទួល បាន session ID ពី session chooser dialog."
 
 #: plugins/x2go/x2go_plugin.c:667
-#, c-format
+#, fuzzy, c-format
 msgid "Resuming session: '%s'"
-msgstr ""
+msgstr "សម័យ សង្ខេប៖ '%s'"
 
 #: plugins/x2go/x2go_plugin.c:892
 #, fuzzy
@@ -3411,16 +3442,19 @@ msgstr ""
 "កើត មាន ។ ក៏ ធានា ថា ម៉ាស៊ីន បម្រើ ពី ចម្ងាយ អាច ទៅ ដល់ បាន ផង ដែរ ។"
 
 #: plugins/x2go/x2go_plugin.c:937
+#, fuzzy
 msgid "parameter 'argv' is 'NULL'."
-msgstr ""
+msgstr "ប៉ារ៉ាម៉ែត្រ 'argv' is 'NULL'."
 
 #: plugins/x2go/x2go_plugin.c:948
+#, fuzzy
 msgid "parameter 'error' is 'NULL'."
-msgstr ""
+msgstr "ប៉ារ៉ាម៉ែត្រ 'error' is 'NULL'."
 
 #: plugins/x2go/x2go_plugin.c:956
+#, fuzzy
 msgid "parameter 'env' is either invalid or uninitialized."
-msgstr ""
+msgstr "ប៉ារ៉ាម៉ែត្រ 'env' គឺ មិន ត្រឹម ត្រូវ ឬ មិន បាន ឆ្លង កាត់ ឡើយ ។"
 
 #: plugins/x2go/x2go_plugin.c:972
 #, fuzzy
@@ -3430,31 +3464,35 @@ msgstr "បាន ចាប់ផ្ដើម PyHoca-CLI ជាមួយ នឹ�
 #: plugins/x2go/x2go_plugin.c:988
 #, fuzzy
 msgid "Started PyHoca-CLI with the following environment variables:"
-msgstr "បាន ចាប់ផ្ដើម PyHoca-CLI ជាមួយ នឹង អាគុយម៉ង់ ដូច ខាង ក្រោម៖"
+msgstr "បាន ចាប់ផ្ដើម PyHoca-CLI ជាមួយ នឹង អថេរ បរិស្ថាន ដូច ខាង ក្រោម៖"
 
 #: plugins/x2go/x2go_plugin.c:997
+#, fuzzy
 msgid ""
 "The necessary PyHoca-CLI process has encountered a internet connection "
 "problem."
-msgstr ""
+msgstr "ដំណើរការ PyHoca-CLI ដែល ចាំបាច់ បាន ជួប ប្រទះ បញ្ហា តភ្ជាប់ អ៊ីនធឺណិត ។"
 
 #: plugins/x2go/x2go_plugin.c:1007
 #, fuzzy
 msgid "An unknown error occured while trying to start PyHoca-CLI."
-msgstr "កំហុស មួយ បាន កើតឡើង ខណៈ ចាប់ផ្តើម សម័យ X2Go…"
+msgstr "កំហុស ដែល មិន ស្គាល់ មួយ បាន កើត ឡើង នៅ ពេល ព្យាយាម ចាប់ ផ្តើម PyHoca-CLI ។"
 
 #: plugins/x2go/x2go_plugin.c:1017
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i"
 msgstr ""
+"កំហុស ដែល មិន ស្គាល់ មួយ បាន កើត ឡើង នៅ ពេល ព្យាយាម ចាប់ ផ្តើម PyHoca-CLI ។ ចេញកូដ: %i"
 
 #: plugins/x2go/x2go_plugin.c:1022
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i. "
 "Error: '%s'"
 msgstr ""
+"កំហុស ដែល មិន ស្គាល់ មួយ បាន កើត ឡើង នៅ ពេល ព្យាយាម ចាប់ ផ្តើម PyHoca-CLI ។ ចេញកូដ: "
+"%i. កំហុស: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:1047
 #, fuzzy
@@ -3464,7 +3502,7 @@ msgstr "មិន អាច រក្សាទុក ឈ្មោះ អ្ន�
 #: plugins/x2go/x2go_plugin.c:1061
 #, fuzzy
 msgid "Could not save new credentials."
-msgstr "កំហុសខាងក្នុង: មិនអាចរក្សាទុកនូវភាពជឿជាក់ថ្មីបានទេ។"
+msgstr "មិន អាច រក្សា ទុក នូវ សមត្ថ ភាព ថ្មី បាន ទេ ។"
 
 #: plugins/x2go/x2go_plugin.c:1064
 #, fuzzy
@@ -3476,8 +3514,9 @@ msgstr ""
 "អក្សរ 's_username' មិន ត្រូវ បាន កំណត់ ឡើយ ។"
 
 #: plugins/x2go/x2go_plugin.c:1095
+#, fuzzy
 msgid "Parameter 'default_username' is uninitialized."
-msgstr ""
+msgstr "ប៉ារ៉ាម៉ែត្រ 'default_username' មិន អាច យោគៈ បាន ឡើយ ។"
 
 #: plugins/x2go/x2go_plugin.c:1124
 #, fuzzy
@@ -3488,56 +3527,64 @@ msgstr "បញ្ចូល សមត្ថ ភាព X2Go"
 #, fuzzy
 #| msgid "Per connection"
 msgid "'Invalid connection data.'"
-msgstr "ការតភ្ជាប់ដែលបានចែករំលែក"
+msgstr "'Invalid connection data.'"
 
 #: plugins/x2go/x2go_plugin.c:1323
+#, fuzzy
 msgid ""
 "Couldn't parse the output of PyHoca-CLI's --list-sessions option. Creating a "
 "new session now."
 msgstr ""
+"មិន អាច ញែក លទ្ធផល នៃ ជម្រើស --សម័យ បញ្ជី របស់ PyHoca-CLI បាន ទេ & # 160; ។ ការ "
+"បង្កើត សម័យ ថ្មី ឥឡូវ នេះ & # 160; ។"
 
 #: plugins/x2go/x2go_plugin.c:1362
+#, fuzzy
 msgid "Couldn't allocate enough memory!"
-msgstr ""
+msgstr "មិន អាច បែង ចែក សតិ បាន គ្រប់ គ្រាន់ ទេ!"
 
 #: plugins/x2go/x2go_plugin.c:1372
-#, c-format
+#, fuzzy, c-format
 msgid "Found already existing X2Go session with ID: '%s'"
-msgstr ""
+msgstr "រកឃើញរួចហើយ X2Go session ដែលមាន ID: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:1444
+#, fuzzy
 msgid ""
 "Could not find any sessions on remote machine. Creating a new session now."
 msgstr ""
+"មិន អាច រក ឃើញ វគ្គ ណា មួយ នៅ លើ ម៉ាស៊ីន ពី ចម្ងាយ បាន ទេ & # 160; ។ ការ បង្កើត សម័យ "
+"ថ្មី ឥឡូវ នេះ & # 160; ។"
 
 #: plugins/x2go/x2go_plugin.c:1485
 #, fuzzy
 msgid "Choose a session to resume:"
-msgstr "ជ្រើស ឯកសារ ដើម្បី ផ្ទុក ឡើង"
+msgstr "ជ្រើស សម័យ មួយ ដើម្បី បន្ត ៖"
 
 #: plugins/x2go/x2go_plugin.c:1502
 #, fuzzy
 msgid "Waiting for user to select a session…"
-msgstr "រង់ចាំ PyHoca-CLI ដើម្បី បង្ហាញ បង្អួច សម័យ…"
+msgstr "រង់ចាំអ្នកប្រើដើម្បីជ្រើសរើស session…"
 
 #: plugins/x2go/x2go_plugin.c:1510
+#, fuzzy
 msgid "No session was selected. Creating a new one."
-msgstr ""
+msgstr "គ្មាន សម័យ ណា ត្រូវ បាន ជ្រើស & # 160; ។ ការបង្កើតថ្មី។"
 
 #: plugins/x2go/x2go_plugin.c:1558
-#, c-format
+#, fuzzy, c-format
 msgid "A non-critical error happened: %s"
-msgstr ""
+msgstr "កំហុសដែលមិនមែនជាការរិះគន់បានកើតឡើង: %s"
 
 #: plugins/x2go/x2go_plugin.c:1563
-#, c-format
+#, fuzzy, c-format
 msgid "User chose to resume session with ID: '%s'"
-msgstr ""
+msgstr "អ្នកប្រើប្រាស់បានជ្រើសរើសដើម្បីបន្តវគ្គជាមួយ ID: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:1583
-#, c-format
+#, fuzzy, c-format
 msgid "Resuming session '%s'…"
-msgstr ""
+msgstr "សម័យ សង្ខេប '%s'…"
 
 #: plugins/x2go/x2go_plugin.c:1706
 #, fuzzy
@@ -3617,7 +3664,7 @@ msgstr "គ្មាន បង្អួច សម័យ X2Go បាន លេច
 #: plugins/x2go/x2go_plugin.c:2213
 #, fuzzy
 msgid "RemminaProtocolWidget* gp is 'NULL'!"
-msgstr "កំហុសខាងក្នុង: RemminaProtocolWidget* gp is NULL!"
+msgstr "RemminaProtocolWidget* gp is 'NULL'!"
 
 #: plugins/x2go/x2go_plugin.c:2234
 #, fuzzy, c-format
@@ -3672,8 +3719,9 @@ msgid "Validation data in ProtocolSettings array is invalid!"
 msgstr "ទិន្នន័យសុពលភាពនៅក្នុង ProtocolSettings array គឺមិនត្រឹមត្រូវ!"
 
 #: plugins/x2go/x2go_plugin.c:2359
+#, fuzzy
 msgid "Parameters 'key' or 'value' are 'NULL'!"
-msgstr ""
+msgstr "ប៉ារ៉ាម៉ែត្រ 'key' ឬ 'តម្លៃ' គឺ 'NULL' !"
 
 #: plugins/x2go/x2go_plugin.c:2377
 #, fuzzy, c-format
@@ -3704,7 +3752,7 @@ msgstr "កំរិតទាបទាបពេក!"
 #: plugins/x2go/x2go_plugin.c:2491
 #, fuzzy
 msgid "Something unknown went wrong."
-msgstr "មានអីខុស។"
+msgstr "អ្វី ដែល មិន ស្គាល់ បាន កើត ឡើង ខុស ។"
 
 #: plugins/x2go/x2go_plugin.c:2446 plugins/x2go/x2go_plugin.c:2476
 #: plugins/x2go/x2go_plugin.c:2495

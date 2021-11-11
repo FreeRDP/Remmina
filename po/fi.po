@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-11-09 14:11+0000\n"
-"PO-Revision-Date: 2021-11-09 14:11+0000\n"
+"POT-Creation-Date: 2021-11-11 20:00+0000\n"
+"PO-Revision-Date: 2021-11-11 20:01+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/remmina/remmina/"
 "fi/>\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.9-dev\n"
+"X-Generator: Weblate 4.9.1-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:354
@@ -542,12 +542,26 @@ msgstr ""
 msgid "Encrypt a password"
 msgstr "Anna VNC-salasana"
 
+#: src/remmina.c:333
+msgid ""
+"Remmina does not log all output statements. To enable a more verbose output "
+"please use G_MESSAGES_DEBUG=all as an environment variable. "
+msgstr ""
+
+#. TRANSLATORS: This link should point to a resource explaining
+#. TRANSLATORS: how to get Remmina to log debug statements.
+#: src/remmina.c:338
+msgid ""
+"For more information, please visit the Remmina Wiki: https://gitlab.com/"
+"Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
+msgstr ""
+
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:375
+#: src/remmina.c:388
 msgid "- or protocol://username:encryptedpassword@host:port"
 msgstr "- tai protokolla://käyttäjänimi:salattu_salasana@isäntä:portti"
 
-#: src/remmina.c:378
+#: src/remmina.c:391
 msgid ""
 "Examples:\n"
 "To connect using an existing connection profile, use:\n"
@@ -2918,11 +2932,13 @@ msgid "Secured password storage in the GNOME keyring"
 msgstr "Suojattu salasana, joka tallennetaan GNOME-avainrenkaaseen"
 
 #: plugins/x2go/x2go_plugin.c:67
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "The command-line feature '%s' is not available! Attempting to start PyHoca-"
 "CLI without using this feature…"
 msgstr ""
+"Komentorivin ominaisuus '%s' ei ole käytettävissä! PyHoca-CLI:n "
+"käynnistäminen ilman tätä ominaisuutta…"
 
 #: plugins/x2go/x2go_plugin.c:277
 #, fuzzy
@@ -2937,17 +2953,20 @@ msgstr "`DialogDataa` ei voi hakea! Keskeytys…"
 #: plugins/x2go/x2go_plugin.c:438
 #, fuzzy
 msgid "Couldn't retrieve valid `DialogData` or `sessions_list`! Aborting…"
-msgstr "`DialogDataa` ei voi hakea! Keskeytys…"
+msgstr ""
+"Kelvollista `DialogData`- tai `sessions_list`-luetteloa ei voitu hakea! "
+"Keskeytys…"
 
 #: plugins/x2go/x2go_plugin.c:445
+#, fuzzy
 msgid "_New"
-msgstr ""
+msgstr "_Uusi"
 
 #: plugins/x2go/x2go_plugin.c:447
 #, fuzzy
 #| msgid "_Select all"
 msgid "_Select session"
-msgstr "_Valitse kaikki"
+msgstr "_Valitse istunto"
 
 #: plugins/x2go/x2go_plugin.c:506
 msgid "Display"
@@ -2961,43 +2980,49 @@ msgstr "Tila"
 #, fuzzy
 #| msgid "Permission"
 msgid "Session ID"
-msgstr "Oikeudet"
+msgstr "Istunnon ID"
 
 #: plugins/x2go/x2go_plugin.c:509
+#, fuzzy
 msgid "Create date"
-msgstr ""
+msgstr "Luo päivämäärä"
 
 #: plugins/x2go/x2go_plugin.c:510
+#, fuzzy
 msgid "Suspended since"
-msgstr ""
+msgstr "Keskeytetty vuodesta"
 
 #: plugins/x2go/x2go_plugin.c:511
+#, fuzzy
 msgid "Agent PID"
-msgstr ""
+msgstr "Agentti PID"
 
 #: plugins/x2go/x2go_plugin.c:513
 #, fuzzy
 #| msgid "Username"
 msgid "Hostname"
-msgstr "Käyttäjänimi"
+msgstr "Isäntänimi"
 
 #: plugins/x2go/x2go_plugin.c:514
+#, fuzzy
 msgid "Cookie"
-msgstr ""
+msgstr "Cookie"
 
 #: plugins/x2go/x2go_plugin.c:515
+#, fuzzy
 msgid "Graphic port"
-msgstr ""
+msgstr "Graafinen portti"
 
 #: plugins/x2go/x2go_plugin.c:516
+#, fuzzy
 msgid "SND port"
-msgstr ""
+msgstr "SND-portti"
 
 #: plugins/x2go/x2go_plugin.c:517
 #, fuzzy
 #| msgid "Local SSH port"
 msgid "SSHFS port"
-msgstr "Paikallinen SSH-portti"
+msgstr "SSHFS-portti"
 
 #: plugins/x2go/x2go_plugin.c:519 plugins/x2go/x2go_plugin.c:585
 #: plugins/x2go/x2go_plugin.c:599 plugins/x2go/x2go_plugin.c:614
@@ -3012,36 +3037,42 @@ msgstr "Paikallinen SSH-portti"
 #, fuzzy, c-format
 #| msgid "Transfer error"
 msgid "Internal error: %s"
-msgstr "Sisäinen virhe: "
+msgstr "Sisäinen virhe: %s"
 
 #: plugins/x2go/x2go_plugin.c:520
+#, fuzzy
 msgid "Unknown property"
-msgstr ""
+msgstr "Tuntematon omaisuus"
 
 #: plugins/x2go/x2go_plugin.c:586
+#, fuzzy
 msgid "Couldn't find child GtkTreeView of session chooser dialog."
-msgstr ""
+msgstr "Istunnon valintaikkunan GtkTreeView-lapsi ei löytynyt."
 
 #: plugins/x2go/x2go_plugin.c:600
+#, fuzzy
 msgid "only one session should be able to be selected."
-msgstr ""
+msgstr "vain yksi istunto pitäisi voida valita."
 
 #: plugins/x2go/x2go_plugin.c:615
+#, fuzzy
 msgid "Failed to fill 'GtkTreeIter'."
-msgstr ""
+msgstr "'GtkTreeIter' ei onnistunut täyttämään 'GtkTreeIter'."
 
 #: plugins/x2go/x2go_plugin.c:627
+#, fuzzy
 msgid "Couldn't get session ID out of selected row."
-msgstr ""
+msgstr "Ei saatu istunnon tunnistetta valitulta riviltä."
 
 #: plugins/x2go/x2go_plugin.c:660
+#, fuzzy
 msgid "Couldn't get session ID from session chooser dialog."
-msgstr ""
+msgstr "Istunnon ID:tä ei saatu istunnon valintaikkunasta."
 
 #: plugins/x2go/x2go_plugin.c:667
-#, c-format
+#, fuzzy, c-format
 msgid "Resuming session: '%s'"
-msgstr ""
+msgstr "Istunnon jatkaminen: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:892
 #, fuzzy
@@ -3064,16 +3095,19 @@ msgstr ""
 "varalta. Varmista myös, että etäpalvelin on tavoitettavissa."
 
 #: plugins/x2go/x2go_plugin.c:937
+#, fuzzy
 msgid "parameter 'argv' is 'NULL'."
-msgstr ""
+msgstr "parametri 'argv' on 'NULL'."
 
 #: plugins/x2go/x2go_plugin.c:948
+#, fuzzy
 msgid "parameter 'error' is 'NULL'."
-msgstr ""
+msgstr "parametri 'error' on 'NULL'."
 
 #: plugins/x2go/x2go_plugin.c:956
+#, fuzzy
 msgid "parameter 'env' is either invalid or uninitialized."
-msgstr ""
+msgstr "parametri 'env' on joko virheellinen tai alustamaton."
 
 #: plugins/x2go/x2go_plugin.c:972
 #, fuzzy
@@ -3083,32 +3117,36 @@ msgstr "PyHoca-CLI käynnistettiin seuraavilla argumenteilla:"
 #: plugins/x2go/x2go_plugin.c:988
 #, fuzzy
 msgid "Started PyHoca-CLI with the following environment variables:"
-msgstr "PyHoca-CLI käynnistettiin seuraavilla argumenteilla:"
+msgstr "PyHoca-CLI käynnistettiin seuraavilla ympäristömuuttujilla:"
 
 #: plugins/x2go/x2go_plugin.c:997
+#, fuzzy
 msgid ""
 "The necessary PyHoca-CLI process has encountered a internet connection "
 "problem."
-msgstr ""
+msgstr "PyHoca-CLI-prosessi on törmännyt Internet-yhteysongelmaan."
 
 #: plugins/x2go/x2go_plugin.c:1007
 #, fuzzy
 #| msgid "An error occured while starting a X2Go session."
 msgid "An unknown error occured while trying to start PyHoca-CLI."
-msgstr "X2Go-istuntoa aloittaessa tapahtui virhe."
+msgstr "PyHoca-CLI:tä käynnistettäessä tapahtui tuntematon virhe."
 
 #: plugins/x2go/x2go_plugin.c:1017
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i"
 msgstr ""
+"PyHoca-CLI:tä käynnistettäessä tapahtui tuntematon virhe. Poistumiskoodi: %i"
 
 #: plugins/x2go/x2go_plugin.c:1022
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i. "
 "Error: '%s'"
 msgstr ""
+"PyHoca-CLI:tä käynnistettäessä tapahtui tuntematon virhe. Poistumiskoodi: "
+"%i. Virhe: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:1047
 #, fuzzy
@@ -3118,7 +3156,7 @@ msgstr "Tyhjää käyttäjätunnusta ei voi tallentaa!"
 #: plugins/x2go/x2go_plugin.c:1061
 #, fuzzy
 msgid "Could not save new credentials."
-msgstr "Sisäinen virhe: Sisäinen virhe: Uusia valtakirjoja ei voitu tallentaa."
+msgstr "Uusia tunnuksia ei voitu tallentaa."
 
 #: plugins/x2go/x2go_plugin.c:1064
 #, fuzzy
@@ -3130,8 +3168,9 @@ msgstr ""
 "tai 's_username' -merkkijonoja ei ollut asetettu."
 
 #: plugins/x2go/x2go_plugin.c:1095
+#, fuzzy
 msgid "Parameter 'default_username' is uninitialized."
-msgstr ""
+msgstr "Parametri 'default_username' ei ole alustettu."
 
 #: plugins/x2go/x2go_plugin.c:1124
 msgid "Enter X2Go credentials"
@@ -3141,57 +3180,63 @@ msgstr "Syötä X2Go-todennustiedot"
 #, fuzzy
 #| msgid "Shared connection"
 msgid "'Invalid connection data.'"
-msgstr "Jaettu yhteys"
+msgstr "'Virheelliset yhteystiedot.'"
 
 #: plugins/x2go/x2go_plugin.c:1323
+#, fuzzy
 msgid ""
 "Couldn't parse the output of PyHoca-CLI's --list-sessions option. Creating a "
 "new session now."
 msgstr ""
+"PyHoca-CLI:n --list-sessions -vaihtoehdon tulostetta ei pystytty "
+"jäsentämään. Luodaan nyt uusi istunto."
 
 #: plugins/x2go/x2go_plugin.c:1362
+#, fuzzy
 msgid "Couldn't allocate enough memory!"
-msgstr ""
+msgstr "Muistia ei voitu varata tarpeeksi!"
 
 #: plugins/x2go/x2go_plugin.c:1372
-#, c-format
+#, fuzzy, c-format
 msgid "Found already existing X2Go session with ID: '%s'"
-msgstr ""
+msgstr "Löytyi jo olemassa oleva X2Go-istunto tunnuksella: '%s'."
 
 #: plugins/x2go/x2go_plugin.c:1444
+#, fuzzy
 msgid ""
 "Could not find any sessions on remote machine. Creating a new session now."
-msgstr ""
+msgstr "Etäkoneesta ei löytynyt istuntoja. Luodaan nyt uusi istunto."
 
 #: plugins/x2go/x2go_plugin.c:1485
 #, fuzzy
 #| msgid "Choose a file to upload"
 msgid "Choose a session to resume:"
-msgstr "Valitse lähetettävä tiedosto"
+msgstr "Valitse jatkettava istunto:"
 
 #: plugins/x2go/x2go_plugin.c:1502
 #, fuzzy
 msgid "Waiting for user to select a session…"
-msgstr "Odotetaan, että PyHoca-CLI näyttää istunnon ikkunan…"
+msgstr "Odotetaan, että käyttäjä valitsee istunnon…"
 
 #: plugins/x2go/x2go_plugin.c:1510
+#, fuzzy
 msgid "No session was selected. Creating a new one."
-msgstr ""
+msgstr "Mitään istuntoa ei valittu. Luodaan uusi."
 
 #: plugins/x2go/x2go_plugin.c:1558
-#, c-format
+#, fuzzy, c-format
 msgid "A non-critical error happened: %s"
-msgstr ""
+msgstr "Tapahtui ei-kriittinen virhe: %s"
 
 #: plugins/x2go/x2go_plugin.c:1563
-#, c-format
+#, fuzzy, c-format
 msgid "User chose to resume session with ID: '%s'"
-msgstr ""
+msgstr "Käyttäjä päätti jatkaa istuntoa tunnuksella: '%s'."
 
 #: plugins/x2go/x2go_plugin.c:1583
-#, c-format
+#, fuzzy, c-format
 msgid "Resuming session '%s'…"
-msgstr ""
+msgstr "Istunnon '%s' jatkaminen…"
 
 #: plugins/x2go/x2go_plugin.c:1706
 #, fuzzy
@@ -3276,7 +3321,7 @@ msgstr "X2Go-istuntoikkunaa ei tullut näkyviin. Jokin meni pieleen…"
 #: plugins/x2go/x2go_plugin.c:2213
 #, fuzzy
 msgid "RemminaProtocolWidget* gp is 'NULL'!"
-msgstr "Sisäinen virhe: RemminaProtocolWidget* gp on NULL!"
+msgstr "RemminaProtocolWidget* gp on 'NULL'!"
 
 #: plugins/x2go/x2go_plugin.c:2234
 #, fuzzy, c-format
@@ -3336,8 +3381,9 @@ msgid "Validation data in ProtocolSettings array is invalid!"
 msgstr "Validointitiedot ProtocolSettings-massassa ovat virheellisiä!"
 
 #: plugins/x2go/x2go_plugin.c:2359
+#, fuzzy
 msgid "Parameters 'key' or 'value' are 'NULL'!"
-msgstr ""
+msgstr "Parametrit 'key' tai 'value' ovat 'NULL'!"
 
 #: plugins/x2go/x2go_plugin.c:2377
 #, fuzzy, c-format
@@ -3368,7 +3414,7 @@ msgstr "Alaraja on liian alhainen!"
 #: plugins/x2go/x2go_plugin.c:2491
 #, fuzzy
 msgid "Something unknown went wrong."
-msgstr "Jokin meni pieleen."
+msgstr "Jokin tuntematon asia meni pieleen."
 
 #: plugins/x2go/x2go_plugin.c:2446 plugins/x2go/x2go_plugin.c:2476
 #: plugins/x2go/x2go_plugin.c:2495

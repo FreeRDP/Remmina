@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-11-09 14:11+0000\n"
-"PO-Revision-Date: 2021-11-09 14:11+0000\n"
+"POT-Creation-Date: 2021-11-11 20:00+0000\n"
+"PO-Revision-Date: 2021-11-11 20:01+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Bengali <https://hosted.weblate.org/projects/remmina/remmina/"
 "bn/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Weblate 4.9-dev\n"
+"X-Generator: Weblate 4.9.1-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:354
@@ -632,13 +632,27 @@ msgstr "এক বা একাধিক প্রোফাইল সেটি�
 msgid "Encrypt a password"
 msgstr "একটি পাসওয়ার্ড এনক্রিপ্ট করুন"
 
+#: src/remmina.c:333
+msgid ""
+"Remmina does not log all output statements. To enable a more verbose output "
+"please use G_MESSAGES_DEBUG=all as an environment variable. "
+msgstr ""
+
+#. TRANSLATORS: This link should point to a resource explaining
+#. TRANSLATORS: how to get Remmina to log debug statements.
+#: src/remmina.c:338
+msgid ""
+"For more information, please visit the Remmina Wiki: https://gitlab.com/"
+"Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
+msgstr ""
+
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:375
+#: src/remmina.c:388
 #, fuzzy
 msgid "- or protocol://username:encryptedpassword@host:port"
 msgstr "- অথবা প্রোটোকল:/ব্যবহারকারীর নাম:encryptedpassword@host:পোর্ট"
 
-#: src/remmina.c:378
+#: src/remmina.c:391
 #, fuzzy
 msgid ""
 "Examples:\n"
@@ -3336,11 +3350,13 @@ msgid "Secured password storage in the GNOME keyring"
 msgstr "GTTTT"
 
 #: plugins/x2go/x2go_plugin.c:67
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "The command-line feature '%s' is not available! Attempting to start PyHoca-"
 "CLI without using this feature…"
 msgstr ""
+"কমান্ড-লাইন বৈশিষ্ট্য '[এক্স২৬এক্স]' উপলব্ধ নয়! এই বৈশিষ্ট্যটি ব্যবহার না করে পাইহোকা-"
+"সিএলআই শুরু করার চেষ্টা করা হচ্ছে…"
 
 #: plugins/x2go/x2go_plugin.c:277
 #, fuzzy
@@ -3355,63 +3371,73 @@ msgstr "'ডায়ালগডাটা' পুনরুদ্ধার ক�
 #: plugins/x2go/x2go_plugin.c:438
 #, fuzzy
 msgid "Couldn't retrieve valid `DialogData` or `sessions_list`! Aborting…"
-msgstr "'ডায়ালগডাটা' পুনরুদ্ধার করা যায়নি! গর্ভপাত করা হচ্ছে…"
+msgstr ""
+"বৈধ 'ডায়ালগডাটা' বা 'sessions_list' পুনরুদ্ধার করা যায়নি! গর্ভপাত করা হচ্ছে…"
 
 #: plugins/x2go/x2go_plugin.c:445
+#, fuzzy
 msgid "_New"
-msgstr ""
+msgstr "_New"
 
 #: plugins/x2go/x2go_plugin.c:447
 #, fuzzy
 msgid "_Select session"
-msgstr "সব নির্বাচন"
+msgstr "_Select অধিবেশন"
 
 #: plugins/x2go/x2go_plugin.c:506
+#, fuzzy
 msgid "Display"
-msgstr ""
+msgstr "প্রদর্শন"
 
 #: plugins/x2go/x2go_plugin.c:507
+#, fuzzy
 msgid "Status"
-msgstr ""
+msgstr "স্থিতি"
 
 #: plugins/x2go/x2go_plugin.c:508
 #, fuzzy
 msgid "Session ID"
-msgstr "অনুমতি"
+msgstr "সেশন আইডি"
 
 #: plugins/x2go/x2go_plugin.c:509
+#, fuzzy
 msgid "Create date"
-msgstr ""
+msgstr "তারিখ তৈরি করুন"
 
 #: plugins/x2go/x2go_plugin.c:510
+#, fuzzy
 msgid "Suspended since"
-msgstr ""
+msgstr "তারপর থেকে স্থগিত করা হয়েছে"
 
 #: plugins/x2go/x2go_plugin.c:511
+#, fuzzy
 msgid "Agent PID"
-msgstr ""
+msgstr "এজেন্ট পিআইডি"
 
 #: plugins/x2go/x2go_plugin.c:513
 #, fuzzy
 msgid "Hostname"
-msgstr "ব্যবহারকারীর নাম"
+msgstr "হোস্ট নাম"
 
 #: plugins/x2go/x2go_plugin.c:514
+#, fuzzy
 msgid "Cookie"
-msgstr ""
+msgstr "কুকি"
 
 #: plugins/x2go/x2go_plugin.c:515
+#, fuzzy
 msgid "Graphic port"
-msgstr ""
+msgstr "গ্রাফিক পোর্ট"
 
 #: plugins/x2go/x2go_plugin.c:516
+#, fuzzy
 msgid "SND port"
-msgstr ""
+msgstr "এসএনডি বন্দর"
 
 #: plugins/x2go/x2go_plugin.c:517
 #, fuzzy
 msgid "SSHFS port"
-msgstr "স্থানীয় এসএসএইচ বন্দর"
+msgstr "এসএসএইচএফএস বন্দর"
 
 #: plugins/x2go/x2go_plugin.c:519 plugins/x2go/x2go_plugin.c:585
 #: plugins/x2go/x2go_plugin.c:599 plugins/x2go/x2go_plugin.c:614
@@ -3425,36 +3451,42 @@ msgstr "স্থানীয় এসএসএইচ বন্দর"
 #: plugins/x2go/x2go_plugin.c:2465 plugins/x2go/x2go_plugin.c:2470
 #, fuzzy, c-format
 msgid "Internal error: %s"
-msgstr "অভ্যন্তরীণ ত্রুটি: "
+msgstr "অভ্যন্তরীণ ত্রুটি: [এক্স16এক্স]"
 
 #: plugins/x2go/x2go_plugin.c:520
+#, fuzzy
 msgid "Unknown property"
-msgstr ""
+msgstr "অজানা সম্পত্তি"
 
 #: plugins/x2go/x2go_plugin.c:586
+#, fuzzy
 msgid "Couldn't find child GtkTreeView of session chooser dialog."
-msgstr ""
+msgstr "সেশন চয়নকারী ডায়ালগের শিশু Gtt.g t খুঁজে পাওয়া যায়নি।"
 
 #: plugins/x2go/x2go_plugin.c:600
+#, fuzzy
 msgid "only one session should be able to be selected."
-msgstr ""
+msgstr "শুধুমাত্র একটি সেশন নির্বাচন করতে সক্ষম হওয়া উচিত।"
 
 #: plugins/x2go/x2go_plugin.c:615
+#, fuzzy
 msgid "Failed to fill 'GtkTreeIter'."
-msgstr ""
+msgstr "'GTTTTt'পূরণ করতে ব্যর্থ হয়েছে।"
 
 #: plugins/x2go/x2go_plugin.c:627
+#, fuzzy
 msgid "Couldn't get session ID out of selected row."
-msgstr ""
+msgstr "নির্বাচিত সারি থেকে সেশন আইডি পাওয়া যায়নি।"
 
 #: plugins/x2go/x2go_plugin.c:660
+#, fuzzy
 msgid "Couldn't get session ID from session chooser dialog."
-msgstr ""
+msgstr "সেশন চয়নকারী ডায়ালগ থেকে সেশন আইডি পাওয়া যায়নি।"
 
 #: plugins/x2go/x2go_plugin.c:667
-#, c-format
+#, fuzzy, c-format
 msgid "Resuming session: '%s'"
-msgstr ""
+msgstr "সেশন পুনরায় শুরু করা: '[এক্স১৯এক্স]'"
 
 #: plugins/x2go/x2go_plugin.c:892
 #, fuzzy
@@ -3478,16 +3510,19 @@ msgstr ""
 "আউটপুট পরীক্ষা করুন। দূরবর্তী সার্ভারটি পৌঁছানো যায় তা নিশ্চিত করুন।"
 
 #: plugins/x2go/x2go_plugin.c:937
+#, fuzzy
 msgid "parameter 'argv' is 'NULL'."
-msgstr ""
+msgstr "প্যারামিটার 'আর্গভ' হল 'এনইউএল'।"
 
 #: plugins/x2go/x2go_plugin.c:948
+#, fuzzy
 msgid "parameter 'error' is 'NULL'."
-msgstr ""
+msgstr "প্যারামিটার 'ত্রুটি' হল 'এনইউএল'।"
 
 #: plugins/x2go/x2go_plugin.c:956
+#, fuzzy
 msgid "parameter 'env' is either invalid or uninitialized."
-msgstr ""
+msgstr "প্যারামিটার 'এনভি' হয় অবৈধ অথবা অপ্রাথমিক।"
 
 #: plugins/x2go/x2go_plugin.c:972
 #, fuzzy
@@ -3497,31 +3532,37 @@ msgstr "নিম্নলিখিত যুক্তিদিয়ে পা�
 #: plugins/x2go/x2go_plugin.c:988
 #, fuzzy
 msgid "Started PyHoca-CLI with the following environment variables:"
-msgstr "নিম্নলিখিত যুক্তিদিয়ে পাইহোকা-সিএলআই শুরু করেছেন:"
+msgstr "নিম্নলিখিত পরিবেশ পরিবর্তনশীলদিয়ে পাইহোকা-সিএলআই শুরু:"
 
 #: plugins/x2go/x2go_plugin.c:997
+#, fuzzy
 msgid ""
 "The necessary PyHoca-CLI process has encountered a internet connection "
 "problem."
 msgstr ""
+"প্রয়োজনীয় পাইহোকা-সিএলআই প্রক্রিয়াটি একটি ইন্টারনেট সংযোগ সমস্যার সম্মুখীন হয়েছে।"
 
 #: plugins/x2go/x2go_plugin.c:1007
 #, fuzzy
 msgid "An unknown error occured while trying to start PyHoca-CLI."
-msgstr "একটি এক্স২গো সেশন শুরু করার সময় একটি ত্রুটি ঘটেছে…"
+msgstr "পাইহোকা-সিএলআই শুরু করার চেষ্টা করার সময় একটি অজানা ত্রুটি ঘটেছে।"
 
 #: plugins/x2go/x2go_plugin.c:1017
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i"
 msgstr ""
+"পাইহোকা-সিএলআই শুরু করার চেষ্টা করার সময় একটি অজানা ত্রুটি ঘটেছে। প্রস্থান কোড: "
+"[এক্স৭০এক্স]"
 
 #: plugins/x2go/x2go_plugin.c:1022
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i. "
 "Error: '%s'"
 msgstr ""
+"পাইহোকা-সিএলআই শুরু করার চেষ্টা করার সময় একটি অজানা ত্রুটি ঘটেছে। প্রস্থান কোড: "
+"[এক্স70এক্স]। ত্রুটি: '[এক্স৮২এক্স]'"
 
 #: plugins/x2go/x2go_plugin.c:1047
 #, fuzzy
@@ -3531,7 +3572,7 @@ msgstr "খালি ব্যবহারকারীর নাম সংরক
 #: plugins/x2go/x2go_plugin.c:1061
 #, fuzzy
 msgid "Could not save new credentials."
-msgstr "অভ্যন্তরীণ ত্রুটি: নতুন প্রমাণপত্রাদি সংরক্ষণ করা যায়নি।"
+msgstr "নতুন প্রমাণপত্রাদি সংরক্ষণ করা যায়নি।"
 
 #: plugins/x2go/x2go_plugin.c:1064
 #, fuzzy
@@ -3543,8 +3584,9 @@ msgstr ""
 "'s_username' স্ট্রিংগুলি সেট করা হয়নি।"
 
 #: plugins/x2go/x2go_plugin.c:1095
+#, fuzzy
 msgid "Parameter 'default_username' is uninitialized."
-msgstr ""
+msgstr "প্যারামিটার 'default_username' অপ্রাথমিক।"
 
 #: plugins/x2go/x2go_plugin.c:1124
 #, fuzzy
@@ -3555,56 +3597,63 @@ msgstr "এক্স২গো প্রমাণপত্রাদি লিখ�
 #, fuzzy
 #| msgid "Per connection"
 msgid "'Invalid connection data.'"
-msgstr "অংশীদারি সংযোগ"
+msgstr "'সংযোগের তথ্য অবৈধ।'"
 
 #: plugins/x2go/x2go_plugin.c:1323
+#, fuzzy
 msgid ""
 "Couldn't parse the output of PyHoca-CLI's --list-sessions option. Creating a "
 "new session now."
 msgstr ""
+"পাইহোকা-সিএলআই-এর --তালিকা-সেশন বিকল্পের আউটপুট পার্স করা যায়নি। এখন একটি নতুন "
+"সেশন তৈরি করা হচ্ছে।"
 
 #: plugins/x2go/x2go_plugin.c:1362
+#, fuzzy
 msgid "Couldn't allocate enough memory!"
-msgstr ""
+msgstr "পর্যাপ্ত মেমরি বরাদ্দ করা যায়নি!"
 
 #: plugins/x2go/x2go_plugin.c:1372
-#, c-format
+#, fuzzy, c-format
 msgid "Found already existing X2Go session with ID: '%s'"
-msgstr ""
+msgstr "আইডি সহ ইতিমধ্যে বিদ্যমান এক্স২গো সেশন পাওয়া গেছে: '[এক্স৪৬এক্স]'"
 
 #: plugins/x2go/x2go_plugin.c:1444
+#, fuzzy
 msgid ""
 "Could not find any sessions on remote machine. Creating a new session now."
 msgstr ""
+"রিমোট মেশিনে কোনও সেশন খুঁজে পাওয়া যায়নি। এখন একটি নতুন সেশন তৈরি করা হচ্ছে।"
 
 #: plugins/x2go/x2go_plugin.c:1485
 #, fuzzy
 msgid "Choose a session to resume:"
-msgstr "আপলোড করার জন্য একটি ফাইল চয়ন করুন"
+msgstr "পুনরায় শুরু করতে একটি সেশন চয়ন করুন:"
 
 #: plugins/x2go/x2go_plugin.c:1502
 #, fuzzy
 msgid "Waiting for user to select a session…"
-msgstr "সেশনের উইন্ডো দেখানোর জন্য পাইহোকা-সিএলআই-এর জন্য অপেক্ষা করছি…"
+msgstr "ব্যবহারকারীএকটি সেশন নির্বাচন করার জন্য অপেক্ষা করছে…"
 
 #: plugins/x2go/x2go_plugin.c:1510
+#, fuzzy
 msgid "No session was selected. Creating a new one."
-msgstr ""
+msgstr "কোনও সেশন নির্বাচন করা হয়নি। একটি নতুন তৈরি করা হচ্ছে।"
 
 #: plugins/x2go/x2go_plugin.c:1558
-#, c-format
+#, fuzzy, c-format
 msgid "A non-critical error happened: %s"
-msgstr ""
+msgstr "একটি অ-সমালোচনামূলক ত্রুটি ঘটেছে: [এক্স31এক্স]"
 
 #: plugins/x2go/x2go_plugin.c:1563
-#, c-format
+#, fuzzy, c-format
 msgid "User chose to resume session with ID: '%s'"
-msgstr ""
+msgstr "ব্যবহারকারী আইডি দিয়ে সেশন পুনরায় শুরু করার সিদ্ধান্ত নিয়েছে: '[এক্স৩৯এক্স]'"
 
 #: plugins/x2go/x2go_plugin.c:1583
-#, c-format
+#, fuzzy, c-format
 msgid "Resuming session '%s'…"
-msgstr ""
+msgstr "সেশন '[এক্স১৮এক্স]' পুনরায় শুরু করা হচ্ছে…"
 
 #: plugins/x2go/x2go_plugin.c:1706
 #, fuzzy
@@ -3684,7 +3733,7 @@ msgstr "কোনও এক্স২গো সেশন উইন্ডো উ�
 #: plugins/x2go/x2go_plugin.c:2213
 #, fuzzy
 msgid "RemminaProtocolWidget* gp is 'NULL'!"
-msgstr "অভ্যন্তরীণ ত্রুটি: রেমিনাপ্রোটোকলউইজেট* জিপি এনইউএল!"
+msgstr "রেমিনাপ্রোটোকলউইজেট* জিপি 'এনইউএল'!"
 
 #: plugins/x2go/x2go_plugin.c:2234
 #, fuzzy, c-format
@@ -3739,8 +3788,9 @@ msgid "Validation data in ProtocolSettings array is invalid!"
 msgstr "প্রোটোকলসেটিংস অ্যারেতে বৈধতা তথ্য অবৈধ!"
 
 #: plugins/x2go/x2go_plugin.c:2359
+#, fuzzy
 msgid "Parameters 'key' or 'value' are 'NULL'!"
-msgstr ""
+msgstr "প্যারামিটার 'কী' বা 'মান' 'এনইউএসইউ' !"
 
 #: plugins/x2go/x2go_plugin.c:2377
 #, fuzzy, c-format
@@ -3771,7 +3821,7 @@ msgstr "নিম্ন সীমা খুব কম!"
 #: plugins/x2go/x2go_plugin.c:2491
 #, fuzzy
 msgid "Something unknown went wrong."
-msgstr "কিছু একটা ভুল হয়েছে।"
+msgstr "অজানা কিছু ভুল হয়েছে।"
 
 #: plugins/x2go/x2go_plugin.c:2446 plugins/x2go/x2go_plugin.c:2476
 #: plugins/x2go/x2go_plugin.c:2495
