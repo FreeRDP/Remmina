@@ -2429,12 +2429,13 @@ remmina_ssh_shell_thread(gpointer data)
 	}
 	
 	if (!shell->closed && shell->run_line && shell->run_line[0]) {
-		//TODO: copy shell->run_line to buf + \n
 		LOCK_SSH(shell)
-		ssh_channel_write(channel, buf, len);
+		//TODO: +\n and test. 
+		//TODO: A cast from guint to gint is probably required for g_strv_length
+		//TODO: Confirm assumption - assuming null terminated gchar string
+		ssh_channel_write(channel, shell->run_line, g_strv_length(shell->run_line)); 
 		UNLOCK_SSH(shell)
-		//TODO: if run_line > buf_len then Multiple calls to ssh_channel_write are necessary OR a larger buf is required 
-		shell->closed = read_terminal(shell, channel, buf, buf_len);
+		shell->closed = read_terminal(shell, channel, buf, buf_len); //TODO: buf_len needs to be a ref param. It might be increased by read_terminal
 	}
 	while (!shell->closed) {
 		timeout.tv_sec = 1;
