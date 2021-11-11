@@ -2315,6 +2315,7 @@ remmina_ssh_shell_new_from_file(RemminaFile *remminafile)
 	shell->master = -1;
 	shell->slave = -1;
 	shell->exec = g_strdup(remmina_file_get_string(remminafile, "exec"));
+	shell->run_line = g_strdup(remmina_file_get_string(remminafile, "run_line"));
 
 	return shell;
 }
@@ -2426,6 +2427,15 @@ remmina_ssh_shell_thread(gpointer data)
 		REMMINA_DEBUG("Saving session log to %s", filename);
 		fp = fopen(filename, "w");
 	}
+	
+	if (!shell->closed && shell->run_line && shell->run_line[0]) {
+		//TODO: copy shell->run_line to buf + \n
+		LOCK_SSH(shell)
+		ssh_channel_write(channel, buf, len);
+		UNLOCK_SSH(shell)
+		//TODO: if run_line > buf_len then Multiple calls to ssh_channel_write are necessary OR a larger buf is required 
+		shell->closed = read_terminal(shell, channel, buf, buf_len);
+	}
 	while (!shell->closed) {
 		timeout.tv_sec = 1;
 		timeout.tv_usec = 0;
@@ -2444,37 +2454,8 @@ remmina_ssh_shell_thread(gpointer data)
 			ssh_channel_write(channel, buf, len);
 			UNLOCK_SSH(shell)
 		}
-
-		for (i = 0; i < 2; i++) {
-			LOCK_SSH(shell)
-			len = ssh_channel_poll(channel, i);
-			UNLOCK_SSH(shell)
-			if (len == SSH_ERROR || len == SSH_EOF) {
-				shell->closed = TRUE;
-				break;
-			}
-			if (len <= 0) continue;
-			if (len > buf_len) {
-				buf_len = len;
-				buf = (gchar *)g_realloc(buf, buf_len + 1);
-			}
-			LOCK_SSH(shell)
-			len = ssh_channel_read_nonblocking(channel, buf, len, i);
-			UNLOCK_SSH(shell)
-			if (len <= 0) {
-				shell->closed = TRUE;
-				break;
-			}
-			while (len > 0) {
-				ret = write(shell->slave, buf, len);
-				if (remmina_file_get_int (remminafile, "sshsavesession", FALSE)) {
-					fwrite(buf, ret, 1, fp );
-					fflush(fp);
-				}
-				if (ret <= 0) break;
-				len -= ret;
-			}
-		}
+		
+		shell->closed = read_terminal(shell, channel, buf, buf_len);
 	}
 
 	LOCK_SSH(shell)
@@ -2492,6 +2473,42 @@ remmina_ssh_shell_thread(gpointer data)
 	if (shell->exit_callback)
 		IDLE_ADD((GSourceFunc)remmina_ssh_call_exit_callback_on_main_thread, (gpointer)shell);
 	return NULL;
+}
+
+static gboolean
+read_terminal(RemminaSSHShell *shell, ssh_channel channel, gchar *buf, gint buf_len)
+{
+	//TODO: Fix the function signature - buf_len needs to be by-ref
+	gint len;
+	for (i = 0; i < 2; i++) {
+		LOCK_SSH(shell)
+		len = ssh_channel_poll(channel, i);
+		UNLOCK_SSH(shell)
+		if (len == SSH_ERROR || len == SSH_EOF) {
+			return TRUE; //CLOSED
+		}
+		if (len <= 0) continue;
+		if (len > buf_len) {
+			buf_len = len;
+			buf = (gchar *)g_realloc(buf, buf_len + 1);
+		}
+		LOCK_SSH(shell)
+		len = ssh_channel_read_nonblocking(channel, buf, len, i);
+		UNLOCK_SSH(shell)
+		if (len <= 0) {
+			return TRUE; //CLOSED
+		}
+		while (len > 0) {
+			ret = write(shell->slave, buf, len);
+			if (remmina_file_get_int (remminafile, "sshsavesession", FALSE)) {
+				fwrite(buf, ret, 1, fp );
+				fflush(fp);
+			}
+			if (ret <= 0) break;
+			len -= ret;
+		}
+	}
+	return FALSE;
 }
 
 
