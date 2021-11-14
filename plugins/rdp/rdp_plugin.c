@@ -2076,11 +2076,6 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 		freerdp_settings_set_uint32(rfi->settings, FreeRDP_MultitransportFlags, 0);
 	}
 
-	if (rfi->settings->DeviceRedirection) {
-		remmina_rdp_load_static_channel_addin(channels, rfi->settings, "rdpdr", rfi->settings);
-	}
-
-
 	/* If needed, force interactive authentication by deleting all authentication fields,
 	 * forcing libfreerdp to call our callbacks for authentication.
 	 *	  This usually happens from a second attempt of connection, never on the 1st one. */
