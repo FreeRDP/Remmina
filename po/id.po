@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-11-11 20:00+0000\n"
-"PO-Revision-Date: 2021-10-29 12:15+0000\n"
+"PO-Revision-Date: 2021-11-14 15:54+0000\n"
 "Last-Translator: Andika Triwidada <andika@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/remmina/"
 "remmina/id/>\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.9-dev\n"
+"X-Generator: Weblate 4.9.1-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:354
@@ -548,6 +548,9 @@ msgid ""
 "Remmina does not log all output statements. To enable a more verbose output "
 "please use G_MESSAGES_DEBUG=all as an environment variable. "
 msgstr ""
+"Remmina tidak mencatat semua pernyataan keluaran. Untuk memfungsikan "
+"keluaran yang lebih rinci silakan pakai G_MESSAGES_DEBUG=all sebagai "
+"variabel lingkungan. "
 
 #. TRANSLATORS: This link should point to a resource explaining
 #. TRANSLATORS: how to get Remmina to log debug statements.
@@ -556,6 +559,8 @@ msgid ""
 "For more information, please visit the Remmina Wiki: https://gitlab.com/"
 "Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgstr ""
+"Untuk lebih banyak informasi, silakan kunjungi Wiki Remmina: https://gitlab."
+"com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:388
@@ -2927,6 +2932,8 @@ msgid ""
 "The command-line feature '%s' is not available! Attempting to start PyHoca-"
 "CLI without using this feature…"
 msgstr ""
+"Fitur baris perintah '%s' tidak tersedia! Mencoba memulai PyHoca-CLI tanpa "
+"memakai fitur ini…"
 
 #: plugins/x2go/x2go_plugin.c:277
 msgid "Broken `DialogData`! Aborting…"
@@ -2937,20 +2944,18 @@ msgid "Can't retrieve `DialogData`! Aborting…"
 msgstr "Tak bisa mengambil `DialogData`! Menggugurkan…"
 
 #: plugins/x2go/x2go_plugin.c:438
-#, fuzzy
-#| msgid "Can't retrieve `DialogData`! Aborting…"
 msgid "Couldn't retrieve valid `DialogData` or `sessions_list`! Aborting…"
-msgstr "Tak bisa mengambil `DialogData`! Menggugurkan…"
+msgstr ""
+"Tak bisa mengambil `DialogData` atau `sessions_list` yang valid! "
+"Menggugurkan…"
 
 #: plugins/x2go/x2go_plugin.c:445
 msgid "_New"
-msgstr ""
+msgstr "_Baru"
 
 #: plugins/x2go/x2go_plugin.c:447
-#, fuzzy
-#| msgid "_Select all"
 msgid "_Select session"
-msgstr "Pilih _semua"
+msgstr "Pilih _sesi"
 
 #: plugins/x2go/x2go_plugin.c:506
 msgid "Display"
@@ -2961,46 +2966,40 @@ msgid "Status"
 msgstr "Status"
 
 #: plugins/x2go/x2go_plugin.c:508
-#, fuzzy
-#| msgid "Permission"
 msgid "Session ID"
-msgstr "Izin"
+msgstr "ID Sesi"
 
 #: plugins/x2go/x2go_plugin.c:509
 msgid "Create date"
-msgstr ""
+msgstr "Buat tanggal"
 
 #: plugins/x2go/x2go_plugin.c:510
 msgid "Suspended since"
-msgstr ""
+msgstr "Disuspensi sejak"
 
 #: plugins/x2go/x2go_plugin.c:511
 msgid "Agent PID"
-msgstr ""
+msgstr "PID Agen"
 
 #: plugins/x2go/x2go_plugin.c:513
-#, fuzzy
-#| msgid "Username"
 msgid "Hostname"
-msgstr "Nama pengguna"
+msgstr "Nama Host"
 
 #: plugins/x2go/x2go_plugin.c:514
 msgid "Cookie"
-msgstr ""
+msgstr "Cookie"
 
 #: plugins/x2go/x2go_plugin.c:515
 msgid "Graphic port"
-msgstr ""
+msgstr "Port grafis"
 
 #: plugins/x2go/x2go_plugin.c:516
 msgid "SND port"
-msgstr ""
+msgstr "Port SND"
 
 #: plugins/x2go/x2go_plugin.c:517
-#, fuzzy
-#| msgid "Local SSH port"
 msgid "SSHFS port"
-msgstr "Port SSH lokal"
+msgstr "Port SSHFS"
 
 #: plugins/x2go/x2go_plugin.c:519 plugins/x2go/x2go_plugin.c:585
 #: plugins/x2go/x2go_plugin.c:599 plugins/x2go/x2go_plugin.c:614
@@ -3012,39 +3011,38 @@ msgstr "Port SSH lokal"
 #: plugins/x2go/x2go_plugin.c:2435 plugins/x2go/x2go_plugin.c:2440
 #: plugins/x2go/x2go_plugin.c:2455 plugins/x2go/x2go_plugin.c:2460
 #: plugins/x2go/x2go_plugin.c:2465 plugins/x2go/x2go_plugin.c:2470
-#, fuzzy, c-format
-#| msgid "Internal error: "
+#, c-format
 msgid "Internal error: %s"
-msgstr "Kesalahan internal: "
+msgstr "Kesalahan internal: %s"
 
 #: plugins/x2go/x2go_plugin.c:520
 msgid "Unknown property"
-msgstr ""
+msgstr "Properti tak dikenal"
 
 #: plugins/x2go/x2go_plugin.c:586
 msgid "Couldn't find child GtkTreeView of session chooser dialog."
-msgstr ""
+msgstr "Tak bisa temukan GtkTreeView anak dari dialog pemilih sesi."
 
 #: plugins/x2go/x2go_plugin.c:600
 msgid "only one session should be able to be selected."
-msgstr ""
+msgstr "hanya satu sesi yang mestinya dapat dipilih."
 
 #: plugins/x2go/x2go_plugin.c:615
 msgid "Failed to fill 'GtkTreeIter'."
-msgstr ""
+msgstr "Gagal mengisi 'GtkTreeIter'."
 
 #: plugins/x2go/x2go_plugin.c:627
 msgid "Couldn't get session ID out of selected row."
-msgstr ""
+msgstr "Tak bisa mendapat ID sesi dari baris yang dipilih."
 
 #: plugins/x2go/x2go_plugin.c:660
 msgid "Couldn't get session ID from session chooser dialog."
-msgstr ""
+msgstr "Tak bisa mendapat ID sesi dari dialog pemilih sesi."
 
 #: plugins/x2go/x2go_plugin.c:667
 #, c-format
 msgid "Resuming session: '%s'"
-msgstr ""
+msgstr "Melanjutkan sesi: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:892
 msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
@@ -3067,43 +3065,42 @@ msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:937
 msgid "parameter 'argv' is 'NULL'."
-msgstr ""
+msgstr "parameter 'argv' adalah 'NULL'."
 
 #: plugins/x2go/x2go_plugin.c:948
 msgid "parameter 'error' is 'NULL'."
-msgstr ""
+msgstr "parameter 'error' adalah 'NULL'."
 
 #: plugins/x2go/x2go_plugin.c:956
 msgid "parameter 'env' is either invalid or uninitialized."
-msgstr ""
+msgstr "parameter 'env' tidak valid atau tidak diinisialisasi."
 
 #: plugins/x2go/x2go_plugin.c:972
 msgid "Started PyHoca-CLI with the following arguments:"
 msgstr "Memulai PyHoca-CLI dengan argumen berikut:"
 
 #: plugins/x2go/x2go_plugin.c:988
-#, fuzzy
-#| msgid "Started PyHoca-CLI with the following arguments:"
 msgid "Started PyHoca-CLI with the following environment variables:"
-msgstr "Memulai PyHoca-CLI dengan argumen berikut:"
+msgstr "Memulai PyHoca-CLI dengan variabel lingkungan berikut:"
 
 #: plugins/x2go/x2go_plugin.c:997
 msgid ""
 "The necessary PyHoca-CLI process has encountered a internet connection "
 "problem."
 msgstr ""
+"Proses PyHoca-CLI yang diperlukan telah menemui masalah koneksi internet."
 
 #: plugins/x2go/x2go_plugin.c:1007
-#, fuzzy
-#| msgid "An error occured while starting an X2Go session…"
 msgid "An unknown error occured while trying to start PyHoca-CLI."
-msgstr "Terjadi kesalahan saat memulai sesi X2Go…"
+msgstr "Terjadi kesalahan tak dikenal saat mencoba memulai PyHoca-CLI."
 
 #: plugins/x2go/x2go_plugin.c:1017
 #, c-format
 msgid ""
 "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i"
 msgstr ""
+"Terjadi kesalahan tak dikenal saat mencoba memulai PyHoca-CLI. Kode keluar: "
+"%i"
 
 #: plugins/x2go/x2go_plugin.c:1022
 #, c-format
@@ -3111,16 +3108,16 @@ msgid ""
 "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i. "
 "Error: '%s'"
 msgstr ""
+"Terjadi kesalahan yang tak dikenal saat mencoba memulai PyHoca-CLI. Kode "
+"keluar: %i. Galat: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:1047
 msgid "Can't save empty username!"
 msgstr "Tak bisa menyimpan nama pengguna yang kosong!"
 
 #: plugins/x2go/x2go_plugin.c:1061
-#, fuzzy
-#| msgid "Internal error: Could not save new credentials."
 msgid "Could not save new credentials."
-msgstr "Kesalahan internal: Tidak bisa menyimpan kredensial baru."
+msgstr "Tidak bisa menyimpan kredensial baru."
 
 #: plugins/x2go/x2go_plugin.c:1064
 msgid ""
@@ -3132,68 +3129,66 @@ msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:1095
 msgid "Parameter 'default_username' is uninitialized."
-msgstr ""
+msgstr "Parameter 'default_username' tidak diinisialisasi."
 
 #: plugins/x2go/x2go_plugin.c:1124
 msgid "Enter X2Go credentials"
 msgstr "Masukkan kredensial X2Go"
 
 #: plugins/x2go/x2go_plugin.c:1201
-#, fuzzy
-#| msgid "Shared connection"
 msgid "'Invalid connection data.'"
-msgstr "Sambungan bersama"
+msgstr "'Data koneksi tidak valid.'"
 
 #: plugins/x2go/x2go_plugin.c:1323
 msgid ""
 "Couldn't parse the output of PyHoca-CLI's --list-sessions option. Creating a "
 "new session now."
 msgstr ""
+"Tak bisa mengurai keluaran dari opsi PyHoca-CLI --list-sessions. Kini "
+"membuat suatu sesi baru."
 
 #: plugins/x2go/x2go_plugin.c:1362
 msgid "Couldn't allocate enough memory!"
-msgstr ""
+msgstr "Tak bisa mengalokasikan cukup memori!"
 
 #: plugins/x2go/x2go_plugin.c:1372
 #, c-format
 msgid "Found already existing X2Go session with ID: '%s'"
-msgstr ""
+msgstr "Menemukan sesi X2GO yang sudah ada dengan ID: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:1444
 msgid ""
 "Could not find any sessions on remote machine. Creating a new session now."
 msgstr ""
+"Tidak bisa menemukan sesi apa pun pada mesin remote. Kini membuat sebuah "
+"sesi baru."
 
 #: plugins/x2go/x2go_plugin.c:1485
-#, fuzzy
-#| msgid "Choose a file to upload"
 msgid "Choose a session to resume:"
-msgstr "Pilih berkas untuk diunggah"
+msgstr "Pilih sesi yang akan dilanjutkan:"
 
 #: plugins/x2go/x2go_plugin.c:1502
-#, fuzzy
-#| msgid "Waiting for PyHoca-CLI to show the session's window…"
 msgid "Waiting for user to select a session…"
-msgstr "Menunggu PyHoca-CLI menampilkan jendela sesi…"
+msgstr "Menunggu pengguna memilih sebuah sesi…"
 
 #: plugins/x2go/x2go_plugin.c:1510
 msgid "No session was selected. Creating a new one."
-msgstr ""
+msgstr "Tidak ada sesi yang dipilih. Membuat satu yang baru."
 
 #: plugins/x2go/x2go_plugin.c:1558
 #, c-format
 msgid "A non-critical error happened: %s"
-msgstr ""
+msgstr "Terjadi sebuah kesalahan yang tidak kritis: %s"
 
 #: plugins/x2go/x2go_plugin.c:1563
 #, c-format
 msgid "User chose to resume session with ID: '%s'"
-msgstr ""
+msgstr "Pengguna memilih melanjutkan sesi dengan ID: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:1583
 #, c-format
 msgid "Resuming session '%s'…"
-msgstr ""
+msgstr "Melanjutkan sesi '%s'…"
 
 #: plugins/x2go/x2go_plugin.c:1706
 msgid "DPI setting is out of bounds. Please adjust it in profile settings."
@@ -3260,10 +3255,8 @@ msgid "No X2Go session window appeared. Something went wrong…"
 msgstr "Tidak ada jendela sesi X2Go yang muncul. Ada yang tidak beres…"
 
 #: plugins/x2go/x2go_plugin.c:2213
-#, fuzzy
-#| msgid "Internal error: RemminaProtocolWidget* gp is NULL!"
 msgid "RemminaProtocolWidget* gp is 'NULL'!"
-msgstr "Kesalahan internal: RemminaProtocolWidget* gp adalah NULL!"
+msgstr "RemminaProtocolWidget* gp adalah 'NULL'!"
 
 #: plugins/x2go/x2go_plugin.c:2234
 #, c-format
@@ -3317,7 +3310,7 @@ msgstr "Data validasi dalam array ProtocolSettings tidak valid!"
 
 #: plugins/x2go/x2go_plugin.c:2359
 msgid "Parameters 'key' or 'value' are 'NULL'!"
-msgstr ""
+msgstr "Parameter 'key' atau 'value' adalah 'NULL'!"
 
 #: plugins/x2go/x2go_plugin.c:2377
 #, c-format
@@ -3343,10 +3336,8 @@ msgstr "Batas bawah terlalu rendah!"
 
 #: plugins/x2go/x2go_plugin.c:2441 plugins/x2go/x2go_plugin.c:2471
 #: plugins/x2go/x2go_plugin.c:2491
-#, fuzzy
-#| msgid "Something went wrong."
 msgid "Something unknown went wrong."
-msgstr "Ada yang salah."
+msgstr "Ada sesuatu yang tak dikenal bermasalah."
 
 #: plugins/x2go/x2go_plugin.c:2446 plugins/x2go/x2go_plugin.c:2476
 #: plugins/x2go/x2go_plugin.c:2495
