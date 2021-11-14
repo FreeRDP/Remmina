@@ -1130,9 +1130,6 @@ int remmina_rdp_set_printers(void *user_data, unsigned flags, cups_dest_t *dest)
 {
 	rfContext *rfi = (rfContext *)user_data;
 	RemminaProtocolWidget *gp = rfi->protocol_widget;
-	rdpChannels *channels;
-
-	channels = rfi->instance->context->channels;
 
 	/** @warning printer-make-and-model is not always the same as on the Windows,
 	 * therefore it fails finding to right one and it fails to add
@@ -1166,7 +1163,7 @@ int remmina_rdp_set_printers(void *user_data, unsigned flags, cups_dest_t *dest)
 	REMMINA_PLUGIN_DEBUG("Printer Type: %d", pdev->Type);
 
 	freerdp_settings_set_bool(rfi->settings, FreeRDP_RedirectPrinters, TRUE);
-	remmina_rdp_load_static_channel_addin(channels, rfi->settings, "rdpdr", rfi->settings);
+	freerdp_settings_set_bool(rfi->settings, FreeRDP_DeviceRedirection, TRUE);
 
 	REMMINA_PLUGIN_DEBUG("Destination: %s", dest->name);
 	if (!(pdev->Name = _strdup(dest->name))) {
@@ -1204,7 +1201,7 @@ int remmina_rdp_set_printers(void *user_data, unsigned flags, cups_dest_t *dest)
 		free(printer);
 		return 1;
 	}
-	freerdp_settings_set_bool(rfi->settings, FreeRDP_DeviceRedirection, TRUE);
+
 	return 1;
 }
 #endif /* HAVE_CUPS */
@@ -1878,12 +1875,21 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 	if (remmina_plugin_service->file_get_int(remminafile, "shareprinter", FALSE)) {
 #ifdef HAVE_CUPS
 		REMMINA_PLUGIN_DEBUG("Sharing printers");
-		if (cupsEnumDests(CUPS_DEST_FLAGS_NONE, 1000, NULL, 0, 0, remmina_rdp_set_printers, rfi))
-			REMMINA_PLUGIN_DEBUG("All printers have been shared");
-
-		else
-			REMMINA_PLUGIN_DEBUG("Cannot share printers, are there any available?");
-
+		const gchar *po = remmina_plugin_service->file_get_string(remminafile, "printer_overrides");
+		if (po && po[0] != 0) {
+			/* Fallback to remmina code to override print drivers */
+			if (cupsEnumDests(CUPS_DEST_FLAGS_NONE, 1000, NULL, 0, 0, remmina_rdp_set_printers, rfi))
+				REMMINA_PLUGIN_DEBUG("All printers have been shared");
+			else
+				REMMINA_PLUGIN_DEBUG("Cannot share printers, are there any available?");
+		} else {
+			/* Use libfreerdp code to map all printers */
+			CLPARAM *d[1];
+			int dcount;
+			dcount = 1;
+			d[0] = "printer";
+			freerdp_client_add_device_channel(rfi->settings, dcount, d);
+		}
 #endif /* HAVE_CUPS */
 	}
 
@@ -1978,7 +1984,6 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 		sdev->Type = RDPDR_DTYP_SMARTCARD;
 
 		freerdp_settings_set_bool(rfi->settings, FreeRDP_DeviceRedirection, TRUE);
-		remmina_rdp_load_static_channel_addin(channels, rfi->settings, "rdpdr", rfi->settings);
 
 		const gchar *sn = remmina_plugin_service->file_get_string(remminafile, "smartcardname");
 		if (sn != NULL && sn[0] != '\0')
@@ -2010,7 +2015,6 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 		sdev->Type = RDPDR_DTYP_SERIAL;
 
 		freerdp_settings_set_bool(rfi->settings, FreeRDP_DeviceRedirection, TRUE);
-		remmina_rdp_load_static_channel_addin(channels, rfi->settings, "rdpdr", rfi->settings);
 
 		const gchar *sn = remmina_plugin_service->file_get_string(remminafile, "serialname");
 		if (sn != NULL && sn[0] != '\0')
@@ -2047,7 +2051,6 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 		pdev->Type = RDPDR_DTYP_PARALLEL;
 
 		freerdp_settings_set_bool(rfi->settings, FreeRDP_DeviceRedirection, TRUE);
-		remmina_rdp_load_static_channel_addin(channels, rfi->settings, "rdpdr", rfi->settings);
 
 		freerdp_settings_set_bool(rfi->settings, FreeRDP_RedirectParallelPorts, TRUE);
 
@@ -2072,6 +2075,11 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 	} else {
 		freerdp_settings_set_uint32(rfi->settings, FreeRDP_MultitransportFlags, 0);
 	}
+
+	if (rfi->settings->DeviceRedirection) {
+		remmina_rdp_load_static_channel_addin(channels, rfi->settings, "rdpdr", rfi->settings);
+	}
+
 
 	/* If needed, force interactive authentication by deleting all authentication fields,
 	 * forcing libfreerdp to call our callbacks for authentication.
