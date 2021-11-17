@@ -487,10 +487,10 @@ static GtkWidget* rmplugin_x2go_choose_session_dialog_factory(RemminaProtocolWid
 						GTK_DIALOG(widget_gtk_dialog),
 						SESSION_CHOOSER_RESPONSE_TERMINATE);
 	// TRANSLATORS: Tooltip for terminating button inside Session-Chooser-Dialog.
-	// TRANSLATORS: Please stick to X2GoClient's translations.
+	// TRANSLATORS: Please stick to X2GoClient's way of translating.
 	gtk_widget_set_tooltip_text(button, _("Terminating X2Go sessions can take a moment."));
 
-	#define DEFAULT_DIALOG_WIDTH 500
+	#define DEFAULT_DIALOG_WIDTH 720
 	#define DEFAULT_DIALOG_HEIGHT (DEFAULT_DIALOG_WIDTH * 9) / 16
 
 	gtk_widget_set_size_request(GTK_WIDGET(widget_gtk_dialog),
@@ -1924,6 +1924,7 @@ static gboolean rmplugin_x2go_exec_x2go(gchar *host,
 
 	if (resume_session_id && strlen(resume_session_id) > 0) {
 		REMMINA_PLUGIN_INFO("%s", g_strdup_printf(
+			// TRANSLATORS: Please stick to X2GoClient's way of translating.
 			_("Resuming session '%s'…"),
 			resume_session_id
 		));
