@@ -1336,7 +1336,7 @@ static void rmplugin_x2go_pyhoca_cli_exited(GPid pid,
 
 	struct _DialogData *ddata = g_new0(struct _DialogData, 1);
 	SET_DIALOG_DATA(gp, ddata);
-	ddata->parent = NULL;
+	ddata->parent = GTK_WINDOW(gtk_widget_get_toplevel(GTK_WIDGET(gp)));
 	ddata->flags = GTK_DIALOG_MODAL;
 	ddata->type = GTK_MESSAGE_ERROR;
 	ddata->buttons = GTK_BUTTONS_OK;
@@ -1817,7 +1817,7 @@ static gchar* rmplugin_x2go_ask_session(RemminaProtocolWidget *gp, GError **erro
 	// Prep new DialogData struct.
 	struct _DialogData *ddata = g_new0(struct _DialogData, 1);
 	SET_DIALOG_DATA(gp, ddata);
-	ddata->parent = NULL;
+	ddata->parent = GTK_WINDOW(gtk_widget_get_toplevel(GTK_WIDGET(gp)));
 	ddata->flags = GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT;
 	//ddata->type = GTK_MESSAGE_QUESTION;
 	//ddata->buttons = GTK_BUTTONS_OK; // Doesn't get used in our custom factory.
@@ -2095,7 +2095,7 @@ static gboolean rmplugin_x2go_exec_x2go(gchar *host,
 
 		struct _DialogData* ddata = g_new0(struct _DialogData, 1);
 		SET_DIALOG_DATA(gp, ddata);
-		ddata->parent = NULL;
+		ddata->parent = GTK_WINDOW(gtk_widget_get_toplevel(GTK_WIDGET(gp)));
 		ddata->flags = GTK_DIALOG_MODAL;
 		ddata->type = GTK_MESSAGE_ERROR;
 		ddata->buttons = GTK_BUTTONS_OK;
