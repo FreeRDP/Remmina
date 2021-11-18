@@ -4467,8 +4467,13 @@ GtkWidget *rcw_open_from_file_full(RemminaFile *remminafile, GCallback disconnec
 			  "Plugins relying on GtkSocket can't run in a Wayland session. "
 			  "GtkSocket has been deprecated for a while now. There are alternative ways to "
 			  "start a session with your desired protocol."));
+
+		// Close the current page since it's useless without GtkSocket.
+		// The user would need to manually click the close button.
+		g_signal_connect_swapped(G_OBJECT(dialog), "response", G_CALLBACK(rco_disconnect_current_page), cnnobj);
 		g_signal_connect(G_OBJECT(dialog), "response", G_CALLBACK(gtk_widget_destroy), NULL);
 		gtk_widget_show(dialog);
+
 		return NULL;    /* Should we destroy something before returning? */
 	}
 
