@@ -4463,9 +4463,9 @@ GtkWidget *rcw_open_from_file_full(RemminaFile *remminafile, GCallback disconnec
 			GTK_DIALOG_MODAL,
 			GTK_MESSAGE_WARNING,
 			GTK_BUTTONS_OK,
-			_("Warning: This plugin requires GtkSocket, but this feature is not available.\n"
-			  "Plugins relying on GtkSocket can't be run under a Wayland desktop session. "
-			  "And GtkSocket is deprecated for a while now. There are surely alternative ways to "
+			_("Warning: This plugin requires GtkSocket, but this feature is unavailable.\n"
+			  "Plugins relying on GtkSocket can't run in a Wayland session. "
+			  "GtkSocket has been deprecated for a while now. There are alternative ways to "
 			  "start a session with your desired protocol."));
 		g_signal_connect(G_OBJECT(dialog), "response", G_CALLBACK(gtk_widget_destroy), NULL);
 		gtk_widget_show(dialog);
