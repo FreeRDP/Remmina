@@ -4333,6 +4333,16 @@ void rcw_open_from_file(RemminaFile *remminafile)
 	rcw_open_from_file_full(remminafile, NULL, NULL, NULL);
 }
 
+static void set_label_selectable(gpointer data, gpointer user_data)
+{
+    GtkWidget *widget = GTK_WIDGET(data);
+
+    if (GTK_IS_LABEL(widget)) {
+        gtk_label_set_selectable(GTK_LABEL(widget), TRUE);
+    }
+}
+
+
 GtkWidget *rcw_open_from_file_full(RemminaFile *remminafile, GCallback disconnect_cb, gpointer data, guint *handler)
 {
 	TRACE_CALL(__func__);
@@ -4472,6 +4482,16 @@ GtkWidget *rcw_open_from_file_full(RemminaFile *remminafile, GCallback disconnec
 		// The user would need to manually click the close button.
 		g_signal_connect_swapped(G_OBJECT(dialog), "response", G_CALLBACK(rco_disconnect_current_page), cnnobj);
 		g_signal_connect(G_OBJECT(dialog), "response", G_CALLBACK(gtk_widget_destroy), NULL);
+
+		// Make Text selectable. Usefull because of the link in the text.
+		GtkWidget *area = gtk_message_dialog_get_message_area(
+			GTK_MESSAGE_DIALOG(dialog));
+		GtkContainer *box = (GtkContainer *) area;
+
+		GList *children = gtk_container_get_children(box);
+		g_list_foreach(children, set_label_selectable, NULL);
+		g_list_free(children);
+
 		gtk_widget_show(dialog);
 
 		return NULL;    /* Should we destroy something before returning? */
