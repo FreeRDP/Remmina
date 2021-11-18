@@ -4469,6 +4469,9 @@ GtkWidget *rcw_open_from_file_full(RemminaFile *remminafile, GCallback disconnec
 							   remmina_file_get_string(remminafile, "protocol"),
 							   REMMINA_PROTOCOL_FEATURE_TYPE_GTKSOCKET);
 	if (ret && !remmina_gtksocket_available()) {
+		gchar* title = _("Warning: This plugin requires GtkSocket, but this "
+				 "feature is unavailable in a Wayland session.");
+
 		gchar* err_msg = g_strdup_printf(
 			_("Plugins relying on GtkSocket can't run in a "
 			  "Wayland session.\nFor more information and a possible "
@@ -4482,12 +4485,11 @@ GtkWidget *rcw_open_from_file_full(RemminaFile *remminafile, GCallback disconnec
 			GTK_DIALOG_MODAL,
 			GTK_MESSAGE_WARNING,
 			GTK_BUTTONS_OK,
-			_("Warning: This plugin requires GtkSocket, but this feature is "
-			  "unavailable in a Wayland session."));
+			title);
 
 		gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG(dialog), err_msg);
 
-		REMMINA_CRITICAL(err_msg);
+		REMMINA_CRITICAL(g_strdup_printf("%s\n%s", title, err_msg));
 
 		// Close the current page since it's useless without GtkSocket.
 		// The user would need to manually click the close button.
