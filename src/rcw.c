@@ -4335,11 +4335,12 @@ void rcw_open_from_file(RemminaFile *remminafile)
 
 static void set_label_selectable(gpointer data, gpointer user_data)
 {
-    GtkWidget *widget = GTK_WIDGET(data);
+	TRACE_CALL(__func__);
+	GtkWidget *widget = GTK_WIDGET(data);
 
-    if (GTK_IS_LABEL(widget)) {
-        gtk_label_set_selectable(GTK_LABEL(widget), TRUE);
-    }
+	if (GTK_IS_LABEL(widget)) {
+		gtk_label_set_selectable(GTK_LABEL(widget), TRUE);
+	}
 }
 
 
