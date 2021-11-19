@@ -1347,6 +1347,9 @@ static void rmplugin_x2go_pyhoca_cli_exited(GPid pid,
 			   "reachable.");
 	// We don't need the response.
 	ddata->callbackfunc = NULL;
+	// We don't need a custom dialog either.
+	ddata->dialog_factory_func = NULL;
+	ddata->dialog_factory_data = NULL;
 	IDLE_ADD((GSourceFunc) rmplugin_x2go_open_dialog, gp);
 
 	// 1 Second. Give `Dialog` chance to open.
@@ -2105,6 +2108,9 @@ static gboolean rmplugin_x2go_exec_x2go(gchar *host,
 						 error->message);
 		// We don't need the response.
 		ddata->callbackfunc = NULL;
+		// We don't need a custom dialog either.
+		ddata->dialog_factory_func = NULL;
+		ddata->dialog_factory_data = NULL;
 		IDLE_ADD((GSourceFunc) rmplugin_x2go_open_dialog, gp);
 
 		g_strlcpy(errmsg, error_title, 512);
