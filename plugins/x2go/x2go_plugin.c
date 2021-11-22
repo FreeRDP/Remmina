@@ -90,12 +90,6 @@
 				       NULL)
 // -------------------
 
-#define SET_DIALOG_DATA(gp, ddata) \
-		g_object_set_data_full(G_OBJECT(gp), "dialog-data", ddata, g_free);
-
-#define GET_DIALOG_DATA(gp) \
-		(struct _DialogData*) g_object_get_data(G_OBJECT(gp), "dialog-data");
-
 #define REMMINA_PLUGIN_INFO(fmt, ...) \
 		rm_plugin_service->_remmina_info("[%s] " fmt, \
 						 PLUGIN_NAME, ##__VA_ARGS__)
@@ -157,10 +151,9 @@ typedef struct _RemminaPluginX2GoData {
  */
 typedef struct _X2GoCustomUserData {
 	RemminaProtocolWidget* gp;
-	gpointer user_data;
+	gpointer dialog_data;
+	gpointer connect_data;
 	gpointer opt1;
-	gpointer opt2;
-	gpointer opt3;
 } X2GoCustomUserData;
 
 /**
@@ -278,8 +271,9 @@ struct _DialogData
 };
 
 /**
- * @param gp getting DialogData via dialog-data saved in gp.
- *	     See define GET_DIALOG_DATA
+ * @param custom_data X2GoCustomUserData structure with the following: \n
+ *				gp -> gp (RemminaProtocolWidget*) \n
+ *				dialog_data -> dialog data (struct _DialogData*)
  * @returns: FALSE. This source should be removed from main loop.
  * 	     #G_SOURCE_CONTINUE and #G_SOURCE_REMOVE are more memorable
  *	     names for the return value.
@@ -288,7 +282,7 @@ static gboolean rmplugin_x2go_open_dialog(X2GoCustomUserData *custom_data)
 {
 	REMMINA_PLUGIN_DEBUG("Function entry.");
 
-	if (!custom_data || !custom_data->gp || !custom_data->user_data ) {
+	if (!custom_data || !custom_data->gp || !custom_data->dialog_data) {
 		REMMINA_PLUGIN_CRITICAL("%s", g_strdup_printf(
 			_("Internal error: %s"),
 			_("Parameter 'custom_data' is not initialized!")
@@ -297,7 +291,8 @@ static gboolean rmplugin_x2go_open_dialog(X2GoCustomUserData *custom_data)
 		return G_SOURCE_REMOVE;
 	}
 
-	struct _DialogData* ddata = GET_DIALOG_DATA(custom_data->gp);
+	RemminaProtocolWidget *gp = (RemminaProtocolWidget*) custom_data->gp;
+	struct _DialogData *ddata = (struct _DialogData*) custom_data->dialog_data;
 
 	if (ddata) {
 		// Can't check type, flags or buttons
@@ -320,9 +315,9 @@ static gboolean rmplugin_x2go_open_dialog(X2GoCustomUserData *custom_data)
 		GCallback dialog_factory_func = G_CALLBACK(ddata->dialog_factory_func);
 		gpointer  dialog_factory_data = ddata->dialog_factory_data;
 
-		// Calling dialog_factory_func(gp, dialog_factory_data);
-		widget_gtk_dialog = ((GtkWidget* (*)(RemminaProtocolWidget*, gpointer))
-			dialog_factory_func)(custom_data->gp, dialog_factory_data);
+		// Calling dialog_factory_func(custom_data, dialog_factory_data);
+		widget_gtk_dialog = ((GtkWidget* (*)(X2GoCustomUserData*, gpointer))
+			dialog_factory_func)(custom_data, dialog_factory_data);
 	} else {
 		widget_gtk_dialog = gtk_message_dialog_new(ddata->parent,
 							   ddata->flags,
@@ -352,7 +347,7 @@ static gboolean rmplugin_x2go_open_dialog(X2GoCustomUserData *custom_data)
 	gtk_widget_show_all(widget_gtk_dialog);
 
 	// Delete ddata object and reference 'dialog-data' in gp.
-	g_object_set_data(G_OBJECT(custom_data->gp), "dialog-data", NULL);
+	g_object_set_data(G_OBJECT(gp), "dialog-data", NULL);
 
 	return G_SOURCE_REMOVE;
 }
@@ -407,6 +402,10 @@ static GtkWidget* rmplugin_x2go_find_child(GtkWidget* parent, const gchar* name)
  *	  the user double clicks a treeview row. It is also emitted when a non-editable
  *	  row is selected and one of the keys: Space, Shift+Space, Return or Enter is
  *	  pressed.
+ *
+ * @param custom_data X2GoCustomUserData structure with the following: \n
+ *				gp -> gp (RemminaProtocolWidget*) \n
+ *				opt1 -> dialog widget (GtkWidget*)
  */
 static gboolean rmplugin_x2go_session_chooser_row_activated(GtkTreeView *treeview, 
 							    GtkTreePath *path, 
@@ -415,12 +414,20 @@ static gboolean rmplugin_x2go_session_chooser_row_activated(GtkTreeView *treevie
 {
 	REMMINA_PLUGIN_DEBUG("Function entry.");
 
-	// Safety first.
-	g_assert(custom_data);
-	g_assert(custom_data->gp);
-	g_assert(custom_data->user_data);
+	if (!custom_data || !custom_data->gp || !custom_data->opt1) {
+		REMMINA_PLUGIN_CRITICAL("%s", g_strdup_printf(
+			_("Internal error: %s"),
+			_("Parameter 'custom_data' is not initialized!")
+		));
 
-	GtkWidget* dialog = GTK_WIDGET(custom_data->user_data);
+		return G_SOURCE_REMOVE;
+	}
+
+	RemminaProtocolWidget* gp = (RemminaProtocolWidget*) custom_data->gp;
+	// dialog_data (unused)
+	// connect_data (unused)
+	GtkWidget* dialog = GTK_WIDGET(custom_data->opt1);
+
 	gchar *session_id;
 	GtkTreeIter iter;
 	GtkTreeModel *model = gtk_tree_view_get_model(treeview);
@@ -432,12 +439,12 @@ static gboolean rmplugin_x2go_session_chooser_row_activated(GtkTreeView *treevie
 		// Silent bail out.
 		if (!session_id || strlen(session_id) <= 0) return G_SOURCE_REMOVE;
 
-		SET_RESUME_SESSION(custom_data->gp, session_id);
+		SET_RESUME_SESSION(gp, session_id);
 
 		// Unstucking main process. Telling it that a session has been selected.
 		// We use a trick here. As long as there is something other than 0
 		// stored, a session is selected. So we use the gpointer as a gboolean.
-		SET_SESSION_SELECTED(custom_data->gp, (gpointer) TRUE);
+		SET_SESSION_SELECTED(gp, (gpointer) TRUE);
 		gtk_widget_hide(GTK_WIDGET(dialog));
 		gtk_widget_destroy(GTK_WIDGET(dialog));
 	}
@@ -446,28 +453,41 @@ static gboolean rmplugin_x2go_session_chooser_row_activated(GtkTreeView *treevie
 }
 
 /**
- * @brief Builds a dialog which contains all found X2Go-Sessions. of the remote server
- *	  And gives the user the option to choose between an existing session or
- *	  to create a new one.
+ * @brief Builds a dialog which contains all found X2Go-Sessions of the remote server.
+ *	  The dialog gives the user the option to choose between resuming or terminating
+ *	  an existing session or to create a new one.
  *
- * @param gp Gets used to get the struct _Dialogdata.
+ * @param custom_data X2GoCustomUserData structure with the following: \n
+ *				gp -> gp (RemminaProtocolWidget*) \n
+ *				dialog_data -> dialog data (struct _DialogData*) \n
+ *				connect_data -> connection data (struct _ConnectionData*)
  * @param sessions_list The GList* Should contain all found X2Go-Sessions.
  *			Sessions are string arrays of properties.
  *			The type of the GList is gchar**.
  *
  * @returns GtkWidget* custom dialog.
  */
-static GtkWidget* rmplugin_x2go_choose_session_dialog_factory(RemminaProtocolWidget* gp,
+static GtkWidget* rmplugin_x2go_choose_session_dialog_factory(X2GoCustomUserData *custom_data,
 							      GList *sessions_list)
 {
 	REMMINA_PLUGIN_DEBUG("Function entry.");
 
-	struct _DialogData* ddata = GET_DIALOG_DATA(gp);
+	if (!custom_data || !custom_data->gp ||
+	    !custom_data->dialog_data || !custom_data->connect_data) {
+		REMMINA_PLUGIN_CRITICAL("%s", g_strdup_printf(
+			_("Internal error: %s"),
+			_("Parameter 'custom_data' is not initialized!")
+		));
+
+		return NULL;
+	}
+
+	struct _DialogData* ddata = (struct _DialogData*) custom_data->dialog_data;
 
 	if (!ddata || !sessions_list || !ddata->title) {
 		REMMINA_PLUGIN_CRITICAL("%s", _("Couldn't retrieve valid `DialogData` or "
 					        "`sessions_list`! Aborting…"));
-		return FALSE;
+		return NULL;
 	}
 
 	GtkWidget *widget_gtk_dialog = NULL;
@@ -595,13 +615,18 @@ static GtkWidget* rmplugin_x2go_choose_session_dialog_factory(RemminaProtocolWid
 		}
 	}
 
-	X2GoCustomUserData *user_data = g_new0(X2GoCustomUserData, 1);
-	user_data->gp = gp;
-	user_data->user_data = widget_gtk_dialog;
+	/* Prepare X2GoCustomUserData *custom_data
+	 *	gp -> gp (RemminaProtocolWidget*)
+	 *	dialog_data -> dialog data (struct _DialogData*)
+	 *	connect_data -> connection data (struct _ConnectionData*)
+	 *	opt1 -> dialog widget (GtkWidget*)
+	 */
+	// everything else is already initialized.
+	custom_data->opt1 = widget_gtk_dialog;
 
 	g_signal_connect(tree_view, "row-activated",
 			 G_CALLBACK(rmplugin_x2go_session_chooser_row_activated),
-			 user_data);
+			 custom_data);
 
 	return widget_gtk_dialog;
 }
@@ -894,9 +919,10 @@ struct _ConnectionData {
  * @brief Terminates a specific X2Go session using pyhoca-cli.
  *
  * @param custom_data X2GoCustomUserData structure with the following: \n
- *		        * gp = RemminaProtocolWidget* \n
- *		        * user_data = struct _ConnectionData* \n
- *		        * opt1 = gchar* session_id \n
+ *				gp -> gp (RemminaProtocolWidget*) \n
+ *				dialog_data -> dialog data (struct _DialogData*) \n
+ *				connect_data -> connection data (struct _ConnectionData*) \n
+ *				opt1 -> session id (gchar*)
  *
  * @return G_SOURCE_REMOVE (FALSE), #G_SOURCE_CONTINUE and #G_SOURCE_REMOVE are more
  *	   memorable names for the return value. See GLib docs. \n
@@ -906,8 +932,8 @@ static gboolean rmplugin_x2go_pyhoca_terminate_session(X2GoCustomUserData *custo
 {
 	REMMINA_PLUGIN_DEBUG("Function entry.");
 
-	if (!custom_data || !custom_data->gp || !custom_data->user_data ||
-	    !custom_data->opt1) {
+	if (!custom_data || !custom_data->gp ||
+	    !custom_data->dialog_data || !custom_data->connect_data || !custom_data->opt1) {
 		REMMINA_PLUGIN_CRITICAL("%s", g_strdup_printf(
 			_("Internal error: %s"),
 			_("Parameter 'custom_data' is not fully initialized!")
@@ -916,13 +942,13 @@ static gboolean rmplugin_x2go_pyhoca_terminate_session(X2GoCustomUserData *custo
 		return G_SOURCE_REMOVE;
 	}
 
-	RemminaProtocolWidget *gp = custom_data->gp;
-	RemminaPluginX2GoData *gpdata = GET_PLUGIN_DATA(gp);
-
-	struct _ConnectionData *connect_data = (struct _ConnectionData*) custom_data->user_data;
-
+	// Extract data passed by X2GoCustomUserData *custom_data.
+	RemminaPluginX2GoData *gpdata = GET_PLUGIN_DATA(custom_data->gp);
+	//struct _DialogData *ddata = (struct _DialogData*) custom_data->dialog_data;
+	struct _ConnectionData *connect_data = (struct _ConnectionData*) custom_data->connect_data;
 	gchar *session_id = (gchar*) custom_data->opt1;
 
+	/* Check connect_data. */
 	gchar *host = NULL;
 	gchar *username = NULL;
 	gchar *password = NULL;
@@ -947,6 +973,7 @@ static gboolean rmplugin_x2go_pyhoca_terminate_session(X2GoCustomUserData *custo
 		password = connect_data->password;
 	}
 
+	/* Check session_id. */
 	if (!session_id || strlen(session_id) <= 0) {
 		REMMINA_PLUGIN_CRITICAL("%s", g_strdup_printf(
 			_("Internal error: %s"),
@@ -1021,7 +1048,10 @@ static gboolean rmplugin_x2go_pyhoca_terminate_session(X2GoCustomUserData *custo
 /**
  * @brief Gets executed on dialog's 'response' signal
  *
- * @param gp Needed by SET_RESUME_SESSION to set the session id of the selected session.
+ * @param custom_data X2GoCustomUserData*: \n
+ *				gp -> gp (RemminaProtocolWidget*) \n
+ *				dialog_data -> dialog data (struct _DialogData*) \n
+ *				connect_data -> connection data (struct _ConnectionData*)
  * @param response_id See GTK 'response' signal.
  * @param self The dialog itself.
  *
@@ -1035,7 +1065,7 @@ static gboolean rmplugin_x2go_session_chooser_callback(X2GoCustomUserData* custo
 {
 	REMMINA_PLUGIN_DEBUG("Function entry.");
 
-	if (!custom_data || !custom_data->gp || !custom_data->user_data ) {
+	if (!custom_data || !custom_data->gp || !custom_data->dialog_data) {
 		REMMINA_PLUGIN_CRITICAL("%s", g_strdup_printf(
 			_("Internal error: %s"),
 			_("Parameter 'custom_data' is not initialized!")
@@ -1043,6 +1073,7 @@ static gboolean rmplugin_x2go_session_chooser_callback(X2GoCustomUserData* custo
 
 		return G_SOURCE_REMOVE;
 	}
+	RemminaProtocolWidget *gp = (RemminaProtocolWidget*) custom_data->gp;
 
 	if (response_id == SESSION_CHOOSER_RESPONSE_CHOOSE) {
 		gchar* session_id = rmplugin_x2go_session_chooser_get_property(
@@ -1055,9 +1086,9 @@ static gboolean rmplugin_x2go_session_chooser_callback(X2GoCustomUserData* custo
 				"%s",
 				_("Couldn't get session ID from session chooser dialog.")
 			);
-			SET_RESUME_SESSION(custom_data->gp, NULL);
+			SET_RESUME_SESSION(gp, NULL);
 		} else {
-			SET_RESUME_SESSION(custom_data->gp, session_id);
+			SET_RESUME_SESSION(gp, session_id);
 
 			REMMINA_PLUGIN_MESSAGE("%s", g_strdup_printf(
 				_("Resuming session: '%s'"),
@@ -1067,7 +1098,7 @@ static gboolean rmplugin_x2go_session_chooser_callback(X2GoCustomUserData* custo
 	} else if (response_id == SESSION_CHOOSER_RESPONSE_NEW) {
 		REMMINA_PLUGIN_DEBUG("User explicitly wishes a new session. "
 			             "Creating a new session then.");
-		SET_RESUME_SESSION(custom_data->gp, NULL);
+		SET_RESUME_SESSION(gp, NULL);
 	}  else if (response_id == SESSION_CHOOSER_RESPONSE_TERMINATE) {
 		gchar* session_id = rmplugin_x2go_session_chooser_get_property(
 			GTK_WIDGET(self),
@@ -1079,9 +1110,9 @@ static gboolean rmplugin_x2go_session_chooser_callback(X2GoCustomUserData* custo
 				"%s",
 				_("Couldn't get session ID from session chooser dialog.")
 			);
-			SET_RESUME_SESSION(custom_data->gp, NULL);
+			SET_RESUME_SESSION(gp, NULL);
 		} else {
-			SET_RESUME_SESSION(custom_data->gp, session_id);
+			SET_RESUME_SESSION(gp, session_id);
 
 			REMMINA_PLUGIN_MESSAGE("%s", g_strdup_printf(
 				_("Terminating session: '%s'"),
@@ -1123,8 +1154,16 @@ static gboolean rmplugin_x2go_session_chooser_callback(X2GoCustomUserData* custo
 			gtk_widget_set_sensitive(resume_button, FALSE);
 		}
 
-		// Actually start pyhoca-cli process with --terminate $session_id.
+		/* Prepare X2GoCustomUserData *custom_data
+		 *	gp -> gp (RemminaProtocolWidget*)
+		 *	dialog_data -> dialog data (struct _DialogData*)
+		 *	connect_data -> connection data (struct _ConnectionData*)
+		 *	opt1 -> session id (gchar*)
+		 */
+		// everything else is already initialized.
 		custom_data->opt1 = session_id;
+
+		// Actually start pyhoca-cli process with --terminate $session_id.
 		g_thread_new("terminate-session-thread",
 			     (GThreadFunc) rmplugin_x2go_pyhoca_terminate_session,
 			     custom_data);
@@ -1134,13 +1173,13 @@ static gboolean rmplugin_x2go_session_chooser_callback(X2GoCustomUserData* custo
 	} else {
 		REMMINA_PLUGIN_DEBUG("User clicked dialog away. "
 				     "Creating a new session then.");
-		SET_RESUME_SESSION(custom_data->gp, NULL);
+		SET_RESUME_SESSION(gp, NULL);
 	}
 
 	// Unstucking main process. Telling it that a session has been selected.
 	// We use a trick here. As long as there is something other
 	// than 0 stored, a session is selected. So we use the gpointer as a gboolean.
-	SET_SESSION_SELECTED(custom_data->gp, (gpointer) TRUE);
+	SET_SESSION_SELECTED(gp, (gpointer) TRUE);
 
 	gtk_widget_destroy(GTK_WIDGET(self));
 
@@ -1335,7 +1374,6 @@ static void rmplugin_x2go_pyhoca_cli_exited(GPid pid,
 					"This connection will now be closed."));
 
 	struct _DialogData *ddata = g_new0(struct _DialogData, 1);
-	SET_DIALOG_DATA(gp, ddata);
 	ddata->parent = GTK_WINDOW(gtk_widget_get_toplevel(GTK_WIDGET(gp)));
 	ddata->flags = GTK_DIALOG_MODAL;
 	ddata->type = GTK_MESSAGE_ERROR;
@@ -1350,7 +1388,20 @@ static void rmplugin_x2go_pyhoca_cli_exited(GPid pid,
 	// We don't need a custom dialog either.
 	ddata->dialog_factory_func = NULL;
 	ddata->dialog_factory_data = NULL;
-	IDLE_ADD((GSourceFunc) rmplugin_x2go_open_dialog, gp);
+
+	/* Prepare X2GoCustomUserData *custom_data
+	 *	gp -> gp (RemminaProtocolWidget*)
+	 *	dialog_data -> dialog data (struct _DialogData*)
+	 */
+	X2GoCustomUserData *custom_data = g_new0(X2GoCustomUserData, 1);
+	g_assert(custom_data && "custom_data could not be initialized.");
+
+	custom_data->gp = gp;
+	custom_data->dialog_data = ddata;
+	custom_data->connect_data = NULL;
+	custom_data->opt1 = NULL;
+
+	IDLE_ADD((GSourceFunc) rmplugin_x2go_open_dialog, custom_data);
 
 	// 1 Second. Give `Dialog` chance to open.
 	usleep(1000 * 1000);
@@ -1779,8 +1830,8 @@ static GList* rmplugin_x2go_parse_pyhoca_sessions(RemminaProtocolWidget* gp,
 }
 
 /**
- * @brief Asks the user, with the help of a dialog, whether he or she would like
- *	  to continue an already existing session.
+ * @brief Asks the user, with the help of a dialog, to continue an already existing
+ *	  session, terminate or create a new one.
  *
  * @param error Is set if there is something to tell the user. \n
  *		Not necessarily an *error* message.
@@ -1819,21 +1870,41 @@ static gchar* rmplugin_x2go_ask_session(RemminaProtocolWidget *gp, GError **erro
 
 	// Prep new DialogData struct.
 	struct _DialogData *ddata = g_new0(struct _DialogData, 1);
-	SET_DIALOG_DATA(gp, ddata);
 	ddata->parent = GTK_WINDOW(gtk_widget_get_toplevel(GTK_WIDGET(gp)));
 	ddata->flags = GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT;
 	//ddata->type = GTK_MESSAGE_QUESTION;
 	//ddata->buttons = GTK_BUTTONS_OK; // Doesn't get used in our custom factory.
 	ddata->title = _("Choose a session to resume:");
 	ddata->message = "";
-	ddata->callbackfunc = G_CALLBACK(rmplugin_x2go_session_chooser_callback);
-	ddata->dialog_factory_func = G_CALLBACK(rmplugin_x2go_choose_session_dialog_factory);
-	ddata->dialog_factory_data = sessions_list;
 
-	X2GoCustomUserData *custom_data = g_new(X2GoCustomUserData, 1);
-	g_assert(custom_data != NULL);
+	// gboolean factory(X2GoCustomUserData*, gpointer)
+	// 	X2GoCustomUserData*:
+	//		gp -> gp (RemminaProtocolWidget*)
+	//		dialog_data -> dialog data (struct _DialogData*)
+	//		connect_data -> connection data (struct _ConnectionData*)
+	//	gpointer: dialog_factory_data
+	ddata->callbackfunc = G_CALLBACK(rmplugin_x2go_session_chooser_callback);
+
+	// gboolean factory(X2GoCustomUserData*, gpointer)
+	// 	X2GoCustomUserData*:
+	//		gp -> gp (RemminaProtocolWidget*)
+	//		dialog_data -> dialog data (struct _DialogData*)
+	//		connect_data -> connection data (struct _ConnectionData*)
+	//	gpointer: dialog_factory_data
+	ddata->dialog_factory_data = sessions_list;
+	ddata->dialog_factory_func = G_CALLBACK(rmplugin_x2go_choose_session_dialog_factory);
+
+	/* Prepare X2GoCustomUserData *custom_data
+	 *	gp -> gp (RemminaProtocolWidget*)
+	 *	dialog_data -> dialog data (struct _DialogData*)
+	 */
+	X2GoCustomUserData *custom_data = g_new0(X2GoCustomUserData, 1);
+	g_assert(custom_data && "custom_data could not be initialized.");
+
 	custom_data->gp = gp;
-	custom_data->user_data = (gpointer) connect_data;
+	custom_data->dialog_data = ddata;
+	custom_data->connect_data = connect_data;
+	custom_data->opt1 = NULL;
 
 	// Open dialog here. Dialog rmplugin_x2go_session_chooser_callback (callbackfunc)
 	// should set SET_RESUME_SESSION.
@@ -2097,7 +2168,6 @@ static gboolean rmplugin_x2go_exec_x2go(gchar *host,
 				       "starting an X2Go session…");
 
 		struct _DialogData* ddata = g_new0(struct _DialogData, 1);
-		SET_DIALOG_DATA(gp, ddata);
 		ddata->parent = GTK_WINDOW(gtk_widget_get_toplevel(GTK_WIDGET(gp)));
 		ddata->flags = GTK_DIALOG_MODAL;
 		ddata->type = GTK_MESSAGE_ERROR;
@@ -2111,7 +2181,20 @@ static gboolean rmplugin_x2go_exec_x2go(gchar *host,
 		// We don't need a custom dialog either.
 		ddata->dialog_factory_func = NULL;
 		ddata->dialog_factory_data = NULL;
-		IDLE_ADD((GSourceFunc) rmplugin_x2go_open_dialog, gp);
+
+		/* Prepare X2GoCustomUserData *custom_data
+		*	gp -> gp (RemminaProtocolWidget*)
+		*	dialog_data -> dialog data (struct _DialogData*)
+		*/
+		X2GoCustomUserData *custom_data = g_new0(X2GoCustomUserData, 1);
+		g_assert(custom_data && "custom_data could not be initialized.");
+
+		custom_data->gp = gp;
+		custom_data->dialog_data = ddata;
+		custom_data->connect_data = NULL;
+		custom_data->opt1 = NULL;
+
+		IDLE_ADD((GSourceFunc) rmplugin_x2go_open_dialog, custom_data);
 
 		g_strlcpy(errmsg, error_title, 512);
 
