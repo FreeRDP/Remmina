@@ -1606,9 +1606,11 @@ static gchar* rmplugin_x2go_get_pyhoca_sessions(RemminaProtocolWidget* gp, GErro
 		} else {
 			REMMINA_PLUGIN_DEBUG("%s", FEATURE_NOT_AVAIL_STR("AUTH_ATTEMPTS"));
 		}
-		argv[argc++] = g_strdup("--force-password");
-		argv[argc++] = g_strdup("--password");
-		argv[argc++] = g_strdup_printf("%s", password);
+		if (strlen(password) > 0) {
+			argv[argc++] = g_strdup("--force-password");
+			argv[argc++] = g_strdup("--password");
+			argv[argc++] = g_strdup_printf("%s", password);
+		}
 	} else if (!password) {
 		g_set_error(error, 1, 1, FEATURE_NOT_AVAIL_STR("PASSWORD"));
 		REMMINA_PLUGIN_WARNING("%s", FEATURE_NOT_AVAIL_STR("PASSWORD"));
@@ -2033,9 +2035,11 @@ static gboolean rmplugin_x2go_exec_x2go(gchar *host,
 	}
 
 	if (password && FEATURE_AVAILABLE(gpdata, "PASSWORD")) {
-		argv[argc++] = g_strdup("--force-password");
-		argv[argc++] = g_strdup("--password");
-		argv[argc++] = g_strdup_printf ("%s", password);
+		if (strlen(password) > 0) {
+			argv[argc++] = g_strdup("--force-password");
+			argv[argc++] = g_strdup("--password");
+			argv[argc++] = g_strdup_printf ("%s", password);
+		}
 	} else {
 		REMMINA_PLUGIN_DEBUG("%s", FEATURE_NOT_AVAIL_STR("PASSWORD"));
 	}
