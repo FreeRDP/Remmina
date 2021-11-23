@@ -1028,6 +1028,12 @@ static gboolean rmplugin_x2go_pyhoca_terminate_session(X2GoCustomUserData *custo
 		return G_SOURCE_REMOVE;
 	}
 
+	if (FEATURE_AVAILABLE(gpdata, "NO_INTERACTIVE")) {
+		argv[argc++] = g_strdup("--no-interactive");
+	} else {
+		REMMINA_PLUGIN_WARNING("%s", FEATURE_NOT_AVAIL_STR("NO_INTERACTIVE"));
+	}
+
 	argv[argc++] = NULL;
 
 	GError* error = NULL;
@@ -1595,8 +1601,14 @@ static gchar* rmplugin_x2go_get_pyhoca_sessions(RemminaProtocolWidget* gp, GErro
 		}
 	} else {
 		g_set_error(error, 1, 1, FEATURE_NOT_AVAIL_STR("USERNAME"));
-		REMMINA_PLUGIN_WARNING("%s", FEATURE_NOT_AVAIL_STR("USERNAME"));
+		REMMINA_PLUGIN_CRITICAL("%s", FEATURE_NOT_AVAIL_STR("USERNAME"));
 		return NULL;
+	}
+
+	if (FEATURE_AVAILABLE(gpdata, "NO_INTERACTIVE")) {
+		argv[argc++] = g_strdup("--no-interactive");
+	} else {
+		REMMINA_PLUGIN_WARNING("%s", FEATURE_NOT_AVAIL_STR("NO_INTERACTIVE"));
 	}
 
 	if (password && FEATURE_AVAILABLE(gpdata, "PASSWORD")) {
@@ -1604,7 +1616,7 @@ static gchar* rmplugin_x2go_get_pyhoca_sessions(RemminaProtocolWidget* gp, GErro
 			argv[argc++] = g_strdup("--auth-attempts");
 			argv[argc++] = g_strdup_printf ("%i", 0);
 		} else {
-			REMMINA_PLUGIN_DEBUG("%s", FEATURE_NOT_AVAIL_STR("AUTH_ATTEMPTS"));
+			REMMINA_PLUGIN_WARNING("%s", FEATURE_NOT_AVAIL_STR("AUTH_ATTEMPTS"));
 		}
 		if (strlen(password) > 0) {
 			argv[argc++] = g_strdup("--force-password");
@@ -1613,7 +1625,7 @@ static gchar* rmplugin_x2go_get_pyhoca_sessions(RemminaProtocolWidget* gp, GErro
 		}
 	} else if (!password) {
 		g_set_error(error, 1, 1, FEATURE_NOT_AVAIL_STR("PASSWORD"));
-		REMMINA_PLUGIN_WARNING("%s", FEATURE_NOT_AVAIL_STR("PASSWORD"));
+		REMMINA_PLUGIN_CRITICAL("%s", FEATURE_NOT_AVAIL_STR("PASSWORD"));
 		return NULL;
 	}
 
@@ -2049,6 +2061,12 @@ static gboolean rmplugin_x2go_exec_x2go(gchar *host,
 		argv[argc++] = g_strdup_printf ("%i", 0);
 	} else {
 		REMMINA_PLUGIN_DEBUG("%s", FEATURE_NOT_AVAIL_STR("AUTH_ATTEMPTS"));
+	}
+
+	if (FEATURE_AVAILABLE(gpdata, "NO_INTERACTIVE")) {
+		argv[argc++] = g_strdup("--no-interactive");
+	} else {
+		REMMINA_PLUGIN_WARNING("%s", FEATURE_NOT_AVAIL_STR("NO_INTERACTIVE"));
 	}
 
 	if (FEATURE_AVAILABLE(gpdata, "COMMAND")) {
