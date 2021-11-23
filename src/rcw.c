@@ -4343,6 +4343,43 @@ static void set_label_selectable(gpointer data, gpointer user_data)
 	}
 }
 
+/**
+ * @brief These define the response id's of the
+ *	  gtksocket-is-not-available-warning-dialog buttons.
+ */
+enum GTKSOCKET_NOT_AVAIL_RESPONSE_TYPE {
+  GTKSOCKET_NOT_AVAIL_RESPONSE_OPEN_BROWSER = 0,
+  GTKSOCKET_NOT_AVAIL_RESPONSE_NUM
+};
+
+/**
+ * @brief Gets called if the user interacts with the
+ *	  gtksocket-is-not-available-warning-dialog
+ */
+static void rcw_gtksocket_not_available_dialog_response(GtkDialog* self,
+							gint response_id,
+							RemminaConnectionObject* cnnobj)
+{
+	TRACE_CALL(__func__);
+
+	GError* error = NULL;
+
+	if (response_id == GTKSOCKET_NOT_AVAIL_RESPONSE_OPEN_BROWSER) {
+		gtk_show_uri_on_window(
+			NULL,
+			// TRANSLATORS: This should be a link to the Remmina Wiki page:
+			// TRANSLATORS: 'GtkSocket feature is not available'.
+			_("https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-available-in-a-Wayland-session"),
+			GDK_CURRENT_TIME, &error
+		);
+	}
+
+	// Close the current page since it's useless without GtkSocket.
+	// The user would need to manually click the close button.
+	if (cnnobj) rco_disconnect_current_page(cnnobj);
+
+	gtk_widget_destroy(GTK_WIDGET(self));
+}
 
 GtkWidget *rcw_open_from_file_full(RemminaFile *remminafile, GCallback disconnect_cb, gpointer data, guint *handler)
 {
@@ -4488,13 +4525,15 @@ GtkWidget *rcw_open_from_file_full(RemminaFile *remminafile, GCallback disconnec
 			title);
 
 		gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG(dialog), err_msg);
+		gtk_dialog_add_button(GTK_DIALOG(dialog), _("Open in browser"),
+				      GTKSOCKET_NOT_AVAIL_RESPONSE_OPEN_BROWSER);
 
 		REMMINA_CRITICAL(g_strdup_printf("%s\n%s", title, err_msg));
 
-		// Close the current page since it's useless without GtkSocket.
-		// The user would need to manually click the close button.
-		g_signal_connect_swapped(G_OBJECT(dialog), "response", G_CALLBACK(rco_disconnect_current_page), cnnobj);
-		g_signal_connect(G_OBJECT(dialog), "response", G_CALLBACK(gtk_widget_destroy), NULL);
+		g_signal_connect(G_OBJECT(dialog),
+				 "response",
+				 G_CALLBACK(rcw_gtksocket_not_available_dialog_response),
+				 cnnobj);
 
 		// Make Text selectable. Usefull because of the link in the text.
 		GtkWidget *area = gtk_message_dialog_get_message_area(
