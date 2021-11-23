@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-11-19 09:37+0000\n"
+"POT-Creation-Date: 2021-11-23 15:47+0000\n"
 "PO-Revision-Date: 2021-10-05 14:04+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -24,10 +24,10 @@ msgstr ""
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:354
-#: src/remmina_protocol_widget.c:1676 src/remmina_protocol_widget.c:1695
+#: src/remmina_protocol_widget.c:1677 src/remmina_protocol_widget.c:1696
 #: src/remmina_file_editor.c:1101 src/remmina_file_editor.c:1222
 #: src/remmina_ssh_plugin.c:1360 plugins/rdp/rdp_plugin.c:2723
-#: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:2535
+#: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:2991
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1675
 #: data/ui/remmina_unlock.glade:116
 msgid "Password"
@@ -66,7 +66,7 @@ msgstr "모두 덮어 쓰기"
 msgid "Resume all file transfers"
 msgstr "파일 전송"
 
-#: src/remmina_sftp_plugin.c:328 src/remmina_protocol_widget.c:283
+#: src/remmina_sftp_plugin.c:328 src/remmina_protocol_widget.c:284
 msgid "Connect via SSH from a new terminal"
 msgstr "새 터미널에서 SSH로 연결하기"
 
@@ -74,7 +74,7 @@ msgstr "새 터미널에서 SSH로 연결하기"
 #: src/remmina_file_editor.c:1216 src/remmina_ssh_plugin.c:1470
 #: plugins/rdp/rdp_plugin.c:2722 plugins/vnc/vnc_plugin.c:1976
 #: plugins/vnc/vnc_plugin.c:1988 plugins/www/www_plugin.c:894
-#: plugins/x2go/x2go_plugin.c:512 plugins/x2go/x2go_plugin.c:2534
+#: plugins/x2go/x2go_plugin.c:574 plugins/x2go/x2go_plugin.c:2990
 #: data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr "사용자명"
@@ -408,9 +408,37 @@ msgstr "연결 끊기"
 msgid "The file “%s” is corrupted, unreadable, or could not be found."
 msgstr "\"%s\" 파일이 손상 또는 읽을 수 없거나 찾을 수 없습니다."
 
-#: src/rcw.c:4466
-msgid "Warning: This plugin requires GtkSocket, but it’s not available."
+#. TRANSLATORS: This should be a link to the Remmina Wiki page:
+#. TRANSLATORS: 'GtkSocket feature is not available'.
+#: src/rcw.c:4372 src/rcw.c:4518
+msgid ""
+"https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
+"available-in-a-Wayland-session"
+msgstr ""
+
+#: src/rcw.c:4509
+#, fuzzy
+#| msgid "Warning: This plugin requires GtkSocket, but it’s not available."
+msgid ""
+"Warning: This plugin requires GtkSocket, but this feature is unavailable in "
+"a Wayland session."
 msgstr "경고: 이 플러그인에는 GtkSocket이 필요하지만 사용할 수 없습니다."
+
+#: src/rcw.c:4513
+#, c-format
+msgid ""
+"Plugins relying on GtkSocket can't run in a Wayland session.\n"
+"For more information and a possible workaround, please visit the Remmina "
+"Wiki at:\n"
+"\n"
+"%s"
+msgstr ""
+
+#: src/rcw.c:4528
+#, fuzzy
+#| msgid "Open Main Window"
+msgid "Open in browser"
+msgstr "메인 윈도 열기"
 
 #: src/remmina_mpchange.c:234
 msgid "The passwords do not match"
@@ -535,26 +563,26 @@ msgstr "--update-profile 을 사용해서 사용할 하나 이상의 프로필 �
 msgid "Encrypt a password"
 msgstr "VNC 비밀번호 입력"
 
-#: src/remmina.c:333
+#: src/remmina.c:334
 msgid ""
 "Remmina does not log all output statements. To enable a more verbose output "
-"please use G_MESSAGES_DEBUG=all as an environment variable. "
+"please use G_MESSAGES_DEBUG=all as an environment variable."
 msgstr ""
 
 #. TRANSLATORS: This link should point to a resource explaining
 #. TRANSLATORS: how to get Remmina to log debug statements.
-#: src/remmina.c:338
+#: src/remmina.c:339
 msgid ""
-"For more information, please visit the Remmina Wiki: https://gitlab.com/"
-"Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
+"For more information, please visit the Remmina Wiki:\n"
+"https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgstr ""
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:388
+#: src/remmina.c:390
 msgid "- or protocol://username:encryptedpassword@host:port"
 msgstr "- 또는 protocol://username:encryptedpassword@host:port"
 
-#: src/remmina.c:391
+#: src/remmina.c:393
 msgid ""
 "Examples:\n"
 "To connect using an existing connection profile, use:\n"
@@ -751,125 +779,125 @@ msgstr "로컬"
 msgid "Progress"
 msgstr "진행"
 
-#: src/remmina_protocol_widget.c:290 src/remmina_ssh_plugin.c:829
+#: src/remmina_protocol_widget.c:291 src/remmina_ssh_plugin.c:829
 #: src/remmina_ssh_plugin.c:1445
 msgid "Open SFTP transfer…"
 msgstr "SFTP 전송 열기…"
 
-#: src/remmina_protocol_widget.c:319
+#: src/remmina_protocol_widget.c:320
 msgid "Executing external commands…"
 msgstr "외부 명령 실행 중…"
 
 #. TRANSLATORS: “%s” is a placeholder for the connection profile name
-#: src/remmina_protocol_widget.c:327
+#: src/remmina_protocol_widget.c:328
 #, c-format
 msgid "Connecting to “%s”…"
 msgstr "'%s'에 연결하는 중…"
 
 #. TRANSLATORS: “%s” is a placeholder for an hostname or an IP address.
-#: src/remmina_protocol_widget.c:915 src/remmina_protocol_widget.c:1100
+#: src/remmina_protocol_widget.c:916 src/remmina_protocol_widget.c:1101
 #, c-format
 msgid "Connecting to “%s” via SSH…"
 msgstr "SSH로 '%s'에 연결하는 중…"
 
 #. TRANSLATORS: “%i” is a placeholder for a TCP port number.
-#: src/remmina_protocol_widget.c:1164
+#: src/remmina_protocol_widget.c:1165
 #, c-format
 msgid "Awaiting incoming SSH connection on port %i…"
 msgstr "%i 포트에서 SSH 연결을 기다리는 중…"
 
-#: src/remmina_protocol_widget.c:1217
+#: src/remmina_protocol_widget.c:1218
 #, c-format
 msgid "The “%s” command is not available on the SSH server."
 msgstr "SSH 서버에서 %s 명령을 사용할 수 없습니다."
 
-#: src/remmina_protocol_widget.c:1222
+#: src/remmina_protocol_widget.c:1223
 #, c-format
 msgid "Could not run the “%s” command on the SSH server (status = %i)."
 msgstr "SSH 서버에서 \"%s\" 명령을 실행할 수 없습니다 (상태 = %i)."
 
 #. TRANSLATORS: %s is a placeholder for an error message
-#: src/remmina_protocol_widget.c:1230
+#: src/remmina_protocol_widget.c:1231
 #, c-format
 msgid "Could not run command. %s"
 msgstr "명령을 실행할 수 없습니다. %s"
 
 #. TRANSLATORS: “%s” is a placeholder for a hostname or IP address.
-#: src/remmina_protocol_widget.c:1300
+#: src/remmina_protocol_widget.c:1301
 #, c-format
 msgid "Connecting to %s via SSH…"
 msgstr "SSH로 '%s'에 연결하는 중…"
 
-#: src/remmina_protocol_widget.c:1694
+#: src/remmina_protocol_widget.c:1695
 msgid "Type in SSH username and password."
 msgstr "SSH 사용자 이름과 비밀번호를 입력하세요."
 
-#: src/remmina_protocol_widget.c:1749 src/remmina_protocol_widget.c:1781
+#: src/remmina_protocol_widget.c:1750 src/remmina_protocol_widget.c:1782
 msgid "Fingerprint automatically accepted"
 msgstr "지문으로 자동 허용"
 
 #. TRANSLATORS: The user is asked to verify a new SSL certificate.
-#: src/remmina_protocol_widget.c:1757
+#: src/remmina_protocol_widget.c:1758
 msgid "Certificate details:"
 msgstr "인증서 세부정보:"
 
 #. TRANSLATORS: An SSL certificate subject is usually the remote server the user connect to.
-#: src/remmina_protocol_widget.c:1759 src/remmina_protocol_widget.c:1791
+#: src/remmina_protocol_widget.c:1760 src/remmina_protocol_widget.c:1792
 msgid "Subject:"
 msgstr "주제:"
 
 #. TRANSLATORS: The name or email of the entity that have issued the SSL certificate
-#: src/remmina_protocol_widget.c:1761 src/remmina_protocol_widget.c:1793
+#: src/remmina_protocol_widget.c:1762 src/remmina_protocol_widget.c:1794
 msgid "Issuer:"
 msgstr "발급자:"
 
 #. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
-#: src/remmina_protocol_widget.c:1763
+#: src/remmina_protocol_widget.c:1764
 msgid "Fingerprint:"
 msgstr "지문:"
 
 #. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
-#: src/remmina_protocol_widget.c:1765
+#: src/remmina_protocol_widget.c:1766
 msgid "Accept certificate?"
 msgstr "인증서를 허용하시겠습니까?"
 
 #. TRANSLATORS: The user is asked to verify a new SSL certificate.
-#: src/remmina_protocol_widget.c:1789
+#: src/remmina_protocol_widget.c:1790
 msgid "The certificate changed! Details:"
 msgstr "인증서가 변경되었습니다! 세부 내용:"
 
 #. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
-#: src/remmina_protocol_widget.c:1795
+#: src/remmina_protocol_widget.c:1796
 msgid "Old fingerprint:"
 msgstr "이전 지문:"
 
 #. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
-#: src/remmina_protocol_widget.c:1797
+#: src/remmina_protocol_widget.c:1798
 msgid "New fingerprint:"
 msgstr "새 지문:"
 
 #. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
-#: src/remmina_protocol_widget.c:1799
+#: src/remmina_protocol_widget.c:1800
 msgid "Accept changed certificate?"
 msgstr "변경된 인증서를 허용하시겠습니까?"
 
 #. TRANSLATORS: “%i” is a placeholder for a port number. “%s”  is a placeholder for a protocol name (VNC).
-#: src/remmina_protocol_widget.c:1942
+#: src/remmina_protocol_widget.c:1943
 #, c-format
 msgid "Listening on port %i for an incoming %s connection…"
 msgstr "%s 연결을 위해서 %i 포트에서 대기 중…"
 
-#: src/remmina_protocol_widget.c:1967
+#: src/remmina_protocol_widget.c:1968
 msgid "Could not authenticate, attempting reconnection…"
 msgstr "인증할 수 없습니다, 다시 접속 중…"
 
-#: src/remmina_protocol_widget.c:2029 src/remmina_file_editor.c:436
+#: src/remmina_protocol_widget.c:2030 src/remmina_file_editor.c:436
 #: src/remmina_file_editor.c:1172 data/ui/remmina_main.glade:478
 msgid "Server"
 msgstr "서버"
 
 #. TRANSLATORS: “%s” is a placeholder for a protocol name, like “RDP”.
-#: src/remmina_protocol_widget.c:2047
+#: src/remmina_protocol_widget.c:2048
 #, c-format
 msgid "Install the %s protocol plugin first."
 msgstr "먼저 %s 프로토콜 플러그인을 설치하세요."
@@ -1444,8 +1472,8 @@ msgstr ""
 "자 입력의 유효성을 검사할 수 없습니다!"
 
 #. TRANSLATORS: Meta-error. Shouldn't be visible.
-#: src/remmina_file_editor.c:1445 plugins/x2go/x2go_plugin.c:1746
-#: plugins/x2go/x2go_plugin.c:2360
+#: src/remmina_file_editor.c:1445 plugins/x2go/x2go_plugin.c:2187
+#: plugins/x2go/x2go_plugin.c:2816
 #, fuzzy
 #| msgid "Transfer error"
 msgid "Internal error."
@@ -2917,136 +2945,250 @@ msgid ""
 "CLI without using this feature…"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:277
-#, fuzzy
-msgid "Broken `DialogData`! Aborting…"
-msgstr "깨진 '대화 데이터'! 중단…"
-
-#: plugins/x2go/x2go_plugin.c:281
-#, fuzzy
-msgid "Can't retrieve `DialogData`! Aborting…"
-msgstr "'대화데이터'를 검색할 수 없습니다! 중단…"
-
-#: plugins/x2go/x2go_plugin.c:438
-#, fuzzy
-msgid "Couldn't retrieve valid `DialogData` or `sessions_list`! Aborting…"
-msgstr "'대화데이터'를 검색할 수 없습니다! 중단…"
-
-#: plugins/x2go/x2go_plugin.c:445
-msgid "_New"
-msgstr ""
-
-#: plugins/x2go/x2go_plugin.c:447
-#, fuzzy
-#| msgid "_Select all"
-msgid "_Select session"
-msgstr "_모두 선택"
-
-#: plugins/x2go/x2go_plugin.c:506
-msgid "Display"
-msgstr "화면"
-
-#: plugins/x2go/x2go_plugin.c:507
-msgid "Status"
-msgstr "상태"
-
-#: plugins/x2go/x2go_plugin.c:508
-#, fuzzy
-#| msgid "Permission"
-msgid "Session ID"
-msgstr "권한"
-
-#: plugins/x2go/x2go_plugin.c:509
-msgid "Create date"
-msgstr ""
-
-#: plugins/x2go/x2go_plugin.c:510
-msgid "Suspended since"
-msgstr ""
-
-#: plugins/x2go/x2go_plugin.c:511
-msgid "Agent PID"
-msgstr ""
-
-#: plugins/x2go/x2go_plugin.c:513
-#, fuzzy
-#| msgid "Username"
-msgid "Hostname"
-msgstr "사용자명"
-
-#: plugins/x2go/x2go_plugin.c:514
-msgid "Cookie"
-msgstr ""
-
-#: plugins/x2go/x2go_plugin.c:515
-msgid "Graphic port"
-msgstr ""
-
-#: plugins/x2go/x2go_plugin.c:516
-msgid "SND port"
-msgstr ""
-
-#: plugins/x2go/x2go_plugin.c:517
-#, fuzzy
-#| msgid "Local SSH port"
-msgid "SSHFS port"
-msgstr "로컬 SSH 포트"
-
-#: plugins/x2go/x2go_plugin.c:519 plugins/x2go/x2go_plugin.c:585
-#: plugins/x2go/x2go_plugin.c:599 plugins/x2go/x2go_plugin.c:614
-#: plugins/x2go/x2go_plugin.c:626 plugins/x2go/x2go_plugin.c:936
-#: plugins/x2go/x2go_plugin.c:947 plugins/x2go/x2go_plugin.c:955
-#: plugins/x2go/x2go_plugin.c:1060 plugins/x2go/x2go_plugin.c:1094
-#: plugins/x2go/x2go_plugin.c:1200 plugins/x2go/x2go_plugin.c:2212
-#: plugins/x2go/x2go_plugin.c:2425 plugins/x2go/x2go_plugin.c:2430
-#: plugins/x2go/x2go_plugin.c:2435 plugins/x2go/x2go_plugin.c:2440
-#: plugins/x2go/x2go_plugin.c:2455 plugins/x2go/x2go_plugin.c:2460
-#: plugins/x2go/x2go_plugin.c:2465 plugins/x2go/x2go_plugin.c:2470
+#: plugins/x2go/x2go_plugin.c:287 plugins/x2go/x2go_plugin.c:419
+#: plugins/x2go/x2go_plugin.c:478 plugins/x2go/x2go_plugin.c:581
+#: plugins/x2go/x2go_plugin.c:656 plugins/x2go/x2go_plugin.c:668
+#: plugins/x2go/x2go_plugin.c:676 plugins/x2go/x2go_plugin.c:699
+#: plugins/x2go/x2go_plugin.c:708 plugins/x2go/x2go_plugin.c:724
+#: plugins/x2go/x2go_plugin.c:762 plugins/x2go/x2go_plugin.c:774
+#: plugins/x2go/x2go_plugin.c:805 plugins/x2go/x2go_plugin.c:816
+#: plugins/x2go/x2go_plugin.c:824 plugins/x2go/x2go_plugin.c:938
+#: plugins/x2go/x2go_plugin.c:965 plugins/x2go/x2go_plugin.c:979
+#: plugins/x2go/x2go_plugin.c:1076 plugins/x2go/x2go_plugin.c:1140
+#: plugins/x2go/x2go_plugin.c:1444 plugins/x2go/x2go_plugin.c:1478
+#: plugins/x2go/x2go_plugin.c:1574 plugins/x2go/x2go_plugin.c:1868
+#: plugins/x2go/x2go_plugin.c:2668 plugins/x2go/x2go_plugin.c:2881
+#: plugins/x2go/x2go_plugin.c:2886 plugins/x2go/x2go_plugin.c:2891
+#: plugins/x2go/x2go_plugin.c:2896 plugins/x2go/x2go_plugin.c:2911
+#: plugins/x2go/x2go_plugin.c:2916 plugins/x2go/x2go_plugin.c:2921
+#: plugins/x2go/x2go_plugin.c:2926
 #, fuzzy, c-format
 #| msgid "Transfer error"
 msgid "Internal error: %s"
 msgstr "내부 에러"
 
-#: plugins/x2go/x2go_plugin.c:520
+#: plugins/x2go/x2go_plugin.c:288 plugins/x2go/x2go_plugin.c:420
+#: plugins/x2go/x2go_plugin.c:479 plugins/x2go/x2go_plugin.c:1077
+msgid "Parameter 'custom_data' is not initialized!"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:301
+#, fuzzy
+msgid "Broken `DialogData`! Aborting…"
+msgstr "깨진 '대화 데이터'! 중단…"
+
+#: plugins/x2go/x2go_plugin.c:305
+#, fuzzy
+msgid "Can't retrieve `DialogData`! Aborting…"
+msgstr "'대화데이터'를 검색할 수 없습니다! 중단…"
+
+#: plugins/x2go/x2go_plugin.c:488
+#, fuzzy
+msgid "Couldn't retrieve valid `DialogData` or `sessions_list`! Aborting…"
+msgstr "'대화데이터'를 검색할 수 없습니다! 중단…"
+
+#. TRANSLATORS: Stick to x2goclient's translation for terminate.
+#: plugins/x2go/x2go_plugin.c:497
+#, fuzzy
+#| msgid "Terminate"
+msgid "_Terminate"
+msgstr "중단"
+
+#. TRANSLATORS: Stick to x2goclient's translation for resume.
+#: plugins/x2go/x2go_plugin.c:500
+#, fuzzy
+#| msgid "Resume"
+msgid "_Resume"
+msgstr "다시 진행"
+
+#: plugins/x2go/x2go_plugin.c:502
+msgid "_New"
+msgstr ""
+
+#. TRANSLATORS: Tooltip for terminating button inside Session-Chooser-Dialog.
+#. TRANSLATORS: Please stick to X2GoClient's way of translating.
+#: plugins/x2go/x2go_plugin.c:511
+msgid "Terminating X2Go sessions can take a moment."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:568
+#, fuzzy
+#| msgid "Display"
+msgid "X Display"
+msgstr "화면"
+
+#: plugins/x2go/x2go_plugin.c:569
+msgid "Status"
+msgstr "상태"
+
+#: plugins/x2go/x2go_plugin.c:570
+#, fuzzy
+#| msgid "Permission"
+msgid "Session ID"
+msgstr "권한"
+
+#: plugins/x2go/x2go_plugin.c:571
+msgid "Create date"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:572
+msgid "Suspended since"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:573
+msgid "Agent PID"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:575
+#, fuzzy
+#| msgid "Username"
+msgid "Hostname"
+msgstr "사용자명"
+
+#: plugins/x2go/x2go_plugin.c:576
+msgid "Cookie"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:577
+msgid "Graphic port"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:578
+msgid "SND port"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:579
+#, fuzzy
+#| msgid "Local SSH port"
+msgid "SSHFS port"
+msgstr "로컬 SSH 포트"
+
+#: plugins/x2go/x2go_plugin.c:582
 msgid "Unknown property"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:586
+#: plugins/x2go/x2go_plugin.c:657 plugins/x2go/x2go_plugin.c:700
 msgid "Couldn't find child GtkTreeView of session chooser dialog."
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:600
-msgid "only one session should be able to be selected."
+#: plugins/x2go/x2go_plugin.c:669
+msgid "Both parameters 'dialog' and 'treeview' are uninitialized!"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:615
+#: plugins/x2go/x2go_plugin.c:677
+msgid ""
+"GtkTreeModel of session chooser dialog could not be obtained for an unknown "
+"reason."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:709
+msgid "Couldn't get selected row!"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:725
+#, c-format
+msgid "exactly one session should be selected. '%i' rows are selected."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:763
 msgid "Failed to fill 'GtkTreeIter'."
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:627
-msgid "Couldn't get session ID out of selected row."
+#: plugins/x2go/x2go_plugin.c:775
+#, c-format
+msgid "Couldn't get property with index '%i' out of selected row."
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:660
+#: plugins/x2go/x2go_plugin.c:806
+msgid "parameter 'argv' is 'NULL'."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:817
+msgid "parameter 'error' is 'NULL'."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:825
+msgid "parameter 'env' is either invalid or uninitialized."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:841
+#, fuzzy
+msgid "Started PyHoca-CLI with the following arguments:"
+msgstr "다음과 같은 인수와 함께 피호카 클라이 시작 :"
+
+#: plugins/x2go/x2go_plugin.c:869
+msgid ""
+"The necessary PyHoca-CLI process has encountered a internet connection "
+"problem."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:879
+#, fuzzy
+msgid "An unknown error occured while trying to start PyHoca-CLI."
+msgstr "X2Go 세션을 시작하는 동안 오류가 발생했습니다…"
+
+#: plugins/x2go/x2go_plugin.c:889
+#, c-format
+msgid ""
+"An unknown error occured while trying to start PyHoca-CLI. Exit code: %i"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:896
+#, c-format
+msgid ""
+"An unknown error occured while trying to start PyHoca-CLI. Exit code: %i. "
+"Error: '%s'"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:939
+msgid "Parameter 'custom_data' is not fully initialized!"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:966 plugins/x2go/x2go_plugin.c:1575
+#: plugins/x2go/x2go_plugin.c:1869
+#, fuzzy
+#| msgid "Shared connection"
+msgid "'Invalid connection data.'"
+msgstr "공유한 연결"
+
+#: plugins/x2go/x2go_plugin.c:980
+msgid "Parameter 'session_id' is not initialized!"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1046
+#, fuzzy, c-format
+msgid "An error occured while trying to terminate a X2Go session: %s"
+msgstr "X2Go 세션을 시작하는 동안 오류가 발생했습니다…"
+
+#: plugins/x2go/x2go_plugin.c:1093 plugins/x2go/x2go_plugin.c:1117
 msgid "Couldn't get session ID from session chooser dialog."
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:667
+#: plugins/x2go/x2go_plugin.c:1100
 #, c-format
 msgid "Resuming session: '%s'"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:892
+#: plugins/x2go/x2go_plugin.c:1124
+#, c-format
+msgid "Terminating session: '%s'"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1141
+msgid "GtkTreePath 'path' describes a non-existing row!"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1379
 #, fuzzy
 msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
 msgstr "피호카 클리는 예기치 않게 빠져나갔습니다. 이제 이 연결이 닫힙습니다."
 
-#: plugins/x2go/x2go_plugin.c:901
+#: plugins/x2go/x2go_plugin.c:1387
 #, fuzzy
 msgid "An error occured."
 msgstr "오류가 발생했습니다."
 
-#: plugins/x2go/x2go_plugin.c:902
+#: plugins/x2go/x2go_plugin.c:1388
 #, fuzzy
 msgid ""
 "The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
@@ -3057,63 +3199,17 @@ msgstr ""
 "프로필 설정 과 피호카 클라이의 출력을 확인하여 가능한 오류에 대해 확인하고 원"
 "격 서버에 연결할 수 있는지 확인하십시오."
 
-#: plugins/x2go/x2go_plugin.c:937
-msgid "parameter 'argv' is 'NULL'."
-msgstr ""
-
-#: plugins/x2go/x2go_plugin.c:948
-msgid "parameter 'error' is 'NULL'."
-msgstr ""
-
-#: plugins/x2go/x2go_plugin.c:956
-msgid "parameter 'env' is either invalid or uninitialized."
-msgstr ""
-
-#: plugins/x2go/x2go_plugin.c:972
-#, fuzzy
-msgid "Started PyHoca-CLI with the following arguments:"
-msgstr "다음과 같은 인수와 함께 피호카 클라이 시작 :"
-
-#: plugins/x2go/x2go_plugin.c:988
-#, fuzzy
-msgid "Started PyHoca-CLI with the following environment variables:"
-msgstr "다음과 같은 인수와 함께 피호카 클라이 시작 :"
-
-#: plugins/x2go/x2go_plugin.c:997
-msgid ""
-"The necessary PyHoca-CLI process has encountered a internet connection "
-"problem."
-msgstr ""
-
-#: plugins/x2go/x2go_plugin.c:1007
-#, fuzzy
-msgid "An unknown error occured while trying to start PyHoca-CLI."
-msgstr "X2Go 세션을 시작하는 동안 오류가 발생했습니다…"
-
-#: plugins/x2go/x2go_plugin.c:1017
-#, c-format
-msgid ""
-"An unknown error occured while trying to start PyHoca-CLI. Exit code: %i"
-msgstr ""
-
-#: plugins/x2go/x2go_plugin.c:1022
-#, c-format
-msgid ""
-"An unknown error occured while trying to start PyHoca-CLI. Exit code: %i. "
-"Error: '%s'"
-msgstr ""
-
-#: plugins/x2go/x2go_plugin.c:1047
+#: plugins/x2go/x2go_plugin.c:1431
 msgid "Can't save empty username!"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1061
+#: plugins/x2go/x2go_plugin.c:1445
 #, fuzzy
 #| msgid "Could not save the file “%s”."
 msgid "Could not save new credentials."
 msgstr "파일 \"%s\"을(를) 저장할 수 없습니다."
 
-#: plugins/x2go/x2go_plugin.c:1064
+#: plugins/x2go/x2go_plugin.c:1448
 #, fuzzy
 msgid ""
 "An error occured while trying to save new credentials: 's_password' or "
@@ -3122,99 +3218,111 @@ msgstr ""
 "새 자격 증명을 저장하려고 하는 동안 오류가 발생했습니다: 's_password' 또는 "
 "'s_username' 문자열은 설정되지 않았습니다."
 
-#: plugins/x2go/x2go_plugin.c:1095
+#: plugins/x2go/x2go_plugin.c:1479
 msgid "Parameter 'default_username' is uninitialized."
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1124
+#: plugins/x2go/x2go_plugin.c:1508
 #, fuzzy
 #| msgid "Enter NX authentication credentials"
 msgid "Enter X2Go credentials"
 msgstr "X2Go 자격 증명 입력"
 
-#: plugins/x2go/x2go_plugin.c:1201
-#, fuzzy
-#| msgid "Shared connection"
-msgid "'Invalid connection data.'"
-msgstr "공유한 연결"
-
-#: plugins/x2go/x2go_plugin.c:1323
+#: plugins/x2go/x2go_plugin.c:1705
 msgid ""
 "Couldn't parse the output of PyHoca-CLI's --list-sessions option. Creating a "
 "new session now."
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1362
+#: plugins/x2go/x2go_plugin.c:1744
 msgid "Couldn't allocate enough memory!"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1372
+#: plugins/x2go/x2go_plugin.c:1754
 #, c-format
 msgid "Found already existing X2Go session with ID: '%s'"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1444
+#. TRANSLATORS: Please stick to X2GoClient's translation.
+#: plugins/x2go/x2go_plugin.c:1797
+msgid "Suspended"
+msgstr ""
+
+#. TRANSLATORS: Please stick to X2GoClient's translation.
+#: plugins/x2go/x2go_plugin.c:1800
+msgid "Running"
+msgstr ""
+
+#. TRANSLATORS: Please stick to X2GoClient's translation.
+#: plugins/x2go/x2go_plugin.c:1803
+#, fuzzy
+#| msgid "Terminate"
+msgid "Terminated"
+msgstr "중단"
+
+#: plugins/x2go/x2go_plugin.c:1836
 msgid ""
 "Could not find any sessions on remote machine. Creating a new session now."
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1485
+#: plugins/x2go/x2go_plugin.c:1891
 #, fuzzy
 #| msgid "Choose a file to upload"
 msgid "Choose a session to resume:"
 msgstr "업로드할 파일을 선택하세요"
 
-#: plugins/x2go/x2go_plugin.c:1502
+#: plugins/x2go/x2go_plugin.c:1934
 #, fuzzy
 msgid "Waiting for user to select a session…"
 msgstr "파일호카-클리가 세션의 창을 보여주기를 기다리고 있습니다."
 
-#: plugins/x2go/x2go_plugin.c:1510
+#: plugins/x2go/x2go_plugin.c:1942
 msgid "No session was selected. Creating a new one."
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1558
+#: plugins/x2go/x2go_plugin.c:1990
 #, c-format
 msgid "A non-critical error happened: %s"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1563
+#: plugins/x2go/x2go_plugin.c:1995
 #, c-format
 msgid "User chose to resume session with ID: '%s'"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1583
+#. TRANSLATORS: Please stick to X2GoClient's way of translating.
+#: plugins/x2go/x2go_plugin.c:2016
 #, c-format
 msgid "Resuming session '%s'…"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1706
+#: plugins/x2go/x2go_plugin.c:2147
 #, fuzzy
 msgid "DPI setting is out of bounds. Please adjust it in profile settings."
 msgstr "DPI 설정은 범위를 벗어났습니다. 프로필 설정에서 조정하십시오."
 
-#: plugins/x2go/x2go_plugin.c:1728
+#: plugins/x2go/x2go_plugin.c:2169
 #, fuzzy
 msgid "Started pyhoca-cli with following arguments:"
 msgstr "다음과 같은 인수와 함께 피호카 클라이 시작 :"
 
-#: plugins/x2go/x2go_plugin.c:1748
+#: plugins/x2go/x2go_plugin.c:2189
 #, fuzzy
 msgid "An error occured while starting an X2Go session…"
 msgstr "X2Go 세션을 시작하는 동안 오류가 발생했습니다…"
 
-#: plugins/x2go/x2go_plugin.c:1757
+#: plugins/x2go/x2go_plugin.c:2197
 #, fuzzy
 #| msgid "Could not start SSH session. %s"
 msgid "Could not start X2Go session."
 msgstr "X2Go 세션을 시작할 수 없습니다."
 
-#: plugins/x2go/x2go_plugin.c:1758
+#: plugins/x2go/x2go_plugin.c:2198
 #, fuzzy, c-format
 msgid "Could not start PyHoca-CLI (%i): '%s'"
 msgstr "피호카-CLI(%i: '%s'"
 
-#: plugins/x2go/x2go_plugin.c:1857
+#: plugins/x2go/x2go_plugin.c:2313
 #, fuzzy
 msgid ""
 "Couldn't get PyHoca-CLI's command-line features. This indicates it is either "
@@ -3225,7 +3333,7 @@ msgstr ""
 "전이 너무 오래되었거나 피호카 -cli가 설치되지 않음을 나타냅니다! 이제 이전 제"
 "한된 기능 집합이 사용됩니다."
 
-#: plugins/x2go/x2go_plugin.c:1866
+#: plugins/x2go/x2go_plugin.c:2322
 #, fuzzy
 msgid ""
 "Could not parse PyHoca-CLI's command-line features. Using a limited feature-"
@@ -3234,43 +3342,43 @@ msgstr ""
 "파싱 피호카-클리 기능은 불가능했습니다! 지금은 제한된 기능 집합을 사용하입니"
 "다."
 
-#: plugins/x2go/x2go_plugin.c:1872
+#: plugins/x2go/x2go_plugin.c:2328
 #, fuzzy
 msgid "Retrieved the following PyHoca-CLI command-line features:"
 msgstr "다음과 같은 피호카-클리 기능을 검색했습니다."
 
-#: plugins/x2go/x2go_plugin.c:1880
+#: plugins/x2go/x2go_plugin.c:2336
 #, fuzzy, c-format
 msgid "Available feature[%i]: '%s'"
 msgstr "사용 가능한 기능[%i]: '%s'"
 
-#: plugins/x2go/x2go_plugin.c:1985
+#: plugins/x2go/x2go_plugin.c:2441
 #, fuzzy
 #| msgid "Could not open channel. %s"
 msgid "Could not open X11 DISPLAY."
 msgstr "X11 디스플레이를 열 수 없습니다."
 
-#: plugins/x2go/x2go_plugin.c:2025
+#: plugins/x2go/x2go_plugin.c:2481
 #, fuzzy
 msgid "Waiting for window of X2Go Agent to appear…"
 msgstr "X2Go 에이전트 창이 나타날 때까지 기다리는 중입니다."
 
-#: plugins/x2go/x2go_plugin.c:2051
+#: plugins/x2go/x2go_plugin.c:2507
 #, fuzzy
 msgid "Waiting for PyHoca-CLI to show the session's window…"
 msgstr "파일호카-클리가 세션의 창을 보여주기를 기다리고 있습니다."
 
-#: plugins/x2go/x2go_plugin.c:2102
+#: plugins/x2go/x2go_plugin.c:2558
 #, fuzzy
 msgid "No X2Go session window appeared. Something went wrong…"
 msgstr "X2Go 세션 창이 나타나지 않았습니다. 뭔가 잘못되었습니다…"
 
-#: plugins/x2go/x2go_plugin.c:2213
+#: plugins/x2go/x2go_plugin.c:2669
 #, fuzzy
 msgid "RemminaProtocolWidget* gp is 'NULL'!"
 msgstr "내부 오류: Remmina ProtocolWidget * gp는 NULL입니다!"
 
-#: plugins/x2go/x2go_plugin.c:2234
+#: plugins/x2go/x2go_plugin.c:2690
 #, fuzzy, c-format
 #| msgid ""
 #| "The protocol “%s” is unavailable because GtkSocket only works under X.Org."
@@ -3278,7 +3386,7 @@ msgid "The %s protocol is unavailable because GtkSocket only works under X.org"
 msgstr ""
 "GtkSocket은 X.Org에서만 동작하기에 \"%s\" 프로토콜을 사용할 수 없습니다."
 
-#: plugins/x2go/x2go_plugin.c:2243
+#: plugins/x2go/x2go_plugin.c:2699
 #, fuzzy
 msgid "Could not initialize pthread. Falling back to non-threaded mode…"
 msgstr "pthread를 초기화할 수 없습니다. 스레드가 아닌 모드로 다시 떨어지는…"
@@ -3291,7 +3399,7 @@ msgstr "pthread를 초기화할 수 없습니다. 스레드가 아닌 모드로 
 #. your language.
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
-#: plugins/x2go/x2go_plugin.c:2286 plugins/x2go/x2go_plugin.c:2304
+#: plugins/x2go/x2go_plugin.c:2742 plugins/x2go/x2go_plugin.c:2760
 #, fuzzy, c-format
 msgid "%sand '%s'"
 msgstr "%s와 '%s'"
@@ -3302,7 +3410,7 @@ msgstr "%s와 '%s'"
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
-#: plugins/x2go/x2go_plugin.c:2291 plugins/x2go/x2go_plugin.c:2309
+#: plugins/x2go/x2go_plugin.c:2747 plugins/x2go/x2go_plugin.c:2765
 #, fuzzy, c-format
 msgid "%s'%s' "
 msgstr "%s'%s' "
@@ -3310,134 +3418,134 @@ msgstr "%s'%s' "
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
 #. 'value1', 'value2', 'valueN-1' and 'valueN'
-#: plugins/x2go/x2go_plugin.c:2296
+#: plugins/x2go/x2go_plugin.c:2752
 #, fuzzy, c-format
 msgid "%s'%s', "
 msgstr "%s'%s', "
 
-#: plugins/x2go/x2go_plugin.c:2335
+#: plugins/x2go/x2go_plugin.c:2791
 #, fuzzy
 msgid "Invalid validation data in ProtocolSettings array!"
 msgstr "프로토콜 설정 배열의 유효성 검사 데이터는 유효하지 않습니다!"
 
-#: plugins/x2go/x2go_plugin.c:2350 plugins/x2go/x2go_plugin.c:2415
+#: plugins/x2go/x2go_plugin.c:2806 plugins/x2go/x2go_plugin.c:2871
 #, fuzzy
 msgid "Validation data in ProtocolSettings array is invalid!"
 msgstr "프로토콜 설정 배열의 유효성 검사 데이터는 유효하지 않습니다!"
 
-#: plugins/x2go/x2go_plugin.c:2359
+#: plugins/x2go/x2go_plugin.c:2815
 msgid "Parameters 'key' or 'value' are 'NULL'!"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:2377
+#: plugins/x2go/x2go_plugin.c:2833
 #, fuzzy, c-format
 msgid "Allowed values are %s."
 msgstr "허용값은 %s입니다."
 
-#: plugins/x2go/x2go_plugin.c:2379
+#: plugins/x2go/x2go_plugin.c:2835
 #, fuzzy, c-format
 msgid "The only allowed value is '%s'."
 msgstr "허용된 값만 '%s'입니다."
 
-#: plugins/x2go/x2go_plugin.c:2426
+#: plugins/x2go/x2go_plugin.c:2882
 #, fuzzy
 msgid "The lower limit is not a valid integer!"
 msgstr "최소 한도는 유효 정수가 아닙니다!"
 
-#: plugins/x2go/x2go_plugin.c:2431
+#: plugins/x2go/x2go_plugin.c:2887
 msgid "The lower limit is too high!"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:2436
+#: plugins/x2go/x2go_plugin.c:2892
 msgid "The lower limit is too low!"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:2441 plugins/x2go/x2go_plugin.c:2471
-#: plugins/x2go/x2go_plugin.c:2491
+#: plugins/x2go/x2go_plugin.c:2897 plugins/x2go/x2go_plugin.c:2927
+#: plugins/x2go/x2go_plugin.c:2947
 #, fuzzy
 msgid "Something unknown went wrong."
 msgstr "문제가 발생했습니다."
 
-#: plugins/x2go/x2go_plugin.c:2446 plugins/x2go/x2go_plugin.c:2476
-#: plugins/x2go/x2go_plugin.c:2495
+#: plugins/x2go/x2go_plugin.c:2902 plugins/x2go/x2go_plugin.c:2932
+#: plugins/x2go/x2go_plugin.c:2951
 msgid "Please check the RemminaProtocolSetting array for possible errors."
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:2456
+#: plugins/x2go/x2go_plugin.c:2912
 #, fuzzy
 msgid "The upper limit is not a valid integer!"
 msgstr "입력은 유효 정수 없습니다!"
 
-#: plugins/x2go/x2go_plugin.c:2461
+#: plugins/x2go/x2go_plugin.c:2917
 msgid "The upper limit is too high!"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:2466
+#: plugins/x2go/x2go_plugin.c:2922
 msgid "The upper limit is too low!"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:2486
+#: plugins/x2go/x2go_plugin.c:2942
 #, fuzzy
 msgid "The input is not a valid integer!"
 msgstr "입력은 유효 정수 없습니다!"
 
-#: plugins/x2go/x2go_plugin.c:2488 plugins/x2go/x2go_plugin.c:2507
+#: plugins/x2go/x2go_plugin.c:2944 plugins/x2go/x2go_plugin.c:2963
 #, fuzzy, c-format
 msgid "Input must be a number between %i and %i."
 msgstr "입력은 %i와 %i 사이의 숫자여야 합니다."
 
-#: plugins/x2go/x2go_plugin.c:2536
+#: plugins/x2go/x2go_plugin.c:2992
 #, fuzzy
 #| msgid "Start-up program"
 msgid "Startup program"
 msgstr "시작 프로그램"
 
-#: plugins/x2go/x2go_plugin.c:2538
+#: plugins/x2go/x2go_plugin.c:2994
 #, fuzzy
 msgid "Which command should be executed after creating the X2Go session?"
 msgstr "X2Go 세션을 만든 후 실행해야 하는 명령은 무엇입니까?"
 
-#: plugins/x2go/x2go_plugin.c:2540
+#: plugins/x2go/x2go_plugin.c:2996
 #, fuzzy
 #| msgid "Keyboard layout"
 msgid "Keyboard Layout (auto)"
 msgstr "키보드 레이아웃(자동)"
 
-#: plugins/x2go/x2go_plugin.c:2541
+#: plugins/x2go/x2go_plugin.c:2997
 #, fuzzy
 #| msgid "Keyboard layout"
 msgid "Keyboard type (auto)"
 msgstr "키보드 유형(자동)"
 
-#: plugins/x2go/x2go_plugin.c:2542
+#: plugins/x2go/x2go_plugin.c:2998
 #, fuzzy
 #| msgid "Turn on Java support"
 msgid "Audio support"
 msgstr "오디오 지원"
 
-#: plugins/x2go/x2go_plugin.c:2544
+#: plugins/x2go/x2go_plugin.c:3000
 #, fuzzy
 msgid "The sound system of the X2Go server (default: 'pulse')."
 msgstr "X2Go 서버의 사운드 시스템(기본값: '펄스')."
 
-#: plugins/x2go/x2go_plugin.c:2547
+#: plugins/x2go/x2go_plugin.c:3003
 #, fuzzy
 #| msgid "TCP redirection"
 msgid "Clipboard direction"
 msgstr "클립보드 방향"
 
-#: plugins/x2go/x2go_plugin.c:2549
+#: plugins/x2go/x2go_plugin.c:3005
 #, fuzzy
 msgid "Which direction should clipboard content be copied? (default: 'both')."
 msgstr "클립보드 콘텐츠를 복사해야 하는 방향은 무엇입니까? (기본값: '둘 다')."
 
-#: plugins/x2go/x2go_plugin.c:2553
+#: plugins/x2go/x2go_plugin.c:3009
 #, fuzzy
 #| msgid "Resolution"
 msgid "DPI resolution"
 msgstr "DPI 해상도"
 
-#: plugins/x2go/x2go_plugin.c:2554
+#: plugins/x2go/x2go_plugin.c:3010
 #, fuzzy
 msgid ""
 "Launch session with a specific resolution (in dots per inch). Must be "
@@ -3445,7 +3553,7 @@ msgid ""
 msgstr ""
 "특정 해상도로 세션을 시작합니다(인치당 점). 20에서 400 사이여야 합니다."
 
-#: plugins/x2go/x2go_plugin.c:2598
+#: plugins/x2go/x2go_plugin.c:3054
 #, fuzzy
 msgid "X2Go plugin loaded."
 msgstr "X2Go 플러그인로드."
@@ -4563,6 +4671,15 @@ msgstr "레미나 잠금 해제"
 msgid "Master password"
 msgstr "마스터 비밀번호"
 
+#, fuzzy
+#~| msgid "_Select all"
+#~ msgid "_Select session"
+#~ msgstr "_모두 선택"
+
+#, fuzzy
+#~ msgid "Started PyHoca-CLI with the following environment variables:"
+#~ msgstr "다음과 같은 인수와 함께 피호카 클라이 시작 :"
+
 #, fuzzy, c-format
 #~ msgid "Could not retrieve PyHoca-CLI's command-line features! Exit code: %i"
 #~ msgstr ""
@@ -4670,9 +4787,6 @@ msgstr "마스터 비밀번호"
 
 #~ msgid "Start"
 #~ msgstr "시작"
-
-#~ msgid "Terminate"
-#~ msgstr "중단"
 
 #~ msgid "Password for private SSH key"
 #~ msgstr "SSH 개인 키 비밀번호"
