@@ -157,7 +157,7 @@ static void remmina_protocol_widget_close_all_tunnels(RemminaProtocolWidget *gp)
 	TRACE_CALL(__func__);
 	int i;
 
-	if (gp->priv->ssh_tunnels) {
+	if (gp->priv && gp->priv->ssh_tunnels) {
 		for (i = 0; i < gp->priv->ssh_tunnels->len; i++) {
 #ifdef HAVE_LIBSSH
 			remmina_ssh_tunnel_free((RemminaSSHTunnel *)gp->priv->ssh_tunnels->pdata[i]);
@@ -165,8 +165,8 @@ static void remmina_protocol_widget_close_all_tunnels(RemminaProtocolWidget *gp)
 			REMMINA_DEBUG("LibSSH support turned off, no need to free SSH tunnel data");
 #endif
 		}
+		g_ptr_array_set_size(gp->priv->ssh_tunnels, 0);
 	}
-	g_ptr_array_set_size(gp->priv->ssh_tunnels, 0);
 }
 
 
@@ -209,9 +209,10 @@ static void remmina_protocol_widget_destroy(RemminaProtocolWidget *gp, gpointer 
 
 	remmina_protocol_widget_close_all_tunnels(gp);
 
-	g_ptr_array_free(gp->priv->ssh_tunnels, TRUE);
-
-	gp->priv->ssh_tunnels = NULL;
+	if (gp->priv && gp->priv->ssh_tunnels) {
+		g_ptr_array_free(gp->priv->ssh_tunnels, TRUE);
+		gp->priv->ssh_tunnels = NULL;
+	}
 }
 
 void remmina_protocol_widget_grab_focus(RemminaProtocolWidget *gp)
