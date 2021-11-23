@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-11-19 09:37+0000\n"
+"POT-Creation-Date: 2021-11-23 15:47+0000\n"
 "PO-Revision-Date: 2021-11-11 20:01+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Telugu <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -22,10 +22,10 @@ msgstr ""
 "X-Launchpad-Export-Date: 2014-09-20 14:25+0000\n"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:354
-#: src/remmina_protocol_widget.c:1676 src/remmina_protocol_widget.c:1695
+#: src/remmina_protocol_widget.c:1677 src/remmina_protocol_widget.c:1696
 #: src/remmina_file_editor.c:1101 src/remmina_file_editor.c:1222
 #: src/remmina_ssh_plugin.c:1360 plugins/rdp/rdp_plugin.c:2723
-#: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:2535
+#: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:2991
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1675
 #: data/ui/remmina_unlock.glade:116
 msgid "Password"
@@ -71,7 +71,7 @@ msgstr "అన్ని ఫైళ్లను ఓవర్ రైట్ చే�
 msgid "Resume all file transfers"
 msgstr "అన్ని ఫైల్ బదిలీలను తిరిగి ప్రారంభించండి"
 
-#: src/remmina_sftp_plugin.c:328 src/remmina_protocol_widget.c:283
+#: src/remmina_sftp_plugin.c:328 src/remmina_protocol_widget.c:284
 #, fuzzy
 msgid "Connect via SSH from a new terminal"
 msgstr "కొత్త టెర్మినల్ నుంచి ఎస్ ఎస్ హెచ్ ద్వారా కనెక్ట్ చేయండి"
@@ -80,7 +80,7 @@ msgstr "కొత్త టెర్మినల్ నుంచి ఎస్ �
 #: src/remmina_file_editor.c:1216 src/remmina_ssh_plugin.c:1470
 #: plugins/rdp/rdp_plugin.c:2722 plugins/vnc/vnc_plugin.c:1976
 #: plugins/vnc/vnc_plugin.c:1988 plugins/www/www_plugin.c:894
-#: plugins/x2go/x2go_plugin.c:512 plugins/x2go/x2go_plugin.c:2534
+#: plugins/x2go/x2go_plugin.c:574 plugins/x2go/x2go_plugin.c:2990
 #: data/ui/remmina_mpc.glade:144
 #, fuzzy
 msgid "Username"
@@ -474,10 +474,35 @@ msgstr "డిస్కనెక్ట్ చేయి"
 msgid "The file “%s” is corrupted, unreadable, or could not be found."
 msgstr "\"[ఎక్స్10ఎక్స్]\" అనే ఫైలు చెడిపోయింది, చదవలేనిది లేదా కనుగొనబడలేదు."
 
-#: src/rcw.c:4466
+#. TRANSLATORS: This should be a link to the Remmina Wiki page:
+#. TRANSLATORS: 'GtkSocket feature is not available'.
+#: src/rcw.c:4372 src/rcw.c:4518
+msgid ""
+"https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
+"available-in-a-Wayland-session"
+msgstr ""
+
+#: src/rcw.c:4509
 #, fuzzy
-msgid "Warning: This plugin requires GtkSocket, but it’s not available."
+msgid ""
+"Warning: This plugin requires GtkSocket, but this feature is unavailable in "
+"a Wayland session."
 msgstr "హెచ్చరిక: ఈ ప్లగిన్ కు గ్ట్క్ సాకెట్ అవసరం, కానీ ఇది అందుబాటులో లేదు."
+
+#: src/rcw.c:4513
+#, c-format
+msgid ""
+"Plugins relying on GtkSocket can't run in a Wayland session.\n"
+"For more information and a possible workaround, please visit the Remmina "
+"Wiki at:\n"
+"\n"
+"%s"
+msgstr ""
+
+#: src/rcw.c:4528
+#, fuzzy
+msgid "Open in browser"
+msgstr "మెయిన్ విండో తెరవండి"
 
 #: src/remmina_mpchange.c:234
 #, fuzzy
@@ -630,27 +655,27 @@ msgstr "ఒకటి లేదా అంతకంటే ఎక్కువ ప�
 msgid "Encrypt a password"
 msgstr "పాస్ వర్డ్ ని ఎన్ క్రిప్ట్ చేయండి"
 
-#: src/remmina.c:333
+#: src/remmina.c:334
 msgid ""
 "Remmina does not log all output statements. To enable a more verbose output "
-"please use G_MESSAGES_DEBUG=all as an environment variable. "
+"please use G_MESSAGES_DEBUG=all as an environment variable."
 msgstr ""
 
 #. TRANSLATORS: This link should point to a resource explaining
 #. TRANSLATORS: how to get Remmina to log debug statements.
-#: src/remmina.c:338
+#: src/remmina.c:339
 msgid ""
-"For more information, please visit the Remmina Wiki: https://gitlab.com/"
-"Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
+"For more information, please visit the Remmina Wiki:\n"
+"https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgstr ""
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:388
+#: src/remmina.c:390
 #, fuzzy
 msgid "- or protocol://username:encryptedpassword@host:port"
 msgstr "- లేదా ప్రోటోకాల్::యూజర్ నేమ్:encryptedpassword@host:పోర్ట్"
 
-#: src/remmina.c:391
+#: src/remmina.c:393
 #, fuzzy
 msgid ""
 "Examples:\n"
@@ -873,141 +898,141 @@ msgstr "స్థానికమైన"
 msgid "Progress"
 msgstr "పురోగతి"
 
-#: src/remmina_protocol_widget.c:290 src/remmina_ssh_plugin.c:829
+#: src/remmina_protocol_widget.c:291 src/remmina_ssh_plugin.c:829
 #: src/remmina_ssh_plugin.c:1445
 #, fuzzy
 msgid "Open SFTP transfer…"
 msgstr "ఎస్ ఎఫ్ టిపి బదిలీని తెరవండి…"
 
-#: src/remmina_protocol_widget.c:319
+#: src/remmina_protocol_widget.c:320
 #, fuzzy
 msgid "Executing external commands…"
 msgstr "బాహ్య ఆదేశాలను అమలు చేయడం…"
 
 #. TRANSLATORS: “%s” is a placeholder for the connection profile name
-#: src/remmina_protocol_widget.c:327
+#: src/remmina_protocol_widget.c:328
 #, fuzzy, c-format
 msgid "Connecting to “%s”…"
 msgstr "\"[ఎక్స్15ఎక్స్]\"కు కనెక్ట్ కావడం…"
 
 #. TRANSLATORS: “%s” is a placeholder for an hostname or an IP address.
-#: src/remmina_protocol_widget.c:915 src/remmina_protocol_widget.c:1100
+#: src/remmina_protocol_widget.c:916 src/remmina_protocol_widget.c:1101
 #, fuzzy, c-format
 msgid "Connecting to “%s” via SSH…"
 msgstr "ఎస్.ఎస్.హెచ్ ద్వారా \"[ఎక్స్15ఎక్స్]\"కు కనెక్ట్ కావడం…"
 
 #. TRANSLATORS: “%i” is a placeholder for a TCP port number.
-#: src/remmina_protocol_widget.c:1164
+#: src/remmina_protocol_widget.c:1165
 #, fuzzy, c-format
 msgid "Awaiting incoming SSH connection on port %i…"
 msgstr "పోర్ట్ [ఎక్స్41ఎక్స్]లో ఇన్ కమింగ్ ఎస్ ఎస్ హెచ్ కనెక్షన్ కొరకు ఎదురు చూస్తోంది…"
 
-#: src/remmina_protocol_widget.c:1217
+#: src/remmina_protocol_widget.c:1218
 #, fuzzy, c-format
 msgid "The “%s” command is not available on the SSH server."
 msgstr "\"[ఎక్స్5ఎక్స్]\" కమాండ్ ఎస్.ఎస్.హెచ్ సర్వర్ లో అందుబాటులో లేదు."
 
-#: src/remmina_protocol_widget.c:1222
+#: src/remmina_protocol_widget.c:1223
 #, fuzzy, c-format
 msgid "Could not run the “%s” command on the SSH server (status = %i)."
 msgstr ""
 "ఎస్.ఎస్.హెచ్ సర్వర్ పై \"[ఎక్స్19ఎక్స్]\" కమాండ్ ను అమలు చేయలేకపోయింది (స్థితి = [ఎక్స్59ఎక్స్])."
 
 #. TRANSLATORS: %s is a placeholder for an error message
-#: src/remmina_protocol_widget.c:1230
+#: src/remmina_protocol_widget.c:1231
 #, fuzzy, c-format
 msgid "Could not run command. %s"
 msgstr "కమాండ్ రన్ చేయలేకపోయింది. [ఎక్స్23ఎక్స్]"
 
 #. TRANSLATORS: “%s” is a placeholder for a hostname or IP address.
-#: src/remmina_protocol_widget.c:1300
+#: src/remmina_protocol_widget.c:1301
 #, fuzzy, c-format
 msgid "Connecting to %s via SSH…"
 msgstr "ఎస్.ఎస్.హెచ్ ద్వారా [ఎక్స్14ఎక్స్]కు కనెక్ట్ చేస్తోంది…"
 
-#: src/remmina_protocol_widget.c:1694
+#: src/remmina_protocol_widget.c:1695
 #, fuzzy
 msgid "Type in SSH username and password."
 msgstr "ఎస్.ఎస్.హెచ్ యూజర్ నేమ్ మరియు పాస్ వర్డ్ లో టైప్ చేయండి."
 
-#: src/remmina_protocol_widget.c:1749 src/remmina_protocol_widget.c:1781
+#: src/remmina_protocol_widget.c:1750 src/remmina_protocol_widget.c:1782
 #, fuzzy
 msgid "Fingerprint automatically accepted"
 msgstr "వేలిముద్ర స్వయంచాలకంగా ఆమోదించబడింది"
 
 #. TRANSLATORS: The user is asked to verify a new SSL certificate.
-#: src/remmina_protocol_widget.c:1757
+#: src/remmina_protocol_widget.c:1758
 #, fuzzy
 msgid "Certificate details:"
 msgstr "సర్టిఫికేట్ వివరాలు:"
 
 #. TRANSLATORS: An SSL certificate subject is usually the remote server the user connect to.
-#: src/remmina_protocol_widget.c:1759 src/remmina_protocol_widget.c:1791
+#: src/remmina_protocol_widget.c:1760 src/remmina_protocol_widget.c:1792
 #, fuzzy
 msgid "Subject:"
 msgstr "పాలితుడు:"
 
 #. TRANSLATORS: The name or email of the entity that have issued the SSL certificate
-#: src/remmina_protocol_widget.c:1761 src/remmina_protocol_widget.c:1793
+#: src/remmina_protocol_widget.c:1762 src/remmina_protocol_widget.c:1794
 #, fuzzy
 msgid "Issuer:"
 msgstr "జారీ చేసిన వారు:"
 
 #. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
-#: src/remmina_protocol_widget.c:1763
+#: src/remmina_protocol_widget.c:1764
 #, fuzzy
 msgid "Fingerprint:"
 msgstr "వేలిముద్ర:"
 
 #. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
-#: src/remmina_protocol_widget.c:1765
+#: src/remmina_protocol_widget.c:1766
 #, fuzzy
 msgid "Accept certificate?"
 msgstr "సర్టిఫికేట్ ఆమోదించాలా?"
 
 #. TRANSLATORS: The user is asked to verify a new SSL certificate.
-#: src/remmina_protocol_widget.c:1789
+#: src/remmina_protocol_widget.c:1790
 #, fuzzy
 msgid "The certificate changed! Details:"
 msgstr "సర్టిఫికేట్ మార్చబడింది! వివరాలు:"
 
 #. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
-#: src/remmina_protocol_widget.c:1795
+#: src/remmina_protocol_widget.c:1796
 #, fuzzy
 msgid "Old fingerprint:"
 msgstr "పాత వేలిముద్ర:"
 
 #. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
-#: src/remmina_protocol_widget.c:1797
+#: src/remmina_protocol_widget.c:1798
 #, fuzzy
 msgid "New fingerprint:"
 msgstr "కొత్త వేలిముద్ర:"
 
 #. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
-#: src/remmina_protocol_widget.c:1799
+#: src/remmina_protocol_widget.c:1800
 #, fuzzy
 msgid "Accept changed certificate?"
 msgstr "మారిన సర్టిఫికేట్ ఆమోదించాలా?"
 
 #. TRANSLATORS: “%i” is a placeholder for a port number. “%s”  is a placeholder for a protocol name (VNC).
-#: src/remmina_protocol_widget.c:1942
+#: src/remmina_protocol_widget.c:1943
 #, fuzzy, c-format
 msgid "Listening on port %i for an incoming %s connection…"
 msgstr "ఇన్ కమింగ్ [ఎక్స్37ఎక్స్] కనెక్షన్ కొరకు పోర్ట్ [ఎక్స్18ఎక్స్]లో వినడం…"
 
-#: src/remmina_protocol_widget.c:1967
+#: src/remmina_protocol_widget.c:1968
 #, fuzzy
 msgid "Could not authenticate, attempting reconnection…"
 msgstr "ధృవీకరించడం చేయలేకపోయింది, రీకనెక్షన్ చేయడానికి ప్రయత్నిస్తోంది…"
 
-#: src/remmina_protocol_widget.c:2029 src/remmina_file_editor.c:436
+#: src/remmina_protocol_widget.c:2030 src/remmina_file_editor.c:436
 #: src/remmina_file_editor.c:1172 data/ui/remmina_main.glade:478
 #, fuzzy
 msgid "Server"
 msgstr "సర్వర్"
 
 #. TRANSLATORS: “%s” is a placeholder for a protocol name, like “RDP”.
-#: src/remmina_protocol_widget.c:2047
+#: src/remmina_protocol_widget.c:2048
 #, fuzzy, c-format
 msgid "Install the %s protocol plugin first."
 msgstr "ముందుగా [ఎక్స్12ఎక్స్] ప్రోటోకాల్ ప్లగిన్ ను ఇన్ స్టాల్ చేయండి."
@@ -1640,8 +1665,8 @@ msgstr ""
 "కనుక యూజర్ ఇన్ పుట్ ని వాలిడేట్ చేయలేరు!"
 
 #. TRANSLATORS: Meta-error. Shouldn't be visible.
-#: src/remmina_file_editor.c:1445 plugins/x2go/x2go_plugin.c:1746
-#: plugins/x2go/x2go_plugin.c:2360
+#: src/remmina_file_editor.c:1445 plugins/x2go/x2go_plugin.c:2187
+#: plugins/x2go/x2go_plugin.c:2816
 #, fuzzy
 msgid "Internal error."
 msgstr "అంతర్గత దోషం."
@@ -3347,146 +3372,263 @@ msgid ""
 "CLI without using this feature…"
 msgstr "కమాండ్ లైన్ ఫీచర్ '[ఎక్స్26ఎక్స్]' లభ్యం కావడం లేదు! ఈ ఫీచర్ ఉపయోగించకుండా Ppamp"
 
-#: plugins/x2go/x2go_plugin.c:277
-#, fuzzy
-msgid "Broken `DialogData`! Aborting…"
-msgstr "విరిగిన 'డైలాగ్ డేటా'! గర్భస్రావం…"
-
-#: plugins/x2go/x2go_plugin.c:281
-#, fuzzy
-msgid "Can't retrieve `DialogData`! Aborting…"
-msgstr "'డైలాగ్ డేటా'ని తిరిగి పొందలేరు! గర్భస్రావం…"
-
-#: plugins/x2go/x2go_plugin.c:438
-#, fuzzy
-msgid "Couldn't retrieve valid `DialogData` or `sessions_list`! Aborting…"
-msgstr "చెల్లుబాటు అయ్యే 'డైలాగ్ డేటా' లేదా 'sessions_list' తిరిగి పొందలేకపోయింది! గర్భస్రావం…"
-
-#: plugins/x2go/x2go_plugin.c:445
-#, fuzzy
-msgid "_New"
-msgstr "_కొత్త"
-
-#: plugins/x2go/x2go_plugin.c:447
-#, fuzzy
-msgid "_Select session"
-msgstr "_Select సెషన్"
-
-#: plugins/x2go/x2go_plugin.c:506
-#, fuzzy
-msgid "Display"
-msgstr "ప్రదర్శించు"
-
-#: plugins/x2go/x2go_plugin.c:507
-#, fuzzy
-msgid "Status"
-msgstr "ఫైల్ యొక్క స్థితి"
-
-#: plugins/x2go/x2go_plugin.c:508
-#, fuzzy
-msgid "Session ID"
-msgstr "సెషన్ ఐడి"
-
-#: plugins/x2go/x2go_plugin.c:509
-#, fuzzy
-msgid "Create date"
-msgstr "తేదీని సృష్టించు"
-
-#: plugins/x2go/x2go_plugin.c:510
-#, fuzzy
-msgid "Suspended since"
-msgstr "అప్పటి నుండి సస్పెండ్ చేయబడింది"
-
-#: plugins/x2go/x2go_plugin.c:511
-#, fuzzy
-msgid "Agent PID"
-msgstr "ఏజెంట్ PA"
-
-#: plugins/x2go/x2go_plugin.c:513
-#, fuzzy
-msgid "Hostname"
-msgstr "అతిథ్యనామం"
-
-#: plugins/x2go/x2go_plugin.c:514
-#, fuzzy
-msgid "Cookie"
-msgstr "కుకీ"
-
-#: plugins/x2go/x2go_plugin.c:515
-#, fuzzy
-msgid "Graphic port"
-msgstr "గ్రాఫిక్ పోర్ట్"
-
-#: plugins/x2go/x2go_plugin.c:516
-#, fuzzy
-msgid "SND port"
-msgstr "ఎస్.ఎన్.డి పోర్ట్"
-
-#: plugins/x2go/x2go_plugin.c:517
-#, fuzzy
-msgid "SSHFS port"
-msgstr "ఎస్.ఎస్.హెచ్.ఎఫ్.ఎస్ పోర్ట్"
-
-#: plugins/x2go/x2go_plugin.c:519 plugins/x2go/x2go_plugin.c:585
-#: plugins/x2go/x2go_plugin.c:599 plugins/x2go/x2go_plugin.c:614
-#: plugins/x2go/x2go_plugin.c:626 plugins/x2go/x2go_plugin.c:936
-#: plugins/x2go/x2go_plugin.c:947 plugins/x2go/x2go_plugin.c:955
-#: plugins/x2go/x2go_plugin.c:1060 plugins/x2go/x2go_plugin.c:1094
-#: plugins/x2go/x2go_plugin.c:1200 plugins/x2go/x2go_plugin.c:2212
-#: plugins/x2go/x2go_plugin.c:2425 plugins/x2go/x2go_plugin.c:2430
-#: plugins/x2go/x2go_plugin.c:2435 plugins/x2go/x2go_plugin.c:2440
-#: plugins/x2go/x2go_plugin.c:2455 plugins/x2go/x2go_plugin.c:2460
-#: plugins/x2go/x2go_plugin.c:2465 plugins/x2go/x2go_plugin.c:2470
+#: plugins/x2go/x2go_plugin.c:287 plugins/x2go/x2go_plugin.c:419
+#: plugins/x2go/x2go_plugin.c:478 plugins/x2go/x2go_plugin.c:581
+#: plugins/x2go/x2go_plugin.c:656 plugins/x2go/x2go_plugin.c:668
+#: plugins/x2go/x2go_plugin.c:676 plugins/x2go/x2go_plugin.c:699
+#: plugins/x2go/x2go_plugin.c:708 plugins/x2go/x2go_plugin.c:724
+#: plugins/x2go/x2go_plugin.c:762 plugins/x2go/x2go_plugin.c:774
+#: plugins/x2go/x2go_plugin.c:805 plugins/x2go/x2go_plugin.c:816
+#: plugins/x2go/x2go_plugin.c:824 plugins/x2go/x2go_plugin.c:938
+#: plugins/x2go/x2go_plugin.c:965 plugins/x2go/x2go_plugin.c:979
+#: plugins/x2go/x2go_plugin.c:1076 plugins/x2go/x2go_plugin.c:1140
+#: plugins/x2go/x2go_plugin.c:1444 plugins/x2go/x2go_plugin.c:1478
+#: plugins/x2go/x2go_plugin.c:1574 plugins/x2go/x2go_plugin.c:1868
+#: plugins/x2go/x2go_plugin.c:2668 plugins/x2go/x2go_plugin.c:2881
+#: plugins/x2go/x2go_plugin.c:2886 plugins/x2go/x2go_plugin.c:2891
+#: plugins/x2go/x2go_plugin.c:2896 plugins/x2go/x2go_plugin.c:2911
+#: plugins/x2go/x2go_plugin.c:2916 plugins/x2go/x2go_plugin.c:2921
+#: plugins/x2go/x2go_plugin.c:2926
 #, fuzzy, c-format
 msgid "Internal error: %s"
 msgstr "అంతర్గత దోషం: [ఎక్స్16ఎక్స్]"
 
-#: plugins/x2go/x2go_plugin.c:520
+#: plugins/x2go/x2go_plugin.c:288 plugins/x2go/x2go_plugin.c:420
+#: plugins/x2go/x2go_plugin.c:479 plugins/x2go/x2go_plugin.c:1077
+#, fuzzy
+msgid "Parameter 'custom_data' is not initialized!"
+msgstr "పరామీటర్ 'default_username' ఇనిషియల్ చేయబడలేదు."
+
+#: plugins/x2go/x2go_plugin.c:301
+#, fuzzy
+msgid "Broken `DialogData`! Aborting…"
+msgstr "విరిగిన 'డైలాగ్ డేటా'! గర్భస్రావం…"
+
+#: plugins/x2go/x2go_plugin.c:305
+#, fuzzy
+msgid "Can't retrieve `DialogData`! Aborting…"
+msgstr "'డైలాగ్ డేటా'ని తిరిగి పొందలేరు! గర్భస్రావం…"
+
+#: plugins/x2go/x2go_plugin.c:488
+#, fuzzy
+msgid "Couldn't retrieve valid `DialogData` or `sessions_list`! Aborting…"
+msgstr "చెల్లుబాటు అయ్యే 'డైలాగ్ డేటా' లేదా 'sessions_list' తిరిగి పొందలేకపోయింది! గర్భస్రావం…"
+
+#. TRANSLATORS: Stick to x2goclient's translation for terminate.
+#: plugins/x2go/x2go_plugin.c:497
+#, fuzzy
+msgid "_Terminate"
+msgstr "టెర్మినల్"
+
+#. TRANSLATORS: Stick to x2goclient's translation for resume.
+#: plugins/x2go/x2go_plugin.c:500
+#, fuzzy
+msgid "_Resume"
+msgstr "పునఃప్రారంభం"
+
+#: plugins/x2go/x2go_plugin.c:502
+#, fuzzy
+msgid "_New"
+msgstr "_కొత్త"
+
+#. TRANSLATORS: Tooltip for terminating button inside Session-Chooser-Dialog.
+#. TRANSLATORS: Please stick to X2GoClient's way of translating.
+#: plugins/x2go/x2go_plugin.c:511
+msgid "Terminating X2Go sessions can take a moment."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:568
+#, fuzzy
+msgid "X Display"
+msgstr "ప్రదర్శించు"
+
+#: plugins/x2go/x2go_plugin.c:569
+#, fuzzy
+msgid "Status"
+msgstr "ఫైల్ యొక్క స్థితి"
+
+#: plugins/x2go/x2go_plugin.c:570
+#, fuzzy
+msgid "Session ID"
+msgstr "సెషన్ ఐడి"
+
+#: plugins/x2go/x2go_plugin.c:571
+#, fuzzy
+msgid "Create date"
+msgstr "తేదీని సృష్టించు"
+
+#: plugins/x2go/x2go_plugin.c:572
+#, fuzzy
+msgid "Suspended since"
+msgstr "అప్పటి నుండి సస్పెండ్ చేయబడింది"
+
+#: plugins/x2go/x2go_plugin.c:573
+#, fuzzy
+msgid "Agent PID"
+msgstr "ఏజెంట్ PA"
+
+#: plugins/x2go/x2go_plugin.c:575
+#, fuzzy
+msgid "Hostname"
+msgstr "అతిథ్యనామం"
+
+#: plugins/x2go/x2go_plugin.c:576
+#, fuzzy
+msgid "Cookie"
+msgstr "కుకీ"
+
+#: plugins/x2go/x2go_plugin.c:577
+#, fuzzy
+msgid "Graphic port"
+msgstr "గ్రాఫిక్ పోర్ట్"
+
+#: plugins/x2go/x2go_plugin.c:578
+#, fuzzy
+msgid "SND port"
+msgstr "ఎస్.ఎన్.డి పోర్ట్"
+
+#: plugins/x2go/x2go_plugin.c:579
+#, fuzzy
+msgid "SSHFS port"
+msgstr "ఎస్.ఎస్.హెచ్.ఎఫ్.ఎస్ పోర్ట్"
+
+#: plugins/x2go/x2go_plugin.c:582
 #, fuzzy
 msgid "Unknown property"
 msgstr "తెలియని ఆస్తి"
 
-#: plugins/x2go/x2go_plugin.c:586
+#: plugins/x2go/x2go_plugin.c:657 plugins/x2go/x2go_plugin.c:700
 #, fuzzy
 msgid "Couldn't find child GtkTreeView of session chooser dialog."
 msgstr "సెషన్ ఎంపిక డైలాగ్ యొక్క పిల్లవాడు గ్ట్క్ ట్రీవ్యూ ను కనుగొనలేకపోయారు."
 
-#: plugins/x2go/x2go_plugin.c:600
+#: plugins/x2go/x2go_plugin.c:669
 #, fuzzy
-msgid "only one session should be able to be selected."
+msgid "Both parameters 'dialog' and 'treeview' are uninitialized!"
+msgstr "పరామీటర్ 'ఎన్ వి' చెల్లుబాటు కాదు లేదా అన్ ఇనిస్పెక్టైజ్ చేయబడింది."
+
+#: plugins/x2go/x2go_plugin.c:677
+msgid ""
+"GtkTreeModel of session chooser dialog could not be obtained for an unknown "
+"reason."
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:709
+#, fuzzy
+msgid "Couldn't get selected row!"
+msgstr "ఎంపిక చేయబడ్డ వరస నుంచి సెషన్ ఐడిని పొందలేకపోయారు."
+
+#: plugins/x2go/x2go_plugin.c:725
+#, fuzzy, c-format
+msgid "exactly one session should be selected. '%i' rows are selected."
 msgstr "కేవలం ఒక సెషన్ మాత్రమే ఎంచుకోగలగాలి."
 
-#: plugins/x2go/x2go_plugin.c:615
+#: plugins/x2go/x2go_plugin.c:763
 #, fuzzy
 msgid "Failed to fill 'GtkTreeIter'."
 msgstr "'గ్ట్క్ ట్రీఇటర్'ను నింపడంలో విఫలమైంది."
 
-#: plugins/x2go/x2go_plugin.c:627
-#, fuzzy
-msgid "Couldn't get session ID out of selected row."
+#: plugins/x2go/x2go_plugin.c:775
+#, fuzzy, c-format
+msgid "Couldn't get property with index '%i' out of selected row."
 msgstr "ఎంపిక చేయబడ్డ వరస నుంచి సెషన్ ఐడిని పొందలేకపోయారు."
 
-#: plugins/x2go/x2go_plugin.c:660
+#: plugins/x2go/x2go_plugin.c:806
+#, fuzzy
+msgid "parameter 'argv' is 'NULL'."
+msgstr "పరామీటర్ 'ఆర్గ్వ్' అనేది 'శూన్యం'."
+
+#: plugins/x2go/x2go_plugin.c:817
+#, fuzzy
+msgid "parameter 'error' is 'NULL'."
+msgstr "పరామీటర్ 'దోషం' అనేది 'శూన్యం'."
+
+#: plugins/x2go/x2go_plugin.c:825
+#, fuzzy
+msgid "parameter 'env' is either invalid or uninitialized."
+msgstr "పరామీటర్ 'ఎన్ వి' చెల్లుబాటు కాదు లేదా అన్ ఇనిస్పెక్టైజ్ చేయబడింది."
+
+#: plugins/x2go/x2go_plugin.c:841
+#, fuzzy
+msgid "Started PyHoca-CLI with the following arguments:"
+msgstr "ఈ క్రింది వాదనలతో Ppamp"
+
+#: plugins/x2go/x2go_plugin.c:869
+#, fuzzy
+msgid ""
+"The necessary PyHoca-CLI process has encountered a internet connection "
+"problem."
+msgstr "అవసరమైన పైహోకా-సిఎల్ఐ ప్రక్రియ ఇంటర్నెట్ కనెక్షన్ సమస్యను ఎదుర్కొంది."
+
+#: plugins/x2go/x2go_plugin.c:879
+#, fuzzy
+msgid "An unknown error occured while trying to start PyHoca-CLI."
+msgstr "Papma-Pama-PA"
+
+#: plugins/x2go/x2go_plugin.c:889
+#, fuzzy, c-format
+msgid ""
+"An unknown error occured while trying to start PyHoca-CLI. Exit code: %i"
+msgstr "Papma-Pama-PA నిష్క్రమణ కోడ్: [ఎక్స్70ఎక్స్]"
+
+#: plugins/x2go/x2go_plugin.c:896
+#, fuzzy, c-format
+msgid ""
+"An unknown error occured while trying to start PyHoca-CLI. Exit code: %i. "
+"Error: '%s'"
+msgstr "Papma-Pama-PA నిష్క్రమణ కోడ్: [ఎక్స్70ఎక్స్]. దోషం: '[ఎక్స్82ఎక్స్]'"
+
+#: plugins/x2go/x2go_plugin.c:939
+#, fuzzy
+msgid "Parameter 'custom_data' is not fully initialized!"
+msgstr "పరామీటర్ 'default_username' ఇనిషియల్ చేయబడలేదు."
+
+#: plugins/x2go/x2go_plugin.c:966 plugins/x2go/x2go_plugin.c:1575
+#: plugins/x2go/x2go_plugin.c:1869
+#, fuzzy
+msgid "'Invalid connection data.'"
+msgstr "'చెల్లని కనెక్షన్ డేటా.'"
+
+#: plugins/x2go/x2go_plugin.c:980
+#, fuzzy
+msgid "Parameter 'session_id' is not initialized!"
+msgstr "పరామీటర్ 'default_username' ఇనిషియల్ చేయబడలేదు."
+
+#: plugins/x2go/x2go_plugin.c:1046
+#, fuzzy, c-format
+msgid "An error occured while trying to terminate a X2Go session: %s"
+msgstr "ఎక్స్2గో సెషన్ ప్రారంభించేటప్పుడు ఒక దోషం ఏర్పడింది…"
+
+#: plugins/x2go/x2go_plugin.c:1093 plugins/x2go/x2go_plugin.c:1117
 #, fuzzy
 msgid "Couldn't get session ID from session chooser dialog."
 msgstr "సెషన్ ఎంపిక డైలాగ్ నుంచి సెషన్ ఐడి ని పొందలేకపోయారు."
 
-#: plugins/x2go/x2go_plugin.c:667
+#: plugins/x2go/x2go_plugin.c:1100
 #, fuzzy, c-format
 msgid "Resuming session: '%s'"
 msgstr "సెషన్ ను పునరుద్ధరించడం: '[ఎక్స్19ఎక్స్]'"
 
-#: plugins/x2go/x2go_plugin.c:892
+#: plugins/x2go/x2go_plugin.c:1124
+#, fuzzy, c-format
+msgid "Terminating session: '%s'"
+msgstr "సెషన్ ను పునరుద్ధరించడం: '[ఎక్స్19ఎక్స్]'"
+
+#: plugins/x2go/x2go_plugin.c:1141
+msgid "GtkTreePath 'path' describes a non-existing row!"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1379
 #, fuzzy
 msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
 msgstr "పిహోకా-సిఎల్ఐ ఊహించని విధంగా నిష్క్రమించింది. ఈ కనెక్షన్ ఇప్పుడు క్లోజ్ చేయబడుతుంది."
 
-#: plugins/x2go/x2go_plugin.c:901
+#: plugins/x2go/x2go_plugin.c:1387
 #, fuzzy
 msgid "An error occured."
 msgstr "ఒక దోషం సంభవించింది."
 
-#: plugins/x2go/x2go_plugin.c:902
+#: plugins/x2go/x2go_plugin.c:1388
 #, fuzzy
 msgid ""
 "The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
@@ -3497,67 +3639,17 @@ msgstr ""
 "సంభావ్య దోషాల కొరకు మీ ప్రొఫైల్ సెట్టింగ్ లు మరియు Ppata-PATM యొక్క అవుట్ పుట్ ని దయచేసి చెక్ చేయండి. "
 "రిమోట్ సర్వర్ చేరుకోగలిగేలా కూడా ధృవీకరించుకోండి."
 
-#: plugins/x2go/x2go_plugin.c:937
-#, fuzzy
-msgid "parameter 'argv' is 'NULL'."
-msgstr "పరామీటర్ 'ఆర్గ్వ్' అనేది 'శూన్యం'."
-
-#: plugins/x2go/x2go_plugin.c:948
-#, fuzzy
-msgid "parameter 'error' is 'NULL'."
-msgstr "పరామీటర్ 'దోషం' అనేది 'శూన్యం'."
-
-#: plugins/x2go/x2go_plugin.c:956
-#, fuzzy
-msgid "parameter 'env' is either invalid or uninitialized."
-msgstr "పరామీటర్ 'ఎన్ వి' చెల్లుబాటు కాదు లేదా అన్ ఇనిస్పెక్టైజ్ చేయబడింది."
-
-#: plugins/x2go/x2go_plugin.c:972
-#, fuzzy
-msgid "Started PyHoca-CLI with the following arguments:"
-msgstr "ఈ క్రింది వాదనలతో Ppamp"
-
-#: plugins/x2go/x2go_plugin.c:988
-#, fuzzy
-msgid "Started PyHoca-CLI with the following environment variables:"
-msgstr "దిగువ వాతావరణ వేరియబుల్స్ తో Ppama-PA"
-
-#: plugins/x2go/x2go_plugin.c:997
-#, fuzzy
-msgid ""
-"The necessary PyHoca-CLI process has encountered a internet connection "
-"problem."
-msgstr "అవసరమైన పైహోకా-సిఎల్ఐ ప్రక్రియ ఇంటర్నెట్ కనెక్షన్ సమస్యను ఎదుర్కొంది."
-
-#: plugins/x2go/x2go_plugin.c:1007
-#, fuzzy
-msgid "An unknown error occured while trying to start PyHoca-CLI."
-msgstr "Papma-Pama-PA"
-
-#: plugins/x2go/x2go_plugin.c:1017
-#, fuzzy, c-format
-msgid ""
-"An unknown error occured while trying to start PyHoca-CLI. Exit code: %i"
-msgstr "Papma-Pama-PA నిష్క్రమణ కోడ్: [ఎక్స్70ఎక్స్]"
-
-#: plugins/x2go/x2go_plugin.c:1022
-#, fuzzy, c-format
-msgid ""
-"An unknown error occured while trying to start PyHoca-CLI. Exit code: %i. "
-"Error: '%s'"
-msgstr "Papma-Pama-PA నిష్క్రమణ కోడ్: [ఎక్స్70ఎక్స్]. దోషం: '[ఎక్స్82ఎక్స్]'"
-
-#: plugins/x2go/x2go_plugin.c:1047
+#: plugins/x2go/x2go_plugin.c:1431
 #, fuzzy
 msgid "Can't save empty username!"
 msgstr "ఖాళీ యూజర్ నేమ్ సేవ్ చేయలేరు!"
 
-#: plugins/x2go/x2go_plugin.c:1061
+#: plugins/x2go/x2go_plugin.c:1445
 #, fuzzy
 msgid "Could not save new credentials."
 msgstr "కొత్త క్రెడెన్షియల్స్ సేవ్ చేయలేకపోయింది."
 
-#: plugins/x2go/x2go_plugin.c:1064
+#: plugins/x2go/x2go_plugin.c:1448
 #, fuzzy
 msgid ""
 "An error occured while trying to save new credentials: 's_password' or "
@@ -3566,22 +3658,17 @@ msgstr ""
 "కొత్త ఆధారాలను కాపాడటానికి ప్రయత్నిస్తున్నప్పుడు ఒక దోషం సంభవించింది: 's_password' లేదా "
 "'s_username' తీగలు సెట్ చేయబడలేదు."
 
-#: plugins/x2go/x2go_plugin.c:1095
+#: plugins/x2go/x2go_plugin.c:1479
 #, fuzzy
 msgid "Parameter 'default_username' is uninitialized."
 msgstr "పరామీటర్ 'default_username' ఇనిషియల్ చేయబడలేదు."
 
-#: plugins/x2go/x2go_plugin.c:1124
+#: plugins/x2go/x2go_plugin.c:1508
 #, fuzzy
 msgid "Enter X2Go credentials"
 msgstr "ఎక్స్2గో క్రెడెన్షియల్స్ నమోదు చేయండి"
 
-#: plugins/x2go/x2go_plugin.c:1201
-#, fuzzy
-msgid "'Invalid connection data.'"
-msgstr "'చెల్లని కనెక్షన్ డేటా.'"
-
-#: plugins/x2go/x2go_plugin.c:1323
+#: plugins/x2go/x2go_plugin.c:1705
 #, fuzzy
 msgid ""
 "Couldn't parse the output of PyHoca-CLI's --list-sessions option. Creating a "
@@ -3590,78 +3677,96 @@ msgstr ""
 "Papta-Pata-PATA-సిఎల్ఐ యొక్క --లిస్ట్ సెషన్ల ఆప్షన్ యొక్క అవుట్ పుట్ ని పార్స్ చేయలేకపోయింది. ఇప్పుడు "
 "కొత్త సెషన్ సృష్టించడం."
 
-#: plugins/x2go/x2go_plugin.c:1362
+#: plugins/x2go/x2go_plugin.c:1744
 #, fuzzy
 msgid "Couldn't allocate enough memory!"
 msgstr "తగినంత మెమరీని కేటాయించలేకపోయింది!"
 
-#: plugins/x2go/x2go_plugin.c:1372
+#: plugins/x2go/x2go_plugin.c:1754
 #, fuzzy, c-format
 msgid "Found already existing X2Go session with ID: '%s'"
 msgstr "ఇప్పటికే ఉన్న ఎక్స్2గో సెషన్ ఐడితో కనుగొనబడింది: '[ఎక్స్46ఎక్స్]'"
 
-#: plugins/x2go/x2go_plugin.c:1444
+#. TRANSLATORS: Please stick to X2GoClient's translation.
+#: plugins/x2go/x2go_plugin.c:1797
+#, fuzzy
+msgid "Suspended"
+msgstr "అప్పటి నుండి సస్పెండ్ చేయబడింది"
+
+#. TRANSLATORS: Please stick to X2GoClient's translation.
+#: plugins/x2go/x2go_plugin.c:1800
+msgid "Running"
+msgstr ""
+
+#. TRANSLATORS: Please stick to X2GoClient's translation.
+#: plugins/x2go/x2go_plugin.c:1803
+#, fuzzy
+msgid "Terminated"
+msgstr "టెర్మినల్"
+
+#: plugins/x2go/x2go_plugin.c:1836
 #, fuzzy
 msgid ""
 "Could not find any sessions on remote machine. Creating a new session now."
 msgstr "రిమోట్ మెషిన్ పై ఎలాంటి సెషన్ లు కనుగొనలేకపోయారు. ఇప్పుడు కొత్త సెషన్ సృష్టించడం."
 
-#: plugins/x2go/x2go_plugin.c:1485
+#: plugins/x2go/x2go_plugin.c:1891
 #, fuzzy
 msgid "Choose a session to resume:"
 msgstr "తిరిగి ప్రారంభించడానికి సెషన్ ఎంచుకోండి:"
 
-#: plugins/x2go/x2go_plugin.c:1502
+#: plugins/x2go/x2go_plugin.c:1934
 #, fuzzy
 msgid "Waiting for user to select a session…"
 msgstr "సెషన్ ఎంచుకోవడం కొరకు యూజర్ కొరకు వేచి ఉంది…"
 
-#: plugins/x2go/x2go_plugin.c:1510
+#: plugins/x2go/x2go_plugin.c:1942
 #, fuzzy
 msgid "No session was selected. Creating a new one."
 msgstr "సెషన్ ఎంచుకోబడలేదు. కొత్తదాన్ని సృష్టించడం."
 
-#: plugins/x2go/x2go_plugin.c:1558
+#: plugins/x2go/x2go_plugin.c:1990
 #, fuzzy, c-format
 msgid "A non-critical error happened: %s"
 msgstr "ఒక విమర్శనాత్మక దోషం జరిగింది: [ఎక్స్31ఎక్స్]"
 
-#: plugins/x2go/x2go_plugin.c:1563
+#: plugins/x2go/x2go_plugin.c:1995
 #, fuzzy, c-format
 msgid "User chose to resume session with ID: '%s'"
 msgstr "యూజర్ ఐడితో సెషన్ ని తిరిగి ప్రారంభించడానికి ఎంచుకున్నాడు: '[ఎక్స్39ఎక్స్]'"
 
-#: plugins/x2go/x2go_plugin.c:1583
+#. TRANSLATORS: Please stick to X2GoClient's way of translating.
+#: plugins/x2go/x2go_plugin.c:2016
 #, fuzzy, c-format
 msgid "Resuming session '%s'…"
 msgstr "సెషన్ ని పునరుద్ధరించడం '[ఎక్స్18ఎక్స్]'…"
 
-#: plugins/x2go/x2go_plugin.c:1706
+#: plugins/x2go/x2go_plugin.c:2147
 #, fuzzy
 msgid "DPI setting is out of bounds. Please adjust it in profile settings."
 msgstr "డిపిఐ సెట్టింగ్ హద్దులు దాటి ఉంది. ప్రొఫైల్ సెట్టింగ్ ల్లో దయచేసి దానిని సర్దుబాటు చేయండి."
 
-#: plugins/x2go/x2go_plugin.c:1728
+#: plugins/x2go/x2go_plugin.c:2169
 #, fuzzy
 msgid "Started pyhoca-cli with following arguments:"
 msgstr "దిగువ వాదనలతో పైహోకా-క్లిని ప్రారంభించారు:"
 
-#: plugins/x2go/x2go_plugin.c:1748
+#: plugins/x2go/x2go_plugin.c:2189
 #, fuzzy
 msgid "An error occured while starting an X2Go session…"
 msgstr "ఎక్స్2గో సెషన్ ప్రారంభించేటప్పుడు ఒక దోషం ఏర్పడింది…"
 
-#: plugins/x2go/x2go_plugin.c:1757
+#: plugins/x2go/x2go_plugin.c:2197
 #, fuzzy
 msgid "Could not start X2Go session."
 msgstr "ఎక్స్2గో సెషన్ ప్రారంభించలేకపోయింది."
 
-#: plugins/x2go/x2go_plugin.c:1758
+#: plugins/x2go/x2go_plugin.c:2198
 #, fuzzy, c-format
 msgid "Could not start PyHoca-CLI (%i): '%s'"
 msgstr "Pppata-PATA ([G28ఎక్స్]) ప్రారంభించలేకపోయింది: '[ఎక్స్34ఎక్స్]'"
 
-#: plugins/x2go/x2go_plugin.c:1857
+#: plugins/x2go/x2go_plugin.c:2313
 #, fuzzy
 msgid ""
 "Couldn't get PyHoca-CLI's command-line features. This indicates it is either "
@@ -3671,54 +3776,54 @@ msgstr ""
 "Pappta-PATA-సిఎల్ఐ యొక్క కమాండ్ లైన్ ఫీచర్లను పొందలేకపోయింది. ఇది చాలా పాతది లేదా ఇన్ స్టాల్ చేయబడలేదని "
 "సూచిస్తుంది. పాత పరిమిత ఫీచర్ల సెట్ ప్రస్తుతానికి ఉపయోగించబడుతుంది."
 
-#: plugins/x2go/x2go_plugin.c:1866
+#: plugins/x2go/x2go_plugin.c:2322
 #, fuzzy
 msgid ""
 "Could not parse PyHoca-CLI's command-line features. Using a limited feature-"
 "set for now."
 msgstr "Pappa-Pama-TAP ప్రస్తుతానికి పరిమిత ఫీచర్ సెట్ ఉపయోగించడం."
 
-#: plugins/x2go/x2go_plugin.c:1872
+#: plugins/x2go/x2go_plugin.c:2328
 #, fuzzy
 msgid "Retrieved the following PyHoca-CLI command-line features:"
 msgstr "దిగువ Pppata-Pp"
 
-#: plugins/x2go/x2go_plugin.c:1880
+#: plugins/x2go/x2go_plugin.c:2336
 #, fuzzy, c-format
 msgid "Available feature[%i]: '%s'"
 msgstr "లభ్యం అవుతున్న ఫీచర్[[ఎక్స్18ఎక్స్]]: '[ఎక్స్24ఎక్స్]'"
 
-#: plugins/x2go/x2go_plugin.c:1985
+#: plugins/x2go/x2go_plugin.c:2441
 #, fuzzy
 msgid "Could not open X11 DISPLAY."
 msgstr "ఎక్స్11 డిస్ ప్లేని తెరవడం లేదు."
 
-#: plugins/x2go/x2go_plugin.c:2025
+#: plugins/x2go/x2go_plugin.c:2481
 #, fuzzy
 msgid "Waiting for window of X2Go Agent to appear…"
 msgstr "ఎక్స్2గో ఏజెంట్ యొక్క విండో కనిపించడానికి వేచి ఉంది…"
 
-#: plugins/x2go/x2go_plugin.c:2051
+#: plugins/x2go/x2go_plugin.c:2507
 #, fuzzy
 msgid "Waiting for PyHoca-CLI to show the session's window…"
 msgstr "సెషన్ యొక్క విండో చూపించడం కొరకు పివోకా-సిఎల్ఐ కొరకు వేచి ఉంది…"
 
-#: plugins/x2go/x2go_plugin.c:2102
+#: plugins/x2go/x2go_plugin.c:2558
 #, fuzzy
 msgid "No X2Go session window appeared. Something went wrong…"
 msgstr "ఎక్స్2గో సెషన్ విండో కనిపించలేదు. ఏదో తప్పు జరిగింది…"
 
-#: plugins/x2go/x2go_plugin.c:2213
+#: plugins/x2go/x2go_plugin.c:2669
 #, fuzzy
 msgid "RemminaProtocolWidget* gp is 'NULL'!"
 msgstr "రెమినాప్రోటోకాల్ విడ్జెట్* జిపి 'శూన్యం'!"
 
-#: plugins/x2go/x2go_plugin.c:2234
+#: plugins/x2go/x2go_plugin.c:2690
 #, fuzzy, c-format
 msgid "The %s protocol is unavailable because GtkSocket only works under X.org"
 msgstr "[ఎక్స్4ఎక్స్] ప్రోటోకాల్ అందుబాటులో లేదు ఎందుకంటే గ్ట్క్ సాకెట్ X.org కింద మాత్రమే పనిచేస్తుంది"
 
-#: plugins/x2go/x2go_plugin.c:2243
+#: plugins/x2go/x2go_plugin.c:2699
 #, fuzzy
 msgid "Could not initialize pthread. Falling back to non-threaded mode…"
 msgstr "ప్త్రెడ్ ను ఇనిషియల్ చేయలేకపోయింది. నాన్ త్రెడ్ డ్ మోడ్ కు తిరిగి పడిపోవడం…"
@@ -3731,7 +3836,7 @@ msgstr "ప్త్రెడ్ ను ఇనిషియల్ చేయలే
 #. your language.
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
-#: plugins/x2go/x2go_plugin.c:2286 plugins/x2go/x2go_plugin.c:2304
+#: plugins/x2go/x2go_plugin.c:2742 plugins/x2go/x2go_plugin.c:2760
 #, fuzzy, c-format
 msgid "%sand '%s'"
 msgstr "[ఎక్స్0ఎక్స్]మరియు '[ఎక్స్7ఎక్స్]'"
@@ -3742,7 +3847,7 @@ msgstr "[ఎక్స్0ఎక్స్]మరియు '[ఎక్స్7ఎ�
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
-#: plugins/x2go/x2go_plugin.c:2291 plugins/x2go/x2go_plugin.c:2309
+#: plugins/x2go/x2go_plugin.c:2747 plugins/x2go/x2go_plugin.c:2765
 #, fuzzy, c-format
 msgid "%s'%s' "
 msgstr "[ఎక్స్0ఎక్స్]'[ఎక్స్3ఎక్స్]' "
@@ -3750,141 +3855,141 @@ msgstr "[ఎక్స్0ఎక్స్]'[ఎక్స్3ఎక్స్]' "
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
 #. 'value1', 'value2', 'valueN-1' and 'valueN'
-#: plugins/x2go/x2go_plugin.c:2296
+#: plugins/x2go/x2go_plugin.c:2752
 #, fuzzy, c-format
 msgid "%s'%s', "
 msgstr "[ఎక్స్0ఎక్స్]'[ఎక్స్3ఎక్స్]', "
 
-#: plugins/x2go/x2go_plugin.c:2335
+#: plugins/x2go/x2go_plugin.c:2791
 #, fuzzy
 msgid "Invalid validation data in ProtocolSettings array!"
 msgstr "ప్రోటోకాల్ సెట్టింగ్ ల శ్రేణిలో చెల్లుబాటు కాని ధ్రువీకరణ డేటా!"
 
-#: plugins/x2go/x2go_plugin.c:2350 plugins/x2go/x2go_plugin.c:2415
+#: plugins/x2go/x2go_plugin.c:2806 plugins/x2go/x2go_plugin.c:2871
 #, fuzzy
 msgid "Validation data in ProtocolSettings array is invalid!"
 msgstr "ప్రోటోకాల్ సెట్టింగ్ ల శ్రేణిలో ధ్రువీకరణ డేటా చెల్లుబాటు కాదు!"
 
-#: plugins/x2go/x2go_plugin.c:2359
+#: plugins/x2go/x2go_plugin.c:2815
 #, fuzzy
 msgid "Parameters 'key' or 'value' are 'NULL'!"
 msgstr "'కీ' లేదా 'విలువ' పరామితులు 'శూన్యం'!"
 
-#: plugins/x2go/x2go_plugin.c:2377
+#: plugins/x2go/x2go_plugin.c:2833
 #, fuzzy, c-format
 msgid "Allowed values are %s."
 msgstr "అనుమతించబడ్డ విలువలు [ఎక్స్19ఎక్స్]."
 
-#: plugins/x2go/x2go_plugin.c:2379
+#: plugins/x2go/x2go_plugin.c:2835
 #, fuzzy, c-format
 msgid "The only allowed value is '%s'."
 msgstr "అనుమతించబడ్డ ఏకైక విలువ '[ఎక్స్27ఎక్స్]'."
 
-#: plugins/x2go/x2go_plugin.c:2426
+#: plugins/x2go/x2go_plugin.c:2882
 #, fuzzy
 msgid "The lower limit is not a valid integer!"
 msgstr "తక్కువ పరిమితి చెల్లుబాటు అయ్యే పూర్ణాంకం కాదు!"
 
-#: plugins/x2go/x2go_plugin.c:2431
+#: plugins/x2go/x2go_plugin.c:2887
 #, fuzzy
 msgid "The lower limit is too high!"
 msgstr "తక్కువ పరిమితి చాలా ఎక్కువ!"
 
-#: plugins/x2go/x2go_plugin.c:2436
+#: plugins/x2go/x2go_plugin.c:2892
 #, fuzzy
 msgid "The lower limit is too low!"
 msgstr "తక్కువ పరిమితి చాలా తక్కువగా ఉంది!"
 
-#: plugins/x2go/x2go_plugin.c:2441 plugins/x2go/x2go_plugin.c:2471
-#: plugins/x2go/x2go_plugin.c:2491
+#: plugins/x2go/x2go_plugin.c:2897 plugins/x2go/x2go_plugin.c:2927
+#: plugins/x2go/x2go_plugin.c:2947
 #, fuzzy
 msgid "Something unknown went wrong."
 msgstr "తెలియని ఏదో తప్పు జరిగింది."
 
-#: plugins/x2go/x2go_plugin.c:2446 plugins/x2go/x2go_plugin.c:2476
-#: plugins/x2go/x2go_plugin.c:2495
+#: plugins/x2go/x2go_plugin.c:2902 plugins/x2go/x2go_plugin.c:2932
+#: plugins/x2go/x2go_plugin.c:2951
 #, fuzzy
 msgid "Please check the RemminaProtocolSetting array for possible errors."
 msgstr "సంభావ్య దోషాల కొరకు దయచేసి రెమినాప్రోటోకాల్ సెట్టింగ్ ఎరాయ్ ని చెక్ చేయండి."
 
-#: plugins/x2go/x2go_plugin.c:2456
+#: plugins/x2go/x2go_plugin.c:2912
 #, fuzzy
 msgid "The upper limit is not a valid integer!"
 msgstr "గరిష్ట పరిమితి చెల్లుబాటు అయ్యే పూర్ణాంకం కాదు!"
 
-#: plugins/x2go/x2go_plugin.c:2461
+#: plugins/x2go/x2go_plugin.c:2917
 #, fuzzy
 msgid "The upper limit is too high!"
 msgstr "గరిష్ట పరిమితి చాలా ఎక్కువ!"
 
-#: plugins/x2go/x2go_plugin.c:2466
+#: plugins/x2go/x2go_plugin.c:2922
 #, fuzzy
 msgid "The upper limit is too low!"
 msgstr "గరిష్ట పరిమితి చాలా తక్కువగా ఉంది!"
 
-#: plugins/x2go/x2go_plugin.c:2486
+#: plugins/x2go/x2go_plugin.c:2942
 #, fuzzy
 msgid "The input is not a valid integer!"
 msgstr "ఇన్ పుట్ చెల్లుబాటు అయ్యే పూర్ణాంకం కాదు!"
 
-#: plugins/x2go/x2go_plugin.c:2488 plugins/x2go/x2go_plugin.c:2507
+#: plugins/x2go/x2go_plugin.c:2944 plugins/x2go/x2go_plugin.c:2963
 #, fuzzy, c-format
 msgid "Input must be a number between %i and %i."
 msgstr "ఇన్ పుట్ అనేది [ఎక్స్31ఎక్స్] మరియు [ఎక్స్38ఎక్స్] మధ్య ఒక సంఖ్య అయి ఉండాలి."
 
-#: plugins/x2go/x2go_plugin.c:2536
+#: plugins/x2go/x2go_plugin.c:2992
 #, fuzzy
 msgid "Startup program"
 msgstr "స్టార్టప్ ప్రోగ్రామ్"
 
-#: plugins/x2go/x2go_plugin.c:2538
+#: plugins/x2go/x2go_plugin.c:2994
 #, fuzzy
 msgid "Which command should be executed after creating the X2Go session?"
 msgstr "ఎక్స్2గో సెషన్ సృష్టించిన తరువాత ఏ కమాండ్ అమలు చేయాలి?"
 
-#: plugins/x2go/x2go_plugin.c:2540
+#: plugins/x2go/x2go_plugin.c:2996
 #, fuzzy
 msgid "Keyboard Layout (auto)"
 msgstr "కీబోర్డ్ లేఅవుట్ (ఆటో)"
 
-#: plugins/x2go/x2go_plugin.c:2541
+#: plugins/x2go/x2go_plugin.c:2997
 #, fuzzy
 msgid "Keyboard type (auto)"
 msgstr "కీబోర్డ్ రకం (స్వయంచాలకం)"
 
-#: plugins/x2go/x2go_plugin.c:2542
+#: plugins/x2go/x2go_plugin.c:2998
 #, fuzzy
 msgid "Audio support"
 msgstr "ఆడియో మద్దతు"
 
-#: plugins/x2go/x2go_plugin.c:2544
+#: plugins/x2go/x2go_plugin.c:3000
 #, fuzzy
 msgid "The sound system of the X2Go server (default: 'pulse')."
 msgstr "ఎక్స్2గో సర్వర్ యొక్క సౌండ్ సిస్టమ్ (డిఫాల్ట్: 'పల్స్')."
 
-#: plugins/x2go/x2go_plugin.c:2547
+#: plugins/x2go/x2go_plugin.c:3003
 #, fuzzy
 msgid "Clipboard direction"
 msgstr "క్లిప్ బోర్డ్ దిశ"
 
-#: plugins/x2go/x2go_plugin.c:2549
+#: plugins/x2go/x2go_plugin.c:3005
 #, fuzzy
 msgid "Which direction should clipboard content be copied? (default: 'both')."
 msgstr "క్లిప్ బోర్డ్ కంటెంట్ ఏ దిశను కాపీ చేయాలి? (డిఫాల్ట్: 'రెండూ')."
 
-#: plugins/x2go/x2go_plugin.c:2553
+#: plugins/x2go/x2go_plugin.c:3009
 #, fuzzy
 msgid "DPI resolution"
 msgstr "డిపిఐ తీర్మానం"
 
-#: plugins/x2go/x2go_plugin.c:2554
+#: plugins/x2go/x2go_plugin.c:3010
 #, fuzzy
 msgid ""
 "Launch session with a specific resolution (in dots per inch). Must be "
 "between 20 and 400."
 msgstr "నిర్ధిష్ట రిజల్యూషన్ తో సెషన్ లాంఛ్ చేయండి (ప్రతి అంగుళంచుక్కలలో). 20 నుంచి 400 మధ్య ఉండాలి."
 
-#: plugins/x2go/x2go_plugin.c:2598
+#: plugins/x2go/x2go_plugin.c:3054
 #, fuzzy
 msgid "X2Go plugin loaded."
 msgstr "ఎక్స్2గో ప్లగిన్ లోడ్ చేయబడింది."
@@ -5206,6 +5311,14 @@ msgstr "రెమినా అన్ లాక్ చేయండి"
 #, fuzzy
 msgid "Master password"
 msgstr "మాస్టర్ పాస్ వర్డ్"
+
+#, fuzzy
+#~ msgid "_Select session"
+#~ msgstr "_Select సెషన్"
+
+#, fuzzy
+#~ msgid "Started PyHoca-CLI with the following environment variables:"
+#~ msgstr "దిగువ వాతావరణ వేరియబుల్స్ తో Ppama-PA"
 
 #, fuzzy, c-format
 #~ msgid "Could not retrieve PyHoca-CLI's command-line features! Exit code: %i"
