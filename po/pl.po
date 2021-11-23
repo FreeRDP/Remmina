@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-11-23 15:47+0000\n"
-"PO-Revision-Date: 2021-11-11 21:52+0000\n"
+"PO-Revision-Date: 2021-11-23 19:51+0000\n"
 "Last-Translator: Matthaiks <kitynska@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/remmina/remmina/"
 "pl/>\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.9.1-dev\n"
+"X-Generator: Weblate 4.10-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:354
@@ -417,14 +417,16 @@ msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 msgstr ""
+"https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
+"available-in-a-Wayland-session"
 
 #: src/rcw.c:4509
-#, fuzzy
-#| msgid "Warning: This plugin requires GtkSocket, but it’s not available."
 msgid ""
 "Warning: This plugin requires GtkSocket, but this feature is unavailable in "
 "a Wayland session."
-msgstr "Ostrzeżenie: Ta wtyczka wymaga GtkSocket, które jest niedostępne."
+msgstr ""
+"Ostrzeżenie: Ta wtyczka wymaga GtkSocket, ale ta funkcja jest niedostępna w "
+"sesji Wayland."
 
 #: src/rcw.c:4513
 #, c-format
@@ -435,12 +437,15 @@ msgid ""
 "\n"
 "%s"
 msgstr ""
+"Wtyczki oparte na GtkSocket nie mogą działać w sesji Wayland.\n"
+"Aby uzyskać więcej informacji i możliwe obejście problemu, odwiedź witrynę "
+"Remmina Wiki pod adresem:\n"
+"\n"
+"%s"
 
 #: src/rcw.c:4528
-#, fuzzy
-#| msgid "Open Main Window"
 msgid "Open in browser"
-msgstr "Wyświetl główne okno"
+msgstr "Otwórz w przeglądarce"
 
 #: src/remmina_mpchange.c:234
 msgid "The passwords do not match"
@@ -576,31 +581,23 @@ msgid "Encrypt a password"
 msgstr "Zaszyfruj hasło"
 
 #: src/remmina.c:334
-#, fuzzy
-#| msgid ""
-#| "Remmina does not log all output statements. To enable a more verbose "
-#| "output please use G_MESSAGES_DEBUG=all as an environment variable. "
 msgid ""
 "Remmina does not log all output statements. To enable a more verbose output "
 "please use G_MESSAGES_DEBUG=all as an environment variable."
 msgstr ""
 "Remmina nie rejestruje wszystkich instrukcji wyjściowych. Aby włączyć "
 "bardziej szczegółowe dane wyjściowe, użyj zmiennej środowiskowej "
-"G_MESSAGES_DEBUG=all. "
+"G_MESSAGES_DEBUG=all."
 
 #. TRANSLATORS: This link should point to a resource explaining
 #. TRANSLATORS: how to get Remmina to log debug statements.
 #: src/remmina.c:339
-#, fuzzy
-#| msgid ""
-#| "For more information, please visit the Remmina Wiki: https://gitlab.com/"
-#| "Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgid ""
 "For more information, please visit the Remmina Wiki:\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgstr ""
-"Aby uzyskać więcej informacji, odwiedź Remmina Wiki: https://gitlab.com/"
-"Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
+"Aby uzyskać więcej informacji, odwiedź Remmina Wiki:\n"
+"https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:390
@@ -3000,10 +2997,8 @@ msgstr "Błąd wewnętrzny: %s"
 
 #: plugins/x2go/x2go_plugin.c:288 plugins/x2go/x2go_plugin.c:420
 #: plugins/x2go/x2go_plugin.c:479 plugins/x2go/x2go_plugin.c:1077
-#, fuzzy
-#| msgid "Parameter 'default_username' is uninitialized."
 msgid "Parameter 'custom_data' is not initialized!"
-msgstr "Parametr 'default_username' jest niezainicjowany."
+msgstr "Parametr 'custom_data' jest niezainicjowany!"
 
 #: plugins/x2go/x2go_plugin.c:301
 msgid "Broken `DialogData`! Aborting…"
@@ -3020,17 +3015,13 @@ msgstr ""
 
 #. TRANSLATORS: Stick to x2goclient's translation for terminate.
 #: plugins/x2go/x2go_plugin.c:497
-#, fuzzy
-#| msgid "Terminate"
 msgid "_Terminate"
-msgstr "Zakończ"
+msgstr "_Zakończ"
 
 #. TRANSLATORS: Stick to x2goclient's translation for resume.
 #: plugins/x2go/x2go_plugin.c:500
-#, fuzzy
-#| msgid "Resume"
 msgid "_Resume"
-msgstr "Wznów"
+msgstr "_Wznów"
 
 #: plugins/x2go/x2go_plugin.c:502
 msgid "_New"
@@ -3040,13 +3031,11 @@ msgstr "_Nowe"
 #. TRANSLATORS: Please stick to X2GoClient's way of translating.
 #: plugins/x2go/x2go_plugin.c:511
 msgid "Terminating X2Go sessions can take a moment."
-msgstr ""
+msgstr "Zakończenie sesji X2Go może chwilę potrwać."
 
 #: plugins/x2go/x2go_plugin.c:568
-#, fuzzy
-#| msgid "Display"
 msgid "X Display"
-msgstr "Ekran"
+msgstr "Ekran X"
 
 #: plugins/x2go/x2go_plugin.c:569
 msgid "Status"
@@ -3062,7 +3051,7 @@ msgstr "Data utworzenia"
 
 #: plugins/x2go/x2go_plugin.c:572
 msgid "Suspended since"
-msgstr "Zawieszone od"
+msgstr "Wstrzymane od"
 
 #: plugins/x2go/x2go_plugin.c:573
 msgid "Agent PID"
@@ -3097,38 +3086,34 @@ msgid "Couldn't find child GtkTreeView of session chooser dialog."
 msgstr "Nie można znaleźć podrzędnego elementu GtkTreeView okna wyboru sesji."
 
 #: plugins/x2go/x2go_plugin.c:669
-#, fuzzy
-#| msgid "parameter 'env' is either invalid or uninitialized."
 msgid "Both parameters 'dialog' and 'treeview' are uninitialized!"
-msgstr "parametr 'env' jest nieprawidłowy lub niezainicjowany."
+msgstr "Oba parametry 'dialog' i 'treeview' są niezainicjowane!"
 
 #: plugins/x2go/x2go_plugin.c:677
 msgid ""
 "GtkTreeModel of session chooser dialog could not be obtained for an unknown "
 "reason."
 msgstr ""
+"Nie można uzyskać GtkTreeModel okna dialogowego wyboru sesji z nieznanego "
+"powodu."
 
 #: plugins/x2go/x2go_plugin.c:709
-#, fuzzy
-#| msgid "Couldn't get session ID out of selected row."
 msgid "Couldn't get selected row!"
-msgstr "Nie udało się pobrać identyfikatora sesji z wybranego wiersza."
+msgstr "Nie udało się pobrać wybranego wiersza!"
 
 #: plugins/x2go/x2go_plugin.c:725
-#, fuzzy, c-format
-#| msgid "only one session should be able to be selected."
+#, c-format
 msgid "exactly one session should be selected. '%i' rows are selected."
-msgstr "powinna istnieć możliwość wyboru tylko jednej sesji."
+msgstr "należy wybrać dokładnie jedną sesję. Wybrano wiersze '%i'."
 
 #: plugins/x2go/x2go_plugin.c:763
 msgid "Failed to fill 'GtkTreeIter'."
 msgstr "Nie udało się wypełnić 'GtkTreeIter'."
 
 #: plugins/x2go/x2go_plugin.c:775
-#, fuzzy, c-format
-#| msgid "Couldn't get session ID out of selected row."
+#, c-format
 msgid "Couldn't get property with index '%i' out of selected row."
-msgstr "Nie udało się pobrać identyfikatora sesji z wybranego wiersza."
+msgstr "Nie udało się pobrać właściwości z indeksem '%i' z wybranego wiersza."
 
 #: plugins/x2go/x2go_plugin.c:806
 msgid "parameter 'argv' is 'NULL'."
@@ -3174,10 +3159,8 @@ msgstr ""
 "%i. Błąd: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:939
-#, fuzzy
-#| msgid "Parameter 'default_username' is uninitialized."
 msgid "Parameter 'custom_data' is not fully initialized!"
-msgstr "Parametr 'default_username' jest niezainicjowany."
+msgstr "Parametr 'custom_data' nie jest w pełni zainicjowany!"
 
 #: plugins/x2go/x2go_plugin.c:966 plugins/x2go/x2go_plugin.c:1575
 #: plugins/x2go/x2go_plugin.c:1869
@@ -3185,16 +3168,13 @@ msgid "'Invalid connection data.'"
 msgstr "'Nieprawidłowe dane połączenia.'"
 
 #: plugins/x2go/x2go_plugin.c:980
-#, fuzzy
-#| msgid "Parameter 'default_username' is uninitialized."
 msgid "Parameter 'session_id' is not initialized!"
-msgstr "Parametr 'default_username' jest niezainicjowany."
+msgstr "Parametr 'session_id' nie został zainicjowany!"
 
 #: plugins/x2go/x2go_plugin.c:1046
-#, fuzzy, c-format
-#| msgid "An error occured while starting an X2Go session…"
+#, c-format
 msgid "An error occured while trying to terminate a X2Go session: %s"
-msgstr "Wystąpił błąd podczas uruchamiania sesji X2Go…"
+msgstr "Wystąpił błąd podczas próby zakończenia sesji X2Go: %s"
 
 #: plugins/x2go/x2go_plugin.c:1093 plugins/x2go/x2go_plugin.c:1117
 msgid "Couldn't get session ID from session chooser dialog."
@@ -3206,14 +3186,13 @@ msgid "Resuming session: '%s'"
 msgstr "Wznawianie sesji: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:1124
-#, fuzzy, c-format
-#| msgid "Resuming session: '%s'"
+#, c-format
 msgid "Terminating session: '%s'"
-msgstr "Wznawianie sesji: '%s'"
+msgstr "Zakończenie sesji: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:1141
 msgid "GtkTreePath 'path' describes a non-existing row!"
-msgstr ""
+msgstr "'ścieżka' GtkTreePath opisuje nieistniejący wiersz!"
 
 #: plugins/x2go/x2go_plugin.c:1379
 msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
@@ -3278,22 +3257,18 @@ msgstr "Znaleziono już istniejącą sesję X2Go z identyfikatorem: '%s'"
 
 #. TRANSLATORS: Please stick to X2GoClient's translation.
 #: plugins/x2go/x2go_plugin.c:1797
-#, fuzzy
-#| msgid "Suspended since"
 msgid "Suspended"
-msgstr "Zawieszone od"
+msgstr "Wstrzymane"
 
 #. TRANSLATORS: Please stick to X2GoClient's translation.
 #: plugins/x2go/x2go_plugin.c:1800
 msgid "Running"
-msgstr ""
+msgstr "Uruchomione"
 
 #. TRANSLATORS: Please stick to X2GoClient's translation.
 #: plugins/x2go/x2go_plugin.c:1803
-#, fuzzy
-#| msgid "Terminate"
 msgid "Terminated"
-msgstr "Zakończ"
+msgstr "Zakończone"
 
 #: plugins/x2go/x2go_plugin.c:1836
 msgid ""

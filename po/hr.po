@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-11-23 15:47+0000\n"
-"PO-Revision-Date: 2021-11-13 11:50+0000\n"
+"PO-Revision-Date: 2021-11-23 19:51+0000\n"
 "Last-Translator: gogogogi <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/remmina/remmina/"
 "hr/>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.9.1-dev\n"
+"X-Generator: Weblate 4.10-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:25+0000\n"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:354
@@ -411,14 +411,16 @@ msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 msgstr ""
+"https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
+"available-in-a-Wayland-session"
 
 #: src/rcw.c:4509
-#, fuzzy
-#| msgid "Warning: This plugin requires GtkSocket, but it’s not available."
 msgid ""
 "Warning: This plugin requires GtkSocket, but this feature is unavailable in "
 "a Wayland session."
-msgstr "Upozorenje: Ovaj priključak zahtijeva GtkSocket, koji nije dostupan."
+msgstr ""
+"Upozorenje: Ovaj priključak zahtijeva GtkSocket, ali ova značajka nije "
+"dostupna u Wayland sesiji."
 
 #: src/rcw.c:4513
 #, c-format
@@ -429,12 +431,15 @@ msgid ""
 "\n"
 "%s"
 msgstr ""
+"Priključci koji se oslanjaju na GtkSocketu ne mogu se pokrenuti u Wayland "
+"sesiji.\n"
+"Za više informacija i moguće rješenje, posjetite Remmina Wiki na:\n"
+"\n"
+"%s"
 
 #: src/rcw.c:4528
-#, fuzzy
-#| msgid "Open Main Window"
 msgid "Open in browser"
-msgstr "Otvori glavni prozor"
+msgstr "Otvori u pregledniku"
 
 #: src/remmina_mpchange.c:234
 msgid "The passwords do not match"
@@ -571,30 +576,22 @@ msgid "Encrypt a password"
 msgstr "Šifriraj lozinku"
 
 #: src/remmina.c:334
-#, fuzzy
-#| msgid ""
-#| "Remmina does not log all output statements. To enable a more verbose "
-#| "output please use G_MESSAGES_DEBUG=all as an environment variable. "
 msgid ""
 "Remmina does not log all output statements. To enable a more verbose output "
 "please use G_MESSAGES_DEBUG=all as an environment variable."
 msgstr ""
 "Remmina ne bilježi sve izlazne izjave. Za omogućavanje opširnijeg bilježenja "
-"koiristite G_MESSAGES_DEBUG=all kao varijablu okruženja. "
+"koiristite G_MESSAGES_DEBUG=all kao varijablu okruženja."
 
 #. TRANSLATORS: This link should point to a resource explaining
 #. TRANSLATORS: how to get Remmina to log debug statements.
 #: src/remmina.c:339
-#, fuzzy
-#| msgid ""
-#| "For more information, please visit the Remmina Wiki: https://gitlab.com/"
-#| "Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgid ""
 "For more information, please visit the Remmina Wiki:\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgstr ""
-"Za više informacija, posjetite Remmina Wiki: https://gitlab.com/Remmina/"
-"Remmina/-/wikis/Usage/Remmina-debugging"
+"Za više informacija, posjetite Remmina Wiki:\n"
+"https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:390
@@ -2979,10 +2976,8 @@ msgstr "Unutrašnja greška: %s"
 
 #: plugins/x2go/x2go_plugin.c:288 plugins/x2go/x2go_plugin.c:420
 #: plugins/x2go/x2go_plugin.c:479 plugins/x2go/x2go_plugin.c:1077
-#, fuzzy
-#| msgid "Parameter 'default_username' is uninitialized."
 msgid "Parameter 'custom_data' is not initialized!"
-msgstr "Parametar 'default_username' nije pokrenut."
+msgstr "Parametar 'custom_data' nije pokrenut!"
 
 #: plugins/x2go/x2go_plugin.c:301
 msgid "Broken `DialogData`! Aborting…"
@@ -2999,17 +2994,13 @@ msgstr ""
 
 #. TRANSLATORS: Stick to x2goclient's translation for terminate.
 #: plugins/x2go/x2go_plugin.c:497
-#, fuzzy
-#| msgid "Terminate"
 msgid "_Terminate"
-msgstr "Prekini"
+msgstr "_Prekini"
 
 #. TRANSLATORS: Stick to x2goclient's translation for resume.
 #: plugins/x2go/x2go_plugin.c:500
-#, fuzzy
-#| msgid "Resume"
 msgid "_Resume"
-msgstr "Nastavi"
+msgstr "_Nastavi"
 
 #: plugins/x2go/x2go_plugin.c:502
 msgid "_New"
@@ -3019,13 +3010,11 @@ msgstr "_Nova"
 #. TRANSLATORS: Please stick to X2GoClient's way of translating.
 #: plugins/x2go/x2go_plugin.c:511
 msgid "Terminating X2Go sessions can take a moment."
-msgstr ""
+msgstr "Prekidanje X2Go sesije može kratko potrajati."
 
 #: plugins/x2go/x2go_plugin.c:568
-#, fuzzy
-#| msgid "Display"
 msgid "X Display"
-msgstr "Prikaži"
+msgstr "X prikaz"
 
 #: plugins/x2go/x2go_plugin.c:569
 msgid "Status"
@@ -3076,38 +3065,34 @@ msgid "Couldn't find child GtkTreeView of session chooser dialog."
 msgstr "Nemoguć pronalazak sadržanog GtkTreeView dijaloga odabiratelja sesije."
 
 #: plugins/x2go/x2go_plugin.c:669
-#, fuzzy
-#| msgid "parameter 'env' is either invalid or uninitialized."
 msgid "Both parameters 'dialog' and 'treeview' are uninitialized!"
-msgstr "parametar 'env' ili je nevaljan ili nije pokrenut."
+msgstr "Oba parametra 'dialog' i 'treeview' nisu pokrenuti!"
 
 #: plugins/x2go/x2go_plugin.c:677
 msgid ""
 "GtkTreeModel of session chooser dialog could not be obtained for an unknown "
 "reason."
 msgstr ""
+"GtkTreeModel dijaloga odabiratelja sesije ne može se dobiti zbog nepoznatog "
+"razloga."
 
 #: plugins/x2go/x2go_plugin.c:709
-#, fuzzy
-#| msgid "Couldn't get session ID out of selected row."
 msgid "Couldn't get selected row!"
-msgstr "Neuspjelo dobivanje ID sesije iz odabranog retka."
+msgstr "Neuspjelo dobivanje odabranog retka!"
 
 #: plugins/x2go/x2go_plugin.c:725
-#, fuzzy, c-format
-#| msgid "only one session should be able to be selected."
+#, c-format
 msgid "exactly one session should be selected. '%i' rows are selected."
-msgstr "samo se jedna sesija može odabrati."
+msgstr "samo se jedna sesija može odabrati. '%i' redka su odabrana."
 
 #: plugins/x2go/x2go_plugin.c:763
 msgid "Failed to fill 'GtkTreeIter'."
 msgstr "Neuspjelo popunjavanje 'GtkTreeIter'."
 
 #: plugins/x2go/x2go_plugin.c:775
-#, fuzzy, c-format
-#| msgid "Couldn't get session ID out of selected row."
+#, c-format
 msgid "Couldn't get property with index '%i' out of selected row."
-msgstr "Neuspjelo dobivanje ID sesije iz odabranog retka."
+msgstr "Neuspjelo dobivanje svojstva indeksa '%i' iz odabranog retka."
 
 #: plugins/x2go/x2go_plugin.c:806
 msgid "parameter 'argv' is 'NULL'."
@@ -3153,10 +3138,8 @@ msgstr ""
 "Greška: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:939
-#, fuzzy
-#| msgid "Parameter 'default_username' is uninitialized."
 msgid "Parameter 'custom_data' is not fully initialized!"
-msgstr "Parametar 'default_username' nije pokrenut."
+msgstr "Parametar 'custom_data' nije potpuno pokrenut!"
 
 #: plugins/x2go/x2go_plugin.c:966 plugins/x2go/x2go_plugin.c:1575
 #: plugins/x2go/x2go_plugin.c:1869
@@ -3164,16 +3147,13 @@ msgid "'Invalid connection data.'"
 msgstr "'Nevaljani podaci povezivanja.'"
 
 #: plugins/x2go/x2go_plugin.c:980
-#, fuzzy
-#| msgid "Parameter 'default_username' is uninitialized."
 msgid "Parameter 'session_id' is not initialized!"
-msgstr "Parametar 'default_username' nije pokrenut."
+msgstr "Parametar 'session_id' nije pokrenut!"
 
 #: plugins/x2go/x2go_plugin.c:1046
-#, fuzzy, c-format
-#| msgid "An error occured while starting an X2Go session…"
+#, c-format
 msgid "An error occured while trying to terminate a X2Go session: %s"
-msgstr "Greška se dogodila pri pokretanju X2Go sesije…"
+msgstr "Greška se dogodila pri prekidanju X2Go sesije: %s"
 
 #: plugins/x2go/x2go_plugin.c:1093 plugins/x2go/x2go_plugin.c:1117
 msgid "Couldn't get session ID from session chooser dialog."
@@ -3185,14 +3165,13 @@ msgid "Resuming session: '%s'"
 msgstr "Pokretanje sesije: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:1124
-#, fuzzy, c-format
-#| msgid "Resuming session: '%s'"
+#, c-format
 msgid "Terminating session: '%s'"
-msgstr "Pokretanje sesije: '%s'"
+msgstr "Prekidanje sesije: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:1141
 msgid "GtkTreePath 'path' describes a non-existing row!"
-msgstr ""
+msgstr "GtkTreePath 'path' opisuje nepostojeći redak!"
 
 #: plugins/x2go/x2go_plugin.c:1379
 msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
@@ -3256,22 +3235,18 @@ msgstr "Već je pronađena postojeća X2Go sesija sa ID: '%s'"
 
 #. TRANSLATORS: Please stick to X2GoClient's translation.
 #: plugins/x2go/x2go_plugin.c:1797
-#, fuzzy
-#| msgid "Suspended since"
 msgid "Suspended"
-msgstr "Suspendirano od"
+msgstr "Suspendirano"
 
 #. TRANSLATORS: Please stick to X2GoClient's translation.
 #: plugins/x2go/x2go_plugin.c:1800
 msgid "Running"
-msgstr ""
+msgstr "Pokrenuto"
 
 #. TRANSLATORS: Please stick to X2GoClient's translation.
 #: plugins/x2go/x2go_plugin.c:1803
-#, fuzzy
-#| msgid "Terminate"
 msgid "Terminated"
-msgstr "Prekini"
+msgstr "Prekinuto"
 
 #: plugins/x2go/x2go_plugin.c:1836
 msgid ""
