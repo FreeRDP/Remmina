@@ -19,9 +19,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-11-24 13:00+0000\n"
-"PO-Revision-Date: 2021-11-15 09:51+0000\n"
-"Last-Translator: Giovanni Panozzo <giovanni@panozzo.it>\n"
+"POT-Creation-Date: 2021-11-24 15:30+0000\n"
+"PO-Revision-Date: 2021-11-24 19:53+0000\n"
+"Last-Translator: Davy Defaud <davy.defaud@free.fr>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/remmina/remmina/"
 "fr/>\n"
 "Language: fr\n"
@@ -29,7 +29,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.9.1-dev\n"
+"X-Generator: Weblate 4.10-dev\n"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:354
 #: src/remmina_protocol_widget.c:1677 src/remmina_protocol_widget.c:1696
@@ -425,16 +425,16 @@ msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 msgstr ""
+"https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
+"available-in-a-Wayland-session"
 
 #: src/rcw.c:4509
-#, fuzzy
-#| msgid "Warning: This plugin requires GtkSocket, but it’s not available."
 msgid ""
 "Warning: This plugin requires GtkSocket, but this feature is unavailable in "
 "a Wayland session."
 msgstr ""
 "Attention : ce greffon nécessite GtkSocket, mais ce dernier n’est pas "
-"disponible."
+"disponible avec une session Wayland."
 
 #: src/rcw.c:4513
 #, c-format
@@ -445,12 +445,16 @@ msgid ""
 "\n"
 "%s"
 msgstr ""
+"Les greffons dépendants de GtkSocket ne peuvent fonctionner avec une session "
+"Wayland.\n"
+"Pour de plus amples informations et une potentielle solution, veuillez "
+"consulter l’entrée du Wiki de Remmina suivante :\n"
+"\n"
+"%s"
 
 #: src/rcw.c:4528
-#, fuzzy
-#| msgid "Open Main Window"
 msgid "Open in browser"
-msgstr "Ouvrir la fenêtre principale"
+msgstr "Ouvrir dans un navigateur"
 
 #: src/remmina_mpchange.c:234
 msgid "The passwords do not match"
@@ -589,26 +593,30 @@ msgstr ""
 msgid "Encrypt a password"
 msgstr "Chiffrer un mot de passe"
 
-#: src/remmina.c:334
+#. TRANSLATORS:
+#. * This link should point to a resource explaining how to get Remmina
+#. * to log more verbose statements.
+#.
+#: src/remmina.c:337
 msgid ""
 "Remmina does not log all output statements. To enable a more verbose output "
-"please use G_MESSAGES_DEBUG=all as an environment variable."
-msgstr ""
-
-#. TRANSLATORS: This link should point to a resource explaining
-#. TRANSLATORS: how to get Remmina to log debug statements.
-#: src/remmina.c:339
-msgid ""
-"For more information, please visit the Remmina Wiki:\n"
+"please use G_MESSAGES_DEBUG=all as an environment variable.\n"
+"For more information, please visit the Remmina Wiki at:\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgstr ""
+"Remmina ne journalise pas la sortie de toutes les actions. Pour augmenter la "
+"verbosité, veuillez définir la variable d’environnement G_MESSAGES_DEBUG à « "
+"all » (G_MESSAGES_DEBUG=all).\n"
+"Pour de plus amples informations, veuillez consulter la page du Wiki de "
+"Remmina suivante :\n"
+"https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:390
+#: src/remmina.c:391
 msgid "- or protocol://username:encryptedpassword@host:port"
 msgstr "- ou protocole://utilisateur:motdepassechiffré@hôte:port"
 
-#: src/remmina.c:393
+#: src/remmina.c:394
 msgid ""
 "Examples:\n"
 "To connect using an existing connection profile, use:\n"
@@ -1221,9 +1229,8 @@ msgid "Plugin %s is not registered."
 msgstr "Le greffon %s n’est pas répertorié."
 
 #: src/remmina_main.c:669
-#, fuzzy
 msgid "The latest successful connection attempt, or a pre-computed date"
-msgstr "La dernière tentative de connexion réussie, ou une date précalculée."
+msgstr "La dernière tentative de connexion réussie, ou une date précalculée"
 
 #: src/remmina_main.c:671
 #, c-format
@@ -1405,9 +1412,8 @@ msgstr ""
 "big>"
 
 #: src/remmina_file_editor.c:162
-#, fuzzy
 msgid "Input is invalid."
-msgstr "L'entrée n'est pas valide."
+msgstr "L’entrée est incorrecte."
 
 #: src/remmina_file_editor.c:239
 msgid "Choose a Remote Desktop Server"
@@ -1516,20 +1522,20 @@ msgid "Notes"
 msgstr "Notes"
 
 #: src/remmina_file_editor.c:1438
-#, fuzzy, c-format
+#, c-format
 msgid "(%s: %i): Can't validate setting '%s' since 'value' or 'gfe' are NULL!"
 msgstr ""
-"(%s : %i) : Impossible de valider le paramètre '%s] puisque 'value' ou 'gfe' "
-"sont NULL !"
+"(%s : %i) : impossible de valider le paramètre « %s » car « value » ou « gfe "
+"» est à NULL !"
 
 #: src/remmina_file_editor.c:1441
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "(%s: %i): Can't validate user input since 'setting_name_to_validate', "
 "'value' or 'gfe' are NULL!"
 msgstr ""
-"(%s : %i) : Impossible de valider l'entrée utilisateur car "
-"'setting_name_to_validate', 'value' ou 'gfe' sont NULL !"
+"(%s : %i) : impossible de valider l’entrée utilisateur car « "
+"setting_name_to_validate », « value » ou « gfe » est à NULL !"
 
 #. TRANSLATORS: Meta-error. Shouldn't be visible.
 #: src/remmina_file_editor.c:1445 plugins/x2go/x2go_plugin.c:2188
@@ -1539,10 +1545,9 @@ msgstr "Erreur interne."
 
 #: src/remmina_file_editor.c:1667 src/remmina_file_editor.c:1703
 #: src/remmina_file_editor.c:1724 src/remmina_file_editor.c:1747
-#, fuzzy, c-format
-#| msgid "Could not create SFTP session. %s"
+#, c-format
 msgid "Couldn't validate user input. %s"
-msgstr "Impossible de valider la saisie de l'utilisateur. %s"
+msgstr "Impossible de valider la saisie de l’utilisateur. %s"
 
 #: src/remmina_file_editor.c:1691
 msgid "Default settings saved."
@@ -3101,7 +3106,7 @@ msgstr "_Nouveau"
 #. TRANSLATORS: Please stick to X2GoClient's way of translating.
 #: plugins/x2go/x2go_plugin.c:511
 msgid "Terminating X2Go sessions can take a moment."
-msgstr ""
+msgstr "Clore les sessions X2Go peut prendre un certain temps."
 
 #: plugins/x2go/x2go_plugin.c:568
 #, fuzzy
@@ -3183,6 +3188,8 @@ msgid ""
 "GtkTreeModel of session chooser dialog could not be obtained for an unknown "
 "reason."
 msgstr ""
+"Le GtkTreeModel de la boîte de dialogue du sélecteur de session n’a pu être "
+"obtenu pour une raison inconnue."
 
 #: plugins/x2go/x2go_plugin.c:709
 #, fuzzy
@@ -3299,8 +3306,10 @@ msgid "Terminating session: '%s'"
 msgstr "Reprise de la session : '%s'."
 
 #: plugins/x2go/x2go_plugin.c:1142
+#, fuzzy
 msgid "GtkTreePath 'path' describes a non-existing row!"
 msgstr ""
+"Le « chemin d’accès » GtkTreePath fait référence à une entrée inexistante !"
 
 #: plugins/x2go/x2go_plugin.c:1380
 #, fuzzy
@@ -3386,7 +3395,7 @@ msgstr "Suspendu depuis"
 #. TRANSLATORS: Please stick to X2GoClient's translation.
 #: plugins/x2go/x2go_plugin.c:1801
 msgid "Running"
-msgstr ""
+msgstr "En cours"
 
 #. TRANSLATORS: Please stick to X2GoClient's translation.
 #: plugins/x2go/x2go_plugin.c:1804

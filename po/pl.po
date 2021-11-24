@@ -16,8 +16,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-11-24 13:00+0000\n"
-"PO-Revision-Date: 2021-11-23 19:51+0000\n"
+"POT-Creation-Date: 2021-11-24 15:30+0000\n"
+"PO-Revision-Date: 2021-11-24 19:53+0000\n"
 "Last-Translator: Matthaiks <kitynska@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/remmina/remmina/"
 "pl/>\n"
@@ -580,31 +580,29 @@ msgstr ""
 msgid "Encrypt a password"
 msgstr "Zaszyfruj hasło"
 
-#: src/remmina.c:334
+#. TRANSLATORS:
+#. * This link should point to a resource explaining how to get Remmina
+#. * to log more verbose statements.
+#.
+#: src/remmina.c:337
 msgid ""
 "Remmina does not log all output statements. To enable a more verbose output "
-"please use G_MESSAGES_DEBUG=all as an environment variable."
+"please use G_MESSAGES_DEBUG=all as an environment variable.\n"
+"For more information, please visit the Remmina Wiki at:\n"
+"https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgstr ""
 "Remmina nie rejestruje wszystkich instrukcji wyjściowych. Aby włączyć "
 "bardziej szczegółowe dane wyjściowe, użyj zmiennej środowiskowej "
-"G_MESSAGES_DEBUG=all."
-
-#. TRANSLATORS: This link should point to a resource explaining
-#. TRANSLATORS: how to get Remmina to log debug statements.
-#: src/remmina.c:339
-msgid ""
-"For more information, please visit the Remmina Wiki:\n"
-"https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
-msgstr ""
-"Aby uzyskać więcej informacji, odwiedź Remmina Wiki:\n"
+"G_MESSAGES_DEBUG=all.\n"
+"Aby uzyskać więcej informacji, odwiedź witrynę Remmina Wiki pod adresem:\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:390
+#: src/remmina.c:391
 msgid "- or protocol://username:encryptedpassword@host:port"
 msgstr "- lub protocol://username:encryptedpassword@host:port"
 
-#: src/remmina.c:393
+#: src/remmina.c:394
 msgid ""
 "Examples:\n"
 "To connect using an existing connection profile, use:\n"
@@ -2117,7 +2115,7 @@ msgstr "GFX RFX (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2558
 msgid "GFX RFX Progressive (32 bpp)"
-msgstr "GFX RFX Progressive (32 bpp)"
+msgstr "GFX RFX progresywny (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2559
 msgid "RemoteFX (32 bpp)"
@@ -2959,7 +2957,7 @@ msgstr "Wykonaj polecenie"
 
 #: plugins/tool_hello_world/plugin_config.h:40
 msgid "Hello, World!"
-msgstr "Hello, World!"
+msgstr "Hello, world!"
 
 #: plugins/secret/src/glibsecret_plugin.c:188
 msgid "Secured password storage in the GNOME keyring"
@@ -3098,18 +3096,17 @@ msgstr ""
 "powodu."
 
 #: plugins/x2go/x2go_plugin.c:709
-#, fuzzy
-#| msgid "Couldn't get selected row!"
 msgid "Couldn't get currently selected row (session)!"
-msgstr "Nie udało się pobrać wybranego wiersza!"
+msgstr "Nie udało się uzyskać aktualnie wybranego wiersza (sesji)!"
 
 #: plugins/x2go/x2go_plugin.c:725
-#, fuzzy, c-format
-#| msgid "exactly one session should be selected. '%i' rows are selected."
+#, c-format
 msgid ""
 "Exactly one session should be selectable but '%i' rows (sessions) are "
 "selected."
-msgstr "należy wybrać dokładnie jedną sesję. Wybrano wiersze '%i'."
+msgstr ""
+"Należy wybrać dokładnie jedną sesję, ale zaznaczono '%i' wierszy(-e) (sesji(-"
+"e))."
 
 #: plugins/x2go/x2go_plugin.c:764
 msgid "Failed to fill 'GtkTreeIter'."
@@ -4655,6 +4652,13 @@ msgstr "Odblokuj Remminę"
 #: data/ui/remmina_unlock.glade:128
 msgid "Master password"
 msgstr "Główne hasło"
+
+#~ msgid ""
+#~ "For more information, please visit the Remmina Wiki:\n"
+#~ "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
+#~ msgstr ""
+#~ "Aby uzyskać więcej informacji, odwiedź Remmina Wiki:\n"
+#~ "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 
 #~ msgid "_Select session"
 #~ msgstr "_Wybierz sesję"

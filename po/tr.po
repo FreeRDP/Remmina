@@ -14,9 +14,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-11-24 13:00+0000\n"
-"PO-Revision-Date: 2021-11-11 20:01+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"POT-Creation-Date: 2021-11-24 15:30+0000\n"
+"PO-Revision-Date: 2021-11-24 19:53+0000\n"
+"Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/remmina/remmina/"
 "tr/>\n"
 "Language: tr\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.9.1-dev\n"
+"X-Generator: Weblate 4.10-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:04+0000\n"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:354
@@ -414,14 +414,16 @@ msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 msgstr ""
+"https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
+"available-in-a-Wayland-session"
 
 #: src/rcw.c:4509
-#, fuzzy
-#| msgid "Warning: This plugin requires GtkSocket, but it’s not available."
 msgid ""
 "Warning: This plugin requires GtkSocket, but this feature is unavailable in "
 "a Wayland session."
-msgstr "Uyarı: Bu eklenti GtkSocket gerektirir, ancak kullanılabilir değil."
+msgstr ""
+"Uyarı: Bu eklenti GtkSocket gerektirir, ancak bu özellik bir Wayland "
+"oturumunda kullanılamıyor."
 
 #: src/rcw.c:4513
 #, c-format
@@ -432,12 +434,15 @@ msgid ""
 "\n"
 "%s"
 msgstr ""
+"GtkSocket gerektiren eklentiler Wayland oturumunda çalıştırılamıyor.\n"
+"Daha fazla bilgi ve olası bir geçici çözüm için lütfen Remmina Wiki "
+"sayfasını ziyaret edin:\n"
+"\n"
+"%s"
 
 #: src/rcw.c:4528
-#, fuzzy
-#| msgid "Open Main Window"
 msgid "Open in browser"
-msgstr "Ana Pencereyi Aç"
+msgstr "Tarayıcıda aç"
 
 #: src/remmina_mpchange.c:234
 msgid "The passwords do not match"
@@ -569,28 +574,31 @@ msgstr ""
 msgid "Encrypt a password"
 msgstr "Parolayı şifrele"
 
-#: src/remmina.c:334
+#. TRANSLATORS:
+#. * This link should point to a resource explaining how to get Remmina
+#. * to log more verbose statements.
+#.
+#: src/remmina.c:337
 msgid ""
 "Remmina does not log all output statements. To enable a more verbose output "
-"please use G_MESSAGES_DEBUG=all as an environment variable."
-msgstr ""
-
-#. TRANSLATORS: This link should point to a resource explaining
-#. TRANSLATORS: how to get Remmina to log debug statements.
-#: src/remmina.c:339
-msgid ""
-"For more information, please visit the Remmina Wiki:\n"
+"please use G_MESSAGES_DEBUG=all as an environment variable.\n"
+"For more information, please visit the Remmina Wiki at:\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgstr ""
+"Remmina tüm çıktı ifadelerini günlüğe kaydetmez. Daha ayrıntılı bir çıktıyı "
+"etkinleştirmek için lütfen ortam değişkeni olarak G_MESSAGES_DEBUG=all "
+"kullanın.\n"
+"Daha fazla bilgi için lütfen Remmina Wiki sayfasını ziyaret edin:\n"
+"https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:390
+#: src/remmina.c:391
 msgid "- or protocol://username:encryptedpassword@host:port"
 msgstr ""
 "- veya iletisimkurali://kullaniciadi:sifrelenmisparola@anamakine:"
 "baglantinoktasi"
 
-#: src/remmina.c:393
+#: src/remmina.c:394
 msgid ""
 "Examples:\n"
 "To connect using an existing connection profile, use:\n"
@@ -1535,13 +1543,12 @@ msgstr "“%s” dosyası bulunamadı."
 #. TRANSLATORS: This is a message that pops up when an external Remmina plugin tries to set the window resolution using a legacy parameter.
 #. TRANSLATORS: This is a message that pop-up when an external Remmina plugin tries to set the windows resolution using a legacy parameter.
 #: src/remmina_file.c:451 src/remmina_file.c:497
-#, fuzzy
 msgid ""
 "Using the «resolution» parameter in the Remmina preferences file is "
 "deprecated.\n"
 msgstr ""
 "Remmina tercihleri dosyasında «resolution» parametresinin kullanılması "
-"kullanım dışıdır.\n"
+"kullanımdan kaldırılmıştır.\n"
 
 #: src/remmina_icon.c:136
 msgid "Open Main Window"
@@ -1575,9 +1582,8 @@ msgid "Connect to remote desktops through the applet menu"
 msgstr "Uzak masaüstüne küçük uygulama menüsü ile bağlan"
 
 #: src/remmina_icon.c:359
-#, fuzzy
 msgid "StatusNotifier/Appindicator support in “"
-msgstr "\" içinde StatusNotifier/Appindicator desteği"
+msgstr "StatusNotifier/Appindicator desteği - “"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:366
@@ -1594,38 +1600,38 @@ msgstr ""
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:371
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%s not supported natively by your Desktop Environment. libappindicator will "
 "try to fallback to GtkStatusIcon/xembed"
 msgstr ""
-"%s Masaüstü Ortamınız tarafından yerel olarak desteklenmez. libappindicator "
-"GtkStatusIcon/xembed'e geri dönüş yapmaya çalışacak"
+"%s Masaüstü Ortamınız tarafından yerel olarak desteklenmiyor. "
+"libappindicator onun yerine GtkStatusIcon/xembed kullanmaya çalışacak"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:375
-#, fuzzy, c-format
+#, c-format
 msgid "%s You may need to install, and use XApp Status Applet"
-msgstr "%s XApp Durum Uygulaması'ni yüklemeniz ve kullanmanız gerekebilir"
+msgstr "%s XApp Durum Uygulamasını kurmanız ve kullanmanız gerekebilir"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:378
-#, fuzzy, c-format
+#, c-format
 msgid "%s You may need to install, and use KStatusNotifierItem"
-msgstr "%s KStatusNotifierItem'i yüklemeniz ve kullanmanız gerekebilir"
+msgstr "%s KStatusNotifierItem kurmanız ve kullanmanız gerekebilir"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:381
-#, fuzzy, c-format
+#, c-format
 msgid "%s You may need to install, and use XEmbed SNI Proxy"
-msgstr "%s XEmbed SNI Proxy'yi yüklemeniz ve kullanmanız gerekebilir"
+msgstr "%s XEmbed SNI Proxy kurmanız ve kullanmanız gerekebilir"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:384
-#, fuzzy, c-format
+#, c-format
 msgid "%s You may need to install, and use Gnome Shell Extension Appindicator"
 msgstr ""
-"%s Gnome Shell Extension Appindicator'ı yüklemeniz ve kullanmanız gerekebilir"
+"%s Gnome Shell Extension Appindicator kurmanız ve kullanmanız gerekebilir"
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_ssh_plugin.c:539
@@ -2938,7 +2944,7 @@ msgid "Secured password storage in the GNOME keyring"
 msgstr "Gnome Keyring ile güvenli parola deposu"
 
 #: plugins/x2go/x2go_plugin.c:67
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The command-line feature '%s' is not available! Attempting to start PyHoca-"
 "CLI without using this feature…"
@@ -2963,8 +2969,7 @@ msgstr ""
 #: plugins/x2go/x2go_plugin.c:2897 plugins/x2go/x2go_plugin.c:2912
 #: plugins/x2go/x2go_plugin.c:2917 plugins/x2go/x2go_plugin.c:2922
 #: plugins/x2go/x2go_plugin.c:2927
-#, fuzzy, c-format
-#| msgid "Internal error: "
+#, c-format
 msgid "Internal error: %s"
 msgstr "İç hata: %s"
 
@@ -2983,101 +2988,78 @@ msgid "Can't retrieve `DialogData`! Aborting…"
 msgstr "`DialogData` alınamadı! Durduruluyor…"
 
 #: plugins/x2go/x2go_plugin.c:488
-#, fuzzy
-#| msgid "Can't retrieve `DialogData`! Aborting…"
 msgid "Couldn't retrieve valid `DialogData` or `sessions_list`! Aborting…"
-msgstr "Geçerli 'DialogData' veya 'sessions_list' alınamadı! Iptal ediliyor…"
+msgstr "Geçerli `DialogData` veya `sessions_list` alınamadı! Iptal ediliyor…"
 
 #. TRANSLATORS: Stick to x2goclient's translation for terminate.
 #: plugins/x2go/x2go_plugin.c:497
-#, fuzzy
-#| msgid "Terminate"
 msgid "_Terminate"
-msgstr "Sonlandır"
+msgstr "_Sonlandır"
 
 #. TRANSLATORS: Stick to x2goclient's translation for resume.
 #: plugins/x2go/x2go_plugin.c:500
-#, fuzzy
-#| msgid "Resume"
 msgid "_Resume"
-msgstr "Devam"
+msgstr "_Devam"
 
 #: plugins/x2go/x2go_plugin.c:502
-#, fuzzy
 msgid "_New"
-msgstr "Ye_ni"
+msgstr "_Yeni"
 
 #. TRANSLATORS: Tooltip for terminating button inside Session-Chooser-Dialog.
 #. TRANSLATORS: Please stick to X2GoClient's way of translating.
 #: plugins/x2go/x2go_plugin.c:511
 msgid "Terminating X2Go sessions can take a moment."
-msgstr ""
+msgstr "X2Go oturumlarını sonlandırmak biraz zaman alabilir."
 
 #: plugins/x2go/x2go_plugin.c:568
-#, fuzzy
-#| msgid "Display"
 msgid "X Display"
-msgstr "Görüntü"
+msgstr "X Ekranı"
 
 #: plugins/x2go/x2go_plugin.c:569
 msgid "Status"
 msgstr "Durum"
 
 #: plugins/x2go/x2go_plugin.c:570
-#, fuzzy
-#| msgid "Permission"
 msgid "Session ID"
 msgstr "Oturum Kimliği"
 
 #: plugins/x2go/x2go_plugin.c:571
-#, fuzzy
 msgid "Create date"
-msgstr "Tarih oluştur"
+msgstr "Oluşturma tarihi"
 
 #: plugins/x2go/x2go_plugin.c:572
-#, fuzzy
 msgid "Suspended since"
 msgstr "Şu zamandan beri askıya alındı"
 
 #: plugins/x2go/x2go_plugin.c:573
-#, fuzzy
 msgid "Agent PID"
-msgstr "Aracı PID"
+msgstr "Aracı İşlem Kimliği"
 
 #: plugins/x2go/x2go_plugin.c:575
-#, fuzzy
-#| msgid "Username"
 msgid "Hostname"
-msgstr "Bilgisayar ismi"
+msgstr "Ana makine adı"
 
 #: plugins/x2go/x2go_plugin.c:576
-#, fuzzy
 msgid "Cookie"
 msgstr "Çerez"
 
 #: plugins/x2go/x2go_plugin.c:577
-#, fuzzy
 msgid "Graphic port"
-msgstr "Grafik bağlantı noktası"
+msgstr "Grafiksel bağlantı noktası"
 
 #: plugins/x2go/x2go_plugin.c:578
-#, fuzzy
 msgid "SND port"
 msgstr "SND bağlantı noktası"
 
 #: plugins/x2go/x2go_plugin.c:579
-#, fuzzy
-#| msgid "Local SSH port"
 msgid "SSHFS port"
 msgstr "SSHFS bağlantı noktası"
 
 #: plugins/x2go/x2go_plugin.c:582
-#, fuzzy
 msgid "Unknown property"
 msgstr "Bilinmeyen özellik"
 
 #: plugins/x2go/x2go_plugin.c:657 plugins/x2go/x2go_plugin.c:700
-#, fuzzy
 msgid "Couldn't find child GtkTreeView of session chooser dialog."
 msgstr "Oturum seçici iletişim kutusunun alt GtkTreeView'i bulunamadı."
 
@@ -3091,36 +3073,36 @@ msgid ""
 "GtkTreeModel of session chooser dialog could not be obtained for an unknown "
 "reason."
 msgstr ""
+"Oturum seçici iletişim kutusunun GtkTreeModel'i bilinmeyen bir nedenle "
+"alınamadı."
 
 #: plugins/x2go/x2go_plugin.c:709
-#, fuzzy
 msgid "Couldn't get currently selected row (session)!"
-msgstr "Seçili satırdan oturum kimliği alınamadı."
+msgstr "Şu anda seçili satır (oturum) alınamadı!"
 
 #: plugins/x2go/x2go_plugin.c:725
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Exactly one session should be selectable but '%i' rows (sessions) are "
 "selected."
-msgstr "yalnızca bir oturum seçilmelidir."
+msgstr ""
+"Tam olarak bir oturum seçilebilir olmalıdır ancak '%i' satır (oturum) "
+"seçildi."
 
 #: plugins/x2go/x2go_plugin.c:764
-#, fuzzy
 msgid "Failed to fill 'GtkTreeIter'."
 msgstr "'GtkTreeIter' doldurulamadı."
 
 #: plugins/x2go/x2go_plugin.c:776
-#, fuzzy, c-format
+#, c-format
 msgid "Couldn't get property with index '%i' out of selected row."
-msgstr "Seçili satırdan oturum kimliği alınamadı."
+msgstr "Seçilen satırdan '%i' dizinli özellik alınamadı."
 
 #: plugins/x2go/x2go_plugin.c:807
-#, fuzzy
 msgid "parameter 'argv' is 'NULL'."
 msgstr "'argv' parametresi 'NULL'."
 
 #: plugins/x2go/x2go_plugin.c:818
-#, fuzzy
 msgid "parameter 'error' is 'NULL'."
 msgstr "'error' parametresi 'NULL'."
 
@@ -3134,33 +3116,31 @@ msgid "Started PyHoca-CLI with the following arguments:"
 msgstr "PyHoca-CLI aşağıdaki değişkenlerle başlatıldı:"
 
 #: plugins/x2go/x2go_plugin.c:870
-#, fuzzy
 msgid ""
 "The necessary PyHoca-CLI process has encountered a internet connection "
 "problem."
-msgstr ""
-"Gerekli PyHoca-CLI işlemi bir internet bağlantısı sorunuyla karşılaştı."
+msgstr "Gerekli PyHoca-CLI işlemi bir internet bağlantısı sorunuyla karşılaştı."
 
 #: plugins/x2go/x2go_plugin.c:880
-#, fuzzy
-#| msgid "An error occured while starting an X2Go session…"
 msgid "An unknown error occured while trying to start PyHoca-CLI."
-msgstr "PyHoca-CLI başlatılırken bilinmeyen bir hata oluştu."
+msgstr "PyHoca-CLI başlatılmaya çalışılırken bilinmeyen bir hata oluştu."
 
 #: plugins/x2go/x2go_plugin.c:890
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i"
-msgstr "PyHoca-CLI başlatılırken bilinmeyen bir hata oluştu. Çıkış kodu: %i"
+msgstr ""
+"PyHoca-CLI başlatılmaya çalışılırken bilinmeyen bir hata oluştu. Çıkış kodu: "
+"%i"
 
 #: plugins/x2go/x2go_plugin.c:897
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i. "
 "Error: '%s'"
 msgstr ""
-"PyHoca-CLI başlatılırken bilinmeyen bir hata oluştu. Çıkış kodu: %i. Hata: "
-"'%s'"
+"PyHoca-CLI başlatılmaya çalışılırken bilinmeyen bir hata oluştu. Çıkış kodu: "
+"%i. Hata: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:940
 #, fuzzy
@@ -3169,8 +3149,6 @@ msgstr "'default_username' parametresi uninitialized."
 
 #: plugins/x2go/x2go_plugin.c:967 plugins/x2go/x2go_plugin.c:1576
 #: plugins/x2go/x2go_plugin.c:1870
-#, fuzzy
-#| msgid "Shared connection"
 msgid "'Invalid connection data.'"
 msgstr "'Geçersiz bağlantı verisi.'"
 
@@ -3180,29 +3158,27 @@ msgid "Parameter 'session_id' is not initialized!"
 msgstr "'default_username' parametresi uninitialized."
 
 #: plugins/x2go/x2go_plugin.c:1047
-#, fuzzy, c-format
-#| msgid "An error occured while starting an X2Go session…"
+#, c-format
 msgid "An error occured while trying to terminate a X2Go session: %s"
-msgstr "X2Go oturumu başlatılırken hata oluştu…"
+msgstr "Bir X2Go oturumu sonlandırılmaya çalışılırken bir hata oluştu: %s"
 
 #: plugins/x2go/x2go_plugin.c:1094 plugins/x2go/x2go_plugin.c:1118
-#, fuzzy
 msgid "Couldn't get session ID from session chooser dialog."
 msgstr "Oturum seçici iletişim kutusundan oturum kimliği alınamadı."
 
 #: plugins/x2go/x2go_plugin.c:1101
-#, fuzzy, c-format
+#, c-format
 msgid "Resuming session: '%s'"
-msgstr "Oturum devam ediyor: '%s'"
+msgstr "Oturuma devam ediliyor: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:1125
-#, fuzzy, c-format
+#, c-format
 msgid "Terminating session: '%s'"
-msgstr "Oturum devam ediyor: '%s'"
+msgstr "Oturum sonlandırılıyor: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:1142
 msgid "GtkTreePath 'path' describes a non-existing row!"
-msgstr ""
+msgstr "GtkTreePath 'path' var olmayan bir satırı tanımlıyor!"
 
 #: plugins/x2go/x2go_plugin.c:1380
 msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
@@ -3227,8 +3203,6 @@ msgid "Can't save empty username!"
 msgstr "Boş kullanıcı adı kaydedilemiyor!"
 
 #: plugins/x2go/x2go_plugin.c:1446
-#, fuzzy
-#| msgid "Internal error: Could not save new credentials."
 msgid "Could not save new credentials."
 msgstr "Yeni kimlik bilgileri kaydedilemedi."
 
@@ -3250,80 +3224,69 @@ msgid "Enter X2Go credentials"
 msgstr "X2Go kimlik doğrulama bilgilerini gir"
 
 #: plugins/x2go/x2go_plugin.c:1706
-#, fuzzy
 msgid ""
 "Couldn't parse the output of PyHoca-CLI's --list-sessions option. Creating a "
 "new session now."
 msgstr ""
-"PyHoca-CLI'nin --list-sessions seçeneğinin çıktısı ayrıştırılamıyor. Şimdi "
+"PyHoca-CLI'nin --list-sessions seçeneğinin çıktısı ayrıştırılamadı. Şimdi "
 "yeni bir oturum oluşturuluyor."
 
 #: plugins/x2go/x2go_plugin.c:1745
-#, fuzzy
 msgid "Couldn't allocate enough memory!"
-msgstr "Yeterince bellek ayıramadım!"
+msgstr "Yeterli bellek ayrılamadı!"
 
 #: plugins/x2go/x2go_plugin.c:1755
-#, fuzzy, c-format
+#, c-format
 msgid "Found already existing X2Go session with ID: '%s'"
-msgstr "Kimliği olan mevcut X2Go oturumu bulundu: '%s'"
+msgstr "'%s' kimliğine sahip zaten mevcut X2Go oturumu bulundu"
 
 #. TRANSLATORS: Please stick to X2GoClient's translation.
 #: plugins/x2go/x2go_plugin.c:1798
-#, fuzzy
 msgid "Suspended"
-msgstr "Şu zamandan beri askıya alındı"
+msgstr "Bekletiliyor"
 
 #. TRANSLATORS: Please stick to X2GoClient's translation.
 #: plugins/x2go/x2go_plugin.c:1801
 msgid "Running"
-msgstr ""
+msgstr "Çalışıyor"
 
 #. TRANSLATORS: Please stick to X2GoClient's translation.
 #: plugins/x2go/x2go_plugin.c:1804
-#, fuzzy
-#| msgid "Terminate"
 msgid "Terminated"
-msgstr "Sonlandır"
+msgstr "Sonlandırıldı"
 
 #: plugins/x2go/x2go_plugin.c:1837
-#, fuzzy
 msgid ""
 "Could not find any sessions on remote machine. Creating a new session now."
 msgstr "Uzak makinede oturum bulunamadı. Şimdi yeni bir oturum oluşturuluyor."
 
 #: plugins/x2go/x2go_plugin.c:1892
-#, fuzzy
-#| msgid "Choose a file to upload"
 msgid "Choose a session to resume:"
-msgstr "Devam edilecek oturumu seçin:"
+msgstr "Devam etmek için bir oturum seçin:"
 
 #: plugins/x2go/x2go_plugin.c:1935
-#, fuzzy
-#| msgid "Waiting for PyHoca-CLI to show the session's window…"
 msgid "Waiting for user to select a session…"
-msgstr "Kullanıcının oturum seçmesi bekleniyor…"
+msgstr "Kullanıcının bir oturum seçmesi bekleniyor…"
 
 #: plugins/x2go/x2go_plugin.c:1943
-#, fuzzy
 msgid "No session was selected. Creating a new one."
-msgstr "Hiçbir oturum seçilmedi. Yeni bir tane yaratmak."
+msgstr "Hiçbir oturum seçilmedi. Yeni bir tane oluşturuluyor."
 
 #: plugins/x2go/x2go_plugin.c:1991
-#, fuzzy, c-format
+#, c-format
 msgid "A non-critical error happened: %s"
 msgstr "Kritik olmayan bir hata oluştu: %s"
 
 #: plugins/x2go/x2go_plugin.c:1996
-#, fuzzy, c-format
+#, c-format
 msgid "User chose to resume session with ID: '%s'"
-msgstr "Kullanıcı oturuma kimlikle devam etmeyi seçti: '%s'"
+msgstr "Kullanıcı, '%s' kimliğine sahip oturuma devam etmeyi seçti"
 
 #. TRANSLATORS: Please stick to X2GoClient's way of translating.
 #: plugins/x2go/x2go_plugin.c:2017
-#, fuzzy, c-format
+#, c-format
 msgid "Resuming session '%s'…"
-msgstr "'%s' oturumu devam ediyor…"
+msgstr "'%s' oturumuna devam ediliyor…"
 
 #: plugins/x2go/x2go_plugin.c:2148
 msgid "DPI setting is out of bounds. Please adjust it in profile settings."
@@ -3390,8 +3353,6 @@ msgid "No X2Go session window appeared. Something went wrong…"
 msgstr "X2Go oturum penceresi görünmedi. Bir şeyler ters gitti…"
 
 #: plugins/x2go/x2go_plugin.c:2670
-#, fuzzy
-#| msgid "Internal error: RemminaProtocolWidget* gp is NULL!"
 msgid "RemminaProtocolWidget* gp is 'NULL'!"
 msgstr "RemminaProtocolWidget* gp 'NULL'!"
 
@@ -3447,9 +3408,8 @@ msgid "Validation data in ProtocolSettings array is invalid!"
 msgstr "ProtocolSettings dizgesindeki doğrulama verisi geçersiz!"
 
 #: plugins/x2go/x2go_plugin.c:2816
-#, fuzzy
 msgid "Parameters 'key' or 'value' are 'NULL'!"
-msgstr "'Key' veya 'value' parametreleri 'NULL'!"
+msgstr "'key' veya 'value' parametresi 'NULL'!"
 
 #: plugins/x2go/x2go_plugin.c:2834
 #, c-format
@@ -3475,8 +3435,6 @@ msgstr "Alt sınır çok düşük!"
 
 #: plugins/x2go/x2go_plugin.c:2898 plugins/x2go/x2go_plugin.c:2928
 #: plugins/x2go/x2go_plugin.c:2948
-#, fuzzy
-#| msgid "Something went wrong."
 msgid "Something unknown went wrong."
 msgstr "Bilinmeyen bir şeyler ters gitti."
 

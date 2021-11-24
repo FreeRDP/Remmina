@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-11-24 13:00+0000\n"
+"POT-Creation-Date: 2021-11-24 15:30+0000\n"
 "PO-Revision-Date: 2021-11-23 19:51+0000\n"
 "Last-Translator: gogogogi <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -575,30 +575,30 @@ msgstr ""
 msgid "Encrypt a password"
 msgstr "Šifriraj lozinku"
 
-#: src/remmina.c:334
+#. TRANSLATORS:
+#. * This link should point to a resource explaining how to get Remmina
+#. * to log more verbose statements.
+#.
+#: src/remmina.c:337
+#, fuzzy
+#| msgid ""
+#| "Remmina does not log all output statements. To enable a more verbose "
+#| "output please use G_MESSAGES_DEBUG=all as an environment variable."
 msgid ""
 "Remmina does not log all output statements. To enable a more verbose output "
-"please use G_MESSAGES_DEBUG=all as an environment variable."
+"please use G_MESSAGES_DEBUG=all as an environment variable.\n"
+"For more information, please visit the Remmina Wiki at:\n"
+"https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgstr ""
 "Remmina ne bilježi sve izlazne izjave. Za omogućavanje opširnijeg bilježenja "
 "koiristite G_MESSAGES_DEBUG=all kao varijablu okruženja."
 
-#. TRANSLATORS: This link should point to a resource explaining
-#. TRANSLATORS: how to get Remmina to log debug statements.
-#: src/remmina.c:339
-msgid ""
-"For more information, please visit the Remmina Wiki:\n"
-"https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
-msgstr ""
-"Za više informacija, posjetite Remmina Wiki:\n"
-"https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
-
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:390
+#: src/remmina.c:391
 msgid "- or protocol://username:encryptedpassword@host:port"
 msgstr "- ili protokol://korisničko ime:šifrirana lozinka@računalo:ulaz"
 
-#: src/remmina.c:393
+#: src/remmina.c:394
 msgid ""
 "Examples:\n"
 "To connect using an existing connection profile, use:\n"
@@ -4626,6 +4626,13 @@ msgstr "Otključaj Remminu"
 #: data/ui/remmina_unlock.glade:128
 msgid "Master password"
 msgstr "Glavna lozinka"
+
+#~ msgid ""
+#~ "For more information, please visit the Remmina Wiki:\n"
+#~ "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
+#~ msgstr ""
+#~ "Za više informacija, posjetite Remmina Wiki:\n"
+#~ "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 
 #~ msgid "_Select session"
 #~ msgstr "_Odaberi sesiju"
