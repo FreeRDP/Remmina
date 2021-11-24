@@ -706,13 +706,13 @@ static GtkTreePath* rmplugin_x2go_session_chooser_get_selected_row(GtkWidget *di
 	if (!selection) {
 		REMMINA_PLUGIN_CRITICAL("%s", g_strdup_printf(
 			_("Internal error: %s"),
-			_("Couldn't get selected row!")
+			_("Couldn't get currently selected row (session)!")
 		));
 		return NULL;
 	}
 
-	GtkTreeModel *model = rmplugin_x2go_session_chooser_get_model(NULL,
-								 GTK_TREE_VIEW(treeview));
+	GtkTreeModel *model = rmplugin_x2go_session_chooser_get_model(
+							  NULL, GTK_TREE_VIEW(treeview));
 	if (!model) return NULL; // error message was already handled.
 
 	GList *selected_rows = gtk_tree_selection_get_selected_rows(selection, &model);
@@ -722,7 +722,8 @@ static GtkTreePath* rmplugin_x2go_session_chooser_get_selected_row(GtkWidget *di
 	if (selected_rows_num != 1) {
 		REMMINA_PLUGIN_CRITICAL("%s", g_strdup_printf(
 			_("Internal error: %s"), g_strdup_printf(
-			_("exactly one session should be selected. '%i' rows are selected."),
+			_("Exactly one session should be selectable but '%i' rows "
+			  "(sessions) are selected."),
 			selected_rows_num
 		)));
 		return NULL;
