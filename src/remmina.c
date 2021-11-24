@@ -330,14 +330,15 @@ int main(int argc, char *argv[])
 	// Give the less familiar with GLib a tip on where to get
 	// more debugging information.
 	if(!getenv("G_MESSAGES_DEBUG")) {
-		g_message(g_strdup_printf("%s\n%s\n",
-			  _("Remmina does not log all output statements. To enable a "
+		/* TRANSLATORS:
+		 * This link should point to a resource explaining how to get Remmina
+		 * to log more verbose statements.
+		 */
+		g_message(_("Remmina does not log all output statements. To enable a "
 			    "more verbose output please use G_MESSAGES_DEBUG=all as an "
-			    "environment variable."),
-			  // TRANSLATORS: This link should point to a resource explaining
-			  // TRANSLATORS: how to get Remmina to log debug statements.
-			  _("For more information, please visit the Remmina Wiki:\n"
-			    "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging")
+			    "environment variable.\n"
+			    "For more information, please visit the Remmina Wiki at:\n"
+			    "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 		));
 	}
 
