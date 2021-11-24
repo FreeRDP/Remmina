@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Remmina v1.4.3\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-11-23 15:47+0000\n"
-"PO-Revision-Date: 2021-11-13 11:50+0000\n"
+"PO-Revision-Date: 2021-11-24 02:52+0000\n"
 "Last-Translator: phlostically <phlostically@mailinator.com>\n"
 "Language-Team: Esperanto <https://hosted.weblate.org/projects/remmina/"
 "remmina/eo/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.9.1-dev\n"
+"X-Generator: Weblate 4.10-dev\n"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:354
 #: src/remmina_protocol_widget.c:1677 src/remmina_protocol_widget.c:1696
@@ -408,15 +408,16 @@ msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 msgstr ""
+"https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
+"available-in-a-Wayland-session"
 
 #: src/rcw.c:4509
-#, fuzzy
-#| msgid "Warning: This plugin requires GtkSocket, but it’s not available."
 msgid ""
 "Warning: This plugin requires GtkSocket, but this feature is unavailable in "
 "a Wayland session."
 msgstr ""
-"Averto: Ĉi tiu kromprogramo postulas GtkSocket, sed ĝi ne estas disponebla."
+"Averto: Ĉi tiu kromprogramo postulas GtkSocket, sed ĝi ne estas disponebla "
+"en seanco de Wayland."
 
 #: src/rcw.c:4513
 #, c-format
@@ -429,10 +430,8 @@ msgid ""
 msgstr ""
 
 #: src/rcw.c:4528
-#, fuzzy
-#| msgid "Open Main Window"
 msgid "Open in browser"
-msgstr "Malfermi Ĉeffenestron"
+msgstr "Malfermi per TTT-legilo"
 
 #: src/remmina_mpchange.c:234
 msgid "The passwords do not match"
@@ -565,30 +564,22 @@ msgid "Encrypt a password"
 msgstr "Ĉifri pasvorton"
 
 #: src/remmina.c:334
-#, fuzzy
-#| msgid ""
-#| "Remmina does not log all output statements. To enable a more verbose "
-#| "output please use G_MESSAGES_DEBUG=all as an environment variable. "
 msgid ""
 "Remmina does not log all output statements. To enable a more verbose output "
 "please use G_MESSAGES_DEBUG=all as an environment variable."
 msgstr ""
 "Remmina ne registras ĉiom da eligeblaĵoj. Por ŝalti pli detalajn eligaĵojn, "
-"bonvolu uzi la medivariablon «G_MESSAGES_DEBUG=all». "
+"bonvolu uzi la medivariablon «G_MESSAGES_DEBUG=all»."
 
 #. TRANSLATORS: This link should point to a resource explaining
 #. TRANSLATORS: how to get Remmina to log debug statements.
 #: src/remmina.c:339
-#, fuzzy
-#| msgid ""
-#| "For more information, please visit the Remmina Wiki: https://gitlab.com/"
-#| "Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgid ""
 "For more information, please visit the Remmina Wiki:\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgstr ""
-"Por pliaj informoj, bonvolu viziti la retejon de Remmina: https://gitlab.com/"
-"Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
+"Por pliaj informoj, bonvolu viziti la retejon de Remmina:\n"
+"https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:390
@@ -2974,10 +2965,8 @@ msgstr "Interna eraro: %s"
 
 #: plugins/x2go/x2go_plugin.c:288 plugins/x2go/x2go_plugin.c:420
 #: plugins/x2go/x2go_plugin.c:479 plugins/x2go/x2go_plugin.c:1077
-#, fuzzy
-#| msgid "Parameter 'default_username' is uninitialized."
 msgid "Parameter 'custom_data' is not initialized!"
-msgstr "La parametro «default_username» estas ne praŝargita."
+msgstr "La parametro «custom_data» estas ne praŝargita!"
 
 #: plugins/x2go/x2go_plugin.c:301
 msgid "Broken `DialogData`! Aborting…"
@@ -2993,17 +2982,13 @@ msgstr "Ne eblas akiri validan `DialogData` aŭ `sessions_list`! Kolapsante…"
 
 #. TRANSLATORS: Stick to x2goclient's translation for terminate.
 #: plugins/x2go/x2go_plugin.c:497
-#, fuzzy
-#| msgid "Terminate"
 msgid "_Terminate"
-msgstr "Haltigi"
+msgstr "Hal_tigi"
 
 #. TRANSLATORS: Stick to x2goclient's translation for resume.
 #: plugins/x2go/x2go_plugin.c:500
-#, fuzzy
-#| msgid "Resume"
 msgid "_Resume"
-msgstr "Daŭrigi"
+msgstr "Daŭ_rigi"
 
 #: plugins/x2go/x2go_plugin.c:502
 msgid "_New"
@@ -3071,10 +3056,8 @@ msgstr ""
 "Ne eblis trovi idan objekton «GtkTreeView» de la seanco-elekta dialogo."
 
 #: plugins/x2go/x2go_plugin.c:669
-#, fuzzy
-#| msgid "parameter 'env' is either invalid or uninitialized."
 msgid "Both parameters 'dialog' and 'treeview' are uninitialized!"
-msgstr "la parametro «env» estas aŭ ne valida aŭ ne praŝargita."
+msgstr "Ambaŭ parametroj «dialog» kaj «treeview» estas ne praŝargitaj!"
 
 #: plugins/x2go/x2go_plugin.c:677
 msgid ""
@@ -3083,10 +3066,8 @@ msgid ""
 msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:709
-#, fuzzy
-#| msgid "Couldn't get session ID out of selected row."
 msgid "Couldn't get selected row!"
-msgstr "Ne eblis akiri seancan identigilon el la elektita vico."
+msgstr "Ne eblis akiri la elektitan vicon!"
 
 #: plugins/x2go/x2go_plugin.c:725
 #, fuzzy, c-format
@@ -3145,10 +3126,8 @@ msgstr ""
 "Nekonata eraro okazis dum provo lanĉi PyHoca-CLI. Elirkodo: %i. Eraro: «%s»"
 
 #: plugins/x2go/x2go_plugin.c:939
-#, fuzzy
-#| msgid "Parameter 'default_username' is uninitialized."
 msgid "Parameter 'custom_data' is not fully initialized!"
-msgstr "La parametro «default_username» estas ne praŝargita."
+msgstr "La parametro «custom_data» estas ne plene praŝargita!"
 
 #: plugins/x2go/x2go_plugin.c:966 plugins/x2go/x2go_plugin.c:1575
 #: plugins/x2go/x2go_plugin.c:1869
@@ -3156,10 +3135,8 @@ msgid "'Invalid connection data.'"
 msgstr "«Nevalidaj konektaj datenoj.»"
 
 #: plugins/x2go/x2go_plugin.c:980
-#, fuzzy
-#| msgid "Parameter 'default_username' is uninitialized."
 msgid "Parameter 'session_id' is not initialized!"
-msgstr "La parametro «default_username» estas ne praŝargita."
+msgstr "La parametro «session_id» estas ne praŝargita!"
 
 #: plugins/x2go/x2go_plugin.c:1046
 #, fuzzy, c-format

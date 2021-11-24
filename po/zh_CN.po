@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-11-23 15:47+0000\n"
-"PO-Revision-Date: 2021-11-13 11:50+0000\n"
+"PO-Revision-Date: 2021-11-24 02:52+0000\n"
 "Last-Translator: Eric <spice2wolf@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "remmina/remmina/zh_Hans/>\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.9.1-dev\n"
+"X-Generator: Weblate 4.10-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:04+0000\n"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:354
@@ -410,14 +410,14 @@ msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 msgstr ""
+"https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
+"available-in-a-Wayland-session"
 
 #: src/rcw.c:4509
-#, fuzzy
-#| msgid "Warning: This plugin requires GtkSocket, but it’s not available."
 msgid ""
 "Warning: This plugin requires GtkSocket, but this feature is unavailable in "
 "a Wayland session."
-msgstr "警告：此插件需要 GtkSocket，但它不可用。"
+msgstr "警告：此插件需要 GtkSocket，但此功能在 Wayland 会话中不可用。"
 
 #: src/rcw.c:4513
 #, c-format
@@ -428,12 +428,14 @@ msgid ""
 "\n"
 "%s"
 msgstr ""
+"依赖 GtkSocket 的插件无法在 Wayland 会话中运行。\n"
+"有关更多信息和可能的解决方法，请访问 Remmina Wiki，网址为：\n"
+"\n"
+"%s"
 
 #: src/rcw.c:4528
-#, fuzzy
-#| msgid "Open Main Window"
 msgid "Open in browser"
-msgstr "打开主窗口"
+msgstr "在浏览器中打开"
 
 #: src/remmina_mpchange.c:234
 msgid "The passwords do not match"
@@ -561,30 +563,20 @@ msgid "Encrypt a password"
 msgstr "加密一个密码"
 
 #: src/remmina.c:334
-#, fuzzy
-#| msgid ""
-#| "Remmina does not log all output statements. To enable a more verbose "
-#| "output please use G_MESSAGES_DEBUG=all as an environment variable. "
 msgid ""
 "Remmina does not log all output statements. To enable a more verbose output "
 "please use G_MESSAGES_DEBUG=all as an environment variable."
-msgstr ""
-"Remmina 不会记录所有输出语句。 要启用更详细的输出，请使用 "
-"G_MESSAGES_DEBUG=all 作为环境变量。 "
+msgstr "Remmina 不会记录所有输出语句。 要启用更详细的输出，请使用 G_MESSAGES_DEBUG=all 作为环境变量。"
 
 #. TRANSLATORS: This link should point to a resource explaining
 #. TRANSLATORS: how to get Remmina to log debug statements.
 #: src/remmina.c:339
-#, fuzzy
-#| msgid ""
-#| "For more information, please visit the Remmina Wiki: https://gitlab.com/"
-#| "Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgid ""
 "For more information, please visit the Remmina Wiki:\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgstr ""
-"更多信息，请访问 Remmina Wiki：https://gitlab.com/Remmina/Remmina/-/wikis/"
-"Usage/Remmina-debugging"
+"更多信息，请访问 Remmina Wiki：\n"
+"https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:390
@@ -2950,10 +2942,8 @@ msgstr "内部错误：%s"
 
 #: plugins/x2go/x2go_plugin.c:288 plugins/x2go/x2go_plugin.c:420
 #: plugins/x2go/x2go_plugin.c:479 plugins/x2go/x2go_plugin.c:1077
-#, fuzzy
-#| msgid "Parameter 'default_username' is uninitialized."
 msgid "Parameter 'custom_data' is not initialized!"
-msgstr "参数 'default_username' 未被初始化。"
+msgstr "参数 'custom_data' 未被初始化！"
 
 #: plugins/x2go/x2go_plugin.c:301
 msgid "Broken `DialogData`! Aborting…"
@@ -2969,17 +2959,13 @@ msgstr "无法获取有效的`DialogData`或`sessions_list`！正在中止…"
 
 #. TRANSLATORS: Stick to x2goclient's translation for terminate.
 #: plugins/x2go/x2go_plugin.c:497
-#, fuzzy
-#| msgid "Terminate"
 msgid "_Terminate"
-msgstr "终止"
+msgstr "终止(_T)"
 
 #. TRANSLATORS: Stick to x2goclient's translation for resume.
 #: plugins/x2go/x2go_plugin.c:500
-#, fuzzy
-#| msgid "Resume"
 msgid "_Resume"
-msgstr "恢复"
+msgstr "恢复(_R)"
 
 #: plugins/x2go/x2go_plugin.c:502
 msgid "_New"
@@ -2989,13 +2975,11 @@ msgstr "新建(_N)"
 #. TRANSLATORS: Please stick to X2GoClient's way of translating.
 #: plugins/x2go/x2go_plugin.c:511
 msgid "Terminating X2Go sessions can take a moment."
-msgstr ""
+msgstr "终止 X2Go 会话可能需要一些时间。"
 
 #: plugins/x2go/x2go_plugin.c:568
-#, fuzzy
-#| msgid "Display"
 msgid "X Display"
-msgstr "显示"
+msgstr "X Display"
 
 #: plugins/x2go/x2go_plugin.c:569
 msgid "Status"
@@ -3046,38 +3030,32 @@ msgid "Couldn't find child GtkTreeView of session chooser dialog."
 msgstr "找不到会话选择器对话框的子 GtkTreeView。"
 
 #: plugins/x2go/x2go_plugin.c:669
-#, fuzzy
-#| msgid "parameter 'env' is either invalid or uninitialized."
 msgid "Both parameters 'dialog' and 'treeview' are uninitialized!"
-msgstr "参数 'env' 无效或未被初始化。"
+msgstr "参数 'dialog' 和 'treeview' 均未初始化！"
 
 #: plugins/x2go/x2go_plugin.c:677
 msgid ""
 "GtkTreeModel of session chooser dialog could not be obtained for an unknown "
 "reason."
-msgstr ""
+msgstr "由于未知原因，无法获取会话选择器对话框的 GtkTreeModel。"
 
 #: plugins/x2go/x2go_plugin.c:709
-#, fuzzy
-#| msgid "Couldn't get session ID out of selected row."
 msgid "Couldn't get selected row!"
-msgstr "无法从选定的行中获取会话 ID。"
+msgstr "无法获取所选行！"
 
 #: plugins/x2go/x2go_plugin.c:725
-#, fuzzy, c-format
-#| msgid "only one session should be able to be selected."
+#, c-format
 msgid "exactly one session should be selected. '%i' rows are selected."
-msgstr "应该只能选择一个会话。"
+msgstr "应该只选择一个会话。实际选中了“%i”行。"
 
 #: plugins/x2go/x2go_plugin.c:763
 msgid "Failed to fill 'GtkTreeIter'."
 msgstr "填充 'GtkTreeIter' 失败。"
 
 #: plugins/x2go/x2go_plugin.c:775
-#, fuzzy, c-format
-#| msgid "Couldn't get session ID out of selected row."
+#, c-format
 msgid "Couldn't get property with index '%i' out of selected row."
-msgstr "无法从选定的行中获取会话 ID。"
+msgstr "无法从选定的行中获取索引 '%i'的属性。"
 
 #: plugins/x2go/x2go_plugin.c:806
 msgid "parameter 'argv' is 'NULL'."
@@ -3119,10 +3097,8 @@ msgid ""
 msgstr "尝试启动PyHoca-CLI时发生了一个未知的错误。退出代码：%i。错误：'%s'"
 
 #: plugins/x2go/x2go_plugin.c:939
-#, fuzzy
-#| msgid "Parameter 'default_username' is uninitialized."
 msgid "Parameter 'custom_data' is not fully initialized!"
-msgstr "参数 'default_username' 未被初始化。"
+msgstr "参数 'custom_data' 未完全初始化！"
 
 #: plugins/x2go/x2go_plugin.c:966 plugins/x2go/x2go_plugin.c:1575
 #: plugins/x2go/x2go_plugin.c:1869
@@ -3130,16 +3106,13 @@ msgid "'Invalid connection data.'"
 msgstr "'无效的连接数据'"
 
 #: plugins/x2go/x2go_plugin.c:980
-#, fuzzy
-#| msgid "Parameter 'default_username' is uninitialized."
 msgid "Parameter 'session_id' is not initialized!"
-msgstr "参数 'default_username' 未被初始化。"
+msgstr "参数 'session_id' 未初始化！"
 
 #: plugins/x2go/x2go_plugin.c:1046
-#, fuzzy, c-format
-#| msgid "An error occured while starting an X2Go session…"
+#, c-format
 msgid "An error occured while trying to terminate a X2Go session: %s"
-msgstr "启动 X2Go 会话时发生了一个错误…"
+msgstr "尝试终止 X2Go 会话时发生错误：%s"
 
 #: plugins/x2go/x2go_plugin.c:1093 plugins/x2go/x2go_plugin.c:1117
 msgid "Couldn't get session ID from session chooser dialog."
@@ -3151,14 +3124,13 @@ msgid "Resuming session: '%s'"
 msgstr "恢复会话：'%s'"
 
 #: plugins/x2go/x2go_plugin.c:1124
-#, fuzzy, c-format
-#| msgid "Resuming session: '%s'"
+#, c-format
 msgid "Terminating session: '%s'"
-msgstr "恢复会话：'%s'"
+msgstr "正在终止会话：'%s'"
 
 #: plugins/x2go/x2go_plugin.c:1141
 msgid "GtkTreePath 'path' describes a non-existing row!"
-msgstr ""
+msgstr "GtkTreePath 'path' 描述了一个不存在的行！"
 
 #: plugins/x2go/x2go_plugin.c:1379
 msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
@@ -3218,22 +3190,18 @@ msgstr "发现已经存在的 X2Go 会话的ID：'%s'"
 
 #. TRANSLATORS: Please stick to X2GoClient's translation.
 #: plugins/x2go/x2go_plugin.c:1797
-#, fuzzy
-#| msgid "Suspended since"
 msgid "Suspended"
-msgstr "自下列日期以来停用"
+msgstr "已停用"
 
 #. TRANSLATORS: Please stick to X2GoClient's translation.
 #: plugins/x2go/x2go_plugin.c:1800
 msgid "Running"
-msgstr ""
+msgstr "运行中"
 
 #. TRANSLATORS: Please stick to X2GoClient's translation.
 #: plugins/x2go/x2go_plugin.c:1803
-#, fuzzy
-#| msgid "Terminate"
 msgid "Terminated"
-msgstr "终止"
+msgstr "已终止"
 
 #: plugins/x2go/x2go_plugin.c:1836
 msgid ""
