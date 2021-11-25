@@ -2167,7 +2167,7 @@ static gboolean rmplugin_x2go_exec_x2go(gchar *host,
 						     NULL, &gpdata->pidx2go,
 						     NULL, NULL, NULL, &error);
 
-	REMMINA_PLUGIN_INFO("%s", _("Started pyhoca-cli with following arguments:"));
+	REMMINA_PLUGIN_INFO("%s", _("Started PyHoca-CLI with the following arguments:"));
 	// Print every argument except passwords. Free all arg strings.
 	for (gint i = 0; i < argc - 1; i++) {
 		if (g_strcmp0(argv[i], "--password") == 0) {
