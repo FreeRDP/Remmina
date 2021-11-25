@@ -20,7 +20,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-11-24 15:30+0000\n"
-"PO-Revision-Date: 2021-11-24 19:53+0000\n"
+"PO-Revision-Date: 2021-11-25 13:50+0000\n"
 "Last-Translator: Davy Defaud <davy.defaud@free.fr>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/remmina/remmina/"
 "fr/>\n"
@@ -1592,12 +1592,11 @@ msgstr "Le fichier « %s » est introuvable."
 #. TRANSLATORS: This is a message that pops up when an external Remmina plugin tries to set the window resolution using a legacy parameter.
 #. TRANSLATORS: This is a message that pop-up when an external Remmina plugin tries to set the windows resolution using a legacy parameter.
 #: src/remmina_file.c:451 src/remmina_file.c:497
-#, fuzzy
 msgid ""
 "Using the «resolution» parameter in the Remmina preferences file is "
 "deprecated.\n"
 msgstr ""
-"L'utilisation du paramètre \"résolution\" dans le fichier de préférences "
+"L’utilisation du paramètre « résolution » dans le fichier de préférences de "
 "Remmina est obsolète.\n"
 
 #: src/remmina_icon.c:136
@@ -1632,57 +1631,57 @@ msgid "Connect to remote desktops through the applet menu"
 msgstr "Se connecter aux bureaux distants via le menu de l’appliquette"
 
 #: src/remmina_icon.c:359
-#, fuzzy
 msgid "StatusNotifier/Appindicator support in “"
-msgstr "Support des StatusNotifier/Appindicator dans \""
+msgstr "Prise en charge des StatusNotifier et Appindicator dans «"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:366
-#, fuzzy, c-format
+#, c-format
 msgid "%s your desktop does support it"
-msgstr "%s votre ordinateur le supporte."
+msgstr "%s votre environnement de bureau le prend en charge"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:368
-#, fuzzy, c-format
+#, c-format
 msgid "%s and Remmina has built-in (compiled) support for libappindicator."
-msgstr "%s et Remmina a un support intégré (compilé) pour libappindicator."
+msgstr "%s et Remmina intègre la prise en charge de libappindicator."
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:371
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%s not supported natively by your Desktop Environment. libappindicator will "
 "try to fallback to GtkStatusIcon/xembed"
 msgstr ""
-"%s n'est pas supporté en natif par votre environnement de bureau. "
+"%s n’est pas géré nativement par votre environnement de bureau. "
 "libappindicator essaiera de se rabattre sur GtkStatusIcon/xembed."
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:375
-#, fuzzy, c-format
+#, c-format
 msgid "%s You may need to install, and use XApp Status Applet"
-msgstr "%s Vous devrez peut-être installer et utiliser l'applet d'état XApp."
+msgstr ""
+"%s Vous devrez peut‐être installer et utiliser l’appliquette d’état XApp"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:378
-#, fuzzy, c-format
+#, c-format
 msgid "%s You may need to install, and use KStatusNotifierItem"
-msgstr "%s Vous devrez peut-être installer et utiliser KStatusNotifierItem."
+msgstr "%s Vous devrez peut‐être installer et utiliser KStatusNotifierItem."
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:381
-#, fuzzy, c-format
+#, c-format
 msgid "%s You may need to install, and use XEmbed SNI Proxy"
-msgstr "%s Vous devrez peut-être installer et utiliser le proxy SNI de XEmbed."
+msgstr "%s Vous devrez peut‐être installer et utiliser XEmbed SNI Proxy"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:384
-#, fuzzy, c-format
+#, c-format
 msgid "%s You may need to install, and use Gnome Shell Extension Appindicator"
 msgstr ""
-"%s Vous pouvez avoir besoin d'installer et d'utiliser l'extension "
-"Appindicator de Gnome Shell."
+"%s Vous pouvez avoir besoin d’installer et d’utiliser l’extension "
+"AppIndicator de GNOME Shell."
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_ssh_plugin.c:539
@@ -1910,22 +1909,20 @@ msgid "Use client keyboard mapping"
 msgstr "Utiliser la disposition clavier du client"
 
 #: plugins/rdp/rdp_settings.c:468
-#, fuzzy
-#| msgid "Keyboard mapping"
 msgid "Keyboard scancode remapping"
-msgstr "Remplacement du scancode du clavier"
+msgstr "Transcription des codes clavier"
 
 #: plugins/rdp/rdp_settings.c:483
-#, fuzzy
 msgid "List of key=value,… pairs to remap scancodes. E.g. 0x56=0x29,0x29=0x56"
 msgstr ""
-"Liste de paires clé=valeur,... pour remapper les scancodes. Par exemple : "
-"0x56=0x29,0x29=0x56"
+"Liste de paires clef=valeur séparées par des virgules permettant de "
+"transcrire les codes clavier, p. ex. 0x56=0x29,0x29=0x56"
 
 #: plugins/rdp/rdp_settings.c:486
-#, fuzzy
 msgid "FreeRDP > 2.3.0 is required to map scancodes"
-msgstr "FreeRDP > 2.3.0 est nécessaire pour mapper les scancodes."
+msgstr ""
+"La transcription des codes clavier nécessite au moins une version 2.3.0 de "
+"FreeRDP"
 
 #: plugins/rdp/rdp_settings.c:494
 msgid "Quality settings"
@@ -2128,16 +2125,13 @@ msgid "The “%s” server refused the connection."
 msgstr "Le serveur « %s » a refusé la connexion."
 
 #: plugins/rdp/rdp_plugin.c:2201
-#, fuzzy, c-format
-#| msgid ""
-#| "The Remote Desktop Gateway “%s” denied the user \"%s\\%s\" access due to "
-#| "policy."
+#, c-format
 msgid ""
 "The Remote Desktop Gateway “%s” denied the user “%s\\%s” access due to "
 "policy."
 msgstr ""
-"La passerelle de bureau à distance « %s » a refusé l’accès à l’utilisateur "
-"« %s\\%s » en raison de sa politique de sécurité."
+"La passerelle de bureau à distance « %s » a refusé l’accès à l’utilisateur « "
+"%s\\%s » en raison de sa politique de sécurité."
 
 #: plugins/rdp/rdp_plugin.c:2211
 #, c-format
@@ -2329,12 +2323,6 @@ msgstr ""
 "la valeur la plus élevée possible est de 600 000 ms (10 minutes).\n"
 
 #: plugins/rdp/rdp_plugin.c:2676
-#, fuzzy
-#| msgid ""
-#| "Performance optimisations based on the network connection type:\n"
-#| "Using auto-detection is advised.\n"
-#| "If \"Auto-detect\" fails, choose the most appropriate option in the "
-#| "list.\n"
 msgid ""
 "Performance optimisations based on the network connection type:\n"
 "Using auto-detection is advised.\n"
@@ -2403,18 +2391,14 @@ msgstr ""
 "répertoires multiples"
 
 #: plugins/rdp/rdp_plugin.c:2726
-#, fuzzy
 msgid "Restricted admin mode"
 msgstr "Mode admin restreint"
 
 #: plugins/rdp/rdp_plugin.c:2727
-#, fuzzy
-#| msgid "Password"
 msgid "Password hash"
 msgstr "Hachage du mot de passe"
 
 #: plugins/rdp/rdp_plugin.c:2727
-#, fuzzy
 msgid "Restricted admin mode password hash"
 msgstr "Hachage du mot de passe du mode admin restreint"
 
@@ -2881,7 +2865,6 @@ msgstr ""
 "    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
 
 #: plugins/vnc/vnc_plugin.c:1948
-#, fuzzy
 msgid ""
 "Listening for remote VNC connection:\n"
 "  • The \"Listen on port\" field is the port Remmina will listen to,\n"
@@ -2890,11 +2873,11 @@ msgid ""
 "    Remmina, e.g. with x11vnc:\n"
 "    x11vnc -display :0 -connect 192.168.1.36:8888"
 msgstr ""
-"Écoute de la connexion VNC distante :\n"
-"  - Le champ \"Listen on port\" est le port sur lequel Remmina va écouter,\n"
-"    par exemple 8888\n"
-"  - Depuis le serveur VNC distant, vous vous connecterez à\n"
-"    Remmina, par exemple avec x11vnc :\n"
+"À l’écoute d’une connexion VNC cliente :\n"
+"  • le champ « Écouter sur le port » définit le port sur lequel Remmina va "
+"écouter, p. ex. 8888 ;\n"
+"  • depuis le client VNC distant, vous pourrez vous connecter à Remmina, p. "
+"ex. avec x11vnc :\n"
 "    x11vnc -display :0 -connect 192.168.1.36:8888"
 
 #: plugins/vnc/vnc_plugin.c:1975
@@ -3030,13 +3013,13 @@ msgid "Secured password storage in the GNOME keyring"
 msgstr "Stockage sécurisé des mots de passe dans le porte-clé GNOME"
 
 #: plugins/x2go/x2go_plugin.c:67
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The command-line feature '%s' is not available! Attempting to start PyHoca-"
 "CLI without using this feature…"
 msgstr ""
-"La fonction de ligne de commande '%s] n'est pas disponible ! Tenter de "
-"démarrer PyHoca-CLI sans utiliser cette fonctionnalité…"
+"La fonctionnalité en ligne de commande « %s » n’est pas disponible ! "
+"Tentative de démarrage PyHoca-CLI sans utiliser cette fonctionnalité…"
 
 #: plugins/x2go/x2go_plugin.c:287 plugins/x2go/x2go_plugin.c:419
 #: plugins/x2go/x2go_plugin.c:478 plugins/x2go/x2go_plugin.c:581
@@ -3055,21 +3038,18 @@ msgstr ""
 #: plugins/x2go/x2go_plugin.c:2897 plugins/x2go/x2go_plugin.c:2912
 #: plugins/x2go/x2go_plugin.c:2917 plugins/x2go/x2go_plugin.c:2922
 #: plugins/x2go/x2go_plugin.c:2927
-#, fuzzy, c-format
-#| msgid "Transfer error"
+#, c-format
 msgid "Internal error: %s"
-msgstr "Erreur interne : %s"
+msgstr "Erreur interne : %s"
 
 #: plugins/x2go/x2go_plugin.c:288 plugins/x2go/x2go_plugin.c:420
 #: plugins/x2go/x2go_plugin.c:479 plugins/x2go/x2go_plugin.c:1078
-#, fuzzy
 msgid "Parameter 'custom_data' is not initialized!"
-msgstr "Le paramètre 'default_username' n'est pas initialisé."
+msgstr "Le paramètre « default_username » n’est pas initialisé !"
 
 #: plugins/x2go/x2go_plugin.c:301
-#, fuzzy
 msgid "Broken `DialogData`! Aborting…"
-msgstr "Cassé `DialogData` ! Abandon…"
+msgstr "« DialogData » défectueux ! Abandon…"
 
 #: plugins/x2go/x2go_plugin.c:305
 #, fuzzy
