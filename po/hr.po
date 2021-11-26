@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-11-24 15:30+0000\n"
-"PO-Revision-Date: 2021-11-23 19:51+0000\n"
+"PO-Revision-Date: 2021-11-26 19:53+0000\n"
 "Last-Translator: gogogogi <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/remmina/remmina/"
 "hr/>\n"
@@ -580,10 +580,6 @@ msgstr "Šifriraj lozinku"
 #. * to log more verbose statements.
 #.
 #: src/remmina.c:337
-#, fuzzy
-#| msgid ""
-#| "Remmina does not log all output statements. To enable a more verbose "
-#| "output please use G_MESSAGES_DEBUG=all as an environment variable."
 msgid ""
 "Remmina does not log all output statements. To enable a more verbose output "
 "please use G_MESSAGES_DEBUG=all as an environment variable.\n"
@@ -591,7 +587,9 @@ msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgstr ""
 "Remmina ne bilježi sve izlazne izjave. Za omogućavanje opširnijeg bilježenja "
-"koiristite G_MESSAGES_DEBUG=all kao varijablu okruženja."
+"koristite G_MESSAGES_DEBUG=all kao varijablu okruženja.\n"
+"Za više informacija, posjetite Remmina Wiki na:\n"
+"https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:391
@@ -3077,18 +3075,16 @@ msgstr ""
 "razloga."
 
 #: plugins/x2go/x2go_plugin.c:709
-#, fuzzy
-#| msgid "Couldn't get selected row!"
 msgid "Couldn't get currently selected row (session)!"
-msgstr "Neuspjelo dobivanje odabranog retka!"
+msgstr "Neuspjelo dobivanje trenutno odabranog retka (sesije)!"
 
 #: plugins/x2go/x2go_plugin.c:725
-#, fuzzy, c-format
-#| msgid "exactly one session should be selected. '%i' rows are selected."
+#, c-format
 msgid ""
 "Exactly one session should be selectable but '%i' rows (sessions) are "
 "selected."
-msgstr "samo se jedna sesija može odabrati. '%i' redka su odabrana."
+msgstr ""
+"Točno jedna sesija se može odabrati ali '%i' redka (sesije) su odabrana."
 
 #: plugins/x2go/x2go_plugin.c:764
 msgid "Failed to fill 'GtkTreeIter'."
