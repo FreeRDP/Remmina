@@ -4509,13 +4509,13 @@ GtkWidget *rcw_open_from_file_full(RemminaFile *remminafile, GCallback disconnec
 		gchar* title = _("Warning: This plugin requires GtkSocket, but this "
 				 "feature is unavailable in a Wayland session.");
 
-		gchar* err_msg = g_strdup_printf(
+		gchar* err_msg =
+			// TRANSLATORS: This should be a link to the Remmina Wiki page:
+			// 'GtkSocket feature is not available'.
 			_("Plugins relying on GtkSocket can't run in a "
 			  "Wayland session.\nFor more information and a possible "
-			  "workaround, please visit the Remmina Wiki at:\n\n%s"
-		// TRANSLATORS: This should be a link to the Remmina Wiki page:
-		// TRANSLATORS: 'GtkSocket feature is not available'.
-		), _("https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-available-in-a-Wayland-session"));
+			  "workaround, please visit the Remmina Wiki at:\n\n"
+			  "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-available-in-a-Wayland-session");
 
 		dialog = gtk_message_dialog_new(
 			GTK_WINDOW(cnnobj->cnnwin),
@@ -4524,7 +4524,8 @@ GtkWidget *rcw_open_from_file_full(RemminaFile *remminafile, GCallback disconnec
 			GTK_BUTTONS_OK,
 			title);
 
-		gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG(dialog), err_msg);
+		gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG(dialog), "%s",
+							 err_msg);
 		gtk_dialog_add_button(GTK_DIALOG(dialog), _("Open in browser"),
 				      GTKSOCKET_NOT_AVAIL_RESPONSE_OPEN_BROWSER);
 
