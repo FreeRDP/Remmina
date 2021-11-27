@@ -1029,10 +1029,10 @@ static gboolean rmplugin_x2go_pyhoca_terminate_session(X2GoCustomUserData *custo
 		return G_SOURCE_REMOVE;
 	}
 
-	if (FEATURE_AVAILABLE(gpdata, "NO_INTERACTIVE")) {
-		argv[argc++] = g_strdup("--no-interactive");
+	if (FEATURE_AVAILABLE(gpdata, "NON_INTERACTIVE")) {
+		argv[argc++] = g_strdup("--non-interactive");
 	} else {
-		REMMINA_PLUGIN_WARNING("%s", FEATURE_NOT_AVAIL_STR("NO_INTERACTIVE"));
+		REMMINA_PLUGIN_WARNING("%s", FEATURE_NOT_AVAIL_STR("NON_INTERACTIVE"));
 	}
 
 	argv[argc++] = NULL;
@@ -1606,10 +1606,10 @@ static gchar* rmplugin_x2go_get_pyhoca_sessions(RemminaProtocolWidget* gp, GErro
 		return NULL;
 	}
 
-	if (FEATURE_AVAILABLE(gpdata, "NO_INTERACTIVE")) {
-		argv[argc++] = g_strdup("--no-interactive");
+	if (FEATURE_AVAILABLE(gpdata, "NON_INTERACTIVE")) {
+		argv[argc++] = g_strdup("--non-interactive");
 	} else {
-		REMMINA_PLUGIN_WARNING("%s", FEATURE_NOT_AVAIL_STR("NO_INTERACTIVE"));
+		REMMINA_PLUGIN_WARNING("%s", FEATURE_NOT_AVAIL_STR("NON_INTERACTIVE"));
 	}
 
 	if (password && FEATURE_AVAILABLE(gpdata, "PASSWORD")) {
@@ -2064,10 +2064,10 @@ static gboolean rmplugin_x2go_exec_x2go(gchar *host,
 		REMMINA_PLUGIN_DEBUG("%s", FEATURE_NOT_AVAIL_STR("AUTH_ATTEMPTS"));
 	}
 
-	if (FEATURE_AVAILABLE(gpdata, "NO_INTERACTIVE")) {
-		argv[argc++] = g_strdup("--no-interactive");
+	if (FEATURE_AVAILABLE(gpdata, "NON_INTERACTIVE")) {
+		argv[argc++] = g_strdup("--non-interactive");
 	} else {
-		REMMINA_PLUGIN_WARNING("%s", FEATURE_NOT_AVAIL_STR("NO_INTERACTIVE"));
+		REMMINA_PLUGIN_WARNING("%s", FEATURE_NOT_AVAIL_STR("NON_INTERACTIVE"));
 	}
 
 	if (FEATURE_AVAILABLE(gpdata, "COMMAND")) {
