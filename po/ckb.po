@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Remmina v1.4.6\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-11-24 15:30+0000\n"
+"POT-Creation-Date: 2021-11-27 14:29+0000\n"
 "PO-Revision-Date: 2021-11-25 13:50+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Kurdish (Central) <https://hosted.weblate.org/projects/"
@@ -172,7 +172,7 @@ msgid "Version"
 msgstr "وەشان"
 
 #: src/remmina_chat_window.c:178
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Chat with %s"
 msgstr "گفتوگۆ بکە لەگەڵ %s"
 
@@ -353,7 +353,7 @@ msgid "Client Certificate Key"
 msgstr "کلیلی بڕوانامەی کڕیار"
 
 #: src/rcw.c:655
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "Are you sure you want to close %i active connections in the current window?"
 msgstr "تۆ دڵنیایت کە دەتەوێت پەیوەندی چالاکی %i لە پەنجەرەی ئێستا دابخەیت؟"
@@ -484,7 +484,7 @@ msgstr "پەڕگەی “%s” تێکشکاوە، ناخوێندرێتەوە، ی
 
 #. TRANSLATORS: This should be a link to the Remmina Wiki page:
 #. TRANSLATORS: 'GtkSocket feature is not available'.
-#: src/rcw.c:4372 src/rcw.c:4518
+#: src/rcw.c:4372
 msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
@@ -498,17 +498,19 @@ msgid ""
 "a Wayland session."
 msgstr "وریابە: ئەم پێوەکراوە پێویستی بە GtkSocket هەیە، بەڵام بەردەست نیە."
 
-#: src/rcw.c:4513
-#, c-format
+#. TRANSLATORS: This should be a link to the Remmina Wiki page:
+#. 'GtkSocket feature is not available'.
+#: src/rcw.c:4515
 msgid ""
 "Plugins relying on GtkSocket can't run in a Wayland session.\n"
 "For more information and a possible workaround, please visit the Remmina "
 "Wiki at:\n"
 "\n"
-"%s"
+"https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
+"available-in-a-Wayland-session"
 msgstr ""
 
-#: src/rcw.c:4528
+#: src/rcw.c:4529
 #, fuzzy
 #| msgid "Open Main Window"
 msgid "Open in browser"
@@ -750,9 +752,9 @@ msgstr ""
 "بۆ نوێکردنەوەی ناوی بەکارهێنەر و نهێنوشە و دانانی شێوازی چارەسەری جیاواز لە "
 "پرۆفایلی گرێدانەکانی Remmina، بەکاربێنە:\n"
 "\n"
-"دەنگدانەوەی \"username\\n"
-"apassword\" | remmina --update-profile /PATH/TO/FOO.remmina --set-option "
-"username --set-option resolution_mode=2 --set-option password\n"
+"دەنگدانەوەی \"username\\napassword\" | remmina --update-profile /PATH/TO/FOO."
+"remmina --set-option username --set-option resolution_mode=2 --set-option "
+"password\n"
 
 #: src/remmina_public.c:345
 #, c-format
@@ -940,7 +942,7 @@ msgstr "پەیوەندی گرتن بە %s لەڕێگەی SSH…"
 
 #. TRANSLATORS: “%i” is a placeholder for a TCP port number.
 #: src/remmina_protocol_widget.c:1165
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Awaiting incoming SSH connection on port %i…"
 msgstr "چاوەڕوانی پەیوەندی SSH هاتوو دەکرێت لەسەر پۆرتی %i…"
 
@@ -956,13 +958,13 @@ msgstr "نەتوانرا فەرمانی “%s” جێبەجێبکرێت لەسە
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_protocol_widget.c:1231
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not run command. %s"
 msgstr "ناتوانرێت فرمان جێبەجێبکرێت. %s"
 
 #. TRANSLATORS: “%s” is a placeholder for a hostname or IP address.
 #: src/remmina_protocol_widget.c:1301
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Connecting to %s via SSH…"
 msgstr "پەیوەندی گرتن بە %s لەڕێگەی SSH…"
 
@@ -1032,7 +1034,7 @@ msgstr "بڕوانامەی گۆڕاو پەسەند دەکەیت؟"
 
 #. TRANSLATORS: “%i” is a placeholder for a port number. “%s”  is a placeholder for a protocol name (VNC).
 #: src/remmina_protocol_widget.c:1943
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Listening on port %i for an incoming %s connection…"
 msgstr "گوێگرتن لە پۆرتی %i بۆ پەیوەندی هاتوو لە %s…"
 
@@ -1049,7 +1051,7 @@ msgstr "ڕاژە"
 
 #. TRANSLATORS: “%s” is a placeholder for a protocol name, like “RDP”.
 #: src/remmina_protocol_widget.c:2048
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Install the %s protocol plugin first."
 msgstr "پێوەکراوی پرۆتۆکۆڵی %s دامەزرێنە یەکەمجار."
 
@@ -1059,7 +1061,7 @@ msgid "Could not authenticate with TOTP/OTP/2FA. %s"
 msgstr "نەتوانرا ڕێگە بدرێت بە وشەی تێپەڕی SSH . %s"
 
 #: src/remmina_ssh.c:295 src/remmina_ssh.c:676
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not authenticate with SSH password. %s"
 msgstr "نەتوانرا ڕێگە بدرێت بە وشەی تێپەڕی SSH . %s"
 
@@ -1073,7 +1075,7 @@ msgstr ""
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:327 src/remmina_ssh.c:368 src/remmina_ssh.c:394
 #: src/remmina_ssh.c:433 src/remmina_ssh.c:746
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not authenticate with public SSH key. %s"
 msgstr "نەتوانرا ڕێگە بدرێت خۆکارانە لەگەڵ کلیلی SSH گشتی. %s"
 
@@ -1104,12 +1106,12 @@ msgstr "پەڕگەی کلیلی SSH هێستا دانەنراوە."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:380
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Public SSH key cannot be imported. %s"
 msgstr "نەتوانرا کلیلی گشتی هاوردەبکرێت. %s"
 
 #: src/remmina_ssh.c:478
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not authenticate automatically with public SSH key. %s"
 msgstr "نەتوانرا ڕێگە بدرێت خۆکارانە لەگەڵ کلیلی SSH گشتی. %s"
 
@@ -1140,13 +1142,13 @@ msgstr "نەتوانرا ڕێگە بدرێت خۆکارانە لەگەڵ کلی�
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:921
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not fetch the server's public SSH key. %s"
 msgstr "ناتوانرێت کلیلی SSH گشتی تێهەڵکێشبکرێت. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:928
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not fetch public SSH key. %s"
 msgstr "نەتوانرا کلیلی گشتی بەدەستبهێنرێت. %s"
 
@@ -1178,7 +1180,7 @@ msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:979
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not check list of known SSH hosts. %s"
 msgstr "نەتوانرا چێکی لیستی خانەخوێ ناسراوەکانی SSH بکرێت. %s"
 
@@ -1219,25 +1221,25 @@ msgstr "چوونەژوورەوەی کارلێکەر لەسەر تەختەکلی�
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1337
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not start SSH session. %s"
 msgstr "نەتوانرا دانیشتنی SSH دەستپێبکات. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1735
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not create channel. %s"
 msgstr "نەتوانرا چەناڵ درووستبکرێت. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1746
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not connect to SSH tunnel. %s"
 msgstr "نەتوانرا پەیوەندیبگیرێت بە تونێلی SSH . %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1816 src/remmina_ssh.c:1837 src/remmina_ssh.c:1846
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not request port forwarding. %s"
 msgstr "نەتوانرا ناردنەوەی پۆرت داوابکرێت. %s"
 
@@ -1247,37 +1249,37 @@ msgid "The server did not respond."
 msgstr "ڕاژە وەڵامی نەبوو."
 
 #: src/remmina_ssh.c:1916
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Cannot connect to local port %i."
 msgstr "نەتوانرا پەیوەندی بکرێت بە پۆرتی ناوخۆیی %i."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1965
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not write to SSH channel. %s"
 msgstr "نەتوانرا بنێردرێتە کەناڵی SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1972
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not read from tunnel listening socket. %s"
 msgstr "نەتوانرا خوێندنەوە بکرێت لە گوێگرتنی تونێلی سۆکێتەوە. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1992
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not poll SSH channel. %s"
 msgstr "نەتوانرا کەناڵی SSH بنێردرێت. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1999
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not read SSH channel in a non-blocking way. %s"
 msgstr "ناتوانرێت کەناڵی SSH بخوێندرێتەوە بەبێ ڕێگەی بلۆککردن. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:2018
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not send data to tunnel listening socket. %s"
 msgstr "‫نەتوانرا ناردن بکرێت لە گوێگرتنی تونێلی سۆکێتەوە. %s"
 
@@ -1309,25 +1311,25 @@ msgstr "نەتوانرا pthread پێبکرێت."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:2280
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not create SFTP session. %s"
 msgstr "نەتوانرا دانیشتنی SFTP درووستبکرێت. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:2285
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not start SFTP session. %s"
 msgstr "نەتوانرا دانیشتنی SFTP دەستپێبکات. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:2378
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not open channel. %s"
 msgstr "نەتوانرا چەناڵ بکرێتەوە. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:2393
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not request shell. %s"
 msgstr "نەتوانرا شێڵ داوابکرێت. %s"
 
@@ -1337,7 +1339,7 @@ msgid "Could not create PTY device."
 msgstr "نەتوانرا ئامێری PTY درووستبکرێت."
 
 #: src/remmina_exec.c:475
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Plugin %s is not registered."
 msgstr "پێوەکراوی %s تۆمار نەکراوە."
 
@@ -1358,7 +1360,7 @@ msgid "Are you sure you want to delete “%s”?"
 msgstr "ئایا تۆ دڵنیایت کە دەتەوێت “%s” بسڕیتەوە؟"
 
 #: src/remmina_main.c:989
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "Unable to import:\n"
 "%s"
@@ -1441,7 +1443,7 @@ msgid "Could not write to the file “%s” on the server. %s"
 msgstr "نەتوانرا نووسین بکرێت لە پەڕگەی “%s” لەسەر ڕاژە .%s"
 
 #: src/remmina_sftp_client.c:716
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not read from the folder. %s"
 msgstr "نەتوانرا لە بوخچەوە بخوێندرێتەوە. %s"
 
@@ -1568,7 +1570,7 @@ msgid "Choose a Remote Desktop Server"
 msgstr "ڕاژەی ڕوومێزی لەدوور هەڵبژێرە"
 
 #: src/remmina_file_editor.c:460
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Browse the network to find a %s server"
 msgstr "ناو ڕایەڵە بگەڕێ بۆ دۆزینەوەی ڕاژەی %s"
 
@@ -1651,7 +1653,7 @@ msgid "Tunnel via loopback address"
 msgstr "تونێلکردن لە ڕێگەی ناونیشانی گەڕانەوە"
 
 #: src/remmina_file_editor.c:1143
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Same server at port %i"
 msgstr "هەمان ڕاژە لەسەر پۆرت %i"
 
@@ -1754,7 +1756,7 @@ msgid "Quick Connect"
 msgstr "پەیوەستبوونی خێرا"
 
 #: src/remmina_file_editor.c:1946
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Use '%s' as subgroup delimiter"
 msgstr "‫‘%s’ بەکاربێنە بۆ جیاکەرەوەی ژێرگرووپ"
 
@@ -1859,7 +1861,7 @@ msgstr ""
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_ssh_plugin.c:539
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Error: %s"
 msgstr "هەڵە: %s"
 
@@ -2520,9 +2522,9 @@ msgid ""
 msgstr ""
 "i.a. بەکارهاتووە لەلایەن خزمەتگوزارییەکانی تێرمیناڵ لە کەناڵی سمارت کارد بۆ "
 "جیاکردنەوەی تواناکانی کڕیار:\n"
-"  • < 4034: Windows XP base smart card functions • 4034-7064: Windows Vista/"
-"7: SCardReadCache(), SCardWriteCache(), SCardGetTransmitCount() • > = 7065: "
-"Windows 8 and newer: SCardGetReaderIcon(),\n"
+"  • < 4034: Windows XP base smart card functions • 4034-7064: Windows "
+"Vista/7: SCardReadCache(), SCardWriteCache(), SCardGetTransmitCount() • > = "
+"7065: Windows 8 and newer: SCardGetReaderIcon(),\n"
 "    SCardGetDeviceTypeId()"
 
 #: plugins/rdp/rdp_plugin.c:2646
@@ -3009,7 +3011,7 @@ msgid "Export connection in Windows .rdp file format"
 msgstr "هاوردەکردنی پەیوەندی لە پەنجەرەی پەڕگە جۆری .rdp"
 
 #: plugins/rdp/rdp_event.c:344
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Reconnection attempt %d of %d…"
 msgstr "هەوڵدانەوەی پەیوەندی %d لە %d…"
 
@@ -3024,7 +3026,7 @@ msgid "Transfer error"
 msgstr "هەڵە لە گواستنەوە"
 
 #: plugins/spice/spice_plugin_file_transfer.c:220
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "%s: %s"
 msgstr "‫%s: %s"
 
@@ -3034,7 +3036,7 @@ msgid "Transfer completed"
 msgstr "گواستنەوە سەرکەوتوو بوو"
 
 #: plugins/spice/spice_plugin_file_transfer.c:224
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "The %s file has been transferred"
 msgstr "پەڕگەی %s بەسەرکەوتووی گوازرایەوە"
 
@@ -3159,12 +3161,12 @@ msgid "Unable to connect to VNC server"
 msgstr "نەتوانرا پەیوەست بێت بە ڕاژەی VNCیەوە‬"
 
 #: plugins/vnc/vnc_plugin.c:937
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Couldn’t convert '%s' to host address"
 msgstr "نەتوانرا ‘%s’ بگۆڕرێت بۆ ناونیشانی خانەخوێ"
 
 #: plugins/vnc/vnc_plugin.c:938
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "VNC connection failed: %s"
 msgstr "پەیوەندی VNC سەرکەوتوو نەبوو: %s"
 
@@ -3174,14 +3176,15 @@ msgid "Your connection has been rejected."
 msgstr "پەیوەندیگرتنەکەت ڕەتکرایەوە."
 
 #: plugins/vnc/vnc_plugin.c:966
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "The VNC server requested an unknown authentication method. %s"
 msgstr "ڕاژەی VNC داوای ڕێگەپێدانێکی نەزانراوی کرد. %s"
 
 #: plugins/vnc/vnc_plugin.c:968
 #, fuzzy
 msgid "Please retry after turning on encryption for this profile."
-msgstr "تکایە دووبارە هەوڵ بدەرەوە دووای چالاک کردنی نهێنیکردن بۆ ئەم پرۆفایلە."
+msgstr ""
+"تکایە دووبارە هەوڵ بدەرەوە دووای چالاک کردنی نهێنیکردن بۆ ئەم پرۆفایلە."
 
 #: plugins/vnc/vnc_plugin.c:1939
 msgid ""
@@ -4110,7 +4113,7 @@ msgid "Shutdown remote host"
 msgstr "دیارکەری لەدوور پیشان بدە"
 
 #: plugins/telepathy/telepathy_channel_handler.c:237
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "%s wants to share their desktop.\n"
 "Do you accept?"
@@ -4142,8 +4145,8 @@ msgstr ""
 "\n"
 "<span>\n"
 "Remmina کاردەکات لەسەر سیستەمەکەت وەک گورزەی سناپ.\n"
-"هەندێک لە کارەکانی ڕێمینا پێویستە بۆ کارکردن بە شێوەیەکی دروست ئامادە بکرێت."
-"\n"
+"هەندێک لە کارەکانی ڕێمینا پێویستە بۆ کارکردن بە شێوەیەکی دروست ئامادە "
+"بکرێت.\n"
 "</span>\n"
 
 #: data/ui/remmina_snap_info_dialog.glade:120
@@ -4358,8 +4361,8 @@ msgstr ""
 "‬\n"
 "‏‫<span>\n"
 "‏‫<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
-"release notes\"i>سەردانی ماڵپەڕ بکە بۆ بینینی هەموو زانیارییەکانی "
-"وەشان<i></a>.\n"
+"release notes\"i>سەردانی ماڵپەڕ بکە بۆ بینینی هەموو زانیارییەکانی وەشان<i></"
+"a>.\n"
 "‏‫<span/>"
 
 #. The star (*) is a reference to privacy consent
@@ -4401,8 +4404,8 @@ msgid ""
 "Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
 "\">remmina.org</a> (*)"
 msgstr ""
-"هێنانی هەواڵ لە <a href=\"https://remmina.org\" title=\"ماڵپەڕی هەواڵی "
-"ڕێمینا\">remmina.org</a> (*)"
+"هێنانی هەواڵ لە <a href=\"https://remmina.org\" title=\"ماڵپەڕی هەواڵی ڕێمینا"
+"\">remmina.org</a> (*)"
 
 #: data/ui/remmina_news.glade:208 data/ui/remmina_preferences.glade:446
 #, fuzzy
@@ -5105,8 +5108,8 @@ msgid ""
 "Choose a colour scheme file. Usually available in /usr/share/remmina/theme. "
 "https://github.com/mbadolato/iTerm2-Color-Schemes has more details."
 msgstr ""
-"پەڕگەی شێوەی ڕەنگ هەڵبژێرە. کە بەردەستن لە /usr/share/remmina/theme. "
-"https://github.com/mbadolato/iTerm2-Color-Schemes ڕووکاری زیاتری تێدایە."
+"پەڕگەی شێوەی ڕەنگ هەڵبژێرە. کە بەردەستن لە /usr/share/remmina/theme. https://"
+"github.com/mbadolato/iTerm2-Color-Schemes ڕووکاری زیاتری تێدایە."
 
 #: data/ui/remmina_preferences.glade:2033
 #, fuzzy

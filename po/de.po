@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-11-24 15:30+0000\n"
+"POT-Creation-Date: 2021-11-27 14:29+0000\n"
 "PO-Revision-Date: 2021-11-25 13:50+0000\n"
 "Last-Translator: Johannes Weberhofer <jweberhofer@weberhofer.at>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -411,7 +411,7 @@ msgstr "Die Datei „%s“ ist ungültig, unlesbar oder wurde nicht gefunden."
 
 #. TRANSLATORS: This should be a link to the Remmina Wiki page:
 #. TRANSLATORS: 'GtkSocket feature is not available'.
-#: src/rcw.c:4372 src/rcw.c:4518
+#: src/rcw.c:4372
 msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
@@ -427,14 +427,23 @@ msgstr ""
 "Warnung: Dieses Plugin benötigt GtkSocket, dieses Feature ist aber in einer "
 "Wayland-Sitzung nicht verfügbar."
 
-#: src/rcw.c:4513
-#, c-format
+#. TRANSLATORS: This should be a link to the Remmina Wiki page:
+#. 'GtkSocket feature is not available'.
+#: src/rcw.c:4515
+#, fuzzy
+#| msgid ""
+#| "Plugins relying on GtkSocket can't run in a Wayland session.\n"
+#| "For more information and a possible workaround, please visit the Remmina "
+#| "Wiki at:\n"
+#| "\n"
+#| "%s"
 msgid ""
 "Plugins relying on GtkSocket can't run in a Wayland session.\n"
 "For more information and a possible workaround, please visit the Remmina "
 "Wiki at:\n"
 "\n"
-"%s"
+"https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
+"available-in-a-Wayland-session"
 msgstr ""
 "Plugins, die auf GtkSocket angewiesen sind, können in einer Wayland-Sitzung "
 "nicht ausgeführt werden.\n"
@@ -443,7 +452,7 @@ msgstr ""
 "\n"
 "%s"
 
-#: src/rcw.c:4528
+#: src/rcw.c:4529
 msgid "Open in browser"
 msgstr "Im Webbrowser öffnen"
 

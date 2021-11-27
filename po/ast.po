@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-11-24 15:30+0000\n"
+"POT-Creation-Date: 2021-11-27 14:29+0000\n"
 "PO-Revision-Date: 2021-11-25 20:53+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Asturian <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -163,7 +163,7 @@ msgid "Version"
 msgstr "Versión"
 
 #: src/remmina_chat_window.c:178
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Chat with %s"
 msgstr "Conversando con %s"
 
@@ -449,7 +449,7 @@ msgstr ""
 
 #. TRANSLATORS: This should be a link to the Remmina Wiki page:
 #. TRANSLATORS: 'GtkSocket feature is not available'.
-#: src/rcw.c:4372 src/rcw.c:4518
+#: src/rcw.c:4372
 msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
@@ -461,17 +461,19 @@ msgid ""
 "a Wayland session."
 msgstr ""
 
-#: src/rcw.c:4513
-#, c-format
+#. TRANSLATORS: This should be a link to the Remmina Wiki page:
+#. 'GtkSocket feature is not available'.
+#: src/rcw.c:4515
 msgid ""
 "Plugins relying on GtkSocket can't run in a Wayland session.\n"
 "For more information and a possible workaround, please visit the Remmina "
 "Wiki at:\n"
 "\n"
-"%s"
+"https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
+"available-in-a-Wayland-session"
 msgstr ""
 
-#: src/rcw.c:4528
+#: src/rcw.c:4529
 #, fuzzy
 #| msgid "Open Main Window"
 msgid "Open in browser"
@@ -838,12 +840,12 @@ msgid "Awaiting incoming SSH connection on port %i…"
 msgstr "Esperando al túnel d’entrada SSH nel puertu %i…"
 
 #: src/remmina_protocol_widget.c:1218
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "The “%s” command is not available on the SSH server."
 msgstr "La orde «%s» nun ta disponible nel sirvidor SSH."
 
 #: src/remmina_protocol_widget.c:1223
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not run the “%s” command on the SSH server (status = %i)."
 msgstr "Nun pudo executase la orde «%s» nel sirvidor SSH (estáu = %i)."
 
@@ -918,7 +920,7 @@ msgstr "¿Aceutar certificáu?"
 
 #. TRANSLATORS: “%i” is a placeholder for a port number. “%s”  is a placeholder for a protocol name (VNC).
 #: src/remmina_protocol_widget.c:1943
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Listening on port %i for an incoming %s connection…"
 msgstr "Escuchando en puertu %i una conexón %s entrante…"
 
@@ -1205,7 +1207,7 @@ msgid "Could not create PTY device."
 msgstr ""
 
 #: src/remmina_exec.c:475
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Plugin %s is not registered."
 msgstr "El complementu %s nun ta rexistráu."
 
@@ -1226,7 +1228,7 @@ msgid "Are you sure you want to delete “%s”?"
 msgstr "¿Tas seguru de que quies desaniciar «%s»?"
 
 #: src/remmina_main.c:989
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "Unable to import:\n"
 "%s"
@@ -1406,7 +1408,7 @@ msgid "Choose a Remote Desktop Server"
 msgstr "Escueyi un sirvidor d’escritoriu remotu"
 
 #: src/remmina_file_editor.c:460
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Browse the network to find a %s server"
 msgstr "Esplorar la rede en busca del sirvidor %s"
 
@@ -1482,7 +1484,7 @@ msgid "Tunnel via loopback address"
 msgstr "Túnel a traviés de direición d’autobucle"
 
 #: src/remmina_file_editor.c:1143
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Same server at port %i"
 msgstr "Mesmu sirvidor nel puertu %i"
 
@@ -1578,7 +1580,7 @@ msgid "Quick Connect"
 msgstr "Conexón rápida"
 
 #: src/remmina_file_editor.c:1946
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Use '%s' as subgroup delimiter"
 msgstr "Usar «%s» como dellimitador de subgrupos"
 
@@ -2768,12 +2770,12 @@ msgid "Unable to connect to VNC server"
 msgstr "Nun pudo coneutase al sirvidor VNC"
 
 #: plugins/vnc/vnc_plugin.c:937
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Couldn’t convert '%s' to host address"
 msgstr "Nun pudo convertise «%s» nuna direición de sirvidor"
 
 #: plugins/vnc/vnc_plugin.c:938
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "VNC connection failed: %s"
 msgstr "La conexón VNC falló: %s"
 

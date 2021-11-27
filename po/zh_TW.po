@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-11-24 15:30+0000\n"
+"POT-Creation-Date: 2021-11-27 14:29+0000\n"
 "PO-Revision-Date: 2021-11-25 13:50+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
@@ -170,7 +170,7 @@ msgid "Version"
 msgstr "版本"
 
 #: src/remmina_chat_window.c:178
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Chat with %s"
 msgstr "與 %s 聊天"
 
@@ -345,7 +345,7 @@ msgid "Client Certificate Key"
 msgstr "客戶端憑證金鑰"
 
 #: src/rcw.c:655
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "Are you sure you want to close %i active connections in the current window?"
 msgstr "目前視窗已開啟 %i 個作用中的連線。確定要關閉嗎？"
@@ -480,7 +480,7 @@ msgstr "檔案 %s 已毀損，無法讀取或找不到檔案"
 
 #. TRANSLATORS: This should be a link to the Remmina Wiki page:
 #. TRANSLATORS: 'GtkSocket feature is not available'.
-#: src/rcw.c:4372 src/rcw.c:4518
+#: src/rcw.c:4372
 msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
@@ -494,17 +494,19 @@ msgid ""
 "a Wayland session."
 msgstr "警告：此外掛需要 GtkSocket，但它不可用。"
 
-#: src/rcw.c:4513
-#, c-format
+#. TRANSLATORS: This should be a link to the Remmina Wiki page:
+#. 'GtkSocket feature is not available'.
+#: src/rcw.c:4515
 msgid ""
 "Plugins relying on GtkSocket can't run in a Wayland session.\n"
 "For more information and a possible workaround, please visit the Remmina "
 "Wiki at:\n"
 "\n"
-"%s"
+"https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
+"available-in-a-Wayland-session"
 msgstr ""
 
-#: src/rcw.c:4528
+#: src/rcw.c:4529
 #, fuzzy
 #| msgid "Open Main Window"
 msgid "Open in browser"
@@ -940,7 +942,7 @@ msgstr "無法執行指令：%s"
 
 #. TRANSLATORS: “%s” is a placeholder for a hostname or IP address.
 #: src/remmina_protocol_widget.c:1301
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Connecting to %s via SSH…"
 msgstr "正在以 SSH 連接 %s …"
 
@@ -1009,7 +1011,7 @@ msgstr "接受變更的憑證嗎？"
 
 #. TRANSLATORS: “%i” is a placeholder for a port number. “%s”  is a placeholder for a protocol name (VNC).
 #: src/remmina_protocol_widget.c:1943
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Listening on port %i for an incoming %s connection…"
 msgstr "正於 %i 連接埠上監聽傳入的 %s 連接…"
 
@@ -1026,7 +1028,7 @@ msgstr "伺服器"
 
 #. TRANSLATORS: “%s” is a placeholder for a protocol name, like “RDP”.
 #: src/remmina_protocol_widget.c:2048
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Install the %s protocol plugin first."
 msgstr "請先安裝 %s 協定插件。"
 
@@ -1220,7 +1222,7 @@ msgid "The server did not respond."
 msgstr "伺服器無回應。"
 
 #: src/remmina_ssh.c:1916
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Cannot connect to local port %i."
 msgstr "無法連接至本地連接埠 %i。"
 
@@ -1310,7 +1312,7 @@ msgid "Could not create PTY device."
 msgstr "無法建立 PTY 裝置。"
 
 #: src/remmina_exec.c:475
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Plugin %s is not registered."
 msgstr "外掛 %s 尚未註冊。"
 
@@ -1331,7 +1333,7 @@ msgid "Are you sure you want to delete “%s”?"
 msgstr "確定要刪除「%s」？"
 
 #: src/remmina_main.c:989
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "Unable to import:\n"
 "%s"
@@ -1541,7 +1543,7 @@ msgid "Choose a Remote Desktop Server"
 msgstr "選擇一個遠端桌面伺服器"
 
 #: src/remmina_file_editor.c:460
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Browse the network to find a %s server"
 msgstr "瀏覽網路以尋找 %s 伺服器"
 
@@ -1622,7 +1624,7 @@ msgid "Tunnel via loopback address"
 msgstr "透過 loopback 位址穿隧"
 
 #: src/remmina_file_editor.c:1143
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Same server at port %i"
 msgstr "相同伺服器上的 %i 連接埠"
 
@@ -1726,7 +1728,7 @@ msgid "Quick Connect"
 msgstr "快速連線"
 
 #: src/remmina_file_editor.c:1946
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Use '%s' as subgroup delimiter"
 msgstr "使用「%s」作為子群組分隔符"
 
@@ -2759,8 +2761,8 @@ msgid ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
 msgstr ""
-"\"Samsung_CLX-3300_系列\":\"Samsung CLX-3300 系列 PS\";\"Canon MF410\":\"Canon "
-"MF410 系列 UFR II\""
+"\"Samsung_CLX-3300_系列\":\"Samsung CLX-3300 系列 PS\";\"Canon MF410\":"
+"\"Canon MF410 系列 UFR II\""
 
 #: plugins/rdp/rdp_plugin.c:2771
 msgid "USB device redirection"
@@ -2971,7 +2973,7 @@ msgid "Export connection in Windows .rdp file format"
 msgstr "以 Windows .rdp 檔案格式匯出連線"
 
 #: plugins/rdp/rdp_event.c:344
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Reconnection attempt %d of %d…"
 msgstr "重新連線中。第 %d / %d 次嘗試…"
 
@@ -2986,7 +2988,7 @@ msgid "Transfer error"
 msgstr "傳輸錯誤"
 
 #: plugins/spice/spice_plugin_file_transfer.c:220
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "%s: %s"
 msgstr "%s：%s"
 
@@ -2996,7 +2998,7 @@ msgid "Transfer completed"
 msgstr "傳輸完成"
 
 #: plugins/spice/spice_plugin_file_transfer.c:224
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "The %s file has been transferred"
 msgstr "已傳輸 %s 檔案"
 
@@ -3119,12 +3121,12 @@ msgid "Unable to connect to VNC server"
 msgstr "無法連接至 VNC 伺服器"
 
 #: plugins/vnc/vnc_plugin.c:937
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Couldn’t convert '%s' to host address"
 msgstr "無法將「%s」轉換為主機位置"
 
 #: plugins/vnc/vnc_plugin.c:938
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "VNC connection failed: %s"
 msgstr "VNC 連線失敗：%s"
 

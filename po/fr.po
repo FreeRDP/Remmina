@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-11-24 15:30+0000\n"
+"POT-Creation-Date: 2021-11-27 14:29+0000\n"
 "PO-Revision-Date: 2021-11-25 20:53+0000\n"
 "Last-Translator: Davy Defaud <davy.defaud@free.fr>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -420,7 +420,7 @@ msgstr ""
 
 #. TRANSLATORS: This should be a link to the Remmina Wiki page:
 #. TRANSLATORS: 'GtkSocket feature is not available'.
-#: src/rcw.c:4372 src/rcw.c:4518
+#: src/rcw.c:4372
 msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
@@ -436,14 +436,23 @@ msgstr ""
 "Attention : ce greffon nécessite GtkSocket, mais ce dernier n’est pas "
 "disponible avec une session Wayland."
 
-#: src/rcw.c:4513
-#, c-format
+#. TRANSLATORS: This should be a link to the Remmina Wiki page:
+#. 'GtkSocket feature is not available'.
+#: src/rcw.c:4515
+#, fuzzy
+#| msgid ""
+#| "Plugins relying on GtkSocket can't run in a Wayland session.\n"
+#| "For more information and a possible workaround, please visit the Remmina "
+#| "Wiki at:\n"
+#| "\n"
+#| "%s"
 msgid ""
 "Plugins relying on GtkSocket can't run in a Wayland session.\n"
 "For more information and a possible workaround, please visit the Remmina "
 "Wiki at:\n"
 "\n"
-"%s"
+"https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
+"available-in-a-Wayland-session"
 msgstr ""
 "Les greffons dépendants de GtkSocket ne peuvent fonctionner avec une session "
 "Wayland.\n"
@@ -452,7 +461,7 @@ msgstr ""
 "\n"
 "%s"
 
-#: src/rcw.c:4528
+#: src/rcw.c:4529
 msgid "Open in browser"
 msgstr "Ouvrir dans un navigateur"
 
@@ -605,8 +614,8 @@ msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgstr ""
 "Remmina ne journalise pas la sortie de toutes les actions. Pour augmenter la "
-"verbosité, veuillez définir la variable d’environnement G_MESSAGES_DEBUG à « "
-"all » (G_MESSAGES_DEBUG=all).\n"
+"verbosité, veuillez définir la variable d’environnement G_MESSAGES_DEBUG à "
+"« all » (G_MESSAGES_DEBUG=all).\n"
 "Pour de plus amples informations, veuillez consulter la page du Wiki de "
 "Remmina suivante :\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
@@ -665,8 +674,8 @@ msgstr ""
 "\tremmina -c ssh://user@server\n"
 "\tremmina -c spice://server\n"
 "\n"
-"• pour une connexion rapide à partir d’un URI et d’un mot de passe chiffré :"
-"\n"
+"• pour une connexion rapide à partir d’un URI et d’un mot de passe "
+"chiffré :\n"
 "\n"
 "\tremmina -c rdp://username:encrypted-password@server\n"
 "\tremmina -c vnc://username:encrypted-password@server\n"
@@ -680,10 +689,9 @@ msgstr ""
 "• pour modifier le nom d’utilisateur, le mot de passe et le mode de "
 "définition d’affichage d’un profile de connexion Remmina :\n"
 "\n"
-"\techo \"nouvelutilisateur\\n"
-"nouveaumotdepasse\" | remmina --update-profile /CHEMIN/VERS/"
-"NOMPROFILE.remmina --set-option username --set-option resolution_mode=2 "
-"--set-option password\n"
+"\techo \"nouvelutilisateur\\nnouveaumotdepasse\" | remmina --update-profile /"
+"CHEMIN/VERS/NOMPROFILE.remmina --set-option username --set-option "
+"resolution_mode=2 --set-option password\n"
 
 #: src/remmina_public.c:345
 #, c-format
@@ -1527,8 +1535,8 @@ msgstr "Notes"
 #, c-format
 msgid "(%s: %i): Can't validate setting '%s' since 'value' or 'gfe' are NULL!"
 msgstr ""
-"(%s : %i) : impossible de valider le paramètre « %s » car « value » ou « gfe "
-"» est à NULL !"
+"(%s : %i) : impossible de valider le paramètre « %s » car « value » ou "
+"« gfe » est à NULL !"
 
 #: src/remmina_file_editor.c:1441
 #, c-format
@@ -1536,8 +1544,8 @@ msgid ""
 "(%s: %i): Can't validate user input since 'setting_name_to_validate', "
 "'value' or 'gfe' are NULL!"
 msgstr ""
-"(%s : %i) : impossible de valider l’entrée utilisateur car « "
-"setting_name_to_validate », « value » ou « gfe » est à NULL !"
+"(%s : %i) : impossible de valider l’entrée utilisateur car "
+"« setting_name_to_validate », « value » ou « gfe » est à NULL !"
 
 #. TRANSLATORS: Meta-error. Shouldn't be visible.
 #: src/remmina_file_editor.c:1445 plugins/x2go/x2go_plugin.c:2188
@@ -2132,8 +2140,8 @@ msgid ""
 "The Remote Desktop Gateway “%s” denied the user “%s\\%s” access due to "
 "policy."
 msgstr ""
-"La passerelle de bureau à distance « %s » a refusé l’accès à l’utilisateur « "
-"%s\\%s » en raison de sa politique de sécurité."
+"La passerelle de bureau à distance « %s » a refusé l’accès à l’utilisateur "
+"« %s\\%s » en raison de sa politique de sécurité."
 
 #: plugins/rdp/rdp_plugin.c:2211
 #, c-format
@@ -2877,8 +2885,8 @@ msgstr ""
 "À l’écoute d’une connexion VNC cliente :\n"
 "  • le champ « Écouter sur le port » définit le port sur lequel Remmina va "
 "écouter, p. ex. 8888 ;\n"
-"  • depuis le client VNC distant, vous pourrez vous connecter à Remmina, p. "
-"ex. avec x11vnc :\n"
+"  • depuis le client VNC distant, vous pourrez vous connecter à Remmina, "
+"p. ex. avec x11vnc :\n"
 "    x11vnc -display :0 -connect 192.168.1.36:8888"
 
 #: plugins/vnc/vnc_plugin.c:1975
@@ -3377,8 +3385,8 @@ msgstr "Reprise de la session « %s »…"
 #: plugins/x2go/x2go_plugin.c:2148
 msgid "DPI setting is out of bounds. Please adjust it in profile settings."
 msgstr ""
-"Le paramètre de résolution d’affichage (DPI) est hors limites. Veuillez l’"
-"ajuster dans les paramètres du profil."
+"Le paramètre de résolution d’affichage (DPI) est hors limites. Veuillez "
+"l’ajuster dans les paramètres du profil."
 
 #: plugins/x2go/x2go_plugin.c:2170
 msgid "Started pyhoca-cli with following arguments:"
@@ -3592,8 +3600,8 @@ msgstr "Direction du presse‐papiers"
 #: plugins/x2go/x2go_plugin.c:3006
 msgid "Which direction should clipboard content be copied? (default: 'both')."
 msgstr ""
-"Dans quel sens le contenu du presse‐papiers doit‐il être copié ? (par défaut "
-": « bidirectionnel »)."
+"Dans quel sens le contenu du presse‐papiers doit‐il être copié ? "
+"(par défaut : « bidirectionnel »)."
 
 #: plugins/x2go/x2go_plugin.c:3010
 msgid "DPI resolution"

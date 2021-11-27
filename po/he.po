@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-11-24 15:30+0000\n"
+"POT-Creation-Date: 2021-11-27 14:29+0000\n"
 "PO-Revision-Date: 2021-11-25 20:53+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -173,7 +173,7 @@ msgid "Version"
 msgstr "גירסא"
 
 #: src/remmina_chat_window.c:178
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Chat with %s"
 msgstr "שיחה עם %s"
 
@@ -348,7 +348,7 @@ msgid "Client Certificate Key"
 msgstr "מפתח אישור צד לקוח"
 
 #: src/rcw.c:655
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "Are you sure you want to close %i active connections in the current window?"
 msgstr "לסגור את %i החיבורים הפעילים בחלון הנוכחי?"
@@ -480,7 +480,7 @@ msgstr "הקובץ „%s” פגום, בלתי קריא או חסר."
 
 #. TRANSLATORS: This should be a link to the Remmina Wiki page:
 #. TRANSLATORS: 'GtkSocket feature is not available'.
-#: src/rcw.c:4372 src/rcw.c:4518
+#: src/rcw.c:4372
 #, fuzzy
 msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
@@ -497,21 +497,24 @@ msgid ""
 msgstr ""
 "אזהרה: תוסף זה דורש את GtkSocket, אך יכולת זו אינה זמינה בהפעלה מסוג Wayland."
 
-#: src/rcw.c:4513
-#, c-format, fuzzy
+#. TRANSLATORS: This should be a link to the Remmina Wiki page:
+#. 'GtkSocket feature is not available'.
+#: src/rcw.c:4515
+#, fuzzy
 msgid ""
 "Plugins relying on GtkSocket can't run in a Wayland session.\n"
 "For more information and a possible workaround, please visit the Remmina "
 "Wiki at:\n"
 "\n"
-"%s"
+"https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
+"available-in-a-Wayland-session"
 msgstr ""
 "תוספים שמסתמכים על GtkSocket לא יכולים לרוץ בהפעלה מסוג Wayland.\n"
 "למידע נוסף ולדרכי מעקף, אפשר לבקר בוויקי של Remmina בכתובת:\n"
 "\n"
 "%s"
 
-#: src/rcw.c:4528
+#: src/rcw.c:4529
 #, fuzzy
 msgid "Open in browser"
 msgstr "פתיחה בדפדפן"
@@ -753,9 +756,9 @@ msgstr ""
 "To update username and password and set a different resolution mode of a "
 "Remmina connection profile, use:\n"
 "\n"
-"\techo \"username\\n"
-"apassword\" | remmina --update-profile /PATH/TO/FOO.remmina --set-option "
-"username --set-option resolution_mode=2 --set-option password\n"
+"\techo \"username\\napassword\" | remmina --update-profile /PATH/TO/FOO."
+"remmina --set-option username --set-option resolution_mode=2 --set-option "
+"password\n"
 
 #: src/remmina_public.c:345
 #, c-format
@@ -943,7 +946,7 @@ msgstr "מתבצע חיבור אל „%s” דרך SSH…"
 
 #. TRANSLATORS: “%i” is a placeholder for a TCP port number.
 #: src/remmina_protocol_widget.c:1165
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Awaiting incoming SSH connection on port %i…"
 msgstr "בהמתנה לחיבור SSH נכנס בפתחה %i…"
 
@@ -959,13 +962,13 @@ msgstr "לא ניתן להריץ את הפקודה „%s” בשרת ה־SSH (מ
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_protocol_widget.c:1231
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not run command. %s"
 msgstr "לא ניתן להריץ פקודה. %s"
 
 #. TRANSLATORS: “%s” is a placeholder for a hostname or IP address.
 #: src/remmina_protocol_widget.c:1301
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Connecting to %s via SSH…"
 msgstr "מתבצע חיבור אל „%s” דרך SSH…"
 
@@ -1035,7 +1038,7 @@ msgstr "לקבל את האישור החלופי?"
 
 #. TRANSLATORS: “%i” is a placeholder for a port number. “%s”  is a placeholder for a protocol name (VNC).
 #: src/remmina_protocol_widget.c:1943
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Listening on port %i for an incoming %s connection…"
 msgstr "בהאזנה לפתחה %i עקב המתנה לחיבור %s נכנס…"
 
@@ -1052,17 +1055,17 @@ msgstr "שרת"
 
 #. TRANSLATORS: “%s” is a placeholder for a protocol name, like “RDP”.
 #: src/remmina_protocol_widget.c:2048
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Install the %s protocol plugin first."
 msgstr "תחילה יש להתקין את תוסף הפרוטוקול %s."
 
 #: src/remmina_ssh.c:236
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not authenticate with TOTP/OTP/2FA. %s"
 msgstr "לא ניתן להזדהות עם TOTP/OTP/2FA.‏ %s"
 
 #: src/remmina_ssh.c:295 src/remmina_ssh.c:676
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not authenticate with SSH password. %s"
 msgstr "לא ניתן להזדהות עם ססמת SSH.‏ %s"
 
@@ -1074,7 +1077,7 @@ msgstr "לא נשמרה מילת צופן ל־SSH. נשלחת בבקשה למש�
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:327 src/remmina_ssh.c:368 src/remmina_ssh.c:394
 #: src/remmina_ssh.c:433 src/remmina_ssh.c:746
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not authenticate with public SSH key. %s"
 msgstr "לא ניתן להזדהות עם מפתח ה־SSH הציבורי. %s"
 
@@ -1103,22 +1106,22 @@ msgstr "לא נבחר קובץ זהות ל־SSH."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:380
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Public SSH key cannot be imported. %s"
 msgstr "לא ניתן לייבא את מפתח ה־SSH הציבורי. %s"
 
 #: src/remmina_ssh.c:478
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not authenticate automatically with public SSH key. %s"
 msgstr "לא ניתן להזדהות אוטומטית עם מפתח SSH ציבורי. %s"
 
 #: src/remmina_ssh.c:523
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not authenticate automatically with SSH agent. %s"
 msgstr "לא ניתן להזדהות אוטומטית עם סוכן SSH.‏ %s"
 
 #: src/remmina_ssh.c:569 src/remmina_ssh.c:856
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not authenticate with SSH GSSAPI/Kerberos. %s"
 msgstr "לא ניתן להזדהות עם GSSAPI/Kerberos מול SSH.‏ %s"
 
@@ -1128,30 +1131,30 @@ msgid "The public SSH key changed!"
 msgstr "מפתח ה־SSH הציבורי הוחלף!"
 
 #: src/remmina_ssh.c:711
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not authenticate with keyboard-interactive. %s"
 msgstr "לא ניתן להזדהות עם אינטראקציה של מקלדת. %s"
 
 #: src/remmina_ssh.c:813
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not authenticate with automatic public SSH key. %s"
 msgstr "לא ניתן להזדהות אוטומטית עם מפתח ה־SSH הציבורי. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:921
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not fetch the server's public SSH key. %s"
 msgstr "לא ניתן לקבל את מפתח ה־SSH הציבורי של השרת. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:928
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not fetch public SSH key. %s"
 msgstr "לא ניתן לקבל את מפתח ה־SSH הציבורי. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:936
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not fetch checksum of the public SSH key. %s"
 msgstr "לא ניתן לקבל מחרוזת חישוב של מפתח ה־SSH הציבורי. %s"
 
@@ -1177,7 +1180,7 @@ msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:979
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not check list of known SSH hosts. %s"
 msgstr "לא ניתן לבדוק את רשימת מארחי ה־SSH המוכרים. %s"
 
@@ -1218,25 +1221,25 @@ msgstr "כניסה עם אינטראקציה של מקלדת, TOTP/OTP/2FA"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1337
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not start SSH session. %s"
 msgstr "לא ניתן להפעיל התקשרות SSH.‏ %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1735
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not create channel. %s"
 msgstr "לא ניתן ליצור את הערוץ. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1746
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not connect to SSH tunnel. %s"
 msgstr "לא ניתן להתחבר לתעלת ה־SSH.‏ %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1816 src/remmina_ssh.c:1837 src/remmina_ssh.c:1846
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not request port forwarding. %s"
 msgstr "לא ניתן לבקש הפניית פתחות. %s"
 
@@ -1246,37 +1249,37 @@ msgid "The server did not respond."
 msgstr "השרת לא הגיב"
 
 #: src/remmina_ssh.c:1916
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Cannot connect to local port %i."
 msgstr "לא ניתן להתחבר לפתחה המקומית %i."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1965
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not write to SSH channel. %s"
 msgstr "לא ניתן לכתוב לערוץ SSH.‏ %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1972
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not read from tunnel listening socket. %s"
 msgstr "לא ניתן לקרוא משקע האזנה לתעלת SSH‏. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1992
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not poll SSH channel. %s"
 msgstr "לא ניתן לתשאל ערוץ SSH.‏ %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1999
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not read SSH channel in a non-blocking way. %s"
 msgstr "לא ניתן לקרוא את ערוץ ה־SSH בצורה שלא תחסום אותו. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:2018
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not send data to tunnel listening socket. %s"
 msgstr "לא ניתן לשלוח נתונים לשקע ההאזנה לתעלה. %s"
 
@@ -1308,25 +1311,25 @@ msgstr "לא ניתן להפעיל את pthread."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:2280
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not create SFTP session. %s"
 msgstr "לא ניתן ליצור התקשרות SFTP‏. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:2285
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not start SFTP session. %s"
 msgstr "לא ניתן להפעיל התקשרות SSH.‏ %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:2378
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not open channel. %s"
 msgstr "לא ניתן לפתוח ערוץ. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:2393
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not request shell. %s"
 msgstr "לא ניתן לבקש מעטפת. %s"
 
@@ -1336,7 +1339,7 @@ msgid "Could not create PTY device."
 msgstr "לא ניתן ליצור התקן pty."
 
 #: src/remmina_exec.c:475
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Plugin %s is not registered."
 msgstr "התוסף %s לא נרשם."
 
@@ -1358,7 +1361,7 @@ msgid "Are you sure you want to delete “%s”?"
 msgstr "למחוק את „%s”?"
 
 #: src/remmina_main.c:989
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "Unable to import:\n"
 "%s"
@@ -1441,7 +1444,7 @@ msgid "Could not write to the file “%s” on the server. %s"
 msgstr "לא ניתן לכתוב את הקובץ „%s” לשרת. %s"
 
 #: src/remmina_sftp_client.c:716
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not read from the folder. %s"
 msgstr "לא ניתן לקרוא מהתיקייה. %s"
 
@@ -1541,7 +1544,7 @@ msgid "Choose a Remote Desktop Server"
 msgstr "נא לבחור שרת שולחן עבודה מרוחק"
 
 #: src/remmina_file_editor.c:460
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Browse the network to find a %s server"
 msgstr "עיון ברשת לאיתור שרת %s"
 
@@ -1624,7 +1627,7 @@ msgid "Tunnel via loopback address"
 msgstr "תעלה דרך כתובת הפניה עצמית"
 
 #: src/remmina_file_editor.c:1143
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Same server at port %i"
 msgstr "אותו שרת בפתחה %i"
 
@@ -1661,13 +1664,13 @@ msgid "Notes"
 msgstr "הערות"
 
 #: src/remmina_file_editor.c:1438
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "(%s: %i): Can't validate setting '%s' since 'value' or 'gfe' are NULL!"
 msgstr ""
 "(%s: %i): אין אפשרות לאמת את ההגדרה ‚%s’ מאחר ש־‚value’ או ‚gfe’ הם NULL!"
 
 #: src/remmina_file_editor.c:1441
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "(%s: %i): Can't validate user input since 'setting_name_to_validate', "
 "'value' or 'gfe' are NULL!"
@@ -1684,7 +1687,7 @@ msgstr "שגיאה פנימית."
 
 #: src/remmina_file_editor.c:1667 src/remmina_file_editor.c:1703
 #: src/remmina_file_editor.c:1724 src/remmina_file_editor.c:1747
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Couldn't validate user input. %s"
 msgstr "אי אפשר לאמת קלט משתמש. %s"
 
@@ -1724,7 +1727,7 @@ msgid "Quick Connect"
 msgstr "התחברות מהירה"
 
 #: src/remmina_file_editor.c:1946
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Use '%s' as subgroup delimiter"
 msgstr "‚%s’ להפרדת תת־קבוצות"
 
@@ -1787,19 +1790,19 @@ msgstr "תמיכה ב־StatusNotifier/Appindicator עבור „"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:366
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "%s your desktop does support it"
 msgstr "%s קיימת תמיכה בשולחן העבודה שלך"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:368
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "%s and Remmina has built-in (compiled) support for libappindicator."
 msgstr "%s ול־Remmina יש תמיכה מובנית (ברמת הידור) ב־libappindicator."
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:371
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "%s not supported natively by your Desktop Environment. libappindicator will "
 "try to fallback to GtkStatusIcon/xembed"
@@ -1809,31 +1812,31 @@ msgstr ""
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:375
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "%s You may need to install, and use XApp Status Applet"
 msgstr "%s יהיה עליך להתקין ולהשתמש ביישומון המצב XApp"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:378
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "%s You may need to install, and use KStatusNotifierItem"
 msgstr "%s יהיה עליך להתקין ולהשתמש ב־KStatusNotifierItem"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:381
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "%s You may need to install, and use XEmbed SNI Proxy"
 msgstr "%s יהיה עליך להתקין ולהשתמש במתווך XEmbed SNI"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:384
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "%s You may need to install, and use Gnome Shell Extension Appindicator"
 msgstr "%s יהיה עליך להתקין ולהשתמש בהרחבת מעטפת Gnome בשם Appindicator"
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_ssh_plugin.c:539
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Error: %s"
 msgstr "שגיאה: %s"
 
@@ -2985,7 +2988,7 @@ msgid "Export connection in Windows .rdp file format"
 msgstr "ייצוא החיבור בתצורת ‎.rdp עבור Windows"
 
 #: plugins/rdp/rdp_event.c:344
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Reconnection attempt %d of %d…"
 msgstr "ניסיון התחברות חוזרת %d מתוך %d…"
 
@@ -3000,7 +3003,7 @@ msgid "Transfer error"
 msgstr "שגיאת העברה"
 
 #: plugins/spice/spice_plugin_file_transfer.c:220
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "%s: %s"
 msgstr "%s: %s"
 
@@ -3010,7 +3013,7 @@ msgid "Transfer completed"
 msgstr "העברה הושלמה"
 
 #: plugins/spice/spice_plugin_file_transfer.c:224
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "The %s file has been transferred"
 msgstr "הקובץ %s הועבר"
 
@@ -3139,12 +3142,12 @@ msgid "Unable to connect to VNC server"
 msgstr "לא ניתן להתחבר לשרת ה־VNC"
 
 #: plugins/vnc/vnc_plugin.c:937
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Couldn’t convert '%s' to host address"
 msgstr "לא ניתן להמיר את '%s' לכתובת מארח"
 
 #: plugins/vnc/vnc_plugin.c:938
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "VNC connection failed: %s"
 msgstr "חיבור ה־VNC נכשל: %s"
 
@@ -3154,7 +3157,7 @@ msgid "Your connection has been rejected."
 msgstr "החיבור שלך נדחה."
 
 #: plugins/vnc/vnc_plugin.c:966
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "The VNC server requested an unknown authentication method. %s"
 msgstr "שרת ה־VNC ביקש שיטת אימות בלתי מוכרת. %s"
 
@@ -3362,7 +3365,7 @@ msgid "Secured password storage in the GNOME keyring"
 msgstr "אחסון ססמאות מאובטח בצרור המפתחות של GNOME"
 
 #: plugins/x2go/x2go_plugin.c:67
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "The command-line feature '%s' is not available! Attempting to start PyHoca-"
 "CLI without using this feature…"
@@ -3387,7 +3390,7 @@ msgstr ""
 #: plugins/x2go/x2go_plugin.c:2897 plugins/x2go/x2go_plugin.c:2912
 #: plugins/x2go/x2go_plugin.c:2917 plugins/x2go/x2go_plugin.c:2922
 #: plugins/x2go/x2go_plugin.c:2927
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Internal error: %s"
 msgstr "שגיאה פנימית: %s"
 
@@ -3511,7 +3514,8 @@ msgstr "המשתנים ‚dialog’ ו־‚treeview’ אינם מאותחלים
 msgid ""
 "GtkTreeModel of session chooser dialog could not be obtained for an unknown "
 "reason."
-msgstr "אי אפשר לקבל את ה־GtkTreeModel של חלונית בחירת ההפעלה מסיבה בלתי ברורה."
+msgstr ""
+"אי אפשר לקבל את ה־GtkTreeModel של חלונית בחירת ההפעלה מסיבה בלתי ברורה."
 
 #: plugins/x2go/x2go_plugin.c:709
 #, fuzzy
@@ -3519,7 +3523,7 @@ msgid "Couldn't get currently selected row (session)!"
 msgstr "אי אפשר לקבל את השורה שנבחרה כרגע (הפעלה)!"
 
 #: plugins/x2go/x2go_plugin.c:725
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "Exactly one session should be selectable but '%i' rows (sessions) are "
 "selected."
@@ -3531,7 +3535,7 @@ msgid "Failed to fill 'GtkTreeIter'."
 msgstr "מילוי ‚GtkTreeIter’ נכשל."
 
 #: plugins/x2go/x2go_plugin.c:776
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Couldn't get property with index '%i' out of selected row."
 msgstr "לא ניתן לקבל מאפיין עם המפתח ‚%i’ מתוך השורה הנבחרת."
 
@@ -3574,7 +3578,7 @@ msgid ""
 msgstr "אירעה שגיאה לא ידועה בעת ניסיון להפעיל את PyHoca-CLI. קוד יציאה: %i"
 
 #: plugins/x2go/x2go_plugin.c:897
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i. "
 "Error: '%s'"
@@ -3599,7 +3603,7 @@ msgid "Parameter 'session_id' is not initialized!"
 msgstr "המשתנה ‚session_id’ אינו מאותחל!"
 
 #: plugins/x2go/x2go_plugin.c:1047
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "An error occured while trying to terminate a X2Go session: %s"
 msgstr "אירעה שגיאה בחיסול הפעלת X2Go:‏ %s"
 
@@ -3609,12 +3613,12 @@ msgid "Couldn't get session ID from session chooser dialog."
 msgstr "לא היתה אפשרות לקבל מזהה הפעלה מחלונית בוחר ההפעלה."
 
 #: plugins/x2go/x2go_plugin.c:1101
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Resuming session: '%s'"
 msgstr "הפעלה מחודשת: ‚%s’"
 
 #: plugins/x2go/x2go_plugin.c:1125
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Terminating session: '%s'"
 msgstr "הפעלה מחוסלת: ‚%s’"
 
@@ -3687,7 +3691,7 @@ msgid "Couldn't allocate enough memory!"
 msgstr "לא היתה אפשרות להקצות מספיק זיכרון!"
 
 #: plugins/x2go/x2go_plugin.c:1755
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Found already existing X2Go session with ID: '%s'"
 msgstr "נמצאה הפעלה קיימת של X2Go המזהה: ‚%s’"
 
@@ -3736,13 +3740,13 @@ msgid "A non-critical error happened: %s"
 msgstr "אירעה שגיאה לא קריטית: %s"
 
 #: plugins/x2go/x2go_plugin.c:1996
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "User chose to resume session with ID: '%s'"
 msgstr "המשתמש בחר לחדש את ההפעלה עם המזהה: ‚%s’"
 
 #. TRANSLATORS: Please stick to X2GoClient's way of translating.
 #: plugins/x2go/x2go_plugin.c:2017
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Resuming session '%s'…"
 msgstr "ההפעלה ‚%s’ נמשכת…"
 
@@ -3767,7 +3771,7 @@ msgid "Could not start X2Go session."
 msgstr "אי אפשר להתחיל הפעלת X2Go."
 
 #: plugins/x2go/x2go_plugin.c:2199
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not start PyHoca-CLI (%i): '%s'"
 msgstr "לא ניתן להפעיל את PyHoca-CLI (%i):‏ ‚%s’"
 
@@ -3796,7 +3800,7 @@ msgid "Retrieved the following PyHoca-CLI command-line features:"
 msgstr "יכולות שורת הפקודה הבאות של PyHoca-CLI התקבלו:"
 
 #: plugins/x2go/x2go_plugin.c:2337
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Available feature[%i]: '%s'"
 msgstr "יכולת זמינה[%i]: ‚%s’"
 
@@ -3843,7 +3847,7 @@ msgstr "לא היתה אפשרות לאתחל את pthread. תתבצע נסיג�
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
 #: plugins/x2go/x2go_plugin.c:2743 plugins/x2go/x2go_plugin.c:2761
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "%sand '%s'"
 msgstr "%sו־‚%s’"
 
@@ -3854,7 +3858,7 @@ msgstr "%sו־‚%s’"
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
 #: plugins/x2go/x2go_plugin.c:2748 plugins/x2go/x2go_plugin.c:2766
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "%s'%s' "
 msgstr "%s‚%s’ "
 
@@ -3862,7 +3866,7 @@ msgstr "%s‚%s’ "
 #. (Except your listing-grammar differs from english.)
 #. 'value1', 'value2', 'valueN-1' and 'valueN'
 #: plugins/x2go/x2go_plugin.c:2753
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "%s'%s', "
 msgstr "%s‚%s’, "
 
@@ -3881,7 +3885,7 @@ msgid "Parameters 'key' or 'value' are 'NULL'!"
 msgstr "המשתנים ‚מפתח’ ו־‚ערך’ הם ‚NULL’!"
 
 #: plugins/x2go/x2go_plugin.c:2834
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Allowed values are %s."
 msgstr "הערכים המורשים הם %s."
 
@@ -3937,7 +3941,7 @@ msgid "The input is not a valid integer!"
 msgstr "הקלט אינו מספר שלם תקף!"
 
 #: plugins/x2go/x2go_plugin.c:2945 plugins/x2go/x2go_plugin.c:2964
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Input must be a number between %i and %i."
 msgstr "הקלט חייב להיות מספר בין %i ל־%i."
 
@@ -4133,7 +4137,7 @@ msgid "Shutdown remote host"
 msgstr "כיבוי המארח המרוחק"
 
 #: plugins/telepathy/telepathy_channel_handler.c:237
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "%s wants to share their desktop.\n"
 "Do you accept?"
@@ -4365,8 +4369,8 @@ msgstr ""
 "<big><b>החדשות כבויות</b></big>\n"
 "\n"
 "<span>\n"
-"הפעלת החדשות גוררת התחברות של התכנית לשרתי Remmina כדי להוריד את הערות הגרסה."
-"\n"
+"הפעלת החדשות גוררת התחברות של התכנית לשרתי Remmina כדי להוריד את הערות "
+"הגרסה.\n"
 "</span>\n"
 "\n"
 "<span>\n"
@@ -4387,8 +4391,8 @@ msgid ""
 "\">anonymous</a></b> statistics. (*)"
 msgstr ""
 "לשלוח סטטיסטיקה <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-"remmina__stats_8c.html#details\" title=\"סטטיסטיקת שימוש ב־Remmina\""
-">אלמונית</a></b> (*)"
+"remmina__stats_8c.html#details\" title=\"סטטיסטיקת שימוש ב־Remmina"
+"\">אלמונית</a></b> (*)"
 
 #: data/ui/remmina_news.glade:142 data/ui/remmina_news.glade:195
 #, fuzzy
@@ -4417,8 +4421,8 @@ msgid ""
 "Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
 "\">remmina.org</a> (*)"
 msgstr ""
-"משיכת חדשות מ־<a href=\"https://remmina.org\" title=\"Remmina news site\""
-">remmina.org</a> (*)"
+"משיכת חדשות מ־<a href=\"https://remmina.org\" title=\"Remmina news site"
+"\">remmina.org</a> (*)"
 
 #: data/ui/remmina_news.glade:208 data/ui/remmina_preferences.glade:446
 #, fuzzy
@@ -4446,9 +4450,10 @@ msgid ""
 "</span>\n"
 msgstr ""
 "<span>\n"
-"<b>אנו מוקירים אותך על השימוש בתכנה חופשית ללא זכויות יוצרים, <a href=\"https"
-"://remmina.org/donations/\" title=\"איפה הכסף לבובסקי? „בלובלובלובלו”\""
-">תרומות הן דבר שמאוד משמח אותנו</a>, וגם מסייעות בשיפור Remmina.</b>\n"
+"<b>אנו מוקירים אותך על השימוש בתכנה חופשית ללא זכויות יוצרים, <a href="
+"\"https://remmina.org/donations/\" title=\"איפה הכסף לבובסקי? "
+"„בלובלובלובלו”\">תרומות הן דבר שמאוד משמח אותנו</a>, וגם מסייעות בשיפור "
+"Remmina.</b>\n"
 "</span>\n"
 
 #: data/ui/remmina_news.glade:277
