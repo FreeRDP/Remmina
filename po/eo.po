@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Remmina v1.4.3\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-11-27 14:29+0000\n"
-"PO-Revision-Date: 2021-11-24 02:52+0000\n"
+"PO-Revision-Date: 2021-11-28 17:52+0000\n"
 "Last-Translator: phlostically <phlostically@mailinator.com>\n"
 "Language-Team: Esperanto <https://hosted.weblate.org/projects/remmina/"
 "remmina/eo/>\n"
@@ -570,10 +570,6 @@ msgstr "Ĉifri pasvorton"
 #. * to log more verbose statements.
 #.
 #: src/remmina.c:337
-#, fuzzy
-#| msgid ""
-#| "Remmina does not log all output statements. To enable a more verbose "
-#| "output please use G_MESSAGES_DEBUG=all as an environment variable."
 msgid ""
 "Remmina does not log all output statements. To enable a more verbose output "
 "please use G_MESSAGES_DEBUG=all as an environment variable.\n"
@@ -581,7 +577,9 @@ msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgstr ""
 "Remmina ne registras ĉiom da eligeblaĵoj. Por ŝalti pli detalajn eligaĵojn, "
-"bonvolu uzi la medivariablon «G_MESSAGES_DEBUG=all»."
+"bonvolu uzi la medivariablon «G_MESSAGES_DEBUG=all».\n"
+"Por pliaj informoj, bonvolu viziti la retejon de Remmina:\n"
+"https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:391
@@ -3000,13 +2998,11 @@ msgstr "_Nova"
 #. TRANSLATORS: Please stick to X2GoClient's way of translating.
 #: plugins/x2go/x2go_plugin.c:511
 msgid "Terminating X2Go sessions can take a moment."
-msgstr ""
+msgstr "Finado de X2Go-seanco povas postuli iom da momentoj."
 
 #: plugins/x2go/x2go_plugin.c:568
-#, fuzzy
-#| msgid "Display"
 msgid "X Display"
-msgstr "Montrejo"
+msgstr "Montro de Fenestrosistemo X"
 
 #: plugins/x2go/x2go_plugin.c:569
 msgid "Status"
@@ -3068,18 +3064,15 @@ msgid ""
 msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:709
-#, fuzzy
-#| msgid "Couldn't get selected row!"
 msgid "Couldn't get currently selected row (session)!"
-msgstr "Ne eblis akiri la elektitan vicon!"
+msgstr "Ne eblis akiri la aktuale elektitan vicon (seancon)!"
 
 #: plugins/x2go/x2go_plugin.c:725
-#, fuzzy, c-format
-#| msgid "only one session should be able to be selected."
+#, c-format
 msgid ""
 "Exactly one session should be selectable but '%i' rows (sessions) are "
 "selected."
-msgstr "nur unu seanco estu elektebla."
+msgstr "Nur unu seanco estu elektebla, sed %i vicoj (seancoj) estas elektitaj."
 
 #: plugins/x2go/x2go_plugin.c:764
 msgid "Failed to fill 'GtkTreeIter'."
@@ -3145,10 +3138,9 @@ msgid "Parameter 'session_id' is not initialized!"
 msgstr "La parametro «session_id» estas ne praŝargita!"
 
 #: plugins/x2go/x2go_plugin.c:1047
-#, fuzzy, c-format
-#| msgid "An error occured while starting an X2Go session…"
+#, c-format
 msgid "An error occured while trying to terminate a X2Go session: %s"
-msgstr "Eraro okazis dum lanĉo de seanco X2Go…"
+msgstr "Eraro okazis dum finado de seanco X2Go: %s"
 
 #: plugins/x2go/x2go_plugin.c:1094 plugins/x2go/x2go_plugin.c:1118
 msgid "Couldn't get session ID from session chooser dialog."
@@ -3160,10 +3152,9 @@ msgid "Resuming session: '%s'"
 msgstr "Rekativigante seancon «%s»"
 
 #: plugins/x2go/x2go_plugin.c:1125
-#, fuzzy, c-format
-#| msgid "Resuming session: '%s'"
+#, c-format
 msgid "Terminating session: '%s'"
-msgstr "Rekativigante seancon «%s»"
+msgstr "Finante la seancon «%s»"
 
 #: plugins/x2go/x2go_plugin.c:1142
 msgid "GtkTreePath 'path' describes a non-existing row!"
@@ -3231,22 +3222,18 @@ msgstr "Trovis jam ekzistantan X2Go-seancon, kies identigilo estas «%s»"
 
 #. TRANSLATORS: Please stick to X2GoClient's translation.
 #: plugins/x2go/x2go_plugin.c:1798
-#, fuzzy
-#| msgid "Suspended since"
 msgid "Suspended"
-msgstr "Malaktivigita ekde"
+msgstr "Malaktivigita"
 
 #. TRANSLATORS: Please stick to X2GoClient's translation.
 #: plugins/x2go/x2go_plugin.c:1801
 msgid "Running"
-msgstr ""
+msgstr "Rulata"
 
 #. TRANSLATORS: Please stick to X2GoClient's translation.
 #: plugins/x2go/x2go_plugin.c:1804
-#, fuzzy
-#| msgid "Terminate"
 msgid "Terminated"
-msgstr "Haltigi"
+msgstr "Finita"
 
 #: plugins/x2go/x2go_plugin.c:1837
 msgid ""
