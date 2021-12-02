@@ -453,6 +453,36 @@ static gboolean rmplugin_x2go_session_chooser_row_activated(GtkTreeView *treevie
 }
 
 /**
+ * @brief Translates a session property (described by SESSION_PROPERTIES enum) to a
+ *	  string containing it's display name.
+ *
+ * @param session_property A session property. (as described by SESSION_PROPERTIES enum)
+ * @return gchar* Translated display name. (Can be NULL, if session_property is invalid!)
+ */
+static gchar *rmplugin_x2go_session_property_to_string(guint session_property) {
+	gchar* return_char = NULL;
+
+	switch (session_property) {
+		// I think we can close one eye here regarding max line-length.
+		case SESSION_DISPLAY:		return_char = g_strdup(_("X Display"));		break;
+		case SESSION_STATUS:		return_char = g_strdup(_("Status"));		break;
+		case SESSION_SESSION_ID:	return_char = g_strdup(_("Session ID"));	break;
+		case SESSION_CREATE_DATE:	return_char = g_strdup(_("Create date"));	break;
+		case SESSION_SUSPENDED_SINCE:	return_char = g_strdup(_("Suspended since"));	break;
+		case SESSION_AGENT_PID:		return_char = g_strdup(_("Agent PID"));		break;
+		case SESSION_USERNAME:		return_char = g_strdup(_("Username"));		break;
+		case SESSION_HOSTNAME:		return_char = g_strdup(_("Hostname"));		break;
+		case SESSION_COOKIE:		return_char = g_strdup(_("Cookie"));		break;
+		case SESSION_GRAPHIC_PORT:	return_char = g_strdup(_("Graphic port"));	break;
+		case SESSION_SND_PORT:		return_char = g_strdup(_("SND port"));		break;
+		case SESSION_SSHFS_PORT:	return_char = g_strdup(_("SSHFS port"));	break;
+		case SESSION_DIALOG_IS_VISIBLE:	return_char = g_strdup(_("Visible"));		break;
+	}
+
+	return return_char;
+}
+
+/**
  * @brief Builds a dialog which contains all found X2Go-Sessions of the remote server.
  *	  The dialog gives the user the option to choose between resuming or terminating
  *	  an existing session or to create a new one.
@@ -562,27 +592,19 @@ static GtkWidget* rmplugin_x2go_choose_session_dialog_factory(X2GoCustomUserData
 	gchar *header_title = NULL;
 
 	// First to last in SESSION_PROPERTIES.
-	for (gint i = 0; i < SESSION_NUM_PROPERTIES; ++i) {
-		switch (i) {
-			// I think we can close one eye here regarding max line-length.
-			case SESSION_DISPLAY:		header_title = g_strdup(_("X Display"));	break;
-			case SESSION_STATUS:		header_title = g_strdup(_("Status"));		break;
-			case SESSION_SESSION_ID:	header_title = g_strdup(_("Session ID"));	break;
-			case SESSION_CREATE_DATE:	header_title = g_strdup(_("Create date"));	break;
-			case SESSION_SUSPENDED_SINCE:	header_title = g_strdup(_("Suspended since"));	break;
-			case SESSION_AGENT_PID:		header_title = g_strdup(_("Agent PID"));	break;
-			case SESSION_USERNAME:		header_title = g_strdup(_("Username"));		break;
-			case SESSION_HOSTNAME:		header_title = g_strdup(_("Hostname"));		break;
-			case SESSION_COOKIE:		header_title = g_strdup(_("Cookie"));		break;
-			case SESSION_GRAPHIC_PORT:	header_title = g_strdup(_("Graphic port"));	break;
-			case SESSION_SND_PORT:		header_title = g_strdup(_("SND port"));		break;
-			case SESSION_SSHFS_PORT:	header_title = g_strdup(_("SSHFS port"));	break;
-			default: {
-				header_title = g_strdup_printf(_("Internal error: %s"),
-							       _("Unknown property"));
-				break;
-			}
-		}	
+	for (guint i = 0; i < SESSION_NUM_PROPERTIES; ++i) {
+		// Do not display SESSION_DIALOG_IS_VISIBLE.
+		if (i == SESSION_DIALOG_IS_VISIBLE) continue;
+
+		header_title = rmplugin_x2go_session_property_to_string(i);
+		if (!header_title) {
+			REMMINA_PLUGIN_WARNING("%s", g_strdup_printf(
+				_("Internal error: %s"), g_strdup_printf(
+				_("Unknown property '%i'"), i
+			)));
+			header_title = g_strdup_printf(_("Unknown property '%i'"), i);
+		}
+
 		tree_view_col = gtk_tree_view_column_new();
 		gtk_tree_view_column_set_title(tree_view_col, header_title);
 		gtk_tree_view_column_set_clickable(tree_view_col, FALSE);
