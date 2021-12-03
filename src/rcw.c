@@ -2965,22 +2965,23 @@ static gboolean rcw_after_configure_scrolled(gpointer user_data)
 	gint width, height;
 	GdkWindowState s;
 	gint ipg, npages;
-	RemminaConnectionObject *cnnobj;
+	RemminaConnectionWindow *cnnwin;
 
-	cnnobj = (RemminaConnectionObject *)user_data;
+	cnnwin = (RemminaConnectionWindow *)user_data;
 
-	if (!cnnobj || !cnnobj->cnnwin)
+	if (!cnnwin || !cnnwin->priv)
 		return FALSE;
 
-	s = gdk_window_get_state(gtk_widget_get_window(GTK_WIDGET(cnnobj->cnnwin)));
+	s = gdk_window_get_state(gtk_widget_get_window(GTK_WIDGET(cnnwin)));
 
 
 	/* Changed window_maximize, window_width and window_height for all
 	 * connections inside the notebook */
-	npages = gtk_notebook_get_n_pages(GTK_NOTEBOOK(cnnobj->cnnwin->priv->notebook));
+	npages = gtk_notebook_get_n_pages(GTK_NOTEBOOK(cnnwin->priv->notebook));
 	for (ipg = 0; ipg < npages; ipg++) {
+		RemminaConnectionObject *cnnobj;
 		cnnobj = g_object_get_data(
-			G_OBJECT(gtk_notebook_get_nth_page(GTK_NOTEBOOK(cnnobj->cnnwin->priv->notebook), ipg)),
+			G_OBJECT(gtk_notebook_get_nth_page(GTK_NOTEBOOK(cnnwin->priv->notebook), ipg)),
 			"cnnobj");
 		if (s & GDK_WINDOW_STATE_MAXIMIZED) {
 			remmina_file_set_int(cnnobj->remmina_file, "window_maximize", TRUE);
@@ -2991,7 +2992,7 @@ static gboolean rcw_after_configure_scrolled(gpointer user_data)
 			remmina_file_set_int(cnnobj->remmina_file, "window_maximize", FALSE);
 		}
 	}
-	cnnobj->cnnwin->priv->acs_eventsourceid = 0;
+	cnnwin->priv->acs_eventsourceid = 0;
 	return FALSE;
 }
 
@@ -3019,7 +3020,7 @@ static gboolean rcw_on_configure(GtkWidget *widget, GdkEventConfigure *event,
 		/* Under GNOME Shell we receive this configure_event BEFORE a window
 		 * is really unmaximized, so we must read its new state and dimensions
 		 * later, not now */
-		cnnwin->priv->acs_eventsourceid = g_timeout_add(500, rcw_after_configure_scrolled, cnnobj);
+		cnnwin->priv->acs_eventsourceid = g_timeout_add(500, rcw_after_configure_scrolled, cnnwin);
 
 	if (cnnwin->priv->view_mode != SCROLLED_WINDOW_MODE)
 		/* Notify window of change so that scroll border can be hidden or shown if needed */
