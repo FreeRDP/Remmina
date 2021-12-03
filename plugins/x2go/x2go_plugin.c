@@ -717,8 +717,8 @@ static GtkTreeModelFilter* rmplugin_x2go_session_chooser_get_filter_model(GtkWid
 	} else {
 		REMMINA_PLUGIN_CRITICAL("%s", g_strdup_printf(
 			_("Internal error: %s"),
-			_("Both parameters 'dialog' and 'treeview' are uninitialized! "
-			  "At least one initialized parameter must be given.")
+			_("Neither the 'dialog' nor 'treeview' parameters are initialized! "
+			  "At least one of them must be given.")
 		));
 		return NULL;
 	}
@@ -726,8 +726,8 @@ static GtkTreeModelFilter* rmplugin_x2go_session_chooser_get_filter_model(GtkWid
 	if (!return_model || !GTK_TREE_MODEL_FILTER(return_model)) {
 		REMMINA_PLUGIN_CRITICAL("%s", g_strdup_printf(
 			_("Internal error: %s"),
-			_("GtkTreeModelFilter* of session chooser dialog could not be "
-			  "obtained for an unknown reason.")
+			_("Could not obtain \"GtkTreeModelFilter*\" of the session chooser dialog, "
+			  "for unknown reason.")
 		));
 	}
 
@@ -772,7 +772,7 @@ static GtkTreePath* rmplugin_x2go_session_chooser_get_selected_row(GtkWidget *di
 	if (!model) return NULL; // error message was already handled.
 
 	GtkTreeModel *filter_model = GTK_TREE_MODEL(filter);
-	g_assert(filter_model && "Couldn't cast 'filter' to a GtkTreeModel!");
+	g_assert(filter_model && "Could not cast 'filter' to a GtkTreeModel!");
 	GList *selected_rows = gtk_tree_selection_get_selected_rows(selection, &filter_model);
 
 	// We only support single selection.
@@ -969,7 +969,7 @@ static gchar* rmplugin_x2go_spawn_pyhoca_process(guint argc, gchar* argv[],
 			return NULL;
 		} else {
 			gchar* errmsg = g_strdup_printf(
-				_("An error occured while trying to start "
+				_("Could not start "
 				  "PyHoca-CLI:\n%s"),
 				standard_err
 			);
@@ -1029,7 +1029,7 @@ static gboolean rmplugin_x2go_session_chooser_set_row_visible(GtkTreePath *path,
 	if (!path || !dialog) {
 		REMMINA_PLUGIN_CRITICAL("%s", g_strdup_printf(
 			_("Internal error: %s"),
-			_("Parameters 'path' or 'dialog' are not initialized.")
+			_("Neither the 'path' nor 'dialog' parameters are initialized.")
 		));
 		return FALSE;
 	}
@@ -1297,8 +1297,8 @@ static gboolean rmplugin_x2go_session_chooser_callback(X2GoCustomUserData* custo
 	// Don't need to run other stuff, if the user just wants a new session.
 	// Also it can happen, that no session is there anymore which can be selected!
 	if (response_id == SESSION_CHOOSER_RESPONSE_NEW) {
-		REMMINA_PLUGIN_DEBUG("User explicitly wishes a new session. "
-			             "Creating a new session then.");
+		REMMINA_PLUGIN_DEBUG("The user explicitly requested a new session. "
+			             "Creating a new session…");
 		SET_RESUME_SESSION(gp, NULL);
 
 		// Unstucking main process. Telling it that a session has been selected.
