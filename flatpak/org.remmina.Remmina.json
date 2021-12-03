@@ -98,8 +98,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/OpenPrinting/cups/archive/refs/tags/v2.4b1.tar.gz",
-                    "sha256": "cabb3c41a536153cd75072621039f7a47cacde078ed44e0346cb1b6068806b01",
+                    "url": "https://github.com/OpenPrinting/cups/archive/refs/tags/v2.4.0.tar.gz",
+                    "sha256": "36338ebdc6e8b1d4af26471230c479ce4d691a11f90bb42ac6822d4f2bf002c5",
                     "x-checker-data": {
                         "type": "anitya",
                         "project-id": 380,
@@ -132,8 +132,8 @@
                 {
                     "type": "git",
                     "url": "https://gitlab.gnome.org/GNOME/vte.git",
-                    "tag": "0.66.0",
-                    "commit": "956d3bbd265279c296c56d9fb5ada1fee94768ee",
+                    "tag": "0.66.1",
+                    "commit": "29bc0a2d7fefc0e8bc5f60b72c3a666809d490f9",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^([\\d.]+)$"
@@ -247,6 +247,10 @@
                         "project-id": 11576,
                         "url-template": "https://www.spice-space.org/download/gtk/spice-gtk-$version.tar.xz"
                     }
+                },
+                {
+                    "type": "patch",
+                    "path": "patches/spice-common-meson-fix.patch"
                 }
             ],
             "modules": [
@@ -257,16 +261,16 @@
                     "name": "python-pyparsing",
                     "buildsystem": "simple",
                     "build-commands": [
-                        "pip3 install --no-deps --no-build-isolation --verbose --prefix=${FLATPAK_DEST} ."
+                        "python3 setup.py install --prefix=${FLATPAK_DEST} --root=/ --optimize=1"
                     ],
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://files.pythonhosted.org/packages/c1/47/dfc9c342c9842bbe0036c7f763d2d6686bcf5eb1808ba3e170afdb282210/pyparsing-2.4.7.tar.gz",
-                            "sha256": "c203ec8783bf771a155b207279b9bccb8dea02d8f0c9e5f8ead507bc3246ecc1",
+                            "url": "https://files.pythonhosted.org/packages/ab/61/1a1613e3dcca483a7aa9d446cb4614e6425eb853b90db131c305bd9674cb/pyparsing-3.0.6.tar.gz",
+                            "sha256": "d9bdec0013ef1eb5a84ab39a3b3868911598afa494f5faa038647101504e2b81",
                             "x-checker-data": {
                                 "type": "pypi",
-                                "name": "wheel"
+                                "name": "pyparsing"
                             }
                         }
                     ]
@@ -380,7 +384,7 @@
                     "type": "git",
                     "url": "https://github.com/jedisct1/libsodium.git",
                     "branch": "stable",
-                    "commit": "100ccb452d2cce99763c3dfcfba057df9a76d0b9"
+                    "commit": "aa099f5e82ae78175f9c1c48372a123cb634dd92"
                 }
             ],
             "post-install": [
