@@ -2315,6 +2315,7 @@ remmina_ssh_shell_new_from_file(RemminaFile *remminafile)
 	shell->master = -1;
 	shell->slave = -1;
 	shell->exec = g_strdup(remmina_file_get_string(remminafile, "exec"));
+	shell->run_line = g_strdup(remmina_file_get_string(remminafile, "run_line"));
 
 	return shell;
 }
@@ -2426,6 +2427,16 @@ remmina_ssh_shell_thread(gpointer data)
 		REMMINA_DEBUG("Saving session log to %s", filename);
 		fp = fopen(filename, "w");
 	}
+	
+	REMMINA_DEBUG("Run_line: %s", shell->run_line);
+	if (!shell->closed && shell->run_line && shell->run_line[0]) {
+		LOCK_SSH(shell)
+		//TODO: Confirm assumption - assuming null terminated gchar string
+		ssh_channel_write(channel, shell->run_line, (gint)strlen(shell->run_line)); 
+		ssh_channel_write(channel, "\n", (gint)1); //TODO: Test this 
+		UNLOCK_SSH(shell)
+		REMMINA_DEBUG("Run_line written to channel");
+	}
 	while (!shell->closed) {
 		timeout.tv_sec = 1;
 		timeout.tv_usec = 0;
@@ -2444,13 +2455,13 @@ remmina_ssh_shell_thread(gpointer data)
 			ssh_channel_write(channel, buf, len);
 			UNLOCK_SSH(shell)
 		}
-
+		
 		for (i = 0; i < 2; i++) {
 			LOCK_SSH(shell)
 			len = ssh_channel_poll(channel, i);
 			UNLOCK_SSH(shell)
 			if (len == SSH_ERROR || len == SSH_EOF) {
-				shell->closed = TRUE;
+				shell->closed=TRUE;
 				break;
 			}
 			if (len <= 0) continue;
@@ -2462,7 +2473,7 @@ remmina_ssh_shell_thread(gpointer data)
 			len = ssh_channel_read_nonblocking(channel, buf, len, i);
 			UNLOCK_SSH(shell)
 			if (len <= 0) {
-				shell->closed = TRUE;
+				shell->closed=TRUE;
 				break;
 			}
 			while (len > 0) {
@@ -2493,7 +2504,6 @@ remmina_ssh_shell_thread(gpointer data)
 		IDLE_ADD((GSourceFunc)remmina_ssh_call_exit_callback_on_main_thread, (gpointer)shell);
 	return NULL;
 }
-
 
 gboolean
 remmina_ssh_shell_open(RemminaSSHShell *shell, RemminaSSHExitFunc exit_callback, gpointer data)
@@ -2555,6 +2565,10 @@ remmina_ssh_shell_free(RemminaSSHShell *shell)
 	if (shell->exec) {
 		g_free(shell->exec);
 		shell->exec = NULL;
+	}
+	if (shell->run_line) {
+		g_free(shell->run_line);
+		shell->run_line = NULL;
 	}
 	/* It’s not necessary to close shell->slave since the other end (vte) will close it */;
 	remmina_ssh_free(REMMINA_SSH(shell));
