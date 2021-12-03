@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-12-03 09:34+0000\n"
+"POT-Creation-Date: 2021-12-03 15:01+0000\n"
 "PO-Revision-Date: 2021-11-09 14:11+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Kazakh <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -23,33 +23,33 @@ msgstr ""
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:354
 #: src/remmina_protocol_widget.c:1677 src/remmina_protocol_widget.c:1696
 #: src/remmina_file_editor.c:1101 src/remmina_file_editor.c:1222
-#: src/remmina_ssh_plugin.c:1360 plugins/rdp/rdp_plugin.c:2723
+#: src/remmina_ssh_plugin.c:1361 plugins/rdp/rdp_plugin.c:2723
 #: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:2992
-#: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1675
+#: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1646
 #: data/ui/remmina_unlock.glade:116
 msgid "Password"
 msgstr "Құпия сөз"
 
 #: src/remmina_sftp_plugin.c:311 src/remmina_sftp_plugin.c:356
-#: src/remmina_file_editor.c:1102 src/remmina_ssh_plugin.c:1361
-#: src/remmina_ssh_plugin.c:1472
+#: src/remmina_file_editor.c:1102 src/remmina_ssh_plugin.c:1362
+#: src/remmina_ssh_plugin.c:1473
 #, fuzzy
 msgid "SSH identity file"
 msgstr "SSH сәйкестік куәлігі файлы"
 
 #: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:1103
-#: src/remmina_ssh_plugin.c:1362
+#: src/remmina_ssh_plugin.c:1363
 #, fuzzy
 msgid "SSH agent"
 msgstr "SSH агенті"
 
 #: src/remmina_sftp_plugin.c:313 src/remmina_file_editor.c:1104
-#: src/remmina_ssh_plugin.c:1363
+#: src/remmina_ssh_plugin.c:1364
 msgid "Public key (automatic)"
 msgstr "Ашық жариялы кілт (автоматты)"
 
 #: src/remmina_sftp_plugin.c:314 src/remmina_file_editor.c:1105
-#: src/remmina_ssh_plugin.c:1364
+#: src/remmina_ssh_plugin.c:1365
 #, fuzzy
 msgid "Kerberos (GSSAPI)"
 msgstr "Керберос (GSSAPI)"
@@ -75,7 +75,7 @@ msgid "Connect via SSH from a new terminal"
 msgstr "Жаңа терминалдан SSH арқылы қосылу"
 
 #: src/remmina_sftp_plugin.c:353 src/remmina_message_panel.c:330
-#: src/remmina_file_editor.c:1216 src/remmina_ssh_plugin.c:1470
+#: src/remmina_file_editor.c:1216 src/remmina_ssh_plugin.c:1471
 #: plugins/rdp/rdp_plugin.c:2722 plugins/vnc/vnc_plugin.c:1976
 #: plugins/vnc/vnc_plugin.c:1988 plugins/www/www_plugin.c:894
 #: plugins/x2go/x2go_plugin.c:574 plugins/x2go/x2go_plugin.c:2991
@@ -85,18 +85,18 @@ msgid "Username"
 msgstr "Paıdalanýshy aty"
 
 #: src/remmina_sftp_plugin.c:355 src/remmina_file_editor.c:1207
-#: src/remmina_ssh_plugin.c:1469
+#: src/remmina_ssh_plugin.c:1470
 #, fuzzy
 msgid "Authentication type"
 msgstr "Аутентификация түрі"
 
 #: src/remmina_sftp_plugin.c:357 src/remmina_file_editor.c:1240
-#: src/remmina_ssh_plugin.c:1476
+#: src/remmina_ssh_plugin.c:1477
 #, fuzzy
 msgid "Password to unlock private key"
 msgstr "Жеке кілттің құлпын ашуға арналған құпия сөз"
 
-#: src/remmina_sftp_plugin.c:358 src/remmina_ssh_plugin.c:1507
+#: src/remmina_sftp_plugin.c:358 src/remmina_ssh_plugin.c:1508
 #, fuzzy
 msgid "SSH Proxy Command"
 msgstr "SSH прокси командасы"
@@ -105,6 +105,26 @@ msgstr "SSH прокси командасы"
 #, fuzzy
 msgid "SFTP - Secure File Transfer"
 msgstr "SFTP - Файлды қауіпсіз тасымалдау"
+
+#: src/remmina_log.c:129
+#, fuzzy
+#| msgid "Open Main Window"
+msgid "Remmina debugging window"
+msgstr "«Реммина» негізгі терезесін ашу"
+
+#: src/remmina_log.c:133
+msgid "Paste sytem information in the Remmina debugging window"
+msgstr ""
+
+#: src/remmina_log.c:153
+msgid ""
+"This window can help you finding connections problems.\n"
+"You can stop and start the logging at any moment using the On/Off switch.\n"
+"The stats button (Ctrl+T), may be useful to gather system information that "
+"you may share while reporting a bug.\n"
+"For more information on debugging Remmina see : https://gitlab.com/Remmina/"
+"Remmina/-/wikis/Usage/Remmina-debugging\n"
+msgstr ""
 
 #: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1951
 msgid "Protocol"
@@ -279,7 +299,7 @@ msgstr "Болдырмау"
 #: src/remmina_message_panel.c:199 data/ui/remmina_snap_info_dialog.glade:28
 #: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
 #: data/ui/remmina_string_list.glade:63 data/ui/remmina_news.glade:33
-#: data/ui/remmina_preferences.glade:2622
+#: data/ui/remmina_preferences.glade:2593
 #, fuzzy
 msgid "Close"
 msgstr "Жабу"
@@ -350,7 +370,7 @@ msgstr ""
 msgid "Viewport fullscreen mode"
 msgstr "Толық экран режимі"
 
-#: src/rcw.c:1407 data/ui/remmina_preferences.glade:607
+#: src/rcw.c:1407 data/ui/remmina_preferences.glade:578
 #, fuzzy
 msgid "Scrolled fullscreen"
 msgstr "Жылжытылған толық экран"
@@ -409,8 +429,8 @@ msgstr "Терезе қашықтаған жұмыс үстелдің экран
 msgid "Toggle fullscreen mode"
 msgstr "Толық экран режиміне өту"
 
-#: src/rcw.c:2392 data/ui/remmina_preferences.glade:1332
-#: data/ui/remmina_preferences.glade:1342
+#: src/rcw.c:2392 data/ui/remmina_preferences.glade:1303
+#: data/ui/remmina_preferences.glade:1313
 #, fuzzy
 msgid "Multi monitor"
 msgstr "Көп монитор"
@@ -424,7 +444,7 @@ msgstr "Динамикалық ажыратымдылық жаңартуын қ�
 msgid "Toggle scaled mode"
 msgstr "Масштабтау режиміне өту"
 
-#: src/rcw.c:2458 data/ui/remmina_preferences.glade:1066
+#: src/rcw.c:2458 data/ui/remmina_preferences.glade:1037
 #, fuzzy
 msgid "Switch tab pages"
 msgstr "Қойынды беттерін ауыстыру"
@@ -445,17 +465,17 @@ msgstr "Құралдар"
 msgid "Tools"
 msgstr "Құралдар"
 
-#: src/rcw.c:2501 data/ui/remmina_preferences.glade:1267
-#: data/ui/remmina_preferences.glade:1277
+#: src/rcw.c:2501 data/ui/remmina_preferences.glade:1238
+#: data/ui/remmina_preferences.glade:1248
 #, fuzzy
 msgid "Screenshot"
 msgstr "Ekran sýretteri"
 
-#: src/rcw.c:2515 data/ui/remmina_preferences.glade:1174
+#: src/rcw.c:2515 data/ui/remmina_preferences.glade:1145
 msgid "Minimize window"
 msgstr "Терезені қайыру"
 
-#: src/rcw.c:2525 data/ui/remmina_preferences.glade:1205
+#: src/rcw.c:2525 data/ui/remmina_preferences.glade:1176
 msgid "Disconnect"
 msgstr "Байланысты үзу"
 
@@ -525,13 +545,13 @@ msgid_plural "%d passwords changed."
 msgstr[0] "%d құпия сөзі өзгерді."
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:86
+#: src/remmina.c:84
 #, fuzzy
 msgid "Show 'About'"
 msgstr "«Туралы» дегенді көрсету"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:88
+#: src/remmina.c:86
 #, fuzzy
 msgid ""
 "Connect either to a desktop described in a file (.remmina or a filetype "
@@ -541,13 +561,13 @@ msgstr ""
 "файлдық үлгі) немесе қолдау көрсетілген URI (RDP, VNC, SSH немесе SPICE) "
 "бағдарламасына қосылу"
 
-#: src/remmina.c:88 src/remmina.c:90 src/remmina.c:92
+#: src/remmina.c:86 src/remmina.c:88 src/remmina.c:90
 #, fuzzy
 msgid "FILE"
 msgstr "ФАЙЛ"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:90
+#: src/remmina.c:88
 #, fuzzy
 msgid ""
 "Connect to a desktop described in a file (.remmina or a filetype supported "
@@ -557,7 +577,7 @@ msgstr ""
 "қолдайтын түр)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:92
+#: src/remmina.c:90
 #, fuzzy
 msgid ""
 "Edit desktop connection described in file (.remmina or a filetype supported "
@@ -567,87 +587,87 @@ msgstr ""
 "қолдау көрсетілген түр)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:95
+#: src/remmina.c:93
 #, fuzzy
 msgid "Start in kiosk mode"
 msgstr "Дүңгіршек режимінде бастау"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:97
+#: src/remmina.c:95
 msgid "Create new connection profile"
 msgstr "Жаңа қосылыс"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:99
+#: src/remmina.c:97
 msgid "Show preferences"
 msgstr "Баптаулар"
 
-#: src/remmina.c:99
+#: src/remmina.c:97
 #, fuzzy
 msgid "TABINDEX"
 msgstr "ТАБИНДЕКС"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:106
+#: src/remmina.c:104
 #, fuzzy
 msgid "Quit"
 msgstr "Шығу"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:108
+#: src/remmina.c:106
 #, fuzzy
 msgid "Use default server name (for --new)"
 msgstr "Әдепкі сервер атауын пайдалану (-жаңа)"
 
-#: src/remmina.c:108
+#: src/remmina.c:106
 #, fuzzy
 msgid "SERVER"
 msgstr "СЕРВЕР"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:110
+#: src/remmina.c:108
 #, fuzzy
 msgid "Use default protocol (for --new)"
 msgstr "Әдепкі хаттаманы пайдалану (-жаңа)"
 
-#: src/remmina.c:110
+#: src/remmina.c:108
 #, fuzzy
 msgid "PROTOCOL"
 msgstr "ХАТТАМА"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:112
+#: src/remmina.c:110
 #, fuzzy
 msgid "Start in tray"
 msgstr "Науада бастау"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:114
+#: src/remmina.c:112
 #, fuzzy
 msgid "Show the application version"
 msgstr "Қолданба нұсқасын көрсету"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:116
+#: src/remmina.c:114
 #, fuzzy
 msgid "Show version of the application and its plugins"
 msgstr "Қолданбаның нұсқасын және оның плагин модульдерін көрсету"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:118
+#: src/remmina.c:116
 #, fuzzy
 msgid "Modify connection profile (requires --set-option)"
 msgstr "Қосылым профилін өзгерту (қажет -- set-параметрі)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:120
+#: src/remmina.c:118
 #, fuzzy
 msgid "Set one or more profile settings, to be used with --update-profile"
 msgstr ""
 "-update-profile көмегімен пайдаланылатын бір немесе бірнеше профиль "
 "параметрлерін орнату"
 
-#: src/remmina.c:121
+#: src/remmina.c:119
 msgid "Encrypt a password"
 msgstr "Құпия сөзді сақтау"
 
@@ -655,7 +675,7 @@ msgstr "Құпия сөзді сақтау"
 #. * This link should point to a resource explaining how to get Remmina
 #. * to log more verbose statements.
 #.
-#: src/remmina.c:337
+#: src/remmina.c:334
 msgid ""
 "Remmina does not log all output statements. Turn on more verbose output by "
 "using \"G_MESSAGES_DEBUG=all\" as an environment variable.\n"
@@ -664,12 +684,12 @@ msgid ""
 msgstr ""
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:391
+#: src/remmina.c:388
 #, fuzzy
 msgid "- or protocol://username:encryptedpassword@host:port"
 msgstr "- немесе хаттама:/username:encryptedpassword@host:port"
 
-#: src/remmina.c:394
+#: src/remmina.c:391
 #, fuzzy
 msgid ""
 "Examples:\n"
@@ -896,7 +916,7 @@ msgid "Progress"
 msgstr "Barysy"
 
 #: src/remmina_protocol_widget.c:291 src/remmina_ssh_plugin.c:829
-#: src/remmina_ssh_plugin.c:1445
+#: src/remmina_ssh_plugin.c:1446
 msgid "Open SFTP transfer…"
 msgstr "Қорғалған файлдар алмасуын (SFTP) ашу…"
 
@@ -1307,7 +1327,7 @@ msgstr "Осы команда орындауы сәтсіз аяқталды: %s
 msgid "Could not request shell. %s"
 msgstr "Осы команда орындауы сәтсіз аяқталды: %s"
 
-#: src/remmina_ssh.c:2521
+#: src/remmina_ssh.c:2523
 #, fuzzy
 msgid "Could not create PTY device."
 msgstr "PTY құрылғысын жасау мүмкін болмады."
@@ -1317,23 +1337,31 @@ msgstr "PTY құрылғысын жасау мүмкін болмады."
 msgid "Plugin %s is not registered."
 msgstr "%s кеңейтуі тіркелмеген."
 
-#: src/remmina_main.c:669
+#: src/remmina_main.c:685
 #, fuzzy
 msgid "The latest successful connection attempt, or a pre-computed date"
 msgstr "Соңғы сәтті қосылым әрекеті немесе алдын ала есептелген күн"
 
-#: src/remmina_main.c:671
+#: src/remmina_main.c:687
 #, c-format
 msgid "Total %i item."
 msgid_plural "Total %i items."
 msgstr[0] "Жалпы %i қосылыс."
 
-#: src/remmina_main.c:865
+#: src/remmina_main.c:694
+msgid "Network status: fully online"
+msgstr ""
+
+#: src/remmina_main.c:697
+msgid "Network status: offline"
+msgstr ""
+
+#: src/remmina_main.c:901
 #, c-format
 msgid "Are you sure you want to delete “%s”?"
 msgstr "\"%s\" жою қажет пе?"
 
-#: src/remmina_main.c:989
+#: src/remmina_main.c:1025
 #, c-format
 msgid ""
 "Unable to import:\n"
@@ -1342,24 +1370,24 @@ msgstr ""
 "Импорттау мүмкін емес:\n"
 "%s"
 
-#: src/remmina_main.c:1015 data/ui/remmina_main.glade:285
+#: src/remmina_main.c:1051 data/ui/remmina_main.glade:285
 msgid "Import"
 msgstr "Импорттау"
 
-#: src/remmina_main.c:1038 src/remmina_file_editor.c:1791
+#: src/remmina_main.c:1074 src/remmina_file_editor.c:1791
 #, fuzzy
 msgid "_Save"
 msgstr "_Save"
 
-#: src/remmina_main.c:1044
+#: src/remmina_main.c:1080
 msgid "This protocol does not support exporting."
 msgstr "Бұл протокол экспорттауды жоқ."
 
-#: src/remmina_main.c:1361
+#: src/remmina_main.c:1400
 msgid "Remmina Remote Desktop Client"
 msgstr "Remmina қашықтаған жұмыс үстел клиенті"
 
-#: src/remmina_main.c:1363
+#: src/remmina_main.c:1402
 #, fuzzy
 msgid "Remmina Kiosk"
 msgstr "Ремина Дюоск"
@@ -1621,7 +1649,7 @@ msgstr "SSH аутентификациясы"
 msgid "SSH private key file"
 msgstr "SSH жеке кілт файлы"
 
-#: src/remmina_file_editor.c:1235 src/remmina_ssh_plugin.c:1474
+#: src/remmina_file_editor.c:1235 src/remmina_ssh_plugin.c:1475
 #, fuzzy
 msgid "SSH certificate file"
 msgstr "SSH сертификат файлы"
@@ -1749,29 +1777,29 @@ msgstr "_Quit"
 
 #. TRANSLATORS: Applet name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
 #. TRANSLATORS: Applet Name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
-#: src/remmina_icon.c:294 src/remmina_icon.c:450
+#: src/remmina_icon.c:294 src/remmina_icon.c:446
 #, fuzzy
 msgid "Remmina Applet"
 msgstr "Реммина Аппл"
 
 #. TRANSLATORS: Applet comment/description as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
-#: src/remmina_icon.c:296 src/remmina_icon.c:452
+#: src/remmina_icon.c:296 src/remmina_icon.c:448
 msgid "Connect to remote desktops through the applet menu"
 msgstr "Апплет мәзірінен қашықтаған жұмыс үстелдерге қосылу"
 
-#: src/remmina_icon.c:359
+#: src/remmina_icon.c:360
 #, fuzzy
 msgid "StatusNotifier/Appindicator support in “"
 msgstr "СтатусНотификатор/Аппиндикатор қолдауы \""
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
-#: src/remmina_icon.c:366
+#: src/remmina_icon.c:367
 #, fuzzy, c-format
 msgid "%s your desktop does support it"
 msgstr "%s жұмыс үстелі оны қолдайды"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
-#: src/remmina_icon.c:368
+#: src/remmina_icon.c:369
 #, fuzzy, c-format
 msgid "%s and Remmina has built-in (compiled) support for libappindicator."
 msgstr ""
@@ -1779,7 +1807,7 @@ msgstr ""
 "болды."
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
-#: src/remmina_icon.c:371
+#: src/remmina_icon.c:372
 #, fuzzy, c-format
 msgid ""
 "%s not supported natively by your Desktop Environment. libappindicator will "
@@ -1789,27 +1817,27 @@ msgstr ""
 "GtkStatusIcon/xembed-ке кері шегінуге тырысады"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
-#: src/remmina_icon.c:375
+#: src/remmina_icon.c:376
 #, fuzzy, c-format
 msgid "%s You may need to install, and use XApp Status Applet"
 msgstr ""
 "%s XApp күйі Applet бағдарламасын орнату және пайдалану қажет болуы мүмкін"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
-#: src/remmina_icon.c:378
+#: src/remmina_icon.c:379
 #, fuzzy, c-format
 msgid "%s You may need to install, and use KStatusNotifierItem"
 msgstr ""
 "%s KStatusNotifierItem бағдарламасын орнату және пайдалану қажет болуы мүмкін"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
-#: src/remmina_icon.c:381
+#: src/remmina_icon.c:382
 #, fuzzy, c-format
 msgid "%s You may need to install, and use XEmbed SNI Proxy"
 msgstr "%s XEmbed SNI проксиін орнату және пайдалану қажет болуы мүмкін"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
-#: src/remmina_icon.c:384
+#: src/remmina_icon.c:385
 #, fuzzy, c-format
 msgid "%s You may need to install, and use Gnome Shell Extension Appindicator"
 msgstr ""
@@ -1862,83 +1890,83 @@ msgstr "Қаріп өлшемін кішірейту (хост+бет төмен
 msgid "Find text (host+G)"
 msgstr "Мәтінді табу (хост+G)"
 
-#: src/remmina_ssh_plugin.c:1439 data/ui/remmina_main.glade:177
+#: src/remmina_ssh_plugin.c:1440 data/ui/remmina_main.glade:177
 #, fuzzy
 msgid "Copy"
 msgstr "Көшіру"
 
-#: src/remmina_ssh_plugin.c:1439
+#: src/remmina_ssh_plugin.c:1440
 #, fuzzy
 msgid "_Copy"
 msgstr "_Copy"
 
-#: src/remmina_ssh_plugin.c:1440
+#: src/remmina_ssh_plugin.c:1441
 #, fuzzy
 msgid "Paste"
 msgstr "Қою"
 
-#: src/remmina_ssh_plugin.c:1440
+#: src/remmina_ssh_plugin.c:1441
 #, fuzzy
 msgid "_Paste"
 msgstr "_Paste"
 
-#: src/remmina_ssh_plugin.c:1441
+#: src/remmina_ssh_plugin.c:1442
 #, fuzzy
 msgid "Select all"
 msgstr "Барлығын таңдау"
 
-#: src/remmina_ssh_plugin.c:1441
+#: src/remmina_ssh_plugin.c:1442
 #, fuzzy
 msgid "_Select all"
 msgstr "_Select барлығы"
 
-#: src/remmina_ssh_plugin.c:1442
+#: src/remmina_ssh_plugin.c:1443
 #, fuzzy
 msgid "Increase font size"
 msgstr "Қаріп өлшемін үлкейту"
 
-#: src/remmina_ssh_plugin.c:1442
+#: src/remmina_ssh_plugin.c:1443
 #, fuzzy
 msgid "_Increase font size"
 msgstr "_Increase қаріп өлшемі"
 
-#: src/remmina_ssh_plugin.c:1443
+#: src/remmina_ssh_plugin.c:1444
 #, fuzzy
 msgid "Decrease font size"
 msgstr "Қаріп өлшемін кішірейту"
 
-#: src/remmina_ssh_plugin.c:1443
+#: src/remmina_ssh_plugin.c:1444
 #, fuzzy
 msgid "_Decrease font size"
 msgstr "қаріп өлшемін _Decrease"
 
-#: src/remmina_ssh_plugin.c:1444
+#: src/remmina_ssh_plugin.c:1445
 #, fuzzy
 msgid "Find text"
 msgstr "Мәтінді табу"
 
-#: src/remmina_ssh_plugin.c:1444
+#: src/remmina_ssh_plugin.c:1445
 #, fuzzy
 msgid "_Find text"
 msgstr "_Find мәтін"
 
-#: src/remmina_ssh_plugin.c:1471 plugins/spice/spice_plugin.c:674
+#: src/remmina_ssh_plugin.c:1472 plugins/spice/spice_plugin.c:674
 #: plugins/vnc/vnc_plugin.c:1977 plugins/vnc/vnc_plugin.c:1989
 #, fuzzy
 msgid "User password"
 msgstr "Пайдаланушы құпиясөзі"
 
-#: src/remmina_ssh_plugin.c:1477
+#: src/remmina_ssh_plugin.c:1478
 msgid "Opening command"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1478
+#: src/remmina_ssh_plugin.c:1479
 #, fuzzy
 #| msgid "Start-up program"
 msgid "Start-up background program"
 msgstr "Ашылатын бағдарлама"
 
-#: src/remmina_ssh_plugin.c:1483
+#: src/remmina_ssh_plugin.c:1484
 #, fuzzy
 msgid ""
 "The filename can use the following placeholders:\n"
@@ -1961,76 +1989,76 @@ msgstr ""
 "  • % g - Remmina профиль тобының атауымен ауыстырылады\n"
 "  • % d жергілікті күн мен уақытты ISO 8601 пішімінде алмастырған\n"
 
-#: src/remmina_ssh_plugin.c:1505
+#: src/remmina_ssh_plugin.c:1506
 #, fuzzy
 msgid "Terminal colour scheme"
 msgstr "Терминал түстер сұлбасы"
 
-#: src/remmina_ssh_plugin.c:1506
+#: src/remmina_ssh_plugin.c:1507
 msgid "Character set"
 msgstr "Символдар кодылауы"
 
-#: src/remmina_ssh_plugin.c:1508
+#: src/remmina_ssh_plugin.c:1509
 #, fuzzy
 msgid "KEX (Key Exchange) algorithms"
 msgstr "KEX (Key Exchange) алгоритмдері"
 
-#: src/remmina_ssh_plugin.c:1509
+#: src/remmina_ssh_plugin.c:1510
 #, fuzzy
 msgid "Symmetric cipher client to server"
 msgstr "Симметриялы шифр клиенті серверге"
 
-#: src/remmina_ssh_plugin.c:1510
+#: src/remmina_ssh_plugin.c:1511
 #, fuzzy
 msgid "Preferred server host key types"
 msgstr "Таңдаулы сервер хост кілтінің түрлері"
 
-#: src/remmina_ssh_plugin.c:1511
+#: src/remmina_ssh_plugin.c:1512
 #, fuzzy
 msgid "Folder for SSH session log"
 msgstr "SSH сеанс журналына арналған қалта"
 
-#: src/remmina_ssh_plugin.c:1512
+#: src/remmina_ssh_plugin.c:1513
 #, fuzzy
 msgid "Filename for SSH session log"
 msgstr "SSH сеанс журналына арналған файл атауы"
 
-#: src/remmina_ssh_plugin.c:1513
+#: src/remmina_ssh_plugin.c:1514
 #, fuzzy
 msgid "Log SSH session when exiting Remmina"
 msgstr "Ремминадан шыққанда SSH сеансын тіркеу"
 
-#: src/remmina_ssh_plugin.c:1514
+#: src/remmina_ssh_plugin.c:1515
 #, fuzzy
 msgid "Log SSH session asynchronously"
 msgstr "SSH сеансын асинхронды түрде тіркеу"
 
-#: src/remmina_ssh_plugin.c:1514
+#: src/remmina_ssh_plugin.c:1515
 #, fuzzy
 msgid "Saving the session asynchronously may have a notable performance impact"
 msgstr ""
 "Сеансты асинхронды түрде сақтау өнімділікке айтарлықтай әсер етуі мүмкін"
 
-#: src/remmina_ssh_plugin.c:1515
+#: src/remmina_ssh_plugin.c:1516
 #, fuzzy
 msgid "Audible terminal bell"
 msgstr "Дыбыстық терминал қоңырауы"
 
-#: src/remmina_ssh_plugin.c:1516
+#: src/remmina_ssh_plugin.c:1517
 #, fuzzy
 msgid "SSH compression"
 msgstr "SSH сығуы"
 
-#: src/remmina_ssh_plugin.c:1517
+#: src/remmina_ssh_plugin.c:1518
 msgid "Don't remember passwords"
 msgstr "Құпия сөзді сақтау"
 
-#: src/remmina_ssh_plugin.c:1518
+#: src/remmina_ssh_plugin.c:1519
 #, fuzzy
 msgid "Strict host key checking"
 msgstr "Хост кілтін қатаң тексеру"
 
-#: src/remmina_ssh_plugin.c:1532
+#: src/remmina_ssh_plugin.c:1533
 #, fuzzy
 msgid "SSH - Secure Shell"
 msgstr "SSH - Қауіпсіз қабықша"
@@ -2385,7 +2413,7 @@ msgstr "Жоғары түсі (15 bpp)"
 msgid "256 colours (8 bpp)"
 msgstr "256 түс (8 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2595 data/ui/remmina_preferences.glade:641
+#: plugins/rdp/rdp_plugin.c:2595 data/ui/remmina_preferences.glade:612
 #, fuzzy
 msgid "None"
 msgstr "Esimi joq"
@@ -2426,7 +2454,7 @@ msgid "LAN"
 msgstr "ЛАН"
 
 #: plugins/rdp/rdp_plugin.c:2609 plugins/spice/spice_plugin.c:635
-#: data/ui/remmina_preferences.glade:677
+#: data/ui/remmina_preferences.glade:648
 #, fuzzy
 msgid "Off"
 msgstr "Өшіру"
@@ -3060,7 +3088,7 @@ msgstr "Сервер ОА сертификаты"
 
 #: plugins/spice/spice_plugin.c:694
 #, fuzzy
-msgid "Prefered video codec"
+msgid "Preferred video codec"
 msgstr "Артықшылықты бейне кодек"
 
 #: plugins/spice/spice_plugin.c:695
@@ -3070,7 +3098,7 @@ msgstr "GStreamer жапсырмасын өшіру"
 
 #: plugins/spice/spice_plugin.c:698
 #, fuzzy
-msgid "Prefered image compression"
+msgid "Preferred image compression"
 msgstr "Кескінді қысуды қалаған"
 
 #: plugins/spice/spice_plugin.c:701 plugins/spice/spice_plugin.c:714
@@ -4379,40 +4407,23 @@ msgstr ""
 "a>.\n"
 "</span>"
 
-#. The star (*) is a reference to privacy consent
-#: data/ui/remmina_news.glade:130 data/ui/remmina_preferences.glade:464
-#, fuzzy
-msgid ""
-"Send <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-"remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
-"\">anonymous</a></b> statistics. (*)"
-msgstr ""
-"<b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-"remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
-"\">анонимді</a></b> статистикасын жіберіңіз. (*)"
-
-#: data/ui/remmina_news.glade:142 data/ui/remmina_news.glade:195
-#, fuzzy
-msgid "Send anonymous statistics"
-msgstr "Анонимді статистикалық деректерді жіберу"
-
-#: data/ui/remmina_news.glade:156
+#: data/ui/remmina_news.glade:130
 msgid "Use as default remote desktop client"
 msgstr "Remmina қашықтаған жұмыс үстел клиенті"
 
-#: data/ui/remmina_news.glade:165
+#: data/ui/remmina_news.glade:139
 #, fuzzy
 msgid "Apply"
 msgstr "Қабылдау"
 
-#: data/ui/remmina_news.glade:169
+#: data/ui/remmina_news.glade:143
 #, fuzzy
 msgid "Allow Remmina to automatically open .rdp and .remmina files."
 msgstr ""
 "Ремминаға .rdp және .remmina файлдарын автоматты түрде ашуға рұқсат етіңіз."
 
 #. The star (*) is a reference to privacy consent
-#: data/ui/remmina_news.glade:183 data/ui/remmina_preferences.glade:479
+#: data/ui/remmina_news.glade:157 data/ui/remmina_preferences.glade:450
 #, fuzzy
 msgid ""
 "Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
@@ -4421,22 +4432,24 @@ msgstr ""
 "<a href=\"https://remmina.org\" title=\"Remmina news site\">remmina.org</a> "
 "(*) жаңалықтарды алу"
 
-#: data/ui/remmina_news.glade:208 data/ui/remmina_preferences.glade:446
+#: data/ui/remmina_news.glade:169
+msgid "Receives updated news from remmina.org"
+msgstr ""
+
+#: data/ui/remmina_news.glade:182
 #, fuzzy
-msgid ""
-"* By enabling statistics and/or news you consent to send and fetch data to/"
-"from remmina.org"
+msgid "* By turning on news you consent to fetching data from remmina.org"
 msgstr ""
 "* Статистикалық деректерді және/немесе жаңалықтарды қосу арқылы деректерді "
 "remmina.org"
 
-#: data/ui/remmina_news.glade:231
+#: data/ui/remmina_news.glade:205
 #, fuzzy
 msgid "<big>Take part</big>"
 msgstr "<big> Қатысу</big>"
 
 #. Pay attention to the quoting characters as they may break the pango layout. If in doubt and cannot test, copy and paste the symbols from the English string.
-#: data/ui/remmina_news.glade:257
+#: data/ui/remmina_news.glade:231
 #, fuzzy
 msgid ""
 "<span>\n"
@@ -4453,7 +4466,7 @@ msgstr ""
 "Ремминаны жақсартуға көмектеседі. </b>\n"
 "</span>\n"
 
-#: data/ui/remmina_news.glade:277
+#: data/ui/remmina_news.glade:251
 #, fuzzy
 msgid "<big>Contribute</big>"
 msgstr "<big> Үлес қосу</big>"
@@ -4498,7 +4511,7 @@ msgid "Server name or IP address"
 msgstr "Сервер атауы немесе IP мекенжайы"
 
 #: data/ui/remmina_main.glade:102 data/ui/remmina_main.glade:104
-#: data/ui/remmina_preferences.glade:504
+#: data/ui/remmina_preferences.glade:475
 #, fuzzy
 msgid "Clear"
 msgstr "Tazalaý"
@@ -4722,7 +4735,7 @@ msgstr "Әр қосылым үшін соңғы көріністі есте са
 msgid "Remember last view mode"
 msgstr "Соңғы көрініс режимін есте сақтау"
 
-#: data/ui/remmina_preferences.glade:359
+#: data/ui/remmina_preferences.glade:345
 #, fuzzy
 msgid ""
 "Set a custom filename for your Remmina connection profiles, using a "
@@ -4731,12 +4744,12 @@ msgstr ""
 "Пішімдеу жолын пайдалана отырып, Remmina қосылым профильдеріне реттелетін "
 "файл атауын орнатыңыз."
 
-#: data/ui/remmina_preferences.glade:363
+#: data/ui/remmina_preferences.glade:349
 #, fuzzy
 msgid "Template for profile filenames"
 msgstr "Профиль файлдарының үлгілері"
 
-#: data/ui/remmina_preferences.glade:375
+#: data/ui/remmina_preferences.glade:361
 #, fuzzy
 msgid ""
 "%G Group name (slash will be converted to - automatically)\n"
@@ -4753,101 +4766,108 @@ msgstr ""
 "\n"
 "\n"
 
-#: data/ui/remmina_preferences.glade:397
+#: data/ui/remmina_preferences.glade:383
 #, fuzzy
 msgid "Only save generated screenshots, don't copy them to clipboard."
 msgstr ""
 "Тек жасалған скриншоттарды сақтаңыз, оларды алмасу буферіне көшірмеңіз."
 
-#: data/ui/remmina_preferences.glade:402
+#: data/ui/remmina_preferences.glade:388
 #, fuzzy
 msgid "Prevent screenshots from entering clipboard"
 msgstr "Скриншоттардың аралық сақтағышқа кіруіне жол бермеу"
 
-#: data/ui/remmina_preferences.glade:529
+#: data/ui/remmina_preferences.glade:432
+#, fuzzy
+msgid "* By enabling news you consent to fetch data from remmina.org"
+msgstr ""
+"* Статистикалық деректерді және/немесе жаңалықтарды қосу арқылы деректерді "
+"remmina.org"
+
+#: data/ui/remmina_preferences.glade:500
 #, fuzzy
 msgid "Options"
 msgstr "Параметрлер"
 
-#: data/ui/remmina_preferences.glade:554
+#: data/ui/remmina_preferences.glade:525
 #, fuzzy
 msgid "Always show tabs"
 msgstr "Әрқашан қойындыларды көрсету"
 
-#: data/ui/remmina_preferences.glade:570
+#: data/ui/remmina_preferences.glade:541
 #, fuzzy
 msgid "Hide the toolbar shown in the tabbed interface"
 msgstr "Қойынды интерфейсінде көрсетілген құралдар тақтасын жасыру"
 
-#: data/ui/remmina_preferences.glade:591
+#: data/ui/remmina_preferences.glade:562
 msgid "Default view"
 msgstr "Қалыпты"
 
-#: data/ui/remmina_preferences.glade:605
+#: data/ui/remmina_preferences.glade:576
 #, fuzzy
 msgid "Automatic"
 msgstr "Автоматты түрде"
 
-#: data/ui/remmina_preferences.glade:606
+#: data/ui/remmina_preferences.glade:577
 #, fuzzy
 msgid "Scrolled window"
 msgstr "Жылжытылған терезе"
 
-#: data/ui/remmina_preferences.glade:608
+#: data/ui/remmina_preferences.glade:579
 #, fuzzy
 msgid "Viewport fullscreen"
 msgstr "Viewport толық экраны"
 
 #. How tabs are grouped in the Remmina connection window
-#: data/ui/remmina_preferences.glade:624
+#: data/ui/remmina_preferences.glade:595
 #, fuzzy
 msgctxt "Appearance preferences"
 msgid "Tabs grouping"
 msgstr "Қойындыларды топтау"
 
-#: data/ui/remmina_preferences.glade:638
+#: data/ui/remmina_preferences.glade:609
 msgid "By group"
 msgstr "Тобы"
 
-#: data/ui/remmina_preferences.glade:639
+#: data/ui/remmina_preferences.glade:610
 msgid "By protocol"
 msgstr "Протокол"
 
-#: data/ui/remmina_preferences.glade:640
+#: data/ui/remmina_preferences.glade:611
 msgid "Per connection"
 msgstr "Жаңа қосылыс"
 
-#: data/ui/remmina_preferences.glade:652
+#: data/ui/remmina_preferences.glade:623
 #, fuzzy
 msgid "Fullscreen on the same screen as the connection window"
 msgstr "Қосылым терезесімен бір экранда толық экран"
 
-#: data/ui/remmina_preferences.glade:675
+#: data/ui/remmina_preferences.glade:646
 #, fuzzy
 msgid "Peeking"
 msgstr "Пикинг"
 
-#: data/ui/remmina_preferences.glade:676
+#: data/ui/remmina_preferences.glade:647
 #, fuzzy
 msgid "Hidden"
 msgstr "Жасырын"
 
-#: data/ui/remmina_preferences.glade:693
+#: data/ui/remmina_preferences.glade:664
 #, fuzzy
 msgid "Fullscreen toolbar visibility"
 msgstr "Толық экранды құралдар тақтасы көрінуі"
 
-#: data/ui/remmina_preferences.glade:703
+#: data/ui/remmina_preferences.glade:674
 #, fuzzy
 msgid "Hide the search bar shown in the main window"
 msgstr "Негізгі терезеде көрсетілген іздеу тақтасын жасыру"
 
-#: data/ui/remmina_preferences.glade:719
+#: data/ui/remmina_preferences.glade:690
 #, fuzzy
 msgid "Prefer dark theme"
 msgstr "Қараңғы тақырыпты артық көріңіз"
 
-#: data/ui/remmina_preferences.glade:723
+#: data/ui/remmina_preferences.glade:694
 #, fuzzy
 msgid ""
 "If a GTK theme includes a dark variant, it will be used instead of the "
@@ -4856,19 +4876,19 @@ msgstr ""
 "Егер GTK тақырыбы қараңғы нұсқаны қамтитын болса, онда ол конфигурацияланған "
 "тақырыптың орнына қолданылады."
 
-#: data/ui/remmina_preferences.glade:743
+#: data/ui/remmina_preferences.glade:714
 #, fuzzy
 #| msgid "Grab all keyboard events"
 msgid "“Grab all keyboard events” status colour"
 msgstr "«Пернетақтаның барлық оқиғаларын ұстаңыз» күйінің түсі"
 
-#: data/ui/remmina_preferences.glade:754
+#: data/ui/remmina_preferences.glade:725
 #, fuzzy
 #| msgid "Grab all keyboard events"
 msgid "Enable/Disable “Grab all keyboard events” status colour"
 msgstr "«Барлық пернетақта оқиғаларын ұстаңыз» күй түсін қосу/ажырату"
 
-#: data/ui/remmina_preferences.glade:770
+#: data/ui/remmina_preferences.glade:741
 #, fuzzy
 msgid ""
 "Hexadecimal- or colour names (red, #ff0000).\n"
@@ -4879,130 +4899,130 @@ msgstr ""
 "Ол Remmina қосылым құралдар тақтасындағы қосылым атауларының фондық түсін "
 "өзгертеді (толық экранда болғанда)."
 
-#: data/ui/remmina_preferences.glade:827
+#: data/ui/remmina_preferences.glade:798
 #, fuzzy
 msgid "Appearance"
 msgstr "Сыртқы көрінісі"
 
-#: data/ui/remmina_preferences.glade:853
+#: data/ui/remmina_preferences.glade:824
 #, fuzzy
 msgid "Show new connection on top of the menu"
 msgstr "Мәзірдің үстінде жаңа қосылымды көрсету"
 
-#: data/ui/remmina_preferences.glade:872
+#: data/ui/remmina_preferences.glade:843
 #, fuzzy
 msgid "Hide total count shown in the group menu"
 msgstr "Топ мәзірінде көрсетілген жалпы санды жасыру"
 
-#: data/ui/remmina_preferences.glade:890
+#: data/ui/remmina_preferences.glade:861
 #, fuzzy
 msgid "No tray icon"
 msgstr "Науа белгішесі жоқ"
 
-#: data/ui/remmina_preferences.glade:909
+#: data/ui/remmina_preferences.glade:880
 #, fuzzy
 msgid "Start in tray upon user login"
 msgstr "Пайдаланушы кіруі кезінде науада бастау"
 
-#: data/ui/remmina_preferences.glade:940
+#: data/ui/remmina_preferences.glade:911
 #, fuzzy
 msgid "Applet"
 msgstr "Аппл"
 
-#: data/ui/remmina_preferences.glade:972
+#: data/ui/remmina_preferences.glade:943
 #, fuzzy
 msgid "Host key"
 msgstr "Хост кілті"
 
-#: data/ui/remmina_preferences.glade:1004
+#: data/ui/remmina_preferences.glade:975
 msgid "Show/hide fullscreen"
 msgstr "Толық экран режиміне өту"
 
-#: data/ui/remmina_preferences.glade:1035
+#: data/ui/remmina_preferences.glade:1006
 #, fuzzy
 msgid "Auto-fit window"
 msgstr "Терезені автоматты түрде қиыстыру"
 
-#: data/ui/remmina_preferences.glade:1112
+#: data/ui/remmina_preferences.glade:1083
 #, fuzzy
 msgid "Apply/remove scaling"
 msgstr "Масштабтауды қолдану/жою"
 
-#: data/ui/remmina_preferences.glade:1143
+#: data/ui/remmina_preferences.glade:1114
 #, fuzzy
 msgid "Grab keyboard"
 msgstr "Пернетақтаны ұстау"
 
-#: data/ui/remmina_preferences.glade:1236
+#: data/ui/remmina_preferences.glade:1207
 #, fuzzy
 msgid "Show/hide toolbar"
 msgstr "Құралдар тақтасын көрсету/жасыру"
 
-#: data/ui/remmina_preferences.glade:1299
-#: data/ui/remmina_preferences.glade:1309
+#: data/ui/remmina_preferences.glade:1270
+#: data/ui/remmina_preferences.glade:1280
 #, fuzzy
 msgid "View-only mode"
 msgstr "Тек көру режимі"
 
-#: data/ui/remmina_preferences.glade:1372
+#: data/ui/remmina_preferences.glade:1343
 #, fuzzy
 msgid "Keyboard"
 msgstr "Пернетақта"
 
-#: data/ui/remmina_preferences.glade:1403
+#: data/ui/remmina_preferences.glade:1374
 #, fuzzy
 msgid "Local SSH port"
 msgstr "Жергілікті SSH порты"
 
-#: data/ui/remmina_preferences.glade:1427
+#: data/ui/remmina_preferences.glade:1398
 #, fuzzy
 msgid "Parse ~/.ssh/config"
 msgstr "~/.sh/config"
 
-#: data/ui/remmina_preferences.glade:1451
+#: data/ui/remmina_preferences.glade:1422
 #, fuzzy
 msgid "No logging at all"
 msgstr "Журнал жүргізу мүлдем жоқ"
 
-#: data/ui/remmina_preferences.glade:1452
+#: data/ui/remmina_preferences.glade:1423
 #, fuzzy
 msgid "Rare conditions or warnings"
 msgstr "Сирек жағдайлар немесе ескертулер"
 
-#: data/ui/remmina_preferences.glade:1453
+#: data/ui/remmina_preferences.glade:1424
 #, fuzzy
 msgid "API-accessible entrypoints"
 msgstr "API қолжетімді кіру нүктелері"
 
-#: data/ui/remmina_preferences.glade:1454
+#: data/ui/remmina_preferences.glade:1425
 #, fuzzy
 msgid "Lower level protocol info, packet level"
 msgstr "Төменгі деңгейдегі хаттама ақпараты, пакет деңгейі"
 
-#: data/ui/remmina_preferences.glade:1455
+#: data/ui/remmina_preferences.glade:1426
 #, fuzzy
 msgid "Function entering and leaving"
 msgstr "Кіру және шығу функциясы"
 
-#: data/ui/remmina_preferences.glade:1472
+#: data/ui/remmina_preferences.glade:1443
 #, fuzzy
 msgid "SSH log level"
 msgstr "SSH журналының деңгейі"
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1543
+#: data/ui/remmina_preferences.glade:1514
 #, fuzzy
 msgid "Seconds of connection idleness before TCP keepalive probes are sent."
 msgstr "ТКП сақтық зондтарын жібергенге дейінгі қосылудың тоқтау секундтары."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1559
+#: data/ui/remmina_preferences.glade:1530
 #, fuzzy
 msgid "Seconds between each keepalive probe."
 msgstr "Әрбір сақтық зондтың арасындағы секундтар."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1575
+#: data/ui/remmina_preferences.glade:1546
 #, fuzzy
 msgid ""
 "Number of keepalive probes sent via TCP connection before it is dropped."
@@ -5010,7 +5030,7 @@ msgstr ""
 "ТКП қосылуы арқылы оны тастағанға дейін жіберілетін сақтық зондтарының саны."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1591
+#: data/ui/remmina_preferences.glade:1562
 #, fuzzy
 msgid ""
 "Amount of milliseconds to attempt acknowledging data before closing the "
@@ -5019,88 +5039,88 @@ msgstr ""
 "Тиiстi TCP қосылымын мәжбүрлеп жаппас бұрын деректердi мойындауға әрекет "
 "жасау үшiн миллисекунд сомасы."
 
-#: data/ui/remmina_preferences.glade:1617
+#: data/ui/remmina_preferences.glade:1588
 #, fuzzy
 msgid "SSH options"
 msgstr "SSH параметрлері"
 
-#: data/ui/remmina_preferences.glade:1645
-#: data/ui/remmina_preferences.glade:1714
-#: data/ui/remmina_preferences.glade:1785
+#: data/ui/remmina_preferences.glade:1616
+#: data/ui/remmina_preferences.glade:1685
+#: data/ui/remmina_preferences.glade:1756
 #, fuzzy
 msgid "Use secret key authentication for some widgets"
 msgstr "Кейбір виджеттерге арналған құпия кілт аутентификациясын пайдалану"
 
-#: data/ui/remmina_preferences.glade:1649
+#: data/ui/remmina_preferences.glade:1620
 #, fuzzy
 msgid "Use master password"
 msgstr "Басты құпия сөзді пайдалану"
 
-#: data/ui/remmina_preferences.glade:1662
+#: data/ui/remmina_preferences.glade:1633
 #, fuzzy
 msgid "Automatic lock interval"
 msgstr "Автоматты құлыптау аралығы"
 
-#: data/ui/remmina_preferences.glade:1688
+#: data/ui/remmina_preferences.glade:1659
 msgid "Repeat the password"
 msgstr "Құпия сөзді сақтау"
 
-#: data/ui/remmina_preferences.glade:1699
+#: data/ui/remmina_preferences.glade:1670
 #, fuzzy
 msgid "Automatically accept all fingerprints and certificates"
 msgstr "Барлық саусақ іздері мен куәліктерді автоматты түрде қабылдау"
 
-#: data/ui/remmina_preferences.glade:1703
+#: data/ui/remmina_preferences.glade:1674
 #, fuzzy
 msgid "Trust all fingerprints and certificates"
 msgstr "Барлық саусақ іздері мен куәліктерге сену"
 
-#: data/ui/remmina_preferences.glade:1746
+#: data/ui/remmina_preferences.glade:1717
 #, fuzzy
 msgid "Master password validity in seconds"
 msgstr "Құпия сөздің секундпен жарамдылығы"
 
-#: data/ui/remmina_preferences.glade:1810
+#: data/ui/remmina_preferences.glade:1781
 #, fuzzy
 msgid "Security"
 msgstr "Qaýipsizdik"
 
-#: data/ui/remmina_preferences.glade:1841
+#: data/ui/remmina_preferences.glade:1812
 #, fuzzy
 msgid "Terminal font"
 msgstr "Терминал қаріпі"
 
-#: data/ui/remmina_preferences.glade:1854
+#: data/ui/remmina_preferences.glade:1825
 #, fuzzy
 msgid "Scrollback lines"
 msgstr "Scrollback сызықтары"
 
-#: data/ui/remmina_preferences.glade:1902
+#: data/ui/remmina_preferences.glade:1873
 #, fuzzy
 msgid "Shortcuts for copying and pasting"
 msgstr "Көшіруге және қоюға арналған пернелер тіркесімдері"
 
-#: data/ui/remmina_preferences.glade:1915
+#: data/ui/remmina_preferences.glade:1886
 #, fuzzy
 msgid "Select all shortcuts"
 msgstr "Барлық пернелер тіркесімдерін таңдау"
 
-#: data/ui/remmina_preferences.glade:1928
-#: data/ui/remmina_preferences.glade:1945
-#: data/ui/remmina_preferences.glade:2398
-#: data/ui/remmina_preferences.glade:2428
-#: data/ui/remmina_preferences.glade:2562
-#: data/ui/remmina_preferences.glade:2579
+#: data/ui/remmina_preferences.glade:1899
+#: data/ui/remmina_preferences.glade:1916
+#: data/ui/remmina_preferences.glade:2369
+#: data/ui/remmina_preferences.glade:2399
+#: data/ui/remmina_preferences.glade:2533
+#: data/ui/remmina_preferences.glade:2550
 #, fuzzy
 msgid "(Host key+)"
 msgstr "(Хост кілті+)"
 
-#: data/ui/remmina_preferences.glade:1963
+#: data/ui/remmina_preferences.glade:1934
 #, fuzzy
 msgid "Use default system font"
 msgstr "Әдепкі жүйе қарпін пайдалану"
 
-#: data/ui/remmina_preferences.glade:1988
+#: data/ui/remmina_preferences.glade:1959
 #, fuzzy
 msgid ""
 "Selecting “SGR 1” also switches to the bright counterparts of the first 8 "
@@ -5109,17 +5129,17 @@ msgstr ""
 "«SGR 1» таңдауы, сондай-ақ, алғашқы 8 палитра түсіндегі жарқын аналогтарға "
 "ауысады (мәтінді қалың етіп жасаудан басқа)."
 
-#: data/ui/remmina_preferences.glade:2004
+#: data/ui/remmina_preferences.glade:1975
 #, fuzzy
 msgid "Allow using bright colours with bold text"
 msgstr "Қалың мәтіні бар ашық түстерді пайдалануға рұқсат беру"
 
-#: data/ui/remmina_preferences.glade:2018
+#: data/ui/remmina_preferences.glade:1989
 #, fuzzy
 msgid "Colour theme"
 msgstr "Түстер тақырыбы"
 
-#: data/ui/remmina_preferences.glade:2029
+#: data/ui/remmina_preferences.glade:2000
 #, fuzzy
 msgid ""
 "Choose a colour scheme file. Usually available in /usr/share/remmina/theme. "
@@ -5129,159 +5149,159 @@ msgstr ""
 "бағдарламасында қол жетімді. https://github.com/mbadolato/iTerm2-Color-"
 "Schemes толығырақ мәлімет бар."
 
-#: data/ui/remmina_preferences.glade:2033
+#: data/ui/remmina_preferences.glade:2004
 #, fuzzy
 msgid "Pick a terminal colouring file"
 msgstr "Терминалды бояу файлын таңдау"
 
-#: data/ui/remmina_preferences.glade:2048
+#: data/ui/remmina_preferences.glade:2019
 #, fuzzy
 msgid "Bright colours"
 msgstr "Ашық түстер"
 
-#: data/ui/remmina_preferences.glade:2062
+#: data/ui/remmina_preferences.glade:2033
 #, fuzzy
 msgid "Pick a light black colour"
 msgstr "Ақшыл қара түсті таңдау"
 
-#: data/ui/remmina_preferences.glade:2076
+#: data/ui/remmina_preferences.glade:2047
 #, fuzzy
 msgid "Pick a light red colour"
 msgstr "Ашық қызыл түсті таңдау"
 
-#: data/ui/remmina_preferences.glade:2090
+#: data/ui/remmina_preferences.glade:2061
 #, fuzzy
 msgid "Pick a bright green colour"
 msgstr "Ашық жасыл түсті таңдау"
 
-#: data/ui/remmina_preferences.glade:2104
+#: data/ui/remmina_preferences.glade:2075
 #, fuzzy
 msgid "Pick a bright yellow colour"
 msgstr "Ашық сары түсті таңдау"
 
-#: data/ui/remmina_preferences.glade:2118
+#: data/ui/remmina_preferences.glade:2089
 #, fuzzy
 msgid "Pick a bright blue colour"
 msgstr "Ашық көк түсті таңдау"
 
-#: data/ui/remmina_preferences.glade:2132
+#: data/ui/remmina_preferences.glade:2103
 #, fuzzy
 msgid "Pick a light magenta colour"
 msgstr "Жеңіл магента түсін таңдау"
 
-#: data/ui/remmina_preferences.glade:2146
+#: data/ui/remmina_preferences.glade:2117
 #, fuzzy
 msgid "Pick a light cyan colour"
 msgstr "Ақшыл циан түсін таңдау"
 
-#: data/ui/remmina_preferences.glade:2160
+#: data/ui/remmina_preferences.glade:2131
 #, fuzzy
 msgid "Pick a light white colour"
 msgstr "Ақшыл түсті таңдау"
 
-#: data/ui/remmina_preferences.glade:2174
+#: data/ui/remmina_preferences.glade:2145
 #, fuzzy
 msgid "Pick a black colour"
 msgstr "Қара түсті таңдау"
 
-#: data/ui/remmina_preferences.glade:2188
+#: data/ui/remmina_preferences.glade:2159
 #, fuzzy
 msgid "Pick a red colour"
 msgstr "Қызыл түсті таңдау"
 
-#: data/ui/remmina_preferences.glade:2202
+#: data/ui/remmina_preferences.glade:2173
 #, fuzzy
 msgid "Pick a green colour"
 msgstr "Жасыл түсті таңдау"
 
-#: data/ui/remmina_preferences.glade:2216
+#: data/ui/remmina_preferences.glade:2187
 #, fuzzy
 msgid "Pick a yellow colour"
 msgstr "Сары түсті таңдау"
 
-#: data/ui/remmina_preferences.glade:2230
+#: data/ui/remmina_preferences.glade:2201
 #, fuzzy
 msgid "Pick a blue colour"
 msgstr "Көк түсті таңдау"
 
-#: data/ui/remmina_preferences.glade:2244
+#: data/ui/remmina_preferences.glade:2215
 #, fuzzy
 msgid "Pick a magenta colour"
 msgstr "Магента түсін таңдау"
 
-#: data/ui/remmina_preferences.glade:2258
+#: data/ui/remmina_preferences.glade:2229
 #, fuzzy
 msgid "Pick a cyan colour"
 msgstr "Циан түсін таңдау"
 
-#: data/ui/remmina_preferences.glade:2272
+#: data/ui/remmina_preferences.glade:2243
 #, fuzzy
 msgid "Pick a white colour"
 msgstr "Ақ түсті таңдау"
 
-#: data/ui/remmina_preferences.glade:2285
+#: data/ui/remmina_preferences.glade:2256
 #, fuzzy
 msgid "Normal colours"
 msgstr "Қалыпты түстер"
 
-#: data/ui/remmina_preferences.glade:2298
-#: data/ui/remmina_preferences.glade:2313
+#: data/ui/remmina_preferences.glade:2269
+#: data/ui/remmina_preferences.glade:2284
 #, fuzzy
 msgid "Cursor colour"
 msgstr "Курсор түсі"
 
-#: data/ui/remmina_preferences.glade:2327
-#: data/ui/remmina_preferences.glade:2342
+#: data/ui/remmina_preferences.glade:2298
+#: data/ui/remmina_preferences.glade:2313
 #, fuzzy
 msgid "Background colour"
 msgstr "Ая түсі"
 
-#: data/ui/remmina_preferences.glade:2358
-#: data/ui/remmina_preferences.glade:2372
+#: data/ui/remmina_preferences.glade:2329
+#: data/ui/remmina_preferences.glade:2343
 #, fuzzy
 msgid "Foreground colour"
 msgstr "Алғы түс"
 
-#: data/ui/remmina_preferences.glade:2385
+#: data/ui/remmina_preferences.glade:2356
 #, fuzzy
 msgid "Increase and decrease font size"
 msgstr "Қаріп өлшемін ұлғайту және кішірейту"
 
-#: data/ui/remmina_preferences.glade:2415
+#: data/ui/remmina_preferences.glade:2386
 #, fuzzy
 msgid "Search text shortcut"
 msgstr "Мәтін пернелер тіркесімін іздеу"
 
-#: data/ui/remmina_preferences.glade:2446
-#: data/ui/remmina_preferences.glade:2461
+#: data/ui/remmina_preferences.glade:2417
+#: data/ui/remmina_preferences.glade:2432
 #, fuzzy
 msgid "Bold colour"
 msgstr "Қалың түс"
 
-#: data/ui/remmina_preferences.glade:2475
-#: data/ui/remmina_preferences.glade:2516
+#: data/ui/remmina_preferences.glade:2446
+#: data/ui/remmina_preferences.glade:2487
 #, fuzzy
 msgid "Highlight colour"
 msgstr "Түсті бөлектеу"
 
-#: data/ui/remmina_preferences.glade:2488
-#: data/ui/remmina_preferences.glade:2532
+#: data/ui/remmina_preferences.glade:2459
+#: data/ui/remmina_preferences.glade:2503
 #, fuzzy
 msgid "Highlight foreground colour"
 msgstr "Алғы түсті бөлектеу"
 
-#: data/ui/remmina_preferences.glade:2501
-#: data/ui/remmina_preferences.glade:2548
+#: data/ui/remmina_preferences.glade:2472
+#: data/ui/remmina_preferences.glade:2519
 #, fuzzy
 msgid "Cursor foreground colour"
 msgstr "Курсордың алғы түсі"
 
-#: data/ui/remmina_preferences.glade:2604
+#: data/ui/remmina_preferences.glade:2575
 #, fuzzy
 msgid "Terminal"
 msgstr "Терминал"
 
-#: data/ui/remmina_preferences.glade:2618
+#: data/ui/remmina_preferences.glade:2589
 #, fuzzy
 msgid "Remmina Preferences"
 msgstr "Реммина преференциялары"
@@ -5300,6 +5320,20 @@ msgstr "Реммина құлпын ашу"
 #, fuzzy
 msgid "Master password"
 msgstr "Құпия сөзді басты"
+
+#, fuzzy
+#~ msgid ""
+#~ "Send <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
+#~ "remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
+#~ "\">anonymous</a></b> statistics. (*)"
+#~ msgstr ""
+#~ "<b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
+#~ "remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
+#~ "\">анонимді</a></b> статистикасын жіберіңіз. (*)"
+
+#, fuzzy
+#~ msgid "Send anonymous statistics"
+#~ msgstr "Анонимді статистикалық деректерді жіберу"
 
 #, fuzzy
 #~ msgid "Started pyhoca-cli with following arguments:"

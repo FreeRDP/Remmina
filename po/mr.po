@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Remmina v1.3.9\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-12-03 09:34+0000\n"
+"POT-Creation-Date: 2021-12-03 15:01+0000\n"
 "PO-Revision-Date: 2021-11-21 16:49+0000\n"
 "Last-Translator: Siddhesh Mhadnak <siddhesh.mhadnak@outlook.com>\n"
 "Language-Team: Marathi <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -23,32 +23,32 @@ msgstr ""
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:354
 #: src/remmina_protocol_widget.c:1677 src/remmina_protocol_widget.c:1696
 #: src/remmina_file_editor.c:1101 src/remmina_file_editor.c:1222
-#: src/remmina_ssh_plugin.c:1360 plugins/rdp/rdp_plugin.c:2723
+#: src/remmina_ssh_plugin.c:1361 plugins/rdp/rdp_plugin.c:2723
 #: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:2992
-#: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1675
+#: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1646
 #: data/ui/remmina_unlock.glade:116
 #, fuzzy
 msgid "Password"
 msgstr "संकेतशब्द"
 
 #: src/remmina_sftp_plugin.c:311 src/remmina_sftp_plugin.c:356
-#: src/remmina_file_editor.c:1102 src/remmina_ssh_plugin.c:1361
-#: src/remmina_ssh_plugin.c:1472
+#: src/remmina_file_editor.c:1102 src/remmina_ssh_plugin.c:1362
+#: src/remmina_ssh_plugin.c:1473
 msgid "SSH identity file"
 msgstr "SSH ओळख फाइल"
 
 #: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:1103
-#: src/remmina_ssh_plugin.c:1362
+#: src/remmina_ssh_plugin.c:1363
 msgid "SSH agent"
 msgstr "SSH एजंट"
 
 #: src/remmina_sftp_plugin.c:313 src/remmina_file_editor.c:1104
-#: src/remmina_ssh_plugin.c:1363
+#: src/remmina_ssh_plugin.c:1364
 msgid "Public key (automatic)"
 msgstr "सार्वजनिक की (स्वयंचलित)"
 
 #: src/remmina_sftp_plugin.c:314 src/remmina_file_editor.c:1105
-#: src/remmina_ssh_plugin.c:1364
+#: src/remmina_ssh_plugin.c:1365
 msgid "Kerberos (GSSAPI)"
 msgstr "केर्बेरोज (GSSAPI)"
 
@@ -72,7 +72,7 @@ msgid "Connect via SSH from a new terminal"
 msgstr "नवीन टर्मिनलवरून SSH द्वारे कनेक्ट करा"
 
 #: src/remmina_sftp_plugin.c:353 src/remmina_message_panel.c:330
-#: src/remmina_file_editor.c:1216 src/remmina_ssh_plugin.c:1470
+#: src/remmina_file_editor.c:1216 src/remmina_ssh_plugin.c:1471
 #: plugins/rdp/rdp_plugin.c:2722 plugins/vnc/vnc_plugin.c:1976
 #: plugins/vnc/vnc_plugin.c:1988 plugins/www/www_plugin.c:894
 #: plugins/x2go/x2go_plugin.c:574 plugins/x2go/x2go_plugin.c:2991
@@ -82,18 +82,18 @@ msgid "Username"
 msgstr "यूजरनेम"
 
 #: src/remmina_sftp_plugin.c:355 src/remmina_file_editor.c:1207
-#: src/remmina_ssh_plugin.c:1469
+#: src/remmina_ssh_plugin.c:1470
 #, fuzzy
 msgid "Authentication type"
 msgstr "प्रमाणीकरण प्रकार"
 
 #: src/remmina_sftp_plugin.c:357 src/remmina_file_editor.c:1240
-#: src/remmina_ssh_plugin.c:1476
+#: src/remmina_ssh_plugin.c:1477
 #, fuzzy
 msgid "Password to unlock private key"
 msgstr "खाजगी की अनलॉक करण्यासाठी पासवर्ड"
 
-#: src/remmina_sftp_plugin.c:358 src/remmina_ssh_plugin.c:1507
+#: src/remmina_sftp_plugin.c:358 src/remmina_ssh_plugin.c:1508
 #, fuzzy
 msgid "SSH Proxy Command"
 msgstr "एसएसएच प्रॉक्सी कमांड"
@@ -102,6 +102,25 @@ msgstr "एसएसएच प्रॉक्सी कमांड"
 #, fuzzy
 msgid "SFTP - Secure File Transfer"
 msgstr "एसएफटीपी - सुरक्षित फाइल हस्तांतरण"
+
+#: src/remmina_log.c:129
+#, fuzzy
+msgid "Remmina debugging window"
+msgstr "रेमिना मुख्य खिडकी उघडा"
+
+#: src/remmina_log.c:133
+msgid "Paste sytem information in the Remmina debugging window"
+msgstr ""
+
+#: src/remmina_log.c:153
+msgid ""
+"This window can help you finding connections problems.\n"
+"You can stop and start the logging at any moment using the On/Off switch.\n"
+"The stats button (Ctrl+T), may be useful to gather system information that "
+"you may share while reporting a bug.\n"
+"For more information on debugging Remmina see : https://gitlab.com/Remmina/"
+"Remmina/-/wikis/Usage/Remmina-debugging\n"
+msgstr ""
 
 #: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1951
 #, fuzzy
@@ -281,7 +300,7 @@ msgstr "रद्द करा"
 #: src/remmina_message_panel.c:199 data/ui/remmina_snap_info_dialog.glade:28
 #: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
 #: data/ui/remmina_string_list.glade:63 data/ui/remmina_news.glade:33
-#: data/ui/remmina_preferences.glade:2622
+#: data/ui/remmina_preferences.glade:2593
 #, fuzzy
 msgid "Close"
 msgstr "बंद करा"
@@ -354,7 +373,7 @@ msgstr ""
 msgid "Viewport fullscreen mode"
 msgstr "व्ह्यूपोर्ट फुलस्क्रीन मोड"
 
-#: src/rcw.c:1407 data/ui/remmina_preferences.glade:607
+#: src/rcw.c:1407 data/ui/remmina_preferences.glade:578
 #, fuzzy
 msgid "Scrolled fullscreen"
 msgstr "पूर्ण स्क्रीन स्क्रॉल केले"
@@ -414,8 +433,8 @@ msgstr "रिमोट रिझोल्यूशनमध्ये बसण�
 msgid "Toggle fullscreen mode"
 msgstr "टोगल फुलस्क्रीन मोड"
 
-#: src/rcw.c:2392 data/ui/remmina_preferences.glade:1332
-#: data/ui/remmina_preferences.glade:1342
+#: src/rcw.c:2392 data/ui/remmina_preferences.glade:1303
+#: data/ui/remmina_preferences.glade:1313
 #, fuzzy
 msgid "Multi monitor"
 msgstr "मल्टी मॉनिटर"
@@ -430,7 +449,7 @@ msgstr "टोगल डायनॅमिक रिझोल्यूशन अ
 msgid "Toggle scaled mode"
 msgstr "टोगल स्केल्ड मोड"
 
-#: src/rcw.c:2458 data/ui/remmina_preferences.glade:1066
+#: src/rcw.c:2458 data/ui/remmina_preferences.glade:1037
 #, fuzzy
 msgid "Switch tab pages"
 msgstr "टॅब पृष्ठे स्विच करा"
@@ -455,18 +474,18 @@ msgstr "टूल्स"
 msgid "Tools"
 msgstr "साधने"
 
-#: src/rcw.c:2501 data/ui/remmina_preferences.glade:1267
-#: data/ui/remmina_preferences.glade:1277
+#: src/rcw.c:2501 data/ui/remmina_preferences.glade:1238
+#: data/ui/remmina_preferences.glade:1248
 #, fuzzy
 msgid "Screenshot"
 msgstr "स्क्रीनशॉट"
 
-#: src/rcw.c:2515 data/ui/remmina_preferences.glade:1174
+#: src/rcw.c:2515 data/ui/remmina_preferences.glade:1145
 #, fuzzy
 msgid "Minimize window"
 msgstr "खिडकी कमी करा"
 
-#: src/rcw.c:2525 data/ui/remmina_preferences.glade:1205
+#: src/rcw.c:2525 data/ui/remmina_preferences.glade:1176
 #, fuzzy
 msgid "Disconnect"
 msgstr "जोडणी तोडा(_D)"
@@ -536,13 +555,13 @@ msgstr[0] "%d पासवर्ड बदलला."
 msgstr[1] "%d पासवर्ड बदललॆ."
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:86
+#: src/remmina.c:84
 #, fuzzy
 msgid "Show 'About'"
 msgstr "'अबाउट' दाखवा"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:88
+#: src/remmina.c:86
 #, fuzzy
 msgid ""
 "Connect either to a desktop described in a file (.remmina or a filetype "
@@ -551,13 +570,13 @@ msgstr ""
 "एकतर फाइलमध्ये वर्णन केलेल्या डेस्कटॉपशी (.रेमिना किंवा प्लगइनद्वारे समर्थित फाइलटाइप) "
 "किंवा समर्थित यूआरआय (आरडीपी, व्हीएनसी, एसएसएच किंवा स्पाइस) शी कनेक्ट करा"
 
-#: src/remmina.c:88 src/remmina.c:90 src/remmina.c:92
+#: src/remmina.c:86 src/remmina.c:88 src/remmina.c:90
 #, fuzzy
 msgid "FILE"
 msgstr "कानस"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:90
+#: src/remmina.c:88
 #, fuzzy
 msgid ""
 "Connect to a desktop described in a file (.remmina or a filetype supported "
@@ -566,7 +585,7 @@ msgstr ""
 "फाइलमध्ये वर्णन केलेल्या डेस्कटॉपशी कनेक्ट करा (.रेमिना किंवा प्लगइनद्वारे समर्थित प्रकार)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:92
+#: src/remmina.c:90
 #, fuzzy
 msgid ""
 "Edit desktop connection described in file (.remmina or a filetype supported "
@@ -575,87 +594,87 @@ msgstr ""
 "फाइलमध्ये वर्णन केलेले संपादन डेस्कटॉप कनेक्शन (.रेमिना किंवा प्लगइनद्वारे समर्थित प्रकार)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:95
+#: src/remmina.c:93
 #, fuzzy
 msgid "Start in kiosk mode"
 msgstr "किऑस्क मोडमध्ये सुरुवात करा"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:97
+#: src/remmina.c:95
 #, fuzzy
 msgid "Create new connection profile"
 msgstr "नवीन कनेक्शन प्रोफाइल तयार करा"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:99
+#: src/remmina.c:97
 #, fuzzy
 msgid "Show preferences"
 msgstr "प्राधान्ये दाखवा"
 
-#: src/remmina.c:99
+#: src/remmina.c:97
 #, fuzzy
 msgid "TABINDEX"
 msgstr "टॅबइंडेक्स"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:106
+#: src/remmina.c:104
 #, fuzzy
 msgid "Quit"
 msgstr "सोडून जाणे"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:108
+#: src/remmina.c:106
 #, fuzzy
 msgid "Use default server name (for --new)"
 msgstr "डिफॉल्ट सर्व्हर नाव वापरा (--नवीन साठी)"
 
-#: src/remmina.c:108
+#: src/remmina.c:106
 #, fuzzy
 msgid "SERVER"
 msgstr "सर्व्हर"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:110
+#: src/remmina.c:108
 #, fuzzy
 msgid "Use default protocol (for --new)"
 msgstr "डिफॉल्ट प्रोटोकॉल वापरा (--नवीन)"
 
-#: src/remmina.c:110
+#: src/remmina.c:108
 #, fuzzy
 msgid "PROTOCOL"
 msgstr "प्रोटोकॉल"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:112
+#: src/remmina.c:110
 #, fuzzy
 msgid "Start in tray"
 msgstr "ट्रेमध्ये सुरुवात करा"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:114
+#: src/remmina.c:112
 #, fuzzy
 msgid "Show the application version"
 msgstr "अनुप्रयोग आवृत्ती दर्शविा"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:116
+#: src/remmina.c:114
 #, fuzzy
 msgid "Show version of the application and its plugins"
 msgstr "अनुप्रयोग आणि त्याच्या प्लगइनची आवृत्ती दर्शविा"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:118
+#: src/remmina.c:116
 #, fuzzy
 msgid "Modify connection profile (requires --set-option)"
 msgstr "कनेक्शन प्रोफाइल मध्ये बदल करा (आवश्यक --सेट-पर्याय)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:120
+#: src/remmina.c:118
 #, fuzzy
 msgid "Set one or more profile settings, to be used with --update-profile"
 msgstr "एक किंवा अधिक प्रोफाइल सेटिंग्ज सेट करा, -- अपडेट-प्रोफाइलसह वापरले जाईल"
 
-#: src/remmina.c:121
+#: src/remmina.c:119
 #, fuzzy
 msgid "Encrypt a password"
 msgstr "पासवर्ड एन्क्रिप्ट करा"
@@ -664,7 +683,7 @@ msgstr "पासवर्ड एन्क्रिप्ट करा"
 #. * This link should point to a resource explaining how to get Remmina
 #. * to log more verbose statements.
 #.
-#: src/remmina.c:337
+#: src/remmina.c:334
 msgid ""
 "Remmina does not log all output statements. Turn on more verbose output by "
 "using \"G_MESSAGES_DEBUG=all\" as an environment variable.\n"
@@ -673,12 +692,12 @@ msgid ""
 msgstr ""
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:391
+#: src/remmina.c:388
 #, fuzzy
 msgid "- or protocol://username:encryptedpassword@host:port"
 msgstr "- किंवा प्रोटोकॉल/वापरकर्ता नाव:encryptedpassword@host:बंदर"
 
-#: src/remmina.c:394
+#: src/remmina.c:391
 #, fuzzy
 msgid ""
 "Examples:\n"
@@ -903,7 +922,7 @@ msgid "Progress"
 msgstr "प्रगती"
 
 #: src/remmina_protocol_widget.c:291 src/remmina_ssh_plugin.c:829
-#: src/remmina_ssh_plugin.c:1445
+#: src/remmina_ssh_plugin.c:1446
 msgid "Open SFTP transfer…"
 msgstr "SFTP हस्तांतरण उघडा…"
 
@@ -1315,7 +1334,7 @@ msgstr "चॅनेल उघडू शकत नव्हते. [एक्स
 msgid "Could not request shell. %s"
 msgstr "शेलची विनंती करू शकला नाही. [एक्स २५ एक्स]"
 
-#: src/remmina_ssh.c:2521
+#: src/remmina_ssh.c:2523
 #, fuzzy
 msgid "Could not create PTY device."
 msgstr "पीटीवाय डिव्हाइस तयार करू शकला नाही."
@@ -1325,24 +1344,32 @@ msgstr "पीटीवाय डिव्हाइस तयार करू �
 msgid "Plugin %s is not registered."
 msgstr "प्लगइन [एक्स ७ एक्स] नोंदणीकृत नाही."
 
-#: src/remmina_main.c:669
+#: src/remmina_main.c:685
 #, fuzzy
 msgid "The latest successful connection attempt, or a pre-computed date"
 msgstr "नवीनतम यशस्वी कनेक्शन प्रयत्न, किंवा पूर्व-संगणकीय तारीख"
 
-#: src/remmina_main.c:671
+#: src/remmina_main.c:687
 #, c-format
 msgid "Total %i item."
 msgid_plural "Total %i items."
 msgstr[0] "एकूण %i आयटम."
 msgstr[1] "एकूण %i आयटम."
 
-#: src/remmina_main.c:865
+#: src/remmina_main.c:694
+msgid "Network status: fully online"
+msgstr ""
+
+#: src/remmina_main.c:697
+msgid "Network status: offline"
+msgstr ""
+
+#: src/remmina_main.c:901
 #, fuzzy, c-format
 msgid "Are you sure you want to delete “%s”?"
 msgstr "तुम्हास \"%s\" नक्की डिलीट करायचे आहे का?"
 
-#: src/remmina_main.c:989
+#: src/remmina_main.c:1025
 #, fuzzy, c-format
 msgid ""
 "Unable to import:\n"
@@ -1351,27 +1378,27 @@ msgstr ""
 "आयात करण्यास असमर्थ:\n"
 "[एक्स १८ एक्स]"
 
-#: src/remmina_main.c:1015 data/ui/remmina_main.glade:285
+#: src/remmina_main.c:1051 data/ui/remmina_main.glade:285
 #, fuzzy
 msgid "Import"
 msgstr "आयात करा"
 
-#: src/remmina_main.c:1038 src/remmina_file_editor.c:1791
+#: src/remmina_main.c:1074 src/remmina_file_editor.c:1791
 #, fuzzy
 msgid "_Save"
 msgstr "_साठवा"
 
-#: src/remmina_main.c:1044
+#: src/remmina_main.c:1080
 #, fuzzy
 msgid "This protocol does not support exporting."
 msgstr "हा प्रोटोकॉल निर्यातीला पाठिंबा देत नाही."
 
-#: src/remmina_main.c:1361
+#: src/remmina_main.c:1400
 #, fuzzy
 msgid "Remmina Remote Desktop Client"
 msgstr "रेमिना रिमोट डेस्कटॉप क्लायंट"
 
-#: src/remmina_main.c:1363
+#: src/remmina_main.c:1402
 #, fuzzy
 msgid "Remmina Kiosk"
 msgstr "रेमिना किऑस्क"
@@ -1633,7 +1660,7 @@ msgstr "एसएसएच प्रमाणीकरण"
 msgid "SSH private key file"
 msgstr "एसएसएच खाजगी की फाइल"
 
-#: src/remmina_file_editor.c:1235 src/remmina_ssh_plugin.c:1474
+#: src/remmina_file_editor.c:1235 src/remmina_ssh_plugin.c:1475
 #, fuzzy
 #| msgid "SSH identity file"
 msgid "SSH certificate file"
@@ -1765,36 +1792,36 @@ msgstr "_बाहेर पडा"
 
 #. TRANSLATORS: Applet name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
 #. TRANSLATORS: Applet Name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
-#: src/remmina_icon.c:294 src/remmina_icon.c:450
+#: src/remmina_icon.c:294 src/remmina_icon.c:446
 #, fuzzy
 msgid "Remmina Applet"
 msgstr "रेमिना अॅपलेट"
 
 #. TRANSLATORS: Applet comment/description as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
-#: src/remmina_icon.c:296 src/remmina_icon.c:452
+#: src/remmina_icon.c:296 src/remmina_icon.c:448
 #, fuzzy
 msgid "Connect to remote desktops through the applet menu"
 msgstr "सफरचंदाच्या मेनूद्वारे दूरस्थ डेस्कटॉपशी कनेक्ट करा"
 
-#: src/remmina_icon.c:359
+#: src/remmina_icon.c:360
 #, fuzzy
 msgid "StatusNotifier/Appindicator support in “"
 msgstr "स्टेटसनोटिचर/अॅपइंडिकेटर सपोर्ट इन \""
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
-#: src/remmina_icon.c:366
+#: src/remmina_icon.c:367
 #, fuzzy, c-format
 msgid "%s your desktop does support it"
 msgstr "[एक्स0एक्स] तुमचा डेस्कटॉप त्याला पाठिंबा देतो"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
-#: src/remmina_icon.c:368
+#: src/remmina_icon.c:369
 #, fuzzy, c-format
 msgid "%s and Remmina has built-in (compiled) support for libappindicator."
 msgstr "[एक्स०एक्स] आणि रेमिनाने लिबअॅपइंडिकेटरसाठी अंतर्निहित (संकलित) समर्थन केले आहे."
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
-#: src/remmina_icon.c:371
+#: src/remmina_icon.c:372
 #, fuzzy, c-format
 msgid ""
 "%s not supported natively by your Desktop Environment. libappindicator will "
@@ -1804,20 +1831,20 @@ msgstr ""
 "जीटीकेस्टेटआयकॉन/एक्सएम्बेडकडे परत जाण्याचा प्रयत्न करेल"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
-#: src/remmina_icon.c:375
+#: src/remmina_icon.c:376
 #, fuzzy, c-format
 msgid "%s You may need to install, and use XApp Status Applet"
 msgstr ""
 "[एक्स०एक्स] आपल्याला एक्सअॅप स्टेटस अॅपलट स्थापित करणे आणि वापरण्याची आवश्यकता असू शकते"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
-#: src/remmina_icon.c:378
+#: src/remmina_icon.c:379
 #, fuzzy, c-format
 msgid "%s You may need to install, and use KStatusNotifierItem"
 msgstr "[एक्स०एक्स] आपल्याला केस्टेटसनोटिफाइडरआयटम स्थापित करणे आणि वापरणे आवश्यक असू शकते"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
-#: src/remmina_icon.c:381
+#: src/remmina_icon.c:382
 #, fuzzy, c-format
 msgid "%s You may need to install, and use XEmbed SNI Proxy"
 msgstr ""
@@ -1825,7 +1852,7 @@ msgstr ""
 "शकते"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
-#: src/remmina_icon.c:384
+#: src/remmina_icon.c:385
 #, fuzzy, c-format
 msgid "%s You may need to install, and use Gnome Shell Extension Appindicator"
 msgstr ""
@@ -1872,79 +1899,79 @@ msgstr "फॉन्टचा आकार कमी करा (होस्ट+
 msgid "Find text (host+G)"
 msgstr "पेस्ट करा (host + V)"
 
-#: src/remmina_ssh_plugin.c:1439 data/ui/remmina_main.glade:177
+#: src/remmina_ssh_plugin.c:1440 data/ui/remmina_main.glade:177
 msgid "Copy"
 msgstr "कॉपी करा"
 
-#: src/remmina_ssh_plugin.c:1439
+#: src/remmina_ssh_plugin.c:1440
 msgid "_Copy"
 msgstr "_ कॉपी(C)"
 
-#: src/remmina_ssh_plugin.c:1440
+#: src/remmina_ssh_plugin.c:1441
 msgid "Paste"
 msgstr "पेस्ट करा"
 
-#: src/remmina_ssh_plugin.c:1440
+#: src/remmina_ssh_plugin.c:1441
 #, fuzzy
 msgid "_Paste"
 msgstr "_चिकटवा"
 
-#: src/remmina_ssh_plugin.c:1441
+#: src/remmina_ssh_plugin.c:1442
 #, fuzzy
 msgid "Select all"
 msgstr "सर्व निवडा"
 
-#: src/remmina_ssh_plugin.c:1441
+#: src/remmina_ssh_plugin.c:1442
 #, fuzzy
 msgid "_Select all"
 msgstr "_सर्व निवडा"
 
-#: src/remmina_ssh_plugin.c:1442
+#: src/remmina_ssh_plugin.c:1443
 #, fuzzy
 msgid "Increase font size"
 msgstr "फॉन्टचा आकार वाढवा"
 
-#: src/remmina_ssh_plugin.c:1442
+#: src/remmina_ssh_plugin.c:1443
 #, fuzzy
 msgid "_Increase font size"
 msgstr "_Increase फॉन्ट आकार"
 
-#: src/remmina_ssh_plugin.c:1443
+#: src/remmina_ssh_plugin.c:1444
 #, fuzzy
 msgid "Decrease font size"
 msgstr "फॉन्टचा आकार कमी करा"
 
-#: src/remmina_ssh_plugin.c:1443
+#: src/remmina_ssh_plugin.c:1444
 #, fuzzy
 msgid "_Decrease font size"
 msgstr "_Decrease फॉन्ट आकार"
 
-#: src/remmina_ssh_plugin.c:1444
+#: src/remmina_ssh_plugin.c:1445
 #, fuzzy
 msgid "Find text"
 msgstr "मजकूर शोधा"
 
-#: src/remmina_ssh_plugin.c:1444
+#: src/remmina_ssh_plugin.c:1445
 #, fuzzy
 msgid "_Find text"
 msgstr "_Find मजकूर"
 
-#: src/remmina_ssh_plugin.c:1471 plugins/spice/spice_plugin.c:674
+#: src/remmina_ssh_plugin.c:1472 plugins/spice/spice_plugin.c:674
 #: plugins/vnc/vnc_plugin.c:1977 plugins/vnc/vnc_plugin.c:1989
 #, fuzzy
 msgid "User password"
 msgstr "वापरकर्ता पासवर्ड"
 
-#: src/remmina_ssh_plugin.c:1477
+#: src/remmina_ssh_plugin.c:1478
 msgid "Opening command"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1478
+#: src/remmina_ssh_plugin.c:1479
 #, fuzzy
 msgid "Start-up background program"
 msgstr "स्टार्ट-अप प्रोग्राम"
 
-#: src/remmina_ssh_plugin.c:1483
+#: src/remmina_ssh_plugin.c:1484
 #, fuzzy
 msgid ""
 "The filename can use the following placeholders:\n"
@@ -1967,77 +1994,77 @@ msgstr ""
 "  • % जी रेमिना प्रोफाइल ग्रुप नावासह बदलले जाते\n"
 "  • % डी आयएसओ 8601 स्वरूपात स्थानिक तारीख आणि वेळेसह बदलले जाते\n"
 
-#: src/remmina_ssh_plugin.c:1505
+#: src/remmina_ssh_plugin.c:1506
 #, fuzzy
 msgid "Terminal colour scheme"
 msgstr "टर्मिनल रंग योजना"
 
-#: src/remmina_ssh_plugin.c:1506
+#: src/remmina_ssh_plugin.c:1507
 #, fuzzy
 msgid "Character set"
 msgstr "चारित्र्य संच"
 
-#: src/remmina_ssh_plugin.c:1508
+#: src/remmina_ssh_plugin.c:1509
 #, fuzzy
 msgid "KEX (Key Exchange) algorithms"
 msgstr "केईएक्स (की एक्स्चेंज) अल्गोरिदम"
 
-#: src/remmina_ssh_plugin.c:1509
+#: src/remmina_ssh_plugin.c:1510
 #, fuzzy
 msgid "Symmetric cipher client to server"
 msgstr "सर्व्हरला सममित सिफर क्लायंट"
 
-#: src/remmina_ssh_plugin.c:1510
+#: src/remmina_ssh_plugin.c:1511
 #, fuzzy
 msgid "Preferred server host key types"
 msgstr "पसंतीचे सर्व्हर होस्ट की प्रकार"
 
-#: src/remmina_ssh_plugin.c:1511
+#: src/remmina_ssh_plugin.c:1512
 #, fuzzy
 msgid "Folder for SSH session log"
 msgstr "एसएसएच सत्र लॉगसाठी फोल्डर"
 
-#: src/remmina_ssh_plugin.c:1512
+#: src/remmina_ssh_plugin.c:1513
 #, fuzzy
 msgid "Filename for SSH session log"
 msgstr "एसएसएच सत्र लॉगसाठी फाइलनेम"
 
-#: src/remmina_ssh_plugin.c:1513
+#: src/remmina_ssh_plugin.c:1514
 #, fuzzy
 msgid "Log SSH session when exiting Remmina"
 msgstr "रेमिनातून बाहेर पडताना एसएसएच सत्र लॉग करा"
 
-#: src/remmina_ssh_plugin.c:1514
+#: src/remmina_ssh_plugin.c:1515
 #, fuzzy
 msgid "Log SSH session asynchronously"
 msgstr "लॉग एसएसएच सत्र असमक्रमाने"
 
-#: src/remmina_ssh_plugin.c:1514
+#: src/remmina_ssh_plugin.c:1515
 #, fuzzy
 msgid "Saving the session asynchronously may have a notable performance impact"
 msgstr "सत्र असमक्रमाने वाचवल्याचा उल्लेखनीय कामगिरीचा परिणाम होऊ शकतो"
 
-#: src/remmina_ssh_plugin.c:1515
+#: src/remmina_ssh_plugin.c:1516
 #, fuzzy
 msgid "Audible terminal bell"
 msgstr "श्रवणीय टर्मिनल बेल"
 
-#: src/remmina_ssh_plugin.c:1516
+#: src/remmina_ssh_plugin.c:1517
 #, fuzzy
 msgid "SSH compression"
 msgstr "एसएसएच संपीडन"
 
-#: src/remmina_ssh_plugin.c:1517
+#: src/remmina_ssh_plugin.c:1518
 #, fuzzy
 msgid "Don't remember passwords"
 msgstr "पासवर्ड आठवत नाहीत"
 
-#: src/remmina_ssh_plugin.c:1518
+#: src/remmina_ssh_plugin.c:1519
 #, fuzzy
 msgid "Strict host key checking"
 msgstr "कडक यजमान की तपासणी"
 
-#: src/remmina_ssh_plugin.c:1532
+#: src/remmina_ssh_plugin.c:1533
 #, fuzzy
 msgid "SSH - Secure Shell"
 msgstr "एसएसएच - सुरक्षित शेल"
@@ -2399,7 +2426,7 @@ msgstr "उच्च रंग (१५ बीपीपी)"
 msgid "256 colours (8 bpp)"
 msgstr "२५६ रंग (८ बीपीपी)"
 
-#: plugins/rdp/rdp_plugin.c:2595 data/ui/remmina_preferences.glade:641
+#: plugins/rdp/rdp_plugin.c:2595 data/ui/remmina_preferences.glade:612
 #, fuzzy
 msgid "None"
 msgstr "काहीही नाही"
@@ -2440,7 +2467,7 @@ msgid "LAN"
 msgstr "लॅन"
 
 #: plugins/rdp/rdp_plugin.c:2609 plugins/spice/spice_plugin.c:635
-#: data/ui/remmina_preferences.glade:677
+#: data/ui/remmina_preferences.glade:648
 #, fuzzy
 msgid "Off"
 msgstr "दूर"
@@ -3077,7 +3104,7 @@ msgstr "सर्व्हर सीए प्रमाणपत्र"
 
 #: plugins/spice/spice_plugin.c:694
 #, fuzzy
-msgid "Prefered video codec"
+msgid "Preferred video codec"
 msgstr "प्राधान्य ित व्हिडिओ कोडक"
 
 #: plugins/spice/spice_plugin.c:695
@@ -3087,7 +3114,7 @@ msgstr "जीस्ट्रीमर ओव्हरले बंद करा
 
 #: plugins/spice/spice_plugin.c:698
 #, fuzzy
-msgid "Prefered image compression"
+msgid "Preferred image compression"
 msgstr "प्राधान्य प्रतिमा संपीडन"
 
 #: plugins/spice/spice_plugin.c:701 plugins/spice/spice_plugin.c:714
@@ -4417,58 +4444,45 @@ msgstr ""
 "एक्स][एक्स ३६५ एक्स].\n"
 "[एक्स ३७१ एक्स]"
 
-#. The star (*) is a reference to privacy consent
-#: data/ui/remmina_news.glade:130 data/ui/remmina_preferences.glade:464
-#, fuzzy
-msgid ""
-"Send <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-"remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
-"\">anonymous</a></b> statistics. (*)"
-msgstr ""
-"[एक्स ५ एक्स][एक्स ८ एक्स]अनामिक[एक्स १३८ एक्स][एक्स १४२ एक्स] आकडेवारी पाठवा. (*)"
-
-#: data/ui/remmina_news.glade:142 data/ui/remmina_news.glade:195
-#, fuzzy
-msgid "Send anonymous statistics"
-msgstr "निनावी आकडेवारी पाठवा"
-
-#: data/ui/remmina_news.glade:156
+#: data/ui/remmina_news.glade:130
 #, fuzzy
 msgid "Use as default remote desktop client"
 msgstr "डिफॉल्ट रिमोट डेस्कटॉप क्लायंट म्हणून वापरा"
 
-#: data/ui/remmina_news.glade:165
+#: data/ui/remmina_news.glade:139
 #, fuzzy
 msgid "Apply"
 msgstr "अर्ज करणे"
 
-#: data/ui/remmina_news.glade:169
+#: data/ui/remmina_news.glade:143
 #, fuzzy
 msgid "Allow Remmina to automatically open .rdp and .remmina files."
 msgstr "रेमिनाला आपोआप .आरडीपी आणि .रेमिना फाइल्स उघडण्याची परवानगी द्या."
 
 #. The star (*) is a reference to privacy consent
-#: data/ui/remmina_news.glade:183 data/ui/remmina_preferences.glade:479
+#: data/ui/remmina_news.glade:157 data/ui/remmina_preferences.glade:450
 #, fuzzy
 msgid ""
 "Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
 "\">remmina.org</a> (*)"
 msgstr "[एक्स 16 एक्स] remmina.org[एक्स 83 एक्स] (*) कडून बातम्या आणा"
 
-#: data/ui/remmina_news.glade:208 data/ui/remmina_preferences.glade:446
+#: data/ui/remmina_news.glade:169
+msgid "Receives updated news from remmina.org"
+msgstr ""
+
+#: data/ui/remmina_news.glade:182
 #, fuzzy
-msgid ""
-"* By enabling statistics and/or news you consent to send and fetch data to/"
-"from remmina.org"
+msgid "* By turning on news you consent to fetching data from remmina.org"
 msgstr "* आकडेवारी आणि/किंवा बातम्या सक्षम करून आपण डेटा पाठविण्यास आणि remmina.org"
 
-#: data/ui/remmina_news.glade:231
+#: data/ui/remmina_news.glade:205
 #, fuzzy
 msgid "<big>Take part</big>"
 msgstr "[एक्स०एक्स] भाग घ्या[एक्स १४ एक्स]"
 
 #. Pay attention to the quoting characters as they may break the pango layout. If in doubt and cannot test, copy and paste the symbols from the English string.
-#: data/ui/remmina_news.glade:257
+#: data/ui/remmina_news.glade:231
 #, fuzzy
 msgid ""
 "<span>\n"
@@ -4484,7 +4498,7 @@ msgstr ""
 "करतात. [एक्स २३१ एक्स]\n"
 "[एक्स २३६ एक्स]\n"
 
-#: data/ui/remmina_news.glade:277
+#: data/ui/remmina_news.glade:251
 #, fuzzy
 msgid "<big>Contribute</big>"
 msgstr "[एक्स०एक्स] योगदान[एक्स १५ एक्स]"
@@ -4530,7 +4544,7 @@ msgid "Server name or IP address"
 msgstr "सर्व्हर नाव किंवा आयपी पत्ता"
 
 #: data/ui/remmina_main.glade:102 data/ui/remmina_main.glade:104
-#: data/ui/remmina_preferences.glade:504
+#: data/ui/remmina_preferences.glade:475
 #, fuzzy
 msgid "Clear"
 msgstr "साफ करा"
@@ -4755,7 +4769,7 @@ msgstr "प्रत्येक कनेक्शनसाठी शेवट�
 msgid "Remember last view mode"
 msgstr "शेवटचा दृश्य मोड लक्षात ठेवा"
 
-#: data/ui/remmina_preferences.glade:359
+#: data/ui/remmina_preferences.glade:345
 #, fuzzy
 msgid ""
 "Set a custom filename for your Remmina connection profiles, using a "
@@ -4763,12 +4777,12 @@ msgid ""
 msgstr ""
 "आपल्या रेमिना कनेक्शन प्रोफाइलसाठी एक सानुकूल फाइलनेम सेट करा, फॉरमॅटिंग स्ट्रिंग वापरून."
 
-#: data/ui/remmina_preferences.glade:363
+#: data/ui/remmina_preferences.glade:349
 #, fuzzy
 msgid "Template for profile filenames"
 msgstr "प्रोफाइल फाइलनेमसाठी साचा"
 
-#: data/ui/remmina_preferences.glade:375
+#: data/ui/remmina_preferences.glade:361
 #, fuzzy
 msgid ""
 "%G Group name (slash will be converted to - automatically)\n"
@@ -4785,104 +4799,109 @@ msgstr ""
 "\n"
 "\n"
 
-#: data/ui/remmina_preferences.glade:397
+#: data/ui/remmina_preferences.glade:383
 #, fuzzy
 msgid "Only save generated screenshots, don't copy them to clipboard."
 msgstr "फक्त तयार केलेले स्क्रीनशॉट वाचवा, क्लिपबोर्डवर कॉपी करू नका."
 
-#: data/ui/remmina_preferences.glade:402
+#: data/ui/remmina_preferences.glade:388
 #, fuzzy
 msgid "Prevent screenshots from entering clipboard"
 msgstr "स्क्रीनशॉटक्लिपबोर्डमध्ये प्रवेश करण्यापासून रोखा"
 
-#: data/ui/remmina_preferences.glade:529
+#: data/ui/remmina_preferences.glade:432
+#, fuzzy
+msgid "* By enabling news you consent to fetch data from remmina.org"
+msgstr "* आकडेवारी आणि/किंवा बातम्या सक्षम करून आपण डेटा पाठविण्यास आणि remmina.org"
+
+#: data/ui/remmina_preferences.glade:500
 #, fuzzy
 msgid "Options"
 msgstr "पर्याय"
 
-#: data/ui/remmina_preferences.glade:554
+#: data/ui/remmina_preferences.glade:525
 #, fuzzy
 msgid "Always show tabs"
 msgstr "नेहमी टॅब दाखवा"
 
-#: data/ui/remmina_preferences.glade:570
+#: data/ui/remmina_preferences.glade:541
 #, fuzzy
 msgid "Hide the toolbar shown in the tabbed interface"
 msgstr "टॅबबेड इंटरफेसमध्ये दर्शविलेला टूलबार लपवा"
 
-#: data/ui/remmina_preferences.glade:591
+#: data/ui/remmina_preferences.glade:562
 #, fuzzy
 msgid "Default view"
 msgstr "डिफॉल्ट दृश्य"
 
-#: data/ui/remmina_preferences.glade:605
+#: data/ui/remmina_preferences.glade:576
 #, fuzzy
 msgid "Automatic"
 msgstr "ऑटोमॅटिक"
 
-#: data/ui/remmina_preferences.glade:606
+#: data/ui/remmina_preferences.glade:577
 #, fuzzy
 msgid "Scrolled window"
 msgstr "गुंडाळलेली खिडकी"
 
-#: data/ui/remmina_preferences.glade:608
+#: data/ui/remmina_preferences.glade:579
 #, fuzzy
 msgid "Viewport fullscreen"
 msgstr "व्ह्यूपोर्ट फुलस्क्रीन"
 
 #. How tabs are grouped in the Remmina connection window
-#: data/ui/remmina_preferences.glade:624
+#: data/ui/remmina_preferences.glade:595
 #, fuzzy
 msgctxt "Appearance preferences"
 msgid "Tabs grouping"
 msgstr "टॅब ग्रुपिंग"
 
-#: data/ui/remmina_preferences.glade:638
+#: data/ui/remmina_preferences.glade:609
 #, fuzzy
 msgid "By group"
 msgstr "गटानुसार"
 
-#: data/ui/remmina_preferences.glade:639
+#: data/ui/remmina_preferences.glade:610
 #, fuzzy
 msgid "By protocol"
 msgstr "प्रोटोकॉलद्वारे"
 
-#: data/ui/remmina_preferences.glade:640
+#: data/ui/remmina_preferences.glade:611
 #, fuzzy
 msgid "Per connection"
 msgstr "प्रति कनेक्शन"
 
-#: data/ui/remmina_preferences.glade:652
+#: data/ui/remmina_preferences.glade:623
 #, fuzzy
 msgid "Fullscreen on the same screen as the connection window"
 msgstr "कनेक्शन विंडोसारख्याच स्क्रीनवर फुलस्क्रीन"
 
-#: data/ui/remmina_preferences.glade:675
+#: data/ui/remmina_preferences.glade:646
 #, fuzzy
 msgid "Peeking"
 msgstr "डोकावणे"
 
-#: data/ui/remmina_preferences.glade:676
+#: data/ui/remmina_preferences.glade:647
 #, fuzzy
 msgid "Hidden"
 msgstr "अदृश्य"
 
-#: data/ui/remmina_preferences.glade:693
+#: data/ui/remmina_preferences.glade:664
 #, fuzzy
 msgid "Fullscreen toolbar visibility"
 msgstr "फुलस्क्रीन टूलबार दृश्यमानता"
 
-#: data/ui/remmina_preferences.glade:703
+#: data/ui/remmina_preferences.glade:674
 #, fuzzy
 msgid "Hide the search bar shown in the main window"
 msgstr "मुख्य खिडकीत दाखवलेला शोध बार लपवा"
 
-#: data/ui/remmina_preferences.glade:719
+#: data/ui/remmina_preferences.glade:690
 #, fuzzy
 msgid "Prefer dark theme"
 msgstr "गडद थीम ला प्राधान्य द्या"
 
-#: data/ui/remmina_preferences.glade:723
+#: data/ui/remmina_preferences.glade:694
 #, fuzzy
 msgid ""
 "If a GTK theme includes a dark variant, it will be used instead of the "
@@ -4891,17 +4910,17 @@ msgstr ""
 "जर जीटीके थीममध्ये डार्क व्हेरिएंट चा समावेश असेल, तर तो कॉन्फिगर केलेल्या थीमऐवजी वापरला "
 "जाईल."
 
-#: data/ui/remmina_preferences.glade:743
+#: data/ui/remmina_preferences.glade:714
 #, fuzzy
 msgid "“Grab all keyboard events” status colour"
 msgstr "\"सर्व कीबोर्ड इव्हेंट्स पकडा\" स्टेटस कलर"
 
-#: data/ui/remmina_preferences.glade:754
+#: data/ui/remmina_preferences.glade:725
 #, fuzzy
 msgid "Enable/Disable “Grab all keyboard events” status colour"
 msgstr "सक्षम/अक्षम \"सर्व कीबोर्ड इव्हेंट्स पकडा\" स्थिती रंग"
 
-#: data/ui/remmina_preferences.glade:770
+#: data/ui/remmina_preferences.glade:741
 #, fuzzy
 msgid ""
 "Hexadecimal- or colour names (red, #ff0000).\n"
@@ -4911,138 +4930,138 @@ msgstr ""
 "हेक्साडेसिमल- किंवा रंगीत नावे (लाल, #ff0000).\n"
 "हे रेमिना कनेक्शन टूलबारमधील कनेक्शन नावांचा पार्श्वभूमी रंग बदलते (पूर्ण स्क्रीनमध्ये असताना)."
 
-#: data/ui/remmina_preferences.glade:827
+#: data/ui/remmina_preferences.glade:798
 #, fuzzy
 msgid "Appearance"
 msgstr "रूप"
 
-#: data/ui/remmina_preferences.glade:853
+#: data/ui/remmina_preferences.glade:824
 #, fuzzy
 msgid "Show new connection on top of the menu"
 msgstr "मेनूच्या वर नवीन कनेक्शन दर्शवा"
 
-#: data/ui/remmina_preferences.glade:872
+#: data/ui/remmina_preferences.glade:843
 #, fuzzy
 msgid "Hide total count shown in the group menu"
 msgstr "ग्रुप मेन्यूमध्ये दर्शविलेली एकूण गणना लपवा"
 
-#: data/ui/remmina_preferences.glade:890
+#: data/ui/remmina_preferences.glade:861
 #, fuzzy
 msgid "No tray icon"
 msgstr "ट्रे आयकॉन नाही"
 
-#: data/ui/remmina_preferences.glade:909
+#: data/ui/remmina_preferences.glade:880
 #, fuzzy
 msgid "Start in tray upon user login"
 msgstr "वापरकर्त्याच्या लॉगइनवर ट्रेमध्ये सुरुवात करा"
 
-#: data/ui/remmina_preferences.glade:940
+#: data/ui/remmina_preferences.glade:911
 #, fuzzy
 msgid "Applet"
 msgstr "अॅपलट"
 
-#: data/ui/remmina_preferences.glade:972
+#: data/ui/remmina_preferences.glade:943
 #, fuzzy
 msgid "Host key"
 msgstr "यजमान की"
 
-#: data/ui/remmina_preferences.glade:1004
+#: data/ui/remmina_preferences.glade:975
 #, fuzzy
 msgid "Show/hide fullscreen"
 msgstr "पूर्ण स्क्रीन दाखवा/लपवा"
 
-#: data/ui/remmina_preferences.glade:1035
+#: data/ui/remmina_preferences.glade:1006
 #, fuzzy
 msgid "Auto-fit window"
 msgstr "ऑटो-फिट विंडो"
 
-#: data/ui/remmina_preferences.glade:1112
+#: data/ui/remmina_preferences.glade:1083
 #, fuzzy
 msgid "Apply/remove scaling"
 msgstr "स्केलिंग लावा/काढा"
 
-#: data/ui/remmina_preferences.glade:1143
+#: data/ui/remmina_preferences.glade:1114
 #, fuzzy
 msgid "Grab keyboard"
 msgstr "कीबोर्ड पकडा"
 
-#: data/ui/remmina_preferences.glade:1236
+#: data/ui/remmina_preferences.glade:1207
 #, fuzzy
 msgid "Show/hide toolbar"
 msgstr "टूलबार दाखवा/लपवा"
 
-#: data/ui/remmina_preferences.glade:1299
-#: data/ui/remmina_preferences.glade:1309
+#: data/ui/remmina_preferences.glade:1270
+#: data/ui/remmina_preferences.glade:1280
 #, fuzzy
 msgid "View-only mode"
 msgstr "फक्त दृश्य मोड"
 
-#: data/ui/remmina_preferences.glade:1372
+#: data/ui/remmina_preferences.glade:1343
 #, fuzzy
 msgid "Keyboard"
 msgstr "कळफलक"
 
-#: data/ui/remmina_preferences.glade:1403
+#: data/ui/remmina_preferences.glade:1374
 #, fuzzy
 msgid "Local SSH port"
 msgstr "स्थानिक एसएसएच बंदर"
 
-#: data/ui/remmina_preferences.glade:1427
+#: data/ui/remmina_preferences.glade:1398
 #, fuzzy
 msgid "Parse ~/.ssh/config"
 msgstr "पारसे ~/श/संफिग"
 
-#: data/ui/remmina_preferences.glade:1451
+#: data/ui/remmina_preferences.glade:1422
 #, fuzzy
 msgid "No logging at all"
 msgstr "लॉगिंग मुळीच नाही"
 
-#: data/ui/remmina_preferences.glade:1452
+#: data/ui/remmina_preferences.glade:1423
 #, fuzzy
 msgid "Rare conditions or warnings"
 msgstr "दुर्मिळ परिस्थिती किंवा इशारे"
 
-#: data/ui/remmina_preferences.glade:1453
+#: data/ui/remmina_preferences.glade:1424
 #, fuzzy
 msgid "API-accessible entrypoints"
 msgstr "एपीआय-सुलभ प्रवेशबिंदू"
 
-#: data/ui/remmina_preferences.glade:1454
+#: data/ui/remmina_preferences.glade:1425
 #, fuzzy
 msgid "Lower level protocol info, packet level"
 msgstr "खालच्या स्तरावरील प्रोटोकॉल माहिती, पॅकेट पातळी"
 
-#: data/ui/remmina_preferences.glade:1455
+#: data/ui/remmina_preferences.glade:1426
 #, fuzzy
 msgid "Function entering and leaving"
 msgstr "प्रवेश करणे आणि जाणे कार्य करणे"
 
-#: data/ui/remmina_preferences.glade:1472
+#: data/ui/remmina_preferences.glade:1443
 #, fuzzy
 msgid "SSH log level"
 msgstr "एसएसएच लॉग लेव्हल"
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1543
+#: data/ui/remmina_preferences.glade:1514
 #, fuzzy
 msgid "Seconds of connection idleness before TCP keepalive probes are sent."
 msgstr "टीसीपी कीपअलाइव्ह प्रोब पाठवण्यापूर्वी कनेक्शन निष्क्रियतेचे सेकंद."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1559
+#: data/ui/remmina_preferences.glade:1530
 #, fuzzy
 msgid "Seconds between each keepalive probe."
 msgstr "प्रत्येक जिवंत चौकशीदरम्यान सेकंद."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1575
+#: data/ui/remmina_preferences.glade:1546
 #, fuzzy
 msgid ""
 "Number of keepalive probes sent via TCP connection before it is dropped."
 msgstr "टीसीपी कनेक्शन खाली येण्यापूर्वी पाठविलेल्या कीपअलाइव्ह प्रोबची संख्या."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1591
+#: data/ui/remmina_preferences.glade:1562
 #, fuzzy
 msgid ""
 "Amount of milliseconds to attempt acknowledging data before closing the "
@@ -5051,89 +5070,89 @@ msgstr ""
 "संबंधित टीसीपी कनेक्शन जबरदस्तीने बंद करण्यापूर्वी डेटा मान्य करण्याचा प्रयत्न करण्यासाठी "
 "मिलीसेकंदांची रक्कम."
 
-#: data/ui/remmina_preferences.glade:1617
+#: data/ui/remmina_preferences.glade:1588
 #, fuzzy
 msgid "SSH options"
 msgstr "एसएसएच पर्याय"
 
-#: data/ui/remmina_preferences.glade:1645
-#: data/ui/remmina_preferences.glade:1714
-#: data/ui/remmina_preferences.glade:1785
+#: data/ui/remmina_preferences.glade:1616
+#: data/ui/remmina_preferences.glade:1685
+#: data/ui/remmina_preferences.glade:1756
 #, fuzzy
 msgid "Use secret key authentication for some widgets"
 msgstr "काही विजेटसाठी गुप्त की प्रमाणीकरण वापरा"
 
-#: data/ui/remmina_preferences.glade:1649
+#: data/ui/remmina_preferences.glade:1620
 #, fuzzy
 msgid "Use master password"
 msgstr "मास्टर पासवर्ड वापरा"
 
-#: data/ui/remmina_preferences.glade:1662
+#: data/ui/remmina_preferences.glade:1633
 #, fuzzy
 msgid "Automatic lock interval"
 msgstr "स्वयंचलित लॉक इंटरव्हल"
 
-#: data/ui/remmina_preferences.glade:1688
+#: data/ui/remmina_preferences.glade:1659
 #, fuzzy
 msgid "Repeat the password"
 msgstr "पासवर्ड पुन्हा करा"
 
-#: data/ui/remmina_preferences.glade:1699
+#: data/ui/remmina_preferences.glade:1670
 #, fuzzy
 msgid "Automatically accept all fingerprints and certificates"
 msgstr "सर्व बोटांचे ठसे आणि प्रमाणपत्रे आपोआप स्वीकारा"
 
-#: data/ui/remmina_preferences.glade:1703
+#: data/ui/remmina_preferences.glade:1674
 #, fuzzy
 msgid "Trust all fingerprints and certificates"
 msgstr "सर्व बोटांचे ठसे आणि प्रमाणपत्रांवर विश्वास ठेवा"
 
-#: data/ui/remmina_preferences.glade:1746
+#: data/ui/remmina_preferences.glade:1717
 #, fuzzy
 msgid "Master password validity in seconds"
 msgstr "सेकंदात मास्टर पासवर्ड वैधता"
 
-#: data/ui/remmina_preferences.glade:1810
+#: data/ui/remmina_preferences.glade:1781
 #, fuzzy
 msgid "Security"
 msgstr "सुरक्षा"
 
-#: data/ui/remmina_preferences.glade:1841
+#: data/ui/remmina_preferences.glade:1812
 #, fuzzy
 msgid "Terminal font"
 msgstr "टर्मिनल फॉन्ट"
 
-#: data/ui/remmina_preferences.glade:1854
+#: data/ui/remmina_preferences.glade:1825
 #, fuzzy
 msgid "Scrollback lines"
 msgstr "स्क्रोलबॅक ओळी"
 
-#: data/ui/remmina_preferences.glade:1902
+#: data/ui/remmina_preferences.glade:1873
 #, fuzzy
 msgid "Shortcuts for copying and pasting"
 msgstr "कॉपी आणि पेस्टिंगसाठी शॉर्टकट"
 
-#: data/ui/remmina_preferences.glade:1915
+#: data/ui/remmina_preferences.glade:1886
 #, fuzzy
 msgid "Select all shortcuts"
 msgstr "सर्व शॉर्टकट निवडा"
 
-#: data/ui/remmina_preferences.glade:1928
-#: data/ui/remmina_preferences.glade:1945
-#: data/ui/remmina_preferences.glade:2398
-#: data/ui/remmina_preferences.glade:2428
-#: data/ui/remmina_preferences.glade:2562
-#: data/ui/remmina_preferences.glade:2579
+#: data/ui/remmina_preferences.glade:1899
+#: data/ui/remmina_preferences.glade:1916
+#: data/ui/remmina_preferences.glade:2369
+#: data/ui/remmina_preferences.glade:2399
+#: data/ui/remmina_preferences.glade:2533
+#: data/ui/remmina_preferences.glade:2550
 #, fuzzy
 msgid "(Host key+)"
 msgstr "(होस्ट की+)"
 
-#: data/ui/remmina_preferences.glade:1963
+#: data/ui/remmina_preferences.glade:1934
 #, fuzzy
 msgid "Use default system font"
 msgstr "डिफॉल्ट सिस्टम फॉन्ट वापरा"
 
-#: data/ui/remmina_preferences.glade:1988
+#: data/ui/remmina_preferences.glade:1959
 #, fuzzy
 msgid ""
 "Selecting “SGR 1” also switches to the bright counterparts of the first 8 "
@@ -5142,17 +5161,17 @@ msgstr ""
 "\"एसजीआर १\" निवडणे देखील पहिल्या ८ पॅलेट रंगांच्या चमकदार समकक्षांकडे (मजकूर बोल्ड "
 "करण्याव्यतिरिक्त) स्विच करते."
 
-#: data/ui/remmina_preferences.glade:2004
+#: data/ui/remmina_preferences.glade:1975
 #, fuzzy
 msgid "Allow using bright colours with bold text"
 msgstr "बोल्ड मजकुरासह चमकदार रंग वापरण्याची परवानगी द्या"
 
-#: data/ui/remmina_preferences.glade:2018
+#: data/ui/remmina_preferences.glade:1989
 #, fuzzy
 msgid "Colour theme"
 msgstr "रंग थीम"
 
-#: data/ui/remmina_preferences.glade:2029
+#: data/ui/remmina_preferences.glade:2000
 #, fuzzy
 msgid ""
 "Choose a colour scheme file. Usually available in /usr/share/remmina/theme. "
@@ -5161,159 +5180,159 @@ msgstr ""
 "रंगयोजनेची फाइल निवडा. सहसा /उसर/शेअर/रेमिना/थीममध्ये उपलब्ध आहे. https://github.com/"
 "mbadolato/iTerm2-Color-Schemes अधिक तपशील आहे."
 
-#: data/ui/remmina_preferences.glade:2033
+#: data/ui/remmina_preferences.glade:2004
 #, fuzzy
 msgid "Pick a terminal colouring file"
 msgstr "टर्मिनल कलरिंग फाइल निवडा"
 
-#: data/ui/remmina_preferences.glade:2048
+#: data/ui/remmina_preferences.glade:2019
 #, fuzzy
 msgid "Bright colours"
 msgstr "चमकदार रंग"
 
-#: data/ui/remmina_preferences.glade:2062
+#: data/ui/remmina_preferences.glade:2033
 #, fuzzy
 msgid "Pick a light black colour"
 msgstr "हलका काळा रंग निवडा"
 
-#: data/ui/remmina_preferences.glade:2076
+#: data/ui/remmina_preferences.glade:2047
 #, fuzzy
 msgid "Pick a light red colour"
 msgstr "हलका लाल रंग निवडा"
 
-#: data/ui/remmina_preferences.glade:2090
+#: data/ui/remmina_preferences.glade:2061
 #, fuzzy
 msgid "Pick a bright green colour"
 msgstr "चमकदार हिरवा रंग निवडा"
 
-#: data/ui/remmina_preferences.glade:2104
+#: data/ui/remmina_preferences.glade:2075
 #, fuzzy
 msgid "Pick a bright yellow colour"
 msgstr "एक चमकदार पिवळा रंग निवडा"
 
-#: data/ui/remmina_preferences.glade:2118
+#: data/ui/remmina_preferences.glade:2089
 #, fuzzy
 msgid "Pick a bright blue colour"
 msgstr "चमकदार निळा रंग निवडा"
 
-#: data/ui/remmina_preferences.glade:2132
+#: data/ui/remmina_preferences.glade:2103
 #, fuzzy
 msgid "Pick a light magenta colour"
 msgstr "हलका मॅजेंटा रंग निवडा"
 
-#: data/ui/remmina_preferences.glade:2146
+#: data/ui/remmina_preferences.glade:2117
 #, fuzzy
 msgid "Pick a light cyan colour"
 msgstr "हलका सायन रंग निवडा"
 
-#: data/ui/remmina_preferences.glade:2160
+#: data/ui/remmina_preferences.glade:2131
 #, fuzzy
 msgid "Pick a light white colour"
 msgstr "हलका पांढरा रंग निवडा"
 
-#: data/ui/remmina_preferences.glade:2174
+#: data/ui/remmina_preferences.glade:2145
 #, fuzzy
 msgid "Pick a black colour"
 msgstr "काळा रंग निवडा"
 
-#: data/ui/remmina_preferences.glade:2188
+#: data/ui/remmina_preferences.glade:2159
 #, fuzzy
 msgid "Pick a red colour"
 msgstr "लाल रंग निवडा"
 
-#: data/ui/remmina_preferences.glade:2202
+#: data/ui/remmina_preferences.glade:2173
 #, fuzzy
 msgid "Pick a green colour"
 msgstr "हिरवा रंग निवडा"
 
-#: data/ui/remmina_preferences.glade:2216
+#: data/ui/remmina_preferences.glade:2187
 #, fuzzy
 msgid "Pick a yellow colour"
 msgstr "पिवळा रंग निवडा"
 
-#: data/ui/remmina_preferences.glade:2230
+#: data/ui/remmina_preferences.glade:2201
 #, fuzzy
 msgid "Pick a blue colour"
 msgstr "निळा रंग निवडा"
 
-#: data/ui/remmina_preferences.glade:2244
+#: data/ui/remmina_preferences.glade:2215
 #, fuzzy
 msgid "Pick a magenta colour"
 msgstr "मॅजेंटा रंग निवडा"
 
-#: data/ui/remmina_preferences.glade:2258
+#: data/ui/remmina_preferences.glade:2229
 #, fuzzy
 msgid "Pick a cyan colour"
 msgstr "सायन रंग निवडा"
 
-#: data/ui/remmina_preferences.glade:2272
+#: data/ui/remmina_preferences.glade:2243
 #, fuzzy
 msgid "Pick a white colour"
 msgstr "पांढरा रंग निवडा"
 
-#: data/ui/remmina_preferences.glade:2285
+#: data/ui/remmina_preferences.glade:2256
 #, fuzzy
 msgid "Normal colours"
 msgstr "सामान्य रंग"
 
-#: data/ui/remmina_preferences.glade:2298
-#: data/ui/remmina_preferences.glade:2313
+#: data/ui/remmina_preferences.glade:2269
+#: data/ui/remmina_preferences.glade:2284
 #, fuzzy
 msgid "Cursor colour"
 msgstr "कर्सर रंग"
 
-#: data/ui/remmina_preferences.glade:2327
-#: data/ui/remmina_preferences.glade:2342
+#: data/ui/remmina_preferences.glade:2298
+#: data/ui/remmina_preferences.glade:2313
 #, fuzzy
 msgid "Background colour"
 msgstr "बॅकग्राऊंड रंग"
 
-#: data/ui/remmina_preferences.glade:2358
-#: data/ui/remmina_preferences.glade:2372
+#: data/ui/remmina_preferences.glade:2329
+#: data/ui/remmina_preferences.glade:2343
 #, fuzzy
 msgid "Foreground colour"
 msgstr "अग्रभागी रंग"
 
-#: data/ui/remmina_preferences.glade:2385
+#: data/ui/remmina_preferences.glade:2356
 #, fuzzy
 msgid "Increase and decrease font size"
 msgstr "फॉन्टचा आकार वाढवा आणि कमी करा"
 
-#: data/ui/remmina_preferences.glade:2415
+#: data/ui/remmina_preferences.glade:2386
 #, fuzzy
 msgid "Search text shortcut"
 msgstr "टेक्स्ट शॉर्टकट शोधा"
 
-#: data/ui/remmina_preferences.glade:2446
-#: data/ui/remmina_preferences.glade:2461
+#: data/ui/remmina_preferences.glade:2417
+#: data/ui/remmina_preferences.glade:2432
 #, fuzzy
 msgid "Bold colour"
 msgstr "ठळक रंग"
 
-#: data/ui/remmina_preferences.glade:2475
-#: data/ui/remmina_preferences.glade:2516
+#: data/ui/remmina_preferences.glade:2446
+#: data/ui/remmina_preferences.glade:2487
 #, fuzzy
 msgid "Highlight colour"
 msgstr "रंग ठळक करा"
 
-#: data/ui/remmina_preferences.glade:2488
-#: data/ui/remmina_preferences.glade:2532
+#: data/ui/remmina_preferences.glade:2459
+#: data/ui/remmina_preferences.glade:2503
 #, fuzzy
 msgid "Highlight foreground colour"
 msgstr "अग्रभागी रंग हायलाइट करा"
 
-#: data/ui/remmina_preferences.glade:2501
-#: data/ui/remmina_preferences.glade:2548
+#: data/ui/remmina_preferences.glade:2472
+#: data/ui/remmina_preferences.glade:2519
 #, fuzzy
 msgid "Cursor foreground colour"
 msgstr "कर्सर अग्रभागी रंग"
 
-#: data/ui/remmina_preferences.glade:2604
+#: data/ui/remmina_preferences.glade:2575
 #, fuzzy
 msgid "Terminal"
 msgstr "टर्मिनल"
 
-#: data/ui/remmina_preferences.glade:2618
+#: data/ui/remmina_preferences.glade:2589
 #, fuzzy
 msgid "Remmina Preferences"
 msgstr "रेमिना प्राधान्ये"
@@ -5332,6 +5351,18 @@ msgstr "रेमिना अनलॉक करा"
 #, fuzzy
 msgid "Master password"
 msgstr "मास्टर पासवर्ड"
+
+#, fuzzy
+#~ msgid ""
+#~ "Send <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
+#~ "remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
+#~ "\">anonymous</a></b> statistics. (*)"
+#~ msgstr ""
+#~ "[एक्स ५ एक्स][एक्स ८ एक्स]अनामिक[एक्स १३८ एक्स][एक्स १४२ एक्स] आकडेवारी पाठवा. (*)"
+
+#, fuzzy
+#~ msgid "Send anonymous statistics"
+#~ msgstr "निनावी आकडेवारी पाठवा"
 
 #, fuzzy
 #~ msgid "Started pyhoca-cli with following arguments:"
