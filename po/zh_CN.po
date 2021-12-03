@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-11-27 14:29+0000\n"
+"POT-Creation-Date: 2021-12-03 09:34+0000\n"
 "PO-Revision-Date: 2021-11-28 04:52+0000\n"
 "Last-Translator: Eric <spice2wolf@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -91,7 +91,7 @@ msgstr "认证类型"
 msgid "Password to unlock private key"
 msgstr "解锁私钥的密码"
 
-#: src/remmina_sftp_plugin.c:358 src/remmina_ssh_plugin.c:1506
+#: src/remmina_sftp_plugin.c:358 src/remmina_ssh_plugin.c:1507
 msgid "SSH Proxy Command"
 msgstr "SSH 代理命令"
 
@@ -482,16 +482,24 @@ msgstr "文件"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:90
+#, fuzzy
+#| msgid ""
+#| "Connect to a desktop described in a file (.remmina or a type supported by "
+#| "a plugin)"
 msgid ""
-"Connect to a desktop described in a file (.remmina or a type supported by a "
-"plugin)"
+"Connect to a desktop described in a file (.remmina or a filetype supported "
+"by a plugin)"
 msgstr "连接到文件描述的桌面（.remmina 或插件支持的类型）"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:92
+#, fuzzy
+#| msgid ""
+#| "Edit desktop connection described in file (.remmina or type supported by "
+#| "plugin)"
 msgid ""
-"Edit desktop connection described in file (.remmina or type supported by "
-"plugin)"
+"Edit desktop connection described in file (.remmina or a filetype supported "
+"by plugin)"
 msgstr "编辑文件描述的桌面连接（.remmina 或插件支持的类型）"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
@@ -570,10 +578,16 @@ msgstr "加密一个密码"
 #. * to log more verbose statements.
 #.
 #: src/remmina.c:337
+#, fuzzy
+#| msgid ""
+#| "Remmina does not log all output statements. To enable a more verbose "
+#| "output please use G_MESSAGES_DEBUG=all as an environment variable.\n"
+#| "For more information, please visit the Remmina Wiki at:\n"
+#| "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgid ""
-"Remmina does not log all output statements. To enable a more verbose output "
-"please use G_MESSAGES_DEBUG=all as an environment variable.\n"
-"For more information, please visit the Remmina Wiki at:\n"
+"Remmina does not log all output statements. Turn on more verbose output by "
+"using \"G_MESSAGES_DEBUG=all\" as an environment variable.\n"
+"More info available on the Remmina wiki at:\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgstr ""
 "Remmina 不会记录所有输出语句。 要启用更详细的输出，请使用 "
@@ -1159,18 +1173,18 @@ msgid "Could not start SFTP session. %s"
 msgstr "无法启动 SFTP 会话。%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2378
+#: src/remmina_ssh.c:2379
 #, c-format
 msgid "Could not open channel. %s"
 msgstr "打开通道失败。%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2393
+#: src/remmina_ssh.c:2394
 #, c-format
 msgid "Could not request shell. %s"
 msgstr "无法请求 shell。%s"
 
-#: src/remmina_ssh.c:2511
+#: src/remmina_ssh.c:2521
 msgid "Could not create PTY device."
 msgstr "无法创建 PTY 设备。"
 
@@ -1710,11 +1724,19 @@ msgstr "查找文本(_F)"
 msgid "User password"
 msgstr "用户密码"
 
-#: src/remmina_ssh_plugin.c:1477 plugins/rdp/rdp_plugin.c:2766
-msgid "Start-up program"
+#: src/remmina_ssh_plugin.c:1477
+#, fuzzy
+#| msgid "Pre-command"
+msgid "Opening command"
+msgstr "连接前执行命令"
+
+#: src/remmina_ssh_plugin.c:1478
+#, fuzzy
+#| msgid "Start-up program"
+msgid "Start-up background program"
 msgstr "启动程序"
 
-#: src/remmina_ssh_plugin.c:1482
+#: src/remmina_ssh_plugin.c:1483
 msgid ""
 "The filename can use the following placeholders:\n"
 "\n"
@@ -1736,63 +1758,63 @@ msgstr ""
 "  • %g 由 Remmina 配置组名组成\n"
 "  • %d 由 ISO 8601 格式的本地日期和时间组成\n"
 
-#: src/remmina_ssh_plugin.c:1504
+#: src/remmina_ssh_plugin.c:1505
 msgid "Terminal colour scheme"
 msgstr "终端配色方案"
 
-#: src/remmina_ssh_plugin.c:1505
+#: src/remmina_ssh_plugin.c:1506
 msgid "Character set"
 msgstr "字符集"
 
-#: src/remmina_ssh_plugin.c:1507
+#: src/remmina_ssh_plugin.c:1508
 msgid "KEX (Key Exchange) algorithms"
 msgstr "KEX（密钥交换）算法"
 
-#: src/remmina_ssh_plugin.c:1508
+#: src/remmina_ssh_plugin.c:1509
 msgid "Symmetric cipher client to server"
 msgstr "对称加密客户端到服务器"
 
-#: src/remmina_ssh_plugin.c:1509
+#: src/remmina_ssh_plugin.c:1510
 msgid "Preferred server host key types"
 msgstr "首选服务器主机密钥类型"
 
-#: src/remmina_ssh_plugin.c:1510
+#: src/remmina_ssh_plugin.c:1511
 msgid "Folder for SSH session log"
 msgstr "SSH 会话日志文件夹"
 
-#: src/remmina_ssh_plugin.c:1511
+#: src/remmina_ssh_plugin.c:1512
 msgid "Filename for SSH session log"
 msgstr "SSH 会话日志的文件名"
 
-#: src/remmina_ssh_plugin.c:1512
+#: src/remmina_ssh_plugin.c:1513
 msgid "Log SSH session when exiting Remmina"
 msgstr "退出 Remmina 时记录 SSH 会话"
 
-#: src/remmina_ssh_plugin.c:1513
+#: src/remmina_ssh_plugin.c:1514
 msgid "Log SSH session asynchronously"
 msgstr "异步记录 SSH 会话"
 
-#: src/remmina_ssh_plugin.c:1513
+#: src/remmina_ssh_plugin.c:1514
 msgid "Saving the session asynchronously may have a notable performance impact"
 msgstr "异步保存会话可能会对性能产生显著影响"
 
-#: src/remmina_ssh_plugin.c:1514
+#: src/remmina_ssh_plugin.c:1515
 msgid "Audible terminal bell"
 msgstr "有声终端铃"
 
-#: src/remmina_ssh_plugin.c:1515
+#: src/remmina_ssh_plugin.c:1516
 msgid "SSH compression"
 msgstr "SSH 压缩"
 
-#: src/remmina_ssh_plugin.c:1516
+#: src/remmina_ssh_plugin.c:1517
 msgid "Don't remember passwords"
 msgstr "忘记密码"
 
-#: src/remmina_ssh_plugin.c:1517
+#: src/remmina_ssh_plugin.c:1518
 msgid "Strict host key checking"
 msgstr "严格的主机密钥检查"
 
-#: src/remmina_ssh_plugin.c:1531
+#: src/remmina_ssh_plugin.c:1532
 msgid "SSH - Secure Shell"
 msgstr "SSH - 安全 Shell 连接"
 
@@ -2410,6 +2432,10 @@ msgstr "客户端名称"
 #: plugins/rdp/rdp_plugin.c:2765
 msgid "Client build"
 msgstr "客户端构建"
+
+#: plugins/rdp/rdp_plugin.c:2766
+msgid "Start-up program"
+msgstr "启动程序"
 
 #: plugins/rdp/rdp_plugin.c:2768
 msgid "Load balance info"
@@ -3074,7 +3100,7 @@ msgstr "参数 'error' 为 'NULL'。"
 msgid "parameter 'env' is either invalid or uninitialized."
 msgstr "参数 'env' 无效或未被初始化。"
 
-#: plugins/x2go/x2go_plugin.c:842
+#: plugins/x2go/x2go_plugin.c:842 plugins/x2go/x2go_plugin.c:2170
 msgid "Started PyHoca-CLI with the following arguments:"
 msgstr "使用以下参数启动了 PyHoca-CLI："
 
@@ -3244,10 +3270,6 @@ msgstr "正在恢复会话'%s'…"
 #: plugins/x2go/x2go_plugin.c:2148
 msgid "DPI setting is out of bounds. Please adjust it in profile settings."
 msgstr "DPI 设置越界。请在配置文件设置中进行调整。"
-
-#: plugins/x2go/x2go_plugin.c:2170
-msgid "Started pyhoca-cli with following arguments:"
-msgstr "使用以下参数启动了pyhoca-cli："
 
 #: plugins/x2go/x2go_plugin.c:2190
 msgid "An error occured while starting an X2Go session…"
@@ -4550,6 +4572,9 @@ msgstr "解锁 Remmina"
 msgid "Master password"
 msgstr "管控密码"
 
+#~ msgid "Started pyhoca-cli with following arguments:"
+#~ msgstr "使用以下参数启动了pyhoca-cli："
+
 #~ msgid ""
 #~ "For more information, please visit the Remmina Wiki:\n"
 #~ "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
@@ -4786,9 +4811,6 @@ msgstr "管控密码"
 
 #~ msgid "Autostart"
 #~ msgstr "自动启动"
-
-#~ msgid "Pre-command"
-#~ msgstr "连接前执行命令"
 
 #~ msgid "Post-command"
 #~ msgstr "连接后执行命令"

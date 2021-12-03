@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-11-27 14:29+0000\n"
+"POT-Creation-Date: 2021-12-03 09:34+0000\n"
 "PO-Revision-Date: 2021-11-23 19:51+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Lithuanian <https://hosted.weblate.org/projects/remmina/"
@@ -102,7 +102,7 @@ msgstr "Autentifikacijos tipas"
 msgid "Password to unlock private key"
 msgstr "Slaptažodis privataus rakto atrakinimui"
 
-#: src/remmina_sftp_plugin.c:358 src/remmina_ssh_plugin.c:1506
+#: src/remmina_sftp_plugin.c:358 src/remmina_ssh_plugin.c:1507
 #, fuzzy
 msgid "SSH Proxy Command"
 msgstr "SSH proxy komanda"
@@ -571,8 +571,8 @@ msgstr "FAILAS"
 #: src/remmina.c:90
 #, fuzzy
 msgid ""
-"Connect to a desktop described in a file (.remmina or a type supported by a "
-"plugin)"
+"Connect to a desktop described in a file (.remmina or a filetype supported "
+"by a plugin)"
 msgstr ""
 "Prisijungti prie darbalaukio, aprašyto faile (.remmina arba įskiepio "
 "palaikomo tipo)"
@@ -581,8 +581,8 @@ msgstr ""
 #: src/remmina.c:92
 #, fuzzy
 msgid ""
-"Edit desktop connection described in file (.remmina or type supported by "
-"plugin)"
+"Edit desktop connection described in file (.remmina or a filetype supported "
+"by plugin)"
 msgstr ""
 "Redaguoti darbalaukio ryšį, aprašytą faile (.remmina arba įskiepio palaikomo "
 "tipo)"
@@ -681,9 +681,9 @@ msgstr "Užšifruoti slaptažodį"
 #: src/remmina.c:337
 #, fuzzy
 msgid ""
-"Remmina does not log all output statements. To enable a more verbose output "
-"please use G_MESSAGES_DEBUG=all as an environment variable.\n"
-"For more information, please visit the Remmina Wiki at:\n"
+"Remmina does not log all output statements. Turn on more verbose output by "
+"using \"G_MESSAGES_DEBUG=all\" as an environment variable.\n"
+"More info available on the Remmina wiki at:\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgstr ""
 "\"Remmina\" neregistruoja visų išvesties teiginių. Norėdami įjungti "
@@ -1325,18 +1325,18 @@ msgid "Could not start SFTP session. %s"
 msgstr "Nepavyko paleisti SSH seanso: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2378
+#: src/remmina_ssh.c:2379
 #, c-format
 msgid "Could not open channel. %s"
 msgstr "Nepavyko sukurti SFTP seanso: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2393
+#: src/remmina_ssh.c:2394
 #, c-format
 msgid "Could not request shell. %s"
 msgstr "Nepavyko sukurti SFTP seanso: %s"
 
-#: src/remmina_ssh.c:2511
+#: src/remmina_ssh.c:2521
 #, fuzzy
 msgid "Could not create PTY device."
 msgstr "Nepavyko sukurti PTY įrenginio."
@@ -1976,11 +1976,17 @@ msgstr "_Rasti tekstą"
 msgid "User password"
 msgstr "Vartotojo slaptažodis"
 
-#: src/remmina_ssh_plugin.c:1477 plugins/rdp/rdp_plugin.c:2766
-msgid "Start-up program"
+#: src/remmina_ssh_plugin.c:1477
+msgid "Opening command"
+msgstr ""
+
+#: src/remmina_ssh_plugin.c:1478
+#, fuzzy
+#| msgid "Start-up program"
+msgid "Start-up background program"
 msgstr "Paleidimo programa"
 
-#: src/remmina_ssh_plugin.c:1482
+#: src/remmina_ssh_plugin.c:1483
 #, fuzzy
 msgid ""
 "The filename can use the following placeholders:\n"
@@ -2003,77 +2009,77 @@ msgstr ""
 "  - %g pakeičiamas Remmina profilio grupės pavadinimu\n"
 "  - %d pakeičiama vietine data ir laiku ISO 8601 formatu\n"
 
-#: src/remmina_ssh_plugin.c:1504
+#: src/remmina_ssh_plugin.c:1505
 #, fuzzy
 msgid "Terminal colour scheme"
 msgstr "Terminalo spalvų schema"
 
-#: src/remmina_ssh_plugin.c:1505
+#: src/remmina_ssh_plugin.c:1506
 #, fuzzy
 msgid "Character set"
 msgstr "Ženklų rinkinys"
 
-#: src/remmina_ssh_plugin.c:1507
+#: src/remmina_ssh_plugin.c:1508
 #, fuzzy
 msgid "KEX (Key Exchange) algorithms"
 msgstr "KEX (keitimosi raktais) algoritmai"
 
-#: src/remmina_ssh_plugin.c:1508
+#: src/remmina_ssh_plugin.c:1509
 #, fuzzy
 msgid "Symmetric cipher client to server"
 msgstr "Simetrinis šifras iš kliento į serverį"
 
-#: src/remmina_ssh_plugin.c:1509
+#: src/remmina_ssh_plugin.c:1510
 #, fuzzy
 msgid "Preferred server host key types"
 msgstr "Pageidaujami serverio prieglobos raktų tipai"
 
-#: src/remmina_ssh_plugin.c:1510
+#: src/remmina_ssh_plugin.c:1511
 #, fuzzy
 msgid "Folder for SSH session log"
 msgstr "Aplankas SSH sesijų žurnalui"
 
-#: src/remmina_ssh_plugin.c:1511
+#: src/remmina_ssh_plugin.c:1512
 #, fuzzy
 msgid "Filename for SSH session log"
 msgstr "SSH sesijos žurnalo failo pavadinimas"
 
-#: src/remmina_ssh_plugin.c:1512
+#: src/remmina_ssh_plugin.c:1513
 #, fuzzy
 msgid "Log SSH session when exiting Remmina"
 msgstr "SSH sesijos registravimas išėjus iš \"Remmina"
 
-#: src/remmina_ssh_plugin.c:1513
+#: src/remmina_ssh_plugin.c:1514
 #, fuzzy
 msgid "Log SSH session asynchronously"
 msgstr "Asinchroniškai registruokite SSH sesiją"
 
-#: src/remmina_ssh_plugin.c:1513
+#: src/remmina_ssh_plugin.c:1514
 #, fuzzy
 msgid "Saving the session asynchronously may have a notable performance impact"
 msgstr "Asinchroninis sesijos išsaugojimas gali turėti žymų poveikį našumui"
 
-#: src/remmina_ssh_plugin.c:1514
+#: src/remmina_ssh_plugin.c:1515
 #, fuzzy
 msgid "Audible terminal bell"
 msgstr "Garsinis terminalo skambutis"
 
-#: src/remmina_ssh_plugin.c:1515
+#: src/remmina_ssh_plugin.c:1516
 #, fuzzy
 msgid "SSH compression"
 msgstr "SSH suspaudimas"
 
-#: src/remmina_ssh_plugin.c:1516
+#: src/remmina_ssh_plugin.c:1517
 #, fuzzy
 msgid "Don't remember passwords"
 msgstr "Neišsaugoti slaptažodžių"
 
-#: src/remmina_ssh_plugin.c:1517
+#: src/remmina_ssh_plugin.c:1518
 #, fuzzy
 msgid "Strict host key checking"
 msgstr "Griežtas priimančiosios šalies rakto tikrinimas"
 
-#: src/remmina_ssh_plugin.c:1531
+#: src/remmina_ssh_plugin.c:1532
 #, fuzzy
 msgid "SSH - Secure Shell"
 msgstr "SSH - saugus apvalkalas"
@@ -2781,6 +2787,10 @@ msgstr "Kliento vardas"
 #: plugins/rdp/rdp_plugin.c:2765
 msgid "Client build"
 msgstr "Kliento vardas"
+
+#: plugins/rdp/rdp_plugin.c:2766
+msgid "Start-up program"
+msgstr "Paleidimo programa"
 
 #: plugins/rdp/rdp_plugin.c:2768
 #, fuzzy
@@ -3576,7 +3586,7 @@ msgstr "parametras \"error\" yra \"NULL\"."
 msgid "parameter 'env' is either invalid or uninitialized."
 msgstr "parametras 'env' yra neteisingas arba neinicializuotas."
 
-#: plugins/x2go/x2go_plugin.c:842
+#: plugins/x2go/x2go_plugin.c:842 plugins/x2go/x2go_plugin.c:2170
 #, fuzzy
 msgid "Started PyHoca-CLI with the following arguments:"
 msgstr "Paleistas PyHoca-CLI su šiais argumentais:"
@@ -3782,11 +3792,6 @@ msgstr "Sesijos \"%s\" atnaujinimas…"
 #, fuzzy
 msgid "DPI setting is out of bounds. Please adjust it in profile settings."
 msgstr "DPI nustatymas yra už ribų. Pakoreguokite jį profilio nustatymuose."
-
-#: plugins/x2go/x2go_plugin.c:2170
-#, fuzzy
-msgid "Started pyhoca-cli with following arguments:"
-msgstr "Paleista pyhoca-cli su šiais argumentais:"
 
 #: plugins/x2go/x2go_plugin.c:2190
 #, fuzzy
@@ -5389,6 +5394,10 @@ msgstr "Atrakinti Remmina"
 #, fuzzy
 msgid "Master password"
 msgstr "Pagrindinis slaptažodis"
+
+#, fuzzy
+#~ msgid "Started pyhoca-cli with following arguments:"
+#~ msgstr "Paleista pyhoca-cli su šiais argumentais:"
 
 #, fuzzy
 #~ msgid ""

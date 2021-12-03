@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-11-27 14:29+0000\n"
+"POT-Creation-Date: 2021-12-03 09:34+0000\n"
 "PO-Revision-Date: 2021-11-27 19:53+0000\n"
 "Last-Translator: gogogogi <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -90,7 +90,7 @@ msgstr "Vrsta ovjere"
 msgid "Password to unlock private key"
 msgstr "Lozinku za otključavanje privatnog ključa"
 
-#: src/remmina_sftp_plugin.c:358 src/remmina_ssh_plugin.c:1506
+#: src/remmina_sftp_plugin.c:358 src/remmina_ssh_plugin.c:1507
 msgid "SSH Proxy Command"
 msgstr "SSH proxy naredba"
 
@@ -489,18 +489,26 @@ msgstr "DATOTEKA"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:90
+#, fuzzy
+#| msgid ""
+#| "Connect to a desktop described in a file (.remmina or a type supported by "
+#| "a plugin)"
 msgid ""
-"Connect to a desktop described in a file (.remmina or a type supported by a "
-"plugin)"
+"Connect to a desktop described in a file (.remmina or a filetype supported "
+"by a plugin)"
 msgstr ""
 "Povezivanje s radnom površinom opisano datotekom (.remmina ili upišite "
 "podržani priključak)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:92
+#, fuzzy
+#| msgid ""
+#| "Edit desktop connection described in file (.remmina or type supported by "
+#| "plugin)"
 msgid ""
-"Edit desktop connection described in file (.remmina or type supported by "
-"plugin)"
+"Edit desktop connection described in file (.remmina or a filetype supported "
+"by plugin)"
 msgstr ""
 "Uređivanje povezivanja radne površine opisano datotekom (.remmina ili "
 "upišite podržani priključak)"
@@ -583,10 +591,16 @@ msgstr "Šifriraj lozinku"
 #. * to log more verbose statements.
 #.
 #: src/remmina.c:337
+#, fuzzy
+#| msgid ""
+#| "Remmina does not log all output statements. To enable a more verbose "
+#| "output please use G_MESSAGES_DEBUG=all as an environment variable.\n"
+#| "For more information, please visit the Remmina Wiki at:\n"
+#| "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgid ""
-"Remmina does not log all output statements. To enable a more verbose output "
-"please use G_MESSAGES_DEBUG=all as an environment variable.\n"
-"For more information, please visit the Remmina Wiki at:\n"
+"Remmina does not log all output statements. Turn on more verbose output by "
+"using \"G_MESSAGES_DEBUG=all\" as an environment variable.\n"
+"More info available on the Remmina wiki at:\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgstr ""
 "Remmina ne bilježi sve izlazne izjave. Za omogućavanje opširnijeg bilježenja "
@@ -1168,18 +1182,18 @@ msgid "Could not start SFTP session. %s"
 msgstr "Neuspjelo stvaranje FTP sesije. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2378
+#: src/remmina_ssh.c:2379
 #, c-format
 msgid "Could not open channel. %s"
 msgstr "Neuspjelo otvaranje kanala. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2393
+#: src/remmina_ssh.c:2394
 #, c-format
 msgid "Could not request shell. %s"
 msgstr "Neuspjeli zahtjev ljuske. %s"
 
-#: src/remmina_ssh.c:2511
+#: src/remmina_ssh.c:2521
 msgid "Could not create PTY device."
 msgstr "Neuspjelo stvaranje PTY uređaja."
 
@@ -1728,11 +1742,19 @@ msgstr "_Pretraži tekst"
 msgid "User password"
 msgstr "Korisnička lozinka"
 
-#: src/remmina_ssh_plugin.c:1477 plugins/rdp/rdp_plugin.c:2766
-msgid "Start-up program"
+#: src/remmina_ssh_plugin.c:1477
+#, fuzzy
+#| msgid "Pre-command"
+msgid "Opening command"
+msgstr "Naredba prije povezivanja"
+
+#: src/remmina_ssh_plugin.c:1478
+#, fuzzy
+#| msgid "Start-up program"
+msgid "Start-up background program"
 msgstr "Program pokretanja"
 
-#: src/remmina_ssh_plugin.c:1482
+#: src/remmina_ssh_plugin.c:1483
 msgid ""
 "The filename can use the following placeholders:\n"
 "\n"
@@ -1754,63 +1776,63 @@ msgstr ""
 "  • %g je zamijenjen s nazivom grupe Remmina profila\n"
 "  • %d je zamijenjen s lokalnim datumom i vremenom u ISO 8601 formatu\n"
 
-#: src/remmina_ssh_plugin.c:1504
+#: src/remmina_ssh_plugin.c:1505
 msgid "Terminal colour scheme"
 msgstr "Shema boja terminala"
 
-#: src/remmina_ssh_plugin.c:1505
+#: src/remmina_ssh_plugin.c:1506
 msgid "Character set"
 msgstr "Skup znakova"
 
-#: src/remmina_ssh_plugin.c:1507
+#: src/remmina_ssh_plugin.c:1508
 msgid "KEX (Key Exchange) algorithms"
 msgstr "KEX (razmjena ključeva) algoritmi"
 
-#: src/remmina_ssh_plugin.c:1508
+#: src/remmina_ssh_plugin.c:1509
 msgid "Symmetric cipher client to server"
 msgstr "Simetrični šifrirani klijent prema poslužitelju"
 
-#: src/remmina_ssh_plugin.c:1509
+#: src/remmina_ssh_plugin.c:1510
 msgid "Preferred server host key types"
 msgstr "Poželjne vrste ključeva poslužitelja"
 
-#: src/remmina_ssh_plugin.c:1510
+#: src/remmina_ssh_plugin.c:1511
 msgid "Folder for SSH session log"
 msgstr "Mapa za zapis SSH sesije"
 
-#: src/remmina_ssh_plugin.c:1511
+#: src/remmina_ssh_plugin.c:1512
 msgid "Filename for SSH session log"
 msgstr "Naziv datoteke za zapis SSH sesije"
 
-#: src/remmina_ssh_plugin.c:1512
+#: src/remmina_ssh_plugin.c:1513
 msgid "Log SSH session when exiting Remmina"
 msgstr "Zapisuj SSH sesiju pri zatvaranju Remmine"
 
-#: src/remmina_ssh_plugin.c:1513
+#: src/remmina_ssh_plugin.c:1514
 msgid "Log SSH session asynchronously"
 msgstr "Zapisuj SSH sesiju asinkrono"
 
-#: src/remmina_ssh_plugin.c:1513
+#: src/remmina_ssh_plugin.c:1514
 msgid "Saving the session asynchronously may have a notable performance impact"
 msgstr "Spremanje sesije asinkrono može imati značajan utjecaj na performanse"
 
-#: src/remmina_ssh_plugin.c:1514
+#: src/remmina_ssh_plugin.c:1515
 msgid "Audible terminal bell"
 msgstr "Terminalovo zvono"
 
-#: src/remmina_ssh_plugin.c:1515
+#: src/remmina_ssh_plugin.c:1516
 msgid "SSH compression"
 msgstr "SSH sažimanje"
 
-#: src/remmina_ssh_plugin.c:1516
+#: src/remmina_ssh_plugin.c:1517
 msgid "Don't remember passwords"
 msgstr "Ne pamti lozinke"
 
-#: src/remmina_ssh_plugin.c:1517
+#: src/remmina_ssh_plugin.c:1518
 msgid "Strict host key checking"
 msgstr "Ograniči provjeru ključa poslužitelja"
 
-#: src/remmina_ssh_plugin.c:1531
+#: src/remmina_ssh_plugin.c:1532
 msgid "SSH - Secure Shell"
 msgstr "SSH - Osigurana ljuska"
 
@@ -2440,6 +2462,10 @@ msgstr "Naziv klijenta"
 #: plugins/rdp/rdp_plugin.c:2765
 msgid "Client build"
 msgstr "Izgradnja klijenta"
+
+#: plugins/rdp/rdp_plugin.c:2766
+msgid "Start-up program"
+msgstr "Program pokretanja"
 
 #: plugins/rdp/rdp_plugin.c:2768
 msgid "Load balance info"
@@ -3110,7 +3136,7 @@ msgstr "parametar 'error' je 'NULL'."
 msgid "parameter 'env' is either invalid or uninitialized."
 msgstr "parametar 'env' ili je nevaljan ili nije pokrenut."
 
-#: plugins/x2go/x2go_plugin.c:842
+#: plugins/x2go/x2go_plugin.c:842 plugins/x2go/x2go_plugin.c:2170
 msgid "Started PyHoca-CLI with the following arguments:"
 msgstr "Pokrenut je PyHoca-CLI sa sljedećim argumentima:"
 
@@ -3289,10 +3315,6 @@ msgstr "Pokretanje sesije '%s'…"
 #: plugins/x2go/x2go_plugin.c:2148
 msgid "DPI setting is out of bounds. Please adjust it in profile settings."
 msgstr "DPI postavka je izvan granica. Prilagodite ju u postavkama profila."
-
-#: plugins/x2go/x2go_plugin.c:2170
-msgid "Started pyhoca-cli with following arguments:"
-msgstr "Pokrenuta je pyhoca-cli sa sljedećim značajkama:"
 
 #: plugins/x2go/x2go_plugin.c:2190
 msgid "An error occured while starting an X2Go session…"
@@ -4626,6 +4648,9 @@ msgstr "Otključaj Remminu"
 msgid "Master password"
 msgstr "Glavna lozinka"
 
+#~ msgid "Started pyhoca-cli with following arguments:"
+#~ msgstr "Pokrenuta je pyhoca-cli sa sljedećim značajkama:"
+
 #~ msgid ""
 #~ "For more information, please visit the Remmina Wiki:\n"
 #~ "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
@@ -4855,9 +4880,6 @@ msgstr "Glavna lozinka"
 
 #~ msgid "Autostart"
 #~ msgstr "Automatsko pokretanje"
-
-#~ msgid "Pre-command"
-#~ msgstr "Naredba prije povezivanja"
 
 #~ msgid "Post-command"
 #~ msgstr "Naredba nakon zatvaranja veze"

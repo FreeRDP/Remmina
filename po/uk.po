@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-11-27 14:29+0000\n"
+"POT-Creation-Date: 2021-12-03 09:34+0000\n"
 "PO-Revision-Date: 2021-12-01 22:53+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/remmina/"
@@ -90,7 +90,7 @@ msgstr "Тип автентифікації"
 msgid "Password to unlock private key"
 msgstr "Пароль розблокування закритого ключа"
 
-#: src/remmina_sftp_plugin.c:358 src/remmina_ssh_plugin.c:1506
+#: src/remmina_sftp_plugin.c:358 src/remmina_ssh_plugin.c:1507
 msgid "SSH Proxy Command"
 msgstr "Команда SSH-проксі"
 
@@ -489,18 +489,26 @@ msgstr "ФАЙЛ"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:90
+#, fuzzy
+#| msgid ""
+#| "Connect to a desktop described in a file (.remmina or a type supported by "
+#| "a plugin)"
 msgid ""
-"Connect to a desktop described in a file (.remmina or a type supported by a "
-"plugin)"
+"Connect to a desktop described in a file (.remmina or a filetype supported "
+"by a plugin)"
 msgstr ""
 "З'єднатися зі стільницею, яку описано у файлі (.remmina або суфіксом, що "
 "підтримується додатком)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:92
+#, fuzzy
+#| msgid ""
+#| "Edit desktop connection described in file (.remmina or type supported by "
+#| "plugin)"
 msgid ""
-"Edit desktop connection described in file (.remmina or type supported by "
-"plugin)"
+"Edit desktop connection described in file (.remmina or a filetype supported "
+"by plugin)"
 msgstr ""
 "Редагувати з'єднання зі стільницею, яку описано у файлі (.remmina чи іншим, "
 "що підтримується додатком)"
@@ -583,10 +591,16 @@ msgstr "Зашифрувати пароль"
 #. * to log more verbose statements.
 #.
 #: src/remmina.c:337
+#, fuzzy
+#| msgid ""
+#| "Remmina does not log all output statements. To enable a more verbose "
+#| "output please use G_MESSAGES_DEBUG=all as an environment variable.\n"
+#| "For more information, please visit the Remmina Wiki at:\n"
+#| "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgid ""
-"Remmina does not log all output statements. To enable a more verbose output "
-"please use G_MESSAGES_DEBUG=all as an environment variable.\n"
-"For more information, please visit the Remmina Wiki at:\n"
+"Remmina does not log all output statements. Turn on more verbose output by "
+"using \"G_MESSAGES_DEBUG=all\" as an environment variable.\n"
+"More info available on the Remmina wiki at:\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgstr ""
 "Remmina не записує до журналу усі виведені повідомлення. Щоб увімкнути "
@@ -663,9 +677,9 @@ msgstr ""
 "Оновити користувача і пароль і встановити інших режим роздільної здатності "
 "профілю з'єднання Remmina:\n"
 "\n"
-"\techo \"користувач\\n"
-"пароль\" | remmina --update-profile /ШЛЯХ/ДО/ФАЙЛА.remmina --set-option "
-"username --set-option resolution_mode=2 --set-option password\n"
+"\techo \"користувач\\nпароль\" | remmina --update-profile /ШЛЯХ/ДО/ФАЙЛА."
+"remmina --set-option username --set-option resolution_mode=2 --set-option "
+"password\n"
 
 #: src/remmina_public.c:345
 #, c-format
@@ -972,12 +986,14 @@ msgstr "Не вдалося імпортувати відкритий ключ S
 #: src/remmina_ssh.c:478
 #, c-format
 msgid "Could not authenticate automatically with public SSH key. %s"
-msgstr "Не вдалося пройти автоматичне розпізнавання за відкритим ключем SSH. %s"
+msgstr ""
+"Не вдалося пройти автоматичне розпізнавання за відкритим ключем SSH. %s"
 
 #: src/remmina_ssh.c:523
 #, c-format
 msgid "Could not authenticate automatically with SSH agent. %s"
-msgstr "Не вдалося пройти автоматичне розпізнавання за допомогою агента SSH. %s"
+msgstr ""
+"Не вдалося пройти автоматичне розпізнавання за допомогою агента SSH. %s"
 
 #: src/remmina_ssh.c:569 src/remmina_ssh.c:856
 #, c-format
@@ -996,7 +1012,8 @@ msgstr "Не вдалося пройти інтерактивне розпізн
 #: src/remmina_ssh.c:813
 #, c-format
 msgid "Could not authenticate with automatic public SSH key. %s"
-msgstr "Не вдалося пройти автоматичне розпізнавання за відкритим ключем SSH. %s"
+msgstr ""
+"Не вдалося пройти автоматичне розпізнавання за відкритим ключем SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:921
@@ -1166,18 +1183,18 @@ msgid "Could not start SFTP session. %s"
 msgstr "Не вдалося розпочати сеанс SFTP. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2378
+#: src/remmina_ssh.c:2379
 #, c-format
 msgid "Could not open channel. %s"
 msgstr "Не вдалося відкрити канал. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2393
+#: src/remmina_ssh.c:2394
 #, c-format
 msgid "Could not request shell. %s"
 msgstr "Не вдалося створити запит щодо командної оболонки. %s"
 
-#: src/remmina_ssh.c:2511
+#: src/remmina_ssh.c:2521
 msgid "Could not create PTY device."
 msgstr "Не можу створити PTY пристрій."
 
@@ -1729,11 +1746,19 @@ msgstr "З_найти текст"
 msgid "User password"
 msgstr "Пароль користувача"
 
-#: src/remmina_ssh_plugin.c:1477 plugins/rdp/rdp_plugin.c:2766
-msgid "Start-up program"
+#: src/remmina_ssh_plugin.c:1477
+#, fuzzy
+#| msgid "Pre-command"
+msgid "Opening command"
+msgstr "Перед-команда"
+
+#: src/remmina_ssh_plugin.c:1478
+#, fuzzy
+#| msgid "Start-up program"
+msgid "Start-up background program"
 msgstr "Запускати програму"
 
-#: src/remmina_ssh_plugin.c:1482
+#: src/remmina_ssh_plugin.c:1483
 msgid ""
 "The filename can use the following placeholders:\n"
 "\n"
@@ -1755,63 +1780,63 @@ msgstr ""
 "• %g буде замінено на назву групи профілів Remmina\n"
 "• %d буде замінено на місцеву дату і час у форматі ISO 8601\n"
 
-#: src/remmina_ssh_plugin.c:1504
+#: src/remmina_ssh_plugin.c:1505
 msgid "Terminal colour scheme"
 msgstr "Схема кольорів термінала"
 
-#: src/remmina_ssh_plugin.c:1505
+#: src/remmina_ssh_plugin.c:1506
 msgid "Character set"
 msgstr "Кодування символів"
 
-#: src/remmina_ssh_plugin.c:1507
+#: src/remmina_ssh_plugin.c:1508
 msgid "KEX (Key Exchange) algorithms"
 msgstr "Алгоритми обміну ключами KEX (Key Exchange)"
 
-#: src/remmina_ssh_plugin.c:1508
+#: src/remmina_ssh_plugin.c:1509
 msgid "Symmetric cipher client to server"
 msgstr "Симетричне шифрування клієнта до сервера"
 
-#: src/remmina_ssh_plugin.c:1509
+#: src/remmina_ssh_plugin.c:1510
 msgid "Preferred server host key types"
 msgstr "Бажані типи ключів сервера основної системи"
 
-#: src/remmina_ssh_plugin.c:1510
+#: src/remmina_ssh_plugin.c:1511
 msgid "Folder for SSH session log"
 msgstr "Тека журналу сеансу SSH"
 
-#: src/remmina_ssh_plugin.c:1511
+#: src/remmina_ssh_plugin.c:1512
 msgid "Filename for SSH session log"
 msgstr "Назва файла журналу сеансу SSH"
 
-#: src/remmina_ssh_plugin.c:1512
+#: src/remmina_ssh_plugin.c:1513
 msgid "Log SSH session when exiting Remmina"
 msgstr "Записувати сеанс SSH при виході з Remmina"
 
-#: src/remmina_ssh_plugin.c:1513
+#: src/remmina_ssh_plugin.c:1514
 msgid "Log SSH session asynchronously"
 msgstr "Асинхронне журналювання сеансу SSH"
 
-#: src/remmina_ssh_plugin.c:1513
+#: src/remmina_ssh_plugin.c:1514
 msgid "Saving the session asynchronously may have a notable performance impact"
 msgstr "Асинхронне збереження сеансу може мати значний вплив на швидкодію"
 
-#: src/remmina_ssh_plugin.c:1514
+#: src/remmina_ssh_plugin.c:1515
 msgid "Audible terminal bell"
 msgstr "Звуковий сигнал термінала"
 
-#: src/remmina_ssh_plugin.c:1515
+#: src/remmina_ssh_plugin.c:1516
 msgid "SSH compression"
 msgstr "Стискання SSH"
 
-#: src/remmina_ssh_plugin.c:1516
+#: src/remmina_ssh_plugin.c:1517
 msgid "Don't remember passwords"
 msgstr "Не запам'ятовувати паролі"
 
-#: src/remmina_ssh_plugin.c:1517
+#: src/remmina_ssh_plugin.c:1518
 msgid "Strict host key checking"
 msgstr "Строга перевірка ключів вузла"
 
-#: src/remmina_ssh_plugin.c:1531
+#: src/remmina_ssh_plugin.c:1532
 msgid "SSH - Secure Shell"
 msgstr "SSH — безпечна оболонка"
 
@@ -1866,8 +1891,8 @@ msgstr "Перепов'язування сканкодів клавіатури"
 #: plugins/rdp/rdp_settings.c:483
 msgid "List of key=value,… pairs to remap scancodes. E.g. 0x56=0x29,0x29=0x56"
 msgstr ""
-"Список записів ключ=значення,… пари для переприв'язування сканкодів. Приклад:"
-" 0x56=0x29,0x29=0x56"
+"Список записів ключ=значення,… пари для переприв'язування сканкодів. "
+"Приклад: 0x56=0x29,0x29=0x56"
 
 #: plugins/rdp/rdp_settings.c:486
 msgid "FreeRDP > 2.3.0 is required to map scancodes"
@@ -2046,8 +2071,8 @@ msgid ""
 "Unable to establish a connection to the RDP server “%s”. Check “Security "
 "protocol negotiation”."
 msgstr ""
-"Не вдалося встановити з'єднання із сервером RDP «%s». Перевірте, чи вказано «"
-"Узгодження протоколу захисту»."
+"Не вдалося встановити з'єднання із сервером RDP «%s». Перевірте, чи вказано "
+"«Узгодження протоколу захисту»."
 
 #: plugins/rdp/rdp_plugin.c:2183
 #, c-format
@@ -2448,6 +2473,10 @@ msgstr "Назва клієнта"
 msgid "Client build"
 msgstr "Номер збірки клієнта"
 
+#: plugins/rdp/rdp_plugin.c:2766
+msgid "Start-up program"
+msgstr "Запускати програму"
+
 #: plugins/rdp/rdp_plugin.c:2768
 msgid "Load balance info"
 msgstr "Інформація балансування навантаження"
@@ -2798,8 +2827,8 @@ msgid ""
 "    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
 msgstr ""
 "З'єднання із VNC за допомогою трансляційного підсилювача:\n"
-"  • Поле сервера має містити ідентифікатор підсилювача, наприклад ID:"
-"123456789\n"
+"  • Поле сервера має містити ідентифікатор підсилювача, наприклад "
+"ID:123456789\n"
 "  • У полі підсилювача має бути вказати IP-адресу підсилювача і порт, ось "
 "так:\n"
 " 10.10.10.12:5901\n"
@@ -3123,7 +3152,7 @@ msgstr "значенням параметра «error» є «NULL»."
 msgid "parameter 'env' is either invalid or uninitialized."
 msgstr "параметр «env» є некоректним або неініціалізованим."
 
-#: plugins/x2go/x2go_plugin.c:842
+#: plugins/x2go/x2go_plugin.c:842 plugins/x2go/x2go_plugin.c:2170
 msgid "Started PyHoca-CLI with the following arguments:"
 msgstr "Запущено PyHoca-CLI із такими аргументами:"
 
@@ -3151,8 +3180,8 @@ msgid ""
 "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i. "
 "Error: '%s'"
 msgstr ""
-"Під час спроби запустити PyHoca-CLI сталася помилка. Код виходу: %i. Помилка:"
-" «%s»"
+"Під час спроби запустити PyHoca-CLI сталася помилка. Код виходу: %i. "
+"Помилка: «%s»"
 
 #: plugins/x2go/x2go_plugin.c:940
 msgid "Parameter 'custom_data' is not fully initialized!"
@@ -3307,10 +3336,6 @@ msgid "DPI setting is out of bounds. Please adjust it in profile settings."
 msgstr ""
 "Параметр роздільності не лежить у прийнятному діапазоні. Будь ласка, "
 "скоригуйте цей параметр у профілі."
-
-#: plugins/x2go/x2go_plugin.c:2170
-msgid "Started pyhoca-cli with following arguments:"
-msgstr "Запущено pyhoca-cli із такими аргументами:"
 
 #: plugins/x2go/x2go_plugin.c:2190
 msgid "An error occured while starting an X2Go session…"
@@ -3889,8 +3914,8 @@ msgid ""
 "\">anonymous</a></b> statistics. (*)"
 msgstr ""
 "Надсилати <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-"remmina__stats_8c.html#details\" title=\"Статистика використання Remmina\""
-">анонімну</a></b> статистику. (*)"
+"remmina__stats_8c.html#details\" title=\"Статистика використання Remmina"
+"\">анонімну</a></b> статистику. (*)"
 
 #: data/ui/remmina_news.glade:142 data/ui/remmina_news.glade:195
 msgid "Send anonymous statistics"
@@ -3941,8 +3966,8 @@ msgid ""
 msgstr ""
 "<span>\n"
 "<b>Якщо ви в захваті від використання вільного програмного забезпечення, <a "
-"href=\"https://remmina.org/donations/\" title=\"Чудові пожертви Remmina\""
-">підтримайте нас фінансово</a>, аби зробити нас ще щасливішими та "
+"href=\"https://remmina.org/donations/\" title=\"Чудові пожертви Remmina"
+"\">підтримайте нас фінансово</a>, аби зробити нас ще щасливішими та "
 "стимулювати програмувати ще краще в майбутньому.</b>\n"
 "</span>\n"
 
@@ -4417,8 +4442,8 @@ msgid ""
 "Amount of milliseconds to attempt acknowledging data before closing the "
 "corresponding TCP connection forcibly."
 msgstr ""
-"Кількість мілісекунд для розпізнавання даних перед примусовим закриттям "
-"TCP-з'єднання."
+"Кількість мілісекунд для розпізнавання даних перед примусовим закриттям TCP-"
+"з'єднання."
 
 #: data/ui/remmina_preferences.glade:1617
 msgid "SSH options"
@@ -4649,6 +4674,9 @@ msgstr "Розблокувати Remmina"
 #: data/ui/remmina_unlock.glade:128
 msgid "Master password"
 msgstr "Майстер-пароль"
+
+#~ msgid "Started pyhoca-cli with following arguments:"
+#~ msgstr "Запущено pyhoca-cli із такими аргументами:"
 
 #~ msgid ""
 #~ "For more information, please visit the Remmina Wiki:\n"
@@ -4915,9 +4943,6 @@ msgstr "Майстер-пароль"
 
 #~ msgid "Autostart"
 #~ msgstr "Автозапуск"
-
-#~ msgid "Pre-command"
-#~ msgstr "Перед-команда"
 
 #~ msgid "Post-command"
 #~ msgstr "Після-команда"

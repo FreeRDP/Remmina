@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-11-27 14:29+0000\n"
+"POT-Creation-Date: 2021-12-03 09:34+0000\n"
 "PO-Revision-Date: 2021-11-28 11:51+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
@@ -98,7 +98,7 @@ msgstr "認證類型"
 msgid "Password to unlock private key"
 msgstr "解锁私钥的密码"
 
-#: src/remmina_sftp_plugin.c:358 src/remmina_ssh_plugin.c:1506
+#: src/remmina_sftp_plugin.c:358 src/remmina_ssh_plugin.c:1507
 #, fuzzy
 msgid "SSH Proxy Command"
 msgstr "SSH 代理伺服器指令"
@@ -556,17 +556,21 @@ msgstr "檔案夾"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:90
+#, fuzzy
+#| msgid ""
+#| "Connect to a desktop described in a file (.remmina or a type supported by "
+#| "a plugin)"
 msgid ""
-"Connect to a desktop described in a file (.remmina or a type supported by a "
-"plugin)"
+"Connect to a desktop described in a file (.remmina or a filetype supported "
+"by a plugin)"
 msgstr "連接到檔案描述的桌面（.remmina 或外掛支援的檔案類型）"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:92
 #, fuzzy
 msgid ""
-"Edit desktop connection described in file (.remmina or type supported by "
-"plugin)"
+"Edit desktop connection described in file (.remmina or a filetype supported "
+"by plugin)"
 msgstr "編輯檔案描述的桌面連接（.remmina 或外掛支援的檔案類型）"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
@@ -659,9 +663,9 @@ msgstr "輸入 VNC 密碼"
 #.
 #: src/remmina.c:337
 msgid ""
-"Remmina does not log all output statements. To enable a more verbose output "
-"please use G_MESSAGES_DEBUG=all as an environment variable.\n"
-"For more information, please visit the Remmina Wiki at:\n"
+"Remmina does not log all output statements. Turn on more verbose output by "
+"using \"G_MESSAGES_DEBUG=all\" as an environment variable.\n"
+"More info available on the Remmina wiki at:\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgstr ""
 
@@ -1295,18 +1299,18 @@ msgid "Could not start SFTP session. %s"
 msgstr "未能啟動 SSH 作業階段：%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2378
+#: src/remmina_ssh.c:2379
 #, c-format
 msgid "Could not open channel. %s"
 msgstr "無法開啟通道：%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2393
+#: src/remmina_ssh.c:2394
 #, c-format
 msgid "Could not request shell. %s"
 msgstr "無法請求 shell：%s"
 
-#: src/remmina_ssh.c:2511
+#: src/remmina_ssh.c:2521
 #, fuzzy
 msgid "Could not create PTY device."
 msgstr "無法建立 PTY 裝置。"
@@ -1940,11 +1944,18 @@ msgstr "_查找文本"
 msgid "User password"
 msgstr "使用者密碼"
 
-#: src/remmina_ssh_plugin.c:1477 plugins/rdp/rdp_plugin.c:2766
-msgid "Start-up program"
+#: src/remmina_ssh_plugin.c:1477
+#, fuzzy
+msgid "Opening command"
+msgstr "連接前執行指令"
+
+#: src/remmina_ssh_plugin.c:1478
+#, fuzzy
+#| msgid "Start-up program"
+msgid "Start-up background program"
 msgstr "啟動程式"
 
-#: src/remmina_ssh_plugin.c:1482
+#: src/remmina_ssh_plugin.c:1483
 #, fuzzy
 msgid ""
 "The filename can use the following placeholders:\n"
@@ -1967,73 +1978,73 @@ msgstr ""
 "  - %g用Remmina配置文件组名代替。\n"
 "  - 用ISO 8601格式的当地日期和时间代替%d。\n"
 
-#: src/remmina_ssh_plugin.c:1504
+#: src/remmina_ssh_plugin.c:1505
 #, fuzzy
 #| msgid "Terminal color scheme"
 msgid "Terminal colour scheme"
 msgstr "終端機配色"
 
-#: src/remmina_ssh_plugin.c:1505
+#: src/remmina_ssh_plugin.c:1506
 #, fuzzy
 msgid "Character set"
 msgstr "字集"
 
-#: src/remmina_ssh_plugin.c:1507
+#: src/remmina_ssh_plugin.c:1508
 #, fuzzy
 msgid "KEX (Key Exchange) algorithms"
 msgstr "KEX（金鑰交換）演算法"
 
-#: src/remmina_ssh_plugin.c:1508
+#: src/remmina_ssh_plugin.c:1509
 #, fuzzy
 msgid "Symmetric cipher client to server"
 msgstr "對稱加密用戶端到伺服器"
 
-#: src/remmina_ssh_plugin.c:1509
+#: src/remmina_ssh_plugin.c:1510
 #, fuzzy
 msgid "Preferred server host key types"
 msgstr "偏好的伺服器主機金鑰類型"
 
-#: src/remmina_ssh_plugin.c:1510
+#: src/remmina_ssh_plugin.c:1511
 msgid "Folder for SSH session log"
 msgstr "未能啟動 SSH 作業階段：%s"
 
-#: src/remmina_ssh_plugin.c:1511
+#: src/remmina_ssh_plugin.c:1512
 msgid "Filename for SSH session log"
 msgstr "在離開時啟用 SSH 作業階段紀錄"
 
-#: src/remmina_ssh_plugin.c:1512
+#: src/remmina_ssh_plugin.c:1513
 #, fuzzy
 msgid "Log SSH session when exiting Remmina"
 msgstr "退出Remmina时记录SSH会话"
 
-#: src/remmina_ssh_plugin.c:1513
+#: src/remmina_ssh_plugin.c:1514
 #, fuzzy
 msgid "Log SSH session asynchronously"
 msgstr "异步记录SSH会话"
 
-#: src/remmina_ssh_plugin.c:1513
+#: src/remmina_ssh_plugin.c:1514
 #, fuzzy
 msgid "Saving the session asynchronously may have a notable performance impact"
 msgstr "异步保存会话可能对性能有明显的影响"
 
-#: src/remmina_ssh_plugin.c:1514
+#: src/remmina_ssh_plugin.c:1515
 msgid "Audible terminal bell"
 msgstr "啟用終端機鈴聲"
 
-#: src/remmina_ssh_plugin.c:1515
+#: src/remmina_ssh_plugin.c:1516
 msgid "SSH compression"
 msgstr "啟用 SSH 壓縮"
 
-#: src/remmina_ssh_plugin.c:1516
+#: src/remmina_ssh_plugin.c:1517
 msgid "Don't remember passwords"
 msgstr "確認密碼"
 
-#: src/remmina_ssh_plugin.c:1517
+#: src/remmina_ssh_plugin.c:1518
 #, fuzzy
 msgid "Strict host key checking"
 msgstr "嚴格的主機金鑰檢查"
 
-#: src/remmina_ssh_plugin.c:1531
+#: src/remmina_ssh_plugin.c:1532
 #, fuzzy
 msgid "SSH - Secure Shell"
 msgstr "SSH - 安全Shell連接"
@@ -2744,6 +2755,10 @@ msgstr "客戶端名稱"
 #: plugins/rdp/rdp_plugin.c:2765
 msgid "Client build"
 msgstr "客戶端名稱"
+
+#: plugins/rdp/rdp_plugin.c:2766
+msgid "Start-up program"
+msgstr "啟動程式"
 
 #: plugins/rdp/rdp_plugin.c:2768
 #, fuzzy
@@ -3531,7 +3546,7 @@ msgstr "参数'error'为'NULL'。"
 msgid "parameter 'env' is either invalid or uninitialized."
 msgstr "参数'env'无效或未被初始化。"
 
-#: plugins/x2go/x2go_plugin.c:842
+#: plugins/x2go/x2go_plugin.c:842 plugins/x2go/x2go_plugin.c:2170
 #, fuzzy
 msgid "Started PyHoca-CLI with the following arguments:"
 msgstr "启动PyHoca-CLI，参数如下。"
@@ -3731,11 +3746,6 @@ msgstr "恢复会话'%s'...。"
 #, fuzzy
 msgid "DPI setting is out of bounds. Please adjust it in profile settings."
 msgstr "DPI设置超出了范围。请在配置文件设置中调整。"
-
-#: plugins/x2go/x2go_plugin.c:2170
-#, fuzzy
-msgid "Started pyhoca-cli with following arguments:"
-msgstr "启动 pyhoca-cli，参数如下。"
 
 #: plugins/x2go/x2go_plugin.c:2190
 #, fuzzy
@@ -5272,6 +5282,10 @@ msgid "Master password"
 msgstr "主密碼"
 
 #, fuzzy
+#~ msgid "Started pyhoca-cli with following arguments:"
+#~ msgstr "启动 pyhoca-cli，参数如下。"
+
+#, fuzzy
 #~| msgid "_Select all"
 #~ msgid "_Select session"
 #~ msgstr "选择会议"
@@ -5500,10 +5514,6 @@ msgstr "主密碼"
 #, fuzzy
 #~ msgid "Autostart"
 #~ msgstr "自動"
-
-#, fuzzy
-#~ msgid "Pre-command"
-#~ msgstr "連接前執行指令"
 
 #, fuzzy
 #~ msgid "Post-command"

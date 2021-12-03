@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-11-27 14:29+0000\n"
+"POT-Creation-Date: 2021-12-03 09:34+0000\n"
 "PO-Revision-Date: 2021-11-09 14:11+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Catalan <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -94,7 +94,7 @@ msgstr "Tipus d'autenticació"
 msgid "Password to unlock private key"
 msgstr "Contrasenya per a desblocar la clau privada"
 
-#: src/remmina_sftp_plugin.c:358 src/remmina_ssh_plugin.c:1506
+#: src/remmina_sftp_plugin.c:358 src/remmina_ssh_plugin.c:1507
 msgid "SSH Proxy Command"
 msgstr "Ordre del servidor intermediari SSH"
 
@@ -497,18 +497,26 @@ msgstr "FITXER"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:90
+#, fuzzy
+#| msgid ""
+#| "Connect to a desktop described in a file (.remmina or a type supported by "
+#| "a plugin)"
 msgid ""
-"Connect to a desktop described in a file (.remmina or a type supported by a "
-"plugin)"
+"Connect to a desktop described in a file (.remmina or a filetype supported "
+"by a plugin)"
 msgstr ""
 "Connecta a l'escriptori indicat en un fitxer (.remina o un tipus compatible "
 "amb el connector)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:92
+#, fuzzy
+#| msgid ""
+#| "Edit desktop connection described in file (.remmina or type supported by "
+#| "plugin)"
 msgid ""
-"Edit desktop connection described in file (.remmina or type supported by "
-"plugin)"
+"Edit desktop connection described in file (.remmina or a filetype supported "
+"by plugin)"
 msgstr ""
 "Edita la connexió de l'escriptori descrita en el fitxer (.remmina o un tipus "
 "compatible amb el connector)"
@@ -592,9 +600,9 @@ msgstr "Xifra una contrasenya"
 #.
 #: src/remmina.c:337
 msgid ""
-"Remmina does not log all output statements. To enable a more verbose output "
-"please use G_MESSAGES_DEBUG=all as an environment variable.\n"
-"For more information, please visit the Remmina Wiki at:\n"
+"Remmina does not log all output statements. Turn on more verbose output by "
+"using \"G_MESSAGES_DEBUG=all\" as an environment variable.\n"
+"More info available on the Remmina wiki at:\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgstr ""
 
@@ -1181,18 +1189,18 @@ msgid "Could not start SFTP session. %s"
 msgstr "No s'ha pogut començar la sessió SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2378
+#: src/remmina_ssh.c:2379
 #, c-format
 msgid "Could not open channel. %s"
 msgstr "No s'ha pogut obrir el canal. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2393
+#: src/remmina_ssh.c:2394
 #, c-format
 msgid "Could not request shell. %s"
 msgstr "No s'ha pogut demanar el shell. %s"
 
-#: src/remmina_ssh.c:2511
+#: src/remmina_ssh.c:2521
 msgid "Could not create PTY device."
 msgstr "No s'ha pogut crear el dispositiu PTY."
 
@@ -1782,11 +1790,19 @@ msgstr "_Troba text"
 msgid "User password"
 msgstr "Contrasenya de l'usuari"
 
-#: src/remmina_ssh_plugin.c:1477 plugins/rdp/rdp_plugin.c:2766
-msgid "Start-up program"
+#: src/remmina_ssh_plugin.c:1477
+#, fuzzy
+#| msgid "Pre-command"
+msgid "Opening command"
+msgstr "Ordre prèvia"
+
+#: src/remmina_ssh_plugin.c:1478
+#, fuzzy
+#| msgid "Start-up program"
+msgid "Start-up background program"
 msgstr "Programa d’inici"
 
-#: src/remmina_ssh_plugin.c:1482
+#: src/remmina_ssh_plugin.c:1483
 msgid ""
 "The filename can use the following placeholders:\n"
 "\n"
@@ -1808,66 +1824,66 @@ msgstr ""
 "  • %g se substitueix amb el nom del perfil del grup del Remmina.\n"
 "  • %d se substitueix amb la data i hora local en format ISO 8601.\n"
 
-#: src/remmina_ssh_plugin.c:1504
+#: src/remmina_ssh_plugin.c:1505
 msgid "Terminal colour scheme"
 msgstr "Esquema de color del terminal"
 
-#: src/remmina_ssh_plugin.c:1505
+#: src/remmina_ssh_plugin.c:1506
 msgid "Character set"
 msgstr "Joc de caràcters"
 
-#: src/remmina_ssh_plugin.c:1507
+#: src/remmina_ssh_plugin.c:1508
 msgid "KEX (Key Exchange) algorithms"
 msgstr "Algoritmes KEX (intercanvi de claus)"
 
-#: src/remmina_ssh_plugin.c:1508
+#: src/remmina_ssh_plugin.c:1509
 msgid "Symmetric cipher client to server"
 msgstr "Xifrat simètric entre client i servidor"
 
-#: src/remmina_ssh_plugin.c:1509
+#: src/remmina_ssh_plugin.c:1510
 msgid "Preferred server host key types"
 msgstr "Tipus de clau preferides del servidor amfitrió"
 
-#: src/remmina_ssh_plugin.c:1510
+#: src/remmina_ssh_plugin.c:1511
 msgid "Folder for SSH session log"
 msgstr "Carpeta per al registre de la sessió SSH"
 
-#: src/remmina_ssh_plugin.c:1511
+#: src/remmina_ssh_plugin.c:1512
 msgid "Filename for SSH session log"
 msgstr "Nom de fitxer del registre de la sessió SSH"
 
-#: src/remmina_ssh_plugin.c:1512
+#: src/remmina_ssh_plugin.c:1513
 msgid "Log SSH session when exiting Remmina"
 msgstr "Registra la sessió SSH en sortir del Remmina"
 
-#: src/remmina_ssh_plugin.c:1513
+#: src/remmina_ssh_plugin.c:1514
 #, fuzzy
 msgid "Log SSH session asynchronously"
 msgstr "Registra la sessió SSH de manera asíncrona"
 
-#: src/remmina_ssh_plugin.c:1513
+#: src/remmina_ssh_plugin.c:1514
 #, fuzzy
 msgid "Saving the session asynchronously may have a notable performance impact"
 msgstr ""
 "Desar la sessió de manera asíncrona pot tenir un impacte de rendiment notable"
 
-#: src/remmina_ssh_plugin.c:1514
+#: src/remmina_ssh_plugin.c:1515
 msgid "Audible terminal bell"
 msgstr "Timbre audible del terminal"
 
-#: src/remmina_ssh_plugin.c:1515
+#: src/remmina_ssh_plugin.c:1516
 msgid "SSH compression"
 msgstr "Compressió SSH"
 
-#: src/remmina_ssh_plugin.c:1516
+#: src/remmina_ssh_plugin.c:1517
 msgid "Don't remember passwords"
 msgstr "No recordis les contrasenyes"
 
-#: src/remmina_ssh_plugin.c:1517
+#: src/remmina_ssh_plugin.c:1518
 msgid "Strict host key checking"
 msgstr "Comprovació estricta de la clau de l'amfitrió"
 
-#: src/remmina_ssh_plugin.c:1531
+#: src/remmina_ssh_plugin.c:1532
 msgid "SSH - Secure Shell"
 msgstr "SSH - Shell segur"
 
@@ -2549,6 +2565,10 @@ msgstr "Nom del client"
 #: plugins/rdp/rdp_plugin.c:2765
 msgid "Client build"
 msgstr "Compilació del client"
+
+#: plugins/rdp/rdp_plugin.c:2766
+msgid "Start-up program"
+msgstr "Programa d’inici"
 
 #: plugins/rdp/rdp_plugin.c:2768
 msgid "Load balance info"
@@ -3239,7 +3259,7 @@ msgstr ""
 msgid "parameter 'env' is either invalid or uninitialized."
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:842
+#: plugins/x2go/x2go_plugin.c:842 plugins/x2go/x2go_plugin.c:2170
 #, fuzzy
 msgid "Started PyHoca-CLI with the following arguments:"
 msgstr "S'ha iniciat PyHoca-CLI amb els següents arguments:"
@@ -3430,11 +3450,6 @@ msgstr ""
 msgid "DPI setting is out of bounds. Please adjust it in profile settings."
 msgstr ""
 "L'opció DPI està fora de límits. Ajusteu-lo a la configuració del perfil."
-
-#: plugins/x2go/x2go_plugin.c:2170
-#, fuzzy
-msgid "Started pyhoca-cli with following arguments:"
-msgstr "Va començar pihoca-cli amb els següents arguments:"
 
 #: plugins/x2go/x2go_plugin.c:2190
 #, fuzzy
@@ -4875,6 +4890,10 @@ msgid "Master password"
 msgstr "Contrasenya mestra"
 
 #, fuzzy
+#~ msgid "Started pyhoca-cli with following arguments:"
+#~ msgstr "Va començar pihoca-cli amb els següents arguments:"
+
+#, fuzzy
 #~| msgid "_Select all"
 #~ msgid "_Select session"
 #~ msgstr "_Selecciona-ho tot"
@@ -5091,9 +5110,6 @@ msgstr "Contrasenya mestra"
 
 #~ msgid "Autostart"
 #~ msgstr "Inici automàtic"
-
-#~ msgid "Pre-command"
-#~ msgstr "Ordre prèvia"
 
 #~ msgid "Post-command"
 #~ msgstr "Ordre posterior"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Remmina v1.4.5\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-11-27 14:29+0000\n"
+"POT-Creation-Date: 2021-12-03 09:34+0000\n"
 "PO-Revision-Date: 2021-12-02 23:51+0000\n"
 "Last-Translator: Yasin Huwsf <yasinbakhtiar521@gmail.com>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -87,7 +87,7 @@ msgstr "نوع احراز هویت"
 msgid "Password to unlock private key"
 msgstr "رمز عبور برای باز کردن کلید خصوصی"
 
-#: src/remmina_sftp_plugin.c:358 src/remmina_ssh_plugin.c:1506
+#: src/remmina_sftp_plugin.c:358 src/remmina_ssh_plugin.c:1507
 msgid "SSH Proxy Command"
 msgstr "فرمان پروکسی SSH"
 
@@ -486,8 +486,8 @@ msgstr "فایل"
 #: src/remmina.c:90
 #, fuzzy
 msgid ""
-"Connect to a desktop described in a file (.remmina or a type supported by a "
-"plugin)"
+"Connect to a desktop described in a file (.remmina or a filetype supported "
+"by a plugin)"
 msgstr ""
 "اتصال به یک دسکتاپ توصیف شده در یک فایل (.remmina یا یک نوع پشتیبانی شده "
 "توسط یک پلاگین)"
@@ -496,8 +496,8 @@ msgstr ""
 #: src/remmina.c:92
 #, fuzzy
 msgid ""
-"Edit desktop connection described in file (.remmina or type supported by "
-"plugin)"
+"Edit desktop connection described in file (.remmina or a filetype supported "
+"by plugin)"
 msgstr ""
 "ویرایش اتصال دسکتاپ شرح داده شده در فایل (.remmina یا نوع پشتیبانی شده توسط "
 "پلاگین)"
@@ -592,9 +592,9 @@ msgstr "رمزعبور کاربر"
 #.
 #: src/remmina.c:337
 msgid ""
-"Remmina does not log all output statements. To enable a more verbose output "
-"please use G_MESSAGES_DEBUG=all as an environment variable.\n"
-"For more information, please visit the Remmina Wiki at:\n"
+"Remmina does not log all output statements. Turn on more verbose output by "
+"using \"G_MESSAGES_DEBUG=all\" as an environment variable.\n"
+"More info available on the Remmina wiki at:\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgstr ""
 
@@ -1201,18 +1201,18 @@ msgid "Could not start SFTP session. %s"
 msgstr "نمی توانست جلسه SFTP را شروع کند. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2378
+#: src/remmina_ssh.c:2379
 #, fuzzy, c-format
 msgid "Could not open channel. %s"
 msgstr "نمی توانست کانال را باز کند. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2393
+#: src/remmina_ssh.c:2394
 #, fuzzy, c-format
 msgid "Could not request shell. %s"
 msgstr "نميتونستم درخواست پوسته کنم %s"
 
-#: src/remmina_ssh.c:2511
+#: src/remmina_ssh.c:2521
 #, fuzzy
 msgid "Could not create PTY device."
 msgstr "نمی توانست دستگاه PTY ایجاد کند."
@@ -1811,11 +1811,17 @@ msgstr "_Find متن"
 msgid "User password"
 msgstr "رمزعبور کاربر"
 
-#: src/remmina_ssh_plugin.c:1477 plugins/rdp/rdp_plugin.c:2766
-msgid "Start-up program"
+#: src/remmina_ssh_plugin.c:1477
+msgid "Opening command"
+msgstr ""
+
+#: src/remmina_ssh_plugin.c:1478
+#, fuzzy
+#| msgid "Start-up program"
+msgid "Start-up background program"
 msgstr "برنامه راه اندازی"
 
-#: src/remmina_ssh_plugin.c:1482
+#: src/remmina_ssh_plugin.c:1483
 #, fuzzy
 msgid ""
 "The filename can use the following placeholders:\n"
@@ -1838,70 +1844,70 @@ msgstr ""
 "  • ٪g با نام گروه پروفایل Remmina جایگزین شده است\n"
 "  • ٪d با تاریخ و زمان محلی در فرمت ISO 8601 جایگزین می شود\n"
 
-#: src/remmina_ssh_plugin.c:1504
+#: src/remmina_ssh_plugin.c:1505
 #, fuzzy
 #| msgid "Terminal color scheme"
 msgid "Terminal colour scheme"
 msgstr "قالب رنگ ترمینال"
 
-#: src/remmina_ssh_plugin.c:1505
+#: src/remmina_ssh_plugin.c:1506
 msgid "Character set"
 msgstr "مجموعه کاراکتر"
 
-#: src/remmina_ssh_plugin.c:1507
+#: src/remmina_ssh_plugin.c:1508
 #, fuzzy
 msgid "KEX (Key Exchange) algorithms"
 msgstr "الگوریتم های KEX (تبادل کلید)"
 
-#: src/remmina_ssh_plugin.c:1508
+#: src/remmina_ssh_plugin.c:1509
 msgid "Symmetric cipher client to server"
 msgstr "رمزنگاری متقارن کلاینت به سرور"
 
-#: src/remmina_ssh_plugin.c:1509
+#: src/remmina_ssh_plugin.c:1510
 msgid "Preferred server host key types"
 msgstr "انواع کلید میزبان سرور"
 
-#: src/remmina_ssh_plugin.c:1510
+#: src/remmina_ssh_plugin.c:1511
 msgid "Folder for SSH session log"
 msgstr "پوشه برای نگهداری لاگ های نشست SSH"
 
-#: src/remmina_ssh_plugin.c:1511
+#: src/remmina_ssh_plugin.c:1512
 msgid "Filename for SSH session log"
 msgstr "نام فایل لاگهای نشست SSH"
 
-#: src/remmina_ssh_plugin.c:1512
+#: src/remmina_ssh_plugin.c:1513
 msgid "Log SSH session when exiting Remmina"
 msgstr "ذخیره کردن لاگ های SSH زمان خروج از Remmina"
 
-#: src/remmina_ssh_plugin.c:1513
+#: src/remmina_ssh_plugin.c:1514
 #, fuzzy
 msgid "Log SSH session asynchronously"
 msgstr "ورود به جلسه SSH به طور ناهمزمان"
 
-#: src/remmina_ssh_plugin.c:1513
+#: src/remmina_ssh_plugin.c:1514
 #, fuzzy
 msgid "Saving the session asynchronously may have a notable performance impact"
 msgstr ""
 "صرفه جویی در جلسه به طور ناهمزمان ممکن است تاثیر عملکرد قابل توجهی داشته باشد"
 
-#: src/remmina_ssh_plugin.c:1514
+#: src/remmina_ssh_plugin.c:1515
 msgid "Audible terminal bell"
 msgstr "صدای ترمینال قابل شندیدن"
 
-#: src/remmina_ssh_plugin.c:1515
+#: src/remmina_ssh_plugin.c:1516
 msgid "SSH compression"
 msgstr "فشرده سازی SSH"
 
-#: src/remmina_ssh_plugin.c:1516
+#: src/remmina_ssh_plugin.c:1517
 msgid "Don't remember passwords"
 msgstr "عدم یادآوری رمزعبور"
 
-#: src/remmina_ssh_plugin.c:1517
+#: src/remmina_ssh_plugin.c:1518
 #, fuzzy
 msgid "Strict host key checking"
 msgstr "چک کردن کلید میزبان سخت گیرانه"
 
-#: src/remmina_ssh_plugin.c:1531
+#: src/remmina_ssh_plugin.c:1532
 #, fuzzy
 msgid "SSH - Secure Shell"
 msgstr "SSH - پوسته امن"
@@ -2623,6 +2629,10 @@ msgstr "نام مشتری"
 #, fuzzy
 msgid "Client build"
 msgstr "مشتری ساخت"
+
+#: plugins/rdp/rdp_plugin.c:2766
+msgid "Start-up program"
+msgstr "برنامه راه اندازی"
 
 #: plugins/rdp/rdp_plugin.c:2768
 #, fuzzy
@@ -3424,7 +3434,7 @@ msgstr "پارامتر 'خطا' است 'NULL'."
 msgid "parameter 'env' is either invalid or uninitialized."
 msgstr "پارامتر 'env' یا غیر معتبر است و یا uninitialized."
 
-#: plugins/x2go/x2go_plugin.c:842
+#: plugins/x2go/x2go_plugin.c:842 plugins/x2go/x2go_plugin.c:2170
 #, fuzzy
 msgid "Started PyHoca-CLI with the following arguments:"
 msgstr "آغاز شده PyHoca - CLI با استدلال های زیر :"
@@ -3630,11 +3640,6 @@ msgstr "از سر گرفتن جلسه '%s'…"
 msgid "DPI setting is out of bounds. Please adjust it in profile settings."
 msgstr ""
 "تنظیم DPI خارج از محدوده است. لطفا آن را در تنظیمات پروفایل تنظیم کنید."
-
-#: plugins/x2go/x2go_plugin.c:2170
-#, fuzzy
-msgid "Started pyhoca-cli with following arguments:"
-msgstr "آغاز شده pyhoca - cli با استدلال های زیر :"
 
 #: plugins/x2go/x2go_plugin.c:2190
 #, fuzzy
@@ -5228,6 +5233,10 @@ msgstr "باز کردن باز کردن Remmina"
 #, fuzzy
 msgid "Master password"
 msgstr "رمز عبور استاد"
+
+#, fuzzy
+#~ msgid "Started pyhoca-cli with following arguments:"
+#~ msgstr "آغاز شده pyhoca - cli با استدلال های زیر :"
 
 #, fuzzy
 #~| msgid "_Select all"

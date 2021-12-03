@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-11-27 14:29+0000\n"
+"POT-Creation-Date: 2021-12-03 09:34+0000\n"
 "PO-Revision-Date: 2021-11-24 04:52+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Khmer (Central) <https://hosted.weblate.org/projects/remmina/"
@@ -99,7 +99,7 @@ msgstr "ប្រភេទផ្ទៀងផ្ទាត់"
 msgid "Password to unlock private key"
 msgstr "ពាក្យសម្ងាត់ដើម្បីដោះសោគន្លឹះឯកជន"
 
-#: src/remmina_sftp_plugin.c:358 src/remmina_ssh_plugin.c:1506
+#: src/remmina_sftp_plugin.c:358 src/remmina_ssh_plugin.c:1507
 #, fuzzy
 msgid "SSH Proxy Command"
 msgstr "បញ្ជា SSH Proxy"
@@ -564,8 +564,8 @@ msgstr "ឯកសារ"
 #: src/remmina.c:90
 #, fuzzy
 msgid ""
-"Connect to a desktop described in a file (.remmina or a type supported by a "
-"plugin)"
+"Connect to a desktop described in a file (.remmina or a filetype supported "
+"by a plugin)"
 msgstr ""
 "ភ្ជាប់ ទៅ ផ្ទៃតុ ដែល បាន រៀបរាប់ ក្នុង ឯកសារ (.remmina ឬ ប្រភេទ ដែល គាំទ្រ ដោយ plugin)"
 
@@ -573,8 +573,8 @@ msgstr ""
 #: src/remmina.c:92
 #, fuzzy
 msgid ""
-"Edit desktop connection described in file (.remmina or type supported by "
-"plugin)"
+"Edit desktop connection described in file (.remmina or a filetype supported "
+"by plugin)"
 msgstr ""
 "កែសម្រួល ការ តភ្ជាប់ ផ្ទៃតុ ដែល បាន រៀបរាប់ ក្នុង ឯកសារ (.remmina ឬ វាយ គាំទ្រ ដោយ "
 "plugin)"
@@ -668,9 +668,9 @@ msgstr "រក្សា​​ទុក​​​ពាក្យ​​​សម្
 #.
 #: src/remmina.c:337
 msgid ""
-"Remmina does not log all output statements. To enable a more verbose output "
-"please use G_MESSAGES_DEBUG=all as an environment variable.\n"
-"For more information, please visit the Remmina Wiki at:\n"
+"Remmina does not log all output statements. Turn on more verbose output by "
+"using \"G_MESSAGES_DEBUG=all\" as an environment variable.\n"
+"More info available on the Remmina wiki at:\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgstr ""
 
@@ -1310,18 +1310,18 @@ msgid "Could not start SFTP session. %s"
 msgstr "មិន អាច ចាប់ផ្ដើម សម័យ SFTP បាន ទេ & # 160; ។ %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2378
+#: src/remmina_ssh.c:2379
 #, fuzzy, c-format
 msgid "Could not open channel. %s"
 msgstr "មិន អាច បើក ប៉ុស្តិ៍ បាន ទេ & # 160; ។ %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2393
+#: src/remmina_ssh.c:2394
 #, fuzzy, c-format
 msgid "Could not request shell. %s"
 msgstr "មិន អាច ស្នើ សុំ សែល បាន ទេ ។ %s"
 
-#: src/remmina_ssh.c:2511
+#: src/remmina_ssh.c:2521
 #, fuzzy
 msgid "Could not create PTY device."
 msgstr "មិន អាច បង្កើត ឧបករណ៍ PTY បាន ទេ & # 160; ។"
@@ -1937,11 +1937,17 @@ msgstr "អត្ថបទ _Find"
 msgid "User password"
 msgstr "ពាក្យសម្ងាត់របស់អ្នកប្រើប្រាស់"
 
-#: src/remmina_ssh_plugin.c:1477 plugins/rdp/rdp_plugin.c:2766
-msgid "Start-up program"
+#: src/remmina_ssh_plugin.c:1477
+msgid "Opening command"
+msgstr ""
+
+#: src/remmina_ssh_plugin.c:1478
+#, fuzzy
+#| msgid "Start-up program"
+msgid "Start-up background program"
 msgstr "ចាប់ផ្ដើម​កម្មវិធី"
 
-#: src/remmina_ssh_plugin.c:1482
+#: src/remmina_ssh_plugin.c:1483
 #, fuzzy
 msgid ""
 "The filename can use the following placeholders:\n"
@@ -1964,77 +1970,77 @@ msgstr ""
 "  • % g ត្រូវ បាន ជំនួស ដោយ ឈ្មោះ ក្រុម ទម្រង់ Remmina\n"
 "  • %d ត្រូវបាន ជំនួស ដោយ កាលបរិច្ឆេទ និង ពេលវេលា ក្នុង ទ្រង់ទ្រាយ ISO 8601\n"
 
-#: src/remmina_ssh_plugin.c:1504
+#: src/remmina_ssh_plugin.c:1505
 #, fuzzy
 msgid "Terminal colour scheme"
 msgstr "គ្រោងការណ៍ ពណ៌ ស្ថានីយ"
 
-#: src/remmina_ssh_plugin.c:1505
+#: src/remmina_ssh_plugin.c:1506
 #, fuzzy
 msgid "Character set"
 msgstr "សំណុំតួអក្សរ"
 
-#: src/remmina_ssh_plugin.c:1507
+#: src/remmina_ssh_plugin.c:1508
 #, fuzzy
 msgid "KEX (Key Exchange) algorithms"
 msgstr "KEX (Key Exchange) ក្បួន ដោះស្រាយ"
 
-#: src/remmina_ssh_plugin.c:1508
+#: src/remmina_ssh_plugin.c:1509
 #, fuzzy
 msgid "Symmetric cipher client to server"
 msgstr "ម៉ាស៊ីនបម្រើ Symmetric cipher ទៅ server"
 
-#: src/remmina_ssh_plugin.c:1509
+#: src/remmina_ssh_plugin.c:1510
 #, fuzzy
 msgid "Preferred server host key types"
 msgstr "ប្រភេទ គ្រាប់ ចុច ម៉ាស៊ីន បម្រើ ដែល ពេញ ចិត្ត"
 
-#: src/remmina_ssh_plugin.c:1510
+#: src/remmina_ssh_plugin.c:1511
 #, fuzzy
 msgid "Folder for SSH session log"
 msgstr "ថត សម្រាប់ កំណត់ ហេតុ សម័យ SSH"
 
-#: src/remmina_ssh_plugin.c:1511
+#: src/remmina_ssh_plugin.c:1512
 #, fuzzy
 msgid "Filename for SSH session log"
 msgstr "ឯកសារname សម្រាប់ កំណត់ ហេតុ សម័យ SSH"
 
-#: src/remmina_ssh_plugin.c:1512
+#: src/remmina_ssh_plugin.c:1513
 #, fuzzy
 msgid "Log SSH session when exiting Remmina"
 msgstr "Log SSH session ពេលចេញ Remmina"
 
-#: src/remmina_ssh_plugin.c:1513
+#: src/remmina_ssh_plugin.c:1514
 #, fuzzy
 msgid "Log SSH session asynchronously"
 msgstr "កំណត់ហេតុ SSH session asynchronously"
 
-#: src/remmina_ssh_plugin.c:1513
+#: src/remmina_ssh_plugin.c:1514
 #, fuzzy
 msgid "Saving the session asynchronously may have a notable performance impact"
 msgstr ""
 "ការ សង្គ្រោះ សម័យ នេះ ប្រហែល ជា មាន ផល ប៉ះ ពាល់ ដល់ ការ សម្តែង ដ៏ គួរ ឲ្យ កត់ សម្គាល់ មួយ"
 
-#: src/remmina_ssh_plugin.c:1514
+#: src/remmina_ssh_plugin.c:1515
 #, fuzzy
 msgid "Audible terminal bell"
 msgstr "កណ្តឹង ស្ថានីយ Audible"
 
-#: src/remmina_ssh_plugin.c:1515
+#: src/remmina_ssh_plugin.c:1516
 #, fuzzy
 msgid "SSH compression"
 msgstr "ការ បង្ហាប់ SSH"
 
-#: src/remmina_ssh_plugin.c:1516
+#: src/remmina_ssh_plugin.c:1517
 msgid "Don't remember passwords"
 msgstr "រក្សា​​ទុក​​​ពាក្យ​​​សម្ងាត់"
 
-#: src/remmina_ssh_plugin.c:1517
+#: src/remmina_ssh_plugin.c:1518
 #, fuzzy
 msgid "Strict host key checking"
 msgstr "ការ ពិនិត្យ មើល គន្លឹះ ម៉ាស៊ីន យ៉ាង តឹង រឹង"
 
-#: src/remmina_ssh_plugin.c:1531
+#: src/remmina_ssh_plugin.c:1532
 #, fuzzy
 msgid "SSH - Secure Shell"
 msgstr "SSH - សែលសុវត្ថិភាព"
@@ -2749,6 +2755,10 @@ msgstr "ឈ្មោះ Client"
 #, fuzzy
 msgid "Client build"
 msgstr "ការ ស្ថាបនា ម៉ាស៊ីន បម្រើ"
+
+#: plugins/rdp/rdp_plugin.c:2766
+msgid "Start-up program"
+msgstr "ចាប់ផ្ដើម​កម្មវិធី"
 
 #: plugins/rdp/rdp_plugin.c:2768
 #, fuzzy
@@ -3547,7 +3557,7 @@ msgstr "ប៉ារ៉ាម៉ែត្រ 'error' is 'NULL'."
 msgid "parameter 'env' is either invalid or uninitialized."
 msgstr "ប៉ារ៉ាម៉ែត្រ 'env' គឺ មិន ត្រឹម ត្រូវ ឬ មិន បាន ឆ្លង កាត់ ឡើយ ។"
 
-#: plugins/x2go/x2go_plugin.c:842
+#: plugins/x2go/x2go_plugin.c:842 plugins/x2go/x2go_plugin.c:2170
 #, fuzzy
 msgid "Started PyHoca-CLI with the following arguments:"
 msgstr "បាន ចាប់ផ្ដើម PyHoca-CLI ជាមួយ នឹង អាគុយម៉ង់ ដូច ខាង ក្រោម៖"
@@ -3751,11 +3761,6 @@ msgstr "សម័យ សង្ខេប '%s'…"
 #, fuzzy
 msgid "DPI setting is out of bounds. Please adjust it in profile settings."
 msgstr "ការ កំណត់ DPI គឺ ហួស ព្រំ ដែន ។ សូម លៃ តម្រូវ វា នៅ ក្នុង ការ កំណត់ ទម្រង់ ។"
-
-#: plugins/x2go/x2go_plugin.c:2170
-#, fuzzy
-msgid "Started pyhoca-cli with following arguments:"
-msgstr "បាន ចាប់ផ្ដើម pyhoca-cli ជាមួយ នឹង អាគុយម៉ង់ ដូច ខាង ក្រោម ៖"
 
 #: plugins/x2go/x2go_plugin.c:2190
 #, fuzzy
@@ -5335,6 +5340,10 @@ msgstr "ដោះសោ Remmina"
 #, fuzzy
 msgid "Master password"
 msgstr "ពាក្យ សម្ងាត់ មេ"
+
+#, fuzzy
+#~ msgid "Started pyhoca-cli with following arguments:"
+#~ msgstr "បាន ចាប់ផ្ដើម pyhoca-cli ជាមួយ នឹង អាគុយម៉ង់ ដូច ខាង ក្រោម ៖"
 
 #, fuzzy
 #~ msgid "_Select session"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-11-27 14:29+0000\n"
+"POT-Creation-Date: 2021-12-03 09:34+0000\n"
 "PO-Revision-Date: 2021-11-23 19:51+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Bengali <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -99,7 +99,7 @@ msgstr "প্রমাণীকরণের ধরন"
 msgid "Password to unlock private key"
 msgstr "ব্যক্তিগত কী আনলক করতে পাসওয়ার্ড"
 
-#: src/remmina_sftp_plugin.c:358 src/remmina_ssh_plugin.c:1506
+#: src/remmina_sftp_plugin.c:358 src/remmina_ssh_plugin.c:1507
 #, fuzzy
 msgid "SSH Proxy Command"
 msgstr "এসএসএইচ প্রক্সি কমান্ড"
@@ -565,8 +565,8 @@ msgstr "ফাইল"
 #: src/remmina.c:90
 #, fuzzy
 msgid ""
-"Connect to a desktop described in a file (.remmina or a type supported by a "
-"plugin)"
+"Connect to a desktop described in a file (.remmina or a filetype supported "
+"by a plugin)"
 msgstr ""
 "একটি ফাইলে বর্ণিত ডেস্কটপের সাথে সংযোগ করুন (.রেমিনা বা প্লাগইন দ্বারা সমর্থিত "
 "একটি প্রকার)"
@@ -575,8 +575,8 @@ msgstr ""
 #: src/remmina.c:92
 #, fuzzy
 msgid ""
-"Edit desktop connection described in file (.remmina or type supported by "
-"plugin)"
+"Edit desktop connection described in file (.remmina or a filetype supported "
+"by plugin)"
 msgstr ""
 "ফাইলে বর্ণিত ডেস্কটপ সংযোগ সম্পাদনা করুন (.রেমিনা বা প্লাগইন দ্বারা সমর্থিত টাইপ)"
 
@@ -671,9 +671,9 @@ msgstr "একটি পাসওয়ার্ড এনক্রিপ্ট 
 #.
 #: src/remmina.c:337
 msgid ""
-"Remmina does not log all output statements. To enable a more verbose output "
-"please use G_MESSAGES_DEBUG=all as an environment variable.\n"
-"For more information, please visit the Remmina Wiki at:\n"
+"Remmina does not log all output statements. Turn on more verbose output by "
+"using \"G_MESSAGES_DEBUG=all\" as an environment variable.\n"
+"More info available on the Remmina wiki at:\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgstr ""
 
@@ -1313,18 +1313,18 @@ msgid "Could not start SFTP session. %s"
 msgstr "এসএফটিপি সেশন শুরু করা যায়নি। [এক্স৩০এক্স]"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2378
+#: src/remmina_ssh.c:2379
 #, fuzzy, c-format
 msgid "Could not open channel. %s"
 msgstr "চ্যানেল খোলা যায়নি। [এক্স২৪এক্স]"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2393
+#: src/remmina_ssh.c:2394
 #, fuzzy, c-format
 msgid "Could not request shell. %s"
 msgstr "শেলের অনুরোধ করা যায়নি। [এক্স২৫এক্স]"
 
-#: src/remmina_ssh.c:2511
+#: src/remmina_ssh.c:2521
 #, fuzzy
 msgid "Could not create PTY device."
 msgstr "পিটিওয়াই ডিভাইস তৈরি করা যায়নি।"
@@ -1946,12 +1946,16 @@ msgstr "_Find লেখা"
 msgid "User password"
 msgstr "ব্যবহারকারীর পাসওয়ার্ড"
 
-#: src/remmina_ssh_plugin.c:1477 plugins/rdp/rdp_plugin.c:2766
+#: src/remmina_ssh_plugin.c:1477
+msgid "Opening command"
+msgstr ""
+
+#: src/remmina_ssh_plugin.c:1478
 #, fuzzy
-msgid "Start-up program"
+msgid "Start-up background program"
 msgstr "স্টার্ট-আপ প্রোগ্রাম"
 
-#: src/remmina_ssh_plugin.c:1482
+#: src/remmina_ssh_plugin.c:1483
 #, fuzzy
 msgid ""
 "The filename can use the following placeholders:\n"
@@ -1974,78 +1978,78 @@ msgstr ""
 "  • %g রেমিনা প্রোফাইল গ্রুপের নামের সাথে প্রতিস্থাপিত\n"
 "  • %1$%-এর পরিবর্তে আইএসও 8601 বিন্যাসে স্থানীয় তারিখ ও সময় দেওয়া হয়েছে\n"
 
-#: src/remmina_ssh_plugin.c:1504
+#: src/remmina_ssh_plugin.c:1505
 #, fuzzy
 msgid "Terminal colour scheme"
 msgstr "টার্মিনাল রঙের স্কিম"
 
-#: src/remmina_ssh_plugin.c:1505
+#: src/remmina_ssh_plugin.c:1506
 #, fuzzy
 msgid "Character set"
 msgstr "অক্ষর সেট"
 
-#: src/remmina_ssh_plugin.c:1507
+#: src/remmina_ssh_plugin.c:1508
 #, fuzzy
 msgid "KEX (Key Exchange) algorithms"
 msgstr "কেইএক্স (কী এক্সচেঞ্জ) অ্যালগরিদম"
 
-#: src/remmina_ssh_plugin.c:1508
+#: src/remmina_ssh_plugin.c:1509
 #, fuzzy
 msgid "Symmetric cipher client to server"
 msgstr "সার্ভারে প্রতিসাম্য সাইফার ক্লায়েন্ট"
 
-#: src/remmina_ssh_plugin.c:1509
+#: src/remmina_ssh_plugin.c:1510
 #, fuzzy
 msgid "Preferred server host key types"
 msgstr "পছন্দসই সার্ভার হোস্ট কী প্রকার"
 
-#: src/remmina_ssh_plugin.c:1510
+#: src/remmina_ssh_plugin.c:1511
 #, fuzzy
 msgid "Folder for SSH session log"
 msgstr "এসএসএইচ সেশন লগের জন্য ফোল্ডার"
 
-#: src/remmina_ssh_plugin.c:1511
+#: src/remmina_ssh_plugin.c:1512
 #, fuzzy
 msgid "Filename for SSH session log"
 msgstr "এসএসএইচ সেশন লগের জন্য ফাইলনাম"
 
-#: src/remmina_ssh_plugin.c:1512
+#: src/remmina_ssh_plugin.c:1513
 #, fuzzy
 msgid "Log SSH session when exiting Remmina"
 msgstr "রেমিনা থেকে প্রস্থান করার সময় লগ এসএসএইচ সেশন"
 
-#: src/remmina_ssh_plugin.c:1513
+#: src/remmina_ssh_plugin.c:1514
 #, fuzzy
 msgid "Log SSH session asynchronously"
 msgstr "লগ এসএসএইচ সেশন টি এককালবর্তীভাবে"
 
-#: src/remmina_ssh_plugin.c:1513
+#: src/remmina_ssh_plugin.c:1514
 #, fuzzy
 msgid "Saving the session asynchronously may have a notable performance impact"
 msgstr ""
 "সেশনটি অসিঙ্ক্রোনাসভাবে সংরক্ষণ করা একটি উল্লেখযোগ্য কর্মক্ষমতার প্রভাব ফেলতে পারে"
 
-#: src/remmina_ssh_plugin.c:1514
+#: src/remmina_ssh_plugin.c:1515
 #, fuzzy
 msgid "Audible terminal bell"
 msgstr "শ্রবণযোগ্য টার্মিনাল ঘন্টা"
 
-#: src/remmina_ssh_plugin.c:1515
+#: src/remmina_ssh_plugin.c:1516
 #, fuzzy
 msgid "SSH compression"
 msgstr "এসএসএইচ কম্প্রেশন"
 
-#: src/remmina_ssh_plugin.c:1516
+#: src/remmina_ssh_plugin.c:1517
 #, fuzzy
 msgid "Don't remember passwords"
 msgstr "পাসওয়ার্ড মনে নেই"
 
-#: src/remmina_ssh_plugin.c:1517
+#: src/remmina_ssh_plugin.c:1518
 #, fuzzy
 msgid "Strict host key checking"
 msgstr "কঠোর হোস্ট কী চেকিং"
 
-#: src/remmina_ssh_plugin.c:1531
+#: src/remmina_ssh_plugin.c:1532
 #, fuzzy
 msgid "SSH - Secure Shell"
 msgstr "এসএসএইচ - নিরাপদ শেল"
@@ -2767,6 +2771,11 @@ msgstr "ক্লায়েন্টের নাম"
 #, fuzzy
 msgid "Client build"
 msgstr "ক্লায়েন্ট বিল্ড"
+
+#: plugins/rdp/rdp_plugin.c:2766
+#, fuzzy
+msgid "Start-up program"
+msgstr "স্টার্ট-আপ প্রোগ্রাম"
 
 #: plugins/rdp/rdp_plugin.c:2768
 #, fuzzy
@@ -3568,7 +3577,7 @@ msgstr "প্যারামিটার 'ত্রুটি' হল 'এনই
 msgid "parameter 'env' is either invalid or uninitialized."
 msgstr "প্যারামিটার 'এনভি' হয় অবৈধ অথবা অপ্রাথমিক।"
 
-#: plugins/x2go/x2go_plugin.c:842
+#: plugins/x2go/x2go_plugin.c:842 plugins/x2go/x2go_plugin.c:2170
 #, fuzzy
 msgid "Started PyHoca-CLI with the following arguments:"
 msgstr "নিম্নলিখিত যুক্তিদিয়ে পাইহোকা-সিএলআই শুরু করেছেন:"
@@ -3772,11 +3781,6 @@ msgstr "সেশন '[এক্স১৮এক্স]' পুনরায় �
 #, fuzzy
 msgid "DPI setting is out of bounds. Please adjust it in profile settings."
 msgstr "ডিপিআই সেটিং সীমার বাইরে। অনুগ্রহ করে প্রোফাইল সেটিংসে এটি সামঞ্জস্য করুন।"
-
-#: plugins/x2go/x2go_plugin.c:2170
-#, fuzzy
-msgid "Started pyhoca-cli with following arguments:"
-msgstr "নিম্নলিখিত যুক্তিসহ পাইহোকা-ক্লি শুরু করেছেন:"
 
 #: plugins/x2go/x2go_plugin.c:2190
 #, fuzzy
@@ -5350,6 +5354,10 @@ msgstr "রেমিনা আনলক করুন"
 #, fuzzy
 msgid "Master password"
 msgstr "মাস্টার পাসওয়ার্ড"
+
+#, fuzzy
+#~ msgid "Started pyhoca-cli with following arguments:"
+#~ msgstr "নিম্নলিখিত যুক্তিসহ পাইহোকা-ক্লি শুরু করেছেন:"
 
 #, fuzzy
 #~ msgid "_Select session"

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-11-27 14:29+0000\n"
+"POT-Creation-Date: 2021-12-03 09:34+0000\n"
 "PO-Revision-Date: 2021-11-28 21:53+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Bulgarian <https://hosted.weblate.org/projects/remmina/"
@@ -100,7 +100,7 @@ msgstr "Вид идентификация"
 msgid "Password to unlock private key"
 msgstr "Парола за отключване на частният ключ"
 
-#: src/remmina_sftp_plugin.c:358 src/remmina_ssh_plugin.c:1506
+#: src/remmina_sftp_plugin.c:358 src/remmina_ssh_plugin.c:1507
 #, fuzzy
 msgid "SSH Proxy Command"
 msgstr "SSH Proxy команда за използване на сървър посредник(proxy)"
@@ -173,7 +173,7 @@ msgid "Version"
 msgstr "Версия"
 
 #: src/remmina_chat_window.c:178
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Chat with %s"
 msgstr "Чат с %s"
 
@@ -573,9 +573,13 @@ msgstr "ФАЙЛ"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:90
+#, fuzzy
+#| msgid ""
+#| "Connect to a desktop described in a file (.remmina or a type supported by "
+#| "a plugin)"
 msgid ""
-"Connect to a desktop described in a file (.remmina or a type supported by a "
-"plugin)"
+"Connect to a desktop described in a file (.remmina or a filetype supported "
+"by a plugin)"
 msgstr ""
 "Свързване към отдалечено работно място посредством конфигурация описана във "
 "файл (.remmina или друг вид файлове поддържани от приставки(plugins))"
@@ -584,8 +588,8 @@ msgstr ""
 #: src/remmina.c:92
 #, fuzzy
 msgid ""
-"Edit desktop connection described in file (.remmina or type supported by "
-"plugin)"
+"Edit desktop connection described in file (.remmina or a filetype supported "
+"by plugin)"
 msgstr ""
 "Промяна на конфигурация описана във файл (.remmina или друг вид файлове "
 "поддържани от приставки(plugins))"
@@ -668,8 +672,8 @@ msgstr "Промяна на профил за връзка (изисква --set
 #, fuzzy
 msgid "Set one or more profile settings, to be used with --update-profile"
 msgstr ""
-"Настройване на един или повече Remmina профили, да се използва заедно с "
-"--update-profile"
+"Настройване на един или повече Remmina профили, да се използва заедно с --"
+"update-profile"
 
 #: src/remmina.c:121
 msgid "Encrypt a password"
@@ -681,9 +685,9 @@ msgstr "Запазване на паролата"
 #.
 #: src/remmina.c:337
 msgid ""
-"Remmina does not log all output statements. To enable a more verbose output "
-"please use G_MESSAGES_DEBUG=all as an environment variable.\n"
-"For more information, please visit the Remmina Wiki at:\n"
+"Remmina does not log all output statements. Turn on more verbose output by "
+"using \"G_MESSAGES_DEBUG=all\" as an environment variable.\n"
+"More info available on the Remmina wiki at:\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgstr ""
 
@@ -960,13 +964,13 @@ msgstr "Командата \"%s\" се провали на SSH сървъра (�
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_protocol_widget.c:1231
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not run command. %s"
 msgstr "Командата не може да бъде изпълнена : %s"
 
 #. TRANSLATORS: “%s” is a placeholder for a hostname or IP address.
 #: src/remmina_protocol_widget.c:1301
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Connecting to %s via SSH…"
 msgstr "Свързване към %s посредством SSH…"
 
@@ -1035,7 +1039,7 @@ msgstr "Приеми промененият сертификат?"
 
 #. TRANSLATORS: “%i” is a placeholder for a port number. “%s”  is a placeholder for a protocol name (VNC).
 #: src/remmina_protocol_widget.c:1943
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Listening on port %i for an incoming %s connection…"
 msgstr "Слушане на Порт %i за пристигаща %s Връзка…"
 
@@ -1052,7 +1056,7 @@ msgstr "Сървър"
 
 #. TRANSLATORS: “%s” is a placeholder for a protocol name, like “RDP”.
 #: src/remmina_protocol_widget.c:2048
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Install the %s protocol plugin first."
 msgstr "Инсталирайте добавката(plugin) за %s протокола."
 
@@ -1075,7 +1079,7 @@ msgstr ""
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:327 src/remmina_ssh.c:368 src/remmina_ssh.c:394
 #: src/remmina_ssh.c:433 src/remmina_ssh.c:746
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not authenticate with public SSH key. %s"
 msgstr "Невалидна идентификация с публичен SSH ключ. %s"
 
@@ -1106,12 +1110,12 @@ msgstr "Файлът с SSH ключа все още не е зададен."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:380
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Public SSH key cannot be imported. %s"
 msgstr "Публичният SSH ключ не можа да бъде импортиран. %s"
 
 #: src/remmina_ssh.c:478
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not authenticate automatically with public SSH key. %s"
 msgstr "Не можа да се идентифицира автоматично с публичен SSH ключ. %s"
 
@@ -1142,7 +1146,7 @@ msgstr "Невалидна идентификация с публичен SSH к
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:921
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not fetch the server's public SSH key. %s"
 msgstr "Сървърният SSH публичен ключ не можа да бъде получен. %s"
 
@@ -1249,7 +1253,7 @@ msgid "The server did not respond."
 msgstr "Сървъра не отговаря."
 
 #: src/remmina_ssh.c:1916
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Cannot connect to local port %i."
 msgstr "Не може да се свърже с локален порт %i."
 
@@ -1322,24 +1326,24 @@ msgid "Could not start SFTP session. %s"
 msgstr "Стартирането на SSH сесия не успя: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2378
+#: src/remmina_ssh.c:2379
 #, c-format
 msgid "Could not open channel. %s"
 msgstr "Създаването на SFTP сесия не успя: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2393
+#: src/remmina_ssh.c:2394
 #, c-format
 msgid "Could not request shell. %s"
 msgstr "Създаването на SFTP сесия не успя: %s"
 
-#: src/remmina_ssh.c:2511
+#: src/remmina_ssh.c:2521
 #, fuzzy
 msgid "Could not create PTY device."
 msgstr "PTY устройство не можа да бъде създадено."
 
 #: src/remmina_exec.c:475
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Plugin %s is not registered."
 msgstr "Приставката %s не е регистрирана."
 
@@ -1361,7 +1365,7 @@ msgid "Are you sure you want to delete “%s”?"
 msgstr "Сигурни ли сте, че желаете да изтриете \"%s\"?"
 
 #: src/remmina_main.c:989
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "Unable to import:\n"
 "%s"
@@ -1574,7 +1578,7 @@ msgid "Choose a Remote Desktop Server"
 msgstr "Избиране на сървър за отдалечен достъп"
 
 #: src/remmina_file_editor.c:460
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Browse the network to find a %s server"
 msgstr "Преглеждане на мрежата за откриване на %s сървър"
 
@@ -1654,7 +1658,7 @@ msgid "Tunnel via loopback address"
 msgstr "Тунел чрез локален адрес"
 
 #: src/remmina_file_editor.c:1143
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Same server at port %i"
 msgstr "Същият сървър на порт %i"
 
@@ -1761,7 +1765,7 @@ msgid "Quick Connect"
 msgstr "Бързо свързване"
 
 #: src/remmina_file_editor.c:1946
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Use '%s' as subgroup delimiter"
 msgstr "Използване на '%s' като разделител на подгрупа"
 
@@ -1874,7 +1878,7 @@ msgstr ""
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_ssh_plugin.c:539
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Error: %s"
 msgstr "Грешка: %s"
 
@@ -1980,11 +1984,17 @@ msgstr "_Намерете текст"
 msgid "User password"
 msgstr "Парола"
 
-#: src/remmina_ssh_plugin.c:1477 plugins/rdp/rdp_plugin.c:2766
-msgid "Start-up program"
+#: src/remmina_ssh_plugin.c:1477
+msgid "Opening command"
+msgstr ""
+
+#: src/remmina_ssh_plugin.c:1478
+#, fuzzy
+#| msgid "Start-up program"
+msgid "Start-up background program"
 msgstr "Стартиране на програма при свързване"
 
-#: src/remmina_ssh_plugin.c:1482
+#: src/remmina_ssh_plugin.c:1483
 msgid ""
 "The filename can use the following placeholders:\n"
 "\n"
@@ -2008,80 +2018,80 @@ msgstr ""
 "профил\n"
 "  • %d се замества с локалните дата и час представени в iso8601 формат\n"
 
-#: src/remmina_ssh_plugin.c:1504
+#: src/remmina_ssh_plugin.c:1505
 #, fuzzy
 #| msgid "Terminal color scheme"
 msgid "Terminal colour scheme"
 msgstr "Цветова тема"
 
-#: src/remmina_ssh_plugin.c:1505
+#: src/remmina_ssh_plugin.c:1506
 #, fuzzy
 msgid "Character set"
 msgstr "Кодова таблица"
 
-#: src/remmina_ssh_plugin.c:1507
+#: src/remmina_ssh_plugin.c:1508
 #, fuzzy
 msgid "KEX (Key Exchange) algorithms"
 msgstr "Алгоритми за размяна на ключове KEX (Key Exchange)"
 
-#: src/remmina_ssh_plugin.c:1508
+#: src/remmina_ssh_plugin.c:1509
 #, fuzzy
 msgid "Symmetric cipher client to server"
 msgstr "Симетричен алгоритъм използвал от клиента към сървъра"
 
-#: src/remmina_ssh_plugin.c:1509
+#: src/remmina_ssh_plugin.c:1510
 #, fuzzy
 msgid "Preferred server host key types"
 msgstr "Предпочитани типове ключове от страна на сървъра (host key types)"
 
-#: src/remmina_ssh_plugin.c:1510
+#: src/remmina_ssh_plugin.c:1511
 #, fuzzy
 msgid "Folder for SSH session log"
 msgstr "Директория за запазване на SSH дневник(лог) от сесията"
 
-#: src/remmina_ssh_plugin.c:1511
+#: src/remmina_ssh_plugin.c:1512
 #, fuzzy
 msgid "Filename for SSH session log"
 msgstr "Име на файла за запазване на SSH дневник(лог)"
 
-#: src/remmina_ssh_plugin.c:1512
+#: src/remmina_ssh_plugin.c:1513
 #, fuzzy
 msgid "Log SSH session when exiting Remmina"
 msgstr "Запазване на SSH сесията при изход от Reminna"
 
-#: src/remmina_ssh_plugin.c:1513
+#: src/remmina_ssh_plugin.c:1514
 #, fuzzy
 msgid "Log SSH session asynchronously"
 msgstr "Асинхронно регистриране на SSH сесия"
 
-#: src/remmina_ssh_plugin.c:1513
+#: src/remmina_ssh_plugin.c:1514
 #, fuzzy
 msgid "Saving the session asynchronously may have a notable performance impact"
 msgstr ""
 "Асинхронното запазване на сесията може да има забележимо въздействие върху "
 "производителността"
 
-#: src/remmina_ssh_plugin.c:1514
+#: src/remmina_ssh_plugin.c:1515
 #, fuzzy
 msgid "Audible terminal bell"
 msgstr "Звънец в терминала"
 
-#: src/remmina_ssh_plugin.c:1515
+#: src/remmina_ssh_plugin.c:1516
 #, fuzzy
 msgid "SSH compression"
 msgstr "SSH компресиране"
 
-#: src/remmina_ssh_plugin.c:1516
+#: src/remmina_ssh_plugin.c:1517
 #, fuzzy
 msgid "Don't remember passwords"
 msgstr "Не запазвай паролата"
 
-#: src/remmina_ssh_plugin.c:1517
+#: src/remmina_ssh_plugin.c:1518
 #, fuzzy
 msgid "Strict host key checking"
 msgstr "Задълбочено проверяване на ключа предоставен от сървъра"
 
-#: src/remmina_ssh_plugin.c:1531
+#: src/remmina_ssh_plugin.c:1532
 #, fuzzy
 msgid "SSH - Secure Shell"
 msgstr "SSH - Сигурна обвивка"
@@ -2264,7 +2274,7 @@ msgid "Enter RDP gateway authentication credentials"
 msgstr "Въведете идентификационните данни за удостоверяване на шлюза RDP"
 
 #: plugins/rdp/rdp_plugin.c:2116
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account locked out."
@@ -2273,7 +2283,7 @@ msgstr ""
 "Сметката е заключена."
 
 #: plugins/rdp/rdp_plugin.c:2123
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account expired."
@@ -2282,7 +2292,7 @@ msgstr ""
 "Сметката е изтекла."
 
 #: plugins/rdp/rdp_plugin.c:2130
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Password expired."
@@ -2291,7 +2301,7 @@ msgstr ""
 "Паролата е с изтекъл срок."
 
 #: plugins/rdp/rdp_plugin.c:2137
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account disabled."
@@ -2300,7 +2310,7 @@ msgstr ""
 "Профилът е деактивиран."
 
 #: plugins/rdp/rdp_plugin.c:2143
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Insufficient user privileges."
@@ -2309,7 +2319,7 @@ msgstr ""
 "Недостатъчни привилегии на потребителя."
 
 #: plugins/rdp/rdp_plugin.c:2151
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account restricted."
@@ -2318,7 +2328,7 @@ msgstr ""
 "Профилът е ограничен."
 
 #: plugins/rdp/rdp_plugin.c:2159
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Change user password before connecting."
@@ -2811,6 +2821,10 @@ msgstr "Име на клиента"
 msgid "Client build"
 msgstr "Изграждане на клиента"
 
+#: plugins/rdp/rdp_plugin.c:2766
+msgid "Start-up program"
+msgstr "Стартиране на програма при свързване"
+
 #: plugins/rdp/rdp_plugin.c:2768
 #, fuzzy
 msgid "Load balance info"
@@ -3045,7 +3059,7 @@ msgid "Export connection in Windows .rdp file format"
 msgstr "Експортиране на връзка в Windows .rdp файлов формат"
 
 #: plugins/rdp/rdp_event.c:344
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Reconnection attempt %d of %d…"
 msgstr "Повторен опит за свързване %d от %d…"
 
@@ -3616,7 +3630,7 @@ msgstr "параметърът 'error' е 'NULL'."
 msgid "parameter 'env' is either invalid or uninitialized."
 msgstr "параметърът 'env' е невалиден или неинициализиран."
 
-#: plugins/x2go/x2go_plugin.c:842
+#: plugins/x2go/x2go_plugin.c:842 plugins/x2go/x2go_plugin.c:2170
 #, fuzzy
 msgid "Started PyHoca-CLI with the following arguments:"
 msgstr "Стартирайте PyHoca-CLI със следните аргументи:"
@@ -3824,11 +3838,6 @@ msgid "DPI setting is out of bounds. Please adjust it in profile settings."
 msgstr ""
 "Настройката на DPI е извън границите. Моля, коригирайте я в настройките на "
 "профила."
-
-#: plugins/x2go/x2go_plugin.c:2170
-#, fuzzy
-msgid "Started pyhoca-cli with following arguments:"
-msgstr "Стартира pyhoca-cli със следните аргументи:"
 
 #: plugins/x2go/x2go_plugin.c:2190
 #, fuzzy
@@ -5422,6 +5431,10 @@ msgstr "Отключване на Remmina"
 #, fuzzy
 msgid "Master password"
 msgstr "Основна парола"
+
+#, fuzzy
+#~ msgid "Started pyhoca-cli with following arguments:"
+#~ msgstr "Стартира pyhoca-cli със следните аргументи:"
 
 #, fuzzy
 #~| msgid "_Select all"

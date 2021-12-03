@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Remmina v1.4.3\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-11-27 14:29+0000\n"
+"POT-Creation-Date: 2021-12-03 09:34+0000\n"
 "PO-Revision-Date: 2021-12-02 00:52+0000\n"
 "Last-Translator: phlostically <phlostically@mailinator.com>\n"
 "Language-Team: Esperanto <https://hosted.weblate.org/projects/remmina/"
@@ -85,7 +85,7 @@ msgstr "Tipo de aŭtentikigo"
 msgid "Password to unlock private key"
 msgstr "Pasvorto por malŝlosi privatan ŝlosilon"
 
-#: src/remmina_sftp_plugin.c:358 src/remmina_ssh_plugin.c:1506
+#: src/remmina_sftp_plugin.c:358 src/remmina_ssh_plugin.c:1507
 msgid "SSH Proxy Command"
 msgstr "SSH-Prokurila Komando"
 
@@ -484,18 +484,26 @@ msgstr "DOSIERO"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:90
+#, fuzzy
+#| msgid ""
+#| "Connect to a desktop described in a file (.remmina or a type supported by "
+#| "a plugin)"
 msgid ""
-"Connect to a desktop described in a file (.remmina or a type supported by a "
-"plugin)"
+"Connect to a desktop described in a file (.remmina or a filetype supported "
+"by a plugin)"
 msgstr ""
 "Konekti al ekrano priskribita en dosiero (.rermmina aŭ dosiertipo subtenata "
 "de kromprogramo)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:92
+#, fuzzy
+#| msgid ""
+#| "Edit desktop connection described in file (.remmina or type supported by "
+#| "plugin)"
 msgid ""
-"Edit desktop connection described in file (.remmina or type supported by "
-"plugin)"
+"Edit desktop connection described in file (.remmina or a filetype supported "
+"by plugin)"
 msgstr ""
 "Redakti konekton al ekrano priskribitan en dosiero (.remmina aŭ de tipo "
 "subtenata de kromprogramo)"
@@ -576,10 +584,16 @@ msgstr "Ĉifri pasvorton"
 #. * to log more verbose statements.
 #.
 #: src/remmina.c:337
+#, fuzzy
+#| msgid ""
+#| "Remmina does not log all output statements. To enable a more verbose "
+#| "output please use G_MESSAGES_DEBUG=all as an environment variable.\n"
+#| "For more information, please visit the Remmina Wiki at:\n"
+#| "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgid ""
-"Remmina does not log all output statements. To enable a more verbose output "
-"please use G_MESSAGES_DEBUG=all as an environment variable.\n"
-"For more information, please visit the Remmina Wiki at:\n"
+"Remmina does not log all output statements. Turn on more verbose output by "
+"using \"G_MESSAGES_DEBUG=all\" as an environment variable.\n"
+"More info available on the Remmina wiki at:\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgstr ""
 "Remmina ne registras ĉiom da eligeblaĵoj. Por ŝalti pli detalajn eligaĵojn, "
@@ -1161,18 +1175,18 @@ msgid "Could not start SFTP session. %s"
 msgstr "Ne povis startigi SFTP-seancon. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2378
+#: src/remmina_ssh.c:2379
 #, c-format
 msgid "Could not open channel. %s"
 msgstr "Ne povis malfermi kanalon. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2393
+#: src/remmina_ssh.c:2394
 #, c-format
 msgid "Could not request shell. %s"
 msgstr "Ne povis peti ŝelon. %s"
 
-#: src/remmina_ssh.c:2511
+#: src/remmina_ssh.c:2521
 msgid "Could not create PTY device."
 msgstr "Ne povis krei PTY-aparaton."
 
@@ -1719,11 +1733,17 @@ msgstr "_Serĉi tekston"
 msgid "User password"
 msgstr "Pasvorto de uzanto"
 
-#: src/remmina_ssh_plugin.c:1477 plugins/rdp/rdp_plugin.c:2766
-msgid "Start-up program"
+#: src/remmina_ssh_plugin.c:1477
+msgid "Opening command"
+msgstr ""
+
+#: src/remmina_ssh_plugin.c:1478
+#, fuzzy
+#| msgid "Start-up program"
+msgid "Start-up background program"
 msgstr "Starta programo"
 
-#: src/remmina_ssh_plugin.c:1482
+#: src/remmina_ssh_plugin.c:1483
 msgid ""
 "The filename can use the following placeholders:\n"
 "\n"
@@ -1745,63 +1765,63 @@ msgstr ""
 "  •%g estos anstataŭigita per nomo de profilgrupo ĉe Remmina\n"
 "  •%d estos anstataŭigita per la lokaj dato kaj horo laŭ ISO 8601\n"
 
-#: src/remmina_ssh_plugin.c:1504
+#: src/remmina_ssh_plugin.c:1505
 msgid "Terminal colour scheme"
 msgstr "Terminala kolorskemo"
 
-#: src/remmina_ssh_plugin.c:1505
+#: src/remmina_ssh_plugin.c:1506
 msgid "Character set"
 msgstr "Signaro"
 
-#: src/remmina_ssh_plugin.c:1507
+#: src/remmina_ssh_plugin.c:1508
 msgid "KEX (Key Exchange) algorithms"
 msgstr "Algoritmoj por interŝanĝo de ŝlosiloj (KEX)"
 
-#: src/remmina_ssh_plugin.c:1508
+#: src/remmina_ssh_plugin.c:1509
 msgid "Symmetric cipher client to server"
 msgstr "Simetria ĉifra kliento al servilo"
 
-#: src/remmina_ssh_plugin.c:1509
+#: src/remmina_ssh_plugin.c:1510
 msgid "Preferred server host key types"
 msgstr "Preferataj tipoj de ŝlosiloj de gastiganto"
 
-#: src/remmina_ssh_plugin.c:1510
+#: src/remmina_ssh_plugin.c:1511
 msgid "Folder for SSH session log"
 msgstr "Dosierujo por prokolado de SSH-seanco"
 
-#: src/remmina_ssh_plugin.c:1511
+#: src/remmina_ssh_plugin.c:1512
 msgid "Filename for SSH session log"
 msgstr "Dosiernomo por protokolado de SSH-seanco"
 
-#: src/remmina_ssh_plugin.c:1512
+#: src/remmina_ssh_plugin.c:1513
 msgid "Log SSH session when exiting Remmina"
 msgstr "Protokoli SSH-seancon kiam Remmina ĉesas"
 
-#: src/remmina_ssh_plugin.c:1513
+#: src/remmina_ssh_plugin.c:1514
 msgid "Log SSH session asynchronously"
 msgstr "Protokoli SSH-seancon nesinkrone"
 
-#: src/remmina_ssh_plugin.c:1513
+#: src/remmina_ssh_plugin.c:1514
 msgid "Saving the session asynchronously may have a notable performance impact"
 msgstr "Nesinkrona konservado de la seanco eble malrapidigos la programon"
 
-#: src/remmina_ssh_plugin.c:1514
+#: src/remmina_ssh_plugin.c:1515
 msgid "Audible terminal bell"
 msgstr "Aŭdebla terminala pepo"
 
-#: src/remmina_ssh_plugin.c:1515
+#: src/remmina_ssh_plugin.c:1516
 msgid "SSH compression"
 msgstr "SSH-densigo"
 
-#: src/remmina_ssh_plugin.c:1516
+#: src/remmina_ssh_plugin.c:1517
 msgid "Don't remember passwords"
 msgstr "Ne memori pasvortojn"
 
-#: src/remmina_ssh_plugin.c:1517
+#: src/remmina_ssh_plugin.c:1518
 msgid "Strict host key checking"
 msgstr "Strikta kontrolado de ŝlosilo de gastiganto"
 
-#: src/remmina_ssh_plugin.c:1531
+#: src/remmina_ssh_plugin.c:1532
 msgid "SSH - Secure Shell"
 msgstr "SSH - Sekura Ŝelo"
 
@@ -2434,6 +2454,10 @@ msgstr "Klienta nomo"
 #: plugins/rdp/rdp_plugin.c:2765
 msgid "Client build"
 msgstr "Versio de kliento"
+
+#: plugins/rdp/rdp_plugin.c:2766
+msgid "Start-up program"
+msgstr "Starta programo"
 
 #: plugins/rdp/rdp_plugin.c:2768
 msgid "Load balance info"
@@ -3102,7 +3126,7 @@ msgstr "parametro «error» estas nula."
 msgid "parameter 'env' is either invalid or uninitialized."
 msgstr "la parametro «env» estas aŭ ne valida aŭ ne praŝargita."
 
-#: plugins/x2go/x2go_plugin.c:842
+#: plugins/x2go/x2go_plugin.c:842 plugins/x2go/x2go_plugin.c:2170
 msgid "Started PyHoca-CLI with the following arguments:"
 msgstr "Lanĉiĝis PyHoca-CLI per la jenaj argumentoj:"
 
@@ -3279,10 +3303,6 @@ msgstr "Reaktivigante seancon «%s»…"
 msgid "DPI setting is out of bounds. Please adjust it in profile settings."
 msgstr ""
 "Distingivo estas ekster limoj. Bonvolu agordi ĝin en la profilaj agordoj."
-
-#: plugins/x2go/x2go_plugin.c:2170
-msgid "Started pyhoca-cli with following arguments:"
-msgstr "Lanĉiĝis PyHoca-CLI per la jenaj argumentoj:"
 
 #: plugins/x2go/x2go_plugin.c:2190
 msgid "An error occured while starting an X2Go session…"
@@ -4611,6 +4631,9 @@ msgstr "Malŝlosu Remmina"
 #: data/ui/remmina_unlock.glade:128
 msgid "Master password"
 msgstr "Ĉefpasvorto"
+
+#~ msgid "Started pyhoca-cli with following arguments:"
+#~ msgstr "Lanĉiĝis PyHoca-CLI per la jenaj argumentoj:"
 
 #~ msgid ""
 #~ "For more information, please visit the Remmina Wiki:\n"

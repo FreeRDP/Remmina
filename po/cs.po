@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-11-27 14:29+0000\n"
+"POT-Creation-Date: 2021-12-03 09:34+0000\n"
 "PO-Revision-Date: 2021-11-28 07:51+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/remmina/remmina/cs/"
@@ -100,7 +100,7 @@ msgstr "Typ ověřování se"
 msgid "Password to unlock private key"
 msgstr "Heslo pro odemčení soukromé části klíče"
 
-#: src/remmina_sftp_plugin.c:358 src/remmina_ssh_plugin.c:1506
+#: src/remmina_sftp_plugin.c:358 src/remmina_ssh_plugin.c:1507
 #, fuzzy
 msgid "SSH Proxy Command"
 msgstr "Příkaz pro SSH proxy"
@@ -575,8 +575,8 @@ msgstr "SOUBOR"
 #: src/remmina.c:90
 #, fuzzy
 msgid ""
-"Connect to a desktop described in a file (.remmina or a type supported by a "
-"plugin)"
+"Connect to a desktop described in a file (.remmina or a filetype supported "
+"by a plugin)"
 msgstr ""
 "Připojit se k ploše popsané v souboru (.remmina nebo typu podporovanému "
 "zásuvným modulem)"
@@ -585,8 +585,8 @@ msgstr ""
 #: src/remmina.c:92
 #, fuzzy
 msgid ""
-"Edit desktop connection described in file (.remmina or type supported by "
-"plugin)"
+"Edit desktop connection described in file (.remmina or a filetype supported "
+"by plugin)"
 msgstr ""
 "Upravit připojení k ploše popsané v souboru (.remmina nebo typu podporovaném "
 "zásuvným modulem)"
@@ -685,9 +685,9 @@ msgstr "Heslo zašifrovat"
 #: src/remmina.c:337
 #, fuzzy
 msgid ""
-"Remmina does not log all output statements. To enable a more verbose output "
-"please use G_MESSAGES_DEBUG=all as an environment variable.\n"
-"For more information, please visit the Remmina Wiki at:\n"
+"Remmina does not log all output statements. Turn on more verbose output by "
+"using \"G_MESSAGES_DEBUG=all\" as an environment variable.\n"
+"More info available on the Remmina wiki at:\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgstr ""
 "Remmina nezaznamenává všechny výstupní příkazy. Chcete-li povolit "
@@ -1332,18 +1332,18 @@ msgid "Could not start SFTP session. %s"
 msgstr "Nedaří se zahájit SFTP relaci: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2378
+#: src/remmina_ssh.c:2379
 #, fuzzy, c-format
 msgid "Could not open channel. %s"
 msgstr "Nepodařilo se otevřít kanál: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2393
+#: src/remmina_ssh.c:2394
 #, fuzzy, c-format
 msgid "Could not request shell. %s"
 msgstr "Nedaří se vyžádat si shell: %s"
 
-#: src/remmina_ssh.c:2511
+#: src/remmina_ssh.c:2521
 #, fuzzy
 msgid "Could not create PTY device."
 msgstr "Nedaří se vytvořit zařízení pseudoterminálu."
@@ -1997,11 +1997,19 @@ msgstr "_Najít text"
 msgid "User password"
 msgstr "Heslo k uživatelskému účtu"
 
-#: src/remmina_ssh_plugin.c:1477 plugins/rdp/rdp_plugin.c:2766
-msgid "Start-up program"
+#: src/remmina_ssh_plugin.c:1477
+#, fuzzy
+#| msgid "Pre-command"
+msgid "Opening command"
+msgstr "Příkaz před připojením"
+
+#: src/remmina_ssh_plugin.c:1478
+#, fuzzy
+#| msgid "Start-up program"
+msgid "Start-up background program"
 msgstr "Program při spouštění"
 
-#: src/remmina_ssh_plugin.c:1482
+#: src/remmina_ssh_plugin.c:1483
 msgid ""
 "The filename can use the following placeholders:\n"
 "\n"
@@ -2023,78 +2031,78 @@ msgstr ""
 "•  za %g je dosazen název skupiny Remmina profilu\n"
 "•  za %d je dosazeno lokální datum a čas ve formátu dle normy iso8601\n"
 
-#: src/remmina_ssh_plugin.c:1504
+#: src/remmina_ssh_plugin.c:1505
 #, fuzzy
 #| msgid "Terminal color scheme"
 msgid "Terminal colour scheme"
 msgstr "Barevné schéma terminálu"
 
-#: src/remmina_ssh_plugin.c:1505
+#: src/remmina_ssh_plugin.c:1506
 #, fuzzy
 msgid "Character set"
 msgstr "Znaková sada"
 
-#: src/remmina_ssh_plugin.c:1507
+#: src/remmina_ssh_plugin.c:1508
 #, fuzzy
 msgid "KEX (Key Exchange) algorithms"
 msgstr "Algoritmy pro výměnu klíčů (KEX)"
 
-#: src/remmina_ssh_plugin.c:1508
+#: src/remmina_ssh_plugin.c:1509
 #, fuzzy
 msgid "Symmetric cipher client to server"
 msgstr "Klient symetrické šifry k serveru"
 
-#: src/remmina_ssh_plugin.c:1509
+#: src/remmina_ssh_plugin.c:1510
 #, fuzzy
 msgid "Preferred server host key types"
 msgstr "Upřednostňované typy klíčů serveru hostitele"
 
-#: src/remmina_ssh_plugin.c:1510
+#: src/remmina_ssh_plugin.c:1511
 #, fuzzy
 msgid "Folder for SSH session log"
 msgstr "Složka pro záznam z SSH relace"
 
-#: src/remmina_ssh_plugin.c:1511
+#: src/remmina_ssh_plugin.c:1512
 #, fuzzy
 msgid "Filename for SSH session log"
 msgstr "Soubor pro záznam z SSH relace"
 
-#: src/remmina_ssh_plugin.c:1512
+#: src/remmina_ssh_plugin.c:1513
 #, fuzzy
 msgid "Log SSH session when exiting Remmina"
 msgstr "Při ukončování Remmina uložit záznam SSH relace"
 
-#: src/remmina_ssh_plugin.c:1513
+#: src/remmina_ssh_plugin.c:1514
 #, fuzzy
 msgid "Log SSH session asynchronously"
 msgstr "Asynchronní protokolování relace SSH"
 
-#: src/remmina_ssh_plugin.c:1513
+#: src/remmina_ssh_plugin.c:1514
 #, fuzzy
 msgid "Saving the session asynchronously may have a notable performance impact"
 msgstr "Asynchronní uložení relace může mít znatelný dopad na výkon."
 
-#: src/remmina_ssh_plugin.c:1514
+#: src/remmina_ssh_plugin.c:1515
 #, fuzzy
 msgid "Audible terminal bell"
 msgstr "Zvukové upozorňování terminálu"
 
-#: src/remmina_ssh_plugin.c:1515
+#: src/remmina_ssh_plugin.c:1516
 #, fuzzy
 msgid "SSH compression"
 msgstr "Komprese SSH"
 
-#: src/remmina_ssh_plugin.c:1516
+#: src/remmina_ssh_plugin.c:1517
 #, fuzzy
 msgid "Don't remember passwords"
 msgstr "Nepamatuje si hesla"
 
-#: src/remmina_ssh_plugin.c:1517
+#: src/remmina_ssh_plugin.c:1518
 #, fuzzy
 msgid "Strict host key checking"
 msgstr "Striktně ověřovat klíče hostitele"
 
-#: src/remmina_ssh_plugin.c:1531
+#: src/remmina_ssh_plugin.c:1532
 #, fuzzy
 msgid "SSH - Secure Shell"
 msgstr "SSH – Zabezpečený Shell"
@@ -2831,6 +2839,10 @@ msgstr "Název klienta"
 #, fuzzy
 msgid "Client build"
 msgstr "Sestavení klienta"
+
+#: plugins/rdp/rdp_plugin.c:2766
+msgid "Start-up program"
+msgstr "Program při spouštění"
 
 #: plugins/rdp/rdp_plugin.c:2768
 #, fuzzy
@@ -3637,7 +3649,7 @@ msgstr "parametr 'error' je 'NULL'."
 msgid "parameter 'env' is either invalid or uninitialized."
 msgstr "parametr 'env' je buď neplatný, nebo neinicializovaný."
 
-#: plugins/x2go/x2go_plugin.c:842
+#: plugins/x2go/x2go_plugin.c:842 plugins/x2go/x2go_plugin.c:2170
 #, fuzzy
 msgid "Started PyHoca-CLI with the following arguments:"
 msgstr "Spustil PyHoca-CLI s následujícími argumenty:"
@@ -3845,11 +3857,6 @@ msgstr "Obnovení relace '%s'…"
 #, fuzzy
 msgid "DPI setting is out of bounds. Please adjust it in profile settings."
 msgstr "Nastavení DPI je mimo meze. Upravte jej v nastavení profilu."
-
-#: plugins/x2go/x2go_plugin.c:2170
-#, fuzzy
-msgid "Started pyhoca-cli with following arguments:"
-msgstr "Spuštěno pyhoca-cli s následujícími argumenty:"
 
 #: plugins/x2go/x2go_plugin.c:2190
 #, fuzzy
@@ -5467,6 +5474,10 @@ msgid "Master password"
 msgstr "Hlavní heslo"
 
 #, fuzzy
+#~ msgid "Started pyhoca-cli with following arguments:"
+#~ msgstr "Spuštěno pyhoca-cli s následujícími argumenty:"
+
+#, fuzzy
 #~ msgid ""
 #~ "For more information, please visit the Remmina Wiki:\n"
 #~ "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
@@ -5727,9 +5738,6 @@ msgstr "Hlavní heslo"
 
 #~ msgid "Autostart"
 #~ msgstr "Automatické spouštění"
-
-#~ msgid "Pre-command"
-#~ msgstr "Příkaz před připojením"
 
 #~ msgid "Post-command"
 #~ msgstr "Příkaz po připojení"

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-11-27 14:29+0000\n"
+"POT-Creation-Date: 2021-12-03 09:34+0000\n"
 "PO-Revision-Date: 2021-11-28 21:53+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/remmina/"
@@ -100,7 +100,7 @@ msgstr "Hitelesítési típus"
 msgid "Password to unlock private key"
 msgstr "Privát kulcs jelszava"
 
-#: src/remmina_sftp_plugin.c:358 src/remmina_ssh_plugin.c:1506
+#: src/remmina_sftp_plugin.c:358 src/remmina_ssh_plugin.c:1507
 #, fuzzy
 msgid "SSH Proxy Command"
 msgstr "SSH-proxy parancs"
@@ -173,7 +173,7 @@ msgid "Version"
 msgstr "Verzió"
 
 #: src/remmina_chat_window.c:178
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Chat with %s"
 msgstr "Csevegés vele: %s"
 
@@ -349,7 +349,7 @@ msgid "Client Certificate Key"
 msgstr "Ügyféltanúsítvány-kulcs"
 
 #: src/rcw.c:655
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "Are you sure you want to close %i active connections in the current window?"
 msgstr "Biztosan be akar zárni %i nyitott kapcsolatot a jelenlegi ablakban?"
@@ -569,9 +569,13 @@ msgstr "FILE"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:90
+#, fuzzy
+#| msgid ""
+#| "Connect to a desktop described in a file (.remmina or a type supported by "
+#| "a plugin)"
 msgid ""
-"Connect to a desktop described in a file (.remmina or a type supported by a "
-"plugin)"
+"Connect to a desktop described in a file (.remmina or a filetype supported "
+"by a plugin)"
 msgstr ""
 "Kapcsolódás egy fájl által leírt távoli asztalhoz (.remmina vagy bővítmény "
 "által támogatott típusú)"
@@ -580,8 +584,8 @@ msgstr ""
 #: src/remmina.c:92
 #, fuzzy
 msgid ""
-"Edit desktop connection described in file (.remmina or type supported by "
-"plugin)"
+"Edit desktop connection described in file (.remmina or a filetype supported "
+"by plugin)"
 msgstr ""
 "Fájl által leírt asztali kapcsolat szerkesztése (.remmina vagy bővítmény "
 "által támogatott típusú)"
@@ -678,9 +682,9 @@ msgstr "Adja meg a VNC jelszavát"
 #.
 #: src/remmina.c:337
 msgid ""
-"Remmina does not log all output statements. To enable a more verbose output "
-"please use G_MESSAGES_DEBUG=all as an environment variable.\n"
-"For more information, please visit the Remmina Wiki at:\n"
+"Remmina does not log all output statements. Turn on more verbose output by "
+"using \"G_MESSAGES_DEBUG=all\" as an environment variable.\n"
+"More info available on the Remmina wiki at:\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgstr ""
 
@@ -943,7 +947,7 @@ msgstr "Csatlakozás ehhez: „%s” SSH-val…"
 
 #. TRANSLATORS: “%i” is a placeholder for a TCP port number.
 #: src/remmina_protocol_widget.c:1165
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Awaiting incoming SSH connection on port %i…"
 msgstr "Várakozás bejövő SSH kapcsolatra a(z) %i porton…"
 
@@ -959,13 +963,13 @@ msgstr "%s parancs nem futtatható az SSH-kiszolgálón (állapot = %i)."
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_protocol_widget.c:1231
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not run command. %s"
 msgstr "Nem sikerült futtatni a parancsot. %s"
 
 #. TRANSLATORS: “%s” is a placeholder for a hostname or IP address.
 #: src/remmina_protocol_widget.c:1301
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Connecting to %s via SSH…"
 msgstr "Csatlakozás ehhez: „%s” SSH-val…"
 
@@ -1035,7 +1039,7 @@ msgstr "Elfogadja a megváltozott tanúsítványt?"
 
 #. TRANSLATORS: “%i” is a placeholder for a port number. “%s”  is a placeholder for a protocol name (VNC).
 #: src/remmina_protocol_widget.c:1943
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Listening on port %i for an incoming %s connection…"
 msgstr "Várakozás egy %i porton bejövő %s kapcsolatra…"
 
@@ -1052,7 +1056,7 @@ msgstr "Szerver"
 
 #. TRANSLATORS: “%s” is a placeholder for a protocol name, like “RDP”.
 #: src/remmina_protocol_widget.c:2048
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Install the %s protocol plugin first."
 msgstr "Telepítse a %s protokoll bővítményt először."
 
@@ -1062,7 +1066,7 @@ msgid "Could not authenticate with TOTP/OTP/2FA. %s"
 msgstr "Nem sikerült autentikálni az SSH jelszóval. %s"
 
 #: src/remmina_ssh.c:295 src/remmina_ssh.c:676
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not authenticate with SSH password. %s"
 msgstr "Nem sikerült autentikálni az SSH jelszóval. %s"
 
@@ -1074,7 +1078,7 @@ msgstr "Nincs elmentett SSH jelszó megadva. A felhasználónak meg kell adnia."
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:327 src/remmina_ssh.c:368 src/remmina_ssh.c:394
 #: src/remmina_ssh.c:433 src/remmina_ssh.c:746
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not authenticate with public SSH key. %s"
 msgstr "Sikertelen az azonosítás az SSH publikus kulccsal. %s"
 
@@ -1105,12 +1109,12 @@ msgstr "Még nincs beállítva SSH-kulcsfájl."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:380
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Public SSH key cannot be imported. %s"
 msgstr "A publikus SSH kulcs nem importálható. %s"
 
 #: src/remmina_ssh.c:478
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not authenticate automatically with public SSH key. %s"
 msgstr "Nem sikerült az automatikus autentikáció publikus SSH kulccsal. %s"
 
@@ -1141,13 +1145,13 @@ msgstr "Sikertelen az azonosítás az SSH publikus kulccsal. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:921
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not fetch the server's public SSH key. %s"
 msgstr "Nem sikerül lekérni a szerver publikus kulcsát. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:928
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not fetch public SSH key. %s"
 msgstr "Nem sikerült lekérni az SSH publikus kulcsát. %s"
 
@@ -1180,7 +1184,7 @@ msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:979
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not check list of known SSH hosts. %s"
 msgstr "Nem sikerült ellenőrizni az ismert SSH kiszolgálók listáját. %s"
 
@@ -1221,25 +1225,25 @@ msgstr "Billentyűzetes interaktív bejelentkezés, TOTP/OTP/2FA"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1337
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not start SSH session. %s"
 msgstr "Nem sikerült elindítani az SSH-kapcsolatot. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1735
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not create channel. %s"
 msgstr "Nem sikerült létrehozni csatornát. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1746
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not connect to SSH tunnel. %s"
 msgstr "Nem sikerült kapcsolódni az SSH-alagúthoz. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1816 src/remmina_ssh.c:1837 src/remmina_ssh.c:1846
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not request port forwarding. %s"
 msgstr "Nem sikerült a porttovábbítás kérése. %s"
 
@@ -1249,37 +1253,37 @@ msgid "The server did not respond."
 msgstr "A szerver nem válaszolt."
 
 #: src/remmina_ssh.c:1916
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Cannot connect to local port %i."
 msgstr "Sikertelen a csatlakozás a helyi %i portra."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1965
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not write to SSH channel. %s"
 msgstr "Nem sikerült az SSh csatornába írni. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1972
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not read from tunnel listening socket. %s"
 msgstr "Nem sikerült olvasni az alagút figyelő socketből. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1992
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not poll SSH channel. %s"
 msgstr "Nem sikerült pollolni az SSH csatornát. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1999
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not read SSH channel in a non-blocking way. %s"
 msgstr "Nem sikerült olvasni az SSH csatornából nem-blokkoló módon. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:2018
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not send data to tunnel listening socket. %s"
 msgstr "Nem sikerült adatot küldeni az alagút scoketjéhez. %s"
 
@@ -1311,35 +1315,35 @@ msgstr "Pthread indítása sikertelen."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:2280
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not create SFTP session. %s"
 msgstr "Nem sikerült létrehozni az SFTP kapcsolatot. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:2285
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not start SFTP session. %s"
 msgstr "Nem sikerült elindítani az SFTP kapcsolatot. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2378
-#, c-format, fuzzy
+#: src/remmina_ssh.c:2379
+#, fuzzy, c-format
 msgid "Could not open channel. %s"
 msgstr "Nem sikerült csatornát nyitni. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2393
-#, c-format, fuzzy
+#: src/remmina_ssh.c:2394
+#, fuzzy, c-format
 msgid "Could not request shell. %s"
 msgstr "Nem sikerült shell-t kérni. %s"
 
-#: src/remmina_ssh.c:2511
+#: src/remmina_ssh.c:2521
 #, fuzzy
 msgid "Could not create PTY device."
 msgstr "Nem lehetséges PTY eszköz létrehozása."
 
 #: src/remmina_exec.c:475
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Plugin %s is not registered."
 msgstr "A(z) „%s” bővítmény nincs regisztrálva."
 
@@ -1362,7 +1366,7 @@ msgid "Are you sure you want to delete “%s”?"
 msgstr "Biztosan törölni akarja ezt: „%s”?"
 
 #: src/remmina_main.c:989
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "Unable to import:\n"
 "%s"
@@ -1445,7 +1449,7 @@ msgid "Could not write to the file “%s” on the server. %s"
 msgstr "Hiba a(z) „%s” fájl írásakor a kiszolgálón. %s"
 
 #: src/remmina_sftp_client.c:716
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not read from the folder. %s"
 msgstr "Nem sikerült olvasni a mappából. %s"
 
@@ -1573,7 +1577,7 @@ msgid "Choose a Remote Desktop Server"
 msgstr "Válasszon egy távoli asztal kiszolgálót"
 
 #: src/remmina_file_editor.c:460
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Browse the network to find a %s server"
 msgstr "Hálózat böngészése egy %s kiszolgáló kereséséhez"
 
@@ -1653,7 +1657,7 @@ msgid "Tunnel via loopback address"
 msgstr "Alagút a loopback címen keresztül"
 
 #: src/remmina_file_editor.c:1143
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Same server at port %i"
 msgstr "Ugyanazon kiszolgáló a(z) %i porton"
 
@@ -1761,7 +1765,7 @@ msgid "Quick Connect"
 msgstr "Gyors csatlakozás"
 
 #: src/remmina_file_editor.c:1946
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Use '%s' as subgroup delimiter"
 msgstr "A(z) „%s” használata alcsoport elválasztóként"
 
@@ -1878,7 +1882,7 @@ msgstr ""
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_ssh_plugin.c:539
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Error: %s"
 msgstr "Hiba: %s"
 
@@ -1986,11 +1990,19 @@ msgstr "_Szöveg keresése"
 msgid "User password"
 msgstr "Felhasználó jelszava"
 
-#: src/remmina_ssh_plugin.c:1477 plugins/rdp/rdp_plugin.c:2766
-msgid "Start-up program"
+#: src/remmina_ssh_plugin.c:1477
+#, fuzzy
+#| msgid "Pre-command"
+msgid "Opening command"
+msgstr "Elő-parancs"
+
+#: src/remmina_ssh_plugin.c:1478
+#, fuzzy
+#| msgid "Start-up program"
+msgid "Start-up background program"
 msgstr "Induló program"
 
-#: src/remmina_ssh_plugin.c:1482
+#: src/remmina_ssh_plugin.c:1483
 msgid ""
 "The filename can use the following placeholders:\n"
 "\n"
@@ -2012,79 +2024,79 @@ msgstr ""
 "  • %g kicserélésre kerül a Remmina csoport profil névvel\n"
 "  • %d kicserélésre kerül a helyi datetime-mal iso8601 formában\n"
 
-#: src/remmina_ssh_plugin.c:1504
+#: src/remmina_ssh_plugin.c:1505
 #, fuzzy
 #| msgid "Terminal color scheme"
 msgid "Terminal colour scheme"
 msgstr "Terminál színsémája"
 
-#: src/remmina_ssh_plugin.c:1505
+#: src/remmina_ssh_plugin.c:1506
 #, fuzzy
 msgid "Character set"
 msgstr "Karakterkészlet"
 
-#: src/remmina_ssh_plugin.c:1507
+#: src/remmina_ssh_plugin.c:1508
 #, fuzzy
 msgid "KEX (Key Exchange) algorithms"
 msgstr "KEX (kulcscsere) algoritmus"
 
-#: src/remmina_ssh_plugin.c:1508
+#: src/remmina_ssh_plugin.c:1509
 #, fuzzy
 msgid "Symmetric cipher client to server"
 msgstr "Szimmetrikus titkosítás az ügyfél és a kiszolgáló között"
 
-#: src/remmina_ssh_plugin.c:1509
+#: src/remmina_ssh_plugin.c:1510
 #, fuzzy
 msgid "Preferred server host key types"
 msgstr "Előnyben részesített kiszolgáló kulcstípusok"
 
-#: src/remmina_ssh_plugin.c:1510
+#: src/remmina_ssh_plugin.c:1511
 #, fuzzy
 msgid "Folder for SSH session log"
 msgstr "Az SSH munkamenet log mappája"
 
-#: src/remmina_ssh_plugin.c:1511
+#: src/remmina_ssh_plugin.c:1512
 #, fuzzy
 msgid "Filename for SSH session log"
 msgstr "SSH munkamenet napló fájlneve"
 
-#: src/remmina_ssh_plugin.c:1512
+#: src/remmina_ssh_plugin.c:1513
 #, fuzzy
 msgid "Log SSH session when exiting Remmina"
 msgstr "Az SSH kapcsolat logolása a Remmina-ból kilépéskor"
 
-#: src/remmina_ssh_plugin.c:1513
+#: src/remmina_ssh_plugin.c:1514
 #, fuzzy
 msgid "Log SSH session asynchronously"
 msgstr "SSH munkamenet aszinkron naplózása"
 
-#: src/remmina_ssh_plugin.c:1513
+#: src/remmina_ssh_plugin.c:1514
 #, fuzzy
 msgid "Saving the session asynchronously may have a notable performance impact"
 msgstr ""
 "A munkamenet aszinkron mentése jelentős hatással lehet a teljesítményre."
 
-#: src/remmina_ssh_plugin.c:1514
+#: src/remmina_ssh_plugin.c:1515
 #, fuzzy
 msgid "Audible terminal bell"
 msgstr "Hallható terminál csengő"
 
-#: src/remmina_ssh_plugin.c:1515
+#: src/remmina_ssh_plugin.c:1516
 #, fuzzy
 msgid "SSH compression"
 msgstr "SSH tömörítés"
 
-#: src/remmina_ssh_plugin.c:1516
+#: src/remmina_ssh_plugin.c:1517
 #, fuzzy
 msgid "Don't remember passwords"
 msgstr "Ne jegyezze meg a jelszavakat"
 
-#: src/remmina_ssh_plugin.c:1517
+#: src/remmina_ssh_plugin.c:1518
 #, fuzzy
 msgid "Strict host key checking"
 msgstr "Szigorú kiszolgáló kulcs ellenőrzés"
 
-#: src/remmina_ssh_plugin.c:1531
+#: src/remmina_ssh_plugin.c:1532
 #, fuzzy
 msgid "SSH - Secure Shell"
 msgstr "SSH – Biztonságos parancsértelmező"
@@ -2822,6 +2834,10 @@ msgstr "Kliens név"
 msgid "Client build"
 msgstr "Kliens build"
 
+#: plugins/rdp/rdp_plugin.c:2766
+msgid "Start-up program"
+msgstr "Induló program"
+
 #: plugins/rdp/rdp_plugin.c:2768
 #, fuzzy
 msgid "Load balance info"
@@ -2920,7 +2936,8 @@ msgstr "/PATH/TO/rdp2tcp"
 #: plugins/rdp/rdp_plugin.c:2782
 #, fuzzy
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
-msgstr "Preferálja az IPv6 AAAA rekord adatokat az IPv4 A rekord adatok helyett"
+msgstr ""
+"Preferálja az IPv6 AAAA rekord adatokat az IPv4 A rekord adatok helyett"
 
 #: plugins/rdp/rdp_plugin.c:2783
 #, fuzzy
@@ -3056,7 +3073,7 @@ msgid "Export connection in Windows .rdp file format"
 msgstr "Kapcsolat exportálása Windows .rdp fájlformátumba"
 
 #: plugins/rdp/rdp_event.c:344
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Reconnection attempt %d of %d…"
 msgstr "Újrakapcsolódási kísérlet: %d / %d…"
 
@@ -3071,7 +3088,7 @@ msgid "Transfer error"
 msgstr "Átviteli hiba"
 
 #: plugins/spice/spice_plugin_file_transfer.c:220
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "%s: %s"
 msgstr "%s: %s"
 
@@ -3081,7 +3098,7 @@ msgid "Transfer completed"
 msgstr "Átvitel kész"
 
 #: plugins/spice/spice_plugin_file_transfer.c:224
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "The %s file has been transferred"
 msgstr "A %s fájl átvitelre került"
 
@@ -3207,12 +3224,12 @@ msgid "Unable to connect to VNC server"
 msgstr "Nem lehet csatlakozni a VNC-kiszolgálóhoz"
 
 #: plugins/vnc/vnc_plugin.c:937
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Couldn’t convert '%s' to host address"
 msgstr "A(z) „%s” kiszolgálócímmé alakítása sikertelen"
 
 #: plugins/vnc/vnc_plugin.c:938
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "VNC connection failed: %s"
 msgstr "A VNC-kapcsolódás sikertelen: %s"
 
@@ -3222,7 +3239,7 @@ msgid "Your connection has been rejected."
 msgstr "Kapcsolódás visszautasítva."
 
 #: plugins/vnc/vnc_plugin.c:966
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "The VNC server requested an unknown authentication method. %s"
 msgstr "A VNC szerver egy ismeretlen autentikációs metódust kért. %s"
 
@@ -3627,7 +3644,7 @@ msgstr "a 'error' paraméter 'NULL'."
 msgid "parameter 'env' is either invalid or uninitialized."
 msgstr "az 'env' paraméter vagy érvénytelen vagy nem inicializált."
 
-#: plugins/x2go/x2go_plugin.c:842
+#: plugins/x2go/x2go_plugin.c:842 plugins/x2go/x2go_plugin.c:2170
 #, fuzzy
 msgid "Started PyHoca-CLI with the following arguments:"
 msgstr "Elindította a PyHoca-CLI-t a következő argumentumokkal:"
@@ -3841,11 +3858,6 @@ msgstr "A '%s' munkamenet folytatása…"
 msgid "DPI setting is out of bounds. Please adjust it in profile settings."
 msgstr ""
 "A DPI-beállítás nem megengedett. Kérjük, állítsa be a profilbeállításokban."
-
-#: plugins/x2go/x2go_plugin.c:2170
-#, fuzzy
-msgid "Started pyhoca-cli with following arguments:"
-msgstr "Elindította a pyhoca-cli-t a következő argumentumokkal:"
 
 #: plugins/x2go/x2go_plugin.c:2190
 #, fuzzy
@@ -4283,7 +4295,7 @@ msgid "Shutdown remote host"
 msgstr "Távoli állomás leállítása"
 
 #: plugins/telepathy/telepathy_channel_handler.c:237
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "%s wants to share their desktop.\n"
 "Do you accept?"
@@ -4530,8 +4542,8 @@ msgstr ""
 "\n"
 "<span>\n"
 "<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
-"kiadási napló\"><i>Látogassa meg a weboldalt a kiadási napló "
-"elolvasásához</i></a>.\n"
+"kiadási napló\"><i>Látogassa meg a weboldalt a kiadási napló elolvasásához</"
+"i></a>.\n"
 "</span>"
 
 #. The star (*) is a reference to privacy consent
@@ -4542,9 +4554,9 @@ msgid ""
 "remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
 "\">anonymous</a></b> statistics. (*)"
 msgstr ""
-"<b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/remmina__stats_8c"
-".html#details\" title=\"Remmina használati statisztikák\">Névtelen </a></b> "
-"statisztikák küldése. (*)"
+"<b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
+"remmina__stats_8c.html#details\" title=\"Remmina használati statisztikák"
+"\">Névtelen </a></b> statisztikák küldése. (*)"
 
 #: data/ui/remmina_news.glade:142 data/ui/remmina_news.glade:195
 #, fuzzy
@@ -4575,8 +4587,8 @@ msgid ""
 "Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
 "\">remmina.org</a> (*)"
 msgstr ""
-"Hírek beszerzése <a href=\"https://remmina.org\" title=\"Remmina hírek "
-"oldal\">remmina.org</a> címről (*)"
+"Hírek beszerzése <a href=\"https://remmina.org\" title=\"Remmina hírek oldal"
+"\">remmina.org</a> címről (*)"
 
 #: data/ui/remmina_news.glade:208 data/ui/remmina_preferences.glade:446
 #, fuzzy
@@ -5473,6 +5485,10 @@ msgid "Master password"
 msgstr "Mester jelszó"
 
 #, fuzzy
+#~ msgid "Started pyhoca-cli with following arguments:"
+#~ msgstr "Elindította a pyhoca-cli-t a következő argumentumokkal:"
+
+#, fuzzy
 #~| msgid "_Select all"
 #~ msgid "_Select session"
 #~ msgstr "_Select session"
@@ -5689,9 +5705,6 @@ msgstr "Mester jelszó"
 
 #~ msgid "Autostart"
 #~ msgstr "Autostart"
-
-#~ msgid "Pre-command"
-#~ msgstr "Elő-parancs"
 
 #~ msgid "Post-command"
 #~ msgstr "Utó-parancs"

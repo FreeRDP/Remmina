@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-11-27 14:29+0000\n"
+"POT-Creation-Date: 2021-12-03 09:34+0000\n"
 "PO-Revision-Date: 2021-11-09 14:11+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Burmese <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -98,7 +98,7 @@ msgstr "စစ်ဆေးခြင်း အမျိုးအစား"
 msgid "Password to unlock private key"
 msgstr "ပုဂ္ဂလိကခလုတ်ကိုဖွင့်ရန် စကားဝှက်"
 
-#: src/remmina_sftp_plugin.c:358 src/remmina_ssh_plugin.c:1506
+#: src/remmina_sftp_plugin.c:358 src/remmina_ssh_plugin.c:1507
 #, fuzzy
 msgid "SSH Proxy Command"
 msgstr "SSH Prox အမိန့်"
@@ -556,8 +556,8 @@ msgstr "ဖိုင်"
 #: src/remmina.c:90
 #, fuzzy
 msgid ""
-"Connect to a desktop described in a file (.remmina or a type supported by a "
-"plugin)"
+"Connect to a desktop described in a file (.remmina or a filetype supported "
+"by a plugin)"
 msgstr ""
 "ဖိုင်ထဲမှာဖော်ပြထားတဲ့ desktop (.Remmina ဒါမှမဟုတ် plugin က ထောက်ပံ့ထားတဲ့ အမျိုးအစားတစ်ခု)"
 
@@ -565,8 +565,8 @@ msgstr ""
 #: src/remmina.c:92
 #, fuzzy
 msgid ""
-"Edit desktop connection described in file (.remmina or type supported by "
-"plugin)"
+"Edit desktop connection described in file (.remmina or a filetype supported "
+"by plugin)"
 msgstr ""
 "ဖိုင်ထဲမှာ ဖော်ပြထားတဲ့ တည်းဖြတ်မှု desktop ဆက်သွယ်မှု (.Remmina ဒါမှမဟုတ် plugin က ထောက်ပံ့ထားတဲ့ "
 "အမျိုးအစား)"
@@ -662,9 +662,9 @@ msgstr "စကားဝှက်တစ်ခုကို လျှို့ဝ�
 #.
 #: src/remmina.c:337
 msgid ""
-"Remmina does not log all output statements. To enable a more verbose output "
-"please use G_MESSAGES_DEBUG=all as an environment variable.\n"
-"For more information, please visit the Remmina Wiki at:\n"
+"Remmina does not log all output statements. Turn on more verbose output by "
+"using \"G_MESSAGES_DEBUG=all\" as an environment variable.\n"
+"More info available on the Remmina wiki at:\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgstr ""
 
@@ -1299,18 +1299,18 @@ msgid "Could not start SFTP session. %s"
 msgstr "SFTP အစည်းအရုံးကို မစတင်နိုင်ဘူး။ %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2378
+#: src/remmina_ssh.c:2379
 #, fuzzy, c-format
 msgid "Could not open channel. %s"
 msgstr "ရုပ်သံလိုင်းကို မဖွင့်နိုင်ဘူး။ %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2393
+#: src/remmina_ssh.c:2394
 #, fuzzy, c-format
 msgid "Could not request shell. %s"
 msgstr "အခွံကို မတောင်းဆိုနိုင်ဘူး။ %s"
 
-#: src/remmina_ssh.c:2511
+#: src/remmina_ssh.c:2521
 #, fuzzy
 msgid "Could not create PTY device."
 msgstr "PTY ကိရိယာကို မဖန်တီးနိုင်ဘူး။"
@@ -1934,12 +1934,16 @@ msgstr "_Find စာသား"
 msgid "User password"
 msgstr "အသုံးပြုသူ စကားဝှက်"
 
-#: src/remmina_ssh_plugin.c:1477 plugins/rdp/rdp_plugin.c:2766
+#: src/remmina_ssh_plugin.c:1477
+msgid "Opening command"
+msgstr ""
+
+#: src/remmina_ssh_plugin.c:1478
 #, fuzzy
-msgid "Start-up program"
+msgid "Start-up background program"
 msgstr "စတင်ပရိုဂရမ်"
 
-#: src/remmina_ssh_plugin.c:1482
+#: src/remmina_ssh_plugin.c:1483
 #, fuzzy
 msgid ""
 "The filename can use the following placeholders:\n"
@@ -1962,77 +1966,77 @@ msgstr ""
 "  • %g ကို Remmina Profile အုပ်စုအမည်ဖြင့် အစားထိုးပါ\n"
 "  • %d ကို ဒေသတွင်း ရက်စွဲနှင့် အချိန်ကို ISO 8601 ပုံစံဖြင့် အစားထိုး\n"
 
-#: src/remmina_ssh_plugin.c:1504
+#: src/remmina_ssh_plugin.c:1505
 #, fuzzy
 msgid "Terminal colour scheme"
 msgstr "Terminal အရောင် စီမံကိန်း"
 
-#: src/remmina_ssh_plugin.c:1505
+#: src/remmina_ssh_plugin.c:1506
 #, fuzzy
 msgid "Character set"
 msgstr "ဇာတ်ကောင်အစု"
 
-#: src/remmina_ssh_plugin.c:1507
+#: src/remmina_ssh_plugin.c:1508
 #, fuzzy
 msgid "KEX (Key Exchange) algorithms"
 msgstr "KEX (Key Exchange) အယ်ဂိုရီသမ်များ"
 
-#: src/remmina_ssh_plugin.c:1508
+#: src/remmina_ssh_plugin.c:1509
 #, fuzzy
 msgid "Symmetric cipher client to server"
 msgstr "symmmtric cipher ဖောက်သည် ဆာဗာ"
 
-#: src/remmina_ssh_plugin.c:1509
+#: src/remmina_ssh_plugin.c:1510
 #, fuzzy
 msgid "Preferred server host key types"
 msgstr "ကြိုက်နှစ်သက်သော ဆာဗာ အိမ်ရှင် အဓိကအမျိုးအစားများ"
 
-#: src/remmina_ssh_plugin.c:1510
+#: src/remmina_ssh_plugin.c:1511
 #, fuzzy
 msgid "Folder for SSH session log"
 msgstr "SSH SSH ssion မှတ်စုအတွက် ဖိုင်တွဲ"
 
-#: src/remmina_ssh_plugin.c:1511
+#: src/remmina_ssh_plugin.c:1512
 #, fuzzy
 msgid "Filename for SSH session log"
 msgstr "SSH SSH ssion မှတ်စုအတွက် Fililename"
 
-#: src/remmina_ssh_plugin.c:1512
+#: src/remmina_ssh_plugin.c:1513
 #, fuzzy
 msgid "Log SSH session when exiting Remmina"
 msgstr "Remmina ကနေထွက်ချိန်မှာ Log SSH အစီအစဉ်"
 
-#: src/remmina_ssh_plugin.c:1513
+#: src/remmina_ssh_plugin.c:1514
 #, fuzzy
 msgid "Log SSH session asynchronously"
 msgstr "သစ်အက်စ်အက်စ်အိပ်ခ်ျ အစီအစဉ်"
 
-#: src/remmina_ssh_plugin.c:1513
+#: src/remmina_ssh_plugin.c:1514
 #, fuzzy
 msgid "Saving the session asynchronously may have a notable performance impact"
 msgstr "အစည်းအဝေးကို ထိန်းသိမ်းခြင်းဟာ ထူးခြားတဲ့ စွမ်းဆောင်ရည် အကျိုးသက်ရောက်မှု ရှိနိုင်တယ်"
 
-#: src/remmina_ssh_plugin.c:1514
+#: src/remmina_ssh_plugin.c:1515
 #, fuzzy
 msgid "Audible terminal bell"
 msgstr "ကြားနိုင်သော terminal ခေါင်းလောင်း"
 
-#: src/remmina_ssh_plugin.c:1515
+#: src/remmina_ssh_plugin.c:1516
 #, fuzzy
 msgid "SSH compression"
 msgstr "SSH ဖိသိပ်ခြင်း"
 
-#: src/remmina_ssh_plugin.c:1516
+#: src/remmina_ssh_plugin.c:1517
 #, fuzzy
 msgid "Don't remember passwords"
 msgstr "စကားဝှက်တွေကို မမှတ်မိပါနဲ့"
 
-#: src/remmina_ssh_plugin.c:1517
+#: src/remmina_ssh_plugin.c:1518
 #, fuzzy
 msgid "Strict host key checking"
 msgstr "တင်းကျပ်တဲ့ အိမ်ရှင် အဓိကစစ်ဆေးမှု"
 
-#: src/remmina_ssh_plugin.c:1531
+#: src/remmina_ssh_plugin.c:1532
 #, fuzzy
 msgid "SSH - Secure Shell"
 msgstr "SSH - လုံခြုံသောခွေး"
@@ -2755,6 +2759,11 @@ msgstr "ကလိုင်းအမည်"
 #, fuzzy
 msgid "Client build"
 msgstr "ဖလိုင်းဆောက်လုပ်ခြင်း"
+
+#: plugins/rdp/rdp_plugin.c:2766
+#, fuzzy
+msgid "Start-up program"
+msgstr "စတင်ပရိုဂရမ်"
 
 #: plugins/rdp/rdp_plugin.c:2768
 #, fuzzy
@@ -3535,7 +3544,7 @@ msgstr ""
 msgid "parameter 'env' is either invalid or uninitialized."
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:842
+#: plugins/x2go/x2go_plugin.c:842 plugins/x2go/x2go_plugin.c:2170
 #, fuzzy
 msgid "Started PyHoca-CLI with the following arguments:"
 msgstr "Pyhoca-CLI ကို အောက်ပါ အငြင်းပွားမှုများဖြင့် စတင်ခဲ့သည်-"
@@ -3722,11 +3731,6 @@ msgstr ""
 msgid "DPI setting is out of bounds. Please adjust it in profile settings."
 msgstr ""
 "ဒီပီအိုင် တပ်ဆင်မှုဟာ အကန့်အသတ်မရှိဘူး။ ကျေးဇူးပြု၍ ယင်းကို ကိုယ်ရေးရာဇဝင်အချက်အလက်များတွင် ညှိနှိုင်းပါ။"
-
-#: plugins/x2go/x2go_plugin.c:2170
-#, fuzzy
-msgid "Started pyhoca-cli with following arguments:"
-msgstr "Pyhoca-cli ကို အောက်ပါ အငြင်းပွားမှုများဖြင့် စတင်ခဲ့သည်-"
 
 #: plugins/x2go/x2go_plugin.c:2190
 #, fuzzy
@@ -5309,6 +5313,10 @@ msgstr "ရမ်မီနာကိုဖွင့်ပါ"
 #, fuzzy
 msgid "Master password"
 msgstr "Master စကားဝှက်"
+
+#, fuzzy
+#~ msgid "Started pyhoca-cli with following arguments:"
+#~ msgstr "Pyhoca-cli ကို အောက်ပါ အငြင်းပွားမှုများဖြင့် စတင်ခဲ့သည်-"
 
 #, fuzzy
 #~ msgid "_Select session"
