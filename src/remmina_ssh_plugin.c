@@ -1474,7 +1474,8 @@ static const RemminaProtocolSetting remmina_ssh_basic_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_FILE,	  "ssh_certfile",   N_("SSH certificate file"),		  FALSE, NULL,	      NULL, NULL, NULL },
 #endif
 	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "ssh_passphrase", N_("Password to unlock private key"), FALSE, NULL,	      NULL, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "exec",	    N_("Start-up program"),		  FALSE, NULL,	      NULL, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "run_line",	    N_("Opening command"),		  FALSE, NULL,	      NULL, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "exec",	    N_("Start-up background program"),		  FALSE, NULL,	      NULL, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	  NULL,		    NULL,				  FALSE, NULL,	      NULL, NULL, NULL }
 };
 
