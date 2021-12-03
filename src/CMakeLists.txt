@@ -64,6 +64,8 @@ list(
   "remmina_log.h"
   "remmina_main.c"
   "remmina_main.h"
+  "remmina_monitor.c"
+  "remmina_monitor.h"
   "remmina_marshals.c"
   "remmina_marshals.h"
   "remmina_marshals.list"
@@ -121,8 +123,6 @@ list(
   "remmina_scheduler.h"
   "remmina_stats.c"
   "remmina_stats.h"
-  "remmina_stats_sender.c"
-  "remmina_stats_sender.h"
   "resources.c")
 
 set(RESOURCE_LIST

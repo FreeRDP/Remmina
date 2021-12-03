@@ -2363,7 +2363,7 @@ remmina_ssh_shell_thread(gpointer data)
 	gint buf_len;
 	gint len;
 	gint i, ret;
-	const gchar *filename;
+	gchar *filename;
 	const gchar *dir;
 	const gchar *sshlogname;
 	FILE *fp;
@@ -2427,13 +2427,15 @@ remmina_ssh_shell_thread(gpointer data)
 		REMMINA_DEBUG("Saving session log to %s", filename);
 		fp = fopen(filename, "w");
 	}
-	
+
+	g_free(filename);
+
 	REMMINA_DEBUG("Run_line: %s", shell->run_line);
 	if (!shell->closed && shell->run_line && shell->run_line[0]) {
 		LOCK_SSH(shell)
 		//TODO: Confirm assumption - assuming null terminated gchar string
-		ssh_channel_write(channel, shell->run_line, (gint)strlen(shell->run_line)); 
-		ssh_channel_write(channel, "\n", (gint)1); //TODO: Test this 
+		ssh_channel_write(channel, shell->run_line, (gint)strlen(shell->run_line));
+		ssh_channel_write(channel, "\n", (gint)1); //TODO: Test this
 		UNLOCK_SSH(shell)
 		REMMINA_DEBUG("Run_line written to channel");
 	}
@@ -2455,7 +2457,7 @@ remmina_ssh_shell_thread(gpointer data)
 			ssh_channel_write(channel, buf, len);
 			UNLOCK_SSH(shell)
 		}
-		
+
 		for (i = 0; i < 2; i++) {
 			LOCK_SSH(shell)
 			len = ssh_channel_poll(channel, i);

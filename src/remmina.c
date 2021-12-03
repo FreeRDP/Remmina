@@ -58,8 +58,6 @@
 #include "remmina_widget_pool.h"
 #include "remmina/remmina_trace_calls.h"
 #include "rmnews.h"
-#include "remmina_stats_sender.h"
-
 
 #ifdef HAVE_ERRNO_H
 #include <errno.h>
@@ -263,7 +261,6 @@ static void remmina_on_startup(GApplication *app)
 					  REMMINA_RUNTIME_DATADIR G_DIR_SEPARATOR_S "icons");
 	g_application_hold(app);
 
-	remmina_stats_sender_schedule();
 	rmnews_schedule();
 
 	/* Check for secret plugin and service initialization and show console warnings if

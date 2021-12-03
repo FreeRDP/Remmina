@@ -608,7 +608,7 @@ static void remmina_plugin_spice_call_feature(RemminaProtocolWidget *gp, const R
 
 #ifdef SPICE_GTK_CHECK_VERSION
 #  if SPICE_GTK_CHECK_VERSION(0, 34, 0)
-/* Array of key/value pairs for prefered video codec
+/* Array of key/value pairs for preferred video codec
  * Key - SpiceVideoCodecType (spice/enums.h)
  */
 static gpointer videocodec_list[] =
@@ -626,7 +626,7 @@ static gpointer videocodec_list[] =
 
 #ifdef SPICE_GTK_CHECK_VERSION
 #  if SPICE_GTK_CHECK_VERSION(0, 31, 0)
-/* Array of key/value pairs for prefered video codec
+/* Array of key/value pairs for preferred video codec
  * Key - SpiceImageCompression (spice/enums.h)
  */
 static gpointer imagecompression_list[] =
@@ -691,11 +691,11 @@ static const RemminaProtocolSetting remmina_plugin_spice_advanced_settings[] =
 {
 #ifdef SPICE_GTK_CHECK_VERSION
 #  if SPICE_GTK_CHECK_VERSION(0, 35, 0)
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	"videocodec",	    N_("Prefered video codec"),		FALSE, videocodec_list, NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	"videocodec",	    N_("Preferred video codec"),		FALSE, videocodec_list, NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"disablegstvideooverlay",	    N_("Turn off GStreamer overlay"),		FALSE,	NULL,	disablegstvideooverlay_tooltip},
 #  endif
 #  if SPICE_GTK_CHECK_VERSION(0, 31, 0)
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	"imagecompression",	    N_("Prefered image compression"),		FALSE, imagecompression_list, NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	"imagecompression",	    N_("Preferred image compression"),		FALSE, imagecompression_list, NULL},
 #  endif
 #endif
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"disableclipboard",	    N_("No clipboard sync"),		TRUE,	NULL,	NULL},

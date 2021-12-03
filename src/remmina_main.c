@@ -478,7 +478,7 @@ static void remmina_main_load_file_tree_callback(RemminaFile *remminafile, gpoin
 	GtkTreeIter iter, child;
 	GtkTreeStore *store;
 	gboolean found;
-	gchar *datetime;
+	gchar *datetime = NULL;
 
 	store = GTK_TREE_STORE(user_data);
 
@@ -488,7 +488,7 @@ static void remmina_main_load_file_tree_callback(RemminaFile *remminafile, gpoin
 							 remmina_file_get_string(remminafile, "group"));
 
 	datetime = remmina_file_get_datetime(remminafile);
-	REMMINA_DEBUG("The date is %s", datetime);
+	//REMMINA_DEBUG("The date is %s", datetime);
 	gtk_tree_store_append(store, &child, (found ? &iter : NULL));
 	gtk_tree_store_set(store, &child,
 			   PROTOCOL_COLUMN, remmina_file_get_icon_name(remminafile),
@@ -547,7 +547,7 @@ static gboolean remmina_main_filter_visible_func(GtkTreeModel *model, GtkTreeIte
 			s = g_ascii_strdown(date ? date : "", -1);
 			g_free(date);
 			date = s;
-			result = (strstr(name, text) || strstr(group, text) || strstr(server, text) || strstr(plugin, text) || strstr(date, text));
+			result = ( strstr(name, text) || strstr(group, text) || strstr(server, text) || strstr(plugin, text) || strstr(date, text));
 		}
 		g_free(protocol);
 		g_free(name);
@@ -597,6 +597,8 @@ static void remmina_main_load_files()
 	gint view_file_mode;
 	char *save_selected_filename;
 	GtkTreeModel *newmodel;
+	const gchar *neticon;
+	const gchar *connection_tooltip;
 
 	save_selected_filename = g_strdup(remminamain->priv->selected_filename);
 	remmina_main_save_expanded_group();
@@ -618,7 +620,14 @@ static void remmina_main_load_files()
 	switch (view_file_mode) {
 	case REMMINA_VIEW_FILE_TREE:
 		/* Create new GtkTreeStore model */
-		newmodel = GTK_TREE_MODEL(gtk_tree_store_new(7, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING));
+		newmodel = GTK_TREE_MODEL(gtk_tree_store_new(7,
+					G_TYPE_STRING,
+					G_TYPE_STRING,
+					G_TYPE_STRING,
+					G_TYPE_STRING,
+					G_TYPE_STRING,
+					G_TYPE_STRING,
+					G_TYPE_STRING));
 		/* Hide the Group column in the tree view mode */
 		gtk_tree_view_column_set_visible(remminamain->column_files_list_group, FALSE);
 		/* Load groups first */
@@ -630,7 +639,14 @@ static void remmina_main_load_files()
 	case REMMINA_VIEW_FILE_LIST:
 	default:
 		/* Create new GtkListStore model */
-		newmodel = GTK_TREE_MODEL(gtk_list_store_new(7, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING));
+		newmodel = GTK_TREE_MODEL(gtk_list_store_new(7,
+					G_TYPE_STRING,
+					G_TYPE_STRING,
+					G_TYPE_STRING,
+					G_TYPE_STRING,
+					G_TYPE_STRING,
+					G_TYPE_STRING,
+					G_TYPE_STRING));
 		/* Show the Group column in the list view mode */
 		gtk_tree_view_column_set_visible(remminamain->column_files_list_group, TRUE);
 		/* Load files list */
@@ -672,6 +688,26 @@ static void remmina_main_load_files()
 	context_id = gtk_statusbar_get_context_id(remminamain->statusbar_main, "status");
 	gtk_statusbar_pop(remminamain->statusbar_main, context_id);
 	gtk_statusbar_push(remminamain->statusbar_main, context_id, buf);
+
+	if (remminamain->monitor->connected){
+		neticon = g_strdup("network-transmit-receive-symbolic");
+		connection_tooltip = g_strdup(_("Network status: fully online"));
+	} else {
+		neticon = g_strdup("network-offline-symbolic");
+		connection_tooltip = g_strdup(_("Network status: offline"));
+	}
+
+	if (GTK_IS_WIDGET(remminamain->network_icon))
+		gtk_widget_destroy(remminamain->network_icon);
+	GIcon *icon = g_themed_icon_new (neticon);
+	remminamain->network_icon = gtk_image_new_from_gicon (icon, GTK_ICON_SIZE_BUTTON);
+	gtk_widget_set_tooltip_text (remminamain->network_icon, connection_tooltip);
+
+	g_object_unref (icon);
+
+	gtk_box_pack_start (GTK_BOX(remminamain->statusbar_main), remminamain->network_icon, FALSE, FALSE, 0);
+	gtk_widget_show (remminamain->network_icon);
+
 }
 
 void remmina_main_load_files_cb(GtkEntry *entry, char *string, gpointer user_data)
@@ -1355,6 +1391,9 @@ static void remmina_main_init(void)
 	/* Switch to a dark theme if the user enabled it */
 	settings = gtk_settings_get_default();
 	g_object_set(settings, "gtk-application-prefer-dark-theme", remmina_pref.dark_theme, NULL);
+
+	REMMINA_DEBUG ("Initializing monitor");
+	remminamain->monitor = remmina_network_monitor_new();
 
 	remminamain->priv->expanded_group = remmina_string_array_new_from_string(remmina_pref.expanded_group);
 	if (!kioskmode && kioskmode == FALSE)
