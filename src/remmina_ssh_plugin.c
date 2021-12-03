@@ -1216,7 +1216,7 @@ remmina_plugin_ssh_init(RemminaProtocolWidget *gp)
 
 	const gchar *dir;
 	const gchar *sshlogname;
-	const gchar *fp;
+	gchar *fp;
 
 	GFile *rf = g_file_new_for_path(remminafile->filename);
 
@@ -1234,6 +1234,7 @@ remmina_plugin_ssh_init(RemminaProtocolWidget *gp)
 
 	fp = g_strconcat(dir, "/", sshlogname, NULL);
 	gpdata->vte_session_file = g_file_new_for_path(fp);
+	g_free(fp);
 
 	g_signal_connect(G_OBJECT(vte), "size-allocate", G_CALLBACK(remmina_plugin_ssh_on_size_allocate), gp);
 	g_signal_connect(G_OBJECT(vte), "unrealize", G_CALLBACK(remmina_plugin_ssh_eof), gp);

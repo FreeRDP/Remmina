@@ -831,6 +831,8 @@ remmina_file_dup(RemminaFile *remminafile)
 	while (g_hash_table_iter_next(&iter, (gpointer *)&key, (gpointer *)&value))
 		remmina_file_set_string(dupfile, key, value);
 
+	remmina_file_set_statefile(dupfile);
+	remmina_file_touch(dupfile);
 	return dupfile;
 }
 
@@ -904,7 +906,7 @@ void remmina_file_state_last_success(RemminaFile *remminafile)
 
 	g_autoptr(GKeyFile) key_statefile = g_key_file_new();
 	g_autoptr(GKeyFile) key_remminafile = g_key_file_new();
-	g_autoptr(GError) error = NULL;
+	GError *error = NULL;
 
 	const gchar *date = NULL;
 	GDateTime *d = g_date_time_new_now_utc();
@@ -916,8 +918,11 @@ void remmina_file_state_last_success(RemminaFile *remminafile)
 
 	g_key_file_set_string(key_statefile, KEYFILE_GROUP_STATE, "last_success", date);
 
+	REMMINA_DEBUG("State file %s.", remminafile->statefile);
 	if (!g_key_file_save_to_file(key_statefile, remminafile->statefile, &error)) {
 		REMMINA_CRITICAL("Could not save the key file. %s", error->message);
+		g_error_free(error);
+		error = NULL;
 		return;
 	}
 	/* Delete old pre-1.5 keys */

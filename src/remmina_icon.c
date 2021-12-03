@@ -338,6 +338,7 @@ static void
 remmina_icon_connection_changed_cb(AppIndicator *indicator, gboolean connected, gpointer data)
 {
 	TRACE_CALL(__func__);
+	REMMINA_DEBUG("Indicator connection changed to: %d", connected);
 	remmina_icon.indicator_connected = connected;
 }
 
@@ -383,14 +384,8 @@ void remmina_icon_init(void)
 		//TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 		REMMINA_INFO(_("%s You may need to install, and use Gnome Shell Extension Appindicator"), msg);
 
-
-
 	if (!remmina_icon.icon && !remmina_pref.disable_tray_icon) {
 		remmina_icon.icon = app_indicator_new("remmina-icon", remmina_panel, APP_INDICATOR_CATEGORY_APPLICATION_STATUS);
-		//app_indicator_set_icon_theme_path(remmina_icon.icon, REMMINA_RUNTIME_DATADIR G_DIR_SEPARATOR_S "icons");
-		//const gchar *theme_path = app_indicator_get_icon_theme_path(remmina_icon.icon);
-		//REMMINA_DEBUG("Custom app indicator icon theme path is %s", theme_path);
-
 		app_indicator_set_status(remmina_icon.icon, APP_INDICATOR_STATUS_ACTIVE);
 		app_indicator_set_title(remmina_icon.icon, "Remmina");
 		remmina_icon_populate_menu();
@@ -400,6 +395,7 @@ void remmina_icon_init(void)
 		/* With libappindicator we can also change the icon on the fly */
 		app_indicator_set_icon(remmina_icon.icon, remmina_panel);
 	}
+	remmina_icon.indicator_connected = TRUE;
 #ifdef HAVE_LIBAVAHI_CLIENT
 	if (!remmina_icon.avahi)
 		remmina_icon.avahi = remmina_avahi_new();
@@ -418,7 +414,7 @@ void remmina_icon_init(void)
 	}
 	// "connected" property means a visible indicator, otherwise could be hidden. or fall back to GtkStatusIcon
 	g_signal_connect(G_OBJECT(remmina_icon.icon), "connection-changed", G_CALLBACK(remmina_icon_connection_changed_cb), NULL);
-	g_object_get(G_OBJECT(remmina_icon.icon), "connected", &remmina_icon.indicator_connected, NULL);
+	//g_object_get(G_OBJECT(remmina_icon.icon), "connected", &remmina_icon.indicator_connected, NULL);
 }
 
 gboolean remmina_icon_is_autostart(void)

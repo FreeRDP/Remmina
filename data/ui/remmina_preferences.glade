@@ -26,7 +26,7 @@
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <child>
-                  <!-- n-columns=3 n-rows=15 -->
+                  <!-- n-columns=3 n-rows=14 -->
                   <object class="GtkGrid" id="grid_options">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
@@ -339,20 +339,6 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkSwitch" id="switch_permit_send_stats">
-                        <property name="visible">True</property>
-                        <property name="can-focus">True</property>
-                        <property name="halign">start</property>
-                        <property name="valign">center</property>
-                        <property name="margin-end">18</property>
-                      </object>
-                      <packing>
-                        <property name="left-attach">1</property>
-                        <property name="top-attach">11</property>
-                        <property name="width">2</property>
-                      </packing>
-                    </child>
-                    <child>
                       <object class="GtkLabel" id="label_options_file_name">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
@@ -404,7 +390,7 @@
                       </object>
                       <packing>
                         <property name="left-attach">0</property>
-                        <property name="top-attach">13</property>
+                        <property name="top-attach">12</property>
                       </packing>
                     </child>
                     <child>
@@ -418,7 +404,7 @@
                       </object>
                       <packing>
                         <property name="left-attach">1</property>
-                        <property name="top-attach">13</property>
+                        <property name="top-attach">12</property>
                         <property name="width">2</property>
                       </packing>
                     </child>
@@ -432,7 +418,7 @@
                       </object>
                       <packing>
                         <property name="left-attach">1</property>
-                        <property name="top-attach">12</property>
+                        <property name="top-attach">11</property>
                         <property name="width">2</property>
                       </packing>
                     </child>
@@ -443,30 +429,15 @@
                         <property name="halign">start</property>
                         <property name="margin-start">18</property>
                         <property name="margin-end">18</property>
-                        <property name="label" translatable="yes">* By enabling statistics and/or news you consent to send and fetch data to/from remmina.org</property>
+                        <property name="label" translatable="yes">* By enabling news you consent to fetch data from remmina.org</property>
                         <property name="justify">fill</property>
                         <property name="wrap">True</property>
                         <property name="wrap-mode">word-char</property>
                       </object>
                       <packing>
                         <property name="left-attach">0</property>
-                        <property name="top-attach">14</property>
+                        <property name="top-attach">13</property>
                         <property name="width">3</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkLabel" id="rmnews_allow_stats_label">
-                        <property name="visible">True</property>
-                        <property name="can-focus">True</property>
-                        <property name="halign">start</property>
-                        <property name="margin-start">18</property>
-                        <property name="margin-end">6</property>
-                        <property name="label" translatable="yes" comments="The star (*) is a reference to privacy consent">Send &lt;b&gt;&lt;a href="https://remmina.gitlab.io/remminadoc.gitlab.io/remmina__stats_8c.html#details" title="Remmina usage statistics"&gt;anonymous&lt;/a&gt;&lt;/b&gt; statistics. (*)</property>
-                        <property name="use-markup">True</property>
-                      </object>
-                      <packing>
-                        <property name="left-attach">0</property>
-                        <property name="top-attach">11</property>
                       </packing>
                     </child>
                     <child>
@@ -481,7 +452,7 @@
                       </object>
                       <packing>
                         <property name="left-attach">0</property>
-                        <property name="top-attach">12</property>
+                        <property name="top-attach">11</property>
                       </packing>
                     </child>
                     <child>
