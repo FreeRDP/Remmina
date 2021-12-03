@@ -87,9 +87,9 @@ static GOptionEntry remmina_options[] =
 	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 	{ "connect",	      'c',  0,			  G_OPTION_ARG_FILENAME_ARRAY, NULL, N_("Connect either to a desktop described in a file (.remmina or a filetype supported by a plugin) or a supported URI (RDP, VNC, SSH or SPICE)"),	     N_("FILE")	},
 	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-	{ G_OPTION_REMAINING, '\0', 0,			  G_OPTION_ARG_FILENAME_ARRAY, NULL, N_("Connect to a desktop described in a file (.remmina or a type supported by a plugin)"),	     N_("FILE")	},
+	{ G_OPTION_REMAINING, '\0', 0,			  G_OPTION_ARG_FILENAME_ARRAY, NULL, N_("Connect to a desktop described in a file (.remmina or a filetype supported by a plugin)"),	     N_("FILE")	},
 	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-	{ "edit",	      'e',  0,			  G_OPTION_ARG_FILENAME_ARRAY, NULL, N_("Edit desktop connection described in file (.remmina or type supported by plugin)"), N_("FILE")	},
+	{ "edit",	      'e',  0,			  G_OPTION_ARG_FILENAME_ARRAY, NULL, N_("Edit desktop connection described in file (.remmina or a filetype supported by plugin)"), N_("FILE")	},
 	{ "help",	      '?',  G_OPTION_FLAG_HIDDEN, G_OPTION_ARG_NONE,	       NULL, NULL,										     NULL	},
 	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 	{ "kiosk",	      'k',  0,			  G_OPTION_ARG_NONE,	       NULL, N_("Start in kiosk mode"),								     NULL	},
@@ -328,16 +328,16 @@ int main(int argc, char *argv[])
 
 	// Checking for environment variable "G_MESSAGES_DEBUG"
 	// Give the less familiar with GLib a tip on where to get
-	// more debugging information.
+	// more debugging info.
 	if(!getenv("G_MESSAGES_DEBUG")) {
 		/* TRANSLATORS:
 		 * This link should point to a resource explaining how to get Remmina
 		 * to log more verbose statements.
 		 */
-		g_message(_("Remmina does not log all output statements. To enable a "
-			    "more verbose output please use G_MESSAGES_DEBUG=all as an "
-			    "environment variable.\n"
-			    "For more information, please visit the Remmina Wiki at:\n"
+		g_message(_("Remmina does not log all output statements. "
+			    "Turn on more verbose output by using "
+			    "\"G_MESSAGES_DEBUG=all\" as an environment variable.\n"
+			    "More info available on the Remmina wiki at:\n"
 			    "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 		));
 	}
