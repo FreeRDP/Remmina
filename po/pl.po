@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-12-09 13:41+0000\n"
-"PO-Revision-Date: 2021-12-09 13:39+0000\n"
+"PO-Revision-Date: 2021-12-09 19:53+0000\n"
 "Last-Translator: Matthaiks <kitynska@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/remmina/remmina/"
 "pl/>\n"
@@ -2858,14 +2858,6 @@ msgstr ""
 "    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
 
 #: plugins/vnc/vnc_plugin.c:1954
-#, fuzzy
-#| msgid ""
-#| "Listening for remote VNC connection:\n"
-#| "  • The \"Listen on port\" field is the port Remmina will listen to,\n"
-#| "    e.g. 8888\n"
-#| "  • From the remote VNC server, you will connect to\n"
-#| "    Remmina, e.g. with x11vnc:\n"
-#| "    x11vnc -display :0 -connect 192.168.1.36:8888"
 msgid ""
 "Listening for remote VNC connection:\n"
 "  • The “Listen on port” field is the port Remmina will listen to,\n"
@@ -2893,6 +2885,16 @@ msgid ""
 "  • On “Best quality” encodings is set to “copyrect zrle ultra zlib hextile "
 "corre rre raw”"
 msgstr ""
+"Zastąp wstępnie ustawione kodowania VNC:\n"
+"\n"
+"  • W przypadku kodowania „Słaba jakość” ustawiono „copyrect zlib hextile "
+"raw”\n"
+"  • W przypadku kodowania „Średnia jakość” ustawiono „tight zrle ultra "
+"copyrect hextile zlib corre rre raw”\n"
+"  • W przypadku kodowania „Dobra jakość” ustawiono „tight zrle ultra "
+"copyrect hextile zlib corre rre raw”\n"
+"  • W przypadku kodowania „Najlepsza jakość” ustawiono „copyrect zrle ultra "
+"zlib hextile corre rre raw”"
 
 #: plugins/vnc/vnc_plugin.c:1989
 msgid "Repeater"
@@ -2904,7 +2906,7 @@ msgstr "Słuchaj na porcie"
 
 #: plugins/vnc/vnc_plugin.c:2021
 msgid "Override pre-set VNC encodings"
-msgstr ""
+msgstr "Zastąp wstępnie ustawione kodowania VNC"
 
 #: plugins/vnc/vnc_plugin.c:2022
 msgid "Show remote cursor"
@@ -3212,13 +3214,12 @@ msgstr ""
 "Niezbędny proces PyHoca-CLI napotkał problem z połączeniem internetowym."
 
 #: plugins/x2go/x2go_plugin.c:972
-#, fuzzy, c-format
-#| msgid "Could not start PyHoca-CLI (%i): '%s'"
+#, c-format
 msgid ""
 "Could not start PyHoca-CLI:\n"
 "%s"
 msgstr ""
-"Nie można uruchomić PyHoca-CLI (%i):\n"
+"Nie można uruchomić PyHoca-CLI:\n"
 "%s"
 
 #: plugins/x2go/x2go_plugin.c:983
