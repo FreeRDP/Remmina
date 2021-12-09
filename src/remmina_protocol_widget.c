@@ -2146,8 +2146,9 @@ void remmina_protocol_widget_update_remote_resolution(RemminaProtocolWidget *gp)
 		/* Use internal window size as remote desktop size */
 		GtkAllocation al;
 		gtk_widget_get_allocation(GTK_WIDGET(gp), &al);
-		w = al.width;
-		h = al.height;
+		/* use a multiple of four to mitigate scaling when remote host rounds up */
+		w = al.width - al.width % 4;
+		h = al.height - al.height % 4;
 		if (w < 10) {
 			printf("Remmina warning: %s RemminaProtocolWidget w=%d h=%d are too small, adjusting to 640x480\n", __func__, w, h);
 			w = 640;
