@@ -130,7 +130,7 @@ void remmina_log_start(void)
 		gtk_header_bar_set_has_subtitle (GTK_HEADER_BAR (header), FALSE);
 		/* Stats */
 		GtkWidget *getstat = gtk_button_new ();
-		gtk_widget_set_tooltip_text (getstat, _("Paste sytem information in the Remmina debugging window"));
+		gtk_widget_set_tooltip_text (getstat, _("Paste sytem info in the Remmina debugging window"));
 		GIcon *icon = g_themed_icon_new ("edit-paste-symbolic");
 		GtkWidget *image = gtk_image_new_from_gicon (icon, GTK_ICON_SIZE_BUTTON);
 		g_object_unref (icon);
@@ -150,10 +150,10 @@ void remmina_log_start(void)
 		gtk_widget_show_all(log_window);
 	}
 
-	remmina_log_print(_("This window can help you finding connections problems.\n"
+	remmina_log_print(_("This window can help you find connection problems.\n"
 		"You can stop and start the logging at any moment using the On/Off switch.\n"
-		"The stats button (Ctrl+T), may be useful to gather system information that you may share while reporting a bug.\n"
-		"For more information on debugging Remmina see : https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging\n"
+		"The stats button (Ctrl+T), can be useful to gather system info you may share when reporting a bug.\n"
+		"There is more info about debugging Remmina on https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging\n"
 		));
 }
 
