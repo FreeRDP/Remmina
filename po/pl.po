@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-12-09 11:40+0000\n"
-"PO-Revision-Date: 2021-12-09 11:53+0000\n"
+"PO-Revision-Date: 2021-12-09 13:39+0000\n"
 "Last-Translator: Matthaiks <kitynska@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/remmina/remmina/"
 "pl/>\n"
@@ -3135,18 +3135,16 @@ msgid ""
 "Neither the 'dialog' nor 'treeview' parameters are initialized! At least one "
 "of them must be given."
 msgstr ""
+"Ani parametr 'dialog', ani 'treeview' nie są zainicjowane! Przynajmniej "
+"jeden z nich musi być podany."
 
 #: plugins/x2go/x2go_plugin.c:729
-#, fuzzy
-#| msgid ""
-#| "GtkTreeModel of session chooser dialog could not be obtained for an "
-#| "unknown reason."
 msgid ""
 "Could not obtain \"GtkTreeModelFilter*\" of the session chooser dialog, for "
 "unknown reason."
 msgstr ""
-"Nie można uzyskać GtkTreeModel okna dialogowego wyboru sesji z nieznanego "
-"powodu."
+"Z nieznanego powodu nie można uzyskać \"GtkTreeModelFilter*\" okna "
+"dialogowego wyboru sesji."
 
 #: plugins/x2go/x2go_plugin.c:764
 msgid "Couldn't get currently selected row (session)!"
@@ -3194,7 +3192,9 @@ msgstr ""
 msgid ""
 "Could not start PyHoca-CLI:\n"
 "%s"
-msgstr "Nie można uruchomić PyHoca-CLI (%i): '%s'"
+msgstr ""
+"Nie można uruchomić PyHoca-CLI (%i):\n"
+"%s"
 
 #: plugins/x2go/x2go_plugin.c:983
 #, c-format
@@ -3213,10 +3213,8 @@ msgstr ""
 "%i. Błąd: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:1032
-#, fuzzy
-#| msgid "Both parameters 'dialog' and 'treeview' are uninitialized!"
 msgid "Neither the 'path' nor 'dialog' parameters are initialized."
-msgstr "Oba parametry 'dialog' i 'treeview' są niezainicjowane!"
+msgstr "Ani parametr 'path', ani 'dialog' nie są zainicjowane."
 
 #: plugins/x2go/x2go_plugin.c:1048
 msgid "GtkTreePath 'path' describes a non-existing row!"
@@ -3232,12 +3230,13 @@ msgid "'Invalid connection data.'"
 msgstr "'Nieprawidłowe dane połączenia.'"
 
 #: plugins/x2go/x2go_plugin.c:1218
-#, fuzzy, c-format
-#| msgid "An error occured while trying to terminate a X2Go session: %s"
+#, c-format
 msgid ""
 "An error occured while trying to terminate X2Go session '%s':\n"
 "%s"
-msgstr "Wystąpił błąd podczas próby zakończenia sesji X2Go: %s"
+msgstr ""
+"Wystąpił błąd podczas próby zakończenia sesji X2Go: '%s'\n"
+"%s"
 
 #: plugins/x2go/x2go_plugin.c:1230 plugins/x2go/x2go_plugin.c:1594
 msgid "An error occured."
