@@ -103,12 +103,10 @@ msgid "SFTP - Secure File Transfer"
 msgstr "SFTP - Sichere Dateiübertragung"
 
 #: src/remmina_log.c:129
-#| msgid "Open the Remmina main window"
 msgid "Remmina debugging window"
 msgstr "Remmina Hauptfenster öffnen"
 
 #: src/remmina_log.c:133
-#| msgid "Paste sytem information in the Remmina debugging window"
 msgid "Paste sytem info in the Remmina debugging window"
 msgstr "Systeminformationen in das Remmina Debugging-Fenster einfügen"
 
@@ -514,9 +512,6 @@ msgstr "DATEI"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:88
-#| msgid ""
-#| "Connect to a desktop described in a file (.remmina or a type supported by "
-#| "a plugin)"
 msgid ""
 "Connect to a desktop described in a file (.remmina or a filetype supported "
 "by a plugin)"
@@ -526,9 +521,6 @@ msgstr ""
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:90
-#| msgid ""
-#| "Edit desktop connection described in file (.remmina or type supported by "
-#| "plugin)"
 msgid ""
 "Edit desktop connection described in file (.remmina or a filetype supported "
 "by plugin)"
@@ -614,11 +606,6 @@ msgstr "Ein Passwort verschlüsseln"
 #. * to log more verbose statements.
 #.
 #: src/remmina.c:334
-#| msgid ""
-#| "Remmina does not log all output statements. To enable a more verbose "
-#| "output please use G_MESSAGES_DEBUG=all as an environment variable.\n"
-#| "For more information, please visit the Remmina Wiki at:\n"
-#| "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgid ""
 "Remmina does not log all output statements. Turn on more verbose output by "
 "using \"G_MESSAGES_DEBUG=all\" as an environment variable.\n"
@@ -1758,12 +1745,10 @@ msgid "User password"
 msgstr "Benutzerpasswort"
 
 #: src/remmina_ssh_plugin.c:1478
-#| msgid "Pre-command"
 msgid "Opening command"
 msgstr "Befehl vor dem Aufbau"
 
 #: src/remmina_ssh_plugin.c:1479
-#| msgid "Start-up program"
 msgid "Start-up background program"
 msgstr "Startprogramm"
 
@@ -2735,7 +2720,6 @@ msgid "Server CA certificate"
 msgstr "Server CA Zertifikat"
 
 #: plugins/spice/spice_plugin.c:694
-#| msgid "Prefered video codec"
 msgid "Preferred video codec"
 msgstr "Bevorzugter Video-Codec"
 
@@ -2744,7 +2728,6 @@ msgid "Turn off GStreamer overlay"
 msgstr "Gstreamer Overlay deaktivieren"
 
 #: plugins/spice/spice_plugin.c:698
-#| msgid "Prefered image compression"
 msgid "Preferred image compression"
 msgstr "Bevorzugte Bild-Kompression"
 
@@ -2818,7 +2801,7 @@ msgstr ""
 "Bitte schalten Sie die Verschlüsselung für das Profil ein und probieren Sie "
 "nocheinmal."
 
-#: plugins/vnc/vnc_plugin.c:1939
+#: plugins/vnc/vnc_plugin.c:1939 plugins/vnc/vnc_plugin.c:1945
 msgid ""
 "Connect to VNC using a repeater:\n"
 "  • The server field must contain the repeater ID, e.g. ID:123456789\n"
@@ -2874,6 +2857,7 @@ msgid "Prevent local interaction on the server"
 msgstr "Lokale Interaktion am Server verhindern"
 
 #: plugins/vnc/vnc_plugin.c:2012 plugins/gvnc/gvnc_plugin.c:868
+#: plugins/vnc/vnc_plugin.c:2027
 msgid "Ignore remote bell messages"
 msgstr "Entfernte Klingeltöne ignorieren"
 
@@ -3921,9 +3905,6 @@ msgid "Receives updated news from remmina.org"
 msgstr "Empfängt Aktualisierungen von remmina.org"
 
 #: data/ui/remmina_news.glade:182
-#| msgid ""
-#| "* By enabling statistics and/or news you consent to send and fetch data "
-#| "to/from remmina.org"
 msgid "* By turning on news you consent to fetching data from remmina.org"
 msgstr ""
 "* Mit dem Aktivieren der Statistik- bzw. der Nachrichtenfunktion stimmen Sie "
@@ -4214,9 +4195,6 @@ msgid "Prevent screenshots from entering clipboard"
 msgstr "Verhindern, dass Bildschirmfotos in die Zwischenablage kopiert werden"
 
 #: data/ui/remmina_preferences.glade:432
-#| msgid ""
-#| "* By enabling statistics and/or news you consent to send and fetch data "
-#| "to/from remmina.org"
 msgid "* By enabling news you consent to fetch data from remmina.org"
 msgstr ""
 "* Mit dem Aktivieren der Statistik- bzw. der Nachrichtenfunktion stimmen Sie "
@@ -4666,6 +4644,41 @@ msgstr "Remmina entsperren"
 #: data/ui/remmina_unlock.glade:128
 msgid "Master password"
 msgstr "Master Passwort"
+
+#: plugins/vnc/vnc_plugin.c:1954
+#, fuzzy
+msgid ""
+"Listening for remote VNC connection:\n"
+"  • The “Listen on port” field is the port Remmina will listen to,\n"
+"    e.g. 8888\n"
+"  • From the remote VNC server, you will connect to\n"
+"    Remmina, e.g. with x11vnc:\n"
+"    x11vnc -display :0 -connect 192.168.1.36:8888"
+msgstr ""
+"Auf eingehende VNC-Verbindungen warten:\n"
+"  • Der \"Warten auf Port\" Feld legt fest, auf welchem Port Remmina "
+"wartet.\n"
+"    Z.b. 8888\n"
+"  • Vom entfernten VNC-Server verbinden Sie zu\n"
+"    Remmina, z.B. über x11vnc:\n"
+"    x11vnc -display :0 -connect 192.168.1.36:8888"
+
+#: plugins/vnc/vnc_plugin.c:1962
+msgid ""
+"Override pre-set VNC encodings:\n"
+"\n"
+"  • On “Poor quality” encodings is set to “copyrect zlib hextile raw”\n"
+"  • On “Medium quality” encodings is set to “tight zrle ultra copyrect "
+"hextile zlib corre rre raw”\n"
+"  • On “Good quality” encodings is set to “tight zrle ultra copyrect hextile "
+"zlib corre rre raw”\n"
+"  • On “Best quality” encodings is set to “copyrect zrle ultra zlib hextile "
+"corre rre raw”"
+msgstr ""
+
+#: plugins/vnc/vnc_plugin.c:2021
+msgid "Override pre-set VNC encodings"
+msgstr ""
 
 #~ msgid "Couldn't get property with index '%i' out of selected row."
 #~ msgstr ""
