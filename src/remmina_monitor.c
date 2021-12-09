@@ -178,17 +178,11 @@ gchar *remmina_monitor_can_reach(RemminaFile *remminafile, RemminaMonitor *monit
 
 }
 
-RemminaMonitor *remmina_network_monitor_new ()
+gboolean remmina_network_monitor_status (RemminaMonitor *rm_monitor)
 {
 	TRACE_CALL(__func__);
 
-	gboolean status;
-
-	rm_monitor = g_new0(RemminaMonitor, 1);
-
-	rm_monitor->netmonitor = g_network_monitor_get_default ();
-
-	status = g_network_monitor_get_connectivity (rm_monitor->netmonitor);
+	gboolean status = g_network_monitor_get_connectivity (rm_monitor->netmonitor);
 
 	rm_monitor->server_status = g_hash_table_new_full(
 			g_str_hash,
@@ -218,6 +212,18 @@ RemminaMonitor *remmina_network_monitor_new ()
 			rm_monitor->connected = TRUE;
 			break;
 	}
+
+	return status;
+}
+
+
+RemminaMonitor *remmina_network_monitor_new ()
+{
+	TRACE_CALL(__func__);
+
+	rm_monitor = g_new0(RemminaMonitor, 1);
+
+	rm_monitor->netmonitor = g_network_monitor_get_default ();
 
 	return rm_monitor;
 }
