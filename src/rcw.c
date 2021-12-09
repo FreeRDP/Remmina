@@ -4368,7 +4368,7 @@ static void rcw_gtksocket_not_available_dialog_response(GtkDialog* self,
 	if (response_id == GTKSOCKET_NOT_AVAIL_RESPONSE_OPEN_BROWSER) {
 		gtk_show_uri_on_window(
 			NULL,
-			// TRANSLATORS: This should be a link to the Remmina Wiki page:
+			// TRANSLATORS: This should be a link to the Remmina wiki page:
 			// TRANSLATORS: 'GtkSocket feature is not available'.
 			_("https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-available-in-a-Wayland-session"),
 			GDK_CURRENT_TIME, &error
@@ -4511,11 +4511,11 @@ GtkWidget *rcw_open_from_file_full(RemminaFile *remminafile, GCallback disconnec
 				 "feature is unavailable in a Wayland session.");
 
 		gchar* err_msg =
-			// TRANSLATORS: This should be a link to the Remmina Wiki page:
+			// TRANSLATORS: This should be a link to the Remmina wiki page:
 			// 'GtkSocket feature is not available'.
 			_("Plugins relying on GtkSocket can't run in a "
-			  "Wayland session.\nFor more information and a possible "
-			  "workaround, please visit the Remmina Wiki at:\n\n"
+			  "Wayland session.\nFor more info and a possible "
+			  "workaround, please visit the Remmina wiki at:\n\n"
 			  "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-available-in-a-Wayland-session");
 
 		dialog = gtk_message_dialog_new(
@@ -4527,7 +4527,7 @@ GtkWidget *rcw_open_from_file_full(RemminaFile *remminafile, GCallback disconnec
 
 		gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG(dialog), "%s",
 							 err_msg);
-		gtk_dialog_add_button(GTK_DIALOG(dialog), _("Open in browser"),
+		gtk_dialog_add_button(GTK_DIALOG(dialog), _("Open in web browser"),
 				      GTKSOCKET_NOT_AVAIL_RESPONSE_OPEN_BROWSER);
 
 		REMMINA_CRITICAL(g_strdup_printf("%s\n%s", title, err_msg));
@@ -4610,7 +4610,7 @@ void rco_destroy_message_panel(RemminaConnectionObject *cnnobj, RemminaMessagePa
 	g_list_free(childs);
 
 	if (cc == NULL) {
-		printf("Remmina: Warning, request to destroy a RemminaMessagePanel, which is not on the page\n");
+		printf("Remmina: Warning. There was a request to destroy a RemminaMessagePanel that is not on the page\n");
 		return;
 	}
 	was_visible = gtk_widget_is_visible(GTK_WIDGET(mp));
