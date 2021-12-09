@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-12-03 21:49+0000\n"
+"POT-Creation-Date: 2021-12-09 11:28+0000\n"
 "PO-Revision-Date: 2021-12-05 14:51+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
@@ -26,7 +26,7 @@ msgstr ""
 #: src/remmina_protocol_widget.c:1677 src/remmina_protocol_widget.c:1696
 #: src/remmina_file_editor.c:1101 src/remmina_file_editor.c:1222
 #: src/remmina_ssh_plugin.c:1361 plugins/rdp/rdp_plugin.c:2723
-#: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:2992
+#: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:3198
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1646
 #: data/ui/remmina_unlock.glade:116
 #, fuzzy
@@ -80,7 +80,7 @@ msgstr "從新的終端機以 SSH 連接"
 #: src/remmina_file_editor.c:1216 src/remmina_ssh_plugin.c:1471
 #: plugins/rdp/rdp_plugin.c:2722 plugins/vnc/vnc_plugin.c:1976
 #: plugins/vnc/vnc_plugin.c:1988 plugins/www/www_plugin.c:894
-#: plugins/x2go/x2go_plugin.c:574 plugins/x2go/x2go_plugin.c:2991
+#: plugins/x2go/x2go_plugin.c:475 plugins/x2go/x2go_plugin.c:3197
 #: data/ui/remmina_mpc.glade:144
 #, fuzzy
 msgid "Username"
@@ -115,16 +115,18 @@ msgid "Remmina debugging window"
 msgstr "打开Remmina主窗口"
 
 #: src/remmina_log.c:133
-msgid "Paste sytem information in the Remmina debugging window"
-msgstr ""
+#, fuzzy
+#| msgid "Open Main Window"
+msgid "Paste sytem info in the Remmina debugging window"
+msgstr "打开Remmina主窗口"
 
 #: src/remmina_log.c:153
 msgid ""
-"This window can help you finding connections problems.\n"
+"This window can help you find connection problems.\n"
 "You can stop and start the logging at any moment using the On/Off switch.\n"
-"The stats button (Ctrl+T), may be useful to gather system information that "
-"you may share while reporting a bug.\n"
-"For more information on debugging Remmina see : https://gitlab.com/Remmina/"
+"The stats button (Ctrl+T), can be useful to gather system info you may share "
+"when reporting a bug.\n"
+"There is more info about debugging Remmina on https://gitlab.com/Remmina/"
 "Remmina/-/wikis/Usage/Remmina-debugging\n"
 msgstr ""
 
@@ -1711,8 +1713,8 @@ msgstr ""
 "验证用户的输入!"
 
 #. TRANSLATORS: Meta-error. Shouldn't be visible.
-#: src/remmina_file_editor.c:1445 plugins/x2go/x2go_plugin.c:2188
-#: plugins/x2go/x2go_plugin.c:2817
+#: src/remmina_file_editor.c:1445 plugins/x2go/x2go_plugin.c:2394
+#: plugins/x2go/x2go_plugin.c:3023
 #, fuzzy
 #| msgid "Transfer error"
 msgid "Internal error."
@@ -3391,273 +3393,277 @@ msgid ""
 "CLI without using this feature…"
 msgstr "命令行功能'%s'不可用!试图在不使用此功能的情况下启动PyHoca-CLI…"
 
-#: plugins/x2go/x2go_plugin.c:287 plugins/x2go/x2go_plugin.c:419
-#: plugins/x2go/x2go_plugin.c:478 plugins/x2go/x2go_plugin.c:581
-#: plugins/x2go/x2go_plugin.c:656 plugins/x2go/x2go_plugin.c:668
-#: plugins/x2go/x2go_plugin.c:676 plugins/x2go/x2go_plugin.c:699
-#: plugins/x2go/x2go_plugin.c:708 plugins/x2go/x2go_plugin.c:724
-#: plugins/x2go/x2go_plugin.c:763 plugins/x2go/x2go_plugin.c:775
-#: plugins/x2go/x2go_plugin.c:806 plugins/x2go/x2go_plugin.c:817
-#: plugins/x2go/x2go_plugin.c:825 plugins/x2go/x2go_plugin.c:939
-#: plugins/x2go/x2go_plugin.c:966 plugins/x2go/x2go_plugin.c:980
-#: plugins/x2go/x2go_plugin.c:1077 plugins/x2go/x2go_plugin.c:1141
-#: plugins/x2go/x2go_plugin.c:1445 plugins/x2go/x2go_plugin.c:1479
-#: plugins/x2go/x2go_plugin.c:1575 plugins/x2go/x2go_plugin.c:1869
-#: plugins/x2go/x2go_plugin.c:2669 plugins/x2go/x2go_plugin.c:2882
-#: plugins/x2go/x2go_plugin.c:2887 plugins/x2go/x2go_plugin.c:2892
-#: plugins/x2go/x2go_plugin.c:2897 plugins/x2go/x2go_plugin.c:2912
-#: plugins/x2go/x2go_plugin.c:2917 plugins/x2go/x2go_plugin.c:2922
-#: plugins/x2go/x2go_plugin.c:2927
+#: plugins/x2go/x2go_plugin.c:289 plugins/x2go/x2go_plugin.c:421
+#: plugins/x2go/x2go_plugin.c:510 plugins/x2go/x2go_plugin.c:617
+#: plugins/x2go/x2go_plugin.c:707 plugins/x2go/x2go_plugin.c:719
+#: plugins/x2go/x2go_plugin.c:728 plugins/x2go/x2go_plugin.c:754
+#: plugins/x2go/x2go_plugin.c:763 plugins/x2go/x2go_plugin.c:782
+#: plugins/x2go/x2go_plugin.c:832 plugins/x2go/x2go_plugin.c:898
+#: plugins/x2go/x2go_plugin.c:909 plugins/x2go/x2go_plugin.c:917
+#: plugins/x2go/x2go_plugin.c:1031 plugins/x2go/x2go_plugin.c:1047
+#: plugins/x2go/x2go_plugin.c:1112 plugins/x2go/x2go_plugin.c:1140
+#: plugins/x2go/x2go_plugin.c:1289 plugins/x2go/x2go_plugin.c:1651
+#: plugins/x2go/x2go_plugin.c:1685 plugins/x2go/x2go_plugin.c:1781
+#: plugins/x2go/x2go_plugin.c:2075 plugins/x2go/x2go_plugin.c:2875
+#: plugins/x2go/x2go_plugin.c:3088 plugins/x2go/x2go_plugin.c:3093
+#: plugins/x2go/x2go_plugin.c:3098 plugins/x2go/x2go_plugin.c:3103
+#: plugins/x2go/x2go_plugin.c:3118 plugins/x2go/x2go_plugin.c:3123
+#: plugins/x2go/x2go_plugin.c:3128 plugins/x2go/x2go_plugin.c:3133
 #, fuzzy, c-format
 #| msgid "Transfer error"
 msgid "Internal error: %s"
 msgstr "内部错误。%s。"
 
-#: plugins/x2go/x2go_plugin.c:288 plugins/x2go/x2go_plugin.c:420
-#: plugins/x2go/x2go_plugin.c:479 plugins/x2go/x2go_plugin.c:1078
+#: plugins/x2go/x2go_plugin.c:290 plugins/x2go/x2go_plugin.c:422
+#: plugins/x2go/x2go_plugin.c:511 plugins/x2go/x2go_plugin.c:1290
 #, fuzzy
 msgid "Parameter 'custom_data' is not initialized!"
 msgstr "参数'default_username'未被初始化。"
 
-#: plugins/x2go/x2go_plugin.c:301
+#: plugins/x2go/x2go_plugin.c:303
 #, fuzzy
 msgid "Broken `DialogData`! Aborting…"
 msgstr "破碎的`DialogData`!终止了…"
 
-#: plugins/x2go/x2go_plugin.c:305
+#: plugins/x2go/x2go_plugin.c:307
 #, fuzzy
 msgid "Can't retrieve `DialogData`! Aborting…"
 msgstr "无法检索到`DialogData`!正在终止…"
 
-#: plugins/x2go/x2go_plugin.c:488
+#: plugins/x2go/x2go_plugin.c:469
+#, fuzzy
+#| msgid "Display"
+msgid "X Display"
+msgstr "顯示"
+
+#: plugins/x2go/x2go_plugin.c:470
+#, fuzzy
+msgid "Status"
+msgstr "狀態"
+
+#: plugins/x2go/x2go_plugin.c:471
+#, fuzzy
+#| msgid "Permission"
+msgid "Session ID"
+msgstr "会议ID"
+
+#: plugins/x2go/x2go_plugin.c:472
+#, fuzzy
+msgid "Create date"
+msgstr "创建日期"
+
+#: plugins/x2go/x2go_plugin.c:473
+#, fuzzy
+msgid "Suspended since"
+msgstr "暂停使用，因为"
+
+#: plugins/x2go/x2go_plugin.c:474
+#, fuzzy
+msgid "Agent PID"
+msgstr "代理人PID"
+
+#: plugins/x2go/x2go_plugin.c:476
+#, fuzzy
+#| msgid "Username"
+msgid "Hostname"
+msgstr "主機名稱"
+
+#: plugins/x2go/x2go_plugin.c:477
+#, fuzzy
+msgid "Cookie"
+msgstr "饼干"
+
+#: plugins/x2go/x2go_plugin.c:478
+#, fuzzy
+msgid "Graphic port"
+msgstr "图形端口"
+
+#: plugins/x2go/x2go_plugin.c:479
+#, fuzzy
+msgid "SND port"
+msgstr "SND端口"
+
+#: plugins/x2go/x2go_plugin.c:480
+#, fuzzy
+#| msgid "Local SSH port"
+msgid "SSHFS port"
+msgstr "SSHFS端口"
+
+#: plugins/x2go/x2go_plugin.c:481
+msgid "Visible"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:520
 #, fuzzy
 msgid "Couldn't retrieve valid `DialogData` or `sessions_list`! Aborting…"
 msgstr "无法检索到有效的`DialogData`或`sessions_list`!正在中止…"
 
 #. TRANSLATORS: Stick to x2goclient's translation for terminate.
-#: plugins/x2go/x2go_plugin.c:497
+#: plugins/x2go/x2go_plugin.c:529
 #, fuzzy
 #| msgid "Terminate"
 msgid "_Terminate"
 msgstr "終止"
 
 #. TRANSLATORS: Stick to x2goclient's translation for resume.
-#: plugins/x2go/x2go_plugin.c:500
+#: plugins/x2go/x2go_plugin.c:532
 #, fuzzy
 #| msgid "Resume"
 msgid "_Resume"
 msgstr "恢復(_R)"
 
-#: plugins/x2go/x2go_plugin.c:502
+#: plugins/x2go/x2go_plugin.c:534
 #, fuzzy
 msgid "_New"
 msgstr "新增(_N)"
 
 #. TRANSLATORS: Tooltip for terminating button inside Session-Chooser-Dialog.
 #. TRANSLATORS: Please stick to X2GoClient's way of translating.
-#: plugins/x2go/x2go_plugin.c:511
+#: plugins/x2go/x2go_plugin.c:543
 msgid "Terminating X2Go sessions can take a moment."
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:568
-#, fuzzy
-#| msgid "Display"
-msgid "X Display"
-msgstr "顯示"
-
-#: plugins/x2go/x2go_plugin.c:569
-#, fuzzy
-msgid "Status"
-msgstr "狀態"
-
-#: plugins/x2go/x2go_plugin.c:570
-#, fuzzy
-#| msgid "Permission"
-msgid "Session ID"
-msgstr "会议ID"
-
-#: plugins/x2go/x2go_plugin.c:571
-#, fuzzy
-msgid "Create date"
-msgstr "创建日期"
-
-#: plugins/x2go/x2go_plugin.c:572
-#, fuzzy
-msgid "Suspended since"
-msgstr "暂停使用，因为"
-
-#: plugins/x2go/x2go_plugin.c:573
-#, fuzzy
-msgid "Agent PID"
-msgstr "代理人PID"
-
-#: plugins/x2go/x2go_plugin.c:575
-#, fuzzy
-#| msgid "Username"
-msgid "Hostname"
-msgstr "主機名稱"
-
-#: plugins/x2go/x2go_plugin.c:576
-#, fuzzy
-msgid "Cookie"
-msgstr "饼干"
-
-#: plugins/x2go/x2go_plugin.c:577
-#, fuzzy
-msgid "Graphic port"
-msgstr "图形端口"
-
-#: plugins/x2go/x2go_plugin.c:578
-#, fuzzy
-msgid "SND port"
-msgstr "SND端口"
-
-#: plugins/x2go/x2go_plugin.c:579
-#, fuzzy
-#| msgid "Local SSH port"
-msgid "SSHFS port"
-msgstr "SSHFS端口"
-
-#: plugins/x2go/x2go_plugin.c:582
-#, fuzzy
-msgid "Unknown property"
+#: plugins/x2go/x2go_plugin.c:618 plugins/x2go/x2go_plugin.c:620
+#, fuzzy, c-format
+msgid "Unknown property '%i'"
 msgstr "未知财产"
 
-#: plugins/x2go/x2go_plugin.c:657 plugins/x2go/x2go_plugin.c:700
+#: plugins/x2go/x2go_plugin.c:708 plugins/x2go/x2go_plugin.c:755
 #, fuzzy
 msgid "Couldn't find child GtkTreeView of session chooser dialog."
 msgstr "找不到会话选择器对话框的子GtkTreeView。"
 
-#: plugins/x2go/x2go_plugin.c:669
-#, fuzzy
-msgid "Both parameters 'dialog' and 'treeview' are uninitialized!"
-msgstr "参数'env'无效或未被初始化。"
-
-#: plugins/x2go/x2go_plugin.c:677
+#: plugins/x2go/x2go_plugin.c:720
 msgid ""
-"GtkTreeModel of session chooser dialog could not be obtained for an unknown "
-"reason."
+"Neither the 'dialog' nor 'treeview' parameters are initialized! At least one "
+"of them must be given."
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:709
+#: plugins/x2go/x2go_plugin.c:729
+#, fuzzy
+msgid ""
+"Could not obtain \"GtkTreeModelFilter*\" of the session chooser dialog, for "
+"unknown reason."
+msgstr "找不到会话选择器对话框的子GtkTreeView。"
+
+#: plugins/x2go/x2go_plugin.c:764
 #, fuzzy
 msgid "Couldn't get currently selected row (session)!"
 msgstr "无法从选定的行中获取会话ID。"
 
-#: plugins/x2go/x2go_plugin.c:725
+#: plugins/x2go/x2go_plugin.c:783
 #, fuzzy, c-format
 msgid ""
 "Exactly one session should be selectable but '%i' rows (sessions) are "
 "selected."
 msgstr "只有一个会议可以被选中。"
 
-#: plugins/x2go/x2go_plugin.c:764
+#: plugins/x2go/x2go_plugin.c:833
 #, fuzzy
 msgid "Failed to fill 'GtkTreeIter'."
 msgstr "填充'GtkTreeIter'失败。"
 
-#: plugins/x2go/x2go_plugin.c:776
-#, fuzzy, c-format
-msgid "Couldn't get property with index '%i' out of selected row."
-msgstr "无法从选定的行中获取会话ID。"
-
-#: plugins/x2go/x2go_plugin.c:807
+#: plugins/x2go/x2go_plugin.c:899
 #, fuzzy
 msgid "parameter 'argv' is 'NULL'."
 msgstr "参数'argv'为'NULL'。"
 
-#: plugins/x2go/x2go_plugin.c:818
+#: plugins/x2go/x2go_plugin.c:910
 #, fuzzy
 msgid "parameter 'error' is 'NULL'."
 msgstr "参数'error'为'NULL'。"
 
-#: plugins/x2go/x2go_plugin.c:826
+#: plugins/x2go/x2go_plugin.c:918
 #, fuzzy
 msgid "parameter 'env' is either invalid or uninitialized."
 msgstr "参数'env'无效或未被初始化。"
 
-#: plugins/x2go/x2go_plugin.c:842 plugins/x2go/x2go_plugin.c:2170
+#: plugins/x2go/x2go_plugin.c:934 plugins/x2go/x2go_plugin.c:2376
 #, fuzzy
 msgid "Started PyHoca-CLI with the following arguments:"
 msgstr "启动PyHoca-CLI，参数如下。"
 
-#: plugins/x2go/x2go_plugin.c:870
+#: plugins/x2go/x2go_plugin.c:962
 #, fuzzy
 msgid ""
 "The necessary PyHoca-CLI process has encountered a internet connection "
 "problem."
 msgstr "必要的PyHoca-CLI进程遇到了一个互联网连接问题。"
 
-#: plugins/x2go/x2go_plugin.c:880
-#, fuzzy
-msgid "An unknown error occured while trying to start PyHoca-CLI."
-msgstr "在尝试启动PyHoca-CLI时发生了一个未知的错误。"
+#: plugins/x2go/x2go_plugin.c:972
+#, fuzzy, c-format
+msgid ""
+"Could not start PyHoca-CLI:\n"
+"%s"
+msgstr "无法启动PyHoca-CLI（%i）：'%s'"
 
-#: plugins/x2go/x2go_plugin.c:890
+#: plugins/x2go/x2go_plugin.c:983
 #, fuzzy, c-format
 msgid ""
 "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i"
 msgstr "在尝试启动PyHoca-CLI时发生了一个未知的错误。退出代码。%i"
 
-#: plugins/x2go/x2go_plugin.c:897
+#: plugins/x2go/x2go_plugin.c:990
 #, fuzzy, c-format
 msgid ""
 "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i. "
 "Error: '%s'"
 msgstr "在尝试启动PyHoca-CLI时发生了一个未知的错误。退出代码。%i。错误：'%s'。"
 
-#: plugins/x2go/x2go_plugin.c:940
+#: plugins/x2go/x2go_plugin.c:1032
+#, fuzzy
+msgid "Neither the 'path' nor 'dialog' parameters are initialized."
+msgstr "参数'env'无效或未被初始化。"
+
+#: plugins/x2go/x2go_plugin.c:1048
+msgid "GtkTreePath 'path' describes a non-existing row!"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1113
 #, fuzzy
 msgid "Parameter 'custom_data' is not fully initialized!"
 msgstr "参数'default_username'未被初始化。"
 
-#: plugins/x2go/x2go_plugin.c:967 plugins/x2go/x2go_plugin.c:1576
-#: plugins/x2go/x2go_plugin.c:1870
+#: plugins/x2go/x2go_plugin.c:1141 plugins/x2go/x2go_plugin.c:1782
+#: plugins/x2go/x2go_plugin.c:2076
 #, fuzzy
 #| msgid "Per connection"
 msgid "'Invalid connection data.'"
 msgstr "'无效的连接数据。"
 
-#: plugins/x2go/x2go_plugin.c:981
-#, fuzzy
-msgid "Parameter 'session_id' is not initialized!"
-msgstr "参数'default_username'未被初始化。"
-
-#: plugins/x2go/x2go_plugin.c:1047
+#: plugins/x2go/x2go_plugin.c:1218
 #, fuzzy, c-format
-msgid "An error occured while trying to terminate a X2Go session: %s"
+msgid ""
+"An error occured while trying to terminate X2Go session '%s':\n"
+"%s"
 msgstr "在启动X2Go会话时发生了一个错误…"
 
-#: plugins/x2go/x2go_plugin.c:1094 plugins/x2go/x2go_plugin.c:1118
-#, fuzzy
-msgid "Couldn't get session ID from session chooser dialog."
-msgstr "无法从会话选择器对话框中获得会话ID。"
-
-#: plugins/x2go/x2go_plugin.c:1101
-#, fuzzy, c-format
-msgid "Resuming session: '%s'"
-msgstr "恢复会话：'%s'"
-
-#: plugins/x2go/x2go_plugin.c:1125
-#, fuzzy, c-format
-msgid "Terminating session: '%s'"
-msgstr "恢复会话：'%s'"
-
-#: plugins/x2go/x2go_plugin.c:1142
-msgid "GtkTreePath 'path' describes a non-existing row!"
-msgstr ""
-
-#: plugins/x2go/x2go_plugin.c:1380
-#, fuzzy
-msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
-msgstr "PyHoca-CLI意外地退出了。这个连接现在将被关闭。"
-
-#: plugins/x2go/x2go_plugin.c:1388
+#: plugins/x2go/x2go_plugin.c:1230 plugins/x2go/x2go_plugin.c:1594
 #, fuzzy
 msgid "An error occured."
 msgstr "发生了一个错误。"
 
-#: plugins/x2go/x2go_plugin.c:1389
+#: plugins/x2go/x2go_plugin.c:1330 plugins/x2go/x2go_plugin.c:1345
+#, fuzzy
+msgid "Couldn't get session ID from session chooser dialog."
+msgstr "无法从会话选择器对话框中获得会话ID。"
+
+#: plugins/x2go/x2go_plugin.c:1337
+#, fuzzy, c-format
+msgid "Resuming session: '%s'"
+msgstr "恢复会话：'%s'"
+
+#: plugins/x2go/x2go_plugin.c:1352
+#, fuzzy, c-format
+msgid "Terminating session: '%s'"
+msgstr "恢复会话：'%s'"
+
+#: plugins/x2go/x2go_plugin.c:1586
+#, fuzzy
+msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
+msgstr "PyHoca-CLI意外地退出了。这个连接现在将被关闭。"
+
+#: plugins/x2go/x2go_plugin.c:1595
 #, fuzzy
 msgid ""
 "The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
@@ -3668,17 +3674,17 @@ msgstr ""
 "请检查你的配置文件设置和PyHoca-CLI的输出是否有错误。同时确保远程服务器是可以"
 "到达的。"
 
-#: plugins/x2go/x2go_plugin.c:1432
+#: plugins/x2go/x2go_plugin.c:1638
 #, fuzzy
 msgid "Can't save empty username!"
 msgstr "不能保存空的用户名!"
 
-#: plugins/x2go/x2go_plugin.c:1446
+#: plugins/x2go/x2go_plugin.c:1652
 #, fuzzy
 msgid "Could not save new credentials."
 msgstr "无法保存新的凭证。"
 
-#: plugins/x2go/x2go_plugin.c:1449
+#: plugins/x2go/x2go_plugin.c:1655
 #, fuzzy
 msgid ""
 "An error occured while trying to save new credentials: 's_password' or "
@@ -3687,113 +3693,113 @@ msgstr ""
 "在试图保存新证书时发生了一个错误：'s_password'或's_username'字符串没有被设"
 "置。"
 
-#: plugins/x2go/x2go_plugin.c:1480
+#: plugins/x2go/x2go_plugin.c:1686
 #, fuzzy
 msgid "Parameter 'default_username' is uninitialized."
 msgstr "参数'default_username'未被初始化。"
 
-#: plugins/x2go/x2go_plugin.c:1509
+#: plugins/x2go/x2go_plugin.c:1715
 #, fuzzy
 #| msgid "Enter NX authentication credentials"
 msgid "Enter X2Go credentials"
 msgstr "输入X2Go凭证"
 
-#: plugins/x2go/x2go_plugin.c:1706
+#: plugins/x2go/x2go_plugin.c:1912
 #, fuzzy
 msgid ""
 "Couldn't parse the output of PyHoca-CLI's --list-sessions option. Creating a "
 "new session now."
 msgstr "无法解析PyHoca-CLI的-list-sessions选项的输出。现在创建一个新的会话。"
 
-#: plugins/x2go/x2go_plugin.c:1745
+#: plugins/x2go/x2go_plugin.c:1951
 #, fuzzy
 msgid "Couldn't allocate enough memory!"
 msgstr "无法分配足够的内存!"
 
-#: plugins/x2go/x2go_plugin.c:1755
+#: plugins/x2go/x2go_plugin.c:1961
 #, fuzzy, c-format
 msgid "Found already existing X2Go session with ID: '%s'"
 msgstr "发现已经存在的X2Go会话的ID：'%s'"
 
 #. TRANSLATORS: Please stick to X2GoClient's translation.
-#: plugins/x2go/x2go_plugin.c:1798
+#: plugins/x2go/x2go_plugin.c:2004
 #, fuzzy
 msgid "Suspended"
 msgstr "暂停使用，因为"
 
 #. TRANSLATORS: Please stick to X2GoClient's translation.
-#: plugins/x2go/x2go_plugin.c:1801
+#: plugins/x2go/x2go_plugin.c:2007
 #, fuzzy
 msgid "Running"
 msgstr "執行中"
 
 #. TRANSLATORS: Please stick to X2GoClient's translation.
-#: plugins/x2go/x2go_plugin.c:1804
+#: plugins/x2go/x2go_plugin.c:2010
 #, fuzzy
 #| msgid "Terminate"
 msgid "Terminated"
 msgstr "已終止"
 
-#: plugins/x2go/x2go_plugin.c:1837
+#: plugins/x2go/x2go_plugin.c:2043
 #, fuzzy
 msgid ""
 "Could not find any sessions on remote machine. Creating a new session now."
 msgstr "在远程机器上找不到任何会话。现在创建一个新的会话。"
 
-#: plugins/x2go/x2go_plugin.c:1892
+#: plugins/x2go/x2go_plugin.c:2098
 #, fuzzy
 #| msgid "Choose a file to upload"
 msgid "Choose a session to resume:"
 msgstr "选择一个会话来恢复。"
 
-#: plugins/x2go/x2go_plugin.c:1935
+#: plugins/x2go/x2go_plugin.c:2141
 #, fuzzy
 msgid "Waiting for user to select a session…"
 msgstr "等待用户选择一个会话…"
 
-#: plugins/x2go/x2go_plugin.c:1943
+#: plugins/x2go/x2go_plugin.c:2149
 #, fuzzy
 msgid "No session was selected. Creating a new one."
 msgstr "没有选择会话。创建一个新的。"
 
-#: plugins/x2go/x2go_plugin.c:1991
+#: plugins/x2go/x2go_plugin.c:2197
 #, fuzzy, c-format
 msgid "A non-critical error happened: %s"
 msgstr "发生了一个非关键性的错误。%s。"
 
-#: plugins/x2go/x2go_plugin.c:1996
+#: plugins/x2go/x2go_plugin.c:2202
 #, fuzzy, c-format
 msgid "User chose to resume session with ID: '%s'"
 msgstr "用户选择以ID恢复会话：'%s'"
 
 #. TRANSLATORS: Please stick to X2GoClient's way of translating.
-#: plugins/x2go/x2go_plugin.c:2017
+#: plugins/x2go/x2go_plugin.c:2223
 #, fuzzy, c-format
 msgid "Resuming session '%s'…"
 msgstr "恢复会话'%s'...。"
 
-#: plugins/x2go/x2go_plugin.c:2148
+#: plugins/x2go/x2go_plugin.c:2354
 #, fuzzy
 msgid "DPI setting is out of bounds. Please adjust it in profile settings."
 msgstr "DPI设置超出了范围。请在配置文件设置中调整。"
 
-#: plugins/x2go/x2go_plugin.c:2190
+#: plugins/x2go/x2go_plugin.c:2396
 #, fuzzy
 msgid "An error occured while starting an X2Go session…"
 msgstr "在启动X2Go会话时发生了一个错误…"
 
-#: plugins/x2go/x2go_plugin.c:2198
+#: plugins/x2go/x2go_plugin.c:2404
 #, fuzzy
 #| msgid "Could not start SSH session. %s"
 msgid "Could not start X2Go session."
 msgstr "无法启动X2Go会话。"
 
-#: plugins/x2go/x2go_plugin.c:2199
+#: plugins/x2go/x2go_plugin.c:2405
 #, fuzzy, c-format
 msgid "Could not start PyHoca-CLI (%i): '%s'"
 msgstr "无法启动PyHoca-CLI（%i）：'%s'"
 
-#: plugins/x2go/x2go_plugin.c:2314
+#: plugins/x2go/x2go_plugin.c:2520
 #, fuzzy
 msgid ""
 "Couldn't get PyHoca-CLI's command-line features. This indicates it is either "
@@ -3803,57 +3809,57 @@ msgstr ""
 "无法获得PyHoca-CLI的命令行功能。这表明它要么太老，要么没有安装。现在将使用一"
 "套旧的有限的功能。"
 
-#: plugins/x2go/x2go_plugin.c:2323
+#: plugins/x2go/x2go_plugin.c:2529
 #, fuzzy
 msgid ""
 "Could not parse PyHoca-CLI's command-line features. Using a limited feature-"
 "set for now."
 msgstr "无法解析PyHoca-CLI的命令行功能。暂时使用有限的功能集。"
 
-#: plugins/x2go/x2go_plugin.c:2329
+#: plugins/x2go/x2go_plugin.c:2535
 #, fuzzy
 msgid "Retrieved the following PyHoca-CLI command-line features:"
 msgstr "检索了以下PyHoca-CLI的命令行功能。"
 
-#: plugins/x2go/x2go_plugin.c:2337
+#: plugins/x2go/x2go_plugin.c:2543
 #, fuzzy, c-format
 msgid "Available feature[%i]: '%s'"
 msgstr "可用功能[%i]：'%s'"
 
-#: plugins/x2go/x2go_plugin.c:2442
+#: plugins/x2go/x2go_plugin.c:2648
 #, fuzzy
 #| msgid "Could not open channel. %s"
 msgid "Could not open X11 DISPLAY."
 msgstr "无法打开X11 DISPLAY。"
 
-#: plugins/x2go/x2go_plugin.c:2482
+#: plugins/x2go/x2go_plugin.c:2688
 #, fuzzy
 msgid "Waiting for window of X2Go Agent to appear…"
 msgstr "等待X2Go代理的窗口出现…"
 
-#: plugins/x2go/x2go_plugin.c:2508
+#: plugins/x2go/x2go_plugin.c:2714
 #, fuzzy
 msgid "Waiting for PyHoca-CLI to show the session's window…"
 msgstr "等待PyHoca-CLI显示会话的窗口…"
 
-#: plugins/x2go/x2go_plugin.c:2559
+#: plugins/x2go/x2go_plugin.c:2765
 #, fuzzy
 msgid "No X2Go session window appeared. Something went wrong…"
 msgstr "没有X2Go会话窗口出现。出了点问题…"
 
-#: plugins/x2go/x2go_plugin.c:2670
+#: plugins/x2go/x2go_plugin.c:2876
 #, fuzzy
 msgid "RemminaProtocolWidget* gp is 'NULL'!"
 msgstr "RemminaProtocolWidget* gp是'NULL'!"
 
-#: plugins/x2go/x2go_plugin.c:2691
+#: plugins/x2go/x2go_plugin.c:2897
 #, fuzzy, c-format
 #| msgid ""
 #| "The protocol “%s” is unavailable because GtkSocket only works under X.Org."
 msgid "The %s protocol is unavailable because GtkSocket only works under X.org"
 msgstr "%s协议不可用，因为GtkSocket只在X.org下工作。"
 
-#: plugins/x2go/x2go_plugin.c:2700
+#: plugins/x2go/x2go_plugin.c:2906
 #, fuzzy
 msgid "Could not initialize pthread. Falling back to non-threaded mode…"
 msgstr "无法初始化pthread。回落到非线程模式…"
@@ -3866,7 +3872,7 @@ msgstr "无法初始化pthread。回落到非线程模式…"
 #. your language.
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
-#: plugins/x2go/x2go_plugin.c:2743 plugins/x2go/x2go_plugin.c:2761
+#: plugins/x2go/x2go_plugin.c:2949 plugins/x2go/x2go_plugin.c:2967
 #, fuzzy, c-format
 msgid "%sand '%s'"
 msgstr "%s和'%s'"
@@ -3877,7 +3883,7 @@ msgstr "%s和'%s'"
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
-#: plugins/x2go/x2go_plugin.c:2748 plugins/x2go/x2go_plugin.c:2766
+#: plugins/x2go/x2go_plugin.c:2954 plugins/x2go/x2go_plugin.c:2972
 #, fuzzy, c-format
 msgid "%s'%s' "
 msgstr "%s'%s' "
@@ -3885,147 +3891,147 @@ msgstr "%s'%s' "
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
 #. 'value1', 'value2', 'valueN-1' and 'valueN'
-#: plugins/x2go/x2go_plugin.c:2753
+#: plugins/x2go/x2go_plugin.c:2959
 #, fuzzy, c-format
 msgid "%s'%s', "
 msgstr "%s'%s'。 "
 
-#: plugins/x2go/x2go_plugin.c:2792
+#: plugins/x2go/x2go_plugin.c:2998
 #, fuzzy
 msgid "Invalid validation data in ProtocolSettings array!"
 msgstr "ProtocolSettings数组中的验证数据无效!"
 
-#: plugins/x2go/x2go_plugin.c:2807 plugins/x2go/x2go_plugin.c:2872
+#: plugins/x2go/x2go_plugin.c:3013 plugins/x2go/x2go_plugin.c:3078
 #, fuzzy
 msgid "Validation data in ProtocolSettings array is invalid!"
 msgstr "ProtocolSettings数组中的验证数据无效!"
 
-#: plugins/x2go/x2go_plugin.c:2816
+#: plugins/x2go/x2go_plugin.c:3022
 #, fuzzy
 msgid "Parameters 'key' or 'value' are 'NULL'!"
 msgstr "参数'key'或'value'是'NULL'!"
 
-#: plugins/x2go/x2go_plugin.c:2834
+#: plugins/x2go/x2go_plugin.c:3040
 #, fuzzy, c-format
 msgid "Allowed values are %s."
 msgstr "允许的值是%s。"
 
-#: plugins/x2go/x2go_plugin.c:2836
+#: plugins/x2go/x2go_plugin.c:3042
 #, fuzzy, c-format
 msgid "The only allowed value is '%s'."
 msgstr "唯一允许的值是'%s'。"
 
-#: plugins/x2go/x2go_plugin.c:2883
+#: plugins/x2go/x2go_plugin.c:3089
 #, fuzzy
 msgid "The lower limit is not a valid integer!"
 msgstr "下限不是一个有效的整数!"
 
-#: plugins/x2go/x2go_plugin.c:2888
+#: plugins/x2go/x2go_plugin.c:3094
 #, fuzzy
 msgid "The lower limit is too high!"
 msgstr "下限太高了!"
 
-#: plugins/x2go/x2go_plugin.c:2893
+#: plugins/x2go/x2go_plugin.c:3099
 #, fuzzy
 msgid "The lower limit is too low!"
 msgstr "下限太低了!"
 
-#: plugins/x2go/x2go_plugin.c:2898 plugins/x2go/x2go_plugin.c:2928
-#: plugins/x2go/x2go_plugin.c:2948
+#: plugins/x2go/x2go_plugin.c:3104 plugins/x2go/x2go_plugin.c:3134
+#: plugins/x2go/x2go_plugin.c:3154
 #, fuzzy
 msgid "Something unknown went wrong."
 msgstr "一些未知的东西出了问题。"
 
-#: plugins/x2go/x2go_plugin.c:2903 plugins/x2go/x2go_plugin.c:2933
-#: plugins/x2go/x2go_plugin.c:2952
+#: plugins/x2go/x2go_plugin.c:3109 plugins/x2go/x2go_plugin.c:3139
+#: plugins/x2go/x2go_plugin.c:3158
 #, fuzzy
 msgid "Please check the RemminaProtocolSetting array for possible errors."
 msgstr "请检查RemminaProtocolSetting数组中可能存在的错误。"
 
-#: plugins/x2go/x2go_plugin.c:2913
+#: plugins/x2go/x2go_plugin.c:3119
 #, fuzzy
 msgid "The upper limit is not a valid integer!"
 msgstr "上限不是一个有效的整数!"
 
-#: plugins/x2go/x2go_plugin.c:2918
+#: plugins/x2go/x2go_plugin.c:3124
 #, fuzzy
 msgid "The upper limit is too high!"
 msgstr "上限太高了!"
 
-#: plugins/x2go/x2go_plugin.c:2923
+#: plugins/x2go/x2go_plugin.c:3129
 #, fuzzy
 msgid "The upper limit is too low!"
 msgstr "上限太低了!"
 
-#: plugins/x2go/x2go_plugin.c:2943
+#: plugins/x2go/x2go_plugin.c:3149
 #, fuzzy
 msgid "The input is not a valid integer!"
 msgstr "输入的不是一个有效的整数!"
 
-#: plugins/x2go/x2go_plugin.c:2945 plugins/x2go/x2go_plugin.c:2964
+#: plugins/x2go/x2go_plugin.c:3151 plugins/x2go/x2go_plugin.c:3170
 #, fuzzy, c-format
 msgid "Input must be a number between %i and %i."
 msgstr "输入必须是%i和%i之间的数字。"
 
-#: plugins/x2go/x2go_plugin.c:2993
+#: plugins/x2go/x2go_plugin.c:3199
 #, fuzzy
 #| msgid "Start-up program"
 msgid "Startup program"
 msgstr "啟動程式"
 
-#: plugins/x2go/x2go_plugin.c:2995
+#: plugins/x2go/x2go_plugin.c:3201
 #, fuzzy
 msgid "Which command should be executed after creating the X2Go session?"
 msgstr "创建X2Go会话后应执行哪条命令？"
 
-#: plugins/x2go/x2go_plugin.c:2997
+#: plugins/x2go/x2go_plugin.c:3203
 #, fuzzy
 #| msgid "Keyboard layout"
 msgid "Keyboard Layout (auto)"
 msgstr "键盘布局（自动）"
 
-#: plugins/x2go/x2go_plugin.c:2998
+#: plugins/x2go/x2go_plugin.c:3204
 #, fuzzy
 #| msgid "Keyboard layout"
 msgid "Keyboard type (auto)"
 msgstr "键盘类型(自动)"
 
-#: plugins/x2go/x2go_plugin.c:2999
+#: plugins/x2go/x2go_plugin.c:3205
 #, fuzzy
 #| msgid "Turn on Java support"
 msgid "Audio support"
 msgstr "音频支持"
 
-#: plugins/x2go/x2go_plugin.c:3001
+#: plugins/x2go/x2go_plugin.c:3207
 #, fuzzy
 msgid "The sound system of the X2Go server (default: 'pulse')."
 msgstr "X2Go服务器的声音系统（默认：\"脉冲\"）。"
 
-#: plugins/x2go/x2go_plugin.c:3004
+#: plugins/x2go/x2go_plugin.c:3210
 #, fuzzy
 #| msgid "USB redirection error"
 msgid "Clipboard direction"
 msgstr "剪贴板方向"
 
-#: plugins/x2go/x2go_plugin.c:3006
+#: plugins/x2go/x2go_plugin.c:3212
 #, fuzzy
 msgid "Which direction should clipboard content be copied? (default: 'both')."
 msgstr "剪贴板内容应该向哪个方向复制？(默认：'两个')。"
 
-#: plugins/x2go/x2go_plugin.c:3010
+#: plugins/x2go/x2go_plugin.c:3216
 #, fuzzy
 #| msgid "Resolution"
 msgid "DPI resolution"
 msgstr "DPI分辨率"
 
-#: plugins/x2go/x2go_plugin.c:3011
+#: plugins/x2go/x2go_plugin.c:3217
 #, fuzzy
 msgid ""
 "Launch session with a specific resolution (in dots per inch). Must be "
 "between 20 and 400."
 msgstr "以特定的分辨率（以每英寸的点数）启动会话。必须在20和400之间。"
 
-#: plugins/x2go/x2go_plugin.c:3055
+#: plugins/x2go/x2go_plugin.c:3261
 #, fuzzy
 msgid "X2Go plugin loaded."
 msgstr "已加载X2Go插件。"
@@ -5302,6 +5308,18 @@ msgstr "解鎖 Remmina"
 #, fuzzy
 msgid "Master password"
 msgstr "主密碼"
+
+#, fuzzy, c-format
+#~ msgid "Couldn't get property with index '%i' out of selected row."
+#~ msgstr "无法从选定的行中获取会话ID。"
+
+#, fuzzy
+#~ msgid "An unknown error occured while trying to start PyHoca-CLI."
+#~ msgstr "在尝试启动PyHoca-CLI时发生了一个未知的错误。"
+
+#, fuzzy
+#~ msgid "Parameter 'session_id' is not initialized!"
+#~ msgstr "参数'default_username'未被初始化。"
 
 #~ msgid ""
 #~ "Send <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"

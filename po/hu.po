@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-12-03 21:49+0000\n"
+"POT-Creation-Date: 2021-12-09 11:28+0000\n"
 "PO-Revision-Date: 2021-12-06 00:53+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/remmina/"
@@ -28,7 +28,7 @@ msgstr ""
 #: src/remmina_protocol_widget.c:1677 src/remmina_protocol_widget.c:1696
 #: src/remmina_file_editor.c:1101 src/remmina_file_editor.c:1222
 #: src/remmina_ssh_plugin.c:1361 plugins/rdp/rdp_plugin.c:2723
-#: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:2992
+#: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:3198
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1646
 #: data/ui/remmina_unlock.glade:116
 #, fuzzy
@@ -82,7 +82,7 @@ msgstr "Kapcsolódás SSH-val új terminálban"
 #: src/remmina_file_editor.c:1216 src/remmina_ssh_plugin.c:1471
 #: plugins/rdp/rdp_plugin.c:2722 plugins/vnc/vnc_plugin.c:1976
 #: plugins/vnc/vnc_plugin.c:1988 plugins/www/www_plugin.c:894
-#: plugins/x2go/x2go_plugin.c:574 plugins/x2go/x2go_plugin.c:2991
+#: plugins/x2go/x2go_plugin.c:475 plugins/x2go/x2go_plugin.c:3197
 #: data/ui/remmina_mpc.glade:144
 #, fuzzy
 msgid "Username"
@@ -117,16 +117,18 @@ msgid "Remmina debugging window"
 msgstr "Nyissa meg a Remmina főablakát"
 
 #: src/remmina_log.c:133
-msgid "Paste sytem information in the Remmina debugging window"
-msgstr ""
+#, fuzzy
+#| msgid "Open Main Window"
+msgid "Paste sytem info in the Remmina debugging window"
+msgstr "Nyissa meg a Remmina főablakát"
 
 #: src/remmina_log.c:153
 msgid ""
-"This window can help you finding connections problems.\n"
+"This window can help you find connection problems.\n"
 "You can stop and start the logging at any moment using the On/Off switch.\n"
-"The stats button (Ctrl+T), may be useful to gather system information that "
-"you may share while reporting a bug.\n"
-"For more information on debugging Remmina see : https://gitlab.com/Remmina/"
+"The stats button (Ctrl+T), can be useful to gather system info you may share "
+"when reporting a bug.\n"
+"There is more info about debugging Remmina on https://gitlab.com/Remmina/"
 "Remmina/-/wikis/Usage/Remmina-debugging\n"
 msgstr ""
 
@@ -1742,8 +1744,8 @@ msgstr ""
 "'setting_name_to_validate', 'value' vagy 'gfe' NULL!"
 
 #. TRANSLATORS: Meta-error. Shouldn't be visible.
-#: src/remmina_file_editor.c:1445 plugins/x2go/x2go_plugin.c:2188
-#: plugins/x2go/x2go_plugin.c:2817
+#: src/remmina_file_editor.c:1445 plugins/x2go/x2go_plugin.c:2394
+#: plugins/x2go/x2go_plugin.c:3023
 #, fuzzy
 #| msgid "Transfer error"
 msgid "Internal error."
@@ -3487,45 +3489,107 @@ msgstr ""
 "A '%s' parancssori funkció nem elérhető! A PyHoca-CLI indításának kísérlete "
 "e funkció használata nélkül…"
 
-#: plugins/x2go/x2go_plugin.c:287 plugins/x2go/x2go_plugin.c:419
-#: plugins/x2go/x2go_plugin.c:478 plugins/x2go/x2go_plugin.c:581
-#: plugins/x2go/x2go_plugin.c:656 plugins/x2go/x2go_plugin.c:668
-#: plugins/x2go/x2go_plugin.c:676 plugins/x2go/x2go_plugin.c:699
-#: plugins/x2go/x2go_plugin.c:708 plugins/x2go/x2go_plugin.c:724
-#: plugins/x2go/x2go_plugin.c:763 plugins/x2go/x2go_plugin.c:775
-#: plugins/x2go/x2go_plugin.c:806 plugins/x2go/x2go_plugin.c:817
-#: plugins/x2go/x2go_plugin.c:825 plugins/x2go/x2go_plugin.c:939
-#: plugins/x2go/x2go_plugin.c:966 plugins/x2go/x2go_plugin.c:980
-#: plugins/x2go/x2go_plugin.c:1077 plugins/x2go/x2go_plugin.c:1141
-#: plugins/x2go/x2go_plugin.c:1445 plugins/x2go/x2go_plugin.c:1479
-#: plugins/x2go/x2go_plugin.c:1575 plugins/x2go/x2go_plugin.c:1869
-#: plugins/x2go/x2go_plugin.c:2669 plugins/x2go/x2go_plugin.c:2882
-#: plugins/x2go/x2go_plugin.c:2887 plugins/x2go/x2go_plugin.c:2892
-#: plugins/x2go/x2go_plugin.c:2897 plugins/x2go/x2go_plugin.c:2912
-#: plugins/x2go/x2go_plugin.c:2917 plugins/x2go/x2go_plugin.c:2922
-#: plugins/x2go/x2go_plugin.c:2927
+#: plugins/x2go/x2go_plugin.c:289 plugins/x2go/x2go_plugin.c:421
+#: plugins/x2go/x2go_plugin.c:510 plugins/x2go/x2go_plugin.c:617
+#: plugins/x2go/x2go_plugin.c:707 plugins/x2go/x2go_plugin.c:719
+#: plugins/x2go/x2go_plugin.c:728 plugins/x2go/x2go_plugin.c:754
+#: plugins/x2go/x2go_plugin.c:763 plugins/x2go/x2go_plugin.c:782
+#: plugins/x2go/x2go_plugin.c:832 plugins/x2go/x2go_plugin.c:898
+#: plugins/x2go/x2go_plugin.c:909 plugins/x2go/x2go_plugin.c:917
+#: plugins/x2go/x2go_plugin.c:1031 plugins/x2go/x2go_plugin.c:1047
+#: plugins/x2go/x2go_plugin.c:1112 plugins/x2go/x2go_plugin.c:1140
+#: plugins/x2go/x2go_plugin.c:1289 plugins/x2go/x2go_plugin.c:1651
+#: plugins/x2go/x2go_plugin.c:1685 plugins/x2go/x2go_plugin.c:1781
+#: plugins/x2go/x2go_plugin.c:2075 plugins/x2go/x2go_plugin.c:2875
+#: plugins/x2go/x2go_plugin.c:3088 plugins/x2go/x2go_plugin.c:3093
+#: plugins/x2go/x2go_plugin.c:3098 plugins/x2go/x2go_plugin.c:3103
+#: plugins/x2go/x2go_plugin.c:3118 plugins/x2go/x2go_plugin.c:3123
+#: plugins/x2go/x2go_plugin.c:3128 plugins/x2go/x2go_plugin.c:3133
 #, fuzzy, c-format
 #| msgid "Transfer error"
 msgid "Internal error: %s"
 msgstr "Belső hiba: %s"
 
-#: plugins/x2go/x2go_plugin.c:288 plugins/x2go/x2go_plugin.c:420
-#: plugins/x2go/x2go_plugin.c:479 plugins/x2go/x2go_plugin.c:1078
+#: plugins/x2go/x2go_plugin.c:290 plugins/x2go/x2go_plugin.c:422
+#: plugins/x2go/x2go_plugin.c:511 plugins/x2go/x2go_plugin.c:1290
 #, fuzzy
 msgid "Parameter 'custom_data' is not initialized!"
 msgstr "A 'default_username' paraméter nem inicializált."
 
-#: plugins/x2go/x2go_plugin.c:301
+#: plugins/x2go/x2go_plugin.c:303
 #, fuzzy
 msgid "Broken `DialogData`! Aborting…"
 msgstr "Törött `DialogData`! Megszakítás…"
 
-#: plugins/x2go/x2go_plugin.c:305
+#: plugins/x2go/x2go_plugin.c:307
 #, fuzzy
 msgid "Can't retrieve `DialogData`! Aborting…"
 msgstr "Nem lehet lekérdezni a `DialogData`-t! Megszakítás…"
 
-#: plugins/x2go/x2go_plugin.c:488
+#: plugins/x2go/x2go_plugin.c:469
+#, fuzzy
+#| msgid "Display"
+msgid "X Display"
+msgstr "Kijelző"
+
+#: plugins/x2go/x2go_plugin.c:470
+#, fuzzy
+msgid "Status"
+msgstr "Státusz"
+
+#: plugins/x2go/x2go_plugin.c:471
+#, fuzzy
+#| msgid "Permission"
+msgid "Session ID"
+msgstr "Munkamenet azonosítója"
+
+#: plugins/x2go/x2go_plugin.c:472
+#, fuzzy
+msgid "Create date"
+msgstr "Létrehozás dátuma"
+
+#: plugins/x2go/x2go_plugin.c:473
+#, fuzzy
+msgid "Suspended since"
+msgstr "Felfüggesztve, mivel"
+
+#: plugins/x2go/x2go_plugin.c:474
+#, fuzzy
+msgid "Agent PID"
+msgstr "Ügynök PID"
+
+#: plugins/x2go/x2go_plugin.c:476
+#, fuzzy
+#| msgid "Username"
+msgid "Hostname"
+msgstr "Kiszolgáló"
+
+#: plugins/x2go/x2go_plugin.c:477
+#, fuzzy
+msgid "Cookie"
+msgstr "Cookie"
+
+#: plugins/x2go/x2go_plugin.c:478
+#, fuzzy
+msgid "Graphic port"
+msgstr "Grafikus port"
+
+#: plugins/x2go/x2go_plugin.c:479
+#, fuzzy
+msgid "SND port"
+msgstr "SND port"
+
+#: plugins/x2go/x2go_plugin.c:480
+#, fuzzy
+#| msgid "Local SSH port"
+msgid "SSHFS port"
+msgstr "SSHFS port"
+
+#: plugins/x2go/x2go_plugin.c:481
+msgid "Visible"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:520
 #, fuzzy
 msgid "Couldn't retrieve valid `DialogData` or `sessions_list`! Aborting…"
 msgstr ""
@@ -3533,153 +3597,91 @@ msgstr ""
 "Megszakítás…"
 
 #. TRANSLATORS: Stick to x2goclient's translation for terminate.
-#: plugins/x2go/x2go_plugin.c:497
+#: plugins/x2go/x2go_plugin.c:529
 #, fuzzy
 #| msgid "Terminate"
 msgid "_Terminate"
 msgstr "Bezárás"
 
 #. TRANSLATORS: Stick to x2goclient's translation for resume.
-#: plugins/x2go/x2go_plugin.c:500
+#: plugins/x2go/x2go_plugin.c:532
 #, fuzzy
 #| msgid "Resume"
 msgid "_Resume"
 msgstr "_Újra"
 
-#: plugins/x2go/x2go_plugin.c:502
+#: plugins/x2go/x2go_plugin.c:534
 #, fuzzy
 msgid "_New"
 msgstr "Új"
 
 #. TRANSLATORS: Tooltip for terminating button inside Session-Chooser-Dialog.
 #. TRANSLATORS: Please stick to X2GoClient's way of translating.
-#: plugins/x2go/x2go_plugin.c:511
+#: plugins/x2go/x2go_plugin.c:543
 msgid "Terminating X2Go sessions can take a moment."
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:568
-#, fuzzy
-#| msgid "Display"
-msgid "X Display"
-msgstr "Kijelző"
-
-#: plugins/x2go/x2go_plugin.c:569
-#, fuzzy
-msgid "Status"
-msgstr "Státusz"
-
-#: plugins/x2go/x2go_plugin.c:570
-#, fuzzy
-#| msgid "Permission"
-msgid "Session ID"
-msgstr "Munkamenet azonosítója"
-
-#: plugins/x2go/x2go_plugin.c:571
-#, fuzzy
-msgid "Create date"
-msgstr "Létrehozás dátuma"
-
-#: plugins/x2go/x2go_plugin.c:572
-#, fuzzy
-msgid "Suspended since"
-msgstr "Felfüggesztve, mivel"
-
-#: plugins/x2go/x2go_plugin.c:573
-#, fuzzy
-msgid "Agent PID"
-msgstr "Ügynök PID"
-
-#: plugins/x2go/x2go_plugin.c:575
-#, fuzzy
-#| msgid "Username"
-msgid "Hostname"
-msgstr "Kiszolgáló"
-
-#: plugins/x2go/x2go_plugin.c:576
-#, fuzzy
-msgid "Cookie"
-msgstr "Cookie"
-
-#: plugins/x2go/x2go_plugin.c:577
-#, fuzzy
-msgid "Graphic port"
-msgstr "Grafikus port"
-
-#: plugins/x2go/x2go_plugin.c:578
-#, fuzzy
-msgid "SND port"
-msgstr "SND port"
-
-#: plugins/x2go/x2go_plugin.c:579
-#, fuzzy
-#| msgid "Local SSH port"
-msgid "SSHFS port"
-msgstr "SSHFS port"
-
-#: plugins/x2go/x2go_plugin.c:582
-#, fuzzy
-msgid "Unknown property"
+#: plugins/x2go/x2go_plugin.c:618 plugins/x2go/x2go_plugin.c:620
+#, fuzzy, c-format
+msgid "Unknown property '%i'"
 msgstr "Ismeretlen ingatlan"
 
-#: plugins/x2go/x2go_plugin.c:657 plugins/x2go/x2go_plugin.c:700
+#: plugins/x2go/x2go_plugin.c:708 plugins/x2go/x2go_plugin.c:755
 #, fuzzy
 msgid "Couldn't find child GtkTreeView of session chooser dialog."
 msgstr "Nem találta a munkamenetválasztó párbeszédpanel GtkTreeView gyermekét."
 
-#: plugins/x2go/x2go_plugin.c:669
-#, fuzzy
-msgid "Both parameters 'dialog' and 'treeview' are uninitialized!"
-msgstr "az 'env' paraméter vagy érvénytelen vagy nem inicializált."
-
-#: plugins/x2go/x2go_plugin.c:677
+#: plugins/x2go/x2go_plugin.c:720
 msgid ""
-"GtkTreeModel of session chooser dialog could not be obtained for an unknown "
-"reason."
+"Neither the 'dialog' nor 'treeview' parameters are initialized! At least one "
+"of them must be given."
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:709
+#: plugins/x2go/x2go_plugin.c:729
+#, fuzzy
+msgid ""
+"Could not obtain \"GtkTreeModelFilter*\" of the session chooser dialog, for "
+"unknown reason."
+msgstr "Nem találta a munkamenetválasztó párbeszédpanel GtkTreeView gyermekét."
+
+#: plugins/x2go/x2go_plugin.c:764
 #, fuzzy
 msgid "Couldn't get currently selected row (session)!"
 msgstr "Nem tudta kinyerni a munkamenet azonosítóját a kiválasztott sorból."
 
-#: plugins/x2go/x2go_plugin.c:725
+#: plugins/x2go/x2go_plugin.c:783
 #, fuzzy, c-format
 msgid ""
 "Exactly one session should be selectable but '%i' rows (sessions) are "
 "selected."
 msgstr "csak egy munkamenetet lehet kiválasztani."
 
-#: plugins/x2go/x2go_plugin.c:764
+#: plugins/x2go/x2go_plugin.c:833
 #, fuzzy
 msgid "Failed to fill 'GtkTreeIter'."
 msgstr "Nem sikerült kitölteni a 'GtkTreeIter'-t."
 
-#: plugins/x2go/x2go_plugin.c:776
-#, fuzzy, c-format
-msgid "Couldn't get property with index '%i' out of selected row."
-msgstr "Nem tudta kinyerni a munkamenet azonosítóját a kiválasztott sorból."
-
-#: plugins/x2go/x2go_plugin.c:807
+#: plugins/x2go/x2go_plugin.c:899
 #, fuzzy
 msgid "parameter 'argv' is 'NULL'."
 msgstr "az 'argv' paraméter 'NULL'."
 
-#: plugins/x2go/x2go_plugin.c:818
+#: plugins/x2go/x2go_plugin.c:910
 #, fuzzy
 msgid "parameter 'error' is 'NULL'."
 msgstr "a 'error' paraméter 'NULL'."
 
-#: plugins/x2go/x2go_plugin.c:826
+#: plugins/x2go/x2go_plugin.c:918
 #, fuzzy
 msgid "parameter 'env' is either invalid or uninitialized."
 msgstr "az 'env' paraméter vagy érvénytelen vagy nem inicializált."
 
-#: plugins/x2go/x2go_plugin.c:842 plugins/x2go/x2go_plugin.c:2170
+#: plugins/x2go/x2go_plugin.c:934 plugins/x2go/x2go_plugin.c:2376
 #, fuzzy
 msgid "Started PyHoca-CLI with the following arguments:"
 msgstr "Elindította a PyHoca-CLI-t a következő argumentumokkal:"
 
-#: plugins/x2go/x2go_plugin.c:870
+#: plugins/x2go/x2go_plugin.c:962
 #, fuzzy
 msgid ""
 "The necessary PyHoca-CLI process has encountered a internet connection "
@@ -3687,19 +3689,22 @@ msgid ""
 msgstr ""
 "A szükséges PyHoca-CLI folyamat internetkapcsolati problémába ütközött."
 
-#: plugins/x2go/x2go_plugin.c:880
-#, fuzzy
-msgid "An unknown error occured while trying to start PyHoca-CLI."
-msgstr "Ismeretlen hiba lépett fel a PyHoca-CLI indítása közben."
+#: plugins/x2go/x2go_plugin.c:972
+#, fuzzy, c-format
+#| msgid "Could not start SSH session. %s"
+msgid ""
+"Could not start PyHoca-CLI:\n"
+"%s"
+msgstr "Nem tudta elindítani a PyHoca-CLI-t (%i): '%s'"
 
-#: plugins/x2go/x2go_plugin.c:890
+#: plugins/x2go/x2go_plugin.c:983
 #, fuzzy, c-format
 msgid ""
 "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i"
 msgstr ""
 "Ismeretlen hiba lépett fel a PyHoca-CLI indítása közben. Kilépési kód: %i"
 
-#: plugins/x2go/x2go_plugin.c:897
+#: plugins/x2go/x2go_plugin.c:990
 #, fuzzy, c-format
 msgid ""
 "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i. "
@@ -3708,61 +3713,63 @@ msgstr ""
 "Ismeretlen hiba lépett fel a PyHoca-CLI indítása közben. Kilépési kód: %i. "
 "Hiba: '%s'"
 
-#: plugins/x2go/x2go_plugin.c:940
+#: plugins/x2go/x2go_plugin.c:1032
+#, fuzzy
+msgid "Neither the 'path' nor 'dialog' parameters are initialized."
+msgstr "az 'env' paraméter vagy érvénytelen vagy nem inicializált."
+
+#: plugins/x2go/x2go_plugin.c:1048
+msgid "GtkTreePath 'path' describes a non-existing row!"
+msgstr ""
+
+#: plugins/x2go/x2go_plugin.c:1113
 #, fuzzy
 msgid "Parameter 'custom_data' is not fully initialized!"
 msgstr "A 'default_username' paraméter nem inicializált."
 
-#: plugins/x2go/x2go_plugin.c:967 plugins/x2go/x2go_plugin.c:1576
-#: plugins/x2go/x2go_plugin.c:1870
+#: plugins/x2go/x2go_plugin.c:1141 plugins/x2go/x2go_plugin.c:1782
+#: plugins/x2go/x2go_plugin.c:2076
 #, fuzzy
 #| msgid "Per connection"
 msgid "'Invalid connection data.'"
 msgstr "'Érvénytelen kapcsolati adatok.'"
 
-#: plugins/x2go/x2go_plugin.c:981
-#, fuzzy
-msgid "Parameter 'session_id' is not initialized!"
-msgstr "A 'default_username' paraméter nem inicializált."
-
-#: plugins/x2go/x2go_plugin.c:1047
+#: plugins/x2go/x2go_plugin.c:1218
 #, fuzzy, c-format
-msgid "An error occured while trying to terminate a X2Go session: %s"
+msgid ""
+"An error occured while trying to terminate X2Go session '%s':\n"
+"%s"
 msgstr "Hiba történt az X2Go munkamenet indítása közben…"
 
-#: plugins/x2go/x2go_plugin.c:1094 plugins/x2go/x2go_plugin.c:1118
+#: plugins/x2go/x2go_plugin.c:1230 plugins/x2go/x2go_plugin.c:1594
+#, fuzzy
+msgid "An error occured."
+msgstr "Hiba történt."
+
+#: plugins/x2go/x2go_plugin.c:1330 plugins/x2go/x2go_plugin.c:1345
 #, fuzzy
 msgid "Couldn't get session ID from session chooser dialog."
 msgstr ""
 "Nem tudta megkapni a munkamenet azonosítóját a munkamenetválasztó "
 "párbeszédpanelből."
 
-#: plugins/x2go/x2go_plugin.c:1101
+#: plugins/x2go/x2go_plugin.c:1337
 #, fuzzy, c-format
 msgid "Resuming session: '%s'"
 msgstr "Munkamenet folytatása: '%s'"
 
-#: plugins/x2go/x2go_plugin.c:1125
+#: plugins/x2go/x2go_plugin.c:1352
 #, fuzzy, c-format
 msgid "Terminating session: '%s'"
 msgstr "Munkamenet folytatása: '%s'"
 
-#: plugins/x2go/x2go_plugin.c:1142
-msgid "GtkTreePath 'path' describes a non-existing row!"
-msgstr ""
-
-#: plugins/x2go/x2go_plugin.c:1380
+#: plugins/x2go/x2go_plugin.c:1586
 #, fuzzy
 msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
 msgstr ""
 "A PyHoca-CLI váratlanul kilépett. Ez a kapcsolat mostantól lezárásra kerül."
 
-#: plugins/x2go/x2go_plugin.c:1388
-#, fuzzy
-msgid "An error occured."
-msgstr "Hiba történt."
-
-#: plugins/x2go/x2go_plugin.c:1389
+#: plugins/x2go/x2go_plugin.c:1595
 #, fuzzy
 msgid ""
 "The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
@@ -3774,17 +3781,17 @@ msgstr ""
 "esetleges hibák miatt. Győződjön meg arról is, hogy a távoli szerver "
 "elérhető."
 
-#: plugins/x2go/x2go_plugin.c:1432
+#: plugins/x2go/x2go_plugin.c:1638
 #, fuzzy
 msgid "Can't save empty username!"
 msgstr "Nem lehet üres felhasználónevet menteni!"
 
-#: plugins/x2go/x2go_plugin.c:1446
+#: plugins/x2go/x2go_plugin.c:1652
 #, fuzzy
 msgid "Could not save new credentials."
 msgstr "Nem sikerült új hitelesítő adatokat menteni."
 
-#: plugins/x2go/x2go_plugin.c:1449
+#: plugins/x2go/x2go_plugin.c:1655
 #, fuzzy
 msgid ""
 "An error occured while trying to save new credentials: 's_password' or "
@@ -3793,18 +3800,18 @@ msgstr ""
 "Hiba történt az új hitelesítő adatok mentése során: az 's_password' vagy "
 "'s_username' karakterláncok nem voltak beállítva."
 
-#: plugins/x2go/x2go_plugin.c:1480
+#: plugins/x2go/x2go_plugin.c:1686
 #, fuzzy
 msgid "Parameter 'default_username' is uninitialized."
 msgstr "A 'default_username' paraméter nem inicializált."
 
-#: plugins/x2go/x2go_plugin.c:1509
+#: plugins/x2go/x2go_plugin.c:1715
 #, fuzzy
 #| msgid "Enter NX authentication credentials"
 msgid "Enter X2Go credentials"
 msgstr "X2Go hitelesítő adatok megadása"
 
-#: plugins/x2go/x2go_plugin.c:1706
+#: plugins/x2go/x2go_plugin.c:1912
 #, fuzzy
 msgid ""
 "Couldn't parse the output of PyHoca-CLI's --list-sessions option. Creating a "
@@ -3813,64 +3820,64 @@ msgstr ""
 "Nem sikerült elemezni a PyHoca-CLI --list-sessions opciójának kimenetét. "
 "Most új munkamenetet hoz létre."
 
-#: plugins/x2go/x2go_plugin.c:1745
+#: plugins/x2go/x2go_plugin.c:1951
 #, fuzzy
 msgid "Couldn't allocate enough memory!"
 msgstr "Nem tudott elég memóriát allokálni!"
 
-#: plugins/x2go/x2go_plugin.c:1755
+#: plugins/x2go/x2go_plugin.c:1961
 #, fuzzy, c-format
 msgid "Found already existing X2Go session with ID: '%s'"
 msgstr "Már létező X2Go munkamenetet találtunk azonosítóval: '%s'"
 
 #. TRANSLATORS: Please stick to X2GoClient's translation.
-#: plugins/x2go/x2go_plugin.c:1798
+#: plugins/x2go/x2go_plugin.c:2004
 #, fuzzy
 msgid "Suspended"
 msgstr "Felfüggesztve, mivel"
 
 #. TRANSLATORS: Please stick to X2GoClient's translation.
-#: plugins/x2go/x2go_plugin.c:1801
+#: plugins/x2go/x2go_plugin.c:2007
 #, fuzzy
 msgid "Running"
 msgstr "Fut"
 
 #. TRANSLATORS: Please stick to X2GoClient's translation.
-#: plugins/x2go/x2go_plugin.c:1804
+#: plugins/x2go/x2go_plugin.c:2010
 #, fuzzy
 #| msgid "Terminate"
 msgid "Terminated"
 msgstr "Véget ért"
 
-#: plugins/x2go/x2go_plugin.c:1837
+#: plugins/x2go/x2go_plugin.c:2043
 #, fuzzy
 msgid ""
 "Could not find any sessions on remote machine. Creating a new session now."
 msgstr ""
 "Nem talált munkamenetet a távoli gépen. Most új munkamenetet hoz létre."
 
-#: plugins/x2go/x2go_plugin.c:1892
+#: plugins/x2go/x2go_plugin.c:2098
 #, fuzzy
 #| msgid "Choose a file to upload"
 msgid "Choose a session to resume:"
 msgstr "Válasszon ki egy munkamenetet a folytatáshoz:"
 
-#: plugins/x2go/x2go_plugin.c:1935
+#: plugins/x2go/x2go_plugin.c:2141
 #, fuzzy
 msgid "Waiting for user to select a session…"
 msgstr "Várja, hogy a felhasználó kiválasszon egy munkamenetet…"
 
-#: plugins/x2go/x2go_plugin.c:1943
+#: plugins/x2go/x2go_plugin.c:2149
 #, fuzzy
 msgid "No session was selected. Creating a new one."
 msgstr "Nem volt kiválasztva semmilyen munkamenet. Új ülés létrehozása."
 
-#: plugins/x2go/x2go_plugin.c:1991
+#: plugins/x2go/x2go_plugin.c:2197
 #, fuzzy, c-format
 msgid "A non-critical error happened: %s"
 msgstr "Nem kritikus hiba történt: %s"
 
-#: plugins/x2go/x2go_plugin.c:1996
+#: plugins/x2go/x2go_plugin.c:2202
 #, fuzzy, c-format
 msgid "User chose to resume session with ID: '%s'"
 msgstr ""
@@ -3878,35 +3885,35 @@ msgstr ""
 "azonosítóval: '%s'"
 
 #. TRANSLATORS: Please stick to X2GoClient's way of translating.
-#: plugins/x2go/x2go_plugin.c:2017
+#: plugins/x2go/x2go_plugin.c:2223
 #, fuzzy, c-format
 msgid "Resuming session '%s'…"
 msgstr "A '%s' munkamenet folytatása…"
 
-#: plugins/x2go/x2go_plugin.c:2148
+#: plugins/x2go/x2go_plugin.c:2354
 #, fuzzy
 msgid "DPI setting is out of bounds. Please adjust it in profile settings."
 msgstr ""
 "A DPI-beállítás nem megengedett. Kérjük, állítsa be a profilbeállításokban."
 
-#: plugins/x2go/x2go_plugin.c:2190
+#: plugins/x2go/x2go_plugin.c:2396
 #, fuzzy
 msgid "An error occured while starting an X2Go session…"
 msgstr "Hiba történt az X2Go munkamenet indítása közben…"
 
-#: plugins/x2go/x2go_plugin.c:2198
+#: plugins/x2go/x2go_plugin.c:2404
 #, fuzzy
 #| msgid "Could not start SSH session. %s"
 msgid "Could not start X2Go session."
 msgstr "Nem sikerült elindítani az X2Go munkamenetet."
 
-#: plugins/x2go/x2go_plugin.c:2199
+#: plugins/x2go/x2go_plugin.c:2405
 #, fuzzy, c-format
 #| msgid "Could not start SSH session. %s"
 msgid "Could not start PyHoca-CLI (%i): '%s'"
 msgstr "Nem tudta elindítani a PyHoca-CLI-t (%i): '%s'"
 
-#: plugins/x2go/x2go_plugin.c:2314
+#: plugins/x2go/x2go_plugin.c:2520
 #, fuzzy
 msgid ""
 "Couldn't get PyHoca-CLI's command-line features. This indicates it is either "
@@ -3917,7 +3924,7 @@ msgstr ""
 "túl régi, vagy nincs telepítve. Egyelőre egy régi, korlátozott számú "
 "funkciót fogunk használni."
 
-#: plugins/x2go/x2go_plugin.c:2323
+#: plugins/x2go/x2go_plugin.c:2529
 #, fuzzy
 msgid ""
 "Could not parse PyHoca-CLI's command-line features. Using a limited feature-"
@@ -3926,43 +3933,43 @@ msgstr ""
 "Nem sikerült elemezni a PyHoca-CLI parancssori funkcióit. Egyelőre "
 "korlátozott funkciókészletet használ."
 
-#: plugins/x2go/x2go_plugin.c:2329
+#: plugins/x2go/x2go_plugin.c:2535
 #, fuzzy
 msgid "Retrieved the following PyHoca-CLI command-line features:"
 msgstr "A következő PyHoca-CLI parancssori funkciókat hívta le:"
 
-#: plugins/x2go/x2go_plugin.c:2337
+#: plugins/x2go/x2go_plugin.c:2543
 #, fuzzy, c-format
 msgid "Available feature[%i]: '%s'"
 msgstr "Elérhető funkció[%i]: '%s''"
 
-#: plugins/x2go/x2go_plugin.c:2442
+#: plugins/x2go/x2go_plugin.c:2648
 #, fuzzy
 #| msgid "Could not open channel. %s"
 msgid "Could not open X11 DISPLAY."
 msgstr "Nem sikerült megnyitni az X11 DISPLAY-t."
 
-#: plugins/x2go/x2go_plugin.c:2482
+#: plugins/x2go/x2go_plugin.c:2688
 #, fuzzy
 msgid "Waiting for window of X2Go Agent to appear…"
 msgstr "Várom az X2Go Agent ablakának megjelenését…"
 
-#: plugins/x2go/x2go_plugin.c:2508
+#: plugins/x2go/x2go_plugin.c:2714
 #, fuzzy
 msgid "Waiting for PyHoca-CLI to show the session's window…"
 msgstr "Várjuk, hogy a PyHoca-CLI megjelenítse a munkamenet ablakát…"
 
-#: plugins/x2go/x2go_plugin.c:2559
+#: plugins/x2go/x2go_plugin.c:2765
 #, fuzzy
 msgid "No X2Go session window appeared. Something went wrong…"
 msgstr "Nem jelent meg az X2Go munkamenet ablak. Valami elromlott…"
 
-#: plugins/x2go/x2go_plugin.c:2670
+#: plugins/x2go/x2go_plugin.c:2876
 #, fuzzy
 msgid "RemminaProtocolWidget* gp is 'NULL'!"
 msgstr "RemminaProtocolWidget* gp 'NULL'!"
 
-#: plugins/x2go/x2go_plugin.c:2691
+#: plugins/x2go/x2go_plugin.c:2897
 #, fuzzy, c-format
 #| msgid ""
 #| "The protocol “%s” is unavailable because GtkSocket only works under X.Org."
@@ -3970,7 +3977,7 @@ msgid "The %s protocol is unavailable because GtkSocket only works under X.org"
 msgstr ""
 "Az %s protokoll nem érhető el, mivel a GtkSocket csak X.org alatt működik."
 
-#: plugins/x2go/x2go_plugin.c:2700
+#: plugins/x2go/x2go_plugin.c:2906
 #, fuzzy
 msgid "Could not initialize pthread. Falling back to non-threaded mode…"
 msgstr ""
@@ -3984,7 +3991,7 @@ msgstr ""
 #. your language.
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
-#: plugins/x2go/x2go_plugin.c:2743 plugins/x2go/x2go_plugin.c:2761
+#: plugins/x2go/x2go_plugin.c:2949 plugins/x2go/x2go_plugin.c:2967
 #, fuzzy, c-format
 msgid "%sand '%s'"
 msgstr "%sés \"%s\"."
@@ -3995,7 +4002,7 @@ msgstr "%sés \"%s\"."
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
-#: plugins/x2go/x2go_plugin.c:2748 plugins/x2go/x2go_plugin.c:2766
+#: plugins/x2go/x2go_plugin.c:2954 plugins/x2go/x2go_plugin.c:2972
 #, fuzzy, c-format
 msgid "%s'%s' "
 msgstr "%s'%s' "
@@ -4003,143 +4010,143 @@ msgstr "%s'%s' "
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
 #. 'value1', 'value2', 'valueN-1' and 'valueN'
-#: plugins/x2go/x2go_plugin.c:2753
+#: plugins/x2go/x2go_plugin.c:2959
 #, fuzzy, c-format
 msgid "%s'%s', "
 msgstr "%s'%s', "
 
-#: plugins/x2go/x2go_plugin.c:2792
+#: plugins/x2go/x2go_plugin.c:2998
 #, fuzzy
 msgid "Invalid validation data in ProtocolSettings array!"
 msgstr "Érvénytelen érvényesítési adatok a ProtocolSettings tömbben!"
 
-#: plugins/x2go/x2go_plugin.c:2807 plugins/x2go/x2go_plugin.c:2872
+#: plugins/x2go/x2go_plugin.c:3013 plugins/x2go/x2go_plugin.c:3078
 #, fuzzy
 msgid "Validation data in ProtocolSettings array is invalid!"
 msgstr "A ProtocolSettings tömb érvényesítési adatai érvénytelenek!"
 
-#: plugins/x2go/x2go_plugin.c:2816
+#: plugins/x2go/x2go_plugin.c:3022
 #, fuzzy
 msgid "Parameters 'key' or 'value' are 'NULL'!"
 msgstr "A 'kulcs' vagy 'érték' paraméterek 'NULL'!"
 
-#: plugins/x2go/x2go_plugin.c:2834
+#: plugins/x2go/x2go_plugin.c:3040
 #, fuzzy, c-format
 msgid "Allowed values are %s."
 msgstr "A megengedett értékek a következők: %s."
 
-#: plugins/x2go/x2go_plugin.c:2836
+#: plugins/x2go/x2go_plugin.c:3042
 #, fuzzy, c-format
 msgid "The only allowed value is '%s'."
 msgstr "Az egyetlen megengedett érték az \"%s\"."
 
-#: plugins/x2go/x2go_plugin.c:2883
+#: plugins/x2go/x2go_plugin.c:3089
 #, fuzzy
 msgid "The lower limit is not a valid integer!"
 msgstr "Az alsó határérték nem érvényes egész szám!"
 
-#: plugins/x2go/x2go_plugin.c:2888
+#: plugins/x2go/x2go_plugin.c:3094
 #, fuzzy
 msgid "The lower limit is too high!"
 msgstr "Az alsó határ túl magas!"
 
-#: plugins/x2go/x2go_plugin.c:2893
+#: plugins/x2go/x2go_plugin.c:3099
 #, fuzzy
 msgid "The lower limit is too low!"
 msgstr "Az alsó határ túl alacsony!"
 
-#: plugins/x2go/x2go_plugin.c:2898 plugins/x2go/x2go_plugin.c:2928
-#: plugins/x2go/x2go_plugin.c:2948
+#: plugins/x2go/x2go_plugin.c:3104 plugins/x2go/x2go_plugin.c:3134
+#: plugins/x2go/x2go_plugin.c:3154
 #, fuzzy
 msgid "Something unknown went wrong."
 msgstr "Valami ismeretlen dolog romlott el."
 
-#: plugins/x2go/x2go_plugin.c:2903 plugins/x2go/x2go_plugin.c:2933
-#: plugins/x2go/x2go_plugin.c:2952
+#: plugins/x2go/x2go_plugin.c:3109 plugins/x2go/x2go_plugin.c:3139
+#: plugins/x2go/x2go_plugin.c:3158
 #, fuzzy
 msgid "Please check the RemminaProtocolSetting array for possible errors."
 msgstr ""
 "Kérjük, ellenőrizze a RemminaProtocolSetting tömböt az esetleges hibák miatt."
 
-#: plugins/x2go/x2go_plugin.c:2913
+#: plugins/x2go/x2go_plugin.c:3119
 #, fuzzy
 msgid "The upper limit is not a valid integer!"
 msgstr "A felső határérték nem érvényes egész szám!"
 
-#: plugins/x2go/x2go_plugin.c:2918
+#: plugins/x2go/x2go_plugin.c:3124
 #, fuzzy
 msgid "The upper limit is too high!"
 msgstr "A felső határ túl magas!"
 
-#: plugins/x2go/x2go_plugin.c:2923
+#: plugins/x2go/x2go_plugin.c:3129
 #, fuzzy
 msgid "The upper limit is too low!"
 msgstr "A felső határ túl alacsony!"
 
-#: plugins/x2go/x2go_plugin.c:2943
+#: plugins/x2go/x2go_plugin.c:3149
 #, fuzzy
 msgid "The input is not a valid integer!"
 msgstr "A bemenet nem érvényes egész szám!"
 
-#: plugins/x2go/x2go_plugin.c:2945 plugins/x2go/x2go_plugin.c:2964
+#: plugins/x2go/x2go_plugin.c:3151 plugins/x2go/x2go_plugin.c:3170
 #, fuzzy, c-format
 msgid "Input must be a number between %i and %i."
 msgstr "A bemenetnek egy %i és %i közötti számnak kell lennie."
 
-#: plugins/x2go/x2go_plugin.c:2993
+#: plugins/x2go/x2go_plugin.c:3199
 #, fuzzy
 #| msgid "Start-up program"
 msgid "Startup program"
 msgstr "Induló program"
 
-#: plugins/x2go/x2go_plugin.c:2995
+#: plugins/x2go/x2go_plugin.c:3201
 #, fuzzy
 msgid "Which command should be executed after creating the X2Go session?"
 msgstr ""
 "Melyik parancsot kell végrehajtani az X2Go munkamenet létrehozása után?"
 
-#: plugins/x2go/x2go_plugin.c:2997
+#: plugins/x2go/x2go_plugin.c:3203
 #, fuzzy
 #| msgid "Keyboard layout"
 msgid "Keyboard Layout (auto)"
 msgstr "Billentyűzetelrendezés (automatikus)"
 
-#: plugins/x2go/x2go_plugin.c:2998
+#: plugins/x2go/x2go_plugin.c:3204
 #, fuzzy
 #| msgid "Keyboard layout"
 msgid "Keyboard type (auto)"
 msgstr "Billentyűzet típusa (automatikus)"
 
-#: plugins/x2go/x2go_plugin.c:2999
+#: plugins/x2go/x2go_plugin.c:3205
 #, fuzzy
 #| msgid "Turn on Java support"
 msgid "Audio support"
 msgstr "Hangtámogatás"
 
-#: plugins/x2go/x2go_plugin.c:3001
+#: plugins/x2go/x2go_plugin.c:3207
 #, fuzzy
 msgid "The sound system of the X2Go server (default: 'pulse')."
 msgstr "Az X2Go szerver hangrendszere (alapértelmezett: 'pulse')."
 
-#: plugins/x2go/x2go_plugin.c:3004
+#: plugins/x2go/x2go_plugin.c:3210
 #, fuzzy
 #| msgid "USB redirection error"
 msgid "Clipboard direction"
 msgstr "Vágólap iránya"
 
-#: plugins/x2go/x2go_plugin.c:3006
+#: plugins/x2go/x2go_plugin.c:3212
 #, fuzzy
 msgid "Which direction should clipboard content be copied? (default: 'both')."
 msgstr ""
 "Melyik irányba másolja a vágólap tartalmát? (alapértelmezett: 'mindkettő')."
 
-#: plugins/x2go/x2go_plugin.c:3010
+#: plugins/x2go/x2go_plugin.c:3216
 #, fuzzy
 #| msgid "Resolution"
 msgid "DPI resolution"
 msgstr "DPI felbontás"
 
-#: plugins/x2go/x2go_plugin.c:3011
+#: plugins/x2go/x2go_plugin.c:3217
 #, fuzzy
 msgid ""
 "Launch session with a specific resolution (in dots per inch). Must be "
@@ -4148,7 +4155,7 @@ msgstr ""
 "A munkamenet elindítása egy adott felbontással (pont per hüvelykben). Ennek "
 "20 és 400 között kell lennie."
 
-#: plugins/x2go/x2go_plugin.c:3055
+#: plugins/x2go/x2go_plugin.c:3261
 #, fuzzy
 msgid "X2Go plugin loaded."
 msgstr "X2Go plugin betöltve."
@@ -5505,6 +5512,18 @@ msgstr "Remmina feloldása"
 #, fuzzy
 msgid "Master password"
 msgstr "Mester jelszó"
+
+#, fuzzy, c-format
+#~ msgid "Couldn't get property with index '%i' out of selected row."
+#~ msgstr "Nem tudta kinyerni a munkamenet azonosítóját a kiválasztott sorból."
+
+#, fuzzy
+#~ msgid "An unknown error occured while trying to start PyHoca-CLI."
+#~ msgstr "Ismeretlen hiba lépett fel a PyHoca-CLI indítása közben."
+
+#, fuzzy
+#~ msgid "Parameter 'session_id' is not initialized!"
+#~ msgstr "A 'default_username' paraméter nem inicializált."
 
 #, fuzzy
 #~ msgid ""
