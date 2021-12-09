@@ -17,8 +17,8 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-12-03 21:49+0000\n"
-"PO-Revision-Date: 2021-11-26 16:53+0000\n"
-"Last-Translator: Alfonso Scarpino <alfonso.scarpino@gmail.com>\n"
+"PO-Revision-Date: 2021-12-09 10:51+0000\n"
+"Last-Translator: random r <epsilin@yopmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/remmina/remmina/"
 "it/>\n"
 "Language: it\n"
@@ -104,14 +104,12 @@ msgid "SFTP - Secure File Transfer"
 msgstr "SFTP — Trasferimento sicuro dei file"
 
 #: src/remmina_log.c:129
-#, fuzzy
-#| msgid "Open the Remmina main window"
 msgid "Remmina debugging window"
-msgstr "Apri la schermata principale di Remmina"
+msgstr "Finestra di debug di Remmina"
 
 #: src/remmina_log.c:133
 msgid "Paste sytem information in the Remmina debugging window"
-msgstr ""
+msgstr "Incolla le informazioni di sistema nella finestra di debug di Remmina"
 
 #: src/remmina_log.c:153
 msgid ""
@@ -122,6 +120,13 @@ msgid ""
 "For more information on debugging Remmina see : https://gitlab.com/Remmina/"
 "Remmina/-/wikis/Usage/Remmina-debugging\n"
 msgstr ""
+"Questa finestra può aiutarti a trovare problemi di connessione.\n"
+"Puoi fermare e avviare la registrazione in qualsiasi momento usando "
+"l'interruttore On/Off.\n"
+"Il pulsante stats (Ctrl+T), può essere utile per raccogliere informazioni di "
+"sistema che si possono condividere mentre si segnala un errore.\n"
+"Per maggiori informazioni sul debugging di Remmina vedi: https://gitlab.com/"
+"Remmina/Remmina/-/wikis/Usage/Remmina-debugging\n"
 
 #: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1951
 msgid "Protocol"
@@ -453,13 +458,6 @@ msgstr ""
 #. TRANSLATORS: This should be a link to the Remmina Wiki page:
 #. 'GtkSocket feature is not available'.
 #: src/rcw.c:4516
-#, fuzzy
-#| msgid ""
-#| "Plugins relying on GtkSocket can't run in a Wayland session.\n"
-#| "For more information and a possible workaround, please visit the Remmina "
-#| "Wiki at:\n"
-#| "\n"
-#| "%s"
 msgid ""
 "Plugins relying on GtkSocket can't run in a Wayland session.\n"
 "For more information and a possible workaround, please visit the Remmina "
@@ -473,7 +471,8 @@ msgstr ""
 "Per ulteriori informazioni e una possibile soluzione alternativa, visitare "
 "il Wiki di Remmina all'indirizzo:\n"
 "\n"
-"%s"
+"https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
+"available-in-a-Wayland-session"
 
 #: src/rcw.c:4530
 msgid "Open in browser"
@@ -522,29 +521,21 @@ msgstr "FILE"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:88
-#, fuzzy
-#| msgid ""
-#| "Connect to a desktop described in a file (.remmina or a type supported by "
-#| "a plugin)"
 msgid ""
 "Connect to a desktop described in a file (.remmina or a filetype supported "
 "by a plugin)"
 msgstr ""
-"Connettersi a un desktop descritto in un file (.remmina o un tipo supportato "
-"da un plugin)"
+"Connettersi a un desktop descritto in un file (.remmina o un tipo di file "
+"supportato da un plugin)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:90
-#, fuzzy
-#| msgid ""
-#| "Edit desktop connection described in file (.remmina or type supported by "
-#| "plugin)"
 msgid ""
 "Edit desktop connection described in file (.remmina or a filetype supported "
 "by plugin)"
 msgstr ""
-"Modifica la connessione descritta dal file (“*.remmina” o il tipo supportato "
-"dal plugin)"
+"Modifica la connessione descritta dal file (“*.remmina” o un tipo di file "
+"supportato dal plugin)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:93
@@ -623,21 +614,15 @@ msgstr "Criptare una password"
 #. * to log more verbose statements.
 #.
 #: src/remmina.c:334
-#, fuzzy
-#| msgid ""
-#| "Remmina does not log all output statements. To enable a more verbose "
-#| "output please use G_MESSAGES_DEBUG=all as an environment variable.\n"
-#| "For more information, please visit the Remmina Wiki at:\n"
-#| "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgid ""
 "Remmina does not log all output statements. Turn on more verbose output by "
 "using \"G_MESSAGES_DEBUG=all\" as an environment variable.\n"
 "More info available on the Remmina wiki at:\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgstr ""
-"Remmina non registra tutte le istruzioni di output. Per abilitare un output "
-"più dettagliato, usa G_MESSAGES_DEBUG=all come variabile di ambiente.\n"
-"Per ulteriori informazioni, visitare la Wiki di Remmina all'indirizzo:\n"
+"Remmina non registra tutte le istruzioni di output. Attiva un output più "
+"dettagliato usando \"G_MESSAGES_DEBUG=all\" come variabile di ambiente.\n"
+"Maggiori informazioni disponibili nella Wiki di Remmina all'indirizzo:\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
@@ -1253,11 +1238,11 @@ msgstr[1] "%i elementi in totale."
 
 #: src/remmina_main.c:694
 msgid "Network status: fully online"
-msgstr ""
+msgstr "Stato della rete: completamente online"
 
 #: src/remmina_main.c:697
 msgid "Network status: offline"
-msgstr ""
+msgstr "Stato della rete: offline"
 
 #: src/remmina_main.c:901
 #, c-format
@@ -1788,16 +1773,12 @@ msgid "User password"
 msgstr "Password utente"
 
 #: src/remmina_ssh_plugin.c:1478
-#, fuzzy
-#| msgid "Pre-command"
 msgid "Opening command"
-msgstr "Pre-comando"
+msgstr "Comando di apertura"
 
 #: src/remmina_ssh_plugin.c:1479
-#, fuzzy
-#| msgid "Start-up program"
 msgid "Start-up background program"
-msgstr "Programma all’avvio"
+msgstr "Programma in background di avvio"
 
 #: src/remmina_ssh_plugin.c:1484
 msgid ""
@@ -2776,8 +2757,6 @@ msgid "Server CA certificate"
 msgstr "Certificato CA server"
 
 #: plugins/spice/spice_plugin.c:694
-#, fuzzy
-#| msgid "Prefered video codec"
 msgid "Preferred video codec"
 msgstr "Codec video preferito"
 
@@ -2786,8 +2765,6 @@ msgid "Turn off GStreamer overlay"
 msgstr "Disattiva l'overlay di GStreamer"
 
 #: plugins/spice/spice_plugin.c:698
-#, fuzzy
-#| msgid "Prefered image compression"
 msgid "Preferred image compression"
 msgstr "Compressione dell'immagine preferita"
 
@@ -3504,7 +3481,6 @@ msgid "Validation data in ProtocolSettings array is invalid!"
 msgstr "I dati di convalida nell'array ProtocolSettings non sono validi!"
 
 #: plugins/x2go/x2go_plugin.c:2816
-#, fuzzy
 msgid "Parameters 'key' or 'value' are 'NULL'!"
 msgstr "I parametri 'key' o 'value' sono 'NULL'!"
 
@@ -3985,17 +3961,11 @@ msgstr ""
 
 #: data/ui/remmina_news.glade:169
 msgid "Receives updated news from remmina.org"
-msgstr ""
+msgstr "Riceve notizie aggiornate da remmina.org"
 
 #: data/ui/remmina_news.glade:182
-#, fuzzy
-#| msgid ""
-#| "* By enabling statistics and/or news you consent to send and fetch data "
-#| "to/from remmina.org"
 msgid "* By turning on news you consent to fetching data from remmina.org"
-msgstr ""
-"Abilitando le statistiche e/o le notizie acconsenti a inviare e recuperare "
-"dati da/verso remmina.org"
+msgstr "* Attivando le notizie acconsenti a recuperare dati da remmina.org"
 
 #: data/ui/remmina_news.glade:205
 msgid "<big>Take part</big>"
@@ -4279,14 +4249,8 @@ msgid "Prevent screenshots from entering clipboard"
 msgstr "Impedire agli screenshot di entrare negli Appunti"
 
 #: data/ui/remmina_preferences.glade:432
-#, fuzzy
-#| msgid ""
-#| "* By enabling statistics and/or news you consent to send and fetch data "
-#| "to/from remmina.org"
 msgid "* By enabling news you consent to fetch data from remmina.org"
-msgstr ""
-"Abilitando le statistiche e/o le notizie acconsenti a inviare e recuperare "
-"dati da/verso remmina.org"
+msgstr "* Attivando le notizie acconsenti a recuperare dati da remmina.org"
 
 #: data/ui/remmina_preferences.glade:500
 msgid "Options"
