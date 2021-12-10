@@ -689,6 +689,7 @@ static void remmina_main_load_files()
 	gtk_statusbar_pop(remminamain->statusbar_main, context_id);
 	gtk_statusbar_push(remminamain->statusbar_main, context_id, buf);
 
+	remmina_network_monitor_status (remminamain->monitor);
 	if (remminamain->monitor->connected){
 		neticon = g_strdup("network-transmit-receive-symbolic");
 		connection_tooltip = g_strdup(_("Network status: fully online"));
