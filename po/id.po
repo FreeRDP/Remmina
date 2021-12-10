@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-12-09 13:41+0000\n"
-"PO-Revision-Date: 2021-12-03 13:52+0000\n"
+"PO-Revision-Date: 2021-12-10 05:50+0000\n"
 "Last-Translator: Andika Triwidada <andika@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/remmina/"
 "remmina/id/>\n"
@@ -102,16 +102,12 @@ msgid "SFTP - Secure File Transfer"
 msgstr "SFTP - Secure File Transfer"
 
 #: src/remmina_log.c:129
-#, fuzzy
-#| msgid "Open the Remmina main window"
 msgid "Remmina debugging window"
-msgstr "Buka jendela utama Remmina"
+msgstr "Jendela awakutu Remmina"
 
 #: src/remmina_log.c:133
-#, fuzzy
-#| msgid "Open the Remmina main window"
 msgid "Paste sytem info in the Remmina debugging window"
-msgstr "Buka jendela utama Remmina"
+msgstr "Tempelkan info sistem dalam jendela pengawakutuan Remmina"
 
 #: src/remmina_log.c:153
 msgid ""
@@ -122,6 +118,13 @@ msgid ""
 "There is more info about debugging Remmina on https://gitlab.com/Remmina/"
 "Remmina/-/wikis/Usage/Remmina-debugging\n"
 msgstr ""
+"Jendela ini dapat membantu Anda menemukan masalah koneksi.\n"
+"Anda dapat menghentikan dan memulai pencatatan log kapan pun memakan saklar "
+"Nyala/Mati.\n"
+"Tombol stat (Ctrl+T), bisa berguna untuk mengumpulkan info sistem yang "
+"mungkin Anda bagikan ketika melaporkan suatu kutu.\n"
+"Ada lebih banyak info tentang mengawakutu Remmina pada https://gitlab.com/"
+"Remmina/Remmina/-/wikis/Usage/Remmina-debugging\n"
 
 #: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1951
 msgid "Protocol"
@@ -449,14 +452,6 @@ msgstr ""
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. 'GtkSocket feature is not available'.
 #: src/rcw.c:4516
-#, fuzzy
-#| msgid ""
-#| "Plugins relying on GtkSocket can't run in a Wayland session.\n"
-#| "For more information and a possible workaround, please visit the Remmina "
-#| "Wiki at:\n"
-#| "\n"
-#| "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
-#| "available-in-a-Wayland-session"
 msgid ""
 "Plugins relying on GtkSocket can't run in a Wayland session.\n"
 "For more info and a possible workaround, please visit the Remmina wiki at:\n"
@@ -466,17 +461,15 @@ msgid ""
 msgstr ""
 "Pengaya yang mengandalkan GtkSocket tak bisa berjalan dalam suatu sesi "
 "Wayland.\n"
-"Untuk informasi lebih lanjut dan solusi yang mungkin, kunjungi wiki Remmina "
-"pada:\n"
+"Untuk info lebih lanjut dan solusi yang mungkin, kunjungi Wiki Remmina pada:"
+"\n"
 "\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 
 #: src/rcw.c:4530
-#, fuzzy
-#| msgid "Open in browser"
 msgid "Open in web browser"
-msgstr "Buka di peramban"
+msgstr "Buka di peramban web"
 
 #: src/remmina_mpchange.c:234
 msgid "The passwords do not match"
@@ -1239,11 +1232,11 @@ msgstr[0] "Total %i item."
 
 #: src/remmina_main.c:694
 msgid "Network status: fully online"
-msgstr ""
+msgstr "Status jaringan: sepenuhnya daring"
 
 #: src/remmina_main.c:697
 msgid "Network status: offline"
-msgstr ""
+msgstr "Status jaringan: luring"
 
 #: src/remmina_main.c:901
 #, c-format
@@ -2758,18 +2751,14 @@ msgid "Server CA certificate"
 msgstr "Sertifikat CA server"
 
 #: plugins/spice/spice_plugin.c:694
-#, fuzzy
-#| msgid "Prefered video codec"
 msgid "Preferred video codec"
-msgstr "Preferensi"
+msgstr "Kodek video yang lebih disukai"
 
 #: plugins/spice/spice_plugin.c:695
 msgid "Turn off GStreamer overlay"
 msgstr "Nonaktifkan masukan server"
 
 #: plugins/spice/spice_plugin.c:698
-#, fuzzy
-#| msgid "Prefered image compression"
 msgid "Preferred image compression"
 msgstr "Kompresi gambar yang disukai"
 
@@ -2862,14 +2851,6 @@ msgstr ""
 "    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
 
 #: plugins/vnc/vnc_plugin.c:1954
-#, fuzzy
-#| msgid ""
-#| "Listening for remote VNC connection:\n"
-#| "  • The \"Listen on port\" field is the port Remmina will listen to,\n"
-#| "    e.g. 8888\n"
-#| "  • From the remote VNC server, you will connect to\n"
-#| "    Remmina, e.g. with x11vnc:\n"
-#| "    x11vnc -display :0 -connect 192.168.1.36:8888"
 msgid ""
 "Listening for remote VNC connection:\n"
 "  • The “Listen on port” field is the port Remmina will listen to,\n"
@@ -2898,6 +2879,16 @@ msgid ""
 "  • On “Best quality” encodings is set to “copyrect zrle ultra zlib hextile "
 "corre rre raw”"
 msgstr ""
+"Menimpa pengodean VNC pratata:\n"
+"\n"
+"  • Pada \"Kualitas buruk\" pengodean ditata ke \"copyrect zlib hextile raw\""
+"\n"
+"  • Pada \"Kualitas medium\" pengodean ditata ke \"tight zrle ultra copyrect "
+"hextile zlib corre rre raw\"\n"
+"  • Pada \"Kualitas baik\" pengodean ditata ke \"tight zrle ultra copyrect "
+"hextile zlib corre rre raw\"\n"
+"  • Pada \"Kualitas terbaik\" pengodean ditata ke \"copyrect zrle ultra zlib "
+"hextile corre rre raw\""
 
 #: plugins/vnc/vnc_plugin.c:1989
 msgid "Repeater"
@@ -2909,7 +2900,7 @@ msgstr "Dengarkan pada port"
 
 #: plugins/vnc/vnc_plugin.c:2021
 msgid "Override pre-set VNC encodings"
-msgstr ""
+msgstr "Menimpan pengodean VNC pratata"
 
 #: plugins/vnc/vnc_plugin.c:2022
 msgid "Show remote cursor"
@@ -3124,7 +3115,7 @@ msgstr "Port SSHFS"
 
 #: plugins/x2go/x2go_plugin.c:481
 msgid "Visible"
-msgstr ""
+msgstr "Tampak"
 
 #: plugins/x2go/x2go_plugin.c:520
 msgid "Couldn't retrieve valid `DialogData` or `sessions_list`! Aborting…"
@@ -3153,10 +3144,9 @@ msgid "Terminating X2Go sessions can take a moment."
 msgstr "Mengakhiri sesi X2GO bisa makan waktu."
 
 #: plugins/x2go/x2go_plugin.c:618 plugins/x2go/x2go_plugin.c:620
-#, fuzzy, c-format
-#| msgid "Unknown property"
+#, c-format
 msgid "Unknown property '%i'"
-msgstr "Properti tak dikenal"
+msgstr "Properti tak dikenal '%i'"
 
 #: plugins/x2go/x2go_plugin.c:708 plugins/x2go/x2go_plugin.c:755
 msgid "Couldn't find child GtkTreeView of session chooser dialog."
@@ -3167,18 +3157,16 @@ msgid ""
 "Neither the 'dialog' nor 'treeview' parameters are initialized! At least one "
 "of them must be given."
 msgstr ""
+"Parameter 'dialog' maupun 'treeview' tidak diinisialisasi! Paling tidak satu "
+"dari mereka mesti diberikan."
 
 #: plugins/x2go/x2go_plugin.c:729
-#, fuzzy
-#| msgid ""
-#| "GtkTreeModel of session chooser dialog could not be obtained for an "
-#| "unknown reason."
 msgid ""
 "Could not obtain \"GtkTreeModelFilter*\" of the session chooser dialog, for "
 "unknown reason."
 msgstr ""
-"GtkTreeModel dari dialog pemilih sesi tidak bisa diperoleh karena alasan "
-"yang tidak diketahui."
+"Tidak bisa memperoleh \"GtkTreeModel*\" dari dialog pemilih sesi, karena "
+"alasan yang tidak diketahui."
 
 #: plugins/x2go/x2go_plugin.c:764
 msgid "Couldn't get currently selected row (session)!"
@@ -3220,12 +3208,13 @@ msgstr ""
 "Proses PyHoca-CLI yang diperlukan telah menemui masalah koneksi internet."
 
 #: plugins/x2go/x2go_plugin.c:972
-#, fuzzy, c-format
-#| msgid "Could not start PyHoca-CLI (%i): '%s'"
+#, c-format
 msgid ""
 "Could not start PyHoca-CLI:\n"
 "%s"
-msgstr "Tidak bisa memulai PyHoca-CLI (%i): '%s'"
+msgstr ""
+"Tidak bisa memulai PyHoca-CLI:\n"
+"%s"
 
 #: plugins/x2go/x2go_plugin.c:983
 #, c-format
@@ -3245,10 +3234,8 @@ msgstr ""
 "keluar: %i. Galat: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:1032
-#, fuzzy
-#| msgid "Both parameters 'dialog' and 'treeview' are uninitialized!"
 msgid "Neither the 'path' nor 'dialog' parameters are initialized."
-msgstr "Parameter 'dialog' dan 'treeview' tidak diinisialisasi!"
+msgstr "Parameter 'dialog' maupun 'treeview' tidak diinisialisasi."
 
 #: plugins/x2go/x2go_plugin.c:1048
 msgid "GtkTreePath 'path' describes a non-existing row!"
@@ -3264,12 +3251,13 @@ msgid "'Invalid connection data.'"
 msgstr "'Data koneksi tidak valid.'"
 
 #: plugins/x2go/x2go_plugin.c:1218
-#, fuzzy, c-format
-#| msgid "An error occured while trying to terminate a X2Go session: %s"
+#, c-format
 msgid ""
 "An error occured while trying to terminate X2Go session '%s':\n"
 "%s"
-msgstr "Terjadi kesalahan saat mencoba mengakhiri suatu sesi X2Go: %s"
+msgstr ""
+"Terjadi kesalahan saat mencoba mengakhiri sesi X2Go '%s'\n"
+"%s"
 
 #: plugins/x2go/x2go_plugin.c:1230 plugins/x2go/x2go_plugin.c:1594
 msgid "An error occured."
@@ -3985,17 +3973,11 @@ msgstr ""
 
 #: data/ui/remmina_news.glade:169
 msgid "Receives updated news from remmina.org"
-msgstr ""
+msgstr "Menerima berita yang diperbarui dari remmina.org"
 
 #: data/ui/remmina_news.glade:182
-#, fuzzy
-#| msgid ""
-#| "* By enabling statistics and/or news you consent to send and fetch data "
-#| "to/from remmina.org"
 msgid "* By turning on news you consent to fetching data from remmina.org"
-msgstr ""
-"* Dengan memfungsikan statistik dan/atau berita Anda setuju mengirim dan "
-"mengambail data ke/dari remmina.org"
+msgstr "* Dengan meyalakan berita Anda setuju mengambail data dari remmina.org"
 
 #: data/ui/remmina_news.glade:205
 msgid "<big>Take part</big>"
@@ -4277,14 +4259,9 @@ msgid "Prevent screenshots from entering clipboard"
 msgstr "Cegah cuplikan layar masuk ke papan klip"
 
 #: data/ui/remmina_preferences.glade:432
-#, fuzzy
-#| msgid ""
-#| "* By enabling statistics and/or news you consent to send and fetch data "
-#| "to/from remmina.org"
 msgid "* By enabling news you consent to fetch data from remmina.org"
 msgstr ""
-"* Dengan memfungsikan statistik dan/atau berita Anda setuju mengirim dan "
-"mengambail data ke/dari remmina.org"
+"* Dengan memfungsikan berita Anda setuju mengambail data dari remmina.org"
 
 #: data/ui/remmina_preferences.glade:500
 msgid "Options"
