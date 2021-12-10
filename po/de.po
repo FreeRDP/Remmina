@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-12-09 11:40+0000\n"
+"POT-Creation-Date: 2021-12-10 14:04+0000\n"
 "PO-Revision-Date: 2021-12-09 19:53+0000\n"
 "Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -78,8 +78,8 @@ msgstr "Über eine neue Konsole via SSH verbinden"
 
 #: src/remmina_sftp_plugin.c:353 src/remmina_message_panel.c:330
 #: src/remmina_file_editor.c:1216 src/remmina_ssh_plugin.c:1471
-#: plugins/rdp/rdp_plugin.c:2722 plugins/vnc/vnc_plugin.c:1976
-#: plugins/vnc/vnc_plugin.c:1988 plugins/www/www_plugin.c:894
+#: plugins/rdp/rdp_plugin.c:2722 plugins/vnc/vnc_plugin.c:1990
+#: plugins/vnc/vnc_plugin.c:2002 plugins/www/www_plugin.c:894
 #: plugins/x2go/x2go_plugin.c:475 plugins/x2go/x2go_plugin.c:3197
 #: data/ui/remmina_mpc.glade:144
 msgid "Username"
@@ -172,6 +172,7 @@ msgid "Version"
 msgstr "Version"
 
 #: src/remmina_chat_window.c:178
+#, c-format
 msgid "Chat with %s"
 msgstr "Unterhaltung mit %s"
 
@@ -318,6 +319,7 @@ msgid "Client Certificate Key"
 msgstr "Client Zertifikatsschlüssel"
 
 #: src/rcw.c:655
+#, c-format
 msgid ""
 "Are you sure you want to close %i active connections in the current window?"
 msgstr ""
@@ -790,7 +792,7 @@ msgid "Go to parent folder"
 msgstr "Zum übergeordneten Ordner gehen"
 
 #: src/remmina_ftp_client.c:758 plugins/rdp/rdp_plugin.c:2813
-#: plugins/vnc/vnc_plugin.c:2027
+#: plugins/vnc/vnc_plugin.c:2042
 msgid "Refresh"
 msgstr "Neu laden"
 
@@ -864,19 +866,23 @@ msgstr "Verbinden zu „%s“…"
 
 #. TRANSLATORS: “%s” is a placeholder for an hostname or an IP address.
 #: src/remmina_protocol_widget.c:916 src/remmina_protocol_widget.c:1101
+#, c-format
 msgid "Connecting to “%s” via SSH…"
 msgstr "SSH-Verbindung zu„ %s“ herstellen…"
 
 #. TRANSLATORS: “%i” is a placeholder for a TCP port number.
 #: src/remmina_protocol_widget.c:1165
+#, c-format
 msgid "Awaiting incoming SSH connection on port %i…"
 msgstr "Auf eingehende Verbindung an Port %i warten…"
 
 #: src/remmina_protocol_widget.c:1218
+#, c-format
 msgid "The “%s” command is not available on the SSH server."
 msgstr "Das „%s“ Kommando ist auf dem SSH-Server nicht verfügbar."
 
 #: src/remmina_protocol_widget.c:1223
+#, c-format
 msgid "Could not run the “%s” command on the SSH server (status = %i)."
 msgstr ""
 "Das „%s“ Kommando konnte auf dem SSH-Server nicht ausgeführt werden (Status "
@@ -884,11 +890,13 @@ msgstr ""
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_protocol_widget.c:1231
+#, c-format
 msgid "Could not run command. %s"
 msgstr "Der Befehl kann nicht ausgeführt werden: %s"
 
 #. TRANSLATORS: “%s” is a placeholder for a hostname or IP address.
 #: src/remmina_protocol_widget.c:1301
+#, c-format
 msgid "Connecting to %s via SSH…"
 msgstr "SSH-Verbindung zu %s wird hergestellt…"
 
@@ -947,6 +955,7 @@ msgstr "Geändertes Zertifikat akzeptieren?"
 
 #. TRANSLATORS: “%i” is a placeholder for a port number. “%s”  is a placeholder for a protocol name (VNC).
 #: src/remmina_protocol_widget.c:1943
+#, c-format
 msgid "Listening on port %i for an incoming %s connection…"
 msgstr "Warte auf Port %i auf eine eingehende %s‐Verbindung…"
 
@@ -961,14 +970,17 @@ msgstr "Server"
 
 #. TRANSLATORS: “%s” is a placeholder for a protocol name, like “RDP”.
 #: src/remmina_protocol_widget.c:2048
+#, c-format
 msgid "Install the %s protocol plugin first."
 msgstr "Installieren Sie zuerst das Plugin für das %s-Protokoll."
 
 #: src/remmina_ssh.c:236
+#, c-format
 msgid "Could not authenticate with TOTP/OTP/2FA. %s"
 msgstr "Konnte mit TOTP/OTP/2FA nicht anmelden: %s"
 
 #: src/remmina_ssh.c:295 src/remmina_ssh.c:676
+#, c-format
 msgid "Could not authenticate with SSH password. %s"
 msgstr "Konnte mit dem SSH-Passwort nicht anmelden: %s"
 
@@ -981,6 +993,7 @@ msgstr ""
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:327 src/remmina_ssh.c:368 src/remmina_ssh.c:394
 #: src/remmina_ssh.c:433 src/remmina_ssh.c:746
+#, c-format
 msgid "Could not authenticate with public SSH key. %s"
 msgstr ""
 "Authentifizierung mit dem öffentlichen SSH-Schlüssel funktioniert nicht. %s"
@@ -1011,20 +1024,24 @@ msgstr "Es wurde keine SSH-Identity Datei austgewählt."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:380
+#, c-format
 msgid "Public SSH key cannot be imported. %s"
 msgstr "Der öffentliche SSH-Schlüssel kann nicht importiert werden: %s"
 
 #: src/remmina_ssh.c:478
+#, c-format
 msgid "Could not authenticate automatically with public SSH key. %s"
 msgstr ""
 "Kann mit dem öffentlichen SSH-Schlüssel nicht automatisch authentifizieren. "
 "%s"
 
 #: src/remmina_ssh.c:523
+#, c-format
 msgid "Could not authenticate automatically with SSH agent. %s"
 msgstr "Kann mit dem öffentlichen SSH-Schlüssel nicht anmelden. %s"
 
 #: src/remmina_ssh.c:569 src/remmina_ssh.c:856
+#, c-format
 msgid "Could not authenticate with SSH GSSAPI/Kerberos. %s"
 msgstr "Kann mit SSH GSSAPI/Kerberos nicht anmelden. %s"
 
@@ -1033,26 +1050,31 @@ msgid "The public SSH key changed!"
 msgstr "Der öffentliche SSH‐Schlüssel hat sich geändert!"
 
 #: src/remmina_ssh.c:711
+#, c-format
 msgid "Could not authenticate with keyboard-interactive. %s"
 msgstr "Authentifizierung über Tastatureingabe ist fehlgeschlagen. %s"
 
 #: src/remmina_ssh.c:813
+#, c-format
 msgid "Could not authenticate with automatic public SSH key. %s"
 msgstr "Anmeldung mit dem öffentlichen SSH-Schlüssel funktioniert nicht. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:921
+#, c-format
 msgid "Could not fetch the server's public SSH key. %s"
 msgstr ""
 "Der öffentliche SSH-Schlüssel des Servers kann nicht gelesen werden. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:928
+#, c-format
 msgid "Could not fetch public SSH key. %s"
 msgstr "Kann den öffentlichen SSH-Schlüssel nicht lesen: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:936
+#, c-format
 msgid "Could not fetch checksum of the public SSH key. %s"
 msgstr ""
 "Die Prüfsumme des öffentlichen SSH-Schlüssels kann nicht gelesen werden. %s"
@@ -1079,6 +1101,7 @@ msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:979
+#, c-format
 msgid "Could not check list of known SSH hosts. %s"
 msgstr "Die Liste der bekannten SSH-Server kann nicht geprüft werden: %s"
 
@@ -1112,21 +1135,25 @@ msgstr "Login über Tastatur, TOTP/OTP/2FA"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1337
+#, c-format
 msgid "Could not start SSH session. %s"
 msgstr "Die SSH‐Verbindung kann nicht gestartet werden: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1735
+#, c-format
 msgid "Could not create channel. %s"
 msgstr "Der Kanal kann nicht erzeugt werden: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1746
+#, c-format
 msgid "Could not connect to SSH tunnel. %s"
 msgstr "Kann zum SSH‐Tunnel nicht verbinden: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1816 src/remmina_ssh.c:1837 src/remmina_ssh.c:1846
+#, c-format
 msgid "Could not request port forwarding. %s"
 msgstr "Portweiterleitung kann nicht eingerichtet werden: %s"
 
@@ -1135,31 +1162,37 @@ msgid "The server did not respond."
 msgstr "Der Server hat nicht geantwortet."
 
 #: src/remmina_ssh.c:1916
+#, c-format
 msgid "Cannot connect to local port %i."
 msgstr "Kann nicht zum lokalen Port %i verbinden."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1965
+#, c-format
 msgid "Could not write to SSH channel. %s"
 msgstr "Der SSH-Kanal kann nicht geschrieben werden: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1972
+#, c-format
 msgid "Could not read from tunnel listening socket. %s"
 msgstr "Vom Tunnel-Listening‐Socket kann nicht gelesen werden: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1992
+#, c-format
 msgid "Could not poll SSH channel. %s"
 msgstr "Das Abfragen des SSH-Kanals ist fehlgeschlagen: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1999
+#, c-format
 msgid "Could not read SSH channel in a non-blocking way. %s"
 msgstr "Kann SSH-Kanal nicht blockierend öffnen: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:2018
+#, c-format
 msgid "Could not send data to tunnel listening socket. %s"
 msgstr "Kann keine Daten zum Listening‐Socket des Tunnels senden: %s"
 
@@ -1186,21 +1219,25 @@ msgstr "Kann pthread nicht starten."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:2280
+#, c-format
 msgid "Could not create SFTP session. %s"
 msgstr "SFTP‐Sitzung kann nicht erzeugt werden: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:2285
+#, c-format
 msgid "Could not start SFTP session. %s"
 msgstr "SFTP-Verbindung kann nicht gestartet werden: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:2379
+#, c-format
 msgid "Could not open channel. %s"
 msgstr "Das Öffnen des Kanals ist fehlgeschlagen: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:2394
+#, c-format
 msgid "Could not request shell. %s"
 msgstr "Shell kann nicht angefordert werden: %s"
 
@@ -1209,6 +1246,7 @@ msgid "Could not create PTY device."
 msgstr "Kann das PTY‐Gerät nicht öffnen."
 
 #: src/remmina_exec.c:475
+#, c-format
 msgid "Plugin %s is not registered."
 msgstr "Plugin %s ist nicht registriert."
 
@@ -1225,20 +1263,21 @@ msgid_plural "Total %i items."
 msgstr[0] "%i Objekt insgesamt."
 msgstr[1] "%i Objekte insgesamt."
 
-#: src/remmina_main.c:694
+#: src/remmina_main.c:695
 msgid "Network status: fully online"
 msgstr "Netzwerkstatus: Online"
 
-#: src/remmina_main.c:697
+#: src/remmina_main.c:698
 msgid "Network status: offline"
 msgstr "Netzwerkstatus: Offline"
 
-#: src/remmina_main.c:901
+#: src/remmina_main.c:902
 #, c-format
 msgid "Are you sure you want to delete “%s”?"
 msgstr "Soll „%s“ wirklich gelöscht werden?"
 
-#: src/remmina_main.c:1025
+#: src/remmina_main.c:1026
+#, c-format
 msgid ""
 "Unable to import:\n"
 "%s"
@@ -1246,23 +1285,23 @@ msgstr ""
 "Import fehlgeschlagen:\n"
 "%s"
 
-#: src/remmina_main.c:1051 data/ui/remmina_main.glade:285
+#: src/remmina_main.c:1052 data/ui/remmina_main.glade:285
 msgid "Import"
 msgstr "Einfügen"
 
-#: src/remmina_main.c:1074 src/remmina_file_editor.c:1791
+#: src/remmina_main.c:1075 src/remmina_file_editor.c:1791
 msgid "_Save"
 msgstr "_Speichern"
 
-#: src/remmina_main.c:1080
+#: src/remmina_main.c:1081
 msgid "This protocol does not support exporting."
 msgstr "Das Protokoll unterstützt den Export nicht."
 
-#: src/remmina_main.c:1400
+#: src/remmina_main.c:1401
 msgid "Remmina Remote Desktop Client"
 msgstr "Remmina Remote Desktop Client"
 
-#: src/remmina_main.c:1402
+#: src/remmina_main.c:1403
 msgid "Remmina Kiosk"
 msgstr "Remmina-Kiosk"
 
@@ -1280,6 +1319,7 @@ msgstr "Die Datei „%s“ kann nicht erstellt werden."
 
 #. TRANSLATORS: The placeholders %s are a file path, and an error message.
 #: src/remmina_sftp_client.c:220
+#, c-format
 msgid "Could not open the file “%s” on the server. %s"
 msgstr "Die Datei „%s“ kann am Server nicht geöffnet werden. %s"
 
@@ -1290,10 +1330,12 @@ msgstr "Die Datei „%s“ kann nicht gespeichert werden."
 
 #: src/remmina_sftp_client.c:281 src/remmina_sftp_client.c:698
 #: src/remmina_sftp_client.c:761
+#, c-format
 msgid "Could not open the folder “%s”. %s"
 msgstr "Kann den Ordner „%s“ nicht öffnen. %s"
 
 #: src/remmina_sftp_client.c:385
+#, c-format
 msgid "Could not create the folder “%s” on the server. %s"
 msgstr "Der Ordner „%s“ kann auf dem Server nicht erstellt werden. %s"
 
@@ -1313,6 +1355,7 @@ msgid "Could not write to the file “%s” on the server. %s"
 msgstr "Die Datei „%s“ kann am Server nicht geschrieben werden. %s"
 
 #: src/remmina_sftp_client.c:716
+#, c-format
 msgid "Could not read from the folder. %s"
 msgstr "Vom Ordner kann nicht gelesen werden: %s"
 
@@ -1321,6 +1364,7 @@ msgid "Are you sure you want to cancel the file transfer in progress?"
 msgstr "Soll die aktuelle Dateiübertragung wirklich abgebrochen werden?"
 
 #: src/remmina_sftp_client.c:857
+#, c-format
 msgid "Could not delete “%s”. %s"
 msgstr "Kann „%s“ nicht löschen. %s"
 
@@ -1405,6 +1449,7 @@ msgid "Choose a Remote Desktop Server"
 msgstr "Einen Server für eine entfernte Arbeitsfläche auswählen"
 
 #: src/remmina_file_editor.c:460
+#, c-format
 msgid "Browse the network to find a %s server"
 msgstr "Durchsuche das Netzwerk nach einem %s Server"
 
@@ -1473,6 +1518,7 @@ msgid "Tunnel via loopback address"
 msgstr "Tunnel über Loopback‐Adresse"
 
 #: src/remmina_file_editor.c:1143
+#, c-format
 msgid "Same server at port %i"
 msgstr "Zielserver auf Port %i"
 
@@ -1505,12 +1551,14 @@ msgid "Notes"
 msgstr "Notizen"
 
 #: src/remmina_file_editor.c:1438
+#, c-format
 msgid "(%s: %i): Can't validate setting '%s' since 'value' or 'gfe' are NULL!"
 msgstr ""
 "(%s: %i): Konnte die Einstellung '%s' nicht validieren, da 'value' oder "
 "'gfe' NULL sind!"
 
 #: src/remmina_file_editor.c:1441
+#, c-format
 msgid ""
 "(%s: %i): Can't validate user input since 'setting_name_to_validate', "
 "'value' or 'gfe' are NULL!"
@@ -1526,6 +1574,7 @@ msgstr "Interner Fehler."
 
 #: src/remmina_file_editor.c:1667 src/remmina_file_editor.c:1703
 #: src/remmina_file_editor.c:1724 src/remmina_file_editor.c:1747
+#, c-format
 msgid "Couldn't validate user input. %s"
 msgstr "Konnte Benutzereingabe nicht validieren. %s"
 
@@ -1559,6 +1608,7 @@ msgid "Quick Connect"
 msgstr "Schnell verbinden"
 
 #: src/remmina_file_editor.c:1946
+#, c-format
 msgid "Use '%s' as subgroup delimiter"
 msgstr "Benutze '%s' als Untergruppenteiler"
 
@@ -1614,11 +1664,13 @@ msgstr "StatusNotifier/Appindicator Unterstützung in \""
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:367
+#, c-format
 msgid "%s your desktop does support it"
 msgstr "%s wird von Ihrem Desktop unterstützt"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:369
+#, c-format
 msgid "%s and Remmina has built-in (compiled) support for libappindicator."
 msgstr ""
 "%s und Remmina hat eingebaute (compilierte) Unterstützung für "
@@ -1626,6 +1678,7 @@ msgstr ""
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:372
+#, c-format
 msgid ""
 "%s not supported natively by your Desktop Environment. libappindicator will "
 "try to fallback to GtkStatusIcon/xembed"
@@ -1635,21 +1688,25 @@ msgstr ""
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:376
+#, c-format
 msgid "%s You may need to install, and use XApp Status Applet"
 msgstr "%s muss eventuell installiert werden; benutzen Sie XApp Status Applet"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:379
+#, c-format
 msgid "%s You may need to install, and use KStatusNotifierItem"
 msgstr "%s muss eventuell installiert werden"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:382
+#, c-format
 msgid "%s You may need to install, and use XEmbed SNI Proxy"
 msgstr "%s muss eventuell installiert werden; benutzen Sie XEmbed SNI Proxy"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:385
+#, c-format
 msgid "%s You may need to install, and use Gnome Shell Extension Appindicator"
 msgstr ""
 "%s muss eventuell installiert werden; benutzen Sie Gnome Shell Extension "
@@ -1657,6 +1714,7 @@ msgstr ""
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_ssh_plugin.c:539
+#, c-format
 msgid "Error: %s"
 msgstr "Fehler: %s"
 
@@ -1741,7 +1799,7 @@ msgid "_Find text"
 msgstr "_Suche Text"
 
 #: src/remmina_ssh_plugin.c:1472 plugins/spice/spice_plugin.c:674
-#: plugins/vnc/vnc_plugin.c:1977 plugins/vnc/vnc_plugin.c:1989
+#: plugins/vnc/vnc_plugin.c:1991 plugins/vnc/vnc_plugin.c:2003
 msgid "User password"
 msgstr "Benutzerpasswort"
 
@@ -1856,22 +1914,22 @@ msgid "<Choose a quality level to edit…>"
 msgstr "<Wählen Sie eine Qualitätsstufe zur Bearbeitung…>"
 
 #: plugins/rdp/rdp_settings.c:282 plugins/rdp/rdp_plugin.c:2585
-#: plugins/vnc/vnc_plugin.c:1934
+#: plugins/vnc/vnc_plugin.c:1940
 msgid "Poor (fastest)"
 msgstr "Niedrig (schnell)"
 
 #: plugins/rdp/rdp_settings.c:284 plugins/rdp/rdp_plugin.c:2586
-#: plugins/vnc/vnc_plugin.c:1933
+#: plugins/vnc/vnc_plugin.c:1939
 msgid "Medium"
 msgstr "Mittel"
 
 #: plugins/rdp/rdp_settings.c:286 plugins/rdp/rdp_plugin.c:2587
-#: plugins/vnc/vnc_plugin.c:1931
+#: plugins/vnc/vnc_plugin.c:1937
 msgid "Good"
 msgstr "Gut"
 
 #: plugins/rdp/rdp_settings.c:288 plugins/rdp/rdp_plugin.c:2588
-#: plugins/vnc/vnc_plugin.c:1932
+#: plugins/vnc/vnc_plugin.c:1938
 msgid "Best (slowest)"
 msgstr "Beste (langsam)"
 
@@ -1954,7 +2012,7 @@ msgid "Input device settings"
 msgstr "Einstellungen der Eingabegeräte"
 
 #: plugins/rdp/rdp_settings.c:658 plugins/rdp/rdp_plugin.c:2729
-#: plugins/vnc/vnc_plugin.c:2014
+#: plugins/vnc/vnc_plugin.c:2029
 msgid "Disable smooth scrolling"
 msgstr "Sanften Bildlauf deaktivieren"
 
@@ -1982,6 +2040,7 @@ msgid "Enter RDP gateway authentication credentials"
 msgstr "RDP-Gateway - Authentifizierunginformationen eingeben"
 
 #: plugins/rdp/rdp_plugin.c:2116
+#, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account locked out."
@@ -2044,6 +2103,7 @@ msgstr ""
 "Ändern Sie das Passwort vor der Verbindung."
 
 #: plugins/rdp/rdp_plugin.c:2164
+#, c-format
 msgid "Lost connection to the RDP server “%s”."
 msgstr "Verbindung zum RDP-Server „%s“ ist abgebrochen."
 
@@ -2053,6 +2113,7 @@ msgid "Could not find the address for the RDP server “%s”."
 msgstr "Kann die Adresse des RDP-Servers „%s“ nicht finden."
 
 #: plugins/rdp/rdp_plugin.c:2171
+#, c-format
 msgid ""
 "Could not connect to the RDP server “%s” via TLS. Check that client and "
 "server support a common TLS version."
@@ -2062,6 +2123,7 @@ msgstr ""
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:2175
+#, c-format
 msgid ""
 "Unable to establish a connection to the RDP server “%s”. Check “Security "
 "protocol negotiation”."
@@ -2079,6 +2141,7 @@ msgid "Could not start libfreerdp-gdi."
 msgstr "Kann libfreerdp-gdi nicht starten."
 
 #: plugins/rdp/rdp_plugin.c:2189
+#, c-format
 msgid ""
 "You requested a H.264 GFX mode for the server “%s”, but your libfreerdp does "
 "not support H.264. Please use a non-AVC colour depth setting."
@@ -2130,7 +2193,7 @@ msgstr "GFX RFX progressiv (32 bpp)"
 msgid "RemoteFX (32 bpp)"
 msgstr "RemoteFX (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2560 plugins/vnc/vnc_plugin.c:1922
+#: plugins/rdp/rdp_plugin.c:2560 plugins/vnc/vnc_plugin.c:1928
 msgid "True colour (32 bpp)"
 msgstr "Echtfarben (32 bpp)"
 
@@ -2138,7 +2201,7 @@ msgstr "Echtfarben (32 bpp)"
 msgid "True colour (24 bpp)"
 msgstr "Echtfarben (24 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2562 plugins/vnc/vnc_plugin.c:1923
+#: plugins/rdp/rdp_plugin.c:2562 plugins/vnc/vnc_plugin.c:1929
 msgid "High colour (16 bpp)"
 msgstr "Hohe Farbtiefe (16 bpp)"
 
@@ -2146,7 +2209,7 @@ msgstr "Hohe Farbtiefe (16 bpp)"
 msgid "High colour (15 bpp)"
 msgstr "Hohe Farbtiefe (15 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2564 plugins/vnc/vnc_plugin.c:1924
+#: plugins/rdp/rdp_plugin.c:2564 plugins/vnc/vnc_plugin.c:1930
 msgid "256 colours (8 bpp)"
 msgstr "256 Farben (8 bpp)"
 
@@ -2384,8 +2447,8 @@ msgstr "Bildschirmausgabe über mehrere Monitore hinweg"
 msgid "List monitor IDs"
 msgstr "Monitor IDs anzeigen"
 
-#: plugins/rdp/rdp_plugin.c:2734 plugins/vnc/vnc_plugin.c:1978
-#: plugins/vnc/vnc_plugin.c:1990 plugins/gvnc/gvnc_plugin.c:849
+#: plugins/rdp/rdp_plugin.c:2734 plugins/vnc/vnc_plugin.c:1992
+#: plugins/vnc/vnc_plugin.c:2004 plugins/gvnc/gvnc_plugin.c:849
 msgid "Colour depth"
 msgstr "Farbtiefe"
 
@@ -2393,8 +2456,8 @@ msgstr "Farbtiefe"
 msgid "Network connection type"
 msgstr "Netzwerk-Verbindungstyp"
 
-#: plugins/rdp/rdp_plugin.c:2750 plugins/vnc/vnc_plugin.c:1979
-#: plugins/vnc/vnc_plugin.c:1991
+#: plugins/rdp/rdp_plugin.c:2750 plugins/vnc/vnc_plugin.c:1993
+#: plugins/vnc/vnc_plugin.c:2005
 msgid "Quality"
 msgstr "Qualität"
 
@@ -2567,7 +2630,7 @@ msgstr "Parallele Ports freigeben"
 msgid "Share a smart card"
 msgstr "Smartcard teilen"
 
-#: plugins/rdp/rdp_plugin.c:2788 plugins/vnc/vnc_plugin.c:2009
+#: plugins/rdp/rdp_plugin.c:2788 plugins/vnc/vnc_plugin.c:2024
 msgid "Turn off clipboard sync"
 msgstr "Zwischenablage nicht abgleichen"
 
@@ -2584,7 +2647,7 @@ msgid "It disables CAL and hwId is set to 0"
 msgstr "Schaltet CAL aus und hwId wird auf 0 gesetzt"
 
 #: plugins/rdp/rdp_plugin.c:2791 plugins/spice/spice_plugin.c:702
-#: plugins/vnc/vnc_plugin.c:2013 plugins/www/www_plugin.c:919
+#: plugins/vnc/vnc_plugin.c:2028 plugins/www/www_plugin.c:919
 #: plugins/gvnc/gvnc_plugin.c:867
 msgid "Forget passwords after use"
 msgstr "Passwörter nach der Verwendung verwerfen"
@@ -2634,7 +2697,7 @@ msgid "Enable Gateway websockets support"
 msgstr "Websocket -Support für das Gateway aktivieren"
 
 #: plugins/rdp/rdp_plugin.c:2817 plugins/spice/spice_plugin.c:715
-#: plugins/vnc/vnc_plugin.c:2029
+#: plugins/vnc/vnc_plugin.c:2044
 msgid "Send Ctrl+Alt+Delete"
 msgstr "Sende Strg+Alt+Entfernen"
 
@@ -2655,6 +2718,7 @@ msgid "Export connection in Windows .rdp file format"
 msgstr "Verbindung als Windows .rdp Datei exportieren"
 
 #: plugins/rdp/rdp_event.c:344
+#, c-format
 msgid "Reconnection attempt %d of %d…"
 msgstr "Wiederherstellen der Verbindung. Versuch %d von %d…"
 
@@ -2667,6 +2731,7 @@ msgid "Transfer error"
 msgstr "Übertragungsfehler"
 
 #: plugins/spice/spice_plugin_file_transfer.c:220
+#, c-format
 msgid "%s: %s"
 msgstr "%s: %s"
 
@@ -2675,6 +2740,8 @@ msgid "Transfer completed"
 msgstr "Übertragung abgeschlossen"
 
 #: plugins/spice/spice_plugin_file_transfer.c:224
+#, fuzzy, c-format
+#| msgid "The %s file has been transferred"
 msgid "The %s file has been transferred"
 msgstr "Die Datei %f wurde übermittelt"
 
@@ -2746,7 +2813,7 @@ msgid "Share smart card"
 msgstr "Smartcard freigeben"
 
 #: plugins/spice/spice_plugin.c:705 plugins/spice/spice_plugin.c:713
-#: plugins/vnc/vnc_plugin.c:2008 plugins/vnc/vnc_plugin.c:2025
+#: plugins/vnc/vnc_plugin.c:2023 plugins/vnc/vnc_plugin.c:2040
 #: plugins/gvnc/gvnc_plugin.c:870 plugins/gvnc/gvnc_plugin.c:879
 msgid "View only"
 msgstr "Nur anzeigen"
@@ -2767,42 +2834,45 @@ msgstr "S_chließen"
 msgid "USB redirection error"
 msgstr "USB Weiterleitungsfehler"
 
-#: plugins/vnc/vnc_plugin.c:772
+#: plugins/vnc/vnc_plugin.c:782
 msgid "Enter VNC password"
 msgstr "VNC-Passwort eingeben"
 
-#: plugins/vnc/vnc_plugin.c:825 plugins/gvnc/gvnc_plugin.c:539
+#: plugins/vnc/vnc_plugin.c:835 plugins/gvnc/gvnc_plugin.c:539
 msgid "Enter VNC authentication credentials"
 msgstr "VNC-Anmeldedaten eingeben"
 
-#: plugins/vnc/vnc_plugin.c:936
+#: plugins/vnc/vnc_plugin.c:943
 msgid "Unable to connect to VNC server"
 msgstr "Verbindung zum VNC‐Server fehlgeschlagen"
 
-#: plugins/vnc/vnc_plugin.c:937
+#: plugins/vnc/vnc_plugin.c:944
+#, c-format
 msgid "Couldn’t convert '%s' to host address"
 msgstr "»%s« konnte nicht in eine Rechneradresse umgewandelt werden"
 
-#: plugins/vnc/vnc_plugin.c:938
+#: plugins/vnc/vnc_plugin.c:945
+#, c-format
 msgid "VNC connection failed: %s"
 msgstr "VNC‐Verbindung fehlgeschlagen: %s"
 
-#: plugins/vnc/vnc_plugin.c:939
+#: plugins/vnc/vnc_plugin.c:946
 msgid "Your connection has been rejected."
 msgstr "Die Verbindung wurde abgelehnt."
 
-#: plugins/vnc/vnc_plugin.c:966
+#: plugins/vnc/vnc_plugin.c:973
+#, c-format
 msgid "The VNC server requested an unknown authentication method. %s"
 msgstr ""
 "Der VNC-Server fordert eine unbekannten Authentifizierungs-Methode an. %s"
 
-#: plugins/vnc/vnc_plugin.c:968
+#: plugins/vnc/vnc_plugin.c:975
 msgid "Please retry after turning on encryption for this profile."
 msgstr ""
 "Bitte schalten Sie die Verschlüsselung für das Profil ein und probieren Sie "
 "nocheinmal."
 
-#: plugins/vnc/vnc_plugin.c:1939 plugins/vnc/vnc_plugin.c:1945
+#: plugins/vnc/vnc_plugin.c:1945
 msgid ""
 "Connect to VNC using a repeater:\n"
 "  • The server field must contain the repeater ID, e.g. ID:123456789\n"
@@ -2820,10 +2890,11 @@ msgstr ""
 " z.B. via x11vnc hergestellt werden:\n"
 " x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
 
-#: plugins/vnc/vnc_plugin.c:1948
+#: plugins/vnc/vnc_plugin.c:1954
+#, fuzzy
 msgid ""
 "Listening for remote VNC connection:\n"
-"  • The \"Listen on port\" field is the port Remmina will listen to,\n"
+"  • The “Listen on port” field is the port Remmina will listen to,\n"
 "    e.g. 8888\n"
 "  • From the remote VNC server, you will connect to\n"
 "    Remmina, e.g. with x11vnc:\n"
@@ -2837,32 +2908,48 @@ msgstr ""
 "    Remmina, z.B. über x11vnc:\n"
 "    x11vnc -display :0 -connect 192.168.1.36:8888"
 
-#: plugins/vnc/vnc_plugin.c:1975
+#: plugins/vnc/vnc_plugin.c:1962
+msgid ""
+"Override pre-set VNC encodings:\n"
+"\n"
+"  • On “Poor quality” encodings is set to “copyrect zlib hextile raw”\n"
+"  • On “Medium quality” encodings is set to “tight zrle ultra copyrect "
+"hextile zlib corre rre raw”\n"
+"  • On “Good quality” encodings is set to “tight zrle ultra copyrect hextile "
+"zlib corre rre raw”\n"
+"  • On “Best quality” encodings is set to “copyrect zrle ultra zlib hextile "
+"corre rre raw”"
+msgstr ""
+
+#: plugins/vnc/vnc_plugin.c:1989
 msgid "Repeater"
 msgstr "Repeater"
 
-#: plugins/vnc/vnc_plugin.c:1987
+#: plugins/vnc/vnc_plugin.c:2001
 msgid "Listen on port"
 msgstr "Auf Port lauschen"
 
-#: plugins/vnc/vnc_plugin.c:2007
+#: plugins/vnc/vnc_plugin.c:2021
+msgid "Override pre-set VNC encodings"
+msgstr ""
+
+#: plugins/vnc/vnc_plugin.c:2022
 msgid "Show remote cursor"
 msgstr "Entfernten Mauszeiger anzeigen"
 
-#: plugins/vnc/vnc_plugin.c:2010
+#: plugins/vnc/vnc_plugin.c:2025
 msgid "Turn off encryption"
 msgstr "TLS-Verschlüsselung ausschalten"
 
-#: plugins/vnc/vnc_plugin.c:2011 plugins/vnc/vnc_plugin.c:2026
+#: plugins/vnc/vnc_plugin.c:2026 plugins/vnc/vnc_plugin.c:2041
 msgid "Prevent local interaction on the server"
 msgstr "Lokale Interaktion am Server verhindern"
 
-#: plugins/vnc/vnc_plugin.c:2012 plugins/gvnc/gvnc_plugin.c:868
-#: plugins/vnc/vnc_plugin.c:2027
+#: plugins/vnc/vnc_plugin.c:2027 plugins/gvnc/gvnc_plugin.c:868
 msgid "Ignore remote bell messages"
 msgstr "Entfernte Klingeltöne ignorieren"
 
-#: plugins/vnc/vnc_plugin.c:2028
+#: plugins/vnc/vnc_plugin.c:2043
 msgid "Open Chat…"
 msgstr "Chat öffnen …"
 
@@ -2972,6 +3059,7 @@ msgid "Secured password storage in the GNOME keyring"
 msgstr "Sicheres Speichern von Passwörtern im GNOME Schlüsselbund"
 
 #: plugins/x2go/x2go_plugin.c:67
+#, c-format
 msgid ""
 "The command-line feature '%s' is not available! Attempting to start PyHoca-"
 "CLI without using this feature…"
@@ -3086,6 +3174,8 @@ msgid "Terminating X2Go sessions can take a moment."
 msgstr "Beenden einer X2Go-Sitzung kann einen Moment dauern."
 
 #: plugins/x2go/x2go_plugin.c:618 plugins/x2go/x2go_plugin.c:620
+#, fuzzy, c-format
+#| msgid "Unknown property '%i'"
 msgid "Unknown property '%i'"
 msgstr "Unbekannte Eigenschaft"
 
@@ -3116,6 +3206,7 @@ msgid "Couldn't get currently selected row (session)!"
 msgstr "Konnte aktuell ausgewählte Reihe (Sitzung) nicht abfragen!"
 
 #: plugins/x2go/x2go_plugin.c:783
+#, c-format
 msgid ""
 "Exactly one session should be selectable but '%i' rows (sessions) are "
 "selected."
@@ -3151,12 +3242,17 @@ msgstr ""
 "Der benötigte PyHoca-CLI-Prozess hat ein Problem mit der Internetverbindung."
 
 #: plugins/x2go/x2go_plugin.c:972
+#, fuzzy, c-format
+#| msgid ""
+#| "Could not start PyHoca-CLI:\n"
+#| "%s"
 msgid ""
 "Could not start PyHoca-CLI:\n"
 "%s"
 msgstr "Starten von PyHoca-CLI (%i) ist fehlgeschlagen: ‚%s‘"
 
 #: plugins/x2go/x2go_plugin.c:983
+#, c-format
 msgid ""
 "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i"
 msgstr ""
@@ -3164,6 +3260,7 @@ msgstr ""
 "Fehler-Code: %i"
 
 #: plugins/x2go/x2go_plugin.c:990
+#, c-format
 msgid ""
 "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i. "
 "Error: '%s'"
@@ -3189,6 +3286,10 @@ msgid "'Invalid connection data.'"
 msgstr "'Ungültige Verbindungsdaten.'"
 
 #: plugins/x2go/x2go_plugin.c:1218
+#, fuzzy, c-format
+#| msgid ""
+#| "An error occured while trying to terminate X2Go session '%s':\n"
+#| "%s"
 msgid ""
 "An error occured while trying to terminate X2Go session '%s':\n"
 "%s"
@@ -3208,6 +3309,7 @@ msgid "Resuming session: '%s'"
 msgstr "Wiederaufnahme der Sitzung: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:1352
+#, c-format
 msgid "Terminating session: '%s'"
 msgstr "Beende Sitzung: '%s'"
 
@@ -3263,6 +3365,7 @@ msgid "Couldn't allocate enough memory!"
 msgstr "Konnte nicht genug Speicher reservieren!"
 
 #: plugins/x2go/x2go_plugin.c:1961
+#, c-format
 msgid "Found already existing X2Go session with ID: '%s'"
 msgstr "Eine bereits bestehende X2Go-Sitzung mit ID '%s' wurde gefunden"
 
@@ -3301,10 +3404,12 @@ msgid "No session was selected. Creating a new one."
 msgstr "Es wurde keine Sitzung ausgewählt. Erstelle eine neue Sitzung."
 
 #: plugins/x2go/x2go_plugin.c:2197
+#, c-format
 msgid "A non-critical error happened: %s"
 msgstr "Ein nicht-kritischer Fehler ist aufgetreten: %s"
 
 #: plugins/x2go/x2go_plugin.c:2202
+#, c-format
 msgid "User chose to resume session with ID: '%s'"
 msgstr "Benutzer hat die Wiederaufnahme der Sitzung mit der ID '%s' gewählt"
 
@@ -3329,6 +3434,7 @@ msgid "Could not start X2Go session."
 msgstr "Die X2Go‐Sitzung kann nicht gestartet werden."
 
 #: plugins/x2go/x2go_plugin.c:2405
+#, c-format
 msgid "Could not start PyHoca-CLI (%i): '%s'"
 msgstr "Starten von PyHoca-CLI (%i) ist fehlgeschlagen: ‚%s‘"
 
@@ -3355,6 +3461,7 @@ msgid "Retrieved the following PyHoca-CLI command-line features:"
 msgstr "Die folgenden PyHoca-CLI Kommandozeilenfeatures wurden erkannt:"
 
 #: plugins/x2go/x2go_plugin.c:2543
+#, c-format
 msgid "Available feature[%i]: '%s'"
 msgstr "Verfügbares Feature[%i]: ‚%s‘"
 
@@ -3379,6 +3486,7 @@ msgid "RemminaProtocolWidget* gp is 'NULL'!"
 msgstr "RemminaProtocolWidget* gp ist 'NULL'!"
 
 #: plugins/x2go/x2go_plugin.c:2897
+#, c-format
 msgid "The %s protocol is unavailable because GtkSocket only works under X.org"
 msgstr ""
 "Das Protokoll %s ist nicht verfügbar, da der GtkSocket nur unter X.org "
@@ -3398,6 +3506,7 @@ msgstr ""
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
 #: plugins/x2go/x2go_plugin.c:2949 plugins/x2go/x2go_plugin.c:2967
+#, c-format
 msgid "%sand '%s'"
 msgstr "%sund '%s'"
 
@@ -3408,6 +3517,7 @@ msgstr "%sund '%s'"
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
 #: plugins/x2go/x2go_plugin.c:2954 plugins/x2go/x2go_plugin.c:2972
+#, c-format
 msgid "%s'%s' "
 msgstr "%s'%s' "
 
@@ -3415,6 +3525,7 @@ msgstr "%s'%s' "
 #. (Except your listing-grammar differs from english.)
 #. 'value1', 'value2', 'valueN-1' and 'valueN'
 #: plugins/x2go/x2go_plugin.c:2959
+#, c-format
 msgid "%s'%s', "
 msgstr "%s'%s', "
 
@@ -3431,10 +3542,12 @@ msgid "Parameters 'key' or 'value' are 'NULL'!"
 msgstr "Die Parameter 'key' oder 'value sind 'NULL'!"
 
 #: plugins/x2go/x2go_plugin.c:3040
+#, c-format
 msgid "Allowed values are %s."
 msgstr "Erlaubte Werte sind %s."
 
 #: plugins/x2go/x2go_plugin.c:3042
+#, c-format
 msgid "The only allowed value is '%s'."
 msgstr "Der einzige erlaubte Wert ist '%s'."
 
@@ -3477,6 +3590,7 @@ msgid "The input is not a valid integer!"
 msgstr "Die Eingabe ist keine gültige Ganzzahl!"
 
 #: plugins/x2go/x2go_plugin.c:3151 plugins/x2go/x2go_plugin.c:3170
+#, c-format
 msgid "Input must be a number between %i and %i."
 msgstr "Die Eingabe muss eine Zahl zwischen %i und %i sein."
 
@@ -3666,6 +3780,7 @@ msgid "Shutdown remote host"
 msgstr "Entfernten Host ausschalten"
 
 #: plugins/telepathy/telepathy_channel_handler.c:237
+#, c-format
 msgid ""
 "%s wants to share their desktop.\n"
 "Do you accept?"
@@ -4646,40 +4761,21 @@ msgstr "Remmina entsperren"
 msgid "Master password"
 msgstr "Master Passwort"
 
-#: plugins/vnc/vnc_plugin.c:1954
-#, fuzzy
-msgid ""
-"Listening for remote VNC connection:\n"
-"  • The “Listen on port” field is the port Remmina will listen to,\n"
-"    e.g. 8888\n"
-"  • From the remote VNC server, you will connect to\n"
-"    Remmina, e.g. with x11vnc:\n"
-"    x11vnc -display :0 -connect 192.168.1.36:8888"
-msgstr ""
-"Auf eingehende VNC-Verbindungen warten:\n"
-"  • Der \"Warten auf Port\" Feld legt fest, auf welchem Port Remmina "
-"wartet.\n"
-"    Z.b. 8888\n"
-"  • Vom entfernten VNC-Server verbinden Sie zu\n"
-"    Remmina, z.B. über x11vnc:\n"
-"    x11vnc -display :0 -connect 192.168.1.36:8888"
-
-#: plugins/vnc/vnc_plugin.c:1962
-msgid ""
-"Override pre-set VNC encodings:\n"
-"\n"
-"  • On “Poor quality” encodings is set to “copyrect zlib hextile raw”\n"
-"  • On “Medium quality” encodings is set to “tight zrle ultra copyrect "
-"hextile zlib corre rre raw”\n"
-"  • On “Good quality” encodings is set to “tight zrle ultra copyrect hextile "
-"zlib corre rre raw”\n"
-"  • On “Best quality” encodings is set to “copyrect zrle ultra zlib hextile "
-"corre rre raw”"
-msgstr ""
-
-#: plugins/vnc/vnc_plugin.c:2021
-msgid "Override pre-set VNC encodings"
-msgstr ""
+#~ msgid ""
+#~ "Listening for remote VNC connection:\n"
+#~ "  • The \"Listen on port\" field is the port Remmina will listen to,\n"
+#~ "    e.g. 8888\n"
+#~ "  • From the remote VNC server, you will connect to\n"
+#~ "    Remmina, e.g. with x11vnc:\n"
+#~ "    x11vnc -display :0 -connect 192.168.1.36:8888"
+#~ msgstr ""
+#~ "Auf eingehende VNC-Verbindungen warten:\n"
+#~ "  • Der \"Warten auf Port\" Feld legt fest, auf welchem Port Remmina "
+#~ "wartet.\n"
+#~ "    Z.b. 8888\n"
+#~ "  • Vom entfernten VNC-Server verbinden Sie zu\n"
+#~ "    Remmina, z.B. über x11vnc:\n"
+#~ "    x11vnc -display :0 -connect 192.168.1.36:8888"
 
 #~ msgid "Couldn't get property with index '%i' out of selected row."
 #~ msgstr ""

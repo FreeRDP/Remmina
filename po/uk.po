@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-12-09 13:41+0000\n"
+"POT-Creation-Date: 2021-12-10 14:04+0000\n"
 "PO-Revision-Date: 2021-12-09 23:54+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/remmina/"
@@ -130,8 +130,8 @@ msgid ""
 "There is more info about debugging Remmina on https://gitlab.com/Remmina/"
 "Remmina/-/wikis/Usage/Remmina-debugging\n"
 msgstr ""
-"За допомогою цього вікна ви зможете відшукати причини проблем зі з'єднанням."
-"\n"
+"За допомогою цього вікна ви зможете відшукати причини проблем зі "
+"з'єднанням.\n"
 "Ви у будь-який момент можете зупинити або розпочати запис даних до журналу, "
 "скориставшись перемикачем «Увімкнути/Вимкнути».\n"
 "Кнопка статистики (Ctrl+T) може бути корисною для збирання даних щодо "
@@ -202,7 +202,7 @@ msgid "Version"
 msgstr "Версія"
 
 #: src/remmina_chat_window.c:178
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Chat with %s"
 msgstr "Спілкування з %s"
 
@@ -379,7 +379,7 @@ msgid "Client Certificate Key"
 msgstr "Ключ сертифіката клієнта"
 
 #: src/rcw.c:655
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "Are you sure you want to close %i active connections in the current window?"
 msgstr "Ви дійсно бажаєте закрити %i активних з'єднань в цьому вікні?"
@@ -797,9 +797,9 @@ msgstr ""
 "Оновити користувача і пароль і встановити інших режим роздільної здатності "
 "профілю з'єднання Remmina:\n"
 "\n"
-"\techo \"користувач\\n"
-"пароль\" | remmina --update-profile /ШЛЯХ/ДО/ФАЙЛА.remmina --set-option "
-"username --set-option resolution_mode=2 --set-option password\n"
+"\techo \"користувач\\nпароль\" | remmina --update-profile /ШЛЯХ/ДО/ФАЙЛА."
+"remmina --set-option username --set-option resolution_mode=2 --set-option "
+"password\n"
 
 #: src/remmina_public.c:345
 #, c-format
@@ -980,13 +980,13 @@ msgstr "Встановлення з'єднання з «%s»…"
 
 #. TRANSLATORS: “%s” is a placeholder for an hostname or an IP address.
 #: src/remmina_protocol_widget.c:916 src/remmina_protocol_widget.c:1101
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Connecting to “%s” via SSH…"
 msgstr "Встановлення з'єднання з %s крізь SSH…"
 
 #. TRANSLATORS: “%i” is a placeholder for a TCP port number.
 #: src/remmina_protocol_widget.c:1165
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Awaiting incoming SSH connection on port %i…"
 msgstr "Очікування вхідного SSH-з'єднання на порту %i…"
 
@@ -1002,13 +1002,13 @@ msgstr "Не вдалось виконати команду «%s» на SSH-се
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_protocol_widget.c:1231
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not run command. %s"
 msgstr "Не вдалося виконати команду. %s"
 
 #. TRANSLATORS: “%s” is a placeholder for a hostname or IP address.
 #: src/remmina_protocol_widget.c:1301
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Connecting to %s via SSH…"
 msgstr "Встановлення з'єднання з %s крізь SSH…"
 
@@ -1078,7 +1078,7 @@ msgstr "Прийняти змінений сертифікат?"
 
 #. TRANSLATORS: “%i” is a placeholder for a port number. “%s”  is a placeholder for a protocol name (VNC).
 #: src/remmina_protocol_widget.c:1943
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Listening on port %i for an incoming %s connection…"
 msgstr "Очікуємо на порту %i на вхідне з'єднання %s…"
 
@@ -1095,17 +1095,17 @@ msgstr "Сервер"
 
 #. TRANSLATORS: “%s” is a placeholder for a protocol name, like “RDP”.
 #: src/remmina_protocol_widget.c:2048
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Install the %s protocol plugin first."
 msgstr "Спочатку встановіть додаток протоколу %s."
 
 #: src/remmina_ssh.c:236
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not authenticate with TOTP/OTP/2FA. %s"
 msgstr "Не вдалося пройти розпізнавання на основі TOTP, OTP або 2FA. %s"
 
 #: src/remmina_ssh.c:295 src/remmina_ssh.c:676
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not authenticate with SSH password. %s"
 msgstr "Не вдалося пройти розпізнавання за паролем SSH. %s"
 
@@ -1117,7 +1117,7 @@ msgstr "Не надано збереженого пароля до SSH. Прос
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:327 src/remmina_ssh.c:368 src/remmina_ssh.c:394
 #: src/remmina_ssh.c:433 src/remmina_ssh.c:746
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not authenticate with public SSH key. %s"
 msgstr "Не вдалося пройти розпізнавання за відкритим ключем SSH. %s"
 
@@ -1146,22 +1146,24 @@ msgstr "Не вибрано файла профілю SSH."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:380
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Public SSH key cannot be imported. %s"
 msgstr "Не вдалося імпортувати відкритий ключ SSH. %s"
 
 #: src/remmina_ssh.c:478
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not authenticate automatically with public SSH key. %s"
-msgstr "Не вдалося пройти автоматичне розпізнавання за відкритим ключем SSH. %s"
+msgstr ""
+"Не вдалося пройти автоматичне розпізнавання за відкритим ключем SSH. %s"
 
 #: src/remmina_ssh.c:523
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not authenticate automatically with SSH agent. %s"
-msgstr "Не вдалося пройти автоматичне розпізнавання за допомогою агента SSH. %s"
+msgstr ""
+"Не вдалося пройти автоматичне розпізнавання за допомогою агента SSH. %s"
 
 #: src/remmina_ssh.c:569 src/remmina_ssh.c:856
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not authenticate with SSH GSSAPI/Kerberos. %s"
 msgstr "Не вдалося пройти розпізнавання за допомогою SSH GSSAPI/Kerberos. %s"
 
@@ -1171,30 +1173,31 @@ msgid "The public SSH key changed!"
 msgstr "Змінено відкритий ключ SSH!"
 
 #: src/remmina_ssh.c:711
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not authenticate with keyboard-interactive. %s"
 msgstr "Не вдалося пройти інтерактивне розпізнавання з клавіатурою. %s"
 
 #: src/remmina_ssh.c:813
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not authenticate with automatic public SSH key. %s"
-msgstr "Не вдалося пройти автоматичне розпізнавання за відкритим ключем SSH. %s"
+msgstr ""
+"Не вдалося пройти автоматичне розпізнавання за відкритим ключем SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:921
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not fetch the server's public SSH key. %s"
 msgstr "Не вдалося отримати відкритий ключ сервера SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:928
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not fetch public SSH key. %s"
 msgstr "Не вдалося отримати відкритий ключ SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:936
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not fetch checksum of the public SSH key. %s"
 msgstr "Не вдалося отримати контрольну суму відкритого ключа SSH. %s"
 
@@ -1219,7 +1222,7 @@ msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:979
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not check list of known SSH hosts. %s"
 msgstr "Не вдалося перевірити список відомих вузлів SSH. %s"
 
@@ -1260,25 +1263,25 @@ msgstr "Інтерактивний вхід з клавіатури, TOTP/OTP/2F
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1337
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not start SSH session. %s"
 msgstr "Не вдалося розпочати сеанс SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1735
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not create channel. %s"
 msgstr "Не вдалося створити канал. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1746
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not connect to SSH tunnel. %s"
 msgstr "Не вдалося встановити з'єднання із тунелем SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1816 src/remmina_ssh.c:1837 src/remmina_ssh.c:1846
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not request port forwarding. %s"
 msgstr "Не вдалося надіслати запит щодо переспрямовування порту. %s"
 
@@ -1288,31 +1291,31 @@ msgid "The server did not respond."
 msgstr "Сервер не відповідає."
 
 #: src/remmina_ssh.c:1916
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Cannot connect to local port %i."
 msgstr "Не вдалося встановити з'єднання із локальним портом %i."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1965
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not write to SSH channel. %s"
 msgstr "Не вдалося виконати запис до каналу SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1972
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not read from tunnel listening socket. %s"
 msgstr "Не вдалося прочитати дані з сокета очікування на дані тунелю. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1992
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not poll SSH channel. %s"
 msgstr "Не вдалося опитати канал SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1999
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not read SSH channel in a non-blocking way. %s"
 msgstr ""
 "Не вдалося виконати читання з каналу SSH у спосіб, який не передбачає його "
@@ -1320,7 +1323,7 @@ msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:2018
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not send data to tunnel listening socket. %s"
 msgstr "Не вдалося надіслати дані до сокета очікування на дані тунелю. %s"
 
@@ -1352,25 +1355,25 @@ msgstr "Не вдалося запустити pthread."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:2280
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not create SFTP session. %s"
 msgstr "Не вдалося створити сеанс SFTP. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:2285
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not start SFTP session. %s"
 msgstr "Не вдалося розпочати сеанс SFTP. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:2379
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not open channel. %s"
 msgstr "Не вдалося відкрити канал. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:2394
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not request shell. %s"
 msgstr "Не вдалося створити запит щодо командної оболонки. %s"
 
@@ -1380,7 +1383,7 @@ msgid "Could not create PTY device."
 msgstr "Не вдалося створити PTY-пристрій."
 
 #: src/remmina_exec.c:475
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Plugin %s is not registered."
 msgstr "Додаток %s не зареєстровано."
 
@@ -1397,23 +1400,23 @@ msgstr[0] "Усього %i запис."
 msgstr[1] "Усього %i записи."
 msgstr[2] "Усього %i записів."
 
-#: src/remmina_main.c:694
+#: src/remmina_main.c:695
 #, fuzzy
 msgid "Network status: fully online"
 msgstr "Стан у мережі: повністю у мережі"
 
-#: src/remmina_main.c:697
+#: src/remmina_main.c:698
 #, fuzzy
 msgid "Network status: offline"
 msgstr "Стан у мережі: поза мережею"
 
-#: src/remmina_main.c:901
+#: src/remmina_main.c:902
 #, c-format
 msgid "Are you sure you want to delete “%s”?"
 msgstr "Впевнені, що бажаєте вилучити «%s»?"
 
-#: src/remmina_main.c:1025
-#, c-format, fuzzy
+#: src/remmina_main.c:1026
+#, fuzzy, c-format
 msgid ""
 "Unable to import:\n"
 "%s"
@@ -1421,27 +1424,27 @@ msgstr ""
 "Не вдалося імпортувати:\n"
 "%s"
 
-#: src/remmina_main.c:1051 data/ui/remmina_main.glade:285
+#: src/remmina_main.c:1052 data/ui/remmina_main.glade:285
 #, fuzzy
 msgid "Import"
 msgstr "Імпорт"
 
-#: src/remmina_main.c:1074 src/remmina_file_editor.c:1791
+#: src/remmina_main.c:1075 src/remmina_file_editor.c:1791
 #, fuzzy
 msgid "_Save"
 msgstr "З_берегти"
 
-#: src/remmina_main.c:1080
+#: src/remmina_main.c:1081
 #, fuzzy
 msgid "This protocol does not support exporting."
 msgstr "У цьому протоколі не передбачено експортування."
 
-#: src/remmina_main.c:1400
+#: src/remmina_main.c:1401
 #, fuzzy
 msgid "Remmina Remote Desktop Client"
 msgstr "Клієнт віддалених стільниць Remmina"
 
-#: src/remmina_main.c:1402
+#: src/remmina_main.c:1403
 #, fuzzy
 msgid "Remmina Kiosk"
 msgstr "Remmina-Кіоск"
@@ -1496,7 +1499,7 @@ msgid "Could not write to the file “%s” on the server. %s"
 msgstr "Не вдалося записати дані до файла «%s» на сервері. %s"
 
 #: src/remmina_sftp_client.c:716
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not read from the folder. %s"
 msgstr "Не вдалося виконати читання з теки. %s"
 
@@ -1597,7 +1600,7 @@ msgid "Choose a Remote Desktop Server"
 msgstr "Виберіть сервер віддалених стільниць"
 
 #: src/remmina_file_editor.c:460
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Browse the network to find a %s server"
 msgstr "Провести огляд мережі для пошуку сервера %s"
 
@@ -1680,7 +1683,7 @@ msgid "Tunnel via loopback address"
 msgstr "Тунель за допомогою закільцьованої адреси"
 
 #: src/remmina_file_editor.c:1143
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Same server at port %i"
 msgstr "Цей же сервер на порту %i"
 
@@ -1717,14 +1720,14 @@ msgid "Notes"
 msgstr "Примітка"
 
 #: src/remmina_file_editor.c:1438
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "(%s: %i): Can't validate setting '%s' since 'value' or 'gfe' are NULL!"
 msgstr ""
 "(%s: %i): не вдалося перевірити чинність параметра «%s» оскільки «value» або "
 "«gfe» має значення NULL!"
 
 #: src/remmina_file_editor.c:1441
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "(%s: %i): Can't validate user input since 'setting_name_to_validate', "
 "'value' or 'gfe' are NULL!"
@@ -1741,7 +1744,7 @@ msgstr "Внутрішня помилка"
 
 #: src/remmina_file_editor.c:1667 src/remmina_file_editor.c:1703
 #: src/remmina_file_editor.c:1724 src/remmina_file_editor.c:1747
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Couldn't validate user input. %s"
 msgstr "Введені користувачем дані є некоректними. %s"
 
@@ -1783,7 +1786,7 @@ msgid "Quick Connect"
 msgstr "Швидке з'єднання"
 
 #: src/remmina_file_editor.c:1946
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Use '%s' as subgroup delimiter"
 msgstr "Використовувати «%s» як роздільник підгруп"
 
@@ -1848,19 +1851,19 @@ msgstr "Підтримка StatusNotifier/Appindicator у “"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:367
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "%s your desktop does support it"
 msgstr "%s у вашому стільничному середовищі передбачено його підтримку"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:369
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "%s and Remmina has built-in (compiled) support for libappindicator."
 msgstr "%s і у Remmina зібрано (скомпільовано) підтримку libappindicator."
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:372
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "%s not supported natively by your Desktop Environment. libappindicator will "
 "try to fallback to GtkStatusIcon/xembed"
@@ -1870,25 +1873,25 @@ msgstr ""
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:376
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "%s You may need to install, and use XApp Status Applet"
 msgstr "%s можливо, вам слід встановити і скористатися аплетом стану XApp"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:379
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "%s You may need to install, and use KStatusNotifierItem"
 msgstr "%s можливо, вам слід встановити і скористатися KStatusNotifierItem"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:382
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "%s You may need to install, and use XEmbed SNI Proxy"
 msgstr "%s можливо, вам слід встановити і скористатися проксі SNI XEmbed"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:385
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "%s You may need to install, and use Gnome Shell Extension Appindicator"
 msgstr ""
 "%s можливо, вам слід встановити і скористатися розширенням оболонки Gnome "
@@ -1896,7 +1899,7 @@ msgstr ""
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_ssh_plugin.c:539
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Error: %s"
 msgstr "Помилка: %s"
 
@@ -2177,8 +2180,8 @@ msgstr "Перепов'язування сканкодів клавіатури"
 #, fuzzy
 msgid "List of key=value,… pairs to remap scancodes. E.g. 0x56=0x29,0x29=0x56"
 msgstr ""
-"Список записів ключ=значення,… пари для переприв'язування сканкодів. Приклад:"
-" 0x56=0x29,0x29=0x56"
+"Список записів ключ=значення,… пари для переприв'язування сканкодів. "
+"Приклад: 0x56=0x29,0x29=0x56"
 
 #: plugins/rdp/rdp_settings.c:486
 #, fuzzy
@@ -3069,7 +3072,7 @@ msgid "Export connection in Windows .rdp file format"
 msgstr "Експортувати з'єднання у форматі файлів Windows .rdp"
 
 #: plugins/rdp/rdp_event.c:344
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Reconnection attempt %d of %d…"
 msgstr "Спроба повторного з'єднання %d з %d…"
 
@@ -3084,7 +3087,7 @@ msgid "Transfer error"
 msgstr "Помилка перенесення"
 
 #: plugins/spice/spice_plugin_file_transfer.c:220
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "%s: %s"
 msgstr "%s: %s"
 
@@ -3094,7 +3097,7 @@ msgid "Transfer completed"
 msgstr "Передавання завершено"
 
 #: plugins/spice/spice_plugin_file_transfer.c:224
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "The %s file has been transferred"
 msgstr "Файл %s було передано"
 
@@ -3220,12 +3223,12 @@ msgid "Unable to connect to VNC server"
 msgstr "Не вдалося встановити з'єднання із сервером VNC"
 
 #: plugins/vnc/vnc_plugin.c:944
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Couldn’t convert '%s' to host address"
 msgstr "Не вдалося перетворити «%s» на адресу вузла"
 
 #: plugins/vnc/vnc_plugin.c:945
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "VNC connection failed: %s"
 msgstr "Помилка VNC-з'єднання: %s"
 
@@ -3235,7 +3238,7 @@ msgid "Your connection has been rejected."
 msgstr "Вам відмовлено у з'єднанні."
 
 #: plugins/vnc/vnc_plugin.c:973
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "The VNC server requested an unknown authentication method. %s"
 msgstr "Сервером VNC надіслано запит щодо невідомого способу розпізнавання. %s"
 
@@ -3474,7 +3477,7 @@ msgid "Secured password storage in the GNOME keyring"
 msgstr "Безпечне зберігання паролів у зв'язці ключів GNOME"
 
 #: plugins/x2go/x2go_plugin.c:67
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "The command-line feature '%s' is not available! Attempting to start PyHoca-"
 "CLI without using this feature…"
@@ -3498,7 +3501,7 @@ msgstr ""
 #: plugins/x2go/x2go_plugin.c:3098 plugins/x2go/x2go_plugin.c:3103
 #: plugins/x2go/x2go_plugin.c:3118 plugins/x2go/x2go_plugin.c:3123
 #: plugins/x2go/x2go_plugin.c:3128 plugins/x2go/x2go_plugin.c:3133
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Internal error: %s"
 msgstr "Внутрішня помилка: %s"
 
@@ -3610,7 +3613,7 @@ msgid "Terminating X2Go sessions can take a moment."
 msgstr "Переривання сеансів X2Go може бути досить тривалим."
 
 #: plugins/x2go/x2go_plugin.c:618 plugins/x2go/x2go_plugin.c:620
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Unknown property '%i'"
 msgstr "невідома властивість «%i»"
 
@@ -3682,7 +3685,7 @@ msgstr ""
 "Потрібний для роботи процес PyHoca-CLI має проблеми із інтернет-з'єднанням."
 
 #: plugins/x2go/x2go_plugin.c:972
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "Could not start PyHoca-CLI:\n"
 "%s"
@@ -3691,20 +3694,20 @@ msgstr ""
 "%s"
 
 #: plugins/x2go/x2go_plugin.c:983
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i"
 msgstr ""
 "Під час спроби запустити PyHoca-CLI сталася невідома помилка. Код виходу: %i"
 
 #: plugins/x2go/x2go_plugin.c:990
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i. "
 "Error: '%s'"
 msgstr ""
-"Під час спроби запустити PyHoca-CLI сталася помилка. Код виходу: %i. Помилка:"
-" «%s»"
+"Під час спроби запустити PyHoca-CLI сталася помилка. Код виходу: %i. "
+"Помилка: «%s»"
 
 #: plugins/x2go/x2go_plugin.c:1032
 #, fuzzy
@@ -3728,7 +3731,7 @@ msgid "'Invalid connection data.'"
 msgstr "«Некоректні дані з'єднання.»"
 
 #: plugins/x2go/x2go_plugin.c:1218
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "An error occured while trying to terminate X2Go session '%s':\n"
 "%s"
@@ -3747,12 +3750,12 @@ msgid "Couldn't get session ID from session chooser dialog."
 msgstr "Не вдалося отримати ідентифікатор сеансу з вікна вибору сеансу."
 
 #: plugins/x2go/x2go_plugin.c:1337
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Resuming session: '%s'"
 msgstr "Відновлюємо сеанс: «%s»"
 
 #: plugins/x2go/x2go_plugin.c:1352
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Terminating session: '%s'"
 msgstr "Перериваємо сеанс: «%s»"
 
@@ -3820,7 +3823,7 @@ msgid "Couldn't allocate enough memory!"
 msgstr "Не вдалося отримати достатній об'єм пам'яті!"
 
 #: plugins/x2go/x2go_plugin.c:1961
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Found already existing X2Go session with ID: '%s'"
 msgstr "Виявлено наявний сеанс X2Go із таким ідентифікатором: «%s»"
 
@@ -3865,18 +3868,18 @@ msgid "No session was selected. Creating a new one."
 msgstr "Не вибрано жодного сеансу. Створюємо сеанс."
 
 #: plugins/x2go/x2go_plugin.c:2197
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "A non-critical error happened: %s"
 msgstr "Сталася некритична помилка: %s"
 
 #: plugins/x2go/x2go_plugin.c:2202
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "User chose to resume session with ID: '%s'"
 msgstr "Користувачем вибрано відновлення сеансу із таким ідентифікатором: «%s»"
 
 #. TRANSLATORS: Please stick to X2GoClient's way of translating.
 #: plugins/x2go/x2go_plugin.c:2223
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Resuming session '%s'…"
 msgstr "Відновлюємо сеанс «%s»…"
 
@@ -3897,7 +3900,7 @@ msgid "Could not start X2Go session."
 msgstr "Не вдалося розпочати сеанс SSH."
 
 #: plugins/x2go/x2go_plugin.c:2405
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not start PyHoca-CLI (%i): '%s'"
 msgstr "Не вдалося запустити PyHoca-CLI (%i): «%s»"
 
@@ -3928,7 +3931,7 @@ msgid "Retrieved the following PyHoca-CLI command-line features:"
 msgstr "Отримано дані щодо таких можливостей командного рядка PyHoca-CLI:"
 
 #: plugins/x2go/x2go_plugin.c:2543
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Available feature[%i]: '%s'"
 msgstr "Доступна можливість[%i]: «%s»"
 
@@ -3977,7 +3980,7 @@ msgstr ""
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
 #: plugins/x2go/x2go_plugin.c:2949 plugins/x2go/x2go_plugin.c:2967
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "%sand '%s'"
 msgstr "%sі «%s»"
 
@@ -3988,7 +3991,7 @@ msgstr "%sі «%s»"
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
 #: plugins/x2go/x2go_plugin.c:2954 plugins/x2go/x2go_plugin.c:2972
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "%s'%s' "
 msgstr "%s: %s "
 
@@ -3996,7 +3999,7 @@ msgstr "%s: %s "
 #. (Except your listing-grammar differs from english.)
 #. 'value1', 'value2', 'valueN-1' and 'valueN'
 #: plugins/x2go/x2go_plugin.c:2959
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "%s'%s', "
 msgstr "%s: %s "
 
@@ -4015,7 +4018,7 @@ msgid "Parameters 'key' or 'value' are 'NULL'!"
 msgstr "Значенням параметра «key» або «value» є «NULL»!"
 
 #: plugins/x2go/x2go_plugin.c:3040
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Allowed values are %s."
 msgstr "Дозволеними значеннями є %s."
 
@@ -4072,7 +4075,7 @@ msgid "The input is not a valid integer!"
 msgstr "Вхідні дані не є коректним цілим числом!"
 
 #: plugins/x2go/x2go_plugin.c:3151 plugins/x2go/x2go_plugin.c:3170
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Input must be a number between %i and %i."
 msgstr "Вхідне значення має бути числом від %i до %i."
 
@@ -4271,7 +4274,7 @@ msgid "Shutdown remote host"
 msgstr "Вимкнути віддалений вузол"
 
 #: plugins/telepathy/telepathy_channel_handler.c:237
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "%s wants to share their desktop.\n"
 "Do you accept?"
@@ -4573,8 +4576,8 @@ msgid ""
 msgstr ""
 "<span>\n"
 "<b>Якщо ви в захваті від використання вільного програмного забезпечення, <a "
-"href=\"https://remmina.org/donations/\" title=\"Чудові пожертви Remmina\""
-">підтримайте нас фінансово</a>, аби зробити нас ще щасливішими та "
+"href=\"https://remmina.org/donations/\" title=\"Чудові пожертви Remmina"
+"\">підтримайте нас фінансово</a>, аби зробити нас ще щасливішими та "
 "стимулювати програмувати ще краще в майбутньому.</b>\n"
 "</span>\n"
 
@@ -5151,8 +5154,8 @@ msgid ""
 "Amount of milliseconds to attempt acknowledging data before closing the "
 "corresponding TCP connection forcibly."
 msgstr ""
-"Кількість мілісекунд для розпізнавання даних перед примусовим закриттям "
-"TCP-з'єднання."
+"Кількість мілісекунд для розпізнавання даних перед примусовим закриттям TCP-"
+"з'єднання."
 
 #: data/ui/remmina_preferences.glade:1588
 #, fuzzy
