@@ -325,10 +325,10 @@ static gboolean rmplugin_x2go_open_dialog(X2GoCustomUserData *custom_data)
 							   ddata->flags,
 							   ddata->type,
 							   ddata->buttons,
-							   ddata->title);
+							   "%s", ddata->title);
 
 		gtk_message_dialog_format_secondary_text(
-			GTK_MESSAGE_DIALOG(widget_gtk_dialog), ddata->message);
+			GTK_MESSAGE_DIALOG(widget_gtk_dialog), "%s", ddata->message);
 	}
 
 	if (!widget_gtk_dialog) {
@@ -409,8 +409,8 @@ static GtkWidget* rmplugin_x2go_find_child(GtkWidget* parent, const gchar* name)
  *				gp -> gp (RemminaProtocolWidget*) \n
  *				opt1 -> dialog widget (GtkWidget*)
  */
-static gboolean rmplugin_x2go_session_chooser_row_activated(GtkTreeView *treeview, 
-							    GtkTreePath *path, 
+static gboolean rmplugin_x2go_session_chooser_row_activated(GtkTreeView *treeview,
+							    GtkTreePath *path,
 							    GtkTreeViewColumn *column,
 							    X2GoCustomUserData *custom_data)
 {
@@ -776,7 +776,7 @@ static GtkTreePath* rmplugin_x2go_session_chooser_get_selected_row(GtkWidget *di
 	GList *selected_rows = gtk_tree_selection_get_selected_rows(selection, &filter_model);
 
 	// We only support single selection.
-	gint selected_rows_num = gtk_tree_selection_count_selected_rows(selection); 
+	gint selected_rows_num = gtk_tree_selection_count_selected_rows(selection);
 	if (selected_rows_num != 1) {
 		REMMINA_PLUGIN_CRITICAL("%s", g_strdup_printf(
 			_("Internal error: %s"), g_strdup_printf(
@@ -788,7 +788,7 @@ static GtkTreePath* rmplugin_x2go_session_chooser_get_selected_row(GtkWidget *di
 	}
 
 	// This would be very dangerous (we didn't check for NULL) if we hadn't just
-	// checked that only one row is selected. 
+	// checked that only one row is selected.
 	GtkTreePath *path = selected_rows->data;
 
 	// Convert to be path of GtkTreeModelFilter and *not* its child GtkTreeModel.
@@ -899,7 +899,7 @@ static gchar* rmplugin_x2go_spawn_pyhoca_process(guint argc, gchar* argv[],
 			_("parameter 'argv' is 'NULL'.")
 		);
 		REMMINA_PLUGIN_CRITICAL("%s", errmsg);
-		g_set_error(error, 1, 1, errmsg);
+		g_set_error(error, 1, 1, "%s", errmsg);
 		return NULL;
 	}
 
@@ -918,7 +918,7 @@ static gchar* rmplugin_x2go_spawn_pyhoca_process(guint argc, gchar* argv[],
 			_("parameter 'env' is either invalid or uninitialized.")
 		);
 		REMMINA_PLUGIN_CRITICAL("%s", errmsg);
-		g_set_error(error, 1, 1, errmsg);
+		g_set_error(error, 1, 1, "%s", errmsg);
 		return NULL;
 	}
 
@@ -965,7 +965,7 @@ static gchar* rmplugin_x2go_spawn_pyhoca_process(guint argc, gchar* argv[],
 
 			// Log error into debug window and stdout
 			REMMINA_PLUGIN_CRITICAL("%s:\n%s", errmsg, standard_err);
-			g_set_error(error, 1, 1, errmsg);
+			g_set_error(error, 1, 1, "%s", errmsg);
 			return NULL;
 		} else {
 			gchar* errmsg = g_strdup_printf(
@@ -974,7 +974,7 @@ static gchar* rmplugin_x2go_spawn_pyhoca_process(guint argc, gchar* argv[],
 				standard_err
 			);
 			REMMINA_PLUGIN_CRITICAL("%s", errmsg);
-			g_set_error(error, 1, 1, errmsg);
+			g_set_error(error, 1, 1, "%s", errmsg);
 			return NULL;
 		}
 	} else if (!success_ret || (*error) || strlen(standard_out) <= 0 || exit_code) {
@@ -984,7 +984,7 @@ static gchar* rmplugin_x2go_spawn_pyhoca_process(guint argc, gchar* argv[],
 				  "to start PyHoca-CLI. Exit code: %i"),
 				exit_code);
 			REMMINA_PLUGIN_WARNING("%s", errmsg);
-			g_set_error(error, 1, 1, errmsg);
+			g_set_error(error, 1, 1, "%s", errmsg);
 		} else {
 			gchar* errmsg = g_strdup_printf(
 				_("An unknown error occured while trying to start "
@@ -1651,7 +1651,7 @@ static gboolean rmplugin_x2go_save_credentials(RemminaFile* remminafile,
 			_("Internal error: %s"),
 			_("Could not save new credentials.")
 		), 512);
-		
+
 		REMMINA_PLUGIN_CRITICAL("%s", _("An error occured while trying to save "
 						"new credentials: 's_password' or "
 						"'s_username' strings were not set."));
@@ -1777,7 +1777,7 @@ static gchar* rmplugin_x2go_get_pyhoca_sessions(RemminaProtocolWidget* gp, GErro
 	    strlen(connect_data->username) <= 0)
 	    // Allow empty passwords. Maybe the user wants to connect via public key?
 	{
-		g_set_error(error, 1, 1, g_strdup_printf(
+		g_set_error(error, 1, 1, "%s", g_strdup_printf(
 			_("Internal error: %s"),
 			_("'Invalid connection data.'")
 		));
@@ -1807,7 +1807,7 @@ static gchar* rmplugin_x2go_get_pyhoca_sessions(RemminaProtocolWidget* gp, GErro
 			argv[argc++] = g_strdup_printf("%s", g_get_user_name());
 		}
 	} else {
-		g_set_error(error, 1, 1, FEATURE_NOT_AVAIL_STR("USERNAME"));
+		g_set_error(error, 1, 1, "%s", FEATURE_NOT_AVAIL_STR("USERNAME"));
 		REMMINA_PLUGIN_CRITICAL("%s", FEATURE_NOT_AVAIL_STR("USERNAME"));
 		return NULL;
 	}
@@ -1831,7 +1831,7 @@ static gchar* rmplugin_x2go_get_pyhoca_sessions(RemminaProtocolWidget* gp, GErro
 			argv[argc++] = g_strdup_printf("%s", password);
 		}
 	} else if (!password) {
-		g_set_error(error, 1, 1, FEATURE_NOT_AVAIL_STR("PASSWORD"));
+		g_set_error(error, 1, 1, "%s", FEATURE_NOT_AVAIL_STR("PASSWORD"));
 		REMMINA_PLUGIN_CRITICAL("%s", FEATURE_NOT_AVAIL_STR("PASSWORD"));
 		return NULL;
 	}
@@ -1909,7 +1909,7 @@ static GList* rmplugin_x2go_parse_pyhoca_sessions(RemminaProtocolWidget* gp,
 	gchar **lines_list = g_strsplit(pyhoca_output, "\n", -1);
 	// Assume at least two lines of output.
 	if (lines_list == NULL || lines_list[0] == NULL || lines_list[1] == NULL) {
-		g_set_error(error, 1, 1, _("Couldn't parse the output of PyHoca-CLI's "
+		g_set_error(error, 1, 1, "%s", _("Couldn't parse the output of PyHoca-CLI's "
 				           "--list-sessions option. Creating a new "
 				           "session now."));
 		return NULL;
@@ -2040,7 +2040,7 @@ static GList* rmplugin_x2go_parse_pyhoca_sessions(RemminaProtocolWidget* gp,
 
 	if (!sessions) {
 		g_set_error(error, 1, 1,
-			_("Could not find any sessions on remote machine. Creating a new "
+			"%s", _("Could not find any sessions on remote machine. Creating a new "
 			  "session now.")
 		);
 
@@ -2071,7 +2071,7 @@ static gchar* rmplugin_x2go_ask_session(RemminaProtocolWidget *gp, GError **erro
 	    strlen(connect_data->username) <= 0)
 	    // Allow empty passwords. Maybe the user wants to connect via public key?
 	{
-		g_set_error(error, 1, 1, g_strdup_printf(
+		g_set_error(error, 1, 1, "%s", g_strdup_printf(
 			_("Internal error: %s"),
 			_("'Invalid connection data.'")
 		));
@@ -2146,7 +2146,7 @@ static gchar* rmplugin_x2go_ask_session(RemminaProtocolWidget *gp, GError **erro
 	gchar* chosen_resume_session = GET_RESUME_SESSION(gp);
 
 	if (!chosen_resume_session || strlen(chosen_resume_session) <= 0) {
-		g_set_error(error, 1, 1, _("No session was selected. Creating a new one."));
+		g_set_error(error, 1, 1, "%s", _("No session was selected. Creating a new one."));
 		return NULL;
 	}
 
@@ -2997,7 +2997,7 @@ static GError* rmplugin_x2go_string_setting_validator(gchar* key, gchar* value,
 	if (!data) {
 		gchar *error_msg = _("Invalid validation data in ProtocolSettings array!");
 		REMMINA_PLUGIN_CRITICAL("%s", error_msg);
-		g_set_error(&error, 1, 1, error_msg);
+		g_set_error(&error, 1, 1, "%s", error_msg);
 		return error;
 	}
 
@@ -3012,7 +3012,7 @@ static GError* rmplugin_x2go_string_setting_validator(gchar* key, gchar* value,
 	{
 		gchar *error_msg = _("Validation data in ProtocolSettings array is invalid!");
 		REMMINA_PLUGIN_CRITICAL("%s", error_msg);
-		g_set_error(&error, 1, 1, error_msg);
+		g_set_error(&error, 1, 1, "%s", error_msg);
 		return error;
 	}
 
@@ -3020,7 +3020,7 @@ static GError* rmplugin_x2go_string_setting_validator(gchar* key, gchar* value,
 
 	if (!key || !value) {
 		REMMINA_PLUGIN_CRITICAL("%s", _("Parameters 'key' or 'value' are 'NULL'!"));
-		g_set_error(&error, 1, 1, _("Internal error."));
+		g_set_error(&error, 1, 1, "%s", _("Internal error."));
 		return error;
 	}
 
@@ -3077,29 +3077,29 @@ static GError* rmplugin_x2go_int_setting_validator(gchar* key, gpointer value,
 	{
 		gchar *error_msg = _("Validation data in ProtocolSettings array is invalid!");
 		REMMINA_PLUGIN_CRITICAL("%s", error_msg);
-		g_set_error(&error, 1, 1, error_msg);
+		g_set_error(&error, 1, 1, "%s", error_msg);
 		return error;
 	}
 
 	gint minimum;
 	str2int_errno err = str2int(&minimum, integer_list[0], 10);
 	if (err == STR2INT_INCONVERTIBLE) {
-		g_set_error(&error, 1, 1, g_strdup_printf(
+		g_set_error(&error, 1, 1, "%s", g_strdup_printf(
 			_("Internal error: %s"),
 			_("The lower limit is not a valid integer!")
 		));
 	} else if (err == STR2INT_OVERFLOW) {
-		g_set_error(&error, 1, 1, g_strdup_printf(
+		g_set_error(&error, 1, 1, "%s", g_strdup_printf(
 			_("Internal error: %s"),
 			_("The lower limit is too high!")
 		));
 	} else if (err == STR2INT_UNDERFLOW) {
-		g_set_error(&error, 1, 1, g_strdup_printf(
+		g_set_error(&error, 1, 1, "%s", g_strdup_printf(
 			_("Internal error: %s"),
 			_("The lower limit is too low!")
 		));
 	} else if (err == STR2INT_INVALID_DATA) {
-		g_set_error(&error, 1, 1, g_strdup_printf(
+		g_set_error(&error, 1, 1, "%s", g_strdup_printf(
 			_("Internal error: %s"),
 			_("Something unknown went wrong.")
 		));
@@ -3114,22 +3114,22 @@ static GError* rmplugin_x2go_int_setting_validator(gchar* key, gpointer value,
 	gint maximum;
 	err = str2int(&maximum, integer_list[1], 10);
 	if (err == STR2INT_INCONVERTIBLE) {
-		g_set_error(&error, 1, 1, g_strdup_printf(
+		g_set_error(&error, 1, 1, "%s", g_strdup_printf(
 			_("Internal error: %s"),
 			_("The upper limit is not a valid integer!")
 		));
 	} else if (err == STR2INT_OVERFLOW) {
-		g_set_error(&error, 1, 1, g_strdup_printf(
+		g_set_error(&error, 1, 1, "%s", g_strdup_printf(
 			_("Internal error: %s"),
 			_("The upper limit is too high!")
 		));
 	} else if (err == STR2INT_UNDERFLOW) {
-		g_set_error(&error, 1, 1, g_strdup_printf(
+		g_set_error(&error, 1, 1, "%s", g_strdup_printf(
 			_("Internal error: %s"),
 			_("The upper limit is too low!")
 		));
 	} else if (err == STR2INT_INVALID_DATA) {
-		g_set_error(&error, 1, 1, g_strdup_printf(
+		g_set_error(&error, 1, 1, "%s", g_strdup_printf(
 			_("Internal error: %s"),
 			_("Something unknown went wrong.")
 		));
@@ -3146,12 +3146,12 @@ static GError* rmplugin_x2go_int_setting_validator(gchar* key, gpointer value,
 	if (err == STR2INT_INCONVERTIBLE) {
 		// Can't happen in theory since non-numerical characters are can't
 		// be entered but, let's be safe.
-		g_set_error(&error, 1, 1, _("The input is not a valid integer!"));
+		g_set_error(&error, 1, 1, "%s", _("The input is not a valid integer!"));
 	} else if (err == STR2INT_OVERFLOW || err == STR2INT_UNDERFLOW) {
 		g_set_error(&error, 1, 1, _("Input must be a number between %i and %i."),
 					minimum, maximum);
 	} else if (err == STR2INT_INVALID_DATA) {
-		g_set_error(&error, 1, 1, _("Something unknown went wrong."));
+		g_set_error(&error, 1, 1, "%s", _("Something unknown went wrong."));
 	}
 
 	if (error) {
