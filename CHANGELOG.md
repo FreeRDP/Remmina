@@ -1,3 +1,32 @@
+## v1.4.22
+[full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.21...v1.4.22)
+
+* Fix crash if main window is closed #1692 [!2330](https://gitlab.com/Remmina/Remmina/merge_requests/2330) *@broth-itk*
+* Main window position reset after opening a connection (issue 2587) [!2331](https://gitlab.com/Remmina/Remmina/merge_requests/2331) *@broth-itk*
+* File Interface refactoring [!2332](https://gitlab.com/Remmina/Remmina/merge_requests/2332) *@antenore*
+* CMake refactoring and build time warnings [!2333](https://gitlab.com/Remmina/Remmina/merge_requests/2333) *@antenore*
+* Add Croatian language to desktop shortcuts and infos [!2334](https://gitlab.com/Remmina/Remmina/merge_requests/2334) *@muzena*
+* Appdata corrections and renewal [!2336](https://gitlab.com/Remmina/Remmina/merge_requests/2336) *@kingu*
+* Fixes for freerdp3 compatibility. [!2337](https://gitlab.com/Remmina/Remmina/merge_requests/2337) *@giox069*
+* X2Go: Rewrite dialog-system; Ask users which session to resume... [!2328](https://gitlab.com/Remmina/Remmina/merge_requests/2328) *@D0n1elT*
+* int main(): print instructions how to enable a more verbose output of remmina [!2338](https://gitlab.com/Remmina/Remmina/merge_requests/2338) *@D0n1elT*
+* Mitigations for #2635 (default printer) with freerdp < 3 [!2343](https://gitlab.com/Remmina/Remmina/merge_requests/2343) *@giox069*
+* X2Go: Add a session-terminate button into the session resuming selection menu [!2339](https://gitlab.com/Remmina/Remmina/merge_requests/2339) *@D0n1elT*
+* Properly warn users when using a plugin which requires GtkSocket [!2340](https://gitlab.com/Remmina/Remmina/merge_requests/2340) *@D0n1elT*
+* x2go_plugin.c: Make changes to source strings for translations. [!2344](https://gitlab.com/Remmina/Remmina/merge_requests/2344) *@D0n1elT*
+* Fix ubuntu-impish-amd64 build errors. [!2345](https://gitlab.com/Remmina/Remmina/merge_requests/2345) *@D0n1elT*
+* Hopefully fix Ubuntu Impish Build [!2347](https://gitlab.com/Remmina/Remmina/merge_requests/2347) *@D0n1elT*
+* Fix string format [!2348](https://gitlab.com/Remmina/Remmina/merge_requests/2348) *@antenore*
+* 2634-ssh-opening-command [!2342](https://gitlab.com/Remmina/Remmina/merge_requests/2342) *@merarischreoder*
+* New debug strings reworked [!2341](https://gitlab.com/Remmina/Remmina/merge_requests/2341) *@kingu*
+* Deduplicated "Started PyHoca" string [!2346](https://gitlab.com/Remmina/Remmina/merge_requests/2346) *@kingu*
+* Removing the Remmina stats sender and repurposing Remmina stats [!2350](https://gitlab.com/Remmina/Remmina/merge_requests/2350) *@antenore*
+* X2Go: Major rewrite of session-terminating system. [!2349](https://gitlab.com/Remmina/Remmina/merge_requests/2349) *@D0n1elT*
+* Message about debugging info reworked [!2351](https://gitlab.com/Remmina/Remmina/merge_requests/2351) *@kingu*
+* Strings in rcw.c reworked [!2352](https://gitlab.com/Remmina/Remmina/merge_requests/2352) *@kingu*
+* VNC custom encodings to avoid corrupted frames. [!2354](https://gitlab.com/Remmina/Remmina/merge_requests/2354) *@antenore*
+* X2Go format string bugs [!2355](https://gitlab.com/Remmina/Remmina/merge_requests/2355) *@antenore*
+
 ## v1.4.21
 [full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.20...v1.4.21)
 
