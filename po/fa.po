@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Remmina v1.4.5\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-12-10 14:04+0000\n"
-"PO-Revision-Date: 2021-12-11 07:35+0000\n"
-"Last-Translator: Yasin Huwsf <yasinbakhtiar521@gmail.com>\n"
+"POT-Creation-Date: 2021-12-11 12:19+0000\n"
+"PO-Revision-Date: 2021-12-11 12:19+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/remmina/remmina/"
 "fa/>\n"
 "Language: fa\n"
@@ -451,7 +451,7 @@ msgid "Disconnect"
 msgstr "قطع اتصال"
 
 #: src/rcw.c:4298
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "The file “%s” is corrupted, unreadable, or could not be found."
 msgstr "فایل \"%s\" خراب شده، غیرقابل خواندن است، یا یافت نمی شود."
 
@@ -712,9 +712,9 @@ msgstr ""
 "برای به روز رسانی نام کاربری و رمز عبور و تنظیم حالت وضوح متفاوت از یک "
 "پروفایل اتصال Remmina، استفاده کنید:\n"
 "\n"
-"echo \"username\\n"
-"apassword\" | remmina --update-profile /PATH/TO/FOO.remmina --set-option "
-"username --set-option resolution_mode=2 --set-option password\n"
+"echo \"username\\napassword\" | remmina --update-profile /PATH/TO/FOO."
+"remmina --set-option username --set-option resolution_mode=2 --set-option "
+"password\n"
 
 #: src/remmina_public.c:345
 #, c-format
@@ -922,6 +922,7 @@ msgstr "موضوع:"
 
 #. TRANSLATORS: The name or email of the entity that have issued the SSL certificate
 #: src/remmina_protocol_widget.c:1762 src/remmina_protocol_widget.c:1794
+#, fuzzy
 msgid "Issuer:"
 msgstr "صادر کننده:"
 
@@ -979,7 +980,7 @@ msgstr "ابتدا افزونه پروتکل \"%s\" را نصب کنید."
 #: src/remmina_ssh.c:236
 #, c-format
 msgid "Could not authenticate with TOTP/OTP/2FA. %s"
-msgstr "نمی تواند با TOTP/OTP/2FA تایید شود. %s"
+msgstr "نمی توان با TOTP/OTP/2FA تایید کرد. %s"
 
 #: src/remmina_ssh.c:295 src/remmina_ssh.c:676
 #, c-format
@@ -997,7 +998,7 @@ msgstr ""
 #: src/remmina_ssh.c:433 src/remmina_ssh.c:746
 #, c-format
 msgid "Could not authenticate with public SSH key. %s"
-msgstr "نمی تواند با کلید عمومی SSH تایید شود. %s"
+msgstr "نمی توان با کلید عمومی SSH تایید کرد. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:336
@@ -1015,7 +1016,7 @@ msgstr "گواهی SSH را نمی توان در کلید SSH خصوصی کپی 
 #: src/remmina_ssh.c:355
 #, c-format
 msgid "Could not authenticate using SSH certificate. %s"
-msgstr "با استفاده از گواهی SSH نمی تواند تایید شود. %s"
+msgstr "نمی توان با استفاده از گواهی SSH تایید کرد. %s"
 
 #: src/remmina_ssh.c:369
 msgid "SSH identity file not selected."
@@ -1035,7 +1036,7 @@ msgstr "نمی تواند به طور خودکار با کلید SSH عمومی 
 #: src/remmina_ssh.c:523
 #, c-format
 msgid "Could not authenticate automatically with SSH agent. %s"
-msgstr "نمی تواند به طور خودکار با عامل SSH احراز هویت شود. %s"
+msgstr "نمی توان به طور خودکار با عامل SSH احراز هویت کرد. %s"
 
 #: src/remmina_ssh.c:569 src/remmina_ssh.c:856
 #, c-format
@@ -1058,15 +1059,15 @@ msgstr "با کلید SSH عمومی خودکار احراز هویت امکان
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:921
-#, fuzzy, c-format
+#, c-format
 msgid "Could not fetch the server's public SSH key. %s"
-msgstr "نمی تواند کلید عمومی SSH سرور را واکشی کند. %s"
+msgstr "نمی توان کلید عمومی SSH سرور را واکشی کرد. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:928
-#, fuzzy, c-format
+#, c-format
 msgid "Could not fetch public SSH key. %s"
-msgstr "نمی تواند کلید SSH عمومی را واکشی کند. %s"
+msgstr "نمی توان کلید SSH عمومی را واکشی کرد. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:936
@@ -1148,7 +1149,7 @@ msgstr "اتصال به تونل با شکست مواجه شد. %s"
 #: src/remmina_ssh.c:1816 src/remmina_ssh.c:1837 src/remmina_ssh.c:1846
 #, c-format
 msgid "Could not request port forwarding. %s"
-msgstr "نمی تواند درخواست ارسال پورت کند. %s"
+msgstr "نمی توان درخواست ارسال پورت کرد. %s"
 
 #: src/remmina_ssh.c:1876
 msgid "The server did not respond."
@@ -1163,31 +1164,31 @@ msgstr "نمی توان به پورت محلی %i متصل شد."
 #: src/remmina_ssh.c:1965
 #, c-format
 msgid "Could not write to SSH channel. %s"
-msgstr "نمی تواند به کانال SSH بنویسد. %s"
+msgstr "نمی توان به کانال SSH نوشت. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1972
 #, c-format
 msgid "Could not read from tunnel listening socket. %s"
-msgstr "نمیتواند از تونل listening socket بخواند. %s"
+msgstr "نمیتوان از تونل listening socket خواند. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1992
 #, c-format
 msgid "Could not poll SSH channel. %s"
-msgstr "نمی تواند کانال SSH را نظرسنجی کند. %s"
+msgstr "نمی توان کانال SSH را نظرسنجی کرد. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1999
 #, c-format
 msgid "Could not read SSH channel in a non-blocking way. %s"
-msgstr "نمی تواند کانال SSH را به صورت غیر مسدود کننده بخواند. %s"
+msgstr "نمی توان کانال SSH را به صورت غیر مسدود کننده خواند. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:2018
-#, fuzzy, c-format
+#, c-format
 msgid "Could not send data to tunnel listening socket. %s"
-msgstr "نمی تواند داده ها را به سوکت listening socket تونلی ارسال کند. %s"
+msgstr "نمی توان داده ها را به سوکت listening socket تونلی ارسال کرد. %s"
 
 #: src/remmina_ssh.c:2120
 msgid "Assign a destination port."
@@ -1195,11 +1196,11 @@ msgstr "یک پورت مقصد را تعیین کنید."
 
 #: src/remmina_ssh.c:2127
 msgid "Could not create socket."
-msgstr "نمی تواند سوکت را ایجاد کند."
+msgstr "نمی توان سوکت را ایجاد کرد."
 
 #: src/remmina_ssh.c:2137
 msgid "Could not bind server socket to local port."
-msgstr "نمی تواند سوکت سرور را به پورت محلی متصل کند."
+msgstr "نمی توان سوکت سرور را به پورت محلی متصل کرد."
 
 #: src/remmina_ssh.c:2143
 msgid "Could not listen to local port."
@@ -1214,19 +1215,19 @@ msgstr "نمی توان pthread را شروع کرد."
 #: src/remmina_ssh.c:2280
 #, c-format
 msgid "Could not create SFTP session. %s"
-msgstr "نمی تواند جلسه SFTP را ایجاد کند. %s"
+msgstr "نمی توان جلسه SFTP را ایجاد کرد. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:2285
 #, c-format
 msgid "Could not start SFTP session. %s"
-msgstr "نمی تواند جلسه SFTP را شروع کند. %s"
+msgstr "نمی توان جلسه SFTP را شروع کرد. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:2379
 #, c-format
 msgid "Could not open channel. %s"
-msgstr "نمی تواند کانال را باز کند. %s"
+msgstr "نمی توان کانال را باز کرد. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:2394
@@ -1236,7 +1237,7 @@ msgstr "نمی توان پوسته ای درخواست کرد.%s"
 
 #: src/remmina_ssh.c:2523
 msgid "Could not create PTY device."
-msgstr "نمی تواند دستگاه PTY را ایجاد کند."
+msgstr "نمی توان دستگاه PTY را ایجاد کرد."
 
 #: src/remmina_exec.c:475
 #, c-format
@@ -1277,9 +1278,8 @@ msgstr ""
 "%s"
 
 #: src/remmina_main.c:1052 data/ui/remmina_main.glade:285
-#, fuzzy
 msgid "Import"
-msgstr "وارد کردن"
+msgstr "بارگذاری کردن"
 
 #: src/remmina_main.c:1075 src/remmina_file_editor.c:1791
 #, fuzzy
@@ -1295,19 +1295,18 @@ msgid "Remmina Remote Desktop Client"
 msgstr "نرم افزار کنترل دسکتاپ از راه دور Remmina"
 
 #: src/remmina_main.c:1403
-#, fuzzy
 msgid "Remmina Kiosk"
-msgstr "ریمینا کیوسک"
+msgstr "Remmina Kiosk"
 
 #. TRANSLATORS: The placeholder %s is a directory path
 #: src/remmina_sftp_client.c:173
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create the folder “%s”."
-msgstr "نمی توانست پوشه \"%s\" را ایجاد کند."
+msgstr "نمی توان پوشه \"%s\" را ایجاد کند."
 
 #. TRANSLATORS: The placeholder %s is a file path
 #: src/remmina_sftp_client.c:181 src/remmina_sftp_client.c:202
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create the file “%s”."
 msgstr "نمی توانست پرونده \"%s\" را ایجاد کند."
 
@@ -1318,73 +1317,68 @@ msgid "Could not open the file “%s” on the server. %s"
 msgstr "دستور \"%s\" روی سرور SSH اجرا نشد (وضعیت =\"%i\")."
 
 #: src/remmina_sftp_client.c:242
-#, fuzzy, c-format
+#, c-format
 msgid "Could not save the file “%s”."
-msgstr "نمی توانست پرونده \"%s\" را ذخیره کند."
+msgstr "نمی توان پرونده \"%s\" را ذخیره کرد."
 
 #: src/remmina_sftp_client.c:281 src/remmina_sftp_client.c:698
 #: src/remmina_sftp_client.c:761
-#, fuzzy, c-format
+#, c-format
 msgid "Could not open the folder “%s”. %s"
-msgstr "نمی توانست پوشه \"%s\" را باز کند. %s"
+msgstr "نمی توان پوشه \"%s\" را باز کرد. %s"
 
 #: src/remmina_sftp_client.c:385
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create the folder “%s” on the server. %s"
-msgstr "نمی توانست پوشه \"%s\" را روی سرور ایجاد کند. %s"
+msgstr "نمی توان پوشه \"%s\" را روی سرور ایجاد کرد. %s"
 
 #: src/remmina_sftp_client.c:413 src/remmina_sftp_client.c:435
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create the file “%s” on the server. %s"
-msgstr "نمی توانست پرونده \"%s\" را روی سرور ایجاد کند. %s"
+msgstr "نمی توان پرونده \"%s\" را روی سرور ایجاد کرد. %s"
 
 #: src/remmina_sftp_client.c:456
-#, fuzzy, c-format
+#, c-format
 msgid "Could not open the file “%s”."
-msgstr "نمی توانست پرونده \"%s\" را باز کند."
+msgstr "نمی توان پرونده \"%s\" را باز کرد."
 
 #: src/remmina_sftp_client.c:476
-#, fuzzy, c-format
+#, c-format
 msgid "Could not write to the file “%s” on the server. %s"
-msgstr "نمی توانست روی فایل \"%s\" روی سرور بنویسد. %s"
+msgstr "نمی توان روی فایل \"%s\" روی سرور نوشت. %s"
 
 #: src/remmina_sftp_client.c:716
-#, fuzzy, c-format
+#, c-format
 msgid "Could not read from the folder. %s"
-msgstr "نمی توانست از پوشه بخواند. %s"
+msgstr "نمی توان از پوشه خواند. %s"
 
 #: src/remmina_sftp_client.c:823
-#, fuzzy
 msgid "Are you sure you want to cancel the file transfer in progress?"
 msgstr "آیا مطمئن هستید که می خواهید انتقال پرونده در حال انجام را لغو کنید؟"
 
 #: src/remmina_sftp_client.c:857
-#, fuzzy, c-format
+#, c-format
 msgid "Could not delete “%s”. %s"
-msgstr "نمی توانست \"%s\" را حذف کند. %s"
+msgstr "نمی توان \"%s\" را حذف کرد. %s"
 
 #: src/remmina_sftp_client.c:942
-#, fuzzy
 msgid "The file exists already"
-msgstr "پرونده در حال حاضر وجود دارد"
+msgstr "پرونده در حال حاضر وجود دارد."
 
 #: src/remmina_sftp_client.c:945
-#, fuzzy
 msgid "Resume"
 msgstr "ازسرگیری"
 
 #: src/remmina_sftp_client.c:946
 #, fuzzy
 msgid "Overwrite"
-msgstr "جانویسی"
+msgstr "‏جانویسی"
 
 #: src/remmina_sftp_client.c:964
-#, fuzzy
 msgid "The following file already exists in the target folder:"
 msgstr "پرونده زیر در حال حاضر در پوشه هدف وجود دارد:"
 
 #: src/remmina_file_editor.c:61
-#, fuzzy
 msgid ""
 "<big>Supported formats\n"
 "• server\n"
@@ -1393,15 +1387,14 @@ msgid ""
 "• ID:repeater ID number\n"
 "• unix:///path/socket.sock</big>"
 msgstr ""
-"<big> فرمت های پشتیبانی شده\n"
+"<big> فرمت های پشتیب‬انی شده\n"
 "• سرور\n"
-"• server[:p ort]\n"
+"• سرور[:پورت]\n"
 "فرمت های اضافی VNC\n"
-"• ID:repeater ID number\n"
+"•شناسه: شماره شناسه تکرارکننده\n"
 "• unix:///path/socket.sock</big>"
 
 #: src/remmina_file_editor.c:70
-#, fuzzy
 msgid ""
 "<big>• command in PATH args %h\n"
 "• /path/to/foo -options %h %u\n"
@@ -1417,7 +1410,7 @@ msgid ""
 "</big>"
 msgstr ""
 "<big>• فرمان در PATH args ٪h\n"
-"• / مسیر / به / foo - گزینه های ٪h ٪u\n"
+"• /path/to/foo -options %h %u\n"
 "• ٪h با نام سرور جایگزین شده است\n"
 "• ٪t با نام سرور SSH جایگزین شده است\n"
 "• ٪u با نام کاربری جایگزین شده است\n"
@@ -1425,11 +1418,10 @@ msgstr ""
 "• ٪p با نام پروفایل Remmina جایگزین شده است\n"
 "• ٪g با نام گروه پروفایل Remmina جایگزین شده است\n"
 "• ٪d با تاریخ و زمان محلی در فرمت ISO 8601 جایگزین می شود\n"
-"اگر می خواهید فرمان قبل از اتصال اجرا شود، در پس زمینه اجرا نشوید.\n"
+"اگر می خواهید فرمان قبل از اتصال اجرا شود، در پس زمینه اجرا نکنید.\n"
 "</big>"
 
 #: src/remmina_file_editor.c:84
-#, fuzzy
 msgid ""
 "<big>Supported formats\n"
 "• server\n"
@@ -1438,11 +1430,10 @@ msgid ""
 msgstr ""
 "<big> فرمت های پشتیبانی شده\n"
 "• سرور\n"
-"• server[:p ort]\n"
-"• username@server[:p ort] (SSH protocol only)</big>"
+"• سرور[:پورت]\n"
+"• username@server[:port] (SSH protocol only)</big>"
 
 #: src/remmina_file_editor.c:162
-#, fuzzy
 msgid "Input is invalid."
 msgstr "ورودی نامعتبر است."
 
@@ -1457,27 +1448,22 @@ msgid "Browse the network to find a %s server"
 msgstr "مرور شبکه برای پیدا کردن %s سرور"
 
 #: src/remmina_file_editor.c:564
-#, fuzzy
 msgid "Resolution"
 msgstr "وضوح"
 
 #: src/remmina_file_editor.c:571
-#, fuzzy
 msgid "Use initial window size"
 msgstr "استفاده از اندازه پنجره اولیه"
 
 #: src/remmina_file_editor.c:575
-#, fuzzy
 msgid "Use client resolution"
-msgstr "استفاده از وضوح مشتری"
+msgstr "استفاده از وضوح کلاینت"
 
 #: src/remmina_file_editor.c:586 src/remmina_file_editor.c:1152
-#, fuzzy
 msgid "Custom"
 msgstr "سفارشی"
 
 #: src/remmina_file_editor.c:945
-#, fuzzy
 msgid "Keyboard mapping"
 msgstr "نقشه برداری صفحه کلید"
 
@@ -1492,33 +1478,29 @@ msgstr "اجرای دستورات خارجی…"
 
 #: src/remmina_file_editor.c:1079
 msgid "Before connecting"
-msgstr "ارتباط جدید"
+msgstr "قبل از  ارتباط"
 
 #: src/remmina_file_editor.c:1081
-#, fuzzy
 msgid "command %h %u %t %U %p %g --option"
-msgstr "فرمان ٪h ٪u ٪t ٪U ٪p ٪g --گزینه"
+msgstr "فرمان h %u %t %U %p %g --option%"
 
 #: src/remmina_file_editor.c:1086
 msgid "After connecting"
-msgstr "ارتباط جدید"
+msgstr "بعد از ارتباط"
 
 #: src/remmina_file_editor.c:1088
-#, fuzzy
 msgid "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
-msgstr "/path/to/command -opt1 arg ٪h ٪u ٪t -opt2 ٪U ٪p ٪g"
+msgstr "مسیر/در/ command -opt1 arg ٪h ٪u ٪t -opt2 ٪U ٪p ٪g/"
 
 #: src/remmina_file_editor.c:1092
 msgid "Start-up"
 msgstr "برنامه راه اندازی"
 
 #: src/remmina_file_editor.c:1095
-#, fuzzy
 msgid "Auto-start this profile"
 msgstr "شروع خودکار این پروفایل"
 
 #: src/remmina_file_editor.c:1125
-#, fuzzy
 msgid "SSH Tunnel"
 msgstr "تونل SSH"
 
@@ -1528,48 +1510,39 @@ msgid "Enable SSH tunnel"
 msgstr "فعال کردن تونل SSH"
 
 #: src/remmina_file_editor.c:1133
-#, fuzzy
 msgid "Tunnel via loopback address"
 msgstr "تونل از طریق آدرس loopback"
 
 #: src/remmina_file_editor.c:1143
-#, fuzzy, c-format
+#, c-format
 msgid "Same server at port %i"
 msgstr "همان سرور در پورت %i"
 
 #: src/remmina_file_editor.c:1193 plugins/rdp/rdp_plugin.c:2767
 msgid "Start-up path"
-msgstr "برنامه راه اندازی"
+msgstr "مسیر برنامه راه اندازی"
 
 #: src/remmina_file_editor.c:1202
-#, fuzzy
 msgid "SSH Authentication"
 msgstr "احراز هویت SSH"
 
 #: src/remmina_file_editor.c:1229
-#, fuzzy
-#| msgid "SSH identity file"
 msgid "SSH private key file"
 msgstr "فایل کلید خصوصی SSH"
 
 #: src/remmina_file_editor.c:1235 src/remmina_ssh_plugin.c:1475
-#, fuzzy
-#| msgid "SSH identity file"
 msgid "SSH certificate file"
 msgstr "فایل گواهی SSH"
 
 #: src/remmina_file_editor.c:1293
-#, fuzzy
 msgid "Basic"
 msgstr "پایه"
 
 #: src/remmina_file_editor.c:1299
-#, fuzzy
 msgid "Advanced"
 msgstr "پیشرفته"
 
 #: src/remmina_file_editor.c:1310
-#, fuzzy
 msgid "Notes"
 msgstr "یادداشت ها"
 
@@ -3415,8 +3388,9 @@ msgid "SSHFS port"
 msgstr "پورت SSHFS"
 
 #: plugins/x2go/x2go_plugin.c:481
+#, fuzzy
 msgid "Visible"
-msgstr ""
+msgstr "قابل مشاهده"
 
 #: plugins/x2go/x2go_plugin.c:520
 #, fuzzy
