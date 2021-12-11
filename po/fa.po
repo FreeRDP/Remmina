@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Remmina v1.4.5\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-12-10 14:04+0000\n"
-"PO-Revision-Date: 2021-12-11 06:34+0000\n"
+"PO-Revision-Date: 2021-12-11 07:35+0000\n"
 "Last-Translator: Yasin Huwsf <yasinbakhtiar521@gmail.com>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/remmina/remmina/"
 "fa/>\n"
@@ -1040,22 +1040,21 @@ msgstr "نمی تواند به طور خودکار با عامل SSH احراز 
 #: src/remmina_ssh.c:569 src/remmina_ssh.c:856
 #, c-format
 msgid "Could not authenticate with SSH GSSAPI/Kerberos. %s"
-msgstr "امکان تأیید اعتبار وجود ندارد ، تلاش برای اتصال مجدد …"
+msgstr "با SSH GSSAPI/Kerberos احراز هویت امکان‌پذیر نیست. %s"
 
 #: src/remmina_ssh.c:598
-#, fuzzy
 msgid "The public SSH key changed!"
 msgstr "کلید عمومی SSH تغییر کرد!"
 
 #: src/remmina_ssh.c:711
 #, c-format
 msgid "Could not authenticate with keyboard-interactive. %s"
-msgstr "امکان تأیید اعتبار وجود ندارد ، تلاش برای اتصال مجدد …"
+msgstr "با keyboard-interactive احراز هویت امکان‌پذیر نیست.%s"
 
 #: src/remmina_ssh.c:813
 #, c-format
 msgid "Could not authenticate with automatic public SSH key. %s"
-msgstr "امکان تأیید اعتبار وجود ندارد ، تلاش برای اتصال مجدد …"
+msgstr "با کلید SSH عمومی خودکار احراز هویت امکان‌پذیر نیست.%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:921
@@ -1073,232 +1072,214 @@ msgstr "نمی تواند کلید SSH عمومی را واکشی کند. %s"
 #: src/remmina_ssh.c:936
 #, fuzzy, c-format
 msgid "Could not fetch checksum of the public SSH key. %s"
-msgstr "نمی تواند چک از کلید SSH عمومی واکشی. %s"
+msgstr "واکشی Checksum کلید عمومی SSH ممکن نیست."
 
 #: src/remmina_ssh.c:949
-#, fuzzy
 msgid "The server is unknown. The public key fingerprint is:"
 msgstr "سرور ناشناخته است. اثر انگشت کلید عمومی این است:"
 
 #: src/remmina_ssh.c:951 src/remmina_ssh.c:957
-#, fuzzy
 msgid "Do you trust the new public key?"
-msgstr "به کليد عمومي جديد اعتماد داري؟"
+msgstr "آیا به کليد عمومي جديد اعتماد دارید؟"
 
 #: src/remmina_ssh.c:954
-#, fuzzy
 msgid ""
 "Warning: The server has changed its public key. This means you are either "
 "under attack,\n"
 "or the administrator has changed the key. The new public key fingerprint is:"
 msgstr ""
-"هشدار: سرور کلید عمومی خود را تغییر داده است. اين يعني تو يا مورد حمله قرار "
-"گرفتي\n"
+"هشدار: سرور کلید عمومی خود را تغییر داده است. اين يعني شما يا مورد حمله قرار "
+"گرفته اید\n"
 "یا مدیر کلید را تغییر داده است. اثر انگشت کلید عمومی جدید این است:"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:979
-#, fuzzy, c-format
+#, c-format
 msgid "Could not check list of known SSH hosts. %s"
-msgstr "نمی توانست لیست میزبان های شناخته شده SSH را بررسی کند. %s"
+msgstr "چک لیست میزبان های SSH شناخته شده ممکن نیست. %s"
 
 #: src/remmina_ssh.c:988
-#, fuzzy
 msgid "SSH password"
 msgstr "رمز عبور SSH"
 
 #: src/remmina_ssh.c:995 src/remmina_ssh.c:1039
-#, fuzzy
 msgid "SSH private key passphrase"
-msgstr "SSH عبارت عبور کلید خصوصی"
+msgstr "عبارت عبور کلید خصوصی SSH"
 
 #: src/remmina_ssh.c:1000
-#, fuzzy
 msgid "SSH Kerberos/GSSAPI"
 msgstr "SSH Kerberos/GSSAPI"
 
 #: src/remmina_ssh.c:1005
-#, fuzzy
 msgid "Enter TOTP/OTP/2FA code"
-msgstr "کد TOTP/OTP/2FA را وارد کنید"
+msgstr "کد TOTP/OTP/2FA را وارد کنید."
 
 #: src/remmina_ssh.c:1035 src/remmina_ssh.c:1061
-#, fuzzy
 msgid "SSH tunnel credentials"
 msgstr "اعتبار تونل SSH"
 
 #: src/remmina_ssh.c:1035 src/remmina_ssh.c:1061
-#, fuzzy
 msgid "SSH credentials"
 msgstr "اعتبارنامه SSH"
 
 #: src/remmina_ssh.c:1112
-#, fuzzy
 msgid "Keyboard interactive login, TOTP/OTP/2FA"
 msgstr "صفحه کلید ورود تعاملی ، TOTP / OTP / 2FA"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1337
-#, fuzzy, c-format
+#, c-format
 msgid "Could not start SSH session. %s"
-msgstr "نمی توانست جلسه SSH را شروع کند. %s"
+msgstr "جلسه SSH شروع نشد. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1735
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create channel. %s"
-msgstr "نمی توانست کانال ایجاد کند. %s"
+msgstr "کانال ایجاد نشد. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1746
-#, fuzzy, c-format
+#, c-format
 msgid "Could not connect to SSH tunnel. %s"
-msgstr "نمی توانست به تونل SSH متصل شود. %s"
+msgstr "اتصال به تونل با شکست مواجه شد. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1816 src/remmina_ssh.c:1837 src/remmina_ssh.c:1846
-#, fuzzy, c-format
+#, c-format
 msgid "Could not request port forwarding. %s"
-msgstr "نمی تواند درخواست ارسال پورت. %s"
+msgstr "نمی تواند درخواست ارسال پورت کند. %s"
 
 #: src/remmina_ssh.c:1876
-#, fuzzy
 msgid "The server did not respond."
 msgstr "سرور پاسخ نداد."
 
 #: src/remmina_ssh.c:1916
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot connect to local port %i."
 msgstr "نمی توان به پورت محلی %i متصل شد."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1965
-#, fuzzy, c-format
+#, c-format
 msgid "Could not write to SSH channel. %s"
-msgstr "نمی توانست به کانال SSH بنویسد. %s"
+msgstr "نمی تواند به کانال SSH بنویسد. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1972
-#, fuzzy, c-format
+#, c-format
 msgid "Could not read from tunnel listening socket. %s"
-msgstr "نمی توانست از سوکت گوش دادن تونل بخواند. %s"
+msgstr "نمیتواند از تونل listening socket بخواند. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1992
-#, fuzzy, c-format
+#, c-format
 msgid "Could not poll SSH channel. %s"
-msgstr "نمی توانست کانال SSH را نظرسنجی کند. %s"
+msgstr "نمی تواند کانال SSH را نظرسنجی کند. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1999
-#, fuzzy, c-format
+#, c-format
 msgid "Could not read SSH channel in a non-blocking way. %s"
-msgstr "نمی توانست کانال SSH را به صورت غیر مسدود کننده بخواند. %s"
+msgstr "نمی تواند کانال SSH را به صورت غیر مسدود کننده بخواند. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:2018
 #, fuzzy, c-format
 msgid "Could not send data to tunnel listening socket. %s"
-msgstr "نمی توانست داده ها را به سوکت گوش دادن تونل ارسال کند. %s"
+msgstr "نمی تواند داده ها را به سوکت listening socket تونلی ارسال کند. %s"
 
 #: src/remmina_ssh.c:2120
-#, fuzzy
 msgid "Assign a destination port."
-msgstr "اختصاص پورت مقصد."
+msgstr "یک پورت مقصد را تعیین کنید."
 
 #: src/remmina_ssh.c:2127
-#, fuzzy
 msgid "Could not create socket."
-msgstr "نمی توانست سوکت ایجاد کند."
+msgstr "نمی تواند سوکت را ایجاد کند."
 
 #: src/remmina_ssh.c:2137
-#, fuzzy
 msgid "Could not bind server socket to local port."
-msgstr "نمی توانست سوکت سرور را به پورت محلی متصل کند."
+msgstr "نمی تواند سوکت سرور را به پورت محلی متصل کند."
 
 #: src/remmina_ssh.c:2143
-#, fuzzy
 msgid "Could not listen to local port."
-msgstr "نميتونستم به بندر محلي گوش بدم"
+msgstr "نمی توان به پورت محلی گوش داد."
 
 #. TRANSLATORS: Do not translate pthread
 #: src/remmina_ssh.c:2153 src/remmina_ssh.c:2170 src/remmina_ssh.c:2188
-#, fuzzy
 msgid "Could not start pthread."
-msgstr "نميتونست شروع به وحشت کنه"
+msgstr "نمی توان pthread را شروع کرد."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:2280
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create SFTP session. %s"
-msgstr "نمی توانست جلسه SFTP را ایجاد کند. %s"
+msgstr "نمی تواند جلسه SFTP را ایجاد کند. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:2285
-#, fuzzy, c-format
+#, c-format
 msgid "Could not start SFTP session. %s"
-msgstr "نمی توانست جلسه SFTP را شروع کند. %s"
+msgstr "نمی تواند جلسه SFTP را شروع کند. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:2379
-#, fuzzy, c-format
+#, c-format
 msgid "Could not open channel. %s"
-msgstr "نمی توانست کانال را باز کند. %s"
+msgstr "نمی تواند کانال را باز کند. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:2394
 #, fuzzy, c-format
 msgid "Could not request shell. %s"
-msgstr "نميتونستم درخواست پوسته کنم %s"
+msgstr "نمی توان پوسته ای درخواست کرد.%s"
 
 #: src/remmina_ssh.c:2523
-#, fuzzy
 msgid "Could not create PTY device."
-msgstr "نمی توانست دستگاه PTY ایجاد کند."
+msgstr "نمی تواند دستگاه PTY را ایجاد کند."
 
 #: src/remmina_exec.c:475
-#, fuzzy, c-format
+#, c-format
 msgid "Plugin %s is not registered."
 msgstr "افزونه \"%s\" ثبت نشده."
 
 #: src/remmina_main.c:685
-#, fuzzy
 msgid "The latest successful connection attempt, or a pre-computed date"
-msgstr "آخرین تلاش اتصال موفق، یا یک تاریخ از پیش محاسباتی"
+msgstr "آخرین تلاش موفقیت آمیز برای اتصال، یا یک تاریخ از پیش محاسبه شده"
 
 #: src/remmina_main.c:687
-#, fuzzy, c-format
+#, c-format
 msgid "Total %i item."
 msgid_plural "Total %i items."
-msgstr[0] "مجموع %i مورد."
-msgstr[1] ""
+msgstr[0] "مجموعا %i مورد."
+msgstr[1] "مجموعا %i مورد"
 
 #: src/remmina_main.c:695
 msgid "Network status: fully online"
-msgstr ""
+msgstr "وضعیت شبکه: کاملا آنلاین"
 
 #: src/remmina_main.c:698
 msgid "Network status: offline"
-msgstr ""
+msgstr "وضعیت شبکه: آفلاین"
 
 #: src/remmina_main.c:902
-#, fuzzy, c-format
+#, c-format
 msgid "Are you sure you want to delete “%s”?"
 msgstr "آیا مطمئن هستید که می خواهید \"%s\" را حذف کنید؟"
 
 #: src/remmina_main.c:1026
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Unable to import:\n"
 "%s"
 msgstr ""
-"قادر به وارد کردن:\n"
+"امکان وارد کردن وجود ندارد:\n"
 "%s"
 
 #: src/remmina_main.c:1052 data/ui/remmina_main.glade:285
 #, fuzzy
 msgid "Import"
-msgstr "درون‌ریزی"
+msgstr "وارد کردن"
 
 #: src/remmina_main.c:1075 src/remmina_file_editor.c:1791
 #, fuzzy
@@ -1306,14 +1287,12 @@ msgid "_Save"
 msgstr "_Save"
 
 #: src/remmina_main.c:1081
-#, fuzzy
 msgid "This protocol does not support exporting."
-msgstr "این پروتکل از صادرات پشتیبانی نمی کند."
+msgstr "این پروتکل از خروجی گرفتن پشتیبانی نمی کند."
 
 #: src/remmina_main.c:1401
-#, fuzzy
 msgid "Remmina Remote Desktop Client"
-msgstr "Remmina از راه دور دسکتاپ مشتری"
+msgstr "نرم افزار کنترل دسکتاپ از راه دور Remmina"
 
 #: src/remmina_main.c:1403
 #, fuzzy
