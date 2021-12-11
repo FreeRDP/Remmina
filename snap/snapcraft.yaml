@@ -88,6 +88,9 @@ apps:
   wlfreerdp:
     command: usr/bin/wlfreerdp
 
+  pyhoca-cli:
+    command: usr/bin/pyhoca-cli
+
   ssh-agent:
     command: usr/bin/ssh-agent -D -a $SSH_AUTH_SOCK
     daemon: simple
@@ -119,6 +122,11 @@ parts:
     plugin: nil
     stage-packages:
       - openssh-client
+
+  pyhoca:
+    plugin: nil
+    stage-packages:
+      - pyhoca-cli
 
   freerdp:
     after:
@@ -231,6 +239,7 @@ parts:
       - libwebkit2gtk-4.0-dev
       - libpcre2-dev
       - python3-dev
+      - pyhoca-cli
     stage-packages:
       - libgpm2
       - libgvnc-1.0-0
@@ -245,11 +254,13 @@ parts:
       - xauth
       - xterm
       - openssh-client
+      - pyhoca-cli
     cmake-parameters:
       - -DCMAKE_BUILD_TYPE=Release
       - -DWITH_NEWS:BOOL=ON
       - -DWITH_FREERDP3=OFF
       - -DWITH_GVNC=ON
+      - -DWITH_X2GO=ON
       - -DCMAKE_PREFIX_PATH=$SNAPCRAFT_STAGE/usr
       - -DSNAP_BUILD=on
 
