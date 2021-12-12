@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Remmina v1.4.3\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-12-11 12:19+0000\n"
-"PO-Revision-Date: 2021-12-11 14:47+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2021-12-12 15:52+0000\n"
+"Last-Translator: phlostically <phlostically@mailinator.com>\n"
 "Language-Team: Esperanto <https://hosted.weblate.org/projects/remmina/"
 "remmina/eo/>\n"
 "Language: eo\n"
@@ -98,21 +98,10 @@ msgid "Remmina debugging window"
 msgstr "Erarserĉa fenestro de Remmina"
 
 #: src/remmina_log.c:133
-#, fuzzy
-#| msgid "Paste sytem information in the Remmina debugging window"
 msgid "Paste sytem info in the Remmina debugging window"
 msgstr "Alglui sistemajn informojn en la erarserĉan fenestron de Remmina"
 
 #: src/remmina_log.c:153
-#, fuzzy
-#| msgid ""
-#| "This window can help you finding connections problems.\n"
-#| "You can stop and start the logging at any moment using the On/Off "
-#| "switch.\n"
-#| "The stats button (Ctrl+T), may be useful to gather system information "
-#| "that you may share while reporting a bug.\n"
-#| "For more information on debugging Remmina see : https://gitlab.com/"
-#| "Remmina/Remmina/-/wikis/Usage/Remmina-debugging\n"
 msgid ""
 "This window can help you find connection problems.\n"
 "You can stop and start the logging at any moment using the On/Off switch.\n"
@@ -125,8 +114,8 @@ msgstr ""
 "Vi povas iam ajn fini kaj komenci la protokoladon per la ŝaltilo.\n"
 "La butono por statistikoj (Stir+T) estas eble utila por kolekti sistemajn "
 "informojn, kiujn vi povas mencii en raporto pri cimo.\n"
-"Por pliaj informoj pri erarserĉado en Remmina, vidu la jenon: https://gitlab."
-"com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging\n"
+"Jen pliaj informoj pri erarserĉado en Remmina ĉe https://gitlab.com/Remmina/"
+"Remmina/-/wikis/Usage/Remmina-debugging\n"
 
 #: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1951
 msgid "Protocol"
@@ -457,14 +446,6 @@ msgstr ""
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. 'GtkSocket feature is not available'.
 #: src/rcw.c:4516
-#, fuzzy
-#| msgid ""
-#| "Plugins relying on GtkSocket can't run in a Wayland session.\n"
-#| "For more information and a possible workaround, please visit the Remmina "
-#| "Wiki at:\n"
-#| "\n"
-#| "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
-#| "available-in-a-Wayland-session"
 msgid ""
 "Plugins relying on GtkSocket can't run in a Wayland session.\n"
 "For more info and a possible workaround, please visit the Remmina wiki at:\n"
@@ -480,8 +461,6 @@ msgstr ""
 "available-in-a-Wayland-session"
 
 #: src/rcw.c:4530
-#, fuzzy
-#| msgid "Open in browser"
 msgid "Open in web browser"
 msgstr "Malfermi per TTT-legilo"
 
@@ -2852,14 +2831,6 @@ msgstr ""
 "  x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
 
 #: plugins/vnc/vnc_plugin.c:1954
-#, fuzzy
-#| msgid ""
-#| "Listening for remote VNC connection:\n"
-#| "  • The \"Listen on port\" field is the port Remmina will listen to,\n"
-#| "    e.g. 8888\n"
-#| "  • From the remote VNC server, you will connect to\n"
-#| "    Remmina, e.g. with x11vnc:\n"
-#| "    x11vnc -display :0 -connect 192.168.1.36:8888"
 msgid ""
 "Listening for remote VNC connection:\n"
 "  • The “Listen on port” field is the port Remmina will listen to,\n"
@@ -3111,7 +3082,6 @@ msgid "SSHFS port"
 msgstr "SSHFS-pordo"
 
 #: plugins/x2go/x2go_plugin.c:481
-#, fuzzy
 msgid "Visible"
 msgstr "Videbla"
 
@@ -3140,10 +3110,9 @@ msgid "Terminating X2Go sessions can take a moment."
 msgstr "Finado de X2Go-seanco povas postuli iom da momentoj."
 
 #: plugins/x2go/x2go_plugin.c:618 plugins/x2go/x2go_plugin.c:620
-#, fuzzy, c-format
-#| msgid "Unknown property"
+#, c-format
 msgid "Unknown property '%i'"
-msgstr "Nekonata atributo"
+msgstr "Nekonata atributo «%i»"
 
 #: plugins/x2go/x2go_plugin.c:708 plugins/x2go/x2go_plugin.c:755
 msgid "Couldn't find child GtkTreeView of session chooser dialog."
@@ -3205,12 +3174,13 @@ msgid ""
 msgstr "La nepra procezo «PyHoca-CLI» spertis problemon pri Interreta konekto."
 
 #: plugins/x2go/x2go_plugin.c:972
-#, fuzzy, c-format
-#| msgid "Could not start PyHoca-CLI (%i): '%s'"
+#, c-format
 msgid ""
 "Could not start PyHoca-CLI:\n"
 "%s"
-msgstr "Ne eblis lanĉi la programon PyHoca-CLI (%i): «%s»"
+msgstr ""
+"Ne eblis lanĉi la programon PyHoca-CLI:\n"
+"%s"
 
 #: plugins/x2go/x2go_plugin.c:983
 #, c-format
@@ -3227,10 +3197,8 @@ msgstr ""
 "Nekonata eraro okazis dum provo lanĉi PyHoca-CLI. Elirkodo: %i. Eraro: «%s»"
 
 #: plugins/x2go/x2go_plugin.c:1032
-#, fuzzy
-#| msgid "Both parameters 'dialog' and 'treeview' are uninitialized!"
 msgid "Neither the 'path' nor 'dialog' parameters are initialized."
-msgstr "Ambaŭ parametroj «dialog» kaj «treeview» estas ne praŝargitaj!"
+msgstr "Nek la parametro «path» nek «dialog» estas praŝargita."
 
 #: plugins/x2go/x2go_plugin.c:1048
 msgid "GtkTreePath 'path' describes a non-existing row!"
@@ -3246,12 +3214,13 @@ msgid "'Invalid connection data.'"
 msgstr "«Nevalidaj konektaj datenoj.»"
 
 #: plugins/x2go/x2go_plugin.c:1218
-#, fuzzy, c-format
-#| msgid "An error occured while trying to terminate a X2Go session: %s"
+#, c-format
 msgid ""
 "An error occured while trying to terminate X2Go session '%s':\n"
 "%s"
-msgstr "Eraro okazis dum finado de seanco X2Go: %s"
+msgstr ""
+"Eraro okazis dum finado de la X2Go-seanco «%s»:\n"
+"%s"
 
 #: plugins/x2go/x2go_plugin.c:1230 plugins/x2go/x2go_plugin.c:1594
 msgid "An error occured."
