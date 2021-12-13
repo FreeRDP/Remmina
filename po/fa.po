@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Remmina v1.4.5\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-12-11 12:19+0000\n"
-"PO-Revision-Date: 2021-12-12 06:53+0000\n"
+"PO-Revision-Date: 2021-12-13 07:53+0000\n"
 "Last-Translator: Yasin Huwsf <yasinbakhtiar521@gmail.com>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/remmina/remmina/"
 "fa/>\n"
@@ -1302,19 +1302,19 @@ msgstr "Remmina Kiosk"
 #: src/remmina_sftp_client.c:173
 #, c-format
 msgid "Could not create the folder “%s”."
-msgstr "نمی توان پوشه \"%s\" را ایجاد کند."
+msgstr "نمی توان پوشه \"%s\" را ایجاد کرد."
 
 #. TRANSLATORS: The placeholder %s is a file path
 #: src/remmina_sftp_client.c:181 src/remmina_sftp_client.c:202
 #, c-format
 msgid "Could not create the file “%s”."
-msgstr "نمی توانست پرونده \"%s\" را ایجاد کند."
+msgstr "نمی توان پرونده \"%s\" را ایجاد کرد."
 
 #. TRANSLATORS: The placeholders %s are a file path, and an error message.
 #: src/remmina_sftp_client.c:220
 #, c-format
 msgid "Could not open the file “%s” on the server. %s"
-msgstr "دستور \"%s\" روی سرور SSH اجرا نشد (وضعیت =\"%i\")."
+msgstr "فایل \"%s\" روی سرور  باز نشد.%s"
 
 #: src/remmina_sftp_client.c:242
 #, c-format
@@ -1345,7 +1345,7 @@ msgstr "نمی توان پرونده \"%s\" را باز کرد."
 #: src/remmina_sftp_client.c:476
 #, c-format
 msgid "Could not write to the file “%s” on the server. %s"
-msgstr "نمی توان روی فایل \"%s\" روی سرور نوشت. %s"
+msgstr "نمی توان روی فایل \"%s\" در سرور نوشت. %s"
 
 #: src/remmina_sftp_client.c:716
 #, c-format
@@ -1376,7 +1376,7 @@ msgstr "‏جانویسی"
 
 #: src/remmina_sftp_client.c:964
 msgid "The following file already exists in the target folder:"
-msgstr "پرونده زیر در حال حاضر در پوشه هدف وجود دارد:"
+msgstr "پرونده زیر در حال حاضر در پوشه target وجود دارد:"
 
 #: src/remmina_file_editor.c:61
 msgid ""
@@ -1490,11 +1490,11 @@ msgstr "بعد از ارتباط"
 
 #: src/remmina_file_editor.c:1088
 msgid "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
-msgstr "مسیر/در/ command -opt1 arg ٪h ٪u ٪t -opt2 ٪U ٪p ٪g/"
+msgstr "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
 
 #: src/remmina_file_editor.c:1092
 msgid "Start-up"
-msgstr "برنامه راه اندازی"
+msgstr "راه اندازی"
 
 #: src/remmina_file_editor.c:1095
 msgid "Auto-start this profile"
@@ -1520,7 +1520,7 @@ msgstr "همان سرور در پورت %i"
 
 #: src/remmina_file_editor.c:1193 plugins/rdp/rdp_plugin.c:2767
 msgid "Start-up path"
-msgstr "مسیر برنامه راه اندازی"
+msgstr "مسیر  راه اندازی"
 
 #: src/remmina_file_editor.c:1202
 msgid "SSH Authentication"
@@ -1576,7 +1576,7 @@ msgstr "نمی توان ورودی کاربر را اعتبار بخشید. %s"
 
 #: src/remmina_file_editor.c:1691
 msgid "Default settings saved."
-msgstr "تنظیمات پیش فرض ذخیره شده است."
+msgstr "تنظیمات پیش فرض ذخیره شد."
 
 #: src/remmina_file_editor.c:1781
 msgid "Remote Connection Profile"
@@ -1588,6 +1588,7 @@ msgid "Save as Default"
 msgstr "ذخیره به عنوان پیش فرض"
 
 #: src/remmina_file_editor.c:1788
+#, fuzzy
 msgid "Use the current settings as the default for all new connection profiles"
 msgstr ""
 "از تنظیمات فعلی به عنوان پیش فرض برای همه پروفایل های اتصال جدید استفاده "
@@ -1665,7 +1666,7 @@ msgstr "\"StatusNotifier/Appindicator support in"
 #: src/remmina_icon.c:367
 #, c-format
 msgid "%s your desktop does support it"
-msgstr "%s دسکتاپ شما آن را پشتیبانی می کند"
+msgstr "%s دسکتاپ شما آن را پشتیبانی می کند."
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:369
@@ -1682,13 +1683,13 @@ msgid ""
 "try to fallback to GtkStatusIcon/xembed"
 msgstr ""
 "%s به طور بومی توسط محیط دسکتاپ شما پشتیبانی نمی شود. libappindicator سعی "
-"خواهد کرد به  GtkStatusIcon/xembed بازگشت کند."
+"خواهد کرد که به  GtkStatusIcon/xembed برگردد."
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:376
-#, fuzzy, c-format
+#, c-format
 msgid "%s You may need to install, and use XApp Status Applet"
-msgstr "%s ممکن است لازم باشد اپلت وضعیت XApp را نصب و استفاده کنید."
+msgstr "%s ممکن است لازم باشد XApp Status Applet را نصب و از آن استفاده کنید."
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:379
@@ -1701,24 +1702,21 @@ msgstr ""
 #: src/remmina_icon.c:382
 #, c-format
 msgid "%s You may need to install, and use XEmbed SNI Proxy"
-msgstr ""
-"%s شما ممکن است نیاز به نصب، و استفاده از XEmbed SNI پروکسی داشته باشید."
+msgstr "%s شما ممکن است نیاز به نصب، و استفاده از XEmbed SNI Proxy داشته باشید."
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:385
-#, fuzzy, c-format
+#, c-format
 msgid "%s You may need to install, and use Gnome Shell Extension Appindicator"
-msgstr ""
-"%s شما ممکن است نیاز به نصب، و استفاده از برنامه افزودنی گنوم شل داشته باشید."
+msgstr "%s شما ممکن است نیاز به نصب، و استفاده از افزونه گنوم شل داشته باشید."
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_ssh_plugin.c:539
-#, fuzzy, c-format
+#, c-format
 msgid "Error: %s"
 msgstr "خطا:%s"
 
 #: src/remmina_ssh_plugin.c:556
-#, fuzzy
 msgid "Terminal content saved in"
 msgstr "محتوای ترمینال ذخیره شده در"
 
@@ -1739,7 +1737,6 @@ msgid "Save session to file"
 msgstr "ذخیره جلسه در فایل"
 
 #: src/remmina_ssh_plugin.c:826
-#, fuzzy
 msgid "Increase font size (host+Page Up)"
 msgstr "افزایش اندازه فونت (Host + Page_Up)"
 
@@ -1749,7 +1746,7 @@ msgstr "کاهش اندازه فونت (Host + Page_Down)"
 
 #: src/remmina_ssh_plugin.c:828
 msgid "Find text (host+G)"
-msgstr "چسباندن (host + V)"
+msgstr "پیدا کردن متن(host+G)"
 
 #: src/remmina_ssh_plugin.c:1440 data/ui/remmina_main.glade:177
 #, fuzzy
@@ -1782,53 +1779,46 @@ msgid "_Select all"
 msgstr "_انتخاب همه"
 
 #: src/remmina_ssh_plugin.c:1443
-#, fuzzy
 msgid "Increase font size"
 msgstr "افزایش اندازه فونت"
 
 #: src/remmina_ssh_plugin.c:1443
-#, fuzzy
 msgid "_Increase font size"
 msgstr "_افزایش اندازه فونت"
 
 #: src/remmina_ssh_plugin.c:1444
-#, fuzzy
 msgid "Decrease font size"
 msgstr "کاهش اندازه فونت"
 
 #: src/remmina_ssh_plugin.c:1444
-#, fuzzy
 msgid "_Decrease font size"
 msgstr "_کاهش اندازه فونت"
 
 #: src/remmina_ssh_plugin.c:1445
-#, fuzzy
 msgid "Find text"
-msgstr "یافتن متن"
+msgstr "جست و جوی متن"
 
 #: src/remmina_ssh_plugin.c:1445
-#, fuzzy
 msgid "_Find text"
-msgstr "_Find متن"
+msgstr "_جست و جوی متن"
 
 #: src/remmina_ssh_plugin.c:1472 plugins/spice/spice_plugin.c:674
 #: plugins/vnc/vnc_plugin.c:1991 plugins/vnc/vnc_plugin.c:2003
-#, fuzzy
 msgid "User password"
 msgstr "رمزعبور کاربر"
 
 #: src/remmina_ssh_plugin.c:1478
+#, fuzzy
 msgid "Opening command"
-msgstr ""
+msgstr "فرمان باز کردن"
 
 #: src/remmina_ssh_plugin.c:1479
 #, fuzzy
 #| msgid "Start-up program"
 msgid "Start-up background program"
-msgstr "برنامه راه اندازی"
+msgstr "برنامه پس زمینه راه اندازی"
 
 #: src/remmina_ssh_plugin.c:1484
-#, fuzzy
 msgid ""
 "The filename can use the following placeholders:\n"
 "\n"
@@ -1851,10 +1841,8 @@ msgstr ""
 "  • ٪d با تاریخ و زمان محلی در فرمت ISO 8601 جایگزین می شود\n"
 
 #: src/remmina_ssh_plugin.c:1506
-#, fuzzy
-#| msgid "Terminal color scheme"
 msgid "Terminal colour scheme"
-msgstr "قالب رنگ ترمینال"
+msgstr "پوسته ی  ترمینال"
 
 #: src/remmina_ssh_plugin.c:1507
 #, fuzzy
@@ -1862,12 +1850,10 @@ msgid "Character set"
 msgstr "مجموعه کاراکتر"
 
 #: src/remmina_ssh_plugin.c:1509
-#, fuzzy
 msgid "KEX (Key Exchange) algorithms"
 msgstr "الگوریتم های KEX (تبادل کلید)"
 
 #: src/remmina_ssh_plugin.c:1510
-#, fuzzy
 msgid "Symmetric cipher client to server"
 msgstr "رمزنگاری متقارن کلاینت به سرور"
 
