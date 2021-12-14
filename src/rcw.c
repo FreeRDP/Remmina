@@ -2614,18 +2614,20 @@ static void rco_update_toolbar(RemminaConnectionObject *cnnobj)
 
 	/* REMMINA_PROTOCOL_FEATURE_TYPE_MULTIMON */
 	toolitem = priv->toolitem_multimon;
-	gint hasmultimon = remmina_protocol_widget_query_feature_by_type(REMMINA_PROTOCOL_WIDGET(cnnobj->proto),
-									 REMMINA_PROTOCOL_FEATURE_TYPE_MULTIMON);
+	if (toolitem != NULL) {
+		gint hasmultimon = remmina_protocol_widget_query_feature_by_type(REMMINA_PROTOCOL_WIDGET(cnnobj->proto),
+				REMMINA_PROTOCOL_FEATURE_TYPE_MULTIMON);
 
-	gtk_widget_set_sensitive(GTK_WIDGET(toolitem), cnnobj->connected);
-	gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(toolitem),
-					  remmina_file_get_int(cnnobj->remmina_file, "multimon", FALSE));
-	gtk_widget_set_sensitive(GTK_WIDGET(toolitem), hasmultimon);
+		gtk_widget_set_sensitive(GTK_WIDGET(toolitem), cnnobj->connected);
+		gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(toolitem),
+				remmina_file_get_int(cnnobj->remmina_file, "multimon", FALSE));
+		gtk_widget_set_sensitive(GTK_WIDGET(toolitem), hasmultimon);
 
-	toolitem = priv->toolitem_grab;
-	gtk_widget_set_sensitive(GTK_WIDGET(toolitem), cnnobj->connected);
-	gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(toolitem),
-					  remmina_file_get_int(cnnobj->remmina_file, "keyboard_grab", FALSE));
+		toolitem = priv->toolitem_grab;
+		gtk_widget_set_sensitive(GTK_WIDGET(toolitem), cnnobj->connected);
+		gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(toolitem),
+				remmina_file_get_int(cnnobj->remmina_file, "keyboard_grab", FALSE));
+	}
 
 	toolitem = priv->toolitem_preferences;
 	gtk_widget_set_sensitive(GTK_WIDGET(toolitem), cnnobj->connected);
