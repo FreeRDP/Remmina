@@ -593,7 +593,7 @@ static void rcw_keyboard_grab(RemminaConnectionWindow *cnnwin)
 				    GDK_SEAT_CAPABILITY_KEYBOARD, TRUE, NULL, NULL, NULL, NULL);
 #else
 		ggs = gdk_device_grab(keyboard, gtk_widget_get_window(GTK_WIDGET(cnnwin)), GDK_OWNERSHIP_WINDOW,
-				TRUE, GDK_KEY_PRESS | GDK_KEY_RELEASE, NULL, GDK_CURRENT_TIME);
+				      TRUE, GDK_KEY_PRESS | GDK_KEY_RELEASE, NULL, GDK_CURRENT_TIME);
 #endif
 		if (ggs != GDK_GRAB_SUCCESS) {
 #if DEBUG_KB_GRABBING
@@ -2614,13 +2614,15 @@ static void rco_update_toolbar(RemminaConnectionObject *cnnobj)
 
 	/* REMMINA_PROTOCOL_FEATURE_TYPE_MULTIMON */
 	toolitem = priv->toolitem_multimon;
-	gint hasmultimon = remmina_protocol_widget_query_feature_by_type(REMMINA_PROTOCOL_WIDGET(cnnobj->proto),
-									 REMMINA_PROTOCOL_FEATURE_TYPE_MULTIMON);
+	if (toolitem) {
+		gint hasmultimon = remmina_protocol_widget_query_feature_by_type(REMMINA_PROTOCOL_WIDGET(cnnobj->proto),
+										 REMMINA_PROTOCOL_FEATURE_TYPE_MULTIMON);
 
-	gtk_widget_set_sensitive(GTK_WIDGET(toolitem), cnnobj->connected);
-	gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(toolitem),
-					  remmina_file_get_int(cnnobj->remmina_file, "multimon", FALSE));
-	gtk_widget_set_sensitive(GTK_WIDGET(toolitem), hasmultimon);
+		gtk_widget_set_sensitive(GTK_WIDGET(toolitem), cnnobj->connected);
+		gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(toolitem),
+						  remmina_file_get_int(cnnobj->remmina_file, "multimon", FALSE));
+		gtk_widget_set_sensitive(GTK_WIDGET(toolitem), hasmultimon);
+	}
 
 	toolitem = priv->toolitem_grab;
 	gtk_widget_set_sensitive(GTK_WIDGET(toolitem), cnnobj->connected);
@@ -4171,12 +4173,10 @@ void rco_on_connect(RemminaProtocolWidget *gp, RemminaConnectionObject *cnnobj)
 	if (remmina_file_get_filename(cnnobj->remmina_file) == NULL)
 		remmina_pref_add_recent(remmina_file_get_string(cnnobj->remmina_file, "protocol"),
 					remmina_file_get_string(cnnobj->remmina_file, "server"));
-	if (remmina_pref.periodic_usage_stats_permitted) {
-		REMMINA_DEBUG("Stats are allowed, we save the last successful connection date");
-		//remmina_file_set_string(cnnobj->remmina_file, "last_success", last_success);
-		remmina_file_state_last_success(cnnobj->remmina_file);
-		//REMMINA_DEBUG("Last connection made on %s.", last_success);
-	}
+	REMMINA_DEBUG("We save the last successful connection date");
+	//remmina_file_set_string(cnnobj->remmina_file, "last_success", last_success);
+	remmina_file_state_last_success(cnnobj->remmina_file);
+	//REMMINA_DEBUG("Last connection made on %s.", last_success);
 
 	REMMINA_DEBUG("Saving credentials");
 	/* Save credentials */
@@ -4339,9 +4339,8 @@ static void set_label_selectable(gpointer data, gpointer user_data)
 	TRACE_CALL(__func__);
 	GtkWidget *widget = GTK_WIDGET(data);
 
-	if (GTK_IS_LABEL(widget)) {
+	if (GTK_IS_LABEL(widget))
 		gtk_label_set_selectable(GTK_LABEL(widget), TRUE);
-	}
 }
 
 /**
@@ -4349,21 +4348,21 @@ static void set_label_selectable(gpointer data, gpointer user_data)
  *	  gtksocket-is-not-available-warning-dialog buttons.
  */
 enum GTKSOCKET_NOT_AVAIL_RESPONSE_TYPE {
-  GTKSOCKET_NOT_AVAIL_RESPONSE_OPEN_BROWSER = 0,
-  GTKSOCKET_NOT_AVAIL_RESPONSE_NUM
+	GTKSOCKET_NOT_AVAIL_RESPONSE_OPEN_BROWSER = 0,
+	GTKSOCKET_NOT_AVAIL_RESPONSE_NUM
 };
 
 /**
  * @brief Gets called if the user interacts with the
  *	  gtksocket-is-not-available-warning-dialog
  */
-static void rcw_gtksocket_not_available_dialog_response(GtkDialog* self,
-							gint response_id,
-							RemminaConnectionObject* cnnobj)
+static void rcw_gtksocket_not_available_dialog_response(GtkDialog *			self,
+							gint				response_id,
+							RemminaConnectionObject *	cnnobj)
 {
 	TRACE_CALL(__func__);
 
-	GError* error = NULL;
+	GError *error = NULL;
 
 	if (response_id == GTKSOCKET_NOT_AVAIL_RESPONSE_OPEN_BROWSER) {
 		gtk_show_uri_on_window(
@@ -4372,7 +4371,7 @@ static void rcw_gtksocket_not_available_dialog_response(GtkDialog* self,
 			// TRANSLATORS: 'GtkSocket feature is not available'.
 			_("https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-available-in-a-Wayland-session"),
 			GDK_CURRENT_TIME, &error
-		);
+			);
 	}
 
 	// Close the current page since it's useless without GtkSocket.
@@ -4507,10 +4506,10 @@ GtkWidget *rcw_open_from_file_full(RemminaFile *remminafile, GCallback disconnec
 							   remmina_file_get_string(remminafile, "protocol"),
 							   REMMINA_PROTOCOL_FEATURE_TYPE_GTKSOCKET);
 	if (ret && !remmina_gtksocket_available()) {
-		gchar* title = _("Warning: This plugin requires GtkSocket, but this "
+		gchar *title = _("Warning: This plugin requires GtkSocket, but this "
 				 "feature is unavailable in a Wayland session.");
 
-		gchar* err_msg =
+		gchar *err_msg =
 			// TRANSLATORS: This should be a link to the Remmina wiki page:
 			// 'GtkSocket feature is not available'.
 			_("Plugins relying on GtkSocket can't run in a "
@@ -4540,7 +4539,7 @@ GtkWidget *rcw_open_from_file_full(RemminaFile *remminafile, GCallback disconnec
 		// Make Text selectable. Usefull because of the link in the text.
 		GtkWidget *area = gtk_message_dialog_get_message_area(
 			GTK_MESSAGE_DIALOG(dialog));
-		GtkContainer *box = (GtkContainer *) area;
+		GtkContainer *box = (GtkContainer *)area;
 
 		GList *children = gtk_container_get_children(box);
 		g_list_foreach(children, set_label_selectable, NULL);
