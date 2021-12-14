@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-12-11 12:19+0000\n"
+"POT-Creation-Date: 2021-12-14 14:13+0000\n"
 "PO-Revision-Date: 2021-12-13 13:53+0000\n"
 "Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -238,28 +238,28 @@ msgstr "Configurer les définitions disponibles"
 msgid "Recent lists cleared."
 msgstr "Les listes récentes ont été vidées."
 
-#: src/remmina_pref_dialog.c:154 src/rcw.c:2028
+#: src/remmina_pref_dialog.c:155 src/rcw.c:2028
 #: data/ui/remmina_preferences.glade:169 data/ui/remmina_preferences.glade:179
 msgid "Keystrokes"
 msgstr "Entrées clavier"
 
-#: src/remmina_pref_dialog.c:154
+#: src/remmina_pref_dialog.c:155
 msgid "Configure the keystrokes"
 msgstr "Configurer les entrées clavier"
 
 #. TRANSLATORS: Do not translate libsodium, is the name of a library
-#: src/remmina_pref_dialog.c:487
+#: src/remmina_pref_dialog.c:482
 msgid "libsodium >= 1.9.0 is required to use master password"
 msgstr ""
 "L’utilisation d’un mot de passe principal nécessite libsodium 1.9.0 ou "
 "supérieur"
 
-#: src/remmina_pref_dialog.c:806
+#: src/remmina_pref_dialog.c:796
 msgid "Picking a terminal colouring file replaces the file: "
 msgstr ""
 "Le choix d’un fichier de thème de terminal remplace celui sélectionné : "
 
-#: src/remmina_pref_dialog.c:810
+#: src/remmina_pref_dialog.c:800
 msgid ""
 "This file contains the “Custom” terminal colour scheme selectable from the "
 "“Advanced” tab of terminal connections and editable in the “Terminal” tab in "
@@ -437,11 +437,12 @@ msgstr "Se déconnecter"
 #: src/rcw.c:4298
 #, c-format
 msgid "The file “%s” is corrupted, unreadable, or could not be found."
-msgstr "Le fichier « %s » est corrompu, inaccessible en lecture ou introuvable."
+msgstr ""
+"Le fichier « %s » est corrompu, inaccessible en lecture ou introuvable."
 
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. TRANSLATORS: 'GtkSocket feature is not available'.
-#: src/rcw.c:4373
+#: src/rcw.c:4372
 msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
@@ -449,7 +450,7 @@ msgstr ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 
-#: src/rcw.c:4510
+#: src/rcw.c:4509
 msgid ""
 "Warning: This plugin requires GtkSocket, but this feature is unavailable in "
 "a Wayland session."
@@ -459,7 +460,7 @@ msgstr ""
 
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. 'GtkSocket feature is not available'.
-#: src/rcw.c:4516
+#: src/rcw.c:4515
 #, fuzzy
 #| msgid ""
 #| "Plugins relying on GtkSocket can't run in a Wayland session.\n"
@@ -483,7 +484,7 @@ msgstr ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 
-#: src/rcw.c:4530
+#: src/rcw.c:4529
 #, fuzzy
 #| msgid "Open in browser"
 msgid "Open in web browser"
@@ -1007,8 +1008,8 @@ msgstr "Veuillez d’abord installer le greffon pour le protocole %s."
 #, c-format
 msgid "Could not authenticate with TOTP/OTP/2FA. %s"
 msgstr ""
-"Authentification par mot de passe à usage unique (TOTP, OTP ou 2FA )"
-"impossible. %s"
+"Authentification par mot de passe à usage unique (TOTP, OTP ou "
+"2FA )impossible. %s"
 
 #: src/remmina_ssh.c:295 src/remmina_ssh.c:676
 #, c-format
@@ -1863,8 +1864,8 @@ msgstr ""
 "  • <tt>%U</tt>, qui sera remplacé par le nom d’utilisateur SSH ;\n"
 "  • <tt>%p</tt>, qui sera remplacé par le nom du profil Remmina ;\n"
 "  • <tt>%g</tt>, qui sera remplacé par le nom de groupe du profil Remmina ;\n"
-"  • <tt>%d</tt>, qui sera remplacé par l’horodatage local au format ISO 8601."
-"\n"
+"  • <tt>%d</tt>, qui sera remplacé par l’horodatage local au format "
+"ISO 8601.\n"
 
 #: src/remmina_ssh_plugin.c:1506
 msgid "Terminal colour scheme"
@@ -2204,7 +2205,8 @@ msgstr "Connexion au serveur RDP « %s » impossible."
 
 #: plugins/rdp/rdp_plugin.c:2554
 msgid "Automatic (32 bpp) (Server chooses its best format)"
-msgstr "Automatique (32 bits par pixel) (le serveur choisit le meilleur format)"
+msgstr ""
+"Automatique (32 bits par pixel) (le serveur choisit le meilleur format)"
 
 #: plugins/rdp/rdp_plugin.c:2555
 msgid "GFX AVC444 (32 bpp)"
@@ -3889,8 +3891,8 @@ msgid ""
 "following commands in a terminal window:"
 msgstr ""
 "Afin de permettre l’accès à certaines fonctionnalités importantes, comme la "
-"sauvegarde des mots de passe dans votre trousseau de clefs ou le partage d’"
-"imprimantes via le protocole RDP, veuillez lancer votre gestionnaire de "
+"sauvegarde des mots de passe dans votre trousseau de clefs ou le partage "
+"d’imprimantes via le protocole RDP, veuillez lancer votre gestionnaire de "
 "logiciels et donner à Remmina les permissions adéquates. Vous pouvez "
 "également le faire en tapant les commandes suivantes dans un terminal :"
 
@@ -3991,8 +3993,8 @@ msgstr "Déplacer vers le bas"
 #: data/ui/remmina_mpc.glade:14
 msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
 msgstr ""
-"<span weight='bold' size='larger'>Modificateur de mots de passe "
-"multiples</span>"
+"<span weight='bold' size='larger'>Modificateur de mots de passe multiples</"
+"span>"
 
 #: data/ui/remmina_mpc.glade:32
 msgid "Change"
@@ -4119,8 +4121,8 @@ msgid ""
 msgstr ""
 "<span>\n"
 "<b>Nous vous sommes très reconnaissants d’avoir choisi un logiciel libre, <a "
-"href=\"https://remmina.org/donations/\" title=\"Où est l’argent Lebowski ? « "
-"blblblblblb »\">les dons nous font également plaisir</a>, et aident à "
+"href=\"https://remmina.org/donations/\" title=\"Où est l’argent Lebowski ? "
+"« blblblblblb »\">les dons nous font également plaisir</a>, et aident à "
 "améliorer plus encore Remmina.</b>\n"
 "</span>\n"
 
@@ -4150,7 +4152,8 @@ msgstr "Commuter l’affichage par groupe en liste"
 
 #: data/ui/remmina_main.glade:79
 msgid "Select the protocol to use with the quick connect bar."
-msgstr "Sélectionnez le protocole à utiliser avec la barre de connexion rapide."
+msgstr ""
+"Sélectionnez le protocole à utiliser avec la barre de connexion rapide."
 
 #: data/ui/remmina_main.glade:97
 msgid "Search string or server name/IP address for “Quick Connect”"
@@ -4322,8 +4325,8 @@ msgid ""
 msgstr ""
 "%p : nom du profil ;\n"
 "%h : nom d’hôte ou adresse IP du serveur ;\n"
-"%Y : année, %m : mois, %d : jour, %H : heure, %M : minutes, %S : secondes ("
-"temps universel).\n"
+"%Y : année, %m : mois, %d : jour, %H : heure, %M : minutes, %S : secondes "
+"(temps universel).\n"
 
 #: data/ui/remmina_preferences.glade:280
 msgid ""
