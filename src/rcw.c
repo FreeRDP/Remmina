@@ -2614,7 +2614,7 @@ static void rco_update_toolbar(RemminaConnectionObject *cnnobj)
 
 	/* REMMINA_PROTOCOL_FEATURE_TYPE_MULTIMON */
 	toolitem = priv->toolitem_multimon;
-	if (toolitem != NULL) {
+	if (toolitem) {
 		gint hasmultimon = remmina_protocol_widget_query_feature_by_type(REMMINA_PROTOCOL_WIDGET(cnnobj->proto),
 				REMMINA_PROTOCOL_FEATURE_TYPE_MULTIMON);
 
@@ -2622,12 +2622,12 @@ static void rco_update_toolbar(RemminaConnectionObject *cnnobj)
 		gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(toolitem),
 				remmina_file_get_int(cnnobj->remmina_file, "multimon", FALSE));
 		gtk_widget_set_sensitive(GTK_WIDGET(toolitem), hasmultimon);
+	}
 
 		toolitem = priv->toolitem_grab;
 		gtk_widget_set_sensitive(GTK_WIDGET(toolitem), cnnobj->connected);
 		gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(toolitem),
 				remmina_file_get_int(cnnobj->remmina_file, "keyboard_grab", FALSE));
-	}
 
 	toolitem = priv->toolitem_preferences;
 	gtk_widget_set_sensitive(GTK_WIDGET(toolitem), cnnobj->connected);
@@ -4172,13 +4172,11 @@ void rco_on_connect(RemminaProtocolWidget *gp, RemminaConnectionObject *cnnobj)
 	 */
 	if (remmina_file_get_filename(cnnobj->remmina_file) == NULL)
 		remmina_pref_add_recent(remmina_file_get_string(cnnobj->remmina_file, "protocol"),
-					remmina_file_get_string(cnnobj->remmina_file, "server"));
-	if (remmina_pref.periodic_usage_stats_permitted) {
-		REMMINA_DEBUG("Stats are allowed, we save the last successful connection date");
-		//remmina_file_set_string(cnnobj->remmina_file, "last_success", last_success);
-		remmina_file_state_last_success(cnnobj->remmina_file);
-		//REMMINA_DEBUG("Last connection made on %s.", last_success);
-	}
+				remmina_file_get_string(cnnobj->remmina_file, "server"));
+	REMMINA_DEBUG("We save the last successful connection date");
+	//remmina_file_set_string(cnnobj->remmina_file, "last_success", last_success);
+	remmina_file_state_last_success(cnnobj->remmina_file);
+	//REMMINA_DEBUG("Last connection made on %s.", last_success);
 
 	REMMINA_DEBUG("Saving credentials");
 	/* Save credentials */
