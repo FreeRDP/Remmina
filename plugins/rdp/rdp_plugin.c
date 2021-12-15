@@ -80,6 +80,9 @@
 #include <pthread_np.h>
 #endif
 
+#include "../remmina_pref.h"
+#include <freerdp/locale/keyboard.h>
+
 #define REMMINA_RDP_FEATURE_TOOL_REFRESH         1
 #define REMMINA_RDP_FEATURE_SCALE                2
 #define REMMINA_RDP_FEATURE_UNFOCUS              3
@@ -1288,6 +1291,36 @@ static gboolean remmina_rdp_set_connection_type(rdpSettings *settings, guint32 t
 	return TRUE;
 }
 
+static gchar *get_rdp_kbd_remap(const gchar *keymap)
+{
+	TRACE_CALL(__func__);
+	guint *table;
+	gchar keys[20];
+	gchar *rdp_kbd_remap = NULL;
+	gint i;
+	Display *display;
+	
+	if (!keymap || keymap[0] == '\0')
+		return rdp_kbd_remap;
+
+	table = (guint *)g_hash_table_lookup(remmina_keymap_table, keymap);
+	if (!table)
+		return rdp_kbd_remap;
+	rdp_kbd_remap = g_malloc0(512);
+	display = XOpenDisplay(0);
+	for (i = 0; table[i] > 0; i += 2) {
+		g_snprintf(keys, sizeof(keys), "0x%02x=0x%02x", freerdp_keyboard_get_rdp_scancode_from_x11_keycode(XKeysymToKeycode(display, table[i])), freerdp_keyboard_get_rdp_scancode_from_x11_keycode(XKeysymToKeycode(display, table[i + 1])));
+		
+		if (i > 0)
+			g_strlcat(rdp_kbd_remap, ",", 512);
+			
+		g_strlcat(rdp_kbd_remap, keys, 512);
+	}
+	XCloseDisplay(display);
+	
+	return rdp_kbd_remap;
+}
+
 static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
@@ -1302,6 +1335,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 	gint gateway_port;
 	gchar *datapath = NULL;
 	gboolean status = TRUE;
+	gchar *rdp_kbd_remap;
 	gint i;
 
 	gint desktopOrientation, desktopScaleFactor, deviceScaleFactor;
@@ -1644,6 +1678,13 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 #if FREERDP_CHECK_VERSION(2, 3, 0)
 	freerdp_settings_set_string(rfi->settings, FreeRDP_KeyboardRemappingList, remmina_plugin_service->pref_get_value("rdp_kbd_remap"));
 	REMMINA_PLUGIN_DEBUG("rdp_keyboard_remapping_list: %s", rfi->settings->KeyboardRemappingList);
+	
+	rdp_kbd_remap = get_rdp_kbd_remap(remmina_plugin_service->file_get_string(remminafile, "keymap"));
+	if (rdp_kbd_remap != NULL) {
+		freerdp_settings_set_string(rfi->settings, FreeRDP_KeyboardRemappingList, rdp_kbd_remap);
+		REMMINA_PLUGIN_DEBUG("rdp_keyboard_remapping_list: %s", rfi->settings->KeyboardRemappingList);
+		g_free(rdp_kbd_remap);
+	}
 #endif
 	freerdp_settings_set_uint32(rfi->settings, FreeRDP_KeyboardLayout, remmina_rdp_settings_get_keyboard_layout());
 
@@ -2732,7 +2773,8 @@ static const RemminaProtocolSetting remmina_rdp_basic_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "monitorids",		N_("List monitor IDs"),			  FALSE, NULL,		  monitorids_tooltip,								NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION, "resolution",		NULL,					  FALSE, NULL,		  NULL,										NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	    "colordepth",		N_("Colour depth"),			  FALSE, colordepth_list, NULL,										NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	    "network",			N_("Network connection type"),		  FALSE, network_list,	  network_tooltip,								NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	    "network",			N_("Network connection type"),		  FALSE, network_list,	  network_tooltip,                                                              NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_KEYMAP,	    "keymap",	                NULL,		                          FALSE, NULL,	          NULL,	                                                                        NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	    NULL,			NULL,					  FALSE, NULL,		  NULL,										NULL, NULL }
 };
 
