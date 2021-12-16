@@ -509,12 +509,21 @@ static void remmina_pref_dialog_init(void)
 	g_snprintf(buf, sizeof(buf), "%i", remmina_pref.recent_maximum);
 	gtk_entry_set_text(remmina_pref_dialog->entry_options_recent_items, buf);
 
+#ifdef HAVE_LIBAPPINDICATOR
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_applet_new_connection_on_top), remmina_pref.applet_new_ontop);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_applet_hide_totals), remmina_pref.applet_hide_count);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_applet_disable_tray), remmina_pref.disable_tray_icon);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_dark_theme), remmina_pref.dark_theme);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_applet_start_in_tray), remmina_icon_is_autostart());
 	gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->checkbutton_applet_start_in_tray), !remmina_pref.disable_tray_icon);
+#else
+	remmina_pref.disable_tray_icon = TRUE;
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_dark_theme), remmina_pref.dark_theme);
+	gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->checkbutton_applet_new_connection_on_top), FALSE);
+	gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->checkbutton_applet_hide_totals), FALSE);
+	gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->checkbutton_applet_disable_tray), FALSE);
+	gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->checkbutton_applet_start_in_tray), FALSE);
+#endif
 
 	remmina_pref_dialog_set_button_label(remmina_pref_dialog->button_keyboard_host_key, remmina_pref.hostkey);
 	remmina_pref_dialog_set_button_label(remmina_pref_dialog->button_keyboard_fullscreen, remmina_pref.shortcutkey_fullscreen);
