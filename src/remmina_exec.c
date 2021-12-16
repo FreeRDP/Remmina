@@ -53,10 +53,11 @@
 #include "remmina_about.h"
 #include "remmina_plugin_manager.h"
 #include "remmina_exec.h"
-#include "remmina_icon.h"
 #include "remmina/remmina_trace_calls.h"
 #include "remmina_file_manager.h"
 #include "remmina_crypt.h"
+
+#include "remmina_icon.h"
 
 #ifdef SNAP_BUILD
 #   define ISSNAP "- SNAP Build -"
@@ -96,8 +97,10 @@ void remmina_exec_exitremmina()
 	/* Delete all widgets, main window not included */
 	remmina_widget_pool_foreach(cb_closewidget, NULL);
 
+#ifdef HAVE_LIBAPPINDICATOR
 	/* Remove systray menu */
 	remmina_icon_destroy();
+#endif
 
 	/* close/destroy main window struct and window */
 	remmina_main_destroy();

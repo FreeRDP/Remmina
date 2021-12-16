@@ -35,8 +35,18 @@
  */
 
 #include "config.h"
+
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
+
+#include "remmina_icon.h"
+
+#ifdef HAVE_LIBAPPINDICATOR
+#  ifdef HAVE_AYATANA_LIBAPPINDICATOR
+#    include <libayatana-appindicator/app-indicator.h>
+#  else
+#    include <libappindicator/app-indicator.h>
+#  endif
 #include "remmina_widget_pool.h"
 #include "remmina_pref.h"
 #include "remmina_exec.h"
@@ -46,18 +56,9 @@
 #include "remmina_applet_menu_item.h"
 #include "remmina_applet_menu.h"
 #include "rcw.h"
-#include "remmina_icon.h"
 #include "remmina_log.h"
 #include "remmina/remmina_trace_calls.h"
 #include "remmina_sysinfo.h"
-
-#ifdef HAVE_LIBAPPINDICATOR
-#ifdef HAVE_AYATANA_LIBAPPINDICATOR
-#include <libayatana-appindicator/app-indicator.h>
-#else
-#include <libappindicator/app-indicator.h>
-#endif
-#endif
 
 typedef struct _RemminaIcon {
 	AppIndicator *	icon;
@@ -450,3 +451,12 @@ void remmina_icon_set_autostart(gboolean autostart)
 	}
 	g_key_file_free(gkeyfile);
 }
+
+#else
+void remmina_icon_init(void) {};
+void remmina_icon_destroy(void) {};
+gboolean remmina_icon_is_available(void) {return FALSE;};
+void remmina_icon_populate_menu(void) {};
+void remmina_icon_set_autostart(gboolean autostart) {} ;
+gboolean remmina_icon_is_autostart(void) {return FALSE;};
+#endif
