@@ -39,6 +39,8 @@
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
 
+#include "remmina_icon.h"
+
 #ifdef HAVE_LIBAPPINDICATOR
 #  ifdef HAVE_AYATANA_LIBAPPINDICATOR
 #    include <libayatana-appindicator/app-indicator.h>
@@ -54,7 +56,6 @@
 #include "remmina_applet_menu_item.h"
 #include "remmina_applet_menu.h"
 #include "rcw.h"
-#include "remmina_icon.h"
 #include "remmina_log.h"
 #include "remmina/remmina_trace_calls.h"
 #include "remmina_sysinfo.h"
