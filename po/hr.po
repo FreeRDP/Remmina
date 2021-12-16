@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-12-14 14:13+0000\n"
-"PO-Revision-Date: 2021-12-11 12:19+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2021-12-16 15:50+0000\n"
+"Last-Translator: gogogogi <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/remmina/remmina/"
 "hr/>\n"
 "Language: hr\n"
@@ -99,16 +99,12 @@ msgid "SFTP - Secure File Transfer"
 msgstr "SFTP - Osigurani prijenos datoteka"
 
 #: src/remmina_log.c:129
-#, fuzzy
-#| msgid "Open the Remmina main window"
 msgid "Remmina debugging window"
-msgstr "Otvori glavni Remmina prozor"
+msgstr "Otvori Remmina prozor otklanjanja grešaka"
 
 #: src/remmina_log.c:133
-#, fuzzy
-#| msgid "Open the Remmina main window"
 msgid "Paste sytem info in the Remmina debugging window"
-msgstr "Otvori glavni Remmina prozor"
+msgstr "Zalijepi informacije sustava u Remmina prozor otklanjanja grešaka"
 
 #: src/remmina_log.c:153
 msgid ""
@@ -119,6 +115,13 @@ msgid ""
 "There is more info about debugging Remmina on https://gitlab.com/Remmina/"
 "Remmina/-/wikis/Usage/Remmina-debugging\n"
 msgstr ""
+"Ovaj prozor vam može pomoći u pronalasku problema s povezivanjem.\n"
+"Možete zaustaviti i pokrenuti zapisivanje u svakom trenutku koristeći Uklj/"
+"Isklj preklopnik.\n"
+"Tipka stanja (Ctrl+T), može biti korisna za prikupljanje informacija sustava "
+"koje možete podijeliti pri prijavi izvještaja greške.\n"
+"Postoji više informacija o Remmina otklanjanju grešaka na https://gitlab.com/"
+"Remmina/Remmina/-/wikis/Usage/Remmina-debugging\n"
 
 #: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1951
 msgid "Protocol"
@@ -447,14 +450,6 @@ msgstr ""
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. 'GtkSocket feature is not available'.
 #: src/rcw.c:4515
-#, fuzzy
-#| msgid ""
-#| "Plugins relying on GtkSocket can't run in a Wayland session.\n"
-#| "For more information and a possible workaround, please visit the Remmina "
-#| "Wiki at:\n"
-#| "\n"
-#| "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
-#| "available-in-a-Wayland-session"
 msgid ""
 "Plugins relying on GtkSocket can't run in a Wayland session.\n"
 "For more info and a possible workaround, please visit the Remmina wiki at:\n"
@@ -464,16 +459,14 @@ msgid ""
 msgstr ""
 "Priključci koji se oslanjaju na GtkSocketu ne mogu se pokrenuti u Wayland "
 "sesiji.\n"
-"Za više informacija i moguće rješenje, posjetite Remmina Wiki na:\n"
+"Za više informacija i moguće rješenje, posjetite Remmina wiki na:\n"
 "\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 
 #: src/rcw.c:4529
-#, fuzzy
-#| msgid "Open in browser"
 msgid "Open in web browser"
-msgstr "Otvori u pregledniku"
+msgstr "Otvori u web pregledniku"
 
 #: src/remmina_mpchange.c:234
 msgid "The passwords do not match"
@@ -520,29 +513,21 @@ msgstr "DATOTEKA"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:88
-#, fuzzy
-#| msgid ""
-#| "Connect to a desktop described in a file (.remmina or a type supported by "
-#| "a plugin)"
 msgid ""
 "Connect to a desktop described in a file (.remmina or a filetype supported "
 "by a plugin)"
 msgstr ""
-"Povezivanje s radnom površinom opisano datotekom (.remmina ili upišite "
-"podržani priključak)"
+"Povezivanje s radnom površinom opisano datotekom (.remmina ili vrsta "
+"datoteke koju podržava priključak)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:90
-#, fuzzy
-#| msgid ""
-#| "Edit desktop connection described in file (.remmina or type supported by "
-#| "plugin)"
 msgid ""
 "Edit desktop connection described in file (.remmina or a filetype supported "
 "by plugin)"
 msgstr ""
-"Uređivanje povezivanja radne površine opisano datotekom (.remmina ili "
-"upišite podržani priključak)"
+"Uređivanje povezivanja radne površine opisano datotekom (.remmina ili vrsta "
+"datoteke koju podržava priključak)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:93
@@ -622,21 +607,15 @@ msgstr "Šifriraj lozinku"
 #. * to log more verbose statements.
 #.
 #: src/remmina.c:334
-#, fuzzy
-#| msgid ""
-#| "Remmina does not log all output statements. To enable a more verbose "
-#| "output please use G_MESSAGES_DEBUG=all as an environment variable.\n"
-#| "For more information, please visit the Remmina Wiki at:\n"
-#| "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgid ""
 "Remmina does not log all output statements. Turn on more verbose output by "
 "using \"G_MESSAGES_DEBUG=all\" as an environment variable.\n"
 "More info available on the Remmina wiki at:\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgstr ""
-"Remmina ne bilježi sve izlazne izjave. Za omogućavanje opširnijeg bilježenja "
-"koristite G_MESSAGES_DEBUG=all kao varijablu okruženja.\n"
-"Za više informacija, posjetite Remmina Wiki na:\n"
+"Remmina ne bilježi sve izlazne izjave. Uključite opširnije bilježenje "
+"korištenjem \"G_MESSAGES_DEBUG=all\" kao varijablu okruženja.\n"
+"Više informacija je dostupno na Remmina wiki:\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
@@ -1247,11 +1226,11 @@ msgstr[2] "Ukupno %i stavki."
 
 #: src/remmina_main.c:695
 msgid "Network status: fully online"
-msgstr ""
+msgstr "Mrežno stanje: potpuno povezano"
 
 #: src/remmina_main.c:698
 msgid "Network status: offline"
-msgstr ""
+msgstr "Mrežno stanje: izvanmrežno"
 
 #: src/remmina_main.c:902
 #, c-format
@@ -1782,16 +1761,12 @@ msgid "User password"
 msgstr "Korisnička lozinka"
 
 #: src/remmina_ssh_plugin.c:1478
-#, fuzzy
-#| msgid "Pre-command"
 msgid "Opening command"
-msgstr "Naredba prije povezivanja"
+msgstr "Otvaranje naredbe"
 
 #: src/remmina_ssh_plugin.c:1479
-#, fuzzy
-#| msgid "Start-up program"
 msgid "Start-up background program"
-msgstr "Program pokretanja"
+msgstr "Pokreni pozadinski program"
 
 #: src/remmina_ssh_plugin.c:1484
 msgid ""
@@ -2763,8 +2738,6 @@ msgid "Server CA certificate"
 msgstr "CA vjerodajnica poslužitelja"
 
 #: plugins/spice/spice_plugin.c:694
-#, fuzzy
-#| msgid "Prefered video codec"
 msgid "Preferred video codec"
 msgstr "Željeni video kôdek"
 
@@ -2773,8 +2746,6 @@ msgid "Turn off GStreamer overlay"
 msgstr "Isključi GStreamer sloj"
 
 #: plugins/spice/spice_plugin.c:698
-#, fuzzy
-#| msgid "Prefered image compression"
 msgid "Preferred image compression"
 msgstr "Željeno sažimanje slike"
 
@@ -2867,14 +2838,6 @@ msgstr ""
 "    x11vnc -connect repetitor=ID:123456789+10.10.10.12:5500"
 
 #: plugins/vnc/vnc_plugin.c:1954
-#, fuzzy
-#| msgid ""
-#| "Listening for remote VNC connection:\n"
-#| "  • The \"Listen on port\" field is the port Remmina will listen to,\n"
-#| "    e.g. 8888\n"
-#| "  • From the remote VNC server, you will connect to\n"
-#| "    Remmina, e.g. with x11vnc:\n"
-#| "    x11vnc -display :0 -connect 192.168.1.36:8888"
 msgid ""
 "Listening for remote VNC connection:\n"
 "  • The “Listen on port” field is the port Remmina will listen to,\n"
@@ -2884,7 +2847,7 @@ msgid ""
 "    x11vnc -display :0 -connect 192.168.1.36:8888"
 msgstr ""
 "Osluškivanje udaljenog VNC povezivanja:\n"
-"  • \"Osluškuj na ulazu\" polje je ulaz koji će Remmina osluškivati,\n"
+"  • “Osluškuj na ulazu” polje je ulaz koji će Remmina osluškivati,\n"
 "    npr. 8888\n"
 "  • Sa udaljenog VNC poslužitelja, povezat ćete se s\n"
 "    Remminom, npr. sa x11vnc:\n"
@@ -2902,6 +2865,16 @@ msgid ""
 "  • On “Best quality” encodings is set to “copyrect zrle ultra zlib hextile "
 "corre rre raw”"
 msgstr ""
+"Zaobiđi predpostavljena VNC kôdiranja:\n"
+"\n"
+"  • Kada je “Slaba kvaliteta” kôdiranje postavljeno na “copyrect zlib "
+"hextile raw”\n"
+"  • Kada je “Srednja kvaliteta” kôdiranje postavljeno na “tight zrle ultra "
+"copyrect hextile zlib corre rre raw”\n"
+"  • Kada je “Dobra kvaliteta” kôdiranje postavljeno na “tight zrle ultra "
+"copyrect hextile zlib corre rre raw”\n"
+"  • Kada je “Najbolja kvaliteta” kôdiranje postavljeno na “copyrect zrle "
+"ultra zlib hextile corre rre raw”"
 
 #: plugins/vnc/vnc_plugin.c:1989
 msgid "Repeater"
@@ -2913,7 +2886,7 @@ msgstr "Osluškuj na ulazu"
 
 #: plugins/vnc/vnc_plugin.c:2021
 msgid "Override pre-set VNC encodings"
-msgstr ""
+msgstr "Zaobiđi predpostavljena VNC kôdiranja"
 
 #: plugins/vnc/vnc_plugin.c:2022
 msgid "Show remote cursor"
@@ -3126,7 +3099,6 @@ msgid "SSHFS port"
 msgstr "SSHFS ulaz"
 
 #: plugins/x2go/x2go_plugin.c:481
-#, fuzzy
 msgid "Visible"
 msgstr "Vidljivo"
 
@@ -3156,10 +3128,9 @@ msgid "Terminating X2Go sessions can take a moment."
 msgstr "Prekidanje X2Go sesije može kratko potrajati."
 
 #: plugins/x2go/x2go_plugin.c:618 plugins/x2go/x2go_plugin.c:620
-#, fuzzy, c-format
-#| msgid "Unknown property"
+#, c-format
 msgid "Unknown property '%i'"
-msgstr "Nepoznato svojstvo"
+msgstr "Nepoznato svojstvo '%i'"
 
 #: plugins/x2go/x2go_plugin.c:708 plugins/x2go/x2go_plugin.c:755
 msgid "Couldn't find child GtkTreeView of session chooser dialog."
@@ -3170,18 +3141,16 @@ msgid ""
 "Neither the 'dialog' nor 'treeview' parameters are initialized! At least one "
 "of them must be given."
 msgstr ""
+"Niti 'dialog' niti 'treeview' parametri nisu pokrenuti! Najmanje jedan od "
+"njih mora biti naveden."
 
 #: plugins/x2go/x2go_plugin.c:729
-#, fuzzy
-#| msgid ""
-#| "GtkTreeModel of session chooser dialog could not be obtained for an "
-#| "unknown reason."
 msgid ""
 "Could not obtain \"GtkTreeModelFilter*\" of the session chooser dialog, for "
 "unknown reason."
 msgstr ""
-"GtkTreeModel dijaloga odabiratelja sesije ne može se dobiti zbog nepoznatog "
-"razloga."
+"Nemoguće dobivanje \"GtkTreeModelFilter*\" dijaloga odabiratelja sesije, "
+"zbog nepoznatog razloga."
 
 #: plugins/x2go/x2go_plugin.c:764
 msgid "Couldn't get currently selected row (session)!"
@@ -3223,12 +3192,13 @@ msgstr ""
 "Potreban PyHoca-CLI proces je naišao na unutrašnji problem povezivanja."
 
 #: plugins/x2go/x2go_plugin.c:972
-#, fuzzy, c-format
-#| msgid "Could not start PyHoca-CLI (%i): '%s'"
+#, c-format
 msgid ""
 "Could not start PyHoca-CLI:\n"
 "%s"
-msgstr "Neuspjelo pokretanje PyHoca-CLI (%i): '%s'"
+msgstr ""
+"Neuspjelo pokretanje PyHoca-CLI:\n"
+"%s"
 
 #: plugins/x2go/x2go_plugin.c:983
 #, c-format
@@ -3247,10 +3217,8 @@ msgstr ""
 "Greška: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:1032
-#, fuzzy
-#| msgid "Both parameters 'dialog' and 'treeview' are uninitialized!"
 msgid "Neither the 'path' nor 'dialog' parameters are initialized."
-msgstr "Oba parametra 'dialog' i 'treeview' nisu pokrenuti!"
+msgstr "Niti 'path' niti 'dialog' parametri nisu pokrenuti."
 
 #: plugins/x2go/x2go_plugin.c:1048
 msgid "GtkTreePath 'path' describes a non-existing row!"
@@ -3266,12 +3234,13 @@ msgid "'Invalid connection data.'"
 msgstr "'Nevaljani podaci povezivanja.'"
 
 #: plugins/x2go/x2go_plugin.c:1218
-#, fuzzy, c-format
-#| msgid "An error occured while trying to terminate a X2Go session: %s"
+#, c-format
 msgid ""
 "An error occured while trying to terminate X2Go session '%s':\n"
 "%s"
-msgstr "Greška se dogodila pri prekidanju X2Go sesije: %s"
+msgstr ""
+"Greška se dogodila pri prekidanju X2Go sesije '%s':\n"
+"%s"
 
 #: plugins/x2go/x2go_plugin.c:1230 plugins/x2go/x2go_plugin.c:1594
 msgid "An error occured."
@@ -3986,17 +3955,12 @@ msgstr ""
 
 #: data/ui/remmina_news.glade:169
 msgid "Receives updated news from remmina.org"
-msgstr ""
+msgstr "Primite najnovije novosti s remmina.org"
 
 #: data/ui/remmina_news.glade:182
-#, fuzzy
-#| msgid ""
-#| "* By enabling statistics and/or news you consent to send and fetch data "
-#| "to/from remmina.org"
 msgid "* By turning on news you consent to fetching data from remmina.org"
 msgstr ""
-"* Omogućavanjem statistike i/ili novosti pristajete na slanje i preuzimanje "
-"podataka na/s remmina.org"
+"* Omogućavanjem novosti pristajete na preuzimanje podataka s remmina.org"
 
 #: data/ui/remmina_news.glade:205
 msgid "<big>Take part</big>"
@@ -4277,14 +4241,9 @@ msgid "Prevent screenshots from entering clipboard"
 msgstr "Spriječi spremanje slika zaslona u međuspremnik"
 
 #: data/ui/remmina_preferences.glade:432
-#, fuzzy
-#| msgid ""
-#| "* By enabling statistics and/or news you consent to send and fetch data "
-#| "to/from remmina.org"
 msgid "* By enabling news you consent to fetch data from remmina.org"
 msgstr ""
-"* Omogućavanjem statistike i/ili novosti pristajete na slanje i preuzimanje "
-"podataka na/s remmina.org"
+"* Omogućavanjem novosti pristajete na preuzimanje podataka s remmina.org"
 
 #: data/ui/remmina_preferences.glade:500
 msgid "Options"
