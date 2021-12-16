@@ -417,6 +417,13 @@ static void remmina_plugin_vnc_update_quality(rfbClient *cl, gint quality)
 		cl->appData.encodingsString = g_strdup(enc);
 		g_free (enc), enc = NULL;
 	}
+	gboolean tight = remmina_plugin_service->file_get_int (remminafile, "tightencoding", FALSE);
+	if (tight) {
+		if (!g_strrstr ( g_strdup(cl->appData.encodingsString), "tight\0")) {
+			cl->appData.encodingsString = g_strdup_printf("%s %s", "tight", g_strdup(cl->appData.encodingsString));
+		}
+	}
+
 	REMMINA_PLUGIN_DEBUG("Quality: %d", quality);
 	REMMINA_PLUGIN_DEBUG("Encodings: %s", cl->appData.encodingsString);
 }
@@ -2019,14 +2026,15 @@ static const RemminaProtocolSetting remmina_plugin_vnci_basic_settings[] =
 static const RemminaProtocolSetting remmina_plugin_vnc_advanced_settings[] =
 {
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,  "encodings",		 N_("Override pre-set VNC encodings"),	        FALSE, NULL, vncencodings_tooltip },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "showcursor",		 N_("Show remote cursor"),			TRUE,  NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "viewonly",		 N_("View only"),				FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "tightencoding", N_("Force tight encoding"),			TRUE, NULL, N_("Enabling this may help when the remote desktop looks scrambled") },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disablesmoothscrolling", N_("Disable smooth scrolling"),		FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disablepasswordstoring", N_("Forget passwords after use"),		TRUE,  NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableserverbell",	 N_("Ignore remote bell messages"),		FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableserverinput",	 N_("Prevent local interaction on the server"), TRUE,  NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "showcursor",		 N_("Show remote cursor"),			FALSE,  NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableclipboard",	 N_("Turn off clipboard sync"),			TRUE,  NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableencryption",	 N_("Turn off encryption"),			FALSE, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableserverinput",	 N_("Prevent local interaction on the server"), TRUE,  NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableserverbell",	 N_("Ignore remote bell messages"),		FALSE, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disablepasswordstoring", N_("Forget passwords after use"),		TRUE,  NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disablesmoothscrolling", N_("Disable smooth scrolling"),		FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "viewonly",		 N_("View only"),				TRUE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END,   NULL,			 NULL,						FALSE, NULL, NULL }
 };
 
