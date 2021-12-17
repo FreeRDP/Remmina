@@ -80,7 +80,6 @@
 #include <pthread_np.h>
 #endif
 
-#include "../remmina_pref.h"
 #include <freerdp/locale/keyboard.h>
 
 #define REMMINA_RDP_FEATURE_TOOL_REFRESH         1
@@ -1299,21 +1298,17 @@ static gchar *remmina_get_rdp_kbd_remap(const gchar *keymap)
 	gchar *rdp_kbd_remap = NULL;
 	gint i;
 	Display *display;
-	
-	if (!keymap || keymap[0] == '\0')
-		return rdp_kbd_remap;
 
-	table = (guint *)g_hash_table_lookup(remmina_keymap_table, keymap);
+	table = remmina_plugin_service->pref_keymap_get_table(keymap);
 	if (!table)
 		return rdp_kbd_remap;
 	rdp_kbd_remap = g_malloc0(512);
 	display = XOpenDisplay(0);
 	for (i = 0; table[i] > 0; i += 2) {
-		g_snprintf(keys, sizeof(keys), "0x%02x=0x%02x", freerdp_keyboard_get_rdp_scancode_from_x11_keycode(XKeysymToKeycode(display, table[i])), freerdp_keyboard_get_rdp_scancode_from_x11_keycode(XKeysymToKeycode(display, table[i + 1])));
-		
+		g_snprintf(keys, sizeof(keys), "0x%02x=0x%02x", freerdp_keyboard_get_rdp_scancode_from_x11_keycode(XKeysymToKeycode(display, table[i])), 
+			freerdp_keyboard_get_rdp_scancode_from_x11_keycode(XKeysymToKeycode(display, table[i + 1])));
 		if (i > 0)
 			g_strlcat(rdp_kbd_remap, ",", 512);
-			
 		g_strlcat(rdp_kbd_remap, keys, 512);
 	}
 	XCloseDisplay(display);
@@ -2775,6 +2770,7 @@ static const RemminaProtocolSetting remmina_rdp_basic_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION, "resolution",		NULL,					  FALSE, NULL,		  NULL,										NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	    "colordepth",		N_("Colour depth"),			  FALSE, colordepth_list, NULL,										NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	    "network",			N_("Network connection type"),		  FALSE, network_list,	  network_tooltip,								NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_KEYMAP,	    "keymap",	                NULL,		                          FALSE, NULL,	          NULL,	                                                                        NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	    NULL,			NULL,					  FALSE, NULL,		  NULL,										NULL, NULL }
 };
 

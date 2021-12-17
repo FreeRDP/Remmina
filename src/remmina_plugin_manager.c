@@ -236,6 +236,7 @@ RemminaPluginService remmina_plugin_manager_service =
 	remmina_pref_get_sshtunnel_port,
 	remmina_pref_get_ssh_loglevel,
 	remmina_pref_get_ssh_parseconfig,
+	remmina_pref_keymap_get_table,
 	remmina_pref_keymap_get_keyval,
 
 	_remmina_info,

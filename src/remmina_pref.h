@@ -229,7 +229,6 @@ typedef struct _RemminaPref {
 #define SSH_SOCKET_TCP_KEEPCNT 3
 #define SSH_SOCKET_TCP_USER_TIMEOUT 60000 // 60 seconds
 
-extern GHashTable *remmina_keymap_table;
 extern const gchar *default_resolutions;
 extern gchar *remmina_pref_file;
 extern gchar *remmina_colors_file;
@@ -243,6 +242,7 @@ void remmina_pref_add_recent(const gchar *protocol, const gchar *server);
 gchar *remmina_pref_get_recent(const gchar *protocol);
 void remmina_pref_clear_recent(void);
 
+guint *remmina_pref_keymap_get_table(const gchar *keymap);
 guint remmina_pref_keymap_get_keyval(const gchar *keymap, guint keyval);
 gchar **remmina_pref_keymap_groups(void);
 
