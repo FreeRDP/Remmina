@@ -2205,7 +2205,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 				break;
 			case FREERDP_ERROR_TLS_CONNECT_FAILED:
 				remmina_plugin_service->protocol_plugin_set_error(gp,
-										  _("Could not connect to the RDP server “%s” via TLS. Check that client and server support a common TLS version."), freerdp_settings_get_string(rfi->settings, FreeRDP_ServerHostname));
+										  _("Could not connect to the RDP server “%s” via TLS. See the DEBUG traces from a terminal for more information."), freerdp_settings_get_string(rfi->settings, FreeRDP_ServerHostname));
 				break;
 			case FREERDP_ERROR_SECURITY_NEGO_CONNECT_FAILED:
 				// TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
