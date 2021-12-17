@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-12-16 23:08+0000\n"
+"POT-Creation-Date: 2021-12-17 15:48+0000\n"
 "PO-Revision-Date: 2021-12-17 08:51+0000\n"
 "Last-Translator: l <snelhingst@gmail.com>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -30,7 +30,7 @@ msgstr ""
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:354
 #: src/remmina_protocol_widget.c:1677 src/remmina_protocol_widget.c:1696
 #: src/remmina_file_editor.c:1101 src/remmina_file_editor.c:1222
-#: src/remmina_ssh_plugin.c:1361 plugins/rdp/rdp_plugin.c:2723
+#: src/remmina_ssh_plugin.c:1361 plugins/rdp/rdp_plugin.c:2760
 #: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:3198
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1646
 #: data/ui/remmina_unlock.glade:116
@@ -76,7 +76,7 @@ msgstr "Anslut via SSH från en ny terminal"
 
 #: src/remmina_sftp_plugin.c:353 src/remmina_message_panel.c:330
 #: src/remmina_file_editor.c:1216 src/remmina_ssh_plugin.c:1471
-#: plugins/rdp/rdp_plugin.c:2722 plugins/vnc/vnc_plugin.c:1997
+#: plugins/rdp/rdp_plugin.c:2759 plugins/vnc/vnc_plugin.c:1997
 #: plugins/vnc/vnc_plugin.c:2009 plugins/www/www_plugin.c:894
 #: plugins/x2go/x2go_plugin.c:475 plugins/x2go/x2go_plugin.c:3197
 #: data/ui/remmina_mpc.glade:144
@@ -147,29 +147,29 @@ msgstr "Inställning"
 msgid "Secret"
 msgstr "Hemlighet"
 
-#: src/remmina_plugin_manager.c:461 data/ui/remmina_main.glade:305
+#: src/remmina_plugin_manager.c:462 data/ui/remmina_main.glade:305
 msgid "Plugins"
 msgstr "Tilläggsprogram"
 
-#: src/remmina_plugin_manager.c:461 src/remmina_message_panel.c:452
+#: src/remmina_plugin_manager.c:462 src/remmina_message_panel.c:452
 #: src/remmina_message_panel.c:621 src/remmina_file_editor.c:242
 msgid "_OK"
 msgstr "_OK"
 
-#: src/remmina_plugin_manager.c:479 src/remmina_file_editor.c:1908
+#: src/remmina_plugin_manager.c:480 src/remmina_file_editor.c:1908
 #: data/ui/remmina_main.glade:442
 msgid "Name"
 msgstr "Namn"
 
-#: src/remmina_plugin_manager.c:485
+#: src/remmina_plugin_manager.c:486
 msgid "Type"
 msgstr "Typ"
 
-#: src/remmina_plugin_manager.c:491
+#: src/remmina_plugin_manager.c:492
 msgid "Description"
 msgstr "Beskrivning"
 
-#: src/remmina_plugin_manager.c:497
+#: src/remmina_plugin_manager.c:498
 msgid "Version"
 msgstr "Version"
 
@@ -283,7 +283,7 @@ msgstr "Ja"
 msgid "No"
 msgstr "Nej"
 
-#: src/remmina_message_panel.c:391 plugins/rdp/rdp_plugin.c:2724
+#: src/remmina_message_panel.c:391 plugins/rdp/rdp_plugin.c:2761
 #: data/ui/remmina_mpc.glade:172
 msgid "Domain"
 msgstr "Domän"
@@ -772,7 +772,7 @@ msgstr "Uppåt"
 msgid "Go to parent folder"
 msgstr "Gå till föräldramapp"
 
-#: src/remmina_ftp_client.c:758 plugins/rdp/rdp_plugin.c:2813
+#: src/remmina_ftp_client.c:758 plugins/rdp/rdp_plugin.c:2851
 #: plugins/vnc/vnc_plugin.c:2050
 msgid "Refresh"
 msgstr "Uppdatera"
@@ -818,11 +818,11 @@ msgstr "Grupp"
 msgid "Permission"
 msgstr "Rättighet"
 
-#: src/remmina_ftp_client.c:990 plugins/rdp/rdp_plugin.c:2611
+#: src/remmina_ftp_client.c:990 plugins/rdp/rdp_plugin.c:2648
 msgid "Remote"
 msgstr "Fjärr"
 
-#: src/remmina_ftp_client.c:997 plugins/rdp/rdp_plugin.c:2610
+#: src/remmina_ftp_client.c:997 plugins/rdp/rdp_plugin.c:2647
 msgid "Local"
 msgstr "Lokal"
 
@@ -1415,8 +1415,8 @@ msgstr ""
 "- %p ersätts med Remmina-profilens namn.\n"
 "- %g är ersatt med namnet på Remmina-profilens grupp.\n"
 "- %d ersätts med lokalt datum och lokal tid i ISO 8601-format.\n"
-"Kör inte i bakgrunden om du vill att kommandot ska utföras innan du ansluter."
-"\n"
+"Kör inte i bakgrunden om du vill att kommandot ska utföras innan du "
+"ansluter.\n"
 "</big>"
 
 #: src/remmina_file_editor.c:84
@@ -1521,7 +1521,7 @@ msgstr "Tunnel via loopback-adress"
 msgid "Same server at port %i"
 msgstr "Samma server på port %i"
 
-#: src/remmina_file_editor.c:1193 plugins/rdp/rdp_plugin.c:2767
+#: src/remmina_file_editor.c:1193 plugins/rdp/rdp_plugin.c:2805
 msgid "Start-up path"
 msgstr "Uppstartssökväg"
 
@@ -1916,22 +1916,22 @@ msgstr "<Inte inställd>"
 msgid "<Choose a quality level to edit…>"
 msgstr ">Välj et kvalitetsnivå att redigera…>"
 
-#: plugins/rdp/rdp_settings.c:282 plugins/rdp/rdp_plugin.c:2585
+#: plugins/rdp/rdp_settings.c:282 plugins/rdp/rdp_plugin.c:2622
 #: plugins/vnc/vnc_plugin.c:1947
 msgid "Poor (fastest)"
 msgstr "Låg (snabbast)"
 
-#: plugins/rdp/rdp_settings.c:284 plugins/rdp/rdp_plugin.c:2586
+#: plugins/rdp/rdp_settings.c:284 plugins/rdp/rdp_plugin.c:2623
 #: plugins/vnc/vnc_plugin.c:1946
 msgid "Medium"
 msgstr "Medel"
 
-#: plugins/rdp/rdp_settings.c:286 plugins/rdp/rdp_plugin.c:2587
+#: plugins/rdp/rdp_settings.c:286 plugins/rdp/rdp_plugin.c:2624
 #: plugins/vnc/vnc_plugin.c:1944
 msgid "Good"
 msgstr "Bra"
 
-#: plugins/rdp/rdp_settings.c:288 plugins/rdp/rdp_plugin.c:2588
+#: plugins/rdp/rdp_settings.c:288 plugins/rdp/rdp_plugin.c:2625
 #: plugins/vnc/vnc_plugin.c:1945
 msgid "Best (slowest)"
 msgstr "Bäst (långsammast)"
@@ -2020,7 +2020,7 @@ msgstr "Skrivbordsorientering"
 msgid "Input device settings"
 msgstr "Inställningar för inmatningsenheter"
 
-#: plugins/rdp/rdp_settings.c:658 plugins/rdp/rdp_plugin.c:2729
+#: plugins/rdp/rdp_settings.c:658 plugins/rdp/rdp_plugin.c:2766
 #: plugins/vnc/vnc_plugin.c:2030
 #, fuzzy
 #| msgid "Turn on smooth scrolling"
@@ -2033,13 +2033,13 @@ msgstr "Inaktivera mjuk rullning"
 msgid "General settings"
 msgstr "Allmänna inställningar"
 
-#: plugins/rdp/rdp_settings.c:676 plugins/rdp/rdp_plugin.c:2781
+#: plugins/rdp/rdp_settings.c:676 plugins/rdp/rdp_plugin.c:2819
 #, fuzzy
 #| msgid "Reconnection attempt %d of %d…"
 msgid "Reconnect attempts number"
 msgstr "Försök att återansluta nummer"
 
-#: plugins/rdp/rdp_settings.c:689 plugins/rdp/rdp_plugin.c:2781
+#: plugins/rdp/rdp_settings.c:689 plugins/rdp/rdp_plugin.c:2819
 #, fuzzy
 msgid ""
 "The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
@@ -2047,15 +2047,15 @@ msgstr ""
 "Det maximala antalet försök att återansluta vid en RDP-avbrott (standard: "
 "20)."
 
-#: plugins/rdp/rdp_plugin.c:769 plugins/rdp/rdp_plugin.c:834
+#: plugins/rdp/rdp_plugin.c:771 plugins/rdp/rdp_plugin.c:836
 msgid "Enter RDP authentication credentials"
 msgstr "Skriv i RDP-identitetsbekfäftelsesdetaljer"
 
-#: plugins/rdp/rdp_plugin.c:842
+#: plugins/rdp/rdp_plugin.c:844
 msgid "Enter RDP gateway authentication credentials"
 msgstr "Skriv i identitetsbekfäftelsesdetaljer for RDP-gateway"
 
-#: plugins/rdp/rdp_plugin.c:2116
+#: plugins/rdp/rdp_plugin.c:2153
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2064,7 +2064,7 @@ msgstr ""
 "Fann inte adress till RDP-servern \"%s\".\n"
 "Konto utelåst."
 
-#: plugins/rdp/rdp_plugin.c:2123
+#: plugins/rdp/rdp_plugin.c:2160
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2073,7 +2073,7 @@ msgstr ""
 "Fick inte tillgång til RDP-servern \"%s\".\n"
 "Konto utlöpt."
 
-#: plugins/rdp/rdp_plugin.c:2130
+#: plugins/rdp/rdp_plugin.c:2167
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2082,7 +2082,7 @@ msgstr ""
 "Fick inte tillgång till RDP-servern \"%s\".\n"
 "Lösenordet har löpt ut."
 
-#: plugins/rdp/rdp_plugin.c:2137
+#: plugins/rdp/rdp_plugin.c:2174
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2091,7 +2091,7 @@ msgstr ""
 "Fick inte tillgång till RDP-servern \"%s\".\n"
 "Konto avstängd."
 
-#: plugins/rdp/rdp_plugin.c:2143
+#: plugins/rdp/rdp_plugin.c:2180
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2100,7 +2100,7 @@ msgstr ""
 "Fick inte tilgång til RDP-servern \"%s\".\n"
 "Manglar användarrättigheter."
 
-#: plugins/rdp/rdp_plugin.c:2151
+#: plugins/rdp/rdp_plugin.c:2188
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2109,7 +2109,7 @@ msgstr ""
 "Fann inte adress til RDP-servern %s.\n"
 "Konto begränsad."
 
-#: plugins/rdp/rdp_plugin.c:2159
+#: plugins/rdp/rdp_plugin.c:2196
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2118,27 +2118,30 @@ msgstr ""
 "Fick inte tilgång til RDP-servern \"%s\".\n"
 "Ändra användarlösenord innan du anslutar."
 
-#: plugins/rdp/rdp_plugin.c:2164
+#: plugins/rdp/rdp_plugin.c:2201
 #, c-format
 msgid "Lost connection to the RDP server “%s”."
 msgstr "Tappade kopplingen til RDP-servern \"%s\"."
 
-#: plugins/rdp/rdp_plugin.c:2167
+#: plugins/rdp/rdp_plugin.c:2204
 #, c-format
 msgid "Could not find the address for the RDP server “%s”."
 msgstr "Fann inte adress til RDP-servern %s."
 
-#: plugins/rdp/rdp_plugin.c:2171
-#, c-format
+#: plugins/rdp/rdp_plugin.c:2208
+#, fuzzy, c-format
+#| msgid ""
+#| "Could not connect to the RDP server “%s” via TLS. Check that client and "
+#| "server support a common TLS version."
 msgid ""
-"Could not connect to the RDP server “%s” via TLS. Check that client and "
-"server support a common TLS version."
+"Could not connect to the RDP server “%s” via TLS. See the DEBUG traces from "
+"a terminal for more information."
 msgstr ""
 "Misslyckades ansluta til RDP-servern \"%s\" via TLS. Kolla att klienten och "
 "servern har stöd for en fälles TLS-versjon."
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
-#: plugins/rdp/rdp_plugin.c:2175
+#: plugins/rdp/rdp_plugin.c:2212
 #, fuzzy, c-format
 #| msgid ""
 #| "Unable to establish a connection to the RDP server “%s”. Check \"Security "
@@ -2150,16 +2153,16 @@ msgstr ""
 "Det går inte att upprätta en anslutning till RDP-servern \"%s\". Kontrollera "
 "\"Förhandling av säkerhetsprotokoll\"."
 
-#: plugins/rdp/rdp_plugin.c:2183
+#: plugins/rdp/rdp_plugin.c:2220
 #, c-format
 msgid "Cannot connect to the RDP server “%s”."
 msgstr "Kunde inte koppla upp mot RDP-servern \"%s\"."
 
-#: plugins/rdp/rdp_plugin.c:2186
+#: plugins/rdp/rdp_plugin.c:2223
 msgid "Could not start libfreerdp-gdi."
 msgstr "Kunde inte starta pthread."
 
-#: plugins/rdp/rdp_plugin.c:2189
+#: plugins/rdp/rdp_plugin.c:2226
 #, c-format
 msgid ""
 "You requested a H.264 GFX mode for the server “%s”, but your libfreerdp does "
@@ -2168,12 +2171,12 @@ msgstr ""
 "Du begärde ett H.264 GFX-läge för servern \"%s\", men ditt libfreerdp stöder "
 "inte H.264. Använd en färgdjupsinställning som inte är AVC."
 
-#: plugins/rdp/rdp_plugin.c:2196
+#: plugins/rdp/rdp_plugin.c:2233
 #, c-format
 msgid "The “%s” server refused the connection."
 msgstr "\"%s\"-tjänaren avslog tillknytningen."
 
-#: plugins/rdp/rdp_plugin.c:2201
+#: plugins/rdp/rdp_plugin.c:2238
 #, fuzzy, c-format
 #| msgid ""
 #| "The Remote Desktop Gateway “%s” denied the user \"%s\\%s\" access due to "
@@ -2183,117 +2186,117 @@ msgid ""
 "policy."
 msgstr "Fjärrskrivbordskörsporten \"%s\" nektade anvendern \"%s"
 
-#: plugins/rdp/rdp_plugin.c:2211
+#: plugins/rdp/rdp_plugin.c:2248
 #, c-format
 msgid "Cannot connect to the “%s” RDP server."
 msgstr "Kunde inte koppla upp mot RDP-servern \"%s\"."
 
-#: plugins/rdp/rdp_plugin.c:2554
+#: plugins/rdp/rdp_plugin.c:2591
 msgid "Automatic (32 bpp) (Server chooses its best format)"
 msgstr "Automatiskt (32 bpp) (Servern väljer sitt bästa format)"
 
-#: plugins/rdp/rdp_plugin.c:2555
+#: plugins/rdp/rdp_plugin.c:2592
 msgid "GFX AVC444 (32 bpp)"
 msgstr "GFX AVC444 (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2556
+#: plugins/rdp/rdp_plugin.c:2593
 msgid "GFX AVC420 (32 bpp)"
 msgstr "GFX AVC420 (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2557
+#: plugins/rdp/rdp_plugin.c:2594
 msgid "GFX RFX (32 bpp)"
 msgstr "GFX RFX (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2558
+#: plugins/rdp/rdp_plugin.c:2595
 msgid "GFX RFX Progressive (32 bpp)"
 msgstr "GFX RFX (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2559
+#: plugins/rdp/rdp_plugin.c:2596
 msgid "RemoteFX (32 bpp)"
 msgstr "RemoteFX (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2560 plugins/vnc/vnc_plugin.c:1935
+#: plugins/rdp/rdp_plugin.c:2597 plugins/vnc/vnc_plugin.c:1935
 msgid "True colour (32 bpp)"
 msgstr "Fullfärg (32-bit)"
 
-#: plugins/rdp/rdp_plugin.c:2561
+#: plugins/rdp/rdp_plugin.c:2598
 msgid "True colour (24 bpp)"
 msgstr "Sannolika färger (24 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2562 plugins/vnc/vnc_plugin.c:1936
+#: plugins/rdp/rdp_plugin.c:2599 plugins/vnc/vnc_plugin.c:1936
 msgid "High colour (16 bpp)"
 msgstr "Högt färgspektrum (16 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2563
+#: plugins/rdp/rdp_plugin.c:2600
 msgid "High colour (15 bpp)"
 msgstr "Högt färgspektrum (15 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2564 plugins/vnc/vnc_plugin.c:1937
+#: plugins/rdp/rdp_plugin.c:2601 plugins/vnc/vnc_plugin.c:1937
 msgid "256 colours (8 bpp)"
 msgstr "256 färger (8 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2595 data/ui/remmina_preferences.glade:612
+#: plugins/rdp/rdp_plugin.c:2632 data/ui/remmina_preferences.glade:612
 msgid "None"
 msgstr "<Ingen>"
 
-#: plugins/rdp/rdp_plugin.c:2596
+#: plugins/rdp/rdp_plugin.c:2633
 msgid "Auto-detect"
 msgstr "<Identifiera automatiskt>"
 
-#: plugins/rdp/rdp_plugin.c:2597
+#: plugins/rdp/rdp_plugin.c:2634
 msgid "Modem"
 msgstr "Modem"
 
-#: plugins/rdp/rdp_plugin.c:2598
+#: plugins/rdp/rdp_plugin.c:2635
 msgid "Low performance broadband"
 msgstr "Låghastighetsbredband"
 
-#: plugins/rdp/rdp_plugin.c:2599
+#: plugins/rdp/rdp_plugin.c:2636
 msgid "Satellite"
 msgstr "Satellit"
 
-#: plugins/rdp/rdp_plugin.c:2600
+#: plugins/rdp/rdp_plugin.c:2637
 msgid "High performance broadband"
 msgstr "Höghastighetsbredband"
 
-#: plugins/rdp/rdp_plugin.c:2601
+#: plugins/rdp/rdp_plugin.c:2638
 msgid "WAN"
 msgstr "WAN"
 
-#: plugins/rdp/rdp_plugin.c:2602
+#: plugins/rdp/rdp_plugin.c:2639
 msgid "LAN"
 msgstr "Lokalnät"
 
-#: plugins/rdp/rdp_plugin.c:2609 plugins/spice/spice_plugin.c:635
+#: plugins/rdp/rdp_plugin.c:2646 plugins/spice/spice_plugin.c:635
 #: data/ui/remmina_preferences.glade:648
 msgid "Off"
 msgstr "Av"
 
-#: plugins/rdp/rdp_plugin.c:2618
+#: plugins/rdp/rdp_plugin.c:2655
 msgid "Automatic negotiation"
 msgstr "Automatisk låsningsintervall"
 
-#: plugins/rdp/rdp_plugin.c:2619
+#: plugins/rdp/rdp_plugin.c:2656
 msgid "NLA protocol security"
 msgstr "Flikar efter protokoll"
 
-#: plugins/rdp/rdp_plugin.c:2620
+#: plugins/rdp/rdp_plugin.c:2657
 msgid "TLS protocol security"
 msgstr "Flikar efter protokoll"
 
-#: plugins/rdp/rdp_plugin.c:2621
+#: plugins/rdp/rdp_plugin.c:2658
 msgid "RDP protocol security"
 msgstr "Flikar efter protokoll"
 
-#: plugins/rdp/rdp_plugin.c:2622
+#: plugins/rdp/rdp_plugin.c:2659
 msgid "NLA extended protocol security"
 msgstr "NLA utökad protokollsäkerhet"
 
-#: plugins/rdp/rdp_plugin.c:2635
+#: plugins/rdp/rdp_plugin.c:2672
 msgid "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 and newer)"
 msgstr "2600 (Windows XP),7601 (Windows Vista/7),9600 (Windows 8 och nyare)"
 
-#: plugins/rdp/rdp_plugin.c:2638
+#: plugins/rdp/rdp_plugin.c:2675
 msgid ""
 "Used i.a. by terminal services in a smart card channel to distinguish client "
 "capabilities:\n"
@@ -2310,7 +2313,7 @@ msgstr ""
 "  • >= 7065: Windows 8 och nyare: SCardGetReaderIcon(), "
 "SCardGetDeviceTypeId()"
 
-#: plugins/rdp/rdp_plugin.c:2646
+#: plugins/rdp/rdp_plugin.c:2683
 #, fuzzy
 msgid ""
 "Options for redirection of audio input:\n"
@@ -2329,7 +2332,7 @@ msgstr ""
 "  - sys:oss,dev:1,format:1\n"
 "  - sys:alsa"
 
-#: plugins/rdp/rdp_plugin.c:2655
+#: plugins/rdp/rdp_plugin.c:2692
 #, fuzzy
 msgid ""
 "Options for redirection of audio output:\n"
@@ -2348,7 +2351,7 @@ msgstr ""
 "  - sys:oss,dev:1,format:1\n"
 "  - sys:alsa"
 
-#: plugins/rdp/rdp_plugin.c:2665
+#: plugins/rdp/rdp_plugin.c:2702
 #, fuzzy
 msgid ""
 "Options for redirection of USB device:\n"
@@ -2361,7 +2364,7 @@ msgstr ""
 "  - auto\n"
 "  • id:054c:0268#4669:6e6b,addr:04:0c"
 
-#: plugins/rdp/rdp_plugin.c:2671
+#: plugins/rdp/rdp_plugin.c:2708
 #, fuzzy
 msgid ""
 "Advanced setting for high latency links:\n"
@@ -2372,7 +2375,7 @@ msgstr ""
 "Justerar timeout för anslutningen. Använd den om anslutningen tar slut.\n"
 "Det högsta möjliga värdet är 600000 ms (10 minuter).\n"
 
-#: plugins/rdp/rdp_plugin.c:2676
+#: plugins/rdp/rdp_plugin.c:2713
 #, fuzzy
 msgid ""
 "Performance optimisations based on the network connection type:\n"
@@ -2383,7 +2386,7 @@ msgstr ""
 "Det rekommenderas att använda automatisk identifiering.\n"
 "Om \"Auto-detect\" misslyckas, välj det lämpligaste alternativet i listan.\n"
 
-#: plugins/rdp/rdp_plugin.c:2681
+#: plugins/rdp/rdp_plugin.c:2718
 #, fuzzy
 msgid ""
 "Comma-separated list of monitor IDs and desktop orientations:\n"
@@ -2408,7 +2411,7 @@ msgstr ""
 "  - 270 (porträtt vänd)\n"
 "\n"
 
-#: plugins/rdp/rdp_plugin.c:2693
+#: plugins/rdp/rdp_plugin.c:2730
 #, fuzzy
 msgid ""
 "Redirect directory <path> as named share <name>.\n"
@@ -2429,149 +2432,149 @@ msgstr ""
 "  - hotplug,*\n"
 "\n"
 
-#: plugins/rdp/rdp_plugin.c:2725 plugins/spice/spice_plugin.c:677
+#: plugins/rdp/rdp_plugin.c:2762 plugins/spice/spice_plugin.c:677
 msgid "Share folder"
 msgstr "Dela mapp"
 
-#: plugins/rdp/rdp_plugin.c:2725
+#: plugins/rdp/rdp_plugin.c:2762
 #, fuzzy
 msgid "Use “Redirect directory” in the advanced tab for multiple directories"
 msgstr ""
 "Använd \"Redirect directory\" i den avancerade fliken för flera kataloger."
 
-#: plugins/rdp/rdp_plugin.c:2726
+#: plugins/rdp/rdp_plugin.c:2763
 #, fuzzy
 msgid "Restricted admin mode"
 msgstr "Begränsat administratörsläge"
 
-#: plugins/rdp/rdp_plugin.c:2727
+#: plugins/rdp/rdp_plugin.c:2764
 #, fuzzy
 #| msgid "Password"
 msgid "Password hash"
 msgstr "Hash för lösenordet"
 
-#: plugins/rdp/rdp_plugin.c:2727
+#: plugins/rdp/rdp_plugin.c:2764
 #, fuzzy
 msgid "Restricted admin mode password hash"
 msgstr "Hash för lösenordet för det begränsade administratörsläget"
 
-#: plugins/rdp/rdp_plugin.c:2728
+#: plugins/rdp/rdp_plugin.c:2765
 msgid "Left-handed mouse support"
 msgstr "Stöd for vänsterhandsmöss"
 
-#: plugins/rdp/rdp_plugin.c:2728
+#: plugins/rdp/rdp_plugin.c:2765
 msgid "Swap left and right mouse buttons for left-handed mouse support"
 msgstr "Byta vänstre och högre mösstastar for vänsterhandsmössstöd"
 
-#: plugins/rdp/rdp_plugin.c:2730
+#: plugins/rdp/rdp_plugin.c:2767
 msgid "Enable multi monitor"
 msgstr "Skru på multi-monitor"
 
-#: plugins/rdp/rdp_plugin.c:2731
+#: plugins/rdp/rdp_plugin.c:2768
 #, fuzzy
 msgid "Span screen over multiple monitors"
 msgstr "Spänna skärmen över flera monitorer"
 
-#: plugins/rdp/rdp_plugin.c:2732
+#: plugins/rdp/rdp_plugin.c:2769
 #, fuzzy
 #| msgid "Listen on port"
 msgid "List monitor IDs"
 msgstr "Lista över monitor-ID:n"
 
-#: plugins/rdp/rdp_plugin.c:2734 plugins/vnc/vnc_plugin.c:1999
+#: plugins/rdp/rdp_plugin.c:2771 plugins/vnc/vnc_plugin.c:1999
 #: plugins/vnc/vnc_plugin.c:2011 plugins/gvnc/gvnc_plugin.c:849
 msgid "Colour depth"
 msgstr "Färgdjup"
 
-#: plugins/rdp/rdp_plugin.c:2735
+#: plugins/rdp/rdp_plugin.c:2772
 msgid "Network connection type"
 msgstr "Ny anslutningsprofil"
 
-#: plugins/rdp/rdp_plugin.c:2750 plugins/vnc/vnc_plugin.c:2000
+#: plugins/rdp/rdp_plugin.c:2788 plugins/vnc/vnc_plugin.c:2000
 #: plugins/vnc/vnc_plugin.c:2012
 msgid "Quality"
 msgstr "Kvalitet"
 
-#: plugins/rdp/rdp_plugin.c:2751
+#: plugins/rdp/rdp_plugin.c:2789
 msgid "Security protocol negotiation"
 msgstr "Säkerhetsprotokollförhandling"
 
-#: plugins/rdp/rdp_plugin.c:2752
+#: plugins/rdp/rdp_plugin.c:2790
 msgid "Gateway transport type"
 msgstr "Körsportstransporttyp"
 
-#: plugins/rdp/rdp_plugin.c:2753
+#: plugins/rdp/rdp_plugin.c:2791
 msgid "FreeRDP log level"
 msgstr "FreeRDP-loggnivå"
 
-#: plugins/rdp/rdp_plugin.c:2754
+#: plugins/rdp/rdp_plugin.c:2792
 msgid "FreeRDP log filters"
 msgstr "FreeRDP-loggnivå"
 
-#: plugins/rdp/rdp_plugin.c:2754
+#: plugins/rdp/rdp_plugin.c:2792
 #, fuzzy
 msgid "tag:level[,tag:level[,…]]"
 msgstr "tag:level[,tag:level[,...]]]"
 
-#: plugins/rdp/rdp_plugin.c:2755
+#: plugins/rdp/rdp_plugin.c:2793
 msgid "Audio output mode"
 msgstr "Ljudutgångsmodus"
 
-#: plugins/rdp/rdp_plugin.c:2756
+#: plugins/rdp/rdp_plugin.c:2794
 msgid "Redirect local audio output"
 msgstr "Vidarebefordra lokal mikrofon"
 
-#: plugins/rdp/rdp_plugin.c:2757
+#: plugins/rdp/rdp_plugin.c:2795
 msgid "Redirect local microphone"
 msgstr "Vidarebefordra lokal mikrofon"
 
-#: plugins/rdp/rdp_plugin.c:2758
+#: plugins/rdp/rdp_plugin.c:2796
 msgid "Connection timeout in ms"
 msgstr "Ansluter till '%s'…"
 
-#: plugins/rdp/rdp_plugin.c:2759
+#: plugins/rdp/rdp_plugin.c:2797
 msgid "Remote Desktop Gateway server"
 msgstr "Server for fjärrskrivbordskörsport"
 
-#: plugins/rdp/rdp_plugin.c:2760
+#: plugins/rdp/rdp_plugin.c:2798
 msgid "Remote Desktop Gateway username"
 msgstr "Användarnamn for fjärrskrivbord"
 
-#: plugins/rdp/rdp_plugin.c:2761
+#: plugins/rdp/rdp_plugin.c:2799
 msgid "Remote Desktop Gateway password"
 msgstr "Lösenord för fjärrskrivbordskörsport"
 
-#: plugins/rdp/rdp_plugin.c:2762
+#: plugins/rdp/rdp_plugin.c:2800
 msgid "Remote Desktop Gateway domain"
 msgstr "Domän för fjärrskrivbordskörsport"
 
-#: plugins/rdp/rdp_plugin.c:2763
+#: plugins/rdp/rdp_plugin.c:2801
 #, fuzzy
 msgid "Redirect directory"
 msgstr "Omdirigera katalog"
 
-#: plugins/rdp/rdp_plugin.c:2764
+#: plugins/rdp/rdp_plugin.c:2802
 msgid "Client name"
 msgstr "Klientnamn"
 
-#: plugins/rdp/rdp_plugin.c:2765
+#: plugins/rdp/rdp_plugin.c:2803
 msgid "Client build"
 msgstr "Klientnamn"
 
-#: plugins/rdp/rdp_plugin.c:2766
+#: plugins/rdp/rdp_plugin.c:2804
 msgid "Start-up program"
 msgstr "Uppstartsprogram"
 
-#: plugins/rdp/rdp_plugin.c:2768
+#: plugins/rdp/rdp_plugin.c:2806
 msgid "Load balance info"
 msgstr "Lastbalanseringsinfo"
 
 #. TRANSLATORS: Do not use typographic quotation marks, these must stay as "double quote", also know as “Typewriter ("programmer's") quote, ambidextrous.”
-#: plugins/rdp/rdp_plugin.c:2770
+#: plugins/rdp/rdp_plugin.c:2808
 msgid "Override printer drivers"
 msgstr "Överstyra skrivardrivrytiner"
 
-#: plugins/rdp/rdp_plugin.c:2770
+#: plugins/rdp/rdp_plugin.c:2808
 msgid ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
@@ -2579,180 +2582,180 @@ msgstr ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
 
-#: plugins/rdp/rdp_plugin.c:2771
+#: plugins/rdp/rdp_plugin.c:2809
 msgid "USB device redirection"
 msgstr "Välj USB-enheter för vidarebefordran"
 
-#: plugins/rdp/rdp_plugin.c:2772
+#: plugins/rdp/rdp_plugin.c:2810
 msgid "Local serial name"
 msgstr "Lokalt seriellnamn"
 
-#: plugins/rdp/rdp_plugin.c:2772
+#: plugins/rdp/rdp_plugin.c:2810
 msgid "COM1, COM2, etc."
 msgstr "COM1, COM2, osv."
 
-#: plugins/rdp/rdp_plugin.c:2773
+#: plugins/rdp/rdp_plugin.c:2811
 msgid "Local serial driver"
 msgstr "Lokal serielldrivrutin"
 
-#: plugins/rdp/rdp_plugin.c:2773
+#: plugins/rdp/rdp_plugin.c:2811
 msgid "Serial"
 msgstr "Seriell"
 
-#: plugins/rdp/rdp_plugin.c:2774
+#: plugins/rdp/rdp_plugin.c:2812
 msgid "Local serial path"
 msgstr "Lokalt seriellspår"
 
-#: plugins/rdp/rdp_plugin.c:2774
+#: plugins/rdp/rdp_plugin.c:2812
 msgid "/dev/ttyS0, /dev/ttyS1, etc."
 msgstr "/dev/ttyS0, /dev/ttyS1, etc."
 
-#: plugins/rdp/rdp_plugin.c:2775
+#: plugins/rdp/rdp_plugin.c:2813
 msgid "Local parallel name"
 msgstr "Lokalt parallellnamn"
 
-#: plugins/rdp/rdp_plugin.c:2776
+#: plugins/rdp/rdp_plugin.c:2814
 msgid "Local parallel device"
 msgstr "Lokal parallellenhet"
 
-#: plugins/rdp/rdp_plugin.c:2777
+#: plugins/rdp/rdp_plugin.c:2815
 msgid "Name of smart card"
 msgstr "Del smartkort"
 
-#: plugins/rdp/rdp_plugin.c:2778
+#: plugins/rdp/rdp_plugin.c:2816
 msgid "Dynamic virtual channel"
 msgstr "Dynamisk virtuell kanal"
 
-#: plugins/rdp/rdp_plugin.c:2778 plugins/rdp/rdp_plugin.c:2779
+#: plugins/rdp/rdp_plugin.c:2816 plugins/rdp/rdp_plugin.c:2817
 #, fuzzy
 msgid "<channel>[,<options>]"
 msgstr "<kanal>[,<alternativ>]"
 
-#: plugins/rdp/rdp_plugin.c:2779
+#: plugins/rdp/rdp_plugin.c:2817
 msgid "Static virtual channel"
 msgstr "Statisk virtuell kanal"
 
-#: plugins/rdp/rdp_plugin.c:2780
+#: plugins/rdp/rdp_plugin.c:2818
 #, fuzzy
 #| msgid "USB redirection error"
 msgid "TCP redirection"
 msgstr "TCP-omdirigering"
 
-#: plugins/rdp/rdp_plugin.c:2780
+#: plugins/rdp/rdp_plugin.c:2818
 #, fuzzy
 msgid "/PATH/TO/rdp2tcp"
 msgstr "/PATH/TO/rdp2tcp"
 
-#: plugins/rdp/rdp_plugin.c:2782
+#: plugins/rdp/rdp_plugin.c:2820
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
 msgstr "Föredra IPv6 AAAA-record över IPv4 A-record"
 
-#: plugins/rdp/rdp_plugin.c:2783
+#: plugins/rdp/rdp_plugin.c:2821
 msgid "Share printers"
 msgstr "Dela skrivare"
 
-#: plugins/rdp/rdp_plugin.c:2784
+#: plugins/rdp/rdp_plugin.c:2822
 msgid "Share serial ports"
 msgstr "Dela seriellportar"
 
-#: plugins/rdp/rdp_plugin.c:2785
+#: plugins/rdp/rdp_plugin.c:2823
 msgid "(SELinux) permissive mode for serial ports"
 msgstr "(SELinux) tillförlitlig modus for seriellportar"
 
-#: plugins/rdp/rdp_plugin.c:2786
+#: plugins/rdp/rdp_plugin.c:2824
 msgid "Share parallel ports"
 msgstr "Dela parallellporter"
 
-#: plugins/rdp/rdp_plugin.c:2787
+#: plugins/rdp/rdp_plugin.c:2825
 msgid "Share a smart card"
 msgstr "Del smartkort"
 
-#: plugins/rdp/rdp_plugin.c:2788 plugins/vnc/vnc_plugin.c:2035
+#: plugins/rdp/rdp_plugin.c:2826 plugins/vnc/vnc_plugin.c:2035
 msgid "Turn off clipboard sync"
 msgstr "Inaktivera synkronisering av urklipp"
 
-#: plugins/rdp/rdp_plugin.c:2789
+#: plugins/rdp/rdp_plugin.c:2827
 msgid "Ignore certificate"
 msgstr "Ignorera certifikat"
 
-#: plugins/rdp/rdp_plugin.c:2790
+#: plugins/rdp/rdp_plugin.c:2828
 msgid "Use the old license workflow"
 msgstr "Använd arbetesflöd frän gammal licens"
 
-#: plugins/rdp/rdp_plugin.c:2790
+#: plugins/rdp/rdp_plugin.c:2828
 msgid "It disables CAL and hwId is set to 0"
 msgstr "Det stänger av CAL, och hwld sättas till 0"
 
-#: plugins/rdp/rdp_plugin.c:2791 plugins/spice/spice_plugin.c:702
+#: plugins/rdp/rdp_plugin.c:2829 plugins/spice/spice_plugin.c:702
 #: plugins/vnc/vnc_plugin.c:2031 plugins/www/www_plugin.c:919
 #: plugins/gvnc/gvnc_plugin.c:867
 msgid "Forget passwords after use"
 msgstr "Inget lösenord lagras"
 
-#: plugins/rdp/rdp_plugin.c:2792
+#: plugins/rdp/rdp_plugin.c:2830
 msgid "Attach to console (2003/2003 R2)"
 msgstr "Anslut till konsoll (Windows 2003 / 2003 R2)"
 
-#: plugins/rdp/rdp_plugin.c:2793
+#: plugins/rdp/rdp_plugin.c:2831
 msgid "Turn off fast-path"
 msgstr "Stäng av fast-path"
 
-#: plugins/rdp/rdp_plugin.c:2794
+#: plugins/rdp/rdp_plugin.c:2832
 msgid "Server detection using Remote Desktop Gateway"
 msgstr "Serverdetektering med fjärrskrivbordskörsport"
 
-#: plugins/rdp/rdp_plugin.c:2796
+#: plugins/rdp/rdp_plugin.c:2834
 msgid "Use system proxy settings"
 msgstr "Använd systemproxyinställningar"
 
-#: plugins/rdp/rdp_plugin.c:2798
+#: plugins/rdp/rdp_plugin.c:2836
 msgid "Turn off automatic reconnection"
 msgstr "Stäng av automatisk återanslutning"
 
-#: plugins/rdp/rdp_plugin.c:2799
+#: plugins/rdp/rdp_plugin.c:2837
 msgid "Relax order checks"
 msgstr "Avslappad kontroll av ordning"
 
-#: plugins/rdp/rdp_plugin.c:2800
+#: plugins/rdp/rdp_plugin.c:2838
 msgid "Glyph cache"
 msgstr "Tekn-cache"
 
-#: plugins/rdp/rdp_plugin.c:2801
+#: plugins/rdp/rdp_plugin.c:2839
 msgid "Enable multitransport protocol (UDP)"
 msgstr "Använd multitransportprotokoll (UDP)"
 
-#: plugins/rdp/rdp_plugin.c:2801
+#: plugins/rdp/rdp_plugin.c:2839
 msgid "Using the UDP protocol may improve performance"
 msgstr "Bruk av UDP-protokoll kan öka prestanda"
 
-#: plugins/rdp/rdp_plugin.c:2802
+#: plugins/rdp/rdp_plugin.c:2840
 #, fuzzy
 msgid "Use base credentials for gateway too"
 msgstr "Använd även basreferenser för gatewayen"
 
-#: plugins/rdp/rdp_plugin.c:2804
+#: plugins/rdp/rdp_plugin.c:2842
 #, fuzzy
 msgid "Enable Gateway websockets support"
 msgstr "Aktivera stöd för Gateway websockets"
 
-#: plugins/rdp/rdp_plugin.c:2817 plugins/spice/spice_plugin.c:715
+#: plugins/rdp/rdp_plugin.c:2855 plugins/spice/spice_plugin.c:715
 #: plugins/vnc/vnc_plugin.c:2052
 msgid "Send Ctrl+Alt+Delete"
 msgstr "Skicka Ctrl+Alt+Delete"
 
-#: plugins/rdp/rdp_plugin.c:2830
+#: plugins/rdp/rdp_plugin.c:2868
 msgid "RDP - Remote Desktop Protocol"
 msgstr "RDP - Fjärrskrivbordsprotokoll"
 
-#: plugins/rdp/rdp_plugin.c:2855
+#: plugins/rdp/rdp_plugin.c:2893
 msgid "RDP - RDP File Handler"
 msgstr "RDP - RDP-filhantering"
 
-#: plugins/rdp/rdp_plugin.c:2870
+#: plugins/rdp/rdp_plugin.c:2908
 msgid "RDP - Preferences"
 msgstr "RDP - Inställningar"
 
-#: plugins/rdp/rdp_plugin.c:2923
+#: plugins/rdp/rdp_plugin.c:2961
 msgid "Export connection in Windows .rdp file format"
 msgstr "Exportera anslutning som Windows .rdp"
 
@@ -3563,8 +3566,8 @@ msgstr "Internt fel: RemminaProtocolWidget* gp är NULL!"
 #| "The protocol “%s” is unavailable because GtkSocket only works under X.Org."
 msgid "The %s protocol is unavailable because GtkSocket only works under X.org"
 msgstr ""
-"Protokollen \"%s\" er otillgänglig eftersom GtkSocket endast fungerar under X"
-".Org."
+"Protokollen \"%s\" er otillgänglig eftersom GtkSocket endast fungerar under "
+"X.Org."
 
 #: plugins/x2go/x2go_plugin.c:2906
 #, fuzzy
@@ -3718,8 +3721,8 @@ msgstr "Riktning för klippbrädan"
 #, fuzzy
 msgid "Which direction should clipboard content be copied? (default: 'both')."
 msgstr ""
-"I vilken riktning ska innehållet i klippbordet kopieras? (standard: \"båda\""
-")."
+"I vilken riktning ska innehållet i klippbordet kopieras? (standard: \"båda"
+"\")."
 
 #: plugins/x2go/x2go_plugin.c:3216
 #, fuzzy
@@ -4130,8 +4133,8 @@ msgstr ""
 "\n"
 "<span>\n"
 "<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
-"release notes\"><i>Besök webbplatsen för att läsa "
-"versionsanvisningarna</i></a>.\n"
+"release notes\"><i>Besök webbplatsen för att läsa versionsanvisningarna</i></"
+"a>.\n"
 "</span>"
 
 #: data/ui/remmina_news.glade:130
@@ -4152,8 +4155,8 @@ msgid ""
 "Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
 "\">remmina.org</a> (*)"
 msgstr ""
-"Hämta nyheter från <a href=\"https://remmina.org\" title=\"Remmina news "
-"site\">remmina.org</a> (*)"
+"Hämta nyheter från <a href=\"https://remmina.org\" title=\"Remmina news site"
+"\">remmina.org</a> (*)"
 
 #: data/ui/remmina_news.glade:169
 msgid "Receives updated news from remmina.org"
@@ -4184,9 +4187,9 @@ msgid ""
 "</span>\n"
 msgstr ""
 "<span>\n"
-"<b> Du är bra för att använda gemenslig fri programvara, <a href=\"https"
-"://remmina.org/donations/\" title=\"Häftiga Remmina-donationer\">slump till "
-"med en donation </a>, för att göra oss lyckliga, och ytterligare förbättra "
+"<b> Du är bra för att använda gemenslig fri programvara, <a href=\"https://"
+"remmina.org/donations/\" title=\"Häftiga Remmina-donationer\">slump till med "
+"en donation </a>, för att göra oss lyckliga, och ytterligare förbättra "
 "programmet. </b>\n"
 "</span>\n"
 

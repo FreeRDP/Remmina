@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Remmina v1.4.5\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-12-16 23:08+0000\n"
+"POT-Creation-Date: 2021-12-17 15:48+0000\n"
 "PO-Revision-Date: 2021-12-17 08:54+0000\n"
 "Last-Translator: MJ Ahmadi <mohammad.j.ahmadi@gmail.com>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -24,7 +24,7 @@ msgstr ""
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:354
 #: src/remmina_protocol_widget.c:1677 src/remmina_protocol_widget.c:1696
 #: src/remmina_file_editor.c:1101 src/remmina_file_editor.c:1222
-#: src/remmina_ssh_plugin.c:1361 plugins/rdp/rdp_plugin.c:2723
+#: src/remmina_ssh_plugin.c:1361 plugins/rdp/rdp_plugin.c:2760
 #: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:3198
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1646
 #: data/ui/remmina_unlock.glade:116
@@ -70,7 +70,7 @@ msgstr "از طریق ترمینال جدید با SSH متصل شوید"
 
 #: src/remmina_sftp_plugin.c:353 src/remmina_message_panel.c:330
 #: src/remmina_file_editor.c:1216 src/remmina_ssh_plugin.c:1471
-#: plugins/rdp/rdp_plugin.c:2722 plugins/vnc/vnc_plugin.c:1997
+#: plugins/rdp/rdp_plugin.c:2759 plugins/vnc/vnc_plugin.c:1997
 #: plugins/vnc/vnc_plugin.c:2009 plugins/www/www_plugin.c:894
 #: plugins/x2go/x2go_plugin.c:475 plugins/x2go/x2go_plugin.c:3197
 #: data/ui/remmina_mpc.glade:144
@@ -145,31 +145,31 @@ msgstr "عملکرد"
 msgid "Secret"
 msgstr "مخفی"
 
-#: src/remmina_plugin_manager.c:461 data/ui/remmina_main.glade:305
+#: src/remmina_plugin_manager.c:462 data/ui/remmina_main.glade:305
 msgid "Plugins"
 msgstr "افزونه ها"
 
-#: src/remmina_plugin_manager.c:461 src/remmina_message_panel.c:452
+#: src/remmina_plugin_manager.c:462 src/remmina_message_panel.c:452
 #: src/remmina_message_panel.c:621 src/remmina_file_editor.c:242
 #, fuzzy
 msgid "_OK"
 msgstr "_OK"
 
-#: src/remmina_plugin_manager.c:479 src/remmina_file_editor.c:1908
+#: src/remmina_plugin_manager.c:480 src/remmina_file_editor.c:1908
 #: data/ui/remmina_main.glade:442
 #, fuzzy
 msgid "Name"
 msgstr "نام"
 
-#: src/remmina_plugin_manager.c:485
+#: src/remmina_plugin_manager.c:486
 msgid "Type"
 msgstr "نوع"
 
-#: src/remmina_plugin_manager.c:491
+#: src/remmina_plugin_manager.c:492
 msgid "Description"
 msgstr "توضیحات"
 
-#: src/remmina_plugin_manager.c:497
+#: src/remmina_plugin_manager.c:498
 msgid "Version"
 msgstr "نگارش"
 
@@ -286,7 +286,7 @@ msgstr "بله"
 msgid "No"
 msgstr "خیر"
 
-#: src/remmina_message_panel.c:391 plugins/rdp/rdp_plugin.c:2724
+#: src/remmina_message_panel.c:391 plugins/rdp/rdp_plugin.c:2761
 #: data/ui/remmina_mpc.glade:172
 #, fuzzy
 msgid "Domain"
@@ -483,8 +483,8 @@ msgid ""
 "available-in-a-Wayland-session"
 msgstr ""
 "پلاگین های متکی به GtkSocket نمی توانند در یک جلسه Wayland اجرا شوند.\n"
-"برای اطلاعات بیشتر و راه‌حل احتمالی، لطفاً به Remmina Wiki در آدرس زیر "
-"مراجعه کنید:\n"
+"برای اطلاعات بیشتر و راه‌حل احتمالی، لطفاً به Remmina Wiki در آدرس زیر مراجعه "
+"کنید:\n"
 "\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
@@ -712,9 +712,9 @@ msgstr ""
 "برای به روز رسانی نام کاربری و رمز عبور و تنظیم حالت وضوح متفاوت از یک "
 "پروفایل اتصال Remmina، استفاده کنید:\n"
 "\n"
-"echo \"username\\n"
-"apassword\" | remmina --update-profile /PATH/TO/FOO.remmina --set-option "
-"username --set-option resolution_mode=2 --set-option password\n"
+"echo \"username\\napassword\" | remmina --update-profile /PATH/TO/FOO."
+"remmina --set-option username --set-option resolution_mode=2 --set-option "
+"password\n"
 
 #: src/remmina_public.c:345
 #, c-format
@@ -792,7 +792,7 @@ msgstr "بالا"
 msgid "Go to parent folder"
 msgstr "رفتن به پوشه والد"
 
-#: src/remmina_ftp_client.c:758 plugins/rdp/rdp_plugin.c:2813
+#: src/remmina_ftp_client.c:758 plugins/rdp/rdp_plugin.c:2851
 #: plugins/vnc/vnc_plugin.c:2050
 #, fuzzy
 msgid "Refresh"
@@ -840,12 +840,12 @@ msgstr "گروه"
 msgid "Permission"
 msgstr "اجازه"
 
-#: src/remmina_ftp_client.c:990 plugins/rdp/rdp_plugin.c:2611
+#: src/remmina_ftp_client.c:990 plugins/rdp/rdp_plugin.c:2648
 #, fuzzy
 msgid "Remote"
 msgstr "دور"
 
-#: src/remmina_ftp_client.c:997 plugins/rdp/rdp_plugin.c:2610
+#: src/remmina_ftp_client.c:997 plugins/rdp/rdp_plugin.c:2647
 msgid "Local"
 msgstr "محلی"
 
@@ -1518,7 +1518,7 @@ msgstr "تونل از طریق آدرس loopback"
 msgid "Same server at port %i"
 msgstr "همان سرور در پورت %i"
 
-#: src/remmina_file_editor.c:1193 plugins/rdp/rdp_plugin.c:2767
+#: src/remmina_file_editor.c:1193 plugins/rdp/rdp_plugin.c:2805
 msgid "Start-up path"
 msgstr "مسیر  راه اندازی"
 
@@ -1702,7 +1702,8 @@ msgstr ""
 #: src/remmina_icon.c:383
 #, c-format
 msgid "%s You may need to install, and use XEmbed SNI Proxy"
-msgstr "%s شما ممکن است نیاز به نصب، و استفاده از XEmbed SNI Proxy داشته باشید."
+msgstr ""
+"%s شما ممکن است نیاز به نصب، و استفاده از XEmbed SNI Proxy داشته باشید."
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:386
@@ -1921,22 +1922,22 @@ msgstr "< تنظیم  نشده>"
 msgid "<Choose a quality level to edit…>"
 msgstr "<یک سطح کیفیت را برای ویرایش انتخاب کنید…>"
 
-#: plugins/rdp/rdp_settings.c:282 plugins/rdp/rdp_plugin.c:2585
+#: plugins/rdp/rdp_settings.c:282 plugins/rdp/rdp_plugin.c:2622
 #: plugins/vnc/vnc_plugin.c:1947
 msgid "Poor (fastest)"
 msgstr "کیفیت پایین(سریع ترین)"
 
-#: plugins/rdp/rdp_settings.c:284 plugins/rdp/rdp_plugin.c:2586
+#: plugins/rdp/rdp_settings.c:284 plugins/rdp/rdp_plugin.c:2623
 #: plugins/vnc/vnc_plugin.c:1946
 msgid "Medium"
 msgstr "متوسط"
 
-#: plugins/rdp/rdp_settings.c:286 plugins/rdp/rdp_plugin.c:2587
+#: plugins/rdp/rdp_settings.c:286 plugins/rdp/rdp_plugin.c:2624
 #: plugins/vnc/vnc_plugin.c:1944
 msgid "Good"
 msgstr "خوب"
 
-#: plugins/rdp/rdp_settings.c:288 plugins/rdp/rdp_plugin.c:2588
+#: plugins/rdp/rdp_settings.c:288 plugins/rdp/rdp_plugin.c:2625
 #: plugins/vnc/vnc_plugin.c:1945
 msgid "Best (slowest)"
 msgstr "بهترین (کندترین)"
@@ -2022,7 +2023,7 @@ msgstr "جهت گیری دسکتاپ"
 msgid "Input device settings"
 msgstr "تنظیمات دستگاه ورودی"
 
-#: plugins/rdp/rdp_settings.c:658 plugins/rdp/rdp_plugin.c:2729
+#: plugins/rdp/rdp_settings.c:658 plugins/rdp/rdp_plugin.c:2766
 #: plugins/vnc/vnc_plugin.c:2030
 msgid "Disable smooth scrolling"
 msgstr "غیرفعال کردن اسکرول کردن صاف"
@@ -2031,25 +2032,25 @@ msgstr "غیرفعال کردن اسکرول کردن صاف"
 msgid "General settings"
 msgstr "تنظیمات عمومی"
 
-#: plugins/rdp/rdp_settings.c:676 plugins/rdp/rdp_plugin.c:2781
+#: plugins/rdp/rdp_settings.c:676 plugins/rdp/rdp_plugin.c:2819
 #, fuzzy
 msgid "Reconnect attempts number"
 msgstr "اتصال مجدد شماره تلاش ها"
 
-#: plugins/rdp/rdp_settings.c:689 plugins/rdp/rdp_plugin.c:2781
+#: plugins/rdp/rdp_settings.c:689 plugins/rdp/rdp_plugin.c:2819
 msgid ""
 "The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
 msgstr "حداکثر تعداد تلاش برای اتصال مجدد پس از قطع اتصال RDP (پیش فرض: 20)"
 
-#: plugins/rdp/rdp_plugin.c:769 plugins/rdp/rdp_plugin.c:834
+#: plugins/rdp/rdp_plugin.c:771 plugins/rdp/rdp_plugin.c:836
 msgid "Enter RDP authentication credentials"
 msgstr "اعتبارنامه احراز هویت RDP را وارد کنید."
 
-#: plugins/rdp/rdp_plugin.c:842
+#: plugins/rdp/rdp_plugin.c:844
 msgid "Enter RDP gateway authentication credentials"
 msgstr "اعتبارنامه احراز هویت دروازه RDP را وارد کنید."
 
-#: plugins/rdp/rdp_plugin.c:2116
+#: plugins/rdp/rdp_plugin.c:2153
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2058,7 +2059,7 @@ msgstr ""
 "نمی توان به سرور RDP \"%s\" دسترسی داشت.\n"
 "حساب قفل شده است."
 
-#: plugins/rdp/rdp_plugin.c:2123
+#: plugins/rdp/rdp_plugin.c:2160
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2067,7 +2068,7 @@ msgstr ""
 "نمی توان به سرور RDP \"%s\" دسترسی داشت.\n"
 "حساب منقضی شده است."
 
-#: plugins/rdp/rdp_plugin.c:2130
+#: plugins/rdp/rdp_plugin.c:2167
 #, fuzzy, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2076,7 +2077,7 @@ msgstr ""
 "دسترسی به سرور RDPامکان پذیر نیست.\n"
 "رمز عبور منقضی شده است."
 
-#: plugins/rdp/rdp_plugin.c:2137
+#: plugins/rdp/rdp_plugin.c:2174
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2085,7 +2086,7 @@ msgstr ""
 "نمی توان به سرور RDP \"%s\" دسترسی داشت.\n"
 "حساب غیر فعال شده است."
 
-#: plugins/rdp/rdp_plugin.c:2143
+#: plugins/rdp/rdp_plugin.c:2180
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2094,7 +2095,7 @@ msgstr ""
 "دسترسی به سرور RDP \"%s\" امکان پذیر نیست.\n"
 "امتیازات کاربر کافی نیست."
 
-#: plugins/rdp/rdp_plugin.c:2151
+#: plugins/rdp/rdp_plugin.c:2188
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2103,7 +2104,7 @@ msgstr ""
 "دسترسی به سرور RDP \"%s\" امکان پذیر نیست.\n"
 "حساب محدود شده است."
 
-#: plugins/rdp/rdp_plugin.c:2159
+#: plugins/rdp/rdp_plugin.c:2196
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2112,27 +2113,27 @@ msgstr ""
 "دسترسی به سرور RDP \"%s\" امکان پذیر نیست.\n"
 "قبل از اتصال رمز عبور کاربر را تغییر دهید."
 
-#: plugins/rdp/rdp_plugin.c:2164
+#: plugins/rdp/rdp_plugin.c:2201
 #, c-format
 msgid "Lost connection to the RDP server “%s”."
 msgstr "اتصال به سرور RDP \"%s\" قطع شد."
 
-#: plugins/rdp/rdp_plugin.c:2167
+#: plugins/rdp/rdp_plugin.c:2204
 #, c-format
 msgid "Could not find the address for the RDP server “%s”."
 msgstr "آدرس سرور RDP \"%s\" پیدا نشد ."
 
-#: plugins/rdp/rdp_plugin.c:2171
+#: plugins/rdp/rdp_plugin.c:2208
 #, fuzzy, c-format
 msgid ""
-"Could not connect to the RDP server “%s” via TLS. Check that client and "
-"server support a common TLS version."
+"Could not connect to the RDP server “%s” via TLS. See the DEBUG traces from "
+"a terminal for more information."
 msgstr ""
 "نمی توانست از طریق TLS به سرور RDP \"%s متصل شود. بررسی کنید که سرویس گیرنده "
 "و سرور پشتیبانی از یک نسخه مشترک TLS."
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
-#: plugins/rdp/rdp_plugin.c:2175
+#: plugins/rdp/rdp_plugin.c:2212
 #, fuzzy, c-format
 msgid ""
 "Unable to establish a connection to the RDP server “%s”. Check “Security "
@@ -2140,17 +2141,17 @@ msgid ""
 msgstr ""
 "قادر به برقراری اتصال به سرور RDP \"%s\". بررسی \"مذاکره پروتکل امنیتی\"."
 
-#: plugins/rdp/rdp_plugin.c:2183
+#: plugins/rdp/rdp_plugin.c:2220
 #, fuzzy, c-format
 msgid "Cannot connect to the RDP server “%s”."
 msgstr "نمی تواند به سرور RDP \"%s\" متصل شود."
 
-#: plugins/rdp/rdp_plugin.c:2186
+#: plugins/rdp/rdp_plugin.c:2223
 #, fuzzy
 msgid "Could not start libfreerdp-gdi."
 msgstr "نميتونست شروع کنه به libfreerdp-gdi"
 
-#: plugins/rdp/rdp_plugin.c:2189
+#: plugins/rdp/rdp_plugin.c:2226
 #, fuzzy, c-format
 msgid ""
 "You requested a H.264 GFX mode for the server “%s”, but your libfreerdp does "
@@ -2159,12 +2160,12 @@ msgstr ""
 "شما یک حالت H.264 GFX برای سرور \"%s\" درخواست کرده اید، اما libfreerdp شما "
 "H.264 را پشتیبانی نمی کند. لطفا از یک تنظیم عمق رنگ غیر AVC استفاده کنید."
 
-#: plugins/rdp/rdp_plugin.c:2196
+#: plugins/rdp/rdp_plugin.c:2233
 #, fuzzy, c-format
 msgid "The “%s” server refused the connection."
 msgstr "سرور \"%s\" اتصال را رد کرد."
 
-#: plugins/rdp/rdp_plugin.c:2201
+#: plugins/rdp/rdp_plugin.c:2238
 #, fuzzy, c-format
 msgid ""
 "The Remote Desktop Gateway “%s” denied the user “%s\\%s” access due to "
@@ -2173,144 +2174,144 @@ msgstr ""
 "دروازه دسکتاپ از راه دور \"%s\" کاربر \"%s\\%s\" دسترسی به دلیل سیاست را "
 "تکذیب کرد."
 
-#: plugins/rdp/rdp_plugin.c:2211
+#: plugins/rdp/rdp_plugin.c:2248
 #, fuzzy, c-format
 msgid "Cannot connect to the “%s” RDP server."
 msgstr "نمی تواند به سرور RDP \"%s متصل شود."
 
-#: plugins/rdp/rdp_plugin.c:2554
+#: plugins/rdp/rdp_plugin.c:2591
 #, fuzzy
 msgid "Automatic (32 bpp) (Server chooses its best format)"
 msgstr "خودکار (32 bpp) (سرور بهترین فرمت خود را انتخاب می کند)"
 
-#: plugins/rdp/rdp_plugin.c:2555
+#: plugins/rdp/rdp_plugin.c:2592
 #, fuzzy
 msgid "GFX AVC444 (32 bpp)"
 msgstr "GFX AVC444 (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2556
+#: plugins/rdp/rdp_plugin.c:2593
 #, fuzzy
 msgid "GFX AVC420 (32 bpp)"
 msgstr "GFX AVC420 (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2557
+#: plugins/rdp/rdp_plugin.c:2594
 #, fuzzy
 msgid "GFX RFX (32 bpp)"
 msgstr "GFX RFX (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2558
+#: plugins/rdp/rdp_plugin.c:2595
 #, fuzzy
 msgid "GFX RFX Progressive (32 bpp)"
 msgstr "GFX RFX مترقی (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2559
+#: plugins/rdp/rdp_plugin.c:2596
 #, fuzzy
 msgid "RemoteFX (32 bpp)"
 msgstr "RemoteFX (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2560 plugins/vnc/vnc_plugin.c:1935
+#: plugins/rdp/rdp_plugin.c:2597 plugins/vnc/vnc_plugin.c:1935
 #, fuzzy
 msgid "True colour (32 bpp)"
 msgstr "رنگ واقعی (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2561
+#: plugins/rdp/rdp_plugin.c:2598
 #, fuzzy
 msgid "True colour (24 bpp)"
 msgstr "رنگ واقعی (24 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2562 plugins/vnc/vnc_plugin.c:1936
+#: plugins/rdp/rdp_plugin.c:2599 plugins/vnc/vnc_plugin.c:1936
 #, fuzzy
 msgid "High colour (16 bpp)"
 msgstr "رنگ بالا (16 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2563
+#: plugins/rdp/rdp_plugin.c:2600
 #, fuzzy
 msgid "High colour (15 bpp)"
 msgstr "رنگ بالا (15 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2564 plugins/vnc/vnc_plugin.c:1937
+#: plugins/rdp/rdp_plugin.c:2601 plugins/vnc/vnc_plugin.c:1937
 #, fuzzy
 msgid "256 colours (8 bpp)"
 msgstr "256 رنگ (8 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2595 data/ui/remmina_preferences.glade:612
+#: plugins/rdp/rdp_plugin.c:2632 data/ui/remmina_preferences.glade:612
 #, fuzzy
 msgid "None"
 msgstr "هیچ یک"
 
-#: plugins/rdp/rdp_plugin.c:2596
+#: plugins/rdp/rdp_plugin.c:2633
 #, fuzzy
 msgid "Auto-detect"
 msgstr "تشخیص خودکار"
 
-#: plugins/rdp/rdp_plugin.c:2597
+#: plugins/rdp/rdp_plugin.c:2634
 #, fuzzy
 msgid "Modem"
 msgstr "مودم"
 
-#: plugins/rdp/rdp_plugin.c:2598
+#: plugins/rdp/rdp_plugin.c:2635
 #, fuzzy
 msgid "Low performance broadband"
 msgstr "پهن باند عملکرد پایین"
 
-#: plugins/rdp/rdp_plugin.c:2599
+#: plugins/rdp/rdp_plugin.c:2636
 #, fuzzy
 msgid "Satellite"
 msgstr "ماهواره ای"
 
-#: plugins/rdp/rdp_plugin.c:2600
+#: plugins/rdp/rdp_plugin.c:2637
 #, fuzzy
 msgid "High performance broadband"
 msgstr "پهن باند با عملکرد بالا"
 
-#: plugins/rdp/rdp_plugin.c:2601
+#: plugins/rdp/rdp_plugin.c:2638
 #, fuzzy
 msgid "WAN"
 msgstr "وان"
 
-#: plugins/rdp/rdp_plugin.c:2602
+#: plugins/rdp/rdp_plugin.c:2639
 #, fuzzy
 msgid "LAN"
 msgstr "شبکه"
 
-#: plugins/rdp/rdp_plugin.c:2609 plugins/spice/spice_plugin.c:635
+#: plugins/rdp/rdp_plugin.c:2646 plugins/spice/spice_plugin.c:635
 #: data/ui/remmina_preferences.glade:648
 #, fuzzy
 msgid "Off"
 msgstr "خاموش"
 
-#: plugins/rdp/rdp_plugin.c:2618
+#: plugins/rdp/rdp_plugin.c:2655
 #, fuzzy
 msgid "Automatic negotiation"
 msgstr "مذاکره خودکار"
 
-#: plugins/rdp/rdp_plugin.c:2619
+#: plugins/rdp/rdp_plugin.c:2656
 #, fuzzy
 msgid "NLA protocol security"
 msgstr "امنیت پروتکل NLA"
 
-#: plugins/rdp/rdp_plugin.c:2620
+#: plugins/rdp/rdp_plugin.c:2657
 #, fuzzy
 msgid "TLS protocol security"
 msgstr "امنیت پروتکل TLS"
 
-#: plugins/rdp/rdp_plugin.c:2621
+#: plugins/rdp/rdp_plugin.c:2658
 #, fuzzy
 msgid "RDP protocol security"
 msgstr "امنیت پروتکل RDP"
 
-#: plugins/rdp/rdp_plugin.c:2622
+#: plugins/rdp/rdp_plugin.c:2659
 #, fuzzy
 msgid "NLA extended protocol security"
 msgstr "NLA گسترش امنیت پروتکل"
 
-#: plugins/rdp/rdp_plugin.c:2635
+#: plugins/rdp/rdp_plugin.c:2672
 #, fuzzy
 msgid "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 and newer)"
 msgstr ""
 "2600 (ویندوز ایکس پی) ، 7601 (ویندوز ویستا / 7) ، 9600 (ویندوز 8 و جدیدتر)"
 
-#: plugins/rdp/rdp_plugin.c:2638
+#: plugins/rdp/rdp_plugin.c:2675
 #, fuzzy
 msgid ""
 "Used i.a. by terminal services in a smart card channel to distinguish client "
@@ -2323,12 +2324,12 @@ msgid ""
 msgstr ""
 "استفاده از i.a توسط خدمات ترمینال در یک کانال کارت هوشمند برای تشخیص قابلیت "
 "های مشتری:\n"
-"  • < 4034: Windows XP base smart card functions • 4034-7064: Windows Vista/"
-"7: SCardReadCache(), SCardWriteCache(), SCardGetTransmitCount() • >= 7065: "
-"Windows 8 and newer: SCardGetReaderIcon(),\n"
+"  • < 4034: Windows XP base smart card functions • 4034-7064: Windows "
+"Vista/7: SCardReadCache(), SCardWriteCache(), SCardGetTransmitCount() • >= "
+"7065: Windows 8 and newer: SCardGetReaderIcon(),\n"
 "    SCardGetDeviceTypeId()"
 
-#: plugins/rdp/rdp_plugin.c:2646
+#: plugins/rdp/rdp_plugin.c:2683
 #, fuzzy
 msgid ""
 "Options for redirection of audio input:\n"
@@ -2347,7 +2348,7 @@ msgstr ""
 "  • sys:oss,dev:1,format:1\n"
 "  • sys:alsa"
 
-#: plugins/rdp/rdp_plugin.c:2655
+#: plugins/rdp/rdp_plugin.c:2692
 #, fuzzy
 msgid ""
 "Options for redirection of audio output:\n"
@@ -2366,7 +2367,7 @@ msgstr ""
 "  • sys:oss,dev:1,format:1\n"
 "  • sys:alsa"
 
-#: plugins/rdp/rdp_plugin.c:2665
+#: plugins/rdp/rdp_plugin.c:2702
 #, fuzzy
 msgid ""
 "Options for redirection of USB device:\n"
@@ -2379,7 +2380,7 @@ msgstr ""
 "  خودکار\n"
 "  • id:054c:0268#4669:6e6b,addr:04:0c"
 
-#: plugins/rdp/rdp_plugin.c:2671
+#: plugins/rdp/rdp_plugin.c:2708
 #, fuzzy
 msgid ""
 "Advanced setting for high latency links:\n"
@@ -2390,7 +2391,7 @@ msgstr ""
 "زمان اتصال را تنظیم می کند. اگر زمان اتصال خود را خارج استفاده کنید.\n"
 "بیشترین مقدار ممکن ۶۰ ms (۱۰ دقیقه) است.\n"
 
-#: plugins/rdp/rdp_plugin.c:2676
+#: plugins/rdp/rdp_plugin.c:2713
 #, fuzzy
 msgid ""
 "Performance optimisations based on the network connection type:\n"
@@ -2401,7 +2402,7 @@ msgstr ""
 "استفاده از تشخیص خودکار توصیه می شود.\n"
 "اگر \"تشخیص خودکار\" شکست خورد، مناسب ترین گزینه را در لیست انتخاب کنید.\n"
 
-#: plugins/rdp/rdp_plugin.c:2681
+#: plugins/rdp/rdp_plugin.c:2718
 #, fuzzy
 msgid ""
 "Comma-separated list of monitor IDs and desktop orientations:\n"
@@ -2426,7 +2427,7 @@ msgstr ""
 "  • 270 (پرتره flipped)\n"
 "\n"
 
-#: plugins/rdp/rdp_plugin.c:2693
+#: plugins/rdp/rdp_plugin.c:2730
 #, fuzzy
 msgid ""
 "Redirect directory <path> as named share <name>.\n"
@@ -2447,169 +2448,169 @@ msgstr ""
 "  hotplug,*\n"
 "\n"
 
-#: plugins/rdp/rdp_plugin.c:2725 plugins/spice/spice_plugin.c:677
+#: plugins/rdp/rdp_plugin.c:2762 plugins/spice/spice_plugin.c:677
 #, fuzzy
 msgid "Share folder"
 msgstr "پوشه اشتراک گذاری"
 
-#: plugins/rdp/rdp_plugin.c:2725
+#: plugins/rdp/rdp_plugin.c:2762
 #, fuzzy
 msgid "Use “Redirect directory” in the advanced tab for multiple directories"
 msgstr ""
 "استفاده از \"دایرکتوری تغییر مسیر\" در زبانه پیشرفته برای دایرکتوری های متعدد"
 
-#: plugins/rdp/rdp_plugin.c:2726
+#: plugins/rdp/rdp_plugin.c:2763
 #, fuzzy
 msgid "Restricted admin mode"
 msgstr "حالت مدیریت محدود"
 
-#: plugins/rdp/rdp_plugin.c:2727
+#: plugins/rdp/rdp_plugin.c:2764
 #, fuzzy
 #| msgid "Password"
 msgid "Password hash"
 msgstr "رمز عبور هش"
 
-#: plugins/rdp/rdp_plugin.c:2727
+#: plugins/rdp/rdp_plugin.c:2764
 #, fuzzy
 msgid "Restricted admin mode password hash"
 msgstr "محدود مدیر حالت رمز عبور هش"
 
-#: plugins/rdp/rdp_plugin.c:2728
+#: plugins/rdp/rdp_plugin.c:2765
 #, fuzzy
 msgid "Left-handed mouse support"
 msgstr "پشتیبانی موش چپ دست"
 
-#: plugins/rdp/rdp_plugin.c:2728
+#: plugins/rdp/rdp_plugin.c:2765
 #, fuzzy
 msgid "Swap left and right mouse buttons for left-handed mouse support"
 msgstr "تعویض دکمه های چپ و راست ماوس برای پشتیبانی از ماوس چپ دست"
 
-#: plugins/rdp/rdp_plugin.c:2730
+#: plugins/rdp/rdp_plugin.c:2767
 #, fuzzy
 msgid "Enable multi monitor"
 msgstr "فعال کردن مانیتور چند"
 
-#: plugins/rdp/rdp_plugin.c:2731
+#: plugins/rdp/rdp_plugin.c:2768
 #, fuzzy
 msgid "Span screen over multiple monitors"
 msgstr "صفحه نمایش دهانه بیش از مانیتورهای متعدد"
 
-#: plugins/rdp/rdp_plugin.c:2732
+#: plugins/rdp/rdp_plugin.c:2769
 #, fuzzy
 msgid "List monitor IDs"
 msgstr "لیست مانیتور IDs"
 
-#: plugins/rdp/rdp_plugin.c:2734 plugins/vnc/vnc_plugin.c:1999
+#: plugins/rdp/rdp_plugin.c:2771 plugins/vnc/vnc_plugin.c:1999
 #: plugins/vnc/vnc_plugin.c:2011 plugins/gvnc/gvnc_plugin.c:849
 #, fuzzy
 msgid "Colour depth"
 msgstr "عمق رنگ"
 
-#: plugins/rdp/rdp_plugin.c:2735
+#: plugins/rdp/rdp_plugin.c:2772
 msgid "Network connection type"
 msgstr "ارتباط جدید"
 
-#: plugins/rdp/rdp_plugin.c:2750 plugins/vnc/vnc_plugin.c:2000
+#: plugins/rdp/rdp_plugin.c:2788 plugins/vnc/vnc_plugin.c:2000
 #: plugins/vnc/vnc_plugin.c:2012
 #, fuzzy
 msgid "Quality"
 msgstr "کیفیت"
 
-#: plugins/rdp/rdp_plugin.c:2751
+#: plugins/rdp/rdp_plugin.c:2789
 #, fuzzy
 msgid "Security protocol negotiation"
 msgstr "مذاکره پروتکل امنیتی"
 
-#: plugins/rdp/rdp_plugin.c:2752
+#: plugins/rdp/rdp_plugin.c:2790
 #, fuzzy
 msgid "Gateway transport type"
 msgstr "نوع حمل و نقل دروازه"
 
-#: plugins/rdp/rdp_plugin.c:2753
+#: plugins/rdp/rdp_plugin.c:2791
 #, fuzzy
 msgid "FreeRDP log level"
 msgstr "سطح ورود به سیستم FreeRDP"
 
-#: plugins/rdp/rdp_plugin.c:2754
+#: plugins/rdp/rdp_plugin.c:2792
 #, fuzzy
 msgid "FreeRDP log filters"
 msgstr "فیلترهای ورود به سیستم FreeRDP"
 
-#: plugins/rdp/rdp_plugin.c:2754
+#: plugins/rdp/rdp_plugin.c:2792
 #, fuzzy
 msgid "tag:level[,tag:level[,…]]"
 msgstr "tag:level[,tag:level[,...]]"
 
-#: plugins/rdp/rdp_plugin.c:2755
+#: plugins/rdp/rdp_plugin.c:2793
 #, fuzzy
 msgid "Audio output mode"
 msgstr "حالت خروجی صوتی"
 
-#: plugins/rdp/rdp_plugin.c:2756
+#: plugins/rdp/rdp_plugin.c:2794
 #, fuzzy
 msgid "Redirect local audio output"
 msgstr "تغییر مسیر خروجی صوتی محلی"
 
-#: plugins/rdp/rdp_plugin.c:2757
+#: plugins/rdp/rdp_plugin.c:2795
 #, fuzzy
 msgid "Redirect local microphone"
 msgstr "تغییر مسیر میکروفن محلی"
 
-#: plugins/rdp/rdp_plugin.c:2758
+#: plugins/rdp/rdp_plugin.c:2796
 msgid "Connection timeout in ms"
 msgstr "در حال اتصال به \"%s\"…"
 
-#: plugins/rdp/rdp_plugin.c:2759
+#: plugins/rdp/rdp_plugin.c:2797
 #, fuzzy
 msgid "Remote Desktop Gateway server"
 msgstr "سرور دروازه دسکتاپ از راه دور"
 
-#: plugins/rdp/rdp_plugin.c:2760
+#: plugins/rdp/rdp_plugin.c:2798
 #, fuzzy
 msgid "Remote Desktop Gateway username"
 msgstr "نام کاربری دروازه دسکتاپ از راه دور"
 
-#: plugins/rdp/rdp_plugin.c:2761
+#: plugins/rdp/rdp_plugin.c:2799
 #, fuzzy
 msgid "Remote Desktop Gateway password"
 msgstr "رمز عبور دروازه دسکتاپ از راه دور"
 
-#: plugins/rdp/rdp_plugin.c:2762
+#: plugins/rdp/rdp_plugin.c:2800
 #, fuzzy
 msgid "Remote Desktop Gateway domain"
 msgstr "دامنه دروازه دسکتاپ از راه دور"
 
-#: plugins/rdp/rdp_plugin.c:2763
+#: plugins/rdp/rdp_plugin.c:2801
 #, fuzzy
 msgid "Redirect directory"
 msgstr "تغییر مسیر دایرکتوری"
 
-#: plugins/rdp/rdp_plugin.c:2764
+#: plugins/rdp/rdp_plugin.c:2802
 #, fuzzy
 msgid "Client name"
 msgstr "نام مشتری"
 
-#: plugins/rdp/rdp_plugin.c:2765
+#: plugins/rdp/rdp_plugin.c:2803
 #, fuzzy
 msgid "Client build"
 msgstr "مشتری ساخت"
 
-#: plugins/rdp/rdp_plugin.c:2766
+#: plugins/rdp/rdp_plugin.c:2804
 msgid "Start-up program"
 msgstr "برنامه راه اندازی"
 
-#: plugins/rdp/rdp_plugin.c:2768
+#: plugins/rdp/rdp_plugin.c:2806
 #, fuzzy
 msgid "Load balance info"
 msgstr "بار اطلاعات تعادل"
 
 #. TRANSLATORS: Do not use typographic quotation marks, these must stay as "double quote", also know as “Typewriter ("programmer's") quote, ambidextrous.”
-#: plugins/rdp/rdp_plugin.c:2770
+#: plugins/rdp/rdp_plugin.c:2808
 #, fuzzy
 msgid "Override printer drivers"
 msgstr "نادیده گرفتن درایور پرینتر"
 
-#: plugins/rdp/rdp_plugin.c:2770
+#: plugins/rdp/rdp_plugin.c:2808
 #, fuzzy
 msgid ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
@@ -2618,215 +2619,215 @@ msgstr ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\" Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
 
-#: plugins/rdp/rdp_plugin.c:2771
+#: plugins/rdp/rdp_plugin.c:2809
 #, fuzzy
 msgid "USB device redirection"
 msgstr "تغییر مسیر دستگاه USB"
 
-#: plugins/rdp/rdp_plugin.c:2772
+#: plugins/rdp/rdp_plugin.c:2810
 #, fuzzy
 msgid "Local serial name"
 msgstr "نام سریال محلی"
 
-#: plugins/rdp/rdp_plugin.c:2772
+#: plugins/rdp/rdp_plugin.c:2810
 #, fuzzy
 msgid "COM1, COM2, etc."
 msgstr "COM1، COM2 و غیره."
 
-#: plugins/rdp/rdp_plugin.c:2773
+#: plugins/rdp/rdp_plugin.c:2811
 #, fuzzy
 msgid "Local serial driver"
 msgstr "راننده سریال محلی"
 
-#: plugins/rdp/rdp_plugin.c:2773
+#: plugins/rdp/rdp_plugin.c:2811
 #, fuzzy
 msgid "Serial"
 msgstr "سریال"
 
-#: plugins/rdp/rdp_plugin.c:2774
+#: plugins/rdp/rdp_plugin.c:2812
 #, fuzzy
 msgid "Local serial path"
 msgstr "مسیر سریال محلی"
 
-#: plugins/rdp/rdp_plugin.c:2774
+#: plugins/rdp/rdp_plugin.c:2812
 #, fuzzy
 msgid "/dev/ttyS0, /dev/ttyS1, etc."
 msgstr "/dev/ttyS0, /dev/ttyS1, etc."
 
-#: plugins/rdp/rdp_plugin.c:2775
+#: plugins/rdp/rdp_plugin.c:2813
 #, fuzzy
 msgid "Local parallel name"
 msgstr "نام موازی محلی"
 
-#: plugins/rdp/rdp_plugin.c:2776
+#: plugins/rdp/rdp_plugin.c:2814
 #, fuzzy
 msgid "Local parallel device"
 msgstr "دستگاه موازی محلی"
 
-#: plugins/rdp/rdp_plugin.c:2777
+#: plugins/rdp/rdp_plugin.c:2815
 #, fuzzy
 msgid "Name of smart card"
 msgstr "نام کارت هوشمند"
 
-#: plugins/rdp/rdp_plugin.c:2778
+#: plugins/rdp/rdp_plugin.c:2816
 #, fuzzy
 msgid "Dynamic virtual channel"
 msgstr "کانال مجازی پویا"
 
-#: plugins/rdp/rdp_plugin.c:2778 plugins/rdp/rdp_plugin.c:2779
+#: plugins/rdp/rdp_plugin.c:2816 plugins/rdp/rdp_plugin.c:2817
 #, fuzzy
 msgid "<channel>[,<options>]"
 msgstr "<channel>[,<options>]"
 
-#: plugins/rdp/rdp_plugin.c:2779
+#: plugins/rdp/rdp_plugin.c:2817
 #, fuzzy
 msgid "Static virtual channel"
 msgstr "کانال مجازی استاتیک"
 
-#: plugins/rdp/rdp_plugin.c:2780
+#: plugins/rdp/rdp_plugin.c:2818
 #, fuzzy
 msgid "TCP redirection"
 msgstr "تغییر مسیر TCP"
 
-#: plugins/rdp/rdp_plugin.c:2780
+#: plugins/rdp/rdp_plugin.c:2818
 #, fuzzy
 msgid "/PATH/TO/rdp2tcp"
 msgstr "/PATH/TO/rdp2tcp"
 
-#: plugins/rdp/rdp_plugin.c:2782
+#: plugins/rdp/rdp_plugin.c:2820
 #, fuzzy
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
 msgstr "ترجیح می دهم IPv6 AAAA رکورد بیش از IPv4 رکورد"
 
-#: plugins/rdp/rdp_plugin.c:2783
+#: plugins/rdp/rdp_plugin.c:2821
 #, fuzzy
 msgid "Share printers"
 msgstr "چاپگرهای اشتراک گذاری"
 
-#: plugins/rdp/rdp_plugin.c:2784
+#: plugins/rdp/rdp_plugin.c:2822
 #, fuzzy
 msgid "Share serial ports"
 msgstr "درگاه های سریال را به اشتراک بگذارید"
 
-#: plugins/rdp/rdp_plugin.c:2785
+#: plugins/rdp/rdp_plugin.c:2823
 #, fuzzy
 msgid "(SELinux) permissive mode for serial ports"
 msgstr "(SELinux) حالت مجاز برای پورت های سریال"
 
-#: plugins/rdp/rdp_plugin.c:2786
+#: plugins/rdp/rdp_plugin.c:2824
 #, fuzzy
 msgid "Share parallel ports"
 msgstr "درگاه های موازی را به اشتراک بگذارید"
 
-#: plugins/rdp/rdp_plugin.c:2787
+#: plugins/rdp/rdp_plugin.c:2825
 #, fuzzy
 msgid "Share a smart card"
 msgstr "به اشتراک گذاشتن یک کارت هوشمند"
 
-#: plugins/rdp/rdp_plugin.c:2788 plugins/vnc/vnc_plugin.c:2035
+#: plugins/rdp/rdp_plugin.c:2826 plugins/vnc/vnc_plugin.c:2035
 #, fuzzy
 msgid "Turn off clipboard sync"
 msgstr "خاموش کردن همگام سازی کلیپ بورد"
 
-#: plugins/rdp/rdp_plugin.c:2789
+#: plugins/rdp/rdp_plugin.c:2827
 #, fuzzy
 msgid "Ignore certificate"
 msgstr "نادیده گرفتن گواهی"
 
-#: plugins/rdp/rdp_plugin.c:2790
+#: plugins/rdp/rdp_plugin.c:2828
 #, fuzzy
 msgid "Use the old license workflow"
 msgstr "استفاده از گردش کار مجوز قدیمی"
 
-#: plugins/rdp/rdp_plugin.c:2790
+#: plugins/rdp/rdp_plugin.c:2828
 #, fuzzy
 msgid "It disables CAL and hwId is set to 0"
 msgstr "این غیر فعال CAL و hwId تنظیم شده است به 0"
 
-#: plugins/rdp/rdp_plugin.c:2791 plugins/spice/spice_plugin.c:702
+#: plugins/rdp/rdp_plugin.c:2829 plugins/spice/spice_plugin.c:702
 #: plugins/vnc/vnc_plugin.c:2031 plugins/www/www_plugin.c:919
 #: plugins/gvnc/gvnc_plugin.c:867
 #, fuzzy
 msgid "Forget passwords after use"
 msgstr "پس از استفاده رمزهای عبور را فراموش کنید"
 
-#: plugins/rdp/rdp_plugin.c:2792
+#: plugins/rdp/rdp_plugin.c:2830
 #, fuzzy
 msgid "Attach to console (2003/2003 R2)"
 msgstr "ضمیمه کنسول (2003/2003 R2)"
 
-#: plugins/rdp/rdp_plugin.c:2793
+#: plugins/rdp/rdp_plugin.c:2831
 #, fuzzy
 msgid "Turn off fast-path"
 msgstr "خاموش کردن مسیر سریع"
 
-#: plugins/rdp/rdp_plugin.c:2794
+#: plugins/rdp/rdp_plugin.c:2832
 #, fuzzy
 msgid "Server detection using Remote Desktop Gateway"
 msgstr "تشخیص سرور با استفاده از دروازه دسکتاپ از راه دور"
 
-#: plugins/rdp/rdp_plugin.c:2796
+#: plugins/rdp/rdp_plugin.c:2834
 #, fuzzy
 msgid "Use system proxy settings"
 msgstr "استفاده از تنظیمات پروکسی سیستم"
 
-#: plugins/rdp/rdp_plugin.c:2798
+#: plugins/rdp/rdp_plugin.c:2836
 #, fuzzy
 msgid "Turn off automatic reconnection"
 msgstr "اتصال مجدد خودکار را خاموش کنید"
 
-#: plugins/rdp/rdp_plugin.c:2799
+#: plugins/rdp/rdp_plugin.c:2837
 #, fuzzy
 msgid "Relax order checks"
 msgstr "شل کردن چک سفارش"
 
-#: plugins/rdp/rdp_plugin.c:2800
+#: plugins/rdp/rdp_plugin.c:2838
 #, fuzzy
 msgid "Glyph cache"
 msgstr "کش گلایف"
 
-#: plugins/rdp/rdp_plugin.c:2801
+#: plugins/rdp/rdp_plugin.c:2839
 #, fuzzy
 msgid "Enable multitransport protocol (UDP)"
 msgstr "فعال کردن پروتکل چند انتقالی (UDP)"
 
-#: plugins/rdp/rdp_plugin.c:2801
+#: plugins/rdp/rdp_plugin.c:2839
 #, fuzzy
 msgid "Using the UDP protocol may improve performance"
 msgstr "استفاده از پروتکل UDP ممکن است عملکرد را بهبود بخشد"
 
-#: plugins/rdp/rdp_plugin.c:2802
+#: plugins/rdp/rdp_plugin.c:2840
 #, fuzzy
 msgid "Use base credentials for gateway too"
 msgstr "استفاده از اعتبار پایه برای دروازه بیش از حد"
 
-#: plugins/rdp/rdp_plugin.c:2804
+#: plugins/rdp/rdp_plugin.c:2842
 #, fuzzy
 msgid "Enable Gateway websockets support"
 msgstr "فعال کردن پشتیبانی از دروازه websockets"
 
-#: plugins/rdp/rdp_plugin.c:2817 plugins/spice/spice_plugin.c:715
+#: plugins/rdp/rdp_plugin.c:2855 plugins/spice/spice_plugin.c:715
 #: plugins/vnc/vnc_plugin.c:2052
 #, fuzzy
 msgid "Send Ctrl+Alt+Delete"
 msgstr "ارسال Ctrl+Alt+Delete"
 
-#: plugins/rdp/rdp_plugin.c:2830
+#: plugins/rdp/rdp_plugin.c:2868
 #, fuzzy
 msgid "RDP - Remote Desktop Protocol"
 msgstr "RDP - پروتکل دسکتاپ از راه دور"
 
-#: plugins/rdp/rdp_plugin.c:2855
+#: plugins/rdp/rdp_plugin.c:2893
 #, fuzzy
 msgid "RDP - RDP File Handler"
 msgstr "RDP - کنترل کننده فایل RDP"
 
-#: plugins/rdp/rdp_plugin.c:2870
+#: plugins/rdp/rdp_plugin.c:2908
 #, fuzzy
 msgid "RDP - Preferences"
 msgstr "RDP - ترجیحات"
 
-#: plugins/rdp/rdp_plugin.c:2923
+#: plugins/rdp/rdp_plugin.c:2961
 #, fuzzy
 msgid "Export connection in Windows .rdp file format"
 msgstr "اتصال صادرات در ویندوز .rdp فرمت فایل"
@@ -3511,7 +3512,8 @@ msgstr "جلسه از سر گرفتن: '%s'"
 #: plugins/x2go/x2go_plugin.c:1586
 #, fuzzy
 msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
-msgstr "PyHoca-CLI به طور غیر منتظره ای خارج شد. این اتصال اکنون بسته خواهد شد."
+msgstr ""
+"PyHoca-CLI به طور غیر منتظره ای خارج شد. این اتصال اکنون بسته خواهد شد."
 
 #: plugins/x2go/x2go_plugin.c:1595
 #, fuzzy
@@ -3632,7 +3634,8 @@ msgstr "از سر گرفتن جلسه '%s'…"
 #: plugins/x2go/x2go_plugin.c:2354
 #, fuzzy
 msgid "DPI setting is out of bounds. Please adjust it in profile settings."
-msgstr "تنظیم DPI خارج از محدوده است. لطفا آن را در تنظیمات پروفایل تنظیم کنید."
+msgstr ""
+"تنظیم DPI خارج از محدوده است. لطفا آن را در تنظیمات پروفایل تنظیم کنید."
 
 #: plugins/x2go/x2go_plugin.c:2396
 #, fuzzy
@@ -4082,8 +4085,8 @@ msgstr ""
 "<big> <b> Remmina بسته ضربه محکم و ناگهانی</b></big>\n"
 "\n"
 "<span>\n"
-"Remmina در حال اجرا بر روی سیستم خود را به عنوان یک بسته ضربه محکم و ناگهانی."
-"\n"
+"Remmina در حال اجرا بر روی سیستم خود را به عنوان یک بسته ضربه محکم و "
+"ناگهانی.\n"
 "برخی از توابع Remmina نیاز به راه اندازی به درستی کار می کنند.\n"
 "</span>\n"
 
@@ -4321,8 +4324,8 @@ msgid ""
 "Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
 "\">remmina.org</a> (*)"
 msgstr ""
-"واکشی اخبار از <a href=\"https://remmina.org\" title=\"Remmina news site\""
-">remmina.org</a> (*)"
+"واکشی اخبار از <a href=\"https://remmina.org\" title=\"Remmina news site"
+"\">remmina.org</a> (*)"
 
 #: data/ui/remmina_news.glade:169
 msgid "Receives updated news from remmina.org"
@@ -4352,8 +4355,8 @@ msgid ""
 "</span>\n"
 msgstr ""
 "<span>\n"
-"<b> شما قدردانی ما را در انتخاب نرم افزار لیبر copylefted، <a href=\"https"
-"://remmina.org/donations/\" title=\"Where’s the money, Lebowski? "
+"<b> شما قدردانی ما را در انتخاب نرم افزار لیبر copylefted، <a href=\"https://"
+"remmina.org/donations/\" title=\"Where’s the money, Lebowski? "
 "“blblblblblb”\">کمک های مالی نیز ما را خوشحال</a>، و کمک بیشتر به بهبود "
 "Remmina. </b>\n"
 "</span>\n"

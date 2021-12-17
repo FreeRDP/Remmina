@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-12-16 23:08+0000\n"
+"POT-Creation-Date: 2021-12-17 15:48+0000\n"
 "PO-Revision-Date: 2021-12-17 08:53+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
@@ -25,7 +25,7 @@ msgstr ""
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:354
 #: src/remmina_protocol_widget.c:1677 src/remmina_protocol_widget.c:1696
 #: src/remmina_file_editor.c:1101 src/remmina_file_editor.c:1222
-#: src/remmina_ssh_plugin.c:1361 plugins/rdp/rdp_plugin.c:2723
+#: src/remmina_ssh_plugin.c:1361 plugins/rdp/rdp_plugin.c:2760
 #: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:3198
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1646
 #: data/ui/remmina_unlock.glade:116
@@ -78,7 +78,7 @@ msgstr "從新的終端機以 SSH 連接"
 
 #: src/remmina_sftp_plugin.c:353 src/remmina_message_panel.c:330
 #: src/remmina_file_editor.c:1216 src/remmina_ssh_plugin.c:1471
-#: plugins/rdp/rdp_plugin.c:2722 plugins/vnc/vnc_plugin.c:1997
+#: plugins/rdp/rdp_plugin.c:2759 plugins/vnc/vnc_plugin.c:1997
 #: plugins/vnc/vnc_plugin.c:2009 plugins/www/www_plugin.c:894
 #: plugins/x2go/x2go_plugin.c:475 plugins/x2go/x2go_plugin.c:3197
 #: data/ui/remmina_mpc.glade:144
@@ -159,34 +159,34 @@ msgstr "偏好設定"
 msgid "Secret"
 msgstr "密碼"
 
-#: src/remmina_plugin_manager.c:461 data/ui/remmina_main.glade:305
+#: src/remmina_plugin_manager.c:462 data/ui/remmina_main.glade:305
 #, fuzzy
 msgid "Plugins"
 msgstr "模組"
 
-#: src/remmina_plugin_manager.c:461 src/remmina_message_panel.c:452
+#: src/remmina_plugin_manager.c:462 src/remmina_message_panel.c:452
 #: src/remmina_message_panel.c:621 src/remmina_file_editor.c:242
 #, fuzzy
 msgid "_OK"
 msgstr "確定"
 
-#: src/remmina_plugin_manager.c:479 src/remmina_file_editor.c:1908
+#: src/remmina_plugin_manager.c:480 src/remmina_file_editor.c:1908
 #: data/ui/remmina_main.glade:442
 #, fuzzy
 msgid "Name"
 msgstr "名稱"
 
-#: src/remmina_plugin_manager.c:485
+#: src/remmina_plugin_manager.c:486
 #, fuzzy
 msgid "Type"
 msgstr "類型"
 
-#: src/remmina_plugin_manager.c:491
+#: src/remmina_plugin_manager.c:492
 #, fuzzy
 msgid "Description"
 msgstr "描述"
 
-#: src/remmina_plugin_manager.c:497
+#: src/remmina_plugin_manager.c:498
 #, fuzzy
 msgid "Version"
 msgstr "版本"
@@ -293,7 +293,9 @@ msgid ""
 "This file contains the “Custom” terminal colour scheme selectable from the "
 "“Advanced” tab of terminal connections and editable in the “Terminal” tab in "
 "the settings."
-msgstr "该文件包含 \"自定义 \"终端颜色方案，可从终端连接的 \"高级 \"选项卡中选择，并可在设置的 \"终端 \"选项卡中编辑。"
+msgstr ""
+"该文件包含 \"自定义 \"终端颜色方案，可从终端连接的 \"高级 \"选项卡中选择，并"
+"可在设置的 \"终端 \"选项卡中编辑。"
 
 #: src/remmina_message_panel.c:163 data/ui/remmina_mpc.glade:46
 #: data/ui/remmina_unlock.glade:46
@@ -319,7 +321,7 @@ msgstr "是"
 msgid "No"
 msgstr "否"
 
-#: src/remmina_message_panel.c:391 plugins/rdp/rdp_plugin.c:2724
+#: src/remmina_message_panel.c:391 plugins/rdp/rdp_plugin.c:2761
 #: data/ui/remmina_mpc.glade:172
 #, fuzzy
 msgid "Domain"
@@ -756,9 +758,9 @@ msgstr ""
 "\n"
 "要更新用户名和密码，并设置Remmina连接配置文件的不同解析模式，请使用。\n"
 "\n"
-"\techo \"username\\n"
-"apassword\" | remmina --update-profile /PATH/TO/FOO.remmina --set-option "
-"username --set-option resolution_mode=2 --set-option password\n"
+"\techo \"username\\napassword\" | remmina --update-profile /PATH/TO/FOO."
+"remmina --set-option username --set-option resolution_mode=2 --set-option "
+"password\n"
 
 #: src/remmina_public.c:345
 #, fuzzy, c-format
@@ -846,7 +848,7 @@ msgstr "向上"
 msgid "Go to parent folder"
 msgstr "跳到上一層目錄"
 
-#: src/remmina_ftp_client.c:758 plugins/rdp/rdp_plugin.c:2813
+#: src/remmina_ftp_client.c:758 plugins/rdp/rdp_plugin.c:2851
 #: plugins/vnc/vnc_plugin.c:2050
 #, fuzzy
 msgid "Refresh"
@@ -903,12 +905,12 @@ msgstr "組合"
 msgid "Permission"
 msgstr "權限"
 
-#: src/remmina_ftp_client.c:990 plugins/rdp/rdp_plugin.c:2611
+#: src/remmina_ftp_client.c:990 plugins/rdp/rdp_plugin.c:2648
 #, fuzzy
 msgid "Remote"
 msgstr "遠端"
 
-#: src/remmina_ftp_client.c:997 plugins/rdp/rdp_plugin.c:2610
+#: src/remmina_ftp_client.c:997 plugins/rdp/rdp_plugin.c:2647
 #, fuzzy
 msgid "Local"
 msgstr "本地料理"
@@ -1659,7 +1661,7 @@ msgstr "透過 loopback 位址穿隧"
 msgid "Same server at port %i"
 msgstr "相同伺服器上的 %i 連接埠"
 
-#: src/remmina_file_editor.c:1193 plugins/rdp/rdp_plugin.c:2767
+#: src/remmina_file_editor.c:1193 plugins/rdp/rdp_plugin.c:2805
 msgid "Start-up path"
 msgstr "啟動路徑"
 
@@ -1706,7 +1708,8 @@ msgid ""
 "(%s: %i): Can't validate user input since 'setting_name_to_validate', "
 "'value' or 'gfe' are NULL!"
 msgstr ""
-"([x1x]: [x5x])。由于'setting_name_to_validate'、'value'或'gfe'为空，所以无法验证用户的输入!"
+"([x1x]: [x5x])。由于'setting_name_to_validate'、'value'或'gfe'为空，所以无法"
+"验证用户的输入!"
 
 #. TRANSLATORS: Meta-error. Shouldn't be visible.
 #: src/remmina_file_editor.c:1445 plugins/x2go/x2go_plugin.c:2394
@@ -2093,25 +2096,25 @@ msgstr "<未設定>"
 msgid "<Choose a quality level to edit…>"
 msgstr "<選擇一個品質等級來編輯…>"
 
-#: plugins/rdp/rdp_settings.c:282 plugins/rdp/rdp_plugin.c:2585
+#: plugins/rdp/rdp_settings.c:282 plugins/rdp/rdp_plugin.c:2622
 #: plugins/vnc/vnc_plugin.c:1947
 #, fuzzy
 msgid "Poor (fastest)"
 msgstr "差（最快）"
 
-#: plugins/rdp/rdp_settings.c:284 plugins/rdp/rdp_plugin.c:2586
+#: plugins/rdp/rdp_settings.c:284 plugins/rdp/rdp_plugin.c:2623
 #: plugins/vnc/vnc_plugin.c:1946
 #, fuzzy
 msgid "Medium"
 msgstr "中等"
 
-#: plugins/rdp/rdp_settings.c:286 plugins/rdp/rdp_plugin.c:2587
+#: plugins/rdp/rdp_settings.c:286 plugins/rdp/rdp_plugin.c:2624
 #: plugins/vnc/vnc_plugin.c:1944
 #, fuzzy
 msgid "Good"
 msgstr "良好"
 
-#: plugins/rdp/rdp_settings.c:288 plugins/rdp/rdp_plugin.c:2588
+#: plugins/rdp/rdp_settings.c:288 plugins/rdp/rdp_plugin.c:2625
 #: plugins/vnc/vnc_plugin.c:1945
 #, fuzzy
 msgid "Best (slowest)"
@@ -2136,7 +2139,8 @@ msgstr "键盘扫描码重映射"
 #: plugins/rdp/rdp_settings.c:483
 #, fuzzy
 msgid "List of key=value,… pairs to remap scancodes. E.g. 0x56=0x29,0x29=0x56"
-msgstr "列表中的key=value,......对可以重新映射scancodes。例如：0x56=0x29,0x29=0x56"
+msgstr ""
+"列表中的key=value,......对可以重新映射scancodes。例如：0x56=0x29,0x29=0x56"
 
 #: plugins/rdp/rdp_settings.c:486
 #, fuzzy
@@ -2214,7 +2218,7 @@ msgstr "桌面方向"
 msgid "Input device settings"
 msgstr "输入设备设置"
 
-#: plugins/rdp/rdp_settings.c:658 plugins/rdp/rdp_plugin.c:2729
+#: plugins/rdp/rdp_settings.c:658 plugins/rdp/rdp_plugin.c:2766
 #: plugins/vnc/vnc_plugin.c:2030
 #, fuzzy
 #| msgid "Turn on smooth scrolling"
@@ -2227,29 +2231,29 @@ msgstr "禁用平滑滚动"
 msgid "General settings"
 msgstr "一般設定"
 
-#: plugins/rdp/rdp_settings.c:676 plugins/rdp/rdp_plugin.c:2781
+#: plugins/rdp/rdp_settings.c:676 plugins/rdp/rdp_plugin.c:2819
 #, fuzzy
 #| msgid "Reconnection attempt %d of %d…"
 msgid "Reconnect attempts number"
 msgstr "重新连接的尝试次数"
 
-#: plugins/rdp/rdp_settings.c:689 plugins/rdp/rdp_plugin.c:2781
+#: plugins/rdp/rdp_settings.c:689 plugins/rdp/rdp_plugin.c:2819
 #, fuzzy
 msgid ""
 "The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
 msgstr "在RDP断开时尝试重新连接的最大次数（默认：20次）。"
 
-#: plugins/rdp/rdp_plugin.c:769 plugins/rdp/rdp_plugin.c:834
+#: plugins/rdp/rdp_plugin.c:771 plugins/rdp/rdp_plugin.c:836
 #, fuzzy
 msgid "Enter RDP authentication credentials"
 msgstr "輸入 RDP 驗證身分資料"
 
-#: plugins/rdp/rdp_plugin.c:842
+#: plugins/rdp/rdp_plugin.c:844
 #, fuzzy
 msgid "Enter RDP gateway authentication credentials"
 msgstr "輸入 RDP 閘道驗證身分資料"
 
-#: plugins/rdp/rdp_plugin.c:2116
+#: plugins/rdp/rdp_plugin.c:2153
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2258,7 +2262,7 @@ msgstr ""
 "存取 RDP 伺服器 %s 失敗。\n"
 "帳戶被鎖。"
 
-#: plugins/rdp/rdp_plugin.c:2123
+#: plugins/rdp/rdp_plugin.c:2160
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2267,7 +2271,7 @@ msgstr ""
 "存取 RDP 伺服器 %s 失敗。\n"
 "帳戶已過期。"
 
-#: plugins/rdp/rdp_plugin.c:2130
+#: plugins/rdp/rdp_plugin.c:2167
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2276,7 +2280,7 @@ msgstr ""
 "存取 RDP 伺服器 %s 失敗。\n"
 "密碼已過期。"
 
-#: plugins/rdp/rdp_plugin.c:2137
+#: plugins/rdp/rdp_plugin.c:2174
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2285,7 +2289,7 @@ msgstr ""
 "存取 RDP 伺服器 %s 失敗。\n"
 "帳戶已停用。"
 
-#: plugins/rdp/rdp_plugin.c:2143
+#: plugins/rdp/rdp_plugin.c:2180
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2294,7 +2298,7 @@ msgstr ""
 "存取 RDP 伺服器 %s 失敗。\n"
 "使用者權限不足。"
 
-#: plugins/rdp/rdp_plugin.c:2151
+#: plugins/rdp/rdp_plugin.c:2188
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2303,7 +2307,7 @@ msgstr ""
 "存取 RDP 伺服器 %s 失敗。\n"
 "帳戶受限。"
 
-#: plugins/rdp/rdp_plugin.c:2159
+#: plugins/rdp/rdp_plugin.c:2196
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2312,25 +2316,30 @@ msgstr ""
 "存取 RDP 伺服器 %s 失敗。\n"
 "使用者在連線前必須變更密碼。"
 
-#: plugins/rdp/rdp_plugin.c:2164
+#: plugins/rdp/rdp_plugin.c:2201
 #, c-format
 msgid "Lost connection to the RDP server “%s”."
 msgstr "無法連線至 RDP 伺服器 %s。"
 
-#: plugins/rdp/rdp_plugin.c:2167
+#: plugins/rdp/rdp_plugin.c:2204
 #, c-format
 msgid "Could not find the address for the RDP server “%s”."
 msgstr "無法找到 RDP 伺服器位置 %s。"
 
-#: plugins/rdp/rdp_plugin.c:2171
-#, c-format
+#: plugins/rdp/rdp_plugin.c:2208
+#, fuzzy, c-format
+#| msgid ""
+#| "Could not connect to the RDP server “%s” via TLS. Check that client and "
+#| "server support a common TLS version."
 msgid ""
-"Could not connect to the RDP server “%s” via TLS. Check that client and "
-"server support a common TLS version."
-msgstr "連線至 RDP 伺服器 %s 發生錯誤。TLS 連線失敗。請檢查客戶端與伺服器是否支援通用的 TLS 版本。"
+"Could not connect to the RDP server “%s” via TLS. See the DEBUG traces from "
+"a terminal for more information."
+msgstr ""
+"連線至 RDP 伺服器 %s 發生錯誤。TLS 連線失敗。請檢查客戶端與伺服器是否支援通用"
+"的 TLS 版本。"
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
-#: plugins/rdp/rdp_plugin.c:2175
+#: plugins/rdp/rdp_plugin.c:2212
 #, fuzzy, c-format
 #| msgid ""
 #| "Unable to establish a connection to the RDP server “%s”. Check \"Security "
@@ -2340,28 +2349,30 @@ msgid ""
 "protocol negotiation”."
 msgstr "无法与RDP服务器\"%s\"建立连接。检查 \"安全协议协商\"。"
 
-#: plugins/rdp/rdp_plugin.c:2183
+#: plugins/rdp/rdp_plugin.c:2220
 #, c-format
 msgid "Cannot connect to the RDP server “%s”."
 msgstr "無法連線至 RDP 伺服器 %s。"
 
-#: plugins/rdp/rdp_plugin.c:2186
+#: plugins/rdp/rdp_plugin.c:2223
 msgid "Could not start libfreerdp-gdi."
 msgstr "無法啟動 pthread。"
 
-#: plugins/rdp/rdp_plugin.c:2189
+#: plugins/rdp/rdp_plugin.c:2226
 #, c-format
 msgid ""
 "You requested a H.264 GFX mode for the server “%s”, but your libfreerdp does "
 "not support H.264. Please use a non-AVC colour depth setting."
-msgstr "要求了於 %s 伺服器使用 H.264 GFX 模式，但您的 libfreerdp 並不支援 H.264。請使用非 AVC 的色彩深度設定。"
+msgstr ""
+"要求了於 %s 伺服器使用 H.264 GFX 模式，但您的 libfreerdp 並不支援 H.264。請使"
+"用非 AVC 的色彩深度設定。"
 
-#: plugins/rdp/rdp_plugin.c:2196
+#: plugins/rdp/rdp_plugin.c:2233
 #, c-format
 msgid "The “%s” server refused the connection."
 msgstr "伺服器 %s 拒絕連線。"
 
-#: plugins/rdp/rdp_plugin.c:2201
+#: plugins/rdp/rdp_plugin.c:2238
 #, fuzzy, c-format
 #| msgid ""
 #| "The Remote Desktop Gateway “%s” denied the user \"%s\\%s\" access due to "
@@ -2371,132 +2382,133 @@ msgid ""
 "policy."
 msgstr "远程桌面网关\"%s\"由于政策原因拒绝用户\"%s\\%s\"访问。"
 
-#: plugins/rdp/rdp_plugin.c:2211
+#: plugins/rdp/rdp_plugin.c:2248
 #, c-format
 msgid "Cannot connect to the “%s” RDP server."
 msgstr "無法連線至 RDP 伺服器 %s。"
 
-#: plugins/rdp/rdp_plugin.c:2554
+#: plugins/rdp/rdp_plugin.c:2591
 #, fuzzy
 msgid "Automatic (32 bpp) (Server chooses its best format)"
 msgstr "自动（32 bpp）（服务器选择其最佳格式）。"
 
-#: plugins/rdp/rdp_plugin.c:2555
+#: plugins/rdp/rdp_plugin.c:2592
 #, fuzzy
 msgid "GFX AVC444 (32 bpp)"
 msgstr "GFX AVC444 (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2556
+#: plugins/rdp/rdp_plugin.c:2593
 #, fuzzy
 msgid "GFX AVC420 (32 bpp)"
 msgstr "GFX AVC420 (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2557
+#: plugins/rdp/rdp_plugin.c:2594
 #, fuzzy
 msgid "GFX RFX (32 bpp)"
 msgstr "GFX RFX (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2558
+#: plugins/rdp/rdp_plugin.c:2595
 msgid "GFX RFX Progressive (32 bpp)"
 msgstr "GFX RFX (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2559
+#: plugins/rdp/rdp_plugin.c:2596
 #, fuzzy
 msgid "RemoteFX (32 bpp)"
 msgstr "RemoteFX (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2560 plugins/vnc/vnc_plugin.c:1935
+#: plugins/rdp/rdp_plugin.c:2597 plugins/vnc/vnc_plugin.c:1935
 msgid "True colour (32 bpp)"
 msgstr "真彩 (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2561
+#: plugins/rdp/rdp_plugin.c:2598
 msgid "True colour (24 bpp)"
 msgstr "真彩 (24 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2562 plugins/vnc/vnc_plugin.c:1936
+#: plugins/rdp/rdp_plugin.c:2599 plugins/vnc/vnc_plugin.c:1936
 msgid "High colour (16 bpp)"
 msgstr "高彩 (16bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2563
+#: plugins/rdp/rdp_plugin.c:2600
 msgid "High colour (15 bpp)"
 msgstr "高彩 (15 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2564 plugins/vnc/vnc_plugin.c:1937
+#: plugins/rdp/rdp_plugin.c:2601 plugins/vnc/vnc_plugin.c:1937
 msgid "256 colours (8 bpp)"
 msgstr "256 色 (8 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2595 data/ui/remmina_preferences.glade:612
+#: plugins/rdp/rdp_plugin.c:2632 data/ui/remmina_preferences.glade:612
 #, fuzzy
 msgid "None"
 msgstr "無"
 
-#: plugins/rdp/rdp_plugin.c:2596
+#: plugins/rdp/rdp_plugin.c:2633
 msgid "Auto-detect"
 msgstr "<自動偵測>"
 
-#: plugins/rdp/rdp_plugin.c:2597
+#: plugins/rdp/rdp_plugin.c:2634
 #, fuzzy
 msgid "Modem"
 msgstr "调制解调器"
 
-#: plugins/rdp/rdp_plugin.c:2598
+#: plugins/rdp/rdp_plugin.c:2635
 #, fuzzy
 msgid "Low performance broadband"
 msgstr "性能低下的宽带"
 
-#: plugins/rdp/rdp_plugin.c:2599
+#: plugins/rdp/rdp_plugin.c:2636
 #, fuzzy
 msgid "Satellite"
 msgstr "卫星"
 
-#: plugins/rdp/rdp_plugin.c:2600
+#: plugins/rdp/rdp_plugin.c:2637
 #, fuzzy
 msgid "High performance broadband"
 msgstr "高性能的宽频"
 
-#: plugins/rdp/rdp_plugin.c:2601
+#: plugins/rdp/rdp_plugin.c:2638
 #, fuzzy
 msgid "WAN"
 msgstr "广域网"
 
-#: plugins/rdp/rdp_plugin.c:2602
+#: plugins/rdp/rdp_plugin.c:2639
 #, fuzzy
 msgid "LAN"
 msgstr "區域網路"
 
-#: plugins/rdp/rdp_plugin.c:2609 plugins/spice/spice_plugin.c:635
+#: plugins/rdp/rdp_plugin.c:2646 plugins/spice/spice_plugin.c:635
 #: data/ui/remmina_preferences.glade:648
 #, fuzzy
 msgid "Off"
 msgstr "關閉"
 
-#: plugins/rdp/rdp_plugin.c:2618
+#: plugins/rdp/rdp_plugin.c:2655
 msgid "Automatic negotiation"
 msgstr "自動鎖定間隔"
 
-#: plugins/rdp/rdp_plugin.c:2619
+#: plugins/rdp/rdp_plugin.c:2656
 msgid "NLA protocol security"
 msgstr "以協定分頁"
 
-#: plugins/rdp/rdp_plugin.c:2620
+#: plugins/rdp/rdp_plugin.c:2657
 msgid "TLS protocol security"
 msgstr "以協定分頁"
 
-#: plugins/rdp/rdp_plugin.c:2621
+#: plugins/rdp/rdp_plugin.c:2658
 msgid "RDP protocol security"
 msgstr "以協定分頁"
 
-#: plugins/rdp/rdp_plugin.c:2622
+#: plugins/rdp/rdp_plugin.c:2659
 #, fuzzy
 msgid "NLA extended protocol security"
 msgstr "NLA扩展协议安全"
 
-#: plugins/rdp/rdp_plugin.c:2635
+#: plugins/rdp/rdp_plugin.c:2672
 #, fuzzy
 msgid "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 and newer)"
-msgstr "2600（Windows XP），7601（Windows Vista/7），9600（Windows 8和更新版本）。"
+msgstr ""
+"2600（Windows XP），7601（Windows Vista/7），9600（Windows 8和更新版本）。"
 
-#: plugins/rdp/rdp_plugin.c:2638
+#: plugins/rdp/rdp_plugin.c:2675
 #, fuzzy
 msgid ""
 "Used i.a. by terminal services in a smart card channel to distinguish client "
@@ -2514,7 +2526,7 @@ msgstr ""
 "  - >= 7065:Windows 8和更新版本。SCardGetReaderIcon()。\n"
 "    SCardGetDeviceTypeId()"
 
-#: plugins/rdp/rdp_plugin.c:2646
+#: plugins/rdp/rdp_plugin.c:2683
 #, fuzzy
 msgid ""
 "Options for redirection of audio input:\n"
@@ -2533,7 +2545,7 @@ msgstr ""
 "  - sys:os,dev:1,format:1\n"
 "  - 系统:Alsa"
 
-#: plugins/rdp/rdp_plugin.c:2655
+#: plugins/rdp/rdp_plugin.c:2692
 #, fuzzy
 msgid ""
 "Options for redirection of audio output:\n"
@@ -2552,7 +2564,7 @@ msgstr ""
 "  - sys:oss,dev:1,format:1\n"
 "  - sys:alsa"
 
-#: plugins/rdp/rdp_plugin.c:2665
+#: plugins/rdp/rdp_plugin.c:2702
 #, fuzzy
 msgid ""
 "Options for redirection of USB device:\n"
@@ -2565,7 +2577,7 @@ msgstr ""
 "  - 自动\n"
 "  • id:054c:0268#4669:6e6b,addr:04:0c"
 
-#: plugins/rdp/rdp_plugin.c:2671
+#: plugins/rdp/rdp_plugin.c:2708
 #, fuzzy
 msgid ""
 "Advanced setting for high latency links:\n"
@@ -2576,7 +2588,7 @@ msgstr ""
 "调整连接超时。如果你的连接超时就使用。\n"
 "可能的最高值是600000毫秒（10分钟）。\n"
 
-#: plugins/rdp/rdp_plugin.c:2676
+#: plugins/rdp/rdp_plugin.c:2713
 #, fuzzy
 msgid ""
 "Performance optimisations based on the network connection type:\n"
@@ -2587,7 +2599,7 @@ msgstr ""
 "建议使用自动侦测。\n"
 "如果 \"自动检测 \"失败，请在列表中选择最合适的选项。\n"
 
-#: plugins/rdp/rdp_plugin.c:2681
+#: plugins/rdp/rdp_plugin.c:2718
 #, fuzzy
 msgid ""
 "Comma-separated list of monitor IDs and desktop orientations:\n"
@@ -2612,7 +2624,7 @@ msgstr ""
 "  - 270 (纵向翻转)\n"
 "\n"
 
-#: plugins/rdp/rdp_plugin.c:2693
+#: plugins/rdp/rdp_plugin.c:2730
 #, fuzzy
 msgid ""
 "Redirect directory <path> as named share <name>.\n"
@@ -2633,376 +2645,376 @@ msgstr ""
 "  - hotplug,*\n"
 "\n"
 
-#: plugins/rdp/rdp_plugin.c:2725 plugins/spice/spice_plugin.c:677
+#: plugins/rdp/rdp_plugin.c:2762 plugins/spice/spice_plugin.c:677
 #, fuzzy
 msgid "Share folder"
 msgstr "共享資料夾"
 
-#: plugins/rdp/rdp_plugin.c:2725
+#: plugins/rdp/rdp_plugin.c:2762
 #, fuzzy
 msgid "Use “Redirect directory” in the advanced tab for multiple directories"
 msgstr "对多个目录使用高级标签中的 \"重定向目录\"。"
 
-#: plugins/rdp/rdp_plugin.c:2726
+#: plugins/rdp/rdp_plugin.c:2763
 #, fuzzy
 msgid "Restricted admin mode"
 msgstr "限制性管理模式"
 
-#: plugins/rdp/rdp_plugin.c:2727
+#: plugins/rdp/rdp_plugin.c:2764
 #, fuzzy
 #| msgid "Password"
 msgid "Password hash"
 msgstr "密码哈希值"
 
-#: plugins/rdp/rdp_plugin.c:2727
+#: plugins/rdp/rdp_plugin.c:2764
 #, fuzzy
 msgid "Restricted admin mode password hash"
 msgstr "受限制的管理模式密码哈希"
 
-#: plugins/rdp/rdp_plugin.c:2728
+#: plugins/rdp/rdp_plugin.c:2765
 #, fuzzy
 msgid "Left-handed mouse support"
 msgstr "支持左手操作的鼠标"
 
-#: plugins/rdp/rdp_plugin.c:2728
+#: plugins/rdp/rdp_plugin.c:2765
 #, fuzzy
 msgid "Swap left and right mouse buttons for left-handed mouse support"
 msgstr "交换鼠标的左右按钮，以支持左手操作鼠标"
 
-#: plugins/rdp/rdp_plugin.c:2730
+#: plugins/rdp/rdp_plugin.c:2767
 #, fuzzy
 msgid "Enable multi monitor"
 msgstr "启用多显示器"
 
-#: plugins/rdp/rdp_plugin.c:2731
+#: plugins/rdp/rdp_plugin.c:2768
 #, fuzzy
 msgid "Span screen over multiple monitors"
 msgstr "在多个显示器上跨越屏幕"
 
-#: plugins/rdp/rdp_plugin.c:2732
+#: plugins/rdp/rdp_plugin.c:2769
 #, fuzzy
 #| msgid "Listen on port"
 msgid "List monitor IDs"
 msgstr "列出显示器的ID"
 
-#: plugins/rdp/rdp_plugin.c:2734 plugins/vnc/vnc_plugin.c:1999
+#: plugins/rdp/rdp_plugin.c:2771 plugins/vnc/vnc_plugin.c:1999
 #: plugins/vnc/vnc_plugin.c:2011 plugins/gvnc/gvnc_plugin.c:849
 msgid "Colour depth"
 msgstr "色彩深度"
 
-#: plugins/rdp/rdp_plugin.c:2735
+#: plugins/rdp/rdp_plugin.c:2772
 msgid "Network connection type"
 msgstr "建立新的連線設定檔"
 
-#: plugins/rdp/rdp_plugin.c:2750 plugins/vnc/vnc_plugin.c:2000
+#: plugins/rdp/rdp_plugin.c:2788 plugins/vnc/vnc_plugin.c:2000
 #: plugins/vnc/vnc_plugin.c:2012
 #, fuzzy
 msgid "Quality"
 msgstr "品質"
 
-#: plugins/rdp/rdp_plugin.c:2751
+#: plugins/rdp/rdp_plugin.c:2789
 #, fuzzy
 msgid "Security protocol negotiation"
 msgstr "安全协议谈判"
 
-#: plugins/rdp/rdp_plugin.c:2752
+#: plugins/rdp/rdp_plugin.c:2790
 #, fuzzy
 msgid "Gateway transport type"
 msgstr "閘道傳輸類型"
 
-#: plugins/rdp/rdp_plugin.c:2753
+#: plugins/rdp/rdp_plugin.c:2791
 #, fuzzy
 msgid "FreeRDP log level"
 msgstr "FreeRDP 紀錄等級"
 
-#: plugins/rdp/rdp_plugin.c:2754
+#: plugins/rdp/rdp_plugin.c:2792
 msgid "FreeRDP log filters"
 msgstr "FreeRDP 紀錄等級"
 
-#: plugins/rdp/rdp_plugin.c:2754
+#: plugins/rdp/rdp_plugin.c:2792
 #, fuzzy
 msgid "tag:level[,tag:level[,…]]"
 msgstr "标签：水平[,标签：水平[,...]]"
 
-#: plugins/rdp/rdp_plugin.c:2755
+#: plugins/rdp/rdp_plugin.c:2793
 #, fuzzy
 msgid "Audio output mode"
 msgstr "音频输出模式"
 
-#: plugins/rdp/rdp_plugin.c:2756
+#: plugins/rdp/rdp_plugin.c:2794
 msgid "Redirect local audio output"
 msgstr "重新導向本地麥克風"
 
-#: plugins/rdp/rdp_plugin.c:2757
+#: plugins/rdp/rdp_plugin.c:2795
 #, fuzzy
 msgid "Redirect local microphone"
 msgstr "重新導向本地麥克風"
 
-#: plugins/rdp/rdp_plugin.c:2758
+#: plugins/rdp/rdp_plugin.c:2796
 msgid "Connection timeout in ms"
 msgstr "正連接至「%s」…"
 
-#: plugins/rdp/rdp_plugin.c:2759
+#: plugins/rdp/rdp_plugin.c:2797
 #, fuzzy
 msgid "Remote Desktop Gateway server"
 msgstr "遠端桌面閘道伺服器"
 
-#: plugins/rdp/rdp_plugin.c:2760
+#: plugins/rdp/rdp_plugin.c:2798
 #, fuzzy
 msgid "Remote Desktop Gateway username"
 msgstr "遠端桌面閘道使用者名稱"
 
-#: plugins/rdp/rdp_plugin.c:2761
+#: plugins/rdp/rdp_plugin.c:2799
 #, fuzzy
 msgid "Remote Desktop Gateway password"
 msgstr "遠端桌面閘道密碼"
 
-#: plugins/rdp/rdp_plugin.c:2762
+#: plugins/rdp/rdp_plugin.c:2800
 #, fuzzy
 msgid "Remote Desktop Gateway domain"
 msgstr "遠端桌面閘道網域"
 
-#: plugins/rdp/rdp_plugin.c:2763
+#: plugins/rdp/rdp_plugin.c:2801
 #, fuzzy
 msgid "Redirect directory"
 msgstr "重定向目录"
 
-#: plugins/rdp/rdp_plugin.c:2764
+#: plugins/rdp/rdp_plugin.c:2802
 #, fuzzy
 msgid "Client name"
 msgstr "客戶端名稱"
 
-#: plugins/rdp/rdp_plugin.c:2765
+#: plugins/rdp/rdp_plugin.c:2803
 msgid "Client build"
 msgstr "客戶端名稱"
 
-#: plugins/rdp/rdp_plugin.c:2766
+#: plugins/rdp/rdp_plugin.c:2804
 msgid "Start-up program"
 msgstr "啟動程式"
 
-#: plugins/rdp/rdp_plugin.c:2768
+#: plugins/rdp/rdp_plugin.c:2806
 #, fuzzy
 msgid "Load balance info"
 msgstr "覆載平衡資訊"
 
 #. TRANSLATORS: Do not use typographic quotation marks, these must stay as "double quote", also know as “Typewriter ("programmer's") quote, ambidextrous.”
-#: plugins/rdp/rdp_plugin.c:2770
+#: plugins/rdp/rdp_plugin.c:2808
 msgid "Override printer drivers"
 msgstr "凌駕印表機驅動程式"
 
-#: plugins/rdp/rdp_plugin.c:2770
+#: plugins/rdp/rdp_plugin.c:2808
 #, fuzzy
 msgid ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
 msgstr ""
-"\"Samsung_CLX-3300_系列\":\"Samsung CLX-3300 系列 PS\";\"Canon MF410\":\"Canon "
-"MF410 系列 UFR II\""
+"\"Samsung_CLX-3300_系列\":\"Samsung CLX-3300 系列 PS\";\"Canon MF410\":"
+"\"Canon MF410 系列 UFR II\""
 
-#: plugins/rdp/rdp_plugin.c:2771
+#: plugins/rdp/rdp_plugin.c:2809
 msgid "USB device redirection"
 msgstr "選擇要重新導向的 USB 裝置"
 
-#: plugins/rdp/rdp_plugin.c:2772
+#: plugins/rdp/rdp_plugin.c:2810
 #, fuzzy
 msgid "Local serial name"
 msgstr "本地序列埠名稱"
 
-#: plugins/rdp/rdp_plugin.c:2772
+#: plugins/rdp/rdp_plugin.c:2810
 #, fuzzy
 msgid "COM1, COM2, etc."
 msgstr "COM1、COM2 等等"
 
-#: plugins/rdp/rdp_plugin.c:2773
+#: plugins/rdp/rdp_plugin.c:2811
 #, fuzzy
 msgid "Local serial driver"
 msgstr "本地序列埠驅動程式"
 
-#: plugins/rdp/rdp_plugin.c:2773
+#: plugins/rdp/rdp_plugin.c:2811
 #, fuzzy
 msgid "Serial"
 msgstr "串列"
 
-#: plugins/rdp/rdp_plugin.c:2774
+#: plugins/rdp/rdp_plugin.c:2812
 #, fuzzy
 msgid "Local serial path"
 msgstr "本地序列埠路徑"
 
-#: plugins/rdp/rdp_plugin.c:2774
+#: plugins/rdp/rdp_plugin.c:2812
 #, fuzzy
 msgid "/dev/ttyS0, /dev/ttyS1, etc."
 msgstr "/dev/ttyS0、/dev/ttyS1 等等"
 
-#: plugins/rdp/rdp_plugin.c:2775
+#: plugins/rdp/rdp_plugin.c:2813
 #, fuzzy
 msgid "Local parallel name"
 msgstr "本地平行埠名稱"
 
-#: plugins/rdp/rdp_plugin.c:2776
+#: plugins/rdp/rdp_plugin.c:2814
 #, fuzzy
 msgid "Local parallel device"
 msgstr "本地平行埠裝置"
 
-#: plugins/rdp/rdp_plugin.c:2777
+#: plugins/rdp/rdp_plugin.c:2815
 msgid "Name of smart card"
 msgstr "共享 smartcard"
 
-#: plugins/rdp/rdp_plugin.c:2778
+#: plugins/rdp/rdp_plugin.c:2816
 #, fuzzy
 msgid "Dynamic virtual channel"
 msgstr "动态虚拟通道"
 
-#: plugins/rdp/rdp_plugin.c:2778 plugins/rdp/rdp_plugin.c:2779
+#: plugins/rdp/rdp_plugin.c:2816 plugins/rdp/rdp_plugin.c:2817
 #, fuzzy
 msgid "<channel>[,<options>]"
 msgstr "<通道>[,<选项>]"
 
-#: plugins/rdp/rdp_plugin.c:2779
+#: plugins/rdp/rdp_plugin.c:2817
 #, fuzzy
 msgid "Static virtual channel"
 msgstr "静态虚拟通道"
 
-#: plugins/rdp/rdp_plugin.c:2780
+#: plugins/rdp/rdp_plugin.c:2818
 #, fuzzy
 #| msgid "USB redirection error"
 msgid "TCP redirection"
 msgstr "TCP重定向"
 
-#: plugins/rdp/rdp_plugin.c:2780
+#: plugins/rdp/rdp_plugin.c:2818
 #, fuzzy
 msgid "/PATH/TO/rdp2tcp"
 msgstr "/PATH/TO/rdp2tcp"
 
-#: plugins/rdp/rdp_plugin.c:2782
+#: plugins/rdp/rdp_plugin.c:2820
 #, fuzzy
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
 msgstr "优先选择IPv6 AAAA记录而不是IPv4 A记录"
 
-#: plugins/rdp/rdp_plugin.c:2783
+#: plugins/rdp/rdp_plugin.c:2821
 #, fuzzy
 msgid "Share printers"
 msgstr "共享印表機"
 
-#: plugins/rdp/rdp_plugin.c:2784
+#: plugins/rdp/rdp_plugin.c:2822
 #, fuzzy
 msgid "Share serial ports"
 msgstr "共享序列埠"
 
-#: plugins/rdp/rdp_plugin.c:2785
+#: plugins/rdp/rdp_plugin.c:2823
 #, fuzzy
 msgid "(SELinux) permissive mode for serial ports"
 msgstr "(SELinux) 串行端口的允许模式"
 
-#: plugins/rdp/rdp_plugin.c:2786
+#: plugins/rdp/rdp_plugin.c:2824
 #, fuzzy
 msgid "Share parallel ports"
 msgstr "共享並列埠"
 
-#: plugins/rdp/rdp_plugin.c:2787
+#: plugins/rdp/rdp_plugin.c:2825
 msgid "Share a smart card"
 msgstr "共享 smartcard"
 
-#: plugins/rdp/rdp_plugin.c:2788 plugins/vnc/vnc_plugin.c:2035
+#: plugins/rdp/rdp_plugin.c:2826 plugins/vnc/vnc_plugin.c:2035
 #, fuzzy
 msgid "Turn off clipboard sync"
 msgstr "關閉剪貼簿同步"
 
-#: plugins/rdp/rdp_plugin.c:2789
+#: plugins/rdp/rdp_plugin.c:2827
 #, fuzzy
 msgid "Ignore certificate"
 msgstr "忽略憑證"
 
-#: plugins/rdp/rdp_plugin.c:2790
+#: plugins/rdp/rdp_plugin.c:2828
 #, fuzzy
 msgid "Use the old license workflow"
 msgstr "使用旧的许可证工作流程"
 
-#: plugins/rdp/rdp_plugin.c:2790
+#: plugins/rdp/rdp_plugin.c:2828
 #, fuzzy
 msgid "It disables CAL and hwId is set to 0"
 msgstr "它禁用了CAL，hwId被设置为0"
 
-#: plugins/rdp/rdp_plugin.c:2791 plugins/spice/spice_plugin.c:702
+#: plugins/rdp/rdp_plugin.c:2829 plugins/spice/spice_plugin.c:702
 #: plugins/vnc/vnc_plugin.c:2031 plugins/www/www_plugin.c:919
 #: plugins/gvnc/gvnc_plugin.c:867
 msgid "Forget passwords after use"
 msgstr "不要記住密碼"
 
-#: plugins/rdp/rdp_plugin.c:2792
+#: plugins/rdp/rdp_plugin.c:2830
 #, fuzzy
 msgid "Attach to console (2003/2003 R2)"
 msgstr "連接至主控臺 (Windows 2003 / 2003 R2)"
 
-#: plugins/rdp/rdp_plugin.c:2793
+#: plugins/rdp/rdp_plugin.c:2831
 #, fuzzy
 msgid "Turn off fast-path"
 msgstr "關閉快速路徑(fast-path)"
 
-#: plugins/rdp/rdp_plugin.c:2794
+#: plugins/rdp/rdp_plugin.c:2832
 #, fuzzy
 msgid "Server detection using Remote Desktop Gateway"
 msgstr "使用遠端桌面閘道偵測伺服器"
 
-#: plugins/rdp/rdp_plugin.c:2796
+#: plugins/rdp/rdp_plugin.c:2834
 #, fuzzy
 msgid "Use system proxy settings"
 msgstr "使用系统代理设置"
 
-#: plugins/rdp/rdp_plugin.c:2798
+#: plugins/rdp/rdp_plugin.c:2836
 #, fuzzy
 msgid "Turn off automatic reconnection"
 msgstr "停用自動重新連線"
 
-#: plugins/rdp/rdp_plugin.c:2799
+#: plugins/rdp/rdp_plugin.c:2837
 msgid "Relax order checks"
 msgstr "Relax Order 檢查"
 
-#: plugins/rdp/rdp_plugin.c:2800
+#: plugins/rdp/rdp_plugin.c:2838
 msgid "Glyph cache"
 msgstr "字型快取"
 
-#: plugins/rdp/rdp_plugin.c:2801
+#: plugins/rdp/rdp_plugin.c:2839
 #, fuzzy
 msgid "Enable multitransport protocol (UDP)"
 msgstr "启用多传输协议（UDP）。"
 
-#: plugins/rdp/rdp_plugin.c:2801
+#: plugins/rdp/rdp_plugin.c:2839
 #, fuzzy
 msgid "Using the UDP protocol may improve performance"
 msgstr "使用UDP协议可以提高性能"
 
-#: plugins/rdp/rdp_plugin.c:2802
+#: plugins/rdp/rdp_plugin.c:2840
 #, fuzzy
 msgid "Use base credentials for gateway too"
 msgstr "对网关也使用基本凭证"
 
-#: plugins/rdp/rdp_plugin.c:2804
+#: plugins/rdp/rdp_plugin.c:2842
 #, fuzzy
 msgid "Enable Gateway websockets support"
 msgstr "启用网关websockets支持"
 
-#: plugins/rdp/rdp_plugin.c:2817 plugins/spice/spice_plugin.c:715
+#: plugins/rdp/rdp_plugin.c:2855 plugins/spice/spice_plugin.c:715
 #: plugins/vnc/vnc_plugin.c:2052
 #, fuzzy
 msgid "Send Ctrl+Alt+Delete"
 msgstr "傳送 Ctrl+Alt+Delete"
 
-#: plugins/rdp/rdp_plugin.c:2830
+#: plugins/rdp/rdp_plugin.c:2868
 #, fuzzy
 msgid "RDP - Remote Desktop Protocol"
 msgstr "RDP - 遠端桌面協定"
 
-#: plugins/rdp/rdp_plugin.c:2855
+#: plugins/rdp/rdp_plugin.c:2893
 #, fuzzy
 msgid "RDP - RDP File Handler"
 msgstr "RDP - RDP 檔案處理器"
 
-#: plugins/rdp/rdp_plugin.c:2870
+#: plugins/rdp/rdp_plugin.c:2908
 #, fuzzy
 msgid "RDP - Preferences"
 msgstr "RDP - 偏好設定"
 
-#: plugins/rdp/rdp_plugin.c:2923
+#: plugins/rdp/rdp_plugin.c:2961
 #, fuzzy
 msgid "Export connection in Windows .rdp file format"
 msgstr "以 Windows .rdp 檔案格式匯出連線"
@@ -3687,7 +3699,8 @@ msgid ""
 "errors. Also ensure the remote server is reachable."
 msgstr ""
 "必要的子进程 'pyhoca-cli' 意外停止。\n"
-"请检查你的配置文件设置和PyHoca-CLI的输出是否有错误。同时确保远程服务器是可以到达的。"
+"请检查你的配置文件设置和PyHoca-CLI的输出是否有错误。同时确保远程服务器是可以"
+"到达的。"
 
 #: plugins/x2go/x2go_plugin.c:1638
 #, fuzzy
@@ -3704,7 +3717,9 @@ msgstr "无法保存新的凭证。"
 msgid ""
 "An error occured while trying to save new credentials: 's_password' or "
 "'s_username' strings were not set."
-msgstr "在试图保存新证书时发生了一个错误：'s_password'或's_username'字符串没有被设置。"
+msgstr ""
+"在试图保存新证书时发生了一个错误：'s_password'或's_username'字符串没有被设"
+"置。"
 
 #: plugins/x2go/x2go_plugin.c:1686
 #, fuzzy
@@ -3818,7 +3833,9 @@ msgid ""
 "Couldn't get PyHoca-CLI's command-line features. This indicates it is either "
 "too old, or not installed. An old limited set of features will be used for "
 "now."
-msgstr "无法获得PyHoca-CLI的命令行功能。这表明它要么太老，要么没有安装。现在将使用一套旧的有限的功能。"
+msgstr ""
+"无法获得PyHoca-CLI的命令行功能。这表明它要么太老，要么没有安装。现在将使用一"
+"套旧的有限的功能。"
 
 #: plugins/x2go/x2go_plugin.c:2529
 #, fuzzy
@@ -4255,8 +4272,9 @@ msgid ""
 "the appropriate permissions to Remmina. As an alternative you can enter the "
 "following commands in a terminal window:"
 msgstr ""
-"似乎 Remmina 是以 SNAP 套件的方式在您的系統上運行。為了啟用一些重要的功能，像是將密碼儲存到您的鑰匙圈與 RDP "
-"印表機共享，請開啟您的「軟體中心」，並給予 Remmina 適當的權限；又或在終端機輸入以下指令："
+"似乎 Remmina 是以 SNAP 套件的方式在您的系統上運行。為了啟用一些重要的功能，像"
+"是將密碼儲存到您的鑰匙圈與 RDP 印表機共享，請開啟您的「軟體中心」，並給予 "
+"Remmina 適當的權限；又或在終端機輸入以下指令："
 
 #: data/ui/remmina_snap_info_dialog.glade:167
 #, fuzzy
@@ -4270,7 +4288,8 @@ msgid ""
 "profiles are saved inside the Snap file system by default. You can change "
 "the location in the Remmina preferences."
 msgstr ""
-"由于Snap软件包的运行与系统的其他部分相分离，Remmina配置文件默认保存在Snap文件系统内。你可以在Remmina首选项中改变这个位置。"
+"由于Snap软件包的运行与系统的其他部分相分离，Remmina配置文件默认保存在Snap文件"
+"系统内。你可以在Remmina首选项中改变这个位置。"
 
 #: data/ui/remmina_snap_info_dialog.glade:222
 #, fuzzy
@@ -4471,8 +4490,8 @@ msgid ""
 "Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
 "\">remmina.org</a> (*)"
 msgstr ""
-"从<a href=\"https://remmina.org\" title=\"Remmina news site\">remmina.org</"
-"a>获取新闻 (*)"
+"从<a href=\"https://remmina.org\" title=\"Remmina news site\">remmina.org</a>"
+"获取新闻 (*)"
 
 #: data/ui/remmina_news.glade:169
 msgid "Receives updated news from remmina.org"
@@ -4498,8 +4517,9 @@ msgid ""
 "</span>\n"
 msgstr ""
 "<span>\n"
-"<b>Remmina 是由無畏的貢獻者們在他們的閒暇時間所開發的，加入勇者們的行列，<a href=\"https://remmina.org/"
-"donations/\" title=\"贊助 Remmina\">贊助我們的英雄們！</a></b>\n"
+"<b>Remmina 是由無畏的貢獻者們在他們的閒暇時間所開發的，加入勇者們的行列，<a "
+"href=\"https://remmina.org/donations/\" title=\"贊助 Remmina\">贊助我們的英雄"
+"們！</a></b>\n"
 "</span>\n"
 
 #: data/ui/remmina_news.glade:251
@@ -5050,7 +5070,9 @@ msgstr "丟棄連線之前 TCP 應發送的 keepalive probes 數量。"
 msgid ""
 "Amount of milliseconds to attempt acknowledging data before closing the "
 "corresponding TCP connection forcibly."
-msgstr "它指定在 TCP 強制關閉相應連線之前，傳輸數據可能保持未確認狀態的最長時間（毫秒）。"
+msgstr ""
+"它指定在 TCP 強制關閉相應連線之前，傳輸數據可能保持未確認狀態的最長時間（毫"
+"秒）。"
 
 #: data/ui/remmina_preferences.glade:1588
 #, fuzzy
@@ -5137,7 +5159,8 @@ msgstr "使用系統預設字型"
 msgid ""
 "Selecting “SGR 1” also switches to the bright counterparts of the first 8 "
 "palette colours (in addition to making text bold)."
-msgstr "选择 \"SGR 1 \"也会切换到前8种调色板颜色的明亮对应色（除了使文字变粗之外）。"
+msgstr ""
+"选择 \"SGR 1 \"也会切换到前8种调色板颜色的明亮对应色（除了使文字变粗之外）。"
 
 #: data/ui/remmina_preferences.glade:1975
 #, fuzzy
@@ -5153,8 +5176,8 @@ msgid ""
 "Choose a colour scheme file. Usually available in /usr/share/remmina/theme. "
 "https://github.com/mbadolato/iTerm2-Color-Schemes has more details."
 msgstr ""
-"選擇配色檔。預先安裝的配色通常在 /usr/share/remmina/theme。請參閱 https://github.com/mbadolato/"
-"iTerm2-Color-Schemes"
+"選擇配色檔。預先安裝的配色通常在 /usr/share/remmina/theme。請參閱 https://"
+"github.com/mbadolato/iTerm2-Color-Schemes"
 
 #: data/ui/remmina_preferences.glade:2004
 msgid "Pick a terminal colouring file"

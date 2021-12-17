@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-12-16 23:08+0000\n"
+"POT-Creation-Date: 2021-12-17 15:48+0000\n"
 "PO-Revision-Date: 2021-12-17 08:42+0000\n"
 "Last-Translator: Martin Hristov <martinhristov000@gmail.com>\n"
 "Language-Team: Bulgarian <https://hosted.weblate.org/projects/remmina/"
@@ -26,7 +26,7 @@ msgstr ""
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:354
 #: src/remmina_protocol_widget.c:1677 src/remmina_protocol_widget.c:1696
 #: src/remmina_file_editor.c:1101 src/remmina_file_editor.c:1222
-#: src/remmina_ssh_plugin.c:1361 plugins/rdp/rdp_plugin.c:2723
+#: src/remmina_ssh_plugin.c:1361 plugins/rdp/rdp_plugin.c:2760
 #: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:3198
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1646
 #: data/ui/remmina_unlock.glade:116
@@ -80,7 +80,7 @@ msgstr "Свързване посредством SSH от нов термина
 
 #: src/remmina_sftp_plugin.c:353 src/remmina_message_panel.c:330
 #: src/remmina_file_editor.c:1216 src/remmina_ssh_plugin.c:1471
-#: plugins/rdp/rdp_plugin.c:2722 plugins/vnc/vnc_plugin.c:1997
+#: plugins/rdp/rdp_plugin.c:2759 plugins/vnc/vnc_plugin.c:1997
 #: plugins/vnc/vnc_plugin.c:2009 plugins/www/www_plugin.c:894
 #: plugins/x2go/x2go_plugin.c:475 plugins/x2go/x2go_plugin.c:3197
 #: data/ui/remmina_mpc.glade:144
@@ -162,34 +162,34 @@ msgstr "Предпочитания"
 msgid "Secret"
 msgstr "Ключ"
 
-#: src/remmina_plugin_manager.c:461 data/ui/remmina_main.glade:305
+#: src/remmina_plugin_manager.c:462 data/ui/remmina_main.glade:305
 #, fuzzy
 msgid "Plugins"
 msgstr "Приставки"
 
-#: src/remmina_plugin_manager.c:461 src/remmina_message_panel.c:452
+#: src/remmina_plugin_manager.c:462 src/remmina_message_panel.c:452
 #: src/remmina_message_panel.c:621 src/remmina_file_editor.c:242
 #, fuzzy
 msgid "_OK"
 msgstr "_OK"
 
-#: src/remmina_plugin_manager.c:479 src/remmina_file_editor.c:1908
+#: src/remmina_plugin_manager.c:480 src/remmina_file_editor.c:1908
 #: data/ui/remmina_main.glade:442
 #, fuzzy
 msgid "Name"
 msgstr "Име"
 
-#: src/remmina_plugin_manager.c:485
+#: src/remmina_plugin_manager.c:486
 #, fuzzy
 msgid "Type"
 msgstr "Вид"
 
-#: src/remmina_plugin_manager.c:491
+#: src/remmina_plugin_manager.c:492
 #, fuzzy
 msgid "Description"
 msgstr "Описание"
 
-#: src/remmina_plugin_manager.c:497
+#: src/remmina_plugin_manager.c:498
 #, fuzzy
 msgid "Version"
 msgstr "Версия"
@@ -324,7 +324,7 @@ msgstr "Yes"
 msgid "No"
 msgstr "No"
 
-#: src/remmina_message_panel.c:391 plugins/rdp/rdp_plugin.c:2724
+#: src/remmina_message_panel.c:391 plugins/rdp/rdp_plugin.c:2761
 #: data/ui/remmina_mpc.glade:172
 #, fuzzy
 msgid "Domain"
@@ -693,8 +693,8 @@ msgstr "Промяна на профил за връзка (изисква --set
 #, fuzzy
 msgid "Set one or more profile settings, to be used with --update-profile"
 msgstr ""
-"Настройване на един или повече Remmina профили, да се използва заедно с "
-"--update-profile"
+"Настройване на един или повече Remmina профили, да се използва заедно с --"
+"update-profile"
 
 #: src/remmina.c:119
 msgid "Encrypt a password"
@@ -754,8 +754,8 @@ msgid ""
 "password\n"
 msgstr ""
 "Примери:\n"
-"За да се свържете, като използвате съществуващ профил за връзка, използвайте:"
-"\n"
+"За да се свържете, като използвате съществуващ профил за връзка, "
+"използвайте:\n"
 "\n"
 "\tremmina -c FILE.remmina\n"
 "\n"
@@ -782,9 +782,9 @@ msgstr ""
 "За да актуализирате потребителското име и паролата и да зададете различен "
 "режим на разрешаване на профил за връзка с Remmina, използвайте:\n"
 "\n"
-"\techo \"username\\n"
-"apassword\" | remmina --update-profile /PATH/TO/FOO.remmina --set-option "
-"username --set-option resolution_mode=2 --set-option password\n"
+"\techo \"username\\napassword\" | remmina --update-profile /PATH/TO/FOO."
+"remmina --set-option username --set-option resolution_mode=2 --set-option "
+"password\n"
 
 #: src/remmina_public.c:345
 #, fuzzy, c-format
@@ -872,7 +872,7 @@ msgstr "Нагоре"
 msgid "Go to parent folder"
 msgstr "Отиване в родителската папка"
 
-#: src/remmina_ftp_client.c:758 plugins/rdp/rdp_plugin.c:2813
+#: src/remmina_ftp_client.c:758 plugins/rdp/rdp_plugin.c:2851
 #: plugins/vnc/vnc_plugin.c:2050
 #, fuzzy
 msgid "Refresh"
@@ -929,12 +929,12 @@ msgstr "Групи"
 msgid "Permission"
 msgstr "Право"
 
-#: src/remmina_ftp_client.c:990 plugins/rdp/rdp_plugin.c:2611
+#: src/remmina_ftp_client.c:990 plugins/rdp/rdp_plugin.c:2648
 #, fuzzy
 msgid "Remote"
 msgstr "Отдалечен"
 
-#: src/remmina_ftp_client.c:997 plugins/rdp/rdp_plugin.c:2610
+#: src/remmina_ftp_client.c:997 plugins/rdp/rdp_plugin.c:2647
 #, fuzzy
 msgid "Local"
 msgstr "Local"
@@ -1691,7 +1691,7 @@ msgstr "Тунел чрез локален адрес"
 msgid "Same server at port %i"
 msgstr "Същият сървър на порт %i"
 
-#: src/remmina_file_editor.c:1193 plugins/rdp/rdp_plugin.c:2767
+#: src/remmina_file_editor.c:1193 plugins/rdp/rdp_plugin.c:2805
 msgid "Start-up path"
 msgstr "Път за стартиране"
 
@@ -2035,8 +2035,8 @@ msgid ""
 "  • %g is substituted with Remmina profile group name\n"
 "  • %d is substituted with local date and time in ISO 8601 format\n"
 msgstr ""
-"Името на файла може да съдържа следните заместители(placeholders) на низове:"
-"\n"
+"Името на файла може да съдържа следните заместители(placeholders) на "
+"низове:\n"
 "\n"
 "  • %h се замества с името на сървъра\n"
 "  • %t се замества с името на SSH сървъра\n"
@@ -2143,25 +2143,25 @@ msgstr "<Не е зададено>"
 msgid "<Choose a quality level to edit…>"
 msgstr "<Избор на ниво на качество за редактиране...>"
 
-#: plugins/rdp/rdp_settings.c:282 plugins/rdp/rdp_plugin.c:2585
+#: plugins/rdp/rdp_settings.c:282 plugins/rdp/rdp_plugin.c:2622
 #: plugins/vnc/vnc_plugin.c:1947
 #, fuzzy
 msgid "Poor (fastest)"
 msgstr "Беден (най-бърз)"
 
-#: plugins/rdp/rdp_settings.c:284 plugins/rdp/rdp_plugin.c:2586
+#: plugins/rdp/rdp_settings.c:284 plugins/rdp/rdp_plugin.c:2623
 #: plugins/vnc/vnc_plugin.c:1946
 #, fuzzy
 msgid "Medium"
 msgstr "Обикновен"
 
-#: plugins/rdp/rdp_settings.c:286 plugins/rdp/rdp_plugin.c:2587
+#: plugins/rdp/rdp_settings.c:286 plugins/rdp/rdp_plugin.c:2624
 #: plugins/vnc/vnc_plugin.c:1944
 #, fuzzy
 msgid "Good"
 msgstr "Добро"
 
-#: plugins/rdp/rdp_settings.c:288 plugins/rdp/rdp_plugin.c:2588
+#: plugins/rdp/rdp_settings.c:288 plugins/rdp/rdp_plugin.c:2625
 #: plugins/vnc/vnc_plugin.c:1945
 #, fuzzy
 msgid "Best (slowest)"
@@ -2265,7 +2265,7 @@ msgstr "Ориентация на работния плот"
 msgid "Input device settings"
 msgstr "Настройки на входното устройство"
 
-#: plugins/rdp/rdp_settings.c:658 plugins/rdp/rdp_plugin.c:2729
+#: plugins/rdp/rdp_settings.c:658 plugins/rdp/rdp_plugin.c:2766
 #: plugins/vnc/vnc_plugin.c:2030
 #, fuzzy
 #| msgid "Turn on smooth scrolling"
@@ -2278,13 +2278,13 @@ msgstr "Деактивиране на плавното превъртане"
 msgid "General settings"
 msgstr "Общи настройки"
 
-#: plugins/rdp/rdp_settings.c:676 plugins/rdp/rdp_plugin.c:2781
+#: plugins/rdp/rdp_settings.c:676 plugins/rdp/rdp_plugin.c:2819
 #, fuzzy
 #| msgid "Reconnection attempt %d of %d…"
 msgid "Reconnect attempts number"
 msgstr "Брой опити за повторно свързване"
 
-#: plugins/rdp/rdp_settings.c:689 plugins/rdp/rdp_plugin.c:2781
+#: plugins/rdp/rdp_settings.c:689 plugins/rdp/rdp_plugin.c:2819
 #, fuzzy
 msgid ""
 "The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
@@ -2292,17 +2292,17 @@ msgstr ""
 "Максималният брой опити за повторно свързване при прекъсване на RDP (по "
 "подразбиране: 20)"
 
-#: plugins/rdp/rdp_plugin.c:769 plugins/rdp/rdp_plugin.c:834
+#: plugins/rdp/rdp_plugin.c:771 plugins/rdp/rdp_plugin.c:836
 #, fuzzy
 msgid "Enter RDP authentication credentials"
 msgstr "Въведете идентификационните данни за удостоверяване на RDP"
 
-#: plugins/rdp/rdp_plugin.c:842
+#: plugins/rdp/rdp_plugin.c:844
 #, fuzzy
 msgid "Enter RDP gateway authentication credentials"
 msgstr "Въведете идентификационните данни за удостоверяване на шлюза RDP"
 
-#: plugins/rdp/rdp_plugin.c:2116
+#: plugins/rdp/rdp_plugin.c:2153
 #, fuzzy, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2311,7 +2311,7 @@ msgstr ""
 "Не може да осъществи достъп до RDP сървъра \"%s\".\n"
 "Сметката е заключена."
 
-#: plugins/rdp/rdp_plugin.c:2123
+#: plugins/rdp/rdp_plugin.c:2160
 #, fuzzy, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2320,7 +2320,7 @@ msgstr ""
 "Не може да осъществи достъп до RDP сървъра \"%s\".\n"
 "Сметката е изтекла."
 
-#: plugins/rdp/rdp_plugin.c:2130
+#: plugins/rdp/rdp_plugin.c:2167
 #, fuzzy, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2329,7 +2329,7 @@ msgstr ""
 "Не може да осъществи достъп до RDP сървъра \"%s\".\n"
 "Паролата е с изтекъл срок."
 
-#: plugins/rdp/rdp_plugin.c:2137
+#: plugins/rdp/rdp_plugin.c:2174
 #, fuzzy, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2338,7 +2338,7 @@ msgstr ""
 "Не може да осъществи достъп до RDP сървъра \"%s\".\n"
 "Профилът е деактивиран."
 
-#: plugins/rdp/rdp_plugin.c:2143
+#: plugins/rdp/rdp_plugin.c:2180
 #, fuzzy, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2347,7 +2347,7 @@ msgstr ""
 "Не можах да осъществя достъп до RDP сървъра „%s“.\n"
 "Недостатъчни привилегии на потребителя."
 
-#: plugins/rdp/rdp_plugin.c:2151
+#: plugins/rdp/rdp_plugin.c:2188
 #, fuzzy, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2356,7 +2356,7 @@ msgstr ""
 "Не можах да осъществя достъп до RDP сървъра „%s“.\n"
 "Профилът е ограничен."
 
-#: plugins/rdp/rdp_plugin.c:2159
+#: plugins/rdp/rdp_plugin.c:2196
 #, fuzzy, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2365,27 +2365,27 @@ msgstr ""
 "Не може да осъществи достъп до RDP сървъра \"%s\".\n"
 "Променете потребителската парола, преди да се свържете."
 
-#: plugins/rdp/rdp_plugin.c:2164
+#: plugins/rdp/rdp_plugin.c:2201
 #, c-format
 msgid "Lost connection to the RDP server “%s”."
 msgstr "Неуспех при свързването към целта на SSH тунела: %s"
 
-#: plugins/rdp/rdp_plugin.c:2167
+#: plugins/rdp/rdp_plugin.c:2204
 #, c-format
 msgid "Could not find the address for the RDP server “%s”."
 msgstr "Командата %s не е открита на SSH сървъра"
 
-#: plugins/rdp/rdp_plugin.c:2171
+#: plugins/rdp/rdp_plugin.c:2208
 #, fuzzy, c-format
 msgid ""
-"Could not connect to the RDP server “%s” via TLS. Check that client and "
-"server support a common TLS version."
+"Could not connect to the RDP server “%s” via TLS. See the DEBUG traces from "
+"a terminal for more information."
 msgstr ""
 "Не може да се свърже с RDP сървъра \"%s\" чрез TLS. Проверете дали клиентът "
 "и сървърът поддържат обща версия на TLS."
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
-#: plugins/rdp/rdp_plugin.c:2175
+#: plugins/rdp/rdp_plugin.c:2212
 #, fuzzy, c-format
 #| msgid ""
 #| "Unable to establish a connection to the RDP server “%s”. Check \"Security "
@@ -2394,20 +2394,20 @@ msgid ""
 "Unable to establish a connection to the RDP server “%s”. Check “Security "
 "protocol negotiation”."
 msgstr ""
-"Невъзможно е да се установи връзка с RDP сървъра \"%s\". Проверете \"Security"
-" protocol negotiation\"."
+"Невъзможно е да се установи връзка с RDP сървъра \"%s\". Проверете "
+"\"Security protocol negotiation\"."
 
-#: plugins/rdp/rdp_plugin.c:2183
+#: plugins/rdp/rdp_plugin.c:2220
 #, c-format
 msgid "Cannot connect to the RDP server “%s”."
 msgstr "Неуспех при свързването към целта на SSH тунела: %s"
 
-#: plugins/rdp/rdp_plugin.c:2186
+#: plugins/rdp/rdp_plugin.c:2223
 #, fuzzy
 msgid "Could not start libfreerdp-gdi."
 msgstr "Не можа да стартира libfreerdp-gdi."
 
-#: plugins/rdp/rdp_plugin.c:2189
+#: plugins/rdp/rdp_plugin.c:2226
 #, fuzzy, c-format
 msgid ""
 "You requested a H.264 GFX mode for the server “%s”, but your libfreerdp does "
@@ -2417,154 +2417,154 @@ msgstr ""
 "поддържа H.264. Моля, използвайте настройка за дълбочина на цвета, различна "
 "от AVC."
 
-#: plugins/rdp/rdp_plugin.c:2196
+#: plugins/rdp/rdp_plugin.c:2233
 #, fuzzy, c-format
 msgid "The “%s” server refused the connection."
 msgstr "Сървърът \"%s\" отказа връзката."
 
-#: plugins/rdp/rdp_plugin.c:2201
+#: plugins/rdp/rdp_plugin.c:2238
 #, fuzzy, c-format
 msgid ""
 "The Remote Desktop Gateway “%s” denied the user “%s\\%s” access due to "
 "policy."
 msgstr ""
-"Шлюзът за отдалечен работен плот \"%s\" отказва достъп на потребителя \"%s\\%"
-"s\" поради политика."
+"Шлюзът за отдалечен работен плот \"%s\" отказва достъп на потребителя \"%s\\"
+"%s\" поради политика."
 
-#: plugins/rdp/rdp_plugin.c:2211
+#: plugins/rdp/rdp_plugin.c:2248
 #, c-format
 msgid "Cannot connect to the “%s” RDP server."
 msgstr "Неуспех при свързването към целта на SSH тунела: %s"
 
-#: plugins/rdp/rdp_plugin.c:2554
+#: plugins/rdp/rdp_plugin.c:2591
 #, fuzzy
 msgid "Automatic (32 bpp) (Server chooses its best format)"
 msgstr "Автоматично (32 bpp) (сървърът избира най-добрия формат)"
 
-#: plugins/rdp/rdp_plugin.c:2555
+#: plugins/rdp/rdp_plugin.c:2592
 #, fuzzy
 msgid "GFX AVC444 (32 bpp)"
 msgstr "GFX AVC444 (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2556
+#: plugins/rdp/rdp_plugin.c:2593
 #, fuzzy
 msgid "GFX AVC420 (32 bpp)"
 msgstr "GFX AVC420 (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2557
+#: plugins/rdp/rdp_plugin.c:2594
 #, fuzzy
 msgid "GFX RFX (32 bpp)"
 msgstr "GFX RFX (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2558
+#: plugins/rdp/rdp_plugin.c:2595
 #, fuzzy
 msgid "GFX RFX Progressive (32 bpp)"
 msgstr "GFX RFX Progressive (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2559
+#: plugins/rdp/rdp_plugin.c:2596
 #, fuzzy
 msgid "RemoteFX (32 bpp)"
 msgstr "RemoteFX (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2560 plugins/vnc/vnc_plugin.c:1935
+#: plugins/rdp/rdp_plugin.c:2597 plugins/vnc/vnc_plugin.c:1935
 #, fuzzy
 msgid "True colour (32 bpp)"
 msgstr "Истински цвят (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2561
+#: plugins/rdp/rdp_plugin.c:2598
 #, fuzzy
 msgid "True colour (24 bpp)"
 msgstr "Истински цвят (24 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2562 plugins/vnc/vnc_plugin.c:1936
+#: plugins/rdp/rdp_plugin.c:2599 plugins/vnc/vnc_plugin.c:1936
 #, fuzzy
 msgid "High colour (16 bpp)"
 msgstr "Висококачествен цвят (16 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2563
+#: plugins/rdp/rdp_plugin.c:2600
 #, fuzzy
 msgid "High colour (15 bpp)"
 msgstr "Висококачествен цвят (15 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2564 plugins/vnc/vnc_plugin.c:1937
+#: plugins/rdp/rdp_plugin.c:2601 plugins/vnc/vnc_plugin.c:1937
 #, fuzzy
 msgid "256 colours (8 bpp)"
 msgstr "256 цвята (8 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2595 data/ui/remmina_preferences.glade:612
+#: plugins/rdp/rdp_plugin.c:2632 data/ui/remmina_preferences.glade:612
 #, fuzzy
 msgid "None"
 msgstr "Няма"
 
-#: plugins/rdp/rdp_plugin.c:2596
+#: plugins/rdp/rdp_plugin.c:2633
 msgid "Auto-detect"
 msgstr "Автоматично стартиране"
 
-#: plugins/rdp/rdp_plugin.c:2597
+#: plugins/rdp/rdp_plugin.c:2634
 #, fuzzy
 msgid "Modem"
 msgstr "Модем"
 
-#: plugins/rdp/rdp_plugin.c:2598
+#: plugins/rdp/rdp_plugin.c:2635
 #, fuzzy
 msgid "Low performance broadband"
 msgstr "Широколентова връзка с ниска производителност"
 
-#: plugins/rdp/rdp_plugin.c:2599
+#: plugins/rdp/rdp_plugin.c:2636
 #, fuzzy
 msgid "Satellite"
 msgstr "Сателит"
 
-#: plugins/rdp/rdp_plugin.c:2600
+#: plugins/rdp/rdp_plugin.c:2637
 #, fuzzy
 msgid "High performance broadband"
 msgstr "Широколентова връзка с висока производителност"
 
-#: plugins/rdp/rdp_plugin.c:2601
+#: plugins/rdp/rdp_plugin.c:2638
 #, fuzzy
 msgid "WAN"
 msgstr "WAN"
 
-#: plugins/rdp/rdp_plugin.c:2602
+#: plugins/rdp/rdp_plugin.c:2639
 #, fuzzy
 msgid "LAN"
 msgstr "Местна мрежа"
 
-#: plugins/rdp/rdp_plugin.c:2609 plugins/spice/spice_plugin.c:635
+#: plugins/rdp/rdp_plugin.c:2646 plugins/spice/spice_plugin.c:635
 #: data/ui/remmina_preferences.glade:648
 #, fuzzy
 msgid "Off"
 msgstr "Изкл."
 
-#: plugins/rdp/rdp_plugin.c:2618
+#: plugins/rdp/rdp_plugin.c:2655
 #, fuzzy
 msgid "Automatic negotiation"
 msgstr "Автоматично договаряне"
 
-#: plugins/rdp/rdp_plugin.c:2619
+#: plugins/rdp/rdp_plugin.c:2656
 msgid "NLA protocol security"
 msgstr "Протокол"
 
-#: plugins/rdp/rdp_plugin.c:2620
+#: plugins/rdp/rdp_plugin.c:2657
 msgid "TLS protocol security"
 msgstr "Протокол"
 
-#: plugins/rdp/rdp_plugin.c:2621
+#: plugins/rdp/rdp_plugin.c:2658
 msgid "RDP protocol security"
 msgstr "Протокол"
 
-#: plugins/rdp/rdp_plugin.c:2622
+#: plugins/rdp/rdp_plugin.c:2659
 #, fuzzy
 msgid "NLA extended protocol security"
 msgstr "Разширена сигурност на протокола NLA"
 
-#: plugins/rdp/rdp_plugin.c:2635
+#: plugins/rdp/rdp_plugin.c:2672
 #, fuzzy
 msgid "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 and newer)"
 msgstr ""
 "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 и по-нови версии)"
 
-#: plugins/rdp/rdp_plugin.c:2638
+#: plugins/rdp/rdp_plugin.c:2675
 #, fuzzy
 msgid ""
 "Used i.a. by terminal services in a smart card channel to distinguish client "
@@ -2583,7 +2583,7 @@ msgstr ""
 "  - >= 7065: Windows 8 и по-нови: SCardGetReaderIcon(),\n"
 "    SCardGetDeviceTypeId()"
 
-#: plugins/rdp/rdp_plugin.c:2646
+#: plugins/rdp/rdp_plugin.c:2683
 #, fuzzy
 msgid ""
 "Options for redirection of audio input:\n"
@@ -2602,7 +2602,7 @@ msgstr ""
 "  - sys:oss,dev:1,format:1\n"
 "  - sys:alsa"
 
-#: plugins/rdp/rdp_plugin.c:2655
+#: plugins/rdp/rdp_plugin.c:2692
 #, fuzzy
 msgid ""
 "Options for redirection of audio output:\n"
@@ -2621,7 +2621,7 @@ msgstr ""
 "  - sys:oss,dev:1,format:1\n"
 "  - sys:alsa"
 
-#: plugins/rdp/rdp_plugin.c:2665
+#: plugins/rdp/rdp_plugin.c:2702
 #, fuzzy
 msgid ""
 "Options for redirection of USB device:\n"
@@ -2634,7 +2634,7 @@ msgstr ""
 "  - auto\n"
 "  • id:054c:0268#4669:6e6b,addr:04:0c"
 
-#: plugins/rdp/rdp_plugin.c:2671
+#: plugins/rdp/rdp_plugin.c:2708
 #, fuzzy
 msgid ""
 "Advanced setting for high latency links:\n"
@@ -2645,20 +2645,20 @@ msgstr ""
 "Регулира времето за свързване. Използвайте, ако връзката ви прекъсва.\n"
 "Най-високата възможна стойност е 600000 ms (10 минути).\n"
 
-#: plugins/rdp/rdp_plugin.c:2676
+#: plugins/rdp/rdp_plugin.c:2713
 #, fuzzy
 msgid ""
 "Performance optimisations based on the network connection type:\n"
 "Using auto-detection is advised.\n"
 "If “Auto-detect” fails, choose the most appropriate option in the list.\n"
 msgstr ""
-"Оптимизиране на производителността в зависимост от типа на мрежовата връзка:"
-"\n"
+"Оптимизиране на производителността в зависимост от типа на мрежовата "
+"връзка:\n"
 "Препоръчва се използването на автоматично откриване.\n"
 "Ако \"Auto-detect\" (Автоматично откриване) не успее, изберете най-"
 "подходящата опция от списъка.\n"
 
-#: plugins/rdp/rdp_plugin.c:2681
+#: plugins/rdp/rdp_plugin.c:2718
 #, fuzzy
 msgid ""
 "Comma-separated list of monitor IDs and desktop orientations:\n"
@@ -2684,7 +2684,7 @@ msgstr ""
 "  - 270 (обърнат портрет)\n"
 "\n"
 
-#: plugins/rdp/rdp_plugin.c:2693
+#: plugins/rdp/rdp_plugin.c:2730
 #, fuzzy
 msgid ""
 "Redirect directory <path> as named share <name>.\n"
@@ -2705,384 +2705,384 @@ msgstr ""
 "  - hotplug,*\n"
 "\n"
 
-#: plugins/rdp/rdp_plugin.c:2725 plugins/spice/spice_plugin.c:677
+#: plugins/rdp/rdp_plugin.c:2762 plugins/spice/spice_plugin.c:677
 #, fuzzy
 msgid "Share folder"
 msgstr "Папка за споделяне"
 
-#: plugins/rdp/rdp_plugin.c:2725
+#: plugins/rdp/rdp_plugin.c:2762
 #, fuzzy
 msgid "Use “Redirect directory” in the advanced tab for multiple directories"
 msgstr ""
 "Използвайте \"Пренасочване на директория\" в раздела за напреднали за "
 "множество директории"
 
-#: plugins/rdp/rdp_plugin.c:2726
+#: plugins/rdp/rdp_plugin.c:2763
 #, fuzzy
 msgid "Restricted admin mode"
 msgstr "Ограничен режим на администриране"
 
-#: plugins/rdp/rdp_plugin.c:2727
+#: plugins/rdp/rdp_plugin.c:2764
 #, fuzzy
 #| msgid "Password"
 msgid "Password hash"
 msgstr "Хеш парола"
 
-#: plugins/rdp/rdp_plugin.c:2727
+#: plugins/rdp/rdp_plugin.c:2764
 #, fuzzy
 msgid "Restricted admin mode password hash"
 msgstr "Хеш на паролата за режим на ограничен администратор"
 
-#: plugins/rdp/rdp_plugin.c:2728
+#: plugins/rdp/rdp_plugin.c:2765
 #, fuzzy
 msgid "Left-handed mouse support"
 msgstr "Поддръжка на мишка за лява ръка"
 
-#: plugins/rdp/rdp_plugin.c:2728
+#: plugins/rdp/rdp_plugin.c:2765
 #, fuzzy
 msgid "Swap left and right mouse buttons for left-handed mouse support"
 msgstr ""
 "Размяна на левия и десния бутон на мишката за поддръжка на мишка за левичари"
 
-#: plugins/rdp/rdp_plugin.c:2730
+#: plugins/rdp/rdp_plugin.c:2767
 #, fuzzy
 msgid "Enable multi monitor"
 msgstr "Активиране на мултимонитор"
 
-#: plugins/rdp/rdp_plugin.c:2731
+#: plugins/rdp/rdp_plugin.c:2768
 #, fuzzy
 msgid "Span screen over multiple monitors"
 msgstr "Разширяване на екрана върху няколко монитора"
 
-#: plugins/rdp/rdp_plugin.c:2732
+#: plugins/rdp/rdp_plugin.c:2769
 #, fuzzy
 msgid "List monitor IDs"
 msgstr "Списък на идентификаторите на мониторите"
 
-#: plugins/rdp/rdp_plugin.c:2734 plugins/vnc/vnc_plugin.c:1999
+#: plugins/rdp/rdp_plugin.c:2771 plugins/vnc/vnc_plugin.c:1999
 #: plugins/vnc/vnc_plugin.c:2011 plugins/gvnc/gvnc_plugin.c:849
 #, fuzzy
 msgid "Colour depth"
 msgstr "Дълбочина на цвета"
 
-#: plugins/rdp/rdp_plugin.c:2735
+#: plugins/rdp/rdp_plugin.c:2772
 msgid "Network connection type"
 msgstr "Нова връзка"
 
-#: plugins/rdp/rdp_plugin.c:2750 plugins/vnc/vnc_plugin.c:2000
+#: plugins/rdp/rdp_plugin.c:2788 plugins/vnc/vnc_plugin.c:2000
 #: plugins/vnc/vnc_plugin.c:2012
 #, fuzzy
 msgid "Quality"
 msgstr "Качество"
 
-#: plugins/rdp/rdp_plugin.c:2751
+#: plugins/rdp/rdp_plugin.c:2789
 #, fuzzy
 msgid "Security protocol negotiation"
 msgstr "Договаряне на протокола за сигурност"
 
-#: plugins/rdp/rdp_plugin.c:2752
+#: plugins/rdp/rdp_plugin.c:2790
 #, fuzzy
 msgid "Gateway transport type"
 msgstr "Вид на транспорта на шлюза"
 
-#: plugins/rdp/rdp_plugin.c:2753
+#: plugins/rdp/rdp_plugin.c:2791
 #, fuzzy
 msgid "FreeRDP log level"
 msgstr "Ниво на дневника на FreeRDP"
 
-#: plugins/rdp/rdp_plugin.c:2754
+#: plugins/rdp/rdp_plugin.c:2792
 #, fuzzy
 msgid "FreeRDP log filters"
 msgstr "Филтри на дневника на FreeRDP"
 
-#: plugins/rdp/rdp_plugin.c:2754
+#: plugins/rdp/rdp_plugin.c:2792
 #, fuzzy
 msgid "tag:level[,tag:level[,…]]"
 msgstr "tag:level[,tag:level[,...]]"
 
-#: plugins/rdp/rdp_plugin.c:2755
+#: plugins/rdp/rdp_plugin.c:2793
 #, fuzzy
 msgid "Audio output mode"
 msgstr "Режим на аудиоизход"
 
-#: plugins/rdp/rdp_plugin.c:2756
+#: plugins/rdp/rdp_plugin.c:2794
 #, fuzzy
 msgid "Redirect local audio output"
 msgstr "Пренасочване на местния аудио изход"
 
-#: plugins/rdp/rdp_plugin.c:2757
+#: plugins/rdp/rdp_plugin.c:2795
 #, fuzzy
 msgid "Redirect local microphone"
 msgstr "Пренасочване на местен микрофон"
 
-#: plugins/rdp/rdp_plugin.c:2758
+#: plugins/rdp/rdp_plugin.c:2796
 msgid "Connection timeout in ms"
 msgstr "Свързване към „%s“…"
 
-#: plugins/rdp/rdp_plugin.c:2759
+#: plugins/rdp/rdp_plugin.c:2797
 msgid "Remote Desktop Gateway server"
 msgstr "Настройки на отдалечен достъп"
 
-#: plugins/rdp/rdp_plugin.c:2760
+#: plugins/rdp/rdp_plugin.c:2798
 msgid "Remote Desktop Gateway username"
 msgstr "Настройки на отдалечен достъп"
 
-#: plugins/rdp/rdp_plugin.c:2761
+#: plugins/rdp/rdp_plugin.c:2799
 msgid "Remote Desktop Gateway password"
 msgstr "Настройки на отдалечен достъп"
 
-#: plugins/rdp/rdp_plugin.c:2762
+#: plugins/rdp/rdp_plugin.c:2800
 msgid "Remote Desktop Gateway domain"
 msgstr "Настройки на отдалечен достъп"
 
-#: plugins/rdp/rdp_plugin.c:2763
+#: plugins/rdp/rdp_plugin.c:2801
 #, fuzzy
 msgid "Redirect directory"
 msgstr "Пренасочване на директория"
 
-#: plugins/rdp/rdp_plugin.c:2764
+#: plugins/rdp/rdp_plugin.c:2802
 #, fuzzy
 msgid "Client name"
 msgstr "Име на клиента"
 
-#: plugins/rdp/rdp_plugin.c:2765
+#: plugins/rdp/rdp_plugin.c:2803
 #, fuzzy
 msgid "Client build"
 msgstr "Изграждане на клиента"
 
-#: plugins/rdp/rdp_plugin.c:2766
+#: plugins/rdp/rdp_plugin.c:2804
 msgid "Start-up program"
 msgstr "Стартиране на програма при свързване"
 
-#: plugins/rdp/rdp_plugin.c:2768
+#: plugins/rdp/rdp_plugin.c:2806
 #, fuzzy
 msgid "Load balance info"
 msgstr "Информация за баланса на натоварването"
 
 #. TRANSLATORS: Do not use typographic quotation marks, these must stay as "double quote", also know as “Typewriter ("programmer's") quote, ambidextrous.”
-#: plugins/rdp/rdp_plugin.c:2770
+#: plugins/rdp/rdp_plugin.c:2808
 #, fuzzy
 msgid "Override printer drivers"
 msgstr "Отмяна на драйверите на принтера"
 
-#: plugins/rdp/rdp_plugin.c:2770
+#: plugins/rdp/rdp_plugin.c:2808
 #, fuzzy
 msgid ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
 msgstr ""
-"\"Samsung_CLX-3300_Series\": \"Samsung CLX-3300 Series PS\"; \"Canon MF410\":"
-" \"Canon MF410 Series UFR II\""
+"\"Samsung_CLX-3300_Series\": \"Samsung CLX-3300 Series PS\"; \"Canon "
+"MF410\": \"Canon MF410 Series UFR II\""
 
-#: plugins/rdp/rdp_plugin.c:2771
+#: plugins/rdp/rdp_plugin.c:2809
 #, fuzzy
 msgid "USB device redirection"
 msgstr "Пренасочване на USB устройство"
 
-#: plugins/rdp/rdp_plugin.c:2772
+#: plugins/rdp/rdp_plugin.c:2810
 #, fuzzy
 msgid "Local serial name"
 msgstr "Местно серийно име"
 
-#: plugins/rdp/rdp_plugin.c:2772
+#: plugins/rdp/rdp_plugin.c:2810
 #, fuzzy
 msgid "COM1, COM2, etc."
 msgstr "COM1, COM2 и т.н."
 
-#: plugins/rdp/rdp_plugin.c:2773
+#: plugins/rdp/rdp_plugin.c:2811
 #, fuzzy
 msgid "Local serial driver"
 msgstr "Местен сериен драйвер"
 
-#: plugins/rdp/rdp_plugin.c:2773
+#: plugins/rdp/rdp_plugin.c:2811
 #, fuzzy
 msgid "Serial"
 msgstr "Сериен"
 
-#: plugins/rdp/rdp_plugin.c:2774
+#: plugins/rdp/rdp_plugin.c:2812
 #, fuzzy
 msgid "Local serial path"
 msgstr "Местен сериен път"
 
-#: plugins/rdp/rdp_plugin.c:2774
+#: plugins/rdp/rdp_plugin.c:2812
 #, fuzzy
 msgid "/dev/ttyS0, /dev/ttyS1, etc."
 msgstr "/dev/ttyS0, /dev/ttyS1 и т.н."
 
-#: plugins/rdp/rdp_plugin.c:2775
+#: plugins/rdp/rdp_plugin.c:2813
 #, fuzzy
 msgid "Local parallel name"
 msgstr "Местно паралелно име"
 
-#: plugins/rdp/rdp_plugin.c:2776
+#: plugins/rdp/rdp_plugin.c:2814
 #, fuzzy
 msgid "Local parallel device"
 msgstr "Местно паралелно устройство"
 
-#: plugins/rdp/rdp_plugin.c:2777
+#: plugins/rdp/rdp_plugin.c:2815
 #, fuzzy
 msgid "Name of smart card"
 msgstr "Име на смарт картата"
 
-#: plugins/rdp/rdp_plugin.c:2778
+#: plugins/rdp/rdp_plugin.c:2816
 #, fuzzy
 msgid "Dynamic virtual channel"
 msgstr "Динамичен виртуален канал"
 
-#: plugins/rdp/rdp_plugin.c:2778 plugins/rdp/rdp_plugin.c:2779
+#: plugins/rdp/rdp_plugin.c:2816 plugins/rdp/rdp_plugin.c:2817
 #, fuzzy
 msgid "<channel>[,<options>]"
 msgstr "<канал>[,<опции>]"
 
-#: plugins/rdp/rdp_plugin.c:2779
+#: plugins/rdp/rdp_plugin.c:2817
 #, fuzzy
 msgid "Static virtual channel"
 msgstr "Статичен виртуален канал"
 
-#: plugins/rdp/rdp_plugin.c:2780
+#: plugins/rdp/rdp_plugin.c:2818
 #, fuzzy
 #| msgid "Per connection"
 msgid "TCP redirection"
 msgstr "Пренасочване на TCP"
 
-#: plugins/rdp/rdp_plugin.c:2780
+#: plugins/rdp/rdp_plugin.c:2818
 #, fuzzy
 msgid "/PATH/TO/rdp2tcp"
 msgstr "/PATH/TO/rdp2tcp"
 
-#: plugins/rdp/rdp_plugin.c:2782
+#: plugins/rdp/rdp_plugin.c:2820
 #, fuzzy
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
 msgstr "Предпочитане на IPv6 AAAA запис пред IPv4 A запис"
 
-#: plugins/rdp/rdp_plugin.c:2783
+#: plugins/rdp/rdp_plugin.c:2821
 #, fuzzy
 msgid "Share printers"
 msgstr "Споделяне на принтери"
 
-#: plugins/rdp/rdp_plugin.c:2784
+#: plugins/rdp/rdp_plugin.c:2822
 #, fuzzy
 msgid "Share serial ports"
 msgstr "Споделяне на серийни портове"
 
-#: plugins/rdp/rdp_plugin.c:2785
+#: plugins/rdp/rdp_plugin.c:2823
 #, fuzzy
 msgid "(SELinux) permissive mode for serial ports"
 msgstr "(SELinux) разрешителен режим за серийни портове"
 
-#: plugins/rdp/rdp_plugin.c:2786
+#: plugins/rdp/rdp_plugin.c:2824
 #, fuzzy
 msgid "Share parallel ports"
 msgstr "Споделяне на паралелни портове"
 
-#: plugins/rdp/rdp_plugin.c:2787
+#: plugins/rdp/rdp_plugin.c:2825
 #, fuzzy
 msgid "Share a smart card"
 msgstr "Споделяне на смарт карта"
 
-#: plugins/rdp/rdp_plugin.c:2788 plugins/vnc/vnc_plugin.c:2035
+#: plugins/rdp/rdp_plugin.c:2826 plugins/vnc/vnc_plugin.c:2035
 #, fuzzy
 msgid "Turn off clipboard sync"
 msgstr "Изключване на синхронизирането на клипборда"
 
-#: plugins/rdp/rdp_plugin.c:2789
+#: plugins/rdp/rdp_plugin.c:2827
 #, fuzzy
 msgid "Ignore certificate"
 msgstr "Игнориране на сертификат"
 
-#: plugins/rdp/rdp_plugin.c:2790
+#: plugins/rdp/rdp_plugin.c:2828
 #, fuzzy
 msgid "Use the old license workflow"
 msgstr "Използване на стария работен процес на лиценза"
 
-#: plugins/rdp/rdp_plugin.c:2790
+#: plugins/rdp/rdp_plugin.c:2828
 #, fuzzy
 msgid "It disables CAL and hwId is set to 0"
 msgstr "Той деактивира CAL и hwId се настройва на 0"
 
-#: plugins/rdp/rdp_plugin.c:2791 plugins/spice/spice_plugin.c:702
+#: plugins/rdp/rdp_plugin.c:2829 plugins/spice/spice_plugin.c:702
 #: plugins/vnc/vnc_plugin.c:2031 plugins/www/www_plugin.c:919
 #: plugins/gvnc/gvnc_plugin.c:867
 msgid "Forget passwords after use"
 msgstr "%s парола"
 
-#: plugins/rdp/rdp_plugin.c:2792
+#: plugins/rdp/rdp_plugin.c:2830
 #, fuzzy
 msgid "Attach to console (2003/2003 R2)"
 msgstr "Присъединяване към конзола (2003/2003 R2)"
 
-#: plugins/rdp/rdp_plugin.c:2793
+#: plugins/rdp/rdp_plugin.c:2831
 #, fuzzy
 msgid "Turn off fast-path"
 msgstr "Изключване на бързата пътека"
 
-#: plugins/rdp/rdp_plugin.c:2794
+#: plugins/rdp/rdp_plugin.c:2832
 #, fuzzy
 msgid "Server detection using Remote Desktop Gateway"
 msgstr "Откриване на сървъра с помощта на Remote Desktop Gateway"
 
-#: plugins/rdp/rdp_plugin.c:2796
+#: plugins/rdp/rdp_plugin.c:2834
 #, fuzzy
 msgid "Use system proxy settings"
 msgstr "Използване на системните настройки на прокси сървъра"
 
-#: plugins/rdp/rdp_plugin.c:2798
+#: plugins/rdp/rdp_plugin.c:2836
 #, fuzzy
 msgid "Turn off automatic reconnection"
 msgstr "Изключване на автоматичното повторно свързване"
 
-#: plugins/rdp/rdp_plugin.c:2799
+#: plugins/rdp/rdp_plugin.c:2837
 #, fuzzy
 msgid "Relax order checks"
 msgstr "Проверки за облекчаване на поръчките"
 
-#: plugins/rdp/rdp_plugin.c:2800
+#: plugins/rdp/rdp_plugin.c:2838
 #, fuzzy
 msgid "Glyph cache"
 msgstr "Кеш за глифи"
 
-#: plugins/rdp/rdp_plugin.c:2801
+#: plugins/rdp/rdp_plugin.c:2839
 #, fuzzy
 msgid "Enable multitransport protocol (UDP)"
 msgstr "Активиране на мултитранспортен протокол (UDP)"
 
-#: plugins/rdp/rdp_plugin.c:2801
+#: plugins/rdp/rdp_plugin.c:2839
 #, fuzzy
 msgid "Using the UDP protocol may improve performance"
 msgstr "Използването на протокола UDP може да подобри производителността"
 
-#: plugins/rdp/rdp_plugin.c:2802
+#: plugins/rdp/rdp_plugin.c:2840
 #, fuzzy
 msgid "Use base credentials for gateway too"
 msgstr "Използвайте базови пълномощия и за шлюза"
 
-#: plugins/rdp/rdp_plugin.c:2804
+#: plugins/rdp/rdp_plugin.c:2842
 #, fuzzy
 msgid "Enable Gateway websockets support"
 msgstr "Активиране на поддръжката на Gateway websockets"
 
-#: plugins/rdp/rdp_plugin.c:2817 plugins/spice/spice_plugin.c:715
+#: plugins/rdp/rdp_plugin.c:2855 plugins/spice/spice_plugin.c:715
 #: plugins/vnc/vnc_plugin.c:2052
 #, fuzzy
 msgid "Send Ctrl+Alt+Delete"
 msgstr "Изпращане Ctrl+Alt+Delete"
 
-#: plugins/rdp/rdp_plugin.c:2830
+#: plugins/rdp/rdp_plugin.c:2868
 #, fuzzy
 msgid "RDP - Remote Desktop Protocol"
 msgstr "RDP - Протокол за отдалечен работен плот"
 
-#: plugins/rdp/rdp_plugin.c:2855
+#: plugins/rdp/rdp_plugin.c:2893
 #, fuzzy
 msgid "RDP - RDP File Handler"
 msgstr "RDP - Обработчик на файлове RDP"
 
-#: plugins/rdp/rdp_plugin.c:2870
+#: plugins/rdp/rdp_plugin.c:2908
 #, fuzzy
 msgid "RDP - Preferences"
 msgstr "RDP - Предпочитания"
 
-#: plugins/rdp/rdp_plugin.c:2923
+#: plugins/rdp/rdp_plugin.c:2961
 #, fuzzy
 msgid "Export connection in Windows .rdp file format"
 msgstr "Експортиране на връзка в Windows .rdp файлов формат"
@@ -4137,8 +4137,8 @@ msgstr "Посока на клипборда"
 #, fuzzy
 msgid "Which direction should clipboard content be copied? (default: 'both')."
 msgstr ""
-"В коя посока трябва да се копира съдържанието на клипборда? (по подразбиране:"
-" 'both')."
+"В коя посока трябва да се копира съдържанието на клипборда? (по "
+"подразбиране: 'both')."
 
 #: plugins/x2go/x2go_plugin.c:3216
 #, fuzzy

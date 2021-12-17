@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2021-12-16 23:08+0000\n"
+"POT-Creation-Date: 2021-12-17 15:48+0000\n"
 "PO-Revision-Date: 2021-12-17 14:54+0000\n"
 "Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -30,7 +30,7 @@ msgstr ""
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:354
 #: src/remmina_protocol_widget.c:1677 src/remmina_protocol_widget.c:1696
 #: src/remmina_file_editor.c:1101 src/remmina_file_editor.c:1222
-#: src/remmina_ssh_plugin.c:1361 plugins/rdp/rdp_plugin.c:2723
+#: src/remmina_ssh_plugin.c:1361 plugins/rdp/rdp_plugin.c:2760
 #: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:3198
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_preferences.glade:1646
 #: data/ui/remmina_unlock.glade:116
@@ -76,7 +76,7 @@ msgstr "Yeni uçbirimden SSH ile bağlan"
 
 #: src/remmina_sftp_plugin.c:353 src/remmina_message_panel.c:330
 #: src/remmina_file_editor.c:1216 src/remmina_ssh_plugin.c:1471
-#: plugins/rdp/rdp_plugin.c:2722 plugins/vnc/vnc_plugin.c:1997
+#: plugins/rdp/rdp_plugin.c:2759 plugins/vnc/vnc_plugin.c:1997
 #: plugins/vnc/vnc_plugin.c:2009 plugins/www/www_plugin.c:894
 #: plugins/x2go/x2go_plugin.c:475 plugins/x2go/x2go_plugin.c:3197
 #: data/ui/remmina_mpc.glade:144
@@ -149,29 +149,29 @@ msgstr "Tercih"
 msgid "Secret"
 msgstr "Gizli"
 
-#: src/remmina_plugin_manager.c:461 data/ui/remmina_main.glade:305
+#: src/remmina_plugin_manager.c:462 data/ui/remmina_main.glade:305
 msgid "Plugins"
 msgstr "Eklentiler"
 
-#: src/remmina_plugin_manager.c:461 src/remmina_message_panel.c:452
+#: src/remmina_plugin_manager.c:462 src/remmina_message_panel.c:452
 #: src/remmina_message_panel.c:621 src/remmina_file_editor.c:242
 msgid "_OK"
 msgstr "_Tamam"
 
-#: src/remmina_plugin_manager.c:479 src/remmina_file_editor.c:1908
+#: src/remmina_plugin_manager.c:480 src/remmina_file_editor.c:1908
 #: data/ui/remmina_main.glade:442
 msgid "Name"
 msgstr "Ad"
 
-#: src/remmina_plugin_manager.c:485
+#: src/remmina_plugin_manager.c:486
 msgid "Type"
 msgstr "Tür"
 
-#: src/remmina_plugin_manager.c:491
+#: src/remmina_plugin_manager.c:492
 msgid "Description"
 msgstr "Açıklama"
 
-#: src/remmina_plugin_manager.c:497
+#: src/remmina_plugin_manager.c:498
 msgid "Version"
 msgstr "Sürüm"
 
@@ -284,7 +284,7 @@ msgstr "Evet"
 msgid "No"
 msgstr "Hayır"
 
-#: src/remmina_message_panel.c:391 plugins/rdp/rdp_plugin.c:2724
+#: src/remmina_message_panel.c:391 plugins/rdp/rdp_plugin.c:2761
 #: data/ui/remmina_mpc.glade:172
 msgid "Domain"
 msgstr "Alan adı"
@@ -504,8 +504,8 @@ msgid ""
 "Connect either to a desktop described in a file (.remmina or a filetype "
 "supported by a plugin) or a supported URI (RDP, VNC, SSH or SPICE)"
 msgstr ""
-"Dosyada açıklanan masaüstüne (.remmina veya eklentice desteklenen dosya türü)"
-" veya desteklenen URI'ya (RDP, VNC, SSH veya SPICE) bağlan"
+"Dosyada açıklanan masaüstüne (.remmina veya eklentice desteklenen dosya "
+"türü) veya desteklenen URI'ya (RDP, VNC, SSH veya SPICE) bağlan"
 
 #: src/remmina.c:86 src/remmina.c:88 src/remmina.c:90
 msgid "FILE"
@@ -620,8 +620,8 @@ msgstr ""
 #: src/remmina.c:388
 msgid "- or protocol://username:encryptedpassword@host:port"
 msgstr ""
-"- veya "
-"iletisimkurali://kullaniciadi:sifrelenmisparola@anamakine:baglantinoktasi"
+"- veya iletisimkurali://kullaniciadi:sifrelenmisparola@anamakine:"
+"baglantinoktasi"
 
 #: src/remmina.c:391
 msgid ""
@@ -685,9 +685,9 @@ msgstr ""
 "Remmina bağlantı profiline başka çözünürlük kipi belirlemek, kullanıcı adı "
 "ve parola güncellemek için:\n"
 "\n"
-"\techo \"kullaniciadi\\n"
-"parola\" | remmina --update-profile /KONUM/YOL/ornek.remmina --set-option "
-"username --set-option resolution_mode=2 --set-option password\n"
+"\techo \"kullaniciadi\\nparola\" | remmina --update-profile /KONUM/YOL/ornek."
+"remmina --set-option username --set-option resolution_mode=2 --set-option "
+"password\n"
 
 #: src/remmina_public.c:345
 #, c-format
@@ -764,7 +764,7 @@ msgstr "Yukarı"
 msgid "Go to parent folder"
 msgstr "Üst klasöre git"
 
-#: src/remmina_ftp_client.c:758 plugins/rdp/rdp_plugin.c:2813
+#: src/remmina_ftp_client.c:758 plugins/rdp/rdp_plugin.c:2851
 #: plugins/vnc/vnc_plugin.c:2050
 msgid "Refresh"
 msgstr "Yenile"
@@ -810,11 +810,11 @@ msgstr "Küme"
 msgid "Permission"
 msgstr "İzinler"
 
-#: src/remmina_ftp_client.c:990 plugins/rdp/rdp_plugin.c:2611
+#: src/remmina_ftp_client.c:990 plugins/rdp/rdp_plugin.c:2648
 msgid "Remote"
 msgstr "Uzak"
 
-#: src/remmina_ftp_client.c:997 plugins/rdp/rdp_plugin.c:2610
+#: src/remmina_ftp_client.c:997 plugins/rdp/rdp_plugin.c:2647
 msgid "Local"
 msgstr "Yerel"
 
@@ -1480,7 +1480,7 @@ msgstr "Loopback adres aracılığıyla tünelle"
 msgid "Same server at port %i"
 msgstr "%i bağlantı noktasında aynı sunucu"
 
-#: src/remmina_file_editor.c:1193 plugins/rdp/rdp_plugin.c:2767
+#: src/remmina_file_editor.c:1193 plugins/rdp/rdp_plugin.c:2805
 msgid "Start-up path"
 msgstr "Başlangıç yolu"
 
@@ -1511,7 +1511,8 @@ msgstr "Notlar"
 #: src/remmina_file_editor.c:1438
 #, c-format
 msgid "(%s: %i): Can't validate setting '%s' since 'value' or 'gfe' are NULL!"
-msgstr "(%s: %i): 'value' veya 'gfe' NULL olduğundan '%s' ayarı doğrulanamıyor!"
+msgstr ""
+"(%s: %i): 'value' veya 'gfe' NULL olduğundan '%s' ayarı doğrulanamıyor!"
 
 #: src/remmina_file_editor.c:1441
 #, c-format
@@ -1865,22 +1866,22 @@ msgstr "<Ayarlanmadı>"
 msgid "<Choose a quality level to edit…>"
 msgstr "<Düzenlemek için bir kalite seviyesi seçin…>"
 
-#: plugins/rdp/rdp_settings.c:282 plugins/rdp/rdp_plugin.c:2585
+#: plugins/rdp/rdp_settings.c:282 plugins/rdp/rdp_plugin.c:2622
 #: plugins/vnc/vnc_plugin.c:1947
 msgid "Poor (fastest)"
 msgstr "Zayıf (en hızlı)"
 
-#: plugins/rdp/rdp_settings.c:284 plugins/rdp/rdp_plugin.c:2586
+#: plugins/rdp/rdp_settings.c:284 plugins/rdp/rdp_plugin.c:2623
 #: plugins/vnc/vnc_plugin.c:1946
 msgid "Medium"
 msgstr "Orta"
 
-#: plugins/rdp/rdp_settings.c:286 plugins/rdp/rdp_plugin.c:2587
+#: plugins/rdp/rdp_settings.c:286 plugins/rdp/rdp_plugin.c:2624
 #: plugins/vnc/vnc_plugin.c:1944
 msgid "Good"
 msgstr "İyi"
 
-#: plugins/rdp/rdp_settings.c:288 plugins/rdp/rdp_plugin.c:2588
+#: plugins/rdp/rdp_settings.c:288 plugins/rdp/rdp_plugin.c:2625
 #: plugins/vnc/vnc_plugin.c:1945
 msgid "Best (slowest)"
 msgstr "En iyi (en yavaş)"
@@ -1963,7 +1964,7 @@ msgstr "Masaüstü yönelimi"
 msgid "Input device settings"
 msgstr "Girdi aygıtı ayarları"
 
-#: plugins/rdp/rdp_settings.c:658 plugins/rdp/rdp_plugin.c:2729
+#: plugins/rdp/rdp_settings.c:658 plugins/rdp/rdp_plugin.c:2766
 #: plugins/vnc/vnc_plugin.c:2030
 msgid "Disable smooth scrolling"
 msgstr "Düzgün kaydırmayı devre dışı bırak"
@@ -1972,26 +1973,26 @@ msgstr "Düzgün kaydırmayı devre dışı bırak"
 msgid "General settings"
 msgstr "Genel ayarlar"
 
-#: plugins/rdp/rdp_settings.c:676 plugins/rdp/rdp_plugin.c:2781
+#: plugins/rdp/rdp_settings.c:676 plugins/rdp/rdp_plugin.c:2819
 msgid "Reconnect attempts number"
 msgstr "Yeniden bağlanma girişimi sayısı"
 
-#: plugins/rdp/rdp_settings.c:689 plugins/rdp/rdp_plugin.c:2781
+#: plugins/rdp/rdp_settings.c:689 plugins/rdp/rdp_plugin.c:2819
 msgid ""
 "The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
 msgstr ""
 "RDP bağlantı kopuşuna değin azami yeniden bağlanma girişimi sayısı "
 "(öntanımlı: 20)"
 
-#: plugins/rdp/rdp_plugin.c:769 plugins/rdp/rdp_plugin.c:834
+#: plugins/rdp/rdp_plugin.c:771 plugins/rdp/rdp_plugin.c:836
 msgid "Enter RDP authentication credentials"
 msgstr "RDP kimlik doğrulama bilgilerini girin"
 
-#: plugins/rdp/rdp_plugin.c:842
+#: plugins/rdp/rdp_plugin.c:844
 msgid "Enter RDP gateway authentication credentials"
 msgstr "RDP ağ geçidi kimlik doğrulama bilgilerini girin"
 
-#: plugins/rdp/rdp_plugin.c:2116
+#: plugins/rdp/rdp_plugin.c:2153
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2000,7 +2001,7 @@ msgstr ""
 "“%s” RDP sunucusuna erişilemedi.\n"
 "Hesap kilitlendi."
 
-#: plugins/rdp/rdp_plugin.c:2123
+#: plugins/rdp/rdp_plugin.c:2160
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2009,7 +2010,7 @@ msgstr ""
 "“%s” RDP sunucusuna erişilemedi.\n"
 "Hesabın süresi doldu."
 
-#: plugins/rdp/rdp_plugin.c:2130
+#: plugins/rdp/rdp_plugin.c:2167
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2018,7 +2019,7 @@ msgstr ""
 "“%s” RDP sunucusuna erişilemedi.\n"
 "Parolanın süresi doldu."
 
-#: plugins/rdp/rdp_plugin.c:2137
+#: plugins/rdp/rdp_plugin.c:2174
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2027,7 +2028,7 @@ msgstr ""
 "“%s” RDP sunucusuna erişilemedi.\n"
 "Hesap devre dışı bırakıldı."
 
-#: plugins/rdp/rdp_plugin.c:2143
+#: plugins/rdp/rdp_plugin.c:2180
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2036,7 +2037,7 @@ msgstr ""
 "“%s” RDP sunucusuna erişilemedi.\n"
 "Yetersiz kullanıcı ayrıcalıkları."
 
-#: plugins/rdp/rdp_plugin.c:2151
+#: plugins/rdp/rdp_plugin.c:2188
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2045,7 +2046,7 @@ msgstr ""
 "“%s” RDP sunucusuna erişilemedi.\n"
 "Hesap kısıtlandı."
 
-#: plugins/rdp/rdp_plugin.c:2159
+#: plugins/rdp/rdp_plugin.c:2196
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2054,27 +2055,30 @@ msgstr ""
 "“%s” RDP sunucusuna erişilemedi.\n"
 "Bağlanmadan önce kullanıcı parolasını değiştirin."
 
-#: plugins/rdp/rdp_plugin.c:2164
+#: plugins/rdp/rdp_plugin.c:2201
 #, c-format
 msgid "Lost connection to the RDP server “%s”."
 msgstr "“%s” RDP sunucusuyla bağlantı yitirildi."
 
-#: plugins/rdp/rdp_plugin.c:2167
+#: plugins/rdp/rdp_plugin.c:2204
 #, c-format
 msgid "Could not find the address for the RDP server “%s”."
 msgstr "“%s” RDP sunucusunun adresi bulunamadı."
 
-#: plugins/rdp/rdp_plugin.c:2171
-#, c-format
+#: plugins/rdp/rdp_plugin.c:2208
+#, fuzzy, c-format
+#| msgid ""
+#| "Could not connect to the RDP server “%s” via TLS. Check that client and "
+#| "server support a common TLS version."
 msgid ""
-"Could not connect to the RDP server “%s” via TLS. Check that client and "
-"server support a common TLS version."
+"Could not connect to the RDP server “%s” via TLS. See the DEBUG traces from "
+"a terminal for more information."
 msgstr ""
 "TLS üzerinden “%s” RDP sunucusuna bağlanılamadı. İstemci ve sunucunun aynı "
 "TLS sürümünü desteklediğini gözden geçirin."
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
-#: plugins/rdp/rdp_plugin.c:2175
+#: plugins/rdp/rdp_plugin.c:2212
 #, c-format
 msgid ""
 "Unable to establish a connection to the RDP server “%s”. Check “Security "
@@ -2083,16 +2087,16 @@ msgstr ""
 "“%s” RDP sunucusuna bağlantı kurulamıyor. Gözden geçirin: “Güvenlik iletişim "
 "kuralı uzlaşımı”."
 
-#: plugins/rdp/rdp_plugin.c:2183
+#: plugins/rdp/rdp_plugin.c:2220
 #, c-format
 msgid "Cannot connect to the RDP server “%s”."
 msgstr "“%s” RDP sunucusuna bağlanılamıyor."
 
-#: plugins/rdp/rdp_plugin.c:2186
+#: plugins/rdp/rdp_plugin.c:2223
 msgid "Could not start libfreerdp-gdi."
 msgstr "libfreerdp-gdi başlatılamadı."
 
-#: plugins/rdp/rdp_plugin.c:2189
+#: plugins/rdp/rdp_plugin.c:2226
 #, c-format
 msgid ""
 "You requested a H.264 GFX mode for the server “%s”, but your libfreerdp does "
@@ -2101,12 +2105,12 @@ msgstr ""
 "“%s” sunucusu için bir H.264 GFX kipi istediniz, ancak libfreerdp sürümünüz "
 "H.264'ü desteklemiyor. Lütfen AVC olmayan renk derinliği ayarı kullanın."
 
-#: plugins/rdp/rdp_plugin.c:2196
+#: plugins/rdp/rdp_plugin.c:2233
 #, c-format
 msgid "The “%s” server refused the connection."
 msgstr "“%s” sunucusu bağlantıyı reddetti."
 
-#: plugins/rdp/rdp_plugin.c:2201
+#: plugins/rdp/rdp_plugin.c:2238
 #, c-format
 msgid ""
 "The Remote Desktop Gateway “%s” denied the user “%s\\%s” access due to "
@@ -2115,117 +2119,117 @@ msgstr ""
 "“%s” Uzak Masaüstü Ağ Geçidi, ilke nedeniyle “%s\\%s” kullanıcı erişimini "
 "reddetti."
 
-#: plugins/rdp/rdp_plugin.c:2211
+#: plugins/rdp/rdp_plugin.c:2248
 #, c-format
 msgid "Cannot connect to the “%s” RDP server."
 msgstr "“%s” RDP sunucusuna bağlanılamıyor."
 
-#: plugins/rdp/rdp_plugin.c:2554
+#: plugins/rdp/rdp_plugin.c:2591
 msgid "Automatic (32 bpp) (Server chooses its best format)"
 msgstr "Kendiliğinden (32 bit) (Sunucu en iyi biçimini seçer)"
 
-#: plugins/rdp/rdp_plugin.c:2555
+#: plugins/rdp/rdp_plugin.c:2592
 msgid "GFX AVC444 (32 bpp)"
 msgstr "GFX AVC444 (32 bit)"
 
-#: plugins/rdp/rdp_plugin.c:2556
+#: plugins/rdp/rdp_plugin.c:2593
 msgid "GFX AVC420 (32 bpp)"
 msgstr "GFX AVC420 (32 bit)"
 
-#: plugins/rdp/rdp_plugin.c:2557
+#: plugins/rdp/rdp_plugin.c:2594
 msgid "GFX RFX (32 bpp)"
 msgstr "GFX RFX (32 bit)"
 
-#: plugins/rdp/rdp_plugin.c:2558
+#: plugins/rdp/rdp_plugin.c:2595
 msgid "GFX RFX Progressive (32 bpp)"
 msgstr "GFX RFX Aşamalı (32 bit)"
 
-#: plugins/rdp/rdp_plugin.c:2559
+#: plugins/rdp/rdp_plugin.c:2596
 msgid "RemoteFX (32 bpp)"
 msgstr "RemoteFX (32 bit)"
 
-#: plugins/rdp/rdp_plugin.c:2560 plugins/vnc/vnc_plugin.c:1935
+#: plugins/rdp/rdp_plugin.c:2597 plugins/vnc/vnc_plugin.c:1935
 msgid "True colour (32 bpp)"
 msgstr "Gerçek renk (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2561
+#: plugins/rdp/rdp_plugin.c:2598
 msgid "True colour (24 bpp)"
 msgstr "Gerçek renk (24 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2562 plugins/vnc/vnc_plugin.c:1936
+#: plugins/rdp/rdp_plugin.c:2599 plugins/vnc/vnc_plugin.c:1936
 msgid "High colour (16 bpp)"
 msgstr "Yüksek renk (16 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2563
+#: plugins/rdp/rdp_plugin.c:2600
 msgid "High colour (15 bpp)"
 msgstr "Yüksek renk (15 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2564 plugins/vnc/vnc_plugin.c:1937
+#: plugins/rdp/rdp_plugin.c:2601 plugins/vnc/vnc_plugin.c:1937
 msgid "256 colours (8 bpp)"
 msgstr "256 renk (8 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2595 data/ui/remmina_preferences.glade:612
+#: plugins/rdp/rdp_plugin.c:2632 data/ui/remmina_preferences.glade:612
 msgid "None"
 msgstr "Yok"
 
-#: plugins/rdp/rdp_plugin.c:2596
+#: plugins/rdp/rdp_plugin.c:2633
 msgid "Auto-detect"
 msgstr "Kendiliğinden algıla"
 
-#: plugins/rdp/rdp_plugin.c:2597
+#: plugins/rdp/rdp_plugin.c:2634
 msgid "Modem"
 msgstr "Modem"
 
-#: plugins/rdp/rdp_plugin.c:2598
+#: plugins/rdp/rdp_plugin.c:2635
 msgid "Low performance broadband"
 msgstr "Düşük performanslı geniş bant"
 
-#: plugins/rdp/rdp_plugin.c:2599
+#: plugins/rdp/rdp_plugin.c:2636
 msgid "Satellite"
 msgstr "Uydu"
 
-#: plugins/rdp/rdp_plugin.c:2600
+#: plugins/rdp/rdp_plugin.c:2637
 msgid "High performance broadband"
 msgstr "Yüksek performanslı geniş bant"
 
-#: plugins/rdp/rdp_plugin.c:2601
+#: plugins/rdp/rdp_plugin.c:2638
 msgid "WAN"
 msgstr "WAN"
 
-#: plugins/rdp/rdp_plugin.c:2602
+#: plugins/rdp/rdp_plugin.c:2639
 msgid "LAN"
 msgstr "LAN"
 
-#: plugins/rdp/rdp_plugin.c:2609 plugins/spice/spice_plugin.c:635
+#: plugins/rdp/rdp_plugin.c:2646 plugins/spice/spice_plugin.c:635
 #: data/ui/remmina_preferences.glade:648
 msgid "Off"
 msgstr "Kapalı"
 
-#: plugins/rdp/rdp_plugin.c:2618
+#: plugins/rdp/rdp_plugin.c:2655
 msgid "Automatic negotiation"
 msgstr "Kendiliğinden uzlaşım"
 
-#: plugins/rdp/rdp_plugin.c:2619
+#: plugins/rdp/rdp_plugin.c:2656
 msgid "NLA protocol security"
 msgstr "NLA iletişim kuralı güvenliği"
 
-#: plugins/rdp/rdp_plugin.c:2620
+#: plugins/rdp/rdp_plugin.c:2657
 msgid "TLS protocol security"
 msgstr "TLS iletişim kuralı güvenliği"
 
-#: plugins/rdp/rdp_plugin.c:2621
+#: plugins/rdp/rdp_plugin.c:2658
 msgid "RDP protocol security"
 msgstr "RDP iletişim kuralı güvenliği"
 
-#: plugins/rdp/rdp_plugin.c:2622
+#: plugins/rdp/rdp_plugin.c:2659
 msgid "NLA extended protocol security"
 msgstr "NLA genişletilmiş iletişim kuralı güvenliği"
 
-#: plugins/rdp/rdp_plugin.c:2635
+#: plugins/rdp/rdp_plugin.c:2672
 msgid "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 and newer)"
 msgstr "2600 (Windows XP),7601 (Windows Vista/7),9600 (Windows 8 ve sonrası)"
 
-#: plugins/rdp/rdp_plugin.c:2638
+#: plugins/rdp/rdp_plugin.c:2675
 msgid ""
 "Used i.a. by terminal services in a smart card channel to distinguish client "
 "capabilities:\n"
@@ -2243,7 +2247,7 @@ msgstr ""
 "  • >= 7065: Windows 8 ve sonrası: SCardGetReaderIcon(),\n"
 "    SCardGetDeviceTypeId()"
 
-#: plugins/rdp/rdp_plugin.c:2646
+#: plugins/rdp/rdp_plugin.c:2683
 msgid ""
 "Options for redirection of audio input:\n"
 "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
@@ -2261,7 +2265,7 @@ msgstr ""
 "  • sys:oss,dev:1,format:1\n"
 "  • sys:alsa"
 
-#: plugins/rdp/rdp_plugin.c:2655
+#: plugins/rdp/rdp_plugin.c:2692
 msgid ""
 "Options for redirection of audio output:\n"
 "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
@@ -2279,7 +2283,7 @@ msgstr ""
 "  • sys:oss,dev:1,format:1\n"
 "  • sys:alsa"
 
-#: plugins/rdp/rdp_plugin.c:2665
+#: plugins/rdp/rdp_plugin.c:2702
 msgid ""
 "Options for redirection of USB device:\n"
 "  • [dbg,][id:<vid>:<pid>#…,][addr:<bus>:<addr>#…,][auto]\n"
@@ -2291,7 +2295,7 @@ msgstr ""
 "  • auto\n"
 "  • id:054c:0268#4669:6e6b,addr:04:0c"
 
-#: plugins/rdp/rdp_plugin.c:2671
+#: plugins/rdp/rdp_plugin.c:2708
 msgid ""
 "Advanced setting for high latency links:\n"
 "Adjusts the connection timeout. Use if your connection times out.\n"
@@ -2301,7 +2305,7 @@ msgstr ""
 "Bağlantı zaman aşımını ayarlar. Bağlantınız zaman aşımına uğrarsa kullanın.\n"
 "En yüksek olası değer 600000 milisaniyedir (10 dakika)\n"
 
-#: plugins/rdp/rdp_plugin.c:2676
+#: plugins/rdp/rdp_plugin.c:2713
 msgid ""
 "Performance optimisations based on the network connection type:\n"
 "Using auto-detection is advised.\n"
@@ -2311,7 +2315,7 @@ msgstr ""
 "Kendiliğinden algılamanın kullanılması önerilir.\n"
 "“Kendiliğinden algıla” başarısız olursa, listeden en uygununu seçin.\n"
 
-#: plugins/rdp/rdp_plugin.c:2681
+#: plugins/rdp/rdp_plugin.c:2718
 msgid ""
 "Comma-separated list of monitor IDs and desktop orientations:\n"
 "  • [<id>:<orientation-in-degrees>,]\n"
@@ -2335,7 +2339,7 @@ msgstr ""
 "  • 270 (dikey ters çevrilmiş)\n"
 "\n"
 
-#: plugins/rdp/rdp_plugin.c:2693
+#: plugins/rdp/rdp_plugin.c:2730
 msgid ""
 "Redirect directory <path> as named share <name>.\n"
 "  • <name>,<fullpath>[;<name>,<fullpath>[;…]]\n"
@@ -2355,138 +2359,139 @@ msgstr ""
 "  • hotplug,*\n"
 "\n"
 
-#: plugins/rdp/rdp_plugin.c:2725 plugins/spice/spice_plugin.c:677
+#: plugins/rdp/rdp_plugin.c:2762 plugins/spice/spice_plugin.c:677
 msgid "Share folder"
 msgstr "Klasör paylaş"
 
-#: plugins/rdp/rdp_plugin.c:2725
+#: plugins/rdp/rdp_plugin.c:2762
 msgid "Use “Redirect directory” in the advanced tab for multiple directories"
 msgstr "Çoklu dizinler için gelişmiş sekmesindeki “Dizin yönlendir”i kullan"
 
-#: plugins/rdp/rdp_plugin.c:2726
+#: plugins/rdp/rdp_plugin.c:2763
 msgid "Restricted admin mode"
 msgstr "Kısıtlı yönetici kipi"
 
-#: plugins/rdp/rdp_plugin.c:2727
+#: plugins/rdp/rdp_plugin.c:2764
 msgid "Password hash"
 msgstr "Parola özeti"
 
-#: plugins/rdp/rdp_plugin.c:2727
+#: plugins/rdp/rdp_plugin.c:2764
 msgid "Restricted admin mode password hash"
 msgstr "Kısıtlı yönetici kipi parola özeti"
 
-#: plugins/rdp/rdp_plugin.c:2728
+#: plugins/rdp/rdp_plugin.c:2765
 msgid "Left-handed mouse support"
 msgstr "Solak fare desteği"
 
-#: plugins/rdp/rdp_plugin.c:2728
+#: plugins/rdp/rdp_plugin.c:2765
 msgid "Swap left and right mouse buttons for left-handed mouse support"
-msgstr "Solak fare desteği için sol ve sağ fare düğmeleri arasında yer değiştir"
+msgstr ""
+"Solak fare desteği için sol ve sağ fare düğmeleri arasında yer değiştir"
 
-#: plugins/rdp/rdp_plugin.c:2730
+#: plugins/rdp/rdp_plugin.c:2767
 msgid "Enable multi monitor"
 msgstr "Çoklu ekranı etkinleştir"
 
-#: plugins/rdp/rdp_plugin.c:2731
+#: plugins/rdp/rdp_plugin.c:2768
 msgid "Span screen over multiple monitors"
 msgstr "Ekranı birden çok monitöre yay"
 
-#: plugins/rdp/rdp_plugin.c:2732
+#: plugins/rdp/rdp_plugin.c:2769
 msgid "List monitor IDs"
 msgstr "Ekran kimliklerini listele"
 
-#: plugins/rdp/rdp_plugin.c:2734 plugins/vnc/vnc_plugin.c:1999
+#: plugins/rdp/rdp_plugin.c:2771 plugins/vnc/vnc_plugin.c:1999
 #: plugins/vnc/vnc_plugin.c:2011 plugins/gvnc/gvnc_plugin.c:849
 msgid "Colour depth"
 msgstr "Renk derinliği"
 
-#: plugins/rdp/rdp_plugin.c:2735
+#: plugins/rdp/rdp_plugin.c:2772
 msgid "Network connection type"
 msgstr "Ağ bağlantı türü"
 
-#: plugins/rdp/rdp_plugin.c:2750 plugins/vnc/vnc_plugin.c:2000
+#: plugins/rdp/rdp_plugin.c:2788 plugins/vnc/vnc_plugin.c:2000
 #: plugins/vnc/vnc_plugin.c:2012
 msgid "Quality"
 msgstr "Kalite"
 
-#: plugins/rdp/rdp_plugin.c:2751
+#: plugins/rdp/rdp_plugin.c:2789
 msgid "Security protocol negotiation"
 msgstr "Güvenlik iletişim kuralı uzlaşımı"
 
-#: plugins/rdp/rdp_plugin.c:2752
+#: plugins/rdp/rdp_plugin.c:2790
 msgid "Gateway transport type"
 msgstr "Ağ geçidi taşıma türü"
 
-#: plugins/rdp/rdp_plugin.c:2753
+#: plugins/rdp/rdp_plugin.c:2791
 msgid "FreeRDP log level"
 msgstr "FreeRDP günlük kaydı seviyesi"
 
-#: plugins/rdp/rdp_plugin.c:2754
+#: plugins/rdp/rdp_plugin.c:2792
 msgid "FreeRDP log filters"
 msgstr "FreeRDP günlük filtreleri"
 
-#: plugins/rdp/rdp_plugin.c:2754
+#: plugins/rdp/rdp_plugin.c:2792
 msgid "tag:level[,tag:level[,…]]"
 msgstr "etiket:seviye[,etiket:seviye[,…]]"
 
-#: plugins/rdp/rdp_plugin.c:2755
+#: plugins/rdp/rdp_plugin.c:2793
 msgid "Audio output mode"
 msgstr "Ses çıkış kipi"
 
-#: plugins/rdp/rdp_plugin.c:2756
+#: plugins/rdp/rdp_plugin.c:2794
 msgid "Redirect local audio output"
 msgstr "Yerel ses çıkışı yönlendirmesi"
 
-#: plugins/rdp/rdp_plugin.c:2757
+#: plugins/rdp/rdp_plugin.c:2795
 msgid "Redirect local microphone"
 msgstr "Yerel mikrofon yönlendirmesi"
 
-#: plugins/rdp/rdp_plugin.c:2758
+#: plugins/rdp/rdp_plugin.c:2796
 msgid "Connection timeout in ms"
 msgstr "Milisaniye türünde bağlantı zaman aşımı"
 
-#: plugins/rdp/rdp_plugin.c:2759
+#: plugins/rdp/rdp_plugin.c:2797
 msgid "Remote Desktop Gateway server"
 msgstr "Uzak Masaüstü Ağ Geçidi sunucusu"
 
-#: plugins/rdp/rdp_plugin.c:2760
+#: plugins/rdp/rdp_plugin.c:2798
 msgid "Remote Desktop Gateway username"
 msgstr "Uzak Masaüstü Ağ Geçidi kullanıcı adı"
 
-#: plugins/rdp/rdp_plugin.c:2761
+#: plugins/rdp/rdp_plugin.c:2799
 msgid "Remote Desktop Gateway password"
 msgstr "Uzak Masaüstü Ağ Geçidi parolası"
 
-#: plugins/rdp/rdp_plugin.c:2762
+#: plugins/rdp/rdp_plugin.c:2800
 msgid "Remote Desktop Gateway domain"
 msgstr "Uzak Masaüstü Ağ Geçidi alan adı"
 
-#: plugins/rdp/rdp_plugin.c:2763
+#: plugins/rdp/rdp_plugin.c:2801
 msgid "Redirect directory"
 msgstr "Dizin yönlendir"
 
-#: plugins/rdp/rdp_plugin.c:2764
+#: plugins/rdp/rdp_plugin.c:2802
 msgid "Client name"
 msgstr "İstemci adı"
 
-#: plugins/rdp/rdp_plugin.c:2765
+#: plugins/rdp/rdp_plugin.c:2803
 msgid "Client build"
 msgstr "İstemci derlemesi"
 
-#: plugins/rdp/rdp_plugin.c:2766
+#: plugins/rdp/rdp_plugin.c:2804
 msgid "Start-up program"
 msgstr "Başlangıç programı"
 
-#: plugins/rdp/rdp_plugin.c:2768
+#: plugins/rdp/rdp_plugin.c:2806
 msgid "Load balance info"
 msgstr "Yük dengesi bilgisi"
 
 #. TRANSLATORS: Do not use typographic quotation marks, these must stay as "double quote", also know as “Typewriter ("programmer's") quote, ambidextrous.”
-#: plugins/rdp/rdp_plugin.c:2770
+#: plugins/rdp/rdp_plugin.c:2808
 msgid "Override printer drivers"
 msgstr "Yazıcı sürücülerini geçersiz kıl"
 
-#: plugins/rdp/rdp_plugin.c:2770
+#: plugins/rdp/rdp_plugin.c:2808
 msgid ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
@@ -2494,174 +2499,174 @@ msgstr ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Serisi PS\";\"Canon MF410\":"
 "\"Canon MF410 Serisi UFR II\""
 
-#: plugins/rdp/rdp_plugin.c:2771
+#: plugins/rdp/rdp_plugin.c:2809
 msgid "USB device redirection"
 msgstr "USB aygıt yönlendirme"
 
-#: plugins/rdp/rdp_plugin.c:2772
+#: plugins/rdp/rdp_plugin.c:2810
 msgid "Local serial name"
 msgstr "Yerel seri bağlantı noktası adı"
 
-#: plugins/rdp/rdp_plugin.c:2772
+#: plugins/rdp/rdp_plugin.c:2810
 msgid "COM1, COM2, etc."
 msgstr "COM1, COM2, vb."
 
-#: plugins/rdp/rdp_plugin.c:2773
+#: plugins/rdp/rdp_plugin.c:2811
 msgid "Local serial driver"
 msgstr "Yerel seri bağlantı noktası sürücüsü"
 
-#: plugins/rdp/rdp_plugin.c:2773
+#: plugins/rdp/rdp_plugin.c:2811
 msgid "Serial"
 msgstr "Seri"
 
-#: plugins/rdp/rdp_plugin.c:2774
+#: plugins/rdp/rdp_plugin.c:2812
 msgid "Local serial path"
 msgstr "Yerel seri bağlantı noktası yolu"
 
-#: plugins/rdp/rdp_plugin.c:2774
+#: plugins/rdp/rdp_plugin.c:2812
 msgid "/dev/ttyS0, /dev/ttyS1, etc."
 msgstr "/dev/ttyS0, /dev/ttyS1, vb."
 
-#: plugins/rdp/rdp_plugin.c:2775
+#: plugins/rdp/rdp_plugin.c:2813
 msgid "Local parallel name"
 msgstr "Yerel paralel bağlantı noktası adı"
 
-#: plugins/rdp/rdp_plugin.c:2776
+#: plugins/rdp/rdp_plugin.c:2814
 msgid "Local parallel device"
 msgstr "Yerel paralel bağlantı noktası aygıtı"
 
-#: plugins/rdp/rdp_plugin.c:2777
+#: plugins/rdp/rdp_plugin.c:2815
 msgid "Name of smart card"
 msgstr "Akıllı kartın adı"
 
-#: plugins/rdp/rdp_plugin.c:2778
+#: plugins/rdp/rdp_plugin.c:2816
 msgid "Dynamic virtual channel"
 msgstr "Dinamik sanal kanal"
 
-#: plugins/rdp/rdp_plugin.c:2778 plugins/rdp/rdp_plugin.c:2779
+#: plugins/rdp/rdp_plugin.c:2816 plugins/rdp/rdp_plugin.c:2817
 msgid "<channel>[,<options>]"
 msgstr "<kanal>[,<seçenekler>]"
 
-#: plugins/rdp/rdp_plugin.c:2779
+#: plugins/rdp/rdp_plugin.c:2817
 msgid "Static virtual channel"
 msgstr "Statik sanal kanal"
 
-#: plugins/rdp/rdp_plugin.c:2780
+#: plugins/rdp/rdp_plugin.c:2818
 msgid "TCP redirection"
 msgstr "TCP yönlendirme"
 
-#: plugins/rdp/rdp_plugin.c:2780
+#: plugins/rdp/rdp_plugin.c:2818
 msgid "/PATH/TO/rdp2tcp"
 msgstr "/SISTEM/YOLU/rdp2tcp"
 
-#: plugins/rdp/rdp_plugin.c:2782
+#: plugins/rdp/rdp_plugin.c:2820
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
 msgstr "IPv4 A kaydı yerine IPv6 AAAA kaydını tercih et"
 
-#: plugins/rdp/rdp_plugin.c:2783
+#: plugins/rdp/rdp_plugin.c:2821
 msgid "Share printers"
 msgstr "Yazıcı paylaş"
 
-#: plugins/rdp/rdp_plugin.c:2784
+#: plugins/rdp/rdp_plugin.c:2822
 msgid "Share serial ports"
 msgstr "Seri bağlantı noktası paylaş"
 
-#: plugins/rdp/rdp_plugin.c:2785
+#: plugins/rdp/rdp_plugin.c:2823
 msgid "(SELinux) permissive mode for serial ports"
 msgstr "(SELinux) Seri bağlantı noktaları için izin verici kip"
 
-#: plugins/rdp/rdp_plugin.c:2786
+#: plugins/rdp/rdp_plugin.c:2824
 msgid "Share parallel ports"
 msgstr "Paralel bağlantı noktası paylaş"
 
-#: plugins/rdp/rdp_plugin.c:2787
+#: plugins/rdp/rdp_plugin.c:2825
 msgid "Share a smart card"
 msgstr "Akıllı kartı paylaş"
 
-#: plugins/rdp/rdp_plugin.c:2788 plugins/vnc/vnc_plugin.c:2035
+#: plugins/rdp/rdp_plugin.c:2826 plugins/vnc/vnc_plugin.c:2035
 msgid "Turn off clipboard sync"
 msgstr "Pano eşzamanlamayı kapat"
 
-#: plugins/rdp/rdp_plugin.c:2789
+#: plugins/rdp/rdp_plugin.c:2827
 msgid "Ignore certificate"
 msgstr "Sertifikayı yoksay"
 
-#: plugins/rdp/rdp_plugin.c:2790
+#: plugins/rdp/rdp_plugin.c:2828
 msgid "Use the old license workflow"
 msgstr "Eski lisans iş akışını kullan"
 
-#: plugins/rdp/rdp_plugin.c:2790
+#: plugins/rdp/rdp_plugin.c:2828
 msgid "It disables CAL and hwId is set to 0"
 msgstr "CAL'yi devre dışı bırakır ve hwld'yi 0 olarak ayarlar"
 
-#: plugins/rdp/rdp_plugin.c:2791 plugins/spice/spice_plugin.c:702
+#: plugins/rdp/rdp_plugin.c:2829 plugins/spice/spice_plugin.c:702
 #: plugins/vnc/vnc_plugin.c:2031 plugins/www/www_plugin.c:919
 #: plugins/gvnc/gvnc_plugin.c:867
 msgid "Forget passwords after use"
 msgstr "Kullandıktan sonra parolaları unut"
 
-#: plugins/rdp/rdp_plugin.c:2792
+#: plugins/rdp/rdp_plugin.c:2830
 msgid "Attach to console (2003/2003 R2)"
 msgstr "Konsola ekle (Win 2003/2003 R2)"
 
-#: plugins/rdp/rdp_plugin.c:2793
+#: plugins/rdp/rdp_plugin.c:2831
 msgid "Turn off fast-path"
 msgstr "Fast-path'i kapat"
 
-#: plugins/rdp/rdp_plugin.c:2794
+#: plugins/rdp/rdp_plugin.c:2832
 msgid "Server detection using Remote Desktop Gateway"
 msgstr "Uzak Masaüstü Ağ Geçidi kullanarak sunucu algılama"
 
-#: plugins/rdp/rdp_plugin.c:2796
+#: plugins/rdp/rdp_plugin.c:2834
 msgid "Use system proxy settings"
 msgstr "Sistem vekil sunucu ayarlarını kullan"
 
-#: plugins/rdp/rdp_plugin.c:2798
+#: plugins/rdp/rdp_plugin.c:2836
 msgid "Turn off automatic reconnection"
 msgstr "Kendiliğinden yeniden bağlanmayı kapat"
 
-#: plugins/rdp/rdp_plugin.c:2799
+#: plugins/rdp/rdp_plugin.c:2837
 msgid "Relax order checks"
 msgstr "Sıralama denetimlerini gevşet"
 
-#: plugins/rdp/rdp_plugin.c:2800
+#: plugins/rdp/rdp_plugin.c:2838
 msgid "Glyph cache"
 msgstr "Glyph önbelleği"
 
-#: plugins/rdp/rdp_plugin.c:2801
+#: plugins/rdp/rdp_plugin.c:2839
 msgid "Enable multitransport protocol (UDP)"
 msgstr "Çoklu aktarım protokolünü etkinleştir (UDP)"
 
-#: plugins/rdp/rdp_plugin.c:2801
+#: plugins/rdp/rdp_plugin.c:2839
 msgid "Using the UDP protocol may improve performance"
 msgstr "UDP protokolünü kullanmak performansı artırabilir"
 
-#: plugins/rdp/rdp_plugin.c:2802
+#: plugins/rdp/rdp_plugin.c:2840
 msgid "Use base credentials for gateway too"
 msgstr "Ağ geçidi için de temel kimlik bilgilerini kullan"
 
-#: plugins/rdp/rdp_plugin.c:2804
+#: plugins/rdp/rdp_plugin.c:2842
 msgid "Enable Gateway websockets support"
 msgstr "Ağ geçidi web soketi desteğini etkinleştir"
 
-#: plugins/rdp/rdp_plugin.c:2817 plugins/spice/spice_plugin.c:715
+#: plugins/rdp/rdp_plugin.c:2855 plugins/spice/spice_plugin.c:715
 #: plugins/vnc/vnc_plugin.c:2052
 msgid "Send Ctrl+Alt+Delete"
 msgstr "Gönder Ctrl+Alt+Delete"
 
-#: plugins/rdp/rdp_plugin.c:2830
+#: plugins/rdp/rdp_plugin.c:2868
 msgid "RDP - Remote Desktop Protocol"
 msgstr "RDP - Uzak Masaüstü İletişim Kuralı"
 
-#: plugins/rdp/rdp_plugin.c:2855
+#: plugins/rdp/rdp_plugin.c:2893
 msgid "RDP - RDP File Handler"
 msgstr "RDP - RDP Dosya İşleyici"
 
-#: plugins/rdp/rdp_plugin.c:2870
+#: plugins/rdp/rdp_plugin.c:2908
 msgid "RDP - Preferences"
 msgstr "RDP - Tercihleri"
 
-#: plugins/rdp/rdp_plugin.c:2923
+#: plugins/rdp/rdp_plugin.c:2961
 msgid "Export connection in Windows .rdp file format"
 msgstr "Bağlantıyı Windows .rdp dosya biçiminde dışarı aktar"
 
@@ -3194,7 +3199,8 @@ msgstr "PyHoca-CLI aşağıdaki değişkenlerle başlatıldı:"
 msgid ""
 "The necessary PyHoca-CLI process has encountered a internet connection "
 "problem."
-msgstr "Gerekli PyHoca-CLI işlemi bir internet bağlantısı sorunuyla karşılaştı."
+msgstr ""
+"Gerekli PyHoca-CLI işlemi bir internet bağlantısı sorunuyla karşılaştı."
 
 #: plugins/x2go/x2go_plugin.c:972
 #, c-format
@@ -3963,7 +3969,8 @@ msgstr "remmina.org'tan güncel haberleri alır"
 
 #: data/ui/remmina_news.glade:182
 msgid "* By turning on news you consent to fetching data from remmina.org"
-msgstr "* Haberleri etkinleştirerek remmina.org'tan veri alımına razı olursunuz"
+msgstr ""
+"* Haberleri etkinleştirerek remmina.org'tan veri alımına razı olursunuz"
 
 #: data/ui/remmina_news.glade:205
 msgid "<big>Take part</big>"
@@ -3982,8 +3989,8 @@ msgstr ""
 "<span>\n"
 "<b>Copyleft özgür yazılım kullandığınız için harikasınız, bizi mutlu etmek, "
 "ve programı daha da iyi hale getirmek için <a href=\"https://remmina.org/"
-"donations/\" title=\"Para nerede Lebowski? “blblblblblb”\"> bağışta "
-"bulunun.</a></b>\n"
+"donations/\" title=\"Para nerede Lebowski? “blblblblblb”\"> bağışta bulunun."
+"</a></b>\n"
 "</span>\n"
 
 #: data/ui/remmina_news.glade:251
@@ -4244,7 +4251,8 @@ msgstr "Ekran görüntülerinin panoya girmesini önle"
 
 #: data/ui/remmina_preferences.glade:432
 msgid "* By enabling news you consent to fetch data from remmina.org"
-msgstr "* Haberleri etkinleştirerek remmina.org'tan veri alımına razı olursunuz"
+msgstr ""
+"* Haberleri etkinleştirerek remmina.org'tan veri alımına razı olursunuz"
 
 #: data/ui/remmina_preferences.glade:500
 msgid "Options"
@@ -4320,7 +4328,8 @@ msgstr "Koyu temayı yeğle"
 msgid ""
 "If a GTK theme includes a dark variant, it will be used instead of the "
 "configured theme."
-msgstr "GTK teması koyu tema içeriyorsa, yapılandırılan tema yerine kullanılır."
+msgstr ""
+"GTK teması koyu tema içeriyorsa, yapılandırılan tema yerine kullanılır."
 
 #: data/ui/remmina_preferences.glade:714
 msgid "“Grab all keyboard events” status colour"
