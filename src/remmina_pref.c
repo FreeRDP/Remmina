@@ -57,7 +57,7 @@ const gchar *default_resolutions = "640x480,800x600,1024x768,1152x864,1280x960,1
 const gchar *default_keystrokes = "Send hello world§hello world\\n";
 
 gchar *remmina_keymap_file;
-static GHashTable *remmina_keymap_table = NULL;
+GHashTable *remmina_keymap_table = NULL;
 
 /* We could customize this further if there are more requirements */
 static const gchar *default_keymap_data = "# Please check gdk/gdkkeysyms.h for a full list of all key names or hex key values\n"
