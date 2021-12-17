@@ -969,6 +969,16 @@ void remmina_pref_clear_recent(void)
 	g_key_file_free(gkeyfile);
 }
 
+guint *remmina_pref_keymap_get_table(const gchar *keymap)
+{
+	TRACE_CALL(__func__);
+	
+	if (!keymap || keymap[0] == '\0')
+		return NULL;
+	
+	return (guint *)g_hash_table_lookup(remmina_keymap_table, keymap);
+}
+
 guint remmina_pref_keymap_get_keyval(const gchar *keymap, guint keyval)
 {
 	TRACE_CALL(__func__);

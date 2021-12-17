@@ -242,6 +242,7 @@ void remmina_pref_add_recent(const gchar *protocol, const gchar *server);
 gchar *remmina_pref_get_recent(const gchar *protocol);
 void remmina_pref_clear_recent(void);
 
+guint *remmina_pref_keymap_get_table(const gchar *keymap);
 guint remmina_pref_keymap_get_keyval(const gchar *keymap, guint keyval);
 gchar **remmina_pref_keymap_groups(void);
 
