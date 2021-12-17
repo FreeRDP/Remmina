@@ -15,8 +15,8 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-12-16 23:08+0000\n"
-"PO-Revision-Date: 2021-12-17 08:52+0000\n"
-"Last-Translator: Oğuzcan Küçükbayrak <o.kucukbayrak@gmail.com>\n"
+"PO-Revision-Date: 2021-12-17 14:54+0000\n"
+"Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/remmina/remmina/"
 "tr/>\n"
 "Language: tr\n"
@@ -102,16 +102,12 @@ msgid "SFTP - Secure File Transfer"
 msgstr "SFTP - Güvenli Dosya Aktarımı"
 
 #: src/remmina_log.c:129
-#, fuzzy
-#| msgid "Open the Remmina main window"
 msgid "Remmina debugging window"
-msgstr "Remmina ana penceresini aç"
+msgstr "Remmina hata ayıklama penceresi"
 
 #: src/remmina_log.c:133
-#, fuzzy
-#| msgid "Open the Remmina main window"
 msgid "Paste sytem info in the Remmina debugging window"
-msgstr "Remmina ana penceresini aç"
+msgstr "Sistem bilgisini Remmine hata ayıklama penceresine yapıştır"
 
 #: src/remmina_log.c:153
 msgid ""
@@ -122,6 +118,12 @@ msgid ""
 "There is more info about debugging Remmina on https://gitlab.com/Remmina/"
 "Remmina/-/wikis/Usage/Remmina-debugging\n"
 msgstr ""
+"Bu pencere, bağlantı sorunlarını bulmanızı sağlar.\n"
+"İstediğinizde Aç/Kapa anahtarıyla günlüklemeyi durdurup başlatabilirsiniz.\n"
+"İstatistikler düğmesi (Ctrl+T), hata bildirirken paylaşabileceğiniz sistem "
+"bilgisini toplamanızı sağlar.\n"
+"Remmine hata ayıklamasıyla ilgili https://gitlab.com/Remmina/Remmina/-/wikis/"
+"Usage/Remmina-debugging adresinde daha çok bilgi bulunur.\n"
 
 #: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1951
 msgid "Protocol"
@@ -246,7 +248,7 @@ msgstr "Tuş vuruşlarını yapılandır"
 #. TRANSLATORS: Do not translate libsodium, is the name of a library
 #: src/remmina_pref_dialog.c:482
 msgid "libsodium >= 1.9.0 is required to use master password"
-msgstr "libsodium > = 1.9.0 ana parolayı kullanmak için gerekli"
+msgstr "Ana parolayı kullanmak için libsodium > = 1.9.0 gerekli"
 
 #: src/remmina_pref_dialog.c:805
 msgid "Picking a terminal colouring file replaces the file: "
@@ -348,7 +350,7 @@ msgstr "Pano içeriğini tuş vuruşları olarak gönder"
 
 #: src/rcw.c:2155
 msgid "Turn off scaling to avoid screenshot distortion."
-msgstr "Ekran görüntüsünün bozulmasını önlemek için ölçeklemeyi kapatın."
+msgstr "Ekran görüntüsünün bozulmaması için ölçeklemeyi kapat."
 
 #: src/rcw.c:2215 plugins/www/www_plugin.c:855
 msgid "Screenshot taken"
@@ -444,20 +446,12 @@ msgid ""
 "Warning: This plugin requires GtkSocket, but this feature is unavailable in "
 "a Wayland session."
 msgstr ""
-"Uyarı: Bu eklenti GtkSocket gerektirir, ancak bu özellik bir Wayland "
-"oturumunda kullanılamıyor."
+"Uyarı: Bu eklenti GtkSocket gerektirir ancak bu özellik Wayland oturumunda "
+"kullanılamıyor."
 
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. 'GtkSocket feature is not available'.
 #: src/rcw.c:4515
-#, fuzzy
-#| msgid ""
-#| "Plugins relying on GtkSocket can't run in a Wayland session.\n"
-#| "For more information and a possible workaround, please visit the Remmina "
-#| "Wiki at:\n"
-#| "\n"
-#| "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
-#| "available-in-a-Wayland-session"
 msgid ""
 "Plugins relying on GtkSocket can't run in a Wayland session.\n"
 "For more info and a possible workaround, please visit the Remmina wiki at:\n"
@@ -466,17 +460,15 @@ msgid ""
 "available-in-a-Wayland-session"
 msgstr ""
 "GtkSocket gerektiren eklentiler Wayland oturumunda çalıştırılamıyor.\n"
-"Daha fazla bilgi ve olası bir geçici çözüm için lütfen Remmina Wiki "
-"sayfasını ziyaret edin:\n"
+"Daha çok bilgi ve olası geçici çözüm için lütfen Remmina Wiki sayfasına "
+"bakın:\n"
 "\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 
 #: src/rcw.c:4529
-#, fuzzy
-#| msgid "Open in browser"
 msgid "Open in web browser"
-msgstr "Tarayıcıda aç"
+msgstr "Web tarayıcıda aç"
 
 #: src/remmina_mpchange.c:234
 msgid "The passwords do not match"
@@ -488,11 +480,11 @@ msgstr "Parolalar sıfırlanıyor lütfen bekle…"
 
 #: src/remmina_mpchange.c:327
 msgid "The multi password changer requires a secrecy plugin.\n"
-msgstr "Çoklu parola değiştirici gizlilik eklentisi gerektirir.\n"
+msgstr "Çoklu parola değiştirici, gizlilik eklentisi gerektirir.\n"
 
 #: src/remmina_mpchange.c:330
 msgid "The multi password changer requires a secrecy service.\n"
-msgstr "Çoklu parola değiştirici gizli servisi gerektirir.\n"
+msgstr "Çoklu parola değiştirici, gizlilik servisi gerektirir.\n"
 
 #: src/remmina_mpchange.c:409
 #, c-format
@@ -521,28 +513,21 @@ msgstr "DOSYA"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:88
-#, fuzzy
-#| msgid ""
-#| "Connect to a desktop described in a file (.remmina or a type supported by "
-#| "a plugin)"
 msgid ""
 "Connect to a desktop described in a file (.remmina or a filetype supported "
 "by a plugin)"
 msgstr ""
-"Dosyada açıklanan masaüstüne bağlan (.remmina veya eklentice desteklenen tür)"
+"Dosyada açıklanan masaüstüne bağlan (.remmina veya eklentice desteklenen "
+"dosya türü)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:90
-#, fuzzy
-#| msgid ""
-#| "Edit desktop connection described in file (.remmina or type supported by "
-#| "plugin)"
 msgid ""
 "Edit desktop connection described in file (.remmina or a filetype supported "
 "by plugin)"
 msgstr ""
-"Dosyada açıklanan masaüstü bağlantısını düzenle (.remmina veya eklenti "
-"tarafından desteklenen tür)"
+"Dosyada açıklanan masaüstü bağlantısını düzenle (.remmina veya eklentice "
+"desteklenen dosya türü)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:93
@@ -609,8 +594,7 @@ msgstr "Bağlantı profilini düzenle (--set-option gerektirir)"
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:118
 msgid "Set one or more profile settings, to be used with --update-profile"
-msgstr ""
-"--update-profile ile kullanılacak bir veya daha fazla profil ayarını yap"
+msgstr "--update-profile ile kullanılacak bir veya daha çok profil ayarı yap"
 
 #: src/remmina.c:119
 msgid "Encrypt a password"
@@ -621,22 +605,15 @@ msgstr "Parolayı şifrele"
 #. * to log more verbose statements.
 #.
 #: src/remmina.c:334
-#, fuzzy
-#| msgid ""
-#| "Remmina does not log all output statements. To enable a more verbose "
-#| "output please use G_MESSAGES_DEBUG=all as an environment variable.\n"
-#| "For more information, please visit the Remmina Wiki at:\n"
-#| "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgid ""
 "Remmina does not log all output statements. Turn on more verbose output by "
 "using \"G_MESSAGES_DEBUG=all\" as an environment variable.\n"
 "More info available on the Remmina wiki at:\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgstr ""
-"Remmina tüm çıktı ifadelerini günlüğe kaydetmez. Daha ayrıntılı bir çıktıyı "
-"etkinleştirmek için lütfen ortam değişkeni olarak G_MESSAGES_DEBUG=all "
-"kullanın.\n"
-"Daha fazla bilgi için lütfen Remmina Wiki sayfasını ziyaret edin:\n"
+"Remmina tüm çıktı ifadelerini günlüğe kaydetmez. Daha ayrıntılı çıktı için "
+"ortam değişkeni olarak \"G_MESSAGES_DEBUG=all\" kullanın.\n"
+"Remmina wiki sayfasında daha çok bilgi bulunabilir:\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
@@ -740,7 +717,8 @@ msgstr "Güvenlik ayarlarını değiştir"
 msgid "translator-credits"
 msgstr ""
 "Serdar Sağlam\n"
-"Oğuz Ersen"
+"Oğuz Ersen\n"
+"Emin Tufan Çetin"
 
 #: src/remmina_ftp_client.c:389
 msgid "Choose download location"
@@ -752,7 +730,7 @@ msgstr "Seçili dosyaları sunucudan silmek istiyor musunuz?"
 
 #: src/remmina_ftp_client.c:586
 msgid "Choose a file to upload"
-msgstr "Yüklemek için bir dosya seç"
+msgstr "Yüklenecek dosya seç"
 
 #: src/remmina_ftp_client.c:593
 msgid "Upload folder"
@@ -1180,7 +1158,7 @@ msgstr "Tünel dinleme soketine veri gönderilemedi: %s"
 
 #: src/remmina_ssh.c:2120
 msgid "Assign a destination port."
-msgstr "Bir hedef bağlantı noktası atayın."
+msgstr "Hedef bağlantı noktası ata."
 
 #: src/remmina_ssh.c:2127
 msgid "Could not create socket."
@@ -1225,7 +1203,7 @@ msgstr "Kabuk istenemedi: %s"
 
 #: src/remmina_ssh.c:2523
 msgid "Could not create PTY device."
-msgstr "PTY cihazı oluşturulamadı."
+msgstr "PTY aygıtı oluşturulamadı."
 
 #: src/remmina_exec.c:478
 #, c-format
@@ -1245,11 +1223,11 @@ msgstr[1] "Toplam %i öge."
 
 #: src/remmina_main.c:695
 msgid "Network status: fully online"
-msgstr ""
+msgstr "Ağ durumu: tümüyle çevrim içi"
 
 #: src/remmina_main.c:698
 msgid "Network status: offline"
-msgstr ""
+msgstr "Ağ durumu: çevrim dışı"
 
 #: src/remmina_main.c:902
 #, c-format
@@ -1341,7 +1319,7 @@ msgstr "Klasörden okunamadı. %s"
 
 #: src/remmina_sftp_client.c:823
 msgid "Are you sure you want to cancel the file transfer in progress?"
-msgstr "Devam eden dosya aktarımını iptal etmek istediğinizden emin misiniz?"
+msgstr "Süren dosya aktarımını iptal etmek istediğinizden emin misiniz?"
 
 #: src/remmina_sftp_client.c:857
 #, c-format
@@ -1354,7 +1332,7 @@ msgstr "Dosya zaten var"
 
 #: src/remmina_sftp_client.c:945
 msgid "Resume"
-msgstr "Devam"
+msgstr "Sürdür"
 
 #: src/remmina_sftp_client.c:946
 msgid "Overwrite"
@@ -1780,16 +1758,12 @@ msgid "User password"
 msgstr "Kullanıcı parolası"
 
 #: src/remmina_ssh_plugin.c:1478
-#, fuzzy
-#| msgid "Pre-command"
 msgid "Opening command"
-msgstr "Ön-komut"
+msgstr "Açış komutu"
 
 #: src/remmina_ssh_plugin.c:1479
-#, fuzzy
-#| msgid "Start-up program"
 msgid "Start-up background program"
-msgstr "Başlangıç programı"
+msgstr "Başlangıç arka plan programı"
 
 #: src/remmina_ssh_plugin.c:1484
 msgid ""
@@ -2760,8 +2734,6 @@ msgid "Server CA certificate"
 msgstr "Sunucu CA sertifikası"
 
 #: plugins/spice/spice_plugin.c:694
-#, fuzzy
-#| msgid "Prefered video codec"
 msgid "Preferred video codec"
 msgstr "Yeğlenen video çözücü"
 
@@ -2770,8 +2742,6 @@ msgid "Turn off GStreamer overlay"
 msgstr "GStreamer kaplamayı kapat"
 
 #: plugins/spice/spice_plugin.c:698
-#, fuzzy
-#| msgid "Prefered image compression"
 msgid "Preferred image compression"
 msgstr "Yeğlenen resim sıkıştırma"
 
@@ -2865,14 +2835,6 @@ msgstr ""
 "    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
 
 #: plugins/vnc/vnc_plugin.c:1961
-#, fuzzy
-#| msgid ""
-#| "Listening for remote VNC connection:\n"
-#| "  • The \"Listen on port\" field is the port Remmina will listen to,\n"
-#| "    e.g. 8888\n"
-#| "  • From the remote VNC server, you will connect to\n"
-#| "    Remmina, e.g. with x11vnc:\n"
-#| "    x11vnc -display :0 -connect 192.168.1.36:8888"
 msgid ""
 "Listening for remote VNC connection:\n"
 "  • The “Listen on port” field is the port Remmina will listen to,\n"
@@ -2882,7 +2844,7 @@ msgid ""
 "    x11vnc -display :0 -connect 192.168.1.36:8888"
 msgstr ""
 "Uzak VNC bağlantısı için dinleniyor:\n"
-"  • \"Dinlenecek bağlantı noktası\" alanı Remmina'nın\n"
+"  • “Dinlenecek bağlantı noktası” alanı Remmina'nın\n"
 "    dinleyeceği yerdir, örn. 8888\n"
 "  • Uzak VNC sunucusundan, Remmina'ya\n"
 "    bağlanacaksınız, örn. x11vnc ile:\n"
@@ -2900,6 +2862,16 @@ msgid ""
 "  • On “Best quality” encodings is set to “copyrect zrle ultra zlib hextile "
 "corre rre raw”"
 msgstr ""
+"Önceden tanımlı VNC kodlamalarını görmezden gel:\n"
+"\n"
+"  • “Düşük nitelik” kodlamalarında şuna ayarlıdır: “copyrect zlib hextile "
+"raw”\n"
+"  • “Düşük nitelik” kodlamalarında şuna ayarlıdır: “tight zrle ultra "
+"copyrect hextile zlib corre rre raw”\n"
+"  • “İyi nitelik” kodlamalarında şuna ayarlıdır: “tight zrle ultra copyrect "
+"hextile zlib corre rre raw”\n"
+"  • “En iyi nitelik” kodlamalarında şuna ayarlıdır: “copyrect zrle ultra "
+"zlib hextile corre rre raw”"
 
 #: plugins/vnc/vnc_plugin.c:1996
 msgid "Repeater"
@@ -2911,15 +2883,15 @@ msgstr "Dinlenecek bağlantı noktası"
 
 #: plugins/vnc/vnc_plugin.c:2028
 msgid "Override pre-set VNC encodings"
-msgstr ""
+msgstr "Önceden tanımlı VNC kodlamalarını görmezden gel"
 
 #: plugins/vnc/vnc_plugin.c:2029
 msgid "Force tight encoding"
-msgstr ""
+msgstr "Sıkı kodlamaya zorla"
 
 #: plugins/vnc/vnc_plugin.c:2029
 msgid "Enabling this may help when the remote desktop looks scrambled"
-msgstr ""
+msgstr "Bunu etkinleştirmek uzak masaüstünün karmaşık görünmesini önleyebilir"
 
 #: plugins/vnc/vnc_plugin.c:2032 plugins/gvnc/gvnc_plugin.c:868
 msgid "Ignore remote bell messages"
@@ -3024,7 +2996,7 @@ msgid ""
 msgstr ""
 "Uyarı: Bir komutu eş zamanlı olarak yürütmek Remmina’nın yanıt vermemesine "
 "neden olabilir.\n"
-"Devam etmek istiyor musunuz?"
+"Sürdürmek istiyor musunuz?"
 
 #: plugins/exec/exec_plugin.c:274
 msgid "Command"
@@ -3077,9 +3049,8 @@ msgstr "İç hata: %s"
 
 #: plugins/x2go/x2go_plugin.c:290 plugins/x2go/x2go_plugin.c:422
 #: plugins/x2go/x2go_plugin.c:511 plugins/x2go/x2go_plugin.c:1290
-#, fuzzy
 msgid "Parameter 'custom_data' is not initialized!"
-msgstr "'default_username' parametresi uninitialized."
+msgstr "'custom_data' parametresi başlatılmadı!"
 
 #: plugins/x2go/x2go_plugin.c:303
 msgid "Broken `DialogData`! Aborting…"
@@ -3134,7 +3105,6 @@ msgid "SSHFS port"
 msgstr "SSHFS bağlantı noktası"
 
 #: plugins/x2go/x2go_plugin.c:481
-#, fuzzy
 msgid "Visible"
 msgstr "Görünür"
 
@@ -3150,7 +3120,7 @@ msgstr "_Sonlandır"
 #. TRANSLATORS: Stick to x2goclient's translation for resume.
 #: plugins/x2go/x2go_plugin.c:532
 msgid "_Resume"
-msgstr "_Devam"
+msgstr "_Sürdür"
 
 #: plugins/x2go/x2go_plugin.c:534
 msgid "_New"
@@ -3163,10 +3133,9 @@ msgid "Terminating X2Go sessions can take a moment."
 msgstr "X2Go oturumlarını sonlandırmak biraz zaman alabilir."
 
 #: plugins/x2go/x2go_plugin.c:618 plugins/x2go/x2go_plugin.c:620
-#, fuzzy, c-format
-#| msgid "Unknown property"
+#, c-format
 msgid "Unknown property '%i'"
-msgstr "Bilinmeyen özellik"
+msgstr "Bilinmeyen özellik '%i'"
 
 #: plugins/x2go/x2go_plugin.c:708 plugins/x2go/x2go_plugin.c:755
 msgid "Couldn't find child GtkTreeView of session chooser dialog."
@@ -3177,17 +3146,15 @@ msgid ""
 "Neither the 'dialog' nor 'treeview' parameters are initialized! At least one "
 "of them must be given."
 msgstr ""
+"Ne 'dialog' ne de 'treeview' parametreleri başlatıldı! En az biri "
+"verilmelidir."
 
 #: plugins/x2go/x2go_plugin.c:729
-#, fuzzy
-#| msgid ""
-#| "GtkTreeModel of session chooser dialog could not be obtained for an "
-#| "unknown reason."
 msgid ""
 "Could not obtain \"GtkTreeModelFilter*\" of the session chooser dialog, for "
 "unknown reason."
 msgstr ""
-"Oturum seçici iletişim kutusunun GtkTreeModel'i bilinmeyen bir nedenle "
+"Oturum seçici iletişim kutusunun \"GtkTreeModelFilter*\"ı bilinmeyen nedenle "
 "alınamadı."
 
 #: plugins/x2go/x2go_plugin.c:764
@@ -3216,7 +3183,6 @@ msgid "parameter 'error' is 'NULL'."
 msgstr "'error' parametresi 'NULL'."
 
 #: plugins/x2go/x2go_plugin.c:918
-#, fuzzy
 msgid "parameter 'env' is either invalid or uninitialized."
 msgstr "'env' parametresi geçersiz veya başlatmamış."
 
@@ -3231,12 +3197,13 @@ msgid ""
 msgstr "Gerekli PyHoca-CLI işlemi bir internet bağlantısı sorunuyla karşılaştı."
 
 #: plugins/x2go/x2go_plugin.c:972
-#, fuzzy, c-format
-#| msgid "Could not start PyHoca-CLI (%i): '%s'"
+#, c-format
 msgid ""
 "Could not start PyHoca-CLI:\n"
 "%s"
-msgstr "PyHoca-CLI (%i) başlatılamadı: '%s'"
+msgstr ""
+"PyHoca-CLI başlatılamadı:\n"
+"'%s'"
 
 #: plugins/x2go/x2go_plugin.c:983
 #, c-format
@@ -3256,18 +3223,16 @@ msgstr ""
 "%i. Hata: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:1032
-#, fuzzy
 msgid "Neither the 'path' nor 'dialog' parameters are initialized."
-msgstr "'env' parametresi geçersiz veya başlatmamış."
+msgstr "Ne 'path' ne de 'dialog' parametreleri başlatılmadı."
 
 #: plugins/x2go/x2go_plugin.c:1048
 msgid "GtkTreePath 'path' describes a non-existing row!"
 msgstr "GtkTreePath 'path' var olmayan bir satırı tanımlıyor!"
 
 #: plugins/x2go/x2go_plugin.c:1113
-#, fuzzy
 msgid "Parameter 'custom_data' is not fully initialized!"
-msgstr "'default_username' parametresi uninitialized."
+msgstr "'custom_data' parametresi tümüyle başlatılmadı!"
 
 #: plugins/x2go/x2go_plugin.c:1141 plugins/x2go/x2go_plugin.c:1782
 #: plugins/x2go/x2go_plugin.c:2076
@@ -3275,12 +3240,13 @@ msgid "'Invalid connection data.'"
 msgstr "'Geçersiz bağlantı verisi.'"
 
 #: plugins/x2go/x2go_plugin.c:1218
-#, fuzzy, c-format
-#| msgid "An error occured while trying to terminate a X2Go session: %s"
+#, c-format
 msgid ""
 "An error occured while trying to terminate X2Go session '%s':\n"
 "%s"
-msgstr "Bir X2Go oturumu sonlandırılmaya çalışılırken bir hata oluştu: %s"
+msgstr ""
+"'%s' X2Go oturumu sonlandırılmaya çalışılırken hata oluştu:\n"
+"%s"
 
 #: plugins/x2go/x2go_plugin.c:1230 plugins/x2go/x2go_plugin.c:1594
 msgid "An error occured."
@@ -3293,7 +3259,7 @@ msgstr "Oturum seçici iletişim kutusundan oturum kimliği alınamadı."
 #: plugins/x2go/x2go_plugin.c:1337
 #, c-format
 msgid "Resuming session: '%s'"
-msgstr "Oturuma devam ediliyor: '%s'"
+msgstr "Oturum sürdürülüyor: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:1352
 #, c-format
@@ -3331,9 +3297,8 @@ msgstr ""
 "'s_username' dizgeleri belirlenmedi."
 
 #: plugins/x2go/x2go_plugin.c:1686
-#, fuzzy
 msgid "Parameter 'default_username' is uninitialized."
-msgstr "'default_username' parametresi uninitialized."
+msgstr "'default_username' parametresi başlatılmadı."
 
 #: plugins/x2go/x2go_plugin.c:1715
 msgid "Enter X2Go credentials"
@@ -3354,7 +3319,7 @@ msgstr "Yeterli bellek ayrılamadı!"
 #: plugins/x2go/x2go_plugin.c:1961
 #, c-format
 msgid "Found already existing X2Go session with ID: '%s'"
-msgstr "'%s' kimliğine sahip zaten mevcut X2Go oturumu bulundu"
+msgstr "Hâlihazırda var olan '%s' kimlikli X2Go oturumu bulundu"
 
 #. TRANSLATORS: Please stick to X2GoClient's translation.
 #: plugins/x2go/x2go_plugin.c:2004
@@ -3378,7 +3343,7 @@ msgstr "Uzak makinede oturum bulunamadı. Şimdi yeni bir oturum oluşturuluyor.
 
 #: plugins/x2go/x2go_plugin.c:2098
 msgid "Choose a session to resume:"
-msgstr "Devam etmek için bir oturum seçin:"
+msgstr "Sürdürülecek oturum seç:"
 
 #: plugins/x2go/x2go_plugin.c:2141
 msgid "Waiting for user to select a session…"
@@ -3396,13 +3361,13 @@ msgstr "Kritik olmayan bir hata oluştu: %s"
 #: plugins/x2go/x2go_plugin.c:2202
 #, c-format
 msgid "User chose to resume session with ID: '%s'"
-msgstr "Kullanıcı, '%s' kimliğine sahip oturuma devam etmeyi seçti"
+msgstr "Kullanıcı, '%s' kimlikli oturumu sürdürmeyi seçti"
 
 #. TRANSLATORS: Please stick to X2GoClient's way of translating.
 #: plugins/x2go/x2go_plugin.c:2223
 #, c-format
 msgid "Resuming session '%s'…"
-msgstr "'%s' oturumuna devam ediliyor…"
+msgstr "'%s' oturumu sürdürülüyor…"
 
 #: plugins/x2go/x2go_plugin.c:2354
 msgid "DPI setting is out of bounds. Please adjust it in profile settings."
@@ -3873,7 +3838,7 @@ msgid ""
 msgstr ""
 "Telif hakkı © 2014–2021 Antenore Gatta, Giovanni Panozzo.\n"
 "Telif hakkı © 2009–2014 Vic Lee\n"
-"Daha fazla ayrıntı COPYING dosyasında"
+"Daha çok ayrıntı COPYING dosyasındadır"
 
 #: data/ui/remmina_about.glade:38
 msgid "https://www.remmina.org/"
@@ -3994,17 +3959,11 @@ msgstr ""
 
 #: data/ui/remmina_news.glade:169
 msgid "Receives updated news from remmina.org"
-msgstr ""
+msgstr "remmina.org'tan güncel haberleri alır"
 
 #: data/ui/remmina_news.glade:182
-#, fuzzy
-#| msgid ""
-#| "* By enabling statistics and/or news you consent to send and fetch data "
-#| "to/from remmina.org"
 msgid "* By turning on news you consent to fetching data from remmina.org"
-msgstr ""
-"* İstatistikleri ve/veya haberleri etkinleştirerek remmina.org adresiyle "
-"veri alış verişine razı olursunuz"
+msgstr "* Haberleri etkinleştirerek remmina.org'tan veri alımına razı olursunuz"
 
 #: data/ui/remmina_news.glade:205
 msgid "<big>Take part</big>"
@@ -4284,14 +4243,8 @@ msgid "Prevent screenshots from entering clipboard"
 msgstr "Ekran görüntülerinin panoya girmesini önle"
 
 #: data/ui/remmina_preferences.glade:432
-#, fuzzy
-#| msgid ""
-#| "* By enabling statistics and/or news you consent to send and fetch data "
-#| "to/from remmina.org"
 msgid "* By enabling news you consent to fetch data from remmina.org"
-msgstr ""
-"* İstatistikleri ve/veya haberleri etkinleştirerek remmina.org adresiyle "
-"veri alış verişine razı olursunuz"
+msgstr "* Haberleri etkinleştirerek remmina.org'tan veri alımına razı olursunuz"
 
 #: data/ui/remmina_preferences.glade:500
 msgid "Options"
