@@ -17,8 +17,8 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-12-16 23:08+0000\n"
-"PO-Revision-Date: 2021-12-13 12:31+0000\n"
-"Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
+"PO-Revision-Date: 2021-12-17 08:06+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/remmina/remmina/"
 "it/>\n"
 "Language: it\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.10-dev\n"
+"X-Generator: Weblate 4.10\n"
 "X-Launchpad-Export-Date: 2011-01-18 05:16+0000\n"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:354
@@ -256,8 +256,7 @@ msgstr ""
 
 #: src/remmina_pref_dialog.c:805
 msgid "Picking a terminal colouring file replaces the file: "
-msgstr ""
-"La scelta di un file di colorazione del terminale sostituisce il file: "
+msgstr "La scelta di un file di colorazione del terminale sostituisce il file: "
 
 #: src/remmina_pref_dialog.c:809
 msgid ""
@@ -671,7 +670,8 @@ msgstr ""
 "Per connettersi rapidamente utilizzando un URI:\n"
 "\n"
 "remmina -c rdp://nomeutente@server\n"
-"remmina -c rdp://dominio\\\\nomeutente@server\n"
+"remmina -c rdp://dominio\\\\n"
+"omeutente@server\n"
 "remmina -c vnc://nomeutente@server\n"
 "remmina -c vnc://server? VncUsername=nomeutente\n"
 "remmina -c ssh://nomeutente@ server\n"
@@ -693,8 +693,8 @@ msgstr ""
 "risoluzione di un profilo di connessione Remmina, utilizzare:\n"
 "\n"
 "echo \"nomeutente \\ napassword\" | remmina --update-profile /PERCORSO/DEL/"
-"FILE/NOME.remmina --set-option username --set-option resolution_mode = 2 --"
-"set-option password\n"
+"FILE/NOME.remmina --set-option username --set-option resolution_mode = 2 "
+"--set-option password\n"
 
 #: src/remmina_public.c:345
 #, c-format
@@ -1677,8 +1677,7 @@ msgstr "%s Potresti dover installare e usare XEmbed SNI Proxy"
 #: src/remmina_icon.c:386
 #, c-format
 msgid "%s You may need to install, and use Gnome Shell Extension Appindicator"
-msgstr ""
-"%s Potresti dover installare e usare Gnome Shell Extension Appindicator"
+msgstr "%s Potresti dover installare e usare Gnome Shell Extension Appindicator"
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_ssh_plugin.c:539
@@ -1914,8 +1913,8 @@ msgstr "Rimappatura del codice di scansione della tastiera"
 #: plugins/rdp/rdp_settings.c:483
 msgid "List of key=value,… pairs to remap scancodes. E.g. 0x56=0x29,0x29=0x56"
 msgstr ""
-"Elenco delle coppie chiave=valore, … Per rimappare i codici di scansione. "
-"Es: 0x56=0x29,0x29=0x56"
+"Elenco delle coppie chiave=valore, … Per rimappare i codici di scansione. Es:"
+" 0x56=0x29,0x29=0x56"
 
 #: plugins/rdp/rdp_settings.c:486
 msgid "FreeRDP > 2.3.0 is required to map scancodes"
@@ -1994,8 +1993,8 @@ msgstr "Numero tentativi di riconnessione"
 msgid ""
 "The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
 msgstr ""
-"Numero massimo di tentativi di riconnessione in caso di disconnessione RDP "
-"(impostazione predefinita: 20)"
+"Numero massimo di tentativi di riconnessione in caso di disconnessione RDP ("
+"impostazione predefinita: 20)"
 
 #: plugins/rdp/rdp_plugin.c:769 plugins/rdp/rdp_plugin.c:834
 msgid "Enter RDP authentication credentials"
@@ -2094,8 +2093,8 @@ msgid ""
 "Unable to establish a connection to the RDP server “%s”. Check “Security "
 "protocol negotiation”."
 msgstr ""
-"Impossibile stabilire una connessione al server RDP «%s». Controllare "
-"«Negoziazione del protocollo di sicurezza»."
+"Impossibile stabilire una connessione al server RDP «%s». Controllare «"
+"Negoziazione del protocollo di sicurezza»."
 
 #: plugins/rdp/rdp_plugin.c:2183
 #, c-format
@@ -2848,8 +2847,8 @@ msgid ""
 "    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
 msgstr ""
 "Per connettersi con il protocollo VNC tramite un ripetitore:\n"
-"  - Il campo server deve contenere l'ID del ripetitore, ad esempio "
-"ID:123456789\n"
+"  - Il campo server deve contenere l'ID del ripetitore, ad esempio ID:"
+"123456789\n"
 "  - Il campo ripetitore deve essere impostato con l'IP e la porta del "
 "ripetitore, come:\n"
 "    10.10.10.12:5901\n"
@@ -2867,8 +2866,8 @@ msgid ""
 "    x11vnc -display :0 -connect 192.168.1.36:8888"
 msgstr ""
 "Ascolto per connessione VNC remota:\n"
-"   • Il campo \"In ascolto sulla porta\" è la porta su cui Remmina "
-"ascolterà,\n"
+"   • Il campo \"In ascolto sulla porta\" è la porta su cui Remmina ascolterà,"
+"\n"
 "     ad es. 8888\n"
 "   • Dal server VNC remoto, ti connetterai a\n"
 "     Remmina, ad es. con x11vnc:\n"
@@ -3308,8 +3307,8 @@ msgid ""
 "Please check your profile settings and PyHoca-CLI's output for possible "
 "errors. Also ensure the remote server is reachable."
 msgstr ""
-"Il necessario processo figlio 'pyhoca-cli' si è interrotto "
-"inaspettatamente.\n"
+"Il necessario processo figlio 'pyhoca-cli' si è interrotto inaspettatamente."
+"\n"
 "Controlla le impostazioni del tuo profilo e l'uscita di PyHoca-CLI per "
 "possibili errori. Assicurati inoltre che il server remoto sia raggiungibile."
 
@@ -4244,8 +4243,7 @@ msgstr "Cartella dati Remmina"
 
 #: data/ui/remmina_preferences.glade:297
 msgid "Choose a folder to save connection profiles from Remmina in."
-msgstr ""
-"Scegli una cartella in cui salvare i profili di connessione di Remmina."
+msgstr "Scegli una cartella in cui salvare i profili di connessione di Remmina."
 
 #: data/ui/remmina_preferences.glade:315
 msgid "Remember last view for each connection"

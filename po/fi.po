@@ -14,8 +14,8 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-12-16 23:08+0000\n"
-"PO-Revision-Date: 2021-12-11 16:53+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2021-12-17 08:05+0000\n"
+"Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/remmina/remmina/"
 "fi/>\n"
 "Language: fi\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.10-dev\n"
+"X-Generator: Weblate 4.10\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:354
@@ -680,9 +680,9 @@ msgstr ""
 "Päivitääksesi käyttäjänimi ja salasana ja aseta Remmina-yhteysprofiilille "
 "erilainen resoluutiotila käytä:\n"
 "\n"
-"\techo \"username\\napassword\" | remmina --update-profile /PATH/TO/FOO."
-"remmina --set-option username --set-option resolution_mode=2 --set-option "
-"password\n"
+"\techo \"username\\n"
+"apassword\" | remmina --update-profile /PATH/TO/FOO.remmina --set-option "
+"username --set-option resolution_mode=2 --set-option password\n"
 
 #: src/remmina_public.c:345
 #, c-format
@@ -1007,8 +1007,7 @@ msgstr ""
 #: src/remmina_ssh.c:569 src/remmina_ssh.c:856
 #, c-format
 msgid "Could not authenticate with SSH GSSAPI/Kerberos. %s"
-msgstr ""
-"Todennusta ei voitu todentaa SSH-Kerberos/GSSAPI-todennuksen avulla. %s"
+msgstr "Todennusta ei voitu todentaa SSH-Kerberos/GSSAPI-todennuksen avulla. %s"
 
 #: src/remmina_ssh.c:598
 msgid "The public SSH key changed!"
@@ -2744,8 +2743,7 @@ msgstr "Auto-LZ"
 
 #: plugins/spice/spice_plugin.c:650
 msgid "Disable video overlay if videos are not displayed properly.\n"
-msgstr ""
-"Poista videoiden peittokuva käytöstä, jos videoita ei näytetä oikein.\n"
+msgstr "Poista videoiden peittokuva käytöstä, jos videoita ei näytetä oikein.\n"
 
 #: plugins/spice/spice_plugin.c:675
 msgid "Use TLS encryption"
@@ -2854,8 +2852,8 @@ msgid ""
 msgstr ""
 "Muodosta yhteys VNC:hen toistimen avulla:\n"
 "  - ID:123456789.\n"
-"  - Toistin-kenttään on asetettava toistimen IP ja portti, esim. "
-"seuraavasti:\n"
+"  - Toistin-kenttään on asetettava toistimen IP ja portti, esim. seuraavasti:"
+"\n"
 "    10.10.10.12:5901\n"
 "  - Etäisestä VNC-palvelimesta muodostetaan yhteys osoitteeseen\n"
 "    toistimeen esimerkiksi x11vnc:llä:\n"
@@ -3529,8 +3527,7 @@ msgstr ""
 #: plugins/x2go/x2go_plugin.c:2906
 #, fuzzy
 msgid "Could not initialize pthread. Falling back to non-threaded mode…"
-msgstr ""
-"Pthreadia ei voitu alustaa. Palataan takaisin ei-säikeistettyyn tilaan…"
+msgstr "Pthreadia ei voitu alustaa. Palataan takaisin ei-säikeistettyyn tilaan…"
 
 #. TRANSLATORS: Presumably you just want to translate 'and' into
 #. your language.
@@ -4077,8 +4074,8 @@ msgid ""
 "Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
 "\">remmina.org</a> (*)"
 msgstr ""
-"Nouda uutiset <a href=\"https://remmina.org\" title=\"Remmina news site"
-"\">remmina.orgista</a> (*)"
+"Nouda uutiset <a href=\"https://remmina.org\" title=\"Remmina news site\""
+">remmina.orgista</a> (*)"
 
 #: data/ui/remmina_news.glade:169
 msgid "Receives updated news from remmina.org"
@@ -4109,9 +4106,9 @@ msgid ""
 "</span>\n"
 msgstr ""
 "<span>\n"
-"<b> Kiitos, että valitsit vapaan copyleft-ohjelman. <a href=\"https://"
-"remmina.org/donations/\" title=\"Remmina-lahjoituksia\">Lahjoitukset</a> "
-"tekevät meistä iloisia ja auttavat parantamaan ohjelmaa entisestään.</b>\n"
+"<b> Kiitos, että valitsit vapaan copyleft-ohjelman. <a href=\"https://remmina"
+".org/donations/\" title=\"Remmina-lahjoituksia\">Lahjoitukset</a> tekevät "
+"meistä iloisia ja auttavat parantamaan ohjelmaa entisestään.</b>\n"
 "</span>\n"
 
 #: data/ui/remmina_news.glade:251
@@ -4308,8 +4305,8 @@ msgid ""
 msgstr ""
 "%p Profiilin nimi\n"
 "%h Palvelimen nimi/IP\n"
-"%Y vuosi, %m kuukausi, %d päivä, %H tunti, %M minuutti, %S sekunti (UTC-"
-"aika)\n"
+"%Y vuosi, %m kuukausi, %d päivä, %H tunti, %M minuutti, %S sekunti (UTC-aika)"
+"\n"
 
 #: data/ui/remmina_preferences.glade:280
 msgid ""
@@ -4468,8 +4465,8 @@ msgstr "\"Tartu kaikkiin näppäimistötapahtumiin\" -tilaväri"
 #| msgid "“Grab all keyboard events” status colour"
 msgid "Enable/Disable “Grab all keyboard events” status colour"
 msgstr ""
-"Ota käyttöön/poista käytöstä \"Ota kaikki näppäimistötapahtumat talteen\" -"
-"tilaväri."
+"Ota käyttöön/poista käytöstä \"Ota kaikki näppäimistötapahtumat talteen\" "
+"-tilaväri."
 
 #: data/ui/remmina_preferences.glade:741
 msgid ""
@@ -4574,8 +4571,8 @@ msgstr "SSH-lokitaso"
 #: data/ui/remmina_preferences.glade:1514
 msgid "Seconds of connection idleness before TCP keepalive probes are sent."
 msgstr ""
-"Yhteyden tyhjäkäynnin sekunnit ennen kuin TCP:n pidä hengissä -luotaimet "
-"(Keep Alive) on lähetetty."
+"Yhteyden tyhjäkäynnin sekunnit ennen kuin TCP:n pidä hengissä -luotaimet ("
+"Keep Alive) on lähetetty."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
 #: data/ui/remmina_preferences.glade:1530

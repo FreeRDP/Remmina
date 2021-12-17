@@ -20,8 +20,8 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-12-16 23:08+0000\n"
-"PO-Revision-Date: 2021-12-13 13:53+0000\n"
-"Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
+"PO-Revision-Date: 2021-12-17 08:05+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/remmina/remmina/"
 "fr/>\n"
 "Language: fr\n"
@@ -29,7 +29,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.10-dev\n"
+"X-Generator: Weblate 4.10\n"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:354
 #: src/remmina_protocol_widget.c:1677 src/remmina_protocol_widget.c:1696
@@ -437,8 +437,7 @@ msgstr "Se déconnecter"
 #: src/rcw.c:4298
 #, c-format
 msgid "The file “%s” is corrupted, unreadable, or could not be found."
-msgstr ""
-"Le fichier « %s » est corrompu, inaccessible en lecture ou introuvable."
+msgstr "Le fichier « %s » est corrompu, inaccessible en lecture ou introuvable."
 
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. TRANSLATORS: 'GtkSocket feature is not available'.
@@ -653,8 +652,8 @@ msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgstr ""
 "Remmina ne journalise pas la sortie de toutes les actions. Pour augmenter la "
-"verbosité, veuillez définir la variable d’environnement G_MESSAGES_DEBUG à "
-"« all » (G_MESSAGES_DEBUG=all).\n"
+"verbosité, veuillez définir la variable d’environnement G_MESSAGES_DEBUG à « "
+"all » (G_MESSAGES_DEBUG=all).\n"
 "Pour de plus amples informations, veuillez consulter la page du Wiki de "
 "Remmina suivante :\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
@@ -713,8 +712,8 @@ msgstr ""
 "\tremmina -c ssh://user@server\n"
 "\tremmina -c spice://server\n"
 "\n"
-"• pour une connexion rapide à partir d’un URI et d’un mot de passe "
-"chiffré :\n"
+"• pour une connexion rapide à partir d’un URI et d’un mot de passe chiffré :"
+"\n"
 "\n"
 "\tremmina -c rdp://username:encrypted-password@server\n"
 "\tremmina -c vnc://username:encrypted-password@server\n"
@@ -728,9 +727,10 @@ msgstr ""
 "• pour modifier le nom d’utilisateur, le mot de passe et le mode de "
 "définition d’affichage d’un profile de connexion Remmina :\n"
 "\n"
-"\techo \"nouvelutilisateur\\nnouveaumotdepasse\" | remmina --update-profile /"
-"CHEMIN/VERS/NOMPROFILE.remmina --set-option username --set-option "
-"resolution_mode=2 --set-option password\n"
+"\techo \"nouvelutilisateur\\n"
+"nouveaumotdepasse\" | remmina --update-profile /CHEMIN/VERS/"
+"NOMPROFILE.remmina --set-option username --set-option resolution_mode=2 "
+"--set-option password\n"
 
 #: src/remmina_public.c:345
 #, c-format
@@ -1008,8 +1008,8 @@ msgstr "Veuillez d’abord installer le greffon pour le protocole %s."
 #, c-format
 msgid "Could not authenticate with TOTP/OTP/2FA. %s"
 msgstr ""
-"Authentification par mot de passe à usage unique (TOTP, OTP ou "
-"2FA )impossible. %s"
+"Authentification par mot de passe à usage unique (TOTP, OTP ou 2FA )"
+"impossible. %s"
 
 #: src/remmina_ssh.c:295 src/remmina_ssh.c:676
 #, c-format
@@ -1465,8 +1465,8 @@ msgstr ""
 "<big>Formats pris en charge :\n"
 "• <tt>serveur</tt> ;\n"
 "• <tt>serveur:port</tt> ;\n"
-"• <tt>utilisateur@serveur[:port]</tt> (uniquement pour le protocole SSH).</"
-"big>"
+"• <tt>utilisateur@serveur[:port]</tt> (uniquement pour le protocole "
+"SSH).</big>"
 
 #: src/remmina_file_editor.c:162
 msgid "Input is invalid."
@@ -1582,8 +1582,8 @@ msgstr "Notes"
 #, c-format
 msgid "(%s: %i): Can't validate setting '%s' since 'value' or 'gfe' are NULL!"
 msgstr ""
-"(%s : %i) : impossible de valider le paramètre « %s » car « value » ou "
-"« gfe » est à NULL !"
+"(%s : %i) : impossible de valider le paramètre « %s » car « value » ou « gfe "
+"» est à NULL !"
 
 #: src/remmina_file_editor.c:1441
 #, c-format
@@ -1591,8 +1591,8 @@ msgid ""
 "(%s: %i): Can't validate user input since 'setting_name_to_validate', "
 "'value' or 'gfe' are NULL!"
 msgstr ""
-"(%s : %i) : impossible de valider l’entrée utilisateur car "
-"« setting_name_to_validate », « value » ou « gfe » est à NULL !"
+"(%s : %i) : impossible de valider l’entrée utilisateur car « "
+"setting_name_to_validate », « value » ou « gfe » est à NULL !"
 
 #. TRANSLATORS: Meta-error. Shouldn't be visible.
 #: src/remmina_file_editor.c:1445 plugins/x2go/x2go_plugin.c:2394
@@ -1864,8 +1864,8 @@ msgstr ""
 "  • <tt>%U</tt>, qui sera remplacé par le nom d’utilisateur SSH ;\n"
 "  • <tt>%p</tt>, qui sera remplacé par le nom du profil Remmina ;\n"
 "  • <tt>%g</tt>, qui sera remplacé par le nom de groupe du profil Remmina ;\n"
-"  • <tt>%d</tt>, qui sera remplacé par l’horodatage local au format "
-"ISO 8601.\n"
+"  • <tt>%d</tt>, qui sera remplacé par l’horodatage local au format ISO 8601."
+"\n"
 
 #: src/remmina_ssh_plugin.c:1506
 msgid "Terminal colour scheme"
@@ -2162,8 +2162,8 @@ msgid ""
 "Unable to establish a connection to the RDP server “%s”. Check “Security "
 "protocol negotiation”."
 msgstr ""
-"Impossible d’établir une connexion avec le serveur RDP « %s ». Vérifiez la "
-"« Négociation du protocole de sécurité »."
+"Impossible d’établir une connexion avec le serveur RDP « %s ». Vérifiez la « "
+"Négociation du protocole de sécurité »."
 
 #: plugins/rdp/rdp_plugin.c:2183
 #, c-format
@@ -2180,8 +2180,8 @@ msgid ""
 "You requested a H.264 GFX mode for the server “%s”, but your libfreerdp does "
 "not support H.264. Please use a non-AVC colour depth setting."
 msgstr ""
-"Vous avez demandé le mode d’affichage graphique H.264 pour le serveur "
-"« %s », mais votre version de la bibliothèque libfreerdp ne le prend pas en "
+"Vous avez demandé le mode d’affichage graphique H.264 pour le serveur « %s »"
+", mais votre version de la bibliothèque libfreerdp ne le prend pas en "
 "charge. Veuillez sélectionner un mode de profondeur de couleur autre qu’AVC."
 
 #: plugins/rdp/rdp_plugin.c:2196
@@ -2195,8 +2195,8 @@ msgid ""
 "The Remote Desktop Gateway “%s” denied the user “%s\\%s” access due to "
 "policy."
 msgstr ""
-"La passerelle de bureau à distance « %s » a refusé l’accès à l’utilisateur "
-"« %s\\%s » en raison de sa politique de sécurité."
+"La passerelle de bureau à distance « %s » a refusé l’accès à l’utilisateur « "
+"%s\\%s » en raison de sa politique de sécurité."
 
 #: plugins/rdp/rdp_plugin.c:2211
 #, c-format
@@ -2205,8 +2205,7 @@ msgstr "Connexion au serveur RDP « %s » impossible."
 
 #: plugins/rdp/rdp_plugin.c:2554
 msgid "Automatic (32 bpp) (Server chooses its best format)"
-msgstr ""
-"Automatique (32 bits par pixel) (le serveur choisit le meilleur format)"
+msgstr "Automatique (32 bits par pixel) (le serveur choisit le meilleur format)"
 
 #: plugins/rdp/rdp_plugin.c:2555
 msgid "GFX AVC444 (32 bpp)"
@@ -2412,8 +2411,8 @@ msgid ""
 "\n"
 msgstr ""
 "Liste d’identifiants de moniteur et d’orientations d’affichage :\n"
-" • <ident. 1>[:<orientation en degrés>][,<ident. 2>:<orientation en degrés>]"
-"…\n"
+" • <ident. 1>[:<orientation en degrés>][,<ident. 2>:<orientation en degrés>]…"
+"\n"
 " • 0,1,2,3\n"
 " • 0:270,1:90\n"
 "\n"
@@ -2928,8 +2927,8 @@ msgid ""
 "    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
 msgstr ""
 "Afin de se connecter avec le protocole VNC à l’aide d’un répéteur :\n"
-"  • le champ serveur doit contenir l’identifiant du répéteur précédé de "
-"« ID: », p. ex. ID:123456789\n"
+"  • le champ serveur doit contenir l’identifiant du répéteur précédé de « ID:"
+" », p. ex. ID:123456789\n"
 "  • le champ répéteur doit être défini avec l’adresse IP et le port du "
 "répéteur, tel que : 10.10.10.12:5901\n"
 "  • depuis le serveur VNC distant, vous vous connecterez au répéteur, p. ex. "
@@ -2956,8 +2955,8 @@ msgstr ""
 "À l’écoute d’une connexion VNC cliente :\n"
 "  • le champ « Écouter sur le port » définit le port sur lequel Remmina va "
 "écouter, p. ex. 8888 ;\n"
-"  • depuis le client VNC distant, vous pourrez vous connecter à Remmina, "
-"p. ex. avec x11vnc :\n"
+"  • depuis le client VNC distant, vous pourrez vous connecter à Remmina, p. "
+"ex. avec x11vnc :\n"
 "    x11vnc -display :0 -connect 192.168.1.36:8888"
 
 #: plugins/vnc/vnc_plugin.c:1969
@@ -3493,8 +3492,8 @@ msgstr "Reprise de la session « %s »…"
 #: plugins/x2go/x2go_plugin.c:2354
 msgid "DPI setting is out of bounds. Please adjust it in profile settings."
 msgstr ""
-"Le paramètre de résolution d’affichage (DPI) est hors limites. Veuillez "
-"l’ajuster dans les paramètres du profil."
+"Le paramètre de résolution d’affichage (DPI) est hors limites. Veuillez l’"
+"ajuster dans les paramètres du profil."
 
 #: plugins/x2go/x2go_plugin.c:2396
 msgid "An error occured while starting an X2Go session…"
@@ -3704,8 +3703,8 @@ msgstr "Direction du presse‐papiers"
 #: plugins/x2go/x2go_plugin.c:3212
 msgid "Which direction should clipboard content be copied? (default: 'both')."
 msgstr ""
-"Dans quel sens le contenu du presse‐papiers doit‐il être copié ? "
-"(par défaut : « bidirectionnel »)."
+"Dans quel sens le contenu du presse‐papiers doit‐il être copié ? (par défaut "
+": « bidirectionnel »)."
 
 #: plugins/x2go/x2go_plugin.c:3216
 msgid "DPI resolution"
@@ -3899,8 +3898,8 @@ msgid ""
 "following commands in a terminal window:"
 msgstr ""
 "Afin de permettre l’accès à certaines fonctionnalités importantes, comme la "
-"sauvegarde des mots de passe dans votre trousseau de clefs ou le partage "
-"d’imprimantes via le protocole RDP, veuillez lancer votre gestionnaire de "
+"sauvegarde des mots de passe dans votre trousseau de clefs ou le partage d’"
+"imprimantes via le protocole RDP, veuillez lancer votre gestionnaire de "
 "logiciels et donner à Remmina les permissions adéquates. Vous pouvez "
 "également le faire en tapant les commandes suivantes dans un terminal :"
 
@@ -4001,8 +4000,8 @@ msgstr "Déplacer vers le bas"
 #: data/ui/remmina_mpc.glade:14
 msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
 msgstr ""
-"<span weight='bold' size='larger'>Modificateur de mots de passe multiples</"
-"span>"
+"<span weight='bold' size='larger'>Modificateur de mots de passe "
+"multiples</span>"
 
 #: data/ui/remmina_mpc.glade:32
 msgid "Change"
@@ -4129,8 +4128,8 @@ msgid ""
 msgstr ""
 "<span>\n"
 "<b>Nous vous sommes très reconnaissants d’avoir choisi un logiciel libre, <a "
-"href=\"https://remmina.org/donations/\" title=\"Où est l’argent Lebowski ? "
-"« blblblblblb »\">les dons nous font également plaisir</a>, et aident à "
+"href=\"https://remmina.org/donations/\" title=\"Où est l’argent Lebowski ? « "
+"blblblblblb »\">les dons nous font également plaisir</a>, et aident à "
 "améliorer plus encore Remmina.</b>\n"
 "</span>\n"
 
@@ -4160,8 +4159,7 @@ msgstr "Commuter l’affichage par groupe en liste"
 
 #: data/ui/remmina_main.glade:79
 msgid "Select the protocol to use with the quick connect bar."
-msgstr ""
-"Sélectionnez le protocole à utiliser avec la barre de connexion rapide."
+msgstr "Sélectionnez le protocole à utiliser avec la barre de connexion rapide."
 
 #: data/ui/remmina_main.glade:97
 msgid "Search string or server name/IP address for “Quick Connect”"
@@ -4333,8 +4331,8 @@ msgid ""
 msgstr ""
 "%p : nom du profil ;\n"
 "%h : nom d’hôte ou adresse IP du serveur ;\n"
-"%Y : année, %m : mois, %d : jour, %H : heure, %M : minutes, %S : secondes "
-"(temps universel).\n"
+"%Y : année, %m : mois, %d : jour, %H : heure, %M : minutes, %S : secondes ("
+"temps universel).\n"
 
 #: data/ui/remmina_preferences.glade:280
 msgid ""
@@ -4509,8 +4507,8 @@ msgid ""
 "connection toolbar (when in fullscreen)."
 msgstr ""
 "Nom de couleur en anglais ou code hexadécimal (« red » ou « #ff0000 »).\n"
-"Permet de définir la couleur de fond des noms des connexions dans la barre "
-"d’outils de connexion de Remmina en mode plein écran."
+"Permet de définir la couleur de fond des noms des connexions dans la barre d’"
+"outils de connexion de Remmina en mode plein écran."
 
 #: data/ui/remmina_preferences.glade:798
 msgid "Appearance"

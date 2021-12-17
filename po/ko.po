@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-12-16 23:08+0000\n"
-"PO-Revision-Date: 2021-12-11 14:47+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2021-12-17 08:07+0000\n"
+"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/remmina/remmina/"
 "ko/>\n"
 "Language: ko\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.10-dev\n"
+"X-Generator: Weblate 4.10\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:354
@@ -259,8 +259,8 @@ msgid ""
 "“Advanced” tab of terminal connections and editable in the “Terminal” tab in "
 "the settings."
 msgstr ""
-"이 파일에는 터미널 연결의 \"고급\" 탭에서 선택할 수 있는 \"사용자 지정\" 터미"
-"널 색상 구성표가 포함되어 있으며 설정의 \"터미널\" 탭에서 편집할 수 있습니다."
+"이 파일에는 터미널 연결의 \"고급\" 탭에서 선택할 수 있는 \"사용자 지정\" 터미널 색상 구성표가 포함되어 있으며 설정의 \"터미널"
+"\" 탭에서 편집할 수 있습니다."
 
 #: src/remmina_message_panel.c:163 data/ui/remmina_mpc.glade:46
 #: data/ui/remmina_unlock.glade:46
@@ -671,12 +671,11 @@ msgstr ""
 "\n"
 "\tremmina --encrypt-password\n"
 "\n"
-"사용자 이름과 암호를 갱신하고, Remmina 연결 프로필에서 다른 해상도 모드를 설"
-"정하는데 사용: \n"
+"사용자 이름과 암호를 갱신하고, Remmina 연결 프로필에서 다른 해상도 모드를 설정하는데 사용: \n"
 "\n"
-"\techo \"username\\napassword\" | remmina --update-profile /PATH/TO/FOO."
-"remmina --set-option username --set-option resolution_mode=2 --set-option "
-"password\n"
+"\techo \"username\\n"
+"apassword\" | remmina --update-profile /PATH/TO/FOO.remmina --set-option "
+"username --set-option resolution_mode=2 --set-option password\n"
 
 #: src/remmina_public.c:345
 #, c-format
@@ -1495,9 +1494,7 @@ msgstr "노트"
 #: src/remmina_file_editor.c:1438
 #, fuzzy, c-format
 msgid "(%s: %i): Can't validate setting '%s' since 'value' or 'gfe' are NULL!"
-msgstr ""
-"(%s: %i): '값' 또는 'gfe'가 NULL이기 때문에 설정 '%s'의 유효성을 검사할 수 없"
-"습니다!"
+msgstr "(%s: %i): '값' 또는 'gfe'가 NULL이기 때문에 설정 '%s'의 유효성을 검사할 수 없습니다!"
 
 #: src/remmina_file_editor.c:1441
 #, fuzzy, c-format
@@ -1505,8 +1502,8 @@ msgid ""
 "(%s: %i): Can't validate user input since 'setting_name_to_validate', "
 "'value' or 'gfe' are NULL!"
 msgstr ""
-"(%s: %i): 'setting_name_to_validate', '값' 또는 'gfe'가 NULL이기 때문에 사용"
-"자 입력의 유효성을 검사할 수 없습니다!"
+"(%s: %i): 'setting_name_to_validate', '값' 또는 'gfe'가 NULL이기 때문에 사용자 입력의 유효성을 "
+"검사할 수 없습니다!"
 
 #. TRANSLATORS: Meta-error. Shouldn't be visible.
 #: src/remmina_file_editor.c:1445 plugins/x2go/x2go_plugin.c:2394
@@ -1886,9 +1883,7 @@ msgstr "키보드 스캔 코드 다시 매핑"
 #: plugins/rdp/rdp_settings.c:483
 #, fuzzy
 msgid "List of key=value,… pairs to remap scancodes. E.g. 0x56=0x29,0x29=0x56"
-msgstr ""
-"키=값 목록,... 쌍을 이면 스캔 코드를 다시 매핑합니다. 예를 들어 "
-"0x56=0x29,0x29=0x56"
+msgstr "키=값 목록,... 쌍을 이면 스캔 코드를 다시 매핑합니다. 예를 들어 0x56=0x29,0x29=0x56"
 
 #: plugins/rdp/rdp_settings.c:486
 #, fuzzy
@@ -2055,9 +2050,7 @@ msgstr "RDP 서버 \"%s\"의 주소를 찾을 수 없습니다."
 msgid ""
 "Could not connect to the RDP server “%s” via TLS. Check that client and "
 "server support a common TLS version."
-msgstr ""
-"TLS로 RDP 서버 \"%s\"에 연결할 수 없습니다. 클라이언트와 서버가 일반 TLS 버전"
-"을 지원하는지 확인하세요."
+msgstr "TLS로 RDP 서버 \"%s\"에 연결할 수 없습니다. 클라이언트와 서버가 일반 TLS 버전을 지원하는지 확인하세요."
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:2175
@@ -2068,9 +2061,7 @@ msgstr ""
 msgid ""
 "Unable to establish a connection to the RDP server “%s”. Check “Security "
 "protocol negotiation”."
-msgstr ""
-"RDP 서버에 대한 연결을 설정할 수 없습니다 %s\". \"보안 프로토콜 협상\"을 확인"
-"합니다."
+msgstr "RDP 서버에 대한 연결을 설정할 수 없습니다 %s\". \"보안 프로토콜 협상\"을 확인합니다."
 
 #: plugins/rdp/rdp_plugin.c:2183
 #, c-format
@@ -2087,8 +2078,8 @@ msgid ""
 "You requested a H.264 GFX mode for the server “%s”, but your libfreerdp does "
 "not support H.264. Please use a non-AVC colour depth setting."
 msgstr ""
-"서버 \"%s\"에 H.264 GFX 모드를 요청했지만 libfreerdp가 H.264를 지원하지 않습"
-"니다. 비 AVC 색 심도 설정을 사용하세요."
+"서버 \"%s\"에 H.264 GFX 모드를 요청했지만 libfreerdp가 H.264를 지원하지 않습니다. 비 AVC 색 심도 설정을 "
+"사용하세요."
 
 #: plugins/rdp/rdp_plugin.c:2196
 #, c-format
@@ -2103,9 +2094,7 @@ msgstr "\"%s\"서버가 연결을 거부했습니다."
 msgid ""
 "The Remote Desktop Gateway “%s” denied the user “%s\\%s” access due to "
 "policy."
-msgstr ""
-"정책으로 원격 데스크톱 게이트웨이 \"%s\" 이(가) 사용자 \"%s\\%s\" 접속을 거부"
-"했습니다."
+msgstr "정책으로 원격 데스크톱 게이트웨이 \"%s\" 이(가) 사용자 \"%s\\%s\" 접속을 거부했습니다."
 
 #: plugins/rdp/rdp_plugin.c:2211
 #, c-format
@@ -2227,8 +2216,7 @@ msgid ""
 "  • >= 7065: Windows 8 and newer: SCardGetReaderIcon(),\n"
 "    SCardGetDeviceTypeId()"
 msgstr ""
-"클라이언트 별로 구별하기 위해서 스마트카드 채널의 터미널 서비스는 아래와 같"
-"이 사용합니다:\n"
+"클라이언트 별로 구별하기 위해서 스마트카드 채널의 터미널 서비스는 아래와 같이 사용합니다:\n"
 "  • < 4034: 윈도 XP 기본 스마트 카드 기능\n"
 "  • 4034-7064: 윈도 비스타/7: SCardReadCache(), SCardWriteCache(),\n"
 "    SCardGetTransmitCount()\n"
@@ -2495,8 +2483,8 @@ msgid ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
 msgstr ""
-"\"Samsung_CLX-3300_Series\":\"삼성 CLX-3300 시리즈 PS\";\"캐논 MF410\":\"캐"
-"논 MF410 시리즈 UFR II\""
+"\"Samsung_CLX-3300_Series\":\"삼성 CLX-3300 시리즈 PS\";\"캐논 MF410\":\"캐논 MF410 "
+"시리즈 UFR II\""
 
 #: plugins/rdp/rdp_plugin.c:2771
 msgid "USB device redirection"
@@ -2778,8 +2766,7 @@ msgstr "리디렉션 할 USB 기기 선택"
 
 #: plugins/spice/spice_plugin.c:727
 msgid "SPICE - Simple Protocol for Independent Computing Environments"
-msgstr ""
-"스파이스(SPICE) - Simple Protocol for Independent Computing Environments"
+msgstr "스파이스(SPICE) - Simple Protocol for Independent Computing Environments"
 
 #: plugins/spice/spice_plugin_usb.c:54
 msgid "_Close"
@@ -3283,8 +3270,7 @@ msgid ""
 "errors. Also ensure the remote server is reachable."
 msgstr ""
 "필요한 아동 과정 '피호카-클리'는 예기치 않게 멈췄다.\n"
-"프로필 설정 과 피호카 클라이의 출력을 확인하여 가능한 오류에 대해 확인하고 원"
-"격 서버에 연결할 수 있는지 확인하십시오."
+"프로필 설정 과 피호카 클라이의 출력을 확인하여 가능한 오류에 대해 확인하고 원격 서버에 연결할 수 있는지 확인하십시오."
 
 #: plugins/x2go/x2go_plugin.c:1638
 msgid "Can't save empty username!"
@@ -3302,8 +3288,8 @@ msgid ""
 "An error occured while trying to save new credentials: 's_password' or "
 "'s_username' strings were not set."
 msgstr ""
-"새 자격 증명을 저장하려고 하는 동안 오류가 발생했습니다: 's_password' 또는 "
-"'s_username' 문자열은 설정되지 않았습니다."
+"새 자격 증명을 저장하려고 하는 동안 오류가 발생했습니다: 's_password' 또는 's_username' 문자열은 설정되지 "
+"않았습니다."
 
 #: plugins/x2go/x2go_plugin.c:1686
 msgid "Parameter 'default_username' is uninitialized."
@@ -3412,18 +3398,15 @@ msgid ""
 "too old, or not installed. An old limited set of features will be used for "
 "now."
 msgstr ""
-"피호카 클리의 cmdline 기능을 얻을 수 없습니다. 이것은 당신의 피호카 클라이 버"
-"전이 너무 오래되었거나 피호카 -cli가 설치되지 않음을 나타냅니다! 이제 이전 제"
-"한된 기능 집합이 사용됩니다."
+"피호카 클리의 cmdline 기능을 얻을 수 없습니다. 이것은 당신의 피호카 클라이 버전이 너무 오래되었거나 피호카 -cli가 설치되지 "
+"않음을 나타냅니다! 이제 이전 제한된 기능 집합이 사용됩니다."
 
 #: plugins/x2go/x2go_plugin.c:2529
 #, fuzzy
 msgid ""
 "Could not parse PyHoca-CLI's command-line features. Using a limited feature-"
 "set for now."
-msgstr ""
-"파싱 피호카-클리 기능은 불가능했습니다! 지금은 제한된 기능 집합을 사용하입니"
-"다."
+msgstr "파싱 피호카-클리 기능은 불가능했습니다! 지금은 제한된 기능 집합을 사용하입니다."
 
 #: plugins/x2go/x2go_plugin.c:2535
 #, fuzzy
@@ -3466,8 +3449,7 @@ msgstr "내부 오류: Remmina ProtocolWidget * gp는 NULL입니다!"
 #| msgid ""
 #| "The protocol “%s” is unavailable because GtkSocket only works under X.Org."
 msgid "The %s protocol is unavailable because GtkSocket only works under X.org"
-msgstr ""
-"GtkSocket은 X.Org에서만 동작하기에 \"%s\" 프로토콜을 사용할 수 없습니다."
+msgstr "GtkSocket은 X.Org에서만 동작하기에 \"%s\" 프로토콜을 사용할 수 없습니다."
 
 #: plugins/x2go/x2go_plugin.c:2906
 #, fuzzy
@@ -3633,8 +3615,7 @@ msgstr "DPI 해상도"
 msgid ""
 "Launch session with a specific resolution (in dots per inch). Must be "
 "between 20 and 400."
-msgstr ""
-"특정 해상도로 세션을 시작합니다(인치당 점). 20에서 400 사이여야 합니다."
+msgstr "특정 해상도로 세션을 시작합니다(인치당 점). 20에서 400 사이여야 합니다."
 
 #: plugins/x2go/x2go_plugin.c:3261
 #, fuzzy
@@ -3704,8 +3685,7 @@ msgstr "공유한 연결"
 msgid ""
 "If the server should try to share the desktop by leaving other clients "
 "connected"
-msgstr ""
-"다른 클라이언트가 서버에 연결된 상태에서, 서버가 데스크톱을 공유하려는 경우"
+msgstr "다른 클라이언트가 서버에 연결된 상태에서, 서버가 데스크톱을 공유하려는 경우"
 
 #: plugins/gvnc/gvnc_plugin.c:881
 msgid "Send Ctrl+Alt+_Del"
@@ -3815,10 +3795,8 @@ msgid ""
 "the appropriate permissions to Remmina. As an alternative you can enter the "
 "following commands in a terminal window:"
 msgstr ""
-"레미나가 SNAP 패키지로 실행중인 것 같습니다. 키링의 암호 저장 및 RDP 프린터 "
-"공유와 같은 일부 중요한 기능을 사용하려면 소프트웨어 센터를 열고 레미나에 적"
-"절한 권한을 부여하세요. 또 다른 방법으로 터미널 창에 다음 명령을 입력 할 수 "
-"있습니다:"
+"레미나가 SNAP 패키지로 실행중인 것 같습니다. 키링의 암호 저장 및 RDP 프린터 공유와 같은 일부 중요한 기능을 사용하려면 "
+"소프트웨어 센터를 열고 레미나에 적절한 권한을 부여하세요. 또 다른 방법으로 터미널 창에 다음 명령을 입력 할 수 있습니다:"
 
 #: data/ui/remmina_snap_info_dialog.glade:167
 msgid "<big>Permissions</big>"
@@ -3830,9 +3808,8 @@ msgid ""
 "profiles are saved inside the Snap file system by default. You can change "
 "the location in the Remmina preferences."
 msgstr ""
-"Snap 패키지는 시스템의 일부로 제한적으로 실행되기 때문에 Remmina 프로필은 기"
-"본적으로 Snap 파일 시스템에 저장됩니다. Remmina 환경 설정에서 위치를 변경할 "
-"수 있습니다."
+"Snap 패키지는 시스템의 일부로 제한적으로 실행되기 때문에 Remmina 프로필은 기본적으로 Snap 파일 시스템에 저장됩니다. "
+"Remmina 환경 설정에서 위치를 변경할 수 있습니다."
 
 #: data/ui/remmina_snap_info_dialog.glade:222
 msgid "Change where Remmina profiles are stored"
@@ -3984,8 +3961,7 @@ msgstr ""
 "<big> <b> 뉴스가 꺼져 있습니다. </b> </big>\n"
 "\n"
 "<span>\n"
-"뉴스를 켜면, 프로그램이 Remmina 서버에 연결하여 릴리스 정보를 다운로드 합니"
-"다. \n"
+"뉴스를 켜면, 프로그램이 Remmina 서버에 연결하여 릴리스 정보를 다운로드 합니다. \n"
 "</span>\n"
 "\n"
 "<span>\n"
@@ -4015,8 +3991,8 @@ msgid ""
 "Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
 "\">remmina.org</a> (*)"
 msgstr ""
-"<a href=\"https://remmina.org\" title=\"Remmina 뉴스 사이트\"> remmina.org </"
-"a>에서 뉴스 가져 오기 (*)"
+"<a href=\"https://remmina.org\" title=\"Remmina 뉴스 사이트\"> remmina.org </a>에서 "
+"뉴스 가져 오기 (*)"
 
 #: data/ui/remmina_news.glade:169
 msgid "Receives updated news from remmina.org"
@@ -4028,9 +4004,7 @@ msgstr ""
 #| "* By enabling statistics and/or news you consent to send and fetch data "
 #| "to/from remmina.org"
 msgid "* By turning on news you consent to fetching data from remmina.org"
-msgstr ""
-"* 통계, 또는 뉴스를 활성화하면 remmina.org와 데이터를 주고받는 데 동의하는 것"
-"입니다."
+msgstr "* 통계, 또는 뉴스를 활성화하면 remmina.org와 데이터를 주고받는 데 동의하는 것입니다."
 
 #: data/ui/remmina_news.glade:205
 msgid "<big>Take part</big>"
@@ -4047,9 +4021,9 @@ msgid ""
 "</span>\n"
 msgstr ""
 "<span>\n"
-"<b>카피 레프트인 리브레(libre) 소프트웨어를 사용하는 것이 좋습니다, <a href="
-"\"https://remmina.org/donations/\" title=\"Awesome Remmina donations\">기부"
-"해 주세요</a>, 기부는 프로그램을 더 좋게 만들고 행복하게 합니다.</b>\n"
+"<b>카피 레프트인 리브레(libre) 소프트웨어를 사용하는 것이 좋습니다, <a href=\"https://remmina.org/"
+"donations/\" title=\"Awesome Remmina donations\">기부해 주세요</a>, 기부는 프로그램을 더 좋게 "
+"만들고 행복하게 합니다.</b>\n"
 "</span>\n"
 
 #: data/ui/remmina_news.glade:251
@@ -4275,9 +4249,7 @@ msgstr "마지막 뷰 모드 기억"
 msgid ""
 "Set a custom filename for your Remmina connection profiles, using a "
 "formatting string."
-msgstr ""
-"형식화된 문자열을 사용해서 레미나 연결 프로필의 사용자 정의 파일 이름을 설정"
-"하세요."
+msgstr "형식화된 문자열을 사용해서 레미나 연결 프로필의 사용자 정의 파일 이름을 설정하세요."
 
 #: data/ui/remmina_preferences.glade:349
 msgid "Template for profile filenames"
@@ -4313,9 +4285,7 @@ msgstr "스크린샷이 클립 보드에 추가되지 않도록 제한"
 #| "* By enabling statistics and/or news you consent to send and fetch data "
 #| "to/from remmina.org"
 msgid "* By enabling news you consent to fetch data from remmina.org"
-msgstr ""
-"* 통계, 또는 뉴스를 활성화하면 remmina.org와 데이터를 주고받는 데 동의하는 것"
-"입니다."
+msgstr "* 통계, 또는 뉴스를 활성화하면 remmina.org와 데이터를 주고받는 데 동의하는 것입니다."
 
 #: data/ui/remmina_preferences.glade:500
 msgid "Options"
@@ -4520,9 +4490,7 @@ msgstr "TCP 연결이 종료되기 전에 전송 된 keepalive probe 패킷 수.
 msgid ""
 "Amount of milliseconds to attempt acknowledging data before closing the "
 "corresponding TCP connection forcibly."
-msgstr ""
-"TCP 연결을 강제로 종료하기 전에 데이터 수신을 확인하는 시간(밀리세컨드) 입니"
-"다."
+msgstr "TCP 연결을 강제로 종료하기 전에 데이터 수신을 확인하는 시간(밀리세컨드) 입니다."
 
 #: data/ui/remmina_preferences.glade:1588
 msgid "SSH options"
@@ -4595,9 +4563,7 @@ msgstr "기본 시스템 글꼴 사용"
 msgid ""
 "Selecting “SGR 1” also switches to the bright counterparts of the first 8 "
 "palette colours (in addition to making text bold)."
-msgstr ""
-"\"SGR 1\"을 선택하면 처음 8개 팔레트 색상의 밝은 색상으로 전환됩니다 (텍스트"
-"를 굵게 표시하는 것 외에도)."
+msgstr "\"SGR 1\"을 선택하면 처음 8개 팔레트 색상의 밝은 색상으로 전환됩니다 (텍스트를 굵게 표시하는 것 외에도)."
 
 #: data/ui/remmina_preferences.glade:1975
 msgid "Allow using bright colours with bold text"
@@ -4612,9 +4578,8 @@ msgid ""
 "Choose a colour scheme file. Usually available in /usr/share/remmina/theme. "
 "https://github.com/mbadolato/iTerm2-Color-Schemes has more details."
 msgstr ""
-"색 스키마 파일을 선택하세요. 일반적으로 /usr/share/remmina/theme 에서 사용할 "
-"수 있습니다. 자세한 내용은 https://github.com/mbadolato/iTerm2-Color-Schemes "
-"를 참고하세요."
+"색 스키마 파일을 선택하세요. 일반적으로 /usr/share/remmina/theme 에서 사용할 수 있습니다. 자세한 내용은 "
+"https://github.com/mbadolato/iTerm2-Color-Schemes 를 참고하세요."
 
 #: data/ui/remmina_preferences.glade:2004
 msgid "Pick a terminal colouring file"
