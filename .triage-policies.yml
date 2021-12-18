@@ -14,7 +14,7 @@ resource_rules:
         actions:
           status: close
           comment: |
-            {{author}} This issue is now closed due to with no updates for a long time. Please re-open if still relevant.
+            {{author}} This issue was closed due to not being updated for a long time. Please re-open it if still relevant.
             CC {{assignees}}
 
       - name: Unlabelled after 30 days
@@ -32,7 +32,7 @@ resource_rules:
           labels:
             - needs attention
           comment: |
-            {{author}} This issue is unlabelled after 30 days. It needs somone to label it.
+            {{author}} This issue has gone unlabelled for 30 days. It needs somone to label it.
           summarize:
             title: |
               #{resource[:type].capitalize} require labels
@@ -48,7 +48,7 @@ resource_rules:
 
               /label ~"needs attention"
 
-      - name: Close old needinfo policy
+      - name: Close old "needinfo" policy
         conditions:
           date:
             attribute: updated_at
@@ -63,10 +63,10 @@ resource_rules:
         actions:
           status: close
           comment: |
-            {{author}} This issue is now closed due to being marked as "needinfo" with no updates for a long time. Please re-open if still relevant.
+            {{author}} This issue is now closed due to being marked as "needinfo" with no updates for a long time. Please re-open it if still relevant.
             CC {{assignees}}
 
-      - name: Close old needs attention policy
+      - name: Close old "needs attention" policy
         conditions:
           date:
             attribute: updated_at
@@ -86,7 +86,7 @@ resource_rules:
 
   merge_requests:
     rules:
-      - name: Close old WIP policy
+      - name: Close old "WIP" policy
         conditions:
           title: WIP
           date:
@@ -101,5 +101,5 @@ resource_rules:
         actions:
           status: close
           comment: |
-            {{author}} This merge request is now closed due to being marked as "work in progress" with no updates for a very long time. Please re-open if interested in finishing it.
+            {{author}} This merge request was closed due to being marked as "work in progress" with no updates for a very long time. Please re-open it if interested in finishing it. :)
             CC {{assignees}}
