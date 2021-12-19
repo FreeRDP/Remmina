@@ -1,6 +1,6 @@
 # Remmina - The GTK+ Remote Desktop Client
 #
-# Copyright (C) 2015-2021 Antenore Gatta
+# Copyright (C) 2015-2022 Antenore Gatta
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

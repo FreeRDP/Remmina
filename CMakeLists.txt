@@ -2,7 +2,7 @@
 #
 # Copyright (C) 2011 Marc-Andre Moreau
 # Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
-# Copyright (C) 2016-2021 Antenore Gatta, Giovanni Panozzo
+# Copyright (C) 2016-2022 Antenore Gatta, Giovanni Panozzo
 #
 # This program is free software; you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free Software
@@ -35,7 +35,7 @@ cmake_policy(SET CMP0048 NEW)
 
 project(
   Remmina
-  VERSION 1.4.22
+  VERSION 1.4.23
   DESCRIPTION "The Gtk Remote Desktop Client"
   LANGUAGES C CXX
 )
