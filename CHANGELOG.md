@@ -1,3 +1,14 @@
+## v1.4.23
+[full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.22...v1.4.23)
+
+* Patch for a Remmina segfault and stats code cleaning [!2358](https://gitlab.com/Remmina/Remmina/merge_requests/2358) *@antenore*
+* Make Appindicator optional [!2359](https://gitlab.com/Remmina/Remmina/merge_requests/2359) *@antenore*
+* Added check-box to force tight encoding for VNC connections [!2360](https://gitlab.com/Remmina/Remmina/merge_requests/2360) *@antenore*
+* remote resolution: use multiple of four [!2353](https://gitlab.com/Remmina/Remmina/merge_requests/2353) *@eworm-de*
+* Add Keyboard mapping per client RDP [!2361](https://gitlab.com/Remmina/Remmina/merge_requests/2361) *@headkaze*
+* Improve TLS error message, fixes #2364 [!2362](https://gitlab.com/Remmina/Remmina/merge_requests/2362) *@antenore*
+* Triage policy language reworked [!2363](https://gitlab.com/Remmina/Remmina/merge_requests/2363) *@kingu*
+
 ## v1.4.22
 [full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.21...v1.4.22)
 
