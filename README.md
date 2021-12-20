@@ -10,7 +10,7 @@
 *Use other desktops remotely, from a tiny screen or large monitors.*
 
 
-* RDP, VNC, SPICE, NX, X2Go, XDMCP, SSH and EXEC network protocols are supported.
+* RDP, VNC, SPICE, X2Go, SSH, WWW (HTTP protocol) and EXEC network protocols are supported.
 * Written in GTK, with a port to Qt underway.
 * Released as "remmina" (the main program) and "remmina-plugins".
 
