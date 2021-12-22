@@ -17,8 +17,8 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-12-19 23:08+0000\n"
-"PO-Revision-Date: 2021-12-17 08:43+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2021-12-22 11:52+0000\n"
+"Last-Translator: Johannes Weberhofer <jweberhofer@weberhofer.at>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/remmina/remmina/"
 "de/>\n"
 "Language: de\n"
@@ -1305,7 +1305,7 @@ msgstr "Das Protokoll unterstützt den Export nicht."
 
 #: src/remmina_main.c:1401
 msgid "Remmina Remote Desktop Client"
-msgstr "Remmina Remote Desktop Client"
+msgstr "Remmina Remote-Desktop Client"
 
 #: src/remmina_main.c:1403
 msgid "Remmina Kiosk"
@@ -2119,16 +2119,14 @@ msgid "Could not find the address for the RDP server “%s”."
 msgstr "Kann die Adresse des RDP-Servers „%s“ nicht finden."
 
 #: plugins/rdp/rdp_plugin.c:2208
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not connect to the RDP server “%s” via TLS. Check that client and "
-#| "server support a common TLS version."
+#, c-format
 msgid ""
 "Could not connect to the RDP server “%s” via TLS. See the DEBUG traces from "
 "a terminal for more information."
 msgstr ""
-"Kann via TLS nicht zum RDP-Server verbinden %s. Stellen Sie sicher, dass "
-"Server und Client eine gemeinsame TLS-Version unterstützen."
+"Kann zum RDP-Server „%s“ nicht via TLS verbinden. Überprüfen Sie die DEBUG-"
+"Protokolle in einem Terminal-Fenster, um mehr Informationen zu diesem "
+"Problem zu erhalten."
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:2212
@@ -2951,11 +2949,13 @@ msgstr "Überschreiben der voreingestellten VNC-Encodings"
 
 #: plugins/vnc/vnc_plugin.c:2029
 msgid "Force tight encoding"
-msgstr ""
+msgstr "„Tight Encoding“ erzwingen"
 
 #: plugins/vnc/vnc_plugin.c:2029
 msgid "Enabling this may help when the remote desktop looks scrambled"
 msgstr ""
+"Das Aktivieren dieser Einstellung kann helfen, wenn der entfernte Desktop "
+"durcheinandergemischt aussieht"
 
 #: plugins/vnc/vnc_plugin.c:2032 plugins/gvnc/gvnc_plugin.c:868
 msgid "Ignore remote bell messages"
@@ -2979,7 +2979,7 @@ msgstr "Chat öffnen …"
 
 #: plugins/vnc/vnc_plugin.h:41
 msgid "Remmina VNC Plugin"
-msgstr "Remmina VNC Plugin"
+msgstr "Remmina VNC-Plugin"
 
 #: plugins/vnc/vnc_plugin.h:46
 msgid "Remmina VNC listener Plugin"
@@ -3909,17 +3909,12 @@ msgid "About"
 msgstr "Über"
 
 #: data/ui/remmina_about.glade:34
-#, fuzzy
-#| msgid ""
-#| "Copyright © 2014–2021 Antenore Gatta, Giovanni Panozzo.\n"
-#| "Copyright © 2009–2014 Vic Lee\n"
-#| "More details in COPYING"
 msgid ""
 "Copyright © 2014–2022 Antenore Gatta, Giovanni Panozzo.\n"
 "Copyright © 2009–2014 Vic Lee\n"
 "More details in COPYING"
 msgstr ""
-"Copyright © 2014–2021 Antenore Gatta, Giovanni Panozzo.\n"
+"Copyright © 2014–2022 Antenore Gatta, Giovanni Panozzo.\n"
 "Copyright © 2009–2014 Vic Lee\n"
 "Mehr Details finden Sie in COPYING"
 
