@@ -2344,6 +2344,10 @@ remmina_ssh_call_exit_callback_on_main_thread(gpointer data)
 	RemminaSSHShell *shell = (RemminaSSHShell *)data;
 	if (shell->exit_callback)
 		shell->exit_callback(shell->user_data);
+	if (shell) {
+		remmina_ssh_shell_free(shell);
+		shell = NULL;
+	}
 	return FALSE;
 }
 
@@ -2384,12 +2388,16 @@ remmina_ssh_shell_thread(gpointer data)
 
 	ssh_channel_request_pty(channel);
 
-	if (shell->exec && shell->exec[0])
+	if (shell->exec && shell->exec[0]) {
+		REMMINA_DEBUG ("Requesting an SSH exec channel");
 		ret = ssh_channel_request_exec(channel, shell->exec);
-	else
+	} else {
+		REMMINA_DEBUG ("Requesting an SSH shell channel");
 		ret = ssh_channel_request_shell(channel);
+	}
 	if (ret != SSH_OK) {
 		UNLOCK_SSH(shell)
+		REMMINA_WARNING ("Could not request shell");
 		// TRANSLATORS: The placeholder %s is an error message
 		remmina_ssh_set_error(REMMINA_SSH(shell), _("Could not request shell. %s"));
 		ssh_channel_close(channel);
@@ -2463,6 +2471,7 @@ remmina_ssh_shell_thread(gpointer data)
 			len = ssh_channel_poll(channel, i);
 			UNLOCK_SSH(shell)
 			if (len == SSH_ERROR || len == SSH_EOF) {
+				REMMINA_DEBUG("SSH shell error or EOF, closing the channel");
 				shell->closed=TRUE;
 				break;
 			}
@@ -2492,7 +2501,7 @@ remmina_ssh_shell_thread(gpointer data)
 
 	LOCK_SSH(shell)
 	if (remmina_file_get_int (remminafile, "sshsavesession", FALSE))
-	fclose(fp);
+		fclose(fp);
 	shell->channel = NULL;
 	ssh_channel_close(channel);
 	ssh_channel_send_eof(channel);
