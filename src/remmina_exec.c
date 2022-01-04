@@ -410,6 +410,8 @@ void remmina_exec_command(RemminaCommandType command, const gchar* data)
 		break;
 
 	case REMMINA_COMMAND_NEW:
+		if (remmina_pref_get_boolean("lock_edit") && remmina_unlock_new(mainwindow) == 0)
+			break;
 		s1 = (data ? strchr(data, ',') : NULL);
 		if (s1) {
 			s1 = g_strdup(data);
@@ -424,14 +426,19 @@ void remmina_exec_command(RemminaCommandType command, const gchar* data)
 		break;
 
 	case REMMINA_COMMAND_CONNECT:
+		REMMINA_DEBUG ("Initiating connection");
 		/** @todo This should be a G_OPTION_ARG_FILENAME_ARRAY (^aay) so that
 		 * we can implement multi profile connection:
 		 *    https://gitlab.com/Remmina/Remmina/issues/915
 		 */
+		if (remmina_pref_get_boolean("lock_connect") && remmina_unlock_new(mainwindow) == 0)
+			break;
 		remmina_exec_connect(data);
 		break;
 
 	case REMMINA_COMMAND_EDIT:
+		if (remmina_pref_get_boolean("lock_edit") && remmina_unlock_new(mainwindow) == 0)
+			break;
 		widget = remmina_file_editor_new_from_filename(data);
 		if (widget)
 			gtk_widget_show(widget);

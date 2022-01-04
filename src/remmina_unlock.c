@@ -58,7 +58,7 @@ static void remmina_unlock_timer_init()
 	TRACE_CALL(__func__);
 
 	timer = g_timer_new();
-	g_info("Unlock Master Password timer initialized");
+	g_info("Unlock Primary Password timer initialized");
 }
 
 static void remmina_unlock_timer_reset(gpointer user_data)
@@ -66,7 +66,7 @@ static void remmina_unlock_timer_reset(gpointer user_data)
 	TRACE_CALL(__func__);
 
 	g_timer_reset(timer);
-	g_info("Unlock Master Password timer reset");
+	g_info("Unlock Primary Password timer reset");
 }
 
 void remmina_unlock_timer_destroy()
@@ -164,7 +164,7 @@ gint remmina_unlock_new(GtkWindow *parent)
 	/* Connect signals */
 	gtk_builder_connect_signals(remmina_unlock_dialog->builder, NULL);
 
-	if (remmina_pref_get_boolean("use_master_password")
+	if (remmina_pref_get_boolean("use_primary_password")
 			&& (g_strcmp0(remmina_pref_get_value("unlock_password"), "") != 0)
 			&& lock != 0)
 		gtk_dialog_run(remmina_unlock_dialog->dialog);

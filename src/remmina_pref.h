@@ -167,10 +167,12 @@ typedef struct _RemminaPref {
 	guint			shortcutkey_disconnect;
 	guint			shortcutkey_toolbar;
 	/* In RemminaPrefDialog security tab */
-	gboolean		use_master_password;
+	gboolean		use_primary_password;
 	const gchar *		unlock_password;
 	const gchar *		unlock_repassword;
 	gint			unlock_timeout;
+	gboolean		lock_connect;
+	gboolean		lock_edit;
 	gboolean		trust_all;
 	/* In RemminaPrefDialog terminal tab */
 	gchar *			vte_font;

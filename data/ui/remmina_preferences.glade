@@ -1603,165 +1603,441 @@ It changes the background colour of connection names in the Remmina connection t
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <child>
-                  <!-- n-columns=2 n-rows=5 -->
-                  <object class="GtkGrid" id="grid_security">
+                  <object class="GtkBox">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
-                    <property name="row-spacing">5</property>
-                    <property name="column-spacing">7</property>
+                    <property name="orientation">vertical</property>
                     <child>
-                      <object class="GtkLabel" id="label_security_use_master">
+                      <object class="GtkFrame">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
-                        <property name="tooltip-text" translatable="yes">Use secret key authentication for some widgets</property>
-                        <property name="halign">start</property>
-                        <property name="margin-start">18</property>
-                        <property name="margin-top">18</property>
-                        <property name="label" translatable="yes">Use master password</property>
+                        <property name="label-xalign">0</property>
+                        <property name="shadow-type">none</property>
+                        <child>
+                          <object class="GtkAlignment">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="left-padding">12</property>
+                            <child>
+                              <!-- n-columns=2 n-rows=6 -->
+                              <object class="GtkGrid" id="grid_security">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <property name="row-spacing">5</property>
+                                <property name="column-spacing">7</property>
+                                <child>
+                                  <object class="GtkLabel" id="label_security_use_primary_password">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="tooltip-text" translatable="yes">Set and use a secret key to protect Remmina from unothorized use.</property>
+                                    <property name="halign">start</property>
+                                    <property name="margin-start">18</property>
+                                    <property name="margin-top">9</property>
+                                    <property name="label" translatable="yes">Use a Primary Password</property>
+                                  </object>
+                                  <packing>
+                                    <property name="left-attach">0</property>
+                                    <property name="top-attach">0</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkSwitch" id="switch_security_use_primary_password">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">True</property>
+                                    <property name="tooltip-text" translatable="yes">Use secret key authentication for some widgets</property>
+                                    <property name="halign">start</property>
+                                    <property name="margin-start">6</property>
+                                    <property name="margin-end">18</property>
+                                    <property name="margin-top">9</property>
+                                  </object>
+                                  <packing>
+                                    <property name="left-attach">1</property>
+                                    <property name="top-attach">0</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkLabel" id="label_security_lock_interval">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="halign">start</property>
+                                    <property name="margin-start">18</property>
+                                    <property name="label" translatable="yes">Automatic lock interval</property>
+                                  </object>
+                                  <packing>
+                                    <property name="left-attach">0</property>
+                                    <property name="top-attach">1</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkEntry" id="unlock_timeout">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">True</property>
+                                    <property name="tooltip-text" translatable="yes">Primary Password validity in seconds</property>
+                                    <property name="halign">start</property>
+                                    <property name="margin-start">6</property>
+                                    <property name="margin-end">18</property>
+                                    <property name="width-chars">24</property>
+                                    <property name="text">300</property>
+                                    <property name="input-purpose">number</property>
+                                  </object>
+                                  <packing>
+                                    <property name="left-attach">1</property>
+                                    <property name="top-attach">1</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkLabel" id="label_security_primary_password">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="halign">start</property>
+                                    <property name="margin-start">18</property>
+                                    <property name="label" translatable="yes">Password</property>
+                                  </object>
+                                  <packing>
+                                    <property name="left-attach">0</property>
+                                    <property name="top-attach">2</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkEntry" id="unlock_password">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">True</property>
+                                    <property name="halign">start</property>
+                                    <property name="margin-start">6</property>
+                                    <property name="margin-end">18</property>
+                                    <property name="visibility">False</property>
+                                    <property name="invisible-char">•</property>
+                                    <property name="width-chars">24</property>
+                                    <property name="input-purpose">password</property>
+                                  </object>
+                                  <packing>
+                                    <property name="left-attach">1</property>
+                                    <property name="top-attach">2</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkLabel" id="label_security_repeat_password">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="halign">start</property>
+                                    <property name="margin-start">18</property>
+                                    <property name="label" translatable="yes">Repeat the password</property>
+                                  </object>
+                                  <packing>
+                                    <property name="left-attach">0</property>
+                                    <property name="top-attach">3</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkEntry" id="unlock_repassword">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">True</property>
+                                    <property name="halign">start</property>
+                                    <property name="margin-start">6</property>
+                                    <property name="margin-end">18</property>
+                                    <property name="margin-bottom">9</property>
+                                    <property name="visibility">False</property>
+                                    <property name="invisible-char">•</property>
+                                    <property name="width-chars">24</property>
+                                    <property name="input-purpose">password</property>
+                                    <signal name="changed" handler="remmina_prefdiag_unlock_repwd_on_changed" swapped="no"/>
+                                    <style>
+                                      <class name="unlock_repassword"/>
+                                    </style>
+                                  </object>
+                                  <packing>
+                                    <property name="left-attach">1</property>
+                                    <property name="top-attach">3</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkLabel" id="label_security_lock_edit">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="tooltip-text" translatable="yes">New, edit, copy, delete actions are password protected with the Primary Password</property>
+                                    <property name="halign">start</property>
+                                    <property name="margin-start">18</property>
+                                    <property name="margin-bottom">9</property>
+                                    <property name="label" translatable="yes" comments="New, edit, copy, delete actions are password protected">Requires password to modify</property>
+                                  </object>
+                                  <packing>
+                                    <property name="left-attach">0</property>
+                                    <property name="top-attach">5</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkSwitch" id="switch_security_lock_connect">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">True</property>
+                                    <property name="halign">start</property>
+                                    <property name="margin-start">6</property>
+                                    <property name="margin-end">18</property>
+                                  </object>
+                                  <packing>
+                                    <property name="left-attach">1</property>
+                                    <property name="top-attach">4</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkSwitch" id="switch_security_lock_edit">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">True</property>
+                                    <property name="halign">start</property>
+                                    <property name="margin-start">6</property>
+                                    <property name="margin-end">18</property>
+                                    <property name="margin-bottom">9</property>
+                                  </object>
+                                  <packing>
+                                    <property name="left-attach">1</property>
+                                    <property name="top-attach">5</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkLabel" id="label_security_lock_connection">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="tooltip-text" translatable="yes">Connecting is password protected with the Primary Password</property>
+                                    <property name="halign">start</property>
+                                    <property name="margin-start">18</property>
+                                    <property name="label" translatable="yes">Requires password to connect</property>
+                                  </object>
+                                  <packing>
+                                    <property name="left-attach">0</property>
+                                    <property name="top-attach">4</property>
+                                  </packing>
+                                </child>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child type="label">
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="margin-start">9</property>
+                            <property name="margin-top">18</property>
+                            <property name="label" translatable="yes">Primary Password settings</property>
+                          </object>
+                        </child>
                       </object>
                       <packing>
-                        <property name="left-attach">0</property>
-                        <property name="top-attach">0</property>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="label_security_lock_interval">
+                      <object class="GtkFrame">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
-                        <property name="halign">start</property>
-                        <property name="margin-start">18</property>
-                        <property name="label" translatable="yes">Automatic lock interval</property>
+                        <property name="label-xalign">0</property>
+                        <property name="shadow-type">none</property>
+                        <child>
+                          <object class="GtkAlignment">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="left-padding">12</property>
+                            <child>
+                              <!-- n-columns=2 n-rows=4 -->
+                              <object class="GtkGrid" id="grid_security_audit">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <child>
+                                  <object class="GtkLabel" id="label_security_enable_audit">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="halign">start</property>
+                                    <property name="margin-start">18</property>
+                                    <property name="margin-top">9</property>
+                                    <property name="label" translatable="yes">Enable auditing logs</property>
+                                  </object>
+                                  <packing>
+                                    <property name="left-attach">0</property>
+                                    <property name="top-attach">0</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkLabel" id="label_security_audit_folder">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="halign">start</property>
+                                    <property name="margin-start">18</property>
+                                    <property name="label" translatable="yes">Auditing log folder path</property>
+                                  </object>
+                                  <packing>
+                                    <property name="left-attach">0</property>
+                                    <property name="top-attach">1</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkSwitch" id="switch_security_audit">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">True</property>
+                                    <property name="halign">start</property>
+                                    <property name="margin-start">6</property>
+                                    <property name="margin-end">18</property>
+                                    <property name="margin-top">9</property>
+                                  </object>
+                                  <packing>
+                                    <property name="left-attach">1</property>
+                                    <property name="top-attach">0</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkFileChooserButton" id="filechooserbutton_audit_path">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="halign">start</property>
+                                    <property name="margin-start">6</property>
+                                    <property name="margin-end">18</property>
+                                    <property name="action">select-folder</property>
+                                    <property name="title" translatable="yes">Remmina audit log folder path</property>
+                                  </object>
+                                  <packing>
+                                    <property name="left-attach">1</property>
+                                    <property name="top-attach">1</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkLabel" id="label_security_audit_file">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="halign">start</property>
+                                    <property name="margin-start">18</property>
+                                    <property name="label" translatable="yes">Auditing log filename specification</property>
+                                  </object>
+                                  <packing>
+                                    <property name="left-attach">0</property>
+                                    <property name="top-attach">2</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkEntry" id="audit_file_spec">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">True</property>
+                                    <property name="halign">start</property>
+                                    <property name="margin-start">6</property>
+                                    <property name="margin-end">18</property>
+                                    <property name="placeholder-text" translatable="yes">remmina_audit_%Y%M%D.log</property>
+                                  </object>
+                                  <packing>
+                                    <property name="left-attach">1</property>
+                                    <property name="top-attach">2</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkLabel" id="label_security_audit_format">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="halign">start</property>
+                                    <property name="margin-start">18</property>
+                                    <property name="margin-bottom">9</property>
+                                    <property name="label" translatable="yes">Auditing log format specification</property>
+                                  </object>
+                                  <packing>
+                                    <property name="left-attach">0</property>
+                                    <property name="top-attach">3</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkEntry" id="audit_format_spec">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">True</property>
+                                    <property name="halign">start</property>
+                                    <property name="margin-start">6</property>
+                                    <property name="margin-end">18</property>
+                                    <property name="margin-bottom">9</property>
+                                    <property name="placeholder-text" translatable="yes">%h %l %u %t \"%r\" %&gt;s </property>
+                                  </object>
+                                  <packing>
+                                    <property name="left-attach">1</property>
+                                    <property name="top-attach">3</property>
+                                  </packing>
+                                </child>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child type="label">
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="margin-start">9</property>
+                            <property name="label" translatable="yes">Auditing settings</property>
+                          </object>
+                        </child>
                       </object>
                       <packing>
-                        <property name="left-attach">0</property>
-                        <property name="top-attach">1</property>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="label_security_master_password">
+                      <object class="GtkFrame">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
-                        <property name="halign">start</property>
-                        <property name="margin-start">18</property>
-                        <property name="label" translatable="yes">Password</property>
+                        <property name="label-xalign">0</property>
+                        <property name="shadow-type">none</property>
+                        <child>
+                          <object class="GtkAlignment">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="left-padding">12</property>
+                            <child>
+                              <!-- n-columns=2 n-rows=1 -->
+                              <object class="GtkGrid" id="grid_security_certs">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <child>
+                                  <object class="GtkLabel" id="label_security_trust_fingerprints">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="tooltip-text" translatable="yes">Automatically accept all fingerprints and certificates</property>
+                                    <property name="halign">start</property>
+                                    <property name="margin-start">18</property>
+                                    <property name="margin-top">9</property>
+                                    <property name="margin-bottom">18</property>
+                                    <property name="label" translatable="yes">Trust all fingerprints and certificates</property>
+                                  </object>
+                                  <packing>
+                                    <property name="left-attach">0</property>
+                                    <property name="top-attach">0</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkSwitch" id="switch_security_trust_all">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">True</property>
+                                    <property name="tooltip-text" translatable="yes">Use secret key authentication for some widgets</property>
+                                    <property name="halign">start</property>
+                                    <property name="margin-start">6</property>
+                                    <property name="margin-end">18</property>
+                                    <property name="margin-top">9</property>
+                                    <property name="margin-bottom">18</property>
+                                  </object>
+                                  <packing>
+                                    <property name="left-attach">1</property>
+                                    <property name="top-attach">0</property>
+                                  </packing>
+                                </child>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child type="label">
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="margin-start">9</property>
+                            <property name="label" translatable="yes">Certificate settings</property>
+                          </object>
+                        </child>
                       </object>
                       <packing>
-                        <property name="left-attach">0</property>
-                        <property name="top-attach">2</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkLabel" id="label_security_repeat_password">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="halign">start</property>
-                        <property name="margin-start">18</property>
-                        <property name="label" translatable="yes">Repeat the password</property>
-                      </object>
-                      <packing>
-                        <property name="left-attach">0</property>
-                        <property name="top-attach">3</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkLabel" id="label_security_trust_fingerprints">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="tooltip-text" translatable="yes">Automatically accept all fingerprints and certificates</property>
-                        <property name="halign">start</property>
-                        <property name="margin-start">18</property>
-                        <property name="margin-bottom">18</property>
-                        <property name="label" translatable="yes">Trust all fingerprints and certificates</property>
-                      </object>
-                      <packing>
-                        <property name="left-attach">0</property>
-                        <property name="top-attach">4</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkSwitch" id="switch_security_use_master_password">
-                        <property name="visible">True</property>
-                        <property name="can-focus">True</property>
-                        <property name="tooltip-text" translatable="yes">Use secret key authentication for some widgets</property>
-                        <property name="halign">start</property>
-                        <property name="margin-start">6</property>
-                        <property name="margin-end">18</property>
-                        <property name="margin-top">18</property>
-                      </object>
-                      <packing>
-                        <property name="left-attach">1</property>
-                        <property name="top-attach">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkEntry" id="unlock_password">
-                        <property name="visible">True</property>
-                        <property name="can-focus">True</property>
-                        <property name="halign">start</property>
-                        <property name="margin-start">6</property>
-                        <property name="margin-end">18</property>
-                        <property name="visibility">False</property>
-                        <property name="invisible-char">•</property>
-                        <property name="width-chars">24</property>
-                        <property name="input-purpose">password</property>
-                      </object>
-                      <packing>
-                        <property name="left-attach">1</property>
-                        <property name="top-attach">2</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkEntry" id="unlock_timeout">
-                        <property name="visible">True</property>
-                        <property name="can-focus">True</property>
-                        <property name="tooltip-text" translatable="yes">Master password validity in seconds</property>
-                        <property name="halign">start</property>
-                        <property name="margin-start">6</property>
-                        <property name="margin-end">18</property>
-                        <property name="width-chars">24</property>
-                        <property name="text">300</property>
-                        <property name="input-purpose">number</property>
-                      </object>
-                      <packing>
-                        <property name="left-attach">1</property>
-                        <property name="top-attach">1</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkEntry" id="unlock_repassword">
-                        <property name="visible">True</property>
-                        <property name="can-focus">True</property>
-                        <property name="halign">start</property>
-                        <property name="margin-start">6</property>
-                        <property name="margin-end">18</property>
-                        <property name="margin-bottom">9</property>
-                        <property name="visibility">False</property>
-                        <property name="invisible-char">•</property>
-                        <property name="width-chars">24</property>
-                        <property name="input-purpose">password</property>
-                        <signal name="changed" handler="remmina_prefdiag_unlock_repwd_on_changed" swapped="no"/>
-                        <style>
-                          <class name="unlock_repassword"/>
-                        </style>
-                      </object>
-                      <packing>
-                        <property name="left-attach">1</property>
-                        <property name="top-attach">3</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkSwitch" id="switch_security_trust_all">
-                        <property name="visible">True</property>
-                        <property name="can-focus">True</property>
-                        <property name="tooltip-text" translatable="yes">Use secret key authentication for some widgets</property>
-                        <property name="halign">start</property>
-                        <property name="margin-start">6</property>
-                        <property name="margin-end">18</property>
-                        <property name="margin-bottom">18</property>
-                      </object>
-                      <packing>
-                        <property name="left-attach">1</property>
-                        <property name="top-attach">4</property>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">2</property>
                       </packing>
                     </child>
                   </object>

@@ -56,10 +56,12 @@ typedef struct _RemminaPrefDialog {
 	GtkSwitch *		switch_appearance_grab_color;
 	GtkSwitch *		switch_options_deny_screenshot_clipboard;
 	GtkSwitch *		switch_options_remember_last_view_mode;
-	GtkSwitch *		switch_security_use_master_password;
+	GtkSwitch *		switch_security_use_primary_password;
 	GtkEntry *		unlock_timeout;
 	GtkEntry *		unlock_password;
 	GtkEntry *		unlock_repassword;
+	GtkSwitch *		switch_security_lock_connect;
+	GtkSwitch *		switch_security_lock_edit;
 	GtkSwitch *		switch_security_trust_all;
 	GtkCheckButton *	checkbutton_options_save_settings;
 	GtkCheckButton *	checkbutton_appearance_fullscreen_on_auto;

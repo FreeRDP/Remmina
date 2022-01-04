@@ -731,6 +731,9 @@ void remmina_main_on_action_connection_connect(GSimpleAction *action, GVariant *
 	if (remminafile == NULL)
 		return;
 
+	if (remmina_pref_get_boolean("lock_connect") &&
+			remmina_unlock_new(remminamain->window) == 0)
+		return;
 	remmina_file_touch(remminafile);
 	rcw_open_from_filename(remminamain->priv->selected_filename);
 
@@ -770,6 +773,11 @@ void remmina_main_on_action_application_mpchange(GSimpleAction *action, GVariant
 	username = domain = group = "";
 
 	remminafile = NULL;
+
+	if (remmina_pref_get_boolean("lock_edit") &&
+			remmina_unlock_new(remminamain->window) == 0)
+		return;
+
 	if (remminamain->priv->selected_filename) {
 		remminafile = remmina_file_load(remminamain->priv->selected_filename);
 		if (remminafile != NULL) {
@@ -778,9 +786,6 @@ void remmina_main_on_action_application_mpchange(GSimpleAction *action, GVariant
 			group = remmina_file_get_string(remminafile, "group");
 		}
 	}
-
-	if (remmina_unlock_new(remminamain->window) == 0)
-		return;
 
 	remmina_mpchange_schedule(TRUE, group, domain, username, "");
 
@@ -793,7 +798,8 @@ void remmina_main_on_action_connection_new(GSimpleAction *action, GVariant *para
 	TRACE_CALL(__func__);
 	GtkWidget *widget;
 
-	if (remmina_unlock_new(remminamain->window) == 0)
+	if (remmina_pref_get_boolean("lock_edit") &&
+			remmina_unlock_new(remminamain->window) == 0)
 		return;
 
 	widget = remmina_file_editor_new();
@@ -854,6 +860,10 @@ void remmina_main_on_action_connection_copy(GSimpleAction *action, GVariant *par
 	if (!remminamain->priv->selected_filename)
 		return;
 
+	if (remmina_pref_get_boolean("lock_edit") &&
+			remmina_unlock_new(remminamain->window) == 0)
+		return;
+
 	widget = remmina_file_editor_new_copy(remminamain->priv->selected_filename);
 	if (widget) {
 		g_signal_connect(G_OBJECT(widget), "destroy", G_CALLBACK(remmina_main_file_editor_destroy), remminamain);
@@ -870,7 +880,8 @@ void remmina_main_on_action_connection_edit(GSimpleAction *action, GVariant *par
 	TRACE_CALL(__func__);
 	GtkWidget *widget;
 
-	if (remmina_unlock_new(remminamain->window) == 0)
+	if (remmina_pref_get_boolean("lock_edit") &&
+			remmina_unlock_new(remminamain->window) == 0)
 		return;
 
 	if (!remminamain->priv->selected_filename)
@@ -895,7 +906,8 @@ void remmina_main_on_action_connection_delete(GSimpleAction *action, GVariant *p
 	if (!remminamain->priv->selected_filename)
 		return;
 
-	if (remmina_unlock_new(remminamain->window) == 0)
+	if (remmina_pref_get_boolean("lock_edit") &&
+			remmina_unlock_new(remminamain->window) == 0)
 		return;
 
 	dialog = gtk_message_dialog_new(remminamain->window, GTK_DIALOG_MODAL, GTK_MESSAGE_QUESTION, GTK_BUTTONS_YES_NO,

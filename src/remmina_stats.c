@@ -114,8 +114,8 @@
  *    "ACTIVESECRETPLUGIN": {
  *        "plugin_name": "kwallet"
  *    }
- *    "HASMASTERPASSWORD": {
- *        "master_password_status": "OFF"
+ *    "HASPRIMARYPASSWORD": {
+ *        "primary_password_status": "OFF"
  *    }
  *
  * }
@@ -739,12 +739,12 @@ JsonNode *remmina_stats_get_secret_plugin()
 }
 
 /**
- * Add a JSON member HASMASTERPASSWORD which shows the status of the master password.
+ * Add a JSON member HASPRIMARYPASSWORD which shows the status of the master password.
  *
- * @return a JSON Node structure containing the status of the master password
+ * @return a JSON Node structure containing the status of the primary password
  *
  */
-JsonNode *remmina_stats_get_master_password_status()
+JsonNode *remmina_stats_get_primary_password_status()
 {
 	TRACE_CALL(__func__);
 
@@ -754,8 +754,8 @@ JsonNode *remmina_stats_get_master_password_status()
 	b = json_builder_new();
 	json_builder_begin_object(b);
 
-	json_builder_set_member_name(b, "master_password_status");
-	if (remmina_pref_get_boolean("use_master_password")) {
+	json_builder_set_member_name(b, "primary_password_status");
+	if (remmina_pref_get_boolean("use_primary_password")) {
 		json_builder_add_string_value(b, "ON");
 	} else {
 		json_builder_add_string_value(b, "OFF");
@@ -771,7 +771,7 @@ JsonNode *remmina_stats_get_master_password_status()
 /**
  * Add a json member KIOSK which shows the status of the kiosk.
  *
- * @return a JSON Node structure containing the status of the master password
+ * @return a JSON Node structure containing the status of the primary password
  *
  */
 JsonNode *remmina_stats_get_kiosk_mode()
@@ -854,8 +854,8 @@ JsonNode *remmina_stats_get_all()
 	json_builder_set_member_name(b, "ACTIVESECRETPLUGIN");
 	json_builder_add_value(b, n);
 
-	n = remmina_stats_get_master_password_status();
-	json_builder_set_member_name(b, "HASMASTERPASSWORD");
+	n = remmina_stats_get_primary_password_status();
+	json_builder_set_member_name(b, "HASPRIMARYPASSWORD");
 	json_builder_add_value(b, n);
 
 	n = remmina_stats_get_kiosk_mode();
