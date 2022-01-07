@@ -241,6 +241,7 @@ void remmina_pref_on_dialog_destroy(GtkWidget *widget, gpointer user_data)
 #endif
 	remmina_pref.lock_connect = gtk_switch_get_active(GTK_SWITCH(remmina_pref_dialog->switch_security_lock_connect));
 	remmina_pref.lock_edit = gtk_switch_get_active(GTK_SWITCH(remmina_pref_dialog->switch_security_lock_edit));
+	remmina_pref.audit = gtk_switch_get_active(GTK_SWITCH(remmina_pref_dialog->switch_security_audit));
 	remmina_pref.trust_all = gtk_switch_get_active(GTK_SWITCH(remmina_pref_dialog->switch_security_trust_all));
 	remmina_pref.screenshot_path = gtk_file_chooser_get_filename(remmina_pref_dialog->filechooserbutton_options_screenshots_path);
 	remmina_pref.fullscreen_on_auto = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_appearance_fullscreen_on_auto));
@@ -490,6 +491,13 @@ static void remmina_pref_dialog_init(void)
 	gtk_switch_set_active(GTK_SWITCH(remmina_pref_dialog->switch_security_lock_edit), FALSE);
 	gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->unlock_timeout), FALSE);
 #endif
+	gtk_switch_set_active(GTK_SWITCH(remmina_pref_dialog->switch_security_audit), remmina_pref.audit);
+	gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->switch_security_audit), TRUE);
+	if (remmina_pref.remmina_file_name != NULL)
+		gtk_entry_set_text(remmina_pref_dialog->entry_options_file_name, remmina_pref.remmina_file_name);
+	else
+		gtk_entry_set_text(remmina_pref_dialog->entry_options_file_name, "%G_%P_%N_%h.remmina");
+
 	gtk_switch_set_active(GTK_SWITCH(remmina_pref_dialog->switch_security_trust_all), remmina_pref.trust_all);
 
 	gtk_switch_set_active(GTK_SWITCH(remmina_pref_dialog->switch_options_deny_screenshot_clipboard), remmina_pref.deny_screenshot_clipboard);
@@ -713,10 +721,12 @@ GtkWidget *remmina_pref_dialog_new(gint default_tab, GtkWindow *parent)
 	remmina_pref_dialog->switch_options_deny_screenshot_clipboard = GTK_SWITCH(GET_OBJECT("switch_options_deny_screenshot_clipboard"));
 	remmina_pref_dialog->switch_options_remember_last_view_mode = GTK_SWITCH(GET_OBJECT("switch_options_remember_last_view_mode"));
 	remmina_pref_dialog->switch_security_use_primary_password = GTK_SWITCH(GET_OBJECT("switch_security_use_primary_password"));
+	remmina_pref_dialog->unlock_timeout = GTK_ENTRY(GET_OBJECT("unlock_timeout"));
 	remmina_pref_dialog->unlock_password = GTK_ENTRY(GET_OBJECT("unlock_password"));
 	remmina_pref_dialog->unlock_repassword = GTK_ENTRY(GET_OBJECT("unlock_repassword"));
 	remmina_pref_dialog->switch_security_lock_connect = GTK_SWITCH(GET_OBJECT("switch_security_lock_connect"));
 	remmina_pref_dialog->switch_security_lock_edit = GTK_SWITCH(GET_OBJECT("switch_security_lock_edit"));
+	remmina_pref_dialog->switch_security_audit = GTK_SWITCH(GET_OBJECT("switch_security_audit"));
 	remmina_pref_dialog->switch_security_trust_all = GTK_SWITCH(GET_OBJECT("switch_security_trust_all"));
 	remmina_pref_dialog->checkbutton_options_save_settings = GTK_CHECK_BUTTON(GET_OBJECT("checkbutton_options_save_settings"));
 	remmina_pref_dialog->checkbutton_appearance_fullscreen_on_auto = GTK_CHECK_BUTTON(GET_OBJECT("checkbutton_appearance_fullscreen_on_auto"));
@@ -742,7 +752,6 @@ GtkWidget *remmina_pref_dialog_new(gint default_tab, GtkWindow *parent)
 	remmina_pref_dialog->entry_grab_color = GTK_ENTRY(GET_OBJECT("entry_grab_color"));
 	remmina_pref_dialog->switch_appearance_grab_color = GTK_SWITCH(GET_OBJECT("switch_appearance_grab_color"));
 	remmina_pref_dialog->button_options_recent_items_clear = GTK_BUTTON(GET_OBJECT("button_options_recent_items_clear"));
-	remmina_pref_dialog->unlock_timeout = GTK_ENTRY(GET_OBJECT("unlock_timeout"));
 
 	remmina_pref_dialog->checkbutton_applet_new_connection_on_top = GTK_CHECK_BUTTON(GET_OBJECT("checkbutton_applet_new_connection_on_top"));
 	remmina_pref_dialog->checkbutton_applet_hide_totals = GTK_CHECK_BUTTON(GET_OBJECT("checkbutton_applet_hide_totals"));

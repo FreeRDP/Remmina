@@ -32,6 +32,10 @@
  *
  */
 
+#define G_LOG_USE_STRUCTURED
+#ifndef G_LOG_DOMAIN
+#define G_LOG_DOMAIN    ((gchar*)"remmina")
+#endif  /* G_LOG_DOMAIN */
 #include <gdk/gdkx.h>
 #include <gio/gio.h>
 #include <glib/gi18n.h>

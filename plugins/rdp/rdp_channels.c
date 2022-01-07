@@ -79,7 +79,8 @@ void remmina_rdp_OnChannelConnectedEventHandler(rdpContext* context, ChannelConn
 		if (rfi->scale == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_DYNRES) {
 			remmina_rdp_event_send_delayed_monitor_layout(rfi->protocol_widget);
 		}
-	}REMMINA_PLUGIN_DEBUG("Channel %s has been opened", e->name);
+	}
+	REMMINA_PLUGIN_DEBUG("Channel %s has been opened", e->name);
 }
 
 void remmina_rdp_OnChannelDisconnectedEventHandler(rdpContext* context, ChannelConnectedEventArgs* e)

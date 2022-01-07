@@ -221,6 +221,7 @@ typedef struct _RemminaPluginService {
 	void (*_remmina_message)(const gchar *fmt, ...);
 	void (*_remmina_debug)(const gchar *func, const gchar *fmt, ...);
 	void (*_remmina_warning)(const gchar *func, const gchar *fmt, ...);
+	void (*_remmina_audit)(const gchar *func, const gchar *fmt, ...);
 	void (*_remmina_error)(const gchar *func, const gchar *fmt, ...);
 	void (*_remmina_critical)(const gchar *func, const gchar *fmt, ...);
 	void (*log_print)(const gchar *text);

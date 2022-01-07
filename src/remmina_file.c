@@ -175,6 +175,7 @@ void remmina_file_generate_filename(RemminaFile *remminafile)
 	else
 		remminafile->filename = NULL;
 	g_dir_close(dir);
+
 }
 
 void remmina_file_set_filename(RemminaFile *remminafile, const gchar *filename)

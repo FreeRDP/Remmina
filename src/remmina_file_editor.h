@@ -36,6 +36,12 @@
 
 #pragma once
 
+#include <stdarg.h>
+#include <glib/gi18n.h>
+#include <gtk/gtk.h>
+
+#include "remmina_file.h"
+
 G_BEGIN_DECLS
 
 #define REMMINA_TYPE_FILE_EDITOR               (remmina_file_editor_get_type())

@@ -358,7 +358,7 @@
                       <object class="GtkEntry" id="entry_options_file_name">
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
-                        <property name="tooltip-text" translatable="yes">%G Group name (slash will be converted to - automatically)
+                        <property name="tooltip-text" translatable="yes" comments="Place holders used to name a Remmina connection profile">%G Group name (slash will be converted to - automatically)
 %P Protocol name
 %N Connection name
 %h Hostname/IP
@@ -1838,7 +1838,7 @@ It changes the background colour of connection names in the Remmina connection t
                             <property name="can-focus">False</property>
                             <property name="left-padding">12</property>
                             <child>
-                              <!-- n-columns=2 n-rows=4 -->
+                              <!-- n-columns=2 n-rows=1 -->
                               <object class="GtkGrid" id="grid_security_audit">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
@@ -1849,24 +1849,12 @@ It changes the background colour of connection names in the Remmina connection t
                                     <property name="halign">start</property>
                                     <property name="margin-start">18</property>
                                     <property name="margin-top">9</property>
+                                    <property name="margin-bottom">9</property>
                                     <property name="label" translatable="yes">Enable auditing logs</property>
                                   </object>
                                   <packing>
                                     <property name="left-attach">0</property>
                                     <property name="top-attach">0</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkLabel" id="label_security_audit_folder">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">False</property>
-                                    <property name="halign">start</property>
-                                    <property name="margin-start">18</property>
-                                    <property name="label" translatable="yes">Auditing log folder path</property>
-                                  </object>
-                                  <packing>
-                                    <property name="left-attach">0</property>
-                                    <property name="top-attach">1</property>
                                   </packing>
                                 </child>
                                 <child>
@@ -1877,81 +1865,11 @@ It changes the background colour of connection names in the Remmina connection t
                                     <property name="margin-start">6</property>
                                     <property name="margin-end">18</property>
                                     <property name="margin-top">9</property>
+                                    <property name="margin-bottom">9</property>
                                   </object>
                                   <packing>
                                     <property name="left-attach">1</property>
                                     <property name="top-attach">0</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkFileChooserButton" id="filechooserbutton_audit_path">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">False</property>
-                                    <property name="halign">start</property>
-                                    <property name="margin-start">6</property>
-                                    <property name="margin-end">18</property>
-                                    <property name="action">select-folder</property>
-                                    <property name="title" translatable="yes">Remmina audit log folder path</property>
-                                  </object>
-                                  <packing>
-                                    <property name="left-attach">1</property>
-                                    <property name="top-attach">1</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkLabel" id="label_security_audit_file">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">False</property>
-                                    <property name="halign">start</property>
-                                    <property name="margin-start">18</property>
-                                    <property name="label" translatable="yes">Auditing log filename specification</property>
-                                  </object>
-                                  <packing>
-                                    <property name="left-attach">0</property>
-                                    <property name="top-attach">2</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkEntry" id="audit_file_spec">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">True</property>
-                                    <property name="halign">start</property>
-                                    <property name="margin-start">6</property>
-                                    <property name="margin-end">18</property>
-                                    <property name="placeholder-text" translatable="yes">remmina_audit_%Y%M%D.log</property>
-                                  </object>
-                                  <packing>
-                                    <property name="left-attach">1</property>
-                                    <property name="top-attach">2</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkLabel" id="label_security_audit_format">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">False</property>
-                                    <property name="halign">start</property>
-                                    <property name="margin-start">18</property>
-                                    <property name="margin-bottom">9</property>
-                                    <property name="label" translatable="yes">Auditing log format specification</property>
-                                  </object>
-                                  <packing>
-                                    <property name="left-attach">0</property>
-                                    <property name="top-attach">3</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkEntry" id="audit_format_spec">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">True</property>
-                                    <property name="halign">start</property>
-                                    <property name="margin-start">6</property>
-                                    <property name="margin-end">18</property>
-                                    <property name="margin-bottom">9</property>
-                                    <property name="placeholder-text" translatable="yes">%h %l %u %t \"%r\" %&gt;s </property>
-                                  </object>
-                                  <packing>
-                                    <property name="left-attach">1</property>
-                                    <property name="top-attach">3</property>
                                   </packing>
                                 </child>
                               </object>

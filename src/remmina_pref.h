@@ -173,6 +173,7 @@ typedef struct _RemminaPref {
 	gint			unlock_timeout;
 	gboolean		lock_connect;
 	gboolean		lock_edit;
+	gboolean		audit;
 	gboolean		trust_all;
 	/* In RemminaPrefDialog terminal tab */
 	gchar *			vte_font;

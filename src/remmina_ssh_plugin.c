@@ -338,7 +338,7 @@ remmina_plugin_ssh_main_thread(gpointer data)
 				continue;
 				break;
 			case REMMINA_SSH_AUTH_RECONNECT:
-				REMMINA_DEBUG("Reconnecting...");
+				REMMINA_DEBUG("Reconnecting…");
 				if (ssh->session) {
 					ssh_disconnect(ssh->session);
 					ssh_free(ssh->session);

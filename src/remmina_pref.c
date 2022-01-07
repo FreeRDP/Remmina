@@ -310,6 +310,11 @@ void remmina_pref_init(void)
 	else
 		remmina_pref.lock_edit = FALSE;
 
+	if (g_key_file_has_key(gkeyfile, "remmina_pref", "audit", NULL))
+		remmina_pref.audit = g_key_file_get_boolean(gkeyfile, "remmina_pref", "audit", NULL);
+	else
+		remmina_pref.audit = FALSE;
+
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "trust_all", NULL))
 		remmina_pref.trust_all = g_key_file_get_boolean(gkeyfile, "remmina_pref", "trust_all", NULL);
 	else
@@ -795,6 +800,7 @@ gboolean remmina_pref_save(void)
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "lock_connect", FALSE);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "lock_edit", FALSE);
 #endif
+	g_key_file_set_boolean(gkeyfile, "remmina_pref", "audit", remmina_pref.audit);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "trust_all", remmina_pref.trust_all);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "floating_toolbar_placement", remmina_pref.floating_toolbar_placement);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "toolbar_placement", remmina_pref.toolbar_placement);

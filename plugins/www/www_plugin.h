@@ -48,8 +48,27 @@ typedef enum {
 } WWWWebViewDocumentType;
 
 extern RemminaPluginService *remmina_plugin_service;
-#define REMMINA_PLUGIN_DEBUG(fmt, ...) remmina_plugin_service->_remmina_debug(__func__, fmt, ##__VA_ARGS__)
 
+#define REMMINA_PLUGIN_INFO(fmt, ...) \
+		remmina_plugin_service->_remmina_info(__func__, fmt, ##__VA_ARGS__)
+
+#define REMMINA_PLUGIN_MESSAGE(fmt, ...) \
+		remmina_plugin_service->_remmina_message(__func, fmt, ##__VA_ARGS__)
+
+#define REMMINA_PLUGIN_DEBUG(fmt, ...) \
+		remmina_plugin_service->_remmina_debug(__func__, fmt, ##__VA_ARGS__)
+
+#define REMMINA_PLUGIN_WARNING(fmt, ...) \
+		remmina_plugin_service->_remmina_warning(__func__, fmt, ##__VA_ARGS__)
+
+/* This will intentionally crash Remmina */
+#define REMMINA_PLUGIN_ERROR(fmt, ...) \
+		remmina_plugin_service->_remmina_error(__func__, fmt, ##__VA_ARGS__)
+
+#define REMMINA_PLUGIN_CRITICAL(fmt, ...) \
+		remmina_plugin_service->_remmina_critical(__func__, fmt, ##__VA_ARGS__)
+#define REMMINA_PLUGIN_AUDIT(fmt, ...) \
+		remmina_plugin_service->_remmina_audit(__func__, fmt, ##__VA_ARGS__)
 
 G_BEGIN_DECLS
 void remmina_plugin_www_decide_nav(WebKitPolicyDecision *decision, RemminaProtocolWidget *gp);
