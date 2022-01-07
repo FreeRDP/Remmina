@@ -42,6 +42,7 @@
 #include "config.h"
 #include "remmina_sodium.h"
 #include "remmina_pref.h"
+#include "remmina_log.h"
 #include "remmina_unlock.h"
 #include "remmina_public.h"
 #include "remmina/remmina_trace_calls.h"
@@ -58,7 +59,7 @@ static void remmina_unlock_timer_init()
 	TRACE_CALL(__func__);
 
 	timer = g_timer_new();
-	g_info("Unlock Primary Password timer initialized");
+	REMMINA_DEBUG("Unlock Primary Password timer initialized");
 }
 
 static void remmina_unlock_timer_reset(gpointer user_data)
@@ -66,7 +67,7 @@ static void remmina_unlock_timer_reset(gpointer user_data)
 	TRACE_CALL(__func__);
 
 	g_timer_reset(timer);
-	g_info("Unlock Primary Password timer reset");
+	REMMINA_DEBUG("Unlock Primary Password timer reset");
 }
 
 void remmina_unlock_timer_destroy()
@@ -88,10 +89,10 @@ static void remmina_unlock_unlock_clicked(GtkButton *btn, gpointer user_data)
 	unlock_password = remmina_pref_get_value("unlock_password");
 	entry_passwd = gtk_entry_get_text(remmina_unlock_dialog->entry_unlock);
 	rc = remmina_sodium_pwhash_str_verify(unlock_password, entry_passwd);
-	g_info("remmina_sodium_pwhash_str_verify returned %i", rc);
+	REMMINA_DEBUG("remmina_sodium_pwhash_str_verify returned %i", rc);
 
 	if (rc == 0) {
-		g_info("Passphrase veryfied successfully");
+		REMMINA_DEBUG("Passphrase veryfied successfully");
 		remmina_unlock_timer_reset(remmina_unlock_dialog);
 		gtk_widget_destroy(GTK_WIDGET(remmina_unlock_dialog->dialog));
 		remmina_unlock_dialog->dialog = NULL;
@@ -103,6 +104,7 @@ static void remmina_unlock_unlock_clicked(GtkButton *btn, gpointer user_data)
 static void remmina_unlock_cancel_clicked(GtkButton *btn, gpointer user_data)
 {
 	TRACE_CALL(__func__);
+	isinit = FALSE;
 	remmina_unlock_dialog->retval = 0;
 	gtk_widget_destroy(GTK_WIDGET(remmina_unlock_dialog->dialog));
 	remmina_unlock_dialog->dialog = NULL;
@@ -117,7 +119,6 @@ gint remmina_unlock_new(GtkWindow *parent)
 	gboolean lock = TRUE;
 
 	unlock_timeout = remmina_pref.unlock_timeout;
-
 
 	remmina_unlock_dialog = g_new0(RemminaUnlockDialog, 1);
 	remmina_unlock_dialog->retval = 1;
@@ -140,7 +141,7 @@ gint remmina_unlock_new(GtkWindow *parent)
 		lock = TRUE;
 		isinit = TRUE;
 	}
-	g_info("Based on settings and current status, the unlock dialog is set to %d", lock);
+	REMMINA_DEBUG("Based on settings and current status, the unlock dialog is set to %d", lock);
 
 	remmina_unlock_dialog->builder = remmina_public_gtk_builder_new_from_resource("/org/remmina/Remmina/src/../data/ui/remmina_unlock.glade");
 	remmina_unlock_dialog->dialog = GTK_DIALOG(gtk_builder_get_object(remmina_unlock_dialog->builder, "RemminaUnlockDialog"));
@@ -164,8 +165,8 @@ gint remmina_unlock_new(GtkWindow *parent)
 	/* Connect signals */
 	gtk_builder_connect_signals(remmina_unlock_dialog->builder, NULL);
 
-	if (remmina_pref_get_boolean("use_primary_password")
-			&& (g_strcmp0(remmina_pref_get_value("unlock_password"), "") != 0)
+	//if (remmina_pref_get_boolean("use_primary_password")
+	if ((g_strcmp0(remmina_pref_get_value("unlock_password"), "") != 0)
 			&& lock != 0)
 		gtk_dialog_run(remmina_unlock_dialog->dialog);
 	return(remmina_unlock_dialog->retval);

@@ -396,7 +396,8 @@ void remmina_exec_command(RemminaCommandType command, const gchar* data)
 		break;
 
 	case REMMINA_COMMAND_PREF:
-		if (remmina_unlock_new(mainwindow) == 0)
+		if (remmina_pref_get_boolean("use_primary_password")
+				&& remmina_unlock_new(mainwindow) == 0)
 			break;
 		prefdialog = remmina_pref_dialog_get_dialog();
 		if (prefdialog) {
@@ -410,8 +411,10 @@ void remmina_exec_command(RemminaCommandType command, const gchar* data)
 		break;
 
 	case REMMINA_COMMAND_NEW:
-		if (remmina_pref_get_boolean("lock_edit") && remmina_unlock_new(mainwindow) == 0)
-			break;
+		if (remmina_pref_get_boolean("lock_edit")
+				&& remmina_pref_get_boolean("use_primary_password"))
+				if (remmina_unlock_new(mainwindow) == 0)
+					break;
 		s1 = (data ? strchr(data, ',') : NULL);
 		if (s1) {
 			s1 = g_strdup(data);
@@ -431,14 +434,18 @@ void remmina_exec_command(RemminaCommandType command, const gchar* data)
 		 * we can implement multi profile connection:
 		 *    https://gitlab.com/Remmina/Remmina/issues/915
 		 */
-		if (remmina_pref_get_boolean("lock_connect") && remmina_unlock_new(mainwindow) == 0)
-			break;
+		if (remmina_pref_get_boolean("lock_connect")
+				&& remmina_pref_get_boolean("use_primary_password"))
+				if (remmina_unlock_new(mainwindow) == 0)
+					break;
 		remmina_exec_connect(data);
 		break;
 
 	case REMMINA_COMMAND_EDIT:
-		if (remmina_pref_get_boolean("lock_edit") && remmina_unlock_new(mainwindow) == 0)
-			break;
+		if (remmina_pref_get_boolean("lock_edit")
+				&& remmina_pref_get_boolean("use_primary_password"))
+				if (remmina_unlock_new(mainwindow) == 0)
+					break;
 		widget = remmina_file_editor_new_from_filename(data);
 		if (widget)
 			gtk_widget_show(widget);
