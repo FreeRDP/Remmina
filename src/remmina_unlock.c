@@ -44,6 +44,7 @@
 #include "remmina_pref.h"
 #include "remmina_log.h"
 #include "remmina_unlock.h"
+#include "remmina_passwd.h"
 #include "remmina_public.h"
 #include "remmina/remmina_trace_calls.h"
 
@@ -89,7 +90,7 @@ static void remmina_unlock_unlock_clicked(GtkButton *btn, gpointer user_data)
 	unlock_password = remmina_pref_get_value("unlock_password");
 	entry_passwd = gtk_entry_get_text(remmina_unlock_dialog->entry_unlock);
 	rc = remmina_sodium_pwhash_str_verify(unlock_password, entry_passwd);
-	REMMINA_DEBUG("remmina_sodium_pwhash_str_verify returned %i", rc);
+	//REMMINA_DEBUG("remmina_sodium_pwhash_str_verify returned %i", rc);
 
 	if (rc == 0) {
 		REMMINA_DEBUG("Passphrase veryfied successfully");
@@ -97,7 +98,7 @@ static void remmina_unlock_unlock_clicked(GtkButton *btn, gpointer user_data)
 		gtk_widget_destroy(GTK_WIDGET(remmina_unlock_dialog->dialog));
 		remmina_unlock_dialog->dialog = NULL;
 	} else {
-		g_warning ("Passphrase is wrong, to reset it, you can edit the remmina.pref file by hand");
+		REMMINA_WARNING ("Passphrase is wrong, to reset it, you can edit the remmina.pref file by hand");
 	}
 }
 
@@ -166,9 +167,17 @@ gint remmina_unlock_new(GtkWindow *parent)
 	gtk_builder_connect_signals(remmina_unlock_dialog->builder, NULL);
 
 	//if (remmina_pref_get_boolean("use_primary_password")
-	if ((g_strcmp0(remmina_pref_get_value("unlock_password"), "") != 0)
-			&& lock != 0)
+	gchar *unlock_password = NULL;
+	unlock_password = remmina_pref_get_value("unlock_password");
+	if ((unlock_password == NULL) || (g_strcmp0(unlock_password, "") == 0)) {
+		remmina_passwd (GTK_WINDOW(remmina_unlock_dialog->dialog), &unlock_password);
+		//REMMINA_DEBUG ("Password is: %s", unlock_password);
+		remmina_pref_set_value("unlock_password", g_strdup(unlock_password));
+	}
+	if ((g_strcmp0(unlock_password, "") != 0) && lock != 0)
 		gtk_dialog_run(remmina_unlock_dialog->dialog);
+
+	g_free(unlock_password), unlock_password = NULL;
 	return(remmina_unlock_dialog->retval);
 }
 

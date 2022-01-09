@@ -79,6 +79,8 @@ list(
   "remmina_plugin_native.h"
   "remmina_ext_exec.c"
   "remmina_ext_exec.h"
+  "remmina_passwd.c"
+  "remmina_passwd.h"
   "remmina_pref.c"
   "remmina_pref_dialog.c"
   "remmina_pref_dialog.h"
@@ -131,6 +133,7 @@ set(RESOURCE_LIST
     ${CMAKE_CURRENT_SOURCE_DIR}/../data/ui/remmina_main.glade
     ${CMAKE_CURRENT_SOURCE_DIR}/../data/ui/remmina_mpc.glade
     ${CMAKE_CURRENT_SOURCE_DIR}/../data/ui/remmina_news.glade
+    ${CMAKE_CURRENT_SOURCE_DIR}/../data/ui/remmina_passwd.glade
     ${CMAKE_CURRENT_SOURCE_DIR}/../data/ui/remmina_preferences.glade
     ${CMAKE_CURRENT_SOURCE_DIR}/../data/ui/remmina_search.glade
     ${CMAKE_CURRENT_SOURCE_DIR}/../data/ui/remmina_search_popover.glade

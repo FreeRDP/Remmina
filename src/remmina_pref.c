@@ -1103,17 +1103,24 @@ void remmina_pref_set_value(const gchar *key, const gchar *value)
 {
 	TRACE_CALL(__func__);
 	GKeyFile *gkeyfile;
-	gchar *content;
 	gsize length;
 
 	gkeyfile = g_key_file_new();
-	g_key_file_load_from_file(gkeyfile, remmina_pref_file, G_KEY_FILE_NONE, NULL);
-	g_key_file_set_string(gkeyfile, "remmina_pref", key, value);
-	content = g_key_file_to_data(gkeyfile, &length, NULL);
-	g_file_set_contents(remmina_pref_file, content, length, NULL);
+	if (g_key_file_load_from_file(gkeyfile, remmina_pref_file, G_KEY_FILE_NONE, NULL))
+	{
+		g_key_file_set_string(gkeyfile, "remmina_pref", key, value);
+		gchar *content = g_key_file_to_data(gkeyfile, &length, NULL);
+		if (g_file_set_contents(remmina_pref_file, content, length, NULL)) {
+			g_free(content);
+		} else {
+			REMMINA_WARNING ("Cannot save Remmina preferences");
+			REMMINA_WARNING ("Key was \"%s\", and value \"%s\"", key, value);
 
-	g_key_file_free(gkeyfile);
-	g_free(content);
+		}
+		g_key_file_free(gkeyfile);
+	} else {
+		REMMINA_WARNING ("Cannot load Remmina preferences file");
+	}
 }
 
 gchar *remmina_pref_get_value(const gchar *key)
