@@ -2,7 +2,7 @@
 # Copyright © 2012 Rosetta Contributors and Canonical Ltd 2012
 # This file is distributed under the same license as the remmina package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
-# Allan Nordhøy <epost@anotheragency.no>, 2019, 2020, 2021.
+# Allan Nordhøy <epost@anotheragency.no>, 2019, 2020, 2021, 2022.
 # Michal Čihař <michal@cihar.com>, 2019.
 # Antenore Gatta <antenore@simbiosi.org>, 2020, 2021.
 # Ragnar Stølsmark <rstolsmark@live.no>, 2021
@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2021-12-22 23:22+0000\n"
-"PO-Revision-Date: 2021-12-17 08:48+0000\n"
+"PO-Revision-Date: 2022-01-10 18:52+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/remmina/"
 "remmina/nb_NO/>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.10\n"
+"X-Generator: Weblate 4.10.1\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:354
@@ -514,6 +514,8 @@ msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 msgstr ""
+"https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
+"available-in-a-Wayland-session"
 
 #: src/rcw.c:4509
 #, fuzzy
@@ -3259,16 +3261,19 @@ msgid "Listen on port"
 msgstr "Lytt til port"
 
 #: plugins/vnc/vnc_plugin.c:2028
+#, fuzzy
 msgid "Override pre-set VNC encodings"
-msgstr ""
+msgstr "Overstyr forhåndsinnstilte VNC-kodinger"
 
 #: plugins/vnc/vnc_plugin.c:2029
+#, fuzzy
 msgid "Force tight encoding"
-msgstr ""
+msgstr "Påtving strikt koding"
 
 #: plugins/vnc/vnc_plugin.c:2029
+#, fuzzy
 msgid "Enabling this may help when the remote desktop looks scrambled"
-msgstr ""
+msgstr "Å skru på dette kan hjelpe deg når fjernskrivebordet er fordreid"
 
 #: plugins/vnc/vnc_plugin.c:2032 plugins/gvnc/gvnc_plugin.c:868
 #, fuzzy
@@ -3562,7 +3567,7 @@ msgstr "Sluttføring av X2Go-økter kan ta en stund."
 #: plugins/x2go/x2go_plugin.c:618 plugins/x2go/x2go_plugin.c:620
 #, fuzzy, c-format
 msgid "Unknown property '%i'"
-msgstr "Ukjent egenskap"
+msgstr "Ukjent egenskap «%i»"
 
 #: plugins/x2go/x2go_plugin.c:708 plugins/x2go/x2go_plugin.c:755
 #, fuzzy
@@ -3570,10 +3575,13 @@ msgid "Couldn't find child GtkTreeView of session chooser dialog."
 msgstr "Finner ikke underordnet GtkTreeView i dialogboksen for øktvelger."
 
 #: plugins/x2go/x2go_plugin.c:720
+#, fuzzy
 msgid ""
 "Neither the 'dialog' nor 'treeview' parameters are initialized! At least one "
 "of them must be given."
 msgstr ""
+"Hverken «dialog» eller «treeview»-parameterne er igangsatt. Minst ett av dem "
+"må angis."
 
 #: plugins/x2go/x2go_plugin.c:729
 #, fuzzy
@@ -3593,7 +3601,7 @@ msgstr "Kan ikke hente økt-ID ut av valgt rad."
 msgid ""
 "Exactly one session should be selectable but '%i' rows (sessions) are "
 "selected."
-msgstr "Bare én økt skal kunne velges."
+msgstr "Bare én økt skal kunne velges, men «%i» rader (økter) ble valgt."
 
 #: plugins/x2go/x2go_plugin.c:833
 #, fuzzy
@@ -3630,11 +3638,13 @@ msgstr ""
 "internettforbindelsesproblem."
 
 #: plugins/x2go/x2go_plugin.c:972
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not start PyHoca-CLI:\n"
 "%s"
-msgstr "Klarte ikke å starte PyHoca-CLI (%i): «%s»"
+msgstr ""
+"Klarte ikke å starte PyHoca-CLI:\n"
+"%s"
 
 #: plugins/x2go/x2go_plugin.c:983
 #, fuzzy, c-format
@@ -3680,7 +3690,9 @@ msgstr "Ugyldige tilkoblingsdata."
 msgid ""
 "An error occured while trying to terminate X2Go session '%s':\n"
 "%s"
-msgstr "En feil inntraff under starting av X2Go-økt."
+msgstr ""
+"En feil inntraff under forsøk på å avslutte X2Go-økten «%s»:\n"
+"%s"
 
 #: plugins/x2go/x2go_plugin.c:1230 plugins/x2go/x2go_plugin.c:1594
 #, fuzzy
