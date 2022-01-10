@@ -106,6 +106,9 @@
 		rm_plugin_service->_remmina_warning(__func__, "[%s] " fmt, \
 						    PLUGIN_NAME, ##__VA_ARGS__)
 
+#define REMMINA_PLUGIN_AUDIT(fmt, ...) \
+		rm_plugin_service->_remmina_audit(__func__, fmt, ##__VA_ARGS__)
+
 #define REMMINA_PLUGIN_ERROR(fmt, ...) \
 		rm_plugin_service->_remmina_error(__func__, "[%s] " fmt, \
 						  PLUGIN_NAME, ##__VA_ARGS__)
@@ -1513,6 +1516,18 @@ static void rmplugin_x2go_remove_window_id (Window window_id)
 static gboolean rmplugin_x2go_cleanup(RemminaProtocolWidget *gp)
 {
 	REMMINA_PLUGIN_DEBUG("Function entry.");
+
+	gchar *server;
+	gint port;
+
+	RemminaFile *remminafile = rm_plugin_service->protocol_plugin_get_file(gp);
+	rm_plugin_service->get_server_port(rm_plugin_service->file_get_string(remminafile, "server"),
+			22,
+			&server,
+			&port);
+
+	REMMINA_PLUGIN_AUDIT(_("Disconnected from %s:%d via X2Go"), server, port);
+	g_free(server), server = NULL;
 
 	RemminaPluginX2GoData *gpdata = GET_PLUGIN_DATA(gp);
 	if (gpdata == NULL) {

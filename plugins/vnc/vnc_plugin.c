@@ -48,6 +48,8 @@
 #define REMMINA_PLUGIN_VNC_FEATURE_UNFOCUS                 7
 #define REMMINA_PLUGIN_VNC_FEATURE_TOOL_SENDCTRLALTDEL     8
 
+#define VNC_DEFAULT_PORT 5900
+
 #define GET_PLUGIN_DATA(gp) (RemminaPluginVncData *)g_object_get_data(G_OBJECT(gp), "plugin-data")
 
 static RemminaPluginService *remmina_plugin_service = NULL;
@@ -1185,7 +1187,7 @@ static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 	while (gpdata->connected) {
 		gpdata->auth_called = FALSE;
 
-		host = remmina_plugin_service->protocol_plugin_start_direct_tunnel(gp, 5900, TRUE);
+		host = remmina_plugin_service->protocol_plugin_start_direct_tunnel(gp, VNC_DEFAULT_PORT, TRUE);
 
 		if (host == NULL) {
 			REMMINA_PLUGIN_DEBUG("host is null");
@@ -1253,13 +1255,13 @@ static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 
 			remmina_plugin_vnc_incoming_connection(gp, cl);
 		} else {
-			remmina_plugin_service->get_server_port(host, 5900, &s, &cl->serverPort);
+			remmina_plugin_service->get_server_port(host, VNC_DEFAULT_PORT, &s, &cl->serverPort);
 			cl->serverHost = g_strdup(s);
 			g_free(s);
 
 			/* Support short-form (:0, :1) */
 			if (cl->serverPort < 100)
-				cl->serverPort += 5900;
+				cl->serverPort += VNC_DEFAULT_PORT;
 		}
 		g_free(host);
 		host = NULL;
@@ -1267,12 +1269,12 @@ static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 		if (remmina_plugin_service->file_get_string(remminafile, "proxy")) {
 			remmina_plugin_service->get_server_port(
 				remmina_plugin_service->file_get_string(remminafile, "server"),
-				5900,
+				VNC_DEFAULT_PORT,
 				&cl->destHost,
 				&cl->destPort);
 			remmina_plugin_service->get_server_port(
 				remmina_plugin_service->file_get_string(remminafile, "proxy"),
-				5900,
+				VNC_DEFAULT_PORT,
 				&cl->serverHost,
 				&cl->serverPort);
 			REMMINA_PLUGIN_DEBUG("cl->serverHost: %s", cl->serverHost);
@@ -1671,6 +1673,8 @@ static gboolean remmina_plugin_vnc_open_connection(RemminaProtocolWidget *gp)
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
 	gpdata->connected = TRUE;
+	gchar *server;
+	gint port;
 
 	remmina_plugin_service->protocol_plugin_register_hostkey(gp, gpdata->drawing_area);
 
@@ -1694,6 +1698,13 @@ static gboolean remmina_plugin_vnc_open_connection(RemminaProtocolWidget *gp)
 		gpdata->thread = 0;
 	}
 
+	remmina_plugin_service->get_server_port(remmina_plugin_service->file_get_string(remminafile, "server"),
+			VNC_DEFAULT_PORT,
+			&server,
+			&port);
+
+	REMMINA_PLUGIN_AUDIT(_("Connected to %s:%d via VNC"), server, port);
+	g_free(server), server = NULL;
 	return TRUE;
 }
 
@@ -1701,6 +1712,18 @@ static gboolean remmina_plugin_vnc_close_connection_timeout(RemminaProtocolWidge
 {
 	TRACE_CALL(__func__);
 	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
+
+	gchar *server;
+	gint port;
+
+	RemminaFile *remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
+	remmina_plugin_service->get_server_port(remmina_plugin_service->file_get_string(remminafile, "server"),
+			VNC_DEFAULT_PORT,
+			&server,
+			&port);
+
+	REMMINA_PLUGIN_AUDIT(_("Disconnected from %s:%d via VNC"), server, port);
+	g_free(server), server = NULL;
 
 	/* wait until the running attribute is set to false by the VNC thread */
 	if (gpdata->running)
