@@ -81,7 +81,7 @@ void remmina_unlock_timer_destroy()
 static void remmina_unlock_unlock_clicked(GtkButton *btn, gpointer user_data)
 {
 	TRACE_CALL(__func__);
-	//g_timer_reset(remmina_unlock_dialog->timer);
+	//g_timer_reset(NULL);
 
 	gchar *unlock_password;
 	const gchar *entry_passwd;
@@ -98,7 +98,7 @@ static void remmina_unlock_unlock_clicked(GtkButton *btn, gpointer user_data)
 		remmina_unlock_dialog->retval = TRUE;
 	} else {
 		REMMINA_WARNING ("Passphrase is wrong, to reset it, you can edit the remmina.pref file by hand");
-		remmina_unlock_timer_reset(remmina_unlock_dialog);
+		remmina_unlock_timer_reset(NULL);
 		remmina_unlock_dialog->retval = FALSE;
 	}
 	gtk_dialog_response(remmina_unlock_dialog->dialog, GTK_RESPONSE_ACCEPT);
@@ -131,13 +131,19 @@ gint remmina_unlock_new(GtkWindow *parent)
 	if (timer != NULL)
 		elapsed = g_timer_elapsed(timer, NULL);
 
+	/* We stop the timer while we enter the password) */
+	if (timer) g_timer_stop(timer);
+
 	unlock_timeout = remmina_pref.unlock_timeout;
 	REMMINA_DEBUG ("unlock_timeout = %f", unlock_timeout);
 	REMMINA_DEBUG ("elapsed = %f", elapsed);
 	REMMINA_DEBUG ("INT unlock_timeout = %d", (int)unlock_timeout);
 	REMMINA_DEBUG ("INT elapsed = %d", (int)elapsed);
 	/* always LOCK and ask password */
-	if ((elapsed) && ((int)unlock_timeout - elapsed) <= 0) unlocked = FALSE;
+	if ((elapsed) && ((int)unlock_timeout - elapsed) <= 0) {
+		unlocked = FALSE;
+		remmina_unlock_timer_reset(NULL);
+	}
 	/* We don't lock as it has been already requested */
 	//if (!unlocked && ((int)unlock_timeout - elapsed) > 0) unlocked = TRUE;
 
@@ -218,6 +224,7 @@ gint remmina_unlock_new(GtkWindow *parent)
 		gtk_widget_destroy(GTK_WIDGET(remmina_unlock_dialog->dialog));
 		remmina_unlock_dialog->dialog = NULL;
 	}
+	if (timer) g_timer_start(timer);
 	return(rc);
 }
 
