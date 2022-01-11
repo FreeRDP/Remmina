@@ -603,8 +603,6 @@
                       <object class="GtkComboBoxText" id="comboboxtext_appearance_tab_interface">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
-                        <property name="margin-start">6</property>
-                        <property name="margin-end">18</property>
                         <items>
                           <item id="0" translatable="yes">By group</item>
                           <item id="1" translatable="yes">By protocol</item>
@@ -1839,6 +1837,82 @@ It changes the background colour of connection names in the Remmina connection t
                             <property name="left-padding">12</property>
                             <child>
                               <!-- n-columns=2 n-rows=1 -->
+                              <object class="GtkGrid" id="grid_security_encryption">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <child>
+                                  <object class="GtkLabel">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="halign">start</property>
+                                    <property name="margin-left">18</property>
+                                    <property name="margin-start">18</property>
+                                    <property name="margin-top">9</property>
+                                    <property name="label" translatable="yes">Encryption method</property>
+                                  </object>
+                                  <packing>
+                                    <property name="left-attach">0</property>
+                                    <property name="top-attach">0</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkComboBoxText" id="comboboxtext_security_enc_method">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="tooltip-text" translatable="yes">These are the encryption methods used by Remmina to store passwords and passphrases.
+
+Except the "Weak" method, all the others are reccomended, Keystore is the default, as it integrates with GNOME or KDE/Plasma.
+
+Intermediate is the best compromise in terms of RAM/CPU required vs security, but if you need an extremely secure method you should go with Sensitive, but it'll use 1Gib of RAM and many CPU cycles to hash your passwords. </property>
+                                    <property name="halign">start</property>
+                                    <property name="margin-start">6</property>
+                                    <property name="margin-end">18</property>
+                                    <property name="margin-top">9</property>
+                                    <items>
+                                      <item id="0" translatable="yes">Keystore (kwallet, GNOME keyring)</item>
+                                      <item id="1" translatable="yes">Intermediate (64 Mib RAM)</item>
+                                      <item id="2" translatable="yes">Strong (256 Mib, &lt;1s i7 CPU)</item>
+                                      <item id="3" translatable="yes">Sensitive (1024 Mib, &lt;4s i7 CPU)</item>
+                                      <item id="4" translatable="yes">Weak (Password may be guessed)</item>
+                                    </items>
+                                  </object>
+                                  <packing>
+                                    <property name="left-attach">1</property>
+                                    <property name="top-attach">0</property>
+                                  </packing>
+                                </child>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child type="label">
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="margin-start">9</property>
+                            <property name="label" translatable="yes">Connection profiles passwords encryption</property>
+                          </object>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkFrame">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="label-xalign">0</property>
+                        <property name="shadow-type">out</property>
+                        <child>
+                          <object class="GtkAlignment">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="left-padding">12</property>
+                            <child>
+                              <!-- n-columns=2 n-rows=1 -->
                               <object class="GtkGrid" id="grid_security_audit">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
@@ -1888,7 +1962,7 @@ It changes the background colour of connection names in the Remmina connection t
                       <packing>
                         <property name="expand">False</property>
                         <property name="fill">True</property>
-                        <property name="position">1</property>
+                        <property name="position">2</property>
                       </packing>
                     </child>
                     <child>
@@ -1913,6 +1987,7 @@ It changes the background colour of connection names in the Remmina connection t
                                     <property name="can-focus">False</property>
                                     <property name="tooltip-text" translatable="yes">Automatically accept all fingerprints and certificates</property>
                                     <property name="halign">start</property>
+                                    <property name="margin-left">18</property>
                                     <property name="margin-start">18</property>
                                     <property name="margin-top">9</property>
                                     <property name="margin-bottom">18</property>
@@ -1929,6 +2004,8 @@ It changes the background colour of connection names in the Remmina connection t
                                     <property name="can-focus">True</property>
                                     <property name="tooltip-text" translatable="yes">Use secret key authentication for some widgets</property>
                                     <property name="halign">start</property>
+                                    <property name="margin-left">6</property>
+                                    <property name="margin-right">18</property>
                                     <property name="margin-start">6</property>
                                     <property name="margin-end">18</property>
                                     <property name="margin-top">9</property>
@@ -1955,7 +2032,7 @@ It changes the background colour of connection names in the Remmina connection t
                       <packing>
                         <property name="expand">False</property>
                         <property name="fill">True</property>
-                        <property name="position">2</property>
+                        <property name="position">3</property>
                       </packing>
                     </child>
                   </object>

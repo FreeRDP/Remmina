@@ -65,6 +65,7 @@
 
 #include "config.h"
 #include <glib.h>
+#include "remmina_pref.h"
 #include "remmina/remmina_trace_calls.h"
 
 #include "remmina_sodium.h"
@@ -78,11 +79,32 @@ gchar *remmina_sodium_pwhash(const gchar *pass)
 	unsigned char salt[crypto_pwhash_SALTBYTES] = { 0 };
 	randombytes_buf(salt, sizeof salt);
 
+	unsigned long long opslimit;
+	size_t memlimit;
+
+	switch (remmina_pref.enc_mode) {
+		case RM_ENC_MODE_SODIUM_MODERATE:
+			opslimit = crypto_pwhash_OPSLIMIT_MODERATE;
+			memlimit = crypto_pwhash_MEMLIMIT_MODERATE;
+			break;
+		case RM_ENC_MODE_SODIUM_SENSITIVE:
+			opslimit = crypto_pwhash_OPSLIMIT_SENSITIVE;
+			memlimit = crypto_pwhash_MEMLIMIT_SENSITIVE;
+			break;
+		case RM_ENC_MODE_GCRYPT:
+		case RM_ENC_MODE_SECRET:
+		case RM_ENC_MODE_SODIUM_INTERACTIVE:
+		default:
+			opslimit = crypto_pwhash_OPSLIMIT_INTERACTIVE;
+			memlimit = crypto_pwhash_MEMLIMIT_INTERACTIVE;
+			break;
+	}
+
 	/* Use argon2 to convert password to a full size key */
 	unsigned char key[crypto_secretbox_KEYBYTES];
 	if (crypto_pwhash(key, sizeof key, pass, strlen(pass), salt,
-			  crypto_pwhash_OPSLIMIT_INTERACTIVE,
-			  crypto_pwhash_MEMLIMIT_INTERACTIVE,
+			  opslimit,
+			  memlimit,
 			  crypto_pwhash_ALG_DEFAULT) != 0) {
 		g_error("%s - Out of memory!", __func__);
 		exit(1);
@@ -100,11 +122,32 @@ gchar *remmina_sodium_pwhash_str(const gchar *pass)
 	unsigned char salt[crypto_pwhash_SALTBYTES] = { 0 };
 	randombytes_buf(salt, sizeof salt);
 
+	unsigned long long opslimit;
+	size_t memlimit;
+
+	switch (remmina_pref.enc_mode) {
+		case RM_ENC_MODE_SODIUM_MODERATE:
+			opslimit = crypto_pwhash_OPSLIMIT_MODERATE;
+			memlimit = crypto_pwhash_MEMLIMIT_MODERATE;
+			break;
+		case RM_ENC_MODE_SODIUM_SENSITIVE:
+			opslimit = crypto_pwhash_OPSLIMIT_SENSITIVE;
+			memlimit = crypto_pwhash_MEMLIMIT_SENSITIVE;
+			break;
+		case RM_ENC_MODE_GCRYPT:
+		case RM_ENC_MODE_SECRET:
+		case RM_ENC_MODE_SODIUM_INTERACTIVE:
+		default:
+			opslimit = crypto_pwhash_OPSLIMIT_INTERACTIVE;
+			memlimit = crypto_pwhash_MEMLIMIT_INTERACTIVE;
+			break;
+	}
+
 	/* Use argon2 to convert password to a full size key */
 	char key[crypto_pwhash_STRBYTES];
 	if (crypto_pwhash_str(key, pass, strlen(pass),
-			      crypto_pwhash_OPSLIMIT_INTERACTIVE,
-			      crypto_pwhash_MEMLIMIT_INTERACTIVE) != 0) {
+			      opslimit,
+			      memlimit) != 0) {
 		g_error("%s - Out of memory!", __func__);
 		exit(1);
 	}

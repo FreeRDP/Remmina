@@ -96,8 +96,7 @@ static void remmina_passwd_password_activate(GtkEntry *entry, gpointer user_data
 static void remmina_passwd_cancel_clicked(GtkButton *btn, gpointer user_data)
 {
 	TRACE_CALL(__func__);
-	gtk_widget_destroy(GTK_WIDGET(remmina_passwd_dialog->dialog));
-	remmina_passwd_dialog->dialog = NULL;
+	gtk_dialog_response (remmina_passwd_dialog->dialog, GTK_RESPONSE_CANCEL);
 }
 
 static void remmina_passwd_submit_clicked(GtkButton *btn, gpointer user_data)
@@ -108,11 +107,12 @@ static void remmina_passwd_submit_clicked(GtkButton *btn, gpointer user_data)
 	gtk_dialog_response (remmina_passwd_dialog->dialog, GTK_RESPONSE_ACCEPT);
 }
 
-void remmina_passwd(GtkWindow *parent, gchar **unlock_password)
+gboolean remmina_passwd(GtkWindow *parent, gchar **unlock_password)
 {
 	TRACE_CALL(__func__);
 
 	remmina_passwd_dialog = g_new0(RemminaPasswdDialog, 1);
+	gboolean rc = FALSE;
 
 	remmina_passwd_dialog->builder = remmina_public_gtk_builder_new_from_resource("/org/remmina/Remmina/src/../data/ui/remmina_passwd.glade");
 	remmina_passwd_dialog->dialog = GTK_DIALOG(GET_OBJ("RemminaPasswdDialog"));
@@ -147,11 +147,17 @@ void remmina_passwd(GtkWindow *parent, gchar **unlock_password)
 #else
 			*unlock_password = g_strdup(remmina_passwd_dialog->password);
 #endif
-			//REMMINA_DEBUG ("Password after encryption is: %s", *unlock_password);
+			REMMINA_DEBUG ("Password after encryption is: %s", *unlock_password);
 			remmina_passwd_dialog->password = NULL;
+			rc = TRUE;
 			break;
 		default:
+			remmina_passwd_dialog->password = NULL;
+			*unlock_password = NULL;
+			rc = FALSE;
 			break;
 	}
 	gtk_widget_destroy(GTK_WIDGET(remmina_passwd_dialog->dialog));
+	remmina_passwd_dialog->dialog = NULL;
+	return rc;
 }

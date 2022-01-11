@@ -81,6 +81,14 @@ enum {
 };
 
 enum {
+	RM_ENC_MODE_SECRET		= 0, /* Using libsecret */
+	RM_ENC_MODE_SODIUM_INTERACTIVE	= 1, /* Using libsodium */
+	RM_ENC_MODE_SODIUM_MODERATE	= 2, /* Using libsodium */
+	RM_ENC_MODE_SODIUM_SENSITIVE	= 3, /* Using libsodium */
+	RM_ENC_MODE_GCRYPT		= 4  /* Using GCrypt */
+};
+
+enum {
 	FLOATING_TOOLBAR_VISIBILITY_PEEKING	= 0,
 	FLOATING_TOOLBAR_VISIBILITY_INVISIBLE	= 1, //"Invisible" corresponds to the "Hidden" option in the drop-down
 	FLOATING_TOOLBAR_VISIBILITY_DISABLE	= 2
@@ -173,6 +181,7 @@ typedef struct _RemminaPref {
 	gint			unlock_timeout;
 	gboolean		lock_connect;
 	gboolean		lock_edit;
+	gint			enc_mode;
 	gboolean		audit;
 	gboolean		trust_all;
 	/* In RemminaPrefDialog terminal tab */

@@ -430,7 +430,7 @@ remmina_file_load(const gchar *filename)
 		}
 	}
 
-		upgrade_sshkeys_202001(remminafile);
+	upgrade_sshkeys_202001(remminafile);
 	g_strfreev(keys);
 	remmina_file_set_statefile(remminafile);
 	g_key_file_free(gkeyfile);
