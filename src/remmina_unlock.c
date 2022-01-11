@@ -137,7 +137,7 @@ gint remmina_unlock_new(GtkWindow *parent)
 	REMMINA_DEBUG ("INT unlock_timeout = %d", (int)unlock_timeout);
 	REMMINA_DEBUG ("INT elapsed = %d", (int)elapsed);
 	/* always LOCK and ask password */
-	if (((int)unlock_timeout - elapsed) <= 0) unlocked = FALSE;
+	if ((elapsed) && ((int)unlock_timeout - elapsed) <= 0) unlocked = FALSE;
 	/* We don't lock as it has been already requested */
 	//if (!unlocked && ((int)unlock_timeout - elapsed) > 0) unlocked = TRUE;
 
@@ -199,7 +199,7 @@ gint remmina_unlock_new(GtkWindow *parent)
 				if (!remmina_unlock_dialog->retval)
 					REMMINA_DEBUG ("Wrong password");
 				else {
-					REMMINA_DEBUG ("Password is correcti, unlocking…");
+					REMMINA_DEBUG ("Password is correct, unlocking…");
 					unlocked = TRUE;
 				}
 				REMMINA_DEBUG ("retval: %d", remmina_unlock_dialog->retval);
