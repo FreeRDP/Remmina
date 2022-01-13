@@ -2566,9 +2566,23 @@ static GList* rmplugin_x2go_populate_available_features_list()
 static void rmplugin_x2go_on_plug_added(GtkSocket *socket, RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
+
+	gchar *server;
+	gint port;
+
 	RemminaPluginX2GoData *gpdata = GET_PLUGIN_DATA(gp);
 	REMMINA_PLUGIN_DEBUG("Socket %d", gpdata->socket_id);
 	rm_plugin_service->protocol_plugin_signal_connection_opened(gp);
+
+	RemminaFile *remminafile = rm_plugin_service->protocol_plugin_get_file(gp);
+	rm_plugin_service->get_server_port(rm_plugin_service->file_get_string(remminafile, "server"),
+			22,
+			&server,
+			&port);
+
+	REMMINA_PLUGIN_AUDIT(_("Connected to %s:%d via X2Go"), server, port);
+	g_free(server), server = NULL;
+
 	return;
 }
 
