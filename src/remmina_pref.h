@@ -36,6 +36,12 @@
 
 #pragma once
 #include <gtk/gtk.h>
+#include "remmina_sodium.h"
+
+#ifdef HAVE_LIBGCRYPT
+#include <gcrypt.h>
+#endif
+
 
 /*
  * Remmina Preference Loader
@@ -85,7 +91,8 @@ enum {
 	RM_ENC_MODE_SODIUM_INTERACTIVE	= 1, /* Using libsodium */
 	RM_ENC_MODE_SODIUM_MODERATE	= 2, /* Using libsodium */
 	RM_ENC_MODE_SODIUM_SENSITIVE	= 3, /* Using libsodium */
-	RM_ENC_MODE_GCRYPT		= 4  /* Using GCrypt */
+	RM_ENC_MODE_GCRYPT		= 4, /* Using GCrypt */
+	RM_ENC_MODE_NONE		= 5  /* No encryption */
 };
 
 enum {

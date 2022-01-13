@@ -729,6 +729,7 @@ GtkWidget *remmina_pref_dialog_new(gint default_tab, GtkWindow *parent)
 	remmina_pref_dialog->switch_security_lock_connect = GTK_SWITCH(GET_OBJECT("switch_security_lock_connect"));
 	remmina_pref_dialog->switch_security_lock_edit = GTK_SWITCH(GET_OBJECT("switch_security_lock_edit"));
 	remmina_pref_dialog->comboboxtext_security_enc_method = GTK_COMBO_BOX(GET_OBJECT("comboboxtext_security_enc_method"));
+
 	remmina_pref_dialog->switch_security_audit = GTK_SWITCH(GET_OBJECT("switch_security_audit"));
 	remmina_pref_dialog->switch_security_trust_all = GTK_SWITCH(GET_OBJECT("switch_security_trust_all"));
 	remmina_pref_dialog->checkbutton_options_save_settings = GTK_CHECK_BUTTON(GET_OBJECT("checkbutton_options_save_settings"));

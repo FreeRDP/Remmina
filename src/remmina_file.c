@@ -52,16 +52,17 @@
 #include <glib/gi18n.h>
 #include <glib/gstdio.h>
 
-#include "remmina_public.h"
-#include "remmina_log.h"
+#include "remmina/remmina_trace_calls.h"
 #include "remmina_crypt.h"
 #include "remmina_file_manager.h"
-#include "remmina_plugin_manager.h"
-#include "remmina_pref.h"
+#include "remmina_log.h"
 #include "remmina_main.h"
 #include "remmina_masterthread_exec.h"
+#include "remmina_plugin_manager.h"
+#include "remmina_pref.h"
+#include "remmina_public.h"
+#include "remmina_sodium.h"
 #include "remmina_utils.h"
-#include "remmina/remmina_trace_calls.h"
 
 #define MIN_WINDOW_WIDTH 10
 #define MIN_WINDOW_HEIGHT 10
@@ -399,8 +400,27 @@ remmina_file_load(const gchar *filename)
 	}
 	for (keyindex = 0; keyindex < nkeys; ++keyindex) {
 		key = keys[keyindex];
+		/* It may contain an encrypted password
+		 * - password = .         // secret_service
+		 * - password = $argon2id$v=19$m=262144,t=3,p=…    // libsodium
+		 */
 		if (protocol_plugin && remmina_plugin_manager_is_encrypted_setting(protocol_plugin, key)) {
 			s = g_key_file_get_string(gkeyfile, KEYFILE_GROUP_REMMINA, key, NULL);
+#if 0
+			switch (remmina_pref.enc_mode) {
+				case RM_ENC_MODE_SODIUM_INTERACTIVE:
+				case RM_ENC_MODE_SODIUM_MODERATE:
+				case RM_ENC_MODE_SODIUM_SENSITIVE:
+#if SODIUM_VERSION_INT >= 90200
+#endif
+					break;
+				case RM_ENC_MODE_GCRYPT:
+					break;
+				case RM_ENC_MODE_SECRET:
+				default:
+					break;
+			}
+#endif
 			if ((g_strcmp0(s, ".") == 0) && (secret_service_available)) {
 				gchar *sec = secret_plugin->get_password(remminafile, key);
 				remmina_file_set_string(remminafile, key, sec);

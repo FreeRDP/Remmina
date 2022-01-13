@@ -147,7 +147,7 @@ gboolean remmina_passwd(GtkWindow *parent, gchar **unlock_password)
 #else
 			*unlock_password = g_strdup(remmina_passwd_dialog->password);
 #endif
-			REMMINA_DEBUG ("Password after encryption is: %s", *unlock_password);
+			//REMMINA_DEBUG ("Password after encryption is: %s", *unlock_password);
 			remmina_passwd_dialog->password = NULL;
 			rc = TRUE;
 			break;

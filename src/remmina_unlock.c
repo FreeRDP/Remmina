@@ -182,10 +182,10 @@ gint remmina_unlock_new(GtkWindow *parent)
 
 		gchar *unlock_password = NULL;
 		unlock_password = g_strdup(remmina_pref_get_value("unlock_password"));
-		REMMINA_DEBUG ("Password from preferences is: %s", unlock_password);
+		//REMMINA_DEBUG ("Password from preferences is: %s", unlock_password);
 		if ((unlock_password == NULL) || (g_strcmp0(unlock_password, "") == 0)) {
 			if (remmina_passwd (GTK_WINDOW(remmina_unlock_dialog->dialog), &unlock_password)) {
-				REMMINA_DEBUG ("Password is: %s", unlock_password);
+				//REMMINA_DEBUG ("Password is: %s", unlock_password);
 				remmina_pref_set_value("unlock_password", g_strdup(unlock_password));
 				remmina_unlock_dialog->retval = TRUE;
 			} else {
