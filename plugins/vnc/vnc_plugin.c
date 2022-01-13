@@ -379,10 +379,10 @@ static void remmina_plugin_vnc_update_quality(rfbClient *cl, gint quality)
 	gchar *enc = NULL;
 
 	/**
-	 * "0", "Poor (fastest)
+	 * "0", "Poor (fastest)"
 	 * "1", "Medium"
 	 * "2", "Good"
-	 * "9", "Best
+	 * "9", "Best (slowest)"
 	 */
 	switch (quality) {
 	case 9:
@@ -1966,12 +1966,12 @@ static gchar vnciport_tooltip[] =
 	   "    x11vnc -display :0 -connect 192.168.1.36:8888");
 
 static gchar vncencodings_tooltip[] =
-	N_("Override pre-set VNC encodings:\n"
+	N_("Overriding the pre-set VNC encoding quality:\n"
 	   "\n"
-	   "  • On “Poor quality” encodings is set to “copyrect zlib hextile raw”\n"
-	   "  • On “Medium quality” encodings is set to “tight zrle ultra copyrect hextile zlib corre rre raw”\n"
-	   "  • On “Good quality” encodings is set to “tight zrle ultra copyrect hextile zlib corre rre raw”\n"
-	   "  • On “Best quality” encodings is set to “copyrect zrle ultra zlib hextile corre rre raw”");
+	   "  • “Poor (fastest)" sets encoding to “copyrect zlib hextile raw”\n"
+	   "  • “Medium” sets encoding to “tight zrle ultra copyrect hextile zlib corre rre raw”\n"
+	   "  • “Good” sets encoding to “tight zrle ultra copyrect hextile zlib corre rre raw”\n"
+	   "  • “Best (slowest)” sets encoding to “copyrect zrle ultra zlib hextile corre rre raw”");
 
 /* Array of RemminaProtocolSetting for basic settings.
  * Each item is composed by:
