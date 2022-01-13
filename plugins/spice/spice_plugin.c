@@ -373,21 +373,22 @@ static void remmina_plugin_spice_main_channel_event_cb(SpiceChannel *channel, Sp
 {
 	TRACE_CALL(__func__);
 
-	gchar *server;
+	gchar *server = NULL;
 	gint port;
 	RemminaFile *remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
-
-	switch (event) {
-	case SPICE_CHANNEL_CLOSED:
-		remmina_plugin_service->get_server_port(remmina_plugin_service->file_get_string(remminafile, "server"),
+	remmina_plugin_service->get_server_port(remmina_plugin_service->file_get_string(remminafile, "server"),
 			XSPICE_DEFAULT_PORT,
 			&server,
 			&port);
+
+	switch (event) {
+	case SPICE_CHANNEL_CLOSED:
 		remmina_plugin_service->protocol_plugin_set_error(gp, _("Disconnected from the SPICE server “%s”."), server);
-		g_free(server);
 		remmina_plugin_spice_close_connection(gp);
+		REMMINA_PLUGIN_AUDIT(_("Disconnected from %s:%d via SPICE"), server, port);
 		break;
 	case SPICE_CHANNEL_OPENED:
+		REMMINA_PLUGIN_AUDIT(_("Connected to %s:%d via SPICE"), server, port);
 		break;
 	case SPICE_CHANNEL_ERROR_AUTH:
 		if (remmina_plugin_spice_ask_auth(gp)) {
@@ -411,6 +412,7 @@ static void remmina_plugin_spice_main_channel_event_cb(SpiceChannel *channel, Sp
 	default:
 		break;
 	}
+	g_free(server), server = NULL;
 }
 
 void remmina_plugin_spice_agent_connected_event_cb(SpiceChannel *channel, RemminaProtocolWidget *gp)

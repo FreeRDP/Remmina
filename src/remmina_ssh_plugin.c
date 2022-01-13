@@ -232,6 +232,8 @@ typedef struct _RemminaPluginSshData {
 
 	pthread_t		thread;
 
+	gboolean		closed;
+
 	RemminaSshSearch *	search_widget;
 } RemminaPluginSshData;
 
@@ -330,6 +332,15 @@ remmina_plugin_ssh_main_thread(gpointer data)
 					remmina_plugin_service->protocol_plugin_set_error(gp, "%s", ssh->error);
 					break;
 				}
+				gchar *server;
+				gint port;
+				remmina_plugin_service->get_server_port(remmina_plugin_service->file_get_string(remminafile, "server"),
+						22,
+						&server,
+						&port);
+
+				REMMINA_AUDIT(_("Connected to %s:%d via SSH"), server, port);
+				g_free(server), server = NULL;
 				break;
 			case REMMINA_SSH_AUTH_PARTIAL:
 				REMMINA_DEBUG("Continue with the next auth method");
@@ -338,7 +349,7 @@ remmina_plugin_ssh_main_thread(gpointer data)
 				continue;
 				break;
 			case REMMINA_SSH_AUTH_RECONNECT:
-				REMMINA_DEBUG("Reconnecting...");
+				REMMINA_DEBUG("Reconnecting…");
 				if (ssh->session) {
 					ssh_disconnect(ssh->session);
 					ssh_free(ssh->session);
@@ -892,9 +903,24 @@ remmina_plugin_ssh_eof(VteTerminal *vteterminal, RemminaProtocolWidget *gp)
 	TRACE_CALL(__func__);
 
 	RemminaFile *remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
+	RemminaPluginSshData *gpdata = GET_PLUGIN_DATA(gp);
+
+	if (gpdata->closed)
+		return;
 
 	if (remmina_file_get_int(remminafile, "sshlogenabled", FALSE))
 		remmina_plugin_ssh_vte_save_session(NULL, gp);
+
+	gchar *server;
+	gint port;
+	remmina_plugin_service->get_server_port(remmina_plugin_service->file_get_string(remminafile, "server"),
+			22,
+			&server,
+			&port);
+
+	REMMINA_AUDIT(_("Disconnected from %s:%d via SSH"), server, port);
+	g_free(server), server = NULL;
+	gpdata->closed = TRUE;
 }
 
 /**
@@ -931,6 +957,8 @@ remmina_plugin_ssh_init(RemminaProtocolWidget *gp)
 
 	gpdata = g_new0(RemminaPluginSshData, 1);
 	g_object_set_data_full(G_OBJECT(gp), "plugin-data", gpdata, g_free);
+
+	gpdata->closed = FALSE;
 
 	hbox = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 0);
 	gtk_widget_show(hbox);

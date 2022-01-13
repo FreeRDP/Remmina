@@ -35,9 +35,6 @@
  */
 
 #include <ctype.h>
-#include <gtk/gtk.h>
-#include <glib/gi18n.h>
-#include <stdlib.h>
 #include "config.h"
 #ifdef HAVE_LIBAVAHI_UI
 #include <avahi-ui/avahi-ui.h>
@@ -45,16 +42,18 @@
 #include "remmina_public.h"
 #include "remmina_pref.h"
 #include "rcw.h"
-#include "remmina_string_list.h"
-#include "remmina_pref_dialog.h"
-#include "remmina_file.h"
-#include "remmina_file_manager.h"
-#include "remmina_ssh.h"
-#include "remmina_widget_pool.h"
-#include "remmina_plugin_manager.h"
-#include "remmina_icon.h"
-#include "remmina_file_editor.h"
 #include "remmina/remmina_trace_calls.h"
+#include "remmina_file.h"
+#include "remmina_file_editor.h"
+#include "remmina_file_manager.h"
+#include "remmina_icon.h"
+#include "remmina_main.h"
+#include "remmina_plugin_manager.h"
+#include "remmina_pref_dialog.h"
+#include "remmina_ssh.h"
+#include "remmina_string_list.h"
+#include "remmina_unlock.h"
+#include "remmina_widget_pool.h"
 
 G_DEFINE_TYPE(RemminaFileEditor, remmina_file_editor, GTK_TYPE_DIALOG)
 
@@ -114,6 +113,7 @@ struct _RemminaFileEditorPriv {
 	GtkWidget *		behavior_autostart_check;
 	GtkWidget *		behavior_precommand_entry;
 	GtkWidget *		behavior_postcommand_entry;
+	GtkWidget *		behavior_lock_check;
 
 	GtkWidget *		ssh_tunnel_enabled_check;
 	GtkWidget *		ssh_tunnel_loopback_check;
@@ -1093,7 +1093,14 @@ static void remmina_file_editor_create_behavior_tab(RemminaFileEditor *gfe)
 
 	/* Autostart profile option */
 	priv->behavior_autostart_check = remmina_file_editor_create_check(gfe, grid, 6, 1, _("Auto-start this profile"),
-							remmina_file_get_int(priv->remmina_file, "enable-autostart", FALSE), "enable-autostart");
+						remmina_file_get_int(priv->remmina_file, "enable-autostart", FALSE), "enable-autostart");
+
+	/* Startup frame */
+	remmina_public_create_group(GTK_GRID(grid), _("Connection profile security"), 8, 1, 2);
+
+	/* Autostart profile option */
+	priv->behavior_lock_check = remmina_file_editor_create_check(gfe, grid, 10, 1, _("Require password to connect or edit the profile"),
+						remmina_file_get_int(priv->remmina_file, "profile-lock", FALSE), "profile-lock");
 }
 
 static gpointer ssh_tunnel_auth_list[] =
@@ -1359,14 +1366,16 @@ static void remmina_file_editor_save_behavior_tab(RemminaFileEditor *gfe)
 {
 	TRACE_CALL(__func__);
 	RemminaFileEditorPriv *priv = gfe->priv;
-	gboolean autostart_enabled;
 
 	remmina_file_set_string(priv->remmina_file, "precommand", gtk_entry_get_text(GTK_ENTRY(priv->behavior_precommand_entry)));
 	remmina_file_set_string(priv->remmina_file, "postcommand", gtk_entry_get_text(GTK_ENTRY(priv->behavior_postcommand_entry)));
 
-	autostart_enabled = (priv->behavior_autostart_check ?
+	gboolean autostart_enabled = (priv->behavior_autostart_check ?
 			      gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(priv->behavior_autostart_check)) : FALSE);
 	remmina_file_set_int(priv->remmina_file, "enable-autostart", autostart_enabled);
+	gboolean lock_enabled = (priv->behavior_lock_check ?
+			      gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(priv->behavior_lock_check)) : FALSE);
+	remmina_file_set_int(priv->remmina_file, "profile-lock", lock_enabled);
 }
 
 static void remmina_file_editor_save_ssh_tunnel_tab(RemminaFileEditor *gfe)
@@ -2020,13 +2029,15 @@ GtkWidget *remmina_file_editor_new_from_filename(const gchar *filename)
 {
 	TRACE_CALL(__func__);
 	RemminaFile *remminafile;
-	GtkWidget *dialog;
 
 	remminafile = remmina_file_manager_load_file(filename);
 	if (remminafile) {
+		if (remmina_file_get_int (remminafile, "profile-lock", FALSE)
+				&& remmina_unlock_new(remmina_main_get_window()) == 0)
+			return NULL;
 		return remmina_file_editor_new_from_file(remminafile);
 	} else {
-		dialog = gtk_message_dialog_new(NULL, GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_CLOSE,
+		GtkWidget *dialog = gtk_message_dialog_new(NULL, GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_CLOSE,
 						_("Could not find the file “%s”."), filename);
 		gtk_dialog_run(GTK_DIALOG(dialog));
 		gtk_widget_destroy(dialog);

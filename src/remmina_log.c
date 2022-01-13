@@ -37,6 +37,7 @@
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
 #include "remmina_public.h"
+#include "remmina_pref.h"
 #include "remmina_log.h"
 #include "remmina_stats.h"
 #include "remmina/remmina_trace_calls.h"
@@ -106,7 +107,7 @@ static void remmina_log_end(GtkWidget *widget, gpointer data)
 	log_window = NULL;
 }
 
-static void remmina_log_start_stop (GtkSwitch *logswitch, gpointer   user_data)
+static void remmina_log_start_stop (GtkSwitch *logswitch, gpointer user_data)
 {
 	TRACE_CALL(__func__);
 	logstart = !logstart;
@@ -306,6 +307,40 @@ void _remmina_warning(const gchar *fun, const gchar *fmt, ...)
 	gchar *bufn = g_strconcat("(WARN) - ", buf_tmp, NULL);
 
 	IDLE_ADD(remmina_log_print_real, bufn);
+}
+
+void _remmina_audit(const gchar *fun, const gchar *fmt, ...)
+{
+	TRACE_CALL(__func__);
+	va_list args;
+	va_start(args, fmt);
+	gchar *text = g_strdup_vprintf(fmt, args);
+	va_end(args);
+
+	GTimeVal tv;
+	g_get_current_time(&tv);
+	gchar *isodate = g_time_val_to_iso8601(&tv);
+
+	g_autofree gchar *buf = g_strdup("");
+
+	if (isodate) {
+
+		buf = g_strconcat(
+				"[", isodate, "] - ",
+				g_get_host_name (),
+				" - ",
+				g_get_user_name (),
+				" - ",
+				text,
+				NULL);
+
+	}
+
+	g_free(text);
+	if (remmina_pref_get_boolean("audit"))
+		_remmina_message(buf);
+	else
+		_remmina_debug(fun, buf);
 }
 
 // !!! Calling this function will crash Remmina !!!

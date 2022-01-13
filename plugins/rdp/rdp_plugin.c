@@ -1022,6 +1022,9 @@ static void remmina_rdp_main_loop(RemminaProtocolWidget *gp)
 			break;
 		}
 	}
+	const gchar *host = freerdp_settings_get_string (rfi->settings, FreeRDP_ServerHostname);
+	// TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
+	REMMINA_PLUGIN_AUDIT(_("Disconnected from %s via RDP"), host);
 	freerdp_disconnect(rfi->instance);
 	REMMINA_PLUGIN_DEBUG("RDP client disconnected");
 }
@@ -1305,14 +1308,14 @@ static gchar *remmina_get_rdp_kbd_remap(const gchar *keymap)
 	rdp_kbd_remap = g_malloc0(512);
 	display = XOpenDisplay(0);
 	for (i = 0; table[i] > 0; i += 2) {
-		g_snprintf(keys, sizeof(keys), "0x%02x=0x%02x", freerdp_keyboard_get_rdp_scancode_from_x11_keycode(XKeysymToKeycode(display, table[i])), 
+		g_snprintf(keys, sizeof(keys), "0x%02x=0x%02x", freerdp_keyboard_get_rdp_scancode_from_x11_keycode(XKeysymToKeycode(display, table[i])),
 			freerdp_keyboard_get_rdp_scancode_from_x11_keycode(XKeysymToKeycode(display, table[i + 1])));
 		if (i > 0)
 			g_strlcat(rdp_kbd_remap, ",", 512);
 		g_strlcat(rdp_kbd_remap, keys, 512);
 	}
 	XCloseDisplay(display);
-	
+
 	return rdp_kbd_remap;
 }
 

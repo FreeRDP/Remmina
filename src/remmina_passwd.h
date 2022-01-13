@@ -34,29 +34,25 @@
 
 #pragma once
 
-#include <sodium.h>
+#include <gtk/gtk.h>
+#include <glib.h>
 
-#if SODIUM_VERSION_INT >= 90200
-typedef struct _RemminaUnlockDialog {
+typedef struct _RemminaPasswdDialog {
 	GtkBuilder *	builder;
 	GtkDialog *	dialog;
 
-	GtkEntry *	entry_unlock;
-	GtkButton *	button_unlock;
-	GtkButton *	button_unlock_cancel;
+	GtkEntry *	entry_password;
+	GtkEntry *	entry_verify;
+	GtkButton *	button_submit;
+	GtkButton *	button_cancel;
 
-	gboolean	unlock_init;
+	const gchar *	password;
 
-	gint		retval;
-} RemminaUnlockDialog;
+} RemminaPasswdDialog;
 
-extern GTimer *timer;
-extern gboolean unlocked;
-
-#endif
 
 G_BEGIN_DECLS
 
-gint remmina_unlock_new(GtkWindow *parent);
+gboolean remmina_passwd(GtkWindow *parent, gchar **password_setting);
 
 G_END_DECLS

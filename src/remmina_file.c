@@ -52,16 +52,17 @@
 #include <glib/gi18n.h>
 #include <glib/gstdio.h>
 
-#include "remmina_public.h"
-#include "remmina_log.h"
+#include "remmina/remmina_trace_calls.h"
 #include "remmina_crypt.h"
 #include "remmina_file_manager.h"
-#include "remmina_plugin_manager.h"
-#include "remmina_pref.h"
+#include "remmina_log.h"
 #include "remmina_main.h"
 #include "remmina_masterthread_exec.h"
+#include "remmina_plugin_manager.h"
+#include "remmina_pref.h"
+#include "remmina_public.h"
+#include "remmina_sodium.h"
 #include "remmina_utils.h"
-#include "remmina/remmina_trace_calls.h"
 
 #define MIN_WINDOW_WIDTH 10
 #define MIN_WINDOW_HEIGHT 10
@@ -175,6 +176,7 @@ void remmina_file_generate_filename(RemminaFile *remminafile)
 	else
 		remminafile->filename = NULL;
 	g_dir_close(dir);
+
 }
 
 void remmina_file_set_filename(RemminaFile *remminafile, const gchar *filename)
@@ -364,73 +366,94 @@ remmina_file_load(const gchar *filename)
 		}
 	}
 
-	if (g_key_file_has_key(gkeyfile, KEYFILE_GROUP_REMMINA, "name", NULL)) {
-		remminafile = remmina_file_new_empty();
+	if (!g_key_file_has_key(gkeyfile, KEYFILE_GROUP_REMMINA, "name", NULL)) {
 
-		protocol_plugin = NULL;
-
-		/* Identify the protocol plugin and get pointers to its RemminaProtocolSetting structs */
-		gchar *proto = g_key_file_get_string(gkeyfile, KEYFILE_GROUP_REMMINA, "protocol", NULL);
-		if (proto) {
-			protocol_plugin = (RemminaProtocolPlugin *)remmina_plugin_manager_get_plugin(REMMINA_PLUGIN_TYPE_PROTOCOL, proto);
-			g_free(proto);
-		}
-
-		secret_plugin = remmina_plugin_manager_get_secret_plugin();
-		secret_service_available = secret_plugin && secret_plugin->is_service_available();
-
-		remminafile->filename = g_strdup(filename);
-		gchar **keys = g_key_file_get_keys(gkeyfile, KEYFILE_GROUP_REMMINA, NULL, NULL);
-		if (keys) {
-			for (i = 0; keys[i]; i++) {
-				key = keys[i];
-				if (protocol_plugin && remmina_plugin_manager_is_encrypted_setting(protocol_plugin, key)) {
-					s = g_key_file_get_string(gkeyfile, KEYFILE_GROUP_REMMINA, key, NULL);
-					if (g_strcmp0(s, ".") == 0) {
-						if (secret_service_available) {
-							gchar *sec = secret_plugin->get_password(remminafile, key);
-							remmina_file_set_string(remminafile, key, sec);
-							/* Annotate in spsettings that this value comes from secret_plugin */
-							g_hash_table_insert(remminafile->spsettings, g_strdup(key), NULL);
-							g_free(sec);
-						} else {
-							remmina_file_set_string(remminafile, key, s);
-						}
-					} else {
-						remmina_file_set_string_ref(remminafile, key, remmina_crypt_decrypt(s));
-					}
-					g_free(s);
-				} else {
-					/* If we find "resolution", then we split it in two */
-					if (strcmp(key, "resolution") == 0) {
-						gchar *resolution_str = g_key_file_get_string(gkeyfile, KEYFILE_GROUP_REMMINA, key, NULL);
-						if (remmina_public_split_resolution_string(resolution_str, &w, &h)) {
-							remmina_file_set_string_ref(remminafile, "resolution_width", g_strdup_printf("%i", w));
-							remmina_file_set_string_ref(remminafile, "resolution_height", g_strdup_printf("%i", h));
-						} else {
-							remmina_file_set_string_ref(remminafile, "resolution_width", NULL);
-							remmina_file_set_string_ref(remminafile, "resolution_height", NULL);
-						}
-						g_free(resolution_str);
-					} else {
-						remmina_file_set_string_ref(remminafile, key,
-									    g_key_file_get_string(gkeyfile, KEYFILE_GROUP_REMMINA, key, NULL));
-					}
-				}
-			}
-
-			upgrade_sshkeys_202001(remminafile);
-		}
-		g_strfreev(keys);
-	} else {
 		REMMINA_DEBUG("Unable to load remmina profile file %s: cannot find key name= in section remmina.\n", filename);
 		remminafile = NULL;
+		remmina_file_set_statefile(remminafile);
+
+		g_key_file_free(gkeyfile);
+
+		return remminafile;
+	}
+	remminafile = remmina_file_new_empty();
+
+	protocol_plugin = NULL;
+
+	/* Identify the protocol plugin and get pointers to its RemminaProtocolSetting structs */
+	gchar *proto = g_key_file_get_string(gkeyfile, KEYFILE_GROUP_REMMINA, "protocol", NULL);
+	if (proto) {
+		protocol_plugin = (RemminaProtocolPlugin *)remmina_plugin_manager_get_plugin(REMMINA_PLUGIN_TYPE_PROTOCOL, proto);
+		g_free(proto);
 	}
 
+	secret_plugin = remmina_plugin_manager_get_secret_plugin();
+	secret_service_available = secret_plugin && secret_plugin->is_service_available();
+
+	remminafile->filename = g_strdup(filename);
+	gsize nkeys = 0;
+	gint keyindex;
+	GError *err = NULL;
+	gchar **keys = g_key_file_get_keys(gkeyfile, KEYFILE_GROUP_REMMINA, &nkeys, &err);
+	if (keys == NULL) {
+		g_clear_error(&err);
+	}
+	for (keyindex = 0; keyindex < nkeys; ++keyindex) {
+		key = keys[keyindex];
+		/* It may contain an encrypted password
+		 * - password = .         // secret_service
+		 * - password = $argon2id$v=19$m=262144,t=3,p=…    // libsodium
+		 */
+		if (protocol_plugin && remmina_plugin_manager_is_encrypted_setting(protocol_plugin, key)) {
+			s = g_key_file_get_string(gkeyfile, KEYFILE_GROUP_REMMINA, key, NULL);
+#if 0
+			switch (remmina_pref.enc_mode) {
+				case RM_ENC_MODE_SODIUM_INTERACTIVE:
+				case RM_ENC_MODE_SODIUM_MODERATE:
+				case RM_ENC_MODE_SODIUM_SENSITIVE:
+#if SODIUM_VERSION_INT >= 90200
+#endif
+					break;
+				case RM_ENC_MODE_GCRYPT:
+					break;
+				case RM_ENC_MODE_SECRET:
+				default:
+					break;
+			}
+#endif
+			if ((g_strcmp0(s, ".") == 0) && (secret_service_available)) {
+				gchar *sec = secret_plugin->get_password(remminafile, key);
+				remmina_file_set_string(remminafile, key, sec);
+				/* Annotate in spsettings that this value comes from secret_plugin */
+				g_hash_table_insert(remminafile->spsettings, g_strdup(key), NULL);
+				g_free(sec);
+			} else {
+				remmina_file_set_string_ref(remminafile, key, remmina_crypt_decrypt(s));
+			}
+			g_free(s), s = NULL;
+		} else {
+			/* If we find "resolution", then we split it in two */
+			if (strcmp(key, "resolution") == 0) {
+				gchar *resolution_str = g_key_file_get_string(gkeyfile, KEYFILE_GROUP_REMMINA, key, NULL);
+				if (remmina_public_split_resolution_string(resolution_str, &w, &h)) {
+					remmina_file_set_string_ref(remminafile, "resolution_width", g_strdup_printf("%i", w));
+					remmina_file_set_string_ref(remminafile, "resolution_height", g_strdup_printf("%i", h));
+				} else {
+					remmina_file_set_string_ref(remminafile, "resolution_width", NULL);
+					remmina_file_set_string_ref(remminafile, "resolution_height", NULL);
+				}
+				g_free(resolution_str);
+			} else {
+				remmina_file_set_string_ref(remminafile, key,
+						g_key_file_get_string(gkeyfile, KEYFILE_GROUP_REMMINA, key, NULL));
+			}
+		}
+	}
+
+	upgrade_sshkeys_202001(remminafile);
+	g_strfreev(keys);
 	remmina_file_set_statefile(remminafile);
-
 	g_key_file_free(gkeyfile);
-
 	return remminafile;
 }
 

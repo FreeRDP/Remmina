@@ -1112,6 +1112,9 @@ static void remmina_rdp_event_connected(RemminaProtocolWidget *gp, RemminaPlugin
 	remmina_rdp_event_update_scale(gp);
 
 	remmina_plugin_service->protocol_plugin_signal_connection_opened(gp);
+	const gchar *host = freerdp_settings_get_string (rfi->settings, FreeRDP_ServerHostname);
+	// TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
+	REMMINA_PLUGIN_AUDIT(_("Connected to %s via RDP"), host);
 }
 
 static void remmina_rdp_event_reconnect_progress(RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *ui)

@@ -243,6 +243,7 @@ RemminaPluginService remmina_plugin_manager_service =
 	_remmina_message,
 	_remmina_debug,
 	_remmina_warning,
+	_remmina_audit,
 	_remmina_error,
 	_remmina_critical,
 	remmina_log_print,

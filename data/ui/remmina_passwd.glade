@@ -1,32 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.38.2 
-
--
-Copyright © 2014-2022 Antenore Gatta, Giovanni Panozzo
-
-This program is free software; you can redistribute it and/or
-modify it under the terms of the GNU General Public License
-as published by the Free Software Foundation; either version 2
-of the License, or (at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
-
-Author: Antenore Gatta
-
--->
+<!-- Generated with glade 3.38.2 -->
 <interface>
-  <requires lib="gtk+" version="3.20"/>
-  <!-- interface-license-type gplv2 -->
-  <!-- interface-copyright Antenore Gatta, Giovanni Panozzo -->
-  <!-- interface-authors Antenore Gatta -->
-  <object class="GtkDialog" id="RemminaUnlockDialog">
+  <requires lib="gtk+" version="3.18"/>
+  <object class="GtkDialog" id="RemminaPasswdDialog">
     <property name="can-focus">False</property>
     <property name="type-hint">dialog</property>
     <child internal-child="vbox">
@@ -39,11 +15,12 @@ Author: Antenore Gatta
             <property name="can-focus">False</property>
             <property name="layout-style">end</property>
             <child>
-              <object class="GtkButton" id="button_unlock_cancel">
+              <object class="GtkButton" id="button_cancel">
                 <property name="label" translatable="yes">Cancel</property>
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="receives-default">True</property>
+                <property name="always-show-image">True</property>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -52,13 +29,11 @@ Author: Antenore Gatta
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="button_unlock">
-                <property name="label" translatable="yes">Unlock</property>
+              <object class="GtkButton" id="button_submit">
+                <property name="label" translatable="yes">OK</property>
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
-                <property name="can-default">True</property>
                 <property name="receives-default">True</property>
-                <property name="margin-start">6</property>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -82,7 +57,8 @@ Author: Antenore Gatta
               <object class="GtkHeaderBar">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
-                <property name="title" translatable="yes">Unlock Remmina</property>
+                <property name="title" translatable="yes">Set Primary Password</property>
+                <property name="show-close-button">True</property>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -91,11 +67,27 @@ Author: Antenore Gatta
               </packing>
             </child>
             <child>
-              <!-- n-columns=2 n-rows=1 -->
+              <!-- n-columns=2 n-rows=2 -->
               <object class="GtkGrid">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
-                <property name="vexpand">True</property>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="halign">end</property>
+                    <property name="valign">center</property>
+                    <property name="margin-start">18</property>
+                    <property name="margin-end">6</property>
+                    <property name="margin-top">18</property>
+                    <property name="margin-bottom">9</property>
+                    <property name="label" translatable="yes">Password</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">0</property>
+                  </packing>
+                </child>
                 <child>
                   <object class="GtkLabel">
                     <property name="visible">True</property>
@@ -106,33 +98,54 @@ Author: Antenore Gatta
                     <property name="margin-end">6</property>
                     <property name="margin-top">9</property>
                     <property name="margin-bottom">18</property>
-                    <property name="label" translatable="yes">Password</property>
+                    <property name="label" translatable="yes">Verify password</property>
                   </object>
                   <packing>
                     <property name="left-attach">0</property>
-                    <property name="top-attach">0</property>
+                    <property name="top-attach">1</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry" id="entry_unlock">
+                  <object class="GtkEntry" id="entry_password">
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
-                    <property name="tooltip-text" translatable="yes">Master password</property>
-                    <property name="halign">start</property>
-                    <property name="valign">center</property>
+                    <property name="valign">start</property>
                     <property name="margin-start">6</property>
                     <property name="margin-end">18</property>
-                    <property name="margin-top">9</property>
-                    <property name="margin-bottom">18</property>
-                    <property name="hexpand">True</property>
+                    <property name="margin-top">18</property>
+                    <property name="margin-bottom">9</property>
                     <property name="visibility">False</property>
                     <property name="invisible-char">•</property>
-                    <property name="width-chars">28</property>
+                    <property name="width-chars">24</property>
                     <property name="input-purpose">password</property>
                   </object>
                   <packing>
                     <property name="left-attach">1</property>
                     <property name="top-attach">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkEntry" id="entry_verify">
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="valign">start</property>
+                    <property name="margin-start">6</property>
+                    <property name="margin-end">18</property>
+                    <property name="margin-top">9</property>
+                    <property name="margin-bottom">18</property>
+                    <property name="visibility">False</property>
+                    <property name="invisible-char">•</property>
+                    <property name="width-chars">24</property>
+                    <property name="shadow-type">none</property>
+                    <property name="input-purpose">password</property>
+                    <signal name="changed" handler="remmina_passwd_repwd_on_changed" swapped="no"/>
+                    <style>
+                      <class name="entry_verify"/>
+                    </style>
+                  </object>
+                  <packing>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">1</property>
                   </packing>
                 </child>
               </object>

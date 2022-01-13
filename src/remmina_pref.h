@@ -36,6 +36,12 @@
 
 #pragma once
 #include <gtk/gtk.h>
+#include "remmina_sodium.h"
+
+#ifdef HAVE_LIBGCRYPT
+#include <gcrypt.h>
+#endif
+
 
 /*
  * Remmina Preference Loader
@@ -78,6 +84,15 @@ enum {
 	REMMINA_TAB_BY_PROTOCOL = 1,
 	REMMINA_TAB_ALL		= 2,
 	REMMINA_TAB_NONE	= 3
+};
+
+enum {
+	RM_ENC_MODE_SECRET		= 0, /* Using libsecret */
+	RM_ENC_MODE_SODIUM_INTERACTIVE	= 1, /* Using libsodium */
+	RM_ENC_MODE_SODIUM_MODERATE	= 2, /* Using libsodium */
+	RM_ENC_MODE_SODIUM_SENSITIVE	= 3, /* Using libsodium */
+	RM_ENC_MODE_GCRYPT		= 4, /* Using GCrypt */
+	RM_ENC_MODE_NONE		= 5  /* No encryption */
 };
 
 enum {
@@ -167,10 +182,14 @@ typedef struct _RemminaPref {
 	guint			shortcutkey_disconnect;
 	guint			shortcutkey_toolbar;
 	/* In RemminaPrefDialog security tab */
-	gboolean		use_master_password;
+	gboolean		use_primary_password;
 	const gchar *		unlock_password;
 	const gchar *		unlock_repassword;
 	gint			unlock_timeout;
+	gboolean		lock_connect;
+	gboolean		lock_edit;
+	gint			enc_mode;
+	gboolean		audit;
 	gboolean		trust_all;
 	/* In RemminaPrefDialog terminal tab */
 	gchar *			vte_font;

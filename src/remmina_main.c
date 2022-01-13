@@ -731,6 +731,14 @@ void remmina_main_on_action_connection_connect(GSimpleAction *action, GVariant *
 	if (remminafile == NULL)
 		return;
 
+	if (remmina_pref_get_boolean("use_primary_password")
+			&& remmina_pref_get_boolean("lock_connect")
+			&& remmina_unlock_new(remminamain->window) == 0)
+		return;
+	if (remmina_file_get_int (remminafile, "profile-lock", FALSE) == 1
+			&& remmina_unlock_new(remminamain->window) == 0)
+		return;
+
 	remmina_file_touch(remminafile);
 	rcw_open_from_filename(remminamain->priv->selected_filename);
 
@@ -741,9 +749,6 @@ void remmina_main_on_action_connection_external_tools(GSimpleAction *action, GVa
 {
 	TRACE_CALL(__func__);
 	if (!remminamain->priv->selected_filename)
-		return;
-
-	if (remmina_unlock_new(remminamain->window) == 0)
 		return;
 
 	remmina_external_tools_from_filename(remminamain, remminamain->priv->selected_filename);
@@ -770,6 +775,12 @@ void remmina_main_on_action_application_mpchange(GSimpleAction *action, GVariant
 	username = domain = group = "";
 
 	remminafile = NULL;
+
+	if (remmina_pref_get_boolean("use_primary_password")
+			&& remmina_pref_get_boolean("lock_edit")
+			&& remmina_unlock_new(remminamain->window) == 0)
+		return;
+
 	if (remminamain->priv->selected_filename) {
 		remminafile = remmina_file_load(remminamain->priv->selected_filename);
 		if (remminafile != NULL) {
@@ -778,9 +789,6 @@ void remmina_main_on_action_application_mpchange(GSimpleAction *action, GVariant
 			group = remmina_file_get_string(remminafile, "group");
 		}
 	}
-
-	if (remmina_unlock_new(remminamain->window) == 0)
-		return;
 
 	remmina_mpchange_schedule(TRUE, group, domain, username, "");
 
@@ -793,7 +801,9 @@ void remmina_main_on_action_connection_new(GSimpleAction *action, GVariant *para
 	TRACE_CALL(__func__);
 	GtkWidget *widget;
 
-	if (remmina_unlock_new(remminamain->window) == 0)
+	if (remmina_pref_get_boolean("use_primary_password")
+			&& remmina_pref_get_boolean("lock_edit")
+			&& remmina_unlock_new(remminamain->window) == 0)
 		return;
 
 	widget = remmina_file_editor_new();
@@ -848,11 +858,25 @@ void remmina_main_on_action_connection_copy(GSimpleAction *action, GVariant *par
 	TRACE_CALL(__func__);
 	GtkWidget *widget;
 
-	if (remmina_unlock_new(remminamain->window) == 0)
+	if (remmina_pref_get_boolean("use_primary_password")
+			&& remmina_unlock_new(remminamain->window) == 0)
 		return;
 
 	if (!remminamain->priv->selected_filename)
 		return;
+
+	RemminaFile *remminafile = remmina_file_load(remminamain->priv->selected_filename);
+
+	if (((remmina_pref_get_boolean("lock_edit")
+				&& remmina_pref_get_boolean("use_primary_password"))
+				|| remmina_file_get_int (remminafile, "profile-lock", FALSE))
+			&& remmina_unlock_new(remminamain->window) == 0)
+		return;
+
+	if (remminafile) {
+		remmina_file_free(remminafile);
+		remminafile = NULL;
+	}
 
 	widget = remmina_file_editor_new_copy(remminamain->priv->selected_filename);
 	if (widget) {
@@ -870,11 +894,21 @@ void remmina_main_on_action_connection_edit(GSimpleAction *action, GVariant *par
 	TRACE_CALL(__func__);
 	GtkWidget *widget;
 
-	if (remmina_unlock_new(remminamain->window) == 0)
-		return;
-
 	if (!remminamain->priv->selected_filename)
 		return;
+
+	RemminaFile *remminafile = remmina_file_load(remminamain->priv->selected_filename);
+
+	if (remmina_pref_get_boolean("use_primary_password")
+			&& (remmina_pref_get_boolean("lock_edit")
+				|| remmina_file_get_int (remminafile, "profile-lock", FALSE))
+			&& remmina_unlock_new(remminamain->window) == 0)
+		return;
+
+	if (remminafile) {
+		remmina_file_free(remminafile);
+		remminafile = NULL;
+	}
 
 	widget = remmina_file_editor_new_from_filename(remminamain->priv->selected_filename);
 	if (widget) {
@@ -890,20 +924,29 @@ void remmina_main_on_action_connection_delete(GSimpleAction *action, GVariant *p
 {
 	TRACE_CALL(__func__);
 	GtkWidget *dialog;
-	gchar *delfilename;
 
 	if (!remminamain->priv->selected_filename)
 		return;
 
-	if (remmina_unlock_new(remminamain->window) == 0)
+	RemminaFile *remminafile = remmina_file_load(remminamain->priv->selected_filename);
+
+	if (((remmina_pref_get_boolean("lock_edit")
+				&& remmina_pref_get_boolean("use_primary_password"))
+				|| remmina_file_get_int (remminafile, "profile-lock", FALSE))
+			&& remmina_unlock_new(remminamain->window) == 0)
 		return;
+
+	if (remminafile) {
+		remmina_file_free(remminafile);
+		remminafile = NULL;
+	}
 
 	dialog = gtk_message_dialog_new(remminamain->window, GTK_DIALOG_MODAL, GTK_MESSAGE_QUESTION, GTK_BUTTONS_YES_NO,
 					_("Are you sure you want to delete “%s”?"), remminamain->priv->selected_name);
 	if (gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_YES) {
-		delfilename = g_strdup(remminamain->priv->selected_filename);
+		gchar *delfilename = g_strdup(remminamain->priv->selected_filename);
 		remmina_file_delete(delfilename);
-		g_free(delfilename);
+		g_free(delfilename), delfilename = NULL;
 		remmina_icon_populate_menu();
 		remmina_main_load_files();
 	}
@@ -935,8 +978,10 @@ void remmina_main_on_action_application_preferences(GSimpleAction *action, GVari
 		tab_num = 0;
 	}
 
-	if (remmina_unlock_new(remminamain->window) == 0)
+	if (remmina_pref_get_boolean("use_primary_password")
+			&& remmina_unlock_new(remminamain->window) == 0)
 		return;
+
 	GtkWidget *widget = remmina_pref_dialog_new(tab_num, remminamain->window);
 
 	gtk_widget_show_all(widget);
