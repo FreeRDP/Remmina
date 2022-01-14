@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2022-01-14 09:44+0000\n"
-"PO-Revision-Date: 2022-01-14 09:10+0000\n"
+"PO-Revision-Date: 2022-01-14 12:17+0000\n"
 "Last-Translator: Matthaiks <kitynska@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/remmina/remmina/"
 "pl/>\n"
@@ -4328,14 +4328,6 @@ msgstr "Szablon dla nazw plików profilu"
 
 #. Placeholders used to name a Remmina connection profile
 #: data/ui/remmina_preferences.glade:361
-#, fuzzy
-#| msgid ""
-#| "%G Group name (slash will be converted to - automatically)\n"
-#| "%P Protocol name\n"
-#| "%N Connection name\n"
-#| "%h Hostname/IP\n"
-#| "\n"
-#| "\n"
 msgid ""
 "%G Name of group (slashes \\/ are converted to dashes -)\n"
 "%P Protocol name\n"
@@ -4344,10 +4336,10 @@ msgid ""
 "\n"
 "\n"
 msgstr ""
-"%G Nazwa grupy (slash zostanie przekonwertowany na - automatically)\n"
+"%G Nazwa grupy (ukośniki \\ / są zamieniane na dywizy -)\n"
 "%P Nazwa protokołu\n"
 "%N Nazwa połączenia\n"
-"%h Nazwa hosta/IP\n"
+"%h Nazwa hosta/adres IP\n"
 "\n"
 "\n"
 
@@ -4529,7 +4521,7 @@ msgstr "Parsuj ~/.SSH/config"
 
 #: data/ui/remmina_preferences.glade:1420
 msgid "No logging at all"
-msgstr "Brak logowania"
+msgstr "Brak rejestrowania"
 
 #: data/ui/remmina_preferences.glade:1421
 msgid "Rare conditions or warnings"
@@ -4591,10 +4583,8 @@ msgstr ""
 "nieautoryzowanym użyciem."
 
 #: data/ui/remmina_preferences.glade:1634
-#, fuzzy
-#| msgid "User password"
 msgid "Use Remmina password"
-msgstr "Hasło użytkownika"
+msgstr "Użyj hasła Remminy"
 
 #: data/ui/remmina_preferences.glade:1645
 #: data/ui/remmina_preferences.glade:1969
@@ -4607,60 +4597,38 @@ msgstr "Okres automatycznej blokady"
 
 #: data/ui/remmina_preferences.glade:1673
 msgid "Number of seconds to keep password valid for"
-msgstr ""
+msgstr "Liczba sekund na utrzymanie hasła ważnego"
 
 #: data/ui/remmina_preferences.glade:1692
-#, fuzzy
-#| msgid "Enter VNC password"
 msgid "Enter new password"
-msgstr "Wprowadź hasło do VNC"
+msgstr "Wprowadź nowe hasło"
 
 #: data/ui/remmina_preferences.glade:1722
-#, fuzzy
-#| msgid "Repeat the password"
 msgid "Re-enter password"
-msgstr "Powtórz hasło"
+msgstr "Wprowadź ponownie hasło"
 
 #: data/ui/remmina_preferences.glade:1755
 msgid "Creation, editing, copying, and deletions require the Remmina password"
-msgstr ""
+msgstr "Tworzenie, edycja, kopiowanie i usuwanie wymagają podania hasła Remminy"
 
 #. Creation, editing, copying, and deletions require the primary password
 #: data/ui/remmina_preferences.glade:1758
-#, fuzzy
-#| msgid "Requires password to modify"
 msgid "Require to modify"
-msgstr "Wymaga hasła do modyfikacji"
+msgstr "Wymagane do modyfikacji"
 
 #: data/ui/remmina_preferences.glade:1796
-#, fuzzy
-#| msgid "Requires password to connect"
 msgid "Enter your Remmina password to connect"
-msgstr "Wymaga hasła do połączenia"
+msgstr "Wprowadź swoje hasło Remminy, aby się połączyć"
 
 #: data/ui/remmina_preferences.glade:1799
-#, fuzzy
-#| msgid "Requires password to connect"
 msgid "Require to connect"
-msgstr "Wymaga hasła do połączenia"
+msgstr "Wymagane do połączenia"
 
 #: data/ui/remmina_preferences.glade:1813
 msgid "Encryption method"
 msgstr "Metoda szyfrowania"
 
 #: data/ui/remmina_preferences.glade:1824
-#, fuzzy
-#| msgid ""
-#| "These are the encryption methods used by Remmina to store passwords and "
-#| "passphrases.\n"
-#| "\n"
-#| "Except the \"Weak\" method, all the others are reccomended, Keystore is "
-#| "the default, as it integrates with GNOME or KDE/Plasma.\n"
-#| "\n"
-#| "Intermediate is the best compromise in terms of RAM/CPU required vs "
-#| "security, but if you need an extremely secure method you should go with "
-#| "Sensitive, but it'll use 1Gib of RAM and many CPU cycles to hash your "
-#| "passwords. "
 msgid ""
 "These are the encryption methods used by Remmina to store passwords.\n"
 "\n"
@@ -4671,22 +4639,17 @@ msgid ""
 "\"Sensitive\" is more secure but uses 1 Gib of RAM and many CPU cycles. "
 msgstr ""
 "Są to metody szyfrowania używane przez program Remmina do przechowywania "
-"haseł i tekstów szyfrujących.\n"
+"haseł.\n"
 "\n"
-"Z wyjątkiem metody „Słaba”, wszystkie pozostałe są zalecane, „Magazyn "
-"kluczy” jest metodą domyślną, ponieważ integruje się z GNOME lub KDE/"
-"Plasma.\n"
+"Z wyjątkiem metody „Słaba”, wszystkie pozostałe są zalecane, „Magazyn kluczy”"
+" jest metodą domyślną, ponieważ integruje się z KDE/Plasma i GNOME.\n"
 "\n"
-"„Pośrednia” to najlepszy kompromis pod względem wymagań RAM/CPU w stosunku "
-"do bezpieczeństwa, ale jeśli potrzebujesz wyjątkowo bezpiecznej metody, "
-"wybierz „Wrażliwą”, jednak ona będzie zużywać 1 GiB RAM i wiele cykli "
-"procesora do tworzenia skrótów haseł. "
+"„Pośrednia” nie używa tak dużo pamięci i mocy obliczeniowej, a „Wrażliwa” "
+"jest bardziej bezpieczna, ale używa 1 GiB RAM i wielu cykli procesora. "
 
 #: data/ui/remmina_preferences.glade:1834
-#, fuzzy
-#| msgid "Keystore (kwallet, GNOME keyring)"
 msgid "Keystore (KWallet, GNOME Keyring)"
-msgstr "Magazyn kluczy (kwallet, GNOME keyring)"
+msgstr "Magazyn kluczy (KWallet, GNOME Keyring)"
 
 #: data/ui/remmina_preferences.glade:1835
 msgid "Intermediate (+64 Mib RAM)"
@@ -4697,36 +4660,28 @@ msgid "Strong (+256 Mib, <1s i7 CPU)"
 msgstr "Silna (+256 MiB, <1 s i7 CPU)"
 
 #: data/ui/remmina_preferences.glade:1837
-#, fuzzy
-#| msgid "Sensitive (+1024 Mib, <4s i7 CPU)"
 msgid "Sensitive (+1 Gib, <4s i7 CPU)"
-msgstr "Wrażliwa (+1024 MiB, <4 s i7 CPU)"
+msgstr "Wrażliwa (+1 GiB, <4 s i7 CPU)"
 
 #: data/ui/remmina_preferences.glade:1838
 msgid "Weak (guessable)"
-msgstr ""
+msgstr "Słaba (możliwa do odgadnięcia)"
 
 #: data/ui/remmina_preferences.glade:1839
-#, fuzzy
-#| msgid "None (clear text)"
 msgid "None (cleartext)"
-msgstr "Żadna (tekst czytelny)"
+msgstr "Żadna (tekst jawny)"
 
 #: data/ui/remmina_preferences.glade:1857
 msgid "Logins and Passwords"
-msgstr ""
+msgstr "Loginy i hasła"
 
 #: data/ui/remmina_preferences.glade:1891
-#, fuzzy
-#| msgid "Debugging"
 msgid "Logging"
-msgstr "Debugowanie"
+msgstr "Rejestrowanie"
 
 #: data/ui/remmina_preferences.glade:1922
-#, fuzzy
-#| msgid "Auditing settings"
 msgid "Auditing"
-msgstr "Ustawienia inspekcji"
+msgstr "Inspekcja"
 
 #: data/ui/remmina_preferences.glade:1952
 msgid "Automatically accept all fingerprints and certificates"
@@ -4734,13 +4689,11 @@ msgstr "Automatycznie akceptuj wszystkie odciski kluczy i certyfikaty"
 
 #: data/ui/remmina_preferences.glade:1958
 msgid "Trust all"
-msgstr ""
+msgstr "Zaufaj wszystkim"
 
 #: data/ui/remmina_preferences.glade:1992
-#, fuzzy
-#| msgid "Certificate details:"
 msgid "Certificates and fingerprints"
-msgstr "Szczegóły certyfikatu:"
+msgstr "Certyfikaty i odciski kluczy"
 
 #: data/ui/remmina_preferences.glade:2016
 msgid "Security"
