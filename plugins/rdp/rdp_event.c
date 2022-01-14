@@ -145,7 +145,11 @@ void remmina_rdp_event_event_push(RemminaProtocolWidget *gp, const RemminaPlugin
 		return;
 
 	if (rfi->event_queue) {
+#if GLIB_CHECK_VERSION(2,67,3)
+		event = g_memdup2(e, sizeof(RemminaPluginRdpEvent));
+#else
 		event = g_memdup(e, sizeof(RemminaPluginRdpEvent));
+#endif
 		g_async_queue_push(rfi->event_queue, event);
 
 		if (write(rfi->event_pipe[1], "\0", 1)) {
