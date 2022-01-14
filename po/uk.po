@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2022-01-14 09:44+0000\n"
-"PO-Revision-Date: 2022-01-14 12:17+0000\n"
+"PO-Revision-Date: 2022-01-14 15:53+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/remmina/"
 "remmina/uk/>\n"
@@ -4617,35 +4617,21 @@ msgstr ""
 #. Creation, editing, copying, and deletions require the primary password
 #: data/ui/remmina_preferences.glade:1758
 msgid "Require to modify"
-msgstr "Вимагати для внесення змін"
+msgstr "Потрібно для внесення змін"
 
 #: data/ui/remmina_preferences.glade:1796
 msgid "Enter your Remmina password to connect"
 msgstr "Для встановлення з'єднання введіть ваш пароль до Remmina"
 
 #: data/ui/remmina_preferences.glade:1799
-#, fuzzy
-#| msgid "Requires password to connect"
 msgid "Require to connect"
-msgstr "Для встановлення з'єднання слід вказати основний пароль"
+msgstr "Потрібно для встановлення з'єднання"
 
 #: data/ui/remmina_preferences.glade:1813
 msgid "Encryption method"
 msgstr "Спосіб шифрування"
 
 #: data/ui/remmina_preferences.glade:1824
-#, fuzzy
-#| msgid ""
-#| "These are the encryption methods used by Remmina to store passwords and "
-#| "passphrases.\n"
-#| "\n"
-#| "Except the \"Weak\" method, all the others are reccomended, Keystore is "
-#| "the default, as it integrates with GNOME or KDE/Plasma.\n"
-#| "\n"
-#| "Intermediate is the best compromise in terms of RAM/CPU required vs "
-#| "security, but if you need an extremely secure method you should go with "
-#| "Sensitive, but it'll use 1Gib of RAM and many CPU cycles to hash your "
-#| "passwords. "
 msgid ""
 "These are the encryption methods used by Remmina to store passwords.\n"
 "\n"
@@ -4655,24 +4641,21 @@ msgid ""
 "\"Intermediate\" doesn't use as much memory or processsing power, and "
 "\"Sensitive\" is more secure but uses 1 Gib of RAM and many CPU cycles. "
 msgstr ""
-"Це способи шифрування, які Remmina використовуватиме для зберігання "
-"паролів.\n"
+"Це способи шифрування, які Remmina використовуватиме для зберігання паролів."
 "\n"
-"Окрім способу «Слабкий», усі інші способи є рекомендованими. Типовим є "
-"«Сховище ключів», оскільки такий спосіб передбачає інтеграцію із GNOME або "
+"\n"
+"Окрім способу «Слабкий», усі інші способи є рекомендованими. Типовим є «"
+"Сховище ключів», оскільки такий спосіб передбачає інтеграцію із GNOME або "
 "Плазмою/KDE.\n"
 "\n"
-"Спосіб «Проміжний» є найкращим компромісом у плані компромісу між "
-"споживанням оперативної пам'яті та потужностей процесора і захистом. Втім, "
-"якщо вам потрібен найбезпечніший спосіб, вам слід вибрати «Секретний», але "
-"для користування ним знадобиться 1 ГіБ оперативної пам'яті та значні "
-"потужності процесора для хешування паролів. "
+"Використання способу «Проміжний» не призводить до значної витрати пам'яті "
+"або потужностей процесора, а способу «Секретний» — до підвищення рівня "
+"безпеки, але для користування ним знадобиться 1 ГіБ оперативної пам'яті та "
+"значні потужності процесора. "
 
 #: data/ui/remmina_preferences.glade:1834
-#, fuzzy
-#| msgid "Keystore (kwallet, GNOME keyring)"
 msgid "Keystore (KWallet, GNOME Keyring)"
-msgstr "Сховище ключів (kwallet, сховище ключів GNOME)"
+msgstr "Сховище ключів (KWallet, сховище ключів GNOME)"
 
 #: data/ui/remmina_preferences.glade:1835
 msgid "Intermediate (+64 Mib RAM)"
@@ -4683,36 +4666,28 @@ msgid "Strong (+256 Mib, <1s i7 CPU)"
 msgstr "Потужний (+256 МіБ, <1с процесора i7)"
 
 #: data/ui/remmina_preferences.glade:1837
-#, fuzzy
-#| msgid "Sensitive (+1024 Mib, <4s i7 CPU)"
 msgid "Sensitive (+1 Gib, <4s i7 CPU)"
-msgstr "Секретний (+1024 МіБ, <4с процесора i7)"
+msgstr "Секретний (+1 ГіБ, <4с процесора i7)"
 
 #: data/ui/remmina_preferences.glade:1838
 msgid "Weak (guessable)"
-msgstr ""
+msgstr "Слабкий (можна вгадати)"
 
 #: data/ui/remmina_preferences.glade:1839
-#, fuzzy
-#| msgid "None (clear text)"
 msgid "None (cleartext)"
 msgstr "Немає (простий текст)"
 
 #: data/ui/remmina_preferences.glade:1857
 msgid "Logins and Passwords"
-msgstr ""
+msgstr "Імена користувачів і паролі"
 
 #: data/ui/remmina_preferences.glade:1891
-#, fuzzy
-#| msgid "Debugging"
 msgid "Logging"
-msgstr "Діагностика"
+msgstr "Журналювання"
 
 #: data/ui/remmina_preferences.glade:1922
-#, fuzzy
-#| msgid "Auditing settings"
 msgid "Auditing"
-msgstr "Параметри ревізування"
+msgstr "Ревізування"
 
 #: data/ui/remmina_preferences.glade:1952
 msgid "Automatically accept all fingerprints and certificates"
@@ -4720,13 +4695,11 @@ msgstr "Автоматично приймати усі відбитки і се�
 
 #: data/ui/remmina_preferences.glade:1958
 msgid "Trust all"
-msgstr ""
+msgstr "Довіряти усім"
 
 #: data/ui/remmina_preferences.glade:1992
-#, fuzzy
-#| msgid "Certificate details:"
 msgid "Certificates and fingerprints"
-msgstr "Параметри сертифіката:"
+msgstr "Сертифікати і відбитки"
 
 #: data/ui/remmina_preferences.glade:2016
 msgid "Security"

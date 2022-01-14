@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the remmina package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
 # Allan Nordhøy <epost@anotheragency.no>, 2019, 2020, 2021.
-# gogogogi <trebelnik2@gmail.com>, 2019, 2020, 2021.
+# gogogogi <trebelnik2@gmail.com>, 2019, 2020, 2021, 2022.
 # Milo Ivir <mail@milotype.de>, 2020, 2021.
 # Antenore Gatta <antenore@simbiosi.org>, 2021.
 msgid ""
@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2022-01-14 09:44+0000\n"
-"PO-Revision-Date: 2021-12-22 17:57+0000\n"
+"PO-Revision-Date: 2022-01-14 15:53+0000\n"
 "Last-Translator: gogogogi <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/remmina/remmina/"
 "hr/>\n"
@@ -245,8 +245,6 @@ msgstr "Podesi tipke prečaca"
 
 #. TRANSLATORS: Do not translate libsodium, is the name of a library
 #: src/remmina_pref_dialog.c:488
-#, fuzzy
-#| msgid "libsodium >= 1.9.0 is required to use master password"
 msgid "libsodium >= 1.9.0 is required to use Primary Password"
 msgstr "libsodium >= 1.9.0 je potreban za korištenje glavne lozinke"
 
@@ -1682,10 +1680,9 @@ msgstr ""
 "Appindicatora"
 
 #: src/remmina_ssh_plugin.c:342
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s:%d via SSH"
-msgstr "Povezivanje s %s putem SSH…"
+msgstr "Povezivano s %s:%d putem SSH"
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_ssh_plugin.c:550
@@ -1729,7 +1726,7 @@ msgstr "Pretraži tekst (host+G)"
 #, fuzzy, c-format
 #| msgid "Connecting to %s via SSH…"
 msgid "Disconnected from %s:%d via SSH"
-msgstr "Povezivanje s %s putem SSH…"
+msgstr "Prekinuto povezivanje s %s putem SSH"
 
 #: src/remmina_ssh_plugin.c:1468 data/ui/remmina_main.glade:177
 msgid "Copy"
@@ -2020,7 +2017,7 @@ msgstr "Upišite RDP pristupnik vjerodajnice ovjere"
 #: plugins/rdp/rdp_plugin.c:1027
 #, c-format
 msgid "Disconnected from %s via RDP"
-msgstr ""
+msgstr "Prekinuto povezivanje s %s putem RDP"
 
 #: plugins/rdp/rdp_plugin.c:2156
 #, c-format
@@ -2706,10 +2703,9 @@ msgstr "Pokušaj ponovnog povezivanja %d od %d…"
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_event.c:1121
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s via RDP"
-msgstr "Povezivanje s %s putem SSH…"
+msgstr "Povezano s %s putem RDP"
 
 #: plugins/spice/spice_plugin_file_transfer.c:82
 msgid "File Transfers"
@@ -2743,16 +2739,14 @@ msgid "Disconnected from the SPICE server “%s”."
 msgstr "Prekinuto povezivanje sa SPICE poslužiteljem “%s”."
 
 #: plugins/spice/spice_plugin.c:388
-#, fuzzy, c-format
-#| msgid "Disconnected from the SPICE server “%s”."
+#, c-format
 msgid "Disconnected from %s:%d via SPICE"
-msgstr "Prekinuto povezivanje sa SPICE poslužiteljem “%s”."
+msgstr "Prekinuto povezivanje s %s:%d putem SPICE"
 
 #: plugins/spice/spice_plugin.c:391
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s:%d via SPICE"
-msgstr "Povezivanje s %s putem SSH…"
+msgstr "Povezano s %s:%d putem SPICE"
 
 #: plugins/spice/spice_plugin.c:403
 msgid "TLS connection error."
@@ -2869,15 +2863,14 @@ msgid "Please retry after turning on encryption for this profile."
 msgstr "Pokušajte ponovno nakon omogućavanja šifriranja za ovaj profil."
 
 #: plugins/vnc/vnc_plugin.c:1706
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s:%d via VNC"
-msgstr "Povezivanje s %s putem SSH…"
+msgstr "Povezano s %s:%d putem VNC"
 
 #: plugins/vnc/vnc_plugin.c:1725
 #, c-format
 msgid "Disconnected from %s:%d via VNC"
-msgstr ""
+msgstr "Prekinuto povezivanje s %s:%d putem VNC"
 
 #: plugins/vnc/vnc_plugin.c:1974
 msgid ""
@@ -2914,17 +2907,6 @@ msgstr ""
 "    x11vnc -display :0 -connect 192.168.1.36:8888"
 
 #: plugins/vnc/vnc_plugin.c:1991
-#, fuzzy
-#| msgid ""
-#| "Override pre-set VNC encodings:\n"
-#| "\n"
-#| "  • On “Poor quality” encodings is set to “copyrect zlib hextile raw”\n"
-#| "  • On “Medium quality” encodings is set to “tight zrle ultra copyrect "
-#| "hextile zlib corre rre raw”\n"
-#| "  • On “Good quality” encodings is set to “tight zrle ultra copyrect "
-#| "hextile zlib corre rre raw”\n"
-#| "  • On “Best quality” encodings is set to “copyrect zrle ultra zlib "
-#| "hextile corre rre raw”"
 msgid ""
 "Overriding the pre-set VNC encoding quality:\n"
 "\n"
@@ -2936,16 +2918,16 @@ msgid ""
 "  • “Best (slowest)” sets encoding to “copyrect zrle ultra zlib hextile "
 "corre rre raw”"
 msgstr ""
-"Zaobiđi predpostavljena VNC kôdiranja:\n"
+"Zaobiđi predpostavljenu kvalitetu VNC kôdiranja:\n"
 "\n"
-"  • Kada je “Slaba kvaliteta” kôdiranje postavljeno na “copyrect zlib "
-"hextile raw”\n"
-"  • Kada je “Srednja kvaliteta” kôdiranje postavljeno na “tight zrle ultra "
+"  • “Slaba kvaliteta” kôdiranje je postavljeno na “copyrect zlib hextile raw”"
+"\n"
+"  • “Srednja kvaliteta” kôdiranje je postavljeno na “tight zrle ultra "
 "copyrect hextile zlib corre rre raw”\n"
-"  • Kada je “Dobra kvaliteta” kôdiranje postavljeno na “tight zrle ultra "
-"copyrect hextile zlib corre rre raw”\n"
-"  • Kada je “Najbolja kvaliteta” kôdiranje postavljeno na “copyrect zrle "
-"ultra zlib hextile corre rre raw”"
+"  • “Dobra kvaliteta” kôdiranje je postavljeno na “tight zrle ultra copyrect "
+"hextile zlib corre rre raw”\n"
+"  • “Najbolja kvaliteta” kôdiranje je postavljeno na “copyrect zrle ultra "
+"zlib hextile corre rre raw”"
 
 #: plugins/vnc/vnc_plugin.c:2018
 msgid "Repeater"
@@ -3343,7 +3325,7 @@ msgstr "Prekidanje sesije: '%s'"
 #: plugins/x2go/x2go_plugin.c:1529
 #, c-format
 msgid "Disconnected from %s:%d via X2Go"
-msgstr ""
+msgstr "Prekinuto povezivanje s %s:%d putem X2Go"
 
 #: plugins/x2go/x2go_plugin.c:1601
 msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
@@ -3495,10 +3477,9 @@ msgid "Available feature[%i]: '%s'"
 msgstr "Dostupna značajka[%i]: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:2583
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s:%d via X2Go"
-msgstr "Povezivanje s %s putem SSH…"
+msgstr "Povezano s %s:%d putem X2Go"
 
 #: plugins/x2go/x2go_plugin.c:2677
 msgid "Could not open X11 DISPLAY."
@@ -3989,16 +3970,12 @@ msgid "Domain\\Username"
 msgstr "Domena\\Korisničko ime"
 
 #: data/ui/remmina_passwd.glade:33
-#, fuzzy
-#| msgid "_OK"
 msgid "OK"
-msgstr "_U redu"
+msgstr "U redu"
 
 #: data/ui/remmina_passwd.glade:60
-#, fuzzy
-#| msgid "Set new password"
 msgid "Set Primary Password"
-msgstr "Postavi novu lozinku"
+msgstr "Postavi glavnu lozinku"
 
 #: data/ui/remmina_passwd.glade:101
 #, fuzzy
