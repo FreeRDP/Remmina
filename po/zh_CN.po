@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-01-14 00:07+0000\n"
-"PO-Revision-Date: 2022-01-14 04:52+0000\n"
+"POT-Creation-Date: 2022-01-14 09:44+0000\n"
+"PO-Revision-Date: 2022-01-14 09:39+0000\n"
 "Last-Translator: Eric <alchemillatruth@purelymail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "remmina/remmina/zh_Hans/>\n"
@@ -32,7 +32,7 @@ msgstr ""
 #: src/remmina_ssh_plugin.c:1389 plugins/rdp/rdp_plugin.c:2763
 #: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:3227
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_passwd.glade:84
-#: data/ui/remmina_preferences.glade:1692 data/ui/remmina_unlock.glade:109
+#: data/ui/remmina_unlock.glade:109
 msgid "Password"
 msgstr "密码"
 
@@ -269,7 +269,7 @@ msgstr "取消"
 #: src/remmina_message_panel.c:199 data/ui/remmina_snap_info_dialog.glade:28
 #: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
 #: data/ui/remmina_string_list.glade:63 data/ui/remmina_news.glade:33
-#: data/ui/remmina_preferences.glade:2865
+#: data/ui/remmina_preferences.glade:2828
 msgid "Close"
 msgstr "关闭"
 
@@ -2662,13 +2662,13 @@ msgstr "RDP - 首选项"
 msgid "Export connection in Windows .rdp file format"
 msgstr "使用 Windows .rdp 文件格式导出连接"
 
-#: plugins/rdp/rdp_event.c:344
+#: plugins/rdp/rdp_event.c:348
 #, c-format
 msgid "Reconnection attempt %d of %d…"
 msgstr "正在重新连接。尝试 %d 的 %d…"
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
-#: plugins/rdp/rdp_event.c:1117
+#: plugins/rdp/rdp_event.c:1121
 #, c-format
 msgid "Connected to %s via RDP"
 msgstr "已通过 RDP 连接到 %s"
@@ -2887,9 +2887,12 @@ msgstr ""
 "绕过预设 VNC 编码质量：\n"
 "\n"
 "  • “低质量（最快）” ，编码被设为 “copyrect zlib hextile raw”\n"
-"  • “中等质量” ，编码被设为 “tight zrle ultra copyrect hextile zlib corre rre raw”\n"
-"  • “上佳质量” ，编码被设为 “tight zrle ultra copyrect hextile zlib corre rre raw”\n"
-"  • “最佳质量（最慢）” ，编码被设为 “copyrect zrle ultra zlib hextile corre rre raw”"
+"  • “中等质量” ，编码被设为 “tight zrle ultra copyrect hextile zlib corre "
+"rre raw”\n"
+"  • “上佳质量” ，编码被设为 “tight zrle ultra copyrect hextile zlib corre "
+"rre raw”\n"
+"  • “最佳质量（最慢）” ，编码被设为 “copyrect zrle ultra zlib hextile corre "
+"rre raw”"
 
 #: plugins/vnc/vnc_plugin.c:2018
 msgid "Repeater"
@@ -4225,17 +4228,17 @@ msgstr "使用格式字符串为 Remmina 连接配置文件设置一个自定义
 msgid "Template for profile filenames"
 msgstr "配置文件名模板"
 
-#. Place holders used to name a Remmina connection profile
+#. Placeholders used to name a Remmina connection profile
 #: data/ui/remmina_preferences.glade:361
 msgid ""
-"%G Group name (slash will be converted to - automatically)\n"
+"%G Name of group (slashes \\/ are converted to dashes -)\n"
 "%P Protocol name\n"
 "%N Connection name\n"
 "%h Hostname/IP\n"
 "\n"
 "\n"
 msgstr ""
-"%G 组名（斜杠将自动转换为-）\n"
+"%G 组名（斜杠 \\/ 将转换为 -）\n"
 "%P 协议名称\n"
 "%N 连接名称\n"
 "%h 主机名/ IP\n"
@@ -4468,11 +4471,11 @@ msgid "Set and use a secret key to protect Remmina from unothorized use."
 msgstr "设置并使用一个密钥来防止别人未经授权使用 Remina。"
 
 #: data/ui/remmina_preferences.glade:1634
-msgid "Use a Primary Password"
-msgstr "使用主密码"
+msgid "Use Remmina password"
+msgstr "使用 Remmina 密码"
 
 #: data/ui/remmina_preferences.glade:1645
-#: data/ui/remmina_preferences.glade:2006
+#: data/ui/remmina_preferences.glade:1969
 msgid "Use secret key authentication for some widgets"
 msgstr "对某些小部件使用密钥身份验证"
 
@@ -4481,157 +4484,154 @@ msgid "Automatic lock interval"
 msgstr "自动锁定间隔"
 
 #: data/ui/remmina_preferences.glade:1673
-msgid "Primary Password validity in seconds"
-msgstr "主密码有效期（秒）"
+msgid "Number of seconds to keep password valid for"
+msgstr "密码有效期（单位：秒）"
+
+#: data/ui/remmina_preferences.glade:1692
+msgid "Enter new password"
+msgstr "输入新密码"
 
 #: data/ui/remmina_preferences.glade:1722
-msgid "Repeat the password"
+msgid "Re-enter password"
 msgstr "重复密码"
 
 #: data/ui/remmina_preferences.glade:1755
-msgid ""
-"New, edit, copy, delete actions are password protected with the Primary "
-"Password"
-msgstr "主密码保护新建、编辑、复制、删除操作"
+msgid "Creation, editing, copying, and deletions require the Remmina password"
+msgstr "创建、编辑、复制和删除操作需要使用 Remmina 密码"
 
-#. New, edit, copy, delete actions are password protected
-#: data/ui/remmina_preferences.glade:1759
-msgid "Requires password to modify"
+#. Creation, editing, copying, and deletions require the primary password
+#: data/ui/remmina_preferences.glade:1758
+msgid "Require to modify"
 msgstr "需要密码才能修改"
 
-#: data/ui/remmina_preferences.glade:1797
-msgid "Connecting is password protected with the Primary Password"
-msgstr "连接受主密码保护"
+#: data/ui/remmina_preferences.glade:1796
+msgid "Enter your Remmina password to connect"
+msgstr "输入 Remmina 密码才能连接"
 
-#: data/ui/remmina_preferences.glade:1800
-msgid "Requires password to connect"
+#: data/ui/remmina_preferences.glade:1799
+msgid "Require to connect"
 msgstr "需要密码才能连接"
 
-#: data/ui/remmina_preferences.glade:1817
-msgid "Primary Password settings"
-msgstr "主密码设置"
-
-#: data/ui/remmina_preferences.glade:1851
+#: data/ui/remmina_preferences.glade:1813
 msgid "Encryption method"
 msgstr "加密方法"
 
-#: data/ui/remmina_preferences.glade:1862
+#: data/ui/remmina_preferences.glade:1824
 msgid ""
-"These are the encryption methods used by Remmina to store passwords and "
-"passphrases.\n"
+"These are the encryption methods used by Remmina to store passwords.\n"
 "\n"
 "Except the \"Weak\" method, all the others are reccomended, Keystore is the "
-"default, as it integrates with GNOME or KDE/Plasma.\n"
+"default, as it integrates with KDE/Plasma and GNOME.\n"
 "\n"
-"Intermediate is the best compromise in terms of RAM/CPU required vs "
-"security, but if you need an extremely secure method you should go with "
-"Sensitive, but it'll use 1Gib of RAM and many CPU cycles to hash your "
-"passwords. "
+"\"Intermediate\" doesn't use as much memory or processsing power, and "
+"\"Sensitive\" is more secure but uses 1 Gib of RAM and many CPU cycles. "
 msgstr ""
-"这些是 Remmina 用来存储密码和密码口令的加密方法。\n"
+"这些是 Remmina 用来存储密码的加密方法。\n"
 "\n"
-"除了 “弱” 方法，其他所有方法都是推荐的，Keystore 是默认的，因其集成在 GNOME 或 KDE/Plasma 中。\n"
+"除了 “弱” 方法，其他所有方法都是推荐的，Keystore 是默认的，因其集成在 GNOME "
+"或 KDE/Plasma 中。\n"
 "\n"
-"“中等”是安全性和所需内存/CPU 之间的最佳平衡，但如果你需要一个非常安全的方法，你应该选择“敏感”等级，但该方法会使用 1Gib 的内存和许多的 "
-"CPU 核心进行密码哈希操作。 "
+"“中等”是安全性和所需内存/CPU 之间的最佳平衡，但如果你需要一个非常安全的方法，"
+"你应该选择“敏感”等级，但该方法会使用 1Gib 的内存和许多的 CPU 核心进行密码哈希"
+"操作。 "
 
-#: data/ui/remmina_preferences.glade:1872
-msgid "Keystore (kwallet, GNOME keyring)"
-msgstr "Keystore (kwallet, GNOME keyring)"
+#: data/ui/remmina_preferences.glade:1834
+msgid "Keystore (KWallet, GNOME Keyring)"
+msgstr "Keystore (KWallet, GNOME Keyring)"
 
-#: data/ui/remmina_preferences.glade:1873
+#: data/ui/remmina_preferences.glade:1835
 msgid "Intermediate (+64 Mib RAM)"
 msgstr "中等强度 (+64 Mib 内存）"
 
-#: data/ui/remmina_preferences.glade:1874
+#: data/ui/remmina_preferences.glade:1836
 msgid "Strong (+256 Mib, <1s i7 CPU)"
 msgstr "强 （+256 Mib, <1s i7 CPU）"
 
-#: data/ui/remmina_preferences.glade:1875
-msgid "Sensitive (+1024 Mib, <4s i7 CPU)"
-msgstr "敏感（(+1024 Mib, <4s i7 CPU）"
+#: data/ui/remmina_preferences.glade:1837
+msgid "Sensitive (+1 Gib, <4s i7 CPU)"
+msgstr "敏感（+1 Gib, <4s i7 CPU）"
 
-#: data/ui/remmina_preferences.glade:1876
-msgid "Weak (password may be guessed)"
-msgstr "弱（密码可能被猜到）"
+#: data/ui/remmina_preferences.glade:1838
+msgid "Weak (guessable)"
+msgstr "弱（可猜测）"
 
-#: data/ui/remmina_preferences.glade:1877
-msgid "None (clear text)"
+#: data/ui/remmina_preferences.glade:1839
+msgid "None (cleartext)"
 msgstr "无（明文）"
 
-#: data/ui/remmina_preferences.glade:1894
-msgid "Connection profiles passwords encryption"
-msgstr "连接配置文件密码加密"
+#: data/ui/remmina_preferences.glade:1857
+msgid "Logins and Passwords"
+msgstr "登录名和密码"
 
-#: data/ui/remmina_preferences.glade:1928
-msgid "Enable auditing logs"
-msgstr "启用审计日志"
+#: data/ui/remmina_preferences.glade:1891
+msgid "Logging"
+msgstr "记录"
 
-#: data/ui/remmina_preferences.glade:1959
-msgid "Auditing settings"
-msgstr "审计设定"
+#: data/ui/remmina_preferences.glade:1922
+msgid "Auditing"
+msgstr "审计"
 
-#: data/ui/remmina_preferences.glade:1989
+#: data/ui/remmina_preferences.glade:1952
 msgid "Automatically accept all fingerprints and certificates"
 msgstr "自动接受所有指纹和证书"
 
-#: data/ui/remmina_preferences.glade:1995
-msgid "Trust all fingerprints and certificates"
-msgstr "信任所有指纹和证书"
+#: data/ui/remmina_preferences.glade:1958
+msgid "Trust all"
+msgstr "信任全部"
 
-#: data/ui/remmina_preferences.glade:2029
-msgid "Certificate settings"
-msgstr "证书设置"
+#: data/ui/remmina_preferences.glade:1992
+msgid "Certificates and fingerprints"
+msgstr "证书和指纹"
 
-#: data/ui/remmina_preferences.glade:2053
+#: data/ui/remmina_preferences.glade:2016
 msgid "Security"
 msgstr "安全"
 
-#: data/ui/remmina_preferences.glade:2084
+#: data/ui/remmina_preferences.glade:2047
 msgid "Terminal font"
 msgstr "终端字体"
 
-#: data/ui/remmina_preferences.glade:2097
+#: data/ui/remmina_preferences.glade:2060
 msgid "Scrollback lines"
 msgstr "回滚行数"
 
-#: data/ui/remmina_preferences.glade:2145
+#: data/ui/remmina_preferences.glade:2108
 msgid "Shortcuts for copying and pasting"
 msgstr "复制和粘贴的快捷键"
 
-#: data/ui/remmina_preferences.glade:2158
+#: data/ui/remmina_preferences.glade:2121
 msgid "Select all shortcuts"
 msgstr "全选快捷键"
 
-#: data/ui/remmina_preferences.glade:2171
-#: data/ui/remmina_preferences.glade:2188
-#: data/ui/remmina_preferences.glade:2641
-#: data/ui/remmina_preferences.glade:2671
-#: data/ui/remmina_preferences.glade:2805
-#: data/ui/remmina_preferences.glade:2822
+#: data/ui/remmina_preferences.glade:2134
+#: data/ui/remmina_preferences.glade:2151
+#: data/ui/remmina_preferences.glade:2604
+#: data/ui/remmina_preferences.glade:2634
+#: data/ui/remmina_preferences.glade:2768
+#: data/ui/remmina_preferences.glade:2785
 msgid "(Host key+)"
 msgstr "(Host key+)"
 
-#: data/ui/remmina_preferences.glade:2206
+#: data/ui/remmina_preferences.glade:2169
 msgid "Use default system font"
 msgstr "使用系统默认字体"
 
-#: data/ui/remmina_preferences.glade:2231
+#: data/ui/remmina_preferences.glade:2194
 msgid ""
 "Selecting “SGR 1” also switches to the bright counterparts of the first 8 "
 "palette colours (in addition to making text bold)."
 msgstr ""
 "选择 \"SGR 1 \"也会切换到前8种调色板颜色的明亮对应色（除了使文字变粗之外）。"
 
-#: data/ui/remmina_preferences.glade:2247
+#: data/ui/remmina_preferences.glade:2210
 msgid "Allow using bright colours with bold text"
 msgstr "允许在粗体文本中使用明亮的颜色"
 
-#: data/ui/remmina_preferences.glade:2261
+#: data/ui/remmina_preferences.glade:2224
 msgid "Colour theme"
 msgstr "配色主题"
 
-#: data/ui/remmina_preferences.glade:2272
+#: data/ui/remmina_preferences.glade:2235
 msgid ""
 "Choose a colour scheme file. Usually available in /usr/share/remmina/theme. "
 "https://github.com/mbadolato/iTerm2-Color-Schemes has more details."
@@ -4639,130 +4639,130 @@ msgstr ""
 "选择一个配色方案文件，预安装的主题通常在 /usr/share/remmina/theme 下。请参阅 "
 "https://github.com/mbadolato/iTerm2-Color-Schemes。"
 
-#: data/ui/remmina_preferences.glade:2276
+#: data/ui/remmina_preferences.glade:2239
 msgid "Pick a terminal colouring file"
 msgstr "选择一个终端配色文件"
 
-#: data/ui/remmina_preferences.glade:2291
+#: data/ui/remmina_preferences.glade:2254
 msgid "Bright colours"
 msgstr "高亮颜色"
 
-#: data/ui/remmina_preferences.glade:2305
+#: data/ui/remmina_preferences.glade:2268
 msgid "Pick a light black colour"
 msgstr "选择亮黑色"
 
-#: data/ui/remmina_preferences.glade:2319
+#: data/ui/remmina_preferences.glade:2282
 msgid "Pick a light red colour"
 msgstr "选择亮红色"
 
-#: data/ui/remmina_preferences.glade:2333
+#: data/ui/remmina_preferences.glade:2296
 msgid "Pick a bright green colour"
 msgstr "选择亮绿色"
 
-#: data/ui/remmina_preferences.glade:2347
+#: data/ui/remmina_preferences.glade:2310
 msgid "Pick a bright yellow colour"
 msgstr "选择亮黄色"
 
-#: data/ui/remmina_preferences.glade:2361
+#: data/ui/remmina_preferences.glade:2324
 msgid "Pick a bright blue colour"
 msgstr "选择亮蓝色"
 
-#: data/ui/remmina_preferences.glade:2375
+#: data/ui/remmina_preferences.glade:2338
 msgid "Pick a light magenta colour"
 msgstr "选择亮洋红色"
 
-#: data/ui/remmina_preferences.glade:2389
+#: data/ui/remmina_preferences.glade:2352
 msgid "Pick a light cyan colour"
 msgstr "选择亮青色"
 
-#: data/ui/remmina_preferences.glade:2403
+#: data/ui/remmina_preferences.glade:2366
 msgid "Pick a light white colour"
 msgstr "选择亮白色"
 
-#: data/ui/remmina_preferences.glade:2417
+#: data/ui/remmina_preferences.glade:2380
 msgid "Pick a black colour"
 msgstr "选择黑色"
 
-#: data/ui/remmina_preferences.glade:2431
+#: data/ui/remmina_preferences.glade:2394
 msgid "Pick a red colour"
 msgstr "选择红色"
 
-#: data/ui/remmina_preferences.glade:2445
+#: data/ui/remmina_preferences.glade:2408
 msgid "Pick a green colour"
 msgstr "选择绿色"
 
-#: data/ui/remmina_preferences.glade:2459
+#: data/ui/remmina_preferences.glade:2422
 msgid "Pick a yellow colour"
 msgstr "选择黄色"
 
-#: data/ui/remmina_preferences.glade:2473
+#: data/ui/remmina_preferences.glade:2436
 msgid "Pick a blue colour"
 msgstr "选择蓝色"
 
-#: data/ui/remmina_preferences.glade:2487
+#: data/ui/remmina_preferences.glade:2450
 msgid "Pick a magenta colour"
 msgstr "选择洋红色"
 
-#: data/ui/remmina_preferences.glade:2501
+#: data/ui/remmina_preferences.glade:2464
 msgid "Pick a cyan colour"
 msgstr "选择青色"
 
-#: data/ui/remmina_preferences.glade:2515
+#: data/ui/remmina_preferences.glade:2478
 msgid "Pick a white colour"
 msgstr "选择白色"
 
-#: data/ui/remmina_preferences.glade:2528
+#: data/ui/remmina_preferences.glade:2491
 msgid "Normal colours"
 msgstr "正常颜色"
 
-#: data/ui/remmina_preferences.glade:2541
-#: data/ui/remmina_preferences.glade:2556
+#: data/ui/remmina_preferences.glade:2504
+#: data/ui/remmina_preferences.glade:2519
 msgid "Cursor colour"
 msgstr "光标颜色"
 
-#: data/ui/remmina_preferences.glade:2570
-#: data/ui/remmina_preferences.glade:2585
+#: data/ui/remmina_preferences.glade:2533
+#: data/ui/remmina_preferences.glade:2548
 msgid "Background colour"
 msgstr "背景色"
 
-#: data/ui/remmina_preferences.glade:2601
-#: data/ui/remmina_preferences.glade:2615
+#: data/ui/remmina_preferences.glade:2564
+#: data/ui/remmina_preferences.glade:2578
 msgid "Foreground colour"
 msgstr "前景色"
 
-#: data/ui/remmina_preferences.glade:2628
+#: data/ui/remmina_preferences.glade:2591
 msgid "Increase and decrease font size"
 msgstr "增大和减小字体"
 
-#: data/ui/remmina_preferences.glade:2658
+#: data/ui/remmina_preferences.glade:2621
 msgid "Search text shortcut"
 msgstr "搜索文本快捷键"
 
-#: data/ui/remmina_preferences.glade:2689
-#: data/ui/remmina_preferences.glade:2704
+#: data/ui/remmina_preferences.glade:2652
+#: data/ui/remmina_preferences.glade:2667
 msgid "Bold colour"
 msgstr "粗体颜色"
 
-#: data/ui/remmina_preferences.glade:2718
-#: data/ui/remmina_preferences.glade:2759
+#: data/ui/remmina_preferences.glade:2681
+#: data/ui/remmina_preferences.glade:2722
 msgid "Highlight colour"
 msgstr "高亮颜色"
 
-#: data/ui/remmina_preferences.glade:2731
-#: data/ui/remmina_preferences.glade:2775
+#: data/ui/remmina_preferences.glade:2694
+#: data/ui/remmina_preferences.glade:2738
 msgid "Highlight foreground colour"
 msgstr "高亮前景色"
 
-#: data/ui/remmina_preferences.glade:2744
-#: data/ui/remmina_preferences.glade:2791
+#: data/ui/remmina_preferences.glade:2707
+#: data/ui/remmina_preferences.glade:2754
 msgid "Cursor foreground colour"
 msgstr "光标前景色"
 
-#: data/ui/remmina_preferences.glade:2847
+#: data/ui/remmina_preferences.glade:2810
 msgid "Terminal"
 msgstr "终端"
 
-#: data/ui/remmina_preferences.glade:2861
+#: data/ui/remmina_preferences.glade:2824
 msgid "Remmina Preferences"
 msgstr "Remmina 首选项"
 
@@ -4777,6 +4777,38 @@ msgstr "解锁 Remmina"
 #: data/ui/remmina_unlock.glade:120
 msgid "Master password"
 msgstr "管控密码"
+
+#~ msgid "Use a Primary Password"
+#~ msgstr "使用主密码"
+
+#~ msgid "Primary Password validity in seconds"
+#~ msgstr "主密码有效期（秒）"
+
+#~ msgid ""
+#~ "New, edit, copy, delete actions are password protected with the Primary "
+#~ "Password"
+#~ msgstr "主密码保护新建、编辑、复制、删除操作"
+
+#~ msgid "Connecting is password protected with the Primary Password"
+#~ msgstr "连接受主密码保护"
+
+#~ msgid "Primary Password settings"
+#~ msgstr "主密码设置"
+
+#~ msgid "Weak (password may be guessed)"
+#~ msgstr "弱（密码可能被猜到）"
+
+#~ msgid "Connection profiles passwords encryption"
+#~ msgstr "连接配置文件密码加密"
+
+#~ msgid "Enable auditing logs"
+#~ msgstr "启用审计日志"
+
+#~ msgid "Trust all fingerprints and certificates"
+#~ msgstr "信任所有指纹和证书"
+
+#~ msgid "Certificate settings"
+#~ msgstr "证书设置"
 
 #, fuzzy
 #~| msgid "Override pre-set VNC encodings"

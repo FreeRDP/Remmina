@@ -5,13 +5,13 @@
 # Olexandr Nesterenko <olexn@ukr.net>, 2019, 2020.
 # anonymous <noreply@weblate.org>, 2019.
 # Rostyslav <info@ubilling.net.ua>, 2020, 2021.
-# Yuri Chornoivan <yurchor@ukr.net>, 2020, 2021.
+# Yuri Chornoivan <yurchor@ukr.net>, 2020, 2021, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-01-14 00:07+0000\n"
-"PO-Revision-Date: 2021-12-20 07:50+0000\n"
+"POT-Creation-Date: 2022-01-14 09:44+0000\n"
+"PO-Revision-Date: 2022-01-14 09:10+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/remmina/"
 "remmina/uk/>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.10\n"
+"X-Generator: Weblate 4.10.1\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:04+0000\n"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:354
@@ -30,7 +30,7 @@ msgstr ""
 #: src/remmina_ssh_plugin.c:1389 plugins/rdp/rdp_plugin.c:2763
 #: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:3227
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_passwd.glade:84
-#: data/ui/remmina_preferences.glade:1692 data/ui/remmina_unlock.glade:109
+#: data/ui/remmina_unlock.glade:109
 msgid "Password"
 msgstr "Пароль"
 
@@ -246,10 +246,8 @@ msgstr "Налаштування комбінацій клавіш"
 
 #. TRANSLATORS: Do not translate libsodium, is the name of a library
 #: src/remmina_pref_dialog.c:488
-#, fuzzy
-#| msgid "libsodium >= 1.9.0 is required to use master password"
 msgid "libsodium >= 1.9.0 is required to use Primary Password"
-msgstr "Для користування майстер-паролем потрібна libsodium >= 1.9.0"
+msgstr "Для користування основним паролем потрібна libsodium >= 1.9.0"
 
 #: src/remmina_pref_dialog.c:826
 msgid "Picking a terminal colouring file replaces the file: "
@@ -274,7 +272,7 @@ msgstr "Скасувати"
 #: src/remmina_message_panel.c:199 data/ui/remmina_snap_info_dialog.glade:28
 #: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
 #: data/ui/remmina_string_list.glade:63 data/ui/remmina_news.glade:33
-#: data/ui/remmina_preferences.glade:2865
+#: data/ui/remmina_preferences.glade:2828
 msgid "Close"
 msgstr "Закрити"
 
@@ -1474,14 +1472,12 @@ msgid "Auto-start this profile"
 msgstr "Автоматично запускати цей профіль"
 
 #: src/remmina_file_editor.c:1099
-#, fuzzy
-#| msgid "New connection profile"
 msgid "Connection profile security"
-msgstr "Профіль нового з'єднання"
+msgstr "Захист профілю з'єднання"
 
 #: src/remmina_file_editor.c:1102
 msgid "Require password to connect or edit the profile"
-msgstr ""
+msgstr "Для встановлення з'єднання або редагування профілю потрібен пароль"
 
 #: src/remmina_file_editor.c:1132
 msgid "SSH Tunnel"
@@ -1690,10 +1686,9 @@ msgstr ""
 "Appindicator"
 
 #: src/remmina_ssh_plugin.c:342
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s:%d via SSH"
-msgstr "Встановлення з'єднання з %s крізь SSH…"
+msgstr "Встановлено з'єднання з %s:%d крізь SSH"
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_ssh_plugin.c:550
@@ -1734,10 +1729,9 @@ msgid "Find text (host+G)"
 msgstr "Знайти текст (Host + G)"
 
 #: src/remmina_ssh_plugin.c:921
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Disconnected from %s:%d via SSH"
-msgstr "Встановлення з'єднання з %s крізь SSH…"
+msgstr "Розірвано з'єднання з %s:%d крізь SSH"
 
 #: src/remmina_ssh_plugin.c:1468 data/ui/remmina_main.glade:177
 msgid "Copy"
@@ -2028,7 +2022,7 @@ msgstr "Введіть дані розпізнавання на шлюзі RDP"
 #: plugins/rdp/rdp_plugin.c:1027
 #, c-format
 msgid "Disconnected from %s via RDP"
-msgstr ""
+msgstr "Розірвано з'єднання з %s за допомогою RDP"
 
 #: plugins/rdp/rdp_plugin.c:2156
 #, c-format
@@ -2713,17 +2707,16 @@ msgstr "RDP — Налаштування"
 msgid "Export connection in Windows .rdp file format"
 msgstr "Експортувати з'єднання у форматі файлів Windows .rdp"
 
-#: plugins/rdp/rdp_event.c:344
+#: plugins/rdp/rdp_event.c:348
 #, c-format
 msgid "Reconnection attempt %d of %d…"
 msgstr "Спроба повторного з'єднання %d з %d…"
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
-#: plugins/rdp/rdp_event.c:1117
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#: plugins/rdp/rdp_event.c:1121
+#, c-format
 msgid "Connected to %s via RDP"
-msgstr "Встановлення з'єднання з %s крізь SSH…"
+msgstr "Встановлено з'єднання з %s за допомогою RDP"
 
 #: plugins/spice/spice_plugin_file_transfer.c:82
 msgid "File Transfers"
@@ -2757,16 +2750,14 @@ msgid "Disconnected from the SPICE server “%s”."
 msgstr "Від'єднано від сервера SPICE «%s»."
 
 #: plugins/spice/spice_plugin.c:388
-#, fuzzy, c-format
-#| msgid "Disconnected from the SPICE server “%s”."
+#, c-format
 msgid "Disconnected from %s:%d via SPICE"
-msgstr "Від'єднано від сервера SPICE «%s»."
+msgstr "Розірвано з'єднання з %s:%d за допомогою SPICE"
 
 #: plugins/spice/spice_plugin.c:391
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s:%d via SPICE"
-msgstr "Встановлення з'єднання з %s крізь SSH…"
+msgstr "Встановлено з'єднання з %s:%d за допомогою SPICE"
 
 #: plugins/spice/spice_plugin.c:403
 msgid "TLS connection error."
@@ -2884,15 +2875,14 @@ msgid "Please retry after turning on encryption for this profile."
 msgstr "Спробуйте знову після увімкнення шифрування для цього профілю."
 
 #: plugins/vnc/vnc_plugin.c:1706
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s:%d via VNC"
-msgstr "Встановлення з'єднання з %s крізь SSH…"
+msgstr "Встановлено з'єднання з %s:%d за допомогою VNC"
 
 #: plugins/vnc/vnc_plugin.c:1725
 #, c-format
 msgid "Disconnected from %s:%d via VNC"
-msgstr ""
+msgstr "Розірвано з'єднання з %s:%d за допомогою VNC"
 
 #: plugins/vnc/vnc_plugin.c:1974
 msgid ""
@@ -2932,17 +2922,6 @@ msgstr ""
 "    x11vnc -display :0 -connect 192.168.1.36:8888"
 
 #: plugins/vnc/vnc_plugin.c:1991
-#, fuzzy
-#| msgid ""
-#| "Override pre-set VNC encodings:\n"
-#| "\n"
-#| "  • On “Poor quality” encodings is set to “copyrect zlib hextile raw”\n"
-#| "  • On “Medium quality” encodings is set to “tight zrle ultra copyrect "
-#| "hextile zlib corre rre raw”\n"
-#| "  • On “Good quality” encodings is set to “tight zrle ultra copyrect "
-#| "hextile zlib corre rre raw”\n"
-#| "  • On “Best quality” encodings is set to “copyrect zrle ultra zlib "
-#| "hextile corre rre raw”"
 msgid ""
 "Overriding the pre-set VNC encoding quality:\n"
 "\n"
@@ -2954,7 +2933,7 @@ msgid ""
 "  • “Best (slowest)” sets encoding to “copyrect zrle ultra zlib hextile "
 "corre rre raw”"
 msgstr ""
-"Перевизначити попередньо встановлені кодування VNC:\n"
+"Перевизначення попередньо встановленої якості кодування VNC:\n"
 "\n"
 "  • Для кодувань «Низька якість» встановлюється «copyrect zlib hextile raw»\n"
 "  • Для кодувань «Середня якість» встановлюється «tight zrle ultra copyrect "
@@ -3363,7 +3342,7 @@ msgstr "Перериваємо сеанс: «%s»"
 #: plugins/x2go/x2go_plugin.c:1529
 #, c-format
 msgid "Disconnected from %s:%d via X2Go"
-msgstr ""
+msgstr "Розірвано з'єднання з %s:%d за допомогою X2Go"
 
 #: plugins/x2go/x2go_plugin.c:1601
 msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
@@ -3521,10 +3500,9 @@ msgid "Available feature[%i]: '%s'"
 msgstr "Доступна можливість[%i]: «%s»"
 
 #: plugins/x2go/x2go_plugin.c:2583
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s:%d via X2Go"
-msgstr "Встановлення з'єднання з %s крізь SSH…"
+msgstr "Встановлено з'єднання з %s:%d за допомогою X2Go"
 
 #: plugins/x2go/x2go_plugin.c:2677
 msgid "Could not open X11 DISPLAY."
@@ -4020,22 +3998,16 @@ msgid "Domain\\Username"
 msgstr "Домен\\Ім'я користувача"
 
 #: data/ui/remmina_passwd.glade:33
-#, fuzzy
-#| msgid "_OK"
 msgid "OK"
-msgstr "_Гаразд"
+msgstr "Гаразд"
 
 #: data/ui/remmina_passwd.glade:60
-#, fuzzy
-#| msgid "Set new password"
 msgid "Set Primary Password"
-msgstr "Встановлення нового пароля"
+msgstr "Встановити основний пароль"
 
 #: data/ui/remmina_passwd.glade:101
-#, fuzzy
-#| msgid "User password"
 msgid "Verify password"
-msgstr "Пароль користувача"
+msgstr "Перевірити пароль"
 
 #: data/ui/remmina_news.glade:75
 msgid ""
@@ -4354,10 +4326,18 @@ msgstr ""
 msgid "Template for profile filenames"
 msgstr "Шаблон для назв файлів профілів"
 
-#. Place holders used to name a Remmina connection profile
+#. Placeholders used to name a Remmina connection profile
 #: data/ui/remmina_preferences.glade:361
+#, fuzzy
+#| msgid ""
+#| "%G Group name (slash will be converted to - automatically)\n"
+#| "%P Protocol name\n"
+#| "%N Connection name\n"
+#| "%h Hostname/IP\n"
+#| "\n"
+#| "\n"
 msgid ""
-"%G Group name (slash will be converted to - automatically)\n"
+"%G Name of group (slashes \\/ are converted to dashes -)\n"
 "%P Protocol name\n"
 "%N Connection name\n"
 "%h Hostname/IP\n"
@@ -4608,15 +4588,17 @@ msgstr "Параметри SSH"
 #: data/ui/remmina_preferences.glade:1630
 msgid "Set and use a secret key to protect Remmina from unothorized use."
 msgstr ""
+"Встановити і використати ключ захисту для захисту Remmina від "
+"неуповноваженого використання."
 
 #: data/ui/remmina_preferences.glade:1634
 #, fuzzy
-#| msgid "Use master password"
-msgid "Use a Primary Password"
-msgstr "Використовувати майстер-пароль"
+#| msgid "User password"
+msgid "Use Remmina password"
+msgstr "Пароль користувача"
 
 #: data/ui/remmina_preferences.glade:1645
-#: data/ui/remmina_preferences.glade:2006
+#: data/ui/remmina_preferences.glade:1969
 msgid "Use secret key authentication for some widgets"
 msgstr "Використовувати розпізнавання за ключем для деяких віджетів"
 
@@ -4625,150 +4607,177 @@ msgid "Automatic lock interval"
 msgstr "Інтервал автоматичного блокування"
 
 #: data/ui/remmina_preferences.glade:1673
+msgid "Number of seconds to keep password valid for"
+msgstr ""
+
+#: data/ui/remmina_preferences.glade:1692
 #, fuzzy
-#| msgid "Master password validity in seconds"
-msgid "Primary Password validity in seconds"
-msgstr "Строк дії майстер-пароля у секундах"
+#| msgid "Enter VNC password"
+msgid "Enter new password"
+msgstr "Введіть пароль VNC"
 
 #: data/ui/remmina_preferences.glade:1722
-msgid "Repeat the password"
+#, fuzzy
+#| msgid "Repeat the password"
+msgid "Re-enter password"
 msgstr "Повторіть пароль"
 
 #: data/ui/remmina_preferences.glade:1755
-msgid ""
-"New, edit, copy, delete actions are password protected with the Primary "
-"Password"
+msgid "Creation, editing, copying, and deletions require the Remmina password"
 msgstr ""
 
-#. New, edit, copy, delete actions are password protected
-#: data/ui/remmina_preferences.glade:1759
-msgid "Requires password to modify"
-msgstr ""
-
-#: data/ui/remmina_preferences.glade:1797
-msgid "Connecting is password protected with the Primary Password"
-msgstr ""
-
-#: data/ui/remmina_preferences.glade:1800
+#. Creation, editing, copying, and deletions require the primary password
+#: data/ui/remmina_preferences.glade:1758
 #, fuzzy
-#| msgid "Secured password storage in KWallet"
-msgid "Requires password to connect"
-msgstr "Безпечне сховище паролів у KWallet"
+#| msgid "Requires password to modify"
+msgid "Require to modify"
+msgstr "Для внесення змін слід вказати пароль"
 
-#: data/ui/remmina_preferences.glade:1817
-msgid "Primary Password settings"
-msgstr ""
+#: data/ui/remmina_preferences.glade:1796
+#, fuzzy
+#| msgid "Requires password to connect"
+msgid "Enter your Remmina password to connect"
+msgstr "Для встановлення з'єднання слід вказати основний пароль"
 
-#: data/ui/remmina_preferences.glade:1851
+#: data/ui/remmina_preferences.glade:1799
+#, fuzzy
+#| msgid "Requires password to connect"
+msgid "Require to connect"
+msgstr "Для встановлення з'єднання слід вказати основний пароль"
+
+#: data/ui/remmina_preferences.glade:1813
 msgid "Encryption method"
-msgstr ""
+msgstr "Спосіб шифрування"
 
-#: data/ui/remmina_preferences.glade:1862
+#: data/ui/remmina_preferences.glade:1824
+#, fuzzy
+#| msgid ""
+#| "These are the encryption methods used by Remmina to store passwords and "
+#| "passphrases.\n"
+#| "\n"
+#| "Except the \"Weak\" method, all the others are reccomended, Keystore is "
+#| "the default, as it integrates with GNOME or KDE/Plasma.\n"
+#| "\n"
+#| "Intermediate is the best compromise in terms of RAM/CPU required vs "
+#| "security, but if you need an extremely secure method you should go with "
+#| "Sensitive, but it'll use 1Gib of RAM and many CPU cycles to hash your "
+#| "passwords. "
 msgid ""
-"These are the encryption methods used by Remmina to store passwords and "
-"passphrases.\n"
+"These are the encryption methods used by Remmina to store passwords.\n"
 "\n"
 "Except the \"Weak\" method, all the others are reccomended, Keystore is the "
-"default, as it integrates with GNOME or KDE/Plasma.\n"
+"default, as it integrates with KDE/Plasma and GNOME.\n"
 "\n"
-"Intermediate is the best compromise in terms of RAM/CPU required vs "
-"security, but if you need an extremely secure method you should go with "
-"Sensitive, but it'll use 1Gib of RAM and many CPU cycles to hash your "
-"passwords. "
+"\"Intermediate\" doesn't use as much memory or processsing power, and "
+"\"Sensitive\" is more secure but uses 1 Gib of RAM and many CPU cycles. "
 msgstr ""
+"Це способи шифрування, які Remmina використовуватиме для зберігання "
+"паролів.\n"
+"\n"
+"Окрім способу «Слабкий», усі інші способи є рекомендованими. Типовим є "
+"«Сховище ключів», оскільки такий спосіб передбачає інтеграцію із GNOME або "
+"Плазмою/KDE.\n"
+"\n"
+"Спосіб «Проміжний» є найкращим компромісом у плані компромісу між "
+"споживанням оперативної пам'яті та потужностей процесора і захистом. Втім, "
+"якщо вам потрібен найбезпечніший спосіб, вам слід вибрати «Секретний», але "
+"для користування ним знадобиться 1 ГіБ оперативної пам'яті та значні "
+"потужності процесора для хешування паролів. "
 
-#: data/ui/remmina_preferences.glade:1872
-msgid "Keystore (kwallet, GNOME keyring)"
-msgstr ""
+#: data/ui/remmina_preferences.glade:1834
+#, fuzzy
+#| msgid "Keystore (kwallet, GNOME keyring)"
+msgid "Keystore (KWallet, GNOME Keyring)"
+msgstr "Сховище ключів (kwallet, сховище ключів GNOME)"
 
-#: data/ui/remmina_preferences.glade:1873
+#: data/ui/remmina_preferences.glade:1835
 msgid "Intermediate (+64 Mib RAM)"
-msgstr ""
+msgstr "Проміжний (+64 МіБ оперативної пам'яті)"
 
-#: data/ui/remmina_preferences.glade:1874
+#: data/ui/remmina_preferences.glade:1836
 msgid "Strong (+256 Mib, <1s i7 CPU)"
+msgstr "Потужний (+256 МіБ, <1с процесора i7)"
+
+#: data/ui/remmina_preferences.glade:1837
+#, fuzzy
+#| msgid "Sensitive (+1024 Mib, <4s i7 CPU)"
+msgid "Sensitive (+1 Gib, <4s i7 CPU)"
+msgstr "Секретний (+1024 МіБ, <4с процесора i7)"
+
+#: data/ui/remmina_preferences.glade:1838
+msgid "Weak (guessable)"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1875
-msgid "Sensitive (+1024 Mib, <4s i7 CPU)"
+#: data/ui/remmina_preferences.glade:1839
+#, fuzzy
+#| msgid "None (clear text)"
+msgid "None (cleartext)"
+msgstr "Немає (простий текст)"
+
+#: data/ui/remmina_preferences.glade:1857
+msgid "Logins and Passwords"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1876
+#: data/ui/remmina_preferences.glade:1891
 #, fuzzy
-#| msgid "Forget passwords after use"
-msgid "Weak (password may be guessed)"
-msgstr "Забути паролі після використання"
+#| msgid "Debugging"
+msgid "Logging"
+msgstr "Діагностика"
 
-#: data/ui/remmina_preferences.glade:1877
-msgid "None (clear text)"
-msgstr ""
-
-#: data/ui/remmina_preferences.glade:1894
+#: data/ui/remmina_preferences.glade:1922
 #, fuzzy
-#| msgid "Modify connection profile (requires --set-option)"
-msgid "Connection profiles passwords encryption"
-msgstr "Змінити профіль з'єднання (потребує --set-option)"
+#| msgid "Auditing settings"
+msgid "Auditing"
+msgstr "Параметри ревізування"
 
-#: data/ui/remmina_preferences.glade:1928
-#, fuzzy
-#| msgid "Enable audio channel"
-msgid "Enable auditing logs"
-msgstr "Увімкнути звуковий канал"
-
-#: data/ui/remmina_preferences.glade:1959
-#, fuzzy
-#| msgid "Edit settings"
-msgid "Auditing settings"
-msgstr "Редагувати параметри"
-
-#: data/ui/remmina_preferences.glade:1989
+#: data/ui/remmina_preferences.glade:1952
 msgid "Automatically accept all fingerprints and certificates"
 msgstr "Автоматично приймати усі відбитки і сертифікати"
 
-#: data/ui/remmina_preferences.glade:1995
-msgid "Trust all fingerprints and certificates"
-msgstr "Довіряти усім відбиткам і сертифікатам"
+#: data/ui/remmina_preferences.glade:1958
+msgid "Trust all"
+msgstr ""
 
-#: data/ui/remmina_preferences.glade:2029
+#: data/ui/remmina_preferences.glade:1992
 #, fuzzy
 #| msgid "Certificate details:"
-msgid "Certificate settings"
+msgid "Certificates and fingerprints"
 msgstr "Параметри сертифіката:"
 
-#: data/ui/remmina_preferences.glade:2053
+#: data/ui/remmina_preferences.glade:2016
 msgid "Security"
 msgstr "Безпека"
 
-#: data/ui/remmina_preferences.glade:2084
+#: data/ui/remmina_preferences.glade:2047
 msgid "Terminal font"
 msgstr "Термінальний шрифт"
 
-#: data/ui/remmina_preferences.glade:2097
+#: data/ui/remmina_preferences.glade:2060
 msgid "Scrollback lines"
 msgstr "Рядків у буфері гортання"
 
-#: data/ui/remmina_preferences.glade:2145
+#: data/ui/remmina_preferences.glade:2108
 msgid "Shortcuts for copying and pasting"
 msgstr "Комбінації клавіш для копіювання та вставляння"
 
-#: data/ui/remmina_preferences.glade:2158
+#: data/ui/remmina_preferences.glade:2121
 msgid "Select all shortcuts"
 msgstr "Комбінація клавіш для вибору всього"
 
-#: data/ui/remmina_preferences.glade:2171
-#: data/ui/remmina_preferences.glade:2188
-#: data/ui/remmina_preferences.glade:2641
-#: data/ui/remmina_preferences.glade:2671
-#: data/ui/remmina_preferences.glade:2805
-#: data/ui/remmina_preferences.glade:2822
+#: data/ui/remmina_preferences.glade:2134
+#: data/ui/remmina_preferences.glade:2151
+#: data/ui/remmina_preferences.glade:2604
+#: data/ui/remmina_preferences.glade:2634
+#: data/ui/remmina_preferences.glade:2768
+#: data/ui/remmina_preferences.glade:2785
 msgid "(Host key+)"
 msgstr "(Host-клавіша+)"
 
-#: data/ui/remmina_preferences.glade:2206
+#: data/ui/remmina_preferences.glade:2169
 msgid "Use default system font"
 msgstr "Використовувати системний шрифт"
 
-#: data/ui/remmina_preferences.glade:2231
+#: data/ui/remmina_preferences.glade:2194
 msgid ""
 "Selecting “SGR 1” also switches to the bright counterparts of the first 8 "
 "palette colours (in addition to making text bold)."
@@ -4776,15 +4785,15 @@ msgstr ""
 "Вибір «SGR 1» також перемикає кольори на яскраві аналоги перших 8 кольорів "
 "палітри (на додачу до перетворення символів шрифту на напівжирні)."
 
-#: data/ui/remmina_preferences.glade:2247
+#: data/ui/remmina_preferences.glade:2210
 msgid "Allow using bright colours with bold text"
 msgstr "Дозволити використання яскравих кольорів із напівжирним текстом"
 
-#: data/ui/remmina_preferences.glade:2261
+#: data/ui/remmina_preferences.glade:2224
 msgid "Colour theme"
 msgstr "Тема кольорів"
 
-#: data/ui/remmina_preferences.glade:2272
+#: data/ui/remmina_preferences.glade:2235
 msgid ""
 "Choose a colour scheme file. Usually available in /usr/share/remmina/theme. "
 "https://github.com/mbadolato/iTerm2-Color-Schemes has more details."
@@ -4793,130 +4802,130 @@ msgstr ""
 "remmina/theme. Докладніше про це можна дізнатися тут: https://github.com/"
 "mbadolato/iTerm2-Color-Schemes ."
 
-#: data/ui/remmina_preferences.glade:2276
+#: data/ui/remmina_preferences.glade:2239
 msgid "Pick a terminal colouring file"
 msgstr "Вибір файла схеми розфарбування термінала"
 
-#: data/ui/remmina_preferences.glade:2291
+#: data/ui/remmina_preferences.glade:2254
 msgid "Bright colours"
 msgstr "Яскраві кольори"
 
-#: data/ui/remmina_preferences.glade:2305
+#: data/ui/remmina_preferences.glade:2268
 msgid "Pick a light black colour"
 msgstr "Вибір світло-чорного кольору"
 
-#: data/ui/remmina_preferences.glade:2319
+#: data/ui/remmina_preferences.glade:2282
 msgid "Pick a light red colour"
 msgstr "Вибір світло-червоного кольору"
 
-#: data/ui/remmina_preferences.glade:2333
+#: data/ui/remmina_preferences.glade:2296
 msgid "Pick a bright green colour"
 msgstr "Вибір яскраво-зеленого кольору"
 
-#: data/ui/remmina_preferences.glade:2347
+#: data/ui/remmina_preferences.glade:2310
 msgid "Pick a bright yellow colour"
 msgstr "Вибір яскраво-жовтого кольору"
 
-#: data/ui/remmina_preferences.glade:2361
+#: data/ui/remmina_preferences.glade:2324
 msgid "Pick a bright blue colour"
 msgstr "Вибір яскраво-синього кольору"
 
-#: data/ui/remmina_preferences.glade:2375
+#: data/ui/remmina_preferences.glade:2338
 msgid "Pick a light magenta colour"
 msgstr "Вибір світло-пурпурового кольору"
 
-#: data/ui/remmina_preferences.glade:2389
+#: data/ui/remmina_preferences.glade:2352
 msgid "Pick a light cyan colour"
 msgstr "Вибір світло-блакитного кольору"
 
-#: data/ui/remmina_preferences.glade:2403
+#: data/ui/remmina_preferences.glade:2366
 msgid "Pick a light white colour"
 msgstr "Вибір світло-білого кольору"
 
-#: data/ui/remmina_preferences.glade:2417
+#: data/ui/remmina_preferences.glade:2380
 msgid "Pick a black colour"
 msgstr "Вибір чорного кольору"
 
-#: data/ui/remmina_preferences.glade:2431
+#: data/ui/remmina_preferences.glade:2394
 msgid "Pick a red colour"
 msgstr "Вибір червоного кольору"
 
-#: data/ui/remmina_preferences.glade:2445
+#: data/ui/remmina_preferences.glade:2408
 msgid "Pick a green colour"
 msgstr "Вибір зеленого кольору"
 
-#: data/ui/remmina_preferences.glade:2459
+#: data/ui/remmina_preferences.glade:2422
 msgid "Pick a yellow colour"
 msgstr "Вибір жовтого кольору"
 
-#: data/ui/remmina_preferences.glade:2473
+#: data/ui/remmina_preferences.glade:2436
 msgid "Pick a blue colour"
 msgstr "Вибір синього кольору"
 
-#: data/ui/remmina_preferences.glade:2487
+#: data/ui/remmina_preferences.glade:2450
 msgid "Pick a magenta colour"
 msgstr "Вибір пурпурового кольору"
 
-#: data/ui/remmina_preferences.glade:2501
+#: data/ui/remmina_preferences.glade:2464
 msgid "Pick a cyan colour"
 msgstr "Вибір блакитного кольору"
 
-#: data/ui/remmina_preferences.glade:2515
+#: data/ui/remmina_preferences.glade:2478
 msgid "Pick a white colour"
 msgstr "Вибір білого кольору"
 
-#: data/ui/remmina_preferences.glade:2528
+#: data/ui/remmina_preferences.glade:2491
 msgid "Normal colours"
 msgstr "Звичайні кольори"
 
-#: data/ui/remmina_preferences.glade:2541
-#: data/ui/remmina_preferences.glade:2556
+#: data/ui/remmina_preferences.glade:2504
+#: data/ui/remmina_preferences.glade:2519
 msgid "Cursor colour"
 msgstr "Колір курсора"
 
-#: data/ui/remmina_preferences.glade:2570
-#: data/ui/remmina_preferences.glade:2585
+#: data/ui/remmina_preferences.glade:2533
+#: data/ui/remmina_preferences.glade:2548
 msgid "Background colour"
 msgstr "Колір тла"
 
-#: data/ui/remmina_preferences.glade:2601
-#: data/ui/remmina_preferences.glade:2615
+#: data/ui/remmina_preferences.glade:2564
+#: data/ui/remmina_preferences.glade:2578
 msgid "Foreground colour"
 msgstr "Колір тексту"
 
-#: data/ui/remmina_preferences.glade:2628
+#: data/ui/remmina_preferences.glade:2591
 msgid "Increase and decrease font size"
 msgstr "Збільшити або зменшити розмір шрифту"
 
-#: data/ui/remmina_preferences.glade:2658
+#: data/ui/remmina_preferences.glade:2621
 msgid "Search text shortcut"
 msgstr "Скорочення для пошуку тексту"
 
-#: data/ui/remmina_preferences.glade:2689
-#: data/ui/remmina_preferences.glade:2704
+#: data/ui/remmina_preferences.glade:2652
+#: data/ui/remmina_preferences.glade:2667
 msgid "Bold colour"
 msgstr "Колір напівжирного"
 
-#: data/ui/remmina_preferences.glade:2718
-#: data/ui/remmina_preferences.glade:2759
+#: data/ui/remmina_preferences.glade:2681
+#: data/ui/remmina_preferences.glade:2722
 msgid "Highlight colour"
 msgstr "Колір підсвічування"
 
-#: data/ui/remmina_preferences.glade:2731
-#: data/ui/remmina_preferences.glade:2775
+#: data/ui/remmina_preferences.glade:2694
+#: data/ui/remmina_preferences.glade:2738
 msgid "Highlight foreground colour"
 msgstr "Колір підсвічування тексту"
 
-#: data/ui/remmina_preferences.glade:2744
-#: data/ui/remmina_preferences.glade:2791
+#: data/ui/remmina_preferences.glade:2707
+#: data/ui/remmina_preferences.glade:2754
 msgid "Cursor foreground colour"
 msgstr "Колір курсора переднього плану"
 
-#: data/ui/remmina_preferences.glade:2847
+#: data/ui/remmina_preferences.glade:2810
 msgid "Terminal"
 msgstr "Термінал"
 
-#: data/ui/remmina_preferences.glade:2861
+#: data/ui/remmina_preferences.glade:2824
 msgid "Remmina Preferences"
 msgstr "Налаштування Remmina"
 
@@ -4931,6 +4940,40 @@ msgstr "Розблокувати Remmina"
 #: data/ui/remmina_unlock.glade:120
 msgid "Master password"
 msgstr "Майстер-пароль"
+
+#~ msgid "Use a Primary Password"
+#~ msgstr "Використовувати основний пароль"
+
+#~ msgid "Primary Password validity in seconds"
+#~ msgstr "Строк дії основного пароля у секундах"
+
+#~ msgid ""
+#~ "New, edit, copy, delete actions are password protected with the Primary "
+#~ "Password"
+#~ msgstr ""
+#~ "Дії зі створення, редагування, копіювання та вилучення даних захищено за "
+#~ "допомогою основного пароля"
+
+#~ msgid "Connecting is password protected with the Primary Password"
+#~ msgstr "Дію зі встановлення з'єднання захищено основним паролем"
+
+#~ msgid "Primary Password settings"
+#~ msgstr "Параметри основного пароля"
+
+#~ msgid "Weak (password may be guessed)"
+#~ msgstr "Слабкий (пароль може бути вгадано)"
+
+#~ msgid "Connection profiles passwords encryption"
+#~ msgstr "Шифрування паролів до профілів з'єднань"
+
+#~ msgid "Enable auditing logs"
+#~ msgstr "Увімкнути журнал ревізування"
+
+#~ msgid "Trust all fingerprints and certificates"
+#~ msgstr "Довіряти усім відбиткам і сертифікатам"
+
+#~ msgid "Certificate settings"
+#~ msgstr "Параметри сертифікатів"
 
 #, fuzzy
 #~| msgid "Override pre-set VNC encodings"

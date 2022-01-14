@@ -11,13 +11,13 @@
 # Szylu <chipolade@gmail.com>, 2020, 2021.
 # WaldiS <sto@tutanota.de>, 2020, 2021.
 # Antenore Gatta <antenore@simbiosi.org>, 2021.
-# Matthaiks <kitynska@gmail.com>, 2021.
+# Matthaiks <kitynska@gmail.com>, 2021, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-01-14 00:07+0000\n"
-"PO-Revision-Date: 2021-12-20 07:50+0000\n"
+"POT-Creation-Date: 2022-01-14 09:44+0000\n"
+"PO-Revision-Date: 2022-01-14 09:10+0000\n"
 "Last-Translator: Matthaiks <kitynska@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/remmina/remmina/"
 "pl/>\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.10\n"
+"X-Generator: Weblate 4.10.1\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:354
@@ -36,7 +36,7 @@ msgstr ""
 #: src/remmina_ssh_plugin.c:1389 plugins/rdp/rdp_plugin.c:2763
 #: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:3227
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_passwd.glade:84
-#: data/ui/remmina_preferences.glade:1692 data/ui/remmina_unlock.glade:109
+#: data/ui/remmina_unlock.glade:109
 msgid "Password"
 msgstr "Hasło"
 
@@ -251,8 +251,6 @@ msgstr "Skonfiguruj naciśnięcia klawisza"
 
 #. TRANSLATORS: Do not translate libsodium, is the name of a library
 #: src/remmina_pref_dialog.c:488
-#, fuzzy
-#| msgid "libsodium >= 1.9.0 is required to use master password"
 msgid "libsodium >= 1.9.0 is required to use Primary Password"
 msgstr "Wymagane libsodium >= 1.9.0 do użycia hasła głównego"
 
@@ -278,7 +276,7 @@ msgstr "Anuluj"
 #: src/remmina_message_panel.c:199 data/ui/remmina_snap_info_dialog.glade:28
 #: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
 #: data/ui/remmina_string_list.glade:63 data/ui/remmina_news.glade:33
-#: data/ui/remmina_preferences.glade:2865
+#: data/ui/remmina_preferences.glade:2828
 msgid "Close"
 msgstr "Zamknij"
 
@@ -1482,14 +1480,12 @@ msgid "Auto-start this profile"
 msgstr "Włącz „Autostart”dla tego profilu"
 
 #: src/remmina_file_editor.c:1099
-#, fuzzy
-#| msgid "New connection profile"
 msgid "Connection profile security"
-msgstr "Nowy profil połączeń"
+msgstr "Bezpieczeństwo profilu połączenia"
 
 #: src/remmina_file_editor.c:1102
 msgid "Require password to connect or edit the profile"
-msgstr ""
+msgstr "Wymagaj hasła do połączenia lub edycji profilu"
 
 #: src/remmina_file_editor.c:1132
 msgid "SSH Tunnel"
@@ -1697,10 +1693,9 @@ msgstr ""
 "Extension Appindicator"
 
 #: src/remmina_ssh_plugin.c:342
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s:%d via SSH"
-msgstr "Nawiązywanie połączenia z „%s\" przez SSH…"
+msgstr "Połączono z %s:%d przez SSH"
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_ssh_plugin.c:550
@@ -1741,10 +1736,9 @@ msgid "Find text (host+G)"
 msgstr "Wklej (host+V)"
 
 #: src/remmina_ssh_plugin.c:921
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Disconnected from %s:%d via SSH"
-msgstr "Nawiązywanie połączenia z „%s\" przez SSH…"
+msgstr "Rozłączono z %s:%d przez SSH"
 
 #: src/remmina_ssh_plugin.c:1468 data/ui/remmina_main.glade:177
 msgid "Copy"
@@ -2035,7 +2029,7 @@ msgstr "Wprowadź dane uwierzytelniające dla bramki RDP"
 #: plugins/rdp/rdp_plugin.c:1027
 #, c-format
 msgid "Disconnected from %s via RDP"
-msgstr ""
+msgstr "Rozłączono z %s przez RDP"
 
 #: plugins/rdp/rdp_plugin.c:2156
 #, c-format
@@ -2717,17 +2711,16 @@ msgstr "RDP - Preferencje"
 msgid "Export connection in Windows .rdp file format"
 msgstr "Eksportuj połączenie w formacie pliku .rdp systemu Windows"
 
-#: plugins/rdp/rdp_event.c:344
+#: plugins/rdp/rdp_event.c:348
 #, c-format
 msgid "Reconnection attempt %d of %d…"
 msgstr "Próba ponownego połączenia %d z %d…"
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
-#: plugins/rdp/rdp_event.c:1117
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#: plugins/rdp/rdp_event.c:1121
+#, c-format
 msgid "Connected to %s via RDP"
-msgstr "Nawiązywanie połączenia z „%s\" przez SSH…"
+msgstr "Połączono z %s przez RDP"
 
 #: plugins/spice/spice_plugin_file_transfer.c:82
 msgid "File Transfers"
@@ -2761,16 +2754,14 @@ msgid "Disconnected from the SPICE server “%s”."
 msgstr "Rozłączono z serwerem SPICE „%s”."
 
 #: plugins/spice/spice_plugin.c:388
-#, fuzzy, c-format
-#| msgid "Disconnected from the SPICE server “%s”."
+#, c-format
 msgid "Disconnected from %s:%d via SPICE"
-msgstr "Rozłączono z serwerem SPICE „%s”."
+msgstr "Rozłączono z %s:%d przez SPICE"
 
 #: plugins/spice/spice_plugin.c:391
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s:%d via SPICE"
-msgstr "Nawiązywanie połączenia z „%s\" przez SSH…"
+msgstr "Połączono z %s:%d przez SPICE"
 
 #: plugins/spice/spice_plugin.c:403
 msgid "TLS connection error."
@@ -2889,15 +2880,14 @@ msgid "Please retry after turning on encryption for this profile."
 msgstr "Spróbuj ponownie po włączeniu szyfrowania dla tego profilu."
 
 #: plugins/vnc/vnc_plugin.c:1706
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s:%d via VNC"
-msgstr "Nawiązywanie połączenia z „%s\" przez SSH…"
+msgstr "Połączono z %s:%d przez VNC"
 
 #: plugins/vnc/vnc_plugin.c:1725
 #, c-format
 msgid "Disconnected from %s:%d via VNC"
-msgstr ""
+msgstr "Rozłączono z %s:%d przez VNC"
 
 #: plugins/vnc/vnc_plugin.c:1974
 msgid ""
@@ -2934,17 +2924,6 @@ msgstr ""
 "    x11vnc -wyświetlanie :0 -podłączanie 192.168.1.36:8888"
 
 #: plugins/vnc/vnc_plugin.c:1991
-#, fuzzy
-#| msgid ""
-#| "Override pre-set VNC encodings:\n"
-#| "\n"
-#| "  • On “Poor quality” encodings is set to “copyrect zlib hextile raw”\n"
-#| "  • On “Medium quality” encodings is set to “tight zrle ultra copyrect "
-#| "hextile zlib corre rre raw”\n"
-#| "  • On “Good quality” encodings is set to “tight zrle ultra copyrect "
-#| "hextile zlib corre rre raw”\n"
-#| "  • On “Best quality” encodings is set to “copyrect zrle ultra zlib "
-#| "hextile corre rre raw”"
 msgid ""
 "Overriding the pre-set VNC encoding quality:\n"
 "\n"
@@ -2956,15 +2935,14 @@ msgid ""
 "  • “Best (slowest)” sets encoding to “copyrect zrle ultra zlib hextile "
 "corre rre raw”"
 msgstr ""
-"Zastąp wstępnie ustawione kodowania VNC:\n"
+"Zastąpienie wstępnie ustawionej jakości kodowania VNC:\n"
 "\n"
-"  • W przypadku kodowania „Słaba jakość” ustawiono „copyrect zlib hextile "
-"raw”\n"
-"  • W przypadku kodowania „Średnia jakość” ustawiono „tight zrle ultra "
-"copyrect hextile zlib corre rre raw”\n"
-"  • W przypadku kodowania „Dobra jakość” ustawiono „tight zrle ultra "
-"copyrect hextile zlib corre rre raw”\n"
-"  • W przypadku kodowania „Najlepsza jakość” ustawiono „copyrect zrle ultra "
+"  • „Słaba (najszybsza)” ustawia kodowanie na „copyrect zlib hextile raw”\n"
+"  • „Średnia” ustawia kodowanie na „tight zrle ultra copyrect hextile zlib "
+"corre rre raw”\n"
+"  • „Dobra” ustawia kodowanie na „tight zrle ultra copyrect hextile zlib "
+"corre rre raw”\n"
+"  • „Najlepsza (najwolniejsza)” ustawia kodowanie na „copyrect zrle ultra "
 "zlib hextile corre rre raw”"
 
 #: plugins/vnc/vnc_plugin.c:2018
@@ -3365,7 +3343,7 @@ msgstr "Zakończenie sesji: '%s'"
 #: plugins/x2go/x2go_plugin.c:1529
 #, c-format
 msgid "Disconnected from %s:%d via X2Go"
-msgstr ""
+msgstr "Rozłączono z %s:%d przez X2Go"
 
 #: plugins/x2go/x2go_plugin.c:1601
 msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
@@ -3519,10 +3497,9 @@ msgid "Available feature[%i]: '%s'"
 msgstr "Dostępna funkcja[%i]: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:2583
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s:%d via X2Go"
-msgstr "Nawiązywanie połączenia z „%s\" przez SSH…"
+msgstr "Połączono z %s:%d przez X2Go"
 
 #: plugins/x2go/x2go_plugin.c:2677
 msgid "Could not open X11 DISPLAY."
@@ -4017,22 +3994,16 @@ msgid "Domain\\Username"
 msgstr "Domena\\Nazwa użytkownika"
 
 #: data/ui/remmina_passwd.glade:33
-#, fuzzy
-#| msgid "_OK"
 msgid "OK"
-msgstr "_OK"
+msgstr "OK"
 
 #: data/ui/remmina_passwd.glade:60
-#, fuzzy
-#| msgid "Set new password"
 msgid "Set Primary Password"
-msgstr "Ustaw nowe hasło"
+msgstr "Ustaw hasło główne"
 
 #: data/ui/remmina_passwd.glade:101
-#, fuzzy
-#| msgid "User password"
 msgid "Verify password"
-msgstr "Hasło użytkownika"
+msgstr "Zweryfikuj hasło"
 
 #: data/ui/remmina_news.glade:75
 msgid ""
@@ -4138,7 +4109,7 @@ msgstr "Ukryj lub pokaż pasek wyszukiwania"
 
 #: data/ui/remmina_main.glade:41
 msgid "Add a new connection profile"
-msgstr "Dodaj nowy profil połączeń"
+msgstr "Dodaj nowy profil połączenia"
 
 #: data/ui/remmina_main.glade:47
 msgid "Switch from grouped to list view"
@@ -4220,7 +4191,7 @@ msgstr "Ostatnio użyte"
 
 #: data/ui/remmina_main.glade:555
 msgid "New connection profile"
-msgstr "Nowy profil połączeń"
+msgstr "Nowy profil połączenia"
 
 #: data/ui/remmina_main.glade:567
 msgid "Show search bar"
@@ -4355,10 +4326,18 @@ msgstr ""
 msgid "Template for profile filenames"
 msgstr "Szablon dla nazw plików profilu"
 
-#. Place holders used to name a Remmina connection profile
+#. Placeholders used to name a Remmina connection profile
 #: data/ui/remmina_preferences.glade:361
+#, fuzzy
+#| msgid ""
+#| "%G Group name (slash will be converted to - automatically)\n"
+#| "%P Protocol name\n"
+#| "%N Connection name\n"
+#| "%h Hostname/IP\n"
+#| "\n"
+#| "\n"
 msgid ""
-"%G Group name (slash will be converted to - automatically)\n"
+"%G Name of group (slashes \\/ are converted to dashes -)\n"
 "%P Protocol name\n"
 "%N Connection name\n"
 "%h Hostname/IP\n"
@@ -4608,15 +4587,17 @@ msgstr "Opcje SSH"
 #: data/ui/remmina_preferences.glade:1630
 msgid "Set and use a secret key to protect Remmina from unothorized use."
 msgstr ""
+"Ustaw i używaj tajnego klucza, aby chronić program Remmina przed "
+"nieautoryzowanym użyciem."
 
 #: data/ui/remmina_preferences.glade:1634
 #, fuzzy
-#| msgid "Use master password"
-msgid "Use a Primary Password"
-msgstr "Użyj głównego hasła"
+#| msgid "User password"
+msgid "Use Remmina password"
+msgstr "Hasło użytkownika"
 
 #: data/ui/remmina_preferences.glade:1645
-#: data/ui/remmina_preferences.glade:2006
+#: data/ui/remmina_preferences.glade:1969
 msgid "Use secret key authentication for some widgets"
 msgstr "Użyj uwierzytelnienia tajnym kluczem dla niektórych widgetów"
 
@@ -4625,150 +4606,176 @@ msgid "Automatic lock interval"
 msgstr "Okres automatycznej blokady"
 
 #: data/ui/remmina_preferences.glade:1673
+msgid "Number of seconds to keep password valid for"
+msgstr ""
+
+#: data/ui/remmina_preferences.glade:1692
 #, fuzzy
-#| msgid "Master password validity in seconds"
-msgid "Primary Password validity in seconds"
-msgstr "Ważność hasła głównego w sekundach"
+#| msgid "Enter VNC password"
+msgid "Enter new password"
+msgstr "Wprowadź hasło do VNC"
 
 #: data/ui/remmina_preferences.glade:1722
-msgid "Repeat the password"
+#, fuzzy
+#| msgid "Repeat the password"
+msgid "Re-enter password"
 msgstr "Powtórz hasło"
 
 #: data/ui/remmina_preferences.glade:1755
-msgid ""
-"New, edit, copy, delete actions are password protected with the Primary "
-"Password"
+msgid "Creation, editing, copying, and deletions require the Remmina password"
 msgstr ""
 
-#. New, edit, copy, delete actions are password protected
-#: data/ui/remmina_preferences.glade:1759
-msgid "Requires password to modify"
-msgstr ""
-
-#: data/ui/remmina_preferences.glade:1797
-msgid "Connecting is password protected with the Primary Password"
-msgstr ""
-
-#: data/ui/remmina_preferences.glade:1800
+#. Creation, editing, copying, and deletions require the primary password
+#: data/ui/remmina_preferences.glade:1758
 #, fuzzy
-#| msgid "Secured password storage in KWallet"
-msgid "Requires password to connect"
-msgstr "Bezpieczne przechowywanie haseł w KWallet"
+#| msgid "Requires password to modify"
+msgid "Require to modify"
+msgstr "Wymaga hasła do modyfikacji"
 
-#: data/ui/remmina_preferences.glade:1817
-msgid "Primary Password settings"
-msgstr ""
+#: data/ui/remmina_preferences.glade:1796
+#, fuzzy
+#| msgid "Requires password to connect"
+msgid "Enter your Remmina password to connect"
+msgstr "Wymaga hasła do połączenia"
 
-#: data/ui/remmina_preferences.glade:1851
+#: data/ui/remmina_preferences.glade:1799
+#, fuzzy
+#| msgid "Requires password to connect"
+msgid "Require to connect"
+msgstr "Wymaga hasła do połączenia"
+
+#: data/ui/remmina_preferences.glade:1813
 msgid "Encryption method"
-msgstr ""
+msgstr "Metoda szyfrowania"
 
-#: data/ui/remmina_preferences.glade:1862
+#: data/ui/remmina_preferences.glade:1824
+#, fuzzy
+#| msgid ""
+#| "These are the encryption methods used by Remmina to store passwords and "
+#| "passphrases.\n"
+#| "\n"
+#| "Except the \"Weak\" method, all the others are reccomended, Keystore is "
+#| "the default, as it integrates with GNOME or KDE/Plasma.\n"
+#| "\n"
+#| "Intermediate is the best compromise in terms of RAM/CPU required vs "
+#| "security, but if you need an extremely secure method you should go with "
+#| "Sensitive, but it'll use 1Gib of RAM and many CPU cycles to hash your "
+#| "passwords. "
 msgid ""
-"These are the encryption methods used by Remmina to store passwords and "
-"passphrases.\n"
+"These are the encryption methods used by Remmina to store passwords.\n"
 "\n"
 "Except the \"Weak\" method, all the others are reccomended, Keystore is the "
-"default, as it integrates with GNOME or KDE/Plasma.\n"
+"default, as it integrates with KDE/Plasma and GNOME.\n"
 "\n"
-"Intermediate is the best compromise in terms of RAM/CPU required vs "
-"security, but if you need an extremely secure method you should go with "
-"Sensitive, but it'll use 1Gib of RAM and many CPU cycles to hash your "
-"passwords. "
+"\"Intermediate\" doesn't use as much memory or processsing power, and "
+"\"Sensitive\" is more secure but uses 1 Gib of RAM and many CPU cycles. "
 msgstr ""
+"Są to metody szyfrowania używane przez program Remmina do przechowywania "
+"haseł i tekstów szyfrujących.\n"
+"\n"
+"Z wyjątkiem metody „Słaba”, wszystkie pozostałe są zalecane, „Magazyn "
+"kluczy” jest metodą domyślną, ponieważ integruje się z GNOME lub KDE/"
+"Plasma.\n"
+"\n"
+"„Pośrednia” to najlepszy kompromis pod względem wymagań RAM/CPU w stosunku "
+"do bezpieczeństwa, ale jeśli potrzebujesz wyjątkowo bezpiecznej metody, "
+"wybierz „Wrażliwą”, jednak ona będzie zużywać 1 GiB RAM i wiele cykli "
+"procesora do tworzenia skrótów haseł. "
 
-#: data/ui/remmina_preferences.glade:1872
-msgid "Keystore (kwallet, GNOME keyring)"
-msgstr ""
+#: data/ui/remmina_preferences.glade:1834
+#, fuzzy
+#| msgid "Keystore (kwallet, GNOME keyring)"
+msgid "Keystore (KWallet, GNOME Keyring)"
+msgstr "Magazyn kluczy (kwallet, GNOME keyring)"
 
-#: data/ui/remmina_preferences.glade:1873
+#: data/ui/remmina_preferences.glade:1835
 msgid "Intermediate (+64 Mib RAM)"
-msgstr ""
+msgstr "Pośrednia (+64 MiB RAM)"
 
-#: data/ui/remmina_preferences.glade:1874
+#: data/ui/remmina_preferences.glade:1836
 msgid "Strong (+256 Mib, <1s i7 CPU)"
+msgstr "Silna (+256 MiB, <1 s i7 CPU)"
+
+#: data/ui/remmina_preferences.glade:1837
+#, fuzzy
+#| msgid "Sensitive (+1024 Mib, <4s i7 CPU)"
+msgid "Sensitive (+1 Gib, <4s i7 CPU)"
+msgstr "Wrażliwa (+1024 MiB, <4 s i7 CPU)"
+
+#: data/ui/remmina_preferences.glade:1838
+msgid "Weak (guessable)"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1875
-msgid "Sensitive (+1024 Mib, <4s i7 CPU)"
+#: data/ui/remmina_preferences.glade:1839
+#, fuzzy
+#| msgid "None (clear text)"
+msgid "None (cleartext)"
+msgstr "Żadna (tekst czytelny)"
+
+#: data/ui/remmina_preferences.glade:1857
+msgid "Logins and Passwords"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1876
+#: data/ui/remmina_preferences.glade:1891
 #, fuzzy
-#| msgid "Forget passwords after use"
-msgid "Weak (password may be guessed)"
-msgstr "Nie przechowuj hasła"
+#| msgid "Debugging"
+msgid "Logging"
+msgstr "Debugowanie"
 
-#: data/ui/remmina_preferences.glade:1877
-msgid "None (clear text)"
-msgstr ""
-
-#: data/ui/remmina_preferences.glade:1894
+#: data/ui/remmina_preferences.glade:1922
 #, fuzzy
-#| msgid "Modify connection profile (requires --set-option)"
-msgid "Connection profiles passwords encryption"
-msgstr "Modyfikuj profil połączenia (wymaga --set-option)"
+#| msgid "Auditing settings"
+msgid "Auditing"
+msgstr "Ustawienia inspekcji"
 
-#: data/ui/remmina_preferences.glade:1928
-#, fuzzy
-#| msgid "Enable audio channel"
-msgid "Enable auditing logs"
-msgstr "Włącz kanał audio"
-
-#: data/ui/remmina_preferences.glade:1959
-#, fuzzy
-#| msgid "Edit settings"
-msgid "Auditing settings"
-msgstr "Edytuj ustawienia"
-
-#: data/ui/remmina_preferences.glade:1989
+#: data/ui/remmina_preferences.glade:1952
 msgid "Automatically accept all fingerprints and certificates"
 msgstr "Automatycznie akceptuj wszystkie odciski kluczy i certyfikaty"
 
-#: data/ui/remmina_preferences.glade:1995
-msgid "Trust all fingerprints and certificates"
-msgstr "Ufaj wszystkim odciskom kluczy i certyfikatom"
+#: data/ui/remmina_preferences.glade:1958
+msgid "Trust all"
+msgstr ""
 
-#: data/ui/remmina_preferences.glade:2029
+#: data/ui/remmina_preferences.glade:1992
 #, fuzzy
 #| msgid "Certificate details:"
-msgid "Certificate settings"
+msgid "Certificates and fingerprints"
 msgstr "Szczegóły certyfikatu:"
 
-#: data/ui/remmina_preferences.glade:2053
+#: data/ui/remmina_preferences.glade:2016
 msgid "Security"
 msgstr "Bezpieczeństwo"
 
-#: data/ui/remmina_preferences.glade:2084
+#: data/ui/remmina_preferences.glade:2047
 msgid "Terminal font"
 msgstr "Czcionka terminala"
 
-#: data/ui/remmina_preferences.glade:2097
+#: data/ui/remmina_preferences.glade:2060
 msgid "Scrollback lines"
 msgstr "Linie przewijania"
 
-#: data/ui/remmina_preferences.glade:2145
+#: data/ui/remmina_preferences.glade:2108
 msgid "Shortcuts for copying and pasting"
 msgstr "Skróty klawiszowe do kopiowania i wklejania"
 
-#: data/ui/remmina_preferences.glade:2158
+#: data/ui/remmina_preferences.glade:2121
 msgid "Select all shortcuts"
 msgstr "Skrót klawiszowy zaznaczania wszystkiego"
 
-#: data/ui/remmina_preferences.glade:2171
-#: data/ui/remmina_preferences.glade:2188
-#: data/ui/remmina_preferences.glade:2641
-#: data/ui/remmina_preferences.glade:2671
-#: data/ui/remmina_preferences.glade:2805
-#: data/ui/remmina_preferences.glade:2822
+#: data/ui/remmina_preferences.glade:2134
+#: data/ui/remmina_preferences.glade:2151
+#: data/ui/remmina_preferences.glade:2604
+#: data/ui/remmina_preferences.glade:2634
+#: data/ui/remmina_preferences.glade:2768
+#: data/ui/remmina_preferences.glade:2785
 msgid "(Host key+)"
 msgstr "(HostKey+)"
 
-#: data/ui/remmina_preferences.glade:2206
+#: data/ui/remmina_preferences.glade:2169
 msgid "Use default system font"
 msgstr "Użyj domyślnej systemowej czcionki"
 
-#: data/ui/remmina_preferences.glade:2231
+#: data/ui/remmina_preferences.glade:2194
 msgid ""
 "Selecting “SGR 1” also switches to the bright counterparts of the first 8 "
 "palette colours (in addition to making text bold)."
@@ -4776,15 +4783,15 @@ msgstr ""
 "Wybranie „SGR 1” powoduje również przełączenie na jasne odpowiedniki "
 "pierwszych 8 kolorów palety (oprócz pogrubienia tekstu)."
 
-#: data/ui/remmina_preferences.glade:2247
+#: data/ui/remmina_preferences.glade:2210
 msgid "Allow using bright colours with bold text"
 msgstr "Pozwól na używanie jasnych kolorów z pogrubionym tekstem"
 
-#: data/ui/remmina_preferences.glade:2261
+#: data/ui/remmina_preferences.glade:2224
 msgid "Colour theme"
 msgstr "Motyw kolorystyczny"
 
-#: data/ui/remmina_preferences.glade:2272
+#: data/ui/remmina_preferences.glade:2235
 msgid ""
 "Choose a colour scheme file. Usually available in /usr/share/remmina/theme. "
 "https://github.com/mbadolato/iTerm2-Color-Schemes has more details."
@@ -4793,130 +4800,130 @@ msgstr ""
 "theme. Na https://github.com/mbadolato/iTerm2-Color-Schemes znajdziesz "
 "więcej szczegółów."
 
-#: data/ui/remmina_preferences.glade:2276
+#: data/ui/remmina_preferences.glade:2239
 msgid "Pick a terminal colouring file"
 msgstr "Wybierz plik z kolorami do terminala"
 
-#: data/ui/remmina_preferences.glade:2291
+#: data/ui/remmina_preferences.glade:2254
 msgid "Bright colours"
 msgstr "Jasne kolory"
 
-#: data/ui/remmina_preferences.glade:2305
+#: data/ui/remmina_preferences.glade:2268
 msgid "Pick a light black colour"
 msgstr "Wybierz jasny czarny kolor"
 
-#: data/ui/remmina_preferences.glade:2319
+#: data/ui/remmina_preferences.glade:2282
 msgid "Pick a light red colour"
 msgstr "Wybierz jasny czerwony kolor"
 
-#: data/ui/remmina_preferences.glade:2333
+#: data/ui/remmina_preferences.glade:2296
 msgid "Pick a bright green colour"
 msgstr "Wybierz jasny zielony kolor"
 
-#: data/ui/remmina_preferences.glade:2347
+#: data/ui/remmina_preferences.glade:2310
 msgid "Pick a bright yellow colour"
 msgstr "Wybierz jasny żółty kolor"
 
-#: data/ui/remmina_preferences.glade:2361
+#: data/ui/remmina_preferences.glade:2324
 msgid "Pick a bright blue colour"
 msgstr "Wybierz jasny niebieski kolor"
 
-#: data/ui/remmina_preferences.glade:2375
+#: data/ui/remmina_preferences.glade:2338
 msgid "Pick a light magenta colour"
 msgstr "Wybierz jasny kolor magenta"
 
-#: data/ui/remmina_preferences.glade:2389
+#: data/ui/remmina_preferences.glade:2352
 msgid "Pick a light cyan colour"
 msgstr "Wybierz jasny kolor cyan"
 
-#: data/ui/remmina_preferences.glade:2403
+#: data/ui/remmina_preferences.glade:2366
 msgid "Pick a light white colour"
 msgstr "Wybierz jasny biały kolor"
 
-#: data/ui/remmina_preferences.glade:2417
+#: data/ui/remmina_preferences.glade:2380
 msgid "Pick a black colour"
 msgstr "Wybierz czarny kolor"
 
-#: data/ui/remmina_preferences.glade:2431
+#: data/ui/remmina_preferences.glade:2394
 msgid "Pick a red colour"
 msgstr "Wybierz czerwony kolor"
 
-#: data/ui/remmina_preferences.glade:2445
+#: data/ui/remmina_preferences.glade:2408
 msgid "Pick a green colour"
 msgstr "Wybierz zielony kolor"
 
-#: data/ui/remmina_preferences.glade:2459
+#: data/ui/remmina_preferences.glade:2422
 msgid "Pick a yellow colour"
 msgstr "Wybierz żółty kolor"
 
-#: data/ui/remmina_preferences.glade:2473
+#: data/ui/remmina_preferences.glade:2436
 msgid "Pick a blue colour"
 msgstr "Wybierz niebieski kolor"
 
-#: data/ui/remmina_preferences.glade:2487
+#: data/ui/remmina_preferences.glade:2450
 msgid "Pick a magenta colour"
 msgstr "Wybierz kolor magenta"
 
-#: data/ui/remmina_preferences.glade:2501
+#: data/ui/remmina_preferences.glade:2464
 msgid "Pick a cyan colour"
 msgstr "Wybierz kolor cyan"
 
-#: data/ui/remmina_preferences.glade:2515
+#: data/ui/remmina_preferences.glade:2478
 msgid "Pick a white colour"
 msgstr "Wybierz biały kolor"
 
-#: data/ui/remmina_preferences.glade:2528
+#: data/ui/remmina_preferences.glade:2491
 msgid "Normal colours"
 msgstr "Podstawowe kolory"
 
-#: data/ui/remmina_preferences.glade:2541
-#: data/ui/remmina_preferences.glade:2556
+#: data/ui/remmina_preferences.glade:2504
+#: data/ui/remmina_preferences.glade:2519
 msgid "Cursor colour"
 msgstr "Kolor kursora"
 
-#: data/ui/remmina_preferences.glade:2570
-#: data/ui/remmina_preferences.glade:2585
+#: data/ui/remmina_preferences.glade:2533
+#: data/ui/remmina_preferences.glade:2548
 msgid "Background colour"
 msgstr "Kolor tła"
 
-#: data/ui/remmina_preferences.glade:2601
-#: data/ui/remmina_preferences.glade:2615
+#: data/ui/remmina_preferences.glade:2564
+#: data/ui/remmina_preferences.glade:2578
 msgid "Foreground colour"
 msgstr "Kolor pierwszoplanowy"
 
-#: data/ui/remmina_preferences.glade:2628
+#: data/ui/remmina_preferences.glade:2591
 msgid "Increase and decrease font size"
 msgstr "Zwiększ i zmniejsz rozmiar czcionki"
 
-#: data/ui/remmina_preferences.glade:2658
+#: data/ui/remmina_preferences.glade:2621
 msgid "Search text shortcut"
 msgstr "Skrót klawiszowy wyszukiwania tekstu"
 
-#: data/ui/remmina_preferences.glade:2689
-#: data/ui/remmina_preferences.glade:2704
+#: data/ui/remmina_preferences.glade:2652
+#: data/ui/remmina_preferences.glade:2667
 msgid "Bold colour"
 msgstr "Podstawowe kolory"
 
-#: data/ui/remmina_preferences.glade:2718
-#: data/ui/remmina_preferences.glade:2759
+#: data/ui/remmina_preferences.glade:2681
+#: data/ui/remmina_preferences.glade:2722
 msgid "Highlight colour"
 msgstr "Kolor podświetlenia"
 
-#: data/ui/remmina_preferences.glade:2731
-#: data/ui/remmina_preferences.glade:2775
+#: data/ui/remmina_preferences.glade:2694
+#: data/ui/remmina_preferences.glade:2738
 msgid "Highlight foreground colour"
 msgstr "Kolor podświetlenia pierwszego planu"
 
-#: data/ui/remmina_preferences.glade:2744
-#: data/ui/remmina_preferences.glade:2791
+#: data/ui/remmina_preferences.glade:2707
+#: data/ui/remmina_preferences.glade:2754
 msgid "Cursor foreground colour"
 msgstr "Kolor kursora pierwszego planu"
 
-#: data/ui/remmina_preferences.glade:2847
+#: data/ui/remmina_preferences.glade:2810
 msgid "Terminal"
 msgstr "Terminal"
 
-#: data/ui/remmina_preferences.glade:2861
+#: data/ui/remmina_preferences.glade:2824
 msgid "Remmina Preferences"
 msgstr "Preferencje Remminy"
 
@@ -4931,6 +4938,38 @@ msgstr "Odblokuj Remminę"
 #: data/ui/remmina_unlock.glade:120
 msgid "Master password"
 msgstr "Główne hasło"
+
+#~ msgid "Use a Primary Password"
+#~ msgstr "Użyj hasła głównego"
+
+#~ msgid "Primary Password validity in seconds"
+#~ msgstr "Ważność hasła głównego w sekundach"
+
+#~ msgid ""
+#~ "New, edit, copy, delete actions are password protected with the Primary "
+#~ "Password"
+#~ msgstr "Operacje podstawowe są chronione hasłem głównym"
+
+#~ msgid "Connecting is password protected with the Primary Password"
+#~ msgstr "Połączenie jest chronione hasłem głównym"
+
+#~ msgid "Primary Password settings"
+#~ msgstr "Ustawienia hasła głównego"
+
+#~ msgid "Weak (password may be guessed)"
+#~ msgstr "Słaba (hasło może zostać odgadnięte)"
+
+#~ msgid "Connection profiles passwords encryption"
+#~ msgstr "Szyfrowanie haseł profili połączeń"
+
+#~ msgid "Enable auditing logs"
+#~ msgstr "Włącz dzienniki inspekcji"
+
+#~ msgid "Trust all fingerprints and certificates"
+#~ msgstr "Ufaj wszystkim odciskom kluczy i certyfikatom"
+
+#~ msgid "Certificate settings"
+#~ msgstr "Ustawienia certyfikatu"
 
 #, fuzzy
 #~| msgid "Override pre-set VNC encodings"
