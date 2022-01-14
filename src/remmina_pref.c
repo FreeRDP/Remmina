@@ -313,7 +313,7 @@ void remmina_pref_init(void)
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "enc_mode", NULL))
 		remmina_pref.enc_mode = g_key_file_get_integer(gkeyfile, "remmina_pref", "enc_mode", NULL);
 	else
-		remmina_pref.enc_mode = 0;
+		remmina_pref.enc_mode = 1;
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "audit", NULL))
 		remmina_pref.audit = g_key_file_get_boolean(gkeyfile, "remmina_pref", "audit", NULL);

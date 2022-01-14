@@ -180,6 +180,8 @@ gint remmina_unlock_new(GtkWindow *parent)
 		/* Connect signals */
 		gtk_builder_connect_signals(remmina_unlock_dialog->builder, NULL);
 
+		 g_object_set_data_full (G_OBJECT(remmina_unlock_dialog->dialog), "builder", remmina_unlock_dialog->builder, g_object_unref);
+
 		gchar *unlock_password = NULL;
 		unlock_password = g_strdup(remmina_pref_get_value("unlock_password"));
 		//REMMINA_DEBUG ("Password from preferences is: %s", unlock_password);

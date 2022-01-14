@@ -58,8 +58,6 @@ typedef struct _RemminaPrefDialog {
 	GtkSwitch *		switch_options_remember_last_view_mode;
 	GtkSwitch *		switch_security_use_primary_password;
 	GtkEntry *		unlock_timeout;
-	GtkEntry *		unlock_password;
-	GtkEntry *		unlock_repassword;
 	GtkSwitch *		switch_security_lock_connect;
 	GtkSwitch *		switch_security_lock_edit;
 	GtkSwitch *		switch_security_audit;
