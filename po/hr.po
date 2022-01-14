@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2022-01-14 09:44+0000\n"
-"PO-Revision-Date: 2022-01-14 15:53+0000\n"
+"PO-Revision-Date: 2022-01-14 18:54+0000\n"
 "Last-Translator: gogogogi <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/remmina/remmina/"
 "hr/>\n"
@@ -1467,14 +1467,12 @@ msgid "Auto-start this profile"
 msgstr "Automatski pokreni ovaj profil"
 
 #: src/remmina_file_editor.c:1099
-#, fuzzy
-#| msgid "New connection profile"
 msgid "Connection profile security"
-msgstr "Novi profil povezivanja"
+msgstr "Sigurnost profila povezivanja"
 
 #: src/remmina_file_editor.c:1102
 msgid "Require password to connect or edit the profile"
-msgstr ""
+msgstr "Potrebna je lozinka za povezivanje ili uređivanje profila"
 
 #: src/remmina_file_editor.c:1132
 msgid "SSH Tunnel"
@@ -1723,10 +1721,9 @@ msgid "Find text (host+G)"
 msgstr "Pretraži tekst (host+G)"
 
 #: src/remmina_ssh_plugin.c:921
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Disconnected from %s:%d via SSH"
-msgstr "Prekinuto povezivanje s %s putem SSH"
+msgstr "Prekinuto povezivanje s %s:%d putem SSH"
 
 #: src/remmina_ssh_plugin.c:1468 data/ui/remmina_main.glade:177
 msgid "Copy"
@@ -3978,10 +3975,8 @@ msgid "Set Primary Password"
 msgstr "Postavi glavnu lozinku"
 
 #: data/ui/remmina_passwd.glade:101
-#, fuzzy
-#| msgid "User password"
 msgid "Verify password"
-msgstr "Korisnička lozinka"
+msgstr "Potvrdi lozinku"
 
 #: data/ui/remmina_news.glade:75
 msgid ""
@@ -4304,14 +4299,6 @@ msgstr "Predložak naziva datoteka profila"
 
 #. Placeholders used to name a Remmina connection profile
 #: data/ui/remmina_preferences.glade:361
-#, fuzzy
-#| msgid ""
-#| "%G Group name (slash will be converted to - automatically)\n"
-#| "%P Protocol name\n"
-#| "%N Connection name\n"
-#| "%h Hostname/IP\n"
-#| "\n"
-#| "\n"
 msgid ""
 "%G Name of group (slashes \\/ are converted to dashes -)\n"
 "%P Protocol name\n"
@@ -4320,7 +4307,7 @@ msgid ""
 "\n"
 "\n"
 msgstr ""
-"%G Naziv grupe (kosa crta biti će pretvorena u - automatski)\n"
+"%G Naziv grupe (kose crte \\/ biti će pretvorene u crte -)\n"
 "%P Naziv protokola\n"
 "%N Naziv povezivanja\n"
 "%h Naziv računala/IP\n"
@@ -4563,12 +4550,12 @@ msgstr "SSH mogućnosti"
 #: data/ui/remmina_preferences.glade:1630
 msgid "Set and use a secret key to protect Remmina from unothorized use."
 msgstr ""
+"Postavite i koristite tajni ključ kako bi zaštitili Remminu od neovlaštena "
+"korištenja."
 
 #: data/ui/remmina_preferences.glade:1634
-#, fuzzy
-#| msgid "User password"
 msgid "Use Remmina password"
-msgstr "Korisnička lozinka"
+msgstr "Koristi Remmina lozinku"
 
 #: data/ui/remmina_preferences.glade:1645
 #: data/ui/remmina_preferences.glade:1969
@@ -4581,44 +4568,36 @@ msgstr "Razdoblje automatskog zaključavanja"
 
 #: data/ui/remmina_preferences.glade:1673
 msgid "Number of seconds to keep password valid for"
-msgstr ""
+msgstr "Broj sekundi valjanosti lozinke"
 
 #: data/ui/remmina_preferences.glade:1692
-#, fuzzy
-#| msgid "Enter VNC password"
 msgid "Enter new password"
-msgstr "Upišite VNC lozinku"
+msgstr "Upis nove lozinke"
 
 #: data/ui/remmina_preferences.glade:1722
-#, fuzzy
-#| msgid "Repeat the password"
 msgid "Re-enter password"
 msgstr "Ponovni upis lozinke"
 
 #: data/ui/remmina_preferences.glade:1755
 msgid "Creation, editing, copying, and deletions require the Remmina password"
-msgstr ""
+msgstr "Stvaranje, uređivanje, kopiranje i brisanje zahtijeva Remmina lozinku"
 
 #. Creation, editing, copying, and deletions require the primary password
 #: data/ui/remmina_preferences.glade:1758
 msgid "Require to modify"
-msgstr ""
+msgstr "Potrebno za promjenu"
 
 #: data/ui/remmina_preferences.glade:1796
-#, fuzzy
-#| msgid "Secured password storage in KWallet"
 msgid "Enter your Remmina password to connect"
-msgstr "Spremište osigurane lozinke u KWalletu"
+msgstr "Upišite svoju Remmina lozinku za povezivanje"
 
 #: data/ui/remmina_preferences.glade:1799
-#, fuzzy
-#| msgid "Secured password storage in KWallet"
 msgid "Require to connect"
-msgstr "Spremište osigurane lozinke u KWalletu"
+msgstr "Potrebno za povezivanje"
 
 #: data/ui/remmina_preferences.glade:1813
 msgid "Encryption method"
-msgstr ""
+msgstr "Način šifriranja"
 
 #: data/ui/remmina_preferences.glade:1824
 msgid ""
@@ -4630,46 +4609,49 @@ msgid ""
 "\"Intermediate\" doesn't use as much memory or processsing power, and "
 "\"Sensitive\" is more secure but uses 1 Gib of RAM and many CPU cycles. "
 msgstr ""
+"Ovo su načini šifriranja koje koristi Remmina za pohranu lozinki.\n"
+"\n"
+"Osim \"Slab\" načina, svi ostali su preporučeni, \"Skladište ključeva\" je "
+"zadan, jer se integrira s KDE/Plasmom i GNOMOM.\n"
+"\n"
+"\"Srednji\" ne koristi previše memorije i snage procesora, a \"Osjetljiv\" "
+"je više sigurniji ali koristi 1 Gib RAM-a i mnogo CPU ciklusa. "
 
 #: data/ui/remmina_preferences.glade:1834
 msgid "Keystore (KWallet, GNOME Keyring)"
-msgstr ""
+msgstr "Skladište ključeva (KWallet, GNOME skup ključeva)"
 
 #: data/ui/remmina_preferences.glade:1835
 msgid "Intermediate (+64 Mib RAM)"
-msgstr ""
+msgstr "Srednji (+64 Mib RAM)"
 
 #: data/ui/remmina_preferences.glade:1836
 msgid "Strong (+256 Mib, <1s i7 CPU)"
-msgstr ""
+msgstr "Snažan (+256 Mib, <1s i7 CPU)"
 
 #: data/ui/remmina_preferences.glade:1837
 msgid "Sensitive (+1 Gib, <4s i7 CPU)"
-msgstr ""
+msgstr "Osjetljiv (+1 Gib, <4s i7 CPU)"
 
 #: data/ui/remmina_preferences.glade:1838
 msgid "Weak (guessable)"
-msgstr ""
+msgstr "Slab (pretpostavljeno)"
 
 #: data/ui/remmina_preferences.glade:1839
 msgid "None (cleartext)"
-msgstr ""
+msgstr "Nikakav (običan tekst)"
 
 #: data/ui/remmina_preferences.glade:1857
 msgid "Logins and Passwords"
-msgstr ""
+msgstr "Prijave i lozinke"
 
 #: data/ui/remmina_preferences.glade:1891
-#, fuzzy
-#| msgid "Debugging"
 msgid "Logging"
-msgstr "Otklanjanje grešaka"
+msgstr "Zapisivanje otklanjanja grešaka"
 
 #: data/ui/remmina_preferences.glade:1922
-#, fuzzy
-#| msgid "Edit settings"
 msgid "Auditing"
-msgstr "Uredi postavke"
+msgstr "Provjera"
 
 #: data/ui/remmina_preferences.glade:1952
 msgid "Automatically accept all fingerprints and certificates"
@@ -4677,13 +4659,11 @@ msgstr "Automatski prihvati sve otiske prsta i vjerodajnice"
 
 #: data/ui/remmina_preferences.glade:1958
 msgid "Trust all"
-msgstr ""
+msgstr "Vjeruj svemu"
 
 #: data/ui/remmina_preferences.glade:1992
-#, fuzzy
-#| msgid "Certificate details:"
 msgid "Certificates and fingerprints"
-msgstr "Pojedinosti vjerodajnice:"
+msgstr "Vjerodajnice i otisci prsta"
 
 #: data/ui/remmina_preferences.glade:2016
 msgid "Security"
