@@ -8,13 +8,14 @@
 # 玉堂白鹤 <yjwork@qq.com>, 2020, 2021.
 # Antenore Gatta <antenore@simbiosi.org>, 2020, 2021.
 # Eric <spice2wolf@gmail.com>, 2020, 2021.
+# Eric <alchemillatruth@purelymail.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2022-01-14 00:07+0000\n"
-"PO-Revision-Date: 2021-12-20 02:54+0000\n"
-"Last-Translator: Eric <spice2wolf@gmail.com>\n"
+"PO-Revision-Date: 2022-01-14 04:52+0000\n"
+"Last-Translator: Eric <alchemillatruth@purelymail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "remmina/remmina/zh_Hans/>\n"
 "Language: zh_CN\n"
@@ -22,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.10\n"
+"X-Generator: Weblate 4.10.1\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:04+0000\n"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:354
@@ -244,10 +245,8 @@ msgstr "配置键盘监听"
 
 #. TRANSLATORS: Do not translate libsodium, is the name of a library
 #: src/remmina_pref_dialog.c:488
-#, fuzzy
-#| msgid "libsodium >= 1.9.0 is required to use master password"
 msgid "libsodium >= 1.9.0 is required to use Primary Password"
-msgstr "要使用管控密码，必须 libsodium >= 1.9.0"
+msgstr "要使用主密码，libsodium 版本须至少为 1.9.0"
 
 #: src/remmina_pref_dialog.c:826
 msgid "Picking a terminal colouring file replaces the file: "
@@ -1455,14 +1454,12 @@ msgid "Auto-start this profile"
 msgstr "自动启动此配置文件"
 
 #: src/remmina_file_editor.c:1099
-#, fuzzy
-#| msgid "New connection profile"
 msgid "Connection profile security"
-msgstr "创建一个新的连接配置文件"
+msgstr "连接配置文件安全性"
 
 #: src/remmina_file_editor.c:1102
 msgid "Require password to connect or edit the profile"
-msgstr ""
+msgstr "需要密码才能连接或编辑配置文件"
 
 #: src/remmina_file_editor.c:1132
 msgid "SSH Tunnel"
@@ -1662,10 +1659,9 @@ msgid "%s You may need to install, and use Gnome Shell Extension Appindicator"
 msgstr "%s您可能需要安装并使用 Gnome Shell Extension Appindicator"
 
 #: src/remmina_ssh_plugin.c:342
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s:%d via SSH"
-msgstr "通过 SSH 连接到 %s …"
+msgstr "通过 SSH 连接到 %s:%d"
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_ssh_plugin.c:550
@@ -1706,10 +1702,9 @@ msgid "Find text (host+G)"
 msgstr "寻找文本 (host+G)"
 
 #: src/remmina_ssh_plugin.c:921
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Disconnected from %s:%d via SSH"
-msgstr "通过 SSH 连接到 %s …"
+msgstr "已通过 SSH 和 %s:%d 断开了连接"
 
 #: src/remmina_ssh_plugin.c:1468 data/ui/remmina_main.glade:177
 msgid "Copy"
@@ -1996,7 +1991,7 @@ msgstr "输入 RDP 网关验证凭据"
 #: plugins/rdp/rdp_plugin.c:1027
 #, c-format
 msgid "Disconnected from %s via RDP"
-msgstr ""
+msgstr "通过 RDP 断开和 %s 的连接"
 
 #: plugins/rdp/rdp_plugin.c:2156
 #, c-format
@@ -2674,10 +2669,9 @@ msgstr "正在重新连接。尝试 %d 的 %d…"
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_event.c:1117
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s via RDP"
-msgstr "通过 SSH 连接到 %s …"
+msgstr "已通过 RDP 连接到 %s"
 
 #: plugins/spice/spice_plugin_file_transfer.c:82
 msgid "File Transfers"
@@ -2711,16 +2705,14 @@ msgid "Disconnected from the SPICE server “%s”."
 msgstr "从 SPICE 服务器 \"“%s”断开连接。"
 
 #: plugins/spice/spice_plugin.c:388
-#, fuzzy, c-format
-#| msgid "Disconnected from the SPICE server “%s”."
+#, c-format
 msgid "Disconnected from %s:%d via SPICE"
-msgstr "从 SPICE 服务器 \"“%s”断开连接。"
+msgstr "已通过 SPICE 断开了与 %s:%d 的连接"
 
 #: plugins/spice/spice_plugin.c:391
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s:%d via SPICE"
-msgstr "通过 SSH 连接到 %s …"
+msgstr "已通过 SPICE 连接到 %s:%d"
 
 #: plugins/spice/spice_plugin.c:403
 msgid "TLS connection error."
@@ -2837,15 +2829,14 @@ msgid "Please retry after turning on encryption for this profile."
 msgstr "在此配置文件上启用加密后，请重试。"
 
 #: plugins/vnc/vnc_plugin.c:1706
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s:%d via VNC"
-msgstr "通过 SSH 连接到 %s …"
+msgstr "已通过 VNC 连接到 %s:%d"
 
 #: plugins/vnc/vnc_plugin.c:1725
 #, c-format
 msgid "Disconnected from %s:%d via VNC"
-msgstr ""
+msgstr "通过 %s:%d 断开和 VNC 的连接"
 
 #: plugins/vnc/vnc_plugin.c:1974
 msgid ""
@@ -2882,17 +2873,6 @@ msgstr ""
 "    x11vnc -display :0 -connect 192.168.1.36:8888"
 
 #: plugins/vnc/vnc_plugin.c:1991
-#, fuzzy
-#| msgid ""
-#| "Override pre-set VNC encodings:\n"
-#| "\n"
-#| "  • On “Poor quality” encodings is set to “copyrect zlib hextile raw”\n"
-#| "  • On “Medium quality” encodings is set to “tight zrle ultra copyrect "
-#| "hextile zlib corre rre raw”\n"
-#| "  • On “Good quality” encodings is set to “tight zrle ultra copyrect "
-#| "hextile zlib corre rre raw”\n"
-#| "  • On “Best quality” encodings is set to “copyrect zrle ultra zlib "
-#| "hextile corre rre raw”"
 msgid ""
 "Overriding the pre-set VNC encoding quality:\n"
 "\n"
@@ -2904,15 +2884,12 @@ msgid ""
 "  • “Best (slowest)” sets encoding to “copyrect zrle ultra zlib hextile "
 "corre rre raw”"
 msgstr ""
-"绕过预设 VNC 编码：\n"
+"绕过预设 VNC 编码质量：\n"
 "\n"
-"  • “低质量” 时，编码被设为 “copyrect zlib hextile raw”\n"
-"  • “中等质量” 时，编码被设为 “tight zrle ultra copyrect hextile zlib corre "
-"rre raw”\n"
-"  • “上佳质量” 时，编码被设为 “tight zrle ultra copyrect hextile zlib corre "
-"rre raw”\n"
-"  • “最佳质量” 时，编码被设为 “copyrect zrle ultra zlib hextile corre rre "
-"raw”"
+"  • “低质量（最快）” ，编码被设为 “copyrect zlib hextile raw”\n"
+"  • “中等质量” ，编码被设为 “tight zrle ultra copyrect hextile zlib corre rre raw”\n"
+"  • “上佳质量” ，编码被设为 “tight zrle ultra copyrect hextile zlib corre rre raw”\n"
+"  • “最佳质量（最慢）” ，编码被设为 “copyrect zrle ultra zlib hextile corre rre raw”"
 
 #: plugins/vnc/vnc_plugin.c:2018
 msgid "Repeater"
@@ -3297,7 +3274,7 @@ msgstr "正在终止会话：'%s'"
 #: plugins/x2go/x2go_plugin.c:1529
 #, c-format
 msgid "Disconnected from %s:%d via X2Go"
-msgstr ""
+msgstr "通过 X2GO 断开和 %s:%d 的连接"
 
 #: plugins/x2go/x2go_plugin.c:1601
 msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
@@ -3441,10 +3418,9 @@ msgid "Available feature[%i]: '%s'"
 msgstr "可用功能[%i]: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:2583
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s:%d via X2Go"
-msgstr "通过 SSH 连接到 %s …"
+msgstr "已通过 X2GO 连接到 %s:%d"
 
 #: plugins/x2go/x2go_plugin.c:2677
 msgid "Could not open X11 DISPLAY."
@@ -3927,22 +3903,16 @@ msgid "Domain\\Username"
 msgstr "域\\用户名"
 
 #: data/ui/remmina_passwd.glade:33
-#, fuzzy
-#| msgid "_OK"
 msgid "OK"
-msgstr "确定(_O)"
+msgstr "好"
 
 #: data/ui/remmina_passwd.glade:60
-#, fuzzy
-#| msgid "Set new password"
 msgid "Set Primary Password"
-msgstr "设置新密码"
+msgstr "设置主密码"
 
 #: data/ui/remmina_passwd.glade:101
-#, fuzzy
-#| msgid "User password"
 msgid "Verify password"
-msgstr "用户密码"
+msgstr "验证密码"
 
 #: data/ui/remmina_news.glade:75
 msgid ""
@@ -4495,13 +4465,11 @@ msgstr "SSH 选项"
 
 #: data/ui/remmina_preferences.glade:1630
 msgid "Set and use a secret key to protect Remmina from unothorized use."
-msgstr ""
+msgstr "设置并使用一个密钥来防止别人未经授权使用 Remina。"
 
 #: data/ui/remmina_preferences.glade:1634
-#, fuzzy
-#| msgid "Use master password"
 msgid "Use a Primary Password"
-msgstr "使用管控密码"
+msgstr "使用主密码"
 
 #: data/ui/remmina_preferences.glade:1645
 #: data/ui/remmina_preferences.glade:2006
@@ -4513,10 +4481,8 @@ msgid "Automatic lock interval"
 msgstr "自动锁定间隔"
 
 #: data/ui/remmina_preferences.glade:1673
-#, fuzzy
-#| msgid "Master password validity in seconds"
 msgid "Primary Password validity in seconds"
-msgstr "管控密码有效期（秒）"
+msgstr "主密码有效期（秒）"
 
 #: data/ui/remmina_preferences.glade:1722
 msgid "Repeat the password"
@@ -4526,30 +4492,28 @@ msgstr "重复密码"
 msgid ""
 "New, edit, copy, delete actions are password protected with the Primary "
 "Password"
-msgstr ""
+msgstr "主密码保护新建、编辑、复制、删除操作"
 
 #. New, edit, copy, delete actions are password protected
 #: data/ui/remmina_preferences.glade:1759
 msgid "Requires password to modify"
-msgstr ""
+msgstr "需要密码才能修改"
 
 #: data/ui/remmina_preferences.glade:1797
 msgid "Connecting is password protected with the Primary Password"
-msgstr ""
+msgstr "连接受主密码保护"
 
 #: data/ui/remmina_preferences.glade:1800
-#, fuzzy
-#| msgid "Secured password storage in KWallet"
 msgid "Requires password to connect"
-msgstr "存储在 KWallet 中的安全密码"
+msgstr "需要密码才能连接"
 
 #: data/ui/remmina_preferences.glade:1817
 msgid "Primary Password settings"
-msgstr ""
+msgstr "主密码设置"
 
 #: data/ui/remmina_preferences.glade:1851
 msgid "Encryption method"
-msgstr ""
+msgstr "加密方法"
 
 #: data/ui/remmina_preferences.glade:1862
 msgid ""
@@ -4564,50 +4528,48 @@ msgid ""
 "Sensitive, but it'll use 1Gib of RAM and many CPU cycles to hash your "
 "passwords. "
 msgstr ""
+"这些是 Remmina 用来存储密码和密码口令的加密方法。\n"
+"\n"
+"除了 “弱” 方法，其他所有方法都是推荐的，Keystore 是默认的，因其集成在 GNOME 或 KDE/Plasma 中。\n"
+"\n"
+"“中等”是安全性和所需内存/CPU 之间的最佳平衡，但如果你需要一个非常安全的方法，你应该选择“敏感”等级，但该方法会使用 1Gib 的内存和许多的 "
+"CPU 核心进行密码哈希操作。 "
 
 #: data/ui/remmina_preferences.glade:1872
 msgid "Keystore (kwallet, GNOME keyring)"
-msgstr ""
+msgstr "Keystore (kwallet, GNOME keyring)"
 
 #: data/ui/remmina_preferences.glade:1873
 msgid "Intermediate (+64 Mib RAM)"
-msgstr ""
+msgstr "中等强度 (+64 Mib 内存）"
 
 #: data/ui/remmina_preferences.glade:1874
 msgid "Strong (+256 Mib, <1s i7 CPU)"
-msgstr ""
+msgstr "强 （+256 Mib, <1s i7 CPU）"
 
 #: data/ui/remmina_preferences.glade:1875
 msgid "Sensitive (+1024 Mib, <4s i7 CPU)"
-msgstr ""
+msgstr "敏感（(+1024 Mib, <4s i7 CPU）"
 
 #: data/ui/remmina_preferences.glade:1876
-#, fuzzy
-#| msgid "Forget passwords after use"
 msgid "Weak (password may be guessed)"
-msgstr "使用后忘记密码"
+msgstr "弱（密码可能被猜到）"
 
 #: data/ui/remmina_preferences.glade:1877
 msgid "None (clear text)"
-msgstr ""
+msgstr "无（明文）"
 
 #: data/ui/remmina_preferences.glade:1894
-#, fuzzy
-#| msgid "Modify connection profile (requires --set-option)"
 msgid "Connection profiles passwords encryption"
-msgstr "修改连接配置文件(需要 --set-option)"
+msgstr "连接配置文件密码加密"
 
 #: data/ui/remmina_preferences.glade:1928
-#, fuzzy
-#| msgid "Enable audio channel"
 msgid "Enable auditing logs"
-msgstr "启用音频通道"
+msgstr "启用审计日志"
 
 #: data/ui/remmina_preferences.glade:1959
-#, fuzzy
-#| msgid "Edit settings"
 msgid "Auditing settings"
-msgstr "编辑设置"
+msgstr "审计设定"
 
 #: data/ui/remmina_preferences.glade:1989
 msgid "Automatically accept all fingerprints and certificates"
@@ -4618,10 +4580,8 @@ msgid "Trust all fingerprints and certificates"
 msgstr "信任所有指纹和证书"
 
 #: data/ui/remmina_preferences.glade:2029
-#, fuzzy
-#| msgid "Certificate details:"
 msgid "Certificate settings"
-msgstr "证书详情："
+msgstr "证书设置"
 
 #: data/ui/remmina_preferences.glade:2053
 msgid "Security"
