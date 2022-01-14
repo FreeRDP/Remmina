@@ -113,7 +113,7 @@ void remmina_rdp_monitor_get (rfContext *rfi, gchar **monitorids, guint32 *maxwi
 		rdpMonitor* current;
 		if (has_custom_monitors) {
 			REMMINA_PLUGIN_DEBUG("We have custom monitors");
-			gchar itoc[10];
+			gchar itoc[11];
 			snprintf(itoc, sizeof(itoc), "%d", i);
 			if (remmina_rdp_utils_strpos(*monitorids, itoc) < 0 ) {
 				REMMINA_PLUGIN_DEBUG("Monitor n %d it's out of the provided list", i);
