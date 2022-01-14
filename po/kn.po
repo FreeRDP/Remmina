@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-01-14 00:07+0000\n"
+"POT-Creation-Date: 2022-01-14 09:44+0000\n"
 "PO-Revision-Date: 2021-12-17 08:47+0000\n"
 "Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
 "Language-Team: Kannada <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -27,7 +27,7 @@ msgstr ""
 #: src/remmina_ssh_plugin.c:1389 plugins/rdp/rdp_plugin.c:2763
 #: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:3227
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_passwd.glade:84
-#: data/ui/remmina_preferences.glade:1692 data/ui/remmina_unlock.glade:109
+#: data/ui/remmina_unlock.glade:109
 #, fuzzy
 msgid "Password"
 msgstr "ಗುಪ್ತಪದ (ಪಾಸ್ ವರ್ಡ್)"
@@ -305,7 +305,7 @@ msgstr "ತ್ಯಜಿಸು"
 #: src/remmina_message_panel.c:199 data/ui/remmina_snap_info_dialog.glade:28
 #: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
 #: data/ui/remmina_string_list.glade:63 data/ui/remmina_news.glade:33
-#: data/ui/remmina_preferences.glade:2865
+#: data/ui/remmina_preferences.glade:2828
 #, fuzzy
 msgid "Close"
 msgstr "ಮುಚ್ಚಿ"
@@ -3077,13 +3077,13 @@ msgstr "ಆರ್ ಡಿಪಿ - ಆದ್ಯತೆಗಳು"
 msgid "Export connection in Windows .rdp file format"
 msgstr "ವಿಂಡೋಸ್ .ಆರ್ ಡಿಪಿ ಫೈಲ್ ಸ್ವರೂಪದಲ್ಲಿ ಸಂಪರ್ಕ ರಫ್ತು ಮಾಡಿ"
 
-#: plugins/rdp/rdp_event.c:344
+#: plugins/rdp/rdp_event.c:348
 #, fuzzy, c-format
 msgid "Reconnection attempt %d of %d…"
 msgstr "[ಎಕ್ಸ್27ಎಕ್ಸ್] ನ ಮರುಸಂಪರ್ಕ ಪ್ರಯತ್ನ [ಎಕ್ಸ್21ಎಕ್ಸ್]…"
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
-#: plugins/rdp/rdp_event.c:1117
+#: plugins/rdp/rdp_event.c:1121
 #, fuzzy, c-format
 msgid "Connected to %s via RDP"
 msgstr "ಎಸ್ ಎಸ್ ಎಚ್ ಮೂಲಕ [ಎಕ್ಸ್14ಎಕ್ಸ್] ಗೆ ಸಂಪರ್ಕಿಸುತ್ತಿದೆ…"
@@ -4891,11 +4891,11 @@ msgstr ""
 msgid "Template for profile filenames"
 msgstr "ಪ್ರೊಫೈಲ್ ಫೈಲ್ ಹೆಸರುಗಳಿಗಾಗಿ ಟೆಂಪ್ಲೇಟ್"
 
-#. Place holders used to name a Remmina connection profile
+#. Placeholders used to name a Remmina connection profile
 #: data/ui/remmina_preferences.glade:361
 #, fuzzy
 msgid ""
-"%G Group name (slash will be converted to - automatically)\n"
+"%G Name of group (slashes \\/ are converted to dashes -)\n"
 "%P Protocol name\n"
 "%N Connection name\n"
 "%h Hostname/IP\n"
@@ -5196,11 +5196,11 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:1634
 #, fuzzy
-msgid "Use a Primary Password"
-msgstr "ಮಾಸ್ಟರ್ ಪಾಸ್ ವರ್ಡ್ ಬಳಸಿ"
+msgid "Use Remmina password"
+msgstr "ಬಳಕೆದಾರ ಪಾಸ್ ವರ್ಡ್"
 
 #: data/ui/remmina_preferences.glade:1645
-#: data/ui/remmina_preferences.glade:2006
+#: data/ui/remmina_preferences.glade:1969
 #, fuzzy
 msgid "Use secret key authentication for some widgets"
 msgstr "ಕೆಲವು ವಿಜೆಟ್ ಗಳಿಗೆ ರಹಸ್ಯ ಕೀಲಿ ದೃಢೀಕರಣವನ್ನು ಬಳಸಿ"
@@ -5211,153 +5211,146 @@ msgid "Automatic lock interval"
 msgstr "ಸ್ವಯಂಚಾಲಿತ ಲಾಕ್ ಮಧ್ಯಂತರ"
 
 #: data/ui/remmina_preferences.glade:1673
+msgid "Number of seconds to keep password valid for"
+msgstr ""
+
+#: data/ui/remmina_preferences.glade:1692
 #, fuzzy
-msgid "Primary Password validity in seconds"
-msgstr "ಸೆಕೆಂಡುಗಳಲ್ಲಿ ಪಾಸ್ ವರ್ಡ್ ಸಿಂಧುತ್ವವನ್ನು ಕರಗತ ಮಾಡಿ"
+msgid "Enter new password"
+msgstr "ವಿಎನ್ ಸಿ ಪಾಸ್ ವರ್ಡ್ ನಮೂದಿಸಿ"
 
 #: data/ui/remmina_preferences.glade:1722
 #, fuzzy
-msgid "Repeat the password"
+msgid "Re-enter password"
 msgstr "ಪಾಸ್ ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ"
 
 #: data/ui/remmina_preferences.glade:1755
-msgid ""
-"New, edit, copy, delete actions are password protected with the Primary "
-"Password"
+msgid "Creation, editing, copying, and deletions require the Remmina password"
 msgstr ""
 
-#. New, edit, copy, delete actions are password protected
-#: data/ui/remmina_preferences.glade:1759
-msgid "Requires password to modify"
+#. Creation, editing, copying, and deletions require the primary password
+#: data/ui/remmina_preferences.glade:1758
+msgid "Require to modify"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1797
-msgid "Connecting is password protected with the Primary Password"
-msgstr ""
-
-#: data/ui/remmina_preferences.glade:1800
+#: data/ui/remmina_preferences.glade:1796
 #, fuzzy
-msgid "Requires password to connect"
+msgid "Enter your Remmina password to connect"
 msgstr "ಕವಾಲೆಟ್ ನಲ್ಲಿ ಸುರಕ್ಷಿತ ಪಾಸ್ ವರ್ಡ್ ಸಂಗ್ರಹಣೆ"
 
-#: data/ui/remmina_preferences.glade:1817
-msgid "Primary Password settings"
-msgstr ""
+#: data/ui/remmina_preferences.glade:1799
+#, fuzzy
+msgid "Require to connect"
+msgstr "ಕವಾಲೆಟ್ ನಲ್ಲಿ ಸುರಕ್ಷಿತ ಪಾಸ್ ವರ್ಡ್ ಸಂಗ್ರಹಣೆ"
 
-#: data/ui/remmina_preferences.glade:1851
+#: data/ui/remmina_preferences.glade:1813
 msgid "Encryption method"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1862
+#: data/ui/remmina_preferences.glade:1824
 msgid ""
-"These are the encryption methods used by Remmina to store passwords and "
-"passphrases.\n"
+"These are the encryption methods used by Remmina to store passwords.\n"
 "\n"
 "Except the \"Weak\" method, all the others are reccomended, Keystore is the "
-"default, as it integrates with GNOME or KDE/Plasma.\n"
+"default, as it integrates with KDE/Plasma and GNOME.\n"
 "\n"
-"Intermediate is the best compromise in terms of RAM/CPU required vs "
-"security, but if you need an extremely secure method you should go with "
-"Sensitive, but it'll use 1Gib of RAM and many CPU cycles to hash your "
-"passwords. "
+"\"Intermediate\" doesn't use as much memory or processsing power, and "
+"\"Sensitive\" is more secure but uses 1 Gib of RAM and many CPU cycles. "
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1872
-msgid "Keystore (kwallet, GNOME keyring)"
+#: data/ui/remmina_preferences.glade:1834
+msgid "Keystore (KWallet, GNOME Keyring)"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1873
+#: data/ui/remmina_preferences.glade:1835
 msgid "Intermediate (+64 Mib RAM)"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1874
+#: data/ui/remmina_preferences.glade:1836
 msgid "Strong (+256 Mib, <1s i7 CPU)"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1875
-msgid "Sensitive (+1024 Mib, <4s i7 CPU)"
+#: data/ui/remmina_preferences.glade:1837
+msgid "Sensitive (+1 Gib, <4s i7 CPU)"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1876
-#, fuzzy
-msgid "Weak (password may be guessed)"
-msgstr "ಬಳಸಿದ ನಂತರ ಪಾಸ್ ವರ್ಡ್ ಗಳನ್ನು ಮರೆತುಬಿಡಿ"
-
-#: data/ui/remmina_preferences.glade:1877
-msgid "None (clear text)"
+#: data/ui/remmina_preferences.glade:1838
+msgid "Weak (guessable)"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1894
-#, fuzzy
-msgid "Connection profiles passwords encryption"
-msgstr "ಸಂಪರ್ಕ ಪ್ರೊಫೈಲ್ ಮಾರ್ಪಡಿಸು (--ಸೆಟ್-ಆಯ್ಕೆ ಅಗತ್ಯವಿದೆ)"
+#: data/ui/remmina_preferences.glade:1839
+msgid "None (cleartext)"
+msgstr ""
 
-#: data/ui/remmina_preferences.glade:1928
-#, fuzzy
-msgid "Enable auditing logs"
-msgstr "ಆಡಿಯೋ ಚಾನಲ್ ಕ್ರಿಯಾತ್ಮಕಗೊಳಿಸು"
+#: data/ui/remmina_preferences.glade:1857
+msgid "Logins and Passwords"
+msgstr ""
 
-#: data/ui/remmina_preferences.glade:1959
+#: data/ui/remmina_preferences.glade:1891
 #, fuzzy
-msgid "Auditing settings"
+msgid "Logging"
+msgstr "ದೋಷ ಮುಕ್ತಗೊಳಿಸುವ"
+
+#: data/ui/remmina_preferences.glade:1922
+#, fuzzy
+msgid "Auditing"
 msgstr "ಸೆಟ್ಟಿಂಗ್ ಗಳನ್ನು ಸಂಪಾದಿಸು"
 
-#: data/ui/remmina_preferences.glade:1989
+#: data/ui/remmina_preferences.glade:1952
 #, fuzzy
 msgid "Automatically accept all fingerprints and certificates"
 msgstr "ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಎಲ್ಲಾ ಬೆರಳಚ್ಚುಗಳು ಮತ್ತು ಪ್ರಮಾಣಪತ್ರಗಳನ್ನು ಸ್ವೀಕರಿಸು"
 
-#: data/ui/remmina_preferences.glade:1995
-#, fuzzy
-msgid "Trust all fingerprints and certificates"
-msgstr "ಎಲ್ಲಾ ಫಿಂಗರ್ ಪ್ರಿಂಟ್ ಗಳು ಮತ್ತು ಪ್ರಮಾಣಪತ್ರಗಳನ್ನು ನಂಬಿ"
+#: data/ui/remmina_preferences.glade:1958
+msgid "Trust all"
+msgstr ""
 
-#: data/ui/remmina_preferences.glade:2029
+#: data/ui/remmina_preferences.glade:1992
 #, fuzzy
-msgid "Certificate settings"
+msgid "Certificates and fingerprints"
 msgstr "ಪ್ರಮಾಣಪತ್ರ ವಿವರಗಳು:"
 
-#: data/ui/remmina_preferences.glade:2053
+#: data/ui/remmina_preferences.glade:2016
 #, fuzzy
 msgid "Security"
 msgstr "ಭದ್ರತೆ"
 
-#: data/ui/remmina_preferences.glade:2084
+#: data/ui/remmina_preferences.glade:2047
 #, fuzzy
 msgid "Terminal font"
 msgstr "ಟರ್ಮಿನಲ್ ಫಾಂಟ್"
 
-#: data/ui/remmina_preferences.glade:2097
+#: data/ui/remmina_preferences.glade:2060
 #, fuzzy
 msgid "Scrollback lines"
 msgstr "ಸ್ಕ್ರಾಲ್ ಬ್ಯಾಕ್ ಸಾಲುಗಳು"
 
-#: data/ui/remmina_preferences.glade:2145
+#: data/ui/remmina_preferences.glade:2108
 #, fuzzy
 msgid "Shortcuts for copying and pasting"
 msgstr "ನಕಲಿಸಲು ಮತ್ತು ಅಂಟಿಸುವುದಕ್ಕಾಗಿ ಶಾರ್ಟ್ ಕಟ್ ಗಳು"
 
-#: data/ui/remmina_preferences.glade:2158
+#: data/ui/remmina_preferences.glade:2121
 #, fuzzy
 msgid "Select all shortcuts"
 msgstr "ಎಲ್ಲಾ ಶಾರ್ಟ್ ಕಟ್ ಗಳನ್ನು ಆಯ್ಕೆಮಾಡಿ"
 
-#: data/ui/remmina_preferences.glade:2171
-#: data/ui/remmina_preferences.glade:2188
-#: data/ui/remmina_preferences.glade:2641
-#: data/ui/remmina_preferences.glade:2671
-#: data/ui/remmina_preferences.glade:2805
-#: data/ui/remmina_preferences.glade:2822
+#: data/ui/remmina_preferences.glade:2134
+#: data/ui/remmina_preferences.glade:2151
+#: data/ui/remmina_preferences.glade:2604
+#: data/ui/remmina_preferences.glade:2634
+#: data/ui/remmina_preferences.glade:2768
+#: data/ui/remmina_preferences.glade:2785
 #, fuzzy
 msgid "(Host key+)"
 msgstr "(ಹೋಸ್ಟ್ ಕೀಲಿ+)"
 
-#: data/ui/remmina_preferences.glade:2206
+#: data/ui/remmina_preferences.glade:2169
 #, fuzzy
 msgid "Use default system font"
 msgstr "ಡೀಫಾಲ್ಟ್ ಸಿಸ್ಟಂ ಫಾಂಟ್ ಬಳಸಿ"
 
-#: data/ui/remmina_preferences.glade:2231
+#: data/ui/remmina_preferences.glade:2194
 #, fuzzy
 msgid ""
 "Selecting “SGR 1” also switches to the bright counterparts of the first 8 "
@@ -5366,17 +5359,17 @@ msgstr ""
 "\"ಎಸ್ ಜಿಆರ್ 1\" ಅನ್ನು ಆಯ್ಕೆ ಮಾಡುವುದು ಮೊದಲ 8 ಪ್ಯಾಲೆಟ್ ಬಣ್ಣಗಳ ಪ್ರಕಾಶಮಾನವಾದ "
 "ಪ್ರತಿರೂಪಗಳಿಗೆ ಬದಲಾಗುತ್ತದೆ (ಪಠ್ಯವನ್ನು ಬೋಲ್ಡ್ ಮಾಡುವ ಜೊತೆಗೆ)."
 
-#: data/ui/remmina_preferences.glade:2247
+#: data/ui/remmina_preferences.glade:2210
 #, fuzzy
 msgid "Allow using bright colours with bold text"
 msgstr "ಬೋಲ್ಡ್ ಪಠ್ಯದೊಂದಿಗೆ ಪ್ರಕಾಶಮಾನವಾದ ಬಣ್ಣಗಳನ್ನು ಬಳಸಲು ಅನುಮತಿಸು"
 
-#: data/ui/remmina_preferences.glade:2261
+#: data/ui/remmina_preferences.glade:2224
 #, fuzzy
 msgid "Colour theme"
 msgstr "ಬಣ್ಣ ಥೀಮ್"
 
-#: data/ui/remmina_preferences.glade:2272
+#: data/ui/remmina_preferences.glade:2235
 #, fuzzy
 msgid ""
 "Choose a colour scheme file. Usually available in /usr/share/remmina/theme. "
@@ -5385,159 +5378,159 @@ msgstr ""
 "ಕಲರ್ ಸ್ಕೀಮ್ ಫೈಲ್ ಆಯ್ಕೆ ಮಾಡಿ. ಸಾಮಾನ್ಯವಾಗಿ /ಉಸ್ರ್ /ಶೇರ್/ರೆಮ್ಮಿನಾ/ಥೀಮ್ ನಲ್ಲಿ ಲಭ್ಯವಿದೆ. "
 "https://github.com/mbadolato/iTerm2-Color-Schemes ಹೆಚ್ಚಿನ ವಿವರಗಳನ್ನು ಹೊಂದಿದೆ."
 
-#: data/ui/remmina_preferences.glade:2276
+#: data/ui/remmina_preferences.glade:2239
 #, fuzzy
 msgid "Pick a terminal colouring file"
 msgstr "ಟರ್ಮಿನಲ್ ಕಲರಿಂಗ್ ಫೈಲ್ ಅನ್ನು ಆರಿಸಿ"
 
-#: data/ui/remmina_preferences.glade:2291
+#: data/ui/remmina_preferences.glade:2254
 #, fuzzy
 msgid "Bright colours"
 msgstr "ಪ್ರಕಾಶಮಾನವಾದ ಬಣ್ಣಗಳು"
 
-#: data/ui/remmina_preferences.glade:2305
+#: data/ui/remmina_preferences.glade:2268
 #, fuzzy
 msgid "Pick a light black colour"
 msgstr "ತಿಳಿ ಕಪ್ಪು ಬಣ್ಣವನ್ನು ಆರಿಸಿ"
 
-#: data/ui/remmina_preferences.glade:2319
+#: data/ui/remmina_preferences.glade:2282
 #, fuzzy
 msgid "Pick a light red colour"
 msgstr "ತಿಳಿ ಕೆಂಪು ಬಣ್ಣವನ್ನು ಆರಿಸಿ"
 
-#: data/ui/remmina_preferences.glade:2333
+#: data/ui/remmina_preferences.glade:2296
 #, fuzzy
 msgid "Pick a bright green colour"
 msgstr "ಪ್ರಕಾಶಮಾನವಾದ ಹಸಿರು ಬಣ್ಣವನ್ನು ಆರಿಸಿ"
 
-#: data/ui/remmina_preferences.glade:2347
+#: data/ui/remmina_preferences.glade:2310
 #, fuzzy
 msgid "Pick a bright yellow colour"
 msgstr "ಪ್ರಕಾಶಮಾನವಾದ ಹಳದಿ ಬಣ್ಣವನ್ನು ಆರಿಸಿ"
 
-#: data/ui/remmina_preferences.glade:2361
+#: data/ui/remmina_preferences.glade:2324
 #, fuzzy
 msgid "Pick a bright blue colour"
 msgstr "ಪ್ರಕಾಶಮಾನವಾದ ನೀಲಿ ಬಣ್ಣವನ್ನು ಆರಿಸಿ"
 
-#: data/ui/remmina_preferences.glade:2375
+#: data/ui/remmina_preferences.glade:2338
 #, fuzzy
 msgid "Pick a light magenta colour"
 msgstr "ಹಗುರವಾದ ಮೆಜೆಂಟಾ ಬಣ್ಣವನ್ನು ಆರಿಸಿ"
 
-#: data/ui/remmina_preferences.glade:2389
+#: data/ui/remmina_preferences.glade:2352
 #, fuzzy
 msgid "Pick a light cyan colour"
 msgstr "ಹಗುರವಾದ ಸೈಯಾನ್ ಬಣ್ಣವನ್ನು ಆರಿಸಿ"
 
-#: data/ui/remmina_preferences.glade:2403
+#: data/ui/remmina_preferences.glade:2366
 #, fuzzy
 msgid "Pick a light white colour"
 msgstr "ತಿಳಿ ಬಿಳಿ ಬಣ್ಣವನ್ನು ಆರಿಸಿ"
 
-#: data/ui/remmina_preferences.glade:2417
+#: data/ui/remmina_preferences.glade:2380
 #, fuzzy
 msgid "Pick a black colour"
 msgstr "ಕಪ್ಪು ಬಣ್ಣವನ್ನು ಆರಿಸಿ"
 
-#: data/ui/remmina_preferences.glade:2431
+#: data/ui/remmina_preferences.glade:2394
 #, fuzzy
 msgid "Pick a red colour"
 msgstr "ಕೆಂಪು ಬಣ್ಣವನ್ನು ಆರಿಸಿ"
 
-#: data/ui/remmina_preferences.glade:2445
+#: data/ui/remmina_preferences.glade:2408
 #, fuzzy
 msgid "Pick a green colour"
 msgstr "ಹಸಿರು ಬಣ್ಣವನ್ನು ಆರಿಸಿ"
 
-#: data/ui/remmina_preferences.glade:2459
+#: data/ui/remmina_preferences.glade:2422
 #, fuzzy
 msgid "Pick a yellow colour"
 msgstr "ಹಳದಿ ಬಣ್ಣವನ್ನು ಆರಿಸಿ"
 
-#: data/ui/remmina_preferences.glade:2473
+#: data/ui/remmina_preferences.glade:2436
 #, fuzzy
 msgid "Pick a blue colour"
 msgstr "ನೀಲಿ ಬಣ್ಣವನ್ನು ಆರಿಸಿ"
 
-#: data/ui/remmina_preferences.glade:2487
+#: data/ui/remmina_preferences.glade:2450
 #, fuzzy
 msgid "Pick a magenta colour"
 msgstr "ಮೆಜೆಂಟಾ ಬಣ್ಣವನ್ನು ಆರಿಸಿ"
 
-#: data/ui/remmina_preferences.glade:2501
+#: data/ui/remmina_preferences.glade:2464
 #, fuzzy
 msgid "Pick a cyan colour"
 msgstr "ಸೈಯಾನ್ ಬಣ್ಣವನ್ನು ಆರಿಸಿ"
 
-#: data/ui/remmina_preferences.glade:2515
+#: data/ui/remmina_preferences.glade:2478
 #, fuzzy
 msgid "Pick a white colour"
 msgstr "ಬಿಳಿ ಬಣ್ಣವನ್ನು ಆರಿಸಿ"
 
-#: data/ui/remmina_preferences.glade:2528
+#: data/ui/remmina_preferences.glade:2491
 #, fuzzy
 msgid "Normal colours"
 msgstr "ಸಾಮಾನ್ಯ ಬಣ್ಣಗಳು"
 
-#: data/ui/remmina_preferences.glade:2541
-#: data/ui/remmina_preferences.glade:2556
+#: data/ui/remmina_preferences.glade:2504
+#: data/ui/remmina_preferences.glade:2519
 #, fuzzy
 msgid "Cursor colour"
 msgstr "ಕರ್ಸರ್ ಬಣ್ಣ"
 
-#: data/ui/remmina_preferences.glade:2570
-#: data/ui/remmina_preferences.glade:2585
+#: data/ui/remmina_preferences.glade:2533
+#: data/ui/remmina_preferences.glade:2548
 #, fuzzy
 msgid "Background colour"
 msgstr "ಹಿನ್ನೆಲೆ ಬಣ್ಣ"
 
-#: data/ui/remmina_preferences.glade:2601
-#: data/ui/remmina_preferences.glade:2615
+#: data/ui/remmina_preferences.glade:2564
+#: data/ui/remmina_preferences.glade:2578
 #, fuzzy
 msgid "Foreground colour"
 msgstr "ಮುಂಭಾಗದ ಬಣ್ಣ"
 
-#: data/ui/remmina_preferences.glade:2628
+#: data/ui/remmina_preferences.glade:2591
 #, fuzzy
 msgid "Increase and decrease font size"
 msgstr "ಫಾಂಟ್ ಗಾತ್ರವನ್ನು ಹೆಚ್ಚಿಸಿ ಮತ್ತು ಕಡಿಮೆ ಮಾಡಿ"
 
-#: data/ui/remmina_preferences.glade:2658
+#: data/ui/remmina_preferences.glade:2621
 #, fuzzy
 msgid "Search text shortcut"
 msgstr "ಪಠ್ಯ ಶಾರ್ಟ್ ಕಟ್ ಶೋಧಿಸು"
 
-#: data/ui/remmina_preferences.glade:2689
-#: data/ui/remmina_preferences.glade:2704
+#: data/ui/remmina_preferences.glade:2652
+#: data/ui/remmina_preferences.glade:2667
 #, fuzzy
 msgid "Bold colour"
 msgstr "ಬೋಲ್ಡ್ ಬಣ್ಣ"
 
-#: data/ui/remmina_preferences.glade:2718
-#: data/ui/remmina_preferences.glade:2759
+#: data/ui/remmina_preferences.glade:2681
+#: data/ui/remmina_preferences.glade:2722
 #, fuzzy
 msgid "Highlight colour"
 msgstr "ಬಣ್ಣವನ್ನು ಹೈಲೈಟ್ ಮಾಡಿ"
 
-#: data/ui/remmina_preferences.glade:2731
-#: data/ui/remmina_preferences.glade:2775
+#: data/ui/remmina_preferences.glade:2694
+#: data/ui/remmina_preferences.glade:2738
 #, fuzzy
 msgid "Highlight foreground colour"
 msgstr "ಮುಂಭಾಗದ ಬಣ್ಣವನ್ನು ಹೈಲೈಟ್ ಮಾಡಿ"
 
-#: data/ui/remmina_preferences.glade:2744
-#: data/ui/remmina_preferences.glade:2791
+#: data/ui/remmina_preferences.glade:2707
+#: data/ui/remmina_preferences.glade:2754
 #, fuzzy
 msgid "Cursor foreground colour"
 msgstr "ಕರ್ಸರ್ ಮುಂಭಾಗದ ಬಣ್ಣ"
 
-#: data/ui/remmina_preferences.glade:2847
+#: data/ui/remmina_preferences.glade:2810
 #, fuzzy
 msgid "Terminal"
 msgstr "ಟರ್ಮಿನಲ್"
 
-#: data/ui/remmina_preferences.glade:2861
+#: data/ui/remmina_preferences.glade:2824
 #, fuzzy
 msgid "Remmina Preferences"
 msgstr "ರೆಮ್ಮಿನಾ ಆದ್ಯತೆಗಳು"
@@ -5556,6 +5549,34 @@ msgstr "ರೆಮ್ಮಿನಾ ಅನ್ ಲಾಕ್ ಮಾಡು"
 #, fuzzy
 msgid "Master password"
 msgstr "ಪಾಸ್ ವರ್ಡ್ ಮಾಸ್ಟರ್ ಮಾಡಿ"
+
+#, fuzzy
+#~ msgid "Use a Primary Password"
+#~ msgstr "ಮಾಸ್ಟರ್ ಪಾಸ್ ವರ್ಡ್ ಬಳಸಿ"
+
+#, fuzzy
+#~ msgid "Primary Password validity in seconds"
+#~ msgstr "ಸೆಕೆಂಡುಗಳಲ್ಲಿ ಪಾಸ್ ವರ್ಡ್ ಸಿಂಧುತ್ವವನ್ನು ಕರಗತ ಮಾಡಿ"
+
+#, fuzzy
+#~ msgid "Weak (password may be guessed)"
+#~ msgstr "ಬಳಸಿದ ನಂತರ ಪಾಸ್ ವರ್ಡ್ ಗಳನ್ನು ಮರೆತುಬಿಡಿ"
+
+#, fuzzy
+#~ msgid "Connection profiles passwords encryption"
+#~ msgstr "ಸಂಪರ್ಕ ಪ್ರೊಫೈಲ್ ಮಾರ್ಪಡಿಸು (--ಸೆಟ್-ಆಯ್ಕೆ ಅಗತ್ಯವಿದೆ)"
+
+#, fuzzy
+#~ msgid "Enable auditing logs"
+#~ msgstr "ಆಡಿಯೋ ಚಾನಲ್ ಕ್ರಿಯಾತ್ಮಕಗೊಳಿಸು"
+
+#, fuzzy
+#~ msgid "Trust all fingerprints and certificates"
+#~ msgstr "ಎಲ್ಲಾ ಫಿಂಗರ್ ಪ್ರಿಂಟ್ ಗಳು ಮತ್ತು ಪ್ರಮಾಣಪತ್ರಗಳನ್ನು ನಂಬಿ"
+
+#, fuzzy
+#~ msgid "Certificate settings"
+#~ msgstr "ಪ್ರಮಾಣಪತ್ರ ವಿವರಗಳು:"
 
 #, fuzzy
 #~ msgid "An unknown error occured while trying to start PyHoca-CLI."

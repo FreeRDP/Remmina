@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-01-14 00:07+0000\n"
+"POT-Creation-Date: 2022-01-14 09:44+0000\n"
 "PO-Revision-Date: 2021-12-17 08:48+0000\n"
 "Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
 "Language-Team: Burmese <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -27,7 +27,7 @@ msgstr ""
 #: src/remmina_ssh_plugin.c:1389 plugins/rdp/rdp_plugin.c:2763
 #: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:3227
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_passwd.glade:84
-#: data/ui/remmina_preferences.glade:1692 data/ui/remmina_unlock.glade:109
+#: data/ui/remmina_unlock.glade:109
 msgid "Password"
 msgstr "စကားဝှက်"
 
@@ -302,7 +302,7 @@ msgstr "ပယ်ဖျက်"
 #: src/remmina_message_panel.c:199 data/ui/remmina_snap_info_dialog.glade:28
 #: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
 #: data/ui/remmina_string_list.glade:63 data/ui/remmina_news.glade:33
-#: data/ui/remmina_preferences.glade:2865
+#: data/ui/remmina_preferences.glade:2828
 #, fuzzy
 msgid "Close"
 msgstr "ပိတ်ပါ"
@@ -3052,13 +3052,13 @@ msgstr "RDP - ကြိုက်နှစ်သက်မှုများ"
 msgid "Export connection in Windows .rdp file format"
 msgstr "Windows.rdp ဖိုင်ပုံစံထဲက ထုတ်ကုန်ဆက်သွယ်မှု"
 
-#: plugins/rdp/rdp_event.c:344
+#: plugins/rdp/rdp_event.c:348
 #, fuzzy, c-format
 msgid "Reconnection attempt %d of %d…"
 msgstr "%d ရဲ့ ပြန်လည်ဆက်သွယ်ရေး ကြိုးပမ်းမှု %d"
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
-#: plugins/rdp/rdp_event.c:1117
+#: plugins/rdp/rdp_event.c:1121
 #, fuzzy, c-format
 msgid "Connected to %s via RDP"
 msgstr "SSH မှတစ်ဆင့် %s နှင့် ဆက်သွယ်ခြင်း…"
@@ -4864,11 +4864,11 @@ msgstr ""
 msgid "Template for profile filenames"
 msgstr "ကိုယ်ရေးရာဇဝင်ဖိုင်အမည်များအတွက် ပုံစံခွက်"
 
-#. Place holders used to name a Remmina connection profile
+#. Placeholders used to name a Remmina connection profile
 #: data/ui/remmina_preferences.glade:361
 #, fuzzy
 msgid ""
-"%G Group name (slash will be converted to - automatically)\n"
+"%G Name of group (slashes \\/ are converted to dashes -)\n"
 "%P Protocol name\n"
 "%N Connection name\n"
 "%h Hostname/IP\n"
@@ -5168,11 +5168,11 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:1634
 #, fuzzy
-msgid "Use a Primary Password"
-msgstr "ကျွမ်းကျင်သော စကားဝှက်ကို အသုံးပြုပါ"
+msgid "Use Remmina password"
+msgstr "အသုံးပြုသူ စကားဝှက်"
 
 #: data/ui/remmina_preferences.glade:1645
-#: data/ui/remmina_preferences.glade:2006
+#: data/ui/remmina_preferences.glade:1969
 #, fuzzy
 msgid "Use secret key authentication for some widgets"
 msgstr "အချို့သော ဗီဂျက်များအတွက် လျှို့ဝှက်ချက်အချက်စစ်ဆေးမှုကို အသုံးပြုပါ"
@@ -5183,153 +5183,146 @@ msgid "Automatic lock interval"
 msgstr "အလိုအလျောက် သော့ခတ်ခြင်း"
 
 #: data/ui/remmina_preferences.glade:1673
+msgid "Number of seconds to keep password valid for"
+msgstr ""
+
+#: data/ui/remmina_preferences.glade:1692
 #, fuzzy
-msgid "Primary Password validity in seconds"
-msgstr "စက္ကန့်များအတွင်း ကျွမ်းကျင်သော စကားဝှက် တရားဝင်မှု"
+msgid "Enter new password"
+msgstr "VNC စကားဝှက်ထဲထည့်ပါ"
 
 #: data/ui/remmina_preferences.glade:1722
 #, fuzzy
-msgid "Repeat the password"
+msgid "Re-enter password"
 msgstr "စကားဝှက်ကို ထပ်ပြောပါ"
 
 #: data/ui/remmina_preferences.glade:1755
-msgid ""
-"New, edit, copy, delete actions are password protected with the Primary "
-"Password"
+msgid "Creation, editing, copying, and deletions require the Remmina password"
 msgstr ""
 
-#. New, edit, copy, delete actions are password protected
-#: data/ui/remmina_preferences.glade:1759
-msgid "Requires password to modify"
+#. Creation, editing, copying, and deletions require the primary password
+#: data/ui/remmina_preferences.glade:1758
+msgid "Require to modify"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1797
-msgid "Connecting is password protected with the Primary Password"
-msgstr ""
-
-#: data/ui/remmina_preferences.glade:1800
+#: data/ui/remmina_preferences.glade:1796
 #, fuzzy
-msgid "Requires password to connect"
+msgid "Enter your Remmina password to connect"
 msgstr "ကဝေါလက်မြို့တွင် လုံခြုံသော စကားဝှက်သိုလှောင်မှု"
 
-#: data/ui/remmina_preferences.glade:1817
-msgid "Primary Password settings"
-msgstr ""
+#: data/ui/remmina_preferences.glade:1799
+#, fuzzy
+msgid "Require to connect"
+msgstr "ကဝေါလက်မြို့တွင် လုံခြုံသော စကားဝှက်သိုလှောင်မှု"
 
-#: data/ui/remmina_preferences.glade:1851
+#: data/ui/remmina_preferences.glade:1813
 msgid "Encryption method"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1862
+#: data/ui/remmina_preferences.glade:1824
 msgid ""
-"These are the encryption methods used by Remmina to store passwords and "
-"passphrases.\n"
+"These are the encryption methods used by Remmina to store passwords.\n"
 "\n"
 "Except the \"Weak\" method, all the others are reccomended, Keystore is the "
-"default, as it integrates with GNOME or KDE/Plasma.\n"
+"default, as it integrates with KDE/Plasma and GNOME.\n"
 "\n"
-"Intermediate is the best compromise in terms of RAM/CPU required vs "
-"security, but if you need an extremely secure method you should go with "
-"Sensitive, but it'll use 1Gib of RAM and many CPU cycles to hash your "
-"passwords. "
+"\"Intermediate\" doesn't use as much memory or processsing power, and "
+"\"Sensitive\" is more secure but uses 1 Gib of RAM and many CPU cycles. "
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1872
-msgid "Keystore (kwallet, GNOME keyring)"
+#: data/ui/remmina_preferences.glade:1834
+msgid "Keystore (KWallet, GNOME Keyring)"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1873
+#: data/ui/remmina_preferences.glade:1835
 msgid "Intermediate (+64 Mib RAM)"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1874
+#: data/ui/remmina_preferences.glade:1836
 msgid "Strong (+256 Mib, <1s i7 CPU)"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1875
-msgid "Sensitive (+1024 Mib, <4s i7 CPU)"
+#: data/ui/remmina_preferences.glade:1837
+msgid "Sensitive (+1 Gib, <4s i7 CPU)"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1876
-#, fuzzy
-msgid "Weak (password may be guessed)"
-msgstr "အသုံးပြုပြီးနောက် စကားဝှက်များကို မေ့လျော့ပါ"
-
-#: data/ui/remmina_preferences.glade:1877
-msgid "None (clear text)"
+#: data/ui/remmina_preferences.glade:1838
+msgid "Weak (guessable)"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1894
-#, fuzzy
-msgid "Connection profiles passwords encryption"
-msgstr "ဆက်သွယ်မှု ပရိုဖိုင်ကို ပြုပြင်ပါ (သတ်မှတ်-ရွေးချယ်မှု)"
+#: data/ui/remmina_preferences.glade:1839
+msgid "None (cleartext)"
+msgstr ""
 
-#: data/ui/remmina_preferences.glade:1928
-#, fuzzy
-msgid "Enable auditing logs"
-msgstr "အသံလိုင်းကို ခွင့်ပြုပါ"
+#: data/ui/remmina_preferences.glade:1857
+msgid "Logins and Passwords"
+msgstr ""
 
-#: data/ui/remmina_preferences.glade:1959
+#: data/ui/remmina_preferences.glade:1891
 #, fuzzy
-msgid "Auditing settings"
+msgid "Logging"
+msgstr "ညှိုးနွမ်းခြင်း"
+
+#: data/ui/remmina_preferences.glade:1922
+#, fuzzy
+msgid "Auditing"
 msgstr "ပြင်ဆင်ထားတဲ့ နေရာတွေကို ပြင်ဆင်ပါ"
 
-#: data/ui/remmina_preferences.glade:1989
+#: data/ui/remmina_preferences.glade:1952
 #, fuzzy
 msgid "Automatically accept all fingerprints and certificates"
 msgstr "လက်ဗွေရာများနှင့် လက်မှတ်အားလုံးကို အလိုအလျောက်လက်ခံ"
 
-#: data/ui/remmina_preferences.glade:1995
-#, fuzzy
-msgid "Trust all fingerprints and certificates"
-msgstr "လက်ဗွေရာများနှင့် လက်မှတ်အားလုံးကို ယုံကြည်ကိုးစားပါ"
+#: data/ui/remmina_preferences.glade:1958
+msgid "Trust all"
+msgstr ""
 
-#: data/ui/remmina_preferences.glade:2029
+#: data/ui/remmina_preferences.glade:1992
 #, fuzzy
-msgid "Certificate settings"
+msgid "Certificates and fingerprints"
 msgstr "လက်မှတ် အသေးစိတ် အချက်အလက်များ -"
 
-#: data/ui/remmina_preferences.glade:2053
+#: data/ui/remmina_preferences.glade:2016
 #, fuzzy
 msgid "Security"
 msgstr "လံုျခံဳေရး"
 
-#: data/ui/remmina_preferences.glade:2084
+#: data/ui/remmina_preferences.glade:2047
 #, fuzzy
 msgid "Terminal font"
 msgstr "Terminal fonon"
 
-#: data/ui/remmina_preferences.glade:2097
+#: data/ui/remmina_preferences.glade:2060
 #, fuzzy
 msgid "Scrollback lines"
 msgstr "စာရွက်ချောင်းမျဉ်းများ"
 
-#: data/ui/remmina_preferences.glade:2145
+#: data/ui/remmina_preferences.glade:2108
 #, fuzzy
 msgid "Shortcuts for copying and pasting"
 msgstr "မိတ္တူကူးခြင်းနှင့် ဟင်းခတ်အမွှေးအကြိုင်များ"
 
-#: data/ui/remmina_preferences.glade:2158
+#: data/ui/remmina_preferences.glade:2121
 #, fuzzy
 msgid "Select all shortcuts"
 msgstr "ဖြတ်လမ်းအားလုံးကို ရွေးပါ"
 
-#: data/ui/remmina_preferences.glade:2171
-#: data/ui/remmina_preferences.glade:2188
-#: data/ui/remmina_preferences.glade:2641
-#: data/ui/remmina_preferences.glade:2671
-#: data/ui/remmina_preferences.glade:2805
-#: data/ui/remmina_preferences.glade:2822
+#: data/ui/remmina_preferences.glade:2134
+#: data/ui/remmina_preferences.glade:2151
+#: data/ui/remmina_preferences.glade:2604
+#: data/ui/remmina_preferences.glade:2634
+#: data/ui/remmina_preferences.glade:2768
+#: data/ui/remmina_preferences.glade:2785
 #, fuzzy
 msgid "(Host key+)"
 msgstr "(အိမ်ရှင်သော့ချက်+)"
 
-#: data/ui/remmina_preferences.glade:2206
+#: data/ui/remmina_preferences.glade:2169
 #, fuzzy
 msgid "Use default system font"
 msgstr "စံထားချက်စနစ်ဖောင့်သုံးပါ"
 
-#: data/ui/remmina_preferences.glade:2231
+#: data/ui/remmina_preferences.glade:2194
 #, fuzzy
 msgid ""
 "Selecting “SGR 1” also switches to the bright counterparts of the first 8 "
@@ -5338,17 +5331,17 @@ msgstr ""
 "\"SGR 1\" ကိုရွေးချယ်ခြင်းက ပထမဆုံး အရောင် ၈ မျိုးရဲ့ တောက်ပတဲ့ အပေါင်းအဖော်တွေကို "
 "(စာသားရဲရင့်စေတဲ့အပြင်) တောက်ပတဲ့ အပေါင်းအဖော်တွေဆီလည်း ပြောင်းသွားပါတယ်။"
 
-#: data/ui/remmina_preferences.glade:2247
+#: data/ui/remmina_preferences.glade:2210
 #, fuzzy
 msgid "Allow using bright colours with bold text"
 msgstr "ရဲရင့်တဲ့ စာသားနဲ့ တောက်ပတဲ့ အရောင်တွေကို အသုံးပြုခွင့်ပြုပါ"
 
-#: data/ui/remmina_preferences.glade:2261
+#: data/ui/remmina_preferences.glade:2224
 #, fuzzy
 msgid "Colour theme"
 msgstr "ရောင်စုံအကြောင်း"
 
-#: data/ui/remmina_preferences.glade:2272
+#: data/ui/remmina_preferences.glade:2235
 #, fuzzy
 msgid ""
 "Choose a colour scheme file. Usually available in /usr/share/remmina/theme. "
@@ -5358,159 +5351,159 @@ msgstr ""
 "ရရှိနိုင်လေ့ရှိသည်။ https://github.com/mbadolato/iTerm2-Color-Schemes ပိုပြီး "
 "အသေးစိတ်အချက်အလက်တွေ ရှိပါတယ်။"
 
-#: data/ui/remmina_preferences.glade:2276
+#: data/ui/remmina_preferences.glade:2239
 #, fuzzy
 msgid "Pick a terminal colouring file"
 msgstr "terterminal ရောင်စုံဖိုင်ကိုရွေးပါ"
 
-#: data/ui/remmina_preferences.glade:2291
+#: data/ui/remmina_preferences.glade:2254
 #, fuzzy
 msgid "Bright colours"
 msgstr "တောက်ပတဲ့ အရောင်တွေ"
 
-#: data/ui/remmina_preferences.glade:2305
+#: data/ui/remmina_preferences.glade:2268
 #, fuzzy
 msgid "Pick a light black colour"
 msgstr "အနက်ရောင်အရောင်ကို ရွေးပါ"
 
-#: data/ui/remmina_preferences.glade:2319
+#: data/ui/remmina_preferences.glade:2282
 #, fuzzy
 msgid "Pick a light red colour"
 msgstr "အနီရောင်ကို ရွေးပါ"
 
-#: data/ui/remmina_preferences.glade:2333
+#: data/ui/remmina_preferences.glade:2296
 #, fuzzy
 msgid "Pick a bright green colour"
 msgstr "တောက်ပတဲ့ အစိမ်းရောင်ကို ရွေးပါ"
 
-#: data/ui/remmina_preferences.glade:2347
+#: data/ui/remmina_preferences.glade:2310
 #, fuzzy
 msgid "Pick a bright yellow colour"
 msgstr "တောက်ပတဲ့ အဝါရောင်ကို ရွေးပါ"
 
-#: data/ui/remmina_preferences.glade:2361
+#: data/ui/remmina_preferences.glade:2324
 #, fuzzy
 msgid "Pick a bright blue colour"
 msgstr "တောက်ပတဲ့ အပြာရောင်ကို ရွေးပါ"
 
-#: data/ui/remmina_preferences.glade:2375
+#: data/ui/remmina_preferences.glade:2338
 #, fuzzy
 msgid "Pick a light magenta colour"
 msgstr "အလင်းရောင် မဂျန်တာအရောင်ကို ရွေးပါ"
 
-#: data/ui/remmina_preferences.glade:2389
+#: data/ui/remmina_preferences.glade:2352
 #, fuzzy
 msgid "Pick a light cyan colour"
 msgstr "အလင်းရောင် ဆီယန်အရောင်ကို ရွေးပါ"
 
-#: data/ui/remmina_preferences.glade:2403
+#: data/ui/remmina_preferences.glade:2366
 #, fuzzy
 msgid "Pick a light white colour"
 msgstr "အဖြူရောင်အရောင်ကို ရွေးပါ"
 
-#: data/ui/remmina_preferences.glade:2417
+#: data/ui/remmina_preferences.glade:2380
 #, fuzzy
 msgid "Pick a black colour"
 msgstr "အနက်ရောင်အရောင်ကို ရွေးပါ"
 
-#: data/ui/remmina_preferences.glade:2431
+#: data/ui/remmina_preferences.glade:2394
 #, fuzzy
 msgid "Pick a red colour"
 msgstr "အနီရောင်ကိုရွေးပါ"
 
-#: data/ui/remmina_preferences.glade:2445
+#: data/ui/remmina_preferences.glade:2408
 #, fuzzy
 msgid "Pick a green colour"
 msgstr "စိမ်းလန်းတဲ့ အရောင်ကို ရွေးပါ"
 
-#: data/ui/remmina_preferences.glade:2459
+#: data/ui/remmina_preferences.glade:2422
 #, fuzzy
 msgid "Pick a yellow colour"
 msgstr "အဝါရောင်ကိုရွေးပါ"
 
-#: data/ui/remmina_preferences.glade:2473
+#: data/ui/remmina_preferences.glade:2436
 #, fuzzy
 msgid "Pick a blue colour"
 msgstr "အပြာရောင်ကိုရွေးပါ"
 
-#: data/ui/remmina_preferences.glade:2487
+#: data/ui/remmina_preferences.glade:2450
 #, fuzzy
 msgid "Pick a magenta colour"
 msgstr "မာဂျန်တာအရောင်ကို ရွေးပါ"
 
-#: data/ui/remmina_preferences.glade:2501
+#: data/ui/remmina_preferences.glade:2464
 #, fuzzy
 msgid "Pick a cyan colour"
 msgstr "ဆီယန်အရောင်ကို ရွေးပါ"
 
-#: data/ui/remmina_preferences.glade:2515
+#: data/ui/remmina_preferences.glade:2478
 #, fuzzy
 msgid "Pick a white colour"
 msgstr "အဖြူရောင်အရောင်ကို ရွေးပါ"
 
-#: data/ui/remmina_preferences.glade:2528
+#: data/ui/remmina_preferences.glade:2491
 #, fuzzy
 msgid "Normal colours"
 msgstr "သာမန်အရောင်များ"
 
-#: data/ui/remmina_preferences.glade:2541
-#: data/ui/remmina_preferences.glade:2556
+#: data/ui/remmina_preferences.glade:2504
+#: data/ui/remmina_preferences.glade:2519
 #, fuzzy
 msgid "Cursor colour"
 msgstr "ကျူဆာအရောင်"
 
-#: data/ui/remmina_preferences.glade:2570
-#: data/ui/remmina_preferences.glade:2585
+#: data/ui/remmina_preferences.glade:2533
+#: data/ui/remmina_preferences.glade:2548
 #, fuzzy
 msgid "Background colour"
 msgstr "နောက်ခံအရောင်"
 
-#: data/ui/remmina_preferences.glade:2601
-#: data/ui/remmina_preferences.glade:2615
+#: data/ui/remmina_preferences.glade:2564
+#: data/ui/remmina_preferences.glade:2578
 #, fuzzy
 msgid "Foreground colour"
 msgstr "မြေပြင်အရောင်"
 
-#: data/ui/remmina_preferences.glade:2628
+#: data/ui/remmina_preferences.glade:2591
 #, fuzzy
 msgid "Increase and decrease font size"
 msgstr "ဖောင့်အရွယ်အစားကို တိုးမြှင့်ပြီး လျှော့ချပါ"
 
-#: data/ui/remmina_preferences.glade:2658
+#: data/ui/remmina_preferences.glade:2621
 #, fuzzy
 msgid "Search text shortcut"
 msgstr "စာသားလမ်းကြောင်းကို ရှာဖွေပါ"
 
-#: data/ui/remmina_preferences.glade:2689
-#: data/ui/remmina_preferences.glade:2704
+#: data/ui/remmina_preferences.glade:2652
+#: data/ui/remmina_preferences.glade:2667
 #, fuzzy
 msgid "Bold colour"
 msgstr "ရဲရဲရင့်အရောင်"
 
-#: data/ui/remmina_preferences.glade:2718
-#: data/ui/remmina_preferences.glade:2759
+#: data/ui/remmina_preferences.glade:2681
+#: data/ui/remmina_preferences.glade:2722
 #, fuzzy
 msgid "Highlight colour"
 msgstr "ပေါ်လွင်တဲ့ အရောင်"
 
-#: data/ui/remmina_preferences.glade:2731
-#: data/ui/remmina_preferences.glade:2775
+#: data/ui/remmina_preferences.glade:2694
+#: data/ui/remmina_preferences.glade:2738
 #, fuzzy
 msgid "Highlight foreground colour"
 msgstr "ကြိုတင်ပြင်ဆင်ထားတဲ့ အရောင်ကို မီးမောင်းထိုးပြပါ"
 
-#: data/ui/remmina_preferences.glade:2744
-#: data/ui/remmina_preferences.glade:2791
+#: data/ui/remmina_preferences.glade:2707
+#: data/ui/remmina_preferences.glade:2754
 #, fuzzy
 msgid "Cursor foreground colour"
 msgstr "မြေပြင်အရောင်"
 
-#: data/ui/remmina_preferences.glade:2847
+#: data/ui/remmina_preferences.glade:2810
 #, fuzzy
 msgid "Terminal"
 msgstr "Terminal"
 
-#: data/ui/remmina_preferences.glade:2861
+#: data/ui/remmina_preferences.glade:2824
 #, fuzzy
 msgid "Remmina Preferences"
 msgstr "Remmina ကြိုက်နှစ်သက်မှုများ"
@@ -5529,6 +5522,34 @@ msgstr "ရမ်မီနာကိုဖွင့်ပါ"
 #, fuzzy
 msgid "Master password"
 msgstr "Master စကားဝှက်"
+
+#, fuzzy
+#~ msgid "Use a Primary Password"
+#~ msgstr "ကျွမ်းကျင်သော စကားဝှက်ကို အသုံးပြုပါ"
+
+#, fuzzy
+#~ msgid "Primary Password validity in seconds"
+#~ msgstr "စက္ကန့်များအတွင်း ကျွမ်းကျင်သော စကားဝှက် တရားဝင်မှု"
+
+#, fuzzy
+#~ msgid "Weak (password may be guessed)"
+#~ msgstr "အသုံးပြုပြီးနောက် စကားဝှက်များကို မေ့လျော့ပါ"
+
+#, fuzzy
+#~ msgid "Connection profiles passwords encryption"
+#~ msgstr "ဆက်သွယ်မှု ပရိုဖိုင်ကို ပြုပြင်ပါ (သတ်မှတ်-ရွေးချယ်မှု)"
+
+#, fuzzy
+#~ msgid "Enable auditing logs"
+#~ msgstr "အသံလိုင်းကို ခွင့်ပြုပါ"
+
+#, fuzzy
+#~ msgid "Trust all fingerprints and certificates"
+#~ msgstr "လက်ဗွေရာများနှင့် လက်မှတ်အားလုံးကို ယုံကြည်ကိုးစားပါ"
+
+#, fuzzy
+#~ msgid "Certificate settings"
+#~ msgstr "လက်မှတ် အသေးစိတ် အချက်အလက်များ -"
 
 #, fuzzy
 #~ msgid "An unknown error occured while trying to start PyHoca-CLI."

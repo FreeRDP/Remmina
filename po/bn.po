@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-01-14 00:07+0000\n"
+"POT-Creation-Date: 2022-01-14 09:44+0000\n"
 "PO-Revision-Date: 2021-12-17 08:42+0000\n"
 "Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
 "Language-Team: Bengali <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -27,7 +27,7 @@ msgstr ""
 #: src/remmina_ssh_plugin.c:1389 plugins/rdp/rdp_plugin.c:2763
 #: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:3227
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_passwd.glade:84
-#: data/ui/remmina_preferences.glade:1692 data/ui/remmina_unlock.glade:109
+#: data/ui/remmina_unlock.glade:109
 #, fuzzy
 msgid "Password"
 msgstr "পাসওয়ার্ড"
@@ -307,7 +307,7 @@ msgstr "বাতিল করুন"
 #: src/remmina_message_panel.c:199 data/ui/remmina_snap_info_dialog.glade:28
 #: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
 #: data/ui/remmina_string_list.glade:63 data/ui/remmina_news.glade:33
-#: data/ui/remmina_preferences.glade:2865
+#: data/ui/remmina_preferences.glade:2828
 #, fuzzy
 msgid "Close"
 msgstr "বন্ধ করুন"
@@ -3064,13 +3064,13 @@ msgstr "আরডিপি - পছন্দ"
 msgid "Export connection in Windows .rdp file format"
 msgstr "উইন্ডোজ .আরডিপি ফাইল ফরম্যাটে সংযোগ রপ্তানি করুন"
 
-#: plugins/rdp/rdp_event.c:344
+#: plugins/rdp/rdp_event.c:348
 #, fuzzy, c-format
 msgid "Reconnection attempt %d of %d…"
 msgstr "[এক্স২৭এক্স] এর পুনরায় সংযোগ প্রচেষ্টা [এক্স২১এক্স]…"
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
-#: plugins/rdp/rdp_event.c:1117
+#: plugins/rdp/rdp_event.c:1121
 #, fuzzy, c-format
 msgid "Connected to %s via RDP"
 msgstr "এসএসএইচ-এর মাধ্যমে [এক্স১৪এক্স] এর সাথে সংযোগ করা হচ্ছে…"
@@ -4913,11 +4913,11 @@ msgstr ""
 msgid "Template for profile filenames"
 msgstr "প্রোফাইল ফাইলের নামের জন্য টেমপ্লেট"
 
-#. Place holders used to name a Remmina connection profile
+#. Placeholders used to name a Remmina connection profile
 #: data/ui/remmina_preferences.glade:361
 #, fuzzy
 msgid ""
-"%G Group name (slash will be converted to - automatically)\n"
+"%G Name of group (slashes \\/ are converted to dashes -)\n"
 "%P Protocol name\n"
 "%N Connection name\n"
 "%h Hostname/IP\n"
@@ -5213,11 +5213,11 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:1634
 #, fuzzy
-msgid "Use a Primary Password"
-msgstr "মাস্টার পাসওয়ার্ড ব্যবহার করুন"
+msgid "Use Remmina password"
+msgstr "ব্যবহারকারীর পাসওয়ার্ড"
 
 #: data/ui/remmina_preferences.glade:1645
-#: data/ui/remmina_preferences.glade:2006
+#: data/ui/remmina_preferences.glade:1969
 #, fuzzy
 msgid "Use secret key authentication for some widgets"
 msgstr "কিছু উইজেটের জন্য গোপন কী প্রমাণীকরণ ব্যবহার করুন"
@@ -5228,153 +5228,146 @@ msgid "Automatic lock interval"
 msgstr "স্বয়ংক্রিয় লক বিরতি"
 
 #: data/ui/remmina_preferences.glade:1673
+msgid "Number of seconds to keep password valid for"
+msgstr ""
+
+#: data/ui/remmina_preferences.glade:1692
 #, fuzzy
-msgid "Primary Password validity in seconds"
-msgstr "সেকেন্ডে পাসওয়ার্ডের বৈধতা আয়ত্ত করুন"
+msgid "Enter new password"
+msgstr "ভিএনসি পাসওয়ার্ড লিখুন"
 
 #: data/ui/remmina_preferences.glade:1722
 #, fuzzy
-msgid "Repeat the password"
+msgid "Re-enter password"
 msgstr "পাসওয়ার্ডটি পুনরাবৃত্তি করুন"
 
 #: data/ui/remmina_preferences.glade:1755
-msgid ""
-"New, edit, copy, delete actions are password protected with the Primary "
-"Password"
+msgid "Creation, editing, copying, and deletions require the Remmina password"
 msgstr ""
 
-#. New, edit, copy, delete actions are password protected
-#: data/ui/remmina_preferences.glade:1759
-msgid "Requires password to modify"
+#. Creation, editing, copying, and deletions require the primary password
+#: data/ui/remmina_preferences.glade:1758
+msgid "Require to modify"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1797
-msgid "Connecting is password protected with the Primary Password"
-msgstr ""
-
-#: data/ui/remmina_preferences.glade:1800
+#: data/ui/remmina_preferences.glade:1796
 #, fuzzy
-msgid "Requires password to connect"
+msgid "Enter your Remmina password to connect"
 msgstr "কেওয়ালেটে সুরক্ষিত পাসওয়ার্ড সঞ্চয়স্থান"
 
-#: data/ui/remmina_preferences.glade:1817
-msgid "Primary Password settings"
-msgstr ""
+#: data/ui/remmina_preferences.glade:1799
+#, fuzzy
+msgid "Require to connect"
+msgstr "কেওয়ালেটে সুরক্ষিত পাসওয়ার্ড সঞ্চয়স্থান"
 
-#: data/ui/remmina_preferences.glade:1851
+#: data/ui/remmina_preferences.glade:1813
 msgid "Encryption method"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1862
+#: data/ui/remmina_preferences.glade:1824
 msgid ""
-"These are the encryption methods used by Remmina to store passwords and "
-"passphrases.\n"
+"These are the encryption methods used by Remmina to store passwords.\n"
 "\n"
 "Except the \"Weak\" method, all the others are reccomended, Keystore is the "
-"default, as it integrates with GNOME or KDE/Plasma.\n"
+"default, as it integrates with KDE/Plasma and GNOME.\n"
 "\n"
-"Intermediate is the best compromise in terms of RAM/CPU required vs "
-"security, but if you need an extremely secure method you should go with "
-"Sensitive, but it'll use 1Gib of RAM and many CPU cycles to hash your "
-"passwords. "
+"\"Intermediate\" doesn't use as much memory or processsing power, and "
+"\"Sensitive\" is more secure but uses 1 Gib of RAM and many CPU cycles. "
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1872
-msgid "Keystore (kwallet, GNOME keyring)"
+#: data/ui/remmina_preferences.glade:1834
+msgid "Keystore (KWallet, GNOME Keyring)"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1873
+#: data/ui/remmina_preferences.glade:1835
 msgid "Intermediate (+64 Mib RAM)"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1874
+#: data/ui/remmina_preferences.glade:1836
 msgid "Strong (+256 Mib, <1s i7 CPU)"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1875
-msgid "Sensitive (+1024 Mib, <4s i7 CPU)"
+#: data/ui/remmina_preferences.glade:1837
+msgid "Sensitive (+1 Gib, <4s i7 CPU)"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1876
-#, fuzzy
-msgid "Weak (password may be guessed)"
-msgstr "ব্যবহারের পরে পাসওয়ার্ডগুলি ভুলে যান"
-
-#: data/ui/remmina_preferences.glade:1877
-msgid "None (clear text)"
+#: data/ui/remmina_preferences.glade:1838
+msgid "Weak (guessable)"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1894
-#, fuzzy
-msgid "Connection profiles passwords encryption"
-msgstr "সংযোগ প্রোফাইল পরিবর্তন করুন (-সেট-বিকল্প প্রয়োজন)"
+#: data/ui/remmina_preferences.glade:1839
+msgid "None (cleartext)"
+msgstr ""
 
-#: data/ui/remmina_preferences.glade:1928
-#, fuzzy
-msgid "Enable auditing logs"
-msgstr "অডিও চ্যানেল সক্রিয় করুন"
+#: data/ui/remmina_preferences.glade:1857
+msgid "Logins and Passwords"
+msgstr ""
 
-#: data/ui/remmina_preferences.glade:1959
+#: data/ui/remmina_preferences.glade:1891
 #, fuzzy
-msgid "Auditing settings"
+msgid "Logging"
+msgstr "ডিবাগিং"
+
+#: data/ui/remmina_preferences.glade:1922
+#, fuzzy
+msgid "Auditing"
 msgstr "সেটিংস সম্পাদনা করুন"
 
-#: data/ui/remmina_preferences.glade:1989
+#: data/ui/remmina_preferences.glade:1952
 #, fuzzy
 msgid "Automatically accept all fingerprints and certificates"
 msgstr "সমস্ত আঙুলের ছাপ এবং শংসাপত্র স্বয়ংক্রিয়ভাবে গ্রহণ করুন"
 
-#: data/ui/remmina_preferences.glade:1995
-#, fuzzy
-msgid "Trust all fingerprints and certificates"
-msgstr "সমস্ত আঙুলের ছাপ এবং শংসাপত্রবিশ্বাস করুন"
+#: data/ui/remmina_preferences.glade:1958
+msgid "Trust all"
+msgstr ""
 
-#: data/ui/remmina_preferences.glade:2029
+#: data/ui/remmina_preferences.glade:1992
 #, fuzzy
-msgid "Certificate settings"
+msgid "Certificates and fingerprints"
 msgstr "সার্টিফিকেটের বিবরণ:"
 
-#: data/ui/remmina_preferences.glade:2053
+#: data/ui/remmina_preferences.glade:2016
 #, fuzzy
 msgid "Security"
 msgstr "নিরাপত্তা"
 
-#: data/ui/remmina_preferences.glade:2084
+#: data/ui/remmina_preferences.glade:2047
 #, fuzzy
 msgid "Terminal font"
 msgstr "টার্মিনাল ফন্ট"
 
-#: data/ui/remmina_preferences.glade:2097
+#: data/ui/remmina_preferences.glade:2060
 #, fuzzy
 msgid "Scrollback lines"
 msgstr "স্ক্রোলব্যাক লাইন"
 
-#: data/ui/remmina_preferences.glade:2145
+#: data/ui/remmina_preferences.glade:2108
 #, fuzzy
 msgid "Shortcuts for copying and pasting"
 msgstr "কপি এবং পেস্ট করার শর্টকাট"
 
-#: data/ui/remmina_preferences.glade:2158
+#: data/ui/remmina_preferences.glade:2121
 #, fuzzy
 msgid "Select all shortcuts"
 msgstr "সকল শর্টকাট নির্বাচন করুন"
 
-#: data/ui/remmina_preferences.glade:2171
-#: data/ui/remmina_preferences.glade:2188
-#: data/ui/remmina_preferences.glade:2641
-#: data/ui/remmina_preferences.glade:2671
-#: data/ui/remmina_preferences.glade:2805
-#: data/ui/remmina_preferences.glade:2822
+#: data/ui/remmina_preferences.glade:2134
+#: data/ui/remmina_preferences.glade:2151
+#: data/ui/remmina_preferences.glade:2604
+#: data/ui/remmina_preferences.glade:2634
+#: data/ui/remmina_preferences.glade:2768
+#: data/ui/remmina_preferences.glade:2785
 #, fuzzy
 msgid "(Host key+)"
 msgstr "(হোস্ট কী+)"
 
-#: data/ui/remmina_preferences.glade:2206
+#: data/ui/remmina_preferences.glade:2169
 #, fuzzy
 msgid "Use default system font"
 msgstr "ডিফল্ট সিস্টেম ফন্ট ব্যবহার করুন"
 
-#: data/ui/remmina_preferences.glade:2231
+#: data/ui/remmina_preferences.glade:2194
 #, fuzzy
 msgid ""
 "Selecting “SGR 1” also switches to the bright counterparts of the first 8 "
@@ -5383,17 +5376,17 @@ msgstr ""
 "\"এসজিআর 1\" নির্বাচন করা প্রথম 8 প্যালেট রঙের উজ্জ্বল সমকক্ষগুলিতেও স্যুইচ করে (পাঠ্য "
 "সাহসী করার পাশাপাশি)।"
 
-#: data/ui/remmina_preferences.glade:2247
+#: data/ui/remmina_preferences.glade:2210
 #, fuzzy
 msgid "Allow using bright colours with bold text"
 msgstr "সাহসী পাঠ্য সহ উজ্জ্বল রঙ ব্যবহারের অনুমতি দিন"
 
-#: data/ui/remmina_preferences.glade:2261
+#: data/ui/remmina_preferences.glade:2224
 #, fuzzy
 msgid "Colour theme"
 msgstr "রঙ থিম"
 
-#: data/ui/remmina_preferences.glade:2272
+#: data/ui/remmina_preferences.glade:2235
 #, fuzzy
 msgid ""
 "Choose a colour scheme file. Usually available in /usr/share/remmina/theme. "
@@ -5402,159 +5395,159 @@ msgstr ""
 "একটি রঙ স্কিম ফাইল চয়ন করুন। সাধারণত /ইউএসআর/শেয়ার/রেমিনা/থিমে উপলব্ধ। https://"
 "github.com/mbadolato/iTerm2-Color-Schemes আরও বিশদ আছে।"
 
-#: data/ui/remmina_preferences.glade:2276
+#: data/ui/remmina_preferences.glade:2239
 #, fuzzy
 msgid "Pick a terminal colouring file"
 msgstr "একটি টার্মিনাল রঙের ফাইল বেছে নিন"
 
-#: data/ui/remmina_preferences.glade:2291
+#: data/ui/remmina_preferences.glade:2254
 #, fuzzy
 msgid "Bright colours"
 msgstr "উজ্জ্বল রঙ"
 
-#: data/ui/remmina_preferences.glade:2305
+#: data/ui/remmina_preferences.glade:2268
 #, fuzzy
 msgid "Pick a light black colour"
 msgstr "একটি হালকা কালো রঙ বেছে নিন"
 
-#: data/ui/remmina_preferences.glade:2319
+#: data/ui/remmina_preferences.glade:2282
 #, fuzzy
 msgid "Pick a light red colour"
 msgstr "একটি হালকা লাল রঙ বেছে নিন"
 
-#: data/ui/remmina_preferences.glade:2333
+#: data/ui/remmina_preferences.glade:2296
 #, fuzzy
 msgid "Pick a bright green colour"
 msgstr "একটি উজ্জ্বল সবুজ রঙ বেছে নিন"
 
-#: data/ui/remmina_preferences.glade:2347
+#: data/ui/remmina_preferences.glade:2310
 #, fuzzy
 msgid "Pick a bright yellow colour"
 msgstr "একটি উজ্জ্বল হলুদ রঙ বেছে নিন"
 
-#: data/ui/remmina_preferences.glade:2361
+#: data/ui/remmina_preferences.glade:2324
 #, fuzzy
 msgid "Pick a bright blue colour"
 msgstr "একটি উজ্জ্বল নীল রঙ বেছে নিন"
 
-#: data/ui/remmina_preferences.glade:2375
+#: data/ui/remmina_preferences.glade:2338
 #, fuzzy
 msgid "Pick a light magenta colour"
 msgstr "একটি হালকা ম্যাজেন্টা রঙ বেছে নিন"
 
-#: data/ui/remmina_preferences.glade:2389
+#: data/ui/remmina_preferences.glade:2352
 #, fuzzy
 msgid "Pick a light cyan colour"
 msgstr "একটি হালকা সায়ান রঙ বেছে নিন"
 
-#: data/ui/remmina_preferences.glade:2403
+#: data/ui/remmina_preferences.glade:2366
 #, fuzzy
 msgid "Pick a light white colour"
 msgstr "একটি হালকা সাদা রঙ বেছে নিন"
 
-#: data/ui/remmina_preferences.glade:2417
+#: data/ui/remmina_preferences.glade:2380
 #, fuzzy
 msgid "Pick a black colour"
 msgstr "একটি কালো রঙ বেছে নিন"
 
-#: data/ui/remmina_preferences.glade:2431
+#: data/ui/remmina_preferences.glade:2394
 #, fuzzy
 msgid "Pick a red colour"
 msgstr "একটি লাল রঙ বেছে নিন"
 
-#: data/ui/remmina_preferences.glade:2445
+#: data/ui/remmina_preferences.glade:2408
 #, fuzzy
 msgid "Pick a green colour"
 msgstr "একটি সবুজ রঙ বেছে নিন"
 
-#: data/ui/remmina_preferences.glade:2459
+#: data/ui/remmina_preferences.glade:2422
 #, fuzzy
 msgid "Pick a yellow colour"
 msgstr "একটি হলুদ রঙ বেছে নিন"
 
-#: data/ui/remmina_preferences.glade:2473
+#: data/ui/remmina_preferences.glade:2436
 #, fuzzy
 msgid "Pick a blue colour"
 msgstr "একটি নীল রঙ বেছে নিন"
 
-#: data/ui/remmina_preferences.glade:2487
+#: data/ui/remmina_preferences.glade:2450
 #, fuzzy
 msgid "Pick a magenta colour"
 msgstr "একটি ম্যাজেন্টা রঙ বেছে নিন"
 
-#: data/ui/remmina_preferences.glade:2501
+#: data/ui/remmina_preferences.glade:2464
 #, fuzzy
 msgid "Pick a cyan colour"
 msgstr "একটি সায়ান রঙ বেছে নিন"
 
-#: data/ui/remmina_preferences.glade:2515
+#: data/ui/remmina_preferences.glade:2478
 #, fuzzy
 msgid "Pick a white colour"
 msgstr "একটি সাদা রঙ বেছে নিন"
 
-#: data/ui/remmina_preferences.glade:2528
+#: data/ui/remmina_preferences.glade:2491
 #, fuzzy
 msgid "Normal colours"
 msgstr "সাধারণ রঙ"
 
-#: data/ui/remmina_preferences.glade:2541
-#: data/ui/remmina_preferences.glade:2556
+#: data/ui/remmina_preferences.glade:2504
+#: data/ui/remmina_preferences.glade:2519
 #, fuzzy
 msgid "Cursor colour"
 msgstr "কার্সার ের রঙ"
 
-#: data/ui/remmina_preferences.glade:2570
-#: data/ui/remmina_preferences.glade:2585
+#: data/ui/remmina_preferences.glade:2533
+#: data/ui/remmina_preferences.glade:2548
 #, fuzzy
 msgid "Background colour"
 msgstr "পিছনের রঙ"
 
-#: data/ui/remmina_preferences.glade:2601
-#: data/ui/remmina_preferences.glade:2615
+#: data/ui/remmina_preferences.glade:2564
+#: data/ui/remmina_preferences.glade:2578
 #, fuzzy
 msgid "Foreground colour"
 msgstr "ফোরগ্রাউন্ড রঙ"
 
-#: data/ui/remmina_preferences.glade:2628
+#: data/ui/remmina_preferences.glade:2591
 #, fuzzy
 msgid "Increase and decrease font size"
 msgstr "ফন্টের আকার বৃদ্ধি ও হ্রাস করুন"
 
-#: data/ui/remmina_preferences.glade:2658
+#: data/ui/remmina_preferences.glade:2621
 #, fuzzy
 msgid "Search text shortcut"
 msgstr "পাঠ্য শর্টকাট অনুসন্ধান করুন"
 
-#: data/ui/remmina_preferences.glade:2689
-#: data/ui/remmina_preferences.glade:2704
+#: data/ui/remmina_preferences.glade:2652
+#: data/ui/remmina_preferences.glade:2667
 #, fuzzy
 msgid "Bold colour"
 msgstr "বোল্ড রঙ"
 
-#: data/ui/remmina_preferences.glade:2718
-#: data/ui/remmina_preferences.glade:2759
+#: data/ui/remmina_preferences.glade:2681
+#: data/ui/remmina_preferences.glade:2722
 #, fuzzy
 msgid "Highlight colour"
 msgstr "রঙ হাইলাইট করুন"
 
-#: data/ui/remmina_preferences.glade:2731
-#: data/ui/remmina_preferences.glade:2775
+#: data/ui/remmina_preferences.glade:2694
+#: data/ui/remmina_preferences.glade:2738
 #, fuzzy
 msgid "Highlight foreground colour"
 msgstr "ফোরগ্রাউন্ড রঙ হাইলাইট করুন"
 
-#: data/ui/remmina_preferences.glade:2744
-#: data/ui/remmina_preferences.glade:2791
+#: data/ui/remmina_preferences.glade:2707
+#: data/ui/remmina_preferences.glade:2754
 #, fuzzy
 msgid "Cursor foreground colour"
 msgstr "কার্সার ফোরগ্রাউন্ড রঙ"
 
-#: data/ui/remmina_preferences.glade:2847
+#: data/ui/remmina_preferences.glade:2810
 #, fuzzy
 msgid "Terminal"
 msgstr "টার্মিনাল"
 
-#: data/ui/remmina_preferences.glade:2861
+#: data/ui/remmina_preferences.glade:2824
 #, fuzzy
 msgid "Remmina Preferences"
 msgstr "রেমিনা পছন্দ"
@@ -5573,6 +5566,34 @@ msgstr "রেমিনা আনলক করুন"
 #, fuzzy
 msgid "Master password"
 msgstr "মাস্টার পাসওয়ার্ড"
+
+#, fuzzy
+#~ msgid "Use a Primary Password"
+#~ msgstr "মাস্টার পাসওয়ার্ড ব্যবহার করুন"
+
+#, fuzzy
+#~ msgid "Primary Password validity in seconds"
+#~ msgstr "সেকেন্ডে পাসওয়ার্ডের বৈধতা আয়ত্ত করুন"
+
+#, fuzzy
+#~ msgid "Weak (password may be guessed)"
+#~ msgstr "ব্যবহারের পরে পাসওয়ার্ডগুলি ভুলে যান"
+
+#, fuzzy
+#~ msgid "Connection profiles passwords encryption"
+#~ msgstr "সংযোগ প্রোফাইল পরিবর্তন করুন (-সেট-বিকল্প প্রয়োজন)"
+
+#, fuzzy
+#~ msgid "Enable auditing logs"
+#~ msgstr "অডিও চ্যানেল সক্রিয় করুন"
+
+#, fuzzy
+#~ msgid "Trust all fingerprints and certificates"
+#~ msgstr "সমস্ত আঙুলের ছাপ এবং শংসাপত্রবিশ্বাস করুন"
+
+#, fuzzy
+#~ msgid "Certificate settings"
+#~ msgstr "সার্টিফিকেটের বিবরণ:"
 
 #, fuzzy, c-format
 #~ msgid "Couldn't get property with index '%i' out of selected row."
