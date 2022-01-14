@@ -1990,7 +1990,7 @@ static gchar vnciport_tooltip[] =
 static gchar vncencodings_tooltip[] =
 	N_("Overriding the pre-set VNC encoding quality:\n"
 	   "\n"
-	   "  • “Poor (fastest)" sets encoding to “copyrect zlib hextile raw”\n"
+	   "  • “Poor (fastest)” sets encoding to “copyrect zlib hextile raw”\n"
 	   "  • “Medium” sets encoding to “tight zrle ultra copyrect hextile zlib corre rre raw”\n"
 	   "  • “Good” sets encoding to “tight zrle ultra copyrect hextile zlib corre rre raw”\n"
 	   "  • “Best (slowest)” sets encoding to “copyrect zrle ultra zlib hextile corre rre raw”");
