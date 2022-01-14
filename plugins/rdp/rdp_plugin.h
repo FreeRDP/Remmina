@@ -82,7 +82,7 @@ typedef struct rf_context rfContext;
 #define GET_PLUGIN_DATA(gp) (rfContext *)g_object_get_data(G_OBJECT(gp), "plugin-data")
 
 /**
- * Performance Flags, from freerdp source
+ * Performance Flags, from FreeRDP source
  *
  * PERF_FLAG_NONE 0x00000000
  * PERF_DISABLE_WALLPAPER 0x00000001

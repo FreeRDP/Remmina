@@ -789,7 +789,7 @@ gboolean remmina_pref_save(void)
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "deny_screenshot_clipboard", remmina_pref.deny_screenshot_clipboard);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "save_view_mode", remmina_pref.save_view_mode);
 	if (g_key_file_remove_key (gkeyfile, "remmina_pref", "use_master_password", NULL))
-		REMMINA_DEBUG("use_master_password removed...");
+		REMMINA_DEBUG("use_master_password removed…");
 	else
 		REMMINA_INFO("use_master_password already migrated");
 #if SODIUM_VERSION_INT >= 90200

@@ -358,7 +358,7 @@
                       <object class="GtkEntry" id="entry_options_file_name">
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
-                        <property name="tooltip-text" translatable="yes" comments="Place holders used to name a Remmina connection profile">%G Group name (slash will be converted to - automatically)
+                        <property name="tooltip-text" translatable="yes" comments="Placeholders used to name a Remmina connection profile">%G Name of group (slashes \/ are converted to dashes -)
 %P Protocol name
 %N Connection name
 %h Hostname/IP
@@ -1617,7 +1617,7 @@ It changes the background colour of connection names in the Remmina connection t
                             <property name="can-focus">False</property>
                             <property name="left-padding">12</property>
                             <child>
-                              <!-- n-columns=2 n-rows=6 -->
+                              <!-- n-columns=2 n-rows=7 -->
                               <object class="GtkGrid" id="grid_security">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
@@ -1631,7 +1631,7 @@ It changes the background colour of connection names in the Remmina connection t
                                     <property name="halign">start</property>
                                     <property name="margin-start">18</property>
                                     <property name="margin-top">9</property>
-                                    <property name="label" translatable="yes">Use a Primary Password</property>
+                                    <property name="label" translatable="yes">Use Remmina password</property>
                                   </object>
                                   <packing>
                                     <property name="left-attach">0</property>
@@ -1670,7 +1670,7 @@ It changes the background colour of connection names in the Remmina connection t
                                   <object class="GtkEntry" id="unlock_timeout">
                                     <property name="visible">True</property>
                                     <property name="can-focus">True</property>
-                                    <property name="tooltip-text" translatable="yes">Primary Password validity in seconds</property>
+                                    <property name="tooltip-text" translatable="yes">Number of seconds to keep password valid for</property>
                                     <property name="halign">start</property>
                                     <property name="margin-start">6</property>
                                     <property name="margin-end">18</property>
@@ -1689,7 +1689,7 @@ It changes the background colour of connection names in the Remmina connection t
                                     <property name="can-focus">False</property>
                                     <property name="halign">start</property>
                                     <property name="margin-start">18</property>
-                                    <property name="label" translatable="yes">Password</property>
+                                    <property name="label" translatable="yes">Enter new password</property>
                                   </object>
                                   <packing>
                                     <property name="left-attach">0</property>
@@ -1719,7 +1719,7 @@ It changes the background colour of connection names in the Remmina connection t
                                     <property name="can-focus">False</property>
                                     <property name="halign">start</property>
                                     <property name="margin-start">18</property>
-                                    <property name="label" translatable="yes">Repeat the password</property>
+                                    <property name="label" translatable="yes">Re-enter password</property>
                                   </object>
                                   <packing>
                                     <property name="left-attach">0</property>
@@ -1752,11 +1752,10 @@ It changes the background colour of connection names in the Remmina connection t
                                   <object class="GtkLabel" id="label_security_lock_edit">
                                     <property name="visible">True</property>
                                     <property name="can-focus">False</property>
-                                    <property name="tooltip-text" translatable="yes">New, edit, copy, delete actions are password protected with the Primary Password</property>
+                                    <property name="tooltip-text" translatable="yes">Creation, editing, copying, and deletions require the Remmina password</property>
                                     <property name="halign">start</property>
                                     <property name="margin-start">18</property>
-                                    <property name="margin-bottom">9</property>
-                                    <property name="label" translatable="yes" comments="New, edit, copy, delete actions are password protected">Requires password to modify</property>
+                                    <property name="label" translatable="yes" comments="Creation, editing, copying, and deletions require the primary password">Require to modify</property>
                                   </object>
                                   <packing>
                                     <property name="left-attach">0</property>
@@ -1794,14 +1793,55 @@ It changes the background colour of connection names in the Remmina connection t
                                   <object class="GtkLabel" id="label_security_lock_connection">
                                     <property name="visible">True</property>
                                     <property name="can-focus">False</property>
-                                    <property name="tooltip-text" translatable="yes">Connecting is password protected with the Primary Password</property>
+                                    <property name="tooltip-text" translatable="yes">Enter your Remmina password to connect</property>
                                     <property name="halign">start</property>
                                     <property name="margin-start">18</property>
-                                    <property name="label" translatable="yes">Requires password to connect</property>
+                                    <property name="label" translatable="yes">Require to connect</property>
                                   </object>
                                   <packing>
                                     <property name="left-attach">0</property>
                                     <property name="top-attach">4</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkLabel">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="halign">start</property>
+                                    <property name="margin-start">18</property>
+                                    <property name="margin-bottom">9</property>
+                                    <property name="label" translatable="yes">Encryption method</property>
+                                  </object>
+                                  <packing>
+                                    <property name="left-attach">0</property>
+                                    <property name="top-attach">6</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkComboBoxText" id="comboboxtext_security_enc_method">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="tooltip-text" translatable="yes">These are the encryption methods used by Remmina to store passwords.
+
+Except the "Weak" method, all the others are reccomended, Keystore is the default, as it integrates with KDE/Plasma and GNOME.
+
+"Intermediate" doesn't use as much memory or processsing power, and "Sensitive" is more secure but uses 1 Gib of RAM and many CPU cycles. </property>
+                                    <property name="halign">start</property>
+                                    <property name="margin-start">6</property>
+                                    <property name="margin-end">18</property>
+                                    <property name="margin-bottom">9</property>
+                                    <items>
+                                      <item id="0" translatable="yes">Keystore (KWallet, GNOME Keyring)</item>
+                                      <item id="1" translatable="yes">Intermediate (+64 Mib RAM)</item>
+                                      <item id="2" translatable="yes">Strong (+256 Mib, &lt;1s i7 CPU)</item>
+                                      <item id="3" translatable="yes">Sensitive (+1 Gib, &lt;4s i7 CPU)</item>
+                                      <item id="4" translatable="yes">Weak (guessable)</item>
+                                      <item id="5" translatable="yes">None (cleartext)</item>
+                                    </items>
+                                  </object>
+                                  <packing>
+                                    <property name="left-attach">1</property>
+                                    <property name="top-attach">6</property>
                                   </packing>
                                 </child>
                               </object>
@@ -1814,7 +1854,7 @@ It changes the background colour of connection names in the Remmina connection t
                             <property name="can-focus">False</property>
                             <property name="margin-start">9</property>
                             <property name="margin-top">18</property>
-                            <property name="label" translatable="yes">Primary Password settings</property>
+                            <property name="label" translatable="yes">Logins and Passwords</property>
                           </object>
                         </child>
                       </object>
@@ -1822,83 +1862,6 @@ It changes the background colour of connection names in the Remmina connection t
                         <property name="expand">False</property>
                         <property name="fill">True</property>
                         <property name="position">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkFrame">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="label-xalign">0</property>
-                        <property name="shadow-type">out</property>
-                        <child>
-                          <object class="GtkAlignment">
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="left-padding">12</property>
-                            <child>
-                              <!-- n-columns=2 n-rows=1 -->
-                              <object class="GtkGrid" id="grid_security_encryption">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <child>
-                                  <object class="GtkLabel">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">False</property>
-                                    <property name="halign">start</property>
-                                    <property name="margin-left">18</property>
-                                    <property name="margin-start">18</property>
-                                    <property name="margin-top">9</property>
-                                    <property name="label" translatable="yes">Encryption method</property>
-                                  </object>
-                                  <packing>
-                                    <property name="left-attach">0</property>
-                                    <property name="top-attach">0</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkComboBoxText" id="comboboxtext_security_enc_method">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">False</property>
-                                    <property name="tooltip-text" translatable="yes">These are the encryption methods used by Remmina to store passwords and passphrases.
-
-Except the "Weak" method, all the others are reccomended, Keystore is the default, as it integrates with GNOME or KDE/Plasma.
-
-Intermediate is the best compromise in terms of RAM/CPU required vs security, but if you need an extremely secure method you should go with Sensitive, but it'll use 1Gib of RAM and many CPU cycles to hash your passwords. </property>
-                                    <property name="halign">start</property>
-                                    <property name="margin-start">6</property>
-                                    <property name="margin-end">18</property>
-                                    <property name="margin-top">9</property>
-                                    <items>
-                                      <item id="0" translatable="yes">Keystore (kwallet, GNOME keyring)</item>
-                                      <item id="1" translatable="yes">Intermediate (+64 Mib RAM)</item>
-                                      <item id="2" translatable="yes">Strong (+256 Mib, &lt;1s i7 CPU)</item>
-                                      <item id="3" translatable="yes">Sensitive (+1024 Mib, &lt;4s i7 CPU)</item>
-                                      <item id="4" translatable="yes">Weak (password may be guessed)</item>
-                                      <item id="5" translatable="yes">None (clear text)</item>
-                                    </items>
-                                  </object>
-                                  <packing>
-                                    <property name="left-attach">1</property>
-                                    <property name="top-attach">0</property>
-                                  </packing>
-                                </child>
-                              </object>
-                            </child>
-                          </object>
-                        </child>
-                        <child type="label">
-                          <object class="GtkLabel">
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="margin-start">9</property>
-                            <property name="label" translatable="yes">Connection profiles passwords encryption</property>
-                          </object>
-                        </child>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">1</property>
                       </packing>
                     </child>
                     <child>
@@ -1925,7 +1888,7 @@ Intermediate is the best compromise in terms of RAM/CPU required vs security, bu
                                     <property name="margin-start">18</property>
                                     <property name="margin-top">9</property>
                                     <property name="margin-bottom">9</property>
-                                    <property name="label" translatable="yes">Enable auditing logs</property>
+                                    <property name="label" translatable="yes">Logging</property>
                                   </object>
                                   <packing>
                                     <property name="left-attach">0</property>
@@ -1956,7 +1919,7 @@ Intermediate is the best compromise in terms of RAM/CPU required vs security, bu
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="margin-start">9</property>
-                            <property name="label" translatable="yes">Auditing settings</property>
+                            <property name="label" translatable="yes">Auditing</property>
                           </object>
                         </child>
                       </object>
@@ -1992,7 +1955,7 @@ Intermediate is the best compromise in terms of RAM/CPU required vs security, bu
                                     <property name="margin-start">18</property>
                                     <property name="margin-top">9</property>
                                     <property name="margin-bottom">18</property>
-                                    <property name="label" translatable="yes">Trust all fingerprints and certificates</property>
+                                    <property name="label" translatable="yes">Trust all</property>
                                   </object>
                                   <packing>
                                     <property name="left-attach">0</property>
@@ -2026,7 +1989,7 @@ Intermediate is the best compromise in terms of RAM/CPU required vs security, bu
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="margin-start">9</property>
-                            <property name="label" translatable="yes">Certificate settings</property>
+                            <property name="label" translatable="yes">Certificates and fingerprints</property>
                           </object>
                         </child>
                       </object>

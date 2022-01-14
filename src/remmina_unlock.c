@@ -60,7 +60,7 @@ static void remmina_unlock_timer_init()
 	TRACE_CALL(__func__);
 
 	timer = g_timer_new();
-	REMMINA_DEBUG("Unlock Primary Password timer initialized");
+	REMMINA_DEBUG("Validity timer for Remmina password started");
 }
 
 static void remmina_unlock_timer_reset(gpointer user_data)
@@ -68,7 +68,7 @@ static void remmina_unlock_timer_reset(gpointer user_data)
 	TRACE_CALL(__func__);
 
 	g_timer_reset(timer);
-	REMMINA_DEBUG("Unlock Primary Password timer reset");
+	REMMINA_DEBUG("Validity timer for Remmina password reset");
 }
 
 void remmina_unlock_timer_destroy()
@@ -93,11 +93,11 @@ static void remmina_unlock_unlock_clicked(GtkButton *btn, gpointer user_data)
 	//REMMINA_DEBUG("remmina_sodium_pwhash_str_verify returned %i", rc);
 
 	if (rc == 0) {
-		REMMINA_DEBUG("Passphrase veryfied successfully");
+		REMMINA_DEBUG("Password verified");
 		//unlocked = FALSE;
 		remmina_unlock_dialog->retval = TRUE;
 	} else {
-		REMMINA_WARNING ("Passphrase is wrong, to reset it, you can edit the remmina.pref file by hand");
+		REMMINA_WARNING ("The password is wrong. Reset it by editing the remmina.pref file by hand");
 		remmina_unlock_timer_reset(NULL);
 		remmina_unlock_dialog->retval = FALSE;
 	}
@@ -147,7 +147,7 @@ gint remmina_unlock_new(GtkWindow *parent)
 	/* We don't lock as it has been already requested */
 	//if (!unlocked && ((int)unlock_timeout - elapsed) > 0) unlocked = TRUE;
 
-	REMMINA_DEBUG("Based on settings and current status, the unlock dialog is set to %d", unlocked);
+	REMMINA_DEBUG("Based on settings and current status, the unlocking dialog is set to %d", unlocked);
 
 	if (unlocked) {
 		REMMINA_DEBUG ("No need to request a password");
@@ -205,7 +205,7 @@ gint remmina_unlock_new(GtkWindow *parent)
 				if (!remmina_unlock_dialog->retval)
 					REMMINA_DEBUG ("Wrong password");
 				else {
-					REMMINA_DEBUG ("Password is correct, unlocking…");
+					REMMINA_DEBUG ("Correct password. Unlocking…");
 					unlocked = TRUE;
 				}
 				REMMINA_DEBUG ("retval: %d", remmina_unlock_dialog->retval);
@@ -214,7 +214,7 @@ gint remmina_unlock_new(GtkWindow *parent)
 				//unlocked = FALSE;
 				remmina_unlock_dialog->retval = FALSE;
 				remmina_unlock_timer_destroy ();
-				REMMINA_DEBUG ("Password not requested. retval: %d", remmina_unlock_dialog->retval);
+				REMMINA_DEBUG ("Password not requested. Return value: %d", remmina_unlock_dialog->retval);
 				break;
 		}
 
