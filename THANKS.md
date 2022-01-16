@@ -10,6 +10,32 @@ This is not to reduce the importance of smaller donations, as we all give what w
 - [Khalifa Alshamsi ](https://twitter.com/kha1ifa__)
 - [Tim Richardson - GrowthPath founder](https://www.growthpath.com.au/people/growthpath-team-2)
 
+### Year 2021 donors
+
+- Bruno Gadaleta
+- /u/esmpsu89
+- Dark Star
+- Vinz
+- Andre Steinz
+- Eric Taylor
+- Incognito
+- MARCELO
+- L.Adigard
+- Antoni Aloy Torrens
+- Raphael Schweikert sabberworm 
+- Marwan Yassin Marware 
+- dpirly
+- Brendan Long brendanlong
+- Gabriel Einsdorf gab1one 
+- Malcolm Smith mds08011
+- Vektor Prime vektorprime 
+- theschitz theschitz
+- Matthew Mattox mattmattox 
+- Yoann YoannMourot 
+
+Coporates:
+- Babiel GmbH
+
 ### Year 2020 donors
 
 - Абрамов Павел
