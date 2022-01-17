@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-01-14 09:44+0000\n"
+"POT-Creation-Date: 2022-01-17 11:09+0000\n"
 "PO-Revision-Date: 2021-12-17 08:46+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/remmina/"
@@ -254,43 +254,43 @@ msgstr "Meta+"
 msgid "<None>"
 msgstr "<nincs>"
 
-#: src/remmina_pref_dialog.c:91 src/remmina_file_editor.c:528
+#: src/remmina_pref_dialog.c:92 src/remmina_file_editor.c:528
 #, fuzzy
 msgid "Resolutions"
 msgstr "Felbontások"
 
-#: src/remmina_pref_dialog.c:91 src/remmina_file_editor.c:528
+#: src/remmina_pref_dialog.c:92 src/remmina_file_editor.c:528
 #, fuzzy
 msgid "Configure the available resolutions"
 msgstr "Az elérhető felbontások beállítása"
 
-#: src/remmina_pref_dialog.c:143
+#: src/remmina_pref_dialog.c:144
 #, fuzzy
 msgid "Recent lists cleared."
 msgstr "Legutóbbiak listája törölve."
 
-#: src/remmina_pref_dialog.c:155 src/rcw.c:2029
+#: src/remmina_pref_dialog.c:156 src/rcw.c:2029
 #: data/ui/remmina_preferences.glade:169 data/ui/remmina_preferences.glade:179
 #, fuzzy
 msgid "Keystrokes"
 msgstr "Billentyűleütések"
 
-#: src/remmina_pref_dialog.c:155
+#: src/remmina_pref_dialog.c:156
 #, fuzzy
 msgid "Configure the keystrokes"
 msgstr "Billentyűleütések beállítása"
 
 #. TRANSLATORS: Do not translate libsodium, is the name of a library
-#: src/remmina_pref_dialog.c:488
+#: src/remmina_pref_dialog.c:474
 #, fuzzy
 msgid "libsodium >= 1.9.0 is required to use Primary Password"
 msgstr "libsodium >= 1.9.0 szükséges master password használathoz"
 
-#: src/remmina_pref_dialog.c:826
+#: src/remmina_pref_dialog.c:808
 msgid "Picking a terminal colouring file replaces the file: "
 msgstr "Válasszon egy terminál színező fájlt"
 
-#: src/remmina_pref_dialog.c:830
+#: src/remmina_pref_dialog.c:812
 #, fuzzy
 msgid ""
 "This file contains the “Custom” terminal colour scheme selectable from the "
@@ -310,7 +310,7 @@ msgstr "Mégse"
 #: src/remmina_message_panel.c:199 data/ui/remmina_snap_info_dialog.glade:28
 #: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
 #: data/ui/remmina_string_list.glade:63 data/ui/remmina_news.glade:33
-#: data/ui/remmina_preferences.glade:2828
+#: data/ui/remmina_preferences.glade:2656
 #, fuzzy
 msgid "Close"
 msgstr "Bezárás"
@@ -1814,7 +1814,7 @@ msgstr "Nem található a \"%s\" fájl."
 
 #. TRANSLATORS: This is a message that pops up when an external Remmina plugin tries to set the window resolution using a legacy parameter.
 #. TRANSLATORS: This is a message that pop-up when an external Remmina plugin tries to set the windows resolution using a legacy parameter.
-#: src/remmina_file.c:474 src/remmina_file.c:520
+#: src/remmina_file.c:473 src/remmina_file.c:519
 #, fuzzy
 msgid ""
 "Using the «resolution» parameter in the Remmina preferences file is "
@@ -5173,13 +5173,6 @@ msgstr "\"Minden billentyűzet esemény rögzítése\" állapotszín"
 
 #: data/ui/remmina_preferences.glade:723
 #, fuzzy
-#| msgid "Grab all keyboard events"
-msgid "Enable/Disable “Grab all keyboard events” status colour"
-msgstr ""
-"\"Minden billentyűzetesemény rögzítése\" állapotszín engedélyezése/letiltása"
-
-#: data/ui/remmina_preferences.glade:739
-#, fuzzy
 msgid ""
 "Hexadecimal- or colour names (red, #ff0000).\n"
 "It changes the background colour of connection names in the Remmina "
@@ -5188,6 +5181,13 @@ msgstr ""
 "Hexadecimális- vagy színnevek (piros, #ff0000).\n"
 "Megváltoztatja a Remmina kapcsolati eszköztárban a kapcsolati nevek "
 "háttérszínét (teljes képernyőn)."
+
+#: data/ui/remmina_preferences.glade:740
+#, fuzzy
+#| msgid "Grab all keyboard events"
+msgid "Enable/Disable “Grab all keyboard events” status colour"
+msgstr ""
+"\"Minden billentyűzetesemény rögzítése\" állapotszín engedélyezése/letiltása"
 
 #: data/ui/remmina_preferences.glade:796
 #, fuzzy
@@ -5338,64 +5338,65 @@ msgstr ""
 msgid "SSH options"
 msgstr "SSH beállítások"
 
-#: data/ui/remmina_preferences.glade:1630
+#: data/ui/remmina_preferences.glade:1603
+msgid ""
+"The number of seconds after Remmina will ask again the password to lock "
+"again the session.\n"
+"It defaults to 300 seconds."
+msgstr ""
+
+#: data/ui/remmina_preferences.glade:1616
 msgid "Set and use a secret key to protect Remmina from unothorized use."
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1634
+#: data/ui/remmina_preferences.glade:1621
 #, fuzzy
-msgid "Use Remmina password"
+msgid "Remmina password"
 msgstr "Felhasználó jelszava"
 
-#: data/ui/remmina_preferences.glade:1645
-#: data/ui/remmina_preferences.glade:1969
+#: data/ui/remmina_preferences.glade:1632
 #, fuzzy
 msgid "Use secret key authentication for some widgets"
 msgstr "Használjon titkos kulcs hitelesítés néhány modulhoz"
 
-#: data/ui/remmina_preferences.glade:1662
-#, fuzzy
-msgid "Automatic lock interval"
-msgstr "Automatikus zárolás intervalum"
+#: data/ui/remmina_preferences.glade:1652
+msgid "Valid for"
+msgstr ""
 
-#: data/ui/remmina_preferences.glade:1673
+#: data/ui/remmina_preferences.glade:1663
 msgid "Number of seconds to keep password valid for"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1692
-#, fuzzy
-msgid "Enter new password"
-msgstr "Adja meg a VNC jelszavát"
-
-#: data/ui/remmina_preferences.glade:1722
-#, fuzzy
-msgid "Re-enter password"
-msgstr "Jelszó ismét"
-
-#: data/ui/remmina_preferences.glade:1755
-msgid "Creation, editing, copying, and deletions require the Remmina password"
+#: data/ui/remmina_preferences.glade:1668
+msgid "timeout in seconds (default 300)"
 msgstr ""
 
-#. Creation, editing, copying, and deletions require the primary password
-#: data/ui/remmina_preferences.glade:1758
-msgid "Require to modify"
-msgstr ""
-
-#: data/ui/remmina_preferences.glade:1796
+#: data/ui/remmina_preferences.glade:1680
 #, fuzzy
 msgid "Enter your Remmina password to connect"
 msgstr "Biztonságos jelszótárolás a KWallet-ben"
 
-#: data/ui/remmina_preferences.glade:1799
+#: data/ui/remmina_preferences.glade:1684
 #, fuzzy
 msgid "Require to connect"
 msgstr "Biztonságos jelszótárolás a KWallet-ben"
 
-#: data/ui/remmina_preferences.glade:1813
-msgid "Encryption method"
+#: data/ui/remmina_preferences.glade:1695
+msgid "Creation, editing, copying, and deletions require the Remmina password"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1824
+#. Creation, editing, copying, and deletions require the primary password
+#: data/ui/remmina_preferences.glade:1699
+msgid "Require to modify"
+msgstr ""
+
+#: data/ui/remmina_preferences.glade:1741
+#, fuzzy
+#| msgid "File encryption"
+msgid "Encryption"
+msgstr "Fájl titkosítás"
+
+#: data/ui/remmina_preferences.glade:1752
 msgid ""
 "These are the encryption methods used by Remmina to store passwords.\n"
 "\n"
@@ -5406,99 +5407,75 @@ msgid ""
 "\"Sensitive\" is more secure but uses 1 Gib of RAM and many CPU cycles. "
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1834
-msgid "Keystore (KWallet, GNOME Keyring)"
-msgstr ""
-
-#: data/ui/remmina_preferences.glade:1835
+#: data/ui/remmina_preferences.glade:1761
 msgid "Intermediate (+64 Mib RAM)"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1836
+#: data/ui/remmina_preferences.glade:1762
 msgid "Strong (+256 Mib, <1s i7 CPU)"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1837
+#: data/ui/remmina_preferences.glade:1763
 msgid "Sensitive (+1 Gib, <4s i7 CPU)"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1838
-msgid "Weak (guessable)"
-msgstr ""
-
-#: data/ui/remmina_preferences.glade:1839
-msgid "None (cleartext)"
-msgstr ""
-
-#: data/ui/remmina_preferences.glade:1857
-msgid "Logins and Passwords"
-msgstr ""
-
-#: data/ui/remmina_preferences.glade:1891
+#: data/ui/remmina_preferences.glade:1779
 #, fuzzy
-msgid "Logging"
-msgstr "Hibakeresés"
-
-#: data/ui/remmina_preferences.glade:1922
-#, fuzzy
-msgid "Auditing"
+msgid "Auditing log"
 msgstr "Beállítások szerkesztése"
 
-#: data/ui/remmina_preferences.glade:1952
+#: data/ui/remmina_preferences.glade:1804
 msgid "Automatically accept all fingerprints and certificates"
 msgstr "Elfogadja a megváltozott tanúsítványt?"
 
-#: data/ui/remmina_preferences.glade:1958
-msgid "Trust all"
-msgstr ""
-
-#: data/ui/remmina_preferences.glade:1992
+#: data/ui/remmina_preferences.glade:1809
 #, fuzzy
-msgid "Certificates and fingerprints"
-msgstr "Tanúsítvány részletek:"
+#| msgid "Trust all fingerprints and certificates"
+msgid "Trust all certificates"
+msgstr "Elfogadja a megváltozott tanúsítványt?"
 
-#: data/ui/remmina_preferences.glade:2016
+#: data/ui/remmina_preferences.glade:1844
 #, fuzzy
 msgid "Security"
 msgstr "Biztonság"
 
-#: data/ui/remmina_preferences.glade:2047
+#: data/ui/remmina_preferences.glade:1875
 #, fuzzy
 msgid "Terminal font"
 msgstr "Terminál betűkészlete"
 
-#: data/ui/remmina_preferences.glade:2060
+#: data/ui/remmina_preferences.glade:1888
 #, fuzzy
 msgid "Scrollback lines"
 msgstr "Mentett sorok"
 
-#: data/ui/remmina_preferences.glade:2108
+#: data/ui/remmina_preferences.glade:1936
 #, fuzzy
 #| msgid "Shortcut for copying to clipboard"
 msgid "Shortcuts for copying and pasting"
 msgstr "Másolás és beillesztés gyorsbillentyűk"
 
-#: data/ui/remmina_preferences.glade:2121
+#: data/ui/remmina_preferences.glade:1949
 #, fuzzy
 msgid "Select all shortcuts"
 msgstr "Összes gyorsbillentyű kiválasztása"
 
-#: data/ui/remmina_preferences.glade:2134
-#: data/ui/remmina_preferences.glade:2151
-#: data/ui/remmina_preferences.glade:2604
-#: data/ui/remmina_preferences.glade:2634
-#: data/ui/remmina_preferences.glade:2768
-#: data/ui/remmina_preferences.glade:2785
+#: data/ui/remmina_preferences.glade:1962
+#: data/ui/remmina_preferences.glade:1979
+#: data/ui/remmina_preferences.glade:2432
+#: data/ui/remmina_preferences.glade:2462
+#: data/ui/remmina_preferences.glade:2596
+#: data/ui/remmina_preferences.glade:2613
 #, fuzzy
 msgid "(Host key+)"
 msgstr "(Host billentyű+)"
 
-#: data/ui/remmina_preferences.glade:2169
+#: data/ui/remmina_preferences.glade:1997
 #, fuzzy
 msgid "Use default system font"
 msgstr "Rendszer alapértelmezett betűkészletének használata"
 
-#: data/ui/remmina_preferences.glade:2194
+#: data/ui/remmina_preferences.glade:2022
 #, fuzzy
 msgid ""
 "Selecting “SGR 1” also switches to the bright counterparts of the first 8 "
@@ -5507,17 +5484,17 @@ msgstr ""
 "Az \"SGR 1\" kiválasztása az első 8 paletta színének világos megfelelőjére "
 "vált (a szöveg félkövérré tétele mellett)."
 
-#: data/ui/remmina_preferences.glade:2210
+#: data/ui/remmina_preferences.glade:2038
 #, fuzzy
 msgid "Allow using bright colours with bold text"
 msgstr "Élénk színek és vastag szöveg használata"
 
-#: data/ui/remmina_preferences.glade:2224
+#: data/ui/remmina_preferences.glade:2052
 #, fuzzy
 msgid "Colour theme"
 msgstr "Színséma betöltése"
 
-#: data/ui/remmina_preferences.glade:2235
+#: data/ui/remmina_preferences.glade:2063
 #, fuzzy
 msgid ""
 "Choose a colour scheme file. Usually available in /usr/share/remmina/theme. "
@@ -5527,163 +5504,163 @@ msgstr ""
 "remmina/theme könyvtárban találhatók. Lásd https://github.com/mbadolato/"
 "iTerm2-Color-Schemes a további részletekért."
 
-#: data/ui/remmina_preferences.glade:2239
+#: data/ui/remmina_preferences.glade:2067
 #, fuzzy
 msgid "Pick a terminal colouring file"
 msgstr "Válasszon egy terminál színező fájlt"
 
-#: data/ui/remmina_preferences.glade:2254
+#: data/ui/remmina_preferences.glade:2082
 #, fuzzy
 msgid "Bright colours"
 msgstr "Világos színek"
 
-#: data/ui/remmina_preferences.glade:2268
+#: data/ui/remmina_preferences.glade:2096
 #, fuzzy
 msgid "Pick a light black colour"
 msgstr "Válasszon egy világosfekete színt"
 
-#: data/ui/remmina_preferences.glade:2282
+#: data/ui/remmina_preferences.glade:2110
 #, fuzzy
 msgid "Pick a light red colour"
 msgstr "Válasszon egy világos vörös színt"
 
-#: data/ui/remmina_preferences.glade:2296
+#: data/ui/remmina_preferences.glade:2124
 #, fuzzy
 msgid "Pick a bright green colour"
 msgstr "Válasszon egy világoszöld színt"
 
-#: data/ui/remmina_preferences.glade:2310
+#: data/ui/remmina_preferences.glade:2138
 #, fuzzy
 msgid "Pick a bright yellow colour"
 msgstr "Válasszon egy világos sárga színt"
 
-#: data/ui/remmina_preferences.glade:2324
+#: data/ui/remmina_preferences.glade:2152
 #, fuzzy
 msgid "Pick a bright blue colour"
 msgstr "Válasszon egy világos kék színt"
 
-#: data/ui/remmina_preferences.glade:2338
+#: data/ui/remmina_preferences.glade:2166
 #, fuzzy
 msgid "Pick a light magenta colour"
 msgstr "Válasszon egy világos magenta színt"
 
-#: data/ui/remmina_preferences.glade:2352
+#: data/ui/remmina_preferences.glade:2180
 #, fuzzy
 msgid "Pick a light cyan colour"
 msgstr "Válasszon egy világos cián színt"
 
-#: data/ui/remmina_preferences.glade:2366
+#: data/ui/remmina_preferences.glade:2194
 #, fuzzy
 msgid "Pick a light white colour"
 msgstr "Válasszon egy világos fehér színt"
 
-#: data/ui/remmina_preferences.glade:2380
+#: data/ui/remmina_preferences.glade:2208
 #, fuzzy
 msgid "Pick a black colour"
 msgstr "Válasszon egy fekete színt"
 
-#: data/ui/remmina_preferences.glade:2394
+#: data/ui/remmina_preferences.glade:2222
 #, fuzzy
 msgid "Pick a red colour"
 msgstr "Válasszon egy vörös színt"
 
-#: data/ui/remmina_preferences.glade:2408
+#: data/ui/remmina_preferences.glade:2236
 #, fuzzy
 msgid "Pick a green colour"
 msgstr "Válasszon egy zöld színt"
 
-#: data/ui/remmina_preferences.glade:2422
+#: data/ui/remmina_preferences.glade:2250
 #, fuzzy
 msgid "Pick a yellow colour"
 msgstr "Válasszon egy sárga színt"
 
-#: data/ui/remmina_preferences.glade:2436
+#: data/ui/remmina_preferences.glade:2264
 #, fuzzy
 msgid "Pick a blue colour"
 msgstr "Válasszon egy kék színt"
 
-#: data/ui/remmina_preferences.glade:2450
+#: data/ui/remmina_preferences.glade:2278
 #, fuzzy
 msgid "Pick a magenta colour"
 msgstr "Válasszon egy magenta színt"
 
-#: data/ui/remmina_preferences.glade:2464
+#: data/ui/remmina_preferences.glade:2292
 #, fuzzy
 msgid "Pick a cyan colour"
 msgstr "Válasszon egy cián színt"
 
-#: data/ui/remmina_preferences.glade:2478
+#: data/ui/remmina_preferences.glade:2306
 #, fuzzy
 msgid "Pick a white colour"
 msgstr "Válasszon egy fehér színt"
 
-#: data/ui/remmina_preferences.glade:2491
+#: data/ui/remmina_preferences.glade:2319
 #, fuzzy
 msgid "Normal colours"
 msgstr "Normál színek"
 
-#: data/ui/remmina_preferences.glade:2504
-#: data/ui/remmina_preferences.glade:2519
+#: data/ui/remmina_preferences.glade:2332
+#: data/ui/remmina_preferences.glade:2347
 #, fuzzy
 msgid "Cursor colour"
 msgstr "Kurzor színe"
 
-#: data/ui/remmina_preferences.glade:2533
-#: data/ui/remmina_preferences.glade:2548
+#: data/ui/remmina_preferences.glade:2361
+#: data/ui/remmina_preferences.glade:2376
 #, fuzzy
 msgid "Background colour"
 msgstr "Háttérszín"
 
-#: data/ui/remmina_preferences.glade:2564
-#: data/ui/remmina_preferences.glade:2578
+#: data/ui/remmina_preferences.glade:2392
+#: data/ui/remmina_preferences.glade:2406
 #, fuzzy
 msgid "Foreground colour"
 msgstr "Előtér szín"
 
-#: data/ui/remmina_preferences.glade:2591
+#: data/ui/remmina_preferences.glade:2419
 #, fuzzy
 #| msgid "Increase font size"
 msgid "Increase and decrease font size"
 msgstr "Betűméret növelése és csökkentése"
 
-#: data/ui/remmina_preferences.glade:2621
+#: data/ui/remmina_preferences.glade:2449
 #, fuzzy
 #| msgid "Search text"
 msgid "Search text shortcut"
 msgstr "Keresés szöveges gyorsbillentyű"
 
-#: data/ui/remmina_preferences.glade:2652
-#: data/ui/remmina_preferences.glade:2667
+#: data/ui/remmina_preferences.glade:2480
+#: data/ui/remmina_preferences.glade:2495
 msgid "Bold colour"
 msgstr "Normál színek"
 
-#: data/ui/remmina_preferences.glade:2681
-#: data/ui/remmina_preferences.glade:2722
+#: data/ui/remmina_preferences.glade:2509
+#: data/ui/remmina_preferences.glade:2550
 #, fuzzy
 #| msgid "Bright colours"
 msgid "Highlight colour"
 msgstr "Kiemelő szín"
 
-#: data/ui/remmina_preferences.glade:2694
-#: data/ui/remmina_preferences.glade:2738
+#: data/ui/remmina_preferences.glade:2522
+#: data/ui/remmina_preferences.glade:2566
 #, fuzzy
 #| msgid "Foreground colour"
 msgid "Highlight foreground colour"
 msgstr "Kiemelje az előtér színét"
 
-#: data/ui/remmina_preferences.glade:2707
-#: data/ui/remmina_preferences.glade:2754
+#: data/ui/remmina_preferences.glade:2535
+#: data/ui/remmina_preferences.glade:2582
 #, fuzzy
 #| msgid "Foreground colour"
 msgid "Cursor foreground colour"
 msgstr "A kurzor előtér színe"
 
-#: data/ui/remmina_preferences.glade:2810
+#: data/ui/remmina_preferences.glade:2638
 #, fuzzy
 msgid "Terminal"
 msgstr "Terminal"
 
-#: data/ui/remmina_preferences.glade:2824
+#: data/ui/remmina_preferences.glade:2652
 #, fuzzy
 msgid "Remmina Preferences"
 msgstr "Remmina beállítások"
@@ -5704,6 +5681,26 @@ msgid "Master password"
 msgstr "Mester jelszó"
 
 #, fuzzy
+#~ msgid "Automatic lock interval"
+#~ msgstr "Automatikus zárolás intervalum"
+
+#, fuzzy
+#~ msgid "Enter new password"
+#~ msgstr "Adja meg a VNC jelszavát"
+
+#, fuzzy
+#~ msgid "Re-enter password"
+#~ msgstr "Jelszó ismét"
+
+#, fuzzy
+#~ msgid "Logging"
+#~ msgstr "Hibakeresés"
+
+#, fuzzy
+#~ msgid "Certificates and fingerprints"
+#~ msgstr "Tanúsítvány részletek:"
+
+#, fuzzy
 #~ msgid "Use a Primary Password"
 #~ msgstr "Mester jelszó használata"
 
@@ -5722,9 +5719,6 @@ msgstr "Mester jelszó"
 #, fuzzy
 #~ msgid "Enable auditing logs"
 #~ msgstr "Hangcsatorna engedélyezése"
-
-#~ msgid "Trust all fingerprints and certificates"
-#~ msgstr "Elfogadja a megváltozott tanúsítványt?"
 
 #, fuzzy
 #~ msgid "Certificate settings"
@@ -5861,9 +5855,6 @@ msgstr "Mester jelszó"
 
 #~ msgid "Tabs"
 #~ msgstr "Fülek"
-
-#~ msgid "File encryption"
-#~ msgstr "Fájl titkosítás"
 
 #~ msgid "Fingerprints and certificates"
 #~ msgstr "Elfogadja a megváltozott tanúsítványt?"

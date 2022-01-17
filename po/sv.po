@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-01-14 09:44+0000\n"
+"POT-Creation-Date: 2022-01-17 11:09+0000\n"
 "PO-Revision-Date: 2021-12-17 08:51+0000\n"
 "Last-Translator: l <snelhingst@gmail.com>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -222,39 +222,39 @@ msgstr "Meta +"
 msgid "<None>"
 msgstr "<Ingen>"
 
-#: src/remmina_pref_dialog.c:91 src/remmina_file_editor.c:528
+#: src/remmina_pref_dialog.c:92 src/remmina_file_editor.c:528
 msgid "Resolutions"
 msgstr "Upplösningar"
 
-#: src/remmina_pref_dialog.c:91 src/remmina_file_editor.c:528
+#: src/remmina_pref_dialog.c:92 src/remmina_file_editor.c:528
 msgid "Configure the available resolutions"
 msgstr "Konfigurera tillgängliga upplösningar"
 
-#: src/remmina_pref_dialog.c:143
+#: src/remmina_pref_dialog.c:144
 msgid "Recent lists cleared."
 msgstr "Senaste listorna tömdes."
 
-#: src/remmina_pref_dialog.c:155 src/rcw.c:2029
+#: src/remmina_pref_dialog.c:156 src/rcw.c:2029
 #: data/ui/remmina_preferences.glade:169 data/ui/remmina_preferences.glade:179
 msgid "Keystrokes"
 msgstr "Tangenttryck"
 
-#: src/remmina_pref_dialog.c:155
+#: src/remmina_pref_dialog.c:156
 msgid "Configure the keystrokes"
 msgstr "Ställ in knapptryckningar"
 
 #. TRANSLATORS: Do not translate libsodium, is the name of a library
-#: src/remmina_pref_dialog.c:488
+#: src/remmina_pref_dialog.c:474
 #, fuzzy
 #| msgid "libsodium >= 1.9.0 is required to use master password"
 msgid "libsodium >= 1.9.0 is required to use Primary Password"
 msgstr "libsodium >= 1.9.0 krävs for att använda huvudlösenord"
 
-#: src/remmina_pref_dialog.c:826
+#: src/remmina_pref_dialog.c:808
 msgid "Picking a terminal colouring file replaces the file: "
 msgstr "Välj ett terminalfärgschema "
 
-#: src/remmina_pref_dialog.c:830
+#: src/remmina_pref_dialog.c:812
 #, fuzzy
 msgid ""
 "This file contains the “Custom” terminal colour scheme selectable from the "
@@ -273,7 +273,7 @@ msgstr "Avbryt"
 #: src/remmina_message_panel.c:199 data/ui/remmina_snap_info_dialog.glade:28
 #: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
 #: data/ui/remmina_string_list.glade:63 data/ui/remmina_news.glade:33
-#: data/ui/remmina_preferences.glade:2828
+#: data/ui/remmina_preferences.glade:2656
 msgid "Close"
 msgstr "Stäng"
 
@@ -1636,7 +1636,7 @@ msgstr "Fann inte filen \"%s\"."
 
 #. TRANSLATORS: This is a message that pops up when an external Remmina plugin tries to set the window resolution using a legacy parameter.
 #. TRANSLATORS: This is a message that pop-up when an external Remmina plugin tries to set the windows resolution using a legacy parameter.
-#: src/remmina_file.c:474 src/remmina_file.c:520
+#: src/remmina_file.c:473 src/remmina_file.c:519
 msgid ""
 "Using the «resolution» parameter in the Remmina preferences file is "
 "deprecated.\n"
@@ -4648,12 +4648,6 @@ msgstr "\"Ta alla tangentbordshändelser\" statusfärg"
 
 #: data/ui/remmina_preferences.glade:723
 #, fuzzy
-#| msgid "Grab all keyboard events"
-msgid "Enable/Disable “Grab all keyboard events” status colour"
-msgstr "Aktivera/avaktivera statusfärgen \"Ta alla tangentbordshändelser\"."
-
-#: data/ui/remmina_preferences.glade:739
-#, fuzzy
 msgid ""
 "Hexadecimal- or colour names (red, #ff0000).\n"
 "It changes the background colour of connection names in the Remmina "
@@ -4662,6 +4656,12 @@ msgstr ""
 "Hexadecimal- eller färgnamn (röd, #ff0000).\n"
 "Den ändrar bakgrundsfärgen för anslutningsnamn i Remmina-"
 "anslutningsverktygsfältet (vid fullskärmsläge)."
+
+#: data/ui/remmina_preferences.glade:740
+#, fuzzy
+#| msgid "Grab all keyboard events"
+msgid "Enable/Disable “Grab all keyboard events” status colour"
+msgstr "Aktivera/avaktivera statusfärgen \"Ta alla tangentbordshändelser\"."
 
 #: data/ui/remmina_preferences.glade:796
 msgid "Appearance"
@@ -4782,67 +4782,67 @@ msgstr ""
 msgid "SSH options"
 msgstr "SSH-alternativ"
 
-#: data/ui/remmina_preferences.glade:1630
+#: data/ui/remmina_preferences.glade:1603
+msgid ""
+"The number of seconds after Remmina will ask again the password to lock "
+"again the session.\n"
+"It defaults to 300 seconds."
+msgstr ""
+
+#: data/ui/remmina_preferences.glade:1616
 msgid "Set and use a secret key to protect Remmina from unothorized use."
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1634
+#: data/ui/remmina_preferences.glade:1621
 #, fuzzy
 #| msgid "User password"
-msgid "Use Remmina password"
+msgid "Remmina password"
 msgstr "Användarlösenord"
 
-#: data/ui/remmina_preferences.glade:1645
-#: data/ui/remmina_preferences.glade:1969
+#: data/ui/remmina_preferences.glade:1632
 msgid "Use secret key authentication for some widgets"
 msgstr "Använd hemlig nyckel bekräftandes for några miniprogram"
 
-#: data/ui/remmina_preferences.glade:1662
-msgid "Automatic lock interval"
-msgstr "Automatisk låsningsintervall"
+#: data/ui/remmina_preferences.glade:1652
+msgid "Valid for"
+msgstr ""
 
-#: data/ui/remmina_preferences.glade:1673
+#: data/ui/remmina_preferences.glade:1663
 msgid "Number of seconds to keep password valid for"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1692
-#, fuzzy
-#| msgid "Enter VNC password"
-msgid "Enter new password"
-msgstr "Spara lösenord"
-
-#: data/ui/remmina_preferences.glade:1722
-#, fuzzy
-#| msgid "Repeat the password"
-msgid "Re-enter password"
-msgstr "Spara lösenord"
-
-#: data/ui/remmina_preferences.glade:1755
-msgid "Creation, editing, copying, and deletions require the Remmina password"
+#: data/ui/remmina_preferences.glade:1668
+msgid "timeout in seconds (default 300)"
 msgstr ""
 
-#. Creation, editing, copying, and deletions require the primary password
-#: data/ui/remmina_preferences.glade:1758
-msgid "Require to modify"
-msgstr ""
-
-#: data/ui/remmina_preferences.glade:1796
+#: data/ui/remmina_preferences.glade:1680
 #, fuzzy
 #| msgid "Secured password storage in KWallet"
 msgid "Enter your Remmina password to connect"
 msgstr "Säker lösenordslagrande i GNOME-nyckelringen"
 
-#: data/ui/remmina_preferences.glade:1799
+#: data/ui/remmina_preferences.glade:1684
 #, fuzzy
 #| msgid "Secured password storage in KWallet"
 msgid "Require to connect"
 msgstr "Säker lösenordslagrande i GNOME-nyckelringen"
 
-#: data/ui/remmina_preferences.glade:1813
-msgid "Encryption method"
+#: data/ui/remmina_preferences.glade:1695
+msgid "Creation, editing, copying, and deletions require the Remmina password"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1824
+#. Creation, editing, copying, and deletions require the primary password
+#: data/ui/remmina_preferences.glade:1699
+msgid "Require to modify"
+msgstr ""
+
+#: data/ui/remmina_preferences.glade:1741
+#, fuzzy
+#| msgid "File encryption"
+msgid "Encryption"
+msgstr "Filkryptering"
+
+#: data/ui/remmina_preferences.glade:1752
 msgid ""
 "These are the encryption methods used by Remmina to store passwords.\n"
 "\n"
@@ -4853,96 +4853,70 @@ msgid ""
 "\"Sensitive\" is more secure but uses 1 Gib of RAM and many CPU cycles. "
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1834
-msgid "Keystore (KWallet, GNOME Keyring)"
-msgstr ""
-
-#: data/ui/remmina_preferences.glade:1835
+#: data/ui/remmina_preferences.glade:1761
 msgid "Intermediate (+64 Mib RAM)"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1836
+#: data/ui/remmina_preferences.glade:1762
 msgid "Strong (+256 Mib, <1s i7 CPU)"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1837
+#: data/ui/remmina_preferences.glade:1763
 msgid "Sensitive (+1 Gib, <4s i7 CPU)"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1838
-msgid "Weak (guessable)"
-msgstr ""
-
-#: data/ui/remmina_preferences.glade:1839
-msgid "None (cleartext)"
-msgstr ""
-
-#: data/ui/remmina_preferences.glade:1857
-msgid "Logins and Passwords"
-msgstr ""
-
-#: data/ui/remmina_preferences.glade:1891
-#, fuzzy
-#| msgid "Debugging"
-msgid "Logging"
-msgstr "Felsökning"
-
-#: data/ui/remmina_preferences.glade:1922
+#: data/ui/remmina_preferences.glade:1779
 #, fuzzy
 #| msgid "Edit settings"
-msgid "Auditing"
+msgid "Auditing log"
 msgstr "Ändra inställningar"
 
-#: data/ui/remmina_preferences.glade:1952
+#: data/ui/remmina_preferences.glade:1804
 msgid "Automatically accept all fingerprints and certificates"
 msgstr "Godkänn ändrat certifikat?"
 
-#: data/ui/remmina_preferences.glade:1958
-msgid "Trust all"
-msgstr ""
-
-#: data/ui/remmina_preferences.glade:1992
+#: data/ui/remmina_preferences.glade:1809
 #, fuzzy
-#| msgid "Certificate details:"
-msgid "Certificates and fingerprints"
-msgstr "Certifikatdetaljer:"
+#| msgid "Trust all fingerprints and certificates"
+msgid "Trust all certificates"
+msgstr "Godkänn ändrat certifikat?"
 
-#: data/ui/remmina_preferences.glade:2016
+#: data/ui/remmina_preferences.glade:1844
 msgid "Security"
 msgstr "Säkerhet"
 
-#: data/ui/remmina_preferences.glade:2047
+#: data/ui/remmina_preferences.glade:1875
 msgid "Terminal font"
 msgstr "Terminalskrift"
 
-#: data/ui/remmina_preferences.glade:2060
+#: data/ui/remmina_preferences.glade:1888
 msgid "Scrollback lines"
 msgstr "Bakåtrullningslinjer"
 
-#: data/ui/remmina_preferences.glade:2108
+#: data/ui/remmina_preferences.glade:1936
 #, fuzzy
 #| msgid "Shortcut for copying to clipboard"
 msgid "Shortcuts for copying and pasting"
 msgstr "Genvägar för att kopiera och klistra in"
 
-#: data/ui/remmina_preferences.glade:2121
+#: data/ui/remmina_preferences.glade:1949
 msgid "Select all shortcuts"
 msgstr "Välj alla genvägar"
 
-#: data/ui/remmina_preferences.glade:2134
-#: data/ui/remmina_preferences.glade:2151
-#: data/ui/remmina_preferences.glade:2604
-#: data/ui/remmina_preferences.glade:2634
-#: data/ui/remmina_preferences.glade:2768
-#: data/ui/remmina_preferences.glade:2785
+#: data/ui/remmina_preferences.glade:1962
+#: data/ui/remmina_preferences.glade:1979
+#: data/ui/remmina_preferences.glade:2432
+#: data/ui/remmina_preferences.glade:2462
+#: data/ui/remmina_preferences.glade:2596
+#: data/ui/remmina_preferences.glade:2613
 msgid "(Host key+)"
 msgstr "(Värdstangent +)"
 
-#: data/ui/remmina_preferences.glade:2169
+#: data/ui/remmina_preferences.glade:1997
 msgid "Use default system font"
 msgstr "Använd forvälssystemskrift"
 
-#: data/ui/remmina_preferences.glade:2194
+#: data/ui/remmina_preferences.glade:2022
 #, fuzzy
 msgid ""
 "Selecting “SGR 1” also switches to the bright counterparts of the first 8 "
@@ -4951,16 +4925,16 @@ msgstr ""
 "Om du väljer \"SGR 1\" växlar du också till de ljusa motsvarigheterna till "
 "de åtta första palettfärgerna (förutom att texten blir fet)."
 
-#: data/ui/remmina_preferences.glade:2210
+#: data/ui/remmina_preferences.glade:2038
 #, fuzzy
 msgid "Allow using bright colours with bold text"
 msgstr "Tillåt användning av ljusa färger med fet text."
 
-#: data/ui/remmina_preferences.glade:2224
+#: data/ui/remmina_preferences.glade:2052
 msgid "Colour theme"
 msgstr "Använd färgdrakt"
 
-#: data/ui/remmina_preferences.glade:2235
+#: data/ui/remmina_preferences.glade:2063
 msgid ""
 "Choose a colour scheme file. Usually available in /usr/share/remmina/theme. "
 "https://github.com/mbadolato/iTerm2-Color-Schemes has more details."
@@ -4968,140 +4942,140 @@ msgstr ""
 "Använd en färgschemafil. Finns vanligtvis u /usr/share/remmina/theme. "
 "https://github.com/mbadolato/iTerm2-Color-Schemes har flera detaljer."
 
-#: data/ui/remmina_preferences.glade:2239
+#: data/ui/remmina_preferences.glade:2067
 msgid "Pick a terminal colouring file"
 msgstr "Välj et terminalfargschema"
 
-#: data/ui/remmina_preferences.glade:2254
+#: data/ui/remmina_preferences.glade:2082
 msgid "Bright colours"
 msgstr "Lysa färger"
 
-#: data/ui/remmina_preferences.glade:2268
+#: data/ui/remmina_preferences.glade:2096
 msgid "Pick a light black colour"
 msgstr "Välj et ljust svartfarg"
 
-#: data/ui/remmina_preferences.glade:2282
+#: data/ui/remmina_preferences.glade:2110
 msgid "Pick a light red colour"
 msgstr "Välj et ljust rödfärg"
 
-#: data/ui/remmina_preferences.glade:2296
+#: data/ui/remmina_preferences.glade:2124
 msgid "Pick a bright green colour"
 msgstr "Välj et ljust grönfärg"
 
-#: data/ui/remmina_preferences.glade:2310
+#: data/ui/remmina_preferences.glade:2138
 msgid "Pick a bright yellow colour"
 msgstr "Välj et ljust gulfärg"
 
-#: data/ui/remmina_preferences.glade:2324
+#: data/ui/remmina_preferences.glade:2152
 msgid "Pick a bright blue colour"
 msgstr "Välj et ljust blåfärg"
 
-#: data/ui/remmina_preferences.glade:2338
+#: data/ui/remmina_preferences.glade:2166
 msgid "Pick a light magenta colour"
 msgstr "Välj et ljust magentafärg"
 
-#: data/ui/remmina_preferences.glade:2352
+#: data/ui/remmina_preferences.glade:2180
 msgid "Pick a light cyan colour"
 msgstr "Välj et ljust cyanfärg"
 
-#: data/ui/remmina_preferences.glade:2366
+#: data/ui/remmina_preferences.glade:2194
 msgid "Pick a light white colour"
 msgstr "Välj et ljust vitfärg"
 
-#: data/ui/remmina_preferences.glade:2380
+#: data/ui/remmina_preferences.glade:2208
 msgid "Pick a black colour"
 msgstr "Välj en svartfärg"
 
-#: data/ui/remmina_preferences.glade:2394
+#: data/ui/remmina_preferences.glade:2222
 msgid "Pick a red colour"
 msgstr "Välj en rödfärg"
 
-#: data/ui/remmina_preferences.glade:2408
+#: data/ui/remmina_preferences.glade:2236
 msgid "Pick a green colour"
 msgstr "Välj en grönfärg"
 
-#: data/ui/remmina_preferences.glade:2422
+#: data/ui/remmina_preferences.glade:2250
 msgid "Pick a yellow colour"
 msgstr "Välj en gulfärg"
 
-#: data/ui/remmina_preferences.glade:2436
+#: data/ui/remmina_preferences.glade:2264
 msgid "Pick a blue colour"
 msgstr "Välj en blåfärg"
 
-#: data/ui/remmina_preferences.glade:2450
+#: data/ui/remmina_preferences.glade:2278
 msgid "Pick a magenta colour"
 msgstr "Välj en magenafärg"
 
-#: data/ui/remmina_preferences.glade:2464
+#: data/ui/remmina_preferences.glade:2292
 msgid "Pick a cyan colour"
 msgstr "Välj en cyanfärg"
 
-#: data/ui/remmina_preferences.glade:2478
+#: data/ui/remmina_preferences.glade:2306
 msgid "Pick a white colour"
 msgstr "Välj en vitfärg"
 
-#: data/ui/remmina_preferences.glade:2491
+#: data/ui/remmina_preferences.glade:2319
 msgid "Normal colours"
 msgstr "Normala färger"
 
-#: data/ui/remmina_preferences.glade:2504
-#: data/ui/remmina_preferences.glade:2519
+#: data/ui/remmina_preferences.glade:2332
+#: data/ui/remmina_preferences.glade:2347
 msgid "Cursor colour"
 msgstr "Markörskugga"
 
-#: data/ui/remmina_preferences.glade:2533
-#: data/ui/remmina_preferences.glade:2548
+#: data/ui/remmina_preferences.glade:2361
+#: data/ui/remmina_preferences.glade:2376
 msgid "Background colour"
 msgstr "Bakgrundsfärg"
 
-#: data/ui/remmina_preferences.glade:2564
-#: data/ui/remmina_preferences.glade:2578
+#: data/ui/remmina_preferences.glade:2392
+#: data/ui/remmina_preferences.glade:2406
 msgid "Foreground colour"
 msgstr "Förgrundsfärg"
 
-#: data/ui/remmina_preferences.glade:2591
+#: data/ui/remmina_preferences.glade:2419
 #, fuzzy
 #| msgid "Increase font size"
 msgid "Increase and decrease font size"
 msgstr "Öka och minska teckensnittsstorleken"
 
-#: data/ui/remmina_preferences.glade:2621
+#: data/ui/remmina_preferences.glade:2449
 #, fuzzy
 #| msgid "Select all shortcuts"
 msgid "Search text shortcut"
 msgstr "Genväg för sökning av text"
 
-#: data/ui/remmina_preferences.glade:2652
-#: data/ui/remmina_preferences.glade:2667
+#: data/ui/remmina_preferences.glade:2480
+#: data/ui/remmina_preferences.glade:2495
 msgid "Bold colour"
 msgstr "Normala färger"
 
-#: data/ui/remmina_preferences.glade:2681
-#: data/ui/remmina_preferences.glade:2722
+#: data/ui/remmina_preferences.glade:2509
+#: data/ui/remmina_preferences.glade:2550
 #, fuzzy
 #| msgid "Bright colours"
 msgid "Highlight colour"
 msgstr "Färg för framhävande"
 
-#: data/ui/remmina_preferences.glade:2694
-#: data/ui/remmina_preferences.glade:2738
+#: data/ui/remmina_preferences.glade:2522
+#: data/ui/remmina_preferences.glade:2566
 #, fuzzy
 #| msgid "Foreground colour"
 msgid "Highlight foreground colour"
 msgstr "Framhäva förgrundsfärgen"
 
-#: data/ui/remmina_preferences.glade:2707
-#: data/ui/remmina_preferences.glade:2754
+#: data/ui/remmina_preferences.glade:2535
+#: data/ui/remmina_preferences.glade:2582
 #, fuzzy
 #| msgid "Foreground colour"
 msgid "Cursor foreground colour"
 msgstr "Cursorns förgrundsfärg"
 
-#: data/ui/remmina_preferences.glade:2810
+#: data/ui/remmina_preferences.glade:2638
 msgid "Terminal"
 msgstr "Terminal"
 
-#: data/ui/remmina_preferences.glade:2824
+#: data/ui/remmina_preferences.glade:2652
 msgid "Remmina Preferences"
 msgstr "Remmina-inställningar"
 
@@ -5116,6 +5090,29 @@ msgstr "Lås upp Remmina"
 #: data/ui/remmina_unlock.glade:120
 msgid "Master password"
 msgstr "Huvudlösenord"
+
+#~ msgid "Automatic lock interval"
+#~ msgstr "Automatisk låsningsintervall"
+
+#, fuzzy
+#~| msgid "Enter VNC password"
+#~ msgid "Enter new password"
+#~ msgstr "Spara lösenord"
+
+#, fuzzy
+#~| msgid "Repeat the password"
+#~ msgid "Re-enter password"
+#~ msgstr "Spara lösenord"
+
+#, fuzzy
+#~| msgid "Debugging"
+#~ msgid "Logging"
+#~ msgstr "Felsökning"
+
+#, fuzzy
+#~| msgid "Certificate details:"
+#~ msgid "Certificates and fingerprints"
+#~ msgstr "Certifikatdetaljer:"
 
 #, fuzzy
 #~| msgid "Use master password"
@@ -5141,9 +5138,6 @@ msgstr "Huvudlösenord"
 #~| msgid "Enable audio channel"
 #~ msgid "Enable auditing logs"
 #~ msgstr "Aktivera ljudkanal"
-
-#~ msgid "Trust all fingerprints and certificates"
-#~ msgstr "Godkänn ändrat certifikat?"
 
 #, fuzzy
 #~| msgid "Certificate details:"
@@ -5304,9 +5298,6 @@ msgstr "Huvudlösenord"
 
 #~ msgid "Tabs"
 #~ msgstr "Flikar"
-
-#~ msgid "File encryption"
-#~ msgstr "Filkryptering"
 
 #~ msgid "Fingerprints and certificates"
 #~ msgstr "Godkänn ändrat certifikat?"

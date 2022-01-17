@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the remmina package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
 # anonymous <noreply@weblate.org>, 2019.
-# Andika Triwidada <andika@gmail.com>, 2020, 2021.
+# Andika Triwidada <andika@gmail.com>, 2020, 2021, 2022.
 # Antenore Gatta <antenore@simbiosi.org>, 2021.
 # Allan Nordhøy <epost@anotheragency.no>, 2021.
 # Reza Almanda <rezaalmanda27@gmail.com>, 2021.
@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-01-14 09:44+0000\n"
-"PO-Revision-Date: 2021-12-27 22:51+0000\n"
+"POT-Creation-Date: 2022-01-17 11:09+0000\n"
+"PO-Revision-Date: 2022-01-17 11:04+0000\n"
 "Last-Translator: Andika Triwidada <andika@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/remmina/"
 "remmina/id/>\n"
@@ -225,39 +225,37 @@ msgstr "Meta+"
 msgid "<None>"
 msgstr "<Nihil>"
 
-#: src/remmina_pref_dialog.c:91 src/remmina_file_editor.c:528
+#: src/remmina_pref_dialog.c:92 src/remmina_file_editor.c:528
 msgid "Resolutions"
 msgstr "Resolusi"
 
-#: src/remmina_pref_dialog.c:91 src/remmina_file_editor.c:528
+#: src/remmina_pref_dialog.c:92 src/remmina_file_editor.c:528
 msgid "Configure the available resolutions"
 msgstr "Konfigurasikan resolusi yang tersedia"
 
-#: src/remmina_pref_dialog.c:143
+#: src/remmina_pref_dialog.c:144
 msgid "Recent lists cleared."
 msgstr "Daftar terakhir dibersihkan."
 
-#: src/remmina_pref_dialog.c:155 src/rcw.c:2029
+#: src/remmina_pref_dialog.c:156 src/rcw.c:2029
 #: data/ui/remmina_preferences.glade:169 data/ui/remmina_preferences.glade:179
 msgid "Keystrokes"
 msgstr "Ketukan tombol"
 
-#: src/remmina_pref_dialog.c:155
+#: src/remmina_pref_dialog.c:156
 msgid "Configure the keystrokes"
 msgstr "Konfigurasikan ketukan tombol"
 
 #. TRANSLATORS: Do not translate libsodium, is the name of a library
-#: src/remmina_pref_dialog.c:488
-#, fuzzy
-#| msgid "libsodium >= 1.9.0 is required to use master password"
+#: src/remmina_pref_dialog.c:474
 msgid "libsodium >= 1.9.0 is required to use Primary Password"
-msgstr "libsodium >= 1.9.0 diperlukan untuk menggunakan kata sandi induk"
+msgstr "libsodium >= 1.9.0 diperlukan untuk menggunakan Kata Sandi Primer"
 
-#: src/remmina_pref_dialog.c:826
+#: src/remmina_pref_dialog.c:808
 msgid "Picking a terminal colouring file replaces the file: "
 msgstr "Memilih suatu berkas pewarnaan terminal menggantikan berkas: "
 
-#: src/remmina_pref_dialog.c:830
+#: src/remmina_pref_dialog.c:812
 msgid ""
 "This file contains the “Custom” terminal colour scheme selectable from the "
 "“Advanced” tab of terminal connections and editable in the “Terminal” tab in "
@@ -275,7 +273,7 @@ msgstr "Batal"
 #: src/remmina_message_panel.c:199 data/ui/remmina_snap_info_dialog.glade:28
 #: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
 #: data/ui/remmina_string_list.glade:63 data/ui/remmina_news.glade:33
-#: data/ui/remmina_preferences.glade:2828
+#: data/ui/remmina_preferences.glade:2656
 msgid "Close"
 msgstr "Tutup"
 
@@ -1476,14 +1474,12 @@ msgid "Auto-start this profile"
 msgstr "Otomatis mulai profil ini"
 
 #: src/remmina_file_editor.c:1099
-#, fuzzy
-#| msgid "New connection profile"
 msgid "Connection profile security"
-msgstr "Profil sambungan baru"
+msgstr "Keamanan profil sambungan"
 
 #: src/remmina_file_editor.c:1102
 msgid "Require password to connect or edit the profile"
-msgstr ""
+msgstr "Memerlukan kata sandi untuk menyambung atau menyunting profil"
 
 #: src/remmina_file_editor.c:1132
 msgid "SSH Tunnel"
@@ -1599,7 +1595,7 @@ msgstr "Tidak bisa menemukan berkas \"%s\"."
 
 #. TRANSLATORS: This is a message that pops up when an external Remmina plugin tries to set the window resolution using a legacy parameter.
 #. TRANSLATORS: This is a message that pop-up when an external Remmina plugin tries to set the windows resolution using a legacy parameter.
-#: src/remmina_file.c:474 src/remmina_file.c:520
+#: src/remmina_file.c:473 src/remmina_file.c:519
 msgid ""
 "Using the «resolution» parameter in the Remmina preferences file is "
 "deprecated.\n"
@@ -1692,10 +1688,9 @@ msgstr ""
 "Appindicator"
 
 #: src/remmina_ssh_plugin.c:342
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s:%d via SSH"
-msgstr "Menyambung ke %s lewat SSH…"
+msgstr "Tersambung ke %s:%d lewat SSH"
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_ssh_plugin.c:550
@@ -1736,10 +1731,9 @@ msgid "Find text (host+G)"
 msgstr "Cari teks (host+G)"
 
 #: src/remmina_ssh_plugin.c:921
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Disconnected from %s:%d via SSH"
-msgstr "Menyambung ke %s lewat SSH…"
+msgstr "Terputus dari %s:%d lewat SSH"
 
 #: src/remmina_ssh_plugin.c:1468 data/ui/remmina_main.glade:177
 msgid "Copy"
@@ -2031,7 +2025,7 @@ msgstr "Masukkan kredensial autentikasi gateway RDP"
 #: plugins/rdp/rdp_plugin.c:1027
 #, c-format
 msgid "Disconnected from %s via RDP"
-msgstr ""
+msgstr "Terputus dari %s melalui RDP"
 
 #: plugins/rdp/rdp_plugin.c:2156
 #, c-format
@@ -2718,10 +2712,9 @@ msgstr "Upaya menyambung ulang ke %d dari %d…"
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_event.c:1121
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s via RDP"
-msgstr "Menyambung ke %s lewat SSH…"
+msgstr "Tersambung ke %s lewat RDP"
 
 #: plugins/spice/spice_plugin_file_transfer.c:82
 msgid "File Transfers"
@@ -2755,16 +2748,14 @@ msgid "Disconnected from the SPICE server “%s”."
 msgstr "Terputus dari server SPICE \"%s\"."
 
 #: plugins/spice/spice_plugin.c:388
-#, fuzzy, c-format
-#| msgid "Disconnected from the SPICE server “%s”."
+#, c-format
 msgid "Disconnected from %s:%d via SPICE"
-msgstr "Terputus dari server SPICE \"%s\"."
+msgstr "Terputus dari %s:%d lewat SPICE"
 
 #: plugins/spice/spice_plugin.c:391
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s:%d via SPICE"
-msgstr "Menyambung ke %s lewat SSH…"
+msgstr "Tersambung ke %s:%d lewat SSH"
 
 #: plugins/spice/spice_plugin.c:403
 msgid "TLS connection error."
@@ -2882,15 +2873,14 @@ msgid "Please retry after turning on encryption for this profile."
 msgstr "Silakan coba lagi setelah menyalakan enkripsi untuk profil ini."
 
 #: plugins/vnc/vnc_plugin.c:1706
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s:%d via VNC"
-msgstr "Menyambung ke %s lewat SSH…"
+msgstr "Tersambung ke %s:%d lewat VNC"
 
 #: plugins/vnc/vnc_plugin.c:1725
 #, c-format
 msgid "Disconnected from %s:%d via VNC"
-msgstr ""
+msgstr "Terputus dari %s:%d lewat VNC"
 
 #: plugins/vnc/vnc_plugin.c:1974
 msgid ""
@@ -2928,17 +2918,6 @@ msgstr ""
 "    x11vnc -display :0 -connect 192.168.1.36:8888"
 
 #: plugins/vnc/vnc_plugin.c:1991
-#, fuzzy
-#| msgid ""
-#| "Override pre-set VNC encodings:\n"
-#| "\n"
-#| "  • On “Poor quality” encodings is set to “copyrect zlib hextile raw”\n"
-#| "  • On “Medium quality” encodings is set to “tight zrle ultra copyrect "
-#| "hextile zlib corre rre raw”\n"
-#| "  • On “Good quality” encodings is set to “tight zrle ultra copyrect "
-#| "hextile zlib corre rre raw”\n"
-#| "  • On “Best quality” encodings is set to “copyrect zrle ultra zlib "
-#| "hextile corre rre raw”"
 msgid ""
 "Overriding the pre-set VNC encoding quality:\n"
 "\n"
@@ -2950,16 +2929,16 @@ msgid ""
 "  • “Best (slowest)” sets encoding to “copyrect zrle ultra zlib hextile "
 "corre rre raw”"
 msgstr ""
-"Menimpa pengodean VNC pratata:\n"
+"Menimpa kualitas pengodean VNC pratata:\n"
 "\n"
-"  • Pada \"Kualitas buruk\" pengodean ditata ke \"copyrect zlib hextile raw"
+"  • \"Buruk (paling cepat)\" menata pengodean ke \"copyrect zlib hextile raw"
 "\"\n"
-"  • Pada \"Kualitas medium\" pengodean ditata ke \"tight zrle ultra copyrect "
-"hextile zlib corre rre raw\"\n"
-"  • Pada \"Kualitas baik\" pengodean ditata ke \"tight zrle ultra copyrect "
-"hextile zlib corre rre raw\"\n"
-"  • Pada \"Kualitas terbaik\" pengodean ditata ke \"copyrect zrle ultra zlib "
-"hextile corre rre raw\""
+"  • \"Sedang\" menata pengodean ke \"tight zrle ultra copyrect hextile zlib "
+"corre rre raw\"\n"
+"  • \"Baik\" menata pengodean ke \"tight zrle ultra copyrect hextile zlib "
+"corre rre raw\"\n"
+"  • \"Terbaik\" menata pengodean ke \"copyrect zrle ultra zlib hextile corre "
+"rre raw\""
 
 #: plugins/vnc/vnc_plugin.c:2018
 msgid "Repeater"
@@ -3360,7 +3339,7 @@ msgstr "Mengakhiri sesi: '%s'"
 #: plugins/x2go/x2go_plugin.c:1529
 #, c-format
 msgid "Disconnected from %s:%d via X2Go"
-msgstr ""
+msgstr "Terputus dari %s:%d lewat X2Go"
 
 #: plugins/x2go/x2go_plugin.c:1601
 msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
@@ -3513,10 +3492,9 @@ msgid "Available feature[%i]: '%s'"
 msgstr "Fitur yang tersedia[%i]: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:2583
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s:%d via X2Go"
-msgstr "Menyambung ke %s lewat SSH…"
+msgstr "Tersambung ke %s:%d lewat X2Go"
 
 #: plugins/x2go/x2go_plugin.c:2677
 msgid "Could not open X11 DISPLAY."
@@ -4008,22 +3986,16 @@ msgid "Domain\\Username"
 msgstr "Domain\\Nama_pengguna"
 
 #: data/ui/remmina_passwd.glade:33
-#, fuzzy
-#| msgid "_OK"
 msgid "OK"
-msgstr "_OK"
+msgstr "OK"
 
 #: data/ui/remmina_passwd.glade:60
-#, fuzzy
-#| msgid "Set new password"
 msgid "Set Primary Password"
-msgstr "Atur kata sandi baru"
+msgstr "Atur Kata Sandi Primer"
 
 #: data/ui/remmina_passwd.glade:101
-#, fuzzy
-#| msgid "User password"
 msgid "Verify password"
-msgstr "Sandi pengguna"
+msgstr "Verifikasi kata sandi"
 
 #: data/ui/remmina_news.glade:75
 msgid ""
@@ -4343,14 +4315,6 @@ msgstr "Templat untuk nama berkas profil"
 
 #. Placeholders used to name a Remmina connection profile
 #: data/ui/remmina_preferences.glade:361
-#, fuzzy
-#| msgid ""
-#| "%G Group name (slash will be converted to - automatically)\n"
-#| "%P Protocol name\n"
-#| "%N Connection name\n"
-#| "%h Hostname/IP\n"
-#| "\n"
-#| "\n"
 msgid ""
 "%G Name of group (slashes \\/ are converted to dashes -)\n"
 "%P Protocol name\n"
@@ -4359,7 +4323,7 @@ msgid ""
 "\n"
 "\n"
 msgstr ""
-"%G Nama grup (garis miring akan dikonversi ke - secara otomatis)\n"
+"%G Nama grup (garis miring \\/ akan dikonversi ke tanda sambung -)\n"
 "%P Nama protokol\n"
 "%N Nama koneksi\n"
 "%h Nama host/IP\n"
@@ -4464,11 +4428,6 @@ msgid "“Grab all keyboard events” status colour"
 msgstr "Status warna \"Tangkap semua kejadian papan tik\""
 
 #: data/ui/remmina_preferences.glade:723
-msgid "Enable/Disable “Grab all keyboard events” status colour"
-msgstr ""
-"Aktifkan/nonaktifkan warna status \"Tangkap semua kejadian papan ketik\""
-
-#: data/ui/remmina_preferences.glade:739
 msgid ""
 "Hexadecimal- or colour names (red, #ff0000).\n"
 "It changes the background colour of connection names in the Remmina "
@@ -4477,6 +4436,11 @@ msgstr ""
 "Nama heksadesimal atau warna (merah, #ff0000).\n"
 "Ini mengubah warna latar belakang nama koneksi di toolbar koneksi Remmina "
 "(ketika dalam layar penuh)."
+
+#: data/ui/remmina_preferences.glade:740
+msgid "Enable/Disable “Grab all keyboard events” status colour"
+msgstr ""
+"Aktifkan/nonaktifkan warna status \"Tangkap semua kejadian papan ketik\""
 
 #: data/ui/remmina_preferences.glade:796
 msgid "Appearance"
@@ -4597,67 +4561,68 @@ msgstr ""
 msgid "SSH options"
 msgstr "Opsi SSH"
 
-#: data/ui/remmina_preferences.glade:1630
+#: data/ui/remmina_preferences.glade:1603
+msgid ""
+"The number of seconds after Remmina will ask again the password to lock "
+"again the session.\n"
+"It defaults to 300 seconds."
+msgstr ""
+"Berapa detik yang setelahnya Remmina akan meminta lagi kata sandi untuk "
+"mengunci lagi sesi.\n"
+"Nilai baku adalah 300 detik."
+
+#: data/ui/remmina_preferences.glade:1616
 msgid "Set and use a secret key to protect Remmina from unothorized use."
 msgstr ""
+"Menata dan memakai suatu kunci rahasia untuk melindungi Remmina dari "
+"penggunaan tanpa izin."
 
-#: data/ui/remmina_preferences.glade:1634
-#, fuzzy
-#| msgid "User password"
-msgid "Use Remmina password"
-msgstr "Sandi pengguna"
+#: data/ui/remmina_preferences.glade:1621
+msgid "Remmina password"
+msgstr "Kata sandi Remmina"
 
-#: data/ui/remmina_preferences.glade:1645
-#: data/ui/remmina_preferences.glade:1969
+#: data/ui/remmina_preferences.glade:1632
 msgid "Use secret key authentication for some widgets"
 msgstr "Gunakan autentikasi kunci rahasia untuk beberapa widget"
 
-#: data/ui/remmina_preferences.glade:1662
-msgid "Automatic lock interval"
-msgstr "Interval mengunci otomatis"
+#: data/ui/remmina_preferences.glade:1652
+msgid "Valid for"
+msgstr "Valid selama"
 
-#: data/ui/remmina_preferences.glade:1673
+#: data/ui/remmina_preferences.glade:1663
 msgid "Number of seconds to keep password valid for"
-msgstr ""
+msgstr "Berapa detik lamanya kata sandi tetap valid"
 
-#: data/ui/remmina_preferences.glade:1692
+#: data/ui/remmina_preferences.glade:1668
 #, fuzzy
-#| msgid "Enter VNC password"
-msgid "Enter new password"
-msgstr "Masukkan kata sandi VNC"
+#| msgid "timout in seconds (default 300)"
+msgid "timeout in seconds (default 300)"
+msgstr "tenggat waktu dalam detik (nilai baku 300)"
 
-#: data/ui/remmina_preferences.glade:1722
-#, fuzzy
-#| msgid "Repeat the password"
-msgid "Re-enter password"
-msgstr "Ulangi kata sandi"
+#: data/ui/remmina_preferences.glade:1680
+msgid "Enter your Remmina password to connect"
+msgstr "Masukkan kata sandi Remmina Anda untuk menyambung"
 
-#: data/ui/remmina_preferences.glade:1755
+#: data/ui/remmina_preferences.glade:1684
+msgid "Require to connect"
+msgstr "Perlu menyambung"
+
+#: data/ui/remmina_preferences.glade:1695
 msgid "Creation, editing, copying, and deletions require the Remmina password"
 msgstr ""
+"Pembuatan, penyuntingan, penyalinan, dan penghapusan memerlukan kata sandi "
+"Remmina"
 
 #. Creation, editing, copying, and deletions require the primary password
-#: data/ui/remmina_preferences.glade:1758
+#: data/ui/remmina_preferences.glade:1699
 msgid "Require to modify"
-msgstr ""
+msgstr "Perlu untuk mengubah"
 
-#: data/ui/remmina_preferences.glade:1796
-#, fuzzy
-#| msgid "Secured password storage in KWallet"
-msgid "Enter your Remmina password to connect"
-msgstr "Penyimpanan kata sandi aman di KWallet"
+#: data/ui/remmina_preferences.glade:1741
+msgid "Encryption"
+msgstr "Enkripsi"
 
-#: data/ui/remmina_preferences.glade:1799
-#, fuzzy
-#| msgid "Secured password storage in KWallet"
-msgid "Require to connect"
-msgstr "Penyimpanan kata sandi aman di KWallet"
-
-#: data/ui/remmina_preferences.glade:1813
-msgid "Encryption method"
-msgstr ""
-
-#: data/ui/remmina_preferences.glade:1824
+#: data/ui/remmina_preferences.glade:1752
 msgid ""
 "These are the encryption methods used by Remmina to store passwords.\n"
 "\n"
@@ -4667,95 +4632,73 @@ msgid ""
 "\"Intermediate\" doesn't use as much memory or processsing power, and "
 "\"Sensitive\" is more secure but uses 1 Gib of RAM and many CPU cycles. "
 msgstr ""
+"Ini adalah metode enkripsi yang dipakai oleh Remmina untuk menyimpan kata "
+"sandi.\n"
+"\n"
+"Kecuali metode \"Lemah\", semua yang lain disarankan, Keystore adalah yang "
+"baku, karena itu terintegrasi dengan KDE/Plasma dan GNOME.\n"
+"\n"
+"\"Menengah\" tidak memakai memori atau tenaga pemrosesan yang banyak, dan "
+"\"Sensitif\" lebih aman tapi memakai RAM 1 Gib dan banyak siklus CPU. "
 
-#: data/ui/remmina_preferences.glade:1834
-msgid "Keystore (KWallet, GNOME Keyring)"
-msgstr ""
-
-#: data/ui/remmina_preferences.glade:1835
+#: data/ui/remmina_preferences.glade:1761
 msgid "Intermediate (+64 Mib RAM)"
-msgstr ""
+msgstr "Menengah (RAM +64 Mib)"
 
-#: data/ui/remmina_preferences.glade:1836
+#: data/ui/remmina_preferences.glade:1762
 msgid "Strong (+256 Mib, <1s i7 CPU)"
-msgstr ""
+msgstr "Kuat (+256 Mib, <1s i7 CPU)"
 
-#: data/ui/remmina_preferences.glade:1837
+#: data/ui/remmina_preferences.glade:1763
 msgid "Sensitive (+1 Gib, <4s i7 CPU)"
-msgstr ""
+msgstr "Sensitif (+1 Gib, <4s i7 CPU)"
 
-#: data/ui/remmina_preferences.glade:1838
-msgid "Weak (guessable)"
-msgstr ""
+#: data/ui/remmina_preferences.glade:1779
+msgid "Auditing log"
+msgstr "Log audit"
 
-#: data/ui/remmina_preferences.glade:1839
-msgid "None (cleartext)"
-msgstr ""
-
-#: data/ui/remmina_preferences.glade:1857
-msgid "Logins and Passwords"
-msgstr ""
-
-#: data/ui/remmina_preferences.glade:1891
-#, fuzzy
-#| msgid "Debugging"
-msgid "Logging"
-msgstr "Pengawakutuan"
-
-#: data/ui/remmina_preferences.glade:1922
-#, fuzzy
-#| msgid "Edit settings"
-msgid "Auditing"
-msgstr "Sunting pengaturan"
-
-#: data/ui/remmina_preferences.glade:1952
+#: data/ui/remmina_preferences.glade:1804
 msgid "Automatically accept all fingerprints and certificates"
 msgstr "Secara otomatis terima semua sidik jari dan sertifikat"
 
-#: data/ui/remmina_preferences.glade:1958
-msgid "Trust all"
-msgstr ""
+#: data/ui/remmina_preferences.glade:1809
+msgid "Trust all certificates"
+msgstr "Percayai semua sertifikat"
 
-#: data/ui/remmina_preferences.glade:1992
-#, fuzzy
-#| msgid "Certificate details:"
-msgid "Certificates and fingerprints"
-msgstr "Rincian sertifikat:"
-
-#: data/ui/remmina_preferences.glade:2016
+#: data/ui/remmina_preferences.glade:1844
 msgid "Security"
 msgstr "Keamanan"
 
-#: data/ui/remmina_preferences.glade:2047
+#: data/ui/remmina_preferences.glade:1875
 msgid "Terminal font"
 msgstr "Fonta terminal"
 
-#: data/ui/remmina_preferences.glade:2060
+#: data/ui/remmina_preferences.glade:1888
 msgid "Scrollback lines"
 msgstr "Baris gulung balik"
 
-#: data/ui/remmina_preferences.glade:2108
+#: data/ui/remmina_preferences.glade:1936
 msgid "Shortcuts for copying and pasting"
 msgstr "Pintasan untuk menyalin dan menempelkan"
 
-#: data/ui/remmina_preferences.glade:2121
+#: data/ui/remmina_preferences.glade:1949
 msgid "Select all shortcuts"
 msgstr "Pilih semua pintasan"
 
-#: data/ui/remmina_preferences.glade:2134
-#: data/ui/remmina_preferences.glade:2151
-#: data/ui/remmina_preferences.glade:2604
-#: data/ui/remmina_preferences.glade:2634
-#: data/ui/remmina_preferences.glade:2768
-#: data/ui/remmina_preferences.glade:2785
+#: data/ui/remmina_preferences.glade:1962
+#: data/ui/remmina_preferences.glade:1979
+#: data/ui/remmina_preferences.glade:2432
+#: data/ui/remmina_preferences.glade:2462
+#: data/ui/remmina_preferences.glade:2596
+#: data/ui/remmina_preferences.glade:2613
 msgid "(Host key+)"
 msgstr "(Tombol host+)"
 
-#: data/ui/remmina_preferences.glade:2169
+#: data/ui/remmina_preferences.glade:1997
 msgid "Use default system font"
 msgstr "Gunakan fonta sistem baku"
 
-#: data/ui/remmina_preferences.glade:2194
+#: data/ui/remmina_preferences.glade:2022
 msgid ""
 "Selecting “SGR 1” also switches to the bright counterparts of the first 8 "
 "palette colours (in addition to making text bold)."
@@ -4763,15 +4706,15 @@ msgstr ""
 "Memilih \"SGR 1\" juga akan mengalihkan ke bagian cerah dari 8 warna palet "
 "pertama (selain membuat teks tebal)."
 
-#: data/ui/remmina_preferences.glade:2210
+#: data/ui/remmina_preferences.glade:2038
 msgid "Allow using bright colours with bold text"
 msgstr "Izinkan penggunaan warna-warna cerah dengan teks tebal"
 
-#: data/ui/remmina_preferences.glade:2224
+#: data/ui/remmina_preferences.glade:2052
 msgid "Colour theme"
 msgstr "Tema warna"
 
-#: data/ui/remmina_preferences.glade:2235
+#: data/ui/remmina_preferences.glade:2063
 msgid ""
 "Choose a colour scheme file. Usually available in /usr/share/remmina/theme. "
 "https://github.com/mbadolato/iTerm2-Color-Schemes has more details."
@@ -4780,130 +4723,130 @@ msgstr ""
 "theme. https://github.com/mbadolato/iTerm2-Color-Schemes memiliki rincian "
 "lebih lanjut."
 
-#: data/ui/remmina_preferences.glade:2239
+#: data/ui/remmina_preferences.glade:2067
 msgid "Pick a terminal colouring file"
 msgstr "Pilih suatu berkas pewarnaan terminal"
 
-#: data/ui/remmina_preferences.glade:2254
+#: data/ui/remmina_preferences.glade:2082
 msgid "Bright colours"
 msgstr "Warna cerah"
 
-#: data/ui/remmina_preferences.glade:2268
+#: data/ui/remmina_preferences.glade:2096
 msgid "Pick a light black colour"
 msgstr "Pilih warna hitam terang"
 
-#: data/ui/remmina_preferences.glade:2282
+#: data/ui/remmina_preferences.glade:2110
 msgid "Pick a light red colour"
 msgstr "Pilih warna merah terang"
 
-#: data/ui/remmina_preferences.glade:2296
+#: data/ui/remmina_preferences.glade:2124
 msgid "Pick a bright green colour"
 msgstr "Pilih warna hijau cerah"
 
-#: data/ui/remmina_preferences.glade:2310
+#: data/ui/remmina_preferences.glade:2138
 msgid "Pick a bright yellow colour"
 msgstr "Pilih warna kuning cerah"
 
-#: data/ui/remmina_preferences.glade:2324
+#: data/ui/remmina_preferences.glade:2152
 msgid "Pick a bright blue colour"
 msgstr "Pilih warna biru cerah"
 
-#: data/ui/remmina_preferences.glade:2338
+#: data/ui/remmina_preferences.glade:2166
 msgid "Pick a light magenta colour"
 msgstr "Pilih warna magenta terang"
 
-#: data/ui/remmina_preferences.glade:2352
+#: data/ui/remmina_preferences.glade:2180
 msgid "Pick a light cyan colour"
 msgstr "Pilih warna sian terang"
 
-#: data/ui/remmina_preferences.glade:2366
+#: data/ui/remmina_preferences.glade:2194
 msgid "Pick a light white colour"
 msgstr "Pilih warna putih terang"
 
-#: data/ui/remmina_preferences.glade:2380
+#: data/ui/remmina_preferences.glade:2208
 msgid "Pick a black colour"
 msgstr "Pilih warna hitam"
 
-#: data/ui/remmina_preferences.glade:2394
+#: data/ui/remmina_preferences.glade:2222
 msgid "Pick a red colour"
 msgstr "Pilih warna merah"
 
-#: data/ui/remmina_preferences.glade:2408
+#: data/ui/remmina_preferences.glade:2236
 msgid "Pick a green colour"
 msgstr "Pilih warna hijau"
 
-#: data/ui/remmina_preferences.glade:2422
+#: data/ui/remmina_preferences.glade:2250
 msgid "Pick a yellow colour"
 msgstr "Pilih warna kuning"
 
-#: data/ui/remmina_preferences.glade:2436
+#: data/ui/remmina_preferences.glade:2264
 msgid "Pick a blue colour"
 msgstr "Pilih warna biru"
 
-#: data/ui/remmina_preferences.glade:2450
+#: data/ui/remmina_preferences.glade:2278
 msgid "Pick a magenta colour"
 msgstr "Pilih warna magenta"
 
-#: data/ui/remmina_preferences.glade:2464
+#: data/ui/remmina_preferences.glade:2292
 msgid "Pick a cyan colour"
 msgstr "Pilih warna sian"
 
-#: data/ui/remmina_preferences.glade:2478
+#: data/ui/remmina_preferences.glade:2306
 msgid "Pick a white colour"
 msgstr "Pilih warna putih"
 
-#: data/ui/remmina_preferences.glade:2491
+#: data/ui/remmina_preferences.glade:2319
 msgid "Normal colours"
 msgstr "Warna normal"
 
-#: data/ui/remmina_preferences.glade:2504
-#: data/ui/remmina_preferences.glade:2519
+#: data/ui/remmina_preferences.glade:2332
+#: data/ui/remmina_preferences.glade:2347
 msgid "Cursor colour"
 msgstr "Warna kursor"
 
-#: data/ui/remmina_preferences.glade:2533
-#: data/ui/remmina_preferences.glade:2548
+#: data/ui/remmina_preferences.glade:2361
+#: data/ui/remmina_preferences.glade:2376
 msgid "Background colour"
 msgstr "Warna latar belakang"
 
-#: data/ui/remmina_preferences.glade:2564
-#: data/ui/remmina_preferences.glade:2578
+#: data/ui/remmina_preferences.glade:2392
+#: data/ui/remmina_preferences.glade:2406
 msgid "Foreground colour"
 msgstr "Warna latar depan"
 
-#: data/ui/remmina_preferences.glade:2591
+#: data/ui/remmina_preferences.glade:2419
 msgid "Increase and decrease font size"
 msgstr "Memperbesar dan memperkecil ukuran fonta"
 
-#: data/ui/remmina_preferences.glade:2621
+#: data/ui/remmina_preferences.glade:2449
 msgid "Search text shortcut"
 msgstr "Pintasan mencari teks"
 
-#: data/ui/remmina_preferences.glade:2652
-#: data/ui/remmina_preferences.glade:2667
+#: data/ui/remmina_preferences.glade:2480
+#: data/ui/remmina_preferences.glade:2495
 msgid "Bold colour"
 msgstr "Warna tebal"
 
-#: data/ui/remmina_preferences.glade:2681
-#: data/ui/remmina_preferences.glade:2722
+#: data/ui/remmina_preferences.glade:2509
+#: data/ui/remmina_preferences.glade:2550
 msgid "Highlight colour"
 msgstr "Sorot warna"
 
-#: data/ui/remmina_preferences.glade:2694
-#: data/ui/remmina_preferences.glade:2738
+#: data/ui/remmina_preferences.glade:2522
+#: data/ui/remmina_preferences.glade:2566
 msgid "Highlight foreground colour"
 msgstr "Sorot warna latar depan"
 
-#: data/ui/remmina_preferences.glade:2707
-#: data/ui/remmina_preferences.glade:2754
+#: data/ui/remmina_preferences.glade:2535
+#: data/ui/remmina_preferences.glade:2582
 msgid "Cursor foreground colour"
 msgstr "Kursor warna latar depan"
 
-#: data/ui/remmina_preferences.glade:2810
+#: data/ui/remmina_preferences.glade:2638
 msgid "Terminal"
 msgstr "Terminal"
 
-#: data/ui/remmina_preferences.glade:2824
+#: data/ui/remmina_preferences.glade:2652
 msgid "Remmina Preferences"
 msgstr "Preferensi Remmina"
 
@@ -4918,6 +4861,29 @@ msgstr "Buka Remmina"
 #: data/ui/remmina_unlock.glade:120
 msgid "Master password"
 msgstr "Kata sandi induk"
+
+#~ msgid "Automatic lock interval"
+#~ msgstr "Interval mengunci otomatis"
+
+#, fuzzy
+#~| msgid "Enter VNC password"
+#~ msgid "Enter new password"
+#~ msgstr "Masukkan kata sandi VNC"
+
+#, fuzzy
+#~| msgid "Repeat the password"
+#~ msgid "Re-enter password"
+#~ msgstr "Ulangi kata sandi"
+
+#, fuzzy
+#~| msgid "Debugging"
+#~ msgid "Logging"
+#~ msgstr "Pengawakutuan"
+
+#, fuzzy
+#~| msgid "Certificate details:"
+#~ msgid "Certificates and fingerprints"
+#~ msgstr "Rincian sertifikat:"
 
 #, fuzzy
 #~| msgid "Use master password"
@@ -4943,9 +4909,6 @@ msgstr "Kata sandi induk"
 #~| msgid "Enable audio channel"
 #~ msgid "Enable auditing logs"
 #~ msgstr "Aktifkan kanal suara"
-
-#~ msgid "Trust all fingerprints and certificates"
-#~ msgstr "Percayai semua sidik jari dan sertifikat"
 
 #, fuzzy
 #~| msgid "Certificate details:"
@@ -5123,9 +5086,6 @@ msgstr "Kata sandi induk"
 
 #~ msgid "Tabs"
 #~ msgstr "Tab"
-
-#~ msgid "File encryption"
-#~ msgstr "Enkripsi berkas"
 
 #~ msgid "Fingerprints and certificates"
 #~ msgstr "Terima sertifikat yang telah berubah?"
