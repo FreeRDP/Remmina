@@ -2,7 +2,7 @@
 # Copyright © 2009 Rosetta Contributors and Canonical Ltd 2009
 # This file is distributed under the same license as the remmina package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2009.
-# Antenore Gatta <antenore@simbiosi.org>, 2019, 2020, 2021.
+# Antenore Gatta <antenore@simbiosi.org>, 2019, 2020, 2021, 2022.
 # Allan Nordhøy <epost@anotheragency.no>, 2019, 2020, 2021.
 # anonymous <noreply@weblate.org>, 2019.
 # Giovanni Panozzo <giovanni@panozzo.it>, 2020, 2021.
@@ -17,8 +17,8 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2022-01-17 11:09+0000\n"
-"PO-Revision-Date: 2022-01-17 10:32+0000\n"
-"Last-Translator: Alfonso Scarpino <alfonso.scarpino@gmail.com>\n"
+"PO-Revision-Date: 2022-01-17 14:40+0000\n"
+"Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/remmina/remmina/"
 "it/>\n"
 "Language: it\n"
@@ -2925,17 +2925,6 @@ msgstr ""
 "     x11vnc -display:0 -connect 192.168.1.36:8888"
 
 #: plugins/vnc/vnc_plugin.c:1991
-#, fuzzy
-#| msgid ""
-#| "Override pre-set VNC encodings:\n"
-#| "\n"
-#| "  • On “Poor quality” encodings is set to “copyrect zlib hextile raw”\n"
-#| "  • On “Medium quality” encodings is set to “tight zrle ultra copyrect "
-#| "hextile zlib corre rre raw”\n"
-#| "  • On “Good quality” encodings is set to “tight zrle ultra copyrect "
-#| "hextile zlib corre rre raw”\n"
-#| "  • On “Best quality” encodings is set to “copyrect zrle ultra zlib "
-#| "hextile corre rre raw”"
 msgid ""
 "Overriding the pre-set VNC encoding quality:\n"
 "\n"
@@ -2947,16 +2936,15 @@ msgid ""
 "  • “Best (slowest)” sets encoding to “copyrect zrle ultra zlib hextile "
 "corre rre raw”"
 msgstr ""
-"Sovrascrivere le codifiche VNC preimpostate:\n"
+"Sovrascrivere la qualità di codifica VNC preimpostata:\n"
 "\n"
-"  - In \"Qualità scarsa\" la codifica è impostata su \"copyrect zlib hextile "
-"raw\".\n"
-"  - In \"Media qualità\" la codifica è impostata su \"tight zrle ultra "
-"copyrect hextile zlib corre rre raw\".\n"
-"  - In \"Buona qualità\" la codifica è impostata su \"tight zrle ultra "
-"copyrect hextile zlib corre rre raw\".\n"
-"  - In \"Migliore qualità\" la codifica è impostata su \"copyrect zrle ultra "
-"zlib hextile corre rre raw\""
+"  - \"Poor (fastest)\" imposta la codifica a \"copyrect zlib hextile raw\".\n"
+"  - \"Medio\" imposta la codifica su \"tight zrle ultra copyrect hextile "
+"zlib corre rre raw\".\n"
+"  - \"Buono\" imposta la codifica su \"tight zrle ultra copyrect hextile "
+"zlib corre rre raw\".\n"
+"  - \"Migliore (più lento)\" imposta la codifica su \"copyrect zrle ultra "
+"zlib hextile corre rre raw\"."
 
 #: plugins/vnc/vnc_plugin.c:2018
 msgid "Repeater"
@@ -2976,7 +2964,7 @@ msgstr "Forza codifica stretta"
 
 #: plugins/vnc/vnc_plugin.c:2051
 msgid "Enabling this may help when the remote desktop looks scrambled"
-msgstr "Abilitarlo può aiutare quando il desktop remoto sembra confuso"
+msgstr "Abilitarlo può aiutare quando il desktop remoto si vede male"
 
 #: plugins/vnc/vnc_plugin.c:2054 plugins/gvnc/gvnc_plugin.c:868
 msgid "Ignore remote bell messages"
@@ -4606,18 +4594,19 @@ msgid ""
 "again the session.\n"
 "It defaults to 300 seconds."
 msgstr ""
+"Il numero di secondi dopo che Remmina chiederà nuovamente la password per "
+"bloccare nuovamente la sessione.\n"
+"Il valore predefinito è 300 secondi."
 
 #: data/ui/remmina_preferences.glade:1616
 msgid "Set and use a secret key to protect Remmina from unothorized use."
 msgstr ""
-"Imposta e usa una chiave segreta per proteggere Remmina dall'uso non "
+"Imposta e usa una chiave segreta per proteggere Remmina da un uso non "
 "autorizzato."
 
 #: data/ui/remmina_preferences.glade:1621
-#, fuzzy
-#| msgid "Use Remmina password"
 msgid "Remmina password"
-msgstr "Usa la password di Remmina"
+msgstr "Password Remmina"
 
 #: data/ui/remmina_preferences.glade:1632
 msgid "Use secret key authentication for some widgets"
@@ -4625,15 +4614,15 @@ msgstr "Utilizzare l'autenticazione a chiave segreta per alcuni widget"
 
 #: data/ui/remmina_preferences.glade:1652
 msgid "Valid for"
-msgstr ""
+msgstr "Valido per"
 
 #: data/ui/remmina_preferences.glade:1663
 msgid "Number of seconds to keep password valid for"
-msgstr "Numero di secondi per cui mantenere la password valida"
+msgstr "Numero di secondi per mantenere valida la password"
 
 #: data/ui/remmina_preferences.glade:1668
 msgid "timeout in seconds (default 300)"
-msgstr ""
+msgstr "timeout in secondi (predefinito 300)"
 
 #: data/ui/remmina_preferences.glade:1680
 msgid "Enter your Remmina password to connect"
@@ -4654,10 +4643,8 @@ msgid "Require to modify"
 msgstr "Richiedi per la modifica"
 
 #: data/ui/remmina_preferences.glade:1741
-#, fuzzy
-#| msgid "Encryption method"
 msgid "Encryption"
-msgstr "Metodo di crittografia"
+msgstr "Codifica"
 
 #: data/ui/remmina_preferences.glade:1752
 msgid ""
@@ -4672,11 +4659,13 @@ msgstr ""
 "Questi sono i metodi di crittografia utilizzati da Remmina per memorizzare "
 "le password.\n"
 "\n"
-"Tranne il metodo \"Debole\", tutti gli altri sono consigliati, Keystore è "
-"l'impostazione predefinita, in quanto si integra con KDE/Plasma e GNOME.\n"
+"Ad eccezione del metodo \"Debole\", tutti gli altri sono consigliati, "
+"Keystore è l'impostazione predefinita, poiché si integra con KDE/Plasma e "
+"GNOME.\n"
 "\n"
-"\"Intermedio\" non utilizza tanta memoria o potenza di elaborazione, e "
-"\"Sensibile\" è più sicuro ma utilizza 1 Gib di RAM e molti cicli di CPU. "
+"\"Intermediate\" non utilizza la stessa quantità di memoria o potenza di "
+"elaborazione e \"Sensitive\" è più sicuro ma utilizza 1 GB di RAM e molti "
+"cicli della CPU. "
 
 #: data/ui/remmina_preferences.glade:1761
 msgid "Intermediate (+64 Mib RAM)"
@@ -4691,20 +4680,16 @@ msgid "Sensitive (+1 Gib, <4s i7 CPU)"
 msgstr "Sensibile (+1 Gib, <4s CPU i7)"
 
 #: data/ui/remmina_preferences.glade:1779
-#, fuzzy
-#| msgid "Auditing"
 msgid "Auditing log"
-msgstr "Controllo"
+msgstr "Registro di controllo"
 
 #: data/ui/remmina_preferences.glade:1804
 msgid "Automatically accept all fingerprints and certificates"
 msgstr "Accetta automaticamente tutti i fingerprint e i certificati"
 
 #: data/ui/remmina_preferences.glade:1809
-#, fuzzy
-#| msgid "Trust all fingerprints and certificates"
 msgid "Trust all certificates"
-msgstr "Considera affidabili tutti i fingerprint e i certificati"
+msgstr "Considera attendibili tutti i certificati"
 
 #: data/ui/remmina_preferences.glade:1844
 msgid "Security"

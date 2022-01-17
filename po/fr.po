@@ -20,7 +20,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2022-01-17 11:09+0000\n"
-"PO-Revision-Date: 2022-01-17 11:04+0000\n"
+"PO-Revision-Date: 2022-01-17 14:40+0000\n"
 "Last-Translator: Davy Defaud <davy.defaud@free.fr>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/remmina/remmina/"
 "fr/>\n"
@@ -122,6 +122,11 @@ msgid ""
 "There is more info about debugging Remmina on https://gitlab.com/Remmina/"
 "Remmina/-/wikis/Usage/Remmina-debugging\n"
 msgstr ""
+"Cette fenêtre peut vous aider à déterminer des problèmes de connexion.\n"
+"Vous pouvez démarrer ou arrêter la journalisation à tout instant via le "
+"commutateur.\n"
+"Le bouton « stats » (Ctrl + T) permet de récupérer les informations système "
+"que vous pourriez vouloir fournir lors d’un rapport de bogue.\n"
 
 #: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1960
 msgid "Protocol"
@@ -245,8 +250,6 @@ msgstr "Configurer les entrées clavier"
 
 #. TRANSLATORS: Do not translate libsodium, is the name of a library
 #: src/remmina_pref_dialog.c:474
-#, fuzzy
-#| msgid "libsodium >= 1.9.0 is required to use master password"
 msgid "libsodium >= 1.9.0 is required to use Primary Password"
 msgstr ""
 "L’utilisation d’un mot de passe principal nécessite libsodium 1.9.0 ou "
@@ -459,14 +462,6 @@ msgstr ""
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. 'GtkSocket feature is not available'.
 #: src/rcw.c:4519
-#, fuzzy
-#| msgid ""
-#| "Plugins relying on GtkSocket can't run in a Wayland session.\n"
-#| "For more information and a possible workaround, please visit the Remmina "
-#| "Wiki at:\n"
-#| "\n"
-#| "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
-#| "available-in-a-Wayland-session"
 msgid ""
 "Plugins relying on GtkSocket can't run in a Wayland session.\n"
 "For more info and a possible workaround, please visit the Remmina wiki at:\n"
@@ -483,8 +478,6 @@ msgstr ""
 "available-in-a-Wayland-session"
 
 #: src/rcw.c:4533
-#, fuzzy
-#| msgid "Open in browser"
 msgid "Open in web browser"
 msgstr "Ouvrir dans un navigateur"
 
@@ -536,10 +529,6 @@ msgstr "FICHIER"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:92
-#, fuzzy
-#| msgid ""
-#| "Connect to a desktop described in a file (.remmina or a type supported by "
-#| "a plugin)"
 msgid ""
 "Connect to a desktop described in a file (.remmina or a filetype supported "
 "by a plugin)"
@@ -549,16 +538,12 @@ msgstr ""
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:94
-#, fuzzy
-#| msgid ""
-#| "Edit desktop connection described in file (.remmina or type supported by "
-#| "plugin)"
 msgid ""
 "Edit desktop connection described in file (.remmina or a filetype supported "
 "by plugin)"
 msgstr ""
-"Éditer une connexion au bureau définie par un fichier (« *.remmina » ou "
-"format géré par un greffon)"
+"Éditer une connexion définie par un fichier (« *.remmina » ou format géré "
+"par un greffon)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:97
@@ -638,12 +623,6 @@ msgstr "Chiffrer un mot de passe"
 #. * to log more verbose statements.
 #.
 #: src/remmina.c:338
-#, fuzzy
-#| msgid ""
-#| "Remmina does not log all output statements. To enable a more verbose "
-#| "output please use G_MESSAGES_DEBUG=all as an environment variable.\n"
-#| "For more information, please visit the Remmina Wiki at:\n"
-#| "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgid ""
 "Remmina does not log all output statements. Turn on more verbose output by "
 "using \"G_MESSAGES_DEBUG=all\" as an environment variable.\n"
@@ -651,8 +630,8 @@ msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgstr ""
 "Remmina ne journalise pas la sortie de toutes les actions. Pour augmenter la "
-"verbosité, veuillez définir la variable d’environnement G_MESSAGES_DEBUG à "
-"« all » (G_MESSAGES_DEBUG=all).\n"
+"verbosité, veuillez définir la variable d’environnement G_MESSAGES_DEBUG à « "
+"all » (G_MESSAGES_DEBUG=all).\n"
 "Pour de plus amples informations, veuillez consulter la page du Wiki de "
 "Remmina suivante :\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
@@ -1287,11 +1266,11 @@ msgstr[1] "%i éléments au total."
 
 #: src/remmina_main.c:695
 msgid "Network status: fully online"
-msgstr ""
+msgstr "État du réseau : connecté"
 
 #: src/remmina_main.c:698
 msgid "Network status: offline"
-msgstr ""
+msgstr "État du réseau : déconnecté"
 
 #: src/remmina_main.c:945
 #, c-format
@@ -1532,14 +1511,12 @@ msgid "Auto-start this profile"
 msgstr "Démarrer automatiquement ce profil"
 
 #: src/remmina_file_editor.c:1099
-#, fuzzy
-#| msgid "New connection profile"
 msgid "Connection profile security"
-msgstr "Nouveau profil de connexion"
+msgstr "Sécurité du profil de connexion"
 
 #: src/remmina_file_editor.c:1102
 msgid "Require password to connect or edit the profile"
-msgstr ""
+msgstr "Un mot de passe est nécessaire pour se connecter ou éditer ce profil"
 
 #: src/remmina_file_editor.c:1132
 msgid "SSH Tunnel"
@@ -1749,10 +1726,9 @@ msgstr ""
 "AppIndicator de GNOME Shell"
 
 #: src/remmina_ssh_plugin.c:342
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s:%d via SSH"
-msgstr "Connexion à « %s » via SSH…"
+msgstr "Connecté à %s:%d via SSH"
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_ssh_plugin.c:550
@@ -1793,10 +1769,9 @@ msgid "Find text (host+G)"
 msgstr "Recherche de texte (<hôte> + G)"
 
 #: src/remmina_ssh_plugin.c:921
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Disconnected from %s:%d via SSH"
-msgstr "Connexion à « %s » via SSH…"
+msgstr "Déconnecté de %s:%d via SSH"
 
 #: src/remmina_ssh_plugin.c:1468 data/ui/remmina_main.glade:177
 msgid "Copy"
@@ -1852,16 +1827,12 @@ msgid "User password"
 msgstr "Mot de passe de l’utilisateur"
 
 #: src/remmina_ssh_plugin.c:1506
-#, fuzzy
-#| msgid "Pre-command"
 msgid "Opening command"
-msgstr "Précommande"
+msgstr "Commande d’ouverture"
 
 #: src/remmina_ssh_plugin.c:1507
-#, fuzzy
-#| msgid "Start-up program"
 msgid "Start-up background program"
-msgstr "Programme de démarrage"
+msgstr "Programme de démarrage d’arrière‑plan"
 
 #: src/remmina_ssh_plugin.c:1512
 msgid ""
@@ -2097,7 +2068,7 @@ msgstr "Entrez les paramètres d’authentification sur la passerelle RDP"
 #: plugins/rdp/rdp_plugin.c:1027
 #, c-format
 msgid "Disconnected from %s via RDP"
-msgstr ""
+msgstr "Déconnecté de %s via RDP"
 
 #: plugins/rdp/rdp_plugin.c:2156
 #, c-format
@@ -2173,16 +2144,13 @@ msgid "Could not find the address for the RDP server “%s”."
 msgstr "Impossible de trouver l’adresse du serveur RDP « %s »."
 
 #: plugins/rdp/rdp_plugin.c:2211
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not connect to the RDP server “%s” via TLS. Check that client and "
-#| "server support a common TLS version."
+#, c-format
 msgid ""
 "Could not connect to the RDP server “%s” via TLS. See the DEBUG traces from "
 "a terminal for more information."
 msgstr ""
 "Erreur lors de la connexion au serveur RDP « %s » via TLS. Veuillez vérifier "
-"que client et serveur prennent en charge une version commune de TLS."
+"les informations de débogage pour de plus amples détails."
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:2215
@@ -2797,10 +2765,9 @@ msgstr "Tentative de reconnexion %d sur %d…"
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_event.c:1121
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s via RDP"
-msgstr "Connexion à « %s » via SSH…"
+msgstr "Connecté à %s via RDP"
 
 #: plugins/spice/spice_plugin_file_transfer.c:82
 msgid "File Transfers"
@@ -2834,16 +2801,14 @@ msgid "Disconnected from the SPICE server “%s”."
 msgstr "Déconnexion du serveur SPICE « %s »."
 
 #: plugins/spice/spice_plugin.c:388
-#, fuzzy, c-format
-#| msgid "Disconnected from the SPICE server “%s”."
+#, c-format
 msgid "Disconnected from %s:%d via SPICE"
-msgstr "Déconnexion du serveur SPICE « %s »."
+msgstr "Déconnecté du serveur SPICE %s:%d."
 
 #: plugins/spice/spice_plugin.c:391
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s:%d via SPICE"
-msgstr "Connexion à « %s » via SSH…"
+msgstr "Connecté à %s:%d via SPICE"
 
 #: plugins/spice/spice_plugin.c:403
 msgid "TLS connection error."
@@ -2880,8 +2845,6 @@ msgid "Server CA certificate"
 msgstr "Certificat d’AC du serveur"
 
 #: plugins/spice/spice_plugin.c:696
-#, fuzzy
-#| msgid "Prefered video codec"
 msgid "Preferred video codec"
 msgstr "Codec vidéo préféré"
 
@@ -2890,10 +2853,8 @@ msgid "Turn off GStreamer overlay"
 msgstr "Désactiver la superposition vidéo GStreamer"
 
 #: plugins/spice/spice_plugin.c:700
-#, fuzzy
-#| msgid "Prefered image compression"
 msgid "Preferred image compression"
-msgstr "Algorithme de compression préféré"
+msgstr "Algorithme de compression d’image préféré"
 
 #: plugins/spice/spice_plugin.c:703 plugins/spice/spice_plugin.c:716
 #: plugins/gvnc/gvnc_plugin.c:866 plugins/gvnc/gvnc_plugin.c:880
@@ -2966,15 +2927,14 @@ msgid "Please retry after turning on encryption for this profile."
 msgstr "Veuillez réessayer après activation du chiffrement pour ce profil."
 
 #: plugins/vnc/vnc_plugin.c:1706
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s:%d via VNC"
-msgstr "Connexion à « %s » via SSH…"
+msgstr "Connecté à %s:%d via VNC"
 
 #: plugins/vnc/vnc_plugin.c:1725
 #, c-format
 msgid "Disconnected from %s:%d via VNC"
-msgstr ""
+msgstr "Déconnecté de %s:%d via VNC"
 
 #: plugins/vnc/vnc_plugin.c:1974
 msgid ""
@@ -2996,14 +2956,6 @@ msgstr ""
 "    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
 
 #: plugins/vnc/vnc_plugin.c:1983
-#, fuzzy
-#| msgid ""
-#| "Listening for remote VNC connection:\n"
-#| "  • The \"Listen on port\" field is the port Remmina will listen to,\n"
-#| "    e.g. 8888\n"
-#| "  • From the remote VNC server, you will connect to\n"
-#| "    Remmina, e.g. with x11vnc:\n"
-#| "    x11vnc -display :0 -connect 192.168.1.36:8888"
 msgid ""
 "Listening for remote VNC connection:\n"
 "  • The “Listen on port” field is the port Remmina will listen to,\n"
@@ -3015,8 +2967,8 @@ msgstr ""
 "À l’écoute d’une connexion VNC cliente :\n"
 "  • le champ « Écouter sur le port » définit le port sur lequel Remmina va "
 "écouter, p. ex. 8888 ;\n"
-"  • depuis le client VNC distant, vous pourrez vous connecter à Remmina, "
-"p. ex. avec x11vnc :\n"
+"  • depuis le client VNC distant, vous pourrez vous connecter à Remmina, p. "
+"ex. avec x11vnc :\n"
 "    x11vnc -display :0 -connect 192.168.1.36:8888"
 
 #: plugins/vnc/vnc_plugin.c:1991
@@ -3031,6 +2983,16 @@ msgid ""
 "  • “Best (slowest)” sets encoding to “copyrect zrle ultra zlib hextile "
 "corre rre raw”"
 msgstr ""
+"Remplacer la qualité d’encodage VNC prédéfinie :\n"
+"\n"
+"   • « Mauvaise (la plus rapide) », définit l’encodage à « copyrect zlib "
+"hextile raw » ;\n"
+"   • « Moyenne », définit l’encodage à « tight zrle ultra copyrect hextile "
+"zlib corre rre raw » ;\n"
+"   • « Bonne », définit l’encodage à « tight zrle ultra copyrect hextile "
+"zlib corre rre raw » ;\n"
+"   • « Excellente (le plus lent) », définit l’encodage à « copyrect zrle "
+"ultra zlib hextile corre rre raw »."
 
 #: plugins/vnc/vnc_plugin.c:2018
 msgid "Repeater"
@@ -3042,15 +3004,17 @@ msgstr "Écouter sur le port"
 
 #: plugins/vnc/vnc_plugin.c:2050
 msgid "Override pre-set VNC encodings"
-msgstr ""
+msgstr "Remplacer la qualité d’encodage VNC prédéfinie"
 
 #: plugins/vnc/vnc_plugin.c:2051
 msgid "Force tight encoding"
-msgstr ""
+msgstr "Forcer l’encodage resserré de TightVNC"
 
 #: plugins/vnc/vnc_plugin.c:2051
 msgid "Enabling this may help when the remote desktop looks scrambled"
 msgstr ""
+"L’activation de cette option peut aider lorsque le bureau distant semble "
+"brouillé"
 
 #: plugins/vnc/vnc_plugin.c:2054 plugins/gvnc/gvnc_plugin.c:868
 msgid "Ignore remote bell messages"
@@ -3263,7 +3227,6 @@ msgid "SSHFS port"
 msgstr "Port SSHFS"
 
 #: plugins/x2go/x2go_plugin.c:484
-#, fuzzy
 msgid "Visible"
 msgstr "Visible"
 
@@ -3294,10 +3257,9 @@ msgid "Terminating X2Go sessions can take a moment."
 msgstr "Clore les sessions X2Go peut prendre un certain temps."
 
 #: plugins/x2go/x2go_plugin.c:621 plugins/x2go/x2go_plugin.c:623
-#, fuzzy, c-format
-#| msgid "Unknown property"
+#, c-format
 msgid "Unknown property '%i'"
-msgstr "Propriété inconnue"
+msgstr "Propriété « %i » inconnue"
 
 #: plugins/x2go/x2go_plugin.c:711 plugins/x2go/x2go_plugin.c:758
 msgid "Couldn't find child GtkTreeView of session chooser dialog."
@@ -3310,18 +3272,16 @@ msgid ""
 "Neither the 'dialog' nor 'treeview' parameters are initialized! At least one "
 "of them must be given."
 msgstr ""
+"Aucun des paramètres « dialog » et « treeview » n’est initialisé ! Au moins "
+"l’un des deux doit être précisé."
 
 #: plugins/x2go/x2go_plugin.c:732
-#, fuzzy
-#| msgid ""
-#| "GtkTreeModel of session chooser dialog could not be obtained for an "
-#| "unknown reason."
 msgid ""
 "Could not obtain \"GtkTreeModelFilter*\" of the session chooser dialog, for "
 "unknown reason."
 msgstr ""
-"Le GtkTreeModel de la boîte de dialogue du sélecteur de session n’a pu être "
-"obtenu pour une raison inconnue."
+"Impossible de déterminer le GtkTreeModelFilter* de la boîte de dialogue du "
+"sélecteur de session, pour une raison inconnue."
 
 #: plugins/x2go/x2go_plugin.c:767
 msgid "Couldn't get currently selected row (session)!"
@@ -3365,12 +3325,13 @@ msgstr ""
 "Internet."
 
 #: plugins/x2go/x2go_plugin.c:975
-#, fuzzy, c-format
-#| msgid "Could not start PyHoca-CLI (%i): '%s'"
+#, c-format
 msgid ""
 "Could not start PyHoca-CLI:\n"
 "%s"
-msgstr "Impossible de lancer PyHoca-CLI (%i) : « %s  »"
+msgstr ""
+"Impossible de lancer PyHoca-CLI :\n"
+"%s"
 
 #: plugins/x2go/x2go_plugin.c:986
 #, c-format
@@ -3390,11 +3351,9 @@ msgstr ""
 "CLI. Code de sortie : %i. Erreur : « %s »"
 
 #: plugins/x2go/x2go_plugin.c:1035
-#, fuzzy
-#| msgid "Both parameters 'dialog' and 'treeview' are uninitialized!"
 msgid "Neither the 'path' nor 'dialog' parameters are initialized."
 msgstr ""
-"Les deux paramètres « dialog » et « treeview » n’ont pas été initialisés !"
+"Aucun des paramètres « dialog » et « treeview » n’a pas été initialisé !"
 
 #: plugins/x2go/x2go_plugin.c:1051
 msgid "GtkTreePath 'path' describes a non-existing row!"
@@ -3411,12 +3370,13 @@ msgid "'Invalid connection data.'"
 msgstr "« Données de connexion incorrectes. »"
 
 #: plugins/x2go/x2go_plugin.c:1221
-#, fuzzy, c-format
-#| msgid "An error occured while trying to terminate a X2Go session: %s"
+#, c-format
 msgid ""
 "An error occured while trying to terminate X2Go session '%s':\n"
 "%s"
-msgstr "Une erreur est survenue lors de la clôture d’une session X2Go : %s"
+msgstr ""
+"Une erreur est survenue lors de la clôture de la session X2Go « %s » :\n"
+"%s"
 
 #: plugins/x2go/x2go_plugin.c:1233 plugins/x2go/x2go_plugin.c:1609
 msgid "An error occured."
@@ -3441,7 +3401,7 @@ msgstr "Clôture de la session : « %s »"
 #: plugins/x2go/x2go_plugin.c:1529
 #, c-format
 msgid "Disconnected from %s:%d via X2Go"
-msgstr ""
+msgstr "Déconnecté de %s:%d via X2Go"
 
 #: plugins/x2go/x2go_plugin.c:1601
 msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
@@ -3603,10 +3563,9 @@ msgid "Available feature[%i]: '%s'"
 msgstr "Fonctionnalité %i disponible : « %s »"
 
 #: plugins/x2go/x2go_plugin.c:2583
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s:%d via X2Go"
-msgstr "Connexion à « %s » via SSH…"
+msgstr "Connecté à %s:%d via SSH"
 
 #: plugins/x2go/x2go_plugin.c:2677
 msgid "Could not open X11 DISPLAY."
@@ -4038,17 +3997,12 @@ msgid "About"
 msgstr "À propos"
 
 #: data/ui/remmina_about.glade:34
-#, fuzzy
-#| msgid ""
-#| "Copyright © 2014–2021 Antenore Gatta, Giovanni Panozzo.\n"
-#| "Copyright © 2009–2014 Vic Lee\n"
-#| "More details in COPYING"
 msgid ""
 "Copyright © 2014–2022 Antenore Gatta, Giovanni Panozzo.\n"
 "Copyright © 2009–2014 Vic Lee\n"
 "More details in COPYING"
 msgstr ""
-"Copyright © 2014-2021 Antenore Gatta, Giovanni Panozzo.\n"
+"Copyright © 2014-2022 Antenore Gatta, Giovanni Panozzo.\n"
 "Copyright © 2009-2014 Vic Lee\n"
 "Plus de détails dans le fichier COPYING"
 
@@ -4117,22 +4071,16 @@ msgid "Domain\\Username"
 msgstr "Domaine\\Nom d’utilisateur"
 
 #: data/ui/remmina_passwd.glade:33
-#, fuzzy
-#| msgid "_OK"
 msgid "OK"
-msgstr "_OK"
+msgstr "OK"
 
 #: data/ui/remmina_passwd.glade:60
-#, fuzzy
-#| msgid "Set new password"
 msgid "Set Primary Password"
-msgstr "Nouveau mot de passe"
+msgstr "Nouveau mot de passe principal"
 
 #: data/ui/remmina_passwd.glade:101
-#, fuzzy
-#| msgid "User password"
 msgid "Verify password"
-msgstr "Mot de passe de l’utilisateur"
+msgstr "Confirmation du mot de passe"
 
 #: data/ui/remmina_news.glade:75
 msgid ""
@@ -4194,17 +4142,13 @@ msgstr ""
 
 #: data/ui/remmina_news.glade:169
 msgid "Receives updated news from remmina.org"
-msgstr ""
+msgstr "Récupère des actualités concernant Remmina depuis remmina.org"
 
 #: data/ui/remmina_news.glade:182
-#, fuzzy
-#| msgid ""
-#| "* By enabling statistics and/or news you consent to send and fetch data "
-#| "to/from remmina.org"
 msgid "* By turning on news you consent to fetching data from remmina.org"
 msgstr ""
-"* En activant les statistiques ou les actualités, vous consentez à l’envoi "
-"et la récupération de données avec remmina.org"
+"* En activant les actualités, vous consentez à récupérer des données "
+"provenant de remmina.org"
 
 #: data/ui/remmina_news.glade:205
 msgid "<big>Take part</big>"
@@ -4470,14 +4414,6 @@ msgstr "Modèle de nomenclature des profils"
 
 #. Placeholders used to name a Remmina connection profile
 #: data/ui/remmina_preferences.glade:361
-#, fuzzy
-#| msgid ""
-#| "%G Group name (slash will be converted to - automatically)\n"
-#| "%P Protocol name\n"
-#| "%N Connection name\n"
-#| "%h Hostname/IP\n"
-#| "\n"
-#| "\n"
 msgid ""
 "%G Name of group (slashes \\/ are converted to dashes -)\n"
 "%P Protocol name\n"
@@ -4486,8 +4422,8 @@ msgid ""
 "\n"
 "\n"
 msgstr ""
-"%G : nom de groupe (les obliques « / » seront automatiquement convertis en "
-"tirets « - ») ;\n"
+"%G : nom du groupe (les obliques « / » et contre‐obliques « \\ » seront "
+"automatiquement converties en tirets « - ») ;\n"
 "%P : nom du protocole ;\n"
 "%N : nom de la connexion ;\n"
 "%h : nom d’hôte ou adresse IP.\n"
@@ -4505,14 +4441,10 @@ msgid "Prevent screenshots from entering clipboard"
 msgstr "Empêcher la copie des captures d’écran dans le presse‑papiers"
 
 #: data/ui/remmina_preferences.glade:432
-#, fuzzy
-#| msgid ""
-#| "* By enabling statistics and/or news you consent to send and fetch data "
-#| "to/from remmina.org"
 msgid "* By enabling news you consent to fetch data from remmina.org"
 msgstr ""
-"* En activant les statistiques ou les actualités, vous consentez à l’envoi "
-"et la récupération de données avec remmina.org"
+"* En activant les actualités, vous consentez à récupérer des données depuis "
+"remmina.org"
 
 #: data/ui/remmina_preferences.glade:500
 msgid "Options"
