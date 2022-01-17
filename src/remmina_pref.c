@@ -293,7 +293,7 @@ void remmina_pref_init(void)
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "unlock_timeout", NULL))
 		remmina_pref.unlock_timeout = g_key_file_get_integer(gkeyfile, "remmina_pref", "unlock_timeout", NULL);
 	else
-		remmina_pref.unlock_timeout = 0;
+		remmina_pref.unlock_timeout = 300;
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "unlock_password", NULL))
 		remmina_pref.unlock_password = g_key_file_get_string(gkeyfile, "remmina_pref", "unlock_password", NULL);
