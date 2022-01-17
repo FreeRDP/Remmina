@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-01-17 11:09+0000\n"
-"PO-Revision-Date: 2022-01-11 15:56+0000\n"
+"POT-Creation-Date: 2022-01-17 15:42+0000\n"
+"PO-Revision-Date: 2022-01-17 18:55+0000\n"
 "Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/remmina/remmina/"
 "tr/>\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.10.1\n"
+"X-Generator: Weblate 4.11-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:04+0000\n"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:354
@@ -247,10 +247,8 @@ msgstr "Tuş vuruşlarını yapılandır"
 
 #. TRANSLATORS: Do not translate libsodium, is the name of a library
 #: src/remmina_pref_dialog.c:474
-#, fuzzy
-#| msgid "libsodium >= 1.9.0 is required to use master password"
 msgid "libsodium >= 1.9.0 is required to use Primary Password"
-msgstr "Ana parolayı kullanmak için libsodium > = 1.9.0 gerekli"
+msgstr "Ana Parola kullanmak için libsodium > = 1.9.0 gerekli"
 
 #: src/remmina_pref_dialog.c:808
 msgid "Picking a terminal colouring file replaces the file: "
@@ -274,7 +272,7 @@ msgstr "İptal"
 #: src/remmina_message_panel.c:199 data/ui/remmina_snap_info_dialog.glade:28
 #: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
 #: data/ui/remmina_string_list.glade:63 data/ui/remmina_news.glade:33
-#: data/ui/remmina_preferences.glade:2656
+#: data/ui/remmina_preferences.glade:2655
 msgid "Close"
 msgstr "Kapat"
 
@@ -1466,14 +1464,12 @@ msgid "Auto-start this profile"
 msgstr "Bu profili kendiliğinden başlat"
 
 #: src/remmina_file_editor.c:1099
-#, fuzzy
-#| msgid "New connection profile"
 msgid "Connection profile security"
-msgstr "Yeni bağlantı profili"
+msgstr "Bağlantı profil güvenliği"
 
 #: src/remmina_file_editor.c:1102
 msgid "Require password to connect or edit the profile"
-msgstr ""
+msgstr "Profile bağlanma veya düzenlemeye parola gerektir"
 
 #: src/remmina_file_editor.c:1132
 msgid "SSH Tunnel"
@@ -1680,10 +1676,9 @@ msgstr ""
 "%s Gnome Shell Extension Appindicator kurmanız ve kullanmanız gerekebilir"
 
 #: src/remmina_ssh_plugin.c:342
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s:%d via SSH"
-msgstr "SSH ile %s'ye bağlanılıyor…"
+msgstr "SSH ile %s:%d'ye bağlanıldı"
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_ssh_plugin.c:550
@@ -1724,10 +1719,9 @@ msgid "Find text (host+G)"
 msgstr "Metin bul (ana makine+G)"
 
 #: src/remmina_ssh_plugin.c:921
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Disconnected from %s:%d via SSH"
-msgstr "SSH ile %s'ye bağlanılıyor…"
+msgstr "SSH ile %s:%d'den bağlantı kesildi"
 
 #: src/remmina_ssh_plugin.c:1468 data/ui/remmina_main.glade:177
 msgid "Copy"
@@ -1888,7 +1882,7 @@ msgstr "<Ayarlanmadı>"
 
 #: plugins/rdp/rdp_settings.c:280
 msgid "<Choose a quality level to edit…>"
-msgstr "<Düzenlemek için bir kalite seviyesi seçin…>"
+msgstr "<Düzenlenecek nitelik düzeyi seç…>"
 
 #: plugins/rdp/rdp_settings.c:282 plugins/rdp/rdp_plugin.c:2625
 #: plugins/vnc/vnc_plugin.c:1969
@@ -1934,7 +1928,7 @@ msgstr "Tarama kodlarını eşlemek için FreeRDP > 2.3.0 gereklidir"
 
 #: plugins/rdp/rdp_settings.c:494
 msgid "Quality settings"
-msgstr "Kalite ayarları"
+msgstr "Nitelik ayarları"
 
 #: plugins/rdp/rdp_settings.c:517
 msgid "Wallpaper"
@@ -2020,7 +2014,7 @@ msgstr "RDP ağ geçidi kimlik doğrulama bilgilerini girin"
 #: plugins/rdp/rdp_plugin.c:1027
 #, c-format
 msgid "Disconnected from %s via RDP"
-msgstr ""
+msgstr "RDP ile %s'den bağlantı kesildi"
 
 #: plugins/rdp/rdp_plugin.c:2156
 #, c-format
@@ -2439,7 +2433,7 @@ msgstr "Ağ bağlantı türü"
 #: plugins/rdp/rdp_plugin.c:2791 plugins/vnc/vnc_plugin.c:2022
 #: plugins/vnc/vnc_plugin.c:2034
 msgid "Quality"
-msgstr "Kalite"
+msgstr "Nitelik"
 
 #: plugins/rdp/rdp_plugin.c:2792
 msgid "Security protocol negotiation"
@@ -2451,7 +2445,7 @@ msgstr "Ağ geçidi taşıma türü"
 
 #: plugins/rdp/rdp_plugin.c:2794
 msgid "FreeRDP log level"
-msgstr "FreeRDP günlük kaydı seviyesi"
+msgstr "FreeRDP günlük kaydı düzeyi"
 
 #: plugins/rdp/rdp_plugin.c:2795
 msgid "FreeRDP log filters"
@@ -2459,7 +2453,7 @@ msgstr "FreeRDP günlük filtreleri"
 
 #: plugins/rdp/rdp_plugin.c:2795
 msgid "tag:level[,tag:level[,…]]"
-msgstr "etiket:seviye[,etiket:seviye[,…]]"
+msgstr "etiket:düzey[,etiket:düzey[,…]]"
 
 #: plugins/rdp/rdp_plugin.c:2796
 msgid "Audio output mode"
@@ -2704,10 +2698,9 @@ msgstr "Yeniden bağlanma girişimi %d / %d…"
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_event.c:1121
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s via RDP"
-msgstr "SSH ile %s'ye bağlanılıyor…"
+msgstr "RDP ile %s'ye bağlanıldı"
 
 #: plugins/spice/spice_plugin_file_transfer.c:82
 msgid "File Transfers"
@@ -2741,16 +2734,14 @@ msgid "Disconnected from the SPICE server “%s”."
 msgstr "“%s” SPICE sunucusuyla bağlantı kesildi."
 
 #: plugins/spice/spice_plugin.c:388
-#, fuzzy, c-format
-#| msgid "Disconnected from the SPICE server “%s”."
+#, c-format
 msgid "Disconnected from %s:%d via SPICE"
-msgstr "“%s” SPICE sunucusuyla bağlantı kesildi."
+msgstr "SPICE ile %s:%d'den bağlantı kesildi"
 
 #: plugins/spice/spice_plugin.c:391
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s:%d via SPICE"
-msgstr "SSH ile %s'ye bağlanılıyor…"
+msgstr "SPICE ile %s:%d'ye bağlanıldı"
 
 #: plugins/spice/spice_plugin.c:403
 msgid "TLS connection error."
@@ -2867,15 +2858,14 @@ msgid "Please retry after turning on encryption for this profile."
 msgstr "Lütfen bu profil için şifrelemeyi açtıktan sonra yeniden deneyin."
 
 #: plugins/vnc/vnc_plugin.c:1706
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s:%d via VNC"
-msgstr "SSH ile %s'ye bağlanılıyor…"
+msgstr "VNC ile %s:%d'ye bağlanıldı"
 
 #: plugins/vnc/vnc_plugin.c:1725
 #, c-format
 msgid "Disconnected from %s:%d via VNC"
-msgstr ""
+msgstr "VNC ile %s:%d'den bağlantı kesildi"
 
 #: plugins/vnc/vnc_plugin.c:1974
 msgid ""
@@ -2913,17 +2903,6 @@ msgstr ""
 "    x11vnc -display :0 -connect 192.168.1.36:8888"
 
 #: plugins/vnc/vnc_plugin.c:1991
-#, fuzzy
-#| msgid ""
-#| "Override pre-set VNC encodings:\n"
-#| "\n"
-#| "  • On “Poor quality” encodings is set to “copyrect zlib hextile raw”\n"
-#| "  • On “Medium quality” encodings is set to “tight zrle ultra copyrect "
-#| "hextile zlib corre rre raw”\n"
-#| "  • On “Good quality” encodings is set to “tight zrle ultra copyrect "
-#| "hextile zlib corre rre raw”\n"
-#| "  • On “Best quality” encodings is set to “copyrect zrle ultra zlib "
-#| "hextile corre rre raw”"
 msgid ""
 "Overriding the pre-set VNC encoding quality:\n"
 "\n"
@@ -2935,16 +2914,15 @@ msgid ""
 "  • “Best (slowest)” sets encoding to “copyrect zrle ultra zlib hextile "
 "corre rre raw”"
 msgstr ""
-"Önceden tanımlı VNC kodlamalarını görmezden gel:\n"
+"Önceden tanımlı VNC kodlama niteliğinin görmezden gelinmesi:\n"
 "\n"
-"  • “Düşük nitelik” kodlamalarında şuna ayarlıdır: “copyrect zlib hextile "
-"raw”\n"
-"  • “Düşük nitelik” kodlamalarında şuna ayarlıdır: “tight zrle ultra "
-"copyrect hextile zlib corre rre raw”\n"
-"  • “İyi nitelik” kodlamalarında şuna ayarlıdır: “tight zrle ultra copyrect "
-"hextile zlib corre rre raw”\n"
-"  • “En iyi nitelik” kodlamalarında şuna ayarlıdır: “copyrect zrle ultra "
-"zlib hextile corre rre raw”"
+"  • “Zayıf (en hızlı)” kodlamayı şuna ayarlar: “copyrect zlib hextile raw”\n"
+"  • “Orta” kodlamayı şuna ayarlar: “tight zrle ultra copyrect hextile zlib "
+"corre rre raw”\n"
+"  • “İyi” kodlamayı şuna ayarlar: “tight zrle ultra copyrect hextile zlib "
+"corre rre raw”\n"
+"  • “En iyi (en yavaş)” kodlamayı şuna ayarlar: “copyrect zrle ultra zlib "
+"hextile corre rre raw”"
 
 #: plugins/vnc/vnc_plugin.c:2018
 msgid "Repeater"
@@ -3343,7 +3321,7 @@ msgstr "Oturum sonlandırılıyor: '%s'"
 #: plugins/x2go/x2go_plugin.c:1529
 #, c-format
 msgid "Disconnected from %s:%d via X2Go"
-msgstr ""
+msgstr "X2Go ile %s:%d'den bağlantı kesildi"
 
 #: plugins/x2go/x2go_plugin.c:1601
 msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
@@ -3493,10 +3471,9 @@ msgid "Available feature[%i]: '%s'"
 msgstr "Kullanılabilir özellik[%i]: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:2583
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s:%d via X2Go"
-msgstr "SSH ile %s'ye bağlanılıyor…"
+msgstr "X2Go ile %s:%d'ye bağlanıldı"
 
 #: plugins/x2go/x2go_plugin.c:2677
 msgid "Could not open X11 DISPLAY."
@@ -3988,22 +3965,16 @@ msgid "Domain\\Username"
 msgstr "Alan adı\\Kullanıcı adı"
 
 #: data/ui/remmina_passwd.glade:33
-#, fuzzy
-#| msgid "_OK"
 msgid "OK"
-msgstr "_Tamam"
+msgstr "Tamam"
 
 #: data/ui/remmina_passwd.glade:60
-#, fuzzy
-#| msgid "Set new password"
 msgid "Set Primary Password"
-msgstr "Yeni parola ayarla"
+msgstr "Ana Parola Belirle"
 
 #: data/ui/remmina_passwd.glade:101
-#, fuzzy
-#| msgid "User password"
 msgid "Verify password"
-msgstr "Kullanıcı parolası"
+msgstr "Parolayı doğrula"
 
 #: data/ui/remmina_news.glade:75
 msgid ""
@@ -4226,7 +4197,7 @@ msgstr "Ayarları düzenle"
 
 #: data/ui/remmina_preferences.glade:75
 msgid "Scaling quality"
-msgstr "Ölçekleme kalitesi"
+msgstr "Ölçekleme niteliği"
 
 #: data/ui/remmina_preferences.glade:91
 msgid "Nearest"
@@ -4324,14 +4295,6 @@ msgstr "Profil dosya adları için şablon"
 
 #. Placeholders used to name a Remmina connection profile
 #: data/ui/remmina_preferences.glade:361
-#, fuzzy
-#| msgid ""
-#| "%G Group name (slash will be converted to - automatically)\n"
-#| "%P Protocol name\n"
-#| "%N Connection name\n"
-#| "%h Hostname/IP\n"
-#| "\n"
-#| "\n"
 msgid ""
 "%G Name of group (slashes \\/ are converted to dashes -)\n"
 "%P Protocol name\n"
@@ -4340,7 +4303,7 @@ msgid ""
 "\n"
 "\n"
 msgstr ""
-"%G Küme adı (eğik çizgi, kendiliğinden tireye (-) dönüştürülür)\n"
+"%G Küme adı (eğik çizgiler \\/ kendiliğinden tireye - dönüştürülür)\n"
 "%P İletişim kuralı adı\n"
 "%N Bağlantı adı\n"
 "%h Ana makine adı/IP\n"
@@ -4535,7 +4498,7 @@ msgstr "API ile erişilebilir giriş noktaları"
 
 #: data/ui/remmina_preferences.glade:1423
 msgid "Lower level protocol info, packet level"
-msgstr "Alt seviye iletişim kuralı bilgisi, paket seviyesi"
+msgstr "Alt düzey iletişim kuralı bilgisi, paket düzeyi"
 
 #: data/ui/remmina_preferences.glade:1424
 msgid "Function entering and leaving"
@@ -4543,7 +4506,7 @@ msgstr "İşlev giriş ve çıkışları"
 
 #: data/ui/remmina_preferences.glade:1441
 msgid "SSH log level"
-msgstr "SSH günlük kaydı seviyesi"
+msgstr "SSH günlük kaydı düzeyi"
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
 #: data/ui/remmina_preferences.glade:1512
@@ -4579,66 +4542,67 @@ msgid "SSH options"
 msgstr "SSH seçenekleri"
 
 #: data/ui/remmina_preferences.glade:1603
+#, fuzzy
+#| msgid ""
+#| "The number of seconds after Remmina will ask again the password to lock "
+#| "again the session.\n"
+#| "It defaults to 300 seconds."
 msgid ""
-"The number of seconds after Remmina will ask again the password to lock "
-"again the session.\n"
-"It defaults to 300 seconds."
+"Time in seconds before Remmina will lock the session and asks for a password "
+"again. Default: 300 Seconds."
 msgstr ""
+"Remmina, oturumu kilitlemeden ve yeniden parola sormadan önce geçecek saniye "
+"sayısı.\n"
+"Öntanımlısı 300 saniyedir."
 
-#: data/ui/remmina_preferences.glade:1616
+#: data/ui/remmina_preferences.glade:1615
 msgid "Set and use a secret key to protect Remmina from unothorized use."
 msgstr ""
+"Remmina'yı yetkisiz kullanımdan korumak için gizli anahtar belirle ve kullan."
 
-#: data/ui/remmina_preferences.glade:1621
-#, fuzzy
-#| msgid "User password"
+#: data/ui/remmina_preferences.glade:1620
 msgid "Remmina password"
-msgstr "Kullanıcı parolası"
+msgstr "Remmina parolası"
 
-#: data/ui/remmina_preferences.glade:1632
+#: data/ui/remmina_preferences.glade:1631
 msgid "Use secret key authentication for some widgets"
 msgstr "Bazı widget'ler için gizli anahtar kimlik doğrulaması kullanın"
 
-#: data/ui/remmina_preferences.glade:1652
+#: data/ui/remmina_preferences.glade:1651
 msgid "Valid for"
-msgstr ""
+msgstr "Geçerlilik"
 
-#: data/ui/remmina_preferences.glade:1663
+#: data/ui/remmina_preferences.glade:1662
 msgid "Number of seconds to keep password valid for"
-msgstr ""
+msgstr "Parolanın geçerli sayılacağı saniye sayısı"
 
-#: data/ui/remmina_preferences.glade:1668
+#: data/ui/remmina_preferences.glade:1667
 msgid "timeout in seconds (default 300)"
-msgstr ""
+msgstr "saniye türünde zaman aşımı (öntanımlı 300)"
 
-#: data/ui/remmina_preferences.glade:1680
-#, fuzzy
-#| msgid "Secured password storage in KWallet"
+#: data/ui/remmina_preferences.glade:1679
 msgid "Enter your Remmina password to connect"
-msgstr "KWallet'da güvenli parola saklama"
+msgstr "Bağlanmak için Remmina parolanızı girin"
 
-#: data/ui/remmina_preferences.glade:1684
-#, fuzzy
-#| msgid "Secured password storage in KWallet"
+#: data/ui/remmina_preferences.glade:1683
 msgid "Require to connect"
-msgstr "KWallet'da güvenli parola saklama"
+msgstr "Bağlanmak için gerektir"
 
-#: data/ui/remmina_preferences.glade:1695
+#: data/ui/remmina_preferences.glade:1694
 msgid "Creation, editing, copying, and deletions require the Remmina password"
 msgstr ""
+"Oluşturma, düzenleme, kopyalama ve silmeler Remmina parolası gerektirir"
 
 #. Creation, editing, copying, and deletions require the primary password
-#: data/ui/remmina_preferences.glade:1699
+#: data/ui/remmina_preferences.glade:1698
 msgid "Require to modify"
-msgstr ""
+msgstr "Düzenlemek için gerektir"
 
-#: data/ui/remmina_preferences.glade:1741
-#, fuzzy
-#| msgid "File encryption"
+#: data/ui/remmina_preferences.glade:1740
 msgid "Encryption"
-msgstr "Dosya şifreleme"
+msgstr "Şifreleme"
 
-#: data/ui/remmina_preferences.glade:1752
+#: data/ui/remmina_preferences.glade:1751
 msgid ""
 "These are the encryption methods used by Remmina to store passwords.\n"
 "\n"
@@ -4648,69 +4612,73 @@ msgid ""
 "\"Intermediate\" doesn't use as much memory or processsing power, and "
 "\"Sensitive\" is more secure but uses 1 Gib of RAM and many CPU cycles. "
 msgstr ""
+"Bunlar, Remmina'nın parolaları depolamak için kullandığı şifreleme "
+"yöntemleridir.\n"
+"\n"
+"\"Zayıf\" yöntem dışında diğer tümü önerilir, KDE/Plasma ve GNOME ile "
+"tümleşen Keystore öntanımlıdır.\n"
+"\n"
+"\"Orta\" çok bellek ve işlemci gücü kullanmaz. \"Duyarlı\" daha güvenlidir "
+"ancak 1 Gib RAM ve çok CPU çevrimi kullanır. "
+
+#: data/ui/remmina_preferences.glade:1760
+msgid "Intermediate (+64 Mib RAM)"
+msgstr "Orta (+64 Mib RAM)"
 
 #: data/ui/remmina_preferences.glade:1761
-msgid "Intermediate (+64 Mib RAM)"
-msgstr ""
+msgid "Strong (+256 Mib, <1s i7 CPU)"
+msgstr "Güçlü (+256 Mib, <1s i7 CPU)"
 
 #: data/ui/remmina_preferences.glade:1762
-msgid "Strong (+256 Mib, <1s i7 CPU)"
-msgstr ""
-
-#: data/ui/remmina_preferences.glade:1763
 msgid "Sensitive (+1 Gib, <4s i7 CPU)"
-msgstr ""
+msgstr "Duyarlı (+1 Gib, <4s i7 CPU)"
 
-#: data/ui/remmina_preferences.glade:1779
-#, fuzzy
-#| msgid "Edit settings"
+#: data/ui/remmina_preferences.glade:1778
 msgid "Auditing log"
-msgstr "Ayarları düzenle"
+msgstr "Denetim günlüğü"
 
-#: data/ui/remmina_preferences.glade:1804
+#: data/ui/remmina_preferences.glade:1803
 msgid "Automatically accept all fingerprints and certificates"
 msgstr "Tüm parmak izlerini ve sertifikaları kendiliğinden kabul et"
 
-#: data/ui/remmina_preferences.glade:1809
-#, fuzzy
-#| msgid "Trust all fingerprints and certificates"
+#: data/ui/remmina_preferences.glade:1808
 msgid "Trust all certificates"
-msgstr "Tüm parmak izlerine ve sertifikalara güven"
+msgstr "Tüm sertifikalara güven"
 
-#: data/ui/remmina_preferences.glade:1844
+#: data/ui/remmina_preferences.glade:1843
 msgid "Security"
 msgstr "Güvenlik"
 
-#: data/ui/remmina_preferences.glade:1875
+#: data/ui/remmina_preferences.glade:1874
 msgid "Terminal font"
 msgstr "Uçbirim yazı tipi"
 
-#: data/ui/remmina_preferences.glade:1888
+#: data/ui/remmina_preferences.glade:1887
 msgid "Scrollback lines"
 msgstr "Kaydırma çizgileri"
 
-#: data/ui/remmina_preferences.glade:1936
+#: data/ui/remmina_preferences.glade:1935
 msgid "Shortcuts for copying and pasting"
 msgstr "Kopyalama ve yapıştırma için kısayollar"
 
-#: data/ui/remmina_preferences.glade:1949
+#: data/ui/remmina_preferences.glade:1948
 msgid "Select all shortcuts"
 msgstr "Tüm kısayolları seç"
 
-#: data/ui/remmina_preferences.glade:1962
-#: data/ui/remmina_preferences.glade:1979
-#: data/ui/remmina_preferences.glade:2432
-#: data/ui/remmina_preferences.glade:2462
-#: data/ui/remmina_preferences.glade:2596
-#: data/ui/remmina_preferences.glade:2613
+#: data/ui/remmina_preferences.glade:1961
+#: data/ui/remmina_preferences.glade:1978
+#: data/ui/remmina_preferences.glade:2431
+#: data/ui/remmina_preferences.glade:2461
+#: data/ui/remmina_preferences.glade:2595
+#: data/ui/remmina_preferences.glade:2612
 msgid "(Host key+)"
 msgstr "(Ana makine tuşu+)"
 
-#: data/ui/remmina_preferences.glade:1997
+#: data/ui/remmina_preferences.glade:1996
 msgid "Use default system font"
 msgstr "Öntanımlı sistem yazı tipini kullan"
 
-#: data/ui/remmina_preferences.glade:2022
+#: data/ui/remmina_preferences.glade:2021
 msgid ""
 "Selecting “SGR 1” also switches to the bright counterparts of the first 8 "
 "palette colours (in addition to making text bold)."
@@ -4718,15 +4686,15 @@ msgstr ""
 "“SGR 1” seçilerek, (metni kalınlaştırmaya ek olarak) ilk 8 palet renginin "
 "parlaklarına geçilir."
 
-#: data/ui/remmina_preferences.glade:2038
+#: data/ui/remmina_preferences.glade:2037
 msgid "Allow using bright colours with bold text"
 msgstr "Kalın metinle parlak renkler kullanmaya izin ver"
 
-#: data/ui/remmina_preferences.glade:2052
+#: data/ui/remmina_preferences.glade:2051
 msgid "Colour theme"
 msgstr "Renk teması"
 
-#: data/ui/remmina_preferences.glade:2063
+#: data/ui/remmina_preferences.glade:2062
 msgid ""
 "Choose a colour scheme file. Usually available in /usr/share/remmina/theme. "
 "https://github.com/mbadolato/iTerm2-Color-Schemes has more details."
@@ -4735,130 +4703,130 @@ msgstr ""
 "Daha çok ayrıntı https://github.com/mbadolato/iTerm2-Color-Schemes adresinde "
 "bulunabilir."
 
-#: data/ui/remmina_preferences.glade:2067
+#: data/ui/remmina_preferences.glade:2066
 msgid "Pick a terminal colouring file"
 msgstr "Uçbirim renklendirme dosyası seç"
 
-#: data/ui/remmina_preferences.glade:2082
+#: data/ui/remmina_preferences.glade:2081
 msgid "Bright colours"
 msgstr "Parlak renkler"
 
-#: data/ui/remmina_preferences.glade:2096
+#: data/ui/remmina_preferences.glade:2095
 msgid "Pick a light black colour"
 msgstr "Açık siyah renk seç"
 
-#: data/ui/remmina_preferences.glade:2110
+#: data/ui/remmina_preferences.glade:2109
 msgid "Pick a light red colour"
 msgstr "Açık kırmızı renk seç"
 
-#: data/ui/remmina_preferences.glade:2124
+#: data/ui/remmina_preferences.glade:2123
 msgid "Pick a bright green colour"
 msgstr "Parlak yeşil renk seç"
 
-#: data/ui/remmina_preferences.glade:2138
+#: data/ui/remmina_preferences.glade:2137
 msgid "Pick a bright yellow colour"
 msgstr "Parlak sarı renk seç"
 
-#: data/ui/remmina_preferences.glade:2152
+#: data/ui/remmina_preferences.glade:2151
 msgid "Pick a bright blue colour"
 msgstr "Parlak mavi renk seç"
 
-#: data/ui/remmina_preferences.glade:2166
+#: data/ui/remmina_preferences.glade:2165
 msgid "Pick a light magenta colour"
 msgstr "Açık macenta renk seç"
 
-#: data/ui/remmina_preferences.glade:2180
+#: data/ui/remmina_preferences.glade:2179
 msgid "Pick a light cyan colour"
 msgstr "Açık camgöbeği renk seç"
 
-#: data/ui/remmina_preferences.glade:2194
+#: data/ui/remmina_preferences.glade:2193
 msgid "Pick a light white colour"
 msgstr "Açık beyaz renk seç"
 
-#: data/ui/remmina_preferences.glade:2208
+#: data/ui/remmina_preferences.glade:2207
 msgid "Pick a black colour"
 msgstr "Siyah renk seç"
 
-#: data/ui/remmina_preferences.glade:2222
+#: data/ui/remmina_preferences.glade:2221
 msgid "Pick a red colour"
 msgstr "Kırmızı renk seç"
 
-#: data/ui/remmina_preferences.glade:2236
+#: data/ui/remmina_preferences.glade:2235
 msgid "Pick a green colour"
 msgstr "Yeşil renk seç"
 
-#: data/ui/remmina_preferences.glade:2250
+#: data/ui/remmina_preferences.glade:2249
 msgid "Pick a yellow colour"
 msgstr "Sarı renk seç"
 
-#: data/ui/remmina_preferences.glade:2264
+#: data/ui/remmina_preferences.glade:2263
 msgid "Pick a blue colour"
 msgstr "Mavi renk seç"
 
-#: data/ui/remmina_preferences.glade:2278
+#: data/ui/remmina_preferences.glade:2277
 msgid "Pick a magenta colour"
 msgstr "Macenta renk seç"
 
-#: data/ui/remmina_preferences.glade:2292
+#: data/ui/remmina_preferences.glade:2291
 msgid "Pick a cyan colour"
 msgstr "Camgöbeği renk seç"
 
-#: data/ui/remmina_preferences.glade:2306
+#: data/ui/remmina_preferences.glade:2305
 msgid "Pick a white colour"
 msgstr "Beyaz renk seç"
 
-#: data/ui/remmina_preferences.glade:2319
+#: data/ui/remmina_preferences.glade:2318
 msgid "Normal colours"
 msgstr "Olağan renkler"
 
-#: data/ui/remmina_preferences.glade:2332
-#: data/ui/remmina_preferences.glade:2347
+#: data/ui/remmina_preferences.glade:2331
+#: data/ui/remmina_preferences.glade:2346
 msgid "Cursor colour"
 msgstr "İmleç rengi"
 
-#: data/ui/remmina_preferences.glade:2361
-#: data/ui/remmina_preferences.glade:2376
+#: data/ui/remmina_preferences.glade:2360
+#: data/ui/remmina_preferences.glade:2375
 msgid "Background colour"
 msgstr "Arka plan rengi"
 
-#: data/ui/remmina_preferences.glade:2392
-#: data/ui/remmina_preferences.glade:2406
+#: data/ui/remmina_preferences.glade:2391
+#: data/ui/remmina_preferences.glade:2405
 msgid "Foreground colour"
 msgstr "Ön plan rengi"
 
-#: data/ui/remmina_preferences.glade:2419
+#: data/ui/remmina_preferences.glade:2418
 msgid "Increase and decrease font size"
 msgstr "Yazı tipi boyutunu düşür ve yükselt"
 
-#: data/ui/remmina_preferences.glade:2449
+#: data/ui/remmina_preferences.glade:2448
 msgid "Search text shortcut"
 msgstr "Metin arama kısayolu"
 
-#: data/ui/remmina_preferences.glade:2480
-#: data/ui/remmina_preferences.glade:2495
+#: data/ui/remmina_preferences.glade:2479
+#: data/ui/remmina_preferences.glade:2494
 msgid "Bold colour"
 msgstr "Kalın renk"
 
-#: data/ui/remmina_preferences.glade:2509
-#: data/ui/remmina_preferences.glade:2550
+#: data/ui/remmina_preferences.glade:2508
+#: data/ui/remmina_preferences.glade:2549
 msgid "Highlight colour"
 msgstr "Vurgu rengi"
 
-#: data/ui/remmina_preferences.glade:2522
-#: data/ui/remmina_preferences.glade:2566
+#: data/ui/remmina_preferences.glade:2521
+#: data/ui/remmina_preferences.glade:2565
 msgid "Highlight foreground colour"
 msgstr "Vurgu ön plan rengi"
 
-#: data/ui/remmina_preferences.glade:2535
-#: data/ui/remmina_preferences.glade:2582
+#: data/ui/remmina_preferences.glade:2534
+#: data/ui/remmina_preferences.glade:2581
 msgid "Cursor foreground colour"
 msgstr "İmleç ön plan rengi"
 
-#: data/ui/remmina_preferences.glade:2638
+#: data/ui/remmina_preferences.glade:2637
 msgid "Terminal"
 msgstr "Uçbirim"
 
-#: data/ui/remmina_preferences.glade:2652
+#: data/ui/remmina_preferences.glade:2651
 msgid "Remmina Preferences"
 msgstr "Remmina Tercihleri"
 
