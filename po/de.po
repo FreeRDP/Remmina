@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2022-01-14 09:44+0000\n"
-"PO-Revision-Date: 2022-01-14 09:10+0000\n"
+"PO-Revision-Date: 2022-01-17 08:54+0000\n"
 "Last-Translator: Johannes Weberhofer <jweberhofer@weberhofer.at>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/remmina/remmina/"
 "de/>\n"
@@ -2872,7 +2872,7 @@ msgstr "USB Gerät zur Weiterleitung auswählen"
 
 #: plugins/spice/spice_plugin.c:729
 msgid "SPICE - Simple Protocol for Independent Computing Environments"
-msgstr "SPICE - Simple Protocol for Independent Computing Environments"
+msgstr "SPICE — Simple Protocol for Independent Computing Environments"
 
 #: plugins/spice/spice_plugin_usb.c:54
 msgid "_Close"
@@ -4382,14 +4382,6 @@ msgstr "Vorlage für Profil-Dateinamen"
 
 #. Placeholders used to name a Remmina connection profile
 #: data/ui/remmina_preferences.glade:361
-#, fuzzy
-#| msgid ""
-#| "%G Group name (slash will be converted to - automatically)\n"
-#| "%P Protocol name\n"
-#| "%N Connection name\n"
-#| "%h Hostname/IP\n"
-#| "\n"
-#| "\n"
 msgid ""
 "%G Name of group (slashes \\/ are converted to dashes -)\n"
 "%P Protocol name\n"
@@ -4398,8 +4390,8 @@ msgid ""
 "\n"
 "\n"
 msgstr ""
-"%G Gruppenname (Schrägstriche werden automatisch in Bindestriche "
-"verwandelt)\n"
+"%G Gruppenname (Schrägstriche werden automatisch in Bindestriche verwandelt)"
+"\n"
 "%P Protokollname\n"
 "%N Verbindungsname\n"
 "%h Hostname/IP\n"
@@ -4645,10 +4637,8 @@ msgstr ""
 "Benutzung zu schützen."
 
 #: data/ui/remmina_preferences.glade:1634
-#, fuzzy
-#| msgid "User password"
 msgid "Use Remmina password"
-msgstr "Benutzerpasswort"
+msgstr "Remmina-Passwort verwenden"
 
 #: data/ui/remmina_preferences.glade:1645
 #: data/ui/remmina_preferences.glade:1969
@@ -4661,60 +4651,39 @@ msgstr "Zeitspanne zur automatischen Sperre"
 
 #: data/ui/remmina_preferences.glade:1673
 msgid "Number of seconds to keep password valid for"
-msgstr ""
+msgstr "Anzahl Sekunden in denen das Passwort gültig ist"
 
 #: data/ui/remmina_preferences.glade:1692
-#, fuzzy
-#| msgid "Enter VNC password"
 msgid "Enter new password"
-msgstr "VNC-Passwort eingeben"
+msgstr "Neues Passwort eingeben"
 
 #: data/ui/remmina_preferences.glade:1722
-#, fuzzy
-#| msgid "Repeat the password"
 msgid "Re-enter password"
 msgstr "Passwort wiederholen"
 
 #: data/ui/remmina_preferences.glade:1755
 msgid "Creation, editing, copying, and deletions require the Remmina password"
 msgstr ""
+"Erstellen, Bearbeiten, Kopieren und Löschen erfordern das Remmina-Passwort"
 
 #. Creation, editing, copying, and deletions require the primary password
 #: data/ui/remmina_preferences.glade:1758
-#, fuzzy
-#| msgid "Requires password to modify"
 msgid "Require to modify"
-msgstr "Erfordert Passworteingabe zur Änderung"
+msgstr "Erfordert ein Passwort für Änderungen"
 
 #: data/ui/remmina_preferences.glade:1796
-#, fuzzy
-#| msgid "Requires password to connect"
 msgid "Enter your Remmina password to connect"
-msgstr "Benötigt ein Passwort zur Verbindung"
+msgstr "Erfordert ein Passwort zur Verbindung"
 
 #: data/ui/remmina_preferences.glade:1799
-#, fuzzy
-#| msgid "Requires password to connect"
 msgid "Require to connect"
-msgstr "Benötigt ein Passwort zur Verbindung"
+msgstr "Zur Verbindung benötigt"
 
 #: data/ui/remmina_preferences.glade:1813
 msgid "Encryption method"
 msgstr "Verschlüsselungsmethode"
 
 #: data/ui/remmina_preferences.glade:1824
-#, fuzzy
-#| msgid ""
-#| "These are the encryption methods used by Remmina to store passwords and "
-#| "passphrases.\n"
-#| "\n"
-#| "Except the \"Weak\" method, all the others are reccomended, Keystore is "
-#| "the default, as it integrates with GNOME or KDE/Plasma.\n"
-#| "\n"
-#| "Intermediate is the best compromise in terms of RAM/CPU required vs "
-#| "security, but if you need an extremely secure method you should go with "
-#| "Sensitive, but it'll use 1Gib of RAM and many CPU cycles to hash your "
-#| "passwords. "
 msgid ""
 "These are the encryption methods used by Remmina to store passwords.\n"
 "\n"
@@ -4724,22 +4693,18 @@ msgid ""
 "\"Intermediate\" doesn't use as much memory or processsing power, and "
 "\"Sensitive\" is more secure but uses 1 Gib of RAM and many CPU cycles. "
 msgstr ""
-"Diese Verschlüsselungsmethoden werden von Remmina verwendet um Passwörter "
-"und Pass-Phrasen zu speichern.\n"
+"Die folgenden Verschlüsselungsmethoden werden von Remmina verwendet um "
+"Passwörter zu speichern.\n"
 "\n"
 "Alle Methoden außer „Schlecht“ sind empfohlen. Die Standardeinstellung ist "
-"„Schlüsselspeicher“, da sie in GNOME bzw. KDE/Plasma integriert ist.\n"
+"„Schlüsselspeicher“, da sie in KDE/Plasma bzw. GNOME integriert ist.\n"
 "\n"
-"„Mittel“ ist der beste Kompromiss in Bezug auf Ressourcenverbrauch von RAM "
-"und CPU. Wenn eine sehr hohe Sicherheit erforderlich ist, sollte „Sehr "
-"stark“ ausgewählt werden. Diese Einstellung benötigt jedoch 1GB RAM und viel "
-"CPU-Leistung um Passwörter zu verschlüsseln. "
+"„Mittel“ benötigt nicht sehr viele RAM und CPU Ressourcen, „Sehr stark“ ist "
+"noch sicherer, benötigt jedoch 1GB RAM und viel CPU-Leistung. "
 
 #: data/ui/remmina_preferences.glade:1834
-#, fuzzy
-#| msgid "Keystore (kwallet, GNOME keyring)"
 msgid "Keystore (KWallet, GNOME Keyring)"
-msgstr "Schlüsselspeicher (kwallet, GNOME Schlüsselbund)"
+msgstr "Schlüsselspeicher (KWallet, GNOME Schlüsselbund)"
 
 #: data/ui/remmina_preferences.glade:1835
 msgid "Intermediate (+64 Mib RAM)"
@@ -4750,36 +4715,28 @@ msgid "Strong (+256 Mib, <1s i7 CPU)"
 msgstr "Stark (+256 Mib, <1s i7 CPU)"
 
 #: data/ui/remmina_preferences.glade:1837
-#, fuzzy
-#| msgid "Sensitive (+1024 Mib, <4s i7 CPU)"
 msgid "Sensitive (+1 Gib, <4s i7 CPU)"
-msgstr "Sehr stark (+1024 Mib, <4s i7 CPU)"
+msgstr "Sehr stark (+1 Gib, <4s i7 CPU)"
 
 #: data/ui/remmina_preferences.glade:1838
 msgid "Weak (guessable)"
-msgstr ""
+msgstr "Schwach (zu erraten)"
 
 #: data/ui/remmina_preferences.glade:1839
-#, fuzzy
-#| msgid "None (clear text)"
 msgid "None (cleartext)"
 msgstr "Keine (Lesbarer Text)"
 
 #: data/ui/remmina_preferences.glade:1857
 msgid "Logins and Passwords"
-msgstr ""
+msgstr "Benutzernamen und Passwörter"
 
 #: data/ui/remmina_preferences.glade:1891
-#, fuzzy
-#| msgid "Debugging"
 msgid "Logging"
-msgstr "Fehlersuche"
+msgstr "Protokollierung"
 
 #: data/ui/remmina_preferences.glade:1922
-#, fuzzy
-#| msgid "Auditing settings"
 msgid "Auditing"
-msgstr "Audit-Einstellungen"
+msgstr "Auditieren"
 
 #: data/ui/remmina_preferences.glade:1952
 msgid "Automatically accept all fingerprints and certificates"
@@ -4787,13 +4744,11 @@ msgstr "Fingerabdrücke und Zertifikate automatisch akzeptieren"
 
 #: data/ui/remmina_preferences.glade:1958
 msgid "Trust all"
-msgstr ""
+msgstr "Allen vertrauen"
 
 #: data/ui/remmina_preferences.glade:1992
-#, fuzzy
-#| msgid "Certificate details:"
 msgid "Certificates and fingerprints"
-msgstr "Zertifikatdetails:"
+msgstr "Zertifikate und Fingerabdrücke"
 
 #: data/ui/remmina_preferences.glade:2016
 msgid "Security"
