@@ -349,7 +349,6 @@ remmina_file_load(const gchar *filename)
 	GKeyFile *gkeyfile;
 	RemminaFile *remminafile;
 	gchar *key;
-	gint i;
 	gchar *s;
 	RemminaProtocolPlugin *protocol_plugin;
 	RemminaSecretPlugin *secret_plugin;

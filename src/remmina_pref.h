@@ -86,6 +86,7 @@ enum {
 	REMMINA_TAB_NONE	= 3
 };
 
+/* Remember to add the id 0, 4 and 5 in the remmina pref editor */
 enum {
 	RM_ENC_MODE_SECRET		= 0, /* Using libsecret */
 	RM_ENC_MODE_SODIUM_INTERACTIVE	= 1, /* Using libsodium */
