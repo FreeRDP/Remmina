@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-01-18 10:03+0000\n"
-"PO-Revision-Date: 2022-01-18 03:54+0000\n"
+"POT-Creation-Date: 2022-01-18 10:13+0000\n"
+"PO-Revision-Date: 2022-01-18 11:54+0000\n"
 "Last-Translator: Eric <alchemillatruth@purelymail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "remmina/remmina/zh_Hans/>\n"
@@ -4234,7 +4234,7 @@ msgid ""
 "%G Name of group (slashes \\/ are converted to dashes -)\n"
 "%P Protocol name\n"
 "%N Connection name\n"
-"%h Hostname/IP\n"
+"%h Host name/IP\n"
 "\n"
 "\n"
 msgstr ""
@@ -4474,7 +4474,7 @@ msgstr ""
 "Remmina 锁定会话并再次要求输入密码的时间(以秒为单位)。默认值为 300 秒。"
 
 #: data/ui/remmina_preferences.glade:1615
-msgid "Set and use a secret key to protect Remmina from unothorized use."
+msgid "Set and use a secret key to protect Remmina from unauthorized use."
 msgstr "设置并使用一个密钥来防止别人未经授权使用 Remina。"
 
 #: data/ui/remmina_preferences.glade:1620
@@ -4501,6 +4501,7 @@ msgstr "超时时间（单位：秒，默认值300）"
 msgid "Enter your Remmina password to connect"
 msgstr "输入 Remmina 密码才能连接"
 
+#. “Require to connect” is “Require the Remmina password before to connect”, the Remmina password is the Master/Principal Password, that is used to protect Remmina from unauthorized use.
 #: data/ui/remmina_preferences.glade:1683
 msgid "Require to connect"
 msgstr "需要密码才能连接"
@@ -4519,50 +4520,33 @@ msgid "Encryption"
 msgstr "加密"
 
 #: data/ui/remmina_preferences.glade:1751
-#, fuzzy
-#| msgid ""
-#| "These are the encryption methods used by Remmina to store passwords.\n"
-#| "\n"
-#| "Except the \"Weak\" method, all the others are reccomended, Keystore is "
-#| "the default, as it integrates with KDE/Plasma and GNOME.\n"
-#| "\n"
-#| "\"Intermediate\" doesn't use as much memory or processsing power, and "
-#| "\"Sensitive\" is more secure but uses 1 Gib of RAM and many CPU cycles. "
 msgid ""
 "These are the encryption methods used by Remmina to store passwords.\n"
 "\n"
 "Except the \"Weak\" method, all the others are recommended, \"Keystore\" is "
 "the default, as it integrates with KDE/Plasma and GNOME.\n"
 "\n"
-"\"Intermediate\" doesn't use as much memory or processsing power, and "
-"\"Sensitive\" is more secure, but uses +1 GB of RAM and many CPU cycles. "
+"\"Intermediate\" doesn't use as much memory or processing power, and "
+"\"Sensitive\" is more secure, but uses +1 GiB of RAM and many CPU cycles. "
 msgstr ""
 "这些是 Remmina 用来存储密码的加密方法。\n"
 "\n"
-"除了 “弱” 方法，其他所有方法都是推荐的，Keystore 是默认的，因其集成在 GNOME "
-"或 KDE/Plasma 中。\n"
+"除了 “弱” 方法，其他所有方法都是推荐的，Keystore 是默认值，因其集成在 GNOME 或 KDE/Plasma 中。\n"
 "\n"
-"“中等”是安全性和所需内存/CPU 之间的最佳平衡，但如果你需要一个非常安全的方法，"
-"你应该选择“敏感”等级，但该方法会使用 1Gib 的内存和许多的 CPU 核心进行密码哈希"
-"操作。 "
+"“中等”是安全性和所需内存/CPU 之间的最佳平衡，但如果你需要一个非常安全的方法，你应该选择“敏感”等级，但该方法会使用超过 1 GB 的内存和许多的 "
+"CPU 周期。 "
 
 #: data/ui/remmina_preferences.glade:1760
-#, fuzzy
-#| msgid "Intermediate (+64 Mib RAM)"
 msgid "Intermediate (+64 MiB RAM)"
-msgstr "中等强度 (+64 Mib 内存）"
+msgstr "中等强度 (+64 MiB 内存）"
 
 #: data/ui/remmina_preferences.glade:1761
-#, fuzzy
-#| msgid "Strong (+256 Mib, <1s i7 CPU)"
 msgid "Strong (+256 MiB, ~2009 CPU)"
-msgstr "强 （+256 Mib, <1s i7 CPU）"
+msgstr "强 （+256 MB, ~2009 年的 CPU）"
 
 #: data/ui/remmina_preferences.glade:1762
-#, fuzzy
-#| msgid "Sensitive (+1 Gib, <4s i7 CPU)"
 msgid "Sensitive (+1 GiB, ~2014 CPU)"
-msgstr "敏感（+1 Gib, <4s i7 CPU）"
+msgstr "敏感（+1 GB, ~2014 年 CPU）"
 
 #: data/ui/remmina_preferences.glade:1778
 msgid "Auditing log"
