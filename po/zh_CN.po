@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-01-17 15:42+0000\n"
+"POT-Creation-Date: 2022-01-18 10:03+0000\n"
 "PO-Revision-Date: 2022-01-18 03:54+0000\n"
 "Last-Translator: Eric <alchemillatruth@purelymail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -4470,7 +4470,8 @@ msgstr "SSH 选项"
 msgid ""
 "Time in seconds before Remmina will lock the session and asks for a password "
 "again. Default: 300 Seconds."
-msgstr "Remmina 锁定会话并再次要求输入密码的时间(以秒为单位)。默认值为 300 秒。"
+msgstr ""
+"Remmina 锁定会话并再次要求输入密码的时间(以秒为单位)。默认值为 300 秒。"
 
 #: data/ui/remmina_preferences.glade:1615
 msgid "Set and use a secret key to protect Remmina from unothorized use."
@@ -4518,14 +4519,23 @@ msgid "Encryption"
 msgstr "加密"
 
 #: data/ui/remmina_preferences.glade:1751
+#, fuzzy
+#| msgid ""
+#| "These are the encryption methods used by Remmina to store passwords.\n"
+#| "\n"
+#| "Except the \"Weak\" method, all the others are reccomended, Keystore is "
+#| "the default, as it integrates with KDE/Plasma and GNOME.\n"
+#| "\n"
+#| "\"Intermediate\" doesn't use as much memory or processsing power, and "
+#| "\"Sensitive\" is more secure but uses 1 Gib of RAM and many CPU cycles. "
 msgid ""
 "These are the encryption methods used by Remmina to store passwords.\n"
 "\n"
-"Except the \"Weak\" method, all the others are reccomended, Keystore is the "
-"default, as it integrates with KDE/Plasma and GNOME.\n"
+"Except the \"Weak\" method, all the others are recommended, \"Keystore\" is "
+"the default, as it integrates with KDE/Plasma and GNOME.\n"
 "\n"
 "\"Intermediate\" doesn't use as much memory or processsing power, and "
-"\"Sensitive\" is more secure but uses 1 Gib of RAM and many CPU cycles. "
+"\"Sensitive\" is more secure, but uses +1 GB of RAM and many CPU cycles. "
 msgstr ""
 "这些是 Remmina 用来存储密码的加密方法。\n"
 "\n"
@@ -4537,15 +4547,21 @@ msgstr ""
 "操作。 "
 
 #: data/ui/remmina_preferences.glade:1760
-msgid "Intermediate (+64 Mib RAM)"
+#, fuzzy
+#| msgid "Intermediate (+64 Mib RAM)"
+msgid "Intermediate (+64 MiB RAM)"
 msgstr "中等强度 (+64 Mib 内存）"
 
 #: data/ui/remmina_preferences.glade:1761
-msgid "Strong (+256 Mib, <1s i7 CPU)"
+#, fuzzy
+#| msgid "Strong (+256 Mib, <1s i7 CPU)"
+msgid "Strong (+256 MiB, ~2009 CPU)"
 msgstr "强 （+256 Mib, <1s i7 CPU）"
 
 #: data/ui/remmina_preferences.glade:1762
-msgid "Sensitive (+1 Gib, <4s i7 CPU)"
+#, fuzzy
+#| msgid "Sensitive (+1 Gib, <4s i7 CPU)"
+msgid "Sensitive (+1 GiB, ~2014 CPU)"
 msgstr "敏感（+1 Gib, <4s i7 CPU）"
 
 #: data/ui/remmina_preferences.glade:1778
