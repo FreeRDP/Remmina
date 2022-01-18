@@ -361,7 +361,7 @@
                         <property name="tooltip-text" translatable="yes" comments="Placeholders used to name a Remmina connection profile">%G Name of group (slashes \/ are converted to dashes -)
 %P Protocol name
 %N Connection name
-%h Hostname/IP
+%h Host name/IP
 
 
 </property>
@@ -1612,7 +1612,7 @@ It changes the background colour of connection names in the Remmina connection t
                       <object class="GtkLabel" id="label_security_use_primary_password">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
-                        <property name="tooltip-text" translatable="yes">Set and use a secret key to protect Remmina from unothorized use.</property>
+                        <property name="tooltip-text" translatable="yes">Set and use a secret key to protect Remmina from unauthorized use.</property>
                         <property name="halign">start</property>
                         <property name="valign">center</property>
                         <property name="margin-start">18</property>
@@ -1680,7 +1680,7 @@ It changes the background colour of connection names in the Remmina connection t
                         <property name="halign">start</property>
                         <property name="valign">center</property>
                         <property name="margin-start">18</property>
-                        <property name="label" translatable="yes">Require to connect</property>
+                        <property name="label" translatable="yes" comments="“Require to connect” is “Require the Remmina password before to connect”, the Remmina password is the Master/Principal Password, that is used to protect Remmina from unauthorized use.">Require to connect</property>
                       </object>
                       <packing>
                         <property name="left-attach">0</property>
@@ -1752,7 +1752,7 @@ It changes the background colour of connection names in the Remmina connection t
 
 Except the "Weak" method, all the others are recommended, "Keystore" is the default, as it integrates with KDE/Plasma and GNOME.
 
-"Intermediate" doesn't use as much memory or processsing power, and "Sensitive" is more secure, but uses +1 GB of RAM and many CPU cycles. </property>
+"Intermediate" doesn't use as much memory or processing power, and "Sensitive" is more secure, but uses +1 GiB of RAM and many CPU cycles. </property>
                         <property name="valign">center</property>
                         <property name="margin-start">6</property>
                         <property name="margin-end">18</property>
