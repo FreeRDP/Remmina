@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2022-01-18 10:13+0000\n"
-"PO-Revision-Date: 2022-01-14 18:54+0000\n"
+"PO-Revision-Date: 2022-01-19 12:55+0000\n"
 "Last-Translator: gogogogi <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/remmina/remmina/"
 "hr/>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.10.1\n"
+"X-Generator: Weblate 4.11-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:25+0000\n"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:354
@@ -4299,14 +4299,6 @@ msgstr "Predložak naziva datoteka profila"
 
 #. Placeholders used to name a Remmina connection profile
 #: data/ui/remmina_preferences.glade:361
-#, fuzzy
-#| msgid ""
-#| "%G Name of group (slashes \\/ are converted to dashes -)\n"
-#| "%P Protocol name\n"
-#| "%N Connection name\n"
-#| "%h Hostname/IP\n"
-#| "\n"
-#| "\n"
 msgid ""
 "%G Name of group (slashes \\/ are converted to dashes -)\n"
 "%P Protocol name\n"
@@ -4560,20 +4552,18 @@ msgid ""
 "Time in seconds before Remmina will lock the session and asks for a password "
 "again. Default: 300 Seconds."
 msgstr ""
+"Vrijeme u sekundama prije nego što Remmina zaključa sesiju i upita za "
+"lozinku ponovno. Zadano: 300 sekundi."
 
 #: data/ui/remmina_preferences.glade:1615
-#, fuzzy
-#| msgid "Set and use a secret key to protect Remmina from unothorized use."
 msgid "Set and use a secret key to protect Remmina from unauthorized use."
 msgstr ""
 "Postavite i koristite tajni ključ kako bi zaštitili Remminu od neovlaštena "
 "korištenja."
 
 #: data/ui/remmina_preferences.glade:1620
-#, fuzzy
-#| msgid "Use Remmina password"
 msgid "Remmina password"
-msgstr "Koristi Remmina lozinku"
+msgstr "Remmina lozinka"
 
 #: data/ui/remmina_preferences.glade:1631
 msgid "Use secret key authentication for some widgets"
@@ -4581,7 +4571,7 @@ msgstr "Koristite ovjeru tajnim ključem za određene widgete"
 
 #: data/ui/remmina_preferences.glade:1651
 msgid "Valid for"
-msgstr ""
+msgstr "Traje do"
 
 #: data/ui/remmina_preferences.glade:1662
 msgid "Number of seconds to keep password valid for"
@@ -4589,7 +4579,7 @@ msgstr "Broj sekundi valjanosti lozinke"
 
 #: data/ui/remmina_preferences.glade:1667
 msgid "timeout in seconds (default 300)"
-msgstr ""
+msgstr "vrijeme čekanja u sekundama (zadano 300)"
 
 #: data/ui/remmina_preferences.glade:1679
 msgid "Enter your Remmina password to connect"
@@ -4610,21 +4600,10 @@ msgid "Require to modify"
 msgstr "Potrebno za promjenu"
 
 #: data/ui/remmina_preferences.glade:1740
-#, fuzzy
-#| msgid "Encryption method"
 msgid "Encryption"
-msgstr "Način šifriranja"
+msgstr "Šifriranje"
 
 #: data/ui/remmina_preferences.glade:1751
-#, fuzzy
-#| msgid ""
-#| "These are the encryption methods used by Remmina to store passwords.\n"
-#| "\n"
-#| "Except the \"Weak\" method, all the others are reccomended, Keystore is "
-#| "the default, as it integrates with KDE/Plasma and GNOME.\n"
-#| "\n"
-#| "\"Intermediate\" doesn't use as much memory or processsing power, and "
-#| "\"Sensitive\" is more secure but uses 1 Gib of RAM and many CPU cycles. "
 msgid ""
 "These are the encryption methods used by Remmina to store passwords.\n"
 "\n"
@@ -4640,29 +4619,21 @@ msgstr ""
 "zadan, jer se integrira s KDE/Plasmom i GNOMOM.\n"
 "\n"
 "\"Srednji\" ne koristi previše memorije i snage procesora, a \"Osjetljiv\" "
-"je više sigurniji ali koristi 1 Gib RAM-a i mnogo CPU ciklusa. "
+"je više sigurniji ali koristi +1 GiB RAM-a i mnogo CPU ciklusa. "
 
 #: data/ui/remmina_preferences.glade:1760
-#, fuzzy
-#| msgid "Intermediate (+64 Mib RAM)"
 msgid "Intermediate (+64 MiB RAM)"
-msgstr "Srednji (+64 Mib RAM)"
+msgstr "Srednji (+64 MiB RAM)"
 
 #: data/ui/remmina_preferences.glade:1761
-#, fuzzy
-#| msgid "Strong (+256 Mib, <1s i7 CPU)"
 msgid "Strong (+256 MiB, ~2009 CPU)"
-msgstr "Snažan (+256 Mib, <1s i7 CPU)"
+msgstr "Snažan (+256 MiB, ~2009 CPU)"
 
 #: data/ui/remmina_preferences.glade:1762
-#, fuzzy
-#| msgid "Sensitive (+1 Gib, <4s i7 CPU)"
 msgid "Sensitive (+1 GiB, ~2014 CPU)"
-msgstr "Osjetljiv (+1 Gib, <4s i7 CPU)"
+msgstr "Osjetljiv (+1 GiB, ~2014 CPU)"
 
 #: data/ui/remmina_preferences.glade:1778
-#, fuzzy
-#| msgid "Auditing"
 msgid "Auditing log"
 msgstr "Provjera"
 
@@ -4671,10 +4642,8 @@ msgid "Automatically accept all fingerprints and certificates"
 msgstr "Automatski prihvati sve otiske prsta i vjerodajnice"
 
 #: data/ui/remmina_preferences.glade:1808
-#, fuzzy
-#| msgid "Trust all fingerprints and certificates"
 msgid "Trust all certificates"
-msgstr "Vjeruj svim otiscima prsta i vjerodajnicama"
+msgstr "Vjeruj svim vjerodajnicama"
 
 #: data/ui/remmina_preferences.glade:1843
 msgid "Security"
