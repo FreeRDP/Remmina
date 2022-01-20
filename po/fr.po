@@ -20,7 +20,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2022-01-18 10:13+0000\n"
-"PO-Revision-Date: 2022-01-17 18:55+0000\n"
+"PO-Revision-Date: 2022-01-20 15:53+0000\n"
 "Last-Translator: Davy Defaud <davy.defaud@free.fr>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/remmina/remmina/"
 "fr/>\n"
@@ -4414,14 +4414,6 @@ msgstr "Modèle de nomenclature des profils"
 
 #. Placeholders used to name a Remmina connection profile
 #: data/ui/remmina_preferences.glade:361
-#, fuzzy
-#| msgid ""
-#| "%G Name of group (slashes \\/ are converted to dashes -)\n"
-#| "%P Protocol name\n"
-#| "%N Connection name\n"
-#| "%h Hostname/IP\n"
-#| "\n"
-#| "\n"
 msgid ""
 "%G Name of group (slashes \\/ are converted to dashes -)\n"
 "%P Protocol name\n"
@@ -4681,22 +4673,15 @@ msgid "SSH options"
 msgstr "Options SSH"
 
 #: data/ui/remmina_preferences.glade:1603
-#, fuzzy
-#| msgid ""
-#| "The number of seconds after Remmina will ask again the password to lock "
-#| "again the session.\n"
-#| "It defaults to 300 seconds."
 msgid ""
 "Time in seconds before Remmina will lock the session and asks for a password "
 "again. Default: 300 Seconds."
 msgstr ""
-"La durée maximale en secondes avant que Remmina ne redemande le mot de passe "
-"pour déverrouiller la session.\n"
+"Durée maximale en secondes avant que Remmina ne verrouille la session et ne "
+"redemande le mot de passe.\n"
 "Elle est de 300 secondes par défaut."
 
 #: data/ui/remmina_preferences.glade:1615
-#, fuzzy
-#| msgid "Set and use a secret key to protect Remmina from unothorized use."
 msgid "Set and use a secret key to protect Remmina from unauthorized use."
 msgstr ""
 "Définir une clef secrète protégeant Remmina contre toute utilisation non "
@@ -4728,10 +4713,8 @@ msgstr "Saisissez votre mot de passe Remmina pour vous connecter"
 
 #. “Require to connect” is “Require the Remmina password before to connect”, the Remmina password is the Master/Principal Password, that is used to protect Remmina from unauthorized use.
 #: data/ui/remmina_preferences.glade:1683
-#, fuzzy
-#| msgid "Secured password storage in KWallet"
 msgid "Require to connect"
-msgstr "Stockage sécurisé des mots de passe dans KWallet"
+msgstr "Demander le mot de passe pour se connecter"
 
 #: data/ui/remmina_preferences.glade:1694
 msgid "Creation, editing, copying, and deletions require the Remmina password"
@@ -4749,15 +4732,6 @@ msgid "Encryption"
 msgstr "Chiffrement"
 
 #: data/ui/remmina_preferences.glade:1751
-#, fuzzy
-#| msgid ""
-#| "These are the encryption methods used by Remmina to store passwords.\n"
-#| "\n"
-#| "Except the \"Weak\" method, all the others are reccomended, Keystore is "
-#| "the default, as it integrates with KDE/Plasma and GNOME.\n"
-#| "\n"
-#| "\"Intermediate\" doesn't use as much memory or processsing power, and "
-#| "\"Sensitive\" is more secure but uses 1 Gib of RAM and many CPU cycles. "
 msgid ""
 "These are the encryption methods used by Remmina to store passwords.\n"
 "\n"
@@ -4771,30 +4745,24 @@ msgstr ""
 "mots de passe.\n"
 "\n"
 "À l’exception de la méthode « Faible », toutes les autres sont recommandées, "
-"Keystore est la méthode par défaut car elle s’intègre à KDE/Plasma et "
+"« Keystore » est la méthode par défaut car elle s’intègre à KDE/Plasma et "
 "GNOME.\n"
 "\n"
 "« Intermédiaire » n’utilise pas autant de mémoire ou de puissance de "
-"traitement, et « Sensible » est plus sécurisé mais utilise 1 Gio de mémoire "
-"vive et de nombreux cycles processeur. "
+"traitement, et « Sensible » est plus sécurisé mais utilise environ 1 Gio de "
+"mémoire vive et de nombreux cycles processeur. "
 
 #: data/ui/remmina_preferences.glade:1760
-#, fuzzy
-#| msgid "Intermediate (+64 Mib RAM)"
 msgid "Intermediate (+64 MiB RAM)"
 msgstr "Intermédiaire (+64 Mio de mémoire)"
 
 #: data/ui/remmina_preferences.glade:1761
-#, fuzzy
-#| msgid "Strong (+256 Mib, <1s i7 CPU)"
 msgid "Strong (+256 MiB, ~2009 CPU)"
-msgstr "Fort (+256 Mio, moins d’1 s sur processeur i7)"
+msgstr "Fort (+256 Mio, processeur bicœur)"
 
 #: data/ui/remmina_preferences.glade:1762
-#, fuzzy
-#| msgid "Sensitive (+1 Gib, <4s i7 CPU)"
 msgid "Sensitive (+1 GiB, ~2014 CPU)"
-msgstr "Fort (+1 Gio, moins de 4 s sur processeur i7)"
+msgstr "Fort (+1 Gio, processeur quadricœur)"
 
 #: data/ui/remmina_preferences.glade:1778
 msgid "Auditing log"
