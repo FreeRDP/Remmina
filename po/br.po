@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Remmina v1.4.5\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-01-18 10:13+0000\n"
+"POT-Creation-Date: 2022-01-24 08:28+0000\n"
 "PO-Revision-Date: 2021-12-17 08:54+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Breton <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -244,7 +244,7 @@ msgstr ""
 msgid "Recent lists cleared."
 msgstr ""
 
-#: src/remmina_pref_dialog.c:156 src/rcw.c:2029
+#: src/remmina_pref_dialog.c:156 src/rcw.c:2039
 #: data/ui/remmina_preferences.glade:169 data/ui/remmina_preferences.glade:179
 #, fuzzy
 msgid "Keystrokes"
@@ -339,124 +339,129 @@ msgid ""
 "Are you sure you want to close %i active connections in the current window?"
 msgstr ""
 
-#: src/rcw.c:1400
+#: src/rcw.c:665
+#, fuzzy
+msgid "Are you sure you want to close this last active connection?"
+msgstr "Ha fellout a ra deoc'h dilemel '%1' ?"
+
+#: src/rcw.c:1410
 msgid "Viewport fullscreen mode"
 msgstr ""
 
-#: src/rcw.c:1408 data/ui/remmina_preferences.glade:578
+#: src/rcw.c:1418 data/ui/remmina_preferences.glade:578
 msgid "Scrolled fullscreen"
 msgstr ""
 
-#: src/rcw.c:1494
+#: src/rcw.c:1504
 msgid "Keep aspect ratio when scaled"
 msgstr ""
 
-#: src/rcw.c:1502
+#: src/rcw.c:1512
 msgid "Fill client window when scaled"
 msgstr ""
 
-#: src/rcw.c:2050
+#: src/rcw.c:2060
 msgid "Send clipboard content as keystrokes"
 msgstr ""
 
-#: src/rcw.c:2156
+#: src/rcw.c:2166
 msgid "Turn off scaling to avoid screenshot distortion."
 msgstr ""
 
-#: src/rcw.c:2216 plugins/www/www_plugin.c:855
+#: src/rcw.c:2226 plugins/www/www_plugin.c:855
 msgid "Screenshot taken"
 msgstr ""
 
-#: src/rcw.c:2299
+#: src/rcw.c:2309
 msgid "_Menu"
 msgstr ""
 
-#: src/rcw.c:2300
+#: src/rcw.c:2310
 #, fuzzy
 msgid "Menu"
 msgstr "Roll meuzioù"
 
-#: src/rcw.c:2309
+#: src/rcw.c:2319
 msgid "Open the Remmina main window"
 msgstr ""
 
-#: src/rcw.c:2319
+#: src/rcw.c:2329
 msgid "Duplicate current connection"
 msgstr ""
 
-#: src/rcw.c:2336
+#: src/rcw.c:2346
 msgid "Resize the window to fit in remote resolution"
 msgstr ""
 
-#: src/rcw.c:2347
+#: src/rcw.c:2357
 msgid "Toggle fullscreen mode"
 msgstr ""
 
-#: src/rcw.c:2393 data/ui/remmina_preferences.glade:1301
+#: src/rcw.c:2403 data/ui/remmina_preferences.glade:1301
 #: data/ui/remmina_preferences.glade:1311
 msgid "Multi monitor"
 msgstr ""
 
-#: src/rcw.c:2409
+#: src/rcw.c:2419
 msgid "Toggle dynamic resolution update"
 msgstr ""
 
-#: src/rcw.c:2419
+#: src/rcw.c:2429
 msgid "Toggle scaled mode"
 msgstr ""
 
-#: src/rcw.c:2459 data/ui/remmina_preferences.glade:1035
+#: src/rcw.c:2469 data/ui/remmina_preferences.glade:1035
 msgid "Switch tab pages"
 msgstr ""
 
-#: src/rcw.c:2469
+#: src/rcw.c:2479
 msgid "Grab all keyboard events"
 msgstr ""
 
-#: src/rcw.c:2479
+#: src/rcw.c:2489
 #, fuzzy
 msgid "Preferences"
 msgstr "Penndibaboù"
 
-#: src/rcw.c:2488
+#: src/rcw.c:2498
 #, fuzzy
 msgid "_Tools"
 msgstr "&Ostilhoù"
 
-#: src/rcw.c:2489 data/ui/remmina_main.glade:207
+#: src/rcw.c:2499 data/ui/remmina_main.glade:207
 #, fuzzy
 msgid "Tools"
 msgstr "Ostilhoù"
 
-#: src/rcw.c:2502 data/ui/remmina_preferences.glade:1236
+#: src/rcw.c:2512 data/ui/remmina_preferences.glade:1236
 #: data/ui/remmina_preferences.glade:1246
 #, fuzzy
 msgid "Screenshot"
 msgstr "Skrammpakad"
 
-#: src/rcw.c:2516 data/ui/remmina_preferences.glade:1143
+#: src/rcw.c:2526 data/ui/remmina_preferences.glade:1143
 msgid "Minimize window"
 msgstr ""
 
-#: src/rcw.c:2526 data/ui/remmina_preferences.glade:1174
+#: src/rcw.c:2536 data/ui/remmina_preferences.glade:1174
 #, fuzzy
 msgid "Disconnect"
 msgstr "Digevreañ"
 
-#: src/rcw.c:4302
+#: src/rcw.c:4312
 #, c-format
 msgid "The file “%s” is corrupted, unreadable, or could not be found."
 msgstr ""
 
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. TRANSLATORS: 'GtkSocket feature is not available'.
-#: src/rcw.c:4376
+#: src/rcw.c:4386
 msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 msgstr ""
 
-#: src/rcw.c:4513
+#: src/rcw.c:4523
 msgid ""
 "Warning: This plugin requires GtkSocket, but this feature is unavailable in "
 "a Wayland session."
@@ -464,7 +469,7 @@ msgstr ""
 
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. 'GtkSocket feature is not available'.
-#: src/rcw.c:4519
+#: src/rcw.c:4529
 msgid ""
 "Plugins relying on GtkSocket can't run in a Wayland session.\n"
 "For more info and a possible workaround, please visit the Remmina wiki at:\n"
@@ -473,7 +478,7 @@ msgid ""
 "available-in-a-Wayland-session"
 msgstr ""
 
-#: src/rcw.c:4533
+#: src/rcw.c:4543
 msgid "Open in web browser"
 msgstr ""
 

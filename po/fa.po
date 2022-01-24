@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Remmina v1.4.5\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-01-18 10:13+0000\n"
+"POT-Creation-Date: 2022-01-24 08:28+0000\n"
 "PO-Revision-Date: 2021-12-17 08:54+0000\n"
 "Last-Translator: MJ Ahmadi <mohammad.j.ahmadi@gmail.com>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -235,7 +235,7 @@ msgstr "وضوح تصویرهای موجود را پیکربندی کنید"
 msgid "Recent lists cleared."
 msgstr "لیست های اخیر پاک شد."
 
-#: src/remmina_pref_dialog.c:156 src/rcw.c:2029
+#: src/remmina_pref_dialog.c:156 src/rcw.c:2039
 #: data/ui/remmina_preferences.glade:169 data/ui/remmina_preferences.glade:179
 msgid "Keystrokes"
 msgstr "کلیدهای فشرده شده"
@@ -336,130 +336,138 @@ msgid ""
 "Are you sure you want to close %i active connections in the current window?"
 msgstr "آیا مطمئن هستید که می خواهید اتصالات فعال %i را در پنجره فعلی ببنید؟"
 
-#: src/rcw.c:1400
+#: src/rcw.c:665
+#, fuzzy
+#| msgid ""
+#| "Are you sure you want to close %i active connections in the current "
+#| "window?"
+msgid "Are you sure you want to close this last active connection?"
+msgstr "آیا مطمئن هستید که می خواهید اتصالات فعال %i را در پنجره فعلی ببنید؟"
+
+#: src/rcw.c:1410
 msgid "Viewport fullscreen mode"
 msgstr "حالت تمام صفحه Viewport"
 
-#: src/rcw.c:1408 data/ui/remmina_preferences.glade:578
+#: src/rcw.c:1418 data/ui/remmina_preferences.glade:578
 msgid "Scrolled fullscreen"
 msgstr "اسکرول شده تمام صفحه"
 
-#: src/rcw.c:1494
+#: src/rcw.c:1504
 #, fuzzy
 msgid "Keep aspect ratio when scaled"
 msgstr "نسبت تصویر را هنگام مقیاس بندی حفظ کنید."
 
-#: src/rcw.c:1502
+#: src/rcw.c:1512
 #, fuzzy
 msgid "Fill client window when scaled"
 msgstr "پنجره سرویس گیرنده را در صورت مقیاس بندی پر کنید."
 
-#: src/rcw.c:2050
+#: src/rcw.c:2060
 #, fuzzy
 msgid "Send clipboard content as keystrokes"
 msgstr "محتوای کلیپ بورد را به عنوان فشار دادن یک کلید ارسال کنید."
 
-#: src/rcw.c:2156
+#: src/rcw.c:2166
 #, fuzzy
 msgid "Turn off scaling to avoid screenshot distortion."
 msgstr "برای جلوگیری از تغییر صفحه نمایش، مقیاس‌بندی را خاموش کنید."
 
-#: src/rcw.c:2216 plugins/www/www_plugin.c:855
+#: src/rcw.c:2226 plugins/www/www_plugin.c:855
 #, fuzzy
 msgid "Screenshot taken"
 msgstr "اسکرین شات گرفته شده"
 
-#: src/rcw.c:2299
+#: src/rcw.c:2309
 #, fuzzy
 msgid "_Menu"
 msgstr "_منو"
 
-#: src/rcw.c:2300
+#: src/rcw.c:2310
 #, fuzzy
 msgid "Menu"
 msgstr "منو"
 
-#: src/rcw.c:2309
+#: src/rcw.c:2319
 #, fuzzy
 msgid "Open the Remmina main window"
 msgstr "پنجره اصلی Remmina را باز کنید."
 
-#: src/rcw.c:2319
+#: src/rcw.c:2329
 #, fuzzy
 msgid "Duplicate current connection"
 msgstr "اتصال فعلی را کپی کنید."
 
-#: src/rcw.c:2336
+#: src/rcw.c:2346
 #, fuzzy
 msgid "Resize the window to fit in remote resolution"
 msgstr "برای رزولیشن مناسب، ابعاد پنجره را تغییر دهید."
 
-#: src/rcw.c:2347
+#: src/rcw.c:2357
 msgid "Toggle fullscreen mode"
 msgstr "تغییر حالت تمام صفحه"
 
-#: src/rcw.c:2393 data/ui/remmina_preferences.glade:1301
+#: src/rcw.c:2403 data/ui/remmina_preferences.glade:1301
 #: data/ui/remmina_preferences.glade:1311
 #, fuzzy
 msgid "Multi monitor"
 msgstr "چند مانیتوره"
 
-#: src/rcw.c:2409
+#: src/rcw.c:2419
 #, fuzzy
 msgid "Toggle dynamic resolution update"
 msgstr "به روز رسانی وضوح صفحه را تغییر دهید."
 
-#: src/rcw.c:2419
+#: src/rcw.c:2429
 #, fuzzy
 msgid "Toggle scaled mode"
 msgstr "تغییر حالت اندازه ها"
 
-#: src/rcw.c:2459 data/ui/remmina_preferences.glade:1035
+#: src/rcw.c:2469 data/ui/remmina_preferences.glade:1035
 #, fuzzy
 msgid "Switch tab pages"
 msgstr "صفحه تب ها را انتخاب کنید."
 
-#: src/rcw.c:2469
+#: src/rcw.c:2479
 #, fuzzy
 msgid "Grab all keyboard events"
 msgstr "تمام رویدادهای صفحه کلید را بگیرید."
 
-#: src/rcw.c:2479
+#: src/rcw.c:2489
 #, fuzzy
 msgid "Preferences"
 msgstr "تنظیمات"
 
-#: src/rcw.c:2488
+#: src/rcw.c:2498
 #, fuzzy
 msgid "_Tools"
 msgstr "_ابزارها"
 
-#: src/rcw.c:2489 data/ui/remmina_main.glade:207
+#: src/rcw.c:2499 data/ui/remmina_main.glade:207
 msgid "Tools"
 msgstr "ابزار ها"
 
-#: src/rcw.c:2502 data/ui/remmina_preferences.glade:1236
+#: src/rcw.c:2512 data/ui/remmina_preferences.glade:1236
 #: data/ui/remmina_preferences.glade:1246
 msgid "Screenshot"
 msgstr "اسکرین شات"
 
-#: src/rcw.c:2516 data/ui/remmina_preferences.glade:1143
+#: src/rcw.c:2526 data/ui/remmina_preferences.glade:1143
 msgid "Minimize window"
 msgstr "ابعاد پنجره را به حداقل برسانید."
 
-#: src/rcw.c:2526 data/ui/remmina_preferences.glade:1174
+#: src/rcw.c:2536 data/ui/remmina_preferences.glade:1174
 #, fuzzy
 msgid "Disconnect"
 msgstr "قطع اتصال"
 
-#: src/rcw.c:4302
+#: src/rcw.c:4312
 #, fuzzy, c-format
 msgid "The file “%s” is corrupted, unreadable, or could not be found."
 msgstr "فایل \"%s\" خراب شده، غیرقابل خواندن است، یا یافت نمی شود."
 
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. TRANSLATORS: 'GtkSocket feature is not available'.
-#: src/rcw.c:4376
+#: src/rcw.c:4386
 #, fuzzy
 msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
@@ -468,7 +476,7 @@ msgstr ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 
-#: src/rcw.c:4513
+#: src/rcw.c:4523
 msgid ""
 "Warning: This plugin requires GtkSocket, but this feature is unavailable in "
 "a Wayland session."
@@ -476,7 +484,7 @@ msgstr "هشدار: این پلاگین نیاز به GtkSocket دارد , ام�
 
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. 'GtkSocket feature is not available'.
-#: src/rcw.c:4519
+#: src/rcw.c:4529
 msgid ""
 "Plugins relying on GtkSocket can't run in a Wayland session.\n"
 "For more info and a possible workaround, please visit the Remmina wiki at:\n"
@@ -491,7 +499,7 @@ msgstr ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 
-#: src/rcw.c:4533
+#: src/rcw.c:4543
 msgid "Open in web browser"
 msgstr "باز کردن در مرورگر"
 

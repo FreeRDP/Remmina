@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-01-18 10:13+0000\n"
+"POT-Creation-Date: 2022-01-24 08:28+0000\n"
 "PO-Revision-Date: 2022-01-19 19:54+0000\n"
 "Last-Translator: Солтыс Сергей <treefeed@mail.ru>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -246,7 +246,7 @@ msgstr "Настройка доступных разрешений"
 msgid "Recent lists cleared."
 msgstr "Списки истории очищены."
 
-#: src/remmina_pref_dialog.c:156 src/rcw.c:2029
+#: src/remmina_pref_dialog.c:156 src/rcw.c:2039
 #: data/ui/remmina_preferences.glade:169 data/ui/remmina_preferences.glade:179
 msgid "Keystrokes"
 msgstr "Комбинации клавиш"
@@ -338,112 +338,121 @@ msgid ""
 "Are you sure you want to close %i active connections in the current window?"
 msgstr "Вы уверены, что хотите закрыть %i активных подключений в текущем окне?"
 
-#: src/rcw.c:1400
+# You need set up plural forms for 1, 2 and 5 here.
+#: src/rcw.c:665
+#, fuzzy
+#| msgid ""
+#| "Are you sure you want to close %i active connections in the current "
+#| "window?"
+msgid "Are you sure you want to close this last active connection?"
+msgstr "Вы уверены, что хотите закрыть %i активных подключений в текущем окне?"
+
+#: src/rcw.c:1410
 msgid "Viewport fullscreen mode"
 msgstr "Режим полного экрана"
 
-#: src/rcw.c:1408 data/ui/remmina_preferences.glade:578
+#: src/rcw.c:1418 data/ui/remmina_preferences.glade:578
 msgid "Scrolled fullscreen"
 msgstr "Полноэкранный с прокруткой"
 
-#: src/rcw.c:1494
+#: src/rcw.c:1504
 msgid "Keep aspect ratio when scaled"
 msgstr "Сохранять пропорции при масштабировании"
 
-#: src/rcw.c:1502
+#: src/rcw.c:1512
 msgid "Fill client window when scaled"
 msgstr "Заполнять окно клиента при масштабировании"
 
-#: src/rcw.c:2050
+#: src/rcw.c:2060
 msgid "Send clipboard content as keystrokes"
 msgstr "Отправлять содержимое буфера обмена в виде нажатий клавиш"
 
-#: src/rcw.c:2156
+#: src/rcw.c:2166
 msgid "Turn off scaling to avoid screenshot distortion."
 msgstr "Отключите масштабирование во избежание искривления снимков экрана."
 
-#: src/rcw.c:2216 plugins/www/www_plugin.c:855
+#: src/rcw.c:2226 plugins/www/www_plugin.c:855
 msgid "Screenshot taken"
 msgstr "Снимок сделан"
 
-#: src/rcw.c:2299
+#: src/rcw.c:2309
 msgid "_Menu"
 msgstr "_Меню"
 
-#: src/rcw.c:2300
+#: src/rcw.c:2310
 msgid "Menu"
 msgstr "Меню"
 
-#: src/rcw.c:2309
+#: src/rcw.c:2319
 msgid "Open the Remmina main window"
 msgstr "Открыть основное окно программы"
 
-#: src/rcw.c:2319
+#: src/rcw.c:2329
 msgid "Duplicate current connection"
 msgstr "Дублировать текущее соединение"
 
-#: src/rcw.c:2336
+#: src/rcw.c:2346
 msgid "Resize the window to fit in remote resolution"
 msgstr "Растянуть окно под размер удалённого разрешения"
 
-#: src/rcw.c:2347
+#: src/rcw.c:2357
 msgid "Toggle fullscreen mode"
 msgstr "Переключить на полный экран"
 
-#: src/rcw.c:2393 data/ui/remmina_preferences.glade:1301
+#: src/rcw.c:2403 data/ui/remmina_preferences.glade:1301
 #: data/ui/remmina_preferences.glade:1311
 msgid "Multi monitor"
 msgstr "Несколько экранов"
 
-#: src/rcw.c:2409
+#: src/rcw.c:2419
 msgid "Toggle dynamic resolution update"
 msgstr "Переключить на динамическое обновление разрешения"
 
-#: src/rcw.c:2419
+#: src/rcw.c:2429
 msgid "Toggle scaled mode"
 msgstr "Переключить в режим масштабирования"
 
-#: src/rcw.c:2459 data/ui/remmina_preferences.glade:1035
+#: src/rcw.c:2469 data/ui/remmina_preferences.glade:1035
 msgid "Switch tab pages"
 msgstr "Перейти на вкладку"
 
-#: src/rcw.c:2469
+#: src/rcw.c:2479
 msgid "Grab all keyboard events"
 msgstr "Захватывать все нажатия клавиш"
 
-#: src/rcw.c:2479
+#: src/rcw.c:2489
 msgid "Preferences"
 msgstr "_Параметры"
 
-#: src/rcw.c:2488
+#: src/rcw.c:2498
 msgid "_Tools"
 msgstr "_Инструменты"
 
-#: src/rcw.c:2489 data/ui/remmina_main.glade:207
+#: src/rcw.c:2499 data/ui/remmina_main.glade:207
 msgid "Tools"
 msgstr "Инструменты"
 
-#: src/rcw.c:2502 data/ui/remmina_preferences.glade:1236
+#: src/rcw.c:2512 data/ui/remmina_preferences.glade:1236
 #: data/ui/remmina_preferences.glade:1246
 msgid "Screenshot"
 msgstr "Снимок экрана"
 
-#: src/rcw.c:2516 data/ui/remmina_preferences.glade:1143
+#: src/rcw.c:2526 data/ui/remmina_preferences.glade:1143
 msgid "Minimize window"
 msgstr "Свернуть окно"
 
-#: src/rcw.c:2526 data/ui/remmina_preferences.glade:1174
+#: src/rcw.c:2536 data/ui/remmina_preferences.glade:1174
 msgid "Disconnect"
 msgstr "Отключиться"
 
-#: src/rcw.c:4302
+#: src/rcw.c:4312
 #, c-format
 msgid "The file “%s” is corrupted, unreadable, or could not be found."
 msgstr "Файл \"%s\" поврежден, не читается или не найден."
 
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. TRANSLATORS: 'GtkSocket feature is not available'.
-#: src/rcw.c:4376
+#: src/rcw.c:4386
 msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
@@ -451,7 +460,7 @@ msgstr ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 
-#: src/rcw.c:4513
+#: src/rcw.c:4523
 msgid ""
 "Warning: This plugin requires GtkSocket, but this feature is unavailable in "
 "a Wayland session."
@@ -461,7 +470,7 @@ msgstr ""
 
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. 'GtkSocket feature is not available'.
-#: src/rcw.c:4519
+#: src/rcw.c:4529
 msgid ""
 "Plugins relying on GtkSocket can't run in a Wayland session.\n"
 "For more info and a possible workaround, please visit the Remmina wiki at:\n"
@@ -476,7 +485,7 @@ msgstr ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 
-#: src/rcw.c:4533
+#: src/rcw.c:4543
 msgid "Open in web browser"
 msgstr "Открыть в браузере"
 
@@ -1681,13 +1690,15 @@ msgstr ""
 #: src/remmina_icon.c:377
 #, c-format
 msgid "%s You may need to install, and use XApp Status Applet"
-msgstr "%s Вам может потребоваться установить и использовать XApp Status Applet"
+msgstr ""
+"%s Вам может потребоваться установить и использовать XApp Status Applet"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:380
 #, c-format
 msgid "%s You may need to install, and use KStatusNotifierItem"
-msgstr "%s Вам может понадобиться установить и использовать KStatusNotifierItem"
+msgstr ""
+"%s Вам может понадобиться установить и использовать KStatusNotifierItem"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:383
@@ -2027,8 +2038,8 @@ msgstr "Количество попыток повторного подключ�
 msgid ""
 "The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
 msgstr ""
-"Максимальное количество попыток повторного подключения при отключении RDP ("
-"по умолчанию: 20)"
+"Максимальное количество попыток повторного подключения при отключении RDP "
+"(по умолчанию: 20)"
 
 #: plugins/rdp/rdp_plugin.c:771 plugins/rdp/rdp_plugin.c:836
 msgid "Enter RDP authentication credentials"
@@ -2133,8 +2144,8 @@ msgid ""
 "Unable to establish a connection to the RDP server “%s”. Check “Security "
 "protocol negotiation”."
 msgstr ""
-"Невозможно установить соединение с RDP-сервером \"%s\". Проверьте “"
-"Согласование протокола безопасности”."
+"Невозможно установить соединение с RDP-сервером \"%s\". Проверьте "
+"“Согласование протокола безопасности”."
 
 #: plugins/rdp/rdp_plugin.c:2223
 #, c-format
@@ -3253,7 +3264,8 @@ msgstr "Не удалось получить текущий выбранный �
 msgid ""
 "Exactly one session should be selectable but '%i' rows (sessions) are "
 "selected."
-msgstr "Должна быть выбрана только одна сессия, но выбрано '%i' строк (сессий)."
+msgstr ""
+"Должна быть выбрана только одна сессия, но выбрано '%i' строк (сессий)."
 
 #: plugins/x2go/x2go_plugin.c:836
 msgid "Failed to fill 'GtkTreeIter'."
@@ -3936,8 +3948,8 @@ msgid ""
 "Copyright © 2009–2014 Vic Lee\n"
 "More details in COPYING"
 msgstr ""
-"Все права© 2014–2022 Антьенор Гатта (Antenore Gatta), Джованни Паноззо ("
-"Giovanni Panozzo).\n"
+"Все права© 2014–2022 Антьенор Гатта (Antenore Gatta), Джованни Паноззо "
+"(Giovanni Panozzo).\n"
 "Все права© 2009–2014 Вик Ли (Vic Lee)\n"
 "Более подробно смотри COPYING"
 

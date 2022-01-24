@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-01-18 10:13+0000\n"
+"POT-Creation-Date: 2022-01-24 08:28+0000\n"
 "PO-Revision-Date: 2022-01-18 11:54+0000\n"
 "Last-Translator: Eric <alchemillatruth@purelymail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -234,7 +234,7 @@ msgstr "配置可提供的分辨率"
 msgid "Recent lists cleared."
 msgstr "最近项已被清除。"
 
-#: src/remmina_pref_dialog.c:156 src/rcw.c:2029
+#: src/remmina_pref_dialog.c:156 src/rcw.c:2039
 #: data/ui/remmina_preferences.glade:169 data/ui/remmina_preferences.glade:179
 msgid "Keystrokes"
 msgstr "键盘监听"
@@ -324,112 +324,120 @@ msgid ""
 "Are you sure you want to close %i active connections in the current window?"
 msgstr "当前窗口已打开 %i 个连接。确认要关闭吗？"
 
-#: src/rcw.c:1400
+#: src/rcw.c:665
+#, fuzzy
+#| msgid ""
+#| "Are you sure you want to close %i active connections in the current "
+#| "window?"
+msgid "Are you sure you want to close this last active connection?"
+msgstr "当前窗口已打开 %i 个连接。确认要关闭吗？"
+
+#: src/rcw.c:1410
 msgid "Viewport fullscreen mode"
 msgstr "视口全屏模式"
 
-#: src/rcw.c:1408 data/ui/remmina_preferences.glade:578
+#: src/rcw.c:1418 data/ui/remmina_preferences.glade:578
 msgid "Scrolled fullscreen"
 msgstr "滚动全屏"
 
-#: src/rcw.c:1494
+#: src/rcw.c:1504
 msgid "Keep aspect ratio when scaled"
 msgstr "缩放时保持比例"
 
-#: src/rcw.c:1502
+#: src/rcw.c:1512
 msgid "Fill client window when scaled"
 msgstr "缩放时填满客户端窗口"
 
-#: src/rcw.c:2050
+#: src/rcw.c:2060
 msgid "Send clipboard content as keystrokes"
 msgstr "以击键方式发送剪贴板内容"
 
-#: src/rcw.c:2156
+#: src/rcw.c:2166
 msgid "Turn off scaling to avoid screenshot distortion."
 msgstr "关闭缩放比例以避免屏幕截图失真。"
 
-#: src/rcw.c:2216 plugins/www/www_plugin.c:855
+#: src/rcw.c:2226 plugins/www/www_plugin.c:855
 msgid "Screenshot taken"
 msgstr "截屏"
 
-#: src/rcw.c:2299
+#: src/rcw.c:2309
 msgid "_Menu"
 msgstr "_菜单"
 
-#: src/rcw.c:2300
+#: src/rcw.c:2310
 msgid "Menu"
 msgstr "菜单"
 
-#: src/rcw.c:2309
+#: src/rcw.c:2319
 msgid "Open the Remmina main window"
 msgstr "打开 Remmina 主窗口"
 
-#: src/rcw.c:2319
+#: src/rcw.c:2329
 msgid "Duplicate current connection"
 msgstr "重复当前连接"
 
-#: src/rcw.c:2336
+#: src/rcw.c:2346
 msgid "Resize the window to fit in remote resolution"
 msgstr "调整窗口大小以适应远程分辨率"
 
-#: src/rcw.c:2347
+#: src/rcw.c:2357
 msgid "Toggle fullscreen mode"
 msgstr "切换全屏模式"
 
-#: src/rcw.c:2393 data/ui/remmina_preferences.glade:1301
+#: src/rcw.c:2403 data/ui/remmina_preferences.glade:1301
 #: data/ui/remmina_preferences.glade:1311
 msgid "Multi monitor"
 msgstr "多显示器"
 
-#: src/rcw.c:2409
+#: src/rcw.c:2419
 msgid "Toggle dynamic resolution update"
 msgstr "切换动态分辨率更新"
 
-#: src/rcw.c:2419
+#: src/rcw.c:2429
 msgid "Toggle scaled mode"
 msgstr "切换缩放模式"
 
-#: src/rcw.c:2459 data/ui/remmina_preferences.glade:1035
+#: src/rcw.c:2469 data/ui/remmina_preferences.glade:1035
 msgid "Switch tab pages"
 msgstr "切换标签页"
 
-#: src/rcw.c:2469
+#: src/rcw.c:2479
 msgid "Grab all keyboard events"
 msgstr "俘获所有键盘事件"
 
-#: src/rcw.c:2479
+#: src/rcw.c:2489
 msgid "Preferences"
 msgstr "首选项"
 
-#: src/rcw.c:2488
+#: src/rcw.c:2498
 msgid "_Tools"
 msgstr "工具(_T)"
 
-#: src/rcw.c:2489 data/ui/remmina_main.glade:207
+#: src/rcw.c:2499 data/ui/remmina_main.glade:207
 msgid "Tools"
 msgstr "工具"
 
-#: src/rcw.c:2502 data/ui/remmina_preferences.glade:1236
+#: src/rcw.c:2512 data/ui/remmina_preferences.glade:1236
 #: data/ui/remmina_preferences.glade:1246
 msgid "Screenshot"
 msgstr "截屏"
 
-#: src/rcw.c:2516 data/ui/remmina_preferences.glade:1143
+#: src/rcw.c:2526 data/ui/remmina_preferences.glade:1143
 msgid "Minimize window"
 msgstr "最小化窗口"
 
-#: src/rcw.c:2526 data/ui/remmina_preferences.glade:1174
+#: src/rcw.c:2536 data/ui/remmina_preferences.glade:1174
 msgid "Disconnect"
 msgstr "断开"
 
-#: src/rcw.c:4302
+#: src/rcw.c:4312
 #, c-format
 msgid "The file “%s” is corrupted, unreadable, or could not be found."
 msgstr "文件“%s” 已损坏，无法读取或未找到。"
 
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. TRANSLATORS: 'GtkSocket feature is not available'.
-#: src/rcw.c:4376
+#: src/rcw.c:4386
 msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
@@ -437,7 +445,7 @@ msgstr ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 
-#: src/rcw.c:4513
+#: src/rcw.c:4523
 msgid ""
 "Warning: This plugin requires GtkSocket, but this feature is unavailable in "
 "a Wayland session."
@@ -445,7 +453,7 @@ msgstr "警告：此插件需要 GtkSocket，但此功能在 Wayland 会话中�
 
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. 'GtkSocket feature is not available'.
-#: src/rcw.c:4519
+#: src/rcw.c:4529
 msgid ""
 "Plugins relying on GtkSocket can't run in a Wayland session.\n"
 "For more info and a possible workaround, please visit the Remmina wiki at:\n"
@@ -459,7 +467,7 @@ msgstr ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 
-#: src/rcw.c:4533
+#: src/rcw.c:4543
 msgid "Open in web browser"
 msgstr "在浏览器中打开"
 
@@ -4531,10 +4539,11 @@ msgid ""
 msgstr ""
 "这些是 Remmina 用来存储密码的加密方法。\n"
 "\n"
-"除了 “弱” 方法，其他所有方法都是推荐的，Keystore 是默认值，因其集成在 GNOME 或 KDE/Plasma 中。\n"
+"除了 “弱” 方法，其他所有方法都是推荐的，Keystore 是默认值，因其集成在 GNOME "
+"或 KDE/Plasma 中。\n"
 "\n"
-"“中等”是安全性和所需内存/CPU 之间的最佳平衡，但如果你需要一个非常安全的方法，你应该选择“敏感”等级，但该方法会使用超过 1 GB 的内存和许多的 "
-"CPU 周期。 "
+"“中等”是安全性和所需内存/CPU 之间的最佳平衡，但如果你需要一个非常安全的方法，"
+"你应该选择“敏感”等级，但该方法会使用超过 1 GB 的内存和许多的 CPU 周期。 "
 
 #: data/ui/remmina_preferences.glade:1760
 msgid "Intermediate (+64 MiB RAM)"

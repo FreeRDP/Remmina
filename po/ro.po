@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-01-18 10:13+0000\n"
+"POT-Creation-Date: 2022-01-24 08:28+0000\n"
 "PO-Revision-Date: 2021-12-17 08:50+0000\n"
 "Last-Translator: dewakucing <basrimazrishawal@gmail.com>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -248,7 +248,7 @@ msgstr "Configurați rezoluțiile disponibile"
 msgid "Recent lists cleared."
 msgstr "Listările recente au fost șterse."
 
-#: src/remmina_pref_dialog.c:156 src/rcw.c:2029
+#: src/remmina_pref_dialog.c:156 src/rcw.c:2039
 #: data/ui/remmina_preferences.glade:169 data/ui/remmina_preferences.glade:179
 #, fuzzy
 msgid "Keystrokes"
@@ -356,133 +356,142 @@ msgid ""
 msgstr ""
 "În fereastra curentă există %i conexiuni active. Sigur doriți să o închideți?"
 
-#: src/rcw.c:1400
+#: src/rcw.c:665
+#, fuzzy
+#| msgid ""
+#| "Are you sure you want to close %i active connections in the current "
+#| "window?"
+msgid "Are you sure you want to close this last active connection?"
+msgstr ""
+"În fereastra curentă există %i conexiuni active. Sigur doriți să o închideți?"
+
+#: src/rcw.c:1410
 msgid "Viewport fullscreen mode"
 msgstr "Mod pe tot ecranul pentru vizualizare"
 
-#: src/rcw.c:1408 data/ui/remmina_preferences.glade:578
+#: src/rcw.c:1418 data/ui/remmina_preferences.glade:578
 #, fuzzy
 msgid "Scrolled fullscreen"
 msgstr "Derulat pe tot ecranul"
 
-#: src/rcw.c:1494
+#: src/rcw.c:1504
 #, fuzzy
 msgid "Keep aspect ratio when scaled"
 msgstr "Păstrați raportul de aspect la scalare"
 
-#: src/rcw.c:1502
+#: src/rcw.c:1512
 #, fuzzy
 msgid "Fill client window when scaled"
 msgstr "Umpleți fereastra clientului la scalare"
 
-#: src/rcw.c:2050
+#: src/rcw.c:2060
 #, fuzzy
 msgid "Send clipboard content as keystrokes"
 msgstr "Trimiteți conținutul clipboard-ului ca apăsări de taste"
 
-#: src/rcw.c:2156
+#: src/rcw.c:2166
 #, fuzzy
 msgid "Turn off scaling to avoid screenshot distortion."
 msgstr "Dezactivați scalarea pentru a evita distorsionarea capturii de ecran."
 
-#: src/rcw.c:2216 plugins/www/www_plugin.c:855
+#: src/rcw.c:2226 plugins/www/www_plugin.c:855
 #, fuzzy
 msgid "Screenshot taken"
 msgstr "Captură de ecran realizată"
 
-#: src/rcw.c:2299
+#: src/rcw.c:2309
 #, fuzzy
 msgid "_Menu"
 msgstr "_Menu"
 
-#: src/rcw.c:2300
+#: src/rcw.c:2310
 #, fuzzy
 msgid "Menu"
 msgstr "Meniu"
 
-#: src/rcw.c:2309
+#: src/rcw.c:2319
 #, fuzzy
 #| msgid "Open Main Window"
 msgid "Open the Remmina main window"
 msgstr "Deschideți fereastra principală Remmina"
 
-#: src/rcw.c:2319
+#: src/rcw.c:2329
 #, fuzzy
 msgid "Duplicate current connection"
 msgstr "Duplicarea conexiunii curente"
 
-#: src/rcw.c:2336
+#: src/rcw.c:2346
 msgid "Resize the window to fit in remote resolution"
 msgstr ""
 "Redimensionează ferestra pentru a cuprinde rezoluția sistemului la distanță"
 
-#: src/rcw.c:2347
+#: src/rcw.c:2357
 msgid "Toggle fullscreen mode"
 msgstr "Comutare mod pe tot ecranul"
 
-#: src/rcw.c:2393 data/ui/remmina_preferences.glade:1301
+#: src/rcw.c:2403 data/ui/remmina_preferences.glade:1301
 #: data/ui/remmina_preferences.glade:1311
 #, fuzzy
 msgid "Multi monitor"
 msgstr "Multi monitor"
 
-#: src/rcw.c:2409
+#: src/rcw.c:2419
 #, fuzzy
 msgid "Toggle dynamic resolution update"
 msgstr "Comutați actualizarea dinamică a rezoluției"
 
-#: src/rcw.c:2419
+#: src/rcw.c:2429
 msgid "Toggle scaled mode"
 msgstr "Comutare mod scalat"
 
-#: src/rcw.c:2459 data/ui/remmina_preferences.glade:1035
+#: src/rcw.c:2469 data/ui/remmina_preferences.glade:1035
 msgid "Switch tab pages"
 msgstr "Schimbă paginile cu categorii"
 
-#: src/rcw.c:2469
+#: src/rcw.c:2479
 msgid "Grab all keyboard events"
 msgstr "Preia toate evenimentele apărute la tastatură"
 
-#: src/rcw.c:2479
+#: src/rcw.c:2489
 msgid "Preferences"
 msgstr "Preferințe"
 
-#: src/rcw.c:2488
+#: src/rcw.c:2498
 msgid "_Tools"
 msgstr "Unelte"
 
-#: src/rcw.c:2489 data/ui/remmina_main.glade:207
+#: src/rcw.c:2499 data/ui/remmina_main.glade:207
 msgid "Tools"
 msgstr "Unelte"
 
-#: src/rcw.c:2502 data/ui/remmina_preferences.glade:1236
+#: src/rcw.c:2512 data/ui/remmina_preferences.glade:1236
 #: data/ui/remmina_preferences.glade:1246
 #, fuzzy
 msgid "Screenshot"
 msgstr "Captură de ecran"
 
-#: src/rcw.c:2516 data/ui/remmina_preferences.glade:1143
+#: src/rcw.c:2526 data/ui/remmina_preferences.glade:1143
 msgid "Minimize window"
 msgstr "Minimizare fereastră"
 
-#: src/rcw.c:2526 data/ui/remmina_preferences.glade:1174
+#: src/rcw.c:2536 data/ui/remmina_preferences.glade:1174
 msgid "Disconnect"
 msgstr "Deconectează"
 
-#: src/rcw.c:4302
+#: src/rcw.c:4312
 #, fuzzy, c-format
 msgid "The file “%s” is corrupted, unreadable, or could not be found."
 msgstr "Fișierul \"%s\" este corupt, ilizibil sau nu a putut fi găsit."
 
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. TRANSLATORS: 'GtkSocket feature is not available'.
-#: src/rcw.c:4376
+#: src/rcw.c:4386
 msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 msgstr ""
 
-#: src/rcw.c:4513
+#: src/rcw.c:4523
 #, fuzzy
 msgid ""
 "Warning: This plugin requires GtkSocket, but this feature is unavailable in "
@@ -491,7 +500,7 @@ msgstr "Avertisment: Acest plugin necesită GtkSocket, dar nu este disponibil."
 
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. 'GtkSocket feature is not available'.
-#: src/rcw.c:4519
+#: src/rcw.c:4529
 msgid ""
 "Plugins relying on GtkSocket can't run in a Wayland session.\n"
 "For more info and a possible workaround, please visit the Remmina wiki at:\n"
@@ -500,7 +509,7 @@ msgid ""
 "available-in-a-Wayland-session"
 msgstr ""
 
-#: src/rcw.c:4533
+#: src/rcw.c:4543
 #, fuzzy
 #| msgid "Open Main Window"
 msgid "Open in web browser"
