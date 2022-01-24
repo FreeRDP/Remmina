@@ -662,7 +662,7 @@ gboolean rcw_delete(RemminaConnectionWindow *cnnwin)
 		else {
 			dialog = gtk_message_dialog_new(GTK_WINDOW(cnnwin), GTK_DIALOG_MODAL, GTK_MESSAGE_QUESTION,
 							GTK_BUTTONS_YES_NO,
-							_("Are you sure you want to close this last active connection?"), n);
+							_("Are you sure you want to close this last active connection?"));
 			i = gtk_dialog_run(GTK_DIALOG(dialog));
 			gtk_widget_destroy(dialog);
 			if (i != GTK_RESPONSE_YES)
