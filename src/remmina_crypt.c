@@ -148,12 +148,12 @@ gchar* remmina_crypt_decrypt(const gchar *str)
 
 	buf = g_base64_decode(str, &buf_len);
 
-	/*
+#if 0
 	g_debug ("%s base64 encoded as %p with length %lu",
 			str,
 			&buf,
 			buf_len);
-	*/
+#endif
 
 	err = gcry_cipher_decrypt(
 			hd,	    // gcry_cipher_hd_t
@@ -168,13 +168,15 @@ gchar* remmina_crypt_decrypt(const gchar *str)
 				gcry_strerror(err));
 		g_free(buf);
 		gcry_cipher_close(hd);
-		return NULL;
+		//return NULL;
+		return g_strdup(str);
 	}
 
 	gcry_cipher_close(hd);
 
 	/* Just in case */
-	buf[buf_len - 1] = '\0';
+	if (buf_len > 0)
+		buf[buf_len - 1] = '\0';
 
 	return (gchar*)buf;
 }
