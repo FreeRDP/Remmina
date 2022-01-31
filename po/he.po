@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2022-01-31 09:50+0000\n"
-"PO-Revision-Date: 2022-01-17 21:39+0000\n"
+"PO-Revision-Date: 2022-01-31 21:33+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/remmina/remmina/"
 "he/>\n"
@@ -153,7 +153,7 @@ msgstr "תוספים"
 #: src/remmina_message_panel.c:621 src/remmina_file_editor.c:242
 #, fuzzy
 msgid "_OK"
-msgstr "_אוקיי"
+msgstr "_אישור"
 
 #: src/remmina_plugin_manager.c:481 src/remmina_file_editor.c:1917
 #: data/ui/remmina_main.glade:442
@@ -244,10 +244,8 @@ msgstr "הגדרת לחיצות המקשים"
 
 #. TRANSLATORS: Do not translate libsodium, is the name of a library
 #: src/remmina_pref_dialog.c:474
-#, fuzzy
-#| msgid "libsodium >= 1.9.0 is required to use master password"
 msgid "libsodium >= 1.9.0 is required to use Primary Password"
-msgstr "צריך libsodium >= 1.9.0 כדי להשתמש בסיסמת אב"
+msgstr "צריך libsodium >= 1.9.0 כדי להשתמש בסיסמה העיקרית"
 
 #: src/remmina_pref_dialog.c:808
 msgid "Picking a terminal colouring file replaces the file: "
@@ -264,7 +262,6 @@ msgstr ""
 
 #: src/remmina_message_panel.c:163 data/ui/remmina_mpc.glade:46
 #: data/ui/remmina_passwd.glade:19 data/ui/remmina_unlock.glade:43
-#, fuzzy
 msgid "Cancel"
 msgstr "ביטול"
 
@@ -272,7 +269,6 @@ msgstr "ביטול"
 #: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
 #: data/ui/remmina_string_list.glade:63 data/ui/remmina_news.glade:33
 #: data/ui/remmina_preferences.glade:2655
-#, fuzzy
 msgid "Close"
 msgstr "סגירה"
 
@@ -298,7 +294,6 @@ msgstr "שמירת הסיסמה"
 #: src/remmina_file_editor.c:1792 plugins/spice/spice_plugin_file_transfer.c:84
 #: data/ui/remmina_key_chooser.glade:8 data/ui/remmina_key_chooser.glade:9
 #: data/ui/remmina_spinner.glade:8 data/ui/remmina_spinner.glade:9
-#, fuzzy
 msgid "_Cancel"
 msgstr "_ביטול"
 
@@ -329,12 +324,8 @@ msgid ""
 msgstr "לסגור את %i החיבורים הפעילים בחלון הנוכחי?"
 
 #: src/rcw.c:665
-#, fuzzy
-#| msgid ""
-#| "Are you sure you want to close %i active connections in the current "
-#| "window?"
 msgid "Are you sure you want to close this last active connection?"
-msgstr "לסגור את %i החיבורים הפעילים בחלון הנוכחי?"
+msgstr "לסגור את החיבור הפעיל האחרון?"
 
 #: src/rcw.c:1410
 #, fuzzy
@@ -443,7 +434,6 @@ msgstr "הקובץ „%s” פגום, בלתי קריא או חסר."
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. TRANSLATORS: 'GtkSocket feature is not available'.
 #: src/rcw.c:4386
-#, fuzzy
 msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
@@ -461,7 +451,6 @@ msgstr ""
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. 'GtkSocket feature is not available'.
 #: src/rcw.c:4529
-#, fuzzy
 msgid ""
 "Plugins relying on GtkSocket can't run in a Wayland session.\n"
 "For more info and a possible workaround, please visit the Remmina wiki at:\n"
@@ -472,7 +461,8 @@ msgstr ""
 "תוספים שמסתמכים על GtkSocket לא יכולים לרוץ בהפעלה מסוג Wayland.\n"
 "למידע נוסף ולדרכי מעקף, אפשר לבקר בוויקי של Remmina בכתובת:\n"
 "\n"
-"%s"
+"https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
+"available-in-a-Wayland-session"
 
 #: src/rcw.c:4543
 msgid "Open in web browser"
@@ -503,7 +493,6 @@ msgstr[1] "%d סיסמאות הוחלפו."
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:88
-#, fuzzy
 msgid "Show 'About'"
 msgstr "הצגת ‚על אודות’"
 
@@ -752,19 +741,16 @@ msgid "Upload folder"
 msgstr "העלאת התיקייה"
 
 #: src/remmina_ftp_client.c:649 src/remmina_ftp_client.c:763
-#, fuzzy
 msgid "Download"
 msgstr "הורדה"
 
 #: src/remmina_ftp_client.c:656 src/remmina_ftp_client.c:770
-#, fuzzy
 msgid "Upload"
 msgstr "העלאה"
 
 #: src/remmina_ftp_client.c:663
-#, fuzzy
 msgid "_Delete"
-msgstr "_מחק"
+msgstr "מ_חיקה"
 
 #: src/remmina_ftp_client.c:748
 msgid "Home"
@@ -775,7 +761,6 @@ msgid "Go to home folder"
 msgstr "מעבר לתיקיית הבית"
 
 #: src/remmina_ftp_client.c:753
-#, fuzzy
 msgid "Up"
 msgstr "למעלה"
 
@@ -785,7 +770,6 @@ msgstr "מעבר לתיקיית ההורה"
 
 #: src/remmina_ftp_client.c:758 plugins/rdp/rdp_plugin.c:2854
 #: plugins/vnc/vnc_plugin.c:2072
-#, fuzzy
 msgid "Refresh"
 msgstr "רענון"
 
@@ -802,7 +786,6 @@ msgid "Upload to server"
 msgstr "העלאה לשרת"
 
 #: src/remmina_ftp_client.c:775 data/ui/remmina_main.glade:197
-#, fuzzy
 msgid "Delete"
 msgstr "מחיקה"
 
@@ -1291,7 +1274,6 @@ msgid "Import"
 msgstr "ייבוא"
 
 #: src/remmina_main.c:1120 src/remmina_file_editor.c:1800
-#, fuzzy
 msgid "_Save"
 msgstr "_שמירה"
 
@@ -1538,7 +1520,6 @@ msgid "SSH Tunnel"
 msgstr "צינור SSH"
 
 #: src/remmina_file_editor.c:1133
-#, fuzzy
 msgid "Enable SSH tunnel"
 msgstr "הפעלת תעלת SSH"
 
@@ -1630,12 +1611,10 @@ msgid "Use the current settings as the default for all new connection profiles"
 msgstr "יש להשתמש בהגדרות הנוכחיות כברירת המחדל לכל פרופילי החיבור החדשים"
 
 #: src/remmina_file_editor.c:1805 data/ui/remmina_main.glade:160
-#, fuzzy
 msgid "Connect"
 msgstr "התחברות"
 
 #: src/remmina_file_editor.c:1808
-#, fuzzy
 msgid "_Save and Connect"
 msgstr "שמירה והת_חברות"
 
@@ -1795,32 +1774,26 @@ msgid "Disconnected from %s:%d via SSH"
 msgstr "מנותק מ־%s:%d דרך SSH"
 
 #: src/remmina_ssh_plugin.c:1468 data/ui/remmina_main.glade:177
-#, fuzzy
 msgid "Copy"
 msgstr "העתקה"
 
 #: src/remmina_ssh_plugin.c:1468
-#, fuzzy
 msgid "_Copy"
-msgstr "_העתק"
+msgstr "ה_עתקה"
 
 #: src/remmina_ssh_plugin.c:1469
-#, fuzzy
 msgid "Paste"
 msgstr "הדבקה"
 
 #: src/remmina_ssh_plugin.c:1469
-#, fuzzy
 msgid "_Paste"
-msgstr "_הדבק"
+msgstr "ה_דבקה"
 
 #: src/remmina_ssh_plugin.c:1470
-#, fuzzy
 msgid "Select all"
-msgstr "בחירה בהכול"
+msgstr "לבחור הכול"
 
 #: src/remmina_ssh_plugin.c:1470
-#, fuzzy
 msgid "_Select all"
 msgstr "לבחור ה_כול"
 
@@ -2930,10 +2903,9 @@ msgid "Disconnected from %s:%d via SPICE"
 msgstr "מנותק מ־%s:%d דרך SPICE"
 
 #: plugins/spice/spice_plugin.c:391
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s:%d via SPICE"
-msgstr "מתבצע חיבור אל „%s” דרך SSH…"
+msgstr "מחובר אל %s:%d דרך SPICE"
 
 #: plugins/spice/spice_plugin.c:403
 #, fuzzy
@@ -3073,10 +3045,9 @@ msgid "Please retry after turning on encryption for this profile."
 msgstr "נא לנסות שוב לאחר הפעלת הצפנה על הפרופיל הזה."
 
 #: plugins/vnc/vnc_plugin.c:1706
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s:%d via VNC"
-msgstr "מתבצע חיבור אל „%s” דרך SSH…"
+msgstr "מחובר אל %s:%d דרך VNC"
 
 #: plugins/vnc/vnc_plugin.c:1725
 #, c-format
@@ -4238,12 +4209,10 @@ msgid "_Remove"
 msgstr "_הסרה"
 
 #: data/ui/remmina_string_list.glade:26 data/ui/remmina_string_list.glade:116
-#, fuzzy
 msgid "Move up"
 msgstr "העלאה למעלה"
 
 #: data/ui/remmina_string_list.glade:32 data/ui/remmina_string_list.glade:95
-#, fuzzy
 msgid "Move down"
 msgstr "הורדה למטה"
 
@@ -4252,9 +4221,8 @@ msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
 msgstr "<span weight='bold' size='larger'>מחליף סיסמאות במרוכז</span>"
 
 #: data/ui/remmina_mpc.glade:32
-#, fuzzy
 msgid "Change"
-msgstr "עריכה"
+msgstr "החלפה"
 
 #: data/ui/remmina_mpc.glade:201
 #, fuzzy
@@ -4346,9 +4314,8 @@ msgid "Use as default remote desktop client"
 msgstr "להשתמש לקוח ברירת המחדל לחיבורי שולחן עבודה מרוחקים"
 
 #: data/ui/remmina_news.glade:139
-#, fuzzy
 msgid "Apply"
-msgstr "ישם"
+msgstr "החלה"
 
 #: data/ui/remmina_news.glade:143
 #, fuzzy
@@ -5292,7 +5259,6 @@ msgid "Remmina Preferences"
 msgstr "העדפות Remmina"
 
 #: data/ui/remmina_unlock.glade:56
-#, fuzzy
 msgid "Unlock"
 msgstr "שחרור"
 
