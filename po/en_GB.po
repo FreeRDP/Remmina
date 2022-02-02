@@ -8,15 +8,15 @@
 # Allan Nordhøy <epost@anotheragency.no>, 2020, 2021.
 # J. Lavoie <j.lavoie@net-c.ca>, 2020, 2021.
 # Rob Pearson <rob.dunedin@gmail.com>, 2020.
-# Andi Chandler <andi@gowling.com>, 2020, 2021.
+# Andi Chandler <andi@gowling.com>, 2020, 2021, 2022.
 # Antenore Gatta <antenore@simbiosi.org>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2022-01-31 09:50+0000\n"
-"PO-Revision-Date: 2021-12-17 08:44+0000\n"
-"Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
+"PO-Revision-Date: 2022-02-02 16:54+0000\n"
+"Last-Translator: Andi Chandler <andi@gowling.com>\n"
 "Language-Team: English (United Kingdom) <https://hosted.weblate.org/projects/"
 "remmina/remmina/en_GB/>\n"
 "Language: en_GB\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.10\n"
+"X-Generator: Weblate 4.11-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:25+0000\n"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:354
@@ -136,10 +136,17 @@ msgid ""
 "There is more info about debugging Remmina on https://gitlab.com/Remmina/"
 "Remmina/-/wikis/Usage/Remmina-debugging\n"
 msgstr ""
+"This window can help you find connection problems.\n"
+"You can stop and start the logging at any moment using the On/Off switch.\n"
+"The stats button (Ctrl+T), can be useful to gather system info you may share "
+"when reporting a bug.\n"
+"There is more info about debugging Remmina on https://gitlab.com/Remmina/"
+"Remmina/-/wikis/Usage/Remmina-debugging\n"
 
 #: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1960
+#, fuzzy
 msgid "Protocol"
-msgstr ""
+msgstr "Protocol"
 
 #: src/remmina_plugin_manager.c:73
 #, fuzzy
@@ -518,6 +525,8 @@ msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 msgstr ""
+"https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
+"available-in-a-Wayland-session"
 
 #: src/rcw.c:4523
 #, fuzzy
@@ -536,6 +545,11 @@ msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 msgstr ""
+"Plugins relying on GtkSocket can't run in a Wayland session.\n"
+"For more info and a possible workaround, please visit the Remmina wiki at:\n"
+"\n"
+"https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
+"available-in-a-Wayland-session"
 
 #: src/rcw.c:4543
 #, fuzzy
@@ -707,6 +721,10 @@ msgid ""
 "More info available on the Remmina wiki at:\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgstr ""
+"Remmina does not log all output statements. Turn on more verbose output by "
+"using \"G_MESSAGES_DEBUG=all\" as an environment variable.\n"
+"More info available on the Remmina wiki at:\n"
+"https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:392
@@ -1363,7 +1381,7 @@ msgstr "Plugin %s is not registered."
 
 #: src/remmina_main.c:685
 msgid "The latest successful connection attempt, or a pre-computed date"
-msgstr ""
+msgstr "The latest successful connection attempt, or a pre-computed date"
 
 #: src/remmina_main.c:687
 #, c-format
@@ -1374,11 +1392,11 @@ msgstr[1] "Total %i items."
 
 #: src/remmina_main.c:695
 msgid "Network status: fully online"
-msgstr ""
+msgstr "Network status: fully online"
 
 #: src/remmina_main.c:698
 msgid "Network status: offline"
-msgstr ""
+msgstr "Network status: offline"
 
 #: src/remmina_main.c:945
 #, c-format
@@ -1667,7 +1685,7 @@ msgstr "New connection profile"
 
 #: src/remmina_file_editor.c:1102
 msgid "Require password to connect or edit the profile"
-msgstr ""
+msgstr "Require password to connect or edit the profile"
 
 #: src/remmina_file_editor.c:1132
 #, fuzzy
@@ -1732,6 +1750,8 @@ msgid ""
 "(%s: %i): Can't validate user input since 'setting_name_to_validate', "
 "'value' or 'gfe' are NULL!"
 msgstr ""
+"(%s: %i): Can't validate user input since 'setting_name_to_validate', "
+"'value' or 'gfe' are NULL!"
 
 #. TRANSLATORS: Meta-error. Shouldn't be visible.
 #: src/remmina_file_editor.c:1454 plugins/x2go/x2go_plugin.c:2409
@@ -1800,6 +1820,8 @@ msgid ""
 "Using the «resolution» parameter in the Remmina preferences file is "
 "deprecated.\n"
 msgstr ""
+"Using the «resolution» parameter in the Remmina preferences file is "
+"deprecated.\n"
 
 #: src/remmina_icon.c:137
 #, fuzzy
