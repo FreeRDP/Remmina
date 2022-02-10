@@ -1520,7 +1520,7 @@ static gboolean remmina_protocol_widget_dialog_mt_setup(gpointer user_data)
 	const gchar *s;
 
 	if (d->gp->cnnobj == NULL)
-		return;
+		return FALSE;
 
 	mp = remmina_message_panel_new();
 
