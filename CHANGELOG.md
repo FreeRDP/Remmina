@@ -1,3 +1,16 @@
+## v1.4.24
+[full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.23...v1.4.24)
+
+* Contribution section added to issue template [!2365](https://gitlab.com/Remmina/Remmina/merge_requests/2365) *@kingu*
+* Language of VNC encoding cleaned up [!2367](https://gitlab.com/Remmina/Remmina/merge_requests/2367) *@kingu*
+* Remmina Hardening and Compliance [!2366](https://gitlab.com/Remmina/Remmina/merge_requests/2366) *@antenore*
+* Remmina_preferences language reworked [!2368](https://gitlab.com/Remmina/Remmina/merge_requests/2368) *@kingu*
+* Thanks 2021 [!2371](https://gitlab.com/Remmina/Remmina/merge_requests/2371) *@kingu*
+* Resolve "Follow-up from "Remmina_preferences language reworked"" [!2369](https://gitlab.com/Remmina/Remmina/merge_requests/2369) *@antenore*
+* Encryption level language reworked [!2372](https://gitlab.com/Remmina/Remmina/merge_requests/2372) *@kingu*
+* Issue 2122 : Confirm on close of window [!2374](https://gitlab.com/Remmina/Remmina/merge_requests/2374) *@emmguyot*
+* Adding flush and cairo clean up [!2375](https://gitlab.com/Remmina/Remmina/merge_requests/2375) *@antenore*
+
 ## v1.4.23
 [full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.22...v1.4.23)
 
