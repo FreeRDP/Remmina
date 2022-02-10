@@ -3399,6 +3399,7 @@ void rco_closewin(RemminaProtocolWidget *gp)
 	if (cnnobj) {
 		cnnobj->remmina_file = NULL;
 		g_free(cnnobj);
+		gp->cnnobj = NULL;
 	}
 
 	remmina_application_condexit(REMMINA_CONDEXIT_ONDISCONNECT);
