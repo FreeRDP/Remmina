@@ -10,13 +10,14 @@
 # Jwtiyar Nariman <jwtiyar@gmail.com>, 2020.
 # Mohammed Anas <6daf084a-8eaf-40fb-86c7-8500077c3b69@anonaddy.me>, 2020, 2021.
 # Antenore Gatta <antenore@simbiosi.org>, 2021.
+# Ahmad Dakhlallah <ahmad@linuxarabia.co>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2022-02-10 11:27+0000\n"
-"PO-Revision-Date: 2021-12-17 08:42+0000\n"
-"Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
+"PO-Revision-Date: 2022-02-11 09:55+0000\n"
+"Last-Translator: Ahmad Dakhlallah <ahmad@linuxarabia.co>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/remmina/remmina/"
 "ar/>\n"
 "Language: ar\n"
@@ -25,7 +26,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Weblate 4.10\n"
+"X-Generator: Weblate 4.11-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:354
@@ -36,7 +37,7 @@ msgstr ""
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_passwd.glade:84
 #: data/ui/remmina_unlock.glade:109
 msgid "Password"
-msgstr "كلمة السر"
+msgstr "كلمة المرور"
 
 #: src/remmina_sftp_plugin.c:311 src/remmina_sftp_plugin.c:356
 #: src/remmina_file_editor.c:1109 src/remmina_ssh_plugin.c:1390
@@ -47,12 +48,12 @@ msgstr "ملف هوية SSH"
 #: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:1110
 #: src/remmina_ssh_plugin.c:1391
 msgid "SSH agent"
-msgstr "مفوض SSH"
+msgstr "وكيل SSH"
 
 #: src/remmina_sftp_plugin.c:313 src/remmina_file_editor.c:1111
 #: src/remmina_ssh_plugin.c:1392
 msgid "Public key (automatic)"
-msgstr "المفتاح العمومي (افتراضي)"
+msgstr "المفتاح العمومي (تلقائي)"
 
 #: src/remmina_sftp_plugin.c:314 src/remmina_file_editor.c:1112
 #: src/remmina_ssh_plugin.c:1393
@@ -62,7 +63,7 @@ msgstr "كيربيروس (GSSAPI)"
 
 #: src/remmina_sftp_plugin.c:323
 msgid "Show Hidden Files"
-msgstr "اظهر الملفات الخفية"
+msgstr "عرض الملفات المخفية"
 
 #: src/remmina_sftp_plugin.c:325
 msgid "Overwrite all files"
@@ -88,34 +89,28 @@ msgstr "إسم المستخدم"
 #: src/remmina_sftp_plugin.c:355 src/remmina_file_editor.c:1214
 #: src/remmina_ssh_plugin.c:1498
 msgid "Authentication type"
-msgstr "أسلوب المصادقة"
+msgstr "نوع المصادقة"
 
 #: src/remmina_sftp_plugin.c:357 src/remmina_file_editor.c:1247
 #: src/remmina_ssh_plugin.c:1505
 msgid "Password to unlock private key"
-msgstr "كلمة السر لفتح المفتاح الخاص"
+msgstr "كلمة مرور المفتاح الخاص"
 
 #: src/remmina_sftp_plugin.c:358 src/remmina_ssh_plugin.c:1536
-#, fuzzy
 msgid "SSH Proxy Command"
-msgstr "الأمر الوكيل SSH"
+msgstr "أمر وكيل SSH"
 
 #: src/remmina_sftp_plugin.c:367
-#, fuzzy
 msgid "SFTP - Secure File Transfer"
-msgstr "SFTP - نقل الملفات الآمنة"
+msgstr "SFTP - نقل الملفات الآمن"
 
 #: src/remmina_log.c:130
-#, fuzzy
-#| msgid "Open Main Window"
 msgid "Remmina debugging window"
-msgstr "فتح النافذة الرئيسية ريممينا"
+msgstr "فتح نافذة التشخيص ريممينا"
 
 #: src/remmina_log.c:134
-#, fuzzy
-#| msgid "Open Main Window"
 msgid "Paste sytem info in the Remmina debugging window"
-msgstr "فتح النافذة الرئيسية ريممينا"
+msgstr "لصق معلومات النظام في نافذة تشخيص ريممينا"
 
 #: src/remmina_log.c:154
 msgid ""
@@ -126,6 +121,12 @@ msgid ""
 "There is more info about debugging Remmina on https://gitlab.com/Remmina/"
 "Remmina/-/wikis/Usage/Remmina-debugging\n"
 msgstr ""
+"هذه النافذة تساعدك في تشخيص مشاكل الاتصال.\n"
+"يمكنك تشغيل وإيقاف السجل في أي لحظة من خلال الضغط على زر التشغيل\\الإيقاف.\n"
+"يمكن لمفتاح الحالة (Ctrl+T) أن يفيدك من خلال تجميع معلومات النظام لمشاركتها "
+"عند التبليغ عن خلل.\n"
+"يمكنك العثور على معلومات إضافة بخصوص تشخيص المشاكل على الرابط https://gitlab."
+"com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging\n"
 
 #: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1960
 msgid "Protocol"
@@ -158,7 +159,7 @@ msgstr "الإضافات"
 #: src/remmina_plugin_manager.c:463 src/remmina_message_panel.c:452
 #: src/remmina_message_panel.c:621 src/remmina_file_editor.c:242
 msgid "_OK"
-msgstr "_أوكي"
+msgstr "_موافق"
 
 #: src/remmina_plugin_manager.c:481 src/remmina_file_editor.c:1917
 #: data/ui/remmina_main.glade:442
