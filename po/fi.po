@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
 # Tuomas Lähteenmäki <lahtis@gmail.com>, 2019, 2020, 2021.
 # Jeannette L <j.lavoie@net-c.ca>, 2020.
-# Jiri Grönroos <jiri.gronroos@iki.fi>, 2020, 2021.
+# Jiri Grönroos <jiri.gronroos@iki.fi>, 2020, 2021, 2022.
 # Allan Nordhøy <epost@anotheragency.no>, 2020, 2021.
 # Antenore Gatta <antenore@simbiosi.org>, 2021.
 # Ricky Tigg <ricky.tigg@gmail.com>, 2021.
@@ -14,8 +14,8 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2022-02-10 11:27+0000\n"
-"PO-Revision-Date: 2021-12-17 08:45+0000\n"
-"Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
+"PO-Revision-Date: 2022-02-12 15:55+0000\n"
+"Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/remmina/remmina/"
 "fi/>\n"
 "Language: fi\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.10\n"
+"X-Generator: Weblate 4.11-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:354
@@ -101,10 +101,8 @@ msgid "SFTP - Secure File Transfer"
 msgstr "SFTP - Suojattu tiedostonsiirto"
 
 #: src/remmina_log.c:130
-#, fuzzy
-#| msgid "Open the Remmina main window"
 msgid "Remmina debugging window"
-msgstr "Avaa Remminan pääikkuna"
+msgstr "Remmina-vianjäljitysikkuna"
 
 #: src/remmina_log.c:134
 #, fuzzy
@@ -441,19 +439,21 @@ msgstr "Tiedosto \"%s\" on vioittunut, lukukelvoton tai sitä ei löytynyt."
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. TRANSLATORS: 'GtkSocket feature is not available'.
 #: src/rcw.c:4387
+#, fuzzy
 msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 msgstr ""
+"https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
+"available-in-a-Wayland-session"
 
 #: src/rcw.c:4524
-#, fuzzy
-#| msgid "Warning: This plugin requires GtkSocket, but it’s not available."
 msgid ""
 "Warning: This plugin requires GtkSocket, but this feature is unavailable in "
 "a Wayland session."
 msgstr ""
-"Varoitus: Tämä liitännäinen vaatii GtkSocketin, mutta se ei ole saatavilla."
+"Varoitus: Tämä liitännäinen vaatii GtkSocketin, mutta se ei ole saatavilla "
+"Wayland-istunnossa."
 
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. 'GtkSocket feature is not available'.
@@ -467,10 +467,8 @@ msgid ""
 msgstr ""
 
 #: src/rcw.c:4544
-#, fuzzy
-#| msgid "Open Main Window"
 msgid "Open in web browser"
-msgstr "Avaa pääikkuna"
+msgstr "Avaa verkkoselaimessa"
 
 #: src/remmina_mpchange.c:234
 msgid "The passwords do not match"
@@ -1412,9 +1410,8 @@ msgstr ""
 "• käyttäjätunnus@palvelin[:portti] (vain SSH-protokolla)</big>"
 
 #: src/remmina_file_editor.c:162
-#, fuzzy
 msgid "Input is invalid."
-msgstr "Tulo on virheellinen."
+msgstr "Syöte on virheellinen."
 
 #: src/remmina_file_editor.c:239
 msgid "Choose a Remote Desktop Server"
@@ -1548,10 +1545,8 @@ msgstr ""
 #. TRANSLATORS: Meta-error. Shouldn't be visible.
 #: src/remmina_file_editor.c:1454 plugins/x2go/x2go_plugin.c:2409
 #: plugins/x2go/x2go_plugin.c:3052
-#, fuzzy
-#| msgid "Transfer error"
 msgid "Internal error."
-msgstr "Sisäinen virhe"
+msgstr "Sisäinen virhe."
 
 #: src/remmina_file_editor.c:1676 src/remmina_file_editor.c:1712
 #: src/remmina_file_editor.c:1733 src/remmina_file_editor.c:1756
@@ -2816,10 +2811,8 @@ msgid "Server CA certificate"
 msgstr "Palvelimen CA-varmenne"
 
 #: plugins/spice/spice_plugin.c:696
-#, fuzzy
-#| msgid "Prefered video codec"
 msgid "Preferred video codec"
-msgstr "Asetukset"
+msgstr "Ensisijainen videokoodekki"
 
 #: plugins/spice/spice_plugin.c:697
 msgid "Turn off GStreamer overlay"
@@ -3250,9 +3243,9 @@ msgid "Terminating X2Go sessions can take a moment."
 msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:621 plugins/x2go/x2go_plugin.c:623
-#, fuzzy, c-format
+#, c-format
 msgid "Unknown property '%i'"
-msgstr "Tuntematon omaisuus"
+msgstr "Tuntematon ominaisuus '%i'"
 
 #: plugins/x2go/x2go_plugin.c:711 plugins/x2go/x2go_plugin.c:758
 #, fuzzy

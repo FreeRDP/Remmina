@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2022-02-10 11:27+0000\n"
-"PO-Revision-Date: 2022-01-10 18:52+0000\n"
+"PO-Revision-Date: 2022-02-12 15:55+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/remmina/"
 "remmina/nb_NO/>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.10.1\n"
+"X-Generator: Weblate 4.11-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:354
@@ -1670,7 +1670,7 @@ msgstr "Ny tilkoblingsprofil"
 
 #: src/remmina_file_editor.c:1102
 msgid "Require password to connect or edit the profile"
-msgstr ""
+msgstr "Krev passord for å koble til eller redigere profilen"
 
 #: src/remmina_file_editor.c:1132
 #, fuzzy
@@ -2305,7 +2305,7 @@ msgstr "Skriv inn identitetsbekreftelsesdetaljer for RDP-portner"
 #: plugins/rdp/rdp_plugin.c:1027
 #, c-format
 msgid "Disconnected from %s via RDP"
-msgstr ""
+msgstr "Frakoblet fra %s via RDP"
 
 #: plugins/rdp/rdp_plugin.c:2156
 #, c-format
@@ -3257,7 +3257,7 @@ msgstr "Kobler til «%s» via SSH…"
 #: plugins/vnc/vnc_plugin.c:1725
 #, c-format
 msgid "Disconnected from %s:%d via VNC"
-msgstr ""
+msgstr "Frakoblet fra %s:%d via VNC"
 
 #: plugins/vnc/vnc_plugin.c:1974
 #, fuzzy
@@ -3307,6 +3307,15 @@ msgid ""
 "  • “Best (slowest)” sets encoding to “copyrect zrle ultra zlib hextile "
 "corre rre raw”"
 msgstr ""
+"Overstyring av forhåndsinnstilt VNC-kodingskvalitet:\n"
+"\n"
+"  • «Dårlig (fastest)» setter koding til «copyrect zlib hextile raw»\n"
+"  • «Middels» setter koding til «tight zrle ultra copyrect hextile zlib "
+"corre rre raw»\n"
+"  • «God» settter koding til «tight zrle ultra copyrect hextile zlib corre "
+"rre raw»\n"
+"  • «Best (tregest)» setter koding til «copyrect zrle ultra zlib hextile "
+"corre rre raw»"
 
 #: plugins/vnc/vnc_plugin.c:2018
 #, fuzzy
@@ -3775,7 +3784,7 @@ msgstr "Fortsetter økt: %s'"
 #: plugins/x2go/x2go_plugin.c:1529
 #, c-format
 msgid "Disconnected from %s:%d via X2Go"
-msgstr ""
+msgstr "Frakoblet fra %s:%d via X2Go"
 
 #: plugins/x2go/x2go_plugin.c:1601
 #, fuzzy
@@ -5220,14 +5229,18 @@ msgid "SSH options"
 msgstr "SSH-valgmuligheter"
 
 #: data/ui/remmina_preferences.glade:1603
+#, fuzzy
 msgid ""
 "Time in seconds before Remmina will lock the session and asks for a password "
 "again. Default: 300 Seconds."
 msgstr ""
+"Antall sekunder før Remmina låser økten å spør om passord igjen. Forvalg: "
+"300 sekunder."
 
 #: data/ui/remmina_preferences.glade:1615
 msgid "Set and use a secret key to protect Remmina from unauthorized use."
 msgstr ""
+"Sett og bruk en hemmelig nøkkel til å beskytte Remmina fra uautorisert bruk."
 
 #: data/ui/remmina_preferences.glade:1620
 #, fuzzy
@@ -5240,15 +5253,15 @@ msgstr "Bruk hemmelig nøkkel til identitetsbekreftelse med noen miniprogrammer"
 
 #: data/ui/remmina_preferences.glade:1651
 msgid "Valid for"
-msgstr ""
+msgstr "Gyldig i"
 
 #: data/ui/remmina_preferences.glade:1662
 msgid "Number of seconds to keep password valid for"
-msgstr ""
+msgstr "Antall sekunder å anse passordet som gyldig"
 
 #: data/ui/remmina_preferences.glade:1667
 msgid "timeout in seconds (default 300)"
-msgstr ""
+msgstr "tidsavbrudd i sekunder (forvalg 300)"
 
 #: data/ui/remmina_preferences.glade:1679
 #, fuzzy
@@ -5265,12 +5278,12 @@ msgstr "Sikker passordslagring i KDE-lommeboken"
 
 #: data/ui/remmina_preferences.glade:1694
 msgid "Creation, editing, copying, and deletions require the Remmina password"
-msgstr ""
+msgstr "Opprettelse, sletting, kopiering og slettinger krever Remmina-passordet"
 
 #. Creation, editing, copying, and deletions require the primary password
 #: data/ui/remmina_preferences.glade:1698
 msgid "Require to modify"
-msgstr ""
+msgstr "Påkrevd for endringer"
 
 #: data/ui/remmina_preferences.glade:1740
 #, fuzzy
@@ -5279,6 +5292,7 @@ msgid "Encryption"
 msgstr "Filkryptering"
 
 #: data/ui/remmina_preferences.glade:1751
+#, fuzzy
 msgid ""
 "These are the encryption methods used by Remmina to store passwords.\n"
 "\n"
@@ -5288,18 +5302,25 @@ msgid ""
 "\"Intermediate\" doesn't use as much memory or processing power, and "
 "\"Sensitive\" is more secure, but uses +1 GiB of RAM and many CPU cycles. "
 msgstr ""
+"Dette er krypteringsmetodene Remmina bruker til å lagre passord.\n"
+"\n"
+"Bortsett fra «Svak» metode anbefales alle de andre. «Nøkkellager» er "
+"forvalget, siden det integrer med KDE/Plasma og GNOME.\n"
+"\n"
+"«Middels» bruker ikke så mye minne og regnekraft, og «Sensitivt» er sikrere, "
+"men bruker +1 GiB minne og mye regnekraft. "
 
 #: data/ui/remmina_preferences.glade:1760
 msgid "Intermediate (+64 MiB RAM)"
-msgstr ""
+msgstr "Middels (+64 MiB minne)"
 
 #: data/ui/remmina_preferences.glade:1761
 msgid "Strong (+256 MiB, ~2009 CPU)"
-msgstr ""
+msgstr "Sterk (+256 MiB ~2009-prosessor)"
 
 #: data/ui/remmina_preferences.glade:1762
 msgid "Sensitive (+1 GiB, ~2014 CPU)"
-msgstr ""
+msgstr "Sensitivt (+1 GiB. ~2014-prosessor)"
 
 #: data/ui/remmina_preferences.glade:1778
 #, fuzzy
