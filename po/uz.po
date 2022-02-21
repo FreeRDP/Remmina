@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Remmina v1.4.24\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2022-02-10 11:27+0000\n"
-"PO-Revision-Date: 2022-02-20 16:57+0000\n"
+"PO-Revision-Date: 2022-02-21 18:54+0000\n"
 "Last-Translator: Umidjon Almasov <umidjon@almasov.uz>\n"
 "Language-Team: Uzbek <https://hosted.weblate.org/projects/remmina/remmina/uz/"
 ">\n"
@@ -566,40 +566,42 @@ msgstr "SERVER"
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:112
 msgid "Use default protocol (for --new)"
-msgstr ""
+msgstr "Standart protokoldan foydalaning (--new uchun)"
 
 #: src/remmina.c:112
 msgid "PROTOCOL"
-msgstr ""
+msgstr "PROTOCOL"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:114
 msgid "Start in tray"
-msgstr ""
+msgstr "Treyda boshlash"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:116
 msgid "Show the application version"
-msgstr ""
+msgstr "Ilova versiyasini ko'rsatish"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:118
 msgid "Show version of the application and its plugins"
-msgstr ""
+msgstr "Ilova va uning plaginlari versiyasini ko'rsatish"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:120
 msgid "Modify connection profile (requires --set-option)"
-msgstr ""
+msgstr "Ulanish profilini o'zgartirish (--set-option talab qiladi)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:122
 msgid "Set one or more profile settings, to be used with --update-profile"
 msgstr ""
+"--update-profile bilan foydalanish uchun bir yoki bir nechta profil "
+"sozlamalarini o'rnatish"
 
 #: src/remmina.c:123
 msgid "Encrypt a password"
-msgstr ""
+msgstr "Parolni shifrlash"
 
 #. TRANSLATORS:
 #. * This link should point to a resource explaining how to get Remmina
@@ -612,11 +614,16 @@ msgid ""
 "More info available on the Remmina wiki at:\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgstr ""
+"Remmina barcha chiqish bayonotlarini qayd etmaydi. Muhit oʻzgaruvchisi "
+"sifatida “G_MESSAGES_DEBUG=all” dan foydalanib, batafsilroq chiqishni yoqing."
+"\n"
+"Qo'shimcha ma'lumotni Remmina wikida topishingiz mumkin:\n"
+"https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:392
 msgid "- or protocol://username:encryptedpassword@host:port"
-msgstr ""
+msgstr "- yoki protocol://username:encryptedpassword@host:port"
 
 #: src/remmina.c:395
 msgid ""
@@ -652,50 +659,82 @@ msgid ""
 "remmina --set-option username --set-option resolution_mode=2 --set-option "
 "password\n"
 msgstr ""
+"Misollar:\n"
+"Mavjud ulanish profili yordamida ulanish uchun quyidagilardan foydalaning:\n"
+"\n"
+"\tremmina -c FILE.remmina\n"
+"\n"
+"URI yordamida tez ulanish uchun:\n"
+"\n"
+"\tremmina -c rdp://username@server\n"
+"\tremmina -c rdp://domain\\\\username@server\n"
+"\tremmina -c vnc://username@server\n"
+"\tremmina -c vnc://server?VncUsername=username\n"
+"\tremmina -c ssh://user@server\n"
+"\tremmina -c spice://server\n"
+"\n"
+"URI va shifrlangan parol yordamida tezkor ulanish uchun:\n"
+"\n"
+"\tremmina -c rdp://username:encrypted-password@server\n"
+"\tremmina -c vnc://username:encrypted-password@server\n"
+"\tremmina -c vnc://server?VncUsername=username\\&VncPassword=encrypted-"
+"password\n"
+"\n"
+"URI bilan foydalanish uchun parolni shifrlash uchun:\n"
+"\n"
+"\tremmina --encrypt-password\n"
+"\n"
+"Foydalanuvchi nomi va parolni yangilash va Remmina ulanish profilining "
+"boshqa ruxsati rejimini o‘rnatish uchun quyidagilardan foydalaning:\n"
+"\n"
+"\techo \"username\\n"
+"apassword\" | remmina --update-profile /PATH/TO/FOO.remmina --set-option "
+"username --set-option resolution_mode=2 --set-option password\n"
 
 #: src/remmina_public.c:345
 #, c-format
 msgid "Address is too long for UNIX socket_path: %s"
-msgstr ""
+msgstr "Manzil UNIX socket_path uchun juda uzun: %s"
 
 #: src/remmina_public.c:355
 #, c-format
 msgid "Creating UNIX socket failed: %s"
-msgstr ""
+msgstr "UNIX soketini yaratib bo‘lmadi: %s"
 
 #: src/remmina_public.c:361
 #, c-format
 msgid "Connecting to UNIX socket failed: %s"
-msgstr ""
+msgstr "UNIX soketiga ulanib bo‘lmadi: %s"
 
 #: src/remmina_public.c:631
 msgid "Please enter format 'widthxheight'."
-msgstr ""
+msgstr "Iltimos, \"widthxheight\" formatida kiriting."
 
 #: src/remmina_public.c:653
 msgid "Change security settings"
-msgstr ""
+msgstr "Xavfsizlik sozlamalarini o'zgartirish"
 
 #. TRANSLATORS: translator-credits should be replaced with a formatted list of translators in your own language
 #: src/remmina_about.c:54
 msgid "translator-credits"
-msgstr ""
+msgstr "Umidjon Almasov <umidjon@almasov.uz>"
 
 #: src/remmina_ftp_client.c:389
 msgid "Choose download location"
-msgstr ""
+msgstr "Yuklab olish joyini tanlang"
 
 #: src/remmina_ftp_client.c:529
 msgid "Are you sure to delete the selected files on server?"
 msgstr ""
+"Tanlangan fayllarni serverdan oʻchirib tashlashingizga ishonchingiz komilmi?"
 
 #: src/remmina_ftp_client.c:586
 msgid "Choose a file to upload"
-msgstr ""
+msgstr "Yuklash uchun faylni tanlang"
 
 #: src/remmina_ftp_client.c:593
 msgid "Upload folder"
-msgstr ""
+msgstr "Jildni yuklash"
 
 #: src/remmina_ftp_client.c:649 src/remmina_ftp_client.c:763
 msgid "Download"
@@ -711,11 +750,11 @@ msgstr ""
 
 #: src/remmina_ftp_client.c:748
 msgid "Home"
-msgstr ""
+msgstr "Uy"
 
 #: src/remmina_ftp_client.c:749
 msgid "Go to home folder"
-msgstr ""
+msgstr "Uy jildiga o'tish"
 
 #: src/remmina_ftp_client.c:753
 msgid "Up"
@@ -723,7 +762,7 @@ msgstr ""
 
 #: src/remmina_ftp_client.c:754
 msgid "Go to parent folder"
-msgstr ""
+msgstr "Yuqori turuvchi jildga o'tish"
 
 #: src/remmina_ftp_client.c:758 plugins/rdp/rdp_plugin.c:2854
 #: plugins/vnc/vnc_plugin.c:2072
@@ -732,15 +771,15 @@ msgstr ""
 
 #: src/remmina_ftp_client.c:759
 msgid "Refresh current folder"
-msgstr ""
+msgstr "Joriy jildni yangilash"
 
 #: src/remmina_ftp_client.c:764
 msgid "Download from server"
-msgstr ""
+msgstr "Serverdan yuklab olish"
 
 #: src/remmina_ftp_client.c:771
 msgid "Upload to server"
-msgstr ""
+msgstr "Serverga yuklash"
 
 #: src/remmina_ftp_client.c:775 data/ui/remmina_main.glade:197
 msgid "Delete"
@@ -748,263 +787,266 @@ msgstr ""
 
 #: src/remmina_ftp_client.c:776
 msgid "Delete files on server"
-msgstr ""
+msgstr "Serverdagi fayllarni o'chirish"
 
 #: src/remmina_ftp_client.c:905 src/remmina_ftp_client.c:974
 msgid "Filename"
-msgstr ""
+msgstr "Fayl nomi"
 
 #: src/remmina_ftp_client.c:918 src/remmina_ftp_client.c:1003
 msgid "Size"
-msgstr ""
+msgstr "Hajmi"
 
 #: src/remmina_ftp_client.c:926
 msgid "User"
-msgstr ""
+msgstr "Foydalanuvchi"
 
 #: src/remmina_ftp_client.c:932 src/remmina_file_editor.c:1942
 #: data/ui/remmina_mpc.glade:115 data/ui/remmina_main.glade:464
 msgid "Group"
-msgstr ""
+msgstr "Guruh"
 
 #: src/remmina_ftp_client.c:938
 msgid "Permission"
-msgstr ""
+msgstr "Ruxsat"
 
 #: src/remmina_ftp_client.c:990 plugins/rdp/rdp_plugin.c:2651
 msgid "Remote"
-msgstr ""
+msgstr "Masofadan"
 
 #: src/remmina_ftp_client.c:997 plugins/rdp/rdp_plugin.c:2650
 msgid "Local"
-msgstr ""
+msgstr "Mahalliy"
 
 #: src/remmina_ftp_client.c:1011
 msgid "Progress"
-msgstr ""
+msgstr "Taraqqiyot"
 
 #: src/remmina_protocol_widget.c:291 src/remmina_ssh_plugin.c:840
 #: src/remmina_ssh_plugin.c:1474
 msgid "Open SFTP transfer…"
-msgstr ""
+msgstr "SFTP uzatishni ochish…"
 
 #: src/remmina_protocol_widget.c:320
 msgid "Executing external commands…"
-msgstr ""
+msgstr "Tashqi buyruqlar bajarilmoqda…"
 
 #. TRANSLATORS: “%s” is a placeholder for the connection profile name
 #: src/remmina_protocol_widget.c:328
 #, c-format
 msgid "Connecting to “%s”…"
-msgstr ""
+msgstr "“%s”ga ulanmoqda…"
 
 #. TRANSLATORS: “%s” is a placeholder for an hostname or an IP address.
 #: src/remmina_protocol_widget.c:916 src/remmina_protocol_widget.c:1101
 #, c-format
 msgid "Connecting to “%s” via SSH…"
-msgstr ""
+msgstr "SSH orqali “%s” ga ulanmoqda…"
 
 #. TRANSLATORS: “%i” is a placeholder for a TCP port number.
 #: src/remmina_protocol_widget.c:1165
 #, c-format
 msgid "Awaiting incoming SSH connection on port %i…"
-msgstr ""
+msgstr "%i portida kiruvchi SSH ulanishi kutilmoqda…"
 
 #: src/remmina_protocol_widget.c:1218
 #, c-format
 msgid "The “%s” command is not available on the SSH server."
-msgstr ""
+msgstr "“%s” buyrug'i SSH serverida mavjud emas."
 
 #: src/remmina_protocol_widget.c:1223
 #, c-format
 msgid "Could not run the “%s” command on the SSH server (status = %i)."
-msgstr ""
+msgstr "SSH serverida “%s” buyrug‘ini ishga tushirib bo‘lmadi (holat = %i)."
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_protocol_widget.c:1231
 #, c-format
 msgid "Could not run command. %s"
-msgstr ""
+msgstr "Buyruqni ishga tushirib bo'lmadi. %s"
 
 #. TRANSLATORS: “%s” is a placeholder for a hostname or IP address.
 #: src/remmina_protocol_widget.c:1301
 #, c-format
 msgid "Connecting to %s via SSH…"
-msgstr ""
+msgstr "%s ga SSH orqali ulanmoqda…"
 
 #: src/remmina_protocol_widget.c:1698
 msgid "Type in SSH username and password."
-msgstr ""
+msgstr "SSH foydalanuvchi nomi va parolini kiriting."
 
 #: src/remmina_protocol_widget.c:1753 src/remmina_protocol_widget.c:1785
 msgid "Fingerprint automatically accepted"
-msgstr ""
+msgstr "Barmoq izi avtomatik ravishda qabul qilindi"
 
 #. TRANSLATORS: The user is asked to verify a new SSL certificate.
 #: src/remmina_protocol_widget.c:1761
 msgid "Certificate details:"
-msgstr ""
+msgstr "Sertifikat tafsilotlari:"
 
 #. TRANSLATORS: An SSL certificate subject is usually the remote server the user connect to.
 #: src/remmina_protocol_widget.c:1763 src/remmina_protocol_widget.c:1795
 msgid "Subject:"
-msgstr ""
+msgstr "Mavzu:"
 
 #. TRANSLATORS: The name or email of the entity that have issued the SSL certificate
 #: src/remmina_protocol_widget.c:1765 src/remmina_protocol_widget.c:1797
 msgid "Issuer:"
-msgstr ""
+msgstr "Emitent:"
 
 #. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
 #: src/remmina_protocol_widget.c:1767
 msgid "Fingerprint:"
-msgstr ""
+msgstr "Barmoq izi:"
 
 #. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
 #: src/remmina_protocol_widget.c:1769
 msgid "Accept certificate?"
-msgstr ""
+msgstr "Sertifikat qabul qilinsinmi?"
 
 #. TRANSLATORS: The user is asked to verify a new SSL certificate.
 #: src/remmina_protocol_widget.c:1793
 msgid "The certificate changed! Details:"
-msgstr ""
+msgstr "Sertifikat o'zgartirildi! Tafsilotlar:"
 
 #. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
 #: src/remmina_protocol_widget.c:1799
 msgid "Old fingerprint:"
-msgstr ""
+msgstr "Eski barmoq izi:"
 
 #. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
 #: src/remmina_protocol_widget.c:1801
 msgid "New fingerprint:"
-msgstr ""
+msgstr "Yangi barmoq izi:"
 
 #. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
 #: src/remmina_protocol_widget.c:1803
 msgid "Accept changed certificate?"
-msgstr ""
+msgstr "O'zgartirilgan sertifikat qabul qilinsinmi?"
 
 #. TRANSLATORS: “%i” is a placeholder for a port number. “%s”  is a placeholder for a protocol name (VNC).
 #: src/remmina_protocol_widget.c:1946
-#, c-format
+#, c-format, fuzzy
 msgid "Listening on port %i for an incoming %s connection…"
-msgstr ""
+msgstr "Kiruvchi %s ulanish uchun %i portida tinglanmoqda…"
 
 #: src/remmina_protocol_widget.c:1971
 msgid "Could not authenticate, attempting reconnection…"
-msgstr ""
+msgstr "Haqiqiylikni tekshirib bo‘lmadi, qayta ulanishga urinilmoqda…"
 
 #: src/remmina_protocol_widget.c:2033 src/remmina_file_editor.c:436
 #: src/remmina_file_editor.c:1179 data/ui/remmina_main.glade:478
 msgid "Server"
-msgstr ""
+msgstr "Server"
 
 #. TRANSLATORS: “%s” is a placeholder for a protocol name, like “RDP”.
 #: src/remmina_protocol_widget.c:2051
 #, c-format
 msgid "Install the %s protocol plugin first."
-msgstr ""
+msgstr "Avval %s protokol plaginini o‘rnating."
 
 #: src/remmina_ssh.c:236
 #, c-format
 msgid "Could not authenticate with TOTP/OTP/2FA. %s"
-msgstr ""
+msgstr "TOTP/OTP/2FA bilan autentifikatsiya qilinmadi. %s"
 
 #: src/remmina_ssh.c:295 src/remmina_ssh.c:676
 #, c-format
 msgid "Could not authenticate with SSH password. %s"
-msgstr ""
+msgstr "SSH paroli bilan autentifikatsiya qilinmadi. %s"
 
 #: src/remmina_ssh.c:322 src/remmina_ssh.c:389
 msgid "No saved SSH passphrase supplied. Asking user to enter it."
 msgstr ""
+"Saqlangan SSH parol iborasi berilmagan. Foydalanuvchi uni kiritishni "
+"so'ramoqda."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:327 src/remmina_ssh.c:368 src/remmina_ssh.c:394
 #: src/remmina_ssh.c:433 src/remmina_ssh.c:746
 #, c-format
 msgid "Could not authenticate with public SSH key. %s"
-msgstr ""
+msgstr "Umumiy SSH kaliti bilan autentifikatsiya qilinmadi. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:336
 #, c-format
 msgid "SSH certificate cannot be imported. %s"
-msgstr ""
+msgstr "SSH sertifikatini import qilib bo'lmaydi. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:345
 #, c-format
 msgid "SSH certificate cannot be copied into the private SSH key. %s"
-msgstr ""
+msgstr "SSH sertifikatini shaxsiy SSH kalitiga nusxalab bo'lmaydi. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:355
 #, c-format
 msgid "Could not authenticate using SSH certificate. %s"
-msgstr ""
+msgstr "SSH sertifikati yordamida autentifikatsiya qilinmadi. %s"
 
 #: src/remmina_ssh.c:369
 msgid "SSH identity file not selected."
-msgstr ""
+msgstr "SSH identifikator fayli tanlanmagan."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:380
 #, c-format
 msgid "Public SSH key cannot be imported. %s"
-msgstr ""
+msgstr "Umumiy SSH kalitini import qilib boʻlmaydi. %s"
 
 #: src/remmina_ssh.c:478
 #, c-format
 msgid "Could not authenticate automatically with public SSH key. %s"
 msgstr ""
+"Umumiy SSH kaliti bilan avtomatik ravishda autentifikatsiya qilinmadi. %s"
 
 #: src/remmina_ssh.c:523
 #, c-format
 msgid "Could not authenticate automatically with SSH agent. %s"
-msgstr ""
+msgstr "SSH agenti yordamida avtomatik ravishda autentifikatsiya qilinmadi. %s"
 
 #: src/remmina_ssh.c:569 src/remmina_ssh.c:856
 #, c-format
 msgid "Could not authenticate with SSH GSSAPI/Kerberos. %s"
-msgstr ""
+msgstr "SSH GSSAPI/Kerberos bilan autentifikatsiya qilinmadi. %s"
 
 #: src/remmina_ssh.c:598
 msgid "The public SSH key changed!"
-msgstr ""
+msgstr "Umumiy SSH kaliti o'zgartirildi!"
 
 #: src/remmina_ssh.c:711
 #, c-format
 msgid "Could not authenticate with keyboard-interactive. %s"
-msgstr ""
+msgstr "Klaviatura-interaktiv yordamida autentifikatsiya qilinmadi. %s"
 
 #: src/remmina_ssh.c:813
 #, c-format
 msgid "Could not authenticate with automatic public SSH key. %s"
-msgstr ""
+msgstr "Avtomatik ommaviy SSH kaliti bilan autentifikatsiya qilinmadi. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:921
 #, c-format
 msgid "Could not fetch the server's public SSH key. %s"
-msgstr ""
+msgstr "Serverning ommaviy SSH kalitini olib bo‘lmadi. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:928
 #, c-format
 msgid "Could not fetch public SSH key. %s"
-msgstr ""
+msgstr "Ommaviy SSH kalitini olib bo‘lmadi. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:936
 #, c-format
 msgid "Could not fetch checksum of the public SSH key. %s"
-msgstr ""
+msgstr "Ommaviy SSH kalitining nazorat summasini olib bo‘lmadi. %s"
 
 #: src/remmina_ssh.c:949
 msgid "The server is unknown. The public key fingerprint is:"
-msgstr ""
+msgstr "Server noma'lum. Ommaviy kalit barmoq izi:"
 
 #: src/remmina_ssh.c:951 src/remmina_ssh.c:957
 msgid "Do you trust the new public key?"
