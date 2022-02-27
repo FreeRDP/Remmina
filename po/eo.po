@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Remmina v1.4.3\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2022-02-10 11:27+0000\n"
-"PO-Revision-Date: 2022-02-13 07:56+0000\n"
+"PO-Revision-Date: 2022-02-27 16:57+0000\n"
 "Last-Translator: phlostically <phlostically@mailinator.com>\n"
 "Language-Team: Esperanto <https://hosted.weblate.org/projects/remmina/"
 "remmina/eo/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.11-dev\n"
+"X-Generator: Weblate 4.11.1-dev\n"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:354
 #: src/remmina_protocol_widget.c:1680 src/remmina_protocol_widget.c:1699
@@ -1681,10 +1681,9 @@ msgstr ""
 "%s Vi eble bezonos instali kaj uzi «Gnome Shell Extension AppIndicator»"
 
 #: src/remmina_ssh_plugin.c:342
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s:%d via SSH"
-msgstr "Konektante al %s per SSH…"
+msgstr "Konektita al %s:%d per SSH"
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_ssh_plugin.c:550
@@ -1725,10 +1724,9 @@ msgid "Find text (host+G)"
 msgstr "Serĉi tekston (gastiganto+G)"
 
 #: src/remmina_ssh_plugin.c:921
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Disconnected from %s:%d via SSH"
-msgstr "Konektante al %s per SSH…"
+msgstr "Malkonektita el %s:%d per SSH"
 
 #: src/remmina_ssh_plugin.c:1468 data/ui/remmina_main.glade:177
 msgid "Copy"
@@ -2019,7 +2017,7 @@ msgstr "Entajpu akreditilojn de aŭtentikigo de RDP-kluzo"
 #: plugins/rdp/rdp_plugin.c:1027
 #, c-format
 msgid "Disconnected from %s via RDP"
-msgstr ""
+msgstr "Malkonektita el %s per RDP"
 
 #: plugins/rdp/rdp_plugin.c:2156
 #, c-format
@@ -2708,10 +2706,9 @@ msgstr "Rekonekto-provo n-ro %d el %d…"
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_event.c:1127
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s via RDP"
-msgstr "Konektante al %s per SSH…"
+msgstr "Konektita al %s per RDP"
 
 #: plugins/spice/spice_plugin_file_transfer.c:82
 msgid "File Transfers"
@@ -2745,16 +2742,14 @@ msgid "Disconnected from the SPICE server “%s”."
 msgstr "Malkonektiĝis el SPICE-servilo «%s»."
 
 #: plugins/spice/spice_plugin.c:388
-#, fuzzy, c-format
-#| msgid "Disconnected from the SPICE server “%s”."
+#, c-format
 msgid "Disconnected from %s:%d via SPICE"
-msgstr "Malkonektiĝis el SPICE-servilo «%s»."
+msgstr "Malkonektita el %s:%d per SPICE"
 
 #: plugins/spice/spice_plugin.c:391
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s:%d via SPICE"
-msgstr "Konektante al %s per SSH…"
+msgstr "Konektita al %s:%d per SPICE"
 
 #: plugins/spice/spice_plugin.c:403
 msgid "TLS connection error."
@@ -2871,15 +2866,14 @@ msgid "Please retry after turning on encryption for this profile."
 msgstr "Bonvolu reprovi post ŝalto de ĉifrado de ĉi tiu profilo."
 
 #: plugins/vnc/vnc_plugin.c:1706
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s:%d via VNC"
-msgstr "Konektante al %s per SSH…"
+msgstr "Konektita al %s:%d per VNC"
 
 #: plugins/vnc/vnc_plugin.c:1725
 #, c-format
 msgid "Disconnected from %s:%d via VNC"
-msgstr ""
+msgstr "Malkonektita el %s:%d per VNC"
 
 #: plugins/vnc/vnc_plugin.c:1974
 msgid ""
@@ -3972,16 +3966,12 @@ msgid "OK"
 msgstr "Bone"
 
 #: data/ui/remmina_passwd.glade:60
-#, fuzzy
-#| msgid "Set new password"
 msgid "Set Primary Password"
-msgstr "Agordi novan pasvorton"
+msgstr "Agordi ĉefpasvorton"
 
 #: data/ui/remmina_passwd.glade:101
-#, fuzzy
-#| msgid "User password"
 msgid "Verify password"
-msgstr "Pasvorto de uzanto"
+msgstr "Konfirmi pasvorton"
 
 #: data/ui/remmina_news.glade:75
 msgid ""
@@ -4572,7 +4562,7 @@ msgstr "Uzi aŭtentikigon per sekreta ŝlosilo por kelkaj fenestraĵoj"
 
 #: data/ui/remmina_preferences.glade:1651
 msgid "Valid for"
-msgstr ""
+msgstr "Valida dum"
 
 #: data/ui/remmina_preferences.glade:1662
 msgid "Number of seconds to keep password valid for"
@@ -4605,10 +4595,8 @@ msgid "Require to modify"
 msgstr ""
 
 #: data/ui/remmina_preferences.glade:1740
-#, fuzzy
-#| msgid "File encryption"
 msgid "Encryption"
-msgstr "Ĉifrado de dosieroj"
+msgstr "Ĉifrado"
 
 #: data/ui/remmina_preferences.glade:1751
 msgid ""
@@ -4644,10 +4632,8 @@ msgid "Automatically accept all fingerprints and certificates"
 msgstr "Aŭtomate akcepti ĉiujn fingropremaĵojn kaj atestilojn"
 
 #: data/ui/remmina_preferences.glade:1808
-#, fuzzy
-#| msgid "Trust all fingerprints and certificates"
 msgid "Trust all certificates"
-msgstr "Fidi ĉiujn fingropremaĵojn kaj atestilojn"
+msgstr "Fidi ĉiujn atestilojn"
 
 #: data/ui/remmina_preferences.glade:1843
 msgid "Security"
