@@ -48,6 +48,7 @@
 #include <fcntl.h>
 #endif
 #include "remmina_public.h"
+#include "remmina_log.h"
 #include "remmina_pref.h"
 #include "remmina_ssh.h"
 #include "remmina_sftp_client.h"
@@ -73,10 +74,12 @@ remmina_sftp_client_class_init(RemminaSFTPClientClass *klass)
 	if (a->type == 0) \
 	{ \
 		type = ((a->permissions & 040000) ? REMMINA_FTP_FILE_TYPE_DIR : REMMINA_FTP_FILE_TYPE_FILE); \
+		type = ((a->permissions & 0120000) ? REMMINA_FTP_FILE_TYPE_LINK : REMMINA_FTP_FILE_TYPE_FILE); \
 	} \
 	else \
 	{ \
 		type = (a->type == SSH_FILEXFER_TYPE_DIRECTORY ? REMMINA_FTP_FILE_TYPE_DIR : REMMINA_FTP_FILE_TYPE_FILE); \
+		if (a->type == SSH_FILEXFER_TYPE_SYMLINK ) type = REMMINA_FTP_FILE_TYPE_LINK; \
 	}
 
 /* ------------------------ The Task Thread routines ----------------------------- */
@@ -274,6 +277,16 @@ remmina_sftp_client_thread_recursive_dir(RemminaSFTPClient *client, RemminaSFTP 
 	else
 		dir_path = g_strdup(rootdir_path);
 	tmp = remmina_ssh_unconvert(REMMINA_SSH(sftp), dir_path);
+
+	REMMINA_DEBUG ("%s HELLO", __func__);
+#if 0
+	gchar *tlink = sftp_readlink (sftp->sftp_sess, tmp);
+	if (tlink) {
+		REMMINA_DEBUG ("%s is a link to %s", tmp, tlink);
+		tmp = g_strdup (tlink);
+	}
+	g_free(tlink);
+#endif
 	sftpdir = sftp_opendir(sftp->sftp_sess, tmp);
 	g_free(tmp);
 
@@ -689,11 +702,10 @@ remmina_sftp_client_sftp_session_opendir(RemminaSFTPClient *client, const gchar 
 {
 	TRACE_CALL(__func__);
 	sftp_dir sftpdir;
-	GtkWidget *dialog;
 
 	sftpdir = sftp_opendir(client->sftp->sftp_sess, (gchar *)dir);
 	if (!sftpdir) {
-		dialog = gtk_message_dialog_new(GTK_WINDOW(gtk_widget_get_toplevel(GTK_WIDGET(client))),
+		GtkWidget *dialog = gtk_message_dialog_new(GTK_WINDOW(gtk_widget_get_toplevel(GTK_WIDGET(client))),
 						GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
 						_("Could not open the folder “%s”. %s"), dir,
 						ssh_get_error(REMMINA_SSH(client->sftp)->session));
@@ -708,10 +720,9 @@ static gboolean
 remmina_sftp_client_sftp_session_closedir(RemminaSFTPClient *client, sftp_dir sftpdir)
 {
 	TRACE_CALL(__func__);
-	GtkWidget *dialog;
 
 	if (!sftp_dir_eof(sftpdir)) {
-		dialog = gtk_message_dialog_new(GTK_WINDOW(gtk_widget_get_toplevel(GTK_WIDGET(client))),
+		GtkWidget *dialog = gtk_message_dialog_new(GTK_WINDOW(gtk_widget_get_toplevel(GTK_WIDGET(client))),
 						GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
 						_("Could not read from the folder. %s"), ssh_get_error(REMMINA_SSH(client->sftp)->session));
 		gtk_dialog_run(GTK_DIALOG(dialog));
@@ -749,6 +760,19 @@ remmina_sftp_client_on_opendir(RemminaSFTPClient *client, gchar *dir, gpointer d
 			newdir = g_strdup_printf("./%s", dir);
 		}
 	}
+
+	gchar *tlink = sftp_readlink (client->sftp->sftp_sess, newdir);
+	if (tlink) {
+		REMMINA_DEBUG ("%s is a link to %s", newdir, tlink);
+		newdir = g_strdup (tlink);
+		if (sftp_opendir (client->sftp->sftp_sess, newdir)) {
+			REMMINA_DEBUG ("%s is a link to a folder", tlink);
+		} else {
+			REMMINA_DEBUG ("%s is a link to a file", tlink);
+			return;
+		}
+	}
+	g_free(tlink);
 
 	tmp = remmina_ssh_unconvert(REMMINA_SSH(client->sftp), newdir);
 	newdir_conv = sftp_canonicalize_path(client->sftp->sftp_sess, tmp);

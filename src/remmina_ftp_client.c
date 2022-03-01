@@ -202,6 +202,9 @@ static void remmina_ftp_client_cell_data_filetype_pixbuf(GtkTreeViewColumn *col,
 	case REMMINA_FTP_FILE_TYPE_DIR:
 		g_object_set(renderer, "icon-name", "folder", NULL);
 		break;
+	case REMMINA_FTP_FILE_TYPE_LINK:
+		g_object_set(renderer, "icon-name", "emblem-symbolic-link", NULL);
+		break;
 	default:
 		g_object_set(renderer, "icon-name", "text-x-generic", NULL);
 		break;
@@ -693,6 +696,9 @@ static gboolean remmina_ftp_client_file_list_on_button_press(GtkWidget *widget, 
 				REMMINA_FTP_FILE_COLUMN_NAME, &name, -1);
 			switch (type) {
 			case REMMINA_FTP_FILE_TYPE_DIR:
+				remmina_ftp_client_open_dir(client, name);
+				break;
+			case REMMINA_FTP_FILE_TYPE_LINK:
 				remmina_ftp_client_open_dir(client, name);
 				break;
 			case REMMINA_FTP_FILE_TYPE_FILE:
