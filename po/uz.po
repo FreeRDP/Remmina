@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Remmina v1.4.24\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-02-10 11:27+0000\n"
+"POT-Creation-Date: 2022-03-01 23:32+0000\n"
 "PO-Revision-Date: 2022-02-21 18:54+0000\n"
 "Last-Translator: Umidjon Almasov <umidjon@almasov.uz>\n"
 "Language-Team: Uzbek <https://hosted.weblate.org/projects/remmina/remmina/uz/"
@@ -111,8 +111,8 @@ msgid ""
 "Remmina/-/wikis/Usage/Remmina-debugging\n"
 msgstr ""
 "Ushbu oyna sizga ulanish muammolarini topishga yordam beradi.\n"
-"Siz istalgan vaqtda yoqish/o‘chirish tugmasi yordamida ro‘yxatga olishni to‘"
-"xtatishingiz va boshlashingiz mumkin.\n"
+"Siz istalgan vaqtda yoqish/o‘chirish tugmasi yordamida ro‘yxatga olishni "
+"to‘xtatishingiz va boshlashingiz mumkin.\n"
 "Statistikalar tugmasi (Ctrl+T), xato haqida xabar berishda siz baham "
 "ko'rishingiz mumkin bo'lgan tizim ma'lumotlarini to'plash uchun foydali "
 "bo'lishi mumkin.\n"
@@ -288,7 +288,7 @@ msgid "Save password"
 msgstr "Parolni saqlash"
 
 #: src/remmina_message_panel.c:457 src/remmina_message_panel.c:629
-#: src/remmina_sftp_client.c:947 src/remmina_file_editor.c:241
+#: src/remmina_sftp_client.c:971 src/remmina_file_editor.c:241
 #: src/remmina_file_editor.c:1792 plugins/spice/spice_plugin_file_transfer.c:84
 #: data/ui/remmina_key_chooser.glade:8 data/ui/remmina_key_chooser.glade:9
 #: data/ui/remmina_spinner.glade:8 data/ui/remmina_spinner.glade:9
@@ -615,8 +615,8 @@ msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgstr ""
 "Remmina barcha chiqish bayonotlarini qayd etmaydi. Muhit oʻzgaruvchisi "
-"sifatida “G_MESSAGES_DEBUG=all” dan foydalanib, batafsilroq chiqishni yoqing."
-"\n"
+"sifatida “G_MESSAGES_DEBUG=all” dan foydalanib, batafsilroq chiqishni "
+"yoqing.\n"
 "Qo'shimcha ma'lumotni Remmina wikida topishingiz mumkin:\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 
@@ -687,9 +687,9 @@ msgstr ""
 "Foydalanuvchi nomi va parolni yangilash va Remmina ulanish profilining "
 "boshqa ruxsati rejimini o‘rnatish uchun quyidagilardan foydalaning:\n"
 "\n"
-"\techo \"username\\n"
-"apassword\" | remmina --update-profile /PATH/TO/FOO.remmina --set-option "
-"username --set-option resolution_mode=2 --set-option password\n"
+"\techo \"username\\napassword\" | remmina --update-profile /PATH/TO/FOO."
+"remmina --set-option username --set-option resolution_mode=2 --set-option "
+"password\n"
 
 #: src/remmina_public.c:345
 #, c-format
@@ -719,106 +719,106 @@ msgstr "Xavfsizlik sozlamalarini o'zgartirish"
 msgid "translator-credits"
 msgstr "Umidjon Almasov <umidjon@almasov.uz>"
 
-#: src/remmina_ftp_client.c:389
+#: src/remmina_ftp_client.c:392
 msgid "Choose download location"
 msgstr "Yuklab olish joyini tanlang"
 
-#: src/remmina_ftp_client.c:529
+#: src/remmina_ftp_client.c:532
 msgid "Are you sure to delete the selected files on server?"
 msgstr ""
 "Tanlangan fayllarni serverdan oʻchirib tashlashingizga ishonchingiz komilmi?"
 
-#: src/remmina_ftp_client.c:586
+#: src/remmina_ftp_client.c:589
 msgid "Choose a file to upload"
 msgstr "Yuklash uchun faylni tanlang"
 
-#: src/remmina_ftp_client.c:593
+#: src/remmina_ftp_client.c:596
 msgid "Upload folder"
 msgstr "Jildni yuklash"
 
-#: src/remmina_ftp_client.c:649 src/remmina_ftp_client.c:763
+#: src/remmina_ftp_client.c:652 src/remmina_ftp_client.c:769
 msgid "Download"
 msgstr ""
 
-#: src/remmina_ftp_client.c:656 src/remmina_ftp_client.c:770
+#: src/remmina_ftp_client.c:659 src/remmina_ftp_client.c:776
 msgid "Upload"
 msgstr ""
 
-#: src/remmina_ftp_client.c:663
+#: src/remmina_ftp_client.c:666
 msgid "_Delete"
 msgstr ""
 
-#: src/remmina_ftp_client.c:748
+#: src/remmina_ftp_client.c:754
 msgid "Home"
 msgstr "Uy"
 
-#: src/remmina_ftp_client.c:749
+#: src/remmina_ftp_client.c:755
 msgid "Go to home folder"
 msgstr "Uy jildiga o'tish"
 
-#: src/remmina_ftp_client.c:753
+#: src/remmina_ftp_client.c:759
 msgid "Up"
 msgstr ""
 
-#: src/remmina_ftp_client.c:754
+#: src/remmina_ftp_client.c:760
 msgid "Go to parent folder"
 msgstr "Yuqori turuvchi jildga o'tish"
 
-#: src/remmina_ftp_client.c:758 plugins/rdp/rdp_plugin.c:2854
+#: src/remmina_ftp_client.c:764 plugins/rdp/rdp_plugin.c:2854
 #: plugins/vnc/vnc_plugin.c:2072
 msgid "Refresh"
 msgstr ""
 
-#: src/remmina_ftp_client.c:759
+#: src/remmina_ftp_client.c:765
 msgid "Refresh current folder"
 msgstr "Joriy jildni yangilash"
 
-#: src/remmina_ftp_client.c:764
+#: src/remmina_ftp_client.c:770
 msgid "Download from server"
 msgstr "Serverdan yuklab olish"
 
-#: src/remmina_ftp_client.c:771
+#: src/remmina_ftp_client.c:777
 msgid "Upload to server"
 msgstr "Serverga yuklash"
 
-#: src/remmina_ftp_client.c:775 data/ui/remmina_main.glade:197
+#: src/remmina_ftp_client.c:781 data/ui/remmina_main.glade:197
 msgid "Delete"
 msgstr ""
 
-#: src/remmina_ftp_client.c:776
+#: src/remmina_ftp_client.c:782
 msgid "Delete files on server"
 msgstr "Serverdagi fayllarni o'chirish"
 
-#: src/remmina_ftp_client.c:905 src/remmina_ftp_client.c:974
+#: src/remmina_ftp_client.c:911 src/remmina_ftp_client.c:980
 msgid "Filename"
 msgstr "Fayl nomi"
 
-#: src/remmina_ftp_client.c:918 src/remmina_ftp_client.c:1003
+#: src/remmina_ftp_client.c:924 src/remmina_ftp_client.c:1009
 msgid "Size"
 msgstr "Hajmi"
 
-#: src/remmina_ftp_client.c:926
+#: src/remmina_ftp_client.c:932
 msgid "User"
 msgstr "Foydalanuvchi"
 
-#: src/remmina_ftp_client.c:932 src/remmina_file_editor.c:1942
+#: src/remmina_ftp_client.c:938 src/remmina_file_editor.c:1942
 #: data/ui/remmina_mpc.glade:115 data/ui/remmina_main.glade:464
 msgid "Group"
 msgstr "Guruh"
 
-#: src/remmina_ftp_client.c:938
+#: src/remmina_ftp_client.c:944
 msgid "Permission"
 msgstr "Ruxsat"
 
-#: src/remmina_ftp_client.c:990 plugins/rdp/rdp_plugin.c:2651
+#: src/remmina_ftp_client.c:996 plugins/rdp/rdp_plugin.c:2651
 msgid "Remote"
 msgstr "Masofadan"
 
-#: src/remmina_ftp_client.c:997 plugins/rdp/rdp_plugin.c:2650
+#: src/remmina_ftp_client.c:1003 plugins/rdp/rdp_plugin.c:2650
 msgid "Local"
 msgstr "Mahalliy"
 
-#: src/remmina_ftp_client.c:1011
+#: src/remmina_ftp_client.c:1017
 msgid "Progress"
 msgstr "Taraqqiyot"
 
@@ -926,7 +926,7 @@ msgstr "O'zgartirilgan sertifikat qabul qilinsinmi?"
 
 #. TRANSLATORS: “%i” is a placeholder for a port number. “%s”  is a placeholder for a protocol name (VNC).
 #: src/remmina_protocol_widget.c:1946
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Listening on port %i for an incoming %s connection…"
 msgstr "Kiruvchi %s ulanish uchun %i portida tinglanmoqda…"
 
@@ -1262,81 +1262,81 @@ msgid "Remmina Kiosk"
 msgstr ""
 
 #. TRANSLATORS: The placeholder %s is a directory path
-#: src/remmina_sftp_client.c:173
+#: src/remmina_sftp_client.c:176
 #, c-format
 msgid "Could not create the folder “%s”."
 msgstr ""
 
 #. TRANSLATORS: The placeholder %s is a file path
-#: src/remmina_sftp_client.c:181 src/remmina_sftp_client.c:202
+#: src/remmina_sftp_client.c:184 src/remmina_sftp_client.c:205
 #, c-format
 msgid "Could not create the file “%s”."
 msgstr ""
 
 #. TRANSLATORS: The placeholders %s are a file path, and an error message.
-#: src/remmina_sftp_client.c:220
+#: src/remmina_sftp_client.c:223
 #, c-format
 msgid "Could not open the file “%s” on the server. %s"
 msgstr ""
 
-#: src/remmina_sftp_client.c:242
+#: src/remmina_sftp_client.c:245
 #, c-format
 msgid "Could not save the file “%s”."
 msgstr ""
 
-#: src/remmina_sftp_client.c:281 src/remmina_sftp_client.c:698
-#: src/remmina_sftp_client.c:761
+#: src/remmina_sftp_client.c:294 src/remmina_sftp_client.c:710
+#: src/remmina_sftp_client.c:785
 #, c-format
 msgid "Could not open the folder “%s”. %s"
 msgstr ""
 
-#: src/remmina_sftp_client.c:385
+#: src/remmina_sftp_client.c:398
 #, c-format
 msgid "Could not create the folder “%s” on the server. %s"
 msgstr ""
 
-#: src/remmina_sftp_client.c:413 src/remmina_sftp_client.c:435
+#: src/remmina_sftp_client.c:426 src/remmina_sftp_client.c:448
 #, c-format
 msgid "Could not create the file “%s” on the server. %s"
 msgstr ""
 
-#: src/remmina_sftp_client.c:456
+#: src/remmina_sftp_client.c:469
 #, c-format
 msgid "Could not open the file “%s”."
 msgstr ""
 
-#: src/remmina_sftp_client.c:476
+#: src/remmina_sftp_client.c:489
 #, c-format
 msgid "Could not write to the file “%s” on the server. %s"
 msgstr ""
 
-#: src/remmina_sftp_client.c:716
+#: src/remmina_sftp_client.c:727
 #, c-format
 msgid "Could not read from the folder. %s"
 msgstr ""
 
-#: src/remmina_sftp_client.c:823
+#: src/remmina_sftp_client.c:847
 msgid "Are you sure you want to cancel the file transfer in progress?"
 msgstr ""
 
-#: src/remmina_sftp_client.c:857
+#: src/remmina_sftp_client.c:881
 #, c-format
 msgid "Could not delete “%s”. %s"
 msgstr ""
 
-#: src/remmina_sftp_client.c:942
+#: src/remmina_sftp_client.c:966
 msgid "The file exists already"
 msgstr ""
 
-#: src/remmina_sftp_client.c:945
+#: src/remmina_sftp_client.c:969
 msgid "Resume"
 msgstr ""
 
-#: src/remmina_sftp_client.c:946
+#: src/remmina_sftp_client.c:970
 msgid "Overwrite"
 msgstr ""
 
-#: src/remmina_sftp_client.c:964
+#: src/remmina_sftp_client.c:988
 msgid "The following file already exists in the target folder:"
 msgstr ""
 
