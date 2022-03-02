@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Remmina v1.4.3\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2022-03-02 13:56+0000\n"
-"PO-Revision-Date: 2022-02-27 16:57+0000\n"
+"PO-Revision-Date: 2022-03-02 23:57+0000\n"
 "Last-Translator: phlostically <phlostically@mailinator.com>\n"
 "Language-Team: Esperanto <https://hosted.weblate.org/projects/remmina/"
 "remmina/eo/>\n"
@@ -239,8 +239,6 @@ msgstr "Agordi la klavofrapojn"
 
 #. TRANSLATORS: Do not translate libsodium, is the name of a library
 #: src/remmina_pref_dialog.c:476
-#, fuzzy
-#| msgid "libsodium >= 1.9.0 is required to use master password"
 msgid "libsodium >= 1.9.0 is required to use Primary Password"
 msgstr "libsodium >= 1.9.0 estas postulata por uzi la ĉefpasvorton"
 
@@ -325,13 +323,8 @@ msgstr ""
 "Ĉu vi certas, ke vi volas fermi %i aktivajn konektojn en la nuna fenestro?"
 
 #: src/rcw.c:666
-#, fuzzy
-#| msgid ""
-#| "Are you sure you want to close %i active connections in the current "
-#| "window?"
 msgid "Are you sure you want to close this last active connection?"
-msgstr ""
-"Ĉu vi certas, ke vi volas fermi %i aktivajn konektojn en la nuna fenestro?"
+msgstr "Ĉu vi certas, ke vi volas fermi ĉi tiun lastan aktivan konekton?"
 
 #: src/rcw.c:1411
 msgid "Viewport fullscreen mode"
@@ -1468,14 +1461,12 @@ msgid "Auto-start this profile"
 msgstr "Aŭtomate startigi laŭ ĉi tiu profilo"
 
 #: src/remmina_file_editor.c:1099
-#, fuzzy
-#| msgid "New connection profile"
 msgid "Connection profile security"
-msgstr "Nova konektoprofilo"
+msgstr "Sekureco de konektoprofilo"
 
 #: src/remmina_file_editor.c:1102
 msgid "Require password to connect or edit the profile"
-msgstr ""
+msgstr "Postuli pasvorton por konekti aŭ modifi la profilon"
 
 #: src/remmina_file_editor.c:1132
 msgid "SSH Tunnel"
@@ -3313,7 +3304,7 @@ msgstr "Finante la seancon «%s»"
 #: plugins/x2go/x2go_plugin.c:1529
 #, c-format
 msgid "Disconnected from %s:%d via X2Go"
-msgstr ""
+msgstr "Malkonektita el %s:%d per X2Go"
 
 #: plugins/x2go/x2go_plugin.c:1601
 msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
@@ -3466,10 +3457,9 @@ msgid "Available feature[%i]: '%s'"
 msgstr "Havebla funkcio[%i]: «%s»"
 
 #: plugins/x2go/x2go_plugin.c:2583
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s:%d via X2Go"
-msgstr "Konektante al %s per SSH…"
+msgstr "Konektita al %s:%d per X2Go"
 
 #: plugins/x2go/x2go_plugin.c:2677
 msgid "Could not open X11 DISPLAY."
@@ -4328,7 +4318,7 @@ msgstr "* Per ŝalto de novaĵoj, vi konsentas datentransmision el remmina.org"
 
 #: data/ui/remmina_preferences.glade:496
 msgid "Ask consent to close last window"
-msgstr ""
+msgstr "Peti konsenton por fermi la lastan fenestron"
 
 #: data/ui/remmina_preferences.glade:530
 msgid "Options"
@@ -4576,17 +4566,13 @@ msgid "timeout in seconds (default 300)"
 msgstr ""
 
 #: data/ui/remmina_preferences.glade:1709
-#, fuzzy
-#| msgid "Secured password storage in KWallet"
 msgid "Enter your Remmina password to connect"
-msgstr "Sekura konservado de pasvortoj per KWallet"
+msgstr "Tajpu vian Remmina-pasvorton por konekti"
 
 #. “Require to connect” is “Require the Remmina password before to connect”, the Remmina password is the Master/Principal Password, that is used to protect Remmina from unauthorized use.
 #: data/ui/remmina_preferences.glade:1713
-#, fuzzy
-#| msgid "Secured password storage in KWallet"
 msgid "Require to connect"
-msgstr "Sekura konservado de pasvortoj per KWallet"
+msgstr "Postuli por konekti"
 
 #: data/ui/remmina_preferences.glade:1724
 msgid "Creation, editing, copying, and deletions require the Remmina password"
@@ -4595,7 +4581,7 @@ msgstr ""
 #. Creation, editing, copying, and deletions require the primary password
 #: data/ui/remmina_preferences.glade:1728
 msgid "Require to modify"
-msgstr ""
+msgstr "Postuli por modifi"
 
 #: data/ui/remmina_preferences.glade:1770
 msgid "Encryption"
