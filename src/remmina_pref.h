@@ -143,6 +143,7 @@ typedef struct _RemminaPref {
 	gint			recent_maximum;
 	gchar *			resolutions;
 	gchar *			keystrokes;
+	gboolean		confirm_close;
 	/* In RemminaPrefDialog appearance tab */
 	gboolean		dark_theme;
 	gboolean		list_refresh_workaround;

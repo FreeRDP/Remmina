@@ -283,6 +283,11 @@ void remmina_pref_init(void)
 	else
 		remmina_pref.save_view_mode = TRUE;
 
+	if (g_key_file_has_key(gkeyfile, "remmina_pref", "confirm_close", NULL))
+		remmina_pref.confirm_close = g_key_file_get_boolean(gkeyfile, "remmina_pref", "confirm_close", NULL);
+	else
+		remmina_pref.confirm_close = TRUE;
+
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "use_master_password", NULL)) {
 		remmina_pref.use_primary_password = g_key_file_get_boolean(gkeyfile, "remmina_pref", "use_master_password", NULL);
 	} else if (g_key_file_has_key(gkeyfile, "remmina_pref", "use_primary_password", NULL))
@@ -788,6 +793,7 @@ gboolean remmina_pref_save(void)
 	g_key_file_set_string(gkeyfile, "remmina_pref", "screenshot_name", remmina_pref.screenshot_name);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "deny_screenshot_clipboard", remmina_pref.deny_screenshot_clipboard);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "save_view_mode", remmina_pref.save_view_mode);
+	g_key_file_set_boolean(gkeyfile, "remmina_pref", "confirm_close", remmina_pref.confirm_close);
 	if (g_key_file_remove_key (gkeyfile, "remmina_pref", "use_master_password", NULL))
 		REMMINA_DEBUG("use_master_password removed…");
 	else

@@ -230,6 +230,7 @@ void remmina_pref_on_dialog_destroy(GtkWidget *widget, gpointer user_data)
 	remmina_pref.screenshot_name = gtk_entry_get_text(remmina_pref_dialog->entry_options_screenshot_name);
 	remmina_pref.deny_screenshot_clipboard = gtk_switch_get_active(GTK_SWITCH(remmina_pref_dialog->switch_options_deny_screenshot_clipboard));
 	remmina_pref.save_view_mode = gtk_switch_get_active(GTK_SWITCH(remmina_pref_dialog->switch_options_remember_last_view_mode));
+	remmina_pref.confirm_close = gtk_switch_get_active(GTK_SWITCH(remmina_pref_dialog->switch_options_confirm_close));
 	remmina_pref.use_primary_password = gtk_switch_get_active(GTK_SWITCH(remmina_pref_dialog->switch_security_use_primary_password));
 	remmina_pref.lock_connect = gtk_switch_get_active(GTK_SWITCH(remmina_pref_dialog->switch_security_lock_connect));
 	remmina_pref.lock_edit = gtk_switch_get_active(GTK_SWITCH(remmina_pref_dialog->switch_security_lock_edit));
@@ -461,6 +462,7 @@ static void remmina_pref_dialog_init(void)
 #endif
 
 	gtk_switch_set_active(GTK_SWITCH(remmina_pref_dialog->switch_options_remember_last_view_mode), remmina_pref.save_view_mode);
+	gtk_switch_set_active(GTK_SWITCH(remmina_pref_dialog->switch_options_confirm_close), remmina_pref.confirm_close);
 #if SODIUM_VERSION_INT >= 90200
 	gtk_switch_set_active(GTK_SWITCH(remmina_pref_dialog->switch_security_use_primary_password), remmina_pref.use_primary_password);
 	gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->switch_security_use_primary_password), TRUE);
@@ -706,6 +708,7 @@ GtkWidget *remmina_pref_dialog_new(gint default_tab, GtkWindow *parent)
 	remmina_pref_dialog->entry_options_screenshot_name = GTK_ENTRY(GET_OBJECT("entry_options_screenshot_name"));
 	remmina_pref_dialog->switch_options_deny_screenshot_clipboard = GTK_SWITCH(GET_OBJECT("switch_options_deny_screenshot_clipboard"));
 	remmina_pref_dialog->switch_options_remember_last_view_mode = GTK_SWITCH(GET_OBJECT("switch_options_remember_last_view_mode"));
+	remmina_pref_dialog->switch_options_confirm_close = GTK_SWITCH(GET_OBJECT("switch_options_confirm_close"));
 	remmina_pref_dialog->switch_security_use_primary_password = GTK_SWITCH(GET_OBJECT("switch_security_use_primary_password"));
 	remmina_pref_dialog->unlock_timeout = GTK_ENTRY(GET_OBJECT("unlock_timeout"));
 	remmina_pref_dialog->switch_security_lock_connect = GTK_SWITCH(GET_OBJECT("switch_security_lock_connect"));
