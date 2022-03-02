@@ -14,11 +14,29 @@ confinement: strict
 # this line enables LZO compression for the snap
 compression: lzo
 
+layout:
+  /usr/lib/$SNAPCRAFT_ARCH_TRIPLET/webkit2gtk-4.0:
+    bind: $SNAP/gnome-platform/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/webkit2gtk-4.0
+
 slots:
   remmina-gapp:
     interface: dbus
     bus: session
     name: org.remmina.Remmina
+
+plugs:
+  gtk-3-themes:
+    interface: content
+    target: $SNAP/share/themes
+    default-provider: gtk-common-themes
+  icon-themes:
+    interface: content
+    target: $SNAP/share/icons
+    default-provider: gtk-common-themes
+  sound-themes:
+    interface: content
+    target: $SNAP/share/sounds
+    default-provider: gtk-common-themes
 
 environment:
   SSH_AUTH_SOCK:    "${SNAP_DATA}/ssh-agent.socket"
@@ -35,11 +53,15 @@ apps:
       - avahi-observe
       - browser-support
       - cups-control
+      - desktop
+      - desktop-legacy
+      - gsettings
       - home
       - media-hub
       - mount-observe
       - network
       - network-bind
+      - opengl
       - optical-drive
       - password-manager-service
       - process-control
@@ -48,6 +70,9 @@ apps:
       - screen-inhibit-control
       - ssh-keys
       - ssh-public-keys
+      - unity7
+      - wayland
+      - x11
     slots:
       - remmina-gapp
 
@@ -118,19 +143,34 @@ parts:
     #   cd "$current_dir"
     #   snapcraftctl build
     build-packages:
+      - build-essential
       - libasound2-dev
       - libavcodec-dev
       - libavutil-dev
       - libcups2-dev
+      - libffi-dev
+      - libgnutls28-dev
       - libnacl-dev
+      - libjpeg-dev
       - libpcsclite-dev
       - libpulse-dev
+      - libsecret-1-dev
       - libssl-dev
+      - libx11-dev
       - libusb-1.0-0-dev
-      - libxkbfile1
+      - libxcursor-dev
+      - libxdamage-dev
+      - libxext-dev
+      - libxi-dev
+      - libxinerama-dev
+      - libxkbfile-dev
+      - libxml2-dev
+      - libxrandr-dev
+      - libxtst-dev
       - libxv-dev
       - libavresample-dev
     stage-packages:
+      - libffi7
       - libusb-1.0-0
       - libzvbi0
       - x11-utils
@@ -179,30 +219,31 @@ parts:
     source: .
     parse-info: [usr/share/metainfo/org.remmina.Remmina.appdata.xml]
     build-packages:
-      - gettext
+      - intltool
       - libappindicator3-dev
       - libavahi-ui-gtk3-dev
-      - libjson-glib-dev
+      - libgcrypt20-dev
       - libsecret-1-dev
+      - libgtk-3-dev
       - libgtk-vnc-2.0-dev
       - libgvnc-1.0-dev
-      - libsoup2.4-dev
+      - libjson-glib-dev
       - libsodium-dev
+      - libsoup2.4-dev
       - libspice-client-gtk-3.0-dev
       - libspice-protocol-dev
       - libssh-dev
       - libvncserver-dev
       - libvte-2.91-dev
+      - libxkbfile-dev
       - libwebkit2gtk-4.0-dev
       - libpcre2-dev
-      - libxkbfile-dev
       - python3-dev
       - pyhoca-cli
     stage-packages:
       - libgpm2
       - libgvnc-1.0-0
       - libgtk-vnc-2.0-0
-      - libpcre2-8-0
       - libssh-4
       - libusb-1.0-0
       - libvte-2.91-0
@@ -229,7 +270,7 @@ parts:
     organize:
       snap/remmina/current: .
     stage:
-      - -usr/share/fonts/**
+      - -./usr/share/fonts/**
 
     override-build: |
       set -eu
@@ -254,8 +295,14 @@ parts:
   app:
     plugin: nil
     stage-packages:
+      - gtk-3-examples
+      - libappindicator3-1
+      - libdbusmenu-glib4
+      - libdbusmenu-gtk3-4
+      - libindicator3-7
       - libgdbm6
       - libavahi-ui-gtk3-0
+      - libxkbfile1
       - libvncclient1
       - libavcodec58
       - libavcodec-extra
@@ -264,6 +311,7 @@ parts:
       - libavutil56
       - libopus0
       - libswresample3
+      - libpulse-mainloop-glib0
       - libcacard0
       - libva2
       - libzvbi0
@@ -294,8 +342,15 @@ parts:
       - libnuma1
       - libgomp1
       - libsodium23
+      - libwebkit2gtk-4.0-37
+      - libjavascriptcoregtk-4.0-18
       - libusb-1.0-0
+      - libpulse0
+      - pulseaudio
+      - pulseaudio-utils
+      - python3
       - libsndfile1
+      - libxcb1
       - libasyncns0
       - libflac8
       - libvorbisenc2
@@ -303,6 +358,9 @@ parts:
       - libxdmcp6
       - libogg0
       - libvorbis0a
+      - libpcre2-8-0
+      - dbus-x11
+      - xdg-user-dirs
   cleanup:
     after: [pulse-utils, freerdp, remmina, app]  # Make this part run last; list all your other parts here
     plugin: nil
