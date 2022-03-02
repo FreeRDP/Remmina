@@ -26,7 +26,7 @@
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <child>
-                  <!-- n-columns=3 n-rows=14 -->
+                  <!-- n-columns=3 n-rows=15 -->
                   <object class="GtkGrid" id="grid_options">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
@@ -316,7 +316,7 @@
                         <property name="halign">start</property>
                         <property name="margin-start">18</property>
                         <property name="margin-end">6</property>
-                        <property name="label" translatable="yes" comments="The star (*) is a reference to privacy consent">Remember last view mode</property>
+                        <property name="label" translatable="yes">Remember last view mode</property>
                         <property name="justify">right</property>
                       </object>
                       <packing>
@@ -384,7 +384,6 @@
                         <property name="halign">start</property>
                         <property name="margin-start">18</property>
                         <property name="margin-end">6</property>
-                        <property name="margin-bottom">18</property>
                         <property name="label" translatable="yes">Prevent screenshots from entering clipboard</property>
                         <property name="justify">right</property>
                       </object>
@@ -400,7 +399,6 @@
                         <property name="halign">start</property>
                         <property name="valign">center</property>
                         <property name="margin-end">18</property>
-                        <property name="margin-bottom">18</property>
                       </object>
                       <packing>
                         <property name="left-attach">1</property>
@@ -436,7 +434,7 @@
                       </object>
                       <packing>
                         <property name="left-attach">0</property>
-                        <property name="top-attach">13</property>
+                        <property name="top-attach">14</property>
                         <property name="width">3</property>
                       </packing>
                     </child>
@@ -484,6 +482,38 @@
                       <packing>
                         <property name="left-attach">1</property>
                         <property name="top-attach">6</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="label_options_confirm_close">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="tooltip-text" translatable="yes">Remember last view for each connection</property>
+                        <property name="halign">start</property>
+                        <property name="margin-start">18</property>
+                        <property name="margin-end">6</property>
+                        <property name="margin-bottom">18</property>
+                        <property name="label" translatable="yes">Ask consent to close last window</property>
+                        <property name="justify">right</property>
+                      </object>
+                      <packing>
+                        <property name="left-attach">0</property>
+                        <property name="top-attach">13</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkSwitch" id="switch_options_confirm_close">
+                        <property name="visible">True</property>
+                        <property name="can-focus">True</property>
+                        <property name="halign">start</property>
+                        <property name="valign">center</property>
+                        <property name="margin-end">18</property>
+                        <property name="margin-bottom">18</property>
+                      </object>
+                      <packing>
+                        <property name="left-attach">1</property>
+                        <property name="top-attach">13</property>
+                        <property name="width">2</property>
                       </packing>
                     </child>
                   </object>
