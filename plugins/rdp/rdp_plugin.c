@@ -49,6 +49,7 @@
 #include <errno.h>
 #include <pthread.h>
 #include <time.h>
+#include <sys/time.h>
 #include <cairo/cairo-xlib.h>
 #include <freerdp/addin.h>
 #include <freerdp/settings.h>

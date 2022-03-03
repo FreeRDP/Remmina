@@ -105,6 +105,7 @@ gboolean remmina_ssh_init_session(RemminaSSH *ssh);
 
 
 enum remmina_ssh_auth_result {
+	REMMINA_SSH_AUTH_NULL,
 	REMMINA_SSH_AUTH_SUCCESS,
 	REMMINA_SSH_AUTH_PARTIAL,
 	REMMINA_SSH_AUTH_AGAIN,

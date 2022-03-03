@@ -168,7 +168,7 @@ int remmina_exec_set_setting(gchar *profilefilename, gchar **settings)
 {
 	RemminaFile *remminafile;
 	int i;
-	gchar **tk, *value;
+	gchar **tk, *value = NULL;
 	char *line = NULL;
 	size_t len = 0;
 	ssize_t read;

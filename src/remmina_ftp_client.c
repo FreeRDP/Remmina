@@ -1193,7 +1193,11 @@ remmina_ftp_client_get_waiting_task(RemminaFTPClient *client)
 			path = gtk_tree_model_get_path(priv->task_list_model, &iter);
 			task.rowref = gtk_tree_row_reference_new(priv->task_list_model, path);
 			gtk_tree_path_free(path);
+#if GLIB_CHECK_VERSION(2,68,0)
+			return (RemminaFTPTask*)g_memdup2(&task, sizeof(RemminaFTPTask));
+#else
 			return (RemminaFTPTask*)g_memdup(&task, sizeof(RemminaFTPTask));
+#endif
 		}
 		if (!gtk_tree_model_iter_next(priv->task_list_model, &iter))
 			break;

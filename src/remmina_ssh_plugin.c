@@ -273,7 +273,7 @@ remmina_plugin_ssh_main_thread(gpointer data)
 	gboolean cont = FALSE;
 	gboolean partial = FALSE;
 	gchar *hostport;
-	gint ret;
+	gint ret = REMMINA_SSH_AUTH_NULL;
 
 	pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, NULL);
 	CANCEL_ASYNC
