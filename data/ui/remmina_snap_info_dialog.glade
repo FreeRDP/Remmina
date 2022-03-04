@@ -1,34 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.22.2 -->
+<!-- Generated with glade 3.38.2 -->
 <interface>
   <requires lib="gtk+" version="3.20"/>
   <object class="GtkDialog" id="SnapInfoDlg">
-    <property name="can_focus">False</property>
+    <property name="can-focus">False</property>
+    <property name="double-buffered">False</property>
     <property name="hexpand">True</property>
     <property name="vexpand">True</property>
-    <property name="default_width">640</property>
-    <property name="default_height">480</property>
-    <property name="destroy_with_parent">True</property>
-    <property name="type_hint">dialog</property>
-    <property name="urgency_hint">True</property>
-    <child type="titlebar">
-      <placeholder/>
-    </child>
+    <property name="default-width">640</property>
+    <property name="default-height">480</property>
+    <property name="destroy-with-parent">True</property>
+    <property name="type-hint">dialog</property>
+    <property name="urgency-hint">True</property>
     <child internal-child="vbox">
       <object class="GtkBox">
-        <property name="can_focus">False</property>
+        <property name="can-focus">False</property>
+        <property name="double-buffered">False</property>
         <property name="orientation">vertical</property>
         <property name="spacing">2</property>
         <child internal-child="action_area">
           <object class="GtkButtonBox">
-            <property name="can_focus">False</property>
-            <property name="layout_style">end</property>
+            <property name="can-focus">False</property>
+            <property name="double-buffered">False</property>
+            <property name="layout-style">end</property>
             <child>
               <object class="GtkButton" id="rmsnap_button_close">
                 <property name="label" translatable="yes">Close</property>
                 <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
+                <property name="can-focus">True</property>
+                <property name="receives-default">True</property>
+                <property name="double-buffered">False</property>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -46,28 +47,34 @@
         <child>
           <object class="GtkBox">
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
+            <property name="can-focus">False</property>
+            <property name="double-buffered">False</property>
             <property name="orientation">vertical</property>
             <child>
               <object class="GtkScrolledWindow">
                 <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="shadow_type">in</property>
-                <property name="min_content_height">180</property>
-                <property name="propagate_natural_height">True</property>
+                <property name="can-focus">True</property>
+                <property name="receives-default">True</property>
+                <property name="double-buffered">False</property>
+                <property name="window-placement-set">False</property>
+                <property name="shadow-type">in</property>
+                <property name="min-content-height">180</property>
+                <property name="max-content-width">0</property>
+                <property name="max-content-height">0</property>
                 <child>
                   <object class="GtkViewport">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
+                    <property name="double-buffered">False</property>
                     <child>
                       <object class="GtkLabel" id="rmsnap_label">
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="margin_left">18</property>
-                        <property name="margin_right">18</property>
-                        <property name="margin_top">18</property>
-                        <property name="margin_bottom">18</property>
+                        <property name="can-focus">False</property>
+                        <property name="double-buffered">False</property>
+                        <property name="margin-start">18</property>
+                        <property name="margin-end">18</property>
+                        <property name="margin-top">18</property>
+                        <property name="margin-bottom">18</property>
                         <property name="label" translatable="yes">&lt;big&gt;&lt;b&gt;Remmina Snap package&lt;/b&gt;&lt;/big&gt;
 
 &lt;span&gt;
@@ -75,9 +82,9 @@ Remmina is running on your system as a Snap package.
 Some Remmina functions need to be set up to work properly.
 &lt;/span&gt;
 </property>
-                        <property name="use_markup">True</property>
+                        <property name="use-markup">True</property>
                         <property name="wrap">True</property>
-                        <property name="wrap_mode">word-char</property>
+                        <property name="wrap-mode">word-char</property>
                       </object>
                     </child>
                   </object>
@@ -92,34 +99,38 @@ Some Remmina functions need to be set up to work properly.
             <child>
               <object class="GtkFrame">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="label_xalign">0.5</property>
-                <property name="shadow_type">in</property>
+                <property name="can-focus">False</property>
+                <property name="double-buffered">False</property>
+                <property name="label-xalign">0.5</property>
+                <property name="shadow-type">in</property>
                 <child>
                   <object class="GtkAlignment">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="left_padding">12</property>
+                    <property name="can-focus">False</property>
+                    <property name="double-buffered">False</property>
+                    <property name="left-padding">12</property>
                     <child>
                       <object class="GtkBox">
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="margin_left">6</property>
-                        <property name="margin_right">6</property>
-                        <property name="margin_top">6</property>
-                        <property name="margin_bottom">6</property>
+                        <property name="can-focus">False</property>
+                        <property name="double-buffered">False</property>
+                        <property name="margin-left">6</property>
+                        <property name="margin-right">6</property>
+                        <property name="margin-top">6</property>
+                        <property name="margin-bottom">6</property>
                         <property name="orientation">vertical</property>
                         <child>
                           <object class="GtkLabel" id="rmsnap_perms_label">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="margin_left">6</property>
-                            <property name="margin_right">6</property>
-                            <property name="margin_top">6</property>
-                            <property name="margin_bottom">6</property>
+                            <property name="can-focus">False</property>
+                            <property name="double-buffered">False</property>
+                            <property name="margin-left">6</property>
+                            <property name="margin-right">6</property>
+                            <property name="margin-top">6</property>
+                            <property name="margin-bottom">6</property>
                             <property name="label" translatable="yes">To enable access to some important features, like password saving in your keyring and RDP printer sharing, please open your software center and give the appropriate permissions to Remmina. As an alternative you can enter the following commands in a terminal window:</property>
                             <property name="wrap">True</property>
-                            <property name="wrap_mode">word-char</property>
+                            <property name="wrap-mode">word-char</property>
                             <property name="lines">6</property>
                           </object>
                           <packing>
@@ -131,11 +142,12 @@ Some Remmina functions need to be set up to work properly.
                         <child>
                           <object class="GtkLabel" id="label2">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="margin_left">6</property>
-                            <property name="margin_right">6</property>
-                            <property name="margin_top">6</property>
-                            <property name="margin_bottom">6</property>
+                            <property name="can-focus">False</property>
+                            <property name="double-buffered">False</property>
+                            <property name="margin-left">6</property>
+                            <property name="margin-right">6</property>
+                            <property name="margin-top">6</property>
+                            <property name="margin-bottom">6</property>
                             <property name="label">sudo snap connect remmina:audio-record :audio-record
 sudo snap connect remmina:avahi-observe :avahi-observe
 sudo snap connect remmina:cups-control :cups-control
@@ -161,13 +173,14 @@ sudo snap connect remmina:ssh-public-keys :ssh-public-keys</property>
                 <child type="label">
                   <object class="GtkLabel">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="margin_left">6</property>
-                    <property name="margin_right">6</property>
-                    <property name="margin_top">6</property>
-                    <property name="margin_bottom">6</property>
+                    <property name="can-focus">False</property>
+                    <property name="double-buffered">False</property>
+                    <property name="margin-left">6</property>
+                    <property name="margin-right">6</property>
+                    <property name="margin-top">6</property>
+                    <property name="margin-bottom">6</property>
                     <property name="label" translatable="yes">&lt;big&gt;Permissions&lt;/big&gt;</property>
-                    <property name="use_markup">True</property>
+                    <property name="use-markup">True</property>
                   </object>
                 </child>
               </object>
@@ -180,71 +193,78 @@ sudo snap connect remmina:ssh-public-keys :ssh-public-keys</property>
             <child>
               <object class="GtkFrame">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="label_xalign">0.5</property>
-                <property name="shadow_type">in</property>
+                <property name="can-focus">False</property>
+                <property name="double-buffered">False</property>
+                <property name="label-xalign">0.5</property>
+                <property name="shadow-type">in</property>
                 <child>
                   <object class="GtkAlignment">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="left_padding">12</property>
+                    <property name="can-focus">False</property>
+                    <property name="double-buffered">False</property>
+                    <property name="left-padding">12</property>
                     <child>
+                      <!-- n-columns=3 n-rows=2 -->
                       <object class="GtkGrid">
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
+                        <property name="can-focus">False</property>
+                        <property name="double-buffered">False</property>
                         <child>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
+                            <property name="can-focus">False</property>
+                            <property name="double-buffered">False</property>
                             <property name="halign">start</property>
-                            <property name="margin_left">6</property>
-                            <property name="margin_right">6</property>
-                            <property name="margin_top">6</property>
-                            <property name="margin_bottom">6</property>
+                            <property name="margin-start">6</property>
+                            <property name="margin-end">6</property>
+                            <property name="margin-top">6</property>
+                            <property name="margin-bottom">6</property>
                             <property name="label" translatable="yes">Since Snap packages run confined from the rest of the system, Remmina profiles are saved inside the Snap file system by default. You can change the location in the Remmina preferences.</property>
-                            <property name="use_markup">True</property>
+                            <property name="use-markup">True</property>
                             <property name="wrap">True</property>
-                            <property name="wrap_mode">word-char</property>
+                            <property name="wrap-mode">word-char</property>
                           </object>
                           <packing>
-                            <property name="left_attach">0</property>
-                            <property name="top_attach">0</property>
+                            <property name="left-attach">0</property>
+                            <property name="top-attach">0</property>
                             <property name="width">3</property>
                           </packing>
                         </child>
                         <child>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
+                            <property name="can-focus">False</property>
+                            <property name="double-buffered">False</property>
                             <property name="halign">start</property>
-                            <property name="margin_left">6</property>
-                            <property name="margin_right">6</property>
-                            <property name="margin_top">6</property>
-                            <property name="margin_bottom">6</property>
+                            <property name="margin-start">6</property>
+                            <property name="margin-end">6</property>
+                            <property name="margin-top">6</property>
+                            <property name="margin-bottom">6</property>
                             <property name="label" translatable="yes">Change where Remmina profiles are stored</property>
                           </object>
                           <packing>
-                            <property name="left_attach">0</property>
-                            <property name="top_attach">1</property>
+                            <property name="left-attach">0</property>
+                            <property name="top-attach">1</property>
                           </packing>
                         </child>
                         <child>
                           <object class="GtkButton">
                             <property name="label">gtk-preferences</property>
                             <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="receives_default">True</property>
+                            <property name="can-focus">True</property>
+                            <property name="receives-default">True</property>
+                            <property name="double-buffered">False</property>
                             <property name="halign">end</property>
-                            <property name="margin_left">6</property>
-                            <property name="margin_right">6</property>
-                            <property name="margin_top">6</property>
-                            <property name="margin_bottom">6</property>
-                            <property name="use_stock">True</property>
+                            <property name="margin-start">6</property>
+                            <property name="margin-end">6</property>
+                            <property name="margin-top">6</property>
+                            <property name="margin-bottom">6</property>
+                            <property name="use-stock">True</property>
                             <signal name="clicked" handler="remmina_main_on_action_application_preferences" swapped="no"/>
                           </object>
                           <packing>
-                            <property name="left_attach">1</property>
-                            <property name="top_attach">1</property>
+                            <property name="left-attach">1</property>
+                            <property name="top-attach">1</property>
                             <property name="width">2</property>
                           </packing>
                         </child>
@@ -255,13 +275,13 @@ sudo snap connect remmina:ssh-public-keys :ssh-public-keys</property>
                 <child type="label">
                   <object class="GtkLabel">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="margin_left">6</property>
-                    <property name="margin_right">6</property>
-                    <property name="margin_top">6</property>
-                    <property name="margin_bottom">6</property>
+                    <property name="can-focus">False</property>
+                    <property name="margin-start">6</property>
+                    <property name="margin-end">6</property>
+                    <property name="margin-top">6</property>
+                    <property name="margin-bottom">6</property>
                     <property name="label" translatable="yes">&lt;big&gt;Snap settings&lt;/big&gt;</property>
-                    <property name="use_markup">True</property>
+                    <property name="use-markup">True</property>
                   </object>
                 </child>
               </object>
@@ -275,14 +295,15 @@ sudo snap connect remmina:ssh-public-keys :ssh-public-keys</property>
               <object class="GtkCheckButton" id="dontshowagain">
                 <property name="label" translatable="yes">Do not show this message again</property>
                 <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">False</property>
+                <property name="can-focus">True</property>
+                <property name="receives-default">False</property>
+                <property name="double-buffered">False</property>
                 <property name="halign">start</property>
-                <property name="margin_left">6</property>
-                <property name="margin_right">6</property>
-                <property name="margin_top">6</property>
-                <property name="margin_bottom">6</property>
-                <property name="draw_indicator">True</property>
+                <property name="margin-start">6</property>
+                <property name="margin-end">6</property>
+                <property name="margin-top">6</property>
+                <property name="margin-bottom">6</property>
+                <property name="draw-indicator">True</property>
               </object>
               <packing>
                 <property name="expand">False</property>
