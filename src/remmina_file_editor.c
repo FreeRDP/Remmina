@@ -1103,6 +1103,7 @@ static void remmina_file_editor_create_behavior_tab(RemminaFileEditor *gfe)
 						remmina_file_get_int(priv->remmina_file, "profile-lock", FALSE), "profile-lock");
 }
 
+#ifdef HAVE_LIBSSH
 static gpointer ssh_tunnel_auth_list[] =
 {
 	"0", N_("Password"),
@@ -1112,6 +1113,7 @@ static gpointer ssh_tunnel_auth_list[] =
 	"4", N_("Kerberos (GSSAPI)"),
 	NULL
 };
+#endif
 
 static void remmina_file_editor_create_ssh_tunnel_tab(RemminaFileEditor *gfe, RemminaProtocolSSHSetting ssh_setting)
 {

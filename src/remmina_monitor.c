@@ -80,7 +80,7 @@ gchar *remmina_monitor_can_reach(RemminaFile *remminafile, RemminaMonitor *monit
 
 	const gchar *server;
 	const gchar *ssh_tunnel_server;
-	const gchar *addr_tostr;
+	const gchar *addr_tostr = NULL;
 	gchar *status = NULL;
 	gchar *ssh_tunnel_host, *srv_host;
 	gint netmonit, srv_port, ssh_tunnel_port;

@@ -317,9 +317,9 @@ void _remmina_audit(const gchar *fun, const gchar *fmt, ...)
 	gchar *text = g_strdup_vprintf(fmt, args);
 	va_end(args);
 
-	GTimeVal tv;
-	g_get_current_time(&tv);
-	gchar *isodate = g_time_val_to_iso8601(&tv);
+	GDateTime* tv = g_date_time_new_now_local();
+	gchar *isodate = g_date_time_format_iso8601(tv);
+	g_date_time_unref(tv);
 
 	g_autofree gchar *buf = g_strdup("");
 

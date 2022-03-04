@@ -169,7 +169,7 @@ remmina_ssh_auth_interactive(RemminaSSH *ssh)
 	gint ret;
 	gint n;
 	gint i;
-	const gchar *name, *instruction;
+	const gchar *name, *instruction = NULL;
 	//gchar *prompt,*ptr;
 
 	ret = SSH_AUTH_ERROR;
@@ -578,7 +578,7 @@ remmina_ssh_auth(RemminaSSH *ssh, const gchar *password, RemminaProtocolWidget *
 {
 	TRACE_CALL(__func__);
 	gint method;
-	enum remmina_ssh_auth_result rv;
+	enum remmina_ssh_auth_result rv = REMMINA_SSH_AUTH_NULL;
 
 	/* Check known host again to ensure it’s still the original server when user forks
 	 * a new session from existing one */
@@ -870,11 +870,11 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *re
 {
 	TRACE_CALL(__func__);
 	gchar *keyname;
-	gchar *pwdfkey;
+	gchar *pwdfkey = NULL;
 	gchar *message;
 	gchar *current_pwd;
 	gchar *current_user;
-	const gchar *instruction;
+	const gchar *instruction = NULL;
 	gint ret;
 	size_t len;
 	guchar *pubkey;
@@ -2370,7 +2370,7 @@ remmina_ssh_shell_thread(gpointer data)
 	gchar *filename;
 	const gchar *dir;
 	const gchar *sshlogname;
-	FILE *fp;
+	FILE *fp = NULL;
 
 	//gint screen;
 
@@ -2489,7 +2489,7 @@ remmina_ssh_shell_thread(gpointer data)
 			}
 			while (len > 0) {
 				ret = write(shell->slave, buf, len);
-				if (remmina_file_get_int (remminafile, "sshsavesession", FALSE)) {
+				if (fp != NULL) {
 					fwrite(buf, ret, 1, fp );
 					fflush(fp);
 				}

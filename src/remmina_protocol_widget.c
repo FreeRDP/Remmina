@@ -1007,7 +1007,6 @@ static void cancel_start_direct_tunnel_cb(void *cbdata, int btn)
 {
 	printf("Remmina: Cancelling start_direct_tunnel is not implemented\n");
 }
-#endif
 
 static gboolean remmina_protocol_widget_tunnel_destroy(RemminaSSHTunnel *tunnel, gpointer data)
 {
@@ -1040,6 +1039,7 @@ static gboolean remmina_protocol_widget_tunnel_destroy(RemminaSSHTunnel *tunnel,
 	}
 	return TRUE;
 }
+#endif
 
 /**
  * Start an SSH tunnel if possible and return the host:port string.
