@@ -7,36 +7,17 @@ architectures:
   - build-on: armhf
 
 base: core20
-
 grade: stable
 confinement: strict
 
 # this line enables LZO compression for the snap
 compression: lzo
 
-layout:
-  /usr/lib/$SNAPCRAFT_ARCH_TRIPLET/webkit2gtk-4.0:
-    bind: $SNAP/gnome-platform/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/webkit2gtk-4.0
-
 slots:
-  remmina-gapp:
+  dbus-daemon:
     interface: dbus
     bus: session
     name: org.remmina.Remmina
-
-plugs:
-  gtk-3-themes:
-    interface: content
-    target: $SNAP/share/themes
-    default-provider: gtk-common-themes
-  icon-themes:
-    interface: content
-    target: $SNAP/share/icons
-    default-provider: gtk-common-themes
-  sound-themes:
-    interface: content
-    target: $SNAP/share/sounds
-    default-provider: gtk-common-themes
 
 environment:
   SSH_AUTH_SOCK:    "${SNAP_DATA}/ssh-agent.socket"
@@ -45,7 +26,7 @@ apps:
   remmina:
     command: usr/bin/remmina
     extensions: [gnome-3-38]
-    common-id: org.remmina.Remmina.desktop
+    common-id: org.remmina.Remmina
     plugs:
       - alsa
       - audio-playback
@@ -53,15 +34,11 @@ apps:
       - avahi-observe
       - browser-support
       - cups-control
-      - desktop
-      - desktop-legacy
-      - gsettings
       - home
       - media-hub
       - mount-observe
       - network
       - network-bind
-      - opengl
       - optical-drive
       - password-manager-service
       - process-control
@@ -71,10 +48,8 @@ apps:
       - ssh-keys
       - ssh-public-keys
       - unity7
-      - wayland
-      - x11
     slots:
-      - remmina-gapp
+      - dbus-daemon
 
   winpr-makecert:
     command: usr/bin/winpr-makecert
@@ -104,19 +79,6 @@ apps:
     command: usr/bin/xprop
 
 parts:
-  pulse-utils:
-    plugin: nil
-    stage-packages:
-      - libsndfile1
-      - libxcb1
-      - libasyncns0
-      - libflac8
-      - libvorbisenc2
-      - libxau6
-      - libxdmcp6
-      - libogg0
-      - libvorbis0a
-      - libpulse0
 
   tools:
     plugin: nil
@@ -129,8 +91,6 @@ parts:
       - pyhoca-cli
 
   freerdp:
-    after:
-      - pulse-utils
     plugin: cmake
     source: https://github.com/FreeRDP/FreeRDP.git
     source-tag: 2.4.1
@@ -143,7 +103,6 @@ parts:
     #   cd "$current_dir"
     #   snapcraftctl build
     build-packages:
-      - build-essential
       - libasound2-dev
       - libavcodec-dev
       - libavutil-dev
@@ -197,7 +156,7 @@ parts:
       - -DCMAKE_INSTALL_PREFIX=/snap/$SNAPCRAFT_PROJECT_NAME/current/usr
 
     organize:
-      snap/remmina/current: .
+      snap/remmina/current/usr: usr
 
     prime:
       - -usr/include
@@ -228,6 +187,7 @@ parts:
       - libgtk-vnc-2.0-dev
       - libgvnc-1.0-dev
       - libjson-glib-dev
+      - libkf5wallet-dev
       - libsodium-dev
       - libsoup2.4-dev
       - libspice-client-gtk-3.0-dev
@@ -241,24 +201,40 @@ parts:
       - python3-dev
       - pyhoca-cli
     stage-packages:
+      - adwaita-icon-theme
+      - dmz-cursor-theme
+      - gnome-themes-standard
+      - libdouble-conversion3
       - libgpm2
-      - libgvnc-1.0-0
+      - libgtk-3-dev
       - libgtk-vnc-2.0-0
+      - libgvnc-1.0-0
+      - libkf5configcore5
+      - libkf5wallet5
+      - libkf5windowsystem5
+      - libqt5core5a
+      - libqt5dbus5
+      - libqt5gui5
+      - libqt5widgets5
+      - libqt5x11extras5
       - libssh-4
       - libusb-1.0-0
       - libvte-2.91-0
+      - libxcb-keysyms1
       - libzvbi0
+      - openssh-client
+      - pyhoca-cli
       - spice-client-glib-usb-acl-helper
       - suckless-tools
       - vim
       - xauth
+      - xdg-user-dirs
       - xterm
-      - openssh-client
-      - pyhoca-cli
     cmake-parameters:
       - -DCMAKE_BUILD_TYPE=Release
       - -DWITH_NEWS:BOOL=ON
       - -DWITH_FREERDP3=OFF
+      - -DWITH_KF5WALLET=ON
       - -DWITH_GVNC=ON
       - -DWITH_X2GO=ON
       - -DCMAKE_PREFIX_PATH=$SNAPCRAFT_STAGE/usr
@@ -268,9 +244,9 @@ parts:
       - -DCMAKE_INSTALL_PREFIX=/snap/$SNAPCRAFT_PROJECT_NAME/current/usr
 
     organize:
-      snap/remmina/current: .
+      snap/remmina/current/usr: usr
     stage:
-      - -./usr/share/fonts/**
+      - -usr/share/fonts/**
 
     override-build: |
       set -eu
@@ -283,7 +259,8 @@ parts:
       do
         mv $i "`dirname $i`/snap.$SNAPCRAFT_PROJECT_NAME.`basename $i`"
       done
-      sed --in-place '\|<id>org.remmina.Remmina.desktop</id>|a<icon type="stock">snap.remmina.org.remmina.Remmina</icon>' $SNAPCRAFT_PART_INSTALL/snap/$SNAPCRAFT_PROJECT_NAME/current/usr/share/metainfo/org.remmina.Remmina.appdata.xml
+      sed --in-place '\|<id>org.remmina.Remmina</id>|a<icon type="stock">snap.remmina.org.remmina.Remmina</icon>' $SNAPCRAFT_PART_INSTALL/snap/$SNAPCRAFT_PROJECT_NAME/current/usr/share/metainfo/org.remmina.Remmina.appdata.xml
+      update-mime-database ${SNAPCRAFT_PART_INSTALL}/usr/share/mime
     override-prime: |
       set -eu
       snapcraftctl prime
@@ -297,8 +274,6 @@ parts:
     stage-packages:
       - gtk-3-examples
       - libappindicator3-1
-      - libdbusmenu-glib4
-      - libdbusmenu-gtk3-4
       - libindicator3-7
       - libgdbm6
       - libavahi-ui-gtk3-0
@@ -342,15 +317,9 @@ parts:
       - libnuma1
       - libgomp1
       - libsodium23
-      - libwebkit2gtk-4.0-37
-      - libjavascriptcoregtk-4.0-18
       - libusb-1.0-0
-      - libpulse0
-      - pulseaudio
-      - pulseaudio-utils
       - python3
       - libsndfile1
-      - libxcb1
       - libasyncns0
       - libflac8
       - libvorbisenc2
@@ -359,10 +328,8 @@ parts:
       - libogg0
       - libvorbis0a
       - libpcre2-8-0
-      - dbus-x11
-      - xdg-user-dirs
   cleanup:
-    after: [pulse-utils, freerdp, remmina, app]  # Make this part run last; list all your other parts here
+    after: [freerdp, remmina, app]  # Make this part run last; list all your other parts here
     plugin: nil
     build-snaps: [core20, gnome-3-38-2004, gtk-common-themes]  # List all content-snaps you're using here
     override-prime: |
@@ -375,6 +342,3 @@ parts:
       done
       find $SNAPCRAFT_PRIME/usr/share/doc/ -type f -not -name 'copyright' -delete
       find $SNAPCRAFT_PRIME/usr/share -type d -empty -delete
-      rm -f $SNAPCRAFT_PRIME/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libgio-2.0.so.0*
-      rm -f $SNAPCRAFT_PRIME/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libharfbuzz.so.0*
-      rm -f $SNAPCRAFT_PRIME/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libglib-2.0.so.0*

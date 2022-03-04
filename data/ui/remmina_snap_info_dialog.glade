@@ -140,7 +140,9 @@ Some Remmina functions need to be set up to work properly.
 sudo snap connect remmina:avahi-observe :avahi-observe
 sudo snap connect remmina:cups-control :cups-control
 sudo snap connect remmina:mount-observe :mount-observe
-sudo snap connect remmina:password-manager-service :password-manager-service</property>
+sudo snap connect remmina:password-manager-service :password-manager-service
+sudo snap connect remmina:ssh-keys :ssh-keys
+sudo snap connect remmina:ssh-public-keys :ssh-public-keys</property>
                             <property name="selectable">True</property>
                             <attributes>
                               <attribute name="font-desc" value="Monospace 10"/>
