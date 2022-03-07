@@ -17,31 +17,40 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA  02110-1301, USA.
 
-include(FindPackageHandleStandardArgs)
+#
+# PCRE2_INCLUDE_DIRS
+# PCRE2_LIBRARIES
+# PCRE2_CFLAGS
 
-pkg_check_modules(PC_LIBPCRE2 libpcre2-8-0)
+find_package(PkgConfig)
+
+if(PKG_CONFIG_FOUND)
+    pkg_check_modules(_PCRE2 libpcre2-8)
+endif(PKG_CONFIG_FOUND)
+
+find_library(PCRE2_LIB pcre
+    HINTS
+    ${_PCRE2_LIBRARY_DIRS}
+    ${COMMON_LIB_DIR}
+)
+
+if(PCRE2_LIB)
+    set(PCRE2_LIBRARIES ${PCRE2_LIB})
+    message(STATUS "PCRE2-Libs: ${PCRE2_LIBRARIES}")
+endif()
+
+find_path(PCRE2_INCLUDE_DIR pcre2.h
+    PATHS
+    ${_PCRE2_INCLUDE_DIRS}
+    ${COMMON_INCLUDE_DIR}
+)
 
 
-find_path(PCRE2_INCLUDE_DIR
-  NAMES pcre2.h
-  PATHS ../../../../libs
-        /usr
-  PATH_SUFFIXES include)
+if(PCRE2_INCLUDE_DIR)
+    set(PCRE2_INCLUDE_DIRS ${PCRE2_INCLUDE_DIR})
+    message(STATUS "PCRE2-Include-Dirs: ${PCRE2_INCLUDE_DIRS}")
+endif()
 
-find_library(PCRE2_LIBRARY
-  NAMES pcre2-8
-  PATHS ../../../../libs
-        /usr
-  PATH_SUFFIXES lib)
-
-if (PCRE2_INCLUDE_DIR AND PCRE2_LIBRARY)
-  message(STATUS "Found pcre2 headers at ${PCRE2_INCLUDE_DIR}")
-  message(STATUS "Found pcre2 libraries at ${PCRE2_LIBRARY}")
-  set(PCRE2_INCLUDE_DIRS ${PCRE2_INCLUDE_DIR})
-  set(PCRE2_LIBRARIES ${PCRE2_LIBRARY})
-  set(PCRE2_FOUND yes)
-else()
-  set(PCRE2_INCLUDE_DIRS)
-  set(PCRE2_LIBRARIES)
-  set(PCRE2_FOUND no)
+if(PCRE2_INCLUDE_DIRS)
+    set(PCRE2_FOUND TRUE)
 endif()

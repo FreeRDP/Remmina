@@ -43,9 +43,9 @@ add_library(remmina-plugin-www MODULE ${REMMINA_PLUGIN_WWW_SRCS})
 set_target_properties(remmina-plugin-www PROPERTIES PREFIX "")
 set_target_properties(remmina-plugin-www PROPERTIES NO_SONAME 1)
 
-add_definitions(${WEBKIT2_CFLAGS_OTHER})
-include_directories(${REMMINA_COMMON_INCLUDE_DIRS} ${GTK_INCLUDE_DIRS} ${WEBKIT2_INCLUDE_DIRS})
-target_link_libraries(remmina-plugin-www ${REMMINA_COMMON_LIBRARIES} ${WEBKIT2_LIBRARIES})
+add_definitions(${WEBKIT2GTK_CFLAGS_OTHER})
+include_directories(${REMMINA_COMMON_INCLUDE_DIRS} ${GTK_INCLUDE_DIRS} ${WEBKIT2GTK_INCLUDE_DIRS})
+target_link_libraries(remmina-plugin-www ${REMMINA_COMMON_LIBRARIES} ${WEBKIT2GTK_LIBRARIES})
 
 install(TARGETS remmina-plugin-www DESTINATION ${REMMINA_PLUGINDIR})
 

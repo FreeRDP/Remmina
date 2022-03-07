@@ -94,7 +94,7 @@ parts:
   freerdp:
     plugin: cmake
     source: https://github.com/FreeRDP/FreeRDP.git
-    source-tag: 2.6.0
+    source-tag: 2.6.1
     source-depth: 1
     # override-build: |
     #   current_dir=$PWD
@@ -109,24 +109,14 @@ parts:
       - libavutil-dev
       - libcups2-dev
       - libffi-dev
-      - libgnutls28-dev
       - libnacl-dev
-      - libjpeg-dev
       - libpcsclite-dev
       - libpulse-dev
       - libsecret-1-dev
       - libssl-dev
       - libx11-dev
       - libusb-1.0-0-dev
-      - libxcursor-dev
-      - libxdamage-dev
-      - libxext-dev
-      - libxi-dev
-      - libxinerama-dev
       - libxkbfile-dev
-      - libxml2-dev
-      - libxrandr-dev
-      - libxtst-dev
       - libxv-dev
       - libavresample-dev
     stage-packages:
@@ -182,7 +172,6 @@ parts:
       - intltool
       - libappindicator3-dev
       - libavahi-ui-gtk3-dev
-      - libgcrypt20-dev
       - libsecret-1-dev
       - libgtk-3-dev
       - libgtk-vnc-2.0-dev
@@ -197,9 +186,6 @@ parts:
       - libvncserver-dev
       - libvte-2.91-dev
       - libxkbfile-dev
-      - libwebkit2gtk-4.0-dev
-      - libpcre2-dev
-      - python3-dev
       - pyhoca-cli
       - xdg-utils
     stage-packages:
@@ -230,7 +216,6 @@ parts:
       - suckless-tools
       - vim
       - xauth
-      - xdg-user-dirs
       - xterm
     cmake-parameters:
       - -DCMAKE_BUILD_TYPE=Release
@@ -267,7 +252,6 @@ parts:
   app:
     plugin: nil
     stage-packages:
-      - gtk-3-examples
       - libappindicator3-1
       - libindicator3-7
       - libgdbm6
@@ -306,7 +290,6 @@ parts:
       - libgsm1
       - libvdpau1
       - libva-x11-2
-      - libthai0
       - libsoxr0
       - libva-drm2
       - libnuma1
@@ -314,15 +297,6 @@ parts:
       - libsodium23
       - libusb-1.0-0
       - python3
-      - libsndfile1
-      - libasyncns0
-      - libflac8
-      - libvorbisenc2
-      - libxau6
-      - libxdmcp6
-      - libogg0
-      - libvorbis0a
-      - libpcre2-8-0
   cleanup:
     after: [freerdp, remmina, app]  # Make this part run last; list all your other parts here
     plugin: nil

@@ -296,7 +296,7 @@ if(GTK3_FOUND)
   endif()
 endif()
 
-include(FindPCRE2)
+find_required_package(PCRE2)
 if(NOT PCRE2_FOUND)
   message(FATAL_ERROR "libpcre2 library not found")
 endif()

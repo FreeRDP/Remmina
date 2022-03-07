@@ -102,17 +102,9 @@ option(WITH_WWW "Build WWW plugin" ON)
 if(WITH_WWW)
     message(STATUS "Enabling WWW plugin.")
     add_definitions(-DWITH_WWW)
-    pkg_search_module(WEBKIT2
-        webkit2gtk-4.0
-        webkit2gtk-3.0
-        libwebkit2gtk-4.0
-        libwebkit2gtk-3.0
-        )
-    if(WEBKIT2_FOUND)
-        message(STATUS "WWW plugin dependencies found")
+    find_suggested_package(WEBKIT2GTK)
+    if(_WEBKIT2GTKFOUND)
         add_subdirectory(www)
-    else()
-        message(WARNING "WEBKIT not found")
     endif()
 else()
     message(STATUS "Disabling WWW plugin.")
