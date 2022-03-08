@@ -663,7 +663,7 @@ static BOOL remmina_rdp_pre_connect(freerdp *instance)
 	freerdp_settings_set_uint32(settings, FreeRDP_OsMajorType, OSMAJORTYPE_UNIX);
 	freerdp_settings_set_uint32(settings, FreeRDP_OsMinorType, OSMINORTYPE_UNSPECIFIED);
 	freerdp_settings_set_bool(settings, FreeRDP_BitmapCacheEnabled, TRUE);
-	freerdp_settings_set_bool(settings, FreeRDP_OffscreenSupportLevel, TRUE);
+	freerdp_settings_set_uint32(settings, FreeRDP_OffscreenSupportLevel, 1);
 
 	PubSub_SubscribeChannelConnected(instance->context->pubSub,
 					 (pChannelConnectedEventHandler)remmina_rdp_OnChannelConnectedEventHandler);
