@@ -44,8 +44,14 @@ set_target_properties(remmina-plugin-www PROPERTIES PREFIX "")
 set_target_properties(remmina-plugin-www PROPERTIES NO_SONAME 1)
 
 add_definitions(${WEBKIT2GTK_CFLAGS_OTHER})
-include_directories(${REMMINA_COMMON_INCLUDE_DIRS} ${GTK_INCLUDE_DIRS} ${WEBKIT2GTK_INCLUDE_DIRS})
-target_link_libraries(remmina-plugin-www ${REMMINA_COMMON_LIBRARIES} ${WEBKIT2GTK_LIBRARIES})
+
+find_required_package(LIBSOUP24)
+if(LIBSOUP24_FOUND)
+    include_directories(${REMMINA_COMMON_INCLUDE_DIRS} ${WEBKIT2GTK_INCLUDE_DIRS} ${LIBSOUP24_INCLUDE_DIRS})
+    target_link_libraries(remmina-plugin-www ${REMMINA_COMMON_LIBRARIES} ${LIBSOUP24_LIBRARIES} ${WEBKIT2GTK_LIBRARIES})
+else()
+    message(FATAL_ERROR "libsoup 2.4 library not found")
+endif()
 
 install(TARGETS remmina-plugin-www DESTINATION ${REMMINA_PLUGINDIR})
 
