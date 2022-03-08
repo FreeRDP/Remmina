@@ -400,12 +400,18 @@ BOOL rf_auto_reconnect(rfContext *rfi)
 	rfi->is_reconnecting = TRUE;
 	rfi->stop_reconnecting_requested = FALSE;
 
+	/* Get the value set in FreeRDP_AutoReconnectMaxRetries (20) */
 	maxattempts = FreeRDP_AutoReconnectMaxRetries;
+	/* Get the value from the global preferences if any */
 	if ((cval = remmina_plugin_service->pref_get_value("rdp_reconnect_attempts")) != NULL)
 		maxattempts = atoi(cval);
+	/* Get the value from the profile if any, otherwise uses the value of maxattempts */
 	maxattempts = remmina_plugin_service->file_get_int(remminafile, "rdp_reconnect_attempts", maxattempts);
-	if (maxattempts <= 0)
+	/* If maxattemps is <= 0, we get the value from FreeRDP_AutoReconnectMaxRetries (20) */
+	if (maxattempts < 0)
 		maxattempts = freerdp_settings_get_uint32(settings, FreeRDP_AutoReconnectMaxRetries);
+	freerdp_settings_set_uint32(settings, FreeRDP_AutoReconnectMaxRetries, maxattempts);
+
 	rfi->reconnect_maxattempts = maxattempts;
 	rfi->reconnect_nattempt = 0;
 
@@ -440,7 +446,6 @@ BOOL rf_auto_reconnect(rfContext *rfi)
 	 *  - processing of the UI event we just pushed on the queue
 	 *  - better network conditions
 	 *  Remember: We hare on a thread, so the main gui won’t lock */
-
 	usleep(500000);
 
 	/* Perform an auto-reconnect. */
