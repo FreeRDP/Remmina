@@ -2015,7 +2015,9 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 		remmina_plugin_service->protocol_plugin_set_height(gp, freerdp_settings_get_uint32(rfi->settings, FreeRDP_DesktopHeight));
 	}
 
-	if (remmina_plugin_service->file_get_int(remminafile, "sharesmartcard", FALSE)) {
+	const gchar *sn = remmina_plugin_service->file_get_string(remminafile, "smartcardname");
+	if (remmina_plugin_service->file_get_int(remminafile, "sharesmartcard", FALSE) ||
+			(sn != NULL && sn[0] != '\0')) {
 		RDPDR_SMARTCARD *smartcard;
 		smartcard = (RDPDR_SMARTCARD *)calloc(1, sizeof(RDPDR_SMARTCARD));
 
@@ -2031,7 +2033,6 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 
 		freerdp_settings_set_bool(rfi->settings, FreeRDP_DeviceRedirection, TRUE);
 
-		const gchar *sn = remmina_plugin_service->file_get_string(remminafile, "smartcardname");
 		if (sn != NULL && sn[0] != '\0')
 			sdev->Name = _strdup(sn);
 
