@@ -401,16 +401,20 @@ BOOL rf_auto_reconnect(rfContext *rfi)
 	rfi->stop_reconnecting_requested = FALSE;
 
 	/* Get the value set in FreeRDP_AutoReconnectMaxRetries (20) */
-	maxattempts = FreeRDP_AutoReconnectMaxRetries;
+	maxattempts = freerdp_settings_get_uint32(settings, FreeRDP_AutoReconnectMaxRetries);
+	REMMINA_PLUGIN_DEBUG("maxattempts from default: %d", maxattempts);
 	/* Get the value from the global preferences if any */
 	if ((cval = remmina_plugin_service->pref_get_value("rdp_reconnect_attempts")) != NULL)
 		maxattempts = atoi(cval);
+	REMMINA_PLUGIN_DEBUG("maxattempts from general preferences: %d", maxattempts);
 	/* Get the value from the profile if any, otherwise uses the value of maxattempts */
 	maxattempts = remmina_plugin_service->file_get_int(remminafile, "rdp_reconnect_attempts", maxattempts);
+	REMMINA_PLUGIN_DEBUG("maxattempts from general plugin: %d", maxattempts);
 	/* If maxattemps is <= 0, we get the value from FreeRDP_AutoReconnectMaxRetries (20) */
-	if (maxattempts < 0)
+	if (maxattempts <= 0)
 		maxattempts = freerdp_settings_get_uint32(settings, FreeRDP_AutoReconnectMaxRetries);
 	freerdp_settings_set_uint32(settings, FreeRDP_AutoReconnectMaxRetries, maxattempts);
+	REMMINA_PLUGIN_DEBUG("maxattempts set to: %d", maxattempts);
 
 	rfi->reconnect_maxattempts = maxattempts;
 	rfi->reconnect_nattempt = 0;
