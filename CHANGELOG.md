@@ -1,3 +1,19 @@
+## v1.4.25
+[full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.24...v1.4.25)
+
+* kiosk: Drop GNOME MediaKeys plugin [!2377](https://gitlab.com/Remmina/Remmina/merge_requests/2377) *@jbicha*
+* Honour soft links target in SFTP [!2379](https://gitlab.com/Remmina/Remmina/merge_requests/2379) *@antenore*
+* Optional close confirmation [!2380](https://gitlab.com/Remmina/Remmina/merge_requests/2380) *@antenore*
+* Fix some build warnings [!2382](https://gitlab.com/Remmina/Remmina/merge_requests/2382) *@donoban*
+* Fix manpages [!2378](https://gitlab.com/Remmina/Remmina/merge_requests/2378) *@Fantu*
+* Snap cleanup + kwallet support [!2381](https://gitlab.com/Remmina/Remmina/merge_requests/2381) *@antenore*
+* Deprecations and amend g_date_time_format_iso8601 [!2383](https://gitlab.com/Remmina/Remmina/merge_requests/2383) *@antenore*
+* Fixes to snap build [!2384](https://gitlab.com/Remmina/Remmina/merge_requests/2384) *@giox069*
+* Removing dependencies that are available as extensions [!2385](https://gitlab.com/Remmina/Remmina/merge_requests/2385) *@antenore*
+* FreeRDP_OffscreenSupportLevel is of type UINT32 [!2386](https://gitlab.com/Remmina/Remmina/merge_requests/2386) *@akallabeth*
+* Minor fixes [!2387](https://gitlab.com/Remmina/Remmina/merge_requests/2387) *@antenore*
+* Get the right value for FreeRDP_AutoReconnectMaxRetries [!2388](https://gitlab.com/Remmina/Remmina/merge_requests/2388) *@antenore*
+
 ## v1.4.24
 [full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.23...v1.4.24)
 
