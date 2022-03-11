@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2022-03-10 14:39+0000\n"
-"PO-Revision-Date: 2022-03-11 00:58+0000\n"
+"PO-Revision-Date: 2022-03-11 17:58+0000\n"
 "Last-Translator: Tuomas Lähteenmäki <lahtis@gmail.com>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/remmina/remmina/"
 "fi/>\n"
@@ -603,7 +603,8 @@ msgstr "Muokkaa yhteysprofiilia (vaatii --set-option)"
 #: src/remmina.c:122
 msgid "Set one or more profile settings, to be used with --update-profile"
 msgstr ""
-"Aseta yksi tai useampi profiiliasetus, jota käytetään --update-profile kanssa"
+"Aseta yksi tai useampi profiiliasetus, jota käytetään --update-profile "
+"option kanssa"
 
 #: src/remmina.c:123
 msgid "Encrypt a password"
@@ -713,7 +714,7 @@ msgstr "Syötä muodossa 'widthxheight'."
 
 #: src/remmina_public.c:653
 msgid "Change security settings"
-msgstr "Laatuasetukset"
+msgstr "Muuta suojausasetuksia"
 
 #. TRANSLATORS: translator-credits should be replaced with a formatted list of translators in your own language
 #: src/remmina_about.c:54
@@ -722,7 +723,8 @@ msgstr ""
 "Launchpad Contributions:\n"
 "  Jiri Grönroos https://launchpad.net/~jiri-gronroos\n"
 "  Joonas Kylmälä https://launchpad.net/~j.kylmala\n"
-"  Timo Jyrinki https://launchpad.net/~timo-jyrinki"
+"  Timo Jyrinki https://launchpad.net/~timo-jyrinki\n"
+"  Tuomas Lähteenmäki https://launchpad.net/~lahtis"
 
 #: src/remmina_ftp_client.c:392
 msgid "Choose download location"
@@ -734,7 +736,7 @@ msgstr "Haluatko varmasti poistaa valitut tiedostot palvelimelta?"
 
 #: src/remmina_ftp_client.c:589
 msgid "Choose a file to upload"
-msgstr "Valitse lähetettävä tiedosto"
+msgstr "Valitse ladattava tiedosto"
 
 #: src/remmina_ftp_client.c:596
 msgid "Upload folder"
@@ -845,7 +847,7 @@ msgstr "Yhdistetään kohteeseen \"%s\"…"
 #: src/remmina_protocol_widget.c:916 src/remmina_protocol_widget.c:1101
 #, c-format
 msgid "Connecting to “%s” via SSH…"
-msgstr "Yhdistetään kohteeseen ”%s”…"
+msgstr "Yhdistetään kohteeseen SSH:n kautta ”%s”…"
 
 #. TRANSLATORS: “%i” is a placeholder for a TCP port number.
 #: src/remmina_protocol_widget.c:1165
@@ -861,8 +863,7 @@ msgstr "Komento \"%s\" ei ole käytettävissä SSH-palvelimessa."
 #: src/remmina_protocol_widget.c:1223
 #, c-format
 msgid "Could not run the “%s” command on the SSH server (status = %i)."
-msgstr ""
-"Komennon \"%s\" suorittaminen SSH-palvelimessa ei onnistunut (tila = %i)."
+msgstr "Komentoa \"%s\" ei voitu suorittaa SSH-palvelimella (tila = %i)."
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_protocol_widget.c:1231
@@ -874,15 +875,15 @@ msgstr "Komentoa ei voitu suorittaa. %s"
 #: src/remmina_protocol_widget.c:1301
 #, c-format
 msgid "Connecting to %s via SSH…"
-msgstr "Yhdistetään kohteeseen ”%s”…"
+msgstr "Yhdistetään kohteeseen ”%s” SSH-kautta…"
 
 #: src/remmina_protocol_widget.c:1698
 msgid "Type in SSH username and password."
-msgstr "Kirjoita käyttäjänimi ja salasana SSH:lle."
+msgstr "Kirjoita käyttäjätunnus ja salasana SSH:lle."
 
 #: src/remmina_protocol_widget.c:1753 src/remmina_protocol_widget.c:1785
 msgid "Fingerprint automatically accepted"
-msgstr "Sormenjälki hyväksytty automaattisesti"
+msgstr "Sormenjälki hyväksyttiin automaattisesti"
 
 #. TRANSLATORS: The user is asked to verify a new SSL certificate.
 #: src/remmina_protocol_widget.c:1761
@@ -933,7 +934,7 @@ msgstr "Hyväksytäänkö muuttunut varmenne?"
 #: src/remmina_protocol_widget.c:1946
 #, c-format
 msgid "Listening on port %i for an incoming %s connection…"
-msgstr "Kuunnellaan porttia %i saapuvan %s-yhteyden varalta…"
+msgstr "Kuunnellaan portista %i saapuvaa %s-yhteyttä…"
 
 #: src/remmina_protocol_widget.c:1971
 msgid "Could not authenticate, attempting reconnection…"
@@ -948,22 +949,21 @@ msgstr "Palvelin"
 #: src/remmina_protocol_widget.c:2051
 #, c-format
 msgid "Install the %s protocol plugin first."
-msgstr "Asenna %s-protokollan liitännäinen ensin."
+msgstr "Asenna ensin %s-protokollalaajennus."
 
 #: src/remmina_ssh.c:236
 #, c-format
 msgid "Could not authenticate with TOTP/OTP/2FA. %s"
-msgstr "Ei voitu todentaa SSH-salasanaa. %s"
+msgstr "TOTP/OTP/2FA:lla ei voitu todentaa. %s"
 
 #: src/remmina_ssh.c:295 src/remmina_ssh.c:676
 #, c-format
 msgid "Could not authenticate with SSH password. %s"
-msgstr "Ei voitu todentaa SSH-salasanaa. %s"
+msgstr "Ei voitu todentaa SSH-salasanalla. %s"
 
 #: src/remmina_ssh.c:322 src/remmina_ssh.c:389
 msgid "No saved SSH passphrase supplied. Asking user to enter it."
-msgstr ""
-"Tallennettua SSH-salasanaa ei toimiteta. Pyydetään käyttäjää syöttämään se."
+msgstr "Ei tallennettua SSH-salalausetta. Käyttäjää pyydetään syöttämään se."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:327 src/remmina_ssh.c:368 src/remmina_ssh.c:394
@@ -976,7 +976,7 @@ msgstr "Todennus ei onnistunut julkisen SSH-avaimen avulla. %s"
 #: src/remmina_ssh.c:336
 #, c-format
 msgid "SSH certificate cannot be imported. %s"
-msgstr "SSH-varmennetta ei voi tuoda. %s"
+msgstr "SSH-varmenteen tuonti ei onnistu. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:345
@@ -992,7 +992,7 @@ msgstr "Todennus ei onnistunut SSH-varmenteen avulla. %s"
 
 #: src/remmina_ssh.c:369
 msgid "SSH identity file not selected."
-msgstr "SSH-avaintiedostoa ei ole asetettu."
+msgstr "SSH-identiteettitiedostoa ei ole valittu."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:380
@@ -1009,8 +1009,7 @@ msgstr ""
 #: src/remmina_ssh.c:523
 #, c-format
 msgid "Could not authenticate automatically with SSH agent. %s"
-msgstr ""
-"Automaattista todentamista julkisen SSH-avaimen avulla ei voitu suorittaa. %s"
+msgstr "Ei voitu todentaa automaattisesti SSH-agentilla. %s"
 
 #: src/remmina_ssh.c:569 src/remmina_ssh.c:856
 #, c-format
@@ -1020,12 +1019,12 @@ msgstr ""
 
 #: src/remmina_ssh.c:598
 msgid "The public SSH key changed!"
-msgstr "Julkinen SSH-avain on muutettu!"
+msgstr "Julkinen SSH-avain on muuttunut!"
 
 #: src/remmina_ssh.c:711
 #, c-format
 msgid "Could not authenticate with keyboard-interactive. %s"
-msgstr "Todennus ei onnistunut julkisen SSH-avaimen avulla. %s"
+msgstr "Todentaminen ei onnistunut vuorovaikutteisella näppäimistöllä. %s"
 
 #: src/remmina_ssh.c:813
 #, c-format
@@ -1036,23 +1035,23 @@ msgstr "Todennus ei onnistunut julkisen SSH-avaimen avulla. %s"
 #: src/remmina_ssh.c:921
 #, c-format
 msgid "Could not fetch the server's public SSH key. %s"
-msgstr "Palvelimen julkisen SSH-avaimen hakeminen ei onnistunut. %s"
+msgstr "Palvelimen julkista SSH-avainta ei voitu noutaa. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:928
 #, c-format
 msgid "Could not fetch public SSH key. %s"
-msgstr "Julkisen SSH-avaimen hakeminen ei onnistunut. %s"
+msgstr "Julkisen SSH-avaimen noutaminen ei onnistunut. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:936
 #, c-format
 msgid "Could not fetch checksum of the public SSH key. %s"
-msgstr "Julkisen SSH-avaimen tarkistussumman hakeminen ei onnistunut. %s"
+msgstr "Julkisen SSH-avaimen tarkistussummaa ei voitu noutaa. %s"
 
 #: src/remmina_ssh.c:949
 msgid "The server is unknown. The public key fingerprint is:"
-msgstr "Palvelin on tuntematon. Julkisen avaimen sormenjälki:"
+msgstr "Palvelin on tuntematon. Julkisen avaimen sormenjälki on:"
 
 #: src/remmina_ssh.c:951 src/remmina_ssh.c:957
 msgid "Do you trust the new public key?"
@@ -1064,8 +1063,8 @@ msgid ""
 "under attack,\n"
 "or the administrator has changed the key. The new public key fingerprint is:"
 msgstr ""
-"VAROITUS: Palvelimen julkinen avain on muuttunut. Tämä tarkoittaa, että joko "
-"kyseessä on tietoturvahyökkäys\n"
+"Varoitus: Palvelin on muuttanut julkista avaintaan. Tämä tarkoittaa, että "
+"joko kyseessä on tietoturvahyökkäys \n"
 "tai palvelimen ylläpitäjä on muuttanut avaimen. Uuden julkisen avaimen "
 "sormenjälki:"
 
@@ -1073,7 +1072,7 @@ msgstr ""
 #: src/remmina_ssh.c:979
 #, c-format
 msgid "Could not check list of known SSH hosts. %s"
-msgstr "Tunnettujen SSH-koneiden luetteloa ei voitu tarkistaa. %s"
+msgstr "Tunnettujen SSH-isäntien luetteloa ei voitu tarkistaa. %s"
 
 #: src/remmina_ssh.c:988
 msgid "SSH password"
@@ -1081,7 +1080,7 @@ msgstr "SSH-salasana"
 
 #: src/remmina_ssh.c:995 src/remmina_ssh.c:1039
 msgid "SSH private key passphrase"
-msgstr "Yksityisen SSH-avaimen salalause"
+msgstr "SSH:n yksityisen avaimen tunnuslause"
 
 #: src/remmina_ssh.c:1000
 msgid "SSH Kerberos/GSSAPI"
@@ -1089,7 +1088,7 @@ msgstr "SSH Kerberos/GSSAPI"
 
 #: src/remmina_ssh.c:1005
 msgid "Enter TOTP/OTP/2FA code"
-msgstr "Kirjoita TOTP-/OTP-/2FA-koodi"
+msgstr "Syötä TOTP/OTP/2FA-koodi"
 
 #: src/remmina_ssh.c:1035 src/remmina_ssh.c:1061
 msgid "SSH tunnel credentials"

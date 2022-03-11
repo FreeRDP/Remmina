@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2022-03-10 14:39+0000\n"
-"PO-Revision-Date: 2022-03-11 12:33+0000\n"
+"PO-Revision-Date: 2022-03-11 17:58+0000\n"
 "Last-Translator: Jose Riha <jose1711@gmail.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/remmina/remmina/"
 "sk/>\n"
@@ -1371,20 +1371,6 @@ msgstr ""
 "- unix:///path/socket.sock</big>"
 
 #: src/remmina_file_editor.c:69
-#, fuzzy
-#| msgid ""
-#| "<tt><big>• command in PATH args %h\n"
-#| "• /path/to/foo -options %h %u\n"
-#| "• %h is substituted with the server name\n"
-#| "• %t is substituted with the SSH server name\n"
-#| "• %u is substituted with the username\n"
-#| "• %U is substituted with the SSH username\n"
-#| "• %p is substituted with Remmina profile name\n"
-#| "• %g is substituted with Remmina profile group name\n"
-#| "• %d is substituted with local date and time in ISO 8601 format\n"
-#| "Do not run in background if you want the command to be executed before "
-#| "connecting.\n"
-#| "</big></tt>"
 msgid ""
 "<big>• command in PATH args %h\n"
 "• /path/to/foo -options %h %u\n"
@@ -1399,7 +1385,7 @@ msgid ""
 "connecting.\n"
 "</big>"
 msgstr ""
-"<tt><big>• príkaz v parametroch PATH %h\n"
+"<big>• príkaz v PATH argumenty %h\n"
 "• /cesta/k/programu -voľby %h %u\n"
 "• %h je nahradený názvom servera\n"
 "• %t je nahradený názvom servera SSH\n"
@@ -1408,9 +1394,9 @@ msgstr ""
 "• %p je nahradený názvom profilu aplikácie Remmina\n"
 "• %g je nahradený názvom skupiny profilu aplikácie Remmina\n"
 "• %d je nahradený miestnym dátumom a časom vo formáte iso8601\n"
-"Nespúšťajte aplikáciu na pozadí, keď chcete aby bol príkaz spustený pred "
+"Nespúšťajte aplikáciu na pozadí, ak chcete aby bol príkaz spustený pred "
 "pripojením.\n"
-"</big></tt>"
+"</big>"
 
 #: src/remmina_file_editor.c:83
 #, fuzzy
@@ -1502,7 +1488,7 @@ msgstr "Zabezpečenie profilu"
 
 #: src/remmina_file_editor.c:1102
 msgid "Require password to connect or edit the profile"
-msgstr ""
+msgstr "Pri úprave alebo spúšťaní profilu sa bude vyžadovať zadanie hesla"
 
 #: src/remmina_file_editor.c:1134
 msgid "SSH Tunnel"
@@ -1613,7 +1599,7 @@ msgstr "Rýchle pripojenie"
 #: src/remmina_file_editor.c:1957
 #, c-format
 msgid "Use '%s' as subgroup delimiter"
-msgstr "Použiť „%s“ ako oddeľovač podskupín"
+msgstr "Použite „%s“ ako oddeľovač podskupín"
 
 #: src/remmina_file_editor.c:2023 src/remmina_file_editor.c:2043
 #, c-format
@@ -2867,18 +2853,14 @@ msgid "Server CA certificate"
 msgstr "Certifikát CA servera"
 
 #: plugins/spice/spice_plugin.c:696
-#, fuzzy
-#| msgid "Prefered video codec"
 msgid "Preferred video codec"
-msgstr "Predvoľby"
+msgstr "Uprednostňovaný video kodek"
 
 #: plugins/spice/spice_plugin.c:697
 msgid "Turn off GStreamer overlay"
 msgstr "Zakázať vstup zo servera"
 
 #: plugins/spice/spice_plugin.c:700
-#, fuzzy
-#| msgid "Prefered image compression"
 msgid "Preferred image compression"
 msgstr "Uprednostňovaná komprimácia obrázkov"
 
@@ -3023,7 +3005,7 @@ msgstr "Načúva na porte"
 
 #: plugins/vnc/vnc_plugin.c:2050
 msgid "Override pre-set VNC encodings"
-msgstr ""
+msgstr "Ignorovať prednastavené VNC kódovania"
 
 #: plugins/vnc/vnc_plugin.c:2051
 msgid "Force tight encoding"
@@ -3726,17 +3708,14 @@ msgid "The only allowed value is '%s'."
 msgstr "Jediná povolená hodnota je \"%s\"."
 
 #: plugins/x2go/x2go_plugin.c:3118
-#, fuzzy
 msgid "The lower limit is not a valid integer!"
 msgstr "Dolná hranica nie je platné celé číslo!"
 
 #: plugins/x2go/x2go_plugin.c:3123
-#, fuzzy
 msgid "The lower limit is too high!"
 msgstr "Spodná hranica je príliš vysoká!"
 
 #: plugins/x2go/x2go_plugin.c:3128
-#, fuzzy
 msgid "The lower limit is too low!"
 msgstr "Spodná hranica je príliš nízka!"
 
@@ -3758,12 +3737,10 @@ msgid "The upper limit is not a valid integer!"
 msgstr "Horná hranica nie je platné celé číslo!"
 
 #: plugins/x2go/x2go_plugin.c:3153
-#, fuzzy
 msgid "The upper limit is too high!"
 msgstr "Horná hranica je príliš vysoká!"
 
 #: plugins/x2go/x2go_plugin.c:3158
-#, fuzzy
 msgid "The upper limit is too low!"
 msgstr "Horná hranica je príliš nízka!"
 
@@ -3866,46 +3843,32 @@ msgid "Authentication failure: %s"
 msgstr "Zlyhanie overovania: %s"
 
 #: plugins/gvnc/gvnc_plugin.c:820
-#, fuzzy
-#| msgid "Use system proxy settings"
 msgid "Use server settings"
-msgstr "Použitie nastavení servera"
+msgstr "Použiť nastavenie servera"
 
 #: plugins/gvnc/gvnc_plugin.c:821
-#, fuzzy
-#| msgid "True colour (24 bit)"
 msgid "True colour (24 bits)"
-msgstr "Skutočné farby (24 bit)"
+msgstr "Skutočné farby (24 bitov)"
 
 #: plugins/gvnc/gvnc_plugin.c:822
-#, fuzzy
-#| msgid "High colour (16 bit)"
 msgid "High colour (16 bits)"
-msgstr "Veľa farieb (16 bit)"
+msgstr "Veľa farieb (16 bitov)"
 
 #: plugins/gvnc/gvnc_plugin.c:823
-#, fuzzy
-#| msgid "High colour (16 bit)"
 msgid "Low colour (8 bits)"
-msgstr "Nízka farebnosť (8 bitov)"
+msgstr "Málo farieb (8 bitov)"
 
 #: plugins/gvnc/gvnc_plugin.c:824
-#, fuzzy
-#| msgid "True colour (24 bit)"
 msgid "Ultra low colour (3 bits)"
-msgstr "Veľmi nízkofarebný (3 bity)"
+msgstr "Veľmi málo farieb (3 bity)"
 
 #: plugins/gvnc/gvnc_plugin.c:848
-#, fuzzy
-#| msgid "Enter VNC password"
 msgid "VNC password"
 msgstr "Heslo VNC"
 
 #: plugins/gvnc/gvnc_plugin.c:850
-#, fuzzy
-#| msgid "SSH compression"
 msgid "Use JPEG Compression"
-msgstr "Používanie kompresie JPEG"
+msgstr "Použiť kompresiu JPEG"
 
 #: plugins/gvnc/gvnc_plugin.c:850
 #, fuzzy
@@ -3919,10 +3882,8 @@ msgid "Enable GTK-VNC debug"
 msgstr "Povolenie ladenia GTK-VNC"
 
 #: plugins/gvnc/gvnc_plugin.c:871
-#, fuzzy
-#| msgid "Per connection"
 msgid "Shared connection"
-msgstr "Spoločné pripojenie"
+msgstr "Zdieľané pripojenie"
 
 #: plugins/gvnc/gvnc_plugin.c:871
 #, fuzzy
@@ -4338,7 +4299,7 @@ msgstr "Vyberie protokol, ktorý sa má použiť v paneli rýchleho pripojenia."
 
 #: data/ui/remmina_main.glade:97
 msgid "Search string or server name/IP address for “Quick Connect”"
-msgstr "Vyhľadá reťazec alebo názov servera/adresu IP pre „Rýchle pripojenie“"
+msgstr "Vyhľadá reťazec alebo názov servera/IP adresu pre „Rýchle pripojenie“"
 
 #: data/ui/remmina_main.glade:101 data/ui/remmina_main.glade:103
 msgid "Server name or IP address"
@@ -4859,6 +4820,8 @@ msgstr "Vyžadované počas pripájania"
 #: data/ui/remmina_preferences.glade:1724
 msgid "Creation, editing, copying, and deletions require the Remmina password"
 msgstr ""
+"Pri vytváraní, úprave, kopírovaní a mazaní bude Remmina vyžadovať zadanie "
+"hesla"
 
 #. Creation, editing, copying, and deletions require the primary password
 #: data/ui/remmina_preferences.glade:1728
