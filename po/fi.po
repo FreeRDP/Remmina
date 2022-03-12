@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2022-03-10 14:39+0000\n"
-"PO-Revision-Date: 2022-03-11 17:58+0000\n"
+"PO-Revision-Date: 2022-03-12 13:58+0000\n"
 "Last-Translator: Tuomas Lähteenmäki <lahtis@gmail.com>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/remmina/remmina/"
 "fi/>\n"
@@ -603,12 +603,12 @@ msgstr "Muokkaa yhteysprofiilia (vaatii --set-option)"
 #: src/remmina.c:122
 msgid "Set one or more profile settings, to be used with --update-profile"
 msgstr ""
-"Aseta yksi tai useampi profiiliasetus, jota käytetään --update-profile "
+"Määritä vähintään yksi profiiliasetus, jota käytetään --update-profile "
 "option kanssa"
 
 #: src/remmina.c:123
 msgid "Encrypt a password"
-msgstr "Anna VNC-salasana"
+msgstr "Salaa salasana"
 
 #. TRANSLATORS:
 #. * This link should point to a resource explaining how to get Remmina
@@ -662,7 +662,7 @@ msgid ""
 "password\n"
 msgstr ""
 "Esimerkkejä:\n"
-"Yhdistä olemassa olevalla yhteysprofiililla käyttämällä:\n"
+"Yhdistä olemassa olevalla yhteysprofiilia käyttämällä:\n"
 "\n"
 "\tremmina -c FILE.remmina\n"
 "\n"
@@ -689,19 +689,19 @@ msgstr ""
 "Päivitääksesi käyttäjänimi ja salasana ja aseta Remmina-yhteysprofiilille "
 "erilainen resoluutiotila käytä:\n"
 "\n"
-"\techo \"username\\napassword\" | remmina --update-profile /PATH/TO/FOO."
-"remmina --set-option username --set-option resolution_mode=2 --set-option "
-"password\n"
+"\techo \"username\\n"
+"apassword\" | remmina --update-profile /PATH/TO/FOO.remmina --set-option "
+"username --set-option resolution_mode=2 --set-option password\n"
 
 #: src/remmina_public.c:345
 #, c-format
 msgid "Address is too long for UNIX socket_path: %s"
-msgstr "Osoite on liian pitkä UNIX-pistorasian polulle: %s"
+msgstr "Osoite on liian pitkä UNIX socket_polulle: %s"
 
 #: src/remmina_public.c:355
 #, c-format
 msgid "Creating UNIX socket failed: %s"
-msgstr "UNIX-pistokkeen luominen epäonnistui: %s"
+msgstr "UNIX-socketin luominen epäonnistui: %s"
 
 #: src/remmina_public.c:361
 #, c-format
