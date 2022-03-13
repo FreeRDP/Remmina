@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2022-03-10 14:39+0000\n"
-"PO-Revision-Date: 2022-03-13 10:59+0000\n"
+"PO-Revision-Date: 2022-03-13 12:46+0000\n"
 "Last-Translator: Jose Riha <jose1711@gmail.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/remmina/remmina/"
 "sk/>\n"
@@ -92,7 +92,7 @@ msgstr "Heslo na odomknutie súkromného kľúča"
 
 #: src/remmina_sftp_plugin.c:358 src/remmina_ssh_plugin.c:1536
 msgid "SSH Proxy Command"
-msgstr "Príkaz Proxy SSH"
+msgstr "Príkaz pre SSH proxy"
 
 #: src/remmina_sftp_plugin.c:367
 msgid "SFTP - Secure File Transfer"
@@ -115,6 +115,12 @@ msgid ""
 "There is more info about debugging Remmina on https://gitlab.com/Remmina/"
 "Remmina/-/wikis/Usage/Remmina-debugging\n"
 msgstr ""
+"Toto okno vám pomôže pri riešení problémov s pripojením.\n"
+"Zaznamenávanie môžete hocikedy spustiť alebo zastaviť pomocou prepínača.\n"
+"Tlačidlo štatistiky (Ctrl+T) sa môže hodiť pri získavaní informácií o "
+"systéme, ktoré môžete priložiť do hlásenia o chybe.\n"
+"Na stránke https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-"
+"debugging nájdete ďalšie informácie týkajúce sa ladenia Remmina.\n"
 
 #: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1962
 msgid "Protocol"
@@ -1381,8 +1387,7 @@ msgstr ""
 "• %p je nahradený názvom profilu aplikácie Remmina\n"
 "• %g je nahradený názvom skupiny profilu aplikácie Remmina\n"
 "• %d je nahradený miestnym dátumom a časom vo formáte iso8601\n"
-"Nespúšťajte aplikáciu na pozadí, ak chcete aby bol príkaz spustený pred "
-"pripojením.\n"
+"Nespúšťajte na pozadí, ak chcete aby bol príkaz spustený pred pripojením.\n"
 "</big>"
 
 #: src/remmina_file_editor.c:83
@@ -1822,7 +1827,7 @@ msgstr "Algoritmy KEX (Key Exchange)"
 
 #: src/remmina_ssh_plugin.c:1538
 msgid "Symmetric cipher client to server"
-msgstr "Symetrická cifra medzi klientom a serverom"
+msgstr "Symetrická šifra medzi klientom a serverom"
 
 #: src/remmina_ssh_plugin.c:1539
 msgid "Preferred server host key types"
@@ -1838,7 +1843,7 @@ msgstr "Názov súboru pre záznam relácie SSH"
 
 #: src/remmina_ssh_plugin.c:1542
 msgid "Log SSH session when exiting Remmina"
-msgstr "Zaznamená reláciu SSH po ukončení aplikácie Remmina"
+msgstr "Zaznamenať reláciu SSH pri ukončení aplikácie Remmina"
 
 #: src/remmina_ssh_plugin.c:1543
 msgid "Log SSH session asynchronously"
@@ -1854,11 +1859,11 @@ msgstr "Akustický zvonček terminálu"
 
 #: src/remmina_ssh_plugin.c:1545
 msgid "SSH compression"
-msgstr "Komprimácia SSH"
+msgstr "SSH kompresia"
 
 #: src/remmina_ssh_plugin.c:1546
 msgid "Don't remember passwords"
-msgstr "Nezapamätá si heslá"
+msgstr "Nepamätať si heslá"
 
 #: src/remmina_ssh_plugin.c:1547
 msgid "Strict host key checking"
@@ -2238,7 +2243,7 @@ msgstr "Vypnutý"
 
 #: plugins/rdp/rdp_plugin.c:2669
 msgid "Automatic negotiation"
-msgstr "Automatická dohoda"
+msgstr "Automatické vyjednanie"
 
 #: plugins/rdp/rdp_plugin.c:2670
 msgid "NLA protocol security"
@@ -2446,7 +2451,7 @@ msgstr "Kvalita"
 
 #: plugins/rdp/rdp_plugin.c:2803
 msgid "Security protocol negotiation"
-msgstr "Dohoda bezpečnostného protokolu"
+msgstr "Vyjednanie bezpečnostného protokolu"
 
 #: plugins/rdp/rdp_plugin.c:2804
 msgid "Gateway transport type"
@@ -2794,7 +2799,7 @@ msgstr "Zakázať vstup zo servera"
 
 #: plugins/spice/spice_plugin.c:700
 msgid "Preferred image compression"
-msgstr "Uprednostňovaná komprimácia obrázkov"
+msgstr "Uprednostňovaná kompresia obrázkov"
 
 #: plugins/spice/spice_plugin.c:703 plugins/spice/spice_plugin.c:716
 #: plugins/gvnc/gvnc_plugin.c:866 plugins/gvnc/gvnc_plugin.c:880
@@ -3460,7 +3465,6 @@ msgid "Resuming session '%s'…"
 msgstr "Obnovenie relácie '%s'…"
 
 #: plugins/x2go/x2go_plugin.c:2369
-#, fuzzy
 msgid "DPI setting is out of bounds. Please adjust it in profile settings."
 msgstr "Nastavenie DPI je mimo hraníc. Upravte ho v nastaveniach profilu."
 
@@ -3660,10 +3664,8 @@ msgid "Input must be a number between %i and %i."
 msgstr "Vstupom musí byť číslo medzi %i a %i."
 
 #: plugins/x2go/x2go_plugin.c:3228
-#, fuzzy
-#| msgid "Start-up program"
 msgid "Startup program"
-msgstr "Program po spustení"
+msgstr "Program pri spustení"
 
 #: plugins/x2go/x2go_plugin.c:3230
 #, fuzzy
@@ -3671,8 +3673,6 @@ msgid "Which command should be executed after creating the X2Go session?"
 msgstr "Ktorý príkaz sa má vykonať po vytvorení relácie X2Go?"
 
 #: plugins/x2go/x2go_plugin.c:3232
-#, fuzzy
-#| msgid "Keyboard layout"
 msgid "Keyboard Layout (auto)"
 msgstr "Rozloženie klávesnice (automatické)"
 
@@ -3683,8 +3683,6 @@ msgid "Keyboard type (auto)"
 msgstr "Typ klávesnice (automatický)"
 
 #: plugins/x2go/x2go_plugin.c:3234
-#, fuzzy
-#| msgid "Turn on Java support"
 msgid "Audio support"
 msgstr "Podpora zvuku"
 
@@ -3694,19 +3692,14 @@ msgid "The sound system of the X2Go server (default: 'pulse')."
 msgstr "Zvukový systém servera X2Go (predvolené: 'pulse')."
 
 #: plugins/x2go/x2go_plugin.c:3239
-#, fuzzy
-#| msgid "USB redirection error"
 msgid "Clipboard direction"
 msgstr "Smer schránky"
 
 #: plugins/x2go/x2go_plugin.c:3241
-#, fuzzy
 msgid "Which direction should clipboard content be copied? (default: 'both')."
 msgstr "Ktorým smerom sa má kopírovať obsah schránky? (predvolené: 'oba')."
 
 #: plugins/x2go/x2go_plugin.c:3245
-#, fuzzy
-#| msgid "Resolution"
 msgid "DPI resolution"
 msgstr "Rozlíšenie DPI"
 
@@ -3730,8 +3723,6 @@ msgid "X2Go - Launch an X2Go session"
 msgstr "X2Go - spustenie relácie X2Go"
 
 #: plugins/gvnc/gvnc_plugin_config.h:40
-#, fuzzy
-#| msgid "Remmina VNC Plugin"
 msgid "Remmina VNC plugin for GNOME and KVM"
 msgstr "Zásuvný modul Remmina VNC pre GNOME a KVM"
 
@@ -3782,7 +3773,6 @@ msgid "This might not work on all VNC servers"
 msgstr "Toto nemusí fungovať na všetkých serveroch VNC"
 
 #: plugins/gvnc/gvnc_plugin.c:851
-#, fuzzy
 msgid "Enable GTK-VNC debug"
 msgstr "Povolenie ladenia GTK-VNC"
 
@@ -4144,14 +4134,10 @@ msgid "Receives updated news from remmina.org"
 msgstr ""
 
 #: data/ui/remmina_news.glade:182
-#, fuzzy
-#| msgid ""
-#| "* By enabling statistics and/or news you consent to send and fetch data "
-#| "to/from remmina.org"
 msgid "* By turning on news you consent to fetching data from remmina.org"
 msgstr ""
-"* Povolením štatistiky a/alebo noviniek, súhlasíte s odosielaním a "
-"prijímaním údajov do/z lokality remmina.org"
+"* Zapnutím noviniek vyjadrujete svoj súhlas s prijímaním údajov zo servera "
+"remmina.org"
 
 #: data/ui/remmina_news.glade:205
 msgid "<big>Take part</big>"
@@ -4449,14 +4435,10 @@ msgid "Prevent screenshots from entering clipboard"
 msgstr "Zabrániť ukladaniu snímok obrazovky do schránky"
 
 #: data/ui/remmina_preferences.glade:430
-#, fuzzy
-#| msgid ""
-#| "* By enabling statistics and/or news you consent to send and fetch data "
-#| "to/from remmina.org"
 msgid "* By enabling news you consent to fetch data from remmina.org"
 msgstr ""
-"* Povolením štatistiky a/alebo noviniek, súhlasíte s odosielaním a "
-"prijímaním údajov do/z lokality remmina.org"
+"* Povolením noviniek vyjadrujete svoj súhlas s prijímaním údajov zo servera "
+"remmina.org"
 
 #: data/ui/remmina_preferences.glade:496
 msgid "Ask consent to close last window"
@@ -4502,11 +4484,11 @@ msgstr "Podľa skupín"
 
 #: data/ui/remmina_preferences.glade:638
 msgid "By protocol"
-msgstr "Podľa protokolov"
+msgstr "Podľa protokolu"
 
 #: data/ui/remmina_preferences.glade:639
 msgid "Per connection"
-msgstr "Na pripojenie"
+msgstr "Podľa pripojenia"
 
 #: data/ui/remmina_preferences.glade:651
 msgid "Fullscreen on the same screen as the connection window"
@@ -4734,10 +4716,8 @@ msgid "Require to modify"
 msgstr "Vyžadované pri úpravách"
 
 #: data/ui/remmina_preferences.glade:1770
-#, fuzzy
-#| msgid "File encryption"
 msgid "Encryption"
-msgstr "Šifrovanie súborov"
+msgstr "Šifrovanie"
 
 #: data/ui/remmina_preferences.glade:1781
 msgid ""
@@ -4752,31 +4732,27 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:1790
 msgid "Intermediate (+64 MiB RAM)"
-msgstr ""
+msgstr "Pokročilé (+64 MiB RAM)"
 
 #: data/ui/remmina_preferences.glade:1791
 msgid "Strong (+256 MiB, ~2009 CPU)"
-msgstr ""
+msgstr "Silné (+256 MiB, ~2009 CPU)"
 
 #: data/ui/remmina_preferences.glade:1792
 msgid "Sensitive (+1 GiB, ~2014 CPU)"
-msgstr ""
+msgstr "Citlivé (+1 GiB, ~2014 CPU)"
 
 #: data/ui/remmina_preferences.glade:1808
-#, fuzzy
-#| msgid "Edit settings"
 msgid "Auditing log"
-msgstr "Upraviť nastavenia"
+msgstr "Záznam pre audit"
 
 #: data/ui/remmina_preferences.glade:1833
 msgid "Automatically accept all fingerprints and certificates"
 msgstr "Automaticky prijme všetky odtlačky a certifikáty"
 
 #: data/ui/remmina_preferences.glade:1838
-#, fuzzy
-#| msgid "Trust all fingerprints and certificates"
 msgid "Trust all certificates"
-msgstr "Dôverovať všetkým odtlačkom a certifikátom"
+msgstr "Dôverovať všetkým certifikátom"
 
 #: data/ui/remmina_preferences.glade:1873
 msgid "Security"
@@ -4791,14 +4767,12 @@ msgid "Scrollback lines"
 msgstr "Riadky spätného rolovania"
 
 #: data/ui/remmina_preferences.glade:1965
-#, fuzzy
-#| msgid "Shortcut for copying to clipboard"
 msgid "Shortcuts for copying and pasting"
-msgstr "Skratky na kopírovanie a vkladanie"
+msgstr "Skratky na kopírovanie a prilepovanie"
 
 #: data/ui/remmina_preferences.glade:1978
 msgid "Select all shortcuts"
-msgstr "Výber všetkých skratiek"
+msgstr "Vybrať všetky skratky"
 
 #: data/ui/remmina_preferences.glade:1991
 #: data/ui/remmina_preferences.glade:2008
@@ -4937,10 +4911,8 @@ msgid "Increase and decrease font size"
 msgstr "Zväčšenie a zmenšenie veľkosti písma"
 
 #: data/ui/remmina_preferences.glade:2478
-#, fuzzy
-#| msgid "Search text"
 msgid "Search text shortcut"
-msgstr "Textová skratka pre vyhľadávanie"
+msgstr "Skratka pre vyhľadanie textu"
 
 #: data/ui/remmina_preferences.glade:2509
 #: data/ui/remmina_preferences.glade:2524
