@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2022-03-10 14:39+0000\n"
-"PO-Revision-Date: 2022-03-12 13:58+0000\n"
+"PO-Revision-Date: 2022-03-14 15:57+0000\n"
 "Last-Translator: Tuomas Lähteenmäki <lahtis@gmail.com>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/remmina/remmina/"
 "fi/>\n"
@@ -105,10 +105,8 @@ msgid "Remmina debugging window"
 msgstr "Remmina virheenkorjausikkuna"
 
 #: src/remmina_log.c:134
-#, fuzzy
-#| msgid "Open the Remmina main window"
 msgid "Paste sytem info in the Remmina debugging window"
-msgstr "Avaa Remminan pääikkuna"
+msgstr "Liitä järjestelmätiedot Remminan vianmääritysikkunaan"
 
 #: src/remmina_log.c:154
 msgid ""
@@ -119,6 +117,12 @@ msgid ""
 "There is more info about debugging Remmina on https://gitlab.com/Remmina/"
 "Remmina/-/wikis/Usage/Remmina-debugging\n"
 msgstr ""
+"Tämä ikkuna voi auttaa sinua löytämään yhteysongelmia.\n"
+"Voit pysäyttää ja käynnistää kirjaamisen milloin tahansa On/Off-kytkimellä.\n"
+"Tilastot-painike (Ctrl+T) voi olla hyödyllinen, kun haluat kerätä "
+"järjestelmätietoja, jotka voit jakaa vikailmoituksen yhteydessä.\n"
+"Lisätietoja Remminan virheenkorjauksesta on osoitteessa https://gitlab.com/"
+"Remmina/Remmina/-/wikis/Usage/Remmina-debugging.\n"
 
 #: src/remmina_plugin_manager.c:73 src/remmina_file_editor.c:1962
 msgid "Protocol"
@@ -242,10 +246,8 @@ msgstr "Määritä näppäimistön painikkeet"
 
 #. TRANSLATORS: Do not translate libsodium, is the name of a library
 #: src/remmina_pref_dialog.c:476
-#, fuzzy
-#| msgid "libsodium >= 1.9.0 is required to use master password"
 msgid "libsodium >= 1.9.0 is required to use Primary Password"
-msgstr "libsodium >= 1.9.0 vaaditaan pääsalasanan käyttämiseksi"
+msgstr "libsodium >= 1.9.0 vaaditaan ensisijaisen salasanan käyttämiseen"
 
 #: src/remmina_pref_dialog.c:811
 msgid "Picking a terminal colouring file replaces the file: "
@@ -325,12 +327,8 @@ msgid ""
 msgstr "Haluatko varmasti sulkea %i aktiivista yhteyttä nykyisessä ikkunassa?"
 
 #: src/rcw.c:666
-#, fuzzy
-#| msgid ""
-#| "Are you sure you want to close %i active connections in the current "
-#| "window?"
 msgid "Are you sure you want to close this last active connection?"
-msgstr "Haluatko varmasti sulkea %i aktiivista yhteyttä nykyisessä ikkunassa?"
+msgstr "Haluatko varmasti sulkea tämän viimeisen aktiivisen yhteyden?"
 
 #: src/rcw.c:1411
 msgid "Viewport fullscreen mode"
@@ -349,9 +347,8 @@ msgid "Fill client window when scaled"
 msgstr "Täytä asiakasikkuna skaalattuna"
 
 #: src/rcw.c:2061
-#, fuzzy
 msgid "Send clipboard content as keystrokes"
-msgstr "Lähetä leikepöydän sisältö näppäinpainalluksina"
+msgstr "Leikepöydän sisällön lähettäminen näppäinpainalluksina"
 
 #: src/rcw.c:2167
 msgid "Turn off scaling to avoid screenshot distortion."
@@ -439,7 +436,6 @@ msgstr "Tiedosto \"%s\" on vioittunut, sitä ei voi lukea tai sitä ei löydy."
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. TRANSLATORS: 'GtkSocket feature is not available'.
 #: src/rcw.c:4388
-#, fuzzy
 msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
@@ -465,6 +461,11 @@ msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 msgstr ""
+"GtkSocketiin tukeutuvat lisäosat eivät voi toimia Wayland-istunnossa.\n"
+"Lisätietoja ja mahdollisen ratkaisun löydät Remmina-wikistä osoitteesta:\n"
+"\n"
+"https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
+"available-in-a-Wayland-session"
 
 #: src/rcw.c:4545
 msgid "Open in web browser"
@@ -513,29 +514,21 @@ msgstr "TIEDOSTO"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:92
-#, fuzzy
-#| msgid ""
-#| "Connect to a desktop described in a file (.remmina or a type supported by "
-#| "a plugin)"
 msgid ""
 "Connect to a desktop described in a file (.remmina or a filetype supported "
 "by a plugin)"
 msgstr ""
-"Yhteyden muodostaminen työpöydälle kuvattu tiedostossa (.remmina tai "
-"liitännäisen tukema tyyppi)"
+"Yhteyden muodostaminen tiedostossa kuvattuun työpöytään (.remmina tai "
+"liitännäisen tukema tiedostotyyppi)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:94
-#, fuzzy
-#| msgid ""
-#| "Edit desktop connection described in file (.remmina or type supported by "
-#| "plugin)"
 msgid ""
 "Edit desktop connection described in file (.remmina or a filetype supported "
 "by plugin)"
 msgstr ""
-"Muokkaa tiedostossa kuvattua työpöydän yhteyttä (.remmina tai liitännäisen "
-"tukema tyyppi)"
+"Muokkaa tiedostossa kuvattua työpöytäyhteyttä (.remmina tai jokin "
+"liitännäisen tukema tiedostotyyppi)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:97
@@ -621,6 +614,10 @@ msgid ""
 "More info available on the Remmina wiki at:\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgstr ""
+"Remmina ei kirjaa kaikkia tulostuslauseita. Ota käyttöön yksityiskohtaisempi "
+"tulostus käyttämällä ympäristömuuttujaa \"G_MESSAGES_DEBUG=all\".\n"
+"Lisätietoja on saatavilla Remminan wikissä osoitteessa:\n"
+"https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:392
@@ -1220,7 +1217,6 @@ msgid "Plugin %s is not registered."
 msgstr "Liitännäistä %s ei ole rekisteröity."
 
 #: src/remmina_main.c:685
-#, fuzzy
 msgid "The latest successful connection attempt, or a pre-computed date"
 msgstr "Viimeisin onnistunut yhteysyritys tai ennalta laskettu päivämäärä."
 
@@ -1233,11 +1229,11 @@ msgstr[1] "Yhteensä %i kohdetta."
 
 #: src/remmina_main.c:695
 msgid "Network status: fully online"
-msgstr ""
+msgstr "Verkon tila: täysin online-tilassa"
 
 #: src/remmina_main.c:698
 msgid "Network status: offline"
-msgstr ""
+msgstr "Verkkotila: yhteydetön"
 
 #: src/remmina_main.c:945
 #, c-format
@@ -1474,14 +1470,12 @@ msgid "Auto-start this profile"
 msgstr "Käynnistä tämä profiili automaattisesti"
 
 #: src/remmina_file_editor.c:1099
-#, fuzzy
-#| msgid "New connection profile"
 msgid "Connection profile security"
-msgstr "Uusi yhteysprofiili"
+msgstr "Yhteysprofiilin turvallisuus"
 
 #: src/remmina_file_editor.c:1102
 msgid "Require password to connect or edit the profile"
-msgstr ""
+msgstr "Vaadi salasana yhteyden muodostamiseen tai profiilin muokkaamiseen"
 
 #: src/remmina_file_editor.c:1134
 msgid "SSH Tunnel"
@@ -1529,17 +1523,19 @@ msgid "Notes"
 msgstr "Huomautukset"
 
 #: src/remmina_file_editor.c:1449
-#, fuzzy, c-format
+#, c-format
 msgid "(%s: %i): Can't validate setting '%s' since 'value' or 'gfe' are NULL!"
-msgstr "(%s: %i): X34X]', koska 'value' tai 'gfe' ovat NULL!"
+msgstr ""
+"(%s: %i): Ei voi't validoida asetusta '%s' koska 'arvo' tai 'gfe' ovat NULL!"
 
 #: src/remmina_file_editor.c:1452
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "(%s: %i): Can't validate user input since 'setting_name_to_validate', "
 "'value' or 'gfe' are NULL!"
 msgstr ""
-"(%s: %i): koska 'setting_name_to_validate', 'value' tai 'gfe' ovat NULL!"
+"(%s: %i): Käyttäjän syötettä ei voida'validoida, koska "
+"'setting_name_to_validate', 'value' tai 'gfe' ovat NULL!"
 
 #. TRANSLATORS: Meta-error. Shouldn't be visible.
 #: src/remmina_file_editor.c:1456 plugins/x2go/x2go_plugin.c:2409
@@ -1549,8 +1545,7 @@ msgstr "Sisäinen virhe."
 
 #: src/remmina_file_editor.c:1678 src/remmina_file_editor.c:1714
 #: src/remmina_file_editor.c:1735 src/remmina_file_editor.c:1758
-#, fuzzy, c-format
-#| msgid "Could not create SFTP session. %s"
+#, c-format
 msgid "Couldn't validate user input. %s"
 msgstr "Käyttäjän syötettä ei voitu validoida. %s"
 
@@ -1596,7 +1591,6 @@ msgstr "Tiedostoa \"%s\" ei löytynyt."
 #. TRANSLATORS: This is a message that pops up when an external Remmina plugin tries to set the window resolution using a legacy parameter.
 #. TRANSLATORS: This is a message that pop-up when an external Remmina plugin tries to set the windows resolution using a legacy parameter.
 #: src/remmina_file.c:473 src/remmina_file.c:519
-#, fuzzy
 msgid ""
 "Using the «resolution» parameter in the Remmina preferences file is "
 "deprecated.\n"
@@ -1636,66 +1630,63 @@ msgid "Connect to remote desktops through the applet menu"
 msgstr "Yhdistä etätyöpöytiin käyttäen sovelmavalikkoa"
 
 #: src/remmina_icon.c:361
-#, fuzzy
 msgid "StatusNotifier/Appindicator support in “"
 msgstr "StatusNotifier/Appindicator-tuki \""
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:368
-#, fuzzy, c-format
+#, c-format
 msgid "%s your desktop does support it"
-msgstr "%s työpöytäsi tukee sitä."
+msgstr "%s työpöytäsi tukee sitä"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:370
-#, fuzzy, c-format
+#, c-format
 msgid "%s and Remmina has built-in (compiled) support for libappindicator."
 msgstr ""
 "%s ja Remminassa on sisäänrakennettu (käännetty) tuki libappindicatorille."
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:373
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%s not supported natively by your Desktop Environment. libappindicator will "
 "try to fallback to GtkStatusIcon/xembed"
 msgstr ""
 "%s ei tueta natiivisti työpöytäympäristössäsi. libappindicator yrittää "
-"käyttää GtkStatusIcon/xembed-tilaa."
+"turvautua GtkStatusIcon/xembed-toimintoon."
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:377
-#, fuzzy, c-format
+#, c-format
 msgid "%s You may need to install, and use XApp Status Applet"
 msgstr ""
 "%s Sinun on ehkä asennettava ja käytettävä XApp Status Applet -sovellusta."
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:380
-#, fuzzy, c-format
+#, c-format
 msgid "%s You may need to install, and use KStatusNotifierItem"
-msgstr ""
-"%s Sinun on ehkä asennettava ja käytettävä KStatusNotifierItem-ominaisuutta"
+msgstr "%s Sinun on ehkä asennettava ja käytettävä KStatusNotifierItem"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:383
-#, fuzzy, c-format
+#, c-format
 msgid "%s You may need to install, and use XEmbed SNI Proxy"
-msgstr "%s Sinun on ehkä asennettava ja käytettävä XEmbed SNI Proxy -ohjelmaa."
+msgstr "%s Sinun on ehkä asennettava ja käytettävä XEmbed SNI Proxy -ohjelmaa"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:386
-#, fuzzy, c-format
+#, c-format
 msgid "%s You may need to install, and use Gnome Shell Extension Appindicator"
 msgstr ""
-"%s Sinun on ehkä asennettava ja käytettävä Gnome Shell -laajennusta "
-"Appindicator."
+"%s Saatat joutua asentamaan Gnome Shell Extension Appindicatorin ja "
+"käyttämään sitä"
 
 #: src/remmina_ssh_plugin.c:342
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s:%d via SSH"
-msgstr "Yhdistetään kohteeseen ”%s”…"
+msgstr "Yhteys %s:%d SSH:n kautta."
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_ssh_plugin.c:550
@@ -1736,10 +1727,9 @@ msgid "Find text (host+G)"
 msgstr "Etsi tekstiä (Host + G)"
 
 #: src/remmina_ssh_plugin.c:921
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Disconnected from %s:%d via SSH"
-msgstr "Yhdistetään kohteeseen ”%s”…"
+msgstr "Yhteys katkesi %s:%d SSH:n kautta."
 
 #: src/remmina_ssh_plugin.c:1468 data/ui/remmina_main.glade:177
 msgid "Copy"
@@ -1795,16 +1785,12 @@ msgid "User password"
 msgstr "Käyttäjän salasana"
 
 #: src/remmina_ssh_plugin.c:1506
-#, fuzzy
-#| msgid "Pre-command"
 msgid "Opening command"
-msgstr "Esikomento"
+msgstr "Avataan komentoa"
 
 #: src/remmina_ssh_plugin.c:1507
-#, fuzzy
-#| msgid "Start-up program"
 msgid "Start-up background program"
-msgstr "Käynnistettävä ohjelma"
+msgstr "Käynnistyksen taustaohjelma"
 
 #: src/remmina_ssh_plugin.c:1512
 msgid ""
@@ -1939,11 +1925,10 @@ msgid "Keyboard scancode remapping"
 msgstr "Näppäimistöasettelun uudelleenmääritys"
 
 #: plugins/rdp/rdp_settings.c:483
-#, fuzzy
 msgid "List of key=value,… pairs to remap scancodes. E.g. 0x56=0x29,0x29=0x56"
 msgstr ""
 "Luettelo key=value,... -pareista scancodien uudelleenkoodausta varten. Esim. "
-"0x56=0x29,0x29=0x56."
+"0x56=0x29,0x29=0x56"
 
 #: plugins/rdp/rdp_settings.c:486
 msgid "FreeRDP > 2.3.0 is required to map scancodes"
@@ -2037,7 +2022,7 @@ msgstr "Syötä RDP-yhdyskäytävän kirjautumistiedot"
 #: plugins/rdp/rdp_plugin.c:1037
 #, c-format
 msgid "Disconnected from %s via RDP"
-msgstr ""
+msgstr "Yhteys katkaistiin %s:stä RDP:n kautta"
 
 #: plugins/rdp/rdp_plugin.c:2167
 #, c-format
@@ -2113,16 +2098,13 @@ msgid "Could not find the address for the RDP server “%s”."
 msgstr "RDP-palvelimen osoitetta \"%s\" ei löytynyt."
 
 #: plugins/rdp/rdp_plugin.c:2222
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not connect to the RDP server “%s” via TLS. Check that client and "
-#| "server support a common TLS version."
+#, c-format
 msgid ""
 "Could not connect to the RDP server “%s” via TLS. See the DEBUG traces from "
 "a terminal for more information."
 msgstr ""
-"Virhe muodostettaessa TLS-yhteyttä RDP-palvelimeen \"%s\". Tarkista, että "
-"asiakas ja palvelin tukevat yhteistä TLS-versiota."
+"Yhteyttä RDP-palvelimeen \"%s\" ei saatu muodostettua TLS:n kautta. Katso "
+"lisätietoja terminaalin DEBUG-jäljistä."
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:2226
@@ -2418,16 +2400,14 @@ msgstr ""
 "hakemistoja varten."
 
 #: plugins/rdp/rdp_plugin.c:2777
-#, fuzzy
 msgid "Restricted admin mode"
-msgstr "Rajoitettu hallintatila"
+msgstr "Rajoitettu järjestelmänvalvojatila"
 
 #: plugins/rdp/rdp_plugin.c:2778
 msgid "Password hash"
 msgstr "Salasanan tiiviste"
 
 #: plugins/rdp/rdp_plugin.c:2778
-#, fuzzy
 msgid "Restricted admin mode password hash"
 msgstr "Rajoitetun hallintatilan salasanan hash"
 
@@ -2728,10 +2708,9 @@ msgstr "Uudelleenyhdistämisen yritys %d/%d…"
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_event.c:1127
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s via RDP"
-msgstr "Yhdistetään kohteeseen ”%s”…"
+msgstr "Yhteys %s:een RDP:n kautta"
 
 #: plugins/spice/spice_plugin_file_transfer.c:82
 msgid "File Transfers"
@@ -2765,16 +2744,14 @@ msgid "Disconnected from the SPICE server “%s”."
 msgstr "Katkaistu yhteys SPICE-palvelimeen \"%s\"."
 
 #: plugins/spice/spice_plugin.c:388
-#, fuzzy, c-format
-#| msgid "Disconnected from the SPICE server “%s”."
+#, c-format
 msgid "Disconnected from %s:%d via SPICE"
-msgstr "Katkaistu yhteys SPICE-palvelimeen \"%s\"."
+msgstr "Kytketty irti %s:%d SPICE:n kautta"
 
 #: plugins/spice/spice_plugin.c:391
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s:%d via SPICE"
-msgstr "Yhdistetään kohteeseen ”%s”…"
+msgstr "Kytketty %s:%d SPICE:n kautta"
 
 #: plugins/spice/spice_plugin.c:403
 msgid "TLS connection error."
@@ -2818,10 +2795,8 @@ msgid "Turn off GStreamer overlay"
 msgstr "Poista palvelimen syöte käytöstä"
 
 #: plugins/spice/spice_plugin.c:700
-#, fuzzy
-#| msgid "Prefered image compression"
 msgid "Preferred image compression"
-msgstr "Ensisijainen kuvan pakkaus"
+msgstr "Suositeltava kuvapakkaus"
 
 #: plugins/spice/spice_plugin.c:703 plugins/spice/spice_plugin.c:716
 #: plugins/gvnc/gvnc_plugin.c:866 plugins/gvnc/gvnc_plugin.c:880
@@ -2895,15 +2870,14 @@ msgid "Please retry after turning on encryption for this profile."
 msgstr "Yritä uudelleen, kun salaus on otettu käyttöön tässä profiilissa."
 
 #: plugins/vnc/vnc_plugin.c:1706
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s:%d via VNC"
-msgstr "Yhdistetään kohteeseen ”%s”…"
+msgstr "Yhteys %s:%d VNC:n kautta"
 
 #: plugins/vnc/vnc_plugin.c:1725
 #, c-format
 msgid "Disconnected from %s:%d via VNC"
-msgstr ""
+msgstr "Yhteys katkesi %s:%d:stä VNC:n kautta"
 
 #: plugins/vnc/vnc_plugin.c:1974
 msgid ""
@@ -2925,7 +2899,6 @@ msgstr ""
 "    x11vnc -connect repeater=ID:123456789+10.10.10.10.12:5500."
 
 #: plugins/vnc/vnc_plugin.c:1983
-#, fuzzy
 msgid ""
 "Listening for remote VNC connection:\n"
 "  • The “Listen on port” field is the port Remmina will listen to,\n"
@@ -2954,6 +2927,15 @@ msgid ""
 "  • “Best (slowest)” sets encoding to “copyrect zrle ultra zlib hextile "
 "corre rre raw”"
 msgstr ""
+"Esiasetetun VNC-koodauslaadun ohittaminen:\n"
+"\n"
+"  - \"Huono (nopein)\" asettaa koodauksen \"copyrect zlib hextile raw\"\n"
+"  - \"Kohtalainen\" asettaa koodauksen \"tight zrle ultra copyrect hextile "
+"zlib corre rre raw\"\n"
+"  - \"Hyvä\" asettaa koodauksen arvoksi \"tight zrle ultra copyrect hextile "
+"zlib corre rre raw\"\n"
+"  - \"Paras (hitain)\" asettaa koodaukseksi \"copyrect zrle ultra zlib "
+"hextile corre rre raw\""
 
 #: plugins/vnc/vnc_plugin.c:2018
 msgid "Repeater"
@@ -2965,15 +2947,15 @@ msgstr "Kuuntele portissa"
 
 #: plugins/vnc/vnc_plugin.c:2050
 msgid "Override pre-set VNC encodings"
-msgstr ""
+msgstr "Ohita esiasetetut VNC-koodaukset"
 
 #: plugins/vnc/vnc_plugin.c:2051
 msgid "Force tight encoding"
-msgstr ""
+msgstr "Pakota tiukka koodaus"
 
 #: plugins/vnc/vnc_plugin.c:2051
 msgid "Enabling this may help when the remote desktop looks scrambled"
-msgstr ""
+msgstr "Tämän käyttöönotto voi auttaa, kun etätyöpöytä näyttää sekavalta"
 
 #: plugins/vnc/vnc_plugin.c:2054 plugins/gvnc/gvnc_plugin.c:868
 msgid "Ignore remote bell messages"
@@ -3101,13 +3083,13 @@ msgid "Secured password storage in the GNOME keyring"
 msgstr "Suojattu salasana, joka tallennetaan GNOME-avainrenkaaseen"
 
 #: plugins/x2go/x2go_plugin.c:67
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The command-line feature '%s' is not available! Attempting to start PyHoca-"
 "CLI without using this feature…"
 msgstr ""
-"Komentorivin ominaisuus '%s' ei ole käytettävissä! PyHoca-CLI:n "
-"käynnistäminen ilman tätä ominaisuutta…"
+"Komentoriviominaisuus '%s' ei ole käytettävissä! PyHoca-CLI:n "
+"käynnistysyritys ilman tätä ominaisuutta…"
 
 #: plugins/x2go/x2go_plugin.c:292 plugins/x2go/x2go_plugin.c:424
 #: plugins/x2go/x2go_plugin.c:513 plugins/x2go/x2go_plugin.c:620
@@ -3125,113 +3107,88 @@ msgstr ""
 #: plugins/x2go/x2go_plugin.c:3127 plugins/x2go/x2go_plugin.c:3132
 #: plugins/x2go/x2go_plugin.c:3147 plugins/x2go/x2go_plugin.c:3152
 #: plugins/x2go/x2go_plugin.c:3157 plugins/x2go/x2go_plugin.c:3162
-#, fuzzy, c-format
-#| msgid "Transfer error"
+#, c-format
 msgid "Internal error: %s"
 msgstr "Sisäinen virhe: %s"
 
 #: plugins/x2go/x2go_plugin.c:293 plugins/x2go/x2go_plugin.c:425
 #: plugins/x2go/x2go_plugin.c:514 plugins/x2go/x2go_plugin.c:1293
-#, fuzzy
 msgid "Parameter 'custom_data' is not initialized!"
-msgstr "Parametri 'default_username' ei ole alustettu."
+msgstr "Parametria 'custom_data' ei ole alustettu!"
 
 #: plugins/x2go/x2go_plugin.c:306
-#, fuzzy
 msgid "Broken `DialogData`! Aborting…"
 msgstr "Rikkinäinen `DialogData`! Keskeytys…"
 
 #: plugins/x2go/x2go_plugin.c:310
-#, fuzzy
 msgid "Can't retrieve `DialogData`! Aborting…"
-msgstr "`DialogDataa` ei voi hakea! Keskeytys…"
+msgstr "Ei voi hakea `DialogData`! Keskeytys…"
 
 #: plugins/x2go/x2go_plugin.c:472
-#, fuzzy
-#| msgid "Display"
 msgid "X Display"
-msgstr "Näyttö"
+msgstr "X Näyttö"
 
 #: plugins/x2go/x2go_plugin.c:473
 msgid "Status"
 msgstr "Tila"
 
 #: plugins/x2go/x2go_plugin.c:474
-#, fuzzy
-#| msgid "Permission"
 msgid "Session ID"
 msgstr "Istunnon ID"
 
 #: plugins/x2go/x2go_plugin.c:475
-#, fuzzy
 msgid "Create date"
 msgstr "Luo päivämäärä"
 
 #: plugins/x2go/x2go_plugin.c:476
-#, fuzzy
 msgid "Suspended since"
 msgstr "Keskeytetty vuodesta"
 
 #: plugins/x2go/x2go_plugin.c:477
-#, fuzzy
 msgid "Agent PID"
-msgstr "Agentti PID"
+msgstr "Agentin PID"
 
 #: plugins/x2go/x2go_plugin.c:479
-#, fuzzy
-#| msgid "Username"
 msgid "Hostname"
 msgstr "Isäntänimi"
 
 #: plugins/x2go/x2go_plugin.c:480
-#, fuzzy
 msgid "Cookie"
-msgstr "Cookie"
+msgstr "Eväste"
 
 #: plugins/x2go/x2go_plugin.c:481
-#, fuzzy
 msgid "Graphic port"
 msgstr "Graafinen portti"
 
 #: plugins/x2go/x2go_plugin.c:482
-#, fuzzy
 msgid "SND port"
 msgstr "SND-portti"
 
 #: plugins/x2go/x2go_plugin.c:483
-#, fuzzy
-#| msgid "Local SSH port"
 msgid "SSHFS port"
 msgstr "SSHFS-portti"
 
 #: plugins/x2go/x2go_plugin.c:484
-#, fuzzy
 msgid "Visible"
-msgstr "Näkyvissä"
+msgstr "Näkyvä"
 
 #: plugins/x2go/x2go_plugin.c:523
-#, fuzzy
 msgid "Couldn't retrieve valid `DialogData` or `sessions_list`! Aborting…"
 msgstr ""
-"Kelvollista `DialogData`- tai `sessions_list`-luetteloa ei voitu hakea! "
-"Keskeytys…"
+"Ei voitu noutaa kelvollisia \"DialogData\" tai \"sessions_list\"! "
+"Keskeytetään…"
 
 #. TRANSLATORS: Stick to x2goclient's translation for terminate.
 #: plugins/x2go/x2go_plugin.c:532
-#, fuzzy
-#| msgid "Terminate"
 msgid "_Terminate"
-msgstr "Lopeta"
+msgstr "_ Lopeta"
 
 #. TRANSLATORS: Stick to x2goclient's translation for resume.
 #: plugins/x2go/x2go_plugin.c:535
-#, fuzzy
-#| msgid "Resume"
 msgid "_Resume"
-msgstr "Jatka"
+msgstr "_Jatka"
 
 #: plugins/x2go/x2go_plugin.c:537
-#, fuzzy
 msgid "_New"
 msgstr "_Uusi"
 
@@ -3239,7 +3196,7 @@ msgstr "_Uusi"
 #. TRANSLATORS: Please stick to X2GoClient's way of translating.
 #: plugins/x2go/x2go_plugin.c:546
 msgid "Terminating X2Go sessions can take a moment."
-msgstr ""
+msgstr "X2Go-istuntojen lopettaminen voi kestää hetken."
 
 #: plugins/x2go/x2go_plugin.c:621 plugins/x2go/x2go_plugin.c:623
 #, c-format
@@ -3247,84 +3204,82 @@ msgid "Unknown property '%i'"
 msgstr "Tuntematon ominaisuus '%i'"
 
 #: plugins/x2go/x2go_plugin.c:711 plugins/x2go/x2go_plugin.c:758
-#, fuzzy
 msgid "Couldn't find child GtkTreeView of session chooser dialog."
-msgstr "Istunnon valintaikkunan GtkTreeView-lapsi ei löytynyt."
+msgstr "Istunnonvalintaikkunan GtkTreeView-lapsen GtkTreeView ei löytynyt."
 
 #: plugins/x2go/x2go_plugin.c:723
 msgid ""
 "Neither the 'dialog' nor 'treeview' parameters are initialized! At least one "
 "of them must be given."
 msgstr ""
+"'dialogi' eikä 'puunäkymä' parametreja ole alustettu! Ainakin yksi niistä on "
+"annettava."
 
 #: plugins/x2go/x2go_plugin.c:732
-#, fuzzy
 msgid ""
 "Could not obtain \"GtkTreeModelFilter*\" of the session chooser dialog, for "
 "unknown reason."
-msgstr "Istunnon valintaikkunan GtkTreeView-lapsi ei löytynyt."
+msgstr ""
+"Istunnon valintaikkunan \"GtkTreeModelFilter*\" ei saatu käyttöön "
+"tuntemattomasta syystä."
 
 #: plugins/x2go/x2go_plugin.c:767
-#, fuzzy
 msgid "Couldn't get currently selected row (session)!"
-msgstr "Ei saatu istunnon tunnistetta valitulta riviltä."
+msgstr "Ei saatu valittua nykyistä valittua riviä (istunto)!"
 
 #: plugins/x2go/x2go_plugin.c:786
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Exactly one session should be selectable but '%i' rows (sessions) are "
 "selected."
-msgstr "vain yksi istunto pitäisi voida valita."
+msgstr ""
+"Tarkalleen yhden istunnon pitäisi olla valittavissa, mutta '%i' rivit "
+"(istunnot) on valittu."
 
 #: plugins/x2go/x2go_plugin.c:836
-#, fuzzy
 msgid "Failed to fill 'GtkTreeIter'."
-msgstr "'GtkTreeIter' ei onnistunut täyttämään 'GtkTreeIter'."
+msgstr "Epäonnistu täyttämään 'GtkTreeIter'."
 
 #: plugins/x2go/x2go_plugin.c:902
-#, fuzzy
 msgid "parameter 'argv' is 'NULL'."
 msgstr "parametri 'argv' on 'NULL'."
 
 #: plugins/x2go/x2go_plugin.c:913
-#, fuzzy
 msgid "parameter 'error' is 'NULL'."
 msgstr "parametri 'error' on 'NULL'."
 
 #: plugins/x2go/x2go_plugin.c:921
-#, fuzzy
 msgid "parameter 'env' is either invalid or uninitialized."
-msgstr "parametri 'env' on joko virheellinen tai alustamaton."
+msgstr "parametri 'env' on joko virheellinen tai sitä ei ole alustettu."
 
 #: plugins/x2go/x2go_plugin.c:937 plugins/x2go/x2go_plugin.c:2391
-#, fuzzy
 msgid "Started PyHoca-CLI with the following arguments:"
 msgstr "PyHoca-CLI käynnistettiin seuraavilla argumenteilla:"
 
 #: plugins/x2go/x2go_plugin.c:965
-#, fuzzy
 msgid ""
 "The necessary PyHoca-CLI process has encountered a internet connection "
 "problem."
 msgstr "PyHoca-CLI-prosessi on törmännyt Internet-yhteysongelmaan."
 
 #: plugins/x2go/x2go_plugin.c:975
-#, fuzzy, c-format
-#| msgid "Failed to start pyhoca-cli (%i): '%s'"
+#, c-format
 msgid ""
 "Could not start PyHoca-CLI:\n"
 "%s"
-msgstr "PyHoca-CLI:tä (%i) ei voitu käynnistää: '%s'"
+msgstr ""
+"PyHoca-CLI:tä ei voitu käynnistää:\n"
+"%s"
 
 #: plugins/x2go/x2go_plugin.c:986
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i"
 msgstr ""
 "PyHoca-CLI:tä käynnistettäessä tapahtui tuntematon virhe. Poistumiskoodi: %i"
 
 #: plugins/x2go/x2go_plugin.c:993
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i. "
 "Error: '%s'"
@@ -3333,95 +3288,85 @@ msgstr ""
 "%i. Virhe: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:1035
-#, fuzzy
 msgid "Neither the 'path' nor 'dialog' parameters are initialized."
-msgstr "parametri 'env' on joko virheellinen tai alustamaton."
+msgstr "Parametreja 'path' eikä 'dialog' ole alustettu."
 
 #: plugins/x2go/x2go_plugin.c:1051
 msgid "GtkTreePath 'path' describes a non-existing row!"
-msgstr ""
+msgstr "GtkTreePath 'path' kuvaa rivi, jota ei ole olemassa!"
 
 #: plugins/x2go/x2go_plugin.c:1116
-#, fuzzy
 msgid "Parameter 'custom_data' is not fully initialized!"
-msgstr "Parametri 'default_username' ei ole alustettu."
+msgstr "Parametria 'custom_data' ei ole täysin alustettu!"
 
 #: plugins/x2go/x2go_plugin.c:1144 plugins/x2go/x2go_plugin.c:1797
 #: plugins/x2go/x2go_plugin.c:2091
-#, fuzzy
-#| msgid "Shared connection"
 msgid "'Invalid connection data.'"
 msgstr "'Virheelliset yhteystiedot.'"
 
 #: plugins/x2go/x2go_plugin.c:1221
-#, fuzzy, c-format
-#| msgid "An error occured while starting a X2Go session."
+#, c-format
 msgid ""
 "An error occured while trying to terminate X2Go session '%s':\n"
 "%s"
-msgstr "X2Go-istuntoa aloittaessa tapahtui virhe."
+msgstr ""
+"X2Go-istuntoa lopetettaessa tapahtui virhe '%s':\n"
+"%s"
 
 #: plugins/x2go/x2go_plugin.c:1233 plugins/x2go/x2go_plugin.c:1609
 msgid "An error occured."
 msgstr "Tapahtui virhe."
 
 #: plugins/x2go/x2go_plugin.c:1333 plugins/x2go/x2go_plugin.c:1348
-#, fuzzy
 msgid "Couldn't get session ID from session chooser dialog."
 msgstr "Istunnon ID:tä ei saatu istunnon valintaikkunasta."
 
 #: plugins/x2go/x2go_plugin.c:1340
-#, fuzzy, c-format
+#, c-format
 msgid "Resuming session: '%s'"
 msgstr "Istunnon jatkaminen: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:1355
-#, fuzzy, c-format
+#, c-format
 msgid "Terminating session: '%s'"
-msgstr "Istunnon jatkaminen: '%s'"
+msgstr "Istunnon lopettaminen: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:1529
 #, c-format
 msgid "Disconnected from %s:%d via X2Go"
-msgstr ""
+msgstr "Yhteys katkaistiin %s:%d X2Gon kautta."
 
 #: plugins/x2go/x2go_plugin.c:1601
-#, fuzzy
 msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
 msgstr "PyHoca-CLI päättyi odottamatta. Tämä yhteys suljetaan nyt."
 
 #: plugins/x2go/x2go_plugin.c:1610
-#, fuzzy
 msgid ""
 "The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
 "Please check your profile settings and PyHoca-CLI's output for possible "
 "errors. Also ensure the remote server is reachable."
 msgstr ""
 "Tarvittava lapsiprosessi 'pyhoca-cli' pysähtyi odottamatta.\n"
-"Tarkista profiiliasetukset ja PyHoca-CLI:n tulosteet mahdollisten virheiden "
+"Tarkista profiiliasetukset ja PyHoca-CLI'n tulosteet mahdollisten virheiden "
 "varalta. Varmista myös, että etäpalvelin on tavoitettavissa."
 
 #: plugins/x2go/x2go_plugin.c:1653
-#, fuzzy
 msgid "Can't save empty username!"
-msgstr "Tyhjää käyttäjätunnusta ei voi tallentaa!"
+msgstr "Ei voi tallentaa tyhjää käyttäjätunnusta!"
 
 #: plugins/x2go/x2go_plugin.c:1667
-#, fuzzy
 msgid "Could not save new credentials."
 msgstr "Uusia tunnuksia ei voitu tallentaa."
 
 #: plugins/x2go/x2go_plugin.c:1670
-#, fuzzy
 msgid ""
 "An error occured while trying to save new credentials: 's_password' or "
 "'s_username' strings were not set."
 msgstr ""
 "Tapahtui virhe, kun yritettiin tallentaa uusia tunnistetietoja: 's_password' "
-"tai 's_username' -merkkijonoja ei ollut asetettu."
+"tai 's_username' -merkkijonoja ei asetettu."
 
 #: plugins/x2go/x2go_plugin.c:1701
-#, fuzzy
 msgid "Parameter 'default_username' is uninitialized."
 msgstr "Parametri 'default_username' ei ole alustettu."
 
@@ -3430,16 +3375,14 @@ msgid "Enter X2Go credentials"
 msgstr "Syötä X2Go-todennustiedot"
 
 #: plugins/x2go/x2go_plugin.c:1927
-#, fuzzy
 msgid ""
 "Couldn't parse the output of PyHoca-CLI's --list-sessions option. Creating a "
 "new session now."
 msgstr ""
 "PyHoca-CLI:n --list-sessions -vaihtoehdon tulostetta ei pystytty "
-"jäsentämään. Luodaan nyt uusi istunto."
+"analysoimaan. Luodaan nyt uusi istunto."
 
 #: plugins/x2go/x2go_plugin.c:1966
-#, fuzzy
 msgid "Couldn't allocate enough memory!"
 msgstr "Muistia ei voitu varata tarpeeksi!"
 
