@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2022-03-10 14:39+0000\n"
-"PO-Revision-Date: 2022-03-14 15:57+0000\n"
+"PO-Revision-Date: 2022-03-15 19:58+0000\n"
 "Last-Translator: Tuomas Lähteenmäki <lahtis@gmail.com>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/remmina/remmina/"
 "fi/>\n"
@@ -266,7 +266,7 @@ msgstr ""
 #: src/remmina_message_panel.c:163 data/ui/remmina_mpc.glade:46
 #: data/ui/remmina_passwd.glade:19 data/ui/remmina_unlock.glade:43
 msgid "Cancel"
-msgstr "Peru"
+msgstr "Peruuta"
 
 #: src/remmina_message_panel.c:199 data/ui/remmina_snap_info_dialog.glade:25
 #: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
@@ -298,7 +298,7 @@ msgstr "Tallenna salasana"
 #: data/ui/remmina_key_chooser.glade:8 data/ui/remmina_key_chooser.glade:9
 #: data/ui/remmina_spinner.glade:8 data/ui/remmina_spinner.glade:9
 msgid "_Cancel"
-msgstr "_Peru"
+msgstr "_Peruuta"
 
 #: src/remmina_message_panel.c:513
 msgid "Enter certificate authentication files"
@@ -580,7 +580,7 @@ msgstr "Käynnistä järjestelmän ilmoitusalueelle"
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:116
 msgid "Show the application version"
-msgstr "Näytä sovelluksen versio"
+msgstr "Näytää sovelluksen version"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:118
@@ -659,41 +659,40 @@ msgid ""
 "password\n"
 msgstr ""
 "Esimerkkejä:\n"
-"Yhdistä olemassa olevalla yhteysprofiilia käyttämällä:\n"
+"Jos haluat muodostaa yhteyden käyttämällä olemassa olevaa yhteysprofiilia, "
+"käytä:\n"
 "\n"
 "\tremmina -c FILE.remmina\n"
 "\n"
-"Yhteyden muodostaminen nopeasti URI:n avulla:\n"
+"Pikayhteyden muodostaminen URI:n avulla:\n"
 "\n"
-"\tremmina -c rdp://username@server\n"
-"\tremmina -c rdp://domain\\\\username@server\n"
-"\tremmina -c vnc://username@server\n"
-"\tremmina -c vnc://server?VncUsername=username\n"
-"\tremmina -c ssh://user@server\n"
+"\tremmina -c rdp://domain\\\\\\käyttäjätunnus@palvelin\n"
+"\tremmina -c vnc://käyttäjätunnus@palvelin\n"
+"\tremmina -c vnc://server?VncUsername=käyttäjätunnus\n"
+"\tremmina -c ssh://käyttäjä@palvelin\n"
 "\tremmina -c spice://server\n"
 "\n"
-"Yhteyden muodostaminen nopeasti URI:n ja salatun salasanan avulla:\n"
+"Pikayhteyden muodostaminen käyttämällä URI:tä ja salattua salasanaa:\n"
 "\n"
-"\tremmina -c rdp://username:encrypted-password@server\n"
-"\tremmina -c vnc://username:encrypted-password@server\n"
-"\tremmina -c vnc://server?VncUsername=username\\&VncPassword=encrypted-"
-"password\n"
+"\tremmina -c rdp://käyttäjätunnus:salattu-salasana@palvelin\n"
+"\tremmina -c vnc://käyttäjätunnus:salattu-salasana@palvelin\n"
+"\tremmina -c vnc://server?VncUsername=käyttäjänimi\\&VncPassword=salattu-"
+"salasana=salattu-salasana\n"
 "\n"
-"URI:n kanssa käytettävän salasanan salaus:\n"
+"Salata salasana käytettäväksi URI:n kanssa:\n"
 "\n"
 "\tremmina --encrypt-password\n"
 "\n"
-"Päivitääksesi käyttäjänimi ja salasana ja aseta Remmina-yhteysprofiilille "
-"erilainen resoluutiotila käytä:\n"
+"Voit päivittää käyttäjätunnuksen ja salasanan ja asettaa Remmina-"
+"yhteysprofiilin erilaisen resoluutiotilan seuraavasti:\n"
 "\n"
-"\techo \"username\\n"
-"apassword\" | remmina --update-profile /PATH/TO/FOO.remmina --set-option "
-"username --set-option resolution_mode=2 --set-option password\n"
+"\tremmina --update-profile /PATH/TO/FOO.remmina --set-option username --set-"
+"option resolution_mode=2 --set-option password\n"
 
 #: src/remmina_public.c:345
 #, c-format
 msgid "Address is too long for UNIX socket_path: %s"
-msgstr "Osoite on liian pitkä UNIX socket_polulle: %s"
+msgstr "Osoite on liian pitkä UNIX-socket_path:lle: %s"
 
 #: src/remmina_public.c:355
 #, c-format
@@ -1218,7 +1217,7 @@ msgstr "Liitännäistä %s ei ole rekisteröity."
 
 #: src/remmina_main.c:685
 msgid "The latest successful connection attempt, or a pre-computed date"
-msgstr "Viimeisin onnistunut yhteysyritys tai ennalta laskettu päivämäärä."
+msgstr "Viimeisin onnistunut yhteysyritys tai ennalta laskettu päivämäärä"
 
 #: src/remmina_main.c:687
 #, c-format
@@ -1654,14 +1653,14 @@ msgid ""
 "try to fallback to GtkStatusIcon/xembed"
 msgstr ""
 "%s ei tueta natiivisti työpöytäympäristössäsi. libappindicator yrittää "
-"turvautua GtkStatusIcon/xembed-toimintoon."
+"turvautua GtkStatusIcon/xembed-toimintoon"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:377
 #, c-format
 msgid "%s You may need to install, and use XApp Status Applet"
 msgstr ""
-"%s Sinun on ehkä asennettava ja käytettävä XApp Status Applet -sovellusta."
+"%s Sinun on ehkä asennettava ja käytettävä XApp Status Applet -sovellusta"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:380
@@ -1686,7 +1685,7 @@ msgstr ""
 #: src/remmina_ssh_plugin.c:342
 #, c-format
 msgid "Connected to %s:%d via SSH"
-msgstr "Yhteys %s:%d SSH:n kautta."
+msgstr "Yhteys %s:%d SSH:n kautta"
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_ssh_plugin.c:550
@@ -1729,7 +1728,7 @@ msgstr "Etsi tekstiä (Host + G)"
 #: src/remmina_ssh_plugin.c:921
 #, c-format
 msgid "Disconnected from %s:%d via SSH"
-msgstr "Yhteys katkesi %s:%d SSH:n kautta."
+msgstr "Yhteys katkesi %s:%d SSH:n kautta"
 
 #: src/remmina_ssh_plugin.c:1468 data/ui/remmina_main.glade:177
 msgid "Copy"
@@ -2179,19 +2178,19 @@ msgstr "RemoteFX (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2611 plugins/vnc/vnc_plugin.c:1957
 msgid "True colour (32 bpp)"
-msgstr "True colour (32 bpp)"
+msgstr "Todellinen väri (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2612
 msgid "True colour (24 bpp)"
-msgstr "True colour (24 bpp)"
+msgstr "Todellinen väri (24 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2613 plugins/vnc/vnc_plugin.c:1958
 msgid "High colour (16 bpp)"
-msgstr "High colour (16 bpp)"
+msgstr "Korkea väri (16 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2614
 msgid "High colour (15 bpp)"
-msgstr "High colour (15 bpp)"
+msgstr "Korkea väri (15 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2615 plugins/vnc/vnc_plugin.c:1959
 msgid "256 colours (8 bpp)"
@@ -2268,13 +2267,13 @@ msgid ""
 "  • >= 7065: Windows 8 and newer: SCardGetReaderIcon(),\n"
 "    SCardGetDeviceTypeId()"
 msgstr ""
-"Käytetty esim. päätepalveluissa älykorttikanavan asiakasominaisuuksien "
-"erottamiseksi:\n"
-"  • < 4034: Windows XP  - älykorttien perustoiminnallisuudet\n"
-"  • 4034-7064: Windows Vista/7: SCardReadCache(), SCardWriteCache(),\n"
-"    SCardGetTransmitCount()\n"
-"  • >= 7065: Windows 8 ja uudempi: SCardGetReaderIcon(), "
-"SCardGetDeviceTypeId()"
+"Käytetään muun muassa päätepalveluissa älykorttikanavassa erottamaan "
+"asiakkaan ominaisuudet:\n"
+"  - < 4034: Windows XP:n perusälykorttitoiminnot\n"
+"  - 4034-7064: Windows Vista/7: SCardReadCache(),\n"
+"    SCardWriteCache(), SCardGetTransmitCount().\n"
+"  - >= 7065: Windows 8 ja uudemmat: SCardGetReaderIcon(),\n"
+"    SCardGetDeviceTypeId()"
 
 #: plugins/rdp/rdp_plugin.c:2697
 msgid ""
@@ -2397,7 +2396,7 @@ msgstr "Jaa kansio"
 msgid "Use “Redirect directory” in the advanced tab for multiple directories"
 msgstr ""
 "Käytä \"Ohjaa hakemisto uudelleen\" lisäasetukset-välilehdellä useita "
-"hakemistoja varten."
+"hakemistoja varten"
 
 #: plugins/rdp/rdp_plugin.c:2777
 msgid "Restricted admin mode"
@@ -2891,12 +2890,12 @@ msgid ""
 msgstr ""
 "Muodosta yhteys VNC:hen toistimen avulla:\n"
 "  - ID:123456789.\n"
-"  - Toistin-kenttään on asetettava toistimen IP ja portti, esim. "
-"seuraavasti:\n"
+"  - Toistin-kenttään on asetettava toistimen IP ja portti, esim. seuraavasti:"
+"\n"
 "    10.10.10.12:5901\n"
 "  - Etäisestä VNC-palvelimesta muodostetaan yhteys osoitteeseen\n"
 "    toistimeen esimerkiksi x11vnc:llä:\n"
-"    x11vnc -connect repeater=ID:123456789+10.10.10.10.12:5500."
+"    x11vnc -connect repeater=ID:123456789+10.10.10.10.12:5500"
 
 #: plugins/vnc/vnc_plugin.c:1983
 msgid ""
@@ -3334,7 +3333,7 @@ msgstr "Istunnon lopettaminen: '%s'"
 #: plugins/x2go/x2go_plugin.c:1529
 #, c-format
 msgid "Disconnected from %s:%d via X2Go"
-msgstr "Yhteys katkaistiin %s:%d X2Gon kautta."
+msgstr "Yhteys katkaistiin %s:%d X2Gon kautta"
 
 #: plugins/x2go/x2go_plugin.c:1601
 msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
@@ -3387,113 +3386,94 @@ msgid "Couldn't allocate enough memory!"
 msgstr "Muistia ei voitu varata tarpeeksi!"
 
 #: plugins/x2go/x2go_plugin.c:1976
-#, fuzzy, c-format
+#, c-format
 msgid "Found already existing X2Go session with ID: '%s'"
-msgstr "Löytyi jo olemassa oleva X2Go-istunto tunnuksella: '%s'."
+msgstr "Löytyi jo olemassa oleva X2Go-istunto tunnuksella: '%s'"
 
 #. TRANSLATORS: Please stick to X2GoClient's translation.
 #: plugins/x2go/x2go_plugin.c:2019
-#, fuzzy
 msgid "Suspended"
-msgstr "Keskeytetty vuodesta"
+msgstr "Keskeytetty"
 
 #. TRANSLATORS: Please stick to X2GoClient's translation.
 #: plugins/x2go/x2go_plugin.c:2022
-#, fuzzy
 msgid "Running"
 msgstr "Ajossa"
 
 #. TRANSLATORS: Please stick to X2GoClient's translation.
 #: plugins/x2go/x2go_plugin.c:2025
-#, fuzzy
-#| msgid "Terminate"
 msgid "Terminated"
-msgstr "Lopeta"
+msgstr "Lopetettu"
 
 #: plugins/x2go/x2go_plugin.c:2058
-#, fuzzy
 msgid ""
 "Could not find any sessions on remote machine. Creating a new session now."
 msgstr "Etäkoneesta ei löytynyt istuntoja. Luodaan nyt uusi istunto."
 
 #: plugins/x2go/x2go_plugin.c:2113
-#, fuzzy
-#| msgid "Choose a file to upload"
 msgid "Choose a session to resume:"
 msgstr "Valitse jatkettava istunto:"
 
 #: plugins/x2go/x2go_plugin.c:2156
-#, fuzzy
 msgid "Waiting for user to select a session…"
 msgstr "Odotetaan, että käyttäjä valitsee istunnon…"
 
 #: plugins/x2go/x2go_plugin.c:2164
-#, fuzzy
 msgid "No session was selected. Creating a new one."
 msgstr "Mitään istuntoa ei valittu. Luodaan uusi."
 
 #: plugins/x2go/x2go_plugin.c:2212
-#, fuzzy, c-format
+#, c-format
 msgid "A non-critical error happened: %s"
 msgstr "Tapahtui ei-kriittinen virhe: %s"
 
 #: plugins/x2go/x2go_plugin.c:2217
-#, fuzzy, c-format
+#, c-format
 msgid "User chose to resume session with ID: '%s'"
-msgstr "Käyttäjä päätti jatkaa istuntoa tunnuksella: '%s'."
+msgstr "Käyttäjä päätti jatkaa istuntoa tunnuksella %s"
 
 #. TRANSLATORS: Please stick to X2GoClient's way of translating.
 #: plugins/x2go/x2go_plugin.c:2238
-#, fuzzy, c-format
+#, c-format
 msgid "Resuming session '%s'…"
-msgstr "Istunnon '%s' jatkaminen…"
+msgstr "Istunnon jatkaminen '%s'…"
 
 #: plugins/x2go/x2go_plugin.c:2369
-#, fuzzy
 msgid "DPI setting is out of bounds. Please adjust it in profile settings."
-msgstr "DPI-asetus on rajojen ulkopuolella. Säädä sitä profiiliasetuksissa."
+msgstr "DPI-asetus on rajojen ulkopuolella. Säädä se profiiliasetuksissa."
 
 #: plugins/x2go/x2go_plugin.c:2411
-#, fuzzy
-#| msgid "An error occured while starting a X2Go session."
 msgid "An error occured while starting an X2Go session…"
-msgstr "X2Go-istuntoa aloittaessa tapahtui virhe."
+msgstr "X2Go-istuntoa käynnistettäessä tapahtui virhe…"
 
 #: plugins/x2go/x2go_plugin.c:2419
-#, fuzzy
-#| msgid "Could not start SSH session. %s"
 msgid "Could not start X2Go session."
 msgstr "X2Go-istuntoa ei voitu käynnistää."
 
 #: plugins/x2go/x2go_plugin.c:2420
-#, fuzzy, c-format
-#| msgid "Failed to start pyhoca-cli (%i): '%s'"
+#, c-format
 msgid "Could not start PyHoca-CLI (%i): '%s'"
-msgstr "PyHoca-CLI:tä (%i) ei voitu käynnistää: '%s'"
+msgstr "PyHoca-CLI:tä ei voitu käynnistää (%i): '%s'"
 
 #: plugins/x2go/x2go_plugin.c:2535
-#, fuzzy
 msgid ""
 "Couldn't get PyHoca-CLI's command-line features. This indicates it is either "
 "too old, or not installed. An old limited set of features will be used for "
 "now."
 msgstr ""
-"PyHoca-CLI:n komentorivin ominaisuuksia ei saatu käyttöön. Tämä osoittaa, "
+"PyHoca-CLI'n komentorivin ominaisuuksia ei saatu käyttöön. Tämä osoittaa, "
 "että se on joko liian vanha tai sitä ei ole asennettu. Vanhoja rajoitettuja "
 "ominaisuuksia käytetään toistaiseksi."
 
 #: plugins/x2go/x2go_plugin.c:2544
-#, fuzzy
 msgid ""
 "Could not parse PyHoca-CLI's command-line features. Using a limited feature-"
 "set for now."
 msgstr ""
-"PyHoca-CLI:n komentorivin ominaisuuksia ei pystytty jäsentämään. Käytetään "
+"PyHoca-CLI'n komentoriviominaisuuksia ei pystytty jäsentämään. Käytetään "
 "toistaiseksi rajoitettua ominaisuusvalikoimaa."
 
 #: plugins/x2go/x2go_plugin.c:2550
-#, fuzzy
-#| msgid "Successfully retrieved following pyhoca-cli features:"
 msgid "Retrieved the following PyHoca-CLI command-line features:"
 msgstr "Hae seuraavat PyHoca-CLI:n komentorivin ominaisuudet:"
 
@@ -3503,51 +3483,39 @@ msgid "Available feature[%i]: '%s'"
 msgstr "Käytettäviss oleva ominaisuus[%i]: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:2583
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s:%d via X2Go"
-msgstr "Yhdistetään kohteeseen ”%s”…"
+msgstr "Yhteys %s:%d X2Gon kautta"
 
 #: plugins/x2go/x2go_plugin.c:2677
-#, fuzzy
-#| msgid "Could not open channel. %s"
 msgid "Could not open X11 DISPLAY."
 msgstr "X11 DISPLAY -näyttöä ei voitu avata."
 
 #: plugins/x2go/x2go_plugin.c:2717
-#, fuzzy
 msgid "Waiting for window of X2Go Agent to appear…"
 msgstr "Odotan X2Go Agentin ikkunan ilmestymistä…"
 
 #: plugins/x2go/x2go_plugin.c:2743
-#, fuzzy
 msgid "Waiting for PyHoca-CLI to show the session's window…"
-msgstr "Odotetaan, että PyHoca-CLI näyttää istunnon ikkunan…"
+msgstr "Odotetaan, että PyHoca-CLI näyttää istunnon-ikkunan…"
 
 #: plugins/x2go/x2go_plugin.c:2794
-#, fuzzy
 msgid "No X2Go session window appeared. Something went wrong…"
 msgstr "X2Go-istuntoikkunaa ei tullut näkyviin. Jokin meni pieleen…"
 
 #: plugins/x2go/x2go_plugin.c:2905
-#, fuzzy
 msgid "RemminaProtocolWidget* gp is 'NULL'!"
 msgstr "RemminaProtocolWidget* gp on 'NULL'!"
 
 #: plugins/x2go/x2go_plugin.c:2926
-#, fuzzy, c-format
-#| msgid ""
-#| "The protocol “%s” is unavailable because GtkSocket only works under X.Org."
+#, c-format
 msgid "The %s protocol is unavailable because GtkSocket only works under X.org"
 msgstr ""
-"%s-protokolla ei ole käytettävissä, koska GtkSocket toimii vain X.org-"
-"verkkopalvelussa."
+"%s-protokolla ei ole käytettävissä, koska GtkSocket toimii vain X.org:n alla"
 
 #: plugins/x2go/x2go_plugin.c:2935
-#, fuzzy
 msgid "Could not initialize pthread. Falling back to non-threaded mode…"
-msgstr ""
-"Pthreadia ei voitu alustaa. Palataan takaisin ei-säikeistettyyn tilaan…"
+msgstr "Pthreadia ei voitu alustaa. Palataan takaisin ei-säikeistettyyn tilaan…"
 
 #. TRANSLATORS: Presumably you just want to translate 'and' into
 #. your language.
@@ -3558,9 +3526,9 @@ msgstr ""
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
 #: plugins/x2go/x2go_plugin.c:2978 plugins/x2go/x2go_plugin.c:2996
-#, fuzzy, c-format
+#, c-format
 msgid "%sand '%s'"
-msgstr "%sja \"%s\"."
+msgstr "%sja '%s'"
 
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
@@ -3569,104 +3537,88 @@ msgstr "%sja \"%s\"."
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
 #: plugins/x2go/x2go_plugin.c:2983 plugins/x2go/x2go_plugin.c:3001
-#, fuzzy, c-format
+#, c-format
 msgid "%s'%s' "
-msgstr "%s'%s'' "
+msgstr "%s'%s' "
 
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
 #. 'value1', 'value2', 'valueN-1' and 'valueN'
 #: plugins/x2go/x2go_plugin.c:2988
-#, fuzzy, c-format
+#, c-format
 msgid "%s'%s', "
 msgstr "%s'%s', "
 
 #: plugins/x2go/x2go_plugin.c:3027
-#, fuzzy
 msgid "Invalid validation data in ProtocolSettings array!"
-msgstr "Virheelliset validointitiedot ProtocolSettings-massassa!"
+msgstr "ProtokollaSettings-matriisin vahvistustiedot eivät kelpaa!"
 
 #: plugins/x2go/x2go_plugin.c:3042 plugins/x2go/x2go_plugin.c:3107
-#, fuzzy
 msgid "Validation data in ProtocolSettings array is invalid!"
-msgstr "Validointitiedot ProtocolSettings-massassa ovat virheellisiä!"
+msgstr "Validointitiedot ProtocolSettings-taulukossa ovat virheellisiä!"
 
 #: plugins/x2go/x2go_plugin.c:3051
-#, fuzzy
 msgid "Parameters 'key' or 'value' are 'NULL'!"
 msgstr "Parametrit 'key' tai 'value' ovat 'NULL'!"
 
 #: plugins/x2go/x2go_plugin.c:3069
-#, fuzzy, c-format
+#, c-format
 msgid "Allowed values are %s."
 msgstr "Sallitut arvot ovat %s."
 
 #: plugins/x2go/x2go_plugin.c:3071
-#, fuzzy, c-format
+#, c-format
 msgid "The only allowed value is '%s'."
-msgstr "Ainoa sallittu arvo on \"%s\"."
+msgstr "Ainoa sallittu arvo on '%s'."
 
 #: plugins/x2go/x2go_plugin.c:3118
-#, fuzzy
 msgid "The lower limit is not a valid integer!"
 msgstr "Alaraja ei ole kelvollinen kokonaisluku!"
 
 #: plugins/x2go/x2go_plugin.c:3123
-#, fuzzy
 msgid "The lower limit is too high!"
 msgstr "Alaraja on liian korkea!"
 
 #: plugins/x2go/x2go_plugin.c:3128
-#, fuzzy
 msgid "The lower limit is too low!"
 msgstr "Alaraja on liian alhainen!"
 
 #: plugins/x2go/x2go_plugin.c:3133 plugins/x2go/x2go_plugin.c:3163
 #: plugins/x2go/x2go_plugin.c:3183
-#, fuzzy
 msgid "Something unknown went wrong."
-msgstr "Jokin tuntematon asia meni pieleen."
+msgstr "Jokin tuntematon meni pieleen."
 
 #: plugins/x2go/x2go_plugin.c:3138 plugins/x2go/x2go_plugin.c:3168
 #: plugins/x2go/x2go_plugin.c:3187
-#, fuzzy
 msgid "Please check the RemminaProtocolSetting array for possible errors."
-msgstr ""
-"Tarkista RemminaProtocolSetting-mallisto mahdollisten virheiden varalta."
+msgstr "Tarkista mahdolliset virheet RemminaProtocolSetting-taulukosta."
 
 #: plugins/x2go/x2go_plugin.c:3148
-#, fuzzy
 msgid "The upper limit is not a valid integer!"
 msgstr "Yläraja ei ole kelvollinen kokonaisluku!"
 
 #: plugins/x2go/x2go_plugin.c:3153
-#, fuzzy
 msgid "The upper limit is too high!"
 msgstr "Yläraja on liian korkea!"
 
 #: plugins/x2go/x2go_plugin.c:3158
-#, fuzzy
 msgid "The upper limit is too low!"
-msgstr "Yläraja on liian alhainen!"
+msgstr "Yläraja on liian matala!"
 
 #: plugins/x2go/x2go_plugin.c:3178
-#, fuzzy
 msgid "The input is not a valid integer!"
-msgstr "Syöttö ei ole kelvollinen kokonaisluku!"
+msgstr "Syöte ei ole kelvollinen kokonaisluku!"
 
 #: plugins/x2go/x2go_plugin.c:3180 plugins/x2go/x2go_plugin.c:3199
-#, fuzzy, c-format
+#, c-format
 msgid "Input must be a number between %i and %i."
-msgstr "Syötettävän numeron on oltava %i ja %i väliltä."
+msgstr "Syötteen on oltava luku välillä %i ja %i."
 
 #: plugins/x2go/x2go_plugin.c:3228
-#, fuzzy
-#| msgid "Start-up program"
 msgid "Startup program"
-msgstr "Käynnistettävä ohjelma"
+msgstr "Käynnistysohjelma"
 
 #: plugins/x2go/x2go_plugin.c:3230
-#, fuzzy
 msgid "Which command should be executed after creating the X2Go session?"
 msgstr "Mikä komento on suoritettava X2Go-istunnon luomisen jälkeen?"
 
@@ -3683,31 +3635,23 @@ msgid "Audio support"
 msgstr "Äänituki"
 
 #: plugins/x2go/x2go_plugin.c:3236
-#, fuzzy
-#| msgid "X2Go server's sound system (default: 'pulse')."
 msgid "The sound system of the X2Go server (default: 'pulse')."
 msgstr "X2Go-palvelimen äänijärjestelmä (oletus: 'pulse')."
 
 #: plugins/x2go/x2go_plugin.c:3239
-#, fuzzy
-#| msgid "TCP redirection"
 msgid "Clipboard direction"
 msgstr "Leikepöydän suunta"
 
 #: plugins/x2go/x2go_plugin.c:3241
-#, fuzzy
 msgid "Which direction should clipboard content be copied? (default: 'both')."
 msgstr ""
 "Mihin suuntaan leikepöydän sisältö pitäisi kopioida? (oletus: 'molemmat')."
 
 #: plugins/x2go/x2go_plugin.c:3245
-#, fuzzy
-#| msgid "Resolution"
 msgid "DPI resolution"
 msgstr "DPI-resoluutio"
 
 #: plugins/x2go/x2go_plugin.c:3246
-#, fuzzy
 msgid ""
 "Launch session with a specific resolution (in dots per inch). Must be "
 "between 20 and 400."
@@ -3778,13 +3722,12 @@ msgid "Shared connection"
 msgstr "Jaettu yhteys"
 
 #: plugins/gvnc/gvnc_plugin.c:871
-#, fuzzy
 msgid ""
 "If the server should try to share the desktop by leaving other clients "
 "connected"
 msgstr ""
 "Jos palvelin yrittää jakaa työpöydän jättämällä muut asiakkaat kytkettyinä "
-"toisiinsa."
+"toisiinsa"
 
 #: plugins/gvnc/gvnc_plugin.c:881
 msgid "Send Ctrl+Alt+_Del"
@@ -3963,24 +3906,16 @@ msgid "About"
 msgstr "Tietoja"
 
 #: data/ui/remmina_about.glade:34
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Copyright © 2014–2021 Antenore Gatta, Giovanni Panozzo.\n"
-#| "Copyright © 2009–2014 Vic Lee\n"
-#| "More details in COPYING\n"
-#| "    "
 msgid ""
 "Copyright © 2014–2022 Antenore Gatta, Giovanni Panozzo.\n"
 "Copyright © 2009–2014 Vic Lee\n"
 "More details in COPYING"
 msgstr ""
-"Tekijänoikeudet © 2014–2021 Antenore Gatta, Giovanni Panozzo.\n"
-"Tekijänoikeudet © 2009–2014 Vic Lee\n"
-"Lisätietoja COPYING-tiedostossa"
+"Copyright © 2014-2022 Antenore Gatta, Giovanni Panozzo.\n"
+"Tekijänoikeus © 2009-2014 Vic Lee\n"
+"Lisätietoja kohdassa KOPIOINTI"
 
 #: data/ui/remmina_about.glade:38
-#, fuzzy
 msgid "https://www.remmina.org/"
 msgstr "https://www.remmina.org/"
 
@@ -4043,22 +3978,16 @@ msgid "Domain\\Username"
 msgstr "Verkkotunnus\\Käyttäjätunnus"
 
 #: data/ui/remmina_passwd.glade:33
-#, fuzzy
-#| msgid "_OK"
 msgid "OK"
-msgstr "_OK"
+msgstr "OK"
 
 #: data/ui/remmina_passwd.glade:60
-#, fuzzy
-#| msgid "Set new password"
 msgid "Set Primary Password"
-msgstr "Aseta uusi salasana"
+msgstr "Aseta ensisijainen salasana"
 
 #: data/ui/remmina_passwd.glade:101
-#, fuzzy
-#| msgid "User password"
 msgid "Verify password"
-msgstr "Käyttäjän salasana"
+msgstr "Vahvista salasana"
 
 #: data/ui/remmina_news.glade:75
 msgid ""
@@ -4117,17 +4046,13 @@ msgstr ""
 
 #: data/ui/remmina_news.glade:169
 msgid "Receives updated news from remmina.org"
-msgstr ""
+msgstr "Vastaanota päivitettyjä uutisia osoitteesta remmina.org"
 
 #: data/ui/remmina_news.glade:182
-#, fuzzy
-#| msgid ""
-#| "* By enabling statistics and/or news you consent to send and fetch data "
-#| "to/from remmina.org"
 msgid "* By turning on news you consent to fetching data from remmina.org"
 msgstr ""
-"* Ottamalla tilastot ja/tai uutiset käyttöön, annat hyväksynnän lähettää ja/"
-"tai noutaa tietoja remmina.orgista"
+"* Ottamalla uutiset käyttöön annat suostumuksesi tietojen noutamiseen remmina"
+".org-sivustolta"
 
 #: data/ui/remmina_news.glade:205
 msgid "<big>Take part</big>"
@@ -4383,14 +4308,6 @@ msgstr "Malli profiilin tiedostonimille"
 
 #. Placeholders used to name a Remmina connection profile
 #: data/ui/remmina_preferences.glade:361
-#, fuzzy
-#| msgid ""
-#| "%G Group name (slash will be converted to - automatically)\n"
-#| "%P Protocol name\n"
-#| "%N Connection name\n"
-#| "%h Hostname/IP\n"
-#| "\n"
-#| "\n"
 msgid ""
 "%G Name of group (slashes \\/ are converted to dashes -)\n"
 "%P Protocol name\n"
@@ -4399,10 +4316,10 @@ msgid ""
 "\n"
 "\n"
 msgstr ""
-"%G Ryhmän nimi (viiva muunnetaan automaattisesti)\n"
+"%G Ryhmän nimi (vinoviivat \\/ muunnetaan viivoiksi -)\n"
 "%P Protokollan nimi\n"
 "%N Yhteyden nimi\n"
-"%h Isäntänimi/IP\n"
+"%h Isäntäkoneen nimi/IP\n"
 "\n"
 "\n"
 
@@ -4415,18 +4332,14 @@ msgid "Prevent screenshots from entering clipboard"
 msgstr "Estä kuvakaappauksien pääsy leikepöydälle"
 
 #: data/ui/remmina_preferences.glade:430
-#, fuzzy
-#| msgid ""
-#| "* By enabling statistics and/or news you consent to send and fetch data "
-#| "to/from remmina.org"
 msgid "* By enabling news you consent to fetch data from remmina.org"
 msgstr ""
-"* Ottamalla tilastot ja/tai uutiset käyttöön, annat hyväksynnän lähettää ja/"
-"tai noutaa tietoja remmina.orgista"
+"* Ottamalla uutiset käyttöön annat suostumuksesi tietojen noutamiseen remmina"
+".org-sivustolta"
 
 #: data/ui/remmina_preferences.glade:496
 msgid "Ask consent to close last window"
-msgstr ""
+msgstr "Pyydä suostumus viimeisen ikkunan sulkemiseen"
 
 #: data/ui/remmina_preferences.glade:530
 msgid "Options"
@@ -4521,12 +4434,10 @@ msgstr ""
 "on koko näytössä)."
 
 #: data/ui/remmina_preferences.glade:770
-#, fuzzy
-#| msgid "“Grab all keyboard events” status colour"
 msgid "Enable/Disable “Grab all keyboard events” status colour"
 msgstr ""
-"Ota käyttöön/poista käytöstä \"Ota kaikki näppäimistötapahtumat talteen\" -"
-"tilaväri."
+"Ota käyttöön/poista käytöstä \"Ota kaikki näppäimistötapahtumat talteen\" "
+"-tilaväri"
 
 #: data/ui/remmina_preferences.glade:826
 msgid "Appearance"
@@ -4656,16 +4567,17 @@ msgid ""
 "Time in seconds before Remmina will lock the session and asks for a password "
 "again. Default: 300 Seconds."
 msgstr ""
+"Aika sekunteina, ennen kuin Remmina lukitsee istunnon ja kysyy salasanaa "
+"uudelleen. Oletusarvo: 300 sekuntia."
 
 #: data/ui/remmina_preferences.glade:1645
 msgid "Set and use a secret key to protect Remmina from unauthorized use."
 msgstr ""
+"Aseta ja käytä salaista avainta Remminan suojaamiseksi luvattomalta käytöltä."
 
 #: data/ui/remmina_preferences.glade:1650
-#, fuzzy
-#| msgid "User password"
 msgid "Remmina password"
-msgstr "Käyttäjän salasana"
+msgstr "Remmina salasana"
 
 #: data/ui/remmina_preferences.glade:1661
 msgid "Use secret key authentication for some widgets"
@@ -4673,43 +4585,39 @@ msgstr "Käytä yksityisen avaimen todennusta joillekin widgeteille"
 
 #: data/ui/remmina_preferences.glade:1681
 msgid "Valid for"
-msgstr ""
+msgstr "Voimassa"
 
 #: data/ui/remmina_preferences.glade:1692
 msgid "Number of seconds to keep password valid for"
-msgstr ""
+msgstr "Kuinka monta sekuntia salasanaa pidetään voimassa"
 
 #: data/ui/remmina_preferences.glade:1697
 msgid "timeout in seconds (default 300)"
-msgstr ""
+msgstr "aikakatkaisu sekunteina (oletus 300)"
 
 #: data/ui/remmina_preferences.glade:1709
-#, fuzzy
-#| msgid "Secured password storage in KWallet"
 msgid "Enter your Remmina password to connect"
-msgstr "Salasanojen tallentaminen KDE-lompakkoon"
+msgstr "Syötä Remmina-salasanasi yhteyden muodostamiseksi"
 
 #. “Require to connect” is “Require the Remmina password before to connect”, the Remmina password is the Master/Principal Password, that is used to protect Remmina from unauthorized use.
 #: data/ui/remmina_preferences.glade:1713
-#, fuzzy
-#| msgid "Secured password storage in KWallet"
 msgid "Require to connect"
-msgstr "Salasanojen tallentaminen KDE-lompakkoon"
+msgstr "Yhteyden muodostaminen edellyttää"
 
 #: data/ui/remmina_preferences.glade:1724
 msgid "Creation, editing, copying, and deletions require the Remmina password"
 msgstr ""
+"Luominen, muokkaaminen, kopioiminen ja poistaminen edellyttävät Remmina-"
+"salasanaa"
 
 #. Creation, editing, copying, and deletions require the primary password
 #: data/ui/remmina_preferences.glade:1728
 msgid "Require to modify"
-msgstr ""
+msgstr "Vaatii muokkaamista"
 
 #: data/ui/remmina_preferences.glade:1770
-#, fuzzy
-#| msgid "File encryption"
 msgid "Encryption"
-msgstr "Tiedostojen salaus"
+msgstr "Salaus"
 
 #: data/ui/remmina_preferences.glade:1781
 msgid ""
@@ -4721,34 +4629,38 @@ msgid ""
 "\"Intermediate\" doesn't use as much memory or processing power, and "
 "\"Sensitive\" is more secure, but uses +1 GiB of RAM and many CPU cycles. "
 msgstr ""
+"Näitä salausmenetelmiä Remmina käyttää salasanojen tallentamiseen.\n"
+"\n"
+"\"Heikko\"-menetelmää lukuun ottamatta kaikkia muita suositellaan, \"Keystore"
+"\" on oletusarvo, koska se integroituu KDE/Plasman ja GNOMEn kanssa.\n"
+"\n"
+"\"Keskitaso\" ei käytä yhtä paljon muistia tai prosessoritehoa, ja \"Herkkä\""
+" on turvallisempi, mutta käyttää +1 GiB RAM-muistia ja paljon "
+"prosessorijaksoja. "
 
 #: data/ui/remmina_preferences.glade:1790
 msgid "Intermediate (+64 MiB RAM)"
-msgstr ""
+msgstr "Keskitaso (+64 MiB RAM)"
 
 #: data/ui/remmina_preferences.glade:1791
 msgid "Strong (+256 MiB, ~2009 CPU)"
-msgstr ""
+msgstr "Vahva (+256 MiB, ~2009 CPU)"
 
 #: data/ui/remmina_preferences.glade:1792
 msgid "Sensitive (+1 GiB, ~2014 CPU)"
-msgstr ""
+msgstr "Herkkä (+1 GiB, ~2014 CPU)"
 
 #: data/ui/remmina_preferences.glade:1808
-#, fuzzy
-#| msgid "Edit settings"
 msgid "Auditing log"
-msgstr "Muokkaa asetuksia"
+msgstr "Tarkastusloki"
 
 #: data/ui/remmina_preferences.glade:1833
 msgid "Automatically accept all fingerprints and certificates"
 msgstr "Hyväksy kaikki sormenjäljet ja varmenteet automaattisesti"
 
 #: data/ui/remmina_preferences.glade:1838
-#, fuzzy
-#| msgid "Trust all fingerprints and certificates"
 msgid "Trust all certificates"
-msgstr "Luota kaikkiin sormenjälkiin ja varmenteisiin"
+msgstr "Luota kaikkiin varmenteisiin"
 
 #: data/ui/remmina_preferences.glade:1873
 msgid "Security"
