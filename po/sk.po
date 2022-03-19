@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2022-03-10 14:39+0000\n"
-"PO-Revision-Date: 2022-03-13 12:46+0000\n"
+"PO-Revision-Date: 2022-03-19 20:55+0000\n"
 "Last-Translator: Jose Riha <jose1711@gmail.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/remmina/remmina/"
 "sk/>\n"
@@ -1924,14 +1924,12 @@ msgid "Keyboard scancode remapping"
 msgstr "Premenovanie kódu klávesnice"
 
 #: plugins/rdp/rdp_settings.c:483
-#, fuzzy
 msgid "List of key=value,… pairs to remap scancodes. E.g. 0x56=0x29,0x29=0x56"
 msgstr ""
 "Zoznam dvojíc kľúč=hodnota,... na premapovanie scancodes. Napr. "
 "0x56=0x29,0x29=0x56"
 
 #: plugins/rdp/rdp_settings.c:486
-#, fuzzy
 msgid "FreeRDP > 2.3.0 is required to map scancodes"
 msgstr "Na mapovanie scancodes je potrebný FreeRDP > 2.3.0"
 
@@ -2099,16 +2097,13 @@ msgid "Could not find the address for the RDP server “%s”."
 msgstr "Nepodarilo sa nájsť adresu servera RDP „%s“."
 
 #: plugins/rdp/rdp_plugin.c:2222
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not connect to the RDP server “%s” via TLS. Check that client and "
-#| "server support a common TLS version."
+#, c-format
 msgid ""
 "Could not connect to the RDP server “%s” via TLS. See the DEBUG traces from "
 "a terminal for more information."
 msgstr ""
-"Nepodarilo sa pripojiť k serveru RDP „%s“ prostredníctvom TLS. Skontroluje, "
-"či klient aj server podporujú rovnakú verziu TLS."
+"Nepodarilo sa pripojiť k serveru RDP „%s“ prostredníctvom TLS. Podrobnosti "
+"nájdete v DEBUG záznamoch terminálu."
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:2226
@@ -2144,10 +2139,7 @@ msgid "The “%s” server refused the connection."
 msgstr "Server „%s“ odmietol pripojenie."
 
 #: plugins/rdp/rdp_plugin.c:2252
-#, fuzzy, c-format
-#| msgid ""
-#| "The Remote Desktop Gateway “%s” denied the user \"%s\\%s\" access due to "
-#| "policy."
+#, c-format
 msgid ""
 "The Remote Desktop Gateway “%s” denied the user “%s\\%s” access due to "
 "policy."
@@ -3170,20 +3162,15 @@ msgstr "Nepodarilo sa načítať platné `DialogData` alebo `sessions_list`! Ru�
 
 #. TRANSLATORS: Stick to x2goclient's translation for terminate.
 #: plugins/x2go/x2go_plugin.c:532
-#, fuzzy
-#| msgid "Terminate"
 msgid "_Terminate"
-msgstr "Prerušenie"
+msgstr "_Prerušiť"
 
 #. TRANSLATORS: Stick to x2goclient's translation for resume.
 #: plugins/x2go/x2go_plugin.c:535
-#, fuzzy
-#| msgid "Resume"
 msgid "_Resume"
-msgstr "Pokračovať"
+msgstr "P_okračovať"
 
 #: plugins/x2go/x2go_plugin.c:537
-#, fuzzy
 msgid "_New"
 msgstr "_Nové"
 
@@ -3194,12 +3181,11 @@ msgid "Terminating X2Go sessions can take a moment."
 msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:621 plugins/x2go/x2go_plugin.c:623
-#, fuzzy, c-format
+#, c-format
 msgid "Unknown property '%i'"
-msgstr "Neznáma vlastnosť"
+msgstr "Neznáma vlastnosť '%i'"
 
 #: plugins/x2go/x2go_plugin.c:711 plugins/x2go/x2go_plugin.c:758
-#, fuzzy
 msgid "Couldn't find child GtkTreeView of session chooser dialog."
 msgstr ""
 "Nepodarilo sa nájsť podriadené okno GtkTreeView dialógového okna výberu "
@@ -3221,9 +3207,8 @@ msgstr ""
 "relácie."
 
 #: plugins/x2go/x2go_plugin.c:767
-#, fuzzy
 msgid "Couldn't get currently selected row (session)!"
-msgstr "Nepodarilo sa získať ID relácie z vybraného riadku."
+msgstr "Nepodarilo sa získať aktuálne vybraný riadok (reláciu)!"
 
 #: plugins/x2go/x2go_plugin.c:786
 #, fuzzy, c-format
@@ -3233,32 +3218,26 @@ msgid ""
 msgstr "malo by byť možné vybrať iba jednu reláciu."
 
 #: plugins/x2go/x2go_plugin.c:836
-#, fuzzy
 msgid "Failed to fill 'GtkTreeIter'."
 msgstr "Nepodarilo sa vyplniť 'GtkTreeIter'."
 
 #: plugins/x2go/x2go_plugin.c:902
-#, fuzzy
 msgid "parameter 'argv' is 'NULL'."
 msgstr "parameter 'argv' je 'NULL'."
 
 #: plugins/x2go/x2go_plugin.c:913
-#, fuzzy
 msgid "parameter 'error' is 'NULL'."
 msgstr "parameter 'error' je 'NULL'."
 
 #: plugins/x2go/x2go_plugin.c:921
-#, fuzzy
 msgid "parameter 'env' is either invalid or uninitialized."
 msgstr "parameter 'env' je neplatný alebo neinicializovaný."
 
 #: plugins/x2go/x2go_plugin.c:937 plugins/x2go/x2go_plugin.c:2391
-#, fuzzy
 msgid "Started PyHoca-CLI with the following arguments:"
-msgstr "Spustenie PyHoca-CLI s nasledujúcimi argumentmi:"
+msgstr "Spustený PyHoca-CLI s nasledujúcimi argumentmi:"
 
 #: plugins/x2go/x2go_plugin.c:965
-#, fuzzy
 msgid ""
 "The necessary PyHoca-CLI process has encountered a internet connection "
 "problem."
@@ -3266,27 +3245,29 @@ msgstr ""
 "Potrebný proces PyHoca-CLI narazil na problém s internetovým pripojením."
 
 #: plugins/x2go/x2go_plugin.c:975
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not start PyHoca-CLI:\n"
 "%s"
-msgstr "Nepodarilo sa spustiť PyHoca-CLI (%i): '%s'"
+msgstr ""
+"Nepodarilo sa spustiť PyHoca-CLI:\n"
+"%s"
 
 #: plugins/x2go/x2go_plugin.c:986
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i"
 msgstr ""
 "Pri pokuse o spustenie PyHoca-CLI došlo k neznámej chybe. Kód ukončenia: %i"
 
 #: plugins/x2go/x2go_plugin.c:993
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i. "
 "Error: '%s'"
 msgstr ""
 "Pri pokuse o spustenie PyHoca-CLI došlo k neznámej chybe. Kód ukončenia: %i. "
-"Chyba: \"%s"
+"Chyba: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:1035
 #, fuzzy
@@ -3298,16 +3279,13 @@ msgid "GtkTreePath 'path' describes a non-existing row!"
 msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:1116
-#, fuzzy
 msgid "Parameter 'custom_data' is not fully initialized!"
-msgstr "Parameter 'default_username' nie je inicializovaný."
+msgstr "Parameter 'custom_data' nie je kompletne inicializovaný!"
 
 #: plugins/x2go/x2go_plugin.c:1144 plugins/x2go/x2go_plugin.c:1797
 #: plugins/x2go/x2go_plugin.c:2091
-#, fuzzy
-#| msgid "Per connection"
 msgid "'Invalid connection data.'"
-msgstr "\"Neplatné údaje o pripojení."
+msgstr "'Neplatné údaje o pripojení.'"
 
 #: plugins/x2go/x2go_plugin.c:1221
 #, fuzzy, c-format
@@ -3317,24 +3295,22 @@ msgid ""
 msgstr "Pri spustení relácie X2Go došlo k chybe…"
 
 #: plugins/x2go/x2go_plugin.c:1233 plugins/x2go/x2go_plugin.c:1609
-#, fuzzy
 msgid "An error occured."
 msgstr "Vyskytla sa chyba."
 
 #: plugins/x2go/x2go_plugin.c:1333 plugins/x2go/x2go_plugin.c:1348
-#, fuzzy
 msgid "Couldn't get session ID from session chooser dialog."
 msgstr "Nepodarilo sa získať ID relácie z dialógového okna výberu relácie."
 
 #: plugins/x2go/x2go_plugin.c:1340
-#, fuzzy, c-format
+#, c-format
 msgid "Resuming session: '%s'"
-msgstr "Obnovenie relácie: \"%s"
+msgstr "Obnovujem reláciu: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:1355
-#, fuzzy, c-format
+#, c-format
 msgid "Terminating session: '%s'"
-msgstr "Obnovenie relácie: \"%s"
+msgstr "Ruším reláciu: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:1529
 #, c-format
@@ -3342,9 +3318,8 @@ msgid "Disconnected from %s:%d via X2Go"
 msgstr "Odpojený od %s:%d prostredníctvom X2Go"
 
 #: plugins/x2go/x2go_plugin.c:1601
-#, fuzzy
 msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
-msgstr "PyHoca-CLI sa neočakávane ukončil. Toto spojenie sa teraz uzavrie."
+msgstr "PyHoca-CLI bol neočakávane ukončený. Toto spojenie sa teraz uzavrie."
 
 #: plugins/x2go/x2go_plugin.c:1610
 #, fuzzy
@@ -3359,14 +3334,12 @@ msgstr ""
 "dosiahnuteľný."
 
 #: plugins/x2go/x2go_plugin.c:1653
-#, fuzzy
 msgid "Can't save empty username!"
 msgstr "Nemožno uložiť prázdne používateľské meno!"
 
 #: plugins/x2go/x2go_plugin.c:1667
-#, fuzzy
 msgid "Could not save new credentials."
-msgstr "Nepodarilo sa uložiť nové poverenia."
+msgstr "Nepodarilo sa uložiť nové prihlasovacie údaje."
 
 #: plugins/x2go/x2go_plugin.c:1670
 #, fuzzy
@@ -3378,13 +3351,10 @@ msgstr ""
 "alebo 's_username' neboli nastavené."
 
 #: plugins/x2go/x2go_plugin.c:1701
-#, fuzzy
 msgid "Parameter 'default_username' is uninitialized."
 msgstr "Parameter 'default_username' nie je inicializovaný."
 
 #: plugins/x2go/x2go_plugin.c:1730
-#, fuzzy
-#| msgid "Enter NX authentication credentials"
 msgid "Enter X2Go credentials"
 msgstr "Zadajte prihlasovacie údaje X2Go"
 
@@ -3398,7 +3368,6 @@ msgstr ""
 "CLI. Vytvára sa nová relácia."
 
 #: plugins/x2go/x2go_plugin.c:1966
-#, fuzzy
 msgid "Couldn't allocate enough memory!"
 msgstr "Nepodarilo sa alokovať dostatok pamäte!"
 
@@ -3409,13 +3378,11 @@ msgstr "Nájdená už existujúca relácia X2Go s ID: '%s'"
 
 #. TRANSLATORS: Please stick to X2GoClient's translation.
 #: plugins/x2go/x2go_plugin.c:2019
-#, fuzzy
 msgid "Suspended"
-msgstr "Pozastavené od"
+msgstr "Pozastavené"
 
 #. TRANSLATORS: Please stick to X2GoClient's translation.
 #: plugins/x2go/x2go_plugin.c:2022
-#, fuzzy
 msgid "Running"
 msgstr "Beží"
 
@@ -3433,8 +3400,6 @@ msgstr ""
 "relácia."
 
 #: plugins/x2go/x2go_plugin.c:2113
-#, fuzzy
-#| msgid "Choose a file to upload"
 msgid "Choose a session to resume:"
 msgstr "Vyberte reláciu, ktorú chcete obnoviť:"
 
@@ -4476,7 +4441,7 @@ msgstr "Zobrazenie na celú obrazovku"
 #: data/ui/remmina_preferences.glade:625
 msgctxt "Appearance preferences"
 msgid "Tabs grouping"
-msgstr "Zoskupenie kariet"
+msgstr "Zoskupovanie kariet"
 
 #: data/ui/remmina_preferences.glade:637
 msgid "By group"
