@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2022-03-10 14:39+0000\n"
-"PO-Revision-Date: 2022-03-15 19:58+0000\n"
+"PO-Revision-Date: 2022-03-20 05:58+0000\n"
 "Last-Translator: 이정희 <daemul72@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/remmina/remmina/"
 "ko/>\n"
@@ -38,7 +38,7 @@ msgstr "비밀번호"
 #: src/remmina_file_editor.c:1110 src/remmina_ssh_plugin.c:1390
 #: src/remmina_ssh_plugin.c:1501
 msgid "SSH identity file"
-msgstr "SSH 인증 키 파일"
+msgstr "SSH 키 인증 파일"
 
 #: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:1111
 #: src/remmina_ssh_plugin.c:1391
@@ -231,7 +231,7 @@ msgstr "사용할 수 있는 해상도 설정"
 
 #: src/remmina_pref_dialog.c:144
 msgid "Recent lists cleared."
-msgstr "최근 목록을 지웠습니다."
+msgstr "최근 목록이 지워졌습니다."
 
 #: src/remmina_pref_dialog.c:156 src/rcw.c:2040
 #: data/ui/remmina_preferences.glade:169 data/ui/remmina_preferences.glade:179
@@ -333,7 +333,7 @@ msgstr "전체 화면 모드 뷰포트"
 
 #: src/rcw.c:1419 data/ui/remmina_preferences.glade:608
 msgid "Scrolled fullscreen"
-msgstr "스크롤 전체 화면"
+msgstr "스크롤된 전체 화면"
 
 #: src/rcw.c:1505
 msgid "Keep aspect ratio when scaled"
@@ -345,7 +345,7 @@ msgstr "크기 조정시 클라이언트 윈도 채우기"
 
 #: src/rcw.c:2061
 msgid "Send clipboard content as keystrokes"
-msgstr "클립 보드 내용을 키 입력으로 보내기"
+msgstr "클립보드 내용을 키 입력으로 보내기"
 
 #: src/rcw.c:2167
 msgid "Turn off scaling to avoid screenshot distortion."
@@ -373,7 +373,7 @@ msgstr "현재 연결 중복"
 
 #: src/rcw.c:2347
 msgid "Resize the window to fit in remote resolution"
-msgstr "원격 접속 해상도에 맞게 윈도 크기 조정"
+msgstr "원격 해상도에 맞게 창 크기 조정"
 
 #: src/rcw.c:2358
 msgid "Toggle fullscreen mode"
@@ -487,7 +487,7 @@ msgstr "다중 비밀번호 변경도구는 비밀 유지(secrecy) 플러그인�
 #, c-format
 msgid "%d password changed."
 msgid_plural "%d passwords changed."
-msgstr[0] "%d 개의 비밀번호를 변경했습니다."
+msgstr[0] "%d 개의 비밀번호가 변경되었습니다."
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:88
@@ -800,7 +800,7 @@ msgstr "권한"
 
 #: src/remmina_ftp_client.c:996 plugins/rdp/rdp_plugin.c:2662
 msgid "Remote"
-msgstr "리모트"
+msgstr "원격"
 
 #: src/remmina_ftp_client.c:1003 plugins/rdp/rdp_plugin.c:2661
 msgid "Local"
@@ -895,7 +895,7 @@ msgstr "인증서를 허용하시겠습니까?"
 #. TRANSLATORS: The user is asked to verify a new SSL certificate.
 #: src/remmina_protocol_widget.c:1793
 msgid "The certificate changed! Details:"
-msgstr "인증서가 변경되었습니다! 세부사항:"
+msgstr "인증서가 변경되었습니다! 세부정보:"
 
 #. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
 #: src/remmina_protocol_widget.c:1799
@@ -920,7 +920,7 @@ msgstr "%i 포트에서 들어오는 %s 연결을 위해 수신 대기 중…"
 
 #: src/remmina_protocol_widget.c:1971
 msgid "Could not authenticate, attempting reconnection…"
-msgstr "인증할 수 없습니다, 다시 접속 중…"
+msgstr "인증할 수 없습니다, 재연결 시도 중…"
 
 #: src/remmina_protocol_widget.c:2033 src/remmina_file_editor.c:436
 #: src/remmina_file_editor.c:1181 data/ui/remmina_main.glade:478
@@ -931,7 +931,7 @@ msgstr "서버"
 #: src/remmina_protocol_widget.c:2051
 #, c-format
 msgid "Install the %s protocol plugin first."
-msgstr "먼저 %s 프로토콜 플러그인을 설치하세요."
+msgstr "먼저 %s 프로토콜 플러그인을 설치하십시오."
 
 #: src/remmina_ssh.c:236
 #, c-format
@@ -952,7 +952,7 @@ msgstr "저장된 SSH 열쇠글이 제공되지 않았습니다. 사용자에게
 #: src/remmina_ssh.c:433 src/remmina_ssh.c:746
 #, c-format
 msgid "Could not authenticate with public SSH key. %s"
-msgstr "공개 SSH 키로 인증 할 수 없습니다. %s"
+msgstr "공개 SSH 키로 인증할 수 없습니다. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:336
@@ -985,7 +985,7 @@ msgstr "공개 SSH 키를 가져올 수 없습니다. %s"
 #: src/remmina_ssh.c:478
 #, c-format
 msgid "Could not authenticate automatically with public SSH key. %s"
-msgstr "공개 SSH 키로 자동 인증 할 수 없습니다. %s"
+msgstr "공개 SSH 키를 사용하여 자동으로 인증할 수 없습니다. %s"
 
 #: src/remmina_ssh.c:523
 #, c-format
@@ -1209,11 +1209,11 @@ msgstr[0] "총 %i개의 항목."
 
 #: src/remmina_main.c:695
 msgid "Network status: fully online"
-msgstr ""
+msgstr "네트워크 상태: 온라인"
 
 #: src/remmina_main.c:698
 msgid "Network status: offline"
-msgstr ""
+msgstr "네트워크 상태: 오프라인"
 
 #: src/remmina_main.c:945
 #, c-format
@@ -1389,7 +1389,7 @@ msgstr "입력이 잘못되었습니다."
 
 #: src/remmina_file_editor.c:239
 msgid "Choose a Remote Desktop Server"
-msgstr "원격 데스크탑 서버 선택"
+msgstr "원격 데스크톱 서버 선택하기"
 
 #: src/remmina_file_editor.c:460
 #, c-format
@@ -1449,10 +1449,8 @@ msgid "Auto-start this profile"
 msgstr "프로필에 대해 \"자동 시작\" 키기"
 
 #: src/remmina_file_editor.c:1099
-#, fuzzy
-#| msgid "New connection profile"
 msgid "Connection profile security"
-msgstr "새 연결 프로필"
+msgstr "연결 프로필 보안"
 
 #: src/remmina_file_editor.c:1102
 msgid "Require password to connect or edit the profile"
@@ -1536,7 +1534,7 @@ msgstr "기본 설정으로 저장됨."
 
 #: src/remmina_file_editor.c:1792
 msgid "Remote Connection Profile"
-msgstr "새 연결 프로필"
+msgstr "원격 연결 프로필"
 
 #: src/remmina_file_editor.c:1798
 msgid "Save as Default"
@@ -1606,17 +1604,17 @@ msgstr "Remmina 애플릿"
 #. TRANSLATORS: Applet comment/description as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
 #: src/remmina_icon.c:297 src/remmina_icon.c:449
 msgid "Connect to remote desktops through the applet menu"
-msgstr "애플릿 메뉴로 원격 데스크톱에 연결"
+msgstr "애플릿 메뉴를 통해 원격 데스크톱에 연결"
 
 #: src/remmina_icon.c:361
 msgid "StatusNotifier/Appindicator support in “"
-msgstr ""
+msgstr "상태알리미/앱표시기 지원 “"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:368
 #, c-format
 msgid "%s your desktop does support it"
-msgstr ""
+msgstr "%s 바탕화면이 지원합니다"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:370
@@ -1631,36 +1629,37 @@ msgid ""
 "%s not supported natively by your Desktop Environment. libappindicator will "
 "try to fallback to GtkStatusIcon/xembed"
 msgstr ""
+"%s는 데스크탑 환경에서 기본적으로 지원되지 않습니다. libappindicator는 "
+"GtkStatusIcon/xembed로 폴백을 시도합니다"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:377
 #, c-format
 msgid "%s You may need to install, and use XApp Status Applet"
-msgstr ""
+msgstr "%s XAPP 상태 애플릿 설치 및 사용이 필요할 수 있습니다"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:380
 #, c-format
 msgid "%s You may need to install, and use KStatusNotifierItem"
-msgstr ""
+msgstr "%s KStatusNotifierItem을 설치하고 사용해야 할 수도 있습니다"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:383
 #, c-format
 msgid "%s You may need to install, and use XEmbed SNI Proxy"
-msgstr ""
+msgstr "%s XEmbed SNI 프록시를 설치하고 사용해야 할 수 있습니다"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:386
 #, c-format
 msgid "%s You may need to install, and use Gnome Shell Extension Appindicator"
-msgstr ""
+msgstr "%s Gnome 셸 확장 앱표시기 설치 및 사용이 필요할 수 있습니다"
 
 #: src/remmina_ssh_plugin.c:342
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s:%d via SSH"
-msgstr "SSH로 '%s'에 연결하는 중…"
+msgstr "SSH를 통해 %s:%d에 연결됨"
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_ssh_plugin.c:550
@@ -1670,11 +1669,11 @@ msgstr "오류: %s"
 
 #: src/remmina_ssh_plugin.c:567
 msgid "Terminal content saved in"
-msgstr "터미널 내용이 저장되었습니다"
+msgstr "터미널 내용 저장됨 -"
 
 #: src/remmina_ssh_plugin.c:833
 msgid "Select All (host+A)"
-msgstr "전체 선택 (Host + A)"
+msgstr "모두 선택 (host+A)"
 
 #: src/remmina_ssh_plugin.c:834
 msgid "Copy (host+C)"
@@ -1686,25 +1685,24 @@ msgstr "붙여넣기 (host + V)"
 
 #: src/remmina_ssh_plugin.c:836
 msgid "Save session to file"
-msgstr "세션을 파일로 저장"
+msgstr "파일에 세션 저장"
 
 #: src/remmina_ssh_plugin.c:837
 msgid "Increase font size (host+Page Up)"
-msgstr "글자 크기 키우기 (host+Page Up)"
+msgstr "글꼴 크기 늘리기 (host+Page Up)"
 
 #: src/remmina_ssh_plugin.c:838
 msgid "Decrease font size (host+Page Down)"
-msgstr "글자 크기 줄이기 (host+Page Down)"
+msgstr "글꼴 크기 줄이기 (host+Page Down)"
 
 #: src/remmina_ssh_plugin.c:839
 msgid "Find text (host+G)"
-msgstr "붙여넣기 (host + V)"
+msgstr "텍스트 찾기 (host+G)"
 
 #: src/remmina_ssh_plugin.c:921
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Disconnected from %s:%d via SSH"
-msgstr "SSH로 '%s'에 연결하는 중…"
+msgstr "SSH를 통해 %s:%d에서 연결 해제됨"
 
 #: src/remmina_ssh_plugin.c:1468 data/ui/remmina_main.glade:177
 msgid "Copy"
@@ -1732,7 +1730,7 @@ msgstr "모두 선택(_S)"
 
 #: src/remmina_ssh_plugin.c:1471
 msgid "Increase font size"
-msgstr "글자 크기 크게"
+msgstr "글꼴 크기 늘리기"
 
 #: src/remmina_ssh_plugin.c:1471
 msgid "_Increase font size"
@@ -1740,7 +1738,7 @@ msgstr "글꼴 크기 늘리기(_I)"
 
 #: src/remmina_ssh_plugin.c:1472
 msgid "Decrease font size"
-msgstr "글자 크기 줄이기"
+msgstr "글꼴 크기 줄이기"
 
 #: src/remmina_ssh_plugin.c:1472
 msgid "_Decrease font size"
@@ -1760,16 +1758,12 @@ msgid "User password"
 msgstr "사용자 비밀번호"
 
 #: src/remmina_ssh_plugin.c:1506
-#, fuzzy
-#| msgid "Pre-command"
 msgid "Opening command"
-msgstr "사전-명령"
+msgstr "열기 명령"
 
 #: src/remmina_ssh_plugin.c:1507
-#, fuzzy
-#| msgid "Start-up program"
 msgid "Start-up background program"
-msgstr "시작 프로그램"
+msgstr "시작 시 배경 프로그램"
 
 #: src/remmina_ssh_plugin.c:1512
 msgid ""
@@ -1948,7 +1942,7 @@ msgstr "합성"
 
 #: plugins/rdp/rdp_settings.c:580
 msgid "Remote scale factor"
-msgstr "원격 크기 조정 비율"
+msgstr "원격 축척 비율"
 
 #: plugins/rdp/rdp_settings.c:595
 msgid "Desktop scale factor %"
@@ -1996,7 +1990,7 @@ msgstr "RDP 게이트웨이 인증 자격을 입력하세요"
 #: plugins/rdp/rdp_plugin.c:1037
 #, c-format
 msgid "Disconnected from %s via RDP"
-msgstr ""
+msgstr "RDP를 통해 %s에서 연결 해제됨"
 
 #: plugins/rdp/rdp_plugin.c:2167
 #, c-format
@@ -2072,16 +2066,12 @@ msgid "Could not find the address for the RDP server “%s”."
 msgstr "RDP 서버 \"%s\"의 주소를 찾을 수 없습니다."
 
 #: plugins/rdp/rdp_plugin.c:2222
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not connect to the RDP server “%s” via TLS. Check that client and "
-#| "server support a common TLS version."
+#, c-format
 msgid ""
 "Could not connect to the RDP server “%s” via TLS. See the DEBUG traces from "
 "a terminal for more information."
-msgstr ""
-"TLS로 RDP 서버 \"%s\"에 연결할 수 없습니다. 클라이언트와 서버가 일반 TLS 버전"
-"을 지원하는지 확인하세요."
+msgstr "TLS로 RDP 서버 \"%s\"에 연결할 수 없습니다. 자세한 내용은 터미널의 DEBUG "
+"추적을 참조하세요."
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:2226
@@ -2115,16 +2105,12 @@ msgid "The “%s” server refused the connection."
 msgstr "\"%s\"서버가 연결을 거부했습니다."
 
 #: plugins/rdp/rdp_plugin.c:2252
-#, fuzzy, c-format
-#| msgid ""
-#| "The Remote Desktop Gateway “%s” denied the user \"%s\\%s\" access due to "
-#| "policy."
+#, c-format
 msgid ""
 "The Remote Desktop Gateway “%s” denied the user “%s\\%s” access due to "
 "policy."
-msgstr ""
-"정책으로 원격 데스크톱 게이트웨이 \"%s\" 이(가) 사용자 \"%s\\%s\" 접속을 거부"
-"했습니다."
+msgstr "원격 데스크톱 게이트웨이 \"%s\"이(가) 정책으로 인해 사용자 \"%s\\%s\" 접속을 "
+"거부했습니다."
 
 #: plugins/rdp/rdp_plugin.c:2262
 #, c-format
@@ -2153,7 +2139,7 @@ msgstr "GFX RFX (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2610
 msgid "RemoteFX (32 bpp)"
-msgstr "리모트FX (32 bpp)"
+msgstr "RemoteFX (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2611 plugins/vnc/vnc_plugin.c:1957
 msgid "True colour (32 bpp)"
@@ -2371,11 +2357,8 @@ msgid "Share folder"
 msgstr "공유 폴더"
 
 #: plugins/rdp/rdp_plugin.c:2776
-#, fuzzy
-#| msgid ""
-#| "Use \"Redirect directory\" in the advanced tab for multiple directories"
 msgid "Use “Redirect directory” in the advanced tab for multiple directories"
-msgstr "여러 디렉토리의 경우에는 고급 탭에서 \"디렉토리 전달\"을 사용하세요"
+msgstr "여러 디렉터리에 대해 고급 탭에서 \"디렉터리 돌려쓰기\" 사용"
 
 #: plugins/rdp/rdp_plugin.c:2777
 msgid "Restricted admin mode"
@@ -2465,7 +2448,7 @@ msgstr "원격 데스크톱 게이트웨이 서버"
 
 #: plugins/rdp/rdp_plugin.c:2812
 msgid "Remote Desktop Gateway username"
-msgstr "원격 데스크톱 게이트웨이 사용자 이름"
+msgstr "원격 데스크톱 게이트웨이 사용자이름"
 
 #: plugins/rdp/rdp_plugin.c:2813
 msgid "Remote Desktop Gateway password"
@@ -2505,8 +2488,8 @@ msgid ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
 msgstr ""
-"\"Samsung_CLX-3300_Series\":\"삼성 CLX-3300 시리즈 PS\";\"캐논 MF410\":\"캐"
-"논 MF410 시리즈 UFR II\""
+"\"Samsung_CLX-3300_Series\":\"삼성 CLX-3300 시리즈 PS\";\"Canon MF410\":"
+"\"캐논 MF410 시리즈 UFR II\""
 
 #: plugins/rdp/rdp_plugin.c:2823
 msgid "USB device redirection"
@@ -2624,7 +2607,7 @@ msgstr "패스트 패스(fast-path) 끄기"
 
 #: plugins/rdp/rdp_plugin.c:2846
 msgid "Server detection using Remote Desktop Gateway"
-msgstr "원격 데스크톱 게이트웨이를 사용하는 서버 감지"
+msgstr "원격 데스크톱 게이트웨이를 사용한 서버 감지"
 
 #: plugins/rdp/rdp_plugin.c:2848
 msgid "Use system proxy settings"
@@ -2665,7 +2648,7 @@ msgstr "Ctrl+Alt+Delete 전송"
 
 #: plugins/rdp/rdp_plugin.c:2882
 msgid "RDP - Remote Desktop Protocol"
-msgstr "RDP - 리모트 데스크톱 프로토콜(Remote Desktop Protocol)"
+msgstr "RDP - 원격 데스크톱 프로토콜"
 
 #: plugins/rdp/rdp_plugin.c:2907
 msgid "RDP - RDP File Handler"
@@ -2686,10 +2669,9 @@ msgstr "%d (%d 개중에) 번째 재 연결 시도중…"
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_event.c:1127
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s via RDP"
-msgstr "SSH로 '%s'에 연결하는 중…"
+msgstr "RDP를 통해 %s에 연결됨"
 
 #: plugins/spice/spice_plugin_file_transfer.c:82
 msgid "File Transfers"
@@ -2723,16 +2705,14 @@ msgid "Disconnected from the SPICE server “%s”."
 msgstr "SPICE 서버 \"%s\"와 연결이 끊어졌습니다."
 
 #: plugins/spice/spice_plugin.c:388
-#, fuzzy, c-format
-#| msgid "Disconnected from the SPICE server “%s”."
+#, c-format
 msgid "Disconnected from %s:%d via SPICE"
-msgstr "SPICE 서버 \"%s\"와 연결이 끊어졌습니다"
+msgstr "SPICE를 통해 %s:%d에서 연결 해제됨"
 
 #: plugins/spice/spice_plugin.c:391
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s:%d via SPICE"
-msgstr "SSH로 '%s'에 연결하는 중…"
+msgstr "SPICE를 통해 %s:%d에 연결됨"
 
 #: plugins/spice/spice_plugin.c:403
 msgid "TLS connection error."
@@ -2767,20 +2747,16 @@ msgid "Server CA certificate"
 msgstr "서버 CA 인증서"
 
 #: plugins/spice/spice_plugin.c:696
-#, fuzzy
-#| msgid "Prefered video codec"
 msgid "Preferred video codec"
-msgstr "설정"
+msgstr "선호하는 비디오 코덱"
 
 #: plugins/spice/spice_plugin.c:697
 msgid "Turn off GStreamer overlay"
 msgstr "서버 입력 비활성화"
 
 #: plugins/spice/spice_plugin.c:700
-#, fuzzy
-#| msgid "Prefered image compression"
 msgid "Preferred image compression"
-msgstr "사용하기 원하는 이미지 압축"
+msgstr "선호하는 이미지 압축"
 
 #: plugins/spice/spice_plugin.c:703 plugins/spice/spice_plugin.c:716
 #: plugins/gvnc/gvnc_plugin.c:866 plugins/gvnc/gvnc_plugin.c:880
@@ -2854,15 +2830,14 @@ msgid "Please retry after turning on encryption for this profile."
 msgstr "이 프로필에 대한 암호화를 켠 후 다시 시도하십시오."
 
 #: plugins/vnc/vnc_plugin.c:1706
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s:%d via VNC"
-msgstr "SSH로 '%s'에 연결하는 중…"
+msgstr "VNC를 통해 %s:%d에 연결됨"
 
 #: plugins/vnc/vnc_plugin.c:1725
 #, c-format
 msgid "Disconnected from %s:%d via VNC"
-msgstr ""
+msgstr "VNC를 통해 %s:%d에서 연결 해제됨"
 
 #: plugins/vnc/vnc_plugin.c:1974
 msgid ""
@@ -2874,12 +2849,11 @@ msgid ""
 "    the repeater, e.g. with x11vnc:\n"
 "    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
 msgstr ""
-"리피터를 사용해서 VNC에 연결:\n"
-"  • 서버 필드는 리피터 ID를 포함해야 한다, 예) ID:123456789\n"
-"  • 리피터 필드에 리피터 IP와 포트를 다음과 같이 설정해야 한다:\n"
+"리피터를 사용하여 VNC에 연결:\n"
+"  • 서버 필드에는 리피터 ID가 포함되어야 함. 예) ID:123456789\n"
+"  • 리피터 필드는 리피터 IP 및 포트로 설정되어야 함. 다음과 같이:\n"
 "    10.10.10.12:5901\n"
-"  • From the remote VNC server, you will connect to\n"
-"    the repeater, e.g. with x11vnc:\n"
+"  • 원격 VNC 서버에서 리피터에 접속합니다.예) x11vnc 사용:\n"
 "    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
 
 #: plugins/vnc/vnc_plugin.c:1983
@@ -2910,6 +2884,15 @@ msgid ""
 "  • “Best (slowest)” sets encoding to “copyrect zrle ultra zlib hextile "
 "corre rre raw”"
 msgstr ""
+"사전 설정된 VNC 인코딩 품질 재정의하기:\n"
+"\n"
+"  • “나쁨 (가장 빠름)” 인코딩을 \"copyrect zlib hextile raw\"로 설정\n"
+"  • “중간” 인코딩을 \"tight zrle ultra copyrect hextile zlib corre rre "
+"raw\"로 설정\n"
+"  • “좋음” 인코딩을 \"tight zrle ultra copyrect hextile zlib corre rre "
+"raw\"로 설정\n"
+"  • “최고 (가장 느림)” 인코딩을 \"copyrect zrle ultra zlib hextile corre rre "
+"raw\"로 설정"
 
 #: plugins/vnc/vnc_plugin.c:2018
 msgid "Repeater"
@@ -2921,19 +2904,20 @@ msgstr "수신 포트"
 
 #: plugins/vnc/vnc_plugin.c:2050
 msgid "Override pre-set VNC encodings"
-msgstr ""
+msgstr "사전 설정된 VNC 인코딩 재정의"
 
 #: plugins/vnc/vnc_plugin.c:2051
 msgid "Force tight encoding"
-msgstr ""
+msgstr "타이트한 강제 인코딩"
 
 #: plugins/vnc/vnc_plugin.c:2051
 msgid "Enabling this may help when the remote desktop looks scrambled"
-msgstr ""
+msgstr "이 기능을 활성화하면 원격 데스크톱이 뒤죽박죽으로 보일 때 도움이 될 수 "
+"있습니다"
 
 #: plugins/vnc/vnc_plugin.c:2054 plugins/gvnc/gvnc_plugin.c:868
 msgid "Ignore remote bell messages"
-msgstr "리모트 벨 메시지 무시"
+msgstr "원격 벨 메시지 무시"
 
 #: plugins/vnc/vnc_plugin.c:2055 plugins/vnc/vnc_plugin.c:2071
 msgid "Prevent local interaction on the server"
@@ -3060,7 +3044,8 @@ msgstr "GNOME 키링의 보안 비밀번호 저장소"
 msgid ""
 "The command-line feature '%s' is not available! Attempting to start PyHoca-"
 "CLI without using this feature…"
-msgstr ""
+msgstr "명령줄 기능 '%s'을(를) 사용할 수 없습니다! 이 기능을 사용하지 않고 PyHoca-"
+"CLI를 시작하려고 하는 중…"
 
 #: plugins/x2go/x2go_plugin.c:292 plugins/x2go/x2go_plugin.c:424
 #: plugins/x2go/x2go_plugin.c:513 plugins/x2go/x2go_plugin.c:620
@@ -3096,32 +3081,28 @@ msgid "Can't retrieve `DialogData`! Aborting…"
 msgstr "'DialogData'를 검색할 수 없습니다! 중단 중…"
 
 #: plugins/x2go/x2go_plugin.c:472
-#, fuzzy
-#| msgid "Display"
 msgid "X Display"
-msgstr "화면"
+msgstr "X 디스플레이"
 
 #: plugins/x2go/x2go_plugin.c:473
 msgid "Status"
 msgstr "상태"
 
 #: plugins/x2go/x2go_plugin.c:474
-#, fuzzy
-#| msgid "Permission"
 msgid "Session ID"
-msgstr "권한"
+msgstr "세션 ID"
 
 #: plugins/x2go/x2go_plugin.c:475
 msgid "Create date"
-msgstr ""
+msgstr "날짜 생성"
 
 #: plugins/x2go/x2go_plugin.c:476
 msgid "Suspended since"
-msgstr ""
+msgstr "일시정지일로부터"
 
 #: plugins/x2go/x2go_plugin.c:477
 msgid "Agent PID"
-msgstr ""
+msgstr "에이전트 PID"
 
 #: plugins/x2go/x2go_plugin.c:479
 msgid "Hostname"
@@ -3169,94 +3150,98 @@ msgstr "새로 만들기(_N)"
 #. TRANSLATORS: Please stick to X2GoClient's way of translating.
 #: plugins/x2go/x2go_plugin.c:546
 msgid "Terminating X2Go sessions can take a moment."
-msgstr ""
+msgstr "X2Go 세션을 종료하는 데 시간이 걸릴 수 있습니다."
 
 #: plugins/x2go/x2go_plugin.c:621 plugins/x2go/x2go_plugin.c:623
 #, c-format
 msgid "Unknown property '%i'"
-msgstr ""
+msgstr "알 수 없는 속성 '%i'"
 
 #: plugins/x2go/x2go_plugin.c:711 plugins/x2go/x2go_plugin.c:758
 msgid "Couldn't find child GtkTreeView of session chooser dialog."
-msgstr ""
+msgstr "세션 선택도구 대화상자의 하위 GtkTreeView를 찾을 수 없습니다."
 
 #: plugins/x2go/x2go_plugin.c:723
 msgid ""
 "Neither the 'dialog' nor 'treeview' parameters are initialized! At least one "
 "of them must be given."
-msgstr ""
+msgstr "'dialog' 또는 'treeview' 매개변수가 모두 초기화되지 않았습니다. 그 중 적어도 "
+"하나는 제공해야 합니다."
 
 #: plugins/x2go/x2go_plugin.c:732
 msgid ""
 "Could not obtain \"GtkTreeModelFilter*\" of the session chooser dialog, for "
 "unknown reason."
-msgstr ""
+msgstr "알 수 없는 이유로 세션 선택도구 대화상자의 \"GtkTreeModelFilter*\"를 가져올 "
+"수 없습니다."
 
 #: plugins/x2go/x2go_plugin.c:767
 msgid "Couldn't get currently selected row (session)!"
-msgstr ""
+msgstr "현재 선택된 행(세션)을 가져올 수 없습니다!"
 
 #: plugins/x2go/x2go_plugin.c:786
 #, c-format
 msgid ""
 "Exactly one session should be selectable but '%i' rows (sessions) are "
 "selected."
-msgstr ""
+msgstr "정확히 하나의 세션을 선택할 수 있어야 하지만 '%i' 행(세션)이 선택되었습니다."
 
 #: plugins/x2go/x2go_plugin.c:836
 msgid "Failed to fill 'GtkTreeIter'."
-msgstr ""
+msgstr "'GtkTreeIter'를 채우지 못했습니다."
 
 #: plugins/x2go/x2go_plugin.c:902
 msgid "parameter 'argv' is 'NULL'."
-msgstr ""
+msgstr "매개변수 'argv'는 'NULL'입니다."
 
 #: plugins/x2go/x2go_plugin.c:913
 msgid "parameter 'error' is 'NULL'."
-msgstr ""
+msgstr "매개변수 'error'는 'NULL'입니다."
 
 #: plugins/x2go/x2go_plugin.c:921
 msgid "parameter 'env' is either invalid or uninitialized."
-msgstr ""
+msgstr "매개변수 'env'가 잘못되었거나 초기화되지 않았습니다."
 
 #: plugins/x2go/x2go_plugin.c:937 plugins/x2go/x2go_plugin.c:2391
-#, fuzzy
 msgid "Started PyHoca-CLI with the following arguments:"
-msgstr "다음과 같은 인수와 함께 피호카 클라이 시작 :"
+msgstr "다음 인수를 사용하여 PyHoca-CLI 시작 :"
 
 #: plugins/x2go/x2go_plugin.c:965
 msgid ""
 "The necessary PyHoca-CLI process has encountered a internet connection "
 "problem."
-msgstr ""
+msgstr "필요한 PyHoca-CLI 프로세스에 인터넷 연결 문제가 발생했습니다."
 
 #: plugins/x2go/x2go_plugin.c:975
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not start PyHoca-CLI:\n"
 "%s"
-msgstr "피호카-CLI(%i: '%s'"
+msgstr ""
+"PyHoca-CLI 시작할 수 없음:\n"
+"%s"
 
 #: plugins/x2go/x2go_plugin.c:986
 #, c-format
 msgid ""
 "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i"
-msgstr ""
+msgstr "PyHoca-CLI를 시작하는 동안 알 수 없는 오류가 발생했습니다. 종료 코드: %i"
 
 #: plugins/x2go/x2go_plugin.c:993
 #, c-format
 msgid ""
 "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i. "
 "Error: '%s'"
-msgstr ""
+msgstr "PyHoca-CLI를 시작하는 동안 알 수 없는 오류가 발생했습니다. 종료 코드: %i. "
+"오류: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:1035
 msgid "Neither the 'path' nor 'dialog' parameters are initialized."
-msgstr ""
+msgstr "'path' 또는 'dialog' 매개변수가 초기화되지 않습니다."
 
 #: plugins/x2go/x2go_plugin.c:1051
 msgid "GtkTreePath 'path' describes a non-existing row!"
-msgstr ""
+msgstr "GtkTreePath 'path'는 존재하지 않는 행을 설명합니다!"
 
 #: plugins/x2go/x2go_plugin.c:1116
 msgid "Parameter 'custom_data' is not fully initialized!"
@@ -3264,67 +3249,62 @@ msgstr "'custom_data' 매개변수가 완전히 초기화되지 않았습니다!
 
 #: plugins/x2go/x2go_plugin.c:1144 plugins/x2go/x2go_plugin.c:1797
 #: plugins/x2go/x2go_plugin.c:2091
-#, fuzzy
-#| msgid "Shared connection"
 msgid "'Invalid connection data.'"
-msgstr "공유한 연결"
+msgstr "'잘못된 연결 데이터입니다.'"
 
 #: plugins/x2go/x2go_plugin.c:1221
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "An error occured while trying to terminate X2Go session '%s':\n"
 "%s"
-msgstr "X2Go 세션을 시작하는 동안 오류가 발생했습니다…"
+msgstr ""
+"X2Go 세션 '%s'을(를) 종료하는 동안 오류 발생함:\n"
+"%s"
 
 #: plugins/x2go/x2go_plugin.c:1233 plugins/x2go/x2go_plugin.c:1609
-#, fuzzy
 msgid "An error occured."
 msgstr "오류가 발생했습니다."
 
 #: plugins/x2go/x2go_plugin.c:1333 plugins/x2go/x2go_plugin.c:1348
 msgid "Couldn't get session ID from session chooser dialog."
-msgstr ""
+msgstr "세션 선택도구 대화상자에서 세션 ID를 가져올 수 없습니다."
 
 #: plugins/x2go/x2go_plugin.c:1340
 #, c-format
 msgid "Resuming session: '%s'"
-msgstr ""
+msgstr "세션 재개하기: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:1355
 #, c-format
 msgid "Terminating session: '%s'"
-msgstr ""
+msgstr "세션 종료하기: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:1529
 #, c-format
 msgid "Disconnected from %s:%d via X2Go"
-msgstr ""
+msgstr "X2Go를 통해 %s:%d에서 연결 해제됨"
 
 #: plugins/x2go/x2go_plugin.c:1601
-#, fuzzy
 msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
-msgstr "피호카 클리는 예기치 않게 빠져나갔습니다. 이제 이 연결이 닫힙습니다."
+msgstr "PyHoca-CLI가 예기치 않게 종료되었습니다. 이제 이 연결이 닫힙니다."
 
 #: plugins/x2go/x2go_plugin.c:1610
-#, fuzzy
 msgid ""
 "The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
 "Please check your profile settings and PyHoca-CLI's output for possible "
 "errors. Also ensure the remote server is reachable."
 msgstr ""
-"필요한 아동 과정 '피호카-클리'는 예기치 않게 멈췄다.\n"
-"프로필 설정 과 피호카 클라이의 출력을 확인하여 가능한 오류에 대해 확인하고 원"
-"격 서버에 연결할 수 있는지 확인하십시오."
+"필요한 하위 프로세스 'pyhoca-cli'가 예기치 않게 중지되었습니다.\n"
+"프로필 설정과 PyHoca-CLI의 출력에서 가능한 오류를 확인하십시오. 또한 원격 "
+"서버에 연결할 수 있는지 확인하십시오."
 
 #: plugins/x2go/x2go_plugin.c:1653
 msgid "Can't save empty username!"
-msgstr ""
+msgstr "빈 사용자 이름을 저장할 수 없습니다!"
 
 #: plugins/x2go/x2go_plugin.c:1667
-#, fuzzy
-#| msgid "Could not save the file “%s”."
 msgid "Could not save new credentials."
-msgstr "파일 \"%s\"을(를) 저장할 수 없습니다."
+msgstr "새 자격 증명을 저장할 수 없습니다."
 
 #: plugins/x2go/x2go_plugin.c:1670
 msgid ""
@@ -3339,8 +3319,6 @@ msgid "Parameter 'default_username' is uninitialized."
 msgstr "'default_username' 매개변수가 초기화되지 않았습니다."
 
 #: plugins/x2go/x2go_plugin.c:1730
-#, fuzzy
-#| msgid "Enter NX authentication credentials"
 msgid "Enter X2Go credentials"
 msgstr "X2Go 자격 증명 입력"
 
@@ -3348,45 +3326,41 @@ msgstr "X2Go 자격 증명 입력"
 msgid ""
 "Couldn't parse the output of PyHoca-CLI's --list-sessions option. Creating a "
 "new session now."
-msgstr ""
+msgstr "PyHoca-CLI의 --list-sessions 옵션의 출력을 구문 분석할 수 없습니다. 지금 새 "
+"세션을 만드는 중입니다."
 
 #: plugins/x2go/x2go_plugin.c:1966
 msgid "Couldn't allocate enough memory!"
-msgstr ""
+msgstr "충분한 메모리를 할당할 수 없습니다!"
 
 #: plugins/x2go/x2go_plugin.c:1976
 #, c-format
 msgid "Found already existing X2Go session with ID: '%s'"
-msgstr ""
+msgstr "ID가 있는 기존 X2Go 세션을 찾았습니다: '%s'"
 
 #. TRANSLATORS: Please stick to X2GoClient's translation.
 #: plugins/x2go/x2go_plugin.c:2019
 msgid "Suspended"
-msgstr ""
+msgstr "일시 중단됨"
 
 #. TRANSLATORS: Please stick to X2GoClient's translation.
 #: plugins/x2go/x2go_plugin.c:2022
-#, fuzzy
 msgid "Running"
 msgstr "실행 중"
 
 #. TRANSLATORS: Please stick to X2GoClient's translation.
 #: plugins/x2go/x2go_plugin.c:2025
-#, fuzzy
-#| msgid "Terminate"
 msgid "Terminated"
-msgstr "중단"
+msgstr "종료됨"
 
 #: plugins/x2go/x2go_plugin.c:2058
 msgid ""
 "Could not find any sessions on remote machine. Creating a new session now."
-msgstr ""
+msgstr "원격 시스템에서 세션을 찾을 수 없습니다. 지금 새 세션을 만드는 중입니다."
 
 #: plugins/x2go/x2go_plugin.c:2113
-#, fuzzy
-#| msgid "Choose a file to upload"
 msgid "Choose a session to resume:"
-msgstr "업로드할 파일을 선택하세요"
+msgstr "재개할 세션 선택하기:"
 
 #: plugins/x2go/x2go_plugin.c:2156
 msgid "Waiting for user to select a session…"
@@ -3394,83 +3368,72 @@ msgstr "사용자가 세션을 선택하기를 기다리는 중…"
 
 #: plugins/x2go/x2go_plugin.c:2164
 msgid "No session was selected. Creating a new one."
-msgstr ""
+msgstr "세션이 선택되지 않았습니다. 새로 만드는 중입니다."
 
 #: plugins/x2go/x2go_plugin.c:2212
 #, c-format
 msgid "A non-critical error happened: %s"
-msgstr ""
+msgstr "치명적이지 않은 오류 발생: %s"
 
 #: plugins/x2go/x2go_plugin.c:2217
 #, c-format
 msgid "User chose to resume session with ID: '%s'"
-msgstr ""
+msgstr "사용자가 ID로 세션 재개를 선택했습니다: '%s'"
 
 #. TRANSLATORS: Please stick to X2GoClient's way of translating.
 #: plugins/x2go/x2go_plugin.c:2238
 #, c-format
 msgid "Resuming session '%s'…"
-msgstr ""
+msgstr "세션 '%s' 재개 중…"
 
 #: plugins/x2go/x2go_plugin.c:2369
-#, fuzzy
 msgid "DPI setting is out of bounds. Please adjust it in profile settings."
-msgstr "DPI 설정은 범위를 벗어났습니다. 프로필 설정에서 조정하십시오."
+msgstr "DPI 설정이 범위를 벗어났습니다. 프로필 설정에서 조정하십시오."
 
 #: plugins/x2go/x2go_plugin.c:2411
-#, fuzzy
 msgid "An error occured while starting an X2Go session…"
 msgstr "X2Go 세션을 시작하는 동안 오류가 발생했습니다…"
 
 #: plugins/x2go/x2go_plugin.c:2419
-#, fuzzy
-#| msgid "Could not start SSH session. %s"
 msgid "Could not start X2Go session."
 msgstr "X2Go 세션을 시작할 수 없습니다."
 
 #: plugins/x2go/x2go_plugin.c:2420
-#, fuzzy, c-format
+#, c-format
 msgid "Could not start PyHoca-CLI (%i): '%s'"
-msgstr "피호카-CLI(%i: '%s'"
+msgstr "PyHoca-CLI (%i)를 시작할 수 없음: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:2535
-#, fuzzy
 msgid ""
 "Couldn't get PyHoca-CLI's command-line features. This indicates it is either "
 "too old, or not installed. An old limited set of features will be used for "
 "now."
 msgstr ""
-"피호카 클리의 cmdline 기능을 얻을 수 없습니다. 이것은 당신의 피호카 클라이 버"
-"전이 너무 오래되었거나 피호카 -cli가 설치되지 않음을 나타냅니다! 이제 이전 제"
-"한된 기능 집합이 사용됩니다."
+"PyHoca-CLI의 명령줄 기능을 가져올 수 없습니다. 이는 너무 오래되었거나 "
+"설치되지 않았음을 나타냅니다. 현재는 오래된 제한된 기능 설정이 사용됩니다."
 
 #: plugins/x2go/x2go_plugin.c:2544
-#, fuzzy
 msgid ""
 "Could not parse PyHoca-CLI's command-line features. Using a limited feature-"
 "set for now."
-msgstr ""
-"파싱 피호카-클리 기능은 불가능했습니다! 지금은 제한된 기능 집합을 사용하입니"
-"다."
+msgstr "PyHoca-CLI의 명령줄 기능을 구문 분석할 수 없습니다. 현재 제한된 기능 설정을 "
+"사용하고 있습니다."
 
 #: plugins/x2go/x2go_plugin.c:2550
 msgid "Retrieved the following PyHoca-CLI command-line features:"
 msgstr "다음 PyHoca-CLI 명령줄 기능을 검색했습니다:"
 
 #: plugins/x2go/x2go_plugin.c:2558
-#, fuzzy, c-format
+#, c-format
 msgid "Available feature[%i]: '%s'"
 msgstr "사용 가능한 기능[%i]: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:2583
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s:%d via X2Go"
-msgstr "SSH로 '%s'에 연결하는 중…"
+msgstr "X2Go를 통해 %s:%d에 연결됨"
 
 #: plugins/x2go/x2go_plugin.c:2677
-#, fuzzy
-#| msgid "Could not open channel. %s"
 msgid "Could not open X11 DISPLAY."
 msgstr "X11 디스플레이를 열 수 없습니다."
 
@@ -3483,9 +3446,8 @@ msgid "Waiting for PyHoca-CLI to show the session's window…"
 msgstr "PyHoca-CLI가 세션 창을 표시하기를 기다리는 중…"
 
 #: plugins/x2go/x2go_plugin.c:2794
-#, fuzzy
 msgid "No X2Go session window appeared. Something went wrong…"
-msgstr "X2Go 세션 창이 나타나지 않았습니다. 뭔가 잘못되었습니다…"
+msgstr "X2Go 세션 창이 나타나지 않았습니다. 문제가 발생했습니다…"
 
 #: plugins/x2go/x2go_plugin.c:2905
 msgid "RemminaProtocolWidget* gp is 'NULL'!"
@@ -3497,9 +3459,8 @@ msgid "The %s protocol is unavailable because GtkSocket only works under X.org"
 msgstr "GtkSocket은 X.org에서만 작동하므로 %s 프로토콜을 사용할 수 없습니다"
 
 #: plugins/x2go/x2go_plugin.c:2935
-#, fuzzy
 msgid "Could not initialize pthread. Falling back to non-threaded mode…"
-msgstr "pthread를 초기화할 수 없습니다. 스레드가 아닌 모드로 다시 떨어지는…"
+msgstr "pthread를 초기화할 수 없습니다. 스레드가 아닌 모드로 되돌아가는 중…"
 
 #. TRANSLATORS: Presumably you just want to translate 'and' into
 #. your language.
@@ -3510,7 +3471,7 @@ msgstr "pthread를 초기화할 수 없습니다. 스레드가 아닌 모드로 
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
 #: plugins/x2go/x2go_plugin.c:2978 plugins/x2go/x2go_plugin.c:2996
-#, fuzzy, c-format
+#, c-format
 msgid "%sand '%s'"
 msgstr "%s와 '%s'"
 
@@ -3521,7 +3482,7 @@ msgstr "%s와 '%s'"
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
 #: plugins/x2go/x2go_plugin.c:2983 plugins/x2go/x2go_plugin.c:3001
-#, fuzzy, c-format
+#, c-format
 msgid "%s'%s' "
 msgstr "%s'%s' "
 
@@ -3529,52 +3490,48 @@ msgstr "%s'%s' "
 #. (Except your listing-grammar differs from english.)
 #. 'value1', 'value2', 'valueN-1' and 'valueN'
 #: plugins/x2go/x2go_plugin.c:2988
-#, fuzzy, c-format
+#, c-format
 msgid "%s'%s', "
 msgstr "%s'%s', "
 
 #: plugins/x2go/x2go_plugin.c:3027
-#, fuzzy
 msgid "Invalid validation data in ProtocolSettings array!"
-msgstr "프로토콜 설정 배열의 유효성 검사 데이터는 유효하지 않습니다!"
+msgstr "ProtocolSettings 배열의 유효하지 않은 유효성 검사 데이터입니다!"
 
 #: plugins/x2go/x2go_plugin.c:3042 plugins/x2go/x2go_plugin.c:3107
-#, fuzzy
 msgid "Validation data in ProtocolSettings array is invalid!"
-msgstr "프로토콜 설정 배열의 유효성 검사 데이터는 유효하지 않습니다!"
+msgstr "ProtocolSettings 배열의 유효성 검사 데이터가 잘못되었습니다!"
 
 #: plugins/x2go/x2go_plugin.c:3051
 msgid "Parameters 'key' or 'value' are 'NULL'!"
-msgstr ""
+msgstr "매개변수 '키' 또는 '값'이 'NULL'입니다!"
 
 #: plugins/x2go/x2go_plugin.c:3069
-#, fuzzy, c-format
+#, c-format
 msgid "Allowed values are %s."
-msgstr "허용값은 %s입니다."
+msgstr "허용되는 값은 %s입니다."
 
 #: plugins/x2go/x2go_plugin.c:3071
-#, fuzzy, c-format
+#, c-format
 msgid "The only allowed value is '%s'."
-msgstr "허용된 값만 '%s'입니다."
+msgstr "허용되는 유일한 값은 '%s'입니다."
 
 #: plugins/x2go/x2go_plugin.c:3118
-#, fuzzy
 msgid "The lower limit is not a valid integer!"
-msgstr "최소 한도는 유효 정수가 아닙니다!"
+msgstr "하한선은 유효한 정수가 아닙니다!"
 
 #: plugins/x2go/x2go_plugin.c:3123
 msgid "The lower limit is too high!"
-msgstr ""
+msgstr "하한선이 너무 높습니다!"
 
 #: plugins/x2go/x2go_plugin.c:3128
 msgid "The lower limit is too low!"
-msgstr ""
+msgstr "하한선이 너무 낮습니다!"
 
 #: plugins/x2go/x2go_plugin.c:3133 plugins/x2go/x2go_plugin.c:3163
 #: plugins/x2go/x2go_plugin.c:3183
-#, fuzzy
 msgid "Something unknown went wrong."
-msgstr "문제가 발생했습니다."
+msgstr "알 수 없는 문제가 발생했습니다."
 
 #: plugins/x2go/x2go_plugin.c:3138 plugins/x2go/x2go_plugin.c:3168
 #: plugins/x2go/x2go_plugin.c:3187
@@ -3582,96 +3539,75 @@ msgid "Please check the RemminaProtocolSetting array for possible errors."
 msgstr "가능한 오류에 대해 RemminaProtocolSetting 배열을 확인하십시오."
 
 #: plugins/x2go/x2go_plugin.c:3148
-#, fuzzy
 msgid "The upper limit is not a valid integer!"
-msgstr "입력은 유효 정수 없습니다!"
+msgstr "상한선은 유효한 정수가 아닙니다!"
 
 #: plugins/x2go/x2go_plugin.c:3153
 msgid "The upper limit is too high!"
-msgstr ""
+msgstr "상한선이 너무 높습니다!"
 
 #: plugins/x2go/x2go_plugin.c:3158
 msgid "The upper limit is too low!"
-msgstr ""
+msgstr "상한선이 너무 낮습니다!"
 
 #: plugins/x2go/x2go_plugin.c:3178
-#, fuzzy
 msgid "The input is not a valid integer!"
-msgstr "입력은 유효 정수 없습니다!"
+msgstr "입력값은 유효한 정수가 아닙니다!"
 
 #: plugins/x2go/x2go_plugin.c:3180 plugins/x2go/x2go_plugin.c:3199
-#, fuzzy, c-format
+#, c-format
 msgid "Input must be a number between %i and %i."
-msgstr "입력은 %i와 %i 사이의 숫자여야 합니다."
+msgstr "입력값은 %i와 %i 사이의 숫자여야 합니다."
 
 #: plugins/x2go/x2go_plugin.c:3228
-#, fuzzy
-#| msgid "Start-up program"
 msgid "Startup program"
-msgstr "시작 프로그램"
+msgstr "시동 프로그램"
 
 #: plugins/x2go/x2go_plugin.c:3230
-#, fuzzy
 msgid "Which command should be executed after creating the X2Go session?"
-msgstr "X2Go 세션을 만든 후 실행해야 하는 명령은 무엇입니까?"
+msgstr "X2Go 세션을 생성한 후 어떤 명령을 실행하시겠습니까?"
 
 #: plugins/x2go/x2go_plugin.c:3232
-#, fuzzy
-#| msgid "Keyboard layout"
 msgid "Keyboard Layout (auto)"
-msgstr "키보드 레이아웃(자동)"
+msgstr "키보드 레이아웃 (자동)"
 
 #: plugins/x2go/x2go_plugin.c:3233
-#, fuzzy
-#| msgid "Keyboard layout"
 msgid "Keyboard type (auto)"
-msgstr "키보드 유형(자동)"
+msgstr "키보드 유형 (자동)"
 
 #: plugins/x2go/x2go_plugin.c:3234
-#, fuzzy
-#| msgid "Turn on Java support"
 msgid "Audio support"
 msgstr "오디오 지원"
 
 #: plugins/x2go/x2go_plugin.c:3236
-#, fuzzy
 msgid "The sound system of the X2Go server (default: 'pulse')."
-msgstr "X2Go 서버의 사운드 시스템(기본값: '펄스')."
+msgstr "X2Go 서버의 사운드 시스템 (기본값: 'pulse')."
 
 #: plugins/x2go/x2go_plugin.c:3239
-#, fuzzy
-#| msgid "TCP redirection"
 msgid "Clipboard direction"
 msgstr "클립보드 방향"
 
 #: plugins/x2go/x2go_plugin.c:3241
-#, fuzzy
 msgid "Which direction should clipboard content be copied? (default: 'both')."
-msgstr "클립보드 콘텐츠를 복사해야 하는 방향은 무엇입니까? (기본값: '둘 다')."
+msgstr "클립보드 내용은 어느 방향으로 복사해야 합니까? (기본값: '둘 다')."
 
 #: plugins/x2go/x2go_plugin.c:3245
-#, fuzzy
-#| msgid "Resolution"
 msgid "DPI resolution"
 msgstr "DPI 해상도"
 
 #: plugins/x2go/x2go_plugin.c:3246
-#, fuzzy
 msgid ""
 "Launch session with a specific resolution (in dots per inch). Must be "
 "between 20 and 400."
-msgstr ""
-"특정 해상도로 세션을 시작합니다(인치당 점). 20에서 400 사이여야 합니다."
+msgstr "특정 해상도(인치당 도트 수)로 세션을 시작합니다. 20~400 사이여야 합니다."
 
 #: plugins/x2go/x2go_plugin.c:3290
-#, fuzzy
 msgid "X2Go plugin loaded."
-msgstr "X2Go 플러그인로드."
+msgstr "X2Go 플러그인이 불러오기되었습니다."
 
 #: plugins/x2go/x2go_plugin.h:43
-#, fuzzy
 msgid "X2Go - Launch an X2Go session"
-msgstr "X2Go - X2Go 세션 시작"
+msgstr "X2Go - X2Go 세션 실행"
 
 #: plugins/gvnc/gvnc_plugin_config.h:40
 msgid "Remmina VNC plugin for GNOME and KVM"
@@ -3796,7 +3732,7 @@ msgstr "원격 호스트 재시작"
 
 #: plugins/gvnc/gvnc_plugin.c:897
 msgid "Reset remote host (hard reboot)"
-msgstr "원격 호스트 재설정 (하드 재시작)"
+msgstr "원격 호스트 재설정 (컴퓨터 재시작)"
 
 #: plugins/gvnc/gvnc_plugin.c:898
 msgid "Shutdown remote host"
@@ -4028,7 +3964,7 @@ msgstr ""
 
 #: data/ui/remmina_news.glade:130
 msgid "Use as default remote desktop client"
-msgstr "레미나를 기본 원격 데스크톱 클라이언트로 설정"
+msgstr "기본 원격 데스크톱 클라이언트로 사용"
 
 #: data/ui/remmina_news.glade:139
 msgid "Apply"
@@ -4307,14 +4243,6 @@ msgstr "프로필 파일 이름 템플릿"
 
 #. Placeholders used to name a Remmina connection profile
 #: data/ui/remmina_preferences.glade:361
-#, fuzzy
-#| msgid ""
-#| "%G Group name (slash will be converted to - automatically)\n"
-#| "%P Protocol name\n"
-#| "%N Connection name\n"
-#| "%h Hostname/IP\n"
-#| "\n"
-#| "\n"
 msgid ""
 "%G Name of group (slashes \\/ are converted to dashes -)\n"
 "%P Protocol name\n"
@@ -4323,7 +4251,7 @@ msgid ""
 "\n"
 "\n"
 msgstr ""
-"%G 그룹 이름 (슬래시는 자동으로 변환)\n"
+"%G 그룹 이름 (슬래시 '\\/'는 줄표 '-'로 변환됨)\n"
 "%P 프로토콜 이름\n"
 "%N 연결 이름\n"
 "%h 호스트 이름/IP\n"
@@ -4344,7 +4272,7 @@ msgstr "* 뉴스를 활성화하면 remmina.org에서 데이터를 가져오는 
 
 #: data/ui/remmina_preferences.glade:496
 msgid "Ask consent to close last window"
-msgstr ""
+msgstr "마지막 창을 닫으려면 동의 묻기"
 
 #: data/ui/remmina_preferences.glade:530
 msgid "Options"
@@ -4577,7 +4505,7 @@ msgstr "일부 위젯에 비밀 키 인증 사용"
 
 #: data/ui/remmina_preferences.glade:1681
 msgid "Valid for"
-msgstr ""
+msgstr "유효시간"
 
 #: data/ui/remmina_preferences.glade:1692
 msgid "Number of seconds to keep password valid for"
@@ -4585,7 +4513,7 @@ msgstr "비밀번호를 유효하게 유지하는 시간(초)"
 
 #: data/ui/remmina_preferences.glade:1697
 msgid "timeout in seconds (default 300)"
-msgstr ""
+msgstr "시간 초과(초) (기본값 300)"
 
 #: data/ui/remmina_preferences.glade:1709
 msgid "Enter your Remmina password to connect"
@@ -4593,10 +4521,8 @@ msgstr "연결하려면 Remmina 비밀번호 입력"
 
 #. “Require to connect” is “Require the Remmina password before to connect”, the Remmina password is the Master/Principal Password, that is used to protect Remmina from unauthorized use.
 #: data/ui/remmina_preferences.glade:1713
-#, fuzzy
-#| msgid "Secured password storage in KWallet"
 msgid "Require to connect"
-msgstr "KWallet에 안전한 비밀번호 저장"
+msgstr "연결하려면 필요"
 
 #: data/ui/remmina_preferences.glade:1724
 msgid "Creation, editing, copying, and deletions require the Remmina password"
@@ -4605,7 +4531,7 @@ msgstr "생성, 편집, 복사 및 삭제에는 Remmina 비밀번호가 필요�
 #. Creation, editing, copying, and deletions require the primary password
 #: data/ui/remmina_preferences.glade:1728
 msgid "Require to modify"
-msgstr ""
+msgstr "수정하려면 필요"
 
 #: data/ui/remmina_preferences.glade:1770
 msgid "Encryption"
@@ -4631,21 +4557,19 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:1790
 msgid "Intermediate (+64 MiB RAM)"
-msgstr ""
+msgstr "중급 (+64 MiB RAM)"
 
 #: data/ui/remmina_preferences.glade:1791
 msgid "Strong (+256 MiB, ~2009 CPU)"
-msgstr ""
+msgstr "강력 (+256 MiB, ~2009 CPU)"
 
 #: data/ui/remmina_preferences.glade:1792
 msgid "Sensitive (+1 GiB, ~2014 CPU)"
-msgstr ""
+msgstr "민감 (+1 GiB, ~2014 CPU)"
 
 #: data/ui/remmina_preferences.glade:1808
-#, fuzzy
-#| msgid "Edit settings"
 msgid "Auditing log"
-msgstr "설정 편집"
+msgstr "감사 로그"
 
 #: data/ui/remmina_preferences.glade:1833
 msgid "Automatically accept all fingerprints and certificates"
@@ -4806,7 +4730,7 @@ msgstr "전경 색"
 
 #: data/ui/remmina_preferences.glade:2448
 msgid "Increase and decrease font size"
-msgstr "글자 크기 키우기 및 줄이기"
+msgstr "글꼴 크기 늘리기 및 줄이기"
 
 #: data/ui/remmina_preferences.glade:2478
 msgid "Search text shortcut"
