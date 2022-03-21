@@ -6,7 +6,6 @@ and keep trying to reproduce it on any later versions** :)
 Do not use Gitlab for support requests, you can ask questions on:
 
 * IRC, on libera.chat, in the #remmina channel, or use a [web client](https://web.libera.chat/?nick=remminer|?#remmina).
-* [General discussion mailing list](https://lists.remmina.org/listinfo/users).
 * [Matrix](https://riot.im/app/#/group/+remmina:matrix.org)
 * [Reddit](https://reddit.com/r/Remmina) :(
 

@@ -31,7 +31,7 @@ Set up everything from the graphical interface, or from $HOME/.config/remmina
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new merge request
 
-There are [other ways](CONTRIBUTING.md) to contribute too, get in contact on IRC (#remmina on libera.chat), or send an e-mail to the [mailing list](https://lists.remmina.org/listinfo/users).
+There are [other ways](CONTRIBUTING.md) to contribute too, get in contact on IRC (#remmina on libera.chat), or on [Matrix](https://riot.im/app/#/group/+remmina:matrix.org).
 
 ### Donations
 
@@ -40,7 +40,7 @@ This is the website [donation page](https://remmina.org/wp/donations/).
 
 ### Authors
 
-Maintained by [Antenore Gatta](https://gitlab.com/antenore), [Giovanni Panozzo](https://gitlab.com/giox069) and [Dario Cavedon](https://gitlab.com/ic3d).
+Maintained by [Antenore Gatta](https://gitlab.com/antenore), [Giovanni Panozzo](https://gitlab.com/giox069) and [Allan Nordhøy](https://gitlab.com/kingu).
 Add yourself in [AUTHORS](AUTHORS) if you have contributed.
 
 ### Resources
