@@ -38,6 +38,7 @@
 #include "config.h"
 #include "remmina_scrolled_viewport.h"
 #include "remmina_pref.h"
+#include "remmina_log.h"
 #include "remmina/remmina_trace_calls.h"
 
 G_DEFINE_TYPE( RemminaScrolledViewport, remmina_scrolled_viewport, GTK_TYPE_EVENT_BOX)
@@ -156,6 +157,10 @@ static gboolean remmina_scrolled_viewport_leave(GtkWidget *widget, GdkEventCross
 {
 	TRACE_CALL(__func__);
 	RemminaScrolledViewport *gsv = REMMINA_SCROLLED_VIEWPORT(widget);
+        if (gsv->viewport_motion_handler) {
+           REMMINA_DEBUG("cleaning motion ...");
+           remmina_scrolled_viewport_remove_motion(gsv);
+        }
 	gsv->viewport_motion_handler = g_timeout_add(20, remmina_scrolled_viewport_motion_timeout, gsv);
 	return FALSE;
 }

@@ -3398,6 +3398,10 @@ void rco_closewin(RemminaProtocolWidget *gp)
 		}
 	}
 	if (cnnobj) {
+		if (REMMINA_IS_SCROLLED_VIEWPORT(cnnobj->scrolled_container)) {
+			REMMINA_DEBUG("deleting motion");
+			remmina_scrolled_viewport_remove_motion(REMMINA_SCROLLED_VIEWPORT(cnnobj->scrolled_container));
+		}
 		cnnobj->remmina_file = NULL;
 		g_free(cnnobj);
 		gp->cnnobj = NULL;
