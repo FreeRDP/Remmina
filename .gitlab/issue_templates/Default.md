@@ -1,30 +1,40 @@
-**Make sure the problem exists on the latest version, [![Remmina](https://snapcraft.io//remmina/badge.svg)](https://snapcraft.io/remmina) first, \
+**Make sure the problem exists on the [![latest Remmina version(s)](https://repology.org/badge/latest-versions/remmina.svg)](https://repology.org/project/remmina/versions) first, \
 and keep trying to reproduce it on any later versions** :)
+
 * Reporting back greatly increases the attention and hope of fixing your issue.
 
+Do not use Gitlab for support requests, you can ask questions on:
+
+* IRC, on libera.chat, in the #remmina channel, or use a [web client](https://web.libera.chat/?nick=remminer|?#remmina).
+* [General discussion mailing list](https://lists.remmina.org/listinfo/users).
+* [Matrix](https://riot.im/app/#/group/+remmina:matrix.org)
+* [Reddit](https://reddit.com/r/Remmina) :(
+
+For enhancement requests select the proper Issue template in the above drop-down box.
+
 ## Problem Description
+
 Write a detailed description of the problem.
 
 ### What is the expected correct behavior?
+
 (What you want to see instead.)
 
-
 ## Remote System Description
+
 * Server (OS name and version):
 * Special notes regarding the remote system (i.e. gateways, tunnel, etc.):
 
 ### Relevant logs and/or screenshots
+
 <!-- (Paste any relevant logs - please use code blocks (```) to format ```console output, logs, and code``` as it's very hard to read otherwise.) -->
 
-You can also ask questions via
-* IRC, on libera.chat, in the #remmina channel, or use a [web client](https://web.libera.chat/?nick=remminer|?#remmina).
-* [General discussion mailing list](https://lists.remmina.org/listinfo/users).
-* [Reddit](https://reddit.com/r/Remmina) :(
-
 ## Debugging documentation
-Check the wiki at https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging
+
+Please see [Remmina debugging](https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging)
 
 ## Local System Description
+
 * Client (OS name and version):
 * Remmina version ( ```remmina --version``` ):
 * Installation(s):
@@ -69,6 +79,7 @@ Check the wiki at https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debug
 ```
 
 ### Contributions
+
 In return, or to fix this issue, I'd be willing to:
 
  - [ ] Fix this myself.
