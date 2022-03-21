@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-03-10 14:39+0000\n"
+"POT-Creation-Date: 2022-03-21 06:15+0000\n"
 "PO-Revision-Date: 2022-03-20 05:58+0000\n"
 "Last-Translator: 이정희 <daemul72@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -73,8 +73,8 @@ msgstr "새 터미널에서 SSH로 연결하기"
 
 #: src/remmina_sftp_plugin.c:353 src/remmina_message_panel.c:330
 #: src/remmina_file_editor.c:1225 src/remmina_ssh_plugin.c:1499
-#: plugins/rdp/rdp_plugin.c:2773 plugins/vnc/vnc_plugin.c:2019
-#: plugins/vnc/vnc_plugin.c:2031 plugins/www/www_plugin.c:894
+#: plugins/rdp/rdp_plugin.c:2773 plugins/vnc/vnc_plugin.c:2027
+#: plugins/vnc/vnc_plugin.c:2039 plugins/www/www_plugin.c:894
 #: plugins/x2go/x2go_plugin.c:478 plugins/x2go/x2go_plugin.c:3226
 #: data/ui/remmina_mpc.glade:144
 msgid "Username"
@@ -257,8 +257,8 @@ msgid ""
 "“Advanced” tab of terminal connections and editable in the “Terminal” tab in "
 "the settings."
 msgstr ""
-"이 파일에는 터미널 연결의 “고급” 탭에서 선택하고 설정의 “터미널” 탭에서 "
-"편집할 수 있는 “사용자 지정” 터미널 색 구성표가 포함되어 있습니다."
+"이 파일에는 터미널 연결의 “고급” 탭에서 선택하고 설정의 “터미널” 탭에서 편집"
+"할 수 있는 “사용자 지정” 터미널 색 구성표가 포함되어 있습니다."
 
 #: src/remmina_message_panel.c:163 data/ui/remmina_mpc.glade:46
 #: data/ui/remmina_passwd.glade:19 data/ui/remmina_unlock.glade:43
@@ -425,14 +425,14 @@ msgstr "창 최소화"
 msgid "Disconnect"
 msgstr "연결 끊기"
 
-#: src/rcw.c:4314
+#: src/rcw.c:4318
 #, c-format
 msgid "The file “%s” is corrupted, unreadable, or could not be found."
 msgstr "\"%s\" 파일이 손상 또는 읽을 수 없거나 찾을 수 없습니다."
 
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. TRANSLATORS: 'GtkSocket feature is not available'.
-#: src/rcw.c:4388
+#: src/rcw.c:4392
 msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
@@ -440,16 +440,17 @@ msgstr ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 
-#: src/rcw.c:4525
+#: src/rcw.c:4529
 msgid ""
 "Warning: This plugin requires GtkSocket, but this feature is unavailable in "
 "a Wayland session."
-msgstr "경고: 이 플러그인에는 GtkSocket이 필요하지만 Wayland 세션에서는 이 기능을 "
-"사용할 수 없습니다."
+msgstr ""
+"경고: 이 플러그인에는 GtkSocket이 필요하지만 Wayland 세션에서는 이 기능을 사"
+"용할 수 없습니다."
 
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. 'GtkSocket feature is not available'.
-#: src/rcw.c:4531
+#: src/rcw.c:4535
 msgid ""
 "Plugins relying on GtkSocket can't run in a Wayland session.\n"
 "For more info and a possible workaround, please visit the Remmina wiki at:\n"
@@ -463,7 +464,7 @@ msgstr ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 
-#: src/rcw.c:4545
+#: src/rcw.c:4549
 msgid "Open in web browser"
 msgstr "웹 브라우저에서 열기"
 
@@ -500,8 +501,8 @@ msgid ""
 "Connect either to a desktop described in a file (.remmina or a filetype "
 "supported by a plugin) or a supported URI (RDP, VNC, SSH or SPICE)"
 msgstr ""
-"파일(.remmina 또는 플러그인에서 지원하는 파일 형식)에 설명된 데스크톱 또는 "
-"지원되는 URI(RDP, VNC, SSH 또는 SPICE)에 연결"
+"파일(.remmina 또는 플러그인에서 지원하는 파일 형식)에 설명된 데스크톱 또는 지"
+"원되는 URI(RDP, VNC, SSH 또는 SPICE)에 연결"
 
 #: src/remmina.c:90 src/remmina.c:92 src/remmina.c:94
 msgid "FILE"
@@ -512,15 +513,17 @@ msgstr "파일"
 msgid ""
 "Connect to a desktop described in a file (.remmina or a filetype supported "
 "by a plugin)"
-msgstr "파일에 기술된 데스크톱에 연결 (.remmina 또는 플러그인에서 지원하는 파일 형식)"
+msgstr ""
+"파일에 기술된 데스크톱에 연결 (.remmina 또는 플러그인에서 지원하는 파일 형식)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:94
 msgid ""
 "Edit desktop connection described in file (.remmina or a filetype supported "
 "by plugin)"
-msgstr "파일에 기술된 데스크톱 연결 편집 (.remmina 또는 플러그인에서 지원하는 파일 "
-"형식)"
+msgstr ""
+"파일에 기술된 데스크톱 연결 편집 (.remmina 또는 플러그인에서 지원하는 파일 형"
+"식)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:97
@@ -604,8 +607,8 @@ msgid ""
 "More info available on the Remmina wiki at:\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgstr ""
-"Remmina가 모든 출력문을 기록하는 것은 아닙니다. 환경변수로 \"G_MESSAGES_DEBUG"
-"=all\"을 사용하여 보다 자세한 출력을 켜십시오.\n"
+"Remmina가 모든 출력문을 기록하는 것은 아닙니다. 환경변수로 "
+"\"G_MESSAGES_DEBUG=all\"을 사용하여 보다 자세한 출력을 켜십시오.\n"
 "자세한 내용은 다음 URL의 Remmina Wiki에서 확인할 수 있습니다:\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 
@@ -676,9 +679,9 @@ msgstr ""
 "사용자 이름과 비밀번호를 업데이트하고 Remmina 연결 프로필의 다른 확인 모드를 "
 "설정하려면, 다음 명령 사용: \n"
 "\n"
-"\techo \"username\\n"
-"apassword\" | remmina --update-profile /PATH/TO/FOO.remmina --set-option "
-"username --set-option resolution_mode=2 --set-option password\n"
+"\techo \"username\\napassword\" | remmina --update-profile /PATH/TO/FOO."
+"remmina --set-option username --set-option resolution_mode=2 --set-option "
+"password\n"
 
 #: src/remmina_public.c:345
 #, c-format
@@ -753,7 +756,7 @@ msgid "Go to parent folder"
 msgstr "상위 폴더로 가기"
 
 #: src/remmina_ftp_client.c:764 plugins/rdp/rdp_plugin.c:2865
-#: plugins/vnc/vnc_plugin.c:2072
+#: plugins/vnc/vnc_plugin.c:2080
 msgid "Refresh"
 msgstr "새로 고침"
 
@@ -945,7 +948,8 @@ msgstr "SSH 비밀번호로 인증할 수 없습니다. %s"
 
 #: src/remmina_ssh.c:322 src/remmina_ssh.c:389
 msgid "No saved SSH passphrase supplied. Asking user to enter it."
-msgstr "저장된 SSH 열쇠글이 제공되지 않았습니다. 사용자에게 입력하도록 요청합니다."
+msgstr ""
+"저장된 SSH 열쇠글이 제공되지 않았습니다. 사용자에게 입력하도록 요청합니다."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:327 src/remmina_ssh.c:368 src/remmina_ssh.c:394
@@ -1504,8 +1508,9 @@ msgstr "노트"
 #: src/remmina_file_editor.c:1449
 #, c-format
 msgid "(%s: %i): Can't validate setting '%s' since 'value' or 'gfe' are NULL!"
-msgstr "(%s: %i): '값' 또는 'gfe'가 NULL이기 때문에 설정 '%s'의 유효성을 검사할 수 "
-"없습니다!"
+msgstr ""
+"(%s: %i): '값' 또는 'gfe'가 NULL이기 때문에 설정 '%s'의 유효성을 검사할 수 없"
+"습니다!"
 
 #: src/remmina_file_editor.c:1452
 #, c-format
@@ -1513,8 +1518,8 @@ msgid ""
 "(%s: %i): Can't validate user input since 'setting_name_to_validate', "
 "'value' or 'gfe' are NULL!"
 msgstr ""
-"(%s: %i): 'setting_name_to_validate', '값' 또는 'gfe'가 NULL이기 때문에 "
-"사용자 입력의 유효성을 검사할 수 없습니다!"
+"(%s: %i): 'setting_name_to_validate', '값' 또는 'gfe'가 NULL이기 때문에 사용"
+"자 입력의 유효성을 검사할 수 없습니다!"
 
 #. TRANSLATORS: Meta-error. Shouldn't be visible.
 #: src/remmina_file_editor.c:1456 plugins/x2go/x2go_plugin.c:2409
@@ -1572,8 +1577,9 @@ msgstr "\"%s\" 파일을 찾을 수 없습니다."
 msgid ""
 "Using the «resolution» parameter in the Remmina preferences file is "
 "deprecated.\n"
-msgstr "Remmina 기본 설정 파일에서 «해상도» 매개변수를 사용하는 것은 더 이상 "
-"사용되지 않습니다.\n"
+msgstr ""
+"Remmina 기본 설정 파일에서 «해상도» 매개변수를 사용하는 것은 더 이상 사용되"
+"지 않습니다.\n"
 
 #: src/remmina_icon.c:137
 msgid "Open Main Window"
@@ -1753,7 +1759,7 @@ msgid "_Find text"
 msgstr "텍스트 찾기(_F)"
 
 #: src/remmina_ssh_plugin.c:1500 plugins/spice/spice_plugin.c:676
-#: plugins/vnc/vnc_plugin.c:2020 plugins/vnc/vnc_plugin.c:2032
+#: plugins/vnc/vnc_plugin.c:2028 plugins/vnc/vnc_plugin.c:2040
 msgid "User password"
 msgstr "사용자 비밀번호"
 
@@ -1864,22 +1870,22 @@ msgid "<Choose a quality level to edit…>"
 msgstr "<편집 할 품질 수준을 선택하세요…>"
 
 #: plugins/rdp/rdp_settings.c:282 plugins/rdp/rdp_plugin.c:2636
-#: plugins/vnc/vnc_plugin.c:1969
+#: plugins/vnc/vnc_plugin.c:1977
 msgid "Poor (fastest)"
 msgstr "낮음 (빠름)"
 
 #: plugins/rdp/rdp_settings.c:284 plugins/rdp/rdp_plugin.c:2637
-#: plugins/vnc/vnc_plugin.c:1968
+#: plugins/vnc/vnc_plugin.c:1976
 msgid "Medium"
 msgstr "보통"
 
 #: plugins/rdp/rdp_settings.c:286 plugins/rdp/rdp_plugin.c:2638
-#: plugins/vnc/vnc_plugin.c:1966
+#: plugins/vnc/vnc_plugin.c:1974
 msgid "Good"
 msgstr "좋음"
 
 #: plugins/rdp/rdp_settings.c:288 plugins/rdp/rdp_plugin.c:2639
-#: plugins/vnc/vnc_plugin.c:1967
+#: plugins/vnc/vnc_plugin.c:1975
 msgid "Best (slowest)"
 msgstr "최고 (느림)"
 
@@ -1897,7 +1903,8 @@ msgstr "키보드 스캔코드 다시 매핑"
 
 #: plugins/rdp/rdp_settings.c:483
 msgid "List of key=value,… pairs to remap scancodes. E.g. 0x56=0x29,0x29=0x56"
-msgstr "키=값 목록,... 스캔코드를 다시 매핑하기 위한 쌍입니다. 예: "
+msgstr ""
+"키=값 목록,... 스캔코드를 다시 매핑하기 위한 쌍입니다. 예: "
 "0x56=0x29,0x29=0x56"
 
 #: plugins/rdp/rdp_settings.c:486
@@ -1961,7 +1968,7 @@ msgid "Input device settings"
 msgstr "입력 기기 설정"
 
 #: plugins/rdp/rdp_settings.c:658 plugins/rdp/rdp_plugin.c:2780
-#: plugins/vnc/vnc_plugin.c:2052
+#: plugins/vnc/vnc_plugin.c:2060
 msgid "Disable smooth scrolling"
 msgstr "부드러운 스크롤 비활성화"
 
@@ -2070,8 +2077,9 @@ msgstr "RDP 서버 \"%s\"의 주소를 찾을 수 없습니다."
 msgid ""
 "Could not connect to the RDP server “%s” via TLS. See the DEBUG traces from "
 "a terminal for more information."
-msgstr "TLS로 RDP 서버 \"%s\"에 연결할 수 없습니다. 자세한 내용은 터미널의 DEBUG "
-"추적을 참조하세요."
+msgstr ""
+"TLS로 RDP 서버 \"%s\"에 연결할 수 없습니다. 자세한 내용은 터미널의 DEBUG 추적"
+"을 참조하세요."
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:2226
@@ -2109,7 +2117,8 @@ msgstr "\"%s\"서버가 연결을 거부했습니다."
 msgid ""
 "The Remote Desktop Gateway “%s” denied the user “%s\\%s” access due to "
 "policy."
-msgstr "원격 데스크톱 게이트웨이 \"%s\"이(가) 정책으로 인해 사용자 \"%s\\%s\" 접속을 "
+msgstr ""
+"원격 데스크톱 게이트웨이 \"%s\"이(가) 정책으로 인해 사용자 \"%s\\%s\" 접속을 "
 "거부했습니다."
 
 #: plugins/rdp/rdp_plugin.c:2262
@@ -2141,7 +2150,7 @@ msgstr "GFX RFX (32 bpp)"
 msgid "RemoteFX (32 bpp)"
 msgstr "RemoteFX (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2611 plugins/vnc/vnc_plugin.c:1957
+#: plugins/rdp/rdp_plugin.c:2611 plugins/vnc/vnc_plugin.c:1965
 msgid "True colour (32 bpp)"
 msgstr "실제 색감 (32 bpp)"
 
@@ -2149,7 +2158,7 @@ msgstr "실제 색감 (32 bpp)"
 msgid "True colour (24 bpp)"
 msgstr "실제 색감 (24 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2613 plugins/vnc/vnc_plugin.c:1958
+#: plugins/rdp/rdp_plugin.c:2613 plugins/vnc/vnc_plugin.c:1966
 msgid "High colour (16 bpp)"
 msgstr "고화질 (16 bpp)"
 
@@ -2157,7 +2166,7 @@ msgstr "고화질 (16 bpp)"
 msgid "High colour (15 bpp)"
 msgstr "고화질 (15 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2615 plugins/vnc/vnc_plugin.c:1959
+#: plugins/rdp/rdp_plugin.c:2615 plugins/vnc/vnc_plugin.c:1967
 msgid "256 colours (8 bpp)"
 msgstr "256 색 (8 bpp)"
 
@@ -2232,8 +2241,8 @@ msgid ""
 "  • >= 7065: Windows 8 and newer: SCardGetReaderIcon(),\n"
 "    SCardGetDeviceTypeId()"
 msgstr ""
-"스마트 카드 채널의 터미널 서비스에서 클라이언트 기능을 구별하는 데 "
-"사용됩니다:\n"
+"스마트 카드 채널의 터미널 서비스에서 클라이언트 기능을 구별하는 데 사용됩니"
+"다:\n"
 "  • < 4034: Windows XP 기본 스마트 카드 기능\n"
 "  • 4034-7064: Windows Vista/7: SCardReadCache(),\n"
 "    SCardWriteCache(), SCardGetTransmitCount()\n"
@@ -2392,8 +2401,8 @@ msgstr "다중 모니터로 화면 확장"
 msgid "List monitor IDs"
 msgstr "모니터 ID 목록"
 
-#: plugins/rdp/rdp_plugin.c:2785 plugins/vnc/vnc_plugin.c:2021
-#: plugins/vnc/vnc_plugin.c:2033 plugins/gvnc/gvnc_plugin.c:849
+#: plugins/rdp/rdp_plugin.c:2785 plugins/vnc/vnc_plugin.c:2029
+#: plugins/vnc/vnc_plugin.c:2041 plugins/gvnc/gvnc_plugin.c:849
 msgid "Colour depth"
 msgstr "색 심도(Color depth)"
 
@@ -2401,8 +2410,8 @@ msgstr "색 심도(Color depth)"
 msgid "Network connection type"
 msgstr "네트워크 연결 유형"
 
-#: plugins/rdp/rdp_plugin.c:2802 plugins/vnc/vnc_plugin.c:2022
-#: plugins/vnc/vnc_plugin.c:2034
+#: plugins/rdp/rdp_plugin.c:2802 plugins/vnc/vnc_plugin.c:2030
+#: plugins/vnc/vnc_plugin.c:2042
 msgid "Quality"
 msgstr "품질"
 
@@ -2488,8 +2497,8 @@ msgid ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
 msgstr ""
-"\"Samsung_CLX-3300_Series\":\"삼성 CLX-3300 시리즈 PS\";\"Canon MF410\":"
-"\"캐논 MF410 시리즈 UFR II\""
+"\"Samsung_CLX-3300_Series\":\"삼성 CLX-3300 시리즈 PS\";\"Canon MF410\":\"캐"
+"논 MF410 시리즈 UFR II\""
 
 #: plugins/rdp/rdp_plugin.c:2823
 msgid "USB device redirection"
@@ -2575,7 +2584,7 @@ msgstr "병렬(parallel) 포트 공유"
 msgid "Share a smart card"
 msgstr "스마트 카드 공유"
 
-#: plugins/rdp/rdp_plugin.c:2840 plugins/vnc/vnc_plugin.c:2057
+#: plugins/rdp/rdp_plugin.c:2840 plugins/vnc/vnc_plugin.c:2065
 msgid "Turn off clipboard sync"
 msgstr "클립보드 동기화 끄기"
 
@@ -2592,7 +2601,7 @@ msgid "It disables CAL and hwId is set to 0"
 msgstr "CAL을 비활성화하고 hwId를 0으로 설정"
 
 #: plugins/rdp/rdp_plugin.c:2843 plugins/spice/spice_plugin.c:704
-#: plugins/vnc/vnc_plugin.c:2053 plugins/www/www_plugin.c:919
+#: plugins/vnc/vnc_plugin.c:2061 plugins/www/www_plugin.c:919
 #: plugins/gvnc/gvnc_plugin.c:867
 msgid "Forget passwords after use"
 msgstr "사용 후 비밀번호 저장 안함"
@@ -2642,7 +2651,7 @@ msgid "Enable Gateway websockets support"
 msgstr "게이트웨이 웹소켓 지원 활성화"
 
 #: plugins/rdp/rdp_plugin.c:2869 plugins/spice/spice_plugin.c:717
-#: plugins/vnc/vnc_plugin.c:2074
+#: plugins/vnc/vnc_plugin.c:2082
 msgid "Send Ctrl+Alt+Delete"
 msgstr "Ctrl+Alt+Delete 전송"
 
@@ -2772,7 +2781,7 @@ msgid "Share smart card"
 msgstr "스마트 카드 공유"
 
 #: plugins/spice/spice_plugin.c:707 plugins/spice/spice_plugin.c:715
-#: plugins/vnc/vnc_plugin.c:2059 plugins/vnc/vnc_plugin.c:2070
+#: plugins/vnc/vnc_plugin.c:2067 plugins/vnc/vnc_plugin.c:2078
 #: plugins/gvnc/gvnc_plugin.c:870 plugins/gvnc/gvnc_plugin.c:879
 msgid "View only"
 msgstr "뷰 전용"
@@ -2829,17 +2838,17 @@ msgstr "VNC 서버가 알 수 없는 인증 방법을 요청했습니다. %s"
 msgid "Please retry after turning on encryption for this profile."
 msgstr "이 프로필에 대한 암호화를 켠 후 다시 시도하십시오."
 
-#: plugins/vnc/vnc_plugin.c:1706
+#: plugins/vnc/vnc_plugin.c:1714
 #, c-format
 msgid "Connected to %s:%d via VNC"
 msgstr "VNC를 통해 %s:%d에 연결됨"
 
-#: plugins/vnc/vnc_plugin.c:1725
+#: plugins/vnc/vnc_plugin.c:1733
 #, c-format
 msgid "Disconnected from %s:%d via VNC"
 msgstr "VNC를 통해 %s:%d에서 연결 해제됨"
 
-#: plugins/vnc/vnc_plugin.c:1974
+#: plugins/vnc/vnc_plugin.c:1982
 msgid ""
 "Connect to VNC using a repeater:\n"
 "  • The server field must contain the repeater ID, e.g. ID:123456789\n"
@@ -2856,7 +2865,7 @@ msgstr ""
 "  • 원격 VNC 서버에서 리피터에 접속합니다.예) x11vnc 사용:\n"
 "    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
 
-#: plugins/vnc/vnc_plugin.c:1983
+#: plugins/vnc/vnc_plugin.c:1991
 msgid ""
 "Listening for remote VNC connection:\n"
 "  • The “Listen on port” field is the port Remmina will listen to,\n"
@@ -2872,7 +2881,7 @@ msgstr ""
 "    예: x11vnc 사용:\n"
 "      x11vnc -display :0 -connect 192.168.1.36:8888"
 
-#: plugins/vnc/vnc_plugin.c:1991
+#: plugins/vnc/vnc_plugin.c:1999
 msgid ""
 "Overriding the pre-set VNC encoding quality:\n"
 "\n"
@@ -2887,51 +2896,52 @@ msgstr ""
 "사전 설정된 VNC 인코딩 품질 재정의하기:\n"
 "\n"
 "  • “나쁨 (가장 빠름)” 인코딩을 \"copyrect zlib hextile raw\"로 설정\n"
-"  • “중간” 인코딩을 \"tight zrle ultra copyrect hextile zlib corre rre "
-"raw\"로 설정\n"
-"  • “좋음” 인코딩을 \"tight zrle ultra copyrect hextile zlib corre rre "
-"raw\"로 설정\n"
+"  • “중간” 인코딩을 \"tight zrle ultra copyrect hextile zlib corre rre raw"
+"\"로 설정\n"
+"  • “좋음” 인코딩을 \"tight zrle ultra copyrect hextile zlib corre rre raw"
+"\"로 설정\n"
 "  • “최고 (가장 느림)” 인코딩을 \"copyrect zrle ultra zlib hextile corre rre "
 "raw\"로 설정"
 
-#: plugins/vnc/vnc_plugin.c:2018
+#: plugins/vnc/vnc_plugin.c:2026
 msgid "Repeater"
 msgstr "리피터"
 
-#: plugins/vnc/vnc_plugin.c:2030
+#: plugins/vnc/vnc_plugin.c:2038
 msgid "Listen on port"
 msgstr "수신 포트"
 
-#: plugins/vnc/vnc_plugin.c:2050
+#: plugins/vnc/vnc_plugin.c:2058
 msgid "Override pre-set VNC encodings"
 msgstr "사전 설정된 VNC 인코딩 재정의"
 
-#: plugins/vnc/vnc_plugin.c:2051
+#: plugins/vnc/vnc_plugin.c:2059
 msgid "Force tight encoding"
 msgstr "타이트한 강제 인코딩"
 
-#: plugins/vnc/vnc_plugin.c:2051
+#: plugins/vnc/vnc_plugin.c:2059
 msgid "Enabling this may help when the remote desktop looks scrambled"
-msgstr "이 기능을 활성화하면 원격 데스크톱이 뒤죽박죽으로 보일 때 도움이 될 수 "
-"있습니다"
+msgstr ""
+"이 기능을 활성화하면 원격 데스크톱이 뒤죽박죽으로 보일 때 도움이 될 수 있습니"
+"다"
 
-#: plugins/vnc/vnc_plugin.c:2054 plugins/gvnc/gvnc_plugin.c:868
+#: plugins/vnc/vnc_plugin.c:2062 plugins/gvnc/gvnc_plugin.c:868
 msgid "Ignore remote bell messages"
 msgstr "원격 벨 메시지 무시"
 
-#: plugins/vnc/vnc_plugin.c:2055 plugins/vnc/vnc_plugin.c:2071
+#: plugins/vnc/vnc_plugin.c:2063 plugins/vnc/vnc_plugin.c:2079
 msgid "Prevent local interaction on the server"
 msgstr "서버에서 로컬 인터렉션 방지"
 
-#: plugins/vnc/vnc_plugin.c:2056
+#: plugins/vnc/vnc_plugin.c:2064
 msgid "Show remote cursor"
 msgstr "원격 커서 표시"
 
-#: plugins/vnc/vnc_plugin.c:2058
+#: plugins/vnc/vnc_plugin.c:2066
 msgid "Turn off encryption"
 msgstr "암호화 끄기"
 
-#: plugins/vnc/vnc_plugin.c:2073
+#: plugins/vnc/vnc_plugin.c:2081
 msgid "Open Chat…"
 msgstr "대화창 열기…"
 
@@ -3044,8 +3054,9 @@ msgstr "GNOME 키링의 보안 비밀번호 저장소"
 msgid ""
 "The command-line feature '%s' is not available! Attempting to start PyHoca-"
 "CLI without using this feature…"
-msgstr "명령줄 기능 '%s'을(를) 사용할 수 없습니다! 이 기능을 사용하지 않고 PyHoca-"
-"CLI를 시작하려고 하는 중…"
+msgstr ""
+"명령줄 기능 '%s'을(를) 사용할 수 없습니다! 이 기능을 사용하지 않고 PyHoca-CLI"
+"를 시작하려고 하는 중…"
 
 #: plugins/x2go/x2go_plugin.c:292 plugins/x2go/x2go_plugin.c:424
 #: plugins/x2go/x2go_plugin.c:513 plugins/x2go/x2go_plugin.c:620
@@ -3130,7 +3141,8 @@ msgstr "보임"
 
 #: plugins/x2go/x2go_plugin.c:523
 msgid "Couldn't retrieve valid `DialogData` or `sessions_list`! Aborting…"
-msgstr "유효한 `DialogData` 또는 `sessions_list`를 검색할 수 없습니다! 중단 중…"
+msgstr ""
+"유효한 `DialogData` 또는 `sessions_list`를 검색할 수 없습니다! 중단 중…"
 
 #. TRANSLATORS: Stick to x2goclient's translation for terminate.
 #: plugins/x2go/x2go_plugin.c:532
@@ -3165,14 +3177,16 @@ msgstr "세션 선택도구 대화상자의 하위 GtkTreeView를 찾을 수 없
 msgid ""
 "Neither the 'dialog' nor 'treeview' parameters are initialized! At least one "
 "of them must be given."
-msgstr "'dialog' 또는 'treeview' 매개변수가 모두 초기화되지 않았습니다. 그 중 적어도 "
+msgstr ""
+"'dialog' 또는 'treeview' 매개변수가 모두 초기화되지 않았습니다. 그 중 적어도 "
 "하나는 제공해야 합니다."
 
 #: plugins/x2go/x2go_plugin.c:732
 msgid ""
 "Could not obtain \"GtkTreeModelFilter*\" of the session chooser dialog, for "
 "unknown reason."
-msgstr "알 수 없는 이유로 세션 선택도구 대화상자의 \"GtkTreeModelFilter*\"를 가져올 "
+msgstr ""
+"알 수 없는 이유로 세션 선택도구 대화상자의 \"GtkTreeModelFilter*\"를 가져올 "
 "수 없습니다."
 
 #: plugins/x2go/x2go_plugin.c:767
@@ -3184,7 +3198,8 @@ msgstr "현재 선택된 행(세션)을 가져올 수 없습니다!"
 msgid ""
 "Exactly one session should be selectable but '%i' rows (sessions) are "
 "selected."
-msgstr "정확히 하나의 세션을 선택할 수 있어야 하지만 '%i' 행(세션)이 선택되었습니다."
+msgstr ""
+"정확히 하나의 세션을 선택할 수 있어야 하지만 '%i' 행(세션)이 선택되었습니다."
 
 #: plugins/x2go/x2go_plugin.c:836
 msgid "Failed to fill 'GtkTreeIter'."
@@ -3225,15 +3240,17 @@ msgstr ""
 #, c-format
 msgid ""
 "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i"
-msgstr "PyHoca-CLI를 시작하는 동안 알 수 없는 오류가 발생했습니다. 종료 코드: %i"
+msgstr ""
+"PyHoca-CLI를 시작하는 동안 알 수 없는 오류가 발생했습니다. 종료 코드: %i"
 
 #: plugins/x2go/x2go_plugin.c:993
 #, c-format
 msgid ""
 "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i. "
 "Error: '%s'"
-msgstr "PyHoca-CLI를 시작하는 동안 알 수 없는 오류가 발생했습니다. 종료 코드: %i. "
-"오류: '%s'"
+msgstr ""
+"PyHoca-CLI를 시작하는 동안 알 수 없는 오류가 발생했습니다. 종료 코드: %i. 오"
+"류: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:1035
 msgid "Neither the 'path' nor 'dialog' parameters are initialized."
@@ -3295,8 +3312,8 @@ msgid ""
 "errors. Also ensure the remote server is reachable."
 msgstr ""
 "필요한 하위 프로세스 'pyhoca-cli'가 예기치 않게 중지되었습니다.\n"
-"프로필 설정과 PyHoca-CLI의 출력에서 가능한 오류를 확인하십시오. 또한 원격 "
-"서버에 연결할 수 있는지 확인하십시오."
+"프로필 설정과 PyHoca-CLI의 출력에서 가능한 오류를 확인하십시오. 또한 원격 서"
+"버에 연결할 수 있는지 확인하십시오."
 
 #: plugins/x2go/x2go_plugin.c:1653
 msgid "Can't save empty username!"
@@ -3326,7 +3343,8 @@ msgstr "X2Go 자격 증명 입력"
 msgid ""
 "Couldn't parse the output of PyHoca-CLI's --list-sessions option. Creating a "
 "new session now."
-msgstr "PyHoca-CLI의 --list-sessions 옵션의 출력을 구문 분석할 수 없습니다. 지금 새 "
+msgstr ""
+"PyHoca-CLI의 --list-sessions 옵션의 출력을 구문 분석할 수 없습니다. 지금 새 "
 "세션을 만드는 중입니다."
 
 #: plugins/x2go/x2go_plugin.c:1966
@@ -3356,7 +3374,8 @@ msgstr "종료됨"
 #: plugins/x2go/x2go_plugin.c:2058
 msgid ""
 "Could not find any sessions on remote machine. Creating a new session now."
-msgstr "원격 시스템에서 세션을 찾을 수 없습니다. 지금 새 세션을 만드는 중입니다."
+msgstr ""
+"원격 시스템에서 세션을 찾을 수 없습니다. 지금 새 세션을 만드는 중입니다."
 
 #: plugins/x2go/x2go_plugin.c:2113
 msgid "Choose a session to resume:"
@@ -3409,14 +3428,15 @@ msgid ""
 "too old, or not installed. An old limited set of features will be used for "
 "now."
 msgstr ""
-"PyHoca-CLI의 명령줄 기능을 가져올 수 없습니다. 이는 너무 오래되었거나 "
-"설치되지 않았음을 나타냅니다. 현재는 오래된 제한된 기능 설정이 사용됩니다."
+"PyHoca-CLI의 명령줄 기능을 가져올 수 없습니다. 이는 너무 오래되었거나 설치되"
+"지 않았음을 나타냅니다. 현재는 오래된 제한된 기능 설정이 사용됩니다."
 
 #: plugins/x2go/x2go_plugin.c:2544
 msgid ""
 "Could not parse PyHoca-CLI's command-line features. Using a limited feature-"
 "set for now."
-msgstr "PyHoca-CLI의 명령줄 기능을 구문 분석할 수 없습니다. 현재 제한된 기능 설정을 "
+msgstr ""
+"PyHoca-CLI의 명령줄 기능을 구문 분석할 수 없습니다. 현재 제한된 기능 설정을 "
 "사용하고 있습니다."
 
 #: plugins/x2go/x2go_plugin.c:2550
@@ -3599,7 +3619,8 @@ msgstr "DPI 해상도"
 msgid ""
 "Launch session with a specific resolution (in dots per inch). Must be "
 "between 20 and 400."
-msgstr "특정 해상도(인치당 도트 수)로 세션을 시작합니다. 20~400 사이여야 합니다."
+msgstr ""
+"특정 해상도(인치당 도트 수)로 세션을 시작합니다. 20~400 사이여야 합니다."
 
 #: plugins/x2go/x2go_plugin.c:3290
 msgid "X2Go plugin loaded."
@@ -3778,9 +3799,9 @@ msgid ""
 "the appropriate permissions to Remmina. As an alternative you can enter the "
 "following commands in a terminal window:"
 msgstr ""
-"사용자의 키링에 비밀번호 저장하기 및 RDP 프린터 공유와 같은 일부 중요한 "
-"기능에 액세스할 수 있도록 하려면 소프트웨어 센터를 열고 Remmina에 적절한 "
-"권한을 부여하십시오. 또는 터미널 창에 다음 명령을 입력할 수 있습니다:"
+"사용자의 키링에 비밀번호 저장하기 및 RDP 프린터 공유와 같은 일부 중요한 기능"
+"에 액세스할 수 있도록 하려면 소프트웨어 센터를 열고 Remmina에 적절한 권한을 "
+"부여하십시오. 또는 터미널 창에 다음 명령을 입력할 수 있습니다:"
 
 #: data/ui/remmina_snap_info_dialog.glade:157
 msgid "<big>Permissions</big>"
@@ -3949,8 +3970,8 @@ msgstr ""
 "<big><b>뉴스가 꺼져 있습니다</b></big>\n"
 "\n"
 "<span>\n"
-"뉴스를 켜면, 프로그램이 Remmina 서버에 연결하여 릴리스 정보를 다운로드 "
-"합니다.\n"
+"뉴스를 켜면, 프로그램이 Remmina 서버에 연결하여 릴리스 정보를 다운로드 합니"
+"다.\n"
 "</span>\n"
 "\n"
 "<span>\n"
@@ -4006,8 +4027,8 @@ msgid ""
 "</span>\n"
 msgstr ""
 "<span>\n"
-"<b>카피레프트 libre 소프트웨어를 선택해 주셔서 감사합니다. <a href=\"https"
-"://remmina.org/donations/\" title=\"Where’s the money, Lebowski? "
+"<b>카피레프트 libre 소프트웨어를 선택해 주셔서 감사합니다. <a href=\"https://"
+"remmina.org/donations/\" title=\"Where’s the money, Lebowski? "
 "“blblblblblb”\">기부금은 또한 저희를 기쁘게 하고</a>, Remmina를 개선하는 데 "
 "도움이 됩니다.</b>\n"
 "</span>\n"
@@ -4234,8 +4255,9 @@ msgstr "마지막 뷰 모드 기억"
 msgid ""
 "Set a custom filename for your Remmina connection profiles, using a "
 "formatting string."
-msgstr "형식화된 문자열을 사용하여 Remmina 연결 프로필에 대한 사용자 지정 파일 "
-"이름을 설정합니다."
+msgstr ""
+"형식화된 문자열을 사용하여 Remmina 연결 프로필에 대한 사용자 지정 파일 이름"
+"을 설정합니다."
 
 #: data/ui/remmina_preferences.glade:349
 msgid "Template for profile filenames"
@@ -4268,7 +4290,8 @@ msgstr "스크린샷이 클립 보드에 추가되지 않도록 제한"
 
 #: data/ui/remmina_preferences.glade:430
 msgid "* By enabling news you consent to fetch data from remmina.org"
-msgstr "* 뉴스를 활성화하면 remmina.org에서 데이터를 가져오는 데 동의하는 것입니다"
+msgstr ""
+"* 뉴스를 활성화하면 remmina.org에서 데이터를 가져오는 데 동의하는 것입니다"
 
 #: data/ui/remmina_preferences.glade:496
 msgid "Ask consent to close last window"
@@ -4489,11 +4512,13 @@ msgstr "SSH 옵션"
 msgid ""
 "Time in seconds before Remmina will lock the session and asks for a password "
 "again. Default: 300 Seconds."
-msgstr "Remmina가 세션을 잠그고 암호를 다시 묻기까지의 시간(초)입니다. 기본값: 300초."
+msgstr ""
+"Remmina가 세션을 잠그고 암호를 다시 묻기까지의 시간(초)입니다. 기본값: 300초."
 
 #: data/ui/remmina_preferences.glade:1645
 msgid "Set and use a secret key to protect Remmina from unauthorized use."
-msgstr "Remmina를 무단 사용으로부터 보호하기 위해 비밀 키를 설정하고 사용합니다."
+msgstr ""
+"Remmina를 무단 사용으로부터 보호하기 위해 비밀 키를 설정하고 사용합니다."
 
 #: data/ui/remmina_preferences.glade:1650
 msgid "Remmina password"
@@ -4634,8 +4659,8 @@ msgid ""
 "https://github.com/mbadolato/iTerm2-Color-Schemes has more details."
 msgstr ""
 "색 구성표 파일을 선택합니다. 일반적으로 /usr/share/remmina/theme에서 사용할 "
-"수 있습니다. https://github.com/mbadolato/iTerm2-Color-Schemes에 자세한 "
-"내용이 있습니다."
+"수 있습니다. https://github.com/mbadolato/iTerm2-Color-Schemes에 자세한 내용"
+"이 있습니다."
 
 #: data/ui/remmina_preferences.glade:2096
 msgid "Pick a terminal colouring file"
