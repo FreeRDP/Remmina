@@ -1325,6 +1325,14 @@ static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 			gpdata->auth_called = FALSE;
 			break;
 		}
+		/* Don't assume authentication failed for known network-related errors in
+		   libvncclient/sockets.c. */
+		if (strstr(vnc_error, "read (") || strstr(vnc_error, "select\n") ||
+			strstr(vnc_error, "write\n") || strstr(vnc_error, "Connection timed out")) {
+			gpdata->connected = FALSE;
+			gpdata->auth_called = FALSE;
+			break;
+		}
 
 		/* Otherwise, it’s a password error. Try to clear saved password if any */
 		remmina_plugin_service->file_set_string(remminafile, "password", NULL);
