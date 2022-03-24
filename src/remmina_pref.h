@@ -254,6 +254,7 @@ extern const gchar *default_resolutions;
 extern gchar *remmina_pref_file;
 extern gchar *remmina_colors_file;
 extern RemminaPref remmina_pref;
+extern gboolean disabletoolbar;
 
 void remmina_pref_init(void);
 gboolean remmina_pref_is_rw(void);

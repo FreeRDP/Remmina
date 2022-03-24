@@ -366,6 +366,9 @@ void remmina_pref_init(void)
 	else
 		remmina_pref.hide_connection_toolbar = FALSE;
 
+	if (disabletoolbar)
+		remmina_pref.hide_connection_toolbar = TRUE;
+
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "hide_searchbar", NULL))
 		remmina_pref.hide_searchbar = g_key_file_get_boolean(gkeyfile, "remmina_pref",
 								     "hide_searchbar", NULL);
@@ -566,6 +569,9 @@ void remmina_pref_init(void)
 		remmina_pref.fullscreen_toolbar_visibility = g_key_file_get_integer(gkeyfile, "remmina_pref", "fullscreen_toolbar_visibility", NULL);
 	else
 		remmina_pref.fullscreen_toolbar_visibility = FLOATING_TOOLBAR_VISIBILITY_PEEKING;
+
+	if (disabletoolbar)
+		remmina_pref.fullscreen_toolbar_visibility = FLOATING_TOOLBAR_VISIBILITY_DISABLE;
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "auto_scroll_step", NULL))
 		remmina_pref.auto_scroll_step = g_key_file_get_integer(gkeyfile, "remmina_pref", "auto_scroll_step", NULL);

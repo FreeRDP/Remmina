@@ -82,6 +82,7 @@ static int gcrypt_thread_initialized = 0;
 
 gboolean kioskmode;
 gboolean disablenews;
+gboolean disabletoolbar;
 
 static GOptionEntry remmina_options[] =
 {
@@ -123,6 +124,7 @@ static GOptionEntry remmina_options[] =
 	{ "set-option",	      0,    0,			  G_OPTION_ARG_STRING_ARRAY,   NULL, N_("Set one or more profile settings, to be used with --update-profile"),		     NULL	},
 	{ "encrypt-password", 0,    0,			  G_OPTION_ARG_NONE,	       NULL, N_("Encrypt a password"),												  NULL		 },
 	{ "disable-news", 0,    0,			  G_OPTION_ARG_NONE,	       NULL, N_("Disable news notification"),												  NULL		 },
+	{ "disable-toolbar", 0,    0,			  G_OPTION_ARG_NONE,	       NULL, N_("Disable toolbar"),												  NULL		 },
 	{ NULL }
 };
 
@@ -154,13 +156,17 @@ static gint remmina_on_command_line(GApplication *app, GApplicationCommandLine *
 #if SODIUM_VERSION_INT >= 90200
 	remmina_sodium_init();
 #endif
-	remmina_pref_init();
-
 	opts = g_application_command_line_get_options_dict(cmdline);
 
 	if (g_variant_dict_lookup_value(opts, "disable-news", NULL)) {
 		disablenews = TRUE;
 	}
+
+	if (g_variant_dict_lookup_value(opts, "disable-toolbar", NULL)) {
+		disabletoolbar = TRUE;
+	}
+
+	remmina_pref_init();
 
 	if (g_variant_dict_lookup_value(opts, "quit", NULL)) {
 		remmina_exec_command(REMMINA_COMMAND_EXIT, NULL);
