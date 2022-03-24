@@ -84,6 +84,7 @@ gboolean kioskmode;
 gboolean disablenews;
 gboolean disabletoolbar;
 gboolean fullscreen;
+gboolean extrahardening;
 
 static GOptionEntry remmina_options[] =
 {
@@ -127,6 +128,7 @@ static GOptionEntry remmina_options[] =
 	{ "disable-news", 0,    0,			  G_OPTION_ARG_NONE,	       NULL, N_("Disable news notification"),												  NULL		 },
 	{ "disable-toolbar", 0,    0,			  G_OPTION_ARG_NONE,	       NULL, N_("Disable toolbar"),												  NULL		 },
 	{ "enable-fullscreen", 0,    0,			  G_OPTION_ARG_NONE,	       NULL, N_("Enable fullscreen"),												  NULL		 },
+	{ "enable-extra-hardening", 0,    0,		  G_OPTION_ARG_NONE,	       NULL, N_("Enable extra hardening (disable closing confirmation, disable unsafe shortcut keys, hide tabs, hide search bar)"),	  NULL		 },
 	{ NULL }
 };
 
@@ -170,6 +172,10 @@ static gint remmina_on_command_line(GApplication *app, GApplicationCommandLine *
 
 	if (g_variant_dict_lookup_value(opts, "enable-fullscreen", NULL)) {
 		fullscreen = TRUE;
+	}
+
+	if (g_variant_dict_lookup_value(opts, "enable-extra-hardening", NULL)) {
+		extrahardening = TRUE;
 	}
 
 	remmina_pref_init();

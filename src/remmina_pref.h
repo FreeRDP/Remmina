@@ -256,6 +256,7 @@ extern gchar *remmina_colors_file;
 extern RemminaPref remmina_pref;
 extern gboolean disabletoolbar;
 extern gboolean fullscreen;
+extern gboolean extrahardening;
 
 void remmina_pref_init(void);
 gboolean remmina_pref_is_rw(void);

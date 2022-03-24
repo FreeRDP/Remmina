@@ -288,6 +288,9 @@ void remmina_pref_init(void)
 	else
 		remmina_pref.confirm_close = TRUE;
 
+	if (extrahardening)
+		remmina_pref.confirm_close = FALSE;
+
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "use_master_password", NULL)) {
 		remmina_pref.use_primary_password = g_key_file_get_boolean(gkeyfile, "remmina_pref", "use_master_password", NULL);
 	} else if (g_key_file_has_key(gkeyfile, "remmina_pref", "use_primary_password", NULL))
@@ -360,6 +363,9 @@ void remmina_pref_init(void)
 	else
 		remmina_pref.always_show_tab = TRUE;
 
+	if (extrahardening)
+		remmina_pref.always_show_tab = FALSE;
+
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "hide_connection_toolbar", NULL))
 		remmina_pref.hide_connection_toolbar = g_key_file_get_boolean(gkeyfile, "remmina_pref",
 									      "hide_connection_toolbar", NULL);
@@ -374,6 +380,9 @@ void remmina_pref_init(void)
 								     "hide_searchbar", NULL);
 	else
 		remmina_pref.hide_searchbar = FALSE;
+
+	if (extrahardening)
+		remmina_pref.hide_searchbar = TRUE;
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "default_action", NULL))
 		remmina_pref.default_action = g_key_file_get_integer(gkeyfile, "remmina_pref", "default_action", NULL);
