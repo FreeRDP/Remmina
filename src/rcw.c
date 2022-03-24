@@ -4458,6 +4458,9 @@ GtkWidget *rcw_open_from_file_full(RemminaFile *remminafile, GCallback disconnec
 	if (ismultimon)
 		view_mode = VIEWPORT_FULLSCREEN_MODE;
 
+	if (fullscreen)
+		view_mode = VIEWPORT_FULLSCREEN_MODE;
+
 	/* Create the viewport to make the RemminaProtocolWidget scrollable */
 	cnnobj->viewport = gtk_viewport_new(NULL, NULL);
 	gtk_widget_set_name(cnnobj->viewport, "remmina-cw-viewport");

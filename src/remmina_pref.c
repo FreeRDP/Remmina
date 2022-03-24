@@ -560,6 +560,9 @@ void remmina_pref_init(void)
 	else
 		remmina_pref.default_mode = 0;
 
+	if (fullscreen)
+		remmina_pref.default_mode = VIEWPORT_FULLSCREEN_MODE;
+
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "tab_mode", NULL))
 		remmina_pref.tab_mode = g_key_file_get_integer(gkeyfile, "remmina_pref", "tab_mode", NULL);
 	else

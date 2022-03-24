@@ -83,6 +83,7 @@ static int gcrypt_thread_initialized = 0;
 gboolean kioskmode;
 gboolean disablenews;
 gboolean disabletoolbar;
+gboolean fullscreen;
 
 static GOptionEntry remmina_options[] =
 {
@@ -125,6 +126,7 @@ static GOptionEntry remmina_options[] =
 	{ "encrypt-password", 0,    0,			  G_OPTION_ARG_NONE,	       NULL, N_("Encrypt a password"),												  NULL		 },
 	{ "disable-news", 0,    0,			  G_OPTION_ARG_NONE,	       NULL, N_("Disable news notification"),												  NULL		 },
 	{ "disable-toolbar", 0,    0,			  G_OPTION_ARG_NONE,	       NULL, N_("Disable toolbar"),												  NULL		 },
+	{ "enable-fullscreen", 0,    0,			  G_OPTION_ARG_NONE,	       NULL, N_("Enable fullscreen"),												  NULL		 },
 	{ NULL }
 };
 
@@ -164,6 +166,10 @@ static gint remmina_on_command_line(GApplication *app, GApplicationCommandLine *
 
 	if (g_variant_dict_lookup_value(opts, "disable-toolbar", NULL)) {
 		disabletoolbar = TRUE;
+	}
+
+	if (g_variant_dict_lookup_value(opts, "enable-fullscreen", NULL)) {
+		fullscreen = TRUE;
 	}
 
 	remmina_pref_init();
