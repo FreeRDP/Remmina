@@ -131,7 +131,7 @@ void remmina_log_start(void)
 		gtk_header_bar_set_has_subtitle (GTK_HEADER_BAR (header), FALSE);
 		/* Stats */
 		GtkWidget *getstat = gtk_button_new ();
-		gtk_widget_set_tooltip_text (getstat, _("Paste sytem info in the Remmina debugging window"));
+		gtk_widget_set_tooltip_text (getstat, _("Paste system info in the Remmina debugging window"));
 		GIcon *icon = g_themed_icon_new ("edit-paste-symbolic");
 		GtkWidget *image = gtk_image_new_from_gicon (icon, GTK_ICON_SIZE_BUTTON);
 		g_object_unref (icon);
