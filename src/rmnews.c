@@ -177,6 +177,8 @@ void rmnews_show_news(GtkWindow *parent)
 {
 	TRACE_CALL(__func__);
 
+	if (disablenews) return;
+
 	rmnews_news_dialog = g_new0(RemminaNewsDialog, 1);
 	rmnews_news_dialog->retval = 1;
 

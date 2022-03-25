@@ -4051,7 +4051,7 @@ static gboolean rcw_hostkey_func(RemminaProtocolWidget *gp, guint keyval, gboole
 		}
 	}
 
-	if (keyval == remmina_pref.shortcutkey_fullscreen) {
+	if (keyval == remmina_pref.shortcutkey_fullscreen && !extrahardening) {
 		switch (priv->view_mode) {
 		case SCROLLED_WINDOW_MODE:
 			rcw_switch_viewmode(cnnobj->cnnwin, priv->fss_view_mode);
@@ -4063,20 +4063,20 @@ static gboolean rcw_hostkey_func(RemminaProtocolWidget *gp, guint keyval, gboole
 		default:
 			break;
 		}
-	} else if (keyval == remmina_pref.shortcutkey_autofit) {
+	} else if (keyval == remmina_pref.shortcutkey_autofit && !extrahardening) {
 		if (priv->toolitem_autofit && gtk_widget_is_sensitive(GTK_WIDGET(priv->toolitem_autofit)))
 			rcw_toolbar_autofit(GTK_TOOL_ITEM(gp), cnnobj->cnnwin);
-	} else if (keyval == remmina_pref.shortcutkey_nexttab) {
+	} else if (keyval == remmina_pref.shortcutkey_nexttab && !extrahardening) {
 		i = gtk_notebook_get_current_page(GTK_NOTEBOOK(priv->notebook)) + 1;
 		if (i >= gtk_notebook_get_n_pages(GTK_NOTEBOOK(priv->notebook)))
 			i = 0;
 		gtk_notebook_set_current_page(GTK_NOTEBOOK(priv->notebook), i);
-	} else if (keyval == remmina_pref.shortcutkey_prevtab) {
+	} else if (keyval == remmina_pref.shortcutkey_prevtab && !extrahardening) {
 		i = gtk_notebook_get_current_page(GTK_NOTEBOOK(priv->notebook)) - 1;
 		if (i < 0)
 			i = gtk_notebook_get_n_pages(GTK_NOTEBOOK(priv->notebook)) - 1;
 		gtk_notebook_set_current_page(GTK_NOTEBOOK(priv->notebook), i);
-	} else if (keyval == remmina_pref.shortcutkey_scale) {
+	} else if (keyval == remmina_pref.shortcutkey_scale && !extrahardening) {
 		if (gtk_widget_is_sensitive(GTK_WIDGET(priv->toolitem_scale))) {
 			gtk_toggle_tool_button_set_active(
 				GTK_TOGGLE_TOOL_BUTTON(priv->toolitem_scale),
@@ -4084,25 +4084,25 @@ static gboolean rcw_hostkey_func(RemminaProtocolWidget *gp, guint keyval, gboole
 					GTK_TOGGLE_TOOL_BUTTON(
 						priv->toolitem_scale)));
 		}
-	} else if (keyval == remmina_pref.shortcutkey_grab) {
+	} else if (keyval == remmina_pref.shortcutkey_grab && !extrahardening) {
 		gtk_toggle_tool_button_set_active(
 			GTK_TOGGLE_TOOL_BUTTON(priv->toolitem_grab),
 			!gtk_toggle_tool_button_get_active(
 				GTK_TOGGLE_TOOL_BUTTON(
 					priv->toolitem_grab)));
-	} else if (keyval == remmina_pref.shortcutkey_minimize) {
+	} else if (keyval == remmina_pref.shortcutkey_minimize && !extrahardening) {
 		rcw_toolbar_minimize(GTK_TOOL_ITEM(gp),
 				     cnnobj->cnnwin);
-	} else if (keyval == remmina_pref.shortcutkey_viewonly) {
+	} else if (keyval == remmina_pref.shortcutkey_viewonly && !extrahardening) {
 		remmina_file_set_int(cnnobj->remmina_file, "viewonly",
 				     (remmina_file_get_int(cnnobj->remmina_file, "viewonly", 0)
 				      == 0) ? 1 : 0);
-	} else if (keyval == remmina_pref.shortcutkey_screenshot) {
+	} else if (keyval == remmina_pref.shortcutkey_screenshot && !extrahardening) {
 		rcw_toolbar_screenshot(GTK_TOOL_ITEM(gp),
 				       cnnobj->cnnwin);
-	} else if (keyval == remmina_pref.shortcutkey_disconnect) {
+	} else if (keyval == remmina_pref.shortcutkey_disconnect && !extrahardening) {
 		rco_disconnect_current_page(cnnobj);
-	} else if (keyval == remmina_pref.shortcutkey_toolbar) {
+	} else if (keyval == remmina_pref.shortcutkey_toolbar && !extrahardening) {
 		if (priv->view_mode == SCROLLED_WINDOW_MODE) {
 			remmina_pref.hide_connection_toolbar =
 				!remmina_pref.hide_connection_toolbar;
@@ -4456,6 +4456,9 @@ GtkWidget *rcw_open_from_file_full(RemminaFile *remminafile, GCallback disconnec
 	gint ismultimon = remmina_file_get_int(cnnobj->remmina_file, "multimon", 0);
 
 	if (ismultimon)
+		view_mode = VIEWPORT_FULLSCREEN_MODE;
+
+	if (fullscreen)
 		view_mode = VIEWPORT_FULLSCREEN_MODE;
 
 	/* Create the viewport to make the RemminaProtocolWidget scrollable */

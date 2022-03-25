@@ -49,6 +49,7 @@ typedef struct _RemminaNewsDialog {
 #pragma once
 
 G_BEGIN_DECLS
+extern gboolean disablenews;
 void rmnews_schedule();
 void rmnews_show_news();
 void rmnews_get_url(const char *url);

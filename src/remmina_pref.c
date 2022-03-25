@@ -288,6 +288,9 @@ void remmina_pref_init(void)
 	else
 		remmina_pref.confirm_close = TRUE;
 
+	if (extrahardening)
+		remmina_pref.confirm_close = FALSE;
+
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "use_master_password", NULL)) {
 		remmina_pref.use_primary_password = g_key_file_get_boolean(gkeyfile, "remmina_pref", "use_master_password", NULL);
 	} else if (g_key_file_has_key(gkeyfile, "remmina_pref", "use_primary_password", NULL))
@@ -360,17 +363,26 @@ void remmina_pref_init(void)
 	else
 		remmina_pref.always_show_tab = TRUE;
 
+	if (extrahardening)
+		remmina_pref.always_show_tab = FALSE;
+
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "hide_connection_toolbar", NULL))
 		remmina_pref.hide_connection_toolbar = g_key_file_get_boolean(gkeyfile, "remmina_pref",
 									      "hide_connection_toolbar", NULL);
 	else
 		remmina_pref.hide_connection_toolbar = FALSE;
 
+	if (disabletoolbar)
+		remmina_pref.hide_connection_toolbar = TRUE;
+
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "hide_searchbar", NULL))
 		remmina_pref.hide_searchbar = g_key_file_get_boolean(gkeyfile, "remmina_pref",
 								     "hide_searchbar", NULL);
 	else
 		remmina_pref.hide_searchbar = FALSE;
+
+	if (extrahardening)
+		remmina_pref.hide_searchbar = TRUE;
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "default_action", NULL))
 		remmina_pref.default_action = g_key_file_get_integer(gkeyfile, "remmina_pref", "default_action", NULL);
@@ -557,6 +569,9 @@ void remmina_pref_init(void)
 	else
 		remmina_pref.default_mode = 0;
 
+	if (fullscreen)
+		remmina_pref.default_mode = VIEWPORT_FULLSCREEN_MODE;
+
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "tab_mode", NULL))
 		remmina_pref.tab_mode = g_key_file_get_integer(gkeyfile, "remmina_pref", "tab_mode", NULL);
 	else
@@ -566,6 +581,9 @@ void remmina_pref_init(void)
 		remmina_pref.fullscreen_toolbar_visibility = g_key_file_get_integer(gkeyfile, "remmina_pref", "fullscreen_toolbar_visibility", NULL);
 	else
 		remmina_pref.fullscreen_toolbar_visibility = FLOATING_TOOLBAR_VISIBILITY_PEEKING;
+
+	if (disabletoolbar)
+		remmina_pref.fullscreen_toolbar_visibility = FLOATING_TOOLBAR_VISIBILITY_DISABLE;
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "auto_scroll_step", NULL))
 		remmina_pref.auto_scroll_step = g_key_file_get_integer(gkeyfile, "remmina_pref", "auto_scroll_step", NULL);
