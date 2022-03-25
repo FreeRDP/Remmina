@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-03-21 06:15+0000\n"
+"POT-Creation-Date: 2022-03-25 11:36+0000\n"
 "PO-Revision-Date: 2021-12-17 08:52+0000\n"
 "Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
 "Language-Team: Thai <https://hosted.weblate.org/projects/remmina/remmina/th/"
@@ -489,7 +489,7 @@ msgid ""
 "available-in-a-Wayland-session"
 msgstr ""
 
-#: src/rcw.c:4529
+#: src/rcw.c:4532
 #, fuzzy
 msgid ""
 "Warning: This plugin requires GtkSocket, but this feature is unavailable in "
@@ -498,7 +498,7 @@ msgstr "คําเตือน: ปลั๊กอินนี้ต้อง�
 
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. 'GtkSocket feature is not available'.
-#: src/rcw.c:4535
+#: src/rcw.c:4538
 msgid ""
 "Plugins relying on GtkSocket can't run in a Wayland session.\n"
 "For more info and a possible workaround, please visit the Remmina wiki at:\n"
@@ -507,7 +507,7 @@ msgid ""
 "available-in-a-Wayland-session"
 msgstr ""
 
-#: src/rcw.c:4549
+#: src/rcw.c:4552
 #, fuzzy
 #| msgid "Open Main Window"
 msgid "Open in web browser"
@@ -540,13 +540,13 @@ msgid_plural "%d passwords changed."
 msgstr[0] "%d เปลี่ยนรหัสผ่าน"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:88
+#: src/remmina.c:92
 #, fuzzy
 msgid "Show 'About'"
 msgstr "แสดง 'เกี่ยวกับ'"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:90
+#: src/remmina.c:94
 #, fuzzy
 msgid ""
 "Connect either to a desktop described in a file (.remmina or a filetype "
@@ -555,13 +555,13 @@ msgstr ""
 "เชื่อมต่อกับเดสก์ท็อปที่อธิบายไว้ในไฟล์ (.remmina หรือประเภทไฟล์ที่สนับสนุนโดยปลั๊กอิน) หรือ URI "
 "ที่สนับสนุน (RDP, VNC, SSH หรือ SPICE)"
 
-#: src/remmina.c:90 src/remmina.c:92 src/remmina.c:94
+#: src/remmina.c:94 src/remmina.c:96 src/remmina.c:98
 #, fuzzy
 msgid "FILE"
 msgstr "แฟ้ม"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:92
+#: src/remmina.c:96
 #, fuzzy
 msgid ""
 "Connect to a desktop described in a file (.remmina or a filetype supported "
@@ -569,7 +569,7 @@ msgid ""
 msgstr "เชื่อมต่อกับเดสก์ท็อปที่อธิบายไว้ในไฟล์ (.remmina หรือชนิดที่ปลั๊กอินสนับสนุน)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:94
+#: src/remmina.c:98
 #, fuzzy
 msgid ""
 "Edit desktop connection described in file (.remmina or a filetype supported "
@@ -577,93 +577,113 @@ msgid ""
 msgstr "แก้ไขการเชื่อมต่อเดสก์ท็อปที่อธิบายไว้ในไฟล์ (.remmina หรือชนิดที่สนับสนุนโดยปลั๊กอิน)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:97
+#: src/remmina.c:101
 #, fuzzy
 msgid "Start in kiosk mode"
 msgstr "เริ่มต้นในโหมดคีออสก์"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:99
+#: src/remmina.c:103
 msgid "Create new connection profile"
 msgstr "การเชื่อมต่อใหม่"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:101
+#: src/remmina.c:105
 msgid "Show preferences"
 msgstr "ปรับแต่ง"
 
-#: src/remmina.c:101
+#: src/remmina.c:105
 #, fuzzy
 msgid "TABINDEX"
 msgstr "TABINDEX ประมาณส่วนข้อมูลดัชนีทั้งหมด"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:108
+#: src/remmina.c:112
 #, fuzzy
 msgid "Quit"
 msgstr "ออก"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:110
+#: src/remmina.c:114
 #, fuzzy
 msgid "Use default server name (for --new)"
 msgstr "ใช้ชื่อเซิร์ฟเวอร์เริ่มต้น (สําหรับ --new)"
 
-#: src/remmina.c:110
+#: src/remmina.c:114
 #, fuzzy
 msgid "SERVER"
 msgstr "เซิร์ฟเวอร์"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:112
+#: src/remmina.c:116
 #, fuzzy
 msgid "Use default protocol (for --new)"
 msgstr "ใช้โพรโทคอลเริ่มต้น (สําหรับ --new)"
 
-#: src/remmina.c:112
+#: src/remmina.c:116
 #, fuzzy
 msgid "PROTOCOL"
 msgstr "พิธีสาร"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:114
+#: src/remmina.c:118
 #, fuzzy
 msgid "Start in tray"
 msgstr "เริ่มต้นในถาด"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:116
+#: src/remmina.c:120
 #, fuzzy
 msgid "Show the application version"
 msgstr "แสดงรุ่นของโปรแกรมประยุกต์"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:118
+#: src/remmina.c:122
 #, fuzzy
 msgid "Show version of the application and its plugins"
 msgstr "แสดงรุ่นของโปรแกรมประยุกต์และปลั๊กอินของโปรแกรมประยุกต์นั้น"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:120
+#: src/remmina.c:124
 #, fuzzy
 msgid "Modify connection profile (requires --set-option)"
 msgstr "ปรับเปลี่ยนโปรไฟล์การเชื่อมต่อ (ต้องการ --set-option)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:122
+#: src/remmina.c:126
 #, fuzzy
 msgid "Set one or more profile settings, to be used with --update-profile"
 msgstr "ตั้งค่าโพรไฟล์หนึ่งรายการขึ้นไป ที่จะใช้กับ --update-profile"
 
-#: src/remmina.c:123
+#: src/remmina.c:127
 msgid "Encrypt a password"
 msgstr "บันทึกรหัสผ่าน"
+
+#: src/remmina.c:128
+msgid "Disable news notification"
+msgstr ""
+
+#: src/remmina.c:129
+#, fuzzy
+msgid "Disable toolbar"
+msgstr "แสดง/ซ่อนแถบเครื่องมือ"
+
+#: src/remmina.c:130
+#, fuzzy
+msgid "Enable fullscreen"
+msgstr "เลื่อนเต็มหน้าจอ"
+
+#: src/remmina.c:131
+msgid ""
+"Enable extra hardening (disable closing confirmation, disable unsafe "
+"shortcut keys, hide tabs, hide search bar)"
+msgstr ""
 
 #. TRANSLATORS:
 #. * This link should point to a resource explaining how to get Remmina
 #. * to log more verbose statements.
 #.
-#: src/remmina.c:338
+#: src/remmina.c:362
 msgid ""
 "Remmina does not log all output statements. Turn on more verbose output by "
 "using \"G_MESSAGES_DEBUG=all\" as an environment variable.\n"
@@ -672,12 +692,12 @@ msgid ""
 msgstr ""
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:392
+#: src/remmina.c:416
 #, fuzzy
 msgid "- or protocol://username:encryptedpassword@host:port"
 msgstr "- หรือโปรโตคอล://ชื่อผู้ใช้:encryptedpassword@host:พอร์ต"
 
-#: src/remmina.c:395
+#: src/remmina.c:419
 #, fuzzy
 msgid ""
 "Examples:\n"

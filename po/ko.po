@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-03-21 06:15+0000\n"
+"POT-Creation-Date: 2022-03-25 11:36+0000\n"
 "PO-Revision-Date: 2022-03-20 05:58+0000\n"
 "Last-Translator: 이정희 <daemul72@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -440,7 +440,7 @@ msgstr ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 
-#: src/rcw.c:4529
+#: src/rcw.c:4532
 msgid ""
 "Warning: This plugin requires GtkSocket, but this feature is unavailable in "
 "a Wayland session."
@@ -450,7 +450,7 @@ msgstr ""
 
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. 'GtkSocket feature is not available'.
-#: src/rcw.c:4535
+#: src/rcw.c:4538
 msgid ""
 "Plugins relying on GtkSocket can't run in a Wayland session.\n"
 "For more info and a possible workaround, please visit the Remmina wiki at:\n"
@@ -464,7 +464,7 @@ msgstr ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 
-#: src/rcw.c:4549
+#: src/rcw.c:4552
 msgid "Open in web browser"
 msgstr "웹 브라우저에서 열기"
 
@@ -491,12 +491,12 @@ msgid_plural "%d passwords changed."
 msgstr[0] "%d 개의 비밀번호가 변경되었습니다."
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:88
+#: src/remmina.c:92
 msgid "Show 'About'"
 msgstr "'정보' 표시"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:90
+#: src/remmina.c:94
 msgid ""
 "Connect either to a desktop described in a file (.remmina or a filetype "
 "supported by a plugin) or a supported URI (RDP, VNC, SSH or SPICE)"
@@ -504,12 +504,12 @@ msgstr ""
 "파일(.remmina 또는 플러그인에서 지원하는 파일 형식)에 설명된 데스크톱 또는 지"
 "원되는 URI(RDP, VNC, SSH 또는 SPICE)에 연결"
 
-#: src/remmina.c:90 src/remmina.c:92 src/remmina.c:94
+#: src/remmina.c:94 src/remmina.c:96 src/remmina.c:98
 msgid "FILE"
 msgstr "파일"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:92
+#: src/remmina.c:96
 msgid ""
 "Connect to a desktop described in a file (.remmina or a filetype supported "
 "by a plugin)"
@@ -517,7 +517,7 @@ msgstr ""
 "파일에 기술된 데스크톱에 연결 (.remmina 또는 플러그인에서 지원하는 파일 형식)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:94
+#: src/remmina.c:98
 msgid ""
 "Edit desktop connection described in file (.remmina or a filetype supported "
 "by plugin)"
@@ -526,81 +526,105 @@ msgstr ""
 "식)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:97
+#: src/remmina.c:101
 msgid "Start in kiosk mode"
 msgstr "키오스크 모드 시작"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:99
+#: src/remmina.c:103
 msgid "Create new connection profile"
 msgstr "새 연결 프로필 생성"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:101
+#: src/remmina.c:105
 msgid "Show preferences"
 msgstr "기본 설정 표시"
 
-#: src/remmina.c:101
+#: src/remmina.c:105
 msgid "TABINDEX"
 msgstr "탭 인덱스"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:108
+#: src/remmina.c:112
 msgid "Quit"
 msgstr "종료"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:110
+#: src/remmina.c:114
 msgid "Use default server name (for --new)"
 msgstr "기본 서버 이름 사용 (--new)"
 
-#: src/remmina.c:110
+#: src/remmina.c:114
 msgid "SERVER"
 msgstr "서버"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:112
+#: src/remmina.c:116
 msgid "Use default protocol (for --new)"
 msgstr "기본 프로토콜 사용 (--new)"
 
-#: src/remmina.c:112
+#: src/remmina.c:116
 msgid "PROTOCOL"
 msgstr "프로토콜"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:114
+#: src/remmina.c:118
 msgid "Start in tray"
 msgstr "트레이에서 시작"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:116
+#: src/remmina.c:120
 msgid "Show the application version"
 msgstr "애플리케이션 버전 표시"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:118
+#: src/remmina.c:122
 msgid "Show version of the application and its plugins"
 msgstr "애플리케이션 및 해당 플러그인의 버전 표시"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:120
+#: src/remmina.c:124
 msgid "Modify connection profile (requires --set-option)"
 msgstr "연결 프로필 수정 (--set-option 필요)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:122
+#: src/remmina.c:126
 msgid "Set one or more profile settings, to be used with --update-profile"
 msgstr "--update-profile 을 사용해서 사용할 하나 이상의 프로필 설정"
 
-#: src/remmina.c:123
+#: src/remmina.c:127
 msgid "Encrypt a password"
 msgstr "비밀번호 암호화"
+
+#: src/remmina.c:128
+#, fuzzy
+#| msgid "Disable encryption"
+msgid "Disable news notification"
+msgstr "암호화 비활성화"
+
+#: src/remmina.c:129
+#, fuzzy
+#| msgid "Disable clipboard sync"
+msgid "Disable toolbar"
+msgstr "클립 보드 동기화 비활성화"
+
+#: src/remmina.c:130
+#, fuzzy
+#| msgid "Scrolled fullscreen"
+msgid "Enable fullscreen"
+msgstr "스크롤된 전체 화면"
+
+#: src/remmina.c:131
+msgid ""
+"Enable extra hardening (disable closing confirmation, disable unsafe "
+"shortcut keys, hide tabs, hide search bar)"
+msgstr ""
 
 #. TRANSLATORS:
 #. * This link should point to a resource explaining how to get Remmina
 #. * to log more verbose statements.
 #.
-#: src/remmina.c:338
+#: src/remmina.c:362
 msgid ""
 "Remmina does not log all output statements. Turn on more verbose output by "
 "using \"G_MESSAGES_DEBUG=all\" as an environment variable.\n"
@@ -613,11 +637,11 @@ msgstr ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:392
+#: src/remmina.c:416
 msgid "- or protocol://username:encryptedpassword@host:port"
 msgstr "- 또는 protocol://username:encryptedpassword@host:port"
 
-#: src/remmina.c:395
+#: src/remmina.c:419
 msgid ""
 "Examples:\n"
 "To connect using an existing connection profile, use:\n"
@@ -4993,12 +5017,6 @@ msgstr "마스터 비밀번호"
 
 #~ msgid "Password for private SSH key"
 #~ msgstr "SSH 개인 키 비밀번호"
-
-#~ msgid "Disable clipboard sync"
-#~ msgstr "클립 보드 동기화 비활성화"
-
-#~ msgid "Disable encryption"
-#~ msgstr "암호화 비활성화"
 
 #~ msgid "Send Ctrl+Alt+Del"
 #~ msgstr "Ctrl+Alt+Delete 전송"

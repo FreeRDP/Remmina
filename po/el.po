@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-03-21 06:15+0000\n"
+"POT-Creation-Date: 2022-03-25 11:36+0000\n"
 "PO-Revision-Date: 2021-12-17 08:44+0000\n"
 "Last-Translator: Michalis <michalisntovas@yahoo.gr>\n"
 "Language-Team: Greek <https://hosted.weblate.org/projects/remmina/remmina/el/"
@@ -460,7 +460,7 @@ msgid ""
 "available-in-a-Wayland-session"
 msgstr ""
 
-#: src/rcw.c:4529
+#: src/rcw.c:4532
 #, fuzzy
 msgid ""
 "Warning: This plugin requires GtkSocket, but this feature is unavailable in "
@@ -471,7 +471,7 @@ msgstr ""
 
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. 'GtkSocket feature is not available'.
-#: src/rcw.c:4535
+#: src/rcw.c:4538
 msgid ""
 "Plugins relying on GtkSocket can't run in a Wayland session.\n"
 "For more info and a possible workaround, please visit the Remmina wiki at:\n"
@@ -480,7 +480,7 @@ msgid ""
 "available-in-a-Wayland-session"
 msgstr ""
 
-#: src/rcw.c:4549
+#: src/rcw.c:4552
 #, fuzzy
 #| msgid "Open Main Window"
 msgid "Open in web browser"
@@ -512,12 +512,12 @@ msgstr[0] "%d κωδικός πρόσβασης άλλαξε."
 msgstr[1] "%d κωδικοί πρόσβασης άλλαξαν."
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:88
+#: src/remmina.c:92
 msgid "Show 'About'"
 msgstr "Εμφάνιση \"Σχετικά\""
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:90
+#: src/remmina.c:94
 msgid ""
 "Connect either to a desktop described in a file (.remmina or a filetype "
 "supported by a plugin) or a supported URI (RDP, VNC, SSH or SPICE)"
@@ -526,12 +526,12 @@ msgstr ""
 "αρχείο (.remmina ή έναν τύπο αρχείου που υποστηρίζεται από μια προσθήκη) ή "
 "ένα υποστηριζόμενο URI (RDP, VNC, SSH ή SPICE)"
 
-#: src/remmina.c:90 src/remmina.c:92 src/remmina.c:94
+#: src/remmina.c:94 src/remmina.c:96 src/remmina.c:98
 msgid "FILE"
 msgstr "ΑΡΧΕΙΟ"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:92
+#: src/remmina.c:96
 #, fuzzy
 #| msgid ""
 #| "Connect to a desktop described in a file (.remmina or a type supported by "
@@ -544,7 +544,7 @@ msgstr ""
 "remmina ή έναν τύπο που υποστηρίζεται από μια προσθήκη)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:94
+#: src/remmina.c:98
 #, fuzzy
 #| msgid ""
 #| "Edit desktop connection described in file (.remmina or type supported by "
@@ -557,82 +557,106 @@ msgstr ""
 "remmina ή τύπος που υποστηρίζεται από plugin)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:97
+#: src/remmina.c:101
 msgid "Start in kiosk mode"
 msgstr "Έναρξη σε λειτουργία kiosk"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:99
+#: src/remmina.c:103
 msgid "Create new connection profile"
 msgstr "Αποτυχία σύνδεσης VNC: %s"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:101
+#: src/remmina.c:105
 msgid "Show preferences"
 msgstr "Προτιμήσεις"
 
-#: src/remmina.c:101
+#: src/remmina.c:105
 msgid "TABINDEX"
 msgstr "TABINDEX"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:108
+#: src/remmina.c:112
 msgid "Quit"
 msgstr "Έξοδος"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:110
+#: src/remmina.c:114
 msgid "Use default server name (for --new)"
 msgstr "Χρήση προεπιλεγμένου ονόματος διακομιστή (για --new)"
 
-#: src/remmina.c:110
+#: src/remmina.c:114
 msgid "SERVER"
 msgstr "SERVER"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:112
+#: src/remmina.c:116
 msgid "Use default protocol (for --new)"
 msgstr "Χρήση προεπιλεγμένου πρωτοκόλλου (για --new)"
 
-#: src/remmina.c:112
+#: src/remmina.c:116
 msgid "PROTOCOL"
 msgstr "PROTOCOL"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:114
+#: src/remmina.c:118
 msgid "Start in tray"
 msgstr "Εκκίνηση στη περιοχή κατάστασης"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:116
+#: src/remmina.c:120
 msgid "Show the application version"
 msgstr "Εμφάνιση της έκδοσης της εφαρμογής"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:118
+#: src/remmina.c:122
 msgid "Show version of the application and its plugins"
 msgstr "Εμφάνιση της έκδοσης της εφαρμογής και των προσθηκών της"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:120
+#: src/remmina.c:124
 msgid "Modify connection profile (requires --set-option)"
 msgstr "Τροποποίηση προφίλ σύνδεσης (απαιτεί --set-option)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:122
+#: src/remmina.c:126
 msgid "Set one or more profile settings, to be used with --update-profile"
 msgstr ""
 "Ορίστε μία ή περισσότερες ρυθμίσεις προφίλ, για χρήση με το --update-profile"
 
-#: src/remmina.c:123
+#: src/remmina.c:127
 msgid "Encrypt a password"
 msgstr "Αποθήκευση κωδικού πρόσβασης"
+
+#: src/remmina.c:128
+#, fuzzy
+#| msgid "Disable encryption"
+msgid "Disable news notification"
+msgstr "Απενεργοποίηση κρυπτογράφησης"
+
+#: src/remmina.c:129
+#, fuzzy
+#| msgid "Disable clipboard sync"
+msgid "Disable toolbar"
+msgstr "Απενεργοποίηση συγχρονισμού προχείρου"
+
+#: src/remmina.c:130
+#, fuzzy
+#| msgid "Scrolled fullscreen"
+msgid "Enable fullscreen"
+msgstr "Κυλιόμενη πλήρης οθόνη"
+
+#: src/remmina.c:131
+msgid ""
+"Enable extra hardening (disable closing confirmation, disable unsafe "
+"shortcut keys, hide tabs, hide search bar)"
+msgstr ""
 
 #. TRANSLATORS:
 #. * This link should point to a resource explaining how to get Remmina
 #. * to log more verbose statements.
 #.
-#: src/remmina.c:338
+#: src/remmina.c:362
 msgid ""
 "Remmina does not log all output statements. Turn on more verbose output by "
 "using \"G_MESSAGES_DEBUG=all\" as an environment variable.\n"
@@ -641,12 +665,12 @@ msgid ""
 msgstr ""
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:392
+#: src/remmina.c:416
 #, fuzzy
 msgid "- or protocol://username:encryptedpassword@host:port"
 msgstr "- ή protocol://username:encryptedpassword@host:port"
 
-#: src/remmina.c:395
+#: src/remmina.c:419
 #, fuzzy
 msgid ""
 "Examples:\n"
@@ -5579,12 +5603,6 @@ msgstr "Κύριος κωδικός πρόσβασης"
 
 #~ msgid "Start"
 #~ msgstr "Έναρξη"
-
-#~ msgid "Disable clipboard sync"
-#~ msgstr "Απενεργοποίηση συγχρονισμού προχείρου"
-
-#~ msgid "Disable encryption"
-#~ msgstr "Απενεργοποίηση κρυπτογράφησης"
 
 #~ msgid "NX - NX Technology"
 #~ msgstr "NX - Τεχνολογία NX"
