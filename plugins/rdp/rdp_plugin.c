@@ -530,7 +530,7 @@ BOOL rf_end_paint(rdpContext *context)
 	gdi = context->gdi;
 	rfi = (rfContext *)context;
 
-	if (gdi == NULL || gdi->primary == NULL || gdi->primary->hdc == NULL)
+	if (gdi == NULL || gdi->primary == NULL || gdi->primary->hdc == NULL || gdi->primary->hdc->hwnd == NULL)
 		return TRUE;
 
 	if (gdi->primary->hdc->hwnd->invalid->null)
