@@ -139,6 +139,7 @@ struct rf_clipboard {
 	pthread_cond_t		transfer_clip_cond;
 	enum  { SCDW_NONE, SCDW_BUSY_WAIT, SCDW_ABORTING } srv_clip_data_wait;
 	gpointer		srv_data;
+	pthread_mutex_t	srv_data_mutex;
 
 	UINT32			server_html_format_id;
 
