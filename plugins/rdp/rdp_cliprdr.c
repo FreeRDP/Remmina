@@ -224,17 +224,17 @@ void remmina_rdp_cliprdr_cached_clipboard_free(rfClipboard *clipboard)
 	TRACE_CALL(__func__);
 	guint fmt;
 
-
-	if (clipboard->srv_data == NULL)
-		return;
-
-	fmt = clipboard->format;
-	if (fmt == CB_FORMAT_PNG || fmt == CF_DIB || fmt == CF_DIBV5 || fmt == CB_FORMAT_JPEG) {
-		g_object_unref(clipboard->srv_data);
-	} else {
-		free(clipboard->srv_data);
+	pthread_mutex_lock(&clipboard->srv_data_mutex);
+	if (clipboard->srv_data != NULL) {
+		fmt = clipboard->format;
+		if (fmt == CB_FORMAT_PNG || fmt == CF_DIB || fmt == CF_DIBV5 || fmt == CB_FORMAT_JPEG) {
+			g_object_unref(clipboard->srv_data);
+		} else {
+			free(clipboard->srv_data);
+		}
+		clipboard->srv_data = NULL;
 	}
-	clipboard->srv_data = NULL;
+	pthread_mutex_unlock(&clipboard->srv_data_mutex);
 }
 
 
@@ -362,8 +362,10 @@ static UINT remmina_rdp_cliprdr_server_format_list(CliprdrClientContext *context
 		REMMINA_PLUGIN_DEBUG("gp=%p adding a dummy text target (empty text) for local clipboard, because we have no interesting targets from the server. Putting it in the local clipboard cache.");
 		GdkAtom atom = gdk_atom_intern("UTF8_STRING", TRUE);
 		gtk_target_list_add(list, atom, 0, CF_UNICODETEXT);
+		pthread_mutex_lock(&clipboard->srv_data_mutex);
 		clipboard->srv_data = malloc(1);
 		((char *)(clipboard->srv_data))[0] = 0;
+		pthread_mutex_unlock(&clipboard->srv_data_mutex);
 		clipboard->format = CF_UNICODETEXT;
 	}
 
@@ -555,7 +557,10 @@ static UINT remmina_rdp_cliprdr_server_format_data_response(CliprdrClientContext
 		}
 	}
 
+	pthread_mutex_lock(&clipboard->srv_data_mutex);
 	clipboard->srv_data = output;
+	pthread_mutex_unlock(&clipboard->srv_data_mutex);
+
 	if (output != NULL)
 		REMMINA_PLUGIN_DEBUG("gp=%p: clipboard local cache data has been loaded", gp);
 	else
@@ -663,11 +668,11 @@ void remmina_rdp_cliprdr_request_data(GtkClipboard *gtkClipboard, GtkSelectionDa
 					g_warning("[RDP] gp=%p internal error: pthread_cond_timedwait() returned %d\n", gp, rc);
 			}
 		}
-
 		pthread_mutex_unlock(&clipboard->transfer_clip_mutex);
 
 	}
 
+	pthread_mutex_lock(&clipboard->srv_data_mutex);
 	if (clipboard->srv_data != NULL) {
 		REMMINA_PLUGIN_DEBUG("gp=%p pasting data to local application", gp);
 		/* We have data in cache, just paste it */
@@ -685,6 +690,7 @@ void remmina_rdp_cliprdr_request_data(GtkClipboard *gtkClipboard, GtkSelectionDa
 	} else {
 		REMMINA_PLUGIN_DEBUG("gp=%p cannot paste data to local application because ->srv_data is NULL", gp);
 	}
+	pthread_mutex_unlock(&clipboard->srv_data_mutex);
 
 }
 
@@ -957,6 +963,8 @@ void remmina_rdp_cliprdr_init(rfContext *rfi, CliprdrClientContext *cliprdr)
 	pthread_mutex_init(&clipboard->transfer_clip_mutex, NULL);
 	pthread_cond_init(&clipboard->transfer_clip_cond, NULL);
 	clipboard->srv_clip_data_wait = SCDW_NONE;
+
+	pthread_mutex_init(&clipboard->srv_data_mutex, NULL);
 
 	cliprdr->MonitorReady = remmina_rdp_cliprdr_monitor_ready;
 	cliprdr->ServerCapabilities = remmina_rdp_cliprdr_server_capabilities;
