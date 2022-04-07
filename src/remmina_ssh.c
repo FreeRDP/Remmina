@@ -46,6 +46,7 @@
 #include <libssh/libssh.h>
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
+#include <poll.h>
 #include <stdlib.h>
 #include <signal.h>
 #include <time.h>
@@ -115,6 +116,86 @@ static const gchar *common_identities[] =
 	".ssh/identity",
 	NULL
 };
+
+// Send data to channel
+static int remimna_ssh_cp_to_ch_cb(int fd, int revents, void *userdata);
+
+// Read data from channel
+static int remmina_ssh_cp_to_fd_cb(ssh_session session, ssh_channel channel, void *data, uint32_t len, int is_stderr, void *userdata);
+
+// EOF&Close channel
+static void remmina_ssh_ch_close_cb(ssh_session session, ssh_channel channel, void *userdata);
+
+/*
+ * SSH Event Context
+*/
+
+short events = POLLIN | POLLPRI | POLLERR | POLLHUP | POLLNVAL;
+
+/*
+ * Functions
+*/
+
+static int
+remimna_ssh_cp_to_ch_cb(int fd, int revents, void *userdata)
+{
+	TRACE_CALL(__func__);
+	ssh_channel channel = (ssh_channel)userdata;
+	gchar buf[2097152];
+	gint sz = 0, ret = 0;
+
+	if (!channel) {
+		REMMINA_ERROR("channel does not exist.");
+		return -1;
+	}
+
+	if ((revents & POLLIN) || (revents & POLLPRI)) {
+		sz = read(fd, buf, sizeof(buf));
+		if (sz > 0) {
+			ret = ssh_channel_write(channel, buf, sz);
+			REMMINA_DEBUG("ssh_channel_write ret: %d sz: %d", ret, sz);
+		} else if (sz < 0) {
+			REMMINA_ERROR("fd bytes read: %d", sz);
+		} else {
+			REMMINA_CRITICAL("Why the hell am I here?");
+		}
+	}
+
+	if ((revents & POLLHUP) || (revents & POLLNVAL) || (revents & POLLERR)) {
+		REMMINA_DEBUG("Closing channel.");
+		ssh_channel_close(channel);
+		sz = -1;
+	}
+
+	return sz;
+}
+
+static int
+remmina_ssh_cp_to_fd_cb(ssh_session session, ssh_channel channel, void *data, uint32_t len, int is_stderr, void *userdata)
+{
+	TRACE_CALL(__func__);
+	gint fd = *(int*)userdata;
+	gint sz = 0;
+	(void)session;
+	(void)channel;
+	(void)is_stderr;
+
+	sz = write(fd, data, len);
+	REMMINA_DEBUG("fd bytes written: %d", sz);
+
+	return sz;
+}
+
+static void
+remmina_ssh_ch_close_cb(ssh_session session, ssh_channel channel, void *userdata)
+{
+	TRACE_CALL(__func__);
+//	gint fd = *(int*)userdata;
+	(void)session;
+	(void)userdata;
+
+	REMMINA_DEBUG("Channel closed.");
+}
 
 gchar *
 remmina_ssh_identity_path(const gchar *id)
@@ -2359,14 +2440,8 @@ remmina_ssh_shell_thread(gpointer data)
 	RemminaProtocolWidget *gp = (RemminaProtocolWidget *)shell->user_data;
 	RemminaFile *remminafile;
 	remminafile = remmina_protocol_widget_get_file(gp);
-	fd_set fds;
-	struct timeval timeout;
 	ssh_channel channel = NULL;
-	ssh_channel ch[2], chout[2];
-	gchar *buf = NULL;
-	gint buf_len;
-	gint len;
-	gint i, ret;
+	gint ret;
 	gchar *filename;
 	const gchar *dir;
 	const gchar *sshlogname;
@@ -2411,12 +2486,6 @@ remmina_ssh_shell_thread(gpointer data)
 
 	UNLOCK_SSH(shell)
 
-	buf_len = 1000;
-	buf = g_malloc(buf_len + 1);
-
-	ch[0] = channel;
-	ch[1] = NULL;
-
 	GFile *rf = g_file_new_for_path(remminafile->filename);
 
 	if (remmina_file_get_string(remminafile, "sshlogfolder") == NULL)
@@ -2447,59 +2516,71 @@ remmina_ssh_shell_thread(gpointer data)
 		UNLOCK_SSH(shell)
 		REMMINA_DEBUG("Run_line written to channel");
 	}
-	while (!shell->closed) {
-		timeout.tv_sec = 1;
-		timeout.tv_usec = 0;
-
-		FD_ZERO(&fds);
-		FD_SET(shell->slave, &fds);
-
-		ret = ssh_select(ch, chout, shell->slave + 1, &fds, &timeout);
-		if (ret == SSH_EINTR) continue;
-		if (ret == -1) break;
-
-		if (FD_ISSET(shell->slave, &fds)) {
-			len = read(shell->slave, buf, buf_len);
-			if (len <= 0) break;
-			LOCK_SSH(shell)
-			ssh_channel_write(channel, buf, len);
-			UNLOCK_SSH(shell)
-		}
-
-		for (i = 0; i < 2; i++) {
-			LOCK_SSH(shell)
-			len = ssh_channel_poll(channel, i);
-			UNLOCK_SSH(shell)
-			if (len == SSH_ERROR || len == SSH_EOF) {
-				REMMINA_DEBUG("SSH shell error or EOF, closing the channel");
-				shell->closed=TRUE;
-				break;
-			}
-			if (len <= 0) continue;
-			if (len > buf_len) {
-				buf_len = len;
-				buf = (gchar *)g_realloc(buf, buf_len + 1);
-			}
-			LOCK_SSH(shell)
-			len = ssh_channel_read_nonblocking(channel, buf, len, i);
-			UNLOCK_SSH(shell)
-			if (len <= 0) {
-				shell->closed=TRUE;
-				break;
-			}
-			while (len > 0) {
-				ret = write(shell->slave, buf, len);
-				if (fp != NULL) {
-					fwrite(buf, ret, 1, fp );
-					fflush(fp);
-				}
-				if (ret <= 0) break;
-				len -= ret;
-			}
-		}
-	}
 
 	LOCK_SSH(shell)
+
+	// Create new event context.
+	ssh_event event = ssh_event_new();
+	if (event == NULL) {
+		REMMINA_CRITICAL("Internal error in %s: Couldn't get a event.", __func__);
+		return NULL;
+	}
+
+	REMMINA_DEBUG("shell->slave: %d", shell->slave);
+
+	// Add the fd to the event and assign it the callback.
+	if (ssh_event_add_fd(event, shell->slave, events, remimna_ssh_cp_to_ch_cb, channel) != SSH_OK) {
+		REMMINA_CRITICAL("Internal error in %s: Couldn't add an fd to the event.", __func__);
+		return NULL;
+	}
+
+	// Remove the poll handle from session and assign them to the event.
+	if (ssh_event_add_session(event, REMMINA_SSH(shell)->session) != SSH_OK) {
+		REMMINA_CRITICAL("Internal error in %s: Couldn't add the session to the event.", __func__);
+		return NULL;
+	}
+
+	// SSH Channel Callbacks
+	struct ssh_channel_callbacks_struct channel_cb =
+	{
+	        .channel_data_function = remmina_ssh_cp_to_fd_cb,
+	        .channel_eof_function = remmina_ssh_ch_close_cb,
+	        .channel_close_function = remmina_ssh_ch_close_cb,
+	        .userdata = NULL
+	};
+
+	// Set the callback userdata.
+	channel_cb.userdata = &shell->slave;
+	// Initializes the ssh_callbacks_struct.
+	ssh_callbacks_init(&channel_cb);
+	// Set the channel callback functions.
+	ssh_set_channel_callbacks(shell->channel, &channel_cb);
+	UNLOCK_SSH(shell)
+
+	do {
+		ssh_event_dopoll(event, 1000);
+	} while(!ssh_channel_is_closed(shell->channel));
+
+	shell->closed = TRUE;
+
+	LOCK_SSH(shell)
+
+	// Remove socket fd from event context.
+	ret = ssh_event_remove_fd(event, shell->slave);
+	REMMINA_DEBUG("Remove socket fd from event context: %d", ret);
+
+	// Remove session object from event context.
+	ret = ssh_event_remove_session(event, REMMINA_SSH(shell)->session);
+	REMMINA_DEBUG("Remove session object from event context: %d", ret);
+
+	// Free event context.
+	ssh_event_free(event);
+	REMMINA_DEBUG("Free event context");
+
+	// Remove channel callback.
+	ret = ssh_remove_channel_callbacks(shell->channel, &channel_cb);
+	REMMINA_DEBUG("Remove channel callback: %d", ret);
+
 	if (remmina_file_get_int (remminafile, "sshsavesession", FALSE))
 		fclose(fp);
 	shell->channel = NULL;
@@ -2508,7 +2589,6 @@ remmina_ssh_shell_thread(gpointer data)
 	ssh_channel_free(channel);
 	UNLOCK_SSH(shell)
 
-	g_free(buf);
 	shell->thread = 0;
 
 	if (shell->exit_callback)
