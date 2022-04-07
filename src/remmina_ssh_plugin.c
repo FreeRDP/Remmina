@@ -1542,6 +1542,7 @@ static const RemminaProtocolSetting remmina_ssh_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"sshlogenabled",	  N_("Log SSH session when exiting Remmina"), FALSE, NULL,		   NULL										 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"sshsavesession",	  N_("Log SSH session asynchronously"),	      FALSE, NULL,		   N_("Saving the session asynchronously may have a notable performance impact") },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"audiblebell",		  N_("Audible terminal bell"),		      FALSE, NULL,		   NULL										 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"ssh_forward_x11",	  N_("SSH ForwardX11"),			      TRUE,  NULL,		   NULL										 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"ssh_compression",	  N_("SSH compression"),		      FALSE, NULL,		   NULL										 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"disablepasswordstoring", N_("Don't remember passwords"),	      TRUE,  NULL,		   NULL										 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"ssh_stricthostkeycheck", N_("Strict host key checking"),	      TRUE,  NULL,		   NULL										 },
