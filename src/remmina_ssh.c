@@ -133,6 +133,7 @@ typedef struct item {
 	gint fd_in;
 	gint fd_out;
 	gboolean protected;
+	pthread_t thread;
 	struct item *next;
 } node_t;
 
@@ -142,7 +143,7 @@ node_t *node = NULL;
 pthread_mutex_t mutex;
 
 // Linked nodes to manage channel/fd tuples
-static void remmina_ssh_insert_item(ssh_channel channel, gint fd_in, gint fd_out, gboolean protected);
+static void remmina_ssh_insert_item(ssh_channel channel, gint fd_in, gint fd_out, gboolean protected, pthread_t thread);
 static void remmina_ssh_delete_item(ssh_channel channel);
 static node_t * remmina_ssh_search_item(ssh_channel channel);
 
@@ -163,6 +164,9 @@ static int remmina_ssh_cp_to_fd_cb(ssh_session session, ssh_channel channel, voi
 // EOF&Close channel
 static void remmina_ssh_ch_close_cb(ssh_session session, ssh_channel channel, void *userdata);
 
+// Close all X11 channel
+static void remmina_ssh_close_all_x11_ch(pthread_t thread);
+
 // X11 Request
 static ssh_channel remmina_ssh_x11_open_request_cb(ssh_session session, const char *shost, int sport, void *userdata);
 
@@ -180,7 +184,7 @@ short events = POLLIN | POLLPRI | POLLERR | POLLHUP | POLLNVAL;
 
 // Functions
 static void
-remmina_ssh_insert_item(ssh_channel channel, gint fd_in, gint fd_out, gboolean protected)
+remmina_ssh_insert_item(ssh_channel channel, gint fd_in, gint fd_out, gboolean protected, pthread_t thread)
 {
 	TRACE_CALL(__func__);
 
@@ -196,6 +200,7 @@ remmina_ssh_insert_item(ssh_channel channel, gint fd_in, gint fd_out, gboolean p
 		node->fd_in = fd_in;
 		node->fd_out = fd_out;
 		node->protected = protected;
+		node->thread = thread;
 		node->next = NULL;
 	} else {
 		node_iterator = node;
@@ -207,6 +212,7 @@ remmina_ssh_insert_item(ssh_channel channel, gint fd_in, gint fd_out, gboolean p
 		new->fd_in = fd_in;
 		new->fd_out = fd_out;
 		new->protected = protected;
+		new->thread = thread;
 		new->next = NULL;
 		node_iterator->next = new;
 	}
@@ -479,6 +485,7 @@ remimna_ssh_cp_to_ch_cb(int fd, int revents, void *userdata)
 
 	if (!channel) {
 		if (!temp_node->protected) {
+			shutdown(fd, SHUT_RDWR);
 			close(fd);
 			REMMINA_DEBUG("fd %d closed.", fd);
 		}
@@ -497,6 +504,7 @@ remimna_ssh_cp_to_ch_cb(int fd, int revents, void *userdata)
 		} else {
 			REMMINA_WARNING("Why the hell am I here?");
 			if (!temp_node->protected) {
+				shutdown(fd, SHUT_RDWR);
 				close(fd);
 				REMMINA_DEBUG("fd %d closed.", fd);
 			}
@@ -549,11 +557,35 @@ remmina_ssh_ch_close_cb(ssh_session session, ssh_channel channel, void *userdata
 		if (!temp_node->protected) {
 			remmina_ssh_delete_item(channel);
 			ssh_event_remove_fd(shell->event, fd);
+			shutdown(fd, SHUT_RDWR);
 			close(fd);
 			REMMINA_DEBUG("fd %d closed.", fd);
 		}
 	}
 	REMMINA_DEBUG("Channel closed.");
+}
+
+static void
+remmina_ssh_close_all_x11_ch(pthread_t thread)
+{
+	TRACE_CALL(__func__);
+
+	REMMINA_DEBUG("Close all X11 channels");
+
+	node_t *current = node;
+	while (current != NULL) {
+		if (current->thread == thread) {
+			shutdown(current->fd_in, SHUT_RDWR);
+			close(current->fd_in);
+			REMMINA_DEBUG("fd %d closed.", current->fd_in);
+			if (current->fd_in != current->fd_out) {
+				shutdown(current->fd_out, SHUT_RDWR);
+				close(current->fd_out);
+				REMMINA_DEBUG("fd %d closed.", current->fd_out);
+			}
+		}
+		current = current->next;
+	}
 }
 
 static ssh_channel
@@ -570,7 +602,7 @@ remmina_ssh_x11_open_request_cb(ssh_session session, const char *shost, int spor
 
 	int sock = remmina_ssh_x11_connect_display();
 
-	remmina_ssh_insert_item(channel, sock, sock, FALSE);
+	remmina_ssh_insert_item(channel, sock, sock, FALSE, shell->thread);
 
 	ssh_event_add_fd(shell->event, sock, events, remimna_ssh_cp_to_ch_cb, channel);
 	ssh_event_add_session(shell->event, session);
@@ -2948,7 +2980,7 @@ remmina_ssh_shell_thread(gpointer data)
 		return NULL;
 	}
 
-	remmina_ssh_insert_item(shell->channel, shell->slave, shell->slave, TRUE);
+	remmina_ssh_insert_item(shell->channel, shell->slave, shell->slave, TRUE, shell->thread);
 
 	// Initializes the ssh_callbacks_struct.
 	channel_cb.userdata = &shell;
@@ -2960,6 +2992,9 @@ remmina_ssh_shell_thread(gpointer data)
 	do {
 		ssh_event_dopoll(shell->event, 1000);
 	} while(!ssh_channel_is_closed(shell->channel));
+
+	// Close all OPENED X11 channel
+	remmina_ssh_close_all_x11_ch(shell->thread);
 
 	shell->closed = TRUE;
 
