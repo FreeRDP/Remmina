@@ -574,14 +574,14 @@ remmina_ssh_close_all_x11_ch(pthread_t thread)
 
 	node_t *current = node;
 	while (current != NULL) {
-		if (current->thread == thread) {
+		if (current->thread == thread && !current->protected) {
 			shutdown(current->fd_in, SHUT_RDWR);
 			close(current->fd_in);
-			REMMINA_DEBUG("fd %d closed.", current->fd_in);
+			REMMINA_DEBUG("thread: %d - fd %d closed.", thread, current->fd_in);
 			if (current->fd_in != current->fd_out) {
 				shutdown(current->fd_out, SHUT_RDWR);
 				close(current->fd_out);
-				REMMINA_DEBUG("fd %d closed.", current->fd_out);
+				REMMINA_DEBUG("thread: %d - fd %d closed.", thread, current->fd_out);
 			}
 		}
 		current = current->next;
@@ -3081,6 +3081,9 @@ remmina_ssh_shell_free(RemminaSSHShell *shell)
 {
 	TRACE_CALL(__func__);
 	//pthread_t thread = shell->thread;
+
+	// Close all OPENED X11 channel
+	remmina_ssh_close_all_x11_ch(shell->thread);
 
 	shell->exit_callback = NULL;
 	shell->closed = TRUE;
