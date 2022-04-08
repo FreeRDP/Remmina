@@ -275,7 +275,7 @@ remmina_ssh_set_nodelay(int fd)
 
 	optlen = sizeof(opt);
 	if (getsockopt(fd, IPPROTO_TCP, TCP_NODELAY, &opt, &optlen) == -1) {
-		REMMINA_ERROR("getsockopt TCP_NODELAY: %.100s", strerror(errno));
+		REMMINA_WARNING("getsockopt TCP_NODELAY: %.100s", strerror(errno));
 		return;
 	}
 	if (opt == 1) {
@@ -285,7 +285,7 @@ remmina_ssh_set_nodelay(int fd)
 	opt = 1;
 	REMMINA_DEBUG("fd %d setting TCP_NODELAY", fd);
 	if (setsockopt(fd, IPPROTO_TCP, TCP_NODELAY, &opt, sizeof(opt)) == -1)
-		REMMINA_ERROR("setsockopt TCP_NODELAY: %.100s", strerror(errno));
+		REMMINA_WARNING("setsockopt TCP_NODELAY: %.100s", strerror(errno));
 }
 
 const char *
@@ -315,7 +315,7 @@ remmina_ssh_x11_get_proto(const char *display, char **_proto, char **_cookie)
 
 	if (strncmp(display, "localhost:", 10) == 0) {
 		if ((r = snprintf(xdisplay, sizeof(xdisplay), "unix:%s", display + 10)) < 0 || (size_t)r >= sizeof(xdisplay)) {
-			REMMINA_ERROR("display name too long. display: %s", display);
+			REMMINA_WARNING("display name too long. display: %s", display);
 			return -1;
 		}
 		display = xdisplay;
@@ -348,7 +348,7 @@ remmina_ssh_connect_local_xsocket_path(const char *pathname)
 
 	sock = socket(AF_UNIX, SOCK_STREAM, 0);
 	if (sock == -1)
-		REMMINA_ERROR("socket: %.100s", strerror(errno));
+		REMMINA_WARNING("socket: %.100s", strerror(errno));
 
 	memset(&addr, 0, sizeof(addr));
 	addr.sun_family = AF_UNIX;
@@ -359,7 +359,7 @@ remmina_ssh_connect_local_xsocket_path(const char *pathname)
 		return sock;
 	}
 
-	REMMINA_ERROR("connect %.100s: %.100s", addr.sun_path, strerror(errno));
+	REMMINA_WARNING("connect %.100s: %.100s", addr.sun_path, strerror(errno));
 	close(sock);
 
 	return -1;
@@ -399,7 +399,7 @@ remmina_ssh_x11_connect_display()
 	if (strncmp(display, "unix:", 5) == 0 || display[0] == ':') {
 		/* Connect to the unix domain socket. */
 		if (sscanf(strrchr(display, ':') + 1, "%u", &display_number) != 1) {
-			REMMINA_ERROR("Could not parse display number from DISPLAY: %.100s", display);
+			REMMINA_WARNING("Could not parse display number from DISPLAY: %.100s", display);
 			return -1;
 		}
 
@@ -421,12 +421,12 @@ remmina_ssh_x11_connect_display()
 	strncpy(buf, display, sizeof(buf) - 1);
 	cp = strchr(buf, ':');
 	if (!cp) {
-		REMMINA_ERROR("Could not find ':' in DISPLAY: %.100s", display);
+		REMMINA_WARNING("Could not find ':' in DISPLAY: %.100s", display);
 		return -1;
 	}
 	*cp = 0;
 	if (sscanf(cp + 1, "%u", &display_number) != 1) {
-		REMMINA_ERROR("Could not parse display number from DISPLAY: %.100s", display);
+		REMMINA_WARNING("Could not parse display number from DISPLAY: %.100s", display);
 		return -1;
 	}
 
@@ -436,19 +436,19 @@ remmina_ssh_x11_connect_display()
 	hints.ai_socktype = SOCK_STREAM;
 	snprintf(strport, sizeof(strport), "%u", 6000 + display_number);
 	if ((gaierr = getaddrinfo(buf, strport, &hints, &aitop)) != 0) {
-		REMMINA_ERROR("%.100s: unknown host. (%s)", buf, remmina_ssh_ssh_gai_strerror(gaierr));
+		REMMINA_WARNING("%.100s: unknown host. (%s)", buf, remmina_ssh_ssh_gai_strerror(gaierr));
 		return -1;
 	}
 	for (ai = aitop; ai; ai = ai->ai_next) {
 		/* Create a socket. */
 		sock = socket(ai->ai_family, ai->ai_socktype, ai->ai_protocol);
 		if (sock == -1) {
-			REMMINA_ERROR("socket: %.100s", strerror(errno));
+			REMMINA_WARNING("socket: %.100s", strerror(errno));
 			continue;
 		}
 		/* Connect it to the display. */
 		if (connect(sock, ai->ai_addr, ai->ai_addrlen) == -1) {
-			REMMINA_ERROR("connect %.100s port %u: %.100s", buf, 6000 + display_number, strerror(errno));
+			REMMINA_WARNING("connect %.100s port %u: %.100s", buf, 6000 + display_number, strerror(errno));
 			close(sock);
 			continue;
 		}
@@ -457,7 +457,7 @@ remmina_ssh_x11_connect_display()
 	}
 	freeaddrinfo(aitop);
 	if (!ai) {
-		REMMINA_ERROR("connect %.100s port %u: %.100s", buf, 6000 + display_number, strerror(errno));
+		REMMINA_WARNING("connect %.100s port %u: %.100s", buf, 6000 + display_number, strerror(errno));
 		return -1;
 	}
 	remmina_ssh_set_nodelay(sock);
@@ -482,7 +482,7 @@ remimna_ssh_cp_to_ch_cb(int fd, int revents, void *userdata)
 			close(fd);
 			REMMINA_DEBUG("fd %d closed.", fd);
 		}
-		REMMINA_ERROR("channel does not exist.");
+		REMMINA_WARNING("channel does not exist.");
 		return -1;
 	}
 
@@ -492,10 +492,10 @@ remimna_ssh_cp_to_ch_cb(int fd, int revents, void *userdata)
 			ret = ssh_channel_write(channel, buf, sz);
 			REMMINA_DEBUG("ssh_channel_write ret: %d sz: %d", ret, sz);
 		} else if (sz < 0) {
-			REMMINA_ERROR("fd bytes read: %d", sz);
+			REMMINA_WARNING("fd bytes read: %d", sz);
 			return -1;
 		} else {
-			REMMINA_CRITICAL("Why the hell am I here?");
+			REMMINA_WARNING("Why the hell am I here?");
 			if (!temp_node->protected) {
 				close(fd);
 				REMMINA_DEBUG("fd %d closed.", fd);
@@ -2930,7 +2930,7 @@ remmina_ssh_shell_thread(gpointer data)
 	// Create new event context.
 	shell->event = ssh_event_new();
 	if (shell->event == NULL) {
-		REMMINA_CRITICAL("Internal error in %s: Couldn't get a event.", __func__);
+		REMMINA_WARNING("Internal error in %s: Couldn't get a event.", __func__);
 		return NULL;
 	}
 
@@ -2938,13 +2938,13 @@ remmina_ssh_shell_thread(gpointer data)
 
 	// Add the fd to the event and assign it the callback.
 	if (ssh_event_add_fd(shell->event, shell->slave, events, remimna_ssh_cp_to_ch_cb, channel) != SSH_OK) {
-		REMMINA_CRITICAL("Internal error in %s: Couldn't add an fd to the event.", __func__);
+		REMMINA_WARNING("Internal error in %s: Couldn't add an fd to the event.", __func__);
 		return NULL;
 	}
 
 	// Remove the poll handle from session and assign them to the event.
 	if (ssh_event_add_session(shell->event, REMMINA_SSH(shell)->session) != SSH_OK) {
-		REMMINA_CRITICAL("Internal error in %s: Couldn't add the session to the event.", __func__);
+		REMMINA_WARNING("Internal error in %s: Couldn't add the session to the event.", __func__);
 		return NULL;
 	}
 
