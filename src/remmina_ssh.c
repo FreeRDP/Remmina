@@ -106,7 +106,6 @@
 
 #endif
 
-
 /*-----------------------------------------------------------------------------*
 *                           SSH Base                                          *
 *-----------------------------------------------------------------------------*/
@@ -2011,6 +2010,7 @@ remmina_ssh_free(RemminaSSH *ssh)
 {
 	TRACE_CALL(__func__);
 	if (ssh->session) {
+		REMMINA_DEBUG("Disconnecting SSH session");
 		ssh_disconnect(ssh->session);
 		ssh_free(ssh->session);
 		ssh->session = NULL;
@@ -3045,12 +3045,14 @@ void
 remmina_ssh_shell_free(RemminaSSHShell *shell)
 {
 	TRACE_CALL(__func__);
-	pthread_t thread = shell->thread;
+	//pthread_t thread = shell->thread;
 
 	shell->exit_callback = NULL;
-	if (thread) {
-		shell->closed = TRUE;
-		pthread_join(thread, NULL);
+	shell->closed = TRUE;
+	REMMINA_DEBUG("Cancelling the shell thread if needed");
+	if (shell->thread) {
+		pthread_cancel(shell->thread);
+		if (shell->thread) pthread_join(shell->thread, NULL);
 	}
 	close(shell->slave);
 	if (shell->exec) {
