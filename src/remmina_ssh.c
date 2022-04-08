@@ -38,6 +38,9 @@
 
 #ifdef HAVE_LIBSSH
 
+/* To get definitions of NI_MAXHOST and NI_MAXSERV from <netdb.h> */
+#define _DEFAULT_SOURCE
+
 /* Define this before stdlib.h to have posix_openpt */
 #define _XOPEN_SOURCE 600
 
@@ -46,6 +49,7 @@
 #include <libssh/libssh.h>
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
+#include <poll.h>
 #include <stdlib.h>
 #include <signal.h>
 #include <time.h>
@@ -78,6 +82,9 @@
 #ifdef HAVE_PTY_H
 #include <pty.h>
 #endif
+#ifdef HAVE_SYS_UN_H
+#include <sys/un.h>
+#endif
 #include "remmina_public.h"
 #include "remmina/types.h"
 #include "remmina_file.h"
@@ -99,7 +106,6 @@
 
 #endif
 
-
 /*-----------------------------------------------------------------------------*
 *                           SSH Base                                          *
 *-----------------------------------------------------------------------------*/
@@ -115,6 +121,496 @@ static const gchar *common_identities[] =
 	".ssh/identity",
 	NULL
 };
+
+/*-----------------------------------------------------------------------------*
+*                           X11 Channels                                      *
+*-----------------------------------------------------------------------------*/
+#define _PATH_UNIX_X    "/tmp/.X11-unix/X%d"
+#define _XAUTH_CMD      "/usr/bin/xauth list %s 2>/dev/null"
+
+typedef struct item {
+	ssh_channel channel;
+	gint fd_in;
+	gint fd_out;
+	gboolean protected;
+	pthread_t thread;
+	struct item *next;
+} node_t;
+
+node_t *node = NULL;
+
+// Mutex
+pthread_mutex_t mutex;
+
+// Linked nodes to manage channel/fd tuples
+static void remmina_ssh_insert_item(ssh_channel channel, gint fd_in, gint fd_out, gboolean protected, pthread_t thread);
+static void remmina_ssh_delete_item(ssh_channel channel);
+static node_t * remmina_ssh_search_item(ssh_channel channel);
+
+// X11 Display
+const char * remmina_ssh_ssh_gai_strerror(int gaierr);
+static int remmina_ssh_x11_get_proto(const char *display, char **_proto, char **_data);
+static void remmina_ssh_set_nodelay(int fd);
+static int remmina_ssh_connect_local_xsocket_path(const char *pathname);
+static int remmina_ssh_connect_local_xsocket(int display_number);
+static int remmina_ssh_x11_connect_display();
+
+// Send data to channel
+static int remimna_ssh_cp_to_ch_cb(int fd, int revents, void *userdata);
+
+// Read data from channel
+static int remmina_ssh_cp_to_fd_cb(ssh_session session, ssh_channel channel, void *data, uint32_t len, int is_stderr, void *userdata);
+
+// EOF&Close channel
+static void remmina_ssh_ch_close_cb(ssh_session session, ssh_channel channel, void *userdata);
+
+// Close all X11 channel
+static void remmina_ssh_close_all_x11_ch(pthread_t thread);
+
+// X11 Request
+static ssh_channel remmina_ssh_x11_open_request_cb(ssh_session session, const char *shost, int sport, void *userdata);
+
+// SSH Channel Callbacks
+struct ssh_channel_callbacks_struct channel_cb =
+{
+	.channel_data_function = remmina_ssh_cp_to_fd_cb,
+	.channel_eof_function = remmina_ssh_ch_close_cb,
+	.channel_close_function = remmina_ssh_ch_close_cb,
+	.userdata = NULL
+};
+
+// SSH Event Context
+short events = POLLIN | POLLPRI | POLLERR | POLLHUP | POLLNVAL;
+
+// Functions
+static void
+remmina_ssh_insert_item(ssh_channel channel, gint fd_in, gint fd_out, gboolean protected, pthread_t thread)
+{
+	TRACE_CALL(__func__);
+
+	pthread_mutex_lock(&mutex);
+
+	REMMINA_DEBUG("insert node - fd_in: %d - fd_out: %d - protected %d", fd_in, fd_out, protected);
+
+	node_t *node_iterator, *new;
+	if (node == NULL) {
+		/* Calloc ensure that node is full of 0 */
+		node = (node_t *) calloc(1, sizeof(node_t));
+		node->channel = channel;
+		node->fd_in = fd_in;
+		node->fd_out = fd_out;
+		node->protected = protected;
+		node->thread = thread;
+		node->next = NULL;
+	} else {
+		node_iterator = node;
+		while (node_iterator->next != NULL)
+			node_iterator = node_iterator->next;
+		/* Create the new node */
+		new = (node_t *) malloc(sizeof(node_t));
+		new->channel = channel;
+		new->fd_in = fd_in;
+		new->fd_out = fd_out;
+		new->protected = protected;
+		new->thread = thread;
+		new->next = NULL;
+		node_iterator->next = new;
+	}
+
+	pthread_mutex_unlock(&mutex);
+}
+
+static void
+remmina_ssh_delete_item(ssh_channel channel)
+{
+	TRACE_CALL(__func__);
+
+	REMMINA_DEBUG("delete node");
+
+	pthread_mutex_lock(&mutex);
+
+	node_t *current, *previous = NULL;
+	for (current = node; current; previous = current, current = current->next) {
+		if (current->channel != channel)
+			continue;
+
+		if (previous == NULL)
+			node = current->next;
+		else
+			previous->next = current->next;
+
+		free(current);
+		pthread_mutex_unlock(&mutex);
+		return;
+	}
+
+	pthread_mutex_unlock(&mutex);
+}
+
+static node_t *
+remmina_ssh_search_item(ssh_channel channel)
+{
+	TRACE_CALL(__func__);
+
+	REMMINA_DEBUG("search node");
+
+	pthread_mutex_lock(&mutex);
+
+	node_t *current = node;
+	while (current != NULL) {
+		if (current->channel == channel) {
+			pthread_mutex_unlock(&mutex);
+			REMMINA_DEBUG("found node - fd_in: %d - fd_out: %d - protected: %d", current->fd_in, current->fd_out, current->protected);
+			return current;
+		} else {
+			current = current->next;
+		}
+	}
+
+	pthread_mutex_unlock(&mutex);
+
+	return NULL;
+}
+
+static void
+remmina_ssh_set_nodelay(int fd)
+{
+	TRACE_CALL(__func__);
+	int opt;
+	socklen_t optlen;
+
+	optlen = sizeof(opt);
+	if (getsockopt(fd, IPPROTO_TCP, TCP_NODELAY, &opt, &optlen) == -1) {
+		REMMINA_WARNING("getsockopt TCP_NODELAY: %.100s", strerror(errno));
+		return;
+	}
+	if (opt == 1) {
+		REMMINA_DEBUG("fd %d is TCP_NODELAY", fd);
+		return;
+	}
+	opt = 1;
+	REMMINA_DEBUG("fd %d setting TCP_NODELAY", fd);
+	if (setsockopt(fd, IPPROTO_TCP, TCP_NODELAY, &opt, sizeof(opt)) == -1)
+		REMMINA_WARNING("setsockopt TCP_NODELAY: %.100s", strerror(errno));
+}
+
+const char *
+remmina_ssh_ssh_gai_strerror(int gaierr)
+{
+	TRACE_CALL(__func__);
+
+	if (gaierr == EAI_SYSTEM && errno != 0)
+		return strerror(errno);
+	return gai_strerror(gaierr);
+}
+
+static int
+remmina_ssh_x11_get_proto(const char *display, char **_proto, char **_cookie)
+{
+	TRACE_CALL(__func__);
+
+	char cmd[1024], line[512], xdisplay[512];
+	static char proto[512], cookie[512];
+	FILE *f;
+	int ret = 0, r;
+
+	*_proto = proto;
+	*_cookie = cookie;
+
+	proto[0] = cookie[0] = '\0';
+
+	if (strncmp(display, "localhost:", 10) == 0) {
+		if ((r = snprintf(xdisplay, sizeof(xdisplay), "unix:%s", display + 10)) < 0 || (size_t)r >= sizeof(xdisplay)) {
+			REMMINA_WARNING("display name too long. display: %s", display);
+			return -1;
+		}
+		display = xdisplay;
+	}
+
+	snprintf(cmd, sizeof(cmd), _XAUTH_CMD, display);
+	REMMINA_DEBUG("xauth cmd: %s", cmd);
+
+	f = popen(cmd, "r");
+	if (f && fgets(line, sizeof(line), f) && sscanf(line, "%*s %511s %511s", proto, cookie) == 2) {
+		ret = 0;
+	} else {
+		ret = 1;
+	}
+
+	if (f) pclose(f);
+
+	REMMINA_DEBUG("proto: %s - cookie: %s - ret: %d", proto, cookie, ret);
+
+	return ret;
+}
+
+static int
+remmina_ssh_connect_local_xsocket_path(const char *pathname)
+{
+	TRACE_CALL(__func__);
+
+	int sock;
+	struct sockaddr_un addr;
+
+	sock = socket(AF_UNIX, SOCK_STREAM, 0);
+	if (sock == -1)
+		REMMINA_WARNING("socket: %.100s", strerror(errno));
+
+	memset(&addr, 0, sizeof(addr));
+	addr.sun_family = AF_UNIX;
+	addr.sun_path[0] = '\0';
+	memcpy(addr.sun_path + 1, pathname, strlen(pathname));
+	if (connect(sock, (struct sockaddr *)&addr, offsetof(struct sockaddr_un, sun_path) + 1 + strlen(pathname)) == 0) {
+		REMMINA_DEBUG("sock: %d", sock);
+		return sock;
+	}
+
+	REMMINA_WARNING("connect %.100s: %.100s", addr.sun_path, strerror(errno));
+	close(sock);
+
+	return -1;
+}
+
+static int
+remmina_ssh_connect_local_xsocket(int display_number)
+{
+	TRACE_CALL(__func__);
+
+	char buf[1024];
+	snprintf(buf, sizeof(buf), _PATH_UNIX_X, display_number);
+	return remmina_ssh_connect_local_xsocket_path(buf);
+}
+
+static int
+remmina_ssh_x11_connect_display()
+{
+	TRACE_CALL(__func__);
+
+	unsigned int display_number;
+	const char *display;
+	char buf[1024], *cp;
+	struct addrinfo hints, *ai, *aitop;
+	char strport[NI_MAXSERV];
+	int gaierr, sock = 0;
+
+	/* Try to open a socket for the local X server. */
+	display = getenv("DISPLAY");
+	if (!display) {
+		return -1;
+	}
+
+	REMMINA_DEBUG("display: %s", display);
+
+	/* Check if it is a unix domain socket. */
+	if (strncmp(display, "unix:", 5) == 0 || display[0] == ':') {
+		/* Connect to the unix domain socket. */
+		if (sscanf(strrchr(display, ':') + 1, "%u", &display_number) != 1) {
+			REMMINA_WARNING("Could not parse display number from DISPLAY: %.100s", display);
+			return -1;
+		}
+
+		REMMINA_DEBUG("display_number: %d", display_number);
+
+		/* Create a socket. */
+		sock = remmina_ssh_connect_local_xsocket(display_number);
+
+		REMMINA_DEBUG("socket: %d", sock);
+
+		if (sock < 0)
+			return -1;
+
+		/* OK, we now have a connection to the display. */
+		return sock;
+	}
+
+	/* Connect to an inet socket. */
+	strncpy(buf, display, sizeof(buf) - 1);
+	cp = strchr(buf, ':');
+	if (!cp) {
+		REMMINA_WARNING("Could not find ':' in DISPLAY: %.100s", display);
+		return -1;
+	}
+	*cp = 0;
+	if (sscanf(cp + 1, "%u", &display_number) != 1) {
+		REMMINA_WARNING("Could not parse display number from DISPLAY: %.100s", display);
+		return -1;
+	}
+
+	/* Look up the host address */
+	memset(&hints, 0, sizeof(hints));
+	hints.ai_family = AF_INET;
+	hints.ai_socktype = SOCK_STREAM;
+	snprintf(strport, sizeof(strport), "%u", 6000 + display_number);
+	if ((gaierr = getaddrinfo(buf, strport, &hints, &aitop)) != 0) {
+		REMMINA_WARNING("%.100s: unknown host. (%s)", buf, remmina_ssh_ssh_gai_strerror(gaierr));
+		return -1;
+	}
+	for (ai = aitop; ai; ai = ai->ai_next) {
+		/* Create a socket. */
+		sock = socket(ai->ai_family, ai->ai_socktype, ai->ai_protocol);
+		if (sock == -1) {
+			REMMINA_WARNING("socket: %.100s", strerror(errno));
+			continue;
+		}
+		/* Connect it to the display. */
+		if (connect(sock, ai->ai_addr, ai->ai_addrlen) == -1) {
+			REMMINA_WARNING("connect %.100s port %u: %.100s", buf, 6000 + display_number, strerror(errno));
+			close(sock);
+			continue;
+		}
+		/* Success */
+		break;
+	}
+	freeaddrinfo(aitop);
+	if (!ai) {
+		REMMINA_WARNING("connect %.100s port %u: %.100s", buf, 6000 + display_number, strerror(errno));
+		return -1;
+	}
+	remmina_ssh_set_nodelay(sock);
+
+	REMMINA_DEBUG("sock: %d", sock);
+
+	return sock;
+}
+
+static int
+remimna_ssh_cp_to_ch_cb(int fd, int revents, void *userdata)
+{
+	TRACE_CALL(__func__);
+	ssh_channel channel = (ssh_channel)userdata;
+	gchar buf[2097152];
+	gint sz = 0, ret = 0;
+
+	node_t *temp_node = remmina_ssh_search_item(channel);
+
+	if (!channel) {
+		if (!temp_node->protected) {
+			shutdown(fd, SHUT_RDWR);
+			close(fd);
+			REMMINA_DEBUG("fd %d closed.", fd);
+		}
+		REMMINA_WARNING("channel does not exist.");
+		return -1;
+	}
+
+	if ((revents & POLLIN) || (revents & POLLPRI)) {
+		sz = read(fd, buf, sizeof(buf));
+		if (sz > 0) {
+			ret = ssh_channel_write(channel, buf, sz);
+			REMMINA_DEBUG("ssh_channel_write ret: %d sz: %d", ret, sz);
+		} else if (sz < 0) {
+			REMMINA_WARNING("fd bytes read: %d", sz);
+			return -1;
+		} else {
+			REMMINA_WARNING("Why the hell am I here?");
+			if (!temp_node->protected) {
+				shutdown(fd, SHUT_RDWR);
+				close(fd);
+				REMMINA_DEBUG("fd %d closed.", fd);
+			}
+			return -1;
+		}
+	}
+
+	if ((revents & POLLHUP) || (revents & POLLNVAL) || (revents & POLLERR)) {
+		REMMINA_DEBUG("Closing channel.");
+		ssh_channel_close(channel);
+		sz = -1;
+	}
+
+	return sz;
+}
+
+static int
+remmina_ssh_cp_to_fd_cb(ssh_session session, ssh_channel channel, void *data, uint32_t len, int is_stderr, void *userdata)
+{
+	TRACE_CALL(__func__);
+	(void)session;
+	(void)is_stderr;
+	(void)userdata;
+
+//	RemminaSSHShell *shell = (RemminaSSHShell *)userdata;
+
+	node_t *temp_node = remmina_ssh_search_item(channel);
+	gint fd = temp_node->fd_out;
+	gint sz = 0;
+
+	sz = write(fd, data, len);
+	REMMINA_DEBUG("fd bytes written: %d", sz);
+
+	return sz;
+}
+
+static void
+remmina_ssh_ch_close_cb(ssh_session session, ssh_channel channel, void *userdata)
+{
+	TRACE_CALL(__func__);
+	(void)session;
+
+	RemminaSSHShell *shell = (RemminaSSHShell *)userdata;
+
+	node_t *temp_node = remmina_ssh_search_item(channel);
+
+	if (temp_node != NULL) {
+		int fd = temp_node->fd_in;
+
+		if (!temp_node->protected) {
+			remmina_ssh_delete_item(channel);
+			ssh_event_remove_fd(shell->event, fd);
+			shutdown(fd, SHUT_RDWR);
+			close(fd);
+			REMMINA_DEBUG("fd %d closed.", fd);
+		}
+	}
+	REMMINA_DEBUG("Channel closed.");
+}
+
+static void
+remmina_ssh_close_all_x11_ch(pthread_t thread)
+{
+	TRACE_CALL(__func__);
+
+	REMMINA_DEBUG("Close all X11 channels");
+
+	node_t *current = node;
+	while (current != NULL) {
+		if (current->thread == thread && !current->protected) {
+			shutdown(current->fd_in, SHUT_RDWR);
+			close(current->fd_in);
+			REMMINA_DEBUG("thread: %d - fd %d closed.", thread, current->fd_in);
+			if (current->fd_in != current->fd_out) {
+				shutdown(current->fd_out, SHUT_RDWR);
+				close(current->fd_out);
+				REMMINA_DEBUG("thread: %d - fd %d closed.", thread, current->fd_out);
+			}
+		}
+		current = current->next;
+	}
+}
+
+static ssh_channel
+remmina_ssh_x11_open_request_cb(ssh_session session, const char *shost, int sport, void *userdata)
+{
+	TRACE_CALL(__func__);
+
+	(void)shost;
+	(void)sport;
+
+	RemminaSSHShell *shell = (RemminaSSHShell *)userdata;
+
+	ssh_channel channel = ssh_channel_new(session);
+
+	int sock = remmina_ssh_x11_connect_display();
+
+	remmina_ssh_insert_item(channel, sock, sock, FALSE, shell->thread);
+
+	ssh_event_add_fd(shell->event, sock, events, remimna_ssh_cp_to_ch_cb, channel);
+	ssh_event_add_session(shell->event, session);
+
+	ssh_add_channel_callbacks(channel, &channel_cb);
+
+	return channel;
+}
 
 gchar *
 remmina_ssh_identity_path(const gchar *id)
@@ -1546,6 +2042,7 @@ remmina_ssh_free(RemminaSSH *ssh)
 {
 	TRACE_CALL(__func__);
 	if (ssh->session) {
+		REMMINA_DEBUG("Disconnecting SSH session");
 		ssh_disconnect(ssh->session);
 		ssh_free(ssh->session);
 		ssh->session = NULL;
@@ -2359,14 +2856,8 @@ remmina_ssh_shell_thread(gpointer data)
 	RemminaProtocolWidget *gp = (RemminaProtocolWidget *)shell->user_data;
 	RemminaFile *remminafile;
 	remminafile = remmina_protocol_widget_get_file(gp);
-	fd_set fds;
-	struct timeval timeout;
 	ssh_channel channel = NULL;
-	ssh_channel ch[2], chout[2];
-	gchar *buf = NULL;
-	gint buf_len;
-	gint len;
-	gint i, ret;
+	gint ret;
 	gchar *filename;
 	const gchar *dir;
 	const gchar *sshlogname;
@@ -2387,6 +2878,30 @@ remmina_ssh_shell_thread(gpointer data)
 	}
 
 	ssh_channel_request_pty(channel);
+
+	// SSH Callbacks
+	struct ssh_callbacks_struct cb =
+	{
+		.channel_open_request_x11_function = remmina_ssh_x11_open_request_cb,
+		.userdata = shell,
+	};
+
+	if (remmina_file_get_int(remminafile, "ssh_forward_x11", FALSE)) {
+		ssh_callbacks_init(&cb);
+		ssh_set_callbacks(REMMINA_SSH(shell)->session, &cb);
+
+		const char *display = getenv("DISPLAY");
+		char *proto = NULL, *cookie = NULL;
+		if (remmina_ssh_x11_get_proto(display, &proto, &cookie) != 0) {
+			REMMINA_DEBUG("Using fake authentication data for X11 forwarding");
+			proto = NULL;
+			cookie = NULL;
+		}
+
+		REMMINA_DEBUG("proto: %s - cookie: %s", proto, cookie);
+		ret = ssh_channel_request_x11(channel, 0, proto, cookie, 0);
+		if (ret != SSH_OK) return NULL;
+	}
 
 	if (shell->exec && shell->exec[0]) {
 		REMMINA_DEBUG ("Requesting an SSH exec channel");
@@ -2410,12 +2925,6 @@ remmina_ssh_shell_thread(gpointer data)
 	shell->channel = channel;
 
 	UNLOCK_SSH(shell)
-
-	buf_len = 1000;
-	buf = g_malloc(buf_len + 1);
-
-	ch[0] = channel;
-	ch[1] = NULL;
 
 	GFile *rf = g_file_new_for_path(remminafile->filename);
 
@@ -2447,59 +2956,66 @@ remmina_ssh_shell_thread(gpointer data)
 		UNLOCK_SSH(shell)
 		REMMINA_DEBUG("Run_line written to channel");
 	}
-	while (!shell->closed) {
-		timeout.tv_sec = 1;
-		timeout.tv_usec = 0;
-
-		FD_ZERO(&fds);
-		FD_SET(shell->slave, &fds);
-
-		ret = ssh_select(ch, chout, shell->slave + 1, &fds, &timeout);
-		if (ret == SSH_EINTR) continue;
-		if (ret == -1) break;
-
-		if (FD_ISSET(shell->slave, &fds)) {
-			len = read(shell->slave, buf, buf_len);
-			if (len <= 0) break;
-			LOCK_SSH(shell)
-			ssh_channel_write(channel, buf, len);
-			UNLOCK_SSH(shell)
-		}
-
-		for (i = 0; i < 2; i++) {
-			LOCK_SSH(shell)
-			len = ssh_channel_poll(channel, i);
-			UNLOCK_SSH(shell)
-			if (len == SSH_ERROR || len == SSH_EOF) {
-				REMMINA_DEBUG("SSH shell error or EOF, closing the channel");
-				shell->closed=TRUE;
-				break;
-			}
-			if (len <= 0) continue;
-			if (len > buf_len) {
-				buf_len = len;
-				buf = (gchar *)g_realloc(buf, buf_len + 1);
-			}
-			LOCK_SSH(shell)
-			len = ssh_channel_read_nonblocking(channel, buf, len, i);
-			UNLOCK_SSH(shell)
-			if (len <= 0) {
-				shell->closed=TRUE;
-				break;
-			}
-			while (len > 0) {
-				ret = write(shell->slave, buf, len);
-				if (fp != NULL) {
-					fwrite(buf, ret, 1, fp );
-					fflush(fp);
-				}
-				if (ret <= 0) break;
-				len -= ret;
-			}
-		}
-	}
 
 	LOCK_SSH(shell)
+
+	// Create new event context.
+	shell->event = ssh_event_new();
+	if (shell->event == NULL) {
+		REMMINA_WARNING("Internal error in %s: Couldn't get a event.", __func__);
+		return NULL;
+	}
+
+	REMMINA_DEBUG("shell->slave: %d", shell->slave);
+
+	// Add the fd to the event and assign it the callback.
+	if (ssh_event_add_fd(shell->event, shell->slave, events, remimna_ssh_cp_to_ch_cb, channel) != SSH_OK) {
+		REMMINA_WARNING("Internal error in %s: Couldn't add an fd to the event.", __func__);
+		return NULL;
+	}
+
+	// Remove the poll handle from session and assign them to the event.
+	if (ssh_event_add_session(shell->event, REMMINA_SSH(shell)->session) != SSH_OK) {
+		REMMINA_WARNING("Internal error in %s: Couldn't add the session to the event.", __func__);
+		return NULL;
+	}
+
+	remmina_ssh_insert_item(shell->channel, shell->slave, shell->slave, TRUE, shell->thread);
+
+	// Initializes the ssh_callbacks_struct.
+	channel_cb.userdata = &shell;
+	ssh_callbacks_init(&channel_cb);
+	// Set the channel callback functions.
+	ssh_set_channel_callbacks(shell->channel, &channel_cb);
+	UNLOCK_SSH(shell)
+
+	do {
+		ssh_event_dopoll(shell->event, 1000);
+	} while(!ssh_channel_is_closed(shell->channel));
+
+	// Close all OPENED X11 channel
+	remmina_ssh_close_all_x11_ch(shell->thread);
+
+	shell->closed = TRUE;
+
+	LOCK_SSH(shell)
+
+	// Remove socket fd from event context.
+	ret = ssh_event_remove_fd(shell->event, shell->slave);
+	REMMINA_DEBUG("Remove socket fd from event context: %d", ret);
+
+	// Remove session object from event context.
+	ret = ssh_event_remove_session(shell->event, REMMINA_SSH(shell)->session);
+	REMMINA_DEBUG("Remove session object from event context: %d", ret);
+
+	// Free event context.
+	ssh_event_free(shell->event);
+	REMMINA_DEBUG("Free event context");
+
+	// Remove channel callback.
+	ret = ssh_remove_channel_callbacks(shell->channel, &channel_cb);
+	REMMINA_DEBUG("Remove channel callback: %d", ret);
+
 	if (remmina_file_get_int (remminafile, "sshsavesession", FALSE))
 		fclose(fp);
 	shell->channel = NULL;
@@ -2508,7 +3024,6 @@ remmina_ssh_shell_thread(gpointer data)
 	ssh_channel_free(channel);
 	UNLOCK_SSH(shell)
 
-	g_free(buf);
 	shell->thread = 0;
 
 	if (shell->exit_callback)
@@ -2565,12 +3080,17 @@ void
 remmina_ssh_shell_free(RemminaSSHShell *shell)
 {
 	TRACE_CALL(__func__);
-	pthread_t thread = shell->thread;
+	//pthread_t thread = shell->thread;
+
+	// Close all OPENED X11 channel
+	remmina_ssh_close_all_x11_ch(shell->thread);
 
 	shell->exit_callback = NULL;
-	if (thread) {
-		shell->closed = TRUE;
-		pthread_join(thread, NULL);
+	shell->closed = TRUE;
+	REMMINA_DEBUG("Cancelling the shell thread if needed");
+	if (shell->thread) {
+		pthread_cancel(shell->thread);
+		if (shell->thread) pthread_join(shell->thread, NULL);
 	}
 	close(shell->slave);
 	if (shell->exec) {

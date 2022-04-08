@@ -395,7 +395,7 @@ BREAK:
 	remmina_plugin_ssh_vte_terminal_set_encoding_and_pty(VTE_TERMINAL(gpdata->vte), charset, shell->master, shell->slave);
 
 	/* TODO: The following call should be moved on the main thread, or something weird could happen */
-	remmina_plugin_ssh_on_size_allocate(GTK_WIDGET(gpdata->vte), NULL, gp);
+	//remmina_plugin_ssh_on_size_allocate(GTK_WIDGET(gpdata->vte), NULL, gp);
 
 	remmina_plugin_service->protocol_plugin_signal_connection_opened(gp);
 
@@ -871,32 +871,6 @@ void remmina_plugin_ssh_popup_ui(RemminaProtocolWidget *gp)
 	gtk_widget_show_all(menu);
 }
 
-static gboolean
-remmina_plugin_ssh_close_connection(RemminaProtocolWidget *gp)
-{
-	TRACE_CALL(__func__);
-	RemminaPluginSshData *gpdata = GET_PLUGIN_DATA(gp);
-
-	RemminaFile *remminafile;
-
-	REMMINA_DEBUG("Requesting to close the connection");
-	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
-
-	if (remmina_file_get_int(remminafile, "sshlogenabled", FALSE))
-		remmina_plugin_ssh_vte_save_session(NULL, gp);
-	if (gpdata->thread) {
-		pthread_cancel(gpdata->thread);
-		if (gpdata->thread) pthread_join(gpdata->thread, NULL);
-	}
-	if (gpdata->shell) {
-		remmina_ssh_shell_free(gpdata->shell);
-		gpdata->shell = NULL;
-	}
-
-	remmina_plugin_service->protocol_plugin_signal_connection_closed(gp);
-	return FALSE;
-}
-
 static void
 remmina_plugin_ssh_eof(VteTerminal *vteterminal, RemminaProtocolWidget *gp)
 {
@@ -921,6 +895,34 @@ remmina_plugin_ssh_eof(VteTerminal *vteterminal, RemminaProtocolWidget *gp)
 	REMMINA_AUDIT(_("Disconnected from %s:%d via SSH"), server, port);
 	g_free(server), server = NULL;
 	gpdata->closed = TRUE;
+}
+
+static gboolean
+remmina_plugin_ssh_close_connection(RemminaProtocolWidget *gp)
+{
+	TRACE_CALL(__func__);
+	RemminaPluginSshData *gpdata = GET_PLUGIN_DATA(gp);
+
+	RemminaFile *remminafile;
+
+	REMMINA_DEBUG("Requesting to close the connection");
+	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
+
+	if (remmina_file_get_int(remminafile, "sshlogenabled", FALSE))
+		remmina_plugin_ssh_vte_save_session(NULL, gp);
+	remmina_plugin_ssh_eof(VTE_TERMINAL(gpdata->vte), gp);
+
+	if (gpdata->thread) {
+		pthread_cancel(gpdata->thread);
+		if (gpdata->thread) pthread_join(gpdata->thread, NULL);
+	}
+	if (gpdata->shell) {
+		remmina_ssh_shell_free(gpdata->shell);
+		gpdata->shell = NULL;
+	}
+
+	remmina_plugin_service->protocol_plugin_signal_connection_closed(gp);
+	return FALSE;
 }
 
 /**
@@ -1540,11 +1542,12 @@ static const RemminaProtocolSetting remmina_ssh_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_FOLDER, "sshlogfolder",		  N_("Folder for SSH session log"),	      FALSE, NULL,		   NULL										 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	"sshlogname",		  N_("Filename for SSH session log"),	      FALSE, NULL,		   log_tips									 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"sshlogenabled",	  N_("Log SSH session when exiting Remmina"), FALSE, NULL,		   NULL										 },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"sshsavesession",	  N_("Log SSH session asynchronously"),	      FALSE, NULL,		   N_("Saving the session asynchronously may have a notable performance impact") },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"sshsavesession",	  N_("Log SSH session asynchronously"),	      TRUE,  NULL,		   N_("Saving the session asynchronously may have a notable performance impact") },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"audiblebell",		  N_("Audible terminal bell"),		      FALSE, NULL,		   NULL										 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"ssh_forward_x11",	  N_("SSH X11 Forwarding"),			      TRUE,  NULL,		   NULL										 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"ssh_compression",	  N_("SSH compression"),		      FALSE, NULL,		   NULL										 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"disablepasswordstoring", N_("Don't remember passwords"),	      TRUE,  NULL,		   NULL										 },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"ssh_stricthostkeycheck", N_("Strict host key checking"),	      TRUE,  NULL,		   NULL										 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"ssh_stricthostkeycheck", N_("Strict host key checking"),	      FALSE, NULL,		   NULL										 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	NULL,			  NULL,					      FALSE, NULL,		   NULL										 }
 };
 
@@ -1702,7 +1705,11 @@ remmina_ssh_plugin_register(void)
 	RemminaProtocolSettingOpt *settings;
 
 	// preset new settings with (old) static remmina_ssh_advanced_settings data
+#if GLIB_CHECK_VERSION(2,68,0)
+	settings = g_memdup2(remmina_ssh_advanced_settings, sizeof(remmina_ssh_advanced_settings));
+#else
 	settings = g_memdup(remmina_ssh_advanced_settings, sizeof(remmina_ssh_advanced_settings));
+#endif
 
 	// create dynamic advanced settings to made replacing of ssh_terminal_palette possible
 	gpointer ssh_terminal_palette_new = NULL;

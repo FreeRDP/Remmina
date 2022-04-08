@@ -88,6 +88,42 @@
             ]
         },
         {
+            /**
+            * Remmina uses xauth, that needs libXmu
+            */
+            "name": "libXmu",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://xorg.freedesktop.org/archive/individual/lib/libXmu-1.1.3.tar.bz2",
+                    "sha256": "9c343225e7c3dc0904f2122b562278da5fed639b1b5e880d25111561bac5b731",
+                    "x-checker-data": {
+                        "type": "anitya",
+                        "project-id": 1785,
+                        "url-template": "https://xorg.freedesktop.org/archive/individual/lib/libXmu-$version.tar.bz2"
+                    }
+                }
+            ]
+        },
+        {
+            /**
+            * Remmina uses xauth with the SSH X11 Forwarding
+            */
+            "name": "xauth",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://xorg.freedesktop.org/archive/individual/app/xauth-1.1.1.tar.bz2",
+                    "sha256": "164ea0a29137b284a47b886ef2affcb0a74733bf3aad04f9b106b1a6c82ebd92",
+                    "x-checker-data": {
+                        "type": "anitya",
+                        "project-id": 5253,
+                        "url-template": "https://xorg.freedesktop.org/archive/individual/app/xauth-$version.tar.bz2"
+                    }
+                }
+            ]
+        },
+        {
             "name": "libcups",
             "make-args": [
                 "libs"
@@ -456,10 +492,7 @@
                 "-DWITH_OSS:BOOL=OFF",
                 "-DWITH_PULSE:BOOL=ON",
                 "-DWITH_CHANNELS:BOOL=ON",
-                "-DWITH_LIBSYSTEMD:BOOL=OFF",
-                "-DWITH_DEBUG_NEGO=ON",
-                "-DWITH_DEBUG_NLA=ON",
-                "-DWITH_DEBUG_NTLM=ON"
+                "-DWITH_LIBSYSTEMD:BOOL=OFF"
             ],
             "sources": [
                 {
