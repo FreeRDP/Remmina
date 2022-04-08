@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-03-25 19:19+0000\n"
+"POT-Creation-Date: 2022-04-08 21:57+0000\n"
 "PO-Revision-Date: 2022-03-26 04:11+0000\n"
 "Last-Translator: Eric <alchemillatruth@purelymail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -29,7 +29,7 @@ msgstr ""
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:354
 #: src/remmina_protocol_widget.c:1680 src/remmina_protocol_widget.c:1699
 #: src/remmina_file_editor.c:1109 src/remmina_file_editor.c:1231
-#: src/remmina_ssh_plugin.c:1389 plugins/rdp/rdp_plugin.c:2774
+#: src/remmina_ssh_plugin.c:1391 plugins/rdp/rdp_plugin.c:2774
 #: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:3227
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_passwd.glade:84
 #: data/ui/remmina_unlock.glade:109
@@ -37,23 +37,23 @@ msgid "Password"
 msgstr "密码"
 
 #: src/remmina_sftp_plugin.c:311 src/remmina_sftp_plugin.c:356
-#: src/remmina_file_editor.c:1110 src/remmina_ssh_plugin.c:1390
-#: src/remmina_ssh_plugin.c:1501
+#: src/remmina_file_editor.c:1110 src/remmina_ssh_plugin.c:1392
+#: src/remmina_ssh_plugin.c:1503
 msgid "SSH identity file"
 msgstr "SSH 私钥文件"
 
 #: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:1111
-#: src/remmina_ssh_plugin.c:1391
+#: src/remmina_ssh_plugin.c:1393
 msgid "SSH agent"
 msgstr "SSH 代理"
 
 #: src/remmina_sftp_plugin.c:313 src/remmina_file_editor.c:1112
-#: src/remmina_ssh_plugin.c:1392
+#: src/remmina_ssh_plugin.c:1394
 msgid "Public key (automatic)"
 msgstr "公钥（自动）"
 
 #: src/remmina_sftp_plugin.c:314 src/remmina_file_editor.c:1113
-#: src/remmina_ssh_plugin.c:1393
+#: src/remmina_ssh_plugin.c:1395
 msgid "Kerberos (GSSAPI)"
 msgstr "Kerberos (GSSAPI)"
 
@@ -74,7 +74,7 @@ msgid "Connect via SSH from a new terminal"
 msgstr "通过 SSH 从新终端连接"
 
 #: src/remmina_sftp_plugin.c:353 src/remmina_message_panel.c:330
-#: src/remmina_file_editor.c:1225 src/remmina_ssh_plugin.c:1499
+#: src/remmina_file_editor.c:1225 src/remmina_ssh_plugin.c:1501
 #: plugins/rdp/rdp_plugin.c:2773 plugins/vnc/vnc_plugin.c:2027
 #: plugins/vnc/vnc_plugin.c:2039 plugins/www/www_plugin.c:894
 #: plugins/x2go/x2go_plugin.c:478 plugins/x2go/x2go_plugin.c:3226
@@ -83,16 +83,16 @@ msgid "Username"
 msgstr "用户名"
 
 #: src/remmina_sftp_plugin.c:355 src/remmina_file_editor.c:1216
-#: src/remmina_ssh_plugin.c:1498
+#: src/remmina_ssh_plugin.c:1500
 msgid "Authentication type"
 msgstr "认证类型"
 
 #: src/remmina_sftp_plugin.c:357 src/remmina_file_editor.c:1249
-#: src/remmina_ssh_plugin.c:1505
+#: src/remmina_ssh_plugin.c:1507
 msgid "Password to unlock private key"
 msgstr "解锁私钥的密码"
 
-#: src/remmina_sftp_plugin.c:358 src/remmina_ssh_plugin.c:1536
+#: src/remmina_sftp_plugin.c:358 src/remmina_ssh_plugin.c:1538
 msgid "SSH Proxy Command"
 msgstr "SSH 代理命令"
 
@@ -608,7 +608,8 @@ msgstr "启用全屏"
 msgid ""
 "Enable extra hardening (disable closing confirmation, disable unsafe "
 "shortcut keys, hide tabs, hide search bar)"
-msgstr "启用额外的加固（禁用关闭确认、禁用不安全的快捷键、隐藏标签、隐藏搜索栏）"
+msgstr ""
+"启用额外的加固（禁用关闭确认、禁用不安全的快捷键、隐藏标签、隐藏搜索栏）"
 
 #. TRANSLATORS:
 #. * This link should point to a resource explaining how to get Remmina
@@ -838,7 +839,7 @@ msgid "Progress"
 msgstr "进度"
 
 #: src/remmina_protocol_widget.c:291 src/remmina_ssh_plugin.c:840
-#: src/remmina_ssh_plugin.c:1474
+#: src/remmina_ssh_plugin.c:1476
 msgid "Open SFTP transfer…"
 msgstr "打开 SFTP 传输…"
 
@@ -960,111 +961,111 @@ msgstr "服务器"
 msgid "Install the %s protocol plugin first."
 msgstr "请先安装 %s 协议插件。"
 
-#: src/remmina_ssh.c:236
+#: src/remmina_ssh.c:732
 #, c-format
 msgid "Could not authenticate with TOTP/OTP/2FA. %s"
 msgstr "无法使用 TOTP/OTP/2FA 进行身份验证。%s"
 
-#: src/remmina_ssh.c:295 src/remmina_ssh.c:676
+#: src/remmina_ssh.c:791 src/remmina_ssh.c:1172
 #, c-format
 msgid "Could not authenticate with SSH password. %s"
 msgstr "无法使用 SSH 密码进行身份验证。%s"
 
-#: src/remmina_ssh.c:322 src/remmina_ssh.c:389
+#: src/remmina_ssh.c:818 src/remmina_ssh.c:885
 msgid "No saved SSH passphrase supplied. Asking user to enter it."
 msgstr "未能提供保存的 SSH 密码。需要用户输入。"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:327 src/remmina_ssh.c:368 src/remmina_ssh.c:394
-#: src/remmina_ssh.c:433 src/remmina_ssh.c:746
+#: src/remmina_ssh.c:823 src/remmina_ssh.c:864 src/remmina_ssh.c:890
+#: src/remmina_ssh.c:929 src/remmina_ssh.c:1242
 #, c-format
 msgid "Could not authenticate with public SSH key. %s"
 msgstr "无法使用公共SSH密钥进行身份验证。%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:336
+#: src/remmina_ssh.c:832
 #, c-format
 msgid "SSH certificate cannot be imported. %s"
 msgstr "无法导入 SSH 证书。%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:345
+#: src/remmina_ssh.c:841
 #, c-format
 msgid "SSH certificate cannot be copied into the private SSH key. %s"
 msgstr "SSH 证书无法复制到私人 SSH 中。%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:355
+#: src/remmina_ssh.c:851
 #, c-format
 msgid "Could not authenticate using SSH certificate. %s"
 msgstr "无法使用 SSH 证书进行身份验证。%s"
 
-#: src/remmina_ssh.c:369
+#: src/remmina_ssh.c:865
 msgid "SSH identity file not selected."
 msgstr "未选中 SSH 身份文件。"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:380
+#: src/remmina_ssh.c:876
 #, c-format
 msgid "Public SSH key cannot be imported. %s"
 msgstr "无法导入公共 SSH 密钥。%s"
 
-#: src/remmina_ssh.c:478
+#: src/remmina_ssh.c:974
 #, c-format
 msgid "Could not authenticate automatically with public SSH key. %s"
 msgstr "无法使用公共 SSH 密钥自动进行身份验证。%s"
 
-#: src/remmina_ssh.c:523
+#: src/remmina_ssh.c:1019
 #, c-format
 msgid "Could not authenticate automatically with SSH agent. %s"
 msgstr "无法使用 SSH 代理自动进行身份验证。%s"
 
-#: src/remmina_ssh.c:569 src/remmina_ssh.c:856
+#: src/remmina_ssh.c:1065 src/remmina_ssh.c:1352
 #, c-format
 msgid "Could not authenticate with SSH GSSAPI/Kerberos. %s"
 msgstr "无法使用 SSH GSSAPI/Kerberos 进行身份验证。 %s"
 
-#: src/remmina_ssh.c:598
+#: src/remmina_ssh.c:1094
 msgid "The public SSH key changed!"
 msgstr "SSH 公钥已变更！"
 
-#: src/remmina_ssh.c:711
+#: src/remmina_ssh.c:1207
 #, c-format
 msgid "Could not authenticate with keyboard-interactive. %s"
 msgstr "无法使用键盘互动进行身份验证。%s"
 
-#: src/remmina_ssh.c:813
+#: src/remmina_ssh.c:1309
 #, c-format
 msgid "Could not authenticate with automatic public SSH key. %s"
 msgstr "无法使用自动公共SSH密钥进行身份验证。%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:921
+#: src/remmina_ssh.c:1417
 #, c-format
 msgid "Could not fetch the server's public SSH key. %s"
 msgstr "无法获取服务器的公共SSH密钥。%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:928
+#: src/remmina_ssh.c:1424
 #, c-format
 msgid "Could not fetch public SSH key. %s"
 msgstr "无法获取公共SSH密钥。%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:936
+#: src/remmina_ssh.c:1432
 #, c-format
 msgid "Could not fetch checksum of the public SSH key. %s"
 msgstr "无法获取公共SSH密钥的校验和。%s"
 
-#: src/remmina_ssh.c:949
+#: src/remmina_ssh.c:1445
 msgid "The server is unknown. The public key fingerprint is:"
 msgstr "服务器未知，其公钥指纹为："
 
-#: src/remmina_ssh.c:951 src/remmina_ssh.c:957
+#: src/remmina_ssh.c:1447 src/remmina_ssh.c:1453
 msgid "Do you trust the new public key?"
 msgstr "您信任新的公钥吗？"
 
-#: src/remmina_ssh.c:954
+#: src/remmina_ssh.c:1450
 msgid ""
 "Warning: The server has changed its public key. This means you are either "
 "under attack,\n"
@@ -1074,148 +1075,148 @@ msgstr ""
 "或者服务器管理员修改了密钥。新的公钥指纹为："
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:979
+#: src/remmina_ssh.c:1475
 #, c-format
 msgid "Could not check list of known SSH hosts. %s"
 msgstr "无法检查已知SSH主机的列表。%s"
 
-#: src/remmina_ssh.c:988
+#: src/remmina_ssh.c:1484
 msgid "SSH password"
 msgstr "SSH 密码"
 
-#: src/remmina_ssh.c:995 src/remmina_ssh.c:1039
+#: src/remmina_ssh.c:1491 src/remmina_ssh.c:1535
 msgid "SSH private key passphrase"
 msgstr "SSH 私钥密码"
 
-#: src/remmina_ssh.c:1000
+#: src/remmina_ssh.c:1496
 msgid "SSH Kerberos/GSSAPI"
 msgstr "SSH Kerberos/GSSAPI"
 
-#: src/remmina_ssh.c:1005
+#: src/remmina_ssh.c:1501
 msgid "Enter TOTP/OTP/2FA code"
 msgstr "输入 TOTP/OTP/2FA 代码"
 
-#: src/remmina_ssh.c:1035 src/remmina_ssh.c:1061
+#: src/remmina_ssh.c:1531 src/remmina_ssh.c:1557
 msgid "SSH tunnel credentials"
 msgstr "SSH 通道凭据"
 
-#: src/remmina_ssh.c:1035 src/remmina_ssh.c:1061
+#: src/remmina_ssh.c:1531 src/remmina_ssh.c:1557
 msgid "SSH credentials"
 msgstr "SSH 凭据"
 
-#: src/remmina_ssh.c:1112
+#: src/remmina_ssh.c:1608
 msgid "Keyboard interactive login, TOTP/OTP/2FA"
 msgstr "键盘交互式登录, TOTP/OTP/2FA"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1337
+#: src/remmina_ssh.c:1833
 #, c-format
 msgid "Could not start SSH session. %s"
 msgstr "无法启动 SSH 会话。%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1735
+#: src/remmina_ssh.c:2232
 #, c-format
 msgid "Could not create channel. %s"
 msgstr "创建通道失败。%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1746
+#: src/remmina_ssh.c:2243
 #, c-format
 msgid "Could not connect to SSH tunnel. %s"
 msgstr "无法连接到 SSH 通道。%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1816 src/remmina_ssh.c:1837 src/remmina_ssh.c:1846
+#: src/remmina_ssh.c:2313 src/remmina_ssh.c:2334 src/remmina_ssh.c:2343
 #, c-format
 msgid "Could not request port forwarding. %s"
 msgstr "无法申请端口转发。%s"
 
-#: src/remmina_ssh.c:1876
+#: src/remmina_ssh.c:2373
 msgid "The server did not respond."
 msgstr "服务器没有响应。"
 
-#: src/remmina_ssh.c:1916
+#: src/remmina_ssh.c:2413
 #, c-format
 msgid "Cannot connect to local port %i."
 msgstr "无法连接到本地端口 %i。"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1965
+#: src/remmina_ssh.c:2462
 #, c-format
 msgid "Could not write to SSH channel. %s"
 msgstr "无法写入SSH通道。%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1972
+#: src/remmina_ssh.c:2469
 #, c-format
 msgid "Could not read from tunnel listening socket. %s"
 msgstr "读取隧道侦听套接字返回错误。%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1992
+#: src/remmina_ssh.c:2489
 #, c-format
 msgid "Could not poll SSH channel. %s"
 msgstr "轮询SSH通道失败。%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1999
+#: src/remmina_ssh.c:2496
 #, c-format
 msgid "Could not read SSH channel in a non-blocking way. %s"
 msgstr "无法以非阻塞方式读取SSH通道。%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2018
+#: src/remmina_ssh.c:2515
 #, c-format
 msgid "Could not send data to tunnel listening socket. %s"
 msgstr "无法发送数据到隧道监听套接字。%s"
 
-#: src/remmina_ssh.c:2120
+#: src/remmina_ssh.c:2617
 msgid "Assign a destination port."
 msgstr "分配目标端口。"
 
-#: src/remmina_ssh.c:2127
+#: src/remmina_ssh.c:2624
 msgid "Could not create socket."
 msgstr "无法创建套接字。"
 
-#: src/remmina_ssh.c:2137
+#: src/remmina_ssh.c:2634
 msgid "Could not bind server socket to local port."
 msgstr "无法将服务器套接字绑定到本地端口。"
 
-#: src/remmina_ssh.c:2143
+#: src/remmina_ssh.c:2640
 msgid "Could not listen to local port."
 msgstr "无法侦听本地端口。"
 
 #. TRANSLATORS: Do not translate pthread
-#: src/remmina_ssh.c:2153 src/remmina_ssh.c:2170 src/remmina_ssh.c:2188
+#: src/remmina_ssh.c:2650 src/remmina_ssh.c:2667 src/remmina_ssh.c:2685
 msgid "Could not start pthread."
 msgstr "无法启动 pthread。"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2280
+#: src/remmina_ssh.c:2777
 #, c-format
 msgid "Could not create SFTP session. %s"
 msgstr "无法创建 SFTP 会话。%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2285
+#: src/remmina_ssh.c:2782
 #, c-format
 msgid "Could not start SFTP session. %s"
 msgstr "无法启动 SFTP 会话。%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2383
+#: src/remmina_ssh.c:2874
 #, c-format
 msgid "Could not open channel. %s"
 msgstr "打开通道失败。%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2402
+#: src/remmina_ssh.c:2917
 #, c-format
 msgid "Could not request shell. %s"
 msgstr "无法请求 shell。%s"
 
-#: src/remmina_ssh.c:2532
+#: src/remmina_ssh.c:3047
 msgid "Could not create PTY device."
 msgstr "无法创建 PTY 设备。"
 
@@ -1512,7 +1513,7 @@ msgstr "SSH 验证"
 msgid "SSH private key file"
 msgstr "SSH 私钥文件"
 
-#: src/remmina_file_editor.c:1244 src/remmina_ssh_plugin.c:1503
+#: src/remmina_file_editor.c:1244 src/remmina_ssh_plugin.c:1505
 msgid "SSH certificate file"
 msgstr "SSH 证书文件"
 
@@ -1723,73 +1724,73 @@ msgstr "减小字体大小 (host+Page Down)"
 msgid "Find text (host+G)"
 msgstr "寻找文本 (host+G)"
 
-#: src/remmina_ssh_plugin.c:921
+#: src/remmina_ssh_plugin.c:895
 #, c-format
 msgid "Disconnected from %s:%d via SSH"
 msgstr "已通过 SSH 和 %s:%d 断开了连接"
 
-#: src/remmina_ssh_plugin.c:1468 data/ui/remmina_main.glade:177
+#: src/remmina_ssh_plugin.c:1470 data/ui/remmina_main.glade:177
 msgid "Copy"
 msgstr "复制"
 
-#: src/remmina_ssh_plugin.c:1468
+#: src/remmina_ssh_plugin.c:1470
 msgid "_Copy"
 msgstr "复制(_C)"
 
-#: src/remmina_ssh_plugin.c:1469
+#: src/remmina_ssh_plugin.c:1471
 msgid "Paste"
 msgstr "粘贴"
 
-#: src/remmina_ssh_plugin.c:1469
+#: src/remmina_ssh_plugin.c:1471
 msgid "_Paste"
 msgstr "粘贴(_P)"
 
-#: src/remmina_ssh_plugin.c:1470
+#: src/remmina_ssh_plugin.c:1472
 msgid "Select all"
 msgstr "全选"
 
-#: src/remmina_ssh_plugin.c:1470
+#: src/remmina_ssh_plugin.c:1472
 msgid "_Select all"
 msgstr "全选(_S)"
 
-#: src/remmina_ssh_plugin.c:1471
+#: src/remmina_ssh_plugin.c:1473
 msgid "Increase font size"
 msgstr "增大字体"
 
-#: src/remmina_ssh_plugin.c:1471
+#: src/remmina_ssh_plugin.c:1473
 msgid "_Increase font size"
 msgstr "增大字体(_I)"
 
-#: src/remmina_ssh_plugin.c:1472
+#: src/remmina_ssh_plugin.c:1474
 msgid "Decrease font size"
 msgstr "减小字体"
 
-#: src/remmina_ssh_plugin.c:1472
+#: src/remmina_ssh_plugin.c:1474
 msgid "_Decrease font size"
 msgstr "减小字体(_D)"
 
-#: src/remmina_ssh_plugin.c:1473
+#: src/remmina_ssh_plugin.c:1475
 msgid "Find text"
 msgstr "查找文本"
 
-#: src/remmina_ssh_plugin.c:1473
+#: src/remmina_ssh_plugin.c:1475
 msgid "_Find text"
 msgstr "查找文本(_F)"
 
-#: src/remmina_ssh_plugin.c:1500 plugins/spice/spice_plugin.c:676
+#: src/remmina_ssh_plugin.c:1502 plugins/spice/spice_plugin.c:676
 #: plugins/vnc/vnc_plugin.c:2028 plugins/vnc/vnc_plugin.c:2040
 msgid "User password"
 msgstr "用户密码"
 
-#: src/remmina_ssh_plugin.c:1506
+#: src/remmina_ssh_plugin.c:1508
 msgid "Opening command"
 msgstr "打开命令"
 
-#: src/remmina_ssh_plugin.c:1507
+#: src/remmina_ssh_plugin.c:1509
 msgid "Start-up background program"
 msgstr "启动后台程序"
 
-#: src/remmina_ssh_plugin.c:1512
+#: src/remmina_ssh_plugin.c:1514
 msgid ""
 "The filename can use the following placeholders:\n"
 "\n"
@@ -1811,63 +1812,67 @@ msgstr ""
 "  • %g 由 Remmina 配置组名组成\n"
 "  • %d 由 ISO 8601 格式的本地日期和时间组成\n"
 
-#: src/remmina_ssh_plugin.c:1534
+#: src/remmina_ssh_plugin.c:1536
 msgid "Terminal colour scheme"
 msgstr "终端配色方案"
 
-#: src/remmina_ssh_plugin.c:1535
+#: src/remmina_ssh_plugin.c:1537
 msgid "Character set"
 msgstr "字符集"
 
-#: src/remmina_ssh_plugin.c:1537
+#: src/remmina_ssh_plugin.c:1539
 msgid "KEX (Key Exchange) algorithms"
 msgstr "KEX（密钥交换）算法"
 
-#: src/remmina_ssh_plugin.c:1538
+#: src/remmina_ssh_plugin.c:1540
 msgid "Symmetric cipher client to server"
 msgstr "对称加密客户端到服务器"
 
-#: src/remmina_ssh_plugin.c:1539
+#: src/remmina_ssh_plugin.c:1541
 msgid "Preferred server host key types"
 msgstr "首选服务器主机密钥类型"
 
-#: src/remmina_ssh_plugin.c:1540
+#: src/remmina_ssh_plugin.c:1542
 msgid "Folder for SSH session log"
 msgstr "SSH 会话日志文件夹"
 
-#: src/remmina_ssh_plugin.c:1541
+#: src/remmina_ssh_plugin.c:1543
 msgid "Filename for SSH session log"
 msgstr "SSH 会话日志的文件名"
 
-#: src/remmina_ssh_plugin.c:1542
+#: src/remmina_ssh_plugin.c:1544
 msgid "Log SSH session when exiting Remmina"
 msgstr "退出 Remmina 时记录 SSH 会话"
 
-#: src/remmina_ssh_plugin.c:1543
+#: src/remmina_ssh_plugin.c:1545
 msgid "Log SSH session asynchronously"
 msgstr "异步记录 SSH 会话"
 
-#: src/remmina_ssh_plugin.c:1543
+#: src/remmina_ssh_plugin.c:1545
 msgid "Saving the session asynchronously may have a notable performance impact"
 msgstr "异步保存会话可能会对性能产生显著影响"
 
-#: src/remmina_ssh_plugin.c:1544
+#: src/remmina_ssh_plugin.c:1546
 msgid "Audible terminal bell"
 msgstr "有声终端铃"
 
-#: src/remmina_ssh_plugin.c:1545
+#: src/remmina_ssh_plugin.c:1547
+msgid "SSH X11 Forwarding"
+msgstr ""
+
+#: src/remmina_ssh_plugin.c:1548
 msgid "SSH compression"
 msgstr "SSH 压缩"
 
-#: src/remmina_ssh_plugin.c:1546
+#: src/remmina_ssh_plugin.c:1549
 msgid "Don't remember passwords"
 msgstr "忘记密码"
 
-#: src/remmina_ssh_plugin.c:1547
+#: src/remmina_ssh_plugin.c:1550
 msgid "Strict host key checking"
 msgstr "严格的主机密钥检查"
 
-#: src/remmina_ssh_plugin.c:1561
+#: src/remmina_ssh_plugin.c:1564
 msgid "SSH - Secure Shell"
 msgstr "SSH - 安全 Shell 连接"
 

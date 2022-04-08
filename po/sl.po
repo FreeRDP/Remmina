@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-03-25 19:19+0000\n"
+"POT-Creation-Date: 2022-04-08 21:57+0000\n"
 "PO-Revision-Date: 2021-12-17 08:51+0000\n"
 "Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
 "Language-Team: Slovenian <https://hosted.weblate.org/projects/remmina/"
@@ -26,7 +26,7 @@ msgstr ""
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:354
 #: src/remmina_protocol_widget.c:1680 src/remmina_protocol_widget.c:1699
 #: src/remmina_file_editor.c:1109 src/remmina_file_editor.c:1231
-#: src/remmina_ssh_plugin.c:1389 plugins/rdp/rdp_plugin.c:2774
+#: src/remmina_ssh_plugin.c:1391 plugins/rdp/rdp_plugin.c:2774
 #: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:3227
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_passwd.glade:84
 #: data/ui/remmina_unlock.glade:109
@@ -34,25 +34,25 @@ msgid "Password"
 msgstr "Geslo"
 
 #: src/remmina_sftp_plugin.c:311 src/remmina_sftp_plugin.c:356
-#: src/remmina_file_editor.c:1110 src/remmina_ssh_plugin.c:1390
-#: src/remmina_ssh_plugin.c:1501
+#: src/remmina_file_editor.c:1110 src/remmina_ssh_plugin.c:1392
+#: src/remmina_ssh_plugin.c:1503
 #, fuzzy
 msgid "SSH identity file"
 msgstr "Datoteka z identiteto SSH"
 
 #: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:1111
-#: src/remmina_ssh_plugin.c:1391
+#: src/remmina_ssh_plugin.c:1393
 #, fuzzy
 msgid "SSH agent"
 msgstr "Agent SSH"
 
 #: src/remmina_sftp_plugin.c:313 src/remmina_file_editor.c:1112
-#: src/remmina_ssh_plugin.c:1392
+#: src/remmina_ssh_plugin.c:1394
 msgid "Public key (automatic)"
 msgstr "Javni ključ"
 
 #: src/remmina_sftp_plugin.c:314 src/remmina_file_editor.c:1113
-#: src/remmina_ssh_plugin.c:1393
+#: src/remmina_ssh_plugin.c:1395
 #, fuzzy
 msgid "Kerberos (GSSAPI)"
 msgstr "Kerberos (GSSAPI)"
@@ -76,7 +76,7 @@ msgid "Connect via SSH from a new terminal"
 msgstr "Povežite se prek SSH iz novega terminala"
 
 #: src/remmina_sftp_plugin.c:353 src/remmina_message_panel.c:330
-#: src/remmina_file_editor.c:1225 src/remmina_ssh_plugin.c:1499
+#: src/remmina_file_editor.c:1225 src/remmina_ssh_plugin.c:1501
 #: plugins/rdp/rdp_plugin.c:2773 plugins/vnc/vnc_plugin.c:2027
 #: plugins/vnc/vnc_plugin.c:2039 plugins/www/www_plugin.c:894
 #: plugins/x2go/x2go_plugin.c:478 plugins/x2go/x2go_plugin.c:3226
@@ -86,18 +86,18 @@ msgid "Username"
 msgstr "Uporabniško ime"
 
 #: src/remmina_sftp_plugin.c:355 src/remmina_file_editor.c:1216
-#: src/remmina_ssh_plugin.c:1498
+#: src/remmina_ssh_plugin.c:1500
 #, fuzzy
 msgid "Authentication type"
 msgstr "Vrsta overovitve"
 
 #: src/remmina_sftp_plugin.c:357 src/remmina_file_editor.c:1249
-#: src/remmina_ssh_plugin.c:1505
+#: src/remmina_ssh_plugin.c:1507
 #, fuzzy
 msgid "Password to unlock private key"
 msgstr "Geslo za odklepanje zasebnega ključa"
 
-#: src/remmina_sftp_plugin.c:358 src/remmina_ssh_plugin.c:1536
+#: src/remmina_sftp_plugin.c:358 src/remmina_ssh_plugin.c:1538
 #, fuzzy
 msgid "SSH Proxy Command"
 msgstr "Ukaz SSH Proxy"
@@ -917,7 +917,7 @@ msgid "Progress"
 msgstr "Napredek"
 
 #: src/remmina_protocol_widget.c:291 src/remmina_ssh_plugin.c:840
-#: src/remmina_ssh_plugin.c:1474
+#: src/remmina_ssh_plugin.c:1476
 msgid "Open SFTP transfer…"
 msgstr "Odpri varni prenos…"
 
@@ -1044,114 +1044,114 @@ msgstr "Strežnik"
 msgid "Install the %s protocol plugin first."
 msgstr "Najprej namestite vtičnik protokola %s."
 
-#: src/remmina_ssh.c:236
+#: src/remmina_ssh.c:732
 #, c-format
 msgid "Could not authenticate with TOTP/OTP/2FA. %s"
 msgstr "Zagon SSH seje ni uspel: %s"
 
-#: src/remmina_ssh.c:295 src/remmina_ssh.c:676
+#: src/remmina_ssh.c:791 src/remmina_ssh.c:1172
 #, c-format
 msgid "Could not authenticate with SSH password. %s"
 msgstr "Zagon SSH seje ni uspel: %s"
 
-#: src/remmina_ssh.c:322 src/remmina_ssh.c:389
+#: src/remmina_ssh.c:818 src/remmina_ssh.c:885
 #, fuzzy
 msgid "No saved SSH passphrase supplied. Asking user to enter it."
 msgstr "Shranjena geslo SSH ni bilo predloženo. Uporabnik jo mora vnesti."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:327 src/remmina_ssh.c:368 src/remmina_ssh.c:394
-#: src/remmina_ssh.c:433 src/remmina_ssh.c:746
+#: src/remmina_ssh.c:823 src/remmina_ssh.c:864 src/remmina_ssh.c:890
+#: src/remmina_ssh.c:929 src/remmina_ssh.c:1242
 #, fuzzy, c-format
 msgid "Could not authenticate with public SSH key. %s"
 msgstr "Ni bilo mogoče preveriti pristnosti z javnim ključem SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:336
+#: src/remmina_ssh.c:832
 #, fuzzy, c-format
 msgid "SSH certificate cannot be imported. %s"
 msgstr "Potrdila SSH ni mogoče uvoziti. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:345
+#: src/remmina_ssh.c:841
 #, fuzzy, c-format
 msgid "SSH certificate cannot be copied into the private SSH key. %s"
 msgstr "Potrdila SSH ni mogoče kopirati v zasebni ključ SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:355
+#: src/remmina_ssh.c:851
 #, fuzzy, c-format
 #| msgid "Could not authenticate with SSH password. %s"
 msgid "Could not authenticate using SSH certificate. %s"
 msgstr "Ni bilo mogoče preveriti pristnosti s potrdilom SSH. %s"
 
-#: src/remmina_ssh.c:369
+#: src/remmina_ssh.c:865
 msgid "SSH identity file not selected."
 msgstr "Datoteka SSH kjluča še ni nastavljena."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:380
+#: src/remmina_ssh.c:876
 #, fuzzy, c-format
 msgid "Public SSH key cannot be imported. %s"
 msgstr "Javnega ključa SSH ni mogoče uvoziti. %s"
 
-#: src/remmina_ssh.c:478
+#: src/remmina_ssh.c:974
 #, fuzzy, c-format
 msgid "Could not authenticate automatically with public SSH key. %s"
 msgstr "Ni bilo mogoče samodejno preveriti pristnosti z javnim ključem SSH. %s"
 
-#: src/remmina_ssh.c:523
+#: src/remmina_ssh.c:1019
 #, c-format
 msgid "Could not authenticate automatically with SSH agent. %s"
 msgstr "Zagon SSH seje ni uspel: %s"
 
-#: src/remmina_ssh.c:569 src/remmina_ssh.c:856
+#: src/remmina_ssh.c:1065 src/remmina_ssh.c:1352
 #, c-format
 msgid "Could not authenticate with SSH GSSAPI/Kerberos. %s"
 msgstr "Zagon SSH seje ni uspel: %s"
 
-#: src/remmina_ssh.c:598
+#: src/remmina_ssh.c:1094
 #, fuzzy
 msgid "The public SSH key changed!"
 msgstr "Javni ključ SSH se je spremenil!"
 
-#: src/remmina_ssh.c:711
+#: src/remmina_ssh.c:1207
 #, c-format
 msgid "Could not authenticate with keyboard-interactive. %s"
 msgstr "Zagon SSH seje ni uspel: %s"
 
-#: src/remmina_ssh.c:813
+#: src/remmina_ssh.c:1309
 #, c-format
 msgid "Could not authenticate with automatic public SSH key. %s"
 msgstr "Povezava s ciljem SSH tunela ni uspela: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:921
+#: src/remmina_ssh.c:1417
 #, fuzzy, c-format
 msgid "Could not fetch the server's public SSH key. %s"
 msgstr "Ni bilo mogoče pridobiti javnega ključa SSH strežnika. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:928
+#: src/remmina_ssh.c:1424
 #, c-format
 msgid "Could not fetch public SSH key. %s"
 msgstr "Povezava s ciljem SSH tunela ni uspela: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:936
+#: src/remmina_ssh.c:1432
 #, c-format
 msgid "Could not fetch checksum of the public SSH key. %s"
 msgstr "Zagon SSH seje ni uspel: %s"
 
-#: src/remmina_ssh.c:949
+#: src/remmina_ssh.c:1445
 msgid "The server is unknown. The public key fingerprint is:"
 msgstr "Neznan strežnik. Prstni odtis javnega ključa je:"
 
-#: src/remmina_ssh.c:951 src/remmina_ssh.c:957
+#: src/remmina_ssh.c:1447 src/remmina_ssh.c:1453
 msgid "Do you trust the new public key?"
 msgstr "Ali zaupate novem javnem ključu?"
 
-#: src/remmina_ssh.c:954
+#: src/remmina_ssh.c:1450
 msgid ""
 "Warning: The server has changed its public key. This means you are either "
 "under attack,\n"
@@ -1162,159 +1162,159 @@ msgstr ""
 "ključa je:"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:979
+#: src/remmina_ssh.c:1475
 #, c-format
 msgid "Could not check list of known SSH hosts. %s"
 msgstr "Zagon SSH seje ni uspel: %s"
 
-#: src/remmina_ssh.c:988
+#: src/remmina_ssh.c:1484
 msgid "SSH password"
 msgstr "SSH geslo"
 
-#: src/remmina_ssh.c:995 src/remmina_ssh.c:1039
+#: src/remmina_ssh.c:1491 src/remmina_ssh.c:1535
 msgid "SSH private key passphrase"
 msgstr "SSH fraza zasebnega ključa"
 
-#: src/remmina_ssh.c:1000
+#: src/remmina_ssh.c:1496
 #, fuzzy
 msgid "SSH Kerberos/GSSAPI"
 msgstr "SSH Kerberos/GSSAPI"
 
-#: src/remmina_ssh.c:1005
+#: src/remmina_ssh.c:1501
 #, fuzzy
 msgid "Enter TOTP/OTP/2FA code"
 msgstr "Vnesite kodo TOTP/OTP/2FA"
 
-#: src/remmina_ssh.c:1035 src/remmina_ssh.c:1061
+#: src/remmina_ssh.c:1531 src/remmina_ssh.c:1557
 #, fuzzy
 msgid "SSH tunnel credentials"
 msgstr "Pooblastila za predor SSH"
 
-#: src/remmina_ssh.c:1035 src/remmina_ssh.c:1061
+#: src/remmina_ssh.c:1531 src/remmina_ssh.c:1557
 #, fuzzy
 msgid "SSH credentials"
 msgstr "Pooblastila SSH"
 
-#: src/remmina_ssh.c:1112
+#: src/remmina_ssh.c:1608
 #, fuzzy
 msgid "Keyboard interactive login, TOTP/OTP/2FA"
 msgstr "Interaktivna prijava s tipkovnico, TOTP/OTP/2FA"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1337
+#: src/remmina_ssh.c:1833
 #, c-format
 msgid "Could not start SSH session. %s"
 msgstr "Zagon SSH seje ni uspel: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1735
+#: src/remmina_ssh.c:2232
 #, c-format
 msgid "Could not create channel. %s"
 msgstr "Ustvarjanje SFTP seje ni bilo uspešno: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1746
+#: src/remmina_ssh.c:2243
 #, c-format
 msgid "Could not connect to SSH tunnel. %s"
 msgstr "Povezava s ciljem SSH tunela ni uspela: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1816 src/remmina_ssh.c:1837 src/remmina_ssh.c:1846
+#: src/remmina_ssh.c:2313 src/remmina_ssh.c:2334 src/remmina_ssh.c:2343
 #, c-format
 msgid "Could not request port forwarding. %s"
 msgstr "Zahteva posredovanja vrat ni uspela: %s"
 
-#: src/remmina_ssh.c:1876
+#: src/remmina_ssh.c:2373
 #, fuzzy
 msgid "The server did not respond."
 msgstr "Strežnik se ni odzval."
 
-#: src/remmina_ssh.c:1916
+#: src/remmina_ssh.c:2413
 #, fuzzy, c-format
 msgid "Cannot connect to local port %i."
 msgstr "Ne morem se povezati z lokalnimi vrati %i."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1965
+#: src/remmina_ssh.c:2462
 #, c-format
 msgid "Could not write to SSH channel. %s"
 msgstr "Ustvarjanje SFTP seje ni bilo uspešno: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1972
+#: src/remmina_ssh.c:2469
 #, c-format
 msgid "Could not read from tunnel listening socket. %s"
 msgstr "Ustvarjanje SFTP seje ni bilo uspešno: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1992
+#: src/remmina_ssh.c:2489
 #, c-format
 msgid "Could not poll SSH channel. %s"
 msgstr "Ustvarjanje SFTP seje ni bilo uspešno: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1999
+#: src/remmina_ssh.c:2496
 #, c-format
 msgid "Could not read SSH channel in a non-blocking way. %s"
 msgstr "Ustvarjanje SFTP seje ni bilo uspešno: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2018
+#: src/remmina_ssh.c:2515
 #, c-format
 msgid "Could not send data to tunnel listening socket. %s"
 msgstr "Povezava s ciljem SSH tunela ni uspela: %s"
 
-#: src/remmina_ssh.c:2120
+#: src/remmina_ssh.c:2617
 #, fuzzy
 msgid "Assign a destination port."
 msgstr "Pripišite namenska vrata."
 
-#: src/remmina_ssh.c:2127
+#: src/remmina_ssh.c:2624
 #, fuzzy
 msgid "Could not create socket."
 msgstr "Ni bilo mogoče ustvariti vtičnice."
 
-#: src/remmina_ssh.c:2137
+#: src/remmina_ssh.c:2634
 #, fuzzy
 msgid "Could not bind server socket to local port."
 msgstr "Vtičnice strežnika ni bilo mogoče vezati na lokalna vrata."
 
-#: src/remmina_ssh.c:2143
+#: src/remmina_ssh.c:2640
 #, fuzzy
 msgid "Could not listen to local port."
 msgstr "Ni mogel poslušati lokalnih vrat."
 
 #. TRANSLATORS: Do not translate pthread
-#: src/remmina_ssh.c:2153 src/remmina_ssh.c:2170 src/remmina_ssh.c:2188
+#: src/remmina_ssh.c:2650 src/remmina_ssh.c:2667 src/remmina_ssh.c:2685
 #, fuzzy
 msgid "Could not start pthread."
 msgstr "Ni bilo mogoče zagnati pthread."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2280
+#: src/remmina_ssh.c:2777
 #, c-format
 msgid "Could not create SFTP session. %s"
 msgstr "Ustvarjanje SFTP seje ni bilo uspešno: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2285
+#: src/remmina_ssh.c:2782
 #, c-format
 msgid "Could not start SFTP session. %s"
 msgstr "Zagon SSH seje ni uspel: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2383
+#: src/remmina_ssh.c:2874
 #, c-format
 msgid "Could not open channel. %s"
 msgstr "Ustvarjanje SFTP seje ni bilo uspešno: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2402
+#: src/remmina_ssh.c:2917
 #, c-format
 msgid "Could not request shell. %s"
 msgstr "Ustvarjanje SFTP seje ni bilo uspešno: %s"
 
-#: src/remmina_ssh.c:2532
+#: src/remmina_ssh.c:3047
 #, fuzzy
 msgid "Could not create PTY device."
 msgstr "Ni bilo mogoče ustvariti naprave PTY."
@@ -1644,7 +1644,7 @@ msgstr "SSH preverjanje pristnosti"
 msgid "SSH private key file"
 msgstr "Datoteka z zasebnim ključem SSH"
 
-#: src/remmina_file_editor.c:1244 src/remmina_ssh_plugin.c:1503
+#: src/remmina_file_editor.c:1244 src/remmina_ssh_plugin.c:1505
 #, fuzzy
 #| msgid "Accept certificate?"
 msgid "SSH certificate file"
@@ -1877,87 +1877,87 @@ msgstr "Zmanjšanje velikosti pisave (gostitelj+Page Down)"
 msgid "Find text (host+G)"
 msgstr "Iskanje besedila (gostitelj+G)"
 
-#: src/remmina_ssh_plugin.c:921
+#: src/remmina_ssh_plugin.c:895
 #, fuzzy, c-format
 #| msgid "Connecting to %s via SSH…"
 msgid "Disconnected from %s:%d via SSH"
 msgstr "Povezovanje z napravo '%s'…"
 
-#: src/remmina_ssh_plugin.c:1468 data/ui/remmina_main.glade:177
+#: src/remmina_ssh_plugin.c:1470 data/ui/remmina_main.glade:177
 msgid "Copy"
 msgstr "Kopiraj"
 
-#: src/remmina_ssh_plugin.c:1468
+#: src/remmina_ssh_plugin.c:1470
 #, fuzzy
 msgid "_Copy"
 msgstr "_Kopiraj"
 
-#: src/remmina_ssh_plugin.c:1469
+#: src/remmina_ssh_plugin.c:1471
 msgid "Paste"
 msgstr "Prilepi"
 
-#: src/remmina_ssh_plugin.c:1469
+#: src/remmina_ssh_plugin.c:1471
 #, fuzzy
 msgid "_Paste"
 msgstr "_Prilepi"
 
-#: src/remmina_ssh_plugin.c:1470
+#: src/remmina_ssh_plugin.c:1472
 #, fuzzy
 msgid "Select all"
 msgstr "Izberi vse"
 
-#: src/remmina_ssh_plugin.c:1470
+#: src/remmina_ssh_plugin.c:1472
 #, fuzzy
 msgid "_Select all"
 msgstr "_Izberite vse"
 
-#: src/remmina_ssh_plugin.c:1471
+#: src/remmina_ssh_plugin.c:1473
 #, fuzzy
 msgid "Increase font size"
 msgstr "Povečanje velikosti pisave"
 
-#: src/remmina_ssh_plugin.c:1471
+#: src/remmina_ssh_plugin.c:1473
 #, fuzzy
 msgid "_Increase font size"
 msgstr "_Povečanje velikosti pisave"
 
-#: src/remmina_ssh_plugin.c:1472
+#: src/remmina_ssh_plugin.c:1474
 #, fuzzy
 msgid "Decrease font size"
 msgstr "Zmanjšanje velikosti pisave"
 
-#: src/remmina_ssh_plugin.c:1472
+#: src/remmina_ssh_plugin.c:1474
 #, fuzzy
 msgid "_Decrease font size"
 msgstr "_Zmanjšanje velikosti pisave"
 
-#: src/remmina_ssh_plugin.c:1473
+#: src/remmina_ssh_plugin.c:1475
 #, fuzzy
 msgid "Find text"
 msgstr "Najdi besedilo"
 
-#: src/remmina_ssh_plugin.c:1473
+#: src/remmina_ssh_plugin.c:1475
 #, fuzzy
 msgid "_Find text"
 msgstr "_Poišči besedilo"
 
-#: src/remmina_ssh_plugin.c:1500 plugins/spice/spice_plugin.c:676
+#: src/remmina_ssh_plugin.c:1502 plugins/spice/spice_plugin.c:676
 #: plugins/vnc/vnc_plugin.c:2028 plugins/vnc/vnc_plugin.c:2040
 #, fuzzy
 msgid "User password"
 msgstr "uporabniško geslo"
 
-#: src/remmina_ssh_plugin.c:1506
+#: src/remmina_ssh_plugin.c:1508
 msgid "Opening command"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1507
+#: src/remmina_ssh_plugin.c:1509
 #, fuzzy
 #| msgid "Start-up program"
 msgid "Start-up background program"
 msgstr "Zagonski program"
 
-#: src/remmina_ssh_plugin.c:1512
+#: src/remmina_ssh_plugin.c:1514
 #, fuzzy
 msgid ""
 "The filename can use the following placeholders:\n"
@@ -1980,74 +1980,78 @@ msgstr ""
 "  - %g se nadomesti z imenom skupine profila Remmina\n"
 "  - %d se nadomesti z lokalnim datumom in časom v formatu ISO 8601\n"
 
-#: src/remmina_ssh_plugin.c:1534
+#: src/remmina_ssh_plugin.c:1536
 #, fuzzy
 msgid "Terminal colour scheme"
 msgstr "Barvna shema terminala"
 
-#: src/remmina_ssh_plugin.c:1535
+#: src/remmina_ssh_plugin.c:1537
 msgid "Character set"
 msgstr "Nabor znakov"
 
-#: src/remmina_ssh_plugin.c:1537
+#: src/remmina_ssh_plugin.c:1539
 #, fuzzy
 msgid "KEX (Key Exchange) algorithms"
 msgstr "Algoritmi za izmenjavo ključev KEX (Key Exchange)"
 
-#: src/remmina_ssh_plugin.c:1538
+#: src/remmina_ssh_plugin.c:1540
 #, fuzzy
 msgid "Symmetric cipher client to server"
 msgstr "Simetrična šifra odjemalca do strežnika"
 
-#: src/remmina_ssh_plugin.c:1539
+#: src/remmina_ssh_plugin.c:1541
 #, fuzzy
 msgid "Preferred server host key types"
 msgstr "Prednostne vrste ključev gostitelja strežnika"
 
-#: src/remmina_ssh_plugin.c:1540
+#: src/remmina_ssh_plugin.c:1542
 msgid "Folder for SSH session log"
 msgstr "Zagon SSH seje ni uspel: %s"
 
-#: src/remmina_ssh_plugin.c:1541
+#: src/remmina_ssh_plugin.c:1543
 #, fuzzy
 msgid "Filename for SSH session log"
 msgstr "Ime datoteke za dnevnik seje SSH"
 
-#: src/remmina_ssh_plugin.c:1542
+#: src/remmina_ssh_plugin.c:1544
 #, fuzzy
 msgid "Log SSH session when exiting Remmina"
 msgstr "Prijava seje SSH ob izhodu iz programa Remmina"
 
-#: src/remmina_ssh_plugin.c:1543
+#: src/remmina_ssh_plugin.c:1545
 #, fuzzy
 msgid "Log SSH session asynchronously"
 msgstr "Asinhrono beležite sejo SSH"
 
-#: src/remmina_ssh_plugin.c:1543
+#: src/remmina_ssh_plugin.c:1545
 #, fuzzy
 msgid "Saving the session asynchronously may have a notable performance impact"
 msgstr "asinhrono shranjevanje seje lahko opazno vpliva na zmogljivost"
 
-#: src/remmina_ssh_plugin.c:1544
+#: src/remmina_ssh_plugin.c:1546
 #, fuzzy
 msgid "Audible terminal bell"
 msgstr "Zvočni zvonec na terminalu"
 
-#: src/remmina_ssh_plugin.c:1545
+#: src/remmina_ssh_plugin.c:1547
+msgid "SSH X11 Forwarding"
+msgstr ""
+
+#: src/remmina_ssh_plugin.c:1548
 #, fuzzy
 msgid "SSH compression"
 msgstr "Stiskanje SSH"
 
-#: src/remmina_ssh_plugin.c:1546
+#: src/remmina_ssh_plugin.c:1549
 msgid "Don't remember passwords"
 msgstr "Shrani geslo"
 
-#: src/remmina_ssh_plugin.c:1547
+#: src/remmina_ssh_plugin.c:1550
 #, fuzzy
 msgid "Strict host key checking"
 msgstr "Strogo preverjanje ključa gostitelja"
 
-#: src/remmina_ssh_plugin.c:1561
+#: src/remmina_ssh_plugin.c:1564
 msgid "SSH - Secure Shell"
 msgstr "SSH - Varna lupina"
 

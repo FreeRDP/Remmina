@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-03-25 19:19+0000\n"
+"POT-Creation-Date: 2022-04-08 21:57+0000\n"
 "PO-Revision-Date: 2021-12-17 08:47+0000\n"
 "Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
 "Language-Team: Khmer (Central) <https://hosted.weblate.org/projects/remmina/"
@@ -24,7 +24,7 @@ msgstr ""
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:354
 #: src/remmina_protocol_widget.c:1680 src/remmina_protocol_widget.c:1699
 #: src/remmina_file_editor.c:1109 src/remmina_file_editor.c:1231
-#: src/remmina_ssh_plugin.c:1389 plugins/rdp/rdp_plugin.c:2774
+#: src/remmina_ssh_plugin.c:1391 plugins/rdp/rdp_plugin.c:2774
 #: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:3227
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_passwd.glade:84
 #: data/ui/remmina_unlock.glade:109
@@ -33,26 +33,26 @@ msgid "Password"
 msgstr "ពាក្យ​សម្ងាត់"
 
 #: src/remmina_sftp_plugin.c:311 src/remmina_sftp_plugin.c:356
-#: src/remmina_file_editor.c:1110 src/remmina_ssh_plugin.c:1390
-#: src/remmina_ssh_plugin.c:1501
+#: src/remmina_file_editor.c:1110 src/remmina_ssh_plugin.c:1392
+#: src/remmina_ssh_plugin.c:1503
 #, fuzzy
 msgid "SSH identity file"
 msgstr "ឯកសារ អត្តសញ្ញាណ SSH"
 
 #: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:1111
-#: src/remmina_ssh_plugin.c:1391
+#: src/remmina_ssh_plugin.c:1393
 #, fuzzy
 msgid "SSH agent"
 msgstr "ភ្នាក់ងារ SSH"
 
 #: src/remmina_sftp_plugin.c:313 src/remmina_file_editor.c:1112
-#: src/remmina_ssh_plugin.c:1392
+#: src/remmina_ssh_plugin.c:1394
 #, fuzzy
 msgid "Public key (automatic)"
 msgstr "សោសាធារណៈ (ស្វ័យប្រវត្ត)"
 
 #: src/remmina_sftp_plugin.c:314 src/remmina_file_editor.c:1113
-#: src/remmina_ssh_plugin.c:1393
+#: src/remmina_ssh_plugin.c:1395
 #, fuzzy
 msgid "Kerberos (GSSAPI)"
 msgstr "Kerberos (GSSAPI)"
@@ -78,7 +78,7 @@ msgid "Connect via SSH from a new terminal"
 msgstr "ភ្ជាប់តាមរយៈ SSH ពីស្ថានីយថ្មី"
 
 #: src/remmina_sftp_plugin.c:353 src/remmina_message_panel.c:330
-#: src/remmina_file_editor.c:1225 src/remmina_ssh_plugin.c:1499
+#: src/remmina_file_editor.c:1225 src/remmina_ssh_plugin.c:1501
 #: plugins/rdp/rdp_plugin.c:2773 plugins/vnc/vnc_plugin.c:2027
 #: plugins/vnc/vnc_plugin.c:2039 plugins/www/www_plugin.c:894
 #: plugins/x2go/x2go_plugin.c:478 plugins/x2go/x2go_plugin.c:3226
@@ -88,18 +88,18 @@ msgid "Username"
 msgstr "ឈ្មោះ​គណនី"
 
 #: src/remmina_sftp_plugin.c:355 src/remmina_file_editor.c:1216
-#: src/remmina_ssh_plugin.c:1498
+#: src/remmina_ssh_plugin.c:1500
 #, fuzzy
 msgid "Authentication type"
 msgstr "ប្រភេទផ្ទៀងផ្ទាត់"
 
 #: src/remmina_sftp_plugin.c:357 src/remmina_file_editor.c:1249
-#: src/remmina_ssh_plugin.c:1505
+#: src/remmina_ssh_plugin.c:1507
 #, fuzzy
 msgid "Password to unlock private key"
 msgstr "ពាក្យសម្ងាត់ដើម្បីដោះសោគន្លឹះឯកជន"
 
-#: src/remmina_sftp_plugin.c:358 src/remmina_ssh_plugin.c:1536
+#: src/remmina_sftp_plugin.c:358 src/remmina_ssh_plugin.c:1538
 #, fuzzy
 msgid "SSH Proxy Command"
 msgstr "បញ្ជា SSH Proxy"
@@ -958,7 +958,7 @@ msgid "Progress"
 msgstr "វឌ្ឍនភាព"
 
 #: src/remmina_protocol_widget.c:291 src/remmina_ssh_plugin.c:840
-#: src/remmina_ssh_plugin.c:1474
+#: src/remmina_ssh_plugin.c:1476
 #, fuzzy
 msgid "Open SFTP transfer…"
 msgstr "បើក SFTP ផ្ទេរ…"
@@ -1093,119 +1093,119 @@ msgstr "ម៉ាស៊ីន​បម្រើ"
 msgid "Install the %s protocol plugin first."
 msgstr "ដំឡើង កម្មវិធី ជំនួយ ពិធីការ %s ជា មុន សិន។"
 
-#: src/remmina_ssh.c:236
+#: src/remmina_ssh.c:732
 #, fuzzy, c-format
 msgid "Could not authenticate with TOTP/OTP/2FA. %s"
 msgstr "មិនអាចផ្ទៀងផ្ទាត់ជាមួយ TOTP/OTP/2FA បាន។ %s"
 
-#: src/remmina_ssh.c:295 src/remmina_ssh.c:676
+#: src/remmina_ssh.c:791 src/remmina_ssh.c:1172
 #, fuzzy, c-format
 msgid "Could not authenticate with SSH password. %s"
 msgstr "មិនអាចផ្ទៀងផ្ទាត់ជាមួយពាក្យសម្ងាត់ SSH បាន។ %s"
 
-#: src/remmina_ssh.c:322 src/remmina_ssh.c:389
+#: src/remmina_ssh.c:818 src/remmina_ssh.c:885
 #, fuzzy
 msgid "No saved SSH passphrase supplied. Asking user to enter it."
 msgstr ""
 "មិន បាន រក្សា ទុក SSH passphrase ដែល បាន ផ្គត់ផ្គង់ ឡើយ ។ សុំ ឲ្យ អ្នក ប្រើ បញ្ចូល វា ។"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:327 src/remmina_ssh.c:368 src/remmina_ssh.c:394
-#: src/remmina_ssh.c:433 src/remmina_ssh.c:746
+#: src/remmina_ssh.c:823 src/remmina_ssh.c:864 src/remmina_ssh.c:890
+#: src/remmina_ssh.c:929 src/remmina_ssh.c:1242
 #, fuzzy, c-format
 msgid "Could not authenticate with public SSH key. %s"
 msgstr "មិន អាច ផ្ទៀង ផ្ទាត់ ជាមួយ នឹង គន្លឹះ SSH សាធារណៈ បាន ទេ & # 160; ។ %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:336
+#: src/remmina_ssh.c:832
 #, fuzzy, c-format
 msgid "SSH certificate cannot be imported. %s"
 msgstr "វិញ្ញាបនបត្រ SSH មិនអាចនាំចូលបាន។ %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:345
+#: src/remmina_ssh.c:841
 #, fuzzy, c-format
 msgid "SSH certificate cannot be copied into the private SSH key. %s"
 msgstr "វិញ្ញាបនបត្រ SSH មិនអាចចម្លងទៅក្នុងសោ SSH ឯកជនបាន។ %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:355
+#: src/remmina_ssh.c:851
 #, fuzzy, c-format
 msgid "Could not authenticate using SSH certificate. %s"
 msgstr "មិនអាចផ្ទៀងផ្ទាត់ការប្រើប្រាស់វិញ្ញាបនប័ត្រ SSH បាន។ %s"
 
-#: src/remmina_ssh.c:369
+#: src/remmina_ssh.c:865
 #, fuzzy
 msgid "SSH identity file not selected."
 msgstr "ឯកសារ អត្តសញ្ញាណ SSH មិន ត្រូវ បាន ជ្រើស & # 160; ។"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:380
+#: src/remmina_ssh.c:876
 #, fuzzy, c-format
 msgid "Public SSH key cannot be imported. %s"
 msgstr "សោ SSH សាធារណៈមិនអាចនាំចូលបាន។ %s"
 
-#: src/remmina_ssh.c:478
+#: src/remmina_ssh.c:974
 #, fuzzy, c-format
 msgid "Could not authenticate automatically with public SSH key. %s"
 msgstr ""
 "មិន អាច ផ្ទៀង ផ្ទាត់ ដោយ ស្វ័យ ប្រវត្តិ ជាមួយ នឹង គន្លឹះ SSH សាធារណៈ បាន ទេ & # 160; ។ %s"
 
-#: src/remmina_ssh.c:523
+#: src/remmina_ssh.c:1019
 #, fuzzy, c-format
 msgid "Could not authenticate automatically with SSH agent. %s"
 msgstr "មិនអាចផ្ទៀងផ្ទាត់ដោយស្វ័យប្រវត្តិជាមួយភ្នាក់ងារ SSH។ %s"
 
-#: src/remmina_ssh.c:569 src/remmina_ssh.c:856
+#: src/remmina_ssh.c:1065 src/remmina_ssh.c:1352
 #, fuzzy, c-format
 msgid "Could not authenticate with SSH GSSAPI/Kerberos. %s"
 msgstr "មិនអាចផ្ទៀងផ្ទាត់ជាមួយ SSH GSSAPI/Kerberos បាន។ %s"
 
-#: src/remmina_ssh.c:598
+#: src/remmina_ssh.c:1094
 #, fuzzy
 msgid "The public SSH key changed!"
 msgstr "គន្លឹះ SSH សាធារណៈបានផ្លាស់ប្តូរ!"
 
-#: src/remmina_ssh.c:711
+#: src/remmina_ssh.c:1207
 #, fuzzy, c-format
 msgid "Could not authenticate with keyboard-interactive. %s"
 msgstr "មិន អាច ផ្ទៀង ផ្ទាត់ ភាព ត្រឹមត្រូវ ជាមួយ ក្ដារ ចុច-អន្តរកម្ម បាន ទេ & # 160; ។ %s"
 
-#: src/remmina_ssh.c:813
+#: src/remmina_ssh.c:1309
 #, fuzzy, c-format
 msgid "Could not authenticate with automatic public SSH key. %s"
 msgstr ""
 "មិន អាច ផ្ទៀង ផ្ទាត់ ជាមួយ នឹង គន្លឹះ SSH សាធារណៈ ដោយ ស្វ័យ ប្រវត្តិ បាន ទេ & # 160; ។ %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:921
+#: src/remmina_ssh.c:1417
 #, fuzzy, c-format
 msgid "Could not fetch the server's public SSH key. %s"
 msgstr "មិន អាច ទះ សោ SSH សាធារណៈ របស់ ម៉ាស៊ីន បម្រើ បាន ទេ & # 160; ។ %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:928
+#: src/remmina_ssh.c:1424
 #, fuzzy, c-format
 msgid "Could not fetch public SSH key. %s"
 msgstr "មិន អាច ទះ សោ SSH សាធារណៈ បាន ទេ & # 160; ។ %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:936
+#: src/remmina_ssh.c:1432
 #, fuzzy, c-format
 msgid "Could not fetch checksum of the public SSH key. %s"
 msgstr "មិនអាច fetch checksum របស់ សាធារណជន SSH key បាន ទេ ។ %s"
 
-#: src/remmina_ssh.c:949
+#: src/remmina_ssh.c:1445
 #, fuzzy
 msgid "The server is unknown. The public key fingerprint is:"
 msgstr "មិនដឹងម៉ាស៊ីនបម្រើ ។ ស្នាមម្រាមដៃរបស់ public key គឺ៎ ៖"
 
-#: src/remmina_ssh.c:951 src/remmina_ssh.c:957
+#: src/remmina_ssh.c:1447 src/remmina_ssh.c:1453
 #, fuzzy
 msgid "Do you trust the new public key?"
 msgstr "តើ អ្នក ទុក ចិត្ត លើ គន្លឹះ សាធារណៈ ថ្មី ដែរ ឬ ទេ ?"
 
-#: src/remmina_ssh.c:954
+#: src/remmina_ssh.c:1450
 msgid ""
 "Warning: The server has changed its public key. This means you are either "
 "under attack,\n"
@@ -1216,161 +1216,161 @@ msgstr ""
 "ឬអ្នកគ្រប់គ្រងបានផ្លាស់ key ។ ស្នាមម្រាមដៃថ្មីរបស់ public key គឺ៎ ៖"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:979
+#: src/remmina_ssh.c:1475
 #, fuzzy, c-format
 msgid "Could not check list of known SSH hosts. %s"
 msgstr "មិន អាច ពិនិត្យ មើល បញ្ជី ម្ចាស់ ផ្ទះ SSH ដែល គេ ស្គាល់ បាន ទេ & # 160; ។ %s"
 
-#: src/remmina_ssh.c:988
+#: src/remmina_ssh.c:1484
 #, fuzzy
 msgid "SSH password"
 msgstr "ពាក្យសម្ងាត់ SSH"
 
-#: src/remmina_ssh.c:995 src/remmina_ssh.c:1039
+#: src/remmina_ssh.c:1491 src/remmina_ssh.c:1535
 #, fuzzy
 msgid "SSH private key passphrase"
 msgstr "SSH private key passphrase"
 
-#: src/remmina_ssh.c:1000
+#: src/remmina_ssh.c:1496
 #, fuzzy
 msgid "SSH Kerberos/GSSAPI"
 msgstr "SSH Kerberos/GSSAPI"
 
-#: src/remmina_ssh.c:1005
+#: src/remmina_ssh.c:1501
 #, fuzzy
 msgid "Enter TOTP/OTP/2FA code"
 msgstr "បញ្ចូលកូដ TOTP/OTP/2FA"
 
-#: src/remmina_ssh.c:1035 src/remmina_ssh.c:1061
+#: src/remmina_ssh.c:1531 src/remmina_ssh.c:1557
 #, fuzzy
 msgid "SSH tunnel credentials"
 msgstr "សមត្ថ ភាព ផ្លូវ រូង ក្រោម ដី SSH"
 
-#: src/remmina_ssh.c:1035 src/remmina_ssh.c:1061
+#: src/remmina_ssh.c:1531 src/remmina_ssh.c:1557
 #, fuzzy
 msgid "SSH credentials"
 msgstr "សមត្ថ ភាព SSH"
 
-#: src/remmina_ssh.c:1112
+#: src/remmina_ssh.c:1608
 #, fuzzy
 msgid "Keyboard interactive login, TOTP/OTP/2FA"
 msgstr "Keyboard interactive login, TOTP/OTP/2FA"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1337
+#: src/remmina_ssh.c:1833
 #, fuzzy, c-format
 msgid "Could not start SSH session. %s"
 msgstr "មិន អាច ចាប់ ផ្តើម សម័យ SSH បាន ទេ & # 160; ។ %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1735
+#: src/remmina_ssh.c:2232
 #, fuzzy, c-format
 msgid "Could not create channel. %s"
 msgstr "មិន អាច បង្កើត channel បាន ទេ ។ %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1746
+#: src/remmina_ssh.c:2243
 #, fuzzy, c-format
 msgid "Could not connect to SSH tunnel. %s"
 msgstr "មិន អាច ភ្ជាប់ ទៅ ផ្លូវ រូង ក្រោម ដី SSH បាន ទេ ។ %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1816 src/remmina_ssh.c:1837 src/remmina_ssh.c:1846
+#: src/remmina_ssh.c:2313 src/remmina_ssh.c:2334 src/remmina_ssh.c:2343
 #, fuzzy, c-format
 msgid "Could not request port forwarding. %s"
 msgstr "មិន អាច ស្នើ សុំ ច្រក ឆ្ពោះ ទៅ មុខ បាន ទេ & # 160; ។ %s"
 
-#: src/remmina_ssh.c:1876
+#: src/remmina_ssh.c:2373
 #, fuzzy
 msgid "The server did not respond."
 msgstr "ម៉ាស៊ីន បម្រើ មិន បាន ឆ្លើយ តប ទេ & # 160; ។"
 
-#: src/remmina_ssh.c:1916
+#: src/remmina_ssh.c:2413
 #, fuzzy, c-format
 msgid "Cannot connect to local port %i."
 msgstr "មិនអាចភ្ជាប់ទៅកំពង់ផែក្នុងស្រុក %i."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1965
+#: src/remmina_ssh.c:2462
 #, fuzzy, c-format
 msgid "Could not write to SSH channel. %s"
 msgstr "មិន អាច សរសេរ ទៅ កាន់ ប៉ុស្តិ៍ SSH បាន ទេ ។ %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1972
+#: src/remmina_ssh.c:2469
 #, fuzzy, c-format
 msgid "Could not read from tunnel listening socket. %s"
 msgstr "មិន អាច អាន ពី រន្ធ ស្តាប់ ផ្លូវ រូង ក្រោម ដី បាន ទេ ។ %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1992
+#: src/remmina_ssh.c:2489
 #, fuzzy, c-format
 msgid "Could not poll SSH channel. %s"
 msgstr "មិនអាចស្ទង់មតិប៉ុស្តិ៍ SSH បានទេ។ %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1999
+#: src/remmina_ssh.c:2496
 #, fuzzy, c-format
 msgid "Could not read SSH channel in a non-blocking way. %s"
 msgstr "មិន អាច អាន ប៉ុស្តិ៍ SSH តាម វិធី ដែល មិន រា រាំង បាន ទេ ។ %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2018
+#: src/remmina_ssh.c:2515
 #, fuzzy, c-format
 msgid "Could not send data to tunnel listening socket. %s"
 msgstr "មិន អាច ផ្ញើ ទិន្នន័យ ទៅ រន្ធ ស្តាប់ ផ្លូវ រូង ក្រោម ដី បាន ទេ & # 160; ។ %s"
 
-#: src/remmina_ssh.c:2120
+#: src/remmina_ssh.c:2617
 #, fuzzy
 msgid "Assign a destination port."
 msgstr "ចាត់តាំងច្រកគោលដៅ។"
 
-#: src/remmina_ssh.c:2127
+#: src/remmina_ssh.c:2624
 #, fuzzy
 msgid "Could not create socket."
 msgstr "មិន អាច បង្កើត socket បាន ទេ។"
 
-#: src/remmina_ssh.c:2137
+#: src/remmina_ssh.c:2634
 #, fuzzy
 msgid "Could not bind server socket to local port."
 msgstr "មិនអាចចងរន្ធម៉ាស៊ីនបម្រើទៅ port មូលដ្ឋានបានទេ។"
 
-#: src/remmina_ssh.c:2143
+#: src/remmina_ssh.c:2640
 #, fuzzy
 msgid "Could not listen to local port."
 msgstr "មិន អាច ស្តាប់ ច្រក ក្នុង ស្រុក បាន ទេ ។"
 
 #. TRANSLATORS: Do not translate pthread
-#: src/remmina_ssh.c:2153 src/remmina_ssh.c:2170 src/remmina_ssh.c:2188
+#: src/remmina_ssh.c:2650 src/remmina_ssh.c:2667 src/remmina_ssh.c:2685
 #, fuzzy
 msgid "Could not start pthread."
 msgstr "មិនអាចចាប់ផ្តើម pthread បានទេ។"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2280
+#: src/remmina_ssh.c:2777
 #, fuzzy, c-format
 msgid "Could not create SFTP session. %s"
 msgstr "មិន អាច បង្កើត សម័យ SFTP បាន ទេ & # 160; ។ %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2285
+#: src/remmina_ssh.c:2782
 #, fuzzy, c-format
 msgid "Could not start SFTP session. %s"
 msgstr "មិន អាច ចាប់ផ្ដើម សម័យ SFTP បាន ទេ & # 160; ។ %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2383
+#: src/remmina_ssh.c:2874
 #, fuzzy, c-format
 msgid "Could not open channel. %s"
 msgstr "មិន អាច បើក ប៉ុស្តិ៍ បាន ទេ & # 160; ។ %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2402
+#: src/remmina_ssh.c:2917
 #, fuzzy, c-format
 msgid "Could not request shell. %s"
 msgstr "មិន អាច ស្នើ សុំ សែល បាន ទេ ។ %s"
 
-#: src/remmina_ssh.c:2532
+#: src/remmina_ssh.c:3047
 #, fuzzy
 msgid "Could not create PTY device."
 msgstr "មិន អាច បង្កើត ឧបករណ៍ PTY បាន ទេ & # 160; ។"
@@ -1701,7 +1701,7 @@ msgstr "ការផ្ទៀងផ្ទាត់ SSH"
 msgid "SSH private key file"
 msgstr "ឯកសារ គន្លឹះ ឯកជន SSH"
 
-#: src/remmina_file_editor.c:1244 src/remmina_ssh_plugin.c:1503
+#: src/remmina_file_editor.c:1244 src/remmina_ssh_plugin.c:1505
 #, fuzzy
 msgid "SSH certificate file"
 msgstr "ឯកសារវិញ្ញាបនបត្រ SSH"
@@ -1944,89 +1944,89 @@ msgstr "ថយចុះទំហំអក្សរ (host+Page Down)"
 msgid "Find text (host+G)"
 msgstr "រកអត្ថបទ (host+G)"
 
-#: src/remmina_ssh_plugin.c:921
+#: src/remmina_ssh_plugin.c:895
 #, fuzzy, c-format
 #| msgid "Connecting to %s via SSH…"
 msgid "Disconnected from %s:%d via SSH"
 msgstr "កំពុង​តភ្ជាប់​ទៅ '%s'…"
 
-#: src/remmina_ssh_plugin.c:1468 data/ui/remmina_main.glade:177
+#: src/remmina_ssh_plugin.c:1470 data/ui/remmina_main.glade:177
 #, fuzzy
 msgid "Copy"
 msgstr "ចម្លង"
 
-#: src/remmina_ssh_plugin.c:1468
+#: src/remmina_ssh_plugin.c:1470
 #, fuzzy
 msgid "_Copy"
 msgstr "_Copy"
 
-#: src/remmina_ssh_plugin.c:1469
+#: src/remmina_ssh_plugin.c:1471
 #, fuzzy
 msgid "Paste"
 msgstr "បិទភ្ជាប់"
 
-#: src/remmina_ssh_plugin.c:1469
+#: src/remmina_ssh_plugin.c:1471
 #, fuzzy
 msgid "_Paste"
 msgstr "_Paste"
 
-#: src/remmina_ssh_plugin.c:1470
+#: src/remmina_ssh_plugin.c:1472
 #, fuzzy
 msgid "Select all"
 msgstr "ជ្រើស ទាំងអស់"
 
-#: src/remmina_ssh_plugin.c:1470
+#: src/remmina_ssh_plugin.c:1472
 #, fuzzy
 msgid "_Select all"
 msgstr "_Select ទាំងអស់"
 
-#: src/remmina_ssh_plugin.c:1471
+#: src/remmina_ssh_plugin.c:1473
 #, fuzzy
 msgid "Increase font size"
 msgstr "បង្កើន ទំហំ ពុម្ពអក្សរ"
 
-#: src/remmina_ssh_plugin.c:1471
+#: src/remmina_ssh_plugin.c:1473
 #, fuzzy
 msgid "_Increase font size"
 msgstr "ទំហំ ពុម្ព អក្សរ _Increase"
 
-#: src/remmina_ssh_plugin.c:1472
+#: src/remmina_ssh_plugin.c:1474
 #, fuzzy
 msgid "Decrease font size"
 msgstr "បន្ថយ ទំហំ ពុម្ពអក្សរ"
 
-#: src/remmina_ssh_plugin.c:1472
+#: src/remmina_ssh_plugin.c:1474
 #, fuzzy
 msgid "_Decrease font size"
 msgstr "ទំហំ ពុម្ព អក្សរ _Decrease"
 
-#: src/remmina_ssh_plugin.c:1473
+#: src/remmina_ssh_plugin.c:1475
 #, fuzzy
 msgid "Find text"
 msgstr "រកអត្ថបទ"
 
-#: src/remmina_ssh_plugin.c:1473
+#: src/remmina_ssh_plugin.c:1475
 #, fuzzy
 msgid "_Find text"
 msgstr "អត្ថបទ _Find"
 
-#: src/remmina_ssh_plugin.c:1500 plugins/spice/spice_plugin.c:676
+#: src/remmina_ssh_plugin.c:1502 plugins/spice/spice_plugin.c:676
 #: plugins/vnc/vnc_plugin.c:2028 plugins/vnc/vnc_plugin.c:2040
 #, fuzzy
 msgid "User password"
 msgstr "ពាក្យសម្ងាត់របស់អ្នកប្រើប្រាស់"
 
-#: src/remmina_ssh_plugin.c:1506
+#: src/remmina_ssh_plugin.c:1508
 msgid "Opening command"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1507
+#: src/remmina_ssh_plugin.c:1509
 #, fuzzy
 #| msgid "Start-up program"
 msgid "Start-up background program"
 msgstr "ចាប់ផ្ដើម​កម្មវិធី"
 
-#: src/remmina_ssh_plugin.c:1512
+#: src/remmina_ssh_plugin.c:1514
 #, fuzzy
 msgid ""
 "The filename can use the following placeholders:\n"
@@ -2049,77 +2049,81 @@ msgstr ""
 "  • % g ត្រូវ បាន ជំនួស ដោយ ឈ្មោះ ក្រុម ទម្រង់ Remmina\n"
 "  • %d ត្រូវបាន ជំនួស ដោយ កាលបរិច្ឆេទ និង ពេលវេលា ក្នុង ទ្រង់ទ្រាយ ISO 8601\n"
 
-#: src/remmina_ssh_plugin.c:1534
+#: src/remmina_ssh_plugin.c:1536
 #, fuzzy
 msgid "Terminal colour scheme"
 msgstr "គ្រោងការណ៍ ពណ៌ ស្ថានីយ"
 
-#: src/remmina_ssh_plugin.c:1535
+#: src/remmina_ssh_plugin.c:1537
 #, fuzzy
 msgid "Character set"
 msgstr "សំណុំតួអក្សរ"
 
-#: src/remmina_ssh_plugin.c:1537
+#: src/remmina_ssh_plugin.c:1539
 #, fuzzy
 msgid "KEX (Key Exchange) algorithms"
 msgstr "KEX (Key Exchange) ក្បួន ដោះស្រាយ"
 
-#: src/remmina_ssh_plugin.c:1538
+#: src/remmina_ssh_plugin.c:1540
 #, fuzzy
 msgid "Symmetric cipher client to server"
 msgstr "ម៉ាស៊ីនបម្រើ Symmetric cipher ទៅ server"
 
-#: src/remmina_ssh_plugin.c:1539
+#: src/remmina_ssh_plugin.c:1541
 #, fuzzy
 msgid "Preferred server host key types"
 msgstr "ប្រភេទ គ្រាប់ ចុច ម៉ាស៊ីន បម្រើ ដែល ពេញ ចិត្ត"
 
-#: src/remmina_ssh_plugin.c:1540
+#: src/remmina_ssh_plugin.c:1542
 #, fuzzy
 msgid "Folder for SSH session log"
 msgstr "ថត សម្រាប់ កំណត់ ហេតុ សម័យ SSH"
 
-#: src/remmina_ssh_plugin.c:1541
+#: src/remmina_ssh_plugin.c:1543
 #, fuzzy
 msgid "Filename for SSH session log"
 msgstr "ឯកសារname សម្រាប់ កំណត់ ហេតុ សម័យ SSH"
 
-#: src/remmina_ssh_plugin.c:1542
+#: src/remmina_ssh_plugin.c:1544
 #, fuzzy
 msgid "Log SSH session when exiting Remmina"
 msgstr "Log SSH session ពេលចេញ Remmina"
 
-#: src/remmina_ssh_plugin.c:1543
+#: src/remmina_ssh_plugin.c:1545
 #, fuzzy
 msgid "Log SSH session asynchronously"
 msgstr "កំណត់ហេតុ SSH session asynchronously"
 
-#: src/remmina_ssh_plugin.c:1543
+#: src/remmina_ssh_plugin.c:1545
 #, fuzzy
 msgid "Saving the session asynchronously may have a notable performance impact"
 msgstr ""
 "ការ សង្គ្រោះ សម័យ នេះ ប្រហែល ជា មាន ផល ប៉ះ ពាល់ ដល់ ការ សម្តែង ដ៏ គួរ ឲ្យ កត់ សម្គាល់ មួយ"
 
-#: src/remmina_ssh_plugin.c:1544
+#: src/remmina_ssh_plugin.c:1546
 #, fuzzy
 msgid "Audible terminal bell"
 msgstr "កណ្តឹង ស្ថានីយ Audible"
 
-#: src/remmina_ssh_plugin.c:1545
+#: src/remmina_ssh_plugin.c:1547
+msgid "SSH X11 Forwarding"
+msgstr ""
+
+#: src/remmina_ssh_plugin.c:1548
 #, fuzzy
 msgid "SSH compression"
 msgstr "ការ បង្ហាប់ SSH"
 
-#: src/remmina_ssh_plugin.c:1546
+#: src/remmina_ssh_plugin.c:1549
 msgid "Don't remember passwords"
 msgstr "រក្សា​​ទុក​​​ពាក្យ​​​សម្ងាត់"
 
-#: src/remmina_ssh_plugin.c:1547
+#: src/remmina_ssh_plugin.c:1550
 #, fuzzy
 msgid "Strict host key checking"
 msgstr "ការ ពិនិត្យ មើល គន្លឹះ ម៉ាស៊ីន យ៉ាង តឹង រឹង"
 
-#: src/remmina_ssh_plugin.c:1561
+#: src/remmina_ssh_plugin.c:1564
 #, fuzzy
 msgid "SSH - Secure Shell"
 msgstr "SSH - សែលសុវត្ថិភាព"

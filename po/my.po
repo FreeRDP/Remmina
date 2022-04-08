@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-03-25 19:19+0000\n"
+"POT-Creation-Date: 2022-04-08 21:57+0000\n"
 "PO-Revision-Date: 2021-12-17 08:48+0000\n"
 "Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
 "Language-Team: Burmese <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -24,7 +24,7 @@ msgstr ""
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:354
 #: src/remmina_protocol_widget.c:1680 src/remmina_protocol_widget.c:1699
 #: src/remmina_file_editor.c:1109 src/remmina_file_editor.c:1231
-#: src/remmina_ssh_plugin.c:1389 plugins/rdp/rdp_plugin.c:2774
+#: src/remmina_ssh_plugin.c:1391 plugins/rdp/rdp_plugin.c:2774
 #: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:3227
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_passwd.glade:84
 #: data/ui/remmina_unlock.glade:109
@@ -32,26 +32,26 @@ msgid "Password"
 msgstr "စကားဝှက်"
 
 #: src/remmina_sftp_plugin.c:311 src/remmina_sftp_plugin.c:356
-#: src/remmina_file_editor.c:1110 src/remmina_ssh_plugin.c:1390
-#: src/remmina_ssh_plugin.c:1501
+#: src/remmina_file_editor.c:1110 src/remmina_ssh_plugin.c:1392
+#: src/remmina_ssh_plugin.c:1503
 #, fuzzy
 msgid "SSH identity file"
 msgstr "SSH ident ဖိုင်"
 
 #: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:1111
-#: src/remmina_ssh_plugin.c:1391
+#: src/remmina_ssh_plugin.c:1393
 #, fuzzy
 msgid "SSH agent"
 msgstr "SSH ကိုယ်စားလှယ်"
 
 #: src/remmina_sftp_plugin.c:313 src/remmina_file_editor.c:1112
-#: src/remmina_ssh_plugin.c:1392
+#: src/remmina_ssh_plugin.c:1394
 #, fuzzy
 msgid "Public key (automatic)"
 msgstr "ပြည်သူ့ခလုတ် (အလိုအလျောက်)"
 
 #: src/remmina_sftp_plugin.c:314 src/remmina_file_editor.c:1113
-#: src/remmina_ssh_plugin.c:1393
+#: src/remmina_ssh_plugin.c:1395
 #, fuzzy
 msgid "Kerberos (GSSAPI)"
 msgstr "Kerberos (GSAPI)"
@@ -77,7 +77,7 @@ msgid "Connect via SSH from a new terminal"
 msgstr "terminal အသစ်မှ SSH မှတစ်ဆင့် ဆက်သွယ်ပါ"
 
 #: src/remmina_sftp_plugin.c:353 src/remmina_message_panel.c:330
-#: src/remmina_file_editor.c:1225 src/remmina_ssh_plugin.c:1499
+#: src/remmina_file_editor.c:1225 src/remmina_ssh_plugin.c:1501
 #: plugins/rdp/rdp_plugin.c:2773 plugins/vnc/vnc_plugin.c:2027
 #: plugins/vnc/vnc_plugin.c:2039 plugins/www/www_plugin.c:894
 #: plugins/x2go/x2go_plugin.c:478 plugins/x2go/x2go_plugin.c:3226
@@ -87,18 +87,18 @@ msgid "Username"
 msgstr "အသုံးပြုသူအမည်"
 
 #: src/remmina_sftp_plugin.c:355 src/remmina_file_editor.c:1216
-#: src/remmina_ssh_plugin.c:1498
+#: src/remmina_ssh_plugin.c:1500
 #, fuzzy
 msgid "Authentication type"
 msgstr "စစ်ဆေးခြင်း အမျိုးအစား"
 
 #: src/remmina_sftp_plugin.c:357 src/remmina_file_editor.c:1249
-#: src/remmina_ssh_plugin.c:1505
+#: src/remmina_ssh_plugin.c:1507
 #, fuzzy
 msgid "Password to unlock private key"
 msgstr "ပုဂ္ဂလိကခလုတ်ကိုဖွင့်ရန် စကားဝှက်"
 
-#: src/remmina_sftp_plugin.c:358 src/remmina_ssh_plugin.c:1536
+#: src/remmina_sftp_plugin.c:358 src/remmina_ssh_plugin.c:1538
 #, fuzzy
 msgid "SSH Proxy Command"
 msgstr "SSH Prox အမိန့်"
@@ -944,7 +944,7 @@ msgid "Progress"
 msgstr "တိုးတက်မှု"
 
 #: src/remmina_protocol_widget.c:291 src/remmina_ssh_plugin.c:840
-#: src/remmina_ssh_plugin.c:1474
+#: src/remmina_ssh_plugin.c:1476
 #, fuzzy
 msgid "Open SFTP transfer…"
 msgstr "အက်စ်အက်ဖ်တီပီ လွှဲပြောင်းခြင်း…"
@@ -1080,116 +1080,116 @@ msgstr "ဆာဗာ"
 msgid "Install the %s protocol plugin first."
 msgstr "%s Protocol plugin ကို ပထမဆုံး သွင်းပါ။"
 
-#: src/remmina_ssh.c:236
+#: src/remmina_ssh.c:732
 #, fuzzy, c-format
 msgid "Could not authenticate with TOTP/OTP/2FA. %s"
 msgstr "TOTP/OTP/2FA. [X442X] နှင့် ခွင့်ပြုချက်မရနိုင်ပါ။ %s"
 
-#: src/remmina_ssh.c:295 src/remmina_ssh.c:676
+#: src/remmina_ssh.c:791 src/remmina_ssh.c:1172
 #, fuzzy, c-format
 msgid "Could not authenticate with SSH password. %s"
 msgstr "SSH စကားဝှက်နဲ့ တရားဝင်မလုပ်နိုင်ဘူး။ %s"
 
-#: src/remmina_ssh.c:322 src/remmina_ssh.c:389
+#: src/remmina_ssh.c:818 src/remmina_ssh.c:885
 #, fuzzy
 msgid "No saved SSH passphrase supplied. Asking user to enter it."
 msgstr "ဘယ် SSH စကားစုကိုမှ မထောက်ပံ့ခဲ့ဘူး။ အသုံးပြုသူကို ဝင်ခွင့်တောင်းပါ။"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:327 src/remmina_ssh.c:368 src/remmina_ssh.c:394
-#: src/remmina_ssh.c:433 src/remmina_ssh.c:746
+#: src/remmina_ssh.c:823 src/remmina_ssh.c:864 src/remmina_ssh.c:890
+#: src/remmina_ssh.c:929 src/remmina_ssh.c:1242
 #, fuzzy, c-format
 msgid "Could not authenticate with public SSH key. %s"
 msgstr "အများပြည်သူ SSH သော့နဲ့ တရားဝင်မလုပ်နိုင်ဘူး။ %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:336
+#: src/remmina_ssh.c:832
 #, fuzzy, c-format
 msgid "SSH certificate cannot be imported. %s"
 msgstr "SSH လက်မှတ်ကို တင်သွင်းလို့မရဘူး။ %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:345
+#: src/remmina_ssh.c:841
 #, fuzzy, c-format
 msgid "SSH certificate cannot be copied into the private SSH key. %s"
 msgstr "SSH လက်မှတ်ကို ပုဂ္ဂလိက SSH သော့ထဲမှာ ကူးယူလို့မရဘူး။ %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:355
+#: src/remmina_ssh.c:851
 #, fuzzy, c-format
 msgid "Could not authenticate using SSH certificate. %s"
 msgstr "SSH လက်မှတ်ကိုသုံးပြီး တရားဝင်မလုပ်နိုင်ဘူး။ %s"
 
-#: src/remmina_ssh.c:369
+#: src/remmina_ssh.c:865
 #, fuzzy
 msgid "SSH identity file not selected."
 msgstr "SSH identity ဖိုင်ကို ရွေးချယ်မထားပါ။"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:380
+#: src/remmina_ssh.c:876
 #, fuzzy, c-format
 msgid "Public SSH key cannot be imported. %s"
 msgstr "ပြည်သူ့ SSH သော့ကို တင်သွင်းလို့မရဘူး။ %s"
 
-#: src/remmina_ssh.c:478
+#: src/remmina_ssh.c:974
 #, fuzzy, c-format
 msgid "Could not authenticate automatically with public SSH key. %s"
 msgstr "အများပြည်သူ SSH သော့နဲ့ အလိုအလျောက် ခွင့်မပြုနိုင်ဘူး။ %s"
 
-#: src/remmina_ssh.c:523
+#: src/remmina_ssh.c:1019
 #, fuzzy, c-format
 msgid "Could not authenticate automatically with SSH agent. %s"
 msgstr "SSH ကိုယ်စားလှယ်နဲ့ အလိုအလျောက် ခွင့်မပြုနိုင်ဘူး။ %s"
 
-#: src/remmina_ssh.c:569 src/remmina_ssh.c:856
+#: src/remmina_ssh.c:1065 src/remmina_ssh.c:1352
 #, fuzzy, c-format
 msgid "Could not authenticate with SSH GSSAPI/Kerberos. %s"
 msgstr "SSH GSH GSAPI/Kerberos နဲ့အတူ တရားဝင်မလုပ်နိုင်ဘူး။ %s"
 
-#: src/remmina_ssh.c:598
+#: src/remmina_ssh.c:1094
 #, fuzzy
 msgid "The public SSH key changed!"
 msgstr "ပြည်သူ့ SSH သော့ပြောင်းသွားတယ်!"
 
-#: src/remmina_ssh.c:711
+#: src/remmina_ssh.c:1207
 #, fuzzy, c-format
 msgid "Could not authenticate with keyboard-interactive. %s"
 msgstr "ကီးဘုတ်အပြန်အလှန်ဆက်သွယ်မှုနဲ့ ခွင့်မပြုနိုင်ဘူး။ %s"
 
-#: src/remmina_ssh.c:813
+#: src/remmina_ssh.c:1309
 #, fuzzy, c-format
 msgid "Could not authenticate with automatic public SSH key. %s"
 msgstr "အလိုအလျောက် ပြည်သူ့ SSH သော့နဲ့ ခွင့်မပြုနိုင်ဘူး။ %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:921
+#: src/remmina_ssh.c:1417
 #, fuzzy, c-format
 msgid "Could not fetch the server's public SSH key. %s"
 msgstr "ဆာဗာရဲ့ အများပြည်သူ SSH သော့ကို မယူနိုင်ဘူး။ %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:928
+#: src/remmina_ssh.c:1424
 #, fuzzy, c-format
 msgid "Could not fetch public SSH key. %s"
 msgstr "အများပြည်သူ SSH သော့ကို မယူနိုင်ဘူး။ %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:936
+#: src/remmina_ssh.c:1432
 #, fuzzy, c-format
 msgid "Could not fetch checksum of the public SSH key. %s"
 msgstr "အများပြည်သူ SSH သော့ရဲ့ စစ်ဆေးချက်တွေကို မယူနိုင်ဘူး။ %s"
 
-#: src/remmina_ssh.c:949
+#: src/remmina_ssh.c:1445
 #, fuzzy
 msgid "The server is unknown. The public key fingerprint is:"
 msgstr "ဆာဗာကို မသိရဘူး။ ပြည်သူ့ အဓိက လက်ဗွေရာမှာ -"
 
-#: src/remmina_ssh.c:951 src/remmina_ssh.c:957
+#: src/remmina_ssh.c:1447 src/remmina_ssh.c:1453
 #, fuzzy
 msgid "Do you trust the new public key?"
 msgstr "လူထုခလုတ်အသစ်ကို သင်ယုံကြည်သလား။"
 
-#: src/remmina_ssh.c:954
+#: src/remmina_ssh.c:1450
 #, fuzzy
 msgid ""
 "Warning: The server has changed its public key. This means you are either "
@@ -1200,161 +1200,161 @@ msgstr ""
 "ဒါမှမဟုတ် အုပ်ချုပ်ရေးမှူးက သော့ကို ပြောင်းလဲလိုက်ပါတယ်။ ပြည်သူ့ အဓိက လက်ဗွေရာ အသစ်ကတော့"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:979
+#: src/remmina_ssh.c:1475
 #, fuzzy, c-format
 msgid "Could not check list of known SSH hosts. %s"
 msgstr "သိ ထား သော အက်စ်အက်စ်အိပ်ခ်ျ အိမ်ရှင် များ ၏ စာရင်း ကို မ စစ်ဆေး နိုင် ခဲ့ ပါ ။ %s"
 
-#: src/remmina_ssh.c:988
+#: src/remmina_ssh.c:1484
 #, fuzzy
 msgid "SSH password"
 msgstr "SSH စကားဝှက်"
 
-#: src/remmina_ssh.c:995 src/remmina_ssh.c:1039
+#: src/remmina_ssh.c:1491 src/remmina_ssh.c:1535
 #, fuzzy
 msgid "SSH private key passphrase"
 msgstr "SSH ပုဂ္ဂလိက အဓိကစကားစု"
 
-#: src/remmina_ssh.c:1000
+#: src/remmina_ssh.c:1496
 #, fuzzy
 msgid "SSH Kerberos/GSSAPI"
 msgstr "SSH Kerberos/GSAPI"
 
-#: src/remmina_ssh.c:1005
+#: src/remmina_ssh.c:1501
 #, fuzzy
 msgid "Enter TOTP/OTP/2FA code"
 msgstr "TOTP/OTP/2FA သင်္ကေတထဲ ထည့်ပါ"
 
-#: src/remmina_ssh.c:1035 src/remmina_ssh.c:1061
+#: src/remmina_ssh.c:1531 src/remmina_ssh.c:1557
 #, fuzzy
 msgid "SSH tunnel credentials"
 msgstr "SSH ဥမင်လိုဏ်ခေါင်း အထောက်အထားများ"
 
-#: src/remmina_ssh.c:1035 src/remmina_ssh.c:1061
+#: src/remmina_ssh.c:1531 src/remmina_ssh.c:1557
 #, fuzzy
 msgid "SSH credentials"
 msgstr "SSH အသိအမှတ်ပြုချက်များ"
 
-#: src/remmina_ssh.c:1112
+#: src/remmina_ssh.c:1608
 #, fuzzy
 msgid "Keyboard interactive login, TOTP/OTP/2FA"
 msgstr "Keyboard အပြန်အလှန်ဆက်သွယ်ရေး လိုဂင် ၊ TOTP/OTP/2FA"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1337
+#: src/remmina_ssh.c:1833
 #, fuzzy, c-format
 msgid "Could not start SSH session. %s"
 msgstr "SSH အစည်းအရုံးကို မစနိုင်ဘူး။ %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1735
+#: src/remmina_ssh.c:2232
 #, fuzzy, c-format
 msgid "Could not create channel. %s"
 msgstr "ရုပ်သံ လိုင်းကို မဖန်တီးနိုင်ဘူး။ %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1746
+#: src/remmina_ssh.c:2243
 #, fuzzy, c-format
 msgid "Could not connect to SSH tunnel. %s"
 msgstr "SSH ဥမင်လိုဏ်ခေါင်းနဲ့ မဆက်သွယ်နိုင်ဘူး။ %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1816 src/remmina_ssh.c:1837 src/remmina_ssh.c:1846
+#: src/remmina_ssh.c:2313 src/remmina_ssh.c:2334 src/remmina_ssh.c:2343
 #, fuzzy, c-format
 msgid "Could not request port forwarding. %s"
 msgstr "ဆိပ်ကမ်းကို ပို့ပေးဖို့ မတောင်းဆိုနိုင်ဘူး။ %s"
 
-#: src/remmina_ssh.c:1876
+#: src/remmina_ssh.c:2373
 #, fuzzy
 msgid "The server did not respond."
 msgstr "ဆာဗာက မတုံ့ပြန်ခဲ့ဘူး။"
 
-#: src/remmina_ssh.c:1916
+#: src/remmina_ssh.c:2413
 #, fuzzy, c-format
 msgid "Cannot connect to local port %i."
 msgstr "ဒေသခံဆိပ်ကမ်း %i ကို ဆက်သွယ်လို့မရဘူး။"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1965
+#: src/remmina_ssh.c:2462
 #, fuzzy, c-format
 msgid "Could not write to SSH channel. %s"
 msgstr "SSH ရုပ်သံလိုင်းကို မရေးနိုင်ဘူး။ %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1972
+#: src/remmina_ssh.c:2469
 #, fuzzy, c-format
 msgid "Could not read from tunnel listening socket. %s"
 msgstr "ဥမင်လိုဏ်ခေါင်းကနေ မဖတ်နိုင်ဘူး။ %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1992
+#: src/remmina_ssh.c:2489
 #, fuzzy, c-format
 msgid "Could not poll SSH channel. %s"
 msgstr "SSH ရုပ်သံ လိုင်းကို မဲမပေးနိုင်ဘူး။ %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1999
+#: src/remmina_ssh.c:2496
 #, fuzzy, c-format
 msgid "Could not read SSH channel in a non-blocking way. %s"
 msgstr "SSH ရုပ်သံလိုင်းကို ပိတ်ဆို့မှုမရှိတဲ့နည်းနဲ့ မဖတ်နိုင်ဘူး။ %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2018
+#: src/remmina_ssh.c:2515
 #, fuzzy, c-format
 msgid "Could not send data to tunnel listening socket. %s"
 msgstr "ဥမင်လိုဏ်မျဉ်း နားထောင်နေတဲ့ ဥမင်လိုဏ်ခေါင်းဆီ အချက်အလက်တွေ မပို့ပေးနိုင်ဘူး။ %s"
 
-#: src/remmina_ssh.c:2120
+#: src/remmina_ssh.c:2617
 #, fuzzy
 msgid "Assign a destination port."
 msgstr "ခရီးပန်းတိုင်ဆိပ်ကမ်းကို သတ်မှတ်ပေးပါ။"
 
-#: src/remmina_ssh.c:2127
+#: src/remmina_ssh.c:2624
 #, fuzzy
 msgid "Could not create socket."
 msgstr "ခြေအိတ်ကို မဖန်တီးနိုင်ဘူး။"
 
-#: src/remmina_ssh.c:2137
+#: src/remmina_ssh.c:2634
 #, fuzzy
 msgid "Could not bind server socket to local port."
 msgstr "ဒေသခံဆိပ်ကမ်းသို့ ဆာဗာခြေကတ်ကို မချည်နှောင်နိုင်ပါ။"
 
-#: src/remmina_ssh.c:2143
+#: src/remmina_ssh.c:2640
 #, fuzzy
 msgid "Could not listen to local port."
 msgstr "ဒေသခံဆိပ်ကမ်းကို နားမထောင်နိုင်ဘူး။"
 
 #. TRANSLATORS: Do not translate pthread
-#: src/remmina_ssh.c:2153 src/remmina_ssh.c:2170 src/remmina_ssh.c:2188
+#: src/remmina_ssh.c:2650 src/remmina_ssh.c:2667 src/remmina_ssh.c:2685
 #, fuzzy
 msgid "Could not start pthread."
 msgstr "ဖာသာဒ်ကို မစနိုင်ဘူး။"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2280
+#: src/remmina_ssh.c:2777
 #, fuzzy, c-format
 msgid "Could not create SFTP session. %s"
 msgstr "SFTP အစည်းအရုံးကို မဖန်တီးနိုင်ဘူး။ %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2285
+#: src/remmina_ssh.c:2782
 #, fuzzy, c-format
 msgid "Could not start SFTP session. %s"
 msgstr "SFTP အစည်းအရုံးကို မစတင်နိုင်ဘူး။ %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2383
+#: src/remmina_ssh.c:2874
 #, fuzzy, c-format
 msgid "Could not open channel. %s"
 msgstr "ရုပ်သံလိုင်းကို မဖွင့်နိုင်ဘူး။ %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2402
+#: src/remmina_ssh.c:2917
 #, fuzzy, c-format
 msgid "Could not request shell. %s"
 msgstr "အခွံကို မတောင်းဆိုနိုင်ဘူး။ %s"
 
-#: src/remmina_ssh.c:2532
+#: src/remmina_ssh.c:3047
 #, fuzzy
 msgid "Could not create PTY device."
 msgstr "PTY ကိရိယာကို မဖန်တီးနိုင်ဘူး။"
@@ -1697,7 +1697,7 @@ msgstr "SSH Auuentation"
 msgid "SSH private key file"
 msgstr "SSH ပုဂ္ဂလိက သော့ဖိုင်"
 
-#: src/remmina_file_editor.c:1244 src/remmina_ssh_plugin.c:1503
+#: src/remmina_file_editor.c:1244 src/remmina_ssh_plugin.c:1505
 #, fuzzy
 msgid "SSH certificate file"
 msgstr "SSH certicate ဖိုင်"
@@ -1935,87 +1935,87 @@ msgstr "ဖောင့်အရွယ် (အိမ်ရှင်+စာမျ
 msgid "Find text (host+G)"
 msgstr "စာသားကိုရှာ (အိမ်ရှင်+G)"
 
-#: src/remmina_ssh_plugin.c:921
+#: src/remmina_ssh_plugin.c:895
 #, fuzzy, c-format
 msgid "Disconnected from %s:%d via SSH"
 msgstr "SSH မှတစ်ဆင့် %s နှင့် ဆက်သွယ်ခြင်း…"
 
-#: src/remmina_ssh_plugin.c:1468 data/ui/remmina_main.glade:177
+#: src/remmina_ssh_plugin.c:1470 data/ui/remmina_main.glade:177
 #, fuzzy
 msgid "Copy"
 msgstr "ကူးရန်"
 
-#: src/remmina_ssh_plugin.c:1468
+#: src/remmina_ssh_plugin.c:1470
 #, fuzzy
 msgid "_Copy"
 msgstr "_Copy"
 
-#: src/remmina_ssh_plugin.c:1469
+#: src/remmina_ssh_plugin.c:1471
 #, fuzzy
 msgid "Paste"
 msgstr "ပက်စတီ"
 
-#: src/remmina_ssh_plugin.c:1469
+#: src/remmina_ssh_plugin.c:1471
 #, fuzzy
 msgid "_Paste"
 msgstr "_Paste"
 
-#: src/remmina_ssh_plugin.c:1470
+#: src/remmina_ssh_plugin.c:1472
 #, fuzzy
 msgid "Select all"
 msgstr "အားလုံးရွေးချယ်ပါ"
 
-#: src/remmina_ssh_plugin.c:1470
+#: src/remmina_ssh_plugin.c:1472
 #, fuzzy
 msgid "_Select all"
 msgstr "_Select အားလုံး _Select အားလုံး _Select အား"
 
-#: src/remmina_ssh_plugin.c:1471
+#: src/remmina_ssh_plugin.c:1473
 #, fuzzy
 msgid "Increase font size"
 msgstr "ဖောင့်အရွယ်အစားကို တိုးမြှင့်ပါ"
 
-#: src/remmina_ssh_plugin.c:1471
+#: src/remmina_ssh_plugin.c:1473
 #, fuzzy
 msgid "_Increase font size"
 msgstr "_Increase ဖောင့်အရွယ်အစား"
 
-#: src/remmina_ssh_plugin.c:1472
+#: src/remmina_ssh_plugin.c:1474
 #, fuzzy
 msgid "Decrease font size"
 msgstr "ဖောင့်အရွယ်အစားကို လျှော့ချပါ"
 
-#: src/remmina_ssh_plugin.c:1472
+#: src/remmina_ssh_plugin.c:1474
 #, fuzzy
 msgid "_Decrease font size"
 msgstr "_Decrease ဖောင့်အရွယ်အစား"
 
-#: src/remmina_ssh_plugin.c:1473
+#: src/remmina_ssh_plugin.c:1475
 #, fuzzy
 msgid "Find text"
 msgstr "စာသားကို ရှာဖွေပါ"
 
-#: src/remmina_ssh_plugin.c:1473
+#: src/remmina_ssh_plugin.c:1475
 #, fuzzy
 msgid "_Find text"
 msgstr "_Find စာသား"
 
-#: src/remmina_ssh_plugin.c:1500 plugins/spice/spice_plugin.c:676
+#: src/remmina_ssh_plugin.c:1502 plugins/spice/spice_plugin.c:676
 #: plugins/vnc/vnc_plugin.c:2028 plugins/vnc/vnc_plugin.c:2040
 #, fuzzy
 msgid "User password"
 msgstr "အသုံးပြုသူ စကားဝှက်"
 
-#: src/remmina_ssh_plugin.c:1506
+#: src/remmina_ssh_plugin.c:1508
 msgid "Opening command"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1507
+#: src/remmina_ssh_plugin.c:1509
 #, fuzzy
 msgid "Start-up background program"
 msgstr "စတင်ပရိုဂရမ်"
 
-#: src/remmina_ssh_plugin.c:1512
+#: src/remmina_ssh_plugin.c:1514
 #, fuzzy
 msgid ""
 "The filename can use the following placeholders:\n"
@@ -2038,77 +2038,81 @@ msgstr ""
 "  • %g ကို Remmina Profile အုပ်စုအမည်ဖြင့် အစားထိုးပါ\n"
 "  • %d ကို ဒေသတွင်း ရက်စွဲနှင့် အချိန်ကို ISO 8601 ပုံစံဖြင့် အစားထိုး\n"
 
-#: src/remmina_ssh_plugin.c:1534
+#: src/remmina_ssh_plugin.c:1536
 #, fuzzy
 msgid "Terminal colour scheme"
 msgstr "Terminal အရောင် စီမံကိန်း"
 
-#: src/remmina_ssh_plugin.c:1535
+#: src/remmina_ssh_plugin.c:1537
 #, fuzzy
 msgid "Character set"
 msgstr "ဇာတ်ကောင်အစု"
 
-#: src/remmina_ssh_plugin.c:1537
+#: src/remmina_ssh_plugin.c:1539
 #, fuzzy
 msgid "KEX (Key Exchange) algorithms"
 msgstr "KEX (Key Exchange) အယ်ဂိုရီသမ်များ"
 
-#: src/remmina_ssh_plugin.c:1538
+#: src/remmina_ssh_plugin.c:1540
 #, fuzzy
 msgid "Symmetric cipher client to server"
 msgstr "symmmtric cipher ဖောက်သည် ဆာဗာ"
 
-#: src/remmina_ssh_plugin.c:1539
+#: src/remmina_ssh_plugin.c:1541
 #, fuzzy
 msgid "Preferred server host key types"
 msgstr "ကြိုက်နှစ်သက်သော ဆာဗာ အိမ်ရှင် အဓိကအမျိုးအစားများ"
 
-#: src/remmina_ssh_plugin.c:1540
+#: src/remmina_ssh_plugin.c:1542
 #, fuzzy
 msgid "Folder for SSH session log"
 msgstr "SSH SSH ssion မှတ်စုအတွက် ဖိုင်တွဲ"
 
-#: src/remmina_ssh_plugin.c:1541
+#: src/remmina_ssh_plugin.c:1543
 #, fuzzy
 msgid "Filename for SSH session log"
 msgstr "SSH SSH ssion မှတ်စုအတွက် Fililename"
 
-#: src/remmina_ssh_plugin.c:1542
+#: src/remmina_ssh_plugin.c:1544
 #, fuzzy
 msgid "Log SSH session when exiting Remmina"
 msgstr "Remmina ကနေထွက်ချိန်မှာ Log SSH အစီအစဉ်"
 
-#: src/remmina_ssh_plugin.c:1543
+#: src/remmina_ssh_plugin.c:1545
 #, fuzzy
 msgid "Log SSH session asynchronously"
 msgstr "သစ်အက်စ်အက်စ်အိပ်ခ်ျ အစီအစဉ်"
 
-#: src/remmina_ssh_plugin.c:1543
+#: src/remmina_ssh_plugin.c:1545
 #, fuzzy
 msgid "Saving the session asynchronously may have a notable performance impact"
 msgstr "အစည်းအဝေးကို ထိန်းသိမ်းခြင်းဟာ ထူးခြားတဲ့ စွမ်းဆောင်ရည် အကျိုးသက်ရောက်မှု ရှိနိုင်တယ်"
 
-#: src/remmina_ssh_plugin.c:1544
+#: src/remmina_ssh_plugin.c:1546
 #, fuzzy
 msgid "Audible terminal bell"
 msgstr "ကြားနိုင်သော terminal ခေါင်းလောင်း"
 
-#: src/remmina_ssh_plugin.c:1545
+#: src/remmina_ssh_plugin.c:1547
+msgid "SSH X11 Forwarding"
+msgstr ""
+
+#: src/remmina_ssh_plugin.c:1548
 #, fuzzy
 msgid "SSH compression"
 msgstr "SSH ဖိသိပ်ခြင်း"
 
-#: src/remmina_ssh_plugin.c:1546
+#: src/remmina_ssh_plugin.c:1549
 #, fuzzy
 msgid "Don't remember passwords"
 msgstr "စကားဝှက်တွေကို မမှတ်မိပါနဲ့"
 
-#: src/remmina_ssh_plugin.c:1547
+#: src/remmina_ssh_plugin.c:1550
 #, fuzzy
 msgid "Strict host key checking"
 msgstr "တင်းကျပ်တဲ့ အိမ်ရှင် အဓိကစစ်ဆေးမှု"
 
-#: src/remmina_ssh_plugin.c:1561
+#: src/remmina_ssh_plugin.c:1564
 #, fuzzy
 msgid "SSH - Secure Shell"
 msgstr "SSH - လုံခြုံသောခွေး"

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-03-25 19:19+0000\n"
+"POT-Creation-Date: 2022-04-08 21:57+0000\n"
 "PO-Revision-Date: 2022-03-11 20:58+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/remmina/remmina/cs/"
@@ -26,7 +26,7 @@ msgstr ""
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:354
 #: src/remmina_protocol_widget.c:1680 src/remmina_protocol_widget.c:1699
 #: src/remmina_file_editor.c:1109 src/remmina_file_editor.c:1231
-#: src/remmina_ssh_plugin.c:1389 plugins/rdp/rdp_plugin.c:2774
+#: src/remmina_ssh_plugin.c:1391 plugins/rdp/rdp_plugin.c:2774
 #: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:3227
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_passwd.glade:84
 #: data/ui/remmina_unlock.glade:109
@@ -34,24 +34,24 @@ msgid "Password"
 msgstr "Heslo"
 
 #: src/remmina_sftp_plugin.c:311 src/remmina_sftp_plugin.c:356
-#: src/remmina_file_editor.c:1110 src/remmina_ssh_plugin.c:1390
-#: src/remmina_ssh_plugin.c:1501
+#: src/remmina_file_editor.c:1110 src/remmina_ssh_plugin.c:1392
+#: src/remmina_ssh_plugin.c:1503
 msgid "SSH identity file"
 msgstr "soubor s SSH identitou"
 
 #: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:1111
-#: src/remmina_ssh_plugin.c:1391
+#: src/remmina_ssh_plugin.c:1393
 msgid "SSH agent"
 msgstr "SSH agent"
 
 #: src/remmina_sftp_plugin.c:313 src/remmina_file_editor.c:1112
-#: src/remmina_ssh_plugin.c:1392
+#: src/remmina_ssh_plugin.c:1394
 #, fuzzy
 msgid "Public key (automatic)"
 msgstr "Metoda s veřejným klíčem (automatické)"
 
 #: src/remmina_sftp_plugin.c:314 src/remmina_file_editor.c:1113
-#: src/remmina_ssh_plugin.c:1393
+#: src/remmina_ssh_plugin.c:1395
 msgid "Kerberos (GSSAPI)"
 msgstr "Kerberos (GSSAPI)"
 
@@ -72,7 +72,7 @@ msgid "Connect via SSH from a new terminal"
 msgstr "Připojit prostřednictvím SSH z nového terminálu"
 
 #: src/remmina_sftp_plugin.c:353 src/remmina_message_panel.c:330
-#: src/remmina_file_editor.c:1225 src/remmina_ssh_plugin.c:1499
+#: src/remmina_file_editor.c:1225 src/remmina_ssh_plugin.c:1501
 #: plugins/rdp/rdp_plugin.c:2773 plugins/vnc/vnc_plugin.c:2027
 #: plugins/vnc/vnc_plugin.c:2039 plugins/www/www_plugin.c:894
 #: plugins/x2go/x2go_plugin.c:478 plugins/x2go/x2go_plugin.c:3226
@@ -81,16 +81,16 @@ msgid "Username"
 msgstr "Uživatelské jméno"
 
 #: src/remmina_sftp_plugin.c:355 src/remmina_file_editor.c:1216
-#: src/remmina_ssh_plugin.c:1498
+#: src/remmina_ssh_plugin.c:1500
 msgid "Authentication type"
 msgstr "Typ ověřování se"
 
 #: src/remmina_sftp_plugin.c:357 src/remmina_file_editor.c:1249
-#: src/remmina_ssh_plugin.c:1505
+#: src/remmina_ssh_plugin.c:1507
 msgid "Password to unlock private key"
 msgstr "Heslo pro odemčení soukromé části klíče"
 
-#: src/remmina_sftp_plugin.c:358 src/remmina_ssh_plugin.c:1536
+#: src/remmina_sftp_plugin.c:358 src/remmina_ssh_plugin.c:1538
 msgid "SSH Proxy Command"
 msgstr "Příkaz pro SSH proxy"
 
@@ -860,7 +860,7 @@ msgid "Progress"
 msgstr "Průběh"
 
 #: src/remmina_protocol_widget.c:291 src/remmina_ssh_plugin.c:840
-#: src/remmina_ssh_plugin.c:1474
+#: src/remmina_ssh_plugin.c:1476
 msgid "Open SFTP transfer…"
 msgstr "Otevřít SFTP přenos…"
 
@@ -982,114 +982,114 @@ msgstr "Server"
 msgid "Install the %s protocol plugin first."
 msgstr "Nejprve nainstalujte zásuvný modul pro protokol %s."
 
-#: src/remmina_ssh.c:236
+#: src/remmina_ssh.c:732
 #, c-format
 msgid "Could not authenticate with TOTP/OTP/2FA. %s"
 msgstr "Nepodařilo se ověřit pomocí SSH hesla: %s"
 
-#: src/remmina_ssh.c:295 src/remmina_ssh.c:676
+#: src/remmina_ssh.c:791 src/remmina_ssh.c:1172
 #, c-format
 msgid "Could not authenticate with SSH password. %s"
 msgstr "Nepodařilo se ověřit pomocí SSH hesla: %s"
 
-#: src/remmina_ssh.c:322 src/remmina_ssh.c:389
+#: src/remmina_ssh.c:818 src/remmina_ssh.c:885
 msgid "No saved SSH passphrase supplied. Asking user to enter it."
 msgstr ""
 "Nebyla zadána žádná uložená přístupová fráze SSH. Vyzývá uživatele k jejímu "
 "zadání."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:327 src/remmina_ssh.c:368 src/remmina_ssh.c:394
-#: src/remmina_ssh.c:433 src/remmina_ssh.c:746
+#: src/remmina_ssh.c:823 src/remmina_ssh.c:864 src/remmina_ssh.c:890
+#: src/remmina_ssh.c:929 src/remmina_ssh.c:1242
 #, c-format
 msgid "Could not authenticate with public SSH key. %s"
 msgstr "Nedaří se ověřit pomocí veřejné části SSH klíče: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:336
+#: src/remmina_ssh.c:832
 #, c-format
 msgid "SSH certificate cannot be imported. %s"
 msgstr "Certifikát SSH nelze importovat. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:345
+#: src/remmina_ssh.c:841
 #, c-format
 msgid "SSH certificate cannot be copied into the private SSH key. %s"
 msgstr "Certifikát SSH nelze zkopírovat do soukromého klíče SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:355
+#: src/remmina_ssh.c:851
 #, c-format
 msgid "Could not authenticate using SSH certificate. %s"
 msgstr "Nepodařilo se ověřit pomocí certifikátu SSH. %s"
 
-#: src/remmina_ssh.c:369
+#: src/remmina_ssh.c:865
 msgid "SSH identity file not selected."
 msgstr "Soubor s SSH klíčem doposud nebyl nastaven."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:380
+#: src/remmina_ssh.c:876
 #, c-format
 msgid "Public SSH key cannot be imported. %s"
 msgstr "Veřejný klíč SSH se nepodařilo naimportovat: %s"
 
-#: src/remmina_ssh.c:478
+#: src/remmina_ssh.c:974
 #, c-format
 msgid "Could not authenticate automatically with public SSH key. %s"
 msgstr "Nedaří se automaticky ověřit pomocí veřejné části SSH klíče: %s"
 
-#: src/remmina_ssh.c:523
+#: src/remmina_ssh.c:1019
 #, c-format
 msgid "Could not authenticate automatically with SSH agent. %s"
 msgstr "Nedaří se automaticky ověřit pomocí veřejné části SSH klíče: %s"
 
-#: src/remmina_ssh.c:569 src/remmina_ssh.c:856
+#: src/remmina_ssh.c:1065 src/remmina_ssh.c:1352
 #, c-format
 msgid "Could not authenticate with SSH GSSAPI/Kerberos. %s"
 msgstr "Nedaří se ověřit pomocí SSH Kerberos/GSSAPI: %s"
 
-#: src/remmina_ssh.c:598
+#: src/remmina_ssh.c:1094
 msgid "The public SSH key changed!"
 msgstr "Veřejný SSH klíč byl změněn!"
 
-#: src/remmina_ssh.c:711
+#: src/remmina_ssh.c:1207
 #, c-format
 msgid "Could not authenticate with keyboard-interactive. %s"
 msgstr "Nedaří se ověřit pomocí veřejné části SSH klíče: %s"
 
-#: src/remmina_ssh.c:813
+#: src/remmina_ssh.c:1309
 #, c-format
 msgid "Could not authenticate with automatic public SSH key. %s"
 msgstr "Nedaří se ověřit pomocí veřejné části SSH klíče: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:921
+#: src/remmina_ssh.c:1417
 #, c-format
 msgid "Could not fetch the server's public SSH key. %s"
 msgstr "Nedaří se získat veřejnou část SSH klíče serveru: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:928
+#: src/remmina_ssh.c:1424
 #, c-format
 msgid "Could not fetch public SSH key. %s"
 msgstr "Nepodařilo se stáhnout si veřejnou část SSH klíče: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:936
+#: src/remmina_ssh.c:1432
 #, c-format
 msgid "Could not fetch checksum of the public SSH key. %s"
 msgstr ""
 "Nepodařilo se stáhnout si kontrolní součet pro veřejnou část SSH klíče: %s"
 
-#: src/remmina_ssh.c:949
+#: src/remmina_ssh.c:1445
 msgid "The server is unknown. The public key fingerprint is:"
 msgstr "Neznámý server. Otisk veřejného klíče je:"
 
-#: src/remmina_ssh.c:951 src/remmina_ssh.c:957
+#: src/remmina_ssh.c:1447 src/remmina_ssh.c:1453
 msgid "Do you trust the new public key?"
 msgstr "Důvěřujete novému veřejnému klíči?"
 
-#: src/remmina_ssh.c:954
+#: src/remmina_ssh.c:1450
 msgid ""
 "Warning: The server has changed its public key. This means you are either "
 "under attack,\n"
@@ -1101,148 +1101,148 @@ msgstr ""
 "veřejného klíče je:"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:979
+#: src/remmina_ssh.c:1475
 #, c-format
 msgid "Could not check list of known SSH hosts. %s"
 msgstr "Nepodařilo se zkontrolovat seznam známých SSH hostitelů: %s"
 
-#: src/remmina_ssh.c:988
+#: src/remmina_ssh.c:1484
 msgid "SSH password"
 msgstr "Heslo pro SSH"
 
-#: src/remmina_ssh.c:995 src/remmina_ssh.c:1039
+#: src/remmina_ssh.c:1491 src/remmina_ssh.c:1535
 msgid "SSH private key passphrase"
 msgstr "Heslová fráze k soukromému SSH klíči"
 
-#: src/remmina_ssh.c:1000
+#: src/remmina_ssh.c:1496
 msgid "SSH Kerberos/GSSAPI"
 msgstr "SSH Kerberos/GSSAPI"
 
-#: src/remmina_ssh.c:1005
+#: src/remmina_ssh.c:1501
 msgid "Enter TOTP/OTP/2FA code"
 msgstr "Zadejte kód TOTP/OTP/2FA"
 
-#: src/remmina_ssh.c:1035 src/remmina_ssh.c:1061
+#: src/remmina_ssh.c:1531 src/remmina_ssh.c:1557
 msgid "SSH tunnel credentials"
 msgstr "přihlašovací údaje pro SSH tunel"
 
-#: src/remmina_ssh.c:1035 src/remmina_ssh.c:1061
+#: src/remmina_ssh.c:1531 src/remmina_ssh.c:1557
 msgid "SSH credentials"
 msgstr "přihlašovací údaje pro SSH"
 
-#: src/remmina_ssh.c:1112
+#: src/remmina_ssh.c:1608
 msgid "Keyboard interactive login, TOTP/OTP/2FA"
 msgstr "Interaktivní přihlášení pomocí klávesnice, TOTP/OTP/2FA"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1337
+#: src/remmina_ssh.c:1833
 #, c-format
 msgid "Could not start SSH session. %s"
 msgstr "Nepodařilo se zahájit SSH relaci: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1735
+#: src/remmina_ssh.c:2232
 #, c-format
 msgid "Could not create channel. %s"
 msgstr "Nepodařilo se vytvořit kanál: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1746
+#: src/remmina_ssh.c:2243
 #, c-format
 msgid "Could not connect to SSH tunnel. %s"
 msgstr "Nepodařilo se připojit k SSH tunelu: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1816 src/remmina_ssh.c:1837 src/remmina_ssh.c:1846
+#: src/remmina_ssh.c:2313 src/remmina_ssh.c:2334 src/remmina_ssh.c:2343
 #, c-format
 msgid "Could not request port forwarding. %s"
 msgstr "Nepodařilo se vyžádat si přeposílání portů: %s"
 
-#: src/remmina_ssh.c:1876
+#: src/remmina_ssh.c:2373
 msgid "The server did not respond."
 msgstr "Žádná odpověď od serveru."
 
-#: src/remmina_ssh.c:1916
+#: src/remmina_ssh.c:2413
 #, c-format
 msgid "Cannot connect to local port %i."
 msgstr "Není možné se připojit k místnímu portu %i."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1965
+#: src/remmina_ssh.c:2462
 #, c-format
 msgid "Could not write to SSH channel. %s"
 msgstr "Nedaří se zapsat do SSH kanálu: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1972
+#: src/remmina_ssh.c:2469
 #, c-format
 msgid "Could not read from tunnel listening socket. %s"
 msgstr "Nedaří se číst ze soketu, na kterém tunel očekává spojení: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1992
+#: src/remmina_ssh.c:2489
 #, c-format
 msgid "Could not poll SSH channel. %s"
 msgstr "Nedaří se dotazovat (poll) SSH kanál: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1999
+#: src/remmina_ssh.c:2496
 #, c-format
 msgid "Could not read SSH channel in a non-blocking way. %s"
 msgstr "Nedaří se číst z SSH kanálu tak, aby nedocházelo k blokování: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2018
+#: src/remmina_ssh.c:2515
 #, c-format
 msgid "Could not send data to tunnel listening socket. %s"
 msgstr "Nedaří se odeslat data na soket, na kterém tunel očekává spojení: %s"
 
-#: src/remmina_ssh.c:2120
+#: src/remmina_ssh.c:2617
 msgid "Assign a destination port."
 msgstr "Přiřadit cílový port."
 
-#: src/remmina_ssh.c:2127
+#: src/remmina_ssh.c:2624
 msgid "Could not create socket."
 msgstr "Nedaří se vytvořit soket."
 
-#: src/remmina_ssh.c:2137
+#: src/remmina_ssh.c:2634
 msgid "Could not bind server socket to local port."
 msgstr "Nedaří se navázat soket serveru na místní port."
 
-#: src/remmina_ssh.c:2143
+#: src/remmina_ssh.c:2640
 msgid "Could not listen to local port."
 msgstr "Nedaří se očekávat spojení na místním portu."
 
 #. TRANSLATORS: Do not translate pthread
-#: src/remmina_ssh.c:2153 src/remmina_ssh.c:2170 src/remmina_ssh.c:2188
+#: src/remmina_ssh.c:2650 src/remmina_ssh.c:2667 src/remmina_ssh.c:2685
 msgid "Could not start pthread."
 msgstr "Nepodařilo se inicializovat pthread."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2280
+#: src/remmina_ssh.c:2777
 #, c-format
 msgid "Could not create SFTP session. %s"
 msgstr "Nedaří se vytvořit SFTP relaci: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2285
+#: src/remmina_ssh.c:2782
 #, c-format
 msgid "Could not start SFTP session. %s"
 msgstr "Nedaří se zahájit SFTP relaci: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2383
+#: src/remmina_ssh.c:2874
 #, c-format
 msgid "Could not open channel. %s"
 msgstr "Nepodařilo se otevřít kanál: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2402
+#: src/remmina_ssh.c:2917
 #, c-format
 msgid "Could not request shell. %s"
 msgstr "Nedaří se vyžádat si shell: %s"
 
-#: src/remmina_ssh.c:2532
+#: src/remmina_ssh.c:3047
 msgid "Could not create PTY device."
 msgstr "Nedaří se vytvořit zařízení pseudoterminálu."
 
@@ -1573,7 +1573,7 @@ msgstr "Ověřování se pro SSH"
 msgid "SSH private key file"
 msgstr "Soubor se soukromým SSH klíčem"
 
-#: src/remmina_file_editor.c:1244 src/remmina_ssh_plugin.c:1503
+#: src/remmina_file_editor.c:1244 src/remmina_ssh_plugin.c:1505
 msgid "SSH certificate file"
 msgstr "Soubor s SSH certifikátem"
 
@@ -1812,90 +1812,90 @@ msgstr "Zmenšit velikost písma (host+Page Down)"
 msgid "Find text (host+G)"
 msgstr "Hledat text (host+G)"
 
-#: src/remmina_ssh_plugin.c:921
+#: src/remmina_ssh_plugin.c:895
 #, fuzzy, c-format
 msgid "Disconnected from %s:%d via SSH"
 msgstr "Připojování k „%s“ prostřednictvím SSH…"
 
-#: src/remmina_ssh_plugin.c:1468 data/ui/remmina_main.glade:177
+#: src/remmina_ssh_plugin.c:1470 data/ui/remmina_main.glade:177
 #, fuzzy
 msgid "Copy"
 msgstr "Kopírovat"
 
-#: src/remmina_ssh_plugin.c:1468
+#: src/remmina_ssh_plugin.c:1470
 #, fuzzy
 msgid "_Copy"
 msgstr "_Kopírovat"
 
-#: src/remmina_ssh_plugin.c:1469
+#: src/remmina_ssh_plugin.c:1471
 #, fuzzy
 msgid "Paste"
 msgstr "Vložit"
 
-#: src/remmina_ssh_plugin.c:1469
+#: src/remmina_ssh_plugin.c:1471
 #, fuzzy
 msgid "_Paste"
 msgstr "_Vložit"
 
-#: src/remmina_ssh_plugin.c:1470
+#: src/remmina_ssh_plugin.c:1472
 #, fuzzy
 msgid "Select all"
 msgstr "Vybrat všechny"
 
-#: src/remmina_ssh_plugin.c:1470
+#: src/remmina_ssh_plugin.c:1472
 #, fuzzy
 msgid "_Select all"
 msgstr "_Vybrat vše"
 
-#: src/remmina_ssh_plugin.c:1471
+#: src/remmina_ssh_plugin.c:1473
 #, fuzzy
 msgid "Increase font size"
 msgstr "Zvětšit velikost písma"
 
-#: src/remmina_ssh_plugin.c:1471
+#: src/remmina_ssh_plugin.c:1473
 #, fuzzy
 msgid "_Increase font size"
 msgstr "Zvětš_it velikost písma"
 
-#: src/remmina_ssh_plugin.c:1472
+#: src/remmina_ssh_plugin.c:1474
 #, fuzzy
 msgid "Decrease font size"
 msgstr "Zmenšit velikost písma"
 
-#: src/remmina_ssh_plugin.c:1472
+#: src/remmina_ssh_plugin.c:1474
 #, fuzzy
 msgid "_Decrease font size"
 msgstr "_Zmenšit velikost písma"
 
-#: src/remmina_ssh_plugin.c:1473
+#: src/remmina_ssh_plugin.c:1475
 #, fuzzy
 msgid "Find text"
 msgstr "Najít text"
 
-#: src/remmina_ssh_plugin.c:1473
+#: src/remmina_ssh_plugin.c:1475
 #, fuzzy
 msgid "_Find text"
 msgstr "_Najít text"
 
-#: src/remmina_ssh_plugin.c:1500 plugins/spice/spice_plugin.c:676
+#: src/remmina_ssh_plugin.c:1502 plugins/spice/spice_plugin.c:676
 #: plugins/vnc/vnc_plugin.c:2028 plugins/vnc/vnc_plugin.c:2040
 #, fuzzy
 msgid "User password"
 msgstr "Heslo k uživatelskému účtu"
 
-#: src/remmina_ssh_plugin.c:1506
+#: src/remmina_ssh_plugin.c:1508
 #, fuzzy
 #| msgid "Pre-command"
 msgid "Opening command"
 msgstr "Příkaz před připojením"
 
-#: src/remmina_ssh_plugin.c:1507
+#: src/remmina_ssh_plugin.c:1509
 #, fuzzy
 #| msgid "Start-up program"
 msgid "Start-up background program"
 msgstr "Program při spouštění"
 
-#: src/remmina_ssh_plugin.c:1512
+#: src/remmina_ssh_plugin.c:1514
 msgid ""
 "The filename can use the following placeholders:\n"
 "\n"
@@ -1917,78 +1917,82 @@ msgstr ""
 "•  za %g je dosazen název skupiny Remmina profilu\n"
 "•  za %d je dosazeno lokální datum a čas ve formátu dle normy iso8601\n"
 
-#: src/remmina_ssh_plugin.c:1534
+#: src/remmina_ssh_plugin.c:1536
 #, fuzzy
 #| msgid "Terminal color scheme"
 msgid "Terminal colour scheme"
 msgstr "Barevné schéma terminálu"
 
-#: src/remmina_ssh_plugin.c:1535
+#: src/remmina_ssh_plugin.c:1537
 #, fuzzy
 msgid "Character set"
 msgstr "Znaková sada"
 
-#: src/remmina_ssh_plugin.c:1537
+#: src/remmina_ssh_plugin.c:1539
 #, fuzzy
 msgid "KEX (Key Exchange) algorithms"
 msgstr "Algoritmy pro výměnu klíčů (KEX)"
 
-#: src/remmina_ssh_plugin.c:1538
+#: src/remmina_ssh_plugin.c:1540
 #, fuzzy
 msgid "Symmetric cipher client to server"
 msgstr "Klient symetrické šifry k serveru"
 
-#: src/remmina_ssh_plugin.c:1539
+#: src/remmina_ssh_plugin.c:1541
 #, fuzzy
 msgid "Preferred server host key types"
 msgstr "Upřednostňované typy klíčů serveru hostitele"
 
-#: src/remmina_ssh_plugin.c:1540
+#: src/remmina_ssh_plugin.c:1542
 #, fuzzy
 msgid "Folder for SSH session log"
 msgstr "Složka pro záznam z SSH relace"
 
-#: src/remmina_ssh_plugin.c:1541
+#: src/remmina_ssh_plugin.c:1543
 #, fuzzy
 msgid "Filename for SSH session log"
 msgstr "Soubor pro záznam z SSH relace"
 
-#: src/remmina_ssh_plugin.c:1542
+#: src/remmina_ssh_plugin.c:1544
 #, fuzzy
 msgid "Log SSH session when exiting Remmina"
 msgstr "Při ukončování Remmina uložit záznam SSH relace"
 
-#: src/remmina_ssh_plugin.c:1543
+#: src/remmina_ssh_plugin.c:1545
 #, fuzzy
 msgid "Log SSH session asynchronously"
 msgstr "Asynchronní protokolování relace SSH"
 
-#: src/remmina_ssh_plugin.c:1543
+#: src/remmina_ssh_plugin.c:1545
 #, fuzzy
 msgid "Saving the session asynchronously may have a notable performance impact"
 msgstr "Asynchronní uložení relace může mít znatelný dopad na výkon."
 
-#: src/remmina_ssh_plugin.c:1544
+#: src/remmina_ssh_plugin.c:1546
 #, fuzzy
 msgid "Audible terminal bell"
 msgstr "Zvukové upozorňování terminálu"
 
-#: src/remmina_ssh_plugin.c:1545
+#: src/remmina_ssh_plugin.c:1547
+msgid "SSH X11 Forwarding"
+msgstr ""
+
+#: src/remmina_ssh_plugin.c:1548
 #, fuzzy
 msgid "SSH compression"
 msgstr "Komprese SSH"
 
-#: src/remmina_ssh_plugin.c:1546
+#: src/remmina_ssh_plugin.c:1549
 #, fuzzy
 msgid "Don't remember passwords"
 msgstr "Nepamatuje si hesla"
 
-#: src/remmina_ssh_plugin.c:1547
+#: src/remmina_ssh_plugin.c:1550
 #, fuzzy
 msgid "Strict host key checking"
 msgstr "Striktně ověřovat klíče hostitele"
 
-#: src/remmina_ssh_plugin.c:1561
+#: src/remmina_ssh_plugin.c:1564
 #, fuzzy
 msgid "SSH - Secure Shell"
 msgstr "SSH – Zabezpečený Shell"
