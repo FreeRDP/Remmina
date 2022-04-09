@@ -114,6 +114,9 @@ The filetype can be ".remmina" or one supported by a plugin capable of
 List of disabled shortcut keys:++
 fullscreen, autofit, prevtab and nexttab, scale, grab, minimize, viewonly, screenshot, disconnect, toolbar
 
+*--no-tray-icon*
+	Disable tray icon
+
 # EXAMPLES
 
 To connect using an exisitng connection profile use:
