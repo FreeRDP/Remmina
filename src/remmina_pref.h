@@ -257,6 +257,7 @@ extern RemminaPref remmina_pref;
 extern gboolean disabletoolbar;
 extern gboolean fullscreen;
 extern gboolean extrahardening;
+extern gboolean disabletrayicon;
 
 void remmina_pref_init(void);
 gboolean remmina_pref_is_rw(void);

@@ -85,6 +85,7 @@ gboolean disablenews;
 gboolean disabletoolbar;
 gboolean fullscreen;
 gboolean extrahardening;
+gboolean disabletrayicon;
 
 static GOptionEntry remmina_options[] =
 {
@@ -129,6 +130,7 @@ static GOptionEntry remmina_options[] =
 	{ "disable-toolbar", 0,    0,			  G_OPTION_ARG_NONE,	       NULL, N_("Disable toolbar"),												  NULL		 },
 	{ "enable-fullscreen", 0,    0,			  G_OPTION_ARG_NONE,	       NULL, N_("Enable fullscreen"),												  NULL		 },
 	{ "enable-extra-hardening", 0,    0,		  G_OPTION_ARG_NONE,	       NULL, N_("Enable extra hardening (disable closing confirmation, disable unsafe shortcut keys, hide tabs, hide search bar)"),	  NULL		 },
+	{ "no-tray-icon", 0,    0,			  G_OPTION_ARG_NONE,	       NULL, N_("Disable tray icon"),												  NULL		 },
 	{ NULL }
 };
 
@@ -176,6 +178,10 @@ static gint remmina_on_command_line(GApplication *app, GApplicationCommandLine *
 
 	if (g_variant_dict_lookup_value(opts, "enable-extra-hardening", NULL)) {
 		extrahardening = TRUE;
+	}
+
+	if (g_variant_dict_lookup_value(opts, "no-tray-icon", NULL)) {
+		disabletrayicon = TRUE;
 	}
 
 	remmina_pref_init();

@@ -539,6 +539,9 @@ void remmina_pref_init(void)
 	else
 		remmina_pref.disable_tray_icon = FALSE;
 
+	if (disabletrayicon)
+		remmina_pref.disable_tray_icon = TRUE;
+
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "dark_theme", NULL))
 		remmina_pref.dark_theme = g_key_file_get_boolean(gkeyfile, "remmina_pref", "dark_theme", NULL);
 	else
