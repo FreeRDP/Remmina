@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2022-04-11 14:17+0000\n"
-"PO-Revision-Date: 2022-04-16 08:41+0000\n"
+"PO-Revision-Date: 2022-04-16 16:10+0000\n"
 "Last-Translator: menom <menom1@protonmail.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/remmina/remmina/"
 "sk/>\n"
@@ -654,7 +654,6 @@ msgid "- or protocol://username:encryptedpassword@host:port"
 msgstr "- alebo protokol://používateľské_meno:zašifrované_heslo@hostiteľ:port"
 
 #: src/remmina.c:425
-#, fuzzy
 msgid ""
 "Examples:\n"
 "To connect using an existing connection profile, use:\n"
@@ -690,6 +689,7 @@ msgid ""
 msgstr ""
 "Príklady:\n"
 "Ak sa chcete pripojiť pomocou existujúceho profilu pripojenia, použite:\n"
+"\n"
 "\n"
 "\tremmina -c FILE.remmina\n"
 "\n"
@@ -1895,7 +1895,7 @@ msgstr "Akustický zvonček terminálu"
 
 #: src/remmina_ssh_plugin.c:1547
 msgid "SSH X11 Forwarding"
-msgstr ""
+msgstr "SSH X11 Posielanie"
 
 #: src/remmina_ssh_plugin.c:1548
 msgid "SSH compression"
@@ -3218,7 +3218,7 @@ msgstr "_Nové"
 #. TRANSLATORS: Please stick to X2GoClient's way of translating.
 #: plugins/x2go/x2go_plugin.c:546
 msgid "Terminating X2Go sessions can take a moment."
-msgstr ""
+msgstr "Ukončenie X2Go sedenia môže chvíľu trvať."
 
 #: plugins/x2go/x2go_plugin.c:621 plugins/x2go/x2go_plugin.c:623
 #, c-format
@@ -3236,26 +3236,29 @@ msgid ""
 "Neither the 'dialog' nor 'treeview' parameters are initialized! At least one "
 "of them must be given."
 msgstr ""
+"Ani jeden z parametrov 'dialog' ani 'treeview' nie je iniciovaný! Aspoň "
+"jeden z nich musí byť daný."
 
 #: plugins/x2go/x2go_plugin.c:732
-#, fuzzy
 msgid ""
 "Could not obtain \"GtkTreeModelFilter*\" of the session chooser dialog, for "
 "unknown reason."
 msgstr ""
-"Nepodarilo sa nájsť podriadené okno GtkTreeView dialógového okna výberu "
-"relácie."
+"Z neznámeho dôvodu sa nepodarilo získať \"GtkTreeModelFilter*\" dialógového "
+"okna výberu sedenia."
 
 #: plugins/x2go/x2go_plugin.c:767
 msgid "Couldn't get currently selected row (session)!"
 msgstr "Nepodarilo sa získať aktuálne vybraný riadok (reláciu)!"
 
 #: plugins/x2go/x2go_plugin.c:786
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Exactly one session should be selectable but '%i' rows (sessions) are "
 "selected."
-msgstr "malo by byť možné vybrať iba jednu reláciu."
+msgstr ""
+"Malo by byť možné vybrať iba jedno sedenie, ale '%i' radov sedení je "
+"vybraných."
 
 #: plugins/x2go/x2go_plugin.c:836
 msgid "Failed to fill 'GtkTreeIter'."
@@ -3315,7 +3318,7 @@ msgstr "Parametre 'path' ani 'dialog' neboli inicializované."
 
 #: plugins/x2go/x2go_plugin.c:1051
 msgid "GtkTreePath 'path' describes a non-existing row!"
-msgstr ""
+msgstr "GtkTreePath 'path' označuje neexistujúci rad!"
 
 #: plugins/x2go/x2go_plugin.c:1116
 msgid "Parameter 'custom_data' is not fully initialized!"
@@ -3363,7 +3366,6 @@ msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
 msgstr "PyHoca-CLI bol neočakávane ukončený. Toto spojenie sa teraz uzavrie."
 
 #: plugins/x2go/x2go_plugin.c:1610
-#, fuzzy
 msgid ""
 "The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
 "Please check your profile settings and PyHoca-CLI's output for possible "
@@ -3383,7 +3385,6 @@ msgid "Could not save new credentials."
 msgstr "Nepodarilo sa uložiť nové prihlasovacie údaje."
 
 #: plugins/x2go/x2go_plugin.c:1670
-#, fuzzy
 msgid ""
 "An error occured while trying to save new credentials: 's_password' or "
 "'s_username' strings were not set."
@@ -3400,22 +3401,21 @@ msgid "Enter X2Go credentials"
 msgstr "Zadajte prihlasovacie údaje X2Go"
 
 #: plugins/x2go/x2go_plugin.c:1927
-#, fuzzy
 msgid ""
 "Couldn't parse the output of PyHoca-CLI's --list-sessions option. Creating a "
 "new session now."
 msgstr ""
 "Nepodarilo sa analyzovať výstup možnosti --list-sessions aplikácie PyHoca-"
-"CLI. Vytvára sa nová relácia."
+"CLI. Vytvára sa nové sedenie."
 
 #: plugins/x2go/x2go_plugin.c:1966
 msgid "Couldn't allocate enough memory!"
 msgstr "Nepodarilo sa alokovať dostatok pamäte!"
 
 #: plugins/x2go/x2go_plugin.c:1976
-#, fuzzy, c-format
+#, c-format
 msgid "Found already existing X2Go session with ID: '%s'"
-msgstr "Nájdená už existujúca relácia X2Go s ID: '%s'"
+msgstr "Nájdené už existujúce X2Go sedenie s ID: '%s'"
 
 #. TRANSLATORS: Please stick to X2GoClient's translation.
 #: plugins/x2go/x2go_plugin.c:2019
@@ -3433,76 +3433,68 @@ msgid "Terminated"
 msgstr "Zrušené"
 
 #: plugins/x2go/x2go_plugin.c:2058
-#, fuzzy
 msgid ""
 "Could not find any sessions on remote machine. Creating a new session now."
 msgstr ""
-"Na vzdialenom počítači sa nepodarilo nájsť žiadne relácie. Vytvára sa nová "
-"relácia."
+"Na vzdialenom počítači sa nepodarilo nájsť žiadne sedenia. Vytvára sa nové "
+"sedenie."
 
 #: plugins/x2go/x2go_plugin.c:2113
 msgid "Choose a session to resume:"
 msgstr "Vyberte reláciu, ktorú chcete obnoviť:"
 
 #: plugins/x2go/x2go_plugin.c:2156
-#, fuzzy
 msgid "Waiting for user to select a session…"
-msgstr "Čaká sa na výber relácie používateľom…"
+msgstr "Čaká sa na výber sedenia užívateľom…"
 
 #: plugins/x2go/x2go_plugin.c:2164
-#, fuzzy
 msgid "No session was selected. Creating a new one."
-msgstr "Nebola vybraná žiadna relácia. Vytvorenie novej relácie."
+msgstr "Nebolo vybrané žiadne sedenie. Vytvára sa nové."
 
 #: plugins/x2go/x2go_plugin.c:2212
-#, fuzzy, c-format
+#, c-format
 msgid "A non-critical error happened: %s"
 msgstr "Stala sa nekritická chyba: %s"
 
 #: plugins/x2go/x2go_plugin.c:2217
-#, fuzzy, c-format
+#, c-format
 msgid "User chose to resume session with ID: '%s'"
-msgstr "Používateľ si vybral obnovenie relácie s ID: \"%s"
+msgstr "Užívateľ si vybral obnovenie sedenia s ID: \"%s"
 
 #. TRANSLATORS: Please stick to X2GoClient's way of translating.
 #: plugins/x2go/x2go_plugin.c:2238
-#, fuzzy, c-format
+#, c-format
 msgid "Resuming session '%s'…"
-msgstr "Obnovenie relácie '%s'…"
+msgstr "Obnovenie sedenia '%s'…"
 
 #: plugins/x2go/x2go_plugin.c:2369
 msgid "DPI setting is out of bounds. Please adjust it in profile settings."
 msgstr "Nastavenie DPI je mimo hraníc. Upravte ho v nastaveniach profilu."
 
 #: plugins/x2go/x2go_plugin.c:2411
-#, fuzzy
 msgid "An error occured while starting an X2Go session…"
-msgstr "Pri spustení relácie X2Go došlo k chybe…"
+msgstr "Došlo k chybe pri spustení X2Go sedenia…"
 
 #: plugins/x2go/x2go_plugin.c:2419
-#, fuzzy
-#| msgid "Could not start SSH session. %s"
 msgid "Could not start X2Go session."
-msgstr "Nepodarilo sa spustiť reláciu X2Go."
+msgstr "Nepodarilo sa spustiť X2Go sedenie."
 
 #: plugins/x2go/x2go_plugin.c:2420
-#, fuzzy, c-format
+#, c-format
 msgid "Could not start PyHoca-CLI (%i): '%s'"
 msgstr "Nepodarilo sa spustiť PyHoca-CLI (%i): '%s'"
 
 #: plugins/x2go/x2go_plugin.c:2535
-#, fuzzy
 msgid ""
 "Couldn't get PyHoca-CLI's command-line features. This indicates it is either "
 "too old, or not installed. An old limited set of features will be used for "
 "now."
 msgstr ""
-"Nepodarilo sa mi získať funkcie príkazového riadku PyHoca-CLI. To znamená, "
-"že je buď príliš starý, alebo nie je nainštalovaný. Zatiaľ sa použije stará "
+"Nepodarilo sa získať funkcie príkazového riadku PyHoca-CLI. To znamená, že "
+"je buď príliš starý, alebo nie je nainštalovaný. Zatiaľ sa použije stará, "
 "obmedzená sada funkcií."
 
 #: plugins/x2go/x2go_plugin.c:2544
-#, fuzzy
 msgid ""
 "Could not parse PyHoca-CLI's command-line features. Using a limited feature-"
 "set for now."
@@ -3511,12 +3503,11 @@ msgstr ""
 "používa obmedzený súbor funkcií."
 
 #: plugins/x2go/x2go_plugin.c:2550
-#, fuzzy
 msgid "Retrieved the following PyHoca-CLI command-line features:"
-msgstr "Získal nasledujúce funkcie príkazového riadka PyHoca-CLI:"
+msgstr "Získané sú nasledujúce funkcie príkazového riadka PyHoca-CLI:"
 
 #: plugins/x2go/x2go_plugin.c:2558
-#, fuzzy, c-format
+#, c-format
 msgid "Available feature[%i]: '%s'"
 msgstr "Dostupná funkcia[%i]: '%s'"
 
@@ -3526,41 +3517,32 @@ msgid "Connected to %s:%d via X2Go"
 msgstr "Pripojené k %s:%d cez X2Go"
 
 #: plugins/x2go/x2go_plugin.c:2677
-#, fuzzy
-#| msgid "Could not open channel. %s"
 msgid "Could not open X11 DISPLAY."
 msgstr "Nepodarilo sa otvoriť X11 DISPLAY."
 
 #: plugins/x2go/x2go_plugin.c:2717
-#, fuzzy
 msgid "Waiting for window of X2Go Agent to appear…"
 msgstr "Čakanie na zobrazenie okna agenta X2Go…"
 
 #: plugins/x2go/x2go_plugin.c:2743
-#, fuzzy
 msgid "Waiting for PyHoca-CLI to show the session's window…"
-msgstr "Čakáme, kým PyHoca-CLI zobrazí okno relácie…"
+msgstr "Čakanie na PyHoca-CLI, kým zobrazí okno sedenia…"
 
 #: plugins/x2go/x2go_plugin.c:2794
-#, fuzzy
 msgid "No X2Go session window appeared. Something went wrong…"
-msgstr "Nezobrazilo sa žiadne okno relácie X2Go. Niečo sa pokazilo…"
+msgstr "Neobjavilo sa okno X2Go sedenia. Niečo sa pokazilo…"
 
 #: plugins/x2go/x2go_plugin.c:2905
-#, fuzzy
 msgid "RemminaProtocolWidget* gp is 'NULL'!"
 msgstr "RemminaProtocolWidget* gp je 'NULL'!"
 
 #: plugins/x2go/x2go_plugin.c:2926
-#, fuzzy, c-format
-#| msgid ""
-#| "The protocol “%s” is unavailable because GtkSocket only works under X.Org."
+#, c-format
 msgid "The %s protocol is unavailable because GtkSocket only works under X.org"
 msgstr ""
-"Protokol %s nie je k dispozícii, pretože GtkSocket funguje len pod X.org"
+"Protokol %s nie je k dispozícii, pretože GtkSocket funguje len pod X.Org"
 
 #: plugins/x2go/x2go_plugin.c:2935
-#, fuzzy
 msgid "Could not initialize pthread. Falling back to non-threaded mode…"
 msgstr "Nepodarilo sa inicializovať pthread. Vrátil sa do nevláknového režimu…"
 
@@ -3573,9 +3555,9 @@ msgstr "Nepodarilo sa inicializovať pthread. Vrátil sa do nevláknového reži
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
 #: plugins/x2go/x2go_plugin.c:2978 plugins/x2go/x2go_plugin.c:2996
-#, fuzzy, c-format
+#, c-format
 msgid "%sand '%s'"
-msgstr "%sa \"%s"
+msgstr "%sa '%s'"
 
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
@@ -3584,7 +3566,7 @@ msgstr "%sa \"%s"
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
 #: plugins/x2go/x2go_plugin.c:2983 plugins/x2go/x2go_plugin.c:3001
-#, fuzzy, c-format
+#, c-format
 msgid "%s'%s' "
 msgstr "%s'%s' "
 
@@ -3592,34 +3574,31 @@ msgstr "%s'%s' "
 #. (Except your listing-grammar differs from english.)
 #. 'value1', 'value2', 'valueN-1' and 'valueN'
 #: plugins/x2go/x2go_plugin.c:2988
-#, fuzzy, c-format
+#, c-format
 msgid "%s'%s', "
 msgstr "%s'%s', "
 
 #: plugins/x2go/x2go_plugin.c:3027
-#, fuzzy
 msgid "Invalid validation data in ProtocolSettings array!"
-msgstr "Neplatné overovacie údaje v poli ProtocolSettings!"
+msgstr "Neplatné overovacie údaje v ProtocolSettings!"
 
 #: plugins/x2go/x2go_plugin.c:3042 plugins/x2go/x2go_plugin.c:3107
-#, fuzzy
 msgid "Validation data in ProtocolSettings array is invalid!"
-msgstr "Overovacie údaje v poli ProtocolSettings sú neplatné!"
+msgstr "Overovacie údaje v ProtocolSettings sú neplatné!"
 
 #: plugins/x2go/x2go_plugin.c:3051
-#, fuzzy
 msgid "Parameters 'key' or 'value' are 'NULL'!"
 msgstr "Parametre 'key' alebo 'value' sú 'NULL'!"
 
 #: plugins/x2go/x2go_plugin.c:3069
-#, fuzzy, c-format
+#, c-format
 msgid "Allowed values are %s."
 msgstr "Povolené hodnoty sú %s."
 
 #: plugins/x2go/x2go_plugin.c:3071
-#, fuzzy, c-format
+#, c-format
 msgid "The only allowed value is '%s'."
-msgstr "Jediná povolená hodnota je \"%s\"."
+msgstr "Jediná povolená hodnota je '%s'."
 
 #: plugins/x2go/x2go_plugin.c:3118
 msgid "The lower limit is not a valid integer!"
@@ -3635,18 +3614,15 @@ msgstr "Spodná hranica je príliš nízka!"
 
 #: plugins/x2go/x2go_plugin.c:3133 plugins/x2go/x2go_plugin.c:3163
 #: plugins/x2go/x2go_plugin.c:3183
-#, fuzzy
 msgid "Something unknown went wrong."
 msgstr "Niečo neznáme sa pokazilo."
 
 #: plugins/x2go/x2go_plugin.c:3138 plugins/x2go/x2go_plugin.c:3168
 #: plugins/x2go/x2go_plugin.c:3187
-#, fuzzy
 msgid "Please check the RemminaProtocolSetting array for possible errors."
-msgstr "Skontrolujte, či v poli RemminaProtocolSetting nie sú možné chyby."
+msgstr "Skontrolujte, či v RemminaProtocolSetting nie sú možné chyby."
 
 #: plugins/x2go/x2go_plugin.c:3148
-#, fuzzy
 msgid "The upper limit is not a valid integer!"
 msgstr "Horná hranica nie je platné celé číslo!"
 
@@ -3659,12 +3635,11 @@ msgid "The upper limit is too low!"
 msgstr "Horná hranica je príliš nízka!"
 
 #: plugins/x2go/x2go_plugin.c:3178
-#, fuzzy
 msgid "The input is not a valid integer!"
 msgstr "Na vstupe nie je platné celé číslo!"
 
 #: plugins/x2go/x2go_plugin.c:3180 plugins/x2go/x2go_plugin.c:3199
-#, fuzzy, c-format
+#, c-format
 msgid "Input must be a number between %i and %i."
 msgstr "Vstupom musí byť číslo medzi %i a %i."
 
@@ -3673,17 +3648,14 @@ msgid "Startup program"
 msgstr "Program pri spustení"
 
 #: plugins/x2go/x2go_plugin.c:3230
-#, fuzzy
 msgid "Which command should be executed after creating the X2Go session?"
-msgstr "Ktorý príkaz sa má vykonať po vytvorení relácie X2Go?"
+msgstr "Ktorý príkaz sa má vykonať po vytvorení X2Go sedenia?"
 
 #: plugins/x2go/x2go_plugin.c:3232
 msgid "Keyboard Layout (auto)"
 msgstr "Rozloženie klávesnice (automatické)"
 
 #: plugins/x2go/x2go_plugin.c:3233
-#, fuzzy
-#| msgid "Keyboard layout"
 msgid "Keyboard type (auto)"
 msgstr "Typ klávesnice (automatický)"
 
@@ -3692,7 +3664,6 @@ msgid "Audio support"
 msgstr "Podpora zvuku"
 
 #: plugins/x2go/x2go_plugin.c:3236
-#, fuzzy
 msgid "The sound system of the X2Go server (default: 'pulse')."
 msgstr "Zvukový systém servera X2Go (predvolené: 'pulse')."
 
@@ -3709,37 +3680,32 @@ msgid "DPI resolution"
 msgstr "Rozlíšenie DPI"
 
 #: plugins/x2go/x2go_plugin.c:3246
-#, fuzzy
 msgid ""
 "Launch session with a specific resolution (in dots per inch). Must be "
 "between 20 and 400."
 msgstr ""
-"Spustite reláciu s konkrétnym rozlíšením (v bodoch na palec). Musí byť v "
+"Spustite sedenie s konkrétnym rozlíšením (v bodoch na palec). Musí byť v "
 "rozmedzí od 20 do 400."
 
 #: plugins/x2go/x2go_plugin.c:3290
-#, fuzzy
 msgid "X2Go plugin loaded."
 msgstr "Načítaný zásuvný modul X2Go."
 
 #: plugins/x2go/x2go_plugin.h:43
-#, fuzzy
 msgid "X2Go - Launch an X2Go session"
-msgstr "X2Go - spustenie relácie X2Go"
+msgstr "X2Go - spustenie sedenia X2Go"
 
 #: plugins/gvnc/gvnc_plugin_config.h:40
 msgid "Remmina VNC plugin for GNOME and KVM"
 msgstr "Zásuvný modul Remmina VNC pre GNOME a KVM"
 
 #: plugins/gvnc/gvnc_plugin.c:477
-#, fuzzy, c-format
-#| msgid "Authentication type"
+#, c-format
 msgid "Unsupported authentication type %u"
 msgstr "Nepodporovaný typ overovania %u"
 
 #: plugins/gvnc/gvnc_plugin.c:489
-#, fuzzy, c-format
-#| msgid "Authentication type"
+#, c-format
 msgid "Authentication failure: %s"
 msgstr "Zlyhanie overovania: %s"
 
@@ -3772,8 +3738,6 @@ msgid "Use JPEG Compression"
 msgstr "Použiť kompresiu JPEG"
 
 #: plugins/gvnc/gvnc_plugin.c:850
-#, fuzzy
-#| msgid "Browse the network to find a %s server"
 msgid "This might not work on all VNC servers"
 msgstr "Toto nemusí fungovať na všetkých serveroch VNC"
 
@@ -3786,7 +3750,6 @@ msgid "Shared connection"
 msgstr "Zdieľané pripojenie"
 
 #: plugins/gvnc/gvnc_plugin.c:871
-#, fuzzy
 msgid ""
 "If the server should try to share the desktop by leaving other clients "
 "connected"
@@ -3795,14 +3758,10 @@ msgstr ""
 "klientov"
 
 #: plugins/gvnc/gvnc_plugin.c:881
-#, fuzzy
-#| msgid "Send Ctrl+Alt+Del"
 msgid "Send Ctrl+Alt+_Del"
-msgstr "Odoslať Ctrl+Alt+Del"
+msgstr "Odoslať Ctrl+Alt+_Del"
 
 #: plugins/gvnc/gvnc_plugin.c:882
-#, fuzzy
-#| msgid "Send Ctrl+Alt+Del"
 msgid "Send Ctrl+Alt+_Backspace"
 msgstr "Odoslať Ctrl+Alt+_Backspace"
 
@@ -3855,18 +3814,14 @@ msgid "Send Ctrl+Alt+_F12"
 msgstr "Odoslať Ctrl+Alt+_F12"
 
 #: plugins/gvnc/gvnc_plugin.c:896
-#, fuzzy
 msgid "Reboot remote host"
-msgstr "Reštartovanie vzdialeného hostiteľa"
+msgstr "Reštart vzdialeného hostiteľa"
 
 #: plugins/gvnc/gvnc_plugin.c:897
-#, fuzzy
 msgid "Reset remote host (hard reboot)"
-msgstr "Resetovanie vzdialeného hostiteľa (tvrdý reštart)"
+msgstr "Reset vzdialeného hostiteľa (tvrdý reštart)"
 
 #: plugins/gvnc/gvnc_plugin.c:898
-#, fuzzy
-#| msgid "Show remote cursor"
 msgid "Shutdown remote host"
 msgstr "Vypnutie vzdialeného hostiteľa"
 
@@ -3979,24 +3934,16 @@ msgid "About"
 msgstr "O aplikácii"
 
 #: data/ui/remmina_about.glade:34
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Copyright © 2014–2021 Antenore Gatta, Giovanni Panozzo.\n"
-#| "Copyright © 2009–2014 Vic Lee\n"
-#| "More details in COPYING\n"
-#| "    "
 msgid ""
 "Copyright © 2014–2022 Antenore Gatta, Giovanni Panozzo.\n"
 "Copyright © 2009–2014 Vic Lee\n"
 "More details in COPYING"
 msgstr ""
-"Autorské práva © 2014–2021 Antenore Gatta, Giovanni Panozzo.\n"
+"Autorské práva © 2014–2022 Antenore Gatta, Giovanni Panozzo.\n"
 "Autorské práva © 2009–2014 Vic Lee\n"
 "Viac podrobností v súbore COPYING"
 
 #: data/ui/remmina_about.glade:38
-#, fuzzy
 msgid "https://www.remmina.org/"
 msgstr "https://www.remmina.org/"
 
@@ -4060,22 +4007,16 @@ msgid "Domain\\Username"
 msgstr "Doména\\Meno používateľa"
 
 #: data/ui/remmina_passwd.glade:33
-#, fuzzy
-#| msgid "_OK"
 msgid "OK"
-msgstr "_OK"
+msgstr "OK"
 
 #: data/ui/remmina_passwd.glade:60
-#, fuzzy
-#| msgid "Set new password"
 msgid "Set Primary Password"
-msgstr "Nastavenie nového hesla"
+msgstr "Nastavenie hlavného hesla"
 
 #: data/ui/remmina_passwd.glade:101
-#, fuzzy
-#| msgid "User password"
 msgid "Verify password"
-msgstr "Heslo používateľa"
+msgstr "Overiť heslo"
 
 #: data/ui/remmina_news.glade:75
 msgid ""
@@ -4136,7 +4077,7 @@ msgstr ""
 
 #: data/ui/remmina_news.glade:169
 msgid "Receives updated news from remmina.org"
-msgstr ""
+msgstr "Dostávať najnovšie správy z remmina.org"
 
 #: data/ui/remmina_news.glade:182
 msgid "* By turning on news you consent to fetching data from remmina.org"
@@ -4378,11 +4319,9 @@ msgid "Remmina data folder"
 msgstr "Priečinok údajov aplikácie Remmina"
 
 #: data/ui/remmina_preferences.glade:297
-#, fuzzy
-#| msgid "Choose a folder to save screenshots from Remmina in."
 msgid "Choose a folder to save connection profiles from Remmina in."
 msgstr ""
-"Vyberte priečinok, do ktorého chcete uložiť profily pripojenia z programu "
+"Vyberte priečinok, do ktorého chcete uložiť profily pripojení z programu "
 "Remmina."
 
 #: data/ui/remmina_preferences.glade:315 data/ui/remmina_preferences.glade:491
@@ -4407,14 +4346,6 @@ msgstr "Šablóna pre názvy súborov profilu"
 
 #. Placeholders used to name a Remmina connection profile
 #: data/ui/remmina_preferences.glade:361
-#, fuzzy
-#| msgid ""
-#| "%G Group name (slash will be converted to - automatically)\n"
-#| "%P Protocol name\n"
-#| "%N Connection name\n"
-#| "%h Hostname/IP\n"
-#| "\n"
-#| "\n"
 msgid ""
 "%G Name of group (slashes \\/ are converted to dashes -)\n"
 "%P Protocol name\n"
@@ -4541,10 +4472,8 @@ msgstr ""
 "režime na celú obrazovku)."
 
 #: data/ui/remmina_preferences.glade:770
-#, fuzzy
-#| msgid "“Grab all keyboard events” status colour"
 msgid "Enable/Disable “Grab all keyboard events” status colour"
-msgstr "Zapnutie/vypnutie farby stavu \"Zachytiť všetky udalosti klávesnice\""
+msgstr "Zapnutie/Vypnutie farby stavu \"Zachytiť všetky udalosti klávesnice\""
 
 #: data/ui/remmina_preferences.glade:826
 msgid "Appearance"
@@ -4673,10 +4602,13 @@ msgid ""
 "Time in seconds before Remmina will lock the session and asks for a password "
 "again. Default: 300 Seconds."
 msgstr ""
+"Čas v sekundách, kým Remmina zamkne sedenie a znovu požiada o heslo. "
+"Predvolené: 300 sekúnd."
 
 #: data/ui/remmina_preferences.glade:1645
 msgid "Set and use a secret key to protect Remmina from unauthorized use."
 msgstr ""
+"Nastaviť a použiť tajný kľúč a chrániť Remmina pred nepovoleným použitím."
 
 #: data/ui/remmina_preferences.glade:1650
 msgid "Remmina password"
@@ -4699,10 +4631,8 @@ msgid "timeout in seconds (default 300)"
 msgstr "časový limit v sekundách (predvolené: 300)"
 
 #: data/ui/remmina_preferences.glade:1709
-#, fuzzy
-#| msgid "Secured password storage in KWallet"
 msgid "Enter your Remmina password to connect"
-msgstr "Bezpečné úložisko hesiel v KWallet"
+msgstr "Zadajte vaše heslo k pripojeniu cez Remmina"
 
 #. “Require to connect” is “Require the Remmina password before to connect”, the Remmina password is the Master/Principal Password, that is used to protect Remmina from unauthorized use.
 #: data/ui/remmina_preferences.glade:1713
@@ -4734,6 +4664,13 @@ msgid ""
 "\"Intermediate\" doesn't use as much memory or processing power, and "
 "\"Sensitive\" is more secure, but uses +1 GiB of RAM and many CPU cycles. "
 msgstr ""
+"Toto sú metódy šifrovania použité na uloženie hesiel programom Remmina.\n"
+"\n"
+"Okrem metódy \"Weak\" sú všetky ostatné odporúčané, \"Keystore\" je "
+"predvolené, integruje sa s KDE/Plasma a GNOME.\n"
+"\n"
+"\"Intermediate\" používa málo prostriedkov pamäte a výkonu na spracovanie, "
+"\"Sensitive\" je viac bezpečné, ale používa +1 GiB RAM a viac cyklov CPU. "
 
 #: data/ui/remmina_preferences.glade:1790
 msgid "Intermediate (+64 MiB RAM)"
@@ -4793,7 +4730,6 @@ msgid "Use default system font"
 msgstr "Použiť predvolené systémové písmo"
 
 #: data/ui/remmina_preferences.glade:2051
-#, fuzzy
 msgid ""
 "Selecting “SGR 1” also switches to the bright counterparts of the first 8 "
 "palette colours (in addition to making text bold)."
@@ -4910,8 +4846,6 @@ msgid "Foreground colour"
 msgstr "Farba popredia"
 
 #: data/ui/remmina_preferences.glade:2448
-#, fuzzy
-#| msgid "Increase font size"
 msgid "Increase and decrease font size"
 msgstr "Zväčšenie a zmenšenie veľkosti písma"
 
