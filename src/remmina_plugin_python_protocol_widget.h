@@ -29,10 +29,35 @@
  *  do not wish to do so, delete this exception statement from your
  *  version. *  If you delete this exception statement from all source
  *  files in the program, then also delete it here.
+ */
+
+/**
+ * @file 	remmina_plugin_python_protocol_widget.h
  *
+ * @brief	Contains the implementation of the widget handling used from the protocol plugin.
  */
 
 #pragma once
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// A P I
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+G_BEGIN_DECLS
+
+/**
+ * Initializes the widget backend of the protocol plugin implementation.
+ */
 void remmina_plugin_python_protocol_widget_init(void);
 
+/**
+ * Initializes Python types used for protocol widgets.
+ */
+void remmina_plugin_python_protocol_widget_type_ready(void);
+
+/**
+ * Creates a new instance of PyRemminaProtocolWidget and initializes its fields.
+ */
+PyRemminaProtocolWidget* remmina_plugin_python_protocol_widget_create();
+
+G_END_DECLS

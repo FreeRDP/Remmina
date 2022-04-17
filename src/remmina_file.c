@@ -387,7 +387,7 @@ remmina_file_load(const gchar *filename)
 	}
 
 	secret_plugin = remmina_plugin_manager_get_secret_plugin();
-	secret_service_available = secret_plugin && secret_plugin->is_service_available();
+	secret_service_available = secret_plugin && secret_plugin->is_service_available(secret_plugin);
 
 	remminafile->filename = g_strdup(filename);
 	gsize nkeys = 0;
@@ -421,7 +421,7 @@ remmina_file_load(const gchar *filename)
 			}
 #endif
 			if ((g_strcmp0(s, ".") == 0) && (secret_service_available)) {
-				gchar *sec = secret_plugin->get_password(remminafile, key);
+				gchar *sec = secret_plugin->get_password(secret_plugin, remminafile, key);
 				remmina_file_set_string(remminafile, key, sec);
 				/* Annotate in spsettings that this value comes from secret_plugin */
 				g_hash_table_insert(remminafile->spsettings, g_strdup(key), NULL);
@@ -741,7 +741,7 @@ void remmina_file_save(RemminaFile *remminafile)
 	}
 
 	secret_plugin = remmina_plugin_manager_get_secret_plugin();
-	secret_service_available = secret_plugin && secret_plugin->is_service_available();
+	secret_service_available = secret_plugin && secret_plugin->is_service_available(secret_plugin);
 
 	g_hash_table_iter_init(&iter, remminafile->settings);
 	while (g_hash_table_iter_next(&iter, (gpointer *)&key, (gpointer *)&value)) {
@@ -751,11 +751,11 @@ void remmina_file_save(RemminaFile *remminafile)
 					REMMINA_DEBUG("We have a secret and disablepasswordstoring=0");
 					if (value && value[0]) {
 						if (g_strcmp0(value, ".") != 0)
-							secret_plugin->store_password(remminafile, key, value);
+							secret_plugin->store_password(secret_plugin, remminafile, key, value);
 						g_key_file_set_string(gkeyfile, KEYFILE_GROUP_REMMINA, key, ".");
 					} else {
 						g_key_file_set_string(gkeyfile, KEYFILE_GROUP_REMMINA, key, "");
-						secret_plugin->delete_password(remminafile, key);
+						secret_plugin->delete_password(secret_plugin, remminafile, key);
 					}
 				} else {
 					REMMINA_DEBUG("We have a password and disablepasswordstoring=0");
@@ -771,7 +771,7 @@ void remmina_file_save(RemminaFile *remminafile)
 					if (value && value[0]) {
 						if (g_strcmp0(value, ".") != 0) {
 							REMMINA_DEBUG("Deleting the secret in the keyring as disablepasswordstoring=1");
-							secret_plugin->delete_password(remminafile, key);
+							secret_plugin->delete_password(secret_plugin, remminafile, key);
 							g_key_file_set_string(gkeyfile, KEYFILE_GROUP_REMMINA, key, ".");
 						}
 					}
@@ -831,7 +831,7 @@ void remmina_file_store_secret_plugin_password(RemminaFile *remminafile, const g
 
 	if (g_hash_table_lookup_extended(remminafile->spsettings, g_strdup(key), NULL, NULL)) {
 		plugin = remmina_plugin_manager_get_secret_plugin();
-		plugin->store_password(remminafile, key, value);
+		plugin->store_password(plugin, remminafile, key, value);
 	} else {
 		remmina_file_set_string(remminafile, key, value);
 		remmina_file_save(remminafile);

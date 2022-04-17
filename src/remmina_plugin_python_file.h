@@ -1,6 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2016-2022 Antenore Gatta, Giovanni Panozzo
+ * Copyright (C) 2014-2021 Antenore Gatta, Giovanni Panozzo, Mathias Winterhalter (ToolsDevler)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -29,17 +29,33 @@
  *  do not wish to do so, delete this exception statement from your
  *  version. *  If you delete this exception statement from all source
  *  files in the program, then also delete it here.
+ */
+
+/**
+ * @file 	remmina_plugin_python_file.h
  *
+ * @brief	Contains the specialisation of RemminaPluginFile plugins in Python.
  */
 
 #pragma once
 
-#include "remmina_plugin_manager.h"
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// A P I
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 G_BEGIN_DECLS
 
-typedef gboolean (* RemminaPluginMain)(gchar* name);
+/**
+ * Initializes the Python plugin specialisation for file plugins.
+ */
+void remmina_plugin_python_file_init(void);
 
-gboolean remmina_plugin_native_load(RemminaPluginService* service, const char* name);
+/**
+ * @brief	Creates a new instance of the RemminaPluginFile, initializes its members and references the wrapper
+ * 			functions.
+ * @param 	instance The instance of the Python plugin.
+ * @return	Returns a new instance of the RemminaPlugin (must be freed!).
+ */
+RemminaPlugin* remmina_plugin_python_create_file_plugin(PyPlugin* instance);
 
 G_END_DECLS

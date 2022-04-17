@@ -364,7 +364,7 @@ RemminaFile *remmina_file_manager_load_file(const gchar *filename)
 	} else {
 		plugin = remmina_plugin_manager_get_import_file_handler(filename);
 		if (plugin)
-			remminafile = plugin->import_func(filename);
+			remminafile = plugin->import_func(plugin, filename);
 	}
 	return remminafile;
 }

@@ -1,6 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2014-2022 Antenore Gatta, Giovanni Panozzo
+ * Copyright (C) 2014-2021 Antenore Gatta, Giovanni Panozzo, Mathias Winterhalter (ToolsDevler)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -29,14 +29,40 @@
  *  do not wish to do so, delete this exception statement from your
  *  version. *  If you delete this exception statement from all source
  *  files in the program, then also delete it here.
+ */
+
+/**
+ * @file 	remmina_plugin_python_entry.h
  *
+ * @brief	Contains the specialisation of RemminaPluginEntry plugins in Python.
  */
 
 #pragma once
 
-RemminaPlugin* remmina_plugin_python_create_protocol_plugin(PyObject* pluginInstance);
-RemminaPlugin* remmina_plugin_python_create_entry_plugin(PyObject* pluginInstance);
-RemminaPlugin* remmina_plugin_python_create_file_plugin(PyObject* pluginInstance);
-RemminaPlugin* remmina_plugin_python_create_tool_plugin(PyObject* pluginInstance);
-RemminaPlugin* remmina_plugin_python_create_pref_plugin(PyObject* pluginInstance);
-RemminaPlugin* remmina_plugin_python_create_secret_plugin(PyObject* pluginInstance);
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// I N L U C E S
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+#include "remmina/plugin.h"
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// A P I
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+G_BEGIN_DECLS
+
+/**
+ * Initializes the Python plugin specialisation for tool plugins.
+ */
+void remmina_plugin_python_tool_init(void);
+
+/**
+ * @brief	Creates a new instance of the RemminaPluginTool, initializes its members and references the wrapper
+ * 			functions.
+ * @param 	instance The instance of the Python plugin.
+ * @return	Returns a new instance of the RemminaPlugin (must be freed!).
+ */
+RemminaPlugin* remmina_plugin_python_create_tool_plugin(PyPlugin* instance);
+
+G_END_DECLS
+

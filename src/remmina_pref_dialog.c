@@ -408,7 +408,7 @@ static gboolean remmina_pref_dialog_add_pref_plugin(gchar *name, RemminaPlugin *
 	gtk_widget_show(vbox);
 	gtk_notebook_append_page(GTK_NOTEBOOK(remmina_pref_dialog->notebook_preferences), vbox, widget);
 
-	widget = pref_plugin->get_pref_body();
+	widget = pref_plugin->get_pref_body(pref_plugin);
 	gtk_box_pack_start(GTK_BOX(vbox), widget, FALSE, FALSE, 0);
 
 	return FALSE;

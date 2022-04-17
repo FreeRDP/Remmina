@@ -355,7 +355,7 @@ void remmina_plugin_manager_init()
 	sple = secret_plugins;
 	while(sple != NULL) {
 		sp = (RemminaSecretPlugin*)sple->data;
-		if (sp->init()) {
+		if (sp->init(sp)) {
 			g_print("The %s secret plugin has been initialized and it will be your default secret plugin\n",
 				sp->name);
 			remmina_secret_plugin = sp;
@@ -516,7 +516,7 @@ RemminaFilePlugin* remmina_plugin_manager_get_import_file_handler(const gchar *f
 		if (plugin->type != REMMINA_PLUGIN_TYPE_FILE)
 			continue;
 
-		if (plugin->import_test_func(file)) {
+		if (plugin->import_test_func(plugin, file)) {
 			return plugin;
 		}
 	}
@@ -533,7 +533,7 @@ RemminaFilePlugin* remmina_plugin_manager_get_export_file_handler(RemminaFile *r
 		plugin = (RemminaFilePlugin*)g_ptr_array_index(remmina_plugin_table, i);
 		if (plugin->type != REMMINA_PLUGIN_TYPE_FILE)
 			continue;
-		if (plugin->export_test_func(remminafile)) {
+		if (plugin->export_test_func(plugin, remminafile)) {
 			return plugin;
 		}
 	}

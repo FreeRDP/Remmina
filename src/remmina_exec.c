@@ -486,7 +486,7 @@ void remmina_exec_command(RemminaCommandType command, const gchar* data)
 	case REMMINA_COMMAND_PLUGIN:
 		plugin = (RemminaEntryPlugin*)remmina_plugin_manager_get_plugin(REMMINA_PLUGIN_TYPE_ENTRY, data);
 		if (plugin) {
-			plugin->entry_func();
+			plugin->entry_func(plugin);
 		}else  {
 			widget = gtk_message_dialog_new(NULL, GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
 				_("Plugin %s is not registered."), data);

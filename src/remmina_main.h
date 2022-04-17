@@ -109,6 +109,7 @@ void remmina_main_destroy(void);
 void remmina_main_on_destroy_event(void);
 void remmina_main_save_before_destroy(void);
 
+void remmina_main_show_dialog(GtkMessageType msg, GtkButtonsType buttons, const gchar* message);
 void remmina_main_show_warning_dialog(const gchar *message);
 void remmina_main_on_action_application_about(GSimpleAction *action, GVariant *param, gpointer data);
 void remmina_main_on_action_application_news(GSimpleAction *action, GVariant *param, gpointer data);

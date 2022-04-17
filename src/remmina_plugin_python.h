@@ -29,23 +29,46 @@
  *  do not wish to do so, delete this exception statement from your
  *  version. *  If you delete this exception statement from all source
  *  files in the program, then also delete it here.
+ */
+
+/**
+ * @file 	remmina_plugin_python.h
  *
+ * @brief	Declares the interface between the Python plugin implementation and Remmina covering the initialization of
+ * 			the implementation and the load function, that allows Remmina to load plugins into the application.
+ *
+ * @details When Remmina discovers Python scripts in the plugin root folder the plugin manager passes the path to the
+ * 			Python plugin loader. There it gets executed and the plugin classes get mapped to "real" Remmina plugin
+ * 			instances.
+ *
+ * 			For the communication between Remmina and Python the python module called 'remmina' is initialized and
+ * 			loaded into the environment of the plugin script (@see remmina_plugin_python_module.c).
+ *
+ * 			@see http://www.remmina.org/wp for more information.
  */
 
 #pragma once
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// I N C L U D E
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include "remmina/plugin.h"
 
 G_BEGIN_DECLS
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// A P I
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 /**
- * @brief Initializes the Python plugin loaders.
- * @details This does not load any plugins but initializes globals and the Python engine itself.
+ * @brief 	Initializes the Python plugin loaders.
+ * @details This does not load any plugins but initializes the implementation (e.g. globals and the Python engine).
  */
 void remmina_plugin_python_init(void);
 
 /**
- * @brief Loads a plugin from the Remmina plugin folder with the given name.
+ * @brief 	Loads a plugin from the Remmina plugin folder with the given name.
  *
  * @param   service     The instance of the service providing an API between Remmina and its plugins.
  * @param   filename    The filename of the plugin to load.

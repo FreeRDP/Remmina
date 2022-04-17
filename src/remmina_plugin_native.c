@@ -53,29 +53,33 @@
 #include "remmina_masterthread_exec.h"
 #include "remmina/remmina_trace_calls.h"
 
-gboolean remmina_plugin_native_load(RemminaPluginService* service, const char* name) {
-    TRACE_CALL(__func__);
-	GModule *module;
+gboolean remmina_plugin_native_load(RemminaPluginService* service, const char* name)
+{
+	TRACE_CALL(__func__);
+	GModule* module;
 	RemminaPluginEntryFunc entry;
 
 	module = g_module_open(name, G_MODULE_BIND_LAZY | G_MODULE_BIND_LOCAL);
 
-	if (!module) {
+	if (!module)
+	{
 		g_print("Failed to load plugin: %s.\n", name);
 		g_print("Error: %s\n", g_module_error());
 		return FALSE;
 	}
 
-	if (!g_module_symbol(module, "remmina_plugin_entry", (gpointer*)&entry)) {
+	if (!g_module_symbol(module, "remmina_plugin_entry", (gpointer*)&entry))
+	{
 		g_print("Failed to locate plugin entry: %s.\n", name);
 		return FALSE;
 	}
 
-	if (!entry(service)) {
+	if (!entry(service))
+	{
 		g_print("Plugin entry returned false: %s.\n", name);
 		return FALSE;
 	}
 
-    return TRUE;
+	return TRUE;
 	/* We don’t close the module because we will need it throughout the process lifetime */
 }

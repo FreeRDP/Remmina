@@ -286,7 +286,7 @@ static void remmina_main_show_snap_welcome()
 		g_print("  but we can’t find the secret plugin inside the SNAP.\n");
 		need_snap_interface_connections = TRUE;
 	} else {
-		if (!remmina_secret_plugin->is_service_available()) {
+		if (!remmina_secret_plugin->is_service_available(remmina_secret_plugin)) {
 			g_print("  but we can’t access a secret service. Secret service or SNAP interface connection is missing.\n");
 			need_snap_interface_connections = TRUE;
 		}
@@ -987,7 +987,7 @@ void remmina_main_on_action_application_preferences(GSimpleAction *action, GVari
 	gtk_widget_show_all(widget);
 	/* Switch to a dark theme if the user enabled it */
 	settings = gtk_settings_get_default();
-	g_object_set(settings, "gtk-application-prefer-dark-theme", remmina_pref.dark_theme, NULL);
+	  g_object_set(settings, "gtk-application-prefer-dark-theme", &remmina_pref.dark_theme, NULL);
 }
 
 void remmina_main_on_action_application_default(GSimpleAction *action, GVariant *param, gpointer data)
@@ -1050,7 +1050,7 @@ static void remmina_main_import_file_list(GSList *files)
 	for (element = files; element; element = element->next) {
 		path = (gchar *)element->data;
 		plugin = remmina_plugin_manager_get_import_file_handler(path);
-		if (plugin && (remminafile = plugin->import_func(path)) != NULL && remmina_file_get_string(remminafile, "name")) {
+		if (plugin && (remminafile = plugin->import_func(plugin, path)) != NULL && remmina_file_get_string(remminafile, "name")) {
 			remmina_file_generate_filename(remminafile);
 			remmina_file_save(remminafile);
 			imported = TRUE;
@@ -1119,7 +1119,7 @@ void remmina_main_on_action_tools_export(GSimpleAction *action, GVariant *param,
 		dialog = gtk_file_chooser_dialog_new(plugin->export_hints, remminamain->window,
 						     GTK_FILE_CHOOSER_ACTION_SAVE, _("_Save"), GTK_RESPONSE_ACCEPT, NULL);
 		if (gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_ACCEPT)
-			plugin->export_func(remminafile, gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(dialog)));
+			plugin->export_func(plugin, remminafile, gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(dialog)));
 		gtk_widget_destroy(dialog);
 	} else {
 		dialog = gtk_message_dialog_new(remminamain->window, GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
@@ -1415,7 +1415,7 @@ static gboolean remmina_main_add_tool_plugin(gchar *name, RemminaPlugin *plugin,
 
 	gtk_widget_show(menuitem);
 	gtk_menu_shell_append(GTK_MENU_SHELL(remminamain->menu_popup_full), menuitem);
-	g_signal_connect(G_OBJECT(menuitem), "activate", G_CALLBACK(tool_plugin->exec_func), NULL);
+	g_signal_connect(G_OBJECT(menuitem), "activate", G_CALLBACK(tool_plugin->exec_func), tool_plugin);
 	return FALSE;
 }
 
@@ -1436,7 +1436,7 @@ static void remmina_main_init(void)
 	REMMINA_DEBUG("Initializing the Remmina main window");
 	/* Switch to a dark theme if the user enabled it */
 	settings = gtk_settings_get_default();
-	g_object_set(settings, "gtk-application-prefer-dark-theme", remmina_pref.dark_theme, NULL);
+	g_object_set(settings, "gtk-application-prefer-dark-theme", &remmina_pref.dark_theme, NULL);
 
 	REMMINA_DEBUG ("Initializing monitor");
 	remminamain->monitor = remmina_network_monitor_new();
@@ -1607,14 +1607,23 @@ void remmina_main_update_file_datetime(RemminaFile *file)
 	remmina_main_load_files();
 }
 
-void remmina_main_show_warning_dialog(const gchar *message)
-{
+void remmina_main_show_dialog(GtkMessageType msg, GtkButtonsType buttons, const gchar* message) {
 	GtkWidget *dialog;
 
 	if (remminamain->window) {
-		dialog = gtk_message_dialog_new(remminamain->window, GTK_DIALOG_MODAL, GTK_MESSAGE_WARNING, GTK_BUTTONS_CLOSE,
-						message, g_get_application_name());
+		dialog = gtk_message_dialog_new(remminamain->window, GTK_DIALOG_MODAL, msg, buttons, message);
 		gtk_dialog_run(GTK_DIALOG(dialog));
 		gtk_widget_destroy(dialog);
 	}
+}
+
+void remmina_main_show_warning_dialog(const gchar *message) {
+    GtkWidget *dialog;
+
+    if (remminamain->window) {
+        dialog = gtk_message_dialog_new(remminamain->window, GTK_DIALOG_MODAL, GTK_MESSAGE_WARNING, GTK_BUTTONS_CLOSE,
+                                        message, g_get_application_name());
+        gtk_dialog_run(GTK_DIALOG(dialog));
+        gtk_widget_destroy(dialog);
+    }
 }
