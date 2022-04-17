@@ -1,6 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2014-2022 Antenore Gatta, Giovanni Panozzo
+ * Copyright (C) 2014-2021 Antenore Gatta, Giovanni Panozzo, Mathias Winterhalter (ToolsDevler)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -31,62 +31,54 @@
  *  files in the program, then also delete it here.
  */
 
-/**
- * @file 	remmina_plugin_python_remmina.h
- *
- * @brief 	Contains the implementation of the Python module 'remmina', provided to interface with the application from
- * 			the Python plugin source.
- *
- * @detail 	In contrast to the wrapper functions that exist in the plugin specialisation files (e.g.
- * 			remmina_plugin_python_protocol.c or remmina_plugin_python_entry.c), this file contains the API for the
- * 			communication in the direction, from Python to Remmina. This means, if in the Python plugin a function
- * 			is called, that is defined in Remmina, C code, at least in this file, is executed.
- */
-
-#pragma once
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// I N C L U D E S
+// I N L U C E S
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include "remmina_plugin_python_protocol_widget.h"
+#include "remmina_plugin_python_common.h"
+#include "remmina_plugin_python_tool.h"
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // A P I
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-G_BEGIN_DECLS
+void remmina_plugin_python_tool_init(void)
+{
+	TRACE_CALL(__func__);
+}
 
-/**
- * Initializes the 'remmina' module in the Python engine.
- */
-void remmina_plugin_python_module_init(void);
+void remmina_plugin_python_tool_exec_func_wrapper(GtkMenuItem* self, RemminaToolPlugin* instance)
+{
+	TRACE_CALL(__func__);
 
-/**
- * @brief 	Returns a pointer to the Python instance, mapped to the RemminaProtocolWidget or null if not found.
- *
- * @param 	gp The widget that is owned by the plugin that should be found.
- *
- * @details Remmina expects this callback function to be part of one plugin, which is the reason no instance information
- * 			is explicitly passed. To bridge that, this function can be used to retrieve the very plugin instance owning
- * 			the given RemminaProtocolWidget.
- */
-PyPlugin* remmina_plugin_python_module_get_plugin(RemminaProtocolWidget* gp);
+	PyPlugin* plugin = remmina_plugin_python_get_plugin(instance->name);
+	CallPythonMethod(plugin->instance, "exec_func", NULL);
+}
 
-/**
- * @brief 	Converts the PyObject to RemminaProtocolSetting.
- *
- * @param 	dest A target for the converted value.
- * @param 	setting The source value to convert.
- */
-void remmina_plugin_python_to_protocol_setting(RemminaProtocolSetting* dest, PyObject* setting);
+RemminaPlugin* remmina_plugin_python_create_tool_plugin(PyPlugin* plugin)
+{
+	TRACE_CALL(__func__);
 
-/**
- * @brief 	Converts the PyObject to RemminaProtocolFeature.
- *
- * @param 	dest A target for the converted value.
- * @param 	setting The source value to convert.
- */
-void remmina_plugin_python_to_protocol_feature(RemminaProtocolFeature* dest, PyObject* feature);
+	PyObject* instance = plugin->instance;
 
-G_END_DECLS
+	if (!remmina_plugin_python_check_attribute(instance, ATTR_NAME))
+	{
+		return NULL;
+	}
+
+	RemminaToolPlugin* remmina_plugin = (RemminaToolPlugin*)remmina_plugin_python_malloc(sizeof(RemminaToolPlugin));
+
+	remmina_plugin->type = REMMINA_PLUGIN_TYPE_TOOL;
+	remmina_plugin->domain = GETTEXT_PACKAGE;
+	remmina_plugin->name = PyUnicode_AsUTF8(PyObject_GetAttrString(instance, ATTR_NAME));
+	remmina_plugin->version = PyUnicode_AsUTF8(PyObject_GetAttrString(instance, ATTR_VERSION));
+	remmina_plugin->description = PyUnicode_AsUTF8(PyObject_GetAttrString(instance, ATTR_DESCRIPTION));
+	remmina_plugin->exec_func = remmina_plugin_python_tool_exec_func_wrapper;
+
+	plugin->tool_plugin = remmina_plugin;
+	plugin->generic_plugin = (RemminaPlugin*)remmina_plugin;
+
+	remmina_plugin_python_add_plugin(plugin);
+
+	return (RemminaPlugin*)remmina_plugin;
+}

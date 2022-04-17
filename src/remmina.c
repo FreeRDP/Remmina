@@ -303,7 +303,7 @@ static void remmina_on_startup(GApplication *app)
 	if (!secret_plugin)
 		g_print("Warning: Remmina is running without a secret plugin. Passwords will be saved in a less secure way.\n");
 	else
-		if (!secret_plugin->is_service_available())
+		if (!secret_plugin->is_service_available(secret_plugin))
 			g_print("Warning: Remmina is running with a secrecy plugin, but it cannot connect to a secrecy service.\n");
 
 	remmina_exec_command(REMMINA_COMMAND_AUTOSTART, NULL);

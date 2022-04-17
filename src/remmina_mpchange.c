@@ -326,7 +326,7 @@ static gboolean remmina_file_multipasswd_changer_mt(gpointer d)
 	if (secret_plugin == NULL) {
 		initerror = _("The multi password changer requires a secrecy plugin.\n");
 	}else {
-		if (!secret_plugin->is_service_available()) {
+		if (!secret_plugin->is_service_available(secret_plugin)) {
 			initerror = _("The multi password changer requires a secrecy service.\n");
 		}
 	}

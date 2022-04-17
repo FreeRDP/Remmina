@@ -70,7 +70,7 @@ typedef struct _RemminaProtocolPlugin {
 	const gchar *			icon_name;
 	const gchar *			icon_name_ssh;
 	const RemminaProtocolSetting *	basic_settings;
-	const RemminaProtocolSetting *	advanced_settings;
+    	const RemminaProtocolSetting *	advanced_settings;
 	RemminaProtocolSSHSetting	ssh_setting;
 	const RemminaProtocolFeature *	features;
 
@@ -92,7 +92,7 @@ typedef struct _RemminaEntryPlugin {
 	const gchar *		domain;
 	const gchar *		version;
 
-	void (*entry_func)(void);
+	void (*entry_func)(struct _RemminaEntryPlugin* instance);
 } RemminaEntryPlugin;
 
 typedef struct _RemminaFilePlugin {
@@ -102,10 +102,10 @@ typedef struct _RemminaFilePlugin {
 	const gchar *		domain;
 	const gchar *		version;
 
-	gboolean (*import_test_func)(const gchar *from_file);
-	RemminaFile * (*import_func)(const gchar * from_file);
-	gboolean (*export_test_func)(RemminaFile *file);
-	gboolean (*export_func)(RemminaFile *file, const gchar *to_file);
+	gboolean (*import_test_func)(struct _RemminaFilePlugin* instance, const gchar *from_file);
+	RemminaFile * (*import_func)(struct _RemminaFilePlugin* instance, const gchar * from_file);
+	gboolean (*export_test_func)(struct _RemminaFilePlugin* instance, RemminaFile *file);
+	gboolean (*export_func)(struct _RemminaFilePlugin* instance, RemminaFile *file, const gchar *to_file);
 	const gchar *		export_hints;
 } RemminaFilePlugin;
 
@@ -116,7 +116,7 @@ typedef struct _RemminaToolPlugin {
 	const gchar *		domain;
 	const gchar *		version;
 
-	void (*exec_func)(void);
+	void (*exec_func)(GtkMenuItem* item, struct _RemminaToolPlugin* instance);
 } RemminaToolPlugin;
 
 typedef struct _RemminaPrefPlugin {
@@ -127,7 +127,7 @@ typedef struct _RemminaPrefPlugin {
 	const gchar *		version;
 
 	const gchar *		pref_label;
-	GtkWidget * (*get_pref_body)(void);
+	GtkWidget * (*get_pref_body)(struct _RemminaPrefPlugin* instance);
 } RemminaPrefPlugin;
 
 typedef struct _RemminaSecretPlugin {
@@ -138,11 +138,11 @@ typedef struct _RemminaSecretPlugin {
 	const gchar *		version;
 	int			init_order;
 
-	gboolean (*init)(void);
-	gboolean (*is_service_available)(void);
-	void (*store_password)(RemminaFile *remminafile, const gchar *key, const gchar *password);
-	gchar * (*get_password)(RemminaFile * remminafile, const gchar *key);
-	void (*delete_password)(RemminaFile *remminafile, const gchar *key);
+	gboolean (*init)(struct _RemminaSecretPlugin* instance);
+	gboolean (*is_service_available)(struct _RemminaSecretPlugin* instance);
+	void (*store_password)(struct _RemminaSecretPlugin* instance, RemminaFile *remminafile, const gchar *key, const gchar *password);
+	gchar * (*get_password)(struct _RemminaSecretPlugin* instance, RemminaFile * remminafile, const gchar *key);
+	void (*delete_password)(struct _RemminaSecretPlugin* instance, RemminaFile *remminafile, const gchar *key);
 } RemminaSecretPlugin;
 
 /* Plugin Service is a struct containing a list of function pointers,

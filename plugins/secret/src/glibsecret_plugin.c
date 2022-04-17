@@ -61,7 +61,7 @@ static SecretCollection* defaultcollection;
 #endif
 
 
-gboolean remmina_plugin_glibsecret_is_service_available()
+gboolean remmina_plugin_glibsecret_is_service_available(RemminaSecretPlugin* plugin)
 {
 #ifdef LIBSECRET_VERSION_0_18
 	if (secretservice && defaultcollection)
@@ -73,7 +73,7 @@ gboolean remmina_plugin_glibsecret_is_service_available()
 #endif
 }
 
-static void remmina_plugin_glibsecret_unlock_secret_service()
+static void remmina_plugin_glibsecret_unlock_secret_service(RemminaSecretPlugin* plugin)
 {
 	TRACE_CALL(__func__);
 
@@ -97,7 +97,7 @@ static void remmina_plugin_glibsecret_unlock_secret_service()
 	return;
 }
 
-void remmina_plugin_glibsecret_store_password(RemminaFile *remminafile, const gchar *key, const gchar *password)
+void remmina_plugin_glibsecret_store_password(RemminaSecretPlugin* plugin, RemminaFile *remminafile, const gchar *key, const gchar *password)
 {
 	TRACE_CALL(__func__);
 	GError *r = NULL;
@@ -118,7 +118,7 @@ void remmina_plugin_glibsecret_store_password(RemminaFile *remminafile, const gc
 }
 
 gchar*
-remmina_plugin_glibsecret_get_password(RemminaFile *remminafile, const gchar *key)
+remmina_plugin_glibsecret_get_password(RemminaSecretPlugin* plugin, RemminaFile *remminafile, const gchar *key)
 {
 	TRACE_CALL(__func__);
 	GError *r = NULL;
@@ -138,7 +138,7 @@ remmina_plugin_glibsecret_get_password(RemminaFile *remminafile, const gchar *ke
 	}
 }
 
-void remmina_plugin_glibsecret_delete_password(RemminaFile *remminafile, const gchar *key)
+void remmina_plugin_glibsecret_delete_password(RemminaSecretPlugin* plugin, RemminaFile *remminafile, const gchar *key)
 {
 	TRACE_CALL(__func__);
 	GError *r = NULL;
@@ -152,7 +152,7 @@ void remmina_plugin_glibsecret_delete_password(RemminaFile *remminafile, const g
 		REMMINA_PLUGIN_DEBUG("password “%s” cannot be deleted for file %s", key, path);
 }
 
-gboolean remmina_plugin_glibsecret_init()
+gboolean remmina_plugin_glibsecret_init(RemminaSecretPlugin* plugin)
 {
 #ifdef LIBSECRET_VERSION_0_18
 	GError *error;
@@ -173,7 +173,7 @@ gboolean remmina_plugin_glibsecret_init()
 		return FALSE;
 	}
 
-	remmina_plugin_glibsecret_unlock_secret_service();
+	remmina_plugin_glibsecret_unlock_secret_service(plugin);
 	return TRUE;
 
 #else
