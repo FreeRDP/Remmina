@@ -1611,7 +1611,7 @@ void remmina_main_show_dialog(GtkMessageType msg, GtkButtonsType buttons, const 
 	GtkWidget *dialog;
 
 	if (remminamain->window) {
-		dialog = gtk_message_dialog_new(remminamain->window, GTK_DIALOG_MODAL, msg, buttons, message);
+		dialog = gtk_message_dialog_new(remminamain->window, GTK_DIALOG_MODAL, msg, buttons, "%s", message);
 		gtk_dialog_run(GTK_DIALOG(dialog));
 		gtk_widget_destroy(dialog);
 	}
