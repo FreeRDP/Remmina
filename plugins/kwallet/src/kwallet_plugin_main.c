@@ -44,7 +44,7 @@
 
 static RemminaPluginService *remmina_plugin_service = NULL;
 
-gboolean remmina_plugin_kwallet_is_service_available()
+gboolean remmina_plugin_kwallet_is_service_available(RemminaPlugin *plugin)
 {
 	return rp_kwallet_is_service_available();
 }
@@ -68,7 +68,7 @@ static gchar *build_kwallet_key(RemminaFile *remminafile, const gchar *key)
 	return kwkey;
 }
 
-void remmina_plugin_kwallet_store_password(RemminaFile *remminafile, const gchar *key, const gchar *password)
+void remmina_plugin_kwallet_store_password(RemminaPlugin *plugin, RemminaFile *remminafile, const gchar *key, const gchar *password)
 {
 	TRACE_CALL(__func__);
 	gchar *kwkey;
@@ -78,7 +78,7 @@ void remmina_plugin_kwallet_store_password(RemminaFile *remminafile, const gchar
 }
 
 gchar*
-remmina_plugin_kwallet_get_password(RemminaFile *remminafile, const gchar *key)
+remmina_plugin_kwallet_get_password(RemminaPlugin *plugin, RemminaFile *remminafile, const gchar *key)
 {
 	TRACE_CALL(__func__);
 	gchar *kwkey, *password;
@@ -90,7 +90,7 @@ remmina_plugin_kwallet_get_password(RemminaFile *remminafile, const gchar *key)
 	return password;
 }
 
-void remmina_plugin_kwallet_delete_password(RemminaFile *remminafile, const gchar *key)
+void remmina_plugin_kwallet_delete_password(RemminaPlugin *plugin, RemminaFile *remminafile, const gchar *key)
 {
 	TRACE_CALL(__func__);
 	gchar *kwkey;
@@ -99,7 +99,7 @@ void remmina_plugin_kwallet_delete_password(RemminaFile *remminafile, const gcha
 	g_free(kwkey);
 }
 
-gboolean remmina_plugin_kwallet_init()
+gboolean remmina_plugin_kwallet_init(RemminaPlugin *plugin)
 {
 	/* Activates only when KDE is running */
 	const gchar *envvar;

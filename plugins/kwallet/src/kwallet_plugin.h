@@ -33,6 +33,9 @@
  *
  */
 
+#include <gtk/gtk.h>
+#include "remmina/plugin.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
