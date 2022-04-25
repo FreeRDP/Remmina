@@ -288,17 +288,14 @@
             ],
             "modules": [
                 {
-                    /**
-                    * Do not upgrade to 3.0.x till we discover why spice-common cannot find pyparsing
-                    */
-                    "name": "python-pyparsing",
+                    "name": "python3-pyparsing",
                     "buildsystem": "simple",
                     "build-commands": [
-                        "python3 setup.py install --prefix=${FLATPAK_DEST} --root=/ --optimize=1"
+                        "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"pyparsing==3.0.7\" --no-build-isolation"
                     ],
                     "sources": [
                         {
-                            "type": "archive",
+                            "type": "file",
                             "url": "https://files.pythonhosted.org/packages/d6/60/9bed18f43275b34198eb9720d4c1238c68b3755620d20df0afd89424d32b/pyparsing-3.0.7.tar.gz",
                             "sha256": "18ee9022775d270c55187733956460083db60b37d0d0fb357445f3094eed3eea",
                             "x-checker-data": {
@@ -498,8 +495,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/FreeRDP/FreeRDP.git",
-                    "tag": "2.6.1",
-                    "commit": "658a72980f6e93241d927c46cfa664bf2547b8b1",
+                    "tag": "2.7.0",
+                    "commit": "40ee5d3bcc70343af6c0300d71968858c1f1948f",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^([\\d.]+)$"
