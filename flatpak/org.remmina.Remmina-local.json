@@ -412,10 +412,14 @@
             "name": "libsodium",
             "sources": [
                 {
-                    "type": "git",
-                    "url": "https://github.com/jedisct1/libsodium.git",
-                    "branch": "stable",
-                    "commit": "7389bf7f2968be75520e932704f18f038c29e581"
+                    "type": "archive",
+                    "url": "https://github.com/jedisct1/libsodium/archive/1.0.18-RELEASE.tar.gz",
+                    "sha256": "b7292dd1da67a049c8e78415cd498ec138d194cfdb302e716b08d26b80fecc10",
+                    "x-checker-data": {
+                        "type": "anitya",
+                        "project-id": 1728,
+                        "url-template": "https://github.com/jedisct1/libsodium/archive/$version.tar.gz"
+                    }
                 }
             ],
             "post-install": [
@@ -521,6 +525,7 @@
                 "-DWITH_FREERDP3:BOOL=OFF",
                 "-DWITH_GVNC:BOOL=ON",
                 "-DWITH_CUPS:BOOL=ON",
+                "-DWITH_PYTHON:BOOL=ON",
                 "-DWITH_MANPAGES:BOOL=OFF"
             ],
             "sources": [

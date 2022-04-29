@@ -1,6 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2014-2022 Antenore Gatta, Giovanni Panozzo
+ * Copyright (C) 2014-2021 Antenore Gatta, Giovanni Panozzo, Mathias Winterhalter (ToolsDevler)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,49 +32,30 @@
  */
 
 /**
- * @file 	remmina_plugin_python.h
+ * @file 	python_wrapper_entry.h
  *
- * @brief	Declares the interface between the Python plugin implementation and Remmina covering the initialization of
- * 			the implementation and the load function, that allows Remmina to load plugins into the application.
- *
- * @details When Remmina discovers Python scripts in the plugin root folder the plugin manager passes the path to the
- * 			Python plugin loader. There it gets executed and the plugin classes get mapped to "real" Remmina plugin
- * 			instances.
- *
- * 			For the communication between Remmina and Python the python module called 'remmina' is initialized and
- * 			loaded into the environment of the plugin script (@see remmina_plugin_python_module.c).
- *
- * 			@see http://www.remmina.org/wp for more information.
+ * @brief	Contains the specialisation of RemminaPluginEntry plugins in Python.
  */
 
 #pragma once
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// I N C L U D E
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-#include "remmina/plugin.h"
-
-G_BEGIN_DECLS
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // A P I
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/**
- * @brief 	Initializes the Python plugin loaders.
- * @details This does not load any plugins but initializes the implementation (e.g. globals and the Python engine).
- */
-void remmina_plugin_python_init(void);
+G_BEGIN_DECLS
 
 /**
- * @brief 	Loads a plugin from the Remmina plugin folder with the given name.
- *
- * @param   service     The instance of the service providing an API between Remmina and its plugins.
- * @param   filename    The filename of the plugin to load.
- *
- * @return  TRUE on success, FALSE otherwise.
+ * Initializes the Python plugin specialisation for entry plugins.
  */
-gboolean remmina_plugin_python_load(RemminaPluginService* service, const gchar* filename);
+void python_wrapper_entry_init(void);
+
+/**
+ * @brief	Creates a new instance of the RemminaPluginEntry, initializes its members and references the wrapper
+ * 			functions.
+ * @param 	instance The instance of the Python plugin.
+ * @return	Returns a new instance of the RemminaPlugin (must be freed!).
+ */
+RemminaPlugin* python_wrapper_create_entry_plugin(PyPlugin* instance);
 
 G_END_DECLS

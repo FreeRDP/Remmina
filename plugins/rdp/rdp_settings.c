@@ -695,7 +695,7 @@ static void remmina_rdp_settings_grid_init(RemminaPluginRdpsetGrid *grid)
 
 }
 
-GtkWidget *remmina_rdp_settings_new(void)
+GtkWidget *remmina_rdp_settings_new(RemminaPrefPlugin* plugin)
 {
 	TRACE_CALL(__func__);
 	GtkWidget *widget;

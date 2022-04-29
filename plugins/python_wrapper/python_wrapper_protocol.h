@@ -1,6 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2014-2021 Antenore Gatta, Giovanni Panozzo, Mathias Winterhalter (ToolsDevler)
+ * Copyright (C) 2014-2022 Antenore Gatta, Giovanni Panozzo, Mathias Winterhalter (ToolsDevler)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,15 +32,15 @@
  */
 
 /**
- * @file 	remmina_plugin_python_entry.h
+ * @file 	python_wrapper_protocol.h
  *
- * @brief	Contains the specialisation of RemminaPluginEntry plugins in Python.
+ * @brief	Contains the specialisation of RemminaPluginFile plugins in Python.
  */
 
 #pragma once
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// I N L U C E S
+// I N C L U D E S
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include "remmina/plugin.h"
@@ -52,17 +52,56 @@
 G_BEGIN_DECLS
 
 /**
- * Initializes the Python plugin specialisation for tool plugins.
+ * Wrapper for a Python object that contains a pointer to an instance of RemminaProtocolFeature.
  */
-void remmina_plugin_python_tool_init(void);
+typedef struct
+{
+	PyObject_HEAD
+	RemminaProtocolFeatureType type;
+	gint id;
+	PyGeneric* opt1;
+	PyGeneric* opt2;
+	PyGeneric* opt3;
+} PyRemminaProtocolFeature;
 
 /**
- * @brief	Creates a new instance of the RemminaPluginTool, initializes its members and references the wrapper
+ *
+ */
+typedef struct
+{
+	PyObject_HEAD
+	PyByteArrayObject* buffer;
+	int bitsPerPixel;
+	int bytesPerPixel;
+	int width;
+	int height;
+} PyRemminaPluginScreenshotData;
+
+/**
+ * Initializes the Python plugin specialisation for protocol plugins.
+ */
+void python_wrapper_protocol_init(void);
+
+/**
+ * @brief	Creates a new instance of the RemminaPluginProtocol, initializes its members and references the wrapper
  * 			functions.
+ *
  * @param 	instance The instance of the Python plugin.
+ *
  * @return	Returns a new instance of the RemminaPlugin (must be freed!).
  */
-RemminaPlugin* remmina_plugin_python_create_tool_plugin(PyPlugin* instance);
+RemminaPlugin* python_wrapper_create_protocol_plugin(PyPlugin* plugin);
+
+/**
+ *
+ * @return
+ */
+PyRemminaProtocolFeature* python_wrapper_protocol_feature_new(void);
+
+/**
+ *
+ * @return
+ */
+PyRemminaPluginScreenshotData* python_wrapper_screenshot_data_new(void);
 
 G_END_DECLS
-

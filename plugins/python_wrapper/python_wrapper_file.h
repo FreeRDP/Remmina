@@ -1,6 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2016-2022 Antenore Gatta, Giovanni Panozzo
+ * Copyright (C) 2014-2021 Antenore Gatta, Giovanni Panozzo, Mathias Winterhalter (ToolsDevler)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,9 +32,9 @@
  */
 
 /**
- * @file 	remmina_plugin_python_protocol_widget.h
+ * @file 	python_wrapper_file.h
  *
- * @brief	Contains the implementation of the widget handling used from the protocol plugin.
+ * @brief	Contains the specialisation of RemminaPluginFile plugins in Python.
  */
 
 #pragma once
@@ -46,18 +46,16 @@
 G_BEGIN_DECLS
 
 /**
- * Initializes the widget backend of the protocol plugin implementation.
+ * Initializes the Python plugin specialisation for file plugins.
  */
-void remmina_plugin_python_protocol_widget_init(void);
+void python_wrapper_file_init(void);
 
 /**
- * Initializes Python types used for protocol widgets.
+ * @brief	Creates a new instance of the RemminaPluginFile, initializes its members and references the wrapper
+ * 			functions.
+ * @param 	instance The instance of the Python plugin.
+ * @return	Returns a new instance of the RemminaPlugin (must be freed!).
  */
-void remmina_plugin_python_protocol_widget_type_ready(void);
-
-/**
- * Creates a new instance of PyRemminaProtocolWidget and initializes its fields.
- */
-PyRemminaProtocolWidget* remmina_plugin_python_protocol_widget_create();
+RemminaPlugin* python_wrapper_create_file_plugin(PyPlugin* instance);
 
 G_END_DECLS

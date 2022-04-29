@@ -32,7 +32,7 @@
  */
 
 /**
- * @file remmina_plugin_python_protocol_widget.c
+ * @file python_wrapper_protocol_widget.c
  * @brief Implementation of the Protocol Widget API.
  * @author Mathias Winterhalter
  * @date 19.11.2020
@@ -86,13 +86,12 @@
 // I N L U C E S
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include "remmina_plugin_python_common.h"
+#include "python_wrapper_common.h"
 #include "remmina/plugin.h"
-#include "remmina_protocol_widget.h"
 #include "remmina/types.h"
-#include "remmina_plugin_python_remmina_file.h"
-#include "remmina_plugin_python_protocol_widget.h"
-#include "remmina_plugin_python_protocol.h"
+#include "python_wrapper_remmina_file.h"
+#include "python_wrapper_protocol_widget.h"
+#include "python_wrapper_protocol.h"
 
 // -- Python Type -> RemminaWidget
 
@@ -227,7 +226,7 @@ static PyTypeObject python_protocol_widget_type = {
 	.tp_methods = python_protocol_widget_type_methods
 };
 
-PyRemminaProtocolWidget* remmina_plugin_python_protocol_widget_create(void)
+PyRemminaProtocolWidget* python_wrapper_protocol_widget_create(void)
 {
 	TRACE_CALL(__func__);
 
@@ -240,12 +239,12 @@ PyRemminaProtocolWidget* remmina_plugin_python_protocol_widget_create(void)
 	return result;
 }
 
-void remmina_plugin_python_protocol_widget_init(void)
+void python_wrapper_protocol_widget_init(void)
 {
 	init_pygobject();
 }
 
-void remmina_plugin_python_protocol_widget_type_ready(void)
+void python_wrapper_protocol_widget_type_ready(void)
 {
 	TRACE_CALL(__func__);
 	if (PyType_Ready(&python_protocol_widget_type) < 0)
@@ -259,7 +258,7 @@ static PyObject* protocol_widget_get_viewport(PyRemminaProtocolWidget* self, PyO
 {
 	TRACE_CALL(__func__);
 	SELF_CHECK();
-	return (PyObject*)new_pywidget(G_OBJECT(remmina_protocol_widget_gtkviewport(self->gp)));
+	return (PyObject*)new_pywidget(G_OBJECT(python_wrapper_get_service()->protocol_widget_gtkviewport(self->gp)));
 }
 
 static PyObject* protocol_widget_get_width(PyRemminaProtocolWidget* self, PyObject* args)
@@ -267,7 +266,7 @@ static PyObject* protocol_widget_get_width(PyRemminaProtocolWidget* self, PyObje
 	TRACE_CALL(__func__);
 	SELF_CHECK();
 
-	return Py_BuildValue("i", remmina_protocol_widget_get_width(self->gp));
+	return Py_BuildValue("i", python_wrapper_get_service()->protocol_widget_get_width(self->gp));
 }
 
 static PyObject* protocol_widget_set_width(PyRemminaProtocolWidget* self, PyObject* var_width)
@@ -288,7 +287,7 @@ static PyObject* protocol_widget_set_width(PyRemminaProtocolWidget* self, PyObje
 	}
 
 	gint width = (gint)PyLong_AsLong(var_width);
-	remmina_protocol_widget_set_height(self->gp, width);
+	python_wrapper_get_service()->protocol_widget_set_height(self->gp, width);
 
 	return Py_None;
 }
@@ -298,7 +297,7 @@ static PyObject* protocol_widget_get_height(PyRemminaProtocolWidget* self, PyObj
 	TRACE_CALL(__func__);
 	SELF_CHECK();
 
-	return Py_BuildValue("i", remmina_protocol_widget_get_height(self->gp));
+	return Py_BuildValue("i", python_wrapper_get_service()->protocol_widget_get_height(self->gp));
 }
 
 static PyObject* protocol_widget_set_height(PyRemminaProtocolWidget* self, PyObject* var_height)
@@ -319,7 +318,7 @@ static PyObject* protocol_widget_set_height(PyRemminaProtocolWidget* self, PyObj
 	}
 
 	gint height = (gint)PyLong_AsLong(var_height);
-	remmina_protocol_widget_set_height(self->gp, height);
+	python_wrapper_get_service()->protocol_widget_set_height(self->gp, height);
 
 	return Py_None;
 }
@@ -329,7 +328,7 @@ static PyObject* protocol_widget_get_current_scale_mode(PyRemminaProtocolWidget*
 	TRACE_CALL(__func__);
 	SELF_CHECK();
 
-	return Py_BuildValue("i", remmina_protocol_widget_get_current_scale_mode(self->gp));
+	return Py_BuildValue("i", python_wrapper_get_service()->protocol_widget_get_current_scale_mode(self->gp));
 }
 
 static PyObject* protocol_widget_get_expand(PyRemminaProtocolWidget* self, PyObject* args)
@@ -337,7 +336,7 @@ static PyObject* protocol_widget_get_expand(PyRemminaProtocolWidget* self, PyObj
 	TRACE_CALL(__func__);
 	SELF_CHECK();
 
-	return Py_BuildValue("p", remmina_protocol_widget_get_expand(self->gp));
+	return Py_BuildValue("p", python_wrapper_get_service()->protocol_widget_get_expand(self->gp));
 }
 
 static PyObject* protocol_widget_set_expand(PyRemminaProtocolWidget* self, PyObject* var_expand)
@@ -357,7 +356,7 @@ static PyObject* protocol_widget_set_expand(PyRemminaProtocolWidget* self, PyObj
 		return NULL;
 	}
 
-	remmina_protocol_widget_set_expand(self->gp, PyObject_IsTrue(var_expand));
+	python_wrapper_get_service()->protocol_widget_set_expand(self->gp, PyObject_IsTrue(var_expand));
 
 	return Py_None;
 }
@@ -367,7 +366,7 @@ static PyObject* protocol_widget_has_error(PyRemminaProtocolWidget* self, PyObje
 	TRACE_CALL(__func__);
 	SELF_CHECK();
 
-	return Py_BuildValue("p", remmina_protocol_widget_has_error(self->gp));
+	return Py_BuildValue("p", python_wrapper_get_service()->protocol_widget_has_error(self->gp));
 }
 
 static PyObject* protocol_widget_set_error(PyRemminaProtocolWidget* self, PyObject* var_msg)
@@ -388,7 +387,7 @@ static PyObject* protocol_widget_set_error(PyRemminaProtocolWidget* self, PyObje
 	}
 
 	const gchar* msg = PyUnicode_AsUTF8(var_msg);
-	remmina_protocol_widget_set_error(self->gp, msg);
+	python_wrapper_get_service()->protocol_widget_set_error(self->gp, msg);
 
 	return Py_None;
 }
@@ -398,7 +397,7 @@ static PyObject* protocol_widget_is_closed(PyRemminaProtocolWidget* self, PyObje
 	TRACE_CALL(__func__);
 	SELF_CHECK();
 
-	return Py_BuildValue("p", remmina_protocol_widget_is_closed(self->gp));
+	return Py_BuildValue("p", python_wrapper_get_service()->protocol_widget_is_closed(self->gp));
 }
 
 static PyObject* protocol_widget_get_file(PyRemminaProtocolWidget* self, PyObject* args)
@@ -406,8 +405,8 @@ static PyObject* protocol_widget_get_file(PyRemminaProtocolWidget* self, PyObjec
 	TRACE_CALL(__func__);
 	SELF_CHECK();
 
-	RemminaFile* file = remmina_protocol_widget_get_file(self->gp);
-	return (PyObject*)remmina_plugin_python_remmina_file_to_python(file);
+	RemminaFile* file = python_wrapper_get_service()->protocol_widget_get_file(self->gp);
+	return (PyObject*)python_wrapper_remmina_file_to_python(file);
 }
 
 static PyObject* protocol_widget_emit_signal(PyRemminaProtocolWidget* self, PyObject* var_signal)
@@ -427,7 +426,7 @@ static PyObject* protocol_widget_emit_signal(PyRemminaProtocolWidget* self, PyOb
 		return NULL;
 	}
 
-	remmina_protocol_widget_set_error(self->gp, PyUnicode_AsUTF8(var_signal));
+	python_wrapper_get_service()->protocol_widget_set_error(self->gp, PyUnicode_AsUTF8(var_signal));
 
 	return Py_None;
 }
@@ -443,7 +442,7 @@ static PyObject* protocol_widget_register_hostkey(PyRemminaProtocolWidget* self,
 		return NULL;
 	}
 
-	remmina_protocol_widget_register_hostkey(self->gp, get_pywidget(var_widget));
+	python_wrapper_get_service()->protocol_widget_register_hostkey(self->gp, get_pywidget(var_widget));
 
 	return Py_None;
 }
@@ -463,7 +462,7 @@ static PyObject* protocol_widget_start_direct_tunnel(PyRemminaProtocolWidget* se
 
 	if (PyArg_ParseTuple(args, "ii", &default_port, &port_plus))
 	{
-		return Py_BuildValue("s", remmina_protocol_widget_start_direct_tunnel(self->gp, default_port, port_plus));
+		return Py_BuildValue("s", python_wrapper_get_service()->protocol_widget_start_direct_tunnel(self->gp, default_port, port_plus));
 	}
 	else
 	{
@@ -490,13 +489,13 @@ static PyObject* protocol_widget_start_reverse_tunnel(PyRemminaProtocolWidget* s
 		return NULL;
 	}
 
-	return Py_BuildValue("p", remmina_protocol_widget_start_reverse_tunnel(self->gp, (gint)PyLong_AsLong(var_local_port)));
+	return Py_BuildValue("p", python_wrapper_get_service()->protocol_widget_start_reverse_tunnel(self->gp, (gint)PyLong_AsLong(var_local_port)));
 }
 
 static gboolean xport_tunnel_init(RemminaProtocolWidget* gp, gint remotedisplay, const gchar* server, gint port)
 {
 	TRACE_CALL(__func__);
-	PyPlugin* plugin = remmina_plugin_python_get_plugin(gp->plugin->name);
+	PyPlugin* plugin = python_wrapper_get_plugin_by_protocol_widget(gp);
 	PyObject* result = PyObject_CallMethod(plugin->instance, "xport_tunnel_init", "Oisi", gp, remotedisplay, server, port);
 	return PyObject_IsTrue(result);
 }
@@ -506,7 +505,7 @@ static PyObject* protocol_widget_start_xport_tunnel(PyRemminaProtocolWidget* sel
 	TRACE_CALL(__func__);
 	SELF_CHECK();
 
-	return Py_BuildValue("p", remmina_protocol_widget_start_xport_tunnel(self->gp, xport_tunnel_init));
+	return Py_BuildValue("p", python_wrapper_get_service()->protocol_widget_start_xport_tunnel(self->gp, xport_tunnel_init));
 }
 
 static PyObject* protocol_widget_set_display(PyRemminaProtocolWidget* self, PyObject* var_display)
@@ -526,7 +525,7 @@ static PyObject* protocol_widget_set_display(PyRemminaProtocolWidget* self, PyOb
 		return NULL;
 	}
 
-	remmina_protocol_widget_set_display(self->gp, (gint)PyLong_AsLong(var_display));
+	python_wrapper_get_service()->protocol_widget_set_display(self->gp, (gint)PyLong_AsLong(var_display));
 
 	return Py_None;
 }
@@ -536,7 +535,7 @@ static PyObject* protocol_widget_signal_connection_closed(PyRemminaProtocolWidge
 	TRACE_CALL(__func__);
 	SELF_CHECK();
 
-	remmina_protocol_widget_signal_connection_closed(self->gp);
+	python_wrapper_get_service()->protocol_widget_signal_connection_closed(self->gp);
 	return Py_None;
 }
 
@@ -545,7 +544,7 @@ static PyObject* protocol_widget_signal_connection_opened(PyRemminaProtocolWidge
 	TRACE_CALL(__func__);
 	SELF_CHECK();
 
-	remmina_protocol_widget_signal_connection_opened(self->gp);
+	python_wrapper_get_service()->protocol_widget_signal_connection_opened(self->gp);
 	return Py_None;
 }
 
@@ -554,7 +553,7 @@ static PyObject* protocol_widget_update_align(PyRemminaProtocolWidget* self, PyO
 	TRACE_CALL(__func__);
 	SELF_CHECK();
 
-	remmina_protocol_widget_update_align(self->gp);
+	python_wrapper_get_service()->protocol_widget_update_align(self->gp);
 	return Py_None;
 }
 
@@ -563,7 +562,7 @@ static PyObject* protocol_widget_unlock_dynres(PyRemminaProtocolWidget* self, Py
 	TRACE_CALL(__func__);
 	SELF_CHECK();
 
-	remmina_protocol_widget_unlock_dynres(self->gp);
+	python_wrapper_get_service()->protocol_widget_unlock_dynres(self->gp);
 	return Py_None;
 }
 
@@ -572,7 +571,7 @@ static PyObject* protocol_widget_desktop_resize(PyRemminaProtocolWidget* self, P
 	TRACE_CALL(__func__);
 	SELF_CHECK();
 
-	remmina_protocol_widget_desktop_resize(self->gp);
+	python_wrapper_get_service()->protocol_widget_desktop_resize(self->gp);
 	return Py_None;
 }
 
@@ -584,7 +583,7 @@ static PyObject* protocol_widget_panel_new_certificate(PyRemminaProtocolWidget* 
 
 	if (PyArg_ParseTuple(args, "sss", &subject, &issuer, &fingerprint))
 	{
-		remmina_protocol_widget_panel_new_certificate(self->gp, subject, issuer, fingerprint);
+		python_wrapper_get_service()->protocol_widget_panel_new_certificate(self->gp, subject, issuer, fingerprint);
 	}
 	else
 	{
@@ -602,7 +601,7 @@ static PyObject* protocol_widget_panel_changed_certificate(PyRemminaProtocolWidg
 
 	if (PyArg_ParseTuple(args, "sss", &subject, &issuer, &new_fingerprint, &old_fingerprint))
 	{
-		remmina_protocol_widget_panel_changed_certificate(self->gp, subject, issuer, new_fingerprint, old_fingerprint);
+		python_wrapper_get_service()->protocol_widget_panel_changed_certificate(self->gp, subject, issuer, new_fingerprint, old_fingerprint);
 	}
 	else
 	{
@@ -617,7 +616,7 @@ static PyObject* protocol_widget_get_username(PyRemminaProtocolWidget* self, PyO
 	TRACE_CALL(__func__);
 	SELF_CHECK();
 
-	return Py_BuildValue("s", remmina_protocol_widget_get_username(self->gp));
+	return Py_BuildValue("s", python_wrapper_get_service()->protocol_widget_get_username(self->gp));
 }
 
 static PyObject* protocol_widget_get_password(PyRemminaProtocolWidget* self, PyObject* args)
@@ -625,7 +624,7 @@ static PyObject* protocol_widget_get_password(PyRemminaProtocolWidget* self, PyO
 	TRACE_CALL(__func__);
 	SELF_CHECK();
 
-	return Py_BuildValue("s", remmina_protocol_widget_get_password(self->gp));
+	return Py_BuildValue("s", python_wrapper_get_service()->protocol_widget_get_password(self->gp));
 }
 
 static PyObject* protocol_widget_get_domain(PyRemminaProtocolWidget* self, PyObject* args)
@@ -633,7 +632,7 @@ static PyObject* protocol_widget_get_domain(PyRemminaProtocolWidget* self, PyObj
 	TRACE_CALL(__func__);
 	SELF_CHECK();
 
-	return Py_BuildValue("s", remmina_protocol_widget_get_domain(self->gp));
+	return Py_BuildValue("s", python_wrapper_get_service()->protocol_widget_get_domain(self->gp));
 }
 
 static PyObject* protocol_widget_get_savepassword(PyRemminaProtocolWidget* self, PyObject* args)
@@ -641,7 +640,7 @@ static PyObject* protocol_widget_get_savepassword(PyRemminaProtocolWidget* self,
 	TRACE_CALL(__func__);
 	SELF_CHECK();
 
-	return Py_BuildValue("p", remmina_protocol_widget_get_savepassword(self->gp));
+	return Py_BuildValue("p", python_wrapper_get_service()->protocol_widget_get_savepassword(self->gp));
 }
 
 static PyObject* protocol_widget_panel_authx509(PyRemminaProtocolWidget* self, PyObject* args)
@@ -649,7 +648,7 @@ static PyObject* protocol_widget_panel_authx509(PyRemminaProtocolWidget* self, P
 	TRACE_CALL(__func__);
 	SELF_CHECK();
 
-	return Py_BuildValue("i", remmina_protocol_widget_panel_authx509(self->gp));
+	return Py_BuildValue("i", python_wrapper_get_service()->protocol_widget_panel_authx509(self->gp));
 }
 
 static PyObject* protocol_widget_get_cacert(PyRemminaProtocolWidget* self, PyObject* args)
@@ -657,7 +656,7 @@ static PyObject* protocol_widget_get_cacert(PyRemminaProtocolWidget* self, PyObj
 	TRACE_CALL(__func__);
 	SELF_CHECK();
 
-	return Py_BuildValue("s", remmina_protocol_widget_get_cacert(self->gp));
+	return Py_BuildValue("s", python_wrapper_get_service()->protocol_widget_get_cacert(self->gp));
 }
 
 static PyObject* protocol_widget_get_cacrl(PyRemminaProtocolWidget* self, PyObject* args)
@@ -665,7 +664,7 @@ static PyObject* protocol_widget_get_cacrl(PyRemminaProtocolWidget* self, PyObje
 	TRACE_CALL(__func__);
 	SELF_CHECK();
 
-	return Py_BuildValue("s", remmina_protocol_widget_get_cacrl(self->gp));
+	return Py_BuildValue("s", python_wrapper_get_service()->protocol_widget_get_cacrl(self->gp));
 }
 
 static PyObject* protocol_widget_get_clientcert(PyRemminaProtocolWidget* self, PyObject* args)
@@ -673,7 +672,7 @@ static PyObject* protocol_widget_get_clientcert(PyRemminaProtocolWidget* self, P
 	TRACE_CALL(__func__);
 	SELF_CHECK();
 
-	return Py_BuildValue("s", remmina_protocol_widget_get_clientcert(self->gp));
+	return Py_BuildValue("s", python_wrapper_get_service()->protocol_widget_get_clientcert(self->gp));
 }
 
 static PyObject* protocol_widget_get_clientkey(PyRemminaProtocolWidget* self, PyObject* args)
@@ -681,7 +680,7 @@ static PyObject* protocol_widget_get_clientkey(PyRemminaProtocolWidget* self, Py
 	TRACE_CALL(__func__);
 	SELF_CHECK();
 
-	return Py_BuildValue("s", remmina_protocol_widget_get_clientkey(self->gp));
+	return Py_BuildValue("s", python_wrapper_get_service()->protocol_widget_get_clientkey(self->gp));
 }
 
 static PyObject* protocol_widget_save_cred(PyRemminaProtocolWidget* self, PyObject* args)
@@ -689,7 +688,7 @@ static PyObject* protocol_widget_save_cred(PyRemminaProtocolWidget* self, PyObje
 	TRACE_CALL(__func__);
 	SELF_CHECK();
 
-	remmina_protocol_widget_save_cred(self->gp);
+	python_wrapper_get_service()->protocol_widget_save_cred(self->gp);
 	return Py_None;
 }
 
@@ -701,7 +700,7 @@ static PyObject* protocol_widget_panel_show_listen(PyRemminaProtocolWidget* self
 
 	if (PyArg_ParseTuple(args, "i", &port))
 	{
-		remmina_protocol_widget_panel_show_listen(self->gp, port);
+		python_wrapper_get_service()->protocol_widget_panel_show_listen(self->gp, port);
 	}
 	else
 	{
@@ -716,7 +715,7 @@ static PyObject* protocol_widget_panel_show_retry(PyRemminaProtocolWidget* self,
 	TRACE_CALL(__func__);
 	SELF_CHECK();
 
-	remmina_protocol_widget_panel_show_retry(self->gp);
+	python_wrapper_get_service()->protocol_widget_panel_show_retry(self->gp);
 	return Py_None;
 }
 
@@ -725,7 +724,7 @@ static PyObject* protocol_widget_panel_show(PyRemminaProtocolWidget* self, PyObj
 	TRACE_CALL(__func__);
 	SELF_CHECK();
 
-	remmina_protocol_widget_panel_show(self->gp);
+	python_wrapper_get_service()->protocol_widget_panel_show(self->gp);
 	return Py_None;
 }
 
@@ -734,7 +733,7 @@ static PyObject* protocol_widget_panel_hide(PyRemminaProtocolWidget* self, PyObj
 	TRACE_CALL(__func__);
 	SELF_CHECK();
 
-	remmina_protocol_widget_panel_hide(self->gp);
+	python_wrapper_get_service()->protocol_widget_panel_hide(self->gp);
 	return Py_None;
 }
 
@@ -747,7 +746,7 @@ static PyObject* protocol_widget_ssh_exec(PyRemminaProtocolWidget* self, PyObjec
 
 	if (PyArg_ParseTuple(args, "ps", &wait, &cmd))
 	{
-		remmina_protocol_widget_ssh_exec(self->gp, wait, cmd);
+		python_wrapper_get_service()->protocol_widget_ssh_exec(self->gp, wait, cmd);
 	}
 	else
 	{
@@ -759,13 +758,13 @@ static PyObject* protocol_widget_ssh_exec(PyRemminaProtocolWidget* self, PyObjec
 
 static void _on_send_callback_wrapper(RemminaProtocolWidget* gp, const gchar* text)
 {
-	PyPlugin* plugin = remmina_plugin_python_get_plugin(gp->plugin->name);
+	PyPlugin* plugin = python_wrapper_get_plugin_by_protocol_widget(gp);
 	PyObject_CallMethod(plugin->instance, "on_send", "Os", gp, text);
 }
 
 static void _on_destroy_callback_wrapper(RemminaProtocolWidget* gp)
 {
-	PyPlugin* plugin = remmina_plugin_python_get_plugin(gp->plugin->name);
+	PyPlugin* plugin = python_wrapper_get_plugin_by_protocol_widget(gp);
 	PyObject_CallMethod(plugin->instance, "on_destroy", "O", gp);
 }
 
@@ -779,7 +778,7 @@ static PyObject* protocol_widget_chat_open(PyRemminaProtocolWidget* self, PyObje
 		g_printerr("[%s:%d@%s]: Argument is not of type String!\n", __FILE__, __LINE__, __func__);
 	}
 
-	remmina_protocol_widget_chat_open(self->gp,
+	python_wrapper_get_service()->protocol_widget_chat_open(self->gp,
 		PyUnicode_AsUTF8(var_name),
 		_on_send_callback_wrapper,
 		_on_destroy_callback_wrapper);
@@ -792,7 +791,7 @@ static PyObject* protocol_widget_chat_close(PyRemminaProtocolWidget* self, PyObj
 	TRACE_CALL(__func__);
 	SELF_CHECK();
 
-	remmina_protocol_widget_panel_hide(self->gp);
+	python_wrapper_get_service()->protocol_widget_panel_hide(self->gp);
 	return Py_None;
 }
 
@@ -804,7 +803,7 @@ static PyObject* protocol_widget_chat_receive(PyRemminaProtocolWidget* self, PyO
 
 	if (PyArg_ParseTuple(args, "s", &text))
 	{
-		remmina_protocol_widget_chat_receive(self->gp, text);
+		python_wrapper_get_service()->protocol_widget_chat_receive(self->gp, text);
 	}
 	else
 	{
@@ -833,7 +832,7 @@ static PyObject* protocol_widget_send_keys_signals(PyRemminaProtocolWidget* self
 		}
 		else
 		{
-			remmina_protocol_widget_send_keys_signals((GtkWidget*)widget, keyvals, length, event_type);
+			python_wrapper_get_service()->protocol_widget_send_keys_signals((GtkWidget*)widget, keyvals, length, event_type);
 		}
 	}
 	else
