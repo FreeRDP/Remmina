@@ -36,6 +36,7 @@
 
 #pragma once
 
+#include <gtk/gtk.h>
 #include <stdarg.h>
 #include <remmina/types.h>
 #include "remmina/remmina_trace_calls.h"
@@ -48,7 +49,8 @@ typedef enum {
 	REMMINA_PLUGIN_TYPE_FILE	= 2,
 	REMMINA_PLUGIN_TYPE_TOOL	= 3,
 	REMMINA_PLUGIN_TYPE_PREF	= 4,
-	REMMINA_PLUGIN_TYPE_SECRET	= 5
+	REMMINA_PLUGIN_TYPE_SECRET	= 5,
+	REMMINA_PLUGIN_TYPE_LANGUAGE_WRAPPER	= 6
 } RemminaPluginType;
 
 typedef struct _RemminaPlugin {
@@ -145,6 +147,18 @@ typedef struct _RemminaSecretPlugin {
 	void (*delete_password)(struct _RemminaSecretPlugin* instance, RemminaFile *remminafile, const gchar *key);
 } RemminaSecretPlugin;
 
+typedef struct _RemminaLanguageWrapperPlugin {
+	RemminaPluginType	type;
+	const gchar *		name;
+	const gchar *		description;
+	const gchar *		domain;
+	const gchar *		version;
+	const gchar **		supported_extentions;
+
+	gboolean (*init)(struct _RemminaLanguageWrapperPlugin* instance);
+	gboolean (*load)(struct _RemminaLanguageWrapperPlugin* instance, const gchar* plugin_file);
+} RemminaLanguageWrapperPlugin;
+
 /* Plugin Service is a struct containing a list of function pointers,
  * which is passed from Remmina main program to the plugin module
  * through the plugin entry function remmina_plugin_entry() */
@@ -236,6 +250,56 @@ typedef struct _RemminaPluginService {
 	gboolean (*gtksocket_available)(void);
 	gint (*get_profile_remote_width)(RemminaProtocolWidget *gp);
 	gint (*get_profile_remote_height)(RemminaProtocolWidget *gp);
+	const gchar*(*protocol_widget_get_name)(RemminaProtocolWidget *gp);
+	gint(*protocol_widget_get_width)(RemminaProtocolWidget *gp);
+	gint(*protocol_widget_get_height)(RemminaProtocolWidget *gp);
+	void(*protocol_widget_set_width)(RemminaProtocolWidget *gp, gint width);
+	void(*protocol_widget_set_height)(RemminaProtocolWidget *gp, gint height);
+	RemminaScaleMode(*protocol_widget_get_current_scale_mode)(RemminaProtocolWidget *gp);
+	gboolean (*protocol_widget_get_expand)(RemminaProtocolWidget *gp);
+	void (*protocol_widget_set_expand)(RemminaProtocolWidget *gp, gboolean expand);
+	void (*protocol_widget_set_error)(RemminaProtocolWidget *gp, const gchar *fmt, ...);
+	gboolean (*protocol_widget_has_error)(RemminaProtocolWidget *gp);
+	GtkWidget *(*protocol_widget_gtkviewport)(RemminaProtocolWidget *gp);
+	gboolean (*protocol_widget_is_closed)(RemminaProtocolWidget *gp);
+	RemminaFile *(*protocol_widget_get_file)(RemminaProtocolWidget *gp);
+	gint (*protocol_widget_panel_auth)(RemminaProtocolWidget *gp, RemminaMessagePanelFlags pflags,
+					const gchar *title, const gchar *default_username, const gchar *default_password, const gchar *default_domain, const gchar *password_prompt);
+	void (*protocol_widget_register_hostkey)(RemminaProtocolWidget *gp, GtkWidget *widget);
+	gchar *(*protocol_widget_start_direct_tunnel)(RemminaProtocolWidget *gp, gint default_port, gboolean port_plus);
+	gboolean (*protocol_widget_start_reverse_tunnel)(RemminaProtocolWidget *gp, gint local_port);
+	void (*protocol_widget_send_keys_signals)(GtkWidget *widget, const guint *keyvals, int keyvals_length, GdkEventType action);
+	void (*protocol_widget_chat_receive)(RemminaProtocolWidget *gp, const gchar *text);
+	void (*protocol_widget_panel_hide)(RemminaProtocolWidget *gp);
+	void (*protocol_widget_chat_open)(RemminaProtocolWidget *gp, const gchar *name,
+				       void (*on_send)(RemminaProtocolWidget *gp, const gchar *text), void (*on_destroy)(RemminaProtocolWidget *gp));
+	gboolean (*protocol_widget_ssh_exec)(RemminaProtocolWidget *gp, gboolean wait, const gchar *fmt, ...);
+	void (*protocol_widget_panel_show)(RemminaProtocolWidget *gp);
+	void (*protocol_widget_panel_show_retry)(RemminaProtocolWidget *gp);
+	gboolean (*protocol_widget_start_xport_tunnel)(RemminaProtocolWidget *gp, RemminaXPortTunnelInitFunc init_func);
+	void (*protocol_widget_set_display)(RemminaProtocolWidget *gp, gint display);
+	void (*protocol_widget_signal_connection_closed)(RemminaProtocolWidget *gp);
+	void (*protocol_widget_signal_connection_opened)(RemminaProtocolWidget *gp);
+	void (*protocol_widget_update_align)(RemminaProtocolWidget *gp);
+	void (*protocol_widget_unlock_dynres)(RemminaProtocolWidget *gp);
+	void (*protocol_widget_desktop_resize)(RemminaProtocolWidget *gp);
+	gint (*protocol_widget_panel_new_certificate)(RemminaProtocolWidget *gp, const gchar *subject, const gchar *issuer, const gchar *fingerprint);
+	gint (*protocol_widget_panel_changed_certificate)(RemminaProtocolWidget *gp, const gchar *subject, const gchar *issuer, const gchar *new_fingerprint, const gchar *old_fingerprint);
+	gchar *(*protocol_widget_get_username)(RemminaProtocolWidget *gp);
+	gchar *(*protocol_widget_get_password)(RemminaProtocolWidget *gp);
+	gchar *(*protocol_widget_get_domain)(RemminaProtocolWidget *gp);
+	gboolean (*protocol_widget_get_savepassword)(RemminaProtocolWidget *gp);
+	gint (*protocol_widget_panel_authx509)(RemminaProtocolWidget *gp);
+	gchar *(*protocol_widget_get_cacert)(RemminaProtocolWidget *gp);
+	gchar *(*protocol_widget_get_cacrl)(RemminaProtocolWidget *gp);
+	gchar *(*protocol_widget_get_clientcert)(RemminaProtocolWidget *gp);
+	gchar *(*protocol_widget_get_clientkey)(RemminaProtocolWidget *gp);
+	void (*protocol_widget_save_cred)(RemminaProtocolWidget *gp);
+	void (*protocol_widget_panel_show_listen)(RemminaProtocolWidget *gp, gint port);
+	void (*widget_pool_register)(GtkWidget *widget);
+	GtkWidget *(*rcw_open_from_file_full)(RemminaFile *remminafile, GCallback disconnect_cb, gpointer data, guint *handler);
+	void (*show_dialog)(GtkMessageType msg, GtkButtonsType buttons, const gchar* message);
+	GtkWindow *(*get_window)(void);
 } RemminaPluginService;
 
 /* "Prototype" of the plugin entry function */

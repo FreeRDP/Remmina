@@ -32,12 +32,18 @@
  */
 
 /**
- * @file 	remmina_plugin_python_pref.h
+ * @file 	python_wrapper_entry.h
  *
- * @brief	Contains the specialisation of RemminaPluginFile plugins in Python.
+ * @brief	Contains the specialisation of RemminaPluginEntry plugins in Python.
  */
 
 #pragma once
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// I N L U C E S
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+#include "remmina/plugin.h"
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // A P I
@@ -46,16 +52,17 @@
 G_BEGIN_DECLS
 
 /**
- * Initializes the Python plugin specialisation for preferences plugins.
+ * Initializes the Python plugin specialisation for tool plugins.
  */
-void remmina_plugin_python_pref_init(void);
+void python_wrapper_tool_init(void);
 
 /**
- * @brief	Creates a new instance of the RemminaPluginPref, initializes its members and references the wrapper
+ * @brief	Creates a new instance of the RemminaPluginTool, initializes its members and references the wrapper
  * 			functions.
  * @param 	instance The instance of the Python plugin.
  * @return	Returns a new instance of the RemminaPlugin (must be freed!).
  */
-RemminaPlugin* remmina_plugin_python_create_pref_plugin(PyPlugin* instance);
+RemminaPlugin* python_wrapper_create_tool_plugin(PyPlugin* instance);
 
 G_END_DECLS
+

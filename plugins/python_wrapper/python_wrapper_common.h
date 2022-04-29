@@ -32,7 +32,7 @@
  */
 
 /**
- * @file 	remmina_plugin_python_common.h
+ * @file 	python_wrapper_common.h
  *
  * @brief	Contains functions and constants that are commonly used throughout the Python plugin implementation.
  *
@@ -46,7 +46,8 @@
 // I N C L U D E S
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <glib.h>
+#include "common/remmina_plugin.h"
+
 #include <gtk/gtk.h>
 
 #include <Python.h>
@@ -87,16 +88,16 @@ extern const char* ATTR_INIT_ORDER;
  */
 #ifdef WITH_PYTHON_TRACE_CALLS
 #define CallPythonMethod(instance, name, params, ...)                             \
-		remmina_plugin_python_last_result_set(PyObject_CallMethod(instance, name, params, ##__VA_ARGS__)); \
-		remmina_plugin_python_log_method_call(instance, name);                                          \
-		remmina_plugin_python_check_error()
+		python_wrapper_last_result_set(PyObject_CallMethod(instance, name, params, ##__VA_ARGS__)); \
+		python_wrapper_log_method_call(instance, name);                                          \
+		python_wrapper_check_error()
 #else
 /**
  * If WITH_TRACE_CALL is not defined, it still logs errors but doesn't print the call anymore.
  */
 #define CallPythonMethod(instance, name, params, ...)           \
     PyObject_CallMethod(instance, name, params, ##__VA_ARGS__); \
-    remmina_plugin_python_check_error()
+    python_wrapper_check_error()
 #endif // WITH_PYTHON_TRACE_CALLS
 
 
@@ -161,34 +162,39 @@ typedef struct
 /**
  * Creates a new instance of PyGeneric.
  */
-PyGeneric* remmina_plugin_python_generic_new(void);
+PyGeneric* python_wrapper_generic_new(void);
 
 /**
  * Registers the given plugin if no other plugin with the same name has been already registered.
  */
-void remmina_plugin_python_add_plugin(PyPlugin* plugin);
+void python_wrapper_add_plugin(PyPlugin* plugin);
 
 /**
  * Sets the pointer to the plugin service of Remmina.
  */
-void remmina_plugin_python_set_service(RemminaPluginService* service);
+void python_wrapper_set_service(RemminaPluginService* service);
+
+/**
+ * Gets the pointer to the plugin service of Remmina.
+ */
+RemminaPluginService* python_wrapper_get_service(void);
 
 /**
  * Extracts data from a PyObject instance to a generic pointer and returns a type hint if it could be determined.
  */
-RemminaTypeHint remmina_plugin_python_to_generic(PyObject* field, gpointer* target);
+RemminaTypeHint python_wrapper_to_generic(PyObject* field, gpointer* target);
 
 /**
  * Gets the result of the last python method call.
  */
-PyObject* remmina_plugin_python_last_result(void);
+PyObject* python_wrapper_last_result(void);
 
 /**
  * @brief	Sets the result of the last python method call.
  *
  * @return 	Returns the passed result (it's done to be compatible with the CallPythonMethod macro).
  */
-PyObject* remmina_plugin_python_last_result_set(PyObject* result);
+PyObject* python_wrapper_last_result_set(PyObject* result);
 
 /**
  * @brief	Prints a log message to inform the user a python message has been called.
@@ -198,14 +204,14 @@ PyObject* remmina_plugin_python_last_result_set(PyObject* result);
  * @param 	instance The instance that contains the called method.
  * @param 	method The name of the method called.
  */
-void remmina_plugin_python_log_method_call(PyObject* instance, const char* method);
+void python_wrapper_log_method_call(PyObject* instance, const char* method);
 
 /**
  * @brief 	Checks if an error has occurred and prints it.
  *
  * @return 	Returns TRUE if an error has occurred.
  */
-gboolean remmina_plugin_python_check_error(void);
+gboolean python_wrapper_check_error(void);
 
 /**
  * @brief 	Gets the attribute as long value.
@@ -216,7 +222,7 @@ gboolean remmina_plugin_python_check_error(void);
  *
  * @return 	The value attribute as long.
  */
-long remmina_plugin_python_get_attribute_long(PyObject* instance, const char* attr_name, long def);
+long python_wrapper_get_attribute_long(PyObject* instance, const char* attr_name, long def);
 
 /**
  * @brief 	Checks if a given attribute exists.
@@ -226,7 +232,7 @@ long remmina_plugin_python_get_attribute_long(PyObject* instance, const char* at
  *
  * @return 	Returns TRUE if the attribute exists.
  */
-gboolean remmina_plugin_python_check_attribute(PyObject* instance, const char* attr_name);
+gboolean python_wrapper_check_attribute(PyObject* instance, const char* attr_name);
 
 /**
  * @brief 	Allocates memory and checks for errors before returning.
@@ -235,7 +241,7 @@ gboolean remmina_plugin_python_check_attribute(PyObject* instance, const char* a
  *
  * @return 	Address to the allocated memory.
  */
-void* remmina_plugin_python_malloc(int bytes);
+void* python_wrapper_malloc(int bytes);
 
 /**
  * @biref 	Copies a string from a Python object to a new point in memory.
@@ -245,7 +251,7 @@ void* remmina_plugin_python_malloc(int bytes);
  *
  * @return 	A char pointer to the new copy of the string.
  */
-char* remmina_plugin_python_copy_string_from_python(PyObject* string, Py_ssize_t len);
+char* python_wrapper_copy_string_from_python(PyObject* string, Py_ssize_t len);
 
 /**
  * @brief	Tries to find the Python plugin matching to the given instance of RemminaPlugin.
@@ -255,7 +261,17 @@ char* remmina_plugin_python_copy_string_from_python(PyObject* string, Py_ssize_t
  *
  * @return	A pointer to a PyPlugin instance if successful. Otherwise NULL is returned.
  */
-PyPlugin* remmina_plugin_python_get_plugin(const char* name);
+PyPlugin* python_wrapper_get_plugin(const gchar* name);
+
+/**
+ * @brief	Tries to find the Python plugin matching to the given instance of RemminaPlugin.
+ *
+ * @param 	plugin_map An array of PyPlugin pointers to search.
+ * @param 	instance The RemminaPlugin instance to find the correct PyPlugin instance for.
+ *
+ * @return	A pointer to a PyPlugin instance if successful. Otherwise NULL is returned.
+ */
+PyPlugin* python_wrapper_get_plugin_by_protocol_widget(RemminaProtocolWidget* gp);
 
 /**
  * Creates a new GtkWidget

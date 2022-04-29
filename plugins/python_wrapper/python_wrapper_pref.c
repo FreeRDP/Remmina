@@ -32,53 +32,73 @@
  */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// I N L U C E S
+// I N C L U D E S
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include "remmina_plugin_python_common.h"
-#include "remmina_plugin_python_tool.h"
+#include "python_wrapper_common.h"
+#include "python_wrapper_pref.h"
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// D E C L A R A T I O N S
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // A P I
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-void remmina_plugin_python_tool_init(void)
-{
-	TRACE_CALL(__func__);
-}
-
-void remmina_plugin_python_tool_exec_func_wrapper(GtkMenuItem* self, RemminaToolPlugin* instance)
+void python_wrapper_pref_init(void)
 {
 	TRACE_CALL(__func__);
 
-	PyPlugin* plugin = remmina_plugin_python_get_plugin(instance->name);
-	CallPythonMethod(plugin->instance, "exec_func", NULL);
 }
 
-RemminaPlugin* remmina_plugin_python_create_tool_plugin(PyPlugin* plugin)
+/**
+ * @brief
+ */
+GtkWidget* python_wrapper_pref_get_pref_body_wrapper(RemminaPrefPlugin* instance)
+{
+	TRACE_CALL(__func__);
+
+	PyPlugin* plugin = python_wrapper_get_plugin(instance->name);
+
+	PyObject* result = CallPythonMethod(plugin->instance, "get_pref_body", NULL, NULL);
+	if (result == Py_None || result == NULL)
+	{
+		return NULL;
+	}
+
+	return get_pywidget(result);
+}
+
+RemminaPlugin* python_wrapper_create_pref_plugin(PyPlugin* plugin)
 {
 	TRACE_CALL(__func__);
 
 	PyObject* instance = plugin->instance;
 
-	if (!remmina_plugin_python_check_attribute(instance, ATTR_NAME))
+	if (!python_wrapper_check_attribute(instance, ATTR_NAME)
+		|| !python_wrapper_check_attribute(instance, ATTR_VERSION)
+		|| !python_wrapper_check_attribute(instance, ATTR_DESCRIPTION)
+		|| !python_wrapper_check_attribute(instance, ATTR_PREF_LABEL))
 	{
+		g_printerr("Unable to create pref plugin. Aborting!\n");
 		return NULL;
 	}
 
-	RemminaToolPlugin* remmina_plugin = (RemminaToolPlugin*)remmina_plugin_python_malloc(sizeof(RemminaToolPlugin));
+	RemminaPrefPlugin* remmina_plugin = (RemminaPrefPlugin*)python_wrapper_malloc(sizeof(RemminaPrefPlugin));
 
-	remmina_plugin->type = REMMINA_PLUGIN_TYPE_TOOL;
+	remmina_plugin->type = REMMINA_PLUGIN_TYPE_PREF;
 	remmina_plugin->domain = GETTEXT_PACKAGE;
 	remmina_plugin->name = PyUnicode_AsUTF8(PyObject_GetAttrString(instance, ATTR_NAME));
 	remmina_plugin->version = PyUnicode_AsUTF8(PyObject_GetAttrString(instance, ATTR_VERSION));
 	remmina_plugin->description = PyUnicode_AsUTF8(PyObject_GetAttrString(instance, ATTR_DESCRIPTION));
-	remmina_plugin->exec_func = remmina_plugin_python_tool_exec_func_wrapper;
+	remmina_plugin->pref_label = PyUnicode_AsUTF8(PyObject_GetAttrString(instance, ATTR_PREF_LABEL));
+	remmina_plugin->get_pref_body = python_wrapper_pref_get_pref_body_wrapper;
 
-	plugin->tool_plugin = remmina_plugin;
+	plugin->pref_plugin = remmina_plugin;
 	plugin->generic_plugin = (RemminaPlugin*)remmina_plugin;
 
-	remmina_plugin_python_add_plugin(plugin);
+	python_wrapper_add_plugin(plugin);
 
 	return (RemminaPlugin*)remmina_plugin;
 }

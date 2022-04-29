@@ -1372,6 +1372,11 @@ gint remmina_protocol_widget_get_profile_remote_height(RemminaProtocolWidget *gp
 	return gp->priv->profile_remote_height;
 }
 
+const gchar* remmina_protocol_widget_get_name(RemminaProtocolWidget *gp)
+{
+	TRACE_CALL(__func__);
+	return gp ? gp->plugin ? gp->plugin->name : NULL : NULL;
+}
 
 gint remmina_protocol_widget_get_width(RemminaProtocolWidget *gp)
 {

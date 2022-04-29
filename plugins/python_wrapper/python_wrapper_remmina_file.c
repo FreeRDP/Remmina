@@ -35,10 +35,10 @@
 // I N C L U D E S
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
 #include "remmina/remmina_trace_calls.h"
-#include "remmina_file.h"
-#include "remmina_plugin_python_common.h"
-#include "remmina_plugin_python_remmina_file.h"
+#include "python_wrapper_common.h"
+#include "python_wrapper_remmina_file.h"
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // D E C L A R A T I O N S
@@ -82,12 +82,12 @@ static PyTypeObject python_remmina_file_type = {
 // A P I
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-void remmina_plugin_python_remmina_init_types(void)
+void python_wrapper_remmina_init_types(void)
 {
 	PyType_Ready(&python_remmina_file_type);
 }
 
-PyRemminaFile* remmina_plugin_python_remmina_file_to_python(RemminaFile* file)
+PyRemminaFile* python_wrapper_remmina_file_to_python(RemminaFile* file)
 {
 	TRACE_CALL(__func__);
 
@@ -101,7 +101,7 @@ static PyObject* file_get_path(PyRemminaFile* self, PyObject* args)
 {
 	TRACE_CALL(__func__);
 
-	return Py_BuildValue("s", remmina_file_get_filename(self->file));
+	return Py_BuildValue("s", python_wrapper_get_service()->file_get_path(self->file));
 }
 
 static PyObject* file_set_setting(PyRemminaFile* self, PyObject* args, PyObject* kwds)
@@ -116,11 +116,11 @@ static PyObject* file_set_setting(PyRemminaFile* self, PyObject* args, PyObject*
 	{
 		if (PyUnicode_Check(value))
 		{
-			remmina_file_set_string(self->file, key, PyUnicode_AsUTF8(value));
+			python_wrapper_get_service()->file_set_string(self->file, key, PyUnicode_AsUTF8(value));
 		}
 		else if (PyLong_Check(value))
 		{
-			remmina_file_set_int(self->file, key, PyLong_AsLong(value));
+			python_wrapper_get_service()->file_set_int(self->file, key, PyLong_AsLong(value));
 		}
 		else
 		{
@@ -148,15 +148,15 @@ static PyObject* file_get_setting(PyRemminaFile* self, PyObject* args, PyObject*
 	{
 		if (PyUnicode_Check(def))
 		{
-			return Py_BuildValue("s", remmina_file_get_string(self->file, key));
+			return Py_BuildValue("s", python_wrapper_get_service()->file_get_string(self->file, key));
 		}
 		else if (PyBool_Check(def))
 		{
-			return remmina_file_get_int(self->file, key, (gint)PyLong_AsLong(def)) ? Py_True : Py_False;
+			return python_wrapper_get_service()->file_get_int(self->file, key, (gint)PyLong_AsLong(def)) ? Py_True : Py_False;
 		}
 		else if (PyLong_Check(def))
 		{
-			return Py_BuildValue("i", remmina_file_get_int(self->file, key, (gint)PyLong_AsLong(def)));
+			return Py_BuildValue("i", python_wrapper_get_service()->file_get_int(self->file, key, (gint)PyLong_AsLong(def)));
 		}
 		else
 		{
@@ -178,7 +178,7 @@ static PyObject* file_get_secret(PyRemminaFile* self, PyObject* key)
 
 	if (key && PyUnicode_Check(key))
 	{
-		return Py_BuildValue("s", remmina_file_get_secret(self->file, PyUnicode_AsUTF8(key)));
+		return Py_BuildValue("s", python_wrapper_get_service()->file_get_secret(self->file, PyUnicode_AsUTF8(key)));
 	}
 	else
 	{
@@ -194,7 +194,7 @@ static PyObject* file_unsave_passwords(PyRemminaFile* self, PyObject* args)
 
 	if (self)
 	{
-		remmina_file_unsave_passwords(self->file);
+		python_wrapper_get_service()->file_unsave_passwords(self->file);
 		return Py_None;
 	}
 	else

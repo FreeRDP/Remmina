@@ -31,11 +31,10 @@
  *  files in the program, then also delete it here.
  */
 
-
 /**
- * @file 	remmina_plugin_python_protocol.h
+ * @file 	python_wrapper_protocol_widget.h
  *
- * @brief	Contains the implementation of the Python type remmina.RemminaFile.
+ * @brief	Contains the implementation of the widget handling used from the protocol plugin.
  */
 
 #pragma once
@@ -44,18 +43,21 @@
 // A P I
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/**
- * Wrapper for a Python object that contains a pointer to an instance of RemminaFile.
- */
-typedef struct
-{
-	PyObject_HEAD
-	RemminaFile* file;
-} PyRemminaFile;
-
-void remmina_plugin_python_remmina_init_types(void);
+G_BEGIN_DECLS
 
 /**
- * Converts the instance of RemminaFile to a Python object that can be passed to the Python engine.
+ * Initializes the widget backend of the protocol plugin implementation.
  */
-PyRemminaFile* remmina_plugin_python_remmina_file_to_python(RemminaFile* file);
+void python_wrapper_protocol_widget_init(void);
+
+/**
+ * Initializes Python types used for protocol widgets.
+ */
+void python_wrapper_protocol_widget_type_ready(void);
+
+/**
+ * Creates a new instance of PyRemminaProtocolWidget and initializes its fields.
+ */
+PyRemminaProtocolWidget* python_wrapper_protocol_widget_create();
+
+G_END_DECLS

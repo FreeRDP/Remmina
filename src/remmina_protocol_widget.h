@@ -82,6 +82,7 @@ GtkWidget* remmina_protocol_widget_gtkviewport(RemminaProtocolWidget *gp);
 GtkWidget *remmina_protocol_widget_new(void);
 void remmina_protocol_widget_setup(RemminaProtocolWidget *gp, RemminaFile *remminafile, RemminaConnectionObject *cnnobj);
 
+const gchar* remmina_protocol_widget_get_name(RemminaProtocolWidget *gp);
 gint remmina_protocol_widget_get_width(RemminaProtocolWidget *gp);
 void remmina_protocol_widget_set_width(RemminaProtocolWidget *gp, gint width);
 gint remmina_protocol_widget_get_height(RemminaProtocolWidget *gp);

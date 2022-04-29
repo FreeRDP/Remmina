@@ -1,6 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2014-2022 Antenore Gatta, Giovanni Panozzo
+ * Copyright (C) 2014-2021 Antenore Gatta, Giovanni Panozzo, Mathias Winterhalter (ToolsDevler)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,24 +32,18 @@
  */
 
 /**
- * @file 	remmina_plugin_python_remmina.h
+ * @file 	python_wrapper_entry.h
  *
- * @brief 	Contains the implementation of the Python module 'remmina', provided to interface with the application from
- * 			the Python plugin source.
- *
- * @detail 	In contrast to the wrapper functions that exist in the plugin specialisation files (e.g.
- * 			remmina_plugin_python_protocol.c or remmina_plugin_python_entry.c), this file contains the API for the
- * 			communication in the direction, from Python to Remmina. This means, if in the Python plugin a function
- * 			is called, that is defined in Remmina, C code, at least in this file, is executed.
+ * @brief	Contains the specialisation of RemminaPluginEntry plugins in Python.
  */
 
 #pragma once
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// I N C L U D E S
+// I N L U C E S
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include "remmina_plugin_python_protocol_widget.h"
+#include "remmina/plugin.h"
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // A P I
@@ -58,35 +52,16 @@
 G_BEGIN_DECLS
 
 /**
- * Initializes the 'remmina' module in the Python engine.
+ * Initializes the Python plugin specialisation for secret plugins.
  */
-void remmina_plugin_python_module_init(void);
+void python_wrapper_secret_init(void);
 
 /**
- * @brief 	Returns a pointer to the Python instance, mapped to the RemminaProtocolWidget or null if not found.
- *
- * @param 	gp The widget that is owned by the plugin that should be found.
- *
- * @details Remmina expects this callback function to be part of one plugin, which is the reason no instance information
- * 			is explicitly passed. To bridge that, this function can be used to retrieve the very plugin instance owning
- * 			the given RemminaProtocolWidget.
+ * @brief	Creates a new instance of the RemminaPluginSecret, initializes its members and references the wrapper
+ * 			functions.
+ * @param 	instance The instance of the Python plugin.
+ * @return	Returns a new instance of the RemminaPlugin (must be freed!).
  */
-PyPlugin* remmina_plugin_python_module_get_plugin(RemminaProtocolWidget* gp);
-
-/**
- * @brief 	Converts the PyObject to RemminaProtocolSetting.
- *
- * @param 	dest A target for the converted value.
- * @param 	setting The source value to convert.
- */
-void remmina_plugin_python_to_protocol_setting(RemminaProtocolSetting* dest, PyObject* setting);
-
-/**
- * @brief 	Converts the PyObject to RemminaProtocolFeature.
- *
- * @param 	dest A target for the converted value.
- * @param 	setting The source value to convert.
- */
-void remmina_plugin_python_to_protocol_feature(RemminaProtocolFeature* dest, PyObject* feature);
+RemminaPlugin* python_wrapper_create_secret_plugin(PyPlugin* instance);
 
 G_END_DECLS

@@ -46,6 +46,7 @@
 #include <gdk/gdkx.h>
 
 #include "remmina_public.h"
+#include "remmina_main.h"
 #include "remmina_file_manager.h"
 #include "remmina_pref.h"
 #include "remmina_protocol_widget.h"
@@ -54,9 +55,6 @@
 #include "rcw.h"
 #include "remmina_plugin_manager.h"
 #include "remmina_plugin_native.h"
-#ifdef WITH_PYTHONLIBS
-#include "remmina_plugin_python.h"
-#endif
 #include "remmina_public.h"
 #include "remmina_masterthread_exec.h"
 #include "remmina/remmina_trace_calls.h"
@@ -70,7 +68,7 @@ static GHashTable *encrypted_settings_cache = NULL;
 static RemminaSecretPlugin *remmina_secret_plugin = NULL;
 
 static const gchar *remmina_plugin_type_name[] =
-{ N_("Protocol"), N_("Entry"), N_("File"), N_("Tool"), N_("Preference"), N_("Secret"), NULL };
+{ N_("Protocol"), N_("Entry"), N_("File"), N_("Tool"), N_("Preference"), N_("Secret"), N_("Language Wrapper"), NULL };
 
 static gint remmina_plugin_manager_compare_func(RemminaPlugin **a, RemminaPlugin **b)
 {
@@ -257,7 +255,55 @@ RemminaPluginService remmina_plugin_manager_service =
 	remmina_masterthread_exec_is_main_thread,
 	remmina_gtksocket_available,
 	remmina_protocol_widget_get_profile_remote_width,
-	remmina_protocol_widget_get_profile_remote_height
+	remmina_protocol_widget_get_profile_remote_height,
+	remmina_protocol_widget_get_name,
+	remmina_protocol_widget_get_width,
+	remmina_protocol_widget_get_height,
+	remmina_protocol_widget_set_width,
+	remmina_protocol_widget_set_height,
+	remmina_protocol_widget_get_current_scale_mode,
+	remmina_protocol_widget_get_expand,
+	remmina_protocol_widget_set_expand,
+	remmina_protocol_widget_set_error,
+	remmina_protocol_widget_has_error,
+	remmina_protocol_widget_gtkviewport,
+	remmina_protocol_widget_is_closed,
+	remmina_protocol_widget_get_file,
+	remmina_protocol_widget_panel_auth,
+	remmina_protocol_widget_register_hostkey,
+	remmina_protocol_widget_start_direct_tunnel,
+	remmina_protocol_widget_start_reverse_tunnel,
+	remmina_protocol_widget_send_keys_signals,
+	remmina_protocol_widget_chat_receive,
+	remmina_protocol_widget_panel_hide,
+	remmina_protocol_widget_chat_open,
+	remmina_protocol_widget_ssh_exec,
+	remmina_protocol_widget_panel_show,
+	remmina_protocol_widget_panel_show_retry,
+	remmina_protocol_widget_start_xport_tunnel,
+	remmina_protocol_widget_set_display,
+	remmina_protocol_widget_signal_connection_closed,
+	remmina_protocol_widget_signal_connection_opened,
+	remmina_protocol_widget_update_align,
+	remmina_protocol_widget_unlock_dynres,
+	remmina_protocol_widget_desktop_resize,
+	remmina_protocol_widget_panel_new_certificate,
+	remmina_protocol_widget_panel_changed_certificate,
+	remmina_protocol_widget_get_username,
+	remmina_protocol_widget_get_password,
+	remmina_protocol_widget_get_domain,
+	remmina_protocol_widget_get_savepassword,
+	remmina_protocol_widget_panel_authx509,
+	remmina_protocol_widget_get_cacert,
+	remmina_protocol_widget_get_cacrl,
+	remmina_protocol_widget_get_clientcert,
+	remmina_protocol_widget_get_clientkey,
+	remmina_protocol_widget_save_cred,
+	remmina_protocol_widget_panel_show_listen,
+	remmina_widget_pool_register,
+	rcw_open_from_file_full,
+	remmina_main_show_dialog,
+	remmina_main_get_window,
 };
 
 const char *get_filename_ext(const char *filename) {
@@ -265,23 +311,6 @@ const char *get_filename_ext(const char *filename) {
     const char *dot = strrchr(last, '.');
     if(!dot || dot == filename) return "";
     return dot + 1;
-}
-
-static void remmina_plugin_manager_load_plugin(const gchar *name)
-{
-	const char* ext = get_filename_ext(name);
-
-	if (g_str_equal(G_MODULE_SUFFIX, ext)) {
-		remmina_plugin_native_load(&remmina_plugin_manager_service, name);
-	} else if (g_str_equal("py", ext)) {
-#ifdef WITH_PYTHONLIBS
-		remmina_plugin_python_load(&remmina_plugin_manager_service, name);
-#else
-		REMMINA_DEBUG("Python support not compiled, cannot load Python plugins");
-#endif
-	} else {
-		g_print("%s: Skip unsupported file type '%s'\n", name, ext);
-	}
 }
 
 static gint compare_secret_plugin_init_order(gconstpointer a, gconstpointer b)
@@ -306,14 +335,13 @@ void remmina_plugin_manager_init()
 	gchar *fullpath;
 	RemminaPlugin *plugin;
 	RemminaSecretPlugin *sp;
-	int i;
+	int i, j;
 	GSList *secret_plugins;
 	GSList *sple;
+	GPtrArray *alternative_language_plugins;
 
 	remmina_plugin_table = g_ptr_array_new();
-#ifdef WITH_PYTHONLIBS
-	remmina_plugin_python_init();
-#endif
+	alternative_language_plugins = g_ptr_array_new();
 
 	if (!g_module_supported()) {
 		g_print("Dynamic loading of plugins is not supported on this platform!\n");
@@ -329,13 +357,45 @@ void remmina_plugin_manager_init()
 		if ((ptr = strrchr(name, '.')) == NULL)
 			continue;
 		ptr++;
-		if (!remmina_plugin_manager_loader_supported(ptr))
-			continue;
 		fullpath = g_strdup_printf(REMMINA_RUNTIME_PLUGINDIR "/%s", name);
-		remmina_plugin_manager_load_plugin(fullpath);
+		if (!remmina_plugin_manager_loader_supported(ptr)) {
+			g_ptr_array_add(alternative_language_plugins, g_strdup_printf(REMMINA_RUNTIME_PLUGINDIR "/%s", name));
+			continue;
+		}
+		remmina_plugin_native_load(&remmina_plugin_manager_service, fullpath);
 		g_free(fullpath);
 	}
 	g_dir_close(dir);
+
+	while (alternative_language_plugins->len > 0) {
+		gboolean has_loaded = FALSE;
+		gchar* name = (gchar*)g_ptr_array_remove_index(alternative_language_plugins, 0);
+		const gchar* ext = get_filename_ext(name);
+
+		for (j = 0; j < remmina_plugin_table->len && !has_loaded; j++) {
+			plugin = (RemminaPlugin*)g_ptr_array_index(remmina_plugin_table, j);
+			if (plugin->type == REMMINA_PLUGIN_TYPE_LANGUAGE_WRAPPER) {
+				RemminaLanguageWrapperPlugin* wrapper_plugin = (RemminaLanguageWrapperPlugin*)plugin;
+				const gchar** supported_extention = wrapper_plugin->supported_extentions;
+				while (*supported_extention) {
+					if (g_str_equal(*supported_extention, ext)) {
+						has_loaded = wrapper_plugin->load(wrapper_plugin, name);
+						if (has_loaded) {
+							break;
+						}
+					}
+					supported_extention++;
+				}
+				if (has_loaded) break;
+			}
+		}
+
+		if (!has_loaded) {
+			g_print("%s: Skip unsupported file type '%s'\n", name, ext);
+		}
+
+		g_free(name);
+	}
 
 	/* Now all secret plugins needs to initialize, following their init_order.
 	 * The 1st plugin which will initialize correctly will be
@@ -369,7 +429,7 @@ void remmina_plugin_manager_init()
 
 gboolean remmina_plugin_manager_loader_supported(const char *filetype) {
 	TRACE_CALL(__func__);
-	return g_str_equal("py", filetype) || g_str_equal(G_MODULE_SUFFIX, filetype);
+	return g_str_equal(G_MODULE_SUFFIX, filetype);
 }
 
 RemminaPlugin* remmina_plugin_manager_get_plugin(RemminaPluginType type, const gchar *name)

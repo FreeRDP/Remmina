@@ -39,7 +39,7 @@ G_BEGIN_DECLS
 
 void remmina_rdp_settings_init(void);
 guint remmina_rdp_settings_get_keyboard_layout(void);
-GtkWidget *remmina_rdp_settings_new(void);
+GtkWidget *remmina_rdp_settings_new(RemminaPrefPlugin* plugin);
 
 void remmina_rdp_settings_get_orientation_scale_prefs(int *desktopOrientation, int *desktopScaleFactor, int *deviceScaleFactor);
 

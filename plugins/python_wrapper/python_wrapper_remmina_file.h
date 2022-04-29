@@ -1,6 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2014-2022 Antenore Gatta, Giovanni Panozzo, Mathias Winterhalter (ToolsDevler)
+ * Copyright (C) 2016-2022 Antenore Gatta, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -31,77 +31,31 @@
  *  files in the program, then also delete it here.
  */
 
+
 /**
- * @file 	remmina_plugin_python_protocol.h
+ * @file 	python_wrapper_protocol.h
  *
- * @brief	Contains the specialisation of RemminaPluginFile plugins in Python.
+ * @brief	Contains the implementation of the Python type remmina.RemminaFile.
  */
 
 #pragma once
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// I N C L U D E S
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-#include "remmina/plugin.h"
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // A P I
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-G_BEGIN_DECLS
-
 /**
- * Wrapper for a Python object that contains a pointer to an instance of RemminaProtocolFeature.
+ * Wrapper for a Python object that contains a pointer to an instance of RemminaFile.
  */
 typedef struct
 {
 	PyObject_HEAD
-	RemminaProtocolFeatureType type;
-	gint id;
-	PyGeneric* opt1;
-	PyGeneric* opt2;
-	PyGeneric* opt3;
-} PyRemminaProtocolFeature;
+	RemminaFile* file;
+} PyRemminaFile;
+
+void python_wrapper_remmina_init_types(void);
 
 /**
- *
+ * Converts the instance of RemminaFile to a Python object that can be passed to the Python engine.
  */
-typedef struct
-{
-	PyObject_HEAD
-	PyByteArrayObject* buffer;
-	int bitsPerPixel;
-	int bytesPerPixel;
-	int width;
-	int height;
-} PyRemminaPluginScreenshotData;
-
-/**
- * Initializes the Python plugin specialisation for protocol plugins.
- */
-void remmina_plugin_python_protocol_init(void);
-
-/**
- * @brief	Creates a new instance of the RemminaPluginProtocol, initializes its members and references the wrapper
- * 			functions.
- *
- * @param 	instance The instance of the Python plugin.
- *
- * @return	Returns a new instance of the RemminaPlugin (must be freed!).
- */
-RemminaPlugin* remmina_plugin_python_create_protocol_plugin(PyPlugin* plugin);
-
-/**
- *
- * @return
- */
-PyRemminaProtocolFeature* remmina_plugin_python_protocol_feature_new(void);
-
-/**
- *
- * @return
- */
-PyRemminaPluginScreenshotData* remmina_plugin_python_screenshot_data_new(void);
-
-G_END_DECLS
+PyRemminaFile* python_wrapper_remmina_file_to_python(RemminaFile* file);

@@ -35,7 +35,7 @@
 // I N C L U D E S
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include "remmina_plugin_python_common.h"
+#include "python_wrapper_common.h"
 
 #include <assert.h>
 #include <stdio.h>
@@ -51,7 +51,7 @@
 
 /**
  * A cache to store the last result that has been returned by the Python code using CallPythonMethod
- * (@see remmina_plugin_python_common.h)
+ * (@see python_wrapper_common.h)
  */
 static PyObject* __last_result;
 static GPtrArray* plugin_map = NULL;
@@ -81,21 +81,21 @@ static const int REASONABLE_LIMIT_FOR_MALLOC = 1024 * 1024;
 // A P I
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-PyObject* remmina_plugin_python_last_result(void)
+PyObject* python_wrapper_last_result(void)
 {
 	TRACE_CALL(__func__);
 
 	return __last_result;
 }
 
-PyObject* remmina_plugin_python_last_result_set(PyObject* last_result)
+PyObject* python_wrapper_last_result_set(PyObject* last_result)
 {
 	TRACE_CALL(__func__);
 
 	return __last_result = last_result;
 }
 
-gboolean remmina_plugin_python_check_error(void)
+gboolean python_wrapper_check_error(void)
 {
 	TRACE_CALL(__func__);
 
@@ -108,7 +108,7 @@ gboolean remmina_plugin_python_check_error(void)
 	return FALSE;
 }
 
-void remmina_plugin_python_log_method_call(PyObject* instance, const char* method)
+void python_wrapper_log_method_call(PyObject* instance, const char* method)
 {
 	TRACE_CALL(__func__);
 
@@ -118,10 +118,10 @@ void remmina_plugin_python_log_method_call(PyObject* instance, const char* metho
 		PyObject_Hash(instance),
 		instance->ob_type->tp_name,
 		method,
-		PyUnicode_AsUTF8(PyObject_Str(remmina_plugin_python_last_result())));
+		PyUnicode_AsUTF8(PyObject_Str(python_wrapper_last_result())));
 }
 
-long remmina_plugin_python_get_attribute_long(PyObject* instance, const char* attr_name, long def)
+long python_wrapper_get_attribute_long(PyObject* instance, const char* attr_name, long def)
 {
 	TRACE_CALL(__func__);
 
@@ -136,7 +136,7 @@ long remmina_plugin_python_get_attribute_long(PyObject* instance, const char* at
 	return def;
 }
 
-gboolean remmina_plugin_python_check_attribute(PyObject* instance, const char* attr_name)
+gboolean python_wrapper_check_attribute(PyObject* instance, const char* attr_name)
 {
 	TRACE_CALL(__func__);
 
@@ -151,7 +151,7 @@ gboolean remmina_plugin_python_check_attribute(PyObject* instance, const char* a
 	return FALSE;
 }
 
-void* remmina_plugin_python_malloc(int bytes)
+void* python_wrapper_malloc(int bytes)
 {
 	TRACE_CALL(__func__);
 
@@ -169,7 +169,7 @@ void* remmina_plugin_python_malloc(int bytes)
 	return result;
 }
 
-char* remmina_plugin_python_copy_string_from_python(PyObject* string, Py_ssize_t len)
+char* python_wrapper_copy_string_from_python(PyObject* string, Py_ssize_t len)
 {
 	TRACE_CALL(__func__);
 
@@ -183,7 +183,7 @@ char* remmina_plugin_python_copy_string_from_python(PyObject* string, Py_ssize_t
 	if (py_str)
 	{
 		const int label_size = sizeof(char) * (len + 1);
-		result = (char*)remmina_plugin_python_malloc(label_size);
+		result = (char*)python_wrapper_malloc(label_size);
 		result[len] = '\0';
 		memcpy(result, py_str, len);
 	}
@@ -191,17 +191,17 @@ char* remmina_plugin_python_copy_string_from_python(PyObject* string, Py_ssize_t
 	return result;
 }
 
-void remmina_plugin_python_set_service(RemminaPluginService* service)
+void python_wrapper_set_service(RemminaPluginService* service)
 {
 	remmina_plugin_service = service;
 }
 
-RemminaPluginService* remmina_plugin_python_get_service(void)
+RemminaPluginService* python_wrapper_get_service(void)
 {
 	return remmina_plugin_service;
 }
 
-void remmina_plugin_python_add_plugin(PyPlugin* plugin)
+void python_wrapper_add_plugin(PyPlugin* plugin)
 {
 	TRACE_CALL(__func__);
 
@@ -210,7 +210,7 @@ void remmina_plugin_python_add_plugin(PyPlugin* plugin)
 		plugin_map = g_ptr_array_new();
 	}
 
-	PyPlugin* test = remmina_plugin_python_get_plugin(plugin->generic_plugin->name);
+	PyPlugin* test = python_wrapper_get_plugin(plugin->generic_plugin->name);
 	if (test)
 	{
 		g_printerr("A plugin named '%s' has already been registered! Skipping...", plugin->generic_plugin->name);
@@ -221,7 +221,7 @@ void remmina_plugin_python_add_plugin(PyPlugin* plugin)
 	}
 }
 
-RemminaTypeHint remmina_plugin_python_to_generic(PyObject* field, gpointer* target)
+RemminaTypeHint python_wrapper_to_generic(PyObject* field, gpointer* target)
 {
 	TRACE_CALL(__func__);
 
@@ -231,7 +231,7 @@ RemminaTypeHint remmina_plugin_python_to_generic(PyObject* field, gpointer* targ
 
 		if (len > 0)
 		{
-			*target = remmina_plugin_python_copy_string_from_python(field, len);
+			*target = python_wrapper_copy_string_from_python(field, len);
 		}
 		else
 		{
@@ -242,14 +242,14 @@ RemminaTypeHint remmina_plugin_python_to_generic(PyObject* field, gpointer* targ
 	}
 	else if (PyBool_Check(field))
 	{
-		*target = remmina_plugin_python_malloc(sizeof(long));
+		*target = python_wrapper_malloc(sizeof(long));
 		long* long_target = (long*)target;
 		*long_target = PyLong_AsLong(field);
 		return REMMINA_TYPEHINT_BOOLEAN;
 	}
 	else if (PyLong_Check(field))
 	{
-		*target = remmina_plugin_python_malloc(sizeof(long));
+		*target = python_wrapper_malloc(sizeof(long));
 		long* long_target = (long*)target;
 		*long_target = PyLong_AsLong(field);
 		return REMMINA_TYPEHINT_SIGNED;
@@ -259,13 +259,13 @@ RemminaTypeHint remmina_plugin_python_to_generic(PyObject* field, gpointer* targ
 		Py_ssize_t len = PyTuple_Size(field);
 		if (len)
 		{
-			gpointer* dest = (gpointer*)remmina_plugin_python_malloc(sizeof(gpointer) * (len + 1));
+			gpointer* dest = (gpointer*)python_wrapper_malloc(sizeof(gpointer) * (len + 1));
 			memset(dest, 0, sizeof(gpointer) * (len + 1));
 
 			for (Py_ssize_t i = 0; i < len; ++i)
 			{
 				PyObject* item = PyTuple_GetItem(field, i);
-				remmina_plugin_python_to_generic(item, dest + i);
+				python_wrapper_to_generic(item, dest + i);
 			}
 
 			*target = dest;
@@ -277,7 +277,7 @@ RemminaTypeHint remmina_plugin_python_to_generic(PyObject* field, gpointer* targ
 	return REMMINA_TYPEHINT_UNDEFINED;
 }
 
-PyPlugin* remmina_plugin_python_get_plugin(const char* name)
+PyPlugin* python_wrapper_get_plugin(const gchar* name)
 {
 	TRACE_CALL(__func__);
 
@@ -294,6 +294,21 @@ PyPlugin* remmina_plugin_python_get_plugin(const char* name)
 	}
 
 	return NULL;
+}
+
+PyPlugin* python_wrapper_get_plugin_by_protocol_widget(RemminaProtocolWidget* gp)
+{
+	TRACE_CALL(__func__);
+
+	assert(plugin_map);
+	assert(gp);
+
+	const gchar* name = python_wrapper_get_service()->protocol_widget_get_name(gp);
+	if (!name) {
+		return NULL;
+	}
+
+	return python_wrapper_get_plugin(name);
 }
 
 void init_pygobject()

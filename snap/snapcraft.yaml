@@ -191,6 +191,7 @@ parts:
       - libvte-2.91-dev
       - libwebkit2gtk-4.0-dev
       - libxkbfile-dev
+      - python3-dev
       - pyhoca-cli
       - xdg-utils
     stage-packages:
@@ -229,6 +230,7 @@ parts:
       - -DWITH_KF5WALLET=ON
       - -DWITH_GVNC=ON
       - -DWITH_X2GO=ON
+      - -DWITH_PYTHON=ON
       - -DCMAKE_PREFIX_PATH=$SNAPCRAFT_STAGE/usr
       - -DSNAP_BUILD=on
 
