@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-04-29 22:26+0000\n"
+"POT-Creation-Date: 2022-04-30 22:26+0000\n"
 "PO-Revision-Date: 2021-12-25 02:51+0000\n"
 "Last-Translator: Ryunosuke Toda <toda.ryunosuke@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -32,7 +32,7 @@ msgstr ""
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:354
 #: src/remmina_protocol_widget.c:1691 src/remmina_protocol_widget.c:1710
 #: src/remmina_file_editor.c:1109 src/remmina_file_editor.c:1231
-#: src/remmina_ssh_plugin.c:1391 plugins/rdp/rdp_plugin.c:2775
+#: src/remmina_ssh_plugin.c:1391 plugins/rdp/rdp_plugin.c:2793
 #: plugins/www/www_plugin.c:895 plugins/x2go/x2go_plugin.c:3227
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_passwd.glade:84
 #: data/ui/remmina_unlock.glade:109
@@ -78,7 +78,7 @@ msgstr "新しい端末から SSH で接続"
 
 #: src/remmina_sftp_plugin.c:353 src/remmina_message_panel.c:330
 #: src/remmina_file_editor.c:1225 src/remmina_ssh_plugin.c:1501
-#: plugins/rdp/rdp_plugin.c:2774 plugins/vnc/vnc_plugin.c:2027
+#: plugins/rdp/rdp_plugin.c:2792 plugins/vnc/vnc_plugin.c:2027
 #: plugins/vnc/vnc_plugin.c:2039 plugins/www/www_plugin.c:894
 #: plugins/x2go/x2go_plugin.c:478 plugins/x2go/x2go_plugin.c:3226
 #: data/ui/remmina_mpc.glade:144
@@ -294,7 +294,7 @@ msgstr "はい"
 msgid "No"
 msgstr "いいえ"
 
-#: src/remmina_message_panel.c:391 plugins/rdp/rdp_plugin.c:2776
+#: src/remmina_message_panel.c:391 plugins/rdp/rdp_plugin.c:2794
 #: data/ui/remmina_mpc.glade:172
 msgid "Domain"
 msgstr "ドメイン"
@@ -829,7 +829,7 @@ msgstr "上へ"
 msgid "Go to parent folder"
 msgstr "親フォルダーに移動"
 
-#: src/remmina_ftp_client.c:764 plugins/rdp/rdp_plugin.c:2866
+#: src/remmina_ftp_client.c:764 plugins/rdp/rdp_plugin.c:2885
 #: plugins/vnc/vnc_plugin.c:2080
 msgid "Refresh"
 msgstr "更新"
@@ -875,11 +875,11 @@ msgstr "グループ"
 msgid "Permission"
 msgstr "権限"
 
-#: src/remmina_ftp_client.c:996 plugins/rdp/rdp_plugin.c:2663
+#: src/remmina_ftp_client.c:996 plugins/rdp/rdp_plugin.c:2669
 msgid "Remote"
 msgstr "リモート"
 
-#: src/remmina_ftp_client.c:1003 plugins/rdp/rdp_plugin.c:2662
+#: src/remmina_ftp_client.c:1003 plugins/rdp/rdp_plugin.c:2668
 msgid "Local"
 msgstr "ローカル"
 
@@ -1585,7 +1585,7 @@ msgstr "ループバックアドレス経由のトンネル"
 msgid "Same server at port %i"
 msgstr "ポート %i の同じサーバー"
 
-#: src/remmina_file_editor.c:1202 plugins/rdp/rdp_plugin.c:2820
+#: src/remmina_file_editor.c:1202 plugins/rdp/rdp_plugin.c:2839
 msgid "Start-up path"
 msgstr "起動パス"
 
@@ -2002,22 +2002,22 @@ msgstr "<未設定>"
 msgid "<Choose a quality level to edit…>"
 msgstr "<編集する品質レベルを選択…>"
 
-#: plugins/rdp/rdp_settings.c:282 plugins/rdp/rdp_plugin.c:2637
+#: plugins/rdp/rdp_settings.c:282 plugins/rdp/rdp_plugin.c:2643
 #: plugins/vnc/vnc_plugin.c:1977
 msgid "Poor (fastest)"
 msgstr "低 (最速)"
 
-#: plugins/rdp/rdp_settings.c:284 plugins/rdp/rdp_plugin.c:2638
+#: plugins/rdp/rdp_settings.c:284 plugins/rdp/rdp_plugin.c:2644
 #: plugins/vnc/vnc_plugin.c:1976
 msgid "Medium"
 msgstr "中"
 
-#: plugins/rdp/rdp_settings.c:286 plugins/rdp/rdp_plugin.c:2639
+#: plugins/rdp/rdp_settings.c:286 plugins/rdp/rdp_plugin.c:2645
 #: plugins/vnc/vnc_plugin.c:1974
 msgid "Good"
 msgstr "高"
 
-#: plugins/rdp/rdp_settings.c:288 plugins/rdp/rdp_plugin.c:2640
+#: plugins/rdp/rdp_settings.c:288 plugins/rdp/rdp_plugin.c:2646
 #: plugins/vnc/vnc_plugin.c:1975
 msgid "Best (slowest)"
 msgstr "最高 (最低速)"
@@ -2106,7 +2106,7 @@ msgstr "デスクトップの向き"
 msgid "Input device settings"
 msgstr "入力デバイスの設定"
 
-#: plugins/rdp/rdp_settings.c:658 plugins/rdp/rdp_plugin.c:2781
+#: plugins/rdp/rdp_settings.c:658 plugins/rdp/rdp_plugin.c:2799
 #: plugins/vnc/vnc_plugin.c:2060
 msgid "Disable smooth scrolling"
 msgstr "スムーズスクロールを無効にする"
@@ -2117,11 +2117,11 @@ msgstr "スムーズスクロールを無効にする"
 msgid "General settings"
 msgstr "一般設定"
 
-#: plugins/rdp/rdp_settings.c:676 plugins/rdp/rdp_plugin.c:2834
+#: plugins/rdp/rdp_settings.c:676 plugins/rdp/rdp_plugin.c:2853
 msgid "Reconnect attempts number"
 msgstr "再接続試行回数"
 
-#: plugins/rdp/rdp_settings.c:689 plugins/rdp/rdp_plugin.c:2834
+#: plugins/rdp/rdp_settings.c:689 plugins/rdp/rdp_plugin.c:2853
 #, fuzzy
 msgid ""
 "The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
@@ -2141,7 +2141,7 @@ msgstr "RDP ゲートウェイ認証資格情報を入力してください"
 msgid "Disconnected from %s via RDP"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2168
+#: plugins/rdp/rdp_plugin.c:2174
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2150,7 +2150,7 @@ msgstr ""
 "RDP サーバー “%s” にアクセスできませんでした。\n"
 "アカウントがロックアウトされました。"
 
-#: plugins/rdp/rdp_plugin.c:2175
+#: plugins/rdp/rdp_plugin.c:2181
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2159,7 +2159,7 @@ msgstr ""
 "RDP サーバー “%s” にアクセスできませんでした。\n"
 "アカウントが期限切れです。"
 
-#: plugins/rdp/rdp_plugin.c:2182
+#: plugins/rdp/rdp_plugin.c:2188
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2168,7 +2168,7 @@ msgstr ""
 "RDP サーバー “%s” にアクセスできませんでした。\n"
 "パスワードが期限切れです。"
 
-#: plugins/rdp/rdp_plugin.c:2189
+#: plugins/rdp/rdp_plugin.c:2195
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2177,7 +2177,7 @@ msgstr ""
 "RDP サーバー “%s” にアクセスできませんでした。\n"
 "アカウントが無効です。"
 
-#: plugins/rdp/rdp_plugin.c:2195
+#: plugins/rdp/rdp_plugin.c:2201
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2186,7 +2186,7 @@ msgstr ""
 "RDP サーバー “%s” にアクセスできませんでした。\n"
 "ユーザーの権限が不足しています。"
 
-#: plugins/rdp/rdp_plugin.c:2203
+#: plugins/rdp/rdp_plugin.c:2209
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2195,7 +2195,7 @@ msgstr ""
 "RDP サーバー “%s” にアクセスできませんでした。\n"
 "アカウントが制限されています。"
 
-#: plugins/rdp/rdp_plugin.c:2211
+#: plugins/rdp/rdp_plugin.c:2217
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2204,17 +2204,17 @@ msgstr ""
 "RDP サーバー “%s” にアクセスできませんでした。\n"
 "接続する前にユーザーパスワードを変更してください。"
 
-#: plugins/rdp/rdp_plugin.c:2216
+#: plugins/rdp/rdp_plugin.c:2222
 #, c-format
 msgid "Lost connection to the RDP server “%s”."
 msgstr "RDP サーバー “%s” への接続がロストしました。"
 
-#: plugins/rdp/rdp_plugin.c:2219
+#: plugins/rdp/rdp_plugin.c:2225
 #, c-format
 msgid "Could not find the address for the RDP server “%s”."
 msgstr "RDP サーバー “%s” のアドレスが見つかりませんでした。"
 
-#: plugins/rdp/rdp_plugin.c:2223
+#: plugins/rdp/rdp_plugin.c:2229
 #, fuzzy, c-format
 #| msgid ""
 #| "Could not connect to the RDP server “%s” via TLS. Check that client and "
@@ -2227,7 +2227,7 @@ msgstr ""
 "ポートしている TLS のバージョンを確認してください。"
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
-#: plugins/rdp/rdp_plugin.c:2227
+#: plugins/rdp/rdp_plugin.c:2233
 #, fuzzy, c-format
 #| msgid ""
 #| "Unable to establish a connection to the RDP server “%s”. Check \"Security "
@@ -2239,16 +2239,16 @@ msgstr ""
 "RDP サーバー \"%s\" への接続を確立できません。\"セキュリティプロトコルのネゴ"
 "シエーション\" を確認してください。"
 
-#: plugins/rdp/rdp_plugin.c:2235
+#: plugins/rdp/rdp_plugin.c:2241
 #, c-format
 msgid "Cannot connect to the RDP server “%s”."
 msgstr "RDP サーバー “%s” に接続できません。"
 
-#: plugins/rdp/rdp_plugin.c:2238
+#: plugins/rdp/rdp_plugin.c:2244
 msgid "Could not start libfreerdp-gdi."
 msgstr "libfreerdp-gdi を開始できませんでした。"
 
-#: plugins/rdp/rdp_plugin.c:2241
+#: plugins/rdp/rdp_plugin.c:2247
 #, c-format
 msgid ""
 "You requested a H.264 GFX mode for the server “%s”, but your libfreerdp does "
@@ -2257,12 +2257,12 @@ msgstr ""
 "サーバー “%s” のために H.264 GFX モードを要求しましたが、libfreerdp が H.264 "
 "をサポートしていません。AVC ではない色深度設定を使用してください。"
 
-#: plugins/rdp/rdp_plugin.c:2248
+#: plugins/rdp/rdp_plugin.c:2254
 #, c-format
 msgid "The “%s” server refused the connection."
 msgstr "サーバー “%s” が接続を拒否しました。"
 
-#: plugins/rdp/rdp_plugin.c:2253
+#: plugins/rdp/rdp_plugin.c:2259
 #, fuzzy, c-format
 #| msgid ""
 #| "The Remote Desktop Gateway “%s” denied the user \"%s\\%s\" access due to "
@@ -2274,117 +2274,146 @@ msgstr ""
 "リモートデスクトップゲートウェイ \"%s\" はポリシーにより、ユーザー \"%s\\%s"
 "\" のアクセスを拒否しました。"
 
-#: plugins/rdp/rdp_plugin.c:2263
+#: plugins/rdp/rdp_plugin.c:2269
 #, c-format
 msgid "Cannot connect to the “%s” RDP server."
 msgstr "“%s” RDP サーバーに接続できません。"
 
-#: plugins/rdp/rdp_plugin.c:2606
+#: plugins/rdp/rdp_plugin.c:2612
 msgid "Automatic (32 bpp) (Server chooses its best format)"
 msgstr "自動 (32 bpp) (サーバーが最適な形式を選択)"
 
-#: plugins/rdp/rdp_plugin.c:2607
+#: plugins/rdp/rdp_plugin.c:2613
 msgid "GFX AVC444 (32 bpp)"
 msgstr "GFX AVC444 (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2608
+#: plugins/rdp/rdp_plugin.c:2614
 msgid "GFX AVC420 (32 bpp)"
 msgstr "GFX AVC420 (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2609
+#: plugins/rdp/rdp_plugin.c:2615
 msgid "GFX RFX (32 bpp)"
 msgstr "GFX RFX (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2610
+#: plugins/rdp/rdp_plugin.c:2616
 msgid "GFX RFX Progressive (32 bpp)"
 msgstr "GFX RFX Progressive (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2611
+#: plugins/rdp/rdp_plugin.c:2617
 msgid "RemoteFX (32 bpp)"
 msgstr "RemoteFX (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2612 plugins/vnc/vnc_plugin.c:1965
+#: plugins/rdp/rdp_plugin.c:2618 plugins/vnc/vnc_plugin.c:1965
 msgid "True colour (32 bpp)"
 msgstr "フルカラー (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2613
+#: plugins/rdp/rdp_plugin.c:2619
 msgid "True colour (24 bpp)"
 msgstr "フルカラー (24 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2614 plugins/vnc/vnc_plugin.c:1966
+#: plugins/rdp/rdp_plugin.c:2620 plugins/vnc/vnc_plugin.c:1966
 msgid "High colour (16 bpp)"
 msgstr "ハイカラー (16 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2615
+#: plugins/rdp/rdp_plugin.c:2621
 msgid "High colour (15 bpp)"
 msgstr "ハイカラー (15 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2616 plugins/vnc/vnc_plugin.c:1967
+#: plugins/rdp/rdp_plugin.c:2622 plugins/vnc/vnc_plugin.c:1967
 msgid "256 colours (8 bpp)"
 msgstr "256 色 (8 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2647 data/ui/remmina_preferences.glade:640
+#: plugins/rdp/rdp_plugin.c:2653 data/ui/remmina_preferences.glade:640
 msgid "None"
 msgstr "なし"
 
-#: plugins/rdp/rdp_plugin.c:2648
+#: plugins/rdp/rdp_plugin.c:2654
 msgid "Auto-detect"
 msgstr "自動検出"
 
-#: plugins/rdp/rdp_plugin.c:2649
+#: plugins/rdp/rdp_plugin.c:2655
 msgid "Modem"
 msgstr "モデム"
 
-#: plugins/rdp/rdp_plugin.c:2650
+#: plugins/rdp/rdp_plugin.c:2656
 msgid "Low performance broadband"
 msgstr "低速ブロードバンド"
 
-#: plugins/rdp/rdp_plugin.c:2651
+#: plugins/rdp/rdp_plugin.c:2657
 msgid "Satellite"
 msgstr "衛星"
 
-#: plugins/rdp/rdp_plugin.c:2652
+#: plugins/rdp/rdp_plugin.c:2658
 msgid "High performance broadband"
 msgstr "高速ブロードバンド"
 
-#: plugins/rdp/rdp_plugin.c:2653
+#: plugins/rdp/rdp_plugin.c:2659
 msgid "WAN"
 msgstr "WAN"
 
-#: plugins/rdp/rdp_plugin.c:2654
+#: plugins/rdp/rdp_plugin.c:2660
 msgid "LAN"
 msgstr "LAN"
 
-#: plugins/rdp/rdp_plugin.c:2661 plugins/spice/spice_plugin.c:637
+#: plugins/rdp/rdp_plugin.c:2667 plugins/spice/spice_plugin.c:637
 #: data/ui/remmina_preferences.glade:676
 msgid "Off"
 msgstr "オフ"
 
-#: plugins/rdp/rdp_plugin.c:2670
+#: plugins/rdp/rdp_plugin.c:2676
 msgid "Automatic negotiation"
 msgstr "オートネゴシエーション"
 
-#: plugins/rdp/rdp_plugin.c:2671
+#: plugins/rdp/rdp_plugin.c:2677
 msgid "NLA protocol security"
 msgstr "NLA プロトコルセキュリティ"
 
-#: plugins/rdp/rdp_plugin.c:2672
+#: plugins/rdp/rdp_plugin.c:2678
 msgid "TLS protocol security"
 msgstr "TLS プロトコルセキュリティ"
 
-#: plugins/rdp/rdp_plugin.c:2673
+#: plugins/rdp/rdp_plugin.c:2679
 msgid "RDP protocol security"
 msgstr "RDP プロトコルセキュリティ"
 
-#: plugins/rdp/rdp_plugin.c:2674
+#: plugins/rdp/rdp_plugin.c:2680
 msgid "NLA extended protocol security"
 msgstr "NLA 拡張プロトコルセキュリティ"
 
-#: plugins/rdp/rdp_plugin.c:2687
+#: plugins/rdp/rdp_plugin.c:2694 plugins/spice/spice_plugin.c:618
+#: plugins/spice/spice_plugin.c:636
+msgid "Default"
+msgstr "既定"
+
+#: plugins/rdp/rdp_plugin.c:2695
+msgid "0 Windows 7 compatible"
+msgstr ""
+
+#: plugins/rdp/rdp_plugin.c:2696
+msgid "1"
+msgstr ""
+
+#: plugins/rdp/rdp_plugin.c:2697
+msgid "2"
+msgstr ""
+
+#: plugins/rdp/rdp_plugin.c:2698
+msgid "3"
+msgstr ""
+
+#: plugins/rdp/rdp_plugin.c:2699
+msgid "4"
+msgstr ""
+
+#: plugins/rdp/rdp_plugin.c:2700
+msgid "5"
+msgstr ""
+
+#: plugins/rdp/rdp_plugin.c:2705
 msgid "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 and newer)"
 msgstr "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 以降)"
 
-#: plugins/rdp/rdp_plugin.c:2690
+#: plugins/rdp/rdp_plugin.c:2708
 msgid ""
 "Used i.a. by terminal services in a smart card channel to distinguish client "
 "capabilities:\n"
@@ -2402,7 +2431,7 @@ msgstr ""
 "  • >= 7065: Windows 8 以降: SCardGetReaderIcon(),\n"
 "    SCardGetDeviceTypeId()"
 
-#: plugins/rdp/rdp_plugin.c:2698
+#: plugins/rdp/rdp_plugin.c:2716
 msgid ""
 "Options for redirection of audio input:\n"
 "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
@@ -2420,7 +2449,7 @@ msgstr ""
 "  • sys:oss,dev:1,format:1\n"
 "  • sys:alsa"
 
-#: plugins/rdp/rdp_plugin.c:2707
+#: plugins/rdp/rdp_plugin.c:2725
 msgid ""
 "Options for redirection of audio output:\n"
 "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
@@ -2438,7 +2467,7 @@ msgstr ""
 "  • sys:oss,dev:1,format:1\n"
 "  • sys:alsa"
 
-#: plugins/rdp/rdp_plugin.c:2717
+#: plugins/rdp/rdp_plugin.c:2735
 msgid ""
 "Options for redirection of USB device:\n"
 "  • [dbg,][id:<vid>:<pid>#…,][addr:<bus>:<addr>#…,][auto]\n"
@@ -2450,7 +2479,7 @@ msgstr ""
 "  • auto\n"
 "  • id:054c:0268#4669:6e6b,addr:04:0c"
 
-#: plugins/rdp/rdp_plugin.c:2723
+#: plugins/rdp/rdp_plugin.c:2741
 msgid ""
 "Advanced setting for high latency links:\n"
 "Adjusts the connection timeout. Use if your connection times out.\n"
@@ -2460,7 +2489,7 @@ msgstr ""
 "接続がタイムアウトするまでの時間を調整します。\n"
 "設定可能な最大値は 600000 ミリ秒 (10 分) です。\n"
 
-#: plugins/rdp/rdp_plugin.c:2728
+#: plugins/rdp/rdp_plugin.c:2746
 #, fuzzy
 #| msgid ""
 #| "Performance optimisations based on the network connection type:\n"
@@ -2477,7 +2506,7 @@ msgstr ""
 "\"自動検出\" が失敗した場合、一覧から最も適切なオプションを選択してくださ"
 "い。\n"
 
-#: plugins/rdp/rdp_plugin.c:2733
+#: plugins/rdp/rdp_plugin.c:2751
 #, fuzzy
 msgid ""
 "Comma-separated list of monitor IDs and desktop orientations:\n"
@@ -2502,7 +2531,7 @@ msgstr ""
 "  - 270（縦方向に反転）\n"
 "\n"
 
-#: plugins/rdp/rdp_plugin.c:2745
+#: plugins/rdp/rdp_plugin.c:2763
 #, fuzzy
 msgid ""
 "Redirect directory <path> as named share <name>.\n"
@@ -2523,148 +2552,154 @@ msgstr ""
 "  - ホットプラグ,*\n"
 "\n"
 
-#: plugins/rdp/rdp_plugin.c:2777 plugins/spice/spice_plugin.c:679
+#: plugins/rdp/rdp_plugin.c:2795 plugins/spice/spice_plugin.c:679
 msgid "Share folder"
 msgstr "共有フォルダー"
 
-#: plugins/rdp/rdp_plugin.c:2777
+#: plugins/rdp/rdp_plugin.c:2795
 #, fuzzy
 msgid "Use “Redirect directory” in the advanced tab for multiple directories"
 msgstr ""
 "複数のディレクトリに対して、詳細タブの「ディレクトリのリダイレクト」を使用す"
 "る"
 
-#: plugins/rdp/rdp_plugin.c:2778
+#: plugins/rdp/rdp_plugin.c:2796
 #, fuzzy
 msgid "Restricted admin mode"
 msgstr "制限付き管理モード"
 
-#: plugins/rdp/rdp_plugin.c:2779
+#: plugins/rdp/rdp_plugin.c:2797
 #, fuzzy
 #| msgid "Password"
 msgid "Password hash"
 msgstr "パスワードハッシュ"
 
-#: plugins/rdp/rdp_plugin.c:2779
+#: plugins/rdp/rdp_plugin.c:2797
 #, fuzzy
 msgid "Restricted admin mode password hash"
 msgstr "制限付き管理モードパスワードハッシュ"
 
-#: plugins/rdp/rdp_plugin.c:2780
+#: plugins/rdp/rdp_plugin.c:2798
 msgid "Left-handed mouse support"
 msgstr "左利き用マウスのサポート"
 
-#: plugins/rdp/rdp_plugin.c:2780
+#: plugins/rdp/rdp_plugin.c:2798
 msgid "Swap left and right mouse buttons for left-handed mouse support"
 msgstr "左手でマウスを使用する人向けにマウスの左ボタンと右ボタンを入れ替える"
 
-#: plugins/rdp/rdp_plugin.c:2782
+#: plugins/rdp/rdp_plugin.c:2800
 msgid "Enable multi monitor"
 msgstr "マルチモニターを有効にする"
 
-#: plugins/rdp/rdp_plugin.c:2783
+#: plugins/rdp/rdp_plugin.c:2801
 msgid "Span screen over multiple monitors"
 msgstr "画面を複数のモニターに合わせて広げる"
 
-#: plugins/rdp/rdp_plugin.c:2784
+#: plugins/rdp/rdp_plugin.c:2802
 #, fuzzy
 #| msgid "Monitor ID list"
 msgid "List monitor IDs"
 msgstr "モニターID一覧"
 
-#: plugins/rdp/rdp_plugin.c:2786 plugins/vnc/vnc_plugin.c:2029
+#: plugins/rdp/rdp_plugin.c:2804 plugins/vnc/vnc_plugin.c:2029
 #: plugins/vnc/vnc_plugin.c:2041 plugins/gvnc/gvnc_plugin.c:849
 msgid "Colour depth"
 msgstr "色数"
 
-#: plugins/rdp/rdp_plugin.c:2787
+#: plugins/rdp/rdp_plugin.c:2805
 msgid "Network connection type"
 msgstr "ネットワーク接続形式"
 
-#: plugins/rdp/rdp_plugin.c:2803 plugins/vnc/vnc_plugin.c:2030
+#: plugins/rdp/rdp_plugin.c:2821 plugins/vnc/vnc_plugin.c:2030
 #: plugins/vnc/vnc_plugin.c:2042
 msgid "Quality"
 msgstr "品質"
 
-#: plugins/rdp/rdp_plugin.c:2804
+#: plugins/rdp/rdp_plugin.c:2822
 msgid "Security protocol negotiation"
 msgstr "セキュリティプロトコルのネゴシエーション"
 
-#: plugins/rdp/rdp_plugin.c:2805
+#: plugins/rdp/rdp_plugin.c:2823
 msgid "Gateway transport type"
 msgstr "ゲートウェイのトランスポートの種類"
 
-#: plugins/rdp/rdp_plugin.c:2806
+#: plugins/rdp/rdp_plugin.c:2824
+#, fuzzy
+#| msgid "Security"
+msgid "TLS Security Level"
+msgstr "セキュリティ"
+
+#: plugins/rdp/rdp_plugin.c:2825
 msgid "FreeRDP log level"
 msgstr "FreeRDP のログレベル"
 
-#: plugins/rdp/rdp_plugin.c:2807
+#: plugins/rdp/rdp_plugin.c:2826
 msgid "FreeRDP log filters"
 msgstr "FreeRDP のログフィルター"
 
-#: plugins/rdp/rdp_plugin.c:2807
+#: plugins/rdp/rdp_plugin.c:2826
 msgid "tag:level[,tag:level[,…]]"
 msgstr "tag:level[,tag:level[,…]]"
 
-#: plugins/rdp/rdp_plugin.c:2808
+#: plugins/rdp/rdp_plugin.c:2827
 msgid "Audio output mode"
 msgstr "オーディオ再生"
 
-#: plugins/rdp/rdp_plugin.c:2809
+#: plugins/rdp/rdp_plugin.c:2828
 msgid "Redirect local audio output"
 msgstr "ローカルの音声出力をリダイレクトする"
 
-#: plugins/rdp/rdp_plugin.c:2810
+#: plugins/rdp/rdp_plugin.c:2829
 msgid "Redirect local microphone"
 msgstr "ローカルのマイクをリダイレクトする"
 
-#: plugins/rdp/rdp_plugin.c:2811
+#: plugins/rdp/rdp_plugin.c:2830
 msgid "Connection timeout in ms"
 msgstr "接続のタイムアウト (ミリ秒単位)"
 
-#: plugins/rdp/rdp_plugin.c:2812
+#: plugins/rdp/rdp_plugin.c:2831
 msgid "Remote Desktop Gateway server"
 msgstr "リモートデスクトップゲートウェイサーバー"
 
-#: plugins/rdp/rdp_plugin.c:2813
+#: plugins/rdp/rdp_plugin.c:2832
 msgid "Remote Desktop Gateway username"
 msgstr "リモートデスクトップゲートウェイのユーザー名"
 
-#: plugins/rdp/rdp_plugin.c:2814
+#: plugins/rdp/rdp_plugin.c:2833
 msgid "Remote Desktop Gateway password"
 msgstr "リモートデスクトップゲートウェイのパスワード"
 
-#: plugins/rdp/rdp_plugin.c:2815
+#: plugins/rdp/rdp_plugin.c:2834
 msgid "Remote Desktop Gateway domain"
 msgstr "リモートデスクトップゲートウェイのドメイン"
 
-#: plugins/rdp/rdp_plugin.c:2816
+#: plugins/rdp/rdp_plugin.c:2835
 #, fuzzy
 msgid "Redirect directory"
 msgstr "ディレクトリのリダイレクト"
 
-#: plugins/rdp/rdp_plugin.c:2817
+#: plugins/rdp/rdp_plugin.c:2836
 msgid "Client name"
 msgstr "クライアント名"
 
-#: plugins/rdp/rdp_plugin.c:2818
+#: plugins/rdp/rdp_plugin.c:2837
 msgid "Client build"
 msgstr "クライアントビルド"
 
-#: plugins/rdp/rdp_plugin.c:2819
+#: plugins/rdp/rdp_plugin.c:2838
 msgid "Start-up program"
 msgstr "起動プログラム"
 
-#: plugins/rdp/rdp_plugin.c:2821
+#: plugins/rdp/rdp_plugin.c:2840
 msgid "Load balance info"
 msgstr "ロードバランス情報"
 
 #. TRANSLATORS: Do not use typographic quotation marks, these must stay as "double quote", also know as “Typewriter ("programmer's") quote, ambidextrous.”
-#: plugins/rdp/rdp_plugin.c:2823
+#: plugins/rdp/rdp_plugin.c:2842
 msgid "Override printer drivers"
 msgstr "プリンタードライバーのオーバーライド"
 
-#: plugins/rdp/rdp_plugin.c:2823
+#: plugins/rdp/rdp_plugin.c:2842
 msgid ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
@@ -2672,176 +2707,176 @@ msgstr ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
 
-#: plugins/rdp/rdp_plugin.c:2824
+#: plugins/rdp/rdp_plugin.c:2843
 msgid "USB device redirection"
 msgstr "USB デバイスのリダイレクト"
 
-#: plugins/rdp/rdp_plugin.c:2825
+#: plugins/rdp/rdp_plugin.c:2844
 msgid "Local serial name"
 msgstr "ローカルのシリアル名"
 
-#: plugins/rdp/rdp_plugin.c:2825
+#: plugins/rdp/rdp_plugin.c:2844
 msgid "COM1, COM2, etc."
 msgstr "COM1、COM2、など。"
 
-#: plugins/rdp/rdp_plugin.c:2826
+#: plugins/rdp/rdp_plugin.c:2845
 msgid "Local serial driver"
 msgstr "ローカルのシリアルドライバー"
 
-#: plugins/rdp/rdp_plugin.c:2826
+#: plugins/rdp/rdp_plugin.c:2845
 msgid "Serial"
 msgstr "シリアル"
 
-#: plugins/rdp/rdp_plugin.c:2827
+#: plugins/rdp/rdp_plugin.c:2846
 msgid "Local serial path"
 msgstr "ローカルのシリアルのパス"
 
-#: plugins/rdp/rdp_plugin.c:2827
+#: plugins/rdp/rdp_plugin.c:2846
 msgid "/dev/ttyS0, /dev/ttyS1, etc."
 msgstr "/dev/ttyS0、/dev/ttyS1、など。"
 
-#: plugins/rdp/rdp_plugin.c:2828
+#: plugins/rdp/rdp_plugin.c:2847
 msgid "Local parallel name"
 msgstr "ローカルのパラレル名"
 
-#: plugins/rdp/rdp_plugin.c:2829
+#: plugins/rdp/rdp_plugin.c:2848
 msgid "Local parallel device"
 msgstr "ローカルのパラレルデバイス"
 
-#: plugins/rdp/rdp_plugin.c:2830
+#: plugins/rdp/rdp_plugin.c:2849
 msgid "Name of smart card"
 msgstr "スマートカードの名前"
 
-#: plugins/rdp/rdp_plugin.c:2831
+#: plugins/rdp/rdp_plugin.c:2850
 msgid "Dynamic virtual channel"
 msgstr "動的仮想チャンネル (DVC)"
 
-#: plugins/rdp/rdp_plugin.c:2831 plugins/rdp/rdp_plugin.c:2832
+#: plugins/rdp/rdp_plugin.c:2850 plugins/rdp/rdp_plugin.c:2851
 msgid "<channel>[,<options>]"
 msgstr "<チャンネル>[,<オプション>]"
 
-#: plugins/rdp/rdp_plugin.c:2832
+#: plugins/rdp/rdp_plugin.c:2851
 msgid "Static virtual channel"
 msgstr "静的仮想チャンネル (SVC)"
 
-#: plugins/rdp/rdp_plugin.c:2833
+#: plugins/rdp/rdp_plugin.c:2852
 msgid "TCP redirection"
 msgstr "TCPリダイレクション"
 
-#: plugins/rdp/rdp_plugin.c:2833
+#: plugins/rdp/rdp_plugin.c:2852
 #, fuzzy
 msgid "/PATH/TO/rdp2tcp"
 msgstr "/PATH/TO/rdp2tcp"
 
-#: plugins/rdp/rdp_plugin.c:2835
+#: plugins/rdp/rdp_plugin.c:2854
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
 msgstr "IPv4 A レコードではなく IPv6 AAAA レコードを選択する"
 
-#: plugins/rdp/rdp_plugin.c:2836
+#: plugins/rdp/rdp_plugin.c:2855
 msgid "Share printers"
 msgstr "プリンターを共有する"
 
-#: plugins/rdp/rdp_plugin.c:2837
+#: plugins/rdp/rdp_plugin.c:2856
 msgid "Share serial ports"
 msgstr "シリアルポートを共有する"
 
-#: plugins/rdp/rdp_plugin.c:2838
+#: plugins/rdp/rdp_plugin.c:2857
 msgid "(SELinux) permissive mode for serial ports"
 msgstr "シリアルポートの permissive モード (SELinux)"
 
-#: plugins/rdp/rdp_plugin.c:2839
+#: plugins/rdp/rdp_plugin.c:2858
 msgid "Share parallel ports"
 msgstr "パラレルポートを共有する"
 
-#: plugins/rdp/rdp_plugin.c:2840
+#: plugins/rdp/rdp_plugin.c:2859
 msgid "Share a smart card"
 msgstr "スマートカードを共有する"
 
-#: plugins/rdp/rdp_plugin.c:2841 plugins/vnc/vnc_plugin.c:2065
+#: plugins/rdp/rdp_plugin.c:2860 plugins/vnc/vnc_plugin.c:2065
 msgid "Turn off clipboard sync"
 msgstr "クリップボードの同期をオフにする"
 
-#: plugins/rdp/rdp_plugin.c:2842
+#: plugins/rdp/rdp_plugin.c:2861
 msgid "Ignore certificate"
 msgstr "証明書を無視する"
 
-#: plugins/rdp/rdp_plugin.c:2843
+#: plugins/rdp/rdp_plugin.c:2862
 msgid "Use the old license workflow"
 msgstr "古いライセンスワークフローを使用する"
 
-#: plugins/rdp/rdp_plugin.c:2843
+#: plugins/rdp/rdp_plugin.c:2862
 msgid "It disables CAL and hwId is set to 0"
 msgstr "CAL が無効になり HWID が 0 に設定されます"
 
-#: plugins/rdp/rdp_plugin.c:2844 plugins/spice/spice_plugin.c:704
+#: plugins/rdp/rdp_plugin.c:2863 plugins/spice/spice_plugin.c:704
 #: plugins/vnc/vnc_plugin.c:2061 plugins/www/www_plugin.c:919
 #: plugins/gvnc/gvnc_plugin.c:867
 msgid "Forget passwords after use"
 msgstr "パスワードを使用後に消去する"
 
-#: plugins/rdp/rdp_plugin.c:2845
+#: plugins/rdp/rdp_plugin.c:2864
 msgid "Attach to console (2003/2003 R2)"
 msgstr "コンソールにアタッチする (Windows 2003 / 2003 R2)"
 
-#: plugins/rdp/rdp_plugin.c:2846
+#: plugins/rdp/rdp_plugin.c:2865
 msgid "Turn off fast-path"
 msgstr "fast-path をオフにする"
 
-#: plugins/rdp/rdp_plugin.c:2847
+#: plugins/rdp/rdp_plugin.c:2866
 msgid "Server detection using Remote Desktop Gateway"
 msgstr "リモートデスクトップゲートウェイを使用してサーバーを検出する"
 
-#: plugins/rdp/rdp_plugin.c:2849
+#: plugins/rdp/rdp_plugin.c:2868
 msgid "Use system proxy settings"
 msgstr "システムのプロキシ設定を使用する"
 
-#: plugins/rdp/rdp_plugin.c:2851
+#: plugins/rdp/rdp_plugin.c:2870
 msgid "Turn off automatic reconnection"
 msgstr "自動再接続をオフにする"
 
-#: plugins/rdp/rdp_plugin.c:2852
+#: plugins/rdp/rdp_plugin.c:2871
 msgid "Relax order checks"
 msgstr "オーダーチェックを緩和"
 
-#: plugins/rdp/rdp_plugin.c:2853
+#: plugins/rdp/rdp_plugin.c:2872
 msgid "Glyph cache"
 msgstr "グリフをキャッシュする"
 
-#: plugins/rdp/rdp_plugin.c:2854
+#: plugins/rdp/rdp_plugin.c:2873
 msgid "Enable multitransport protocol (UDP)"
 msgstr "マルチトランスポートプロトコル (UDP) を有効にする"
 
-#: plugins/rdp/rdp_plugin.c:2854
+#: plugins/rdp/rdp_plugin.c:2873
 msgid "Using the UDP protocol may improve performance"
 msgstr "UDP プロトコルの使用はパフォーマンスの改善に繋がる場合があります"
 
-#: plugins/rdp/rdp_plugin.c:2855
+#: plugins/rdp/rdp_plugin.c:2874
 msgid "Use base credentials for gateway too"
 msgstr "ゲートウェイにも基本資格情報を使用する"
 
-#: plugins/rdp/rdp_plugin.c:2857
+#: plugins/rdp/rdp_plugin.c:2876
 #, fuzzy
 msgid "Enable Gateway websockets support"
 msgstr "ゲートウェイ・ウェブソケットのサポートを有効にする"
 
-#: plugins/rdp/rdp_plugin.c:2870 plugins/spice/spice_plugin.c:717
+#: plugins/rdp/rdp_plugin.c:2889 plugins/spice/spice_plugin.c:717
 #: plugins/vnc/vnc_plugin.c:2082
 msgid "Send Ctrl+Alt+Delete"
 msgstr "Ctrl+Alt+Delete を送る"
 
-#: plugins/rdp/rdp_plugin.c:2883
+#: plugins/rdp/rdp_plugin.c:2902
 msgid "RDP - Remote Desktop Protocol"
 msgstr "RDP - リモートデスクトッププロトコル"
 
-#: plugins/rdp/rdp_plugin.c:2908
+#: plugins/rdp/rdp_plugin.c:2927
 msgid "RDP - RDP File Handler"
 msgstr "RDP - RDP ファイルハンドラ"
 
-#: plugins/rdp/rdp_plugin.c:2923
+#: plugins/rdp/rdp_plugin.c:2942
 msgid "RDP - Preferences"
 msgstr "RDP - 設定"
 
-#: plugins/rdp/rdp_plugin.c:2976
+#: plugins/rdp/rdp_plugin.c:2995
 msgid "Export connection in Windows .rdp file format"
 msgstr "Windows 接続をエクスポートする (.rdp ファイル形式)"
 
@@ -2907,10 +2942,6 @@ msgstr "TLS 接続エラーです。"
 #: plugins/spice/spice_plugin.c:409
 msgid "Connection to the SPICE server dropped."
 msgstr "SPICE サーバーへの接続がドロップされました。"
-
-#: plugins/spice/spice_plugin.c:618 plugins/spice/spice_plugin.c:636
-msgid "Default"
-msgstr "既定"
 
 #: plugins/spice/spice_plugin.c:638
 msgid "Auto GLZ"
