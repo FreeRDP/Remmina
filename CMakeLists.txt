@@ -145,7 +145,7 @@ if(CMAKE_COMPILER_IS_GNUCC)
     endif()
   endif()
 
-  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wno-macro-redefined")
+  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
 
   if(WITH_SSE2)
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -msse2")
