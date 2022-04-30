@@ -1740,6 +1740,12 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 		freerdp_settings_set_bool(rfi->settings, FreeRDP_NegotiateSecurityLayer, TRUE);
 	}
 
+	cs = remmina_plugin_service->file_get_string(remminafile, "tls-seclevel");
+	if (cs && g_strcmp0(cs,"")!=0) {
+		i = atoi(cs);
+		freerdp_settings_set_uint32(rfi->settings, FreeRDP_TlsSecLevel, i);
+	}
+
 	freerdp_settings_set_bool(rfi->settings, FreeRDP_CompressionEnabled, TRUE);
 	if (remmina_plugin_service->file_get_int(remminafile, "disable_fastpath", FALSE)) {
 		freerdp_settings_set_bool(rfi->settings, FreeRDP_FastPathInput, FALSE);
@@ -2683,6 +2689,18 @@ static gpointer gwtransp_list[] =
 	NULL
 };
 
+static gpointer tls_seclevel[] =
+{
+	"",  N_("Default"),
+	"0", N_("0 Windows 7 compatible"),
+	"1", N_("1"),
+	"2", N_("2"),
+	"3", N_("3"),
+	"4", N_("4"),
+	"5", N_("5"),
+	NULL
+};
+
 static gchar clientbuild_list[] =
 	N_("2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 and newer)");
 
@@ -2803,6 +2821,7 @@ static const RemminaProtocolSetting remmina_rdp_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "quality",		    N_("Quality"),					 FALSE, quality_list,	  NULL														 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "security",		    N_("Security protocol negotiation"),		 FALSE, security_list,	  NULL														 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "gwtransp",		    N_("Gateway transport type"),			 FALSE, gwtransp_list,	  NULL														 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "tls-seclevel",	    N_("TLS Security Level"),			 	 FALSE, tls_seclevel,	  NULL														 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "freerdp_log_level",	    N_("FreeRDP log level"),				 FALSE, log_level,	  NULL														 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "freerdp_log_filters",    N_("FreeRDP log filters"),				 FALSE, NULL,		  N_("tag:level[,tag:level[,…]]")										 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "sound",		    N_("Audio output mode"),				 FALSE, sound_list,	  NULL														 },
