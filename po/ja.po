@@ -12,13 +12,14 @@
 # Anonymous <noreply@weblate.org>, 2020.
 # sute1 <qaqek@getnada.com>, 2020, 2021.
 # あわしろいくや <ikunya@gmail.com>, 2021.
+# WonYong Jung <hirameki@gmail.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2022-04-30 22:26+0000\n"
-"PO-Revision-Date: 2021-12-25 02:51+0000\n"
-"Last-Translator: Ryunosuke Toda <toda.ryunosuke@gmail.com>\n"
+"PO-Revision-Date: 2022-05-05 15:13+0000\n"
+"Last-Translator: WonYong Jung <hirameki@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/remmina/remmina/"
 "ja/>\n"
 "Language: ja\n"
@@ -26,7 +27,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.10.1\n"
+"X-Generator: Weblate 4.12.1\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:354
@@ -124,6 +125,12 @@ msgid ""
 "There is more info about debugging Remmina on https://gitlab.com/Remmina/"
 "Remmina/-/wikis/Usage/Remmina-debugging\n"
 msgstr ""
+"このウィンドウは接続問題の原因を探すためのものです。\n"
+"On/Offスイッチでいつでもログ出力を入・切できます。\n"
+"統計ボタン(Ctrl+T)はバグレポートで共有できるシステムの情報取得時に便利です。"
+"\n"
+"https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging に "
+"Remminaのデバッグについて説明されています。\n"
 
 #: src/remmina_plugin_manager.c:71 src/remmina_file_editor.c:1962
 msgid "Protocol"
@@ -459,6 +466,8 @@ msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 msgstr ""
+"https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
+"available-in-a-Wayland-session"
 
 #: src/rcw.c:4532
 #, fuzzy
@@ -478,6 +487,11 @@ msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 msgstr ""
+"GtkSocketに依存するプラグインは Waylandセッションで実行できません。\n"
+"追加情報とワークアラウンドを得るにはRemmina wikiをご参照ください：\n"
+"\n"
+"https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
+"available-in-a-Wayland-session"
 
 #: src/rcw.c:4552
 #, fuzzy
@@ -664,6 +678,11 @@ msgid ""
 "More info available on the Remmina wiki at:\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgstr ""
+"Remminaは出力のすべてをログファイルに残している訳ではありません。"
+"環境変数に\"G_MESSAGES_DEBUG="
+"all\"を追加してより詳しく出録するようにしてください。\n"
+"RemminaのWikiで追加情報が得られます：\n"
+"https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:422
@@ -1290,11 +1309,11 @@ msgstr[0] "合計 %i 個のアイテム"
 
 #: src/remmina_main.c:695
 msgid "Network status: fully online"
-msgstr ""
+msgstr "ネットワーク状況：全てオンライン"
 
 #: src/remmina_main.c:698
 msgid "Network status: offline"
-msgstr ""
+msgstr "ネットワーク状況：オフライン"
 
 #: src/remmina_main.c:945
 #, c-format
@@ -3120,11 +3139,11 @@ msgstr "ポートを開く"
 
 #: plugins/vnc/vnc_plugin.c:2058
 msgid "Override pre-set VNC encodings"
-msgstr ""
+msgstr "プレセットのVNCエンコードをオーバライド"
 
 #: plugins/vnc/vnc_plugin.c:2059
 msgid "Force tight encoding"
-msgstr ""
+msgstr "Tightエンコード(TightVNC)の使用を強制"
 
 #: plugins/vnc/vnc_plugin.c:2059
 msgid "Enabling this may help when the remote desktop looks scrambled"
@@ -3260,7 +3279,8 @@ msgstr "GNOME キーリングで安全にパスワード保存"
 msgid ""
 "The command-line feature '%s' is not available! Attempting to start PyHoca-"
 "CLI without using this feature…"
-msgstr ""
+msgstr "コマンドラインの機能 '%s' は使用できません！ この機能を除外してPyHoca-CLI "
+"の起動を試みます…"
 
 #: plugins/x2go/x2go_plugin.c:292 plugins/x2go/x2go_plugin.c:424
 #: plugins/x2go/x2go_plugin.c:513 plugins/x2go/x2go_plugin.c:620
@@ -3286,7 +3306,7 @@ msgstr "内部エラーが発生しました。 "
 #: plugins/x2go/x2go_plugin.c:293 plugins/x2go/x2go_plugin.c:425
 #: plugins/x2go/x2go_plugin.c:514 plugins/x2go/x2go_plugin.c:1293
 msgid "Parameter 'custom_data' is not initialized!"
-msgstr ""
+msgstr "パラメータ'custom_data'が初期化されていません！"
 
 #: plugins/x2go/x2go_plugin.c:306
 #, fuzzy
@@ -3316,15 +3336,15 @@ msgstr "権限"
 
 #: plugins/x2go/x2go_plugin.c:475
 msgid "Create date"
-msgstr ""
+msgstr "作成日"
 
 #: plugins/x2go/x2go_plugin.c:476
 msgid "Suspended since"
-msgstr ""
+msgstr "次の日時から一時停止されました"
 
 #: plugins/x2go/x2go_plugin.c:477
 msgid "Agent PID"
-msgstr ""
+msgstr "エージェントPID"
 
 #: plugins/x2go/x2go_plugin.c:479
 #, fuzzy
@@ -3334,15 +3354,15 @@ msgstr "ユーザー名"
 
 #: plugins/x2go/x2go_plugin.c:480
 msgid "Cookie"
-msgstr ""
+msgstr "Cookie"
 
 #: plugins/x2go/x2go_plugin.c:481
 msgid "Graphic port"
-msgstr ""
+msgstr "グラフィックポート"
 
 #: plugins/x2go/x2go_plugin.c:482
 msgid "SND port"
-msgstr ""
+msgstr "SNDポート"
 
 #: plugins/x2go/x2go_plugin.c:483
 #, fuzzy
@@ -3383,55 +3403,58 @@ msgstr "新規(_N)"
 #. TRANSLATORS: Please stick to X2GoClient's way of translating.
 #: plugins/x2go/x2go_plugin.c:546
 msgid "Terminating X2Go sessions can take a moment."
-msgstr ""
+msgstr "X2Goセッションの終了には時間が掛かる場合があります。"
 
 #: plugins/x2go/x2go_plugin.c:621 plugins/x2go/x2go_plugin.c:623
 #, c-format
 msgid "Unknown property '%i'"
-msgstr ""
+msgstr "不明な属性 '%i'"
 
 #: plugins/x2go/x2go_plugin.c:711 plugins/x2go/x2go_plugin.c:758
 msgid "Couldn't find child GtkTreeView of session chooser dialog."
-msgstr ""
+msgstr "セッション選択ダイアログの子GtkTreeViewが見つかりません。"
 
 #: plugins/x2go/x2go_plugin.c:723
 msgid ""
 "Neither the 'dialog' nor 'treeview' parameters are initialized! At least one "
 "of them must be given."
-msgstr ""
+msgstr "パラメータ'dialog' 、'treeview' "
+"のどれかに初期化されていないものがあります！最低１つは必要です。"
 
 #: plugins/x2go/x2go_plugin.c:732
 msgid ""
 "Could not obtain \"GtkTreeModelFilter*\" of the session chooser dialog, for "
 "unknown reason."
-msgstr ""
+msgstr "原因不明な理由により、セッション選択ダイアログの\"GtkTreeModelFilter*"
+"\"を取得できませんでした。"
 
 #: plugins/x2go/x2go_plugin.c:767
 msgid "Couldn't get currently selected row (session)!"
-msgstr ""
+msgstr "現在選択されている行（セッション）を取得できません！"
 
 #: plugins/x2go/x2go_plugin.c:786
 #, c-format
 msgid ""
 "Exactly one session should be selectable but '%i' rows (sessions) are "
 "selected."
-msgstr ""
+msgstr "セッションは１つのみ選択可能ですが、複数の "
+"'%i'行（セッション）が選択されています。"
 
 #: plugins/x2go/x2go_plugin.c:836
 msgid "Failed to fill 'GtkTreeIter'."
-msgstr ""
+msgstr "'GtkTreeIter'に内容を埋められませんでした。"
 
 #: plugins/x2go/x2go_plugin.c:902
 msgid "parameter 'argv' is 'NULL'."
-msgstr ""
+msgstr "パラメータ'argv' は 'NULL'です。"
 
 #: plugins/x2go/x2go_plugin.c:913
 msgid "parameter 'error' is 'NULL'."
-msgstr ""
+msgstr "パラメータ'error' は 'NULL'です。"
 
 #: plugins/x2go/x2go_plugin.c:921
 msgid "parameter 'env' is either invalid or uninitialized."
-msgstr ""
+msgstr "パラメータ'env' が不正または初期化されていません。"
 
 #: plugins/x2go/x2go_plugin.c:937 plugins/x2go/x2go_plugin.c:2391
 #, fuzzy
@@ -3442,7 +3465,7 @@ msgstr "以下の引数でPyHoca-CLIを起動。"
 msgid ""
 "The necessary PyHoca-CLI process has encountered a internet connection "
 "problem."
-msgstr ""
+msgstr "処理に必要なPyHoca-CLIプロセスにてインターネット接続に問題が発生しました。"
 
 #: plugins/x2go/x2go_plugin.c:975
 #, fuzzy, c-format
@@ -3455,26 +3478,27 @@ msgstr "PyHoca-CLI を起動できませんでした (%i): '%s'"
 #, c-format
 msgid ""
 "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i"
-msgstr ""
+msgstr "PyHoca-CLIの起動時に原因不明のエラーが発生しました。終了コード： %i"
 
 #: plugins/x2go/x2go_plugin.c:993
 #, c-format
 msgid ""
 "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i. "
 "Error: '%s'"
-msgstr ""
+msgstr "PyHoca-CLIの起動時に原因不明のエラーが発生しました。終了コード： %i 、エラー:"
+" '%s'"
 
 #: plugins/x2go/x2go_plugin.c:1035
 msgid "Neither the 'path' nor 'dialog' parameters are initialized."
-msgstr ""
+msgstr "パラメータ'path' 、'dialog' のどれか初期化されていないものがあります。"
 
 #: plugins/x2go/x2go_plugin.c:1051
 msgid "GtkTreePath 'path' describes a non-existing row!"
-msgstr ""
+msgstr "GtkTreePath 'path' が未存在の行を参照しています！"
 
 #: plugins/x2go/x2go_plugin.c:1116
 msgid "Parameter 'custom_data' is not fully initialized!"
-msgstr ""
+msgstr "パラメータ 'custom_data' が完全に初期さされていません！"
 
 #: plugins/x2go/x2go_plugin.c:1144 plugins/x2go/x2go_plugin.c:1797
 #: plugins/x2go/x2go_plugin.c:2091
@@ -3497,17 +3521,17 @@ msgstr "エラーが発生しました。"
 
 #: plugins/x2go/x2go_plugin.c:1333 plugins/x2go/x2go_plugin.c:1348
 msgid "Couldn't get session ID from session chooser dialog."
-msgstr ""
+msgstr "セッション選択ダイアログからセッションIDを取得できませんでした。"
 
 #: plugins/x2go/x2go_plugin.c:1340
 #, c-format
 msgid "Resuming session: '%s'"
-msgstr ""
+msgstr "セッション再開: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:1355
 #, c-format
 msgid "Terminating session: '%s'"
-msgstr ""
+msgstr "セッションを終了しています: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:1529
 #, c-format
@@ -3551,7 +3575,7 @@ msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:1701
 msgid "Parameter 'default_username' is uninitialized."
-msgstr ""
+msgstr "パラメータ'default_username'が初期化されていません。"
 
 #: plugins/x2go/x2go_plugin.c:1730
 #, fuzzy
@@ -3563,21 +3587,22 @@ msgstr "X2Goの認証情報を入力する"
 msgid ""
 "Couldn't parse the output of PyHoca-CLI's --list-sessions option. Creating a "
 "new session now."
-msgstr ""
+msgstr "PyHoca-CLIの --list-sessionsオプションの結果が解析できません。 "
+"新規セッションを作成しています。"
 
 #: plugins/x2go/x2go_plugin.c:1966
 msgid "Couldn't allocate enough memory!"
-msgstr ""
+msgstr "必要メモリを確保できません！"
 
 #: plugins/x2go/x2go_plugin.c:1976
 #, c-format
 msgid "Found already existing X2Go session with ID: '%s'"
-msgstr ""
+msgstr "既にX2Goセッションが存在しています。セッションID: '%s'"
 
 #. TRANSLATORS: Please stick to X2GoClient's translation.
 #: plugins/x2go/x2go_plugin.c:2019
 msgid "Suspended"
-msgstr ""
+msgstr "サスペンド"
 
 #. TRANSLATORS: Please stick to X2GoClient's translation.
 #: plugins/x2go/x2go_plugin.c:2022
@@ -3595,7 +3620,7 @@ msgstr "終了"
 #: plugins/x2go/x2go_plugin.c:2058
 msgid ""
 "Could not find any sessions on remote machine. Creating a new session now."
-msgstr ""
+msgstr "リモート先に既存セッションがありません。新しいセッションを作成しています。"
 
 #: plugins/x2go/x2go_plugin.c:2113
 #, fuzzy
@@ -3610,23 +3635,23 @@ msgstr "PyHoca-CLIがセッションのウィンドウを表示するのを待�
 
 #: plugins/x2go/x2go_plugin.c:2164
 msgid "No session was selected. Creating a new one."
-msgstr ""
+msgstr "セッションが選択されていません。新しいセッションを作成しています。"
 
 #: plugins/x2go/x2go_plugin.c:2212
 #, c-format
 msgid "A non-critical error happened: %s"
-msgstr ""
+msgstr "軽微なエラーが発生: %s"
 
 #: plugins/x2go/x2go_plugin.c:2217
 #, c-format
 msgid "User chose to resume session with ID: '%s'"
-msgstr ""
+msgstr "ユーザがセッション再開を選択しました。セッションID: '%s'"
 
 #. TRANSLATORS: Please stick to X2GoClient's way of translating.
 #: plugins/x2go/x2go_plugin.c:2238
 #, c-format
 msgid "Resuming session '%s'…"
-msgstr ""
+msgstr "セッション'%s'を再開しています…"
 
 #: plugins/x2go/x2go_plugin.c:2369
 #, fuzzy
@@ -3770,7 +3795,7 @@ msgstr "ProtocolSettings配列のバリデーションデータが無効です�
 
 #: plugins/x2go/x2go_plugin.c:3051
 msgid "Parameters 'key' or 'value' are 'NULL'!"
-msgstr ""
+msgstr "パラメータのキーまたは値が'NULL'です！"
 
 #: plugins/x2go/x2go_plugin.c:3069
 #, fuzzy, c-format
@@ -4326,7 +4351,7 @@ msgstr ""
 
 #: data/ui/remmina_news.glade:169
 msgid "Receives updated news from remmina.org"
-msgstr ""
+msgstr "remmina.orgから新しいニュースを受信する"
 
 #: data/ui/remmina_news.glade:182
 #, fuzzy
@@ -4637,7 +4662,7 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:496
 msgid "Ask consent to close last window"
-msgstr ""
+msgstr "最後のウィンドウを閉じる際は確認する"
 
 #: data/ui/remmina_preferences.glade:530
 msgid "Options"
