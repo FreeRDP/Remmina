@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-04-30 22:26+0000\n"
+"POT-Creation-Date: 2022-05-09 09:59+0000\n"
 "PO-Revision-Date: 2022-05-05 15:13+0000\n"
 "Last-Translator: WonYong Jung <hirameki@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -127,10 +127,10 @@ msgid ""
 msgstr ""
 "このウィンドウは接続問題の原因を探すためのものです。\n"
 "On/Offスイッチでいつでもログ出力を入・切できます。\n"
-"統計ボタン(Ctrl+T)はバグレポートで共有できるシステムの情報取得時に便利です。"
-"\n"
-"https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging に "
-"Remminaのデバッグについて説明されています。\n"
+"統計ボタン(Ctrl+T)はバグレポートで共有できるシステムの情報取得時に便利で"
+"す。\n"
+"https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging に Remmina"
+"のデバッグについて説明されています。\n"
 
 #: src/remmina_plugin_manager.c:71 src/remmina_file_editor.c:1962
 msgid "Protocol"
@@ -429,39 +429,39 @@ msgstr "タブページを切り替える"
 msgid "Grab all keyboard events"
 msgstr "すべてのキーボードイベントを取得する"
 
-#: src/rcw.c:2490
+#: src/rcw.c:2497
 msgid "Preferences"
 msgstr "設定"
 
-#: src/rcw.c:2499
+#: src/rcw.c:2506
 msgid "_Tools"
 msgstr "ツール(_T)"
 
-#: src/rcw.c:2500 data/ui/remmina_main.glade:207
+#: src/rcw.c:2507 data/ui/remmina_main.glade:207
 msgid "Tools"
 msgstr "ツール"
 
-#: src/rcw.c:2513 data/ui/remmina_preferences.glade:1266
+#: src/rcw.c:2520 data/ui/remmina_preferences.glade:1266
 #: data/ui/remmina_preferences.glade:1276
 msgid "Screenshot"
 msgstr "スクリーンショット"
 
-#: src/rcw.c:2527 data/ui/remmina_preferences.glade:1173
+#: src/rcw.c:2534 data/ui/remmina_preferences.glade:1173
 msgid "Minimize window"
 msgstr "ウィンドウ最小化"
 
-#: src/rcw.c:2537 data/ui/remmina_preferences.glade:1204
+#: src/rcw.c:2544 data/ui/remmina_preferences.glade:1204
 msgid "Disconnect"
 msgstr "切断"
 
-#: src/rcw.c:4318
+#: src/rcw.c:4331
 #, c-format
 msgid "The file “%s” is corrupted, unreadable, or could not be found."
 msgstr "“%s” は壊れているか、読み取り不可か、または見つかりませんでした。"
 
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. TRANSLATORS: 'GtkSocket feature is not available'.
-#: src/rcw.c:4392
+#: src/rcw.c:4405
 msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
@@ -469,7 +469,7 @@ msgstr ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 
-#: src/rcw.c:4532
+#: src/rcw.c:4545
 #, fuzzy
 #| msgid "Warning: This plugin requires GtkSocket, but it’s not available."
 msgid ""
@@ -479,7 +479,7 @@ msgstr "警告: このプラグインに必要な GtkSocket が利用できま�
 
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. 'GtkSocket feature is not available'.
-#: src/rcw.c:4538
+#: src/rcw.c:4551
 msgid ""
 "Plugins relying on GtkSocket can't run in a Wayland session.\n"
 "For more info and a possible workaround, please visit the Remmina wiki at:\n"
@@ -493,7 +493,7 @@ msgstr ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 
-#: src/rcw.c:4552
+#: src/rcw.c:4565
 #, fuzzy
 #| msgid "Open Main Window"
 msgid "Open in web browser"
@@ -678,9 +678,8 @@ msgid ""
 "More info available on the Remmina wiki at:\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgstr ""
-"Remminaは出力のすべてをログファイルに残している訳ではありません。"
-"環境変数に\"G_MESSAGES_DEBUG="
-"all\"を追加してより詳しく出録するようにしてください。\n"
+"Remminaは出力のすべてをログファイルに残している訳ではありません。環境変数に"
+"\"G_MESSAGES_DEBUG=all\"を追加してより詳しく出録するようにしてください。\n"
 "RemminaのWikiで追加情報が得られます：\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 
@@ -3279,8 +3278,9 @@ msgstr "GNOME キーリングで安全にパスワード保存"
 msgid ""
 "The command-line feature '%s' is not available! Attempting to start PyHoca-"
 "CLI without using this feature…"
-msgstr "コマンドラインの機能 '%s' は使用できません！ この機能を除外してPyHoca-CLI "
-"の起動を試みます…"
+msgstr ""
+"コマンドラインの機能 '%s' は使用できません！ この機能を除外してPyHoca-CLI の"
+"起動を試みます…"
 
 #: plugins/x2go/x2go_plugin.c:292 plugins/x2go/x2go_plugin.c:424
 #: plugins/x2go/x2go_plugin.c:513 plugins/x2go/x2go_plugin.c:620
@@ -3418,15 +3418,17 @@ msgstr "セッション選択ダイアログの子GtkTreeViewが見つかりま�
 msgid ""
 "Neither the 'dialog' nor 'treeview' parameters are initialized! At least one "
 "of them must be given."
-msgstr "パラメータ'dialog' 、'treeview' "
-"のどれかに初期化されていないものがあります！最低１つは必要です。"
+msgstr ""
+"パラメータ'dialog' 、'treeview' のどれかに初期化されていないものがあります！"
+"最低１つは必要です。"
 
 #: plugins/x2go/x2go_plugin.c:732
 msgid ""
 "Could not obtain \"GtkTreeModelFilter*\" of the session chooser dialog, for "
 "unknown reason."
-msgstr "原因不明な理由により、セッション選択ダイアログの\"GtkTreeModelFilter*"
-"\"を取得できませんでした。"
+msgstr ""
+"原因不明な理由により、セッション選択ダイアログの\"GtkTreeModelFilter*\"を取得"
+"できませんでした。"
 
 #: plugins/x2go/x2go_plugin.c:767
 msgid "Couldn't get currently selected row (session)!"
@@ -3437,8 +3439,9 @@ msgstr "現在選択されている行（セッション）を取得できませ
 msgid ""
 "Exactly one session should be selectable but '%i' rows (sessions) are "
 "selected."
-msgstr "セッションは１つのみ選択可能ですが、複数の "
-"'%i'行（セッション）が選択されています。"
+msgstr ""
+"セッションは１つのみ選択可能ですが、複数の '%i'行（セッション）が選択されてい"
+"ます。"
 
 #: plugins/x2go/x2go_plugin.c:836
 msgid "Failed to fill 'GtkTreeIter'."
@@ -3465,7 +3468,8 @@ msgstr "以下の引数でPyHoca-CLIを起動。"
 msgid ""
 "The necessary PyHoca-CLI process has encountered a internet connection "
 "problem."
-msgstr "処理に必要なPyHoca-CLIプロセスにてインターネット接続に問題が発生しました。"
+msgstr ""
+"処理に必要なPyHoca-CLIプロセスにてインターネット接続に問題が発生しました。"
 
 #: plugins/x2go/x2go_plugin.c:975
 #, fuzzy, c-format
@@ -3485,8 +3489,9 @@ msgstr "PyHoca-CLIの起動時に原因不明のエラーが発生しました�
 msgid ""
 "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i. "
 "Error: '%s'"
-msgstr "PyHoca-CLIの起動時に原因不明のエラーが発生しました。終了コード： %i 、エラー:"
-" '%s'"
+msgstr ""
+"PyHoca-CLIの起動時に原因不明のエラーが発生しました。終了コード： %i 、エ"
+"ラー: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:1035
 msgid "Neither the 'path' nor 'dialog' parameters are initialized."
@@ -3587,8 +3592,9 @@ msgstr "X2Goの認証情報を入力する"
 msgid ""
 "Couldn't parse the output of PyHoca-CLI's --list-sessions option. Creating a "
 "new session now."
-msgstr "PyHoca-CLIの --list-sessionsオプションの結果が解析できません。 "
-"新規セッションを作成しています。"
+msgstr ""
+"PyHoca-CLIの --list-sessionsオプションの結果が解析できません。 新規セッション"
+"を作成しています。"
 
 #: plugins/x2go/x2go_plugin.c:1966
 msgid "Couldn't allocate enough memory!"
@@ -3620,7 +3626,8 @@ msgstr "終了"
 #: plugins/x2go/x2go_plugin.c:2058
 msgid ""
 "Could not find any sessions on remote machine. Creating a new session now."
-msgstr "リモート先に既存セッションがありません。新しいセッションを作成しています。"
+msgstr ""
+"リモート先に既存セッションがありません。新しいセッションを作成しています。"
 
 #: plugins/x2go/x2go_plugin.c:2113
 #, fuzzy
