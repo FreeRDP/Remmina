@@ -2483,6 +2483,13 @@ rcw_create_toolbar(RemminaConnectionWindow *cnnwin, gint mode)
 	gtk_widget_show(GTK_WIDGET(toolitem));
 	g_signal_connect(G_OBJECT(toolitem), "toggled", G_CALLBACK(rcw_toolbar_grab), cnnwin);
 	priv->toolitem_grab = toolitem;
+	if (!cnnobj)
+		gtk_widget_set_sensitive(GTK_WIDGET(toolitem), FALSE);
+	else {
+		const gchar *protocol = remmina_file_get_string(cnnobj->remmina_file, "protocol");
+		if (g_strcmp0(protocol, "SFTP") == 0 || g_strcmp0(protocol, "SSH") == 0)
+			gtk_widget_set_sensitive(GTK_WIDGET(toolitem), FALSE);
+	}
 
 	/* Preferences */
 	toolitem = gtk_toggle_tool_button_new();
@@ -2640,6 +2647,12 @@ static void rco_update_toolbar(RemminaConnectionObject *cnnobj)
 	gtk_widget_set_sensitive(GTK_WIDGET(toolitem), cnnobj->connected);
 	gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(toolitem),
 					  remmina_file_get_int(cnnobj->remmina_file, "keyboard_grab", FALSE));
+	const gchar *protocol = remmina_file_get_string(cnnobj->remmina_file, "protocol");
+	if (g_strcmp0(protocol, "SFTP") == 0 || g_strcmp0(protocol, "SSH") == 0) {
+		gtk_widget_set_sensitive(GTK_WIDGET(toolitem), FALSE);
+		gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(toolitem), FALSE);
+		remmina_file_set_int(cnnobj->remmina_file, "keyboard_grab", FALSE);
+	}
 
 	toolitem = priv->toolitem_preferences;
 	gtk_widget_set_sensitive(GTK_WIDGET(toolitem), cnnobj->connected);
