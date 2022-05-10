@@ -752,6 +752,15 @@ static GtkWidget *remmina_file_editor_create_check(RemminaFileEditor *gfe, GtkWi
 	return widget;
 }
 
+/**
+ * Create checkbox + gtk_file_chooser for open files and select folders
+ *
+ * The code is wrong, because if the checkbox is not active, the value should be set to NULL
+ * and remove it from the remmina file. The problem is that this function knows nothing about
+ * the remmina file.
+ * This should be rewritten in a more generic way
+ * Please use REMMINA_PROTOCOL_SETTING_TYPE_TEXT
+ */
 static GtkWidget *
 remmina_file_editor_create_chooser(RemminaFileEditor *gfe, GtkWidget *grid, gint row, gint col, const gchar *label,
 				   const gchar *value, gint type, gchar* setting_name)
