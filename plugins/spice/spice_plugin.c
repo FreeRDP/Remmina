@@ -676,7 +676,7 @@ static const RemminaProtocolSetting remmina_plugin_spice_basic_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD,	"password",		N_("User password"),	 	FALSE,	NULL, NULL, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,		"usetls",		N_("Use TLS encryption"),	FALSE,	NULL, NULL, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_FILE,		"cacert",		N_("Server CA certificate"),	FALSE,	NULL, NULL, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_FOLDER,		"sharefolder",		N_("Share folder"),		FALSE,	NULL, NULL, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,		"sharefolder",		N_("Share folder"),		FALSE,	NULL, NULL, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END,		NULL,			NULL,				FALSE,	NULL, NULL, NULL, NULL }
 };
 
