@@ -194,7 +194,7 @@ G_MODULE_EXPORT gboolean remmina_plugin_entry(RemminaPluginService *service)
 	python_wrapper_set_service(service);
 
 	python_wrapper_module_init();
-	Py_Initialize();
+	Py_InitializeEx(0);
 
 	for (const char** ptr = python_init_commands; *ptr; ++ptr)
 	{
