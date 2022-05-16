@@ -799,6 +799,8 @@ void remmina_main_on_action_application_mpchange(GSimpleAction *action, GVariant
 void remmina_main_on_action_connection_new(GSimpleAction *action, GVariant *param, gpointer data)
 {
 	TRACE_CALL(__func__);
+	if (kioskmode && kioskmode == TRUE)
+		return;
 	GtkWidget *widget;
 
 	if (remmina_pref_get_boolean("use_primary_password")
