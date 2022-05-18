@@ -81,7 +81,7 @@ void remmina_plugin_www_download_started(WebKitWebContext *context,
 	g_signal_connect(G_OBJECT(download), "notify::response",
 			 G_CALLBACK(remmina_plugin_www_response_received), gp);
 	g_signal_connect(download, "created-destination",
-			G_CALLBACK(remmina_plugin_www_notify_download), gp);
+			 G_CALLBACK(remmina_plugin_www_notify_download), gp);
 }
 
 void remmina_plugin_www_response_received(WebKitDownload *download, GParamSpec *ps, RemminaProtocolWidget *gp)
@@ -95,6 +95,7 @@ void remmina_plugin_www_notify_download(WebKitDownload *download, gchar *destina
 	TRACE_CALL(__func__);
 	REMMINA_PLUGIN_DEBUG("Download is finished");
 	const gchar *dest = webkit_download_get_destination(download);
+
 	www_utils_send_notification("www-plugin-download-completed-id", _("File downloaded"), dest);
 	//download(gp, webkit_download_get_response(download));
 	//webkit_download_cancel(download);
@@ -180,6 +181,7 @@ void remmina_plugin_www_on_create(WebKitWebView *webview, WebKitNavigationAction
 	const gchar *url = NULL;
 
 	RemminaPluginWWWData *gpdata;
+
 	gpdata = (RemminaPluginWWWData *)g_object_get_data(G_OBJECT(gp), "plugin-data");
 
 	switch (webkit_navigation_action_get_navigation_type(a)) {
@@ -235,6 +237,7 @@ void remmina_plugin_www_decide_newwin(WebKitPolicyDecision *decision, RemminaPro
 	const gchar *url = NULL;
 
 	RemminaPluginWWWData *gpdata;
+
 	gpdata = (RemminaPluginWWWData *)g_object_get_data(G_OBJECT(gp), "plugin-data");
 
 	WebKitNavigationAction *a =
@@ -304,6 +307,7 @@ gboolean remmina_plugin_www_decide_resource(WebKitPolicyDecision *decision, Remm
 	const char *mime_type;
 
 	RemminaPluginWWWData *gpdata;
+
 	gpdata = (RemminaPluginWWWData *)g_object_get_data(G_OBJECT(gp), "plugin-data");
 
 	mime_type = webkit_uri_response_get_mime_type(response);
@@ -356,7 +360,7 @@ static void remmina_www_web_view_js_finished(GObject *object, GAsyncResult *resu
 
 	js_result = webkit_web_view_run_javascript_finish(WEBKIT_WEB_VIEW(object), result, &error);
 	if (!js_result) {
-		g_warning("Could not run JavaScript code: %s", error->message);
+		REMMINA_PLUGIN_DEBUG("Could not run JavaScript code: %s", error->message);
 		g_error_free(error);
 		return;
 	}
@@ -370,13 +374,13 @@ static void remmina_www_web_view_js_finished(GObject *object, GAsyncResult *resu
 		str_value = jsc_value_to_string(value);
 		exception = jsc_context_get_exception(jsc_value_get_context(value));
 		if (exception)
-			g_warning("Could not run JavaScript code: %s", jsc_exception_get_message(exception));
+			REMMINA_PLUGIN_DEBUG("Could not run JavaScript code: %s", jsc_exception_get_message(exception));
 		else
 			g_print("Script result: %s\n", str_value);
 		g_free(str_value);
 	} else {
 		str_value = jsc_value_to_string(value);
-		g_warning("Received something other than a string from JavaScript: %s", str_value);
+		REMMINA_PLUGIN_DEBUG("Received something other than a string from JavaScript: %s", str_value);
 		g_free(str_value);
 	}
 #endif
@@ -389,9 +393,7 @@ static gboolean remmina_www_query_feature(RemminaProtocolWidget *gp, const Remmi
 	return TRUE;
 }
 
-static gboolean remmina_plugin_www_load_failed_tls_cb(WebKitWebView *webview,
-						      gchar *failing_uri, GTlsCertificate *certificate,
-						      GTlsCertificateFlags errors, RemminaProtocolWidget *gp) __attribute__ ((unused));
+static gboolean remmina_plugin_www_load_failed_tls_cb(WebKitWebView *webview, gchar *failing_uri, GTlsCertificate *certificate, GTlsCertificateFlags errors, RemminaProtocolWidget *gp) __attribute__ ((unused));
 static gboolean remmina_plugin_www_load_failed_tls_cb(WebKitWebView *webview,
 						      gchar *failing_uri, GTlsCertificate *certificate,
 						      GTlsCertificateFlags errors, RemminaProtocolWidget *gp)
@@ -456,7 +458,7 @@ static void remmina_plugin_www_init(RemminaProtocolWidget *gp)
 		gpdata->url = g_strdup(remmina_plugin_service->file_get_string(remminafile, "server"));
 	else
 		gpdata->url = "https://remmina.org";
-	g_info("URL is set to %s", gpdata->url);
+	REMMINA_PLUGIN_DEBUG("URL is set to %s", gpdata->url);
 
 	gpdata->settings = webkit_settings_new();
 	gpdata->context = webkit_web_context_new_with_website_data_manager(gpdata->data_mgr);
@@ -482,40 +484,46 @@ static void remmina_plugin_www_init(RemminaProtocolWidget *gp)
 	if (remmina_plugin_service->file_get_string(remminafile, "user-agent")) {
 		gchar *useragent = g_strdup(remmina_plugin_service->file_get_string(remminafile, "user-agent"));
 		webkit_settings_set_user_agent(gpdata->settings, useragent);
-		g_info("User Agent set to: %s", useragent);
+		REMMINA_PLUGIN_DEBUG("User Agent set to: %s", useragent);
 		g_free(useragent);
 	}
 	/* enable-java */
 	if (remmina_plugin_service->file_get_int(remminafile, "enable-java", FALSE)) {
 		webkit_settings_set_enable_java(gpdata->settings, TRUE);
-		g_info("Enable Java");
+		REMMINA_PLUGIN_DEBUG("Enable Java");
 	}
 	/* enable-smooth-scrolling */
 	if (remmina_plugin_service->file_get_int(remminafile, "enable-smooth-scrolling", FALSE)) {
 		webkit_settings_set_enable_smooth_scrolling(gpdata->settings, TRUE);
-		g_info("enable-smooth-scrolling enabled");
+		REMMINA_PLUGIN_DEBUG("enable-smooth-scrolling enabled");
 	}
 	/* enable-spatial-navigation */
 	if (remmina_plugin_service->file_get_int(remminafile, "enable-spatial-navigation", FALSE)) {
 		webkit_settings_set_enable_spatial_navigation(gpdata->settings, TRUE);
-		g_info("enable-spatial-navigation enabled");
+		REMMINA_PLUGIN_DEBUG("enable-spatial-navigation enabled");
 	}
 	/* enable-webaudio */
 	if (remmina_plugin_service->file_get_int(remminafile, "enable-webaudio", FALSE)) {
 		webkit_settings_set_enable_webaudio(gpdata->settings, TRUE);
-		g_info("enable-webaudio enabled");
+		REMMINA_PLUGIN_DEBUG("enable-webaudio enabled");
 	}
 	/* enable-plugins */
+#if WEBKIT_CHECK_VERSION(2, 32, 0)
+#else
 	if (remmina_plugin_service->file_get_int(remminafile, "enable-plugins", FALSE)) {
 		webkit_settings_set_enable_plugins(gpdata->settings, TRUE);
-		g_info("Enable plugins");
+		REMMINA_PLUGIN_DEBUG("Enable plugins");
 	}
+#endif
 	/* enable-webgl */
+#if WEBKIT_CHECK_VERSION(2, 32, 0)
+#else
 	if (remmina_plugin_service->file_get_int(remminafile, "enable-webgl", FALSE)) {
 		webkit_settings_set_enable_webgl(gpdata->settings, TRUE);
 		webkit_settings_set_enable_accelerated_2d_canvas(gpdata->settings, TRUE);
-		g_info("enable-webgl enabled");
+		REMMINA_PLUGIN_DEBUG("enable-webgl enabled");
 	}
+#endif
 
 	if (remmina_plugin_service->file_get_int(remminafile, "ignore-tls-errors", FALSE)) {
 #if WEBKIT_CHECK_VERSION(2, 32, 0)
@@ -525,17 +533,17 @@ static void remmina_plugin_www_init(RemminaProtocolWidget *gp)
 		webkit_web_context_set_tls_errors_policy(
 			gpdata->context, WEBKIT_TLS_ERRORS_POLICY_IGNORE);
 #endif
-		g_info("Ignore TLS errors");
+		REMMINA_PLUGIN_DEBUG("Ignore TLS errors");
 	}
 	if (remmina_plugin_service->file_get_string(remminafile, "proxy-url")) {
 		gchar *proxyurl = g_strdup(remmina_plugin_service->file_get_string(remminafile, "proxy-url"));
-		WebKitNetworkProxySettings *proxy_settings = webkit_network_proxy_settings_new (proxyurl, NULL);
+		WebKitNetworkProxySettings *proxy_settings = webkit_network_proxy_settings_new(proxyurl, NULL);
 #if WEBKIT_CHECK_VERSION(2, 32, 0)
 		webkit_website_data_manager_set_network_proxy_settings(
 			gpdata->data_mgr, WEBKIT_NETWORK_PROXY_MODE_CUSTOM, proxy_settings);
 #else
 		webkit_web_context_set_network_proxy_settings(
-				gpdata->context, WEBKIT_NETWORK_PROXY_MODE_CUSTOM,proxy_settings);
+			gpdata->context, WEBKIT_NETWORK_PROXY_MODE_CUSTOM, proxy_settings);
 #endif
 		webkit_network_proxy_settings_free(proxy_settings);
 		g_free(proxyurl);
@@ -549,9 +557,8 @@ static void remmina_plugin_www_init(RemminaProtocolWidget *gp)
 	 * the ability to flatten them so they behave, when scrolling, as one big
 	 * frame. If for some reason it is not enabled, go ahead and turn it on.
 	 */
-	if (!webkit_settings_get_enable_frame_flattening(gpdata->settings)) {
+	if (!webkit_settings_get_enable_frame_flattening(gpdata->settings))
 		webkit_settings_set_enable_frame_flattening(gpdata->settings, true);
-	}
 	webkit_settings_set_enable_resizable_text_areas(gpdata->settings, true);
 
 	g_signal_connect(G_OBJECT(gpdata->context), "download-started",
@@ -571,18 +578,18 @@ static gboolean remmina_plugin_www_on_auth(WebKitWebView *webview, WebKitAuthent
 
 	gpdata = (RemminaPluginWWWData *)g_object_get_data(G_OBJECT(gp), "plugin-data");
 
-	g_info("Authenticate");
+	REMMINA_PLUGIN_DEBUG("Authenticate");
 
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
 	disablepasswordstoring = remmina_plugin_service->file_get_int(remminafile, "disablepasswordstoring", FALSE);
 	ret = remmina_plugin_service->protocol_plugin_init_auth(gp,
-		(disablepasswordstoring ? 0 : REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD) | REMMINA_MESSAGE_PANEL_FLAG_USERNAME,
-		_("Enter WWW authentication credentials"),
-		remmina_plugin_service->file_get_string(remminafile, "username"),
-		remmina_plugin_service->file_get_string(remminafile, "password"),
-		NULL,
-		NULL);
+								(disablepasswordstoring ? 0 : REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD) | REMMINA_MESSAGE_PANEL_FLAG_USERNAME,
+								_("Enter WWW authentication credentials"),
+								remmina_plugin_service->file_get_string(remminafile, "username"),
+								remmina_plugin_service->file_get_string(remminafile, "password"),
+								NULL,
+								NULL);
 	if (ret == GTK_RESPONSE_OK) {
 		s_username = remmina_plugin_service->protocol_plugin_init_get_username(gp);
 		s_password = remmina_plugin_service->protocol_plugin_init_get_password(gp);
@@ -637,6 +644,7 @@ static void remmina_plugin_www_form_auth(WebKitWebView *webview,
 	const gchar *const *dirs = g_get_system_data_dirs();
 
 	unsigned int i = 0;
+
 	for (i = 0; dirs[i] != NULL; ++i) {
 		remmina_dir = g_build_path("/", dirs[i], "remmina", "res", NULL);
 		GDir *system_data_dir = g_dir_open(remmina_dir, 0, &error);
@@ -687,10 +695,10 @@ static void remmina_plugin_www_form_auth(WebKitWebView *webview,
 					jsstr = g_string_new(s_js);
 					if (remmina_plugin_service->file_get_string(remminafile, "username"))
 						www_utils_string_replace_all(jsstr, "USRPLACEHOLDER",
-										remmina_plugin_service->file_get_string(remminafile, "username"));
+									     remmina_plugin_service->file_get_string(remminafile, "username"));
 					if (remmina_plugin_service->file_get_string(remminafile, "password"))
 						www_utils_string_replace_all(jsstr, "PWDPLACEHOLDER",
-										remmina_plugin_service->file_get_string(remminafile, "password"));
+									     remmina_plugin_service->file_get_string(remminafile, "password"));
 					s_js = g_string_free(jsstr, FALSE);
 
 					if (!s_js || s_js[0] == '\0') {
@@ -698,11 +706,11 @@ static void remmina_plugin_www_form_auth(WebKitWebView *webview,
 					} else {
 						REMMINA_PLUGIN_DEBUG("Trying to send this JavaScript: %s", s_js);
 						webkit_web_view_run_javascript(
-								webview,
-								s_js,
-								NULL,
-								remmina_www_web_view_js_finished,
-								gp);
+							webview,
+							s_js,
+							NULL,
+							remmina_www_web_view_js_finished,
+							gp);
 						g_free(s_js);
 					}
 				} else {
@@ -723,6 +731,7 @@ static gboolean remmina_plugin_www_close_connection(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
 	RemminaPluginWWWData *gpdata;
+
 	gpdata = (RemminaPluginWWWData *)g_object_get_data(G_OBJECT(gp), "plugin-data");
 
 	webkit_web_view_stop_loading(gpdata->webview);
@@ -783,7 +792,7 @@ static gboolean remmina_plugin_www_open_connection(RemminaProtocolWidget *gp)
 	webkit_web_view_load_uri(gpdata->webview, gpdata->url);
 #ifdef DEBUG
 	if (remmina_plugin_service->file_get_int(remminafile, "enable-webinspector", FALSE)) {
-		g_info("WebInspector enabled");
+		REMMINA_PLUGIN_DEBUG("WebInspector enabled");
 		WebKitWebInspector *inspector = webkit_web_view_get_inspector(WEBKIT_WEB_VIEW(gpdata->webview));
 		webkit_web_inspector_attach(inspector);
 		webkit_web_inspector_show(WEBKIT_WEB_INSPECTOR(inspector));
@@ -818,7 +827,7 @@ static void remmina_plugin_www_save_snapshot(GObject *object, GAsyncResult *resu
 
 	surface = webkit_web_view_get_snapshot_finish(WEBKIT_WEB_VIEW(webview), result, &err);
 	if (err)
-		g_warning("An error happened generating the snapshot: %s\n", err->message);
+		REMMINA_PLUGIN_DEBUG("An error happened generating the snapshot: %s\n", err->message);
 	//buffer = cairo_image_surface_get_data (surface);
 	width = cairo_image_surface_get_width(surface);
 	height = cairo_image_surface_get_height(surface);
@@ -860,6 +869,7 @@ static gboolean remmina_plugin_www_get_snapshot(RemminaProtocolWidget *gp, Remmi
 {
 	TRACE_CALL(__func__);
 	RemminaPluginWWWData *gpdata;
+
 	gpdata = (RemminaPluginWWWData *)g_object_get_data(G_OBJECT(gp), "plugin-data");
 
 	webkit_web_view_get_snapshot(gpdata->webview,
@@ -890,10 +900,10 @@ static gboolean remmina_plugin_www_get_snapshot(RemminaProtocolWidget *gp, Remmi
  */
 static const RemminaProtocolSetting remmina_plugin_www_basic_settings[] =
 {
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "server",   N_("URL"),	FALSE, NULL, N_("http://address or https://address"),	NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "username", N_("Username"),   FALSE, NULL, NULL,					NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "password", N_("Password"),   FALSE, NULL, NULL,					NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	  NULL,	      NULL,		FALSE, NULL, NULL,					NULL, NULL }
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "server",   N_("URL"),      FALSE, NULL, N_("http://address or https://address"), NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "username", N_("Username"), FALSE, NULL, NULL,				    NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "password", N_("Password"), FALSE, NULL, NULL,				    NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	  NULL,	      NULL,	      FALSE, NULL, NULL,				    NULL, NULL }
 };
 
 /* Array of RemminaProtocolSetting for advanced settings.
@@ -907,20 +917,23 @@ static const RemminaProtocolSetting remmina_plugin_www_basic_settings[] =
  */
 static const RemminaProtocolSetting remmina_plugin_www_advanced_settings[] =
 {
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,  "user-agent",		    N_("User agent"),		       FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,  "user-agent",		    N_("User agent"),		       FALSE, NULL, NULL						 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,  "proxy-url",		    N_("Proxy URL"),		       FALSE, NULL, N_("E.g. https://example.org, socks://mysocks:1080") },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "enable-java",		    N_("Turn on Java support"),	       TRUE,  NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "enable-smooth-scrolling",   N_("Turn on smooth scrolling"),     TRUE,  NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "enable-spatial-navigation", N_("Turn on spatial navigation"),   TRUE,  NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "enable-plugins",	    N_("Turn on plugin support"),  TRUE,  NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "enable-webgl",		    N_("Turn on WebGL support"),    TRUE,  NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "enable-webaudio",	    N_("Turn on HTML5 audio support"), TRUE,  NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "ignore-tls-errors",	    N_("Ignore TLS errors"),	       TRUE,  NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disablepasswordstoring",    N_("Forget passwords after use"),    TRUE,  NULL, NULL },
-#ifdef DEBUG
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "enable-webinspector",	    N_("Turn on Web Inspector"),	       TRUE,  NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "enable-java",		    N_("Turn on Java support"),	       TRUE,  NULL, NULL						 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "enable-smooth-scrolling",   N_("Turn on smooth scrolling"),    TRUE,  NULL, NULL						 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "enable-spatial-navigation", N_("Turn on spatial navigation"),  TRUE,  NULL, NULL						 },
+#if WEBKIT_CHECK_VERSION(2, 32, 0)
+#else
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "enable-plugins",	    N_("Turn on plugin support"),      TRUE,  NULL, NULL						 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "enable-webgl",		    N_("Turn on WebGL support"),       TRUE,  NULL, NULL						 },
 #endif
-	{ REMMINA_PROTOCOL_SETTING_TYPE_END,   NULL,			    NULL,			       FALSE, NULL, NULL }
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "enable-webaudio",	    N_("Turn on HTML5 audio support"), TRUE,  NULL, NULL						 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "ignore-tls-errors",	    N_("Ignore TLS errors"),	       TRUE,  NULL, NULL						 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disablepasswordstoring",    N_("Forget passwords after use"),  TRUE,  NULL, NULL						 },
+#ifdef DEBUG
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "enable-webinspector",	    N_("Turn on Web Inspector"),       TRUE,  NULL, NULL						 },
+#endif
+	{ REMMINA_PROTOCOL_SETTING_TYPE_END,   NULL,			    NULL,			       FALSE, NULL, NULL						 }
 };
 
 /* Array for available features.
