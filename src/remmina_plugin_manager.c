@@ -67,6 +67,7 @@ static GHashTable *encrypted_settings_cache = NULL;
 /* There can be only one secret plugin loaded */
 static RemminaSecretPlugin *remmina_secret_plugin = NULL;
 
+// TRANSLATORS: "Language Wrapper" is a wrapper for plugins written in other programmin languages (Python in this context)
 static const gchar *remmina_plugin_type_name[] =
 { N_("Protocol"), N_("Entry"), N_("File"), N_("Tool"), N_("Preference"), N_("Secret"), N_("Language Wrapper"), NULL };
 
