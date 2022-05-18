@@ -1,3 +1,23 @@
+## v1.4.26
+[full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.25...v1.4.26)
+
+* Fix trial for 2577: Closing a VNC connection makes Remmina close all other... [!2391](https://gitlab.com/Remmina/Remmina/merge_requests/2391) *@PHWR*
+* Handle after-auth connection errors in VNC properly [!2390](https://gitlab.com/Remmina/Remmina/merge_requests/2390) *@lorenz*
+* Using Remmina from command-line for kiosked servers [!2392](https://gitlab.com/Remmina/Remmina/merge_requests/2392) *@marco.fortina*
+* Manual page refactoring fixes #2056 [!2393](https://gitlab.com/Remmina/Remmina/merge_requests/2393) *@antenore*
+* Add mutex to protect RDP clipboard->srv_data. Fixes #2666 [!2395](https://gitlab.com/Remmina/Remmina/merge_requests/2395) *@giox069*
+* SSH Forward X11 [!2397](https://gitlab.com/Remmina/Remmina/merge_requests/2397) *@antenore*
+* Add '--no-tray-icon' command-line option [!2398](https://gitlab.com/Remmina/Remmina/merge_requests/2398) *@marco.fortina*
+* Python plugins [!2399](https://gitlab.com/Remmina/Remmina/merge_requests/2399) *@ToolsDevler*
+* Apply plugin api changes from Python plugin change [!2400](https://gitlab.com/Remmina/Remmina/merge_requests/2400) *@ToolsDevler*
+* Extract python plugin [!2401](https://gitlab.com/Remmina/Remmina/merge_requests/2401) *@ToolsDevler*
+* Make FreeRDPs TLS Security Level setting accessible in the advanced settings view [!2402](https://gitlab.com/Remmina/Remmina/merge_requests/2402) *@antenore*
+* Disable grabs for SSH and SFTP, #closes #2728 [!2403](https://gitlab.com/Remmina/Remmina/merge_requests/2403) *@antenore*
+* Cannot disable shared folder [!2404](https://gitlab.com/Remmina/Remmina/merge_requests/2404) *@antenore*
+* Use PyInitializeEx in order to skip signal handler registration [!2405](https://gitlab.com/Remmina/Remmina/merge_requests/2405) *@ToolsDevler*
+* Ignore add new connection button in kiosk mode [!2406](https://gitlab.com/Remmina/Remmina/merge_requests/2406) *@antenore*
+* WWW plugin refactoring [!2407](https://gitlab.com/Remmina/Remmina/merge_requests/2407) *@antenore*
+
 ## v1.4.25
 [full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.24...v1.4.25)
 

@@ -35,7 +35,7 @@ cmake_policy(SET CMP0048 NEW)
 
 project(
   Remmina
-  VERSION 1.4.25
+  VERSION 1.4.26
   DESCRIPTION "The Gtk Remote Desktop Client"
   LANGUAGES C CXX
 )
