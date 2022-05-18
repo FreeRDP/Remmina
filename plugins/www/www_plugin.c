@@ -356,7 +356,7 @@ static void remmina_www_web_view_js_finished(GObject *object, GAsyncResult *resu
 
 	js_result = webkit_web_view_run_javascript_finish(WEBKIT_WEB_VIEW(object), result, &error);
 	if (!js_result) {
-		g_warning("Could not run JavaScript code: %s", error->message);
+		REMMINA_PLUGIN_DEBUG("Could not run JavaScript code: %s", error->message);
 		g_error_free(error);
 		return;
 	}
@@ -370,13 +370,13 @@ static void remmina_www_web_view_js_finished(GObject *object, GAsyncResult *resu
 		str_value = jsc_value_to_string(value);
 		exception = jsc_context_get_exception(jsc_value_get_context(value));
 		if (exception)
-			g_warning("Could not run JavaScript code: %s", jsc_exception_get_message(exception));
+			REMMINA_PLUGIN_DEBUG("Could not run JavaScript code: %s", jsc_exception_get_message(exception));
 		else
 			g_print("Script result: %s\n", str_value);
 		g_free(str_value);
 	} else {
 		str_value = jsc_value_to_string(value);
-		g_warning("Received something other than a string from JavaScript: %s", str_value);
+		REMMINA_PLUGIN_DEBUG("Received something other than a string from JavaScript: %s", str_value);
 		g_free(str_value);
 	}
 #endif
@@ -456,7 +456,7 @@ static void remmina_plugin_www_init(RemminaProtocolWidget *gp)
 		gpdata->url = g_strdup(remmina_plugin_service->file_get_string(remminafile, "server"));
 	else
 		gpdata->url = "https://remmina.org";
-	g_info("URL is set to %s", gpdata->url);
+	REMMINA_PLUGIN_DEBUG("URL is set to %s", gpdata->url);
 
 	gpdata->settings = webkit_settings_new();
 	gpdata->context = webkit_web_context_new_with_website_data_manager(gpdata->data_mgr);
@@ -482,35 +482,35 @@ static void remmina_plugin_www_init(RemminaProtocolWidget *gp)
 	if (remmina_plugin_service->file_get_string(remminafile, "user-agent")) {
 		gchar *useragent = g_strdup(remmina_plugin_service->file_get_string(remminafile, "user-agent"));
 		webkit_settings_set_user_agent(gpdata->settings, useragent);
-		g_info("User Agent set to: %s", useragent);
+		REMMINA_PLUGIN_DEBUG("User Agent set to: %s", useragent);
 		g_free(useragent);
 	}
 	/* enable-java */
 	if (remmina_plugin_service->file_get_int(remminafile, "enable-java", FALSE)) {
 		webkit_settings_set_enable_java(gpdata->settings, TRUE);
-		g_info("Enable Java");
+		REMMINA_PLUGIN_DEBUG("Enable Java");
 	}
 	/* enable-smooth-scrolling */
 	if (remmina_plugin_service->file_get_int(remminafile, "enable-smooth-scrolling", FALSE)) {
 		webkit_settings_set_enable_smooth_scrolling(gpdata->settings, TRUE);
-		g_info("enable-smooth-scrolling enabled");
+		REMMINA_PLUGIN_DEBUG("enable-smooth-scrolling enabled");
 	}
 	/* enable-spatial-navigation */
 	if (remmina_plugin_service->file_get_int(remminafile, "enable-spatial-navigation", FALSE)) {
 		webkit_settings_set_enable_spatial_navigation(gpdata->settings, TRUE);
-		g_info("enable-spatial-navigation enabled");
+		REMMINA_PLUGIN_DEBUG("enable-spatial-navigation enabled");
 	}
 	/* enable-webaudio */
 	if (remmina_plugin_service->file_get_int(remminafile, "enable-webaudio", FALSE)) {
 		webkit_settings_set_enable_webaudio(gpdata->settings, TRUE);
-		g_info("enable-webaudio enabled");
+		REMMINA_PLUGIN_DEBUG("enable-webaudio enabled");
 	}
 	/* enable-plugins */
 #if WEBKIT_CHECK_VERSION(2, 32, 0)
 #else
 	if (remmina_plugin_service->file_get_int(remminafile, "enable-plugins", FALSE)) {
 		webkit_settings_set_enable_plugins(gpdata->settings, TRUE);
-		g_info("Enable plugins");
+		REMMINA_PLUGIN_DEBUG("Enable plugins");
 	}
 #endif
 	/* enable-webgl */
@@ -519,7 +519,7 @@ static void remmina_plugin_www_init(RemminaProtocolWidget *gp)
 	if (remmina_plugin_service->file_get_int(remminafile, "enable-webgl", FALSE)) {
 		webkit_settings_set_enable_webgl(gpdata->settings, TRUE);
 		webkit_settings_set_enable_accelerated_2d_canvas(gpdata->settings, TRUE);
-		g_info("enable-webgl enabled");
+		REMMINA_PLUGIN_DEBUG("enable-webgl enabled");
 	}
 #endif
 
@@ -531,7 +531,7 @@ static void remmina_plugin_www_init(RemminaProtocolWidget *gp)
 		webkit_web_context_set_tls_errors_policy(
 			gpdata->context, WEBKIT_TLS_ERRORS_POLICY_IGNORE);
 #endif
-		g_info("Ignore TLS errors");
+		REMMINA_PLUGIN_DEBUG("Ignore TLS errors");
 	}
 	if (remmina_plugin_service->file_get_string(remminafile, "proxy-url")) {
 		gchar *proxyurl = g_strdup(remmina_plugin_service->file_get_string(remminafile, "proxy-url"));
@@ -577,7 +577,7 @@ static gboolean remmina_plugin_www_on_auth(WebKitWebView *webview, WebKitAuthent
 
 	gpdata = (RemminaPluginWWWData *)g_object_get_data(G_OBJECT(gp), "plugin-data");
 
-	g_info("Authenticate");
+	REMMINA_PLUGIN_DEBUG("Authenticate");
 
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
@@ -789,7 +789,7 @@ static gboolean remmina_plugin_www_open_connection(RemminaProtocolWidget *gp)
 	webkit_web_view_load_uri(gpdata->webview, gpdata->url);
 #ifdef DEBUG
 	if (remmina_plugin_service->file_get_int(remminafile, "enable-webinspector", FALSE)) {
-		g_info("WebInspector enabled");
+		REMMINA_PLUGIN_DEBUG("WebInspector enabled");
 		WebKitWebInspector *inspector = webkit_web_view_get_inspector(WEBKIT_WEB_VIEW(gpdata->webview));
 		webkit_web_inspector_attach(inspector);
 		webkit_web_inspector_show(WEBKIT_WEB_INSPECTOR(inspector));
@@ -824,7 +824,7 @@ static void remmina_plugin_www_save_snapshot(GObject *object, GAsyncResult *resu
 
 	surface = webkit_web_view_get_snapshot_finish(WEBKIT_WEB_VIEW(webview), result, &err);
 	if (err)
-		g_warning("An error happened generating the snapshot: %s\n", err->message);
+		REMMINA_PLUGIN_DEBUG("An error happened generating the snapshot: %s\n", err->message);
 	//buffer = cairo_image_surface_get_data (surface);
 	width = cairo_image_surface_get_width(surface);
 	height = cairo_image_surface_get_height(surface);

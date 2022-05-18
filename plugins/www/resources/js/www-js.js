@@ -90,6 +90,7 @@ function setLoginFields () {
       }
     })
   } else {
+      console.debug('We already have a password')
 
   }
 }
