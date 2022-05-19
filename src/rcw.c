@@ -1268,6 +1268,7 @@ static void rcw_migrate(RemminaConnectionWindow *from, RemminaConnectionWindow *
 			frompage = gtk_notebook_get_nth_page(from_notebook, i);
 			cnnobj = g_object_get_data(G_OBJECT(frompage), "cnnobj");
 			cnnobj->scrolled_container = rco_create_scrolled_container(cnnobj, to->priv->view_mode);
+			g_signal_connect(G_OBJECT(cnnobj->scrolled_container), "destroy", gtk_widget_destroyed, (gpointer)&cnnobj->scrolled_container);
 			newpage = rcw_append_new_page(to, cnnobj);
 			nb_migrate_page_content(frompage, newpage);
 		}
@@ -3411,7 +3412,7 @@ void rco_closewin(RemminaProtocolWidget *gp)
 		}
 	}
 	if (cnnobj) {
-		if (REMMINA_IS_SCROLLED_VIEWPORT(cnnobj->scrolled_container)) {
+		if (cnnobj->scrolled_container && REMMINA_IS_SCROLLED_VIEWPORT(cnnobj->scrolled_container)) {
 			REMMINA_DEBUG("deleting motion");
 			remmina_scrolled_viewport_remove_motion(REMMINA_SCROLLED_VIEWPORT(cnnobj->scrolled_container));
 		}
@@ -4483,6 +4484,7 @@ GtkWidget *rcw_open_from_file_full(RemminaFile *remminafile, GCallback disconnec
 
 	/* Create the scrolled container */
 	cnnobj->scrolled_container = rco_create_scrolled_container(cnnobj, view_mode);
+	g_signal_connect(G_OBJECT(cnnobj->scrolled_container), "destroy", gtk_widget_destroyed, (gpointer)&cnnobj->scrolled_container);
 
 	gtk_container_add(GTK_CONTAINER(cnnobj->scrolled_container), cnnobj->viewport);
 

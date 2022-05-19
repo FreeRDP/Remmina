@@ -153,6 +153,8 @@ if(CMAKE_COMPILER_IS_GNUCC)
 
   if(CMAKE_BUILD_TYPE STREQUAL "Debug")
     add_definitions(-DDEBUG)
+    set(CMAKE_CXX_FLAGS_DEBUG "-O0")
+    set(CMAKE_C_FLAGS_DEBUG "-O0")
     check_c_compiler_flag(-Wunused-result Wunused-result)
     if(Wunused-result)
       set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wunused-result")

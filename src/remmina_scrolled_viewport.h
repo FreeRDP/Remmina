@@ -35,6 +35,8 @@
 
 #pragma once
 
+#include <gtk/gtk.h>
+
 G_BEGIN_DECLS
 
 #define REMMINA_TYPE_SCROLLED_VIEWPORT \
