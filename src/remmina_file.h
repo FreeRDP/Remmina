@@ -90,7 +90,6 @@ const gchar *remmina_file_get_statefile(RemminaFile *remminafile);
 RemminaFile *remmina_file_load(const gchar *filename);
 /* Settings get/set functions */
 void remmina_file_set_string(RemminaFile *remminafile, const gchar *setting, const gchar *value);
-void remmina_file_set_string_ref(RemminaFile *remminafile, const gchar *setting, gchar *value);
 const gchar *remmina_file_get_string(RemminaFile *remminafile, const gchar *setting);
 gchar *remmina_file_get_secret(RemminaFile *remminafile, const gchar *setting);
 gchar *remmina_file_format_properties(RemminaFile *remminafile, const gchar *setting);
