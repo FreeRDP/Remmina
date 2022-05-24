@@ -214,13 +214,13 @@ remmina_file_copy(const gchar *filename)
 {
 	TRACE_CALL(__func__);
 	RemminaFile *remminafile;
+	gchar *buf;
 
 	remminafile = remmina_file_load(filename);
-	remmina_file_set_string(remminafile,
-				"name",
-				g_strdup_printf(
-					"COPY %s",
-					remmina_file_get_string(remminafile, "name")));
+	buf = g_strdup_printf( "COPY %s",
+			remmina_file_get_string(remminafile, "name"));
+	remmina_file_set_string(remminafile, "name", buf);
+	g_free(buf);
 
 	if (remminafile)
 		remmina_file_generate_filename(remminafile);
@@ -427,7 +427,10 @@ remmina_file_load(const gchar *filename)
 				g_hash_table_insert(remminafile->spsettings, g_strdup(key), NULL);
 				g_free(sec);
 			} else {
-				remmina_file_set_string_ref(remminafile, key, remmina_crypt_decrypt(s));
+				gchar *decrypted;
+				decrypted = remmina_crypt_decrypt(s);
+				remmina_file_set_string(remminafile, key, decrypted);
+				g_free(decrypted);
 			}
 			g_free(s), s = NULL;
 		} else {
@@ -435,15 +438,16 @@ remmina_file_load(const gchar *filename)
 			if (strcmp(key, "resolution") == 0) {
 				gchar *resolution_str = g_key_file_get_string(gkeyfile, KEYFILE_GROUP_REMMINA, key, NULL);
 				if (remmina_public_split_resolution_string(resolution_str, &w, &h)) {
-					remmina_file_set_string_ref(remminafile, "resolution_width", g_strdup_printf("%i", w));
-					remmina_file_set_string_ref(remminafile, "resolution_height", g_strdup_printf("%i", h));
+					gchar *buf;
+					buf = g_strdup_printf("%i", w); remmina_file_set_string(remminafile, "resolution_width", buf); g_free(buf);
+					buf = g_strdup_printf("%i", h); remmina_file_set_string(remminafile, "resolution_height", buf); g_free(buf);
 				} else {
-					remmina_file_set_string_ref(remminafile, "resolution_width", NULL);
-					remmina_file_set_string_ref(remminafile, "resolution_height", NULL);
+					remmina_file_set_string(remminafile, "resolution_width", NULL);
+					remmina_file_set_string(remminafile, "resolution_height", NULL);
 				}
 				g_free(resolution_str);
 			} else {
-				remmina_file_set_string_ref(remminafile, key,
+				remmina_file_set_string(remminafile, key,
 						g_key_file_get_string(gkeyfile, KEYFILE_GROUP_REMMINA, key, NULL));
 			}
 		}
@@ -459,12 +463,20 @@ remmina_file_load(const gchar *filename)
 void remmina_file_set_string(RemminaFile *remminafile, const gchar *setting, const gchar *value)
 {
 	TRACE_CALL(__func__);
-	remmina_file_set_string_ref(remminafile, setting, g_strdup(value));
-}
 
-void remmina_file_set_string_ref(RemminaFile *remminafile, const gchar *setting, gchar *value)
-{
-	TRACE_CALL(__func__);
+	if (!remmina_masterthread_exec_is_main_thread()) {
+		/* Allow the execution of this function from a non main thread
+		 * (plugins needs it to have user credentials)*/
+		RemminaMTExecData *d;
+		d = (RemminaMTExecData *)g_malloc(sizeof(RemminaMTExecData));
+		d->func = FUNC_FILE_SET_STRING;
+		d->p.file_set_string.remminafile = remminafile;
+		d->p.file_set_string.setting = setting;
+		d->p.file_set_string.value = value;
+		remmina_masterthread_exec_and_wait(d);
+		g_free(d);
+		return;
+	}
 
 	if (value) {
 		/* We refuse to accept to set the "resolution" field */
@@ -475,7 +487,7 @@ void remmina_file_set_string_ref(RemminaFile *remminafile, const gchar *setting,
 			remmina_main_show_warning_dialog(message);
 			return;
 		}
-		g_hash_table_insert(remminafile->settings, g_strdup(setting), value);
+		g_hash_table_insert(remminafile->settings, g_strdup(setting), g_strdup(value));
 	} else {
 		g_hash_table_insert(remminafile->settings, g_strdup(setting), g_strdup(""));
 	}

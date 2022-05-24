@@ -1259,6 +1259,7 @@ static gboolean remmina_main_quickconnect(void)
 	remmina_file_set_string(remminafile, "protocol", qcp);
 	g_free(server);
 	g_free(server_trimmed);
+	g_free(qcp);
 
 	rcw_open_from_file(remminafile);
 
