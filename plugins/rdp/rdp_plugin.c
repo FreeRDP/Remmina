@@ -1906,12 +1906,14 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 
 	cs = remmina_plugin_service->file_get_string(remminafile, "sharefolder");
 	if (cs != NULL && cs[0] != '\0') {
-		REMMINA_PLUGIN_DEBUG("[Deprecated->migrating] - Old sharefolder %s to \"drive \"", cs);
+		gchar *ccs = g_strdup(cs);
+		REMMINA_PLUGIN_DEBUG("[Deprecated->migrating] - Old sharefolder %s to \"drive \"", ccs);
 		if (!remmina_plugin_service->file_get_string(remminafile, "drive")) {
-			remmina_plugin_service->file_set_string(remminafile, "drive", g_strdup(cs));
+			remmina_plugin_service->file_set_string(remminafile, "drive", g_strdup(ccs));
 			remmina_plugin_service->file_set_string(remminafile, "sharefolder", NULL);
-			REMMINA_PLUGIN_DEBUG("[Deprecated->migrated] - drive set to %s", g_strdup(cs));
+			REMMINA_PLUGIN_DEBUG("[Deprecated->migrated] - drive set to %s", g_strdup(ccs));
 		}
+		g_free(ccs);
 		//CLPARAM **p;
 		//size_t count;
 		//p = remmina_rdp_CommandLineParseCommaSeparatedValuesEx("drive", g_strdup(cs), &count);
