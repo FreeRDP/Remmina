@@ -2,7 +2,7 @@
 # Copyright © 2012 Rosetta Contributors and Canonical Ltd 2012
 # This file is distributed under the same license as the remmina package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
-# Adolfo Jayme Barrientos <fitojb@ubuntu.com>, 2019, 2020, 2021.
+# Adolfo Jayme Barrientos <fitojb@ubuntu.com>, 2019, 2020, 2021, 2022.
 # Aroa Taha <Naturameuocat@protonmail.com>, 2019, 2021.
 # Allan Nordhøy <epost@anotheragency.no>, 2019, 2020, 2021.
 # anonymous <noreply@weblate.org>, 2019.
@@ -20,8 +20,8 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2022-05-24 19:09+0000\n"
-"PO-Revision-Date: 2021-12-17 08:44+0000\n"
-"Last-Translator: Juan de la Fuente <jmdelafuente22@gmail.com>\n"
+"PO-Revision-Date: 2022-05-27 15:14+0000\n"
+"Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/remmina/remmina/"
 "es/>\n"
 "Language: es\n"
@@ -29,7 +29,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.10\n"
+"X-Generator: Weblate 4.13-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:354
@@ -107,10 +107,8 @@ msgid "SFTP - Secure File Transfer"
 msgstr "SFTP - Transferencia segura de archivos"
 
 #: src/remmina_log.c:130
-#, fuzzy
-#| msgid "Open the Remmina main window"
 msgid "Remmina debugging window"
-msgstr "Abrir la ventana principal de Remmina"
+msgstr "Ventana de depuración de Remmina"
 
 #: src/remmina_log.c:134
 #, fuzzy
@@ -127,6 +125,13 @@ msgid ""
 "There is more info about debugging Remmina on https://gitlab.com/Remmina/"
 "Remmina/-/wikis/Usage/Remmina-debugging\n"
 msgstr ""
+"Esta ventana puede ayudarle a encontrar problemas de conexión.\n"
+"Puede detener y comenzar el registro en cualquier momento a través del "
+"interruptor ⏽/⭘.\n"
+"El botón de estadísticas (Ctrl + T) puede serle útil para recabar "
+"información del sistema que puede compartir al informar de un defecto.\n"
+"Hallará más información sobre la depuración en Remmina en https://gitlab.com/"
+"Remmina/Remmina/-/wikis/Usage/Remmina-debugging\n"
 
 #: src/remmina_plugin_manager.c:72 src/remmina_file_editor.c:1973
 msgid "Protocol"
@@ -154,7 +159,7 @@ msgstr "Secreto"
 
 #: src/remmina_plugin_manager.c:72
 msgid "Language Wrapper"
-msgstr ""
+msgstr "Contenedor de lenguaje"
 
 #: src/remmina_plugin_manager.c:524 data/ui/remmina_main.glade:305
 msgid "Plugins"
@@ -477,6 +482,13 @@ msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 msgstr ""
+"Los complementos que dependen de GtkSocket no se pueden ejecutar en sesiones "
+"de Wayland.\n"
+"Para obtener más información y una solución alternativa posible, visite el "
+"wiki de Remmina (en inglés) en:\n"
+"\n"
+"https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
+"available-in-a-Wayland-session"
 
 #: src/rcw.c:4568
 #, fuzzy
@@ -1889,16 +1901,12 @@ msgid "User password"
 msgstr "Contraseña de usuario"
 
 #: src/remmina_ssh_plugin.c:1508
-#, fuzzy
-#| msgid "Pre-command"
 msgid "Opening command"
-msgstr "Orden previa"
+msgstr "Orden de apertura"
 
 #: src/remmina_ssh_plugin.c:1509
-#, fuzzy
-#| msgid "Start-up program"
 msgid "Start-up background program"
-msgstr "Programa de inicio"
+msgstr "Programa en segundo plano de inicio"
 
 #: src/remmina_ssh_plugin.c:1514
 msgid ""
@@ -1912,7 +1920,7 @@ msgid ""
 "  • %g is substituted with Remmina profile group name\n"
 "  • %d is substituted with local date and time in ISO 8601 format\n"
 msgstr ""
-"El archivo puede usar las siguientes  marcas\n"
+"El archivo puede emplear los sustitutivos siguientes\n"
 "\n"
 "• %h se sustituye por el nombre del servidor\n"
 "• %t se sustituye por el nombre del servidor SSH\n"
@@ -1920,7 +1928,7 @@ msgstr ""
 "• %U se sustituye por el nombre de usuario SSH\n"
 "• %p se sustituye por el nombre de perfil de Remmina\n"
 "• %g se sustituye por el nombre de grupo de perfiles de Remmina\n"
-"• %d se sustituye por la fecha local en formato iso8601\n"
+"• %d se sustituye por la fecha local en formato ISO 8601\n"
 
 #: src/remmina_ssh_plugin.c:1536
 msgid "Terminal colour scheme"
@@ -1948,7 +1956,7 @@ msgstr "Carpeta para la sesión SSH"
 
 #: src/remmina_ssh_plugin.c:1542
 msgid "Full path of an existing folder"
-msgstr ""
+msgstr "Ruta completa en una carpeta existente"
 
 #: src/remmina_ssh_plugin.c:1543
 msgid "Filename for SSH session log"
@@ -2396,27 +2404,27 @@ msgstr "Predeterminados"
 
 #: plugins/rdp/rdp_plugin.c:2702
 msgid "0 Windows 7 compatible"
-msgstr ""
+msgstr "0 Compatible con Windows 7"
 
 #: plugins/rdp/rdp_plugin.c:2703
 msgid "1"
-msgstr ""
+msgstr "1"
 
 #: plugins/rdp/rdp_plugin.c:2704
 msgid "2"
-msgstr ""
+msgstr "2"
 
 #: plugins/rdp/rdp_plugin.c:2705
 msgid "3"
-msgstr ""
+msgstr "3"
 
 #: plugins/rdp/rdp_plugin.c:2706
 msgid "4"
-msgstr ""
+msgstr "4"
 
 #: plugins/rdp/rdp_plugin.c:2707
 msgid "5"
-msgstr ""
+msgstr "5"
 
 #: plugins/rdp/rdp_plugin.c:2712
 msgid "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 and newer)"
