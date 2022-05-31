@@ -35,6 +35,9 @@
 
 #pragma once
 
+#include <gtk/gtk.h>
+#include "remmina_applet_menu_item.h"
+
 G_BEGIN_DECLS
 
 #define REMMINA_TYPE_APPLET_MENU            (remmina_applet_menu_get_type())

@@ -35,7 +35,6 @@
  */
 
 #include "config.h"
-#include <glib.h>
 #ifdef HAVE_LIBGCRYPT
 #include <gcrypt.h>
 #endif

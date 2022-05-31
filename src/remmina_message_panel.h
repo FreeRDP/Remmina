@@ -36,6 +36,8 @@
 
 #pragma once
 
+#include <gtk/gtk.h>
+
 G_BEGIN_DECLS
 
 #define REMMINA_TYPE_MESSAGE_PANEL             (remmina_message_panel_get_type())

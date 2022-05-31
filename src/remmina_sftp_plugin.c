@@ -45,7 +45,6 @@
 #include "remmina_sftp_client.h"
 #include "remmina_plugin_manager.h"
 #include "remmina_ssh.h"
-#include "remmina_protocol_widget.h"
 #include "remmina_sftp_plugin.h"
 
 #define   REMMINA_PLUGIN_SFTP_FEATURE_PREF_SHOW_HIDDEN     1

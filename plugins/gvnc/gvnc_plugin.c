@@ -77,7 +77,6 @@ enum {
 
 
 static RemminaPluginService *remmina_plugin_service = NULL;
-#define REMMINA_PLUGIN_DEBUG(fmt, ...) remmina_plugin_service->_remmina_debug(__func__, fmt, ## __VA_ARGS__)
 
 gchar* str_replace(const gchar *string, const gchar *search, const gchar *replacement)
 {

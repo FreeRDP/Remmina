@@ -34,6 +34,8 @@
 
 #pragma once
 
+#include <glib.h>
+
 G_BEGIN_DECLS
 
 #include "json-glib/json-glib.h"

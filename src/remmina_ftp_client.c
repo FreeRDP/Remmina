@@ -37,14 +37,12 @@
 #define _FILE_OFFSET_BITS 64
 
 #include <gdk/gdk.h>
-#include <gtk/gtk.h>
 #include <glib/gi18n.h>
 #include <glib/gstdio.h>
 #include "config.h"
 #include "remmina_public.h"
 #include "remmina_pref.h"
 #include "remmina_marshals.h"
-#include "remmina_file.h"
 #include "remmina_ftp_client.h"
 #include "remmina_masterthread_exec.h"
 #include "remmina/remmina_trace_calls.h"

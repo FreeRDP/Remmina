@@ -42,8 +42,6 @@
 #include <gmodule.h>
 #include <stdlib.h>
 
-
-
 #include "remmina_chat_window.h"
 #include "remmina_masterthread_exec.h"
 #include "remmina_ext_exec.h"

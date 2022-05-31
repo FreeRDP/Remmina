@@ -35,6 +35,8 @@
 
 #pragma once
 
+#include <gtk/gtk.h>
+
 G_BEGIN_DECLS
 
 void remmina_icon_init(void);

@@ -36,6 +36,7 @@
 
 #pragma once
 
+#include <gtk/gtk.h>
 #include "remmina_file.h"
 #include "remmina_message_panel.h"
 

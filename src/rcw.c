@@ -41,7 +41,6 @@
 #include <gdk/gdk.h>
 #include <gdk/gdkkeysyms.h>
 #include <glib/gi18n.h>
-#include <gtk/gtk.h>
 #include <stdlib.h>
 
 #include "remmina.h"

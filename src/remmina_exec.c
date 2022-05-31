@@ -36,7 +36,6 @@
 
 #include "config.h"
 #include "buildflags.h"
-#include <gtk/gtk.h>
 #include <glib/gi18n.h>
 #include <stdlib.h>
 #include "remmina.h"

@@ -34,7 +34,6 @@
  *
  */
 
-#include "common/remmina_plugin.h"
 #include <gmodule.h>
 #include "vnc_plugin.h"
 #include <rfb/rfbclient.h>

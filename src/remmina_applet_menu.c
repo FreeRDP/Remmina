@@ -36,12 +36,10 @@
 
 #include "config.h"
 
-#include <gtk/gtk.h>
 #include <glib/gi18n.h>
 #include <string.h>
 
 #include "remmina_public.h"
-#include "remmina_applet_menu_item.h"
 #include "remmina_applet_menu.h"
 #include "remmina_file_manager.h"
 #include "remmina_pref.h"

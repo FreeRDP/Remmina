@@ -34,6 +34,8 @@
 
 #pragma once
 
+#include <glib.h>
+
 typedef struct {
 	GSourceFunc	cb_func_ptr;
 	gpointer	cb_func_data;
