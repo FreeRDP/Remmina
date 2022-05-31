@@ -20,7 +20,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2022-05-24 19:09+0000\n"
-"PO-Revision-Date: 2022-05-27 20:16+0000\n"
+"PO-Revision-Date: 2022-05-31 16:15+0000\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/remmina/remmina/"
 "es/>\n"
@@ -638,6 +638,8 @@ msgid ""
 "Enable extra hardening (disable closing confirmation, disable unsafe "
 "shortcut keys, hide tabs, hide search bar)"
 msgstr ""
+"Activar robustecimiento adicional (desactiva la confirmación de cierre y los "
+"atajos de teclado no seguros y oculta las pestañas y la barra de búsqueda)"
 
 #: src/remmina.c:133
 msgid "Disable tray icon"
@@ -1523,10 +1525,8 @@ msgid "Auto-start this profile"
 msgstr "Iniciar automáticamente este perfil"
 
 #: src/remmina_file_editor.c:1108
-#, fuzzy
-#| msgid "New connection profile"
 msgid "Connection profile security"
-msgstr "Perfil de conexión nuevo"
+msgstr "Seguridad del perfil de conexión"
 
 #: src/remmina_file_editor.c:1111
 msgid "Require password to connect or edit the profile"
@@ -1926,7 +1926,7 @@ msgstr "Campana audible de terminal"
 
 #: src/remmina_ssh_plugin.c:1547
 msgid "SSH X11 Forwarding"
-msgstr ""
+msgstr "Redireccionamiento de X11 para SSH"
 
 #: src/remmina_ssh_plugin.c:1548
 msgid "SSH compression"
@@ -3406,12 +3406,13 @@ msgstr ""
 "Internet."
 
 #: plugins/x2go/x2go_plugin.c:975
-#, fuzzy, c-format
-#| msgid "Could not start SSH session. %s"
+#, c-format
 msgid ""
 "Could not start PyHoca-CLI:\n"
 "%s"
-msgstr "No se pudo iniciar PyHoca-CLI (%i): '%s'"
+msgstr ""
+"No se pudo iniciar PyHoca-CLI:\n"
+"%s"
 
 #: plugins/x2go/x2go_plugin.c:986
 #, fuzzy, c-format
@@ -3691,12 +3692,10 @@ msgid "RemminaProtocolWidget* gp is 'NULL'!"
 msgstr "¡RemminaProtocolWidget* gp es 'NULL'!"
 
 #: plugins/x2go/x2go_plugin.c:2926
-#, fuzzy, c-format
-#| msgid ""
-#| "The protocol “%s” is unavailable because GtkSocket only works under X.Org."
+#, c-format
 msgid "The %s protocol is unavailable because GtkSocket only works under X.org"
 msgstr ""
-"El protocolo %s no está disponible porque GtkSocket sólo funciona bajo X.org"
+"El protocolo %s no está disponible porque GtkSocket solo funciona en X.org"
 
 #: plugins/x2go/x2go_plugin.c:2935
 #, fuzzy
@@ -3750,14 +3749,14 @@ msgid "Parameters 'key' or 'value' are 'NULL'!"
 msgstr "¡Los parámetros 'key' o 'value' son 'NULL'!"
 
 #: plugins/x2go/x2go_plugin.c:3069
-#, fuzzy, c-format
+#, c-format
 msgid "Allowed values are %s."
 msgstr "Los valores permitidos son %s."
 
 #: plugins/x2go/x2go_plugin.c:3071
-#, fuzzy, c-format
+#, c-format
 msgid "The only allowed value is '%s'."
-msgstr "El único valor permitido es '%s'."
+msgstr "El único valor permitido es «%s»."
 
 #: plugins/x2go/x2go_plugin.c:3118
 msgid "The lower limit is not a valid integer!"
@@ -3817,14 +3816,10 @@ msgid "Which command should be executed after creating the X2Go session?"
 msgstr "¿Qué comando debe ejecutarse después de crear la sesión de X2Go?"
 
 #: plugins/x2go/x2go_plugin.c:3232
-#, fuzzy
-#| msgid "Keyboard layout"
 msgid "Keyboard Layout (auto)"
-msgstr "Disposición del teclado (automático)"
+msgstr "Disposición de teclado (automática)"
 
 #: plugins/x2go/x2go_plugin.c:3233
-#, fuzzy
-#| msgid "Keyboard layout"
 msgid "Keyboard type (auto)"
 msgstr "Tipo de teclado (automático)"
 
@@ -3840,8 +3835,6 @@ msgid "The sound system of the X2Go server (default: 'pulse')."
 msgstr "El sistema de sonido del servidor X2Go (por defecto: 'pulse')."
 
 #: plugins/x2go/x2go_plugin.c:3239
-#, fuzzy
-#| msgid "USB redirection error"
 msgid "Clipboard direction"
 msgstr "Dirección del portapapeles"
 
@@ -3948,8 +3941,6 @@ msgid "Enable GTK-VNC debug"
 msgstr "Activar la depuración de GTK-VNC"
 
 #: plugins/gvnc/gvnc_plugin.c:871
-#, fuzzy
-#| msgid "Per connection"
 msgid "Shared connection"
 msgstr "Conexión compartida"
 
@@ -4616,7 +4607,7 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:495
 msgid "Ask consent to close last window"
-msgstr ""
+msgstr "Pedir confirmación para cerrar la última ventana"
 
 #: data/ui/remmina_preferences.glade:529
 msgid "Options"
@@ -4861,7 +4852,7 @@ msgstr "Utilizar autenticación por clave secreta para algunos widgets"
 
 #: data/ui/remmina_preferences.glade:1680
 msgid "Valid for"
-msgstr ""
+msgstr "Válida por"
 
 #: data/ui/remmina_preferences.glade:1691
 msgid "Number of seconds to keep password valid for"
@@ -4891,7 +4882,7 @@ msgstr ""
 #. Creation, editing, copying, and deletions require the primary password
 #: data/ui/remmina_preferences.glade:1727
 msgid "Require to modify"
-msgstr ""
+msgstr "Solicitar para modificar"
 
 #: data/ui/remmina_preferences.glade:1769
 msgid "Encryption"
