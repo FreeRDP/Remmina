@@ -497,7 +497,7 @@ remimna_ssh_cp_to_ch_cb(int fd, int revents, void *userdata)
 		sz = read(fd, buf, sizeof(buf));
 		if (sz > 0) {
 			ret = ssh_channel_write(channel, buf, sz);
-			REMMINA_DEBUG("ssh_channel_write ret: %d sz: %d", ret, sz);
+			//TODO: too verbose REMMINA_DEBUG("ssh_channel_write ret: %d sz: %d", ret, sz);
 		} else if (sz < 0) {
 			// TODO: too verbose REMMINA_WARNING("fd bytes read: %d", sz);
 			return -1;

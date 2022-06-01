@@ -597,7 +597,7 @@ void remmina_protocol_widget_send_clip_strokes(GtkClipboard *clipboard, const gc
 {
 	TRACE_CALL(__func__);
 	RemminaProtocolWidget *gp = REMMINA_PROTOCOL_WIDGET(data);
-	gchar *text = g_strdup(clip_text);
+	gchar *text = g_utf8_normalize(clip_text, -1, G_NORMALIZE_DEFAULT_COMPOSE);
 	guint *keyvals;
 	gint i;
 	GdkKeymap *keymap = gdk_keymap_get_for_display(gdk_display_get_default());
@@ -634,18 +634,22 @@ void remmina_protocol_widget_send_clip_strokes(GtkClipboard *clipboard, const gc
 				REMMINA_DEBUG("Text clipboard after replacement is \'%s\'", text);
 			}
 			gchar *iter = g_strdup(text);
+			REMMINA_DEBUG("Iter: %s", iter),
 			keyvals = (guint *)g_malloc(strlen(text));
 			while (TRUE) {
 				/* Process each character in the keystrokes */
 				character = g_utf8_get_char_validated(iter, -1);
+				REMMINA_DEBUG("Char: U+%04" G_GINT32_FORMAT"X", character);
 				if (character == 0)
 					break;
 				keyval = gdk_unicode_to_keyval(character);
+				REMMINA_DEBUG("Keyval: %u", keyval);
 				/* Replace all the special character with its keyval */
 				for (i = 0; text_replaces[i].replace; i++) {
 					if (character == text_replaces[i].replace[0]) {
 						keys = g_new0(GdkKeymapKey, 1);
 						keyval = text_replaces[i].keyval;
+						REMMINA_DEBUG("Special Keyval: %u", keyval);
 						/* A special character was generated, no keyval lookup needed */
 						character = 0;
 						break;
@@ -655,7 +659,7 @@ void remmina_protocol_widget_send_clip_strokes(GtkClipboard *clipboard, const gc
 				if (character) {
 					/* get keyval without modifications */
 					if (!gdk_keymap_get_entries_for_keyval(keymap, keyval, &keys, &n_keys)) {
-						g_warning("keyval 0x%04x has no keycode!", keyval);
+						REMMINA_WARNING("keyval 0x%04x has no keycode!", keyval);
 						iter = g_utf8_find_next_char(iter, NULL);
 						continue;
 					}
@@ -2111,6 +2115,7 @@ void remmina_protocol_widget_send_keys_signals(GtkWidget *widget, const guint *k
 			event.keyval = keyvals[i];
 			event.hardware_keycode = remmina_public_get_keycode_for_keyval(keymap, event.keyval);
 			event.is_modifier = (int)remmina_public_get_modifier_for_keycode(keymap, event.hardware_keycode);
+			REMMINA_DEBUG("Sending keyval: %u, hardware_keycode: %u", event.keyval, event.hardware_keycode);
 			g_signal_emit_by_name(G_OBJECT(widget), "key-press-event", &event, &result);
 		}
 	}
