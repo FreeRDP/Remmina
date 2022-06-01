@@ -1059,7 +1059,7 @@ gchar *remmina_protocol_widget_start_direct_tunnel(RemminaProtocolWidget *gp, gi
 	const gchar *server;
 	const gchar *ssh_tunnel_server;
 	gchar *ssh_tunnel_host, *srv_host, *dest;
-	gint srv_port, ssh_tunnel_port;
+	gint srv_port, ssh_tunnel_port = 0;
 
 	REMMINA_DEBUG("SSH tunnel initialization…");
 
