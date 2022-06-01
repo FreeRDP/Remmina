@@ -1020,14 +1020,13 @@ static gboolean remmina_protocol_widget_tunnel_destroy(RemminaSSHTunnel *tunnel,
 {
 	TRACE_CALL(__func__);
 	RemminaProtocolWidget *gp = REMMINA_PROTOCOL_WIDGET(data);
-	guint idx;
-	gboolean found;
+	guint idx = 0;
 
 #if GLIB_CHECK_VERSION(2, 54, 0)
-	found = g_ptr_array_find(gp->priv->ssh_tunnels, tunnel, &idx);
+	gboolean found = g_ptr_array_find(gp->priv->ssh_tunnels, tunnel, &idx);
 #else
 	int i;
-	found = FALSE;
+	gboolean found = FALSE;
 	for (i = 0; i < gp->priv->ssh_tunnels->len; i++) {
 		if ((RemminaSSHTunnel *)gp->priv->ssh_tunnels->pdata[i] == tunnel) {
 			found = TRUE;
