@@ -34,6 +34,8 @@
 
 #pragma once
 
+#include <gtk/gtk.h>
+
 G_BEGIN_DECLS
 
 gboolean remmina_sysinfo_is_appindicator_available(void);

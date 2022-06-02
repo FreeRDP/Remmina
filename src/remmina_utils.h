@@ -39,6 +39,8 @@
 
 #pragma once
 
+#include <glib.h>
+
 G_BEGIN_DECLS
 gint remmina_utils_string_find(GString *haystack, gint start, gint end, const gchar *needle);
 gint remmina_utils_string_replace(GString *str, gint pos, gint len, const gchar *replace);

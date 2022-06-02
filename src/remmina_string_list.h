@@ -36,6 +36,8 @@
 
 #pragma once
 
+#include <gtk/gtk.h>
+
 typedef gboolean (*RemminaStringListValidationFunc)(const gchar *new_str, gchar **error);
 
 typedef struct _RemminaStringListPriv {

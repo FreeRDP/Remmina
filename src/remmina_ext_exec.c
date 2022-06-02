@@ -34,14 +34,12 @@
  */
 
 #include <gdk/gdkkeysyms.h>
-#include <gtk/gtk.h>
 #include <glib/gi18n.h>
 #include <glib.h>
 #include <stdlib.h>
 #include <sys/wait.h>
 #include <unistd.h>
 #include "remmina_utils.h"
-#include "remmina_file.h"
 #include "remmina_ext_exec.h"
 #include "remmina_public.h"
 #include "remmina/remmina_trace_calls.h"

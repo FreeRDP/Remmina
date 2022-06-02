@@ -35,6 +35,10 @@
 
 #pragma once
 
+#include <glib.h>
+#include "common/remmina_plugin.h"
+#include "rdp_plugin.h"
+
 G_BEGIN_DECLS
 
 

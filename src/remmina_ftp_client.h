@@ -36,6 +36,9 @@
 
 #pragma once
 
+#include <gtk/gtk.h>
+#include "remmina_file.h"
+
 G_BEGIN_DECLS
 
 #define REMMINA_TYPE_FTP_CLIENT               (remmina_ftp_client_get_type())

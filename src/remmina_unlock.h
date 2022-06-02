@@ -35,6 +35,7 @@
 #pragma once
 
 #include <sodium.h>
+#include <gtk/gtk.h>
 
 #if SODIUM_VERSION_INT >= 90200
 typedef struct _RemminaUnlockDialog {

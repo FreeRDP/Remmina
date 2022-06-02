@@ -35,6 +35,8 @@
 
 #pragma once
 
+#include <glib.h>
+
 G_BEGIN_DECLS
 
 gchar *remmina_crypt_encrypt(const gchar *str);

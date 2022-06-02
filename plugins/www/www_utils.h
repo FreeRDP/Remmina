@@ -37,6 +37,8 @@
 
 #pragma once
 
+#include "common/remmina_plugin.h"
+
 G_BEGIN_DECLS
 gint www_utils_string_find(GString *haystack, gint start, gint end, const gchar *needle);
 gint www_utils_string_replace(GString *str, gint pos, gint len, const gchar *replace);

@@ -252,7 +252,7 @@ remmina_ssh_search_item(ssh_channel channel)
 {
 	TRACE_CALL(__func__);
 
-	REMMINA_DEBUG("search node");
+	// TODO: too verbose REMMINA_DEBUG("search node");
 
 	pthread_mutex_lock(&mutex);
 
@@ -260,7 +260,7 @@ remmina_ssh_search_item(ssh_channel channel)
 	while (current != NULL) {
 		if (current->channel == channel) {
 			pthread_mutex_unlock(&mutex);
-			REMMINA_DEBUG("found node - fd_in: %d - fd_out: %d - protected: %d", current->fd_in, current->fd_out, current->protected);
+			// TODO: too verbose REMMINA_DEBUG("found node - fd_in: %d - fd_out: %d - protected: %d", current->fd_in, current->fd_out, current->protected);
 			return current;
 		} else {
 			current = current->next;
@@ -497,9 +497,9 @@ remimna_ssh_cp_to_ch_cb(int fd, int revents, void *userdata)
 		sz = read(fd, buf, sizeof(buf));
 		if (sz > 0) {
 			ret = ssh_channel_write(channel, buf, sz);
-			REMMINA_DEBUG("ssh_channel_write ret: %d sz: %d", ret, sz);
+			//TODO: too verbose REMMINA_DEBUG("ssh_channel_write ret: %d sz: %d", ret, sz);
 		} else if (sz < 0) {
-			REMMINA_WARNING("fd bytes read: %d", sz);
+			// TODO: too verbose REMMINA_WARNING("fd bytes read: %d", sz);
 			return -1;
 		} else {
 			REMMINA_WARNING("Why the hell am I here?");
@@ -536,7 +536,7 @@ remmina_ssh_cp_to_fd_cb(ssh_session session, ssh_channel channel, void *data, ui
 	gint sz = 0;
 
 	sz = write(fd, data, len);
-	REMMINA_DEBUG("fd bytes written: %d", sz);
+	// TODO: too verbose REMMINA_DEBUG("fd bytes written: %d", sz);
 
 	return sz;
 }

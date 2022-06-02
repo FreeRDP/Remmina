@@ -33,6 +33,7 @@
  */
 
 #pragma once
+#include "common/remmina_plugin.h"
 
 #ifndef __PLUGIN_CONFIG_H
 #define __PLUGIN_CONFIG_H

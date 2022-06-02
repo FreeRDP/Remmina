@@ -34,7 +34,6 @@
  *
  */
 
-#include <gtk/gtk.h>
 #include <glib/gi18n.h>
 #include "remmina_key_chooser.h"
 #include "remmina_public.h"

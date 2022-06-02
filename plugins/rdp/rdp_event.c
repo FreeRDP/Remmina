@@ -36,7 +36,6 @@
  *
  */
 
-#include "rdp_plugin.h"
 #include "rdp_cliprdr.h"
 #include "rdp_event.h"
 #include "rdp_monitor.h"

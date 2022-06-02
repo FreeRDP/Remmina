@@ -36,6 +36,7 @@
 
 #pragma once
 
+#include <glib.h>
 #include <freerdp/freerdp.h>
 #include <freerdp/client/channels.h>
 #include <freerdp/client/rdpei.h>

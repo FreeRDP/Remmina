@@ -34,7 +34,6 @@
  *
  */
 
-#include <gtk/gtk.h>
 #include "config.h"
 #include "remmina_avahi.h"
 #include "remmina/remmina_trace_calls.h"

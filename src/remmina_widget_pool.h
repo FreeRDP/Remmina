@@ -35,6 +35,8 @@
 
 #pragma once
 
+#include <gtk/gtk.h>
+
 G_BEGIN_DECLS
 
 typedef gboolean (*RemminaWidgetPoolForEachFunc)(GtkWidget *widget, gpointer data);

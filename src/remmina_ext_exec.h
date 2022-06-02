@@ -35,6 +35,9 @@
 
 #pragma once
 
+#include <gtk/gtk.h>
+#include "remmina_file.h"
+
 G_BEGIN_DECLS
 
 typedef struct {

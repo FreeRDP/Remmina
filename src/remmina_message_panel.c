@@ -34,7 +34,6 @@
  *
  */
 
-#include <gtk/gtk.h>
 #include <glib/gi18n.h>
 #include "config.h"
 #include "remmina_public.h"

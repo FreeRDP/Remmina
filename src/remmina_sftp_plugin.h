@@ -36,6 +36,9 @@
 
 #pragma once
 
+#include <glib.h>
+#include "remmina_protocol_widget.h"
+
 G_BEGIN_DECLS
 
 void remmina_sftp_plugin_register(void);

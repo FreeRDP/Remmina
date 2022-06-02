@@ -34,7 +34,6 @@
  *
  */
 
-#include "common/remmina_plugin.h"
 #include "remmina/plugin.h"
 #include "rdp_plugin.h"
 #include "rdp_file.h"

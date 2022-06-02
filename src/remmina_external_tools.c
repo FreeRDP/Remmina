@@ -36,6 +36,7 @@
 #include <glib/gi18n.h>
 #include <glib/gstdio.h>
 #include <stdlib.h>
+#include "remmina_file.h"
 #include "remmina/types.h"
 #include "remmina_public.h"
 #include "remmina_external_tools.h"

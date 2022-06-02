@@ -35,6 +35,9 @@
 
 #pragma once
 
+#include <glib.h>
+#include "rdp_plugin.h"
+
 G_BEGIN_DECLS
 
 void remmina_rdp_settings_init(void);

@@ -41,7 +41,6 @@
 #include <sys/utsname.h>
 #include <locale.h>
 
-#include <glib.h>
 #include <glib/gi18n.h>
 #include <glib/gstdio.h>
 #include <gio/gio.h>

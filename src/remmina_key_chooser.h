@@ -35,6 +35,8 @@
 
 #pragma once
 
+#include <gtk/gtk.h>
+
 #define KEY_MODIFIER_SHIFT _("Shift+")
 #define KEY_MODIFIER_CTRL _("Ctrl+")
 #define KEY_MODIFIER_ALT _("Alt+")

@@ -40,7 +40,6 @@
 #include <gio/gio.h>
 #include <glib/gi18n.h>
 #include <glib/gstdio.h>
-#include <gtk/gtk.h>
 #include <libsoup/soup.h>
 #include <stdio.h>
 #include <stdlib.h>

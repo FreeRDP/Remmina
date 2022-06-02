@@ -35,6 +35,9 @@
 
 #pragma once
 
+#include <glib.h>
+#include "common/remmina_plugin.h"
+
 G_BEGIN_DECLS
 
 gboolean remmina_rdp_file_import_test(RemminaFilePlugin *plugin, const gchar *from_file);
