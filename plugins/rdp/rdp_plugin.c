@@ -2699,7 +2699,7 @@ static gpointer gwtransp_list[] =
 static gpointer tls_seclevel[] =
 {
 	"",  N_("Default"),
-	"0", N_("0 Windows 7 compatible"),
+	"0", N_("0 — Windows 7 compatible"),
 	"1", N_("1"),
 	"2", N_("2"),
 	"3", N_("3"),
