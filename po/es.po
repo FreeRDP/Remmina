@@ -20,7 +20,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2022-06-02 20:09+0000\n"
-"PO-Revision-Date: 2022-06-01 17:16+0000\n"
+"PO-Revision-Date: 2022-06-03 12:16+0000\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/remmina/remmina/"
 "es/>\n"
@@ -3375,30 +3375,29 @@ msgid "Couldn't get currently selected row (session)!"
 msgstr "No se pudo obtener la fila seleccionada actualmente (session)."
 
 #: plugins/x2go/x2go_plugin.c:786
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Exactly one session should be selectable but '%i' rows (sessions) are "
 "selected."
-msgstr "sólo debe poder seleccionarse una sesión."
+msgstr ""
+"Solo debe poder seleccionarse una sesión pero se han seleccionado «%i» filas "
+"(sesiones)."
 
 #: plugins/x2go/x2go_plugin.c:836
 msgid "Failed to fill 'GtkTreeIter'."
 msgstr "No se pudo rellenar «GtkTreeIter»."
 
 #: plugins/x2go/x2go_plugin.c:902
-#, fuzzy
 msgid "parameter 'argv' is 'NULL'."
-msgstr "el parámetro 'argv' es 'NULL'."
+msgstr "el parámetro «argv» es «NULL»."
 
 #: plugins/x2go/x2go_plugin.c:913
-#, fuzzy
 msgid "parameter 'error' is 'NULL'."
-msgstr "el parámetro 'error' es 'NULL'."
+msgstr "el parámetro «error» es «NULL»."
 
 #: plugins/x2go/x2go_plugin.c:921
-#, fuzzy
 msgid "parameter 'env' is either invalid or uninitialized."
-msgstr "el parámetro 'env' no es válido o no está inicializado."
+msgstr "el parámetro «env» no es válido o no está inicializado."
 
 #: plugins/x2go/x2go_plugin.c:937 plugins/x2go/x2go_plugin.c:2391
 #, fuzzy
@@ -3615,27 +3614,23 @@ msgid "Resuming session '%s'…"
 msgstr "Reanudando la sesión «%s»…"
 
 #: plugins/x2go/x2go_plugin.c:2369
-#, fuzzy
-#| msgid ""
-#| "DPI setting is out of bounds. Please adjust it in the profile settings."
 msgid "DPI setting is out of bounds. Please adjust it in profile settings."
-msgstr "La opción DPI está fuera de rango.Por favor, ajústela en las opciones."
+msgstr ""
+"Los PPP configurados se salen de los límites. Ajústelos en la configuración "
+"del perfil."
 
 #: plugins/x2go/x2go_plugin.c:2411
 msgid "An error occured while starting an X2Go session…"
 msgstr "Ocurrió un error mientras se iniciaba una sesión X2Go…"
 
 #: plugins/x2go/x2go_plugin.c:2419
-#, fuzzy
-#| msgid "Could not start SSH session. %s"
 msgid "Could not start X2Go session."
-msgstr "No se ha podido iniciar la sesión de X2Go."
+msgstr "No se pudo iniciar la sesión de X2Go."
 
 #: plugins/x2go/x2go_plugin.c:2420
-#, fuzzy, c-format
-#| msgid "Could not start SSH session. %s"
+#, c-format
 msgid "Could not start PyHoca-CLI (%i): '%s'"
-msgstr "No se pudo iniciar PyHoca-CLI (%i): '%s'"
+msgstr "No se pudo iniciar PyHoca-CLI (%i): «%s»"
 
 #: plugins/x2go/x2go_plugin.c:2535
 #, fuzzy
@@ -3665,9 +3660,9 @@ msgstr ""
 "CLI:"
 
 #: plugins/x2go/x2go_plugin.c:2558
-#, fuzzy, c-format
+#, c-format
 msgid "Available feature[%i]: '%s'"
-msgstr "Característica disponible[%i]: '%s'"
+msgstr "Funcionalidad disponible[%i]: «%s»"
 
 #: plugins/x2go/x2go_plugin.c:2583
 #, c-format
@@ -4616,7 +4611,7 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:495
 msgid "Confirm before closing multiple tabs"
-msgstr ""
+msgstr "Confirmar antes de cerrar varias pestañas"
 
 #: data/ui/remmina_preferences.glade:529
 msgid "Options"
@@ -4907,18 +4902,26 @@ msgid ""
 "\"Intermediate\" doesn't use as much memory or processing power, and "
 "\"Sensitive\" is more secure, but uses +1 GiB of RAM and many CPU cycles. "
 msgstr ""
+"Estos son los métodos que Remmina emplea para almacenar las contraseñas.\n"
+"\n"
+"Con la salvedad del método «Débil», todos son recomendables. «Almacén de "
+"claves» es el predeterminado porque se integra con KDE/Plasma y GNOME.\n"
+"\n"
+"«Intermedio» no utiliza mucha memoria ni potencia de procesamiento, y "
+"«Confidencial» es más seguro, pero utiliza más de 1 GiB de RAM y muchos "
+"ciclos de CPU. "
 
 #: data/ui/remmina_preferences.glade:1789
 msgid "Intermediate (+64 MiB RAM)"
-msgstr ""
+msgstr "Intermedio (+64 MiB RAM)"
 
 #: data/ui/remmina_preferences.glade:1790
 msgid "Strong (+256 MiB, ~2009 CPU)"
-msgstr ""
+msgstr "Fuerte (+256 MiB, CPU de 2009 aprox.)"
 
 #: data/ui/remmina_preferences.glade:1791
 msgid "Sensitive (+1 GiB, ~2014 CPU)"
-msgstr ""
+msgstr "Confidencial (+1 GiB, CPU de 2014 aprox.)"
 
 #: data/ui/remmina_preferences.glade:1807
 msgid "Auditing log"
@@ -4929,10 +4932,8 @@ msgid "Automatically accept all fingerprints and certificates"
 msgstr "Aceptar automáticamente todas las huellas y certificados"
 
 #: data/ui/remmina_preferences.glade:1837
-#, fuzzy
-#| msgid "Trust all fingerprints and certificates"
 msgid "Trust all certificates"
-msgstr "Confiar en todas las huellas y certificados"
+msgstr "Confiar en todos los certificados"
 
 #: data/ui/remmina_preferences.glade:1872
 msgid "Security"
@@ -4979,7 +4980,7 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:2066
 msgid "Show bold text in bright colors"
-msgstr ""
+msgstr "Mostrar texto en negrita en colores vívidos"
 
 #: data/ui/remmina_preferences.glade:2080
 msgid "Colour theme"
