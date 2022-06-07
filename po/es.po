@@ -20,7 +20,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2022-06-03 14:21+0000\n"
-"PO-Revision-Date: 2022-06-03 12:16+0000\n"
+"PO-Revision-Date: 2022-06-07 17:18+0000\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/remmina/remmina/"
 "es/>\n"
@@ -111,10 +111,8 @@ msgid "Remmina debugging window"
 msgstr "Ventana de depuración de Remmina"
 
 #: src/remmina_log.c:134
-#, fuzzy
-#| msgid "Open the Remmina main window"
 msgid "Paste system info in the Remmina debugging window"
-msgstr "Abrir la ventana principal de Remmina"
+msgstr "Pegar información del sistema en la ventana de depuración de Remmina"
 
 #: src/remmina_log.c:154
 msgid ""
@@ -1154,11 +1152,11 @@ msgstr "Proporcione el código TOTP/OTP/2FA"
 
 #: src/remmina_ssh.c:1531 src/remmina_ssh.c:1557
 msgid "SSH tunnel credentials"
-msgstr "Credenciales de túnel SSH"
+msgstr "Datos de acceso de túnel SSH"
 
 #: src/remmina_ssh.c:1531 src/remmina_ssh.c:1557
 msgid "SSH credentials"
-msgstr "Credenciales de SSH"
+msgstr "Datos de acceso de SSH"
 
 #: src/remmina_ssh.c:1608
 msgid "Keyboard interactive login, TOTP/OTP/2FA"
@@ -1282,9 +1280,8 @@ msgid "Plugin %s is not registered."
 msgstr "El complemento %s no está registrado."
 
 #: src/remmina_main.c:685
-#, fuzzy
 msgid "The latest successful connection attempt, or a pre-computed date"
-msgstr "El último intento de conexión con éxito, o una fecha precalculada"
+msgstr "El último intento de conexión exitoso, o una fecha precalculada"
 
 #: src/remmina_main.c:687
 #, c-format
@@ -1589,20 +1586,20 @@ msgid "Notes"
 msgstr "Notas"
 
 #: src/remmina_file_editor.c:1458
-#, fuzzy, c-format
+#, c-format
 msgid "(%s: %i): Can't validate setting '%s' since 'value' or 'gfe' are NULL!"
 msgstr ""
-"(%s: %i): ¡No se puede validar el ajuste '%s' ya que 'value' o 'gfe' son "
-"NULL!"
+"(%s: %i): no se puede validar la configuración «%s» ya que o «value» o «gfe» "
+"es NULL."
 
 #: src/remmina_file_editor.c:1461
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "(%s: %i): Can't validate user input since 'setting_name_to_validate', "
 "'value' or 'gfe' are NULL!"
 msgstr ""
-"(%s: %i): ¡No se puede validar la entrada del usuario ya que "
-"'setting_name_to_validate', 'value' o 'gfe' son NULL!"
+"(%s: %i): no se puede validar la entrada del usuario ya que "
+"«setting_name_to_validate», «value» o «gfe» son NULL."
 
 #. TRANSLATORS: Meta-error. Shouldn't be visible.
 #: src/remmina_file_editor.c:1465 plugins/x2go/x2go_plugin.c:2409
@@ -1659,13 +1656,12 @@ msgstr "No se pudo encontrar el archivo «%s»."
 #. TRANSLATORS: This is a message that pops up when an external Remmina plugin tries to set the window resolution using a legacy parameter.
 #. TRANSLATORS: This is a message that pop-up when an external Remmina plugin tries to set the windows resolution using a legacy parameter.
 #: src/remmina_file.c:485 src/remmina_file.c:531
-#, fuzzy
 msgid ""
 "Using the «resolution» parameter in the Remmina preferences file is "
 "deprecated.\n"
 msgstr ""
-"El uso del parámetro \"resolución\" en el archivo de preferencias de Remmina "
-"está obsoleto.\n"
+"El uso del parámetro «resolution» en el archivo de preferencias de Remmina "
+"es obsoleto.\n"
 
 #: src/remmina_icon.c:136
 msgid "Open Main Window"
@@ -3228,12 +3224,12 @@ msgid "Secured password storage in the GNOME keyring"
 msgstr "Almacenamiento seguro de contraseñas en el llavero de GNOME"
 
 #: plugins/x2go/x2go_plugin.c:67
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The command-line feature '%s' is not available! Attempting to start PyHoca-"
 "CLI without using this feature…"
 msgstr ""
-"¡La función de línea de comandos '%s' no está disponible! Intentando iniciar "
+"La función de línea de órdenes «%s» no está disponible. Intentando iniciar "
 "PyHoca-CLI sin usar esta función…"
 
 #: plugins/x2go/x2go_plugin.c:292 plugins/x2go/x2go_plugin.c:424
@@ -3486,7 +3482,7 @@ msgstr "Reanudando la sesión: «%s»"
 #: plugins/x2go/x2go_plugin.c:1355
 #, c-format
 msgid "Terminating session: '%s'"
-msgstr "Reanudando la sesión: «%s»"
+msgstr "Terminando la sesión: «%s»"
 
 #: plugins/x2go/x2go_plugin.c:1529
 #, c-format
@@ -3498,15 +3494,14 @@ msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
 msgstr "PyHoca-CLI terminó de forma inesperada. Se cerrará la conexión ahora."
 
 #: plugins/x2go/x2go_plugin.c:1610
-#, fuzzy
 msgid ""
 "The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
 "Please check your profile settings and PyHoca-CLI's output for possible "
 "errors. Also ensure the remote server is reachable."
 msgstr ""
-"El proceso hijo necesario 'pyhoca-cli' se detuvo inesperadamente.\n"
-"Por favor, compruebe la configuración de su perfil y la salida de PyHoca-CLI "
-"en busca de posibles errores. También asegúrese de que el servidor remoto es "
+"El proceso secundario necesario «pyhoca-cli» se detuvo inesperadamente.\n"
+"Compruebe la configuración de su perfil y la salida de PyHoca-CLI en busca "
+"de posibles errores. También asegúrese de que el servidor remoto sea "
 "accesible."
 
 #: plugins/x2go/x2go_plugin.c:1653
@@ -3514,18 +3509,16 @@ msgid "Can't save empty username!"
 msgstr "No se puede guardar un nombre de usuario vacío."
 
 #: plugins/x2go/x2go_plugin.c:1667
-#, fuzzy
 msgid "Could not save new credentials."
-msgstr "No se han podido guardar las nuevas credenciales."
+msgstr "No se pudieron guardar los datos de acceso nuevos."
 
 #: plugins/x2go/x2go_plugin.c:1670
-#, fuzzy
 msgid ""
 "An error occured while trying to save new credentials: 's_password' or "
 "'s_username' strings were not set."
 msgstr ""
-"Se ha producido un error al intentar guardar las nuevas credenciales: no se "
-"han establecido las cadenas 's_password' o 's_username'."
+"Se produjo un error al intentar guardar los datos de acceso nuevos: no se "
+"han establecido las cadenas «s_password» o «s_username»."
 
 #: plugins/x2go/x2go_plugin.c:1701
 #, fuzzy
@@ -3533,10 +3526,8 @@ msgid "Parameter 'default_username' is uninitialized."
 msgstr "El parámetro 'default_username' no está inicializado."
 
 #: plugins/x2go/x2go_plugin.c:1730
-#, fuzzy
-#| msgid "Enter NX authentication credentials"
 msgid "Enter X2Go credentials"
-msgstr "Introduzca las credenciales de X2Go"
+msgstr "Introduzca los datos de acceso de X2Go"
 
 #: plugins/x2go/x2go_plugin.c:1927
 #, fuzzy
@@ -3635,31 +3626,26 @@ msgid "Could not start PyHoca-CLI (%i): '%s'"
 msgstr "No se pudo iniciar PyHoca-CLI (%i): «%s»"
 
 #: plugins/x2go/x2go_plugin.c:2535
-#, fuzzy
 msgid ""
 "Couldn't get PyHoca-CLI's command-line features. This indicates it is either "
 "too old, or not installed. An old limited set of features will be used for "
 "now."
 msgstr ""
-"No se pueden obtener las características de la línea de comandos de PyHoca-"
-"CLI. Esto indica que es demasiado viejo, o que no está instalado. Por ahora "
-"se utilizará un conjunto limitado de características antiguas."
+"No se pueden obtener las funcionalidades de línea de órdenes de PyHoca-CLI. "
+"Esto indica que es demasiado antiguo o que no está instalado. Por ahora se "
+"utilizará un conjunto limitado de funciones antiguas."
 
 #: plugins/x2go/x2go_plugin.c:2544
-#, fuzzy
 msgid ""
 "Could not parse PyHoca-CLI's command-line features. Using a limited feature-"
 "set for now."
 msgstr ""
-"No se pueden analizar las características de la línea de comandos de PyHoca-"
-"CLI. Usando un conjunto de características limitadas por ahora."
+"No se pueden analizar las funcionalidades de línea de órdenes de PyHoca-CLI. "
+"Por ahora se utilizará un conjunto de funciones limitadas."
 
 #: plugins/x2go/x2go_plugin.c:2550
-#, fuzzy
 msgid "Retrieved the following PyHoca-CLI command-line features:"
-msgstr ""
-"Recuperó las siguientes características de la línea de comandos de PyHoca-"
-"CLI:"
+msgstr "Se recuperaron estas funcionalidades de línea de órdenes de PyHoca-CLI:"
 
 #: plugins/x2go/x2go_plugin.c:2558
 #, c-format
@@ -3817,9 +3803,8 @@ msgid "Startup program"
 msgstr "Programa de inicio"
 
 #: plugins/x2go/x2go_plugin.c:3230
-#, fuzzy
 msgid "Which command should be executed after creating the X2Go session?"
-msgstr "¿Qué comando debe ejecutarse después de crear la sesión de X2Go?"
+msgstr "¿Qué orden debe ejecutarse después de crear la sesión de X2Go?"
 
 #: plugins/x2go/x2go_plugin.c:3232
 msgid "Keyboard Layout (auto)"
