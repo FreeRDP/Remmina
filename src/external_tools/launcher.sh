@@ -4,17 +4,25 @@
 # Main Script
 ####################
 
-TERMINALS="x-terminal-emulator gnome-terminal bash sh"
+TERMINALS="xfce4-terminal gnome-terminal x-terminal-emulator"
+
 for t in $TERMINALS; do
-    if command -v "$t" >/dev/null 2>&1; then
-        TERMNAME="$t"
-        continue
-    fi
+  TERMBIN="$(command -v "$t")"
+  if [ "$?" -eq 0 ]; then
+    case "$t" in
+      xfce4-terminal)
+        TERMBIN="$TERMBIN --disable-server"
+        break
+        ;;
+      gnome-terminal)
+        break
+        ;;
+      x-terminal-emulator)
+        break
+        ;;
+    esac
+  fi
 done
 
-if [ -z "$TERMNAME" ]; then
-    echo "Can't found a terminal"
-    exit 1
-fi
+$TERMBIN -e "$1" &
 
-$TERMNAME -- "$1" &
