@@ -2899,6 +2899,11 @@ static gboolean focus_in_delayed_grab(RemminaConnectionWindow *cnnwin)
 
 static void rcw_focus_in(RemminaConnectionWindow *cnnwin)
 {
+	/* This function is the default signal handler for focus-in-event,
+	 * but can also be called after a window focus state change event
+	 * from rcw_state_event(). So expect to be called twice
+	 * when cnnwin gains the focus */
+
 	TRACE_CALL(__func__);
 	RemminaConnectionObject *cnnobj;
 
@@ -2920,6 +2925,11 @@ static void rcw_focus_in(RemminaConnectionWindow *cnnwin)
 
 static void rcw_focus_out(RemminaConnectionWindow *cnnwin)
 {
+	/* This function is the default signal handler for focus-out-event,
+	 * but can also be called after a window focus state change event
+	 * from rcw_state_event(). So expect to be called twice
+	 * when cnnwin loses the focus */
+
 	TRACE_CALL(__func__);
 	RemminaConnectionObject *cnnobj;
 
@@ -3346,12 +3356,12 @@ rcw_new(gboolean fullscreen, int full_screen_target_monitor)
 	g_signal_connect(G_OBJECT(cnnwin), "destroy", G_CALLBACK(rcw_destroy), NULL);
 
 	/* Under Xorg focus-in-event and focus-out-event don’t work when keyboard is grabbed
-	 * via gdk_device_grab. So we listen for window-state-event to detect focus in and focus out */
+	 * via gdk_device_grab. So we listen for window-state-event to detect focus in and focus out.
+	 * But we must also listen focus-in-event and focus-out-event because some
+	 * window managers missing _NET_WM_STATE_FOCUSED hint, does not update the window state
+	 * in case of focus change */
 	g_signal_connect(G_OBJECT(cnnwin), "window-state-event", G_CALLBACK(rcw_state_event), NULL);
-
-	/* Under wayland window-state-event is not received in some cases */
 	g_signal_connect(G_OBJECT(cnnwin), "focus-in-event", G_CALLBACK(rcw_focus_in_event), NULL);
-	/* Without focus-out-event, Alt-TAB makes Alt sticky */
 	g_signal_connect(G_OBJECT(cnnwin), "focus-out-event", G_CALLBACK(rcw_focus_out_event), NULL);
 
 	g_signal_connect(G_OBJECT(cnnwin), "enter-notify-event", G_CALLBACK(rcw_on_enter_notify_event), NULL);
