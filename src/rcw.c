@@ -2061,11 +2061,13 @@ static void rcw_toolbar_tools(GtkToolItem *toggle, RemminaConnectionWindow *cnnw
 			}
 			menuitem = gtk_menu_item_new_with_label(_("Send clipboard content as keystrokes"));
 			static gchar k_tooltip[] =
-				N_("CAUTION! We send hardware codes from your local keyboard,\nmany characters can be different from the original text.\n"
+				N_("CAUTION: Pasted text will be sent as a sequence of key-codes as if typed on your local keyboard.\n"
 				"\n"
-				"  • To get the best result, set the same keyboard on the client and server.\n"
+				"  • For best results use same keyboard settings for both, client and server.\n"
 				"\n"
-				"  • Non composable characters using your keyboard will not be transferred.\n"
+				"  • If client-keyboard is different from server-keyboard the received text can contain wrong or erroneous characters.\n"
+				"\n"
+				"  • Unicode characters and other special characters that can't be translated to local key-codes will be ignored by the receiver.\n"
 				"\n");
 			gtk_widget_set_tooltip_text(menuitem, k_tooltip);
 			gtk_menu_shell_append(GTK_MENU_SHELL(submenu_keystrokes), menuitem);
