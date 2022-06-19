@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-06-18 11:41+0000\n"
+"POT-Creation-Date: 2022-06-19 23:16+0000\n"
 "PO-Revision-Date: 2022-06-03 16:18+0000\n"
 "Last-Translator: Eric <alchemillatruth@purelymail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -354,108 +354,106 @@ msgstr "以击键方式发送剪贴板内容"
 
 #: src/rcw.c:2064
 msgid ""
-"CAUTION! We send hardware codes from your local keyboard,\n"
-"many characters can be different from the original text.\n"
+"CAUTION: Pasted text will be sent as a sequence of key-codes as if typed on "
+"your local keyboard.\n"
 "\n"
-"  • To get the best result, set the same keyboard on the client and server.\n"
+"  • For best results use same keyboard settings for both, client and "
+"server.\n"
 "\n"
-"  • Non composable characters using your keyboard will not be transferred.\n"
+"  • If client-keyboard is different from server-keyboard the received text "
+"can contain wrong or erroneous characters.\n"
+"\n"
+"  • Unicode characters and other special characters that can't be translated "
+"to local key-codes will be ignored by the receiver.\n"
 "\n"
 msgstr ""
-"小心！我们从你的本地键盘发送硬件码，\n"
-"许多字符可能不同于原始文本。\n"
-"\n"
-"  •要获得最佳结果，在客户端和服务器端设置相同键盘。\n"
-"\n"
-"  •使用你键盘的不可编辑字符将不被传输。\n"
-"\n"
 
-#: src/rcw.c:2176
+#: src/rcw.c:2178
 msgid "Turn off scaling to avoid screenshot distortion."
 msgstr "关闭缩放比例以避免屏幕截图失真。"
 
-#: src/rcw.c:2236 plugins/www/www_plugin.c:864
+#: src/rcw.c:2238 plugins/www/www_plugin.c:864
 msgid "Screenshot taken"
 msgstr "截屏"
 
-#: src/rcw.c:2319
+#: src/rcw.c:2321
 msgid "_Menu"
 msgstr "_菜单"
 
-#: src/rcw.c:2320
+#: src/rcw.c:2322
 msgid "Menu"
 msgstr "菜单"
 
-#: src/rcw.c:2329
+#: src/rcw.c:2331
 msgid "Open the Remmina main window"
 msgstr "打开 Remmina 主窗口"
 
-#: src/rcw.c:2339
+#: src/rcw.c:2341
 msgid "Duplicate current connection"
 msgstr "重复当前连接"
 
-#: src/rcw.c:2356
+#: src/rcw.c:2358
 msgid "Resize the window to fit in remote resolution"
 msgstr "调整窗口大小以适应远程分辨率"
 
-#: src/rcw.c:2367
+#: src/rcw.c:2369
 msgid "Toggle fullscreen mode"
 msgstr "切换全屏模式"
 
-#: src/rcw.c:2413 data/ui/remmina_preferences.glade:1330
+#: src/rcw.c:2415 data/ui/remmina_preferences.glade:1330
 #: data/ui/remmina_preferences.glade:1340
 msgid "Multi monitor"
 msgstr "多显示器"
 
-#: src/rcw.c:2429
+#: src/rcw.c:2431
 msgid "Toggle dynamic resolution update"
 msgstr "切换动态分辨率更新"
 
-#: src/rcw.c:2439
+#: src/rcw.c:2441
 msgid "Toggle scaled mode"
 msgstr "切换缩放模式"
 
-#: src/rcw.c:2479 data/ui/remmina_preferences.glade:1064
+#: src/rcw.c:2481 data/ui/remmina_preferences.glade:1064
 msgid "Switch tab pages"
 msgstr "切换标签页"
 
-#: src/rcw.c:2489
+#: src/rcw.c:2491
 msgid "Grab all keyboard events"
 msgstr "俘获所有键盘事件"
 
-#: src/rcw.c:2506
+#: src/rcw.c:2508
 msgid "Preferences"
 msgstr "首选项"
 
-#: src/rcw.c:2515
+#: src/rcw.c:2517
 msgid "_Tools"
 msgstr "工具(_T)"
 
-#: src/rcw.c:2516 data/ui/remmina_main.glade:207
+#: src/rcw.c:2518 data/ui/remmina_main.glade:207
 msgid "Tools"
 msgstr "工具"
 
-#: src/rcw.c:2529 data/ui/remmina_preferences.glade:1265
+#: src/rcw.c:2531 data/ui/remmina_preferences.glade:1265
 #: data/ui/remmina_preferences.glade:1275
 msgid "Screenshot"
 msgstr "截屏"
 
-#: src/rcw.c:2543 data/ui/remmina_preferences.glade:1172
+#: src/rcw.c:2545 data/ui/remmina_preferences.glade:1172
 msgid "Minimize window"
 msgstr "最小化窗口"
 
-#: src/rcw.c:2553 data/ui/remmina_preferences.glade:1203
+#: src/rcw.c:2555 data/ui/remmina_preferences.glade:1203
 msgid "Disconnect"
 msgstr "断开"
 
-#: src/rcw.c:4362
+#: src/rcw.c:4364
 #, c-format
 msgid "The file “%s” is corrupted, unreadable, or could not be found."
 msgstr "文件“%s” 已损坏，无法读取或未找到。"
 
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. TRANSLATORS: 'GtkSocket feature is not available'.
-#: src/rcw.c:4436
+#: src/rcw.c:4438
 msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
@@ -463,7 +461,7 @@ msgstr ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 
-#: src/rcw.c:4577
+#: src/rcw.c:4579
 msgid ""
 "Warning: This plugin requires GtkSocket, but this feature is unavailable in "
 "a Wayland session."
@@ -471,7 +469,7 @@ msgstr "警告：此插件需要 GtkSocket，但此功能在 Wayland 会话中�
 
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. 'GtkSocket feature is not available'.
-#: src/rcw.c:4583
+#: src/rcw.c:4585
 msgid ""
 "Plugins relying on GtkSocket can't run in a Wayland session.\n"
 "For more info and a possible workaround, please visit the Remmina wiki at:\n"
@@ -485,7 +483,7 @@ msgstr ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 
-#: src/rcw.c:4597
+#: src/rcw.c:4599
 msgid "Open in web browser"
 msgstr "在浏览器中打开"
 
@@ -4836,6 +4834,25 @@ msgstr "解锁 Remmina"
 #: data/ui/remmina_unlock.glade:120
 msgid "Master password"
 msgstr "管控密码"
+
+#~ msgid ""
+#~ "CAUTION! We send hardware codes from your local keyboard,\n"
+#~ "many characters can be different from the original text.\n"
+#~ "\n"
+#~ "  • To get the best result, set the same keyboard on the client and "
+#~ "server.\n"
+#~ "\n"
+#~ "  • Non composable characters using your keyboard will not be "
+#~ "transferred.\n"
+#~ "\n"
+#~ msgstr ""
+#~ "小心！我们从你的本地键盘发送硬件码，\n"
+#~ "许多字符可能不同于原始文本。\n"
+#~ "\n"
+#~ "  •要获得最佳结果，在客户端和服务器端设置相同键盘。\n"
+#~ "\n"
+#~ "  •使用你键盘的不可编辑字符将不被传输。\n"
+#~ "\n"
 
 #~ msgid "Ask consent to close last window"
 #~ msgstr "关闭最后一个窗口时征求用户同意"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Remmina v1.4.6\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-06-18 11:41+0000\n"
+"POT-Creation-Date: 2022-06-19 23:16+0000\n"
 "PO-Revision-Date: 2021-12-17 08:54+0000\n"
 "Last-Translator: Jwtiyar Nariman <jwtiyar@gmail.com>\n"
 "Language-Team: Kurdish (Central) <https://hosted.weblate.org/projects/"
@@ -415,124 +415,129 @@ msgstr ""
 
 #: src/rcw.c:2064
 msgid ""
-"CAUTION! We send hardware codes from your local keyboard,\n"
-"many characters can be different from the original text.\n"
+"CAUTION: Pasted text will be sent as a sequence of key-codes as if typed on "
+"your local keyboard.\n"
 "\n"
-"  • To get the best result, set the same keyboard on the client and server.\n"
+"  • For best results use same keyboard settings for both, client and "
+"server.\n"
 "\n"
-"  • Non composable characters using your keyboard will not be transferred.\n"
+"  • If client-keyboard is different from server-keyboard the received text "
+"can contain wrong or erroneous characters.\n"
+"\n"
+"  • Unicode characters and other special characters that can't be translated "
+"to local key-codes will be ignored by the receiver.\n"
 "\n"
 msgstr ""
 
-#: src/rcw.c:2176
+#: src/rcw.c:2178
 #, fuzzy
 msgid "Turn off scaling to avoid screenshot distortion."
 msgstr "پێوانەکردن ناچالاک بکە بۆ ئەوەی دووربی لە تێکچوونی وێنەی سەرڕوونما."
 
-#: src/rcw.c:2236 plugins/www/www_plugin.c:864
+#: src/rcw.c:2238 plugins/www/www_plugin.c:864
 #, fuzzy
 msgid "Screenshot taken"
 msgstr "وێنەی شاشە گیرا"
 
-#: src/rcw.c:2319
+#: src/rcw.c:2321
 msgid "_Menu"
 msgstr ""
 
-#: src/rcw.c:2320
+#: src/rcw.c:2322
 msgid "Menu"
 msgstr ""
 
-#: src/rcw.c:2329
+#: src/rcw.c:2331
 #, fuzzy
 #| msgid "Open Main Window"
 msgid "Open the Remmina main window"
 msgstr "پەنجەرەی سەرەکی بکەرەوە"
 
-#: src/rcw.c:2339
+#: src/rcw.c:2341
 #, fuzzy
 msgid "Duplicate current connection"
 msgstr "پەیوەندی ئێستا دووبارەوە بکەرەوە"
 
-#: src/rcw.c:2356
+#: src/rcw.c:2358
 #, fuzzy
 msgid "Resize the window to fit in remote resolution"
 msgstr "قەبارەی پەنجەرە بگۆڕە بۆ ئەوەی بگونجێ لە وردی ڕوونما‬"
 
-#: src/rcw.c:2367
+#: src/rcw.c:2369
 #, fuzzy
 msgid "Toggle fullscreen mode"
 msgstr "بیخە سەر دۆخی پڕاوپڕی ڕوونما"
 
-#: src/rcw.c:2413 data/ui/remmina_preferences.glade:1330
+#: src/rcw.c:2415 data/ui/remmina_preferences.glade:1330
 #: data/ui/remmina_preferences.glade:1340
 msgid "Multi monitor"
 msgstr ""
 
-#: src/rcw.c:2429
+#: src/rcw.c:2431
 #, fuzzy
 msgid "Toggle dynamic resolution update"
 msgstr "دانانی نوێکردنەوەی وردبینی ڕوونما بە جوڵەیی"
 
-#: src/rcw.c:2439
+#: src/rcw.c:2441
 #, fuzzy
 msgid "Toggle scaled mode"
 msgstr "دۆخی پێوانکراو دابنێ"
 
-#: src/rcw.c:2479 data/ui/remmina_preferences.glade:1064
+#: src/rcw.c:2481 data/ui/remmina_preferences.glade:1064
 #, fuzzy
 msgid "Switch tab pages"
 msgstr "گۆڕینی لەناو پەڕەکان"
 
-#: src/rcw.c:2489
+#: src/rcw.c:2491
 #, fuzzy
 msgid "Grab all keyboard events"
 msgstr "هەموو ڕووداوەکانی تەختەکلیل بهێنە"
 
-#: src/rcw.c:2506
+#: src/rcw.c:2508
 #, fuzzy
 msgid "Preferences"
 msgstr "هەڵبژاردەکان"
 
-#: src/rcw.c:2515
+#: src/rcw.c:2517
 #, fuzzy
 msgid "_Tools"
 msgstr "_ئامرازەکان"
 
-#: src/rcw.c:2516 data/ui/remmina_main.glade:207
+#: src/rcw.c:2518 data/ui/remmina_main.glade:207
 #, fuzzy
 msgid "Tools"
 msgstr "ئامرازەکان"
 
-#: src/rcw.c:2529 data/ui/remmina_preferences.glade:1265
+#: src/rcw.c:2531 data/ui/remmina_preferences.glade:1265
 #: data/ui/remmina_preferences.glade:1275
 #, fuzzy
 msgid "Screenshot"
 msgstr "ڕووپەڕ"
 
-#: src/rcw.c:2543 data/ui/remmina_preferences.glade:1172
+#: src/rcw.c:2545 data/ui/remmina_preferences.glade:1172
 #, fuzzy
 msgid "Minimize window"
 msgstr "پەنجەرە بچووکبکەرەوە"
 
-#: src/rcw.c:2553 data/ui/remmina_preferences.glade:1203
+#: src/rcw.c:2555 data/ui/remmina_preferences.glade:1203
 #, fuzzy
 msgid "Disconnect"
 msgstr "دەرهێڵ بوون"
 
-#: src/rcw.c:4362
+#: src/rcw.c:4364
 #, c-format
 msgid "The file “%s” is corrupted, unreadable, or could not be found."
 msgstr "پەڕگەی “%s” تێکشکاوە، ناخوێندرێتەوە، یان نادۆزرێتەوە."
 
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. TRANSLATORS: 'GtkSocket feature is not available'.
-#: src/rcw.c:4436
+#: src/rcw.c:4438
 msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 msgstr ""
 
-#: src/rcw.c:4577
+#: src/rcw.c:4579
 #, fuzzy
 #| msgid "Warning: This plugin requires GtkSocket, but it’s not available."
 msgid ""
@@ -542,7 +547,7 @@ msgstr "وریابە: ئەم پێوەکراوە پێویستی بە GtkSocket ه
 
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. 'GtkSocket feature is not available'.
-#: src/rcw.c:4583
+#: src/rcw.c:4585
 msgid ""
 "Plugins relying on GtkSocket can't run in a Wayland session.\n"
 "For more info and a possible workaround, please visit the Remmina wiki at:\n"
@@ -551,7 +556,7 @@ msgid ""
 "available-in-a-Wayland-session"
 msgstr ""
 
-#: src/rcw.c:4597
+#: src/rcw.c:4599
 #, fuzzy
 #| msgid "Open Main Window"
 msgid "Open in web browser"

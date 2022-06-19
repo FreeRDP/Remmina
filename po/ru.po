@@ -22,7 +22,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-06-18 11:41+0000\n"
+"POT-Creation-Date: 2022-06-19 23:16+0000\n"
 "PO-Revision-Date: 2022-06-08 11:15+0000\n"
 "Last-Translator: Сергей <sw@atrus.ru>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -370,110 +370,106 @@ msgstr "Отправлять содержимое буфера обмена в �
 
 #: src/rcw.c:2064
 msgid ""
-"CAUTION! We send hardware codes from your local keyboard,\n"
-"many characters can be different from the original text.\n"
+"CAUTION: Pasted text will be sent as a sequence of key-codes as if typed on "
+"your local keyboard.\n"
 "\n"
-"  • To get the best result, set the same keyboard on the client and server.\n"
+"  • For best results use same keyboard settings for both, client and "
+"server.\n"
 "\n"
-"  • Non composable characters using your keyboard will not be transferred.\n"
+"  • If client-keyboard is different from server-keyboard the received text "
+"can contain wrong or erroneous characters.\n"
+"\n"
+"  • Unicode characters and other special characters that can't be translated "
+"to local key-codes will be ignored by the receiver.\n"
 "\n"
 msgstr ""
-"Внимание! Мы отправляем аппаратные коды с вашей клавиатуры,\n"
-"многие символы могут отличаться от символов исходного текста.\n"
-"\n"
-"  • Чтобы получить наилучший результат, установите одинаковые настройки "
-"клавиатуры на клиенте и сервере.\n"
-"\n"
-"  • Непригодные к компоновке символы с вашей клавиатуры не будут "
-"передаваться.\n"
-"\n"
 
-#: src/rcw.c:2176
+#: src/rcw.c:2178
 msgid "Turn off scaling to avoid screenshot distortion."
 msgstr "Отключите масштабирование во избежание искривления снимков экрана."
 
-#: src/rcw.c:2236 plugins/www/www_plugin.c:864
+#: src/rcw.c:2238 plugins/www/www_plugin.c:864
 msgid "Screenshot taken"
 msgstr "Снимок сделан"
 
-#: src/rcw.c:2319
+#: src/rcw.c:2321
 msgid "_Menu"
 msgstr "_Меню"
 
-#: src/rcw.c:2320
+#: src/rcw.c:2322
 msgid "Menu"
 msgstr "Меню"
 
-#: src/rcw.c:2329
+#: src/rcw.c:2331
 msgid "Open the Remmina main window"
 msgstr "Открыть основное окно программы"
 
-#: src/rcw.c:2339
+#: src/rcw.c:2341
 msgid "Duplicate current connection"
 msgstr "Дублировать текущее соединение"
 
-#: src/rcw.c:2356
+#: src/rcw.c:2358
 msgid "Resize the window to fit in remote resolution"
 msgstr "Растянуть окно под размер удалённого разрешения"
 
-#: src/rcw.c:2367
+#: src/rcw.c:2369
 msgid "Toggle fullscreen mode"
 msgstr "Переключить на полный экран"
 
-#: src/rcw.c:2413 data/ui/remmina_preferences.glade:1330
+#: src/rcw.c:2415 data/ui/remmina_preferences.glade:1330
 #: data/ui/remmina_preferences.glade:1340
 msgid "Multi monitor"
 msgstr "Несколько экранов"
 
-#: src/rcw.c:2429
+#: src/rcw.c:2431
 msgid "Toggle dynamic resolution update"
 msgstr "Переключить на динамическое обновление разрешения"
 
-#: src/rcw.c:2439
+#: src/rcw.c:2441
 msgid "Toggle scaled mode"
 msgstr "Переключить в режим масштабирования"
 
-#: src/rcw.c:2479 data/ui/remmina_preferences.glade:1064
+#: src/rcw.c:2481 data/ui/remmina_preferences.glade:1064
 msgid "Switch tab pages"
 msgstr "Перейти на вкладку"
 
-#: src/rcw.c:2489
+#: src/rcw.c:2491
 msgid "Grab all keyboard events"
 msgstr "Захватывать все нажатия клавиш"
 
-#: src/rcw.c:2506
+#: src/rcw.c:2508
 msgid "Preferences"
 msgstr "_Параметры"
 
-#: src/rcw.c:2515
+#: src/rcw.c:2517
 msgid "_Tools"
 msgstr "_Инструменты"
 
-#: src/rcw.c:2516 data/ui/remmina_main.glade:207
+#: src/rcw.c:2518 data/ui/remmina_main.glade:207
 msgid "Tools"
 msgstr "Инструменты"
 
-#: src/rcw.c:2529 data/ui/remmina_preferences.glade:1265
+#: src/rcw.c:2531 data/ui/remmina_preferences.glade:1265
 #: data/ui/remmina_preferences.glade:1275
 msgid "Screenshot"
 msgstr "Снимок экрана"
 
-#: src/rcw.c:2543 data/ui/remmina_preferences.glade:1172
+#: src/rcw.c:2545 data/ui/remmina_preferences.glade:1172
 msgid "Minimize window"
 msgstr "Свернуть окно"
 
-#: src/rcw.c:2553 data/ui/remmina_preferences.glade:1203
+#: src/rcw.c:2555 data/ui/remmina_preferences.glade:1203
 msgid "Disconnect"
 msgstr "Отключиться"
 
-#: src/rcw.c:4362
+#: src/rcw.c:4364
 #, c-format
 msgid "The file “%s” is corrupted, unreadable, or could not be found."
 msgstr "Файл \"%s\" поврежден, не читается или не найден."
 
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. TRANSLATORS: 'GtkSocket feature is not available'.
-#: src/rcw.c:4436
+#: src/rcw.c:4438
 msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
@@ -481,7 +477,7 @@ msgstr ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 
-#: src/rcw.c:4577
+#: src/rcw.c:4579
 msgid ""
 "Warning: This plugin requires GtkSocket, but this feature is unavailable in "
 "a Wayland session."
@@ -491,7 +487,7 @@ msgstr ""
 
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. 'GtkSocket feature is not available'.
-#: src/rcw.c:4583
+#: src/rcw.c:4585
 msgid ""
 "Plugins relying on GtkSocket can't run in a Wayland session.\n"
 "For more info and a possible workaround, please visit the Remmina wiki at:\n"
@@ -506,7 +502,7 @@ msgstr ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 
-#: src/rcw.c:4597
+#: src/rcw.c:4599
 msgid "Open in web browser"
 msgstr "Открыть в браузере"
 
@@ -4965,6 +4961,27 @@ msgstr "Разблокировать Remmina"
 #: data/ui/remmina_unlock.glade:120
 msgid "Master password"
 msgstr "Мастер-пароль"
+
+#~ msgid ""
+#~ "CAUTION! We send hardware codes from your local keyboard,\n"
+#~ "many characters can be different from the original text.\n"
+#~ "\n"
+#~ "  • To get the best result, set the same keyboard on the client and "
+#~ "server.\n"
+#~ "\n"
+#~ "  • Non composable characters using your keyboard will not be "
+#~ "transferred.\n"
+#~ "\n"
+#~ msgstr ""
+#~ "Внимание! Мы отправляем аппаратные коды с вашей клавиатуры,\n"
+#~ "многие символы могут отличаться от символов исходного текста.\n"
+#~ "\n"
+#~ "  • Чтобы получить наилучший результат, установите одинаковые настройки "
+#~ "клавиатуры на клиенте и сервере.\n"
+#~ "\n"
+#~ "  • Непригодные к компоновке символы с вашей клавиатуры не будут "
+#~ "передаваться.\n"
+#~ "\n"
 
 #~ msgid "Allow using bright colours with bold text"
 #~ msgstr "Дозволить использование ярких цветов и жирного текста"

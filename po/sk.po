@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-06-18 11:41+0000\n"
+"POT-Creation-Date: 2022-06-19 23:16+0000\n"
 "PO-Revision-Date: 2022-06-05 23:19+0000\n"
 "Last-Translator: menom <menom1@protonmail.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -357,101 +357,106 @@ msgstr "Odoslať obsah schránky ako stlačenia klávesov"
 
 #: src/rcw.c:2064
 msgid ""
-"CAUTION! We send hardware codes from your local keyboard,\n"
-"many characters can be different from the original text.\n"
+"CAUTION: Pasted text will be sent as a sequence of key-codes as if typed on "
+"your local keyboard.\n"
 "\n"
-"  • To get the best result, set the same keyboard on the client and server.\n"
+"  • For best results use same keyboard settings for both, client and "
+"server.\n"
 "\n"
-"  • Non composable characters using your keyboard will not be transferred.\n"
+"  • If client-keyboard is different from server-keyboard the received text "
+"can contain wrong or erroneous characters.\n"
+"\n"
+"  • Unicode characters and other special characters that can't be translated "
+"to local key-codes will be ignored by the receiver.\n"
 "\n"
 msgstr ""
 
-#: src/rcw.c:2176
+#: src/rcw.c:2178
 msgid "Turn off scaling to avoid screenshot distortion."
 msgstr "Vypnite zmenu mierky, aby ste predišli skresleniu snímky obrazovky."
 
-#: src/rcw.c:2236 plugins/www/www_plugin.c:864
+#: src/rcw.c:2238 plugins/www/www_plugin.c:864
 msgid "Screenshot taken"
 msgstr "Snímka obrazovky bola zachytená"
 
-#: src/rcw.c:2319
+#: src/rcw.c:2321
 msgid "_Menu"
 msgstr "_Menu"
 
-#: src/rcw.c:2320
+#: src/rcw.c:2322
 msgid "Menu"
 msgstr "Menu"
 
-#: src/rcw.c:2329
+#: src/rcw.c:2331
 msgid "Open the Remmina main window"
 msgstr "Otvorí hlavné okno aplikácie Remmina"
 
-#: src/rcw.c:2339
+#: src/rcw.c:2341
 msgid "Duplicate current connection"
 msgstr "Zduplikuje aktuálne pripojenie"
 
-#: src/rcw.c:2356
+#: src/rcw.c:2358
 msgid "Resize the window to fit in remote resolution"
 msgstr "Zmení veľkosť okna tak, aby sa prispôsobila vzdialenému rozlíšeniu"
 
-#: src/rcw.c:2367
+#: src/rcw.c:2369
 msgid "Toggle fullscreen mode"
 msgstr "Prepne na režim celej obrazovky"
 
-#: src/rcw.c:2413 data/ui/remmina_preferences.glade:1330
+#: src/rcw.c:2415 data/ui/remmina_preferences.glade:1330
 #: data/ui/remmina_preferences.glade:1340
 msgid "Multi monitor"
 msgstr "Viacero monitorov"
 
-#: src/rcw.c:2429
+#: src/rcw.c:2431
 msgid "Toggle dynamic resolution update"
 msgstr "Prepne aktualizáciu dynamického rozlíšenia"
 
-#: src/rcw.c:2439
+#: src/rcw.c:2441
 msgid "Toggle scaled mode"
 msgstr "Prepne režim zmeny mierky"
 
-#: src/rcw.c:2479 data/ui/remmina_preferences.glade:1064
+#: src/rcw.c:2481 data/ui/remmina_preferences.glade:1064
 msgid "Switch tab pages"
 msgstr "Prepínanie stránok s kartami"
 
-#: src/rcw.c:2489
+#: src/rcw.c:2491
 msgid "Grab all keyboard events"
 msgstr "Zachytí všetky udalosti klávesnice"
 
-#: src/rcw.c:2506
+#: src/rcw.c:2508
 msgid "Preferences"
 msgstr "Predvoľby"
 
-#: src/rcw.c:2515
+#: src/rcw.c:2517
 msgid "_Tools"
 msgstr "_Nástroje"
 
-#: src/rcw.c:2516 data/ui/remmina_main.glade:207
+#: src/rcw.c:2518 data/ui/remmina_main.glade:207
 msgid "Tools"
 msgstr "Nástroje"
 
-#: src/rcw.c:2529 data/ui/remmina_preferences.glade:1265
+#: src/rcw.c:2531 data/ui/remmina_preferences.glade:1265
 #: data/ui/remmina_preferences.glade:1275
 msgid "Screenshot"
 msgstr "Snímka obrazovky"
 
-#: src/rcw.c:2543 data/ui/remmina_preferences.glade:1172
+#: src/rcw.c:2545 data/ui/remmina_preferences.glade:1172
 msgid "Minimize window"
 msgstr "Minimalizovanie okna"
 
-#: src/rcw.c:2553 data/ui/remmina_preferences.glade:1203
+#: src/rcw.c:2555 data/ui/remmina_preferences.glade:1203
 msgid "Disconnect"
 msgstr "Odpojenie"
 
-#: src/rcw.c:4362
+#: src/rcw.c:4364
 #, c-format
 msgid "The file “%s” is corrupted, unreadable, or could not be found."
 msgstr "Súbor „%s“ je poškodený, nečitateľný, alebo sa ho nepodarilo nájsť."
 
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. TRANSLATORS: 'GtkSocket feature is not available'.
-#: src/rcw.c:4436
+#: src/rcw.c:4438
 msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
@@ -459,7 +464,7 @@ msgstr ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 
-#: src/rcw.c:4577
+#: src/rcw.c:4579
 msgid ""
 "Warning: This plugin requires GtkSocket, but this feature is unavailable in "
 "a Wayland session."
@@ -469,7 +474,7 @@ msgstr ""
 
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. 'GtkSocket feature is not available'.
-#: src/rcw.c:4583
+#: src/rcw.c:4585
 msgid ""
 "Plugins relying on GtkSocket can't run in a Wayland session.\n"
 "For more info and a possible workaround, please visit the Remmina wiki at:\n"
@@ -485,7 +490,7 @@ msgstr ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 
-#: src/rcw.c:4597
+#: src/rcw.c:4599
 msgid "Open in web browser"
 msgstr "Otvoriť vo webovom prehliadači"
 

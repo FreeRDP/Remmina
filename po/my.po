@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-06-18 11:41+0000\n"
+"POT-Creation-Date: 2022-06-19 23:16+0000\n"
 "PO-Revision-Date: 2021-12-17 08:48+0000\n"
 "Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
 "Language-Team: Burmese <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -404,123 +404,128 @@ msgstr "Clipboard အကြောင်းအရာကို ကီးစထရ�
 
 #: src/rcw.c:2064
 msgid ""
-"CAUTION! We send hardware codes from your local keyboard,\n"
-"many characters can be different from the original text.\n"
+"CAUTION: Pasted text will be sent as a sequence of key-codes as if typed on "
+"your local keyboard.\n"
 "\n"
-"  • To get the best result, set the same keyboard on the client and server.\n"
+"  • For best results use same keyboard settings for both, client and "
+"server.\n"
 "\n"
-"  • Non composable characters using your keyboard will not be transferred.\n"
+"  • If client-keyboard is different from server-keyboard the received text "
+"can contain wrong or erroneous characters.\n"
+"\n"
+"  • Unicode characters and other special characters that can't be translated "
+"to local key-codes will be ignored by the receiver.\n"
 "\n"
 msgstr ""
 
-#: src/rcw.c:2176
+#: src/rcw.c:2178
 #, fuzzy
 msgid "Turn off scaling to avoid screenshot distortion."
 msgstr "ဖန်သားပြင် လွဲမှား မှု ကို ရှောင်ရှား ရန် စကေး ပိတ် ပါ ။"
 
-#: src/rcw.c:2236 plugins/www/www_plugin.c:864
+#: src/rcw.c:2238 plugins/www/www_plugin.c:864
 #, fuzzy
 msgid "Screenshot taken"
 msgstr "ရုပ်ရှင်ရိုက်ယူမှု"
 
-#: src/rcw.c:2319
+#: src/rcw.c:2321
 #, fuzzy
 msgid "_Menu"
 msgstr "_Menu"
 
-#: src/rcw.c:2320
+#: src/rcw.c:2322
 #, fuzzy
 msgid "Menu"
 msgstr "မီနူး"
 
-#: src/rcw.c:2329
+#: src/rcw.c:2331
 #, fuzzy
 msgid "Open the Remmina main window"
 msgstr "Remmina အဓိက ပြတင်းပေါက်ကို ဖွင့်ပါ"
 
-#: src/rcw.c:2339
+#: src/rcw.c:2341
 #, fuzzy
 msgid "Duplicate current connection"
 msgstr "လက်ရှိ ဆက်သွယ်မှုကို တုပပါ"
 
-#: src/rcw.c:2356
+#: src/rcw.c:2358
 #, fuzzy
 msgid "Resize the window to fit in remote resolution"
 msgstr "ဝေးလံသောဖြေရှင်းချက်တွင် အံဝင်ခွင်ကျဖြစ်စေရန် ပြတင်းပေါက်ကို ပြင်ဆင်ပါ"
 
-#: src/rcw.c:2367
+#: src/rcw.c:2369
 #, fuzzy
 msgid "Toggle fullscreen mode"
 msgstr "Toggle အပြည့် မျက်နှာပြင်ပုံစံ"
 
-#: src/rcw.c:2413 data/ui/remmina_preferences.glade:1330
+#: src/rcw.c:2415 data/ui/remmina_preferences.glade:1330
 #: data/ui/remmina_preferences.glade:1340
 #, fuzzy
 msgid "Multi monitor"
 msgstr "Multi မော်နီတာ"
 
-#: src/rcw.c:2429
+#: src/rcw.c:2431
 #, fuzzy
 msgid "Toggle dynamic resolution update"
 msgstr "Toggle dynnamic ဖြေရှင်းချက် အသစ်ပြင်ဆင်ချက်"
 
-#: src/rcw.c:2439
+#: src/rcw.c:2441
 #, fuzzy
 msgid "Toggle scaled mode"
 msgstr "Toggle စကေးချထားတဲ့ ပုံစံ"
 
-#: src/rcw.c:2479 data/ui/remmina_preferences.glade:1064
+#: src/rcw.c:2481 data/ui/remmina_preferences.glade:1064
 #, fuzzy
 msgid "Switch tab pages"
 msgstr "Swech tab စာမျက်နှာများ"
 
-#: src/rcw.c:2489
+#: src/rcw.c:2491
 #, fuzzy
 msgid "Grab all keyboard events"
 msgstr "ကီးဘုတ်အဖြစ်အပျက်အားလုံးကို ရယူပါ"
 
-#: src/rcw.c:2506
+#: src/rcw.c:2508
 #, fuzzy
 msgid "Preferences"
 msgstr "အပြင်အဆင်"
 
-#: src/rcw.c:2515
+#: src/rcw.c:2517
 msgid "_Tools"
 msgstr "Tools"
 
-#: src/rcw.c:2516 data/ui/remmina_main.glade:207
+#: src/rcw.c:2518 data/ui/remmina_main.glade:207
 msgid "Tools"
 msgstr "Tools"
 
-#: src/rcw.c:2529 data/ui/remmina_preferences.glade:1265
+#: src/rcw.c:2531 data/ui/remmina_preferences.glade:1265
 #: data/ui/remmina_preferences.glade:1275
 #, fuzzy
 msgid "Screenshot"
 msgstr "ဇာတ်ညွှန်း"
 
-#: src/rcw.c:2543 data/ui/remmina_preferences.glade:1172
+#: src/rcw.c:2545 data/ui/remmina_preferences.glade:1172
 #, fuzzy
 msgid "Minimize window"
 msgstr "ဝင်းဒိုးကို လျော့နည်းစေပါ"
 
-#: src/rcw.c:2553 data/ui/remmina_preferences.glade:1203
+#: src/rcw.c:2555 data/ui/remmina_preferences.glade:1203
 msgid "Disconnect"
 msgstr "အဆက်အသွယ်ဖြတ်မည်။"
 
-#: src/rcw.c:4362
+#: src/rcw.c:4364
 #, fuzzy, c-format
 msgid "The file “%s” is corrupted, unreadable, or could not be found."
 msgstr "\"%s ဖိုင်သည် ယိုယွင်းပျက်စီးနေပြီး မဖြည့်ဆည်းနိုင်၊ မတွေ့ရပါ။"
 
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. TRANSLATORS: 'GtkSocket feature is not available'.
-#: src/rcw.c:4436
+#: src/rcw.c:4438
 msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 msgstr ""
 
-#: src/rcw.c:4577
+#: src/rcw.c:4579
 #, fuzzy
 msgid ""
 "Warning: This plugin requires GtkSocket, but this feature is unavailable in "
@@ -529,7 +534,7 @@ msgstr "သတိပေးချက်- ဒီပလက်ဂျင်က GtkSoc
 
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. 'GtkSocket feature is not available'.
-#: src/rcw.c:4583
+#: src/rcw.c:4585
 msgid ""
 "Plugins relying on GtkSocket can't run in a Wayland session.\n"
 "For more info and a possible workaround, please visit the Remmina wiki at:\n"
@@ -538,7 +543,7 @@ msgid ""
 "available-in-a-Wayland-session"
 msgstr ""
 
-#: src/rcw.c:4597
+#: src/rcw.c:4599
 #, fuzzy
 msgid "Open in web browser"
 msgstr "အဓိက ဝင်းဒိုးကိုဖွင့်ပါ"

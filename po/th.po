@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-06-18 11:41+0000\n"
+"POT-Creation-Date: 2022-06-19 23:16+0000\n"
 "PO-Revision-Date: 2021-12-17 08:52+0000\n"
 "Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
 "Language-Team: Thai <https://hosted.weblate.org/projects/remmina/remmina/th/"
@@ -394,117 +394,122 @@ msgstr "ส่งเนื้อหาของคลิปบอร์ดเป
 
 #: src/rcw.c:2064
 msgid ""
-"CAUTION! We send hardware codes from your local keyboard,\n"
-"many characters can be different from the original text.\n"
+"CAUTION: Pasted text will be sent as a sequence of key-codes as if typed on "
+"your local keyboard.\n"
 "\n"
-"  • To get the best result, set the same keyboard on the client and server.\n"
+"  • For best results use same keyboard settings for both, client and "
+"server.\n"
 "\n"
-"  • Non composable characters using your keyboard will not be transferred.\n"
+"  • If client-keyboard is different from server-keyboard the received text "
+"can contain wrong or erroneous characters.\n"
+"\n"
+"  • Unicode characters and other special characters that can't be translated "
+"to local key-codes will be ignored by the receiver.\n"
 "\n"
 msgstr ""
 
-#: src/rcw.c:2176
+#: src/rcw.c:2178
 #, fuzzy
 msgid "Turn off scaling to avoid screenshot distortion."
 msgstr "ปิดการปรับขนาดเพื่อหลีกเลี่ยงการบิดเบือนภาพหน้าจอ"
 
-#: src/rcw.c:2236 plugins/www/www_plugin.c:864
+#: src/rcw.c:2238 plugins/www/www_plugin.c:864
 #, fuzzy
 msgid "Screenshot taken"
 msgstr "ภาพหน้าจอที่ถ่าย"
 
-#: src/rcw.c:2319
+#: src/rcw.c:2321
 #, fuzzy
 msgid "_Menu"
 msgstr "_Menu"
 
-#: src/rcw.c:2320
+#: src/rcw.c:2322
 #, fuzzy
 msgid "Menu"
 msgstr "เมนู"
 
-#: src/rcw.c:2329
+#: src/rcw.c:2331
 #, fuzzy
 #| msgid "Open Main Window"
 msgid "Open the Remmina main window"
 msgstr "เปิดหน้าต่างหลัก Remmina"
 
-#: src/rcw.c:2339
+#: src/rcw.c:2341
 #, fuzzy
 msgid "Duplicate current connection"
 msgstr "ทําซ้ําการเชื่อมต่อปัจจุบัน"
 
-#: src/rcw.c:2356
+#: src/rcw.c:2358
 msgid "Resize the window to fit in remote resolution"
 msgstr "ปรับขนาดหน้าต่างให้พอดีกับความละเอียดของเครื่องทางไกล"
 
-#: src/rcw.c:2367
+#: src/rcw.c:2369
 msgid "Toggle fullscreen mode"
 msgstr "สลับสถานะโหมดเต็มจอ"
 
-#: src/rcw.c:2413 data/ui/remmina_preferences.glade:1330
+#: src/rcw.c:2415 data/ui/remmina_preferences.glade:1330
 #: data/ui/remmina_preferences.glade:1340
 #, fuzzy
 msgid "Multi monitor"
 msgstr "จอภาพหลายจอ"
 
-#: src/rcw.c:2429
+#: src/rcw.c:2431
 #, fuzzy
 msgid "Toggle dynamic resolution update"
 msgstr "สลับการปรับปรุงความละเอียดแบบไดนามิก"
 
-#: src/rcw.c:2439
+#: src/rcw.c:2441
 msgid "Toggle scaled mode"
 msgstr "สลับสถานะโหมดการปรับขนาด"
 
-#: src/rcw.c:2479 data/ui/remmina_preferences.glade:1064
+#: src/rcw.c:2481 data/ui/remmina_preferences.glade:1064
 msgid "Switch tab pages"
 msgstr "สลับหน้าแท็บ"
 
-#: src/rcw.c:2489
+#: src/rcw.c:2491
 msgid "Grab all keyboard events"
 msgstr "จับทุกเหตุการณ์แป้นพิมพ์"
 
-#: src/rcw.c:2506
+#: src/rcw.c:2508
 msgid "Preferences"
 msgstr "ปรับแต่ง"
 
-#: src/rcw.c:2515
+#: src/rcw.c:2517
 msgid "_Tools"
 msgstr "เครื่องมือ"
 
-#: src/rcw.c:2516 data/ui/remmina_main.glade:207
+#: src/rcw.c:2518 data/ui/remmina_main.glade:207
 msgid "Tools"
 msgstr "เครื่องมือ"
 
-#: src/rcw.c:2529 data/ui/remmina_preferences.glade:1265
+#: src/rcw.c:2531 data/ui/remmina_preferences.glade:1265
 #: data/ui/remmina_preferences.glade:1275
 #, fuzzy
 msgid "Screenshot"
 msgstr "ภาพหน้าจอ"
 
-#: src/rcw.c:2543 data/ui/remmina_preferences.glade:1172
+#: src/rcw.c:2545 data/ui/remmina_preferences.glade:1172
 msgid "Minimize window"
 msgstr "ย่อหน้าต่าง"
 
-#: src/rcw.c:2553 data/ui/remmina_preferences.glade:1203
+#: src/rcw.c:2555 data/ui/remmina_preferences.glade:1203
 msgid "Disconnect"
 msgstr "ตัดการเชื่อมต่อ"
 
-#: src/rcw.c:4362
+#: src/rcw.c:4364
 #, fuzzy, c-format
 msgid "The file “%s” is corrupted, unreadable, or could not be found."
 msgstr "แฟ้ม \"%s\" เสียหาย ไม่สามารถอ่านได้ หรือหาไม่พบ"
 
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. TRANSLATORS: 'GtkSocket feature is not available'.
-#: src/rcw.c:4436
+#: src/rcw.c:4438
 msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 msgstr ""
 
-#: src/rcw.c:4577
+#: src/rcw.c:4579
 #, fuzzy
 msgid ""
 "Warning: This plugin requires GtkSocket, but this feature is unavailable in "
@@ -513,7 +518,7 @@ msgstr "คําเตือน: ปลั๊กอินนี้ต้อง�
 
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. 'GtkSocket feature is not available'.
-#: src/rcw.c:4583
+#: src/rcw.c:4585
 msgid ""
 "Plugins relying on GtkSocket can't run in a Wayland session.\n"
 "For more info and a possible workaround, please visit the Remmina wiki at:\n"
@@ -522,7 +527,7 @@ msgid ""
 "available-in-a-Wayland-session"
 msgstr ""
 
-#: src/rcw.c:4597
+#: src/rcw.c:4599
 #, fuzzy
 #| msgid "Open Main Window"
 msgid "Open in web browser"

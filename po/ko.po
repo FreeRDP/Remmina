@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-06-18 11:41+0000\n"
+"POT-Creation-Date: 2022-06-19 23:16+0000\n"
 "PO-Revision-Date: 2022-05-05 15:13+0000\n"
 "Last-Translator: WonYong Jung <hirameki@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -356,101 +356,106 @@ msgstr "클립보드 내용을 키 입력으로 보내기"
 
 #: src/rcw.c:2064
 msgid ""
-"CAUTION! We send hardware codes from your local keyboard,\n"
-"many characters can be different from the original text.\n"
+"CAUTION: Pasted text will be sent as a sequence of key-codes as if typed on "
+"your local keyboard.\n"
 "\n"
-"  • To get the best result, set the same keyboard on the client and server.\n"
+"  • For best results use same keyboard settings for both, client and "
+"server.\n"
 "\n"
-"  • Non composable characters using your keyboard will not be transferred.\n"
+"  • If client-keyboard is different from server-keyboard the received text "
+"can contain wrong or erroneous characters.\n"
+"\n"
+"  • Unicode characters and other special characters that can't be translated "
+"to local key-codes will be ignored by the receiver.\n"
 "\n"
 msgstr ""
 
-#: src/rcw.c:2176
+#: src/rcw.c:2178
 msgid "Turn off scaling to avoid screenshot distortion."
 msgstr "스크린 샷 왜곡 방지를 위해서 크기 조정 끄기."
 
-#: src/rcw.c:2236 plugins/www/www_plugin.c:864
+#: src/rcw.c:2238 plugins/www/www_plugin.c:864
 msgid "Screenshot taken"
 msgstr "스크린 샷을 성공했습니다"
 
-#: src/rcw.c:2319
+#: src/rcw.c:2321
 msgid "_Menu"
 msgstr "메뉴(_M)"
 
-#: src/rcw.c:2320
+#: src/rcw.c:2322
 msgid "Menu"
 msgstr "메뉴"
 
-#: src/rcw.c:2329
+#: src/rcw.c:2331
 msgid "Open the Remmina main window"
 msgstr "Remmina 기본 창 열기"
 
-#: src/rcw.c:2339
+#: src/rcw.c:2341
 msgid "Duplicate current connection"
 msgstr "현재 연결 중복"
 
-#: src/rcw.c:2356
+#: src/rcw.c:2358
 msgid "Resize the window to fit in remote resolution"
 msgstr "원격 해상도에 맞게 창 크기 조정"
 
-#: src/rcw.c:2367
+#: src/rcw.c:2369
 msgid "Toggle fullscreen mode"
 msgstr "전체 화면 모드 전환"
 
-#: src/rcw.c:2413 data/ui/remmina_preferences.glade:1330
+#: src/rcw.c:2415 data/ui/remmina_preferences.glade:1330
 #: data/ui/remmina_preferences.glade:1340
 msgid "Multi monitor"
 msgstr "멀티 모니터"
 
-#: src/rcw.c:2429
+#: src/rcw.c:2431
 msgid "Toggle dynamic resolution update"
 msgstr "동적 해상도 갱신 전환"
 
-#: src/rcw.c:2439
+#: src/rcw.c:2441
 msgid "Toggle scaled mode"
 msgstr "크기 조정 모드 전환"
 
-#: src/rcw.c:2479 data/ui/remmina_preferences.glade:1064
+#: src/rcw.c:2481 data/ui/remmina_preferences.glade:1064
 msgid "Switch tab pages"
 msgstr "탭 페이지 전환"
 
-#: src/rcw.c:2489
+#: src/rcw.c:2491
 msgid "Grab all keyboard events"
 msgstr "모든 키보드 이벤트 기록"
 
-#: src/rcw.c:2506
+#: src/rcw.c:2508
 msgid "Preferences"
 msgstr "기본 설정"
 
-#: src/rcw.c:2515
+#: src/rcw.c:2517
 msgid "_Tools"
 msgstr "도구(_T)"
 
-#: src/rcw.c:2516 data/ui/remmina_main.glade:207
+#: src/rcw.c:2518 data/ui/remmina_main.glade:207
 msgid "Tools"
 msgstr "도구"
 
-#: src/rcw.c:2529 data/ui/remmina_preferences.glade:1265
+#: src/rcw.c:2531 data/ui/remmina_preferences.glade:1265
 #: data/ui/remmina_preferences.glade:1275
 msgid "Screenshot"
 msgstr "스크린샷"
 
-#: src/rcw.c:2543 data/ui/remmina_preferences.glade:1172
+#: src/rcw.c:2545 data/ui/remmina_preferences.glade:1172
 msgid "Minimize window"
 msgstr "창 최소화"
 
-#: src/rcw.c:2553 data/ui/remmina_preferences.glade:1203
+#: src/rcw.c:2555 data/ui/remmina_preferences.glade:1203
 msgid "Disconnect"
 msgstr "연결 끊기"
 
-#: src/rcw.c:4362
+#: src/rcw.c:4364
 #, c-format
 msgid "The file “%s” is corrupted, unreadable, or could not be found."
 msgstr "\"%s\" 파일이 손상 또는 읽을 수 없거나 찾을 수 없습니다."
 
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. TRANSLATORS: 'GtkSocket feature is not available'.
-#: src/rcw.c:4436
+#: src/rcw.c:4438
 msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
@@ -458,7 +463,7 @@ msgstr ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 
-#: src/rcw.c:4577
+#: src/rcw.c:4579
 msgid ""
 "Warning: This plugin requires GtkSocket, but this feature is unavailable in "
 "a Wayland session."
@@ -468,7 +473,7 @@ msgstr ""
 
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. 'GtkSocket feature is not available'.
-#: src/rcw.c:4583
+#: src/rcw.c:4585
 msgid ""
 "Plugins relying on GtkSocket can't run in a Wayland session.\n"
 "For more info and a possible workaround, please visit the Remmina wiki at:\n"
@@ -482,7 +487,7 @@ msgstr ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 
-#: src/rcw.c:4597
+#: src/rcw.c:4599
 msgid "Open in web browser"
 msgstr "웹 브라우저에서 열기"
 
