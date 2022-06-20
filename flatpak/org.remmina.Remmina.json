@@ -113,12 +113,13 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://xorg.freedesktop.org/archive/individual/app/xauth-1.1.1.tar.bz2",
-                    "sha256": "164ea0a29137b284a47b886ef2affcb0a74733bf3aad04f9b106b1a6c82ebd92",
+                    "url": "https://xorg.freedesktop.org/archive/individual/app/xauth-1.1.2.tar.xz",
+                    "sha256": "78ba6afd19536ced1dddb3276cba6e9555a211b468a06f95f6a97c62ff8ee200",
                     "x-checker-data": {
                         "type": "anitya",
                         "project-id": 5253,
-                        "url-template": "https://xorg.freedesktop.org/archive/individual/app/xauth-$version.tar.bz2"
+                        "stable-only": true,
+                        "url-template": "https://xorg.freedesktop.org/archive/individual/app/xauth-$version.tar.xz"
                     }
                 }
             ]
@@ -135,8 +136,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/OpenPrinting/cups/archive/refs/tags/v2.4.1.tar.gz",
-                    "sha256": "df195c931349949293c832e1337527e7831e1225f567b60caf5d9c206c2bffdc",
+                    "url": "https://github.com/OpenPrinting/cups/archive/refs/tags/v2.4.2.tar.gz",
+                    "sha256": "7095b2977bb728ded5566a5c802866062840d6541fd027836865949a407c3682",
                     "x-checker-data": {
                         "type": "anitya",
                         "project-id": 380,
@@ -296,8 +297,8 @@
                     "sources": [
                         {
                             "type": "file",
-                            "url": "https://files.pythonhosted.org/packages/d9/41/d9cfb4410589805cd787f8a82cddd13142d9bf7449d12adf2d05a4a7d633/pyparsing-3.0.8-py3-none-any.whl",
-                            "sha256": "ef7b523f6356f763771559412c0d7134753f037822dad1b16945b7b846f7ad06",
+                            "url": "https://files.pythonhosted.org/packages/6c/10/a7d0fa5baea8fe7b50f448ab742f26f52b80bfca85ac2be9d35cdd9a3246/pyparsing-3.0.9-py3-none-any.whl",
+                            "sha256": "5026bae9a10eeaefb61dab2f09052b9f4307d44aee4eda64b309723d8d206bbc",
                             "x-checker-data": {
                                 "type": "pypi",
                                 "name": "pyparsing",
@@ -412,14 +413,9 @@
             "name": "libsodium",
             "sources": [
                 {
-                    "type": "archive",
-                    "url": "https://github.com/jedisct1/libsodium/archive/1.0.18-RELEASE.tar.gz",
-                    "sha256": "b7292dd1da67a049c8e78415cd498ec138d194cfdb302e716b08d26b80fecc10",
-                    "x-checker-data": {
-                        "type": "anitya",
-                        "project-id": 1728,
-                        "url-template": "https://github.com/jedisct1/libsodium/archive/$version.tar.gz"
-                    }
+                    "type": "git",
+                    "url": "https://github.com/jedisct1/libsodium.git",
+                    "commit": "7389bf7f2968be75520e932704f18f038c29e581"
                 }
             ],
             "post-install": [
