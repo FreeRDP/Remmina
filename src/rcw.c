@@ -2067,7 +2067,7 @@ static void rcw_toolbar_tools(GtkToolItem *toggle, RemminaConnectionWindow *cnnw
 				"\n"
 				"  • If client-keyboard is different from server-keyboard the received text can contain wrong or erroneous characters.\n"
 				"\n"
-				"  • Unicode characters and other special characters that can't be translated to local key-codes will be ignored by the receiver.\n"
+				"  • Unicode characters and other special characters that can't be translated to local key-codes won’t be sent to the server.\n"
 				"\n");
 			gtk_widget_set_tooltip_text(menuitem, k_tooltip);
 			gtk_menu_shell_append(GTK_MENU_SHELL(submenu_keystrokes), menuitem);
