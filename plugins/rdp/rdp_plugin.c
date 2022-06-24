@@ -675,9 +675,9 @@ static BOOL remmina_rdp_pre_connect(freerdp *instance)
 	freerdp_settings_set_uint32(settings, FreeRDP_OffscreenSupportLevel, 1);
 
 	PubSub_SubscribeChannelConnected(instance->context->pubSub,
-					 (pChannelConnectedEventHandler)remmina_rdp_OnChannelConnectedEventHandler);
+					 remmina_rdp_OnChannelConnectedEventHandler);
 	PubSub_SubscribeChannelDisconnected(instance->context->pubSub,
-					    (pChannelDisconnectedEventHandler)remmina_rdp_OnChannelDisconnectedEventHandler);
+						remmina_rdp_OnChannelDisconnectedEventHandler);
 
 	if (!freerdp_client_load_addins(channels, settings))
 		return FALSE;
@@ -971,9 +971,9 @@ static void remmina_rdp_post_disconnect(freerdp *instance)
 		return;
 
 	PubSub_UnsubscribeChannelConnected(instance->context->pubSub,
-					   (pChannelConnectedEventHandler)remmina_rdp_OnChannelConnectedEventHandler);
+					   remmina_rdp_OnChannelConnectedEventHandler);
 	PubSub_UnsubscribeChannelDisconnected(instance->context->pubSub,
-						  (pChannelDisconnectedEventHandler)remmina_rdp_OnChannelDisconnectedEventHandler);
+						  remmina_rdp_OnChannelDisconnectedEventHandler);
 
 	/* The remaining cleanup will be continued on main thread by complete_cleanup_on_main_thread() */
 }
