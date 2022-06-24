@@ -386,7 +386,7 @@ static gboolean remmina_rdp_tunnel_init(RemminaProtocolWidget *gp)
 	return TRUE;
 }
 
-BOOL rf_auto_reconnect(rfContext *rfi)
+static BOOL rf_auto_reconnect(rfContext *rfi)
 {
 	TRACE_CALL(__func__);
 	rdpSettings *settings = rfi->instance->settings;
@@ -503,7 +503,7 @@ BOOL rf_auto_reconnect(rfContext *rfi)
 	return FALSE;
 }
 
-BOOL rf_begin_paint(rdpContext *context)
+static BOOL rf_begin_paint(rdpContext *context)
 {
 	TRACE_CALL(__func__);
 	rdpGdi *gdi;
@@ -518,7 +518,7 @@ BOOL rf_begin_paint(rdpContext *context)
 	return TRUE;
 }
 
-BOOL rf_end_paint(rdpContext *context)
+static BOOL rf_end_paint(rdpContext *context)
 {
 	TRACE_CALL(__func__);
 	rdpGdi *gdi;
@@ -648,7 +648,7 @@ static BOOL rf_keyboard_set_indicators(rdpContext *context, UINT16 led_flags)
 	return TRUE;
 }
 
-BOOL rf_keyboard_set_ime_status(rdpContext *context, UINT16 imeId, UINT32 imeState,
+static BOOL rf_keyboard_set_ime_status(rdpContext *context, UINT16 imeId, UINT32 imeState,
 				UINT32 imeConvMode)
 {
 	TRACE_CALL(__func__);
@@ -659,7 +659,6 @@ BOOL rf_keyboard_set_ime_status(rdpContext *context, UINT16 imeId, UINT32 imeSta
 
 	return TRUE;
 }
-
 
 static BOOL remmina_rdp_pre_connect(freerdp *instance)
 {
@@ -901,8 +900,8 @@ static BOOL remmina_rdp_gw_authenticate(freerdp *instance, char **username, char
 }
 
 static DWORD remmina_rdp_verify_certificate_ex(freerdp *instance, const char *host, UINT16 port,
-					       const char *common_name, const char *subject,
-					       const char *issuer, const char *fingerprint, DWORD flags)
+						   const char *common_name, const char *subject,
+						   const char *issuer, const char *fingerprint, DWORD flags)
 {
 	TRACE_CALL(__func__);
 	gint status;
@@ -924,7 +923,7 @@ static DWORD
 remmina_rdp_verify_certificate(freerdp *instance, const char *common_name, const char *subject, const char *issuer, const char *fingerprint, BOOL host_mismatch) __attribute__ ((unused));
 static DWORD
 remmina_rdp_verify_certificate(freerdp *instance, const char *common_name, const char *subject,
-			       const char *issuer, const char *fingerprint, BOOL host_mismatch)
+				   const char *issuer, const char *fingerprint, BOOL host_mismatch)
 {
 	TRACE_CALL(__func__);
 	gint status;
@@ -943,10 +942,10 @@ remmina_rdp_verify_certificate(freerdp *instance, const char *common_name, const
 }
 
 static DWORD remmina_rdp_verify_changed_certificate_ex(freerdp *instance, const char *host, UINT16 port,
-						       const char *common_name, const char *subject,
-						       const char *issuer, const char *fingerprint,
-						       const char *old_subject, const char *old_issuer,
-						       const char *old_fingerprint, DWORD flags)
+							   const char *common_name, const char *subject,
+							   const char *issuer, const char *fingerprint,
+							   const char *old_subject, const char *old_issuer,
+							   const char *old_fingerprint, DWORD flags)
 {
 	TRACE_CALL(__func__);
 	gint status;
@@ -974,7 +973,7 @@ static void remmina_rdp_post_disconnect(freerdp *instance)
 	PubSub_UnsubscribeChannelConnected(instance->context->pubSub,
 					   (pChannelConnectedEventHandler)remmina_rdp_OnChannelConnectedEventHandler);
 	PubSub_UnsubscribeChannelDisconnected(instance->context->pubSub,
-					      (pChannelDisconnectedEventHandler)remmina_rdp_OnChannelDisconnectedEventHandler);
+						  (pChannelDisconnectedEventHandler)remmina_rdp_OnChannelDisconnectedEventHandler);
 
 	/* The remaining cleanup will be continued on main thread by complete_cleanup_on_main_thread() */
 }
@@ -982,15 +981,13 @@ static void remmina_rdp_post_disconnect(freerdp *instance)
 static void remmina_rdp_main_loop(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
-	DWORD nCount;
 	DWORD status;
-	HANDLE handles[64];
 	gchar buf[100];
 	rfContext *rfi = GET_PLUGIN_DATA(gp);
 
-
 	while (!freerdp_shall_disconnect(rfi->instance)) {
-		nCount = freerdp_get_event_handles(rfi->instance->context, &handles[0], 64);
+		HANDLE handles[64]={0};
+		DWORD nCount = freerdp_get_event_handles(rfi->instance->context, &handles[0], 64);
 		if (rfi->event_handle)
 			handles[nCount++] = rfi->event_handle;
 
@@ -1040,7 +1037,7 @@ static void remmina_rdp_main_loop(RemminaProtocolWidget *gp)
 	REMMINA_PLUGIN_DEBUG("RDP client disconnected");
 }
 
-int remmina_rdp_load_static_channel_addin(rdpChannels *channels, rdpSettings *settings, char *name, void *data)
+static int remmina_rdp_load_static_channel_addin(rdpChannels *channels, rdpSettings *settings, char *name, void *data)
 {
 	TRACE_CALL(__func__);
 	PVIRTUALCHANNELENTRY entry = NULL;
@@ -1067,7 +1064,7 @@ int remmina_rdp_load_static_channel_addin(rdpChannels *channels, rdpSettings *se
 	return FALSE;
 }
 
-gchar *remmina_rdp_find_prdriver(char *smap, char *prn)
+static gchar *remmina_rdp_find_prdriver(char *smap, char *prn)
 {
 	char c, *p, *dr;
 	int matching;
@@ -1142,7 +1139,7 @@ found:
  *   - For each enumerated local printer tries to set the Printer Name and Driver.
  * @return 1 if there are other printers to scan or 0 when it's done.
  */
-int remmina_rdp_set_printers(void *user_data, unsigned flags, cups_dest_t *dest)
+static int remmina_rdp_set_printers(void *user_data, unsigned flags, cups_dest_t *dest)
 {
 	rfContext *rfi = (rfContext *)user_data;
 	RemminaProtocolWidget *gp = rfi->protocol_widget;
