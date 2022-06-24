@@ -125,7 +125,9 @@ GtkDialog* remmina_ext_exec_new(RemminaFile* remminafile, const char *remmina_ex
 			g_error_free(error);
 		}
 		g_strfreev(argv);
+		g_free(cmd);
 		return (pcspinner->dialog);
 	}
+	g_free(cmd);
 	return FALSE;
 }
