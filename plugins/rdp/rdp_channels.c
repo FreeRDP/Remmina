@@ -83,7 +83,7 @@ void remmina_rdp_OnChannelConnectedEventHandler(void* context, ChannelConnectedE
 	REMMINA_PLUGIN_DEBUG("Channel %s has been opened", e->name);
 }
 
-void remmina_rdp_OnChannelDisconnectedEventHandler(void* context, ChannelConnectedEventArgs* e)
+void remmina_rdp_OnChannelDisconnectedEventHandler(void* context, ChannelDisconnectedEventArgs* e)
 {
 	TRACE_CALL(__func__);
 	rfContext* rfi = (rfContext*)context;
