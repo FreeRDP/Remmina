@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2022-06-24 13:38+0000\n"
-"PO-Revision-Date: 2022-07-12 01:47+0000\n"
+"PO-Revision-Date: 2022-07-12 04:17+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/remmina/"
 "remmina/hu/>\n"
@@ -1503,20 +1503,6 @@ msgstr ""
 "- unix:///path/socket.sock</big>"
 
 #: src/remmina_file_editor.c:69
-#, fuzzy
-#| msgid ""
-#| "<tt><big>• command in PATH args %h\n"
-#| "• /path/to/foo -options %h %u\n"
-#| "• %h is substituted with the server name\n"
-#| "• %t is substituted with the SSH server name\n"
-#| "• %u is substituted with the username\n"
-#| "• %U is substituted with the SSH username\n"
-#| "• %p is substituted with Remmina profile name\n"
-#| "• %g is substituted with Remmina profile group name\n"
-#| "• %d is substituted with local date and time in ISO 8601 format\n"
-#| "Do not run in background if you want the command to be executed before "
-#| "connecting.\n"
-#| "</big></tt>"
 msgid ""
 "<big>• command in PATH args %h\n"
 "• /path/to/foo -options %h %u\n"
@@ -1531,7 +1517,7 @@ msgid ""
 "connecting.\n"
 "</big>"
 msgstr ""
-"<tt><big>* parancs az ÚTVONAL argumentumokban %h\n"
+"<big>* parancs az ÚTVONAL argumentumokban %h\n"
 "* /útvonal/ehhez -kapcsolók %h %u\n"
 "* %h a kiszolgáló nevére lesz cserélve\n"
 "* %t az SSH kiszolgáló nevére lesz cserélve\n"
@@ -1539,9 +1525,9 @@ msgstr ""
 "* %U az SSH felhasználónévre lesz cserélve\n"
 "* %p a Remmina profilnévre lesz cserélve\n"
 "* %g a Remmina profilcsoport nevére lesz cserélve\n"
-"Ne futtassa a háttérben, ha a parancsot a kapcsolódás előtt akarja "
-"futtatni.\n"
-"</big></tt>"
+"Ne futtassa a háttérben, ha a parancsot a kapcsolódás előtt akarja futtatni."
+"\n"
+"</big>"
 
 #: src/remmina_file_editor.c:83
 #, fuzzy
@@ -1878,9 +1864,9 @@ msgstr ""
 "Appindicator bővítményt"
 
 #: src/remmina_ssh_plugin.c:342
-#, fuzzy, c-format
+#, c-format
 msgid "Connected to %s:%d via SSH"
-msgstr "Csatlakozás ehhez: „%s” SSH-val…"
+msgstr "Csatlakozás ehhez: „%s:%d” SSH-n keresztül"
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_ssh_plugin.c:550
@@ -2568,7 +2554,7 @@ msgstr "Alapértelmezett"
 
 #: plugins/rdp/rdp_plugin.c:2699
 msgid "0 — Windows 7 compatible"
-msgstr ""
+msgstr "0 — Windows 7 kompatibilitás"
 
 #: plugins/rdp/rdp_plugin.c:2700
 msgid "1"
@@ -3159,9 +3145,9 @@ msgid "Disconnected from %s:%d via SPICE"
 msgstr "Kapcsolat bontva: %s:%d SPICE kiszolgáló"
 
 #: plugins/spice/spice_plugin.c:391
-#, fuzzy, c-format
+#, c-format
 msgid "Connected to %s:%d via SPICE"
-msgstr "Csatlakozás ehhez: „%s” SSH-val…"
+msgstr "Csatlakozás ehhez: „%s:%d” SPICE-on keresztül"
 
 #: plugins/spice/spice_plugin.c:403
 #, fuzzy
@@ -3299,7 +3285,7 @@ msgstr "Próbálja meg újra a titkosítás engedélyezése után ebben a profil
 #: plugins/vnc/vnc_plugin.c:1713
 #, fuzzy, c-format
 msgid "Connected to %s:%d via VNC"
-msgstr "Csatlakozás ehhez: „%s” SSH-val…"
+msgstr "Csatlakozás ehhez: „%s” VNC-n keresztül"
 
 #: plugins/vnc/vnc_plugin.c:1732
 #, c-format
@@ -3376,6 +3362,8 @@ msgstr ""
 #: plugins/vnc/vnc_plugin.c:2058
 msgid "Enabling this may help when the remote desktop looks scrambled"
 msgstr ""
+"A funkció engedélyezése segíthet a távoli asztal grafikus hibáinak "
+"megszüntetésében"
 
 #: plugins/vnc/vnc_plugin.c:2061 plugins/gvnc/gvnc_plugin.c:867
 #, fuzzy
@@ -3665,9 +3653,9 @@ msgid "Terminating X2Go sessions can take a moment."
 msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:621 plugins/x2go/x2go_plugin.c:623
-#, fuzzy, c-format
+#, c-format
 msgid "Unknown property '%i'"
-msgstr "Ismeretlen ingatlan"
+msgstr "Ismeretlen ingatlan „%i”"
 
 #: plugins/x2go/x2go_plugin.c:711 plugins/x2go/x2go_plugin.c:758
 #, fuzzy
@@ -3679,6 +3667,8 @@ msgid ""
 "Neither the 'dialog' nor 'treeview' parameters are initialized! At least one "
 "of them must be given."
 msgstr ""
+"Sem a \"dialog\" sem a \"treeview\" paraméterek nincsenek megadva! Legalább "
+"egyet meg kell, hogy adj!"
 
 #: plugins/x2go/x2go_plugin.c:732
 #, fuzzy
@@ -3733,12 +3723,13 @@ msgstr ""
 "A szükséges PyHoca-CLI folyamat internetkapcsolati problémába ütközött."
 
 #: plugins/x2go/x2go_plugin.c:975
-#, fuzzy, c-format
-#| msgid "Could not start SSH session. %s"
+#, c-format
 msgid ""
 "Could not start PyHoca-CLI:\n"
 "%s"
-msgstr "Nem tudta elindítani a PyHoca-CLI-t (%i): '%s'"
+msgstr ""
+"Nem tudta elindítani a PyHoca-CLI-t:\n"
+"%s"
 
 #: plugins/x2go/x2go_plugin.c:986
 #, fuzzy, c-format
@@ -3763,7 +3754,7 @@ msgstr "az 'env' paraméter vagy érvénytelen vagy nem inicializált."
 
 #: plugins/x2go/x2go_plugin.c:1051
 msgid "GtkTreePath 'path' describes a non-existing row!"
-msgstr ""
+msgstr "GtkTreePath 'path' nincs ilyen sor!"
 
 #: plugins/x2go/x2go_plugin.c:1116
 msgid "Parameter 'custom_data' is not fully initialized!"
@@ -3991,9 +3982,9 @@ msgid "Available feature[%i]: '%s'"
 msgstr "Elérhető funkció[%i]: '%s''"
 
 #: plugins/x2go/x2go_plugin.c:2583
-#, fuzzy, c-format
+#, c-format
 msgid "Connected to %s:%d via X2Go"
-msgstr "Csatlakozás ehhez: „%s” SSH-val…"
+msgstr "Csatlakozás ehhez: „%s:%d” X2Go-n keresztül"
 
 #: plugins/x2go/x2go_plugin.c:2677
 #, fuzzy
@@ -4669,7 +4660,7 @@ msgstr ""
 
 #: data/ui/remmina_news.glade:169
 msgid "Receives updated news from remmina.org"
-msgstr ""
+msgstr "Friss híreket kap innen: remmina.org"
 
 #: data/ui/remmina_news.glade:182
 #, fuzzy
@@ -4983,7 +4974,7 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:495
 msgid "Confirm before closing multiple tabs"
-msgstr ""
+msgstr "Elfogadás mielőtt több felületet zárnál be"
 
 #: data/ui/remmina_preferences.glade:529
 #, fuzzy
@@ -5253,10 +5244,14 @@ msgid ""
 "Time in seconds before Remmina will lock the session and asks for a password "
 "again. Default: 300 Seconds."
 msgstr ""
+"Időlimit mielőtt a Remmina munkamenet lezár és kéri a jelszót. "
+"Alapértelmezett: 300 másodperc."
 
 #: data/ui/remmina_preferences.glade:1644
 msgid "Set and use a secret key to protect Remmina from unauthorized use."
 msgstr ""
+"Állits be egy titkos jelszót, hogy megakadályozd az illetéktelenek "
+"behatolását."
 
 #: data/ui/remmina_preferences.glade:1649
 #, fuzzy
@@ -5270,15 +5265,15 @@ msgstr "Használjon titkos kulcs hitelesítés néhány modulhoz"
 
 #: data/ui/remmina_preferences.glade:1680
 msgid "Valid for"
-msgstr ""
+msgstr "Érvényes"
 
 #: data/ui/remmina_preferences.glade:1691
 msgid "Number of seconds to keep password valid for"
-msgstr ""
+msgstr "Jelszó érvényességének ideje másodpercben"
 
 #: data/ui/remmina_preferences.glade:1696
 msgid "timeout in seconds (default 300)"
-msgstr ""
+msgstr "időtúllépés másodpercben (alapértelmezett 300)"
 
 #: data/ui/remmina_preferences.glade:1708
 #, fuzzy
@@ -5294,11 +5289,13 @@ msgstr "Biztonságos jelszótárolás a KWallet-ben"
 #: data/ui/remmina_preferences.glade:1723
 msgid "Creation, editing, copying, and deletions require the Remmina password"
 msgstr ""
+"Létrehozáshoz, szerkesztéshez, másoláshoz, törléshez a Remmina jelszó "
+"szükséges"
 
 #. Creation, editing, copying, and deletions require the primary password
 #: data/ui/remmina_preferences.glade:1727
 msgid "Require to modify"
-msgstr ""
+msgstr "Módosítás szükséges"
 
 #: data/ui/remmina_preferences.glade:1769
 #, fuzzy
@@ -5316,18 +5313,27 @@ msgid ""
 "\"Intermediate\" doesn't use as much memory or processing power, and "
 "\"Sensitive\" is more secure, but uses +1 GiB of RAM and many CPU cycles. "
 msgstr ""
+"A jelszavak tárolásához használt titkosító eljárások.\n"
+"\n"
+"A \"Weak\" metódus kivételével mindegyik ajánlott, az alapértelmezett a "
+"\"keystore\" mivel integrálva van a KDE/Plasma és GNOME asztali "
+"környezetekkel.\n"
+"\n"
+"az \"Intermediate\" kevesebb memóriát és számítási teljesítményt igényel, a "
+"\"Sensitive\" biztonságosabb, de +1 GB memóriát és több számítási "
+"teljesítményt igényel. "
 
 #: data/ui/remmina_preferences.glade:1789
 msgid "Intermediate (+64 MiB RAM)"
-msgstr ""
+msgstr "Közepes (+64 MiB RAM)"
 
 #: data/ui/remmina_preferences.glade:1790
 msgid "Strong (+256 MiB, ~2009 CPU)"
-msgstr ""
+msgstr "Erős (+256 MiB, ~2009 CPU)"
 
 #: data/ui/remmina_preferences.glade:1791
 msgid "Sensitive (+1 GiB, ~2014 CPU)"
-msgstr ""
+msgstr "Érzékeny (+1 GiB, ~2014 CPU)"
 
 #: data/ui/remmina_preferences.glade:1807
 #, fuzzy
@@ -5336,7 +5342,7 @@ msgstr "Beállítások szerkesztése"
 
 #: data/ui/remmina_preferences.glade:1832
 msgid "Automatically accept all fingerprints and certificates"
-msgstr "Minden ujjlenyomat és tanúsítvány  automatikus elfogadása"
+msgstr "Minden ujjlenyomat és tanúsítvány automatikus elfogadása"
 
 #: data/ui/remmina_preferences.glade:1837
 #, fuzzy
@@ -5396,7 +5402,7 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:2066
 msgid "Show bold text in bright colors"
-msgstr ""
+msgstr "Félkövér betűk jelölése világos színnel"
 
 #: data/ui/remmina_preferences.glade:2080
 #, fuzzy
