@@ -1254,18 +1254,22 @@ static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 
 			remmina_plugin_vnc_incoming_connection(gp, cl);
 		} else {
-			remmina_plugin_service->get_server_port(host, VNC_DEFAULT_PORT, &s, &cl->serverPort);
-			cl->serverHost = g_strdup(s);
-			g_free(s);
-
-			/* Support short-form (:0, :1) */
-			if (cl->serverPort < 100)
-				cl->serverPort += VNC_DEFAULT_PORT;
+			if (strstr(host, "unix://") == host) {
+				cl->serverHost = g_strdup(host + strlen("unix://"));
+				cl->serverPort  = 0;
+			} else {
+				remmina_plugin_service->get_server_port(host, VNC_DEFAULT_PORT, &s, &cl->serverPort);
+				cl->serverHost = g_strdup(s);
+				g_free(s);
+				/* Support short-form (:0, :1) */
+				if (cl->serverPort < 100)
+					cl->serverPort += VNC_DEFAULT_PORT;
+			}
 		}
 		g_free(host);
 		host = NULL;
 
-		if (remmina_plugin_service->file_get_string(remminafile, "proxy")) {
+		if (strstr(cl->serverHost, "unix://") != cl->serverHost && remmina_plugin_service->file_get_string(remminafile, "proxy")) {
 			remmina_plugin_service->get_server_port(
 				remmina_plugin_service->file_get_string(remminafile, "server"),
 				VNC_DEFAULT_PORT,
@@ -1682,6 +1686,7 @@ static gboolean remmina_plugin_vnc_open_connection(RemminaProtocolWidget *gp)
 	gpdata->connected = TRUE;
 	gchar *server;
 	gint port;
+	const gchar* raw_server;
 
 	remmina_plugin_service->protocol_plugin_register_hostkey(gp, gpdata->drawing_area);
 
@@ -1705,13 +1710,19 @@ static gboolean remmina_plugin_vnc_open_connection(RemminaProtocolWidget *gp)
 		gpdata->thread = 0;
 	}
 
-	remmina_plugin_service->get_server_port(remmina_plugin_service->file_get_string(remminafile, "server"),
-			VNC_DEFAULT_PORT,
-			&server,
-			&port);
+	raw_server = remmina_plugin_service->file_get_string(remminafile, "server");
 
-	REMMINA_PLUGIN_AUDIT(_("Connected to %s:%d via VNC"), server, port);
-	g_free(server), server = NULL;
+	if (strstr(raw_server, "unix://") == raw_server) {
+		REMMINA_PLUGIN_AUDIT(_("Connected to %s via VNC"), server);
+	} else {
+		remmina_plugin_service->get_server_port(raw_server,
+				VNC_DEFAULT_PORT,
+				&server,
+				&port);
+
+		REMMINA_PLUGIN_AUDIT(_("Connected to %s:%d via VNC"), server, port);
+		g_free(server), server = NULL;
+	}
 	return TRUE;
 }
 
