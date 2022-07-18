@@ -789,7 +789,7 @@ static gboolean gvnc_plugin_open_connection(RemminaProtocolWidget *gp)
 	else
 		vnc_display_open_host(VNC_DISPLAY(gpdata->vnc), host, g_strdup_printf("%d", port));
 	gpdata->lossy_encoding = remmina_plugin_service->file_get_int(remminafile, "lossy_encoding", FALSE);
-	vnc_display_set_lossy_encoding(VNC_DISPLAY(gpdata->vnc), gpdata->shared);
+	vnc_display_set_lossy_encoding(VNC_DISPLAY(gpdata->vnc), gpdata->lossy_encoding);
 	vnc_display_set_shared_flag(VNC_DISPLAY(gpdata->vnc), gpdata->shared);
 
 	if(host) g_free(host);
