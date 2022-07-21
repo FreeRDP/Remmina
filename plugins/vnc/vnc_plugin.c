@@ -1269,7 +1269,7 @@ static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 		g_free(host);
 		host = NULL;
 
-		if (strstr(cl->serverHost, "unix://") != cl->serverHost && remmina_plugin_service->file_get_string(remminafile, "proxy")) {
+		if (cl->serverHost && strstr(cl->serverHost, "unix://") != cl->serverHost && remmina_plugin_service->file_get_string(remminafile, "proxy")) {
 			remmina_plugin_service->get_server_port(
 				remmina_plugin_service->file_get_string(remminafile, "server"),
 				VNC_DEFAULT_PORT,
@@ -1712,7 +1712,7 @@ static gboolean remmina_plugin_vnc_open_connection(RemminaProtocolWidget *gp)
 
 	raw_server = remmina_plugin_service->file_get_string(remminafile, "server");
 
-	if (strstr(raw_server, "unix://") == raw_server) {
+	if (raw_server && strstr(raw_server, "unix://") == raw_server) {
 		REMMINA_PLUGIN_AUDIT(_("Connected to %s via VNC"), server);
 	} else {
 		remmina_plugin_service->get_server_port(raw_server,
