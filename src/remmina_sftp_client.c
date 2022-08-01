@@ -803,7 +803,7 @@ remmina_sftp_client_on_opendir(RemminaSFTPClient *client, gchar *dir, gpointer d
 		if (g_strcmp0(sftpattr->name, ".") != 0 &&
 		    g_strcmp0(sftpattr->name, "..") != 0) {
 			GET_SFTPATTR_TYPE(sftpattr, type);
-                      
+
 			tmp = remmina_ssh_convert(REMMINA_SSH(client->sftp), sftpattr->name);
 			remmina_ftp_client_add_file(REMMINA_FTP_CLIENT(client),
 						    REMMINA_FTP_FILE_COLUMN_TYPE, type,
@@ -812,7 +812,7 @@ remmina_sftp_client_on_opendir(RemminaSFTPClient *client, gchar *dir, gpointer d
 						    REMMINA_FTP_FILE_COLUMN_USER, sftpattr->owner,
 						    REMMINA_FTP_FILE_COLUMN_GROUP, sftpattr->group,
 						    REMMINA_FTP_FILE_COLUMN_PERMISSION, sftpattr->permissions,
-                            REMMINA_FTP_FILE_COLUMN_MODIFIED, sftpattr->mtime,
+						    REMMINA_FTP_FILE_COLUMN_MODIFIED, sftpattr->mtime,
 						    -1);
 			g_free(tmp);
 		}

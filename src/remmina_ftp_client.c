@@ -288,17 +288,17 @@ static void remmina_ftp_client_cell_data_modified(GtkTreeViewColumn *col, GtkCel
 	TRACE_CALL(__func__);
 	gint32 modified = 0;
 	GDateTime *datetime;
-    gchar* str;
-    
+	gchar* str;
+
 	gtk_tree_model_get(model, iter, REMMINA_FTP_FILE_COLUMN_MODIFIED, &modified, -1);    
-    
-    datetime = g_date_time_new_from_unix_local(modified);
-    str = g_date_time_format(datetime, "\%Y-\%m-\%d \%H:\%M:\%S");
-        
-    g_object_set(renderer, "text", str, NULL);
-    
-    g_date_time_unref(datetime);
-    g_free(str);
+
+	datetime = g_date_time_new_from_unix_local(modified);
+	str = g_date_time_format(datetime, "\%Y-\%m-\%d \%H:\%M:\%S");
+
+	g_object_set(renderer, "text", str, NULL);
+
+	g_date_time_unref(datetime);
+	g_free(str);
 }
 
 static void remmina_ftp_client_cell_data_size_progress(GtkTreeViewColumn *col, GtkCellRenderer *renderer, GtkTreeModel *model,
@@ -972,7 +972,7 @@ static void remmina_ftp_client_init(RemminaFTPClient *client)
 	gtk_tree_view_column_set_cell_data_func(column, renderer, remmina_ftp_client_cell_data_modified, NULL, NULL);
 	gtk_tree_view_column_set_sort_column_id(column, REMMINA_FTP_FILE_COLUMN_MODIFIED);
 	gtk_tree_view_append_column(GTK_TREE_VIEW(priv->file_list_view), column);
-    
+
 	/* Remote File List - Model */
 	priv->file_list_model = GTK_TREE_MODEL(
 		gtk_list_store_new(REMMINA_FTP_FILE_N_COLUMNS, G_TYPE_INT, G_TYPE_STRING, G_TYPE_FLOAT, G_TYPE_STRING,
@@ -1126,7 +1126,6 @@ void remmina_ftp_client_add_file(RemminaFTPClient *client, ...)
 	gint type;
 	gchar *name;
 	gchar *ptr;
-    gint32 modified;
 
 	va_start(args, client);
 	gtk_list_store_append(store, &iter);
@@ -1136,7 +1135,7 @@ void remmina_ftp_client_add_file(RemminaFTPClient *client, ...)
 	gtk_tree_model_get(GTK_TREE_MODEL(store), &iter,
 		REMMINA_FTP_FILE_COLUMN_TYPE, &type,
 		REMMINA_FTP_FILE_COLUMN_NAME, &name,
-        REMMINA_FTP_FILE_COLUMN_MODIFIED, &modified,
+		REMMINA_FTP_FILE_COLUMN_MODIFIED, &modified,
 		-1);
 
 	ptr = g_strdup_printf("%i%s", type, name);
