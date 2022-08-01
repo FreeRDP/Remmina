@@ -22,7 +22,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2022-07-15 20:26+0000\n"
-"PO-Revision-Date: 2022-07-31 22:14+0000\n"
+"PO-Revision-Date: 2022-08-01 13:16+0000\n"
 "Last-Translator: Dario David <xyzdario@yahoo.com.ar>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/remmina/remmina/"
 "es/>\n"
@@ -2415,6 +2415,7 @@ msgstr ""
 "Opciones para redirigir la entrada de audio:\n"
 "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
 "    [channel:<channel>] Audio input (microphone)\n"
+"  • sys:pulse\n"
 "  • format:1\n"
 "  • sys:oss,dev:1,format:1\n"
 "  • sys:alsa"
@@ -2433,6 +2434,7 @@ msgstr ""
 "  • [sys:<sys>,][dev:<dev>,][format:<formato>,][rate:<tasa>,]\n"
 "    [channel:<canal>] Salida de audio\n"
 "  • sys:pulse\n"
+"  • format:1\n"
 "  • sys:oss,dev:1,format:1\n"
 "  • sys:alsa"
 
@@ -3812,8 +3814,7 @@ msgid "Remmina VNC plugin for GNOME and KVM"
 msgstr "Plugin VNC de Remmina para GNOME y KVM"
 
 #: plugins/gvnc/gvnc_plugin.c:476
-#, fuzzy, c-format
-#| msgid "Authentication type"
+#, c-format
 msgid "Unsupported authentication type %u"
 msgstr "Tipo de autentificación no soportado %u"
 
@@ -3841,10 +3842,8 @@ msgid "Low colour (8 bits)"
 msgstr "Color bajo (8 bits)"
 
 #: plugins/gvnc/gvnc_plugin.c:823
-#, fuzzy
-#| msgid "True colour (24 bit)"
 msgid "Ultra low colour (3 bits)"
-msgstr "Color ultrabajo (3 bits)"
+msgstr "Muy baja densidad de color (3 bits)"
 
 #: plugins/gvnc/gvnc_plugin.c:847
 msgid "VNC password"
@@ -3855,15 +3854,12 @@ msgid "Use JPEG Compression"
 msgstr "Utilizar compresión JPEG"
 
 #: plugins/gvnc/gvnc_plugin.c:849
-#, fuzzy
-#| msgid "Browse the network to find a %s server"
 msgid "This might not work on all VNC servers"
-msgstr "Esto podría no funcionar en todos los servidores VNC"
+msgstr "Es posible que esto no funcione en todos los servidores VNC"
 
 #: plugins/gvnc/gvnc_plugin.c:850
-#, fuzzy
 msgid "Enable GTK-VNC debug"
-msgstr "Activar la depuración de GTK-VNC"
+msgstr "Habilitar la depuración de GTK-VNC"
 
 #: plugins/gvnc/gvnc_plugin.c:870
 msgid "Shared connection"
