@@ -1135,7 +1135,6 @@ void remmina_ftp_client_add_file(RemminaFTPClient *client, ...)
 	gtk_tree_model_get(GTK_TREE_MODEL(store), &iter,
 		REMMINA_FTP_FILE_COLUMN_TYPE, &type,
 		REMMINA_FTP_FILE_COLUMN_NAME, &name,
-		REMMINA_FTP_FILE_COLUMN_MODIFIED, &modified,
 		-1);
 
 	ptr = g_strdup_printf("%i%s", type, name);
