@@ -22,7 +22,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2022-08-02 05:15+0000\n"
-"PO-Revision-Date: 2022-08-01 21:21+0000\n"
+"PO-Revision-Date: 2022-08-02 15:19+0000\n"
 "Last-Translator: Dario David <xyzdario@yahoo.com.ar>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/remmina/remmina/"
 "es/>\n"
@@ -126,11 +126,11 @@ msgid ""
 "Remmina/-/wikis/Usage/Remmina-debugging\n"
 msgstr ""
 "Esta ventana puede ayudarle a encontrar problemas de conexión.\n"
-"Puede detener y comenzar el registro en cualquier momento a través del "
-"interruptor ⏽/⭘.\n"
-"El botón de estadísticas (Ctrl + T) puede serle útil para recabar "
-"información del sistema que puede compartir al informar de un defecto.\n"
-"Hallará más información sobre la depuración en Remmina en https://gitlab.com/"
+"Puede detener o iniciar el registro de eventos en cualquier momento usando "
+"el interruptor de Encendido/Apagado.\n"
+"El botón de estadísticas (Ctrl+T) puede serle útil para recolectar y "
+"compartir información del sistema cuando reporte un error.\n"
+"Hay más información acerca de la depuración de Remmina en https://gitlab.com/"
 "Remmina/Remmina/-/wikis/Usage/Remmina-debugging\n"
 
 #: src/remmina_plugin_manager.c:72 src/remmina_file_editor.c:1973
@@ -899,7 +899,7 @@ msgstr "Permiso"
 
 #: src/remmina_ftp_client.c:969
 msgid "Modified"
-msgstr ""
+msgstr "Modificado"
 
 #: src/remmina_ftp_client.c:1021 plugins/rdp/rdp_plugin.c:2673
 msgid "Remote"
@@ -1954,7 +1954,7 @@ msgstr "Guardar la sesión asíncronamente puede repercutir en el rendimiento"
 
 #: src/remmina_ssh_plugin.c:1548
 msgid "Audible terminal bell"
-msgstr "Campana audible de terminal"
+msgstr "Campana de terminal audible"
 
 #: src/remmina_ssh_plugin.c:1549
 msgid "SSH X11 Forwarding"
@@ -3018,13 +3018,13 @@ msgid ""
 "    the repeater, e.g. with x11vnc:\n"
 "    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
 msgstr ""
-"Conectarse a VNC utilizando un repetidor:\n"
-"  • El campo del servidor debe contener el ID del repetidor, por ejemplo "
-"ID:123456789\n"
-"  • El campo del repetidor debe contener la IP y el puerto del repetidor, "
+"Conectar a VNC utilizando un repetidor:\n"
+"  - El campo del servidor debe contener el ID del repetidor, por ejemplo ID:"
+"123456789\n"
+"  - El campo del repetidor debe contener la IP y el puerto del repetidor, "
 "por ejemplo\n"
 "    10.10.10.12:5901\n"
-"  • Desde el servidor VNC remoto, se conectará a\n"
+"  - Desde el servidor VNC remoto, se conectará a\n"
 "    el repetidor, por ejemplo, con x11vnc:\n"
 "    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
 
@@ -3078,7 +3078,8 @@ msgstr "Escuchar en el puerto"
 
 #: plugins/vnc/vnc_plugin.c:2068
 msgid "Override pre-set VNC encodings"
-msgstr "Asignar manualmente codificaciones de VNC preestablecidas"
+msgstr ""
+"Asignar manualmente codificaciones de VNC, omitiendo las preestablecidas"
 
 #: plugins/vnc/vnc_plugin.c:2069
 msgid "Force tight encoding"
@@ -3328,7 +3329,7 @@ msgstr "_Nuevo"
 #. TRANSLATORS: Please stick to X2GoClient's way of translating.
 #: plugins/x2go/x2go_plugin.c:546
 msgid "Terminating X2Go sessions can take a moment."
-msgstr "Terminar sesiones X2Go puede tomar un momento."
+msgstr "Terminar sesiones de X2Go puede tomar un momento."
 
 #: plugins/x2go/x2go_plugin.c:621 plugins/x2go/x2go_plugin.c:623
 #, c-format
@@ -3346,7 +3347,7 @@ msgid ""
 "of them must be given."
 msgstr ""
 "¡Ninguno de los parámetros de 'treeview' ni de \"dialogo' están "
-"inicializados! Por lo menos uno de ellos tiene que ser pasado."
+"inicializados! Al menos uno de ellos debe ser pasado."
 
 #: plugins/x2go/x2go_plugin.c:732
 msgid ""
@@ -3407,7 +3408,7 @@ msgstr ""
 "%s"
 
 #: plugins/x2go/x2go_plugin.c:986
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i"
 msgstr ""
@@ -3415,7 +3416,7 @@ msgstr ""
 "de salida: %i"
 
 #: plugins/x2go/x2go_plugin.c:993
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i. "
 "Error: '%s'"
