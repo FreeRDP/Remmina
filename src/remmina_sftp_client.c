@@ -812,6 +812,7 @@ remmina_sftp_client_on_opendir(RemminaSFTPClient *client, gchar *dir, gpointer d
 						    REMMINA_FTP_FILE_COLUMN_USER, sftpattr->owner,
 						    REMMINA_FTP_FILE_COLUMN_GROUP, sftpattr->group,
 						    REMMINA_FTP_FILE_COLUMN_PERMISSION, sftpattr->permissions,
+						    REMMINA_FTP_FILE_COLUMN_MODIFIED, sftpattr->mtime,
 						    -1);
 			g_free(tmp);
 		}
