@@ -43,6 +43,7 @@ typedef struct _RemminaGroupData {
 	gchar * name;
 	gchar * group;
 	gchar * datetime;
+	gchar * labels;
 } RemminaGroupData;
 
 /* Initialize */
