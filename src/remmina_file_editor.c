@@ -94,6 +94,7 @@ struct _RemminaFileEditorPriv {
 	const gchar *		avahi_service_type;
 
 	GtkWidget *		name_entry;
+	GtkWidget *		labels_entry;
 	GtkWidget *		group_combo;
 	GtkWidget *		protocol_combo;
 	GtkWidget *		save_button;
@@ -1636,6 +1637,8 @@ static GError* remmina_file_editor_update(RemminaFileEditor *gfe,
 
 	remmina_file_set_string(priv->remmina_file, "name", gtk_entry_get_text(GTK_ENTRY(priv->name_entry)));
 
+	remmina_file_set_string(priv->remmina_file, "labels", gtk_entry_get_text(GTK_ENTRY(priv->labels_entry)));
+
 	remmina_file_set_string(priv->remmina_file, "group",
 				    (priv->group_combo ? remmina_public_combo_get_active_text(GTK_COMBO_BOX(priv->group_combo)) : NULL));
 
@@ -1926,6 +1929,8 @@ GtkWidget *remmina_file_editor_new_from_file(RemminaFile *remminafile)
 
 	//remmina_public_create_group(GTK_GRID(grid), _("Profile"), 0, 4, 3);
 
+	gboolean profile_file_exists = (remmina_file_get_filename(remminafile) != NULL);
+
 	/* Profile: Name */
 	widget = gtk_label_new(_("Name"));
 	gtk_widget_show(widget);
@@ -1940,7 +1945,7 @@ GtkWidget *remmina_file_editor_new_from_file(RemminaFile *remminafile)
 	gtk_entry_set_max_length(GTK_ENTRY(widget), 100);
 	priv->name_entry = widget;
 
-	if (remmina_file_get_filename(remminafile) == NULL) {
+	if (!profile_file_exists) {
 		gtk_entry_set_text(GTK_ENTRY(widget), _("Quick Connect"));
 #if GTK_CHECK_VERSION(3, 16, 0)
 		gtk_entry_grab_focus_without_selecting(GTK_ENTRY(widget));
@@ -1969,16 +1974,41 @@ GtkWidget *remmina_file_editor_new_from_file(RemminaFile *remminafile)
 	gtk_widget_set_tooltip_text(priv->group_combo, s);
 	g_free(s);
 
+	/* Profile: Labels */
+	widget = gtk_label_new(_("Labels"));
+	gtk_widget_show(widget);
+	gtk_widget_set_valign(widget, GTK_ALIGN_START);
+	gtk_widget_set_halign(widget, GTK_ALIGN_START);
+	gtk_grid_attach(GTK_GRID(grid), widget, 0, 9, 2, 1);
+	gtk_grid_set_column_spacing(GTK_GRID(grid), 10);
+
+	widget = gtk_entry_new();
+	gtk_widget_show(widget);
+	gtk_grid_attach(GTK_GRID(grid), widget, 1, 9, 3, 1);
+	gtk_entry_set_max_length(GTK_ENTRY(widget), 255);
+	priv->labels_entry = widget;
+
+	if (!profile_file_exists) {
+		gtk_entry_set_text(GTK_ENTRY(widget), _("Label1,Label2"));
+#if GTK_CHECK_VERSION(3, 16, 0)
+		gtk_entry_grab_focus_without_selecting(GTK_ENTRY(widget));
+#endif
+		g_signal_connect(G_OBJECT(widget), "changed", G_CALLBACK(remmina_file_editor_entry_on_changed), gfe);
+	} else {
+		cs = remmina_file_get_string(remminafile, "labels");
+		gtk_entry_set_text(GTK_ENTRY(widget), cs ? cs : "");
+	}
+
 	/* Profile: Protocol */
 	widget = gtk_label_new(_("Protocol"));
 	gtk_widget_show(widget);
 	gtk_widget_set_valign(widget, GTK_ALIGN_START);
 	gtk_widget_set_halign(widget, GTK_ALIGN_START);
-	gtk_grid_attach(GTK_GRID(grid), widget, 0, 9, 2, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 0, 12, 2, 1);
 
 	widget = remmina_public_create_combo(TRUE);
 	gtk_widget_show(widget);
-	gtk_grid_attach(GTK_GRID(grid), widget, 1, 9, 3, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 1, 12, 3, 1);
 	priv->protocol_combo = widget;
 	remmina_plugin_manager_for_each_plugin(REMMINA_PLUGIN_TYPE_PROTOCOL, remmina_file_editor_iterate_protocol, gfe);
 	g_signal_connect(G_OBJECT(widget), "changed", G_CALLBACK(remmina_file_editor_protocol_combo_on_changed), gfe);

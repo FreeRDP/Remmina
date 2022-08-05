@@ -75,6 +75,7 @@ enum {
 	PLUGIN_COLUMN,
 	DATE_COLUMN,
 	FILENAME_COLUMN,
+	LABELS_COLUMN,
 	N_COLUMNS
 };
 
@@ -366,6 +367,7 @@ static void remmina_main_load_file_list_callback(RemminaFile *remminafile, gpoin
 			   PLUGIN_COLUMN, remmina_file_get_string(remminafile, "protocol"),
 			   DATE_COLUMN, datetime,
 			   FILENAME_COLUMN, remmina_file_get_filename(remminafile),
+			   LABELS_COLUMN, remmina_file_get_string(remminafile, "labels"),
 			   -1);
 	g_free(datetime);
 }
@@ -388,6 +390,7 @@ static gboolean remmina_main_load_file_tree_traverse(GNode *node, GtkTreeStore *
 				   GROUP_COLUMN, data->group,
 				   DATE_COLUMN, data->datetime,
 				   FILENAME_COLUMN, NULL,
+				   LABELS_COLUMN, data->labels,
 				   -1);
 	}
 	for (child = g_node_first_child(node); child; child = g_node_next_sibling(child))
@@ -498,6 +501,7 @@ static void remmina_main_load_file_tree_callback(RemminaFile *remminafile, gpoin
 			   PLUGIN_COLUMN, remmina_file_get_string(remminafile, "protocol"),
 			   DATE_COLUMN, datetime,
 			   FILENAME_COLUMN, remmina_file_get_filename(remminafile),
+			   LABELS_COLUMN, remmina_file_get_string(remminafile, "labels"),
 			   -1);
 	g_free(datetime);
 }
@@ -518,7 +522,7 @@ static gboolean remmina_main_filter_visible_func(GtkTreeModel *model, GtkTreeIte
 {
 	TRACE_CALL(__func__);
 	gchar *text;
-	gchar *protocol, *name, *group, *server, *plugin, *date, *s;
+	gchar *protocol, *name, *labels, *group, *server, *plugin, *date, *s;
 	gboolean result = TRUE;
 
 	text = g_ascii_strdown(gtk_entry_get_text(remminamain->entry_quick_connect_server), -1);
@@ -530,6 +534,7 @@ static gboolean remmina_main_filter_visible_func(GtkTreeModel *model, GtkTreeIte
 				   SERVER_COLUMN, &server,
 				   PLUGIN_COLUMN, &plugin,
 				   DATE_COLUMN, &date,
+				   LABELS_COLUMN, &labels,
 				   -1);
 		if (g_strcmp0(protocol, "folder-symbolic") != 0) {
 			s = g_ascii_strdown(name ? name : "", -1);
@@ -547,10 +552,54 @@ static gboolean remmina_main_filter_visible_func(GtkTreeModel *model, GtkTreeIte
 			s = g_ascii_strdown(date ? date : "", -1);
 			g_free(date);
 			date = s;
-			result = ( strstr(name, text) || strstr(group, text) || strstr(server, text) || strstr(plugin, text) || strstr(date, text));
+			result = (strstr(name, text) || strstr(group, text) || strstr(server, text) || strstr(plugin, text) || strstr(date, text));
+
+			// Filter by labels
+
+			s = g_ascii_strdown(labels ? labels : "", -1);
+			g_free(labels);
+			labels = s;
+
+			if (strlen(labels) > 0) {
+				gboolean labels_result  = TRUE;
+				gchar    **labels_array = g_strsplit(labels, ",", -1);
+				gchar    **text_array   = g_strsplit(text, ",", -1);
+
+				for (int t = 0; (NULL != text_array[t]); t++) {
+					if (0 == strlen(text_array[t])) {
+						continue;
+					}
+
+					gboolean text_result = FALSE;
+
+					for (int l = 0; (NULL != labels_array[l]); l++) {
+						if (0 == strlen(labels_array[l])) {
+							continue;
+						}
+
+						text_result = (text_result || strstr(labels_array[l], text_array[t]));
+
+						if (text_result) {
+							break;
+						}
+					}
+
+					labels_result = (labels_result && text_result);
+
+					if (!labels_result) {
+						break;
+					}
+				}
+
+				result = (result || labels_result);
+
+				g_strfreev(labels_array);
+				g_strfreev(text_array);
+			}
 		}
 		g_free(protocol);
 		g_free(name);
+		g_free(labels);
 		g_free(group);
 		g_free(server);
 		g_free(plugin);
@@ -620,14 +669,7 @@ static void remmina_main_load_files()
 	switch (view_file_mode) {
 	case REMMINA_VIEW_FILE_TREE:
 		/* Create new GtkTreeStore model */
-		newmodel = GTK_TREE_MODEL(gtk_tree_store_new(7,
-					G_TYPE_STRING,
-					G_TYPE_STRING,
-					G_TYPE_STRING,
-					G_TYPE_STRING,
-					G_TYPE_STRING,
-					G_TYPE_STRING,
-					G_TYPE_STRING));
+		newmodel = GTK_TREE_MODEL(gtk_tree_store_new(8, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING));
 		/* Hide the Group column in the tree view mode */
 		gtk_tree_view_column_set_visible(remminamain->column_files_list_group, FALSE);
 		/* Load groups first */
@@ -639,14 +681,7 @@ static void remmina_main_load_files()
 	case REMMINA_VIEW_FILE_LIST:
 	default:
 		/* Create new GtkListStore model */
-		newmodel = GTK_TREE_MODEL(gtk_list_store_new(7,
-					G_TYPE_STRING,
-					G_TYPE_STRING,
-					G_TYPE_STRING,
-					G_TYPE_STRING,
-					G_TYPE_STRING,
-					G_TYPE_STRING,
-					G_TYPE_STRING));
+		newmodel = GTK_TREE_MODEL(gtk_list_store_new(8, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING));
 		/* Show the Group column in the list view mode */
 		gtk_tree_view_column_set_visible(remminamain->column_files_list_group, TRUE);
 		/* Load files list */
