@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Remmina v1.4.3\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2022-08-05 07:36+0000\n"
-"PO-Revision-Date: 2022-07-17 23:23+0000\n"
+"PO-Revision-Date: 2022-08-07 21:20+0000\n"
 "Last-Translator: phlostically <phlostically@mailinator.com>\n"
 "Language-Team: Esperanto <https://hosted.weblate.org/projects/remmina/"
 "remmina/eo/>\n"
@@ -351,6 +351,7 @@ msgid "Send clipboard content as keystrokes"
 msgstr "Sendi enhavon de tondujo kiel klavofrapojn"
 
 #: src/rcw.c:2064
+#, fuzzy
 msgid ""
 "CAUTION: Pasted text will be sent as a sequence of key-codes as if typed on "
 "your local keyboard.\n"
@@ -365,6 +366,18 @@ msgid ""
 "to local key-codes won’t be sent to the server.\n"
 "\n"
 msgstr ""
+"ATENTU: Algluita teksto estos sendita kiel sinsekvo de klavkodoj kvazaŭ "
+"tajpita per via loka klavaro.\n"
+"\n"
+"  • Por plej bonaj rezultoj uzu la samajn klavarajn agordojn por ambaŭ, "
+"kliento kaj servilo.\n"
+"\n"
+"  • Se kliento-klavaro diferencas de servilo-klavaro la ricevita teksto "
+"povas enhavi malĝustajn aŭ erarajn signojn.\n"
+"\n"
+"  • Unikodaj signoj kaj aliaj specialaj signoj, kiuj ne povas esti "
+"tradukitaj al lokaj ŝlosilkodoj, ne estos senditaj al la servilo.\n"
+"\n"
 
 #: src/rcw.c:2178
 msgid "Turn off scaling to avoid screenshot distortion."
@@ -631,10 +644,13 @@ msgid "Enable fullscreen"
 msgstr "Ŝalti plenekranan reĝimon"
 
 #: src/remmina.c:131
+#, fuzzy
 msgid ""
 "Enable extra hardening (disable closing confirmation, disable unsafe "
 "shortcut keys, hide tabs, hide search bar)"
 msgstr ""
+"Ebligi ekstran malmoliĝon (malŝalti fermokonfirmon, malŝalti nesekurajn "
+"ŝparklavojn, kaŝi langetojn, kaŝi serĉbreton)"
 
 #: src/remmina.c:132
 msgid "Disable tray icon"
@@ -850,7 +866,7 @@ msgstr "Permeso"
 
 #: src/remmina_ftp_client.c:969
 msgid "Modified"
-msgstr ""
+msgstr "Modifita"
 
 #: src/remmina_ftp_client.c:1021 plugins/rdp/rdp_plugin.c:2673
 msgid "Remote"
@@ -1623,11 +1639,11 @@ msgstr "Uzi ‘%s’ kiel disigilon de subgrupoj"
 
 #: src/remmina_file_editor.c:1978 data/ui/remmina_main.glade:479
 msgid "Labels"
-msgstr ""
+msgstr "Etikedoj"
 
 #: src/remmina_file_editor.c:1992
 msgid "Label1,Label2"
-msgstr ""
+msgstr "Etikedo1,Etikedo2"
 
 #: src/remmina_file_editor.c:2064 src/remmina_file_editor.c:2084
 #, c-format
@@ -1906,7 +1922,7 @@ msgstr "Aŭdebla terminala pepo"
 
 #: src/remmina_ssh_plugin.c:1549
 msgid "SSH X11 Forwarding"
-msgstr ""
+msgstr "SSH-X11-plusendado"
 
 #: src/remmina_ssh_plugin.c:1550
 msgid "SSH compression"
@@ -2987,6 +3003,7 @@ msgstr ""
 "    x11vnc -display :0 -connect 192.168.1.36:8888"
 
 #: plugins/vnc/vnc_plugin.c:2009
+#, fuzzy
 msgid ""
 "Overriding the pre-set VNC encoding quality:\n"
 "\n"
@@ -2998,6 +3015,16 @@ msgid ""
 "  • “Best (slowest)” sets encoding to “copyrect zrle ultra zlib hextile "
 "corre rre raw”"
 msgstr ""
+"Anstataŭigi la antaŭfiksitan VNC-kodigan kvaliton:\n"
+"\n"
+"  • \"Malbona (plej rapida)\" agordas kodigon al \"kopyrect zlib hextile "
+"raw\"\n"
+"  • \"Mediumo\" agordas kodigon al \"tight zrle ultra copyrect hextile zlib "
+"corre rre raw\"\n"
+"  • \"Bona\" agordas kodigon al \"tight zrle ultra copyrect hextile zlib "
+"corre rre raw\"\n"
+"  • \"Plej bona (plej malrapida)\" agordas kodigon al \"kopyrect zrle ultra "
+"zlib hextile corre rre raw\""
 
 #: plugins/vnc/vnc_plugin.c:2036
 msgid "Repeater"
@@ -3008,8 +3035,9 @@ msgid "Listen on port"
 msgstr "Aŭskulti al pordo"
 
 #: plugins/vnc/vnc_plugin.c:2068
+#, fuzzy
 msgid "Override pre-set VNC encodings"
-msgstr ""
+msgstr "Anstataŭigi antaŭfiksitajn VNC-kodadojn"
 
 #: plugins/vnc/vnc_plugin.c:2069
 msgid "Force tight encoding"
