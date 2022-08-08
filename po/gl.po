@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2022-08-07 22:30+0000\n"
-"PO-Revision-Date: 2022-08-08 16:15+0000\n"
+"PO-Revision-Date: 2022-08-08 22:19+0000\n"
 "Last-Translator: CarlosCF <carloscaamano@gmail.com>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/remmina/remmina/"
 "gl/>\n"
@@ -81,7 +81,6 @@ msgstr "Nome de usuario"
 
 #: src/remmina_sftp_plugin.c:354 src/remmina_file_editor.c:1226
 #: src/remmina_ssh_plugin.c:1502
-#, fuzzy
 msgid "Authentication type"
 msgstr "Tipo de autenticación"
 
@@ -200,17 +199,14 @@ msgid "New Connection"
 msgstr "Nova conexión"
 
 #: src/remmina_key_chooser.h:40
-#, fuzzy
 msgid "Shift+"
 msgstr "Maiúsculas+"
 
 #: src/remmina_key_chooser.h:41
-#, fuzzy
 msgid "Ctrl+"
 msgstr "Ctrl+"
 
 #: src/remmina_key_chooser.h:42
-#, fuzzy
 msgid "Alt+"
 msgstr "Alt+"
 
@@ -223,12 +219,10 @@ msgid "Hyper+"
 msgstr "Hyper+"
 
 #: src/remmina_key_chooser.h:45
-#, fuzzy
 msgid "Meta+"
 msgstr "Meta+"
 
 #: src/remmina_key_chooser.h:46
-#, fuzzy
 msgid "<None>"
 msgstr "<ningunha>"
 
@@ -285,12 +279,10 @@ msgid "Close"
 msgstr "Pechar"
 
 #: src/remmina_message_panel.c:259
-#, fuzzy
 msgid "Yes"
 msgstr "Si"
 
 #: src/remmina_message_panel.c:266
-#, fuzzy
 msgid "No"
 msgstr "Non"
 
@@ -631,17 +623,17 @@ msgstr "Mostra a versión da aplicación"
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:122
 msgid "Show version of the application and its plugins"
-msgstr ""
+msgstr "Mostra a versión da aplicación e os seus complementos"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:124
 msgid "Modify connection profile (requires --set-option)"
-msgstr ""
+msgstr "Modificar o perfil de conexión (require --set-option)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:126
 msgid "Set one or more profile settings, to be used with --update-profile"
-msgstr ""
+msgstr "Establece unha ou máis opcións de perfil para usar con --update-profile"
 
 #: src/remmina.c:127
 msgid "Encrypt a password"
@@ -670,6 +662,9 @@ msgid ""
 "Enable extra hardening (disable closing confirmation, disable unsafe "
 "shortcut keys, hide tabs, hide search bar)"
 msgstr ""
+"Activar a seguridade adicional (desactivar a confirmación de peche, "
+"desactivar as teclas de atallo non seguras, ocultar pestanas, ocultar a "
+"barra de busca)"
 
 #: src/remmina.c:132
 #, fuzzy
@@ -688,11 +683,15 @@ msgid ""
 "More info available on the Remmina wiki at:\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgstr ""
+"Remmina non rexistra todas as declaracións de saída. Activa a saída máis "
+"detallada usando \"G_MESSAGES_DEBUG=all\" como variable de ambiente.\n"
+"Máis información dispoñible na wiki de Remmina en:\n"
+"https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:421
 msgid "- or protocol://username:encryptedpassword@host:port"
-msgstr ""
+msgstr "- ou protocolo://usuario:contraseñaencriptada@anfitrion:porto"
 
 #: src/remmina.c:424
 msgid ""
@@ -728,16 +727,47 @@ msgid ""
 "remmina --set-option username --set-option resolution_mode=2 --set-option "
 "password\n"
 msgstr ""
+"Exemplos:\n"
+"Para conectarse mediante un perfil de conexión existente, use:\n"
+"\n"
+"\tremmina -c FICHEIRO.remmina\n"
+"\n"
+"Para conectarse rapidamente usando un URI:\n"
+"\n"
+"\tremmina -c rdp://nomeusuario@servidor\n"
+"\tremmina -c rdp://dominio\\\\usuario@servidor\n"
+"\tremmina -c vnc://nomeusuario@servidor\n"
+"\tremmina -c vnc://servidor?VncUsername=nome de usuario\n"
+"\tremmina -c ssh://usuario@servidor\n"
+"\tremmina -c spice://server\n"
+"\n"
+"Para conectarse rapidamente usando un URI xunto cun contrasinal cifrado:\n"
+"\n"
+"\tremmina -c rdp://nome de usuario:contrasinal-cifrado@servidor\n"
+"\tremmina -c vnc://nome de usuario:contrasinal-cifrado@servidor\n"
+"\tremmina -c vnc://servidor?VncUsername=nome de usuario\\&VncPassword"
+"=contrasinal-cifrado\n"
+"\n"
+"Para cifrar un contrasinal para usar cun URI:\n"
+"\n"
+"\tremmina --encrypt-password\n"
+"\n"
+"Para actualizar o nome de usuario e o contrasinal e establecer un modo de "
+"resolución diferente dun perfil de conexión de Remmina, use:\n"
+"\n"
+"\techo \"nome de usuario\\n"
+"acontrasinal\" | remmina --update-profile /PATH/TO/FOO.remmina --set-option "
+"nome de usuario --set-option resolution_mode=2 --set-option contrasinal\n"
 
 #: src/remmina_public.c:345
 #, c-format
 msgid "Address is too long for UNIX socket_path: %s"
-msgstr ""
+msgstr "O enderezo é demasiado longo para UNIX socket_path: %s"
 
 #: src/remmina_public.c:355
 #, c-format
 msgid "Creating UNIX socket failed: %s"
-msgstr ""
+msgstr "Produciuse un erro ao crear o socket UNIX: %s"
 
 #: src/remmina_public.c:361
 #, fuzzy, c-format
@@ -751,7 +781,7 @@ msgstr "Escriba no formato «ANCHO×ALTO»"
 
 #: src/remmina_public.c:654
 msgid "Change security settings"
-msgstr ""
+msgstr "Cambiar a configuración de seguranza"
 
 #. TRANSLATORS: translator-credits should be replaced with a formatted list of translators in your own language
 #: src/remmina_about.c:53
@@ -856,7 +886,7 @@ msgstr "Permiso"
 
 #: src/remmina_ftp_client.c:969
 msgid "Modified"
-msgstr ""
+msgstr "Modificado"
 
 #: src/remmina_ftp_client.c:1021 plugins/rdp/rdp_plugin.c:2673
 msgid "Remote"
@@ -877,7 +907,7 @@ msgstr "Abrir Secure File Transfer…"
 
 #: src/remmina_protocol_widget.c:324
 msgid "Executing external commands…"
-msgstr ""
+msgstr "Executando comandos externos…"
 
 #. TRANSLATORS: “%s” is a placeholder for the connection profile name
 #: src/remmina_protocol_widget.c:332
@@ -921,16 +951,16 @@ msgstr "Conectando con «%s»…"
 
 #: src/remmina_protocol_widget.c:1710
 msgid "Type in SSH username and password."
-msgstr ""
+msgstr "Escriba o nome de usuario e o contrasinal SSH."
 
 #: src/remmina_protocol_widget.c:1765 src/remmina_protocol_widget.c:1797
 msgid "Fingerprint automatically accepted"
-msgstr ""
+msgstr "Aceptouse automaticamente a impresión dixital"
 
 #. TRANSLATORS: The user is asked to verify a new SSL certificate.
 #: src/remmina_protocol_widget.c:1773
 msgid "Certificate details:"
-msgstr ""
+msgstr "Detalles do certificado:"
 
 #. TRANSLATORS: An SSL certificate subject is usually the remote server the user connect to.
 #: src/remmina_protocol_widget.c:1775 src/remmina_protocol_widget.c:1807
@@ -955,7 +985,7 @@ msgstr "Desexa aceptar o certificado?"
 #. TRANSLATORS: The user is asked to verify a new SSL certificate.
 #: src/remmina_protocol_widget.c:1805
 msgid "The certificate changed! Details:"
-msgstr ""
+msgstr "O certificado cambiou! Detalles:"
 
 #. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
 #: src/remmina_protocol_widget.c:1811
@@ -991,7 +1021,7 @@ msgstr "Servidor"
 #: src/remmina_protocol_widget.c:2063
 #, c-format
 msgid "Install the %s protocol plugin first."
-msgstr ""
+msgstr "Instala primeiro o complemento do protocolo %s."
 
 #: src/remmina_ssh.c:732
 #, c-format
@@ -1006,25 +1036,27 @@ msgstr "Produciuse un fallo ao iniciar a sesión SSH: %s"
 #: src/remmina_ssh.c:818 src/remmina_ssh.c:885
 msgid "No saved SSH passphrase supplied. Asking user to enter it."
 msgstr ""
+"Non se proporcionou ningún contrasinal SSH gardada. Solicitando ao usuario "
+"que o introduza."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:823 src/remmina_ssh.c:864 src/remmina_ssh.c:890
 #: src/remmina_ssh.c:929 src/remmina_ssh.c:1242
 #, c-format
 msgid "Could not authenticate with public SSH key. %s"
-msgstr ""
+msgstr "Non se puido autenticar coa chave SSH pública. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:832
 #, c-format
 msgid "SSH certificate cannot be imported. %s"
-msgstr ""
+msgstr "Non se pode importar o certificado SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:841
 #, c-format
 msgid "SSH certificate cannot be copied into the private SSH key. %s"
-msgstr ""
+msgstr "O certificado SSH non se pode copiar na clave SSH privada. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:851
@@ -1041,12 +1073,12 @@ msgstr "Ficheiro de chave SSH non enviada aínda."
 #: src/remmina_ssh.c:876
 #, c-format
 msgid "Public SSH key cannot be imported. %s"
-msgstr ""
+msgstr "Non se pode importar a chave SSH pública. %s"
 
 #: src/remmina_ssh.c:974
 #, c-format
 msgid "Could not authenticate automatically with public SSH key. %s"
-msgstr ""
+msgstr "Non se puido autenticar automaticamente coa chave SSH pública. %s"
 
 #: src/remmina_ssh.c:1019
 #, c-format
@@ -1317,7 +1349,7 @@ msgstr ""
 #: src/remmina_sftp_client.c:176
 #, c-format
 msgid "Could not create the folder “%s”."
-msgstr "Produciuse un fallo na creación da sesión SFTP: %s"
+msgstr "Non se puido crear o cartafol “%s”."
 
 #. TRANSLATORS: The placeholder %s is a file path
 #: src/remmina_sftp_client.c:184 src/remmina_sftp_client.c:205
