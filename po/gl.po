@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2022-08-07 22:30+0000\n"
-"PO-Revision-Date: 2022-07-06 11:22+0000\n"
+"PO-Revision-Date: 2022-08-08 16:15+0000\n"
 "Last-Translator: CarlosCF <carloscaamano@gmail.com>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/remmina/remmina/"
 "gl/>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.13.1-dev\n"
+"X-Generator: Weblate 4.14-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
 
 #: src/remmina_sftp_plugin.c:309 src/remmina_sftp_plugin.c:353
@@ -339,12 +339,8 @@ msgid ""
 msgstr "Hai %i conexións activas na xanela actual. Está seguro de pechala?"
 
 #: src/rcw.c:665
-#, fuzzy
-#| msgid ""
-#| "Are you sure you want to close %i active connections in the current "
-#| "window?"
 msgid "Are you sure you want to close this last active connection?"
-msgstr "Hai %i conexións activas na xanela actual. Está seguro de pechala?"
+msgstr "¿Confirma que quere pechar esta última conexión activa?"
 
 #: src/rcw.c:1412
 msgid "Viewport fullscreen mode"
@@ -352,19 +348,19 @@ msgstr "Modo a pantalla completa"
 
 #: src/rcw.c:1420 data/ui/remmina_preferences.glade:607
 msgid "Scrolled fullscreen"
-msgstr ""
+msgstr "Opción de visibilidade da barra de ferramentas de pantalla completa"
 
 #: src/rcw.c:1506
 msgid "Keep aspect ratio when scaled"
-msgstr ""
+msgstr "Mantén a relación de aspecto cando se escala"
 
 #: src/rcw.c:1514
 msgid "Fill client window when scaled"
-msgstr ""
+msgstr "Ampliar a xanela do cliente cando se escala"
 
 #: src/rcw.c:2062
 msgid "Send clipboard content as keystrokes"
-msgstr ""
+msgstr "Enviar contido do portapapeis como teclas"
 
 #: src/rcw.c:2064
 msgid ""
@@ -381,22 +377,32 @@ msgid ""
 "to local key-codes won’t be sent to the server.\n"
 "\n"
 msgstr ""
+"PRECAUCIÓN: O texto pegado será enviado como una secuencia de códigos de "
+"teclas, como si fosen premidas en tu teclado local.\n"
+"\n"
+"  • Usar a mesma configuración de teclado para cliente e servidor para obter "
+"mellores resultados.\n"
+"\n"
+"  • Si o teclado do cliente é diferente o do servidor, o texto recibido pode "
+"conter caracteres equivocados ou erróneos.\n"
+"\n"
+"  • Os caracteres Unicode e outros caracteres especiais que non poidan ser "
+"traducidos a códigos de teclado local non serán enviados ao servidor.\n"
+"\n"
 
 #: src/rcw.c:2178
 msgid "Turn off scaling to avoid screenshot distortion."
-msgstr ""
+msgstr "Desactiva a escala para evitar a distorsión da captura de pantalla."
 
 #: src/rcw.c:2238 plugins/www/www_plugin.c:864
 msgid "Screenshot taken"
-msgstr ""
+msgstr "Captura de pantalla tomada"
 
 #: src/rcw.c:2321
-#, fuzzy
 msgid "_Menu"
-msgstr "Menú"
+msgstr "_Menú"
 
 #: src/rcw.c:2322
-#, fuzzy
 msgid "Menu"
 msgstr "Menú"
 
@@ -408,7 +414,7 @@ msgstr "Abrir xanela principal"
 
 #: src/rcw.c:2341
 msgid "Duplicate current connection"
-msgstr ""
+msgstr "Conexión actual duplicada"
 
 #: src/rcw.c:2358
 msgid "Resize the window to fit in remote resolution"
@@ -421,11 +427,11 @@ msgstr "Trocar o modo de pantalla completa"
 #: src/rcw.c:2415 data/ui/remmina_preferences.glade:1330
 #: data/ui/remmina_preferences.glade:1340
 msgid "Multi monitor"
-msgstr ""
+msgstr "Multimonitor"
 
 #: src/rcw.c:2431
 msgid "Toggle dynamic resolution update"
-msgstr ""
+msgstr "Activar/desactivar actualización de resolución dinámica"
 
 #: src/rcw.c:2441
 msgid "Toggle scaled mode"
@@ -453,7 +459,6 @@ msgstr "Ferramentas"
 
 #: src/rcw.c:2531 data/ui/remmina_preferences.glade:1265
 #: data/ui/remmina_preferences.glade:1275
-#, fuzzy
 msgid "Screenshot"
 msgstr "Captura de pantalla"
 
@@ -468,7 +473,7 @@ msgstr "Desconectar"
 #: src/rcw.c:4364
 #, c-format
 msgid "The file “%s” is corrupted, unreadable, or could not be found."
-msgstr ""
+msgstr "O arquivo %s está danado, é ilexible ou non se encontra."
 
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. TRANSLATORS: 'GtkSocket feature is not available'.
@@ -477,12 +482,16 @@ msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 msgstr ""
+"https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
+"available-in-a-Wayland-session"
 
 #: src/rcw.c:4579
 msgid ""
 "Warning: This plugin requires GtkSocket, but this feature is unavailable in "
 "a Wayland session."
 msgstr ""
+"Aviso: este complemento require GtkSocket, pero esta función non está "
+"dispoñible nunha sesión de Wayland."
 
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. 'GtkSocket feature is not available'.
@@ -494,41 +503,46 @@ msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 msgstr ""
+"Os complementos que dependen de GtkSocket non poden executarse nunha sesión "
+"de Wayland.\n"
+"Para obter máis información e unha posible solución, visite a wiki de "
+"Remmina en:\n"
+"\n"
+"https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
+"available-in-a-Wayland-session"
 
 #: src/rcw.c:4599
-#, fuzzy
-#| msgid "Open Main Window"
 msgid "Open in web browser"
-msgstr "Abrir xanela principal"
+msgstr "Abrir no navegador web"
 
 #: src/remmina_mpchange.c:234
-#, fuzzy
 msgid "The passwords do not match"
 msgstr "Os contrasinais non concordan."
 
 #: src/remmina_mpchange.c:244
 msgid "Resetting passwords, please wait…"
-msgstr ""
+msgstr "Restablecendo contrasinais, agarde…"
 
 #: src/remmina_mpchange.c:327
 msgid "The multi password changer requires a secrecy plugin.\n"
 msgstr ""
+"O cambiador de contrasinais múltiples require un complemento de segredos.\n"
 
 #: src/remmina_mpchange.c:330
 msgid "The multi password changer requires a secrecy service.\n"
-msgstr ""
+msgstr "O cambiador de contrasinais múltiples require un servizo de segredos.\n"
 
 #: src/remmina_mpchange.c:409
-#, fuzzy, c-format
+#, c-format
 msgid "%d password changed."
 msgid_plural "%d passwords changed."
-msgstr[0] "Mudouse o contrasinal."
-msgstr[1] ""
+msgstr[0] "Mudouse o %d contrasinal."
+msgstr[1] "Mudaronse os %d contrasinais."
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:92
 msgid "Show 'About'"
-msgstr ""
+msgstr "Amosar «Acerca de»"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:94
@@ -536,9 +550,11 @@ msgid ""
 "Connect either to a desktop described in a file (.remmina or a filetype "
 "supported by a plugin) or a supported URI (RDP, VNC, SSH or SPICE)"
 msgstr ""
+"Conéctese a un escritorio descrito nun ficheiro (.remmina ou un tipo de "
+"ficheiro admitido por un complemento) ou a un URI compatible (RDP, VNC, SSH "
+"ou SPICE)"
 
 #: src/remmina.c:94 src/remmina.c:96 src/remmina.c:98
-#, fuzzy
 msgid "FILE"
 msgstr "FICHEIRO"
 
@@ -548,6 +564,8 @@ msgid ""
 "Connect to a desktop described in a file (.remmina or a filetype supported "
 "by a plugin)"
 msgstr ""
+"Conéctese a un escritorio descrito nun ficheiro (.remmina ou un tipo de "
+"ficheiro admitido por un complemento)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:98
@@ -555,11 +573,13 @@ msgid ""
 "Edit desktop connection described in file (.remmina or a filetype supported "
 "by plugin)"
 msgstr ""
+"Edite a conexión do escritorio descrita no ficheiro (.remmina ou un tipo de "
+"ficheiro admitido polo complemento)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:101
 msgid "Start in kiosk mode"
-msgstr ""
+msgstr "Iniciar en modo quiosco"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:103
@@ -573,42 +593,40 @@ msgstr "_Preferencias"
 
 #: src/remmina.c:105
 msgid "TABINDEX"
-msgstr ""
+msgstr "ÍNDICEGUIA"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:112
-#, fuzzy
 msgid "Quit"
 msgstr "Saír"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:114
 msgid "Use default server name (for --new)"
-msgstr ""
+msgstr "Usar o nome de servidor predeterminado (para --new)"
 
 #: src/remmina.c:114
 msgid "SERVER"
-msgstr ""
+msgstr "SERVIDOR"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:116
 msgid "Use default protocol (for --new)"
-msgstr ""
+msgstr "Usar o protocolo predeterminado (para --new)"
 
 #: src/remmina.c:116
 msgid "PROTOCOL"
-msgstr ""
+msgstr "PROTOCOLO"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:118
-#, fuzzy
 msgid "Start in tray"
 msgstr "Comezar na bandexa"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:120
 msgid "Show the application version"
-msgstr ""
+msgstr "Mostra a versión da aplicación"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:122
