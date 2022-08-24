@@ -2365,7 +2365,7 @@ static gboolean rmplugin_x2go_exec_x2go(gchar *host,
 	}
 
 	if (FEATURE_AVAILABLE(gpdata, "DPI")) {
-		// Event though we validate the users input in Remmina Editor,
+		// Even though we validate the users input in Remmina Editor,
 		// manipulating profile files is still very possible..
 		// Values are extracted from pyhoca-cli.
 		if (dpi < 20 || dpi > 400) {
