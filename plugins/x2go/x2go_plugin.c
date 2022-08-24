@@ -1685,7 +1685,7 @@ static gboolean rmplugin_x2go_save_credentials(RemminaFile* remminafile,
  *
  * @returns FALSE if auth failed and TRUE on success.
  */
-static gboolean rmplugin_x2go_get_auth(RemminaProtocolWidget *gp, gchar** errmsg,
+static gboolean rmplugin_x2go_get_auth(RemminaProtocolWidget *gp, gchar* errmsg,
 				       gchar** default_username, gchar** default_password)
 {
 	REMMINA_PLUGIN_DEBUG("Function entry.");
@@ -1746,7 +1746,7 @@ static gboolean rmplugin_x2go_get_auth(RemminaProtocolWidget *gp, gchar** errmsg
 		save = rm_plugin_service->protocol_plugin_init_get_savepassword(gp);
 		if (save) {
 			if (!rmplugin_x2go_save_credentials(remminafile, s_username,
-							    s_password, (*errmsg))) {
+							    s_password, errmsg)) {
 				return FALSE;
 			}
 		}
@@ -1759,7 +1759,7 @@ static gboolean rmplugin_x2go_get_auth(RemminaProtocolWidget *gp, gchar** errmsg
 			g_free(s_password);
 		}
 	} else  {
-		(*errmsg) = g_strdup("Authentication cancelled. Aborting…");
+		g_strlcpy(errmsg, _("Authentication cancelled. Aborting…"), 512);
 		return FALSE;
 	}
 
@@ -2192,7 +2192,7 @@ static gboolean rmplugin_x2go_exec_x2go(gchar *host,
 	gint argc = 0;
 
 	// Sets `username` and `password`.
-	if (!rmplugin_x2go_get_auth(gp, &errmsg, &username, &password)) {
+	if (!rmplugin_x2go_get_auth(gp, errmsg, &username, &password)) {
 		return FALSE;
 	}
 
@@ -2876,8 +2876,8 @@ static gboolean rmplugin_x2go_start_session(RemminaProtocolWidget *gp)
 						           (gchar*)&errmsg);
 
 	if (!ret) {
-		REMMINA_PLUGIN_CRITICAL("%s", _(errmsg));
-		rm_plugin_service->protocol_plugin_set_error(gp, "%s", _(errmsg));
+		REMMINA_PLUGIN_CRITICAL("%s", errmsg);
+		rm_plugin_service->protocol_plugin_set_error(gp, "%s", &errmsg);
 		return FALSE;
 	}
 
