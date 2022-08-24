@@ -2,7 +2,7 @@
 # Copyright © 2012 Rosetta Contributors and Canonical Ltd 2012
 # This file is distributed under the same license as the remmina package.
 # scootergrisen, 2017, 2019.
-# Allan Nordhøy <epost@anotheragency.no>, 2019, 2020, 2021.
+# Allan Nordhøy <epost@anotheragency.no>, 2019, 2020, 2021, 2022.
 # scootergrisen <scootergrisen@gmail.com>, 2019, 2020, 2021.
 # Antenore Gatta <antenore@simbiosi.org>, 2020, 2021.
 msgid ""
@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2022-08-07 22:30+0000\n"
-"PO-Revision-Date: 2021-12-17 08:43+0000\n"
+"PO-Revision-Date: 2022-08-24 05:14+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Danish <https://hosted.weblate.org/projects/remmina/remmina/"
 "da/>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.10\n"
+"X-Generator: Weblate 4.14-dev\n"
 
 #: src/remmina_sftp_plugin.c:309 src/remmina_sftp_plugin.c:353
 #: src/remmina_protocol_widget.c:1692 src/remmina_protocol_widget.c:1711
@@ -874,7 +874,7 @@ msgstr "Tilladelse"
 
 #: src/remmina_ftp_client.c:969
 msgid "Modified"
-msgstr ""
+msgstr "Ændret"
 
 #: src/remmina_ftp_client.c:1021 plugins/rdp/rdp_plugin.c:2673
 msgid "Remote"
@@ -1294,12 +1294,14 @@ msgstr[0] "Total %i element."
 msgstr[1] "Total %i elementer."
 
 #: src/remmina_main.c:730
+#, fuzzy
 msgid "Network status: fully online"
-msgstr ""
+msgstr "Netværksstatus: fuldt opkoblet"
 
 #: src/remmina_main.c:733
+#, fuzzy
 msgid "Network status: offline"
-msgstr ""
+msgstr "Netværksstatus: frakoblet"
 
 #: src/remmina_main.c:982
 #, c-format
@@ -1570,8 +1572,9 @@ msgid "Connection profile security"
 msgstr "Opret ny forbindelsesprofil"
 
 #: src/remmina_file_editor.c:1112
+#, fuzzy
 msgid "Require password to connect or edit the profile"
-msgstr ""
+msgstr "Kræv password for å koble til eller redigere profilen"
 
 #: src/remmina_file_editor.c:1144
 msgid "SSH Tunnel"
@@ -1688,11 +1691,11 @@ msgstr "Brug '%s' som afgrænser for undergruppe"
 
 #: src/remmina_file_editor.c:1978 data/ui/remmina_main.glade:478
 msgid "Labels"
-msgstr ""
+msgstr "Etiketter"
 
 #: src/remmina_file_editor.c:1992
 msgid "Label1,Label2"
-msgstr ""
+msgstr "Etikett1,etikett2"
 
 #: src/remmina_file_editor.c:2064 src/remmina_file_editor.c:2084
 #, c-format
@@ -2163,7 +2166,7 @@ msgstr "Indtast loginoplysninger for autentifikation af RDP-gateway"
 #: plugins/rdp/rdp_plugin.c:1035
 #, c-format
 msgid "Disconnected from %s via RDP"
-msgstr ""
+msgstr "Frakoblet fra %s via RDP"
 
 #: plugins/rdp/rdp_plugin.c:2178
 #, c-format
@@ -2416,23 +2419,23 @@ msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:2700
 msgid "1"
-msgstr ""
+msgstr "1"
 
 #: plugins/rdp/rdp_plugin.c:2701
 msgid "2"
-msgstr ""
+msgstr "2"
 
 #: plugins/rdp/rdp_plugin.c:2702
 msgid "3"
-msgstr ""
+msgstr "3"
 
 #: plugins/rdp/rdp_plugin.c:2703
 msgid "4"
-msgstr ""
+msgstr "4"
 
 #: plugins/rdp/rdp_plugin.c:2704
 msgid "5"
-msgstr ""
+msgstr "5"
 
 #: plugins/rdp/rdp_plugin.c:2709
 msgid "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 and newer)"
@@ -3094,7 +3097,7 @@ msgstr "Opretter forbindelse til %s via SSH …"
 #: plugins/vnc/vnc_plugin.c:1743
 #, c-format
 msgid "Disconnected from %s:%d via VNC"
-msgstr ""
+msgstr "Frakoblet fra %s:%d via VNC"
 
 #: plugins/vnc/vnc_plugin.c:1992
 #, fuzzy
@@ -3379,7 +3382,7 @@ msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:482
 msgid "SND port"
-msgstr ""
+msgstr "SND-port"
 
 #: plugins/x2go/x2go_plugin.c:483
 #, fuzzy
@@ -3419,13 +3422,14 @@ msgstr "_Ny"
 #. TRANSLATORS: Tooltip for terminating button inside Session-Chooser-Dialog.
 #. TRANSLATORS: Please stick to X2GoClient's way of translating.
 #: plugins/x2go/x2go_plugin.c:546
+#, fuzzy
 msgid "Terminating X2Go sessions can take a moment."
-msgstr ""
+msgstr "Afslutning af X2Go-øgter kan tage en stund."
 
 #: plugins/x2go/x2go_plugin.c:621 plugins/x2go/x2go_plugin.c:623
-#, c-format
+#, c-format, fuzzy
 msgid "Unknown property '%i'"
-msgstr ""
+msgstr "Ukendt egenskab «%i»"
 
 #: plugins/x2go/x2go_plugin.c:711 plugins/x2go/x2go_plugin.c:758
 msgid "Couldn't find child GtkTreeView of session chooser dialog."
