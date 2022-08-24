@@ -1695,18 +1695,21 @@ static gboolean rmplugin_x2go_get_auth(RemminaProtocolWidget *gp, gchar** errmsg
 	g_assert(default_username != NULL);
 	g_assert(default_password != NULL);
 
-	if (!(*default_username)) {
-		(*errmsg) = g_strdup_printf(
-			_("Internal error: %s"),
-			_("Parameter 'default_username' is uninitialized.")
+	// default_username is probably NULL because the user didn't configure any
+	// username in the profile settings.
+	if ((*default_username) == NULL) {
+		gchar* l_errmsg = g_strdup_printf(
+			_("TIP: Check the 'Save password' checkbox or manually input your "
+			  "X2Go credentials into the profile settings to store your "
+			  "credentials permanently and login faster next time.")
 		);
-		REMMINA_PLUGIN_CRITICAL("%s", errmsg);
-		return FALSE;
+		REMMINA_PLUGIN_MESSAGE("%s", l_errmsg);
+		(*default_username) = g_strdup("");
 	}
 
-	// We can handle ((*default_password) == NULL).
-	// Password is probably NULL because something did go wrong at the secret-plugin.
-	// For example: The user didn't input a password for keyring.
+	// default_password is probably NULL because something did go wrong at the
+	// secret-plugin. For example: The user didn't input a password for keyring or
+	// the user simply didn't configure a password in the profile settings.
 	if ((*default_password) == NULL) {
 		(*default_password) = g_strdup("");
 	}
