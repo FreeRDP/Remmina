@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-08-07 22:30+0000\n"
+"POT-Creation-Date: 2022-08-25 07:40+0000\n"
 "PO-Revision-Date: 2022-08-05 13:06+0000\n"
 "Last-Translator: Eric <alchemillatruth@purelymail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -30,7 +30,7 @@ msgstr ""
 #: src/remmina_protocol_widget.c:1692 src/remmina_protocol_widget.c:1711
 #: src/remmina_file_editor.c:1119 src/remmina_file_editor.c:1241
 #: src/remmina_ssh_plugin.c:1393 plugins/rdp/rdp_plugin.c:2797
-#: plugins/www/www_plugin.c:905 plugins/x2go/x2go_plugin.c:3227
+#: plugins/www/www_plugin.c:905 plugins/x2go/x2go_plugin.c:3230
 #: data/ui/remmina_mpc.glade:236 data/ui/remmina_passwd.glade:84
 #: data/ui/remmina_unlock.glade:109
 msgid "Password"
@@ -77,7 +77,7 @@ msgstr "通过 SSH 从新终端连接"
 #: src/remmina_file_editor.c:1235 src/remmina_ssh_plugin.c:1503
 #: plugins/rdp/rdp_plugin.c:2796 plugins/vnc/vnc_plugin.c:2037
 #: plugins/vnc/vnc_plugin.c:2049 plugins/www/www_plugin.c:904
-#: plugins/x2go/x2go_plugin.c:478 plugins/x2go/x2go_plugin.c:3226
+#: plugins/x2go/x2go_plugin.c:478 plugins/x2go/x2go_plugin.c:3229
 #: data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr "用户名"
@@ -1580,8 +1580,8 @@ msgstr ""
 "为 NULL！"
 
 #. TRANSLATORS: Meta-error. Shouldn't be visible.
-#: src/remmina_file_editor.c:1466 plugins/x2go/x2go_plugin.c:2409
-#: plugins/x2go/x2go_plugin.c:3052
+#: src/remmina_file_editor.c:1466 plugins/x2go/x2go_plugin.c:2412
+#: plugins/x2go/x2go_plugin.c:3055
 msgid "Internal error."
 msgstr "内部错误。"
 
@@ -3156,12 +3156,12 @@ msgstr "命令行功能'%s'不可用！尝试在不使用此功能的情况下�
 #: plugins/x2go/x2go_plugin.c:1034 plugins/x2go/x2go_plugin.c:1050
 #: plugins/x2go/x2go_plugin.c:1115 plugins/x2go/x2go_plugin.c:1143
 #: plugins/x2go/x2go_plugin.c:1292 plugins/x2go/x2go_plugin.c:1666
-#: plugins/x2go/x2go_plugin.c:1700 plugins/x2go/x2go_plugin.c:1796
-#: plugins/x2go/x2go_plugin.c:2090 plugins/x2go/x2go_plugin.c:2904
-#: plugins/x2go/x2go_plugin.c:3117 plugins/x2go/x2go_plugin.c:3122
-#: plugins/x2go/x2go_plugin.c:3127 plugins/x2go/x2go_plugin.c:3132
-#: plugins/x2go/x2go_plugin.c:3147 plugins/x2go/x2go_plugin.c:3152
-#: plugins/x2go/x2go_plugin.c:3157 plugins/x2go/x2go_plugin.c:3162
+#: plugins/x2go/x2go_plugin.c:1799 plugins/x2go/x2go_plugin.c:2093
+#: plugins/x2go/x2go_plugin.c:2907 plugins/x2go/x2go_plugin.c:3120
+#: plugins/x2go/x2go_plugin.c:3125 plugins/x2go/x2go_plugin.c:3130
+#: plugins/x2go/x2go_plugin.c:3135 plugins/x2go/x2go_plugin.c:3150
+#: plugins/x2go/x2go_plugin.c:3155 plugins/x2go/x2go_plugin.c:3160
+#: plugins/x2go/x2go_plugin.c:3165
 #, c-format
 msgid "Internal error: %s"
 msgstr "内部错误：%s"
@@ -3299,7 +3299,7 @@ msgstr "参数 'error' 为 'NULL'。"
 msgid "parameter 'env' is either invalid or uninitialized."
 msgstr "参数 'env' 无效或未被初始化。"
 
-#: plugins/x2go/x2go_plugin.c:937 plugins/x2go/x2go_plugin.c:2391
+#: plugins/x2go/x2go_plugin.c:937 plugins/x2go/x2go_plugin.c:2394
 msgid "Started PyHoca-CLI with the following arguments:"
 msgstr "使用以下参数启动了 PyHoca-CLI："
 
@@ -3343,8 +3343,8 @@ msgstr "GtkTreePath 'path' 描述了一个不存在的行！"
 msgid "Parameter 'custom_data' is not fully initialized!"
 msgstr "参数 'custom_data' 未完全初始化！"
 
-#: plugins/x2go/x2go_plugin.c:1144 plugins/x2go/x2go_plugin.c:1797
-#: plugins/x2go/x2go_plugin.c:2091
+#: plugins/x2go/x2go_plugin.c:1144 plugins/x2go/x2go_plugin.c:1800
+#: plugins/x2go/x2go_plugin.c:2094
 msgid "'Invalid connection data.'"
 msgstr "'无效的连接数据'"
 
@@ -3408,96 +3408,105 @@ msgid ""
 "'s_username' strings were not set."
 msgstr "尝试保存新凭据时发生错误：未设置's_password' 或 's_username' 字符串。"
 
-#: plugins/x2go/x2go_plugin.c:1701
-msgid "Parameter 'default_username' is uninitialized."
-msgstr "参数 'default_username' 未被初始化。"
+#: plugins/x2go/x2go_plugin.c:1702
+msgid ""
+"TIP: Check the 'Save password' checkbox or manually input your X2Go "
+"credentials into the profile settings to store your credentials permanently "
+"and login faster next time."
+msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:1730
+#: plugins/x2go/x2go_plugin.c:1733
 msgid "Enter X2Go credentials"
 msgstr "输入 X2Go 凭据"
 
-#: plugins/x2go/x2go_plugin.c:1927
+#: plugins/x2go/x2go_plugin.c:1762
+#, fuzzy
+#| msgid "Authentication failure: %s"
+msgid "Authentication cancelled. Aborting…"
+msgstr "认证失败：%s"
+
+#: plugins/x2go/x2go_plugin.c:1930
 msgid ""
 "Couldn't parse the output of PyHoca-CLI's --list-sessions option. Creating a "
 "new session now."
 msgstr ""
 "无法解析 PyHoca-CLI 的--list-sessions 选项的输出。现在创建一个新的会话。"
 
-#: plugins/x2go/x2go_plugin.c:1966
+#: plugins/x2go/x2go_plugin.c:1969
 msgid "Couldn't allocate enough memory!"
 msgstr "无法分配足够的内存！"
 
-#: plugins/x2go/x2go_plugin.c:1976
+#: plugins/x2go/x2go_plugin.c:1979
 #, c-format
 msgid "Found already existing X2Go session with ID: '%s'"
 msgstr "发现已经存在的 X2Go 会话的ID：'%s'"
 
 #. TRANSLATORS: Please stick to X2GoClient's translation.
-#: plugins/x2go/x2go_plugin.c:2019
+#: plugins/x2go/x2go_plugin.c:2022
 msgid "Suspended"
 msgstr "已停用"
 
 #. TRANSLATORS: Please stick to X2GoClient's translation.
-#: plugins/x2go/x2go_plugin.c:2022
+#: plugins/x2go/x2go_plugin.c:2025
 msgid "Running"
 msgstr "运行中"
 
 #. TRANSLATORS: Please stick to X2GoClient's translation.
-#: plugins/x2go/x2go_plugin.c:2025
+#: plugins/x2go/x2go_plugin.c:2028
 msgid "Terminated"
 msgstr "已终止"
 
-#: plugins/x2go/x2go_plugin.c:2058
+#: plugins/x2go/x2go_plugin.c:2061
 msgid ""
 "Could not find any sessions on remote machine. Creating a new session now."
 msgstr "在远程机器上找不到任何会话。现在创建一个新的会话。"
 
-#: plugins/x2go/x2go_plugin.c:2113
+#: plugins/x2go/x2go_plugin.c:2116
 msgid "Choose a session to resume:"
 msgstr "选择一个会话来恢复："
 
-#: plugins/x2go/x2go_plugin.c:2156
+#: plugins/x2go/x2go_plugin.c:2159
 msgid "Waiting for user to select a session…"
 msgstr "等待用户选择一个会话…"
 
-#: plugins/x2go/x2go_plugin.c:2164
+#: plugins/x2go/x2go_plugin.c:2167
 msgid "No session was selected. Creating a new one."
 msgstr "没有选择会话。创建一个新的。"
 
-#: plugins/x2go/x2go_plugin.c:2212
+#: plugins/x2go/x2go_plugin.c:2215
 #, c-format
 msgid "A non-critical error happened: %s"
 msgstr "发生了一个非关键性的错误：%s"
 
-#: plugins/x2go/x2go_plugin.c:2217
+#: plugins/x2go/x2go_plugin.c:2220
 #, c-format
 msgid "User chose to resume session with ID: '%s'"
 msgstr "用户选择恢复以下 ID 的会话：'%s'"
 
 #. TRANSLATORS: Please stick to X2GoClient's way of translating.
-#: plugins/x2go/x2go_plugin.c:2238
+#: plugins/x2go/x2go_plugin.c:2241
 #, c-format
 msgid "Resuming session '%s'…"
 msgstr "正在恢复会话'%s'…"
 
-#: plugins/x2go/x2go_plugin.c:2369
+#: plugins/x2go/x2go_plugin.c:2372
 msgid "DPI setting is out of bounds. Please adjust it in profile settings."
 msgstr "DPI 设置越界。请在配置文件设置中进行调整。"
 
-#: plugins/x2go/x2go_plugin.c:2411
+#: plugins/x2go/x2go_plugin.c:2414
 msgid "An error occured while starting an X2Go session…"
 msgstr "启动 X2Go 会话时发生了一个错误…"
 
-#: plugins/x2go/x2go_plugin.c:2419
+#: plugins/x2go/x2go_plugin.c:2422
 msgid "Could not start X2Go session."
 msgstr "无法启动 X2Go 会话。"
 
-#: plugins/x2go/x2go_plugin.c:2420
+#: plugins/x2go/x2go_plugin.c:2423
 #, c-format
 msgid "Could not start PyHoca-CLI (%i): '%s'"
 msgstr "未能启动 PyHoca-CLI (%i): '%s'"
 
-#: plugins/x2go/x2go_plugin.c:2535
+#: plugins/x2go/x2go_plugin.c:2538
 msgid ""
 "Couldn't get PyHoca-CLI's command-line features. This indicates it is either "
 "too old, or not installed. An old limited set of features will be used for "
@@ -3506,52 +3515,52 @@ msgstr ""
 "无法获得 PyHoca-CLI 的命令行功能。这表明您的 PyHoca-CLI 版本太旧或未安装 "
 "PyHoca-CLI！将暂时使用旧的有限的功能集。"
 
-#: plugins/x2go/x2go_plugin.c:2544
+#: plugins/x2go/x2go_plugin.c:2547
 msgid ""
 "Could not parse PyHoca-CLI's command-line features. Using a limited feature-"
 "set for now."
 msgstr "无法解析 PyHoca-CLI 的命令行功能！暂时使用有限的功能集。"
 
-#: plugins/x2go/x2go_plugin.c:2550
+#: plugins/x2go/x2go_plugin.c:2553
 msgid "Retrieved the following PyHoca-CLI command-line features:"
 msgstr "获取了以下 PyHoca-CLI 功能："
 
-#: plugins/x2go/x2go_plugin.c:2558
+#: plugins/x2go/x2go_plugin.c:2561
 #, c-format
 msgid "Available feature[%i]: '%s'"
 msgstr "可用功能[%i]: '%s'"
 
-#: plugins/x2go/x2go_plugin.c:2583
+#: plugins/x2go/x2go_plugin.c:2586
 #, c-format
 msgid "Connected to %s:%d via X2Go"
 msgstr "已通过 X2GO 连接到 %s:%d"
 
-#: plugins/x2go/x2go_plugin.c:2677
+#: plugins/x2go/x2go_plugin.c:2680
 msgid "Could not open X11 DISPLAY."
 msgstr "无法打开 X11 DISPLAY。"
 
-#: plugins/x2go/x2go_plugin.c:2717
+#: plugins/x2go/x2go_plugin.c:2720
 msgid "Waiting for window of X2Go Agent to appear…"
 msgstr "等待 X2Go Agent 窗口出现…"
 
-#: plugins/x2go/x2go_plugin.c:2743
+#: plugins/x2go/x2go_plugin.c:2746
 msgid "Waiting for PyHoca-CLI to show the session's window…"
 msgstr "等待 PyHoca-CLI 显示会话窗口…"
 
-#: plugins/x2go/x2go_plugin.c:2794
+#: plugins/x2go/x2go_plugin.c:2797
 msgid "No X2Go session window appeared. Something went wrong…"
 msgstr "没有出现 X2Go 会话窗口。出了些问题…"
 
-#: plugins/x2go/x2go_plugin.c:2905
+#: plugins/x2go/x2go_plugin.c:2908
 msgid "RemminaProtocolWidget* gp is 'NULL'!"
 msgstr "RemminaProtocolWidget* gp 是 'NULL'!"
 
-#: plugins/x2go/x2go_plugin.c:2926
+#: plugins/x2go/x2go_plugin.c:2929
 #, c-format
 msgid "The %s protocol is unavailable because GtkSocket only works under X.org"
 msgstr "%s 协议不可用，因为 GtkSocket 仅在 X.org 下工作"
 
-#: plugins/x2go/x2go_plugin.c:2935
+#: plugins/x2go/x2go_plugin.c:2938
 msgid "Could not initialize pthread. Falling back to non-threaded mode…"
 msgstr "无法初始化 pthread。退回到非线程模式…"
 
@@ -3563,7 +3572,7 @@ msgstr "无法初始化 pthread。退回到非线程模式…"
 #. your language.
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
-#: plugins/x2go/x2go_plugin.c:2978 plugins/x2go/x2go_plugin.c:2996
+#: plugins/x2go/x2go_plugin.c:2981 plugins/x2go/x2go_plugin.c:2999
 #, c-format
 msgid "%sand '%s'"
 msgstr "%s及'%s'"
@@ -3574,7 +3583,7 @@ msgstr "%s及'%s'"
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
-#: plugins/x2go/x2go_plugin.c:2983 plugins/x2go/x2go_plugin.c:3001
+#: plugins/x2go/x2go_plugin.c:2986 plugins/x2go/x2go_plugin.c:3004
 #, c-format
 msgid "%s'%s' "
 msgstr "%s'%s' "
@@ -3582,119 +3591,119 @@ msgstr "%s'%s' "
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
 #. 'value1', 'value2', 'valueN-1' and 'valueN'
-#: plugins/x2go/x2go_plugin.c:2988
+#: plugins/x2go/x2go_plugin.c:2991
 #, c-format
 msgid "%s'%s', "
 msgstr "%s'%s', "
 
-#: plugins/x2go/x2go_plugin.c:3027
+#: plugins/x2go/x2go_plugin.c:3030
 msgid "Invalid validation data in ProtocolSettings array!"
 msgstr "ProtocolSettings 数组中的验证数据无效！"
 
-#: plugins/x2go/x2go_plugin.c:3042 plugins/x2go/x2go_plugin.c:3107
+#: plugins/x2go/x2go_plugin.c:3045 plugins/x2go/x2go_plugin.c:3110
 msgid "Validation data in ProtocolSettings array is invalid!"
 msgstr "ProtocolSettings 数组中的验证数据无效！"
 
-#: plugins/x2go/x2go_plugin.c:3051
+#: plugins/x2go/x2go_plugin.c:3054
 msgid "Parameters 'key' or 'value' are 'NULL'!"
 msgstr "参数'key' 或 'value' 是 'NULL'！"
 
-#: plugins/x2go/x2go_plugin.c:3069
+#: plugins/x2go/x2go_plugin.c:3072
 #, c-format
 msgid "Allowed values are %s."
 msgstr "允许的值为 %s。"
 
-#: plugins/x2go/x2go_plugin.c:3071
+#: plugins/x2go/x2go_plugin.c:3074
 #, c-format
 msgid "The only allowed value is '%s'."
 msgstr "唯一允许的值为 '%s'。"
 
-#: plugins/x2go/x2go_plugin.c:3118
+#: plugins/x2go/x2go_plugin.c:3121
 msgid "The lower limit is not a valid integer!"
 msgstr "下限不是有效整数！"
 
-#: plugins/x2go/x2go_plugin.c:3123
+#: plugins/x2go/x2go_plugin.c:3126
 msgid "The lower limit is too high!"
 msgstr "下限过高！"
 
-#: plugins/x2go/x2go_plugin.c:3128
+#: plugins/x2go/x2go_plugin.c:3131
 msgid "The lower limit is too low!"
 msgstr "下限过低！"
 
-#: plugins/x2go/x2go_plugin.c:3133 plugins/x2go/x2go_plugin.c:3163
-#: plugins/x2go/x2go_plugin.c:3183
+#: plugins/x2go/x2go_plugin.c:3136 plugins/x2go/x2go_plugin.c:3166
+#: plugins/x2go/x2go_plugin.c:3186
 msgid "Something unknown went wrong."
 msgstr "一些未知的东西出了问题。"
 
-#: plugins/x2go/x2go_plugin.c:3138 plugins/x2go/x2go_plugin.c:3168
-#: plugins/x2go/x2go_plugin.c:3187
+#: plugins/x2go/x2go_plugin.c:3141 plugins/x2go/x2go_plugin.c:3171
+#: plugins/x2go/x2go_plugin.c:3190
 msgid "Please check the RemminaProtocolSetting array for possible errors."
 msgstr "请检查 RemminaProtocolSetting 数组是否存在错误。"
 
-#: plugins/x2go/x2go_plugin.c:3148
+#: plugins/x2go/x2go_plugin.c:3151
 msgid "The upper limit is not a valid integer!"
 msgstr "上限不是有效整数！"
 
-#: plugins/x2go/x2go_plugin.c:3153
+#: plugins/x2go/x2go_plugin.c:3156
 msgid "The upper limit is too high!"
 msgstr "上限过高！"
 
-#: plugins/x2go/x2go_plugin.c:3158
+#: plugins/x2go/x2go_plugin.c:3161
 msgid "The upper limit is too low!"
 msgstr "上限过低！"
 
-#: plugins/x2go/x2go_plugin.c:3178
+#: plugins/x2go/x2go_plugin.c:3181
 msgid "The input is not a valid integer!"
 msgstr "输入不是有效整数！"
 
-#: plugins/x2go/x2go_plugin.c:3180 plugins/x2go/x2go_plugin.c:3199
+#: plugins/x2go/x2go_plugin.c:3183 plugins/x2go/x2go_plugin.c:3202
 #, c-format
 msgid "Input must be a number between %i and %i."
 msgstr "输入值必须在 %i 和 %i 之间。"
 
-#: plugins/x2go/x2go_plugin.c:3228
+#: plugins/x2go/x2go_plugin.c:3231
 msgid "Startup program"
 msgstr "启动程序"
 
-#: plugins/x2go/x2go_plugin.c:3230
+#: plugins/x2go/x2go_plugin.c:3233
 msgid "Which command should be executed after creating the X2Go session?"
 msgstr "创建 X2Go 会话后应该执行哪个命令？"
 
-#: plugins/x2go/x2go_plugin.c:3232
+#: plugins/x2go/x2go_plugin.c:3235
 msgid "Keyboard Layout (auto)"
 msgstr "键盘布局 (自动)"
 
-#: plugins/x2go/x2go_plugin.c:3233
+#: plugins/x2go/x2go_plugin.c:3236
 msgid "Keyboard type (auto)"
 msgstr "键盘类型 (自动)"
 
-#: plugins/x2go/x2go_plugin.c:3234
+#: plugins/x2go/x2go_plugin.c:3237
 msgid "Audio support"
 msgstr "音频支持"
 
-#: plugins/x2go/x2go_plugin.c:3236
+#: plugins/x2go/x2go_plugin.c:3239
 msgid "The sound system of the X2Go server (default: 'pulse')."
 msgstr "X2Go 服务器的声音系统 (默认值：'pulse')。"
 
-#: plugins/x2go/x2go_plugin.c:3239
+#: plugins/x2go/x2go_plugin.c:3242
 msgid "Clipboard direction"
 msgstr "剪贴板方向"
 
-#: plugins/x2go/x2go_plugin.c:3241
+#: plugins/x2go/x2go_plugin.c:3244
 msgid "Which direction should clipboard content be copied? (default: 'both')."
 msgstr "应在哪个方向复制剪贴板内容？(默认:“both”)。"
 
-#: plugins/x2go/x2go_plugin.c:3245
+#: plugins/x2go/x2go_plugin.c:3248
 msgid "DPI resolution"
 msgstr "DPI 分辨率"
 
-#: plugins/x2go/x2go_plugin.c:3246
+#: plugins/x2go/x2go_plugin.c:3249
 msgid ""
 "Launch session with a specific resolution (in dots per inch). Must be "
 "between 20 and 400."
 msgstr "以特定的分辨率 (点每英寸) 启动会话。值必须在 20 到 400 之间。"
 
-#: plugins/x2go/x2go_plugin.c:3290
+#: plugins/x2go/x2go_plugin.c:3293
 msgid "X2Go plugin loaded."
 msgstr "已加载 X2Go 插件。"
 
@@ -4330,11 +4339,19 @@ msgstr "配置文件名模板"
 
 #. Placeholders used to name a Remmina connection profile
 #: data/ui/remmina_preferences.glade:361
+#, fuzzy
+#| msgid ""
+#| "%G Name of group (slashes \\/ are converted to dashes -)\n"
+#| "%P Protocol name\n"
+#| "%N Connection name\n"
+#| "%h Host name/IP\n"
+#| "\n"
+#| "\n"
 msgid ""
 "%G Name of group (slashes \\/ are converted to dashes -)\n"
 "%P Protocol name\n"
 "%N Connection name\n"
-"%h Host name/IP\n"
+"%h Hostname/IP\n"
 "\n"
 "\n"
 msgstr ""
@@ -4859,6 +4876,9 @@ msgstr "解锁 Remmina"
 #: data/ui/remmina_unlock.glade:120
 msgid "Master password"
 msgstr "管控密码"
+
+#~ msgid "Parameter 'default_username' is uninitialized."
+#~ msgstr "参数 'default_username' 未被初始化。"
 
 #~ msgid ""
 #~ "CAUTION! We send hardware codes from your local keyboard,\n"
