@@ -1685,7 +1685,7 @@ static gboolean rmplugin_x2go_save_credentials(RemminaFile* remminafile,
  *
  * @returns FALSE if auth failed and TRUE on success.
  */
-static gboolean rmplugin_x2go_get_auth(RemminaProtocolWidget *gp, gchar** errmsg,
+static gboolean rmplugin_x2go_get_auth(RemminaProtocolWidget *gp, gchar* errmsg,
 				       gchar** default_username, gchar** default_password)
 {
 	REMMINA_PLUGIN_DEBUG("Function entry.");
@@ -1695,18 +1695,21 @@ static gboolean rmplugin_x2go_get_auth(RemminaProtocolWidget *gp, gchar** errmsg
 	g_assert(default_username != NULL);
 	g_assert(default_password != NULL);
 
-	if (!(*default_username)) {
-		(*errmsg) = g_strdup_printf(
-			_("Internal error: %s"),
-			_("Parameter 'default_username' is uninitialized.")
+	// default_username is probably NULL because the user didn't configure any
+	// username in the profile settings.
+	if ((*default_username) == NULL) {
+		gchar* l_errmsg = g_strdup_printf(
+			_("TIP: Check the 'Save password' checkbox or manually input your "
+			  "X2Go credentials into the profile settings to store your "
+			  "credentials permanently and login faster next time.")
 		);
-		REMMINA_PLUGIN_CRITICAL("%s", errmsg);
-		return FALSE;
+		REMMINA_PLUGIN_MESSAGE("%s", l_errmsg);
+		(*default_username) = g_strdup("");
 	}
 
-	// We can handle ((*default_password) == NULL).
-	// Password is probably NULL because something did go wrong at the secret-plugin.
-	// For example: The user didn't input a password for keyring.
+	// default_password is probably NULL because something did go wrong at the
+	// secret-plugin. For example: The user didn't input a password for keyring or
+	// the user simply didn't configure a password in the profile settings.
 	if ((*default_password) == NULL) {
 		(*default_password) = g_strdup("");
 	}
@@ -1743,7 +1746,7 @@ static gboolean rmplugin_x2go_get_auth(RemminaProtocolWidget *gp, gchar** errmsg
 		save = rm_plugin_service->protocol_plugin_init_get_savepassword(gp);
 		if (save) {
 			if (!rmplugin_x2go_save_credentials(remminafile, s_username,
-							    s_password, (*errmsg))) {
+							    s_password, errmsg)) {
 				return FALSE;
 			}
 		}
@@ -1756,7 +1759,7 @@ static gboolean rmplugin_x2go_get_auth(RemminaProtocolWidget *gp, gchar** errmsg
 			g_free(s_password);
 		}
 	} else  {
-		(*errmsg) = g_strdup("Authentication cancelled. Aborting…");
+		g_strlcpy(errmsg, _("Authentication cancelled. Aborting…"), 512);
 		return FALSE;
 	}
 
@@ -2189,7 +2192,7 @@ static gboolean rmplugin_x2go_exec_x2go(gchar *host,
 	gint argc = 0;
 
 	// Sets `username` and `password`.
-	if (!rmplugin_x2go_get_auth(gp, &errmsg, &username, &password)) {
+	if (!rmplugin_x2go_get_auth(gp, errmsg, &username, &password)) {
 		return FALSE;
 	}
 
@@ -2362,7 +2365,7 @@ static gboolean rmplugin_x2go_exec_x2go(gchar *host,
 	}
 
 	if (FEATURE_AVAILABLE(gpdata, "DPI")) {
-		// Event though we validate the users input in Remmina Editor,
+		// Even though we validate the users input in Remmina Editor,
 		// manipulating profile files is still very possible..
 		// Values are extracted from pyhoca-cli.
 		if (dpi < 20 || dpi > 400) {
@@ -2873,8 +2876,8 @@ static gboolean rmplugin_x2go_start_session(RemminaProtocolWidget *gp)
 						           (gchar*)&errmsg);
 
 	if (!ret) {
-		REMMINA_PLUGIN_CRITICAL("%s", _(errmsg));
-		rm_plugin_service->protocol_plugin_set_error(gp, "%s", _(errmsg));
+		REMMINA_PLUGIN_CRITICAL("%s", errmsg);
+		rm_plugin_service->protocol_plugin_set_error(gp, "%s", &errmsg);
 		return FALSE;
 	}
 
