@@ -1699,9 +1699,9 @@ static gboolean rmplugin_x2go_get_auth(RemminaProtocolWidget *gp, gchar* errmsg,
 	// username in the profile settings.
 	if ((*default_username) == NULL) {
 		gchar* l_errmsg = g_strdup_printf(
-			_("TIP: Check the 'Save password' checkbox or manually input your "
-			  "X2Go credentials into the profile settings to store your "
-			  "credentials permanently and login faster next time.")
+			_("Tip: Check the 'Save password' checkbox or manually input your "
+			  "X2Go username and password in the profile settings to store "
+			  "them for faster logins.")
 		);
 		REMMINA_PLUGIN_MESSAGE("%s", l_errmsg);
 		(*default_username) = g_strdup("");
@@ -2365,8 +2365,8 @@ static gboolean rmplugin_x2go_exec_x2go(gchar *host,
 	}
 
 	if (FEATURE_AVAILABLE(gpdata, "DPI")) {
-		// Even though we validate the users input in Remmina Editor,
-		// manipulating profile files is still very possible..
+		// Even though we validate the users input in the Remmina Editor,
+		// manipulating profile files is still very possible…
 		// Values are extracted from pyhoca-cli.
 		if (dpi < 20 || dpi > 400) {
 			g_strlcpy(errmsg, _("DPI setting is out of bounds. Please adjust "
