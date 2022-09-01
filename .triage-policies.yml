@@ -9,6 +9,8 @@ resource_rules:
             interval_type: months
             interval: 9
           state: opened
+          forbidden_labels:
+            - Status::Backlog
         limits:
           most_recent: 50
         actions:
