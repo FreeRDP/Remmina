@@ -552,6 +552,8 @@ static void remmina_plugin_www_init(RemminaProtocolWidget *gp)
 	webkit_web_context_set_automation_allowed(gpdata->context, TRUE);
 	webkit_settings_set_javascript_can_open_windows_automatically(gpdata->settings, TRUE);
 	webkit_settings_set_allow_modal_dialogs(gpdata->settings, TRUE);
+
+#if !WEBKIT_CHECK_VERSION(2, 38, 0)
 	/** Frames flattening
 	 * Some websites engage in embedding frames-inside-of-frames. WebKit has
 	 * the ability to flatten them so they behave, when scrolling, as one big
@@ -559,6 +561,8 @@ static void remmina_plugin_www_init(RemminaProtocolWidget *gp)
 	 */
 	if (!webkit_settings_get_enable_frame_flattening(gpdata->settings))
 		webkit_settings_set_enable_frame_flattening(gpdata->settings, true);
+#endif
+
 	webkit_settings_set_enable_resizable_text_areas(gpdata->settings, true);
 
 	g_signal_connect(G_OBJECT(gpdata->context), "download-started",
