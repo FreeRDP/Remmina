@@ -54,9 +54,12 @@ struct mpchanger_params {
 	gchar *domain;          // New domain
 	gchar *password;        // New password
 	gchar *group;
+	gchar *gatewayusername;
+	gchar *gatewaydomain;
+	gchar *gatewaypassword;
 
-	GtkEntry *eGroup, *eUsername, *eDomain;
-	GtkEntry *ePassword1, *ePassword2;
+	GtkEntry *eGroup, *eUsername, *eDomain, *ePassword1, *ePassword2;
+	GtkEntry *eGatewayUsername, *eGatewayDomain, *eGatewayPassword1, *eGatewayPassword2;
 	GtkListStore* store;
 	GtkDialog* dialog;
 	GtkTreeView* table;
@@ -74,6 +77,7 @@ enum {
 	COL_NAME,
 	COL_GROUP,
 	COL_USERNAME,
+	COL_GATEWAY_USERNAME,
 	COL_FILENAME,
 	NUM_COLS
 };
@@ -101,9 +105,10 @@ static void remmina_mpchange_file_list_callback(RemminaFile *remminafile, gpoint
 	GtkListStore* store;
 	GtkTreeIter iter;
 	int matchcount;
-	const gchar *username, *domain, *group;
+	const gchar *username, *domain, *group, *gatewayusername, *gatewaydomain;
 
 	gchar* s;
+	gchar* t;
 	struct mpchanger_params* mpcp;
 
 	mpcp = (struct mpchanger_params*)user_data;
@@ -113,6 +118,8 @@ static void remmina_mpchange_file_list_callback(RemminaFile *remminafile, gpoint
 	username = remmina_file_get_string(remminafile, "username");
 	domain = remmina_file_get_string(remminafile, "domain");
 	group = remmina_file_get_string(remminafile, "group");
+	gatewayusername = remmina_file_get_string(remminafile, "gateway_username");
+	gatewaydomain = remmina_file_get_string(remminafile, "gateway_domain");
 
 	if (username == NULL)
 		username = "";
@@ -123,6 +130,12 @@ static void remmina_mpchange_file_list_callback(RemminaFile *remminafile, gpoint
 	if (group == NULL)
 		group = "";
 
+	if (gatewayusername == NULL)
+		gatewayusername = "";
+
+	if (gatewaydomain == NULL)
+		gatewaydomain = "";
+
 	matchcount = 0;
 	if (!remmina_mpchange_fieldcompare(mpcp->username, username, &matchcount))
 		return;
@@ -130,18 +143,24 @@ static void remmina_mpchange_file_list_callback(RemminaFile *remminafile, gpoint
 		return;
 	if (!remmina_mpchange_fieldcompare(mpcp->group, group, &matchcount))
 		return;
+	if (!remmina_mpchange_fieldcompare(mpcp->gatewayusername, gatewayusername, &matchcount))
+		return;
+	if (!remmina_mpchange_fieldcompare(mpcp->gatewaydomain, gatewaydomain, &matchcount))
+		return;
 
 	gtk_list_store_append(store, &iter);
 	s = g_strdup_printf("%s\\%s", domain, username);
-
+	t = g_strdup_printf("%s\\%s", gatewaydomain, gatewayusername);
 	gtk_list_store_set(store, &iter,
-		COL_F, matchcount >= 3 ? TRUE : FALSE,
+		COL_F, matchcount >= 5 ? TRUE : FALSE,
 		COL_NAME, remmina_file_get_string(remminafile, "name"),
 		COL_GROUP, group,
 		COL_USERNAME,   s,
+		COL_GATEWAY_USERNAME,   t,
 		COL_FILENAME, remminafile->filename,
 		-1);
 	g_free(s);
+	g_free(t);
 
 }
 
@@ -167,7 +186,12 @@ static void remmina_mpchange_dochange(gchar* fname, struct mpchanger_params* mpc
 
 	remminafile = remmina_file_load(fname);
 	if (remminafile) {
-		remmina_file_store_secret_plugin_password(remminafile, "password", mpcp->password);
+		if(mpcp->password[0] != 0){
+			remmina_file_store_secret_plugin_password(remminafile, "password", mpcp->password);
+		}
+		if(mpcp->gatewaypassword[0] != 0){
+			remmina_file_store_secret_plugin_password(remminafile, "gateway_password", mpcp->gatewaypassword);
+		}
 		remmina_file_free(remminafile);
 		mpcp->changed_passwords_count++;
 	}
@@ -181,6 +205,10 @@ static void enable_inputs(struct mpchanger_params* mpcp, gboolean ena)
 	gtk_widget_set_sensitive(GTK_WIDGET(mpcp->eDomain), ena);
 	gtk_widget_set_sensitive(GTK_WIDGET(mpcp->ePassword1), ena);
 	gtk_widget_set_sensitive(GTK_WIDGET(mpcp->ePassword2), ena);
+	gtk_widget_set_sensitive(GTK_WIDGET(mpcp->eGatewayUsername), ena);
+	gtk_widget_set_sensitive(GTK_WIDGET(mpcp->eGatewayDomain), ena);
+	gtk_widget_set_sensitive(GTK_WIDGET(mpcp->eGatewayPassword1), ena);
+	gtk_widget_set_sensitive(GTK_WIDGET(mpcp->eGatewayPassword2), ena);
 	gtk_widget_set_sensitive(GTK_WIDGET(mpcp->btnDoChange), ena);
 	gtk_widget_set_sensitive(GTK_WIDGET(mpcp->table), ena);
 }
@@ -212,7 +240,7 @@ static void remmina_mpchange_dochange_clicked(GtkButton *btn, gpointer user_data
 {
 	TRACE_CALL(__func__);
 	struct mpchanger_params* mpcp = (struct mpchanger_params*)user_data;
-	const gchar *passwd1, *passwd2;
+	const gchar *passwd1, *passwd2, *gatewaypasswd1, *gatewaypasswd2;
 
 	if (mpcp->searchentrychange_timeout_source_id) {
 		g_source_remove(mpcp->searchentrychange_timeout_source_id);
@@ -236,9 +264,26 @@ static void remmina_mpchange_dochange_clicked(GtkButton *btn, gpointer user_data
 		gtk_widget_destroy(msgDialog);
 		return;
 	}
+	gatewaypasswd1 = gtk_entry_get_text(mpcp->eGatewayPassword1);
+	gatewaypasswd2 = gtk_entry_get_text(mpcp->eGatewayPassword2);
+	if (g_strcmp0(gatewaypasswd1, gatewaypasswd2) != 0) {
+		GtkWidget *msgDialog;
+		msgDialog = gtk_message_dialog_new(GTK_WINDOW(mpcp->dialog),
+			GTK_DIALOG_DESTROY_WITH_PARENT,
+			GTK_MESSAGE_ERROR,
+			GTK_BUTTONS_CLOSE,
+			_("The Gateway passwords do not match"));
+		gtk_dialog_run(GTK_DIALOG(msgDialog));
+		gtk_widget_destroy(msgDialog);
+		return;
+	}
 
 	g_free(mpcp->password);
 	mpcp->password = g_strdup(passwd1);
+	mpcp->changed_passwords_count = 0;
+
+	g_free(mpcp->gatewaypassword);
+	mpcp->gatewaypassword = g_strdup(gatewaypasswd1);
 	mpcp->changed_passwords_count = 0;
 
 	gtk_label_set_text(mpcp->statusLabel, _("Resetting passwords, please wait…"));
@@ -271,12 +316,20 @@ static gboolean remmina_mpchange_searchfield_changed_to(gpointer user_data)
 	g_free(mpcp->username);
 	mpcp->username = g_strdup(s);
 
+	s = gtk_entry_get_text(mpcp->eGatewayDomain);
+	g_free(mpcp->gatewaydomain);
+	mpcp->gatewaydomain = g_strdup(s);
+
+	s = gtk_entry_get_text(mpcp->eGatewayUsername);
+	g_free(mpcp->gatewayusername);
+	mpcp->gatewayusername = g_strdup(s);
+
 	if (mpcp->store != NULL) {
 		gtk_tree_view_set_model(mpcp->table, NULL);
 	}
-	mpcp->store = gtk_list_store_new(NUM_COLS, G_TYPE_BOOLEAN, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING);
+	mpcp->store = gtk_list_store_new(NUM_COLS, G_TYPE_BOOLEAN, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING);
 
-	if (mpcp->group[0] != 0 || mpcp->domain[0] != 0 || mpcp->username[0] != 0)
+	if (mpcp->group[0] != 0 || mpcp->domain[0] != 0 || mpcp->username[0] != 0 || mpcp->gatewayusername[0] != 0 || mpcp->gatewaydomain[0] != 0)
 		remmina_file_manager_iterate((GFunc)remmina_mpchange_file_list_callback, (gpointer)mpcp);
 
 	gtk_tree_view_set_model(mpcp->table, GTK_TREE_MODEL(mpcp->store));
@@ -361,17 +414,33 @@ static gboolean remmina_file_multipasswd_changer_mt(gpointer d)
 	gtk_entry_set_text(mpcp->eUsername, mpcp->username);
 	g_signal_connect(G_OBJECT(mpcp->eUsername), "changed", G_CALLBACK(remmina_mpchange_searchfield_changed), (gpointer)mpcp);
 
+	mpcp->eGatewayUsername = GTK_ENTRY(GET_DIALOG_OBJECT("gatewayUsernameEntry"));
+	gtk_entry_set_text(mpcp->eGatewayUsername, mpcp->gatewayusername);
+	g_signal_connect(G_OBJECT(mpcp->eGatewayUsername), "changed", G_CALLBACK(remmina_mpchange_searchfield_changed), (gpointer)mpcp);
+
 	mpcp->eDomain = GTK_ENTRY(GET_DIALOG_OBJECT("domainEntry"));
 	gtk_entry_set_text(mpcp->eDomain, mpcp->domain);
 	g_signal_connect(G_OBJECT(mpcp->eDomain), "changed", G_CALLBACK(remmina_mpchange_searchfield_changed), (gpointer)mpcp);
 
+	mpcp->eGatewayDomain = GTK_ENTRY(GET_DIALOG_OBJECT("gatewayDomainEntry"));
+	gtk_entry_set_text(mpcp->eGatewayDomain, mpcp->gatewaydomain);
+	g_signal_connect(G_OBJECT(mpcp->eGatewayDomain), "changed", G_CALLBACK(remmina_mpchange_searchfield_changed), (gpointer)mpcp);
+
 	mpcp->ePassword1 = GTK_ENTRY(GET_DIALOG_OBJECT("password1Entry"));
 	gtk_entry_set_text(mpcp->ePassword1, mpcp->password);
+
+	mpcp->eGatewayPassword1 = GTK_ENTRY(GET_DIALOG_OBJECT("gatewayPassword1Entry"));
+	gtk_entry_set_text(mpcp->eGatewayPassword1, mpcp->gatewaypassword);
 
 	mpcp->ePassword2 = GTK_ENTRY(GET_DIALOG_OBJECT("password2Entry"));
 	gtk_entry_set_text(mpcp->ePassword2, mpcp->password);
 
+	mpcp->eGatewayPassword2 = GTK_ENTRY(GET_DIALOG_OBJECT("gatewayPassword2Entry"));
+	gtk_entry_set_text(mpcp->eGatewayPassword2, mpcp->gatewaypassword);
+
 	mpcp->statusLabel = GTK_LABEL(GET_DIALOG_OBJECT("statusLabel"));
+	
+
 
 
 	mpcp->store = NULL;
@@ -416,13 +485,16 @@ static gboolean remmina_file_multipasswd_changer_mt(gpointer d)
 	g_free(mpcp->password);
 	g_free(mpcp->domain);
 	g_free(mpcp->group);
+	g_free(mpcp->gatewayusername);
+	g_free(mpcp->gatewaypassword);
+	g_free(mpcp->gatewaydomain);
 	g_free(mpcp);
 	return FALSE;
 }
 
 
 void
-remmina_mpchange_schedule(gboolean has_domain, const gchar *group, const gchar *domain, const gchar *username, const gchar *password)
+remmina_mpchange_schedule(gboolean has_domain, const gchar *group, const gchar *domain, const gchar *username, const gchar *password, const gchar *gatewayusername, const gchar *gatewaydomain, const gchar *gatewaypassword)
 {
 	// We could also be called in a subthread after a successful connection
 	// (not currently implemented)
@@ -437,6 +509,9 @@ remmina_mpchange_schedule(gboolean has_domain, const gchar *group, const gchar *
 	mpcp->password = g_strdup(password);
 	mpcp->domain = g_strdup(domain);
 	mpcp->group = g_strdup(group);
+	mpcp->gatewayusername = g_strdup(gatewayusername);
+	mpcp->gatewaypassword = g_strdup(gatewaypassword);
+	mpcp->gatewaydomain = g_strdup(gatewaydomain);
 	gdk_threads_add_idle(remmina_file_multipasswd_changer_mt, (gpointer)mpcp);
 
 }

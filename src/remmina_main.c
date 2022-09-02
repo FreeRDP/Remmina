@@ -806,8 +806,10 @@ void remmina_main_on_action_application_mpchange(GSimpleAction *action, GVariant
 	const gchar *username;
 	const gchar *domain;
 	const gchar *group;
+	const gchar *gatewayusername;
+	const gchar *gatewaydomain;
 
-	username = domain = group = "";
+	username = domain = group = gatewayusername = gatewaydomain = "";
 
 	remminafile = NULL;
 
@@ -822,10 +824,12 @@ void remmina_main_on_action_application_mpchange(GSimpleAction *action, GVariant
 			username = remmina_file_get_string(remminafile, "username");
 			domain = remmina_file_get_string(remminafile, "domain");
 			group = remmina_file_get_string(remminafile, "group");
+			gatewayusername = remmina_file_get_string(remminafile, "gateway_username");
+			gatewaydomain = remmina_file_get_string(remminafile, "gateway_domain");
 		}
 	}
 
-	remmina_mpchange_schedule(TRUE, group, domain, username, "");
+	remmina_mpchange_schedule(TRUE, group, domain, username, "", gatewayusername, gatewaydomain, "");
 
 	if (remminafile != NULL)
 		remmina_file_free(remminafile);
