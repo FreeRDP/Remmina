@@ -42,4 +42,4 @@ G_BEGIN_DECLS
 
 
 /* Schedule the multipassword change confirmation dialog to be executed ASAP */
-void remmina_mpchange_schedule(gboolean has_domain, const gchar *group, const gchar *domain, const gchar *username, const gchar *password);
+void remmina_mpchange_schedule(gboolean has_domain, const gchar *group, const gchar *domain, const gchar *username, const gchar *password, const gchar *gatewayusername, const gchar *gatewaydomain, const gchar *gatewaypassword);
