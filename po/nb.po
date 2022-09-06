@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-09-01 10:37+0000\n"
+"POT-Creation-Date: 2022-09-06 19:08+0000\n"
 "PO-Revision-Date: 2022-08-14 13:17+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/remmina/"
@@ -28,7 +28,7 @@ msgstr ""
 #: src/remmina_file_editor.c:1119 src/remmina_file_editor.c:1241
 #: src/remmina_ssh_plugin.c:1393 plugins/rdp/rdp_plugin.c:2797
 #: plugins/www/www_plugin.c:909 plugins/x2go/x2go_plugin.c:3230
-#: data/ui/remmina_mpc.glade:236 data/ui/remmina_passwd.glade:84
+#: data/ui/remmina_mpc.glade:218 data/ui/remmina_passwd.glade:84
 #: data/ui/remmina_unlock.glade:109
 #, fuzzy
 msgid "Password"
@@ -84,7 +84,7 @@ msgstr "Koble til via SSH fra en ny terminal"
 #: plugins/rdp/rdp_plugin.c:2796 plugins/vnc/vnc_plugin.c:2037
 #: plugins/vnc/vnc_plugin.c:2049 plugins/www/www_plugin.c:908
 #: plugins/x2go/x2go_plugin.c:478 plugins/x2go/x2go_plugin.c:3229
-#: data/ui/remmina_mpc.glade:144
+#: data/ui/remmina_mpc.glade:122
 #, fuzzy
 msgid "Username"
 msgstr "Brukernavn"
@@ -310,7 +310,7 @@ msgstr ""
 "fra «Avansert»-fanen for terminaltilkoblinger og kan redigeres fra "
 "«Terminal»-fanen i innstillingene."
 
-#: src/remmina_message_panel.c:162 data/ui/remmina_mpc.glade:46
+#: src/remmina_message_panel.c:162 data/ui/remmina_mpc.glade:33
 #: data/ui/remmina_passwd.glade:19 data/ui/remmina_unlock.glade:43
 #, fuzzy
 msgid "Cancel"
@@ -335,7 +335,7 @@ msgid "No"
 msgstr "Nei"
 
 #: src/remmina_message_panel.c:390 plugins/rdp/rdp_plugin.c:2798
-#: data/ui/remmina_mpc.glade:172
+#: data/ui/remmina_mpc.glade:151
 #, fuzzy
 msgid "Domain"
 msgstr "Domene"
@@ -587,28 +587,33 @@ msgstr ""
 msgid "Open in web browser"
 msgstr "Open in browser"
 
-#: src/remmina_mpchange.c:234
+#: src/remmina_mpchange.c:262
 #, fuzzy
 msgid "The passwords do not match"
 msgstr "Passordene samsvarer ikke"
 
-#: src/remmina_mpchange.c:244
+#: src/remmina_mpchange.c:275
+#, fuzzy
+msgid "The Gateway passwords do not match"
+msgstr "Passordene samsvarer ikke"
+
+#: src/remmina_mpchange.c:289
 #, fuzzy
 msgid "Resetting passwords, please wait…"
 msgstr "Tilbakestiller passord, vent …"
 
-#: src/remmina_mpchange.c:327
+#: src/remmina_mpchange.c:380
 #, fuzzy
 msgid "The multi password changer requires a secrecy plugin.\n"
 msgstr ""
 "Multipassordsendreren virker ikke uten et hemmelighetsprogramtillegg.\n"
 
-#: src/remmina_mpchange.c:330
+#: src/remmina_mpchange.c:383
 #, fuzzy
 msgid "The multi password changer requires a secrecy service.\n"
 msgstr "Multipassordsendreren virker ikke uten en hemmelighetstjeneste.\n"
 
-#: src/remmina_mpchange.c:409
+#: src/remmina_mpchange.c:478
 #, c-format
 msgid "%d password changed."
 msgid_plural "%d passwords changed."
@@ -995,7 +1000,7 @@ msgid "User"
 msgstr "Bruker"
 
 #: src/remmina_ftp_client.c:955 src/remmina_file_editor.c:1960
-#: data/ui/remmina_mpc.glade:115 data/ui/remmina_main.glade:464
+#: data/ui/remmina_mpc.glade:93 data/ui/remmina_main.glade:464
 #, fuzzy
 msgid "Group"
 msgstr "Gruppe"
@@ -1465,12 +1470,12 @@ msgstr "Nettverksstatus: fullt oppkoblet"
 msgid "Network status: offline"
 msgstr "Nettverksstatus: frakoblet"
 
-#: src/remmina_main.c:982
+#: src/remmina_main.c:986
 #, c-format
 msgid "Are you sure you want to delete “%s”?"
 msgstr "Er du sikker på at du vil slette «%s»?"
 
-#: src/remmina_main.c:1108
+#: src/remmina_main.c:1112
 #, fuzzy, c-format
 msgid ""
 "Unable to import:\n"
@@ -1479,27 +1484,27 @@ msgstr ""
 "Klarte ikke å importere:\n"
 "%s"
 
-#: src/remmina_main.c:1134 data/ui/remmina_main.glade:285
+#: src/remmina_main.c:1138 data/ui/remmina_main.glade:285
 #, fuzzy
 msgid "Import"
 msgstr "Importer"
 
-#: src/remmina_main.c:1157 src/remmina_file_editor.c:1816
+#: src/remmina_main.c:1161 src/remmina_file_editor.c:1816
 #, fuzzy
 msgid "_Save"
 msgstr "_Lagre"
 
-#: src/remmina_main.c:1163
+#: src/remmina_main.c:1167
 #, fuzzy
 msgid "This protocol does not support exporting."
 msgstr "Denne protokollen støtter ikke eksportering."
 
-#: src/remmina_main.c:1484
+#: src/remmina_main.c:1488
 #, fuzzy
 msgid "Remmina Remote Desktop Client"
 msgstr "Remmina-klient for eksterne skrivebord"
 
-#: src/remmina_main.c:1486
+#: src/remmina_main.c:1490
 #, fuzzy
 msgid "Remmina Kiosk"
 msgstr "Remmina-kiosk"
@@ -4610,55 +4615,82 @@ msgstr "Flytt opp"
 msgid "Move down"
 msgstr "Flytt nedover"
 
-#: data/ui/remmina_mpc.glade:14
-#, fuzzy
-msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
-msgstr "<span weight='bold' size='larger'>Multipassordsendrer</span>"
-
-#: data/ui/remmina_mpc.glade:32
+#: data/ui/remmina_mpc.glade:19
 #, fuzzy
 msgid "Change"
 msgstr "Endre"
 
-#: data/ui/remmina_mpc.glade:201
+#: data/ui/remmina_mpc.glade:180
 #, fuzzy
 msgid "Selection criteria"
 msgstr "Utvalgskriterium"
 
-#: data/ui/remmina_mpc.glade:261
+#: data/ui/remmina_mpc.glade:244
 #, fuzzy
 msgid "Confirm password"
 msgstr "Bekreft passord"
 
-#: data/ui/remmina_mpc.glade:294
+#: data/ui/remmina_mpc.glade:271
 #, fuzzy
 msgid "Set new password"
 msgstr "Sett nytt passord"
 
+#: data/ui/remmina_mpc.glade:320
+#, fuzzy
+msgid "Gateway Username"
+msgstr "Brukernavn"
+
+#: data/ui/remmina_mpc.glade:349
+#, fuzzy
+#| msgid "Remote Desktop Gateway domain"
+msgid "Gateway Domain"
+msgstr "RD-portnerdomene"
+
+#: data/ui/remmina_mpc.glade:415
+#, fuzzy
+msgid "Gateway Password"
+msgstr "Hovedpassord"
+
+#: data/ui/remmina_mpc.glade:440
+#, fuzzy
+msgid "Confirm Gateway Password"
+msgstr "Bekreft passord"
+
 #. A column table with multiple check-boxes
-#: data/ui/remmina_mpc.glade:331
+#: data/ui/remmina_mpc.glade:503
 #, fuzzy
 msgctxt "Multi password changer"
 msgid "Select"
 msgstr "Velg"
 
-#: data/ui/remmina_mpc.glade:343
+#: data/ui/remmina_mpc.glade:515
 #, fuzzy
 msgctxt "Multi password changer table"
 msgid "Name"
 msgstr "Navn"
 
-#: data/ui/remmina_mpc.glade:354
+#: data/ui/remmina_mpc.glade:526
 #, fuzzy
 msgctxt "Multi password changer table"
 msgid "Group"
 msgstr "Gruppe"
 
-#: data/ui/remmina_mpc.glade:365
+#: data/ui/remmina_mpc.glade:537
 #, fuzzy
 msgctxt "Multi password changer table"
 msgid "Domain\\Username"
 msgstr "Domene\\brukernavn"
+
+#: data/ui/remmina_mpc.glade:548
+#, fuzzy
+msgctxt "Multi password changer table"
+msgid "Gateway Domain\\Username"
+msgstr "Domene\\brukernavn"
+
+#: data/ui/remmina_mpc.glade:588
+#, fuzzy
+msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
+msgstr "<span weight='bold' size='larger'>Multipassordsendrer</span>"
 
 #: data/ui/remmina_passwd.glade:33
 #, fuzzy

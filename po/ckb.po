@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Remmina v1.4.6\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-09-01 10:37+0000\n"
+"POT-Creation-Date: 2022-09-06 19:08+0000\n"
 "PO-Revision-Date: 2021-12-17 08:54+0000\n"
 "Last-Translator: Jwtiyar Nariman <jwtiyar@gmail.com>\n"
 "Language-Team: Kurdish (Central) <https://hosted.weblate.org/projects/"
@@ -26,7 +26,7 @@ msgstr ""
 #: src/remmina_file_editor.c:1119 src/remmina_file_editor.c:1241
 #: src/remmina_ssh_plugin.c:1393 plugins/rdp/rdp_plugin.c:2797
 #: plugins/www/www_plugin.c:909 plugins/x2go/x2go_plugin.c:3230
-#: data/ui/remmina_mpc.glade:236 data/ui/remmina_passwd.glade:84
+#: data/ui/remmina_mpc.glade:218 data/ui/remmina_passwd.glade:84
 #: data/ui/remmina_unlock.glade:109
 #, fuzzy
 msgid "Password"
@@ -82,7 +82,7 @@ msgstr "پەیوەندیکردن لە ڕێگەی SSH لە تێرمیناڵی ن�
 #: plugins/rdp/rdp_plugin.c:2796 plugins/vnc/vnc_plugin.c:2037
 #: plugins/vnc/vnc_plugin.c:2049 plugins/www/www_plugin.c:908
 #: plugins/x2go/x2go_plugin.c:478 plugins/x2go/x2go_plugin.c:3229
-#: data/ui/remmina_mpc.glade:144
+#: data/ui/remmina_mpc.glade:122
 #, fuzzy
 msgid "Username"
 msgstr "ناوی بەکارهێنەر"
@@ -309,7 +309,7 @@ msgstr ""
 "\"پێشکەوتوو\" لە گرێدانەکانی تێرمیناڵ و ئیدت دەکرێت لە تابی \"تێرمیناڵ\" لە "
 "ڕێکخستنەکان."
 
-#: src/remmina_message_panel.c:162 data/ui/remmina_mpc.glade:46
+#: src/remmina_message_panel.c:162 data/ui/remmina_mpc.glade:33
 #: data/ui/remmina_passwd.glade:19 data/ui/remmina_unlock.glade:43
 #, fuzzy
 msgid "Cancel"
@@ -334,7 +334,7 @@ msgid "No"
 msgstr "نەخێر"
 
 #: src/remmina_message_panel.c:390 plugins/rdp/rdp_plugin.c:2798
-#: data/ui/remmina_mpc.glade:172
+#: data/ui/remmina_mpc.glade:151
 #, fuzzy
 msgid "Domain"
 msgstr "دۆمەین"
@@ -562,27 +562,32 @@ msgstr ""
 msgid "Open in web browser"
 msgstr "كردنه‌وه‌ له‌ وێبگه‌ر"
 
-#: src/remmina_mpchange.c:234
+#: src/remmina_mpchange.c:262
 #, fuzzy
 msgid "The passwords do not match"
 msgstr "وشەیتێپەڕبوون وەک یەک نیە"
 
-#: src/remmina_mpchange.c:244
+#: src/remmina_mpchange.c:275
+#, fuzzy
+msgid "The Gateway passwords do not match"
+msgstr "وشەیتێپەڕبوون وەک یەک نیە"
+
+#: src/remmina_mpchange.c:289
 #, fuzzy
 msgid "Resetting passwords, please wait…"
 msgstr "نوێکردنەوەی وشەی تێپەڕبوونی، تکایە چاوەڕوان بە…"
 
-#: src/remmina_mpchange.c:327
+#: src/remmina_mpchange.c:380
 #, fuzzy
 msgid "The multi password changer requires a secrecy plugin.\n"
 msgstr "گۆڕەڕی وشەی تێپەڕی دووانی پێویستی بە پێوەکراوی نهێنیە.\n"
 
-#: src/remmina_mpchange.c:330
+#: src/remmina_mpchange.c:383
 #, fuzzy
 msgid "The multi password changer requires a secrecy service.\n"
 msgstr "گۆڕەڕی وشەی تێپەڕی دووانی پێویستی بە خزمەتگوزاری نهێنیە.\n"
 
-#: src/remmina_mpchange.c:409
+#: src/remmina_mpchange.c:478
 #, c-format
 msgid "%d password changed."
 msgid_plural "%d passwords changed."
@@ -967,7 +972,7 @@ msgid "User"
 msgstr "بەکارهێنەر"
 
 #: src/remmina_ftp_client.c:955 src/remmina_file_editor.c:1960
-#: data/ui/remmina_mpc.glade:115 data/ui/remmina_main.glade:464
+#: data/ui/remmina_mpc.glade:93 data/ui/remmina_main.glade:464
 #, fuzzy
 msgid "Group"
 msgstr "گرووپ"
@@ -1441,12 +1446,12 @@ msgstr ""
 msgid "Network status: offline"
 msgstr ""
 
-#: src/remmina_main.c:982
+#: src/remmina_main.c:986
 #, c-format
 msgid "Are you sure you want to delete “%s”?"
 msgstr "ئایا تۆ دڵنیایت کە دەتەوێت “%s” بسڕیتەوە؟"
 
-#: src/remmina_main.c:1108
+#: src/remmina_main.c:1112
 #, fuzzy, c-format
 msgid ""
 "Unable to import:\n"
@@ -1455,27 +1460,27 @@ msgstr ""
 "نەتوانرا هاوردەبکرێت: \n"
 "‏‫%s"
 
-#: src/remmina_main.c:1134 data/ui/remmina_main.glade:285
+#: src/remmina_main.c:1138 data/ui/remmina_main.glade:285
 #, fuzzy
 msgid "Import"
 msgstr "هاوردە"
 
-#: src/remmina_main.c:1157 src/remmina_file_editor.c:1816
+#: src/remmina_main.c:1161 src/remmina_file_editor.c:1816
 #, fuzzy
 msgid "_Save"
 msgstr "_پاشەکەوتکردن"
 
-#: src/remmina_main.c:1163
+#: src/remmina_main.c:1167
 #, fuzzy
 msgid "This protocol does not support exporting."
 msgstr "ئەم پرۆتۆکۆڵە پشتگیری هەناردەکردن ناکات."
 
-#: src/remmina_main.c:1484
+#: src/remmina_main.c:1488
 #, fuzzy
 msgid "Remmina Remote Desktop Client"
 msgstr "ڕاژەخوازی کۆنتڕۆڵی دووری ڕوومێزی ڕێمینا"
 
-#: src/remmina_main.c:1486
+#: src/remmina_main.c:1490
 #, fuzzy
 msgid "Remmina Kiosk"
 msgstr "کۆشکی ڕێمینا"
@@ -4523,55 +4528,81 @@ msgstr "بیبە بۆ سەرەوە"
 msgid "Move down"
 msgstr "بیبە بۆ خوارەوە"
 
-#: data/ui/remmina_mpc.glade:14
-#, fuzzy
-msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
-msgstr "‫<span weight='bold' size='larger>گۆرینی وشەی تێپەڕبوونی دووانی</span>"
-
-#: data/ui/remmina_mpc.glade:32
+#: data/ui/remmina_mpc.glade:19
 #, fuzzy
 msgid "Change"
 msgstr "گۆڕین"
 
-#: data/ui/remmina_mpc.glade:201
+#: data/ui/remmina_mpc.glade:180
 #, fuzzy
 msgid "Selection criteria"
 msgstr "دیاریکردنی پێوانە"
 
-#: data/ui/remmina_mpc.glade:261
+#: data/ui/remmina_mpc.glade:244
 #, fuzzy
 msgid "Confirm password"
 msgstr "دڵنیابوون لەوشەی نهێنی"
 
-#: data/ui/remmina_mpc.glade:294
+#: data/ui/remmina_mpc.glade:271
 #, fuzzy
 msgid "Set new password"
 msgstr "وشەی تێپەڕبوون دابنێ"
 
+#: data/ui/remmina_mpc.glade:320
+#, fuzzy
+msgid "Gateway Username"
+msgstr "ناوی بەکارهێنەر"
+
+#: data/ui/remmina_mpc.glade:349
+#, fuzzy
+msgid "Gateway Domain"
+msgstr "دۆمەینی دەروازەی دێسکتۆپ لە دوورەوە"
+
+#: data/ui/remmina_mpc.glade:415
+#, fuzzy
+msgid "Gateway Password"
+msgstr "وشەی تێپەڕبوونی سەرەکی"
+
+#: data/ui/remmina_mpc.glade:440
+#, fuzzy
+msgid "Confirm Gateway Password"
+msgstr "دڵنیابوون لەوشەی نهێنی"
+
 #. A column table with multiple check-boxes
-#: data/ui/remmina_mpc.glade:331
+#: data/ui/remmina_mpc.glade:503
 #, fuzzy
 msgctxt "Multi password changer"
 msgid "Select"
 msgstr "دیاریکردن"
 
-#: data/ui/remmina_mpc.glade:343
+#: data/ui/remmina_mpc.glade:515
 #, fuzzy
 msgctxt "Multi password changer table"
 msgid "Name"
 msgstr "ناو"
 
-#: data/ui/remmina_mpc.glade:354
+#: data/ui/remmina_mpc.glade:526
 #, fuzzy
 msgctxt "Multi password changer table"
 msgid "Group"
 msgstr "گرووپ"
 
-#: data/ui/remmina_mpc.glade:365
+#: data/ui/remmina_mpc.glade:537
 #, fuzzy
 msgctxt "Multi password changer table"
 msgid "Domain\\Username"
 msgstr "دۆمەین/بەکارهێنەر"
+
+#: data/ui/remmina_mpc.glade:548
+#, fuzzy
+msgctxt "Multi password changer table"
+msgid "Gateway Domain\\Username"
+msgstr "دۆمەین/بەکارهێنەر"
+
+#: data/ui/remmina_mpc.glade:588
+#, fuzzy
+msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
+msgstr "‫<span weight='bold' size='larger>گۆرینی وشەی تێپەڕبوونی دووانی</span>"
 
 #: data/ui/remmina_passwd.glade:33
 #, fuzzy

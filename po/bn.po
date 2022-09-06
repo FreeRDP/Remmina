@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-09-01 10:37+0000\n"
+"POT-Creation-Date: 2022-09-06 19:08+0000\n"
 "PO-Revision-Date: 2021-12-17 08:42+0000\n"
 "Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
 "Language-Team: Bengali <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -26,7 +26,7 @@ msgstr ""
 #: src/remmina_file_editor.c:1119 src/remmina_file_editor.c:1241
 #: src/remmina_ssh_plugin.c:1393 plugins/rdp/rdp_plugin.c:2797
 #: plugins/www/www_plugin.c:909 plugins/x2go/x2go_plugin.c:3230
-#: data/ui/remmina_mpc.glade:236 data/ui/remmina_passwd.glade:84
+#: data/ui/remmina_mpc.glade:218 data/ui/remmina_passwd.glade:84
 #: data/ui/remmina_unlock.glade:109
 #, fuzzy
 msgid "Password"
@@ -82,7 +82,7 @@ msgstr "একটি নতুন টার্মিনাল থেকে এ�
 #: plugins/rdp/rdp_plugin.c:2796 plugins/vnc/vnc_plugin.c:2037
 #: plugins/vnc/vnc_plugin.c:2049 plugins/www/www_plugin.c:908
 #: plugins/x2go/x2go_plugin.c:478 plugins/x2go/x2go_plugin.c:3229
-#: data/ui/remmina_mpc.glade:144
+#: data/ui/remmina_mpc.glade:122
 #, fuzzy
 msgid "Username"
 msgstr "ব্যবহারকারীর নাম"
@@ -302,7 +302,7 @@ msgstr ""
 "এই ফাইলে টার্মিনাল সংযোগের \"উন্নত\" ট্যাব থেকে নির্বাচনযোগ্য এবং সেটিংসে "
 "\"টার্মিনাল\" ট্যাবে সম্পাদনাযোগ্য \"কাস্টম\" টার্মিনাল রঙের স্কিম রয়েছে।"
 
-#: src/remmina_message_panel.c:162 data/ui/remmina_mpc.glade:46
+#: src/remmina_message_panel.c:162 data/ui/remmina_mpc.glade:33
 #: data/ui/remmina_passwd.glade:19 data/ui/remmina_unlock.glade:43
 #, fuzzy
 msgid "Cancel"
@@ -327,7 +327,7 @@ msgid "No"
 msgstr "না"
 
 #: src/remmina_message_panel.c:390 plugins/rdp/rdp_plugin.c:2798
-#: data/ui/remmina_mpc.glade:172
+#: data/ui/remmina_mpc.glade:151
 #, fuzzy
 msgid "Domain"
 msgstr "ডোমেন"
@@ -561,27 +561,32 @@ msgstr ""
 msgid "Open in web browser"
 msgstr "ব্রাউজারে খুলুন"
 
-#: src/remmina_mpchange.c:234
+#: src/remmina_mpchange.c:262
 #, fuzzy
 msgid "The passwords do not match"
 msgstr "পাসওয়ার্ডগুলি মিলছে না"
 
-#: src/remmina_mpchange.c:244
+#: src/remmina_mpchange.c:275
+#, fuzzy
+msgid "The Gateway passwords do not match"
+msgstr "পাসওয়ার্ডগুলি মিলছে না"
+
+#: src/remmina_mpchange.c:289
 #, fuzzy
 msgid "Resetting passwords, please wait…"
 msgstr "পাসওয়ার্ড গুলি পুনরায় সেট করা হচ্ছে, দয়া করে অপেক্ষা করুন…"
 
-#: src/remmina_mpchange.c:327
+#: src/remmina_mpchange.c:380
 #, fuzzy
 msgid "The multi password changer requires a secrecy plugin.\n"
 msgstr "মাল্টি পাসওয়ার্ড চেঞ্জারএকটি গোপনীয়তা প্লাগইন প্রয়োজন।\n"
 
-#: src/remmina_mpchange.c:330
+#: src/remmina_mpchange.c:383
 #, fuzzy
 msgid "The multi password changer requires a secrecy service.\n"
 msgstr "মাল্টি পাসওয়ার্ড চেঞ্জারটির জন্য একটি গোপনীয়তা পরিষেবা প্রয়োজন।\n"
 
-#: src/remmina_mpchange.c:409
+#: src/remmina_mpchange.c:478
 #, fuzzy, c-format
 msgid "%d password changed."
 msgid_plural "%d passwords changed."
@@ -956,7 +961,7 @@ msgid "User"
 msgstr "ব্যবহারকারী"
 
 #: src/remmina_ftp_client.c:955 src/remmina_file_editor.c:1960
-#: data/ui/remmina_mpc.glade:115 data/ui/remmina_main.glade:464
+#: data/ui/remmina_mpc.glade:93 data/ui/remmina_main.glade:464
 #, fuzzy
 msgid "Group"
 msgstr "গোষ্ঠী"
@@ -1431,13 +1436,13 @@ msgstr ""
 msgid "Network status: offline"
 msgstr ""
 
-#: src/remmina_main.c:982
+#: src/remmina_main.c:986
 #, c-format
 msgid "Are you sure you want to delete “%s”?"
 msgstr ""
 "বর্তমানে উইন্ডোতে %i টি সক্রিয় সংযোগ রয়েছে। আপনি নিশ্চিত যে এটি বন্ধ করতে চান?"
 
-#: src/remmina_main.c:1108
+#: src/remmina_main.c:1112
 #, fuzzy, c-format
 msgid ""
 "Unable to import:\n"
@@ -1446,27 +1451,27 @@ msgstr ""
 "আমদানি করতে অক্ষম:\n"
 "[এক্স১৮এক্স]"
 
-#: src/remmina_main.c:1134 data/ui/remmina_main.glade:285
+#: src/remmina_main.c:1138 data/ui/remmina_main.glade:285
 #, fuzzy
 msgid "Import"
 msgstr "আমদানি"
 
-#: src/remmina_main.c:1157 src/remmina_file_editor.c:1816
+#: src/remmina_main.c:1161 src/remmina_file_editor.c:1816
 #, fuzzy
 msgid "_Save"
 msgstr "_সংরক্ষণ"
 
-#: src/remmina_main.c:1163
+#: src/remmina_main.c:1167
 #, fuzzy
 msgid "This protocol does not support exporting."
 msgstr "এই প্রোটোকল রপ্তানি সমর্থন করে না।"
 
-#: src/remmina_main.c:1484
+#: src/remmina_main.c:1488
 #, fuzzy
 msgid "Remmina Remote Desktop Client"
 msgstr "Remmina দূরবর্তী ডেস্কটপ ক্লায়েন্ট"
 
-#: src/remmina_main.c:1486
+#: src/remmina_main.c:1490
 #, fuzzy
 msgid "Remmina Kiosk"
 msgstr "রেমিনা কিয়স্ক"
@@ -4580,55 +4585,81 @@ msgstr "উপরে সরান"
 msgid "Move down"
 msgstr "নিচে সরান"
 
-#: data/ui/remmina_mpc.glade:14
-#, fuzzy
-msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
-msgstr "[এক্স০এক্স] মাল্টি পাসওয়ার্ড চেঞ্জার[এক্স৫৬এক্স]"
-
-#: data/ui/remmina_mpc.glade:32
+#: data/ui/remmina_mpc.glade:19
 #, fuzzy
 msgid "Change"
 msgstr "পরিবর্তন"
 
-#: data/ui/remmina_mpc.glade:201
+#: data/ui/remmina_mpc.glade:180
 #, fuzzy
 msgid "Selection criteria"
 msgstr "নির্বাচনের মানদণ্ড"
 
-#: data/ui/remmina_mpc.glade:261
+#: data/ui/remmina_mpc.glade:244
 #, fuzzy
 msgid "Confirm password"
 msgstr "পাসওয়ার্ড নিশ্চিত করুন"
 
-#: data/ui/remmina_mpc.glade:294
+#: data/ui/remmina_mpc.glade:271
 #, fuzzy
 msgid "Set new password"
 msgstr "নতুন পাসওয়ার্ড সেট করুন"
 
+#: data/ui/remmina_mpc.glade:320
+#, fuzzy
+msgid "Gateway Username"
+msgstr "ব্যবহারকারীর নাম"
+
+#: data/ui/remmina_mpc.glade:349
+#, fuzzy
+msgid "Gateway Domain"
+msgstr "দূরবর্তী ডেস্কটপ গেটওয়ে ডোমেইন"
+
+#: data/ui/remmina_mpc.glade:415
+#, fuzzy
+msgid "Gateway Password"
+msgstr "মাস্টার পাসওয়ার্ড"
+
+#: data/ui/remmina_mpc.glade:440
+#, fuzzy
+msgid "Confirm Gateway Password"
+msgstr "পাসওয়ার্ড নিশ্চিত করুন"
+
 #. A column table with multiple check-boxes
-#: data/ui/remmina_mpc.glade:331
+#: data/ui/remmina_mpc.glade:503
 #, fuzzy
 msgctxt "Multi password changer"
 msgid "Select"
 msgstr "নির্বাচন করুন"
 
-#: data/ui/remmina_mpc.glade:343
+#: data/ui/remmina_mpc.glade:515
 #, fuzzy
 msgctxt "Multi password changer table"
 msgid "Name"
 msgstr "নাম"
 
-#: data/ui/remmina_mpc.glade:354
+#: data/ui/remmina_mpc.glade:526
 #, fuzzy
 msgctxt "Multi password changer table"
 msgid "Group"
 msgstr "গোষ্ঠী"
 
-#: data/ui/remmina_mpc.glade:365
+#: data/ui/remmina_mpc.glade:537
 #, fuzzy
 msgctxt "Multi password changer table"
 msgid "Domain\\Username"
 msgstr "ডোমেইন\\ব্যবহারকারীর নাম"
+
+#: data/ui/remmina_mpc.glade:548
+#, fuzzy
+msgctxt "Multi password changer table"
+msgid "Gateway Domain\\Username"
+msgstr "ডোমেইন\\ব্যবহারকারীর নাম"
+
+#: data/ui/remmina_mpc.glade:588
+#, fuzzy
+msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
+msgstr "[এক্স০এক্স] মাল্টি পাসওয়ার্ড চেঞ্জার[এক্স৫৬এক্স]"
 
 #: data/ui/remmina_passwd.glade:33
 #, fuzzy

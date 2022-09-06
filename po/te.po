@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-09-01 10:37+0000\n"
+"POT-Creation-Date: 2022-09-06 19:08+0000\n"
 "PO-Revision-Date: 2021-12-17 08:51+0000\n"
 "Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
 "Language-Team: Telugu <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -26,7 +26,7 @@ msgstr ""
 #: src/remmina_file_editor.c:1119 src/remmina_file_editor.c:1241
 #: src/remmina_ssh_plugin.c:1393 plugins/rdp/rdp_plugin.c:2797
 #: plugins/www/www_plugin.c:909 plugins/x2go/x2go_plugin.c:3230
-#: data/ui/remmina_mpc.glade:236 data/ui/remmina_passwd.glade:84
+#: data/ui/remmina_mpc.glade:218 data/ui/remmina_passwd.glade:84
 #: data/ui/remmina_unlock.glade:109
 msgid "Password"
 msgstr "సంకేతపుమాట"
@@ -81,7 +81,7 @@ msgstr "కొత్త టెర్మినల్ నుంచి ఎస్ �
 #: plugins/rdp/rdp_plugin.c:2796 plugins/vnc/vnc_plugin.c:2037
 #: plugins/vnc/vnc_plugin.c:2049 plugins/www/www_plugin.c:908
 #: plugins/x2go/x2go_plugin.c:478 plugins/x2go/x2go_plugin.c:3229
-#: data/ui/remmina_mpc.glade:144
+#: data/ui/remmina_mpc.glade:122
 #, fuzzy
 msgid "Username"
 msgstr "వాడుకరి పేరు"
@@ -298,7 +298,7 @@ msgstr ""
 "ఈ ఫైలులో టెర్మినల్ కనెక్షన్ ల యొక్క \"అడ్వాన్స్ డ్\" ట్యాబ్ నుంచి ఎంచుకోగల \"కస్టమ్\" టెర్మినల్ కలర్ స్కీం "
 "ఉంటుంది మరియు సెట్టింగ్ ల్లో ''టెర్మినల్'' ట్యాబ్ లో ఎడిట్ చేయబడుతుంది."
 
-#: src/remmina_message_panel.c:162 data/ui/remmina_mpc.glade:46
+#: src/remmina_message_panel.c:162 data/ui/remmina_mpc.glade:33
 #: data/ui/remmina_passwd.glade:19 data/ui/remmina_unlock.glade:43
 msgid "Cancel"
 msgstr "రద్దుచేయు"
@@ -321,7 +321,7 @@ msgid "No"
 msgstr "కాదు"
 
 #: src/remmina_message_panel.c:390 plugins/rdp/rdp_plugin.c:2798
-#: data/ui/remmina_mpc.glade:172
+#: data/ui/remmina_mpc.glade:151
 #, fuzzy
 msgid "Domain"
 msgstr "డొమైన్"
@@ -550,27 +550,32 @@ msgstr ""
 msgid "Open in web browser"
 msgstr "మెయిన్ విండో తెరవండి"
 
-#: src/remmina_mpchange.c:234
+#: src/remmina_mpchange.c:262
 #, fuzzy
 msgid "The passwords do not match"
 msgstr "పాస్ వర్డ్ లు జత కావడం లేదు"
 
-#: src/remmina_mpchange.c:244
+#: src/remmina_mpchange.c:275
+#, fuzzy
+msgid "The Gateway passwords do not match"
+msgstr "పాస్ వర్డ్ లు జత కావడం లేదు"
+
+#: src/remmina_mpchange.c:289
 #, fuzzy
 msgid "Resetting passwords, please wait…"
 msgstr "పాస్ వర్డ్ లను తిరిగి సెట్ చేయండి, దయచేసి వేచి ఉండండి…"
 
-#: src/remmina_mpchange.c:327
+#: src/remmina_mpchange.c:380
 #, fuzzy
 msgid "The multi password changer requires a secrecy plugin.\n"
 msgstr "మల్టీ పాస్ వర్డ్ ఛేంజర్ కు గోప్యత ప్లగిన్ అవసరం.\n"
 
-#: src/remmina_mpchange.c:330
+#: src/remmina_mpchange.c:383
 #, fuzzy
 msgid "The multi password changer requires a secrecy service.\n"
 msgstr "మల్టీ పాస్ వర్డ్ ఛేంజర్ కు గోప్యతా సేవ అవసరం.\n"
 
-#: src/remmina_mpchange.c:409
+#: src/remmina_mpchange.c:478
 #, fuzzy, c-format
 msgid "%d password changed."
 msgid_plural "%d passwords changed."
@@ -942,7 +947,7 @@ msgid "User"
 msgstr "వినియోగదారు"
 
 #: src/remmina_ftp_client.c:955 src/remmina_file_editor.c:1960
-#: data/ui/remmina_mpc.glade:115 data/ui/remmina_main.glade:464
+#: data/ui/remmina_mpc.glade:93 data/ui/remmina_main.glade:464
 #, fuzzy
 msgid "Group"
 msgstr "బృందం"
@@ -1414,12 +1419,12 @@ msgstr ""
 msgid "Network status: offline"
 msgstr ""
 
-#: src/remmina_main.c:982
+#: src/remmina_main.c:986
 #, fuzzy, c-format
 msgid "Are you sure you want to delete “%s”?"
 msgstr "మీరు ఖచ్చితంగా \"%s\"ను తొలగించాలనుకుంటున్నారా?"
 
-#: src/remmina_main.c:1108
+#: src/remmina_main.c:1112
 #, fuzzy, c-format
 msgid ""
 "Unable to import:\n"
@@ -1428,26 +1433,26 @@ msgstr ""
 "దిగుమతి చేయడం సాధ్యం కాదు:\n"
 "[ఎక్స్18ఎక్స్]"
 
-#: src/remmina_main.c:1134 data/ui/remmina_main.glade:285
+#: src/remmina_main.c:1138 data/ui/remmina_main.glade:285
 #, fuzzy
 msgid "Import"
 msgstr "దిగుమతి"
 
-#: src/remmina_main.c:1157 src/remmina_file_editor.c:1816
+#: src/remmina_main.c:1161 src/remmina_file_editor.c:1816
 #, fuzzy
 msgid "_Save"
 msgstr "_భద్రపరచు"
 
-#: src/remmina_main.c:1163
+#: src/remmina_main.c:1167
 #, fuzzy
 msgid "This protocol does not support exporting."
 msgstr "ఈ ప్రోటోకాల్ ఎగుమతికి మద్దతు ఇవ్వదు."
 
-#: src/remmina_main.c:1484
+#: src/remmina_main.c:1488
 msgid "Remmina Remote Desktop Client"
 msgstr "రెమ్మినా సుదూర డెస్కుటాప్ క్లయింటు"
 
-#: src/remmina_main.c:1486
+#: src/remmina_main.c:1490
 #, fuzzy
 msgid "Remmina Kiosk"
 msgstr "రెమినా కియోస్క్"
@@ -4540,55 +4545,81 @@ msgstr "పైకి వెళ్లండి"
 msgid "Move down"
 msgstr "దిగువకు కదలండి"
 
-#: data/ui/remmina_mpc.glade:14
-#, fuzzy
-msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
-msgstr "[ఎక్స్0ఎక్స్] మల్టీ పాస్ వర్డ్ ఛేంజర్[ఎక్స్56ఎక్స్]"
-
-#: data/ui/remmina_mpc.glade:32
+#: data/ui/remmina_mpc.glade:19
 #, fuzzy
 msgid "Change"
 msgstr "మార్పు"
 
-#: data/ui/remmina_mpc.glade:201
+#: data/ui/remmina_mpc.glade:180
 #, fuzzy
 msgid "Selection criteria"
 msgstr "ఎంపిక ప్రమాణాలు"
 
-#: data/ui/remmina_mpc.glade:261
+#: data/ui/remmina_mpc.glade:244
 #, fuzzy
 msgid "Confirm password"
 msgstr "సంకేతపదాన్ని ఖచ్చితపరచండి"
 
-#: data/ui/remmina_mpc.glade:294
+#: data/ui/remmina_mpc.glade:271
 #, fuzzy
 msgid "Set new password"
 msgstr "కొత్త పాస్ వర్డ్ సెట్ చేయండి"
 
+#: data/ui/remmina_mpc.glade:320
+#, fuzzy
+msgid "Gateway Username"
+msgstr "వాడుకరి పేరు"
+
+#: data/ui/remmina_mpc.glade:349
+#, fuzzy
+msgid "Gateway Domain"
+msgstr "రిమోట్ డెస్క్ టాప్ గేట్ వే డొమైన్"
+
+#: data/ui/remmina_mpc.glade:415
+#, fuzzy
+msgid "Gateway Password"
+msgstr "మాస్టర్ పాస్ వర్డ్"
+
+#: data/ui/remmina_mpc.glade:440
+#, fuzzy
+msgid "Confirm Gateway Password"
+msgstr "సంకేతపదాన్ని ఖచ్చితపరచండి"
+
 #. A column table with multiple check-boxes
-#: data/ui/remmina_mpc.glade:331
+#: data/ui/remmina_mpc.glade:503
 #, fuzzy
 msgctxt "Multi password changer"
 msgid "Select"
 msgstr "ఎంచుకో"
 
-#: data/ui/remmina_mpc.glade:343
+#: data/ui/remmina_mpc.glade:515
 #, fuzzy
 msgctxt "Multi password changer table"
 msgid "Name"
 msgstr "పేరు"
 
-#: data/ui/remmina_mpc.glade:354
+#: data/ui/remmina_mpc.glade:526
 #, fuzzy
 msgctxt "Multi password changer table"
 msgid "Group"
 msgstr "బృందం"
 
-#: data/ui/remmina_mpc.glade:365
+#: data/ui/remmina_mpc.glade:537
 #, fuzzy
 msgctxt "Multi password changer table"
 msgid "Domain\\Username"
 msgstr "డొమైన్\\యూజర్ నేమ్"
+
+#: data/ui/remmina_mpc.glade:548
+#, fuzzy
+msgctxt "Multi password changer table"
+msgid "Gateway Domain\\Username"
+msgstr "డొమైన్\\యూజర్ నేమ్"
+
+#: data/ui/remmina_mpc.glade:588
+#, fuzzy
+msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
+msgstr "[ఎక్స్0ఎక్స్] మల్టీ పాస్ వర్డ్ ఛేంజర్[ఎక్స్56ఎక్స్]"
 
 #: data/ui/remmina_passwd.glade:33
 #, fuzzy

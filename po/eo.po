@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Remmina v1.4.3\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-09-01 10:37+0000\n"
+"POT-Creation-Date: 2022-09-06 19:08+0000\n"
 "PO-Revision-Date: 2022-08-07 21:20+0000\n"
 "Last-Translator: phlostically <phlostically@mailinator.com>\n"
 "Language-Team: Esperanto <https://hosted.weblate.org/projects/remmina/"
@@ -24,7 +24,7 @@ msgstr ""
 #: src/remmina_file_editor.c:1119 src/remmina_file_editor.c:1241
 #: src/remmina_ssh_plugin.c:1393 plugins/rdp/rdp_plugin.c:2797
 #: plugins/www/www_plugin.c:909 plugins/x2go/x2go_plugin.c:3230
-#: data/ui/remmina_mpc.glade:236 data/ui/remmina_passwd.glade:84
+#: data/ui/remmina_mpc.glade:218 data/ui/remmina_passwd.glade:84
 #: data/ui/remmina_unlock.glade:109
 msgid "Password"
 msgstr "Pasvorto"
@@ -71,7 +71,7 @@ msgstr "Konekti per SSH el nova terminalo"
 #: plugins/rdp/rdp_plugin.c:2796 plugins/vnc/vnc_plugin.c:2037
 #: plugins/vnc/vnc_plugin.c:2049 plugins/www/www_plugin.c:908
 #: plugins/x2go/x2go_plugin.c:478 plugins/x2go/x2go_plugin.c:3229
-#: data/ui/remmina_mpc.glade:144
+#: data/ui/remmina_mpc.glade:122
 msgid "Username"
 msgstr "Salutnomo"
 
@@ -261,7 +261,7 @@ msgstr ""
 "langeto «Altnivela» pri terminalaj konektoj kaj modifebla ĉe la langeto "
 "«Terminalo» en la preferoj."
 
-#: src/remmina_message_panel.c:162 data/ui/remmina_mpc.glade:46
+#: src/remmina_message_panel.c:162 data/ui/remmina_mpc.glade:33
 #: data/ui/remmina_passwd.glade:19 data/ui/remmina_unlock.glade:43
 msgid "Cancel"
 msgstr "Nuligi"
@@ -282,7 +282,7 @@ msgid "No"
 msgstr "Ne"
 
 #: src/remmina_message_panel.c:390 plugins/rdp/rdp_plugin.c:2798
-#: data/ui/remmina_mpc.glade:172
+#: data/ui/remmina_mpc.glade:151
 msgid "Domain"
 msgstr "Retejo"
 
@@ -501,23 +501,29 @@ msgstr ""
 msgid "Open in web browser"
 msgstr "Malfermi per TTT-legilo"
 
-#: src/remmina_mpchange.c:234
+#: src/remmina_mpchange.c:262
 msgid "The passwords do not match"
 msgstr "La pasvortoj ne kongruas"
 
-#: src/remmina_mpchange.c:244
+#: src/remmina_mpchange.c:275
+#, fuzzy
+#| msgid "The passwords do not match"
+msgid "The Gateway passwords do not match"
+msgstr "La pasvortoj ne kongruas"
+
+#: src/remmina_mpchange.c:289
 msgid "Resetting passwords, please wait…"
 msgstr "Restarigante pasvortojn, bonvolu atendi…"
 
-#: src/remmina_mpchange.c:327
+#: src/remmina_mpchange.c:380
 msgid "The multi password changer requires a secrecy plugin.\n"
 msgstr "La plurpasvortoŝanĝilo postulas kromprogramon pri sekretoj.\n"
 
-#: src/remmina_mpchange.c:330
+#: src/remmina_mpchange.c:383
 msgid "The multi password changer requires a secrecy service.\n"
 msgstr "La plurpasvortoŝanĝilo postulas servon pri sekretoj.\n"
 
-#: src/remmina_mpchange.c:409
+#: src/remmina_mpchange.c:478
 #, c-format
 msgid "%d password changed."
 msgid_plural "%d passwords changed."
@@ -856,7 +862,7 @@ msgid "User"
 msgstr "Uzanto"
 
 #: src/remmina_ftp_client.c:955 src/remmina_file_editor.c:1960
-#: data/ui/remmina_mpc.glade:115 data/ui/remmina_main.glade:464
+#: data/ui/remmina_mpc.glade:93 data/ui/remmina_main.glade:464
 msgid "Group"
 msgstr "Grupo"
 
@@ -1289,12 +1295,12 @@ msgstr "Reta stato: plene konektita"
 msgid "Network status: offline"
 msgstr "Reta stato: senkonekta"
 
-#: src/remmina_main.c:982
+#: src/remmina_main.c:986
 #, c-format
 msgid "Are you sure you want to delete “%s”?"
 msgstr "Ĉu vi certas, ke vi volas forigi «%s»?"
 
-#: src/remmina_main.c:1108
+#: src/remmina_main.c:1112
 #, c-format
 msgid ""
 "Unable to import:\n"
@@ -1303,23 +1309,23 @@ msgstr ""
 "Ne povis enporti:\n"
 "%s"
 
-#: src/remmina_main.c:1134 data/ui/remmina_main.glade:285
+#: src/remmina_main.c:1138 data/ui/remmina_main.glade:285
 msgid "Import"
 msgstr "Enporti"
 
-#: src/remmina_main.c:1157 src/remmina_file_editor.c:1816
+#: src/remmina_main.c:1161 src/remmina_file_editor.c:1816
 msgid "_Save"
 msgstr "_Konservi"
 
-#: src/remmina_main.c:1163
+#: src/remmina_main.c:1167
 msgid "This protocol does not support exporting."
 msgstr "Ĉi tiu protokolo ne subtenas elportadon."
 
-#: src/remmina_main.c:1484
+#: src/remmina_main.c:1488
 msgid "Remmina Remote Desktop Client"
 msgstr "Forakomputila Kliento Remmina"
 
-#: src/remmina_main.c:1486
+#: src/remmina_main.c:1490
 msgid "Remmina Kiosk"
 msgstr "Remmina (Enviciga Reĝimo)"
 
@@ -4032,46 +4038,78 @@ msgstr "Movi supren"
 msgid "Move down"
 msgstr "Movi suben"
 
-#: data/ui/remmina_mpc.glade:14
-msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
-msgstr "<span weight='bold' size='larger'>Plurpasvortoŝanĝilo</span>"
-
-#: data/ui/remmina_mpc.glade:32
+#: data/ui/remmina_mpc.glade:19
 msgid "Change"
 msgstr "Ŝanĝi"
 
-#: data/ui/remmina_mpc.glade:201
+#: data/ui/remmina_mpc.glade:180
 msgid "Selection criteria"
 msgstr "Kriterioj de elekto"
 
-#: data/ui/remmina_mpc.glade:261
+#: data/ui/remmina_mpc.glade:244
 msgid "Confirm password"
 msgstr "Konfirmi pasvorton"
 
-#: data/ui/remmina_mpc.glade:294
+#: data/ui/remmina_mpc.glade:271
 msgid "Set new password"
 msgstr "Agordi novan pasvorton"
 
+#: data/ui/remmina_mpc.glade:320
+#, fuzzy
+#| msgid "Username"
+msgid "Gateway Username"
+msgstr "Salutnomo"
+
+#: data/ui/remmina_mpc.glade:349
+#, fuzzy
+#| msgid "Remote Desktop Gateway domain"
+msgid "Gateway Domain"
+msgstr "Reteja adreso de Forakomputila Kluzo"
+
+#: data/ui/remmina_mpc.glade:415
+#, fuzzy
+#| msgid "Master password"
+msgid "Gateway Password"
+msgstr "Ĉefpasvorto"
+
+#: data/ui/remmina_mpc.glade:440
+#, fuzzy
+#| msgid "Confirm password"
+msgid "Confirm Gateway Password"
+msgstr "Konfirmi pasvorton"
+
 #. A column table with multiple check-boxes
-#: data/ui/remmina_mpc.glade:331
+#: data/ui/remmina_mpc.glade:503
 msgctxt "Multi password changer"
 msgid "Select"
 msgstr "Elekti"
 
-#: data/ui/remmina_mpc.glade:343
+#: data/ui/remmina_mpc.glade:515
 msgctxt "Multi password changer table"
 msgid "Name"
 msgstr "Nomo"
 
-#: data/ui/remmina_mpc.glade:354
+#: data/ui/remmina_mpc.glade:526
 msgctxt "Multi password changer table"
 msgid "Group"
 msgstr "Grupo"
 
-#: data/ui/remmina_mpc.glade:365
+#: data/ui/remmina_mpc.glade:537
 msgctxt "Multi password changer table"
 msgid "Domain\\Username"
 msgstr "Retejo\\Salutnomo"
+
+#: data/ui/remmina_mpc.glade:548
+#, fuzzy
+#| msgctxt "Multi password changer table"
+#| msgid "Domain\\Username"
+msgctxt "Multi password changer table"
+msgid "Gateway Domain\\Username"
+msgstr "Retejo\\Salutnomo"
+
+#: data/ui/remmina_mpc.glade:588
+msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
+msgstr "<span weight='bold' size='larger'>Plurpasvortoŝanĝilo</span>"
 
 #: data/ui/remmina_passwd.glade:33
 msgid "OK"

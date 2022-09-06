@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-09-01 10:37+0000\n"
+"POT-Creation-Date: 2022-09-06 19:08+0000\n"
 "PO-Revision-Date: 2022-07-24 15:24+0000\n"
 "Last-Translator: Jim gmr <jimsav2004@gmail.com>\n"
 "Language-Team: Greek <https://hosted.weblate.org/projects/remmina/remmina/el/"
@@ -32,7 +32,7 @@ msgstr ""
 #: src/remmina_file_editor.c:1119 src/remmina_file_editor.c:1241
 #: src/remmina_ssh_plugin.c:1393 plugins/rdp/rdp_plugin.c:2797
 #: plugins/www/www_plugin.c:909 plugins/x2go/x2go_plugin.c:3230
-#: data/ui/remmina_mpc.glade:236 data/ui/remmina_passwd.glade:84
+#: data/ui/remmina_mpc.glade:218 data/ui/remmina_passwd.glade:84
 #: data/ui/remmina_unlock.glade:109
 msgid "Password"
 msgstr "Κωδικός"
@@ -79,7 +79,7 @@ msgstr "Συνδεθείτε μέσω SSH από ένα νέο τερματικ�
 #: plugins/rdp/rdp_plugin.c:2796 plugins/vnc/vnc_plugin.c:2037
 #: plugins/vnc/vnc_plugin.c:2049 plugins/www/www_plugin.c:908
 #: plugins/x2go/x2go_plugin.c:478 plugins/x2go/x2go_plugin.c:3229
-#: data/ui/remmina_mpc.glade:144
+#: data/ui/remmina_mpc.glade:122
 msgid "Username"
 msgstr "Όνομα χρήστη"
 
@@ -273,7 +273,7 @@ msgstr ""
 "που μπορεί να επιλεχθεί από την καρτέλα \"Για προχωρημένους\" των συνδέσεων "
 "τερματικού και να τροποποιηθεί στην καρτέλα \"Τερματικό\" των ρυθμίσεων."
 
-#: src/remmina_message_panel.c:162 data/ui/remmina_mpc.glade:46
+#: src/remmina_message_panel.c:162 data/ui/remmina_mpc.glade:33
 #: data/ui/remmina_passwd.glade:19 data/ui/remmina_unlock.glade:43
 msgid "Cancel"
 msgstr "Άκυρο"
@@ -294,7 +294,7 @@ msgid "No"
 msgstr "Όχι"
 
 #: src/remmina_message_panel.c:390 plugins/rdp/rdp_plugin.c:2798
-#: data/ui/remmina_mpc.glade:172
+#: data/ui/remmina_mpc.glade:151
 msgid "Domain"
 msgstr "Τομέας (domain)"
 
@@ -520,25 +520,31 @@ msgstr ""
 msgid "Open in web browser"
 msgstr "Άνοιγμα σε πρόγραμμα περιήγησης"
 
-#: src/remmina_mpchange.c:234
+#: src/remmina_mpchange.c:262
 msgid "The passwords do not match"
 msgstr "Οι κωδικοί πρόσβασης δεν ταιριάζουν"
 
-#: src/remmina_mpchange.c:244
+#: src/remmina_mpchange.c:275
+#, fuzzy
+#| msgid "The passwords do not match"
+msgid "The Gateway passwords do not match"
+msgstr "Οι κωδικοί πρόσβασης δεν ταιριάζουν"
+
+#: src/remmina_mpchange.c:289
 msgid "Resetting passwords, please wait…"
 msgstr "Επαναφορά κωδικών πρόσβασης, παρακαλώ περιμένετε…"
 
-#: src/remmina_mpchange.c:327
+#: src/remmina_mpchange.c:380
 msgid "The multi password changer requires a secrecy plugin.\n"
 msgstr ""
 "Ο μετατροπέας πολλαπλών κωδικών πρόσβασης απαιτεί μια προσθήκη μυστικότητας\n"
 
-#: src/remmina_mpchange.c:330
+#: src/remmina_mpchange.c:383
 msgid "The multi password changer requires a secrecy service.\n"
 msgstr ""
 "Ο μετατροπέας πολλαπλών κωδικών πρόσβασης απαιτεί μια προσθήκη μυστικότητας\n"
 
-#: src/remmina_mpchange.c:409
+#: src/remmina_mpchange.c:478
 #, c-format
 msgid "%d password changed."
 msgid_plural "%d passwords changed."
@@ -886,7 +892,7 @@ msgid "User"
 msgstr "Χρήστης"
 
 #: src/remmina_ftp_client.c:955 src/remmina_file_editor.c:1960
-#: data/ui/remmina_mpc.glade:115 data/ui/remmina_main.glade:464
+#: data/ui/remmina_mpc.glade:93 data/ui/remmina_main.glade:464
 msgid "Group"
 msgstr "Ομάδα"
 
@@ -1344,12 +1350,12 @@ msgstr ""
 msgid "Network status: offline"
 msgstr ""
 
-#: src/remmina_main.c:982
+#: src/remmina_main.c:986
 #, c-format
 msgid "Are you sure you want to delete “%s”?"
 msgstr "Είστε σίγουρη/ος για τη διαγραφή του: '%s'?"
 
-#: src/remmina_main.c:1108
+#: src/remmina_main.c:1112
 #, c-format
 msgid ""
 "Unable to import:\n"
@@ -1358,23 +1364,23 @@ msgstr ""
 "Δεν είναι δυνατή η εισαγωγή του:\n"
 "%s"
 
-#: src/remmina_main.c:1134 data/ui/remmina_main.glade:285
+#: src/remmina_main.c:1138 data/ui/remmina_main.glade:285
 msgid "Import"
 msgstr "Εισαγωγή"
 
-#: src/remmina_main.c:1157 src/remmina_file_editor.c:1816
+#: src/remmina_main.c:1161 src/remmina_file_editor.c:1816
 msgid "_Save"
 msgstr "_Αποθήκευση"
 
-#: src/remmina_main.c:1163
+#: src/remmina_main.c:1167
 msgid "This protocol does not support exporting."
 msgstr "Αυτό το πρωτόκολλο δεν υποστηρίζει την εξαγωγή."
 
-#: src/remmina_main.c:1484
+#: src/remmina_main.c:1488
 msgid "Remmina Remote Desktop Client"
 msgstr "Διακομιστής απομακρυσμένης επιφάνειας εργασίας Remmina"
 
-#: src/remmina_main.c:1486
+#: src/remmina_main.c:1490
 msgid "Remmina Kiosk"
 msgstr "Περίπτερο Ρεμίνα"
 
@@ -4430,51 +4436,80 @@ msgstr "Μετακίνηση προς τα επάνω"
 msgid "Move down"
 msgstr "Μετακίνηση προς τα κάτω"
 
-#: data/ui/remmina_mpc.glade:14
+#: data/ui/remmina_mpc.glade:19
+msgid "Change"
+msgstr "Αλλαγή"
+
+#: data/ui/remmina_mpc.glade:180
+#, fuzzy
+msgid "Selection criteria"
+msgstr "Κριτήρια επιλογής"
+
+#: data/ui/remmina_mpc.glade:244
+msgid "Confirm password"
+msgstr "Επιβεβαίωση κωδικού"
+
+#: data/ui/remmina_mpc.glade:271
+msgid "Set new password"
+msgstr "Αποθήκευση κωδικού πρόσβασης"
+
+#: data/ui/remmina_mpc.glade:320
+#, fuzzy
+#| msgid "Username"
+msgid "Gateway Username"
+msgstr "Όνομα χρήστη"
+
+#: data/ui/remmina_mpc.glade:349
+#, fuzzy
+#| msgid "Remote Desktop Gateway domain"
+msgid "Gateway Domain"
+msgstr "Επιλογές Απομακρυσμένης Σύνδεσης"
+
+#: data/ui/remmina_mpc.glade:415
+#, fuzzy
+msgid "Gateway Password"
+msgstr "Κύριος κωδικός πρόσβασης"
+
+#: data/ui/remmina_mpc.glade:440
+#, fuzzy
+#| msgid "Confirm password"
+msgid "Confirm Gateway Password"
+msgstr "Επιβεβαίωση κωδικού"
+
+#. A column table with multiple check-boxes
+#: data/ui/remmina_mpc.glade:503
+msgctxt "Multi password changer"
+msgid "Select"
+msgstr "Επιλογή"
+
+#: data/ui/remmina_mpc.glade:515
+msgctxt "Multi password changer table"
+msgid "Name"
+msgstr "Όνομα"
+
+#: data/ui/remmina_mpc.glade:526
+msgctxt "Multi password changer table"
+msgid "Group"
+msgstr "Ομάδα"
+
+#: data/ui/remmina_mpc.glade:537
+#, fuzzy
+msgctxt "Multi password changer table"
+msgid "Domain\\Username"
+msgstr "Τομέας\\Όνομα χρήστη"
+
+#: data/ui/remmina_mpc.glade:548
+#, fuzzy
+msgctxt "Multi password changer table"
+msgid "Gateway Domain\\Username"
+msgstr "Τομέας\\Όνομα χρήστη"
+
+#: data/ui/remmina_mpc.glade:588
 #, fuzzy
 msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
 msgstr ""
 "<span weight='bold' size='larger'> Πολλαπλός εναλλάκτης κωδικών πρόσβασης</"
 "span>"
-
-#: data/ui/remmina_mpc.glade:32
-msgid "Change"
-msgstr "Αλλαγή"
-
-#: data/ui/remmina_mpc.glade:201
-#, fuzzy
-msgid "Selection criteria"
-msgstr "Κριτήρια επιλογής"
-
-#: data/ui/remmina_mpc.glade:261
-msgid "Confirm password"
-msgstr "Επιβεβαίωση κωδικού"
-
-#: data/ui/remmina_mpc.glade:294
-msgid "Set new password"
-msgstr "Αποθήκευση κωδικού πρόσβασης"
-
-#. A column table with multiple check-boxes
-#: data/ui/remmina_mpc.glade:331
-msgctxt "Multi password changer"
-msgid "Select"
-msgstr "Επιλογή"
-
-#: data/ui/remmina_mpc.glade:343
-msgctxt "Multi password changer table"
-msgid "Name"
-msgstr "Όνομα"
-
-#: data/ui/remmina_mpc.glade:354
-msgctxt "Multi password changer table"
-msgid "Group"
-msgstr "Ομάδα"
-
-#: data/ui/remmina_mpc.glade:365
-#, fuzzy
-msgctxt "Multi password changer table"
-msgid "Domain\\Username"
-msgstr "Τομέας\\Όνομα χρήστη"
 
 #: data/ui/remmina_passwd.glade:33
 #, fuzzy

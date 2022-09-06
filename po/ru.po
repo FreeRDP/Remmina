@@ -23,7 +23,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-09-01 10:37+0000\n"
+"POT-Creation-Date: 2022-09-06 19:08+0000\n"
 "PO-Revision-Date: 2022-09-04 14:19+0000\n"
 "Last-Translator: Солтыс Сергей <treefeed@mail.ru>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -43,7 +43,7 @@ msgstr ""
 #: src/remmina_file_editor.c:1119 src/remmina_file_editor.c:1241
 #: src/remmina_ssh_plugin.c:1393 plugins/rdp/rdp_plugin.c:2797
 #: plugins/www/www_plugin.c:909 plugins/x2go/x2go_plugin.c:3230
-#: data/ui/remmina_mpc.glade:236 data/ui/remmina_passwd.glade:84
+#: data/ui/remmina_mpc.glade:218 data/ui/remmina_passwd.glade:84
 #: data/ui/remmina_unlock.glade:109
 msgid "Password"
 msgstr "Пароль"
@@ -90,7 +90,7 @@ msgstr "Подключиться через SSH из нового термина
 #: plugins/rdp/rdp_plugin.c:2796 plugins/vnc/vnc_plugin.c:2037
 #: plugins/vnc/vnc_plugin.c:2049 plugins/www/www_plugin.c:908
 #: plugins/x2go/x2go_plugin.c:478 plugins/x2go/x2go_plugin.c:3229
-#: data/ui/remmina_mpc.glade:144
+#: data/ui/remmina_mpc.glade:122
 msgid "Username"
 msgstr "Имя пользователя"
 
@@ -280,7 +280,7 @@ msgstr ""
 "можно выбрать на вкладке «Дополнительно» терминальных подключений и "
 "редактировать на вкладке «Терминал» в настройках."
 
-#: src/remmina_message_panel.c:162 data/ui/remmina_mpc.glade:46
+#: src/remmina_message_panel.c:162 data/ui/remmina_mpc.glade:33
 #: data/ui/remmina_passwd.glade:19 data/ui/remmina_unlock.glade:43
 msgid "Cancel"
 msgstr "Отмена"
@@ -301,7 +301,7 @@ msgid "No"
 msgstr "Нет"
 
 #: src/remmina_message_panel.c:390 plugins/rdp/rdp_plugin.c:2798
-#: data/ui/remmina_mpc.glade:172
+#: data/ui/remmina_mpc.glade:151
 msgid "Domain"
 msgstr "Домен"
 
@@ -519,23 +519,29 @@ msgstr ""
 msgid "Open in web browser"
 msgstr "Открыть в браузере"
 
-#: src/remmina_mpchange.c:234
+#: src/remmina_mpchange.c:262
 msgid "The passwords do not match"
 msgstr "Пароли не совпадают"
 
-#: src/remmina_mpchange.c:244
+#: src/remmina_mpchange.c:275
+#, fuzzy
+#| msgid "The passwords do not match"
+msgid "The Gateway passwords do not match"
+msgstr "Пароли не совпадают"
+
+#: src/remmina_mpchange.c:289
 msgid "Resetting passwords, please wait…"
 msgstr "Сбрасываю пароли, пожалуйста подождите…"
 
-#: src/remmina_mpchange.c:327
+#: src/remmina_mpchange.c:380
 msgid "The multi password changer requires a secrecy plugin.\n"
 msgstr "Множественная смена паролей требует модуля секретов.\n"
 
-#: src/remmina_mpchange.c:330
+#: src/remmina_mpchange.c:383
 msgid "The multi password changer requires a secrecy service.\n"
 msgstr "Множественная смена паролей требует сервиса секретов.\n"
 
-#: src/remmina_mpchange.c:409
+#: src/remmina_mpchange.c:478
 #, c-format
 msgid "%d password changed."
 msgid_plural "%d passwords changed."
@@ -889,7 +895,7 @@ msgid "User"
 msgstr "Пользователь"
 
 #: src/remmina_ftp_client.c:955 src/remmina_file_editor.c:1960
-#: data/ui/remmina_mpc.glade:115 data/ui/remmina_main.glade:464
+#: data/ui/remmina_mpc.glade:93 data/ui/remmina_main.glade:464
 msgid "Group"
 msgstr "Группа"
 
@@ -1322,12 +1328,12 @@ msgstr "Состояние сети: полностью онлайн"
 msgid "Network status: offline"
 msgstr "Состояние сети: выключена"
 
-#: src/remmina_main.c:982
+#: src/remmina_main.c:986
 #, c-format
 msgid "Are you sure you want to delete “%s”?"
 msgstr "Вы действительно хотите удалить \"%s\"?"
 
-#: src/remmina_main.c:1108
+#: src/remmina_main.c:1112
 #, c-format
 msgid ""
 "Unable to import:\n"
@@ -1336,23 +1342,23 @@ msgstr ""
 "Не удалось импортировать:\n"
 "%s"
 
-#: src/remmina_main.c:1134 data/ui/remmina_main.glade:285
+#: src/remmina_main.c:1138 data/ui/remmina_main.glade:285
 msgid "Import"
 msgstr "Импортировать"
 
-#: src/remmina_main.c:1157 src/remmina_file_editor.c:1816
+#: src/remmina_main.c:1161 src/remmina_file_editor.c:1816
 msgid "_Save"
 msgstr "_Сохранить"
 
-#: src/remmina_main.c:1163
+#: src/remmina_main.c:1167
 msgid "This protocol does not support exporting."
 msgstr "Этот протокол не поддерживает экспортирование."
 
-#: src/remmina_main.c:1484
+#: src/remmina_main.c:1488
 msgid "Remmina Remote Desktop Client"
 msgstr "Клиент удалённого рабочего стола Remmina"
 
-#: src/remmina_main.c:1486
+#: src/remmina_main.c:1490
 msgid "Remmina Kiosk"
 msgstr "Remmina Киоск"
 
@@ -4081,46 +4087,78 @@ msgstr "Вверх"
 msgid "Move down"
 msgstr "Вниз"
 
-#: data/ui/remmina_mpc.glade:14
-msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
-msgstr "<span weight='bold' size='larger'>Множественная смена паролей</span>"
-
-#: data/ui/remmina_mpc.glade:32
+#: data/ui/remmina_mpc.glade:19
 msgid "Change"
 msgstr "Изменить"
 
-#: data/ui/remmina_mpc.glade:201
+#: data/ui/remmina_mpc.glade:180
 msgid "Selection criteria"
 msgstr "Критерий отбора"
 
-#: data/ui/remmina_mpc.glade:261
+#: data/ui/remmina_mpc.glade:244
 msgid "Confirm password"
 msgstr "Подтвердите пароль"
 
-#: data/ui/remmina_mpc.glade:294
+#: data/ui/remmina_mpc.glade:271
 msgid "Set new password"
 msgstr "Установить новый пароль"
 
+#: data/ui/remmina_mpc.glade:320
+#, fuzzy
+#| msgid "Username"
+msgid "Gateway Username"
+msgstr "Имя пользователя"
+
+#: data/ui/remmina_mpc.glade:349
+#, fuzzy
+#| msgid "Remote Desktop Gateway domain"
+msgid "Gateway Domain"
+msgstr "Доменое имя шлюза удаленных рабочих столов"
+
+#: data/ui/remmina_mpc.glade:415
+#, fuzzy
+#| msgid "Master password"
+msgid "Gateway Password"
+msgstr "Мастер-пароль"
+
+#: data/ui/remmina_mpc.glade:440
+#, fuzzy
+#| msgid "Confirm password"
+msgid "Confirm Gateway Password"
+msgstr "Подтвердите пароль"
+
 #. A column table with multiple check-boxes
-#: data/ui/remmina_mpc.glade:331
+#: data/ui/remmina_mpc.glade:503
 msgctxt "Multi password changer"
 msgid "Select"
 msgstr "Выбрать"
 
-#: data/ui/remmina_mpc.glade:343
+#: data/ui/remmina_mpc.glade:515
 msgctxt "Multi password changer table"
 msgid "Name"
 msgstr "Название"
 
-#: data/ui/remmina_mpc.glade:354
+#: data/ui/remmina_mpc.glade:526
 msgctxt "Multi password changer table"
 msgid "Group"
 msgstr "Группа"
 
-#: data/ui/remmina_mpc.glade:365
+#: data/ui/remmina_mpc.glade:537
 msgctxt "Multi password changer table"
 msgid "Domain\\Username"
 msgstr "Домен\\Имя пользователя"
+
+#: data/ui/remmina_mpc.glade:548
+#, fuzzy
+#| msgctxt "Multi password changer table"
+#| msgid "Domain\\Username"
+msgctxt "Multi password changer table"
+msgid "Gateway Domain\\Username"
+msgstr "Домен\\Имя пользователя"
+
+#: data/ui/remmina_mpc.glade:588
+msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
+msgstr "<span weight='bold' size='larger'>Множественная смена паролей</span>"
 
 #: data/ui/remmina_passwd.glade:33
 msgid "OK"

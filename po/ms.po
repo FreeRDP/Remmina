@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-09-01 10:37+0000\n"
+"POT-Creation-Date: 2022-09-06 19:08+0000\n"
 "PO-Revision-Date: 2021-12-17 08:48+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Malay <https://hosted.weblate.org/projects/remmina/remmina/ms/"
@@ -28,7 +28,7 @@ msgstr ""
 #: src/remmina_file_editor.c:1119 src/remmina_file_editor.c:1241
 #: src/remmina_ssh_plugin.c:1393 plugins/rdp/rdp_plugin.c:2797
 #: plugins/www/www_plugin.c:909 plugins/x2go/x2go_plugin.c:3230
-#: data/ui/remmina_mpc.glade:236 data/ui/remmina_passwd.glade:84
+#: data/ui/remmina_mpc.glade:218 data/ui/remmina_passwd.glade:84
 #: data/ui/remmina_unlock.glade:109
 msgid "Password"
 msgstr "Kata laluan"
@@ -80,7 +80,7 @@ msgstr "Sambung melalui SSH dari terminal baru"
 #: plugins/rdp/rdp_plugin.c:2796 plugins/vnc/vnc_plugin.c:2037
 #: plugins/vnc/vnc_plugin.c:2049 plugins/www/www_plugin.c:908
 #: plugins/x2go/x2go_plugin.c:478 plugins/x2go/x2go_plugin.c:3229
-#: data/ui/remmina_mpc.glade:144
+#: data/ui/remmina_mpc.glade:122
 #, fuzzy
 msgid "Username"
 msgstr "Nama pengguna"
@@ -285,7 +285,7 @@ msgstr ""
 "dari tab \"Lanjutan\" sambungan terminal dan boleh diedit dalam tab "
 "\"Terminal\" dalam tetapan."
 
-#: src/remmina_message_panel.c:162 data/ui/remmina_mpc.glade:46
+#: src/remmina_message_panel.c:162 data/ui/remmina_mpc.glade:33
 #: data/ui/remmina_passwd.glade:19 data/ui/remmina_unlock.glade:43
 #, fuzzy
 msgid "Cancel"
@@ -309,7 +309,7 @@ msgid "No"
 msgstr "Tak"
 
 #: src/remmina_message_panel.c:390 plugins/rdp/rdp_plugin.c:2798
-#: data/ui/remmina_mpc.glade:172
+#: data/ui/remmina_mpc.glade:151
 msgid "Domain"
 msgstr "Domain"
 
@@ -534,27 +534,32 @@ msgstr ""
 msgid "Open in web browser"
 msgstr "Buka Tetingkap Utama"
 
-#: src/remmina_mpchange.c:234
+#: src/remmina_mpchange.c:262
 #, fuzzy
 msgid "The passwords do not match"
 msgstr "Kata laluan tidak sepadan"
 
-#: src/remmina_mpchange.c:244
+#: src/remmina_mpchange.c:275
+#, fuzzy
+msgid "The Gateway passwords do not match"
+msgstr "Kata laluan tidak sepadan"
+
+#: src/remmina_mpchange.c:289
 #, fuzzy
 msgid "Resetting passwords, please wait…"
 msgstr "Mengeset semula kata laluan, sila tunggu…"
 
-#: src/remmina_mpchange.c:327
+#: src/remmina_mpchange.c:380
 #, fuzzy
 msgid "The multi password changer requires a secrecy plugin.\n"
 msgstr "Penyedahan kata laluan berbilang memerlukan pemalam kerahsiaan.\n"
 
-#: src/remmina_mpchange.c:330
+#: src/remmina_mpchange.c:383
 #, fuzzy
 msgid "The multi password changer requires a secrecy service.\n"
 msgstr "Pencarubah kata laluan berbilang memerlukan perkhidmatan kerahsiaan.\n"
 
-#: src/remmina_mpchange.c:409
+#: src/remmina_mpchange.c:478
 #, fuzzy, c-format
 msgid "%d password changed."
 msgid_plural "%d passwords changed."
@@ -918,7 +923,7 @@ msgid "User"
 msgstr "Pengguna"
 
 #: src/remmina_ftp_client.c:955 src/remmina_file_editor.c:1960
-#: data/ui/remmina_mpc.glade:115 data/ui/remmina_main.glade:464
+#: data/ui/remmina_mpc.glade:93 data/ui/remmina_main.glade:464
 msgid "Group"
 msgstr "Kumpulan"
 
@@ -1370,12 +1375,12 @@ msgstr ""
 msgid "Network status: offline"
 msgstr ""
 
-#: src/remmina_main.c:982
+#: src/remmina_main.c:986
 #, c-format
 msgid "Are you sure you want to delete “%s”?"
 msgstr "Anda pasti hendak memadam '%s'"
 
-#: src/remmina_main.c:1108
+#: src/remmina_main.c:1112
 #, c-format
 msgid ""
 "Unable to import:\n"
@@ -1384,24 +1389,24 @@ msgstr ""
 "Tidak boleh import:\n"
 "%s"
 
-#: src/remmina_main.c:1134 data/ui/remmina_main.glade:285
+#: src/remmina_main.c:1138 data/ui/remmina_main.glade:285
 msgid "Import"
 msgstr "Import"
 
-#: src/remmina_main.c:1157 src/remmina_file_editor.c:1816
+#: src/remmina_main.c:1161 src/remmina_file_editor.c:1816
 #, fuzzy
 msgid "_Save"
 msgstr "_Save"
 
-#: src/remmina_main.c:1163
+#: src/remmina_main.c:1167
 msgid "This protocol does not support exporting."
 msgstr "Protokol ini tidak menyokong pengeksportan."
 
-#: src/remmina_main.c:1484
+#: src/remmina_main.c:1488
 msgid "Remmina Remote Desktop Client"
 msgstr "Klien Desktop Jauh Remmina"
 
-#: src/remmina_main.c:1486
+#: src/remmina_main.c:1490
 #, fuzzy
 msgid "Remmina Kiosk"
 msgstr "Remmina Kiosk"
@@ -4427,51 +4432,78 @@ msgstr "Alih ke atas"
 msgid "Move down"
 msgstr "Alih ke bawah"
 
-#: data/ui/remmina_mpc.glade:14
-#, fuzzy
-msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
-msgstr ""
-"<span weight='bold' size='larger'> Penying Berbilang Kata Laluan</span>"
-
-#: data/ui/remmina_mpc.glade:32
+#: data/ui/remmina_mpc.glade:19
 msgid "Change"
 msgstr "Tukar"
 
-#: data/ui/remmina_mpc.glade:201
+#: data/ui/remmina_mpc.glade:180
 #, fuzzy
 msgid "Selection criteria"
 msgstr "Kriteria pemilihan"
 
-#: data/ui/remmina_mpc.glade:261
+#: data/ui/remmina_mpc.glade:244
 #, fuzzy
 msgid "Confirm password"
 msgstr "Sahkan kata laluan"
 
-#: data/ui/remmina_mpc.glade:294
+#: data/ui/remmina_mpc.glade:271
 msgid "Set new password"
 msgstr "Simpan kata laluan"
 
+#: data/ui/remmina_mpc.glade:320
+#, fuzzy
+msgid "Gateway Username"
+msgstr "Nama pengguna"
+
+#: data/ui/remmina_mpc.glade:349
+#, fuzzy
+#| msgid "Remote Desktop Gateway domain"
+msgid "Gateway Domain"
+msgstr "Keutamaan Desktop Jauh"
+
+#: data/ui/remmina_mpc.glade:415
+#, fuzzy
+msgid "Gateway Password"
+msgstr "Kata laluan induk"
+
+#: data/ui/remmina_mpc.glade:440
+#, fuzzy
+msgid "Confirm Gateway Password"
+msgstr "Sahkan kata laluan"
+
 #. A column table with multiple check-boxes
-#: data/ui/remmina_mpc.glade:331
+#: data/ui/remmina_mpc.glade:503
 msgctxt "Multi password changer"
 msgid "Select"
 msgstr "Pilih"
 
-#: data/ui/remmina_mpc.glade:343
+#: data/ui/remmina_mpc.glade:515
 msgctxt "Multi password changer table"
 msgid "Name"
 msgstr "Nama"
 
-#: data/ui/remmina_mpc.glade:354
+#: data/ui/remmina_mpc.glade:526
 msgctxt "Multi password changer table"
 msgid "Group"
 msgstr "Kumpulan"
 
-#: data/ui/remmina_mpc.glade:365
+#: data/ui/remmina_mpc.glade:537
 #, fuzzy
 msgctxt "Multi password changer table"
 msgid "Domain\\Username"
 msgstr "Domain\\Nama Pengguna"
+
+#: data/ui/remmina_mpc.glade:548
+#, fuzzy
+msgctxt "Multi password changer table"
+msgid "Gateway Domain\\Username"
+msgstr "Domain\\Nama Pengguna"
+
+#: data/ui/remmina_mpc.glade:588
+#, fuzzy
+msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
+msgstr ""
+"<span weight='bold' size='larger'> Penying Berbilang Kata Laluan</span>"
 
 #: data/ui/remmina_passwd.glade:33
 #, fuzzy

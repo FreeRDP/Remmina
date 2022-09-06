@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-09-01 10:37+0000\n"
+"POT-Creation-Date: 2022-09-06 19:08+0000\n"
 "PO-Revision-Date: 2022-06-21 13:17+0000\n"
 "Last-Translator: LINUX-SAUNA <linuxsauna@protonmail.com>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -32,7 +32,7 @@ msgstr ""
 #: src/remmina_file_editor.c:1119 src/remmina_file_editor.c:1241
 #: src/remmina_ssh_plugin.c:1393 plugins/rdp/rdp_plugin.c:2797
 #: plugins/www/www_plugin.c:909 plugins/x2go/x2go_plugin.c:3230
-#: data/ui/remmina_mpc.glade:236 data/ui/remmina_passwd.glade:84
+#: data/ui/remmina_mpc.glade:218 data/ui/remmina_passwd.glade:84
 #: data/ui/remmina_unlock.glade:109
 msgid "Password"
 msgstr "Salasana"
@@ -79,7 +79,7 @@ msgstr "Yhdistä SSH:n kautta uudesta päätteestä"
 #: plugins/rdp/rdp_plugin.c:2796 plugins/vnc/vnc_plugin.c:2037
 #: plugins/vnc/vnc_plugin.c:2049 plugins/www/www_plugin.c:908
 #: plugins/x2go/x2go_plugin.c:478 plugins/x2go/x2go_plugin.c:3229
-#: data/ui/remmina_mpc.glade:144
+#: data/ui/remmina_mpc.glade:122
 msgid "Username"
 msgstr "Käyttäjätunnus"
 
@@ -268,7 +268,7 @@ msgstr ""
 "voidaan valita pääteyhteyksien \"Lisäasetukset\" -välilehdeltä ja jota "
 "voidaan muokata asetusten Pääte-välilehdeltä."
 
-#: src/remmina_message_panel.c:162 data/ui/remmina_mpc.glade:46
+#: src/remmina_message_panel.c:162 data/ui/remmina_mpc.glade:33
 #: data/ui/remmina_passwd.glade:19 data/ui/remmina_unlock.glade:43
 msgid "Cancel"
 msgstr "Peruuta"
@@ -289,7 +289,7 @@ msgid "No"
 msgstr "Ei"
 
 #: src/remmina_message_panel.c:390 plugins/rdp/rdp_plugin.c:2798
-#: data/ui/remmina_mpc.glade:172
+#: data/ui/remmina_mpc.glade:151
 msgid "Domain"
 msgstr "Verkkotunnus"
 
@@ -504,23 +504,29 @@ msgstr ""
 msgid "Open in web browser"
 msgstr "Avaa verkkoselaimessa"
 
-#: src/remmina_mpchange.c:234
+#: src/remmina_mpchange.c:262
 msgid "The passwords do not match"
 msgstr "Salasanat eivät täsmää"
 
-#: src/remmina_mpchange.c:244
+#: src/remmina_mpchange.c:275
+#, fuzzy
+#| msgid "The passwords do not match"
+msgid "The Gateway passwords do not match"
+msgstr "Salasanat eivät täsmää"
+
+#: src/remmina_mpchange.c:289
 msgid "Resetting passwords, please wait…"
 msgstr "Nollataan salasanoja, odota…"
 
-#: src/remmina_mpchange.c:327
+#: src/remmina_mpchange.c:380
 msgid "The multi password changer requires a secrecy plugin.\n"
 msgstr "Monisalasananvaihtaja vaatii salauslisäosan.\n"
 
-#: src/remmina_mpchange.c:330
+#: src/remmina_mpchange.c:383
 msgid "The multi password changer requires a secrecy service.\n"
 msgstr "Monisalasananvaihtaja vaatii salassapitopalvelun.\n"
 
-#: src/remmina_mpchange.c:409
+#: src/remmina_mpchange.c:478
 #, c-format
 msgid "%d password changed."
 msgid_plural "%d passwords changed."
@@ -862,7 +868,7 @@ msgid "User"
 msgstr "Käyttäjä"
 
 #: src/remmina_ftp_client.c:955 src/remmina_file_editor.c:1960
-#: data/ui/remmina_mpc.glade:115 data/ui/remmina_main.glade:464
+#: data/ui/remmina_mpc.glade:93 data/ui/remmina_main.glade:464
 msgid "Group"
 msgstr "Ryhmä"
 
@@ -1296,12 +1302,12 @@ msgstr "Verkon tila: täysin online-tilassa"
 msgid "Network status: offline"
 msgstr "Verkkotila: yhteydetön"
 
-#: src/remmina_main.c:982
+#: src/remmina_main.c:986
 #, c-format
 msgid "Are you sure you want to delete “%s”?"
 msgstr "Haluatko varmasti poistaa \"%s\"?"
 
-#: src/remmina_main.c:1108
+#: src/remmina_main.c:1112
 #, c-format
 msgid ""
 "Unable to import:\n"
@@ -1310,23 +1316,23 @@ msgstr ""
 "Tuonti ei onnistunut:\n"
 "%s"
 
-#: src/remmina_main.c:1134 data/ui/remmina_main.glade:285
+#: src/remmina_main.c:1138 data/ui/remmina_main.glade:285
 msgid "Import"
 msgstr "Tuo"
 
-#: src/remmina_main.c:1157 src/remmina_file_editor.c:1816
+#: src/remmina_main.c:1161 src/remmina_file_editor.c:1816
 msgid "_Save"
 msgstr "_Tallenna"
 
-#: src/remmina_main.c:1163
+#: src/remmina_main.c:1167
 msgid "This protocol does not support exporting."
 msgstr "Tämä protokolla ei tue vientiä."
 
-#: src/remmina_main.c:1484
+#: src/remmina_main.c:1488
 msgid "Remmina Remote Desktop Client"
 msgstr "Remmina-etätyöpöytäsovellus"
 
-#: src/remmina_main.c:1486
+#: src/remmina_main.c:1490
 msgid "Remmina Kiosk"
 msgstr "Remmina-kioski"
 
@@ -4048,46 +4054,78 @@ msgstr "Siirrä ylös"
 msgid "Move down"
 msgstr "Siirrä alas"
 
-#: data/ui/remmina_mpc.glade:14
-msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
-msgstr "<span weight='bold' size='larger'>Salasanojen monivaihdin</span>"
-
-#: data/ui/remmina_mpc.glade:32
+#: data/ui/remmina_mpc.glade:19
 msgid "Change"
 msgstr "Muuta"
 
-#: data/ui/remmina_mpc.glade:201
+#: data/ui/remmina_mpc.glade:180
 msgid "Selection criteria"
 msgstr "Valinnan perusteet"
 
-#: data/ui/remmina_mpc.glade:261
+#: data/ui/remmina_mpc.glade:244
 msgid "Confirm password"
 msgstr "Vahvista salasana"
 
-#: data/ui/remmina_mpc.glade:294
+#: data/ui/remmina_mpc.glade:271
 msgid "Set new password"
 msgstr "Aseta uusi salasana"
 
+#: data/ui/remmina_mpc.glade:320
+#, fuzzy
+#| msgid "Username"
+msgid "Gateway Username"
+msgstr "Käyttäjätunnus"
+
+#: data/ui/remmina_mpc.glade:349
+#, fuzzy
+#| msgid "Remote Desktop Gateway domain"
+msgid "Gateway Domain"
+msgstr "Etätyöpöydän yhdyskäytävän verkkotunnus"
+
+#: data/ui/remmina_mpc.glade:415
+#, fuzzy
+#| msgid "Master password"
+msgid "Gateway Password"
+msgstr "Pääsalasana"
+
+#: data/ui/remmina_mpc.glade:440
+#, fuzzy
+#| msgid "Confirm password"
+msgid "Confirm Gateway Password"
+msgstr "Vahvista salasana"
+
 #. A column table with multiple check-boxes
-#: data/ui/remmina_mpc.glade:331
+#: data/ui/remmina_mpc.glade:503
 msgctxt "Multi password changer"
 msgid "Select"
 msgstr "Valitse"
 
-#: data/ui/remmina_mpc.glade:343
+#: data/ui/remmina_mpc.glade:515
 msgctxt "Multi password changer table"
 msgid "Name"
 msgstr "Nimi"
 
-#: data/ui/remmina_mpc.glade:354
+#: data/ui/remmina_mpc.glade:526
 msgctxt "Multi password changer table"
 msgid "Group"
 msgstr "Ryhmä"
 
-#: data/ui/remmina_mpc.glade:365
+#: data/ui/remmina_mpc.glade:537
 msgctxt "Multi password changer table"
 msgid "Domain\\Username"
 msgstr "Verkkotunnus\\Käyttäjätunnus"
+
+#: data/ui/remmina_mpc.glade:548
+#, fuzzy
+#| msgctxt "Multi password changer table"
+#| msgid "Domain\\Username"
+msgctxt "Multi password changer table"
+msgid "Gateway Domain\\Username"
+msgstr "Verkkotunnus\\Käyttäjätunnus"
+
+#: data/ui/remmina_mpc.glade:588
+msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
+msgstr "<span weight='bold' size='larger'>Salasanojen monivaihdin</span>"
 
 #: data/ui/remmina_passwd.glade:33
 msgid "OK"

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-09-01 10:37+0000\n"
+"POT-Creation-Date: 2022-09-06 19:08+0000\n"
 "PO-Revision-Date: 2022-08-19 11:17+0000\n"
 "Last-Translator: VRSasha <pongpeera054@protonmail.com>\n"
 "Language-Team: Thai <https://hosted.weblate.org/projects/remmina/remmina/th/"
@@ -28,7 +28,7 @@ msgstr ""
 #: src/remmina_file_editor.c:1119 src/remmina_file_editor.c:1241
 #: src/remmina_ssh_plugin.c:1393 plugins/rdp/rdp_plugin.c:2797
 #: plugins/www/www_plugin.c:909 plugins/x2go/x2go_plugin.c:3230
-#: data/ui/remmina_mpc.glade:236 data/ui/remmina_passwd.glade:84
+#: data/ui/remmina_mpc.glade:218 data/ui/remmina_passwd.glade:84
 #: data/ui/remmina_unlock.glade:109
 msgid "Password"
 msgstr "รหัสผ่าน"
@@ -82,7 +82,7 @@ msgstr "เชื่อมต่อผ่าน SSH จากเทอร์ม�
 #: plugins/rdp/rdp_plugin.c:2796 plugins/vnc/vnc_plugin.c:2037
 #: plugins/vnc/vnc_plugin.c:2049 plugins/www/www_plugin.c:908
 #: plugins/x2go/x2go_plugin.c:478 plugins/x2go/x2go_plugin.c:3229
-#: data/ui/remmina_mpc.glade:144
+#: data/ui/remmina_mpc.glade:122
 #, fuzzy
 msgid "Username"
 msgstr "ชื่อผู้ใช้"
@@ -288,7 +288,7 @@ msgstr ""
 "ไฟล์นี้มีโทนสีเทอร์มินัล \"กําหนดเอง\" ที่เลือกได้จากแท็บ \"ขั้นสูง\" "
 "ของการเชื่อมต่อเทอร์มินัลและสามารถแก้ไขได้ในแท็บ \"เทอร์มินัล\" ในการตั้งค่า"
 
-#: src/remmina_message_panel.c:162 data/ui/remmina_mpc.glade:46
+#: src/remmina_message_panel.c:162 data/ui/remmina_mpc.glade:33
 #: data/ui/remmina_passwd.glade:19 data/ui/remmina_unlock.glade:43
 msgid "Cancel"
 msgstr "ยกเลิก"
@@ -311,7 +311,7 @@ msgid "No"
 msgstr "ไม่ใช่"
 
 #: src/remmina_message_panel.c:390 plugins/rdp/rdp_plugin.c:2798
-#: data/ui/remmina_mpc.glade:172
+#: data/ui/remmina_mpc.glade:151
 #, fuzzy
 msgid "Domain"
 msgstr "อาณาจักร"
@@ -533,27 +533,32 @@ msgstr ""
 msgid "Open in web browser"
 msgstr "เปิดหน้าต่างหลัก"
 
-#: src/remmina_mpchange.c:234
+#: src/remmina_mpchange.c:262
 #, fuzzy
 msgid "The passwords do not match"
 msgstr "รหัสผ่านไม่ตรงกัน"
 
-#: src/remmina_mpchange.c:244
+#: src/remmina_mpchange.c:275
+#, fuzzy
+msgid "The Gateway passwords do not match"
+msgstr "รหัสผ่านไม่ตรงกัน"
+
+#: src/remmina_mpchange.c:289
 #, fuzzy
 msgid "Resetting passwords, please wait…"
 msgstr "กําลังตั้งค่ารหัสผ่านใหม่"
 
-#: src/remmina_mpchange.c:327
+#: src/remmina_mpchange.c:380
 #, fuzzy
 msgid "The multi password changer requires a secrecy plugin.\n"
 msgstr "ตัวเปลี่ยนรหัสผ่านหลายชุดต้องใช้ปลั๊กอินที่เป็นความลับ\n"
 
-#: src/remmina_mpchange.c:330
+#: src/remmina_mpchange.c:383
 #, fuzzy
 msgid "The multi password changer requires a secrecy service.\n"
 msgstr "ตัวเปลี่ยนรหัสผ่านแบบหลายรหัสผ่านต้องการบริการที่เป็นความลับ\n"
 
-#: src/remmina_mpchange.c:409
+#: src/remmina_mpchange.c:478
 #, fuzzy, c-format
 msgid "%d password changed."
 msgid_plural "%d passwords changed."
@@ -910,7 +915,7 @@ msgid "User"
 msgstr "ผู้ใช้"
 
 #: src/remmina_ftp_client.c:955 src/remmina_file_editor.c:1960
-#: data/ui/remmina_mpc.glade:115 data/ui/remmina_main.glade:464
+#: data/ui/remmina_mpc.glade:93 data/ui/remmina_main.glade:464
 msgid "Group"
 msgstr "กลุ่ม"
 
@@ -1367,12 +1372,12 @@ msgstr ""
 msgid "Network status: offline"
 msgstr ""
 
-#: src/remmina_main.c:982
+#: src/remmina_main.c:986
 #, c-format
 msgid "Are you sure you want to delete “%s”?"
 msgstr "คุณแน่ใจหรือไม่ที่จะลบ \"%s\"?"
 
-#: src/remmina_main.c:1108
+#: src/remmina_main.c:1112
 #, c-format
 msgid ""
 "Unable to import:\n"
@@ -1381,23 +1386,23 @@ msgstr ""
 "ไม่สามารถนำเข้า:\n"
 "%s"
 
-#: src/remmina_main.c:1134 data/ui/remmina_main.glade:285
+#: src/remmina_main.c:1138 data/ui/remmina_main.glade:285
 msgid "Import"
 msgstr "นำเข้า"
 
-#: src/remmina_main.c:1157 src/remmina_file_editor.c:1816
+#: src/remmina_main.c:1161 src/remmina_file_editor.c:1816
 msgid "_Save"
 msgstr "_บันทึก"
 
-#: src/remmina_main.c:1163
+#: src/remmina_main.c:1167
 msgid "This protocol does not support exporting."
 msgstr "โปรโตคอลนี้ไม่รองรับการส่งออก"
 
-#: src/remmina_main.c:1484
+#: src/remmina_main.c:1488
 msgid "Remmina Remote Desktop Client"
 msgstr "โปรแกรมไคลเอนต์เดสก์ท็อประยะไกล Remmina"
 
-#: src/remmina_main.c:1486
+#: src/remmina_main.c:1490
 #, fuzzy
 msgid "Remmina Kiosk"
 msgstr "ตู้เรมมินา"
@@ -4393,52 +4398,79 @@ msgstr "ย้ายขึ้น"
 msgid "Move down"
 msgstr "ย้ายลง"
 
-#: data/ui/remmina_mpc.glade:14
-#, fuzzy
-msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
-msgstr "<span weight='bold' size='larger'> เครื่องเปลี่ยนรหัสผ่านหลายรหัสผ่าน</span>"
-
-#: data/ui/remmina_mpc.glade:32
+#: data/ui/remmina_mpc.glade:19
 #, fuzzy
 msgid "Change"
 msgstr "เปลี่ยนแปลง"
 
-#: data/ui/remmina_mpc.glade:201
+#: data/ui/remmina_mpc.glade:180
 #, fuzzy
 msgid "Selection criteria"
 msgstr "เกณฑ์การคัดเลือก"
 
-#: data/ui/remmina_mpc.glade:261
+#: data/ui/remmina_mpc.glade:244
 #, fuzzy
 msgid "Confirm password"
 msgstr "ยืนยันรหัสผ่าน"
 
-#: data/ui/remmina_mpc.glade:294
+#: data/ui/remmina_mpc.glade:271
 msgid "Set new password"
 msgstr "ตั้งรหัสผ่านใหม่"
 
+#: data/ui/remmina_mpc.glade:320
+#, fuzzy
+msgid "Gateway Username"
+msgstr "ชื่อผู้ใช้"
+
+#: data/ui/remmina_mpc.glade:349
+#, fuzzy
+#| msgid "Remote Desktop Gateway domain"
+msgid "Gateway Domain"
+msgstr "โดเมนบนเซิร์ฟเวอร์ Gateway ของเดสก์ท็อประยะไกล"
+
+#: data/ui/remmina_mpc.glade:415
+#, fuzzy
+msgid "Gateway Password"
+msgstr "รหัสผ่านหลัก"
+
+#: data/ui/remmina_mpc.glade:440
+#, fuzzy
+msgid "Confirm Gateway Password"
+msgstr "ยืนยันรหัสผ่าน"
+
 #. A column table with multiple check-boxes
-#: data/ui/remmina_mpc.glade:331
+#: data/ui/remmina_mpc.glade:503
 #, fuzzy
 msgctxt "Multi password changer"
 msgid "Select"
 msgstr "เลือก"
 
-#: data/ui/remmina_mpc.glade:343
+#: data/ui/remmina_mpc.glade:515
 msgctxt "Multi password changer table"
 msgid "Name"
 msgstr "ชื่อ"
 
-#: data/ui/remmina_mpc.glade:354
+#: data/ui/remmina_mpc.glade:526
 msgctxt "Multi password changer table"
 msgid "Group"
 msgstr "กลุ่ม"
 
-#: data/ui/remmina_mpc.glade:365
+#: data/ui/remmina_mpc.glade:537
 #, fuzzy
 msgctxt "Multi password changer table"
 msgid "Domain\\Username"
 msgstr "โดเมน\\ชื่อผู้ใช้"
+
+#: data/ui/remmina_mpc.glade:548
+#, fuzzy
+msgctxt "Multi password changer table"
+msgid "Gateway Domain\\Username"
+msgstr "โดเมน\\ชื่อผู้ใช้"
+
+#: data/ui/remmina_mpc.glade:588
+#, fuzzy
+msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
+msgstr "<span weight='bold' size='larger'> เครื่องเปลี่ยนรหัสผ่านหลายรหัสผ่าน</span>"
 
 #: data/ui/remmina_passwd.glade:33
 #, fuzzy
