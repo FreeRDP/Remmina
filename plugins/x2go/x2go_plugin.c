@@ -3176,8 +3176,8 @@ static GError* rmplugin_x2go_int_setting_validator(gchar* key, gpointer value,
 	gint int_value;
 	err = str2int(&int_value, value, 10);
 	if (err == STR2INT_INCONVERTIBLE) {
-		// Can't happen in theory since non-numerical characters are can't
-		// be entered but, let's be safe.
+		// non-numerical characters are can't be entered but, the user can
+		// input an empty string.
 		g_set_error(&error, 1, 1, "%s", _("The input is not a valid integer!"));
 	} else if (err == STR2INT_OVERFLOW || err == STR2INT_UNDERFLOW) {
 		g_set_error(&error, 1, 1, _("Input must be a number between %i and %i."),
@@ -3187,8 +3187,6 @@ static GError* rmplugin_x2go_int_setting_validator(gchar* key, gpointer value,
 	}
 
 	if (error) {
-		REMMINA_PLUGIN_CRITICAL("%s", _("Please check the RemminaProtocolSetting "
-						"array for possible errors."));
 		return error;
 	}
 
