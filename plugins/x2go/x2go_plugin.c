@@ -937,15 +937,18 @@ static gchar* rmplugin_x2go_spawn_pyhoca_process(guint argc, gchar* argv[],
 	REMMINA_PLUGIN_INFO("%s", _("Started PyHoca-CLI with the following arguments:"));
 	// Print every argument except passwords. Free all arg strings.
 	for (gint i = 0; i < argc - 1; i++) {
-		if (g_strcmp0(argv[i], "--password") == 0) {
-			g_printf("%s ", argv[i]);
+		gchar* curr_arg = argv[i];
+
+		if (g_str_equal(curr_arg, "--password") ||
+		    g_str_equal(curr_arg, "--ssh-passphrase")) {
+			g_printf("%s ", curr_arg);
 			g_printf("XXXXXX ");
-			g_free(argv[i]);
+			g_free(curr_arg);
 			g_free(argv[++i]);
 			continue;
 		} else {
-			g_printf("%s ", argv[i]);
-			g_free(argv[i]);
+			g_printf("%s ", curr_arg);
+			g_free(curr_arg);
 		}
 	}
 	g_printf("\n");
@@ -2546,15 +2549,18 @@ static gboolean rmplugin_x2go_exec_x2go(gchar *host,
 	REMMINA_PLUGIN_INFO("%s", _("Started PyHoca-CLI with the following arguments:"));
 	// Print every argument except passwords. Free all arg strings.
 	for (gint i = 0; i < argc - 1; i++) {
-		if (g_strcmp0(argv[i], "--password") == 0) {
-			g_printf("%s ", argv[i]);
+		gchar* curr_arg = argv[i];
+
+		if (g_str_equal(curr_arg, "--password") ||
+		    g_str_equal(curr_arg, "--ssh-passphrase")) {
+			g_printf("%s ", curr_arg);
 			g_printf("XXXXXX ");
-			g_free (argv[i]);
-			g_free (argv[++i]);
+			g_free(curr_arg);
+			g_free(argv[++i]);
 			continue;
 		} else {
-			g_printf("%s ", argv[i]);
-			g_free (argv[i]);
+			g_printf("%s ", curr_arg);
+			g_free(curr_arg);
 		}
 	}
 	g_printf("\n");
