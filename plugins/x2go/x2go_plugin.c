@@ -2847,7 +2847,7 @@ static gboolean rmplugin_x2go_start_session(RemminaProtocolWidget *gp)
 
 	clipboard = GET_PLUGIN_STRING("clipboard");
 
-	dpi = GET_PLUGIN_INT("dpi", 0);
+	dpi = GET_PLUGIN_INT("dpi", 80);
 
 	width = rm_plugin_service->get_profile_remote_width(gp);
 	height = rm_plugin_service->get_profile_remote_height(gp);
