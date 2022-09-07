@@ -1187,9 +1187,11 @@ static gboolean rmplugin_x2go_pyhoca_terminate_session(X2GoCustomUserData *custo
 		} else {
 			REMMINA_PLUGIN_WARNING("%s", FEATURE_NOT_AVAIL_STR("AUTH_ATTEMPTS"));
 		}
-		argv[argc++] = g_strdup("--force-password");
-		argv[argc++] = g_strdup("--password");
-		argv[argc++] = g_strdup_printf("%s", password);
+		if (strlen(password) > 0) {
+			argv[argc++] = g_strdup("--force-password");
+			argv[argc++] = g_strdup("--password");
+			argv[argc++] = g_strdup_printf("%s", password);
+		}
 	} else if (!password) {
 		REMMINA_PLUGIN_CRITICAL("%s", FEATURE_NOT_AVAIL_STR("PASSWORD"));
 		return G_SOURCE_REMOVE;
@@ -1287,7 +1289,8 @@ static gboolean rmplugin_x2go_session_chooser_callback(X2GoCustomUserData* custo
 {
 	REMMINA_PLUGIN_DEBUG("Function entry.");
 
-	if (!custom_data || !custom_data->gp || !custom_data->dialog_data) {
+	if (!custom_data || !custom_data->gp || !custom_data->dialog_data ||
+	    !custom_data->connect_data) {
 		REMMINA_PLUGIN_CRITICAL("%s", g_strdup_printf(
 			_("Internal error: %s"),
 			_("Parameter 'custom_data' is not initialized!")
@@ -1610,7 +1613,7 @@ static void rmplugin_x2go_pyhoca_cli_exited(GPid pid,
 	ddata->message = _("The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
 			   "Please check your profile settings and PyHoca-CLI's output for "
 			   "possible errors. Also ensure the remote server is "
-			   "reachable.");
+			   "reachable and you're using the right credentials.");
 	// We don't need the response.
 	ddata->callbackfunc = NULL;
 	// We don't need a custom dialog either.
