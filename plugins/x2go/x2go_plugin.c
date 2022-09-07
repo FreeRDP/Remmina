@@ -3264,8 +3264,7 @@ static RemminaProtocolPlugin rmplugin_x2go = {
 	PLUGIN_SSH_APPICON,			// Icon for SSH connection
 	rmplugin_x2go_basic_settings,		// Array for basic settings
 	NULL,					// Array for advanced settings
-	REMMINA_PROTOCOL_SSH_SETTING_TUNNEL,	// SSH settings type
-	/* REMMINA_PROTOCOL_SSH_SETTING_NONE,	// SSH settings type */
+	REMMINA_PROTOCOL_SSH_SETTING_NONE,	// SSH settings type
 	rmplugin_x2go_features,			// Array for available features
 	rmplugin_x2go_init,			// Plugin initialization method
 	rmplugin_x2go_open_connection,		// Plugin open connection method
