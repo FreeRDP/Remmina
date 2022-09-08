@@ -1989,7 +1989,7 @@ GtkWidget *remmina_file_editor_new_from_file(RemminaFile *remminafile)
 	priv->labels_entry = widget;
 
 	if (!profile_file_exists) {
-		gtk_entry_set_text(GTK_ENTRY(widget), _("Label1,Label2"));
+		gtk_widget_set_tooltip_text(widget, _("Label1,Label2"));
 #if GTK_CHECK_VERSION(3, 16, 0)
 		gtk_entry_grab_focus_without_selecting(GTK_ENTRY(widget));
 #endif
