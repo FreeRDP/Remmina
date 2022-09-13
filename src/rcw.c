@@ -642,23 +642,30 @@ gboolean rcw_delete(RemminaConnectionWindow *cnnwin)
 	RemminaConnectionWindowPriv *priv = cnnwin->priv;
 	GtkNotebook *notebook = GTK_NOTEBOOK(priv->notebook);
 	GtkWidget *dialog;
-	gint i, n;
+	gint i, n, nopen;
 
 	if (!REMMINA_IS_CONNECTION_WINDOW(cnnwin))
 		return TRUE;
 
 	if (cnnwin->priv->on_delete_confirm_mode != RCW_ONDELETE_NOCONFIRM) {
 		n = gtk_notebook_get_n_pages(notebook);
-		if (n > 1) {
+		nopen = 0;
+		/* count all non-closed connections */
+		for(i = 0; i < n; i ++) {
+			RemminaConnectionObject *cnnobj = rcw_get_cnnobj_at_page(cnnwin, i);
+			if (!remmina_protocol_widget_is_closed((RemminaProtocolWidget *)cnnobj->proto))
+				nopen ++;
+		}
+		if (nopen > 1) {
 			dialog = gtk_message_dialog_new(GTK_WINDOW(cnnwin), GTK_DIALOG_MODAL, GTK_MESSAGE_QUESTION,
 							GTK_BUTTONS_YES_NO,
-							_("Are you sure you want to close %i active connections in the current window?"), n);
+							_("Are you sure you want to close %i active connections in the current window?"), nopen);
 			i = gtk_dialog_run(GTK_DIALOG(dialog));
 			gtk_widget_destroy(dialog);
 			if (i != GTK_RESPONSE_YES)
 				return FALSE;
 		}
-		else {
+		else if (nopen == 1) {
 			if (remmina_pref.confirm_close) {
 				dialog = gtk_message_dialog_new(GTK_WINDOW(cnnwin), GTK_DIALOG_MODAL, GTK_MESSAGE_QUESTION,
 								GTK_BUTTONS_YES_NO,
