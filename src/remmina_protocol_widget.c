@@ -480,6 +480,8 @@ void remmina_protocol_widget_close_connection(RemminaProtocolWidget *gp)
 		/* Connection is already closed by the plugin, but
 		 * rcw is asking to close again (usually after an error panel)
 		 */
+		/* Clear the current error, or "disconnect" signal func will reshow a panel */
+		remmina_protocol_widget_set_error(gp, NULL);
 		g_signal_emit_by_name(G_OBJECT(gp), "disconnect");
 		return;
 	}
