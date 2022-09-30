@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2022-09-13 13:35+0000\n"
-"PO-Revision-Date: 2022-05-05 15:13+0000\n"
-"Last-Translator: WonYong Jung <hirameki@gmail.com>\n"
+"PO-Revision-Date: 2022-09-30 06:15+0000\n"
+"Last-Translator: 이정희 <daemul72@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/remmina/remmina/"
 "ko/>\n"
 "Language: ko\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.12.1\n"
+"X-Generator: Weblate 4.14.1\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
 
 #: src/remmina_sftp_plugin.c:309 src/remmina_sftp_plugin.c:353
@@ -97,7 +97,7 @@ msgstr "SSH 프록시점프 커맨드"
 
 #: src/remmina_sftp_plugin.c:366
 msgid "SFTP - Secure File Transfer"
-msgstr "SFTP - 파일 암호화 전송"
+msgstr "SFTP - 안전한 파일 전송"
 
 #: src/remmina_log.c:130
 msgid "Remmina debugging window"
@@ -294,7 +294,7 @@ msgstr "도메인"
 
 #: src/remmina_message_panel.c:419
 msgid "Save password"
-msgstr "비밀번호 저장"
+msgstr "비밀번호 저장하기"
 
 #: src/remmina_message_panel.c:456 src/remmina_message_panel.c:628
 #: src/remmina_sftp_client.c:972 src/remmina_file_editor.c:242
@@ -369,6 +369,18 @@ msgid ""
 "to local key-codes won’t be sent to the server.\n"
 "\n"
 msgstr ""
+"주의: 붙여넣은 텍스트는 로컬 키보드에 입력한 것처럼 일련의 키 코드로 "
+"전송됩니다.\n"
+"\n"
+"  • 최상의 결과를 얻으려면 클라이언트와 서버 모두에 대해 동일한 키보드 "
+"설정을 사용하십시오.\n"
+"\n"
+"  • 클라이언트 키보드가 서버 키보드와 다른 경우 수신된 텍스트에 잘못된 "
+"문자가 포함될 수 있습니다.\n"
+"\n"
+"  • 로컬 키 코드로 변환할 수 없는 유니코드 문자 및 기타 특수 문자는 서버로 "
+"전송되지 않습니다.\n"
+"\n"
 
 #: src/rcw.c:2185
 msgid "Turn off scaling to avoid screenshot distortion."
@@ -496,10 +508,8 @@ msgid "The passwords do not match"
 msgstr "비밀번호가 일치하지 않습니다"
 
 #: src/remmina_mpchange.c:275
-#, fuzzy
-#| msgid "The passwords do not match"
 msgid "The Gateway passwords do not match"
-msgstr "비밀번호가 일치하지 않습니다"
+msgstr "게이트웨이 비밀번호가 일치하지 않습니다"
 
 #: src/remmina_mpchange.c:289
 msgid "Resetting passwords, please wait…"
@@ -626,22 +636,16 @@ msgid "Encrypt a password"
 msgstr "비밀번호 암호화"
 
 #: src/remmina.c:128
-#, fuzzy
-#| msgid "Disable encryption"
 msgid "Disable news notification"
-msgstr "암호화 비활성화"
+msgstr "뉴스 알림 비활성화"
 
 #: src/remmina.c:129
-#, fuzzy
-#| msgid "Disable clipboard sync"
 msgid "Disable toolbar"
-msgstr "클립 보드 동기화 비활성화"
+msgstr "도구 모음 비활성화"
 
 #: src/remmina.c:130
-#, fuzzy
-#| msgid "Scrolled fullscreen"
 msgid "Enable fullscreen"
-msgstr "스크롤된 전체 화면"
+msgstr "전체화면 활성화"
 
 #: src/remmina.c:131
 msgid ""
@@ -862,7 +866,7 @@ msgstr "권한"
 
 #: src/remmina_ftp_client.c:969
 msgid "Modified"
-msgstr ""
+msgstr "수정됨"
 
 #: src/remmina_ftp_client.c:1021 plugins/rdp/rdp_plugin.c:2673
 msgid "Remote"
@@ -1633,11 +1637,11 @@ msgstr "'%s' 하위그룹 구분자 사용"
 
 #: src/remmina_file_editor.c:1978 data/ui/remmina_main.glade:478
 msgid "Labels"
-msgstr ""
+msgstr "레이블"
 
 #: src/remmina_file_editor.c:1992
 msgid "Label1,Label2"
-msgstr ""
+msgstr "레이블1,레이블2"
 
 #: src/remmina_file_editor.c:2064 src/remmina_file_editor.c:2084
 #, c-format
@@ -1892,7 +1896,7 @@ msgstr "SSH 세션 로그 폴더"
 
 #: src/remmina_ssh_plugin.c:1544
 msgid "Full path of an existing folder"
-msgstr ""
+msgstr "기존 폴더의 전체 경로"
 
 #: src/remmina_ssh_plugin.c:1545
 msgid "Filename for SSH session log"
@@ -2314,10 +2318,8 @@ msgid "Default"
 msgstr "기본값"
 
 #: plugins/rdp/rdp_plugin.c:2699
-#, fuzzy
-#| msgid "0 Windows 7 compatible"
 msgid "0 — Windows 7 compatible"
-msgstr "0 Windows 7 호환"
+msgstr "0 — 윈도우 7 호환가능"
 
 #: plugins/rdp/rdp_plugin.c:2700
 msgid "1"
@@ -2532,10 +2534,8 @@ msgid "Gateway transport type"
 msgstr "게이트웨이 전송 타입"
 
 #: plugins/rdp/rdp_plugin.c:2828
-#, fuzzy
-#| msgid "Security"
 msgid "TLS Security Level"
-msgstr "보안"
+msgstr "TLS 보안 수준"
 
 #: plugins/rdp/rdp_plugin.c:2829
 msgid "FreeRDP log level"
@@ -2945,10 +2945,9 @@ msgid "Please retry after turning on encryption for this profile."
 msgstr "이 프로필에 대한 암호화를 켠 후 다시 시도하십시오."
 
 #: plugins/vnc/vnc_plugin.c:1716
-#, fuzzy, c-format
-#| msgid "Connected to %s:%d via VNC"
+#, c-format
 msgid "Connected to %s via VNC"
-msgstr "VNC를 통해 %s:%d에 연결됨"
+msgstr "VNC를 통해 %s에 연결됨"
 
 #: plugins/vnc/vnc_plugin.c:1723
 #, c-format
@@ -3448,16 +3447,16 @@ msgid ""
 "Tip: Check the 'Save password' checkbox or manually input your X2Go username "
 "and password in the profile settings to store them for faster logins."
 msgstr ""
+"팁: '비밀번호 저장' 확인란을 선택하거나 프로필 설정에 X2Go 사용자이름과 "
+"비밀번호를 수동으로 입력하여 더 빠른 로그인을 위해 저장합니다."
 
 #: plugins/x2go/x2go_plugin.c:1733
 msgid "Enter X2Go credentials"
 msgstr "X2Go 자격 증명 입력"
 
 #: plugins/x2go/x2go_plugin.c:1762
-#, fuzzy
-#| msgid "Authentication failure: %s"
 msgid "Authentication cancelled. Aborting…"
-msgstr "인증 실패: %s"
+msgstr "인증이 취소되었습니다. 중단 중…"
 
 #: plugins/x2go/x2go_plugin.c:1930
 msgid ""
@@ -3919,10 +3918,10 @@ msgid ""
 "the appropriate permissions to Remmina. As an alternative you can enter the "
 "following commands in a terminal window:"
 msgstr ""
-"사용자의 키 링에 비밀번호를 저장하거나 RDP의 프린터 공유와 같은 일부 중요 기"
-"능에 접근을 가능하게 하려면 먼저 소프트웨어 센터를 열고 Remmina에 적절한 권한"
-"을 부여하십시오. 다른 방법으로 터미널 창에 다음 명령을 입력하는 방법이 있습니"
-"다."
+"사용자의 키 링에 비밀번호를 저장하거나 RDP의 프린터 공유와 같은 일부 중요 "
+"기능에 접근을 가능하게 하려면 먼저 소프트웨어 센터를 열고 Remmina에 적절한 "
+"권한을 부여하십시오. 다른 방법으로 터미널 창에 다음 명령을 입력하는 방법이 "
+"있습니다:"
 
 #: data/ui/remmina_snap_info_dialog.glade:157
 msgid "<big>Permissions</big>"
@@ -4034,28 +4033,20 @@ msgid "Set new password"
 msgstr "새 비밀번호 설정"
 
 #: data/ui/remmina_mpc.glade:320
-#, fuzzy
-#| msgid "Username"
 msgid "Gateway Username"
-msgstr "유저아이디"
+msgstr "게이트웨이 사용자이름"
 
 #: data/ui/remmina_mpc.glade:349
-#, fuzzy
-#| msgid "Remote Desktop Gateway domain"
 msgid "Gateway Domain"
-msgstr "원격 데스크톱 게이트웨이 도메인"
+msgstr "게이트웨이 도메인"
 
 #: data/ui/remmina_mpc.glade:415
-#, fuzzy
-#| msgid "Master password"
 msgid "Gateway Password"
-msgstr "마스터 비밀번호"
+msgstr "게이트웨이 비밀번호"
 
 #: data/ui/remmina_mpc.glade:440
-#, fuzzy
-#| msgid "Confirm password"
 msgid "Confirm Gateway Password"
-msgstr "비밀번호 확인"
+msgstr "게이트웨이 비밀번호 확인하기"
 
 #. A column table with multiple check-boxes
 #: data/ui/remmina_mpc.glade:503
@@ -4079,12 +4070,9 @@ msgid "Domain\\Username"
 msgstr "도메인\\사용자 이름"
 
 #: data/ui/remmina_mpc.glade:548
-#, fuzzy
-#| msgctxt "Multi password changer table"
-#| msgid "Domain\\Username"
 msgctxt "Multi password changer table"
 msgid "Gateway Domain\\Username"
-msgstr "도메인\\사용자 이름"
+msgstr "게이트웨이 도메인\\사용자이름"
 
 #: data/ui/remmina_mpc.glade:588
 msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
@@ -4418,14 +4406,6 @@ msgstr "프로필 파일 이름 템플릿"
 
 #. Placeholders used to name a Remmina connection profile
 #: data/ui/remmina_preferences.glade:361
-#, fuzzy
-#| msgid ""
-#| "%G Name of group (slashes \\/ are converted to dashes -)\n"
-#| "%P Protocol name\n"
-#| "%N Connection name\n"
-#| "%h Host name/IP\n"
-#| "\n"
-#| "\n"
 msgid ""
 "%G Name of group (slashes \\/ are converted to dashes -)\n"
 "%P Protocol name\n"
@@ -4434,7 +4414,7 @@ msgid ""
 "\n"
 "\n"
 msgstr ""
-"%G 그룹 이름 (슬래시 '\\/'는 줄표 '-'로 변환됨)\n"
+"%G 그룹 이름(슬래시 \\/는 대시로 변환됨 -)\n"
 "%P 프로토콜 이름\n"
 "%N 연결 이름\n"
 "%h 호스트 이름/IP\n"
@@ -4456,7 +4436,7 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:495
 msgid "Confirm before closing multiple tabs"
-msgstr ""
+msgstr "여러 탭을 닫기 전에 확인하기"
 
 #: data/ui/remmina_preferences.glade:529
 msgid "Options"
@@ -4673,8 +4653,8 @@ msgstr "SSH 옵션"
 msgid ""
 "Time in seconds before Remmina will lock the session and asks for a password "
 "again. Default: 300 Seconds."
-msgstr ""
-"Remmina가 세션을 잠그고 암호를 다시 묻기까지의 시간(초)입니다. 기본값: 300초."
+msgstr "Remmina가 세션을 잠그고 비밀번호를 다시 묻기까지의 시간(초)입니다. 기본값: "
+"300초."
 
 #: data/ui/remmina_preferences.glade:1644
 msgid "Set and use a secret key to protect Remmina from unauthorized use."
@@ -4808,7 +4788,7 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:2066
 msgid "Show bold text in bright colors"
-msgstr ""
+msgstr "밝은 색상으로 굵은 텍스트 표시하기"
 
 #: data/ui/remmina_preferences.glade:2080
 msgid "Colour theme"
