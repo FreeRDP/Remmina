@@ -33,7 +33,8 @@
 find_package(PkgConfig)
 
 if(PKG_CONFIG_FOUND)
-    pkg_check_modules(_WEBKIT2GTK webkit2gtk-4.0)
+    #pkg_check_modules(_WEBKIT2GTK webkit2gtk-4.0)
+    pkg_search_module(_WEBKIT2GTK webkit2gtk-4.1 webkit2gtk-4.0)
 endif(PKG_CONFIG_FOUND)
 
 set(WEBKIT2GTK_DEFINITIONS ${_WEBKIT2GTK_CFLAGS_OTHER})
@@ -42,7 +43,8 @@ find_path(WEBKIT2GTK_INCLUDE_DIR NAMES webkit2/webkit2.h
     HINTS ${_WEBKIT2GTK_INCLUDEDIR} ${_WEBKIT2GTK_INCLUDE_DIRS}
 )
 
-find_library(WEBKIT2GTK_LIB webkit2gtk-4.0
+find_library(WEBKIT2GTK_LIB
+    NAMES webkit2gtk-4.1 webkit2gtk-4.0
     HINTS
     ${_WEBKIT2GTK_LIBDIR}
     ${_WEBKIT2GTK_LIBRARY_DIRS}
