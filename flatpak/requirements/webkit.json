@@ -1,0 +1,60 @@
+/*
+Shared module for building and installing webkit2gtk
+
+This file was written by hand.
+
+File based on gfeeds:
+commit f3e8575d62b1701e885b0bda54222634130c6864
+
+Changes applied to this version of the file:
+* added this header
+* reformatted
+*/
+{
+  "name": "webkit2gtk-5",
+  "buildsystem": "cmake-ninja",
+  "config-opts": [
+    "-DPORT=GTK",
+    "-DCMAKE_BUILD_TYPE=Release",
+    "-DCMAKE_INSTALL_PREFIX=/app",
+    "-DCMAKE_INSTALL_LIBDIR=lib",
+    "-DCMAKE_INSTALL_LIBEXECDIR=lib",
+    "-DCMAKE_SKIP_RPATH=ON",
+    "-DUSE_GTK4=ON",
+    "-DENABLE_GAMEPAD=OFF",
+    "-DENABLE_GTKDOC=OFF"
+  ],
+  "modules": [
+    {
+      "name": "bubblewrap",
+      "buildsystem": "meson",
+      "config-opts": [],
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://github.com/containers/bubblewrap/archive/refs/tags/v0.6.1.tar.gz",
+          "sha256": "2b21ee6d2bead1aaf7c35742e5e53b061ec6eb1644889a4379fda662b03e8121"
+        }
+      ]
+    },
+    {
+      "name": "xdg-dbus-proxy",
+      "buildsystem": "autotools",
+      "config-opts": [],
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://github.com/flatpak/xdg-dbus-proxy/archive/refs/tags/0.1.3.tar.gz",
+          "sha256": "a1d57f0d478bee4cc2be67e84ac6fcfe729460345d8a4fadd6555ae83b14a789"
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "type": "archive",
+      "url": "https://webkitgtk.org/releases/webkitgtk-2.36.1.tar.xz",
+      "sha256": "0149ea5fb1d20f2a9981677d45c952a047330001ea24a8dc29035239f12c0c8f"
+    }
+  ]
+}
