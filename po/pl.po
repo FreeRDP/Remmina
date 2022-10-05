@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2022-10-05 11:26+0000\n"
-"PO-Revision-Date: 2022-09-06 21:19+0000\n"
+"PO-Revision-Date: 2022-10-05 13:23+0000\n"
 "Last-Translator: Matthaiks <kitynska@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/remmina/remmina/"
 "pl/>\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.14.1-dev\n"
+"X-Generator: Weblate 4.14.1\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
 
 #: src/remmina_sftp_plugin.c:309 src/remmina_sftp_plugin.c:353
@@ -49,7 +49,7 @@ msgstr "Plik identyfikujący dla SSH"
 #: src/remmina_sftp_plugin.c:311 src/remmina_file_editor.c:1121
 #: src/remmina_ssh_plugin.c:1395
 msgid "SSH agent"
-msgstr "Klient SSH"
+msgstr "Agent SSH"
 
 #: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:1122
 #: src/remmina_ssh_plugin.c:1396
@@ -1086,7 +1086,7 @@ msgstr "Nie można automatycznie uwierzytelnić publicznym kluczem SSH. %s"
 #: src/remmina_ssh.c:1019
 #, c-format
 msgid "Could not authenticate automatically with SSH agent. %s"
-msgstr "Nie można automatycznie uwierzytelnić publicznym kluczem SSH. %s"
+msgstr "Nie można automatycznie uwierzytelnić agentem SSH. %s"
 
 #: src/remmina_ssh.c:1065 src/remmina_ssh.c:1352
 #, c-format
@@ -3461,11 +3461,6 @@ msgstr ""
 "zamknięte."
 
 #: plugins/x2go/x2go_plugin.c:1662
-#, fuzzy
-#| msgid ""
-#| "The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
-#| "Please check your profile settings and PyHoca-CLI's output for possible "
-#| "errors. Also ensure the remote server is reachable."
 msgid ""
 "The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
 "Please check your profile settings and PyHoca-CLI's output for possible "
@@ -3474,7 +3469,8 @@ msgid ""
 msgstr ""
 "Niezbędny proces potomny 'pyhoca-cli' niespodziewanie zatrzymał się.\n"
 "Sprawdź ustawienia profilu i dane wyjściowe PyHoca-CLI pod kątem "
-"ewentualnych błędów. Również upewnij się, że zdalny serwer jest osiągalny."
+"ewentualnych błędów. Również upewnij się, że zdalny serwer jest osiągalny i "
+"używasz właściwych poświadczeń."
 
 #: plugins/x2go/x2go_plugin.c:1705
 msgid "Can't save empty username!"
@@ -3494,13 +3490,11 @@ msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:1754
 msgid "Enter passphrase to unlock key:"
-msgstr ""
+msgstr "Wprowadź hasło, aby odblokować klucz:"
 
 #: plugins/x2go/x2go_plugin.c:1765
-#, fuzzy
-#| msgid "Authentication cancelled. Aborting…"
 msgid "Passphrase input cancelled. Aborting…"
-msgstr "Uwierzytelnianie anulowane. Przerywam…"
+msgstr "Anulowano wprowadzanie hasła. Przerywam…"
 
 #: plugins/x2go/x2go_plugin.c:1796
 msgid ""
@@ -3810,10 +3804,8 @@ msgstr ""
 "pomiędzy 20 a 400."
 
 #: plugins/x2go/x2go_plugin.c:3417
-#, fuzzy
-#| msgid "SSH private key file"
 msgid "Your private key"
-msgstr "Plik klucza prywatnego SSH"
+msgstr "Twój klucz prywatny"
 
 #: plugins/x2go/x2go_plugin.c:3457
 msgid "X2Go plugin loaded."
