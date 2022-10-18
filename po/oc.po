@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-10-05 11:26+0000\n"
+"POT-Creation-Date: 2022-10-18 08:29+0000\n"
 "PO-Revision-Date: 2021-12-17 08:49+0000\n"
 "Last-Translator: Quentin PAGÈS <quentinantonin@free.fr>\n"
 "Language-Team: Occitan <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -792,7 +792,7 @@ msgstr "En naut"
 msgid "Go to parent folder"
 msgstr "Anar al dorsièr parent"
 
-#: src/remmina_ftp_client.c:781 plugins/rdp/rdp_plugin.c:2888
+#: src/remmina_ftp_client.c:781 plugins/rdp/rdp_plugin.c:2889
 #: plugins/vnc/vnc_plugin.c:2090
 msgid "Refresh"
 msgstr "Actualizar"
@@ -2696,34 +2696,38 @@ msgstr ""
 msgid "Enable Gateway websockets support"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2892 plugins/spice/spice_plugin.c:717
+#: plugins/rdp/rdp_plugin.c:2881
+msgid "Update framebuffer even when not visible"
+msgstr ""
+
+#: plugins/rdp/rdp_plugin.c:2893 plugins/spice/spice_plugin.c:717
 #: plugins/vnc/vnc_plugin.c:2092
 msgid "Send Ctrl+Alt+Delete"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2905
+#: plugins/rdp/rdp_plugin.c:2906
 msgid "RDP - Remote Desktop Protocol"
 msgstr "RDP - Protocòl de burèu a distància"
 
-#: plugins/rdp/rdp_plugin.c:2930
+#: plugins/rdp/rdp_plugin.c:2931
 msgid "RDP - RDP File Handler"
 msgstr "RDP - gestionari de fichièrs RDP"
 
-#: plugins/rdp/rdp_plugin.c:2945
+#: plugins/rdp/rdp_plugin.c:2946
 msgid "RDP - Preferences"
 msgstr "RDP - Preferéncias"
 
-#: plugins/rdp/rdp_plugin.c:2998
+#: plugins/rdp/rdp_plugin.c:2999
 msgid "Export connection in Windows .rdp file format"
 msgstr "Exportar las connexions al format Windows .rdp"
 
-#: plugins/rdp/rdp_event.c:347
+#: plugins/rdp/rdp_event.c:357
 #, c-format
 msgid "Reconnection attempt %d of %d…"
 msgstr "Ensag de reconnexion %d sus %d…"
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
-#: plugins/rdp/rdp_event.c:1126
+#: plugins/rdp/rdp_event.c:1136
 #, fuzzy, c-format
 #| msgid "Connecting to %s via SSH…"
 msgid "Connected to %s via RDP"

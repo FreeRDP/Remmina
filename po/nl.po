@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-10-05 11:26+0000\n"
+"POT-Creation-Date: 2022-10-18 08:29+0000\n"
 "PO-Revision-Date: 2022-08-17 16:15+0000\n"
 "Last-Translator: lrots <lambert@lambiek.eu>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/remmina/remmina/nl/"
@@ -844,7 +844,7 @@ msgstr "Omhoog"
 msgid "Go to parent folder"
 msgstr "Naar bovenliggende map gaan"
 
-#: src/remmina_ftp_client.c:781 plugins/rdp/rdp_plugin.c:2888
+#: src/remmina_ftp_client.c:781 plugins/rdp/rdp_plugin.c:2889
 #: plugins/vnc/vnc_plugin.c:2090
 msgid "Refresh"
 msgstr "Verversen"
@@ -2925,35 +2925,39 @@ msgstr "Gebruik ook basisreferenties voor gateway"
 msgid "Enable Gateway websockets support"
 msgstr "Schakel Gateway websockets ondersteuning in"
 
-#: plugins/rdp/rdp_plugin.c:2892 plugins/spice/spice_plugin.c:717
+#: plugins/rdp/rdp_plugin.c:2881
+msgid "Update framebuffer even when not visible"
+msgstr ""
+
+#: plugins/rdp/rdp_plugin.c:2893 plugins/spice/spice_plugin.c:717
 #: plugins/vnc/vnc_plugin.c:2092
 #, fuzzy
 msgid "Send Ctrl+Alt+Delete"
 msgstr "Verzenden Ctrl+Alt+Delete"
 
-#: plugins/rdp/rdp_plugin.c:2905
+#: plugins/rdp/rdp_plugin.c:2906
 msgid "RDP - Remote Desktop Protocol"
 msgstr "RDP - Remote Desktop Protocol"
 
-#: plugins/rdp/rdp_plugin.c:2930
+#: plugins/rdp/rdp_plugin.c:2931
 msgid "RDP - RDP File Handler"
 msgstr "RDP - RDP-bestandshandler"
 
-#: plugins/rdp/rdp_plugin.c:2945
+#: plugins/rdp/rdp_plugin.c:2946
 msgid "RDP - Preferences"
 msgstr "RDP - Voorkeuren"
 
-#: plugins/rdp/rdp_plugin.c:2998
+#: plugins/rdp/rdp_plugin.c:2999
 msgid "Export connection in Windows .rdp file format"
 msgstr "Verbinding naar Windows .rdp-bestandsformaat exporteren"
 
-#: plugins/rdp/rdp_event.c:347
+#: plugins/rdp/rdp_event.c:357
 #, c-format
 msgid "Reconnection attempt %d of %d…"
 msgstr "Nieuwe poging tot verbinden %d van %d…"
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
-#: plugins/rdp/rdp_event.c:1126
+#: plugins/rdp/rdp_event.c:1136
 #, fuzzy, c-format
 #| msgid "Connecting to %s via SSH…"
 msgid "Connected to %s via RDP"

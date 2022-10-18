@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-10-05 11:26+0000\n"
+"POT-Creation-Date: 2022-10-18 08:29+0000\n"
 "PO-Revision-Date: 2022-05-05 15:13+0000\n"
 "Last-Translator: WonYong Jung <hirameki@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -869,7 +869,7 @@ msgstr "上へ"
 msgid "Go to parent folder"
 msgstr "親フォルダーに移動"
 
-#: src/remmina_ftp_client.c:781 plugins/rdp/rdp_plugin.c:2888
+#: src/remmina_ftp_client.c:781 plugins/rdp/rdp_plugin.c:2889
 #: plugins/vnc/vnc_plugin.c:2090
 msgid "Refresh"
 msgstr "更新"
@@ -2903,34 +2903,38 @@ msgstr "ゲートウェイにも基本資格情報を使用する"
 msgid "Enable Gateway websockets support"
 msgstr "ゲートウェイ・ウェブソケットのサポートを有効にする"
 
-#: plugins/rdp/rdp_plugin.c:2892 plugins/spice/spice_plugin.c:717
+#: plugins/rdp/rdp_plugin.c:2881
+msgid "Update framebuffer even when not visible"
+msgstr ""
+
+#: plugins/rdp/rdp_plugin.c:2893 plugins/spice/spice_plugin.c:717
 #: plugins/vnc/vnc_plugin.c:2092
 msgid "Send Ctrl+Alt+Delete"
 msgstr "Ctrl+Alt+Delete を送る"
 
-#: plugins/rdp/rdp_plugin.c:2905
+#: plugins/rdp/rdp_plugin.c:2906
 msgid "RDP - Remote Desktop Protocol"
 msgstr "RDP - リモートデスクトッププロトコル"
 
-#: plugins/rdp/rdp_plugin.c:2930
+#: plugins/rdp/rdp_plugin.c:2931
 msgid "RDP - RDP File Handler"
 msgstr "RDP - RDP ファイルハンドラ"
 
-#: plugins/rdp/rdp_plugin.c:2945
+#: plugins/rdp/rdp_plugin.c:2946
 msgid "RDP - Preferences"
 msgstr "RDP - 設定"
 
-#: plugins/rdp/rdp_plugin.c:2998
+#: plugins/rdp/rdp_plugin.c:2999
 msgid "Export connection in Windows .rdp file format"
 msgstr "Windows 接続をエクスポートする (.rdp ファイル形式)"
 
-#: plugins/rdp/rdp_event.c:347
+#: plugins/rdp/rdp_event.c:357
 #, c-format
 msgid "Reconnection attempt %d of %d…"
 msgstr "再接続の試行 %d / %d…"
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
-#: plugins/rdp/rdp_event.c:1126
+#: plugins/rdp/rdp_event.c:1136
 #, fuzzy, c-format
 #| msgid "Connecting to %s via SSH…"
 msgid "Connected to %s via RDP"

@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-10-05 11:26+0000\n"
+"POT-Creation-Date: 2022-10-18 08:29+0000\n"
 "PO-Revision-Date: 2022-10-05 13:23+0000\n"
 "Last-Translator: Eric <hamburger1024@mailbox.org>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -818,7 +818,7 @@ msgstr "向上"
 msgid "Go to parent folder"
 msgstr "跳到上一层目录"
 
-#: src/remmina_ftp_client.c:781 plugins/rdp/rdp_plugin.c:2888
+#: src/remmina_ftp_client.c:781 plugins/rdp/rdp_plugin.c:2889
 #: plugins/vnc/vnc_plugin.c:2090
 msgid "Refresh"
 msgstr "刷新"
@@ -2747,34 +2747,38 @@ msgstr "也为网关使用提供基本凭据"
 msgid "Enable Gateway websockets support"
 msgstr "启用网关 websockets 支持"
 
-#: plugins/rdp/rdp_plugin.c:2892 plugins/spice/spice_plugin.c:717
+#: plugins/rdp/rdp_plugin.c:2881
+msgid "Update framebuffer even when not visible"
+msgstr ""
+
+#: plugins/rdp/rdp_plugin.c:2893 plugins/spice/spice_plugin.c:717
 #: plugins/vnc/vnc_plugin.c:2092
 msgid "Send Ctrl+Alt+Delete"
 msgstr "发送 Ctrl+Alt+Delete"
 
-#: plugins/rdp/rdp_plugin.c:2905
+#: plugins/rdp/rdp_plugin.c:2906
 msgid "RDP - Remote Desktop Protocol"
 msgstr "RDP - 远程桌面协议"
 
-#: plugins/rdp/rdp_plugin.c:2930
+#: plugins/rdp/rdp_plugin.c:2931
 msgid "RDP - RDP File Handler"
 msgstr "RDP - RDP 文件处理器"
 
-#: plugins/rdp/rdp_plugin.c:2945
+#: plugins/rdp/rdp_plugin.c:2946
 msgid "RDP - Preferences"
 msgstr "RDP - 首选项"
 
-#: plugins/rdp/rdp_plugin.c:2998
+#: plugins/rdp/rdp_plugin.c:2999
 msgid "Export connection in Windows .rdp file format"
 msgstr "使用 Windows .rdp 文件格式导出连接"
 
-#: plugins/rdp/rdp_event.c:347
+#: plugins/rdp/rdp_event.c:357
 #, c-format
 msgid "Reconnection attempt %d of %d…"
 msgstr "正在重新连接。尝试 %d 的 %d…"
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
-#: plugins/rdp/rdp_event.c:1126
+#: plugins/rdp/rdp_event.c:1136
 #, c-format
 msgid "Connected to %s via RDP"
 msgstr "已通过 RDP 连接到 %s"
@@ -3398,8 +3402,8 @@ msgid ""
 "right credentials."
 msgstr ""
 "必需的子进程 'pyhoca-cli' 意外停止。\n"
-"请检查您的配置文件设置和 PyHoca-CLI "
-"的输出是否存在错误，并确保远程服务器可访问且你使用正确的凭据。"
+"请检查您的配置文件设置和 PyHoca-CLI 的输出是否存在错误，并确保远程服务器可访"
+"问且你使用正确的凭据。"
 
 #: plugins/x2go/x2go_plugin.c:1705
 msgid "Can't save empty username!"

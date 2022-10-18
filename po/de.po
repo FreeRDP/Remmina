@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-10-05 11:26+0000\n"
+"POT-Creation-Date: 2022-10-18 08:29+0000\n"
 "PO-Revision-Date: 2022-10-12 06:50+0000\n"
 "Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -863,7 +863,7 @@ msgstr "Nach oben"
 msgid "Go to parent folder"
 msgstr "Zum übergeordneten Ordner gehen"
 
-#: src/remmina_ftp_client.c:781 plugins/rdp/rdp_plugin.c:2888
+#: src/remmina_ftp_client.c:781 plugins/rdp/rdp_plugin.c:2889
 #: plugins/vnc/vnc_plugin.c:2090
 msgid "Refresh"
 msgstr "Neu laden"
@@ -2837,34 +2837,38 @@ msgstr "Basis-Anmeldeinformationen auch für das Gateway verwenden"
 msgid "Enable Gateway websockets support"
 msgstr "Websocket -Support für das Gateway aktivieren"
 
-#: plugins/rdp/rdp_plugin.c:2892 plugins/spice/spice_plugin.c:717
+#: plugins/rdp/rdp_plugin.c:2881
+msgid "Update framebuffer even when not visible"
+msgstr ""
+
+#: plugins/rdp/rdp_plugin.c:2893 plugins/spice/spice_plugin.c:717
 #: plugins/vnc/vnc_plugin.c:2092
 msgid "Send Ctrl+Alt+Delete"
 msgstr "Sende Strg+Alt+Entfernen"
 
-#: plugins/rdp/rdp_plugin.c:2905
+#: plugins/rdp/rdp_plugin.c:2906
 msgid "RDP - Remote Desktop Protocol"
 msgstr "RDP – Remote Desktop Protokoll"
 
-#: plugins/rdp/rdp_plugin.c:2930
+#: plugins/rdp/rdp_plugin.c:2931
 msgid "RDP - RDP File Handler"
 msgstr "RDP – RDP‐Import/Export"
 
-#: plugins/rdp/rdp_plugin.c:2945
+#: plugins/rdp/rdp_plugin.c:2946
 msgid "RDP - Preferences"
 msgstr "RDP – Einstellungen"
 
-#: plugins/rdp/rdp_plugin.c:2998
+#: plugins/rdp/rdp_plugin.c:2999
 msgid "Export connection in Windows .rdp file format"
 msgstr "Verbindung als Windows .rdp Datei exportieren"
 
-#: plugins/rdp/rdp_event.c:347
+#: plugins/rdp/rdp_event.c:357
 #, c-format
 msgid "Reconnection attempt %d of %d…"
 msgstr "Wiederherstellen der Verbindung. Versuch %d von %d…"
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
-#: plugins/rdp/rdp_event.c:1126
+#: plugins/rdp/rdp_event.c:1136
 #, c-format
 msgid "Connected to %s via RDP"
 msgstr "Verbunden mit %s via RDP"
