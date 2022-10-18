@@ -53,10 +53,15 @@ gboolean remmina_rdp_event_on_map(RemminaProtocolWidget *gp)
 	if (rfi == NULL)
 		return false;
 
-	gdi = ((rdpContext *)rfi)->gdi;
+	RemminaFile *remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
+	int do_suppress = !remmina_plugin_service->file_get_int(remminafile, "no-suppress", FALSE);
 
-	REMMINA_PLUGIN_DEBUG("Map event received, disabling TS_SUPPRESS_OUTPUT_PDU ");
-	gdi_send_suppress_output(gdi, FALSE);
+	if (do_suppress) {
+		gdi = ((rdpContext *)rfi)->gdi;
+
+		REMMINA_PLUGIN_DEBUG("Map event received, disabling TS_SUPPRESS_OUTPUT_PDU ");
+		gdi_send_suppress_output(gdi, FALSE);
+	}
 
 	return FALSE;
 }
@@ -78,10 +83,15 @@ gboolean remmina_rdp_event_on_unmap(RemminaProtocolWidget *gp)
 		return FALSE;
 	}
 
-	gdi = ((rdpContext *)rfi)->gdi;
+	RemminaFile *remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
+	int do_suppress = !remmina_plugin_service->file_get_int(remminafile, "no-suppress", FALSE);
 
-	REMMINA_PLUGIN_DEBUG("Unmap event received, enabling TS_SUPPRESS_OUTPUT_PDU ");
-	gdi_send_suppress_output(gdi, TRUE);
+	if (do_suppress) {
+		gdi = ((rdpContext *)rfi)->gdi;
+
+		REMMINA_PLUGIN_DEBUG("Unmap event received, enabling TS_SUPPRESS_OUTPUT_PDU ");
+		gdi_send_suppress_output(gdi, TRUE);
+	}
 
 	return FALSE;
 }
