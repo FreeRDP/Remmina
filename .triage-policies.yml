@@ -19,6 +19,24 @@ resource_rules:
             {{author}} This issue was closed due to not being updated for a long time. Please re-open it if still relevant.
             CC {{assignees}}
 
+      - name: New issue disclaimer
+        conditions:
+          date:
+            attribute: created_at
+            condition: newer_than
+            interval_type: days
+            interval: 7
+          state: opened
+          no_additional_labels: true
+        limits:
+          most_recent: 50
+        actions:
+          labels:
+            - Disclaimer
+          comment: |
+            {{author}} the Remmina project is looking for new maintainers, and it’s not actively updated.
+            We hope someone will take care of your problem in a short time.
+
       - name: Unlabelled after 30 days
         conditions:
           date:
