@@ -1,3 +1,5 @@
+> :exclamation: **[The Remmina project is looking for new maintainers](https://remmina.org/looking-for-maintainers/)**, and it's not actively updated.
+
 **Make sure the problem exists on the [![latest Remmina version(s)](https://repology.org/badge/latest-versions/remmina.svg)](https://repology.org/project/remmina/versions) first, \
 and keep trying to reproduce it on any later versions** :)
 
