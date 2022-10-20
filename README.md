@@ -1,3 +1,5 @@
+> :exclamation: **[The Remmina project is looking for new maintainers](https://remmina.org/looking-for-maintainers/)**, and it's not actively updated.
+
 [![](https://img.shields.io/liberapay/receives/Remmina.svg?logo=liberapay)](https://liberapay.com/Remmina/donate)
 [![](https://img.shields.io/liberapay/patrons/remmina.svg?logo=liberapay)](https://liberapay.com/Remmina/donate)
 [![](https://opencollective.com/remmina/tiers/badge.svg)](https://opencollective.com/remmina)
