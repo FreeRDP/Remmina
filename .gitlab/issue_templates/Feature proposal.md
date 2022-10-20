@@ -1,3 +1,5 @@
+> :exclamation: **[The Remmina project is looking for new maintainers](https://remmina.org/looking-for-maintainers/)**, and it's not actively updated.
+
 ### Problem to solve
 
 <!-- What problem do we solve? -->
