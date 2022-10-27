@@ -1263,7 +1263,7 @@ remmina_plugin_ssh_init(RemminaProtocolWidget *gp)
 	sshlogname = remmina_file_format_properties(remminafile, sshlogname);
 
 	fp = g_strconcat(dir, "/", sshlogname, NULL);
-	g_free(sshlogname);
+	g_free((gpointer) sshlogname);
 
 	gpdata->vte_session_file = g_file_new_for_path(fp);
 	g_free(fp);
