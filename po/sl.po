@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-10-18 08:29+0000\n"
+"POT-Creation-Date: 2022-10-27 10:40+0000\n"
 "PO-Revision-Date: 2021-12-17 08:51+0000\n"
 "Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
 "Language-Team: Slovenian <https://hosted.weblate.org/projects/remmina/"
@@ -1090,7 +1090,7 @@ msgstr "Zagon SSH seje ni uspel: %s"
 
 #: src/remmina_ssh.c:818 src/remmina_ssh.c:885
 #, fuzzy
-msgid "No saved SSH passphrase supplied. Asking user to enter it."
+msgid "No saved SSH password supplied. Asking user to enter it."
 msgstr "Shranjena geslo SSH ni bilo predloženo. Uporabnik jo mora vnesti."
 
 #. TRANSLATORS: The placeholder %s is an error message
@@ -1206,8 +1206,9 @@ msgid "SSH password"
 msgstr "SSH geslo"
 
 #: src/remmina_ssh.c:1491 src/remmina_ssh.c:1535
-msgid "SSH private key passphrase"
-msgstr "SSH fraza zasebnega ključa"
+#, fuzzy
+msgid "Password for private SSH key"
+msgstr "Geslo za odklepanje zasebnega ključa"
 
 #: src/remmina_ssh.c:1496
 #, fuzzy
@@ -3764,13 +3765,14 @@ msgstr ""
 "'s_password' ali 's_username' nista bila nastavljena."
 
 #: plugins/x2go/x2go_plugin.c:1754
-msgid "Enter passphrase to unlock key:"
-msgstr ""
+#, fuzzy
+msgid "Enter password to unlock the SSH key:"
+msgstr "Geslo za odklepanje zasebnega ključa"
 
 #: plugins/x2go/x2go_plugin.c:1765
 #, fuzzy
 #| msgid "SSH Authentication"
-msgid "Passphrase input cancelled. Aborting…"
+msgid "Password input cancelled. Aborting…"
 msgstr "Neuspešno preverjanje pristnosti: %s"
 
 #: plugins/x2go/x2go_plugin.c:1796
@@ -5553,6 +5555,9 @@ msgstr "Odklepanje Remmine"
 #, fuzzy
 msgid "Master password"
 msgstr "Glavno geslo"
+
+#~ msgid "SSH private key passphrase"
+#~ msgstr "SSH fraza zasebnega ključa"
 
 #, fuzzy
 #~ msgid "Allow using bright colours with bold text"

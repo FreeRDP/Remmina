@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-10-18 08:29+0000\n"
+"POT-Creation-Date: 2022-10-27 10:40+0000\n"
 "PO-Revision-Date: 2022-09-21 17:22+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -1026,7 +1026,9 @@ msgid "Could not authenticate with SSH password. %s"
 msgstr "Ei voitu todentaa SSH-salasanalla. %s"
 
 #: src/remmina_ssh.c:818 src/remmina_ssh.c:885
-msgid "No saved SSH passphrase supplied. Asking user to enter it."
+#, fuzzy
+#| msgid "No saved SSH passphrase supplied. Asking user to enter it."
+msgid "No saved SSH password supplied. Asking user to enter it."
 msgstr "Ei tallennettua SSH-salalausetta. Käyttäjää pyydetään syöttämään se."
 
 #. TRANSLATORS: The placeholder %s is an error message
@@ -1143,8 +1145,8 @@ msgid "SSH password"
 msgstr "SSH-salasana"
 
 #: src/remmina_ssh.c:1491 src/remmina_ssh.c:1535
-msgid "SSH private key passphrase"
-msgstr "SSH:n yksityisen avaimen tunnuslause"
+msgid "Password for private SSH key"
+msgstr "Yksityisen SSH-avaimen salasana"
 
 #: src/remmina_ssh.c:1496
 msgid "SSH Kerberos/GSSAPI"
@@ -3484,13 +3486,15 @@ msgstr ""
 "tai 's_username' -merkkijonoja ei asetettu."
 
 #: plugins/x2go/x2go_plugin.c:1754
-msgid "Enter passphrase to unlock key:"
-msgstr ""
+#, fuzzy
+#| msgid "Password to unlock private key"
+msgid "Enter password to unlock the SSH key:"
+msgstr "Salasana avaa yksityisen avaimen"
 
 #: plugins/x2go/x2go_plugin.c:1765
 #, fuzzy
 #| msgid "Authentication cancelled. Aborting…"
-msgid "Passphrase input cancelled. Aborting…"
+msgid "Password input cancelled. Aborting…"
 msgstr "Todennus peruttu. Lopetetaan…"
 
 #: plugins/x2go/x2go_plugin.c:1796
@@ -5039,6 +5043,9 @@ msgstr "Poista Remminan lukitus"
 msgid "Master password"
 msgstr "Pääsalasana"
 
+#~ msgid "SSH private key passphrase"
+#~ msgstr "SSH:n yksityisen avaimen tunnuslause"
+
 #~ msgid "Parameter 'default_username' is uninitialized."
 #~ msgstr "Parametri 'default_username' ei ole alustettu."
 
@@ -5219,9 +5226,6 @@ msgstr "Pääsalasana"
 
 #~ msgid "Start"
 #~ msgstr "Käynnistä"
-
-#~ msgid "Password for private SSH key"
-#~ msgstr "Yksityisen SSH-avaimen salasana"
 
 #~ msgid "Send Ctrl+Alt+Del"
 #~ msgstr "Lähetä Ctrl+Alt+Del"

@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-10-18 08:29+0000\n"
+"POT-Creation-Date: 2022-10-27 10:40+0000\n"
 "PO-Revision-Date: 2022-10-24 10:40+0000\n"
 "Last-Translator: random r <epsilin@yopmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -1034,7 +1034,9 @@ msgid "Could not authenticate with SSH password. %s"
 msgstr "Impossibile eseguire l'autenticazione con la password SSH. %s"
 
 #: src/remmina_ssh.c:818 src/remmina_ssh.c:885
-msgid "No saved SSH passphrase supplied. Asking user to enter it."
+#, fuzzy
+#| msgid "No saved SSH passphrase supplied. Asking user to enter it."
+msgid "No saved SSH password supplied. Asking user to enter it."
 msgstr "Nessuna passphrase SSH salvata. Si chiede all'utente d'inserirla."
 
 #. TRANSLATORS: The placeholder %s is an error message
@@ -1154,8 +1156,8 @@ msgid "SSH password"
 msgstr "Password SSH"
 
 #: src/remmina_ssh.c:1491 src/remmina_ssh.c:1535
-msgid "SSH private key passphrase"
-msgstr "Passphrase della chiave privata SSH"
+msgid "Password for private SSH key"
+msgstr "Password per la chiave SSH privata"
 
 #: src/remmina_ssh.c:1496
 msgid "SSH Kerberos/GSSAPI"
@@ -3501,11 +3503,15 @@ msgstr ""
 "le stringhe 's_password' o 's_username' non erano impostate."
 
 #: plugins/x2go/x2go_plugin.c:1754
-msgid "Enter passphrase to unlock key:"
+#, fuzzy
+#| msgid "Enter passphrase to unlock key:"
+msgid "Enter password to unlock the SSH key:"
 msgstr "Inserisci la password per sbloccare la chiave:"
 
 #: plugins/x2go/x2go_plugin.c:1765
-msgid "Passphrase input cancelled. Aborting…"
+#, fuzzy
+#| msgid "Passphrase input cancelled. Aborting…"
+msgid "Password input cancelled. Aborting…"
 msgstr "Inserimento password annullato. Uscita…"
 
 #: plugins/x2go/x2go_plugin.c:1796
@@ -5048,6 +5054,9 @@ msgstr "Sblocca Remmina"
 msgid "Master password"
 msgstr "Password principale"
 
+#~ msgid "SSH private key passphrase"
+#~ msgstr "Passphrase della chiave privata SSH"
+
 #~ msgid "Parameter 'default_username' is uninitialized."
 #~ msgstr "Il parametro 'default_username' non è stato configurato."
 
@@ -5292,9 +5301,6 @@ msgstr "Password principale"
 
 #~ msgid "Start"
 #~ msgstr "Avvia"
-
-#~ msgid "Password for private SSH key"
-#~ msgstr "Password per la chiave SSH privata"
 
 #~ msgid "Send Ctrl+Alt+Del"
 #~ msgstr "Inviare Ctrl+Alt+Canc"

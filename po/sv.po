@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-10-18 08:29+0000\n"
+"POT-Creation-Date: 2022-10-27 10:40+0000\n"
 "PO-Revision-Date: 2021-12-17 08:51+0000\n"
 "Last-Translator: l <snelhingst@gmail.com>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -1037,7 +1037,7 @@ msgstr "Autentisering med offentligt SSH-lösenord misslyckades. %s"
 
 #: src/remmina_ssh.c:818 src/remmina_ssh.c:885
 #, fuzzy
-msgid "No saved SSH passphrase supplied. Asking user to enter it."
+msgid "No saved SSH password supplied. Asking user to enter it."
 msgstr ""
 "Ingen sparad SSH-lösenfras har angetts. Användaren uppmanas att ange det."
 
@@ -1154,8 +1154,8 @@ msgid "SSH password"
 msgstr "Lösenord för SSH"
 
 #: src/remmina_ssh.c:1491 src/remmina_ssh.c:1535
-msgid "SSH private key passphrase"
-msgstr "Lösenfras för privat SSH-nyckel"
+msgid "Password for private SSH key"
+msgstr "Lösenord for privat SSH-nyckel"
 
 #: src/remmina_ssh.c:1496
 msgid "SSH Kerberos/GSSAPI"
@@ -3584,13 +3584,15 @@ msgstr ""
 "strängarna \"s_password\" eller \"s_username\" var inte inställda."
 
 #: plugins/x2go/x2go_plugin.c:1754
-msgid "Enter passphrase to unlock key:"
-msgstr ""
+#, fuzzy
+#| msgid "Password to unlock private key"
+msgid "Enter password to unlock the SSH key:"
+msgstr "Lösenord för att låsa upp privat nyckel"
 
 #: plugins/x2go/x2go_plugin.c:1765
 #, fuzzy
 #| msgid "Authentication type"
-msgid "Passphrase input cancelled. Aborting…"
+msgid "Password input cancelled. Aborting…"
 msgstr "Autentiseringsfel: %s"
 
 #: plugins/x2go/x2go_plugin.c:1796
@@ -5265,6 +5267,9 @@ msgstr "Lås upp Remmina"
 msgid "Master password"
 msgstr "Huvudlösenord"
 
+#~ msgid "SSH private key passphrase"
+#~ msgstr "Lösenfras för privat SSH-nyckel"
+
 #, fuzzy
 #~ msgid "Allow using bright colours with bold text"
 #~ msgstr "Tillåt användning av ljusa färger med fet text."
@@ -5468,9 +5473,6 @@ msgstr "Huvudlösenord"
 
 #~ msgid "Start"
 #~ msgstr "Starta"
-
-#~ msgid "Password for private SSH key"
-#~ msgstr "Lösenord for privat SSH-nyckel"
 
 #~ msgid "Send Ctrl+Alt+Del"
 #~ msgstr "Skicka Ctrl+Alt+Delete"

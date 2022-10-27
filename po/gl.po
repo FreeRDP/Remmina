@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-10-18 08:29+0000\n"
+"POT-Creation-Date: 2022-10-27 10:40+0000\n"
 "PO-Revision-Date: 2022-08-16 00:21+0000\n"
 "Last-Translator: CarlosCF <carloscaamano@gmail.com>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -1039,7 +1039,9 @@ msgid "Could not authenticate with SSH password. %s"
 msgstr "Produciuse un fallo ao iniciar a sesión SSH: %s"
 
 #: src/remmina_ssh.c:818 src/remmina_ssh.c:885
-msgid "No saved SSH passphrase supplied. Asking user to enter it."
+#, fuzzy
+#| msgid "No saved SSH passphrase supplied. Asking user to enter it."
+msgid "No saved SSH password supplied. Asking user to enter it."
 msgstr ""
 "Non se proporcionou ningún contrasinal SSH gardada. Solicitando ao usuario "
 "que o introduza."
@@ -1156,8 +1158,10 @@ msgid "SSH password"
 msgstr "Contrasinal SSH"
 
 #: src/remmina_ssh.c:1491 src/remmina_ssh.c:1535
-msgid "SSH private key passphrase"
-msgstr "Chave privada SSH"
+#, fuzzy
+#| msgid "Password to unlock private key"
+msgid "Password for private SSH key"
+msgstr "Contrasinal para desbloquear a chave privada"
 
 #: src/remmina_ssh.c:1496
 msgid "SSH Kerberos/GSSAPI"
@@ -3424,13 +3428,15 @@ msgid ""
 msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:1754
-msgid "Enter passphrase to unlock key:"
-msgstr ""
+#, fuzzy
+#| msgid "Password to unlock private key"
+msgid "Enter password to unlock the SSH key:"
+msgstr "Contrasinal para desbloquear a chave privada"
 
 #: plugins/x2go/x2go_plugin.c:1765
 #, fuzzy
 #| msgid "SSH Authentication"
-msgid "Passphrase input cancelled. Aborting…"
+msgid "Password input cancelled. Aborting…"
 msgstr "Autenticación SSH"
 
 #: plugins/x2go/x2go_plugin.c:1796
@@ -4970,6 +4976,9 @@ msgstr ""
 #, fuzzy
 msgid "Master password"
 msgstr "contrasinal do usuario"
+
+#~ msgid "SSH private key passphrase"
+#~ msgstr "Chave privada SSH"
 
 #, fuzzy
 #~| msgid "Enter VNC password"

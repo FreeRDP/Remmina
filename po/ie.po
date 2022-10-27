@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Remmina v1.3.6\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-10-18 08:29+0000\n"
+"POT-Creation-Date: 2022-10-27 10:40+0000\n"
 "PO-Revision-Date: 2022-09-06 17:21+0000\n"
 "Last-Translator: OIS <mistresssilvara@hotmail.com>\n"
 "Language-Team: Occidental <https://hosted.weblate.org/projects/remmina/"
@@ -943,7 +943,7 @@ msgid "Could not authenticate with SSH password. %s"
 msgstr "Ne successat iniciar un session SSH: %s"
 
 #: src/remmina_ssh.c:818 src/remmina_ssh.c:885
-msgid "No saved SSH passphrase supplied. Asking user to enter it."
+msgid "No saved SSH password supplied. Asking user to enter it."
 msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
@@ -1054,8 +1054,10 @@ msgid "SSH password"
 msgstr "Contrasigne SSH"
 
 #: src/remmina_ssh.c:1491 src/remmina_ssh.c:1535
-msgid "SSH private key passphrase"
-msgstr "Contrasigne del clave privat"
+#, fuzzy
+#| msgid "SSH private key file"
+msgid "Password for private SSH key"
+msgstr "File del clave SSH privat"
 
 #: src/remmina_ssh.c:1496
 msgid "SSH Kerberos/GSSAPI"
@@ -3248,11 +3250,11 @@ msgid ""
 msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:1754
-msgid "Enter passphrase to unlock key:"
+msgid "Enter password to unlock the SSH key:"
 msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:1765
-msgid "Passphrase input cancelled. Aborting…"
+msgid "Password input cancelled. Aborting…"
 msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:1796
@@ -4701,6 +4703,9 @@ msgstr "Desserrar Remmina"
 #: data/ui/remmina_unlock.glade:120
 msgid "Master password"
 msgstr "Principal contrasigne"
+
+#~ msgid "SSH private key passphrase"
+#~ msgstr "Contrasigne del clave privat"
 
 #~ msgid "Allow using bright colours with bold text"
 #~ msgstr "Permisser usar lucid colores por grass textu"

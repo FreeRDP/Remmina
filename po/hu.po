@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-10-18 08:29+0000\n"
+"POT-Creation-Date: 2022-10-27 10:40+0000\n"
 "PO-Revision-Date: 2022-07-12 13:16+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/remmina/"
@@ -1073,7 +1073,7 @@ msgstr "Nem sikerült autentikálni az SSH jelszóval. %s"
 
 #: src/remmina_ssh.c:818 src/remmina_ssh.c:885
 #, fuzzy
-msgid "No saved SSH passphrase supplied. Asking user to enter it."
+msgid "No saved SSH password supplied. Asking user to enter it."
 msgstr "Nincs elmentett SSH jelszó megadva. A felhasználónak meg kell adnia."
 
 #. TRANSLATORS: The placeholder %s is an error message
@@ -1194,9 +1194,8 @@ msgid "SSH password"
 msgstr "SSH-jelszó"
 
 #: src/remmina_ssh.c:1491 src/remmina_ssh.c:1535
-#, fuzzy
-msgid "SSH private key passphrase"
-msgstr "Személyes SSH-kulcs jelszava"
+msgid "Password for private SSH key"
+msgstr "Jelszó az SSH privát kulcshoz"
 
 #: src/remmina_ssh.c:1496
 #, fuzzy
@@ -3866,13 +3865,15 @@ msgstr ""
 "'s_username' karakterláncok nem voltak beállítva."
 
 #: plugins/x2go/x2go_plugin.c:1754
-msgid "Enter passphrase to unlock key:"
-msgstr ""
+#, fuzzy
+#| msgid "Password to unlock private key"
+msgid "Enter password to unlock the SSH key:"
+msgstr "Privát kulcs jelszava"
 
 #: plugins/x2go/x2go_plugin.c:1765
 #, fuzzy
 #| msgid "Authentication type"
-msgid "Passphrase input cancelled. Aborting…"
+msgid "Password input cancelled. Aborting…"
 msgstr "Hitelesítési hiba: %s"
 
 #: plugins/x2go/x2go_plugin.c:1796
@@ -5671,6 +5672,10 @@ msgid "Master password"
 msgstr "Mester jelszó"
 
 #, fuzzy
+#~ msgid "SSH private key passphrase"
+#~ msgstr "Személyes SSH-kulcs jelszava"
+
+#, fuzzy
 #~ msgid "Parameter 'default_username' is uninitialized."
 #~ msgstr "A 'default_username' paraméter nem inicializált."
 
@@ -5846,9 +5851,6 @@ msgstr "Mester jelszó"
 
 #~ msgid "Start"
 #~ msgstr "Indítás"
-
-#~ msgid "Password for private SSH key"
-#~ msgstr "Jelszó az SSH privát kulcshoz"
 
 #~ msgid "Send Ctrl+Alt+Del"
 #~ msgstr "Ctrl+Alt+Delete küldése"

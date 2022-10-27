@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-10-18 08:29+0000\n"
+"POT-Creation-Date: 2022-10-27 10:40+0000\n"
 "PO-Revision-Date: 2022-08-08 22:19+0000\n"
 "Last-Translator: CarlosCF <carloscaamano@gmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/remmina/"
@@ -1021,7 +1021,9 @@ msgid "Could not authenticate with SSH password. %s"
 msgstr "Não foi possível autenticar com a palavra-passe de SSH. %s"
 
 #: src/remmina_ssh.c:818 src/remmina_ssh.c:885
-msgid "No saved SSH passphrase supplied. Asking user to enter it."
+#, fuzzy
+#| msgid "No saved SSH passphrase supplied. Asking user to enter it."
+msgid "No saved SSH password supplied. Asking user to enter it."
 msgstr ""
 "Nenhuma palavra-passe SSH salva fornecida. Pedindo ao utilizador para inseri-"
 "la."
@@ -1139,8 +1141,8 @@ msgid "SSH password"
 msgstr "Palavra-passe SSH"
 
 #: src/remmina_ssh.c:1491 src/remmina_ssh.c:1535
-msgid "SSH private key passphrase"
-msgstr "Frase palavra-passe da chave privada SSH"
+msgid "Password for private SSH key"
+msgstr "Palavra-passe para chave privada SSH"
 
 #: src/remmina_ssh.c:1496
 msgid "SSH Kerberos/GSSAPI"
@@ -3500,13 +3502,15 @@ msgstr ""
 "'s_password' ou 's_username' não foram definidas."
 
 #: plugins/x2go/x2go_plugin.c:1754
-msgid "Enter passphrase to unlock key:"
-msgstr ""
+#, fuzzy
+#| msgid "Password to unlock private key"
+msgid "Enter password to unlock the SSH key:"
+msgstr "Palavra-passe para desbloquear a chave privada"
 
 #: plugins/x2go/x2go_plugin.c:1765
 #, fuzzy
 #| msgid "Authentication failure: %s"
-msgid "Passphrase input cancelled. Aborting…"
+msgid "Password input cancelled. Aborting…"
 msgstr "Falha de autenticação: %s"
 
 #: plugins/x2go/x2go_plugin.c:1796
@@ -5094,6 +5098,9 @@ msgstr "Desbloqueia o Remmina"
 msgid "Master password"
 msgstr "Palavra-passe mestre"
 
+#~ msgid "SSH private key passphrase"
+#~ msgstr "Frase palavra-passe da chave privada SSH"
+
 #~ msgid "Allow using bright colours with bold text"
 #~ msgstr "Permite usar cores brilhantes com texto em negrito"
 
@@ -5294,9 +5301,6 @@ msgstr "Palavra-passe mestre"
 
 #~ msgid "Start"
 #~ msgstr "Iniciar"
-
-#~ msgid "Password for private SSH key"
-#~ msgstr "Palavra-passe para chave privada SSH"
 
 #~ msgid "Send Ctrl+Alt+Del"
 #~ msgstr "Enviar Ctrl+Alt+Del"

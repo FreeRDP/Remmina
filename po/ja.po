@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-10-18 08:29+0000\n"
+"POT-Creation-Date: 2022-10-27 10:40+0000\n"
 "PO-Revision-Date: 2022-05-05 15:13+0000\n"
 "Last-Translator: WonYong Jung <hirameki@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -1066,7 +1066,9 @@ msgid "Could not authenticate with SSH password. %s"
 msgstr "SSH パスワードで認証できませんでした: %s"
 
 #: src/remmina_ssh.c:818 src/remmina_ssh.c:885
-msgid "No saved SSH passphrase supplied. Asking user to enter it."
+#, fuzzy
+#| msgid "No saved SSH passphrase supplied. Asking user to enter it."
+msgid "No saved SSH password supplied. Asking user to enter it."
 msgstr ""
 "SSH パスフレーズが保存されていません。ユーザーが入力する必要があります。"
 
@@ -1181,8 +1183,8 @@ msgid "SSH password"
 msgstr "SSH パスワード"
 
 #: src/remmina_ssh.c:1491 src/remmina_ssh.c:1535
-msgid "SSH private key passphrase"
-msgstr "SSH 秘密鍵のパスフレーズ"
+msgid "Password for private SSH key"
+msgstr "秘密 SSH 鍵のパスワード"
 
 #: src/remmina_ssh.c:1496
 msgid "SSH Kerberos/GSSAPI"
@@ -3616,13 +3618,15 @@ msgstr ""
 "証情報を保存しようとしてエラーが発生しました。"
 
 #: plugins/x2go/x2go_plugin.c:1754
-msgid "Enter passphrase to unlock key:"
-msgstr ""
+#, fuzzy
+#| msgid "Password to unlock private key"
+msgid "Enter password to unlock the SSH key:"
+msgstr "秘密鍵のロックを解除するパスワード"
 
 #: plugins/x2go/x2go_plugin.c:1765
 #, fuzzy
 #| msgid "Authentication type"
-msgid "Passphrase input cancelled. Aborting…"
+msgid "Password input cancelled. Aborting…"
 msgstr "認証に失敗しました。%sと表示されました。"
 
 #: plugins/x2go/x2go_plugin.c:1796
@@ -5274,6 +5278,9 @@ msgstr "Remmina のロックを解除"
 msgid "Master password"
 msgstr "マスターパスワード"
 
+#~ msgid "SSH private key passphrase"
+#~ msgstr "SSH 秘密鍵のパスフレーズ"
+
 #~ msgid "Parameter 'default_username' is uninitialized."
 #~ msgstr "パラメータ'default_username'が初期化されていません。"
 
@@ -5483,9 +5490,6 @@ msgstr "マスターパスワード"
 
 #~ msgid "Start"
 #~ msgstr "開始"
-
-#~ msgid "Password for private SSH key"
-#~ msgstr "秘密 SSH 鍵のパスワード"
 
 #~ msgid "Send Ctrl+Alt+Del"
 #~ msgstr "Ctrl+Alt+Del を送る"

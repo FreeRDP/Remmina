@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Remmina v1.4.3\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-10-18 08:29+0000\n"
+"POT-Creation-Date: 2022-10-27 10:40+0000\n"
 "PO-Revision-Date: 2022-08-07 21:20+0000\n"
 "Last-Translator: phlostically <phlostically@mailinator.com>\n"
 "Language-Team: Esperanto <https://hosted.weblate.org/projects/remmina/"
@@ -1020,7 +1020,9 @@ msgid "Could not authenticate with SSH password. %s"
 msgstr "Ne povis aŭtentikigi per SSH-pasvorto. %s"
 
 #: src/remmina_ssh.c:818 src/remmina_ssh.c:885
-msgid "No saved SSH passphrase supplied. Asking user to enter it."
+#, fuzzy
+#| msgid "No saved SSH passphrase supplied. Asking user to enter it."
+msgid "No saved SSH password supplied. Asking user to enter it."
 msgstr ""
 "Neniu konservita SSH-pasfrazo estis provizita. Petante uzanton entajpi ĝin."
 
@@ -1136,8 +1138,8 @@ msgid "SSH password"
 msgstr "SSH-pasvorto"
 
 #: src/remmina_ssh.c:1491 src/remmina_ssh.c:1535
-msgid "SSH private key passphrase"
-msgstr "Pasfrazo de privata SSH-ŝlosilo"
+msgid "Password for private SSH key"
+msgstr "Pasvorto por privata SSH-ŝlosilo"
 
 #: src/remmina_ssh.c:1496
 msgid "SSH Kerberos/GSSAPI"
@@ -3468,13 +3470,15 @@ msgstr ""
 "«s_password» aŭ «s_username» ne estis valorizita."
 
 #: plugins/x2go/x2go_plugin.c:1754
-msgid "Enter passphrase to unlock key:"
-msgstr ""
+#, fuzzy
+#| msgid "Password to unlock private key"
+msgid "Enter password to unlock the SSH key:"
+msgstr "Pasvorto por malŝlosi privatan ŝlosilon"
 
 #: plugins/x2go/x2go_plugin.c:1765
 #, fuzzy
 #| msgid "Authentication failure: %s"
-msgid "Passphrase input cancelled. Aborting…"
+msgid "Password input cancelled. Aborting…"
 msgstr "Malsukceso de aŭtentikigo: %s"
 
 #: plugins/x2go/x2go_plugin.c:1796
@@ -5006,6 +5010,9 @@ msgstr "Malŝlosu Remmina"
 msgid "Master password"
 msgstr "Ĉefpasvorto"
 
+#~ msgid "SSH private key passphrase"
+#~ msgstr "Pasfrazo de privata SSH-ŝlosilo"
+
 #~ msgid "Parameter 'default_username' is uninitialized."
 #~ msgstr "La parametro «default_username» estas ne praŝargita."
 
@@ -5210,9 +5217,6 @@ msgstr "Ĉefpasvorto"
 
 #~ msgid "Start"
 #~ msgstr "Startigi"
-
-#~ msgid "Password for private SSH key"
-#~ msgstr "Pasvorto por privata SSH-ŝlosilo"
 
 #~ msgid "Send Ctrl+Alt+Del"
 #~ msgstr "Sendi Stir+Alt+Forig"

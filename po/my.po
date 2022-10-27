@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-10-18 08:29+0000\n"
+"POT-Creation-Date: 2022-10-27 10:40+0000\n"
 "PO-Revision-Date: 2021-12-17 08:48+0000\n"
 "Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
 "Language-Team: Burmese <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -1126,7 +1126,7 @@ msgstr "SSH စကားဝှက်နဲ့ တရားဝင်မလုပ�
 
 #: src/remmina_ssh.c:818 src/remmina_ssh.c:885
 #, fuzzy
-msgid "No saved SSH passphrase supplied. Asking user to enter it."
+msgid "No saved SSH password supplied. Asking user to enter it."
 msgstr "ဘယ် SSH စကားစုကိုမှ မထောက်ပံ့ခဲ့ဘူး။ အသုံးပြုသူကို ဝင်ခွင့်တောင်းပါ။"
 
 #. TRANSLATORS: The placeholder %s is an error message
@@ -1246,8 +1246,8 @@ msgstr "SSH စကားဝှက်"
 
 #: src/remmina_ssh.c:1491 src/remmina_ssh.c:1535
 #, fuzzy
-msgid "SSH private key passphrase"
-msgstr "SSH ပုဂ္ဂလိက အဓိကစကားစု"
+msgid "Password for private SSH key"
+msgstr "ပုဂ္ဂလိကခလုတ်ကိုဖွင့်ရန် စကားဝှက်"
 
 #: src/remmina_ssh.c:1496
 #, fuzzy
@@ -3872,12 +3872,13 @@ msgstr ""
 "အရည်အချင်းအသစ်များကို ချွေတာရန် ကြိုးစားနေစဉ် အမှားတစ်ခု ဖြစ်ပွားခဲ့သည်။"
 
 #: plugins/x2go/x2go_plugin.c:1754
-msgid "Enter passphrase to unlock key:"
-msgstr ""
+#, fuzzy
+msgid "Enter password to unlock the SSH key:"
+msgstr "ပုဂ္ဂလိကခလုတ်ကိုဖွင့်ရန် စကားဝှက်"
 
 #: plugins/x2go/x2go_plugin.c:1765
 #, fuzzy
-msgid "Passphrase input cancelled. Aborting…"
+msgid "Password input cancelled. Aborting…"
 msgstr "စစ်ဆေးရေးပျက်ကွက်မှု - %s"
 
 #: plugins/x2go/x2go_plugin.c:1796
@@ -5650,6 +5651,10 @@ msgstr "ရမ်မီနာကိုဖွင့်ပါ"
 #, fuzzy
 msgid "Master password"
 msgstr "Master စကားဝှက်"
+
+#, fuzzy
+#~ msgid "SSH private key passphrase"
+#~ msgstr "SSH ပုဂ္ဂလိက အဓိကစကားစု"
 
 #, fuzzy
 #~ msgid "Allow using bright colours with bold text"

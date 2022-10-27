@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-10-18 08:29+0000\n"
+"POT-Creation-Date: 2022-10-27 10:40+0000\n"
 "PO-Revision-Date: 2021-12-17 08:49+0000\n"
 "Last-Translator: Quentin PAGÈS <quentinantonin@free.fr>\n"
 "Language-Team: Occitan <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -989,7 +989,7 @@ msgid "Could not authenticate with SSH password. %s"
 msgstr "Fracàs de l’inicializacion de la sesilha SSH : %s"
 
 #: src/remmina_ssh.c:818 src/remmina_ssh.c:885
-msgid "No saved SSH passphrase supplied. Asking user to enter it."
+msgid "No saved SSH password supplied. Asking user to enter it."
 msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
@@ -1105,7 +1105,9 @@ msgid "SSH password"
 msgstr "Senhal SSH"
 
 #: src/remmina_ssh.c:1491 src/remmina_ssh.c:1535
-msgid "SSH private key passphrase"
+#, fuzzy
+#| msgid "SSH private key passphrase"
+msgid "Password for private SSH key"
 msgstr "Frasa secreta de la clau privada"
 
 #: src/remmina_ssh.c:1496
@@ -3365,13 +3367,15 @@ msgid ""
 msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:1754
-msgid "Enter passphrase to unlock key:"
-msgstr ""
+#, fuzzy
+#| msgid "Secured password storage in the GNOME keyring"
+msgid "Enter password to unlock the SSH key:"
+msgstr "Senhal %s"
 
 #: plugins/x2go/x2go_plugin.c:1765
 #, fuzzy
 #| msgid "SSH Authentication"
-msgid "Passphrase input cancelled. Aborting…"
+msgid "Password input cancelled. Aborting…"
 msgstr "Autentificacion SSH"
 
 #: plugins/x2go/x2go_plugin.c:1796
@@ -4901,6 +4905,9 @@ msgstr ""
 #, fuzzy
 msgid "Master password"
 msgstr "senhal utilizaire"
+
+#~ msgid "SSH private key passphrase"
+#~ msgstr "Frasa secreta de la clau privada"
 
 #, fuzzy
 #~| msgid "Enter VNC password"

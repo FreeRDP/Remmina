@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Remmina v1.4.5\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-10-18 08:29+0000\n"
+"POT-Creation-Date: 2022-10-27 10:40+0000\n"
 "PO-Revision-Date: 2022-04-06 20:11+0000\n"
 "Last-Translator: Yasin Huwsf <yasinbakhtiar521@gmail.com>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -1058,7 +1058,9 @@ msgid "Could not authenticate with SSH password. %s"
 msgstr "نمی تواند با رمز عبور SSH تایید شود. %s"
 
 #: src/remmina_ssh.c:818 src/remmina_ssh.c:885
-msgid "No saved SSH passphrase supplied. Asking user to enter it."
+#, fuzzy
+#| msgid "No saved SSH passphrase supplied. Asking user to enter it."
+msgid "No saved SSH password supplied. Asking user to enter it."
 msgstr ""
 "هیچ عبارت عبور ذخیره شده SSH ارائه نشده است. درخواست از کاربر برای وارد کردن "
 "آن"
@@ -1174,8 +1176,10 @@ msgid "SSH password"
 msgstr "رمز عبور SSH"
 
 #: src/remmina_ssh.c:1491 src/remmina_ssh.c:1535
-msgid "SSH private key passphrase"
-msgstr "عبارت عبور کلید خصوصی SSH"
+#, fuzzy
+#| msgid "Password to unlock private key"
+msgid "Password for private SSH key"
+msgstr "رمز عبور برای باز کردن کلید خصوصی"
 
 #: src/remmina_ssh.c:1496
 msgid "SSH Kerberos/GSSAPI"
@@ -3699,13 +3703,15 @@ msgstr ""
 "رشته های 's_username' یا 's_username' تنظیم نشده بودند."
 
 #: plugins/x2go/x2go_plugin.c:1754
-msgid "Enter passphrase to unlock key:"
-msgstr ""
+#, fuzzy
+#| msgid "Password to unlock private key"
+msgid "Enter password to unlock the SSH key:"
+msgstr "رمز عبور برای باز کردن کلید خصوصی"
 
 #: plugins/x2go/x2go_plugin.c:1765
 #, fuzzy
 #| msgid "Authentication type"
-msgid "Passphrase input cancelled. Aborting…"
+msgid "Password input cancelled. Aborting…"
 msgstr "شکست احراز هویت: %s"
 
 #: plugins/x2go/x2go_plugin.c:1796
@@ -5510,6 +5516,9 @@ msgstr "باز کردن باز کردن Remmina"
 #, fuzzy
 msgid "Master password"
 msgstr "رمز عبور استاد"
+
+#~ msgid "SSH private key passphrase"
+#~ msgstr "عبارت عبور کلید خصوصی SSH"
 
 #, fuzzy
 #~ msgid "Parameter 'default_username' is uninitialized."

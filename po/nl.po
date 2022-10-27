@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-10-18 08:29+0000\n"
+"POT-Creation-Date: 2022-10-27 10:40+0000\n"
 "PO-Revision-Date: 2022-08-17 16:15+0000\n"
 "Last-Translator: lrots <lambert@lambiek.eu>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/remmina/remmina/nl/"
@@ -1040,7 +1040,9 @@ msgid "Could not authenticate with SSH password. %s"
 msgstr "Kon niet verifiëren met SSH wachtwoord. %s"
 
 #: src/remmina_ssh.c:818 src/remmina_ssh.c:885
-msgid "No saved SSH passphrase supplied. Asking user to enter it."
+#, fuzzy
+#| msgid "No saved SSH passphrase supplied. Asking user to enter it."
+msgid "No saved SSH password supplied. Asking user to enter it."
 msgstr ""
 "Geen opgeslagen SSH wachtwoordzin opgegeven. De gebruiker wordt gevraagd "
 "deze in te voeren."
@@ -1158,8 +1160,10 @@ msgid "SSH password"
 msgstr "SSH-wachtwoord"
 
 #: src/remmina_ssh.c:1491 src/remmina_ssh.c:1535
-msgid "SSH private key passphrase"
-msgstr "Wachtwoord voor SSH-privesleutel"
+#, fuzzy
+#| msgid "Password to unlock private key"
+msgid "Password for private SSH key"
+msgstr "Wachtwoord om de privésleutel te ontgrendelen"
 
 #: src/remmina_ssh.c:1496
 msgid "SSH Kerberos/GSSAPI"
@@ -3669,13 +3673,15 @@ msgstr ""
 "strings 's_password' of 's_username' waren niet ingesteld."
 
 #: plugins/x2go/x2go_plugin.c:1754
-msgid "Enter passphrase to unlock key:"
-msgstr ""
+#, fuzzy
+#| msgid "Password to unlock private key"
+msgid "Enter password to unlock the SSH key:"
+msgstr "Wachtwoord om de privésleutel te ontgrendelen"
 
 #: plugins/x2go/x2go_plugin.c:1765
 #, fuzzy
 #| msgid "Authentication type"
-msgid "Passphrase input cancelled. Aborting…"
+msgid "Password input cancelled. Aborting…"
 msgstr "Authenticatie mislukt: %s"
 
 #: plugins/x2go/x2go_plugin.c:1796
@@ -5465,6 +5471,9 @@ msgstr "Maak Remmina los"
 #, fuzzy
 msgid "Master password"
 msgstr "Hoofdwachtwoord"
+
+#~ msgid "SSH private key passphrase"
+#~ msgstr "Wachtwoord voor SSH-privesleutel"
 
 #, fuzzy
 #~ msgid "Allow using bright colours with bold text"

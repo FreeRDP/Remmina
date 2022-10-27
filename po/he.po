@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-10-18 08:29+0000\n"
+"POT-Creation-Date: 2022-10-27 10:40+0000\n"
 "PO-Revision-Date: 2022-05-10 17:16+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -1022,7 +1022,7 @@ msgstr "לא ניתן להזדהות עם סיסמת SSH.‏ %s"
 
 #: src/remmina_ssh.c:818 src/remmina_ssh.c:885
 #, fuzzy
-msgid "No saved SSH passphrase supplied. Asking user to enter it."
+msgid "No saved SSH password supplied. Asking user to enter it."
 msgstr "לא נשמרה מילת צופן ל־SSH. נשלחת בבקשה למשתמש להקליד אותה."
 
 #. TRANSLATORS: The placeholder %s is an error message
@@ -1140,9 +1140,8 @@ msgid "SSH password"
 msgstr "סיסמת SSH"
 
 #: src/remmina_ssh.c:1491 src/remmina_ssh.c:1535
-#, fuzzy
-msgid "SSH private key passphrase"
-msgstr "מילת צופן למפתח SSH פרטי"
+msgid "Password for private SSH key"
+msgstr "ססמה למפתח SSH פרטי"
 
 #: src/remmina_ssh.c:1496
 #, fuzzy
@@ -3700,13 +3699,15 @@ msgstr ""
 "‚s_username’ לא הוגדרו."
 
 #: plugins/x2go/x2go_plugin.c:1754
-msgid "Enter passphrase to unlock key:"
-msgstr ""
+#, fuzzy
+#| msgid "Password to unlock private key"
+msgid "Enter password to unlock the SSH key:"
+msgstr "סיסמה לשחרור המפתח הפרטי"
 
 #: plugins/x2go/x2go_plugin.c:1765
 #, fuzzy
 #| msgid "Authentication failure: %s"
-msgid "Passphrase input cancelled. Aborting…"
+msgid "Password input cancelled. Aborting…"
 msgstr "כשל באימות: %s"
 
 #: plugins/x2go/x2go_plugin.c:1796
@@ -5409,6 +5410,10 @@ msgid "Master password"
 msgstr "סיסמה ראשית"
 
 #, fuzzy
+#~ msgid "SSH private key passphrase"
+#~ msgstr "מילת צופן למפתח SSH פרטי"
+
+#, fuzzy
 #~ msgid "Parameter 'default_username' is uninitialized."
 #~ msgstr "המשתנה ‚default_username’ אינו מאותחל."
 
@@ -5621,9 +5626,6 @@ msgstr "סיסמה ראשית"
 
 #~ msgid "Start"
 #~ msgstr "התחלה"
-
-#~ msgid "Password for private SSH key"
-#~ msgstr "ססמה למפתח SSH פרטי"
 
 #~ msgid "Send Ctrl+Alt+Del"
 #~ msgstr "שליחת Ctrl+Alt+Delete"

@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-10-18 08:29+0000\n"
+"POT-Creation-Date: 2022-10-27 10:40+0000\n"
 "PO-Revision-Date: 2022-10-18 17:59+0000\n"
 "Last-Translator: Matthaiks <kitynska@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -1040,7 +1040,9 @@ msgid "Could not authenticate with SSH password. %s"
 msgstr "Nie można uwierzytelnić hasłem od SSH. %s"
 
 #: src/remmina_ssh.c:818 src/remmina_ssh.c:885
-msgid "No saved SSH passphrase supplied. Asking user to enter it."
+#, fuzzy
+#| msgid "No saved SSH passphrase supplied. Asking user to enter it."
+msgid "No saved SSH password supplied. Asking user to enter it."
 msgstr "Nie podano hasła SSH. Prośba do użytkownika o jego wprowadzenie."
 
 #. TRANSLATORS: The placeholder %s is an error message
@@ -1154,8 +1156,8 @@ msgid "SSH password"
 msgstr "Hasło SSH"
 
 #: src/remmina_ssh.c:1491 src/remmina_ssh.c:1535
-msgid "SSH private key passphrase"
-msgstr "Hasło klucza prywatnego SSH"
+msgid "Password for private SSH key"
+msgstr "Hasło dla prywatnego klucza SSH"
 
 #: src/remmina_ssh.c:1496
 msgid "SSH Kerberos/GSSAPI"
@@ -3493,11 +3495,15 @@ msgstr ""
 "ciągi 's_password' lub 's_username' nie zostały ustawione."
 
 #: plugins/x2go/x2go_plugin.c:1754
-msgid "Enter passphrase to unlock key:"
+#, fuzzy
+#| msgid "Enter passphrase to unlock key:"
+msgid "Enter password to unlock the SSH key:"
 msgstr "Wprowadź hasło, aby odblokować klucz:"
 
 #: plugins/x2go/x2go_plugin.c:1765
-msgid "Passphrase input cancelled. Aborting…"
+#, fuzzy
+#| msgid "Passphrase input cancelled. Aborting…"
+msgid "Password input cancelled. Aborting…"
 msgstr "Anulowano wprowadzanie hasła. Przerywam…"
 
 #: plugins/x2go/x2go_plugin.c:1796
@@ -5032,6 +5038,9 @@ msgstr "Odblokuj Remminę"
 msgid "Master password"
 msgstr "Główne hasło"
 
+#~ msgid "SSH private key passphrase"
+#~ msgstr "Hasło klucza prywatnego SSH"
+
 #~ msgid "Parameter 'default_username' is uninitialized."
 #~ msgstr "Parametr 'default_username' jest niezainicjowany."
 
@@ -5273,9 +5282,6 @@ msgstr "Główne hasło"
 
 #~ msgid "Start"
 #~ msgstr "Rozpocznij"
-
-#~ msgid "Password for private SSH key"
-#~ msgstr "Hasło dla prywatnego klucza SSH"
 
 #~ msgid "Send Ctrl+Alt+Del"
 #~ msgstr "Wyślij Ctrl+Alt+Delete"

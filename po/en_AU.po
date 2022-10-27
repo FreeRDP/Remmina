@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-10-18 08:29+0000\n"
+"POT-Creation-Date: 2022-10-27 10:40+0000\n"
 "PO-Revision-Date: 2021-12-17 08:44+0000\n"
 "Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
 "Language-Team: English (Australia) <https://hosted.weblate.org/projects/"
@@ -1120,7 +1120,7 @@ msgid "Could not authenticate with SSH password. %s"
 msgstr "Could not authenticate with SSH password. %s"
 
 #: src/remmina_ssh.c:818 src/remmina_ssh.c:885
-msgid "No saved SSH passphrase supplied. Asking user to enter it."
+msgid "No saved SSH password supplied. Asking user to enter it."
 msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
@@ -1241,9 +1241,8 @@ msgid "SSH password"
 msgstr "SSH password"
 
 #: src/remmina_ssh.c:1491 src/remmina_ssh.c:1535
-#, fuzzy
-msgid "SSH private key passphrase"
-msgstr "SSH private key passphrase"
+msgid "Password for private SSH key"
+msgstr "Password for private SSH key"
 
 #: src/remmina_ssh.c:1496
 #, fuzzy
@@ -3827,13 +3826,14 @@ msgid ""
 msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:1754
-msgid "Enter passphrase to unlock key:"
-msgstr ""
+#, fuzzy
+msgid "Enter password to unlock the SSH key:"
+msgstr "Password to unlock private key"
 
 #: plugins/x2go/x2go_plugin.c:1765
 #, fuzzy
 #| msgid "Authentication type"
-msgid "Passphrase input cancelled. Aborting…"
+msgid "Password input cancelled. Aborting…"
 msgstr "Authentication type"
 
 #: plugins/x2go/x2go_plugin.c:1796
@@ -5590,6 +5590,10 @@ msgid "Master password"
 msgstr "Master password"
 
 #, fuzzy
+#~ msgid "SSH private key passphrase"
+#~ msgstr "SSH private key passphrase"
+
+#, fuzzy
 #~ msgid "Automatic lock interval"
 #~ msgstr "Automatic lock interval"
 
@@ -5721,9 +5725,6 @@ msgstr "Master password"
 
 #~ msgid "Start"
 #~ msgstr "Start"
-
-#~ msgid "Password for private SSH key"
-#~ msgstr "Password for private SSH key"
 
 #~ msgid "Send Ctrl+Alt+Del"
 #~ msgstr "Send Ctrl+Alt+Del"

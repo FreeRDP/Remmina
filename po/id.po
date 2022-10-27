@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-10-18 08:29+0000\n"
+"POT-Creation-Date: 2022-10-27 10:40+0000\n"
 "PO-Revision-Date: 2022-05-02 12:11+0000\n"
 "Last-Translator: Andika Triwidada <andika@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/remmina/"
@@ -1019,7 +1019,9 @@ msgid "Could not authenticate with SSH password. %s"
 msgstr "Tidak bisa mengautentikasi dengan kata sandi SSH. %s"
 
 #: src/remmina_ssh.c:818 src/remmina_ssh.c:885
-msgid "No saved SSH passphrase supplied. Asking user to enter it."
+#, fuzzy
+#| msgid "No saved SSH passphrase supplied. Asking user to enter it."
+msgid "No saved SSH password supplied. Asking user to enter it."
 msgstr ""
 "Tidak ada frasa sandi SSH terimpan yang diberikan. Meminta pengguna untuk "
 "memasukannya."
@@ -1136,8 +1138,8 @@ msgid "SSH password"
 msgstr "Kata sandi SSH"
 
 #: src/remmina_ssh.c:1491 src/remmina_ssh.c:1535
-msgid "SSH private key passphrase"
-msgstr "Frasa sandi kunci privat SSH"
+msgid "Password for private SSH key"
+msgstr "Kata sandi untuk kunci SSH privat"
 
 #: src/remmina_ssh.c:1496
 msgid "SSH Kerberos/GSSAPI"
@@ -3485,13 +3487,15 @@ msgstr ""
 "atau 's_username' tidak diatur."
 
 #: plugins/x2go/x2go_plugin.c:1754
-msgid "Enter passphrase to unlock key:"
-msgstr ""
+#, fuzzy
+#| msgid "Password to unlock private key"
+msgid "Enter password to unlock the SSH key:"
+msgstr "Kata sandi untuk membuka kunci privat"
 
 #: plugins/x2go/x2go_plugin.c:1765
 #, fuzzy
 #| msgid "Authentication failure: %s"
-msgid "Passphrase input cancelled. Aborting…"
+msgid "Password input cancelled. Aborting…"
 msgstr "Kegagalan otentikasi: %s"
 
 #: plugins/x2go/x2go_plugin.c:1796
@@ -5037,6 +5041,9 @@ msgstr "Buka Remmina"
 msgid "Master password"
 msgstr "Kata sandi induk"
 
+#~ msgid "SSH private key passphrase"
+#~ msgstr "Frasa sandi kunci privat SSH"
+
 #~ msgid "Parameter 'default_username' is uninitialized."
 #~ msgstr "Parameter 'default_username' tidak diinisialisasi."
 
@@ -5261,9 +5268,6 @@ msgstr "Kata sandi induk"
 
 #~ msgid "Start"
 #~ msgstr "Mulai"
-
-#~ msgid "Password for private SSH key"
-#~ msgstr "Kata sandi untuk kunci SSH privat"
 
 #~ msgid "Send Ctrl+Alt+Del"
 #~ msgstr "Kirim Ctrl+Alt+Del"

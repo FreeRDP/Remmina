@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-10-18 08:29+0000\n"
+"POT-Creation-Date: 2022-10-27 10:40+0000\n"
 "PO-Revision-Date: 2022-10-18 13:03+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/remmina/"
@@ -1177,7 +1177,7 @@ msgstr "Kunne ikke identitetsbekrefte med SSH-passord. %s"
 
 #: src/remmina_ssh.c:818 src/remmina_ssh.c:885
 #, fuzzy
-msgid "No saved SSH passphrase supplied. Asking user to enter it."
+msgid "No saved SSH password supplied. Asking user to enter it."
 msgstr "Inget lagret SSH-passord angitt. Forespør bruker om å skrive det inn."
 
 #. TRANSLATORS: The placeholder %s is an error message
@@ -1296,9 +1296,8 @@ msgid "SSH password"
 msgstr "SSH-passord"
 
 #: src/remmina_ssh.c:1491 src/remmina_ssh.c:1535
-#, fuzzy
-msgid "SSH private key passphrase"
-msgstr "Passord for SSH-privatnøkkel"
+msgid "Password for private SSH key"
+msgstr "Passord for privat SSH-nøkkel"
 
 #: src/remmina_ssh.c:1496
 #, fuzzy
@@ -3942,13 +3941,13 @@ msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:1754
 #, fuzzy
-msgid "Enter passphrase to unlock key:"
+msgid "Enter password to unlock the SSH key:"
 msgstr "Skriv inn passord for å låse opp nøkkel:"
 
 #: plugins/x2go/x2go_plugin.c:1765
 #, fuzzy
 #| msgid "Authentication type"
-msgid "Passphrase input cancelled. Aborting…"
+msgid "Password input cancelled. Aborting…"
 msgstr "Godkjenningsfeil: %s"
 
 #: plugins/x2go/x2go_plugin.c:1796
@@ -5728,6 +5727,10 @@ msgid "Master password"
 msgstr "Hovedpassord"
 
 #, fuzzy
+#~ msgid "SSH private key passphrase"
+#~ msgstr "Passord for SSH-privatnøkkel"
+
+#, fuzzy
 #~ msgid "Parameter 'default_username' is uninitialized."
 #~ msgstr "Parameteren \"default_username\" er ikke initialisert."
 
@@ -5953,9 +5956,6 @@ msgstr "Hovedpassord"
 
 #~ msgid "Start"
 #~ msgstr "Start"
-
-#~ msgid "Password for private SSH key"
-#~ msgstr "Passord for privat SSH-nøkkel"
 
 #~ msgid "Send Ctrl+Alt+Del"
 #~ msgstr "Send Ctrl+Alt+Delete"

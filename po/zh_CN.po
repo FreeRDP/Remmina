@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-10-18 08:29+0000\n"
+"POT-Creation-Date: 2022-10-27 10:40+0000\n"
 "PO-Revision-Date: 2022-10-18 11:07+0000\n"
 "Last-Translator: Eric <hamburger1024@mailbox.org>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -1014,7 +1014,9 @@ msgid "Could not authenticate with SSH password. %s"
 msgstr "无法使用 SSH 密码进行身份验证。%s"
 
 #: src/remmina_ssh.c:818 src/remmina_ssh.c:885
-msgid "No saved SSH passphrase supplied. Asking user to enter it."
+#, fuzzy
+#| msgid "No saved SSH passphrase supplied. Asking user to enter it."
+msgid "No saved SSH password supplied. Asking user to enter it."
 msgstr "未能提供保存的 SSH 密码。需要用户输入。"
 
 #. TRANSLATORS: The placeholder %s is an error message
@@ -1127,8 +1129,8 @@ msgid "SSH password"
 msgstr "SSH 密码"
 
 #: src/remmina_ssh.c:1491 src/remmina_ssh.c:1535
-msgid "SSH private key passphrase"
-msgstr "SSH 私钥密码"
+msgid "Password for private SSH key"
+msgstr "私人 SSH 密钥的密码"
 
 #: src/remmina_ssh.c:1496
 msgid "SSH Kerberos/GSSAPI"
@@ -3420,11 +3422,15 @@ msgid ""
 msgstr "尝试保存新凭据时发生错误：未设置's_password' 或 's_username' 字符串。"
 
 #: plugins/x2go/x2go_plugin.c:1754
-msgid "Enter passphrase to unlock key:"
+#, fuzzy
+#| msgid "Enter passphrase to unlock key:"
+msgid "Enter password to unlock the SSH key:"
 msgstr "输入口令来解锁密钥："
 
 #: plugins/x2go/x2go_plugin.c:1765
-msgid "Passphrase input cancelled. Aborting…"
+#, fuzzy
+#| msgid "Passphrase input cancelled. Aborting…"
+msgid "Password input cancelled. Aborting…"
 msgstr "口令输入被取消。正在中止…"
 
 #: plugins/x2go/x2go_plugin.c:1796
@@ -4911,6 +4917,9 @@ msgstr "解锁 Remmina"
 msgid "Master password"
 msgstr "管控密码"
 
+#~ msgid "SSH private key passphrase"
+#~ msgstr "SSH 私钥密码"
+
 #~ msgid "Parameter 'default_username' is uninitialized."
 #~ msgstr "参数 'default_username' 未被初始化。"
 
@@ -5144,9 +5153,6 @@ msgstr "管控密码"
 
 #~ msgid "Start"
 #~ msgstr "启动"
-
-#~ msgid "Password for private SSH key"
-#~ msgstr "私人 SSH 密钥的密码"
 
 #~ msgid "Send Ctrl+Alt+Del"
 #~ msgstr "发送 Ctrl+Alt+Del"

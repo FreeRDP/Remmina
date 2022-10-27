@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-10-18 08:29+0000\n"
+"POT-Creation-Date: 2022-10-27 10:40+0000\n"
 "PO-Revision-Date: 2021-12-17 08:45+0000\n"
 "Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -1142,7 +1142,7 @@ msgstr "SSH parooliga ei õnnestunud autentimine. %s"
 
 #: src/remmina_ssh.c:818 src/remmina_ssh.c:885
 #, fuzzy
-msgid "No saved SSH passphrase supplied. Asking user to enter it."
+msgid "No saved SSH password supplied. Asking user to enter it."
 msgstr ""
 "Ei ole salvestatud SSH paroolifraasi. Palutakse kasutajal see sisestada."
 
@@ -1265,8 +1265,8 @@ msgstr "SSH parool"
 
 #: src/remmina_ssh.c:1491 src/remmina_ssh.c:1535
 #, fuzzy
-msgid "SSH private key passphrase"
-msgstr "SSH privaatse võtme paroolifraas"
+msgid "Password for private SSH key"
+msgstr "Salasõna isikliku võtme avamiseks"
 
 #: src/remmina_ssh.c:1496
 #, fuzzy
@@ -3913,13 +3913,14 @@ msgstr ""
 "stringid ei olnud määratud."
 
 #: plugins/x2go/x2go_plugin.c:1754
-msgid "Enter passphrase to unlock key:"
-msgstr ""
+#, fuzzy
+msgid "Enter password to unlock the SSH key:"
+msgstr "Salasõna isikliku võtme avamiseks"
 
 #: plugins/x2go/x2go_plugin.c:1765
 #, fuzzy
 #| msgid "SSH Authentication"
-msgid "Passphrase input cancelled. Aborting…"
+msgid "Password input cancelled. Aborting…"
 msgstr "Autentimise ebaõnnestumine: %s"
 
 #: plugins/x2go/x2go_plugin.c:1796
@@ -5720,6 +5721,10 @@ msgstr "Ava Remmina"
 #, fuzzy
 msgid "Master password"
 msgstr "Peaparool"
+
+#, fuzzy
+#~ msgid "SSH private key passphrase"
+#~ msgstr "SSH privaatse võtme paroolifraas"
 
 #, fuzzy
 #~ msgid "Parameter 'default_username' is uninitialized."

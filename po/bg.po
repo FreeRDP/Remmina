@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-10-18 08:29+0000\n"
+"POT-Creation-Date: 2022-10-27 10:40+0000\n"
 "PO-Revision-Date: 2021-12-17 08:42+0000\n"
 "Last-Translator: Martin Hristov <martinhristov000@gmail.com>\n"
 "Language-Team: Bulgarian <https://hosted.weblate.org/projects/remmina/"
@@ -1157,7 +1157,7 @@ msgstr "Стартирането на SSH сесия не успя: %s"
 
 #: src/remmina_ssh.c:818 src/remmina_ssh.c:885
 #, fuzzy
-msgid "No saved SSH passphrase supplied. Asking user to enter it."
+msgid "No saved SSH password supplied. Asking user to enter it."
 msgstr ""
 "Не е предоставена запазена SSH парола. Иска се потребителят да я въведе."
 
@@ -1280,8 +1280,8 @@ msgstr "SSH парола"
 
 #: src/remmina_ssh.c:1491 src/remmina_ssh.c:1535
 #, fuzzy
-msgid "SSH private key passphrase"
-msgstr "Ключова дума за личния ключ на SSH"
+msgid "Password for private SSH key"
+msgstr "Парола за отключване на частният ключ"
 
 #: src/remmina_ssh.c:1496
 #, fuzzy
@@ -3977,13 +3977,14 @@ msgstr ""
 "'s_password' или 's_username' не са зададени."
 
 #: plugins/x2go/x2go_plugin.c:1754
-msgid "Enter passphrase to unlock key:"
-msgstr ""
+#, fuzzy
+msgid "Enter password to unlock the SSH key:"
+msgstr "Парола за отключване на частният ключ"
 
 #: plugins/x2go/x2go_plugin.c:1765
 #, fuzzy
 #| msgid "Authentication type"
-msgid "Passphrase input cancelled. Aborting…"
+msgid "Password input cancelled. Aborting…"
 msgstr "Неуспешно удостоверяване на автентичността: %s"
 
 #: plugins/x2go/x2go_plugin.c:1796
@@ -5789,6 +5790,10 @@ msgstr "Отключване на Remmina"
 #, fuzzy
 msgid "Master password"
 msgstr "Основна парола"
+
+#, fuzzy
+#~ msgid "SSH private key passphrase"
+#~ msgstr "Ключова дума за личния ключ на SSH"
 
 #, fuzzy
 #~ msgid "Parameter 'default_username' is uninitialized."

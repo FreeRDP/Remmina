@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-10-18 08:29+0000\n"
+"POT-Creation-Date: 2022-10-27 10:40+0000\n"
 "PO-Revision-Date: 2021-12-17 08:47+0000\n"
 "Last-Translator: Aurimas Fišeras <aurimas@members.fsf.org>\n"
 "Language-Team: Lithuanian <https://hosted.weblate.org/projects/remmina/"
@@ -1145,7 +1145,7 @@ msgstr "Nepavyko paleisti SSH seanso: %s"
 
 #: src/remmina_ssh.c:818 src/remmina_ssh.c:885
 #, fuzzy
-msgid "No saved SSH passphrase supplied. Asking user to enter it."
+msgid "No saved SSH password supplied. Asking user to enter it."
 msgstr ""
 "Nepateikta išsaugota SSH slaptažodžių frazė. Prašoma naudotojo ją įvesti."
 
@@ -1268,8 +1268,9 @@ msgstr "SSH slaptažodis"
 
 #: src/remmina_ssh.c:1491 src/remmina_ssh.c:1535
 #, fuzzy
-msgid "SSH private key passphrase"
-msgstr "SSH privačiojo rakto slaptafrazė"
+#| msgid "Password to unlock private key"
+msgid "Password for private SSH key"
+msgstr "Slaptažodis privataus rakto atrakinimui"
 
 #: src/remmina_ssh.c:1496
 #, fuzzy
@@ -3919,13 +3920,15 @@ msgstr ""
 "'s_password' arba 's_username'."
 
 #: plugins/x2go/x2go_plugin.c:1754
-msgid "Enter passphrase to unlock key:"
-msgstr ""
+#, fuzzy
+#| msgid "Password to unlock private key"
+msgid "Enter password to unlock the SSH key:"
+msgstr "Slaptažodis privataus rakto atrakinimui"
 
 #: plugins/x2go/x2go_plugin.c:1765
 #, fuzzy
 #| msgid "Authentication type"
-msgid "Passphrase input cancelled. Aborting…"
+msgid "Password input cancelled. Aborting…"
 msgstr "Autentifikavimo klaida: %s"
 
 #: plugins/x2go/x2go_plugin.c:1796
@@ -5741,6 +5744,10 @@ msgstr "Atrakinti Remmina"
 #, fuzzy
 msgid "Master password"
 msgstr "Pagrindinis slaptažodis"
+
+#, fuzzy
+#~ msgid "SSH private key passphrase"
+#~ msgstr "SSH privačiojo rakto slaptafrazė"
 
 #, fuzzy
 #~ msgid "Parameter 'default_username' is uninitialized."

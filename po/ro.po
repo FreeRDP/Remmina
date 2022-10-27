@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-10-18 08:29+0000\n"
+"POT-Creation-Date: 2022-10-27 10:40+0000\n"
 "PO-Revision-Date: 2021-12-17 08:50+0000\n"
 "Last-Translator: dewakucing <basrimazrishawal@gmail.com>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -1094,7 +1094,7 @@ msgstr "Eșec la pornirea sesiunii SSH: %s"
 
 #: src/remmina_ssh.c:818 src/remmina_ssh.c:885
 #, fuzzy
-msgid "No saved SSH passphrase supplied. Asking user to enter it."
+msgid "No saved SSH password supplied. Asking user to enter it."
 msgstr ""
 "Nu a fost furnizată nicio frază de trecere SSH salvată. Se solicită "
 "utilizatorului să o introducă."
@@ -1212,8 +1212,9 @@ msgid "SSH password"
 msgstr "Parola SSH"
 
 #: src/remmina_ssh.c:1491 src/remmina_ssh.c:1535
-msgid "SSH private key passphrase"
-msgstr "Fraza parolă pentru cheia privată SSH"
+#, fuzzy
+msgid "Password for private SSH key"
+msgstr "Parola pentru deblocarea cheii private"
 
 #: src/remmina_ssh.c:1496
 #, fuzzy
@@ -3799,13 +3800,14 @@ msgstr ""
 "de caractere \"s_password\" sau \"s_username\" nu au fost setate."
 
 #: plugins/x2go/x2go_plugin.c:1754
-msgid "Enter passphrase to unlock key:"
-msgstr ""
+#, fuzzy
+msgid "Enter password to unlock the SSH key:"
+msgstr "Parola pentru deblocarea cheii private"
 
 #: plugins/x2go/x2go_plugin.c:1765
 #, fuzzy
 #| msgid "SSH Authentication"
-msgid "Passphrase input cancelled. Aborting…"
+msgid "Password input cancelled. Aborting…"
 msgstr "Eșecul autentificării: %s"
 
 #: plugins/x2go/x2go_plugin.c:1796
@@ -5602,6 +5604,9 @@ msgstr "Deblochează Remmina"
 #, fuzzy
 msgid "Master password"
 msgstr "Parola principală"
+
+#~ msgid "SSH private key passphrase"
+#~ msgstr "Fraza parolă pentru cheia privată SSH"
 
 #, fuzzy
 #~ msgid "Allow using bright colours with bold text"
