@@ -721,7 +721,7 @@ remmina_ssh_auth_interactive(RemminaSSH *ssh)
 		break;
 	case SSH_AUTH_AGAIN:
 		//In nonblocking mode, you've got to call this again later.
-		REMMINA_DEBUG("Authenticated with keyboard interactive, Requested to authenticate again.  %s", ssh->error);
+		REMMINA_DEBUG("Authenticated with keyboard interactive, Requested to authenticate again. %s", ssh->error);
 		return REMMINA_SSH_AUTH_AUTHFAILED_RETRY_AFTER_PROMPT;
 		break;
 	case SSH_AUTH_DENIED:
@@ -778,7 +778,7 @@ remmina_ssh_auth_password(RemminaSSH *ssh)
 		break;
 	case SSH_AUTH_AGAIN:
 		//In nonblocking mode, you've got to call this again later.
-		REMMINA_DEBUG("Authenticated with SSH password, Requested to authenticate again.  %s", ssh->error);
+		REMMINA_DEBUG("Authenticated with SSH password, Requested to authenticate again. %s", ssh->error);
 		ssh->authenticated = FALSE;
 		return REMMINA_SSH_AUTH_AGAIN;
 		break;
@@ -808,14 +808,14 @@ remmina_ssh_auth_pubkey(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile 
 	if (ssh->authenticated) return REMMINA_SSH_AUTH_SUCCESS;
 
 	REMMINA_DEBUG("SSH certificate file: %s", ssh->certfile);
-	REMMINA_DEBUG("SSH private key file: %s", ssh->privkeyfile);
+	REMMINA_DEBUG("File for private SSH key: %s", ssh->privkeyfile);
 	if (ssh->certfile != NULL) {
 #if LIBSSH_VERSION_INT >= SSH_VERSION_INT(0, 9, 0)
 		/* First we import the private key */
 		if (ssh_pki_import_privkey_file(ssh->privkeyfile, (ssh->passphrase ? ssh->passphrase : ""),
 						NULL, NULL, &key) != SSH_OK) {
 			if (ssh->passphrase == NULL || ssh->passphrase[0] == '\0') {
-				remmina_ssh_set_error(ssh, _("No saved SSH passphrase supplied. Asking user to enter it."));
+				remmina_ssh_set_error(ssh, _("No saved SSH password supplied. Asking user to enter it."));
 				return REMMINA_SSH_AUTH_AUTHFAILED_RETRY_AFTER_PROMPT;
 			}
 
@@ -836,7 +836,7 @@ remmina_ssh_auth_pubkey(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile 
 		/* We copy th certificate in the private key */
 		ret = ssh_pki_copy_cert_to_privkey(cert, key);
 		if (ret != SSH_OK) {
-			REMMINA_DEBUG ("Copy certificate into a key returned: %d", ret);
+			REMMINA_DEBUG ("Copying the certificate into a key returned: %d", ret);
 			// TRANSLATORS: The placeholder %s is an error message
 			remmina_ssh_set_error(ssh, _("SSH certificate cannot be copied into the private SSH key. %s"));
 			ssh_key_free(cert);
@@ -882,7 +882,7 @@ remmina_ssh_auth_pubkey(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile 
 		if (ssh_pki_import_privkey_file(ssh->privkeyfile, (ssh->passphrase ? ssh->passphrase : ""),
 						NULL, NULL, &key) != SSH_OK) {
 			if (ssh->passphrase == NULL || ssh->passphrase[0] == '\0') {
-				remmina_ssh_set_error(ssh, _("No saved SSH passphrase supplied. Asking user to enter it."));
+				remmina_ssh_set_error(ssh, _("No saved SSH password supplied. Asking user to enter it."));
 				return REMMINA_SSH_AUTH_AUTHFAILED_RETRY_AFTER_PROMPT;
 			}
 
@@ -916,7 +916,7 @@ remmina_ssh_auth_pubkey(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile 
 		break;
 	case SSH_AUTH_AGAIN:
 		//In nonblocking mode, you've got to call this again later.
-		REMMINA_DEBUG("Authenticated with public SSH key, Requested to authenticate again.  %s", ssh->error);
+		REMMINA_DEBUG("Authenticated with public SSH key, Requested to authenticate again. %s", ssh->error);
 		ssh->authenticated = FALSE;
 		return REMMINA_SSH_AUTH_AUTHFAILED_RETRY_AFTER_PROMPT;
 		break;
@@ -961,7 +961,7 @@ remmina_ssh_auth_auto_pubkey(RemminaSSH *ssh, RemminaProtocolWidget *gp, Remmina
 		break;
 	case SSH_AUTH_AGAIN:
 		//In nonblocking mode, you've got to call this again later.
-		REMMINA_DEBUG("Authenticated with public SSH key, Requested to authenticate again.  %s", ssh->error);
+		REMMINA_DEBUG("Authenticated with public SSH key, Requested to authenticate again. %s", ssh->error);
 		ssh->authenticated = FALSE;
 		return REMMINA_SSH_AUTH_AUTHFAILED_RETRY_AFTER_PROMPT;
 		break;
@@ -1006,7 +1006,7 @@ remmina_ssh_auth_agent(RemminaSSH *ssh)
 		break;
 	case SSH_AUTH_AGAIN:
 		//In nonblocking mode, you've got to call this again later.
-		REMMINA_DEBUG("Authenticated with public SSH key, Requested to authenticate again.  %s", ssh->error);
+		REMMINA_DEBUG("Authenticated with public SSH key, Requested to authenticate again. %s", ssh->error);
 		ssh->authenticated = FALSE;
 		return REMMINA_SSH_AUTH_AUTHFAILED_RETRY_AFTER_PROMPT;
 		break;
@@ -1052,7 +1052,7 @@ remmina_ssh_auth_gssapi(RemminaSSH *ssh)
 		break;
 	case SSH_AUTH_AGAIN:
 		//In nonblocking mode, you've got to call this again later.
-		REMMINA_DEBUG("Authenticated with public SSH key, Requested to authenticate again.  %s", ssh->error);
+		REMMINA_DEBUG("Authenticated with public SSH key, Requested to authenticate again. %s", ssh->error);
 		ssh->authenticated = FALSE;
 		return REMMINA_SSH_AUTH_AUTHFAILED_RETRY_AFTER_PROMPT;
 		break;
@@ -1157,7 +1157,7 @@ remmina_ssh_auth(RemminaSSH *ssh, const gchar *password, RemminaProtocolWidget *
 					ssh->auth = SSH_AUTH_PUBLICKEY;
 					break;
 				case SSH_AUTH_METHOD_HOSTBASED:
-					REMMINA_DEBUG("Host based auth method not implemented: %d", ssh->auth);
+					REMMINA_DEBUG("Host-based authentication method not implemented: %d", ssh->auth);
 					break;
 				case SSH_AUTH_METHOD_INTERACTIVE:
 					ssh->auth = SSH_AUTH_KBDINTERACTIVE;
@@ -1165,7 +1165,7 @@ remmina_ssh_auth(RemminaSSH *ssh, const gchar *password, RemminaProtocolWidget *
 					break;
 				case SSH_AUTH_METHOD_UNKNOWN:
 				default:
-					REMMINA_DEBUG("User auth method not supported: %d", ssh->auth);
+					REMMINA_DEBUG("User-based authentication method not supported: %d", ssh->auth);
 					return REMMINA_SSH_AUTH_FATAL_ERROR;
 			}
 		}
@@ -1190,7 +1190,7 @@ remmina_ssh_auth(RemminaSSH *ssh, const gchar *password, RemminaProtocolWidget *
 					ssh->auth = SSH_AUTH_PUBLICKEY;
 					break;
 				case SSH_AUTH_METHOD_HOSTBASED:
-					REMMINA_DEBUG("Host based auth method not implemented: %d", ssh->auth);
+					REMMINA_DEBUG("Host-based authentication method not implemented: %d", ssh->auth);
 					break;
 				case SSH_AUTH_METHOD_INTERACTIVE:
 					ssh->auth = SSH_AUTH_KBDINTERACTIVE;
@@ -1198,7 +1198,7 @@ remmina_ssh_auth(RemminaSSH *ssh, const gchar *password, RemminaProtocolWidget *
 					break;
 				case SSH_AUTH_METHOD_UNKNOWN:
 				default:
-					REMMINA_DEBUG("User auth method not supported: %d", ssh->auth);
+					REMMINA_DEBUG("User-based authentication method not supported: %d", ssh->auth);
 					return REMMINA_SSH_AUTH_FATAL_ERROR;
 				}
 			}
@@ -1488,7 +1488,7 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *re
 	case SSH_AUTH_PUBLICKEY:
 	case SSH_AUTH_AGENT:
 	case SSH_AUTH_AUTO_PUBLICKEY:
-		keyname = _("SSH private key passphrase");
+		keyname = _("Password for private SSH key");
 		pwdfkey = ssh->is_tunnel ? "ssh_tunnel_passphrase" : "ssh_passphrase";
 		remmina_ssh_auth_type = REMMINA_SSH_AUTH_PKPASSPHRASE;
 		break;
@@ -1532,7 +1532,7 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *re
 								 NULL,
 								 remmina_file_get_string(remminafile, pwdfkey),
 								 NULL,
-								 _("SSH private key passphrase"));
+								 _("Password for private SSH key"));
 			if (ret == GTK_RESPONSE_OK) {
 				g_free(current_pwd);
 				current_pwd = remmina_protocol_widget_get_password(gp);

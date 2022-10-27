@@ -1751,7 +1751,7 @@ static gboolean rmplugin_x2go_get_ssh_passphrase(RemminaProtocolWidget *gp, gcha
 	}
 
 	gint ret = rm_plugin_service->protocol_plugin_init_auth(
-			gp, 0, _("Enter passphrase to unlock key:"),
+			gp, 0, _("Enter password to unlock the SSH key:"),
 			NULL, *passphrase, NULL, NULL
 	);
 
@@ -1762,7 +1762,7 @@ static gboolean rmplugin_x2go_get_ssh_passphrase(RemminaProtocolWidget *gp, gcha
 			g_free(s_passphrase);
 		}
 	} else  {
-		g_strlcpy(errmsg, _("Passphrase input cancelled. Aborting…"), 512);
+		g_strlcpy(errmsg, _("Password input cancelled. Aborting…"), 512);
 		return FALSE;
 	}
 
