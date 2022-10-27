@@ -2743,15 +2743,48 @@ static gboolean rcw_floating_toolbar_on_enter(GtkWidget *widget, GdkEventCrossin
 	return TRUE;
 }
 
+#if DEBUG_KB_GRABBING
+static void print_crossing_event(GdkEventCrossing *event) {
+	printf("DEBUG_KB_GRABBING: --- Crossing event detail: ");
+	switch (event->detail) {
+	case GDK_NOTIFY_ANCESTOR: printf("GDK_NOTIFY_ANCESTOR"); break;
+	case GDK_NOTIFY_VIRTUAL: printf("GDK_NOTIFY_VIRTUAL"); break;
+	case GDK_NOTIFY_NONLINEAR: printf("GDK_NOTIFY_NONLINEAR"); break;
+	case GDK_NOTIFY_NONLINEAR_VIRTUAL: printf("GDK_NOTIFY_NONLINEAR_VIRTUAL"); break;
+	case GDK_NOTIFY_UNKNOWN: printf("GDK_NOTIFY_UNKNOWN"); break;
+	case GDK_NOTIFY_INFERIOR: printf("GDK_NOTIFY_INFERIOR"); break;
+	default: printf("unknown");
+	}
+	printf("\n");
+	printf("DEBUG_KB_GRABBING: --- Crossing event mode=");
+	switch (event->mode) {
+	case GDK_CROSSING_NORMAL: printf("GDK_CROSSING_NORMAL"); break;
+	case GDK_CROSSING_GRAB: printf("GDK_CROSSING_GRAB"); break;
+	case GDK_CROSSING_UNGRAB: printf("GDK_CROSSING_UNGRAB"); break;
+	case GDK_CROSSING_GTK_GRAB: printf("GDK_CROSSING_GTK_GRAB"); break;
+	case GDK_CROSSING_GTK_UNGRAB: printf("GDK_CROSSING_GTK_UNGRAB"); break;
+	case GDK_CROSSING_STATE_CHANGED: printf("GDK_CROSSING_STATE_CHANGED"); break;
+	case GDK_CROSSING_TOUCH_BEGIN: printf("GDK_CROSSING_TOUCH_BEGIN"); break;
+	case GDK_CROSSING_TOUCH_END: printf("GDK_CROSSING_TOUCH_END"); break;
+	case GDK_CROSSING_DEVICE_SWITCH: printf("GDK_CROSSING_DEVICE_SWITCH"); break;
+	default: printf("unknown");
+	}
+	printf("\n");
+}
+#endif
+
 static gboolean rcw_on_enter_notify_event(GtkWidget *widget, GdkEventCrossing *event,
 					  gpointer user_data)
 {
 	TRACE_CALL(__func__);
 #if DEBUG_KB_GRABBING
 	printf("DEBUG_KB_GRABBING: enter-notify-event on rcw received\n");
+	print_crossing_event(event);
 #endif
 	return FALSE;
 }
+
+
 
 static gboolean rcw_on_leave_notify_event(GtkWidget *widget, GdkEventCrossing *event,
 					  gpointer user_data)
@@ -2759,14 +2792,15 @@ static gboolean rcw_on_leave_notify_event(GtkWidget *widget, GdkEventCrossing *e
 	TRACE_CALL(__func__);
 	RemminaConnectionWindow *cnnwin = (RemminaConnectionWindow *)widget;
 
+#if DEBUG_KB_GRABBING
+	printf("DEBUG_KB_GRABBING: leave-notify-event on rcw received\n");
+	print_crossing_event(event);
+#endif
+
 	if (cnnwin->priv->delayed_grab_eventsourceid) {
 		g_source_remove(cnnwin->priv->delayed_grab_eventsourceid);
 		cnnwin->priv->delayed_grab_eventsourceid = 0;
 	}
-
-#if DEBUG_KB_GRABBING
-	printf("DEBUG_KB_GRABBING: leave-notify-event on rcw received\n");
-#endif
 
 	rcw_kp_ungrab(cnnwin);
 	rcw_pointer_ungrab(cnnwin);
@@ -2781,32 +2815,8 @@ static gboolean rco_leave_protocol_widget(GtkWidget *widget, GdkEventCrossing *e
 	TRACE_CALL(__func__);
 
 #if DEBUG_KB_GRABBING
-	printf("DEBUG_KB_GRABBING: received leave event on RCO. detail=");
-	switch (event->detail) {
-	case GDK_NOTIFY_ANCESTOR: printf("GDK_NOTIFY_ANCESTOR"); break;
-	case GDK_NOTIFY_VIRTUAL: printf("GDK_NOTIFY_VIRTUAL"); break;
-	case GDK_NOTIFY_NONLINEAR: printf("GDK_NOTIFY_NONLINEAR"); break;
-	case GDK_NOTIFY_NONLINEAR_VIRTUAL: printf("GDK_NOTIFY_NONLINEAR_VIRTUAL"); break;
-	case GDK_NOTIFY_UNKNOWN: printf("GDK_NOTIFY_UNKNOWN"); break;
-	case GDK_NOTIFY_INFERIOR: printf("GDK_NOTIFY_INFERIOR"); break;
-	default: printf("unknown");
-	}
-	printf("\n");
-	printf("DEBUG_KB_GRABBING: leave event mode=");
-	switch (event->mode) {
-	case GDK_CROSSING_NORMAL: printf("GDK_CROSSING_NORMAL"); break;
-	case GDK_CROSSING_GRAB: printf("GDK_CROSSING_GRAB"); break;
-	case GDK_CROSSING_UNGRAB: printf("GDK_CROSSING_UNGRAB"); break;
-	case GDK_CROSSING_GTK_GRAB: printf("GDK_CROSSING_GTK_GRAB"); break;
-	case GDK_CROSSING_GTK_UNGRAB: printf("GDK_CROSSING_GTK_UNGRAB"); break;
-	case GDK_CROSSING_STATE_CHANGED: printf("GDK_CROSSING_STATE_CHANGED"); break;
-	case GDK_CROSSING_TOUCH_BEGIN: printf("GDK_CROSSING_TOUCH_BEGIN"); break;
-	case GDK_CROSSING_TOUCH_END: printf("GDK_CROSSING_TOUCH_END"); break;
-	case GDK_CROSSING_DEVICE_SWITCH: printf("GDK_CROSSING_DEVICE_SWITCH"); break;
-
-	default: printf("unknown");
-	}
-	printf("\n");
+	printf("DEBUG_KB_GRABBING: received leave event on RCO.");
+	print_crossing_event(event);
 #endif
 
 	if (cnnobj->cnnwin->priv->delayed_grab_eventsourceid) {
@@ -2832,32 +2842,7 @@ gboolean rco_enter_protocol_widget(GtkWidget *widget, GdkEventCrossing *event,
 
 #if DEBUG_KB_GRABBING
 	printf("DEBUG_KB_GRABBING: %s: enter on protocol widget event received\n", __func__);
-	printf("DEBUG_KB_GRABBING:    enter event detail=");
-	switch (event->detail) {
-	case GDK_NOTIFY_ANCESTOR: printf("GDK_NOTIFY_ANCESTOR"); break;
-	case GDK_NOTIFY_VIRTUAL: printf("GDK_NOTIFY_VIRTUAL"); break;
-	case GDK_NOTIFY_NONLINEAR: printf("GDK_NOTIFY_NONLINEAR"); break;
-	case GDK_NOTIFY_NONLINEAR_VIRTUAL: printf("GDK_NOTIFY_NONLINEAR_VIRTUAL"); break;
-	case GDK_NOTIFY_UNKNOWN: printf("GDK_NOTIFY_UNKNOWN"); break;
-	case GDK_NOTIFY_INFERIOR: printf("GDK_NOTIFY_INFERIOR"); break;
-	default: printf("unknown");
-	}
-	printf("\n");
-	printf("DEBUG_KB_GRABBING:    enter event mode=");
-	switch (event->mode) {
-	case GDK_CROSSING_NORMAL: printf("GDK_CROSSING_NORMAL"); break;
-	case GDK_CROSSING_GRAB: printf("GDK_CROSSING_GRAB"); break;
-	case GDK_CROSSING_UNGRAB: printf("GDK_CROSSING_UNGRAB"); break;
-	case GDK_CROSSING_GTK_GRAB: printf("GDK_CROSSING_GTK_GRAB"); break;
-	case GDK_CROSSING_GTK_UNGRAB: printf("GDK_CROSSING_GTK_UNGRAB"); break;
-	case GDK_CROSSING_STATE_CHANGED: printf("GDK_CROSSING_STATE_CHANGED"); break;
-	case GDK_CROSSING_TOUCH_BEGIN: printf("GDK_CROSSING_TOUCH_BEGIN"); break;
-	case GDK_CROSSING_TOUCH_END: printf("GDK_CROSSING_TOUCH_END"); break;
-	case GDK_CROSSING_DEVICE_SWITCH: printf("GDK_CROSSING_DEVICE_SWITCH"); break;
-
-	default: printf("unknown");
-	}
-	printf("\n");
+	print_crossing_event(event);
 #endif
 
 	RemminaConnectionWindowPriv *priv = cnnobj->cnnwin->priv;
