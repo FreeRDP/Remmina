@@ -156,7 +156,7 @@ static int remmina_ssh_connect_local_xsocket(int display_number);
 static int remmina_ssh_x11_connect_display();
 
 // Send data to channel
-static int remimna_ssh_cp_to_ch_cb(int fd, int revents, void *userdata);
+static int remmina_ssh_cp_to_ch_cb(int fd, int revents, void *userdata);
 
 // Read data from channel
 static int remmina_ssh_cp_to_fd_cb(ssh_session session, ssh_channel channel, void *data, uint32_t len, int is_stderr, void *userdata);
@@ -474,11 +474,11 @@ remmina_ssh_x11_connect_display()
 }
 
 static int
-remimna_ssh_cp_to_ch_cb(int fd, int revents, void *userdata)
+remmina_ssh_cp_to_ch_cb(int fd, int revents, void *userdata)
 {
 	TRACE_CALL(__func__);
 	ssh_channel channel = (ssh_channel)userdata;
-	gchar buf[2097152];
+	gchar buf[0x200000];
 	gint sz = 0, ret = 0;
 
 	node_t *temp_node = remmina_ssh_search_item(channel);
@@ -497,6 +497,8 @@ remimna_ssh_cp_to_ch_cb(int fd, int revents, void *userdata)
 		sz = read(fd, buf, sizeof(buf));
 		if (sz > 0) {
 			ret = ssh_channel_write(channel, buf, sz);
+			if (ret != sz)
+				return -1;
 			//TODO: too verbose REMMINA_DEBUG("ssh_channel_write ret: %d sz: %d", ret, sz);
 		} else if (sz < 0) {
 			// TODO: too verbose REMMINA_WARNING("fd bytes read: %d", sz);
@@ -515,10 +517,10 @@ remimna_ssh_cp_to_ch_cb(int fd, int revents, void *userdata)
 	if ((revents & POLLHUP) || (revents & POLLNVAL) || (revents & POLLERR)) {
 		REMMINA_DEBUG("Closing channel.");
 		ssh_channel_close(channel);
-		sz = -1;
+		ret = -1;
 	}
 
-	return sz;
+	return ret;
 }
 
 static int
@@ -604,7 +606,7 @@ remmina_ssh_x11_open_request_cb(ssh_session session, const char *shost, int spor
 
 	remmina_ssh_insert_item(channel, sock, sock, FALSE, shell->thread);
 
-	ssh_event_add_fd(shell->event, sock, events, remimna_ssh_cp_to_ch_cb, channel);
+	ssh_event_add_fd(shell->event, sock, events, remmina_ssh_cp_to_ch_cb, channel);
 	ssh_event_add_session(shell->event, session);
 
 	ssh_add_channel_callbacks(channel, &channel_cb);
@@ -2969,7 +2971,7 @@ remmina_ssh_shell_thread(gpointer data)
 	REMMINA_DEBUG("shell->slave: %d", shell->slave);
 
 	// Add the fd to the event and assign it the callback.
-	if (ssh_event_add_fd(shell->event, shell->slave, events, remimna_ssh_cp_to_ch_cb, channel) != SSH_OK) {
+	if (ssh_event_add_fd(shell->event, shell->slave, events, remmina_ssh_cp_to_ch_cb, channel) != SSH_OK) {
 		REMMINA_WARNING("Internal error in %s: Couldn't add an fd to the event.", __func__);
 		return NULL;
 	}
