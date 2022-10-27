@@ -529,9 +529,9 @@ remmina_ssh_cp_to_fd_cb(ssh_session session, ssh_channel channel, void *data, ui
 	TRACE_CALL(__func__);
 	(void)session;
 	(void)is_stderr;
+	// Expecting userdata to be type RemminaSSHShell *, but it is unused
+	// in this function.
 	(void)userdata;
-
-//	RemminaSSHShell *shell = (RemminaSSHShell *)userdata;
 
 	node_t *temp_node = remmina_ssh_search_item(channel);
 	gint fd = temp_node->fd_out;
