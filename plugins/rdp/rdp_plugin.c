@@ -211,7 +211,7 @@ static BOOL rf_process_event_queue(RemminaProtocolWidget *gp)
 	RemminaFile *remminafile;
 
 	if (rfi->event_queue == NULL)
-		return True;
+		return true;
 
 	input = rfi->instance->input;
 
@@ -324,7 +324,7 @@ static BOOL rf_process_event_queue(RemminaProtocolWidget *gp)
 		g_free(event);
 	}
 
-	return True;
+	return true;
 }
 
 static gboolean remmina_rdp_tunnel_init(RemminaProtocolWidget *gp)
@@ -682,7 +682,7 @@ static BOOL remmina_rdp_pre_connect(freerdp *instance)
 	if (!freerdp_client_load_addins(channels, settings))
 		return FALSE;
 
-	return True;
+	return true;
 }
 
 static BOOL remmina_rdp_post_connect(freerdp *instance)
@@ -751,7 +751,7 @@ static BOOL remmina_rdp_post_connect(freerdp *instance)
 	instance->update->SetKeyboardImeStatus = rf_keyboard_set_ime_status;
 
 	remmina_rdp_clipboard_init(rfi);
-	rfi->connected = True;
+	rfi->connected = true;
 
 	ui = g_new0(RemminaPluginRdpUiObject, 1);
 	ui->type = REMMINA_RDP_UI_CONNECTED;
@@ -836,7 +836,7 @@ static BOOL remmina_rdp_gw_authenticate(freerdp *instance, char **username, char
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
 	if (!remmina_plugin_service->file_get_string(remminafile, "gateway_server"))
-		return False;
+		return false;
 	disablepasswordstoring = remmina_plugin_service->file_get_int(remminafile, "disablepasswordstoring", FALSE);
 	basecredforgw = remmina_plugin_service->file_get_int(remminafile, "base-cred-for-gw", FALSE);
 
@@ -891,12 +891,12 @@ static BOOL remmina_rdp_gw_authenticate(freerdp *instance, char **username, char
 		if (s_password) g_free(s_password);
 		if (s_domain) g_free(s_domain);
 
-		return True;
+		return true;
 	} else {
-		return False;
+		return false;
 	}
 
-	return True;
+	return true;
 }
 
 static DWORD remmina_rdp_verify_certificate_ex(freerdp *instance, const char *host, UINT16 port,
@@ -2278,7 +2278,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 		return FALSE;
 	}
 
-	if (GET_PLUGIN_DATA(rfi->protocol_widget) == NULL) orphaned = True; else orphaned = False;
+	if (GET_PLUGIN_DATA(rfi->protocol_widget) == NULL) orphaned = true; else orphaned = false;
 	if (!orphaned && freerdp_get_last_error(rfi->instance->context) == FREERDP_ERROR_SUCCESS && !rfi->user_cancelled)
 		remmina_rdp_main_loop(gp);
 
@@ -2301,7 +2301,7 @@ static void rfi_uninit(rfContext *rfi)
 	if (instance) {
 		if (rfi->connected) {
 			freerdp_abort_connect(instance);
-			rfi->connected = False;
+			rfi->connected = false;
 		}
 	}
 
@@ -2328,7 +2328,7 @@ static gboolean complete_cleanup_on_main_thread(gpointer data)
 	gdi_free(rfi->instance);
 
 	gp = rfi->protocol_widget;
-	if (GET_PLUGIN_DATA(gp) == NULL) orphaned = True; else orphaned = False;
+	if (GET_PLUGIN_DATA(gp) == NULL) orphaned = true; else orphaned = false;
 
 	remmina_rdp_cliprdr_detach_owner(gp);
 	if (!orphaned) remmina_rdp_event_uninit(gp);
@@ -2398,9 +2398,9 @@ static void remmina_rdp_init(RemminaProtocolWidget *gp)
 	rfi->protocol_widget = gp;
 	rfi->instance = instance;
 	rfi->settings = instance->settings;
-	rfi->connected = False;
-	rfi->is_reconnecting = False;
-	rfi->stop_reconnecting_requested = False;
+	rfi->connected = false;
+	rfi->is_reconnecting = false;
+	rfi->stop_reconnecting_requested = false;
 	rfi->user_cancelled = FALSE;
 
 	freerdp_register_addin_provider(freerdp_channels_load_static_addin_entry, 0);
