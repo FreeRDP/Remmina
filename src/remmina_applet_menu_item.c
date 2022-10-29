@@ -135,8 +135,17 @@ GtkWidget* remmina_applet_menu_item_new(RemminaAppletMenuItemType item_type, ...
 	gtk_widget_set_halign(widget, GTK_ALIGN_START);
 	gtk_container_add(GTK_CONTAINER(item), widget);
 
+	/* Add server and protocol to tooltip text */
 	if (item->server) {
-		gtk_widget_set_tooltip_text(GTK_WIDGET(item), item->server);
+		if (item->protocol){
+			gchar buff[200];
+			g_snprintf(buff, 200, "%s (%s)", item->server, item->protocol);
+			gtk_widget_set_tooltip_text(GTK_WIDGET(item), buff);
+		} else {
+			gtk_widget_set_tooltip_text(GTK_WIDGET(item), item->server);
+		}
+	} else if (item->protocol) {
+		gtk_widget_set_tooltip_text(GTK_WIDGET(item), item->protocol);
 	}
 
 	return GTK_WIDGET(item);
