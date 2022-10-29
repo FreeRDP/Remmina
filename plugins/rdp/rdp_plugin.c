@@ -51,7 +51,11 @@
 #include <pthread.h>
 #include <time.h>
 #include <sys/time.h>
+#ifdef GDK_WINDOWING_X11
 #include <cairo/cairo-xlib.h>
+#else
+#include <cairo/cairo.h>
+#endif
 #include <freerdp/addin.h>
 #include <freerdp/settings.h>
 #include <freerdp/freerdp.h>
@@ -76,6 +80,8 @@
 #include <X11/Xlib.h>
 #include <X11/XKBlib.h>
 #include <gdk/gdkx.h>
+#else
+#include <gdk/gdkwayland.h>
 #endif
 
 #if defined(__FreeBSD__)
@@ -1301,6 +1307,8 @@ static gboolean remmina_rdp_set_connection_type(rdpSettings *settings, guint32 t
 	return TRUE;
 }
 
+#ifdef GDK_WINDOWING_X11
+#if FREERDP_CHECK_VERSION(2, 3, 0)
 static gchar *remmina_get_rdp_kbd_remap(const gchar *keymap)
 {
 	TRACE_CALL(__func__);
@@ -1326,6 +1334,8 @@ static gchar *remmina_get_rdp_kbd_remap(const gchar *keymap)
 
 	return rdp_kbd_remap;
 }
+#endif
+#endif
 
 static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 {
@@ -1341,7 +1351,9 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 	gint gateway_port;
 	gchar *datapath = NULL;
 	gboolean status = TRUE;
+#ifdef GDK_WINDOWING_X11
 	gchar *rdp_kbd_remap;
+#endif
 	gint i;
 
 	gint desktopOrientation, desktopScaleFactor, deviceScaleFactor;
@@ -1681,6 +1693,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 	 */
 	freerdp_performance_flags_split(rfi->settings);
 
+#ifdef GDK_WINDOWING_X11
 #if FREERDP_CHECK_VERSION(2, 3, 0)
 	rdp_kbd_remap = remmina_get_rdp_kbd_remap(remmina_plugin_service->file_get_string(remminafile, "keymap"));
 	if (rdp_kbd_remap != NULL) {
@@ -1693,6 +1706,8 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 		REMMINA_PLUGIN_DEBUG("rdp_keyboard_remapping_list: %s", rfi->settings->KeyboardRemappingList);
 	}
 #endif
+#endif
+
 	freerdp_settings_set_uint32(rfi->settings, FreeRDP_KeyboardLayout, remmina_rdp_settings_get_keyboard_layout());
 
 	if (remmina_plugin_service->file_get_int(remminafile, "console", FALSE))

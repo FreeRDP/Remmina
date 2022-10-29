@@ -36,7 +36,11 @@
 #ifndef G_LOG_DOMAIN
 #define G_LOG_DOMAIN    ((gchar*)"remmina")
 #endif  /* G_LOG_DOMAIN */
+#ifdef GDK_WINDOWING_X11
 #include <gdk/gdkx.h>
+#else
+#include <gdk/gdkwayland.h>
+#endif
 #include <gio/gio.h>
 #include <glib/gi18n.h>
 #include <stdlib.h>

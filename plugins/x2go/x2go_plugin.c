@@ -45,7 +45,11 @@
 #include "common/remmina_plugin.h"
 
 #include <gtk/gtkx.h>
+#ifdef GDK_WINDOWING_X11
 #include <gdk/gdkx.h>
+#else
+#include <gdk/gdkwayland.h>
+#endif
 
 #include <X11/Xlib.h>
 #include <X11/XKBlib.h>

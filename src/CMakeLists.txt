@@ -171,10 +171,6 @@ if(WITH_MANPAGES)
   install(FILES remmina.1 DESTINATION ${CMAKE_INSTALL_FULL_MANDIR}/man1)
 endif()
 
-find_package(X11)
-include_directories(${X11_INCLUDE_DIR})
-target_link_libraries(remmina ${X11_LIBRARIES})
-
 target_link_libraries(remmina ${CMAKE_THREAD_LIBS_INIT})
 
 if(Intl_FOUND)

@@ -41,7 +41,11 @@
 #include "rdp_monitor.h"
 #include "rdp_settings.h"
 #include <gdk/gdkkeysyms.h>
+#ifdef GDK_WINDOWING_X11
 #include <cairo/cairo-xlib.h>
+#else
+#include <cairo/cairo.h>
+#endif
 #include <freerdp/locale/keyboard.h>
 
 gboolean remmina_rdp_event_on_map(RemminaProtocolWidget *gp)
