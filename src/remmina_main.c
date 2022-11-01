@@ -363,7 +363,7 @@ static void remmina_main_load_file_list_callback(RemminaFile *remminafile, gpoin
 	gtk_list_store_set(store, &iter,
 			   PROTOCOL_COLUMN, remmina_file_get_icon_name(remminafile),
 			   NAME_COLUMN, remmina_file_get_string(remminafile, "name"),
-			   NOTES_COLUMN, remmina_file_get_string(remminafile, "notes_text"),
+			   NOTES_COLUMN, g_uri_unescape_string(remmina_file_get_string(remminafile, "notes_text"), NULL),
 			   GROUP_COLUMN, remmina_file_get_string(remminafile, "group"),
 			   SERVER_COLUMN, remmina_file_get_string(remminafile, "server"),
 			   PLUGIN_COLUMN, remmina_file_get_string(remminafile, "protocol"),
@@ -393,7 +393,6 @@ static gboolean remmina_main_load_file_tree_traverse(GNode *node, GtkTreeStore *
 				   DATE_COLUMN, data->datetime,
 				   FILENAME_COLUMN, NULL,
 				   LABELS_COLUMN, data->labels,
-				   NOTES_COLUMN, "testy",
 				   -1);
 	}
 	for (child = g_node_first_child(node); child; child = g_node_next_sibling(child))
@@ -499,7 +498,7 @@ static void remmina_main_load_file_tree_callback(RemminaFile *remminafile, gpoin
 	gtk_tree_store_set(store, &child,
 			   PROTOCOL_COLUMN, remmina_file_get_icon_name(remminafile),
 			   NAME_COLUMN, remmina_file_get_string(remminafile, "name"),
-			   NOTES_COLUMN, remmina_file_get_string(remminafile, "group"),
+			   NOTES_COLUMN, g_uri_unescape_string(remmina_file_get_string(remminafile, "notes_text"), NULL),
 			   GROUP_COLUMN, remmina_file_get_string(remminafile, "group"),
 			   SERVER_COLUMN, remmina_file_get_string(remminafile, "server"),
 			   PLUGIN_COLUMN, remmina_file_get_string(remminafile, "protocol"),
@@ -1606,7 +1605,7 @@ GtkWidget *remmina_main_new(void)
 	remminamain->column_files_list_plugin = GTK_TREE_VIEW_COLUMN(RM_GET_OBJECT("column_files_list_plugin"));
 	remminamain->column_files_list_date = GTK_TREE_VIEW_COLUMN(RM_GET_OBJECT("column_files_list_date"));
 	remminamain->column_files_list_notes = GTK_TREE_VIEW_COLUMN(RM_GET_OBJECT("column_files_list_notes"));
-	gtk_tree_view_column_set_max_width(remminamain->column_files_list_notes, 100);
+	gtk_tree_view_column_set_fixed_width(remminamain->column_files_list_notes, 100);
 	remminamain->statusbar_main = GTK_STATUSBAR(RM_GET_OBJECT("statusbar_main"));
 	/* signals */
 	g_signal_connect(remminamain->entry_quick_connect_server, "key-release-event", G_CALLBACK(remmina_main_search_key_event), NULL);
