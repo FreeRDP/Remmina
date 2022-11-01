@@ -38,6 +38,8 @@
 #include <glib/gprintf.h>
 #include <string.h>
 #include <stdarg.h>
+#include "config.h"
+#include "remmina_plugin_manager.h"
 #include "remmina_applet_menu_item.h"
 #include "remmina/remmina_trace_calls.h"
 
@@ -79,6 +81,8 @@ GtkWidget* remmina_applet_menu_item_new(RemminaAppletMenuItemType item_type, ...
 	RemminaAppletMenuItem* item;
 	GKeyFile* gkeyfile;
 	GtkWidget* widget;
+	GtkWidget* box;
+	GtkWidget* icon;
 
 	va_start(ap, item_type);
 
@@ -128,24 +132,33 @@ GtkWidget* remmina_applet_menu_item_new(RemminaAppletMenuItemType item_type, ...
 
 	va_end(ap);
 
+
+	/* Get the icon based on the protocol */
+	const gchar* icon_name;
+	RemminaProtocolPlugin *plugin;
+	plugin  = (RemminaProtocolPlugin *)remmina_plugin_manager_get_plugin(REMMINA_PLUGIN_TYPE_PROTOCOL,
+									    item->protocol);
+	if (!plugin) {
+		icon_name = g_strconcat(REMMINA_APP_ID, "-symbolic", NULL);
+	} else {
+		icon_name = item->ssh_tunnel_enabled ? plugin->icon_name_ssh : plugin->icon_name;
+	}
+	icon = gtk_image_new_from_icon_name(icon_name, GTK_ICON_SIZE_MENU);
+
 	/* Create the label */
 	widget = gtk_label_new(item->name);
+	box = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 6);
 	gtk_widget_show(widget);
+	gtk_widget_show(icon);
+	gtk_widget_show(box);
 	gtk_widget_set_valign(widget, GTK_ALIGN_START);
 	gtk_widget_set_halign(widget, GTK_ALIGN_START);
-	gtk_container_add(GTK_CONTAINER(item), widget);
+	gtk_container_add(GTK_CONTAINER(box), icon);
+	gtk_container_add(GTK_CONTAINER(box), widget);
+	gtk_container_add(GTK_CONTAINER(item), box);
 
-	/* Add server and protocol to tooltip text */
 	if (item->server) {
-		if (item->protocol){
-			gchar buff[200];
-			g_snprintf(buff, 200, "%s (%s)", item->server, item->protocol);
-			gtk_widget_set_tooltip_text(GTK_WIDGET(item), buff);
-		} else {
-			gtk_widget_set_tooltip_text(GTK_WIDGET(item), item->server);
-		}
-	} else if (item->protocol) {
-		gtk_widget_set_tooltip_text(GTK_WIDGET(item), item->protocol);
+		gtk_widget_set_tooltip_text(GTK_WIDGET(item), item->server);
 	}
 
 	return GTK_WIDGET(item);
