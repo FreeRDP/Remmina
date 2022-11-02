@@ -240,6 +240,7 @@ void remmina_pref_on_dialog_destroy(GtkWidget *widget, gpointer user_data)
 	remmina_pref.screenshot_path = gtk_file_chooser_get_filename(remmina_pref_dialog->filechooserbutton_options_screenshots_path);
 	remmina_pref.fullscreen_on_auto = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_appearance_fullscreen_on_auto));
 	remmina_pref.always_show_tab = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_appearance_show_tabs));
+	remmina_pref.always_show_notes = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_appearance_show_notes));
 	remmina_pref.hide_connection_toolbar = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_appearance_hide_toolbar));
 	remmina_pref.hide_searchbar = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_appearance_hide_searchbar));
 
@@ -490,6 +491,7 @@ static void remmina_pref_dialog_init(void)
 	gtk_switch_set_active(GTK_SWITCH(remmina_pref_dialog->switch_options_deny_screenshot_clipboard), remmina_pref.deny_screenshot_clipboard);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_appearance_fullscreen_on_auto), remmina_pref.fullscreen_on_auto);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_appearance_show_tabs), remmina_pref.always_show_tab);
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_appearance_show_notes), remmina_pref.always_show_notes);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_appearance_hide_toolbar), remmina_pref.hide_connection_toolbar);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_appearance_hide_searchbar), remmina_pref.hide_searchbar);
 
@@ -720,6 +722,7 @@ GtkWidget *remmina_pref_dialog_new(gint default_tab, GtkWindow *parent)
 	remmina_pref_dialog->checkbutton_options_save_settings = GTK_CHECK_BUTTON(GET_OBJECT("checkbutton_options_save_settings"));
 	remmina_pref_dialog->checkbutton_appearance_fullscreen_on_auto = GTK_CHECK_BUTTON(GET_OBJECT("checkbutton_appearance_fullscreen_on_auto"));
 	remmina_pref_dialog->checkbutton_appearance_show_tabs = GTK_CHECK_BUTTON(GET_OBJECT("checkbutton_appearance_show_tabs"));
+	remmina_pref_dialog->checkbutton_appearance_show_notes = GTK_CHECK_BUTTON(GET_OBJECT("checkbutton_appearance_show_notes"));
 	remmina_pref_dialog->checkbutton_appearance_hide_toolbar = GTK_CHECK_BUTTON(GET_OBJECT("checkbutton_appearance_hide_toolbar"));
 	remmina_pref_dialog->checkbutton_appearance_hide_searchbar = GTK_CHECK_BUTTON(GET_OBJECT("checkbutton_appearance_hide_searchbar"));
 	remmina_pref_dialog->switch_permit_news = GTK_SWITCH(GET_OBJECT("switch_permit_news"));

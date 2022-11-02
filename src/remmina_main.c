@@ -647,6 +647,7 @@ static void remmina_main_load_files()
 	gchar buf[200];
 	guint context_id;
 	gint view_file_mode;
+	gboolean always_show_notes;
 	char *save_selected_filename;
 	GtkTreeModel *newmodel;
 	const gchar *neticon;
@@ -690,6 +691,12 @@ static void remmina_main_load_files()
 		/* Load files list */
 		items_count = remmina_file_manager_iterate((GFunc)remmina_main_load_file_list_callback, (gpointer)newmodel);
 		break;
+	}
+
+	/* Set note column visibility*/
+	always_show_notes = remmina_pref.always_show_notes;
+	if (!always_show_notes){
+		gtk_tree_view_column_set_visible(remminamain->column_files_list_notes, FALSE);
 	}
 
 	/* Unset old model */
