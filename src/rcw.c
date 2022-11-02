@@ -1312,11 +1312,6 @@ static void rcw_switch_viewmode(RemminaConnectionWindow *cnnwin, int newmode)
 	if (old_mode == newmode)
 		return;
 
-
-
-	RemminaConnectionObject *cnnobj;
-	cnnobj = rcw_get_visible_cnnobj(cnnwin);
-
 	if (newmode == VIEWPORT_FULLSCREEN_MODE || newmode == SCROLLED_FULLSCREEN_MODE) {
 		if (old_mode == SCROLLED_WINDOW_MODE) {
 			/* We are leaving SCROLLED_WINDOW_MODE, save W,H, and maximized
@@ -2830,8 +2825,15 @@ static gboolean rcw_on_leave_notify_event(GtkWidget *widget, GdkEventCrossing *e
 		cnnwin->priv->delayed_grab_eventsourceid = 0;
 	}
 
-	rcw_kp_ungrab(cnnwin);
-	rcw_pointer_ungrab(cnnwin);
+	/* Workaround for https://gitlab.gnome.org/GNOME/mutter/-/issues/2450#note_1586570 */
+	if (event->mode == GDK_CROSSING_GTK_UNGRAB) {
+		rcw_kp_ungrab(cnnwin);
+		rcw_pointer_ungrab(cnnwin);
+	} else {
+#if DEBUG_KB_GRABBING
+		printf("DEBUG_KB_GRABBING:   not ungrabbing, this event seems to be an unwanted event from GTK\n");
+#endif
+	}
 
 	return FALSE;
 }
