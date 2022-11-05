@@ -76,6 +76,7 @@ enum {
 	DATE_COLUMN,
 	FILENAME_COLUMN,
 	LABELS_COLUMN,
+	NOTES_COLUMN,
 	N_COLUMNS
 };
 
@@ -362,6 +363,7 @@ static void remmina_main_load_file_list_callback(RemminaFile *remminafile, gpoin
 	gtk_list_store_set(store, &iter,
 			   PROTOCOL_COLUMN, remmina_file_get_icon_name(remminafile),
 			   NAME_COLUMN, remmina_file_get_string(remminafile, "name"),
+			   NOTES_COLUMN, g_uri_unescape_string(remmina_file_get_string(remminafile, "notes_text"), NULL),
 			   GROUP_COLUMN, remmina_file_get_string(remminafile, "group"),
 			   SERVER_COLUMN, remmina_file_get_string(remminafile, "server"),
 			   PLUGIN_COLUMN, remmina_file_get_string(remminafile, "protocol"),
@@ -496,6 +498,7 @@ static void remmina_main_load_file_tree_callback(RemminaFile *remminafile, gpoin
 	gtk_tree_store_set(store, &child,
 			   PROTOCOL_COLUMN, remmina_file_get_icon_name(remminafile),
 			   NAME_COLUMN, remmina_file_get_string(remminafile, "name"),
+			   NOTES_COLUMN, g_uri_unescape_string(remmina_file_get_string(remminafile, "notes_text"), NULL),
 			   GROUP_COLUMN, remmina_file_get_string(remminafile, "group"),
 			   SERVER_COLUMN, remmina_file_get_string(remminafile, "server"),
 			   PLUGIN_COLUMN, remmina_file_get_string(remminafile, "protocol"),
@@ -644,6 +647,7 @@ static void remmina_main_load_files()
 	gchar buf[200];
 	guint context_id;
 	gint view_file_mode;
+	gboolean always_show_notes;
 	char *save_selected_filename;
 	GtkTreeModel *newmodel;
 	const gchar *neticon;
@@ -669,7 +673,7 @@ static void remmina_main_load_files()
 	switch (view_file_mode) {
 	case REMMINA_VIEW_FILE_TREE:
 		/* Create new GtkTreeStore model */
-		newmodel = GTK_TREE_MODEL(gtk_tree_store_new(8, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING));
+		newmodel = GTK_TREE_MODEL(gtk_tree_store_new(9, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING));
 		/* Hide the Group column in the tree view mode */
 		gtk_tree_view_column_set_visible(remminamain->column_files_list_group, FALSE);
 		/* Load groups first */
@@ -681,12 +685,18 @@ static void remmina_main_load_files()
 	case REMMINA_VIEW_FILE_LIST:
 	default:
 		/* Create new GtkListStore model */
-		newmodel = GTK_TREE_MODEL(gtk_list_store_new(8, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING));
+		newmodel = GTK_TREE_MODEL(gtk_list_store_new(9, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING));
 		/* Show the Group column in the list view mode */
 		gtk_tree_view_column_set_visible(remminamain->column_files_list_group, TRUE);
 		/* Load files list */
 		items_count = remmina_file_manager_iterate((GFunc)remmina_main_load_file_list_callback, (gpointer)newmodel);
 		break;
+	}
+
+	/* Set note column visibility*/
+	always_show_notes = remmina_pref.always_show_notes;
+	if (!always_show_notes){
+		gtk_tree_view_column_set_visible(remminamain->column_files_list_notes, FALSE);
 	}
 
 	/* Unset old model */
@@ -1601,6 +1611,8 @@ GtkWidget *remmina_main_new(void)
 	remminamain->column_files_list_server = GTK_TREE_VIEW_COLUMN(RM_GET_OBJECT("column_files_list_server"));
 	remminamain->column_files_list_plugin = GTK_TREE_VIEW_COLUMN(RM_GET_OBJECT("column_files_list_plugin"));
 	remminamain->column_files_list_date = GTK_TREE_VIEW_COLUMN(RM_GET_OBJECT("column_files_list_date"));
+	remminamain->column_files_list_notes = GTK_TREE_VIEW_COLUMN(RM_GET_OBJECT("column_files_list_notes"));
+	gtk_tree_view_column_set_fixed_width(remminamain->column_files_list_notes, 100);
 	remminamain->statusbar_main = GTK_STATUSBAR(RM_GET_OBJECT("statusbar_main"));
 	/* signals */
 	g_signal_connect(remminamain->entry_quick_connect_server, "key-release-event", G_CALLBACK(remmina_main_search_key_event), NULL);

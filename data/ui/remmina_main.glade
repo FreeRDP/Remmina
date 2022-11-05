@@ -503,6 +503,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                   </object>
                 </child>
                 <child>
+                  <object class="GtkTreeViewColumn" id="column_files_list_notes">
+                    <property name="resizable">True</property>
+                    <property name="title" translatable="yes">Notes</property>
+                    <property name="clickable">True</property>
+                    <property name="sort-column-id">8</property>
+                    <child>
+                      <object class="GtkCellRendererText" id="renderer_files_list_notes"/>
+                      <attributes>
+                        <attribute name="text">8</attribute>
+                      </attributes>
+                    </child>
+                  </object>
+                </child>
+                <child>
                   <object class="GtkTreeViewColumn" id="column_files_list_plugin">
                     <property name="resizable">True</property>
                     <property name="title" translatable="yes">Plugin</property>
