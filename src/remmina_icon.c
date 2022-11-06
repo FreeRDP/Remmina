@@ -413,7 +413,8 @@ void remmina_icon_init(void)
 		remmina_icon_create_autostart_file();
 	}
 	// "connected" property means a visible indicator, otherwise could be hidden. or fall back to GtkStatusIcon
-	g_signal_connect(G_OBJECT(remmina_icon.icon), "connection-changed", G_CALLBACK(remmina_icon_connection_changed_cb), NULL);
+	if (remmina_icon.icon)
+		g_signal_connect(G_OBJECT(remmina_icon.icon), "connection-changed", G_CALLBACK(remmina_icon_connection_changed_cb), NULL);
 	//g_object_get(G_OBJECT(remmina_icon.icon), "connected", &remmina_icon.indicator_connected, NULL);
 }
 
