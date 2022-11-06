@@ -492,6 +492,7 @@ static gboolean rcw_keyboard_grab_retry(gpointer user_data)
 
 static void rcw_pointer_ungrab(RemminaConnectionWindow *cnnwin)
 {
+	TRACE_CALL(__func__);
 #if GTK_CHECK_VERSION(3, 20, 0)
 	GdkSeat *seat;
 	GdkDisplay *display;
@@ -507,6 +508,8 @@ static void rcw_pointer_ungrab(RemminaConnectionWindow *cnnwin)
 static void rcw_pointer_grab(RemminaConnectionWindow *cnnwin)
 {
 	TRACE_CALL(__func__);
+	/* This function in Wayland is useless and generates a spurious leave-notify event.
+	 * Should we remove it ? https://gitlab.gnome.org/GNOME/mutter/-/issues/2450#note_1588081 */
 #if GTK_CHECK_VERSION(3, 20, 0)
 	GdkSeat *seat;
 	GdkDisplay *display;
@@ -2826,7 +2829,7 @@ static gboolean rcw_on_leave_notify_event(GtkWidget *widget, GdkEventCrossing *e
 	}
 
 	/* Workaround for https://gitlab.gnome.org/GNOME/mutter/-/issues/2450#note_1586570 */
-	if (event->mode == GDK_CROSSING_GTK_UNGRAB) {
+	if (event->mode != GDK_CROSSING_UNGRAB) {
 		rcw_kp_ungrab(cnnwin);
 		rcw_pointer_ungrab(cnnwin);
 	} else {
