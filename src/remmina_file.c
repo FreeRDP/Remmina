@@ -197,9 +197,13 @@ void remmina_file_set_statefile(RemminaFile *remminafile)
 
 	gchar *basename = g_path_get_basename(remminafile->filename);
 	gchar *cachedir = g_build_path("/", g_get_user_cache_dir(), "remmina", NULL);
-	GString *fname = g_string_new(g_strdup(basename));
+	GString *fname = g_string_new(basename);
 
 	remminafile->statefile = g_strdup_printf("%s/%s.state", cachedir, fname->str);
+
+	g_free(cachedir);
+	g_string_free(fname, TRUE);
+	g_free(basename);
 }
 
 const gchar *
@@ -447,8 +451,10 @@ remmina_file_load(const gchar *filename)
 				}
 				g_free(resolution_str);
 			} else {
-				remmina_file_set_string(remminafile, key,
-						g_key_file_get_string(gkeyfile, KEYFILE_GROUP_REMMINA, key, NULL));
+				gchar *value;
+				value = g_key_file_get_string(gkeyfile, KEYFILE_GROUP_REMMINA, key, NULL);
+				remmina_file_set_string(remminafile, key, value);
+				g_free(value);
 			}
 		}
 	}
@@ -463,6 +469,9 @@ remmina_file_load(const gchar *filename)
 void remmina_file_set_string(RemminaFile *remminafile, const gchar *setting, const gchar *value)
 {
 	TRACE_CALL(__func__);
+
+	/* Note: setting and value are copied on the heap, so it is responsibility of the caller
+	 * to deallocate them when returning from remmina_file_set_string() if needed */
 
 	if (!remmina_masterthread_exec_is_main_thread()) {
 		/* Allow the execution of this function from a non main thread
@@ -1027,6 +1036,7 @@ remmina_file_get_datetime(RemminaFile *remminafile)
 	struct timeval tv;
 	struct tm *ptm;
 	char time_string[256];
+	gchar *tmps;
 
 	guint64 mtime;
 
@@ -1053,10 +1063,14 @@ remmina_file_get_datetime(RemminaFile *remminafile)
 		if (last_success) {
 			//REMMINA_DEBUG ("Last success is %s", last_success);
 			GDateTime *dt;
-			dt = g_date_time_new_from_iso8601(g_strconcat(last_success, "T00:00:00Z", NULL), NULL);
+			tmps = g_strconcat(last_success, "T00:00:00Z", NULL);
+			dt = g_date_time_new_from_iso8601(tmps, NULL);
+			g_free(tmps);
 			if (dt) {
 				//REMMINA_DEBUG("Converting last_success");
-				mtime = g_ascii_strtoull(g_date_time_format(dt, "%s"), NULL, 10);
+				tmps = g_date_time_format(dt, "%s");
+				mtime = g_ascii_strtoull(tmps, NULL, 10);
+				g_free(tmps);
 				g_date_time_unref(dt);
 			} else {
 				//REMMINA_DEBUG("dt was null");
