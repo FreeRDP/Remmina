@@ -127,7 +127,7 @@ trigger_ppa:
     - schedules
 
 #dry-run:triage:
-#  image: ruby:2.4
+#  image: ruby:2.7
 #  stage: triage
 #  script:
 #    - gem install gitlab-triage
@@ -138,7 +138,7 @@ trigger_ppa:
 #    - schedules
 
 run:triage:
-  image: ruby:2.4
+  image: ruby:2.7
   stage: triage
   script:
     - gem install gitlab-triage
