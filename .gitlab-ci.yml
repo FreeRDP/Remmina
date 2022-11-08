@@ -6,6 +6,7 @@ image: registry.gitlab.com/remmina/remmina/ubuntu:20.04
 stages:
 - test
 - build
+- triage
 variables:
   GIT_SUBMODULE_STRATEGY: recursive
   BUILD_FOLDER: build
@@ -34,6 +35,9 @@ ubuntu:devel:
     - tags
     - merge_requests
     - web
+  except:
+    refs:
+      - schedules
 flatpak:test:
   image: registry.gitlab.com/remmina/remmina/ubuntu:20.04
   stage: test
@@ -62,9 +66,13 @@ flatpak:test:
     - flatpak/.flatpak-builder/downloads/
     - flatpak/.flatpak-builder/git/
   only:
-  - merge_requests
-  - tags
-  - web
+    refs:
+      - merge_requests
+      - tags
+      - web
+  except:
+    refs:
+      - schedules
 snap:build:
   image: ubuntudesktop/gnome-3-38-2004
   stage: build
@@ -93,6 +101,9 @@ snap:build:
     - tags
     - merge_requests
     - web
+  except:
+    refs:
+      - schedules
 trigger_build:
   stage: build
   before_script:
@@ -110,3 +121,22 @@ trigger_ppa:
   only:
     - tags
     - web
+
+dry-run:triage:
+  image: ruby:2.4
+  stage: triage
+  script:
+    - gem install gitlab-triage
+    - gitlab-triage --help
+    - gitlab-triage --dry-run --token $RM_TRIAGE_TOKEN --host-url $CI_SERVER_URL --source projects --source-id $CI_PROJECT_PATH
+  when: manual
+  except:
+    - schedules
+
+run:triage:
+  stage: triage
+  script:
+    - gem install gitlab-triage
+    - gitlab-triage --token $RM_TRIAGE_TOKEN --host-url $CI_SERVER_URL --source projects --source-id $CI_PROJECT_PATH
+  only:
+    - schedules
