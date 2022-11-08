@@ -121,17 +121,19 @@ trigger_ppa:
   only:
     - tags
     - web
-
-dry-run:triage:
-  image: ruby:2.4
-  stage: triage
-  script:
-    - gem install gitlab-triage
-    - gitlab-triage --help
-    - gitlab-triage --dry-run --token $RM_TRIAGE_TOKEN --host-url $CI_SERVER_URL --source projects --source-id $CI_PROJECT_PATH
-  when: manual
   except:
     - schedules
+
+#dry-run:triage:
+#  image: ruby:2.4
+#  stage: triage
+#  script:
+#    - gem install gitlab-triage
+#    - gitlab-triage --help
+#    - gitlab-triage --dry-run --token $RM_TRIAGE_TOKEN --host-url $CI_SERVER_URL --source projects --source-id $CI_PROJECT_PATH
+#  when: manual
+#  except:
+#    - schedules
 
 run:triage:
   stage: triage
