@@ -36,7 +36,11 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include <gtk/gtk.h>
+#ifdef GDK_WINDOWING_X11
 #include <gdk/gdkx.h>
+#else
+#include <gdk/gdkwayland.h>
+#endif
 #include "config.h"
 #include "remmina/plugin.h"
 #include "remmina/remmina_trace_calls.h"

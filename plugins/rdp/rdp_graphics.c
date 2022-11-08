@@ -387,7 +387,11 @@ void rf_register_graphics(rdpGraphics* graphics)
 
 	bitmap = (rdpBitmap*)malloc(sizeof(rdpBitmap));
 	ZeroMemory(bitmap, sizeof(rdpBitmap));
+#ifdef RF_BITMAP
 	bitmap->size = sizeof(rfBitmap);
+#else
+	bitmap->size = 0;
+#endif
 
 	bitmap->New = rf_Bitmap_New;
 	bitmap->Free = rf_Bitmap_Free;
@@ -417,7 +421,11 @@ void rf_register_graphics(rdpGraphics* graphics)
 	glyph = (rdpGlyph*)malloc(sizeof(rdpGlyph));
 	ZeroMemory(glyph, sizeof(rdpGlyph));
 
+#ifdef RF_GLYPH
 	glyph->size = sizeof(rfGlyph);
+#else
+	glyph->size = 0;
+#endif
 
 	glyph->New = rf_Glyph_New;
 	glyph->Free = rf_Glyph_Free;

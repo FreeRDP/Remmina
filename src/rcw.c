@@ -37,7 +37,11 @@
 
 #include "config.h"
 
+#ifdef GDK_WINDOWING_X11
 #include <cairo/cairo-xlib.h>
+#else
+#include <cairo/cairo.h>
+#endif
 #include <gdk/gdk.h>
 #include <gdk/gdkkeysyms.h>
 #include <glib/gi18n.h>

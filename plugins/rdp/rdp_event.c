@@ -41,7 +41,11 @@
 #include "rdp_monitor.h"
 #include "rdp_settings.h"
 #include <gdk/gdkkeysyms.h>
+#ifdef GDK_WINDOWING_X11
 #include <cairo/cairo-xlib.h>
+#else
+#include <cairo/cairo.h>
+#endif
 #include <freerdp/locale/keyboard.h>
 
 gboolean remmina_rdp_event_on_map(RemminaProtocolWidget *gp)
@@ -178,8 +182,8 @@ static void remmina_rdp_event_release_all_keys(RemminaProtocolWidget *gp)
 		rdp_event = g_array_index(rfi->pressed_keys, RemminaPluginRdpEvent, i);
 		if ((rdp_event.type == REMMINA_RDP_EVENT_TYPE_SCANCODE ||
 		     rdp_event.type == REMMINA_RDP_EVENT_TYPE_SCANCODE_UNICODE) &&
-		    rdp_event.key_event.up == False) {
-			rdp_event.key_event.up = True;
+		    rdp_event.key_event.up == false) {
+			rdp_event.key_event.up = true;
 			remmina_rdp_event_event_push(gp, &rdp_event);
 		}
 	}
@@ -745,8 +749,8 @@ static gboolean remmina_rdp_event_on_key(GtkWidget *widget, GdkEventKey *event, 
 #endif
 
 	rdp_event.type = REMMINA_RDP_EVENT_TYPE_SCANCODE;
-	rdp_event.key_event.up = (event->type == GDK_KEY_PRESS ? False : True);
-	rdp_event.key_event.extended = False;
+	rdp_event.key_event.up = (event->type == GDK_KEY_PRESS ? false : true);
+	rdp_event.key_event.extended = false;
 
 	switch (event->keyval) {
 	case GDK_KEY_Pause:
@@ -756,16 +760,16 @@ static gboolean remmina_rdp_event_on_key(GtkWidget *widget, GdkEventKey *event, 
 		 * for pause key management
 		 */
 		rdp_event.key_event.key_code = 0x1D;
-		rdp_event.key_event.up = False;
+		rdp_event.key_event.up = false;
 		remmina_rdp_event_event_push(gp, &rdp_event);
 		rdp_event.key_event.key_code = 0x45;
-		rdp_event.key_event.up = False;
+		rdp_event.key_event.up = false;
 		remmina_rdp_event_event_push(gp, &rdp_event);
 		rdp_event.key_event.key_code = 0x1D;
-		rdp_event.key_event.up = True;
+		rdp_event.key_event.up = true;
 		remmina_rdp_event_event_push(gp, &rdp_event);
 		rdp_event.key_event.key_code = 0x45;
-		rdp_event.key_event.up = True;
+		rdp_event.key_event.up = true;
 		remmina_rdp_event_event_push(gp, &rdp_event);
 		break;
 
@@ -813,7 +817,7 @@ static gboolean remmina_rdp_event_on_key(GtkWidget *widget, GdkEventKey *event, 
 			} else {
 				rdp_event.type = REMMINA_RDP_EVENT_TYPE_SCANCODE_UNICODE;
 				rdp_event.key_event.unicode_code = unicode_keyval;
-				rdp_event.key_event.extended = False;
+				rdp_event.key_event.extended = false;
 				remmina_rdp_event_event_push(gp, &rdp_event);
 				keypress_list_add(gp, rdp_event);
 			}

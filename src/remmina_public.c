@@ -55,6 +55,8 @@
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <X11/Xatom.h>
+#else
+#include <gdk/gdkwayland.h>
 #endif
 #include "remmina_public.h"
 #include "remmina/remmina_trace_calls.h"

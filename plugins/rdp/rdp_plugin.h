@@ -47,7 +47,11 @@
 #include <freerdp/gdi/region.h>
 #include <freerdp/client/cliprdr.h>
 #include <freerdp/client/disp.h>
+#ifdef GDK_WINDOWING_X11
 #include <gdk/gdkx.h>
+#else
+#include <gdk/gdkwayland.h>
+#endif
 
 #include <winpr/clipboard.h>
 
@@ -155,18 +159,22 @@ struct rf_pointer {
 };
 typedef struct rf_pointer rfPointer;
 
+#ifdef RF_BITMAP
 struct rf_bitmap {
 	rdpBitmap		bitmap;
 	Pixmap			pixmap;
 	cairo_surface_t *	surface;
 };
 typedef struct rf_bitmap rfBitmap;
+#endif
 
+#ifdef RF_GLYPH
 struct rf_glyph {
 	rdpGlyph	glyph;
 	Pixmap		pixmap;
 };
 typedef struct rf_glyph rfGlyph;
+#endif
 
 typedef enum {
 	REMMINA_RDP_EVENT_TYPE_SCANCODE,
