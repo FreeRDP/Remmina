@@ -111,6 +111,8 @@ trigger_build:
   - apt-get install -y -qq curl
   script:
   - curl -X POST -F token=$CITOKEN -F ref=master https://gitlab.com/api/v4/projects/10530342/trigger/pipeline
+  except:
+    - schedules
 trigger_ppa:
   stage: build
   before_script:
