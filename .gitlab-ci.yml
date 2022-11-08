@@ -4,8 +4,8 @@
 # See https://docs.gitlab.com/ee/ci/variables/#priority-of-environment-variables
 image: registry.gitlab.com/remmina/remmina/ubuntu:20.04
 stages:
-- build
 - test
+- build
 variables:
   GIT_SUBMODULE_STRATEGY: recursive
   BUILD_FOLDER: build
@@ -20,7 +20,7 @@ cache: &global_cache
 before_script:
 - mkdir -p .flatpak-builder/cache
 ubuntu:devel:
-  stage: build
+  stage: test
   before_script:
   - apt-get update -qq
   - apt-get install -y -qq libpcre2-8-0 libpcre2-dev python3 python3-dev
@@ -34,41 +34,9 @@ ubuntu:devel:
     - tags
     - merge_requests
     - web
-    - schedules
-appimage:build:
-  image: registry.gitlab.com/remmina/remmina/ubuntu:18.04
-  stage: build
-  only: [chat]
-  before_script:
-  - apt-get update -qq
-  script:
-  - mkdir $BUILD_FOLDER
-  - cmake -B$BUILD_FOLDER -H. $CMAKE_BUILD_OPTIONS -DCMAKE_INSTALL_PREFIX=/usr
-  - make VERBOSE=1 -C $BUILD_FOLDER
-  - make VERBOSE=1 -C $BUILD_FOLDER install DESTDIR=AppDir
-  - wget -c https://artifacts.assassinate-you.net/artifactory/list/linuxdeploy/travis-456/linuxdeploy-x86_64.AppImage
-    --directory-prefix=$BUILD_FOLDER/
-  - wget -c https://github.com/linuxdeploy/linuxdeploy-plugin-appimage/releases/download/continuous/linuxdeploy-plugin-appimage-x86_64.AppImage
-    --directory-prefix=$BUILD_FOLDER/
-  - wget -c https://raw.githubusercontent.com/linuxdeploy/linuxdeploy-plugin-gtk/master/linuxdeploy-plugin-gtk.sh
-    --directory-prefix=$BUILD_FOLDER/
-  - chmod +x $BUILD_FOLDER/*AppImage $BUILD_FOLDER/*sh
-  - export OUTPUT="Remmina-x86_64.AppImage"
-  - cd $BUILD_FOLDER && ./linuxdeploy-x86_64.AppImage --appimage-extract
-  - mv squashfs-root/ linuxdeploy/
-  - export UPDATE_INFORMATION="gh-releases-zsync|AppImage|appimaged|continuous|appimaged*$ARCH*.AppImage.zsync"
-  - export SIGN=1
-  - export VERBOSE=1
-  - linuxdeploy/AppRun --appdir AppDir --plugin gtk --output appimage
-  artifacts:
-    name: Remmina-x86_64.AppImage
-    expose_as: Download AppImage
-    paths:
-    - build/Remmina-x86_64.AppImage
-    expire_in: 7 days
 flatpak:test:
   image: registry.gitlab.com/remmina/remmina/ubuntu:20.04
-  stage: build
+  stage: test
   variables:
     BUNDLE: remmina-dev.flatpak
     FLATPAK_PPA: ppa:alexlarsson/flatpak
@@ -97,7 +65,6 @@ flatpak:test:
   - merge_requests
   - tags
   - web
-  - schedules
 snap:build:
   image: ubuntudesktop/gnome-3-38-2004
   stage: build
@@ -126,7 +93,6 @@ snap:build:
     - tags
     - merge_requests
     - web
-    - schedules
 trigger_build:
   stage: build
   before_script:
@@ -144,10 +110,3 @@ trigger_ppa:
   only:
     - tags
     - web
-sast:
-  stage: test
-include:
-- template: Security/Dependency-Scanning.gitlab-ci.yml
-- template: Security/License-Scanning.gitlab-ci.yml
-- template: Security/SAST.gitlab-ci.yml
-- template: Security/Secret-Detection.gitlab-ci.yml
