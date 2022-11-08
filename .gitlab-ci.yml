@@ -136,6 +136,7 @@ trigger_ppa:
 #    - schedules
 
 run:triage:
+  image: ruby:2.4
   stage: triage
   script:
     - gem install gitlab-triage
