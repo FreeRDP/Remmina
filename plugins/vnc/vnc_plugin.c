@@ -1842,12 +1842,12 @@ static void remmina_plugin_vnc_call_feature(RemminaProtocolWidget *gp, const Rem
 		remmina_plugin_vnc_update_quality((rfbClient *)(gpdata->client),
 						  remmina_plugin_service->file_get_int(remminafile, "quality", 9));
 		remmina_plugin_vnc_update_colordepth((rfbClient *)(gpdata->client),
-						     remmina_plugin_service->file_get_int(remminafile, "color", 32));
+						     remmina_plugin_service->file_get_int(remminafile, "colordepth", 32));
 		SetFormatAndEncodings((rfbClient *)(gpdata->client));
 		break;
 	case REMMINA_PLUGIN_VNC_FEATURE_PREF_COLOR:
 		remmina_plugin_vnc_update_colordepth((rfbClient *)(gpdata->client),
-						     remmina_plugin_service->file_get_int(remminafile, "color", 32));
+						     remmina_plugin_service->file_get_int(remminafile, "colordepth", 32));
 		SetFormatAndEncodings((rfbClient *)(gpdata->client));
 	case REMMINA_PLUGIN_VNC_FEATURE_PREF_VIEWONLY:
 		break;
@@ -2089,7 +2089,7 @@ static const RemminaProtocolFeature remmina_plugin_vnc_features[] =
 {
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_PREF,	 REMMINA_PLUGIN_VNC_FEATURE_PREF_QUALITY,	     GINT_TO_POINTER(REMMINA_PROTOCOL_FEATURE_PREF_RADIO), "quality",
 	  quality_list },
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_PREF,	 REMMINA_PLUGIN_VNC_FEATURE_PREF_COLOR,	     GINT_TO_POINTER(REMMINA_PROTOCOL_FEATURE_PREF_RADIO), "color",
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_PREF,	 REMMINA_PLUGIN_VNC_FEATURE_PREF_COLOR,	     GINT_TO_POINTER(REMMINA_PROTOCOL_FEATURE_PREF_RADIO), "colordepth",
 	  colordepth_list },
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_PREF,	 REMMINA_PLUGIN_VNC_FEATURE_PREF_VIEWONLY,	     GINT_TO_POINTER(REMMINA_PROTOCOL_FEATURE_PREF_CHECK), "viewonly",
 	  N_("View only") },
