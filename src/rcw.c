@@ -2758,14 +2758,6 @@ static void rcw_set_toolbar_visibility(RemminaConnectionWindow *cnnwin)
 	}
 }
 
-static gboolean rcw_floating_toolbar_on_enter(GtkWidget *widget, GdkEventCrossing *event,
-					      RemminaConnectionWindow *cnnwin)
-{
-	TRACE_CALL(__func__);
-	rcw_floating_toolbar_show(cnnwin, TRUE);
-	return TRUE;
-}
-
 #if DEBUG_KB_GRABBING
 static void print_crossing_event(GdkEventCrossing *event) {
 	printf("DEBUG_KB_GRABBING: --- Crossing event detail: ");
@@ -2795,6 +2787,24 @@ static void print_crossing_event(GdkEventCrossing *event) {
 	printf("\n");
 }
 #endif
+
+static gboolean rcw_floating_toolbar_on_enter(GtkWidget *widget, GdkEventCrossing *event,
+					      RemminaConnectionWindow *cnnwin)
+{
+	TRACE_CALL(__func__);
+	rcw_floating_toolbar_show(cnnwin, TRUE);
+	return TRUE;
+}
+
+static gboolean rcw_floating_toolbar_on_leave(GtkWidget *widget, GdkEventCrossing *event,
+					      RemminaConnectionWindow *cnnwin)
+{
+	TRACE_CALL(__func__);
+	if (event->detail != GDK_NOTIFY_INFERIOR)
+		rcw_floating_toolbar_show(cnnwin, FALSE);
+	return TRUE;
+}
+
 
 static gboolean rcw_on_enter_notify_event(GtkWidget *widget, GdkEventCrossing *event,
 					  gpointer user_data)
@@ -3890,6 +3900,7 @@ static void rcw_create_overlay_ftb_overlay(RemminaConnectionWindow *cnnwin)
 	rcw_floating_toolbar_show(cnnwin, TRUE);
 
 	g_signal_connect(G_OBJECT(priv->overlay_ftb_overlay), "enter-notify-event", G_CALLBACK(rcw_floating_toolbar_on_enter), cnnwin);
+	g_signal_connect(G_OBJECT(priv->overlay_ftb_overlay), "leave-notify-event", G_CALLBACK(rcw_floating_toolbar_on_leave), cnnwin);
 	g_signal_connect(G_OBJECT(priv->overlay_ftb_overlay), "scroll-event", G_CALLBACK(rcw_floating_toolbar_on_scroll), cnnwin);
 	gtk_widget_add_events(
 		GTK_WIDGET(priv->overlay_ftb_overlay),
