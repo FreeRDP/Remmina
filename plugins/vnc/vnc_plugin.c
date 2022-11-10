@@ -46,7 +46,6 @@
 #define REMMINA_PLUGIN_VNC_FEATURE_SCALE                   6
 #define REMMINA_PLUGIN_VNC_FEATURE_UNFOCUS                 7
 #define REMMINA_PLUGIN_VNC_FEATURE_TOOL_SENDCTRLALTDEL     8
-#define REMMINA_PLUGIN_VNC_FEATURE_PREF_COLOR	           9
 
 #define VNC_DEFAULT_PORT 5900
 
@@ -1845,10 +1844,6 @@ static void remmina_plugin_vnc_call_feature(RemminaProtocolWidget *gp, const Rem
 						     remmina_plugin_service->file_get_int(remminafile, "colordepth", 32));
 		SetFormatAndEncodings((rfbClient *)(gpdata->client));
 		break;
-	case REMMINA_PLUGIN_VNC_FEATURE_PREF_COLOR:
-		remmina_plugin_vnc_update_colordepth((rfbClient *)(gpdata->client),
-						     remmina_plugin_service->file_get_int(remminafile, "colordepth", 32));
-		SetFormatAndEncodings((rfbClient *)(gpdata->client));
 	case REMMINA_PLUGIN_VNC_FEATURE_PREF_VIEWONLY:
 		break;
 	case REMMINA_PLUGIN_VNC_FEATURE_PREF_DISABLESERVERINPUT:
@@ -2089,8 +2084,6 @@ static const RemminaProtocolFeature remmina_plugin_vnc_features[] =
 {
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_PREF,	 REMMINA_PLUGIN_VNC_FEATURE_PREF_QUALITY,	     GINT_TO_POINTER(REMMINA_PROTOCOL_FEATURE_PREF_RADIO), "quality",
 	  quality_list },
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_PREF,	 REMMINA_PLUGIN_VNC_FEATURE_PREF_COLOR,	     GINT_TO_POINTER(REMMINA_PROTOCOL_FEATURE_PREF_RADIO), "colordepth",
-	  colordepth_list },
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_PREF,	 REMMINA_PLUGIN_VNC_FEATURE_PREF_VIEWONLY,	     GINT_TO_POINTER(REMMINA_PROTOCOL_FEATURE_PREF_CHECK), "viewonly",
 	  N_("View only") },
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_PREF,	 REMMINA_PLUGIN_VNC_FEATURE_PREF_DISABLESERVERINPUT, GINT_TO_POINTER(REMMINA_PROTOCOL_FEATURE_PREF_CHECK), "disableserverinput",N_("Prevent local interaction on the server")  },
