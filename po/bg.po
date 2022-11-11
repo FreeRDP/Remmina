@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-11-10 13:48+0000\n"
+"POT-Creation-Date: 2022-11-11 13:23+0000\n"
 "PO-Revision-Date: 2021-12-17 08:42+0000\n"
 "Last-Translator: Martin Hristov <martinhristov000@gmail.com>\n"
 "Language-Team: Bulgarian <https://hosted.weblate.org/projects/remmina/"
@@ -80,8 +80,8 @@ msgstr "Свързване посредством SSH от нов термина
 
 #: src/remmina_sftp_plugin.c:352 src/remmina_message_panel.c:329
 #: src/remmina_file_editor.c:1235 src/remmina_ssh_plugin.c:1503
-#: plugins/rdp/rdp_plugin.c:2811 plugins/vnc/vnc_plugin.c:2037
-#: plugins/vnc/vnc_plugin.c:2049 plugins/www/www_plugin.c:908
+#: plugins/rdp/rdp_plugin.c:2811 plugins/vnc/vnc_plugin.c:2053
+#: plugins/vnc/vnc_plugin.c:2065 plugins/www/www_plugin.c:908
 #: plugins/x2go/x2go_plugin.c:482 plugins/x2go/x2go_plugin.c:3397
 #: data/ui/remmina_mpc.glade:122
 #, fuzzy
@@ -933,7 +933,7 @@ msgid "Go to parent folder"
 msgstr "Отиване в родителската папка"
 
 #: src/remmina_ftp_client.c:781 plugins/rdp/rdp_plugin.c:2904
-#: plugins/vnc/vnc_plugin.c:2090
+#: plugins/vnc/vnc_plugin.c:2108
 #, fuzzy
 msgid "Refresh"
 msgstr "Опресняване"
@@ -2100,7 +2100,7 @@ msgid "_Find text"
 msgstr "_Намерете текст"
 
 #: src/remmina_ssh_plugin.c:1504 plugins/spice/spice_plugin.c:676
-#: plugins/vnc/vnc_plugin.c:2038 plugins/vnc/vnc_plugin.c:2050
+#: plugins/vnc/vnc_plugin.c:2054 plugins/vnc/vnc_plugin.c:2066
 #, fuzzy
 msgid "User password"
 msgstr "Парола"
@@ -2244,25 +2244,25 @@ msgid "<Choose a quality level to edit…>"
 msgstr "<Избор на ниво на качество за редактиране...>"
 
 #: plugins/rdp/rdp_settings.c:280 plugins/rdp/rdp_plugin.c:2662
-#: plugins/vnc/vnc_plugin.c:1987
+#: plugins/vnc/vnc_plugin.c:2003
 #, fuzzy
 msgid "Poor (fastest)"
 msgstr "Беден (най-бърз)"
 
 #: plugins/rdp/rdp_settings.c:282 plugins/rdp/rdp_plugin.c:2663
-#: plugins/vnc/vnc_plugin.c:1986
+#: plugins/vnc/vnc_plugin.c:2002
 #, fuzzy
 msgid "Medium"
 msgstr "Обикновен"
 
 #: plugins/rdp/rdp_settings.c:284 plugins/rdp/rdp_plugin.c:2664
-#: plugins/vnc/vnc_plugin.c:1984
+#: plugins/vnc/vnc_plugin.c:2000
 #, fuzzy
 msgid "Good"
 msgstr "Добро"
 
 #: plugins/rdp/rdp_settings.c:286 plugins/rdp/rdp_plugin.c:2665
-#: plugins/vnc/vnc_plugin.c:1985
+#: plugins/vnc/vnc_plugin.c:2001
 #, fuzzy
 msgid "Best (slowest)"
 msgstr "Най-добър (най-бавен)"
@@ -2366,7 +2366,7 @@ msgid "Input device settings"
 msgstr "Настройки на входното устройство"
 
 #: plugins/rdp/rdp_settings.c:656 plugins/rdp/rdp_plugin.c:2818
-#: plugins/vnc/vnc_plugin.c:2070
+#: plugins/vnc/vnc_plugin.c:2086
 #, fuzzy
 #| msgid "Turn on smooth scrolling"
 msgid "Disable smooth scrolling"
@@ -2572,7 +2572,7 @@ msgstr "GFX RFX Progressive (32 bpp)"
 msgid "RemoteFX (32 bpp)"
 msgstr "RemoteFX (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2637 plugins/vnc/vnc_plugin.c:1975
+#: plugins/rdp/rdp_plugin.c:2637 plugins/vnc/vnc_plugin.c:1991
 #, fuzzy
 msgid "True colour (32 bpp)"
 msgstr "Истински цвят (32 bpp)"
@@ -2582,7 +2582,7 @@ msgstr "Истински цвят (32 bpp)"
 msgid "True colour (24 bpp)"
 msgstr "Истински цвят (24 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2639 plugins/vnc/vnc_plugin.c:1976
+#: plugins/rdp/rdp_plugin.c:2639 plugins/vnc/vnc_plugin.c:1992
 #, fuzzy
 msgid "High colour (16 bpp)"
 msgstr "Висококачествен цвят (16 bpp)"
@@ -2592,7 +2592,7 @@ msgstr "Висококачествен цвят (16 bpp)"
 msgid "High colour (15 bpp)"
 msgstr "Висококачествен цвят (15 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2641 plugins/vnc/vnc_plugin.c:1977
+#: plugins/rdp/rdp_plugin.c:2641 plugins/vnc/vnc_plugin.c:1993
 #, fuzzy
 msgid "256 colours (8 bpp)"
 msgstr "256 цвята (8 bpp)"
@@ -2888,8 +2888,8 @@ msgstr "Разширяване на екрана върху няколко мо�
 msgid "List monitor IDs"
 msgstr "Списък на идентификаторите на мониторите"
 
-#: plugins/rdp/rdp_plugin.c:2823 plugins/vnc/vnc_plugin.c:2039
-#: plugins/vnc/vnc_plugin.c:2051 plugins/gvnc/gvnc_plugin.c:848
+#: plugins/rdp/rdp_plugin.c:2823 plugins/vnc/vnc_plugin.c:2055
+#: plugins/vnc/vnc_plugin.c:2067 plugins/gvnc/gvnc_plugin.c:848
 #, fuzzy
 msgid "Colour depth"
 msgstr "Дълбочина на цвета"
@@ -2898,8 +2898,8 @@ msgstr "Дълбочина на цвета"
 msgid "Network connection type"
 msgstr "Нова връзка"
 
-#: plugins/rdp/rdp_plugin.c:2840 plugins/vnc/vnc_plugin.c:2040
-#: plugins/vnc/vnc_plugin.c:2052
+#: plugins/rdp/rdp_plugin.c:2840 plugins/vnc/vnc_plugin.c:2056
+#: plugins/vnc/vnc_plugin.c:2068
 #, fuzzy
 msgid "Quality"
 msgstr "Качество"
@@ -3109,7 +3109,7 @@ msgstr "Споделяне на паралелни портове"
 msgid "Share a smart card"
 msgstr "Споделяне на смарт карта"
 
-#: plugins/rdp/rdp_plugin.c:2878 plugins/vnc/vnc_plugin.c:2075
+#: plugins/rdp/rdp_plugin.c:2878 plugins/vnc/vnc_plugin.c:2091
 #, fuzzy
 msgid "Turn off clipboard sync"
 msgstr "Изключване на синхронизирането на клипборда"
@@ -3130,7 +3130,7 @@ msgid "It disables CAL and hwId is set to 0"
 msgstr "Той деактивира CAL и hwId се настройва на 0"
 
 #: plugins/rdp/rdp_plugin.c:2881 plugins/spice/spice_plugin.c:704
-#: plugins/vnc/vnc_plugin.c:2071 plugins/www/www_plugin.c:936
+#: plugins/vnc/vnc_plugin.c:2087 plugins/www/www_plugin.c:936
 #: plugins/gvnc/gvnc_plugin.c:866
 msgid "Forget passwords after use"
 msgstr "%s парола"
@@ -3195,7 +3195,7 @@ msgid "Update framebuffer even when not visible"
 msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:2908 plugins/spice/spice_plugin.c:717
-#: plugins/vnc/vnc_plugin.c:2092
+#: plugins/vnc/vnc_plugin.c:2110
 #, fuzzy
 msgid "Send Ctrl+Alt+Delete"
 msgstr "Изпращане Ctrl+Alt+Delete"
@@ -3346,7 +3346,7 @@ msgid "Share smart card"
 msgstr "Споделяне на смарт карта"
 
 #: plugins/spice/spice_plugin.c:707 plugins/spice/spice_plugin.c:715
-#: plugins/vnc/vnc_plugin.c:2077 plugins/vnc/vnc_plugin.c:2088
+#: plugins/vnc/vnc_plugin.c:2093 plugins/vnc/vnc_plugin.c:2106
 #: plugins/gvnc/gvnc_plugin.c:869 plugins/gvnc/gvnc_plugin.c:878
 #, fuzzy
 msgid "View only"
@@ -3372,61 +3372,61 @@ msgstr "_Затваряне"
 msgid "USB redirection error"
 msgstr "Грешка в пренасочването на USB"
 
-#: plugins/vnc/vnc_plugin.c:789
+#: plugins/vnc/vnc_plugin.c:790
 msgid "Enter VNC password"
 msgstr "Запазване на паролата"
 
-#: plugins/vnc/vnc_plugin.c:842 plugins/gvnc/gvnc_plugin.c:538
+#: plugins/vnc/vnc_plugin.c:843 plugins/gvnc/gvnc_plugin.c:538
 #, fuzzy
 msgid "Enter VNC authentication credentials"
 msgstr "Въведете идентификационните данни за удостоверяване на VNC"
 
-#: plugins/vnc/vnc_plugin.c:950
+#: plugins/vnc/vnc_plugin.c:951
 #, fuzzy
 msgid "Unable to connect to VNC server"
 msgstr "Невъзможност за свързване с VNC сървър"
 
-#: plugins/vnc/vnc_plugin.c:951
+#: plugins/vnc/vnc_plugin.c:952
 #, fuzzy, c-format
 msgid "Couldn’t convert '%s' to host address"
 msgstr "Не можа да конвертира '%s' в адрес на хост"
 
-#: plugins/vnc/vnc_plugin.c:952
+#: plugins/vnc/vnc_plugin.c:953
 #, fuzzy, c-format
 msgid "VNC connection failed: %s"
 msgstr "Връзката с VNC е неуспешна: %s"
 
-#: plugins/vnc/vnc_plugin.c:953
+#: plugins/vnc/vnc_plugin.c:954
 #, fuzzy
 msgid "Your connection has been rejected."
 msgstr "Връзката ви беше отхвърлена."
 
-#: plugins/vnc/vnc_plugin.c:980
+#: plugins/vnc/vnc_plugin.c:981
 #, fuzzy, c-format
 msgid "The VNC server requested an unknown authentication method. %s"
 msgstr "VNC сървърът е поискал неизвестен метод за удостоверяване. %s"
 
-#: plugins/vnc/vnc_plugin.c:982
+#: plugins/vnc/vnc_plugin.c:983
 #, fuzzy
 msgid "Please retry after turning on encryption for this profile."
 msgstr "Моля, опитайте отново, след като включите криптирането за този профил."
 
-#: plugins/vnc/vnc_plugin.c:1716
+#: plugins/vnc/vnc_plugin.c:1717
 #, fuzzy, c-format
 msgid "Connected to %s via VNC"
 msgstr "Свързване към %s посредством SSH…"
 
-#: plugins/vnc/vnc_plugin.c:1723
+#: plugins/vnc/vnc_plugin.c:1724
 #, fuzzy, c-format
 msgid "Connected to %s:%d via VNC"
 msgstr "Свързване към %s посредством SSH…"
 
-#: plugins/vnc/vnc_plugin.c:1743
+#: plugins/vnc/vnc_plugin.c:1744
 #, c-format
 msgid "Disconnected from %s:%d via VNC"
 msgstr ""
 
-#: plugins/vnc/vnc_plugin.c:1992
+#: plugins/vnc/vnc_plugin.c:2008
 #, fuzzy
 msgid ""
 "Connect to VNC using a repeater:\n"
@@ -3447,7 +3447,7 @@ msgstr ""
 "    повторителя, например с x11vnc:\n"
 "    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
 
-#: plugins/vnc/vnc_plugin.c:2001
+#: plugins/vnc/vnc_plugin.c:2017
 #, fuzzy
 msgid ""
 "Listening for remote VNC connection:\n"
@@ -3464,7 +3464,7 @@ msgstr ""
 "    Remmina, напр. с x11vnc:\n"
 "    x11vnc -display :0 -connect 192.168.1.36:8888"
 
-#: plugins/vnc/vnc_plugin.c:2009
+#: plugins/vnc/vnc_plugin.c:2025
 msgid ""
 "Overriding the pre-set VNC encoding quality:\n"
 "\n"
@@ -3477,49 +3477,49 @@ msgid ""
 "corre rre raw”"
 msgstr ""
 
-#: plugins/vnc/vnc_plugin.c:2036
+#: plugins/vnc/vnc_plugin.c:2052
 #, fuzzy
 msgid "Repeater"
 msgstr "Повторител"
 
-#: plugins/vnc/vnc_plugin.c:2048
+#: plugins/vnc/vnc_plugin.c:2064
 #, fuzzy
 msgid "Listen on port"
 msgstr "Слушане на порт"
 
-#: plugins/vnc/vnc_plugin.c:2068
+#: plugins/vnc/vnc_plugin.c:2084
 msgid "Override pre-set VNC encodings"
 msgstr ""
 
-#: plugins/vnc/vnc_plugin.c:2069
+#: plugins/vnc/vnc_plugin.c:2085
 msgid "Force tight encoding"
 msgstr ""
 
-#: plugins/vnc/vnc_plugin.c:2069
+#: plugins/vnc/vnc_plugin.c:2085
 msgid "Enabling this may help when the remote desktop looks scrambled"
 msgstr ""
 
-#: plugins/vnc/vnc_plugin.c:2072 plugins/gvnc/gvnc_plugin.c:867
+#: plugins/vnc/vnc_plugin.c:2088 plugins/gvnc/gvnc_plugin.c:867
 #, fuzzy
 msgid "Ignore remote bell messages"
 msgstr "Игнориране на съобщенията за отдалечен звънец"
 
-#: plugins/vnc/vnc_plugin.c:2073 plugins/vnc/vnc_plugin.c:2089
+#: plugins/vnc/vnc_plugin.c:2089 plugins/vnc/vnc_plugin.c:2107
 #, fuzzy
 msgid "Prevent local interaction on the server"
 msgstr "Предотвратяване на локалното взаимодействие в сървъра"
 
-#: plugins/vnc/vnc_plugin.c:2074
+#: plugins/vnc/vnc_plugin.c:2090
 #, fuzzy
 msgid "Show remote cursor"
 msgstr "Показване на дистанционния курсор"
 
-#: plugins/vnc/vnc_plugin.c:2076
+#: plugins/vnc/vnc_plugin.c:2092
 #, fuzzy
 msgid "Turn off encryption"
 msgstr "Изключване на криптирането"
 
-#: plugins/vnc/vnc_plugin.c:2091
+#: plugins/vnc/vnc_plugin.c:2109
 #, fuzzy
 msgid "Open Chat…"
 msgstr "Отворен чат…"
