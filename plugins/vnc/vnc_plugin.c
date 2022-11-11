@@ -1835,7 +1835,8 @@ static void remmina_plugin_vnc_call_feature(RemminaProtocolWidget *gp, const Rem
 	TRACE_CALL(__func__);
 	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
 	RemminaFile *remminafile;
-
+	rfbClient*  client;
+	uint8_t previous_bpp;
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 	switch (feature->id) {
 	case REMMINA_PLUGIN_VNC_FEATURE_PREF_QUALITY:
@@ -1846,8 +1847,8 @@ static void remmina_plugin_vnc_call_feature(RemminaProtocolWidget *gp, const Rem
 		SetFormatAndEncodings((rfbClient *)(gpdata->client));
 		break;
 	case REMMINA_PLUGIN_VNC_FEATURE_PREF_COLOR:
-		rfbClient*  client = (rfbClient *)(gpdata->client);
-		uint8_t previous_bpp = client->format.bitsPerPixel;
+		client = (rfbClient *)(gpdata->client);
+		previous_bpp = client->format.bitsPerPixel;
 		remmina_plugin_vnc_update_colordepth(client,
 						     remmina_plugin_service->file_get_int(remminafile, "colordepth", 32));
 		SetFormatAndEncodings(client);
