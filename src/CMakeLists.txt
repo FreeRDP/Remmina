@@ -117,8 +117,6 @@ list(
   "remmina_sysinfo.c"
   "rcw.c"
   "rcw.h"
-  "rmnews.c"
-  "rmnews.h"
   "remmina_mpchange.c"
   "remmina_mpchange.h"
   "remmina_scheduler.c"
@@ -132,7 +130,6 @@ set(RESOURCE_LIST
     ${CMAKE_CURRENT_SOURCE_DIR}/../data/ui/remmina_key_chooser.glade
     ${CMAKE_CURRENT_SOURCE_DIR}/../data/ui/remmina_main.glade
     ${CMAKE_CURRENT_SOURCE_DIR}/../data/ui/remmina_mpc.glade
-    ${CMAKE_CURRENT_SOURCE_DIR}/../data/ui/remmina_news.glade
     ${CMAKE_CURRENT_SOURCE_DIR}/../data/ui/remmina_passwd.glade
     ${CMAKE_CURRENT_SOURCE_DIR}/../data/ui/remmina_preferences.glade
     ${CMAKE_CURRENT_SOURCE_DIR}/../data/ui/remmina_search.glade
@@ -250,13 +247,6 @@ if(GTK3_FOUND)
     target_link_libraries(remmina ${JSONGLIB_LIBRARIES})
   else()
     message(FATAL_ERROR "json-glib library not found")
-  endif()
-  find_required_package(LIBSOUP)
-  if(LIBSOUP_FOUND)
-    include_directories(${LIBSOUP_INCLUDE_DIRS})
-    target_link_libraries(remmina ${LIBSOUP_LIBRARIES})
-  else()
-    message(FATAL_ERROR "libsoup 2.4 library not found")
   endif()
 endif()
 
