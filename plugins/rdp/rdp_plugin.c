@@ -96,6 +96,7 @@
 #define REMMINA_RDP_FEATURE_TOOL_SENDCTRLALTDEL  4
 #define REMMINA_RDP_FEATURE_DYNRESUPDATE         5
 #define REMMINA_RDP_FEATURE_MULTIMON             6
+#define REMMINA_RDP_FEATURE_VIEWONLY             7
 
 #define REMMINA_CONNECTION_TYPE_NONE             0
 
@@ -2901,6 +2902,8 @@ static const RemminaProtocolSetting remmina_rdp_advanced_settings[] =
  * The last element of the array must be REMMINA_PROTOCOL_FEATURE_TYPE_END. */
 static const RemminaProtocolFeature remmina_rdp_features[] =
 {
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_PREF,	 	  REMMINA_RDP_FEATURE_VIEWONLY,	     GINT_TO_POINTER(REMMINA_PROTOCOL_FEATURE_PREF_CHECK), "viewonly",
+	  N_("View only") },
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,	      REMMINA_RDP_FEATURE_TOOL_REFRESH,	       N_("Refresh"),		   NULL, NULL },
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_SCALE,	      REMMINA_RDP_FEATURE_SCALE,	       NULL,			   NULL, NULL },
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_DYNRESUPDATE, REMMINA_RDP_FEATURE_DYNRESUPDATE,	       NULL,			   NULL, NULL },

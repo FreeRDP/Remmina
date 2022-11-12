@@ -561,6 +561,11 @@ static gboolean remmina_rdp_event_on_motion(GtkWidget *widget, GdkEventMotion *e
 {
 	TRACE_CALL(__func__);
 	RemminaPluginRdpEvent rdp_event = { 0 };
+	RemminaFile *remminafile;
+
+	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
+	if (remmina_plugin_service->file_get_int(remminafile, "viewonly", FALSE))
+		return FALSE;
 
 	rdp_event.type = REMMINA_RDP_EVENT_TYPE_MOUSE;
 	rdp_event.mouse_event.flags = PTR_FLAGS_MOVE;
@@ -583,6 +588,8 @@ static gboolean remmina_rdp_event_on_button(GtkWidget *widget, GdkEventButton *e
 	RemminaFile *remminafile;
 
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
+	if (remmina_plugin_service->file_get_int(remminafile, "viewonly", FALSE))
+		return FALSE;
 
 	/* We bypass 2button-press and 3button-press events */
 	if ((event->type != GDK_BUTTON_PRESS) && (event->type != GDK_BUTTON_RELEASE))
@@ -647,6 +654,11 @@ static gboolean remmina_rdp_event_on_scroll(GtkWidget *widget, GdkEventScroll *e
 	gint flag;
 	RemminaPluginRdpEvent rdp_event = { 0 };
 	float windows_delta;
+	RemminaFile *remminafile;
+
+	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
+	if (remmina_plugin_service->file_get_int(remminafile, "viewonly", FALSE))
+		return FALSE;
 
 	flag = 0;
 	rdp_event.type = REMMINA_RDP_EVENT_TYPE_MOUSE;
@@ -734,10 +746,15 @@ static gboolean remmina_rdp_event_on_key(GtkWidget *widget, GdkEventKey *event, 
 	rfContext *rfi = GET_PLUGIN_DATA(gp);
 	RemminaPluginRdpEvent rdp_event;
 	RemminaPluginRdpKeymapEntry *kep;
+	RemminaFile *remminafile;
 	DWORD scancode = 0;
 	int ik;
 
 	if (!rfi || !rfi->connected || rfi->is_reconnecting)
+		return FALSE;
+
+	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
+	if (remmina_plugin_service->file_get_int(remminafile, "viewonly", FALSE))
 		return FALSE;
 
 #ifdef ENABLE_GTK_INSPECTOR_KEY
