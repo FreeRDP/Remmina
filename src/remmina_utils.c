@@ -497,25 +497,3 @@ DONE:
 
 	return digest;
 }
-
-/**
- * Generate a random sting of chars to be used as part of UID for news or stats
- * @return a string or NULL. Caller must free it with g_free().
- */
-gchar *remmina_gen_random_uuid()
-{
-	TRACE_CALL(__func__);
-	gchar *result;
-	int i;
-	static char alpha[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-
-	result = g_malloc0(15);
-
-	for (i = 0; i < 7; i++)
-		result[i] = alpha[randombytes_uniform(sizeof(alpha))];
-
-	for (i = 0; i < 7; i++)
-		result[i + 7] = alpha[randombytes_uniform(sizeof(alpha))];
-
-	return result;
-}
