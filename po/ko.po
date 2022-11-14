@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-11-14 12:22+0000\n"
+"POT-Creation-Date: 2022-11-14 14:59+0000\n"
 "PO-Revision-Date: 2022-09-30 06:15+0000\n"
 "Last-Translator: 이정희 <daemul72@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -161,7 +161,7 @@ msgid "_OK"
 msgstr "확인(_O)"
 
 #: src/remmina_plugin_manager.c:544 src/remmina_file_editor.c:1935
-#: data/ui/remmina_main.glade:442
+#: data/ui/remmina_main.glade:432
 msgid "Name"
 msgstr "이름"
 
@@ -250,15 +250,15 @@ msgstr ""
 "\" 의 선택지)"
 
 #. TRANSLATORS: Do not translate libsodium, is the name of a library
-#: src/remmina_pref_dialog.c:477
+#: src/remmina_pref_dialog.c:474
 msgid "libsodium >= 1.9.0 is required to use Primary Password"
 msgstr "기본 비밀번호를 사용하려면 libsodium >= 1.9.0이 필요합니다"
 
-#: src/remmina_pref_dialog.c:814
+#: src/remmina_pref_dialog.c:807
 msgid "Picking a terminal colouring file replaces the file: "
 msgstr "터미널 색 파일 선택"
 
-#: src/remmina_pref_dialog.c:818
+#: src/remmina_pref_dialog.c:811
 msgid ""
 "This file contains the “Custom” terminal colour scheme selectable from the "
 "“Advanced” tab of terminal connections and editable in the “Terminal” tab in "
@@ -275,7 +275,7 @@ msgstr "취소"
 #: src/remmina_message_panel.c:198 data/ui/remmina_snap_info_dialog.glade:25
 #: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
 #: data/ui/remmina_string_list.glade:63 data/ui/remmina_news.glade:33
-#: data/ui/remmina_preferences.glade:2701
+#: data/ui/remmina_preferences.glade:2654
 msgid "Close"
 msgstr "닫기"
 
@@ -338,7 +338,7 @@ msgstr "이 마지막 활성 연결을 닫으시겠습니까?"
 msgid "Viewport fullscreen mode"
 msgstr "전체 화면 모드 뷰포트"
 
-#: src/rcw.c:1449 data/ui/remmina_preferences.glade:607
+#: src/rcw.c:1449 data/ui/remmina_preferences.glade:560
 msgid "Scrolled fullscreen"
 msgstr "스크롤된 전체 화면"
 
@@ -414,8 +414,8 @@ msgstr "원격 해상도에 맞게 창 크기 조정"
 msgid "Toggle fullscreen mode"
 msgstr "전체 화면 모드 전환"
 
-#: src/rcw.c:2445 data/ui/remmina_preferences.glade:1347
-#: data/ui/remmina_preferences.glade:1357
+#: src/rcw.c:2445 data/ui/remmina_preferences.glade:1300
+#: data/ui/remmina_preferences.glade:1310
 msgid "Multi monitor"
 msgstr "멀티 모니터"
 
@@ -427,7 +427,7 @@ msgstr "동적 해상도 갱신 전환"
 msgid "Toggle scaled mode"
 msgstr "크기 조정 모드 전환"
 
-#: src/rcw.c:2511 data/ui/remmina_preferences.glade:1081
+#: src/rcw.c:2511 data/ui/remmina_preferences.glade:1034
 msgid "Switch tab pages"
 msgstr "탭 페이지 전환"
 
@@ -447,16 +447,16 @@ msgstr "도구(_T)"
 msgid "Tools"
 msgstr "도구"
 
-#: src/rcw.c:2561 data/ui/remmina_preferences.glade:1282
-#: data/ui/remmina_preferences.glade:1292
+#: src/rcw.c:2561 data/ui/remmina_preferences.glade:1235
+#: data/ui/remmina_preferences.glade:1245
 msgid "Screenshot"
 msgstr "스크린샷"
 
-#: src/rcw.c:2575 data/ui/remmina_preferences.glade:1189
+#: src/rcw.c:2575 data/ui/remmina_preferences.glade:1142
 msgid "Minimize window"
 msgstr "창 최소화"
 
-#: src/rcw.c:2585 data/ui/remmina_preferences.glade:1220
+#: src/rcw.c:2585 data/ui/remmina_preferences.glade:1173
 msgid "Disconnect"
 msgstr "연결 끊기"
 
@@ -530,12 +530,12 @@ msgid_plural "%d passwords changed."
 msgstr[0] "%d 개의 비밀번호가 변경되었습니다."
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:96
+#: src/remmina.c:94
 msgid "Show 'About'"
 msgstr "'정보' 표시"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:98
+#: src/remmina.c:96
 msgid ""
 "Connect either to a desktop described in a file (.remmina or a filetype "
 "supported by a plugin) or a supported URI (RDP, VNC, SSH or SPICE)"
@@ -543,12 +543,12 @@ msgstr ""
 "파일(.remmina 또는 플러그인에서 지원하는 파일 형식)에 설명된 데스크톱 또는 지"
 "원되는 URI(RDP, VNC, SSH 또는 SPICE)에 연결"
 
-#: src/remmina.c:98 src/remmina.c:100 src/remmina.c:102
+#: src/remmina.c:96 src/remmina.c:98 src/remmina.c:100
 msgid "FILE"
 msgstr "파일"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:100
+#: src/remmina.c:98
 msgid ""
 "Connect to a desktop described in a file (.remmina or a filetype supported "
 "by a plugin)"
@@ -556,7 +556,7 @@ msgstr ""
 "파일에 기술된 데스크톱에 연결 (.remmina 또는 플러그인에서 지원하는 파일 형식)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:102
+#: src/remmina.c:100
 msgid ""
 "Edit desktop connection described in file (.remmina or a filetype supported "
 "by plugin)"
@@ -565,89 +565,85 @@ msgstr ""
 "식)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:105
+#: src/remmina.c:103
 msgid "Start in kiosk mode"
 msgstr "키오스크 모드 시작"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:107
+#: src/remmina.c:105
 msgid "Create new connection profile"
 msgstr "새 연결 프로필 생성"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:109
+#: src/remmina.c:107
 msgid "Show preferences"
 msgstr "기본 설정 표시"
 
-#: src/remmina.c:109
+#: src/remmina.c:107
 msgid "TABINDEX"
 msgstr "탭 인덱스"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:116
+#: src/remmina.c:114
 msgid "Quit"
 msgstr "종료"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:118
+#: src/remmina.c:116
 msgid "Use default server name (for --new)"
 msgstr "기본 서버 이름 사용 (--new)"
 
-#: src/remmina.c:118
+#: src/remmina.c:116
 msgid "SERVER"
 msgstr "서버"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:120
+#: src/remmina.c:118
 msgid "Use default protocol (for --new)"
 msgstr "기본 프로토콜 사용 (--new)"
 
-#: src/remmina.c:120
+#: src/remmina.c:118
 msgid "PROTOCOL"
 msgstr "프로토콜"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:122
+#: src/remmina.c:120
 msgid "Start in tray"
 msgstr "트레이에서 시작"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:124
+#: src/remmina.c:122
 msgid "Show the application version"
 msgstr "애플리케이션 버전 표시"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:126
+#: src/remmina.c:124
 msgid "Show version of the application and its plugins"
 msgstr "애플리케이션 및 해당 플러그인의 버전 표시"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:128
+#: src/remmina.c:126
 msgid "Modify connection profile (requires --set-option)"
 msgstr "연결 프로필 수정 (--set-option 필요)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:130
+#: src/remmina.c:128
 msgid "Set one or more profile settings, to be used with --update-profile"
 msgstr "--update-profile 을 사용해서 사용할 하나 이상의 프로필 설정"
 
-#: src/remmina.c:131
+#: src/remmina.c:129
 msgid "Encrypt a password"
 msgstr "비밀번호 암호화"
 
-#: src/remmina.c:132
-msgid "Disable news notification"
-msgstr "뉴스 알림 비활성화"
-
-#: src/remmina.c:133
+#: src/remmina.c:130
 msgid "Disable toolbar"
 msgstr "도구 모음 비활성화"
 
-#: src/remmina.c:134
+#: src/remmina.c:131
 msgid "Enable fullscreen"
 msgstr "전체화면 활성화"
 
-#: src/remmina.c:135
+#: src/remmina.c:132
 msgid ""
 "Enable extra hardening (disable closing confirmation, disable unsafe "
 "shortcut keys, hide tabs, hide search bar)"
@@ -655,7 +651,7 @@ msgstr ""
 "좀더 기능을 간소화 (접속 해제시 확인 안함, 몇몇 단축키의 사용을 제한, 탭 감추"
 "기, 검색 바 감추기)"
 
-#: src/remmina.c:136
+#: src/remmina.c:133
 msgid "Disable tray icon"
 msgstr "트레이 아이콘기능을 비활성화"
 
@@ -663,7 +659,7 @@ msgstr "트레이 아이콘기능을 비활성화"
 #. * This link should point to a resource explaining how to get Remmina
 #. * to log more verbose statements.
 #.
-#: src/remmina.c:371
+#: src/remmina.c:362
 msgid ""
 "Remmina does not log all output statements. Turn on more verbose output by "
 "using \"G_MESSAGES_DEBUG=all\" as an environment variable.\n"
@@ -676,11 +672,11 @@ msgstr ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:425
+#: src/remmina.c:416
 msgid "- or protocol://username:encryptedpassword@host:port"
 msgstr "- 또는 protocol://username:encryptedpassword@host:port"
 
-#: src/remmina.c:428
+#: src/remmina.c:419
 msgid ""
 "Examples:\n"
 "To connect using an existing connection profile, use:\n"
@@ -856,7 +852,7 @@ msgid "User"
 msgstr "사용자"
 
 #: src/remmina_ftp_client.c:955 src/remmina_file_editor.c:1960
-#: data/ui/remmina_mpc.glade:93 data/ui/remmina_main.glade:464
+#: data/ui/remmina_mpc.glade:93 data/ui/remmina_main.glade:454
 msgid "Group"
 msgstr "그룹"
 
@@ -993,7 +989,7 @@ msgid "Could not authenticate, attempting reconnection…"
 msgstr "인증할 수 없습니다, 재연결 시도 중…"
 
 #: src/remmina_protocol_widget.c:2047 src/remmina_file_editor.c:437
-#: src/remmina_file_editor.c:1191 data/ui/remmina_main.glade:494
+#: src/remmina_file_editor.c:1191 data/ui/remmina_main.glade:484
 msgid "Server"
 msgstr "서버"
 
@@ -1272,30 +1268,30 @@ msgstr "PTY 기기를 생성할 수 없습니다."
 msgid "Plugin %s is not registered."
 msgstr "%s 는 등록되지 않은 플러그인 입니다."
 
-#: src/remmina_main.c:730
+#: src/remmina_main.c:729
 msgid "The latest successful connection attempt, or a pre-computed date"
 msgstr "최근에 성공한 연결 시도 또는 미리 계산된 날짜"
 
-#: src/remmina_main.c:732
+#: src/remmina_main.c:731
 #, c-format
 msgid "Total %i item."
 msgid_plural "Total %i items."
 msgstr[0] "총 %i개의 항목."
 
-#: src/remmina_main.c:740
+#: src/remmina_main.c:739
 msgid "Network status: fully online"
 msgstr "네트워크 상태: 온라인"
 
-#: src/remmina_main.c:743
+#: src/remmina_main.c:742
 msgid "Network status: offline"
 msgstr "네트워크 상태: 오프라인"
 
-#: src/remmina_main.c:996
+#: src/remmina_main.c:995
 #, c-format
 msgid "Are you sure you want to delete “%s”?"
 msgstr "\"%s\"을(를) 삭제 하시겠습니까?"
 
-#: src/remmina_main.c:1122
+#: src/remmina_main.c:1121
 #, c-format
 msgid ""
 "Unable to import:\n"
@@ -1304,23 +1300,23 @@ msgstr ""
 "가져 올 수 없음:\n"
 "%s"
 
-#: src/remmina_main.c:1148 data/ui/remmina_main.glade:285
+#: src/remmina_main.c:1147 data/ui/remmina_main.glade:285
 msgid "Import"
 msgstr "가져오기"
 
-#: src/remmina_main.c:1171 src/remmina_file_editor.c:1816
+#: src/remmina_main.c:1170 src/remmina_file_editor.c:1816
 msgid "_Save"
 msgstr "저장(_S)"
 
-#: src/remmina_main.c:1177
+#: src/remmina_main.c:1176
 msgid "This protocol does not support exporting."
 msgstr "이 프로토콜은 '내보내기'를 지원하지 않습니다."
 
-#: src/remmina_main.c:1498
+#: src/remmina_main.c:1487
 msgid "Remmina Remote Desktop Client"
 msgstr "Remmina 원격 데스크톱 클라이언트"
 
-#: src/remmina_main.c:1500
+#: src/remmina_main.c:1489
 msgid "Remmina Kiosk"
 msgstr "Remmina 키오스크"
 
@@ -1572,7 +1568,7 @@ msgstr "기본 설정"
 msgid "Advanced"
 msgstr "고급 설정"
 
-#: src/remmina_file_editor.c:1329 data/ui/remmina_main.glade:508
+#: src/remmina_file_editor.c:1329 data/ui/remmina_main.glade:498
 msgid "Notes"
 msgstr "노트"
 
@@ -1637,7 +1633,7 @@ msgstr "빠른 접속"
 msgid "Use '%s' as subgroup delimiter"
 msgstr "'%s' 하위그룹 구분자 사용"
 
-#: src/remmina_file_editor.c:1978 data/ui/remmina_main.glade:478
+#: src/remmina_file_editor.c:1978 data/ui/remmina_main.glade:468
 msgid "Labels"
 msgstr "레이블"
 
@@ -1676,7 +1672,7 @@ msgstr "정보(_A)"
 msgid "Enable Service Discovery"
 msgstr "서비스 찾기 활성화"
 
-#: src/remmina_icon.c:168 data/ui/remmina_main.glade:404
+#: src/remmina_icon.c:168 data/ui/remmina_main.glade:394
 msgid "_Quit"
 msgstr "종료(_Q)"
 
@@ -2257,7 +2253,7 @@ msgstr "고화질 (15 bpp)"
 msgid "256 colours (8 bpp)"
 msgstr "256 색 (8 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2673 data/ui/remmina_preferences.glade:639
+#: plugins/rdp/rdp_plugin.c:2673 data/ui/remmina_preferences.glade:592
 msgid "None"
 msgstr "<없음>"
 
@@ -2290,7 +2286,7 @@ msgid "LAN"
 msgstr "LAN"
 
 #: plugins/rdp/rdp_plugin.c:2687 plugins/spice/spice_plugin.c:637
-#: data/ui/remmina_preferences.glade:675
+#: data/ui/remmina_preferences.glade:628
 msgid "Off"
 msgstr "끄기"
 
@@ -4011,7 +4007,7 @@ msgstr "정규 표현식으로 일치(_R)"
 msgid "_Wrap around"
 msgstr "처음부터 계속 검색(_W)"
 
-#: data/ui/remmina_about.glade:30 data/ui/remmina_main.glade:395
+#: data/ui/remmina_about.glade:30 data/ui/remmina_main.glade:385
 msgid "About"
 msgstr "정보"
 
@@ -4167,7 +4163,7 @@ msgid "Allow Remmina to automatically open .rdp and .remmina files."
 msgstr "Remmina가 .rdp 및 .remmina 파일을 자동으로 열 수 있도록 허용합니다."
 
 #. The star (*) is a reference to privacy consent
-#: data/ui/remmina_news.glade:157 data/ui/remmina_preferences.glade:448
+#: data/ui/remmina_news.glade:157
 msgid ""
 "Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
 "\">remmina.org</a> (*)"
@@ -4241,7 +4237,7 @@ msgid "Server name or IP address"
 msgstr "서버 이름 또는 IP 주소"
 
 #: data/ui/remmina_main.glade:102 data/ui/remmina_main.glade:104
-#: data/ui/remmina_preferences.glade:473
+#: data/ui/remmina_preferences.glade:426
 msgid "Clear"
 msgstr "비우기"
 
@@ -4274,51 +4270,47 @@ msgid "Make Remmina your default remote desktop client"
 msgstr "Remmina를 기본 원격 데스크톱 클라이언트로 설정"
 
 #: data/ui/remmina_main.glade:338
-msgid "News"
-msgstr "뉴스"
-
-#: data/ui/remmina_main.glade:348
 msgid "Homepage"
 msgstr "홈페이지"
 
-#: data/ui/remmina_main.glade:358
+#: data/ui/remmina_main.glade:348
 msgid "Donations"
 msgstr "기부"
 
-#: data/ui/remmina_main.glade:368
+#: data/ui/remmina_main.glade:358
 msgid "Wiki"
 msgstr "위키"
 
 #. Remmina community website
-#: data/ui/remmina_main.glade:378
+#: data/ui/remmina_main.glade:368
 msgid "Community"
 msgstr "온라인 커뮤니티"
 
-#: data/ui/remmina_main.glade:522
+#: data/ui/remmina_main.glade:512
 msgid "Plugin"
 msgstr "플러그인"
 
-#: data/ui/remmina_main.glade:536
+#: data/ui/remmina_main.glade:526
 msgid "Last used"
 msgstr "마지막 사용시간"
 
-#: data/ui/remmina_main.glade:585
+#: data/ui/remmina_main.glade:575
 msgid "New connection profile"
 msgstr "새 연결 프로필"
 
-#: data/ui/remmina_main.glade:597
+#: data/ui/remmina_main.glade:587
 msgid "Show search bar"
 msgstr "검색창 표시"
 
-#: data/ui/remmina_main.glade:617
+#: data/ui/remmina_main.glade:607
 msgid "Remmina main menu"
 msgstr "Remmina 기본 메뉴"
 
-#: data/ui/remmina_main.glade:624
+#: data/ui/remmina_main.glade:614
 msgid "Actions"
 msgstr "액션"
 
-#: data/ui/remmina_main.glade:639
+#: data/ui/remmina_main.glade:629
 msgid "Toggle view"
 msgstr "뷰 토글"
 
@@ -4459,106 +4451,101 @@ msgstr "생성한 스크린샷 만 저장하고, 클립 보드에 복사하지 �
 msgid "Prevent screenshots from entering clipboard"
 msgstr "스크린샷이 클립 보드에 추가되지 않도록 제한"
 
-#: data/ui/remmina_preferences.glade:430
-msgid "* By enabling news you consent to fetch data from remmina.org"
-msgstr ""
-"* 뉴스를 활성화하면 remmina.org에서 데이터를 가져오는 데 동의하는 것입니다"
-
-#: data/ui/remmina_preferences.glade:495
+#: data/ui/remmina_preferences.glade:448
 msgid "Confirm before closing multiple tabs"
 msgstr "여러 탭을 닫기 전에 확인하기"
 
-#: data/ui/remmina_preferences.glade:529
+#: data/ui/remmina_preferences.glade:482
 msgid "Options"
 msgstr "옵션"
 
-#: data/ui/remmina_preferences.glade:554
+#: data/ui/remmina_preferences.glade:507
 msgid "Always show tabs"
 msgstr "항상 탭 표시"
 
-#: data/ui/remmina_preferences.glade:570
+#: data/ui/remmina_preferences.glade:523
 msgid "Hide the toolbar shown in the tabbed interface"
 msgstr "탭 인터페이스에 표시된 도구모음 숨김"
 
-#: data/ui/remmina_preferences.glade:591
+#: data/ui/remmina_preferences.glade:544
 msgid "Default view"
 msgstr "기본 뷰 모드"
 
-#: data/ui/remmina_preferences.glade:605
+#: data/ui/remmina_preferences.glade:558
 msgid "Automatic"
 msgstr "자동"
 
-#: data/ui/remmina_preferences.glade:606
+#: data/ui/remmina_preferences.glade:559
 msgid "Scrolled window"
 msgstr "스크롤 윈도"
 
-#: data/ui/remmina_preferences.glade:608
+#: data/ui/remmina_preferences.glade:561
 msgid "Viewport fullscreen"
 msgstr "전체 화면 뷰포트"
 
 #. How tabs are grouped in the Remmina connection window
-#: data/ui/remmina_preferences.glade:624
+#: data/ui/remmina_preferences.glade:577
 msgctxt "Appearance preferences"
 msgid "Tabs grouping"
 msgstr "탭 그룹화"
 
-#: data/ui/remmina_preferences.glade:636
+#: data/ui/remmina_preferences.glade:589
 msgid "By group"
 msgstr "그룹 별 탭"
 
-#: data/ui/remmina_preferences.glade:637
+#: data/ui/remmina_preferences.glade:590
 msgid "By protocol"
 msgstr "프로토콜 별 탭"
 
-#: data/ui/remmina_preferences.glade:638
+#: data/ui/remmina_preferences.glade:591
 msgid "Per connection"
 msgstr "연결 시작"
 
-#: data/ui/remmina_preferences.glade:650
+#: data/ui/remmina_preferences.glade:603
 msgid "Fullscreen on the same screen as the connection window"
 msgstr "연결 윈도와 같은 화면에서 전체 화면"
 
-#: data/ui/remmina_preferences.glade:673
+#: data/ui/remmina_preferences.glade:626
 msgid "Peeking"
 msgstr "피킹(peeking)"
 
-#: data/ui/remmina_preferences.glade:674
+#: data/ui/remmina_preferences.glade:627
 msgid "Hidden"
 msgstr "숨겨짐"
 
-#: data/ui/remmina_preferences.glade:691
+#: data/ui/remmina_preferences.glade:644
 msgid "Fullscreen toolbar visibility"
 msgstr "전체 화면 툴바 보이기"
 
-#: data/ui/remmina_preferences.glade:701
+#: data/ui/remmina_preferences.glade:654
 msgid "Hide the search bar shown in the main window"
 msgstr "기본 창에 표시된 검색창 숨김"
 
-#: data/ui/remmina_preferences.glade:717
+#: data/ui/remmina_preferences.glade:670
 msgid "Prefer dark theme"
 msgstr "어두운 테마 선호"
 
-#: data/ui/remmina_preferences.glade:721
+#: data/ui/remmina_preferences.glade:674
 msgid ""
 "If a GTK theme includes a dark variant, it will be used instead of the "
 "configured theme."
 msgstr "GTK 테마가 다크 모드를 포함한 경우, 설정한 테마 대신 사용됩니다."
 
-#: data/ui/remmina_preferences.glade:734
+#: data/ui/remmina_preferences.glade:687
 #, fuzzy
 #| msgid "Always show tabs"
 msgid "Always show notes"
 msgstr "항상 탭 표시"
 
-#: data/ui/remmina_preferences.glade:738
+#: data/ui/remmina_preferences.glade:691
 msgid "Add a column displaying any notes associated with a connection."
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:758
+#: data/ui/remmina_preferences.glade:711
 msgid "“Grab all keyboard events” status colour"
 msgstr "\"모든 키보드 이벤트 캐치\" 상태 색"
 
-#: data/ui/remmina_preferences.glade:769
+#: data/ui/remmina_preferences.glade:722
 msgid ""
 "Hexadecimal- or colour names (red, #ff0000).\n"
 "It changes the background colour of connection names in the Remmina "
@@ -4567,117 +4554,117 @@ msgstr ""
 "16진수 또는 색상 이름(빨간색, #ff0000).\n"
 "Remmina 연결 도구모음에서 연결 이름의 배경색을 변경합니다(전체 화면일 때)."
 
-#: data/ui/remmina_preferences.glade:786
+#: data/ui/remmina_preferences.glade:739
 msgid "Enable/Disable “Grab all keyboard events” status colour"
 msgstr "\"모든 키보드 이벤트 캐치\" 상태 색 활성/비 활성"
 
-#: data/ui/remmina_preferences.glade:842
+#: data/ui/remmina_preferences.glade:795
 msgid "Appearance"
 msgstr "모양새"
 
-#: data/ui/remmina_preferences.glade:868
+#: data/ui/remmina_preferences.glade:821
 msgid "Show new connection on top of the menu"
 msgstr "메뉴 상단에 새 연결 표시"
 
-#: data/ui/remmina_preferences.glade:887
+#: data/ui/remmina_preferences.glade:840
 msgid "Hide total count shown in the group menu"
 msgstr "그룹 메뉴에 표시된 총 개수 숨김"
 
-#: data/ui/remmina_preferences.glade:905
+#: data/ui/remmina_preferences.glade:858
 msgid "No tray icon"
 msgstr "트레이 아이콘 없음"
 
-#: data/ui/remmina_preferences.glade:924
+#: data/ui/remmina_preferences.glade:877
 msgid "Start in tray upon user login"
 msgstr "사용자 로그인시 트레이에서 시작"
 
-#: data/ui/remmina_preferences.glade:955
+#: data/ui/remmina_preferences.glade:908
 msgid "Applet"
 msgstr "애플릿"
 
-#: data/ui/remmina_preferences.glade:987
+#: data/ui/remmina_preferences.glade:940
 msgid "Host key"
 msgstr "호스트 키"
 
-#: data/ui/remmina_preferences.glade:1019
+#: data/ui/remmina_preferences.glade:972
 msgid "Show/hide fullscreen"
 msgstr "전체 화면 표시/숨김"
 
-#: data/ui/remmina_preferences.glade:1050
+#: data/ui/remmina_preferences.glade:1003
 msgid "Auto-fit window"
 msgstr "자동 맞춤 윈도"
 
-#: data/ui/remmina_preferences.glade:1127
+#: data/ui/remmina_preferences.glade:1080
 msgid "Apply/remove scaling"
 msgstr "크기 조절 적용/제거"
 
-#: data/ui/remmina_preferences.glade:1158
+#: data/ui/remmina_preferences.glade:1111
 msgid "Grab keyboard"
 msgstr "키보드 잡기"
 
-#: data/ui/remmina_preferences.glade:1251
+#: data/ui/remmina_preferences.glade:1204
 msgid "Show/hide toolbar"
 msgstr "도구모음 표시/숨김"
 
-#: data/ui/remmina_preferences.glade:1314
-#: data/ui/remmina_preferences.glade:1324
+#: data/ui/remmina_preferences.glade:1267
+#: data/ui/remmina_preferences.glade:1277
 msgid "View-only mode"
 msgstr "뷰 전용 모드"
 
-#: data/ui/remmina_preferences.glade:1387
+#: data/ui/remmina_preferences.glade:1340
 msgid "Keyboard"
 msgstr "키보드"
 
-#: data/ui/remmina_preferences.glade:1418
+#: data/ui/remmina_preferences.glade:1371
 msgid "Local SSH port"
 msgstr "로컬 SSH 포트"
 
-#: data/ui/remmina_preferences.glade:1442
+#: data/ui/remmina_preferences.glade:1395
 msgid "Parse ~/.ssh/config"
 msgstr "~/.ssh/config 구문분석"
 
-#: data/ui/remmina_preferences.glade:1466
+#: data/ui/remmina_preferences.glade:1419
 msgid "No logging at all"
 msgstr "로딩 데이터 없음"
 
-#: data/ui/remmina_preferences.glade:1467
+#: data/ui/remmina_preferences.glade:1420
 msgid "Rare conditions or warnings"
 msgstr "거의 발생하지 않는 조건 또는 경고"
 
-#: data/ui/remmina_preferences.glade:1468
+#: data/ui/remmina_preferences.glade:1421
 msgid "API-accessible entrypoints"
 msgstr "API 액세스 가능한 진입 점"
 
-#: data/ui/remmina_preferences.glade:1469
+#: data/ui/remmina_preferences.glade:1422
 msgid "Lower level protocol info, packet level"
 msgstr "패킷 수준의 하위 수준 프로토콜 정보"
 
-#: data/ui/remmina_preferences.glade:1470
+#: data/ui/remmina_preferences.glade:1423
 msgid "Function entering and leaving"
 msgstr "기능 실행 및 종료"
 
-#: data/ui/remmina_preferences.glade:1487
+#: data/ui/remmina_preferences.glade:1440
 msgid "SSH log level"
 msgstr "SSH 로그 레벨"
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1558
+#: data/ui/remmina_preferences.glade:1511
 msgid "Seconds of connection idleness before TCP keepalive probes are sent."
 msgstr "TCP 연결 유지 패킷이 전송되기 전의 연결 유휴 시간(초)입니다."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1574
+#: data/ui/remmina_preferences.glade:1527
 msgid "Seconds between each keepalive probe."
 msgstr "연결 유지 패킷 사이의 시간(초)입니다."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1590
+#: data/ui/remmina_preferences.glade:1543
 msgid ""
 "Number of keepalive probes sent via TCP connection before it is dropped."
 msgstr "TCP 연결이 종료되기 전에 전송 된 keepalive probe 패킷 수."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1606
+#: data/ui/remmina_preferences.glade:1559
 msgid ""
 "Amount of milliseconds to attempt acknowledging data before closing the "
 "corresponding TCP connection forcibly."
@@ -4685,11 +4672,11 @@ msgstr ""
 "TCP 연결을 강제로 종료하기 전에 데이터 수신을 확인하는 시간(밀리세컨드) 입니"
 "다."
 
-#: data/ui/remmina_preferences.glade:1632
+#: data/ui/remmina_preferences.glade:1585
 msgid "SSH options"
 msgstr "SSH 옵션"
 
-#: data/ui/remmina_preferences.glade:1649
+#: data/ui/remmina_preferences.glade:1602
 msgid ""
 "Time in seconds before Remmina will lock the session and asks for a password "
 "again. Default: 300 Seconds."
@@ -4697,54 +4684,54 @@ msgstr ""
 "Remmina가 세션을 잠그고 비밀번호를 다시 묻기까지의 시간(초)입니다. 기본값: "
 "300초."
 
-#: data/ui/remmina_preferences.glade:1661
+#: data/ui/remmina_preferences.glade:1614
 msgid "Set and use a secret key to protect Remmina from unauthorized use."
 msgstr ""
 "Remmina를 무단 사용으로부터 보호하기 위해 비밀 키를 설정하고 사용합니다."
 
-#: data/ui/remmina_preferences.glade:1666
+#: data/ui/remmina_preferences.glade:1619
 msgid "Remmina password"
 msgstr "Remmina 비밀번호"
 
-#: data/ui/remmina_preferences.glade:1677
+#: data/ui/remmina_preferences.glade:1630
 msgid "Use secret key authentication for some widgets"
 msgstr "일부 위젯에 비밀 키 인증 사용"
 
-#: data/ui/remmina_preferences.glade:1697
+#: data/ui/remmina_preferences.glade:1650
 msgid "Valid for"
 msgstr "유효시간"
 
-#: data/ui/remmina_preferences.glade:1708
+#: data/ui/remmina_preferences.glade:1661
 msgid "Number of seconds to keep password valid for"
 msgstr "비밀번호를 유효하게 유지하는 시간(초)"
 
-#: data/ui/remmina_preferences.glade:1713
+#: data/ui/remmina_preferences.glade:1666
 msgid "timeout in seconds (default 300)"
 msgstr "시간 초과(초) (기본값 300)"
 
-#: data/ui/remmina_preferences.glade:1725
+#: data/ui/remmina_preferences.glade:1678
 msgid "Enter your Remmina password to connect"
 msgstr "연결하려면 Remmina 비밀번호 입력"
 
 #. “Require to connect” is “Require the Remmina password before to connect”, the Remmina password is the Master/Principal Password, that is used to protect Remmina from unauthorized use.
-#: data/ui/remmina_preferences.glade:1729
+#: data/ui/remmina_preferences.glade:1682
 msgid "Require to connect"
 msgstr "연결하려면 필요"
 
-#: data/ui/remmina_preferences.glade:1740
+#: data/ui/remmina_preferences.glade:1693
 msgid "Creation, editing, copying, and deletions require the Remmina password"
 msgstr "생성, 편집, 복사 및 삭제에는 Remmina 비밀번호가 필요합니다"
 
 #. Creation, editing, copying, and deletions require the primary password
-#: data/ui/remmina_preferences.glade:1744
+#: data/ui/remmina_preferences.glade:1697
 msgid "Require to modify"
 msgstr "수정하려면 필요"
 
-#: data/ui/remmina_preferences.glade:1786
+#: data/ui/remmina_preferences.glade:1739
 msgid "Encryption"
 msgstr "암호화"
 
-#: data/ui/remmina_preferences.glade:1797
+#: data/ui/remmina_preferences.glade:1750
 msgid ""
 "These are the encryption methods used by Remmina to store passwords.\n"
 "\n"
@@ -4762,64 +4749,64 @@ msgstr ""
 "\"Intermediate\"은 메모리나 처리 능력을 많이 사용하지 않으며 \"Sensitive\"은 "
 "더 안전하지만 +1 GiB의 RAM과 많은 CPU 주파수를 사용합니다. "
 
-#: data/ui/remmina_preferences.glade:1806
+#: data/ui/remmina_preferences.glade:1759
 msgid "Intermediate (+64 MiB RAM)"
 msgstr "중급 (+64 MiB RAM)"
 
-#: data/ui/remmina_preferences.glade:1807
+#: data/ui/remmina_preferences.glade:1760
 msgid "Strong (+256 MiB, ~2009 CPU)"
 msgstr "강력 (+256 MiB, ~2009 CPU)"
 
-#: data/ui/remmina_preferences.glade:1808
+#: data/ui/remmina_preferences.glade:1761
 msgid "Sensitive (+1 GiB, ~2014 CPU)"
 msgstr "민감 (+1 GiB, ~2014 CPU)"
 
-#: data/ui/remmina_preferences.glade:1824
+#: data/ui/remmina_preferences.glade:1777
 msgid "Auditing log"
 msgstr "감사 로그"
 
-#: data/ui/remmina_preferences.glade:1849
+#: data/ui/remmina_preferences.glade:1802
 msgid "Automatically accept all fingerprints and certificates"
 msgstr "모든 핑거프린트 및 인증서를 자동으로 수락"
 
-#: data/ui/remmina_preferences.glade:1854
+#: data/ui/remmina_preferences.glade:1807
 msgid "Trust all certificates"
 msgstr "모든 인증서 신뢰"
 
-#: data/ui/remmina_preferences.glade:1889
+#: data/ui/remmina_preferences.glade:1842
 msgid "Security"
 msgstr "보안"
 
-#: data/ui/remmina_preferences.glade:1920
+#: data/ui/remmina_preferences.glade:1873
 msgid "Terminal font"
 msgstr "터미널 폰트"
 
-#: data/ui/remmina_preferences.glade:1933
+#: data/ui/remmina_preferences.glade:1886
 msgid "Scrollback lines"
 msgstr "스크롤백 라인(Scrollback lines)"
 
-#: data/ui/remmina_preferences.glade:1981
+#: data/ui/remmina_preferences.glade:1934
 msgid "Shortcuts for copying and pasting"
 msgstr "복사 및 붙여 넣기 단축키"
 
-#: data/ui/remmina_preferences.glade:1994
+#: data/ui/remmina_preferences.glade:1947
 msgid "Select all shortcuts"
 msgstr "모든 단축 키 선택"
 
-#: data/ui/remmina_preferences.glade:2007
-#: data/ui/remmina_preferences.glade:2024
-#: data/ui/remmina_preferences.glade:2477
-#: data/ui/remmina_preferences.glade:2507
-#: data/ui/remmina_preferences.glade:2641
-#: data/ui/remmina_preferences.glade:2658
+#: data/ui/remmina_preferences.glade:1960
+#: data/ui/remmina_preferences.glade:1977
+#: data/ui/remmina_preferences.glade:2430
+#: data/ui/remmina_preferences.glade:2460
+#: data/ui/remmina_preferences.glade:2594
+#: data/ui/remmina_preferences.glade:2611
 msgid "(Host key+)"
 msgstr "(호스트 키 +)"
 
-#: data/ui/remmina_preferences.glade:2042
+#: data/ui/remmina_preferences.glade:1995
 msgid "Use default system font"
 msgstr "기본 시스템 글꼴 사용"
 
-#: data/ui/remmina_preferences.glade:2067
+#: data/ui/remmina_preferences.glade:2020
 msgid ""
 "Selecting “SGR 1” also switches to the bright counterparts of the first 8 "
 "palette colours (in addition to making text bold)."
@@ -4827,15 +4814,15 @@ msgstr ""
 "\"SGR 1\"을 선택하면 처음 8개 팔레트 색상의 밝은 색상으로 전환됩니다 (텍스트"
 "를 굵게 표시하는 것 외에도)."
 
-#: data/ui/remmina_preferences.glade:2083
+#: data/ui/remmina_preferences.glade:2036
 msgid "Show bold text in bright colors"
 msgstr "밝은 색상으로 굵은 텍스트 표시하기"
 
-#: data/ui/remmina_preferences.glade:2097
+#: data/ui/remmina_preferences.glade:2050
 msgid "Colour theme"
 msgstr "색 스키마 읽기"
 
-#: data/ui/remmina_preferences.glade:2108
+#: data/ui/remmina_preferences.glade:2061
 msgid ""
 "Choose a colour scheme file. Usually available in /usr/share/remmina/theme. "
 "https://github.com/mbadolato/iTerm2-Color-Schemes has more details."
@@ -4844,130 +4831,130 @@ msgstr ""
 "수 있습니다. https://github.com/mbadolato/iTerm2-Color-Schemes에 자세한 내용"
 "이 있습니다."
 
-#: data/ui/remmina_preferences.glade:2112
+#: data/ui/remmina_preferences.glade:2065
 msgid "Pick a terminal colouring file"
 msgstr "터미널 색 파일 선택"
 
-#: data/ui/remmina_preferences.glade:2127
+#: data/ui/remmina_preferences.glade:2080
 msgid "Bright colours"
 msgstr "밝은 색"
 
-#: data/ui/remmina_preferences.glade:2141
+#: data/ui/remmina_preferences.glade:2094
 msgid "Pick a light black colour"
 msgstr "블랙 라이트(light black) 색 선택"
 
-#: data/ui/remmina_preferences.glade:2155
+#: data/ui/remmina_preferences.glade:2108
 msgid "Pick a light red colour"
 msgstr "레드 라이트(light red) 색 선택"
 
-#: data/ui/remmina_preferences.glade:2169
+#: data/ui/remmina_preferences.glade:2122
 msgid "Pick a bright green colour"
 msgstr "밝은 녹 색 선택"
 
-#: data/ui/remmina_preferences.glade:2183
+#: data/ui/remmina_preferences.glade:2136
 msgid "Pick a bright yellow colour"
 msgstr "밝은 노란 색 선택"
 
-#: data/ui/remmina_preferences.glade:2197
+#: data/ui/remmina_preferences.glade:2150
 msgid "Pick a bright blue colour"
 msgstr "밝은 파란 색 선택"
 
-#: data/ui/remmina_preferences.glade:2211
+#: data/ui/remmina_preferences.glade:2164
 msgid "Pick a light magenta colour"
 msgstr "마젠타 라이트(light magenta) 색 선택"
 
-#: data/ui/remmina_preferences.glade:2225
+#: data/ui/remmina_preferences.glade:2178
 msgid "Pick a light cyan colour"
 msgstr "시안 라이트(light cyan) 색 선택"
 
-#: data/ui/remmina_preferences.glade:2239
+#: data/ui/remmina_preferences.glade:2192
 msgid "Pick a light white colour"
 msgstr "화이트 라이트(light white) 색 선택"
 
-#: data/ui/remmina_preferences.glade:2253
+#: data/ui/remmina_preferences.glade:2206
 msgid "Pick a black colour"
 msgstr "검은 색 선택"
 
-#: data/ui/remmina_preferences.glade:2267
+#: data/ui/remmina_preferences.glade:2220
 msgid "Pick a red colour"
 msgstr "붉은 색 선택"
 
-#: data/ui/remmina_preferences.glade:2281
+#: data/ui/remmina_preferences.glade:2234
 msgid "Pick a green colour"
 msgstr "녹 색 선택"
 
-#: data/ui/remmina_preferences.glade:2295
+#: data/ui/remmina_preferences.glade:2248
 msgid "Pick a yellow colour"
 msgstr "노란 색 선택"
 
-#: data/ui/remmina_preferences.glade:2309
+#: data/ui/remmina_preferences.glade:2262
 msgid "Pick a blue colour"
 msgstr "파란 색 선택"
 
-#: data/ui/remmina_preferences.glade:2323
+#: data/ui/remmina_preferences.glade:2276
 msgid "Pick a magenta colour"
 msgstr "마젠타(magenta) 색 선택"
 
-#: data/ui/remmina_preferences.glade:2337
+#: data/ui/remmina_preferences.glade:2290
 msgid "Pick a cyan colour"
 msgstr "시안(cyan) 색 선택"
 
-#: data/ui/remmina_preferences.glade:2351
+#: data/ui/remmina_preferences.glade:2304
 msgid "Pick a white colour"
 msgstr "흰 색 선택"
 
-#: data/ui/remmina_preferences.glade:2364
+#: data/ui/remmina_preferences.glade:2317
 msgid "Normal colours"
 msgstr "일반 색"
 
-#: data/ui/remmina_preferences.glade:2377
-#: data/ui/remmina_preferences.glade:2392
+#: data/ui/remmina_preferences.glade:2330
+#: data/ui/remmina_preferences.glade:2345
 msgid "Cursor colour"
 msgstr "커서 색"
 
-#: data/ui/remmina_preferences.glade:2406
-#: data/ui/remmina_preferences.glade:2421
+#: data/ui/remmina_preferences.glade:2359
+#: data/ui/remmina_preferences.glade:2374
 msgid "Background colour"
 msgstr "배경 색"
 
-#: data/ui/remmina_preferences.glade:2437
-#: data/ui/remmina_preferences.glade:2451
+#: data/ui/remmina_preferences.glade:2390
+#: data/ui/remmina_preferences.glade:2404
 msgid "Foreground colour"
 msgstr "전경 색"
 
-#: data/ui/remmina_preferences.glade:2464
+#: data/ui/remmina_preferences.glade:2417
 msgid "Increase and decrease font size"
 msgstr "글꼴 크기 늘리기 및 줄이기"
 
-#: data/ui/remmina_preferences.glade:2494
+#: data/ui/remmina_preferences.glade:2447
 msgid "Search text shortcut"
 msgstr "텍스트 검색 바로가기"
 
-#: data/ui/remmina_preferences.glade:2525
-#: data/ui/remmina_preferences.glade:2540
+#: data/ui/remmina_preferences.glade:2478
+#: data/ui/remmina_preferences.glade:2493
 msgid "Bold colour"
 msgstr "일반 색"
 
-#: data/ui/remmina_preferences.glade:2554
-#: data/ui/remmina_preferences.glade:2595
+#: data/ui/remmina_preferences.glade:2507
+#: data/ui/remmina_preferences.glade:2548
 msgid "Highlight colour"
 msgstr "하이라이트 색"
 
-#: data/ui/remmina_preferences.glade:2567
-#: data/ui/remmina_preferences.glade:2611
+#: data/ui/remmina_preferences.glade:2520
+#: data/ui/remmina_preferences.glade:2564
 msgid "Highlight foreground colour"
 msgstr "하이라이트 포그라운드 색"
 
+#: data/ui/remmina_preferences.glade:2533
 #: data/ui/remmina_preferences.glade:2580
-#: data/ui/remmina_preferences.glade:2627
 msgid "Cursor foreground colour"
 msgstr "포그라운드 커서 색"
 
-#: data/ui/remmina_preferences.glade:2683
+#: data/ui/remmina_preferences.glade:2636
 msgid "Terminal"
 msgstr "터미널"
 
-#: data/ui/remmina_preferences.glade:2697
+#: data/ui/remmina_preferences.glade:2650
 msgid "Remmina Preferences"
 msgstr "Remmina 기본 설정"
 
@@ -4982,6 +4969,16 @@ msgstr "Remmina 잠금 해제"
 #: data/ui/remmina_unlock.glade:120
 msgid "Master password"
 msgstr "마스터 비밀번호"
+
+#~ msgid "Disable news notification"
+#~ msgstr "뉴스 알림 비활성화"
+
+#~ msgid "News"
+#~ msgstr "뉴스"
+
+#~ msgid "* By enabling news you consent to fetch data from remmina.org"
+#~ msgstr ""
+#~ "* 뉴스를 활성화하면 remmina.org에서 데이터를 가져오는 데 동의하는 것입니다"
 
 #~ msgid "SSH private key passphrase"
 #~ msgstr "SSH 개인 키 열쇠글"

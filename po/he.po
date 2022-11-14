@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-11-14 12:22+0000\n"
+"POT-Creation-Date: 2022-11-14 14:59+0000\n"
 "PO-Revision-Date: 2022-05-10 17:16+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -161,7 +161,7 @@ msgid "_OK"
 msgstr "_אישור"
 
 #: src/remmina_plugin_manager.c:544 src/remmina_file_editor.c:1935
-#: data/ui/remmina_main.glade:442
+#: data/ui/remmina_main.glade:432
 msgid "Name"
 msgstr "שם"
 
@@ -248,15 +248,15 @@ msgid "Configure the keystrokes"
 msgstr "הגדרת לחיצות המקשים"
 
 #. TRANSLATORS: Do not translate libsodium, is the name of a library
-#: src/remmina_pref_dialog.c:477
+#: src/remmina_pref_dialog.c:474
 msgid "libsodium >= 1.9.0 is required to use Primary Password"
 msgstr "צריך libsodium >= 1.9.0 כדי להשתמש בסיסמה העיקרית"
 
-#: src/remmina_pref_dialog.c:814
+#: src/remmina_pref_dialog.c:807
 msgid "Picking a terminal colouring file replaces the file: "
 msgstr "בחירת קובץ צבעים למסוף מחליפה את הקובץ: "
 
-#: src/remmina_pref_dialog.c:818
+#: src/remmina_pref_dialog.c:811
 msgid ""
 "This file contains the “Custom” terminal colour scheme selectable from the "
 "“Advanced” tab of terminal connections and editable in the “Terminal” tab in "
@@ -273,7 +273,7 @@ msgstr "ביטול"
 #: src/remmina_message_panel.c:198 data/ui/remmina_snap_info_dialog.glade:25
 #: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
 #: data/ui/remmina_string_list.glade:63 data/ui/remmina_news.glade:33
-#: data/ui/remmina_preferences.glade:2701
+#: data/ui/remmina_preferences.glade:2654
 msgid "Close"
 msgstr "סגירה"
 
@@ -337,7 +337,7 @@ msgstr "לסגור את החיבור הפעיל האחרון?"
 msgid "Viewport fullscreen mode"
 msgstr "מצב מסך מלא בלתי מתואם"
 
-#: src/rcw.c:1449 data/ui/remmina_preferences.glade:607
+#: src/rcw.c:1449 data/ui/remmina_preferences.glade:560
 msgid "Scrolled fullscreen"
 msgstr "מסך מלא נגלל"
 
@@ -401,8 +401,8 @@ msgstr "שינוי גודל החלון כדי שיתאים לרזולוציה ה
 msgid "Toggle fullscreen mode"
 msgstr "הפעלת/כיבוי מצב מסך מלא"
 
-#: src/rcw.c:2445 data/ui/remmina_preferences.glade:1347
-#: data/ui/remmina_preferences.glade:1357
+#: src/rcw.c:2445 data/ui/remmina_preferences.glade:1300
+#: data/ui/remmina_preferences.glade:1310
 msgid "Multi monitor"
 msgstr "ריבוי צגים"
 
@@ -414,7 +414,7 @@ msgstr "הפעלת/כיבוי עדכון רזולוציה דינמי"
 msgid "Toggle scaled mode"
 msgstr "הפעלת/כיבוי מצב התאמת גודל"
 
-#: src/rcw.c:2511 data/ui/remmina_preferences.glade:1081
+#: src/rcw.c:2511 data/ui/remmina_preferences.glade:1034
 msgid "Switch tab pages"
 msgstr "מעבר בין עמודי לשוניות"
 
@@ -434,16 +434,16 @@ msgstr "_כלים"
 msgid "Tools"
 msgstr "כלים"
 
-#: src/rcw.c:2561 data/ui/remmina_preferences.glade:1282
-#: data/ui/remmina_preferences.glade:1292
+#: src/rcw.c:2561 data/ui/remmina_preferences.glade:1235
+#: data/ui/remmina_preferences.glade:1245
 msgid "Screenshot"
 msgstr "צילום מסך"
 
-#: src/rcw.c:2575 data/ui/remmina_preferences.glade:1189
+#: src/rcw.c:2575 data/ui/remmina_preferences.glade:1142
 msgid "Minimize window"
 msgstr "מזעור חלון"
 
-#: src/rcw.c:2585 data/ui/remmina_preferences.glade:1220
+#: src/rcw.c:2585 data/ui/remmina_preferences.glade:1173
 msgid "Disconnect"
 msgstr "התנתקות"
 
@@ -519,12 +519,12 @@ msgstr[0] "סיסמה אחת הוחלפה."
 msgstr[1] "%d סיסמאות הוחלפו."
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:96
+#: src/remmina.c:94
 msgid "Show 'About'"
 msgstr "הצגת ‚על אודות’"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:98
+#: src/remmina.c:96
 #, fuzzy
 msgid ""
 "Connect either to a desktop described in a file (.remmina or a filetype "
@@ -533,12 +533,12 @@ msgstr ""
 "ניתן להתחבר או לשולחן עבודה שמתואר בקובץ (‎.remmina או סוג קובץ שנתמך על ידי "
 "תוסף) או כתובת נתמכת (RDP,‏ VNC,‏ SSH או SPICE)"
 
-#: src/remmina.c:98 src/remmina.c:100 src/remmina.c:102
+#: src/remmina.c:96 src/remmina.c:98 src/remmina.c:100
 msgid "FILE"
 msgstr "קובץ"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:100
+#: src/remmina.c:98
 #, fuzzy
 msgid ""
 "Connect to a desktop described in a file (.remmina or a filetype supported "
@@ -546,7 +546,7 @@ msgid ""
 msgstr "התחברות לשולחן עבודה שמתואר בקובץ (‎.remmina או סוג שנתמך על ידי תוסף)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:102
+#: src/remmina.c:100
 #, fuzzy
 msgid ""
 "Edit desktop connection described in file (.remmina or a filetype supported "
@@ -555,96 +555,92 @@ msgstr ""
 "עריכת התחברות לשולחן עבודה שמתוארת בקובץ (‎.remmina או סוג שנתמך על ידי תוסף)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:105
+#: src/remmina.c:103
 msgid "Start in kiosk mode"
 msgstr "הפעלה במצב קיוסק"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:107
+#: src/remmina.c:105
 #, fuzzy
 msgid "Create new connection profile"
 msgstr "יצירת פרופיל חיבור חדש"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:109
+#: src/remmina.c:107
 msgid "Show preferences"
 msgstr "הצגת ההעדפות"
 
-#: src/remmina.c:109
+#: src/remmina.c:107
 #, fuzzy
 msgid "TABINDEX"
 msgstr "TABINDEX"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:116
+#: src/remmina.c:114
 msgid "Quit"
 msgstr "יציאה"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:118
+#: src/remmina.c:116
 msgid "Use default server name (for --new)"
 msgstr "להשתמש בשם השרת כברירת מחדל (עבור ‎--new)"
 
-#: src/remmina.c:118
+#: src/remmina.c:116
 #, fuzzy
 msgid "SERVER"
 msgstr "SERVER"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:120
+#: src/remmina.c:118
 msgid "Use default protocol (for --new)"
 msgstr "להשתמש בפרוטוקול ברירת המחדל (עבור ‎--new)"
 
-#: src/remmina.c:120
+#: src/remmina.c:118
 #, fuzzy
 msgid "PROTOCOL"
 msgstr "PROTOCOL"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:122
+#: src/remmina.c:120
 #, fuzzy
 msgid "Start in tray"
 msgstr "Start in tray"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:124
+#: src/remmina.c:122
 msgid "Show the application version"
 msgstr "להציג את מספר הגירסה"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:126
+#: src/remmina.c:124
 msgid "Show version of the application and its plugins"
 msgstr "להציג את גירסת היישום והתוספים"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:128
+#: src/remmina.c:126
 msgid "Modify connection profile (requires --set-option)"
 msgstr "עריכת פרופיל חיבור (דורש ‎--set-option)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:130
+#: src/remmina.c:128
 msgid "Set one or more profile settings, to be used with --update-profile"
 msgstr "הגדרת חלקים נוספים בהגדרות הפרופיל, לשימוש עם ‎--update-profile"
 
-#: src/remmina.c:131
+#: src/remmina.c:129
 msgid "Encrypt a password"
 msgstr "הצפנת סיסמה"
 
-#: src/remmina.c:132
-msgid "Disable news notification"
-msgstr "השבתת התראת החדשות"
-
-#: src/remmina.c:133
+#: src/remmina.c:130
 #, fuzzy
 #| msgid "Disable clipboard sync"
 msgid "Disable toolbar"
 msgstr "נטרול סנכרון לוח הגזירים"
 
-#: src/remmina.c:134
+#: src/remmina.c:131
 msgid "Enable fullscreen"
 msgstr "כניסה למסך מלא"
 
-#: src/remmina.c:135
+#: src/remmina.c:132
 msgid ""
 "Enable extra hardening (disable closing confirmation, disable unsafe "
 "shortcut keys, hide tabs, hide search bar)"
@@ -652,7 +648,7 @@ msgstr ""
 "הפעלה הקשחה מוגברת (השבתת אישור סגירה, השבתת קיצורי מקשים מפוקפקים, הסתרת "
 "אטבים, הסתרת סרגל החיפוש)"
 
-#: src/remmina.c:136
+#: src/remmina.c:133
 #, fuzzy
 #| msgid "Dark tray icon"
 msgid "Disable tray icon"
@@ -662,7 +658,7 @@ msgstr "סמל כהה במגש המערכת"
 #. * This link should point to a resource explaining how to get Remmina
 #. * to log more verbose statements.
 #.
-#: src/remmina.c:371
+#: src/remmina.c:362
 #, fuzzy
 msgid ""
 "Remmina does not log all output statements. Turn on more verbose output by "
@@ -676,11 +672,11 @@ msgstr ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:425
+#: src/remmina.c:416
 msgid "- or protocol://username:encryptedpassword@host:port"
 msgstr "- או protocol://username:encryptedpassword@host:port"
 
-#: src/remmina.c:428
+#: src/remmina.c:419
 #, fuzzy
 msgid ""
 "Examples:\n"
@@ -861,7 +857,7 @@ msgid "User"
 msgstr "משתמש"
 
 #: src/remmina_ftp_client.c:955 src/remmina_file_editor.c:1960
-#: data/ui/remmina_mpc.glade:93 data/ui/remmina_main.glade:464
+#: data/ui/remmina_mpc.glade:93 data/ui/remmina_main.glade:454
 msgid "Group"
 msgstr "קבוצה"
 
@@ -1000,7 +996,7 @@ msgid "Could not authenticate, attempting reconnection…"
 msgstr "האימות נכשל, מתבצע ניסיון חיבור מחדש…"
 
 #: src/remmina_protocol_widget.c:2047 src/remmina_file_editor.c:437
-#: src/remmina_file_editor.c:1191 data/ui/remmina_main.glade:494
+#: src/remmina_file_editor.c:1191 data/ui/remmina_main.glade:484
 msgid "Server"
 msgstr "שרת"
 
@@ -1291,32 +1287,32 @@ msgstr "לא ניתן ליצור התקן pty."
 msgid "Plugin %s is not registered."
 msgstr "התוסף %s לא נרשם."
 
-#: src/remmina_main.c:730
+#: src/remmina_main.c:729
 #, fuzzy
 msgid "The latest successful connection attempt, or a pre-computed date"
 msgstr "ניסיון החיבור האחרון שצלח או תאריך שחושב מראש"
 
-#: src/remmina_main.c:732
+#: src/remmina_main.c:731
 #, c-format
 msgid "Total %i item."
 msgid_plural "Total %i items."
 msgstr[0] "סך הכול פריט אחד."
 msgstr[1] "סך הכול %i פריטים."
 
-#: src/remmina_main.c:740
+#: src/remmina_main.c:739
 msgid "Network status: fully online"
 msgstr "מצב הרשת: מחוברת לחלוטין"
 
-#: src/remmina_main.c:743
+#: src/remmina_main.c:742
 msgid "Network status: offline"
 msgstr "מצב הרשת: כבויה"
 
-#: src/remmina_main.c:996
+#: src/remmina_main.c:995
 #, c-format
 msgid "Are you sure you want to delete “%s”?"
 msgstr "למחוק את „%s”?"
 
-#: src/remmina_main.c:1122
+#: src/remmina_main.c:1121
 #, c-format
 msgid ""
 "Unable to import:\n"
@@ -1325,25 +1321,25 @@ msgstr ""
 "לא ניתן לייבא:\n"
 "%s"
 
-#: src/remmina_main.c:1148 data/ui/remmina_main.glade:285
+#: src/remmina_main.c:1147 data/ui/remmina_main.glade:285
 msgid "Import"
 msgstr "ייבוא"
 
-#: src/remmina_main.c:1171 src/remmina_file_editor.c:1816
+#: src/remmina_main.c:1170 src/remmina_file_editor.c:1816
 msgid "_Save"
 msgstr "_שמירה"
 
-#: src/remmina_main.c:1177
+#: src/remmina_main.c:1176
 #, fuzzy
 msgid "This protocol does not support exporting."
 msgstr "פרוטוקול זה אינו תומך בייצוא."
 
-#: src/remmina_main.c:1498
+#: src/remmina_main.c:1487
 #, fuzzy
 msgid "Remmina Remote Desktop Client"
 msgstr "Remmina לקוח חיבורי שולחן עבודה מרוחקים"
 
-#: src/remmina_main.c:1500
+#: src/remmina_main.c:1489
 #, fuzzy
 msgid "Remmina Kiosk"
 msgstr "קיוסק Remmina"
@@ -1616,7 +1612,7 @@ msgstr "בסיסי"
 msgid "Advanced"
 msgstr "מתקדם"
 
-#: src/remmina_file_editor.c:1329 data/ui/remmina_main.glade:508
+#: src/remmina_file_editor.c:1329 data/ui/remmina_main.glade:498
 #, fuzzy
 msgid "Notes"
 msgstr "הערות"
@@ -1683,7 +1679,7 @@ msgstr "התחברות מהירה"
 msgid "Use '%s' as subgroup delimiter"
 msgstr "‚%s’ להפרדת תת־קבוצות"
 
-#: src/remmina_file_editor.c:1978 data/ui/remmina_main.glade:478
+#: src/remmina_file_editor.c:1978 data/ui/remmina_main.glade:468
 msgid "Labels"
 msgstr ""
 
@@ -1724,7 +1720,7 @@ msgstr "_אודות"
 msgid "Enable Service Discovery"
 msgstr "הפעלת גילוי שירותים"
 
-#: src/remmina_icon.c:168 data/ui/remmina_main.glade:404
+#: src/remmina_icon.c:168 data/ui/remmina_main.glade:394
 msgid "_Quit"
 msgstr "י_ציאה"
 
@@ -2345,7 +2341,7 @@ msgstr "צבע איכותי (‎15 bpp)"
 msgid "256 colours (8 bpp)"
 msgstr "256 צבעים (‏‎8 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2673 data/ui/remmina_preferences.glade:639
+#: plugins/rdp/rdp_plugin.c:2673 data/ui/remmina_preferences.glade:592
 #, fuzzy
 msgid "None"
 msgstr "כלום"
@@ -2383,7 +2379,7 @@ msgid "LAN"
 msgstr "רשת מקומית"
 
 #: plugins/rdp/rdp_plugin.c:2687 plugins/spice/spice_plugin.c:637
-#: data/ui/remmina_preferences.glade:675
+#: data/ui/remmina_preferences.glade:628
 #, fuzzy
 msgid "Off"
 msgstr "כבוי"
@@ -4308,7 +4304,7 @@ msgstr "התאמת ביטוי _רגולרי"
 msgid "_Wrap around"
 msgstr "ח_זרה מההתחלה"
 
-#: data/ui/remmina_about.glade:30 data/ui/remmina_main.glade:395
+#: data/ui/remmina_about.glade:30 data/ui/remmina_main.glade:385
 #, fuzzy
 msgid "About"
 msgstr "על אודות"
@@ -4486,7 +4482,7 @@ msgid "Allow Remmina to automatically open .rdp and .remmina files."
 msgstr "לאפשר ל־Remmina לפתוח קובצי ‎.rdp ו־‎.remmina אוטומטית."
 
 #. The star (*) is a reference to privacy consent
-#: data/ui/remmina_news.glade:157 data/ui/remmina_preferences.glade:448
+#: data/ui/remmina_news.glade:157
 #, fuzzy
 msgid ""
 "Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
@@ -4575,7 +4571,7 @@ msgid "Server name or IP address"
 msgstr "שם שרת או כתובת IP"
 
 #: data/ui/remmina_main.glade:102 data/ui/remmina_main.glade:104
-#: data/ui/remmina_preferences.glade:473
+#: data/ui/remmina_preferences.glade:426
 #, fuzzy
 msgid "Clear"
 msgstr "ניקוי"
@@ -4615,61 +4611,56 @@ msgstr "הגדרת Remmina כלקוח ברירת המחדל לחיבורי שו�
 
 #: data/ui/remmina_main.glade:338
 #, fuzzy
-msgid "News"
-msgstr "חדשות"
-
-#: data/ui/remmina_main.glade:348
-#, fuzzy
 msgid "Homepage"
 msgstr "דף הבית"
 
-#: data/ui/remmina_main.glade:358
+#: data/ui/remmina_main.glade:348
 #, fuzzy
 msgid "Donations"
 msgstr "תרומה"
 
-#: data/ui/remmina_main.glade:368
+#: data/ui/remmina_main.glade:358
 #, fuzzy
 msgid "Wiki"
 msgstr "וויקי"
 
 #. Remmina community website
-#: data/ui/remmina_main.glade:378
+#: data/ui/remmina_main.glade:368
 #, fuzzy
 msgid "Community"
 msgstr "קהילה"
 
-#: data/ui/remmina_main.glade:522
+#: data/ui/remmina_main.glade:512
 #, fuzzy
 msgid "Plugin"
 msgstr "תוסף"
 
-#: data/ui/remmina_main.glade:536
+#: data/ui/remmina_main.glade:526
 #, fuzzy
 msgid "Last used"
 msgstr "נעשה בו שימוש לאחרונה"
 
-#: data/ui/remmina_main.glade:585
+#: data/ui/remmina_main.glade:575
 #, fuzzy
 msgid "New connection profile"
 msgstr "פרופיל חיבור חדש"
 
-#: data/ui/remmina_main.glade:597
+#: data/ui/remmina_main.glade:587
 #, fuzzy
 msgid "Show search bar"
 msgstr "הצגת סרגל חיפוש"
 
-#: data/ui/remmina_main.glade:617
+#: data/ui/remmina_main.glade:607
 #, fuzzy
 msgid "Remmina main menu"
 msgstr "התפריט הראשי של Remmina"
 
-#: data/ui/remmina_main.glade:624
+#: data/ui/remmina_main.glade:614
 #, fuzzy
 msgid "Actions"
 msgstr "פעולות"
 
-#: data/ui/remmina_main.glade:639
+#: data/ui/remmina_main.glade:629
 #, fuzzy
 msgid "Toggle view"
 msgstr "החלפת תצוגה"
@@ -4836,102 +4827,95 @@ msgstr "רק לשמור צילומי מסך, לא להעתיק אותם ללוח
 msgid "Prevent screenshots from entering clipboard"
 msgstr "למנוע את כניסת צילומי המסך ללוח הגזירים"
 
-#: data/ui/remmina_preferences.glade:430
-#, fuzzy
-msgid "* By enabling news you consent to fetch data from remmina.org"
-msgstr ""
-"* הפעלת הסטטיסטיקה ו/או החדשות מהווה את הסכמתך לשלוח ולהביא נתונים מתוך/אל "
-"remmina.org"
-
-#: data/ui/remmina_preferences.glade:495
+#: data/ui/remmina_preferences.glade:448
 msgid "Confirm before closing multiple tabs"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:529
+#: data/ui/remmina_preferences.glade:482
 #, fuzzy
 msgid "Options"
 msgstr "אפשרויות"
 
-#: data/ui/remmina_preferences.glade:554
+#: data/ui/remmina_preferences.glade:507
 #, fuzzy
 msgid "Always show tabs"
 msgstr "תמיד להציג לשוניות"
 
-#: data/ui/remmina_preferences.glade:570
+#: data/ui/remmina_preferences.glade:523
 #, fuzzy
 msgid "Hide the toolbar shown in the tabbed interface"
 msgstr "להסתיר את סרגל הכלים שמופיע במנשק המופרד ללשוניות"
 
-#: data/ui/remmina_preferences.glade:591
+#: data/ui/remmina_preferences.glade:544
 msgid "Default view"
 msgstr "תצוגת ברירת מחדל"
 
-#: data/ui/remmina_preferences.glade:605
+#: data/ui/remmina_preferences.glade:558
 #, fuzzy
 msgid "Automatic"
 msgstr "אוטומטי"
 
-#: data/ui/remmina_preferences.glade:606
+#: data/ui/remmina_preferences.glade:559
 #, fuzzy
 msgid "Scrolled window"
 msgstr "חלון נגלל"
 
-#: data/ui/remmina_preferences.glade:608
+#: data/ui/remmina_preferences.glade:561
 #, fuzzy
 msgid "Viewport fullscreen"
 msgstr "מרכוז חלון במסך מלא"
 
 #. How tabs are grouped in the Remmina connection window
-#: data/ui/remmina_preferences.glade:624
+#: data/ui/remmina_preferences.glade:577
 msgctxt "Appearance preferences"
 msgid "Tabs grouping"
 msgstr "קיבוץ לשוניות"
 
-#: data/ui/remmina_preferences.glade:636
+#: data/ui/remmina_preferences.glade:589
 #, fuzzy
 msgid "By group"
 msgstr "לפי קבוצה"
 
-#: data/ui/remmina_preferences.glade:637
+#: data/ui/remmina_preferences.glade:590
 #, fuzzy
 msgid "By protocol"
 msgstr "לפי פרוטוקול"
 
-#: data/ui/remmina_preferences.glade:638
+#: data/ui/remmina_preferences.glade:591
 #, fuzzy
 msgid "Per connection"
 msgstr "לפי חיבור"
 
-#: data/ui/remmina_preferences.glade:650
+#: data/ui/remmina_preferences.glade:603
 #, fuzzy
 msgid "Fullscreen on the same screen as the connection window"
 msgstr "מסך מלא באותו המסך כמו חלון ההתחברות"
 
-#: data/ui/remmina_preferences.glade:673
+#: data/ui/remmina_preferences.glade:626
 #, fuzzy
 msgid "Peeking"
 msgstr "מציץ"
 
-#: data/ui/remmina_preferences.glade:674
+#: data/ui/remmina_preferences.glade:627
 #, fuzzy
 msgid "Hidden"
 msgstr "מוסתר"
 
-#: data/ui/remmina_preferences.glade:691
+#: data/ui/remmina_preferences.glade:644
 #, fuzzy
 msgid "Fullscreen toolbar visibility"
 msgstr "חשיפת סרגל הכלים במסך מלא"
 
-#: data/ui/remmina_preferences.glade:701
+#: data/ui/remmina_preferences.glade:654
 #, fuzzy
 msgid "Hide the search bar shown in the main window"
 msgstr "להסתיר את סרגל החיפוש בחלון הראשי"
 
-#: data/ui/remmina_preferences.glade:717
+#: data/ui/remmina_preferences.glade:670
 msgid "Prefer dark theme"
 msgstr "להעדיף ערכת עיצוב כהה"
 
-#: data/ui/remmina_preferences.glade:721
+#: data/ui/remmina_preferences.glade:674
 msgid ""
 "If a GTK theme includes a dark variant, it will be used instead of the "
 "configured theme."
@@ -4939,20 +4923,20 @@ msgstr ""
 "אם ערכת עיצוב של GTK כוללת הגוון כהה, ייעשה שימוש בה במקום בערכת העיצוב "
 "המוגדרת."
 
-#: data/ui/remmina_preferences.glade:734
+#: data/ui/remmina_preferences.glade:687
 #, fuzzy
 msgid "Always show notes"
 msgstr "תמיד להציג לשוניות"
 
-#: data/ui/remmina_preferences.glade:738
+#: data/ui/remmina_preferences.glade:691
 msgid "Add a column displaying any notes associated with a connection."
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:758
+#: data/ui/remmina_preferences.glade:711
 msgid "“Grab all keyboard events” status colour"
 msgstr "צבע מצב „לכידת כל אירועי המקלדת”"
 
-#: data/ui/remmina_preferences.glade:769
+#: data/ui/remmina_preferences.glade:722
 msgid ""
 "Hexadecimal- or colour names (red, #ff0000).\n"
 "It changes the background colour of connection names in the Remmina "
@@ -4962,142 +4946,142 @@ msgstr ""
 "משנה את צבע רקע שם החיבור, בסרגל הכלים של החיבורים של Remmina (כאשר במצב מסך "
 "מלא)."
 
-#: data/ui/remmina_preferences.glade:786
+#: data/ui/remmina_preferences.glade:739
 msgid "Enable/Disable “Grab all keyboard events” status colour"
 msgstr "להפעיל/להשבית צבע מצב „לכידת כל אירועי המקלדת”"
 
-#: data/ui/remmina_preferences.glade:842
+#: data/ui/remmina_preferences.glade:795
 #, fuzzy
 msgid "Appearance"
 msgstr "מראה"
 
-#: data/ui/remmina_preferences.glade:868
+#: data/ui/remmina_preferences.glade:821
 #, fuzzy
 msgid "Show new connection on top of the menu"
 msgstr "להציג התחברות חדשה בראש התפריט"
 
-#: data/ui/remmina_preferences.glade:887
+#: data/ui/remmina_preferences.glade:840
 #, fuzzy
 msgid "Hide total count shown in the group menu"
 msgstr "להסתיר את הספירה הכוללת שמופיעה בתפריט הקבוצה"
 
-#: data/ui/remmina_preferences.glade:905
+#: data/ui/remmina_preferences.glade:858
 #, fuzzy
 msgid "No tray icon"
 msgstr "ללא סמל במגש המערכת"
 
-#: data/ui/remmina_preferences.glade:924
+#: data/ui/remmina_preferences.glade:877
 #, fuzzy
 msgid "Start in tray upon user login"
 msgstr "להישאר במגש המערכת עם כניסת המשתמש"
 
-#: data/ui/remmina_preferences.glade:955
+#: data/ui/remmina_preferences.glade:908
 #, fuzzy
 msgid "Applet"
 msgstr "סימונים"
 
-#: data/ui/remmina_preferences.glade:987
+#: data/ui/remmina_preferences.glade:940
 #, fuzzy
 msgid "Host key"
 msgstr "מקש מארח"
 
-#: data/ui/remmina_preferences.glade:1019
+#: data/ui/remmina_preferences.glade:972
 #, fuzzy
 msgid "Show/hide fullscreen"
 msgstr "הצגה/הפסקה של מסך מלא"
 
-#: data/ui/remmina_preferences.glade:1050
+#: data/ui/remmina_preferences.glade:1003
 #, fuzzy
 msgid "Auto-fit window"
 msgstr "התאמה אוטומטית לחלון"
 
-#: data/ui/remmina_preferences.glade:1127
+#: data/ui/remmina_preferences.glade:1080
 #, fuzzy
 msgid "Apply/remove scaling"
 msgstr "החלה/ביטול של שינוי גודל"
 
-#: data/ui/remmina_preferences.glade:1158
+#: data/ui/remmina_preferences.glade:1111
 #, fuzzy
 msgid "Grab keyboard"
 msgstr "לכידת המקלדת"
 
-#: data/ui/remmina_preferences.glade:1251
+#: data/ui/remmina_preferences.glade:1204
 #, fuzzy
 msgid "Show/hide toolbar"
 msgstr "הצגת/הסתרת סרגל כלים"
 
-#: data/ui/remmina_preferences.glade:1314
-#: data/ui/remmina_preferences.glade:1324
+#: data/ui/remmina_preferences.glade:1267
+#: data/ui/remmina_preferences.glade:1277
 #, fuzzy
 msgid "View-only mode"
 msgstr "מצב לצפייה בלבד"
 
-#: data/ui/remmina_preferences.glade:1387
+#: data/ui/remmina_preferences.glade:1340
 #, fuzzy
 msgid "Keyboard"
 msgstr "מקלדת"
 
-#: data/ui/remmina_preferences.glade:1418
+#: data/ui/remmina_preferences.glade:1371
 #, fuzzy
 msgid "Local SSH port"
 msgstr "פתחת SSH מקומית"
 
-#: data/ui/remmina_preferences.glade:1442
+#: data/ui/remmina_preferences.glade:1395
 #, fuzzy
 msgid "Parse ~/.ssh/config"
 msgstr "פענוח ‎~/.ssh/config"
 
-#: data/ui/remmina_preferences.glade:1466
+#: data/ui/remmina_preferences.glade:1419
 #, fuzzy
 msgid "No logging at all"
 msgstr "בלי תיעוד ליומן בכלל"
 
-#: data/ui/remmina_preferences.glade:1467
+#: data/ui/remmina_preferences.glade:1420
 #, fuzzy
 msgid "Rare conditions or warnings"
 msgstr "מקרים או אזהרות נדירים"
 
-#: data/ui/remmina_preferences.glade:1468
+#: data/ui/remmina_preferences.glade:1421
 #, fuzzy
 msgid "API-accessible entrypoints"
 msgstr "נקודות גישה שחשופות ל־API"
 
-#: data/ui/remmina_preferences.glade:1469
+#: data/ui/remmina_preferences.glade:1422
 #, fuzzy
 msgid "Lower level protocol info, packet level"
 msgstr "פרטים ברמה יסודית על הפרוטוקול, ברמת מנות הנתונים"
 
-#: data/ui/remmina_preferences.glade:1470
+#: data/ui/remmina_preferences.glade:1423
 #, fuzzy
 msgid "Function entering and leaving"
 msgstr "כניסה ויציאה מפונקציות"
 
-#: data/ui/remmina_preferences.glade:1487
+#: data/ui/remmina_preferences.glade:1440
 #, fuzzy
 msgid "SSH log level"
 msgstr "רמת דיווח SSH"
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1558
+#: data/ui/remmina_preferences.glade:1511
 #, fuzzy
 msgid "Seconds of connection idleness before TCP keepalive probes are sent."
 msgstr "שניות של חוסר פעילות בחיבור בטרם שליחת תשאולי זמינות של TCP."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1574
+#: data/ui/remmina_preferences.glade:1527
 #, fuzzy
 msgid "Seconds between each keepalive probe."
 msgstr "שניות בין תשאול זמינות אחד למשנהו."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1590
+#: data/ui/remmina_preferences.glade:1543
 #, fuzzy
 msgid ""
 "Number of keepalive probes sent via TCP connection before it is dropped."
 msgstr "מספר תשאולי הזמינות המרבי שיישלחו דרך TCP לפני ניתוק החיבור."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1606
+#: data/ui/remmina_preferences.glade:1559
 #, fuzzy
 msgid ""
 "Amount of milliseconds to attempt acknowledging data before closing the "
@@ -5105,12 +5089,12 @@ msgid ""
 msgstr ""
 "כמות המילישניות כדי לנסות להכיר בנתונים בטרם סגירת חיבור ה־TCP התואם בכוח."
 
-#: data/ui/remmina_preferences.glade:1632
+#: data/ui/remmina_preferences.glade:1585
 #, fuzzy
 msgid "SSH options"
 msgstr "אפשרויות SSH"
 
-#: data/ui/remmina_preferences.glade:1649
+#: data/ui/remmina_preferences.glade:1602
 msgid ""
 "Time in seconds before Remmina will lock the session and asks for a password "
 "again. Default: 300 Seconds."
@@ -5118,62 +5102,62 @@ msgstr ""
 "הזמן בשניות לפני ש־Remmina תנעל את ההפעלה ותבקש סיסמה פעם נוספת. ברירת "
 "המחדל: 300 שניות."
 
-#: data/ui/remmina_preferences.glade:1661
+#: data/ui/remmina_preferences.glade:1614
 msgid "Set and use a secret key to protect Remmina from unauthorized use."
 msgstr "להגדיר ולהשתמש במפתח פרטי כדי להגן על Remmina מפני שימוש בלתי מורשה."
 
-#: data/ui/remmina_preferences.glade:1666
+#: data/ui/remmina_preferences.glade:1619
 #, fuzzy
 #| msgid "User password"
 msgid "Remmina password"
 msgstr "סיסמת משתמש"
 
-#: data/ui/remmina_preferences.glade:1677
+#: data/ui/remmina_preferences.glade:1630
 #, fuzzy
 msgid "Use secret key authentication for some widgets"
 msgstr "להשתמש באימות עם מפתח סודי עבור חלק מהווידג׳טים"
 
-#: data/ui/remmina_preferences.glade:1697
+#: data/ui/remmina_preferences.glade:1650
 msgid "Valid for"
 msgstr "תקף למשך"
 
-#: data/ui/remmina_preferences.glade:1708
+#: data/ui/remmina_preferences.glade:1661
 msgid "Number of seconds to keep password valid for"
 msgstr "מספר השניות לשמירה על תוקף הסיסמה"
 
-#: data/ui/remmina_preferences.glade:1713
+#: data/ui/remmina_preferences.glade:1666
 msgid "timeout in seconds (default 300)"
 msgstr "תום זמן המתנה בשניות (ברירת המחדל היא 300)"
 
-#: data/ui/remmina_preferences.glade:1725
+#: data/ui/remmina_preferences.glade:1678
 #, fuzzy
 #| msgid "Secured password storage in KWallet"
 msgid "Enter your Remmina password to connect"
 msgstr "אחסון סיסמאות מאובטח בארנק של KDE‏ (KWallet)"
 
 #. “Require to connect” is “Require the Remmina password before to connect”, the Remmina password is the Master/Principal Password, that is used to protect Remmina from unauthorized use.
-#: data/ui/remmina_preferences.glade:1729
+#: data/ui/remmina_preferences.glade:1682
 #, fuzzy
 #| msgid "Secured password storage in KWallet"
 msgid "Require to connect"
 msgstr "אחסון סיסמאות מאובטח בארנק של KDE‏ (KWallet)"
 
-#: data/ui/remmina_preferences.glade:1740
+#: data/ui/remmina_preferences.glade:1693
 msgid "Creation, editing, copying, and deletions require the Remmina password"
 msgstr "יצירה, עריכה העתקה ומחיקות דורשים את הסיסמה של Remmina"
 
 #. Creation, editing, copying, and deletions require the primary password
-#: data/ui/remmina_preferences.glade:1744
+#: data/ui/remmina_preferences.glade:1697
 msgid "Require to modify"
 msgstr "דרישה לשינוי"
 
-#: data/ui/remmina_preferences.glade:1786
+#: data/ui/remmina_preferences.glade:1739
 #, fuzzy
 #| msgid "File encryption"
 msgid "Encryption"
 msgstr "הצפנת קבצים"
 
-#: data/ui/remmina_preferences.glade:1797
+#: data/ui/remmina_preferences.glade:1750
 msgid ""
 "These are the encryption methods used by Remmina to store passwords.\n"
 "\n"
@@ -5184,76 +5168,76 @@ msgid ""
 "\"Sensitive\" is more secure, but uses +1 GiB of RAM and many CPU cycles. "
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1806
+#: data/ui/remmina_preferences.glade:1759
 #, fuzzy
 #| msgid "Intermediate (+64 Mib RAM)"
 msgid "Intermediate (+64 MiB RAM)"
 msgstr "בינונית (‎+64 Mib של זיכרון)"
 
-#: data/ui/remmina_preferences.glade:1807
+#: data/ui/remmina_preferences.glade:1760
 #, fuzzy
 #| msgid "Strong (+256 Mib, <1s i7 CPU)"
 msgid "Strong (+256 MiB, ~2009 CPU)"
 msgstr "חזקה (‎+256 Mib, <שנ׳ במעבד i7)"
 
-#: data/ui/remmina_preferences.glade:1808
+#: data/ui/remmina_preferences.glade:1761
 #, fuzzy
 #| msgid "Sensitive (+1024 Mib, <4s i7 CPU)"
 msgid "Sensitive (+1 GiB, ~2014 CPU)"
 msgstr "רגישה (‎+1024 Mib,‏ <4 שנ׳ במעבד i7)"
 
-#: data/ui/remmina_preferences.glade:1824
+#: data/ui/remmina_preferences.glade:1777
 #, fuzzy
 #| msgid "Auditing settings"
 msgid "Auditing log"
 msgstr "הגדרות פיקוח"
 
-#: data/ui/remmina_preferences.glade:1849
+#: data/ui/remmina_preferences.glade:1802
 msgid "Automatically accept all fingerprints and certificates"
 msgstr "לקבל אוטומטית את כל טביעות האצבע והאישורים"
 
-#: data/ui/remmina_preferences.glade:1854
+#: data/ui/remmina_preferences.glade:1807
 #, fuzzy
 #| msgid "Trust all fingerprints and certificates"
 msgid "Trust all certificates"
 msgstr "לתת אמון בכל טביעות האצבע והאישורים"
 
-#: data/ui/remmina_preferences.glade:1889
+#: data/ui/remmina_preferences.glade:1842
 msgid "Security"
 msgstr "אבטחה"
 
-#: data/ui/remmina_preferences.glade:1920
+#: data/ui/remmina_preferences.glade:1873
 msgid "Terminal font"
 msgstr "גופן מסוף"
 
-#: data/ui/remmina_preferences.glade:1933
+#: data/ui/remmina_preferences.glade:1886
 #, fuzzy
 msgid "Scrollback lines"
 msgstr "שורות שמורות לגלילה"
 
-#: data/ui/remmina_preferences.glade:1981
+#: data/ui/remmina_preferences.glade:1934
 msgid "Shortcuts for copying and pasting"
 msgstr "קיצור דרך להעתקה ולהדבקה"
 
-#: data/ui/remmina_preferences.glade:1994
+#: data/ui/remmina_preferences.glade:1947
 msgid "Select all shortcuts"
 msgstr "בחירה בכל הקיצורים"
 
-#: data/ui/remmina_preferences.glade:2007
-#: data/ui/remmina_preferences.glade:2024
-#: data/ui/remmina_preferences.glade:2477
-#: data/ui/remmina_preferences.glade:2507
-#: data/ui/remmina_preferences.glade:2641
-#: data/ui/remmina_preferences.glade:2658
+#: data/ui/remmina_preferences.glade:1960
+#: data/ui/remmina_preferences.glade:1977
+#: data/ui/remmina_preferences.glade:2430
+#: data/ui/remmina_preferences.glade:2460
+#: data/ui/remmina_preferences.glade:2594
+#: data/ui/remmina_preferences.glade:2611
 #, fuzzy
 msgid "(Host key+)"
 msgstr "(מקש מארח+)"
 
-#: data/ui/remmina_preferences.glade:2042
+#: data/ui/remmina_preferences.glade:1995
 msgid "Use default system font"
 msgstr "להשתמש בגופן ברירת המחדל של המערכת"
 
-#: data/ui/remmina_preferences.glade:2067
+#: data/ui/remmina_preferences.glade:2020
 msgid ""
 "Selecting “SGR 1” also switches to the bright counterparts of the first 8 "
 "palette colours (in addition to making text bold)."
@@ -5261,16 +5245,16 @@ msgstr ""
 "בחירה ב־„SGR 1” מחליפה גם למקבילות הבהירות של 8 הצבעים הראשונים בערכה (בנוסף "
 "להדגשת הטקסט)."
 
-#: data/ui/remmina_preferences.glade:2083
+#: data/ui/remmina_preferences.glade:2036
 msgid "Show bold text in bright colors"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:2097
+#: data/ui/remmina_preferences.glade:2050
 #, fuzzy
 msgid "Colour theme"
 msgstr "ערכת צבעים"
 
-#: data/ui/remmina_preferences.glade:2108
+#: data/ui/remmina_preferences.glade:2061
 #, fuzzy
 msgid ""
 "Choose a colour scheme file. Usually available in /usr/share/remmina/theme. "
@@ -5279,131 +5263,131 @@ msgstr ""
 "נא לבחור קובץ סכמת צבעים. בדרך כלל זמינים תחת ‎/usr/share/remmina/theme. "
 "פרטים נוספים ב־https://github.com/mbadolato/iTerm2-Color-Schemes."
 
-#: data/ui/remmina_preferences.glade:2112
+#: data/ui/remmina_preferences.glade:2065
 msgid "Pick a terminal colouring file"
 msgstr "בחירת קובץ צבעים למסוף"
 
-#: data/ui/remmina_preferences.glade:2127
+#: data/ui/remmina_preferences.glade:2080
 msgid "Bright colours"
 msgstr "צבעים בוהקים"
 
-#: data/ui/remmina_preferences.glade:2141
+#: data/ui/remmina_preferences.glade:2094
 msgid "Pick a light black colour"
 msgstr "נא לבחור צבע שחור בהיר"
 
-#: data/ui/remmina_preferences.glade:2155
+#: data/ui/remmina_preferences.glade:2108
 #, fuzzy
 msgid "Pick a light red colour"
 msgstr "נא לבחור צבע אדום בהיר"
 
-#: data/ui/remmina_preferences.glade:2169
+#: data/ui/remmina_preferences.glade:2122
 msgid "Pick a bright green colour"
 msgstr "נא לבחור צבע ירוק בוהק"
 
-#: data/ui/remmina_preferences.glade:2183
+#: data/ui/remmina_preferences.glade:2136
 msgid "Pick a bright yellow colour"
 msgstr "נא לבחור צבע צהוב בוהק"
 
-#: data/ui/remmina_preferences.glade:2197
+#: data/ui/remmina_preferences.glade:2150
 msgid "Pick a bright blue colour"
 msgstr "נא לבחור צבע כחול בוהק"
 
-#: data/ui/remmina_preferences.glade:2211
+#: data/ui/remmina_preferences.glade:2164
 msgid "Pick a light magenta colour"
 msgstr "נא לבחור צבע מג׳נטה בהיר"
 
-#: data/ui/remmina_preferences.glade:2225
+#: data/ui/remmina_preferences.glade:2178
 msgid "Pick a light cyan colour"
 msgstr "נא לבחור צבע ציאן בהיר"
 
-#: data/ui/remmina_preferences.glade:2239
+#: data/ui/remmina_preferences.glade:2192
 msgid "Pick a light white colour"
 msgstr "נא לבחור צבע לבן בהיר"
 
-#: data/ui/remmina_preferences.glade:2253
+#: data/ui/remmina_preferences.glade:2206
 msgid "Pick a black colour"
 msgstr "נא לבחור צבע שחור"
 
-#: data/ui/remmina_preferences.glade:2267
+#: data/ui/remmina_preferences.glade:2220
 msgid "Pick a red colour"
 msgstr "נא לבחור צבע אדום"
 
-#: data/ui/remmina_preferences.glade:2281
+#: data/ui/remmina_preferences.glade:2234
 msgid "Pick a green colour"
 msgstr "נא לבחור צבע ירוק"
 
-#: data/ui/remmina_preferences.glade:2295
+#: data/ui/remmina_preferences.glade:2248
 msgid "Pick a yellow colour"
 msgstr "נא לבחור צבע צהוב"
 
-#: data/ui/remmina_preferences.glade:2309
+#: data/ui/remmina_preferences.glade:2262
 msgid "Pick a blue colour"
 msgstr "נא לבחור צבע כחול"
 
-#: data/ui/remmina_preferences.glade:2323
+#: data/ui/remmina_preferences.glade:2276
 msgid "Pick a magenta colour"
 msgstr "נא לבחור צבע מג׳נטה"
 
-#: data/ui/remmina_preferences.glade:2337
+#: data/ui/remmina_preferences.glade:2290
 msgid "Pick a cyan colour"
 msgstr "נא לבחור צבע ציאן"
 
-#: data/ui/remmina_preferences.glade:2351
+#: data/ui/remmina_preferences.glade:2304
 msgid "Pick a white colour"
 msgstr "נא לבחור צבע לבן"
 
-#: data/ui/remmina_preferences.glade:2364
+#: data/ui/remmina_preferences.glade:2317
 msgid "Normal colours"
 msgstr "צבעים רגילים"
 
-#: data/ui/remmina_preferences.glade:2377
-#: data/ui/remmina_preferences.glade:2392
+#: data/ui/remmina_preferences.glade:2330
+#: data/ui/remmina_preferences.glade:2345
 msgid "Cursor colour"
 msgstr "צבע סמן"
 
-#: data/ui/remmina_preferences.glade:2406
-#: data/ui/remmina_preferences.glade:2421
+#: data/ui/remmina_preferences.glade:2359
+#: data/ui/remmina_preferences.glade:2374
 msgid "Background colour"
 msgstr "צבע רקע"
 
-#: data/ui/remmina_preferences.glade:2437
-#: data/ui/remmina_preferences.glade:2451
+#: data/ui/remmina_preferences.glade:2390
+#: data/ui/remmina_preferences.glade:2404
 msgid "Foreground colour"
 msgstr "צבע חזית"
 
-#: data/ui/remmina_preferences.glade:2464
+#: data/ui/remmina_preferences.glade:2417
 msgid "Increase and decrease font size"
 msgstr "הגדלת והקטנת כתב"
 
-#: data/ui/remmina_preferences.glade:2494
+#: data/ui/remmina_preferences.glade:2447
 msgid "Search text shortcut"
 msgstr "חיפוש קיצור דרך של טקסט"
 
-#: data/ui/remmina_preferences.glade:2525
-#: data/ui/remmina_preferences.glade:2540
+#: data/ui/remmina_preferences.glade:2478
+#: data/ui/remmina_preferences.glade:2493
 msgid "Bold colour"
 msgstr "צבע מודגש"
 
-#: data/ui/remmina_preferences.glade:2554
-#: data/ui/remmina_preferences.glade:2595
+#: data/ui/remmina_preferences.glade:2507
+#: data/ui/remmina_preferences.glade:2548
 msgid "Highlight colour"
 msgstr "צבעי הדגשה"
 
-#: data/ui/remmina_preferences.glade:2567
-#: data/ui/remmina_preferences.glade:2611
+#: data/ui/remmina_preferences.glade:2520
+#: data/ui/remmina_preferences.glade:2564
 msgid "Highlight foreground colour"
 msgstr "צבע הדגשה בחזית"
 
+#: data/ui/remmina_preferences.glade:2533
 #: data/ui/remmina_preferences.glade:2580
-#: data/ui/remmina_preferences.glade:2627
 msgid "Cursor foreground colour"
 msgstr "צבע סמן בחזית"
 
-#: data/ui/remmina_preferences.glade:2683
+#: data/ui/remmina_preferences.glade:2636
 msgid "Terminal"
 msgstr "מסוף"
 
-#: data/ui/remmina_preferences.glade:2697
+#: data/ui/remmina_preferences.glade:2650
 msgid "Remmina Preferences"
 msgstr "העדפות Remmina"
 
@@ -5418,6 +5402,19 @@ msgstr "שחרור Remmina"
 #: data/ui/remmina_unlock.glade:120
 msgid "Master password"
 msgstr "סיסמה ראשית"
+
+#~ msgid "Disable news notification"
+#~ msgstr "השבתת התראת החדשות"
+
+#, fuzzy
+#~ msgid "News"
+#~ msgstr "חדשות"
+
+#, fuzzy
+#~ msgid "* By enabling news you consent to fetch data from remmina.org"
+#~ msgstr ""
+#~ "* הפעלת הסטטיסטיקה ו/או החדשות מהווה את הסכמתך לשלוח ולהביא נתונים "
+#~ "מתוך/אל remmina.org"
 
 #, fuzzy
 #~ msgid "SSH private key passphrase"
