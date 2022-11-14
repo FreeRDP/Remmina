@@ -100,9 +100,6 @@ The filetype can be ".remmina" or one supported by a plugin capable of
 *--display=DISPLAY*
 	X display to use
 
-*--disable-news*
-	Disable news notification
-
 *--disable-toolbar*
 	Disable toolbar
 

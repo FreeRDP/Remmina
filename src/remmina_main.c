@@ -92,7 +92,6 @@ const gchar *supported_mime_types[] = {
 
 static GActionEntry app_actions[] = {
 	{ "about",	 remmina_main_on_action_application_about,	 NULL, NULL, NULL },
-	{ "news",	 remmina_main_on_action_application_news,	 NULL, NULL, NULL },
 	{ "default",	 remmina_main_on_action_application_default,	 NULL, NULL, NULL },
 	{ "mpchange",	 remmina_main_on_action_application_mpchange,	 NULL, NULL, NULL },
 	{ "plugins",	 remmina_main_on_action_application_plugins,	 NULL, NULL, NULL },
@@ -1237,16 +1236,6 @@ void remmina_main_on_action_application_about(GSimpleAction *action, GVariant *p
 {
 	TRACE_CALL(__func__);
 	remmina_about_open(remminamain->window);
-};
-
-void remmina_main_on_action_application_news(GSimpleAction *action, GVariant *param, gpointer data)
-{
-	TRACE_CALL(__func__);
-	REMMINA_DEBUG("Setting news counters to 0");
-	remmina_pref.periodic_rmnews_last_get = 0;
-	remmina_pref.periodic_rmnews_get_count = 0;
-	REMMINA_DEBUG("Saving preferences");
-	remmina_pref_save();
 };
 
 static gboolean is_empty(const gchar *s)
