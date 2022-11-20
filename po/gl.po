@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2022-11-14 14:59+0000\n"
-"PO-Revision-Date: 2022-08-16 00:21+0000\n"
+"PO-Revision-Date: 2022-11-20 02:48+0000\n"
 "Last-Translator: CarlosCF <carloscaamano@gmail.com>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/remmina/remmina/"
 "gl/>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14-dev\n"
+"X-Generator: Weblate 4.15-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
 
 #: src/remmina_sftp_plugin.c:309 src/remmina_sftp_plugin.c:353
@@ -510,8 +510,6 @@ msgid "The passwords do not match"
 msgstr "Os contrasinais non concordan"
 
 #: src/remmina_mpchange.c:275
-#, fuzzy
-#| msgid "The passwords do not match"
 msgid "The Gateway passwords do not match"
 msgstr "Os contrasinais non concordan"
 
@@ -646,10 +644,8 @@ msgid "Encrypt a password"
 msgstr "Gravar o contrasinal"
 
 #: src/remmina.c:130
-#, fuzzy
-#| msgid "Disable clipboard sync"
 msgid "Disable toolbar"
-msgstr "Desactivar a sincronización do portapapeis"
+msgstr "Desactivar a barra de ferramentas"
 
 #: src/remmina.c:131
 #, fuzzy
@@ -663,14 +659,12 @@ msgid ""
 "shortcut keys, hide tabs, hide search bar)"
 msgstr ""
 "Activar a seguridade adicional (desactivar a confirmación de peche, "
-"desactivar as teclas de atallo non seguras, ocultar pestanas, ocultar a "
-"barra de busca)"
+"desactivar as teclas de atallo non seguras, ocultar lapelas, ocultar a barra "
+"de busca)"
 
 #: src/remmina.c:133
-#, fuzzy
-#| msgid "Turn on smooth scrolling"
 msgid "Disable tray icon"
-msgstr "Desactivar desprazamento suavizado"
+msgstr "Desactivar icona na área de notificación"
 
 #. TRANSLATORS:
 #. * This link should point to a resource explaining how to get Remmina
@@ -1956,18 +1950,19 @@ msgstr "Rexistra a sesión SSH de forma asíncrona"
 #: src/remmina_ssh_plugin.c:1547
 msgid "Saving the session asynchronously may have a notable performance impact"
 msgstr ""
+"Gardar a sesión de forma asíncrona pode ter un impacto notable no rendemento"
 
 #: src/remmina_ssh_plugin.c:1548
 msgid "Audible terminal bell"
-msgstr ""
+msgstr "Timbre de terminal audible"
 
 #: src/remmina_ssh_plugin.c:1549
 msgid "SSH X11 Forwarding"
-msgstr ""
+msgstr "Redirección de X11 usando SSH"
 
 #: src/remmina_ssh_plugin.c:1550
 msgid "SSH compression"
-msgstr ""
+msgstr "Compresión SSH"
 
 #: src/remmina_ssh_plugin.c:1551
 msgid "Don't remember passwords"
@@ -1975,7 +1970,7 @@ msgstr "Gravar o contrasinal"
 
 #: src/remmina_ssh_plugin.c:1552
 msgid "Strict host key checking"
-msgstr ""
+msgstr "Comprobación estrita da chave do host"
 
 #: src/remmina_ssh_plugin.c:1566
 msgid "SSH - Secure Shell"
@@ -1991,11 +1986,11 @@ msgstr "<Autodetectar>"
 
 #: plugins/rdp/rdp_settings.c:247
 msgid "<Not set>"
-msgstr ""
+msgstr "<Non Establecido>"
 
 #: plugins/rdp/rdp_settings.c:278
 msgid "<Choose a quality level to edit…>"
-msgstr ""
+msgstr "<Escolle un nivel de calidade para editar...>"
 
 #: plugins/rdp/rdp_settings.c:280 plugins/rdp/rdp_plugin.c:2663
 #: plugins/vnc/vnc_plugin.c:2003
@@ -2034,14 +2029,16 @@ msgstr "Distribución do teclado"
 #: plugins/rdp/rdp_settings.c:481
 msgid "List of key=value,… pairs to remap scancodes. E.g. 0x56=0x29,0x29=0x56"
 msgstr ""
+"Lista de clave=valor,... pares para reasignar códigos de escaneo. P.ex. "
+"0x56=0x29,0x29=0x56"
 
 #: plugins/rdp/rdp_settings.c:484
 msgid "FreeRDP > 2.3.0 is required to map scancodes"
-msgstr ""
+msgstr "Requírese FreeRDP > 2.3.0 para mapear códigos de escaneo"
 
 #: plugins/rdp/rdp_settings.c:492
 msgid "Quality settings"
-msgstr ""
+msgstr "Configuración de calidade"
 
 #: plugins/rdp/rdp_settings.c:515
 msgid "Wallpaper"
@@ -2077,19 +2074,19 @@ msgstr "Composición"
 
 #: plugins/rdp/rdp_settings.c:578
 msgid "Remote scale factor"
-msgstr ""
+msgstr "Factor de escala remoto"
 
 #: plugins/rdp/rdp_settings.c:593
 msgid "Desktop scale factor %"
-msgstr ""
+msgstr "Factor de escala de escritorio %"
 
 #: plugins/rdp/rdp_settings.c:605
 msgid "Device scale factor %"
-msgstr ""
+msgstr "Factor de escala do dispositivo %"
 
 #: plugins/rdp/rdp_settings.c:628
 msgid "Desktop orientation"
-msgstr ""
+msgstr "Orientación de escritorio"
 
 #: plugins/rdp/rdp_settings.c:648
 #, fuzzy
@@ -2114,20 +2111,22 @@ msgstr "Número de intentos de re-conexión"
 msgid ""
 "The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
 msgstr ""
+"O número máximo de intentos de conexión tras unha desconexión RDP "
+"(predeterminado: 20)"
 
 #: plugins/rdp/rdp_plugin.c:788 plugins/rdp/rdp_plugin.c:853
 msgid "Enter RDP authentication credentials"
-msgstr ""
+msgstr "Introduza as credenciais de autenticación RDP"
 
 #: plugins/rdp/rdp_plugin.c:861
 msgid "Enter RDP gateway authentication credentials"
-msgstr ""
+msgstr "Introduza as credenciais de autenticación da pasarela RDP"
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:1042
 #, c-format
 msgid "Disconnected from %s via RDP"
-msgstr ""
+msgstr "Desconectado de %s mediante RDP"
 
 #: plugins/rdp/rdp_plugin.c:2194
 #, c-format
@@ -2196,6 +2195,8 @@ msgid ""
 "Could not connect to the RDP server “%s” via TLS. See the DEBUG traces from "
 "a terminal for more information."
 msgstr ""
+"Non se puido conectar co servidor RDP “%s” mediante TLS. Consulte os trazos "
+"DEBUG desde un terminal para obter máis información."
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:2253
@@ -2215,7 +2216,7 @@ msgstr "Non foi posíbel conectarse ao servidor RDP %s"
 
 #: plugins/rdp/rdp_plugin.c:2264
 msgid "Could not start libfreerdp-gdi."
-msgstr ""
+msgstr "Non se puido iniciar libfreerdp-gdi."
 
 #: plugins/rdp/rdp_plugin.c:2267
 #, c-format
@@ -2223,11 +2224,14 @@ msgid ""
 "You requested a H.264 GFX mode for the server “%s”, but your libfreerdp does "
 "not support H.264. Please use a non-AVC colour depth setting."
 msgstr ""
+"Solicitaches un modo GFX H.264 para o servidor “%s”, pero o teu libfreerdp "
+"non é compatible con H.264. Use unha configuración de profundidade de cor "
+"non AVC."
 
 #: plugins/rdp/rdp_plugin.c:2274
 #, c-format
 msgid "The “%s” server refused the connection."
-msgstr ""
+msgstr "O servidor “%s” rexeitou a conexión."
 
 #: plugins/rdp/rdp_plugin.c:2279
 #, c-format
@@ -2235,6 +2239,8 @@ msgid ""
 "The Remote Desktop Gateway “%s” denied the user “%s\\%s” access due to "
 "policy."
 msgstr ""
+"A pasarela de Escritorio remoto “%s” denegou o acceso ao usuario “%s\\%s” "
+"debido á política."
 
 #: plugins/rdp/rdp_plugin.c:2289
 #, c-format
@@ -2243,23 +2249,23 @@ msgstr "Non foi posíbel conectarse ao servidor RDP %s"
 
 #: plugins/rdp/rdp_plugin.c:2632
 msgid "Automatic (32 bpp) (Server chooses its best format)"
-msgstr ""
+msgstr "Automático (32 bpp) (o servidor elixe o seu mellor formato)"
 
 #: plugins/rdp/rdp_plugin.c:2633
 msgid "GFX AVC444 (32 bpp)"
-msgstr ""
+msgstr "GFX AVC444 (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2634
 msgid "GFX AVC420 (32 bpp)"
-msgstr ""
+msgstr "GFX AVC420 (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2635
 msgid "GFX RFX (32 bpp)"
-msgstr ""
+msgstr "GFX RFX (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2636
 msgid "GFX RFX Progressive (32 bpp)"
-msgstr ""
+msgstr "GFX RFX Progresivo (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2637
 msgid "RemoteFX (32 bpp)"
@@ -2301,23 +2307,23 @@ msgstr "módem"
 
 #: plugins/rdp/rdp_plugin.c:2676
 msgid "Low performance broadband"
-msgstr ""
+msgstr "Banda ancha de baixo rendemento"
 
 #: plugins/rdp/rdp_plugin.c:2677
 msgid "Satellite"
-msgstr ""
+msgstr "Satélite"
 
 #: plugins/rdp/rdp_plugin.c:2678
 msgid "High performance broadband"
-msgstr ""
+msgstr "Banda ancha de alto rendemento"
 
 #: plugins/rdp/rdp_plugin.c:2679
 msgid "WAN"
-msgstr ""
+msgstr "WAN"
 
 #: plugins/rdp/rdp_plugin.c:2680
 msgid "LAN"
-msgstr ""
+msgstr "LAN"
 
 #: plugins/rdp/rdp_plugin.c:2687 plugins/spice/spice_plugin.c:637
 #: data/ui/remmina_preferences.glade:628
@@ -2326,7 +2332,7 @@ msgstr "Desactivado"
 
 #: plugins/rdp/rdp_plugin.c:2696
 msgid "Automatic negotiation"
-msgstr ""
+msgstr "Negociación automática"
 
 #: plugins/rdp/rdp_plugin.c:2697
 msgid "NLA protocol security"
@@ -2342,7 +2348,7 @@ msgstr "Protocolo"
 
 #: plugins/rdp/rdp_plugin.c:2700
 msgid "NLA extended protocol security"
-msgstr ""
+msgstr "Seguridade do protocolo estendido da NLA"
 
 #: plugins/rdp/rdp_plugin.c:2714 plugins/spice/spice_plugin.c:618
 #: plugins/spice/spice_plugin.c:636
@@ -2351,31 +2357,31 @@ msgstr "Predefinido"
 
 #: plugins/rdp/rdp_plugin.c:2715
 msgid "0 — Windows 7 compatible"
-msgstr ""
+msgstr "0 — Windows 7 compatible"
 
 #: plugins/rdp/rdp_plugin.c:2716
 msgid "1"
-msgstr ""
+msgstr "1"
 
 #: plugins/rdp/rdp_plugin.c:2717
 msgid "2"
-msgstr ""
+msgstr "2"
 
 #: plugins/rdp/rdp_plugin.c:2718
 msgid "3"
-msgstr ""
+msgstr "3"
 
 #: plugins/rdp/rdp_plugin.c:2719
 msgid "4"
-msgstr ""
+msgstr "4"
 
 #: plugins/rdp/rdp_plugin.c:2720
 msgid "5"
-msgstr ""
+msgstr "5"
 
 #: plugins/rdp/rdp_plugin.c:2725
 msgid "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 and newer)"
-msgstr ""
+msgstr "6"
 
 #: plugins/rdp/rdp_plugin.c:2728
 msgid ""
@@ -2387,6 +2393,13 @@ msgid ""
 "  • >= 7065: Windows 8 and newer: SCardGetReaderIcon(),\n"
 "    SCardGetDeviceTypeId()"
 msgstr ""
+"Usado por servizos de terminal nunha canle de tarxeta intelixente para "
+"distinguir as capacidades do cliente:\n"
+"   • < 4034: funcións da tarxeta intelixente base de Windows XP\n"
+"   • 4034-7064: Windows Vista/7: SCardReadCache(),\n"
+"\tSCardWriteCache(), SCardGetTransmitCount()\n"
+"   • >= 7065: Windows 8 e máis recentes: SCardGetReaderIcon(),\n"
+"\tSCardGetDeviceTypeId()"
 
 #: plugins/rdp/rdp_plugin.c:2736
 msgid ""
@@ -2398,6 +2411,13 @@ msgid ""
 "  • sys:oss,dev:1,format:1\n"
 "  • sys:alsa"
 msgstr ""
+"Opcións para a re-dirección da entrada de son:\n"
+"   • [sys:<sys>,][dev:<dev>,][formato:<formato>,][rate:<rate>,]\n"
+"\t[canle:<canle>] Entrada de audio (micrófono)\n"
+"   • sys:pulso\n"
+"   • formato:1\n"
+"   • sys:oss,dev:1,formato:1\n"
+"   • sys:alsa"
 
 #: plugins/rdp/rdp_plugin.c:2745
 msgid ""
@@ -2409,6 +2429,13 @@ msgid ""
 "  • sys:oss,dev:1,format:1\n"
 "  • sys:alsa"
 msgstr ""
+"Opcións para a redirección da saída de audio:\n"
+"   • [sys:<sys>,][dev:<dev>,][formato:<formato>,][rate:<rate>,]\n"
+"\t[canle:<canle>] Saída de audio\n"
+"   • sys:pulso\n"
+"   • formato:1\n"
+"   • sys:oss,dev:1,formato:1\n"
+"   • sys:alsa"
 
 #: plugins/rdp/rdp_plugin.c:2755
 msgid ""
@@ -2417,6 +2444,10 @@ msgid ""
 "  • auto\n"
 "  • id:054c:0268#4669:6e6b,addr:04:0c"
 msgstr ""
+"Opcións para a redirección do dispositivo USB:\n"
+"   • [dbg,][id:<vid>:<pid>#…,][addr:<bus>:<addr>#…,][auto]\n"
+"   • auto\n"
+"   • ID:054c:0268#4669:6e6b,addr:04:0c"
 
 #: plugins/rdp/rdp_plugin.c:2761
 msgid ""
@@ -2424,6 +2455,9 @@ msgid ""
 "Adjusts the connection timeout. Use if your connection times out.\n"
 "The highest possible value is 600000 ms (10 minutes).\n"
 msgstr ""
+"Configuración avanzada para ligazóns de alta latencia:\n"
+"Axusta o tempo de espera da conexión. Usa se a túa conexión esgota.\n"
+"O valor máis alto posible é 600000 ms (10 minutos).\n"
 
 #: plugins/rdp/rdp_plugin.c:2766
 msgid ""
@@ -2431,6 +2465,10 @@ msgid ""
 "Using auto-detection is advised.\n"
 "If “Auto-detect” fails, choose the most appropriate option in the list.\n"
 msgstr ""
+"Optimizacións de rendemento en función do tipo de conexión de rede:\n"
+"Recoméndase usar a detección automática.\n"
+"Se a \"Detección automática\" falla, escolla a opción máis adecuada da lista."
+"\n"
 
 #: plugins/rdp/rdp_plugin.c:2771
 msgid ""
@@ -2445,6 +2483,16 @@ msgid ""
 "  • 270 (portrait flipped)\n"
 "\n"
 msgstr ""
+"Lista separada por comas de ID de monitor e orientacións do escritorio:\n"
+"   • [<id>:<orientación-en-graos>,]\n"
+"   • 0,1,2,3\n"
+"   • 0:270,1:90\n"
+"As orientacións especifícanse en graos, os valores válidos son:\n"
+"   • \t0 (paisaxe)\n"
+"   • \t90 (retrato)\n"
+"   • 180 (paisaxe invertida)\n"
+"   • 270 (retrato invertido)\n"
+"\n"
 
 #: plugins/rdp/rdp_plugin.c:2783
 msgid ""
@@ -2457,6 +2505,14 @@ msgid ""
 "  • hotplug,*\n"
 "\n"
 msgstr ""
+"Redirixe o directorio <ruta> como recurso compartido <nome>.\n"
+"   • <nome>,<camiño completo>[;<nome>,<camiño completo>[;…]]\n"
+"   • MyHome,/home/reminer\n"
+"   • /home/reminer\n"
+"   • MyHome,/home/reminer;SomePath,/path/to/somepath\n"
+"A compatibilidade Hotplug está habilitada con:\n"
+"   • conexión en quente*\n"
+"\n"
 
 #: plugins/rdp/rdp_plugin.c:2815 plugins/spice/spice_plugin.c:679
 msgid "Share folder"
@@ -2464,7 +2520,7 @@ msgstr "Cartafol compartido"
 
 #: plugins/rdp/rdp_plugin.c:2816
 msgid "Restricted admin mode"
-msgstr ""
+msgstr "Modo de administración restrinxido"
 
 #: plugins/rdp/rdp_plugin.c:2817
 #, fuzzy
@@ -2474,23 +2530,25 @@ msgstr "Contrasinal"
 
 #: plugins/rdp/rdp_plugin.c:2817
 msgid "Restricted admin mode password hash"
-msgstr ""
+msgstr "Hash de contrasinal do modo de administrador restrinxido"
 
 #: plugins/rdp/rdp_plugin.c:2818
 msgid "Left-handed mouse support"
-msgstr ""
+msgstr "Soporte de rato para zurdos"
 
 #: plugins/rdp/rdp_plugin.c:2818
 msgid "Swap left and right mouse buttons for left-handed mouse support"
 msgstr ""
+"Cambia os botóns esquerdo e dereito do rato para compatibilidade con rato "
+"zurdo"
 
 #: plugins/rdp/rdp_plugin.c:2820
 msgid "Enable multi monitor"
-msgstr ""
+msgstr "Activar varios monitores"
 
 #: plugins/rdp/rdp_plugin.c:2821
 msgid "Span screen over multiple monitors"
-msgstr ""
+msgstr "Estende a pantalla en varios monitores"
 
 #: plugins/rdp/rdp_plugin.c:2822
 #, fuzzy
@@ -2514,11 +2572,11 @@ msgstr "Calidade"
 
 #: plugins/rdp/rdp_plugin.c:2842
 msgid "Security protocol negotiation"
-msgstr ""
+msgstr "Negociación do protocolo de seguridade"
 
 #: plugins/rdp/rdp_plugin.c:2843
 msgid "Gateway transport type"
-msgstr ""
+msgstr "Tipo de transporte de pasarela"
 
 #: plugins/rdp/rdp_plugin.c:2844
 #, fuzzy
@@ -2528,27 +2586,27 @@ msgstr "Seguranza"
 
 #: plugins/rdp/rdp_plugin.c:2845
 msgid "FreeRDP log level"
-msgstr ""
+msgstr "Nivel de rexistro de FreeRDP"
 
 #: plugins/rdp/rdp_plugin.c:2846
 msgid "FreeRDP log filters"
-msgstr ""
+msgstr "Filtros de rexistro de FreeRDP"
 
 #: plugins/rdp/rdp_plugin.c:2846
 msgid "tag:level[,tag:level[,…]]"
-msgstr ""
+msgstr "etiqueta:level[,etiqueta:level[,…]]"
 
 #: plugins/rdp/rdp_plugin.c:2847
 msgid "Audio output mode"
-msgstr ""
+msgstr "Modo de saída de son"
 
 #: plugins/rdp/rdp_plugin.c:2848
 msgid "Redirect local audio output"
-msgstr ""
+msgstr "Redirixir a saída de audio local"
 
 #: plugins/rdp/rdp_plugin.c:2849
 msgid "Redirect local microphone"
-msgstr ""
+msgstr "Re-dirixir o micrófono local"
 
 #: plugins/rdp/rdp_plugin.c:2850
 msgid "Connection timeout in ms"
@@ -2584,70 +2642,72 @@ msgstr "Programa de inicio"
 
 #: plugins/rdp/rdp_plugin.c:2859
 msgid "Load balance info"
-msgstr ""
+msgstr "Información do balance de carga"
 
 #. TRANSLATORS: Do not use typographic quotation marks, these must stay as "double quote", also know as “Typewriter ("programmer's") quote, ambidextrous.”
 #: plugins/rdp/rdp_plugin.c:2861
 msgid "Override printer drivers"
-msgstr ""
+msgstr "Sobrescribir controladores de impresora"
 
 #: plugins/rdp/rdp_plugin.c:2861
 msgid ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
 msgstr ""
+"\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
+"\"Canon MF410 Series UFR II\""
 
 #: plugins/rdp/rdp_plugin.c:2862
 msgid "USB device redirection"
-msgstr ""
+msgstr "Redirección de dispositivos USB"
 
 #: plugins/rdp/rdp_plugin.c:2863
 msgid "Local serial name"
-msgstr ""
+msgstr "Nome de serie local"
 
 #: plugins/rdp/rdp_plugin.c:2863
 msgid "COM1, COM2, etc."
-msgstr ""
+msgstr "COM1, COM2, etc."
 
 #: plugins/rdp/rdp_plugin.c:2864
 msgid "Local serial driver"
-msgstr ""
+msgstr "Controlador de serie local"
 
 #: plugins/rdp/rdp_plugin.c:2864
 msgid "Serial"
-msgstr ""
+msgstr "Serie"
 
 #: plugins/rdp/rdp_plugin.c:2865
 msgid "Local serial path"
-msgstr ""
+msgstr "Ruta de serie local"
 
 #: plugins/rdp/rdp_plugin.c:2865
 msgid "/dev/ttyS0, /dev/ttyS1, etc."
-msgstr ""
+msgstr "/dev/ttyS0, /dev/ttyS1, etc."
 
 #: plugins/rdp/rdp_plugin.c:2866
 msgid "Local parallel name"
-msgstr ""
+msgstr "Nome paralelo local"
 
 #: plugins/rdp/rdp_plugin.c:2867
 msgid "Local parallel device"
-msgstr ""
+msgstr "Dispositivo paralelo local"
 
 #: plugins/rdp/rdp_plugin.c:2868
 msgid "Name of smart card"
-msgstr ""
+msgstr "Nome da tarxeta intelixente"
 
 #: plugins/rdp/rdp_plugin.c:2869
 msgid "Dynamic virtual channel"
-msgstr ""
+msgstr "Canle virtual dinámico"
 
 #: plugins/rdp/rdp_plugin.c:2869 plugins/rdp/rdp_plugin.c:2870
 msgid "<channel>[,<options>]"
-msgstr ""
+msgstr "<canal>[,<opcións>]"
 
 #: plugins/rdp/rdp_plugin.c:2870
 msgid "Static virtual channel"
-msgstr ""
+msgstr "Canle virtual estático"
 
 #: plugins/rdp/rdp_plugin.c:2871
 #, fuzzy
@@ -2657,31 +2717,31 @@ msgstr "Nova conexión"
 
 #: plugins/rdp/rdp_plugin.c:2871
 msgid "/PATH/TO/rdp2tcp"
-msgstr ""
+msgstr "/RUTA/A/rdp2tcp"
 
 #: plugins/rdp/rdp_plugin.c:2873
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
-msgstr ""
+msgstr "Preferir o rexistro AAAA de IPv6 sobre o rexistro A de IPv4"
 
 #: plugins/rdp/rdp_plugin.c:2874
 msgid "Share printers"
-msgstr ""
+msgstr "Compartir impresoras"
 
 #: plugins/rdp/rdp_plugin.c:2875
 msgid "Share serial ports"
-msgstr ""
+msgstr "Compartir portos serie"
 
 #: plugins/rdp/rdp_plugin.c:2876
 msgid "(SELinux) permissive mode for serial ports"
-msgstr ""
+msgstr "(SELinux) modo permisivo para portos serie"
 
 #: plugins/rdp/rdp_plugin.c:2877
 msgid "Share parallel ports"
-msgstr ""
+msgstr "Compartir portos paralelos"
 
 #: plugins/rdp/rdp_plugin.c:2878
 msgid "Share a smart card"
-msgstr ""
+msgstr "Comparte unha tarxeta intelixente"
 
 #: plugins/rdp/rdp_plugin.c:2879 plugins/vnc/vnc_plugin.c:2091
 msgid "Turn off clipboard sync"
@@ -2689,15 +2749,15 @@ msgstr "Desactivar a sincronización do portapapeis"
 
 #: plugins/rdp/rdp_plugin.c:2880
 msgid "Ignore certificate"
-msgstr ""
+msgstr "Ignorar o certificado"
 
 #: plugins/rdp/rdp_plugin.c:2881
 msgid "Use the old license workflow"
-msgstr ""
+msgstr "Use o fluxo de traballo da licenza antiga"
 
 #: plugins/rdp/rdp_plugin.c:2881
 msgid "It disables CAL and hwId is set to 0"
-msgstr ""
+msgstr "Desactiva CAL e hwId está configurado en 0"
 
 #: plugins/rdp/rdp_plugin.c:2882 plugins/spice/spice_plugin.c:704
 #: plugins/vnc/vnc_plugin.c:2087 plugins/www/www_plugin.c:936
@@ -2711,47 +2771,47 @@ msgstr "Anexar á consola (Windows 2003 / 2003 R2)"
 
 #: plugins/rdp/rdp_plugin.c:2884
 msgid "Turn off fast-path"
-msgstr ""
+msgstr "Desactiva o camiño rápido"
 
 #: plugins/rdp/rdp_plugin.c:2885
 msgid "Server detection using Remote Desktop Gateway"
-msgstr ""
+msgstr "Detección de servidor mediante Remote Desktop Gateway"
 
 #: plugins/rdp/rdp_plugin.c:2887
 msgid "Use system proxy settings"
-msgstr ""
+msgstr "Usa a configuración do proxy do sistema"
 
 #: plugins/rdp/rdp_plugin.c:2889
 msgid "Turn off automatic reconnection"
-msgstr ""
+msgstr "Desactiva a re-conexión automática"
 
 #: plugins/rdp/rdp_plugin.c:2890
 msgid "Relax order checks"
-msgstr ""
+msgstr "Relaxa as comprobacións de pedidos"
 
 #: plugins/rdp/rdp_plugin.c:2891
 msgid "Glyph cache"
-msgstr ""
+msgstr "Caché de glifos"
 
 #: plugins/rdp/rdp_plugin.c:2892
 msgid "Enable multitransport protocol (UDP)"
-msgstr ""
+msgstr "Activar o protocolo multitransporte (UDP)"
 
 #: plugins/rdp/rdp_plugin.c:2892
 msgid "Using the UDP protocol may improve performance"
-msgstr ""
+msgstr "O uso do protocolo UDP pode mellorar o rendemento"
 
 #: plugins/rdp/rdp_plugin.c:2893
 msgid "Use base credentials for gateway too"
-msgstr ""
+msgstr "Use tamén as credenciais básicas para a pasarela"
 
 #: plugins/rdp/rdp_plugin.c:2895
 msgid "Enable Gateway websockets support"
-msgstr ""
+msgstr "Activar a compatibilidade da porta de enlace con websockets"
 
 #: plugins/rdp/rdp_plugin.c:2897
 msgid "Update framebuffer even when not visible"
-msgstr ""
+msgstr "Actualiza o framebuffer aínda que non sexa visible"
 
 #: plugins/rdp/rdp_plugin.c:2906 plugins/spice/spice_plugin.c:707
 #: plugins/spice/spice_plugin.c:715 plugins/vnc/vnc_plugin.c:2093
@@ -2763,7 +2823,7 @@ msgstr "Só ver"
 #: plugins/rdp/rdp_plugin.c:2911 plugins/spice/spice_plugin.c:717
 #: plugins/vnc/vnc_plugin.c:2110
 msgid "Send Ctrl+Alt+Delete"
-msgstr ""
+msgstr "Enviar Ctrl+Alt+Suprimir"
 
 #: plugins/rdp/rdp_plugin.c:2924
 msgid "RDP - Remote Desktop Protocol"
@@ -2800,7 +2860,7 @@ msgstr "Transferencias de ficheiro"
 
 #: plugins/spice/spice_plugin_file_transfer.c:219
 msgid "Transfer error"
-msgstr ""
+msgstr "Erro de transferencia"
 
 #: plugins/spice/spice_plugin_file_transfer.c:220
 #, fuzzy, c-format
@@ -2809,12 +2869,12 @@ msgstr "%s %s"
 
 #: plugins/spice/spice_plugin_file_transfer.c:223
 msgid "Transfer completed"
-msgstr ""
+msgstr "Transferencia completada"
 
 #: plugins/spice/spice_plugin_file_transfer.c:224
 #, c-format
 msgid "The %s file has been transferred"
-msgstr ""
+msgstr "O ficheiro %s foi transferido"
 
 #: plugins/spice/spice_plugin.c:351
 msgid "Enter SPICE password"
@@ -2839,7 +2899,7 @@ msgstr "Conectando con «%s»…"
 
 #: plugins/spice/spice_plugin.c:403
 msgid "TLS connection error."
-msgstr ""
+msgstr "Erro de conexión TLS."
 
 #: plugins/spice/spice_plugin.c:409
 msgid "Connection to the SPICE server dropped."
@@ -2847,23 +2907,25 @@ msgstr "Non foi posíbel conectarse ao servidor RDP %s"
 
 #: plugins/spice/spice_plugin.c:638
 msgid "Auto GLZ"
-msgstr ""
+msgstr "Auto GLZ"
 
 #: plugins/spice/spice_plugin.c:639
 msgid "Auto LZ"
-msgstr ""
+msgstr "Auto LZ"
 
 #: plugins/spice/spice_plugin.c:652
 msgid "Disable video overlay if videos are not displayed properly.\n"
 msgstr ""
+"Desactiva a superposición de vídeo se os vídeos non se amosan correctamente."
+"\n"
 
 #: plugins/spice/spice_plugin.c:677
 msgid "Use TLS encryption"
-msgstr ""
+msgstr "Usa o cifrado TLS"
 
 #: plugins/spice/spice_plugin.c:678
 msgid "Server CA certificate"
-msgstr ""
+msgstr "Certificado de CA do servidor"
 
 #: plugins/spice/spice_plugin.c:696
 #, fuzzy
@@ -2888,19 +2950,19 @@ msgstr "Desactivar a sincronización do portapapeis"
 
 #: plugins/spice/spice_plugin.c:705 plugins/gvnc/gvnc_plugin.c:868
 msgid "Enable audio channel"
-msgstr ""
+msgstr "Activar a canle de audio"
 
 #: plugins/spice/spice_plugin.c:706
 msgid "Share smart card"
-msgstr ""
+msgstr "Compartir tarxeta intelixente"
 
 #: plugins/spice/spice_plugin.c:718 plugins/spice/spice_plugin_usb.c:51
 msgid "Select USB devices for redirection"
-msgstr ""
+msgstr "Seleccione dispositivos USB para a re-dirección"
 
 #: plugins/spice/spice_plugin.c:729
 msgid "SPICE - Simple Protocol for Independent Computing Environments"
-msgstr ""
+msgstr "SPICE - Protocolo simple para entorno informáticos independentes"
 
 #: plugins/spice/spice_plugin_usb.c:54
 #, fuzzy
@@ -2909,7 +2971,7 @@ msgstr "_Pechar"
 
 #: plugins/spice/spice_plugin_usb.c:94
 msgid "USB redirection error"
-msgstr ""
+msgstr "Erro de redirección USB"
 
 #: plugins/vnc/vnc_plugin.c:790
 msgid "Enter VNC password"
@@ -2917,7 +2979,7 @@ msgstr "Gravar o contrasinal"
 
 #: plugins/vnc/vnc_plugin.c:843 plugins/gvnc/gvnc_plugin.c:538
 msgid "Enter VNC authentication credentials"
-msgstr ""
+msgstr "Introduza as credenciais de autenticación VNC"
 
 #: plugins/vnc/vnc_plugin.c:951
 msgid "Unable to connect to VNC server"
@@ -2940,11 +3002,11 @@ msgstr "A súa conexión foi rexeitada."
 #: plugins/vnc/vnc_plugin.c:981
 #, c-format
 msgid "The VNC server requested an unknown authentication method. %s"
-msgstr ""
+msgstr "O servidor VNC solicitou un método de autenticación descoñecido. %s"
 
 #: plugins/vnc/vnc_plugin.c:983
 msgid "Please retry after turning on encryption for this profile."
-msgstr ""
+msgstr "Téntao de novo despois de activar o cifrado para este perfil."
 
 #: plugins/vnc/vnc_plugin.c:1717
 #, fuzzy, c-format
@@ -2961,7 +3023,7 @@ msgstr "Conectando con «%s»…"
 #: plugins/vnc/vnc_plugin.c:1744
 #, c-format
 msgid "Disconnected from %s:%d via VNC"
-msgstr ""
+msgstr "Desconectado de %s:%d mediante VNC"
 
 #: plugins/vnc/vnc_plugin.c:2008
 msgid ""
@@ -2973,6 +3035,15 @@ msgid ""
 "    the repeater, e.g. with x11vnc:\n"
 "    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
 msgstr ""
+"Conéctese a VNC mediante un repetidor:\n"
+"   • O campo do servidor debe conter o ID do repetidor, por exemplo, ID:"
+"123456789\n"
+"   • O campo do repetidor debe configurarse como IP e porto do repetidor, "
+"como:\n"
+"\t10.10.10.12:5901\n"
+"   • Desde o servidor VNC remoto, conectarase a\n"
+"\to repetidor, por exemplo con x11vnc:\n"
+"\tx11vnc -conectar repetidor=ID:123456789+10.10.10.12:5500"
 
 #: plugins/vnc/vnc_plugin.c:2017
 msgid ""
@@ -2983,6 +3054,12 @@ msgid ""
 "    Remmina, e.g. with x11vnc:\n"
 "    x11vnc -display :0 -connect 192.168.1.36:8888"
 msgstr ""
+"Escoitando a conexión VNC remota:\n"
+"   • O campo \"Escoitar no porto\" é o porto que Remmina escoitará,\n"
+"\tp.ex. 8888\n"
+"   • Desde o servidor VNC remoto, conectarase a\n"
+"\tRemmina, por exemplo, con x11vnc:\n"
+"\tx11vnc -display :0 -conectar 192.168.1.36:8888"
 
 #: plugins/vnc/vnc_plugin.c:2025
 msgid ""
@@ -2996,6 +3073,16 @@ msgid ""
 "  • “Best (slowest)” sets encoding to “copyrect zrle ultra zlib hextile "
 "corre rre raw”"
 msgstr ""
+"Anulando a calidade de codificación VNC preestablecida:\n"
+"\n"
+"   • \"Poor (máis rápido)\" establece a codificación como \"copyrect zlib "
+"hextile raw\"\n"
+"   • \"Medio\" configura a codificación como \"axustado zrle ultra copyrect "
+"hextile zlib corre rre raw\"\n"
+"   • \"Boa\" configura a codificación como \"axustado zrle ultra copyrect "
+"hextile zlib corre rre raw\"\n"
+"   • \"Mellor (máis lento)\" establece a codificación como \"copyrect zrle "
+"ultra zlib hextile corre rre raw\""
 
 #: plugins/vnc/vnc_plugin.c:2052
 msgid "Repeater"
@@ -3007,23 +3094,23 @@ msgstr "Escoitar no porto"
 
 #: plugins/vnc/vnc_plugin.c:2084
 msgid "Override pre-set VNC encodings"
-msgstr ""
+msgstr "Anular codificacións VNC predefinidas"
 
 #: plugins/vnc/vnc_plugin.c:2085
 msgid "Force tight encoding"
-msgstr ""
+msgstr "Forzar codificación restrinxida"
 
 #: plugins/vnc/vnc_plugin.c:2085
 msgid "Enabling this may help when the remote desktop looks scrambled"
-msgstr ""
+msgstr "Activar isto pode axudar cando o escritorio remoto parece codificado"
 
 #: plugins/vnc/vnc_plugin.c:2088 plugins/gvnc/gvnc_plugin.c:867
 msgid "Ignore remote bell messages"
-msgstr ""
+msgstr "Ignorar as mensaxes de timbre remoto"
 
 #: plugins/vnc/vnc_plugin.c:2089 plugins/vnc/vnc_plugin.c:2107
 msgid "Prevent local interaction on the server"
-msgstr ""
+msgstr "Evitar a interacción local no servidor"
 
 #: plugins/vnc/vnc_plugin.c:2090
 msgid "Show remote cursor"
@@ -3039,23 +3126,23 @@ msgstr "Abrir chat…"
 
 #: plugins/vnc/vnc_plugin.h:42
 msgid "Remmina VNC Plugin"
-msgstr ""
+msgstr "Complemento para VNC de Remmina"
 
 #: plugins/vnc/vnc_plugin.h:47
 msgid "Remmina VNC listener Plugin"
-msgstr ""
+msgstr "Complemento de escoita VNC para Remmina"
 
 #: plugins/www/www_config.h:43
 msgid "Remmina web-browser plugin"
-msgstr ""
+msgstr "Complemento para navegador web Remmina"
 
 #: plugins/www/www_plugin.c:99
 msgid "File downloaded"
-msgstr ""
+msgstr "Arquivo descargado"
 
 #: plugins/www/www_plugin.c:592
 msgid "Enter WWW authentication credentials"
-msgstr ""
+msgstr "Introduza as credenciais de autenticación WWW"
 
 #: plugins/www/www_plugin.c:907
 #, fuzzy
@@ -3064,7 +3151,7 @@ msgstr "URL"
 
 #: plugins/www/www_plugin.c:907
 msgid "http://address or https://address"
-msgstr ""
+msgstr "http://dirección ou https://dirección"
 
 #: plugins/www/www_plugin.c:924
 #, fuzzy
@@ -3073,15 +3160,15 @@ msgstr "Axente do usuario"
 
 #: plugins/www/www_plugin.c:925
 msgid "Proxy URL"
-msgstr ""
+msgstr "URL do proxy"
 
 #: plugins/www/www_plugin.c:925
 msgid "E.g. https://example.org, socks://mysocks:1080"
-msgstr ""
+msgstr "Ex. https://example.org, socks://mysocks:1080"
 
 #: plugins/www/www_plugin.c:926
 msgid "Turn on Java support"
-msgstr ""
+msgstr "Activa o soporte de Java"
 
 #: plugins/www/www_plugin.c:927
 msgid "Turn on smooth scrolling"
@@ -3089,19 +3176,19 @@ msgstr "Suavizado de tipo de letra"
 
 #: plugins/www/www_plugin.c:928
 msgid "Turn on spatial navigation"
-msgstr ""
+msgstr "Activa a navegación espacial"
 
 #: plugins/www/www_plugin.c:931
 msgid "Turn on plugin support"
-msgstr ""
+msgstr "Activa o soporte de complementos"
 
 #: plugins/www/www_plugin.c:932
 msgid "Turn on WebGL support"
-msgstr ""
+msgstr "Activa a compatibilidade con WebGL"
 
 #: plugins/www/www_plugin.c:934
 msgid "Turn on HTML5 audio support"
-msgstr ""
+msgstr "Activa o soporte de son HTML5"
 
 #: plugins/www/www_plugin.c:935
 #, fuzzy
@@ -3110,17 +3197,20 @@ msgstr "Ignorar todos os erros"
 
 #: plugins/www/www_plugin.c:938
 msgid "Turn on Web Inspector"
-msgstr ""
+msgstr "Activa o Inspector Web"
 
 #: plugins/exec/exec_plugin.c:160
 msgid "You did not set any command to be executed"
-msgstr ""
+msgstr "Non definiches ningún comando para executalo"
 
 #: plugins/exec/exec_plugin.c:206
 msgid ""
 "Warning: Running a command synchronously may cause Remmina not to respond.\n"
 "Do you really want to continue?"
 msgstr ""
+"Aviso: A execución dun comando de forma sincronizada pode provocar que "
+"Remmina non responda.\n"
+"Realmente queres continuar?"
 
 #: plugins/exec/exec_plugin.c:274
 #, fuzzy
@@ -3129,11 +3219,11 @@ msgstr "Comandos"
 
 #: plugins/exec/exec_plugin.c:275
 msgid "Asynchronous execution"
-msgstr ""
+msgstr "Execución asíncrona"
 
 #: plugins/exec/exec_plugin_config.h:41
 msgid "Execute a command"
-msgstr ""
+msgstr "Executar un comando"
 
 #: plugins/tool_hello_world/plugin_config.h:40
 #, fuzzy
@@ -3150,6 +3240,8 @@ msgid ""
 "The command-line feature '%s' is not available! Attempting to start PyHoca-"
 "CLI without using this feature…"
 msgstr ""
+"A función de liña de comandos '%s' non está dispoñible! Intentando iniciar "
+"PyHoca-CLI sen usar esta función…"
 
 #: plugins/x2go/x2go_plugin.c:296 plugins/x2go/x2go_plugin.c:428
 #: plugins/x2go/x2go_plugin.c:517 plugins/x2go/x2go_plugin.c:624
@@ -3174,15 +3266,15 @@ msgstr "Erro interno "
 #: plugins/x2go/x2go_plugin.c:297 plugins/x2go/x2go_plugin.c:429
 #: plugins/x2go/x2go_plugin.c:518 plugins/x2go/x2go_plugin.c:1349
 msgid "Parameter 'custom_data' is not initialized!"
-msgstr ""
+msgstr "O parámetro \"custom_data\" non está inicializado!"
 
 #: plugins/x2go/x2go_plugin.c:310
 msgid "Broken `DialogData`! Aborting…"
-msgstr ""
+msgstr "`DialogData` roto! Abortando…"
 
 #: plugins/x2go/x2go_plugin.c:314
 msgid "Can't retrieve `DialogData`! Aborting…"
-msgstr ""
+msgstr "Non se pode recuperar `DialogData`! Abortando…"
 
 #: plugins/x2go/x2go_plugin.c:476
 #, fuzzy
@@ -3202,15 +3294,15 @@ msgstr "Permiso"
 
 #: plugins/x2go/x2go_plugin.c:479
 msgid "Create date"
-msgstr ""
+msgstr "Crear data"
 
 #: plugins/x2go/x2go_plugin.c:480
 msgid "Suspended since"
-msgstr ""
+msgstr "Suspendido desde"
 
 #: plugins/x2go/x2go_plugin.c:481
 msgid "Agent PID"
-msgstr ""
+msgstr "Axente PID"
 
 #: plugins/x2go/x2go_plugin.c:483
 #, fuzzy
@@ -3219,19 +3311,19 @@ msgstr "Nome de usuaria"
 
 #: plugins/x2go/x2go_plugin.c:484
 msgid "Cookie"
-msgstr ""
+msgstr "Cookie"
 
 #: plugins/x2go/x2go_plugin.c:485
 msgid "Graphic port"
-msgstr ""
+msgstr "Porto gráfico"
 
 #: plugins/x2go/x2go_plugin.c:486
 msgid "SND port"
-msgstr ""
+msgstr "Porto SND"
 
 #: plugins/x2go/x2go_plugin.c:487
 msgid "SSHFS port"
-msgstr ""
+msgstr "Porto SSHFS"
 
 #: plugins/x2go/x2go_plugin.c:488
 #, fuzzy
@@ -3241,6 +3333,7 @@ msgstr "Visíbel"
 #: plugins/x2go/x2go_plugin.c:527
 msgid "Couldn't retrieve valid `DialogData` or `sessions_list`! Aborting…"
 msgstr ""
+"Non se puido recuperar `DialogData` ou `sessions_list` válidos! Abortando…"
 
 #. TRANSLATORS: Stick to x2goclient's translation for terminate.
 #: plugins/x2go/x2go_plugin.c:536
@@ -3258,38 +3351,43 @@ msgstr "Continuar"
 
 #: plugins/x2go/x2go_plugin.c:541
 msgid "_New"
-msgstr ""
+msgstr "_Novo"
 
 #. TRANSLATORS: Tooltip for terminating button inside Session-Chooser-Dialog.
 #. TRANSLATORS: Please stick to X2GoClient's way of translating.
 #: plugins/x2go/x2go_plugin.c:550
 msgid "Terminating X2Go sessions can take a moment."
-msgstr ""
+msgstr "A finalización das sesións de X2Go pode levar un momento."
 
 #: plugins/x2go/x2go_plugin.c:625 plugins/x2go/x2go_plugin.c:627
 #, c-format
 msgid "Unknown property '%i'"
-msgstr ""
+msgstr "Propiedade descoñecida '%i'"
 
 #: plugins/x2go/x2go_plugin.c:715 plugins/x2go/x2go_plugin.c:762
 msgid "Couldn't find child GtkTreeView of session chooser dialog."
 msgstr ""
+"Non se puido atopar GtkTreeView fillo do diálogo de selección de sesións."
 
 #: plugins/x2go/x2go_plugin.c:727
 msgid ""
 "Neither the 'dialog' nor 'treeview' parameters are initialized! At least one "
 "of them must be given."
 msgstr ""
+"Nin os parámetros 'diálogo' nin 'treeview' están inicializados! Hai que dar "
+"polo menos un deles."
 
 #: plugins/x2go/x2go_plugin.c:736
 msgid ""
 "Could not obtain \"GtkTreeModelFilter*\" of the session chooser dialog, for "
 "unknown reason."
 msgstr ""
+"Non se puido obter \"GtkTreeModelFilter*\" do diálogo de selección de "
+"sesións, por un motivo descoñecido."
 
 #: plugins/x2go/x2go_plugin.c:771
 msgid "Couldn't get currently selected row (session)!"
-msgstr ""
+msgstr "Non se puido obter a fila (sesión) seleccionada actualmente!"
 
 #: plugins/x2go/x2go_plugin.c:790
 #, c-format
