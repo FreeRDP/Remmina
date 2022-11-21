@@ -1,7 +1,7 @@
 {
     "app-id": "org.remmina.Remmina",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "42",
+    "runtime-version": "43",
     "sdk": "org.gnome.Sdk",
     "command": "remmina",
     "cleanup": [
@@ -48,7 +48,7 @@
     "add-extensions": {
         "org.freedesktop.Platform.ffmpeg-full": {
             "directory": "lib/ffmpeg",
-            "version": "21.08",
+            "version": "22.08",
             "add-ld-path": ".",
             "no-autodownload": false,
             "autodelete": false
@@ -60,8 +60,8 @@
         }
     },
     "cleanup-commands": [
-        "mkdir -p /app/lib/ffmpeg",
-        "mkdir -p /app/lib/openh264"
+        "mkdir -p ${FLATPAK_DEST}/lib/ffmpeg",
+        "mkdir -p ${FLATPAK_DEST}/lib/openh264"
     ],
     "modules": [
         "shared-modules/intltool/intltool-0.51.json",
@@ -252,11 +252,11 @@
                 {
                     "type": "git",
                     "url": "https://github.com/LudovicRousseau/PCSC.git",
-                    "tag": "pcsc-1.9.0",
-                    "commit": "e796a0f12fbefa459bff0d25e27089615fa91f21",
+                    "tag": "1.9.9",
+                    "commit": "15c16c7796607b1c8a2ce253d3f536918ab26b4a",
                     "x-checker-data": {
                         "type": "git",
-                        "tag-pattern": "^pcsc-([\\d.]+)$"
+                        "tag-pattern": "^([\\d.]+)$"
                     }
                 }
             ]
@@ -366,15 +366,12 @@
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://download.gnome.org/sources/phodav/2.5/phodav-2.5.tar.xz",
-                            "sha256": "71f0a9cd70afd4dd1412a0298331dbb8ac71c0377f52117afc15eb88dc6fb910",
+                            "url": "https://download.gnome.org/sources/phodav/3.0/phodav-3.0.tar.xz",
+                            "sha256": "392ec2d06d50300dcff1ef269a2a985304e29bce3520002fca29f2edc1d138d1",
                             "x-checker-data": {
                                 "type": "gnome",
                                 "name": "phodav",
-                                "stable-only": false,
-                                "versions": {
-                                    "<": "3"
-                                }
+                                "stable-only": false
                             }
                         }
                     ]
