@@ -24,7 +24,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2022-11-14 14:59+0000\n"
-"PO-Revision-Date: 2022-11-20 20:47+0000\n"
+"PO-Revision-Date: 2022-11-21 21:47+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/remmina/remmina/"
 "es/>\n"
@@ -1106,7 +1106,7 @@ msgstr "No se pudo autenticar con GSSAPI SSH/Kerberos. %s"
 
 #: src/remmina_ssh.c:1096
 msgid "The public SSH key changed!"
-msgstr "Ha cambiado la clave pública SSH."
+msgstr "¡La clave SSH pública cambió!"
 
 #: src/remmina_ssh.c:1209
 #, c-format
@@ -1617,8 +1617,8 @@ msgstr "Notas"
 #, c-format
 msgid "(%s: %i): Can't validate setting '%s' since 'value' or 'gfe' are NULL!"
 msgstr ""
-"(%s: %i): no se puede validar la configuración «%s» ya que o «value» o «gfe» "
-"es NULL."
+"(%s: %i): ¡No se puede validar la configuración %s porque 'valor' o 'gfe' "
+"son NULOS!"
 
 #: src/remmina_file_editor.c:1462
 #, c-format
@@ -1626,8 +1626,8 @@ msgid ""
 "(%s: %i): Can't validate user input since 'setting_name_to_validate', "
 "'value' or 'gfe' are NULL!"
 msgstr ""
-"(%s: %i): no se puede validar la entrada del usuario ya que "
-"«setting_name_to_validate», «value» o «gfe» son NULL."
+"(%s: %i): ¡No se puede validar la entrada del usuario porque "
+"'setting_name_to_validate', 'value' o 'gfe' son NULOS!"
 
 #. TRANSLATORS: Meta-error. Shouldn't be visible.
 #: src/remmina_file_editor.c:1466 plugins/x2go/x2go_plugin.c:2574
@@ -3262,7 +3262,7 @@ msgstr "Error interno: %s"
 #: plugins/x2go/x2go_plugin.c:297 plugins/x2go/x2go_plugin.c:429
 #: plugins/x2go/x2go_plugin.c:518 plugins/x2go/x2go_plugin.c:1349
 msgid "Parameter 'custom_data' is not initialized!"
-msgstr "No se inicializó el parámetro «custom_data»."
+msgstr "¡El parámetro 'custom_data' no está inicializado!"
 
 #: plugins/x2go/x2go_plugin.c:310
 msgid "Broken `DialogData`! Aborting…"
@@ -3374,7 +3374,7 @@ msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:771
 msgid "Couldn't get currently selected row (session)!"
-msgstr "No se pudo obtener la fila seleccionada actualmente (session)."
+msgstr "¡No se pudo obtener la fila seleccionada actualmente (sesión)!"
 
 #: plugins/x2go/x2go_plugin.c:790
 #, c-format
@@ -3454,7 +3454,7 @@ msgstr "«Datos de conexión no válidos.»"
 
 #: plugins/x2go/x2go_plugin.c:1154
 msgid "Parameter 'custom_data' is not fully initialized!"
-msgstr "No se inicializó por completo el parámetro «custom_data»."
+msgstr "¡El parámetro 'custom_data' no está completamente inicializado!"
 
 #: plugins/x2go/x2go_plugin.c:1276
 #, c-format
@@ -3501,14 +3501,14 @@ msgid ""
 "errors. Also ensure the remote server is reachable and you're using the "
 "right credentials."
 msgstr ""
-"El proceso secundario necesario 'pyhoca-cli' se detuvo inesperadamente. "
-"Verifique la configuración de su perfil y la salida de PyHoca-CLI para "
-"detectar los posibles errores. Asegúrese también de que se pueda acceder al "
-"servidor remoto y de que está utilizando las credenciales correctas."
+"El proceso secundario necesario 'pyhoca-cli' se detuvo inesperadamente.\n"
+"Por favor, comprueba la configuración de tu perfil y la salida de PyHoca-CLI "
+"para detectar posibles errores. También asegúrate de que el servidor remoto "
+"es accesible y que estás usando las credenciales correctas."
 
 #: plugins/x2go/x2go_plugin.c:1709
 msgid "Can't save empty username!"
-msgstr "No se puede guardar un nombre de usuario vacío."
+msgstr "¡No se puede guardar un nombre de usuario vacío!"
 
 #: plugins/x2go/x2go_plugin.c:1723
 msgid "Could not save new credentials."
@@ -3557,7 +3557,7 @@ msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:2086
 msgid "Couldn't allocate enough memory!"
-msgstr "No se pudo asignar suficiente memoria."
+msgstr "¡No se pudo asignar suficiente memoria!"
 
 #: plugins/x2go/x2go_plugin.c:2096
 #, c-format
@@ -3730,11 +3730,11 @@ msgstr "%s«%s», "
 
 #: plugins/x2go/x2go_plugin.c:3200
 msgid "Invalid validation data in ProtocolSettings array!"
-msgstr "Los datos de validación de la matriz ProtocolSettings no son válidos."
+msgstr "¡Datos de validación no válidos en la matriz ProtocolSettings!"
 
 #: plugins/x2go/x2go_plugin.c:3215 plugins/x2go/x2go_plugin.c:3280
 msgid "Validation data in ProtocolSettings array is invalid!"
-msgstr "Los datos de validación de la matriz ProtocolSettings no son válidos."
+msgstr "¡Los datos de validación en la matriz ProtocolSettings no son válidos!"
 
 #: plugins/x2go/x2go_plugin.c:3224
 msgid "Parameters 'key' or 'value' are 'NULL'!"
@@ -3752,15 +3752,15 @@ msgstr "El único valor permitido es «%s»."
 
 #: plugins/x2go/x2go_plugin.c:3291
 msgid "The lower limit is not a valid integer!"
-msgstr "El límite inferior no es un número entero válido."
+msgstr "¡El límite inferior no es un número entero válido!"
 
 #: plugins/x2go/x2go_plugin.c:3296
 msgid "The lower limit is too high!"
-msgstr "El límite inferior es demasiado alto."
+msgstr "¡El límite inferior es demasiado alto!"
 
 #: plugins/x2go/x2go_plugin.c:3301
 msgid "The lower limit is too low!"
-msgstr "El límite inferior es demasiado bajo."
+msgstr "¡El límite inferior es demasiado bajo!"
 
 #: plugins/x2go/x2go_plugin.c:3306 plugins/x2go/x2go_plugin.c:3336
 #: plugins/x2go/x2go_plugin.c:3356
@@ -3774,19 +3774,19 @@ msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:3321
 msgid "The upper limit is not a valid integer!"
-msgstr "El límite superior no es un número entero válido."
+msgstr "¡El límite superior no es un número entero válido!"
 
 #: plugins/x2go/x2go_plugin.c:3326
 msgid "The upper limit is too high!"
-msgstr "El límite superior es demasiado alto."
+msgstr "¡El límite superior es demasiado alto!"
 
 #: plugins/x2go/x2go_plugin.c:3331
 msgid "The upper limit is too low!"
-msgstr "El límite superior es demasiado bajo."
+msgstr "¡El límite superior es demasiado bajo!"
 
 #: plugins/x2go/x2go_plugin.c:3351
 msgid "The input is not a valid integer!"
-msgstr "La entrada no es un número entero válido."
+msgstr "¡La entrada no es un número entero válido!"
 
 #: plugins/x2go/x2go_plugin.c:3353 plugins/x2go/x2go_plugin.c:3370
 #, c-format
