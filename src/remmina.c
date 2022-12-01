@@ -32,6 +32,8 @@
  *
  */
 
+#include <gdk/gdk.h>
+
 #define G_LOG_USE_STRUCTURED
 #ifndef G_LOG_DOMAIN
 #define G_LOG_DOMAIN    ((gchar*)"remmina")
