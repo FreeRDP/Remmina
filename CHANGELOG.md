@@ -1,3 +1,38 @@
+## Unreleased
+[full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.27...v1.4.28)
+
+* Some minor rdp fixes [!2415](https://gitlab.com/Remmina/Remmina/merge_requests/2415) *@akallabeth*
+* Mathias Winterhalter's avatar Fix unix socket support for VNC [!2417](https://gitlab.com/Remmina/Remmina/merge_requests/2417) *@ToolsDevler*
+* GVNC: Fixed JPEG quality encoding advertizing [!2418](https://gitlab.com/Remmina/Remmina/merge_requests/2418) *@mdevaev*
+* Fix missing null checks causing signal 11 [!2419](https://gitlab.com/Remmina/Remmina/merge_requests/2419) *@ToolsDevler*
+* add modified date to sftp file list [!2420](https://gitlab.com/Remmina/Remmina/merge_requests/2420) *@youcefnafa*
+* Adding Labels/Tags [!2421](https://gitlab.com/Remmina/Remmina/merge_requests/2421) *@antonio.petricca*
+* Spelling: Hostname [!2422](https://gitlab.com/Remmina/Remmina/merge_requests/2422) *@kingu*
+* X2Go: Fix annoying default_username bug. [!2423](https://gitlab.com/Remmina/Remmina/merge_requests/2423) *@D0n1elT*
+* plugins/x2go/x2go_plugin.c: Fix tip and comment sentence [!2424](https://gitlab.com/Remmina/Remmina/merge_requests/2424) *@kingu*
+* Remove webkit_settings_set_enable_frame_flattening() for newer WekbKitGTK, fixes #2780 [!2425](https://gitlab.com/Remmina/Remmina/merge_requests/2425) *@giox069*
+* Change password including gateway [!2427](https://gitlab.com/Remmina/Remmina/merge_requests/2427) *@benoit.lagarde*
+* Improve rcw close [!2429](https://gitlab.com/Remmina/Remmina/merge_requests/2429) *@giox069*
+* Multiple changes to build and run with libsoup 3.0 [!2431](https://gitlab.com/Remmina/Remmina/merge_requests/2431) *@antenore*
+* X2Go: Add ssh_passphrase and ssh_privatekey settings. [!2428](https://gitlab.com/Remmina/Remmina/merge_requests/2428) *@D0n1elT*
+* RDP: Add option to disable output suppression [!2432](https://gitlab.com/Remmina/Remmina/merge_requests/2432) *@iskunk*
+* Spelling: "Passphrase" → "password" [!2433](https://gitlab.com/Remmina/Remmina/merge_requests/2433) *@kingu*
+* Fix compile warnings and some spelling corrections [!2434](https://gitlab.com/Remmina/Remmina/merge_requests/2434) *@myheroyuki*
+* [Rem-2782] Display protocol name in tooltip for connections in the ... menu... [!2436](https://gitlab.com/Remmina/Remmina/merge_requests/2436) *@myheroyuki*
+* [Rem-2782] added protocol icons in dropdown menu [!2438](https://gitlab.com/Remmina/Remmina/merge_requests/2438) *@myheroyuki*
+* Fix widget reparenting when entering/exiting fullscreen [!2439](https://gitlab.com/Remmina/Remmina/merge_requests/2439) *@giox069*
+* Rem 2760 [!2440](https://gitlab.com/Remmina/Remmina/merge_requests/2440) *@myheroyuki*
+* Allow building on a Wayland-only environment - version 4 [!2437](https://gitlab.com/Remmina/Remmina/merge_requests/2437) *@festevam*
+* [Rem-2564] Allow for VNC runtime adjustment of color depth [!2442](https://gitlab.com/Remmina/Remmina/merge_requests/2442) *@myheroyuki*
+* Fix floating toolbar not disappearing when in fullscreen and keyboard grabbed [!2441](https://gitlab.com/Remmina/Remmina/merge_requests/2441) *@giox069*
+* Revert "Merge branch 'Rem-2564' into 'master'" [!2443](https://gitlab.com/Remmina/Remmina/merge_requests/2443) *@myheroyuki*
+* [Rem-2654] Allow for runtime adjustment of color depth, both increasing and decreasing [!2444](https://gitlab.com/Remmina/Remmina/merge_requests/2444) *@myheroyuki*
+* [Rem-2564] Changed declaration of variables to be compatable with different Ubuntu version [!2445](https://gitlab.com/Remmina/Remmina/merge_requests/2445) *@myheroyuki*
+* [Rem-2682] Added view-only mode for RDP [!2447](https://gitlab.com/Remmina/Remmina/merge_requests/2447) *@myheroyuki*
+* Removing the News Widget [!2446](https://gitlab.com/Remmina/Remmina/merge_requests/2446) *@antenore*
+* Updated flatpak manifest files to match github [!2448](https://gitlab.com/Remmina/Remmina/merge_requests/2448) *@myheroyuki*
+* Add missing include for X11/Wayland conditional [!2450](https://gitlab.com/Remmina/Remmina/merge_requests/2450) *@bkohler*
+
 ## v1.4.27
 [full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.26...v1.4.27)
 
