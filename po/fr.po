@@ -18,13 +18,14 @@
 # ButterflyOfFire <ButterflyOfFire@protonmail.com>, 2022.
 # Cabernet138 <cabernet138@gmail.com>, 2022.
 # Kilian GUILLAUME <kilian.guillaume@gmail.com>, 2022.
+# rene-coty <irenee.thirion@e.email>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2022-12-02 09:47+0000\n"
-"PO-Revision-Date: 2022-11-27 08:48+0000\n"
-"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"PO-Revision-Date: 2022-12-02 22:48+0000\n"
+"Last-Translator: rene-coty <irenee.thirion@e.email>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/remmina/remmina/"
 "fr/>\n"
 "Language: fr\n"
@@ -523,10 +524,8 @@ msgid "The passwords do not match"
 msgstr "Les mots de passe ne correspondent pas"
 
 #: src/remmina_mpchange.c:275
-#, fuzzy
-#| msgid "The passwords do not match"
 msgid "The Gateway passwords do not match"
-msgstr "Les mots de passe ne correspondent pas"
+msgstr "Les mots de passe Gateway ne correspondent pas"
 
 #: src/remmina_mpchange.c:289
 msgid "Resetting passwords, please wait…"
@@ -1061,12 +1060,10 @@ msgid "Could not authenticate with SSH password. %s"
 msgstr "Authentification SSH par mot de passe impossible. %s"
 
 #: src/remmina_ssh.c:820 src/remmina_ssh.c:887
-#, fuzzy
-#| msgid "No saved SSH passphrase supplied. Asking user to enter it."
 msgid "No saved SSH password supplied. Asking user to enter it."
 msgstr ""
-"Aucune phrase de passe SSH n’est enregistrée. L’utilisateur est sollicité à "
-"en saisir une."
+"Aucun mot de passe SSH n’est enregistré. L’utilisateur est sollicité à en "
+"saisir un."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:825 src/remmina_ssh.c:866 src/remmina_ssh.c:892
@@ -3559,16 +3556,12 @@ msgstr ""
 "été définie."
 
 #: plugins/x2go/x2go_plugin.c:1758
-#, fuzzy
-#| msgid "Password to unlock private key"
 msgid "Enter password to unlock the SSH key:"
-msgstr "Mot de passe de déverrouillage de la clef privée"
+msgstr "Entrez le mot de passe pour déverrouiller la clef SSH :"
 
 #: plugins/x2go/x2go_plugin.c:1769
-#, fuzzy
-#| msgid "Authentication failure: %s"
 msgid "Password input cancelled. Aborting…"
-msgstr "Erreur d’authentification : %s"
+msgstr "Saisie du mot de passe annulée. Abandon…"
 
 #: plugins/x2go/x2go_plugin.c:1800
 msgid ""
@@ -3581,10 +3574,8 @@ msgid "Enter X2Go credentials"
 msgstr "Entrez les informations d’identification X2Go"
 
 #: plugins/x2go/x2go_plugin.c:1860
-#, fuzzy
-#| msgid "Authentication failure: %s"
 msgid "Authentication cancelled. Aborting…"
-msgstr "Erreur d’authentification : %s"
+msgstr "Authentification annulée. Abandon…"
 
 #: plugins/x2go/x2go_plugin.c:2047
 msgid ""
@@ -3888,10 +3879,8 @@ msgstr ""
 "doit être comprise entre 20 et 400."
 
 #: plugins/x2go/x2go_plugin.c:3421
-#, fuzzy
-#| msgid "SSH private key file"
 msgid "Your private key"
-msgstr "Fichier contenant la clef SSH privée"
+msgstr "Votre clef privée"
 
 #: plugins/x2go/x2go_plugin.c:3461
 msgid "X2Go plugin loaded."
@@ -4189,28 +4178,20 @@ msgid "Set new password"
 msgstr "Nouveau mot de passe"
 
 #: data/ui/remmina_mpc.glade:320
-#, fuzzy
-#| msgid "Username"
 msgid "Gateway Username"
-msgstr "Nom d’utilisateur"
+msgstr "Nom d’utilisateur Gateway"
 
 #: data/ui/remmina_mpc.glade:349
-#, fuzzy
-#| msgid "Remote Desktop Gateway domain"
 msgid "Gateway Domain"
-msgstr "Domaine de la passerelle RDP"
+msgstr "Domaine Gateway"
 
 #: data/ui/remmina_mpc.glade:415
-#, fuzzy
-#| msgid "Master password"
 msgid "Gateway Password"
-msgstr "Mot de passe principal"
+msgstr "Mot de passe Gateway"
 
 #: data/ui/remmina_mpc.glade:440
-#, fuzzy
-#| msgid "Confirm password"
 msgid "Confirm Gateway Password"
-msgstr "Confirmez le mot de passe"
+msgstr "Confirmez le mot de passe Gateway"
 
 #. A column table with multiple check-boxes
 #: data/ui/remmina_mpc.glade:503
@@ -4234,12 +4215,9 @@ msgid "Domain\\Username"
 msgstr "Domaine\\Nom d’utilisateur"
 
 #: data/ui/remmina_mpc.glade:548
-#, fuzzy
-#| msgctxt "Multi password changer table"
-#| msgid "Domain\\Username"
 msgctxt "Multi password changer table"
 msgid "Gateway Domain\\Username"
-msgstr "Domaine\\Nom d’utilisateur"
+msgstr "Domaine \\ Nom d’utilisateur Gateway"
 
 #: data/ui/remmina_mpc.glade:588
 msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
@@ -4586,14 +4564,6 @@ msgstr "Modèle de nomenclature des profils"
 
 #. Placeholders used to name a Remmina connection profile
 #: data/ui/remmina_preferences.glade:361
-#, fuzzy
-#| msgid ""
-#| "%G Name of group (slashes \\/ are converted to dashes -)\n"
-#| "%P Protocol name\n"
-#| "%N Connection name\n"
-#| "%h Host name/IP\n"
-#| "\n"
-#| "\n"
 msgid ""
 "%G Name of group (slashes \\/ are converted to dashes -)\n"
 "%P Protocol name\n"
@@ -4705,14 +4675,12 @@ msgstr ""
 "thème configuré."
 
 #: data/ui/remmina_preferences.glade:687
-#, fuzzy
-#| msgid "Always show tabs"
 msgid "Always show notes"
-msgstr "Toujours afficher les onglets"
+msgstr "Toujours afficher les notes"
 
 #: data/ui/remmina_preferences.glade:691
 msgid "Add a column displaying any notes associated with a connection."
-msgstr ""
+msgstr "Ajouter une colonne affichant des notes associées avec une connexion."
 
 #: data/ui/remmina_preferences.glade:711
 msgid "“Grab all keyboard events” status colour"
