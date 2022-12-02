@@ -31,6 +31,7 @@
 * [Rem-2682] Added view-only mode for RDP [!2447](https://gitlab.com/Remmina/Remmina/merge_requests/2447) *@myheroyuki*
 * Removing the News Widget [!2446](https://gitlab.com/Remmina/Remmina/merge_requests/2446) *@antenore*
 * Updated flatpak manifest files to match github [!2448](https://gitlab.com/Remmina/Remmina/merge_requests/2448) *@myheroyuki*
+* Add missing include for X11/Wayland conditional [!2450](https://gitlab.com/Remmina/Remmina/merge_requests/2450) *@bkohler*
 
 ## v1.4.27
 [full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.26...v1.4.27)
