@@ -37,7 +37,9 @@
 #include "config.h"
 #include <ctype.h>
 #include <gio/gio.h>
+#ifndef __APPLE__
 #include <gio/gdesktopappinfo.h>
+#endif
 #include <gdk/gdkkeysyms.h>
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
@@ -1043,6 +1045,7 @@ void remmina_main_on_action_application_preferences(GSimpleAction *action, GVari
 void remmina_main_on_action_application_default(GSimpleAction *action, GVariant *param, gpointer data)
 {
 	TRACE_CALL(__func__);
+#ifndef __APPLE__
 	g_autoptr(GError) error = NULL;
 	GDesktopAppInfo *desktop_info;
 	GAppInfo *info = NULL;
@@ -1064,6 +1067,7 @@ void remmina_main_on_action_application_default(GSimpleAction *action, GVariant 
 				g_app_info_get_name(info),
 				supported_mime_types[i]);
 	}
+#endif
 }
 
 void remmina_main_on_action_application_quit(GSimpleAction *action, GVariant *param, gpointer data)
