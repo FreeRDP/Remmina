@@ -1111,8 +1111,13 @@ remmina_file_touch(RemminaFile *remminafile)
 		if (errno != ENOENT)
 			REMMINA_DEBUG("stat %s:", remminafile->statefile);
 	} else if (!r) {
+#ifdef __APPLE__
+		times[0] = st.st_atimespec;
+		times[1] = st.st_mtimespec;
+#else
 		times[0] = st.st_atim;
 		times[1] = st.st_mtim;
+#endif
 		if (utimensat(AT_FDCWD, remminafile->statefile, times, 0) < 0)
 			REMMINA_DEBUG("utimensat %s:", remminafile->statefile);
 		return;

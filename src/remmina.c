@@ -40,7 +40,7 @@
 #endif  /* G_LOG_DOMAIN */
 #ifdef GDK_WINDOWING_X11
 #include <gdk/gdkx.h>
-#else
+#elif defined(GDK_WINDOWING_WAYLAND)
 #include <gdk/gdkwayland.h>
 #endif
 #include <gio/gio.h>

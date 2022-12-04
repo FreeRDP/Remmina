@@ -48,16 +48,18 @@ if(GIO_LIBRARY AND NOT GIO_FOUND)
   find_path(GIO_INCLUDE_DIR "gio/gio.h"
     HINTS ${GIO_PKG_INCLUDE_DIRS})
 
-find_path(GIO-UNIX_INCLUDE_DIR "gio/gdesktopappinfo.h"
-    HINTS ${GIO-UNIX_PKG_INCLUDE_DIRS})
-
+  if(NOT APPLE)
+    find_path(GIO-UNIX_INCLUDE_DIR "gio/gdesktopappinfo.h"
+      HINTS ${GIO-UNIX_PKG_INCLUDE_DIRS})
+    list(APPEND GIO_INCLUDE_DIRS ${GIO-UNIX_INCLUDE_DIR})
+  endif()
 
   find_package(GLib)
   find_package(GObject)
   set(GIO_VERSION "${GLib_VERSION}")
 
   list(APPEND GIO_DEPS_FOUND_VARS "GObject_FOUND")
-  list(APPEND GIO_INCLUDE_DIRS ${GIO-UNIX_INCLUDE_DIR} ${GObject_INCLUDE_DIRS})
+  list(APPEND GIO_INCLUDE_DIRS ${GObject_INCLUDE_DIRS})
 
   set_property (TARGET "${GIO}" APPEND PROPERTY INTERFACE_LINK_LIBRARIES "gobject-2.0")
     set_property(TARGET ${GIO} PROPERTY INTERFACE_INCLUDE_DIRECTORIES "${GIO_INCLUDE_DIR}")
