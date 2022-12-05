@@ -14,8 +14,8 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2022-12-05 12:42+0000\n"
-"PO-Revision-Date: 2022-11-16 17:47+0000\n"
-"Last-Translator: ssantos <ssantos@web.de>\n"
+"PO-Revision-Date: 2022-12-05 19:47+0000\n"
+"Last-Translator: SC <lalocas@protonmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/remmina/"
 "remmina/pt/>\n"
 "Language: pt\n"
@@ -121,7 +121,7 @@ msgstr ""
 "Pode parar e iniciar o registo a qualquer momento, usando o interruptor Liga/"
 "Desliga.\n"
 "O botão de estatísticas (Ctrl+T) pode ser útil para coletar informações do "
-"sistema, que poderá compartilhar ao relatar um bug.\n"
+"sistema, que poderá partilhar ao relatar um erro.\n"
 "Há mais informações sobre como depurar o Remmina em https://gitlab.com/"
 "Remmina/Remmina/-/wikis/Usage/Remmina-debugging\n"
 
@@ -1012,7 +1012,7 @@ msgstr "Servidor"
 #: src/remmina_protocol_widget.c:2065
 #, c-format
 msgid "Install the %s protocol plugin first."
-msgstr "Instale o plugin de protocolo %s primeiro."
+msgstr "Instale primeiro o plugin do protocolo %s."
 
 #: src/remmina_ssh.c:734
 #, c-format
@@ -1281,7 +1281,7 @@ msgstr "Não foi possível criar o aparelho PTY."
 #: src/remmina_exec.c:491
 #, c-format
 msgid "Plugin %s is not registered."
-msgstr "O plug-in %s não está registado."
+msgstr "O plugin %s não está registado."
 
 #: src/remmina_main.c:731
 msgid "The latest successful connection attempt, or a pre-computed date"
@@ -2401,6 +2401,7 @@ msgstr ""
 "Opções para redirecionamento de entrada de áudio:\n"
 "  • [sys:<sys>,][dev:<disp>,][format:<formato>,][rate:<taxa>,]\n"
 "    [channel:<canal>] entrada de áudio (microfone)\n"
+"  • sys:pulse\n"
 "  • format:1\n"
 "  • sys:oss,dev:1,format:1\n"
 "  • sys:alsa"
@@ -2492,7 +2493,7 @@ msgid ""
 "  • hotplug,*\n"
 "\n"
 msgstr ""
-"Redirecionar o diretório <caminho> como nome de compartilhamento <nome>.\n"
+"Redirecionar o diretório <caminho> como nome de partilha <nome>.\n"
 "  - <nome>,<caminho completo>[;<nome>,<caminho completo>[;...]]\n"
 "  - MeuHome,/home/remminer\n"
 "  - /home/reminer\n"
@@ -2643,7 +2644,7 @@ msgstr "Redirecionamento de aparelho USB"
 
 #: plugins/rdp/rdp_plugin.c:2863
 msgid "Local serial name"
-msgstr "Nome de serial local"
+msgstr "Nome de série local"
 
 #: plugins/rdp/rdp_plugin.c:2863
 msgid "COM1, COM2, etc."
@@ -2651,15 +2652,15 @@ msgstr "COM1, COM2 etc."
 
 #: plugins/rdp/rdp_plugin.c:2864
 msgid "Local serial driver"
-msgstr "Driver de serial local"
+msgstr "Driver de série local"
 
 #: plugins/rdp/rdp_plugin.c:2864
 msgid "Serial"
-msgstr "Serial"
+msgstr "Série"
 
 #: plugins/rdp/rdp_plugin.c:2865
 msgid "Local serial path"
-msgstr "Caminho de serial local"
+msgstr "Caminho de série local"
 
 #: plugins/rdp/rdp_plugin.c:2865
 msgid "/dev/ttyS0, /dev/ttyS1, etc."
@@ -2703,23 +2704,23 @@ msgstr "Preferir registo AAAA do IPv6 ao registo A do IPv4"
 
 #: plugins/rdp/rdp_plugin.c:2874
 msgid "Share printers"
-msgstr "Compartilhar impressoras"
+msgstr "Partilhar impressoras"
 
 #: plugins/rdp/rdp_plugin.c:2875
 msgid "Share serial ports"
-msgstr "Compartilhar portas seriais"
+msgstr "Partilhar portas série"
 
 #: plugins/rdp/rdp_plugin.c:2876
 msgid "(SELinux) permissive mode for serial ports"
-msgstr "(SELinux) modo permissivo para portas seriais"
+msgstr "(SELinux) modo permissivo para portas série"
 
 #: plugins/rdp/rdp_plugin.c:2877
 msgid "Share parallel ports"
-msgstr "Compartilhar portas paralelas"
+msgstr "Partilhar portas paralelas"
 
 #: plugins/rdp/rdp_plugin.c:2878
 msgid "Share a smart card"
-msgstr "Compartilhar um smart card"
+msgstr "Partilhar um smart card"
 
 #: plugins/rdp/rdp_plugin.c:2879 plugins/vnc/vnc_plugin.c:2091
 msgid "Turn off clipboard sync"
@@ -2924,7 +2925,7 @@ msgstr "Ativar canal de áudio"
 
 #: plugins/spice/spice_plugin.c:706
 msgid "Share smart card"
-msgstr "Compartilhar cartão inteligente"
+msgstr "Partilhar cartão inteligente"
 
 #: plugins/spice/spice_plugin.c:718 plugins/spice/spice_plugin_usb.c:51
 msgid "Select USB devices for redirection"
@@ -3003,10 +3004,11 @@ msgid ""
 "    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
 msgstr ""
 "Conecta com VNC a usar um repetidor:\n"
-"  * O campo de servidor deve conter o ID do repetidor, por exemplo,\n"
-"    ID:123456789\n"
-"  * O campo do repetidor deve ser definido com o IP e porta do repetidor,\n"
-"    como: 10.10.10.12:5901\n"
+"  * O campo de servidor deve conter o ID do repetidor, por exemplo ID:"
+"123456789\n"
+"  * O campo do repetidor deve ser definido com o IP e porta do repetidor "
+"como:\n"
+"    10.10.10.12:5901\n"
 "  • Do servidor VNC remoto, vai se conectar ao repetidor,\n"
 "    por exemplo, com x11vnc:\n"
 "    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
@@ -3286,12 +3288,10 @@ msgid "Visible"
 msgstr "Visível"
 
 #: plugins/x2go/x2go_plugin.c:527
-#, fuzzy
-#| msgid "Couldn't retrieve valid `DialogData` or `sessions_list`! Aborting…"
 msgid "Could not retrieve valid `DialogData` or `sessions_list`! Aborting…"
 msgstr ""
 "Não foi possível recuperar informação válida do `DialogData` ou do "
-"`sessions_list`! Abortando…"
+"`sessions_list`! A abortar…"
 
 #. TRANSLATORS: Stick to x2goclient's translation for terminate.
 #: plugins/x2go/x2go_plugin.c:536
@@ -3319,8 +3319,6 @@ msgid "Unknown property '%i'"
 msgstr "Propriedade desconhecida '%i'"
 
 #: plugins/x2go/x2go_plugin.c:715 plugins/x2go/x2go_plugin.c:762
-#, fuzzy
-#| msgid "Couldn't find child GtkTreeView of session chooser dialog."
 msgid "Could not find child GtkTreeView of session chooser dialog."
 msgstr ""
 "Não foi possível encontrar o GtkTreeView relacionado na caixa de diálogo do "
@@ -3331,8 +3329,8 @@ msgid ""
 "Neither the 'dialog' nor 'treeview' parameters are initialized! At least one "
 "of them must be given."
 msgstr ""
-"Nem os parâmetros 'dialog' nem o 'treeview' estão inicializados! Pelo menos "
-"um deles deve ser informados."
+"Nem os parâmetros 'dialog' nem o 'treeview' estão inicializados! Deve ser "
+"fornecido pelo menos um deles."
 
 #: plugins/x2go/x2go_plugin.c:736
 msgid ""
@@ -3343,8 +3341,6 @@ msgstr ""
 "caixa de diálogo do seletor da sessão."
 
 #: plugins/x2go/x2go_plugin.c:771
-#, fuzzy
-#| msgid "Couldn't get currently selected row (session)!"
 msgid "Could not get currently selected row (session)!"
 msgstr "Não foi possível obter a linha selecionada atualmente (sessão)!"
 
@@ -3429,20 +3425,19 @@ msgid "Parameter 'custom_data' is not fully initialized!"
 msgstr "O parâmetro 'custom_data' não foi totalmente inicializado!"
 
 #: plugins/x2go/x2go_plugin.c:1276
-#, fuzzy, c-format
-#| msgid "Could not start X2Go session."
+#, c-format
 msgid ""
 "Could not terminate X2Go session '%s':\n"
 "%s"
-msgstr "Não foi possível iniciar a sessão X2Go."
+msgstr ""
+"Não foi possível encerrar a sessão '%s' X2Go:\n"
+"%s"
 
 #: plugins/x2go/x2go_plugin.c:1288 plugins/x2go/x2go_plugin.c:1665
 msgid "An error occured."
 msgstr "Ocorreu um erro."
 
 #: plugins/x2go/x2go_plugin.c:1389 plugins/x2go/x2go_plugin.c:1404
-#, fuzzy
-#| msgid "Couldn't get session ID from session chooser dialog."
 msgid "Could not get session ID from session chooser dialog."
 msgstr ""
 "Não foi possível obter a ID da sessão na caixa de diálogo do seletor da "
@@ -3488,16 +3483,12 @@ msgid "Could not save new credentials."
 msgstr "Não foi possível gravar as novas credenciais."
 
 #: plugins/x2go/x2go_plugin.c:1726
-#, fuzzy
-#| msgid ""
-#| "An error occured while trying to save new credentials: 's_password' or "
-#| "'s_username' strings were not set."
 msgid ""
 "Could not save new credentials: 's_password' or 's_username' strings were "
 "not set."
 msgstr ""
-"Ocorreu um erro ao tentar gravar as novas credenciais: as sequências "
-"'s_password' ou 's_username' não foram definidas."
+"Não foi possível gravar as novas credenciais: as sequências 's_password' ou "
+"'s_username' não foram definidas."
 
 #: plugins/x2go/x2go_plugin.c:1758
 msgid "Enter password to unlock the SSH key:"
@@ -3526,20 +3517,14 @@ msgid "Authentication cancelled. Aborting…"
 msgstr "Autenticação cancelada. Abortando…"
 
 #: plugins/x2go/x2go_plugin.c:2047
-#, fuzzy
-#| msgid ""
-#| "Couldn't parse the output of PyHoca-CLI's --list-sessions option. "
-#| "Creating a new session now."
 msgid ""
 "Could not parse the output of PyHoca-CLI's --list-sessions option. Creating "
 "a new session now."
 msgstr ""
-"Não foi possível analisar a saída da opção --list-sessions do PyHoca-CLI. "
-"Criando uma nova sessão agora."
+"Não foi possível analisar a saída da opção --list-sessions do PyHoca-CLI. A "
+"criar agora uma nova sessão."
 
 #: plugins/x2go/x2go_plugin.c:2086
-#, fuzzy
-#| msgid "Couldn't allocate enough memory!"
 msgid "Could not allocate enough memory!"
 msgstr "Não foi possível alocar memória suficiente!"
 
@@ -3605,10 +3590,8 @@ msgstr ""
 "perfil."
 
 #: plugins/x2go/x2go_plugin.c:2576
-#, fuzzy
-#| msgid "Could not start X2Go session."
 msgid "Could not start X2Go session…"
-msgstr "Não foi possível iniciar a sessão X2Go."
+msgstr "Não foi possível iniciar a sessão X2Go…"
 
 #: plugins/x2go/x2go_plugin.c:2583
 msgid "Could not start X2Go session."
@@ -3620,19 +3603,14 @@ msgid "Could not start PyHoca-CLI (%i): '%s'"
 msgstr "Não foi possível iniciar PyHoca-CLI (%i): '%s''"
 
 #: plugins/x2go/x2go_plugin.c:2699
-#, fuzzy
-#| msgid ""
-#| "Couldn't get PyHoca-CLI's command-line features. This indicates it is "
-#| "either too old, or not installed. An old limited set of features will be "
-#| "used for now."
 msgid ""
 "Could not get PyHoca-CLI's command-line features. This indicates it is "
 "either too old, or not installed. An old limited set of features will be "
 "used for now."
 msgstr ""
 "Não foi possível obter as características cmdline do PyHoca-CLI. Isto indica "
-"que ou a sua versão é muito antiga ou não está instalado! Agora, um antigo "
-"conjunto limitado de funcionalidades será usado por enquanto."
+"que ou a sua versão é muito antiga ou não está instalado! Por enquanto, "
+"agora será usado um antigo conjunto limitado de funcionalidades."
 
 #: plugins/x2go/x2go_plugin.c:2708
 msgid ""
@@ -3894,14 +3872,14 @@ msgstr "Ativar depuração GTK-VNC"
 
 #: plugins/gvnc/gvnc_plugin.c:870
 msgid "Shared connection"
-msgstr "Conexão compartilhada"
+msgstr "Conexão partilhada"
 
 #: plugins/gvnc/gvnc_plugin.c:870
 msgid ""
 "If the server should try to share the desktop by leaving other clients "
 "connected"
 msgstr ""
-"Se o servidor deve tentar compartilhar a área de trabalho deixando outros "
+"Se o servidor deve tentar partilhar a área de trabalho deixando outros "
 "clientes conectados"
 
 #: plugins/gvnc/gvnc_plugin.c:880
@@ -3978,7 +3956,7 @@ msgid ""
 "%s wants to share their desktop.\n"
 "Do you accept?"
 msgstr ""
-"%s deseja compartilhar sua área de trabalho.\n"
+"%s deseja partilhar a área de trabalho dele.\n"
 "Aceita o convite?"
 
 #: plugins/telepathy/telepathy_channel_handler.c:240
@@ -4014,10 +3992,10 @@ msgid ""
 "following commands in a terminal window:"
 msgstr ""
 "Para ativar o acesso a algumas características importantes, como o "
-"armazenamento de palavra-passe no seu chaveiro e compartilhamento de "
-"impressora RDP, por favor, abra o centro de software e dê as permissões "
-"apropriadas para Remmina. Como alternativa, pode inserir os seguintes "
-"comandos numa janela de terminal:"
+"armazenamento de palavra-passe no seu chaveiro e partilha de impressora RDP, "
+"por favor, abra o centro de software e dê as permissões apropriadas para o "
+"Remmina. Como alternativa, pode inserir os seguintes comandos numa janela de "
+"terminal:"
 
 #: data/ui/remmina_snap_info_dialog.glade:157
 msgid "<big>Permissions</big>"
@@ -4853,7 +4831,7 @@ msgstr "Registo de auditoria"
 
 #: data/ui/remmina_preferences.glade:1802
 msgid "Automatically accept all fingerprints and certificates"
-msgstr "Aceitar certificado alterado?"
+msgstr "Aceitar automaticamente todas as impressões digitais e certificados"
 
 #: data/ui/remmina_preferences.glade:1807
 msgid "Trust all certificates"

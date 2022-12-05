@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2022-12-05 12:42+0000\n"
-"PO-Revision-Date: 2022-11-05 16:09+0000\n"
+"PO-Revision-Date: 2022-12-05 19:47+0000\n"
 "Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/remmina/remmina/"
 "tr/>\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14.2\n"
+"X-Generator: Weblate 4.15-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:04+0000\n"
 
 #: src/remmina_sftp_plugin.c:309 src/remmina_sftp_plugin.c:353
@@ -3273,10 +3273,8 @@ msgid "Visible"
 msgstr "Görünür"
 
 #: plugins/x2go/x2go_plugin.c:527
-#, fuzzy
-#| msgid "Couldn't retrieve valid `DialogData` or `sessions_list`! Aborting…"
 msgid "Could not retrieve valid `DialogData` or `sessions_list`! Aborting…"
-msgstr "Geçerli `DialogData` veya `sessions_list` alınamadı! Iptal ediliyor…"
+msgstr "Geçerli `DialogData` veya `sessions_list` alınamadı! İptal ediliyor…"
 
 #. TRANSLATORS: Stick to x2goclient's translation for terminate.
 #: plugins/x2go/x2go_plugin.c:536
@@ -3304,8 +3302,6 @@ msgid "Unknown property '%i'"
 msgstr "Bilinmeyen özellik '%i'"
 
 #: plugins/x2go/x2go_plugin.c:715 plugins/x2go/x2go_plugin.c:762
-#, fuzzy
-#| msgid "Couldn't find child GtkTreeView of session chooser dialog."
 msgid "Could not find child GtkTreeView of session chooser dialog."
 msgstr "Oturum seçici iletişim kutusunun alt GtkTreeView'i bulunamadı."
 
@@ -3326,8 +3322,6 @@ msgstr ""
 "alınamadı."
 
 #: plugins/x2go/x2go_plugin.c:771
-#, fuzzy
-#| msgid "Couldn't get currently selected row (session)!"
 msgid "Could not get currently selected row (session)!"
 msgstr "Şu anda seçili satır (oturum) alınamadı!"
 
@@ -3411,20 +3405,19 @@ msgid "Parameter 'custom_data' is not fully initialized!"
 msgstr "'custom_data' parametresi tümüyle başlatılmadı!"
 
 #: plugins/x2go/x2go_plugin.c:1276
-#, fuzzy, c-format
-#| msgid "Could not start X2Go session."
+#, c-format
 msgid ""
 "Could not terminate X2Go session '%s':\n"
 "%s"
-msgstr "X2Go oturumu başlatılamadı."
+msgstr ""
+"X2Go oturumu '%s' sonlandırılamadı:\n"
+"%s"
 
 #: plugins/x2go/x2go_plugin.c:1288 plugins/x2go/x2go_plugin.c:1665
 msgid "An error occured."
 msgstr "Hata oluştu."
 
 #: plugins/x2go/x2go_plugin.c:1389 plugins/x2go/x2go_plugin.c:1404
-#, fuzzy
-#| msgid "Couldn't get session ID from session chooser dialog."
 msgid "Could not get session ID from session chooser dialog."
 msgstr "Oturum seçici iletişim kutusundan oturum kimliği alınamadı."
 
@@ -3468,16 +3461,12 @@ msgid "Could not save new credentials."
 msgstr "Yeni kimlik bilgileri kaydedilemedi."
 
 #: plugins/x2go/x2go_plugin.c:1726
-#, fuzzy
-#| msgid ""
-#| "An error occured while trying to save new credentials: 's_password' or "
-#| "'s_username' strings were not set."
 msgid ""
 "Could not save new credentials: 's_password' or 's_username' strings were "
 "not set."
 msgstr ""
-"Yeni kimlik bilgileri kaydedilirken hata oluştu: 's_password' veya "
-"'s_username' dizgeleri belirlenmedi."
+"Yeni kimlik bilgileri kaydedilemedi: 's_password' veya 's_username' "
+"dizgeleri belirlenmedi."
 
 #: plugins/x2go/x2go_plugin.c:1758
 msgid "Enter password to unlock the SSH key:"
@@ -3505,10 +3494,6 @@ msgid "Authentication cancelled. Aborting…"
 msgstr "Kimlik doğrulama iptal edildi. Vazgeçiliyor…"
 
 #: plugins/x2go/x2go_plugin.c:2047
-#, fuzzy
-#| msgid ""
-#| "Couldn't parse the output of PyHoca-CLI's --list-sessions option. "
-#| "Creating a new session now."
 msgid ""
 "Could not parse the output of PyHoca-CLI's --list-sessions option. Creating "
 "a new session now."
@@ -3517,8 +3502,6 @@ msgstr ""
 "yeni bir oturum oluşturuluyor."
 
 #: plugins/x2go/x2go_plugin.c:2086
-#, fuzzy
-#| msgid "Couldn't allocate enough memory!"
 msgid "Could not allocate enough memory!"
 msgstr "Yeterli bellek ayrılamadı!"
 
@@ -3580,10 +3563,8 @@ msgid "DPI setting is out of bounds. Please adjust it in profile settings."
 msgstr "DPI ayarları sınırların dışında. Lütfen profil ayarlarında uyarlayın."
 
 #: plugins/x2go/x2go_plugin.c:2576
-#, fuzzy
-#| msgid "Could not start X2Go session."
 msgid "Could not start X2Go session…"
-msgstr "X2Go oturumu başlatılamadı."
+msgstr "X2Go oturumu başlatılamadı…"
 
 #: plugins/x2go/x2go_plugin.c:2583
 msgid "Could not start X2Go session."
@@ -3595,11 +3576,6 @@ msgid "Could not start PyHoca-CLI (%i): '%s'"
 msgstr "PyHoca-CLI (%i) başlatılamadı: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:2699
-#, fuzzy
-#| msgid ""
-#| "Couldn't get PyHoca-CLI's command-line features. This indicates it is "
-#| "either too old, or not installed. An old limited set of features will be "
-#| "used for now."
 msgid ""
 "Could not get PyHoca-CLI's command-line features. This indicates it is "
 "either too old, or not installed. An old limited set of features will be "
