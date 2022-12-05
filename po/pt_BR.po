@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2022-12-05 12:42+0000\n"
-"PO-Revision-Date: 2022-11-07 04:02+0000\n"
+"PO-Revision-Date: 2022-12-05 15:47+0000\n"
 "Last-Translator: Wellington Terumi Uemura <wellingtonuemura@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "remmina/remmina/pt_BR/>\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.14.2\n"
+"X-Generator: Weblate 4.15-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:04+0000\n"
 
 #: src/remmina_sftp_plugin.c:309 src/remmina_sftp_plugin.c:353
@@ -3289,8 +3289,6 @@ msgid "Visible"
 msgstr "Visível"
 
 #: plugins/x2go/x2go_plugin.c:527
-#, fuzzy
-#| msgid "Couldn't retrieve valid `DialogData` or `sessions_list`! Aborting…"
 msgid "Could not retrieve valid `DialogData` or `sessions_list`! Aborting…"
 msgstr ""
 "Não foi possível recuperar informação válida do `DialogData` ou do "
@@ -3322,8 +3320,6 @@ msgid "Unknown property '%i'"
 msgstr "Propriedade desconhecida '%i'"
 
 #: plugins/x2go/x2go_plugin.c:715 plugins/x2go/x2go_plugin.c:762
-#, fuzzy
-#| msgid "Couldn't find child GtkTreeView of session chooser dialog."
 msgid "Could not find child GtkTreeView of session chooser dialog."
 msgstr ""
 "Não foi possível encontrar o GtkTreeView relacionado na caixa de diálogo do "
@@ -3346,8 +3342,6 @@ msgstr ""
 "caixa de diálogo do seletor da sessão."
 
 #: plugins/x2go/x2go_plugin.c:771
-#, fuzzy
-#| msgid "Couldn't get currently selected row (session)!"
 msgid "Could not get currently selected row (session)!"
 msgstr "Não foi possível obter a linha selecionada atualmente (sessão)!"
 
@@ -3432,20 +3426,19 @@ msgid "Parameter 'custom_data' is not fully initialized!"
 msgstr "O parâmetro 'custom_data' não foi totalmente inicializado!"
 
 #: plugins/x2go/x2go_plugin.c:1276
-#, fuzzy, c-format
-#| msgid "Could not start X2Go session."
+#, c-format
 msgid ""
 "Could not terminate X2Go session '%s':\n"
 "%s"
-msgstr "Não foi possível iniciar a sessão X2Go."
+msgstr ""
+"Não foi possível encerrar a sessão X2Go '%s':\n"
+"%s"
 
 #: plugins/x2go/x2go_plugin.c:1288 plugins/x2go/x2go_plugin.c:1665
 msgid "An error occured."
 msgstr "Ocorreu um erro."
 
 #: plugins/x2go/x2go_plugin.c:1389 plugins/x2go/x2go_plugin.c:1404
-#, fuzzy
-#| msgid "Couldn't get session ID from session chooser dialog."
 msgid "Could not get session ID from session chooser dialog."
 msgstr ""
 "Não foi possível obter a ID da sessão na caixa de diálogo do seletor da "
@@ -3491,10 +3484,6 @@ msgid "Could not save new credentials."
 msgstr "Não foi possível salvar as novas credenciais."
 
 #: plugins/x2go/x2go_plugin.c:1726
-#, fuzzy
-#| msgid ""
-#| "An error occured while trying to save new credentials: 's_password' or "
-#| "'s_username' strings were not set."
 msgid ""
 "Could not save new credentials: 's_password' or 's_username' strings were "
 "not set."
@@ -3528,10 +3517,6 @@ msgid "Authentication cancelled. Aborting…"
 msgstr "Autenticação cancelada. Abortando…"
 
 #: plugins/x2go/x2go_plugin.c:2047
-#, fuzzy
-#| msgid ""
-#| "Couldn't parse the output of PyHoca-CLI's --list-sessions option. "
-#| "Creating a new session now."
 msgid ""
 "Could not parse the output of PyHoca-CLI's --list-sessions option. Creating "
 "a new session now."
@@ -3540,8 +3525,6 @@ msgstr ""
 "Criando uma nova sessão agora."
 
 #: plugins/x2go/x2go_plugin.c:2086
-#, fuzzy
-#| msgid "Couldn't allocate enough memory!"
 msgid "Could not allocate enough memory!"
 msgstr "Não foi possível alocar memória suficiente!"
 
@@ -3607,10 +3590,8 @@ msgstr ""
 "perfil."
 
 #: plugins/x2go/x2go_plugin.c:2576
-#, fuzzy
-#| msgid "Could not start X2Go session."
 msgid "Could not start X2Go session…"
-msgstr "Não foi possível iniciar a sessão X2Go."
+msgstr "Não foi possível iniciar a sessão X2Go…"
 
 #: plugins/x2go/x2go_plugin.c:2583
 msgid "Could not start X2Go session."
@@ -3622,19 +3603,15 @@ msgid "Could not start PyHoca-CLI (%i): '%s'"
 msgstr "Não foi possível iniciar PyHoca-CLI (%i): '%s''"
 
 #: plugins/x2go/x2go_plugin.c:2699
-#, fuzzy
-#| msgid ""
-#| "Couldn't get PyHoca-CLI's command-line features. This indicates it is "
-#| "either too old, or not installed. An old limited set of features will be "
-#| "used for now."
 msgid ""
 "Could not get PyHoca-CLI's command-line features. This indicates it is "
 "either too old, or not installed. An old limited set of features will be "
 "used for now."
 msgstr ""
-"Não foi possível obter as características cmdline do PyHoca-CLI. Isto indica "
-"que ou a sua versão é muito antiga ou não está instalado! Agora, um antigo "
-"conjunto limitado de funcionalidades será usado por enquanto."
+"Não foi possível obter as características da linha de comando do PyHoca-CLI. "
+"Isto indica que ou a sua versão é muito antiga ou não está instalado! No "
+"momento, um antigo conjunto limitado de funcionalidades será usado por "
+"enquanto."
 
 #: plugins/x2go/x2go_plugin.c:2708
 msgid ""

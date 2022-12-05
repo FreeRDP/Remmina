@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2022-12-05 12:42+0000\n"
-"PO-Revision-Date: 2022-11-05 16:09+0000\n"
+"PO-Revision-Date: 2022-12-05 15:47+0000\n"
 "Last-Translator: Matthaiks <kitynska@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/remmina/remmina/"
 "pl/>\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.14.2\n"
+"X-Generator: Weblate 4.15-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
 
 #: src/remmina_sftp_plugin.c:309 src/remmina_sftp_plugin.c:353
@@ -937,7 +937,7 @@ msgstr "Nie odnaleziono polecenia „%s” na serwerze SSH."
 #: src/remmina_protocol_widget.c:1232
 #, c-format
 msgid "Could not run the “%s” command on the SSH server (status = %i)."
-msgstr "Nie udało się wykonać polecenia „%s” na serwerze SSH (status = %i)."
+msgstr "Nie można wykonać polecenia „%s” na serwerze SSH (status = %i)."
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_protocol_widget.c:1240
@@ -1120,7 +1120,7 @@ msgstr "Nie można pobrać publicznego klucza SSH. %s"
 #: src/remmina_ssh.c:1434
 #, c-format
 msgid "Could not fetch checksum of the public SSH key. %s"
-msgstr "Nie udało się pobrać sumy kontrolnej dla publicznego klucza SSH. %s"
+msgstr "Nie można pobrać sumy kontrolnej dla publicznego klucza SSH. %s"
 
 #: src/remmina_ssh.c:1447
 msgid "The server is unknown. The public key fingerprint is:"
@@ -3293,8 +3293,6 @@ msgid "Visible"
 msgstr "Widoczny"
 
 #: plugins/x2go/x2go_plugin.c:527
-#, fuzzy
-#| msgid "Couldn't retrieve valid `DialogData` or `sessions_list`! Aborting…"
 msgid "Could not retrieve valid `DialogData` or `sessions_list`! Aborting…"
 msgstr ""
 "Nie można pobrać prawidłowych `DialogData` lub `sessions_list`! Przerywam…"
@@ -3325,8 +3323,6 @@ msgid "Unknown property '%i'"
 msgstr "Nieznana własność '%i'"
 
 #: plugins/x2go/x2go_plugin.c:715 plugins/x2go/x2go_plugin.c:762
-#, fuzzy
-#| msgid "Couldn't find child GtkTreeView of session chooser dialog."
 msgid "Could not find child GtkTreeView of session chooser dialog."
 msgstr "Nie można znaleźć podrzędnego elementu GtkTreeView okna wyboru sesji."
 
@@ -3347,10 +3343,8 @@ msgstr ""
 "dialogowego wyboru sesji."
 
 #: plugins/x2go/x2go_plugin.c:771
-#, fuzzy
-#| msgid "Couldn't get currently selected row (session)!"
 msgid "Could not get currently selected row (session)!"
-msgstr "Nie udało się uzyskać aktualnie wybranego wiersza (sesji)!"
+msgstr "Nie można uzyskać aktualnie wybranego wiersza (sesji)!"
 
 #: plugins/x2go/x2go_plugin.c:790
 #, c-format
@@ -3363,7 +3357,7 @@ msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:840
 msgid "Failed to fill 'GtkTreeIter'."
-msgstr "Nie udało się wypełnić 'GtkTreeIter'."
+msgstr "Nie można wypełnić 'GtkTreeIter'."
 
 #: plugins/x2go/x2go_plugin.c:906
 msgid "parameter 'argv' is 'NULL'."
@@ -3431,22 +3425,21 @@ msgid "Parameter 'custom_data' is not fully initialized!"
 msgstr "Parametr 'custom_data' nie jest w pełni zainicjowany!"
 
 #: plugins/x2go/x2go_plugin.c:1276
-#, fuzzy, c-format
-#| msgid "Could not start X2Go session."
+#, c-format
 msgid ""
 "Could not terminate X2Go session '%s':\n"
 "%s"
-msgstr "Nie można uruchomić sesji X2Go."
+msgstr ""
+"Nie można zakończyć sesji X2Go '%s':\n"
+"%s"
 
 #: plugins/x2go/x2go_plugin.c:1288 plugins/x2go/x2go_plugin.c:1665
 msgid "An error occured."
 msgstr "Wystąpił błąd."
 
 #: plugins/x2go/x2go_plugin.c:1389 plugins/x2go/x2go_plugin.c:1404
-#, fuzzy
-#| msgid "Couldn't get session ID from session chooser dialog."
 msgid "Could not get session ID from session chooser dialog."
-msgstr "Nie udało się uzyskać identyfikatora sesji z okna wyboru sesji."
+msgstr "Nie można pobrać identyfikatora sesji z okna wyboru sesji."
 
 #: plugins/x2go/x2go_plugin.c:1396
 #, c-format
@@ -3490,16 +3483,12 @@ msgid "Could not save new credentials."
 msgstr "Nie można zapisać nowych danych uwierzytelniających."
 
 #: plugins/x2go/x2go_plugin.c:1726
-#, fuzzy
-#| msgid ""
-#| "An error occured while trying to save new credentials: 's_password' or "
-#| "'s_username' strings were not set."
 msgid ""
 "Could not save new credentials: 's_password' or 's_username' strings were "
 "not set."
 msgstr ""
-"Wystąpił błąd podczas próby zapisania nowych danych uwierzytelniających: "
-"ciągi 's_password' lub 's_username' nie zostały ustawione."
+"Nie można zapisać nowych danych uwierzytelniających: ciągi 's_password' lub "
+"'s_username' nie zostały ustawione."
 
 #: plugins/x2go/x2go_plugin.c:1758
 msgid "Enter password to unlock the SSH key:"
@@ -3527,10 +3516,6 @@ msgid "Authentication cancelled. Aborting…"
 msgstr "Uwierzytelnianie anulowane. Przerywam…"
 
 #: plugins/x2go/x2go_plugin.c:2047
-#, fuzzy
-#| msgid ""
-#| "Couldn't parse the output of PyHoca-CLI's --list-sessions option. "
-#| "Creating a new session now."
 msgid ""
 "Could not parse the output of PyHoca-CLI's --list-sessions option. Creating "
 "a new session now."
@@ -3539,8 +3524,6 @@ msgstr ""
 "Tworzę teraz nową sesję."
 
 #: plugins/x2go/x2go_plugin.c:2086
-#, fuzzy
-#| msgid "Couldn't allocate enough memory!"
 msgid "Could not allocate enough memory!"
 msgstr "Nie można przydzielić wystarczającej ilości pamięci!"
 
@@ -3604,10 +3587,8 @@ msgid "DPI setting is out of bounds. Please adjust it in profile settings."
 msgstr "Ustawienie DPI jest poza zakresem. Dostosuj to w ustawieniach profilu."
 
 #: plugins/x2go/x2go_plugin.c:2576
-#, fuzzy
-#| msgid "Could not start X2Go session."
 msgid "Could not start X2Go session…"
-msgstr "Nie można uruchomić sesji X2Go."
+msgstr "Nie można uruchomić sesji X2Go…"
 
 #: plugins/x2go/x2go_plugin.c:2583
 msgid "Could not start X2Go session."
@@ -3619,11 +3600,6 @@ msgid "Could not start PyHoca-CLI (%i): '%s'"
 msgstr "Nie można uruchomić PyHoca-CLI (%i): '%s'"
 
 #: plugins/x2go/x2go_plugin.c:2699
-#, fuzzy
-#| msgid ""
-#| "Couldn't get PyHoca-CLI's command-line features. This indicates it is "
-#| "either too old, or not installed. An old limited set of features will be "
-#| "used for now."
 msgid ""
 "Could not get PyHoca-CLI's command-line features. This indicates it is "
 "either too old, or not installed. An old limited set of features will be "
