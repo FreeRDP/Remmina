@@ -524,7 +524,7 @@ static GtkWidget* rmplugin_x2go_choose_session_dialog_factory(X2GoCustomUserData
 	struct _DialogData* ddata = (struct _DialogData*) custom_data->dialog_data;
 
 	if (!ddata || !sessions_list || !ddata->title) {
-		REMMINA_PLUGIN_CRITICAL("%s", _("Couldn't retrieve valid `DialogData` or "
+		REMMINA_PLUGIN_CRITICAL("%s", _("Could not retrieve valid `DialogData` or "
 					        "`sessions_list`! Aborting…"));
 		return NULL;
 	}
@@ -712,7 +712,7 @@ static GtkTreeModelFilter* rmplugin_x2go_session_chooser_get_filter_model(GtkWid
 		if (!treeview_new) {
 			REMMINA_PLUGIN_CRITICAL("%s", g_strdup_printf(
 				_("Internal error: %s"),
-				_("Couldn't find child GtkTreeView of "
+				_("Could not find child GtkTreeView of "
 				  "session chooser dialog.")
 			));
 			return NULL;
@@ -759,7 +759,7 @@ static GtkTreePath* rmplugin_x2go_session_chooser_get_selected_row(GtkWidget *di
 	if (!treeview) {
 		REMMINA_PLUGIN_CRITICAL("%s", g_strdup_printf(
 			_("Internal error: %s"),
-			_("Couldn't find child GtkTreeView of session chooser dialog.")
+			_("Could not find child GtkTreeView of session chooser dialog.")
 		));
 		return NULL;
 	}
@@ -768,7 +768,7 @@ static GtkTreePath* rmplugin_x2go_session_chooser_get_selected_row(GtkWidget *di
 	if (!selection) {
 		REMMINA_PLUGIN_CRITICAL("%s", g_strdup_printf(
 			_("Internal error: %s"),
-			_("Couldn't get currently selected row (session)!")
+			_("Could not get currently selected row (session)!")
 		));
 		return NULL;
 	}
@@ -867,7 +867,7 @@ static GValue rmplugin_x2go_session_chooser_get_property(GtkWidget *dialog,
 		property = rmplugin_x2go_session_chooser_get_property(dialog, i, path);
 
 		gchar* display_name = rmplugin_x2go_session_property_to_string(i);
-		g_assert(display_name && "Couldn't get display name for a property!");
+		g_assert(display_name && "Could not get display name for a property!");
 
 		if (i == SESSION_DIALOG_IS_VISIBLE) {
 			g_assert(G_VALUE_HOLDS_BOOLEAN(&property) && "GValue does not "
@@ -1273,7 +1273,7 @@ static gboolean rmplugin_x2go_pyhoca_terminate_session(X2GoCustomUserData *custo
 
 	if (error) {
 		gchar *err_msg = g_strdup_printf(
-			_("An error occured while trying to terminate X2Go session '%s':\n%s"),
+			_("Could not terminate X2Go session '%s':\n%s"),
 			session_id,
 			error->message
 		);
@@ -1311,7 +1311,7 @@ static gboolean rmplugin_x2go_pyhoca_terminate_session(X2GoCustomUserData *custo
 		// gtk_tree_model_foreach(GTK_TREE_MODEL(model), (GtkTreeModelForeachFunc)
 		//			  rmplugin_x2go_dump_session_properties, dialog);
 
-		// Set row visible again since we couldn't terminate the session.
+		// Set row visible again since we could not terminate the session.
 		if (!rmplugin_x2go_session_chooser_set_row_visible(selected_row, TRUE,
 								   dialog)) {
 			// error message was already handled.
@@ -1386,7 +1386,7 @@ static gboolean rmplugin_x2go_session_chooser_callback(X2GoCustomUserData* custo
 		if (!session_id || strlen(session_id) <= 0) {
 			REMMINA_PLUGIN_DEBUG(
 				"%s",
-				_("Couldn't get session ID from session chooser dialog.")
+				_("Could not get session ID from session chooser dialog.")
 			);
 			SET_RESUME_SESSION(gp, NULL);
 		} else {
@@ -1401,7 +1401,7 @@ static gboolean rmplugin_x2go_session_chooser_callback(X2GoCustomUserData* custo
 		if (!session_id || strlen(session_id) <= 0) {
 			REMMINA_PLUGIN_DEBUG(
 				"%s",
-				_("Couldn't get session ID from session chooser dialog.")
+				_("Could not get session ID from session chooser dialog.")
 			);
 			SET_RESUME_SESSION(gp, NULL);
 		} else {
@@ -1723,7 +1723,7 @@ static gboolean rmplugin_x2go_save_credentials(RemminaFile* remminafile,
 			_("Could not save new credentials.")
 		), 512);
 
-		REMMINA_PLUGIN_CRITICAL("%s", _("An error occured while trying to save "
+		REMMINA_PLUGIN_CRITICAL("%s", _("Could not save "
 						"new credentials: 's_password' or "
 						"'s_username' strings were not set."));
 		return FALSE;
@@ -2044,7 +2044,7 @@ static GList* rmplugin_x2go_parse_pyhoca_sessions(RemminaProtocolWidget* gp,
 	gchar **lines_list = g_strsplit(pyhoca_output, "\n", -1);
 	// Assume at least two lines of output.
 	if (lines_list == NULL || lines_list[0] == NULL || lines_list[1] == NULL) {
-		g_set_error(error, 1, 1, "%s", _("Couldn't parse the output of PyHoca-CLI's "
+		g_set_error(error, 1, 1, "%s", _("Could not parse the output of PyHoca-CLI's "
 				           "--list-sessions option. Creating a new "
 				           "session now."));
 		return NULL;
@@ -2083,7 +2083,7 @@ static GList* rmplugin_x2go_parse_pyhoca_sessions(RemminaProtocolWidget* gp,
 
 			session = malloc(sizeof(gchar*) * (SESSION_NUM_PROPERTIES+1));
 			if (!session) {
-				REMMINA_PLUGIN_CRITICAL("%s", _("Couldn't allocate "
+				REMMINA_PLUGIN_CRITICAL("%s", _("Could not allocate "
 								"enough memory!"));
 			}
 			session[SESSION_NUM_PROPERTIES] = NULL;
@@ -2573,8 +2573,7 @@ static gboolean rmplugin_x2go_exec_x2go(gchar *host,
 		// TRANSLATORS: Meta-error. Shouldn't be visible.
 		if (!error) error = g_error_new(0, 0, _("Internal error."));
 
-		gchar *error_title = _("An error occured while "
-				       "starting an X2Go session…");
+		gchar *error_title = _("Could not start X2Go session…");
 
 		struct _DialogData* ddata = g_new0(struct _DialogData, 1);
 		ddata->parent = GTK_WINDOW(gtk_widget_get_toplevel(GTK_WIDGET(gp)));
@@ -2596,7 +2595,7 @@ static gboolean rmplugin_x2go_exec_x2go(gchar *host,
 		*	dialog_data -> dialog data (struct _DialogData*)
 		*/
 		X2GoCustomUserData *custom_data = g_new0(X2GoCustomUserData, 1);
-		g_assert(custom_data && "custom_data could not be initialized.");
+		g_assert(custom_data && "Could not initialise Custom_data.");
 
 		custom_data->gp = gp;
 		custom_data->dialog_data = ddata;
@@ -2697,7 +2696,7 @@ static GList* rmplugin_x2go_populate_available_features_list()
 		// of an old limited set of features.
 
 		REMMINA_PLUGIN_WARNING("%s",
-			_("Couldn't get PyHoca-CLI's command-line features. This "
+			_("Could not get PyHoca-CLI's command-line features. This "
 			  "indicates it is either too old, or not installed. "
 			  "An old limited set of features will be used for now."));
 
