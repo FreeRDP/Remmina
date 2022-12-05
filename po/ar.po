@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-12-04 07:53+0000\n"
+"POT-Creation-Date: 2022-12-05 12:42+0000\n"
 "PO-Revision-Date: 2022-02-11 09:55+0000\n"
 "Last-Translator: Ahmad Dakhlallah <ahmad@linuxarabia.co>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -33,7 +33,7 @@ msgstr ""
 #: src/remmina_protocol_widget.c:1694 src/remmina_protocol_widget.c:1713
 #: src/remmina_file_editor.c:1119 src/remmina_file_editor.c:1241
 #: src/remmina_ssh_plugin.c:1393 plugins/rdp/rdp_plugin.c:2813
-#: plugins/www/www_plugin.c:909 plugins/x2go/x2go_plugin.c:3398
+#: plugins/www/www_plugin.c:909 plugins/x2go/x2go_plugin.c:3397
 #: data/ui/remmina_mpc.glade:218 data/ui/remmina_passwd.glade:84
 #: data/ui/remmina_unlock.glade:109
 msgid "Password"
@@ -41,7 +41,7 @@ msgstr "كلمة المرور"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:355
 #: src/remmina_file_editor.c:1120 src/remmina_ssh_plugin.c:1394
-#: src/remmina_ssh_plugin.c:1505 plugins/x2go/x2go_plugin.c:3421
+#: src/remmina_ssh_plugin.c:1505 plugins/x2go/x2go_plugin.c:3420
 msgid "SSH identity file"
 msgstr "ملف هوية SSH"
 
@@ -81,7 +81,7 @@ msgstr "الإتصال عبر SSH من طرفية جديدة"
 #: src/remmina_file_editor.c:1235 src/remmina_ssh_plugin.c:1503
 #: plugins/rdp/rdp_plugin.c:2812 plugins/vnc/vnc_plugin.c:2053
 #: plugins/vnc/vnc_plugin.c:2065 plugins/www/www_plugin.c:908
-#: plugins/x2go/x2go_plugin.c:482 plugins/x2go/x2go_plugin.c:3397
+#: plugins/x2go/x2go_plugin.c:482 plugins/x2go/x2go_plugin.c:3396
 #: data/ui/remmina_mpc.glade:122
 msgid "Username"
 msgstr "إسم المستخدم"
@@ -1671,7 +1671,7 @@ msgstr ""
 
 #. TRANSLATORS: Meta-error. Shouldn't be visible.
 #: src/remmina_file_editor.c:1466 plugins/x2go/x2go_plugin.c:2574
-#: plugins/x2go/x2go_plugin.c:3225
+#: plugins/x2go/x2go_plugin.c:3224
 #, fuzzy
 #| msgid "Transfer error"
 msgid "Internal error."
@@ -3471,11 +3471,11 @@ msgstr ""
 #: plugins/x2go/x2go_plugin.c:1111 plugins/x2go/x2go_plugin.c:1121
 #: plugins/x2go/x2go_plugin.c:1153 plugins/x2go/x2go_plugin.c:1348
 #: plugins/x2go/x2go_plugin.c:1722 plugins/x2go/x2go_plugin.c:2210
-#: plugins/x2go/x2go_plugin.c:3077 plugins/x2go/x2go_plugin.c:3290
-#: plugins/x2go/x2go_plugin.c:3295 plugins/x2go/x2go_plugin.c:3300
-#: plugins/x2go/x2go_plugin.c:3305 plugins/x2go/x2go_plugin.c:3320
-#: plugins/x2go/x2go_plugin.c:3325 plugins/x2go/x2go_plugin.c:3330
-#: plugins/x2go/x2go_plugin.c:3335
+#: plugins/x2go/x2go_plugin.c:3076 plugins/x2go/x2go_plugin.c:3289
+#: plugins/x2go/x2go_plugin.c:3294 plugins/x2go/x2go_plugin.c:3299
+#: plugins/x2go/x2go_plugin.c:3304 plugins/x2go/x2go_plugin.c:3319
+#: plugins/x2go/x2go_plugin.c:3324 plugins/x2go/x2go_plugin.c:3329
+#: plugins/x2go/x2go_plugin.c:3334
 #, fuzzy, c-format
 #| msgid "Transfer error"
 msgid "Internal error: %s"
@@ -3554,7 +3554,7 @@ msgstr "مرئي"
 
 #: plugins/x2go/x2go_plugin.c:527
 #, fuzzy
-msgid "Couldn't retrieve valid `DialogData` or `sessions_list`! Aborting…"
+msgid "Could not retrieve valid `DialogData` or `sessions_list`! Aborting…"
 msgstr "لا يمكن استرداد 'ديالوج داتا'! احباط…"
 
 #. TRANSLATORS: Stick to x2goclient's translation for terminate.
@@ -3588,7 +3588,7 @@ msgid "Unknown property '%i'"
 msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:715 plugins/x2go/x2go_plugin.c:762
-msgid "Couldn't find child GtkTreeView of session chooser dialog."
+msgid "Could not find child GtkTreeView of session chooser dialog."
 msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:727
@@ -3604,8 +3604,9 @@ msgid ""
 msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:771
-msgid "Couldn't get currently selected row (session)!"
-msgstr ""
+#, fuzzy
+msgid "Could not get currently selected row (session)!"
+msgstr "تعذر بدء جلسة عمل X2Go."
 
 #: plugins/x2go/x2go_plugin.c:790
 #, c-format
@@ -3683,9 +3684,9 @@ msgstr ""
 #: plugins/x2go/x2go_plugin.c:1276
 #, fuzzy, c-format
 msgid ""
-"An error occured while trying to terminate X2Go session '%s':\n"
+"Could not terminate X2Go session '%s':\n"
 "%s"
-msgstr "حدث خطأ أثناء بدء تشغيل جلسة عمل X2Go…"
+msgstr "تعذر بدء جلسة عمل X2Go."
 
 #: plugins/x2go/x2go_plugin.c:1288 plugins/x2go/x2go_plugin.c:1665
 #, fuzzy
@@ -3693,7 +3694,7 @@ msgid "An error occured."
 msgstr "حدث خطأ."
 
 #: plugins/x2go/x2go_plugin.c:1389 plugins/x2go/x2go_plugin.c:1404
-msgid "Couldn't get session ID from session chooser dialog."
+msgid "Could not get session ID from session chooser dialog."
 msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:1396
@@ -3741,8 +3742,8 @@ msgstr "خطأ داخلي: تعذر حفظ بيانات اعتماد جديدة.
 #: plugins/x2go/x2go_plugin.c:1726
 #, fuzzy
 msgid ""
-"An error occured while trying to save new credentials: 's_password' or "
-"'s_username' strings were not set."
+"Could not save new credentials: 's_password' or 's_username' strings were "
+"not set."
 msgstr ""
 "حدث خطأ أثناء محاولة حفظ بيانات اعتماد جديدة: لم يتم تعيين سلاسل \"s_password"
 "\" أو \"s_username\"."
@@ -3778,12 +3779,12 @@ msgstr "فشل المصادقة: %s"
 
 #: plugins/x2go/x2go_plugin.c:2047
 msgid ""
-"Couldn't parse the output of PyHoca-CLI's --list-sessions option. Creating a "
-"new session now."
+"Could not parse the output of PyHoca-CLI's --list-sessions option. Creating "
+"a new session now."
 msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:2086
-msgid "Couldn't allocate enough memory!"
+msgid "Could not allocate enough memory!"
 msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:2096
@@ -3852,31 +3853,31 @@ msgstr "إعداد DPI خارج الحدود. يرجى ضبطه في إعداد�
 
 #: plugins/x2go/x2go_plugin.c:2576
 #, fuzzy
-msgid "An error occured while starting an X2Go session…"
-msgstr "حدث خطأ أثناء بدء تشغيل جلسة عمل X2Go…"
+msgid "Could not start X2Go session…"
+msgstr "تعذر بدء جلسة عمل X2Go."
 
-#: plugins/x2go/x2go_plugin.c:2584
+#: plugins/x2go/x2go_plugin.c:2583
 #, fuzzy
 msgid "Could not start X2Go session."
 msgstr "تعذر بدء جلسة عمل X2Go."
 
-#: plugins/x2go/x2go_plugin.c:2585
+#: plugins/x2go/x2go_plugin.c:2584
 #, fuzzy, c-format
 msgid "Could not start PyHoca-CLI (%i): '%s'"
 msgstr "تعذر بدء تشغيل PyHoca-CLI (%i): '%s'"
 
-#: plugins/x2go/x2go_plugin.c:2700
+#: plugins/x2go/x2go_plugin.c:2699
 #, fuzzy
 msgid ""
-"Couldn't get PyHoca-CLI's command-line features. This indicates it is either "
-"too old, or not installed. An old limited set of features will be used for "
-"now."
+"Could not get PyHoca-CLI's command-line features. This indicates it is "
+"either too old, or not installed. An old limited set of features will be "
+"used for now."
 msgstr ""
 "تعذر الحصول على ميزات سطر الأوامر الخاصة ب PyHoca-CLI. يشير هذا إلى أنه إما "
 "قديم جدا أو غير مثبت. سيتم استخدام مجموعة محدودة من الميزات القديمة في الوقت "
 "الحالي."
 
-#: plugins/x2go/x2go_plugin.c:2709
+#: plugins/x2go/x2go_plugin.c:2708
 #, fuzzy
 msgid ""
 "Could not parse PyHoca-CLI's command-line features. Using a limited feature-"
@@ -3885,53 +3886,53 @@ msgstr ""
 "تعذر تحليل ميزات سطر الأوامر الخاصة ب PyHoca-CLI. استخدام مجموعة ميزات "
 "محدودة في الوقت الحالي."
 
-#: plugins/x2go/x2go_plugin.c:2715
+#: plugins/x2go/x2go_plugin.c:2714
 #, fuzzy
 msgid "Retrieved the following PyHoca-CLI command-line features:"
 msgstr "استرداد ميزات سطر الأوامر PyHoca-CLI التالية:"
 
-#: plugins/x2go/x2go_plugin.c:2723
+#: plugins/x2go/x2go_plugin.c:2722
 #, fuzzy, c-format
 msgid "Available feature[%i]: '%s'"
 msgstr "الميزة المتاحة[%i] : '%s'"
 
-#: plugins/x2go/x2go_plugin.c:2748
+#: plugins/x2go/x2go_plugin.c:2747
 #, fuzzy, c-format
 #| msgid "Connecting to %s via SSH…"
 msgid "Connected to %s:%d via X2Go"
 msgstr "الإتصال ب %s عن طريق SSH…"
 
-#: plugins/x2go/x2go_plugin.c:2842
+#: plugins/x2go/x2go_plugin.c:2841
 #, fuzzy
 msgid "Could not open X11 DISPLAY."
 msgstr "تعذر فتح X11 DISPLAY."
 
-#: plugins/x2go/x2go_plugin.c:2882
+#: plugins/x2go/x2go_plugin.c:2881
 #, fuzzy
 msgid "Waiting for window of X2Go Agent to appear…"
 msgstr "في انتظار نافذة X2Go وكيل لتظهر…"
 
-#: plugins/x2go/x2go_plugin.c:2908
+#: plugins/x2go/x2go_plugin.c:2907
 #, fuzzy
 msgid "Waiting for PyHoca-CLI to show the session's window…"
 msgstr "في انتظار PyHoca - CLI لإظهار نافذة الدورة…"
 
-#: plugins/x2go/x2go_plugin.c:2959
+#: plugins/x2go/x2go_plugin.c:2958
 #, fuzzy
 msgid "No X2Go session window appeared. Something went wrong…"
 msgstr "لم تظهر نافذة جلسة عمل X2Go. حدث خطأ ما…"
 
-#: plugins/x2go/x2go_plugin.c:3078
+#: plugins/x2go/x2go_plugin.c:3077
 #, fuzzy
 msgid "RemminaProtocolWidget* gp is 'NULL'!"
 msgstr "خطأ داخلي: RemminaProtocolWidget * سباق الجائزة الكبرى هو NULL!"
 
-#: plugins/x2go/x2go_plugin.c:3099
+#: plugins/x2go/x2go_plugin.c:3098
 #, fuzzy, c-format
 msgid "The %s protocol is unavailable because GtkSocket only works under X.org"
 msgstr "البروتوكول %s غير متوفر لأن GtkSocket يعمل فقط تحت X.org"
 
-#: plugins/x2go/x2go_plugin.c:3108
+#: plugins/x2go/x2go_plugin.c:3107
 #, fuzzy
 msgid "Could not initialize pthread. Falling back to non-threaded mode…"
 msgstr "تعذر تهيئة pthread. التراجع إلى الوضع غير مترابطة…"
@@ -3944,7 +3945,7 @@ msgstr "تعذر تهيئة pthread. التراجع إلى الوضع غير م�
 #. your language.
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
-#: plugins/x2go/x2go_plugin.c:3151 plugins/x2go/x2go_plugin.c:3169
+#: plugins/x2go/x2go_plugin.c:3150 plugins/x2go/x2go_plugin.c:3168
 #, fuzzy, c-format
 msgid "%sand '%s'"
 msgstr "%s و '%s'"
@@ -3955,7 +3956,7 @@ msgstr "%s و '%s'"
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
-#: plugins/x2go/x2go_plugin.c:3156 plugins/x2go/x2go_plugin.c:3174
+#: plugins/x2go/x2go_plugin.c:3155 plugins/x2go/x2go_plugin.c:3173
 #, fuzzy, c-format
 msgid "%s'%s' "
 msgstr "%s'%s' "
@@ -3963,135 +3964,135 @@ msgstr "%s'%s' "
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
 #. 'value1', 'value2', 'valueN-1' and 'valueN'
-#: plugins/x2go/x2go_plugin.c:3161
+#: plugins/x2go/x2go_plugin.c:3160
 #, fuzzy, c-format
 msgid "%s'%s', "
 msgstr "%s'%s'، "
 
-#: plugins/x2go/x2go_plugin.c:3200
+#: plugins/x2go/x2go_plugin.c:3199
 #, fuzzy
 msgid "Invalid validation data in ProtocolSettings array!"
 msgstr "بيانات التحقق من الصحة غير صالحة في صفيف ProtocolSettings!"
 
-#: plugins/x2go/x2go_plugin.c:3215 plugins/x2go/x2go_plugin.c:3280
+#: plugins/x2go/x2go_plugin.c:3214 plugins/x2go/x2go_plugin.c:3279
 #, fuzzy
 msgid "Validation data in ProtocolSettings array is invalid!"
 msgstr "بيانات التحقق من الصحة في صفيف ProtocolSettings غير صالحة!"
 
-#: plugins/x2go/x2go_plugin.c:3224
+#: plugins/x2go/x2go_plugin.c:3223
 msgid "Parameters 'key' or 'value' are 'NULL'!"
 msgstr ""
 
-#: plugins/x2go/x2go_plugin.c:3242
+#: plugins/x2go/x2go_plugin.c:3241
 #, fuzzy, c-format
 msgid "Allowed values are %s."
 msgstr "القيم المسموح بها هي %s."
 
-#: plugins/x2go/x2go_plugin.c:3244
+#: plugins/x2go/x2go_plugin.c:3243
 #, fuzzy, c-format
 msgid "The only allowed value is '%s'."
 msgstr "القيمة المسموح بها فقط هي '%s'."
 
-#: plugins/x2go/x2go_plugin.c:3291
+#: plugins/x2go/x2go_plugin.c:3290
 #, fuzzy
 msgid "The lower limit is not a valid integer!"
 msgstr "الحد الأدنى غير صحيح!"
 
-#: plugins/x2go/x2go_plugin.c:3296
+#: plugins/x2go/x2go_plugin.c:3295
 #, fuzzy
 msgid "The lower limit is too high!"
 msgstr "الحد الأدنى مرتفع جدا!"
 
-#: plugins/x2go/x2go_plugin.c:3301
+#: plugins/x2go/x2go_plugin.c:3300
 #, fuzzy
 msgid "The lower limit is too low!"
 msgstr "الحد الأدنى منخفض جدا!"
 
-#: plugins/x2go/x2go_plugin.c:3306 plugins/x2go/x2go_plugin.c:3336
-#: plugins/x2go/x2go_plugin.c:3356
+#: plugins/x2go/x2go_plugin.c:3305 plugins/x2go/x2go_plugin.c:3335
+#: plugins/x2go/x2go_plugin.c:3355
 #, fuzzy
 msgid "Something unknown went wrong."
 msgstr "حدث خطأ ما."
 
-#: plugins/x2go/x2go_plugin.c:3311 plugins/x2go/x2go_plugin.c:3341
+#: plugins/x2go/x2go_plugin.c:3310 plugins/x2go/x2go_plugin.c:3340
 #, fuzzy
 msgid "Please check the RemminaProtocolSetting array for possible errors."
 msgstr "الرجاء التحقق من صفيف RemminaProtocolSetting بحثا عن الأخطاء المحتملة."
 
-#: plugins/x2go/x2go_plugin.c:3321
+#: plugins/x2go/x2go_plugin.c:3320
 #, fuzzy
 msgid "The upper limit is not a valid integer!"
 msgstr "الحد الأعلى غير صحيح!"
 
-#: plugins/x2go/x2go_plugin.c:3326
+#: plugins/x2go/x2go_plugin.c:3325
 #, fuzzy
 msgid "The upper limit is too high!"
 msgstr "الحد الأعلى مرتفع جدا!"
 
-#: plugins/x2go/x2go_plugin.c:3331
+#: plugins/x2go/x2go_plugin.c:3330
 #, fuzzy
 msgid "The upper limit is too low!"
 msgstr "الحد الأعلى منخفض جدا!"
 
-#: plugins/x2go/x2go_plugin.c:3351
+#: plugins/x2go/x2go_plugin.c:3350
 #, fuzzy
 msgid "The input is not a valid integer!"
 msgstr "الإدخال غير صحيح صحيح!"
 
-#: plugins/x2go/x2go_plugin.c:3353 plugins/x2go/x2go_plugin.c:3370
+#: plugins/x2go/x2go_plugin.c:3352 plugins/x2go/x2go_plugin.c:3369
 #, fuzzy, c-format
 msgid "Input must be a number between %i and %i."
 msgstr "يجب أن يكون الإدخال رقما بين %i و %i."
 
-#: plugins/x2go/x2go_plugin.c:3399
+#: plugins/x2go/x2go_plugin.c:3398
 #, fuzzy
 #| msgid "Start-up program"
 msgid "Startup program"
 msgstr "برنامج بدء التشغيل"
 
-#: plugins/x2go/x2go_plugin.c:3401
+#: plugins/x2go/x2go_plugin.c:3400
 #, fuzzy
 msgid "Which command should be executed after creating the X2Go session?"
 msgstr "ما هو الأمر الذي يجب تنفيذه بعد إنشاء جلسة عمل X2Go؟"
 
-#: plugins/x2go/x2go_plugin.c:3403
+#: plugins/x2go/x2go_plugin.c:3402
 #, fuzzy
 msgid "Keyboard Layout (auto)"
 msgstr "تخطيط لوحة المفاتيح (تلقائي)"
 
-#: plugins/x2go/x2go_plugin.c:3404
+#: plugins/x2go/x2go_plugin.c:3403
 #, fuzzy
 msgid "Keyboard type (auto)"
 msgstr "نوع لوحة المفاتيح (تلقائي)"
 
-#: plugins/x2go/x2go_plugin.c:3405
+#: plugins/x2go/x2go_plugin.c:3404
 #, fuzzy
 msgid "Audio support"
 msgstr "دعم الصوت"
 
-#: plugins/x2go/x2go_plugin.c:3407
+#: plugins/x2go/x2go_plugin.c:3406
 #, fuzzy
 msgid "The sound system of the X2Go server (default: 'pulse')."
 msgstr "نظام الصوت لخادم X2Go (الافتراضي: 'نبض')."
 
-#: plugins/x2go/x2go_plugin.c:3410
+#: plugins/x2go/x2go_plugin.c:3409
 #, fuzzy
 #| msgid "Per connection"
 msgid "Clipboard direction"
 msgstr "اتجاه الحافظة"
 
-#: plugins/x2go/x2go_plugin.c:3412
+#: plugins/x2go/x2go_plugin.c:3411
 #, fuzzy
 msgid "Which direction should clipboard content be copied? (default: 'both')."
 msgstr "ما هو الاتجاه الذي يجب نسخ محتوى الحافظة فيه؟ (الافتراضي: 'كلاهما')."
 
-#: plugins/x2go/x2go_plugin.c:3416
+#: plugins/x2go/x2go_plugin.c:3415
 #, fuzzy
 #| msgid "Resolution"
 msgid "DPI resolution"
 msgstr "دقة DPI"
 
-#: plugins/x2go/x2go_plugin.c:3417
+#: plugins/x2go/x2go_plugin.c:3416
 #, fuzzy
 msgid ""
 "Launch session with a specific resolution (in dots per inch). Must be "
@@ -4099,13 +4100,13 @@ msgid ""
 msgstr ""
 "بدء جلسة العمل بدقة محددة (بالنقاط لكل بوصة). يجب أن يكون بين 20 و 400."
 
-#: plugins/x2go/x2go_plugin.c:3421
+#: plugins/x2go/x2go_plugin.c:3420
 #, fuzzy
 #| msgid "SSH identity file"
 msgid "Your private key"
 msgstr "ملف المفتاح الخاص SSH"
 
-#: plugins/x2go/x2go_plugin.c:3461
+#: plugins/x2go/x2go_plugin.c:3460
 #, fuzzy
 msgid "X2Go plugin loaded."
 msgstr "X2Go البرنامج المساعد تحميلها."
@@ -5469,6 +5470,16 @@ msgstr "فك قفل Remmina"
 #: data/ui/remmina_unlock.glade:120
 msgid "Master password"
 msgstr "كلمة السر الرئيسية"
+
+#, fuzzy, c-format
+#~ msgid ""
+#~ "An error occured while trying to terminate X2Go session '%s':\n"
+#~ "%s"
+#~ msgstr "حدث خطأ أثناء بدء تشغيل جلسة عمل X2Go…"
+
+#, fuzzy
+#~ msgid "An error occured while starting an X2Go session…"
+#~ msgstr "حدث خطأ أثناء بدء تشغيل جلسة عمل X2Go…"
 
 #~ msgid "News"
 #~ msgstr "المستجدات"
