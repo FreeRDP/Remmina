@@ -15,8 +15,8 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2022-12-05 12:42+0000\n"
-"PO-Revision-Date: 2022-11-27 08:48+0000\n"
-"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"PO-Revision-Date: 2022-12-10 10:48+0000\n"
+"Last-Translator: Andika Triwidada <andika@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/remmina/"
 "remmina/id/>\n"
 "Language: id\n"
@@ -371,6 +371,18 @@ msgid ""
 "to local key-codes won’t be sent to the server.\n"
 "\n"
 msgstr ""
+"PERHATIAN: Teks yang ditempelkan akan dikirim sebagai urutan kode-kode kunci "
+"seolah-olah diketik pada papan tik lokal Anda.\n"
+"\n"
+"   • Untuk hasil terbaik, gunakan pengaturan papan tik yang sama untuk "
+"keduanya, klien dan server.\n"
+"\n"
+"   • Jika papan tik klien berbeda dengan papan tik server, teks yang "
+"diterima bisa mengandung karakter yang salah atau keliru.\n"
+"\n"
+"   • Karakter Unicode dan karakter khusus lainnya yang tidak dapat "
+"diterjemahkan ke kode kunci lokal tidak akan dikirim ke server.\n"
+"\n"
 
 #: src/rcw.c:2208
 msgid "Turn off scaling to avoid screenshot distortion."
@@ -500,10 +512,8 @@ msgid "The passwords do not match"
 msgstr "Kata sandi tidak cocok"
 
 #: src/remmina_mpchange.c:275
-#, fuzzy
-#| msgid "The passwords do not match"
 msgid "The Gateway passwords do not match"
-msgstr "Kata sandi tidak cocok"
+msgstr "Kata sandi Gateway tidak cocok"
 
 #: src/remmina_mpchange.c:289
 msgid "Resetting passwords, please wait…"
@@ -867,7 +877,7 @@ msgstr "Izin"
 
 #: src/remmina_ftp_client.c:969
 msgid "Modified"
-msgstr ""
+msgstr "Diubah"
 
 #: src/remmina_ftp_client.c:1021 plugins/rdp/rdp_plugin.c:2689
 msgid "Remote"
@@ -1015,12 +1025,10 @@ msgid "Could not authenticate with SSH password. %s"
 msgstr "Tidak bisa mengautentikasi dengan kata sandi SSH. %s"
 
 #: src/remmina_ssh.c:820 src/remmina_ssh.c:887
-#, fuzzy
-#| msgid "No saved SSH passphrase supplied. Asking user to enter it."
 msgid "No saved SSH password supplied. Asking user to enter it."
 msgstr ""
-"Tidak ada frasa sandi SSH terimpan yang diberikan. Meminta pengguna untuk "
-"memasukannya."
+"Tidak ada kata sandi SSH tersimpan yang diberikan. Meminta pengguna untuk "
+"memasukkannya."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:825 src/remmina_ssh.c:866 src/remmina_ssh.c:892
@@ -1646,11 +1654,11 @@ msgstr "Gunakan '%s' sebagai pembatas subgrup"
 
 #: src/remmina_file_editor.c:1978 data/ui/remmina_main.glade:468
 msgid "Labels"
-msgstr ""
+msgstr "Label"
 
 #: src/remmina_file_editor.c:1992
 msgid "Label1,Label2"
-msgstr ""
+msgstr "Label1, Label2"
 
 #: src/remmina_file_editor.c:2064 src/remmina_file_editor.c:2084
 #, c-format
@@ -1908,7 +1916,7 @@ msgstr "Folder untuk log sesi SSH"
 
 #: src/remmina_ssh_plugin.c:1544
 msgid "Full path of an existing folder"
-msgstr ""
+msgstr "Path lengkap dari folder yang ada"
 
 #: src/remmina_ssh_plugin.c:1545
 msgid "Filename for SSH session log"
@@ -2335,10 +2343,8 @@ msgid "Default"
 msgstr "Default"
 
 #: plugins/rdp/rdp_plugin.c:2715
-#, fuzzy
-#| msgid "0 Windows 7 compatible"
 msgid "0 — Windows 7 compatible"
-msgstr "0 Kompatibel dengan Windows 7"
+msgstr "0 — Kompatibel dengan Windows 7"
 
 #: plugins/rdp/rdp_plugin.c:2716
 msgid "1"
@@ -2784,7 +2790,7 @@ msgstr "Mengaktifkan dukungan websocket Gateway"
 
 #: plugins/rdp/rdp_plugin.c:2897
 msgid "Update framebuffer even when not visible"
-msgstr ""
+msgstr "Perbarui framebuffer bahkan saat tidak terlihat"
 
 #: plugins/rdp/rdp_plugin.c:2906 plugins/spice/spice_plugin.c:707
 #: plugins/spice/spice_plugin.c:715 plugins/vnc/vnc_plugin.c:2093
@@ -2972,8 +2978,7 @@ msgid "Please retry after turning on encryption for this profile."
 msgstr "Silakan coba lagi setelah menyalakan enkripsi untuk profil ini."
 
 #: plugins/vnc/vnc_plugin.c:1717
-#, fuzzy, c-format
-#| msgid "Connected to %s:%d via VNC"
+#, c-format
 msgid "Connected to %s via VNC"
 msgstr "Tersambung ke %s lewat VNC"
 
@@ -3282,11 +3287,9 @@ msgid "Visible"
 msgstr "Tampak"
 
 #: plugins/x2go/x2go_plugin.c:527
-#, fuzzy
-#| msgid "Couldn't retrieve valid `DialogData` or `sessions_list`! Aborting…"
 msgid "Could not retrieve valid `DialogData` or `sessions_list`! Aborting…"
 msgstr ""
-"Tak bisa mengambil `DialogData` atau `sessions_list` yang valid! "
+"Tidak bisa mengambil `DialogData` atau `sessions_list` yang valid! "
 "Menggugurkan…"
 
 #. TRANSLATORS: Stick to x2goclient's translation for terminate.
@@ -3315,10 +3318,8 @@ msgid "Unknown property '%i'"
 msgstr "Properti tak dikenal '%i'"
 
 #: plugins/x2go/x2go_plugin.c:715 plugins/x2go/x2go_plugin.c:762
-#, fuzzy
-#| msgid "Couldn't find child GtkTreeView of session chooser dialog."
 msgid "Could not find child GtkTreeView of session chooser dialog."
-msgstr "Tak bisa temukan GtkTreeView anak dari dialog pemilih sesi."
+msgstr "Tidak bisa temukan GtkTreeView anak dari dialog pemilih sesi."
 
 #: plugins/x2go/x2go_plugin.c:727
 msgid ""
@@ -3337,10 +3338,8 @@ msgstr ""
 "alasan yang tidak diketahui."
 
 #: plugins/x2go/x2go_plugin.c:771
-#, fuzzy
-#| msgid "Couldn't get currently selected row (session)!"
 msgid "Could not get currently selected row (session)!"
-msgstr "Tak bisa mendapat baris yang saat ini dipilih (sesi)!"
+msgstr "Tidak bisa mendapat baris yang saat ini dipilih (sesi)!"
 
 #: plugins/x2go/x2go_plugin.c:790
 #, c-format
@@ -3421,22 +3420,21 @@ msgid "Parameter 'custom_data' is not fully initialized!"
 msgstr "Parameter 'custom_data' tidak diinisialisasi secara penuh!"
 
 #: plugins/x2go/x2go_plugin.c:1276
-#, fuzzy, c-format
-#| msgid "Could not start X2Go session."
+#, c-format
 msgid ""
 "Could not terminate X2Go session '%s':\n"
 "%s"
-msgstr "Tidak bisa memulai sesi X2Go."
+msgstr ""
+"Tidak dapat mengakhiri sesi X2Go '%s':\n"
+"%s"
 
 #: plugins/x2go/x2go_plugin.c:1288 plugins/x2go/x2go_plugin.c:1665
 msgid "An error occured."
 msgstr "Timbul galat."
 
 #: plugins/x2go/x2go_plugin.c:1389 plugins/x2go/x2go_plugin.c:1404
-#, fuzzy
-#| msgid "Couldn't get session ID from session chooser dialog."
 msgid "Could not get session ID from session chooser dialog."
-msgstr "Tak bisa mendapat ID sesi dari dialog pemilih sesi."
+msgstr "Tidak bisa mendapat ID sesi dari dialog pemilih sesi."
 
 #: plugins/x2go/x2go_plugin.c:1396
 #, c-format
@@ -3459,11 +3457,6 @@ msgstr ""
 "PyHoca-CLI keluar secara tidak terduga. Koneksi ini sekarang akan ditutup."
 
 #: plugins/x2go/x2go_plugin.c:1666
-#, fuzzy
-#| msgid ""
-#| "The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
-#| "Please check your profile settings and PyHoca-CLI's output for possible "
-#| "errors. Also ensure the remote server is reachable."
 msgid ""
 "The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
 "Please check your profile settings and PyHoca-CLI's output for possible "
@@ -3472,7 +3465,8 @@ msgid ""
 msgstr ""
 "Proses anak yang diperlukan 'pyhoca-cli' berhenti secara tak terduga.\n"
 "Silakan periksa pengaturan profil Anda dan keluaran PyHoca-CLI untuk "
-"kemungkinan kesalahan dan pastikan server jarak jauh dapat dijangkau."
+"kemungkinan kesalahan. Juga pastikan server jarak jauh dapat dijangkau dan "
+"Anda memakai kredensial yang benar."
 
 #: plugins/x2go/x2go_plugin.c:1709
 msgid "Can't save empty username!"
@@ -3483,62 +3477,49 @@ msgid "Could not save new credentials."
 msgstr "Tidak bisa menyimpan kredensial baru."
 
 #: plugins/x2go/x2go_plugin.c:1726
-#, fuzzy
-#| msgid ""
-#| "An error occured while trying to save new credentials: 's_password' or "
-#| "'s_username' strings were not set."
 msgid ""
 "Could not save new credentials: 's_password' or 's_username' strings were "
 "not set."
 msgstr ""
-"Timbul galat saat mencoba menyimpan kredensial baru: string 's_password' "
-"atau 's_username' tidak diatur."
+"Tidak bisa menyimpan kredensial baru: string 's_password' atau 's_username' "
+"tidak diatur."
 
 #: plugins/x2go/x2go_plugin.c:1758
-#, fuzzy
-#| msgid "Password to unlock private key"
 msgid "Enter password to unlock the SSH key:"
-msgstr "Kata sandi untuk membuka kunci privat"
+msgstr "Masukkan kata sandi untuk membuka kunci SSH:"
 
 #: plugins/x2go/x2go_plugin.c:1769
-#, fuzzy
-#| msgid "Authentication failure: %s"
 msgid "Password input cancelled. Aborting…"
-msgstr "Kegagalan otentikasi: %s"
+msgstr "Masukan kata sandi dibatalkan. Menggugurkan…"
 
 #: plugins/x2go/x2go_plugin.c:1800
 msgid ""
 "Tip: Check the 'Save password' checkbox or manually input your X2Go username "
 "and password in the profile settings to store them for faster logins."
 msgstr ""
+"Tip: Centang kotak 'Simpan kata sandi' atau masukkan nama pengguna dan kata "
+"sandi X2Go Anda secara manual di pengaturan profil untuk menyimpannya agar "
+"login lebih cepat."
 
 #: plugins/x2go/x2go_plugin.c:1831
 msgid "Enter X2Go credentials"
 msgstr "Masukkan kredensial X2Go"
 
 #: plugins/x2go/x2go_plugin.c:1860
-#, fuzzy
-#| msgid "Authentication failure: %s"
 msgid "Authentication cancelled. Aborting…"
-msgstr "Kegagalan otentikasi: %s"
+msgstr "Autentikasi dibatalkan. Menggugurkan…"
 
 #: plugins/x2go/x2go_plugin.c:2047
-#, fuzzy
-#| msgid ""
-#| "Couldn't parse the output of PyHoca-CLI's --list-sessions option. "
-#| "Creating a new session now."
 msgid ""
 "Could not parse the output of PyHoca-CLI's --list-sessions option. Creating "
 "a new session now."
 msgstr ""
-"Tak bisa mengurai keluaran dari opsi PyHoca-CLI --list-sessions. Kini "
+"Tidak bisa mengurai keluaran dari opsi PyHoca-CLI --list-sessions. Kini "
 "membuat suatu sesi baru."
 
 #: plugins/x2go/x2go_plugin.c:2086
-#, fuzzy
-#| msgid "Couldn't allocate enough memory!"
 msgid "Could not allocate enough memory!"
-msgstr "Tak bisa mengalokasikan cukup memori!"
+msgstr "Tidak bisa mengalokasikan cukup memori!"
 
 #: plugins/x2go/x2go_plugin.c:2096
 #, c-format
@@ -3600,10 +3581,8 @@ msgid "DPI setting is out of bounds. Please adjust it in profile settings."
 msgstr "Pengaturan DPI di luar batas. Harap sesuaikan di pengaturan profil."
 
 #: plugins/x2go/x2go_plugin.c:2576
-#, fuzzy
-#| msgid "Could not start X2Go session."
 msgid "Could not start X2Go session…"
-msgstr "Tidak bisa memulai sesi X2Go."
+msgstr "Tidak bisa memulai sesi X2Go…"
 
 #: plugins/x2go/x2go_plugin.c:2583
 msgid "Could not start X2Go session."
@@ -3615,11 +3594,6 @@ msgid "Could not start PyHoca-CLI (%i): '%s'"
 msgstr "Tidak bisa memulai PyHoca-CLI (%i): '%s'"
 
 #: plugins/x2go/x2go_plugin.c:2699
-#, fuzzy
-#| msgid ""
-#| "Couldn't get PyHoca-CLI's command-line features. This indicates it is "
-#| "either too old, or not installed. An old limited set of features will be "
-#| "used for now."
 msgid ""
 "Could not get PyHoca-CLI's command-line features. This indicates it is "
 "either too old, or not installed. An old limited set of features will be "
@@ -3823,10 +3797,8 @@ msgstr ""
 "20 dan 400."
 
 #: plugins/x2go/x2go_plugin.c:3420
-#, fuzzy
-#| msgid "SSH private key file"
 msgid "Your private key"
-msgstr "Berkas kunci privat SSH"
+msgstr "Kunci pribadi Anda"
 
 #: plugins/x2go/x2go_plugin.c:3460
 msgid "X2Go plugin loaded."
@@ -4121,28 +4093,20 @@ msgid "Set new password"
 msgstr "Atur kata sandi baru"
 
 #: data/ui/remmina_mpc.glade:320
-#, fuzzy
-#| msgid "Username"
 msgid "Gateway Username"
-msgstr "Nama pengguna"
+msgstr "Nama Pengguna Gateway"
 
 #: data/ui/remmina_mpc.glade:349
-#, fuzzy
-#| msgid "Remote Desktop Gateway domain"
 msgid "Gateway Domain"
-msgstr "Domain Remote Desktop Gateway"
+msgstr "Domain Gateway"
 
 #: data/ui/remmina_mpc.glade:415
-#, fuzzy
-#| msgid "Master password"
 msgid "Gateway Password"
-msgstr "Kata sandi induk"
+msgstr "Kata Sandi Gateway"
 
 #: data/ui/remmina_mpc.glade:440
-#, fuzzy
-#| msgid "Confirm password"
 msgid "Confirm Gateway Password"
-msgstr "Konfirmasi kata sandi"
+msgstr "Konfirmasi Kata Sandi Gateway"
 
 #. A column table with multiple check-boxes
 #: data/ui/remmina_mpc.glade:503
@@ -4166,12 +4130,9 @@ msgid "Domain\\Username"
 msgstr "Domain\\Nama_pengguna"
 
 #: data/ui/remmina_mpc.glade:548
-#, fuzzy
-#| msgctxt "Multi password changer table"
-#| msgid "Domain\\Username"
 msgctxt "Multi password changer table"
 msgid "Gateway Domain\\Username"
-msgstr "Domain\\Nama_pengguna"
+msgstr "Domain\\Nama_pengguna Gateway"
 
 #: data/ui/remmina_mpc.glade:588
 msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
@@ -4502,14 +4463,6 @@ msgstr "Templat untuk nama berkas profil"
 
 #. Placeholders used to name a Remmina connection profile
 #: data/ui/remmina_preferences.glade:361
-#, fuzzy
-#| msgid ""
-#| "%G Name of group (slashes \\/ are converted to dashes -)\n"
-#| "%P Protocol name\n"
-#| "%N Connection name\n"
-#| "%h Host name/IP\n"
-#| "\n"
-#| "\n"
 msgid ""
 "%G Name of group (slashes \\/ are converted to dashes -)\n"
 "%P Protocol name\n"
@@ -4537,7 +4490,7 @@ msgstr "Cegah cuplikan layar masuk ke papan klip"
 
 #: data/ui/remmina_preferences.glade:448
 msgid "Confirm before closing multiple tabs"
-msgstr ""
+msgstr "Konfirmasikan sebelum menutup beberapa tab"
 
 #: data/ui/remmina_preferences.glade:482
 msgid "Options"
@@ -4618,14 +4571,14 @@ msgstr ""
 "alih tema yang dikonfigurasi."
 
 #: data/ui/remmina_preferences.glade:687
-#, fuzzy
-#| msgid "Always show tabs"
 msgid "Always show notes"
-msgstr "Selalu tampilkan tab"
+msgstr "Selalu tampilkan catatan"
 
 #: data/ui/remmina_preferences.glade:691
 msgid "Add a column displaying any notes associated with a connection."
 msgstr ""
+"Menambahkan kolom yang menampilkan catatan apa pun yang terkait dengan "
+"koneksi."
 
 #: data/ui/remmina_preferences.glade:711
 msgid "“Grab all keyboard events” status colour"
@@ -4909,7 +4862,7 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:2036
 msgid "Show bold text in bright colors"
-msgstr ""
+msgstr "Tampilkan teks tebal dalam warna-warna cerah"
 
 #: data/ui/remmina_preferences.glade:2050
 msgid "Colour theme"
