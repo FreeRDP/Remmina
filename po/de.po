@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2022-12-05 12:42+0000\n"
-"PO-Revision-Date: 2022-11-30 18:48+0000\n"
+"PO-Revision-Date: 2022-12-13 10:50+0000\n"
 "Last-Translator: Johannes Weberhofer <jweberhofer@weberhofer.at>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/remmina/remmina/"
 "de/>\n"
@@ -156,7 +156,7 @@ msgstr "Geheimnis"
 
 #: src/remmina_plugin_manager.c:74
 msgid "Language Wrapper"
-msgstr "Schnittstelle zu anderen Programmiersprachen"
+msgstr "Schnittstelle zu Programmiersprachen"
 
 #: src/remmina_plugin_manager.c:526 data/ui/remmina_main.glade:305
 msgid "Plugins"
@@ -1698,7 +1698,7 @@ msgstr "Bezeichnungen"
 
 #: src/remmina_file_editor.c:1992
 msgid "Label1,Label2"
-msgstr "Bezeichnung1,Bezeichnung2"
+msgstr "Bezeichnung1, Bezeichnung2"
 
 #: src/remmina_file_editor.c:2064 src/remmina_file_editor.c:2084
 #, c-format
@@ -3027,7 +3027,7 @@ msgstr ""
 #: plugins/vnc/vnc_plugin.c:1717
 #, c-format
 msgid "Connected to %s via VNC"
-msgstr "Verbunden mit %s via VNC"
+msgstr "Mit %s über VNC verbunden"
 
 #: plugins/vnc/vnc_plugin.c:1724
 #, c-format
@@ -3334,8 +3334,6 @@ msgid "Visible"
 msgstr "Sichtbar"
 
 #: plugins/x2go/x2go_plugin.c:527
-#, fuzzy
-#| msgid "Couldn't retrieve valid `DialogData` or `sessions_list`! Aborting…"
 msgid "Could not retrieve valid `DialogData` or `sessions_list`! Aborting…"
 msgstr ""
 "Kann keine gültigen `DialogData` oder `sessions_list` abrufen! Abbrechen…"
@@ -3366,12 +3364,9 @@ msgid "Unknown property '%i'"
 msgstr "Unbekannte Eigenschaft '%i'"
 
 #: plugins/x2go/x2go_plugin.c:715 plugins/x2go/x2go_plugin.c:762
-#, fuzzy
-#| msgid "Couldn't find child GtkTreeView of session chooser dialog."
 msgid "Could not find child GtkTreeView of session chooser dialog."
 msgstr ""
-"Konnte keine untergeordnete GtkTreeView des Dialogs zur Sitzungsauswahl "
-"finden."
+"Kann keine untergeordnete GtkTreeView im Sitzungsauswahl-Dialogs finden."
 
 #: plugins/x2go/x2go_plugin.c:727
 msgid ""
@@ -3390,10 +3385,8 @@ msgstr ""
 "nicht abgefragt werden."
 
 #: plugins/x2go/x2go_plugin.c:771
-#, fuzzy
-#| msgid "Couldn't get currently selected row (session)!"
 msgid "Could not get currently selected row (session)!"
-msgstr "Konnte aktuell ausgewählte Reihe (Sitzung) nicht abfragen!"
+msgstr "Kann die aktuell ausgewählte Zeile (Sitzung) nicht bestimmen!"
 
 #: plugins/x2go/x2go_plugin.c:790
 #, c-format
@@ -3475,22 +3468,21 @@ msgid "Parameter 'custom_data' is not fully initialized!"
 msgstr "Der Parameter 'custom_data' ist nicht vollständig initialisiert!"
 
 #: plugins/x2go/x2go_plugin.c:1276
-#, fuzzy, c-format
-#| msgid "Could not start X2Go session."
+#, c-format
 msgid ""
 "Could not terminate X2Go session '%s':\n"
 "%s"
-msgstr "Die X2Go‐Sitzung kann nicht gestartet werden."
+msgstr ""
+"Die X2Go‐Sitzung '%s' kann nicht beendet werden:\n"
+"%s"
 
 #: plugins/x2go/x2go_plugin.c:1288 plugins/x2go/x2go_plugin.c:1665
 msgid "An error occured."
 msgstr "Ein Fehler ist aufgetreten."
 
 #: plugins/x2go/x2go_plugin.c:1389 plugins/x2go/x2go_plugin.c:1404
-#, fuzzy
-#| msgid "Couldn't get session ID from session chooser dialog."
 msgid "Could not get session ID from session chooser dialog."
-msgstr "Kann die Sitzungs-ID aus dem Sitzungsauswahl-Dialog nicht auslesen."
+msgstr "Die Sitzungs-ID im Sitzungsauswahl-Dialog kann nicht bestimmt werden."
 
 #: plugins/x2go/x2go_plugin.c:1396
 #, c-format
@@ -3518,10 +3510,10 @@ msgid ""
 "errors. Also ensure the remote server is reachable and you're using the "
 "right credentials."
 msgstr ""
-"Der notwendige Unterprozess 'pyhoca-cli' wurde unerwartet beendet.\n"
+"Der Unterprozess 'pyhoca-cli' wurde unerwartet beendet.\n"
 "Bitte prüfen Sie Ihre Profileinstellungen und die Ausgabe von PyHoca-CLI um "
-"eventuelle Fehler sehen zu können. Stellen Sie auch sicher, dass der "
-"entfernte Server erreichbar ist und Sie die richtigen Anmeldedaten verwenden."
+"das Problem zu analysieren. Stellen Sie sicher, dass der entfernte Server "
+"erreichbar ist und Sie die richtigen Anmeldedaten verwenden."
 
 #: plugins/x2go/x2go_plugin.c:1709
 msgid "Can't save empty username!"
@@ -3532,16 +3524,12 @@ msgid "Could not save new credentials."
 msgstr "Die neuen Anmeldedaten konnten nicht gespeichert werden."
 
 #: plugins/x2go/x2go_plugin.c:1726
-#, fuzzy
-#| msgid ""
-#| "An error occured while trying to save new credentials: 's_password' or "
-#| "'s_username' strings were not set."
 msgid ""
 "Could not save new credentials: 's_password' or 's_username' strings were "
 "not set."
 msgstr ""
-"Ein Fehler trat auf, beim Versuch die Anmeldedaten zu Speichern: "
-"Zeichenfolgen 's_password' oder 's_username' sind nicht gesetzt."
+"Kann die Anmeldedaten nicht speichern: 's_password' und 's_username' sind "
+"nicht gesetzt."
 
 #: plugins/x2go/x2go_plugin.c:1758
 msgid "Enter password to unlock the SSH key:"
@@ -3569,22 +3557,16 @@ msgid "Authentication cancelled. Aborting…"
 msgstr "Authentifizierung angebrochen. Beenden…"
 
 #: plugins/x2go/x2go_plugin.c:2047
-#, fuzzy
-#| msgid ""
-#| "Couldn't parse the output of PyHoca-CLI's --list-sessions option. "
-#| "Creating a new session now."
 msgid ""
 "Could not parse the output of PyHoca-CLI's --list-sessions option. Creating "
 "a new session now."
 msgstr ""
-"Die Ausgabe von PyHoca-CLI mit der Option --list-sessions konnte nicht "
-"analysiert werden. Erstelle jetzt eine neue Sitzung."
+"Die Ausgabe von PyHoca-CLI mit der Option --list-sessions kann nicht "
+"analysiert werden. Eine neue Sitzung wird erstellt."
 
 #: plugins/x2go/x2go_plugin.c:2086
-#, fuzzy
-#| msgid "Couldn't allocate enough memory!"
 msgid "Could not allocate enough memory!"
-msgstr "Konnte nicht genug Speicher reservieren!"
+msgstr "Kann nicht genug Speicher reservieren!"
 
 #: plugins/x2go/x2go_plugin.c:2096
 #, c-format
@@ -3648,10 +3630,8 @@ msgstr ""
 "Sie das in den Profileinstellungen richtig."
 
 #: plugins/x2go/x2go_plugin.c:2576
-#, fuzzy
-#| msgid "Could not start X2Go session."
 msgid "Could not start X2Go session…"
-msgstr "Die X2Go‐Sitzung kann nicht gestartet werden."
+msgstr "Die X2Go‐Sitzung kann nicht gestartet werden…"
 
 #: plugins/x2go/x2go_plugin.c:2583
 msgid "Could not start X2Go session."
@@ -3663,19 +3643,14 @@ msgid "Could not start PyHoca-CLI (%i): '%s'"
 msgstr "Starten von PyHoca-CLI (%i) ist fehlgeschlagen: ‚%s‘"
 
 #: plugins/x2go/x2go_plugin.c:2699
-#, fuzzy
-#| msgid ""
-#| "Couldn't get PyHoca-CLI's command-line features. This indicates it is "
-#| "either too old, or not installed. An old limited set of features will be "
-#| "used for now."
 msgid ""
 "Could not get PyHoca-CLI's command-line features. This indicates it is "
 "either too old, or not installed. An old limited set of features will be "
 "used for now."
 msgstr ""
 "Die PyHoca-CLI Kommandozeilenfeatures können nicht abgerufen werden. "
-"Entweder ist PyHoca-CLI zu alt oder nicht installiert. Es wird versucht, ein "
-"altes, limitiertes Set an Features zu nutzen."
+"Entweder ist PyHoca-CLI zu alt oder nicht installiert. Ein altes, "
+"limitiertes Set an Features wird verwendet."
 
 #: plugins/x2go/x2go_plugin.c:2708
 msgid ""
@@ -4211,7 +4186,7 @@ msgstr "Domäne\\Benutzername"
 #: data/ui/remmina_mpc.glade:548
 msgctxt "Multi password changer table"
 msgid "Gateway Domain\\Username"
-msgstr "Gateway-Domäne\\Benutzername"
+msgstr "Gateway Domäne\\Benutzername"
 
 #: data/ui/remmina_mpc.glade:588
 msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
@@ -4574,7 +4549,7 @@ msgstr "Bildschirmfotos speichern aber nicht in die Zwischenablage kopieren."
 
 #: data/ui/remmina_preferences.glade:387
 msgid "Prevent screenshots from entering clipboard"
-msgstr "Verhindern, dass Bildschirmfotos in die Zwischenablage kopiert werden"
+msgstr "Das Kopieren von Bildschirmfotos in die Zwischenablage verhindern"
 
 #: data/ui/remmina_preferences.glade:448
 msgid "Confirm before closing multiple tabs"
@@ -4666,7 +4641,7 @@ msgstr "Hinweise immer anzeigen"
 
 #: data/ui/remmina_preferences.glade:691
 msgid "Add a column displaying any notes associated with a connection."
-msgstr "Hinzufügen einer Spalte zum Anzeigen der Verbindungsnotizen."
+msgstr "Hinzufügen einer Spalte zum Anzeigen von Notizen zur Verbindung."
 
 #: data/ui/remmina_preferences.glade:711
 msgid "“Grab all keyboard events” status colour"
