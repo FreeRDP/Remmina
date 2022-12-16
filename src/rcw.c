@@ -3476,19 +3476,27 @@ void rco_closewin(RemminaProtocolWidget *gp)
 	RemminaConnectionObject *cnnobj = gp->cnnobj;
 	GtkWidget *page_to_remove;
 
+
+	if (cnnobj && cnnobj->scrolled_container && REMMINA_IS_SCROLLED_VIEWPORT(cnnobj->scrolled_container)) {
+		REMMINA_DEBUG("deleting motion");
+		remmina_scrolled_viewport_remove_motion(REMMINA_SCROLLED_VIEWPORT(cnnobj->scrolled_container));
+	}
+
 	if (cnnobj && cnnobj->cnnwin) {
 		page_to_remove = nb_find_page_by_cnnobj(cnnobj->cnnwin->priv->notebook, cnnobj);
 		if (page_to_remove) {
 			gtk_notebook_remove_page(
 				cnnobj->cnnwin->priv->notebook,
 				gtk_notebook_page_num(cnnobj->cnnwin->priv->notebook, page_to_remove));
+			/* Invalidate pointers to objects destroyed by page removal */
+			cnnobj->aspectframe = NULL;
+			cnnobj->viewport = NULL;
+			cnnobj->scrolled_container = NULL;
+			/* we cannot invalidate cnnobj->proto, because it can be already been
+			 * detached from the widget hierarchy in rco_on_disconnect() */
 		}
 	}
 	if (cnnobj) {
-		if (cnnobj->scrolled_container && REMMINA_IS_SCROLLED_VIEWPORT(cnnobj->scrolled_container)) {
-			REMMINA_DEBUG("deleting motion");
-			remmina_scrolled_viewport_remove_motion(REMMINA_SCROLLED_VIEWPORT(cnnobj->scrolled_container));
-		}
 		cnnobj->remmina_file = NULL;
 		g_free(cnnobj);
 		gp->cnnobj = NULL;
