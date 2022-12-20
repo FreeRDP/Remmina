@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2022-12-16 14:36+0000\n"
-"PO-Revision-Date: 2022-12-20 12:50+0000\n"
-"Last-Translator: Dan <denqwerta@gmail.com>\n"
+"PO-Revision-Date: 2022-12-20 15:51+0000\n"
+"Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/remmina/"
 "remmina/uk/>\n"
 "Language: uk\n"
@@ -156,7 +156,7 @@ msgstr "Мовна обгортка"
 
 #: src/remmina_plugin_manager.c:526 data/ui/remmina_main.glade:306
 msgid "Plugins"
-msgstr "Плаґіни"
+msgstr "Додатки"
 
 #: src/remmina_plugin_manager.c:526 src/remmina_message_panel.c:451
 #: src/remmina_message_panel.c:620 src/remmina_file_editor.c:243
@@ -265,9 +265,10 @@ msgid ""
 "“Advanced” tab of terminal connections and editable in the “Terminal” tab in "
 "the settings."
 msgstr ""
-"Цей файл містить «Користувацьку» кольорову схему терміналу, яку можна "
-"вибрати на вкладці «Додатково» з’єднань терміналів і редагувати на вкладці "
-"«Термінал» у налаштуваннях."
+"У цьому файлі міститься схема кольорів «Нетипова» («Custom»), яку можна "
+"вибрати за допомогою вкладки «Додатково» параметрів з'єднань терміналів. "
+"Внести зміни до схеми можна за допомогою вкладки «Термінал» параметрів "
+"програми."
 
 #: src/remmina_message_panel.c:162 data/ui/remmina_mpc.glade:33
 #: data/ui/remmina_passwd.glade:19 data/ui/remmina_unlock.glade:43
@@ -483,7 +484,7 @@ msgid ""
 "Warning: This plugin requires GtkSocket, but this feature is unavailable in "
 "a Wayland session."
 msgstr ""
-"Увага: Цей плаґін потребує GtkSocket, але цією можливістю не можна "
+"Увага: цей додаток потребує GtkSocket, але цією можливістю не можна "
 "скористатися у сеансі Wayland."
 
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
@@ -496,7 +497,7 @@ msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 msgstr ""
-"Плаґіни, для роботи яких потрібен GtkSocket, не можуть працювати у сеансі "
+"Додатки, для роботи яких потрібен GtkSocket, не можуть працювати у сеансі "
 "Wayland.\n"
 "Щоб дізнатися більше про можливі обхідні маневри, будь ласка, почитайте вікі "
 "Remmina:\n"
@@ -522,7 +523,7 @@ msgstr "Скидаємо паролі. Будь ласка, зачекайте�
 
 #: src/remmina_mpchange.c:380
 msgid "The multi password changer requires a secrecy plugin.\n"
-msgstr "Зміна багатьох паролів потребує плаґіну шифрування.\n"
+msgstr "Зміна багатьох паролів потребує додатка шифрування.\n"
 
 #: src/remmina_mpchange.c:383
 msgid "The multi password changer requires a secrecy service.\n"
@@ -539,7 +540,7 @@ msgstr[2] "%d паролів змінено."
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:96
 msgid "Show 'About'"
-msgstr "Показати «Про застосунок»"
+msgstr "Показати «Про програму»"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:98
@@ -548,7 +549,7 @@ msgid ""
 "supported by a plugin) or a supported URI (RDP, VNC, SSH or SPICE)"
 msgstr ""
 "З'єднатися зі стільницею, яку описано у файлі (.remmina або суфіксом, що "
-"підтримується плаґіном) або підтримуваною адресою (RDP, VNC, SSH або SPICE)"
+"підтримується додатком) або підтримуваною адресою (RDP, VNC, SSH або SPICE)"
 
 #: src/remmina.c:98 src/remmina.c:100 src/remmina.c:102
 msgid "FILE"
@@ -561,7 +562,7 @@ msgid ""
 "by a plugin)"
 msgstr ""
 "З'єднатися зі стільницею, яку описано у файлі (.remmina або тип файлів, "
-"підтримку якого передбачено у плаґіну)"
+"підтримку якого передбачено у додатку)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:102
@@ -570,7 +571,7 @@ msgid ""
 "by plugin)"
 msgstr ""
 "Редагувати з'єднання зі стільницею, яку описано у файлі (.remmina або іншим "
-"типом файлів, підтримку якого передбачено у плаґіну)"
+"типом файлів, підтримку якого передбачено у додатку)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:105
@@ -622,12 +623,12 @@ msgstr "Запустити у лотку"
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:124
 msgid "Show the application version"
-msgstr "Показати версію застосунку"
+msgstr "Показати версію програми"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:126
 msgid "Show version of the application and its plugins"
-msgstr "Показати версію застосунку та плаґінів до неї"
+msgstr "Показати версію програми та додатків до неї"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:128
@@ -1012,7 +1013,7 @@ msgstr "Сервер"
 #: src/remmina_protocol_widget.c:2065
 #, c-format
 msgid "Install the %s protocol plugin first."
-msgstr "Спочатку встановіть плаґін протоколу %s."
+msgstr "Спочатку встановіть додаток протоколу %s."
 
 #: src/remmina_ssh.c:735
 #, c-format
@@ -1281,7 +1282,7 @@ msgstr "Не вдалося створити PTY-пристрій."
 #: src/remmina_exec.c:491
 #, c-format
 msgid "Plugin %s is not registered."
-msgstr "Плаґін %s не зареєстровано."
+msgstr "Додаток %s не зареєстровано."
 
 #: src/remmina_main.c:732
 msgid "The latest successful connection attempt, or a pre-computed date"
@@ -1564,7 +1565,7 @@ msgstr "Цей же сервер на порту %i"
 
 #: src/remmina_file_editor.c:1212 plugins/rdp/rdp_plugin.c:2859
 msgid "Start-up path"
-msgstr "Шлях запуску"
+msgstr "Шлях до програми"
 
 #: src/remmina_file_editor.c:1221
 msgid "SSH Authentication"
@@ -1686,7 +1687,7 @@ msgstr "_Налаштування"
 
 #: src/remmina_icon.c:146
 msgid "_About"
-msgstr "_Про застосунок"
+msgstr "_Про програму"
 
 #: src/remmina_icon.c:156
 msgid "Enable Service Discovery"
@@ -3098,15 +3099,15 @@ msgstr "Розпочати спілкування…"
 
 #: plugins/vnc/vnc_plugin.h:42
 msgid "Remmina VNC Plugin"
-msgstr "Плаґін VNC Remmina"
+msgstr "Додаток VNC Remmina"
 
 #: plugins/vnc/vnc_plugin.h:47
 msgid "Remmina VNC listener Plugin"
-msgstr "Плаґін засобу очікування на дані VNC Remmina"
+msgstr "Додаток засобу очікування на дані VNC Remmina"
 
 #: plugins/www/www_config.h:43
 msgid "Remmina web-browser plugin"
-msgstr "Плаґін веббраузера Remmina"
+msgstr "Додаток веббраузера Remmina"
 
 #: plugins/www/www_plugin.c:99
 msgid "File downloaded"
@@ -3150,7 +3151,7 @@ msgstr "Увімкнути просторову навігацію"
 
 #: plugins/www/www_plugin.c:931
 msgid "Turn on plugin support"
-msgstr "Увімкнути підтримку плаґінів"
+msgstr "Увімкнути підтримку додатків"
 
 #: plugins/www/www_plugin.c:932
 msgid "Turn on WebGL support"
@@ -3812,7 +3813,7 @@ msgstr "Ваш закритий ключ"
 
 #: plugins/x2go/x2go_plugin.c:3460
 msgid "X2Go plugin loaded."
-msgstr "Завантажено плаґін X2Go."
+msgstr "Завантажено додаток X2Go."
 
 #: plugins/x2go/x2go_plugin.h:43
 msgid "X2Go - Launch an X2Go session"
@@ -3820,7 +3821,7 @@ msgstr "X2Go — запустити сеанс X2Go"
 
 #: plugins/gvnc/gvnc_plugin_config.h:40
 msgid "Remmina VNC plugin for GNOME and KVM"
-msgstr "Плаґін VNC Remmina для GNOME та KVM"
+msgstr "Додаток VNC Remmina для GNOME та KVM"
 
 #: plugins/gvnc/gvnc_plugin.c:476
 #, c-format
@@ -4005,9 +4006,9 @@ msgid ""
 "profiles are saved inside the Snap file system by default. You can change "
 "the location in the Remmina preferences."
 msgstr ""
-"Оскільки пакети Snap працюють обмежено від решти системи, профілі Remmina за "
-"замовчуванням зберігаються всередині файлової системи Snap. Ви можете "
-"змінити розташування в налаштуваннях Remmina."
+"Програми з пакунків Snap відмежовано від решти системи, тому, типово, "
+"профілі Remmina типово зберігатимуться у файловій системі Snap. Ви можете "
+"змінити теку для зберігання параметрів у загальних параметрах Remmina."
 
 #: data/ui/remmina_snap_info_dialog.glade:213
 msgid "Change where Remmina profiles are stored"
@@ -4055,7 +4056,7 @@ msgstr "Ц_иклічний пошук"
 
 #: data/ui/remmina_about.glade:31 data/ui/remmina_main.glade:386
 msgid "About"
-msgstr "Про застосунок"
+msgstr "Про програму"
 
 #: data/ui/remmina_about.glade:35
 msgid ""
@@ -4336,7 +4337,7 @@ msgstr "Спільнота"
 
 #: data/ui/remmina_main.glade:513
 msgid "Plugin"
-msgstr "Плаґін"
+msgstr "Додаток"
 
 #: data/ui/remmina_main.glade:527
 msgid "Last used"
@@ -4686,7 +4687,7 @@ msgstr "Рідкісні умови або попередження"
 
 #: data/ui/remmina_preferences.glade:1421
 msgid "API-accessible entrypoints"
-msgstr "Доступні точки входу API"
+msgstr "Доступні з програмного інтерфейсу точки входу"
 
 #: data/ui/remmina_preferences.glade:1422
 msgid "Lower level protocol info, packet level"
