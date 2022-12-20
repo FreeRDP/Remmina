@@ -1,0 +1,11 @@
+--- spice-gtk/meson.build.orig	2022-07-04 18:53:04.000000000 +0400
++++ spice-gtk/meson.build	2022-12-16 00:25:09.181054522 +0400
+@@ -447,7 +447,7 @@
+   endif
+   summary_info += {'gtk_doc': d.found()}
+ endif
+-subdir('data')
++#subdir('data')
+ subdir('man')
+ subdir('po')
+ subdir('vapi')

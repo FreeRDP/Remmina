@@ -50,12 +50,12 @@
             "directory": "lib/ffmpeg",
             "version": "22.08",
             "add-ld-path": ".",
-            "no-autodownload": true,
+            "no-autodownload": false,
             "autodelete": false
         },
         "org.freedesktop.Platform.openh264": {
             "directory": "lib/openh264",
-            "version": "2.1.0",
+            "version": "2.3.0",
             "add-ld-path": "."
         }
     },
@@ -73,12 +73,12 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://xorg.freedesktop.org/archive/individual/app/xprop-1.2.5.tar.bz2",
-                    "sha256": "9b92ed0316bf2486121d8bac88bd1878f16b43bd335f18009b1f941f1eca93a1",
+                    "url": "https://xorg.freedesktop.org/archive/individual/app/xprop-1.2.6.tar.xz",
+                    "sha256": "580b8525b12ecc0144aa16c88b0aafa76d2e799b44c8c6c50f9ce92788b5586e",
                     "x-checker-data": {
                         "type": "anitya",
                         "project-id": 14958,
-                        "url-template": "https://xorg.freedesktop.org/archive/individual/app/xprop-$version.tar.bz2"
+                        "url-template": "https://xorg.freedesktop.org/archive/individual/app/xprop-$version.tar.xz"
                     }
                 }
             ]
@@ -160,8 +160,8 @@
                 {
                     "type": "git",
                     "url": "https://gitlab.gnome.org/GNOME/vte.git",
-                    "tag": "0.70.1",
-                    "commit": "5bf476f1d7283bc805ac8ae6abe94f81ffd7be05",
+                    "tag": "0.70.2",
+                    "commit": "bfabb63d2f8d0f9846dc0a0a7d768d8bf6da3531",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^([\\d.]+)$"
@@ -243,11 +243,11 @@
                 {
                     "type": "git",
                     "url": "https://github.com/LudovicRousseau/PCSC.git",
-                    "tag": "1.9.9",
-                    "commit": "15c16c7796607b1c8a2ce253d3f536918ab26b4a",
+                    "tag": "pcsc-1.9.0",
+                    "commit": "e796a0f12fbefa459bff0d25e27089615fa91f21",
                     "x-checker-data": {
                         "type": "git",
-                        "tag-pattern": "^([\\d.]+)$"
+                        "tag-pattern": "^pcsc-([\\d.]+)$"
                     }
                 }
             ]
@@ -263,8 +263,7 @@
             "config-opts": [
                 "-Dvapi=enabled",
                 "-Dwebdav=enabled",
-                "-Dgtk_doc=disabled",
-                "-Dpolkit=disabled"
+                "-Dgtk_doc=disabled"
             ],
             "sources": [
                 {
@@ -276,6 +275,10 @@
                         "project-id": 11576,
                         "url-template": "https://www.spice-space.org/download/gtk/spice-gtk-$version.tar.xz"
                     }
+                },
+                {
+                    "type": "patch",
+                    "path": "patches/spice-no-polkit-action.patch"
                 }
             ],
             "modules": [
@@ -348,11 +351,15 @@
                         "/bin",
                         "/sbin"
                     ],
+                    "config-opts": [
+                        "-Dgtk_doc=disabled",
+                        "-Dsystemd=disabled"
+                    ],
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://download.gnome.org/sources/phodav/3.0/phodav-3.0.tar.xz",
-                            "sha256": "392ec2d06d50300dcff1ef269a2a985304e29bce3520002fca29f2edc1d138d1",
+                            "url": "https://download.gnome.org/sources/phodav/2.5/phodav-2.5.tar.xz",
+                            "sha256": "71f0a9cd70afd4dd1412a0298331dbb8ac71c0377f52117afc15eb88dc6fb910",
                             "x-checker-data": {
                                 "type": "gnome",
                                 "name": "phodav",
@@ -439,7 +446,9 @@
             "buildsystem": "cmake-ninja",
             "builddir": true,
             "config-opts": [
-                "-DCMAKE_BUILD_TYPE:STRING=Release"
+                "-DCMAKE_BUILD_TYPE:STRING=Release",
+                "-DWITH_EXAMPLES:BOOL=OFF",
+                "-DWITH_TESTS:BOOL=OFF"
             ],
             "cleanup": [
                 "/bin",
@@ -447,9 +456,14 @@
             ],
             "sources": [
                 {
-                    "type": "git",
-                    "url": "https://github.com/LibVNC/libvncserver.git",
-                    "branch": "master"
+                    "type": "archive",
+                    "url": "https://github.com/LibVNC/libvncserver/archive/LibVNCServer-0.9.14.tar.gz",
+                    "sha256": "83104e4f7e28b02f8bf6b010d69b626fae591f887e949816305daebae527c9a5",
+                    "x-checker-data": {
+                        "type": "anitya",
+                        "project-id": 1756,
+                        "url-template": "https://github.com/LibVNC/libvncserver/archive/LibVNCServer-$version.tar.gz"
+                    }
                 }
             ]
         },
@@ -458,22 +472,24 @@
             "buildsystem": "cmake-ninja",
             "cleanup": [],
             "config-opts": [
+                "-DCMAKE_VERBOSE_MAKEFILE=ON",
                 "-DCMAKE_BUILD_TYPE:STRING=Release",
                 "-DCMAKE_INSTALL_LIBDIR:PATH=lib",
                 "-DWITH_WAYLAND:BOOL=ON",
                 "-DCHANNEL_TSMF:BOOL=OFF",
                 "-DCHANNEL_URBDRC:BOOL=ON",
                 "-DBUILD_TESTING:BOOL=OFF",
-                "-DWITH_ICU:BOOL=ON",
                 "-DWITH_MANPAGES:BOOL=OFF",
                 "-DWITH_GSSAPI:BOOL=OFF",
                 "-DWITH_PCSC:BOOL=ON",
+                "-DWITH_SWSCALE:BOOL=ON",
                 "-DWITH_SERVER:BOOL=OFF",
+                "-DWITH_SAMPLE:BOOL=OFF",
                 "-DWITH_CUPS:BOOL=ON",
                 "-DWITH_FFMPEG:BOOL=ON",
+                "-DWITH_DSP_FFMPEG:BOOL=ON",
                 "-DWITH_OSS:BOOL=OFF",
                 "-DWITH_PULSE:BOOL=ON",
-                "-DWITH_CHANNELS:BOOL=ON",
                 "-DWITH_LIBSYSTEMD:BOOL=OFF"
             ],
             "sources": [
