@@ -1,4 +1,14 @@
-## Unreleased
+## v1.4.29
+[full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.28...v1.4.29)
+
+* Hiroyuki Tanaka added to README :) [!2451](https://gitlab.com/Remmina/Remmina/merge_requests/2451) *@kingu*
+* Initial macOS support [!2453](https://gitlab.com/Remmina/Remmina/merge_requests/2453) *@wegank*
+* X2Go error-message consistency [!2452](https://gitlab.com/Remmina/Remmina/merge_requests/2452) *@kingu*
+* Avoid crash when closing, fixes issue #2832 [!2454](https://gitlab.com/Remmina/Remmina/merge_requests/2454) *@giox069*
+* Update Copyright for 2023 [!2455](https://gitlab.com/Remmina/Remmina/merge_requests/2455) *@myheroyuki*
+* Aligning local and downstream jsons [!2456](https://gitlab.com/Remmina/Remmina/merge_requests/2456) *@antenore*
+
+## v1.4.28
 [full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.27...v1.4.28)
 
 * Some minor rdp fixes [!2415](https://gitlab.com/Remmina/Remmina/merge_requests/2415) *@akallabeth*
