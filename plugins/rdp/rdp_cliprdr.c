@@ -280,13 +280,19 @@ static UINT remmina_rdp_cliprdr_server_format_list(CliprdrClientContext *context
 		gchar *gtkFormatName = NULL;
 		if (format->formatId == CF_UNICODETEXT) {
 			serverFormatName = "CF_UNICODETEXT";
-			gtkFormatName = "UTF8_STRING";
+			gtkFormatName = "text/plain;charset=utf-8";
 			GdkAtom atom = gdk_atom_intern(gtkFormatName, TRUE);
+			gtk_target_list_add(list, atom, 0, CF_UNICODETEXT);
+			/* Add also the older UTF8_STRING format for older applications */
+			atom = gdk_atom_intern("UTF8_STRING", TRUE);
 			gtk_target_list_add(list, atom, 0, CF_UNICODETEXT);
 		} else if (format->formatId == CF_TEXT) {
 			serverFormatName = "CF_TEXT";
-			gtkFormatName = "TEXT";
+			gtkFormatName = "text/plain";
 			GdkAtom atom = gdk_atom_intern(gtkFormatName, TRUE);
+			gtk_target_list_add(list, atom, 0, CF_TEXT);
+			/* Add also the older TEXT format for older applications */
+			atom = gdk_atom_intern("TEXT", TRUE);
 			gtk_target_list_add(list, atom, 0, CF_TEXT);
 		} else if (format->formatId == CF_DIB) {
 			serverFormatName = "CF_DIB";
@@ -360,7 +366,7 @@ static UINT remmina_rdp_cliprdr_server_format_list(CliprdrClientContext *context
 		gtk_target_table_free(target_table, n_targets);
 	if (n_targets == 0) {
 		REMMINA_PLUGIN_DEBUG("gp=%p adding a dummy text target (empty text) for local clipboard, because we have no interesting targets from the server. Putting it in the local clipboard cache.");
-		GdkAtom atom = gdk_atom_intern("UTF8_STRING", TRUE);
+		GdkAtom atom = gdk_atom_intern("text/plain;charset=utf-8", TRUE);
 		gtk_target_list_add(list, atom, 0, CF_UNICODETEXT);
 		pthread_mutex_lock(&clipboard->srv_data_mutex);
 		clipboard->srv_data = malloc(1);
