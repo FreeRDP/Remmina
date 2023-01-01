@@ -13,13 +13,14 @@
 # sute1 <qaqek@getnada.com>, 2020, 2021.
 # あわしろいくや <ikunya@gmail.com>, 2021.
 # WonYong Jung <hirameki@gmail.com>, 2022.
+# maboroshin <maboroshin@users.noreply.hosted.weblate.org>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2022-12-16 14:36+0000\n"
-"PO-Revision-Date: 2022-11-27 08:48+0000\n"
-"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"PO-Revision-Date: 2023-01-01 22:48+0000\n"
+"Last-Translator: maboroshin <maboroshin@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/remmina/remmina/"
 "ja/>\n"
 "Language: ja\n"
@@ -27,7 +28,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.15-dev\n"
+"X-Generator: Weblate 4.15.1-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
 
 #: src/remmina_sftp_plugin.c:309 src/remmina_sftp_plugin.c:353
@@ -71,7 +72,7 @@ msgstr "すべてのファイルを上書きする"
 
 #: src/remmina_sftp_plugin.c:326
 msgid "Resume all file transfers"
-msgstr "中断したすべてのファイル転送を再開する"
+msgstr "中断したすべてのファイル転送を再開"
 
 #: src/remmina_sftp_plugin.c:327 src/remmina_protocol_widget.c:282
 msgid "Connect via SSH from a new terminal"
@@ -105,16 +106,12 @@ msgid "SFTP - Secure File Transfer"
 msgstr "SFTP - セキュアなファイル転送"
 
 #: src/remmina_log.c:130
-#, fuzzy
-#| msgid "Open the Remmina main window"
 msgid "Remmina debugging window"
-msgstr "Remminaのメインウィンドウを開く"
+msgstr "Remminaのデバッグ用ウィンドウを開く"
 
 #: src/remmina_log.c:134
-#, fuzzy
-#| msgid "Open the Remmina main window"
 msgid "Paste system info in the Remmina debugging window"
-msgstr "Remminaのメインウィンドウを開く"
+msgstr "Remminaのデバッグ用ウィンドウにシステム情報を貼り付け"
 
 #: src/remmina_log.c:154
 msgid ""
@@ -126,11 +123,10 @@ msgid ""
 "Remmina/-/wikis/Usage/Remmina-debugging\n"
 msgstr ""
 "このウィンドウは接続問題の原因を探すためのものです。\n"
-"On/Offスイッチでいつでもログ出力を入・切できます。\n"
-"統計ボタン(Ctrl+T)はバグレポートで共有できるシステムの情報取得時に便利で"
-"す。\n"
-"https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging に Remmina"
-"のデバッグについて説明されています。\n"
+"On/Offスイッチでいつでもログの出力を入/切できます。\n"
+"統計ボタン (Ctrl+T) は、バグ報告で共有するシステム情報の取得に便利です。\n"
+"https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging に "
+"Remminaのデバッグについて説明されています。\n"
 
 #: src/remmina_plugin_manager.c:74 src/remmina_file_editor.c:2003
 msgid "Protocol"
@@ -158,7 +154,7 @@ msgstr "秘密"
 
 #: src/remmina_plugin_manager.c:74
 msgid "Language Wrapper"
-msgstr ""
+msgstr "言語ラッパー"
 
 #: src/remmina_plugin_manager.c:526 data/ui/remmina_main.glade:306
 msgid "Plugins"
@@ -189,7 +185,7 @@ msgstr "バージョン"
 #: src/remmina_chat_window.c:177
 #, c-format
 msgid "Chat with %s"
-msgstr "%s とチャットする"
+msgstr "%s とチャット"
 
 #: src/remmina_chat_window.c:229
 msgid "_Send"
@@ -245,7 +241,7 @@ msgstr "利用可能な解像度の設定"
 
 #: src/remmina_pref_dialog.c:145
 msgid "Recent lists cleared."
-msgstr "リモートリストを消去しました。"
+msgstr "最近使った一覧を消去しました。"
 
 #: src/remmina_pref_dialog.c:157 src/rcw.c:2071
 #: data/ui/remmina_preferences.glade:169 data/ui/remmina_preferences.glade:179
@@ -258,8 +254,6 @@ msgstr "キー操作の設定"
 
 #. TRANSLATORS: Do not translate libsodium, is the name of a library
 #: src/remmina_pref_dialog.c:475
-#, fuzzy
-#| msgid "libsodium >= 1.9.0 is required to use master password"
 msgid "libsodium >= 1.9.0 is required to use Primary Password"
 msgstr "マスターパスワードを使用するには libsodium >= 1.9.0 が必要です"
 
@@ -308,7 +302,7 @@ msgstr "ドメイン"
 
 #: src/remmina_message_panel.c:419
 msgid "Save password"
-msgstr "パスワードを保存する"
+msgstr "パスワードを保存"
 
 #: src/remmina_message_panel.c:456 src/remmina_message_panel.c:628
 #: src/remmina_sftp_client.c:972 src/remmina_file_editor.c:242
@@ -400,9 +394,8 @@ msgid "Screenshot taken"
 msgstr "スクリーンショットを撮影しました"
 
 #: src/rcw.c:2351
-#, fuzzy
 msgid "_Menu"
-msgstr "_Menu"
+msgstr "メニュー(_M)"
 
 #: src/rcw.c:2352
 msgid "Menu"
@@ -486,12 +479,11 @@ msgstr ""
 "available-in-a-Wayland-session"
 
 #: src/rcw.c:4631
-#, fuzzy
-#| msgid "Warning: This plugin requires GtkSocket, but it’s not available."
 msgid ""
 "Warning: This plugin requires GtkSocket, but this feature is unavailable in "
 "a Wayland session."
-msgstr "警告: このプラグインに必要な GtkSocket が利用できません。"
+msgstr "警告: このプラグインには GtkSocket が必要ですが、この機能は Wayland "
+"セッションでは利用できません。"
 
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. 'GtkSocket feature is not available'.
@@ -510,20 +502,16 @@ msgstr ""
 "available-in-a-Wayland-session"
 
 #: src/rcw.c:4651
-#, fuzzy
-#| msgid "Open Main Window"
 msgid "Open in web browser"
-msgstr "メインウィンドウを開く"
+msgstr "ウェブブラウザーで開く"
 
 #: src/remmina_mpchange.c:262
 msgid "The passwords do not match"
 msgstr "パスワードが一致しません"
 
 #: src/remmina_mpchange.c:275
-#, fuzzy
-#| msgid "The passwords do not match"
 msgid "The Gateway passwords do not match"
-msgstr "パスワードが一致しません"
+msgstr "ゲートウェイのパスワードが一致しません"
 
 #: src/remmina_mpchange.c:289
 msgid "Resetting passwords, please wait…"
@@ -546,7 +534,7 @@ msgstr[0] "%d 個のパスワードを変更しました。"
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:96
 msgid "Show 'About'"
-msgstr "'Remmina について' を表示する"
+msgstr "「Remmina について」を表示"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:98
@@ -564,29 +552,19 @@ msgstr "ファイル"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:100
-#, fuzzy
-#| msgid ""
-#| "Connect to a desktop described in a file (.remmina or a type supported by "
-#| "a plugin)"
 msgid ""
 "Connect to a desktop described in a file (.remmina or a filetype supported "
 "by a plugin)"
-msgstr ""
-"ファイル (.remmina やプラグインがサポートしているファイル形式) に記載されたデ"
-"スクトップに接続する"
+msgstr "ファイルに記載されたデスクトップに接続 (.remmina "
+"やプラグインに対応するファイル形式)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:102
-#, fuzzy
-#| msgid ""
-#| "Edit desktop connection described in file (.remmina or type supported by "
-#| "plugin)"
 msgid ""
 "Edit desktop connection described in file (.remmina or a filetype supported "
 "by plugin)"
-msgstr ""
-"ファイルに記載されたデスクトップ接続を編集する (.remmina またはプラグインが対"
-"応しているファイル形式)"
+msgstr "ファイルに記載されたデスクトップ接続を編集 (.remmina "
+"やプラグインに対応するファイル形式)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:105
@@ -596,12 +574,12 @@ msgstr "キオスクモードで起動する"
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:107
 msgid "Create new connection profile"
-msgstr "新しい接続プロファイルを作成する"
+msgstr "新しい接続プロファイルを作成"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:109
 msgid "Show preferences"
-msgstr "設定を表示する"
+msgstr "設定を表示"
 
 #: src/remmina.c:109
 msgid "TABINDEX"
@@ -610,7 +588,7 @@ msgstr "タブのインデックス"
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:116
 msgid "Quit"
-msgstr "終了する"
+msgstr "終了"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:118
@@ -660,16 +638,12 @@ msgid "Encrypt a password"
 msgstr "パスワードを暗号化する"
 
 #: src/remmina.c:132
-#, fuzzy
-#| msgid "Disable clipboard sync"
 msgid "Disable toolbar"
-msgstr "クリップボードの同期を無効にする"
+msgstr "ツールバーを無効にする"
 
 #: src/remmina.c:133
-#, fuzzy
-#| msgid "Scrolled fullscreen"
 msgid "Enable fullscreen"
-msgstr "全画面表示 (スクロールモード)"
+msgstr "全画面を有効にする"
 
 #: src/remmina.c:134
 msgid ""
@@ -678,10 +652,8 @@ msgid ""
 msgstr ""
 
 #: src/remmina.c:135
-#, fuzzy
-#| msgid "Dark tray icon"
 msgid "Disable tray icon"
-msgstr "ダークトレイアイコンを使用する"
+msgstr "トレイアイコンを無効にする"
 
 #. TRANSLATORS:
 #. * This link should point to a resource explaining how to get Remmina
@@ -781,10 +753,9 @@ msgid "Creating UNIX socket failed: %s"
 msgstr "UNIXソケットの作成に失敗しました。%s."
 
 #: src/remmina_public.c:363
-#, fuzzy, c-format
-#| msgid "VNC connection failed: %s"
+#, c-format
 msgid "Connecting to UNIX socket failed: %s"
-msgstr "UNIXソケットへの接続に失敗しました。%s."
+msgstr "UNIXソケットへの接続に失敗: %s"
 
 #: src/remmina_public.c:634
 msgid "Please enter format 'widthxheight'."
@@ -1326,7 +1297,7 @@ msgstr "最新の接続成功時、または事前に計算された日付"
 #, c-format
 msgid "Total %i item."
 msgid_plural "Total %i items."
-msgstr[0] "合計 %i 個のアイテム"
+msgstr[0] "計 %i 項目。"
 
 #: src/remmina_main.c:742
 msgid "Network status: fully online"
@@ -1450,12 +1421,6 @@ msgid "The following file already exists in the target folder:"
 msgstr "対象のファイルが目的のフォルダーにすでに存在します:"
 
 #: src/remmina_file_editor.c:60
-#, fuzzy
-#| msgid ""
-#| "<tt><big>Supported formats\n"
-#| "• server\n"
-#| "• server:port\n"
-#| "• [server]:port</big></tt>"
 msgid ""
 "<big>Supported formats\n"
 "• server\n"
@@ -1469,23 +1434,9 @@ msgstr ""
 "- サーバー[:ポート]\n"
 "VNCの追加フォーマット\n"
 "- ID:リピーターのID番号\n"
-"- unix:///path/socket.sock</big>."
+"- unix:///path/socket.sock</big>"
 
 #: src/remmina_file_editor.c:69
-#, fuzzy
-#| msgid ""
-#| "<tt><big>• command in PATH args %h\n"
-#| "• /path/to/foo -options %h %u\n"
-#| "• %h is substituted with the server name\n"
-#| "• %t is substituted with the SSH server name\n"
-#| "• %u is substituted with the username\n"
-#| "• %U is substituted with the SSH username\n"
-#| "• %p is substituted with Remmina profile name\n"
-#| "• %g is substituted with Remmina profile group name\n"
-#| "• %d is substituted with local date and time in ISO 8601 format\n"
-#| "Do not run in background if you want the command to be executed before "
-#| "connecting.\n"
-#| "</big></tt>"
 msgid ""
 "<big>• command in PATH args %h\n"
 "• /path/to/foo -options %h %u\n"
@@ -1500,7 +1451,7 @@ msgid ""
 "connecting.\n"
 "</big>"
 msgstr ""
-"<tt><big>• パスの通ったコマンド 引数 %h\n"
+"<big>• パスの通ったコマンド 引数 %h\n"
 "• /path/to/foo -オプション %h %u\n"
 "• %h : サーバー名\n"
 "• %t : SSH サーバー名\n"
@@ -1511,16 +1462,9 @@ msgstr ""
 "• %d : iso8601 形式のローカル日時\n"
 "接続する前にコマンドを実行させたい場合はバックグラウンドで実行しないでくださ"
 "い。\n"
-"</big></tt>"
+"</big>"
 
 #: src/remmina_file_editor.c:83
-#, fuzzy
-#| msgid ""
-#| "<tt><big>Supported formats\n"
-#| "• server\n"
-#| "• server:port\n"
-#| "• [server]:port\n"
-#| "• username@server:port (SSH protocol only)</big></tt>"
 msgid ""
 "<big>Supported formats\n"
 "• server\n"
@@ -1533,7 +1477,6 @@ msgstr ""
 "- username@server[:port] (SSHプロトコルのみ)</big>."
 
 #: src/remmina_file_editor.c:163
-#, fuzzy
 msgid "Input is invalid."
 msgstr "入力が無効です。"
 
@@ -1599,14 +1542,12 @@ msgid "Auto-start this profile"
 msgstr "このプロファイルを自動起動する"
 
 #: src/remmina_file_editor.c:1109
-#, fuzzy
-#| msgid "New connection profile"
 msgid "Connection profile security"
-msgstr "新しい接続プロファイル"
+msgstr "接続プロファイルの安全性"
 
 #: src/remmina_file_editor.c:1112
 msgid "Require password to connect or edit the profile"
-msgstr ""
+msgstr "プロファイルへの接続や編集にはパスワードが必要"
 
 #: src/remmina_file_editor.c:1144
 msgid "SSH Tunnel"
@@ -1656,33 +1597,29 @@ msgstr "メモ"
 #: src/remmina_file_editor.c:1459
 #, fuzzy, c-format
 msgid "(%s: %i): Can't validate setting '%s' since 'value' or 'gfe' are NULL!"
-msgstr ""
-"([x1x]: [x5x])と表示されました。設定「%s」は、「value」や「gfe」がNULLなので"
+msgstr "([x1x]: [x5x])と表示されました。設定「%s」は、「value」や「gfe」がNULLなので"
 "検証できません。"
 
 #: src/remmina_file_editor.c:1462
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "(%s: %i): Can't validate user input since 'setting_name_to_validate', "
 "'value' or 'gfe' are NULL!"
 msgstr ""
-"([x1x]: [x5x])と表示されました。setting_name_to_validate'、'value'、'gfe'が"
-"NULLなので、ユーザーの入力を検証できません。"
+"(%s: %i)と表示されました。setting_name_to_validate、value、gfe "
+"がNULLなので、ユーザーの入力を検証できません！"
 
 #. TRANSLATORS: Meta-error. Shouldn't be visible.
 #: src/remmina_file_editor.c:1466 plugins/x2go/x2go_plugin.c:2574
 #: plugins/x2go/x2go_plugin.c:3224
-#, fuzzy
-#| msgid "Transfer error"
 msgid "Internal error."
-msgstr "内部エラー"
+msgstr "内部エラー。"
 
 #: src/remmina_file_editor.c:1692 src/remmina_file_editor.c:1728
 #: src/remmina_file_editor.c:1749 src/remmina_file_editor.c:1772
-#, fuzzy, c-format
-#| msgid "Could not create SFTP session. %s"
+#, c-format
 msgid "Couldn't validate user input. %s"
-msgstr "ユーザーの入力を検証できませんでした。%s."
+msgstr "ユーザーの入力を検証できませんでした。%s"
 
 #: src/remmina_file_editor.c:1716
 msgid "Default settings saved."
@@ -1719,26 +1656,24 @@ msgstr "サブグループの区切り文字には '%s' を使用してくださ
 
 #: src/remmina_file_editor.c:1978 data/ui/remmina_main.glade:469
 msgid "Labels"
-msgstr ""
+msgstr "ラベル"
 
 #: src/remmina_file_editor.c:1992
 msgid "Label1,Label2"
-msgstr ""
+msgstr "ラベル1,ラベル2"
 
 #: src/remmina_file_editor.c:2064 src/remmina_file_editor.c:2084
 #, c-format
 msgid "Could not find the file “%s”."
-msgstr "“%s” が見つかりませんでした。"
+msgstr "「%s」が見つかりませんでした。"
 
 #. TRANSLATORS: This is a message that pops up when an external Remmina plugin tries to set the window resolution using a legacy parameter.
 #. TRANSLATORS: This is a message that pop-up when an external Remmina plugin tries to set the windows resolution using a legacy parameter.
 #: src/remmina_file.c:494 src/remmina_file.c:540
-#, fuzzy
 msgid ""
 "Using the «resolution» parameter in the Remmina preferences file is "
 "deprecated.\n"
-msgstr ""
-"Remmina環境設定ファイルの \"resolution \"パラメータの使用は非推奨です。\n"
+msgstr "Remmina環境設定ファイルの resolution パラメータの使用は非推奨です。\n"
 
 #: src/remmina_icon.c:136
 msgid "Open Main Window"
@@ -1772,68 +1707,62 @@ msgid "Connect to remote desktops through the applet menu"
 msgstr "アプレットメニューからリモートデスクトップに接続する"
 
 #: src/remmina_icon.c:360
-#, fuzzy
 msgid "StatusNotifier/Appindicator support in “"
-msgstr "\" の StatusNotifier/Appindicator のサポート。"
+msgstr "StatusNotifier/Appindicator の対応 “"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:367
-#, fuzzy, c-format
+#, c-format
 msgid "%s your desktop does support it"
-msgstr "%s あなたのデスクトップはそれをサポートしています。"
+msgstr "%s このデスクトップは対応しています。"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:369
-#, fuzzy, c-format
+#, c-format
 msgid "%s and Remmina has built-in (compiled) support for libappindicator."
-msgstr ""
-"%s そしてRemminaはlibappindicatorをビルトイン（コンパイル済み）でサポートして"
-"います。"
+msgstr "%s そしてRemminaはlibappindicatorをビルトイン（コンパイル済み）で対応していま"
+"す。"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:372
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%s not supported natively by your Desktop Environment. libappindicator will "
 "try to fallback to GtkStatusIcon/xembed"
 msgstr ""
-"%s はデスクトップ環境ではネイティブにサポートされていません。 "
-"libappindicator は GtkStatusIcon/xembed にフォールバックしようとします。"
+"%s にはデスクトップ環境ではネイティブでは対応していません。 libappindicator "
+"は GtkStatusIcon/xembed にフォールバックしようとします"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:376
-#, fuzzy, c-format
+#, c-format
 msgid "%s You may need to install, and use XApp Status Applet"
-msgstr ""
-"%s XApp Status Appletをインストールして使用する必要があるかもしれません。"
+msgstr "%s XApp Status Appletをインストールして使用する必要があるかもしれません"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:379
-#, fuzzy, c-format
+#, c-format
 msgid "%s You may need to install, and use KStatusNotifierItem"
-msgstr ""
-"%s KStatusNotifierItemをインストールして使用する必要があるかもしれません。"
+msgstr "%s KStatusNotifierItemをインストールして使用する必要があるかもしれません"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:382
-#, fuzzy, c-format
+#, c-format
 msgid "%s You may need to install, and use XEmbed SNI Proxy"
-msgstr ""
-"%s XEmbed SNI Proxyをインストールして使用する必要があるかもしれません。"
+msgstr "%s XEmbed SNI Proxyをインストールして使用する必要があるかもしれません"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:385
-#, fuzzy, c-format
+#, c-format
 msgid "%s You may need to install, and use Gnome Shell Extension Appindicator"
-msgstr ""
-"%s Gnome Shell Extension Appindicatorをインストールして使用する必要があるかも"
-"しれません。"
+msgstr "%s Gnome Shell Extension "
+"Appindicatorをインストールして使用する必要があるかもしれません"
 
 #: src/remmina_ssh_plugin.c:343
 #, fuzzy, c-format
 #| msgid "Connecting to %s via SSH…"
 msgid "Connected to %s:%d via SSH"
-msgstr "SSH で %s に接続中…"
+msgstr "SSH で %s に接続中"
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_ssh_plugin.c:551
@@ -1877,7 +1806,7 @@ msgstr "文字列を検索 (host+G)"
 #, fuzzy, c-format
 #| msgid "Connecting to %s via SSH…"
 msgid "Disconnected from %s:%d via SSH"
-msgstr "SSH で %s に接続中…"
+msgstr "SSH で %s から切断中"
 
 #: src/remmina_ssh_plugin.c:1473 data/ui/remmina_main.glade:178
 msgid "Copy"
@@ -1933,10 +1862,8 @@ msgid "User password"
 msgstr "ユーザーパスワード"
 
 #: src/remmina_ssh_plugin.c:1511
-#, fuzzy
-#| msgid "Pre-command"
 msgid "Opening command"
-msgstr "接続前実行コマンド"
+msgstr "開始コマンド"
 
 #: src/remmina_ssh_plugin.c:1512
 #, fuzzy
@@ -4388,22 +4315,16 @@ msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
 msgstr "<span weight='bold' size='larger'>マルチパスワードチェンジャー</span>"
 
 #: data/ui/remmina_passwd.glade:33
-#, fuzzy
-#| msgid "_OK"
 msgid "OK"
-msgstr "OK(_O)"
+msgstr "OK"
 
 #: data/ui/remmina_passwd.glade:60
-#, fuzzy
-#| msgid "Set new password"
 msgid "Set Primary Password"
-msgstr "新しいパスワードを設定"
+msgstr "マスターパスワードを設定"
 
 #: data/ui/remmina_passwd.glade:101
-#, fuzzy
-#| msgid "User password"
 msgid "Verify password"
-msgstr "ユーザーパスワード"
+msgstr "パスワードの確認"
 
 #: data/ui/remmina_news.glade:75
 msgid ""
