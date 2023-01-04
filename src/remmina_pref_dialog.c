@@ -180,6 +180,7 @@ void remmina_prefdiag_on_use_password_activated(GtkSwitch *sw, gpointer user_dat
 		unlock_password = g_strdup(remmina_pref_get_value("unlock_password"));
 		gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->switch_security_lock_connect), TRUE);
 		gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->switch_security_lock_edit), TRUE);
+		gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->switch_security_lock_view_passwords), TRUE);
 		//REMMINA_DEBUG ("Password from preferences is: %s", unlock_password);
 		if (unlock_password == NULL || unlock_password[0] == '\0') {
 			if (remmina_passwd (GTK_WINDOW(remmina_pref_dialog->dialog), &unlock_password)) {
@@ -196,6 +197,7 @@ void remmina_prefdiag_on_use_password_activated(GtkSwitch *sw, gpointer user_dat
 		//REMMINA_DEBUG ("use_password deactivated");
 		gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->switch_security_lock_connect), FALSE);
 		gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->switch_security_lock_edit), FALSE);
+		gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->switch_security_lock_view_passwords), FALSE);
 		remmina_pref.unlock_password = "";
 		remmina_pref_set_value("unlock_password", "");
 	}
@@ -235,6 +237,7 @@ void remmina_pref_on_dialog_destroy(GtkWidget *widget, gpointer user_data)
 	remmina_pref.use_primary_password = gtk_switch_get_active(GTK_SWITCH(remmina_pref_dialog->switch_security_use_primary_password));
 	remmina_pref.lock_connect = gtk_switch_get_active(GTK_SWITCH(remmina_pref_dialog->switch_security_lock_connect));
 	remmina_pref.lock_edit = gtk_switch_get_active(GTK_SWITCH(remmina_pref_dialog->switch_security_lock_edit));
+	remmina_pref.lock_view_passwords = gtk_switch_get_active(GTK_SWITCH(remmina_pref_dialog->switch_security_lock_view_passwords));
 	remmina_pref.enc_mode = gtk_combo_box_get_active(remmina_pref_dialog->comboboxtext_security_enc_method);
 	remmina_pref.audit = gtk_switch_get_active(GTK_SWITCH(remmina_pref_dialog->switch_security_audit));
 	remmina_pref.trust_all = gtk_switch_get_active(GTK_SWITCH(remmina_pref_dialog->switch_security_trust_all));
@@ -467,6 +470,7 @@ static void remmina_pref_dialog_init(void)
 	gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->switch_security_use_primary_password), TRUE);
 	gtk_switch_set_active(GTK_SWITCH(remmina_pref_dialog->switch_security_lock_connect), remmina_pref.lock_connect);
 	gtk_switch_set_active(GTK_SWITCH(remmina_pref_dialog->switch_security_lock_edit), remmina_pref.lock_edit);
+	gtk_switch_set_active(GTK_SWITCH(remmina_pref_dialog->switch_security_lock_view_passwords), remmina_pref.lock_view_passwords);
 	gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->unlock_timeout), TRUE);
 #else
 	gtk_switch_set_active(GTK_SWITCH(remmina_pref_dialog->switch_security_use_primary_password), FALSE);
@@ -711,6 +715,7 @@ GtkWidget *remmina_pref_dialog_new(gint default_tab, GtkWindow *parent)
 	remmina_pref_dialog->unlock_timeout = GTK_ENTRY(GET_OBJECT("unlock_timeout"));
 	remmina_pref_dialog->switch_security_lock_connect = GTK_SWITCH(GET_OBJECT("switch_security_lock_connect"));
 	remmina_pref_dialog->switch_security_lock_edit = GTK_SWITCH(GET_OBJECT("switch_security_lock_edit"));
+	remmina_pref_dialog->switch_security_lock_view_passwords = GTK_SWITCH(GET_OBJECT("switch_security_lock_view_passwords"));
 	remmina_pref_dialog->comboboxtext_security_enc_method = GTK_COMBO_BOX(GET_OBJECT("comboboxtext_security_enc_method"));
 
 	remmina_pref_dialog->switch_security_audit = GTK_SWITCH(GET_OBJECT("switch_security_audit"));

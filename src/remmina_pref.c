@@ -319,6 +319,12 @@ void remmina_pref_init(void)
 	else
 		remmina_pref.lock_edit = FALSE;
 
+
+	if (g_key_file_has_key(gkeyfile, "remmina_pref", "lock_view_passwords", NULL))
+		remmina_pref.lock_view_passwords = g_key_file_get_boolean(gkeyfile, "remmina_pref", "lock_view_passwords", NULL);
+	else
+		remmina_pref.lock_view_passwords = FALSE;
+
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "enc_mode", NULL))
 		remmina_pref.enc_mode = g_key_file_get_integer(gkeyfile, "remmina_pref", "enc_mode", NULL);
 	else
@@ -802,12 +808,14 @@ gboolean remmina_pref_save(void)
 	g_key_file_set_string(gkeyfile, "remmina_pref", "unlock_password", remmina_pref.unlock_password);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "lock_connect", remmina_pref.lock_connect);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "lock_edit", remmina_pref.lock_edit);
+	g_key_file_set_boolean(gkeyfile, "remmina_pref", "lock_view_passwords", remmina_pref.lock_view_passwords);
 #else
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "use_primary_password", FALSE);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "unlock_timeout", 0);
 	g_key_file_set_string(gkeyfile, "remmina_pref", "unlock_password", g_strdup(""));
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "lock_connect", FALSE);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "lock_edit", FALSE);
+	g_key_file_set_boolean(gkeyfile, "remmina_pref", "lock_view_passwords", FALSE);
 #endif
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "enc_mode", remmina_pref.enc_mode);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "audit", remmina_pref.audit);

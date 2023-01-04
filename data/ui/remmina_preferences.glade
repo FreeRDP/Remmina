@@ -1702,6 +1702,21 @@ It changes the background colour of connection names in the Remmina connection t
                       </packing>
                     </child>
                     <child>
+                      <object class="GtkLabel" id="label_security_lock_view_passwords">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="tooltip-text" translatable="yes">Enter your Remmina password to view passwords</property>
+                        <property name="halign">start</property>
+                        <property name="valign">center</property>
+                        <property name="margin-start">18</property>
+                        <property name="label" translatable="yes" comments="“Require to view passwords” is “Require the Remmina password before to connect”, the Remmina password is the Master/Principal Password, that is used to protect Remmina from unauthorized use.">Require to view passwords</property>
+                      </object>
+                      <packing>
+                        <property name="left-attach">0</property>
+                        <property name="top-attach">4</property>
+                      </packing>
+                    </child>
+                   <child>
                       <object class="GtkSwitch" id="switch_security_lock_connect">
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
@@ -1729,6 +1744,20 @@ It changes the background colour of connection names in the Remmina connection t
                         <property name="top-attach">3</property>
                       </packing>
                     </child>
+                   <child>
+                      <object class="GtkSwitch" id="switch_security_lock_view_passwords">
+                        <property name="visible">True</property>
+                        <property name="can-focus">True</property>
+                        <property name="halign">start</property>
+                        <property name="valign">center</property>
+                        <property name="margin-start">6</property>
+                        <property name="margin-end">18</property>
+                      </object>
+                      <packing>
+                        <property name="left-attach">1</property>
+                        <property name="top-attach">4</property>
+                      </packing>
+                    </child>
                     <child>
                       <object class="GtkLabel">
                         <property name="visible">True</property>
@@ -1740,7 +1769,7 @@ It changes the background colour of connection names in the Remmina connection t
                       </object>
                       <packing>
                         <property name="left-attach">0</property>
-                        <property name="top-attach">4</property>
+                        <property name="top-attach">5</property>
                       </packing>
                     </child>
                     <child>
@@ -1763,7 +1792,7 @@ Except the "Weak" method, all the others are recommended, "Keystore" is the defa
                       </object>
                       <packing>
                         <property name="left-attach">1</property>
-                        <property name="top-attach">4</property>
+                        <property name="top-attach">5</property>
                       </packing>
                     </child>
                     <child>
@@ -1778,7 +1807,7 @@ Except the "Weak" method, all the others are recommended, "Keystore" is the defa
                       </object>
                       <packing>
                         <property name="left-attach">0</property>
-                        <property name="top-attach">5</property>
+                        <property name="top-attach">6</property>
                       </packing>
                     </child>
                     <child>
@@ -1792,7 +1821,7 @@ Except the "Weak" method, all the others are recommended, "Keystore" is the defa
                       </object>
                       <packing>
                         <property name="left-attach">1</property>
-                        <property name="top-attach">5</property>
+                        <property name="top-attach">6</property>
                       </packing>
                     </child>
                     <child>
@@ -1808,7 +1837,7 @@ Except the "Weak" method, all the others are recommended, "Keystore" is the defa
                       </object>
                       <packing>
                         <property name="left-attach">0</property>
-                        <property name="top-attach">6</property>
+                        <property name="top-attach">7</property>
                       </packing>
                     </child>
                     <child>
@@ -1822,7 +1851,7 @@ Except the "Weak" method, all the others are recommended, "Keystore" is the defa
                       </object>
                       <packing>
                         <property name="left-attach">1</property>
-                        <property name="top-attach">6</property>
+                        <property name="top-attach">7</property>
                       </packing>
                     </child>
                   </object>
