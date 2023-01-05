@@ -502,14 +502,14 @@ static void remmina_file_toggle_password_view(GtkWidget *widget, gpointer data)
 		gtk_entry_set_visibility(GTK_ENTRY(widget), FALSE);
 		gtk_entry_set_icon_from_icon_name(GTK_ENTRY(widget),
 										  GTK_ENTRY_ICON_SECONDARY,
-										  "org.remmina.Remmina-view-reveal-symbolic");
+										  "org.remmina.Remmina-password-reveal-symbolic");
 	}
 	else
 	{
 		gtk_entry_set_visibility(GTK_ENTRY(widget), TRUE);
 		gtk_entry_set_icon_from_icon_name(GTK_ENTRY(widget),
 										  GTK_ENTRY_ICON_SECONDARY,
-										  "org.remmina.Remmina-view-conceal-symbolic");
+										  "org.remmina.Remmina-password-conceal-symbolic");
 	}
 }
 static GtkWidget *remmina_file_editor_create_password(RemminaFileEditor *gfe, GtkWidget *grid,
@@ -547,7 +547,7 @@ static GtkWidget *remmina_file_editor_create_password(RemminaFileEditor *gfe, Gt
 	{
 		gtk_entry_set_icon_from_icon_name(GTK_ENTRY(widget),
 										  GTK_ENTRY_ICON_SECONDARY,
-										  "org.remmina.Remmina-view-reveal-symbolic");
+										  "org.remmina.Remmina-password-reveal-symbolic");
 		gtk_entry_set_icon_activatable(GTK_ENTRY(widget), GTK_ENTRY_ICON_SECONDARY, TRUE);
 		g_signal_connect(widget, "icon-press", G_CALLBACK(remmina_file_toggle_password_view), NULL);
 	}
