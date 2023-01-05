@@ -55,7 +55,6 @@
 #include "remmina_unlock.h"
 #include "remmina_widget_pool.h"
 
-
 G_DEFINE_TYPE(RemminaFileEditor, remmina_file_editor, GTK_TYPE_DIALOG)
 
 static const gchar *server_tips = N_("<big>"
@@ -490,27 +489,28 @@ static void remmina_file_editor_create_server(RemminaFileEditor *gfe, const Remm
 		gtk_grid_attach(GTK_GRID(grid), widget, 1, row, 1, 1);
 	}
 }
-static void remmina_file_toggle_password_view(GtkWidget *widget, gpointer data) { 
-	GtkWindow *mainwindow;  
-    gboolean visible = gtk_entry_get_visibility(GTK_ENTRY(widget));
+static void remmina_file_toggle_password_view(GtkWidget *widget, gpointer data)
+{
+	GtkWindow *mainwindow;
+	gboolean visible = gtk_entry_get_visibility(GTK_ENTRY(widget));
 	mainwindow = remmina_main_get_window();
-	if (remmina_pref_get_boolean("use_primary_password")
-			&& remmina_pref_get_boolean("lock_view_passwords")
-			&& remmina_unlock_new(mainwindow) == 0)
+	if (remmina_pref_get_boolean("use_primary_password") && remmina_pref_get_boolean("lock_view_passwords") && remmina_unlock_new(mainwindow) == 0)
 		return;
 
-   
-    if (visible) {
-        gtk_entry_set_visibility(GTK_ENTRY(widget), FALSE);
-        gtk_entry_set_icon_from_icon_name(GTK_ENTRY(widget), 
-                                          GTK_ENTRY_ICON_SECONDARY, 
-                                          "view-reveal-symbolic.symbolic");
-    } else {
-        gtk_entry_set_visibility(GTK_ENTRY(widget), TRUE);
-        gtk_entry_set_icon_from_icon_name(GTK_ENTRY(widget), 
-                                          GTK_ENTRY_ICON_SECONDARY, 
-                                          "view-conceal-symbolic.symbolic");
-    }
+	if (visible)
+	{
+		gtk_entry_set_visibility(GTK_ENTRY(widget), FALSE);
+		gtk_entry_set_icon_from_icon_name(GTK_ENTRY(widget),
+										  GTK_ENTRY_ICON_SECONDARY,
+										  "org.remmina.Remmina-view-reveal-symbolic");
+	}
+	else
+	{
+		gtk_entry_set_visibility(GTK_ENTRY(widget), TRUE);
+		gtk_entry_set_icon_from_icon_name(GTK_ENTRY(widget),
+										  GTK_ENTRY_ICON_SECONDARY,
+										  "org.remmina.Remmina-view-conceal-symbolic");
+	}
 }
 static GtkWidget *remmina_file_editor_create_password(RemminaFileEditor *gfe, GtkWidget *grid,
 													  gint row, gint col, const gchar *label, const gchar *value,
@@ -547,7 +547,7 @@ static GtkWidget *remmina_file_editor_create_password(RemminaFileEditor *gfe, Gt
 	{
 		gtk_entry_set_icon_from_icon_name(GTK_ENTRY(widget),
 										  GTK_ENTRY_ICON_SECONDARY,
-										  "view-reveal-symbolic.symbolic");
+										  "org.remmina.Remmina-view-reveal-symbolic");
 		gtk_entry_set_icon_activatable(GTK_ENTRY(widget), GTK_ENTRY_ICON_SECONDARY, TRUE);
 		g_signal_connect(widget, "icon-press", G_CALLBACK(remmina_file_toggle_password_view), NULL);
 	}
@@ -967,7 +967,6 @@ static GtkWidget *remmina_file_editor_create_double(RemminaFileEditor *gfe,
 gdouble remmina_file_get_double(RemminaFile *remminafile,
 								const gchar *setting,
 								gfloat default_value);
-
 
 static void remmina_file_editor_create_settings(RemminaFileEditor *gfe, GtkWidget *grid,
 												const RemminaProtocolSetting *settings)
