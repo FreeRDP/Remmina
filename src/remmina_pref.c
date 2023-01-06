@@ -798,7 +798,7 @@ gboolean remmina_pref_save(void)
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "deny_screenshot_clipboard", remmina_pref.deny_screenshot_clipboard);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "save_view_mode", remmina_pref.save_view_mode);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "confirm_close", remmina_pref.confirm_close);
-	if (g_key_file_remove_key (gkeyfile, "remmina_pref", "use_master_password", NULL))
+	if (g_key_file_remove_key(gkeyfile, "remmina_pref", "use_master_password", NULL))
 		REMMINA_DEBUG("use_master_password removed…");
 	else
 		REMMINA_INFO("use_master_password already migrated");
@@ -1118,20 +1118,18 @@ void remmina_pref_set_value(const gchar *key, const gchar *value)
 	gsize length;
 
 	gkeyfile = g_key_file_new();
-	if (g_key_file_load_from_file(gkeyfile, remmina_pref_file, G_KEY_FILE_NONE, NULL))
-	{
+	if (g_key_file_load_from_file(gkeyfile, remmina_pref_file, G_KEY_FILE_NONE, NULL)) {
 		g_key_file_set_string(gkeyfile, "remmina_pref", key, value);
 		gchar *content = g_key_file_to_data(gkeyfile, &length, NULL);
 		if (g_file_set_contents(remmina_pref_file, content, length, NULL)) {
 			g_free(content);
 		} else {
-			REMMINA_WARNING ("Cannot save Remmina preferences");
-			REMMINA_WARNING ("Key was \"%s\", and value \"%s\"", key, value);
-
+			REMMINA_WARNING("Cannot save Remmina preferences");
+			REMMINA_WARNING("Key was \"%s\", and value \"%s\"", key, value);
 		}
 		g_key_file_free(gkeyfile);
 	} else {
-		REMMINA_WARNING ("Cannot load Remmina preferences file");
+		REMMINA_WARNING("Cannot load Remmina preferences file");
 	}
 }
 

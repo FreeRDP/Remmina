@@ -178,13 +178,13 @@ void remmina_prefdiag_on_use_password_activated(GtkSwitch *sw, gpointer user_dat
 		//REMMINA_DEBUG ("use_password activated");
 		gchar *unlock_password = NULL;
 		unlock_password = g_strdup(remmina_pref_get_value("unlock_password"));
-		gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->switch_security_lock_connect), TRUE);
-		gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->switch_security_lock_edit), TRUE);
-		gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->switch_security_lock_view_passwords), TRUE);
+		gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->switch_security_lock_connect), TRUE);
+		gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->switch_security_lock_edit), TRUE);
+		gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->switch_security_lock_view_passwords), TRUE);
 		//REMMINA_DEBUG ("Password from preferences is: %s", unlock_password);
 		if (unlock_password == NULL || unlock_password[0] == '\0') {
-			if (remmina_passwd (GTK_WINDOW(remmina_pref_dialog->dialog), &unlock_password)) {
-			//REMMINA_DEBUG ("Password is: %s", unlock_password);
+			if (remmina_passwd(GTK_WINDOW(remmina_pref_dialog->dialog), &unlock_password)) {
+				//REMMINA_DEBUG ("Password is: %s", unlock_password);
 				remmina_pref_set_value("unlock_password", g_strdup(unlock_password));
 				remmina_pref.unlock_password = g_strdup(unlock_password);
 			} else {
@@ -195,9 +195,9 @@ void remmina_prefdiag_on_use_password_activated(GtkSwitch *sw, gpointer user_dat
 		g_free(unlock_password), unlock_password = NULL;
 	} else {
 		//REMMINA_DEBUG ("use_password deactivated");
-		gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->switch_security_lock_connect), FALSE);
-		gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->switch_security_lock_edit), FALSE);
-		gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->switch_security_lock_view_passwords), FALSE);
+		gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->switch_security_lock_connect), FALSE);
+		gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->switch_security_lock_edit), FALSE);
+		gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->switch_security_lock_view_passwords), FALSE);
 		remmina_pref.unlock_password = "";
 		remmina_pref_set_value("unlock_password", "");
 	}
