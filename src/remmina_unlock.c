@@ -75,6 +75,7 @@ void remmina_unlock_timer_destroy()
 	TRACE_CALL(__func__);
 
 	g_timer_destroy(timer);
+	timer = NULL;
 }
 
 static void remmina_unlock_unlock_clicked(GtkButton *btn, gpointer user_data)
