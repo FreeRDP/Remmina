@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-12-16 14:36+0000\n"
+"POT-Creation-Date: 2023-01-07 12:47+0000\n"
 "PO-Revision-Date: 2022-09-30 06:15+0000\n"
 "Last-Translator: 이정희 <daemul72@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -27,7 +27,7 @@ msgstr ""
 
 #: src/remmina_sftp_plugin.c:309 src/remmina_sftp_plugin.c:353
 #: src/remmina_protocol_widget.c:1694 src/remmina_protocol_widget.c:1713
-#: src/remmina_file_editor.c:1119 src/remmina_file_editor.c:1241
+#: src/remmina_file_editor.c:1137 src/remmina_file_editor.c:1260
 #: src/remmina_ssh_plugin.c:1394 plugins/rdp/rdp_plugin.c:2814
 #: plugins/www/www_plugin.c:909 plugins/x2go/x2go_plugin.c:3397
 #: data/ui/remmina_mpc.glade:218 data/ui/remmina_passwd.glade:84
@@ -36,22 +36,22 @@ msgid "Password"
 msgstr "비밀번호"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:355
-#: src/remmina_file_editor.c:1120 src/remmina_ssh_plugin.c:1395
+#: src/remmina_file_editor.c:1138 src/remmina_ssh_plugin.c:1395
 #: src/remmina_ssh_plugin.c:1506 plugins/x2go/x2go_plugin.c:3420
 msgid "SSH identity file"
 msgstr "SSH 키 인증 파일"
 
-#: src/remmina_sftp_plugin.c:311 src/remmina_file_editor.c:1121
+#: src/remmina_sftp_plugin.c:311 src/remmina_file_editor.c:1139
 #: src/remmina_ssh_plugin.c:1396
 msgid "SSH agent"
 msgstr "SSH 에이전트"
 
-#: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:1122
+#: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:1140
 #: src/remmina_ssh_plugin.c:1397
 msgid "Public key (automatic)"
 msgstr "공개 키 (자동)"
 
-#: src/remmina_sftp_plugin.c:313 src/remmina_file_editor.c:1123
+#: src/remmina_sftp_plugin.c:313 src/remmina_file_editor.c:1141
 #: src/remmina_ssh_plugin.c:1398
 msgid "Kerberos (GSSAPI)"
 msgstr "커버러스 (GSSAPI)"
@@ -73,7 +73,7 @@ msgid "Connect via SSH from a new terminal"
 msgstr "새 터미널에서 SSH로 연결하기"
 
 #: src/remmina_sftp_plugin.c:352 src/remmina_message_panel.c:329
-#: src/remmina_file_editor.c:1235 src/remmina_ssh_plugin.c:1504
+#: src/remmina_file_editor.c:1254 src/remmina_ssh_plugin.c:1504
 #: plugins/rdp/rdp_plugin.c:2813 plugins/vnc/vnc_plugin.c:2054
 #: plugins/vnc/vnc_plugin.c:2066 plugins/www/www_plugin.c:908
 #: plugins/x2go/x2go_plugin.c:482 plugins/x2go/x2go_plugin.c:3396
@@ -81,12 +81,12 @@ msgstr "새 터미널에서 SSH로 연결하기"
 msgid "Username"
 msgstr "유저아이디"
 
-#: src/remmina_sftp_plugin.c:354 src/remmina_file_editor.c:1226
+#: src/remmina_sftp_plugin.c:354 src/remmina_file_editor.c:1245
 #: src/remmina_ssh_plugin.c:1503
 msgid "Authentication type"
 msgstr "인증 유형"
 
-#: src/remmina_sftp_plugin.c:356 src/remmina_file_editor.c:1259
+#: src/remmina_sftp_plugin.c:356 src/remmina_file_editor.c:1278
 #: src/remmina_ssh_plugin.c:1510
 msgid "Password to unlock private key"
 msgstr "개인 키 잠금을 해제하기 위한 비밀번호"
@@ -123,7 +123,7 @@ msgstr ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging 에 Remmina"
 "의 디버깅에 대한 자세한 정보가 있습니다.\n"
 
-#: src/remmina_plugin_manager.c:74 src/remmina_file_editor.c:2003
+#: src/remmina_plugin_manager.c:74 src/remmina_file_editor.c:2005
 msgid "Protocol"
 msgstr "프로토콜"
 
@@ -156,11 +156,11 @@ msgid "Plugins"
 msgstr "부가 기능"
 
 #: src/remmina_plugin_manager.c:526 src/remmina_message_panel.c:451
-#: src/remmina_message_panel.c:620 src/remmina_file_editor.c:243
+#: src/remmina_message_panel.c:620 src/remmina_file_editor.c:245
 msgid "_OK"
 msgstr "확인(_O)"
 
-#: src/remmina_plugin_manager.c:544 src/remmina_file_editor.c:1935
+#: src/remmina_plugin_manager.c:544 src/remmina_file_editor.c:1937
 #: data/ui/remmina_main.glade:433
 msgid "Name"
 msgstr "이름"
@@ -226,11 +226,11 @@ msgstr "Meta+"
 msgid "<None>"
 msgstr "<없음>"
 
-#: src/remmina_pref_dialog.c:93 src/remmina_file_editor.c:529
+#: src/remmina_pref_dialog.c:93 src/remmina_file_editor.c:549
 msgid "Resolutions"
 msgstr "해상도"
 
-#: src/remmina_pref_dialog.c:93 src/remmina_file_editor.c:529
+#: src/remmina_pref_dialog.c:93 src/remmina_file_editor.c:549
 msgid "Configure the available resolutions"
 msgstr "사용할 수 있는 해상도 설정"
 
@@ -250,15 +250,15 @@ msgstr ""
 "\" 의 선택지)"
 
 #. TRANSLATORS: Do not translate libsodium, is the name of a library
-#: src/remmina_pref_dialog.c:475
+#: src/remmina_pref_dialog.c:479
 msgid "libsodium >= 1.9.0 is required to use Primary Password"
 msgstr "기본 비밀번호를 사용하려면 libsodium >= 1.9.0이 필요합니다"
 
-#: src/remmina_pref_dialog.c:808
+#: src/remmina_pref_dialog.c:813
 msgid "Picking a terminal colouring file replaces the file: "
 msgstr "터미널 색 파일 선택"
 
-#: src/remmina_pref_dialog.c:812
+#: src/remmina_pref_dialog.c:817
 msgid ""
 "This file contains the “Custom” terminal colour scheme selectable from the "
 "“Advanced” tab of terminal connections and editable in the “Terminal” tab in "
@@ -275,7 +275,7 @@ msgstr "취소"
 #: src/remmina_message_panel.c:198 data/ui/remmina_snap_info_dialog.glade:25
 #: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
 #: data/ui/remmina_string_list.glade:63 data/ui/remmina_news.glade:33
-#: data/ui/remmina_preferences.glade:2654
+#: data/ui/remmina_preferences.glade:2683
 msgid "Close"
 msgstr "닫기"
 
@@ -297,8 +297,8 @@ msgid "Save password"
 msgstr "비밀번호 저장하기"
 
 #: src/remmina_message_panel.c:456 src/remmina_message_panel.c:628
-#: src/remmina_sftp_client.c:972 src/remmina_file_editor.c:242
-#: src/remmina_file_editor.c:1808 plugins/spice/spice_plugin_file_transfer.c:84
+#: src/remmina_sftp_client.c:972 src/remmina_file_editor.c:244
+#: src/remmina_file_editor.c:1811 plugins/spice/spice_plugin_file_transfer.c:84
 #: data/ui/remmina_key_chooser.glade:8 data/ui/remmina_key_chooser.glade:9
 #: data/ui/remmina_spinner.glade:8 data/ui/remmina_spinner.glade:9
 msgid "_Cancel"
@@ -851,7 +851,7 @@ msgstr "크기"
 msgid "User"
 msgstr "사용자"
 
-#: src/remmina_ftp_client.c:955 src/remmina_file_editor.c:1960
+#: src/remmina_ftp_client.c:955 src/remmina_file_editor.c:1962
 #: data/ui/remmina_mpc.glade:93 data/ui/remmina_main.glade:455
 msgid "Group"
 msgstr "그룹"
@@ -988,8 +988,8 @@ msgstr "%i 포트에서 들어오는 %s 연결을 위해 수신 대기 중…"
 msgid "Could not authenticate, attempting reconnection…"
 msgstr "인증할 수 없습니다, 재연결 시도 중…"
 
-#: src/remmina_protocol_widget.c:2047 src/remmina_file_editor.c:437
-#: src/remmina_file_editor.c:1191 data/ui/remmina_main.glade:485
+#: src/remmina_protocol_widget.c:2047 src/remmina_file_editor.c:438
+#: src/remmina_file_editor.c:1210 data/ui/remmina_main.glade:485
 msgid "Server"
 msgstr "서버"
 
@@ -1304,7 +1304,7 @@ msgstr ""
 msgid "Import"
 msgstr "가져오기"
 
-#: src/remmina_main.c:1175 src/remmina_file_editor.c:1816
+#: src/remmina_main.c:1175 src/remmina_file_editor.c:1819
 msgid "_Save"
 msgstr "저장(_S)"
 
@@ -1454,132 +1454,132 @@ msgstr ""
 "• 서버[:포트]\n"
 "• 사용자 이름@서버[:포트] (SSH 프로토콜 전용)</big>"
 
-#: src/remmina_file_editor.c:163
+#: src/remmina_file_editor.c:164
 msgid "Input is invalid."
 msgstr "입력이 잘못되었습니다."
 
-#: src/remmina_file_editor.c:240
+#: src/remmina_file_editor.c:242
 msgid "Choose a Remote Desktop Server"
 msgstr "원격 데스크톱 서버 선택하기"
 
-#: src/remmina_file_editor.c:461
+#: src/remmina_file_editor.c:462
 #, c-format
 msgid "Browse the network to find a %s server"
 msgstr "네트워크에서 %s 서버 찾아보기"
 
-#: src/remmina_file_editor.c:565
+#: src/remmina_file_editor.c:585
 msgid "Resolution"
 msgstr "해상도"
 
-#: src/remmina_file_editor.c:572
+#: src/remmina_file_editor.c:592
 msgid "Use initial window size"
 msgstr "초기 윈도 크기 사용"
 
-#: src/remmina_file_editor.c:576
+#: src/remmina_file_editor.c:596
 msgid "Use client resolution"
 msgstr "클라이언트 해상도에 맞춤"
 
-#: src/remmina_file_editor.c:587 src/remmina_file_editor.c:1171
+#: src/remmina_file_editor.c:607 src/remmina_file_editor.c:1190
 msgid "Custom"
 msgstr "사용자 정의"
 
-#: src/remmina_file_editor.c:955
+#: src/remmina_file_editor.c:973
 msgid "Keyboard mapping"
 msgstr "사용자키 지정"
 
-#: src/remmina_file_editor.c:1082
+#: src/remmina_file_editor.c:1100
 msgid "Behavior"
 msgstr "행동"
 
-#: src/remmina_file_editor.c:1085
+#: src/remmina_file_editor.c:1103
 msgid "Execute a Command"
 msgstr "명령 실행"
 
-#: src/remmina_file_editor.c:1089
+#: src/remmina_file_editor.c:1107
 msgid "Before connecting"
 msgstr "연결 시작"
 
-#: src/remmina_file_editor.c:1091
+#: src/remmina_file_editor.c:1109
 msgid "command %h %u %t %U %p %g --option"
 msgstr "command %h %u %t %U %p %g --option"
 
-#: src/remmina_file_editor.c:1096
+#: src/remmina_file_editor.c:1114
 msgid "After connecting"
 msgstr "연결 시작"
 
-#: src/remmina_file_editor.c:1098
+#: src/remmina_file_editor.c:1116
 msgid "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
 msgstr "/경로/대상/명령 -opt1 arg %h %u %t -opt2 %U %p %g"
 
-#: src/remmina_file_editor.c:1102
+#: src/remmina_file_editor.c:1120
 msgid "Start-up"
 msgstr "시작"
 
-#: src/remmina_file_editor.c:1105
+#: src/remmina_file_editor.c:1123
 msgid "Auto-start this profile"
 msgstr "프로필에 대해 \"자동 시작\" 키기"
 
-#: src/remmina_file_editor.c:1109
+#: src/remmina_file_editor.c:1127
 msgid "Connection profile security"
 msgstr "연결 프로필 보안"
 
-#: src/remmina_file_editor.c:1112
+#: src/remmina_file_editor.c:1130
 msgid "Require password to connect or edit the profile"
 msgstr "프로필을 연결하거나 편집하려면 비밀번호가 필요합니다"
 
-#: src/remmina_file_editor.c:1144
+#: src/remmina_file_editor.c:1163
 msgid "SSH Tunnel"
 msgstr "SSH 터널"
 
-#: src/remmina_file_editor.c:1145
+#: src/remmina_file_editor.c:1164
 msgid "Enable SSH tunnel"
 msgstr "SSH 터널 활성화"
 
-#: src/remmina_file_editor.c:1152
+#: src/remmina_file_editor.c:1171
 msgid "Tunnel via loopback address"
 msgstr "반향(=반송) 주소를 통한 터널링"
 
-#: src/remmina_file_editor.c:1162
+#: src/remmina_file_editor.c:1181
 #, c-format
 msgid "Same server at port %i"
 msgstr "포트 %i와 같은 서버"
 
-#: src/remmina_file_editor.c:1212 plugins/rdp/rdp_plugin.c:2859
+#: src/remmina_file_editor.c:1231 plugins/rdp/rdp_plugin.c:2859
 msgid "Start-up path"
 msgstr "시작 프로그램 경로"
 
-#: src/remmina_file_editor.c:1221
+#: src/remmina_file_editor.c:1240
 msgid "SSH Authentication"
 msgstr "SSH 확인"
 
-#: src/remmina_file_editor.c:1248
+#: src/remmina_file_editor.c:1267
 msgid "SSH private key file"
 msgstr "SSH 개인 키 파일"
 
-#: src/remmina_file_editor.c:1254 src/remmina_ssh_plugin.c:1508
+#: src/remmina_file_editor.c:1273 src/remmina_ssh_plugin.c:1508
 msgid "SSH certificate file"
 msgstr "SSH 인증서 파일"
 
-#: src/remmina_file_editor.c:1312
+#: src/remmina_file_editor.c:1330
 msgid "Basic"
 msgstr "기본 설정"
 
-#: src/remmina_file_editor.c:1318
+#: src/remmina_file_editor.c:1336
 msgid "Advanced"
 msgstr "고급 설정"
 
-#: src/remmina_file_editor.c:1329 data/ui/remmina_main.glade:499
+#: src/remmina_file_editor.c:1347 data/ui/remmina_main.glade:499
 msgid "Notes"
 msgstr "노트"
 
-#: src/remmina_file_editor.c:1459
+#: src/remmina_file_editor.c:1464
 #, c-format
 msgid "(%s: %i): Can't validate setting '%s' since 'value' or 'gfe' are NULL!"
 msgstr ""
 "(%s: %i): '값' 또는 'gfe'가 NULL이기 때문에 설정 '%s'의 유효성을 검사할 수 없"
 "습니다!"
 
-#: src/remmina_file_editor.c:1462
+#: src/remmina_file_editor.c:1468
 #, c-format
 msgid ""
 "(%s: %i): Can't validate user input since 'setting_name_to_validate', "
@@ -1589,59 +1589,59 @@ msgstr ""
 "자 입력의 유효성을 검사할 수 없습니다!"
 
 #. TRANSLATORS: Meta-error. Shouldn't be visible.
-#: src/remmina_file_editor.c:1466 plugins/x2go/x2go_plugin.c:2574
+#: src/remmina_file_editor.c:1472 plugins/x2go/x2go_plugin.c:2574
 #: plugins/x2go/x2go_plugin.c:3224
 msgid "Internal error."
 msgstr "내부 오류입니다."
 
-#: src/remmina_file_editor.c:1692 src/remmina_file_editor.c:1728
-#: src/remmina_file_editor.c:1749 src/remmina_file_editor.c:1772
+#: src/remmina_file_editor.c:1695 src/remmina_file_editor.c:1731
+#: src/remmina_file_editor.c:1752 src/remmina_file_editor.c:1775
 #, c-format
 msgid "Couldn't validate user input. %s"
 msgstr "사용자 입력을 확인할 수 없습니다. %s"
 
-#: src/remmina_file_editor.c:1716
+#: src/remmina_file_editor.c:1719
 msgid "Default settings saved."
 msgstr "기본 설정으로 저장됨."
 
-#: src/remmina_file_editor.c:1806
+#: src/remmina_file_editor.c:1809
 msgid "Remote Connection Profile"
 msgstr "원격 연결 프로필"
 
-#: src/remmina_file_editor.c:1812
+#: src/remmina_file_editor.c:1815
 msgid "Save as Default"
 msgstr "기본값으로 저장"
 
-#: src/remmina_file_editor.c:1813
+#: src/remmina_file_editor.c:1816
 msgid "Use the current settings as the default for all new connection profiles"
 msgstr "모든 새 연결 프로필의 기본값으로 현재 설정 사용"
 
-#: src/remmina_file_editor.c:1821 data/ui/remmina_main.glade:161
+#: src/remmina_file_editor.c:1824 data/ui/remmina_main.glade:161
 msgid "Connect"
 msgstr "연결"
 
-#: src/remmina_file_editor.c:1824
+#: src/remmina_file_editor.c:1827
 msgid "_Save and Connect"
 msgstr "저장 및 연결(_S)"
 
-#: src/remmina_file_editor.c:1949
+#: src/remmina_file_editor.c:1951
 msgid "Quick Connect"
 msgstr "빠른 접속"
 
-#: src/remmina_file_editor.c:1973
+#: src/remmina_file_editor.c:1975
 #, c-format
 msgid "Use '%s' as subgroup delimiter"
 msgstr "'%s' 하위그룹 구분자 사용"
 
-#: src/remmina_file_editor.c:1978 data/ui/remmina_main.glade:469
+#: src/remmina_file_editor.c:1980 data/ui/remmina_main.glade:469
 msgid "Labels"
 msgstr "레이블"
 
-#: src/remmina_file_editor.c:1992
+#: src/remmina_file_editor.c:1994
 msgid "Label1,Label2"
 msgstr "레이블1,레이블2"
 
-#: src/remmina_file_editor.c:2064 src/remmina_file_editor.c:2084
+#: src/remmina_file_editor.c:2066 src/remmina_file_editor.c:2085
 #, c-format
 msgid "Could not find the file “%s”."
 msgstr "\"%s\" 파일을 찾을 수 없습니다."
@@ -4756,11 +4756,24 @@ msgstr "생성, 편집, 복사 및 삭제에는 Remmina 비밀번호가 필요�
 msgid "Require to modify"
 msgstr "수정하려면 필요"
 
-#: data/ui/remmina_preferences.glade:1739
+#: data/ui/remmina_preferences.glade:1708
+#, fuzzy
+#| msgid "Enter your Remmina password to connect"
+msgid "Enter your Remmina password to view passwords"
+msgstr "연결하려면 Remmina 비밀번호 입력"
+
+#. “Require to view passwords” is “Require the Remmina password before to connect”, the Remmina password is the Master/Principal Password, that is used to protect Remmina from unauthorized use.
+#: data/ui/remmina_preferences.glade:1712
+#, fuzzy
+#| msgid "Set new password"
+msgid "Require to view passwords"
+msgstr "새 비밀번호 설정"
+
+#: data/ui/remmina_preferences.glade:1768
 msgid "Encryption"
 msgstr "암호화"
 
-#: data/ui/remmina_preferences.glade:1750
+#: data/ui/remmina_preferences.glade:1779
 msgid ""
 "These are the encryption methods used by Remmina to store passwords.\n"
 "\n"
@@ -4778,64 +4791,64 @@ msgstr ""
 "\"Intermediate\"은 메모리나 처리 능력을 많이 사용하지 않으며 \"Sensitive\"은 "
 "더 안전하지만 +1 GiB의 RAM과 많은 CPU 주파수를 사용합니다. "
 
-#: data/ui/remmina_preferences.glade:1759
+#: data/ui/remmina_preferences.glade:1788
 msgid "Intermediate (+64 MiB RAM)"
 msgstr "중급 (+64 MiB RAM)"
 
-#: data/ui/remmina_preferences.glade:1760
+#: data/ui/remmina_preferences.glade:1789
 msgid "Strong (+256 MiB, ~2009 CPU)"
 msgstr "강력 (+256 MiB, ~2009 CPU)"
 
-#: data/ui/remmina_preferences.glade:1761
+#: data/ui/remmina_preferences.glade:1790
 msgid "Sensitive (+1 GiB, ~2014 CPU)"
 msgstr "민감 (+1 GiB, ~2014 CPU)"
 
-#: data/ui/remmina_preferences.glade:1777
+#: data/ui/remmina_preferences.glade:1806
 msgid "Auditing log"
 msgstr "감사 로그"
 
-#: data/ui/remmina_preferences.glade:1802
+#: data/ui/remmina_preferences.glade:1831
 msgid "Automatically accept all fingerprints and certificates"
 msgstr "모든 핑거프린트 및 인증서를 자동으로 수락"
 
-#: data/ui/remmina_preferences.glade:1807
+#: data/ui/remmina_preferences.glade:1836
 msgid "Trust all certificates"
 msgstr "모든 인증서 신뢰"
 
-#: data/ui/remmina_preferences.glade:1842
+#: data/ui/remmina_preferences.glade:1871
 msgid "Security"
 msgstr "보안"
 
-#: data/ui/remmina_preferences.glade:1873
+#: data/ui/remmina_preferences.glade:1902
 msgid "Terminal font"
 msgstr "터미널 폰트"
 
-#: data/ui/remmina_preferences.glade:1886
+#: data/ui/remmina_preferences.glade:1915
 msgid "Scrollback lines"
 msgstr "스크롤백 라인(Scrollback lines)"
 
-#: data/ui/remmina_preferences.glade:1934
+#: data/ui/remmina_preferences.glade:1963
 msgid "Shortcuts for copying and pasting"
 msgstr "복사 및 붙여 넣기 단축키"
 
-#: data/ui/remmina_preferences.glade:1947
+#: data/ui/remmina_preferences.glade:1976
 msgid "Select all shortcuts"
 msgstr "모든 단축 키 선택"
 
-#: data/ui/remmina_preferences.glade:1960
-#: data/ui/remmina_preferences.glade:1977
-#: data/ui/remmina_preferences.glade:2430
-#: data/ui/remmina_preferences.glade:2460
-#: data/ui/remmina_preferences.glade:2594
-#: data/ui/remmina_preferences.glade:2611
+#: data/ui/remmina_preferences.glade:1989
+#: data/ui/remmina_preferences.glade:2006
+#: data/ui/remmina_preferences.glade:2459
+#: data/ui/remmina_preferences.glade:2489
+#: data/ui/remmina_preferences.glade:2623
+#: data/ui/remmina_preferences.glade:2640
 msgid "(Host key+)"
 msgstr "(호스트 키 +)"
 
-#: data/ui/remmina_preferences.glade:1995
+#: data/ui/remmina_preferences.glade:2024
 msgid "Use default system font"
 msgstr "기본 시스템 글꼴 사용"
 
-#: data/ui/remmina_preferences.glade:2020
+#: data/ui/remmina_preferences.glade:2049
 msgid ""
 "Selecting “SGR 1” also switches to the bright counterparts of the first 8 "
 "palette colours (in addition to making text bold)."
@@ -4843,15 +4856,15 @@ msgstr ""
 "\"SGR 1\"을 선택하면 처음 8개 팔레트 색상의 밝은 색상으로 전환됩니다 (텍스트"
 "를 굵게 표시하는 것 외에도)."
 
-#: data/ui/remmina_preferences.glade:2036
+#: data/ui/remmina_preferences.glade:2065
 msgid "Show bold text in bright colors"
 msgstr "밝은 색상으로 굵은 텍스트 표시하기"
 
-#: data/ui/remmina_preferences.glade:2050
+#: data/ui/remmina_preferences.glade:2079
 msgid "Colour theme"
 msgstr "색 스키마 읽기"
 
-#: data/ui/remmina_preferences.glade:2061
+#: data/ui/remmina_preferences.glade:2090
 msgid ""
 "Choose a colour scheme file. Usually available in /usr/share/remmina/theme. "
 "https://github.com/mbadolato/iTerm2-Color-Schemes has more details."
@@ -4860,130 +4873,130 @@ msgstr ""
 "수 있습니다. https://github.com/mbadolato/iTerm2-Color-Schemes에 자세한 내용"
 "이 있습니다."
 
-#: data/ui/remmina_preferences.glade:2065
+#: data/ui/remmina_preferences.glade:2094
 msgid "Pick a terminal colouring file"
 msgstr "터미널 색 파일 선택"
 
-#: data/ui/remmina_preferences.glade:2080
+#: data/ui/remmina_preferences.glade:2109
 msgid "Bright colours"
 msgstr "밝은 색"
 
-#: data/ui/remmina_preferences.glade:2094
+#: data/ui/remmina_preferences.glade:2123
 msgid "Pick a light black colour"
 msgstr "블랙 라이트(light black) 색 선택"
 
-#: data/ui/remmina_preferences.glade:2108
+#: data/ui/remmina_preferences.glade:2137
 msgid "Pick a light red colour"
 msgstr "레드 라이트(light red) 색 선택"
 
-#: data/ui/remmina_preferences.glade:2122
+#: data/ui/remmina_preferences.glade:2151
 msgid "Pick a bright green colour"
 msgstr "밝은 녹 색 선택"
 
-#: data/ui/remmina_preferences.glade:2136
+#: data/ui/remmina_preferences.glade:2165
 msgid "Pick a bright yellow colour"
 msgstr "밝은 노란 색 선택"
 
-#: data/ui/remmina_preferences.glade:2150
+#: data/ui/remmina_preferences.glade:2179
 msgid "Pick a bright blue colour"
 msgstr "밝은 파란 색 선택"
 
-#: data/ui/remmina_preferences.glade:2164
+#: data/ui/remmina_preferences.glade:2193
 msgid "Pick a light magenta colour"
 msgstr "마젠타 라이트(light magenta) 색 선택"
 
-#: data/ui/remmina_preferences.glade:2178
+#: data/ui/remmina_preferences.glade:2207
 msgid "Pick a light cyan colour"
 msgstr "시안 라이트(light cyan) 색 선택"
 
-#: data/ui/remmina_preferences.glade:2192
+#: data/ui/remmina_preferences.glade:2221
 msgid "Pick a light white colour"
 msgstr "화이트 라이트(light white) 색 선택"
 
-#: data/ui/remmina_preferences.glade:2206
+#: data/ui/remmina_preferences.glade:2235
 msgid "Pick a black colour"
 msgstr "검은 색 선택"
 
-#: data/ui/remmina_preferences.glade:2220
+#: data/ui/remmina_preferences.glade:2249
 msgid "Pick a red colour"
 msgstr "붉은 색 선택"
 
-#: data/ui/remmina_preferences.glade:2234
+#: data/ui/remmina_preferences.glade:2263
 msgid "Pick a green colour"
 msgstr "녹 색 선택"
 
-#: data/ui/remmina_preferences.glade:2248
+#: data/ui/remmina_preferences.glade:2277
 msgid "Pick a yellow colour"
 msgstr "노란 색 선택"
 
-#: data/ui/remmina_preferences.glade:2262
+#: data/ui/remmina_preferences.glade:2291
 msgid "Pick a blue colour"
 msgstr "파란 색 선택"
 
-#: data/ui/remmina_preferences.glade:2276
+#: data/ui/remmina_preferences.glade:2305
 msgid "Pick a magenta colour"
 msgstr "마젠타(magenta) 색 선택"
 
-#: data/ui/remmina_preferences.glade:2290
+#: data/ui/remmina_preferences.glade:2319
 msgid "Pick a cyan colour"
 msgstr "시안(cyan) 색 선택"
 
-#: data/ui/remmina_preferences.glade:2304
+#: data/ui/remmina_preferences.glade:2333
 msgid "Pick a white colour"
 msgstr "흰 색 선택"
 
-#: data/ui/remmina_preferences.glade:2317
+#: data/ui/remmina_preferences.glade:2346
 msgid "Normal colours"
 msgstr "일반 색"
 
-#: data/ui/remmina_preferences.glade:2330
-#: data/ui/remmina_preferences.glade:2345
+#: data/ui/remmina_preferences.glade:2359
+#: data/ui/remmina_preferences.glade:2374
 msgid "Cursor colour"
 msgstr "커서 색"
 
-#: data/ui/remmina_preferences.glade:2359
-#: data/ui/remmina_preferences.glade:2374
+#: data/ui/remmina_preferences.glade:2388
+#: data/ui/remmina_preferences.glade:2403
 msgid "Background colour"
 msgstr "배경 색"
 
-#: data/ui/remmina_preferences.glade:2390
-#: data/ui/remmina_preferences.glade:2404
+#: data/ui/remmina_preferences.glade:2419
+#: data/ui/remmina_preferences.glade:2433
 msgid "Foreground colour"
 msgstr "전경 색"
 
-#: data/ui/remmina_preferences.glade:2417
+#: data/ui/remmina_preferences.glade:2446
 msgid "Increase and decrease font size"
 msgstr "글꼴 크기 늘리기 및 줄이기"
 
-#: data/ui/remmina_preferences.glade:2447
+#: data/ui/remmina_preferences.glade:2476
 msgid "Search text shortcut"
 msgstr "텍스트 검색 바로가기"
 
-#: data/ui/remmina_preferences.glade:2478
-#: data/ui/remmina_preferences.glade:2493
+#: data/ui/remmina_preferences.glade:2507
+#: data/ui/remmina_preferences.glade:2522
 msgid "Bold colour"
 msgstr "일반 색"
 
-#: data/ui/remmina_preferences.glade:2507
-#: data/ui/remmina_preferences.glade:2548
+#: data/ui/remmina_preferences.glade:2536
+#: data/ui/remmina_preferences.glade:2577
 msgid "Highlight colour"
 msgstr "하이라이트 색"
 
-#: data/ui/remmina_preferences.glade:2520
-#: data/ui/remmina_preferences.glade:2564
+#: data/ui/remmina_preferences.glade:2549
+#: data/ui/remmina_preferences.glade:2593
 msgid "Highlight foreground colour"
 msgstr "하이라이트 포그라운드 색"
 
-#: data/ui/remmina_preferences.glade:2533
-#: data/ui/remmina_preferences.glade:2580
+#: data/ui/remmina_preferences.glade:2562
+#: data/ui/remmina_preferences.glade:2609
 msgid "Cursor foreground colour"
 msgstr "포그라운드 커서 색"
 
-#: data/ui/remmina_preferences.glade:2636
+#: data/ui/remmina_preferences.glade:2665
 msgid "Terminal"
 msgstr "터미널"
 
-#: data/ui/remmina_preferences.glade:2650
+#: data/ui/remmina_preferences.glade:2679
 msgid "Remmina Preferences"
 msgstr "Remmina 기본 설정"
 

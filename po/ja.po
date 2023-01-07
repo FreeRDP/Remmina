@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-12-16 14:36+0000\n"
+"POT-Creation-Date: 2023-01-07 12:47+0000\n"
 "PO-Revision-Date: 2023-01-01 22:48+0000\n"
 "Last-Translator: maboroshin <maboroshin@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -33,7 +33,7 @@ msgstr ""
 
 #: src/remmina_sftp_plugin.c:309 src/remmina_sftp_plugin.c:353
 #: src/remmina_protocol_widget.c:1694 src/remmina_protocol_widget.c:1713
-#: src/remmina_file_editor.c:1119 src/remmina_file_editor.c:1241
+#: src/remmina_file_editor.c:1137 src/remmina_file_editor.c:1260
 #: src/remmina_ssh_plugin.c:1394 plugins/rdp/rdp_plugin.c:2814
 #: plugins/www/www_plugin.c:909 plugins/x2go/x2go_plugin.c:3397
 #: data/ui/remmina_mpc.glade:218 data/ui/remmina_passwd.glade:84
@@ -42,22 +42,22 @@ msgid "Password"
 msgstr "パスワード"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:355
-#: src/remmina_file_editor.c:1120 src/remmina_ssh_plugin.c:1395
+#: src/remmina_file_editor.c:1138 src/remmina_ssh_plugin.c:1395
 #: src/remmina_ssh_plugin.c:1506 plugins/x2go/x2go_plugin.c:3420
 msgid "SSH identity file"
 msgstr "SSH 秘密鍵ファイル"
 
-#: src/remmina_sftp_plugin.c:311 src/remmina_file_editor.c:1121
+#: src/remmina_sftp_plugin.c:311 src/remmina_file_editor.c:1139
 #: src/remmina_ssh_plugin.c:1396
 msgid "SSH agent"
 msgstr "SSH エージェント"
 
-#: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:1122
+#: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:1140
 #: src/remmina_ssh_plugin.c:1397
 msgid "Public key (automatic)"
 msgstr "公開鍵 (自動)"
 
-#: src/remmina_sftp_plugin.c:313 src/remmina_file_editor.c:1123
+#: src/remmina_sftp_plugin.c:313 src/remmina_file_editor.c:1141
 #: src/remmina_ssh_plugin.c:1398
 msgid "Kerberos (GSSAPI)"
 msgstr "Kerberos (GSSAPI)"
@@ -79,7 +79,7 @@ msgid "Connect via SSH from a new terminal"
 msgstr "新しい端末から SSH で接続"
 
 #: src/remmina_sftp_plugin.c:352 src/remmina_message_panel.c:329
-#: src/remmina_file_editor.c:1235 src/remmina_ssh_plugin.c:1504
+#: src/remmina_file_editor.c:1254 src/remmina_ssh_plugin.c:1504
 #: plugins/rdp/rdp_plugin.c:2813 plugins/vnc/vnc_plugin.c:2054
 #: plugins/vnc/vnc_plugin.c:2066 plugins/www/www_plugin.c:908
 #: plugins/x2go/x2go_plugin.c:482 plugins/x2go/x2go_plugin.c:3396
@@ -87,12 +87,12 @@ msgstr "新しい端末から SSH で接続"
 msgid "Username"
 msgstr "ユーザー名"
 
-#: src/remmina_sftp_plugin.c:354 src/remmina_file_editor.c:1226
+#: src/remmina_sftp_plugin.c:354 src/remmina_file_editor.c:1245
 #: src/remmina_ssh_plugin.c:1503
 msgid "Authentication type"
 msgstr "認証方式"
 
-#: src/remmina_sftp_plugin.c:356 src/remmina_file_editor.c:1259
+#: src/remmina_sftp_plugin.c:356 src/remmina_file_editor.c:1278
 #: src/remmina_ssh_plugin.c:1510
 msgid "Password to unlock private key"
 msgstr "秘密鍵のロックを解除するパスワード"
@@ -125,10 +125,10 @@ msgstr ""
 "このウィンドウは接続問題の原因を探すためのものです。\n"
 "On/Offスイッチでいつでもログの出力を入/切できます。\n"
 "統計ボタン (Ctrl+T) は、バグ報告で共有するシステム情報の取得に便利です。\n"
-"https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging に "
-"Remminaのデバッグについて説明されています。\n"
+"https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging に Remmina"
+"のデバッグについて説明されています。\n"
 
-#: src/remmina_plugin_manager.c:74 src/remmina_file_editor.c:2003
+#: src/remmina_plugin_manager.c:74 src/remmina_file_editor.c:2005
 msgid "Protocol"
 msgstr "プロトコル"
 
@@ -161,11 +161,11 @@ msgid "Plugins"
 msgstr "プラグイン"
 
 #: src/remmina_plugin_manager.c:526 src/remmina_message_panel.c:451
-#: src/remmina_message_panel.c:620 src/remmina_file_editor.c:243
+#: src/remmina_message_panel.c:620 src/remmina_file_editor.c:245
 msgid "_OK"
 msgstr "OK(_O)"
 
-#: src/remmina_plugin_manager.c:544 src/remmina_file_editor.c:1935
+#: src/remmina_plugin_manager.c:544 src/remmina_file_editor.c:1937
 #: data/ui/remmina_main.glade:433
 msgid "Name"
 msgstr "名前"
@@ -231,11 +231,11 @@ msgstr "Meta+"
 msgid "<None>"
 msgstr "<なし>"
 
-#: src/remmina_pref_dialog.c:93 src/remmina_file_editor.c:529
+#: src/remmina_pref_dialog.c:93 src/remmina_file_editor.c:549
 msgid "Resolutions"
 msgstr "解像度"
 
-#: src/remmina_pref_dialog.c:93 src/remmina_file_editor.c:529
+#: src/remmina_pref_dialog.c:93 src/remmina_file_editor.c:549
 msgid "Configure the available resolutions"
 msgstr "利用可能な解像度の設定"
 
@@ -253,15 +253,15 @@ msgid "Configure the keystrokes"
 msgstr "キー操作の設定"
 
 #. TRANSLATORS: Do not translate libsodium, is the name of a library
-#: src/remmina_pref_dialog.c:475
+#: src/remmina_pref_dialog.c:479
 msgid "libsodium >= 1.9.0 is required to use Primary Password"
 msgstr "マスターパスワードを使用するには libsodium >= 1.9.0 が必要です"
 
-#: src/remmina_pref_dialog.c:808
+#: src/remmina_pref_dialog.c:813
 msgid "Picking a terminal colouring file replaces the file: "
 msgstr "ターミナルカラーファイルを選択すると、ファイルが置き換えられます： "
 
-#: src/remmina_pref_dialog.c:812
+#: src/remmina_pref_dialog.c:817
 #, fuzzy
 #| msgid ""
 #| "This file contains the \"Custom\" terminal colour scheme selectable from "
@@ -283,7 +283,7 @@ msgstr "キャンセル"
 #: src/remmina_message_panel.c:198 data/ui/remmina_snap_info_dialog.glade:25
 #: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
 #: data/ui/remmina_string_list.glade:63 data/ui/remmina_news.glade:33
-#: data/ui/remmina_preferences.glade:2654
+#: data/ui/remmina_preferences.glade:2683
 msgid "Close"
 msgstr "閉じる"
 
@@ -305,8 +305,8 @@ msgid "Save password"
 msgstr "パスワードを保存"
 
 #: src/remmina_message_panel.c:456 src/remmina_message_panel.c:628
-#: src/remmina_sftp_client.c:972 src/remmina_file_editor.c:242
-#: src/remmina_file_editor.c:1808 plugins/spice/spice_plugin_file_transfer.c:84
+#: src/remmina_sftp_client.c:972 src/remmina_file_editor.c:244
+#: src/remmina_file_editor.c:1811 plugins/spice/spice_plugin_file_transfer.c:84
 #: data/ui/remmina_key_chooser.glade:8 data/ui/remmina_key_chooser.glade:9
 #: data/ui/remmina_spinner.glade:8 data/ui/remmina_spinner.glade:9
 msgid "_Cancel"
@@ -482,8 +482,9 @@ msgstr ""
 msgid ""
 "Warning: This plugin requires GtkSocket, but this feature is unavailable in "
 "a Wayland session."
-msgstr "警告: このプラグインには GtkSocket が必要ですが、この機能は Wayland "
-"セッションでは利用できません。"
+msgstr ""
+"警告: このプラグインには GtkSocket が必要ですが、この機能は Wayland セッショ"
+"ンでは利用できません。"
 
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. 'GtkSocket feature is not available'.
@@ -555,16 +556,18 @@ msgstr "ファイル"
 msgid ""
 "Connect to a desktop described in a file (.remmina or a filetype supported "
 "by a plugin)"
-msgstr "ファイルに記載されたデスクトップに接続 (.remmina "
-"やプラグインに対応するファイル形式)"
+msgstr ""
+"ファイルに記載されたデスクトップに接続 (.remmina やプラグインに対応するファイ"
+"ル形式)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:102
 msgid ""
 "Edit desktop connection described in file (.remmina or a filetype supported "
 "by plugin)"
-msgstr "ファイルに記載されたデスクトップ接続を編集 (.remmina "
-"やプラグインに対応するファイル形式)"
+msgstr ""
+"ファイルに記載されたデスクトップ接続を編集 (.remmina やプラグインに対応する"
+"ファイル形式)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:105
@@ -871,7 +874,7 @@ msgstr "サイズ"
 msgid "User"
 msgstr "ユーザー"
 
-#: src/remmina_ftp_client.c:955 src/remmina_file_editor.c:1960
+#: src/remmina_ftp_client.c:955 src/remmina_file_editor.c:1962
 #: data/ui/remmina_mpc.glade:93 data/ui/remmina_main.glade:455
 msgid "Group"
 msgstr "グループ"
@@ -1009,8 +1012,8 @@ msgstr "ポート %i への %s 接続を待ち受け中…"
 msgid "Could not authenticate, attempting reconnection…"
 msgstr "認証できませんでした。再接続しています…"
 
-#: src/remmina_protocol_widget.c:2047 src/remmina_file_editor.c:437
-#: src/remmina_file_editor.c:1191 data/ui/remmina_main.glade:485
+#: src/remmina_protocol_widget.c:2047 src/remmina_file_editor.c:438
+#: src/remmina_file_editor.c:1210 data/ui/remmina_main.glade:485
 msgid "Server"
 msgstr "サーバー"
 
@@ -1325,7 +1328,7 @@ msgstr ""
 msgid "Import"
 msgstr "インポート"
 
-#: src/remmina_main.c:1175 src/remmina_file_editor.c:1816
+#: src/remmina_main.c:1175 src/remmina_file_editor.c:1819
 msgid "_Save"
 msgstr "保存(_S)"
 
@@ -1476,193 +1479,194 @@ msgstr ""
 "- サーバー[:ポート]\n"
 "- username@server[:port] (SSHプロトコルのみ)</big>."
 
-#: src/remmina_file_editor.c:163
+#: src/remmina_file_editor.c:164
 msgid "Input is invalid."
 msgstr "入力が無効です。"
 
-#: src/remmina_file_editor.c:240
+#: src/remmina_file_editor.c:242
 msgid "Choose a Remote Desktop Server"
 msgstr "リモートデスクトップサーバーを選択"
 
-#: src/remmina_file_editor.c:461
+#: src/remmina_file_editor.c:462
 #, c-format
 msgid "Browse the network to find a %s server"
 msgstr "ネットワークからサーバー %s を探す"
 
-#: src/remmina_file_editor.c:565
+#: src/remmina_file_editor.c:585
 msgid "Resolution"
 msgstr "解像度"
 
-#: src/remmina_file_editor.c:572
+#: src/remmina_file_editor.c:592
 msgid "Use initial window size"
 msgstr "初期ウィンドウサイズを使用する"
 
-#: src/remmina_file_editor.c:576
+#: src/remmina_file_editor.c:596
 msgid "Use client resolution"
 msgstr "クライアントの解像度を使用する"
 
-#: src/remmina_file_editor.c:587 src/remmina_file_editor.c:1171
+#: src/remmina_file_editor.c:607 src/remmina_file_editor.c:1190
 msgid "Custom"
 msgstr "カスタム"
 
-#: src/remmina_file_editor.c:955
+#: src/remmina_file_editor.c:973
 msgid "Keyboard mapping"
 msgstr "キーボードマッピング"
 
-#: src/remmina_file_editor.c:1082
+#: src/remmina_file_editor.c:1100
 msgid "Behavior"
 msgstr "挙動"
 
-#: src/remmina_file_editor.c:1085
+#: src/remmina_file_editor.c:1103
 msgid "Execute a Command"
 msgstr "コマンドの実行"
 
-#: src/remmina_file_editor.c:1089
+#: src/remmina_file_editor.c:1107
 msgid "Before connecting"
 msgstr "接続前"
 
-#: src/remmina_file_editor.c:1091
+#: src/remmina_file_editor.c:1109
 msgid "command %h %u %t %U %p %g --option"
 msgstr "コマンド %h %u %t %U %p %g --オプション"
 
-#: src/remmina_file_editor.c:1096
+#: src/remmina_file_editor.c:1114
 msgid "After connecting"
 msgstr "接続後"
 
-#: src/remmina_file_editor.c:1098
+#: src/remmina_file_editor.c:1116
 msgid "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
 msgstr "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
 
-#: src/remmina_file_editor.c:1102
+#: src/remmina_file_editor.c:1120
 msgid "Start-up"
 msgstr "起動時"
 
-#: src/remmina_file_editor.c:1105
+#: src/remmina_file_editor.c:1123
 msgid "Auto-start this profile"
 msgstr "このプロファイルを自動起動する"
 
-#: src/remmina_file_editor.c:1109
+#: src/remmina_file_editor.c:1127
 msgid "Connection profile security"
 msgstr "接続プロファイルの安全性"
 
-#: src/remmina_file_editor.c:1112
+#: src/remmina_file_editor.c:1130
 msgid "Require password to connect or edit the profile"
 msgstr "プロファイルへの接続や編集にはパスワードが必要"
 
-#: src/remmina_file_editor.c:1144
+#: src/remmina_file_editor.c:1163
 msgid "SSH Tunnel"
 msgstr "SSH トンネル"
 
-#: src/remmina_file_editor.c:1145
+#: src/remmina_file_editor.c:1164
 msgid "Enable SSH tunnel"
 msgstr "SSH トンネルを有効にする"
 
-#: src/remmina_file_editor.c:1152
+#: src/remmina_file_editor.c:1171
 msgid "Tunnel via loopback address"
 msgstr "ループバックアドレス経由のトンネル"
 
-#: src/remmina_file_editor.c:1162
+#: src/remmina_file_editor.c:1181
 #, c-format
 msgid "Same server at port %i"
 msgstr "ポート %i の同じサーバー"
 
-#: src/remmina_file_editor.c:1212 plugins/rdp/rdp_plugin.c:2859
+#: src/remmina_file_editor.c:1231 plugins/rdp/rdp_plugin.c:2859
 msgid "Start-up path"
 msgstr "起動パス"
 
-#: src/remmina_file_editor.c:1221
+#: src/remmina_file_editor.c:1240
 msgid "SSH Authentication"
 msgstr "SSH 認証"
 
-#: src/remmina_file_editor.c:1248
+#: src/remmina_file_editor.c:1267
 msgid "SSH private key file"
 msgstr "SSH 秘密鍵のキーファイル"
 
-#: src/remmina_file_editor.c:1254 src/remmina_ssh_plugin.c:1508
+#: src/remmina_file_editor.c:1273 src/remmina_ssh_plugin.c:1508
 msgid "SSH certificate file"
 msgstr "SSH 証明書ファイル"
 
-#: src/remmina_file_editor.c:1312
+#: src/remmina_file_editor.c:1330
 msgid "Basic"
 msgstr "基本設定"
 
-#: src/remmina_file_editor.c:1318
+#: src/remmina_file_editor.c:1336
 msgid "Advanced"
 msgstr "高度な設定"
 
-#: src/remmina_file_editor.c:1329 data/ui/remmina_main.glade:499
+#: src/remmina_file_editor.c:1347 data/ui/remmina_main.glade:499
 msgid "Notes"
 msgstr "メモ"
 
-#: src/remmina_file_editor.c:1459
+#: src/remmina_file_editor.c:1464
 #, fuzzy, c-format
 msgid "(%s: %i): Can't validate setting '%s' since 'value' or 'gfe' are NULL!"
-msgstr "([x1x]: [x5x])と表示されました。設定「%s」は、「value」や「gfe」がNULLなので"
+msgstr ""
+"([x1x]: [x5x])と表示されました。設定「%s」は、「value」や「gfe」がNULLなので"
 "検証できません。"
 
-#: src/remmina_file_editor.c:1462
+#: src/remmina_file_editor.c:1468
 #, c-format
 msgid ""
 "(%s: %i): Can't validate user input since 'setting_name_to_validate', "
 "'value' or 'gfe' are NULL!"
 msgstr ""
-"(%s: %i)と表示されました。setting_name_to_validate、value、gfe "
-"がNULLなので、ユーザーの入力を検証できません！"
+"(%s: %i)と表示されました。setting_name_to_validate、value、gfe がNULLなので、"
+"ユーザーの入力を検証できません！"
 
 #. TRANSLATORS: Meta-error. Shouldn't be visible.
-#: src/remmina_file_editor.c:1466 plugins/x2go/x2go_plugin.c:2574
+#: src/remmina_file_editor.c:1472 plugins/x2go/x2go_plugin.c:2574
 #: plugins/x2go/x2go_plugin.c:3224
 msgid "Internal error."
 msgstr "内部エラー。"
 
-#: src/remmina_file_editor.c:1692 src/remmina_file_editor.c:1728
-#: src/remmina_file_editor.c:1749 src/remmina_file_editor.c:1772
+#: src/remmina_file_editor.c:1695 src/remmina_file_editor.c:1731
+#: src/remmina_file_editor.c:1752 src/remmina_file_editor.c:1775
 #, c-format
 msgid "Couldn't validate user input. %s"
 msgstr "ユーザーの入力を検証できませんでした。%s"
 
-#: src/remmina_file_editor.c:1716
+#: src/remmina_file_editor.c:1719
 msgid "Default settings saved."
 msgstr "既定の設定を保存しました。"
 
-#: src/remmina_file_editor.c:1806
+#: src/remmina_file_editor.c:1809
 msgid "Remote Connection Profile"
 msgstr "リモート接続プロファイル"
 
-#: src/remmina_file_editor.c:1812
+#: src/remmina_file_editor.c:1815
 msgid "Save as Default"
 msgstr "既定値として保存"
 
-#: src/remmina_file_editor.c:1813
+#: src/remmina_file_editor.c:1816
 msgid "Use the current settings as the default for all new connection profiles"
 msgstr "現在の設定をすべての新規接続プロファイルの既定値として使用する"
 
-#: src/remmina_file_editor.c:1821 data/ui/remmina_main.glade:161
+#: src/remmina_file_editor.c:1824 data/ui/remmina_main.glade:161
 msgid "Connect"
 msgstr "接続"
 
-#: src/remmina_file_editor.c:1824
+#: src/remmina_file_editor.c:1827
 msgid "_Save and Connect"
 msgstr "保存して接続(_S)"
 
-#: src/remmina_file_editor.c:1949
+#: src/remmina_file_editor.c:1951
 msgid "Quick Connect"
 msgstr "クイック接続"
 
-#: src/remmina_file_editor.c:1973
+#: src/remmina_file_editor.c:1975
 #, c-format
 msgid "Use '%s' as subgroup delimiter"
 msgstr "サブグループの区切り文字には '%s' を使用してください"
 
-#: src/remmina_file_editor.c:1978 data/ui/remmina_main.glade:469
+#: src/remmina_file_editor.c:1980 data/ui/remmina_main.glade:469
 msgid "Labels"
 msgstr "ラベル"
 
-#: src/remmina_file_editor.c:1992
+#: src/remmina_file_editor.c:1994
 msgid "Label1,Label2"
 msgstr "ラベル1,ラベル2"
 
-#: src/remmina_file_editor.c:2064 src/remmina_file_editor.c:2084
+#: src/remmina_file_editor.c:2066 src/remmina_file_editor.c:2085
 #, c-format
 msgid "Could not find the file “%s”."
 msgstr "「%s」が見つかりませんでした。"
@@ -1720,7 +1724,8 @@ msgstr "%s このデスクトップは対応しています。"
 #: src/remmina_icon.c:369
 #, c-format
 msgid "%s and Remmina has built-in (compiled) support for libappindicator."
-msgstr "%s そしてRemminaはlibappindicatorをビルトイン（コンパイル済み）で対応していま"
+msgstr ""
+"%s そしてRemminaはlibappindicatorをビルトイン（コンパイル済み）で対応していま"
 "す。"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
@@ -1737,13 +1742,15 @@ msgstr ""
 #: src/remmina_icon.c:376
 #, c-format
 msgid "%s You may need to install, and use XApp Status Applet"
-msgstr "%s XApp Status Appletをインストールして使用する必要があるかもしれません"
+msgstr ""
+"%s XApp Status Appletをインストールして使用する必要があるかもしれません"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:379
 #, c-format
 msgid "%s You may need to install, and use KStatusNotifierItem"
-msgstr "%s KStatusNotifierItemをインストールして使用する必要があるかもしれません"
+msgstr ""
+"%s KStatusNotifierItemをインストールして使用する必要があるかもしれません"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:382
@@ -1755,8 +1762,9 @@ msgstr "%s XEmbed SNI Proxyをインストールして使用する必要があ�
 #: src/remmina_icon.c:385
 #, c-format
 msgid "%s You may need to install, and use Gnome Shell Extension Appindicator"
-msgstr "%s Gnome Shell Extension "
-"Appindicatorをインストールして使用する必要があるかもしれません"
+msgstr ""
+"%s Gnome Shell Extension Appindicatorをインストールして使用する必要があるかも"
+"しれません"
 
 #: src/remmina_ssh_plugin.c:343
 #, fuzzy, c-format
@@ -4960,13 +4968,26 @@ msgstr ""
 msgid "Require to modify"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1739
+#: data/ui/remmina_preferences.glade:1708
+#, fuzzy
+#| msgid "Secured password storage in KWallet"
+msgid "Enter your Remmina password to view passwords"
+msgstr "KWallet で安全にパスワード保存"
+
+#. “Require to view passwords” is “Require the Remmina password before to connect”, the Remmina password is the Master/Principal Password, that is used to protect Remmina from unauthorized use.
+#: data/ui/remmina_preferences.glade:1712
+#, fuzzy
+#| msgid "Set new password"
+msgid "Require to view passwords"
+msgstr "新しいパスワードを設定"
+
+#: data/ui/remmina_preferences.glade:1768
 #, fuzzy
 #| msgid "File encryption"
 msgid "Encryption"
 msgstr "ファイルの暗号化"
 
-#: data/ui/remmina_preferences.glade:1750
+#: data/ui/remmina_preferences.glade:1779
 msgid ""
 "These are the encryption methods used by Remmina to store passwords.\n"
 "\n"
@@ -4977,68 +4998,68 @@ msgid ""
 "\"Sensitive\" is more secure, but uses +1 GiB of RAM and many CPU cycles. "
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1759
+#: data/ui/remmina_preferences.glade:1788
 msgid "Intermediate (+64 MiB RAM)"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1760
+#: data/ui/remmina_preferences.glade:1789
 msgid "Strong (+256 MiB, ~2009 CPU)"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1761
+#: data/ui/remmina_preferences.glade:1790
 msgid "Sensitive (+1 GiB, ~2014 CPU)"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1777
+#: data/ui/remmina_preferences.glade:1806
 #, fuzzy
 #| msgid "Edit settings"
 msgid "Auditing log"
 msgstr "設定を編集する"
 
-#: data/ui/remmina_preferences.glade:1802
+#: data/ui/remmina_preferences.glade:1831
 msgid "Automatically accept all fingerprints and certificates"
 msgstr "すべてのフィンガープリントと証明書を自動的に受け入れる"
 
-#: data/ui/remmina_preferences.glade:1807
+#: data/ui/remmina_preferences.glade:1836
 #, fuzzy
 #| msgid "Trust all fingerprints and certificates"
 msgid "Trust all certificates"
 msgstr "すべてのフィンガープリントと証明書を信頼する"
 
-#: data/ui/remmina_preferences.glade:1842
+#: data/ui/remmina_preferences.glade:1871
 msgid "Security"
 msgstr "セキュリティ"
 
-#: data/ui/remmina_preferences.glade:1873
+#: data/ui/remmina_preferences.glade:1902
 msgid "Terminal font"
 msgstr "端末のフォント"
 
-#: data/ui/remmina_preferences.glade:1886
+#: data/ui/remmina_preferences.glade:1915
 msgid "Scrollback lines"
 msgstr "スクロールして戻れる行数"
 
-#: data/ui/remmina_preferences.glade:1934
+#: data/ui/remmina_preferences.glade:1963
 msgid "Shortcuts for copying and pasting"
 msgstr "コピー＆ペーストのショートカット"
 
-#: data/ui/remmina_preferences.glade:1947
+#: data/ui/remmina_preferences.glade:1976
 msgid "Select all shortcuts"
 msgstr "すべてのショートカットを選択する"
 
-#: data/ui/remmina_preferences.glade:1960
-#: data/ui/remmina_preferences.glade:1977
-#: data/ui/remmina_preferences.glade:2430
-#: data/ui/remmina_preferences.glade:2460
-#: data/ui/remmina_preferences.glade:2594
-#: data/ui/remmina_preferences.glade:2611
+#: data/ui/remmina_preferences.glade:1989
+#: data/ui/remmina_preferences.glade:2006
+#: data/ui/remmina_preferences.glade:2459
+#: data/ui/remmina_preferences.glade:2489
+#: data/ui/remmina_preferences.glade:2623
+#: data/ui/remmina_preferences.glade:2640
 msgid "(Host key+)"
 msgstr "(ホストキー+)"
 
-#: data/ui/remmina_preferences.glade:1995
+#: data/ui/remmina_preferences.glade:2024
 msgid "Use default system font"
 msgstr "既定のシステムフォントを使用する"
 
-#: data/ui/remmina_preferences.glade:2020
+#: data/ui/remmina_preferences.glade:2049
 msgid ""
 "Selecting “SGR 1” also switches to the bright counterparts of the first 8 "
 "palette colours (in addition to making text bold)."
@@ -5046,15 +5067,15 @@ msgstr ""
 "“SGR 1” を選択してもテキストが太くなり、パレットの最初の 8 つの色がそれぞれ、"
 "より明るいものに切り替わります。"
 
-#: data/ui/remmina_preferences.glade:2036
+#: data/ui/remmina_preferences.glade:2065
 msgid "Show bold text in bright colors"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:2050
+#: data/ui/remmina_preferences.glade:2079
 msgid "Colour theme"
 msgstr "カラーテーマ"
 
-#: data/ui/remmina_preferences.glade:2061
+#: data/ui/remmina_preferences.glade:2090
 msgid ""
 "Choose a colour scheme file. Usually available in /usr/share/remmina/theme. "
 "https://github.com/mbadolato/iTerm2-Color-Schemes has more details."
@@ -5063,132 +5084,132 @@ msgstr ""
 "theme にあります。https://github.com/mbadolato/iTerm2-Color-Schemes には、よ"
 "り多くのカラースキームがあります。"
 
-#: data/ui/remmina_preferences.glade:2065
+#: data/ui/remmina_preferences.glade:2094
 msgid "Pick a terminal colouring file"
 msgstr "端末の色ファイルを選択"
 
-#: data/ui/remmina_preferences.glade:2080
+#: data/ui/remmina_preferences.glade:2109
 msgid "Bright colours"
 msgstr "明るい色"
 
-#: data/ui/remmina_preferences.glade:2094
+#: data/ui/remmina_preferences.glade:2123
 msgid "Pick a light black colour"
 msgstr "明るい黒を選択"
 
-#: data/ui/remmina_preferences.glade:2108
+#: data/ui/remmina_preferences.glade:2137
 msgid "Pick a light red colour"
 msgstr "明るい赤を選択"
 
-#: data/ui/remmina_preferences.glade:2122
+#: data/ui/remmina_preferences.glade:2151
 msgid "Pick a bright green colour"
 msgstr "明るい緑を選択"
 
-#: data/ui/remmina_preferences.glade:2136
+#: data/ui/remmina_preferences.glade:2165
 msgid "Pick a bright yellow colour"
 msgstr "明るい黄色を選択"
 
-#: data/ui/remmina_preferences.glade:2150
+#: data/ui/remmina_preferences.glade:2179
 msgid "Pick a bright blue colour"
 msgstr "明るい青を選択"
 
-#: data/ui/remmina_preferences.glade:2164
+#: data/ui/remmina_preferences.glade:2193
 msgid "Pick a light magenta colour"
 msgstr "明るいマゼンタを選択"
 
-#: data/ui/remmina_preferences.glade:2178
+#: data/ui/remmina_preferences.glade:2207
 msgid "Pick a light cyan colour"
 msgstr "明るいシアンを選択"
 
-#: data/ui/remmina_preferences.glade:2192
+#: data/ui/remmina_preferences.glade:2221
 msgid "Pick a light white colour"
 msgstr "明るい白を選択"
 
-#: data/ui/remmina_preferences.glade:2206
+#: data/ui/remmina_preferences.glade:2235
 msgid "Pick a black colour"
 msgstr "黒い色を選択"
 
-#: data/ui/remmina_preferences.glade:2220
+#: data/ui/remmina_preferences.glade:2249
 msgid "Pick a red colour"
 msgstr "赤い色を選択"
 
-#: data/ui/remmina_preferences.glade:2234
+#: data/ui/remmina_preferences.glade:2263
 msgid "Pick a green colour"
 msgstr "緑色を選択"
 
-#: data/ui/remmina_preferences.glade:2248
+#: data/ui/remmina_preferences.glade:2277
 msgid "Pick a yellow colour"
 msgstr "黄色を選択"
 
-#: data/ui/remmina_preferences.glade:2262
+#: data/ui/remmina_preferences.glade:2291
 msgid "Pick a blue colour"
 msgstr "青い色を選択"
 
-#: data/ui/remmina_preferences.glade:2276
+#: data/ui/remmina_preferences.glade:2305
 msgid "Pick a magenta colour"
 msgstr "マゼンタを選択"
 
-#: data/ui/remmina_preferences.glade:2290
+#: data/ui/remmina_preferences.glade:2319
 msgid "Pick a cyan colour"
 msgstr "シアンを選択"
 
-#: data/ui/remmina_preferences.glade:2304
+#: data/ui/remmina_preferences.glade:2333
 msgid "Pick a white colour"
 msgstr "白い色を選択"
 
-#: data/ui/remmina_preferences.glade:2317
+#: data/ui/remmina_preferences.glade:2346
 msgid "Normal colours"
 msgstr "通常の色"
 
-#: data/ui/remmina_preferences.glade:2330
-#: data/ui/remmina_preferences.glade:2345
+#: data/ui/remmina_preferences.glade:2359
+#: data/ui/remmina_preferences.glade:2374
 msgid "Cursor colour"
 msgstr "カーソルの色"
 
-#: data/ui/remmina_preferences.glade:2359
-#: data/ui/remmina_preferences.glade:2374
+#: data/ui/remmina_preferences.glade:2388
+#: data/ui/remmina_preferences.glade:2403
 msgid "Background colour"
 msgstr "背景色"
 
-#: data/ui/remmina_preferences.glade:2390
-#: data/ui/remmina_preferences.glade:2404
+#: data/ui/remmina_preferences.glade:2419
+#: data/ui/remmina_preferences.glade:2433
 msgid "Foreground colour"
 msgstr "前景色"
 
-#: data/ui/remmina_preferences.glade:2417
+#: data/ui/remmina_preferences.glade:2446
 msgid "Increase and decrease font size"
 msgstr "文字サイズの拡大・縮小"
 
-#: data/ui/remmina_preferences.glade:2447
+#: data/ui/remmina_preferences.glade:2476
 #, fuzzy
 #| msgid "Search text"
 msgid "Search text shortcut"
 msgstr "検索テキストのショートカット"
 
-#: data/ui/remmina_preferences.glade:2478
-#: data/ui/remmina_preferences.glade:2493
+#: data/ui/remmina_preferences.glade:2507
+#: data/ui/remmina_preferences.glade:2522
 msgid "Bold colour"
 msgstr "太字の色"
 
-#: data/ui/remmina_preferences.glade:2507
-#: data/ui/remmina_preferences.glade:2548
+#: data/ui/remmina_preferences.glade:2536
+#: data/ui/remmina_preferences.glade:2577
 msgid "Highlight colour"
 msgstr "ハイライト色"
 
-#: data/ui/remmina_preferences.glade:2520
-#: data/ui/remmina_preferences.glade:2564
+#: data/ui/remmina_preferences.glade:2549
+#: data/ui/remmina_preferences.glade:2593
 msgid "Highlight foreground colour"
 msgstr "前景のハイライト色"
 
-#: data/ui/remmina_preferences.glade:2533
-#: data/ui/remmina_preferences.glade:2580
+#: data/ui/remmina_preferences.glade:2562
+#: data/ui/remmina_preferences.glade:2609
 msgid "Cursor foreground colour"
 msgstr "カーソルの前景色"
 
-#: data/ui/remmina_preferences.glade:2636
+#: data/ui/remmina_preferences.glade:2665
 msgid "Terminal"
 msgstr "端末"
 
-#: data/ui/remmina_preferences.glade:2650
+#: data/ui/remmina_preferences.glade:2679
 msgid "Remmina Preferences"
 msgstr "Remmina の設定"
 

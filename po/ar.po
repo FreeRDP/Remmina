@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2022-12-16 14:36+0000\n"
+"POT-Creation-Date: 2023-01-07 12:47+0000\n"
 "PO-Revision-Date: 2022-02-11 09:55+0000\n"
 "Last-Translator: Ahmad Dakhlallah <ahmad@linuxarabia.co>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -31,7 +31,7 @@ msgstr ""
 
 #: src/remmina_sftp_plugin.c:309 src/remmina_sftp_plugin.c:353
 #: src/remmina_protocol_widget.c:1694 src/remmina_protocol_widget.c:1713
-#: src/remmina_file_editor.c:1119 src/remmina_file_editor.c:1241
+#: src/remmina_file_editor.c:1137 src/remmina_file_editor.c:1260
 #: src/remmina_ssh_plugin.c:1394 plugins/rdp/rdp_plugin.c:2814
 #: plugins/www/www_plugin.c:909 plugins/x2go/x2go_plugin.c:3397
 #: data/ui/remmina_mpc.glade:218 data/ui/remmina_passwd.glade:84
@@ -40,22 +40,22 @@ msgid "Password"
 msgstr "كلمة المرور"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:355
-#: src/remmina_file_editor.c:1120 src/remmina_ssh_plugin.c:1395
+#: src/remmina_file_editor.c:1138 src/remmina_ssh_plugin.c:1395
 #: src/remmina_ssh_plugin.c:1506 plugins/x2go/x2go_plugin.c:3420
 msgid "SSH identity file"
 msgstr "ملف هوية SSH"
 
-#: src/remmina_sftp_plugin.c:311 src/remmina_file_editor.c:1121
+#: src/remmina_sftp_plugin.c:311 src/remmina_file_editor.c:1139
 #: src/remmina_ssh_plugin.c:1396
 msgid "SSH agent"
 msgstr "وكيل SSH"
 
-#: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:1122
+#: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:1140
 #: src/remmina_ssh_plugin.c:1397
 msgid "Public key (automatic)"
 msgstr "المفتاح العمومي (تلقائي)"
 
-#: src/remmina_sftp_plugin.c:313 src/remmina_file_editor.c:1123
+#: src/remmina_sftp_plugin.c:313 src/remmina_file_editor.c:1141
 #: src/remmina_ssh_plugin.c:1398
 #, fuzzy
 msgid "Kerberos (GSSAPI)"
@@ -78,7 +78,7 @@ msgid "Connect via SSH from a new terminal"
 msgstr "الإتصال عبر SSH من طرفية جديدة"
 
 #: src/remmina_sftp_plugin.c:352 src/remmina_message_panel.c:329
-#: src/remmina_file_editor.c:1235 src/remmina_ssh_plugin.c:1504
+#: src/remmina_file_editor.c:1254 src/remmina_ssh_plugin.c:1504
 #: plugins/rdp/rdp_plugin.c:2813 plugins/vnc/vnc_plugin.c:2054
 #: plugins/vnc/vnc_plugin.c:2066 plugins/www/www_plugin.c:908
 #: plugins/x2go/x2go_plugin.c:482 plugins/x2go/x2go_plugin.c:3396
@@ -86,12 +86,12 @@ msgstr "الإتصال عبر SSH من طرفية جديدة"
 msgid "Username"
 msgstr "إسم المستخدم"
 
-#: src/remmina_sftp_plugin.c:354 src/remmina_file_editor.c:1226
+#: src/remmina_sftp_plugin.c:354 src/remmina_file_editor.c:1245
 #: src/remmina_ssh_plugin.c:1503
 msgid "Authentication type"
 msgstr "نوع المصادقة"
 
-#: src/remmina_sftp_plugin.c:356 src/remmina_file_editor.c:1259
+#: src/remmina_sftp_plugin.c:356 src/remmina_file_editor.c:1278
 #: src/remmina_ssh_plugin.c:1510
 msgid "Password to unlock private key"
 msgstr "كلمة مرور المفتاح الخاص"
@@ -130,7 +130,7 @@ msgstr ""
 "يمكنك العثور على معلومات إضافة بخصوص تشخيص المشاكل على الرابط https://gitlab."
 "com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging\n"
 
-#: src/remmina_plugin_manager.c:74 src/remmina_file_editor.c:2003
+#: src/remmina_plugin_manager.c:74 src/remmina_file_editor.c:2005
 msgid "Protocol"
 msgstr "البروتوكول"
 
@@ -163,11 +163,11 @@ msgid "Plugins"
 msgstr "الإضافات"
 
 #: src/remmina_plugin_manager.c:526 src/remmina_message_panel.c:451
-#: src/remmina_message_panel.c:620 src/remmina_file_editor.c:243
+#: src/remmina_message_panel.c:620 src/remmina_file_editor.c:245
 msgid "_OK"
 msgstr "_موافق"
 
-#: src/remmina_plugin_manager.c:544 src/remmina_file_editor.c:1935
+#: src/remmina_plugin_manager.c:544 src/remmina_file_editor.c:1937
 #: data/ui/remmina_main.glade:433
 msgid "Name"
 msgstr "إسم"
@@ -235,11 +235,11 @@ msgstr "Meta+"
 msgid "<None>"
 msgstr "<لا شيئ>"
 
-#: src/remmina_pref_dialog.c:93 src/remmina_file_editor.c:529
+#: src/remmina_pref_dialog.c:93 src/remmina_file_editor.c:549
 msgid "Resolutions"
 msgstr "إستبانات"
 
-#: src/remmina_pref_dialog.c:93 src/remmina_file_editor.c:529
+#: src/remmina_pref_dialog.c:93 src/remmina_file_editor.c:549
 #, fuzzy
 msgid "Configure the available resolutions"
 msgstr "تكوين الحلول المتوفرة"
@@ -258,18 +258,18 @@ msgid "Configure the keystrokes"
 msgstr "إعداد إدخالات لوحة المفاتيح"
 
 #. TRANSLATORS: Do not translate libsodium, is the name of a library
-#: src/remmina_pref_dialog.c:475
+#: src/remmina_pref_dialog.c:479
 #, fuzzy
 #| msgid "libsodium >= 1.9.0 is required to use master password"
 msgid "libsodium >= 1.9.0 is required to use Primary Password"
 msgstr "libsodium> = 1.9.0 مطلوب لإستخدام كلمة السر الرئيسية"
 
-#: src/remmina_pref_dialog.c:808
+#: src/remmina_pref_dialog.c:813
 #, fuzzy
 msgid "Picking a terminal colouring file replaces the file: "
 msgstr "اختيار ملف تلوين المحطة الطرفية يحل محل الملف: "
 
-#: src/remmina_pref_dialog.c:812
+#: src/remmina_pref_dialog.c:817
 #, fuzzy
 msgid ""
 "This file contains the “Custom” terminal colour scheme selectable from the "
@@ -288,7 +288,7 @@ msgstr "إلغاء"
 #: src/remmina_message_panel.c:198 data/ui/remmina_snap_info_dialog.glade:25
 #: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
 #: data/ui/remmina_string_list.glade:63 data/ui/remmina_news.glade:33
-#: data/ui/remmina_preferences.glade:2654
+#: data/ui/remmina_preferences.glade:2683
 msgid "Close"
 msgstr "إغلاق"
 
@@ -310,8 +310,8 @@ msgid "Save password"
 msgstr "حفظ كلمة سر"
 
 #: src/remmina_message_panel.c:456 src/remmina_message_panel.c:628
-#: src/remmina_sftp_client.c:972 src/remmina_file_editor.c:242
-#: src/remmina_file_editor.c:1808 plugins/spice/spice_plugin_file_transfer.c:84
+#: src/remmina_sftp_client.c:972 src/remmina_file_editor.c:244
+#: src/remmina_file_editor.c:1811 plugins/spice/spice_plugin_file_transfer.c:84
 #: data/ui/remmina_key_chooser.glade:8 data/ui/remmina_key_chooser.glade:9
 #: data/ui/remmina_spinner.glade:8 data/ui/remmina_spinner.glade:9
 msgid "_Cancel"
@@ -891,7 +891,7 @@ msgstr "الحجم"
 msgid "User"
 msgstr "المستخدم"
 
-#: src/remmina_ftp_client.c:955 src/remmina_file_editor.c:1960
+#: src/remmina_ftp_client.c:955 src/remmina_file_editor.c:1962
 #: data/ui/remmina_mpc.glade:93 data/ui/remmina_main.glade:455
 msgid "Group"
 msgstr "الفريق"
@@ -1029,8 +1029,8 @@ msgstr "جاري الاستماع على المنفذ %i لاتصال %s الو�
 msgid "Could not authenticate, attempting reconnection…"
 msgstr "لا يمكن المصادقة ، محاولة إعادة الاتصال …"
 
-#: src/remmina_protocol_widget.c:2047 src/remmina_file_editor.c:437
-#: src/remmina_file_editor.c:1191 data/ui/remmina_main.glade:485
+#: src/remmina_protocol_widget.c:2047 src/remmina_file_editor.c:438
+#: src/remmina_file_editor.c:1210 data/ui/remmina_main.glade:485
 msgid "Server"
 msgstr "خادم"
 
@@ -1360,7 +1360,7 @@ msgstr ""
 msgid "Import"
 msgstr "إستيراد"
 
-#: src/remmina_main.c:1175 src/remmina_file_editor.c:1816
+#: src/remmina_main.c:1175 src/remmina_file_editor.c:1819
 msgid "_Save"
 msgstr "_حفظ"
 
@@ -1513,154 +1513,154 @@ msgstr ""
 "• الخادم [:p النقم]\n"
 "• username@server [:p النشوة] (بروتوكول SSH فقط)</big>"
 
-#: src/remmina_file_editor.c:163
+#: src/remmina_file_editor.c:164
 #, fuzzy
 msgid "Input is invalid."
 msgstr "الإدخال غير صالح."
 
-#: src/remmina_file_editor.c:240
+#: src/remmina_file_editor.c:242
 #, fuzzy
 msgid "Choose a Remote Desktop Server"
 msgstr "اختيار ملقم سطح المكتب البعيد"
 
-#: src/remmina_file_editor.c:461
+#: src/remmina_file_editor.c:462
 #, fuzzy, c-format
 msgid "Browse the network to find a %s server"
 msgstr "تصفح الشبكة للعثور على خادم %s"
 
-#: src/remmina_file_editor.c:565
+#: src/remmina_file_editor.c:585
 msgid "Resolution"
 msgstr "الدِّقَّة"
 
-#: src/remmina_file_editor.c:572
+#: src/remmina_file_editor.c:592
 #, fuzzy
 msgid "Use initial window size"
 msgstr "استخدام حجم الإطار الأولي"
 
-#: src/remmina_file_editor.c:576
+#: src/remmina_file_editor.c:596
 #, fuzzy
 msgid "Use client resolution"
 msgstr "استخدام دقة العميل"
 
-#: src/remmina_file_editor.c:587 src/remmina_file_editor.c:1171
+#: src/remmina_file_editor.c:607 src/remmina_file_editor.c:1190
 #, fuzzy
 msgid "Custom"
 msgstr "تخصيص"
 
-#: src/remmina_file_editor.c:955
+#: src/remmina_file_editor.c:973
 #, fuzzy
 msgid "Keyboard mapping"
 msgstr "تعيين لوحة المفاتيح"
 
-#: src/remmina_file_editor.c:1082
+#: src/remmina_file_editor.c:1100
 #, fuzzy
 msgid "Behavior"
 msgstr "السلوك"
 
-#: src/remmina_file_editor.c:1085
+#: src/remmina_file_editor.c:1103
 msgid "Execute a Command"
 msgstr "تنفيذ أمر"
 
-#: src/remmina_file_editor.c:1089
+#: src/remmina_file_editor.c:1107
 msgid "Before connecting"
 msgstr "قبل الاتصال"
 
-#: src/remmina_file_editor.c:1091
+#: src/remmina_file_editor.c:1109
 #, fuzzy
 msgid "command %h %u %t %U %p %g --option"
 msgstr "الأمر ٪h ٪u ٪t ٪U ٪p ٪g -option"
 
-#: src/remmina_file_editor.c:1096
+#: src/remmina_file_editor.c:1114
 msgid "After connecting"
 msgstr "بعد الاتصال"
 
-#: src/remmina_file_editor.c:1098
+#: src/remmina_file_editor.c:1116
 #, fuzzy
 msgid "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
 msgstr "/path/to/command-opt1 arg ٪h ٪u ٪t-opt2 ٪U ٪p ٪g"
 
-#: src/remmina_file_editor.c:1102
+#: src/remmina_file_editor.c:1120
 msgid "Start-up"
 msgstr "بدء"
 
-#: src/remmina_file_editor.c:1105
+#: src/remmina_file_editor.c:1123
 #, fuzzy
 msgid "Auto-start this profile"
 msgstr "بدء تشغيل ملف التعريف هذا تلقائيا"
 
-#: src/remmina_file_editor.c:1109
+#: src/remmina_file_editor.c:1127
 #, fuzzy
 #| msgid "New connection profile"
 msgid "Connection profile security"
 msgstr "ملف تعريفي جديد للإتصال"
 
-#: src/remmina_file_editor.c:1112
+#: src/remmina_file_editor.c:1130
 msgid "Require password to connect or edit the profile"
 msgstr ""
 
-#: src/remmina_file_editor.c:1144
+#: src/remmina_file_editor.c:1163
 #, fuzzy
 msgid "SSH Tunnel"
 msgstr "نفق SSH"
 
-#: src/remmina_file_editor.c:1145
+#: src/remmina_file_editor.c:1164
 #, fuzzy
 msgid "Enable SSH tunnel"
 msgstr "تمكين نفق SSH"
 
-#: src/remmina_file_editor.c:1152
+#: src/remmina_file_editor.c:1171
 #, fuzzy
 msgid "Tunnel via loopback address"
 msgstr "نفق عبر عنوان الاسترجاع"
 
-#: src/remmina_file_editor.c:1162
+#: src/remmina_file_editor.c:1181
 #, fuzzy, c-format
 msgid "Same server at port %i"
 msgstr "نفس الخادم في المنفذ %i"
 
-#: src/remmina_file_editor.c:1212 plugins/rdp/rdp_plugin.c:2859
+#: src/remmina_file_editor.c:1231 plugins/rdp/rdp_plugin.c:2859
 msgid "Start-up path"
 msgstr "برنامج بدء التشغيل"
 
-#: src/remmina_file_editor.c:1221
+#: src/remmina_file_editor.c:1240
 #, fuzzy
 msgid "SSH Authentication"
 msgstr "مصادقة SSH"
 
-#: src/remmina_file_editor.c:1248
+#: src/remmina_file_editor.c:1267
 #, fuzzy
 #| msgid "SSH identity file"
 msgid "SSH private key file"
 msgstr "ملف المفتاح الخاص SSH"
 
-#: src/remmina_file_editor.c:1254 src/remmina_ssh_plugin.c:1508
+#: src/remmina_file_editor.c:1273 src/remmina_ssh_plugin.c:1508
 #, fuzzy
 #| msgid "SSH identity file"
 msgid "SSH certificate file"
 msgstr "ملف شهادة SSH"
 
-#: src/remmina_file_editor.c:1312
+#: src/remmina_file_editor.c:1330
 #, fuzzy
 msgid "Basic"
 msgstr "أساسي"
 
-#: src/remmina_file_editor.c:1318
+#: src/remmina_file_editor.c:1336
 #, fuzzy
 msgid "Advanced"
 msgstr "متقدمة"
 
-#: src/remmina_file_editor.c:1329 data/ui/remmina_main.glade:499
+#: src/remmina_file_editor.c:1347 data/ui/remmina_main.glade:499
 #, fuzzy
 msgid "Notes"
 msgstr "ملاحظات"
 
-#: src/remmina_file_editor.c:1459
+#: src/remmina_file_editor.c:1464
 #, fuzzy, c-format
 msgid "(%s: %i): Can't validate setting '%s' since 'value' or 'gfe' are NULL!"
 msgstr ""
 "(%s: %i): لا يمكن التحقق من صحة الإعداد '%s' لأن 'القيمة' أو 'gfe' هي فارغة!"
 
-#: src/remmina_file_editor.c:1462
+#: src/remmina_file_editor.c:1468
 #, fuzzy, c-format
 msgid ""
 "(%s: %i): Can't validate user input since 'setting_name_to_validate', "
@@ -1670,66 +1670,66 @@ msgstr ""
 "\" أو \"القيمة\" أو \"gfe\" فارغة!"
 
 #. TRANSLATORS: Meta-error. Shouldn't be visible.
-#: src/remmina_file_editor.c:1466 plugins/x2go/x2go_plugin.c:2574
+#: src/remmina_file_editor.c:1472 plugins/x2go/x2go_plugin.c:2574
 #: plugins/x2go/x2go_plugin.c:3224
 #, fuzzy
 #| msgid "Transfer error"
 msgid "Internal error."
 msgstr "خطأ داخلي."
 
-#: src/remmina_file_editor.c:1692 src/remmina_file_editor.c:1728
-#: src/remmina_file_editor.c:1749 src/remmina_file_editor.c:1772
+#: src/remmina_file_editor.c:1695 src/remmina_file_editor.c:1731
+#: src/remmina_file_editor.c:1752 src/remmina_file_editor.c:1775
 #, fuzzy, c-format
 msgid "Couldn't validate user input. %s"
 msgstr "تعذر التحقق من صحة إدخال المستخدم. %s"
 
-#: src/remmina_file_editor.c:1716
+#: src/remmina_file_editor.c:1719
 #, fuzzy
 msgid "Default settings saved."
 msgstr "تمّ حفظ الإعدادات الأوّليّة."
 
-#: src/remmina_file_editor.c:1806
+#: src/remmina_file_editor.c:1809
 msgid "Remote Connection Profile"
 msgstr "ملف تعريفي جديد للإتصال"
 
-#: src/remmina_file_editor.c:1812
+#: src/remmina_file_editor.c:1815
 #, fuzzy
 msgid "Save as Default"
 msgstr "حفظ كإعداد افتراضي"
 
-#: src/remmina_file_editor.c:1813
+#: src/remmina_file_editor.c:1816
 #, fuzzy
 msgid "Use the current settings as the default for all new connection profiles"
 msgstr ""
 "استخدام الإعدادات الحالية كإعداد افتراضي لكافة ملفات تعريف الاتصال الجديدة"
 
-#: src/remmina_file_editor.c:1821 data/ui/remmina_main.glade:161
+#: src/remmina_file_editor.c:1824 data/ui/remmina_main.glade:161
 msgid "Connect"
 msgstr "اتصل"
 
-#: src/remmina_file_editor.c:1824
+#: src/remmina_file_editor.c:1827
 msgid "_Save and Connect"
 msgstr "ا_حفظ واتصل"
 
-#: src/remmina_file_editor.c:1949
+#: src/remmina_file_editor.c:1951
 #, fuzzy
 msgid "Quick Connect"
 msgstr "الاتصال السريع"
 
-#: src/remmina_file_editor.c:1973
+#: src/remmina_file_editor.c:1975
 #, fuzzy, c-format
 msgid "Use '%s' as subgroup delimiter"
 msgstr "استخدام '%s' كمحدد للمجموعة الفرعية"
 
-#: src/remmina_file_editor.c:1978 data/ui/remmina_main.glade:469
+#: src/remmina_file_editor.c:1980 data/ui/remmina_main.glade:469
 msgid "Labels"
 msgstr ""
 
-#: src/remmina_file_editor.c:1992
+#: src/remmina_file_editor.c:1994
 msgid "Label1,Label2"
 msgstr ""
 
-#: src/remmina_file_editor.c:2064 src/remmina_file_editor.c:2084
+#: src/remmina_file_editor.c:2066 src/remmina_file_editor.c:2085
 #, c-format
 msgid "Could not find the file “%s”."
 msgstr "لم يمكن العثور على الملّف \"%s\"."
@@ -5208,13 +5208,25 @@ msgstr ""
 msgid "Require to modify"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1739
+#: data/ui/remmina_preferences.glade:1708
+#, fuzzy
+msgid "Enter your Remmina password to view passwords"
+msgstr "تخزين كلمة المرور الآمن في KWallet"
+
+#. “Require to view passwords” is “Require the Remmina password before to connect”, the Remmina password is the Master/Principal Password, that is used to protect Remmina from unauthorized use.
+#: data/ui/remmina_preferences.glade:1712
+#, fuzzy
+#| msgid "Set new password"
+msgid "Require to view passwords"
+msgstr "كلمة سر جديدة"
+
+#: data/ui/remmina_preferences.glade:1768
 #, fuzzy
 #| msgid "Description"
 msgid "Encryption"
 msgstr "مواصفة"
 
-#: data/ui/remmina_preferences.glade:1750
+#: data/ui/remmina_preferences.glade:1779
 msgid ""
 "These are the encryption methods used by Remmina to store passwords.\n"
 "\n"
@@ -5225,75 +5237,75 @@ msgid ""
 "\"Sensitive\" is more secure, but uses +1 GiB of RAM and many CPU cycles. "
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1759
+#: data/ui/remmina_preferences.glade:1788
 msgid "Intermediate (+64 MiB RAM)"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1760
+#: data/ui/remmina_preferences.glade:1789
 msgid "Strong (+256 MiB, ~2009 CPU)"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1761
+#: data/ui/remmina_preferences.glade:1790
 msgid "Sensitive (+1 GiB, ~2014 CPU)"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1777
+#: data/ui/remmina_preferences.glade:1806
 #, fuzzy
 #| msgid "Edit settings"
 msgid "Auditing log"
 msgstr "تعديل الإعدادات"
 
-#: data/ui/remmina_preferences.glade:1802
+#: data/ui/remmina_preferences.glade:1831
 msgid "Automatically accept all fingerprints and certificates"
 msgstr "هل تقبل الشهادة المغيرة؟"
 
-#: data/ui/remmina_preferences.glade:1807
+#: data/ui/remmina_preferences.glade:1836
 #, fuzzy
 #| msgid "Trust all fingerprints and certificates"
 msgid "Trust all certificates"
 msgstr "هل تقبل الشهادة المغيرة؟"
 
-#: data/ui/remmina_preferences.glade:1842
+#: data/ui/remmina_preferences.glade:1871
 #, fuzzy
 msgid "Security"
 msgstr "الأمان"
 
-#: data/ui/remmina_preferences.glade:1873
+#: data/ui/remmina_preferences.glade:1902
 #, fuzzy
 msgid "Terminal font"
 msgstr "خط المحطة الطرفية"
 
-#: data/ui/remmina_preferences.glade:1886
+#: data/ui/remmina_preferences.glade:1915
 #, fuzzy
 msgid "Scrollback lines"
 msgstr "خطوط التمرير إلى الإعادة"
 
-#: data/ui/remmina_preferences.glade:1934
+#: data/ui/remmina_preferences.glade:1963
 #, fuzzy
 msgid "Shortcuts for copying and pasting"
 msgstr "اختصارات للنسخ واللصق"
 
-#: data/ui/remmina_preferences.glade:1947
+#: data/ui/remmina_preferences.glade:1976
 #, fuzzy
 msgid "Select all shortcuts"
 msgstr "تحديد كافة الاختصارات"
 
-#: data/ui/remmina_preferences.glade:1960
-#: data/ui/remmina_preferences.glade:1977
-#: data/ui/remmina_preferences.glade:2430
-#: data/ui/remmina_preferences.glade:2460
-#: data/ui/remmina_preferences.glade:2594
-#: data/ui/remmina_preferences.glade:2611
+#: data/ui/remmina_preferences.glade:1989
+#: data/ui/remmina_preferences.glade:2006
+#: data/ui/remmina_preferences.glade:2459
+#: data/ui/remmina_preferences.glade:2489
+#: data/ui/remmina_preferences.glade:2623
+#: data/ui/remmina_preferences.glade:2640
 #, fuzzy
 msgid "(Host key+)"
 msgstr "(مفتاح المضيف+)"
 
-#: data/ui/remmina_preferences.glade:1995
+#: data/ui/remmina_preferences.glade:2024
 #, fuzzy
 msgid "Use default system font"
 msgstr "استخدام خط النظام الافتراضي"
 
-#: data/ui/remmina_preferences.glade:2020
+#: data/ui/remmina_preferences.glade:2049
 #, fuzzy
 msgid ""
 "Selecting “SGR 1” also switches to the bright counterparts of the first 8 "
@@ -5302,15 +5314,15 @@ msgstr ""
 "اختيار \"SGR 1\" يتحول أيضا إلى نظرائهم مشرق من أول 8 ألوان لوحة (بالإضافة "
 "إلى جعل النص جريئة)."
 
-#: data/ui/remmina_preferences.glade:2036
+#: data/ui/remmina_preferences.glade:2065
 msgid "Show bold text in bright colors"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:2050
+#: data/ui/remmina_preferences.glade:2079
 msgid "Colour theme"
 msgstr "لون الحلة"
 
-#: data/ui/remmina_preferences.glade:2061
+#: data/ui/remmina_preferences.glade:2090
 #, fuzzy
 msgid ""
 "Choose a colour scheme file. Usually available in /usr/share/remmina/theme. "
@@ -5319,143 +5331,143 @@ msgstr ""
 "اختر ملف نظام ألوان. عادة ما تكون متاحة في / usr / حصة / remmina / الموضوع. "
 "https://github.com/mbadolato/iTerm2-Color-Schemes لديه المزيد من التفاصيل."
 
-#: data/ui/remmina_preferences.glade:2065
+#: data/ui/remmina_preferences.glade:2094
 #, fuzzy
 msgid "Pick a terminal colouring file"
 msgstr "اختيار ملف تلوين طرفي"
 
-#: data/ui/remmina_preferences.glade:2080
+#: data/ui/remmina_preferences.glade:2109
 msgid "Bright colours"
 msgstr "الألوان الفاتحة"
 
-#: data/ui/remmina_preferences.glade:2094
+#: data/ui/remmina_preferences.glade:2123
 msgid "Pick a light black colour"
 msgstr "اختر لونًا أسودًا فاتحًا"
 
-#: data/ui/remmina_preferences.glade:2108
+#: data/ui/remmina_preferences.glade:2137
 msgid "Pick a light red colour"
 msgstr "اختر لونًا أحمرًا فاتحًا"
 
-#: data/ui/remmina_preferences.glade:2122
+#: data/ui/remmina_preferences.glade:2151
 msgid "Pick a bright green colour"
 msgstr "اختر لونًا أخضرًا فاتحًا"
 
-#: data/ui/remmina_preferences.glade:2136
+#: data/ui/remmina_preferences.glade:2165
 msgid "Pick a bright yellow colour"
 msgstr "اختر لونًا أصفرًا فاتحًا"
 
-#: data/ui/remmina_preferences.glade:2150
+#: data/ui/remmina_preferences.glade:2179
 msgid "Pick a bright blue colour"
 msgstr "اختر لونًا أزرقًا فاتحًا"
 
-#: data/ui/remmina_preferences.glade:2164
+#: data/ui/remmina_preferences.glade:2193
 msgid "Pick a light magenta colour"
 msgstr "اختر لونًا ماجنتيًّا فاتحًا"
 
-#: data/ui/remmina_preferences.glade:2178
+#: data/ui/remmina_preferences.glade:2207
 msgid "Pick a light cyan colour"
 msgstr "اختر لونًا أزرقًا سماويًّا فاتحًا"
 
-#: data/ui/remmina_preferences.glade:2192
+#: data/ui/remmina_preferences.glade:2221
 msgid "Pick a light white colour"
 msgstr "اختر لونًا أبيضًا فاتحًا"
 
-#: data/ui/remmina_preferences.glade:2206
+#: data/ui/remmina_preferences.glade:2235
 msgid "Pick a black colour"
 msgstr "اختر لونًا أسودًا"
 
-#: data/ui/remmina_preferences.glade:2220
+#: data/ui/remmina_preferences.glade:2249
 msgid "Pick a red colour"
 msgstr "اختر لونًا أحمرًا"
 
-#: data/ui/remmina_preferences.glade:2234
+#: data/ui/remmina_preferences.glade:2263
 msgid "Pick a green colour"
 msgstr "اختر لونًا أخضرًا"
 
-#: data/ui/remmina_preferences.glade:2248
+#: data/ui/remmina_preferences.glade:2277
 msgid "Pick a yellow colour"
 msgstr "اختر لونًا أصفرًا"
 
-#: data/ui/remmina_preferences.glade:2262
+#: data/ui/remmina_preferences.glade:2291
 msgid "Pick a blue colour"
 msgstr "اختر لونًا أزرقًا"
 
-#: data/ui/remmina_preferences.glade:2276
+#: data/ui/remmina_preferences.glade:2305
 msgid "Pick a magenta colour"
 msgstr "اختر لونًا ماجنتيًّا"
 
-#: data/ui/remmina_preferences.glade:2290
+#: data/ui/remmina_preferences.glade:2319
 msgid "Pick a cyan colour"
 msgstr "اختر لونًا أزرقًا سماويًّا"
 
-#: data/ui/remmina_preferences.glade:2304
+#: data/ui/remmina_preferences.glade:2333
 msgid "Pick a white colour"
 msgstr "اختر لونًا أبيضًا"
 
-#: data/ui/remmina_preferences.glade:2317
+#: data/ui/remmina_preferences.glade:2346
 msgid "Normal colours"
 msgstr "الألوان العادية"
 
-#: data/ui/remmina_preferences.glade:2330
-#: data/ui/remmina_preferences.glade:2345
+#: data/ui/remmina_preferences.glade:2359
+#: data/ui/remmina_preferences.glade:2374
 msgid "Cursor colour"
 msgstr "لون المؤشر"
 
-#: data/ui/remmina_preferences.glade:2359
-#: data/ui/remmina_preferences.glade:2374
+#: data/ui/remmina_preferences.glade:2388
+#: data/ui/remmina_preferences.glade:2403
 #, fuzzy
 msgid "Background colour"
 msgstr "لون الخلفية"
 
-#: data/ui/remmina_preferences.glade:2390
-#: data/ui/remmina_preferences.glade:2404
+#: data/ui/remmina_preferences.glade:2419
+#: data/ui/remmina_preferences.glade:2433
 #, fuzzy
 msgid "Foreground colour"
 msgstr "لون المقدمة"
 
-#: data/ui/remmina_preferences.glade:2417
+#: data/ui/remmina_preferences.glade:2446
 #, fuzzy
 #| msgid "Increase font size"
 msgid "Increase and decrease font size"
 msgstr "زيادة حجم الخط وتقليله"
 
-#: data/ui/remmina_preferences.glade:2447
+#: data/ui/remmina_preferences.glade:2476
 #, fuzzy
 msgid "Search text shortcut"
 msgstr "البحث عن اختصار النص"
 
-#: data/ui/remmina_preferences.glade:2478
-#: data/ui/remmina_preferences.glade:2493
+#: data/ui/remmina_preferences.glade:2507
+#: data/ui/remmina_preferences.glade:2522
 msgid "Bold colour"
 msgstr "الألوان العادية"
 
-#: data/ui/remmina_preferences.glade:2507
-#: data/ui/remmina_preferences.glade:2548
+#: data/ui/remmina_preferences.glade:2536
+#: data/ui/remmina_preferences.glade:2577
 #, fuzzy
 #| msgid "Bright colours"
 msgid "Highlight colour"
 msgstr "تمييز اللون"
 
-#: data/ui/remmina_preferences.glade:2520
-#: data/ui/remmina_preferences.glade:2564
+#: data/ui/remmina_preferences.glade:2549
+#: data/ui/remmina_preferences.glade:2593
 #, fuzzy
 #| msgid "Pick a light red colour"
 msgid "Highlight foreground colour"
 msgstr "تمييز لون المقدمة"
 
-#: data/ui/remmina_preferences.glade:2533
-#: data/ui/remmina_preferences.glade:2580
+#: data/ui/remmina_preferences.glade:2562
+#: data/ui/remmina_preferences.glade:2609
 #, fuzzy
 #| msgid "Cursor colour"
 msgid "Cursor foreground colour"
 msgstr "لون مقدمة المؤشر"
 
-#: data/ui/remmina_preferences.glade:2636
+#: data/ui/remmina_preferences.glade:2665
 #, fuzzy
 msgid "Terminal"
 msgstr "Terminal"
 
-#: data/ui/remmina_preferences.glade:2650
+#: data/ui/remmina_preferences.glade:2679
 msgid "Remmina Preferences"
 msgstr "خيارات Remmina"
 
