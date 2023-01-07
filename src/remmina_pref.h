@@ -192,6 +192,7 @@ typedef struct _RemminaPref {
 	gint			unlock_timeout;
 	gboolean		lock_connect;
 	gboolean		lock_edit;
+	gboolean		lock_view_passwords;
 	gint			enc_mode;
 	gboolean		audit;
 	gboolean		trust_all;

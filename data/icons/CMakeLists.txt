@@ -56,6 +56,8 @@ set(APPICONSCALE_ACTIONS_DATA
     scalable/actions/org.remmina.Remmina-scale-symbolic.svg
     scalable/actions/org.remmina.Remmina-switch-page-symbolic.svg
     scalable/actions/org.remmina.Remmina-system-run-symbolic.svg
+    scalable/actions/org.remmina.Remmina-password-reveal-symbolic.svg
+    scalable/actions/org.remmina.Remmina-password-conceal-symbolic.svg
     )
 
 set(APPICONSCALE_EMBLEMS_DATA
