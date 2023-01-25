@@ -47,6 +47,7 @@
 #include "remmina_sodium.h"
 #include "remmina_passwd.h"
 #include "remmina_public.h"
+#include "remmina_main.h"
 #include "remmina_string_list.h"
 #include "remmina_widget_pool.h"
 #include "remmina_key_chooser.h"
@@ -184,7 +185,7 @@ void remmina_prefdiag_on_use_password_activated(GtkSwitch *sw, gpointer user_dat
 		//REMMINA_DEBUG ("Password from preferences is: %s", unlock_password);
 		if (unlock_password == NULL || unlock_password[0] == '\0') {
 			if (remmina_passwd(GTK_WINDOW(remmina_pref_dialog->dialog), &unlock_password)) {
-				//REMMINA_DEBUG ("Password is: %s", unlock_password);
+			//REMMINA_DEBUG ("Password is: %s", unlock_password);
 				remmina_pref_set_value("unlock_password", g_strdup(unlock_password));
 				remmina_pref.unlock_password = g_strdup(unlock_password);
 			} else {
@@ -197,7 +198,7 @@ void remmina_prefdiag_on_use_password_activated(GtkSwitch *sw, gpointer user_dat
 		//REMMINA_DEBUG ("use_password deactivated");
 		gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->switch_security_lock_connect), FALSE);
 		gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->switch_security_lock_edit), FALSE);
-		gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->switch_security_lock_view_passwords), FALSE);
+				gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->switch_security_lock_view_passwords), FALSE);
 		remmina_pref.unlock_password = "";
 		remmina_pref_set_value("unlock_password", "");
 	}
@@ -207,11 +208,10 @@ void remmina_pref_dialog_on_action_close(GSimpleAction *action, GVariant *param,
 {
 	TRACE_CALL(__func__);
 	gtk_widget_destroy(GTK_WIDGET(remmina_pref_dialog->dialog));
-	/* Switch to a dark theme if the user enabled it */
-	GtkSettings *settings = gtk_settings_get_default();
-
-	g_object_set(settings, "gtk-application-prefer-dark-theme", remmina_pref.dark_theme, NULL);
+	/* Reload to use new preferences */
+	remmina_main_reload_preferences();
 }
+
 void remmina_pref_dialog_on_close_clicked(GtkWidget *widget, RemminaPrefDialog *dialog)
 {
 	TRACE_CALL(__func__);
