@@ -2273,7 +2273,7 @@ static gchar* rmplugin_x2go_ask_session(RemminaProtocolWidget *gp, GError **erro
 
 		// Every 5 seconds
 		if (counter % 10 == 0 || counter == 0) {
-			REMMINA_PLUGIN_INFO("%s", _("Waiting for user to select a session…"));
+			REMMINA_PLUGIN_MESSAGE("%s", _("Waiting for user to select a session…"));
 		}
 		counter++;
 	}
