@@ -35,13 +35,13 @@ resource_rules:
             {{author}} the Remmina project is looking for new developers.
             We hope someone will take care of your problem in a short time, or you may considering helping out to solve this issue.
 
-      - name: Unlabelled after 30 days
+      - name: Unlabelled after 8 days
         conditions:
           date:
             attribute: updated_at
             condition: older_than
             interval_type: days
-            interval: 30
+            interval: 8
           state: opened
           no_additional_labels: true
         limits:
