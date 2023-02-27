@@ -81,6 +81,7 @@ void remmina_rdp_monitor_get (rfContext *rfi, gchar **monitorids, guint32 *maxwi
 	gint count = 0;
 
 	static gchar buffer[256];
+	gint buffer_offset = 0;
 
 	GdkRectangle geometry = { 0, 0, 0, 0 };
 	GdkRectangle tempgeom = { 0, 0, 0, 0 };
@@ -105,8 +106,6 @@ void remmina_rdp_monitor_get (rfContext *rfi, gchar **monitorids, guint32 *maxwi
 	/* we got monitorids as options */
 	if (*monitorids)
 		has_custom_monitors = TRUE;
-
-	buffer[0] = '\0';
 
 	rdpMonitor* base = (rdpMonitor *)freerdp_settings_get_pointer(settings, FreeRDP_MonitorDefArray);
 	for (gint i = 0; i < n_monitors; ++i) {
@@ -144,6 +143,8 @@ void remmina_rdp_monitor_get (rfContext *rfi, gchar **monitorids, guint32 *maxwi
 		 * we must multiply by the scale factor */
 		scale = gdk_monitor_get_scale_factor (monitor);
 		REMMINA_PLUGIN_DEBUG("Monitor n %d scale: %d", index, scale);
+		geometry.x *= scale;
+		geometry.y *= scale;
 		geometry.width *= scale;
 		geometry.height *= scale;
 		REMMINA_PLUGIN_DEBUG("Monitor n %d width: %d", index, geometry.width);
@@ -190,10 +191,10 @@ void remmina_rdp_monitor_get (rfContext *rfi, gchar **monitorids, guint32 *maxwi
 			//current->y - freerdp_settings_get_uint32(settings, FreeRDP_MonitorLocalShiftY);
 		//REMMINA_PLUGIN_DEBUG("Monitor n %d calculated y: %d", index, current->y);
 
-		if (buffer[0] == '\0')
-			g_sprintf (buffer, "%d", i);
+		if (buffer_offset == 0)
+			buffer_offset = g_sprintf(buffer + buffer_offset, "%d", i);
 		else
-			g_sprintf(buffer, "%s,%d", buffer, i);
+			buffer_offset = g_sprintf(buffer + buffer_offset, ",%d", i);
 		REMMINA_PLUGIN_DEBUG("Monitor IDs buffer: %s", buffer);
 		gdk_rectangle_union(&tempgeom, &geometry, &destgeom);
 		memcpy(&tempgeom, &destgeom, sizeof tempgeom);
