@@ -477,7 +477,6 @@ remmina_ssh_x11_connect_display()
 static int
 remmina_ssh_cp_to_ch_cb(int fd, int revents, void *userdata)
 {
-	REMMINA_DEBUG("SSH time now");
 	TRACE_CALL(__func__);
 	ssh_channel channel = (ssh_channel)userdata;
 	gchar buf[524288];
