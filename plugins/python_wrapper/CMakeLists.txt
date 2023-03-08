@@ -55,11 +55,10 @@ set(REMMINA_PLUGIN_PYTHON_WRAPPER_SRCS
     python_wrapper_tool.h
     )
 
-add_library(remmina-plugin-python_wrapper ${REMMINA_PLUGIN_PYTHON_WRAPPER_SRCS})
+add_library(remmina-plugin-python_wrapper MODULE ${REMMINA_PLUGIN_PYTHON_WRAPPER_SRCS})
 set_target_properties(remmina-plugin-python_wrapper PROPERTIES PREFIX "")
 set_target_properties(remmina-plugin-python_wrapper PROPERTIES NO_SONAME 1)
 
-message(${REMMINA_COMMON_INCLUDE_DIRS})
 include_directories(${REMMINA_COMMON_INCLUDE_DIRS} ${PYTHON_WRAPPER_INCLUDE_DIRS})
 target_link_libraries(remmina-plugin-python_wrapper ${REMMINA_COMMON_LIBRARIES} ${PYTHON_WRAPPER_LIBRARIES})
 
