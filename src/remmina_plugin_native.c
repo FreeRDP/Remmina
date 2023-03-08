@@ -63,7 +63,7 @@ gboolean remmina_plugin_native_load(RemminaPluginService* service, const char* n
 	GModule* module;
 	RemminaPluginEntryFunc entry;
 
-	module = g_module_open(name, G_MODULE_BIND_LAZY | G_MODULE_BIND_LOCAL);
+	module = g_module_open(name, 0);
 
 	if (!module)
 	{
