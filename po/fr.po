@@ -2,7 +2,7 @@
 # Copyright © 2012 Rosetta Contributors and Canonical Ltd 2012
 # This file is distributed under the same license as the remmina package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
-# Davy Defaud <davy.defaud@free.fr>, 2016-2019, 2020, 2021, 2022.
+# Davy Defaud <davy.defaud@free.fr>, 2016-2019, 2020, 2021, 2022, 2023.
 # Nathan <bonnemainsnathan@gmail.com>, 2019, 2020.
 # Aroa Taha <Naturameuocat@protonmail.com>, 2019.
 # Goten <jonathan.breysse@delphisoft.de>, 2020.
@@ -24,8 +24,8 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2023-01-25 14:36+0000\n"
-"PO-Revision-Date: 2023-02-04 06:38+0000\n"
-"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"PO-Revision-Date: 2023-03-16 22:37+0000\n"
+"Last-Translator: Davy Defaud <davy.defaud@free.fr>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/remmina/remmina/"
 "fr/>\n"
 "Language: fr\n"
@@ -33,7 +33,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.16-dev\n"
+"X-Generator: Weblate 4.16.2-dev\n"
 
 #: src/remmina_sftp_plugin.c:309 src/remmina_sftp_plugin.c:353
 #: src/remmina_protocol_widget.c:1694 src/remmina_protocol_widget.c:1713
@@ -525,7 +525,7 @@ msgstr "Les mots de passe ne correspondent pas"
 
 #: src/remmina_mpchange.c:275
 msgid "The Gateway passwords do not match"
-msgstr "Les mots de passe Gateway ne correspondent pas"
+msgstr "Les mots de passe de la passerelle ne correspondent pas"
 
 #: src/remmina_mpchange.c:289
 msgid "Resetting passwords, please wait…"
@@ -1062,8 +1062,8 @@ msgstr "Authentification SSH par mot de passe impossible. %s"
 #: src/remmina_ssh.c:821 src/remmina_ssh.c:888
 msgid "No saved SSH password supplied. Asking user to enter it."
 msgstr ""
-"Aucun mot de passe SSH n’est enregistré. L’utilisateur est sollicité à en "
-"saisir un."
+"Aucun mot de passe SSH n’est enregistré. L’utilisateur est invité à le "
+"saisir."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:826 src/remmina_ssh.c:867 src/remmina_ssh.c:893
@@ -2844,7 +2844,7 @@ msgstr "Activer la prise en charge des WebSockets par la passerelle"
 
 #: plugins/rdp/rdp_plugin.c:2898
 msgid "Update framebuffer even when not visible"
-msgstr ""
+msgstr "Mettre à jour le tampon mémoire vidéo même lorsqu’il n’est pas visible"
 
 #: plugins/rdp/rdp_plugin.c:2907 plugins/spice/spice_plugin.c:707
 #: plugins/spice/spice_plugin.c:715 plugins/vnc/vnc_plugin.c:2094
@@ -3342,12 +3342,10 @@ msgid "Visible"
 msgstr "Visible"
 
 #: plugins/x2go/x2go_plugin.c:527
-#, fuzzy
-#| msgid "Couldn't retrieve valid `DialogData` or `sessions_list`! Aborting…"
 msgid "Could not retrieve valid `DialogData` or `sessions_list`! Aborting…"
 msgstr ""
-"Impossible de récupérer des `DialogData` ou des `sessions_list` valides ! "
-"Abandon…"
+"Impossible de récupérer des « DialogData » ou des « sessions_list » valides "
+"! Abandon…"
 
 #. TRANSLATORS: Stick to x2goclient's translation for terminate.
 #: plugins/x2go/x2go_plugin.c:536
@@ -3375,8 +3373,6 @@ msgid "Unknown property '%i'"
 msgstr "Propriété « %i » inconnue"
 
 #: plugins/x2go/x2go_plugin.c:715 plugins/x2go/x2go_plugin.c:762
-#, fuzzy
-#| msgid "Couldn't find child GtkTreeView of session chooser dialog."
 msgid "Could not find child GtkTreeView of session chooser dialog."
 msgstr ""
 "Impossible de trouver le GtkTreeView fils de la boîte dialogue du sélecteur "
@@ -3399,8 +3395,6 @@ msgstr ""
 "sélecteur de session, pour une raison inconnue."
 
 #: plugins/x2go/x2go_plugin.c:771
-#, fuzzy
-#| msgid "Couldn't get currently selected row (session)!"
 msgid "Could not get currently selected row (session)!"
 msgstr "Impossible d’obtenir la ligne (session) sélectionnée !"
 
@@ -3487,20 +3481,19 @@ msgid "Parameter 'custom_data' is not fully initialized!"
 msgstr "Le paramètre « custom_data » n’a pas été complètement initialisé !"
 
 #: plugins/x2go/x2go_plugin.c:1276
-#, fuzzy, c-format
-#| msgid "Could not start X2Go session."
+#, c-format
 msgid ""
 "Could not terminate X2Go session '%s':\n"
 "%s"
-msgstr "Impossible de démarrer la session X2Go."
+msgstr ""
+"Impossible de clore la session X2Go «%s » :\n"
+"%s"
 
 #: plugins/x2go/x2go_plugin.c:1288 plugins/x2go/x2go_plugin.c:1665
 msgid "An error occured."
 msgstr "Une erreur est survenue."
 
 #: plugins/x2go/x2go_plugin.c:1389 plugins/x2go/x2go_plugin.c:1404
-#, fuzzy
-#| msgid "Couldn't get session ID from session chooser dialog."
 msgid "Could not get session ID from session chooser dialog."
 msgstr ""
 "Impossible d’obtenir l’identifiant de session depuis la boîte de dialogue du "
@@ -3528,11 +3521,6 @@ msgstr ""
 "maintenant être fermée."
 
 #: plugins/x2go/x2go_plugin.c:1666
-#, fuzzy
-#| msgid ""
-#| "The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
-#| "Please check your profile settings and PyHoca-CLI's output for possible "
-#| "errors. Also ensure the remote server is reachable."
 msgid ""
 "The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
 "Please check your profile settings and PyHoca-CLI's output for possible "
@@ -3543,7 +3531,7 @@ msgstr ""
 "inattendue.\n"
 "Veuillez vérifier les paramètres de votre profil et d’éventuelles erreurs "
 "sur la sortie de PyHoca-CLI. Assurez‐vous également que le serveur distant "
-"est accessible."
+"est accessible et que vous utilisez les bons identifiants."
 
 #: plugins/x2go/x2go_plugin.c:1709
 msgid "Can't save empty username!"
@@ -3554,17 +3542,12 @@ msgid "Could not save new credentials."
 msgstr "Impossible d’enregistrer les nouvelles informations d’dentification."
 
 #: plugins/x2go/x2go_plugin.c:1726
-#, fuzzy
-#| msgid ""
-#| "An error occured while trying to save new credentials: 's_password' or "
-#| "'s_username' strings were not set."
 msgid ""
 "Could not save new credentials: 's_password' or 's_username' strings were "
 "not set."
 msgstr ""
-"Une erreur est survenue lors de l’enregistrement des nouvelles informations "
-"d’identification : une des chaînes « s_password » et « s_username » n’a pas "
-"été définie."
+"Impossible d’enregistrer les nouveaux paramètres d’identification : une des "
+"chaînes « s_password » et « s_username » n’a pas été définie."
 
 #: plugins/x2go/x2go_plugin.c:1758
 msgid "Enter password to unlock the SSH key:"
@@ -3579,6 +3562,9 @@ msgid ""
 "Tip: Check the 'Save password' checkbox or manually input your X2Go username "
 "and password in the profile settings to store them for faster logins."
 msgstr ""
+"Astuce : cochez la case « Enregistrer le mot passe » ou entrez manuellement "
+"vos nom d’utilisateur et mot de passe dans les paramètres du profil pour "
+"démarrer une connexion plus rapidement."
 
 #: plugins/x2go/x2go_plugin.c:1831
 msgid "Enter X2Go credentials"
@@ -3589,20 +3575,14 @@ msgid "Authentication cancelled. Aborting…"
 msgstr "Authentification annulée. Abandon…"
 
 #: plugins/x2go/x2go_plugin.c:2047
-#, fuzzy
-#| msgid ""
-#| "Couldn't parse the output of PyHoca-CLI's --list-sessions option. "
-#| "Creating a new session now."
 msgid ""
 "Could not parse the output of PyHoca-CLI's --list-sessions option. Creating "
 "a new session now."
 msgstr ""
 "Impossible d’analyser la sortie de l’option --list-sessions de PyHoca-CLI. "
-"Création immédiate d’une nouvelle session."
+"Création d’une nouvelle session."
 
 #: plugins/x2go/x2go_plugin.c:2086
-#, fuzzy
-#| msgid "Couldn't allocate enough memory!"
 msgid "Could not allocate enough memory!"
 msgstr "Impossible d’allouer suffisamment de mémoire !"
 
@@ -3669,10 +3649,8 @@ msgstr ""
 "l’ajuster dans les paramètres du profil."
 
 #: plugins/x2go/x2go_plugin.c:2576
-#, fuzzy
-#| msgid "Could not start X2Go session."
 msgid "Could not start X2Go session…"
-msgstr "Impossible de démarrer la session X2Go."
+msgstr "Impossible de démarrer la session X2Go…"
 
 #: plugins/x2go/x2go_plugin.c:2583
 msgid "Could not start X2Go session."
@@ -3684,11 +3662,6 @@ msgid "Could not start PyHoca-CLI (%i): '%s'"
 msgstr "Impossible de lancer PyHoca-CLI (%i) : « %s  »"
 
 #: plugins/x2go/x2go_plugin.c:2699
-#, fuzzy
-#| msgid ""
-#| "Couldn't get PyHoca-CLI's command-line features. This indicates it is "
-#| "either too old, or not installed. An old limited set of features will be "
-#| "used for now."
 msgid ""
 "Could not get PyHoca-CLI's command-line features. This indicates it is "
 "either too old, or not installed. An old limited set of features will be "
@@ -4160,8 +4133,8 @@ msgid ""
 "Copyright © 2009–2014 Vic Lee\n"
 "More details in COPYING"
 msgstr ""
-"Copyright © 2014-2023 Antenore Gatta, Giovanni Panozzo.\n"
-"Copyright © 2009-2014 Vic Lee\n"
+"Copyright © 2014–2023 Antenore Gatta, Giovanni Panozzo.\n"
+"Copyright © 2009–2014 Vic Lee\n"
 "Plus de détails dans le fichier COPYING"
 
 #: data/ui/remmina_about.glade:39
@@ -4203,19 +4176,19 @@ msgstr "Nouveau mot de passe"
 
 #: data/ui/remmina_mpc.glade:320
 msgid "Gateway Username"
-msgstr "Nom d’utilisateur Gateway"
+msgstr "Nom d’utilisateur de la passerelle"
 
 #: data/ui/remmina_mpc.glade:349
 msgid "Gateway Domain"
-msgstr "Domaine Gateway"
+msgstr "Domaine de la passerelle"
 
 #: data/ui/remmina_mpc.glade:415
 msgid "Gateway Password"
-msgstr "Mot de passe Gateway"
+msgstr "Mot de passe de la passerelle"
 
 #: data/ui/remmina_mpc.glade:440
 msgid "Confirm Gateway Password"
-msgstr "Confirmez le mot de passe Gateway"
+msgstr "Confirmez le mot de passe de la passerelle"
 
 #. A column table with multiple check-boxes
 #: data/ui/remmina_mpc.glade:503
@@ -4241,7 +4214,7 @@ msgstr "Domaine\\Nom d’utilisateur"
 #: data/ui/remmina_mpc.glade:548
 msgctxt "Multi password changer table"
 msgid "Gateway Domain\\Username"
-msgstr "Domaine \\ Nom d’utilisateur Gateway"
+msgstr "Domaine-de-la-passerelle\\utilisateur"
 
 #: data/ui/remmina_mpc.glade:588
 msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
@@ -4704,7 +4677,7 @@ msgstr "Toujours afficher les notes"
 
 #: data/ui/remmina_preferences.glade:691
 msgid "Add a column displaying any notes associated with a connection."
-msgstr "Ajouter une colonne affichant des notes associées avec une connexion."
+msgstr "Ajouter une colonne affichant les notes associées à une connexion."
 
 #: data/ui/remmina_preferences.glade:711
 msgid "“Grab all keyboard events” status colour"
@@ -4908,17 +4881,13 @@ msgid "Require to modify"
 msgstr "Exiger pour toute modification"
 
 #: data/ui/remmina_preferences.glade:1708
-#, fuzzy
-#| msgid "Enter your Remmina password to connect"
 msgid "Enter your Remmina password to view passwords"
-msgstr "Saisissez votre mot de passe Remmina pour vous connecter"
+msgstr "Saisissez votre mot de passe Remmina pour afficher les mots de passe"
 
 #. “Require to view passwords” is “Require the Remmina password before to connect”, the Remmina password is the Master/Principal Password, that is used to protect Remmina from unauthorized use.
 #: data/ui/remmina_preferences.glade:1712
-#, fuzzy
-#| msgid "Set new password"
 msgid "Require to view passwords"
-msgstr "Nouveau mot de passe"
+msgstr "Exiger pour l’affichage de mots de passe"
 
 #: data/ui/remmina_preferences.glade:1768
 msgid "Encryption"
