@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2023-01-25 14:36+0000\n"
-"PO-Revision-Date: 2023-01-14 06:49+0000\n"
+"PO-Revision-Date: 2023-03-17 08:37+0000\n"
 "Last-Translator: maboroshin <maboroshin@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/remmina/remmina/"
 "ja/>\n"
@@ -28,7 +28,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.15.1-dev\n"
+"X-Generator: Weblate 4.16.2-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
 
 #: src/remmina_sftp_plugin.c:309 src/remmina_sftp_plugin.c:353
@@ -1024,11 +1024,8 @@ msgid "Could not authenticate with SSH password. %s"
 msgstr "SSH パスワードで認証できませんでした: %s"
 
 #: src/remmina_ssh.c:821 src/remmina_ssh.c:888
-#, fuzzy
-#| msgid "No saved SSH passphrase supplied. Asking user to enter it."
 msgid "No saved SSH password supplied. Asking user to enter it."
-msgstr ""
-"SSH パスフレーズが保存されていません。ユーザーが入力する必要があります。"
+msgstr "SSH パスワードが保存されていません。ユーザーが入力する必要があります。"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:826 src/remmina_ssh.c:867 src/remmina_ssh.c:893
@@ -1500,7 +1497,7 @@ msgstr "カスタム"
 
 #: src/remmina_file_editor.c:973
 msgid "Keyboard mapping"
-msgstr "キーボードマッピング"
+msgstr "キーボードの割り当て"
 
 #: src/remmina_file_editor.c:1100
 msgid "Behavior"
@@ -2002,22 +1999,17 @@ msgid "Use client keyboard mapping"
 msgstr "クライアントのキーボードマッピングを使用する"
 
 #: plugins/rdp/rdp_settings.c:466
-#, fuzzy
-#| msgid "Keyboard mapping"
 msgid "Keyboard scancode remapping"
-msgstr "キーボードのスキャンコードのリマッピング"
+msgstr "キーボードのスキャンコードの再割り当て"
 
 #: plugins/rdp/rdp_settings.c:481
-#, fuzzy
 msgid "List of key=value,… pairs to remap scancodes. E.g. 0x56=0x29,0x29=0x56"
-msgstr ""
-"スキャンコードをリマップするためのkey=value,...のペアのリスト。例："
+msgstr "スキャンコードを再割り当てする key=value... のペアのリスト。例: "
 "0x56=0x29,0x29=0x56"
 
 #: plugins/rdp/rdp_settings.c:484
-#, fuzzy
 msgid "FreeRDP > 2.3.0 is required to map scancodes"
-msgstr "スキャンコードのマッピングには、FreeRDP > 2.3.0が必要です。"
+msgstr "スキャンコードのマッピングには、FreeRDP > 2.3.0が必要"
 
 #: plugins/rdp/rdp_settings.c:492
 msgid "Quality settings"
@@ -2089,10 +2081,9 @@ msgid "Reconnect attempts number"
 msgstr "再接続試行回数"
 
 #: plugins/rdp/rdp_settings.c:687 plugins/rdp/rdp_plugin.c:2873
-#, fuzzy
 msgid ""
 "The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
-msgstr "RDPの切断時に再接続を試みる最大数（デフォルト：20）"
+msgstr "RDPの切断時に再接続を試みる最大数 (初期値: 20)"
 
 #: plugins/rdp/rdp_plugin.c:789 plugins/rdp/rdp_plugin.c:854
 msgid "Enter RDP authentication credentials"
