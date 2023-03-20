@@ -41,6 +41,7 @@
 
 /* To get definitions of NI_MAXHOST and NI_MAXSERV from <netdb.h> */
 #define _DEFAULT_SOURCE
+#define _DARWIN_C_SOURCE
 
 /* Define this before stdlib.h to have posix_openpt */
 #define _XOPEN_SOURCE 600
@@ -477,10 +478,12 @@ remmina_ssh_x11_connect_display()
 static int
 remmina_ssh_cp_to_ch_cb(int fd, int revents, void *userdata)
 {
-	REMMINA_DEBUG("SSH time now");
 	TRACE_CALL(__func__);
 	ssh_channel channel = (ssh_channel)userdata;
-	gchar buf[524288];
+	gchar *buf = (gchar *) g_malloc ( sizeof(gchar) * 0x200000 );
+	if (buf ==NULL){
+		return -1;
+	}
 	gint sz = 0, ret = 0;
 
 	node_t *temp_node = remmina_ssh_search_item(channel);
@@ -499,11 +502,15 @@ remmina_ssh_cp_to_ch_cb(int fd, int revents, void *userdata)
 		sz = read(fd, buf, sizeof(buf));
 		if (sz > 0) {
 			ret = ssh_channel_write(channel, buf, sz);
-			if (ret != sz)
+			if (ret != sz){
+				g_free(buf);
 				return -1;
+			}
+				
 			//TODO: too verbose REMMINA_DEBUG("ssh_channel_write ret: %d sz: %d", ret, sz);
 		} else if (sz < 0) {
 			// TODO: too verbose REMMINA_WARNING("fd bytes read: %d", sz);
+			g_free(buf);
 			return -1;
 		} else {
 			REMMINA_WARNING("Why the hell am I here?");
@@ -512,6 +519,7 @@ remmina_ssh_cp_to_ch_cb(int fd, int revents, void *userdata)
 				close(fd);
 				REMMINA_DEBUG("fd %d closed.", fd);
 			}
+			g_free(buf);
 			return -1;
 		}
 	}
@@ -521,7 +529,7 @@ remmina_ssh_cp_to_ch_cb(int fd, int revents, void *userdata)
 		ssh_channel_close(channel);
 		ret = -1;
 	}
-
+	g_free(buf);
 	return ret;
 }
 
