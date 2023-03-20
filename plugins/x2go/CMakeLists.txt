@@ -40,7 +40,7 @@ set(REMMINA_PLUGIN_X2GO_SRCS
     x2go_plugin.h
     )
 
-add_library(remmina-plugin-x2go ${REMMINA_PLUGIN_X2GO_SRCS})
+add_library(remmina-plugin-x2go MODULE ${REMMINA_PLUGIN_X2GO_SRCS})
 set_target_properties(remmina-plugin-x2go PROPERTIES PREFIX "")
 set_target_properties(remmina-plugin-x2go PROPERTIES NO_SONAME 1)
 
@@ -52,7 +52,6 @@ target_link_libraries(remmina-plugin-x2go
     ${REMMINA_COMMON_LIBRARIES}
     ${XKBFILE_LIBRARIES}
     ${LIBSSH_LIBRARIES}
-    ${Intl_LIBRARIES}
     ${X11_X11_LIB})
 
 install(TARGETS remmina-plugin-x2go DESTINATION ${REMMINA_PLUGINDIR})
