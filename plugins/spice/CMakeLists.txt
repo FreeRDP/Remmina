@@ -36,7 +36,7 @@ set(REMMINA_PLUGIN_SPICE_SRCS
         spice_plugin_usb.c
         )
 
-add_library(remmina-plugin-spice ${REMMINA_PLUGIN_SPICE_SRCS})
+add_library(remmina-plugin-spice MODULE ${REMMINA_PLUGIN_SPICE_SRCS})
 set_target_properties(remmina-plugin-spice PROPERTIES PREFIX "")
 set_target_properties(remmina-plugin-spice PROPERTIES NO_SONAME 1)
 

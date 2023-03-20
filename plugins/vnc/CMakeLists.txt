@@ -32,9 +32,6 @@
 # files in the program, then also delete it here.
 
 
-set(LIBVNCSERVER_INCLUDE_DIRS)
-set(LIBVNCSERVER_LIBRARIES vncclient)
-
 set(REMMINA_PLUGIN_VNC_SRCS
 	vnc_plugin.c
 	vnc_plugin.h

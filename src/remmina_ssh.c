@@ -41,6 +41,7 @@
 
 /* To get definitions of NI_MAXHOST and NI_MAXSERV from <netdb.h> */
 #define _DEFAULT_SOURCE
+#define _DARWIN_C_SOURCE
 
 /* Define this before stdlib.h to have posix_openpt */
 #define _XOPEN_SOURCE 600

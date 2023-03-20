@@ -36,7 +36,7 @@ set(REMMINA_PLUGIN_GVNC_SRCS
     gvnc_plugin.c
     )
 
-add_library(remmina-plugin-gvnc ${REMMINA_PLUGIN_GVNC_SRCS})
+add_library(remmina-plugin-gvnc MODULE ${REMMINA_PLUGIN_GVNC_SRCS})
 set_target_properties(remmina-plugin-gvnc PROPERTIES PREFIX "")
 set_target_properties(remmina-plugin-gvnc PROPERTIES NO_SONAME 1)
 
