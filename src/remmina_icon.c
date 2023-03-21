@@ -295,10 +295,15 @@ static void remmina_icon_create_autostart_file(void)
 	// TRANSLATORS: Applet comment/description as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
 	g_key_file_set_string(gkeyfile, "Desktop Entry", "Comment", _("Connect to remote desktops through the applet menu"));
 	g_key_file_set_string(gkeyfile, "Desktop Entry", "Icon", REMMINA_APP_ID);
-	g_key_file_set_string(gkeyfile, "Desktop Entry", "Exec", "remmina -i");
+	if (getenv("FLATPAK_ID")){
+		g_key_file_set_string(gkeyfile, "Desktop Entry", "Exec", "flatpak run org.remmina.Remmina -i");
+	}
+	else{
+		g_key_file_set_string(gkeyfile, "Desktop Entry", "Exec", "remmina -i");
+	}
 	g_key_file_set_boolean(gkeyfile, "Desktop Entry", "Terminal", FALSE);
 	g_key_file_set_string(gkeyfile, "Desktop Entry", "Type", "Application");
-	g_key_file_set_boolean(gkeyfile, "Desktop Entry", "Hidden", TRUE);
+	g_key_file_set_boolean(gkeyfile, "Desktop Entry", "Hidden", FALSE);
 	remmina_icon_save_autostart_file(gkeyfile);
 	g_key_file_free(gkeyfile);
 }
