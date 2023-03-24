@@ -71,6 +71,12 @@
 #define REMMINA_PLUGIN_AUDIT(fmt, ...) \
 		remmina_plugin_service->_remmina_audit(__func__, fmt, ##__VA_ARGS__)
 
+#define LIBVNCSERVER_CHECK_VERSION_VERSION(major,minor,patchlevel)                    \
+        (LIBVNC_INT_MAJOR > (major) ||                                       \
+        (LIBVNC_INT_MAJOR == (major) && LIBVNC_INT_MINOR > (minor)) || \
+        (LIBVNC_INT_MAJOR == (major) && LIBVNC_INT_MINOR == (minor) && \
+         LIBVNC_INT_PATCH >= (patchlevel)))
+
 typedef struct _RemminaPluginVncData {
 	/* Whether the user requests to connect/disconnect */
 	gboolean		connected;

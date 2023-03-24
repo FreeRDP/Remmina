@@ -32,6 +32,16 @@ find_library(LIBVNCCLIENT_LIBRARY NAMES vncclient
 
 include(FindPackageHandleStandardArgs)
 
+#libvnc defines their version as a string, not an int, so we parse it here to allow
+#for proper c preprocessing to work
+string(REPLACE "." ";" VERSION_LIST ${PC_LIBVNCSERVER_VERSION})
+list(GET VERSION_LIST 0 MY_PROGRAM_VERSION_MAJOR)
+list(GET VERSION_LIST 1 MY_PROGRAM_VERSION_MINOR)
+list(GET VERSION_LIST 2 MY_PROGRAM_VERSION_PATCH)
+
+add_compile_definitions(LIBVNC_INT_MAJOR=${MY_PROGRAM_VERSION_MAJOR})
+add_compile_definitions(LIBVNC_INT_MINOR=${MY_PROGRAM_VERSION_MINOR})
+add_compile_definitions(LIBVNC_INT_PATCH=${MY_PROGRAM_VERSION_PATCH})
 find_package_handle_standard_args(LIBVNCSERVER DEFAULT_MSG LIBVNCSERVER_LIBRARY LIBVNCSERVER_INCLUDE_DIR)
 
 set(LIBVNCSERVER_LIBRARIES ${LIBVNCSERVER_LIBRARY} ${LIBVNCCLIENT_LIBRARY})

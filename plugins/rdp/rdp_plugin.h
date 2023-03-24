@@ -66,7 +66,7 @@
  *
  * Returns: %TRUE if FREERDP headers are new enough
  */
-#define FREERDP_CHECK_VERSION(major,minor,revision)                                  \
+#define FREERDP_CHECK_VERSION(major,minor,revision)                           \
 	(FREERDP_VERSION_MAJOR > (major) ||                                       \
 	 (FREERDP_VERSION_MAJOR == (major) && FREERDP_VERSION_MINOR > (minor)) || \
 	 (FREERDP_VERSION_MAJOR == (major) && FREERDP_VERSION_MINOR == (minor) && \

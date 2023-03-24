@@ -48,6 +48,7 @@
 #define REMMINA_PLUGIN_VNC_FEATURE_UNFOCUS                 7
 #define REMMINA_PLUGIN_VNC_FEATURE_TOOL_SENDCTRLALTDEL     8
 #define REMMINA_PLUGIN_VNC_FEATURE_PREF_COLOR	           9
+#define REMMINA_PLUGIN_VNC_FEATURE_DYNRESUPDATE 	       10
 
 #define VNC_DEFAULT_PORT 5900
 
@@ -231,7 +232,7 @@ static void remmina_plugin_vnc_update_scale(RemminaProtocolWidget *gp, gboolean 
 
 	RemminaPluginVncData *gpdata;
 	gint width, height;
-
+	
 	if (!remmina_plugin_service->is_main_thread()) {
 		struct onMainThread_cb_data *d;
 		d = (struct onMainThread_cb_data *)g_malloc(sizeof(struct onMainThread_cb_data));
@@ -1725,6 +1726,9 @@ static gboolean remmina_plugin_vnc_open_connection(RemminaProtocolWidget *gp)
 		REMMINA_PLUGIN_AUDIT(_("Connected to %s:%d via VNC"), server, port);
 		g_free(server), server = NULL;
 	}
+#if LIBVNCSERVER_CHECK_VERSION_VERSION(0, 9, 14)
+	remmina_plugin_service->protocol_plugin_unlock_dynres(gp);
+#endif
 	return TRUE;
 }
 
@@ -1820,7 +1824,6 @@ static gboolean remmina_plugin_vnc_query_feature(RemminaProtocolWidget *gp, cons
 {
 	TRACE_CALL(__func__);
 	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
-
 	switch (feature->id) {
 	case REMMINA_PLUGIN_VNC_FEATURE_PREF_DISABLESERVERINPUT:
 		return SupportsClient2Server((rfbClient *)(gpdata->client), rfbSetServerInput) ? TRUE : FALSE;
@@ -1900,6 +1903,26 @@ static void remmina_plugin_vnc_keystroke(RemminaProtocolWidget *gp, const guint 
 	return;
 }
 
+#if LIBVNCSERVER_CHECK_VERSION_VERSION(0, 9, 14)
+static gboolean remmina_plugin_vnc_on_size_allocate(GtkWidget *widget, GtkAllocation *alloc, RemminaProtocolWidget *gp)
+{
+	TRACE_CALL(__func__);
+	RemminaScaleMode scale_mode = remmina_plugin_service->remmina_protocol_widget_get_current_scale_mode(gp);
+	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
+
+	if (scale_mode == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_DYNRES){
+		char str[1024];
+		sprintf(str, "DEBUG: %d x %d", alloc->width, alloc->height);
+		TRACE_CALL(str);
+		if (gpdata->client){
+			rfbClient *cl;
+			SendExtDesktopSize(gpdata->client, alloc->width, alloc->height);
+		}
+	}
+	return TRUE;
+}
+#endif
+
 static gboolean remmina_plugin_vnc_on_draw(GtkWidget *widget, cairo_t *context, RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
@@ -1968,7 +1991,9 @@ static void remmina_plugin_vnc_init(RemminaProtocolWidget *gp)
 
 
 	g_signal_connect(G_OBJECT(gpdata->drawing_area), "draw", G_CALLBACK(remmina_plugin_vnc_on_draw), gp);
-
+#if LIBVNCSERVER_CHECK_VERSION_VERSION(0, 9, 14)
+	g_signal_connect(G_OBJECT(gpdata->drawing_area), "size-allocate", G_CALLBACK(remmina_plugin_vnc_on_size_allocate), gp);
+#endif
 	gpdata->auth_first = TRUE;
 	gpdata->clipboard_timer = g_date_time_new_now_utc();
 	gpdata->listen_sock = -1;
@@ -2111,6 +2136,9 @@ static const RemminaProtocolFeature remmina_plugin_vnc_features[] =
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,	 REMMINA_PLUGIN_VNC_FEATURE_TOOL_SENDCTRLALTDEL,     N_("Send Ctrl+Alt+Delete"),			   NULL,		NULL					       },
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_SCALE,	 REMMINA_PLUGIN_VNC_FEATURE_SCALE,		     NULL,						   NULL,		NULL					       },
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_UNFOCUS, REMMINA_PLUGIN_VNC_FEATURE_UNFOCUS,		     NULL,						   NULL,		NULL					       },
+#if LIBVNCSERVER_CHECK_VERSION_VERSION(0, 9, 14)
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_DYNRESUPDATE, REMMINA_PLUGIN_VNC_FEATURE_DYNRESUPDATE,	       NULL,			   NULL, NULL },
+#endif	
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_END,	 0,						     NULL,						   NULL,		NULL					       }
 };
 
