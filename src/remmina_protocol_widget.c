@@ -87,6 +87,7 @@ struct _RemminaProtocolWidgetPriv {
 	RemminaMessagePanel *	connect_message_panel;
 	RemminaMessagePanel *	listen_message_panel;
 	RemminaMessagePanel *	auth_message_panel;
+	RemminaMessagePanel *	retry_message_panel;
 
 	/* Data saved from the last message_panel when the user confirm */
 	gchar *			username;
@@ -383,6 +384,10 @@ static gboolean conn_opened(gpointer data)
 	if (gp->priv->connect_message_panel) {
 		rco_destroy_message_panel(gp->cnnobj, gp->priv->connect_message_panel);
 		gp->priv->connect_message_panel = NULL;
+	}
+	if (gp->priv->retry_message_panel) {
+		rco_destroy_message_panel(gp->cnnobj, gp->priv->retry_message_panel);
+		gp->priv->retry_message_panel = NULL;
 	}
 	g_signal_emit_by_name(G_OBJECT(gp), "connect");
 	return G_SOURCE_REMOVE;
@@ -1983,6 +1988,7 @@ void remmina_protocol_widget_panel_show_retry(RemminaProtocolWidget *gp)
 
 	mp = remmina_message_panel_new();
 	remmina_message_panel_setup_progress(mp, _("Could not authenticate, attempting reconnection…"), NULL, NULL);
+	gp->priv->retry_message_panel = mp;
 	rco_show_message_panel(gp->cnnobj, mp);
 }
 
