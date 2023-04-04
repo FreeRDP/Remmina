@@ -1,3 +1,25 @@
+## v.1.4.30
+[full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.29...HEAD)
+
+* Update snap build to use freerdp 2.9.0 [!2458](https://gitlab.com/Remmina/Remmina/merge_requests/2458) *@myheroyuki*
+* Add text mime type formats to RDP clibpoard [!2459](https://gitlab.com/Remmina/Remmina/merge_requests/2459) *@giox069*
+* Ensure timer is null after destruction [!2462](https://gitlab.com/Remmina/Remmina/merge_requests/2462) *@myheroyuki*
+* Ability to view passwords in the clear using a toggle in the password field [!2460](https://gitlab.com/Remmina/Remmina/merge_requests/2460) *@benoit.lagarde*
+* Made icons viewable in lower resulution. [!2463](https://gitlab.com/Remmina/Remmina/merge_requests/2463) *@benoit.lagarde*
+* Improve mime file [!2464](https://gitlab.com/Remmina/Remmina/merge_requests/2464) *@yselkowitz1*
+* [REM-2809] Appearance preferences now refresh in the main window when the user... [!2466](https://gitlab.com/Remmina/Remmina/merge_requests/2466) *@myheroyuki*
+* This should be a message instead of a info print. So that the user can see it by default. [!2461](https://gitlab.com/Remmina/Remmina/merge_requests/2461) *@sork*
+* remmina_rdp_monitor_get(): fix maxw, maxh and monitorids calculation [!2467](https://gitlab.com/Remmina/Remmina/merge_requests/2467) *@MaxIhlenfeldt*
+* Rem 2864 [!2469](https://gitlab.com/Remmina/Remmina/merge_requests/2469) *@myheroyuki*
+* Fix undefined symbol error when importing gi in a python extension [!2470](https://gitlab.com/Remmina/Remmina/merge_requests/2470) *@bhatman1441*
+* make it build on macOS [!2471](https://gitlab.com/Remmina/Remmina/merge_requests/2471) *@mvzlb*
+* Rem 2864 [!2472](https://gitlab.com/Remmina/Remmina/merge_requests/2472) *@myheroyuki*
+* Fix autostart file flatpak exec command [!2474](https://gitlab.com/Remmina/Remmina/merge_requests/2474) *@bhatman1441*
+* [REM-1987] allow for dynamic resolution updates for vnc connections [!2476](https://gitlab.com/Remmina/Remmina/merge_requests/2476) *@myheroyuki*
+* Fix overlapping text in preferences menu, terminal tab [!2477](https://gitlab.com/Remmina/Remmina/merge_requests/2477) *@bhatman1441*
+* Allow could not authenticate banner to go away after successful reauthentication [!2478](https://gitlab.com/Remmina/Remmina/merge_requests/2478) *@bhatman1441*
+* Add environments for easy manual testing [!2473](https://gitlab.com/Remmina/Remmina/merge_requests/2473) *@ToolsDevler*
+
 ## v1.4.29
 [full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.28...v1.4.29)
 
