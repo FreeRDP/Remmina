@@ -1716,7 +1716,7 @@ static gboolean remmina_plugin_vnc_open_connection(RemminaProtocolWidget *gp)
 	raw_server = remmina_plugin_service->file_get_string(remminafile, "server");
 
 	if (raw_server && strstr(raw_server, "unix://") == raw_server) {
-		REMMINA_PLUGIN_AUDIT(_("Connected to %s via VNC"), server);
+		REMMINA_PLUGIN_AUDIT(_("Connected to %s via VNC"), raw_server);
 	} else {
 		remmina_plugin_service->get_server_port(raw_server,
 				VNC_DEFAULT_PORT,
