@@ -1034,8 +1034,9 @@ static PyObject* remmina_public_get_server_port_wrapper(PyObject* self, PyObject
 		python_wrapper_get_service()->get_server_port(server, defaultport, &host, &port);
 
 		PyObject* result = PyList_New(2);
-		PyList_Append(result, PyUnicode_FromString(host));
-		PyList_Append(result, PyLong_FromLong(port));
+		PyList_SetItem(result, 0, PyUnicode_FromString(host));
+		PyList_SetItem(result, 1, PyLong_FromLong(port));
+
 		return PyList_AsTuple(result);
 	}
 
