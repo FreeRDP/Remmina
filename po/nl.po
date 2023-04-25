@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2023-04-11 12:58+0000\n"
-"PO-Revision-Date: 2023-04-20 08:52+0000\n"
+"PO-Revision-Date: 2023-04-25 22:48+0000\n"
 "Last-Translator: Lucas Ridder <lhridder@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/remmina/remmina/nl/"
 ">\n"
@@ -681,6 +681,10 @@ msgid ""
 "More info available on the Remmina wiki at:\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgstr ""
+"Remmina logt niet alle output statements. Zet verbose output aan met "
+"\"G_MESSAGES_DEBUG=all\" als environment variabele.\n"
+"Meer info beschikbaar op de Remmina wiki op:\n"
+"https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:418
@@ -1941,7 +1945,7 @@ msgstr "Map voor SSH-sessielogboek"
 
 #: src/remmina_ssh_plugin.c:1545
 msgid "Full path of an existing folder"
-msgstr ""
+msgstr "Volledig pad van een bestaande map"
 
 #: src/remmina_ssh_plugin.c:1546
 msgid "Filename for SSH session log"
@@ -1968,7 +1972,7 @@ msgstr "Hoorbare terminal bel"
 
 #: src/remmina_ssh_plugin.c:1550
 msgid "SSH X11 Forwarding"
-msgstr ""
+msgstr "SSH X11 Doorsturing"
 
 #: src/remmina_ssh_plugin.c:1551
 msgid "SSH compression"
@@ -2152,7 +2156,7 @@ msgstr "Voer RDP-gateway verificatiegegevens in"
 #: plugins/rdp/rdp_plugin.c:1043
 #, c-format
 msgid "Disconnected from %s via RDP"
-msgstr ""
+msgstr "Verbinding verbroken van %s via RDP"
 
 #: plugins/rdp/rdp_plugin.c:2195
 #, c-format
@@ -2412,27 +2416,27 @@ msgstr "Standaard"
 
 #: plugins/rdp/rdp_plugin.c:2716
 msgid "0 — Windows 7 compatible"
-msgstr ""
+msgstr "0 - Windows 7 ondersteund"
 
 #: plugins/rdp/rdp_plugin.c:2717
 msgid "1"
-msgstr ""
+msgstr "1"
 
 #: plugins/rdp/rdp_plugin.c:2718
 msgid "2"
-msgstr ""
+msgstr "2"
 
 #: plugins/rdp/rdp_plugin.c:2719
 msgid "3"
-msgstr ""
+msgstr "3"
 
 #: plugins/rdp/rdp_plugin.c:2720
 msgid "4"
-msgstr ""
+msgstr "4"
 
 #: plugins/rdp/rdp_plugin.c:2721
 msgid "5"
-msgstr ""
+msgstr "5"
 
 #: plugins/rdp/rdp_plugin.c:2726
 #, fuzzy
@@ -2923,7 +2927,7 @@ msgstr "Schakel Gateway websockets ondersteuning in"
 
 #: plugins/rdp/rdp_plugin.c:2898
 msgid "Update framebuffer even when not visible"
-msgstr ""
+msgstr "Update framebuffer zelfs wanneer deze niet zichtbaar is"
 
 #: plugins/rdp/rdp_plugin.c:2907 plugins/spice/spice_plugin.c:707
 #: plugins/spice/spice_plugin.c:715 plugins/vnc/vnc_plugin.c:2119
@@ -3149,7 +3153,7 @@ msgstr "Verbinding maken met %s via SSH…"
 #: plugins/vnc/vnc_plugin.c:1749
 #, c-format
 msgid "Disconnected from %s:%d via VNC"
-msgstr ""
+msgstr "Verbinding gebroken van %s:%d via VNC"
 
 #: plugins/vnc/vnc_plugin.c:2034
 #, fuzzy
@@ -3201,6 +3205,15 @@ msgid ""
 "  • “Best (slowest)” sets encoding to “copyrect zrle ultra zlib hextile "
 "corre rre raw”"
 msgstr ""
+"Overschrijven van de vooringestelde VNC encoding kwaliteit:\n"
+"\n"
+"  • “Poor (fastest)” zet encoding naar “copyrect zlib hextile raw\"\n"
+"  • “Medium” zet encoding naar “tight zrle ultra copyrect hextile zlib corre "
+"rre raw”\n"
+"  • “Good” zet encoding naar “tight zrle ultra copyrect hextile zlib corre "
+"rre raw”\n"
+"  • “Best (slowest)” zet encoding naar “copyrect zrle ultra zlib hextile "
+"corre rre raw”"
 
 #: plugins/vnc/vnc_plugin.c:2078
 msgid "Repeater"
@@ -3212,15 +3225,16 @@ msgstr "Op poort luisteren"
 
 #: plugins/vnc/vnc_plugin.c:2110
 msgid "Override pre-set VNC encodings"
-msgstr ""
+msgstr "Overschrijf vooringestelde VNC encodings"
 
 #: plugins/vnc/vnc_plugin.c:2111
 msgid "Force tight encoding"
-msgstr ""
+msgstr "Forceer strakke encoding"
 
 #: plugins/vnc/vnc_plugin.c:2111
 msgid "Enabling this may help when the remote desktop looks scrambled"
 msgstr ""
+"Dit inschakelen kan helpen wanneer de remote desktop er vervormd uitziet"
 
 #: plugins/vnc/vnc_plugin.c:2114 plugins/gvnc/gvnc_plugin.c:867
 #, fuzzy
@@ -3375,6 +3389,8 @@ msgid ""
 "The command-line feature '%s' is not available! Attempting to start PyHoca-"
 "CLI without using this feature…"
 msgstr ""
+"De command-line feature '%s' is niet beschikbaar! Aan het proberen om PyHoca-"
+"CLI te starten zonder deze feature…"
 
 #: plugins/x2go/x2go_plugin.c:296 plugins/x2go/x2go_plugin.c:428
 #: plugins/x2go/x2go_plugin.c:517 plugins/x2go/x2go_plugin.c:624
@@ -3399,7 +3415,7 @@ msgstr "Interne fout:"
 #: plugins/x2go/x2go_plugin.c:297 plugins/x2go/x2go_plugin.c:429
 #: plugins/x2go/x2go_plugin.c:518 plugins/x2go/x2go_plugin.c:1349
 msgid "Parameter 'custom_data' is not initialized!"
-msgstr ""
+msgstr "Parameter 'custom_data' is niet geinitialiseerd!"
 
 #: plugins/x2go/x2go_plugin.c:310
 #, fuzzy
@@ -3429,15 +3445,15 @@ msgstr "Rechten"
 
 #: plugins/x2go/x2go_plugin.c:479
 msgid "Create date"
-msgstr ""
+msgstr "Maak datum aan"
 
 #: plugins/x2go/x2go_plugin.c:480
 msgid "Suspended since"
-msgstr ""
+msgstr "Stopgezet sinds"
 
 #: plugins/x2go/x2go_plugin.c:481
 msgid "Agent PID"
-msgstr ""
+msgstr "Agent PID"
 
 #: plugins/x2go/x2go_plugin.c:483
 #, fuzzy
@@ -3447,15 +3463,15 @@ msgstr "Gebruikersnaam"
 
 #: plugins/x2go/x2go_plugin.c:484
 msgid "Cookie"
-msgstr ""
+msgstr "Cookie"
 
 #: plugins/x2go/x2go_plugin.c:485
 msgid "Graphic port"
-msgstr ""
+msgstr "Grafische poort"
 
 #: plugins/x2go/x2go_plugin.c:486
 msgid "SND port"
-msgstr ""
+msgstr "SND poort"
 
 #: plugins/x2go/x2go_plugin.c:487
 #, fuzzy
@@ -3495,28 +3511,33 @@ msgstr "_Nieuw"
 #. TRANSLATORS: Please stick to X2GoClient's way of translating.
 #: plugins/x2go/x2go_plugin.c:550
 msgid "Terminating X2Go sessions can take a moment."
-msgstr ""
+msgstr "Het beëindigen van X2Go sessies kan even duren."
 
 #: plugins/x2go/x2go_plugin.c:625 plugins/x2go/x2go_plugin.c:627
 #, c-format
 msgid "Unknown property '%i'"
-msgstr ""
+msgstr "Onbekende attribuut '%i'"
 
 #: plugins/x2go/x2go_plugin.c:715 plugins/x2go/x2go_plugin.c:762
 msgid "Could not find child GtkTreeView of session chooser dialog."
 msgstr ""
+"Kon de onderstaande GtkTreeView van het sessiekiezer dialoog niet vinden."
 
 #: plugins/x2go/x2go_plugin.c:727
 msgid ""
 "Neither the 'dialog' nor 'treeview' parameters are initialized! At least one "
 "of them must be given."
 msgstr ""
+"Zowel de 'dialog' als de 'treeview' parameter zijn niet geinitialiseerd! Ten "
+"minste één moet gegeven worden."
 
 #: plugins/x2go/x2go_plugin.c:736
 msgid ""
 "Could not obtain \"GtkTreeModelFilter*\" of the session chooser dialog, for "
 "unknown reason."
 msgstr ""
+"Kon \"GtkTreeModelFilter*\" van het sessiekiezer dialoog niet verkrijgen "
+"vanwege onbekende reden."
 
 #: plugins/x2go/x2go_plugin.c:771
 #, fuzzy
@@ -3530,14 +3551,16 @@ msgid ""
 "Exactly one session should be selectable but '%i' rows (sessions) are "
 "selected."
 msgstr ""
+"Precies één sessie moet geselecteerd zijn maar '%i' rijen (sessies) zijn "
+"geselecteerd."
 
 #: plugins/x2go/x2go_plugin.c:840
 msgid "Failed to fill 'GtkTreeIter'."
-msgstr ""
+msgstr "Gefaald om 'GtkTreeIter' in te vullen."
 
 #: plugins/x2go/x2go_plugin.c:906
 msgid "parameter 'argv' is 'NULL'."
-msgstr ""
+msgstr "parameter 'argv' is 'NULL'."
 
 #: plugins/x2go/x2go_plugin.c:917
 msgid "parameter 'error' is 'NULL'."
@@ -3545,7 +3568,7 @@ msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:925
 msgid "parameter 'env' is either invalid or uninitialized."
-msgstr ""
+msgstr "parameter 'env' is onjuist of niet geïnitialiseerd."
 
 #: plugins/x2go/x2go_plugin.c:941 plugins/x2go/x2go_plugin.c:2553
 #, fuzzy
@@ -3557,6 +3580,8 @@ msgid ""
 "The necessary PyHoca-CLI process has encountered a internet connection "
 "problem."
 msgstr ""
+"Het vereiste PyHoca-CLI proces heeft een internetverbinding probleem "
+"opgelopen."
 
 #: plugins/x2go/x2go_plugin.c:982
 #, fuzzy, c-format
@@ -3571,6 +3596,8 @@ msgstr "Kon PyHoca-CLI (%i) niet starten: '%s'"
 msgid ""
 "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i"
 msgstr ""
+"Een onbekende foutmelding heeft zich voorgedaan tijdens het starten van "
+"PyHoca-CLI. Exit code: %i"
 
 #: plugins/x2go/x2go_plugin.c:1000
 #, c-format
@@ -3578,14 +3605,16 @@ msgid ""
 "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i. "
 "Error: '%s'"
 msgstr ""
+"Een onbekende fout heeft zicht voorgedaan tijdens het proberen te starten "
+"van PyHoca-CLI. Exit code: %i. Error: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:1044
 msgid "Neither the 'path' nor 'dialog' parameters are initialized."
-msgstr ""
+msgstr "Zowel de 'path' als de 'dialog' parameter zijn niet geïnitialiseerd."
 
 #: plugins/x2go/x2go_plugin.c:1060
 msgid "GtkTreePath 'path' describes a non-existing row!"
-msgstr ""
+msgstr "GtkTreePath 'path' beschrijft een niet bestaande rij!"
 
 #: plugins/x2go/x2go_plugin.c:1112 plugins/x2go/x2go_plugin.c:1122
 #: plugins/x2go/x2go_plugin.c:2211
@@ -3596,7 +3625,7 @@ msgstr "Gedeelde verbinding"
 
 #: plugins/x2go/x2go_plugin.c:1154
 msgid "Parameter 'custom_data' is not fully initialized!"
-msgstr ""
+msgstr "Parameter 'custom_data' is nog niet volledig geïnitialiseerd!"
 
 #: plugins/x2go/x2go_plugin.c:1276
 #, fuzzy, c-format
@@ -3613,22 +3642,22 @@ msgstr "Er is een fout opgetreden."
 
 #: plugins/x2go/x2go_plugin.c:1389 plugins/x2go/x2go_plugin.c:1404
 msgid "Could not get session ID from session chooser dialog."
-msgstr ""
+msgstr "Kon het sessie ID niet verkrijgen van het sessiekiezer dialoog."
 
 #: plugins/x2go/x2go_plugin.c:1396
 #, c-format
 msgid "Resuming session: '%s'"
-msgstr ""
+msgstr "Sessie '%s' aan het hervatten"
 
 #: plugins/x2go/x2go_plugin.c:1411
 #, c-format
 msgid "Terminating session: '%s'"
-msgstr ""
+msgstr "Sessie '%s' aan het afsluiten"
 
 #: plugins/x2go/x2go_plugin.c:1585
 #, c-format
 msgid "Disconnected from %s:%d via X2Go"
-msgstr ""
+msgstr "Verbinding verbroken van %s:%d via X2Go"
 
 #: plugins/x2go/x2go_plugin.c:1657
 #, fuzzy
@@ -3685,6 +3714,9 @@ msgid ""
 "Tip: Check the 'Save password' checkbox or manually input your X2Go username "
 "and password in the profile settings to store them for faster logins."
 msgstr ""
+"Tip: Klik het 'Save password' knopje of voer handmatig je X2Go username en "
+"password in bij de profielinstellingen om ze op te slaan voor snellere "
+"logins."
 
 #: plugins/x2go/x2go_plugin.c:1831
 #, fuzzy
@@ -3703,20 +3735,22 @@ msgid ""
 "Could not parse the output of PyHoca-CLI's --list-sessions option. Creating "
 "a new session now."
 msgstr ""
+"Kon de output van PyHoca-CLI's --list-sessions optie niet uitlezen. Nu een "
+"nieuwe sessie aan het maken."
 
 #: plugins/x2go/x2go_plugin.c:2086
 msgid "Could not allocate enough memory!"
-msgstr ""
+msgstr "Kon niet genoeg geheugen toekennen!"
 
 #: plugins/x2go/x2go_plugin.c:2096
 #, c-format
 msgid "Found already existing X2Go session with ID: '%s'"
-msgstr ""
+msgstr "Een bestaande X2Go sessie gevonden met ID: '%s'"
 
 #. TRANSLATORS: Please stick to X2GoClient's translation.
 #: plugins/x2go/x2go_plugin.c:2139
 msgid "Suspended"
-msgstr ""
+msgstr "Gepauzeerd"
 
 #. TRANSLATORS: Please stick to X2GoClient's translation.
 #: plugins/x2go/x2go_plugin.c:2142
@@ -3735,6 +3769,8 @@ msgstr "Afbreken"
 msgid ""
 "Could not find any sessions on remote machine. Creating a new session now."
 msgstr ""
+"Kon geen sessies vinden op de remote machine. Nu een nieuwe sessie aan het "
+"maken."
 
 #: plugins/x2go/x2go_plugin.c:2233
 #, fuzzy
@@ -3749,23 +3785,23 @@ msgstr "Wachten op PyHoca-CLI om het venster van de sessie te tonen…"
 
 #: plugins/x2go/x2go_plugin.c:2284
 msgid "No session was selected. Creating a new one."
-msgstr ""
+msgstr "Geen sessie was geselecteerd. Nu een nieuwe aan het maken."
 
 #: plugins/x2go/x2go_plugin.c:2356
 #, c-format
 msgid "A non-critical error happened: %s"
-msgstr ""
+msgstr "Een niet kritieke foutmelding is opgetreden: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:2361
 #, c-format
 msgid "User chose to resume session with ID: '%s'"
-msgstr ""
+msgstr "Gebruiker heeft gekozen om sessie met ID '%s' te hervatten"
 
 #. TRANSLATORS: Please stick to X2GoClient's way of translating.
 #: plugins/x2go/x2go_plugin.c:2382
 #, c-format
 msgid "Resuming session '%s'…"
-msgstr ""
+msgstr "Sessie '%s' hervatten…"
 
 #: plugins/x2go/x2go_plugin.c:2513
 #, fuzzy
@@ -3908,7 +3944,7 @@ msgstr "Validatiegegevens in ProtocolSettings array zijn ongeldig!"
 
 #: plugins/x2go/x2go_plugin.c:3223
 msgid "Parameters 'key' or 'value' are 'NULL'!"
-msgstr ""
+msgstr "Parameters 'key' of 'value' zijn 'NULL'!"
 
 #: plugins/x2go/x2go_plugin.c:3241
 #, fuzzy, c-format
@@ -4526,7 +4562,7 @@ msgstr ""
 
 #: data/ui/remmina_news.glade:169
 msgid "Receives updated news from remmina.org"
-msgstr ""
+msgstr "Ontvangt bijgewerkt nieuws van remmina.org"
 
 #: data/ui/remmina_news.glade:182
 #, fuzzy
@@ -4858,7 +4894,7 @@ msgstr "Voorkom dat screenshots op het klembord komen"
 
 #: data/ui/remmina_preferences.glade:448
 msgid "Confirm before closing multiple tabs"
-msgstr ""
+msgstr "Bevestig voor het sluiten van meerdere tabbladen"
 
 #: data/ui/remmina_preferences.glade:482
 #, fuzzy
@@ -4960,6 +4996,7 @@ msgstr "Toon altijd tabbladen"
 #: data/ui/remmina_preferences.glade:691
 msgid "Add a column displaying any notes associated with a connection."
 msgstr ""
+"Voeg een kolom toe die notities laat zien geassocieerd met een connectie."
 
 #: data/ui/remmina_preferences.glade:711
 #, fuzzy
@@ -5136,10 +5173,14 @@ msgid ""
 "Time in seconds before Remmina will lock the session and asks for a password "
 "again. Default: 300 Seconds."
 msgstr ""
+"Tijd in seconden voordat Remmina de sessie vergrendelt en weer voor het "
+"wachtwoord vraagt. Standaard: 300 Seconden."
 
 #: data/ui/remmina_preferences.glade:1614
 msgid "Set and use a secret key to protect Remmina from unauthorized use."
 msgstr ""
+"Stel in en gebruik een geheime sleutel om Remmina te beschermen tegen "
+"ongeoorloofd gebruik."
 
 #: data/ui/remmina_preferences.glade:1619
 #, fuzzy
@@ -5153,15 +5194,15 @@ msgstr "Voer certificaat authenticatie bestanden in"
 
 #: data/ui/remmina_preferences.glade:1650
 msgid "Valid for"
-msgstr ""
+msgstr "Geldig voor"
 
 #: data/ui/remmina_preferences.glade:1661
 msgid "Number of seconds to keep password valid for"
-msgstr ""
+msgstr "Aantal seconden dat het wachtwoord geldig blijft"
 
 #: data/ui/remmina_preferences.glade:1666
 msgid "timeout in seconds (default 300)"
-msgstr ""
+msgstr "timeout in seconden (standaard 300)"
 
 #: data/ui/remmina_preferences.glade:1678
 #, fuzzy
@@ -5179,11 +5220,12 @@ msgstr "Veilige opslag van wachtwoorden in KWallet"
 #: data/ui/remmina_preferences.glade:1693
 msgid "Creation, editing, copying, and deletions require the Remmina password"
 msgstr ""
+"Aanmaken, bewerken, kopiëren en verwijderen vereist het Remmina wachtwoord"
 
 #. Creation, editing, copying, and deletions require the primary password
 #: data/ui/remmina_preferences.glade:1697
 msgid "Require to modify"
-msgstr ""
+msgstr "Vereis om te bewerken"
 
 #: data/ui/remmina_preferences.glade:1708
 #, fuzzy
@@ -5214,18 +5256,27 @@ msgid ""
 "\"Intermediate\" doesn't use as much memory or processing power, and "
 "\"Sensitive\" is more secure, but uses +1 GiB of RAM and many CPU cycles. "
 msgstr ""
+"Dit zijn de encryptiemodes die worden gebruikt door Remmina om wachtwoorden "
+"op te slaan.\n"
+"\n"
+"Behalve de \"Zwak\" methode worden alle andere aangeraden, \"Keystore\" is "
+"standaard omdat het integreert met KDE/Plasma en GNOME.\n"
+"\n"
+"\"Tussenliggend\" gebruikt niet zoveel geheugen of processorkracht en "
+"\"Gevoelig\" is veiliger maar gebruikt meer dan 1 GiB aan RAM-geheugen en "
+"veel CPU cycli. "
 
 #: data/ui/remmina_preferences.glade:1788
 msgid "Intermediate (+64 MiB RAM)"
-msgstr ""
+msgstr "Tussenliggend (+64 MiB RAM)"
 
 #: data/ui/remmina_preferences.glade:1789
 msgid "Strong (+256 MiB, ~2009 CPU)"
-msgstr ""
+msgstr "Sterk (+256 MiB, ~2009 CPU)"
 
 #: data/ui/remmina_preferences.glade:1790
 msgid "Sensitive (+1 GiB, ~2014 CPU)"
-msgstr ""
+msgstr "Gevoelig (+1 GiB, ~2014 CPU)"
 
 #: data/ui/remmina_preferences.glade:1806
 #, fuzzy
@@ -5291,7 +5342,7 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:2065
 msgid "Show bold text in bright colors"
-msgstr ""
+msgstr "Laat dikgedrukte tekst in lichte kleuren zien"
 
 #: data/ui/remmina_preferences.glade:2079
 msgid "Colour theme"
