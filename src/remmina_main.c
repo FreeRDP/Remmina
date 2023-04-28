@@ -112,6 +112,7 @@ static GActionEntry main_actions[] = {
 	{ "connect",  remmina_main_on_action_connection_connect,	NULL, NULL, NULL },
 	{ "copy",     remmina_main_on_action_connection_copy,		NULL, NULL, NULL },
 	{ "delete",   remmina_main_on_action_connection_delete,		NULL, NULL, NULL },
+	{ "delete_multiple", remmina_main_on_action_connection_delete_multiple, NULL, NULL, NULL },
 	{ "edit",     remmina_main_on_action_connection_edit,		NULL, NULL, NULL },
 	{ "exttools", remmina_main_on_action_connection_external_tools, NULL, NULL, NULL },
 	{ "new",      remmina_main_on_action_connection_new,		NULL, NULL, NULL },
@@ -1007,6 +1008,64 @@ void remmina_main_on_action_connection_delete(GSimpleAction *action, GVariant *p
 	remmina_main_clear_selection_data();
 }
 
+void remmina_main_on_action_connection_delete_multiple(GSimpleAction *action, GVariant *param, gpointer data)
+{
+	TRACE_CALL(__func__);
+	GtkWidget *dialog;
+	GtkTreeSelection *sel = gtk_tree_view_get_selection(remminamain->tree_files_list);
+	GtkTreeModel *model = gtk_tree_view_get_model(remminamain->tree_files_list);
+	GList *list = gtk_tree_selection_get_selected_rows(sel, &model);
+	gchar *file_to_delete;
+
+	dialog = gtk_message_dialog_new(remminamain->window, GTK_DIALOG_MODAL, GTK_MESSAGE_QUESTION, GTK_BUTTONS_YES_NO,
+				_("Are you sure you want to delete the selected files?"));
+
+	// Delete files if Yes is clicked
+	if (gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_YES) {
+		while (list) {
+			GtkTreePath *path = list->data;
+			GtkTreeIter iter;
+			
+			if (!gtk_tree_model_get_iter(model, &iter, path)) {
+				GtkWidget *dialog_warning;
+				dialog_warning = gtk_message_dialog_new(remminamain->window, GTK_DIALOG_MODAL, GTK_MESSAGE_WARNING, GTK_BUTTONS_OK, 
+					_("Failed to delete files!"));
+				gtk_dialog_run(GTK_DIALOG(dialog_warning));
+				gtk_widget_destroy(dialog_warning);
+				gtk_widget_destroy(dialog);
+				remmina_main_clear_selection_data();
+				return;
+			}
+
+			gtk_tree_model_get(model, &iter, 
+					FILENAME_COLUMN, &file_to_delete, -1);
+
+			RemminaFile *remminafile = remmina_file_load(file_to_delete);
+
+			if (((remmina_pref_get_boolean("lock_edit")
+					&& remmina_pref_get_boolean("use_primary_password"))
+					|| remmina_file_get_int (remminafile, "profile-lock", FALSE))
+				&& remmina_unlock_new(remminamain->window) == 0)
+				return;
+
+			if (remminafile) {
+				remmina_file_free(remminafile);
+				remminafile = NULL;
+			}
+
+			gchar *delfilename = g_strdup(file_to_delete);
+			remmina_file_delete(delfilename);
+			g_free(delfilename), delfilename = NULL;
+			remmina_icon_populate_menu();
+			remmina_main_load_files();
+			list = g_list_next(list);
+		}
+	}
+	
+	gtk_widget_destroy(dialog);
+	remmina_main_clear_selection_data();
+}
+
 void remmina_main_on_accel_application_preferences(GSimpleAction *action, GVariant *param, gpointer data)
 {
 	TRACE_CALL(__func__);
@@ -1390,12 +1449,20 @@ gboolean remmina_main_file_list_on_button_press(GtkWidget *widget, GdkEventButto
 {
 	TRACE_CALL(__func__);
 	if (event->button == MOUSE_BUTTON_RIGHT) {
-		if (!kioskmode && kioskmode == FALSE)
+		if (!kioskmode && kioskmode == FALSE) {
 #if GTK_CHECK_VERSION(3, 22, 0)
-			gtk_menu_popup_at_pointer(GTK_MENU(remminamain->menu_popup), (GdkEvent *)event);
+			// For now, if more than one selected row, display only a delete menu option
+			if (gtk_tree_selection_count_selected_rows(gtk_tree_view_get_selection(remminamain->tree_files_list)) > 1) {
+				gtk_menu_popup_at_pointer(GTK_MENU(remminamain->menu_popup_delete_rc), (GdkEvent *)event);
+				return GDK_EVENT_STOP;
+			}
+			else {
+				gtk_menu_popup_at_pointer(GTK_MENU(remminamain->menu_popup), (GdkEvent *)event);
+			}
 #else
 			gtk_menu_popup(remminamain->menu_popup, NULL, NULL, NULL, NULL, event->button, event->time);
 #endif
+		}
 	}
 	return FALSE;
 }
@@ -1594,6 +1661,7 @@ GtkWidget *remmina_main_new(void)
 	remminamain->menu_popup = GTK_MENU(RM_GET_OBJECT("menu_popup"));
 	remminamain->menu_header_button = GTK_MENU_BUTTON(RM_GET_OBJECT("menu_header_button"));
 	remminamain->menu_popup_full = GTK_MENU(RM_GET_OBJECT("menu_popup_full"));
+	remminamain->menu_popup_delete_rc = GTK_MENU(RM_GET_OBJECT("menu_popup_delete_rc"));
 	if (kioskmode && kioskmode == TRUE) {
 		gtk_widget_set_sensitive(GTK_WIDGET(remminamain->menu_popup_full), FALSE);
 		gtk_widget_set_sensitive(GTK_WIDGET(remminamain->menu_header_button), FALSE);
