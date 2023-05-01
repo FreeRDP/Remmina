@@ -1,11 +1,9 @@
-> :exclamation: **[The Remmina project is looking for new maintainers](https://remmina.org/looking-for-maintainers/)**, and it's not actively updated.
-
-**Make sure the problem exists on the [![latest Remmina version(s)](https://repology.org/badge/latest-versions/remmina.svg)](https://repology.org/project/remmina/versions) first, \
+**Ensure the problem exists on the [![latest Remmina version(s)](https://repology.org/badge/latest-versions/remmina.svg)](https://repology.org/project/remmina/versions) first, \
 and keep trying to reproduce it on any later versions** :)
 
-* Reporting back greatly increases the attention and hope of fixing your issue.
+* Reporting back greatly increases attention to and hope of fixing your issue.
 
-Do not use Gitlab for support requests, you can ask questions on:
+Do not use GitLab for support requests, instead ask questions on:
 
 * IRC, on libera.chat, in the #remmina channel, or use a [web client](https://web.libera.chat/?nick=remminer|?#remmina).
 * [Matrix](https://riot.im/app/#/group/+remmina:matrix.org)
@@ -55,7 +53,7 @@ Please see [Remmina debugging](https://gitlab.com/Remmina/Remmina/-/wikis/Usage/
   - [ ] WWW
   - [ ] EXEC
   - [ ] Other (please specify):
-* GTK back-end (Wayland, Xorg):
+* GTK backend (Wayland, Xorg):
 * Optional: Include the output of the following commands at the end of this text:
 
   - `remmina --full-version`
