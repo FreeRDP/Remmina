@@ -24,7 +24,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2023-05-03 11:33+0000\n"
-"PO-Revision-Date: 2023-01-07 15:50+0000\n"
+"PO-Revision-Date: 2023-05-03 17:47+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/remmina/remmina/"
 "es/>\n"
@@ -33,7 +33,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.15.1-dev\n"
+"X-Generator: Weblate 4.18-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
 
 #: src/remmina_sftp_plugin.c:309 src/remmina_sftp_plugin.c:353
@@ -128,11 +128,11 @@ msgid ""
 "There is more info about debugging Remmina on https://gitlab.com/Remmina/"
 "Remmina/-/wikis/Usage/Remmina-debugging\n"
 msgstr ""
-"Esta ventana puede ayudarle a encontrar problemas de conexión.\n"
+"Esta ventana puede ayudarte a encontrar problemas de conexión.\n"
 "Puedes parar e iniciar el registro en cualquier momento usando el "
 "interruptor On/Off.\n"
-"El botón de estadísticas (Ctrl+T), puede ser útil para reunir información "
-"del sistema que puedes compartir al informar de un error.\n"
+"El botón de las estadísticas (Ctrl+T), puede ser útil para reunir "
+"información del sistema que puedes compartir al informar de un error.\n"
 "Hay más información sobre la depuración de Remmina en https://gitlab.com/"
 "Remmina/Remmina/-/wikis/Usage/Remmina-debugging\n"
 
@@ -267,7 +267,8 @@ msgstr "Para utilizar o contrasinal principal necesitase libsodium >= 1.9.0"
 
 #: src/remmina_pref_dialog.c:813
 msgid "Picking a terminal colouring file replaces the file: "
-msgstr "Elija un archivo de colores para terminal"
+msgstr ""
+"Al elegir un archivo para colorear del terminal, se reemplaza el archivo: "
 
 #: src/remmina_pref_dialog.c:817
 msgid ""
@@ -306,7 +307,7 @@ msgstr "Dominio"
 
 #: src/remmina_message_panel.c:419
 msgid "Save password"
-msgstr "Guardar contraseña"
+msgstr "Guardar la contraseña"
 
 #: src/remmina_message_panel.c:456 src/remmina_message_panel.c:628
 #: src/remmina_sftp_client.c:972 src/remmina_file_editor.c:244
@@ -353,7 +354,7 @@ msgstr "Modo a pantalla completa"
 
 #: src/rcw.c:1449 data/ui/remmina_preferences.glade:560
 msgid "Scrolled fullscreen"
-msgstr "Pantalla completa desplazable"
+msgstr "Pantalla completa con barras de desplazamiento"
 
 #: src/rcw.c:1535
 msgid "Keep aspect ratio when scaled"
@@ -426,7 +427,7 @@ msgstr "Redimensionar la ventana para ajustarla a la resolución remota"
 
 #: src/rcw.c:2399
 msgid "Toggle fullscreen mode"
-msgstr "Conmutar el modo a pantalla completa"
+msgstr "Alternar el modo de pantalla completa"
 
 #: src/rcw.c:2445 data/ui/remmina_preferences.glade:1300
 #: data/ui/remmina_preferences.glade:1310
@@ -443,7 +444,7 @@ msgstr "Conmutar modo escalado"
 
 #: src/rcw.c:2511 data/ui/remmina_preferences.glade:1034
 msgid "Switch tab pages"
-msgstr "Cambiar entre pestañas"
+msgstr "Cambiar entre las pestaña de las páginas"
 
 #: src/rcw.c:2521
 msgid "Grab all keyboard events"
@@ -1334,15 +1335,12 @@ msgid "Are you sure you want to delete “%s”?"
 msgstr "¿Confirma que quiere eliminar «%s»?"
 
 #: src/remmina_main.c:1021
-#, fuzzy
-#| msgid "Are you sure to delete the selected files on server?"
 msgid "Are you sure you want to delete the selected files?"
-msgstr ""
-"¿Confirma que quiere eliminar los archivos seleccionados en el servidor?"
+msgstr "¿Está seguro de que deseas eliminar los archivos seleccionados?"
 
 #: src/remmina_main.c:1032
 msgid "Failed to delete files!"
-msgstr ""
+msgstr "¡Error al eliminar los archivos!"
 
 #: src/remmina_main.c:1192
 #, c-format
@@ -1591,12 +1589,12 @@ msgstr "Permitir túnel SSH"
 
 #: src/remmina_file_editor.c:1171
 msgid "Tunnel via loopback address"
-msgstr "Túnel a través de dirección de autobucle"
+msgstr "Túnel a través de una dirección de loopback"
 
 #: src/remmina_file_editor.c:1181
 #, c-format
 msgid "Same server at port %i"
-msgstr "Mismo servidor en el puerto %i"
+msgstr "El mismo servidor que en el puerto %i"
 
 #: src/remmina_file_editor.c:1231 plugins/rdp/rdp_plugin.c:2859
 msgid "Start-up path"
@@ -2059,7 +2057,7 @@ msgstr "se requiere FreeRDP > 2.3.0 para mapear códigos de teclas"
 
 #: plugins/rdp/rdp_settings.c:492
 msgid "Quality settings"
-msgstr "Configuración de calidad"
+msgstr "Ajustes de la calidad"
 
 #: plugins/rdp/rdp_settings.c:515
 msgid "Wallpaper"
@@ -2095,11 +2093,11 @@ msgstr "Composición"
 
 #: plugins/rdp/rdp_settings.c:578
 msgid "Remote scale factor"
-msgstr "Factor de escala remoto"
+msgstr "Escala de tamaño remota"
 
 #: plugins/rdp/rdp_settings.c:593
 msgid "Desktop scale factor %"
-msgstr "Factor de escala de escritorio %"
+msgstr "Proporción de cambio de tamaño de escritorio de %"
 
 #: plugins/rdp/rdp_settings.c:605
 msgid "Device scale factor %"
@@ -2555,7 +2553,7 @@ msgstr "Modo administrador restringido"
 
 #: plugins/rdp/rdp_plugin.c:2818
 msgid "Password hash"
-msgstr "Valor hash de la contraseña"
+msgstr "Hash de la contraseña"
 
 #: plugins/rdp/rdp_plugin.c:2818
 msgid "Restricted admin mode password hash"
@@ -3316,7 +3314,7 @@ msgstr "Cookie"
 
 #: plugins/x2go/x2go_plugin.c:485
 msgid "Graphic port"
-msgstr "Puerto para gráficos"
+msgstr "Puerto de vídeo"
 
 #: plugins/x2go/x2go_plugin.c:486
 msgid "SND port"
@@ -3372,8 +3370,8 @@ msgid ""
 "Neither the 'dialog' nor 'treeview' parameters are initialized! At least one "
 "of them must be given."
 msgstr ""
-"¡No se inicializan ni los parámetros 'dialog' ni 'treeview'! Se debe dar al "
-"menos uno de ellos."
+"¡No se inicializan ni los parámetros 'dialog' ni 'treeview'! Se debe "
+"especificar al menos uno de ellos."
 
 #: plugins/x2go/x2go_plugin.c:736
 msgid ""
@@ -3421,8 +3419,8 @@ msgid ""
 "The necessary PyHoca-CLI process has encountered a internet connection "
 "problem."
 msgstr ""
-"El proceso PyHoca-CLI requerido ha encontrado un problema de conexión a "
-"Internet."
+"El proceso necesario de PyHoca-CLI ha encontrado un problema en la conexión "
+"a Internet."
 
 #: plugins/x2go/x2go_plugin.c:982
 #, c-format
@@ -3456,7 +3454,7 @@ msgstr "No se inicializaron ni el parámetro «path» ni el «dialog»."
 
 #: plugins/x2go/x2go_plugin.c:1060
 msgid "GtkTreePath 'path' describes a non-existing row!"
-msgstr "¡El 'path' de GtkTreePath describe una fila que no existe!"
+msgstr "¡GtkTreePath 'path' describe una fila inexistente!"
 
 #: plugins/x2go/x2go_plugin.c:1112 plugins/x2go/x2go_plugin.c:1122
 #: plugins/x2go/x2go_plugin.c:2211
@@ -3578,12 +3576,12 @@ msgstr "Se ha encontrado una sesión X2Go ya existente con el ID: '%s'"
 #. TRANSLATORS: Please stick to X2GoClient's translation.
 #: plugins/x2go/x2go_plugin.c:2139
 msgid "Suspended"
-msgstr "Suspendido"
+msgstr "Interrumpido"
 
 #. TRANSLATORS: Please stick to X2GoClient's translation.
 #: plugins/x2go/x2go_plugin.c:2142
 msgid "Running"
-msgstr "Ejecutando"
+msgstr "Activo"
 
 #. TRANSLATORS: Please stick to X2GoClient's translation.
 #: plugins/x2go/x2go_plugin.c:2145
@@ -3789,7 +3787,7 @@ msgstr "¡El límite superior no es un número entero válido!"
 
 #: plugins/x2go/x2go_plugin.c:3325
 msgid "The upper limit is too high!"
-msgstr "¡El límite superior es demasiado elevado!"
+msgstr "¡El límite superior es demasiado alto!"
 
 #: plugins/x2go/x2go_plugin.c:3330
 msgid "The upper limit is too low!"
@@ -3797,7 +3795,7 @@ msgstr "¡El límite superior es demasiado bajo!"
 
 #: plugins/x2go/x2go_plugin.c:3350
 msgid "The input is not a valid integer!"
-msgstr "¡La entrada no es un número entero válido!"
+msgstr "¡La entrada no es un entero válido!"
 
 #: plugins/x2go/x2go_plugin.c:3352 plugins/x2go/x2go_plugin.c:3369
 #, c-format
@@ -3869,7 +3867,7 @@ msgstr "Plugin VNC de Remmina para GNOME y KVM"
 #: plugins/gvnc/gvnc_plugin.c:476
 #, c-format
 msgid "Unsupported authentication type %u"
-msgstr "Tipo de autenticación %u no compatible"
+msgstr "Tipo de autenticación no compatible %u"
 
 #: plugins/gvnc/gvnc_plugin.c:488
 #, c-format
@@ -3890,7 +3888,7 @@ msgstr "Alta densidad (16 bits)"
 
 #: plugins/gvnc/gvnc_plugin.c:822
 msgid "Low colour (8 bits)"
-msgstr "Bajo nivel de color (8 bits)"
+msgstr "Color de baja calidad (8 bits)"
 
 #: plugins/gvnc/gvnc_plugin.c:823
 msgid "Ultra low colour (3 bits)"
@@ -5048,7 +5046,7 @@ msgstr "Atajo de teclado para búsqueda de texto"
 #: data/ui/remmina_preferences.glade:2507
 #: data/ui/remmina_preferences.glade:2522
 msgid "Bold colour"
-msgstr "Colores normales"
+msgstr "Negrita"
 
 #: data/ui/remmina_preferences.glade:2536
 #: data/ui/remmina_preferences.glade:2577

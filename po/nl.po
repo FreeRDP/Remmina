@@ -13,13 +13,14 @@
 # lrots <lambert@lambiek.eu>, 2022.
 # Stijn De Latthauwer <stijn.delatthauwer@gmail.com>, 2022.
 # Lucas Ridder <lhridder@gmail.com>, 2023.
+# Matrix <matrix.5vi5w@slmails.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2023-05-03 11:33+0000\n"
-"PO-Revision-Date: 2023-05-01 12:49+0000\n"
-"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"PO-Revision-Date: 2023-05-03 17:47+0000\n"
+"Last-Translator: Matrix <matrix.5vi5w@slmails.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/remmina/remmina/nl/"
 ">\n"
 "Language: nl\n"
@@ -482,6 +483,8 @@ msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 msgstr ""
+"https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
+"available-in-a-Wayland-session"
 
 #: src/rcw.c:4631
 msgid ""
@@ -688,9 +691,8 @@ msgstr ""
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:418
-#, fuzzy
 msgid "- or protocol://username:encryptedpassword@host:port"
-msgstr "- of protocol://gebruikersnaam:gecodeerdwachtwoord@host:poort"
+msgstr "- of protocol://gebruikersnaam:versleuteldwachtwoord@host:poort"
 
 #: src/remmina.c:421
 msgid ""
@@ -1325,15 +1327,12 @@ msgid "Are you sure you want to delete “%s”?"
 msgstr "Weet u zeker dat u \"%s\" wilt verwijderen?"
 
 #: src/remmina_main.c:1021
-#, fuzzy
-#| msgid "Are you sure to delete the selected files on server?"
 msgid "Are you sure you want to delete the selected files?"
-msgstr ""
-"Weet u zeker dat u de geselecteerde bestanden op de server wilt verwijderen?"
+msgstr "Weet u zeker dat u de geselecteerde bestanden wilt verwijderen?"
 
 #: src/remmina_main.c:1032
 msgid "Failed to delete files!"
-msgstr ""
+msgstr "Bestanden verwijderen mislukt!"
 
 #: src/remmina_main.c:1192
 #, c-format
@@ -1736,19 +1735,18 @@ msgid "Connect to remote desktops through the applet menu"
 msgstr "Verbinding met extern bureaublad maken via het applet menu"
 
 #: src/remmina_icon.c:365
-#, fuzzy
 msgid "StatusNotifier/Appindicator support in “"
 msgstr "StatusNotifier/Appindicator ondersteuning in \""
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:372
-#, fuzzy, c-format
+#, c-format
 msgid "%s your desktop does support it"
-msgstr "[Uw desktop ondersteunt het wel."
+msgstr "%s wordt ondersteund door uw Desktop"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:374
-#, fuzzy, c-format
+#, c-format
 msgid "%s and Remmina has built-in (compiled) support for libappindicator."
 msgstr ""
 "%s en Remmina heeft ingebouwde (gecompileerde) ondersteuning voor "
@@ -1756,20 +1754,19 @@ msgstr ""
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:377
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%s not supported natively by your Desktop Environment. libappindicator will "
 "try to fallback to GtkStatusIcon/xembed"
 msgstr ""
-"%s niet ondersteund door uw desktop omgeving. libappindicator zal proberen "
-"terug te vallen op GtkStatusIcon/xembed"
+"%s wordt niet ondersteund door uw Desktop Omgeving. libappindicator zal "
+"proberen terug te vallen op GtkStatusIcon/xembed"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:381
-#, fuzzy, c-format
+#, c-format
 msgid "%s You may need to install, and use XApp Status Applet"
-msgstr ""
-"[Het is mogelijk dat u de XApp Status Applet moet installeren en gebruiken."
+msgstr "%s U moet mogelijk de XApp Status Applet installeren en gebruiken"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:384
@@ -1794,10 +1791,9 @@ msgstr ""
 "en te gebruiken."
 
 #: src/remmina_ssh_plugin.c:343
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s:%d via SSH"
-msgstr "Verbinding maken met %s via SSH…"
+msgstr "Verbonden met %s:%d via SSH"
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_ssh_plugin.c:551
@@ -1838,10 +1834,9 @@ msgid "Find text (host+G)"
 msgstr "Plakken (host + V)"
 
 #: src/remmina_ssh_plugin.c:896
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Disconnected from %s:%d via SSH"
-msgstr "Verbinding maken met %s via SSH…"
+msgstr "SSH Verbinding met %s:%d verbroken"
 
 #: src/remmina_ssh_plugin.c:1473 data/ui/remmina_main.glade:178
 msgid "Copy"
@@ -2137,8 +2132,6 @@ msgid "Disable smooth scrolling"
 msgstr "Vloeiend scrollen uitschakelen"
 
 #: plugins/rdp/rdp_settings.c:667
-#, fuzzy
-#| msgid "Disable server input"
 msgid "General settings"
 msgstr "Algemene instellingen"
 
@@ -2257,16 +2250,13 @@ msgstr ""
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:2254
-#, fuzzy, c-format
-#| msgid ""
-#| "Unable to establish a connection to the RDP server “%s”. Check \"Security "
-#| "protocol negotiation\"."
+#, c-format
 msgid ""
 "Unable to establish a connection to the RDP server “%s”. Check “Security "
 "protocol negotiation”."
 msgstr ""
-"Kan geen verbinding maken met de RDP-server \"%s\". Controleer "
-"\"Onderhandeling beveiligingsprotocol\"."
+"Kan geen verbinding maken met de RDP-server “%s”. Controleer “Onderhandeling "
+"beveiligingsprotocol”."
 
 #: plugins/rdp/rdp_plugin.c:2262
 #, c-format
@@ -2310,27 +2300,22 @@ msgid "Cannot connect to the “%s” RDP server."
 msgstr "Kan geen verbinding maken met de \"%s\" RDP-server."
 
 #: plugins/rdp/rdp_plugin.c:2633
-#, fuzzy
 msgid "Automatic (32 bpp) (Server chooses its best format)"
 msgstr "Automatisch (32 bpp) (Server kiest zijn beste formaat)"
 
 #: plugins/rdp/rdp_plugin.c:2634
-#, fuzzy
 msgid "GFX AVC444 (32 bpp)"
 msgstr "GFX AVC444 (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2635
-#, fuzzy
 msgid "GFX AVC420 (32 bpp)"
 msgstr "GFX AVC420 (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2636
-#, fuzzy
 msgid "GFX RFX (32 bpp)"
 msgstr "GFX RFX (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2637
-#, fuzzy
 msgid "GFX RFX Progressive (32 bpp)"
 msgstr "GFX RFX Progressive (32 bpp)"
 
@@ -2360,14 +2345,13 @@ msgstr "256-kleuren (8 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2674 data/ui/remmina_preferences.glade:592
 msgid "None"
-msgstr "<None>"
+msgstr "Geen"
 
 #: plugins/rdp/rdp_plugin.c:2675
 msgid "Auto-detect"
 msgstr "Automatisch detecteren"
 
 #: plugins/rdp/rdp_plugin.c:2676
-#, fuzzy
 msgid "Modem"
 msgstr "Modem"
 
@@ -2377,7 +2361,6 @@ msgid "Low performance broadband"
 msgstr "Breedband met lage prestaties"
 
 #: plugins/rdp/rdp_plugin.c:2678
-#, fuzzy
 msgid "Satellite"
 msgstr "Satelliet"
 
@@ -2387,12 +2370,10 @@ msgid "High performance broadband"
 msgstr "Breedband met hoge prestaties"
 
 #: plugins/rdp/rdp_plugin.c:2680
-#, fuzzy
 msgid "WAN"
 msgstr "WAN"
 
 #: plugins/rdp/rdp_plugin.c:2681
-#, fuzzy
 msgid "LAN"
 msgstr "LAN"
 
@@ -2451,7 +2432,6 @@ msgid "5"
 msgstr "5"
 
 #: plugins/rdp/rdp_plugin.c:2726
-#, fuzzy
 msgid "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 and newer)"
 msgstr "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 en nieuwer)"
 
@@ -2703,7 +2683,7 @@ msgstr "Lokale microfoon doorschakelen"
 
 #: plugins/rdp/rdp_plugin.c:2851
 msgid "Connection timeout in ms"
-msgstr "Bezig met verbinden met \"%s\"…"
+msgstr "Time-out van de verbinding in ms"
 
 #: plugins/rdp/rdp_plugin.c:2852
 msgid "Remote Desktop Gateway server"
@@ -2745,13 +2725,12 @@ msgid "Override printer drivers"
 msgstr "Printerstuurprogramma's overschrijven"
 
 #: plugins/rdp/rdp_plugin.c:2862
-#, fuzzy
 msgid ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
 msgstr ""
-"\"Samsung_CLX-3300_Series\": \"Samsung CLX-3300 Series PS\"; \"Canon "
-"MF410\": \"Canon MF410 Series UFR II\"."
+"\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
+"\"Canon MF410 Series UFR II\""
 
 #: plugins/rdp/rdp_plugin.c:2863
 #, fuzzy
@@ -2898,9 +2877,8 @@ msgid "Server detection using Remote Desktop Gateway"
 msgstr "Detectie van de server via Remote Desktop Gateway"
 
 #: plugins/rdp/rdp_plugin.c:2888
-#, fuzzy
 msgid "Use system proxy settings"
-msgstr "Gebruik systeem proxy instellingen"
+msgstr "Gebruik proxy instellingen van het systeem"
 
 #: plugins/rdp/rdp_plugin.c:2890
 #, fuzzy
@@ -2950,9 +2928,8 @@ msgstr "Alleen bekijken"
 
 #: plugins/rdp/rdp_plugin.c:2912 plugins/spice/spice_plugin.c:717
 #: plugins/vnc/vnc_plugin.c:2136
-#, fuzzy
 msgid "Send Ctrl+Alt+Delete"
-msgstr "Verzenden Ctrl+Alt+Delete"
+msgstr "Verstuur Ctrl+Alt+Delete"
 
 #: plugins/rdp/rdp_plugin.c:2925
 msgid "RDP - Remote Desktop Protocol"
@@ -2977,10 +2954,9 @@ msgstr "Nieuwe poging tot verbinden %d van %d…"
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_event.c:1158
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s via RDP"
-msgstr "Verbinding maken met %s via SSH…"
+msgstr "Verbonden met %s via RDP"
 
 #: plugins/spice/spice_plugin_file_transfer.c:82
 #, fuzzy
@@ -2993,19 +2969,18 @@ msgid "Transfer error"
 msgstr "Overdrachtsfout"
 
 #: plugins/spice/spice_plugin_file_transfer.c:220
-#, fuzzy, c-format
+#, c-format
 msgid "%s: %s"
 msgstr "%s: %s"
 
 #: plugins/spice/spice_plugin_file_transfer.c:223
-#, fuzzy
 msgid "Transfer completed"
 msgstr "Overdracht voltooid"
 
 #: plugins/spice/spice_plugin_file_transfer.c:224
-#, fuzzy, c-format
+#, c-format
 msgid "The %s file has been transferred"
-msgstr "Het %s bestand is overgedragen"
+msgstr "Het bestand %s is overgedragen"
 
 #: plugins/spice/spice_plugin.c:351
 msgid "Enter SPICE password"
@@ -3017,19 +2992,16 @@ msgid "Disconnected from the SPICE server “%s”."
 msgstr "Losgekoppeld van de SPICE server \"%s\"."
 
 #: plugins/spice/spice_plugin.c:388
-#, fuzzy, c-format
-#| msgid "Disconnected from the SPICE server “%s”."
+#, c-format
 msgid "Disconnected from %s:%d via SPICE"
-msgstr "Losgekoppeld van de SPICE server \"%s\"."
+msgstr "Verbinding verbroken met %s:%d via SPICE"
 
 #: plugins/spice/spice_plugin.c:391
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s:%d via SPICE"
-msgstr "Verbinding maken met %s via SSH…"
+msgstr "Verbonden met %s:%d via SPICE"
 
 #: plugins/spice/spice_plugin.c:403
-#, fuzzy
 msgid "TLS connection error."
 msgstr "TLS verbindingsfout."
 
@@ -3048,12 +3020,10 @@ msgid "Auto LZ"
 msgstr "Auto LZ"
 
 #: plugins/spice/spice_plugin.c:652
-#, fuzzy
 msgid "Disable video overlay if videos are not displayed properly.\n"
 msgstr "Schakel video-overlay uit als video's niet goed worden weergegeven.\n"
 
 #: plugins/spice/spice_plugin.c:677
-#, fuzzy
 msgid "Use TLS encryption"
 msgstr "Gebruik TLS-versleuteling"
 
@@ -3063,17 +3033,14 @@ msgid "Server CA certificate"
 msgstr "CA-certificaat voor de server"
 
 #: plugins/spice/spice_plugin.c:696
-#, fuzzy
-#| msgid "Prefered video codec"
 msgid "Preferred video codec"
-msgstr "Voorkeur"
+msgstr "Voorkeur voor video codec"
 
 #: plugins/spice/spice_plugin.c:697
 msgid "Turn off GStreamer overlay"
 msgstr "Serveruitvoer uitschakelen"
 
 #: plugins/spice/spice_plugin.c:700
-#, fuzzy
 msgid "Preferred image compression"
 msgstr "Voorkeur voor beeldcompressie"
 
@@ -3083,14 +3050,12 @@ msgid "No clipboard sync"
 msgstr "Klembord-synchronisatie uitschakelen"
 
 #: plugins/spice/spice_plugin.c:705 plugins/gvnc/gvnc_plugin.c:868
-#, fuzzy
 msgid "Enable audio channel"
-msgstr "Inschakelen audiokanaal"
+msgstr "Audio activeren"
 
 #: plugins/spice/spice_plugin.c:706
-#, fuzzy
 msgid "Share smart card"
-msgstr "Deel smartcard"
+msgstr "Smartcard vrijgeven"
 
 #: plugins/spice/spice_plugin.c:718 plugins/spice/spice_plugin_usb.c:51
 #, fuzzy
@@ -3103,9 +3068,8 @@ msgid "SPICE - Simple Protocol for Independent Computing Environments"
 msgstr "SPICE - Eenvoudig protocol voor onafhankelijke computeromgevingen"
 
 #: plugins/spice/spice_plugin_usb.c:54
-#, fuzzy
 msgid "_Close"
-msgstr "Sl_uiten"
+msgstr "_Sluiten"
 
 #: plugins/spice/spice_plugin_usb.c:94
 #, fuzzy
@@ -3151,16 +3115,14 @@ msgstr ""
 "Probeer het opnieuw nadat u de encryptie voor dit profiel heeft aangezet."
 
 #: plugins/vnc/vnc_plugin.c:1719
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s via VNC"
-msgstr "Verbinding maken met %s via SSH…"
+msgstr "Verbonden met %s via VNC"
 
 #: plugins/vnc/vnc_plugin.c:1726
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s:%d via VNC"
-msgstr "Verbinding maken met %s via SSH…"
+msgstr "Verbonden met %s:%d via VNC"
 
 #: plugins/vnc/vnc_plugin.c:1749
 #, c-format
@@ -3271,7 +3233,6 @@ msgid "Open Chat…"
 msgstr "Chat openen…"
 
 #: plugins/vnc/vnc_plugin.h:42
-#, fuzzy
 msgid "Remmina VNC Plugin"
 msgstr "Remmina VNC Plugin"
 
@@ -3281,12 +3242,10 @@ msgid "Remmina VNC listener Plugin"
 msgstr "Remmina VNC luister Plugin"
 
 #: plugins/www/www_config.h:43
-#, fuzzy
 msgid "Remmina web-browser plugin"
 msgstr "Remmina web-browser plugin"
 
 #: plugins/www/www_plugin.c:99
-#, fuzzy
 msgid "File downloaded"
 msgstr "Bestand gedownload"
 
@@ -3313,7 +3272,6 @@ msgid "Proxy URL"
 msgstr "Proxy URL"
 
 #: plugins/www/www_plugin.c:925
-#, fuzzy
 msgid "E.g. https://example.org, socks://mysocks:1080"
 msgstr "Bijv. https://example.org, socks://mysocks:1080"
 
@@ -3387,7 +3345,6 @@ msgid "Execute a command"
 msgstr "Een opdracht uitvoeren"
 
 #: plugins/tool_hello_world/plugin_config.h:40
-#, fuzzy
 msgid "Hello, World!"
 msgstr "Hallo wereld!"
 
@@ -3420,9 +3377,9 @@ msgstr ""
 #: plugins/x2go/x2go_plugin.c:3304 plugins/x2go/x2go_plugin.c:3319
 #: plugins/x2go/x2go_plugin.c:3324 plugins/x2go/x2go_plugin.c:3329
 #: plugins/x2go/x2go_plugin.c:3334
-#, fuzzy, c-format
+#, c-format
 msgid "Internal error: %s"
-msgstr "Interne fout:"
+msgstr "Interne fout: %s"
 
 #: plugins/x2go/x2go_plugin.c:297 plugins/x2go/x2go_plugin.c:429
 #: plugins/x2go/x2go_plugin.c:518 plugins/x2go/x2go_plugin.c:1349
@@ -3450,10 +3407,8 @@ msgid "Status"
 msgstr "Status"
 
 #: plugins/x2go/x2go_plugin.c:478
-#, fuzzy
-#| msgid "Permission"
 msgid "Session ID"
-msgstr "Rechten"
+msgstr "Sessie-ID"
 
 #: plugins/x2go/x2go_plugin.c:479
 msgid "Create date"
@@ -3486,12 +3441,10 @@ msgid "SND port"
 msgstr "SND poort"
 
 #: plugins/x2go/x2go_plugin.c:487
-#, fuzzy
 msgid "SSHFS port"
-msgstr "Lokale SSH-poort"
+msgstr "SSHFS port"
 
 #: plugins/x2go/x2go_plugin.c:488
-#, fuzzy
 msgid "Visible"
 msgstr "Zichtbaar"
 
@@ -3576,7 +3529,7 @@ msgstr "parameter 'argv' is 'NULL'."
 
 #: plugins/x2go/x2go_plugin.c:917
 msgid "parameter 'error' is 'NULL'."
-msgstr ""
+msgstr "parameter 'error' is 'NULL'."
 
 #: plugins/x2go/x2go_plugin.c:925
 msgid "parameter 'env' is either invalid or uninitialized."
@@ -3596,12 +3549,13 @@ msgstr ""
 "opgelopen."
 
 #: plugins/x2go/x2go_plugin.c:982
-#, fuzzy, c-format
-#| msgid "Could not start SSH session. %s"
+#, c-format
 msgid ""
 "Could not start PyHoca-CLI:\n"
 "%s"
-msgstr "Kon PyHoca-CLI (%i) niet starten: '%s'"
+msgstr ""
+"Kon PyHoca-CLI niet starten:\n"
+"%s"
 
 #: plugins/x2go/x2go_plugin.c:993
 #, c-format
@@ -3640,12 +3594,13 @@ msgid "Parameter 'custom_data' is not fully initialized!"
 msgstr "Parameter 'custom_data' is nog niet volledig geïnitialiseerd!"
 
 #: plugins/x2go/x2go_plugin.c:1276
-#, fuzzy, c-format
-#| msgid "Could not start SSH session. %s"
+#, c-format
 msgid ""
 "Could not terminate X2Go session '%s':\n"
 "%s"
-msgstr "Kon X2Go sessie niet starten."
+msgstr ""
+"Kon de X2Go sessie '%s' niet beëindigen:\n"
+"%s"
 
 #: plugins/x2go/x2go_plugin.c:1288 plugins/x2go/x2go_plugin.c:1665
 #, fuzzy
@@ -3710,16 +3665,12 @@ msgstr ""
 "strings 's_password' of 's_username' waren niet ingesteld."
 
 #: plugins/x2go/x2go_plugin.c:1758
-#, fuzzy
-#| msgid "Password to unlock private key"
 msgid "Enter password to unlock the SSH key:"
-msgstr "Wachtwoord om de privésleutel te ontgrendelen"
+msgstr "Voer uw wachtwoord in om de SSH sleutel te ontgrendelen:"
 
 #: plugins/x2go/x2go_plugin.c:1769
-#, fuzzy
-#| msgid "Authentication type"
 msgid "Password input cancelled. Aborting…"
-msgstr "Authenticatie mislukt: %s"
+msgstr "Invoeren van wachtwoord geannuleerd. Beëindigen…"
 
 #: plugins/x2go/x2go_plugin.c:1800
 msgid ""
@@ -3737,10 +3688,8 @@ msgid "Enter X2Go credentials"
 msgstr "X2Go-gegevens invoeren"
 
 #: plugins/x2go/x2go_plugin.c:1860
-#, fuzzy
-#| msgid "Authentication type"
 msgid "Authentication cancelled. Aborting…"
-msgstr "Authenticatie mislukt: %s"
+msgstr "Authenticatie geannuleerd. Beëindigen…"
 
 #: plugins/x2go/x2go_plugin.c:2047
 msgid ""
@@ -3785,10 +3734,8 @@ msgstr ""
 "maken."
 
 #: plugins/x2go/x2go_plugin.c:2233
-#, fuzzy
-#| msgid "Choose a file to upload"
 msgid "Choose a session to resume:"
-msgstr "Kies een bestand om te uploaden"
+msgstr "Kies een sessie om te hervatten:"
 
 #: plugins/x2go/x2go_plugin.c:2276
 #, fuzzy
@@ -3822,10 +3769,8 @@ msgstr ""
 "DPI instelling is buiten de grenzen. Pas het aan in de profielinstellingen."
 
 #: plugins/x2go/x2go_plugin.c:2576
-#, fuzzy
-#| msgid "Could not start SSH session. %s"
 msgid "Could not start X2Go session…"
-msgstr "Kon X2Go sessie niet starten."
+msgstr "Kon de X2Go sessie niet starten…"
 
 #: plugins/x2go/x2go_plugin.c:2583
 #, fuzzy
@@ -3870,10 +3815,9 @@ msgid "Available feature[%i]: '%s'"
 msgstr "Beschikbare functie[%i]: '%s]"
 
 #: plugins/x2go/x2go_plugin.c:2747
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s:%d via X2Go"
-msgstr "Verbinding maken met %s via SSH…"
+msgstr "Verbonden met %s:%d via X2Go"
 
 #: plugins/x2go/x2go_plugin.c:2841
 #, fuzzy
@@ -3921,9 +3865,9 @@ msgstr "Kon pthread niet initialiseren. Terugvallen naar niet-threaded mode…"
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
 #: plugins/x2go/x2go_plugin.c:3150 plugins/x2go/x2go_plugin.c:3168
-#, fuzzy, c-format
+#, c-format
 msgid "%sand '%s'"
-msgstr "%s en '%s'."
+msgstr "%sen '%s'"
 
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
@@ -3985,9 +3929,8 @@ msgstr "De ondergrens is te laag!"
 
 #: plugins/x2go/x2go_plugin.c:3305 plugins/x2go/x2go_plugin.c:3335
 #: plugins/x2go/x2go_plugin.c:3355
-#, fuzzy
 msgid "Something unknown went wrong."
-msgstr "Er is iets misgegaan"
+msgstr "Er is iets onbekends misgegaan."
 
 #: plugins/x2go/x2go_plugin.c:3310 plugins/x2go/x2go_plugin.c:3340
 #, fuzzy
@@ -4043,12 +3986,10 @@ msgid "Keyboard type (auto)"
 msgstr "Type toetsenbord (auto)"
 
 #: plugins/x2go/x2go_plugin.c:3404
-#, fuzzy
 msgid "Audio support"
 msgstr "Audio-ondersteuning"
 
 #: plugins/x2go/x2go_plugin.c:3406
-#, fuzzy
 msgid "The sound system of the X2Go server (default: 'pulse')."
 msgstr "Het geluidssysteem van de X2Go server (standaard: 'pulse')."
 
@@ -4066,13 +4007,10 @@ msgstr ""
 "(standaard: 'beide')."
 
 #: plugins/x2go/x2go_plugin.c:3415
-#, fuzzy
-#| msgid "Resolution"
 msgid "DPI resolution"
 msgstr "DPI resolutie"
 
 #: plugins/x2go/x2go_plugin.c:3416
-#, fuzzy
 msgid ""
 "Launch session with a specific resolution (in dots per inch). Must be "
 "between 20 and 400."
@@ -4081,41 +4019,32 @@ msgstr ""
 "en 400 liggen."
 
 #: plugins/x2go/x2go_plugin.c:3420
-#, fuzzy
-#| msgid "SSH private key file"
 msgid "Your private key"
-msgstr "SSH privé sleutel bestand"
+msgstr "Uw privé sleutel"
 
 #: plugins/x2go/x2go_plugin.c:3460
-#, fuzzy
 msgid "X2Go plugin loaded."
 msgstr "X2Go plugin geladen."
 
 #: plugins/x2go/x2go_plugin.h:43
-#, fuzzy
 msgid "X2Go - Launch an X2Go session"
 msgstr "X2Go - Start een X2Go-sessie"
 
 #: plugins/gvnc/gvnc_plugin_config.h:40
-#, fuzzy
 msgid "Remmina VNC plugin for GNOME and KVM"
 msgstr "Remmina VNC plugin voor GNOME en KVM"
 
 #: plugins/gvnc/gvnc_plugin.c:476
-#, fuzzy, c-format
-#| msgid "Authentication type"
+#, c-format
 msgid "Unsupported authentication type %u"
-msgstr "Niet-ondersteund authenticatie type %u"
+msgstr "Niet ondersteund authenticatietype %u"
 
 #: plugins/gvnc/gvnc_plugin.c:488
-#, fuzzy, c-format
-#| msgid "Authentication type"
+#, c-format
 msgid "Authentication failure: %s"
-msgstr "Authenticatie mislukt: %s"
+msgstr "Authenticatiefout: %s"
 
 #: plugins/gvnc/gvnc_plugin.c:819
-#, fuzzy
-#| msgid "Disable server input"
 msgid "Use server settings"
 msgstr "Serverinstellingen gebruiken"
 
@@ -4144,8 +4073,6 @@ msgid "Ultra low colour (3 bits)"
 msgstr "Ultra lage kleur (3 bits)"
 
 #: plugins/gvnc/gvnc_plugin.c:847
-#, fuzzy
-#| msgid "Enter VNC password"
 msgid "VNC password"
 msgstr "VNC wachtwoord"
 
@@ -4155,15 +4082,12 @@ msgid "Use JPEG Compression"
 msgstr "Gebruik JPEG-compressie"
 
 #: plugins/gvnc/gvnc_plugin.c:849
-#, fuzzy
-#| msgid "Browse the network to find a %s server"
 msgid "This might not work on all VNC servers"
-msgstr "Dit werkt misschien niet op alle VNC servers"
+msgstr "Dit werkt mogelijk niet op alle VNC servers"
 
 #: plugins/gvnc/gvnc_plugin.c:850
-#, fuzzy
 msgid "Enable GTK-VNC debug"
-msgstr "GTK-VNC debug inschakelen"
+msgstr "GTK-VNC debugging inschakelen"
 
 #: plugins/gvnc/gvnc_plugin.c:870
 #, fuzzy
@@ -4181,74 +4105,60 @@ msgstr ""
 "laten"
 
 #: plugins/gvnc/gvnc_plugin.c:880
-#, fuzzy
 msgid "Send Ctrl+Alt+_Del"
-msgstr "Zenden Ctrl+Alt+_Del"
+msgstr "Verstuur Ctrl+Alt+_Del"
 
 #: plugins/gvnc/gvnc_plugin.c:881
-#, fuzzy
 msgid "Send Ctrl+Alt+_Backspace"
-msgstr "Zend Ctrl+Alt+_Backspace"
+msgstr "Verstuur Ctrl+Alt+_Backspace"
 
 #: plugins/gvnc/gvnc_plugin.c:882
-#, fuzzy
 msgid "Send Ctrl+Alt+_F1"
-msgstr "Zenden Ctrl+Alt+_F1"
+msgstr "Verstuur Ctrl+Alt+_F1"
 
 #: plugins/gvnc/gvnc_plugin.c:883
-#, fuzzy
 msgid "Send Ctrl+Alt+_F2"
-msgstr "Zenden Ctrl+Alt+_F2"
+msgstr "Verstuur Ctrl+Alt+_F2"
 
 #: plugins/gvnc/gvnc_plugin.c:884
-#, fuzzy
 msgid "Send Ctrl+Alt+_F3"
-msgstr "Zenden Ctrl+Alt+_F3"
+msgstr "Verstuur Ctrl+Alt+_F3"
 
 #: plugins/gvnc/gvnc_plugin.c:885
-#, fuzzy
 msgid "Send Ctrl+Alt+_F4"
-msgstr "Zenden Ctrl+Alt+_F4"
+msgstr "Verstuur Ctrl+Alt+_F4"
 
 #: plugins/gvnc/gvnc_plugin.c:886
-#, fuzzy
 msgid "Send Ctrl+Alt+_F5"
-msgstr "Verzenden Ctrl+Alt+_F5"
+msgstr "Verstuur Ctrl+Alt+_F5"
 
 #: plugins/gvnc/gvnc_plugin.c:887
-#, fuzzy
 msgid "Send Ctrl+Alt+_F6"
-msgstr "Verzenden Ctrl+Alt+_F6"
+msgstr "Verstuur Ctrl+Alt+_F6"
 
 #: plugins/gvnc/gvnc_plugin.c:888
-#, fuzzy
 msgid "Send Ctrl+Alt+_F7"
-msgstr "Verzenden Ctrl+Alt+_F7"
+msgstr "Verstuur Ctrl+Alt+_F7"
 
 #: plugins/gvnc/gvnc_plugin.c:889
-#, fuzzy
 msgid "Send Ctrl+Alt+_F8"
-msgstr "Zenden Ctrl+Alt+_F8"
+msgstr "Verstuur Ctrl+Alt+_F8"
 
 #: plugins/gvnc/gvnc_plugin.c:890
-#, fuzzy
 msgid "Send Ctrl+Alt+_F9"
-msgstr "Verzenden Ctrl+Alt+_F9"
+msgstr "Verstuur Ctrl+Alt+_F9"
 
 #: plugins/gvnc/gvnc_plugin.c:891
-#, fuzzy
 msgid "Send Ctrl+Alt+_F10"
-msgstr "Verzenden Ctrl+Alt+_F10"
+msgstr "Verstuur Ctrl+Alt+_F10"
 
 #: plugins/gvnc/gvnc_plugin.c:892
-#, fuzzy
 msgid "Send Ctrl+Alt+_F11"
-msgstr "Verzenden Ctrl+Alt+_F11"
+msgstr "Verstuur Ctrl+Alt+_F11"
 
 #: plugins/gvnc/gvnc_plugin.c:893
-#, fuzzy
 msgid "Send Ctrl+Alt+_F12"
-msgstr "Verzenden Ctrl+Alt+_F12"
+msgstr "Verstuur Ctrl+Alt+_F12"
 
 #: plugins/gvnc/gvnc_plugin.c:895
 #, fuzzy
@@ -4284,7 +4194,6 @@ msgid "Telepathy - Desktop Sharing"
 msgstr "Telepathy - Bureaublad delen"
 
 #: data/ui/remmina_snap_info_dialog.glade:67
-#, fuzzy
 msgid ""
 "<big><b>Remmina Snap package</b></big>\n"
 "\n"
@@ -4293,15 +4202,15 @@ msgid ""
 "Some Remmina functions need to be set up to work properly.\n"
 "</span>\n"
 msgstr ""
-"[Remmina Snap pakket.\n"
+"<big><b>Remmina Snap pakket</b></big>\n"
 "\n"
 "<span>\n"
-"Remmina draait op uw systeem als een Snap package.\n"
-"Sommige Remmina functies moeten worden ingesteld om goed te werken.\n"
+"Remmina draait op uw systeem als een Snap pakket.\n"
+"Sommige Remmina functies moeten ingesteld worden om correct te functioneren."
+"\n"
 "</span>\n"
 
 #: data/ui/remmina_snap_info_dialog.glade:112
-#, fuzzy
 msgid ""
 "To enable access to some important features, like password saving in your "
 "keyring and RDP printer sharing, please open your software center and give "
@@ -4310,7 +4219,7 @@ msgid ""
 msgstr ""
 "Om toegang te krijgen tot enkele belangrijke functies, zoals het opslaan van "
 "wachtwoorden in uw sleutelhanger en het delen van printers via RDP, opent u "
-"uw softwarecentrum en geeft u Remmina de juiste machtigingen. Als "
+"uw softwarecentrum en geeft u Remmina de benodigde machtigingen. Als "
 "alternatief kunt u de volgende commando's in een terminal venster invoeren:"
 
 #: data/ui/remmina_snap_info_dialog.glade:157
@@ -4329,22 +4238,18 @@ msgstr ""
 "de locatie wijzigen in de Remmina-voorkeuren."
 
 #: data/ui/remmina_snap_info_dialog.glade:213
-#, fuzzy
 msgid "Change where Remmina profiles are stored"
 msgstr "Wijzig waar Remmina profielen worden opgeslagen"
 
 #: data/ui/remmina_snap_info_dialog.glade:252
-#, fuzzy
 msgid "<big>Snap settings</big>"
 msgstr "<big>Snap instellingen</big>"
 
 #: data/ui/remmina_snap_info_dialog.glade:265
-#, fuzzy
 msgid "Do not show this message again"
-msgstr "Dit bericht niet meer tonen."
+msgstr "Dit bericht niet meer tonen"
 
 #: data/ui/remmina_search_popover.glade:56 data/ui/remmina_search.glade:61
-#, fuzzy
 msgid "Search"
 msgstr "Zoeken"
 
@@ -4408,17 +4313,14 @@ msgstr "Toevoegen"
 
 #: data/ui/remmina_string_list.glade:20 data/ui/remmina_string_list.glade:137
 #: data/ui/remmina_key_chooser.glade:14 data/ui/remmina_key_chooser.glade:15
-#, fuzzy
 msgid "_Remove"
 msgstr "_Verwijderen"
 
 #: data/ui/remmina_string_list.glade:26 data/ui/remmina_string_list.glade:116
-#, fuzzy
 msgid "Move up"
-msgstr "Omhoog verplaatsen"
+msgstr "Verplaats omhoog"
 
 #: data/ui/remmina_string_list.glade:32 data/ui/remmina_string_list.glade:95
-#, fuzzy
 msgid "Move down"
 msgstr "Verplaats Omlaag"
 
@@ -4427,7 +4329,6 @@ msgid "Change"
 msgstr "Wijzig"
 
 #: data/ui/remmina_mpc.glade:180
-#, fuzzy
 msgid "Selection criteria"
 msgstr "Selectiecriteria"
 
@@ -4440,27 +4341,20 @@ msgid "Set new password"
 msgstr "Wachtwoord onthouden"
 
 #: data/ui/remmina_mpc.glade:320
-#, fuzzy
-#| msgid "Username"
 msgid "Gateway Username"
-msgstr "Gebruikersnaam"
+msgstr "Gateway Gebruikersnaam"
 
 #: data/ui/remmina_mpc.glade:349
-#, fuzzy
-#| msgid "Remote Desktop Gateway domain"
 msgid "Gateway Domain"
-msgstr "Bureaublad op afstand domein"
+msgstr "Gateway Domein"
 
 #: data/ui/remmina_mpc.glade:415
-#, fuzzy
 msgid "Gateway Password"
-msgstr "Hoofdwachtwoord"
+msgstr "Gateway Wachtwoord"
 
 #: data/ui/remmina_mpc.glade:440
-#, fuzzy
-#| msgid "Confirm password"
 msgid "Confirm Gateway Password"
-msgstr "Wachtwoord bevestigen"
+msgstr "Gateway Wachtwoord Bevestigen"
 
 #. A column table with multiple check-boxes
 #: data/ui/remmina_mpc.glade:503
@@ -4484,38 +4378,27 @@ msgid "Domain\\Username"
 msgstr "Gebruikersnaam"
 
 #: data/ui/remmina_mpc.glade:548
-#, fuzzy
-#| msgctxt "Multi password changer table"
-#| msgid "Domain\\Username"
 msgctxt "Multi password changer table"
 msgid "Gateway Domain\\Username"
-msgstr "Gebruikersnaam"
+msgstr "Gateway Domein\\Gebruikersnaam"
 
 #: data/ui/remmina_mpc.glade:588
-#, fuzzy
 msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
-msgstr "<span weight='bold' size='larger'> Multi Password Changer </span>"
+msgstr "<span weight='bold' size='larger'>Meerdere wachtwoorden wijzigen</span>"
 
 #: data/ui/remmina_passwd.glade:33
-#, fuzzy
-#| msgid "_OK"
 msgid "OK"
 msgstr "OK"
 
 #: data/ui/remmina_passwd.glade:60
-#, fuzzy
-#| msgid "Set new password"
 msgid "Set Primary Password"
-msgstr "Wachtwoord onthouden"
+msgstr "Primair wachtwoord instellen"
 
 #: data/ui/remmina_passwd.glade:101
-#, fuzzy
-#| msgid "User password"
 msgid "Verify password"
-msgstr "Gebruikerswachtwoord"
+msgstr "Wachtwoord verifiëren"
 
 #: data/ui/remmina_news.glade:75
-#, fuzzy
 msgid ""
 "<big><b>The news are turned off</b></big>\n"
 "\n"
@@ -4533,20 +4416,21 @@ msgid ""
 "release notes\"><i>Visit the website to read the release notes</i></a>.\n"
 "</span>"
 msgstr ""
-"[Het nieuws is uitgeschakeld.\n"
+"<big><b>Het nieuws is uitgeschakeld</b></big>\n"
 "\n"
 "<span>\n"
-"Het aanzetten van nieuws betekent dat het programma verbinding maakt met een "
-"Remmina server om de release notes te downloaden.\n"
+"Als het nieuws ingeschakeld is kan het programma verbinden met een Remmina "
+"server om de uitgaveopmerkingen te downloaden.\n"
 "</span>\n"
 "\n"
 "<span>\n"
-"Versie controle kan alleen geactiveerd worden tijdens het compileren.\n"
+"Versiecontrole kan alleen geactiveerd worden tijdens het compileren.\n"
 "</span>\n"
 "\n"
 "<span>\n"
 "<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
-"release notes\"><i>Bezoek de website om de release notes te lezen</i></a>.\n"
+"release notes\"><i>Bezoek de website om de uitgaveopmerkingen te "
+"lezen</i></a>.\n"
 "</span>"
 
 #: data/ui/remmina_news.glade:130
@@ -4558,19 +4442,17 @@ msgid "Apply"
 msgstr "Toepassen"
 
 #: data/ui/remmina_news.glade:143
-#, fuzzy
 msgid "Allow Remmina to automatically open .rdp and .remmina files."
-msgstr "Laat Remmina automatisch .rdp en .remmina bestanden openen."
+msgstr "Sta Remmina toe om automatisch .rdp en .remmina bestanden openen."
 
 #. The star (*) is a reference to privacy consent
 #: data/ui/remmina_news.glade:157
-#, fuzzy
 msgid ""
 "Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
 "\">remmina.org</a> (*)"
 msgstr ""
-"Nieuws ophalen van <a href=\"https://remmina.org\" title=\"Remmina news site"
-"\">remmina.org</a> (*)"
+"Nieuws ophalen van <a href=\"https://remmina.org\" title=\"Remmina news "
+"site\">remmina.org</a> (*)"
 
 #: data/ui/remmina_news.glade:169
 msgid "Receives updated news from remmina.org"
@@ -4584,7 +4466,6 @@ msgstr ""
 "voor het verzenden en ophalen van gegevens naar / van remmina.org"
 
 #: data/ui/remmina_news.glade:205
-#, fuzzy
 msgid "<big>Take part</big>"
 msgstr "<big>Doe mee</big>"
 
@@ -4607,22 +4488,18 @@ msgstr ""
 "</span>\n"
 
 #: data/ui/remmina_news.glade:251
-#, fuzzy
 msgid "<big>Contribute</big>"
-msgstr "<big>Contribute</big>"
+msgstr "<big>Bijdragen</big>"
 
 #: data/ui/remmina_key_chooser.glade:23
-#, fuzzy
 msgid "Choose a new key"
-msgstr "Kies een nieuwe sleutel"
+msgstr "Kies een nieuwe toets"
 
 #: data/ui/remmina_key_chooser.glade:82
-#, fuzzy
 msgid "Please press the new key…"
 msgstr "Druk alstublieft op de nieuwe toets…"
 
 #: data/ui/remmina_main.glade:36
-#, fuzzy
 msgid "Hide or show the search bar"
 msgstr "De zoekbalk verbergen of tonen"
 
@@ -4641,12 +4518,10 @@ msgid "Select the protocol to use with the quick connect bar."
 msgstr "Selecteer het protocol dat u wilt gebruiken met de snelkoppelingsbalk."
 
 #: data/ui/remmina_main.glade:98
-#, fuzzy
 msgid "Search string or server name/IP address for “Quick Connect”"
-msgstr "Zoekreeks of servernaam/IP-adres voor \"Snel verbinding maken\""
+msgstr "Trefwoord zoeken of servernaam/IP-adres voor \"Snel verbinding maken\""
 
 #: data/ui/remmina_main.glade:102 data/ui/remmina_main.glade:104
-#, fuzzy
 msgid "Server name or IP address"
 msgstr "Servernaam of IP-adres"
 
@@ -4661,12 +4536,10 @@ msgid "Edit"
 msgstr "Bewerken"
 
 #: data/ui/remmina_main.glade:218
-#, fuzzy
 msgid "Collapse all"
 msgstr "Alles inklappen"
 
 #: data/ui/remmina_main.glade:228
-#, fuzzy
 msgid "Expand all"
 msgstr "Alles uitklappen"
 
@@ -4676,9 +4549,8 @@ msgid "Multi password changer"
 msgstr "Meervoudige wachtwoordwisselaar"
 
 #: data/ui/remmina_main.glade:300
-#, fuzzy
 msgid "Debugging"
-msgstr "Debuggen"
+msgstr "Foutopsporing"
 
 #: data/ui/remmina_main.glade:320
 msgid "Export"
@@ -4694,12 +4566,10 @@ msgid "Homepage"
 msgstr "Startpagina"
 
 #: data/ui/remmina_main.glade:373
-#, fuzzy
 msgid "Donations"
 msgstr "Donaties"
 
 #: data/ui/remmina_main.glade:383
-#, fuzzy
 msgid "Wiki"
 msgstr "Wiki"
 
@@ -4741,7 +4611,6 @@ msgid "Toggle view"
 msgstr "Toggle bekijken"
 
 #: data/ui/remmina_spinner.glade:54
-#, fuzzy
 msgid "Please wait…"
 msgstr "Even geduld…"
 
@@ -4751,12 +4620,10 @@ msgid "Double-click action"
 msgstr "Dubbelklik actie"
 
 #: data/ui/remmina_preferences.glade:58
-#, fuzzy
 msgid "Open connection"
-msgstr "Open verbinding"
+msgstr "Verbinding openen"
 
 #: data/ui/remmina_preferences.glade:59
-#, fuzzy
 msgid "Edit settings"
 msgstr "Instellingen bewerken"
 
@@ -4765,22 +4632,18 @@ msgid "Scaling quality"
 msgstr "Lokaal - hoge kwaliteit"
 
 #: data/ui/remmina_preferences.glade:91
-#, fuzzy
 msgid "Nearest"
 msgstr "Dichtstbijzijnde"
 
 #: data/ui/remmina_preferences.glade:92
-#, fuzzy
 msgid "Tiles"
 msgstr "Tegels"
 
 #: data/ui/remmina_preferences.glade:93
-#, fuzzy
 msgid "Bilinear"
 msgstr "Bilineair"
 
 #: data/ui/remmina_preferences.glade:94
-#, fuzzy
 msgid "Hyper"
 msgstr "Hyper"
 
@@ -4795,9 +4658,8 @@ msgid "Maximal amount of recent items"
 msgstr "Maximaal aantal recente items"
 
 #: data/ui/remmina_preferences.glade:154
-#, fuzzy
 msgid "Screen resolutions"
-msgstr "Scherm resoluties"
+msgstr "Schermresoluties"
 
 #: data/ui/remmina_preferences.glade:200
 msgid "Folder for screenshots"
@@ -4813,7 +4675,6 @@ msgid "Select a folder"
 msgstr "Screenshot"
 
 #: data/ui/remmina_preferences.glade:227
-#, fuzzy
 msgid "Set up"
 msgstr "Instellen"
 
@@ -4822,7 +4683,6 @@ msgid "Screenshot filenames"
 msgstr "Screenshot gemaakt"
 
 #: data/ui/remmina_preferences.glade:261
-#, fuzzy
 msgid ""
 "%p Profile name\n"
 "%h Server name/IP\n"
@@ -4877,7 +4737,6 @@ msgstr "Sjabloon voor profielbestandsnamen"
 
 #. Placeholders used to name a Remmina connection profile
 #: data/ui/remmina_preferences.glade:361
-#, fuzzy
 msgid ""
 "%G Name of group (slashes \\/ are converted to dashes -)\n"
 "%P Protocol name\n"
@@ -4886,10 +4745,11 @@ msgid ""
 "\n"
 "\n"
 msgstr ""
-"%G Groepsnaam (schuine streep wordt automatisch omgezet in -)\n"
+"%G Groepsnaam (schuine strepen \\/ worden automatisch omgezet naar streepjes "
+"-)\n"
 "%P Protocolnaam\n"
-"%N Naam verbinding\n"
-"%h Hostnaam/IP\n"
+"%N Verbindingsnaam\n"
+"%h Hostname/IP\n"
 "\n"
 "\n"
 
@@ -4909,14 +4769,12 @@ msgid "Confirm before closing multiple tabs"
 msgstr "Bevestig voor het sluiten van meerdere tabbladen"
 
 #: data/ui/remmina_preferences.glade:482
-#, fuzzy
 msgid "Options"
 msgstr "Opties"
 
 #: data/ui/remmina_preferences.glade:507
-#, fuzzy
 msgid "Always show tabs"
-msgstr "Toon altijd tabbladen"
+msgstr "Tabbladen altijd tonen"
 
 #: data/ui/remmina_preferences.glade:523
 #, fuzzy
@@ -4928,9 +4786,8 @@ msgid "Default view"
 msgstr "Standaard"
 
 #: data/ui/remmina_preferences.glade:558
-#, fuzzy
 msgid "Automatic"
-msgstr "Auto"
+msgstr "Automatisch"
 
 #: data/ui/remmina_preferences.glade:559
 #, fuzzy
@@ -4944,10 +4801,9 @@ msgstr "Viewport volledig scherm"
 
 #. How tabs are grouped in the Remmina connection window
 #: data/ui/remmina_preferences.glade:577
-#, fuzzy
 msgctxt "Appearance preferences"
 msgid "Tabs grouping"
-msgstr "Tabbladen groepering"
+msgstr "Tabbladen groeperen"
 
 #: data/ui/remmina_preferences.glade:589
 msgid "By group"
@@ -4967,12 +4823,10 @@ msgid "Fullscreen on the same screen as the connection window"
 msgstr "Volledig scherm op hetzelfde scherm als het verbindingsvenster"
 
 #: data/ui/remmina_preferences.glade:626
-#, fuzzy
 msgid "Peeking"
-msgstr "Peeking"
+msgstr "Zichtbaar"
 
 #: data/ui/remmina_preferences.glade:627
-#, fuzzy
 msgid "Hidden"
 msgstr "Verborgen"
 
@@ -4982,7 +4836,6 @@ msgid "Fullscreen toolbar visibility"
 msgstr "Zichtbaarheid werkbalk op volledig scherm"
 
 #: data/ui/remmina_preferences.glade:654
-#, fuzzy
 msgid "Hide the search bar shown in the main window"
 msgstr "Verberg de zoekbalk in het hoofdvenster"
 
@@ -4992,7 +4845,6 @@ msgid "Prefer dark theme"
 msgstr "Voorkeur voor donker thema"
 
 #: data/ui/remmina_preferences.glade:674
-#, fuzzy
 msgid ""
 "If a GTK theme includes a dark variant, it will be used instead of the "
 "configured theme."
@@ -5003,7 +4855,7 @@ msgstr ""
 #: data/ui/remmina_preferences.glade:687
 #, fuzzy
 msgid "Always show notes"
-msgstr "Toon altijd tabbladen"
+msgstr "Opmerkingen altijd tonen"
 
 #: data/ui/remmina_preferences.glade:691
 msgid "Add a column displaying any notes associated with a connection."
@@ -5049,16 +4901,14 @@ msgid "Hide total count shown in the group menu"
 msgstr "Verberg de totaaltelling in het groepsmenu"
 
 #: data/ui/remmina_preferences.glade:858
-#, fuzzy
 msgid "No tray icon"
-msgstr "Geen lade-icoon"
+msgstr "Geen taakbalk pictogram"
 
 #: data/ui/remmina_preferences.glade:877
 msgid "Start in tray upon user login"
 msgstr "Begin als tray-pictogram"
 
 #: data/ui/remmina_preferences.glade:908
-#, fuzzy
 msgid "Applet"
 msgstr "Applet"
 
@@ -5072,9 +4922,8 @@ msgid "Show/hide fullscreen"
 msgstr "Schermvullend"
 
 #: data/ui/remmina_preferences.glade:1003
-#, fuzzy
 msgid "Auto-fit window"
-msgstr "Auto-fit venster"
+msgstr "Venstergrootte automatisch aanpassen"
 
 #: data/ui/remmina_preferences.glade:1080
 #, fuzzy
@@ -5087,18 +4936,15 @@ msgid "Grab keyboard"
 msgstr "Pak het toetsenbord"
 
 #: data/ui/remmina_preferences.glade:1204
-#, fuzzy
 msgid "Show/hide toolbar"
-msgstr "Toon/verberg werkbalk"
+msgstr "Werkbalk tonen/verbergen"
 
 #: data/ui/remmina_preferences.glade:1267
 #: data/ui/remmina_preferences.glade:1277
-#, fuzzy
 msgid "View-only mode"
-msgstr "Alleen bekijken"
+msgstr "Alleen-bekijken modus"
 
 #: data/ui/remmina_preferences.glade:1340
-#, fuzzy
 msgid "Keyboard"
 msgstr "Toetsenbord"
 
@@ -5118,9 +4964,8 @@ msgid "No logging at all"
 msgstr "Helemaal geen logging"
 
 #: data/ui/remmina_preferences.glade:1420
-#, fuzzy
 msgid "Rare conditions or warnings"
-msgstr "Zeldzame aandoeningen of waarschuwingen"
+msgstr "Zeldzame situaties of waarschuwingen"
 
 #: data/ui/remmina_preferences.glade:1421
 #, fuzzy
@@ -5176,9 +5021,8 @@ msgstr ""
 "overeenkomstige TCP-verbinding geforceerd te sluiten."
 
 #: data/ui/remmina_preferences.glade:1585
-#, fuzzy
 msgid "SSH options"
-msgstr "SSH-opties"
+msgstr "SSH opties"
 
 #: data/ui/remmina_preferences.glade:1602
 msgid ""
@@ -5195,10 +5039,8 @@ msgstr ""
 "ongeoorloofd gebruik."
 
 #: data/ui/remmina_preferences.glade:1619
-#, fuzzy
-#| msgid "User password"
 msgid "Remmina password"
-msgstr "Gebruikerswachtwoord"
+msgstr "Remmina wachtwoord"
 
 #: data/ui/remmina_preferences.glade:1630
 msgid "Use secret key authentication for some widgets"
@@ -5217,17 +5059,13 @@ msgid "timeout in seconds (default 300)"
 msgstr "timeout in seconden (standaard 300)"
 
 #: data/ui/remmina_preferences.glade:1678
-#, fuzzy
-#| msgid "Secured password storage in KWallet"
 msgid "Enter your Remmina password to connect"
-msgstr "Veilige opslag van wachtwoorden in KWallet"
+msgstr "Voer uw Remmina wachtwoord in om te verbinden"
 
 #. “Require to connect” is “Require the Remmina password before to connect”, the Remmina password is the Master/Principal Password, that is used to protect Remmina from unauthorized use.
 #: data/ui/remmina_preferences.glade:1682
-#, fuzzy
-#| msgid "Secured password storage in KWallet"
 msgid "Require to connect"
-msgstr "Veilige opslag van wachtwoorden in KWallet"
+msgstr "Vereist om te verbinden"
 
 #: data/ui/remmina_preferences.glade:1693
 msgid "Creation, editing, copying, and deletions require the Remmina password"
@@ -5240,23 +5078,17 @@ msgid "Require to modify"
 msgstr "Vereis om te bewerken"
 
 #: data/ui/remmina_preferences.glade:1708
-#, fuzzy
-#| msgid "Secured password storage in KWallet"
 msgid "Enter your Remmina password to view passwords"
-msgstr "Veilige opslag van wachtwoorden in KWallet"
+msgstr "Voer uw Remmina wachtwoord in om wachtwoorden te bekijken"
 
 #. “Require to view passwords” is “Require the Remmina password before to connect”, the Remmina password is the Master/Principal Password, that is used to protect Remmina from unauthorized use.
 #: data/ui/remmina_preferences.glade:1712
-#, fuzzy
-#| msgid "Set new password"
 msgid "Require to view passwords"
-msgstr "Wachtwoord onthouden"
+msgstr "Vereist om wachtwoorden te bekijken"
 
 #: data/ui/remmina_preferences.glade:1768
-#, fuzzy
-#| msgid "Description"
 msgid "Encryption"
-msgstr "Omschrijving"
+msgstr "Versleuteling"
 
 #: data/ui/remmina_preferences.glade:1779
 msgid ""
@@ -5297,22 +5129,19 @@ msgstr "Instellingen bewerken"
 
 #: data/ui/remmina_preferences.glade:1831
 msgid "Automatically accept all fingerprints and certificates"
-msgstr "Gewijzigd certificaat accepteren?"
+msgstr "Automatisch alle vingerafdrukken en certificaten accepteren"
 
 #: data/ui/remmina_preferences.glade:1836
-#, fuzzy
-#| msgid "Trust all fingerprints and certificates"
 msgid "Trust all certificates"
-msgstr "Gewijzigd certificaat accepteren?"
+msgstr "Alle certificaten vertrouwen"
 
 #: data/ui/remmina_preferences.glade:1871
 msgid "Security"
 msgstr "Beveiliging"
 
 #: data/ui/remmina_preferences.glade:1902
-#, fuzzy
 msgid "Terminal font"
-msgstr "Lettertype terminal"
+msgstr "Terminal lettertype"
 
 #: data/ui/remmina_preferences.glade:1915
 #, fuzzy
@@ -5320,14 +5149,12 @@ msgid "Scrollback lines"
 msgstr "Scrollback lijnen"
 
 #: data/ui/remmina_preferences.glade:1963
-#, fuzzy
 msgid "Shortcuts for copying and pasting"
 msgstr "Sneltoetsen voor kopiëren en plakken"
 
 #: data/ui/remmina_preferences.glade:1976
-#, fuzzy
 msgid "Select all shortcuts"
-msgstr "Selecteer alle snelkoppelingen"
+msgstr "Sneltoets voor alles selecteren"
 
 #: data/ui/remmina_preferences.glade:1989
 #: data/ui/remmina_preferences.glade:2006
@@ -5375,7 +5202,6 @@ msgid "Pick a terminal colouring file"
 msgstr "Kies een terminal kleurbestand"
 
 #: data/ui/remmina_preferences.glade:2109
-#, fuzzy
 msgid "Bright colours"
 msgstr "Heldere kleuren"
 
@@ -5460,9 +5286,8 @@ msgid "Pick a white colour"
 msgstr "Kies een witte kleur"
 
 #: data/ui/remmina_preferences.glade:2346
-#, fuzzy
 msgid "Normal colours"
-msgstr "Normale kleuren"
+msgstr "Standaard kleuren"
 
 #: data/ui/remmina_preferences.glade:2359
 #: data/ui/remmina_preferences.glade:2374
@@ -5471,18 +5296,15 @@ msgstr "Schaduw van cursor"
 
 #: data/ui/remmina_preferences.glade:2388
 #: data/ui/remmina_preferences.glade:2403
-#, fuzzy
 msgid "Background colour"
 msgstr "Achtergrondkleur"
 
 #: data/ui/remmina_preferences.glade:2419
 #: data/ui/remmina_preferences.glade:2433
-#, fuzzy
 msgid "Foreground colour"
 msgstr "Voorgrondkleur"
 
 #: data/ui/remmina_preferences.glade:2446
-#, fuzzy
 msgid "Increase and decrease font size"
 msgstr "Lettergrootte vergroten en verkleinen"
 
@@ -5511,33 +5333,26 @@ msgstr "Markeer voorgrondkleur"
 
 #: data/ui/remmina_preferences.glade:2562
 #: data/ui/remmina_preferences.glade:2609
-#, fuzzy
-#| msgid "Cursor colour"
 msgid "Cursor foreground colour"
-msgstr "Cursor voorgrondkleur"
+msgstr "Voorgrondkleur cursor"
 
 #: data/ui/remmina_preferences.glade:2665
-#, fuzzy
 msgid "Terminal"
 msgstr "Terminal"
 
 #: data/ui/remmina_preferences.glade:2679
-#, fuzzy
 msgid "Remmina Preferences"
 msgstr "Remmina Voorkeuren"
 
 #: data/ui/remmina_unlock.glade:56
-#, fuzzy
 msgid "Unlock"
 msgstr "Ontgrendelen"
 
 #: data/ui/remmina_unlock.glade:85
-#, fuzzy
 msgid "Unlock Remmina"
-msgstr "Maak Remmina los"
+msgstr "Remmina ontgrendelen"
 
 #: data/ui/remmina_unlock.glade:120
-#, fuzzy
 msgid "Master password"
 msgstr "Hoofdwachtwoord"
 
