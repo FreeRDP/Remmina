@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2023-04-11 12:58+0000\n"
+"POT-Creation-Date: 2023-05-03 11:33+0000\n"
 "PO-Revision-Date: 2023-05-01 12:49+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -151,7 +151,7 @@ msgstr "보안"
 msgid "Language Wrapper"
 msgstr "번역 언어"
 
-#: src/remmina_plugin_manager.c:526 data/ui/remmina_main.glade:306
+#: src/remmina_plugin_manager.c:526 data/ui/remmina_main.glade:330
 msgid "Plugins"
 msgstr "부가 기능"
 
@@ -161,7 +161,7 @@ msgid "_OK"
 msgstr "확인(_O)"
 
 #: src/remmina_plugin_manager.c:544 src/remmina_file_editor.c:1937
-#: data/ui/remmina_main.glade:433
+#: data/ui/remmina_main.glade:457
 msgid "Name"
 msgstr "이름"
 
@@ -832,6 +832,7 @@ msgid "Upload to server"
 msgstr "서버에 업로드"
 
 #: src/remmina_ftp_client.c:798 data/ui/remmina_main.glade:198
+#: data/ui/remmina_main.glade:252
 msgid "Delete"
 msgstr "삭제"
 
@@ -852,7 +853,7 @@ msgid "User"
 msgstr "사용자"
 
 #: src/remmina_ftp_client.c:955 src/remmina_file_editor.c:1962
-#: data/ui/remmina_mpc.glade:93 data/ui/remmina_main.glade:455
+#: data/ui/remmina_mpc.glade:93 data/ui/remmina_main.glade:479
 msgid "Group"
 msgstr "그룹"
 
@@ -989,7 +990,7 @@ msgid "Could not authenticate, attempting reconnection…"
 msgstr "인증할 수 없습니다, 재연결 시도 중…"
 
 #: src/remmina_protocol_widget.c:2053 src/remmina_file_editor.c:438
-#: src/remmina_file_editor.c:1210 data/ui/remmina_main.glade:485
+#: src/remmina_file_editor.c:1210 data/ui/remmina_main.glade:509
 msgid "Server"
 msgstr "서버"
 
@@ -1268,30 +1269,40 @@ msgstr "PTY 기기를 생성할 수 없습니다."
 msgid "Plugin %s is not registered."
 msgstr "%s 는 등록되지 않은 플러그인 입니다."
 
-#: src/remmina_main.c:732
+#: src/remmina_main.c:733
 msgid "The latest successful connection attempt, or a pre-computed date"
 msgstr "최근에 성공한 연결 시도 또는 미리 계산된 날짜"
 
-#: src/remmina_main.c:734
+#: src/remmina_main.c:735
 #, c-format
 msgid "Total %i item."
 msgid_plural "Total %i items."
 msgstr[0] "총 %i개의 항목."
 
-#: src/remmina_main.c:742
+#: src/remmina_main.c:743
 msgid "Network status: fully online"
 msgstr "네트워크 상태: 온라인"
 
-#: src/remmina_main.c:745
+#: src/remmina_main.c:746
 msgid "Network status: offline"
 msgstr "네트워크 상태: 오프라인"
 
-#: src/remmina_main.c:998
+#: src/remmina_main.c:999
 #, c-format
 msgid "Are you sure you want to delete “%s”?"
 msgstr "\"%s\"을(를) 삭제 하시겠습니까?"
 
-#: src/remmina_main.c:1133
+#: src/remmina_main.c:1021
+#, fuzzy
+#| msgid "Are you sure to delete the selected files on server?"
+msgid "Are you sure you want to delete the selected files?"
+msgstr "선택한 파일을 삭제 하시겠습니까?"
+
+#: src/remmina_main.c:1032
+msgid "Failed to delete files!"
+msgstr ""
+
+#: src/remmina_main.c:1192
 #, c-format
 msgid ""
 "Unable to import:\n"
@@ -1300,23 +1311,23 @@ msgstr ""
 "가져 올 수 없음:\n"
 "%s"
 
-#: src/remmina_main.c:1159 data/ui/remmina_main.glade:286
+#: src/remmina_main.c:1218 data/ui/remmina_main.glade:310
 msgid "Import"
 msgstr "가져오기"
 
-#: src/remmina_main.c:1182 src/remmina_file_editor.c:1819
+#: src/remmina_main.c:1241 src/remmina_file_editor.c:1819
 msgid "_Save"
 msgstr "저장(_S)"
 
-#: src/remmina_main.c:1188
+#: src/remmina_main.c:1247
 msgid "This protocol does not support exporting."
 msgstr "이 프로토콜은 '내보내기'를 지원하지 않습니다."
 
-#: src/remmina_main.c:1501
+#: src/remmina_main.c:1568
 msgid "Remmina Remote Desktop Client"
 msgstr "Remmina 원격 데스크톱 클라이언트"
 
-#: src/remmina_main.c:1503
+#: src/remmina_main.c:1570
 msgid "Remmina Kiosk"
 msgstr "Remmina 키오스크"
 
@@ -1568,7 +1579,7 @@ msgstr "기본 설정"
 msgid "Advanced"
 msgstr "고급 설정"
 
-#: src/remmina_file_editor.c:1347 data/ui/remmina_main.glade:499
+#: src/remmina_file_editor.c:1347 data/ui/remmina_main.glade:523
 msgid "Notes"
 msgstr "노트"
 
@@ -1633,7 +1644,7 @@ msgstr "빠른 접속"
 msgid "Use '%s' as subgroup delimiter"
 msgstr "'%s' 하위그룹 구분자 사용"
 
-#: src/remmina_file_editor.c:1980 data/ui/remmina_main.glade:469
+#: src/remmina_file_editor.c:1980 data/ui/remmina_main.glade:493
 msgid "Labels"
 msgstr "레이블"
 
@@ -1660,7 +1671,7 @@ msgstr ""
 msgid "Open Main Window"
 msgstr "메인 윈도 열기"
 
-#: src/remmina_icon.c:141 data/ui/remmina_main.glade:255
+#: src/remmina_icon.c:141 data/ui/remmina_main.glade:279
 msgid "_Preferences"
 msgstr "기본 설정(_P)"
 
@@ -1672,7 +1683,7 @@ msgstr "정보(_A)"
 msgid "Enable Service Discovery"
 msgstr "서비스 찾기 활성화"
 
-#: src/remmina_icon.c:168 data/ui/remmina_main.glade:395
+#: src/remmina_icon.c:168 data/ui/remmina_main.glade:419
 msgid "_Quit"
 msgstr "종료(_Q)"
 
@@ -4031,7 +4042,7 @@ msgstr "정규 표현식으로 일치(_R)"
 msgid "_Wrap around"
 msgstr "처음부터 계속 검색(_W)"
 
-#: data/ui/remmina_about.glade:31 data/ui/remmina_main.glade:386
+#: data/ui/remmina_about.glade:31 data/ui/remmina_main.glade:410
 msgid "About"
 msgstr "정보"
 
@@ -4277,64 +4288,64 @@ msgstr "모두 닫기"
 msgid "Expand all"
 msgstr "모두 열기"
 
-#: data/ui/remmina_main.glade:266
+#: data/ui/remmina_main.glade:290
 msgid "Multi password changer"
 msgstr "다중 비밀번호 변경도구"
 
-#: data/ui/remmina_main.glade:276
+#: data/ui/remmina_main.glade:300
 msgid "Debugging"
 msgstr "디버깅"
 
-#: data/ui/remmina_main.glade:296
+#: data/ui/remmina_main.glade:320
 msgid "Export"
 msgstr "내보내기"
 
-#: data/ui/remmina_main.glade:323
+#: data/ui/remmina_main.glade:347
 msgid "Make Remmina your default remote desktop client"
 msgstr "Remmina를 기본 원격 데스크톱 클라이언트로 설정"
 
-#: data/ui/remmina_main.glade:339
+#: data/ui/remmina_main.glade:363
 msgid "Homepage"
 msgstr "홈페이지"
 
-#: data/ui/remmina_main.glade:349
+#: data/ui/remmina_main.glade:373
 msgid "Donations"
 msgstr "기부"
 
-#: data/ui/remmina_main.glade:359
+#: data/ui/remmina_main.glade:383
 msgid "Wiki"
 msgstr "위키"
 
 #. Remmina community website
-#: data/ui/remmina_main.glade:369
+#: data/ui/remmina_main.glade:393
 msgid "Community"
 msgstr "온라인 커뮤니티"
 
-#: data/ui/remmina_main.glade:513
+#: data/ui/remmina_main.glade:537
 msgid "Plugin"
 msgstr "플러그인"
 
-#: data/ui/remmina_main.glade:527
+#: data/ui/remmina_main.glade:551
 msgid "Last used"
 msgstr "마지막 사용시간"
 
-#: data/ui/remmina_main.glade:576
+#: data/ui/remmina_main.glade:600
 msgid "New connection profile"
 msgstr "새 연결 프로필"
 
-#: data/ui/remmina_main.glade:588
+#: data/ui/remmina_main.glade:612
 msgid "Show search bar"
 msgstr "검색창 표시"
 
-#: data/ui/remmina_main.glade:608
+#: data/ui/remmina_main.glade:632
 msgid "Remmina main menu"
 msgstr "Remmina 기본 메뉴"
 
-#: data/ui/remmina_main.glade:615
+#: data/ui/remmina_main.glade:639
 msgid "Actions"
 msgstr "액션"
 
-#: data/ui/remmina_main.glade:630
+#: data/ui/remmina_main.glade:654
 msgid "Toggle view"
 msgstr "뷰 토글"
 

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2023-04-11 12:58+0000\n"
+"POT-Creation-Date: 2023-05-03 11:33+0000\n"
 "PO-Revision-Date: 2023-05-01 12:49+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -156,7 +156,7 @@ msgstr "Secret"
 msgid "Language Wrapper"
 msgstr ""
 
-#: src/remmina_plugin_manager.c:526 data/ui/remmina_main.glade:306
+#: src/remmina_plugin_manager.c:526 data/ui/remmina_main.glade:330
 msgid "Plugins"
 msgstr "Module"
 
@@ -167,7 +167,7 @@ msgid "_OK"
 msgstr "_OK"
 
 #: src/remmina_plugin_manager.c:544 src/remmina_file_editor.c:1937
-#: data/ui/remmina_main.glade:433
+#: data/ui/remmina_main.glade:457
 msgid "Name"
 msgstr "Denumire"
 
@@ -903,6 +903,7 @@ msgid "Upload to server"
 msgstr "Încarcă pe server"
 
 #: src/remmina_ftp_client.c:798 data/ui/remmina_main.glade:198
+#: data/ui/remmina_main.glade:252
 #, fuzzy
 msgid "Delete"
 msgstr "Ștergeți"
@@ -924,7 +925,7 @@ msgid "User"
 msgstr "Utilizator"
 
 #: src/remmina_ftp_client.c:955 src/remmina_file_editor.c:1962
-#: data/ui/remmina_mpc.glade:93 data/ui/remmina_main.glade:455
+#: data/ui/remmina_mpc.glade:93 data/ui/remmina_main.glade:479
 msgid "Group"
 msgstr "Grup"
 
@@ -1066,7 +1067,7 @@ msgid "Could not authenticate, attempting reconnection…"
 msgstr "Autentificarea a eșuat. Se încearcă reconectarea…"
 
 #: src/remmina_protocol_widget.c:2053 src/remmina_file_editor.c:438
-#: src/remmina_file_editor.c:1210 data/ui/remmina_main.glade:485
+#: src/remmina_file_editor.c:1210 data/ui/remmina_main.glade:509
 msgid "Server"
 msgstr "Server"
 
@@ -1359,14 +1360,14 @@ msgstr "Nu s-a putut crea un dispozitiv PTY."
 msgid "Plugin %s is not registered."
 msgstr "Modulul %s nu este înregistrat."
 
-#: src/remmina_main.c:732
+#: src/remmina_main.c:733
 #, fuzzy
 msgid "The latest successful connection attempt, or a pre-computed date"
 msgstr ""
 "Cea mai recentă încercare de conectare reușită sau o dată calculată în "
 "prealabil"
 
-#: src/remmina_main.c:734
+#: src/remmina_main.c:735
 #, c-format
 msgid "Total %i item."
 msgid_plural "Total %i items."
@@ -1374,20 +1375,30 @@ msgstr[0] "Total %i element."
 msgstr[1] "Total %i elemente."
 msgstr[2] "Total %i de elemente."
 
-#: src/remmina_main.c:742
+#: src/remmina_main.c:743
 msgid "Network status: fully online"
 msgstr ""
 
-#: src/remmina_main.c:745
+#: src/remmina_main.c:746
 msgid "Network status: offline"
 msgstr ""
 
-#: src/remmina_main.c:998
+#: src/remmina_main.c:999
 #, c-format
 msgid "Are you sure you want to delete “%s”?"
 msgstr "Doriți cu siguranță să ștergeți „%s”"
 
-#: src/remmina_main.c:1133
+#: src/remmina_main.c:1021
+#, fuzzy
+#| msgid "Are you sure to delete the selected files on server?"
+msgid "Are you sure you want to delete the selected files?"
+msgstr "Doriți cu siguranță ștergerea fișierelor selectate de pe server?"
+
+#: src/remmina_main.c:1032
+msgid "Failed to delete files!"
+msgstr ""
+
+#: src/remmina_main.c:1192
 #, c-format
 msgid ""
 "Unable to import:\n"
@@ -1396,24 +1407,24 @@ msgstr ""
 "Nu se poate importa:\n"
 "%s"
 
-#: src/remmina_main.c:1159 data/ui/remmina_main.glade:286
+#: src/remmina_main.c:1218 data/ui/remmina_main.glade:310
 msgid "Import"
 msgstr "Importă"
 
-#: src/remmina_main.c:1182 src/remmina_file_editor.c:1819
+#: src/remmina_main.c:1241 src/remmina_file_editor.c:1819
 #, fuzzy
 msgid "_Save"
 msgstr "Salvează"
 
-#: src/remmina_main.c:1188
+#: src/remmina_main.c:1247
 msgid "This protocol does not support exporting."
 msgstr "Acest protocol nu recunoaște funcția de exportare."
 
-#: src/remmina_main.c:1501
+#: src/remmina_main.c:1568
 msgid "Remmina Remote Desktop Client"
 msgstr "Client desktop la distanță Remmina"
 
-#: src/remmina_main.c:1503
+#: src/remmina_main.c:1570
 #, fuzzy
 msgid "Remmina Kiosk"
 msgstr "Chioșc Remmina"
@@ -1697,7 +1708,7 @@ msgstr "Standard"
 msgid "Advanced"
 msgstr "Avansat"
 
-#: src/remmina_file_editor.c:1347 data/ui/remmina_main.glade:499
+#: src/remmina_file_editor.c:1347 data/ui/remmina_main.glade:523
 #, fuzzy
 msgid "Notes"
 msgstr "Note"
@@ -1771,7 +1782,7 @@ msgstr "Conectare rapidă"
 msgid "Use '%s' as subgroup delimiter"
 msgstr "Folosește „%s” ca delimitator pentru subgrup"
 
-#: src/remmina_file_editor.c:1980 data/ui/remmina_main.glade:469
+#: src/remmina_file_editor.c:1980 data/ui/remmina_main.glade:493
 msgid "Labels"
 msgstr ""
 
@@ -1799,7 +1810,7 @@ msgstr ""
 msgid "Open Main Window"
 msgstr "Deschide fereastra principală"
 
-#: src/remmina_icon.c:141 data/ui/remmina_main.glade:255
+#: src/remmina_icon.c:141 data/ui/remmina_main.glade:279
 #, fuzzy
 msgid "_Preferences"
 msgstr "Preferințe"
@@ -1813,7 +1824,7 @@ msgstr "Despre"
 msgid "Enable Service Discovery"
 msgstr "Activează descoperirea serviciilor"
 
-#: src/remmina_icon.c:168 data/ui/remmina_main.glade:395
+#: src/remmina_icon.c:168 data/ui/remmina_main.glade:419
 #, fuzzy
 msgid "_Quit"
 msgstr "Termină."
@@ -4463,7 +4474,7 @@ msgstr "Potrivire ca _expresie regulată"
 msgid "_Wrap around"
 msgstr "Înfășurați în jurul"
 
-#: data/ui/remmina_about.glade:31 data/ui/remmina_main.glade:386
+#: data/ui/remmina_about.glade:31 data/ui/remmina_main.glade:410
 #, fuzzy
 msgid "About"
 msgstr "Despre"
@@ -4750,75 +4761,75 @@ msgstr "Restrânge tot"
 msgid "Expand all"
 msgstr "Extinde toate"
 
-#: data/ui/remmina_main.glade:266
+#: data/ui/remmina_main.glade:290
 #, fuzzy
 msgid "Multi password changer"
 msgstr "Schimbător de parole multiple"
 
-#: data/ui/remmina_main.glade:276
+#: data/ui/remmina_main.glade:300
 #, fuzzy
 msgid "Debugging"
 msgstr "Depanare"
 
-#: data/ui/remmina_main.glade:296
+#: data/ui/remmina_main.glade:320
 #, fuzzy
 msgid "Export"
 msgstr "Export"
 
-#: data/ui/remmina_main.glade:323
+#: data/ui/remmina_main.glade:347
 msgid "Make Remmina your default remote desktop client"
 msgstr "Client desktop la distanță Remmina"
 
-#: data/ui/remmina_main.glade:339
+#: data/ui/remmina_main.glade:363
 #, fuzzy
 msgid "Homepage"
 msgstr "Pagină de start"
 
-#: data/ui/remmina_main.glade:349
+#: data/ui/remmina_main.glade:373
 #, fuzzy
 msgid "Donations"
 msgstr "Donații"
 
-#: data/ui/remmina_main.glade:359
+#: data/ui/remmina_main.glade:383
 #, fuzzy
 msgid "Wiki"
 msgstr "wiki"
 
 #. Remmina community website
-#: data/ui/remmina_main.glade:369
+#: data/ui/remmina_main.glade:393
 #, fuzzy
 msgid "Community"
 msgstr "Comunitate"
 
-#: data/ui/remmina_main.glade:513
+#: data/ui/remmina_main.glade:537
 #, fuzzy
 msgid "Plugin"
 msgstr "Plugin"
 
-#: data/ui/remmina_main.glade:527
+#: data/ui/remmina_main.glade:551
 #, fuzzy
 msgid "Last used"
 msgstr "Ultima utilizate"
 
-#: data/ui/remmina_main.glade:576
+#: data/ui/remmina_main.glade:600
 msgid "New connection profile"
 msgstr "Conexiunea VNC a eșuat: %s"
 
-#: data/ui/remmina_main.glade:588
+#: data/ui/remmina_main.glade:612
 #, fuzzy
 msgid "Show search bar"
 msgstr "Afișați bara de căutare"
 
-#: data/ui/remmina_main.glade:608
+#: data/ui/remmina_main.glade:632
 msgid "Remmina main menu"
 msgstr "Miniaplicație Remmina"
 
-#: data/ui/remmina_main.glade:615
+#: data/ui/remmina_main.glade:639
 #, fuzzy
 msgid "Actions"
 msgstr "Acţiuni"
 
-#: data/ui/remmina_main.glade:630
+#: data/ui/remmina_main.glade:654
 #, fuzzy
 msgid "Toggle view"
 msgstr "Schimbă vizualizarea"

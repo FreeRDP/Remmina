@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2023-04-11 12:58+0000\n"
+"POT-Creation-Date: 2023-05-03 11:33+0000\n"
 "PO-Revision-Date: 2023-05-01 12:49+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: English (Australia) <https://hosted.weblate.org/projects/"
@@ -168,7 +168,7 @@ msgstr "Secret"
 msgid "Language Wrapper"
 msgstr ""
 
-#: src/remmina_plugin_manager.c:526 data/ui/remmina_main.glade:306
+#: src/remmina_plugin_manager.c:526 data/ui/remmina_main.glade:330
 #, fuzzy
 msgid "Plugins"
 msgstr "Plugins"
@@ -180,7 +180,7 @@ msgid "_OK"
 msgstr "_OK"
 
 #: src/remmina_plugin_manager.c:544 src/remmina_file_editor.c:1937
-#: data/ui/remmina_main.glade:433
+#: data/ui/remmina_main.glade:457
 #, fuzzy
 msgid "Name"
 msgstr "Name"
@@ -911,6 +911,7 @@ msgid "Upload to server"
 msgstr "Upload to server"
 
 #: src/remmina_ftp_client.c:798 data/ui/remmina_main.glade:198
+#: data/ui/remmina_main.glade:252
 #, fuzzy
 msgid "Delete"
 msgstr "Delete"
@@ -936,7 +937,7 @@ msgid "User"
 msgstr "User"
 
 #: src/remmina_ftp_client.c:955 src/remmina_file_editor.c:1962
-#: data/ui/remmina_mpc.glade:93 data/ui/remmina_main.glade:455
+#: data/ui/remmina_mpc.glade:93 data/ui/remmina_main.glade:479
 #, fuzzy
 msgid "Group"
 msgstr "Group"
@@ -1092,7 +1093,7 @@ msgid "Could not authenticate, attempting reconnection…"
 msgstr "Could not authenticate, attempting reconnection…"
 
 #: src/remmina_protocol_widget.c:2053 src/remmina_file_editor.c:438
-#: src/remmina_file_editor.c:1210 data/ui/remmina_main.glade:485
+#: src/remmina_file_editor.c:1210 data/ui/remmina_main.glade:509
 #, fuzzy
 msgid "Server"
 msgstr "Server"
@@ -1385,31 +1386,40 @@ msgstr "Could not create PTY device."
 msgid "Plugin %s is not registered."
 msgstr "Plugin %s is not registered."
 
-#: src/remmina_main.c:732
+#: src/remmina_main.c:733
 msgid "The latest successful connection attempt, or a pre-computed date"
 msgstr ""
 
-#: src/remmina_main.c:734
+#: src/remmina_main.c:735
 #, c-format
 msgid "Total %i item."
 msgid_plural "Total %i items."
 msgstr[0] "Total %i item."
 msgstr[1] "Total %i items."
 
-#: src/remmina_main.c:742
+#: src/remmina_main.c:743
 msgid "Network status: fully online"
 msgstr ""
 
-#: src/remmina_main.c:745
+#: src/remmina_main.c:746
 msgid "Network status: offline"
 msgstr ""
 
-#: src/remmina_main.c:998
+#: src/remmina_main.c:999
 #, c-format
 msgid "Are you sure you want to delete “%s”?"
 msgstr "Are you sure you want to delete ‘%s’?"
 
-#: src/remmina_main.c:1133
+#: src/remmina_main.c:1021
+#, fuzzy
+msgid "Are you sure you want to delete the selected files?"
+msgstr "Are you sure to delete the selected files on server?"
+
+#: src/remmina_main.c:1032
+msgid "Failed to delete files!"
+msgstr ""
+
+#: src/remmina_main.c:1192
 #, fuzzy, c-format
 msgid ""
 "Unable to import:\n"
@@ -1418,27 +1428,27 @@ msgstr ""
 "Unable to import:\n"
 "%s"
 
-#: src/remmina_main.c:1159 data/ui/remmina_main.glade:286
+#: src/remmina_main.c:1218 data/ui/remmina_main.glade:310
 #, fuzzy
 msgid "Import"
 msgstr "Import"
 
-#: src/remmina_main.c:1182 src/remmina_file_editor.c:1819
+#: src/remmina_main.c:1241 src/remmina_file_editor.c:1819
 #, fuzzy
 msgid "_Save"
 msgstr "_Save"
 
-#: src/remmina_main.c:1188
+#: src/remmina_main.c:1247
 #, fuzzy
 msgid "This protocol does not support exporting."
 msgstr "This protocol does not support exporting."
 
-#: src/remmina_main.c:1501
+#: src/remmina_main.c:1568
 #, fuzzy
 msgid "Remmina Remote Desktop Client"
 msgstr "Remmina Remote Desktop Client"
 
-#: src/remmina_main.c:1503
+#: src/remmina_main.c:1570
 #, fuzzy
 msgid "Remmina Kiosk"
 msgstr "Remmina Kiosk"
@@ -1748,7 +1758,7 @@ msgstr "Basic"
 msgid "Advanced"
 msgstr "Advanced"
 
-#: src/remmina_file_editor.c:1347 data/ui/remmina_main.glade:499
+#: src/remmina_file_editor.c:1347 data/ui/remmina_main.glade:523
 #, fuzzy
 msgid "Notes"
 msgstr "Notes"
@@ -1820,7 +1830,7 @@ msgstr "Quick Connect"
 msgid "Use '%s' as subgroup delimiter"
 msgstr "Use '%s' as subgroup delimiter"
 
-#: src/remmina_file_editor.c:1980 data/ui/remmina_main.glade:469
+#: src/remmina_file_editor.c:1980 data/ui/remmina_main.glade:493
 msgid "Labels"
 msgstr ""
 
@@ -1846,7 +1856,7 @@ msgstr ""
 msgid "Open Main Window"
 msgstr "Open Main Window"
 
-#: src/remmina_icon.c:141 data/ui/remmina_main.glade:255
+#: src/remmina_icon.c:141 data/ui/remmina_main.glade:279
 #, fuzzy
 msgid "_Preferences"
 msgstr "_Preferences"
@@ -1861,7 +1871,7 @@ msgstr "_About"
 msgid "Enable Service Discovery"
 msgstr "Enable Service Discovery"
 
-#: src/remmina_icon.c:168 data/ui/remmina_main.glade:395
+#: src/remmina_icon.c:168 data/ui/remmina_main.glade:419
 #, fuzzy
 msgid "_Quit"
 msgstr "_Quit"
@@ -4443,7 +4453,7 @@ msgstr "Match as _regular expression"
 msgid "_Wrap around"
 msgstr "_Wrap around"
 
-#: data/ui/remmina_about.glade:31 data/ui/remmina_main.glade:386
+#: data/ui/remmina_about.glade:31 data/ui/remmina_main.glade:410
 #, fuzzy
 msgid "About"
 msgstr "About"
@@ -4734,78 +4744,78 @@ msgstr "Collapse all"
 msgid "Expand all"
 msgstr "Expand all"
 
-#: data/ui/remmina_main.glade:266
+#: data/ui/remmina_main.glade:290
 #, fuzzy
 msgid "Multi password changer"
 msgstr "Multi password changer"
 
-#: data/ui/remmina_main.glade:276
+#: data/ui/remmina_main.glade:300
 #, fuzzy
 msgid "Debugging"
 msgstr "Debugging"
 
-#: data/ui/remmina_main.glade:296
+#: data/ui/remmina_main.glade:320
 #, fuzzy
 msgid "Export"
 msgstr "Export"
 
-#: data/ui/remmina_main.glade:323
+#: data/ui/remmina_main.glade:347
 #, fuzzy
 msgid "Make Remmina your default remote desktop client"
 msgstr "Make Remmina your default remote desktop client"
 
-#: data/ui/remmina_main.glade:339
+#: data/ui/remmina_main.glade:363
 #, fuzzy
 msgid "Homepage"
 msgstr "Homepage"
 
-#: data/ui/remmina_main.glade:349
+#: data/ui/remmina_main.glade:373
 #, fuzzy
 msgid "Donations"
 msgstr "Donations"
 
-#: data/ui/remmina_main.glade:359
+#: data/ui/remmina_main.glade:383
 #, fuzzy
 msgid "Wiki"
 msgstr "Wiki"
 
 #. Remmina community website
-#: data/ui/remmina_main.glade:369
+#: data/ui/remmina_main.glade:393
 #, fuzzy
 msgid "Community"
 msgstr "Community"
 
-#: data/ui/remmina_main.glade:513
+#: data/ui/remmina_main.glade:537
 #, fuzzy
 msgid "Plugin"
 msgstr "Plug-in"
 
-#: data/ui/remmina_main.glade:527
+#: data/ui/remmina_main.glade:551
 #, fuzzy
 msgid "Last used"
 msgstr "Last used"
 
-#: data/ui/remmina_main.glade:576
+#: data/ui/remmina_main.glade:600
 #, fuzzy
 msgid "New connection profile"
 msgstr "New connection profile"
 
-#: data/ui/remmina_main.glade:588
+#: data/ui/remmina_main.glade:612
 #, fuzzy
 msgid "Show search bar"
 msgstr "Show search bar"
 
-#: data/ui/remmina_main.glade:608
+#: data/ui/remmina_main.glade:632
 #, fuzzy
 msgid "Remmina main menu"
 msgstr "Remmina main menu"
 
-#: data/ui/remmina_main.glade:615
+#: data/ui/remmina_main.glade:639
 #, fuzzy
 msgid "Actions"
 msgstr "Actions"
 
-#: data/ui/remmina_main.glade:630
+#: data/ui/remmina_main.glade:654
 #, fuzzy
 msgid "Toggle view"
 msgstr "Toggle view"

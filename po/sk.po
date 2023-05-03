@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2023-04-11 12:58+0000\n"
+"POT-Creation-Date: 2023-05-03 11:33+0000\n"
 "PO-Revision-Date: 2023-04-07 19:52+0000\n"
 "Last-Translator: menom <menom1@protonmail.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -151,7 +151,7 @@ msgstr "Tajomstvo"
 msgid "Language Wrapper"
 msgstr "Wrapper jazyka"
 
-#: src/remmina_plugin_manager.c:526 data/ui/remmina_main.glade:306
+#: src/remmina_plugin_manager.c:526 data/ui/remmina_main.glade:330
 msgid "Plugins"
 msgstr "Zásuvné moduly"
 
@@ -161,7 +161,7 @@ msgid "_OK"
 msgstr "_OK"
 
 #: src/remmina_plugin_manager.c:544 src/remmina_file_editor.c:1937
-#: data/ui/remmina_main.glade:433
+#: data/ui/remmina_main.glade:457
 msgid "Name"
 msgstr "Názov"
 
@@ -849,6 +849,7 @@ msgid "Upload to server"
 msgstr "Odoslať na server"
 
 #: src/remmina_ftp_client.c:798 data/ui/remmina_main.glade:198
+#: data/ui/remmina_main.glade:252
 msgid "Delete"
 msgstr "Odstrániť"
 
@@ -869,7 +870,7 @@ msgid "User"
 msgstr "Užívateľ"
 
 #: src/remmina_ftp_client.c:955 src/remmina_file_editor.c:1962
-#: data/ui/remmina_mpc.glade:93 data/ui/remmina_main.glade:455
+#: data/ui/remmina_mpc.glade:93 data/ui/remmina_main.glade:479
 msgid "Group"
 msgstr "Skupina"
 
@@ -1007,7 +1008,7 @@ msgstr ""
 "Nepodarilo sa overiť totožnosť. Uskutočňuje sa pokus o opätovné pripojenie…"
 
 #: src/remmina_protocol_widget.c:2053 src/remmina_file_editor.c:438
-#: src/remmina_file_editor.c:1210 data/ui/remmina_main.glade:485
+#: src/remmina_file_editor.c:1210 data/ui/remmina_main.glade:509
 msgid "Server"
 msgstr "Server"
 
@@ -1284,11 +1285,11 @@ msgstr "Nepodarilo sa vytvoriť zariadenie PTY."
 msgid "Plugin %s is not registered."
 msgstr "Zásuvný modul %s nie je zaregistrovaný."
 
-#: src/remmina_main.c:732
+#: src/remmina_main.c:733
 msgid "The latest successful connection attempt, or a pre-computed date"
 msgstr "Posledný úspešný pokus o pripojenie alebo vopred vypočítaný dátum"
 
-#: src/remmina_main.c:734
+#: src/remmina_main.c:735
 #, c-format
 msgid "Total %i item."
 msgid_plural "Total %i items."
@@ -1296,20 +1297,30 @@ msgstr[0] "Celkom %i položiek."
 msgstr[1] "Celkom %i položka."
 msgstr[2] "Celkom %i položky."
 
-#: src/remmina_main.c:742
+#: src/remmina_main.c:743
 msgid "Network status: fully online"
 msgstr "Stav siete: plná konektivita"
 
-#: src/remmina_main.c:745
+#: src/remmina_main.c:746
 msgid "Network status: offline"
 msgstr "Stav siete: nepripojený"
 
-#: src/remmina_main.c:998
+#: src/remmina_main.c:999
 #, c-format
 msgid "Are you sure you want to delete “%s”?"
 msgstr "Naozaj chcete odstrániť „%s“?"
 
-#: src/remmina_main.c:1133
+#: src/remmina_main.c:1021
+#, fuzzy
+#| msgid "Are you sure to delete the selected files on server?"
+msgid "Are you sure you want to delete the selected files?"
+msgstr "Ste si istý, že chcete odstrániť vybrané súbory na serveri?"
+
+#: src/remmina_main.c:1032
+msgid "Failed to delete files!"
+msgstr ""
+
+#: src/remmina_main.c:1192
 #, c-format
 msgid ""
 "Unable to import:\n"
@@ -1318,23 +1329,23 @@ msgstr ""
 "Nepodarilo sa importovať:\n"
 "%s"
 
-#: src/remmina_main.c:1159 data/ui/remmina_main.glade:286
+#: src/remmina_main.c:1218 data/ui/remmina_main.glade:310
 msgid "Import"
 msgstr "Import"
 
-#: src/remmina_main.c:1182 src/remmina_file_editor.c:1819
+#: src/remmina_main.c:1241 src/remmina_file_editor.c:1819
 msgid "_Save"
 msgstr "_Uložiť"
 
-#: src/remmina_main.c:1188
+#: src/remmina_main.c:1247
 msgid "This protocol does not support exporting."
 msgstr "Tento protokol nepodporuje exportovanie."
 
-#: src/remmina_main.c:1501
+#: src/remmina_main.c:1568
 msgid "Remmina Remote Desktop Client"
 msgstr "Remmina - klient vzdialenej pracovnej plochy"
 
-#: src/remmina_main.c:1503
+#: src/remmina_main.c:1570
 msgid "Remmina Kiosk"
 msgstr "Kiosk aplikácie Remmina"
 
@@ -1586,7 +1597,7 @@ msgstr "Základné"
 msgid "Advanced"
 msgstr "Rozšírené"
 
-#: src/remmina_file_editor.c:1347 data/ui/remmina_main.glade:499
+#: src/remmina_file_editor.c:1347 data/ui/remmina_main.glade:523
 msgid "Notes"
 msgstr "Poznámky"
 
@@ -1653,7 +1664,7 @@ msgstr "Rýchle pripojenie"
 msgid "Use '%s' as subgroup delimiter"
 msgstr "Použite „%s“ ako oddeľovač podskupín"
 
-#: src/remmina_file_editor.c:1980 data/ui/remmina_main.glade:469
+#: src/remmina_file_editor.c:1980 data/ui/remmina_main.glade:493
 msgid "Labels"
 msgstr "Menovky"
 
@@ -1680,7 +1691,7 @@ msgstr ""
 msgid "Open Main Window"
 msgstr "Otvoriť hlavné okno"
 
-#: src/remmina_icon.c:141 data/ui/remmina_main.glade:255
+#: src/remmina_icon.c:141 data/ui/remmina_main.glade:279
 msgid "_Preferences"
 msgstr "_Predvoľby"
 
@@ -1692,7 +1703,7 @@ msgstr "_O aplikácii"
 msgid "Enable Service Discovery"
 msgstr "Povoliť objavovanie služieb"
 
-#: src/remmina_icon.c:168 data/ui/remmina_main.glade:395
+#: src/remmina_icon.c:168 data/ui/remmina_main.glade:419
 msgid "_Quit"
 msgstr "_Ukončiť"
 
@@ -4037,7 +4048,7 @@ msgstr "Porovnávať ako r_egulárny výraz"
 msgid "_Wrap around"
 msgstr "Pokračovať do_okola"
 
-#: data/ui/remmina_about.glade:31 data/ui/remmina_main.glade:386
+#: data/ui/remmina_about.glade:31 data/ui/remmina_main.glade:410
 msgid "About"
 msgstr "O aplikácii"
 
@@ -4288,66 +4299,66 @@ msgstr "Zbaliť všetko"
 msgid "Expand all"
 msgstr "Rozbaliť všetko"
 
-#: data/ui/remmina_main.glade:266
+#: data/ui/remmina_main.glade:290
 msgid "Multi password changer"
 msgstr "Nástroj na zmenu viacerých hesiel"
 
-#: data/ui/remmina_main.glade:276
+#: data/ui/remmina_main.glade:300
 msgid "Debugging"
 msgstr "Ladenie"
 
-#: data/ui/remmina_main.glade:296
+#: data/ui/remmina_main.glade:320
 msgid "Export"
 msgstr "Export"
 
-#: data/ui/remmina_main.glade:323
+#: data/ui/remmina_main.glade:347
 msgid "Make Remmina your default remote desktop client"
 msgstr ""
 "Nastaviť aplikáciu Remmina ako predvoleného klienta pre vzdialené pracovné "
 "plochy"
 
-#: data/ui/remmina_main.glade:339
+#: data/ui/remmina_main.glade:363
 msgid "Homepage"
 msgstr "Domovská stránka"
 
-#: data/ui/remmina_main.glade:349
+#: data/ui/remmina_main.glade:373
 msgid "Donations"
 msgstr "Príspevky"
 
-#: data/ui/remmina_main.glade:359
+#: data/ui/remmina_main.glade:383
 msgid "Wiki"
 msgstr "Wiki"
 
 #. Remmina community website
-#: data/ui/remmina_main.glade:369
+#: data/ui/remmina_main.glade:393
 msgid "Community"
 msgstr "Komunita"
 
-#: data/ui/remmina_main.glade:513
+#: data/ui/remmina_main.glade:537
 msgid "Plugin"
 msgstr "Zásuvný modul"
 
-#: data/ui/remmina_main.glade:527
+#: data/ui/remmina_main.glade:551
 msgid "Last used"
 msgstr "Naposledy použité"
 
-#: data/ui/remmina_main.glade:576
+#: data/ui/remmina_main.glade:600
 msgid "New connection profile"
 msgstr "Profil nového pripojenia"
 
-#: data/ui/remmina_main.glade:588
+#: data/ui/remmina_main.glade:612
 msgid "Show search bar"
 msgstr "Zobrazí panel vyhľadávania"
 
-#: data/ui/remmina_main.glade:608
+#: data/ui/remmina_main.glade:632
 msgid "Remmina main menu"
 msgstr "Hlavná ponuka aplikácie Remmina"
 
-#: data/ui/remmina_main.glade:615
+#: data/ui/remmina_main.glade:639
 msgid "Actions"
 msgstr "Akcie"
 
-#: data/ui/remmina_main.glade:630
+#: data/ui/remmina_main.glade:654
 msgid "Toggle view"
 msgstr "Prepne zobrazenie"
 

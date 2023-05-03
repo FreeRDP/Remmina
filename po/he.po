@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2023-04-11 12:58+0000\n"
+"POT-Creation-Date: 2023-05-03 11:33+0000\n"
 "PO-Revision-Date: 2023-02-04 06:38+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -151,7 +151,7 @@ msgstr "סוד"
 msgid "Language Wrapper"
 msgstr "עוטף שפה"
 
-#: src/remmina_plugin_manager.c:526 data/ui/remmina_main.glade:306
+#: src/remmina_plugin_manager.c:526 data/ui/remmina_main.glade:330
 msgid "Plugins"
 msgstr "תוספים"
 
@@ -161,7 +161,7 @@ msgid "_OK"
 msgstr "_אישור"
 
 #: src/remmina_plugin_manager.c:544 src/remmina_file_editor.c:1937
-#: data/ui/remmina_main.glade:433
+#: data/ui/remmina_main.glade:457
 msgid "Name"
 msgstr "שם"
 
@@ -837,6 +837,7 @@ msgid "Upload to server"
 msgstr "העלאה לשרת"
 
 #: src/remmina_ftp_client.c:798 data/ui/remmina_main.glade:198
+#: data/ui/remmina_main.glade:252
 msgid "Delete"
 msgstr "מחיקה"
 
@@ -857,7 +858,7 @@ msgid "User"
 msgstr "משתמש"
 
 #: src/remmina_ftp_client.c:955 src/remmina_file_editor.c:1962
-#: data/ui/remmina_mpc.glade:93 data/ui/remmina_main.glade:455
+#: data/ui/remmina_mpc.glade:93 data/ui/remmina_main.glade:479
 msgid "Group"
 msgstr "קבוצה"
 
@@ -996,7 +997,7 @@ msgid "Could not authenticate, attempting reconnection…"
 msgstr "האימות נכשל, מתבצע ניסיון חיבור מחדש…"
 
 #: src/remmina_protocol_widget.c:2053 src/remmina_file_editor.c:438
-#: src/remmina_file_editor.c:1210 data/ui/remmina_main.glade:485
+#: src/remmina_file_editor.c:1210 data/ui/remmina_main.glade:509
 msgid "Server"
 msgstr "שרת"
 
@@ -1287,32 +1288,42 @@ msgstr "לא ניתן ליצור התקן pty."
 msgid "Plugin %s is not registered."
 msgstr "התוסף %s לא נרשם."
 
-#: src/remmina_main.c:732
+#: src/remmina_main.c:733
 #, fuzzy
 msgid "The latest successful connection attempt, or a pre-computed date"
 msgstr "ניסיון החיבור האחרון שצלח או תאריך שחושב מראש"
 
-#: src/remmina_main.c:734
+#: src/remmina_main.c:735
 #, c-format
 msgid "Total %i item."
 msgid_plural "Total %i items."
 msgstr[0] "סך הכול פריט אחד."
 msgstr[1] "סך הכול %i פריטים."
 
-#: src/remmina_main.c:742
+#: src/remmina_main.c:743
 msgid "Network status: fully online"
 msgstr "מצב הרשת: מחוברת לחלוטין"
 
-#: src/remmina_main.c:745
+#: src/remmina_main.c:746
 msgid "Network status: offline"
 msgstr "מצב הרשת: כבויה"
 
-#: src/remmina_main.c:998
+#: src/remmina_main.c:999
 #, c-format
 msgid "Are you sure you want to delete “%s”?"
 msgstr "למחוק את „%s”?"
 
-#: src/remmina_main.c:1133
+#: src/remmina_main.c:1021
+#, fuzzy
+#| msgid "Are you sure to delete the selected files on server?"
+msgid "Are you sure you want to delete the selected files?"
+msgstr "למחוק את הקבצים הנבחרים מהשרת?"
+
+#: src/remmina_main.c:1032
+msgid "Failed to delete files!"
+msgstr ""
+
+#: src/remmina_main.c:1192
 #, c-format
 msgid ""
 "Unable to import:\n"
@@ -1321,25 +1332,25 @@ msgstr ""
 "לא ניתן לייבא:\n"
 "%s"
 
-#: src/remmina_main.c:1159 data/ui/remmina_main.glade:286
+#: src/remmina_main.c:1218 data/ui/remmina_main.glade:310
 msgid "Import"
 msgstr "ייבוא"
 
-#: src/remmina_main.c:1182 src/remmina_file_editor.c:1819
+#: src/remmina_main.c:1241 src/remmina_file_editor.c:1819
 msgid "_Save"
 msgstr "_שמירה"
 
-#: src/remmina_main.c:1188
+#: src/remmina_main.c:1247
 #, fuzzy
 msgid "This protocol does not support exporting."
 msgstr "פרוטוקול זה אינו תומך בייצוא."
 
-#: src/remmina_main.c:1501
+#: src/remmina_main.c:1568
 #, fuzzy
 msgid "Remmina Remote Desktop Client"
 msgstr "Remmina לקוח חיבורי שולחן עבודה מרוחקים"
 
-#: src/remmina_main.c:1503
+#: src/remmina_main.c:1570
 #, fuzzy
 msgid "Remmina Kiosk"
 msgstr "קיוסק Remmina"
@@ -1612,7 +1623,7 @@ msgstr "בסיסי"
 msgid "Advanced"
 msgstr "מתקדם"
 
-#: src/remmina_file_editor.c:1347 data/ui/remmina_main.glade:499
+#: src/remmina_file_editor.c:1347 data/ui/remmina_main.glade:523
 #, fuzzy
 msgid "Notes"
 msgstr "הערות"
@@ -1679,7 +1690,7 @@ msgstr "התחברות מהירה"
 msgid "Use '%s' as subgroup delimiter"
 msgstr "‚%s’ להפרדת תת־קבוצות"
 
-#: src/remmina_file_editor.c:1980 data/ui/remmina_main.glade:469
+#: src/remmina_file_editor.c:1980 data/ui/remmina_main.glade:493
 msgid "Labels"
 msgstr ""
 
@@ -1705,7 +1716,7 @@ msgstr "השימוש במשתנה ה־„resolution” בקובץ ההעדפות
 msgid "Open Main Window"
 msgstr "פתיחת החלון הראשי"
 
-#: src/remmina_icon.c:141 data/ui/remmina_main.glade:255
+#: src/remmina_icon.c:141 data/ui/remmina_main.glade:279
 #, fuzzy
 msgid "_Preferences"
 msgstr "ה_עדפות"
@@ -1720,7 +1731,7 @@ msgstr "_אודות"
 msgid "Enable Service Discovery"
 msgstr "הפעלת גילוי שירותים"
 
-#: src/remmina_icon.c:168 data/ui/remmina_main.glade:395
+#: src/remmina_icon.c:168 data/ui/remmina_main.glade:419
 msgid "_Quit"
 msgstr "י_ציאה"
 
@@ -4304,7 +4315,7 @@ msgstr "התאמת ביטוי _רגולרי"
 msgid "_Wrap around"
 msgstr "ח_זרה מההתחלה"
 
-#: data/ui/remmina_about.glade:31 data/ui/remmina_main.glade:386
+#: data/ui/remmina_about.glade:31 data/ui/remmina_main.glade:410
 #, fuzzy
 msgid "About"
 msgstr "על אודות"
@@ -4590,76 +4601,76 @@ msgstr "לצמצם הכול"
 msgid "Expand all"
 msgstr "להרחיב הכול"
 
-#: data/ui/remmina_main.glade:266
+#: data/ui/remmina_main.glade:290
 msgid "Multi password changer"
 msgstr "מחליף סיסמאות במרוכז"
 
-#: data/ui/remmina_main.glade:276
+#: data/ui/remmina_main.glade:300
 #, fuzzy
 msgid "Debugging"
 msgstr "ניפוי שגיאות"
 
-#: data/ui/remmina_main.glade:296
+#: data/ui/remmina_main.glade:320
 #, fuzzy
 msgid "Export"
 msgstr "ייצוא"
 
-#: data/ui/remmina_main.glade:323
+#: data/ui/remmina_main.glade:347
 msgid "Make Remmina your default remote desktop client"
 msgstr "הגדרת Remmina כלקוח ברירת המחדל לחיבורי שולחן עבודה מרוחקים"
 
-#: data/ui/remmina_main.glade:339
+#: data/ui/remmina_main.glade:363
 #, fuzzy
 msgid "Homepage"
 msgstr "דף הבית"
 
-#: data/ui/remmina_main.glade:349
+#: data/ui/remmina_main.glade:373
 #, fuzzy
 msgid "Donations"
 msgstr "תרומה"
 
-#: data/ui/remmina_main.glade:359
+#: data/ui/remmina_main.glade:383
 #, fuzzy
 msgid "Wiki"
 msgstr "וויקי"
 
 #. Remmina community website
-#: data/ui/remmina_main.glade:369
+#: data/ui/remmina_main.glade:393
 #, fuzzy
 msgid "Community"
 msgstr "קהילה"
 
-#: data/ui/remmina_main.glade:513
+#: data/ui/remmina_main.glade:537
 #, fuzzy
 msgid "Plugin"
 msgstr "תוסף"
 
-#: data/ui/remmina_main.glade:527
+#: data/ui/remmina_main.glade:551
 #, fuzzy
 msgid "Last used"
 msgstr "נעשה בו שימוש לאחרונה"
 
-#: data/ui/remmina_main.glade:576
+#: data/ui/remmina_main.glade:600
 #, fuzzy
 msgid "New connection profile"
 msgstr "פרופיל חיבור חדש"
 
-#: data/ui/remmina_main.glade:588
+#: data/ui/remmina_main.glade:612
 #, fuzzy
 msgid "Show search bar"
 msgstr "הצגת סרגל חיפוש"
 
-#: data/ui/remmina_main.glade:608
+#: data/ui/remmina_main.glade:632
 #, fuzzy
 msgid "Remmina main menu"
 msgstr "התפריט הראשי של Remmina"
 
-#: data/ui/remmina_main.glade:615
+#: data/ui/remmina_main.glade:639
 #, fuzzy
 msgid "Actions"
 msgstr "פעולות"
 
-#: data/ui/remmina_main.glade:630
+#: data/ui/remmina_main.glade:654
 #, fuzzy
 msgid "Toggle view"
 msgstr "החלפת תצוגה"

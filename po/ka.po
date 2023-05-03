@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Remmina v1.4.11\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2023-04-11 12:58+0000\n"
+"POT-Creation-Date: 2023-05-03 11:33+0000\n"
 "PO-Revision-Date: 2022-11-27 08:48+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Georgian <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -142,7 +142,7 @@ msgstr ""
 msgid "Language Wrapper"
 msgstr ""
 
-#: src/remmina_plugin_manager.c:526 data/ui/remmina_main.glade:306
+#: src/remmina_plugin_manager.c:526 data/ui/remmina_main.glade:330
 msgid "Plugins"
 msgstr ""
 
@@ -152,7 +152,7 @@ msgid "_OK"
 msgstr ""
 
 #: src/remmina_plugin_manager.c:544 src/remmina_file_editor.c:1937
-#: data/ui/remmina_main.glade:433
+#: data/ui/remmina_main.glade:457
 msgid "Name"
 msgstr ""
 
@@ -771,6 +771,7 @@ msgid "Upload to server"
 msgstr ""
 
 #: src/remmina_ftp_client.c:798 data/ui/remmina_main.glade:198
+#: data/ui/remmina_main.glade:252
 #, fuzzy
 msgid "Delete"
 msgstr "წაშლა"
@@ -793,7 +794,7 @@ msgid "User"
 msgstr ""
 
 #: src/remmina_ftp_client.c:955 src/remmina_file_editor.c:1962
-#: data/ui/remmina_mpc.glade:93 data/ui/remmina_main.glade:455
+#: data/ui/remmina_mpc.glade:93 data/ui/remmina_main.glade:479
 msgid "Group"
 msgstr ""
 
@@ -930,7 +931,7 @@ msgid "Could not authenticate, attempting reconnection…"
 msgstr ""
 
 #: src/remmina_protocol_widget.c:2053 src/remmina_file_editor.c:438
-#: src/remmina_file_editor.c:1210 data/ui/remmina_main.glade:485
+#: src/remmina_file_editor.c:1210 data/ui/remmina_main.glade:509
 msgid "Server"
 msgstr ""
 
@@ -1203,55 +1204,63 @@ msgstr ""
 msgid "Plugin %s is not registered."
 msgstr ""
 
-#: src/remmina_main.c:732
+#: src/remmina_main.c:733
 #, fuzzy
 msgid "The latest successful connection attempt, or a pre-computed date"
 msgstr "კავშირის უახლესი წარმატებული მცდელობა, ან წინასწარ გამოთვლის თარიღი"
 
-#: src/remmina_main.c:734
+#: src/remmina_main.c:735
 #, fuzzy, c-format
 msgid "Total %i item."
 msgid_plural "Total %i items."
 msgstr[0] "სულ %i პუნქტი."
 msgstr[1] ""
 
-#: src/remmina_main.c:742
+#: src/remmina_main.c:743
 msgid "Network status: fully online"
 msgstr ""
 
-#: src/remmina_main.c:745
+#: src/remmina_main.c:746
 msgid "Network status: offline"
 msgstr ""
 
-#: src/remmina_main.c:998
+#: src/remmina_main.c:999
 #, c-format
 msgid "Are you sure you want to delete “%s”?"
 msgstr ""
 
-#: src/remmina_main.c:1133
+#: src/remmina_main.c:1021
+msgid "Are you sure you want to delete the selected files?"
+msgstr ""
+
+#: src/remmina_main.c:1032
+msgid "Failed to delete files!"
+msgstr ""
+
+#: src/remmina_main.c:1192
 #, c-format
 msgid ""
 "Unable to import:\n"
 "%s"
 msgstr ""
 
-#: src/remmina_main.c:1159 data/ui/remmina_main.glade:286
+#: src/remmina_main.c:1218 data/ui/remmina_main.glade:310
 msgid "Import"
 msgstr ""
 
-#: src/remmina_main.c:1182 src/remmina_file_editor.c:1819
+#: src/remmina_main.c:1241 src/remmina_file_editor.c:1819
 msgid "_Save"
 msgstr ""
 
-#: src/remmina_main.c:1188
+#: src/remmina_main.c:1247
 msgid "This protocol does not support exporting."
 msgstr ""
 
-#: src/remmina_main.c:1501
+#: src/remmina_main.c:1568
 msgid "Remmina Remote Desktop Client"
 msgstr ""
 
-#: src/remmina_main.c:1503
+#: src/remmina_main.c:1570
 msgid "Remmina Kiosk"
 msgstr ""
 
@@ -1497,7 +1506,7 @@ msgstr ""
 msgid "Advanced"
 msgstr ""
 
-#: src/remmina_file_editor.c:1347 data/ui/remmina_main.glade:499
+#: src/remmina_file_editor.c:1347 data/ui/remmina_main.glade:523
 msgid "Notes"
 msgstr ""
 
@@ -1563,7 +1572,7 @@ msgstr ""
 msgid "Use '%s' as subgroup delimiter"
 msgstr ""
 
-#: src/remmina_file_editor.c:1980 data/ui/remmina_main.glade:469
+#: src/remmina_file_editor.c:1980 data/ui/remmina_main.glade:493
 msgid "Labels"
 msgstr ""
 
@@ -1591,7 +1600,7 @@ msgstr ""
 msgid "Open Main Window"
 msgstr ""
 
-#: src/remmina_icon.c:141 data/ui/remmina_main.glade:255
+#: src/remmina_icon.c:141 data/ui/remmina_main.glade:279
 msgid "_Preferences"
 msgstr ""
 
@@ -1603,7 +1612,7 @@ msgstr ""
 msgid "Enable Service Discovery"
 msgstr ""
 
-#: src/remmina_icon.c:168 data/ui/remmina_main.glade:395
+#: src/remmina_icon.c:168 data/ui/remmina_main.glade:419
 msgid "_Quit"
 msgstr ""
 
@@ -3982,7 +3991,7 @@ msgstr ""
 msgid "_Wrap around"
 msgstr ""
 
-#: data/ui/remmina_about.glade:31 data/ui/remmina_main.glade:386
+#: data/ui/remmina_about.glade:31 data/ui/remmina_main.glade:410
 #, fuzzy
 msgid "About"
 msgstr "პროგრამის შესახებ"
@@ -4208,64 +4217,64 @@ msgstr ""
 msgid "Expand all"
 msgstr ""
 
-#: data/ui/remmina_main.glade:266
+#: data/ui/remmina_main.glade:290
 msgid "Multi password changer"
 msgstr ""
 
-#: data/ui/remmina_main.glade:276
+#: data/ui/remmina_main.glade:300
 msgid "Debugging"
 msgstr ""
 
-#: data/ui/remmina_main.glade:296
+#: data/ui/remmina_main.glade:320
 msgid "Export"
 msgstr ""
 
-#: data/ui/remmina_main.glade:323
+#: data/ui/remmina_main.glade:347
 msgid "Make Remmina your default remote desktop client"
 msgstr ""
 
-#: data/ui/remmina_main.glade:339
+#: data/ui/remmina_main.glade:363
 msgid "Homepage"
 msgstr ""
 
-#: data/ui/remmina_main.glade:349
+#: data/ui/remmina_main.glade:373
 msgid "Donations"
 msgstr ""
 
-#: data/ui/remmina_main.glade:359
+#: data/ui/remmina_main.glade:383
 msgid "Wiki"
 msgstr ""
 
 #. Remmina community website
-#: data/ui/remmina_main.glade:369
+#: data/ui/remmina_main.glade:393
 msgid "Community"
 msgstr ""
 
-#: data/ui/remmina_main.glade:513
+#: data/ui/remmina_main.glade:537
 msgid "Plugin"
 msgstr ""
 
-#: data/ui/remmina_main.glade:527
+#: data/ui/remmina_main.glade:551
 msgid "Last used"
 msgstr ""
 
-#: data/ui/remmina_main.glade:576
+#: data/ui/remmina_main.glade:600
 msgid "New connection profile"
 msgstr ""
 
-#: data/ui/remmina_main.glade:588
+#: data/ui/remmina_main.glade:612
 msgid "Show search bar"
 msgstr ""
 
-#: data/ui/remmina_main.glade:608
+#: data/ui/remmina_main.glade:632
 msgid "Remmina main menu"
 msgstr ""
 
-#: data/ui/remmina_main.glade:615
+#: data/ui/remmina_main.glade:639
 msgid "Actions"
 msgstr ""
 
-#: data/ui/remmina_main.glade:630
+#: data/ui/remmina_main.glade:654
 msgid "Toggle view"
 msgstr ""
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2023-04-11 12:58+0000\n"
+"POT-Creation-Date: 2023-05-03 11:33+0000\n"
 "PO-Revision-Date: 2022-11-27 08:48+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Khmer (Central) <https://hosted.weblate.org/projects/remmina/"
@@ -165,7 +165,7 @@ msgstr "អាថ៌កំបាំង"
 msgid "Language Wrapper"
 msgstr ""
 
-#: src/remmina_plugin_manager.c:526 data/ui/remmina_main.glade:306
+#: src/remmina_plugin_manager.c:526 data/ui/remmina_main.glade:330
 #, fuzzy
 msgid "Plugins"
 msgstr "ឧបករណ៍"
@@ -177,7 +177,7 @@ msgid "_OK"
 msgstr "_OK"
 
 #: src/remmina_plugin_manager.c:544 src/remmina_file_editor.c:1937
-#: data/ui/remmina_main.glade:433
+#: data/ui/remmina_main.glade:457
 #, fuzzy
 msgid "Name"
 msgstr "ឈ្មោះ"
@@ -933,6 +933,7 @@ msgid "Upload to server"
 msgstr "ផ្ទុក ឡើង ទៅ ម៉ាស៊ីន បម្រើ"
 
 #: src/remmina_ftp_client.c:798 data/ui/remmina_main.glade:198
+#: data/ui/remmina_main.glade:252
 #, fuzzy
 msgid "Delete"
 msgstr "លុប"
@@ -958,7 +959,7 @@ msgid "User"
 msgstr "គណនី"
 
 #: src/remmina_ftp_client.c:955 src/remmina_file_editor.c:1962
-#: data/ui/remmina_mpc.glade:93 data/ui/remmina_main.glade:455
+#: data/ui/remmina_mpc.glade:93 data/ui/remmina_main.glade:479
 #, fuzzy
 msgid "Group"
 msgstr "ដាក់​ជា​ក្រុម"
@@ -1112,7 +1113,7 @@ msgid "Could not authenticate, attempting reconnection…"
 msgstr "មិនអាចផ្ទៀងផ្ទាត់, ការប៉ុនប៉ងភ្ជាប់ឡើងវិញ…"
 
 #: src/remmina_protocol_widget.c:2053 src/remmina_file_editor.c:438
-#: src/remmina_file_editor.c:1210 data/ui/remmina_main.glade:485
+#: src/remmina_file_editor.c:1210 data/ui/remmina_main.glade:509
 #, fuzzy
 msgid "Server"
 msgstr "ម៉ាស៊ីន​បម្រើ"
@@ -1410,31 +1411,40 @@ msgstr "មិន អាច បង្កើត ឧបករណ៍ PTY បាន 
 msgid "Plugin %s is not registered."
 msgstr "កម្មវិធី ជំនួយ %s មិន ត្រូវ បាន ចុះ ឈ្មោះ ទេ ។"
 
-#: src/remmina_main.c:732
+#: src/remmina_main.c:733
 #, fuzzy
 msgid "The latest successful connection attempt, or a pre-computed date"
 msgstr "ការ ប៉ុនប៉ង តភ្ជាប់ ជោគជ័យ ចុងក្រោយ បំផុត ឬ កាលបរិច្ឆេទ ដែល បាន គណនា មុន"
 
-#: src/remmina_main.c:734
+#: src/remmina_main.c:735
 #, c-format
 msgid "Total %i item."
 msgid_plural "Total %i items."
 msgstr[0] "មាន %i ធាតុុ ។"
 
-#: src/remmina_main.c:742
+#: src/remmina_main.c:743
 msgid "Network status: fully online"
 msgstr ""
 
-#: src/remmina_main.c:745
+#: src/remmina_main.c:746
 msgid "Network status: offline"
 msgstr ""
 
-#: src/remmina_main.c:998
+#: src/remmina_main.c:999
 #, c-format
 msgid "Are you sure you want to delete “%s”?"
 msgstr "តើអ្នកចង់លុុប '%s' ទេ"
 
-#: src/remmina_main.c:1133
+#: src/remmina_main.c:1021
+#, fuzzy
+msgid "Are you sure you want to delete the selected files?"
+msgstr "តើ អ្នក ប្រាកដ ជា លុប ឯកសារ ដែល បាន ជ្រើស នៅ លើ ម៉ាស៊ីន បម្រើ ឬ ទេ ?"
+
+#: src/remmina_main.c:1032
+msgid "Failed to delete files!"
+msgstr ""
+
+#: src/remmina_main.c:1192
 #, fuzzy, c-format
 msgid ""
 "Unable to import:\n"
@@ -1443,27 +1453,27 @@ msgstr ""
 "មិនអាចនាំចូល ៖\n"
 "%s"
 
-#: src/remmina_main.c:1159 data/ui/remmina_main.glade:286
+#: src/remmina_main.c:1218 data/ui/remmina_main.glade:310
 #, fuzzy
 msgid "Import"
 msgstr "នាំចូល"
 
-#: src/remmina_main.c:1182 src/remmina_file_editor.c:1819
+#: src/remmina_main.c:1241 src/remmina_file_editor.c:1819
 #, fuzzy
 msgid "_Save"
 msgstr "_Save"
 
-#: src/remmina_main.c:1188
+#: src/remmina_main.c:1247
 #, fuzzy
 msgid "This protocol does not support exporting."
 msgstr "protocol នេះមិនការ​គាំទ្រ​ការ​នាំ​ចេញ ។"
 
-#: src/remmina_main.c:1501
+#: src/remmina_main.c:1568
 #, fuzzy
 msgid "Remmina Remote Desktop Client"
 msgstr "ម៉ាស៊ីន​ភ្ញៀវ​ផ្ទៃតុ​ពី​ចម្ងាយ​របស់ Remmina"
 
-#: src/remmina_main.c:1503
+#: src/remmina_main.c:1570
 #, fuzzy
 msgid "Remmina Kiosk"
 msgstr "Remmina Kiosk"
@@ -1746,7 +1756,7 @@ msgstr "បឋម"
 msgid "Advanced"
 msgstr "កម្រិត​ខ្ពស់"
 
-#: src/remmina_file_editor.c:1347 data/ui/remmina_main.glade:499
+#: src/remmina_file_editor.c:1347 data/ui/remmina_main.glade:523
 #, fuzzy
 msgid "Notes"
 msgstr "សម្គាល់"
@@ -1817,7 +1827,7 @@ msgstr "តភ្ជាប់រហ័ស"
 msgid "Use '%s' as subgroup delimiter"
 msgstr "ប្រើ '%s' ជា subgroup delimiter"
 
-#: src/remmina_file_editor.c:1980 data/ui/remmina_main.glade:469
+#: src/remmina_file_editor.c:1980 data/ui/remmina_main.glade:493
 msgid "Labels"
 msgstr ""
 
@@ -1846,7 +1856,7 @@ msgstr ""
 msgid "Open Main Window"
 msgstr "បើកបង្អួចសំខាន់"
 
-#: src/remmina_icon.c:141 data/ui/remmina_main.glade:255
+#: src/remmina_icon.c:141 data/ui/remmina_main.glade:279
 #, fuzzy
 msgid "_Preferences"
 msgstr "ចំណូលចិត្ត"
@@ -1861,7 +1871,7 @@ msgstr "_About"
 msgid "Enable Service Discovery"
 msgstr "បើកការរកឃើញសេវាកម្ម"
 
-#: src/remmina_icon.c:168 data/ui/remmina_main.glade:395
+#: src/remmina_icon.c:168 data/ui/remmina_main.glade:419
 #, fuzzy
 msgid "_Quit"
 msgstr "_Quit"
@@ -4553,7 +4563,7 @@ msgstr "ផ្គូផ្គង ជា កន្សោម _regular"
 msgid "_Wrap around"
 msgstr "_Wrap ជុំវិញ"
 
-#: data/ui/remmina_about.glade:31 data/ui/remmina_main.glade:386
+#: data/ui/remmina_about.glade:31 data/ui/remmina_main.glade:410
 #, fuzzy
 msgid "About"
 msgstr "អំពី"
@@ -4841,76 +4851,76 @@ msgstr "ខ្ទេចអស់"
 msgid "Expand all"
 msgstr "ពង្រីកទាំងអស់គ្នា"
 
-#: data/ui/remmina_main.glade:266
+#: data/ui/remmina_main.glade:290
 #, fuzzy
 msgid "Multi password changer"
 msgstr "អ្នក ផ្លាស់ប្ដូរ ពាក្យ សម្ងាត់ ច្រើន"
 
-#: data/ui/remmina_main.glade:276
+#: data/ui/remmina_main.glade:300
 #, fuzzy
 msgid "Debugging"
 msgstr "ការ ឌិប"
 
-#: data/ui/remmina_main.glade:296
+#: data/ui/remmina_main.glade:320
 #, fuzzy
 msgid "Export"
 msgstr "នាំចេញ"
 
-#: data/ui/remmina_main.glade:323
+#: data/ui/remmina_main.glade:347
 msgid "Make Remmina your default remote desktop client"
 msgstr "ម៉ាស៊ីន​ភ្ញៀវ​ផ្ទៃតុ​ពី​ចម្ងាយ​របស់ Remmina"
 
-#: data/ui/remmina_main.glade:339
+#: data/ui/remmina_main.glade:363
 #, fuzzy
 msgid "Homepage"
 msgstr "គេហទំព័រ"
 
-#: data/ui/remmina_main.glade:349
+#: data/ui/remmina_main.glade:373
 #, fuzzy
 msgid "Donations"
 msgstr "ការបរិច្ចាគ"
 
-#: data/ui/remmina_main.glade:359
+#: data/ui/remmina_main.glade:383
 #, fuzzy
 msgid "Wiki"
 msgstr "វិគី"
 
 #. Remmina community website
-#: data/ui/remmina_main.glade:369
+#: data/ui/remmina_main.glade:393
 #, fuzzy
 msgid "Community"
 msgstr "សហគមន៍"
 
-#: data/ui/remmina_main.glade:513
+#: data/ui/remmina_main.glade:537
 #, fuzzy
 msgid "Plugin"
 msgstr "កម្មវិធីជំនួយ"
 
-#: data/ui/remmina_main.glade:527
+#: data/ui/remmina_main.glade:551
 #, fuzzy
 msgid "Last used"
 msgstr "ប្រើ ចុងក្រោយ"
 
-#: data/ui/remmina_main.glade:576
+#: data/ui/remmina_main.glade:600
 msgid "New connection profile"
 msgstr "ការ​​​តភ្ជាប់​​ថ្មី"
 
-#: data/ui/remmina_main.glade:588
+#: data/ui/remmina_main.glade:612
 #, fuzzy
 msgid "Show search bar"
 msgstr "បង្ហាញ របារ ស្វែងរក"
 
-#: data/ui/remmina_main.glade:608
+#: data/ui/remmina_main.glade:632
 #, fuzzy
 msgid "Remmina main menu"
 msgstr "ម៉ឺនុយមេ Remmina"
 
-#: data/ui/remmina_main.glade:615
+#: data/ui/remmina_main.glade:639
 #, fuzzy
 msgid "Actions"
 msgstr "សកម្មភាព"
 
-#: data/ui/remmina_main.glade:630
+#: data/ui/remmina_main.glade:654
 #, fuzzy
 msgid "Toggle view"
 msgstr "ទិដ្ឋភាព ggle"

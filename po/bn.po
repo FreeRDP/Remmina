@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2023-04-11 12:58+0000\n"
+"POT-Creation-Date: 2023-05-03 11:33+0000\n"
 "PO-Revision-Date: 2022-11-27 08:48+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Bengali <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -164,7 +164,7 @@ msgstr "গোপন"
 msgid "Language Wrapper"
 msgstr ""
 
-#: src/remmina_plugin_manager.c:526 data/ui/remmina_main.glade:306
+#: src/remmina_plugin_manager.c:526 data/ui/remmina_main.glade:330
 #, fuzzy
 msgid "Plugins"
 msgstr "প্লাগইন"
@@ -176,7 +176,7 @@ msgid "_OK"
 msgstr "_OK"
 
 #: src/remmina_plugin_manager.c:544 src/remmina_file_editor.c:1937
-#: data/ui/remmina_main.glade:433
+#: data/ui/remmina_main.glade:457
 #, fuzzy
 msgid "Name"
 msgstr "নাম"
@@ -933,6 +933,7 @@ msgid "Upload to server"
 msgstr "সার্ভারে আপলোড করুন"
 
 #: src/remmina_ftp_client.c:798 data/ui/remmina_main.glade:198
+#: data/ui/remmina_main.glade:252
 #, fuzzy
 msgid "Delete"
 msgstr "মুছে ফেলুন"
@@ -958,7 +959,7 @@ msgid "User"
 msgstr "ব্যবহারকারী"
 
 #: src/remmina_ftp_client.c:955 src/remmina_file_editor.c:1962
-#: data/ui/remmina_mpc.glade:93 data/ui/remmina_main.glade:455
+#: data/ui/remmina_mpc.glade:93 data/ui/remmina_main.glade:479
 #, fuzzy
 msgid "Group"
 msgstr "গোষ্ঠী"
@@ -1115,7 +1116,7 @@ msgid "Could not authenticate, attempting reconnection…"
 msgstr "প্রমাণীকরণ করা যায়নি, পুনরায় সংযোগের চেষ্টা করা হচ্ছে…"
 
 #: src/remmina_protocol_widget.c:2053 src/remmina_file_editor.c:438
-#: src/remmina_file_editor.c:1210 data/ui/remmina_main.glade:485
+#: src/remmina_file_editor.c:1210 data/ui/remmina_main.glade:509
 #, fuzzy
 msgid "Server"
 msgstr "সার্ভার"
@@ -1413,33 +1414,42 @@ msgstr "পিটিওয়াই ডিভাইস তৈরি করা �
 msgid "Plugin %s is not registered."
 msgstr "প্লাগইন [এক্স৭এক্স] নিবন্ধিত নয়।"
 
-#: src/remmina_main.c:732
+#: src/remmina_main.c:733
 #, fuzzy
 msgid "The latest successful connection attempt, or a pre-computed date"
 msgstr "সর্বশেষ সফল সংযোগ প্রচেষ্টা, বা একটি প্রাক-গণনা তারিখ"
 
-#: src/remmina_main.c:734
+#: src/remmina_main.c:735
 #, fuzzy, c-format
 msgid "Total %i item."
 msgid_plural "Total %i items."
 msgstr[0] "মোট [এক্স6এক্স] আইটেম।"
 msgstr[1] ""
 
-#: src/remmina_main.c:742
+#: src/remmina_main.c:743
 msgid "Network status: fully online"
 msgstr ""
 
-#: src/remmina_main.c:745
+#: src/remmina_main.c:746
 msgid "Network status: offline"
 msgstr ""
 
-#: src/remmina_main.c:998
+#: src/remmina_main.c:999
 #, c-format
 msgid "Are you sure you want to delete “%s”?"
 msgstr ""
 "বর্তমানে উইন্ডোতে %i টি সক্রিয় সংযোগ রয়েছে। আপনি নিশ্চিত যে এটি বন্ধ করতে চান?"
 
-#: src/remmina_main.c:1133
+#: src/remmina_main.c:1021
+#, fuzzy
+msgid "Are you sure you want to delete the selected files?"
+msgstr "আপনি কি সার্ভারে নির্বাচিত ফাইলগুলি মুছে ফেলার বিষয়ে নিশ্চিত?"
+
+#: src/remmina_main.c:1032
+msgid "Failed to delete files!"
+msgstr ""
+
+#: src/remmina_main.c:1192
 #, fuzzy, c-format
 msgid ""
 "Unable to import:\n"
@@ -1448,27 +1458,27 @@ msgstr ""
 "আমদানি করতে অক্ষম:\n"
 "[এক্স১৮এক্স]"
 
-#: src/remmina_main.c:1159 data/ui/remmina_main.glade:286
+#: src/remmina_main.c:1218 data/ui/remmina_main.glade:310
 #, fuzzy
 msgid "Import"
 msgstr "আমদানি"
 
-#: src/remmina_main.c:1182 src/remmina_file_editor.c:1819
+#: src/remmina_main.c:1241 src/remmina_file_editor.c:1819
 #, fuzzy
 msgid "_Save"
 msgstr "_সংরক্ষণ"
 
-#: src/remmina_main.c:1188
+#: src/remmina_main.c:1247
 #, fuzzy
 msgid "This protocol does not support exporting."
 msgstr "এই প্রোটোকল রপ্তানি সমর্থন করে না।"
 
-#: src/remmina_main.c:1501
+#: src/remmina_main.c:1568
 #, fuzzy
 msgid "Remmina Remote Desktop Client"
 msgstr "Remmina দূরবর্তী ডেস্কটপ ক্লায়েন্ট"
 
-#: src/remmina_main.c:1503
+#: src/remmina_main.c:1570
 #, fuzzy
 msgid "Remmina Kiosk"
 msgstr "রেমিনা কিয়স্ক"
@@ -1753,7 +1763,7 @@ msgstr "মৌলিক"
 msgid "Advanced"
 msgstr "উন্নত"
 
-#: src/remmina_file_editor.c:1347 data/ui/remmina_main.glade:499
+#: src/remmina_file_editor.c:1347 data/ui/remmina_main.glade:523
 #, fuzzy
 msgid "Notes"
 msgstr "নোট"
@@ -1826,7 +1836,7 @@ msgstr "দ্রুত সংযোগ"
 msgid "Use '%s' as subgroup delimiter"
 msgstr "সাবগ্রুপ ডিলিমিমিটার হিসাবে '[এক্স৫এক্স]' ব্যবহার করুন"
 
-#: src/remmina_file_editor.c:1980 data/ui/remmina_main.glade:469
+#: src/remmina_file_editor.c:1980 data/ui/remmina_main.glade:493
 msgid "Labels"
 msgstr ""
 
@@ -1853,7 +1863,7 @@ msgstr "রেমিনা পছন্দফাইলে «রেজোলি�
 msgid "Open Main Window"
 msgstr "প্রধান উইন্ডো খুলুন"
 
-#: src/remmina_icon.c:141 data/ui/remmina_main.glade:255
+#: src/remmina_icon.c:141 data/ui/remmina_main.glade:279
 #, fuzzy
 msgid "_Preferences"
 msgstr "পছন্দগুলি"
@@ -1868,7 +1878,7 @@ msgstr "_About"
 msgid "Enable Service Discovery"
 msgstr "পরিষেবা আবিষ্কার সক্ষম করুন"
 
-#: src/remmina_icon.c:168 data/ui/remmina_main.glade:395
+#: src/remmina_icon.c:168 data/ui/remmina_main.glade:419
 #, fuzzy
 msgid "_Quit"
 msgstr "_Quit"
@@ -4560,7 +4570,7 @@ msgstr "_regular অভিব্যক্তি হিসাবে মেলে"
 msgid "_Wrap around"
 msgstr "চারপাশে _Wrap"
 
-#: data/ui/remmina_about.glade:31 data/ui/remmina_main.glade:386
+#: data/ui/remmina_about.glade:31 data/ui/remmina_main.glade:410
 #, fuzzy
 msgid "About"
 msgstr "পরিচয়"
@@ -4852,76 +4862,76 @@ msgstr "সব ভেঙ্গে পড়ুন"
 msgid "Expand all"
 msgstr "সব প্রসারিত করুন"
 
-#: data/ui/remmina_main.glade:266
+#: data/ui/remmina_main.glade:290
 #, fuzzy
 msgid "Multi password changer"
 msgstr "মাল্টি পাসওয়ার্ড চেঞ্জার"
 
-#: data/ui/remmina_main.glade:276
+#: data/ui/remmina_main.glade:300
 #, fuzzy
 msgid "Debugging"
 msgstr "ডিবাগিং"
 
-#: data/ui/remmina_main.glade:296
+#: data/ui/remmina_main.glade:320
 #, fuzzy
 msgid "Export"
 msgstr "রপ্তানি"
 
-#: data/ui/remmina_main.glade:323
+#: data/ui/remmina_main.glade:347
 msgid "Make Remmina your default remote desktop client"
 msgstr "Remmina দূরবর্তী ডেস্কটপ ক্লায়েন্ট"
 
-#: data/ui/remmina_main.glade:339
+#: data/ui/remmina_main.glade:363
 #, fuzzy
 msgid "Homepage"
 msgstr "হোমপেজ"
 
-#: data/ui/remmina_main.glade:349
+#: data/ui/remmina_main.glade:373
 #, fuzzy
 msgid "Donations"
 msgstr "অনুদান"
 
-#: data/ui/remmina_main.glade:359
+#: data/ui/remmina_main.glade:383
 #, fuzzy
 msgid "Wiki"
 msgstr "উইকি"
 
 #. Remmina community website
-#: data/ui/remmina_main.glade:369
+#: data/ui/remmina_main.glade:393
 #, fuzzy
 msgid "Community"
 msgstr "কমিউনিটি"
 
-#: data/ui/remmina_main.glade:513
+#: data/ui/remmina_main.glade:537
 #, fuzzy
 msgid "Plugin"
 msgstr "প্লাগইন"
 
-#: data/ui/remmina_main.glade:527
+#: data/ui/remmina_main.glade:551
 #, fuzzy
 msgid "Last used"
 msgstr "সর্বশেষ ব্যবহৃত"
 
-#: data/ui/remmina_main.glade:576
+#: data/ui/remmina_main.glade:600
 msgid "New connection profile"
 msgstr "নতুন সংযোগ"
 
-#: data/ui/remmina_main.glade:588
+#: data/ui/remmina_main.glade:612
 #, fuzzy
 msgid "Show search bar"
 msgstr "অনুসন্ধান বার দেখান"
 
-#: data/ui/remmina_main.glade:608
+#: data/ui/remmina_main.glade:632
 #, fuzzy
 msgid "Remmina main menu"
 msgstr "রেমিনা প্রধান মেনু"
 
-#: data/ui/remmina_main.glade:615
+#: data/ui/remmina_main.glade:639
 #, fuzzy
 msgid "Actions"
 msgstr "ক্রিয়া"
 
-#: data/ui/remmina_main.glade:630
+#: data/ui/remmina_main.glade:654
 #, fuzzy
 msgid "Toggle view"
 msgstr "দর্শন টগল করুন"
