@@ -55,7 +55,7 @@
 #include "remmina_log.h"
 #include "remmina/remmina_trace_calls.h"
 
-const gchar *default_resolutions = "640x480,800x600,1024x768,1152x864,1280x960,1400x1050";
+const gchar *default_resolutions = "640x480,800x600,1024x768,1152x864,1280x960,1400x1050,1920x1080";
 const gchar *default_keystrokes = "Send hello world§hello world\\n";
 
 gchar *remmina_keymap_file;
