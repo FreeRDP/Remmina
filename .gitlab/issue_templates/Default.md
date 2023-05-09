@@ -5,9 +5,9 @@ and keep trying to reproduce it on any later versions** :)
 
 Do not use GitLab for support requests, instead ask questions on:
 
+* [Matrix](https://matrix.to/#/#remmina-room:matrix.org) (the best way to reach us)
+* [Reddit](https://reddit.com/r/Remmina)
 * IRC, on libera.chat, in the #remmina channel, or use a [web client](https://web.libera.chat/?nick=remminer|?#remmina).
-* [Matrix](https://riot.im/app/#/group/+remmina:matrix.org)
-* [Reddit](https://reddit.com/r/Remmina) :(
 
 For enhancement requests select the proper Issue template in the above drop-down box.
 
