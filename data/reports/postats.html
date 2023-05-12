@@ -3,21 +3,30 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+		<link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet'>
+		<link rel="icon" type="image/x-icon" href="../desktop/scalable/apps/org.remmina.Remmina.svg">
         <title>Remmina Translation Status</title>
+		
+		<!-- scripts -->
         <script type="text/javascript" src="chartkick.min.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
         <script type="text/javascript">
             Chartkick.CustomChart = function (element, dataSource, options) {
             };
         </script>
+		
+		<!-- style -->
         <style type="text/css">
             body {
                 padding: 20px;
                 margin: 0;
-                font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+                font-family: 'Ubuntu';
+				font-size: 22px;
             }
             h1 {
                 text-align: center;
+				margin-top: auto;
             }
             .container-fluid {
                 max-width: 900px;
@@ -25,12 +34,19 @@
                 margin-right: auto;
             }
             #multiple-bar-stacked {
-                height: 750px;
+                height: 1000px;
             }
+			.remmina-icon{
+				display: block;
+				margin-left: auto;
+                margin-right: auto;
+				width: 100px;
+			}
         </style>
     </head>
     <body>
         <div class="container-fluid">
+			<img class="remmina-icon" src="../desktop/scalable/apps/org.remmina.Remmina.svg">
             <h1>Remmina Translation Status</h1>
             <div id="multiple-bar-stacked"></div>
             <script type="text/javascript">
