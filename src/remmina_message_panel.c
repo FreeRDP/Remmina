@@ -381,7 +381,7 @@ void remmina_message_panel_setup_auth(RemminaMessagePanel *mp, RemminaMessagePan
 	gtk_widget_set_margin_end (GTK_WIDGET(password_entry), 18);
 	gtk_entry_set_activates_default (GTK_ENTRY(password_entry), TRUE);
 	gtk_grid_attach(GTK_GRID(grid), password_entry, 1, grid_row, 2, 1);
-	gtk_entry_set_max_length(GTK_ENTRY(password_entry), 100);
+	gtk_entry_set_max_length(GTK_ENTRY(password_entry), 0);
 	gtk_entry_set_visibility(GTK_ENTRY(password_entry), FALSE);
 
 	grid_row++;
