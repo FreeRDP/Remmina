@@ -5,15 +5,16 @@
 # Pavel Borecki <pavel.borecki@gmail.com>, 2019, 2020, 2021, 2022.
 # Allan Nordhøy <epost@anotheragency.no>, 2019, 2020, 2021, 2023.
 # Antenore Gatta <antenore@simbiosi.org>, 2021.
-# Štěpán Adamec <adamec@yasas.org>, 2022.
+# Štěpán Adamec <adamec@yasas.org>, 2022, 2023.
 # Václav Koterec <kot.va@centrum.cz>, 2022.
+# Petr Kadlec <mormegil@centrum.cz>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2023-05-03 11:33+0000\n"
-"PO-Revision-Date: 2023-05-01 12:49+0000\n"
-"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"PO-Revision-Date: 2023-05-12 18:53+0000\n"
+"Last-Translator: Štěpán Adamec <adamec@yasas.org>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/remmina/remmina/cs/"
 ">\n"
 "Language: cs\n"
@@ -47,9 +48,8 @@ msgstr "SSH agent"
 
 #: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:1140
 #: src/remmina_ssh_plugin.c:1397
-#, fuzzy
 msgid "Public key (automatic)"
-msgstr "Metoda s veřejným klíčem (automatické)"
+msgstr "Veřejný klíč (automaticky)"
 
 #: src/remmina_sftp_plugin.c:313 src/remmina_file_editor.c:1141
 #: src/remmina_ssh_plugin.c:1398
@@ -100,16 +100,12 @@ msgid "SFTP - Secure File Transfer"
 msgstr "SFTP – Zabezpečený přenos souborů"
 
 #: src/remmina_log.c:130
-#, fuzzy
-#| msgid "Open Main Window"
 msgid "Remmina debugging window"
-msgstr "Otevřete hlavní okno aplikace Remmina"
+msgstr "Ladicí okno Remminy"
 
 #: src/remmina_log.c:134
-#, fuzzy
-#| msgid "Open Main Window"
 msgid "Paste system info in the Remmina debugging window"
-msgstr "Otevřete hlavní okno aplikace Remmina"
+msgstr "Vložit systémové informace do ladicího okna Remminy"
 
 #: src/remmina_log.c:154
 msgid ""
@@ -256,11 +252,8 @@ msgstr "Nastavit stisky kláves"
 
 #. TRANSLATORS: Do not translate libsodium, is the name of a library
 #: src/remmina_pref_dialog.c:479
-#, fuzzy
 msgid "libsodium >= 1.9.0 is required to use Primary Password"
-msgstr ""
-"aby bylo možné používat hlavní heslo, je třeba knihovny libsodium verze "
-"1.9.0 a novější"
+msgstr "Aby bylo možné používat hlavní heslo, je potřeba libsodium >= 1.9.0"
 
 #: src/remmina_pref_dialog.c:813
 msgid "Picking a terminal colouring file replaces the file: "
@@ -340,9 +333,8 @@ msgid ""
 msgstr "Opravdu chcete zavřít %i aktivních připojení ve stávajícím okně?"
 
 #: src/rcw.c:681
-#, fuzzy
 msgid "Are you sure you want to close this last active connection?"
-msgstr "Opravdu chcete zavřít %i aktivních připojení ve stávajícím okně?"
+msgstr "Opravdu chcete zavřít toto poslední aktivní připojení?"
 
 #: src/rcw.c:1441
 msgid "Viewport fullscreen mode"
@@ -474,13 +466,12 @@ msgstr ""
 "available-in-a-Wayland-session"
 
 #: src/rcw.c:4631
-#, fuzzy
-#| msgid "Warning: This plugin requires GtkSocket, but it’s not available."
 msgid ""
 "Warning: This plugin requires GtkSocket, but this feature is unavailable in "
 "a Wayland session."
 msgstr ""
-"Varování: tento zásuvný modul vyžaduje GtkSocket, ale to není k dispozici."
+"Varování: Tento zásuvný modul vyžaduje GtkSocket, ale tato funkce není na "
+"Waylandu k dispozici."
 
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. 'GtkSocket feature is not available'.
@@ -494,10 +485,8 @@ msgid ""
 msgstr ""
 
 #: src/rcw.c:4651
-#, fuzzy
-#| msgid "Open Main Window"
 msgid "Open in web browser"
-msgstr "Open in browser"
+msgstr "Otevřít ve webovém prohlížeči"
 
 #: src/remmina_mpchange.c:263
 msgid "The passwords do not match"
