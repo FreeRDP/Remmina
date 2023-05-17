@@ -17,7 +17,7 @@
 ### Installation
 
 [How to install Remmina](https://remmina.org/how-to-install-remmina/),
-editable on [the wiki](https://gitlab.com/Remmina/Remmina/wikis/home).
+editable on [the wiki](https://gitlab.com/Remmina/Remmina/-/wikis/home).
 
 ### Configuration
 
