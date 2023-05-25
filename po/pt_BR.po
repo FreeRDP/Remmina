@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2023-05-03 11:33+0000\n"
+"POT-Creation-Date: 2023-05-25 11:47+0000\n"
 "PO-Revision-Date: 2023-05-03 19:49+0000\n"
 "Last-Translator: Wellington Terumi Uemura <wellingtonuemura@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
@@ -276,7 +276,7 @@ msgstr "Cancelar"
 #: src/remmina_message_panel.c:198 data/ui/remmina_snap_info_dialog.glade:25
 #: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
 #: data/ui/remmina_string_list.glade:63 data/ui/remmina_news.glade:33
-#: data/ui/remmina_preferences.glade:2683
+#: data/ui/remmina_preferences.glade:2707
 msgid "Close"
 msgstr "Fechar"
 
@@ -339,7 +339,7 @@ msgstr "Tem certeza que deseja fechar esta última conexão ativa?"
 msgid "Viewport fullscreen mode"
 msgstr "Ver modo de porta em tela cheia"
 
-#: src/rcw.c:1449 data/ui/remmina_preferences.glade:560
+#: src/rcw.c:1449 data/ui/remmina_preferences.glade:578
 msgid "Scrolled fullscreen"
 msgstr "Tela cheia roalada"
 
@@ -415,8 +415,8 @@ msgstr "Redimensiona a janela para adaptá-la à resolução remota"
 msgid "Toggle fullscreen mode"
 msgstr "Alterna para o modo tela cheia"
 
-#: src/rcw.c:2445 data/ui/remmina_preferences.glade:1300
-#: data/ui/remmina_preferences.glade:1310
+#: src/rcw.c:2445 data/ui/remmina_preferences.glade:1324
+#: data/ui/remmina_preferences.glade:1334
 msgid "Multi monitor"
 msgstr "Vários monitores"
 
@@ -428,7 +428,7 @@ msgstr "Alterna para atualização de resolução dinâmica"
 msgid "Toggle scaled mode"
 msgstr "Alterna para modo dimensionado"
 
-#: src/rcw.c:2511 data/ui/remmina_preferences.glade:1034
+#: src/rcw.c:2511 data/ui/remmina_preferences.glade:1058
 msgid "Switch tab pages"
 msgstr "Alternar páginas de abas"
 
@@ -448,16 +448,16 @@ msgstr "_Ferramentas"
 msgid "Tools"
 msgstr "Ferramentas"
 
-#: src/rcw.c:2561 data/ui/remmina_preferences.glade:1235
-#: data/ui/remmina_preferences.glade:1245
+#: src/rcw.c:2561 data/ui/remmina_preferences.glade:1259
+#: data/ui/remmina_preferences.glade:1269
 msgid "Screenshot"
 msgstr "Captura de tela"
 
-#: src/rcw.c:2575 data/ui/remmina_preferences.glade:1142
+#: src/rcw.c:2575 data/ui/remmina_preferences.glade:1166
 msgid "Minimize window"
 msgstr "Minimizar janela"
 
-#: src/rcw.c:2585 data/ui/remmina_preferences.glade:1173
+#: src/rcw.c:2585 data/ui/remmina_preferences.glade:1197
 msgid "Disconnect"
 msgstr "Desconectar"
 
@@ -2291,7 +2291,7 @@ msgstr "High color (15 bpp)"
 msgid "256 colours (8 bpp)"
 msgstr "256 cores (8 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2674 data/ui/remmina_preferences.glade:592
+#: plugins/rdp/rdp_plugin.c:2674 data/ui/remmina_preferences.glade:610
 msgid "None"
 msgstr "Nenhuma"
 
@@ -2324,7 +2324,7 @@ msgid "LAN"
 msgstr "LAN"
 
 #: plugins/rdp/rdp_plugin.c:2688 plugins/spice/spice_plugin.c:637
-#: data/ui/remmina_preferences.glade:628
+#: data/ui/remmina_preferences.glade:646
 msgid "Off"
 msgstr "Desligado"
 
@@ -4519,77 +4519,79 @@ msgstr "Evita que capturas de tela entrem na área de transferência"
 msgid "Confirm before closing multiple tabs"
 msgstr "Confirme antes de fechar as várias guias"
 
-#: data/ui/remmina_preferences.glade:482
-msgid "Options"
-msgstr "Opções"
+#: data/ui/remmina_preferences.glade:500
+#, fuzzy
+#| msgid "General settings"
+msgid "General"
+msgstr "Configurações gerais"
 
-#: data/ui/remmina_preferences.glade:507
+#: data/ui/remmina_preferences.glade:525
 msgid "Always show tabs"
 msgstr "Sempre mostrar abas"
 
-#: data/ui/remmina_preferences.glade:523
+#: data/ui/remmina_preferences.glade:541
 msgid "Hide the toolbar shown in the tabbed interface"
 msgstr "Ocultar barra de ferramentas mostrada na interface com abas"
 
-#: data/ui/remmina_preferences.glade:544
+#: data/ui/remmina_preferences.glade:562
 msgid "Default view"
 msgstr "Visualização padrão"
 
-#: data/ui/remmina_preferences.glade:558
+#: data/ui/remmina_preferences.glade:576
 msgid "Automatic"
 msgstr "Automático"
 
-#: data/ui/remmina_preferences.glade:559
+#: data/ui/remmina_preferences.glade:577
 msgid "Scrolled window"
 msgstr "Janela rolada"
 
-#: data/ui/remmina_preferences.glade:561
+#: data/ui/remmina_preferences.glade:579
 msgid "Viewport fullscreen"
 msgstr "Viewport em tela cheia"
 
 #. How tabs are grouped in the Remmina connection window
-#: data/ui/remmina_preferences.glade:577
+#: data/ui/remmina_preferences.glade:595
 msgctxt "Appearance preferences"
 msgid "Tabs grouping"
 msgstr "Agrupamento de abas"
 
-#: data/ui/remmina_preferences.glade:589
+#: data/ui/remmina_preferences.glade:607
 msgid "By group"
 msgstr "Por grupos"
 
-#: data/ui/remmina_preferences.glade:590
+#: data/ui/remmina_preferences.glade:608
 msgid "By protocol"
 msgstr "Por protocolo"
 
-#: data/ui/remmina_preferences.glade:591
+#: data/ui/remmina_preferences.glade:609
 msgid "Per connection"
 msgstr "Por conexão"
 
-#: data/ui/remmina_preferences.glade:603
+#: data/ui/remmina_preferences.glade:621
 msgid "Fullscreen on the same screen as the connection window"
 msgstr "Tela cheia no mesma tela da janela de conexão"
 
-#: data/ui/remmina_preferences.glade:626
+#: data/ui/remmina_preferences.glade:644
 msgid "Peeking"
 msgstr "Espiada"
 
-#: data/ui/remmina_preferences.glade:627
+#: data/ui/remmina_preferences.glade:645
 msgid "Hidden"
 msgstr "Oculta"
 
-#: data/ui/remmina_preferences.glade:644
+#: data/ui/remmina_preferences.glade:662
 msgid "Fullscreen toolbar visibility"
 msgstr "Visibilidade da barra de ferramentas em tela cheia"
 
-#: data/ui/remmina_preferences.glade:654
+#: data/ui/remmina_preferences.glade:672
 msgid "Hide the search bar shown in the main window"
 msgstr "Ocultar a barra de pesquisa mostrada na janela principal"
 
-#: data/ui/remmina_preferences.glade:670
+#: data/ui/remmina_preferences.glade:688
 msgid "Prefer dark theme"
 msgstr "Preferir tema escuro"
 
-#: data/ui/remmina_preferences.glade:674
+#: data/ui/remmina_preferences.glade:692
 msgid ""
 "If a GTK theme includes a dark variant, it will be used instead of the "
 "configured theme."
@@ -4597,19 +4599,19 @@ msgstr ""
 "Se um tema GTK incluir uma variante escura, ele será usado em vez do tema "
 "configurado."
 
-#: data/ui/remmina_preferences.glade:687
+#: data/ui/remmina_preferences.glade:705
 msgid "Always show notes"
 msgstr "Sempre mostrar as anotações"
 
-#: data/ui/remmina_preferences.glade:691
+#: data/ui/remmina_preferences.glade:709
 msgid "Add a column displaying any notes associated with a connection."
 msgstr "Adicione uma coluna exibindo quaisquer notas associadas a uma conexão."
 
-#: data/ui/remmina_preferences.glade:711
+#: data/ui/remmina_preferences.glade:729
 msgid "“Grab all keyboard events” status colour"
 msgstr "Cor de status de “Captura todos eventos do teclado”"
 
-#: data/ui/remmina_preferences.glade:722
+#: data/ui/remmina_preferences.glade:740
 msgid ""
 "Hexadecimal- or colour names (red, #ff0000).\n"
 "It changes the background colour of connection names in the Remmina "
@@ -4619,114 +4621,114 @@ msgstr ""
 "Muda a cor de fundo de nomes de conexão na barra de ferramentas de conexão "
 "Remmina (quando em tela cheia)."
 
-#: data/ui/remmina_preferences.glade:739
+#: data/ui/remmina_preferences.glade:757
 msgid "Enable/Disable “Grab all keyboard events” status colour"
 msgstr ""
 "Ativar/desativar a cor de estado \"Capturar todos os eventos do teclado\""
 
-#: data/ui/remmina_preferences.glade:795
+#: data/ui/remmina_preferences.glade:819
 msgid "Appearance"
 msgstr "Aparência"
 
-#: data/ui/remmina_preferences.glade:821
+#: data/ui/remmina_preferences.glade:845
 msgid "Show new connection on top of the menu"
 msgstr "Mostrar novas conexões no topo do menu"
 
-#: data/ui/remmina_preferences.glade:840
+#: data/ui/remmina_preferences.glade:864
 msgid "Hide total count shown in the group menu"
 msgstr "Ocultar contagem total mostrada no menu do grupo"
 
-#: data/ui/remmina_preferences.glade:858
+#: data/ui/remmina_preferences.glade:882
 msgid "No tray icon"
 msgstr "Desabilitar ícone da área de notificação"
 
-#: data/ui/remmina_preferences.glade:877
+#: data/ui/remmina_preferences.glade:901
 msgid "Start in tray upon user login"
 msgstr "Iniciar na área de notificação ao iniciar a sessão"
 
-#: data/ui/remmina_preferences.glade:908
+#: data/ui/remmina_preferences.glade:932
 msgid "Applet"
 msgstr "Miniaplicativo"
 
-#: data/ui/remmina_preferences.glade:940
+#: data/ui/remmina_preferences.glade:964
 msgid "Host key"
 msgstr "Tecla do hospedeiro"
 
-#: data/ui/remmina_preferences.glade:972
+#: data/ui/remmina_preferences.glade:996
 msgid "Show/hide fullscreen"
 msgstr "Mostrar/ocultar tela cheia"
 
-#: data/ui/remmina_preferences.glade:1003
+#: data/ui/remmina_preferences.glade:1027
 msgid "Auto-fit window"
 msgstr "Ajustar automaticamente a janela"
 
-#: data/ui/remmina_preferences.glade:1080
+#: data/ui/remmina_preferences.glade:1104
 msgid "Apply/remove scaling"
 msgstr "Aplicar/remover dimensionamento"
 
-#: data/ui/remmina_preferences.glade:1111
+#: data/ui/remmina_preferences.glade:1135
 msgid "Grab keyboard"
 msgstr "Capturar o teclado"
 
-#: data/ui/remmina_preferences.glade:1204
+#: data/ui/remmina_preferences.glade:1228
 msgid "Show/hide toolbar"
 msgstr "Mostrar/ocultar barra de ferramentas"
 
-#: data/ui/remmina_preferences.glade:1267
-#: data/ui/remmina_preferences.glade:1277
+#: data/ui/remmina_preferences.glade:1291
+#: data/ui/remmina_preferences.glade:1301
 msgid "View-only mode"
 msgstr "Modo de somente visualização"
 
-#: data/ui/remmina_preferences.glade:1340
+#: data/ui/remmina_preferences.glade:1364
 msgid "Keyboard"
 msgstr "Teclado"
 
-#: data/ui/remmina_preferences.glade:1371
+#: data/ui/remmina_preferences.glade:1395
 msgid "Local SSH port"
 msgstr "Porta SSH local"
 
-#: data/ui/remmina_preferences.glade:1395
+#: data/ui/remmina_preferences.glade:1419
 msgid "Parse ~/.ssh/config"
 msgstr "Analisar ~/.ssh/config"
 
-#: data/ui/remmina_preferences.glade:1419
+#: data/ui/remmina_preferences.glade:1443
 msgid "No logging at all"
 msgstr "Não registrar logs"
 
-#: data/ui/remmina_preferences.glade:1420
+#: data/ui/remmina_preferences.glade:1444
 msgid "Rare conditions or warnings"
 msgstr "Condições raras ou avisos"
 
-#: data/ui/remmina_preferences.glade:1421
+#: data/ui/remmina_preferences.glade:1445
 msgid "API-accessible entrypoints"
 msgstr "Pontos de entrada acessíveis de API"
 
-#: data/ui/remmina_preferences.glade:1422
+#: data/ui/remmina_preferences.glade:1446
 msgid "Lower level protocol info, packet level"
 msgstr "Informações de protocolo de baixo nível, a nível de pacote"
 
-#: data/ui/remmina_preferences.glade:1423
+#: data/ui/remmina_preferences.glade:1447
 msgid "Function entering and leaving"
 msgstr "Entrada e saída de função"
 
-#: data/ui/remmina_preferences.glade:1440
+#: data/ui/remmina_preferences.glade:1464
 msgid "SSH log level"
 msgstr "Nível de log SSH"
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1511
+#: data/ui/remmina_preferences.glade:1535
 msgid "Seconds of connection idleness before TCP keepalive probes are sent."
 msgstr ""
 "Segundos de conexão ociosa antes que testes de keepalive em TCP sejam "
 "enviados."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1527
+#: data/ui/remmina_preferences.glade:1551
 msgid "Seconds between each keepalive probe."
 msgstr "Segundos entre cada teste de keepalive."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1543
+#: data/ui/remmina_preferences.glade:1567
 msgid ""
 "Number of keepalive probes sent via TCP connection before it is dropped."
 msgstr ""
@@ -4734,7 +4736,7 @@ msgstr ""
 "descartada."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1559
+#: data/ui/remmina_preferences.glade:1583
 msgid ""
 "Amount of milliseconds to attempt acknowledging data before closing the "
 "corresponding TCP connection forcibly."
@@ -4742,11 +4744,11 @@ msgstr ""
 "Quantidade de milissegundos para tentar reconhecer dados antes de fechar a "
 "conexão TCP correspondente à força."
 
-#: data/ui/remmina_preferences.glade:1585
+#: data/ui/remmina_preferences.glade:1609
 msgid "SSH options"
 msgstr "Opções SSH"
 
-#: data/ui/remmina_preferences.glade:1602
+#: data/ui/remmina_preferences.glade:1626
 msgid ""
 "Time in seconds before Remmina will lock the session and asks for a password "
 "again. Default: 300 Seconds."
@@ -4754,63 +4756,63 @@ msgstr ""
 "Tempo em segundos antes que o Remmina bloqueie a sessão e peça a senha "
 "novamente. Padrão: 300 segundos."
 
-#: data/ui/remmina_preferences.glade:1614
+#: data/ui/remmina_preferences.glade:1638
 msgid "Set and use a secret key to protect Remmina from unauthorized use."
 msgstr ""
 "Defina e use uma chave secreta para proteger o Remmina do uso não autorizado."
 
-#: data/ui/remmina_preferences.glade:1619
+#: data/ui/remmina_preferences.glade:1643
 msgid "Remmina password"
 msgstr "Senha do Remmina"
 
-#: data/ui/remmina_preferences.glade:1630
+#: data/ui/remmina_preferences.glade:1654
 msgid "Use secret key authentication for some widgets"
 msgstr "Usar chave secreta para autenticar com alguns widgets"
 
-#: data/ui/remmina_preferences.glade:1650
+#: data/ui/remmina_preferences.glade:1674
 msgid "Valid for"
 msgstr "Válido para"
 
-#: data/ui/remmina_preferences.glade:1661
+#: data/ui/remmina_preferences.glade:1685
 msgid "Number of seconds to keep password valid for"
 msgstr "Quantidade de segundos para manter a senha válida"
 
-#: data/ui/remmina_preferences.glade:1666
+#: data/ui/remmina_preferences.glade:1690
 msgid "timeout in seconds (default 300)"
 msgstr "tempo limite em segundos (padrão 300)"
 
-#: data/ui/remmina_preferences.glade:1678
+#: data/ui/remmina_preferences.glade:1702
 msgid "Enter your Remmina password to connect"
 msgstr "Digite a sua senha Remmina para se conectar"
 
 #. “Require to connect” is “Require the Remmina password before to connect”, the Remmina password is the Master/Principal Password, that is used to protect Remmina from unauthorized use.
-#: data/ui/remmina_preferences.glade:1682
+#: data/ui/remmina_preferences.glade:1706
 msgid "Require to connect"
 msgstr "É necessário para se conectar"
 
-#: data/ui/remmina_preferences.glade:1693
+#: data/ui/remmina_preferences.glade:1717
 msgid "Creation, editing, copying, and deletions require the Remmina password"
 msgstr "A criação, a edição, a cópia e as exclusões precisam da senha Remmina"
 
 #. Creation, editing, copying, and deletions require the primary password
-#: data/ui/remmina_preferences.glade:1697
+#: data/ui/remmina_preferences.glade:1721
 msgid "Require to modify"
 msgstr "É preciso para alterar"
 
-#: data/ui/remmina_preferences.glade:1708
+#: data/ui/remmina_preferences.glade:1732
 msgid "Enter your Remmina password to view passwords"
 msgstr "Insira a sua senha do Remmina para ver as senhas"
 
 #. “Require to view passwords” is “Require the Remmina password before to connect”, the Remmina password is the Master/Principal Password, that is used to protect Remmina from unauthorized use.
-#: data/ui/remmina_preferences.glade:1712
+#: data/ui/remmina_preferences.glade:1736
 msgid "Require to view passwords"
 msgstr "É obrigatório para ver as senhas"
 
-#: data/ui/remmina_preferences.glade:1768
+#: data/ui/remmina_preferences.glade:1792
 msgid "Encryption"
 msgstr "Criptografia"
 
-#: data/ui/remmina_preferences.glade:1779
+#: data/ui/remmina_preferences.glade:1803
 msgid ""
 "These are the encryption methods used by Remmina to store passwords.\n"
 "\n"
@@ -4829,64 +4831,64 @@ msgstr ""
 "O \"Intermediário\" não usa tanta memória ou poder de processamento, e o "
 "\"Sensível\" é o mais seguro, mas usa +1 GiB de RAM e muitos ciclos da CPU. "
 
-#: data/ui/remmina_preferences.glade:1788
+#: data/ui/remmina_preferences.glade:1812
 msgid "Intermediate (+64 MiB RAM)"
 msgstr "Intermediário (+64 MiB de RAM)"
 
-#: data/ui/remmina_preferences.glade:1789
+#: data/ui/remmina_preferences.glade:1813
 msgid "Strong (+256 MiB, ~2009 CPU)"
 msgstr "Forte (+256 MiB, ~2009 CPU)"
 
-#: data/ui/remmina_preferences.glade:1790
+#: data/ui/remmina_preferences.glade:1814
 msgid "Sensitive (+1 GiB, ~2014 CPU)"
 msgstr "Sensível (+1 GiB, ~2014 CPU)"
 
-#: data/ui/remmina_preferences.glade:1806
+#: data/ui/remmina_preferences.glade:1830
 msgid "Auditing log"
 msgstr "Registro de auditoria"
 
-#: data/ui/remmina_preferences.glade:1831
+#: data/ui/remmina_preferences.glade:1855
 msgid "Automatically accept all fingerprints and certificates"
 msgstr "Aceita automaticamente todas as impressões digitais e certificados"
 
-#: data/ui/remmina_preferences.glade:1836
+#: data/ui/remmina_preferences.glade:1860
 msgid "Trust all certificates"
 msgstr "Confie em todos os certificados"
 
-#: data/ui/remmina_preferences.glade:1871
+#: data/ui/remmina_preferences.glade:1895
 msgid "Security"
 msgstr "Segurança"
 
-#: data/ui/remmina_preferences.glade:1902
+#: data/ui/remmina_preferences.glade:1926
 msgid "Terminal font"
 msgstr "Fonte do terminal"
 
-#: data/ui/remmina_preferences.glade:1915
+#: data/ui/remmina_preferences.glade:1939
 msgid "Scrollback lines"
 msgstr "Linhas de rolagem"
 
-#: data/ui/remmina_preferences.glade:1963
+#: data/ui/remmina_preferences.glade:1987
 msgid "Shortcuts for copying and pasting"
 msgstr "Atalhos para copiar e colar"
 
-#: data/ui/remmina_preferences.glade:1976
+#: data/ui/remmina_preferences.glade:2000
 msgid "Select all shortcuts"
 msgstr "Selecionar todos atalhos"
 
-#: data/ui/remmina_preferences.glade:1989
-#: data/ui/remmina_preferences.glade:2006
-#: data/ui/remmina_preferences.glade:2459
-#: data/ui/remmina_preferences.glade:2489
-#: data/ui/remmina_preferences.glade:2623
-#: data/ui/remmina_preferences.glade:2640
+#: data/ui/remmina_preferences.glade:2013
+#: data/ui/remmina_preferences.glade:2030
+#: data/ui/remmina_preferences.glade:2483
+#: data/ui/remmina_preferences.glade:2513
+#: data/ui/remmina_preferences.glade:2647
+#: data/ui/remmina_preferences.glade:2664
 msgid "(Host key+)"
 msgstr "(Tecla do hospedeiro+)"
 
-#: data/ui/remmina_preferences.glade:2024
+#: data/ui/remmina_preferences.glade:2048
 msgid "Use default system font"
 msgstr "Usar a fonte padrão do sistema"
 
-#: data/ui/remmina_preferences.glade:2049
+#: data/ui/remmina_preferences.glade:2073
 msgid ""
 "Selecting “SGR 1” also switches to the bright counterparts of the first 8 "
 "palette colours (in addition to making text bold)."
@@ -4894,15 +4896,15 @@ msgstr ""
 "Selecionar \"SGR 1\" também muda para as contrapartes brilhantes das "
 "primeiras 8 cores da paleta (além de torná-las em negrito)."
 
-#: data/ui/remmina_preferences.glade:2065
+#: data/ui/remmina_preferences.glade:2089
 msgid "Show bold text in bright colors"
 msgstr "Mostra o texto em negrito e com cores brilhantes"
 
-#: data/ui/remmina_preferences.glade:2079
+#: data/ui/remmina_preferences.glade:2103
 msgid "Colour theme"
 msgstr "Tema de cores"
 
-#: data/ui/remmina_preferences.glade:2090
+#: data/ui/remmina_preferences.glade:2114
 msgid ""
 "Choose a colour scheme file. Usually available in /usr/share/remmina/theme. "
 "https://github.com/mbadolato/iTerm2-Color-Schemes has more details."
@@ -4911,130 +4913,130 @@ msgstr ""
 "remmina/theme. Mais detalhes em https://github.com/mbadolato/iTerm2-Color-"
 "Schemes."
 
-#: data/ui/remmina_preferences.glade:2094
+#: data/ui/remmina_preferences.glade:2118
 msgid "Pick a terminal colouring file"
 msgstr "Escolher um arquivo de cores de terminal"
 
-#: data/ui/remmina_preferences.glade:2109
+#: data/ui/remmina_preferences.glade:2133
 msgid "Bright colours"
 msgstr "Cores claras"
 
-#: data/ui/remmina_preferences.glade:2123
+#: data/ui/remmina_preferences.glade:2147
 msgid "Pick a light black colour"
 msgstr "Escolha uma cor preta clara"
 
-#: data/ui/remmina_preferences.glade:2137
+#: data/ui/remmina_preferences.glade:2161
 msgid "Pick a light red colour"
 msgstr "Escolha uma cor vermelha clara"
 
-#: data/ui/remmina_preferences.glade:2151
+#: data/ui/remmina_preferences.glade:2175
 msgid "Pick a bright green colour"
 msgstr "Escolha uma cor verde clara"
 
-#: data/ui/remmina_preferences.glade:2165
+#: data/ui/remmina_preferences.glade:2189
 msgid "Pick a bright yellow colour"
 msgstr "Escolha uma cor amarela clara"
 
-#: data/ui/remmina_preferences.glade:2179
+#: data/ui/remmina_preferences.glade:2203
 msgid "Pick a bright blue colour"
 msgstr "Escolha uma cor azul clara"
 
-#: data/ui/remmina_preferences.glade:2193
+#: data/ui/remmina_preferences.glade:2217
 msgid "Pick a light magenta colour"
 msgstr "Escolha uma cor magenta clara"
 
-#: data/ui/remmina_preferences.glade:2207
+#: data/ui/remmina_preferences.glade:2231
 msgid "Pick a light cyan colour"
 msgstr "Escolha uma cor de ciano claro"
 
-#: data/ui/remmina_preferences.glade:2221
+#: data/ui/remmina_preferences.glade:2245
 msgid "Pick a light white colour"
 msgstr "Escolha uma cor branca clara"
 
-#: data/ui/remmina_preferences.glade:2235
+#: data/ui/remmina_preferences.glade:2259
 msgid "Pick a black colour"
 msgstr "Escolha uma cor preta"
 
-#: data/ui/remmina_preferences.glade:2249
+#: data/ui/remmina_preferences.glade:2273
 msgid "Pick a red colour"
 msgstr "Escolha uma cor vermelha"
 
-#: data/ui/remmina_preferences.glade:2263
+#: data/ui/remmina_preferences.glade:2287
 msgid "Pick a green colour"
 msgstr "Escolha uma cor verde"
 
-#: data/ui/remmina_preferences.glade:2277
+#: data/ui/remmina_preferences.glade:2301
 msgid "Pick a yellow colour"
 msgstr "Escolha uma cor amarela"
 
-#: data/ui/remmina_preferences.glade:2291
+#: data/ui/remmina_preferences.glade:2315
 msgid "Pick a blue colour"
 msgstr "Escolha uma cor azul"
 
-#: data/ui/remmina_preferences.glade:2305
+#: data/ui/remmina_preferences.glade:2329
 msgid "Pick a magenta colour"
 msgstr "Escolha uma cor magenta"
 
-#: data/ui/remmina_preferences.glade:2319
+#: data/ui/remmina_preferences.glade:2343
 msgid "Pick a cyan colour"
 msgstr "Escolha uma cor de ciano"
 
-#: data/ui/remmina_preferences.glade:2333
+#: data/ui/remmina_preferences.glade:2357
 msgid "Pick a white colour"
 msgstr "Escolha uma cor branca"
 
-#: data/ui/remmina_preferences.glade:2346
+#: data/ui/remmina_preferences.glade:2370
 msgid "Normal colours"
 msgstr "Cores normais"
 
-#: data/ui/remmina_preferences.glade:2359
-#: data/ui/remmina_preferences.glade:2374
+#: data/ui/remmina_preferences.glade:2383
+#: data/ui/remmina_preferences.glade:2398
 msgid "Cursor colour"
 msgstr "Cor do cursor"
 
-#: data/ui/remmina_preferences.glade:2388
-#: data/ui/remmina_preferences.glade:2403
+#: data/ui/remmina_preferences.glade:2412
+#: data/ui/remmina_preferences.glade:2427
 msgid "Background colour"
 msgstr "Cor de fundo"
 
-#: data/ui/remmina_preferences.glade:2419
-#: data/ui/remmina_preferences.glade:2433
+#: data/ui/remmina_preferences.glade:2443
+#: data/ui/remmina_preferences.glade:2457
 msgid "Foreground colour"
 msgstr "Cor de primeiro plano"
 
-#: data/ui/remmina_preferences.glade:2446
+#: data/ui/remmina_preferences.glade:2470
 msgid "Increase and decrease font size"
 msgstr "Aumentar e diminuir o tamanho da fonte"
 
-#: data/ui/remmina_preferences.glade:2476
+#: data/ui/remmina_preferences.glade:2500
 msgid "Search text shortcut"
 msgstr "Pesquisar atalho de texto"
 
-#: data/ui/remmina_preferences.glade:2507
-#: data/ui/remmina_preferences.glade:2522
+#: data/ui/remmina_preferences.glade:2531
+#: data/ui/remmina_preferences.glade:2546
 msgid "Bold colour"
 msgstr "Cor em negrito"
 
-#: data/ui/remmina_preferences.glade:2536
-#: data/ui/remmina_preferences.glade:2577
+#: data/ui/remmina_preferences.glade:2560
+#: data/ui/remmina_preferences.glade:2601
 msgid "Highlight colour"
 msgstr "Cor de realce"
 
-#: data/ui/remmina_preferences.glade:2549
-#: data/ui/remmina_preferences.glade:2593
+#: data/ui/remmina_preferences.glade:2573
+#: data/ui/remmina_preferences.glade:2617
 msgid "Highlight foreground colour"
 msgstr "Cor de primeiro plano de realce"
 
-#: data/ui/remmina_preferences.glade:2562
-#: data/ui/remmina_preferences.glade:2609
+#: data/ui/remmina_preferences.glade:2586
+#: data/ui/remmina_preferences.glade:2633
 msgid "Cursor foreground colour"
 msgstr "Cor de primeiro plano do cursor"
 
-#: data/ui/remmina_preferences.glade:2665
+#: data/ui/remmina_preferences.glade:2689
 msgid "Terminal"
 msgstr "Terminal"
 
-#: data/ui/remmina_preferences.glade:2679
+#: data/ui/remmina_preferences.glade:2703
 msgid "Remmina Preferences"
 msgstr "Preferências do Remmina"
 
@@ -5049,6 +5051,9 @@ msgstr "Desbloqueia o Remmina"
 #: data/ui/remmina_unlock.glade:120
 msgid "Master password"
 msgstr "Senha mestre"
+
+#~ msgid "Options"
+#~ msgstr "Opções"
 
 #, c-format
 #~ msgid ""

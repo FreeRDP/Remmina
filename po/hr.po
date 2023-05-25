@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2023-05-03 11:33+0000\n"
+"POT-Creation-Date: 2023-05-25 11:47+0000\n"
 "PO-Revision-Date: 2023-05-04 13:52+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -19,8 +19,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 4.18-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:25+0000\n"
 
@@ -274,7 +274,7 @@ msgstr "Odustani"
 #: src/remmina_message_panel.c:198 data/ui/remmina_snap_info_dialog.glade:25
 #: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
 #: data/ui/remmina_string_list.glade:63 data/ui/remmina_news.glade:33
-#: data/ui/remmina_preferences.glade:2683
+#: data/ui/remmina_preferences.glade:2707
 msgid "Close"
 msgstr "Zatvori"
 
@@ -337,7 +337,7 @@ msgstr "Sigurno želite zatvoriti ovo posljednje aktivno povezivanje?"
 msgid "Viewport fullscreen mode"
 msgstr "Način cjelozaslonskog prikaza"
 
-#: src/rcw.c:1449 data/ui/remmina_preferences.glade:560
+#: src/rcw.c:1449 data/ui/remmina_preferences.glade:578
 msgid "Scrolled fullscreen"
 msgstr "Pomični cijeli zaslon"
 
@@ -414,8 +414,8 @@ msgstr "Promijeni veličinu prozora prema razlučivosti udaljene površine"
 msgid "Toggle fullscreen mode"
 msgstr "Uklj/Isklj cjelozaslonski način rada"
 
-#: src/rcw.c:2445 data/ui/remmina_preferences.glade:1300
-#: data/ui/remmina_preferences.glade:1310
+#: src/rcw.c:2445 data/ui/remmina_preferences.glade:1324
+#: data/ui/remmina_preferences.glade:1334
 msgid "Multi monitor"
 msgstr "Višestruki monitori"
 
@@ -427,7 +427,7 @@ msgstr "Uklj/Isklj promjenjivu nadopnu razlučivosti"
 msgid "Toggle scaled mode"
 msgstr "Aktiviraj promjenjivi način"
 
-#: src/rcw.c:2511 data/ui/remmina_preferences.glade:1034
+#: src/rcw.c:2511 data/ui/remmina_preferences.glade:1058
 msgid "Switch tab pages"
 msgstr "Zamijeni stranice kartica"
 
@@ -447,16 +447,16 @@ msgstr "_Alati"
 msgid "Tools"
 msgstr "Alati"
 
-#: src/rcw.c:2561 data/ui/remmina_preferences.glade:1235
-#: data/ui/remmina_preferences.glade:1245
+#: src/rcw.c:2561 data/ui/remmina_preferences.glade:1259
+#: data/ui/remmina_preferences.glade:1269
 msgid "Screenshot"
 msgstr "Slika zaslona"
 
-#: src/rcw.c:2575 data/ui/remmina_preferences.glade:1142
+#: src/rcw.c:2575 data/ui/remmina_preferences.glade:1166
 msgid "Minimize window"
 msgstr "Smanji prozor"
 
-#: src/rcw.c:2585 data/ui/remmina_preferences.glade:1173
+#: src/rcw.c:2585 data/ui/remmina_preferences.glade:1197
 msgid "Disconnect"
 msgstr "Prekini povezivanje"
 
@@ -2278,7 +2278,7 @@ msgstr "Visoka boja (15 bpp)"
 msgid "256 colours (8 bpp)"
 msgstr "256 boja (8 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2674 data/ui/remmina_preferences.glade:592
+#: plugins/rdp/rdp_plugin.c:2674 data/ui/remmina_preferences.glade:610
 msgid "None"
 msgstr "Nepoznat"
 
@@ -2311,7 +2311,7 @@ msgid "LAN"
 msgstr "LAN"
 
 #: plugins/rdp/rdp_plugin.c:2688 plugins/spice/spice_plugin.c:637
-#: data/ui/remmina_preferences.glade:628
+#: data/ui/remmina_preferences.glade:646
 msgid "Off"
 msgstr "Isključeno"
 
@@ -4482,77 +4482,79 @@ msgstr "Spriječi spremanje slika zaslona u međuspremnik"
 msgid "Confirm before closing multiple tabs"
 msgstr "Potvrdi prije zatvaranja više kartica"
 
-#: data/ui/remmina_preferences.glade:482
-msgid "Options"
-msgstr "Mogućnosti"
+#: data/ui/remmina_preferences.glade:500
+#, fuzzy
+#| msgid "General settings"
+msgid "General"
+msgstr "Opće postavke"
 
-#: data/ui/remmina_preferences.glade:507
+#: data/ui/remmina_preferences.glade:525
 msgid "Always show tabs"
 msgstr "Uvijek prikaži kartice"
 
-#: data/ui/remmina_preferences.glade:523
+#: data/ui/remmina_preferences.glade:541
 msgid "Hide the toolbar shown in the tabbed interface"
 msgstr "Sakrij alatnu traku u sučelju kartica"
 
-#: data/ui/remmina_preferences.glade:544
+#: data/ui/remmina_preferences.glade:562
 msgid "Default view"
 msgstr "Zadani način prikaza"
 
-#: data/ui/remmina_preferences.glade:558
+#: data/ui/remmina_preferences.glade:576
 msgid "Automatic"
 msgstr "Automatski"
 
-#: data/ui/remmina_preferences.glade:559
+#: data/ui/remmina_preferences.glade:577
 msgid "Scrolled window"
 msgstr "Pomični prozor"
 
-#: data/ui/remmina_preferences.glade:561
+#: data/ui/remmina_preferences.glade:579
 msgid "Viewport fullscreen"
 msgstr "Cjelozaslonski prikaz"
 
 #. How tabs are grouped in the Remmina connection window
-#: data/ui/remmina_preferences.glade:577
+#: data/ui/remmina_preferences.glade:595
 msgctxt "Appearance preferences"
 msgid "Tabs grouping"
 msgstr "Grupiranje kartica"
 
-#: data/ui/remmina_preferences.glade:589
+#: data/ui/remmina_preferences.glade:607
 msgid "By group"
 msgstr "Po grupi"
 
-#: data/ui/remmina_preferences.glade:590
+#: data/ui/remmina_preferences.glade:608
 msgid "By protocol"
 msgstr "Po protokolu"
 
-#: data/ui/remmina_preferences.glade:591
+#: data/ui/remmina_preferences.glade:609
 msgid "Per connection"
 msgstr "Po povezivanju"
 
-#: data/ui/remmina_preferences.glade:603
+#: data/ui/remmina_preferences.glade:621
 msgid "Fullscreen on the same screen as the connection window"
 msgstr "Cjelozaslonski prikaz na istome zaslonu kao i na prozoru povezivanja"
 
-#: data/ui/remmina_preferences.glade:626
+#: data/ui/remmina_preferences.glade:644
 msgid "Peeking"
 msgstr "Virenje"
 
-#: data/ui/remmina_preferences.glade:627
+#: data/ui/remmina_preferences.glade:645
 msgid "Hidden"
 msgstr "Skriveno"
 
-#: data/ui/remmina_preferences.glade:644
+#: data/ui/remmina_preferences.glade:662
 msgid "Fullscreen toolbar visibility"
 msgstr "Vidljivost alatne trake cjelozaslonskog prikaza"
 
-#: data/ui/remmina_preferences.glade:654
+#: data/ui/remmina_preferences.glade:672
 msgid "Hide the search bar shown in the main window"
 msgstr "Sakrij traku pretrage u glavnom prozoru"
 
-#: data/ui/remmina_preferences.glade:670
+#: data/ui/remmina_preferences.glade:688
 msgid "Prefer dark theme"
 msgstr "Koristi tamnu temu"
 
-#: data/ui/remmina_preferences.glade:674
+#: data/ui/remmina_preferences.glade:692
 msgid ""
 "If a GTK theme includes a dark variant, it will be used instead of the "
 "configured theme."
@@ -4560,19 +4562,19 @@ msgstr ""
 "Ako GTK tema uključuje tamnu varijantu, ona će se koristiti umjesto podešene "
 "teme."
 
-#: data/ui/remmina_preferences.glade:687
+#: data/ui/remmina_preferences.glade:705
 msgid "Always show notes"
 msgstr "Uvijek prikaži napomene"
 
-#: data/ui/remmina_preferences.glade:691
+#: data/ui/remmina_preferences.glade:709
 msgid "Add a column displaying any notes associated with a connection."
 msgstr "Dodaj stupac koji prikazuje napomene povezane s povezivanjem."
 
-#: data/ui/remmina_preferences.glade:711
+#: data/ui/remmina_preferences.glade:729
 msgid "“Grab all keyboard events” status colour"
 msgstr "Boja stanja “Uhvati sve događaje tipkovnice”"
 
-#: data/ui/remmina_preferences.glade:722
+#: data/ui/remmina_preferences.glade:740
 msgid ""
 "Hexadecimal- or colour names (red, #ff0000).\n"
 "It changes the background colour of connection names in the Remmina "
@@ -4582,114 +4584,114 @@ msgstr ""
 "Mijenja boju pozadine naziva povezivanja u Remmina alatnoj traci povezivanja "
 "(u cjelozaslonskom prikazu)."
 
-#: data/ui/remmina_preferences.glade:739
+#: data/ui/remmina_preferences.glade:757
 msgid "Enable/Disable “Grab all keyboard events” status colour"
 msgstr "Omogući/Onemogući “Uhvati sve događaje tipkovnice” boju stanja"
 
-#: data/ui/remmina_preferences.glade:795
+#: data/ui/remmina_preferences.glade:819
 msgid "Appearance"
 msgstr "Izgled"
 
-#: data/ui/remmina_preferences.glade:821
+#: data/ui/remmina_preferences.glade:845
 msgid "Show new connection on top of the menu"
 msgstr "Prikaži novo povezivanje na vrhu izbornika"
 
-#: data/ui/remmina_preferences.glade:840
+#: data/ui/remmina_preferences.glade:864
 msgid "Hide total count shown in the group menu"
 msgstr "Sakrij ukupan broj u izborniku grupe"
 
-#: data/ui/remmina_preferences.glade:858
+#: data/ui/remmina_preferences.glade:882
 msgid "No tray icon"
 msgstr "Bez ikone trake sustava"
 
-#: data/ui/remmina_preferences.glade:877
+#: data/ui/remmina_preferences.glade:901
 msgid "Start in tray upon user login"
 msgstr "Pokreni Remminu u ikoni trake sustava pri prijavljivanju korisnika"
 
-#: data/ui/remmina_preferences.glade:908
+#: data/ui/remmina_preferences.glade:932
 msgid "Applet"
 msgstr "Aplet"
 
-#: data/ui/remmina_preferences.glade:940
+#: data/ui/remmina_preferences.glade:964
 msgid "Host key"
 msgstr "Tipka računala"
 
-#: data/ui/remmina_preferences.glade:972
+#: data/ui/remmina_preferences.glade:996
 msgid "Show/hide fullscreen"
 msgstr "Prikaži/Sakrij cijeli zaslon"
 
-#: data/ui/remmina_preferences.glade:1003
+#: data/ui/remmina_preferences.glade:1027
 msgid "Auto-fit window"
 msgstr "Automatski prilagodi na prozor"
 
-#: data/ui/remmina_preferences.glade:1080
+#: data/ui/remmina_preferences.glade:1104
 msgid "Apply/remove scaling"
 msgstr "Primijeni/Ukloni promjenu veličine"
 
-#: data/ui/remmina_preferences.glade:1111
+#: data/ui/remmina_preferences.glade:1135
 msgid "Grab keyboard"
 msgstr "Uhvati tipkovnicu"
 
-#: data/ui/remmina_preferences.glade:1204
+#: data/ui/remmina_preferences.glade:1228
 msgid "Show/hide toolbar"
 msgstr "Prikaži/Sakrij alatnu traku"
 
-#: data/ui/remmina_preferences.glade:1267
-#: data/ui/remmina_preferences.glade:1277
+#: data/ui/remmina_preferences.glade:1291
+#: data/ui/remmina_preferences.glade:1301
 msgid "View-only mode"
 msgstr "Samo-za-gledanje način rada"
 
-#: data/ui/remmina_preferences.glade:1340
+#: data/ui/remmina_preferences.glade:1364
 msgid "Keyboard"
 msgstr "Tipkovnica"
 
-#: data/ui/remmina_preferences.glade:1371
+#: data/ui/remmina_preferences.glade:1395
 msgid "Local SSH port"
 msgstr "Lokalni SSH ulaz"
 
-#: data/ui/remmina_preferences.glade:1395
+#: data/ui/remmina_preferences.glade:1419
 msgid "Parse ~/.ssh/config"
 msgstr "Obradi ~/.ssh/config"
 
-#: data/ui/remmina_preferences.glade:1419
+#: data/ui/remmina_preferences.glade:1443
 msgid "No logging at all"
 msgstr "Bez zapisivanja"
 
-#: data/ui/remmina_preferences.glade:1420
+#: data/ui/remmina_preferences.glade:1444
 msgid "Rare conditions or warnings"
 msgstr "Rijetka stanja upozorenja"
 
-#: data/ui/remmina_preferences.glade:1421
+#: data/ui/remmina_preferences.glade:1445
 msgid "API-accessible entrypoints"
 msgstr "API-pristupne točke unosa"
 
-#: data/ui/remmina_preferences.glade:1422
+#: data/ui/remmina_preferences.glade:1446
 msgid "Lower level protocol info, packet level"
 msgstr "Informacije protokola niže razine, razina paketa"
 
-#: data/ui/remmina_preferences.glade:1423
+#: data/ui/remmina_preferences.glade:1447
 msgid "Function entering and leaving"
 msgstr "Ulaz i izlaz funkcije"
 
-#: data/ui/remmina_preferences.glade:1440
+#: data/ui/remmina_preferences.glade:1464
 msgid "SSH log level"
 msgstr "SSH razina zapisivanja"
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1511
+#: data/ui/remmina_preferences.glade:1535
 msgid "Seconds of connection idleness before TCP keepalive probes are sent."
 msgstr ""
 "Vrijeme (u sekundama) koliko povezivanje mora ostati u mirovanju prije nego "
 "TCP započne sondiranje za održavanje povezivanja."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1527
+#: data/ui/remmina_preferences.glade:1551
 msgid "Seconds between each keepalive probe."
 msgstr ""
 "Vrijeme (u sekundama) između pojedinih sondiranja za održavanje povezivanja."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1543
+#: data/ui/remmina_preferences.glade:1567
 msgid ""
 "Number of keepalive probes sent via TCP connection before it is dropped."
 msgstr ""
@@ -4697,7 +4699,7 @@ msgstr ""
 "prije prekidanja povezivanja."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1559
+#: data/ui/remmina_preferences.glade:1583
 msgid ""
 "Amount of milliseconds to attempt acknowledging data before closing the "
 "corresponding TCP connection forcibly."
@@ -4706,11 +4708,11 @@ msgstr ""
 "ostati neodgovoreni prije nego što TCP prisilno zatvori odgovarajuće "
 "povezivanje."
 
-#: data/ui/remmina_preferences.glade:1585
+#: data/ui/remmina_preferences.glade:1609
 msgid "SSH options"
 msgstr "SSH mogućnosti"
 
-#: data/ui/remmina_preferences.glade:1602
+#: data/ui/remmina_preferences.glade:1626
 msgid ""
 "Time in seconds before Remmina will lock the session and asks for a password "
 "again. Default: 300 Seconds."
@@ -4718,64 +4720,64 @@ msgstr ""
 "Vrijeme u sekundama prije nego što Remmina zaključa sesiju i upita za "
 "lozinku ponovno. Zadano: 300 sekundi."
 
-#: data/ui/remmina_preferences.glade:1614
+#: data/ui/remmina_preferences.glade:1638
 msgid "Set and use a secret key to protect Remmina from unauthorized use."
 msgstr ""
 "Postavite i koristite tajni ključ kako bi zaštitili Remminu od neovlaštena "
 "korištenja."
 
-#: data/ui/remmina_preferences.glade:1619
+#: data/ui/remmina_preferences.glade:1643
 msgid "Remmina password"
 msgstr "Remmina lozinka"
 
-#: data/ui/remmina_preferences.glade:1630
+#: data/ui/remmina_preferences.glade:1654
 msgid "Use secret key authentication for some widgets"
 msgstr "Koristite ovjeru tajnim ključem za određene widgete"
 
-#: data/ui/remmina_preferences.glade:1650
+#: data/ui/remmina_preferences.glade:1674
 msgid "Valid for"
 msgstr "Traje do"
 
-#: data/ui/remmina_preferences.glade:1661
+#: data/ui/remmina_preferences.glade:1685
 msgid "Number of seconds to keep password valid for"
 msgstr "Broj sekundi valjanosti lozinke"
 
-#: data/ui/remmina_preferences.glade:1666
+#: data/ui/remmina_preferences.glade:1690
 msgid "timeout in seconds (default 300)"
 msgstr "vrijeme čekanja u sekundama (zadano 300)"
 
-#: data/ui/remmina_preferences.glade:1678
+#: data/ui/remmina_preferences.glade:1702
 msgid "Enter your Remmina password to connect"
 msgstr "Upišite svoju Remmina lozinku za povezivanje"
 
 #. “Require to connect” is “Require the Remmina password before to connect”, the Remmina password is the Master/Principal Password, that is used to protect Remmina from unauthorized use.
-#: data/ui/remmina_preferences.glade:1682
+#: data/ui/remmina_preferences.glade:1706
 msgid "Require to connect"
 msgstr "Potrebno za povezivanje"
 
-#: data/ui/remmina_preferences.glade:1693
+#: data/ui/remmina_preferences.glade:1717
 msgid "Creation, editing, copying, and deletions require the Remmina password"
 msgstr "Stvaranje, uređivanje, kopiranje i brisanje zahtijeva Remmina lozinku"
 
 #. Creation, editing, copying, and deletions require the primary password
-#: data/ui/remmina_preferences.glade:1697
+#: data/ui/remmina_preferences.glade:1721
 msgid "Require to modify"
 msgstr "Potrebno za promjenu"
 
-#: data/ui/remmina_preferences.glade:1708
+#: data/ui/remmina_preferences.glade:1732
 msgid "Enter your Remmina password to view passwords"
 msgstr "Upišite svoju Remmina lozinku kako bi vidjeli lozinke"
 
 #. “Require to view passwords” is “Require the Remmina password before to connect”, the Remmina password is the Master/Principal Password, that is used to protect Remmina from unauthorized use.
-#: data/ui/remmina_preferences.glade:1712
+#: data/ui/remmina_preferences.glade:1736
 msgid "Require to view passwords"
 msgstr "Potrebno za prikaz lozinka"
 
-#: data/ui/remmina_preferences.glade:1768
+#: data/ui/remmina_preferences.glade:1792
 msgid "Encryption"
 msgstr "Šifriranje"
 
-#: data/ui/remmina_preferences.glade:1779
+#: data/ui/remmina_preferences.glade:1803
 msgid ""
 "These are the encryption methods used by Remmina to store passwords.\n"
 "\n"
@@ -4793,64 +4795,64 @@ msgstr ""
 "\"Srednji\" ne koristi previše memorije i snage procesora, a \"Osjetljiv\" "
 "je više sigurniji ali koristi +1 GiB RAM-a i mnogo CPU ciklusa. "
 
-#: data/ui/remmina_preferences.glade:1788
+#: data/ui/remmina_preferences.glade:1812
 msgid "Intermediate (+64 MiB RAM)"
 msgstr "Srednji (+64 MiB RAM)"
 
-#: data/ui/remmina_preferences.glade:1789
+#: data/ui/remmina_preferences.glade:1813
 msgid "Strong (+256 MiB, ~2009 CPU)"
 msgstr "Snažan (+256 MiB, ~2009 CPU)"
 
-#: data/ui/remmina_preferences.glade:1790
+#: data/ui/remmina_preferences.glade:1814
 msgid "Sensitive (+1 GiB, ~2014 CPU)"
 msgstr "Osjetljiv (+1 GiB, ~2014 CPU)"
 
-#: data/ui/remmina_preferences.glade:1806
+#: data/ui/remmina_preferences.glade:1830
 msgid "Auditing log"
 msgstr "Provjera"
 
-#: data/ui/remmina_preferences.glade:1831
+#: data/ui/remmina_preferences.glade:1855
 msgid "Automatically accept all fingerprints and certificates"
 msgstr "Automatski prihvati sve otiske prsta i vjerodajnice"
 
-#: data/ui/remmina_preferences.glade:1836
+#: data/ui/remmina_preferences.glade:1860
 msgid "Trust all certificates"
 msgstr "Vjeruj svim vjerodajnicama"
 
-#: data/ui/remmina_preferences.glade:1871
+#: data/ui/remmina_preferences.glade:1895
 msgid "Security"
 msgstr "Sigurnost"
 
-#: data/ui/remmina_preferences.glade:1902
+#: data/ui/remmina_preferences.glade:1926
 msgid "Terminal font"
 msgstr "Slova terminala"
 
-#: data/ui/remmina_preferences.glade:1915
+#: data/ui/remmina_preferences.glade:1939
 msgid "Scrollback lines"
 msgstr "Redci pomicanja"
 
-#: data/ui/remmina_preferences.glade:1963
+#: data/ui/remmina_preferences.glade:1987
 msgid "Shortcuts for copying and pasting"
 msgstr "Prečaci za kopiranje i lijepljenje"
 
-#: data/ui/remmina_preferences.glade:1976
+#: data/ui/remmina_preferences.glade:2000
 msgid "Select all shortcuts"
 msgstr "Odaberi sve prečace"
 
-#: data/ui/remmina_preferences.glade:1989
-#: data/ui/remmina_preferences.glade:2006
-#: data/ui/remmina_preferences.glade:2459
-#: data/ui/remmina_preferences.glade:2489
-#: data/ui/remmina_preferences.glade:2623
-#: data/ui/remmina_preferences.glade:2640
+#: data/ui/remmina_preferences.glade:2013
+#: data/ui/remmina_preferences.glade:2030
+#: data/ui/remmina_preferences.glade:2483
+#: data/ui/remmina_preferences.glade:2513
+#: data/ui/remmina_preferences.glade:2647
+#: data/ui/remmina_preferences.glade:2664
 msgid "(Host key+)"
 msgstr "(Host tipka+)"
 
-#: data/ui/remmina_preferences.glade:2024
+#: data/ui/remmina_preferences.glade:2048
 msgid "Use default system font"
 msgstr "Koristi slova zadana sustavom"
 
-#: data/ui/remmina_preferences.glade:2049
+#: data/ui/remmina_preferences.glade:2073
 msgid ""
 "Selecting “SGR 1” also switches to the bright counterparts of the first 8 "
 "palette colours (in addition to making text bold)."
@@ -4858,15 +4860,15 @@ msgstr ""
 "Biranjem “SGR 1” također se prebacuje na svijetle uzorke prvih 8 boja palete "
 "(dodatno podebljavanju teksta)."
 
-#: data/ui/remmina_preferences.glade:2065
+#: data/ui/remmina_preferences.glade:2089
 msgid "Show bold text in bright colors"
 msgstr "Prikaži podebljani tekst pri svijetlim bojama"
 
-#: data/ui/remmina_preferences.glade:2079
+#: data/ui/remmina_preferences.glade:2103
 msgid "Colour theme"
 msgstr "Tema boje"
 
-#: data/ui/remmina_preferences.glade:2090
+#: data/ui/remmina_preferences.glade:2114
 msgid ""
 "Choose a colour scheme file. Usually available in /usr/share/remmina/theme. "
 "https://github.com/mbadolato/iTerm2-Color-Schemes has more details."
@@ -4875,130 +4877,130 @@ msgstr ""
 "remmina/theme. Za više pojedinosti pogledajte https://github.com/mbadolato/"
 "iTerm2-Color-Schemes."
 
-#: data/ui/remmina_preferences.glade:2094
+#: data/ui/remmina_preferences.glade:2118
 msgid "Pick a terminal colouring file"
 msgstr "Odaberi datoteku boje za terminal"
 
-#: data/ui/remmina_preferences.glade:2109
+#: data/ui/remmina_preferences.glade:2133
 msgid "Bright colours"
 msgstr "Svjetle boje"
 
-#: data/ui/remmina_preferences.glade:2123
+#: data/ui/remmina_preferences.glade:2147
 msgid "Pick a light black colour"
 msgstr "Odaberi svijetlo crnu boju"
 
-#: data/ui/remmina_preferences.glade:2137
+#: data/ui/remmina_preferences.glade:2161
 msgid "Pick a light red colour"
 msgstr "Odaberi svijetlo crvenu boju"
 
-#: data/ui/remmina_preferences.glade:2151
+#: data/ui/remmina_preferences.glade:2175
 msgid "Pick a bright green colour"
 msgstr "Odaberi svijetlo zelenu boju"
 
-#: data/ui/remmina_preferences.glade:2165
+#: data/ui/remmina_preferences.glade:2189
 msgid "Pick a bright yellow colour"
 msgstr "Odaberi svijetlo žutu boju"
 
-#: data/ui/remmina_preferences.glade:2179
+#: data/ui/remmina_preferences.glade:2203
 msgid "Pick a bright blue colour"
 msgstr "Odaberi svijetlo plavu boju"
 
-#: data/ui/remmina_preferences.glade:2193
+#: data/ui/remmina_preferences.glade:2217
 msgid "Pick a light magenta colour"
 msgstr "Odaberi svijetlo magenta boju"
 
-#: data/ui/remmina_preferences.glade:2207
+#: data/ui/remmina_preferences.glade:2231
 msgid "Pick a light cyan colour"
 msgstr "Odaberi svijetlo cijan boju"
 
-#: data/ui/remmina_preferences.glade:2221
+#: data/ui/remmina_preferences.glade:2245
 msgid "Pick a light white colour"
 msgstr "Odaberi svijetlo bijelu boju"
 
-#: data/ui/remmina_preferences.glade:2235
+#: data/ui/remmina_preferences.glade:2259
 msgid "Pick a black colour"
 msgstr "Odaberi crnu boju"
 
-#: data/ui/remmina_preferences.glade:2249
+#: data/ui/remmina_preferences.glade:2273
 msgid "Pick a red colour"
 msgstr "Odaberi crvenu boju"
 
-#: data/ui/remmina_preferences.glade:2263
+#: data/ui/remmina_preferences.glade:2287
 msgid "Pick a green colour"
 msgstr "Odaberi zelenu boju"
 
-#: data/ui/remmina_preferences.glade:2277
+#: data/ui/remmina_preferences.glade:2301
 msgid "Pick a yellow colour"
 msgstr "Odaberi žutu boju"
 
-#: data/ui/remmina_preferences.glade:2291
+#: data/ui/remmina_preferences.glade:2315
 msgid "Pick a blue colour"
 msgstr "Odaberi plavu boju"
 
-#: data/ui/remmina_preferences.glade:2305
+#: data/ui/remmina_preferences.glade:2329
 msgid "Pick a magenta colour"
 msgstr "Odaberi magenta boju"
 
-#: data/ui/remmina_preferences.glade:2319
+#: data/ui/remmina_preferences.glade:2343
 msgid "Pick a cyan colour"
 msgstr "Odaberi cijan boju"
 
-#: data/ui/remmina_preferences.glade:2333
+#: data/ui/remmina_preferences.glade:2357
 msgid "Pick a white colour"
 msgstr "Odaberi bijelu boju"
 
-#: data/ui/remmina_preferences.glade:2346
+#: data/ui/remmina_preferences.glade:2370
 msgid "Normal colours"
 msgstr "Normalne boje"
 
-#: data/ui/remmina_preferences.glade:2359
-#: data/ui/remmina_preferences.glade:2374
+#: data/ui/remmina_preferences.glade:2383
+#: data/ui/remmina_preferences.glade:2398
 msgid "Cursor colour"
 msgstr "Boja pokazivača"
 
-#: data/ui/remmina_preferences.glade:2388
-#: data/ui/remmina_preferences.glade:2403
+#: data/ui/remmina_preferences.glade:2412
+#: data/ui/remmina_preferences.glade:2427
 msgid "Background colour"
 msgstr "Boja pozadine"
 
-#: data/ui/remmina_preferences.glade:2419
-#: data/ui/remmina_preferences.glade:2433
+#: data/ui/remmina_preferences.glade:2443
+#: data/ui/remmina_preferences.glade:2457
 msgid "Foreground colour"
 msgstr "Boja prednjeg prikaza"
 
-#: data/ui/remmina_preferences.glade:2446
+#: data/ui/remmina_preferences.glade:2470
 msgid "Increase and decrease font size"
 msgstr "Povećava i smanjuje veličinu slova"
 
-#: data/ui/remmina_preferences.glade:2476
+#: data/ui/remmina_preferences.glade:2500
 msgid "Search text shortcut"
 msgstr "Pretraži prečac teksta"
 
-#: data/ui/remmina_preferences.glade:2507
-#: data/ui/remmina_preferences.glade:2522
+#: data/ui/remmina_preferences.glade:2531
+#: data/ui/remmina_preferences.glade:2546
 msgid "Bold colour"
 msgstr "Podebljana boja"
 
-#: data/ui/remmina_preferences.glade:2536
-#: data/ui/remmina_preferences.glade:2577
+#: data/ui/remmina_preferences.glade:2560
+#: data/ui/remmina_preferences.glade:2601
 msgid "Highlight colour"
 msgstr "Boja isticanja"
 
-#: data/ui/remmina_preferences.glade:2549
-#: data/ui/remmina_preferences.glade:2593
+#: data/ui/remmina_preferences.glade:2573
+#: data/ui/remmina_preferences.glade:2617
 msgid "Highlight foreground colour"
 msgstr "Prednja boja isticanja"
 
-#: data/ui/remmina_preferences.glade:2562
-#: data/ui/remmina_preferences.glade:2609
+#: data/ui/remmina_preferences.glade:2586
+#: data/ui/remmina_preferences.glade:2633
 msgid "Cursor foreground colour"
 msgstr "Prednja boja pokazivača"
 
-#: data/ui/remmina_preferences.glade:2665
+#: data/ui/remmina_preferences.glade:2689
 msgid "Terminal"
 msgstr "Terminal"
 
-#: data/ui/remmina_preferences.glade:2679
+#: data/ui/remmina_preferences.glade:2703
 msgid "Remmina Preferences"
 msgstr "Remmina osobitosti"
 
@@ -5013,6 +5015,9 @@ msgstr "Otključaj Remminu"
 #: data/ui/remmina_unlock.glade:120
 msgid "Master password"
 msgstr "Glavna lozinka"
+
+#~ msgid "Options"
+#~ msgstr "Mogućnosti"
 
 #, c-format
 #~ msgid ""

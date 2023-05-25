@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2023-05-03 11:33+0000\n"
+"POT-Creation-Date: 2023-05-25 11:47+0000\n"
 "PO-Revision-Date: 2023-03-17 08:37+0000\n"
 "Last-Translator: maboroshin <maboroshin@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -278,7 +278,7 @@ msgstr "キャンセル"
 #: src/remmina_message_panel.c:198 data/ui/remmina_snap_info_dialog.glade:25
 #: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
 #: data/ui/remmina_string_list.glade:63 data/ui/remmina_news.glade:33
-#: data/ui/remmina_preferences.glade:2683
+#: data/ui/remmina_preferences.glade:2707
 msgid "Close"
 msgstr "閉じる"
 
@@ -342,7 +342,7 @@ msgstr "この最後のアクティブな接続を閉じますか?"
 msgid "Viewport fullscreen mode"
 msgstr "全画面表示 (ウィンドウモード)"
 
-#: src/rcw.c:1449 data/ui/remmina_preferences.glade:560
+#: src/rcw.c:1449 data/ui/remmina_preferences.glade:578
 msgid "Scrolled fullscreen"
 msgstr "全画面表示 (スクロールモード)"
 
@@ -407,8 +407,8 @@ msgstr "ウィンドウサイズをリモートの解像度に合わせる"
 msgid "Toggle fullscreen mode"
 msgstr "全画面モードのオン/オフ"
 
-#: src/rcw.c:2445 data/ui/remmina_preferences.glade:1300
-#: data/ui/remmina_preferences.glade:1310
+#: src/rcw.c:2445 data/ui/remmina_preferences.glade:1324
+#: data/ui/remmina_preferences.glade:1334
 msgid "Multi monitor"
 msgstr "マルチモニター"
 
@@ -420,7 +420,7 @@ msgstr "動的な解像度の更新のオン/オフ"
 msgid "Toggle scaled mode"
 msgstr "スケールモードのオン/オフ"
 
-#: src/rcw.c:2511 data/ui/remmina_preferences.glade:1034
+#: src/rcw.c:2511 data/ui/remmina_preferences.glade:1058
 msgid "Switch tab pages"
 msgstr "タブページを切り替える"
 
@@ -440,16 +440,16 @@ msgstr "ツール(_T)"
 msgid "Tools"
 msgstr "ツール"
 
-#: src/rcw.c:2561 data/ui/remmina_preferences.glade:1235
-#: data/ui/remmina_preferences.glade:1245
+#: src/rcw.c:2561 data/ui/remmina_preferences.glade:1259
+#: data/ui/remmina_preferences.glade:1269
 msgid "Screenshot"
 msgstr "スクリーンショット"
 
-#: src/rcw.c:2575 data/ui/remmina_preferences.glade:1142
+#: src/rcw.c:2575 data/ui/remmina_preferences.glade:1166
 msgid "Minimize window"
 msgstr "ウィンドウ最小化"
 
-#: src/rcw.c:2585 data/ui/remmina_preferences.glade:1173
+#: src/rcw.c:2585 data/ui/remmina_preferences.glade:1197
 msgid "Disconnect"
 msgstr "切断"
 
@@ -2293,7 +2293,7 @@ msgstr "ハイカラー (15 bpp)"
 msgid "256 colours (8 bpp)"
 msgstr "256 色 (8 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2674 data/ui/remmina_preferences.glade:592
+#: plugins/rdp/rdp_plugin.c:2674 data/ui/remmina_preferences.glade:610
 msgid "None"
 msgstr "なし"
 
@@ -2326,7 +2326,7 @@ msgid "LAN"
 msgstr "LAN"
 
 #: plugins/rdp/rdp_plugin.c:2688 plugins/spice/spice_plugin.c:637
-#: data/ui/remmina_preferences.glade:628
+#: data/ui/remmina_preferences.glade:646
 msgid "Off"
 msgstr "オフ"
 
@@ -4507,98 +4507,100 @@ msgstr "スクリーンショットがクリップボードに入るのを防ぐ
 msgid "Confirm before closing multiple tabs"
 msgstr "複数のタブを閉じる前に確認"
 
-#: data/ui/remmina_preferences.glade:482
-msgid "Options"
-msgstr "オプション"
+#: data/ui/remmina_preferences.glade:500
+#, fuzzy
+#| msgid "General settings"
+msgid "General"
+msgstr "一般設定"
 
-#: data/ui/remmina_preferences.glade:507
+#: data/ui/remmina_preferences.glade:525
 msgid "Always show tabs"
 msgstr "常にタブを表示する"
 
-#: data/ui/remmina_preferences.glade:523
+#: data/ui/remmina_preferences.glade:541
 msgid "Hide the toolbar shown in the tabbed interface"
 msgstr "タブ付きのインターフェースに表示されているツールバーを隠す"
 
-#: data/ui/remmina_preferences.glade:544
+#: data/ui/remmina_preferences.glade:562
 msgid "Default view"
 msgstr "既定の表示"
 
-#: data/ui/remmina_preferences.glade:558
+#: data/ui/remmina_preferences.glade:576
 msgid "Automatic"
 msgstr "自動"
 
-#: data/ui/remmina_preferences.glade:559
+#: data/ui/remmina_preferences.glade:577
 msgid "Scrolled window"
 msgstr "スクロール付きウィンドウ表示"
 
-#: data/ui/remmina_preferences.glade:561
+#: data/ui/remmina_preferences.glade:579
 msgid "Viewport fullscreen"
 msgstr "全画面表示 (ウィンドウモード)"
 
 #. How tabs are grouped in the Remmina connection window
-#: data/ui/remmina_preferences.glade:577
+#: data/ui/remmina_preferences.glade:595
 msgctxt "Appearance preferences"
 msgid "Tabs grouping"
 msgstr "タブのグループ化"
 
-#: data/ui/remmina_preferences.glade:589
+#: data/ui/remmina_preferences.glade:607
 msgid "By group"
 msgstr "グループごと"
 
-#: data/ui/remmina_preferences.glade:590
+#: data/ui/remmina_preferences.glade:608
 msgid "By protocol"
 msgstr "プロトコルごと"
 
-#: data/ui/remmina_preferences.glade:591
+#: data/ui/remmina_preferences.glade:609
 msgid "Per connection"
 msgstr "接続ごと"
 
-#: data/ui/remmina_preferences.glade:603
+#: data/ui/remmina_preferences.glade:621
 msgid "Fullscreen on the same screen as the connection window"
 msgstr "接続ウィンドウを同じスクリーン上に全画面表示する"
 
-#: data/ui/remmina_preferences.glade:626
+#: data/ui/remmina_preferences.glade:644
 msgid "Peeking"
 msgstr "覗き見"
 
-#: data/ui/remmina_preferences.glade:627
+#: data/ui/remmina_preferences.glade:645
 msgid "Hidden"
 msgstr "隠す"
 
-#: data/ui/remmina_preferences.glade:644
+#: data/ui/remmina_preferences.glade:662
 msgid "Fullscreen toolbar visibility"
 msgstr "全画面でのツールバーの表示"
 
-#: data/ui/remmina_preferences.glade:654
+#: data/ui/remmina_preferences.glade:672
 msgid "Hide the search bar shown in the main window"
 msgstr "メインウィンドウに表示されている検索バーを隠す"
 
-#: data/ui/remmina_preferences.glade:670
+#: data/ui/remmina_preferences.glade:688
 msgid "Prefer dark theme"
 msgstr "ダークテーマを優先する"
 
-#: data/ui/remmina_preferences.glade:674
+#: data/ui/remmina_preferences.glade:692
 msgid ""
 "If a GTK theme includes a dark variant, it will be used instead of the "
 "configured theme."
 msgstr ""
 "GTK テーマがダークテーマをサポートしている場合はダークテーマを使用します。"
 
-#: data/ui/remmina_preferences.glade:687
+#: data/ui/remmina_preferences.glade:705
 #, fuzzy
 #| msgid "Always show tabs"
 msgid "Always show notes"
 msgstr "常にタブを表示する"
 
-#: data/ui/remmina_preferences.glade:691
+#: data/ui/remmina_preferences.glade:709
 msgid "Add a column displaying any notes associated with a connection."
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:711
+#: data/ui/remmina_preferences.glade:729
 msgid "“Grab all keyboard events” status colour"
 msgstr "“すべてのキーボードイベントを取得する”状態の色"
 
-#: data/ui/remmina_preferences.glade:722
+#: data/ui/remmina_preferences.glade:740
 msgid ""
 "Hexadecimal- or colour names (red, #ff0000).\n"
 "It changes the background colour of connection names in the Remmina "
@@ -4607,191 +4609,191 @@ msgstr ""
 "色の名前、または 16 進数の数値 (red, #ff0000)\n"
 "全画面表示時の Remmina の接続ツールバーに表示される接続名の背景色です"
 
-#: data/ui/remmina_preferences.glade:739
+#: data/ui/remmina_preferences.glade:757
 #, fuzzy
 #| msgid "“Grab all keyboard events” status colour"
 msgid "Enable/Disable “Grab all keyboard events” status colour"
 msgstr "すべてのキーボードイベントを取得する \"ステータスカラーの有効化/無効化"
 
-#: data/ui/remmina_preferences.glade:795
+#: data/ui/remmina_preferences.glade:819
 msgid "Appearance"
 msgstr "外観"
 
-#: data/ui/remmina_preferences.glade:821
+#: data/ui/remmina_preferences.glade:845
 msgid "Show new connection on top of the menu"
 msgstr "メニューに「新規接続」を表示する"
 
-#: data/ui/remmina_preferences.glade:840
+#: data/ui/remmina_preferences.glade:864
 msgid "Hide total count shown in the group menu"
 msgstr "グループメニューに表示されている合計数を隠す"
 
-#: data/ui/remmina_preferences.glade:858
+#: data/ui/remmina_preferences.glade:882
 msgid "No tray icon"
 msgstr "トレイアイコンを表示しない"
 
-#: data/ui/remmina_preferences.glade:877
+#: data/ui/remmina_preferences.glade:901
 msgid "Start in tray upon user login"
 msgstr "ユーザーのログイン時に起動してトレイに格納する"
 
-#: data/ui/remmina_preferences.glade:908
+#: data/ui/remmina_preferences.glade:932
 msgid "Applet"
 msgstr "アプレット"
 
-#: data/ui/remmina_preferences.glade:940
+#: data/ui/remmina_preferences.glade:964
 msgid "Host key"
 msgstr "ホストキー"
 
-#: data/ui/remmina_preferences.glade:972
+#: data/ui/remmina_preferences.glade:996
 msgid "Show/hide fullscreen"
 msgstr "全画面表示のオン/オフ"
 
-#: data/ui/remmina_preferences.glade:1003
+#: data/ui/remmina_preferences.glade:1027
 msgid "Auto-fit window"
 msgstr "ウィンドウサイズを自動調整する"
 
-#: data/ui/remmina_preferences.glade:1080
+#: data/ui/remmina_preferences.glade:1104
 msgid "Apply/remove scaling"
 msgstr "スケーリングの適用/削除"
 
-#: data/ui/remmina_preferences.glade:1111
+#: data/ui/remmina_preferences.glade:1135
 msgid "Grab keyboard"
 msgstr "キーボードを取得する"
 
-#: data/ui/remmina_preferences.glade:1204
+#: data/ui/remmina_preferences.glade:1228
 msgid "Show/hide toolbar"
 msgstr "ツールバーの表示/非表示"
 
-#: data/ui/remmina_preferences.glade:1267
-#: data/ui/remmina_preferences.glade:1277
+#: data/ui/remmina_preferences.glade:1291
+#: data/ui/remmina_preferences.glade:1301
 msgid "View-only mode"
 msgstr "表示専用モード"
 
-#: data/ui/remmina_preferences.glade:1340
+#: data/ui/remmina_preferences.glade:1364
 msgid "Keyboard"
 msgstr "キーボード"
 
-#: data/ui/remmina_preferences.glade:1371
+#: data/ui/remmina_preferences.glade:1395
 msgid "Local SSH port"
 msgstr "ローカルの SSH ポート"
 
-#: data/ui/remmina_preferences.glade:1395
+#: data/ui/remmina_preferences.glade:1419
 msgid "Parse ~/.ssh/config"
 msgstr "~/.ssh/config を解析する"
 
-#: data/ui/remmina_preferences.glade:1419
+#: data/ui/remmina_preferences.glade:1443
 msgid "No logging at all"
 msgstr "ログを全く記録しない"
 
-#: data/ui/remmina_preferences.glade:1420
+#: data/ui/remmina_preferences.glade:1444
 msgid "Rare conditions or warnings"
 msgstr "まれな状態または警告"
 
-#: data/ui/remmina_preferences.glade:1421
+#: data/ui/remmina_preferences.glade:1445
 msgid "API-accessible entrypoints"
 msgstr "APIでアクセス可能なエントリポイント"
 
-#: data/ui/remmina_preferences.glade:1422
+#: data/ui/remmina_preferences.glade:1446
 msgid "Lower level protocol info, packet level"
 msgstr "下位レベルのプロトコル情報、パケットレベル"
 
-#: data/ui/remmina_preferences.glade:1423
+#: data/ui/remmina_preferences.glade:1447
 msgid "Function entering and leaving"
 msgstr "関数への出入り"
 
-#: data/ui/remmina_preferences.glade:1440
+#: data/ui/remmina_preferences.glade:1464
 msgid "SSH log level"
 msgstr "SSH のログレベル"
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1511
+#: data/ui/remmina_preferences.glade:1535
 msgid "Seconds of connection idleness before TCP keepalive probes are sent."
 msgstr "TCPキープアライブプローブが送信される前の接続アイドル状態の秒数。"
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1527
+#: data/ui/remmina_preferences.glade:1551
 msgid "Seconds between each keepalive probe."
 msgstr "各キープアライブプローブ間の秒数。"
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1543
+#: data/ui/remmina_preferences.glade:1567
 msgid ""
 "Number of keepalive probes sent via TCP connection before it is dropped."
 msgstr ""
 "ドロップされる前にTCP接続を介して送信されたキープアライブプローブの数。"
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1559
+#: data/ui/remmina_preferences.glade:1583
 msgid ""
 "Amount of milliseconds to attempt acknowledging data before closing the "
 "corresponding TCP connection forcibly."
 msgstr "対応するTCP接続を強制的に閉じる前にデータの確認を試行するミリ秒数。"
 
-#: data/ui/remmina_preferences.glade:1585
+#: data/ui/remmina_preferences.glade:1609
 msgid "SSH options"
 msgstr "SSH オプション"
 
-#: data/ui/remmina_preferences.glade:1602
+#: data/ui/remmina_preferences.glade:1626
 msgid ""
 "Time in seconds before Remmina will lock the session and asks for a password "
 "again. Default: 300 Seconds."
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1614
+#: data/ui/remmina_preferences.glade:1638
 msgid "Set and use a secret key to protect Remmina from unauthorized use."
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1619
+#: data/ui/remmina_preferences.glade:1643
 msgid "Remmina password"
 msgstr "Remmina パスワード"
 
-#: data/ui/remmina_preferences.glade:1630
+#: data/ui/remmina_preferences.glade:1654
 msgid "Use secret key authentication for some widgets"
 msgstr "一部のウィジェットのために秘密鍵認証を使用する"
 
-#: data/ui/remmina_preferences.glade:1650
+#: data/ui/remmina_preferences.glade:1674
 msgid "Valid for"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1661
+#: data/ui/remmina_preferences.glade:1685
 msgid "Number of seconds to keep password valid for"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1666
+#: data/ui/remmina_preferences.glade:1690
 msgid "timeout in seconds (default 300)"
 msgstr "タイムアウトする秒数 (標準は300)"
 
-#: data/ui/remmina_preferences.glade:1678
+#: data/ui/remmina_preferences.glade:1702
 msgid "Enter your Remmina password to connect"
 msgstr "接続用のRemmina のパスワードを保存"
 
 #. “Require to connect” is “Require the Remmina password before to connect”, the Remmina password is the Master/Principal Password, that is used to protect Remmina from unauthorized use.
-#: data/ui/remmina_preferences.glade:1682
+#: data/ui/remmina_preferences.glade:1706
 msgid "Require to connect"
 msgstr "接続に必要"
 
-#: data/ui/remmina_preferences.glade:1693
+#: data/ui/remmina_preferences.glade:1717
 msgid "Creation, editing, copying, and deletions require the Remmina password"
 msgstr "作成、編集、複製、削除には Remmina のパスワードが必要です"
 
 #. Creation, editing, copying, and deletions require the primary password
-#: data/ui/remmina_preferences.glade:1697
+#: data/ui/remmina_preferences.glade:1721
 msgid "Require to modify"
 msgstr "修正に必要"
 
-#: data/ui/remmina_preferences.glade:1708
+#: data/ui/remmina_preferences.glade:1732
 msgid "Enter your Remmina password to view passwords"
 msgstr "パスワードを表示するには Remmina のパスワードを入力"
 
 #. “Require to view passwords” is “Require the Remmina password before to connect”, the Remmina password is the Master/Principal Password, that is used to protect Remmina from unauthorized use.
-#: data/ui/remmina_preferences.glade:1712
+#: data/ui/remmina_preferences.glade:1736
 msgid "Require to view passwords"
 msgstr "パスワードの表示に必要"
 
-#: data/ui/remmina_preferences.glade:1768
+#: data/ui/remmina_preferences.glade:1792
 msgid "Encryption"
 msgstr "暗号化"
 
-#: data/ui/remmina_preferences.glade:1779
+#: data/ui/remmina_preferences.glade:1803
 msgid ""
 "These are the encryption methods used by Remmina to store passwords.\n"
 "\n"
@@ -4802,64 +4804,64 @@ msgid ""
 "\"Sensitive\" is more secure, but uses +1 GiB of RAM and many CPU cycles. "
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1788
+#: data/ui/remmina_preferences.glade:1812
 msgid "Intermediate (+64 MiB RAM)"
 msgstr "中程度 (+64 MiB RAM)"
 
-#: data/ui/remmina_preferences.glade:1789
+#: data/ui/remmina_preferences.glade:1813
 msgid "Strong (+256 MiB, ~2009 CPU)"
 msgstr "ハイパワー (+256 MiB, 2009年までのCPU)"
 
-#: data/ui/remmina_preferences.glade:1790
+#: data/ui/remmina_preferences.glade:1814
 msgid "Sensitive (+1 GiB, ~2014 CPU)"
 msgstr "高感度 (+1 GiB, 2014年までのCPU)"
 
-#: data/ui/remmina_preferences.glade:1806
+#: data/ui/remmina_preferences.glade:1830
 msgid "Auditing log"
 msgstr "監査ログ"
 
-#: data/ui/remmina_preferences.glade:1831
+#: data/ui/remmina_preferences.glade:1855
 msgid "Automatically accept all fingerprints and certificates"
 msgstr "すべてのフィンガープリントと証明書を自動的に受け入れる"
 
-#: data/ui/remmina_preferences.glade:1836
+#: data/ui/remmina_preferences.glade:1860
 msgid "Trust all certificates"
 msgstr "すべての証明書を信頼する"
 
-#: data/ui/remmina_preferences.glade:1871
+#: data/ui/remmina_preferences.glade:1895
 msgid "Security"
 msgstr "セキュリティ"
 
-#: data/ui/remmina_preferences.glade:1902
+#: data/ui/remmina_preferences.glade:1926
 msgid "Terminal font"
 msgstr "端末のフォント"
 
-#: data/ui/remmina_preferences.glade:1915
+#: data/ui/remmina_preferences.glade:1939
 msgid "Scrollback lines"
 msgstr "スクロールして戻れる行数"
 
-#: data/ui/remmina_preferences.glade:1963
+#: data/ui/remmina_preferences.glade:1987
 msgid "Shortcuts for copying and pasting"
 msgstr "コピー＆ペーストのショートカット"
 
-#: data/ui/remmina_preferences.glade:1976
+#: data/ui/remmina_preferences.glade:2000
 msgid "Select all shortcuts"
 msgstr "すべてのショートカットを選択する"
 
-#: data/ui/remmina_preferences.glade:1989
-#: data/ui/remmina_preferences.glade:2006
-#: data/ui/remmina_preferences.glade:2459
-#: data/ui/remmina_preferences.glade:2489
-#: data/ui/remmina_preferences.glade:2623
-#: data/ui/remmina_preferences.glade:2640
+#: data/ui/remmina_preferences.glade:2013
+#: data/ui/remmina_preferences.glade:2030
+#: data/ui/remmina_preferences.glade:2483
+#: data/ui/remmina_preferences.glade:2513
+#: data/ui/remmina_preferences.glade:2647
+#: data/ui/remmina_preferences.glade:2664
 msgid "(Host key+)"
 msgstr "(ホストキー+)"
 
-#: data/ui/remmina_preferences.glade:2024
+#: data/ui/remmina_preferences.glade:2048
 msgid "Use default system font"
 msgstr "既定のシステムフォントを使用する"
 
-#: data/ui/remmina_preferences.glade:2049
+#: data/ui/remmina_preferences.glade:2073
 msgid ""
 "Selecting “SGR 1” also switches to the bright counterparts of the first 8 "
 "palette colours (in addition to making text bold)."
@@ -4867,15 +4869,15 @@ msgstr ""
 "“SGR 1” を選択してもテキストが太くなり、パレットの最初の 8 つの色がそれぞれ、"
 "より明るいものに切り替わります。"
 
-#: data/ui/remmina_preferences.glade:2065
+#: data/ui/remmina_preferences.glade:2089
 msgid "Show bold text in bright colors"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:2079
+#: data/ui/remmina_preferences.glade:2103
 msgid "Colour theme"
 msgstr "カラーテーマ"
 
-#: data/ui/remmina_preferences.glade:2090
+#: data/ui/remmina_preferences.glade:2114
 msgid ""
 "Choose a colour scheme file. Usually available in /usr/share/remmina/theme. "
 "https://github.com/mbadolato/iTerm2-Color-Schemes has more details."
@@ -4884,132 +4886,132 @@ msgstr ""
 "theme にあります。https://github.com/mbadolato/iTerm2-Color-Schemes には、よ"
 "り多くのカラースキームがあります。"
 
-#: data/ui/remmina_preferences.glade:2094
+#: data/ui/remmina_preferences.glade:2118
 msgid "Pick a terminal colouring file"
 msgstr "端末の色ファイルを選択"
 
-#: data/ui/remmina_preferences.glade:2109
+#: data/ui/remmina_preferences.glade:2133
 msgid "Bright colours"
 msgstr "明るい色"
 
-#: data/ui/remmina_preferences.glade:2123
+#: data/ui/remmina_preferences.glade:2147
 msgid "Pick a light black colour"
 msgstr "明るい黒を選択"
 
-#: data/ui/remmina_preferences.glade:2137
+#: data/ui/remmina_preferences.glade:2161
 msgid "Pick a light red colour"
 msgstr "明るい赤を選択"
 
-#: data/ui/remmina_preferences.glade:2151
+#: data/ui/remmina_preferences.glade:2175
 msgid "Pick a bright green colour"
 msgstr "明るい緑を選択"
 
-#: data/ui/remmina_preferences.glade:2165
+#: data/ui/remmina_preferences.glade:2189
 msgid "Pick a bright yellow colour"
 msgstr "明るい黄色を選択"
 
-#: data/ui/remmina_preferences.glade:2179
+#: data/ui/remmina_preferences.glade:2203
 msgid "Pick a bright blue colour"
 msgstr "明るい青を選択"
 
-#: data/ui/remmina_preferences.glade:2193
+#: data/ui/remmina_preferences.glade:2217
 msgid "Pick a light magenta colour"
 msgstr "明るいマゼンタを選択"
 
-#: data/ui/remmina_preferences.glade:2207
+#: data/ui/remmina_preferences.glade:2231
 msgid "Pick a light cyan colour"
 msgstr "明るいシアンを選択"
 
-#: data/ui/remmina_preferences.glade:2221
+#: data/ui/remmina_preferences.glade:2245
 msgid "Pick a light white colour"
 msgstr "明るい白を選択"
 
-#: data/ui/remmina_preferences.glade:2235
+#: data/ui/remmina_preferences.glade:2259
 msgid "Pick a black colour"
 msgstr "黒い色を選択"
 
-#: data/ui/remmina_preferences.glade:2249
+#: data/ui/remmina_preferences.glade:2273
 msgid "Pick a red colour"
 msgstr "赤い色を選択"
 
-#: data/ui/remmina_preferences.glade:2263
+#: data/ui/remmina_preferences.glade:2287
 msgid "Pick a green colour"
 msgstr "緑色を選択"
 
-#: data/ui/remmina_preferences.glade:2277
+#: data/ui/remmina_preferences.glade:2301
 msgid "Pick a yellow colour"
 msgstr "黄色を選択"
 
-#: data/ui/remmina_preferences.glade:2291
+#: data/ui/remmina_preferences.glade:2315
 msgid "Pick a blue colour"
 msgstr "青い色を選択"
 
-#: data/ui/remmina_preferences.glade:2305
+#: data/ui/remmina_preferences.glade:2329
 msgid "Pick a magenta colour"
 msgstr "マゼンタを選択"
 
-#: data/ui/remmina_preferences.glade:2319
+#: data/ui/remmina_preferences.glade:2343
 msgid "Pick a cyan colour"
 msgstr "シアンを選択"
 
-#: data/ui/remmina_preferences.glade:2333
+#: data/ui/remmina_preferences.glade:2357
 msgid "Pick a white colour"
 msgstr "白い色を選択"
 
-#: data/ui/remmina_preferences.glade:2346
+#: data/ui/remmina_preferences.glade:2370
 msgid "Normal colours"
 msgstr "通常の色"
 
-#: data/ui/remmina_preferences.glade:2359
-#: data/ui/remmina_preferences.glade:2374
+#: data/ui/remmina_preferences.glade:2383
+#: data/ui/remmina_preferences.glade:2398
 msgid "Cursor colour"
 msgstr "カーソルの色"
 
-#: data/ui/remmina_preferences.glade:2388
-#: data/ui/remmina_preferences.glade:2403
+#: data/ui/remmina_preferences.glade:2412
+#: data/ui/remmina_preferences.glade:2427
 msgid "Background colour"
 msgstr "背景色"
 
-#: data/ui/remmina_preferences.glade:2419
-#: data/ui/remmina_preferences.glade:2433
+#: data/ui/remmina_preferences.glade:2443
+#: data/ui/remmina_preferences.glade:2457
 msgid "Foreground colour"
 msgstr "前景色"
 
-#: data/ui/remmina_preferences.glade:2446
+#: data/ui/remmina_preferences.glade:2470
 msgid "Increase and decrease font size"
 msgstr "文字サイズの拡大・縮小"
 
-#: data/ui/remmina_preferences.glade:2476
+#: data/ui/remmina_preferences.glade:2500
 #, fuzzy
 #| msgid "Search text"
 msgid "Search text shortcut"
 msgstr "検索テキストのショートカット"
 
-#: data/ui/remmina_preferences.glade:2507
-#: data/ui/remmina_preferences.glade:2522
+#: data/ui/remmina_preferences.glade:2531
+#: data/ui/remmina_preferences.glade:2546
 msgid "Bold colour"
 msgstr "太字の色"
 
-#: data/ui/remmina_preferences.glade:2536
-#: data/ui/remmina_preferences.glade:2577
+#: data/ui/remmina_preferences.glade:2560
+#: data/ui/remmina_preferences.glade:2601
 msgid "Highlight colour"
 msgstr "ハイライト色"
 
-#: data/ui/remmina_preferences.glade:2549
-#: data/ui/remmina_preferences.glade:2593
+#: data/ui/remmina_preferences.glade:2573
+#: data/ui/remmina_preferences.glade:2617
 msgid "Highlight foreground colour"
 msgstr "前景のハイライト色"
 
-#: data/ui/remmina_preferences.glade:2562
-#: data/ui/remmina_preferences.glade:2609
+#: data/ui/remmina_preferences.glade:2586
+#: data/ui/remmina_preferences.glade:2633
 msgid "Cursor foreground colour"
 msgstr "カーソルの前景色"
 
-#: data/ui/remmina_preferences.glade:2665
+#: data/ui/remmina_preferences.glade:2689
 msgid "Terminal"
 msgstr "端末"
 
-#: data/ui/remmina_preferences.glade:2679
+#: data/ui/remmina_preferences.glade:2703
 msgid "Remmina Preferences"
 msgstr "Remmina の設定"
 
@@ -5024,6 +5026,9 @@ msgstr "Remmina のロックを解除"
 #: data/ui/remmina_unlock.glade:120
 msgid "Master password"
 msgstr "マスターパスワード"
+
+#~ msgid "Options"
+#~ msgstr "オプション"
 
 #, fuzzy, c-format
 #~ msgid ""

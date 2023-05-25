@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2023-05-03 11:33+0000\n"
+"POT-Creation-Date: 2023-05-25 11:47+0000\n"
 "PO-Revision-Date: 2023-05-01 12:49+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
@@ -310,7 +310,7 @@ msgstr "取消"
 #: src/remmina_message_panel.c:198 data/ui/remmina_snap_info_dialog.glade:25
 #: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
 #: data/ui/remmina_string_list.glade:63 data/ui/remmina_news.glade:33
-#: data/ui/remmina_preferences.glade:2683
+#: data/ui/remmina_preferences.glade:2707
 #, fuzzy
 msgid "Close"
 msgstr "關閉"
@@ -386,7 +386,7 @@ msgstr "目前視窗已開啟 %i 個作用中的連線。確定要關閉嗎？"
 msgid "Viewport fullscreen mode"
 msgstr "視埠全螢幕模式"
 
-#: src/rcw.c:1449 data/ui/remmina_preferences.glade:560
+#: src/rcw.c:1449 data/ui/remmina_preferences.glade:578
 #, fuzzy
 msgid "Scrolled fullscreen"
 msgstr "捲動全螢幕"
@@ -463,8 +463,8 @@ msgstr "調整視窗大小以適應遠端解析度"
 msgid "Toggle fullscreen mode"
 msgstr "切換全螢幕模式"
 
-#: src/rcw.c:2445 data/ui/remmina_preferences.glade:1300
-#: data/ui/remmina_preferences.glade:1310
+#: src/rcw.c:2445 data/ui/remmina_preferences.glade:1324
+#: data/ui/remmina_preferences.glade:1334
 #, fuzzy
 msgid "Multi monitor"
 msgstr "多显示器"
@@ -479,7 +479,7 @@ msgstr "切換動態解析度更新"
 msgid "Toggle scaled mode"
 msgstr "啟用縮放的模式"
 
-#: src/rcw.c:2511 data/ui/remmina_preferences.glade:1034
+#: src/rcw.c:2511 data/ui/remmina_preferences.glade:1058
 #, fuzzy
 msgid "Switch tab pages"
 msgstr "切換分頁"
@@ -504,18 +504,18 @@ msgstr "工具(_T)"
 msgid "Tools"
 msgstr "工具"
 
-#: src/rcw.c:2561 data/ui/remmina_preferences.glade:1235
-#: data/ui/remmina_preferences.glade:1245
+#: src/rcw.c:2561 data/ui/remmina_preferences.glade:1259
+#: data/ui/remmina_preferences.glade:1269
 #, fuzzy
 msgid "Screenshot"
 msgstr "螢幕截圖"
 
-#: src/rcw.c:2575 data/ui/remmina_preferences.glade:1142
+#: src/rcw.c:2575 data/ui/remmina_preferences.glade:1166
 #, fuzzy
 msgid "Minimize window"
 msgstr "最小化視窗"
 
-#: src/rcw.c:2585 data/ui/remmina_preferences.glade:1173
+#: src/rcw.c:2585 data/ui/remmina_preferences.glade:1197
 #, fuzzy
 msgid "Disconnect"
 msgstr "中斷連線"
@@ -2544,7 +2544,7 @@ msgstr "高彩 (15 bpp)"
 msgid "256 colours (8 bpp)"
 msgstr "256 色 (8 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2674 data/ui/remmina_preferences.glade:592
+#: plugins/rdp/rdp_plugin.c:2674 data/ui/remmina_preferences.glade:610
 #, fuzzy
 msgid "None"
 msgstr "無"
@@ -2584,7 +2584,7 @@ msgid "LAN"
 msgstr "區域網路"
 
 #: plugins/rdp/rdp_plugin.c:2688 plugins/spice/spice_plugin.c:637
-#: data/ui/remmina_preferences.glade:628
+#: data/ui/remmina_preferences.glade:646
 #, fuzzy
 msgid "Off"
 msgstr "關閉"
@@ -5070,112 +5070,113 @@ msgstr "拒絕將螢幕截圖存入剪貼簿"
 msgid "Confirm before closing multiple tabs"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:482
+#: data/ui/remmina_preferences.glade:500
 #, fuzzy
-msgid "Options"
-msgstr "選項"
+#| msgid "Quality settings"
+msgid "General"
+msgstr "一般設定"
 
-#: data/ui/remmina_preferences.glade:507
+#: data/ui/remmina_preferences.glade:525
 #, fuzzy
 msgid "Always show tabs"
 msgstr "永遠顯示分頁"
 
-#: data/ui/remmina_preferences.glade:523
+#: data/ui/remmina_preferences.glade:541
 #, fuzzy
 msgid "Hide the toolbar shown in the tabbed interface"
 msgstr "在分頁界面隱藏工具列"
 
-#: data/ui/remmina_preferences.glade:544
+#: data/ui/remmina_preferences.glade:562
 msgid "Default view"
 msgstr "預設顯示模式"
 
-#: data/ui/remmina_preferences.glade:558
+#: data/ui/remmina_preferences.glade:576
 #, fuzzy
 msgid "Automatic"
 msgstr "自動"
 
-#: data/ui/remmina_preferences.glade:559
+#: data/ui/remmina_preferences.glade:577
 #, fuzzy
 msgid "Scrolled window"
 msgstr "捲動視窗"
 
-#: data/ui/remmina_preferences.glade:561
+#: data/ui/remmina_preferences.glade:579
 #, fuzzy
 msgid "Viewport fullscreen"
 msgstr "Viewport 全螢幕"
 
 #. How tabs are grouped in the Remmina connection window
-#: data/ui/remmina_preferences.glade:577
+#: data/ui/remmina_preferences.glade:595
 #, fuzzy
 msgctxt "Appearance preferences"
 msgid "Tabs grouping"
 msgstr "标签分组"
 
-#: data/ui/remmina_preferences.glade:589
+#: data/ui/remmina_preferences.glade:607
 msgid "By group"
 msgstr "以群組分頁"
 
-#: data/ui/remmina_preferences.glade:590
+#: data/ui/remmina_preferences.glade:608
 msgid "By protocol"
 msgstr "以協定分頁"
 
-#: data/ui/remmina_preferences.glade:591
+#: data/ui/remmina_preferences.glade:609
 msgid "Per connection"
 msgstr "開啟連線"
 
-#: data/ui/remmina_preferences.glade:603
+#: data/ui/remmina_preferences.glade:621
 #, fuzzy
 msgid "Fullscreen on the same screen as the connection window"
 msgstr "全螢幕顯示，並與連線視窗位於同一個螢幕"
 
-#: data/ui/remmina_preferences.glade:626
+#: data/ui/remmina_preferences.glade:644
 #, fuzzy
 msgid "Peeking"
 msgstr "窺視"
 
-#: data/ui/remmina_preferences.glade:627
+#: data/ui/remmina_preferences.glade:645
 #, fuzzy
 msgid "Hidden"
 msgstr "隱藏"
 
-#: data/ui/remmina_preferences.glade:644
+#: data/ui/remmina_preferences.glade:662
 #, fuzzy
 msgid "Fullscreen toolbar visibility"
 msgstr "全螢幕工具列可見度"
 
-#: data/ui/remmina_preferences.glade:654
+#: data/ui/remmina_preferences.glade:672
 #, fuzzy
 msgid "Hide the search bar shown in the main window"
 msgstr "在主視窗隱藏搜尋列"
 
-#: data/ui/remmina_preferences.glade:670
+#: data/ui/remmina_preferences.glade:688
 #, fuzzy
 msgid "Prefer dark theme"
 msgstr "倾向于深色主题"
 
-#: data/ui/remmina_preferences.glade:674
+#: data/ui/remmina_preferences.glade:692
 #, fuzzy
 msgid ""
 "If a GTK theme includes a dark variant, it will be used instead of the "
 "configured theme."
 msgstr "如果一个GTK主题包括一个黑暗的变体，它将被用来代替配置的主题。"
 
-#: data/ui/remmina_preferences.glade:687
+#: data/ui/remmina_preferences.glade:705
 #, fuzzy
 msgid "Always show notes"
 msgstr "永遠顯示分頁"
 
-#: data/ui/remmina_preferences.glade:691
+#: data/ui/remmina_preferences.glade:709
 msgid "Add a column displaying any notes associated with a connection."
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:711
+#: data/ui/remmina_preferences.glade:729
 #, fuzzy
 #| msgid "Grab all keyboard events"
 msgid "“Grab all keyboard events” status colour"
 msgstr "\"抓取所有键盘事件\" 状态颜色"
 
-#: data/ui/remmina_preferences.glade:722
+#: data/ui/remmina_preferences.glade:740
 #, fuzzy
 msgid ""
 "Hexadecimal- or colour names (red, #ff0000).\n"
@@ -5185,141 +5186,141 @@ msgstr ""
 "十六进制-或颜色名称（红色，#ff0000）。\n"
 "它可以改变Remmina连接工具栏中的连接名称的背景颜色（当在全屏时）。"
 
-#: data/ui/remmina_preferences.glade:739
+#: data/ui/remmina_preferences.glade:757
 #, fuzzy
 #| msgid "Grab all keyboard events"
 msgid "Enable/Disable “Grab all keyboard events” status colour"
 msgstr "启用/禁用 \"抓取所有键盘事件 \"状态颜色"
 
-#: data/ui/remmina_preferences.glade:795
+#: data/ui/remmina_preferences.glade:819
 #, fuzzy
 msgid "Appearance"
 msgstr "外觀"
 
-#: data/ui/remmina_preferences.glade:821
+#: data/ui/remmina_preferences.glade:845
 #, fuzzy
 msgid "Show new connection on top of the menu"
 msgstr "在選單上方顯示新的連線"
 
-#: data/ui/remmina_preferences.glade:840
+#: data/ui/remmina_preferences.glade:864
 #, fuzzy
 msgid "Hide total count shown in the group menu"
 msgstr "在群組選單隱藏總數"
 
-#: data/ui/remmina_preferences.glade:858
+#: data/ui/remmina_preferences.glade:882
 #, fuzzy
 msgid "No tray icon"
 msgstr "停用工作列圖示"
 
-#: data/ui/remmina_preferences.glade:877
+#: data/ui/remmina_preferences.glade:901
 #, fuzzy
 msgid "Start in tray upon user login"
 msgstr "在使用者登錄後，啟動 Remmina 並放在提示匣"
 
-#: data/ui/remmina_preferences.glade:908
+#: data/ui/remmina_preferences.glade:932
 #, fuzzy
 msgid "Applet"
 msgstr "小工具"
 
-#: data/ui/remmina_preferences.glade:940
+#: data/ui/remmina_preferences.glade:964
 #, fuzzy
 msgid "Host key"
 msgstr "Host 鍵"
 
-#: data/ui/remmina_preferences.glade:972
+#: data/ui/remmina_preferences.glade:996
 #, fuzzy
 msgid "Show/hide fullscreen"
 msgstr "顯示或隱藏全螢幕"
 
-#: data/ui/remmina_preferences.glade:1003
+#: data/ui/remmina_preferences.glade:1027
 #, fuzzy
 msgid "Auto-fit window"
 msgstr "自動調整視窗"
 
-#: data/ui/remmina_preferences.glade:1080
+#: data/ui/remmina_preferences.glade:1104
 #, fuzzy
 msgid "Apply/remove scaling"
 msgstr "套用或移除縮放"
 
-#: data/ui/remmina_preferences.glade:1111
+#: data/ui/remmina_preferences.glade:1135
 #, fuzzy
 msgid "Grab keyboard"
 msgstr "鍵盤抓取"
 
-#: data/ui/remmina_preferences.glade:1204
+#: data/ui/remmina_preferences.glade:1228
 #, fuzzy
 msgid "Show/hide toolbar"
 msgstr "顯示或隱藏工具列"
 
-#: data/ui/remmina_preferences.glade:1267
-#: data/ui/remmina_preferences.glade:1277
+#: data/ui/remmina_preferences.glade:1291
+#: data/ui/remmina_preferences.glade:1301
 #, fuzzy
 msgid "View-only mode"
 msgstr "僅觀看模式"
 
-#: data/ui/remmina_preferences.glade:1340
+#: data/ui/remmina_preferences.glade:1364
 #, fuzzy
 msgid "Keyboard"
 msgstr "鍵盤"
 
-#: data/ui/remmina_preferences.glade:1371
+#: data/ui/remmina_preferences.glade:1395
 #, fuzzy
 msgid "Local SSH port"
 msgstr "本機 SSH 連接埠"
 
-#: data/ui/remmina_preferences.glade:1395
+#: data/ui/remmina_preferences.glade:1419
 #, fuzzy
 msgid "Parse ~/.ssh/config"
 msgstr "解析 ~/.ssh/config"
 
-#: data/ui/remmina_preferences.glade:1419
+#: data/ui/remmina_preferences.glade:1443
 #, fuzzy
 msgid "No logging at all"
 msgstr "完全没有记录"
 
-#: data/ui/remmina_preferences.glade:1420
+#: data/ui/remmina_preferences.glade:1444
 #, fuzzy
 msgid "Rare conditions or warnings"
 msgstr "罕见的情况或警告"
 
-#: data/ui/remmina_preferences.glade:1421
+#: data/ui/remmina_preferences.glade:1445
 #, fuzzy
 msgid "API-accessible entrypoints"
 msgstr "API可访问的入口"
 
-#: data/ui/remmina_preferences.glade:1422
+#: data/ui/remmina_preferences.glade:1446
 #, fuzzy
 msgid "Lower level protocol info, packet level"
 msgstr "低级别的协议信息，数据包级别"
 
-#: data/ui/remmina_preferences.glade:1423
+#: data/ui/remmina_preferences.glade:1447
 #, fuzzy
 msgid "Function entering and leaving"
 msgstr "进入和离开的功能"
 
-#: data/ui/remmina_preferences.glade:1440
+#: data/ui/remmina_preferences.glade:1464
 #, fuzzy
 msgid "SSH log level"
 msgstr "SSH 紀錄等級"
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1511
+#: data/ui/remmina_preferences.glade:1535
 msgid "Seconds of connection idleness before TCP keepalive probes are sent."
 msgstr "在 TCP 開始發送 keepalive probes 之前，連線需要處於閒置的時間（秒）。"
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1527
+#: data/ui/remmina_preferences.glade:1551
 msgid "Seconds between each keepalive probe."
 msgstr "各個 keepalive probes 之間的間隔時間（秒）。"
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1543
+#: data/ui/remmina_preferences.glade:1567
 msgid ""
 "Number of keepalive probes sent via TCP connection before it is dropped."
 msgstr "丟棄連線之前 TCP 應發送的 keepalive probes 數量。"
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1559
+#: data/ui/remmina_preferences.glade:1583
 msgid ""
 "Amount of milliseconds to attempt acknowledging data before closing the "
 "corresponding TCP connection forcibly."
@@ -5327,85 +5328,85 @@ msgstr ""
 "它指定在 TCP 強制關閉相應連線之前，傳輸數據可能保持未確認狀態的最長時間（毫"
 "秒）。"
 
-#: data/ui/remmina_preferences.glade:1585
+#: data/ui/remmina_preferences.glade:1609
 #, fuzzy
 msgid "SSH options"
 msgstr "SSH 選項"
 
-#: data/ui/remmina_preferences.glade:1602
+#: data/ui/remmina_preferences.glade:1626
 msgid ""
 "Time in seconds before Remmina will lock the session and asks for a password "
 "again. Default: 300 Seconds."
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1614
+#: data/ui/remmina_preferences.glade:1638
 msgid "Set and use a secret key to protect Remmina from unauthorized use."
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1619
+#: data/ui/remmina_preferences.glade:1643
 #, fuzzy
 msgid "Remmina password"
 msgstr "使用者密碼"
 
-#: data/ui/remmina_preferences.glade:1630
+#: data/ui/remmina_preferences.glade:1654
 #, fuzzy
 msgid "Use secret key authentication for some widgets"
 msgstr "使用密鑰來對某些器件進行身分核對"
 
-#: data/ui/remmina_preferences.glade:1650
+#: data/ui/remmina_preferences.glade:1674
 msgid "Valid for"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1661
+#: data/ui/remmina_preferences.glade:1685
 msgid "Number of seconds to keep password valid for"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1666
+#: data/ui/remmina_preferences.glade:1690
 msgid "timeout in seconds (default 300)"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1678
+#: data/ui/remmina_preferences.glade:1702
 #, fuzzy
 #| msgid "Secured password storage in KWallet"
 msgid "Enter your Remmina password to connect"
 msgstr "儲存在 KDE Wallet 中的安全密碼"
 
 #. “Require to connect” is “Require the Remmina password before to connect”, the Remmina password is the Master/Principal Password, that is used to protect Remmina from unauthorized use.
-#: data/ui/remmina_preferences.glade:1682
+#: data/ui/remmina_preferences.glade:1706
 #, fuzzy
 #| msgid "Secured password storage in KWallet"
 msgid "Require to connect"
 msgstr "儲存在 KDE Wallet 中的安全密碼"
 
-#: data/ui/remmina_preferences.glade:1693
+#: data/ui/remmina_preferences.glade:1717
 msgid "Creation, editing, copying, and deletions require the Remmina password"
 msgstr ""
 
 #. Creation, editing, copying, and deletions require the primary password
-#: data/ui/remmina_preferences.glade:1697
+#: data/ui/remmina_preferences.glade:1721
 msgid "Require to modify"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1708
+#: data/ui/remmina_preferences.glade:1732
 #, fuzzy
 #| msgid "Secured password storage in KWallet"
 msgid "Enter your Remmina password to view passwords"
 msgstr "儲存在 KDE Wallet 中的安全密碼"
 
 #. “Require to view passwords” is “Require the Remmina password before to connect”, the Remmina password is the Master/Principal Password, that is used to protect Remmina from unauthorized use.
-#: data/ui/remmina_preferences.glade:1712
+#: data/ui/remmina_preferences.glade:1736
 #, fuzzy
 #| msgid "Set new password"
 msgid "Require to view passwords"
 msgstr "儲存密碼"
 
-#: data/ui/remmina_preferences.glade:1768
+#: data/ui/remmina_preferences.glade:1792
 #, fuzzy
 #| msgid "File encryption"
 msgid "Encryption"
 msgstr "檔案加密"
 
-#: data/ui/remmina_preferences.glade:1779
+#: data/ui/remmina_preferences.glade:1803
 msgid ""
 "These are the encryption methods used by Remmina to store passwords.\n"
 "\n"
@@ -5416,74 +5417,74 @@ msgid ""
 "\"Sensitive\" is more secure, but uses +1 GiB of RAM and many CPU cycles. "
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1788
+#: data/ui/remmina_preferences.glade:1812
 msgid "Intermediate (+64 MiB RAM)"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1789
+#: data/ui/remmina_preferences.glade:1813
 msgid "Strong (+256 MiB, ~2009 CPU)"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1790
+#: data/ui/remmina_preferences.glade:1814
 msgid "Sensitive (+1 GiB, ~2014 CPU)"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1806
+#: data/ui/remmina_preferences.glade:1830
 #, fuzzy
 msgid "Auditing log"
 msgstr "編輯設定"
 
-#: data/ui/remmina_preferences.glade:1831
+#: data/ui/remmina_preferences.glade:1855
 msgid "Automatically accept all fingerprints and certificates"
 msgstr "接受變更的憑證嗎？"
 
-#: data/ui/remmina_preferences.glade:1836
+#: data/ui/remmina_preferences.glade:1860
 #, fuzzy
 #| msgid "Trust all fingerprints and certificates"
 msgid "Trust all certificates"
 msgstr "接受變更的憑證嗎？"
 
-#: data/ui/remmina_preferences.glade:1871
+#: data/ui/remmina_preferences.glade:1895
 #, fuzzy
 msgid "Security"
 msgstr "安全"
 
-#: data/ui/remmina_preferences.glade:1902
+#: data/ui/remmina_preferences.glade:1926
 #, fuzzy
 msgid "Terminal font"
 msgstr "終端機字型"
 
-#: data/ui/remmina_preferences.glade:1915
+#: data/ui/remmina_preferences.glade:1939
 #, fuzzy
 msgid "Scrollback lines"
 msgstr "回捲行數"
 
-#: data/ui/remmina_preferences.glade:1963
+#: data/ui/remmina_preferences.glade:1987
 #, fuzzy
 #| msgid "Shortcut for copying to clipboard"
 msgid "Shortcuts for copying and pasting"
 msgstr "复制和粘贴的快捷方式"
 
-#: data/ui/remmina_preferences.glade:1976
+#: data/ui/remmina_preferences.glade:2000
 #, fuzzy
 msgid "Select all shortcuts"
 msgstr "選擇所有快速鍵"
 
-#: data/ui/remmina_preferences.glade:1989
-#: data/ui/remmina_preferences.glade:2006
-#: data/ui/remmina_preferences.glade:2459
-#: data/ui/remmina_preferences.glade:2489
-#: data/ui/remmina_preferences.glade:2623
-#: data/ui/remmina_preferences.glade:2640
+#: data/ui/remmina_preferences.glade:2013
+#: data/ui/remmina_preferences.glade:2030
+#: data/ui/remmina_preferences.glade:2483
+#: data/ui/remmina_preferences.glade:2513
+#: data/ui/remmina_preferences.glade:2647
+#: data/ui/remmina_preferences.glade:2664
 msgid "(Host key+)"
 msgstr "（Host 鍵 +）"
 
-#: data/ui/remmina_preferences.glade:2024
+#: data/ui/remmina_preferences.glade:2048
 #, fuzzy
 msgid "Use default system font"
 msgstr "使用系統預設字型"
 
-#: data/ui/remmina_preferences.glade:2049
+#: data/ui/remmina_preferences.glade:2073
 #, fuzzy
 msgid ""
 "Selecting “SGR 1” also switches to the bright counterparts of the first 8 "
@@ -5491,15 +5492,15 @@ msgid ""
 msgstr ""
 "选择 \"SGR 1 \"也会切换到前8种调色板颜色的明亮对应色（除了使文字变粗之外）。"
 
-#: data/ui/remmina_preferences.glade:2065
+#: data/ui/remmina_preferences.glade:2089
 msgid "Show bold text in bright colors"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:2079
+#: data/ui/remmina_preferences.glade:2103
 msgid "Colour theme"
 msgstr "載入配色"
 
-#: data/ui/remmina_preferences.glade:2090
+#: data/ui/remmina_preferences.glade:2114
 msgid ""
 "Choose a colour scheme file. Usually available in /usr/share/remmina/theme. "
 "https://github.com/mbadolato/iTerm2-Color-Schemes has more details."
@@ -5507,145 +5508,145 @@ msgstr ""
 "選擇配色檔。預先安裝的配色通常在 /usr/share/remmina/theme。請參閱 https://"
 "github.com/mbadolato/iTerm2-Color-Schemes"
 
-#: data/ui/remmina_preferences.glade:2094
+#: data/ui/remmina_preferences.glade:2118
 msgid "Pick a terminal colouring file"
 msgstr "選擇終端機配色檔案"
 
-#: data/ui/remmina_preferences.glade:2109
+#: data/ui/remmina_preferences.glade:2133
 #, fuzzy
 msgid "Bright colours"
 msgstr "高亮度顏色"
 
-#: data/ui/remmina_preferences.glade:2123
+#: data/ui/remmina_preferences.glade:2147
 msgid "Pick a light black colour"
 msgstr "選擇亮黑色"
 
-#: data/ui/remmina_preferences.glade:2137
+#: data/ui/remmina_preferences.glade:2161
 msgid "Pick a light red colour"
 msgstr "選擇亮紅色"
 
-#: data/ui/remmina_preferences.glade:2151
+#: data/ui/remmina_preferences.glade:2175
 msgid "Pick a bright green colour"
 msgstr "選擇亮綠色"
 
-#: data/ui/remmina_preferences.glade:2165
+#: data/ui/remmina_preferences.glade:2189
 msgid "Pick a bright yellow colour"
 msgstr "選擇亮黃色"
 
-#: data/ui/remmina_preferences.glade:2179
+#: data/ui/remmina_preferences.glade:2203
 msgid "Pick a bright blue colour"
 msgstr "選擇亮藍色"
 
-#: data/ui/remmina_preferences.glade:2193
+#: data/ui/remmina_preferences.glade:2217
 msgid "Pick a light magenta colour"
 msgstr "選擇亮洋紅色"
 
-#: data/ui/remmina_preferences.glade:2207
+#: data/ui/remmina_preferences.glade:2231
 msgid "Pick a light cyan colour"
 msgstr "選擇亮青綠色"
 
-#: data/ui/remmina_preferences.glade:2221
+#: data/ui/remmina_preferences.glade:2245
 msgid "Pick a light white colour"
 msgstr "選擇亮白色"
 
-#: data/ui/remmina_preferences.glade:2235
+#: data/ui/remmina_preferences.glade:2259
 msgid "Pick a black colour"
 msgstr "選擇黑色"
 
-#: data/ui/remmina_preferences.glade:2249
+#: data/ui/remmina_preferences.glade:2273
 msgid "Pick a red colour"
 msgstr "選擇紅色"
 
-#: data/ui/remmina_preferences.glade:2263
+#: data/ui/remmina_preferences.glade:2287
 msgid "Pick a green colour"
 msgstr "選擇綠色"
 
-#: data/ui/remmina_preferences.glade:2277
+#: data/ui/remmina_preferences.glade:2301
 msgid "Pick a yellow colour"
 msgstr "選擇黃色"
 
-#: data/ui/remmina_preferences.glade:2291
+#: data/ui/remmina_preferences.glade:2315
 msgid "Pick a blue colour"
 msgstr "選擇藍色"
 
-#: data/ui/remmina_preferences.glade:2305
+#: data/ui/remmina_preferences.glade:2329
 msgid "Pick a magenta colour"
 msgstr "選擇洋紅色"
 
-#: data/ui/remmina_preferences.glade:2319
+#: data/ui/remmina_preferences.glade:2343
 msgid "Pick a cyan colour"
 msgstr "選擇青綠色"
 
-#: data/ui/remmina_preferences.glade:2333
+#: data/ui/remmina_preferences.glade:2357
 msgid "Pick a white colour"
 msgstr "選擇白色"
 
-#: data/ui/remmina_preferences.glade:2346
+#: data/ui/remmina_preferences.glade:2370
 #, fuzzy
 msgid "Normal colours"
 msgstr "一般顏色"
 
-#: data/ui/remmina_preferences.glade:2359
-#: data/ui/remmina_preferences.glade:2374
+#: data/ui/remmina_preferences.glade:2383
+#: data/ui/remmina_preferences.glade:2398
 #, fuzzy
 msgid "Cursor colour"
 msgstr "游標顏色"
 
-#: data/ui/remmina_preferences.glade:2388
-#: data/ui/remmina_preferences.glade:2403
+#: data/ui/remmina_preferences.glade:2412
+#: data/ui/remmina_preferences.glade:2427
 #, fuzzy
 msgid "Background colour"
 msgstr "背景色"
 
-#: data/ui/remmina_preferences.glade:2419
-#: data/ui/remmina_preferences.glade:2433
+#: data/ui/remmina_preferences.glade:2443
+#: data/ui/remmina_preferences.glade:2457
 #, fuzzy
 msgid "Foreground colour"
 msgstr "前景色"
 
-#: data/ui/remmina_preferences.glade:2446
+#: data/ui/remmina_preferences.glade:2470
 #, fuzzy
 msgid "Increase and decrease font size"
 msgstr "增加和减少字体大小"
 
-#: data/ui/remmina_preferences.glade:2476
+#: data/ui/remmina_preferences.glade:2500
 #, fuzzy
 #| msgid "Select all shortcuts"
 msgid "Search text shortcut"
 msgstr "搜索文本快捷方式"
 
-#: data/ui/remmina_preferences.glade:2507
-#: data/ui/remmina_preferences.glade:2522
+#: data/ui/remmina_preferences.glade:2531
+#: data/ui/remmina_preferences.glade:2546
 msgid "Bold colour"
 msgstr "一般顏色"
 
-#: data/ui/remmina_preferences.glade:2536
-#: data/ui/remmina_preferences.glade:2577
+#: data/ui/remmina_preferences.glade:2560
+#: data/ui/remmina_preferences.glade:2601
 #, fuzzy
 #| msgid "Bright colours"
 msgid "Highlight colour"
 msgstr "高光色"
 
-#: data/ui/remmina_preferences.glade:2549
-#: data/ui/remmina_preferences.glade:2593
+#: data/ui/remmina_preferences.glade:2573
+#: data/ui/remmina_preferences.glade:2617
 #, fuzzy
 #| msgid "Foreground colour"
 msgid "Highlight foreground colour"
 msgstr "突出前景颜色"
 
-#: data/ui/remmina_preferences.glade:2562
-#: data/ui/remmina_preferences.glade:2609
+#: data/ui/remmina_preferences.glade:2586
+#: data/ui/remmina_preferences.glade:2633
 #, fuzzy
 #| msgid "Foreground colour"
 msgid "Cursor foreground colour"
 msgstr "游标的前景颜色"
 
-#: data/ui/remmina_preferences.glade:2665
+#: data/ui/remmina_preferences.glade:2689
 #, fuzzy
 msgid "Terminal"
 msgstr "Terminal"
 
-#: data/ui/remmina_preferences.glade:2679
+#: data/ui/remmina_preferences.glade:2703
 #, fuzzy
 msgid "Remmina Preferences"
 msgstr "Remmina 偏好設定"
@@ -5664,6 +5665,10 @@ msgstr "解鎖 Remmina"
 #, fuzzy
 msgid "Master password"
 msgstr "主密碼"
+
+#, fuzzy
+#~ msgid "Options"
+#~ msgstr "選項"
 
 #, fuzzy, c-format
 #~ msgid ""
