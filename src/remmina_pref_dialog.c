@@ -403,7 +403,7 @@ static gboolean remmina_pref_dialog_add_pref_plugin(gchar *name, RemminaPlugin *
 	pref_plugin = (RemminaPrefPlugin *)plugin;
 
 	widget = gtk_label_new(pref_plugin->pref_label);
-	gtk_widget_set_halign(widget, GTK_ALIGN_END);
+	gtk_widget_set_halign(widget, GTK_ALIGN_START);
 	gtk_widget_show(widget);
 
 	vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
