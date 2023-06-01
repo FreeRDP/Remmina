@@ -141,6 +141,7 @@ void remmina_log_start(void)
 		GtkWidget *start = gtk_switch_new ();
 		logstart = TRUE;
 		gtk_switch_set_active (GTK_SWITCH(start), logstart);
+		gtk_widget_set_valign (start, GTK_ALIGN_CENTER);
 		gtk_header_bar_pack_start (GTK_HEADER_BAR (header), start);
 
 		gtk_window_set_titlebar (GTK_WINDOW (log_window), header);
