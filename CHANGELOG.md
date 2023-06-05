@@ -1,5 +1,24 @@
+## v.1.4.31
+[full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.30...v1.4.31)
+
+* [REM-2874] muli password changer search now matches partial strings [!2480](https://gitlab.com/Remmina/Remmina/merge_requests/2480) *@myheroyuki*
+* Fix segfault in VNC when using domain socket [!2481](https://gitlab.com/Remmina/Remmina/merge_requests/2481) *@jchw*
+* Switched pylist Append to SetItem [!2482](https://gitlab.com/Remmina/Remmina/merge_requests/2482) *@bhatman1441*
+* Template texts updated [!2484](https://gitlab.com/Remmina/Remmina/merge_requests/2484) *@kingu*
+* Add menu option to delete multiple profiles at the same time [!2483](https://gitlab.com/Remmina/Remmina/merge_requests/2483) *@bhatman1441*
+* add 1080p as a default resolution to remmina_pref.c [!2486](https://gitlab.com/Remmina/Remmina/merge_requests/2486) *@Thibaultmol*
+* Add ubuntu22.04 dockerfile [!2487](https://gitlab.com/Remmina/Remmina/merge_requests/2487) *@yasinbakhtiar*
+* Remove character limit on password length [!2489](https://gitlab.com/Remmina/Remmina/merge_requests/2489) *@bhatman1441*
+* Create better postats.html [!2488](https://gitlab.com/Remmina/Remmina/merge_requests/2488) *@yasinbakhtiar*
+* Redesign santahat.png & add santahat.svg [!2492](https://gitlab.com/Remmina/Remmina/merge_requests/2492) *@yasinbakhtiar*
+* Edit preferences UI [!2491](https://gitlab.com/Remmina/Remmina/merge_requests/2491) *@yasinbakhtiar*
+* Change the icon of the new connection button [!2493](https://gitlab.com/Remmina/Remmina/merge_requests/2493) *@yasinbakhtiar*
+* Modify the checkbox of the appearance-tab [!2494](https://gitlab.com/Remmina/Remmina/merge_requests/2494) *@yasinbakhtiar*
+* Add valign to the switch of the debugging window [!2495](https://gitlab.com/Remmina/Remmina/merge_requests/2495) *@yasinbakhtiar*
+* plugins/rdp: Ensure output redirection configuration applies to both dynamic and static rdpsnd [!2498](https://gitlab.com/Remmina/Remmina/merge_requests/2498) *@msizanoen*
+
 ## v.1.4.30
-[full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.29...HEAD)
+[full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.29...v1.4.30)
 
 * Update snap build to use freerdp 2.9.0 [!2458](https://gitlab.com/Remmina/Remmina/merge_requests/2458) *@myheroyuki*
 * Add text mime type formats to RDP clibpoard [!2459](https://gitlab.com/Remmina/Remmina/merge_requests/2459) *@giox069*
