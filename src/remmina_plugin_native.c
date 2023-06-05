@@ -64,8 +64,9 @@ gboolean remmina_plugin_native_load(RemminaPluginService* service, const char* n
 	RemminaPluginEntryFunc entry;
 
 	//Python plugins cannot be lazy loaded, so hande their loading seperately
+	//TODO: Figure out how to properly load python plugins without breaking others
 	if (strstr(name, "remmina-plugin-python_wrapper") != NULL ){
-		module = g_module_open(name, 0);
+		module = g_module_open(name, G_MODULE_BIND_LAZY | G_MODULE_BIND_LOCAL);
 	}
 	else{
 		module = g_module_open(name, G_MODULE_BIND_LAZY | G_MODULE_BIND_LOCAL);
