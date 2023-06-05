@@ -1841,7 +1841,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 
 		p = remmina_rdp_CommandLineParseCommaSeparatedValuesEx("rdpsnd", g_strdup(cs), &count);
 		status = freerdp_client_add_static_channel(rfi->settings, count, p);
-		if (status == 0)
+		if (status)
 			status = freerdp_client_add_dynamic_channel(rfi->settings, count, p);
 		g_free(p);
 	}
