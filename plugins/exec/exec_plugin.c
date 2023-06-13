@@ -53,6 +53,7 @@ typedef struct _RemminaPluginExecData {
 	GtkTextBuffer *log_buffer;
 	GtkTextBuffer *err;
 	GtkWidget *sw;
+	GPid pid;
 } RemminaPluginExecData;
 
 static RemminaPluginService *remmina_plugin_service = NULL;
@@ -64,6 +65,11 @@ cb_child_watch( GPid pid, gint status)
 {
 	/* Close pid */
 	g_spawn_close_pid( pid );
+}
+
+static void cb_child_setup(gpointer data){
+	int pid = getpid();
+	setpgid(pid, 0);
 }
 
 	static gboolean
@@ -118,6 +124,7 @@ static void remmina_plugin_exec_init(RemminaProtocolWidget *gp)
 	gpdata = g_new0(RemminaPluginExecData, 1);
 	g_object_set_data_full(G_OBJECT(gp), "plugin-data", gpdata, g_free);
 
+	gpdata->pid = 0;
 	gpdata->log_view = gtk_text_view_new();
 	gtk_text_view_set_wrap_mode(GTK_TEXT_VIEW(gpdata->log_view), GTK_WRAP_CHAR);
 	gtk_text_view_set_editable(GTK_TEXT_VIEW(gpdata->log_view), FALSE);
@@ -178,7 +185,7 @@ static gboolean remmina_plugin_exec_run(RemminaProtocolWidget *gp)
 				G_SPAWN_DO_NOT_REAP_CHILD |
 				G_SPAWN_SEARCH_PATH_FROM_ENVP |
 				G_SPAWN_SEARCH_PATH,
-				NULL,
+				cb_child_setup,
 				NULL,
 				&child_pid,
 				NULL,
@@ -193,6 +200,7 @@ static gboolean remmina_plugin_exec_run(RemminaProtocolWidget *gp)
 		}
 		g_child_watch_add(child_pid, (GChildWatchFunc)cb_child_watch, gp );
 
+		gpdata->pid = child_pid;
 		/* Create channels that will be used to read data from pipes. */
 		out_ch = g_io_channel_unix_new(child_stdout);
 		err_ch = g_io_channel_unix_new(child_stderr);
@@ -248,6 +256,21 @@ static gboolean remmina_plugin_exec_close(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
 	REMMINA_PLUGIN_DEBUG("[%s] Plugin close", PLUGIN_NAME);
+    RemminaPluginExecData *gpdata = GET_PLUGIN_DATA(gp);
+	//if async process was started, make sure it's dead if option is selected
+	RemminaFile* remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
+	if (remmina_plugin_service->file_get_int(remminafile, "kill_proc", FALSE)) {
+		if (gpdata->pid !=0 ){
+			int pgid = getpgid(gpdata->pid);
+			if (pgid != 0){
+				kill(-gpdata->pid, SIGHUP);
+			}
+			else{
+				kill(gpdata->pid, SIGHUP);
+			}
+			
+		}
+	}
 	remmina_plugin_service->protocol_plugin_signal_connection_closed(gp);
 	return FALSE;
 }
@@ -273,6 +296,7 @@ static const RemminaProtocolSetting remmina_plugin_exec_basic_settings[] =
 {
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	"execcommand",  N_("Command"),  		FALSE, NULL, NULL, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"runasync", 	N_("Asynchronous execution"),	FALSE, NULL, NULL, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,  "kill_proc",    N_("Kill process on disconnect"),       FALSE, NULL, NULL, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	NULL,	    	NULL,	    			FALSE, NULL, NULL, NULL, NULL }
 };
 
