@@ -150,6 +150,7 @@ void remmina_file_manager_init(void)
 				g_build_path("/", g_get_user_data_dir(),
 					     "remmina", filename, NULL));
 		}
+		g_dir_close(dir);
 	}
 
 	/* XDG_DATA_DIRS, i.e. /usr/local/share/remmina */
