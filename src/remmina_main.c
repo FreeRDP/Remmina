@@ -1079,7 +1079,12 @@ void remmina_main_reload_preferences()
 	GtkSettings *settings;
 	settings = gtk_settings_get_default();
 	g_object_set(settings, "gtk-application-prefer-dark-theme", remmina_pref.dark_theme, NULL);
-	remmina_main_on_action_search_toggle(NULL,NULL,NULL);
+	if(remmina_pref.hide_searchbar){
+		gtk_toggle_button_set_active(remminamain->search_toggle, FALSE);
+	}
+	else{
+		gtk_toggle_button_set_active(remminamain->search_toggle, TRUE);
+	}
 	gtk_tree_view_column_set_visible(remminamain->column_files_list_notes, remmina_pref.always_show_notes);
 }
 
@@ -1105,8 +1110,6 @@ void remmina_main_on_action_application_preferences(GSimpleAction *action, GVari
 	GtkWidget *widget = remmina_pref_dialog_new(tab_num, remminamain->window);
 
 	gtk_widget_show_all(widget);	
-	/* Reload to use new preferences */
-	remmina_main_reload_preferences();
 }
 
 void remmina_main_on_action_application_default(GSimpleAction *action, GVariant *param, gpointer data)
@@ -1400,7 +1403,6 @@ void remmina_main_on_action_search_toggle(GSimpleAction *action, GVariant *param
 {
 	TRACE_CALL(__func__);
 	REMMINA_DEBUG("Search toggle triggered");
-	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(remminamain->search_toggle), !remmina_pref.hide_searchbar);
 
 	gboolean toggle_status = gtk_toggle_button_get_active(remminamain->search_toggle);
 
