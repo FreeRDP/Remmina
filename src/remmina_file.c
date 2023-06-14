@@ -720,6 +720,8 @@ void remmina_file_free(RemminaFile *remminafile)
 		g_hash_table_destroy(remminafile->settings);
 	if (remminafile->spsettings)
 		g_hash_table_destroy(remminafile->spsettings);
+	if (remminafile->states)
+		g_hash_table_destroy(remminafile->states);
 
 	g_free(remminafile);
 }

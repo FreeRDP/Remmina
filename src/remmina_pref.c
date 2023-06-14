@@ -243,6 +243,7 @@ void remmina_pref_init(void)
 			g_build_path("/", remmina_dir, filename, NULL),
 			g_build_path("/", g_get_user_config_dir(),
 				     "remmina", filename, NULL));
+		g_dir_close(dir);
 	}
 
 	/* /usr/local/etc/remmina */
