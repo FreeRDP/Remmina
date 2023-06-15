@@ -38,6 +38,7 @@
 #include "config.h"
 #include "remmina_public.h"
 #include "remmina_widget_pool.h"
+#include "remmina_main.h"
 #include "remmina_message_panel.h"
 #include "remmina_masterthread_exec.h"
 #include "remmina/remmina_trace_calls.h"
@@ -383,6 +384,9 @@ void remmina_message_panel_setup_auth(RemminaMessagePanel *mp, RemminaMessagePan
 	gtk_grid_attach(GTK_GRID(grid), password_entry, 1, grid_row, 2, 1);
 	gtk_entry_set_max_length(GTK_ENTRY(password_entry), 0);
 	gtk_entry_set_visibility(GTK_ENTRY(password_entry), FALSE);
+	gtk_entry_set_icon_from_icon_name(GTK_ENTRY(password_entry), GTK_ENTRY_ICON_SECONDARY, "org.remmina.Remmina-password-reveal-symbolic");
+	gtk_entry_set_icon_activatable(GTK_ENTRY(password_entry), GTK_ENTRY_ICON_SECONDARY, TRUE);
+	g_signal_connect(password_entry, "icon-press", G_CALLBACK(remmina_main_toggle_password_view), NULL);
 
 	grid_row++;
 
