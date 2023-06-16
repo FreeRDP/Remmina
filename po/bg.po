@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2023-06-14 12:39+0000\n"
+"POT-Creation-Date: 2023-06-16 13:03+0000\n"
 "PO-Revision-Date: 2023-02-04 06:38+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Bulgarian <https://hosted.weblate.org/projects/remmina/"
@@ -25,7 +25,7 @@ msgstr ""
 
 #: src/remmina_sftp_plugin.c:309 src/remmina_sftp_plugin.c:353
 #: src/remmina_protocol_widget.c:1699 src/remmina_protocol_widget.c:1718
-#: src/remmina_file_editor.c:1137 src/remmina_file_editor.c:1260
+#: src/remmina_file_editor.c:1122 src/remmina_file_editor.c:1245
 #: src/remmina_ssh_plugin.c:1394 plugins/rdp/rdp_plugin.c:2814
 #: plugins/www/www_plugin.c:909 plugins/x2go/x2go_plugin.c:3397
 #: data/ui/remmina_mpc.glade:218 data/ui/remmina_passwd.glade:84
@@ -35,25 +35,25 @@ msgid "Password"
 msgstr "Парола"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:355
-#: src/remmina_file_editor.c:1138 src/remmina_ssh_plugin.c:1395
+#: src/remmina_file_editor.c:1123 src/remmina_ssh_plugin.c:1395
 #: src/remmina_ssh_plugin.c:1506 plugins/x2go/x2go_plugin.c:3420
 #, fuzzy
 msgid "SSH identity file"
 msgstr "Файл съдържащ SSH частен ключ"
 
-#: src/remmina_sftp_plugin.c:311 src/remmina_file_editor.c:1139
+#: src/remmina_sftp_plugin.c:311 src/remmina_file_editor.c:1124
 #: src/remmina_ssh_plugin.c:1396
 #, fuzzy
 msgid "SSH agent"
 msgstr "SSH агент"
 
-#: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:1140
+#: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:1125
 #: src/remmina_ssh_plugin.c:1397
 #, fuzzy
 msgid "Public key (automatic)"
 msgstr "Публичен ключ (Автоматично)"
 
-#: src/remmina_sftp_plugin.c:313 src/remmina_file_editor.c:1141
+#: src/remmina_sftp_plugin.c:313 src/remmina_file_editor.c:1126
 #: src/remmina_ssh_plugin.c:1398
 #, fuzzy
 msgid "Kerberos (GSSAPI)"
@@ -78,8 +78,8 @@ msgstr "Възобновяване на всички прехвърляния н
 msgid "Connect via SSH from a new terminal"
 msgstr "Свързване посредством SSH от нов терминал"
 
-#: src/remmina_sftp_plugin.c:352 src/remmina_message_panel.c:329
-#: src/remmina_file_editor.c:1254 src/remmina_ssh_plugin.c:1504
+#: src/remmina_sftp_plugin.c:352 src/remmina_message_panel.c:330
+#: src/remmina_file_editor.c:1239 src/remmina_ssh_plugin.c:1504
 #: plugins/rdp/rdp_plugin.c:2813 plugins/vnc/vnc_plugin.c:2079
 #: plugins/vnc/vnc_plugin.c:2091 plugins/www/www_plugin.c:908
 #: plugins/x2go/x2go_plugin.c:482 plugins/x2go/x2go_plugin.c:3396
@@ -88,13 +88,13 @@ msgstr "Свързване посредством SSH от нов термина
 msgid "Username"
 msgstr "Потребителско име"
 
-#: src/remmina_sftp_plugin.c:354 src/remmina_file_editor.c:1245
+#: src/remmina_sftp_plugin.c:354 src/remmina_file_editor.c:1230
 #: src/remmina_ssh_plugin.c:1503
 #, fuzzy
 msgid "Authentication type"
 msgstr "Вид идентификация"
 
-#: src/remmina_sftp_plugin.c:356 src/remmina_file_editor.c:1278
+#: src/remmina_sftp_plugin.c:356 src/remmina_file_editor.c:1263
 #: src/remmina_ssh_plugin.c:1510
 #, fuzzy
 msgid "Password to unlock private key"
@@ -132,7 +132,7 @@ msgid ""
 "Remmina/-/wikis/Usage/Remmina-debugging\n"
 msgstr ""
 
-#: src/remmina_plugin_manager.c:74 src/remmina_file_editor.c:2005
+#: src/remmina_plugin_manager.c:74 src/remmina_file_editor.c:1990
 #, fuzzy
 msgid "Protocol"
 msgstr "Протокол"
@@ -171,13 +171,13 @@ msgstr ""
 msgid "Plugins"
 msgstr "Приставки"
 
-#: src/remmina_plugin_manager.c:526 src/remmina_message_panel.c:451
-#: src/remmina_message_panel.c:620 src/remmina_file_editor.c:245
+#: src/remmina_plugin_manager.c:526 src/remmina_message_panel.c:455
+#: src/remmina_message_panel.c:624 src/remmina_file_editor.c:245
 #, fuzzy
 msgid "_OK"
 msgstr "_OK"
 
-#: src/remmina_plugin_manager.c:544 src/remmina_file_editor.c:1937
+#: src/remmina_plugin_manager.c:544 src/remmina_file_editor.c:1922
 #: data/ui/remmina_main.glade:457
 #, fuzzy
 msgid "Name"
@@ -256,12 +256,12 @@ msgstr "Meta+"
 msgid "<None>"
 msgstr "<Празно>"
 
-#: src/remmina_pref_dialog.c:94 src/remmina_file_editor.c:549
+#: src/remmina_pref_dialog.c:94 src/remmina_file_editor.c:534
 #, fuzzy
 msgid "Resolutions"
 msgstr "Разделителни способности"
 
-#: src/remmina_pref_dialog.c:94 src/remmina_file_editor.c:549
+#: src/remmina_pref_dialog.c:94 src/remmina_file_editor.c:534
 #, fuzzy
 msgid "Configure the available resolutions"
 msgstr "Конфигуриране на наличните разделителни способности"
@@ -304,13 +304,13 @@ msgstr ""
 "избере от раздела \"Advanced\" (Разширени) на терминалните връзки и да се "
 "редактира в раздела \"Terminal\" (Терминал) в настройките."
 
-#: src/remmina_message_panel.c:162 data/ui/remmina_mpc.glade:33
+#: src/remmina_message_panel.c:163 data/ui/remmina_mpc.glade:33
 #: data/ui/remmina_passwd.glade:19 data/ui/remmina_unlock.glade:43
 #, fuzzy
 msgid "Cancel"
 msgstr "Отмяна"
 
-#: src/remmina_message_panel.c:198 data/ui/remmina_snap_info_dialog.glade:25
+#: src/remmina_message_panel.c:199 data/ui/remmina_snap_info_dialog.glade:25
 #: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
 #: data/ui/remmina_string_list.glade:63 data/ui/remmina_news.glade:33
 #: data/ui/remmina_preferences.glade:2708
@@ -318,57 +318,57 @@ msgstr "Отмяна"
 msgid "Close"
 msgstr "Затваряне"
 
-#: src/remmina_message_panel.c:259
+#: src/remmina_message_panel.c:260
 #, fuzzy
 msgid "Yes"
 msgstr "Yes"
 
-#: src/remmina_message_panel.c:266
+#: src/remmina_message_panel.c:267
 #, fuzzy
 msgid "No"
 msgstr "No"
 
-#: src/remmina_message_panel.c:390 plugins/rdp/rdp_plugin.c:2815
+#: src/remmina_message_panel.c:394 plugins/rdp/rdp_plugin.c:2815
 #: data/ui/remmina_mpc.glade:151
 #, fuzzy
 msgid "Domain"
 msgstr "Домейн"
 
-#: src/remmina_message_panel.c:419
+#: src/remmina_message_panel.c:423
 #, fuzzy
 msgid "Save password"
 msgstr "Запазване на паролата"
 
-#: src/remmina_message_panel.c:456 src/remmina_message_panel.c:628
+#: src/remmina_message_panel.c:460 src/remmina_message_panel.c:632
 #: src/remmina_sftp_client.c:972 src/remmina_file_editor.c:244
-#: src/remmina_file_editor.c:1811 plugins/spice/spice_plugin_file_transfer.c:84
+#: src/remmina_file_editor.c:1796 plugins/spice/spice_plugin_file_transfer.c:84
 #: data/ui/remmina_key_chooser.glade:8 data/ui/remmina_key_chooser.glade:9
 #: data/ui/remmina_spinner.glade:8 data/ui/remmina_spinner.glade:9
 #, fuzzy
 msgid "_Cancel"
 msgstr "_Отказ"
 
-#: src/remmina_message_panel.c:512
+#: src/remmina_message_panel.c:516
 #, fuzzy
 msgid "Enter certificate authentication files"
 msgstr "Въведете файлове съдържащи сертификати"
 
-#: src/remmina_message_panel.c:524
+#: src/remmina_message_panel.c:528
 #, fuzzy
 msgid "CA Certificate File"
 msgstr "CA сертификат"
 
-#: src/remmina_message_panel.c:546
+#: src/remmina_message_panel.c:550
 #, fuzzy
 msgid "CA CRL File"
 msgstr "Файл съдържащ невалидни сертификати (CRL)"
 
-#: src/remmina_message_panel.c:568
+#: src/remmina_message_panel.c:572
 #, fuzzy
 msgid "Client Certificate File"
 msgstr "Файл с клиентски сертификат"
 
-#: src/remmina_message_panel.c:590
+#: src/remmina_message_panel.c:594
 #, fuzzy
 msgid "Client Certificate Key"
 msgstr "Клиентски сертификат"
@@ -975,7 +975,7 @@ msgstr "Размер"
 msgid "User"
 msgstr "Потребител"
 
-#: src/remmina_ftp_client.c:955 src/remmina_file_editor.c:1962
+#: src/remmina_ftp_client.c:955 src/remmina_file_editor.c:1947
 #: data/ui/remmina_mpc.glade:93 data/ui/remmina_main.glade:479
 #, fuzzy
 msgid "Group"
@@ -1131,7 +1131,7 @@ msgid "Could not authenticate, attempting reconnection…"
 msgstr "Идентифицирането се провали. Опит за повторно свързване…"
 
 #: src/remmina_protocol_widget.c:2053 src/remmina_file_editor.c:438
-#: src/remmina_file_editor.c:1210 data/ui/remmina_main.glade:509
+#: src/remmina_file_editor.c:1195 data/ui/remmina_main.glade:509
 #, fuzzy
 msgid "Server"
 msgstr "Сървър"
@@ -1463,7 +1463,7 @@ msgstr "Сигурни ли сте, че желаете да изтриете и
 msgid "Failed to delete files!"
 msgstr ""
 
-#: src/remmina_main.c:1195
+#: src/remmina_main.c:1213
 #, fuzzy, c-format
 msgid ""
 "Unable to import:\n"
@@ -1472,27 +1472,27 @@ msgstr ""
 "Невъзможност за внасяне:\n"
 "%s"
 
-#: src/remmina_main.c:1221 data/ui/remmina_main.glade:310
+#: src/remmina_main.c:1239 data/ui/remmina_main.glade:310
 #, fuzzy
 msgid "Import"
 msgstr "Внасяне на данни"
 
-#: src/remmina_main.c:1244 src/remmina_file_editor.c:1819
+#: src/remmina_main.c:1262 src/remmina_file_editor.c:1804
 #, fuzzy
 msgid "_Save"
 msgstr "_Запазване"
 
-#: src/remmina_main.c:1250
+#: src/remmina_main.c:1268
 #, fuzzy
 msgid "This protocol does not support exporting."
 msgstr "Този протокол не поддържа изнасяне"
 
-#: src/remmina_main.c:1570
+#: src/remmina_main.c:1588
 #, fuzzy
 msgid "Remmina Remote Desktop Client"
 msgstr "Клиент за отдалечен достъп Remmina"
 
-#: src/remmina_main.c:1572
+#: src/remmina_main.c:1590
 #, fuzzy
 msgid "Remmina Kiosk"
 msgstr "Remmina Kiosk"
@@ -1681,140 +1681,140 @@ msgstr "Избиране на сървър за отдалечен достъп"
 msgid "Browse the network to find a %s server"
 msgstr "Преглеждане на мрежата за откриване на %s сървър"
 
-#: src/remmina_file_editor.c:585
+#: src/remmina_file_editor.c:570
 #, fuzzy
 msgid "Resolution"
 msgstr "Разделителна способност"
 
-#: src/remmina_file_editor.c:592
+#: src/remmina_file_editor.c:577
 #, fuzzy
 msgid "Use initial window size"
 msgstr "Използване на първоначалния размер на прозореца"
 
-#: src/remmina_file_editor.c:596
+#: src/remmina_file_editor.c:581
 #, fuzzy
 msgid "Use client resolution"
 msgstr "Използване на разделителната способност на клиента"
 
-#: src/remmina_file_editor.c:607 src/remmina_file_editor.c:1190
+#: src/remmina_file_editor.c:592 src/remmina_file_editor.c:1175
 #, fuzzy
 msgid "Custom"
 msgstr "Ръчно"
 
-#: src/remmina_file_editor.c:973
+#: src/remmina_file_editor.c:958
 #, fuzzy
 msgid "Keyboard mapping"
 msgstr "Клавиатурна подредба"
 
-#: src/remmina_file_editor.c:1100
+#: src/remmina_file_editor.c:1085
 #, fuzzy
 msgid "Behavior"
 msgstr "Поведение"
 
-#: src/remmina_file_editor.c:1103
+#: src/remmina_file_editor.c:1088
 msgid "Execute a Command"
 msgstr "Изпълнение на команда"
 
-#: src/remmina_file_editor.c:1107
+#: src/remmina_file_editor.c:1092
 msgid "Before connecting"
 msgstr "Нова връзка"
 
-#: src/remmina_file_editor.c:1109
+#: src/remmina_file_editor.c:1094
 #, fuzzy
 msgid "command %h %u %t %U %p %g --option"
 msgstr "команда %h %u %t %U %p %g --опция"
 
-#: src/remmina_file_editor.c:1114
+#: src/remmina_file_editor.c:1099
 msgid "After connecting"
 msgstr "Нова връзка"
 
-#: src/remmina_file_editor.c:1116
+#: src/remmina_file_editor.c:1101
 #, fuzzy
 msgid "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
 msgstr "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
 
-#: src/remmina_file_editor.c:1120
+#: src/remmina_file_editor.c:1105
 msgid "Start-up"
 msgstr "Започни"
 
-#: src/remmina_file_editor.c:1123
+#: src/remmina_file_editor.c:1108
 msgid "Auto-start this profile"
 msgstr "Включи \"Autostart\" за този профил"
 
-#: src/remmina_file_editor.c:1127
+#: src/remmina_file_editor.c:1112
 #, fuzzy
 #| msgid "New connection profile"
 msgid "Connection profile security"
 msgstr "Нова връзка"
 
-#: src/remmina_file_editor.c:1130
+#: src/remmina_file_editor.c:1115
 msgid "Require password to connect or edit the profile"
 msgstr ""
 
-#: src/remmina_file_editor.c:1163
+#: src/remmina_file_editor.c:1148
 #, fuzzy
 msgid "SSH Tunnel"
 msgstr "SSH тунел"
 
-#: src/remmina_file_editor.c:1164
+#: src/remmina_file_editor.c:1149
 #, fuzzy
 msgid "Enable SSH tunnel"
 msgstr "Включване на SSH тунел"
 
-#: src/remmina_file_editor.c:1171
+#: src/remmina_file_editor.c:1156
 #, fuzzy
 msgid "Tunnel via loopback address"
 msgstr "Тунел чрез локален адрес"
 
-#: src/remmina_file_editor.c:1181
+#: src/remmina_file_editor.c:1166
 #, fuzzy, c-format
 msgid "Same server at port %i"
 msgstr "Същият сървър на порт %i"
 
-#: src/remmina_file_editor.c:1231 plugins/rdp/rdp_plugin.c:2859
+#: src/remmina_file_editor.c:1216 plugins/rdp/rdp_plugin.c:2859
 msgid "Start-up path"
 msgstr "Път за стартиране"
 
-#: src/remmina_file_editor.c:1240
+#: src/remmina_file_editor.c:1225
 #, fuzzy
 msgid "SSH Authentication"
 msgstr "SSH идентифициране"
 
-#: src/remmina_file_editor.c:1267
+#: src/remmina_file_editor.c:1252
 #, fuzzy
 #| msgid "SSH private key passphrase"
 msgid "SSH private key file"
 msgstr "Файл с частен ключ SSH"
 
-#: src/remmina_file_editor.c:1273 src/remmina_ssh_plugin.c:1508
+#: src/remmina_file_editor.c:1258 src/remmina_ssh_plugin.c:1508
 #, fuzzy
 #| msgid "CA Certificate File"
 msgid "SSH certificate file"
 msgstr "Файл със сертификат SSH"
 
-#: src/remmina_file_editor.c:1330
+#: src/remmina_file_editor.c:1315
 #, fuzzy
 msgid "Basic"
 msgstr "Основни"
 
-#: src/remmina_file_editor.c:1336
+#: src/remmina_file_editor.c:1321
 #, fuzzy
 msgid "Advanced"
 msgstr "Допълнителни"
 
-#: src/remmina_file_editor.c:1347 data/ui/remmina_main.glade:523
+#: src/remmina_file_editor.c:1332 data/ui/remmina_main.glade:523
 #, fuzzy
 msgid "Notes"
 msgstr "Бележки"
 
-#: src/remmina_file_editor.c:1464
+#: src/remmina_file_editor.c:1449
 #, fuzzy, c-format
 msgid "(%s: %i): Can't validate setting '%s' since 'value' or 'gfe' are NULL!"
 msgstr ""
 "(%s: %i): Не може да се валидира настройката '%s', тъй като 'value' или "
 "'gfe' са NULL!"
 
-#: src/remmina_file_editor.c:1468
+#: src/remmina_file_editor.c:1453
 #, fuzzy, c-format
 msgid ""
 "(%s: %i): Can't validate user input since 'setting_name_to_validate', "
@@ -1824,69 +1824,69 @@ msgstr ""
 "'setting_name_to_validate', 'value' или 'gfe' са NULL!"
 
 #. TRANSLATORS: Meta-error. Shouldn't be visible.
-#: src/remmina_file_editor.c:1472 plugins/x2go/x2go_plugin.c:2574
+#: src/remmina_file_editor.c:1457 plugins/x2go/x2go_plugin.c:2574
 #: plugins/x2go/x2go_plugin.c:3224
 #, fuzzy
 msgid "Internal error."
 msgstr "Вътрешна грешка"
 
-#: src/remmina_file_editor.c:1695 src/remmina_file_editor.c:1731
-#: src/remmina_file_editor.c:1752 src/remmina_file_editor.c:1775
+#: src/remmina_file_editor.c:1680 src/remmina_file_editor.c:1716
+#: src/remmina_file_editor.c:1737 src/remmina_file_editor.c:1760
 #, fuzzy, c-format
 #| msgid "Could not create SFTP session. %s"
 msgid "Couldn't validate user input. %s"
 msgstr "Не можа да валидира потребителския вход. %s"
 
-#: src/remmina_file_editor.c:1719
+#: src/remmina_file_editor.c:1704
 #, fuzzy
 msgid "Default settings saved."
 msgstr "Стандартните настройки са запазени."
 
-#: src/remmina_file_editor.c:1809
+#: src/remmina_file_editor.c:1794
 msgid "Remote Connection Profile"
 msgstr "Нова връзка"
 
-#: src/remmina_file_editor.c:1815
+#: src/remmina_file_editor.c:1800
 #, fuzzy
 msgid "Save as Default"
 msgstr "Запази по подразбиране"
 
-#: src/remmina_file_editor.c:1816
+#: src/remmina_file_editor.c:1801
 #, fuzzy
 msgid "Use the current settings as the default for all new connection profiles"
 msgstr ""
 "Използване на текущите настройки по подразбиране за всички новосъздадени "
 "профили"
 
-#: src/remmina_file_editor.c:1824 data/ui/remmina_main.glade:161
+#: src/remmina_file_editor.c:1809 data/ui/remmina_main.glade:161
 #, fuzzy
 msgid "Connect"
 msgstr "Свързване"
 
-#: src/remmina_file_editor.c:1827
+#: src/remmina_file_editor.c:1812
 #, fuzzy
 msgid "_Save and Connect"
 msgstr "_Запазване и свързване"
 
-#: src/remmina_file_editor.c:1951
+#: src/remmina_file_editor.c:1936
 #, fuzzy
 msgid "Quick Connect"
 msgstr "Бързо свързване"
 
-#: src/remmina_file_editor.c:1975
+#: src/remmina_file_editor.c:1960
 #, fuzzy, c-format
 msgid "Use '%s' as subgroup delimiter"
 msgstr "Използване на '%s' като разделител на подгрупа"
 
-#: src/remmina_file_editor.c:1980 data/ui/remmina_main.glade:493
+#: src/remmina_file_editor.c:1965 data/ui/remmina_main.glade:493
 msgid "Labels"
 msgstr ""
 
-#: src/remmina_file_editor.c:1994
+#: src/remmina_file_editor.c:1979
 msgid "Label1,Label2"
 msgstr ""
 
-#: src/remmina_file_editor.c:2066 src/remmina_file_editor.c:2085
+#: src/remmina_file_editor.c:2051 src/remmina_file_editor.c:2070
 #, c-format
 msgid "Could not find the file “%s”."
 msgstr "Файлът с име \"%s\" не можа да бъде намерен."
