@@ -389,8 +389,6 @@ static void remmina_file_editor_ssh_tunnel_enabled_check_on_toggled(GtkToggleBut
 		gtk_widget_set_sensitive(GTK_WIDGET(gfe->priv->ssh_tunnel_username_entry), enabled);
 		gtk_widget_set_sensitive(GTK_WIDGET(gfe->priv->ssh_tunnel_auth_password), enabled);
 		gtk_widget_set_sensitive(GTK_WIDGET(gfe->priv->ssh_tunnel_auth_combo), enabled);
-		gtk_widget_set_sensitive(GTK_WIDGET(gfe->priv->ssh_tunnel_privatekey_chooser), enabled);
-		gtk_widget_set_sensitive(GTK_WIDGET(gfe->priv->ssh_tunnel_certfile_chooser), enabled);
 		//}
 		g_free(p);
 	}
