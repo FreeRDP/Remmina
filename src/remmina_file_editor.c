@@ -389,8 +389,6 @@ static void remmina_file_editor_ssh_tunnel_enabled_check_on_toggled(GtkToggleBut
 		gtk_widget_set_sensitive(GTK_WIDGET(gfe->priv->ssh_tunnel_username_entry), enabled);
 		gtk_widget_set_sensitive(GTK_WIDGET(gfe->priv->ssh_tunnel_auth_password), enabled);
 		gtk_widget_set_sensitive(GTK_WIDGET(gfe->priv->ssh_tunnel_auth_combo), enabled);
-		gtk_widget_set_sensitive(GTK_WIDGET(gfe->priv->ssh_tunnel_privatekey_chooser), enabled);
-		gtk_widget_set_sensitive(GTK_WIDGET(gfe->priv->ssh_tunnel_certfile_chooser), enabled);
 		//}
 		g_free(p);
 	}
@@ -1418,15 +1416,28 @@ static void remmina_file_editor_save_ssh_tunnel_tab(RemminaFileEditor *gfe)
 		priv->remmina_file,
 		"ssh_tunnel_auth",
 		ssh_tunnel_auth);
-	remmina_file_set_string(
+	
+	// If box is unchecked for private key and certfile file choosers,
+	// set the string to NULL in the remmina file 
+	if (gtk_widget_get_sensitive(priv->ssh_tunnel_privatekey_chooser)) {
+		remmina_file_set_string(
 		priv->remmina_file,
 		"ssh_tunnel_privatekey",
 		(priv->ssh_tunnel_privatekey_chooser ? gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(priv->ssh_tunnel_privatekey_chooser)) : NULL));
-
-	remmina_file_set_string(
-		priv->remmina_file,
-		"ssh_tunnel_certfile",
-		(priv->ssh_tunnel_certfile_chooser ? gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(priv->ssh_tunnel_certfile_chooser)) : NULL));
+	}
+	else {
+		remmina_file_set_string(priv->remmina_file, "ssh_tunnel_privatekey", NULL);
+	}
+	
+	if (gtk_widget_get_sensitive(priv->ssh_tunnel_certfile_chooser)) {
+		remmina_file_set_string(
+			priv->remmina_file,
+			"ssh_tunnel_certfile",
+			(priv->ssh_tunnel_certfile_chooser ? gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(priv->ssh_tunnel_certfile_chooser)) : NULL));
+	}
+	else {
+		remmina_file_set_string(priv->remmina_file, "ssh_tunnel_certfile", NULL);
+	}
 
 	remmina_file_set_string(
 		priv->remmina_file,
@@ -1534,10 +1545,14 @@ static GError *remmina_file_editor_update_settings(RemminaFileEditor *	gfe,
 
 	g_hash_table_iter_init(&iter, priv->setting_widgets);
 	while (g_hash_table_iter_next(&iter, &key, &widget)) {
+		
 		// We don't want to save or validate grayed-out settings.
-		if (!gtk_widget_get_sensitive(GTK_WIDGET(widget))) {
+		// If widget is a file chooser, it was made not sensitive because
+		// the box was unchecked. In that case, don't continue. The 
+		// relevant file strings will be set to NULL in the remmina file.
+		if (!gtk_widget_get_sensitive(GTK_WIDGET(widget)) && !GTK_IS_FILE_CHOOSER(widget)) {
 			g_debug("Grayed-out setting-widget '%s' will not be saved.",
-				gtk_widget_get_name(widget));
+			gtk_widget_get_name(widget));
 			continue;
 		}
 
@@ -1581,6 +1596,11 @@ static GError *remmina_file_editor_update_settings(RemminaFileEditor *	gfe,
 			remmina_file_set_string(priv->remmina_file, (gchar *)key, value);
 		} else if (GTK_IS_FILE_CHOOSER(widget)) {
 			gchar *value = gtk_widget_get_sensitive(GTK_WIDGET(widget)) ? gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(widget)) : NULL;
+
+			if (!gtk_widget_get_sensitive(GTK_WIDGET(widget))) {
+				remmina_file_set_string(priv->remmina_file, (gchar *)key, value);
+				continue;
+			}
 
 			if (!remmina_file_editor_validate_settings(gfe, (gchar *)key, value, &err)) {
 				// Error while validating!
