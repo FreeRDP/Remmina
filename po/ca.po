@@ -12,13 +12,14 @@
 # BennyBeat <bennybeat@gmail.com>, 2020, 2021.
 # Gil Obradors <gil.obradors@gmail.com>, 2021.
 # Gurnan Zaid <gurnan@gmail.com>, 2023.
+# Quim <quim@eccit.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2023-06-23 11:42+0000\n"
-"PO-Revision-Date: 2023-02-04 06:38+0000\n"
-"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"PO-Revision-Date: 2023-06-26 10:30+0000\n"
+"Last-Translator: Quim <quim@eccit.com>\n"
 "Language-Team: Catalan <https://hosted.weblate.org/projects/remmina/remmina/"
 "ca/>\n"
 "Language: ca\n"
@@ -26,7 +27,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.16-dev\n"
+"X-Generator: Weblate 4.18.1\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
 
 #: src/remmina_sftp_plugin.c:309 src/remmina_sftp_plugin.c:353
@@ -104,16 +105,13 @@ msgid "SFTP - Secure File Transfer"
 msgstr "SFTP - Transferència segura de fitxers"
 
 #: src/remmina_log.c:130
-#, fuzzy
-#| msgid "Open the Remmina main window"
 msgid "Remmina debugging window"
-msgstr "Obra la finestra principal de Remmina"
+msgstr "Finestra de depuració de Remmina"
 
 #: src/remmina_log.c:134
-#, fuzzy
-#| msgid "Open the Remmina main window"
 msgid "Paste system info in the Remmina debugging window"
-msgstr "Obra la finestra principal de Remmina"
+msgstr ""
+"Enganxeu la informació del sistema a la finestra de depuració de Remmina"
 
 #: src/remmina_log.c:155
 msgid ""
@@ -260,21 +258,14 @@ msgstr "Configura les pulsacions de tecles"
 
 #. TRANSLATORS: Do not translate libsodium, is the name of a library
 #: src/remmina_pref_dialog.c:479
-#, fuzzy
-#| msgid "libsodium >= 1.9.0 is required to use master password"
 msgid "libsodium >= 1.9.0 is required to use Primary Password"
-msgstr "Per a usar la contrasenya mestra cal el libsodium >= 1.9.0"
+msgstr "Per a usar la Contrasenya Primària cal el libsodium >= 1.9.0"
 
 #: src/remmina_pref_dialog.c:813
 msgid "Picking a terminal colouring file replaces the file: "
 msgstr "Trieu un fitxer de color per al terminal: "
 
 #: src/remmina_pref_dialog.c:817
-#, fuzzy
-#| msgid ""
-#| "This file contains the \"Custom\" terminal colour scheme selectable from "
-#| "the \"Advanced\" tab of terminal connections and editable in the "
-#| "\"Terminal\" tab in the settings."
 msgid ""
 "This file contains the “Custom” terminal colour scheme selectable from the "
 "“Advanced” tab of terminal connections and editable in the “Terminal” tab in "
@@ -348,12 +339,8 @@ msgid ""
 msgstr "Segur que voleu tancar %i connexions actives a la finestra actual?"
 
 #: src/rcw.c:681
-#, fuzzy
-#| msgid ""
-#| "Are you sure you want to close %i active connections in the current "
-#| "window?"
 msgid "Are you sure you want to close this last active connection?"
-msgstr "Segur que voleu tancar %i connexions actives a la finestra actual?"
+msgstr "Estàs segur que vols tancar aquesta última connexió activa?"
 
 #: src/rcw.c:1441
 msgid "Viewport fullscreen mode"
@@ -372,7 +359,6 @@ msgid "Fill client window when scaled"
 msgstr "Omple la finestra del client en canviar d'escala"
 
 #: src/rcw.c:2092
-#, fuzzy
 msgid "Send clipboard content as keystrokes"
 msgstr "Envia el contingut del porta-retalls com a pulsacions de tecles"
 
@@ -414,12 +400,10 @@ msgid "Screenshot taken"
 msgstr "S'ha fet una captura de pantalla"
 
 #: src/rcw.c:2351
-#, fuzzy
 msgid "_Menu"
-msgstr "_Menu"
+msgstr "_Menú"
 
 #: src/rcw.c:2352
-#, fuzzy
 msgid "Menu"
 msgstr "Menú"
 
@@ -441,7 +425,6 @@ msgstr "Commuta el mode de pantalla completa"
 
 #: src/rcw.c:2445 data/ui/remmina_preferences.glade:1325
 #: data/ui/remmina_preferences.glade:1335
-#, fuzzy
 msgid "Multi monitor"
 msgstr "Monitor múltiple"
 
@@ -502,12 +485,12 @@ msgstr ""
 "available-in-a-Wayland-session"
 
 #: src/rcw.c:4631
-#, fuzzy
-#| msgid "Warning: This plugin requires GtkSocket, but it’s not available."
 msgid ""
 "Warning: This plugin requires GtkSocket, but this feature is unavailable in "
 "a Wayland session."
-msgstr "Atenció: aquest connector requereix GtkSocket, però no és disponible."
+msgstr ""
+"Atenció: aquest connector requereix GtkSocket, però no és disponible en una "
+"sessió Wayland."
 
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. 'GtkSocket feature is not available'.
@@ -519,22 +502,25 @@ msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 msgstr ""
+"Els connectors que es basen en GtkSocket no es poden executar en una sessió "
+"de Wayland.\n"
+"Per obtenir més informació i una possible solució, visiteu la wiki de "
+"Remmina a:\n"
+"\n"
+"https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
+"available-in-a-Wayland-session"
 
 #: src/rcw.c:4651
-#, fuzzy
-#| msgid "Open Main Window"
 msgid "Open in web browser"
-msgstr "Obre la finestra principal"
+msgstr "Obrir al navegador web"
 
 #: src/remmina_mpchange.c:263
 msgid "The passwords do not match"
 msgstr "Les contrasenyes no coincideixen"
 
 #: src/remmina_mpchange.c:276
-#, fuzzy
-#| msgid "The passwords do not match"
 msgid "The Gateway passwords do not match"
-msgstr "Les contrasenyes no coincideixen"
+msgstr "Les contrasenyes Gateway no coincideixen"
 
 #: src/remmina_mpchange.c:290
 msgid "Resetting passwords, please wait…"
@@ -578,29 +564,21 @@ msgstr "FITXER"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:100
-#, fuzzy
-#| msgid ""
-#| "Connect to a desktop described in a file (.remmina or a type supported by "
-#| "a plugin)"
 msgid ""
 "Connect to a desktop described in a file (.remmina or a filetype supported "
 "by a plugin)"
 msgstr ""
-"Connecta a l'escriptori indicat en un fitxer (.remina o un tipus compatible "
-"amb el connector)"
+"Connecta a l'escriptori indicat en un fitxer (.remina o un tipus de fitxer "
+"compatible amb el connector)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:102
-#, fuzzy
-#| msgid ""
-#| "Edit desktop connection described in file (.remmina or type supported by "
-#| "plugin)"
 msgid ""
 "Edit desktop connection described in file (.remmina or a filetype supported "
 "by plugin)"
 msgstr ""
 "Edita la connexió de l'escriptori descrita en el fitxer (.remmina o un tipus "
-"compatible amb el connector)"
+"de fitxer compatible amb el connector)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:105
@@ -676,28 +654,25 @@ msgid "Encrypt a password"
 msgstr "Xifra una contrasenya"
 
 #: src/remmina.c:132
-#, fuzzy
-#| msgid "Disable clipboard sync"
 msgid "Disable toolbar"
-msgstr "Desactiva la sincronització amb el porta-retalls"
+msgstr "Desactiva la barra d'eines"
 
 #: src/remmina.c:133
-#, fuzzy
-#| msgid "Scrolled fullscreen"
 msgid "Enable fullscreen"
-msgstr "Pantalla completa amb desplaçament"
+msgstr "Activar la pantalla completa"
 
 #: src/remmina.c:134
 msgid ""
 "Enable extra hardening (disable closing confirmation, disable unsafe "
 "shortcut keys, hide tabs, hide search bar)"
 msgstr ""
+"Habilita l'enduriment addicional (desactiva la confirmació de tancament, "
+"desactiva les tecles de drecera insegures, amaga les pestanyes, amaga la "
+"barra de cerca)"
 
 #: src/remmina.c:135
-#, fuzzy
-#| msgid "Dark tray icon"
 msgid "Disable tray icon"
-msgstr "Icona fosca a l'àrea de notificació"
+msgstr "Desactiva la icona de la safata"
 
 #. TRANSLATORS:
 #. * This link should point to a resource explaining how to get Remmina
@@ -710,6 +685,10 @@ msgid ""
 "More info available on the Remmina wiki at:\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgstr ""
+"Remmina no registra totes les declaracions de sortida. Activeu una sortida "
+"més detallada utilitzant \"G_MESSAGES_DEBUG=all\" com a variable d'entorn.\n"
+"Més informació disponible al wiki de Remmina a:\n"
+"https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:418
@@ -784,18 +763,17 @@ msgstr ""
 "password\n"
 
 #: src/remmina_public.c:347
-#, fuzzy, c-format
+#, c-format
 msgid "Address is too long for UNIX socket_path: %s"
-msgstr "L'adreça és massa llarga per a unix socket_path: %s"
+msgstr "L'adreça és massa llarga per a UNIX socket_path: %s"
 
 #: src/remmina_public.c:357
-#, fuzzy, c-format
+#, c-format
 msgid "Creating UNIX socket failed: %s"
-msgstr "S'ha produït un sòcol UNIX: %s"
+msgstr "La creació del sòcol UNIX ha fallat: %s"
 
 #: src/remmina_public.c:363
-#, fuzzy, c-format
-#| msgid "VNC connection failed: %s"
+#, c-format
 msgid "Connecting to UNIX socket failed: %s"
 msgstr "No s'ha pogut connectar al sòcol UNIX: %s"
 
@@ -911,7 +889,7 @@ msgstr "Permisos"
 
 #: src/remmina_ftp_client.c:969
 msgid "Modified"
-msgstr ""
+msgstr "Modificat"
 
 #: src/remmina_ftp_client.c:1021 plugins/rdp/rdp_plugin.c:2690
 msgid "Remote"
@@ -1059,8 +1037,6 @@ msgid "Could not authenticate with SSH password. %s"
 msgstr "No s'ha pogut autenticar amb la contrasenya SSH. %s"
 
 #: src/remmina_ssh.c:830 src/remmina_ssh.c:897
-#, fuzzy
-#| msgid "No saved SSH passphrase supplied. Asking user to enter it."
 msgid "No saved SSH password supplied. Asking user to enter it."
 msgstr ""
 "No hi ha cap contrasenya SSH desada. Es demana a l'usuari que l'hi "
@@ -1322,7 +1298,6 @@ msgid "Plugin %s is not registered."
 msgstr "El connector %s no està registrat."
 
 #: src/remmina_main.c:733
-#, fuzzy
 msgid "The latest successful connection attempt, or a pre-computed date"
 msgstr "L'últim intent de connexió amb èxit o una data pre-calculada"
 
@@ -1335,11 +1310,11 @@ msgstr[1] "%i elements en total."
 
 #: src/remmina_main.c:743
 msgid "Network status: fully online"
-msgstr ""
+msgstr "Estat de la xarxa: totalment en línia"
 
 #: src/remmina_main.c:746
 msgid "Network status: offline"
-msgstr ""
+msgstr "Estat de la xarxa: fora de línia"
 
 #: src/remmina_main.c:999
 #, c-format
@@ -1347,14 +1322,12 @@ msgid "Are you sure you want to delete “%s”?"
 msgstr "Segur que voleu suprimir «%s»?"
 
 #: src/remmina_main.c:1021
-#, fuzzy
-#| msgid "Are you sure to delete the selected files on server?"
 msgid "Are you sure you want to delete the selected files?"
-msgstr "Segur que voleu suprimir els fitxers seleccionats del servidor?"
+msgstr "Segur que voleu suprimir els fitxers seleccionats?"
 
 #: src/remmina_main.c:1032
 msgid "Failed to delete files!"
-msgstr ""
+msgstr "No s'han pogut esborrar fitxers!"
 
 #: src/remmina_main.c:1213
 #, c-format
@@ -1465,12 +1438,6 @@ msgid "The following file already exists in the target folder:"
 msgstr "El fitxer següent ja existeix a la carpeta de destinació:"
 
 #: src/remmina_file_editor.c:60
-#, fuzzy
-#| msgid ""
-#| "<tt><big>Supported formats\n"
-#| "• server\n"
-#| "• server:port\n"
-#| "• [server]:port</big></tt>"
 msgid ""
 "<big>Supported formats\n"
 "• server\n"
@@ -1487,20 +1454,6 @@ msgstr ""
 "• unix:///path/socket.sock</big>"
 
 #: src/remmina_file_editor.c:69
-#, fuzzy
-#| msgid ""
-#| "<tt><big>• command in PATH args %h\n"
-#| "• /path/to/foo -options %h %u\n"
-#| "• %h is substituted with the server name\n"
-#| "• %t is substituted with the SSH server name\n"
-#| "• %u is substituted with the username\n"
-#| "• %U is substituted with the SSH username\n"
-#| "• %p is substituted with Remmina profile name\n"
-#| "• %g is substituted with Remmina profile group name\n"
-#| "• %d is substituted with local date and time in ISO 8601 format\n"
-#| "Do not run in background if you want the command to be executed before "
-#| "connecting.\n"
-#| "</big></tt>"
 msgid ""
 "<big>• command in PATH args %h\n"
 "• /path/to/foo -options %h %u\n"
@@ -1515,7 +1468,7 @@ msgid ""
 "connecting.\n"
 "</big>"
 msgstr ""
-"<tt><big>• ordre en arguments de CAMÍ %h\n"
+"<big>• ordre en arguments de CAMÍ %h\n"
 "• /camí/a/enlloc -opcions %h %u\n"
 "• %h se substitueix pel nom del servidor\n"
 "• %t se substitueix pel nom del servidor SSH\n"
@@ -1526,7 +1479,7 @@ msgstr ""
 "• %d se substitueix per la data i hora local en format ISO 8601\n"
 "No l'executeu al rerefons si voleu que l'ordre s'executi abans que es faci "
 "la connexió.\n"
-"</big></tt>"
+"</big>"
 
 #: src/remmina_file_editor.c:83
 #, fuzzy
@@ -1670,14 +1623,14 @@ msgid "Notes"
 msgstr "Notes"
 
 #: src/remmina_file_editor.c:1460
-#, fuzzy, c-format
+#, c-format
 msgid "(%s: %i): Can't validate setting '%s' since 'value' or 'gfe' are NULL!"
 msgstr ""
 "(%s: %i): No es pot validar la configuració '%s' ja que 'valor' o 'gfe' són "
 "NULL!"
 
 #: src/remmina_file_editor.c:1464
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "(%s: %i): Can't validate user input since 'setting_name_to_validate', "
 "'value' or 'gfe' are NULL!"
@@ -1688,15 +1641,12 @@ msgstr ""
 #. TRANSLATORS: Meta-error. Shouldn't be visible.
 #: src/remmina_file_editor.c:1468 plugins/x2go/x2go_plugin.c:2574
 #: plugins/x2go/x2go_plugin.c:3224
-#, fuzzy
-#| msgid "Transfer error"
 msgid "Internal error."
-msgstr "Error intern"
+msgstr "Error intern."
 
 #: src/remmina_file_editor.c:1700 src/remmina_file_editor.c:1736
 #: src/remmina_file_editor.c:1757 src/remmina_file_editor.c:1780
-#, fuzzy, c-format
-#| msgid "Could not create SFTP session. %s"
+#, c-format
 msgid "Couldn't validate user input. %s"
 msgstr "No s'ha pogut validar l'entrada de l'usuari. %s"
 
@@ -1751,13 +1701,12 @@ msgstr "No s'ha pogut trobar el fitxer «%s»."
 #. TRANSLATORS: This is a message that pops up when an external Remmina plugin tries to set the window resolution using a legacy parameter.
 #. TRANSLATORS: This is a message that pop-up when an external Remmina plugin tries to set the windows resolution using a legacy parameter.
 #: src/remmina_file.c:494 src/remmina_file.c:540
-#, fuzzy
 msgid ""
 "Using the «resolution» parameter in the Remmina preferences file is "
 "deprecated.\n"
 msgstr ""
-"S'obsoleta l'ús del paràmetre «resolució» del fitxer de preferències "
-"Remmina.\n"
+"S'obsoleta l'ús del paràmetre «resolució» del fitxer de preferències Remmina."
+"\n"
 
 #: src/remmina_icon.c:136
 msgid "Open Main Window"
@@ -1791,25 +1740,24 @@ msgid "Connect to remote desktops through the applet menu"
 msgstr "Connecta amb escriptoris remots mitjançant el menú de la miniaplicació"
 
 #: src/remmina_icon.c:365
-#, fuzzy
 msgid "StatusNotifier/Appindicator support in “"
 msgstr "Assistència tècnica de StatusNotifier/Appindicator in \""
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:372
-#, fuzzy, c-format
+#, c-format
 msgid "%s your desktop does support it"
 msgstr "%s l'escriptori sí que ho admet"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:374
-#, fuzzy, c-format
+#, c-format
 msgid "%s and Remmina has built-in (compiled) support for libappindicator."
 msgstr "%s i Remmina té suport incorporat (compilat) per a libappindicator."
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:377
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%s not supported natively by your Desktop Environment. libappindicator will "
 "try to fallback to GtkStatusIcon/xembed"
@@ -1819,7 +1767,7 @@ msgstr ""
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:381
-#, fuzzy, c-format
+#, c-format
 msgid "%s You may need to install, and use XApp Status Applet"
 msgstr ""
 "%s És possible que hagis d'instal·lar i utilitzar la miniaplicació d'estat "
@@ -1827,13 +1775,13 @@ msgstr ""
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:384
-#, fuzzy, c-format
+#, c-format
 msgid "%s You may need to install, and use KStatusNotifierItem"
 msgstr "%s És possible que hàgiu d' instal· lar i usar el KStatusNotifierItem"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:387
-#, fuzzy, c-format
+#, c-format
 msgid "%s You may need to install, and use XEmbed SNI Proxy"
 msgstr ""
 "%s És possible que hàgiu d'instal·lar i utilitzar el servidor intermediari "
@@ -1841,17 +1789,16 @@ msgstr ""
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:390
-#, fuzzy, c-format
+#, c-format
 msgid "%s You may need to install, and use Gnome Shell Extension Appindicator"
 msgstr ""
 "%s És possible que hàgiu d'instal·lar i utilitzar l'assignador d'extensions "
 "de l'intèrpret d'ordres del Gnome"
 
 #: src/remmina_ssh_plugin.c:343
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s:%d via SSH"
-msgstr "S’està connectant a «%s» mitjançant SSH…"
+msgstr "Connectat a «%s:%d» mitjançant SSH"
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_ssh_plugin.c:551
@@ -1892,10 +1839,9 @@ msgid "Find text (host+G)"
 msgstr "Troba text (amfitrió+G)"
 
 #: src/remmina_ssh_plugin.c:896
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Disconnected from %s:%d via SSH"
-msgstr "S’està connectant a «%s» mitjançant SSH…"
+msgstr "Desconnectat de «%s:%d» mitjançant SSH"
 
 #: src/remmina_ssh_plugin.c:1473 data/ui/remmina_main.glade:178
 msgid "Copy"
@@ -2021,12 +1967,10 @@ msgid "Log SSH session when exiting Remmina"
 msgstr "Registra la sessió SSH en sortir del Remmina"
 
 #: src/remmina_ssh_plugin.c:1548
-#, fuzzy
 msgid "Log SSH session asynchronously"
 msgstr "Registra la sessió SSH de manera asíncrona"
 
 #: src/remmina_ssh_plugin.c:1548
-#, fuzzy
 msgid "Saving the session asynchronously may have a notable performance impact"
 msgstr ""
 "Desar la sessió de manera asíncrona pot tenir un impacte de rendiment notable"
@@ -2037,7 +1981,7 @@ msgstr "Timbre audible del terminal"
 
 #: src/remmina_ssh_plugin.c:1550
 msgid "SSH X11 Forwarding"
-msgstr ""
+msgstr "Reenviament SSH X11"
 
 #: src/remmina_ssh_plugin.c:1551
 msgid "SSH compression"
@@ -2100,20 +2044,16 @@ msgid "Use client keyboard mapping"
 msgstr "Utilitza la disposició del teclat del client"
 
 #: plugins/rdp/rdp_settings.c:466
-#, fuzzy
-#| msgid "Keyboard mapping"
 msgid "Keyboard scancode remapping"
-msgstr "Remapping del codi d'escaneig del teclat"
+msgstr "Remapeig del codi d'escaneig del teclat"
 
 #: plugins/rdp/rdp_settings.c:481
-#, fuzzy
 msgid "List of key=value,… pairs to remap scancodes. E.g. 0x56=0x29,0x29=0x56"
 msgstr ""
 "Llista de key=valor,... parells per tornar a mapejar codis d'escaneig. Per "
 "exemple 0x56=0x29,0x29=0x56"
 
 #: plugins/rdp/rdp_settings.c:484
-#, fuzzy
 msgid "FreeRDP > 2.3.0 is required to map scancodes"
 msgstr "FreeRDP > 2.3.0 és necessari per assignar codis d'escaneig"
 
@@ -2170,36 +2110,28 @@ msgid "Desktop orientation"
 msgstr "Orientació de l’escriptori"
 
 #: plugins/rdp/rdp_settings.c:648
-#, fuzzy
-#| msgid "Use system proxy settings"
 msgid "Input device settings"
 msgstr "Configuració del dispositiu d'entrada"
 
 #: plugins/rdp/rdp_settings.c:656 plugins/rdp/rdp_plugin.c:2820
 #: plugins/vnc/vnc_plugin.c:2112
-#, fuzzy
-#| msgid "Turn on smooth scrolling"
 msgid "Disable smooth scrolling"
-msgstr "Inhabilita el desplaçament suau"
+msgstr "Desactiva el desplaçament suau"
 
 #: plugins/rdp/rdp_settings.c:667
-#, fuzzy
-#| msgid "Quality settings"
 msgid "General settings"
 msgstr "Configuració general"
 
 #: plugins/rdp/rdp_settings.c:674 plugins/rdp/rdp_plugin.c:2873
-#, fuzzy
-#| msgid "Reconnection attempt %d of %d…"
 msgid "Reconnect attempts number"
-msgstr "Tornar a connectar el número"
+msgstr "Número d'intents de reconnexió"
 
 #: plugins/rdp/rdp_settings.c:687 plugins/rdp/rdp_plugin.c:2873
-#, fuzzy
 msgid ""
 "The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
 msgstr ""
-"Nombre màxim d'intents de reconnexió en una desconnexió RDP (per defecte: 20)"
+"Nombre màxim d'intents de reconnexió per una desconnexió RDP (per defecte: "
+"20)"
 
 #: plugins/rdp/rdp_plugin.c:789 plugins/rdp/rdp_plugin.c:854
 msgid "Enter RDP authentication credentials"
@@ -2213,7 +2145,7 @@ msgstr "Introduïu les credencials d'autenticació de la passarel·la RDP"
 #: plugins/rdp/rdp_plugin.c:1043
 #, c-format
 msgid "Disconnected from %s via RDP"
-msgstr ""
+msgstr "Desconnectat de %s via RDP"
 
 #: plugins/rdp/rdp_plugin.c:2195
 #, c-format
@@ -2462,27 +2394,27 @@ msgstr "Per defecte"
 
 #: plugins/rdp/rdp_plugin.c:2716
 msgid "0 — Windows 7 compatible"
-msgstr ""
+msgstr "0 — Compatible amb Windows 7"
 
 #: plugins/rdp/rdp_plugin.c:2717
 msgid "1"
-msgstr ""
+msgstr "1"
 
 #: plugins/rdp/rdp_plugin.c:2718
 msgid "2"
-msgstr ""
+msgstr "2"
 
 #: plugins/rdp/rdp_plugin.c:2719
 msgid "3"
-msgstr ""
+msgstr "3"
 
 #: plugins/rdp/rdp_plugin.c:2720
 msgid "4"
-msgstr ""
+msgstr "4"
 
 #: plugins/rdp/rdp_plugin.c:2721
 msgid "5"
-msgstr ""
+msgstr "5"
 
 #: plugins/rdp/rdp_plugin.c:2726
 msgid "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 and newer)"
@@ -2582,18 +2514,6 @@ msgstr ""
 "Si l'autodetecció falla, trieu l'opció més apropiada en la llista.\n"
 
 #: plugins/rdp/rdp_plugin.c:2772
-#, fuzzy
-#| msgid ""
-#| "Comma separated list of monitor IDs and desktop orientations:\n"
-#| "  • [<id>:<orientation-in-degrees>,]\n"
-#| "  • 0,1,2,3\n"
-#| "  • 0:270,1:90\n"
-#| "Orientations are specified in degrees, valid values are:\n"
-#| "  •   0 (landscape)\n"
-#| "  •  90 (portrait)\n"
-#| "  • 180 (landscape flipped)\n"
-#| "  • 270 (portrait flipped)\n"
-#| "\n"
 msgid ""
 "Comma-separated list of monitor IDs and desktop orientations:\n"
 "  • [<id>:<orientation-in-degrees>,]\n"
@@ -2618,7 +2538,6 @@ msgstr ""
 "\n"
 
 #: plugins/rdp/rdp_plugin.c:2784
-#, fuzzy
 msgid ""
 "Redirect directory <path> as named share <name>.\n"
 "  • <name>,<fullpath>[;<name>,<fullpath>[;…]]\n"
@@ -2643,48 +2562,38 @@ msgid "Share folder"
 msgstr "Comparteix una carpeta"
 
 #: plugins/rdp/rdp_plugin.c:2817
-#, fuzzy
 msgid "Restricted admin mode"
 msgstr "Mode d'administració restringit"
 
 #: plugins/rdp/rdp_plugin.c:2818
-#, fuzzy
-#| msgid "Password"
 msgid "Password hash"
 msgstr "Hash de contrasenya"
 
 #: plugins/rdp/rdp_plugin.c:2818
-#, fuzzy
 msgid "Restricted admin mode password hash"
 msgstr "Hash de contrasenya del mode d'administració restringit"
 
 #: plugins/rdp/rdp_plugin.c:2819
-#, fuzzy
 msgid "Left-handed mouse support"
-msgstr "Suport del ratolí esquerrà"
+msgstr "Suport del ratolí a mà esquerra"
 
 #: plugins/rdp/rdp_plugin.c:2819
-#, fuzzy
 msgid "Swap left and right mouse buttons for left-handed mouse support"
 msgstr ""
 "Intercanvia botons esquerres i dret del ratolí per al suport del ratolí "
 "esquerrà"
 
 #: plugins/rdp/rdp_plugin.c:2821
-#, fuzzy
 msgid "Enable multi monitor"
-msgstr "Habilita el multi monitor"
+msgstr "Habilita el monitor múltiple"
 
 #: plugins/rdp/rdp_plugin.c:2822
-#, fuzzy
 msgid "Span screen over multiple monitors"
-msgstr "Pantalla d'abast en múltiples monitors"
+msgstr "Pantalla d'extensió a diversos monitors"
 
 #: plugins/rdp/rdp_plugin.c:2823
-#, fuzzy
-#| msgid "Listen on port"
 msgid "List monitor IDs"
-msgstr "IDs del monitor de llista"
+msgstr "ID del monitor de llista"
 
 #: plugins/rdp/rdp_plugin.c:2825 plugins/vnc/vnc_plugin.c:2081
 #: plugins/vnc/vnc_plugin.c:2093 plugins/gvnc/gvnc_plugin.c:848
@@ -2840,15 +2749,12 @@ msgid "Static virtual channel"
 msgstr "Canal virtual estàtic"
 
 #: plugins/rdp/rdp_plugin.c:2872
-#, fuzzy
-#| msgid "USB redirection error"
 msgid "TCP redirection"
 msgstr "Redirecció TCP"
 
 #: plugins/rdp/rdp_plugin.c:2872
-#, fuzzy
 msgid "/PATH/TO/rdp2tcp"
-msgstr "/PATH/TO/rdp2tcp"
+msgstr "/CAMÍ/A/rdp2tcp"
 
 #: plugins/rdp/rdp_plugin.c:2874
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
@@ -2943,7 +2849,7 @@ msgstr "Habilita el suport de websockets de passarel·la"
 
 #: plugins/rdp/rdp_plugin.c:2898
 msgid "Update framebuffer even when not visible"
-msgstr ""
+msgstr "Actualitza el framebuffer encara que no sigui visible"
 
 #: plugins/rdp/rdp_plugin.c:2907 plugins/spice/spice_plugin.c:707
 #: plugins/spice/spice_plugin.c:715 plugins/vnc/vnc_plugin.c:2119
@@ -2980,10 +2886,9 @@ msgstr "Intent de reconnexió %d de %d…"
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_event.c:1158
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s via RDP"
-msgstr "S’està connectant a «%s» mitjançant SSH…"
+msgstr "Connectat a «%s» mitjançant SSH"
 
 #: plugins/spice/spice_plugin_file_transfer.c:82
 msgid "File Transfers"
@@ -3017,16 +2922,14 @@ msgid "Disconnected from the SPICE server “%s”."
 msgstr "S'ha desconnectat del servidor SPICE «%s»."
 
 #: plugins/spice/spice_plugin.c:388
-#, fuzzy, c-format
-#| msgid "Disconnected from the SPICE server “%s”."
+#, c-format
 msgid "Disconnected from %s:%d via SPICE"
-msgstr "S'ha desconnectat del servidor SPICE «%s»."
+msgstr "Desconnectat de %s:%d mitjançant SPICE"
 
 #: plugins/spice/spice_plugin.c:391
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s:%d via SPICE"
-msgstr "S’està connectant a «%s» mitjançant SSH…"
+msgstr "Connectat a %s:%d mitjançant SPICE"
 
 #: plugins/spice/spice_plugin.c:403
 msgid "TLS connection error."
@@ -3138,21 +3041,19 @@ msgid "Please retry after turning on encryption for this profile."
 msgstr "Torneu a provar-ho en activar el xifratge en aquest perfil."
 
 #: plugins/vnc/vnc_plugin.c:1719
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s via VNC"
-msgstr "S’està connectant a «%s» mitjançant SSH…"
+msgstr "Connectat a %s mitjançant VNC"
 
 #: plugins/vnc/vnc_plugin.c:1726
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s:%d via VNC"
-msgstr "S’està connectant a «%s» mitjançant SSH…"
+msgstr "Connectat a %s:%d mitjançant VNC"
 
 #: plugins/vnc/vnc_plugin.c:1749
 #, c-format
 msgid "Disconnected from %s:%d via VNC"
-msgstr ""
+msgstr "Desconnectat de %s:%d mitjançant VNC"
 
 #: plugins/vnc/vnc_plugin.c:2034
 #, fuzzy
@@ -3192,6 +3093,7 @@ msgstr ""
 "    x11vnc -display :0 -connect 192.168.1.36:8888"
 
 #: plugins/vnc/vnc_plugin.c:2051
+#, fuzzy
 msgid ""
 "Overriding the pre-set VNC encoding quality:\n"
 "\n"
@@ -3203,6 +3105,16 @@ msgid ""
 "  • “Best (slowest)” sets encoding to “copyrect zrle ultra zlib hextile "
 "corre rre raw”"
 msgstr ""
+"Anulant la qualitat de codificació VNC predeterminada:\n"
+"\n"
+"  • \"Pobre (més ràpid)\" estableix la codificació en \"copyrect zlib "
+"hextile raw\"\n"
+"  • \"Mitjà\" estableix la codificació en \"tight zrle ultra copyrect "
+"hextile zlib corre rre raw\"\n"
+"  • \"Bona\" estableix la codificació en \"tight zrle ultra copyrect hextile "
+"zlib corre rre raw\"\n"
+"  • “Millor (més lent)” estableix la codificació en “copyrect zrle ultra "
+"zlib hextile corre rre raw”"
 
 #: plugins/vnc/vnc_plugin.c:2078
 msgid "Repeater"
@@ -3214,20 +3126,19 @@ msgstr "Escolta pel port"
 
 #: plugins/vnc/vnc_plugin.c:2110
 msgid "Override pre-set VNC encodings"
-msgstr ""
+msgstr "Substituïu les codificacions VNC preestablertes"
 
 #: plugins/vnc/vnc_plugin.c:2111
 msgid "Force tight encoding"
-msgstr ""
+msgstr "Força la codificació estricta"
 
 #: plugins/vnc/vnc_plugin.c:2111
 msgid "Enabling this may help when the remote desktop looks scrambled"
-msgstr ""
+msgstr "Habilitar això pot ajudar quan l'escriptori remot es veu remogut"
 
 #: plugins/vnc/vnc_plugin.c:2114 plugins/gvnc/gvnc_plugin.c:867
-#, fuzzy
 msgid "Ignore remote bell messages"
-msgstr "Ignora els missatges remots de campana"
+msgstr "Ignora els missatges de campana remota"
 
 #: plugins/vnc/vnc_plugin.c:2115 plugins/vnc/vnc_plugin.c:2133
 msgid "Prevent local interaction on the server"
@@ -3340,7 +3251,7 @@ msgstr "Execució asíncrona"
 
 #: plugins/exec/exec_plugin.c:299
 msgid "Kill process on disconnect"
-msgstr ""
+msgstr "Mata el procés en desconnectar"
 
 #: plugins/exec/exec_plugin_config.h:41
 msgid "Execute a command"
@@ -3360,6 +3271,8 @@ msgid ""
 "The command-line feature '%s' is not available! Attempting to start PyHoca-"
 "CLI without using this feature…"
 msgstr ""
+"La funció de línia d'ordres '%s' no està disponible! Intentant iniciar "
+"PyHoca-CLI sense utilitzar aquesta característica…"
 
 #: plugins/x2go/x2go_plugin.c:296 plugins/x2go/x2go_plugin.c:428
 #: plugins/x2go/x2go_plugin.c:517 plugins/x2go/x2go_plugin.c:624
@@ -3377,15 +3290,14 @@ msgstr ""
 #: plugins/x2go/x2go_plugin.c:3304 plugins/x2go/x2go_plugin.c:3319
 #: plugins/x2go/x2go_plugin.c:3324 plugins/x2go/x2go_plugin.c:3329
 #: plugins/x2go/x2go_plugin.c:3334
-#, fuzzy, c-format
-#| msgid "Transfer error"
+#, c-format
 msgid "Internal error: %s"
-msgstr "Error intern: "
+msgstr "Error intern: %s"
 
 #: plugins/x2go/x2go_plugin.c:297 plugins/x2go/x2go_plugin.c:429
 #: plugins/x2go/x2go_plugin.c:518 plugins/x2go/x2go_plugin.c:1349
 msgid "Parameter 'custom_data' is not initialized!"
-msgstr ""
+msgstr "El paràmetre 'custom_data' no està inicialitzat!"
 
 #: plugins/x2go/x2go_plugin.c:310
 #, fuzzy
@@ -3393,7 +3305,6 @@ msgid "Broken `DialogData`! Aborting…"
 msgstr "Trencat 'DialogData'! S'està avortant…"
 
 #: plugins/x2go/x2go_plugin.c:314
-#, fuzzy
 msgid "Can't retrieve `DialogData`! Aborting…"
 msgstr "No es pot recuperar 'DialogData'! S'està avortant…"
 
@@ -3415,15 +3326,15 @@ msgstr "Permisos"
 
 #: plugins/x2go/x2go_plugin.c:479
 msgid "Create date"
-msgstr ""
+msgstr "Data de creació"
 
 #: plugins/x2go/x2go_plugin.c:480
 msgid "Suspended since"
-msgstr ""
+msgstr "Suspesa des de"
 
 #: plugins/x2go/x2go_plugin.c:481
 msgid "Agent PID"
-msgstr ""
+msgstr "Agent PID"
 
 #: plugins/x2go/x2go_plugin.c:483
 #, fuzzy
@@ -3433,15 +3344,15 @@ msgstr "Nom d'usuari"
 
 #: plugins/x2go/x2go_plugin.c:484
 msgid "Cookie"
-msgstr ""
+msgstr "Galeta"
 
 #: plugins/x2go/x2go_plugin.c:485
 msgid "Graphic port"
-msgstr ""
+msgstr "Port gràfic"
 
 #: plugins/x2go/x2go_plugin.c:486
 msgid "SND port"
-msgstr ""
+msgstr "Port SND"
 
 #: plugins/x2go/x2go_plugin.c:487
 #, fuzzy
@@ -3450,7 +3361,6 @@ msgid "SSHFS port"
 msgstr "Port SSH local"
 
 #: plugins/x2go/x2go_plugin.c:488
-#, fuzzy
 msgid "Visible"
 msgstr "Visible"
 
@@ -3475,40 +3385,44 @@ msgstr "Reprèn"
 
 #: plugins/x2go/x2go_plugin.c:541
 msgid "_New"
-msgstr ""
+msgstr "_Nou"
 
 #. TRANSLATORS: Tooltip for terminating button inside Session-Chooser-Dialog.
 #. TRANSLATORS: Please stick to X2GoClient's way of translating.
 #: plugins/x2go/x2go_plugin.c:550
 msgid "Terminating X2Go sessions can take a moment."
-msgstr ""
+msgstr "La finalització de les sessions X2Go pot trigar un moment."
 
 #: plugins/x2go/x2go_plugin.c:625 plugins/x2go/x2go_plugin.c:627
 #, c-format
 msgid "Unknown property '%i'"
-msgstr ""
+msgstr "Propietat desconeguda '%i'"
 
 #: plugins/x2go/x2go_plugin.c:715 plugins/x2go/x2go_plugin.c:762
 msgid "Could not find child GtkTreeView of session chooser dialog."
 msgstr ""
+"No s'ha pogut trobar fill de GtkTreeView del diàleg de selecció de sessions."
 
 #: plugins/x2go/x2go_plugin.c:727
+#, fuzzy
 msgid ""
 "Neither the 'dialog' nor 'treeview' parameters are initialized! At least one "
 "of them must be given."
 msgstr ""
+"Ni els paràmetres \"dialog\" ni \"treeview\" estan inicialitzats! S'ha de "
+"donar almenys un d'ells."
 
 #: plugins/x2go/x2go_plugin.c:736
 msgid ""
 "Could not obtain \"GtkTreeModelFilter*\" of the session chooser dialog, for "
 "unknown reason."
 msgstr ""
+"Per raons desconogudes, no s'ha pogut obtenir \"GtkTreeModelFilter*\" del "
+"diàleg de selecció de sessió."
 
 #: plugins/x2go/x2go_plugin.c:771
-#, fuzzy
-#| msgid "Could not start SSH session. %s"
 msgid "Could not get currently selected row (session)!"
-msgstr "No s'ha pogut iniciar la sessió X2Go."
+msgstr "No s'ha pogut obtenir la fila seleccionada (sessió)!"
 
 #: plugins/x2go/x2go_plugin.c:790
 #, c-format
@@ -3516,25 +3430,26 @@ msgid ""
 "Exactly one session should be selectable but '%i' rows (sessions) are "
 "selected."
 msgstr ""
+"S'ha de poder seleccionar exactament una sessió, però se seleccionen les "
+"files \"%i\" (sessions)."
 
 #: plugins/x2go/x2go_plugin.c:840
 msgid "Failed to fill 'GtkTreeIter'."
-msgstr ""
+msgstr "No s'ha pogut omplir el 'GtkTreeIter'."
 
 #: plugins/x2go/x2go_plugin.c:906
 msgid "parameter 'argv' is 'NULL'."
-msgstr ""
+msgstr "El paràmetre 'argv' és 'NULL'."
 
 #: plugins/x2go/x2go_plugin.c:917
 msgid "parameter 'error' is 'NULL'."
-msgstr ""
+msgstr "paràmetre 'error' és 'NULL'."
 
 #: plugins/x2go/x2go_plugin.c:925
 msgid "parameter 'env' is either invalid or uninitialized."
-msgstr ""
+msgstr "El paràmetre 'env' no és vàlid o no està iniciat."
 
 #: plugins/x2go/x2go_plugin.c:941 plugins/x2go/x2go_plugin.c:2553
-#, fuzzy
 msgid "Started PyHoca-CLI with the following arguments:"
 msgstr "S'ha iniciat PyHoca-CLI amb els següents arguments:"
 
@@ -3543,20 +3458,25 @@ msgid ""
 "The necessary PyHoca-CLI process has encountered a internet connection "
 "problem."
 msgstr ""
+"El procés necessari PyHoca-CLI s'ha trobat amb un problema de connexió a "
+"Internet."
 
 #: plugins/x2go/x2go_plugin.c:982
-#, fuzzy, c-format
-#| msgid "Could not start SSH session. %s"
+#, c-format
 msgid ""
 "Could not start PyHoca-CLI:\n"
 "%s"
-msgstr "No s'ha pogut iniciar El PiHoca-CLI (%i): '%s'"
+msgstr ""
+"No s'ha pogut arrencar PyHoca-CLI:\n"
+"%s"
 
 #: plugins/x2go/x2go_plugin.c:993
 #, c-format
 msgid ""
 "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i"
 msgstr ""
+"S'ha produït un error desconegut en intentar iniciar PyHoca-CLI. Codi de "
+"sortida: %i"
 
 #: plugins/x2go/x2go_plugin.c:1000
 #, c-format
@@ -3564,14 +3484,16 @@ msgid ""
 "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i. "
 "Error: '%s'"
 msgstr ""
+"S'ha produït un error desconegut en intentar iniciar PyHoca-CLI. Codi de "
+"sortida: %i. Error: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:1044
 msgid "Neither the 'path' nor 'dialog' parameters are initialized."
-msgstr ""
+msgstr "Ni els paràmetres \"camí\" ni \"diàleg\" estan inicialitzats."
 
 #: plugins/x2go/x2go_plugin.c:1060
 msgid "GtkTreePath 'path' describes a non-existing row!"
-msgstr ""
+msgstr "El 'camí' del GtkTreePath descriu una fila inexistent!"
 
 #: plugins/x2go/x2go_plugin.c:1112 plugins/x2go/x2go_plugin.c:1122
 #: plugins/x2go/x2go_plugin.c:2211
@@ -3582,42 +3504,43 @@ msgstr "Connexió compartida"
 
 #: plugins/x2go/x2go_plugin.c:1154
 msgid "Parameter 'custom_data' is not fully initialized!"
-msgstr ""
+msgstr "El paràmetre 'custom_data' no està completament inicialitzat!"
 
 #: plugins/x2go/x2go_plugin.c:1276
-#, fuzzy, c-format
-#| msgid "Could not start SSH session. %s"
+#, c-format
 msgid ""
 "Could not terminate X2Go session '%s':\n"
 "%s"
-msgstr "No s'ha pogut iniciar la sessió X2Go."
+msgstr ""
+"No s'ha pogut finalitzar la sessió X2Go '%s':\n"
+"%s"
 
 #: plugins/x2go/x2go_plugin.c:1288 plugins/x2go/x2go_plugin.c:1665
-#, fuzzy
 msgid "An error occured."
-msgstr "Hi ha hagut un error"
+msgstr "Hi ha hagut un error."
 
 #: plugins/x2go/x2go_plugin.c:1389 plugins/x2go/x2go_plugin.c:1404
 msgid "Could not get session ID from session chooser dialog."
 msgstr ""
+"No s'ha pogut obtenir l'identificador de sessió des del diàleg de selecció "
+"de sessió."
 
 #: plugins/x2go/x2go_plugin.c:1396
 #, c-format
 msgid "Resuming session: '%s'"
-msgstr ""
+msgstr "Reprenent la sessió: \"%s\""
 
 #: plugins/x2go/x2go_plugin.c:1411
 #, c-format
 msgid "Terminating session: '%s'"
-msgstr ""
+msgstr "Finalitzant la sessió: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:1585
 #, c-format
 msgid "Disconnected from %s:%d via X2Go"
-msgstr ""
+msgstr "Desconnectat de %s:%d mitjançant X2Go"
 
 #: plugins/x2go/x2go_plugin.c:1657
-#, fuzzy
 msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
 msgstr ""
 "El PiHoca-CLI va sortir inesperadament. Aquesta connexió ja estarà tancada."
@@ -3635,7 +3558,6 @@ msgstr ""
 "possibles errors. Assegureu-vos que el servidor remot és accessible."
 
 #: plugins/x2go/x2go_plugin.c:1709
-#, fuzzy
 msgid "Can't save empty username!"
 msgstr "No es pot desar el nom d'usuari buit!"
 
@@ -3654,60 +3576,56 @@ msgstr ""
 "definit les cadenes \"s_password\" o \"s_username\"."
 
 #: plugins/x2go/x2go_plugin.c:1758
-#, fuzzy
-#| msgid "Password to unlock private key"
 msgid "Enter password to unlock the SSH key:"
-msgstr "Contrasenya per a desblocar la clau privada"
+msgstr "Introduïu la contrasenya per desbloquejar la clau SSH:"
 
 #: plugins/x2go/x2go_plugin.c:1769
-#, fuzzy
-#| msgid "Authentication type"
 msgid "Password input cancelled. Aborting…"
-msgstr "Error d'autenticació: %s"
+msgstr "S'ha cancel·lat l'entrada de contrasenya. Avortant…"
 
 #: plugins/x2go/x2go_plugin.c:1800
 msgid ""
 "Tip: Check the 'Save password' checkbox or manually input your X2Go username "
 "and password in the profile settings to store them for faster logins."
 msgstr ""
+"Consell: Marqueu la casella de selecció \"Desa la contrasenya\" o introduïu "
+"manualment el vostre nom d'usuari i contrasenya X2Go a la configuració del "
+"perfil per emmagatzemar-los per iniciar sessió més ràpidament."
 
 #: plugins/x2go/x2go_plugin.c:1831
-#, fuzzy
-#| msgid "Enter NX authentication credentials"
 msgid "Enter X2Go credentials"
 msgstr "Introduïu les credencials X2Go"
 
 #: plugins/x2go/x2go_plugin.c:1860
-#, fuzzy
-#| msgid "Authentication type"
 msgid "Authentication cancelled. Aborting…"
-msgstr "Error d'autenticació: %s"
+msgstr "Autenticació anul·lada. Avortant…"
 
 #: plugins/x2go/x2go_plugin.c:2047
 msgid ""
 "Could not parse the output of PyHoca-CLI's --list-sessions option. Creating "
 "a new session now."
 msgstr ""
+"No s'ha pogut analitzar la sortida de l'opció --list-sessions de PyHoca-CLI. "
+"S'està creant una sessió nova ara."
 
 #: plugins/x2go/x2go_plugin.c:2086
 msgid "Could not allocate enough memory!"
-msgstr ""
+msgstr "No s'ha pogut assignar prou memòria!"
 
 #: plugins/x2go/x2go_plugin.c:2096
 #, c-format
 msgid "Found already existing X2Go session with ID: '%s'"
-msgstr ""
+msgstr "S'ha trobat la sessió X2Go ja existent amb identificador: '%s'"
 
 #. TRANSLATORS: Please stick to X2GoClient's translation.
 #: plugins/x2go/x2go_plugin.c:2139
 msgid "Suspended"
-msgstr ""
+msgstr "Suspès"
 
 #. TRANSLATORS: Please stick to X2GoClient's translation.
 #: plugins/x2go/x2go_plugin.c:2142
-#, fuzzy
 msgid "Running"
-msgstr "S'està executant"
+msgstr "Executant"
 
 #. TRANSLATORS: Please stick to X2GoClient's translation.
 #: plugins/x2go/x2go_plugin.c:2145
@@ -3722,10 +3640,8 @@ msgid ""
 msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:2233
-#, fuzzy
-#| msgid "Choose a file to upload"
 msgid "Choose a session to resume:"
-msgstr "Seleccioneu un fitxer a pujar"
+msgstr "Trieu una sessió per reprendre:"
 
 #: plugins/x2go/x2go_plugin.c:2276
 #, fuzzy
@@ -3753,7 +3669,6 @@ msgid "Resuming session '%s'…"
 msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:2513
-#, fuzzy
 msgid "DPI setting is out of bounds. Please adjust it in profile settings."
 msgstr ""
 "L'opció DPI està fora de límits. Ajusteu-lo a la configuració del perfil."
