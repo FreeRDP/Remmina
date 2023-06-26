@@ -27,6 +27,7 @@ Author: Antenore Gatta
   <!-- interface-copyright Antenore Gatta, Giovanni Panozzo -->
   <!-- interface-authors Antenore Gatta -->
   <object class="GtkDialog" id="RemminaUnlockDialog">
+    <property name="title" translatable="yes">Unlock Remmina</property>
     <property name="can-focus">False</property>
     <property name="type-hint">dialog</property>
     <child internal-child="vbox">
@@ -78,18 +79,6 @@ Author: Antenore Gatta
             <property name="visible">True</property>
             <property name="can-focus">False</property>
             <property name="orientation">vertical</property>
-            <child>
-              <object class="GtkHeaderBar">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
-                <property name="title" translatable="yes">Unlock Remmina</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">0</property>
-              </packing>
-            </child>
             <child>
               <!-- n-columns=2 n-rows=1 -->
               <object class="GtkGrid">

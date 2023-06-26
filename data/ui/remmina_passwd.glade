@@ -3,11 +3,13 @@
 <interface>
   <requires lib="gtk+" version="3.18"/>
   <object class="GtkDialog" id="RemminaPasswdDialog">
+    <property name="title" translatable="yes">Set new password</property>
     <property name="can-focus">False</property>
     <property name="type-hint">dialog</property>
     <child internal-child="vbox">
       <object class="GtkBox">
         <property name="can-focus">False</property>
+        <property name="visible">True</property>
         <property name="orientation">vertical</property>
         <property name="spacing">2</property>
         <child internal-child="action_area">
@@ -49,110 +51,85 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox">
+          <!-- n-columns=2 n-rows=2 -->
+          <object class="GtkGrid">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="orientation">vertical</property>
             <child>
-              <object class="GtkHeaderBar">
+              <object class="GtkLabel" id="label_password">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
-                <property name="title" translatable="yes">Set Primary Password</property>
-                <property name="show-close-button">True</property>
+                <property name="halign">end</property>
+                <property name="valign">center</property>
+                <property name="margin-start">18</property>
+                <property name="margin-end">6</property>
+                <property name="margin-top">18</property>
+                <property name="margin-bottom">9</property>
+                <property name="label" translatable="yes">Password</property>
               </object>
               <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">0</property>
+                <property name="left-attach">0</property>
+                <property name="top-attach">0</property>
               </packing>
             </child>
             <child>
-              <!-- n-columns=2 n-rows=2 -->
-              <object class="GtkGrid">
+              <object class="GtkLabel" id="label_verify">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
-                <child>
-                  <object class="GtkLabel">
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="halign">end</property>
-                    <property name="valign">center</property>
-                    <property name="margin-start">18</property>
-                    <property name="margin-end">6</property>
-                    <property name="margin-top">18</property>
-                    <property name="margin-bottom">9</property>
-                    <property name="label" translatable="yes">Password</property>
-                  </object>
-                  <packing>
-                    <property name="left-attach">0</property>
-                    <property name="top-attach">0</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel">
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="halign">end</property>
-                    <property name="valign">center</property>
-                    <property name="margin-start">18</property>
-                    <property name="margin-end">6</property>
-                    <property name="margin-top">9</property>
-                    <property name="margin-bottom">18</property>
-                    <property name="label" translatable="yes">Verify password</property>
-                  </object>
-                  <packing>
-                    <property name="left-attach">0</property>
-                    <property name="top-attach">1</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkEntry" id="entry_password">
-                    <property name="visible">True</property>
-                    <property name="can-focus">True</property>
-                    <property name="valign">start</property>
-                    <property name="margin-start">6</property>
-                    <property name="margin-end">18</property>
-                    <property name="margin-top">18</property>
-                    <property name="margin-bottom">9</property>
-                    <property name="visibility">False</property>
-                    <property name="invisible-char">•</property>
-                    <property name="width-chars">24</property>
-                    <property name="input-purpose">password</property>
-                  </object>
-                  <packing>
-                    <property name="left-attach">1</property>
-                    <property name="top-attach">0</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkEntry" id="entry_verify">
-                    <property name="visible">True</property>
-                    <property name="can-focus">True</property>
-                    <property name="valign">start</property>
-                    <property name="margin-start">6</property>
-                    <property name="margin-end">18</property>
-                    <property name="margin-top">9</property>
-                    <property name="margin-bottom">18</property>
-                    <property name="visibility">False</property>
-                    <property name="invisible-char">•</property>
-                    <property name="width-chars">24</property>
-                    <property name="shadow-type">none</property>
-                    <property name="input-purpose">password</property>
-                    <signal name="changed" handler="remmina_passwd_repwd_on_changed" swapped="no"/>
-                    <style>
-                      <class name="entry_verify"/>
-                    </style>
-                  </object>
-                  <packing>
-                    <property name="left-attach">1</property>
-                    <property name="top-attach">1</property>
-                  </packing>
-                </child>
+                <property name="halign">end</property>
+                <property name="valign">center</property>
+                <property name="margin-start">18</property>
+                <property name="margin-end">6</property>
+                <property name="margin-top">9</property>
+                <property name="margin-bottom">18</property>
+                <property name="label" translatable="yes">Verify password</property>
               </object>
               <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">1</property>
+                <property name="left-attach">0</property>
+                <property name="top-attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="entry_password">
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="valign">start</property>
+                <property name="margin-start">6</property>
+                <property name="margin-end">18</property>
+                <property name="margin-top">18</property>
+                <property name="margin-bottom">9</property>
+                <property name="visibility">False</property>
+                <property name="invisible-char">•</property>
+                <property name="width-chars">24</property>
+                <property name="input-purpose">password</property>
+              </object>
+              <packing>
+                <property name="left-attach">1</property>
+                <property name="top-attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="entry_verify">
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="valign">start</property>
+                <property name="margin-start">6</property>
+                <property name="margin-end">18</property>
+                <property name="margin-top">9</property>
+                <property name="margin-bottom">18</property>
+                <property name="visibility">False</property>
+                <property name="invisible-char">•</property>
+                <property name="width-chars">24</property>
+                <property name="shadow-type">none</property>
+                <property name="input-purpose">password</property>
+                <signal name="changed" handler="remmina_passwd_repwd_on_changed" swapped="no"/>
+                <style>
+                  <class name="entry_verify"/>
+                </style>
+              </object>
+              <packing>
+                <property name="left-attach">1</property>
+                <property name="top-attach">1</property>
               </packing>
             </child>
           </object>
