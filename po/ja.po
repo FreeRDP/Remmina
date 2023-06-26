@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2023-06-23 11:42+0000\n"
-"PO-Revision-Date: 2023-03-17 08:37+0000\n"
+"PO-Revision-Date: 2023-06-26 04:43+0000\n"
 "Last-Translator: maboroshin <maboroshin@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/remmina/remmina/"
 "ja/>\n"
@@ -28,7 +28,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.16.2-dev\n"
+"X-Generator: Weblate 4.18.1\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
 
 #: src/remmina_sftp_plugin.c:309 src/remmina_sftp_plugin.c:353
@@ -68,7 +68,7 @@ msgstr "隠しファイルを表示する"
 
 #: src/remmina_sftp_plugin.c:324
 msgid "Overwrite all files"
-msgstr "すべてのファイルを上書きする"
+msgstr "すべてのファイルを上書き"
 
 #: src/remmina_sftp_plugin.c:326
 msgid "Resume all file transfers"
@@ -1304,14 +1304,12 @@ msgid "Are you sure you want to delete “%s”?"
 msgstr "本当に “%s” を削除しますか?"
 
 #: src/remmina_main.c:1021
-#, fuzzy
-#| msgid "Are you sure to delete the selected files on server?"
 msgid "Are you sure you want to delete the selected files?"
-msgstr "選択したサーバー上のファイルを削除してもよろしいですか?"
+msgstr "選択したファイルを削除しますか?"
 
 #: src/remmina_main.c:1032
 msgid "Failed to delete files!"
-msgstr ""
+msgstr "ファイルの削除に失敗!"
 
 #: src/remmina_main.c:1213
 #, c-format
@@ -1475,7 +1473,7 @@ msgstr ""
 "<big>対応フォーマット\n"
 "- サーバー\n"
 "- サーバー[:ポート]\n"
-"- username@server[:port] (SSHプロトコルのみ)</big>."
+"- username@server[:port] (SSHプロトコルのみ)</big>"
 
 #: src/remmina_file_editor.c:164
 msgid "Input is invalid."
@@ -1596,11 +1594,10 @@ msgid "Notes"
 msgstr "メモ"
 
 #: src/remmina_file_editor.c:1460
-#, fuzzy, c-format
+#, c-format
 msgid "(%s: %i): Can't validate setting '%s' since 'value' or 'gfe' are NULL!"
-msgstr ""
-"([x1x]: [x5x])と表示されました。設定「%s」は、「value」や「gfe」がNULLなので"
-"検証できません。"
+msgstr "(%s: %i)と表示されました。設定「%s」は、「value」や「gfe」がNULLなので検証で"
+"きません！"
 
 #: src/remmina_file_editor.c:1464
 #, c-format
@@ -1716,7 +1713,7 @@ msgstr "StatusNotifier/Appindicator の対応 “"
 #: src/remmina_icon.c:372
 #, c-format
 msgid "%s your desktop does support it"
-msgstr "%s このデスクトップは対応しています。"
+msgstr "%s このデスクトップは対応しています"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:374
@@ -2185,29 +2182,21 @@ msgid "Could not find the address for the RDP server “%s”."
 msgstr "RDP サーバー “%s” のアドレスが見つかりませんでした。"
 
 #: plugins/rdp/rdp_plugin.c:2250
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not connect to the RDP server “%s” via TLS. Check that client and "
-#| "server support a common TLS version."
+#, c-format
 msgid ""
 "Could not connect to the RDP server “%s” via TLS. See the DEBUG traces from "
 "a terminal for more information."
-msgstr ""
-"RDP サーバー “%s” に TLS で接続できませんでした。詳細は端末からデバッグを追跡"
-"して確認してください。"
+msgstr "RDP サーバー “%s” に TLS "
+"で接続できませんでした。詳細は端末からデバッグを追跡して確認してください。"
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:2254
-#, fuzzy, c-format
-#| msgid ""
-#| "Unable to establish a connection to the RDP server “%s”. Check \"Security "
-#| "protocol negotiation\"."
+#, c-format
 msgid ""
 "Unable to establish a connection to the RDP server “%s”. Check “Security "
 "protocol negotiation”."
-msgstr ""
-"RDP サーバー \"%s\" への接続を確立できません。\"セキュリティプロトコルのネゴ"
-"シエーション\" を確認してください。"
+msgstr "RDP サーバー \"%s\" への接続を確立できません。「セキュリティプロトコルのネゴ"
+"シエーション」を確認してください。"
 
 #: plugins/rdp/rdp_plugin.c:2262
 #, c-format
@@ -2233,16 +2222,12 @@ msgid "The “%s” server refused the connection."
 msgstr "サーバー “%s” が接続を拒否しました。"
 
 #: plugins/rdp/rdp_plugin.c:2280
-#, fuzzy, c-format
-#| msgid ""
-#| "The Remote Desktop Gateway “%s” denied the user \"%s\\%s\" access due to "
-#| "policy."
+#, c-format
 msgid ""
 "The Remote Desktop Gateway “%s” denied the user “%s\\%s” access due to "
 "policy."
-msgstr ""
-"リモートデスクトップゲートウェイ \"%s\" はポリシーにより、ユーザー \"%s\\%s"
-"\" のアクセスを拒否しました。"
+msgstr "リモートデスクトップゲートウェイ \"%s\" はポリシーにより、ユーザー \"%s\\%s\""
+" のアクセスを拒否しました。"
 
 #: plugins/rdp/rdp_plugin.c:2290
 #, c-format
@@ -2460,12 +2445,6 @@ msgstr ""
 "設定可能な最大値は 600000 ミリ秒 (10 分) です。\n"
 
 #: plugins/rdp/rdp_plugin.c:2767
-#, fuzzy
-#| msgid ""
-#| "Performance optimisations based on the network connection type:\n"
-#| "Using auto-detection is advised.\n"
-#| "If \"Auto-detect\" fails, choose the most appropriate option in the "
-#| "list.\n"
 msgid ""
 "Performance optimisations based on the network connection type:\n"
 "Using auto-detection is advised.\n"
@@ -2473,11 +2452,10 @@ msgid ""
 msgstr ""
 "ネットワーク接続形式に基づいたパフォーマンスの最適化:\n"
 "自動検出の使用を推奨します。\n"
-"\"自動検出\" が失敗した場合、一覧から最も適切なオプションを選択してくださ"
-"い。\n"
+"\"自動検出\" が失敗した場合、一覧から最も適切なオプションを選択してください。"
+"\n"
 
 #: plugins/rdp/rdp_plugin.c:2772
-#, fuzzy
 msgid ""
 "Comma-separated list of monitor IDs and desktop orientations:\n"
 "  • [<id>:<orientation-in-degrees>,]\n"
@@ -2490,8 +2468,8 @@ msgid ""
 "  • 270 (portrait flipped)\n"
 "\n"
 msgstr ""
-"モニターのIDとデスクトップの向きをカンマで区切って表示します。\n"
-"  - <id>:<orientation-in-degrees>,]と表示されます。\n"
+"モニターのIDとデスクトップの向きをカンマで区切って指定します。\n"
+"  - <id>:<orientation-in-degrees>,]\n"
 "  - 0,1,2,3\n"
 "  - 0:270,1:90\n"
 "向きは度数で指定し、有効な値は次のとおりです。\n"
@@ -2502,7 +2480,6 @@ msgstr ""
 "\n"
 
 #: plugins/rdp/rdp_plugin.c:2784
-#, fuzzy
 msgid ""
 "Redirect directory <path> as named share <name>.\n"
 "  • <name>,<fullpath>[;<name>,<fullpath>[;…]]\n"
@@ -2513,7 +2490,7 @@ msgid ""
 "  • hotplug,*\n"
 "\n"
 msgstr ""
-"ディレクトリ <path> を名前付き共有 <name> としてリダイレクトします。\n"
+"ディレクトリ <path> を名前付き共有 <name> として転送します。\n"
 "  - <name>,<fullpath>[;<name>,<fullpath>[;...]] のようになります。\n"
 "  - マイホーム、/home/remminer\n"
 "  - /home/remminer\n"
@@ -2809,7 +2786,7 @@ msgstr "ゲートウェイ・ウェブソケットの対応を有効化"
 
 #: plugins/rdp/rdp_plugin.c:2898
 msgid "Update framebuffer even when not visible"
-msgstr ""
+msgstr "表示されていなくてもフレームバッファを更新"
 
 #: plugins/rdp/rdp_plugin.c:2907 plugins/spice/spice_plugin.c:707
 #: plugins/spice/spice_plugin.c:715 plugins/vnc/vnc_plugin.c:2119
@@ -2848,7 +2825,7 @@ msgstr "再接続の試行 %d / %d…"
 #: plugins/rdp/rdp_event.c:1158
 #, c-format
 msgid "Connected to %s via RDP"
-msgstr "RDP で %s に接続…"
+msgstr "RDP で %s に接続"
 
 #: plugins/spice/spice_plugin_file_transfer.c:82
 msgid "File Transfers"
@@ -2889,7 +2866,7 @@ msgstr "SPICE で %s:%d から切断されました"
 #: plugins/spice/spice_plugin.c:391
 #, c-format
 msgid "Connected to %s:%d via SPICE"
-msgstr "SPICE で %s:%d に接続…"
+msgstr "SPICE で %s:%d に接続"
 
 #: plugins/spice/spice_plugin.c:403
 msgid "TLS connection error."
@@ -2938,7 +2915,7 @@ msgstr "クリップボードの同期をオフにする"
 
 #: plugins/spice/spice_plugin.c:705 plugins/gvnc/gvnc_plugin.c:868
 msgid "Enable audio channel"
-msgstr "オーディオチャンネルを有効にする"
+msgstr "音声チャンネルを有効にする"
 
 #: plugins/spice/spice_plugin.c:706
 msgid "Share smart card"
@@ -3011,7 +2988,6 @@ msgid "Disconnected from %s:%d via VNC"
 msgstr "VNC で %s:%d から切断"
 
 #: plugins/vnc/vnc_plugin.c:2034
-#, fuzzy
 msgid ""
 "Connect to VNC using a repeater:\n"
 "  • The server field must contain the repeater ID, e.g. ID:123456789\n"
@@ -3031,7 +3007,6 @@ msgstr ""
 "    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
 
 #: plugins/vnc/vnc_plugin.c:2043
-#, fuzzy
 msgid ""
 "Listening for remote VNC connection:\n"
 "  • The “Listen on port” field is the port Remmina will listen to,\n"
@@ -3195,7 +3170,7 @@ msgstr "非同期実行"
 
 #: plugins/exec/exec_plugin.c:299
 msgid "Kill process on disconnect"
-msgstr ""
+msgstr "切断時にプロセスをKILLする"
 
 #: plugins/exec/exec_plugin_config.h:41
 msgid "Execute a command"
@@ -3390,12 +3365,12 @@ msgstr ""
 "処理に必要なPyHoca-CLIプロセスにてインターネット接続に問題が発生しました。"
 
 #: plugins/x2go/x2go_plugin.c:982
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not start PyHoca-CLI:\n"
 "%s"
 msgstr ""
-"PyHoca-CLI を起動できませんでした (%i):\n"
+"PyHoca-CLI を起動できませんでした:\n"
 "%s"
 
 #: plugins/x2go/x2go_plugin.c:993
@@ -3431,12 +3406,13 @@ msgid "Parameter 'custom_data' is not fully initialized!"
 msgstr "パラメータ 'custom_data' が完全に初期さされていません！"
 
 #: plugins/x2go/x2go_plugin.c:1276
-#, fuzzy, c-format
-#| msgid "Could not start SSH session. %s"
+#, c-format
 msgid ""
 "Could not terminate X2Go session '%s':\n"
 "%s"
-msgstr "X2Goのセッションを開始できませんでした。"
+msgstr ""
+"X2Goのセッション '%s' を開始できませんでした:\n"
+"%s"
 
 #: plugins/x2go/x2go_plugin.c:1288 plugins/x2go/x2go_plugin.c:1665
 msgid "An error occured."
@@ -3462,7 +3438,6 @@ msgid "Disconnected from %s:%d via X2Go"
 msgstr "X2Go で %s:%d から切断"
 
 #: plugins/x2go/x2go_plugin.c:1657
-#, fuzzy
 msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
 msgstr "PyHoca-CLIが予期せず終了しました。これでこの接続は終了します。"
 
@@ -3479,7 +3454,7 @@ msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:1709
 msgid "Can't save empty username!"
-msgstr "空のユーザー名は保存できません。"
+msgstr "空のユーザー名は保存できません！"
 
 #: plugins/x2go/x2go_plugin.c:1723
 msgid "Could not save new credentials."
@@ -3582,9 +3557,8 @@ msgid "Resuming session '%s'…"
 msgstr "セッション'%s'を再開しています…"
 
 #: plugins/x2go/x2go_plugin.c:2513
-#, fuzzy
 msgid "DPI setting is out of bounds. Please adjust it in profile settings."
-msgstr "DPI設定が圏外です。プロファイル設定で調整してください。"
+msgstr "DPI設定が許容範囲外です。プロファイル設定で調整してください。"
 
 #: plugins/x2go/x2go_plugin.c:2576
 msgid "Could not start X2Go session…"
@@ -3629,7 +3603,7 @@ msgstr "利用可能な機能[%i]： '%s'"
 #: plugins/x2go/x2go_plugin.c:2747
 #, c-format
 msgid "Connected to %s:%d via X2Go"
-msgstr "X2Go で %s:%d に接続…"
+msgstr "X2Go で %s:%d に接続"
 
 #: plugins/x2go/x2go_plugin.c:2841
 msgid "Could not open X11 DISPLAY."
@@ -4277,7 +4251,7 @@ msgstr "新しい接続プロファイルを追加する"
 
 #: data/ui/remmina_main.glade:48
 msgid "Switch from grouped to list view"
-msgstr "グループから一覧に切り替える"
+msgstr "グループから一覧表示に切り替える"
 
 #: data/ui/remmina_main.glade:80
 msgid "Select the protocol to use with the quick connect bar."
@@ -4512,10 +4486,8 @@ msgid "Confirm before closing multiple tabs"
 msgstr "複数のタブを閉じる前に確認"
 
 #: data/ui/remmina_preferences.glade:500
-#, fuzzy
-#| msgid "General settings"
 msgid "General"
-msgstr "一般設定"
+msgstr "一般"
 
 #: data/ui/remmina_preferences.glade:525
 msgid "Always show tabs"
